@@ -2566,14 +2566,14 @@
 /turf/open/auto_turf/swamp_dirt/layer1,
 /area/sekhmet/outside/swamp)
 "ahL" = (
-/obj/structure/machinery/door/airlock/upp/generic/solid/autoname{
-	needs_power = 0;
-	name = "\improper Bolted Airlock";
+/obj/structure/machinery/door/airlock/upp/generic/solid{
+	dir = 1;
 	emp_proof = 1;
 	explo_proof = 1;
+	name = "\improper Bolted Airlock";
+	needs_power = 0;
 	unacidable = 1;
-	unslashable = 1;
-	dir = 2
+	unslashable = 1
 	},
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/sekhmet/int_reg/small_power)
@@ -3573,10 +3573,6 @@
 /obj/structure/stairs/perspective{
 	color = "#838a88";
 	dir = 4
-	},
-/obj/structure/barricade/handrail/wire{
-	dir = 1;
-	pixel_y = 12
 	},
 /obj/structure/barricade/handrail/wire,
 /obj/structure/machinery/light{
@@ -5142,14 +5138,14 @@
 /turf/open/gm/coast/dirt/swampbeachcorner2/north_east,
 /area/sekhmet/outside/swamp)
 "bkb" = (
-/obj/structure/machinery/door/airlock/upp/generic/solid/autoname{
-	needs_power = 0;
-	name = "\improper Bolted Airlock";
+/obj/structure/machinery/door/airlock/upp/generic/solid{
+	dir = 1;
 	emp_proof = 1;
 	explo_proof = 1;
+	name = "\improper Bolted Airlock";
+	needs_power = 0;
 	unacidable = 1;
-	unslashable = 1;
-	dir = 2
+	unslashable = 1
 	},
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/sekhmet/outside/swamp)
@@ -17798,11 +17794,11 @@
 /turf/open/gm/coast/dirt/swampbeachcorner2/south_west,
 /area/sekhmet/outside/swamp)
 "ifc" = (
-/obj/structure/machinery/door/airlock/upp/generic/solid/autoname{
-	needs_power = 0;
-	name = "\improper Bolted Airlock";
+/obj/structure/machinery/door/airlock/upp/generic/solid{
 	emp_proof = 1;
 	explo_proof = 1;
+	name = "\improper Bolted Airlock";
+	needs_power = 0;
 	unacidable = 1;
 	unslashable = 1
 	},

@@ -2,7 +2,6 @@
     "map_name": "Tyrargo Rift",
     "map_path": "map_files/Tyrargo_Rift",
     "map_file": "Tyrargo_Rift.dmm",
-    "webmap_url": "LV624",
 
     "survivor_types": [
         "/datum/equipment_preset/survivor/army/standard"
@@ -13,7 +12,7 @@
 	"CO_survivor_types": [
         "/datum/equipment_preset/survivor/army/co"
     ],
-    "map_item_type": "/obj/item/map/lazarus_landing_map",
+    "map_item_type": "/obj/item/map/tyrargo_rift",
     "announce_text": "Break, break, break. This is the USS Victory on a UA military emergency broadcast frequency to the inbound ###SHIPNAME###. Be advised, there is an ongoing xenomorph outbreak across the planet, massive civilian and military casualties confirmed.\n\nBreak, your orders from Brigadier General Hathaway are to deploy to Tyrargo City and assist local US army forces in repelling a xenomorph assault to facilitate civilian evacuation. Landing coordinates are november, three, one, six, five - hotel, two, niner, zero.\n\nBe advised, last transmission from army elements stated they are defending a civilian evacuation centre in the city museum, move quickly to secure the area, out.",
     "survivor_message": "You are a US Army trooper, 1st Battalion of the 1st Air Cavalry. What began as a training exercise on this planet turned into a nightmare, the unexpected arrival of a massive xenomorph hive has turned this world into a warzone. You and your battalion have been tasked to defend the city of Tyrargo Rift to give time for the tens of thousands of civilians to be evacuated to a safe zone. It's been two weeks since the siege of the city began. The last few thousand cvilians are held up at the museum evacuation site. You and your squad have been holding this trench line by yourselves for the last week, but your ammo is almost gone and the bugs are making the largest push soon. It's time to prepare for the final fight.",
     "monkey_types": [

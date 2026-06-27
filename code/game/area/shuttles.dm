@@ -60,6 +60,13 @@
 	requires_power = FALSE
 	base_lighting_alpha = 0
 
+/area/shuttle/ert/no_defenses/no_gas
+	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE|AREA_NOSECURECADES|AREA_HEAVILY_VENTILATED
+
+/area/shuttle/hunter
+	icon = 'icons/turf/area_yautja.dmi'
+	icon_state = "blue"
+
 /area/shuttle/trijent_shuttle
 	name = "Trijent Elevator"
 	icon = 'icons/turf/area_almayer.dmi'

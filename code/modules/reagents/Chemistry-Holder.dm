@@ -377,7 +377,7 @@
 							return
 						var/list/seen = viewers(3, get_turf(my_atom))
 						for(var/mob/seen_mob in seen)
-							to_chat(seen_mob, SPAN_WARNING("[icon2html(my_atom, seen_mob)] [my_atom] starts to give heavy fumes from it's contents!"))
+							to_chat(seen_mob, SPAN_WARNING("[icon2html(my_atom, seen_mob)] [my_atom] starts to give heavy fumes from its contents!"))
 						addtimer(CALLBACK(src, PROC_REF(create_smoke_reaction), created_volume, reaction), 4 SECONDS, TIMER_UNIQUE)
 						playsound(get_turf(my_atom), 'sound/effects/tankhiss3.ogg', 10, 30000, 4)// what a great sound where did it hide all this time
 
@@ -816,7 +816,8 @@
 	if(smokerad)
 		var/datum/effect_system/smoke_spread/phosphorus/smoke = new /datum/effect_system/smoke_spread/phosphorus
 		smoke.set_up(max(smokerad, 1), 0, sourceturf, null, 6)
-		smoke.start(intensity, max_fire_int)
+		smoke.set_intensity(intensity, max_fire_int)
+		smoke.start()
 		smoke = null
 
 	if(flush_beaker)

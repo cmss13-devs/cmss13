@@ -31,7 +31,7 @@
 	flags_equip_slot = NO_FLAGS
 	w_class = SIZE_HUGE
 	force = 20
-	wield_delay = WIELD_DELAY_FAST
+	wield_delay = WEAPON_DELAY_FAST
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
 	unacidable = TRUE
 	explo_proof = TRUE
@@ -313,6 +313,7 @@
 /datum/action/item_action/smartgun/toggle_aim_assist/New(Target, obj/item/holder)
 	. = ..()
 	name = "Toggle Aim Assist"
+	listen_signal = COMSIG_KB_HUMAN_WEAPON_TOGGLE_AIM_ASSIST
 
 	update_icon()
 	button.name = name
@@ -1171,7 +1172,7 @@
 /obj/item/weapon/gun/smartgun/rmc
 	name = "\improper L56A1 smartgun"
 	desc = "The actual firearm in the 2-piece L56A2 Smartgun System. This variant is used by the Three World Empires Royal Marines Commando units."
-	desc_lore = "The L56A1 is a W-Y licensed copy of the original M56 developed for the USMC, this version was marketed to the 3WE's Royal Marines as having a lighter weight construction and as being more reliable then the LMG's in service at the time."
+	desc_lore = "The L56A1 is a W-Y licensed copy of the original M56 developed for the USMC, this version was marketed to the 3WE's Royal Marines as having a lighter weight construction and as being more reliable than the LMGs in service at the time."
 	current_mag = /obj/item/ammo_magazine/smartgun/holo_targetting
 	ammo = /obj/item/ammo_magazine/smartgun/holo_targetting
 	ammo_primary_def = /datum/ammo/bullet/smartgun/holo_target
@@ -1191,7 +1192,7 @@
 /obj/item/weapon/gun/smartgun/upp
 	name = "\improper RFVS37 smartgun"
 	desc = "The actual firearm in the 2-piece RFVS37 Smartgun System. This experimental variant is used by the Union of Progressive Peoples units."
-	desc_lore = "Seeing the successful use of the M56 and L56 by the UA and 3WE Militaries during military conflicts such as the linna 349 campaign and the the australia wars, the UPP SOF saw a need for a similar self aiming LMG for their own units, following extensive trials the NORCOMM RFVS-37 was chosen, fulfilling all of the SOF's criteria."
+	desc_lore = "Seeing the successful use of the M56 and L56 by the UA and 3WE Militaries during military conflicts such as the Linna 349 campaign and the australia wars, the UPP SOF saw a need for a similar self aiming LMG for their own units, following extensive trials the NORCOMM RFVS-37 was chosen, fulfilling all of the SOF's criteria."
 	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/machineguns.dmi'
 	icon_state = "rfvs37"

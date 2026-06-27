@@ -24,8 +24,8 @@
 	smoke_type = /obj/effect/particle_effect/smoke/chem
 	var/obj/chemholder
 	var/range
-	var/list/targetTurfs
-	var/list/wallList
+	var/list/turf/targetTurfs
+	var/list/turf/wallList
 	var/density
 	var/static/last_reaction_signature
 
@@ -33,6 +33,12 @@
 	..()
 	chemholder = new/obj()
 	chemholder.create_reagents(500)
+
+/datum/effect_system/smoke_spread/chem/Destroy(force)
+	. = ..()
+	QDEL_NULL(chemholder)
+	targetTurfs = null
+	wallList = null
 
 //------------------------------------------
 //Sets up the chem smoke effect
@@ -98,17 +104,23 @@
 
 
 //------------------------------------------
-//Runs the chem smoke effect
-//
-// Spawns damage over time loop for each reagent held in the cloud.
-// Applies reagents to walls that affect walls (only thermite and plant-b-gone at the moment).
-// Also calculates target locations to spawn the visual smoke effect on, so the whole area
-// is covered fairly evenly.
-//------------------------------------------
-/datum/effect_system/smoke_spread/chem/start()
+/** Runs the chem smoke effect
+ *
+ * Spawns damage over time loop for each reagent held in the cloud.
+ * Applies reagents to walls that affect walls (only thermite and plant-b-gone at the moment).
+ * Also calculates target locations to spawn the visual smoke effect on, so the whole area
+ * is covered fairly evenly.
+ */
+/datum/effect_system/smoke_spread/chem/start(do_NOT_delete = FALSE)
 
 	if(!location) //kill grenade if it somehow ends up in nullspace
+		if(!do_NOT_delete)
+			qdel(src)
 		return
+
+	// Hardcoded 5 "runs" below times "3 SECONDS" sleep plus extra wiggle room
+	if(!do_NOT_delete)
+		QDEL_IN(src, (5 + 1) * (3 SECONDS))
 
 	//reagent application - only run if there are extra reagents in the smoke
 	if(length(chemholder.reagents.reagent_list))

@@ -65,6 +65,9 @@
 #define COMSIG_KB_HUMAN_ROTATE_CHAIR "keybinding_human_rotate_chair"
 #define COMSIG_KB_HUMAN_SHOW_HELD_ITEM "keybinding_human_show_held_item"
 #define COMSIG_KB_HUMAN_CYCLE_HELMET_HUD "keybinding_human_cycle_helmet_hud"
+#define COMSIG_KB_HUMAN_SINGLE_NORMAL_PUSHUP "keybinding_human_single_normal_pushup"
+#define COMSIG_KB_HUMAN_SINGLE_WEAK_PUSHUP "keybinding_human_single_weak_pushup"
+#define COMSIG_KB_HUMAN_PUSHUP_ROUTINE "keybinding_human_pushup_routine"
 
 // Human Inventory Navigation
 #define COMSIG_KB_HUMAN_INTERACT_OTHER_HAND "keybinding_human_interact_other_hand"
@@ -98,6 +101,7 @@
 #define COMSIG_KB_HUMAN_WEAPON_SHOTGUN_TUBE "keybinding_human_weapon_shotgun_tube"
 #define COMSIG_KB_HUMAN_WEAPON_TOGGLE_FRONTLINE_MODE "keybinding_human_weapon_toggle_frontline_mode"
 #define COMSIG_KB_HUMAN_WEAPON_TOGGLE_IFF "keybinding_human_weapon_toggle_iff"
+#define COMSIG_KB_HUMAN_WEAPON_TOGGLE_AIM_ASSIST "keybinding_human_weapon_toggle_aim_assist"
 
 //Living
 #define COMSIG_KB_SURGERY_INTENT_DOWN "keybinding_living_surgery_intent_down"
@@ -135,6 +139,7 @@
 #define COMSIG_KB_MOB_BLOCKMOVEMENT_DOWN "keybinding_mob_blockmovement_down"
 #define COMSIG_KB_MOB_LOOK_UP "keybinding_mob_look_up"
 #define COMSIG_KB_MOB_TOGGLE_MINIMAP "keybinding_toggle_minimap"
+#define COMSIG_KB_MOB_MANIFEST "keybinding_mob_manifest"
 
 //Robot
 #define COMSIG_KB_SILICON_TOGGLEMODULEONE_DOWN "keybinding_silicon_togglemoduleone_down"
@@ -177,6 +182,7 @@
 #define COMSIG_KB_XENO_PURCHASE_STRAIN "keybinding_purchase_strain"
 #define COMSIG_KB_XENO_RESET_STRAIN "keybinding_reset_strain"
 #define COMSIG_KB_XENO_BECOME_SEETHROUGH "keybinding_become_seethrough"
+#define COMSIG_KB_XENO_RIP_LIMB "keybinding_rip_limb"
 
 // Yautja
 
@@ -188,7 +194,7 @@
 // Yautja Bracer
 #define COMSIG_KB_YAUTJA_TOGGLE_NOTIFICATION_SOUND "keybinding_yautja_toggle_notification_sound"
 #define COMSIG_KB_YAUTJA_BRACER_MESSAGE "keybinding_yautja_bracer_message"
-#define COMSIG_KB_YAUTJA_BRACER_ATTACHMENT "keybinding_yautja_bracer_attachement"
+#define COMSIG_KB_YAUTJA_BRACER_ATTACHMENT "keybinding_yautja_bracer_attachment"
 #define COMSIG_KB_YAUTJA_TRACK_GEAR "keybinding_yautja_track_gear"
 #define COMSIG_KB_YAUTJA_CLOAKER "keybinding_yautja_cloaker"
 #define COMSIG_KB_YAUTJA_CASTER "keybinding_yautja_caster"
@@ -205,6 +211,7 @@
 #define COMSIG_KB_YAUTJA_IDCHIP "keybinding_yautja_idchip"
 #define COMSIG_KB_YAUTJA_LINK_BRACER "keybinding_yautja_link_bracer"
 #define COMSIG_KB_YAUTJA_CONTROL_FALCON "keybinding_yautja_control_falcon"
+#define COMSIG_KB_YAUTJA_LEAP "keybinding_yautja_leap"
 
 //mask
 #define COMSIG_KB_YAUTJA_MASK_TOGGLE_ZOOM "keybinding_yautja_mask_toggle_zoom"

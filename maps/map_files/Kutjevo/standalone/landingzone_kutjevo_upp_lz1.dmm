@@ -1,4 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/open/floor/almayer/research/containment/floor2/west,
+/area/event/deep_underground/dynamic)
 "ab" = (
 /obj/structure/barricade/handrail/kutjevo{
 	dir = 8;
@@ -24,7 +27,7 @@
 /obj/structure/sign/safety/landingzone{
 	pixel_x = 7;
 	pixel_y = 11;
-	desc = "A traffic signal denoting the presecense of a landing zone nearby.";
+	desc = "A traffic signal denoting the presence of a landing zone nearby.";
 	name = "\improper landing zone traffic signal"
 	},
 /obj/structure/sign/safety/south{
@@ -80,7 +83,7 @@
 /obj/structure/sign/safety/landingzone{
 	pixel_x = 7;
 	pixel_y = 11;
-	desc = "A traffic signal denoting the presecense of a landing zone nearby.";
+	desc = "A traffic signal denoting the presence of a landing zone nearby.";
 	name = "\improper landing zone traffic signal"
 	},
 /obj/structure/sign/safety/east{
@@ -222,7 +225,7 @@
 /area/kutjevo/interior/oob)
 "gq" = (
 /obj/structure/platform/metal/strata/east,
-/turf/open/floor/almayer/research/containment/floor1,
+/turf/open/floor/almayer/research/containment/floor2/west,
 /area/event/deep_underground/dynamic)
 "gr" = (
 /obj/structure/machinery/vending/coffee,
@@ -342,7 +345,7 @@
 	dir = 9;
 	icon_state = "p_stair_full"
 	},
-/turf/open/floor/almayer/research/containment/floor1,
+/turf/open/floor/almayer/research/containment/floor2/west,
 /area/event/deep_underground/dynamic)
 "jo" = (
 /turf/open/auto_turf/sand/layer0,
@@ -437,9 +440,6 @@
 	layer = 2.7
 	},
 /turf/open/auto_turf/sand/layer1,
-/area/event/deep_underground/dynamic)
-"nJ" = (
-/turf/open/floor/almayer/research/containment/floor2/north,
 /area/event/deep_underground/dynamic)
 "on" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
@@ -556,14 +556,14 @@
 	icon_state = "p_stair_full"
 	},
 /obj/structure/platform_decoration/metal/strata/east,
-/turf/open/floor/almayer/research/containment/floor1,
+/turf/open/floor/almayer/research/containment/floor2/west,
 /area/event/deep_underground/dynamic)
 "rR" = (
 /obj/structure/sign/flag/upp{
 	pixel_y = 28;
 	layer = 2.7
 	},
-/turf/open/floor/almayer/research/containment/floor2/north,
+/turf/open/floor/almayer/research/containment/floor2,
 /area/event/deep_underground/dynamic)
 "rV" = (
 /turf/open/floor/kutjevo/tan/grey_edge/southeast,
@@ -601,7 +601,7 @@
 /area/event/deep_underground/dynamic)
 "tR" = (
 /obj/structure/platform/metal/strata/west,
-/turf/open/floor/almayer/research/containment/floor1,
+/turf/open/floor/almayer/research/containment/floor2/west,
 /area/event/deep_underground/dynamic)
 "tV" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
@@ -651,7 +651,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/turf/open/floor/almayer/research/containment/floor1,
+/turf/open/floor/almayer/research/containment/floor2/west,
 /area/event/deep_underground/dynamic)
 "vt" = (
 /turf/open/floor/kutjevo/colors/orange/inner_corner/north,
@@ -1320,7 +1320,7 @@
 /obj/structure/sign/safety/landingzone{
 	pixel_x = 7;
 	pixel_y = 11;
-	desc = "A traffic signal denoting the presecense of a landing zone nearby.";
+	desc = "A traffic signal denoting the presence of a landing zone nearby.";
 	name = "\improper landing zone traffic signal"
 	},
 /obj/structure/sign/safety/east{
@@ -5016,7 +5016,7 @@ ld
 lL
 lL
 lL
-nJ
+aS
 pq
 gY
 Do
@@ -5029,7 +5029,7 @@ sN
 KT
 gY
 pq
-nJ
+aS
 lL
 lL
 ld
@@ -5096,7 +5096,7 @@ lL
 lL
 lL
 lL
-nJ
+aS
 pq
 gY
 gY
@@ -5109,7 +5109,7 @@ gY
 gY
 gY
 pq
-nJ
+aS
 lL
 lL
 lL
@@ -5176,7 +5176,7 @@ lL
 lL
 lL
 lL
-nJ
+aS
 pq
 pq
 pq
@@ -5189,7 +5189,7 @@ pq
 pq
 pq
 pq
-nJ
+aS
 lL
 lL
 lL
@@ -5257,18 +5257,18 @@ lL
 lL
 lL
 pJ
-Ah
-Ah
-Ah
-Ah
-Ah
-Ah
-Ah
-Ah
-Ah
-Ah
-Ah
-Ah
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 pJ
 lL
 lL
@@ -5322,7 +5322,7 @@ eP
 pq
 pq
 pq
-nJ
+aS
 lL
 lL
 lL
@@ -5399,9 +5399,9 @@ VG
 gY
 eP
 eP
-Ah
-Ah
-Ah
+aa
+aa
+aa
 pJ
 lL
 lL
@@ -5478,7 +5478,7 @@ HK
 VG
 gY
 eP
-nJ
+aS
 lL
 lL
 ld
@@ -5558,7 +5558,7 @@ HK
 VG
 gY
 pq
-nJ
+aS
 lL
 lL
 ld
@@ -5638,7 +5638,7 @@ UK
 VG
 bU
 pq
-nJ
+aS
 lL
 lL
 ld
@@ -5718,7 +5718,7 @@ Jf
 VG
 bU
 pq
-nJ
+aS
 lL
 vB
 VG
@@ -5798,7 +5798,7 @@ cS
 VG
 bU
 pq
-nJ
+aS
 lL
 lL
 VG
@@ -5878,7 +5878,7 @@ io
 VG
 bU
 pq
-nJ
+aS
 lL
 lL
 VG

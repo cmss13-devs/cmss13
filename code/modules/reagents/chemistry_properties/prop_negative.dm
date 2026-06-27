@@ -34,7 +34,7 @@
 /datum/chem_property/negative/toxic
 	name = PROPERTY_TOXIC
 	code = "TXC"
-	description = "Poisonous substance which causes harm on contact with or through absorption by organic tissues, resulting in bad health, severe illness, or plant death."
+	description = "Poisonous substance which causes harm on contact with or through absorption by organic tissue, resulting in bad health, severe illness, or plant death."
 	rarity = PROPERTY_COMMON
 	starter = TRUE
 	value = -1
@@ -112,7 +112,7 @@
 
 			if(H.glasses)
 				if(prob(meltprob) && !H.glasses.unacidable)
-					to_chat(H, SPAN_DANGER("Your glasses melts away!"))
+					to_chat(H, SPAN_DANGER("Your [H.glasses] melt[H.glasses.gender != PLURAL ? "s" : ""] away!"))
 					qdel(H.glasses)
 					H.update_inv_glasses(0)
 				return
@@ -134,7 +134,7 @@
 			M.take_limb_damage(min(6, volume))
 	if(isxeno(M))
 		var/mob/living/carbon/xenomorph/xeno = M
-		if(potency > POTENCY_MAX_TIER_1) //Needs level 7+ to have any effect
+		if(potency > 2) //Needs level 5+ to have any effect, remember that potency = level * 0.5
 			xeno.AddComponent(/datum/component/status_effect/toxic_buildup, potency * volume * 0.25)
 
 /datum/chem_property/negative/corrosive/reaction_obj(obj/O, volume, potency)

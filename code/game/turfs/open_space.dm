@@ -29,12 +29,6 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	ADD_TRAIT(src, TURF_Z_TRANSPARENT_TRAIT, TRAIT_SOURCE_INHERENT)
 	return INITIALIZE_HINT_LATELOAD
 
-/turf/open_space/attack_alien(mob/user)
-	attack_hand(user)
-
-/turf/open_space/attack_hand(mob/user)
-	climb_down(user)
-
 /turf/open_space/Enter(atom/movable/mover, atom/forget)
 	. = ..()
 	if(. && !mover.throwing && isliving(mover) && check_blocked())
@@ -88,6 +82,19 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 
 	user.visible_message(SPAN_WARNING("[user] starts climbing down."), SPAN_WARNING("You start climbing down."))
 
+	var/list/grabbed_things = list()
+	var/hands_full = FALSE
+	for(var/obj/item/in_hand in list(user.l_hand, user.r_hand))
+		hands_full = TRUE
+		if(istype(in_hand, /obj/item/grab))
+			var/obj/item/grab/grabbing = in_hand
+			grabbed_things += grabbing.grabbed_thing
+			grabbing.grabbed_thing.forceMove(user.loc)
+		climb_down_time *= 1.2
+
+	if(hands_full)
+		to_chat(user, SPAN_INFO("Trying to climb with your hands full is slowing you down."))
+
 	if(!do_after(user, climb_down_time, INTERRUPT_ALL, BUSY_ICON_CLIMBING))
 		to_chat(user, SPAN_WARNING("You were interrupted!"))
 		return
@@ -99,6 +106,9 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 		below = SSmapping.get_turf_below(below)
 
 	user.forceMove(below)
+	for(var/atom/movable/thing as anything in grabbed_things) // grabbed things aren't moved to the tile immediately to: make the animation better, preserve the grab
+		thing.forceMove(below)
+	below.on_climb_down(user)
 	return
 
 /turf/open_space/proc/check_fall(atom/movable/movable, kill_if_blocked=TRUE)
@@ -162,13 +172,10 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	/// A cache of open_space z to ground z representative of the height
 	var/static/alist/z_mapping = alist()
 
-/turf/open_space/ground_level/Initialize(mapload, list/arguments)
-	var/arg_count = length(arguments)
-	if(arg_count >= 2)
-		offset_x = arguments[1]
-		offset_y = arguments[2]
-		if(arg_count >= 3)
-			min_ground_z = max(arguments[3], 0)
+/turf/open_space/ground_level/Initialize(mapload)
+	offset_x = SShijack.crashed_offset_x
+	offset_y = SShijack.crashed_offset_y
+	min_ground_z = SShijack.crashed_ground_z_min
 	return ..()
 
 /turf/open_space/ground_level/get_turf_below()

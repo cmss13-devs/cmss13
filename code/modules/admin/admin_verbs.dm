@@ -86,7 +86,7 @@ GLOBAL_LIST_INIT(admin_verbs_admin, list(
 	/client/proc/toggle_hear_radio, /*toggles whether we hear the radio*/
 	/client/proc/event_panel,
 	/client/proc/free_slot, /*frees slot for chosen job*/
-	/client/proc/modify_slot,
+	/client/proc/modify_job_slot,
 	/client/proc/cmd_admin_rejuvenate,
 	/client/proc/cmd_admin_remove_clamp,
 	/client/proc/cmd_admin_repair_multitile,
@@ -130,6 +130,7 @@ GLOBAL_LIST_INIT(admin_verbs_minor_event, list(
 	/client/proc/enable_event_mob_verbs,
 	/client/proc/force_hijack,
 	/datum/admins/proc/force_predator_round, //Force spawns a predator round.
+	/datum/admins/proc/force_colony_joe_round, //same as above but for colony working joes
 	/client/proc/adjust_predator_round,
 	/client/proc/cmd_admin_world_narrate, /*sends text to all players with no padding*/
 	/client/proc/cmd_admin_object_narrate,
@@ -501,21 +502,24 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 			return
 	var/new_facial = input("Please select facial hair color.", "Character Generation") as color
 	if(new_facial)
-		M.r_facial = hex2num(copytext(new_facial, 2, 4))
-		M.g_facial = hex2num(copytext(new_facial, 4, 6))
-		M.b_facial = hex2num(copytext(new_facial, 6, 8))
+		var/list/color_list = rgb2num(new_facial)
+		M.r_facial = color_list[1]
+		M.g_facial = color_list[2]
+		M.b_facial = color_list[3]
 
 	var/new_hair = input("Please select hair color.", "Character Generation") as color
-	if(new_facial)
-		M.r_hair = hex2num(copytext(new_hair, 2, 4))
-		M.g_hair = hex2num(copytext(new_hair, 4, 6))
-		M.b_hair = hex2num(copytext(new_hair, 6, 8))
+	if(new_hair)
+		var/list/color_list = rgb2num(new_hair)
+		M.r_hair = color_list[1]
+		M.g_hair = color_list[2]
+		M.b_hair = color_list[3]
 
 	var/new_eyes = input("Please select eye color.", "Character Generation") as color
 	if(new_eyes)
-		M.r_eyes = hex2num(copytext(new_eyes, 2, 4))
-		M.g_eyes = hex2num(copytext(new_eyes, 4, 6))
-		M.b_eyes = hex2num(copytext(new_eyes, 6, 8))
+		var/list/color_list = rgb2num(new_eyes)
+		M.r_eyes = color_list[1]
+		M.g_eyes = color_list[2]
+		M.b_eyes = color_list[3]
 
 
 	// hair

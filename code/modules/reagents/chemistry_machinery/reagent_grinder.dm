@@ -97,7 +97,7 @@
 		return FALSE
 
 	if(LAZYLEN(holdingitems) >= limit)
-		to_chat(user, SPAN_WARNING("The machine cannot hold anymore items."))
+		to_chat(user, SPAN_WARNING("The machine cannot hold any more items."))
 		return TRUE
 	if (istype(O, /obj/item/research_upgrades/grinderspeed))
 		if(limit == 16)
@@ -117,7 +117,7 @@
 				return
 			for(var/obj/item/I in B)
 				if(LAZYLEN(holdingitems) >= limit)
-					to_chat(user, SPAN_WARNING("The machine cannot hold anymore items."))
+					to_chat(user, SPAN_WARNING("The machine cannot hold any more items."))
 					break
 				else
 					if(!is_type_in_list(I, blend_items) && !is_type_in_list(I, juice_items))
@@ -477,3 +477,7 @@
 /obj/structure/machinery/reagentgrinder/industrial/update_icon()
 	icon_state = "industry"+num2text(!isnull(beaker))
 	return
+
+/obj/structure/machinery/reagentgrinder/yautja
+	name = "Bone Grinder"
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'

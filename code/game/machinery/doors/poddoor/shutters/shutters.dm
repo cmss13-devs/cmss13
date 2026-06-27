@@ -94,25 +94,34 @@
 	. = ..()
 	relativewall_neighbours()
 
+/obj/structure/machinery/door/poddoor/shutters/almayer/red
+	icon_state = "shutterred1"
+	base_icon_state = "shutterred"
+
+/obj/structure/machinery/door/poddoor/shutters/almayer/red/open
+	density = FALSE
+
 /obj/structure/machinery/door/poddoor/yautja
 	name = "Yautja Shutter"
 	desc = "A heavily reinforced metal-alloy door, designed to be virtually indestructible—nothing can penetrate its defenses."
-	icon = 'icons/obj/structures/doors/hybrisashutters.dmi'
-	icon_state = "udoor1"
-	base_icon_state = "udoor"
+	icon = 'icons/obj/structures/doors/hunter/hunter_shutter.dmi'
+	icon_state = "hdoor1"
+	base_icon_state = "hdoor"
 	unslashable = TRUE
 	emp_proof = TRUE
 	openspeed = 6
-	color = "#f0ebd3"
 
 /obj/structure/machinery/door/poddoor/yautja/open
 	density = FALSE
 
-/obj/structure/machinery/door/poddoor/yautja/emp_act(power, severity)
-	if(emp_proof)
-		return FALSE
-	..()
-	return TRUE
+/obj/structure/machinery/door/poddoor/yautja/open/turf_plane
+	name = "Emergency Shutter"
+	density = FALSE
+	unslashable = TRUE
+	emp_proof = TRUE
+	unacidable = TRUE
+	breakable = FALSE
+	explo_proof = TRUE
 
 /obj/structure/machinery/door/poddoor/yautja/hunting_grounds
 	name = "Preserve Shutter"
@@ -184,13 +193,8 @@
 	id = "bot_uniforms"
 	unacidable = TRUE
 	unslashable = TRUE
-
-/obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/ex_act(severity)
-	return
-
-/obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/emp_act(severity)
-	. = ..()
-	return
+	emp_proof = TRUE
+	explo_proof = TRUE
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/attackby(obj/item/attacking_item, mob/user)
 	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_CROWBAR) || attacking_item.pry_capable)

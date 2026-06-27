@@ -141,7 +141,7 @@
 			if(istype(structure, /obj/structure/barricade))
 				var/obj/structure/barricade/cade = structure
 				var/cade_facing = cade.dir
-				if(cade_facing == turn(facing, 180))
+				if(cade_facing & turn(facing, 180))
 					blocked = TRUE
 				else if(cade_facing == facing)
 					allow_one_more_step = TRUE

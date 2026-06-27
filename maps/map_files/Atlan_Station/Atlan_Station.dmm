@@ -7705,6 +7705,10 @@
 /obj/structure/platform/metal/stair_cut/strata_left,
 /turf/open/floor/strata,
 /area/atlan/asteroid/processing_nw_train)
+"fmG" = (
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/turf/open/floor/strata/floor3/east,
+/area/atlan/station/security)
 "fmN" = (
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall{
 	pixel_y = 21
@@ -15485,14 +15489,6 @@
 "krb" = (
 /turf/open/floor/strata/blue1,
 /area/atlan/station/hab_flight)
-"krc" = (
-/obj/structure/stairs/perspective{
-	color = "#6e6e6e";
-	dir = 4;
-	icon_state = "p_stair_sn_full_cap"
-	},
-/turf/open/space/basic,
-/area/atlan/station/single_dorms)
 "kre" = (
 /obj/structure/sign/safety/hazard,
 /turf/closed/wall/strata_outpost/reinforced/hull,
@@ -54496,7 +54492,7 @@ via
 xob
 via
 via
-krc
+gxj
 kHw
 via
 via
@@ -58561,7 +58557,7 @@ trf
 wRT
 bnc
 xAC
-pnZ
+aVx
 pnZ
 pnZ
 pnZ
@@ -58768,7 +58764,7 @@ pnZ
 pnZ
 pnZ
 pnZ
-pnZ
+fmG
 trf
 gOH
 wWm
@@ -63028,7 +63024,7 @@ wob
 kiZ
 sOe
 iuE
-wpH
+uku
 btT
 btT
 btT
@@ -63231,7 +63227,7 @@ lNa
 nUE
 ukT
 iuE
-sMF
+kpJ
 sMF
 nEN
 nEN
@@ -63434,7 +63430,7 @@ qOy
 srR
 ukT
 iuE
-btT
+iuE
 hFb
 btT
 btT
@@ -63637,7 +63633,7 @@ aXi
 fPz
 ltK
 iuE
-btT
+iuE
 btT
 btT
 btT

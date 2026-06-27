@@ -405,7 +405,6 @@
 	var/mine_state = ""
 	var/mine_mode = ""
 	var/timer_id
-	var/rearm_desc
 
 /obj/item/explosive/mine/sharp/proc/upgrade_mine()
 	mine_level++
@@ -473,6 +472,9 @@
 
 /obj/item/explosive/mine/sharp/prime(mob/user)
 	set waitfor = FALSE
+	if (disarmed)
+		qdel(src)
+		return
 	if(!cause_data)
 		cause_data = create_cause_data(initial(name), user, src)
 	else if(user)
@@ -505,7 +507,6 @@
 	active = FALSE
 	triggered = FALSE
 	icon_state = "sharp_mine_disarmed"
-	rearm_desc = desc
 	desc = "A disarmed P9 SHARP rifle dart. With the right training, it can potentially be rearmed with a security access tuner."
 	QDEL_NULL(tripwire)
 	disarmed = TRUE
@@ -515,8 +516,7 @@
 /obj/item/explosive/mine/sharp/proc/rearm(mob/user)
 	disarmed = FALSE
 	mine_level = 1
-	desc = rearm_desc
-	addtimer(CALLBACK(src, PROC_REF(disarm)), 5 MINUTES, TIMER_DELETE_ME)
+	desc = "An experimental P9 SHARP proximity triggered explosive dart designed by Armat Systems for use by the United States Colonial Marines. This one has full 360 detection range."
 	deploy_mine(user)
 
 /obj/item/explosive/mine/sharp/attack_self(mob/living/user)

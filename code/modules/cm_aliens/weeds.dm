@@ -676,7 +676,7 @@ GLOBAL_LIST_EMPTY(all_xeno_pylon_cluster_nodes)
 		return
 	for(var/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/tower in GLOB.all_static_telecomms_towers)
 		if(is_in_range(tower))
-			tower.handle_xeno_acquisition(caller=src)
+			tower.handle_xeno_acquisition(invoking_pylon=src)
 
 /obj/effect/alien/weeds/node/pylon/cluster/set_parent_damaged()
 	if(!resin_parent)

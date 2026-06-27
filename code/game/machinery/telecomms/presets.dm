@@ -324,7 +324,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 /// Handles xenos corrupting the tower when weeds touch the turf it is located on
 /// caller argument just used to simplify the need for calling find_nearby_cluster if needed
-/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/handle_xeno_acquisition(obj/effect/alien/weeds/signal_source, obj/effect/alien/weeds/node/pylon/caller)
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/handle_xeno_acquisition(obj/effect/alien/weeds/signal_source, obj/effect/alien/weeds/node/pylon/invoking_pylon)
 	SIGNAL_HANDLER
 
 	if(corrupted)
@@ -353,7 +353,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 		if(!istype(effective_parent, /obj/effect/alien/weeds/node/pylon/core))
 			return
 		// Core weeds can override cluster weeds so manually look for a cluster if not already passed in args
-		effective_parent = caller || find_nearby_cluster()
+		effective_parent = invoking_pylon || find_nearby_cluster()
 		if(!effective_parent)
 			return
 

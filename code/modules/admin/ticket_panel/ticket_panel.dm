@@ -186,16 +186,16 @@
 		if("select_tab")
 			if(params["tab"] == ADMIN_TAB && !CLIENT_IS_STAFF(usr.client))
 				return FALSE
-			if(!C.ticket_panel)
-				C.ticket_panel = new /datum/ticket_panel()
-			C.ticket_panel.selected_tab = params["tab"]
-			C.ticket_panel.selected_ticket = null
+			if(!current_client.ticket_panel)
+				parent_client.ticket_panel = new /datum/ticket_panel()
+			parent_client.ticket_panel.selected_tab = params["tab"]
+			parent_client.ticket_panel.selected_ticket = null
 			return TRUE
 
 		if("select_ticket")
-			if(!C.ticket_panel)
-				C.ticket_panel = new /datum/ticket_panel()
-			C.ticket_panel.selected_ticket = text2num(params["ticket_id"])
+			if(!parent_client.ticket_panel)
+				parent_client.ticket_panel = new /datum/ticket_panel()
+			parent_client.ticket_panel.selected_ticket = text2num(params["ticket_id"])
 			return TRUE
 
 		if("start_adminhelp")

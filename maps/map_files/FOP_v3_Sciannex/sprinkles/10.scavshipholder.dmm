@@ -25,7 +25,7 @@
 	},
 /area/fiorina/oob)
 "bw" = (
-/obj/structure/machinery/filtration/console{
+/obj/structure/machinery/filtration_console{
 	pixel_y = 22
 	},
 /turf/open/floor/almayer,

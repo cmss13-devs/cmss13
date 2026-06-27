@@ -1325,7 +1325,7 @@
 /area/bigredv2/caves/mining)
 "vl" = (
 /obj/structure/sign/safety/manualopenclose{
-	desc = "The now broken door access console for these podlocks. Seems like some poor bastard was frantically trying to slide their card due to the the card reader being scraped up. Poor bastards.";
+	desc = "The now broken door access console for these podlocks. Seems like some poor bastard was frantically trying to slide their card due to the card reader being scraped up. Poor bastards.";
 	icon = 'icons/obj/structures/machinery/monitors.dmi';
 	icon_state = "auth_off";
 	name = "Access console";
@@ -2008,12 +2008,7 @@
 /area/bigredv2/caves/mining)
 "Fl" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/twohanded/lungemine{
-	pixel_y = 8
-	},
-/obj/item/weapon/twohanded/lungemine{
-	pixel_y = -7
-	},
+/obj/item/weapon/twohanded/lungemine,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "Fo" = (
@@ -3212,7 +3207,7 @@
 /turf/open/mars_cave/mars_dirt_7,
 /area/bigredv2/caves/mining)
 "YI" = (
-/obj/structure/machinery/filtration/console{
+/obj/structure/machinery/filtration_console{
 	pixel_y = 13
 	},
 /turf/open/mars_cave/mars_dirt_4,

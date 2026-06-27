@@ -249,12 +249,12 @@ export const RADIO_PREFIXES = {
     label: 'Yautja',
   },
   ':s ': {
-    id: 'cia',
-    label: 'CIA',
+    id: 'army',
+    label: 'Army',
   },
   '.s ': {
-    id: 'cia',
-    label: 'CIA',
+    id: 'army',
+    label: 'Army',
   },
   '#s ': {
     id: 'yautja',
@@ -349,16 +349,32 @@ export const RADIO_PREFIXES = {
     label: 'Colony',
   },
   ':3 ': {
-    id: 'wypub',
-    label: 'W-Y Pub',
+    id: 'cia',
+    label: 'CIA',
   },
   '.3 ': {
+    id: 'cia',
+    label: 'CIA',
+  },
+  '#3 ': {
+    id: 'cia',
+    label: 'CIA',
+  },
+  ':4 ': {
     id: 'wypub',
     label: 'W-Y Pub',
   },
-  '#3 ': {
+  '.4 ': {
     id: 'wypub',
     label: 'W-Y Pub',
+  },
+  '#4 ': {
+    id: 'wypub',
+    label: 'W-Y Pub',
+  },
+  ':5 ': {
+    id: 'yautja',
+    label: 'Military',
   },
 } as const;
 

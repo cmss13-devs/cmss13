@@ -117,6 +117,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/predator_h_style = "Standard"
 	var/predator_skin_color = "tan"
 	var/predator_use_legacy = "None"
+	var/predator_use_unique = "None"
 	var/predator_translator_type = PRED_TECH_MODERN
 	var/predator_invisibility_sound = PRED_TECH_MODERN
 	var/predator_mask_type = 1
@@ -196,9 +197,9 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/b_eyes = 0 //Eye color
 	var/species = "Human"    //Species datum to use.
 	var/ethnicity = "Western" //Legacy, kept to update save files
-	var/skin_color = "Pale 2" // Skin color
-	var/body_size = "Average" // Body Size
-	var/body_type = "Lean" // Body Type
+	var/skin_color = SKIN_COLOR_PALE2 // Skin color
+	var/body_size = BODY_SIZE_AVERAGE // Body Size
+	var/body_type = BODY_TYPE_LEAN // Body Type
 	var/language = "None" //Secondary language
 	var/preferred_squad = list()
 	var/preferred_spec = list()
@@ -767,7 +768,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
  * * width - Screen' width.
  * * height - Screen's height.
  */
-/datum/preferences/proc/SetChoices(mob/user, limit = 21, list/splitJobs = list(JOB_MAINT_TECH, JOB_WO_CMO), width = 950, height = 750)
+/datum/preferences/proc/SetChoices(mob/user, limit = 22, list/splitJobs = list(JOB_CHIEF_REQUISITION, JOB_WO_CMO), width = 950, height = 750)
 	if(!GLOB.RoleAuthority)
 		return
 
@@ -887,7 +888,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
  * * width - Screen' width.
  * * height - Screen's height.
  */
-/datum/preferences/proc/set_job_slots(mob/user, limit = 21, list/splitJobs = list(JOB_MAINT_TECH, JOB_WO_CMO), width = 950, height = 750)
+/datum/preferences/proc/set_job_slots(mob/user, limit = 22, list/splitJobs = list(JOB_CHIEF_REQUISITION, JOB_WO_CMO), width = 950, height = 750)
 	if(!GLOB.RoleAuthority)
 		return
 
@@ -1301,7 +1302,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					if(new_synth_type)
 						synthetic_type = new_synth_type
 				if("synth_specialisation")
-					var/list/options = list("Generalised", "Engineering", "Medical", "Intel", "Military Police", "Command")
+					var/list/options = list("Generalised", "Engineering", "Medical", "Intel", "Military Police", "Command", "Research")
 
 					var/new_specialisation = tgui_input_list(user, "Choose your new Specialisation.", "Specialisation", options)
 
@@ -1329,6 +1330,11 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					if(!legacy_choice)
 						return
 					predator_use_legacy = legacy_choice
+				if("pred_use_unique")
+					var/unique_choice = tgui_input_list(user, "What unique set do you wish to use?", "Unique Set", PRED_UNIQUES)
+					if(!unique_choice)
+						return
+					predator_use_unique = unique_choice
 				if("pred_trans_type")
 					var/new_translator_type = tgui_input_list(user, "Choose your translator type.", "Translator Type", PRED_TRANSLATORS)
 					if(!new_translator_type)
@@ -1636,9 +1642,10 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					var/new_eyes = tgui_color_picker(user, "Choose your character's eye color:", "Character Preference", rgb(r_eyes, g_eyes, b_eyes))
 
 					if(new_eyes)
-						r_eyes = hex2num(copytext(new_eyes, 2, 4))
-						g_eyes = hex2num(copytext(new_eyes, 4, 6))
-						b_eyes = hex2num(copytext(new_eyes, 6, 8))
+						var/list/color_list = rgb2num(new_eyes)
+						r_eyes = color_list[1]
+						g_eyes = color_list[2]
+						b_eyes = color_list[3]
 
 
 				if("ooccolor")

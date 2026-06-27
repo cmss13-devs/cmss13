@@ -289,7 +289,7 @@
 /datum/chem_property/positive/hepatopeutic
 	name = PROPERTY_HEPATOPEUTIC
 	code = "HPP"
-	description = "Treats deteriorated hepatocytes and damaged tissues in the liver, restoring organ functions. Forces some negative mutations in plants."
+	description = "Treats deteriorated hepatocytes and damaged tissue in the liver, restoring organ functions. Forces some negative mutations in plants."
 	rarity = PROPERTY_UNCOMMON
 	value = 1
 
@@ -418,7 +418,7 @@
 /datum/chem_property/positive/cardiopeutic
 	name = PROPERTY_CARDIOPEUTIC
 	code = "CDP"
-	description = "Regenerates damaged cardiomyocytes and recovers a correct cardiac cycle and heart functionality. Prevents forces mutation of produced chemicals in plants."
+	description = "Regenerates damaged cardiomyocytes and recovers a correct cardiac cycle and heart functionality. Prevents forced mutation of produced chemicals in plants."
 	rarity = PROPERTY_UNCOMMON
 	value = 1
 
@@ -960,7 +960,7 @@
 /datum/chem_property/positive/photosensitive
 	name = PROPERTY_PHOTOSENSITIVE
 	code = "PTS"
-	description = "Reacts with any amount of light. Can be useful to create light-sensitive objects. Not safe to administer. Supercharges photosynthesis, treated plants able to be harvested repeatedly "
+	description = "Reacts with any amount of light. Can be useful to create light-sensitive objects. Not safe to administer. Supercharges photosynthesis, treated plants are able to be harvested repeatedly."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_TOXICANT
 	max_level = 1
@@ -1124,7 +1124,7 @@
 /datum/chem_property/positive/aiding
 	name = PROPERTY_AIDING
 	code = "AID"
-	description = "Fixes genetic defects, disfigurments, disabilities. In plants removes compounds modifying yield and mutation."
+	description = "Fixes genetic defects, disfigurements, disabilities. In plants removes compounds modifying yield and mutation."
 	rarity = PROPERTY_DISABLED
 	category = PROPERTY_TYPE_MEDICINE
 	value = 1

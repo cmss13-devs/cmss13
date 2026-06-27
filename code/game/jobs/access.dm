@@ -18,7 +18,7 @@
 		return FALSE
 
 /obj/proc/check_yautja_access(mob/living/carbon/human/yautja)
-	if(!istype(yautja))
+	if(!ishuman(yautja) || !HAS_TRAIT(yautja, TRAIT_YAUTJA_TECH))
 		return FALSE
 	var/obj/item/clothing/gloves/yautja/hunter/bracer = yautja.gloves
 	if(!istype(bracer) || !bracer.embedded_id || !check_access(bracer.embedded_id))
@@ -263,6 +263,9 @@
 				ACCESS_WY_RESEARCH,
 				ACCESS_WY_ARMORY,
 			) + get_access(ACCESS_LIST_COLONIAL_ALL) + get_access(ACCESS_LIST_EMERGENCY_RESPONSE)
+
+		if(ACCESS_LIST_WY_PPO)
+			return list(ACCESS_WY_SECURITY) + get_access(ACCESS_LIST_MARINE_LIAISON)
 
 		if(ACCESS_LIST_WY_PMC)
 			return list(

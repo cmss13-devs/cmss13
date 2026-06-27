@@ -366,6 +366,7 @@
 	S["pred_gender"] >> predator_gender
 	S["pred_age"] >> predator_age
 	S["pred_use_legacy"] >> predator_use_legacy
+	S["pred_use_unique"] >> predator_use_unique
 	S["pred_trans_type"] >> predator_translator_type
 	S["pred_invis_sound"] >> predator_invisibility_sound
 	S["pred_mask_type"] >> predator_mask_type
@@ -513,11 +514,12 @@
 
 	synthetic_name = synthetic_name ? sanitize_text(synthetic_name, initial(synthetic_name)) : initial(synthetic_name)
 	synthetic_type = sanitize_inlist(synthetic_type, PLAYER_SYNTHS, initial(synthetic_type))
-	synth_specialisation = sanitize_inlist(synth_specialisation, list("Generalised", "Engineering", "Medical", "Intel", "Military Police", "Command"), initial(synth_specialisation))
+	synth_specialisation = sanitize_inlist(synth_specialisation, list("Generalised", "Engineering", "Medical", "Intel", "Military Police", "Command", "Research"), initial(synth_specialisation))
 	predator_name = predator_name ? sanitize_text(predator_name, initial(predator_name)) : initial(predator_name)
 	predator_gender = sanitize_text(predator_gender, initial(predator_gender))
 	predator_age = sanitize_integer(predator_age, 100, 10000, initial(predator_age))
 	predator_use_legacy = sanitize_inlist(predator_use_legacy, PRED_LEGACIES, initial(predator_use_legacy))
+	predator_use_unique = sanitize_inlist(predator_use_unique, PRED_UNIQUES, initial(predator_use_unique))
 	predator_translator_type = sanitize_inlist(predator_translator_type, PRED_TRANSLATORS, initial(predator_translator_type))
 	predator_invisibility_sound = sanitize_inlist(predator_invisibility_sound, PRED_INVIS_SOUNDS, initial(predator_invisibility_sound))
 	predator_mask_type = sanitize_integer(predator_mask_type,1,1000000,initial(predator_mask_type))
@@ -646,6 +648,7 @@
 	S["pred_gender"] << predator_gender
 	S["pred_age"] << predator_age
 	S["pred_use_legacy"] << predator_use_legacy
+	S["pred_use_unique"] << predator_use_unique
 	S["pred_trans_type"] << predator_translator_type
 	S["pred_invis_sound"] << predator_invisibility_sound
 	S["pred_mask_type"] << predator_mask_type
@@ -1045,6 +1048,8 @@
 		custom_key.contents = keybind["contents"]
 		custom_key.when_human = keybind["when_human"]
 		custom_key.when_xeno = keybind["when_xeno"]
+		custom_key.when_yautja = keybind["when_yautja"]
+		custom_key.when_synth = keybind["when_synth"]
 
 		key_to_custom_keybind[keybind["keybinding"]] = custom_key
 

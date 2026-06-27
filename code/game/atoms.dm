@@ -432,16 +432,16 @@ Parameters are passed from New.
 /atom/clone
 	var/proj_x = 0
 	var/proj_y = 0
+	var/proj_z = 0
 
-/atom/proc/create_clone(shift_x, shift_y) //NOTE: Use only for turfs, otherwise use create_clone_movable
-	var/turf/T = null
-	T = locate(src.x + shift_x, src.y + shift_y, src.z)
+/atom/proc/create_clone(shift_x, shift_y, shift_z) //NOTE: Use only for turfs, otherwise use create_clone_movable
+	var/turf/target_turf = locate(x + shift_x, y + shift_y, z + shift_z)
 
-	T.appearance = src.appearance
-	T.setDir(src.dir)
+	target_turf.appearance = appearance
+	target_turf.setDir(dir)
 
 	GLOB.clones_t.Add(src)
-	src.clone = T
+	clone = target_turf
 
 // EFFECTS
 /atom/proc/extinguish_acid()
@@ -685,7 +685,7 @@ Parameters are passed from New.
 		var/datum/effect_system/spark_spread/spark_system = new
 		spark_system.set_up(5, 0, src)
 		spark_system.attach(src)
-		spark_system.start(src)
+		spark_system.start()
 	return CHECKS_PASSED
 
 ///Turn on the light, should be called by a timer

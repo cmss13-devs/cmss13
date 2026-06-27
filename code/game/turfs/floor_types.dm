@@ -2182,8 +2182,18 @@
 	icon_state = "ai_floor3"
 
 // RESEARCH STUFF
+
 /turf/open/floor/almayer/research/containment/entrance
 	icon_state = "containment_entrance"
+
+/turf/open/floor/almayer/research/containment/entrance/north
+	dir = NORTH
+
+/turf/open/floor/almayer/research/containment/entrance/east
+	dir = EAST
+
+/turf/open/floor/almayer/research/containment/entrance/west
+	dir = WEST
 
 /turf/open/floor/almayer/research/containment/floor1
 	icon_state = "containment_floor_1"
@@ -2191,8 +2201,20 @@
 /turf/open/floor/almayer/research/containment/floor2
 	icon_state = "containment_floor_2"
 
+/turf/open/floor/almayer/research/containment/floor2/west
+	dir = WEST
+
 /turf/open/floor/almayer/research/containment/corner
 	icon_state = "containment_corner"
+
+/turf/open/floor/almayer/research/containment/corner/north
+	dir = NORTH
+
+/turf/open/floor/almayer/research/containment/corner/east
+	dir = EAST
+
+/turf/open/floor/almayer/research/containment/corner/west
+	dir = WEST
 
 /turf/open/floor/almayer/research/containment/corner1
 	icon_state = "containment_corner_1"
@@ -2209,31 +2231,25 @@
 /turf/open/floor/almayer/research/containment/corner_var1
 	icon_state = "containment_corner_variant_1"
 
-/turf/open/floor/almayer/research/containment/corner_var2
-	icon_state = "containment_corner_variant_2"
-
 /turf/open/floor/almayer/research/containment/corner_var1/north
 	dir = NORTH
 
 /turf/open/floor/almayer/research/containment/corner_var1/east
 	dir = EAST
 
-/turf/open/floor/almayer/research/containment/corner_var1/containment_corner_variant_2
-	icon_state = "containment_corner_variant_2"
-
-/turf/open/floor/almayer/research/containment/corner/north
-	dir = NORTH
-
-/turf/open/floor/almayer/research/containment/corner/east
-	dir = EAST
-
-/turf/open/floor/almayer/research/containment/entrance/west
+/turf/open/floor/almayer/research/containment/corner_var1/west
 	dir = WEST
 
-/turf/open/floor/almayer/research/containment/floor2/north
+/turf/open/floor/almayer/research/containment/corner_var2
+	icon_state = "containment_corner_variant_2"
+
+/turf/open/floor/almayer/research/containment/corner_var2/north
 	dir = NORTH
 
-/turf/open/floor/almayer/research/containment/floor2/west
+/turf/open/floor/almayer/research/containment/corner_var2/east
+	dir = EAST
+
+/turf/open/floor/almayer/research/containment/corner_var2/west
 	dir = WEST
 
 /turf/open/floor/almayer/fake_outerhull

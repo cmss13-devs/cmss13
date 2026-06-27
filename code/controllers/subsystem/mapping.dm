@@ -34,11 +34,14 @@ SUBSYSTEM_DEF(mapping)
 
 	/// True when in the process of adding a new Z-level, global locking
 	var/adding_new_zlevel = FALSE
-	/// list of traits and their associated z leves
+	/// list of traits and their associated z levels
 	var/list/z_trait_levels = list()
 
 	/// list of lazy templates that have been loaded
 	var/list/loaded_lazy_templates
+
+	/// The bounds maps loaded by LoadGroup
+	var/list/load_group_bounds = list()
 
 //dlete dis once #39770 is resolved
 /datum/controller/subsystem/mapping/proc/HACK_LoadMapConfig()
@@ -162,7 +165,9 @@ SUBSYSTEM_DEF(mapping)
 		for (var/i in 1 to total_z)
 			traits += list(default_traits)
 	else if (total_z != length(traits))  // mismatch
-		INIT_ANNOUNCE("WARNING: [length(traits)] trait sets specified for [total_z] z-levels in [path]!")
+		var/warning = "WARNING: [length(traits)] trait sets specified for [total_z] z-levels in [path]!"
+		INIT_ANNOUNCE(warning)
+		stack_trace(warning)
 		if (total_z < length(traits))  // ignore extra traits
 			traits.Cut(total_z + 1)
 		while (total_z > length(traits))  // fall back to defaults on extra levels
@@ -196,6 +201,7 @@ SUBSYSTEM_DEF(mapping)
 		for(var/z in bounds[MAP_MINZ] to bounds[MAP_MAXZ])
 			var/datum/space_level/zlevel = z_list[start_z + z - 1]
 			zlevel.bounds = list(bounds[MAP_MINX] + x_offset - 1, bounds[MAP_MINY] + y_offset - 1, z, bounds[MAP_MAXX] + x_offset - 1, bounds[MAP_MAXY] + y_offset - 1, z)
+		load_group_bounds[name] = bounds
 
 	// =============== END CM Change =================
 
@@ -237,6 +243,12 @@ SUBSYSTEM_DEF(mapping)
 	// loads the UPP ship if the game mode is faction clash (Generally run by the Prepare event under prep event verb)
 	if(trim(file2text("data/mode.txt")) == GAMEMODE_FACTION_CLASH_UPP_CM)
 		Loadship(FailedZs, "ssv_rostock", "templates/", list("ssv_rostock.dmm") , list(),ZTRAITS_MAIN_SHIP , override_map_path = "maps/")
+
+	#ifndef RUNTIME_MAP
+	var/datum/map_config/hunter_map = new
+	hunter_map.LoadConfig("maps/huntership.json", TRUE)
+	Loadship(FailedZs, hunter_map.map_name, hunter_map.map_path, hunter_map.map_file, hunter_map.traits, ZTRAITS_ADMIN, override_map_path = "maps/")
+	#endif
 
 	if(LAZYLEN(FailedZs)) //but seriously, unless the server's filesystem is messed up this will never happen
 		var/msg = "RED ALERT! The following map files failed to load: [FailedZs[1]]"

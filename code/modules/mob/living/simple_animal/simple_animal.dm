@@ -85,8 +85,9 @@
 	return ..()
 
 /mob/living/simple_animal/Login()
-	if(src && src.client)
-		src.client.screen = null
+	if(client)
+		client.screen = null
+		client.render_plates_shown = alist()
 	..()
 
 /mob/living/simple_animal/updatehealth()
@@ -380,7 +381,7 @@
 			var/obj/item/stack/medical/MED = O
 			if(health < maxHealth)
 				if(MED.get_amount() >= 1)
-					apply_damage(-MED.heal_brute, BRUTE)
+					apply_damage(-12, BRUTE)
 					MED.use(1)
 					for(var/mob/M as anything in viewers(src, null))
 						if ((M.client && !( M.blinded )))

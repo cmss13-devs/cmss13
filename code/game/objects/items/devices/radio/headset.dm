@@ -17,6 +17,7 @@
 	flags_equip_slot = SLOT_EAR
 	inherent_traits = list(TRAIT_ITEM_EAR_EXCLUSIVE)
 	var/translate_apollo = FALSE
+	var/translate_artemis = FALSE
 	var/translate_hive = FALSE
 	var/maximum_keys = 3
 	var/list/initial_keys //Typepaths of objects to be created at initialisation.
@@ -102,14 +103,17 @@
 	volume = text_to_volume[volume_setting]
 	to_chat(usr, SPAN_NOTICE("You set \the [src]'s volume to <b>[volume_setting]</b>."))
 
-/obj/item/device/radio/headset/handle_message_mode(mob/living/M as mob, message, channel)
+/obj/item/device/radio/headset/handle_message_mode(mob/living/speaker as mob, message, channel)
 	if (channel == RADIO_CHANNEL_SPECIAL)
 		if (translate_apollo)
 			var/datum/language/apollo = GLOB.all_languages[LANGUAGE_APOLLO]
-			apollo.broadcast(M, message)
+			apollo.broadcast(speaker, message)
+		if (translate_artemis)
+			var/datum/language/artemis = GLOB.all_languages[LANGUAGE_APOLLO]
+			artemis.broadcast(speaker, message)
 		if (translate_hive)
 			var/datum/language/hivemind = GLOB.all_languages[LANGUAGE_HIVEMIND]
-			hivemind.broadcast(M, message)
+			hivemind.broadcast(speaker, message)
 		return null
 
 	if(default_freq && channel == default_freq)
@@ -213,6 +217,7 @@
 		secure_radio_connections[ch_name] = null
 	channels = list()
 	translate_apollo = FALSE
+	translate_artemis = FALSE
 	translate_hive = FALSE
 
 	tracking_options = length(inbuilt_tracking_options) ? inbuilt_tracking_options.Copy() : list()
@@ -227,6 +232,8 @@
 			tracking_options[tracking_option] = key.tracking_options[tracking_option]
 		if(key.translate_apollo)
 			translate_apollo = TRUE
+		if(key.translate_artemis)
+			translate_artemis = TRUE
 		if(key.translate_hive)
 			translate_hive = TRUE
 
@@ -1146,14 +1153,15 @@
 
 /obj/item/device/radio/headset/distress/WY/security/guard
 	name = "WY personal protection headset"
-	desc = "Issued to Corporate Security personnel. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - intel, :1 for WY Public, :y for WY Corporate and #y for WY Security."
+	desc = "Issued to Corporate Security personnel. Channels are as follows: :m - medbay, :g - public, :1 for WY Public, :y for WY Corporate and #y for WY Security."
 	misc_tracking = TRUE
 	locate_setting = TRACKER_CL
 	inbuilt_tracking_options = list(
 		"Corporate Liaison" = TRACKER_CL
 	)
 	additional_hud_types = list(MOB_HUD_FACTION_MARINE)
-	initial_keys = list(/obj/item/device/encryptionkey/mcom/cl, /obj/item/device/encryptionkey/wy_sec)
+	initial_keys = list(/obj/item/device/encryptionkey/wy_bodyguard)
+	minimap_type = /datum/action/minimap/marine
 
 /obj/item/device/radio/headset/distress/hyperdyne
 	name = "HC corporate headset"

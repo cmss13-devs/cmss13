@@ -1,0 +1,504 @@
+2026-06-03:
+  DangerRevolution:
+  - rscadd: Added an announcement explaining to the Almayer that there is a fog on
+      the river at LV-624.
+  DangerRevolution and MistChristmas:
+  - rscadd: The Colonial Marshal Bureau can now add their frequency to the radio tower.
+  - bugfix: The CO Marshal Survivor on Solaris Ridge now has their faction correctly
+      set to be a Marshal.
+  - bugfix: Any Survivors adding their frequency to the radio tower will now always
+      add the Colony radio.
+  - bugfix: 'Several W-Y Synthetic Survivor Presets: Hybrisa''s Executive Bodyguard
+      Synth, Solaris'' Corporate Assistant Synthetic now have Hud Icons, and their
+      factions correctly set to enable them to better connect with Weyland-Yutani
+      Personnel.'
+  - bugfix: The generic ICC Synthetic preset is now correctly part of the Colonial
+      Marshalls' Bureau.
+  Detective-Google:
+  - bugfix: wy lead professor paygrade being borked
+  - bugfix: the hijack crash affects all levels of the almayer as intended
+  - bugfix: Fixed runtimes related to xeno cultists
+  Drathek:
+  - refactor: Refactored how get_scenario_is_hostile_survivor is determined
+  - bugfix: Fixed at least one cause of hostile survivors failing to spawn sometimes
+      on LV - This will result in different probabilities of the clf crashsite on
+      LV now
+  - bugfix: Fixed the SciAnnex insert riot in progress not triggering
+  Fluffyzack21:
+  - bugfix: fixed the incorrect subtype that the ASO vendor used, and now it shows
+      a green beret sprite instead a of a red one
+  MistChristmas:
+  - admin: Admin Sleeping works faster, Rejuvenate doesn't get rid of Admin Sleeping
+  - bugfix: Medical Dummy now doesn't cleanly delimb, needing the relevant surgical
+      steps to clean up the wound.
+  - bugfix: Say/Whsiper related null.toggles_chat runtime
+  - rscadd: Becoming a larva now includes a line that says you shouldn't be leaving
+      the hive.
+  - bugfix: SEAs can no longer spawn with Army ranks. Fix Army E9 being Master Sergeant
+      and not Sergeant Major
+  - bugfix: View Intel Objectives bluescreening. Again
+  Red-byte3D:
+  - bugfix: Clusters processing and unprocessing with the wrong SS should be fixed
+  - balance: Clusters now give cave protection (CAS) if 2 nested people bursted (this
+      count persists even if they're unnested) or are currently nested around it (does
+      not persist unless they burst)
+  Willzadl:
+  - balance: resisting in coastline tiles now extinguishes fires and acid like river
+      tiles.
+  labeo0:
+  - bugfix: gauze, ointment, kits and splints now heal simple animal mobs
+  realforest2001:
+  - rscadd: Added spawn presets for Personal Protection Officers and their Directorate
+      counterparts.
+  - rscadd: Changed the Liaison Bodyguard Beacon option for Sec goons to use PPO instead.
+  - balance: Abominations evolving without a pred round will now force one. Does not
+      apply to the main hive.
+  - rscadd: Working Joe can now be joined after round end/hijack.
+  - rscadd: Staff disabling WJ restrictions will now open it to non-whitelisted players.
+2026-06-05:
+  Unknownity:
+  - bugfix: Medical notes created by players can be viewed in the Medical Records
+      again.
+  - bugfix: The employment records console can be accessed shipside again.
+2026-06-06:
+  Steelpoint, NightKnight, Contra:
+  - mapadd: The White Antre Research Facility, a new map set within a secretive joint
+      corporate-military research facility on a partially frozen world, has been added
+      to the game.
+  - code_imp: Framework to facilitate automatic USCM high command and queen mother
+      messages to be sent, have been added. This is currently used for White Antre,
+      but the code can be used for any other map.
+  - code_imp: A new 'survivor announcement' system has also been created to allow
+      automated messages to be sent to survivor players for specific maps.
+  - rscadd: A set of new atmospheric audio files have been added for White Antre.
+  - rscadd: A series of 'random explosion' effects have been added for mapper use.
+      This effect will cause an explosion (akin to a hijack explosion) to occur within
+      a preset timeframe.
+  - imageadd: A new set of floodlight and switch sprites have been added.
+  - code_imp: A secondary colony floodlight system has been added. These alternative
+      floodlights start turned on by default. However, the switch itself can be disable
+      by xenomorphs if they slash it. This pairing of floodlights and switch operate
+      on a separate network to the regular colony floodlights, meaning disabling one
+      will not disable the other and vice versa.
+  - code_imp: The ability to swap what host species a round-start larva will spawn
+      inside of has been added for map makers. You may edit a new variable on the
+      xenomorph spawner in SDMM to change the species. Spawners use humans as the
+      default option. Non-human spawns will spawn unnested but ready to burst.
+2026-06-07:
+  MistChristmas:
+  - bugfix: Scientist survs no longer need to drop stuff to be able to use it properly.
+      Sometimes. And finally get their thermal tarp they were supposed to roll to
+      spawn with for 3 years.
+  armsdealer9876:
+  - bugfix: Rosary's now use accessory slots in helmets
+  ori-disillusion-mirnov:
+  - balance: backblast knockdown time on xenos is halved
+2026-06-08:
+  DangerRevolution:
+  - bugfix: Fixed Synthetics getting double warnings when the Hive is able to evolve
+      to a new caste.
+2026-06-09:
+  Blundir:
+  - qol: revolvers now have a hint in description about what intent should you use
+      to make warning shot or revolver tricks
+  Blundir. Forest2001. LCMS1.:
+  - rscadd: Adds a second heavy-duty stretcher to containment cells to compensate
+      for the longer travel time.
+  - maptweak: The entirety of upper medical have been re-mapped, and research received
+      an expansion that involves the addition of new rooms, such as a conference room,
+      and changes for the quality of life of the researchers themselves (Players that
+      like to play as researchers have been consulted on what could be done to improve
+      their gameplay). Containment have been transferred down to the middle deck and
+      is now connected to the upper via a staircase localized in the center of the
+      Research Wing.
+  - maptweak: Changes to lower medbay. Ladders have been alligned to the original
+      design pre-multiz, door shutters in the Operation Theatres now work separately
+      again, misceallanous allignment and offsetting work for some of the objects.
+  - code_imp: Raises bio-protection of labcoats from 15 to 50. Made sure latex gloves
+      and sterile masks would have 15 of bio-protection each aswell. Changed the role's
+      entry message a little.
+  - code_imp: Added a sub-variation of the medical vendor (for researchers) that use
+      different name, description and icon.
+  - code_imp: Changed and improved prep vendor loadout for researchers. Added a series
+      of new clothing items, allowing bigger aesthetical freedom. Made small spelling
+      adjusts to other prep vendor loadouts in the file.
+  - code_imp: Changes area code for containment and removes the upperdeck "fakezlevel"
+      tag.
+  - code_imp: Changes tech points' code so now only recovered alien bodies storaged
+      in containment CELLS will count as being storaged. Leaving bodies in the middle
+      of the hall don't count for points anymore.
+  - code_imp: Improves research display code by checking if a cell uses a shutter
+      before showing it's respective control button.
+  - code_imp: Updates old airlock code to not use single letter elements, recodes
+      "airlock locking" procedure in a way that the airlock will first be closed before
+      trying to lock, instead of being locked open.
+  - imageadd: Adds improved versions of containment walls and windows for a more aesthetically-pleasing
+      mapping.
+  - imageadd: Adds new three-tile airlock for containment, kudos to Blundir for sending
+      me the core sprites.
+  - imageadd: Adds white "generic" airlock, based on the medical one (it's just the
+      same airlock, but the red crosses are gone), intended to replace the older,
+      silver version in locations where it is still used (bathrooms, bunkrooms, etcetera).
+  - imagetweak: Fixes containment cell tiles and reorganizes them inside the file,
+      fixes a good amount of spriting mistakes and codes all possible directions for
+      the turfs, allowing for a much better mapping experience in overall.
+  - bugfix: Fixes duplicated wheelchairs in the Debilitated's Storage room.
+  - bugfix: Fixes the bloodbag box in the Field Doctor's preparation spawning without
+      empty bloodbags and removes the bloodbags on the table that, instead of being
+      actual bloodbags, are useless props.
+  - bugfix: Fixes being able to fill sandbags shipside by replacing the real grass
+      tiles inside the Psychatric Care Unit with proper, fake ones.
+  - spellcheck: Fix spelling on entry message and 'supervisors' for researchers.
+  - spellcheck: Fix spelling on gear vendor item displays.
+  DangerRevolution:
+  - bugfix: Fixed FORECON Radio not working.
+  - bugfix: Fixed ARMY Radio not working.
+  DawsonKeyes:
+  - rscadd: Added new sprites to the XM43E1 and M42C anti-materiel rifles & their
+      magazines
+  Deadspacemkii:
+  - balance: Increases department heads leadership levels
+  Detective-Google:
+  - bugfix: pamphlets can no longer be used to bypass intended engi skill caps
+  MistChristmas:
+  - bugfix: Horizontal lines on the Appeals form eating into words. Gave it a bigger
+      margin so it doesn't.
+  - ui: Tweak the layout, subsection colours and switch out the underlining for more
+      horizontal rule
+  Steelpoint:
+  - rscdel: Disables the Ordnance Technician job role, also removes some excess reagents
+      and gear from OT department.
+  - mapadd: Disassembles the OT workshop.
+  - rscadd: The ArmyLathe can only be used by someone with the OT job role.
+  - rscadd: Relocates the unused silver from the OT dept to the RD deptartment.
+  cuberound:
+  - bugfix: properly forces anti larva scouting check
+2026-06-11:
+  KCartridge:
+  - config: 10 more character slots
+  Ordosian:
+  - code_imp: Acid Sac overlay code added.
+  - imageadd: New Acid Runner sprites by DimDim.
+  Unknownity:
+  - bugfix: Hunted PMCs and Goons show up in the Hunted observer list properly now.
+2026-06-12:
+  AI-1CE:
+  - rscadd: Added extended descriptions to all cigarette brands in the game.
+  - spellcheck: Fixes the description of the balaji minis.
+  MistChristmas:
+  - bugfix: Some of the larger minimap bitflags can now be seen on the minimap. This
+      just means Hives that have the bigger number in the code can be viewed on the
+      minimap like normal.
+2026-06-13:
+  DawsonKeyes:
+  - rscadd: Adds new lineart for both AMRs and the M42A sniper
+  - bugfix: Centers the new AMR sprites
+  MistChristmas:
+  - bugfix: APCs not properly handling explosions on the cells within them
+  - code_imp: Xenos destroying reactors now have their do_after checks occur faster.
+  zzzmike:
+  - balance: huggers dropped on the ground become able to jump in 4 seconds.
+2026-06-14:
+  Blundir:
+  - rscdel: Removed CLF headband from char prefs
+  Detective-Google:
+  - rscadd: crayons count as cosmetic for the purposes of helmet inventory slots
+  MistChristmas:
+  - rscadd: Arbalest, Ballista, Estoc, Garand, Kukri, Maul, Poleaxe to A.W. random
+      surname list
+  - rscdel: Adze, Bowman, Fan, Hatchet, Hammer, Lancer, Ram from A.W. random surname
+      list
+  - bugfix: Admin player panel now correctly shows if target is a-slept or not
+  - maptweak: Almayer Upper Engi, switch out Reinforced Walls for Strutural ones.
+  - bugfix: Makes Egg morphers melee-able
+  - balance: Give them 100 extra health so they don't get whacked in one hit by some
+      weapons.
+  - rscadd: Req purchases get logged to ARES
+  - bugfix: Total cost is now the actual amount of points spent
+  - code_imp: Rename some defines from Wield_delay to Weapon_delay
+  Ordosian:
+  - bugfix: Fixed Acid Runner overlay
+2026-06-17:
+  Bibby0110:
+  - bugfix: Fixes instances of the overwatch visual overlay persisting too long
+  Drathek:
+  - code_imp: Changed OD pragma linting
+  - code_imp: Included 64bit rust_g dll
+  - bugfix: Fixed busted blood properties?
+  Drathek Harry:
+  - bugfix: fixes weird AO on shutters/doors and stuff
+  - bugfix: fixes weird blackness handling
+  MistChristmas:
+  - rscdel: Old non relevant shuttle code.
+  MoondancerPony:
+  - code_imp: made color manipulation in lighting and elsewhere much faster
+  Orchidfox:
+  - maptweak: The Almayer's Reactor Room and Astronav APCs are now Hardened APCs and
+      will not break upon hijack.
+  cuberound:
+  - bugfix: fixes lingering dark tiles above destroyed doors
+  kiVts:
+  - rscadd: Research can announce information about their chemicals to everyone with
+      a medical hud. This requires CMO to publish their work first, though.
+2026-06-19:
+  MistChristmas:
+  - bugfix: Overwatch overlays no longer get stuck
+2026-06-20:
+  Antlers:
+  - bugfix: Hyperdyne corporate survivors no longer get aired out by LZ turrets
+2026-06-22:
+  Drathek:
+  - bugfix: Fixed a runtime with custom smoke spawning
+  MoondancerPony:
+  - refactor: made fire spread (from OB, flamers, etc) much faster
+  NHC:
+  - bugfix: Removed duped sunglasses from loudout menu
+  Venuska1117:
+  - rscadd: Add new Warrior Strain "Bulwark".
+  - rscadd: Bulwark have 600 health, tackles of 2 min - 5max, gains 200 plasma, +10
+      explosive and +10 normal armor for decreased speed and takes 50% more melee
+      damage.
+  - rscadd: Bulwark have 4 passive abilities, 50% less damage from wired cades (5
+      damage instead of 10), 75% for slashes or tailstab to go through wired cades
+      and hit target behind them, +10 front armor and +10 side armor and no direct
+      lock slowdown.
+  - rscadd: Encased Plates, this ability when activated it will reduce your movement
+      speed by 1.35, increases minimum tackles needed to tackle someone down by +2
+      and decreased slash damage by 8, in exchange you gain +10 front armor and lose
+      -10 side armor (stacks with passive), immunity to knockdowns and ability to
+      open holes in walls.
+  - rscadd: Plate Bash, this ability will launch you toward targets if its in range
+      of 2 tiles (3 tiles), it will hit them 1 tile away and shake their screen, if
+      encased plates are active, this ability changes to only work on adjecent targets
+      but in exchange you send them 3 tiles away, knockdown and stun target.
+  - rscadd: Tail Sweep, this ability will hit all adjecent tiles (including corners)
+      around you and trip enemies down and briefly stun them, if grenade is present
+      instead of target, you will send grenade 4 tiles away and your cooldown will
+      be decreased to 1/3rd of full cooldown, if both target and grenade are hit,
+      normal cooldown value will be applied.
+  - rscadd: Reflective Shield, this ability will lock your looking direction when
+      casted to reflect bullets towards target in 50 degree cone (-25 to 25 angle),
+      reflected bullets will only deal half of their original damage, your reflection
+      chance is 100% from front ONLY but you lose ability to attack or help (you can
+      still use abilities) and drop pulled targets, this ability can be disabled early
+      like how lurker invisibility works 1s used is 2s cooldown but you gain +6s to
+      cooldown,  minimum 6s cooldown and 18s max, this ability CANNOT reflects sniper
+      bullets, rockets and anti-reflective ammo (like SHARP darts), xeno projectiles
+      and turrets.
+  - balance: Fix Reflective walls, now they reflect bullets properly (uses new bulwark
+      reflective proc).
+  cuberound:
+  - qol: xenos can see reamining durability of special structures on examine
+  - code_imp: isbanana is no longer
+  hry-gh:
+  - server: twitch linking functionality is deprecated in game
+  realforest2001:
+  - rscadd: Added Abomination pelt and skull items.
+  - code_imp: Added code to delete instances of skull and pelt that have no icon.
+  - rscadd: Almayer crash no longer breaks hardened APCs.
+  - code_imp: Changed some queen procs to xenomorph base.
+  - rscadd: Changed Queen naming convention (thought I did this ages ago)
+  - code_imp: Changed the tier_slot_multiplier var name to divisor because it was
+      stupidly named.
+  virtualgirlie:
+  - spellcheck: changed "enemy boiler's" to "enemy boilers"
+2026-06-23:
+  Ammoniacres:
+  - bugfix: fixed unpowered doors being unable to be opened by maintenance jacks (for
+      humans)
+  - qol: let more tools and weapons cut fences!
+  - rscadd: made the hostile freelancer boarding message more clear in demonstrating
+      hostile intent.
+  Antlers:
+  - bugfix: Fixed an issue where a M56D could be attached to a mount that already
+      had a gun
+  - bugfix: Fixed an issue where a disassembled M56D that already had a mount could
+      be attached to another mount.
+  Bibby0110:
+  - rscadd: Observers can once again healthscan xenos/simple mobs
+  BlitzArde:
+  - bugfix: Trying to drench an acid-ed object in acid now properly states the object's
+      name
+  BlitzArde, Blundir:
+  - soundtweak: Replaced the disturbances hazmat joe sound file
+  Blundir:
+  - rscadd: added clown walk waddling
+  - imageadd: clown items and simplemob resprite
+  - soundadd: clown boots now make you honk when you walk in them
+  ComboTombo:
+  - rscadd: Added a tip explaining that in-hand activation with a machete can quickly
+      clear out foliage
+  DangerRevolution:
+  - rscadd: At 00:20, if there is no CMO, FD, Doctor, Researcher or Synthetic shipside
+      then autodoc upgrade disks will be spawned on the ASRS elevator.
+  - rscadd: At 00:20, if there is no CMO, FD, Doctor, Researcher or Synthetic then
+      autodocs will have their Surgery-1 skill check removed. Anyone can use them
+      in this situation.
+  Drathek:
+  - bugfix: Fixed a couple errors with the debug mass screenshot verb when handling
+      centered space levels and ever the mob is force aghosted
+  EmeraldCandy:
+  - rscadd: Added optional customizable sound alerts for response teams
+  - rscadd: Predator response team calls now produce a bracer noise alert for ghosts.
+  Itus:
+  - code_imp: Rankpins.Dm got every navy rank shoulder patch renamed appropriately
+      and icon'ed
+  - refactor: Paygrades file got some changes to rank names.
+  - imageadd: adds inventory overlays(which work), Onmob sprites for the patches and
+      item sprites.
+  - spellcheck: fixed the N36 -> NE6 typo
+  MarpleJones:
+  - balance: lowers PROPERTY_CORROSIVE potency check on xenomorph from 3 to 2; now
+      it works on property_level > 4.
+  MistChristmas:
+  - bugfix: Sentry hits no longer count for lever action streaks
+  - bugfix: NVGs/Malfunctioning AR/King Doom no longer are fullwhite.
+  Riot:
+  - balance: Buffs the IEDs used by the CLF
+  - balance: CLF have combat flashlights now.
+  - balance: Cyanide kills you faster now
+  Unknownity:
+  - rscadd: The Hunter Ship has gained a reagent grinder.
+  - balance: The lunge mine has been buffed to be able to gib unarmored humans and
+      kill armored humans while its area effect has been decreased.
+  - balance: The damaged variant of the lunge mine has been slightly buffed but its
+      still worse than the regular lunge mine before the buff.
+  - maptweak: The lunge mines in Solaris Ridge, Hybrisa Prospera and Trijent Dam have
+      been replaced with the damaged nerfed versions. The Solaris Ridge CLF Insert
+      has only one regular lunge mine now.
+  cuberound:
+  - balance: allows pulling mobs in grab up and down a z level
+  - balance: slows down climbing up and down for each full hand
+  - rscadd: Holograms (Queen eye, falcion drone, spycam, railgun cam) do not fall
+      down z levels, "looking up" in moves it down/up z level
+  - rscadd: Queen remote weeding can go up/down z level when there is wall under the
+      crossed edge
+  - bugfix: Queen can remote build special structures on other z levels of the same
+      map as she is at
+  - bugfix: moving under transparent turfs no longer cancels looking up
+  - bugfix: explosions on upper xeno walls destroy the lower portion too
+  hry-gh:
+  - server: events sent to sentry are now scrubbed for user PII and ignoring sensitive
+      datums, procs
+  kitchenenthusiast:
+  - rscadd: added an announcement clarity meter to Overwatch consoles so you no longer
+      scream into the void, Lieutenant
+  - ui: added an announcement clarity meter to Overwatch consoles
+  - bugfix: Filing cabinets no longer give 6 messages when you try to put an unfilable
+      item in them
+  - bugfix: Half-sized document cabinets no longer shrink when you put a paper into
+      them
+2026-06-24:
+  Ammoniacres:
+  - rscadd: A unique survivor variant of the flammenwerfer, that uses stabilized metallic
+      foam, has been added to the game within the Hybrisa fire station nightmare insert.
+  - bugfix: Fixes a bug with the special loot spawner to spawn the correct flamethrower.
+  Antlers:
+  - bugfix: Fixed a bug where rocket backblast would not be applied in the correct
+      direction if the user turned while firing.
+  BOBAMA, cuberound, ihatethisengine:
+  - bugfix: Trijent Medical elevator functions now
+  - mapadd: added a a couple flank routes to the upper z level
+  - maptweak: Fixed a couple visual errors on Trijent
+  Harry:
+  - rscdel: Revert changes to flamer spread
+  MistChristmas:
+  - bugfix: Radial Menus no longer get stuck unable to appear for new, reconnecting,
+      or aghosting users.
+  Puckaboo2:
+  - rscadd: Each job role in medical has its own loadout with recommendations.
+  - rscadd: Adds a medium-length brown research coat.
+  - rscadd: Adds Field Doctor's locker contents into the vended essentials or vend
+      loadout in case the replacement finds nothing in their locker.
+  - rscadd: Nurses and CMOs can have the same pouches as doctors.
+  - rscadd: Adds a sterile mask as part of medical staff's essentials.
+  - rscadd: Researchers can find white lab coats in their vending options.
+  - rscadd: Nurses can find lab coats in their vending options.
+  - rscadd: Adds a field doctor USCM uniform and surgical scrubs that camo like marine
+      uniforms. Wear the scrubs if you want more bio protection, wear the uniform
+      if you want to be more robust.
+  - balance: Due to the dangers medical personnel are expected to encounter, most
+      lab coats are now built with basic protection against most types of damage,
+      while Chief's and W-Y's lab coats are even more robust. This ain't Baystation,
+      boys.
+  - balance: Added the same amount of bio and rad resist to CMO and RD's regular uniforms.
+  - balance: Most often, scrubs vs. medical uniforms have the same amount of bio resist.
+  - code_imp: Reorganized the medical equipment rack's items based on recommendation.
+  - code_imp: Tweaks scrub descriptions to say they protect against radiation....
+      Because they do.
+  - rscdel: Pharmaceutical Physician scrubs and caps have been removed from the game.
+      The scrubs were repurposed as the Chemistry uniform.
+  - rscdel: Pharmaceutical Physician lab coats have been removed from PharmPhys loadouts
+      and the chemical wardrobe. They were repurposed as chemistry lab coats.
+  - rscdel: Nuked a handful of pouches from Medical's ColMarTech machine. Medbay only.
+      Don't worry, corpsmen, I didn't touch your stuff.
+  - rscdel: Replaced grey scrubs with black scrubs in the white medical wardrobe.
+  - imageadd: Adds a sterile2 mask onmob spite. Dunno what sterile2 is for, but it's
+      there now.
+  - imagetweak: Most of the medical clothing has been re-shaded.
+  - imagetweak: Updated snowsuit sprites to be more soft, plush, and cozy. Try one
+      on!
+  - maptweak: Removed the chemistry wardrobe in the chem bay. It was getting stuffy
+      in there.
+  - qol: Hats are below eyewear and above uniforms in medical equipment vendors.
+  Riot:
+  - rscadd: Modernizes the honor guard and CIC loadouts on WO, as well as a few others
+  - rscadd: Adjusts some paygrades on WO, HGs are now 1 rank higher than their marine
+      counterparts, and medical staff are now Warrant Officers so as to be lower in
+      rank than the XO and CO.
+  - balance: The Whiskey Outpost CAS laser has a cooldown of 3 minutes, from 5.
+  - balance: Adds despoilers to WO
+  - mapadd: Adds a corpsmen prep and marine armory to Whiskey Outpost, located just
+      west of the CIC down the hall.
+  - maptweak: Adds phonelines to WO, changes the groundside OP console to the modern
+      version, adds some motion detectors and rangefinders scattered around the map.
+  - bugfix: Honor Guard Specialist on WO should now be able to spawn
+  cuberound:
+  - rscadd: Blood gibs and shards do not miss icon and use their set color in sdmm
+  ori, Blundir, Zenith:
+  - rscadd: added colony working joes,  colony dzho automaton for sorokyne, and daniels
+      for WY maps
+  - rscadd: ARTEMIS link language for colony joes
+  - rscadd: joe storage closet replacing cryopods
+  - code_imp: predator round announcement uses span_red macro now
+  - config: data/colonyjoechance.txt for the chance of a colony joe round happening
+  - imageadd: new image for a colony joe spawn button
+  - imageadd: sprites for joe storage closet
+  - mapadd: new spawn locations for colony joes, added new joe storage closets on
+      almayer
+  - admin: staff can force a colony joe round when they feel like it
+  realforest2001:
+  - rscadd: Added LZ lights for Yautja shuttle.
+2026-06-25:
+  Antlers:
+  - bugfix: Spiders and lizards will no longer attack burrowed burrowers.
+  - balance: Spiders and lizards will no longer attack cloaked lurkers or cloaked
+      scouts.
+  Puckaboo2:
+  - rscadd: Adds Advanced First Aid Kit and Surgical Mask to Research essentials.
+  - rscdel: Removes extra webbing from Research essentials in ColMarTechs.
+  - bugfix: Restores deleted Research headsets from Research Wardrobes.
+  Riot:
+  - rscadd: Adds an M1911 variant and the NP92 as loadout point weapons.
+  - rscadd: The L54 now spawns with its own box with spare ammo
+  - rscadd: The M48A4 Tactical(VAIPO M1911) now spawns with the sleek silencer instead
+      of the normal one
+  - balance: Most pistol boxes from loadout menu now hold the pistol plus six magazines,
+      but cannot fit in backpacks
+  fira:
+  - bugfix: Fixed a number of bad cleanup involved in visual effects, notably smoke.
+  - bugfix: Rockets and Explosive Arrows will now properly cause on-hit smoke as intended.
+2026-06-26:
+  ori-disillusion-mirnov:
+  - bugfix: daniels and dzhos spawn with mop buckets instead of janibuckets presumably
+      being put inside them
+  - bugfix: dzho and daniel join announcements use the right link
+  - bugfix: the correct join button appears when forcing a colony joe round
+  - bugfix: colony joe storage thingies can no longer be blown up
+  - bugfix: working joes can no longer shoot guns, unrelated to colony joe pr
+  - maptweak: adds a colony joe spawn to white antre
+  realforest2001:
+  - rscadd: Added backend landmark code for pathogen spore sacs to randomly spawn.
+      Will not actually spawn the spore sacs.
+  - imageadd: Added the landmark icon for above.
+  - bugfix: US Army Tank Crew are now considered on the reserve list.

@@ -388,3 +388,36 @@
 	holder.durationfire += 1 * level
 	holder.durationmod += 0.1 * level
 	..()
+
+/datum/chem_property/special/encephalophrasive
+	name = PROPERTY_ENCEPHALOPHRASIVE
+	code = "ESP"
+	description = "Drastically increases the amplitude of Gamma and Beta brain waves, allowing the host to broadcast their mind."
+	rarity = PROPERTY_ADMIN
+	category = PROPERTY_TYPE_STIMULANT
+	value = 8
+
+/datum/chem_property/special/encephalophrasive/on_delete(mob/living/chem_host)
+	..()
+
+	chem_host.pain.recalculate_pain()
+	remove_action(chem_host, /datum/action/human_action/psychic_whisper)
+	to_chat(chem_host, SPAN_NOTICE("The pain in your head subsides, and you are left feeling strangely alone."))
+
+/datum/chem_property/special/encephalophrasive/reaction_mob(mob/chem_host, method=INGEST, volume, potency)
+	if(method == TOUCH)
+		return
+	if(!ishuman_strict(chem_host))
+		return
+
+	give_action(chem_host, /datum/action/human_action/psychic_whisper)
+	to_chat(chem_host, SPAN_NOTICE("A terrible headache manifests, and suddenly it feels as though your mind is outside of your skull."))
+
+/datum/chem_property/special/encephalophrasive/process(mob/living/chem_host, potency = 1, delta_time)
+	chem_host.pain.apply_pain(1 * potency)
+
+/datum/chem_property/special/encephalophrasive/process_overdose(mob/living/chem_host, potency = 1, delta_time)
+	chem_host.apply_damage(0.5 * potency * POTENCY_MULTIPLIER_VHIGH * delta_time, BRAIN)
+
+/datum/chem_property/special/encephalophrasive/process_critical(mob/living/chem_host, potency = 1, delta_time)
+	chem_host.apply_effect(20, PARALYZE)

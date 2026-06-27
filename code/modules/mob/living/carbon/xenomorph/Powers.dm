@@ -396,8 +396,6 @@
 			if(4 SECONDS)
 				warning.icon_state = "[warning.icon_state]Slow"
 
-		update_icons(warning)
-
 	alien_weeds.secreting = TRUE
 	alien_weeds.update_icon()
 

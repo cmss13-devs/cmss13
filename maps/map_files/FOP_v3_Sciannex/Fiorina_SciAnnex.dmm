@@ -390,6 +390,82 @@
 /obj/effect/landmark/mainship_crashsite,
 /turf/closed/wall/mineral/bone_resin,
 /area/fiorina/oob)
+"abs" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 8;
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/corsat/plate,
+/area/fiorina/station/telecomm/lz1_cargo)
+"abt" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/item/reagent_container/food/snacks/xenoburger,
+/turf/open/floor/corsat/plate,
+/area/fiorina/station/telecomm/lz1_cargo)
+"abu" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/corsat/plate,
+/area/fiorina/station/telecomm/lz1_cargo)
+"abv" = (
+/obj/item/weapon/gun/flamer/survivor,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/corsat/squares,
+/area/fiorina/station/telecomm/lz1_cargo)
+"abw" = (
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/corsat/squares,
+/area/fiorina/station/telecomm/lz1_cargo)
+"abx" = (
+/obj/effect/landmark/corpsespawner/chef,
+/obj/effect/decal/cleanable/blood/oil/streak,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/corsat/squares,
+/area/fiorina/station/telecomm/lz1_cargo)
+"aby" = (
+/obj/effect/decal/cleanable/ash,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/corsat/squares,
+/area/fiorina/station/telecomm/lz1_cargo)
+"abz" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/floor/corsat/plate,
+/area/fiorina/station/telecomm/lz1_cargo)
+"abA" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/corsat/squares,
+/area/fiorina/station/telecomm/lz1_cargo)
+"abB" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 8;
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/plating/prison,
+/area/fiorina/maintenance)
+"abC" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 4;
+	pixel_x = 10;
+	pixel_y = 13
+	},
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/plating/prison,
+/area/fiorina/maintenance)
+"abD" = (
+/obj/structure/machinery/cryopod/joe/weyland{
+	pixel_y = 25;
+	density = 0
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/maintenance)
 "abG" = (
 /obj/item/trash/chunk,
 /turf/open/floor/prison/whitegreen/north,
@@ -1006,8 +1082,8 @@
 "axA" = (
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	density = 0;
-	desc = "Its a telephone, and a computer. Woah.";
-	name = "\improper funny telephone booth";
+	desc = "Its a telephone AND a computer, at the same time! Woah, isn't that funny?";
+	name = "\improper telephone terminal";
 	pixel_x = 2;
 	pixel_y = -10
 	},
@@ -9124,8 +9200,8 @@
 "gXd" = (
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	density = 0;
-	desc = "Its a telephone, and a computer. Woah.";
-	name = "\improper funny telephone booth";
+	desc = "Its a telephone AND a computer, at the same time! Woah, isn't that funny?";
+	name = "\improper telephone terminal";
 	pixel_y = 21
 	},
 /turf/open/floor/prison,
@@ -9685,15 +9761,15 @@
 "hrz" = (
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	density = 0;
-	desc = "Its a telephone, and a computer. Woah.";
-	name = "\improper funny telephone booth";
+	desc = "Its a telephone AND a computer, at the same time! Woah, isn't that funny?";
+	name = "\improper telephone terminal";
 	pixel_x = 2;
 	pixel_y = 21
 	},
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	density = 0;
-	desc = "Its a telephone, and a computer. Woah.";
-	name = "\improper funny telephone booth";
+	desc = "Its a telephone AND a computer, at the same time! Woah, isn't that funny?";
+	name = "\improper telephone terminal";
 	pixel_x = 2;
 	pixel_y = 21
 	},
@@ -11425,8 +11501,8 @@
 /obj/structure/platform/metal/almayer/east,
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	density = 0;
-	desc = "Its a telephone, and a computer. Woah.";
-	name = "\improper funny telephone booth";
+	desc = "Its a telephone AND a computer, at the same time! Woah, isn't that funny?";
+	name = "\improper telephone terminal";
 	pixel_x = 2;
 	pixel_y = 21
 	},
@@ -16890,6 +16966,10 @@
 /area/fiorina/station/civres_blue)
 "mTM" = (
 /obj/item/tool/warning_cone,
+/obj/structure/machinery/cryopod/joe/weyland{
+	pixel_y = 25;
+	density = 0
+	},
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
 "mUd" = (
@@ -23137,8 +23217,8 @@
 "rMT" = (
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	density = 0;
-	desc = "Its a telephone, and a computer. Woah.";
-	name = "\improper funny telephone booth";
+	desc = "Its a telephone AND a computer, at the same time! Woah, isn't that funny?";
+	name = "\improper telephone terminal";
 	pixel_y = 21
 	},
 /turf/open/floor/prison,
@@ -23368,14 +23448,14 @@
 "rUQ" = (
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	density = 0;
-	desc = "Its a telephone, and a computer. Woah.";
-	name = "\improper funny telephone booth";
+	desc = "Its a telephone AND a computer, at the same time! Woah, isn't that funny?";
+	name = "\improper telephone terminal";
 	pixel_y = 21
 	},
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	density = 0;
-	desc = "Its a telephone, and a computer. Woah.";
-	name = "\improper funny telephone booth";
+	desc = "Its a telephone AND a computer, at the same time! Woah, isn't that funny?";
+	name = "\improper telephone terminal";
 	pixel_x = 17;
 	pixel_y = 21
 	},
@@ -28114,8 +28194,8 @@
 "vCL" = (
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	density = 0;
-	desc = "Its a telephone, and a computer. Woah.";
-	name = "\improper funny telephone booth";
+	desc = "Its a telephone AND a computer, at the same time! Woah, isn't that funny?";
+	name = "\improper telephone terminal";
 	pixel_x = 2;
 	pixel_y = 21
 	},
@@ -54186,7 +54266,7 @@ qhk
 oPU
 eLu
 mTM
-gyJ
+abB
 cME
 cME
 rJh
@@ -54609,8 +54689,8 @@ oPU
 oMu
 oPU
 eLu
-cME
-cPq
+abD
+abC
 cME
 cME
 cME
@@ -75068,9 +75148,9 @@ jii
 mPW
 cpP
 aFK
-qGn
-qGn
-aFK
+abu
+abu
+abs
 fnD
 oUg
 oUg
@@ -75279,10 +75359,10 @@ pUG
 jii
 puE
 hTf
-qGn
-eqQ
-eqQ
-qGn
+abz
+abx
+abv
+abt
 pbp
 qGn
 pbp
@@ -75491,9 +75571,9 @@ jii
 wHV
 puE
 cJv
-eqQ
-eqQ
-eqQ
+abA
+aby
+abw
 eqQ
 eqQ
 eqQ

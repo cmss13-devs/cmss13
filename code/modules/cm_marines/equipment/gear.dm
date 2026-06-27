@@ -408,6 +408,11 @@
 		if(isyautja(user))
 			to_chat(user, SPAN_WARNING("You can't think of a reason to interact with [src] and decide to leave it alone."))
 			return
+	if(user.is_mob_incapacitated())
+		return
+	// if(user. != src)
+	// 	to_chat(user, SPAN_WARNING("You need to hold [src] in your hand to deploy it!"))
+	// 	return
 
 	var/turf/deploy_turf = get_turf(user)
 	if(!deploy_turf)
@@ -431,6 +436,13 @@
 
 	if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
 		to_chat(user, SPAN_WARNING("You must stand still while deploying the tripod."))
+		return
+
+	if(user.stat != CONCIOUS || user.is_mob_incapacitated()) //not sure if this is the same check or not :D
+		return
+
+	if(user.get_active_hand() != src)
+		to_chat(user, SPAN_WARNING("You must hold [src] in your hand to deploy it!"))
 		return
 
 	var/base_label = label ? label : initial(name)

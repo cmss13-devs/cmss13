@@ -831,6 +831,10 @@
 		to_chat(xeno, SPAN_XENOWARNING("This area is too far away to affect!"))
 		return FALSE
 
+	if(target_turf.z != xeno.z && !can_place_cross_z)
+		to_chat(src, SPAN_XENOWARNING("We can't build across floors!"))
+		return FALSE
+
 	if(SSinterior.in_interior(xeno))
 		to_chat(xeno, SPAN_XENOWARNING("It's too tight in here to build."))
 		return FALSE

@@ -87,7 +87,7 @@
 		return SECRETE_RESIN_FAIL
 
 	if(target.z != src.z && !cross_z_level_building)
-		to_chat(src, SPAN_XENOWARNING("We can't build on other floors!"))
+		to_chat(src, SPAN_XENOWARNING("We can't build across floors!"))
 		return SECRETE_RESIN_FAIL
 
 	if(thick) //hivelords can thicken existing resin structures.

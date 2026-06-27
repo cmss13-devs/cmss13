@@ -463,6 +463,9 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_5
 
+	/// If you are able to place constructions across Z-levels or not.
+	var/can_place_cross_z = FALSE
+
 /datum/action/xeno_action/activable/place_construction/not_primary //so it doesn't screw other macros up
 	ability_primacy = XENO_NOT_PRIMARY_ACTION
 

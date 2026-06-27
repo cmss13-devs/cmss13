@@ -91,6 +91,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_5
 
 	care_about_adjacency = FALSE
+	can_build_cross_z = TRUE
 	build_speed_mod = 1.2
 	needs_weeds = FALSE
 

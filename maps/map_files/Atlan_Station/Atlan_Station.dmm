@@ -459,9 +459,7 @@
 /obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
-/turf/open/floor/strata/green1{
-	dir = 4
-	},
+/turf/open/floor/strata/green1,
 /area/atlan/lz/near_lz2)
 "arl" = (
 /obj/item/tank/emergency_oxygen/double{
@@ -2335,9 +2333,7 @@
 /obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
-/turf/open/floor/strata/green1{
-	dir = 4
-	},
+/turf/open/floor/strata/green1,
 /area/atlan/lz/near_lz2)
 "bJf" = (
 /obj/structure/prop/static_tank/fuel,
@@ -2560,9 +2556,7 @@
 "bTd" = (
 /obj/structure/machinery/landinglight,
 /obj/effect/sentry_landmark/lz_2/top_left,
-/turf/open/floor/strata/green1{
-	dir = 4
-	},
+/turf/open/floor/strata/green1,
 /area/atlan/lz/near_lz2)
 "bTt" = (
 /obj/structure/bed/chair{
@@ -3860,9 +3854,7 @@
 	pixel_x = 7;
 	pixel_y = -6
 	},
-/turf/open/floor/strata/green1{
-	dir = 4
-	},
+/turf/open/floor/strata/green1,
 /area/atlan/station/hab_docks)
 "cJU" = (
 /obj/structure/machinery/vending/cigarette,
@@ -3976,9 +3968,7 @@
 /obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
-/turf/open/floor/strata/green1{
-	dir = 4
-	},
+/turf/open/floor/strata/green1,
 /area/atlan/lz/near_lz2)
 "cNz" = (
 /obj/structure/sign/safety/maint{
@@ -4053,9 +4043,7 @@
 "cQZ" = (
 /obj/effect/decal/cleanable/blood/gibs/core,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/strata/green4/north{
-	dir = 2
-	},
+/turf/open/floor/strata/green4,
 /area/atlan/station/single_dorms)
 "cRs" = (
 /obj/structure/surface/rack{
@@ -4125,9 +4113,7 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/turf/open/floor/strata/green1{
-	dir = 4
-	},
+/turf/open/floor/strata/green1,
 /area/atlan/station/hab_docks)
 "cTD" = (
 /obj/structure/cargo_container/seegson/left,
@@ -9100,9 +9086,7 @@
 /area/atlan/station/repairs_lift)
 "gkf" = (
 /obj/structure/largecrate/random/barrel/true_random,
-/turf/open/floor/strata/green1{
-	dir = 4
-	},
+/turf/open/floor/strata/green1,
 /area/atlan/station/hab_docks)
 "gkl" = (
 /obj/structure/filingcabinet{
@@ -10417,9 +10401,7 @@
 /obj/structure/machinery/landinglight{
 	dir = 4
 	},
-/turf/open/floor/strata/green1{
-	dir = 4
-	},
+/turf/open/floor/strata/green1,
 /area/atlan/lz/near_lz2)
 "hgH" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -10932,9 +10914,7 @@
 	pixel_y = 18
 	},
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/strata/green4/north{
-	dir = 2
-	},
+/turf/open/floor/strata/green4,
 /area/atlan/station/single_dorms)
 "hxO" = (
 /obj/effect/decal/cleanable/dirt,
@@ -11858,9 +11838,7 @@
 /turf/open/floor/strata/red1,
 /area/atlan/lz/near_lz2)
 "idL" = (
-/turf/open/floor/strata/green4/north{
-	dir = 2
-	},
+/turf/open/floor/strata/green4,
 /area/atlan/station/single_dorms)
 "idM" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -12073,9 +12051,7 @@
 /area/atlan/asteroid/processing_handling)
 "img" = (
 /obj/structure/machinery/floodlight,
-/turf/open/floor/strata/green1{
-	dir = 4
-	},
+/turf/open/floor/strata/green1,
 /area/atlan/station/hab_docks)
 "imk" = (
 /obj/item/trash/cigbutt,
@@ -13045,9 +13021,7 @@
 /obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
-/turf/open/floor/strata/green1{
-	dir = 4
-	},
+/turf/open/floor/strata/green1,
 /area/atlan/lz/near_lz2)
 "iNF" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics{
@@ -14952,9 +14926,7 @@
 	layer = 3.1;
 	pixel_y = 10
 	},
-/turf/open/floor/strata/orange_icorner/north{
-	dir = 2
-	},
+/turf/open/floor/strata/orange_edge/west,
 /area/atlan/station/hab_docks)
 "jXg" = (
 /obj/structure/reagent_dispensers/tank/fuel/spacecraft,
@@ -16660,9 +16632,7 @@
 /obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
-/turf/open/floor/strata/green1{
-	dir = 4
-	},
+/turf/open/floor/strata/green1,
 /area/atlan/lz/near_lz2)
 "lfd" = (
 /obj/effect/decal/cleanable/dirt,
@@ -17121,9 +17091,7 @@
 /obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
-/turf/open/floor/strata/green1{
-	dir = 4
-	},
+/turf/open/floor/strata/green1,
 /area/atlan/lz/near_lz2)
 "lwX" = (
 /turf/open/floor/strata/floor3/east,
@@ -18241,9 +18209,7 @@
 /area/atlan/station/walkway)
 "mlW" = (
 /obj/structure/machinery/floodlight/landing,
-/turf/open/floor/strata/green1{
-	dir = 4
-	},
+/turf/open/floor/strata/green1,
 /area/atlan/lz/near_lz2)
 "mmz" = (
 /obj/structure/closet/emcloset,
@@ -20818,9 +20784,7 @@
 /obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
-/turf/open/floor/strata/green1{
-	dir = 4
-	},
+/turf/open/floor/strata/green1,
 /area/atlan/lz/near_lz2)
 "nVe" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
@@ -20956,9 +20920,7 @@
 /obj/structure/machinery/landinglight{
 	dir = 8
 	},
-/turf/open/floor/strata/green1{
-	dir = 4
-	},
+/turf/open/floor/strata/green1,
 /area/atlan/lz/near_lz2)
 "obd" = (
 /obj/effect/decal/cleanable/blood/xeno{
@@ -24015,9 +23977,7 @@
 	color = "#98a3ab"
 	},
 /obj/item/tool/weldingtool,
-/turf/open/floor/strata/green1{
-	dir = 4
-	},
+/turf/open/floor/strata/green1,
 /area/atlan/station/hab_docks)
 "pZb" = (
 /obj/effect/decal/cleanable/dirt,
@@ -24606,9 +24566,7 @@
 /obj/structure/machinery/landinglight{
 	dir = 1
 	},
-/turf/open/floor/strata/green1{
-	dir = 4
-	},
+/turf/open/floor/strata/green1,
 /area/atlan/lz/near_lz2)
 "qqA" = (
 /obj/effect/decal/warning_stripes{
@@ -25529,9 +25487,7 @@
 /area/atlan/station/cargo)
 "qWZ" = (
 /obj/structure/machinery/landinglight/delayone,
-/turf/open/floor/strata/green1{
-	dir = 4
-	},
+/turf/open/floor/strata/green1,
 /area/atlan/lz/near_lz2)
 "qXd" = (
 /obj/structure/stairs/perspective{
@@ -25914,9 +25870,7 @@
 /obj/item/stack/sandbags/small_stack,
 /obj/effect/decal/cleanable/blood/gibs,
 /obj/effect/landmark/yautja_teleport,
-/turf/open/floor/strata/green4/north{
-	dir = 2
-	},
+/turf/open/space/basic,
 /area/atlan/station/single_dorms)
 "rkv" = (
 /obj/structure/window/framed/strata/reinforced,
@@ -27331,9 +27285,7 @@
 /obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
-/turf/open/floor/strata/green1{
-	dir = 4
-	},
+/turf/open/floor/strata/green1,
 /area/atlan/lz/near_lz2)
 "shl" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -30080,9 +30032,7 @@
 /area/atlan/station/atmospherics)
 "tXD" = (
 /obj/structure/machinery/landinglight/delaytwo,
-/turf/open/floor/strata/green1{
-	dir = 4
-	},
+/turf/open/floor/strata/green1,
 /area/atlan/lz/near_lz2)
 "tXH" = (
 /obj/item/poster,
@@ -31365,9 +31315,7 @@
 /obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
-/turf/open/floor/strata/green1{
-	dir = 4
-	},
+/turf/open/floor/strata/green1,
 /area/atlan/lz/near_lz2)
 "uOB" = (
 /obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic{
@@ -32725,9 +32673,7 @@
 /area/atlan/station/airlock_west)
 "vQH" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/strata/green1{
-	dir = 4
-	},
+/turf/open/floor/strata/green1,
 /area/atlan/station/hab_docks)
 "vQI" = (
 /obj/structure/machinery/vending/snack,
@@ -33587,9 +33533,7 @@
 /area/atlan/station/security)
 "wzQ" = (
 /obj/structure/machinery/landinglight,
-/turf/open/floor/strata/green1{
-	dir = 4
-	},
+/turf/open/floor/strata/green1,
 /area/atlan/lz/near_lz2)
 "wAB" = (
 /obj/structure/machinery/light/double/blue{
@@ -33687,9 +33631,7 @@
 /turf/open/floor/strata,
 /area/atlan/station/promenade)
 "wEE" = (
-/turf/open/floor/strata/green1{
-	dir = 4
-	},
+/turf/open/floor/strata/green1,
 /area/atlan/station/hab_docks)
 "wEN" = (
 /obj/structure/machinery/door/poddoor/railing{
@@ -33955,9 +33897,7 @@
 /obj/item/shard{
 	icon_state = "medium"
 	},
-/turf/open/floor/strata/green4/north{
-	dir = 2
-	},
+/turf/open/space/basic,
 /area/atlan/station/single_dorms)
 "wPQ" = (
 /obj/structure/machinery/light/double/blue{
@@ -34643,9 +34583,7 @@
 /area/atlan/asteroid/processing_offices)
 "xos" = (
 /obj/structure/machinery/landinglight/delaythree,
-/turf/open/floor/strata/green1{
-	dir = 4
-	},
+/turf/open/floor/strata/green1,
 /area/atlan/lz/near_lz2)
 "xoG" = (
 /obj/structure/machinery/photocopier,
@@ -35129,9 +35067,7 @@
 	dir = 8
 	},
 /obj/effect/sentry_landmark/lz_2/top_right,
-/turf/open/floor/strata/green1{
-	dir = 4
-	},
+/turf/open/floor/strata/green1,
 /area/atlan/lz/near_lz2)
 "xHq" = (
 /obj/structure/machinery/light/double/blue{
@@ -35775,9 +35711,7 @@
 /area/atlan/station/repairoffice)
 "yaV" = (
 /obj/structure/largecrate/random,
-/turf/open/floor/strata/green1{
-	dir = 4
-	},
+/turf/open/floor/strata/green1,
 /area/atlan/station/hab_docks)
 "ybq" = (
 /obj/structure/prop/invuln/overhead/flammable_pipe/fly{

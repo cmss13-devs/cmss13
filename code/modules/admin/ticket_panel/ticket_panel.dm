@@ -529,8 +529,8 @@
 				return FALSE
 
 			AH.Resolve(current_mob.ckey, FALSE)
-			message_admins("[key_name_admin(usr)] banned [key_name_admin(banned_mob)] and closed ticket #[ticket_id]")
-			log_admin("Ticket #[ticket_id] closed by [key_name(usr)] after banning [banned_mob.ckey]")
+			message_admins("[key_name_admin(current_mob)] banned [key_name_admin(banned_mob)] and closed ticket #[ticket_id]")
+			log_admin("Ticket #[ticket_id] closed by [key_name(current_mob)] after banning [banned_mob.ckey]")
 			return TRUE
 
 /datum/ticket_panel/tgui_interact(mob/user, datum/tgui/ui)

@@ -71,32 +71,61 @@
 		"role" = player_info ? player_info["role"] : null
 	)
 
-/datum/ticket_panel/proc/format_mentorhelp_ticket(datum/mentorhelp/MH)
+/datum/ticket_panel/proc/format_mentorhelp_ticket(datum/mentorhelp/MH, client/viewer = null)
+	if(!viewer)
+		viewer = usr.client
+
 	var/status = MH.open ? (MH.mentor ? "claimed" : "open") : "closed"
 
 	var/list/formatted_responses = list()
 	for(var/key in MH.ticket_interactions)
 		var/list/interaction = MH.ticket_interactions[key]
-		formatted_responses += list(interaction)
+		var/list/filtered_interaction = interaction.Copy()
+
+		if(interaction["author"] == MH.author_key)
+			if(viewer && !CLIENT_IS_STAFF(viewer))
+				filtered_interaction["author"] = MH.get_author_ic_name()
+			else
+				filtered_interaction["author"] = "[MH.author_key] ([MH.get_author_ic_name()])"
+		else if(MH.mentor && interaction["author"] == MH.mentor.key)
+			if(viewer && CLIENT_IS_STAFF(viewer))
+				filtered_interaction["author"] = "[MH.mentor.key] ([MH.mentor_ic_name])"
+
+		formatted_responses += list(filtered_interaction)
 
 	var/list/player_info = get_player_info(MH.author)
+
+	var/ic_name = (player_info ? player_info["ic_name"] : null) || MH.get_author_ic_name()
+	var/faction = (player_info ? player_info["faction"] : null) || MH.get_author_faction()
+	var/role = (player_info ? player_info["role"] : null) || MH.get_author_role()
+
+	var/display_author = MH.author_key
+	if(viewer && !CLIENT_IS_STAFF(viewer))
+		display_author = ic_name
+
+	var/display_msg = MH.initial_message
+	var/display_latest = MH.latest_message
+	if(viewer && !CLIENT_IS_STAFF(viewer))
+		if(MH.author_key)
+			display_msg = replacetext(display_msg, MH.author_key, ic_name)
+			display_latest = replacetext(display_latest, MH.author_key, ic_name)
 
 	return list(
 		"id" = MH.id,
 		"subject" = MH.subject,
-		"author" = MH.author_key || "Unknown",
-		"message" = MH.initial_message || "No message",
-		"latest_message" = MH.latest_message,
+		"author" = display_author || "Unknown",
+		"message" = display_msg || "No message",
+		"latest_message" = display_latest,
 		"status" = status,
 		"timestamp" = MH.time_activity["opened_at"],
 		"closed_at" = MH.time_activity["closed_at"],
 		"claimed_by" = MH.mentor ? MH.mentor.ckey : null,
 		"all_responses" = formatted_responses,
-		"viewer_is_claiming" = (MH.mentor && (MH.mentor.ckey == usr.ckey) ? TRUE : FALSE),
+		"viewer_is_claiming" = (MH.mentor && (MH.mentor.ckey == viewer?.ckey) ? TRUE : FALSE),
 		"is_archived" = !MH.open,
-		"ic_name" = player_info ? player_info["ic_name"] : null,
-		"faction" = player_info ? player_info["faction"] : null,
-		"role" = player_info ? player_info["role"] : null
+		"ic_name" = ic_name,
+		"faction" = faction,
+		"role" = role
 	)
 
 /datum/ticket_panel/ui_data(mob/user)
@@ -131,12 +160,12 @@
 	for(var/id in GLOB.mentorhelp_manager.active_tickets)
 		var/datum/mentorhelp/MH = GLOB.mentorhelp_manager.get_ticket_by_id(id)
 		if(istype(MH))
-			data["mentor_open_tickets"] += list(format_mentorhelp_ticket(MH))
+			data["mentor_open_tickets"] += list(format_mentorhelp_ticket(MH, C))
 
 	for(var/id in GLOB.mentorhelp_manager.archived_tickets)
 		var/datum/mentorhelp/MH = GLOB.mentorhelp_manager.get_ticket_by_id(id)
 		if(istype(MH))
-			data["mentor_archived_tickets"] += list(format_mentorhelp_ticket(MH))
+			data["mentor_archived_tickets"] += list(format_mentorhelp_ticket(MH, C))
 
 	return data
 

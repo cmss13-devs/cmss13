@@ -35,10 +35,14 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 	var/client/author = null
 	// The author's key
 	var/author_key = ""
+	var/author_ic_name = ""
+	var/author_role = ""
+	var/author_faction = ""
 
 	// The mentor who's responding to this mentorhelp thread
 	// If this is null, it means no mentor has responded yet
 	var/client/mentor = null
+	var/mentor_ic_name = ""
 
 	// If this thread is still open
 	var/open = TRUE
@@ -70,6 +74,30 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 
 	author = thread_author
 	author_key = thread_author.key
+
+	if(thread_author.mob)
+		author_ic_name = thread_author.mob.real_name || thread_author.mob.name || "Unknown"
+		var/mob/M = thread_author.mob
+		var/datum/faction/F = get_faction(M.faction)
+		if(F)
+			author_faction = F.name
+		else if(M.faction)
+			author_faction = "[M.faction]"
+
+		if(isobserver(M))
+			author_role = "Ghost"
+		else if(isxeno(M))
+			var/mob/living/carbon/xenomorph/X = M
+			author_role = X.caste_type
+		else if(ishuman(M))
+			var/mob/living/carbon/human/HUM = M
+			if(HUM.comm_title)
+				author_role = HUM.comm_title
+			else if(HUM.job)
+				author_role = HUM.job
+		else if(M.job)
+			author_role = M.job
+
 	id = GLOB.mentorhelp_manager.ticket_counter++
 
 	GLOB.mentorhelp_manager.active_tickets["[id]"] = src
@@ -104,6 +132,39 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 		return FALSE
 	return TRUE
 
+/datum/mentorhelp/proc/get_author_ic_name()
+	if(author && author.mob)
+		author_ic_name = author.mob.real_name || author.mob.name || "Unknown"
+	return author_ic_name || "Unknown"
+
+/datum/mentorhelp/proc/get_author_role()
+	if(author && author.mob)
+		var/mob/M = author.mob
+		if(isobserver(M))
+			author_role = "Ghost"
+		else if(isxeno(M))
+			var/mob/living/carbon/xenomorph/X = M
+			author_role = X.caste_type
+		else if(ishuman(M))
+			var/mob/living/carbon/human/HUM = M
+			if(HUM.comm_title)
+				author_role = HUM.comm_title
+			else if(HUM.job)
+				author_role = HUM.job
+		else if(M.job)
+			author_role = M.job
+	return author_role
+
+/datum/mentorhelp/proc/get_author_faction()
+	if(author && author.mob)
+		var/mob/M = author.mob
+		var/datum/faction/F = get_faction(M.faction)
+		if(F)
+			author_faction = F.name
+		else if(M.faction)
+			author_faction = "[M.faction]"
+	return author_faction
+
 /datum/mentorhelp/proc/log_message(msg, from_key, to_key, include_in_ticket = TRUE, plain_msg = null, message_type = "mentor")
 	var/plain_text = plain_msg || strip_html(msg)
 	var/log_msg = plain_text
@@ -115,7 +176,19 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 		html_msg = "[SPAN_MENTORHELP("[from_key] -> [to_key]:")] [plain_text]"
 
 	if(from_key && to_key)
-		log_msg = "[from_key] -> [to_key]: [plain_text]"
+		var/from_ic = ""
+		var/to_ic = ""
+		if(from_key == author_key)
+			from_ic = " ([get_author_ic_name()])"
+		else if(mentor && from_key == mentor.key)
+			from_ic = " ([mentor_ic_name])"
+
+		if(to_key == author_key)
+			to_ic = " ([get_author_ic_name()])"
+		else if(mentor && to_key == mentor.key)
+			to_ic = " ([mentor_ic_name])"
+
+		log_msg = "[from_key][from_ic] -> [to_key][to_ic]: [plain_text]"
 	log_mhelp(log_msg)
 
 	if(include_in_ticket)
@@ -141,21 +214,32 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 			hitlist |= candidate
 		else if(to_staff && CLIENT_IS_STAFF(candidate))
 			hitlist |= candidate
-	var/displaymsg = "[SPAN_MENTORHELP("<span class='prefix'>MENTOR LOG:</span> <span class='message'>[text]</span>")]"
+
+	var/unformatted = unformatted_text || text
+	var/latest_msg_unformatted = unformatted
+
+	for(var/client/receiver in hitlist)
+		if(istype(receiver))
+			var/msg_to_send = text
+			if(!CLIENT_IS_STAFF(receiver))
+				if(author_key)
+					msg_to_send = replacetext(msg_to_send, author_key, get_author_ic_name())
+			var/displaymsg = "[SPAN_MENTORHELP("<span class='prefix'>MENTOR LOG:</span> <span class='message'>[msg_to_send]</span>")]"
+			to_chat(receiver, displaymsg)
+
+	if(!to_mentors)
+		if(author_key)
+			latest_msg_unformatted = replacetext(latest_msg_unformatted, author_key, get_author_ic_name())
+		latest_message = latest_msg_unformatted
+
 	var/html_message = "[time_stamp()]: [text]"
 	var/list/structured_data = list(
 		"timestamp" = worldtime2text(world.time),
 		"author" = "System",
-		"message" = unformatted_text || text,
+		"message" = unformatted,
 		"type" = "system"
 	)
 	ticket_interactions[html_message] = structured_data
-	for(var/client/receiver in hitlist)
-		if(istype(receiver))
-			to_chat(receiver, displaymsg)
-
-	if(!to_mentors)
-		latest_message = unformatted_text
 
 /datum/mentorhelp/proc/broadcast_request(client/opener)
 	if(!opener || !open || !check_author())
@@ -203,7 +287,7 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 	if(recipient)
 		if(with_sound && (recipient.prefs?.toggles_sound & SOUND_ADMINHELP))
 			sound_to(recipient, 'sound/effects/mhelp.ogg')
-		to_chat(recipient, wrap_message(msg, sender))
+		to_chat(recipient, wrap_message(msg, sender, recipient))
 
 	for(var/client/admin_client in GLOB.admins)
 		var/formatted = msg
@@ -214,13 +298,30 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 
 		// Initial broadcast
 		else if(!staff_only && !recipient && CLIENT_HAS_RIGHTS(admin_client, R_MENTOR))
-			formatted = wrap_message(formatted, sender)
+			formatted = wrap_message(formatted, sender, admin_client)
 			soundfile = 'sound/effects/mhelp.ogg'
 
 		// Eavesdrop
 		else if(CLIENT_HAS_RIGHTS(admin_client, R_MENTOR) && (!staff_only || CLIENT_IS_STAFF(admin_client)) && admin_client != sender)
 			if(include_keys)
-				formatted = SPAN_MENTORHELP(key_name(sender, TRUE) + " -> " + key_name(recipient, TRUE) + ": ") + msg
+				var/sender_text = ""
+				var/recipient_text = ""
+
+				if(CLIENT_IS_STAFF(admin_client))
+					sender_text = key_name(sender, TRUE)
+					recipient_text = key_name(recipient, TRUE)
+				else
+					if(sender == author)
+						sender_text = get_author_ic_name()
+						recipient_text = recipient ? recipient.username() : "All mentors"
+					else if(recipient == author)
+						sender_text = sender.username()
+						recipient_text = get_author_ic_name()
+					else
+						sender_text = sender.username()
+						recipient_text = recipient ? recipient.username() : "All mentors"
+
+				formatted = SPAN_MENTORHELP(sender_text + " -> " + recipient_text + ": ") + msg
 
 		else
 			continue
@@ -259,17 +360,28 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 	return
 
 // Sanitizes and wraps the message with some info and links, depending on the sender...?
-/datum/mentorhelp/proc/wrap_message(message, client/sender)
+/datum/mentorhelp/proc/wrap_message(message, client/sender, client/recipient = null)
 	var/message_title = "MentorPM"
-	var/message_sender_key = "<a href='byond://?src=\ref[src];action=message'>[sender.username()]</a>"
+	var/message_sender_key = ""
 	var/message_sender_options = ""
 
 	// The message is being sent to the mentor and should be formatted as a mentorhelp message
 	if(sender == author)
 		message_title = "MentorHelp"
+		var/display_text = ""
+		if(recipient && CLIENT_IS_STAFF(recipient))
+			display_text = "[sender.username()]/([get_author_ic_name()])"
+		else
+			display_text = "[get_author_ic_name()]"
+
+		message_sender_key = "<a href='byond://?src=\ref[src];action=message'>[display_text]</a>"
+
 		// If there's a mentor, let them mark it. If not, let them unmark it
 		message_sender_options = " (<a href='byond://?src=\ref[src];action=mark'>Mark/Unmark</a>"
 		message_sender_options += " | <a href='byond://?src=\ref[src];action=close'>Close</a> | <a href='byond://?src=\ref[src];action=autorespond'>AutoResponse</a>)"
+	else
+		var/display_text = sender.username()
+		message_sender_key = "<a href='byond://?src=\ref[src];action=message'>[display_text]</a>"
 
 	var/message_header = SPAN_MENTORHELP("<span class='prefix'>[message_title] from [message_sender_key]:</span> <span class='message'>[message_sender_options]</span><br>")
 	var/message_body = "&emsp;[SPAN_MENTORBODY("<span class='message'>[message]</span>")]<br>"
@@ -298,6 +410,8 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 			return
 		var/client/prev_mentor = mentor
 		mentor = thread_mentor
+		if(thread_mentor.mob)
+			mentor_ic_name = thread_mentor.mob.real_name || thread_mentor.mob.name || "Unknown"
 
 		log_mhelp("[mentor.username()] has overridden [prev_mentor.username()] on [author_key]'s mentorhelp")
 		notify(SPAN_MENTORHELP("[mentor.username()] has overridden [prev_mentor.username()] on [author_key]'s mentorhelp."),
@@ -313,6 +427,8 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 		return
 
 	mentor = thread_mentor
+	if(thread_mentor.mob)
+		mentor_ic_name = thread_mentor.mob.real_name || thread_mentor.mob.name || "Unknown"
 
 	log_mhelp("[mentor.username()] has marked [author_key]'s mentorhelp")
 	notify(SPAN_MENTORHELP("[mentor.username()] has marked [author_key]'s mentorhelp."),
@@ -340,6 +456,7 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 		unformatted_text = "[mentor.username()] has unmarked [author_key]'s mentorhelp.")
 	to_chat(author, SPAN_MENTORHELP("NOTICE: [mentor.username()] has unmarked your thread and is no longer responding to it."))
 	mentor = null
+	mentor_ic_name = ""
 
 /*
  * Misc.

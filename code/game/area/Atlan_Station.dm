@@ -10,6 +10,9 @@
 	temperature = T20C
 	powernet_name = "ground"
 	minimap_color = MINIMAP_AREA_COLONY
+	sound_environment = SOUND_ENVIRONMENT_ROOM
+	soundscape_interval = 30
+	weather_enabled = FALSE
 
 /area/atlan/oob
 	name = "Atlan Out Of Bounds"

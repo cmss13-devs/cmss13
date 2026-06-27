@@ -19,6 +19,11 @@
 	},
 /turf/open/space/basic,
 /area/atlan/oob)
+"aae" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/machinery/power/apc/no_power/east,
+/turf/open/floor/greengrid,
+/area/atlan/station/substation)
 "aax" = (
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/atlan/station/double_dorms)
@@ -2647,10 +2652,6 @@
 	},
 /turf/open/floor/plating/prison,
 /area/atlan/station/repairoffice)
-"bWh" = (
-/obj/structure/lattice,
-/turf/open/floor/strata,
-/area/atlan/oob)
 "bWK" = (
 /obj/structure/sign/safety/maint,
 /turf/closed/wall/strata_outpost/reinforced,
@@ -9958,11 +9959,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/atlan/station/repairs_lift)
 "gSh" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22";
-	pixel_y = 12;
-	layer = 3.3
-	},
+/obj/structure/prop/almayer/computers/sensor_computer1,
 /turf/open/floor/strata/red1,
 /area/atlan/lz/near_lz1)
 "gSq" = (
@@ -13843,8 +13840,6 @@
 /area/atlan/asteroid/sensors)
 "jlD" = (
 /obj/structure/closet/emcloset,
-/turf/open/floor/strata/floor2,
-/turf/open/floor/strata/orange_edge/east,
 /turf/open/floor/strata/orange_icorner/north,
 /area/atlan/station/repairs_lift)
 "jlR" = (
@@ -15577,10 +15572,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/asteroid/processing_handling)
-"ktn" = (
-/obj/structure/machinery/power/apc/no_power/south,
-/turf/open/floor/prison/darkyellowfull2,
-/area/atlan/station/atmospherics)
 "ktO" = (
 /turf/open/floor/plating/prison,
 /area/atlan/asteroid/processing_nw_train)
@@ -15847,18 +15838,13 @@
 /turf/open/floor/strata,
 /area/atlan/lz/near_lz2)
 "kCo" = (
-/obj/structure/stairs/perspective{
-	color = "#6e6e6e";
-	dir = 4;
-	icon_state = "p_stair_sn_full_cap"
-	},
 /obj/structure/platform/metal/strata/east,
 /obj/structure/stairs/perspective{
 	color = "#6e6e6e";
 	dir = 4;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/turf/open/floor/prison/darkyellowfull2,
+/turf/open/floor/strata,
 /area/atlan/station/security)
 "kCE" = (
 /obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic,
@@ -16134,9 +16120,10 @@
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/storage)
 "kLs" = (
-/obj/structure/prop/almayer/computers/sensor_computer1{
-	name = "computer";
-	dir = 0
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_x = -5;
+	pixel_y = 1
 	},
 /turf/open/floor/strata/red1,
 /area/atlan/lz/near_lz1)
@@ -18881,6 +18868,10 @@
 /turf/open/floor/prison/blue_plate/north,
 /area/atlan/station/water_tanks)
 "mMn" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1;
+	pixel_y = 16
+	},
 /turf/open/floor/prison/whitegreen/northeast,
 /area/atlan/station/botany)
 "mMp" = (
@@ -22408,9 +22399,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/storage)
 "oZV" = (
-/obj/structure/barricade/handrail/strata{
-	dir = 0
-	},
+/obj/structure/barricade/handrail/strata,
 /turf/open/floor/prison/whitegreen,
 /area/atlan/station/botany)
 "paB" = (
@@ -29961,10 +29950,7 @@
 /turf/open/floor/strata/floor2,
 /area/atlan/station/water_tanks)
 "tUA" = (
-/obj/structure/prop/almayer/computers/sensor_computer1{
-	name = "computer";
-	dir = 0
-	},
+/obj/structure/prop/almayer/computers/sensor_computer1,
 /turf/open/floor/strata/red1,
 /area/atlan/asteroid/processing_offices)
 "tUE" = (
@@ -33548,11 +33534,6 @@
 "wBy" = (
 /turf/open/floor/strata/floor2,
 /area/atlan/oob)
-"wBJ" = (
-/obj/structure/window/framed/prison/reinforced/hull,
-/obj/structure/lattice,
-/turf/open/floor/strata,
-/area/atlan/oob)
 "wBO" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/decal/hybrisa/warning/redandwhite_N{
@@ -33727,11 +33708,6 @@
 /obj/structure/sign/safety/bathunisex,
 /turf/closed/wall/hybrisa/colony/office,
 /area/atlan/station/admin)
-"wJC" = (
-/obj/structure/window/framed/prison/reinforced/hull,
-/obj/structure/lattice,
-/turf/open/floor/plating,
-/area/atlan/oob)
 "wJH" = (
 /obj/structure/girder,
 /turf/open/floor/strata/floor2,
@@ -34931,6 +34907,10 @@
 /turf/open/floor/prison/whitegreencorner/west,
 /area/atlan/station/botany)
 "xCU" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1;
+	pixel_y = 16
+	},
 /turf/open/floor/prison/whitegreen/northwest,
 /area/atlan/station/botany)
 "xDd" = (
@@ -38353,7 +38333,7 @@ wXS
 aAk
 aAk
 aAk
-xEE
+oVk
 aAk
 aAk
 aAk
@@ -38400,12 +38380,12 @@ wXS
 wXS
 aAk
 aAk
-qgV
-qgV
+oVk
+oVk
 aAk
 aAk
 obO
-bWh
+wXS
 wXS
 obO
 obO
@@ -38559,7 +38539,7 @@ qwU
 qwU
 aPZ
 qwU
-xEE
+oVk
 wXS
 wXS
 wXS
@@ -38598,8 +38578,8 @@ obO
 obO
 wXS
 aAk
-eIP
-qgV
+oVk
+oVk
 aAk
 aAk
 toa
@@ -38608,8 +38588,8 @@ wLB
 nhO
 aAk
 aAk
-eIP
-qgV
+oVk
+oVk
 aAk
 obO
 wXS
@@ -38842,8 +38822,8 @@ obO
 obO
 obO
 obO
-uMt
-ntN
+aAk
+oVk
 oVk
 aAk
 wXS
@@ -39072,7 +39052,7 @@ aAk
 aAk
 aAk
 oVk
-dnA
+oVk
 aAk
 aAk
 aAk
@@ -39203,7 +39183,7 @@ obO
 obO
 obO
 wXS
-uMt
+aAk
 aAk
 aAk
 dgh
@@ -39390,7 +39370,7 @@ enz
 aAk
 uMt
 uMt
-uMt
+aAk
 wXS
 wXS
 wXS
@@ -39445,11 +39425,11 @@ wXS
 wXS
 aAk
 aAk
-dnA
-dnA
-dnA
+oVk
+oVk
+oVk
 aAk
-uMt
+aAk
 aAk
 lRd
 qqL
@@ -39594,9 +39574,9 @@ aAk
 bZU
 eTO
 aAk
-wJC
-wJC
-xEE
+oVk
+oVk
+oVk
 aAk
 wXS
 wXS
@@ -39644,8 +39624,8 @@ wXS
 obO
 wXS
 aAk
-dnA
-dnA
+oVk
+oVk
 aAk
 htV
 mXC
@@ -40004,7 +39984,7 @@ fwK
 sWq
 wNY
 inI
-xEE
+oVk
 wXS
 wXS
 obO
@@ -40207,7 +40187,7 @@ aRC
 jZQ
 wNY
 vFI
-xEE
+oVk
 wXS
 aAk
 aAk
@@ -40450,8 +40430,8 @@ wXS
 wXS
 wXS
 aAk
-qgV
-qgV
+oVk
+oVk
 aAk
 oOG
 krb
@@ -40650,8 +40630,8 @@ aAk
 wXS
 wXS
 aAk
-dnA
-qgV
+oVk
+oVk
 aAk
 iFu
 imV
@@ -40850,8 +40830,8 @@ rPn
 aAk
 iOR
 aAk
-qgV
-dnA
+oVk
+oVk
 aAk
 rjp
 jet
@@ -42061,7 +42041,7 @@ aAk
 veZ
 uoJ
 bIR
-ktn
+uoJ
 eUY
 eUY
 hxj
@@ -43141,7 +43121,7 @@ jEw
 jEw
 gSv
 idD
-dnA
+oVk
 wXS
 wXS
 obO
@@ -43394,7 +43374,7 @@ obO
 obO
 obO
 obO
-dnA
+oVk
 pPG
 rEX
 eOT
@@ -43597,7 +43577,7 @@ obO
 obO
 obO
 wXS
-dnA
+oVk
 xlP
 eOT
 oHv
@@ -45423,7 +45403,7 @@ obO
 wXS
 wXS
 aAk
-dnA
+oVk
 oVk
 aAk
 aAk
@@ -47012,7 +46992,7 @@ vUU
 ohy
 ohy
 vUU
-wBJ
+oVk
 wXS
 wXS
 obO
@@ -47215,7 +47195,7 @@ vUU
 ohy
 cAZ
 rjG
-wBJ
+oVk
 wXS
 obO
 obO
@@ -47418,7 +47398,7 @@ vUU
 ohy
 ohy
 dDD
-gHE
+oVk
 obO
 obO
 obO
@@ -47621,7 +47601,7 @@ vUU
 ohy
 ohy
 bfU
-gHE
+oVk
 obO
 obO
 obO
@@ -48551,7 +48531,7 @@ ntq
 aAk
 eVM
 plk
-nSX
+aae
 ssL
 rZZ
 tBW
@@ -52476,7 +52456,7 @@ loF
 jPr
 loF
 qUB
-wBJ
+oVk
 wXS
 wXS
 wXS
@@ -52679,7 +52659,7 @@ loF
 loF
 lWm
 loF
-wBJ
+oVk
 wXS
 wXS
 wXS
@@ -52882,7 +52862,7 @@ loF
 lJB
 loF
 loF
-gHE
+oVk
 obO
 wXS
 wXS
@@ -53287,7 +53267,7 @@ loF
 loF
 loF
 loF
-gHE
+oVk
 obO
 obO
 wXS
@@ -53340,7 +53320,7 @@ obO
 obO
 obO
 obO
-aAk
+obO
 aAk
 aAk
 aAk
@@ -53490,7 +53470,7 @@ xnD
 fWD
 loF
 vwJ
-gHE
+oVk
 obO
 obO
 obO
@@ -53693,7 +53673,7 @@ fbd
 loF
 loF
 gdY
-wBJ
+oVk
 wXS
 obO
 obO
@@ -54098,7 +54078,7 @@ loF
 loF
 loF
 uDj
-wBJ
+oVk
 wXS
 wXS
 obO
@@ -54156,10 +54136,10 @@ obO
 obO
 obO
 aAk
-uMt
-uMt
-uMt
-uMt
+aAk
+aAk
+aAk
+aAk
 aAk
 oiD
 nsY
@@ -54301,7 +54281,7 @@ loF
 loF
 loF
 qCK
-wBJ
+oVk
 wXS
 obO
 obO
@@ -54441,7 +54421,7 @@ gVT
 vVm
 aUq
 aUq
-oZV
+dtS
 xCU
 dxR
 sYd
@@ -54566,7 +54546,7 @@ wXS
 wXS
 wXS
 wXS
-uMt
+aAk
 aAk
 dZm
 oiD
@@ -54582,10 +54562,10 @@ wXS
 wXS
 aAk
 aAk
-dnA
-dnA
-dnA
-dnA
+oVk
+oVk
+oVk
+oVk
 aAk
 aAk
 aAk
@@ -54706,7 +54686,7 @@ loF
 loF
 fWD
 loF
-wBJ
+oVk
 wXS
 wXS
 obO
@@ -54771,12 +54751,12 @@ wXS
 wXS
 obO
 aAk
-uMt
+aAk
 oVk
 oVk
-dnA
-dnA
-dnA
+oVk
+oVk
+oVk
 aAk
 aAk
 obO
@@ -54847,7 +54827,7 @@ eeq
 aUq
 aUq
 aUq
-oZV
+dtS
 mMn
 fNr
 jza
@@ -54995,7 +54975,7 @@ rAF
 rAF
 rAF
 fCZ
-xKp
+aSd
 aAk
 yjJ
 qor
@@ -55313,7 +55293,7 @@ kvJ
 mLW
 loF
 qUB
-wBJ
+oVk
 wXS
 wXS
 obO
@@ -56215,7 +56195,7 @@ obO
 wXS
 wXS
 wXS
-xKp
+aSd
 aSd
 aSd
 aSd
@@ -56620,7 +56600,7 @@ wXS
 obO
 obO
 wXS
-xKp
+aSd
 aSd
 iGi
 iGi
@@ -56727,7 +56707,7 @@ loF
 loF
 vZz
 eSB
-gHE
+oVk
 aAk
 wXS
 wXS
@@ -56823,7 +56803,7 @@ wXS
 obO
 obO
 wXS
-xKp
+aSd
 aSd
 iGi
 qUQ
@@ -57130,7 +57110,7 @@ jes
 tHk
 loF
 aAk
-wBJ
+oVk
 aAk
 obO
 obO
@@ -57330,8 +57310,8 @@ grz
 hTn
 iLz
 aAk
-gHE
-wBJ
+oVk
+oVk
 aAk
 wXS
 obO
@@ -57530,8 +57510,8 @@ vwJ
 urv
 aAk
 oVk
-dnA
-dnA
+oVk
+oVk
 aAk
 obO
 wXS
@@ -57728,7 +57708,7 @@ tmn
 eVh
 aAk
 aAk
-dnA
+oVk
 oVk
 oVk
 aAk
@@ -57837,7 +57817,7 @@ wXS
 wXS
 obO
 wXS
-xKp
+aSd
 aSd
 aSd
 lGF
@@ -58040,7 +58020,7 @@ obO
 wXS
 aSd
 wXS
-xKp
+aSd
 aSd
 lGF
 lGF
@@ -58539,7 +58519,7 @@ pnZ
 trf
 rIy
 hqf
-dnA
+oVk
 wXS
 wXS
 wXS
@@ -58646,8 +58626,8 @@ obO
 obO
 obO
 wXS
-xKp
-xKp
+aSd
+aSd
 aSd
 aSd
 aSd
@@ -58850,7 +58830,7 @@ obO
 obO
 obO
 wXS
-xKp
+aSd
 aSd
 lGF
 aSd
@@ -59053,7 +59033,7 @@ obO
 obO
 wXS
 wXS
-xKp
+aSd
 aSd
 lGF
 aSd
@@ -59256,7 +59236,7 @@ wXS
 wXS
 wXS
 wXS
-xKp
+aSd
 aSd
 lGF
 lGF
@@ -59458,7 +59438,7 @@ obO
 obO
 wXS
 wXS
-xKp
+aSd
 aSd
 aSd
 aSd
@@ -66355,7 +66335,7 @@ obO
 obO
 wXS
 wXS
-xKp
+aSd
 aSd
 lGF
 lGF

@@ -1,4 +1,3 @@
-
 GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 
 /datum/mentorhelp_manager

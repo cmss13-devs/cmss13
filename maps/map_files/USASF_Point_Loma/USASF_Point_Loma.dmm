@@ -19014,6 +19014,12 @@
 	},
 /turf/open/slippery/hull,
 /area/point_loma/airbase/interior/atc/top)
+"bcR" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/corsat/green/west,
+/area/point_loma/research_facility/hallway/west)
 "bcS" = (
 /obj/structure/barricade/handrail/type_b{
 	layer = 4
@@ -29302,6 +29308,9 @@
 "bHR" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic2/autoname{
 	dir = 2
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
 	},
 /turf/open/floor/corsat,
 /area/point_loma/research_facility/laundry)
@@ -105051,7 +105060,7 @@ bsz
 aJB
 aJB
 aJB
-aJB
+cqS
 aJB
 bKy
 ccI
@@ -105233,7 +105242,7 @@ aJB
 aJB
 aJB
 aJB
-aJB
+cqS
 aJB
 bKy
 ccI
@@ -105415,7 +105424,7 @@ aJB
 aJB
 aJB
 aJB
-aJB
+cqS
 aJB
 bKy
 ccI
@@ -105779,7 +105788,7 @@ cDV
 aXU
 bAJ
 bAJ
-bAJ
+bcR
 bAJ
 bAJ
 ccI
@@ -105961,7 +105970,7 @@ cDW
 bNt
 bJy
 bJy
-bJy
+bKT
 bJy
 bJy
 bJy

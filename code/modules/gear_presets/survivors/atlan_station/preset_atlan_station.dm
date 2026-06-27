@@ -952,7 +952,7 @@
 	role_comm_title = "UPP Menedzher"
 	minimap_icon = "upp_plt"
 	minimap_background = "background_upp"
-	faction_group = list(FACTION_SURVIVOR_UPP)
+	faction_group = FACTION_LIST_SURVIVOR_UPP
 	faction = FACTION_UPP
 	skills = /datum/skills/upp/commissar
 	access = list(

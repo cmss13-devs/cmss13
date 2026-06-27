@@ -2422,7 +2422,7 @@
 /area/atlan/station/storage)
 "bNk" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt{
-	color = #000000
+	color = "#000000"
 	},
 /obj/item/stack/sheet/metal,
 /turf/open/floor/plating,
@@ -3314,7 +3314,7 @@
 	pixel_y = 1
 	},
 /obj/effect/decal/cleanable/dirt/alt_dirt{
-	color = #000000
+	color = "#000000"
 	},
 /obj/effect/spawner/random/tool,
 /turf/open/floor/plating,
@@ -3350,7 +3350,7 @@
 /obj/effect/decal/hybrisa/road/lines2,
 /obj/structure/cargo_container/upp_small/container_19/left,
 /obj/effect/decal/cleanable/dirt/alt_dirt{
-	color = #000000
+	color = "#000000"
 	},
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/exports_west)
@@ -3908,7 +3908,7 @@
 "cLy" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt/alt_dirt{
-	color = #000000
+	color = "#000000"
 	},
 /obj/structure/cable/heavyduty{
 	icon_state = "1-8"
@@ -6222,7 +6222,7 @@
 /obj/effect/decal/hybrisa/road/lines2,
 /obj/structure/cargo_container/upp_small/container_19/left,
 /obj/effect/decal/cleanable/dirt/alt_dirt{
-	color = #000000
+	color = "#000000"
 	},
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/hab_docks)
@@ -8566,7 +8566,7 @@
 /area/atlan/asteroid/exports_cave)
 "fPy" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt{
-	color = #000000
+	color = "#000000"
 	},
 /obj/item/shard{
 	icon_state = "medium"
@@ -17871,7 +17871,7 @@
 /area/atlan/station/admin)
 "lYw" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt{
-	color = #000000
+	color = "#000000"
 	},
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgib2"
@@ -20085,7 +20085,7 @@
 /area/atlan/lz/near_lz1)
 "nym" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt{
-	color = #000000
+	color = "#000000"
 	},
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
@@ -22651,7 +22651,7 @@
 /area/atlan/station/cargo)
 "pgU" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt{
-	color = #000000
+	color = "#000000"
 	},
 /obj/item/clipboard{
 	pixel_x = -2;
@@ -22772,7 +22772,7 @@
 /obj/effect/decal/hybrisa/road/lines2,
 /obj/structure/cargo_container/upp_small/container_19/left,
 /obj/effect/decal/cleanable/dirt/alt_dirt{
-	color = #000000
+	color = "#000000"
 	},
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/exports_east)
@@ -23283,7 +23283,7 @@
 /area/atlan/asteroid/processing_aux)
 "pBq" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt{
-	color = #000000
+	color = "#000000"
 	},
 /turf/open/floor/plating,
 /area/atlan/asteroid/sensors)
@@ -24759,7 +24759,7 @@
 /area/atlan/asteroid/exports_east)
 "qvN" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt{
-	color = #000000
+	color = "#000000"
 	},
 /turf/open/floor/prison/floor_plate/southwest,
 /area/atlan/station/repairs_lift)
@@ -27911,7 +27911,7 @@
 /area/atlan/station/cargooffice)
 "sBH" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt{
-	color = #000000
+	color = "#000000"
 	},
 /turf/open/floor/plating/prison,
 /area/atlan/asteroid/sensors)
@@ -29423,7 +29423,7 @@
 /area/atlan/station/hab_rec)
 "tBl" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt{
-	color = #000000
+	color = "#000000"
 	},
 /turf/open/floor/strata/floor2,
 /area/atlan/station/repairs_lift)

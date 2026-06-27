@@ -7385,7 +7385,7 @@
 	},
 /obj/structure/barricade/handrail/strata{
 	dir = 1;
-	layer = 2.96s
+	layer = 2.96
 	},
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/atlan/comms/lz2_canteen)
@@ -12842,7 +12842,7 @@
 "iIs" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 1;
-	layer = 2.96s
+	layer = 2.96
 	},
 /obj/structure/barricade/handrail/strata{
 	dir = 4;

@@ -1,7 +1,7 @@
 // can't get CO surv (station administrator) and CEC Rep (corporate surv type) to work, this document will stay for future reference/use if I can figure it out or find someone else to do it or help me in great depth
 
 
-/datum/equipment_preset/survivor/engineer/soro_industry_contractor
+/datum/equipment_preset/survivor/engineer/atlan/soro_industry_contractor
 	name = "Survivor - UPP - Ministry of Industry - Infrastructure Engineer"
 	assignment = "Inzhener Infrastruktury"
 	minimap_icon = "upp_cont"
@@ -14,7 +14,7 @@
 
 	survivor_variant = ENGINEERING_SURVIVOR
 
-/datum/equipment_preset/survivor/engineer/soro_industry_contractor/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/survivor/engineer/soro_industry_contractor/atlan/load_gear(mob/living/carbon/human/new_human)
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hardhat/orange(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/eng(new_human), WEAR_BACK)
@@ -34,7 +34,7 @@
 	add_survivor_weapon_civilian(new_human)
 	..()
 
-/datum/equipment_preset/survivor/engineer/soro_reactor_tech
+/datum/equipment_preset/survivor/engineer/soro_reactor_tech/atlan
 	name = "Survivor - UPP - Ministry of Energy - Reactor Technician"
 	assignment = "Tekhnik Reaktora"
 	minimap_icon = "upp_cont"
@@ -47,7 +47,7 @@
 
 	survivor_variant = ENGINEERING_SURVIVOR
 
-/datum/equipment_preset/survivor/engineer/soro_reactor_tech/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/survivor/engineer/soro_reactor_tech/atlan/load_gear(mob/living/carbon/human/new_human)
 
 	var/choice = rand(1,25)
 	switch(choice)
@@ -84,7 +84,7 @@
 /datum/job/nrodnyyvooruzhennyypolitsioner
 	title = "Narodnyy Vooruzhennyy Politsioner"
 
-/datum/equipment_preset/survivor/peoples_armed_police
+/datum/equipment_preset/survivor/peoples_armed_police/atlan
 	name = "Survivor - UPP - People's Armed Police Officer"
 	assignment = "Narodnyy Vooruzhennyy Politsioner"
 	faction_group = FACTION_LIST_SURVIVOR_PAP
@@ -101,7 +101,7 @@
 
 	survivor_variant = SECURITY_SURVIVOR
 
-/datum/equipment_preset/survivor/peoples_armed_police/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/survivor/peoples_armed_police/atlan/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(new_human), WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/PaP(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/peaked/police(new_human), WEAR_HEAD)
@@ -117,7 +117,7 @@
 	add_survivor_weapon_security(new_human)
 	..()
 
-/datum/equipment_preset/survivor/upp/army
+/datum/equipment_preset/survivor/upp/army/atlan
 	name = "Survivor - UPP - Ministry of Defense - Army Reservist"
 	assignment = "Armiyskiy Rezervist"
 	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0)
@@ -136,7 +136,7 @@
 
 	survivor_variant = SECURITY_SURVIVOR
 
-/datum/equipment_preset/survivor/upp/army/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/survivor/upp/army/atlan/load_gear(mob/living/carbon/human/new_human)
 
 	var/choice = rand(1,4)
 	switch(choice)
@@ -196,7 +196,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/upp_pfb(new_human.back), WEAR_IN_BACK)
 	..()
 
-/datum/equipment_preset/survivor/doctor/soro
+/datum/equipment_preset/survivor/doctor/soro/atlan
 	name = "Survivor - UPP - Ministry of Health - Doctor"
 	assignment = "Doktor Ministerstva Zdravookhraneniya"
 	minimap_icon = "upp_doc"
@@ -209,7 +209,7 @@
 
 	survivor_variant = MEDICAL_SURVIVOR
 
-/datum/equipment_preset/survivor/doctor/soro/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/survivor/doctor/soro/atlan/load_gear(mob/living/carbon/human/new_human)
 
 	var/random_civilian_satchel= rand(1,3)
 	switch(random_civilian_satchel)
@@ -264,7 +264,7 @@
 	add_survivor_weapon_civilian(new_human)
 	..()
 
-/datum/equipment_preset/survivor/scientist/soro
+/datum/equipment_preset/survivor/scientist/soro/atlan
 	name = "Survivor - UPP - Cosmos Exploration Corps Researcher"
 	assignment = "Issledovatel' Korpusa Kosmicheskoy Eksploratsii"
 	minimap_icon = "upp_sci"
@@ -277,7 +277,7 @@
 
 	survivor_variant = SCIENTIST_SURVIVOR
 
-/datum/equipment_preset/survivor/scientist/soro/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/survivor/scientist/soro/atlan/load_gear(mob/living/carbon/human/new_human)
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/brown(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/cec_patch(new_human), WEAR_ACCESSORY)
@@ -315,7 +315,7 @@
 
 	..()
 
-/datum/equipment_preset/survivor/upp_colonist
+/datum/equipment_preset/survivor/upp_colonist/atlan
 	name = "UPP - Civilian"
 	assignment = "Grazhdanin"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -331,7 +331,7 @@
 
 	survivor_variant = CIVILIAN_SURVIVOR
 
-/datum/equipment_preset/survivor/upp_colonist/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/survivor/upp_colonist/atlan/load_gear(mob/living/carbon/human/new_human)
 
 	var/random_civilian_backpack= rand(1,8)
 	switch(random_civilian_backpack)
@@ -434,7 +434,7 @@
 	add_survivor_weapon_civilian(new_human)
 	..()
 
-/datum/equipment_preset/survivor/upp_fire_fighter
+/datum/equipment_preset/survivor/upp_fire_fighter/atlan
 	name = "Survivor - UPP - Ministry of Public Safety - Fire Protection Specialist"
 	assignment = "Spetsialist Po Pozharnoy Bezopasnosti"
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_CHINESE)
@@ -449,7 +449,7 @@
 
 	survivor_variant = CIVILIAN_SURVIVOR
 
-/datum/equipment_preset/survivor/upp_fire_fighter/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/survivor/upp_fire_fighter/atlan/load_gear(mob/living/carbon/human/new_human)
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp/alt, WEAR_ACCESSORY)
 
@@ -481,7 +481,7 @@
 	add_survivor_weapon_civilian(new_human)
 	..()
 
-/datum/equipment_preset/survivor/upp__atlan_miner
+/datum/equipment_preset/survivor/upp__atlan_miner/atlan
 	name = "Survivor - UPP - Jutou Combine - Miner"
 	assignment = "Jùtóu Combine - Shakhtyor"
 	minimap_background = "background_upp_civilian"
@@ -494,7 +494,7 @@
 
 	survivor_variant = CIVILIAN_SURVIVOR
 
-/datum/equipment_preset/survivor/upp__atlan_miner/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/survivor/upp__atlan_miner/atlan/load_gear(mob/living/carbon/human/new_human)
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hardhat/white/alt(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/civi5(new_human), WEAR_BODY)
@@ -508,7 +508,7 @@
 	add_survivor_weapon_civilian(new_human)
 	..()
 
-/datum/equipment_preset/survivor/hyperdyne
+/datum/equipment_preset/survivor/hyperdyne/atlan
 	name = "Survivor - UPP - Hyperdyne - Corporate Liaison" // Basically a Corporate Liaison for Hyperdyne instead of Weyland-Yutani. - Hyperdyne should be expanded in the future, more roles ect.
 	assignment = "Hyperdyne - Corporate Liaison"
 	skills = /datum/skills/civilian/survivor
@@ -531,7 +531,7 @@
 	minimap_icon = "hc_cl"
 	minimap_background = "background_hc_management"
 
-/datum/equipment_preset/survivor/hyperdyne/load_rank(mob/living/carbon/human/new_human, client/mob_client)
+/datum/equipment_preset/survivor/hyperdyne/atlan/load_rank(mob/living/carbon/human/new_human, client/mob_client)
 	if(paygrades.len == 1)
 		return paygrades[1]
 	var/playtime
@@ -553,7 +553,7 @@
 
 	return final_paygrade
 
-/datum/equipment_preset/survivor/hyperdyne/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/survivor/hyperdyne/atlan/load_gear(mob/living/carbon/human/new_human)
 
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/hyperdyne(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable/liaison(new_human), WEAR_BACK)
@@ -575,7 +575,7 @@
 	add_ice_colony_survivor_equipment(new_human)
 	..()
 
-/datum/equipment_preset/survivor/cec_liaison
+/datum/equipment_preset/survivor/cec_liaison/atlan
 	name = "Survivor - UPP - Cosmos Exploration Corps Liaison" //CEC Representative/Liaison, in exchange for no WY/Hyperdyne connections they get scientist skills
 	assignment = "Svyaz' Korpusa Kosmicheskoy Eksploratsii"
 	minimap_icon = "upp_sci"
@@ -588,7 +588,7 @@
 
 	survivor_variant = CORPORATE_SURVIVOR
 
-/datum/equipment_preset/survivor/cec_liaison/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/survivor/cec_liaison/atlan/load_gear(mob/living/carbon/human/new_human)
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/upp(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/scientist/hybrisa(new_human), WEAR_BODY)
@@ -916,7 +916,7 @@
 
 // Science
 
-/datum/equipment_preset/synth/survivor/sorokyne/scientist
+/datum/equipment_preset/synth/survivor/atlan/scientist
 	name = "Survivor - Sorokyne Strata - Synthetic - Cosmos Exploration Corps Researcher"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	faction = FACTION_UPP
@@ -925,7 +925,7 @@
 
 	survivor_variant = SCIENTIST_SURVIVOR
 
-/datum/equipment_preset/synth/survivor/sorokyne/scientist/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/synth/survivor/atlan/scientist/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/upp(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/upp_pfb(new_human.back), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)

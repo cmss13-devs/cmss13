@@ -4,17 +4,17 @@
     "map_file": "Atlan_Station.dmm",
     "webmap_url": "LV624",
     "survivor_types": [
-        "/datum/equipment_preset/survivor/scientist/soro",
-        "/datum/equipment_preset/survivor/doctor/soro",
-        "/datum/equipment_preset/survivor/cec_liaison",
-	    "/datum/equipment_preset/survivor/hyperdyne",
-        "/datum/equipment_preset/survivor/engineer/soro_industry_contractor",
-        "/datum/equipment_preset/survivor/engineer/soro_reactor_tech",
-        "/datum/equipment_preset/survivor/peoples_armed_police",
-        "/datum/equipment_preset/survivor/upp/army",
-        "/datum/equipment_preset/survivor/upp_colonist",
-        "/datum/equipment_preset/survivor/upp_miner",
-        "/datum/equipment_preset/survivor/upp_fire_fighter"
+        "/datum/equipment_preset/survivor/scientist/soro/atlan",
+        "/datum/equipment_preset/survivor/doctor/soro/atlan",
+        "/datum/equipment_preset/survivor/cec_liaison/atlan",
+	    "/datum/equipment_preset/survivor/hyperdyne/atlan",
+        "/datum/equipment_preset/survivor/engineer/soro_industry_contractor/atlan",
+        "/datum/equipment_preset/survivor/engineer/soro_reactor_tech/atlan",
+        "/datum/equipment_preset/survivor/peoples_armed_police/atlan",
+        "/datum/equipment_preset/survivor/upp/army/atlan",
+        "/datum/equipment_preset/survivor/upp_colonist/atlan",
+        "/datum/equipment_preset/survivor/upp_miner/atlan",
+        "/datum/equipment_preset/survivor/upp_fire_fighter/atlan"
     ],
     "synth_survivor_types": [
         "/datum/equipment_preset/synth/survivor/sorokyne/engineer",

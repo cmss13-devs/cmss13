@@ -220,7 +220,7 @@
 			if(istype(target.current_ticket) && target.current_ticket.state == AHELP_ACTIVE)
 				C.ticket_panel.selected_tab = ADMIN_TAB
 				C.ticket_panel.selected_ticket = target.current_ticket.id
-				to_chat(usr, "<span class='notice'>Switched to existing admin ticket for [target.key]</span>")
+				to_chat(parent_mob, SPAN_NOTICE("Switched to existing admin ticket for [target.key]"))
 				return TRUE
 
 			C.cmd_admin_pm(target, null)

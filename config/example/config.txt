@@ -244,7 +244,7 @@ AUTOOOCMUTE
 # COBALT_BASE_API https://api.cobalt.tools/
 
 ## Default gamemode to auto-switch back to after a round has concluded
-GAMEMODE_DEFAULT Distress Signal
+GAMEMODE_DEFAULT Extended
 
 ## How long the mob will take to chestburst, in seconds
 #EMBRYO_BURST_TIMER 450

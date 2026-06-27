@@ -29759,13 +29759,6 @@
 "bJw" = (
 /turf/closed/wall/point_loma/reinforced/hull,
 /area/point_loma/oob)
-"bJx" = (
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal3";
-	pixel_y = -12
-	},
-/turf/open/asphalt/cement_shaded,
-/area/point_loma/research_facility/hallway/west)
 "bJy" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat/squares,
@@ -30071,17 +30064,13 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/turf/open/asphalt/cement_shaded,
+/turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/west)
 "bKB" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal3";
-	pixel_y = 18
-	},
-/turf/open/asphalt/cement_shaded,
+/turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/hallway/west)
 "bKC" = (
 /obj/effect/decal/hybrisa/road/lines1,
@@ -35987,32 +35976,6 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/corsat/squares,
 /area/point_loma/research_facility/dorms)
-"ceV" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal2";
-	pixel_x = -19
-	},
-/turf/open/asphalt/cement_shaded,
-/area/point_loma/research_facility/hallway/west)
-"ceW" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/asphalt/cement_shaded,
-/area/point_loma/research_facility/hallway/west)
-"ceX" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal3";
-	pixel_y = 18
-	},
-/turf/open/asphalt/cement_shaded,
-/area/point_loma/research_facility/hallway/west)
 "ceY" = (
 /obj/structure/curtain/medical,
 /turf/open/floor/corsat/greenwhite/northeast,
@@ -36027,20 +35990,6 @@
 /obj/structure/roof/hybrisa/lattice_prop/lattice_1,
 /turf/closed/wall/point_loma/concrete/hull,
 /area/point_loma/oob)
-"cfc" = (
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal2";
-	pixel_x = -19
-	},
-/turf/open/asphalt/cement_shaded,
-/area/point_loma/research_facility/hallway/west)
-"cfd" = (
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal2";
-	pixel_x = 13
-	},
-/turf/open/asphalt/cement_shaded,
-/area/point_loma/research_facility/hallway/west)
 "cfe" = (
 /obj/item/stack/rods,
 /turf/open/predship/mainfloor/plain,
@@ -36053,39 +36002,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/point_loma/dock_concrete,
 /area/point_loma/research_facility/cave/west)
-"cfg" = (
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal2";
-	pixel_x = -19
-	},
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal3";
-	pixel_y = -12
-	},
-/turf/open/asphalt/cement_shaded,
-/area/point_loma/research_facility/hallway/west)
-"cfh" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal3";
-	pixel_y = -12
-	},
-/turf/open/asphalt/cement_shaded,
-/area/point_loma/research_facility/hallway/west)
-"cfi" = (
-/turf/open/asphalt/cement_shaded,
-/area/point_loma/research_facility/hallway/west)
-"cfj" = (
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal2";
-	pixel_x = 13
-	},
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal3";
-	pixel_y = 18
-	},
-/turf/open/asphalt/cement_shaded,
-/area/point_loma/research_facility/hallway/west)
 "cfk" = (
 /obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/corsat,
@@ -36120,21 +36036,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/point_loma/dock_concrete,
 /area/point_loma/research_facility/cave/west)
-"cfq" = (
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal3";
-	pixel_y = 18
-	},
-/turf/open/asphalt/cement_shaded,
-/area/point_loma/research_facility/hallway/west)
-"cfr" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal3";
-	pixel_y = 18
-	},
-/turf/open/asphalt/cement_shaded,
-/area/point_loma/research_facility/hallway/west)
 "cfs" = (
 /obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/corsat/squares,
@@ -102784,8 +102685,8 @@ ccI
 ccI
 bJL
 ccI
-cfq
-bJx
+ccI
+ccI
 ccI
 ccI
 ccI
@@ -102966,8 +102867,8 @@ ccI
 ccI
 bJL
 ccI
-cfq
-bJx
+ccI
+ccI
 ccI
 ccI
 ccI
@@ -103148,9 +103049,9 @@ bJy
 bJy
 bKT
 bJy
-cfr
+bJy
 bKA
-cfg
+ccI
 ccI
 asb
 asb
@@ -103330,9 +103231,9 @@ ccI
 ccI
 ccI
 ccI
-cfj
-ceW
-bJx
+ccI
+bJL
+ccI
 asb
 asb
 asb
@@ -103513,8 +103414,8 @@ ccI
 ccI
 ccI
 ccI
-ceX
-bJx
+bJL
+ccI
 ccI
 asb
 asb
@@ -103696,7 +103597,7 @@ asb
 asb
 ccI
 bKB
-cfh
+bJy
 bJy
 cAc
 bJy
@@ -103877,11 +103778,11 @@ bKy
 bKy
 asb
 asb
-cfj
-cfi
-cfc
-ceV
-cfg
+ccI
+ccI
+ccI
+bJL
+ccI
 cpv
 ccI
 bYT
@@ -104060,10 +103961,10 @@ aJB
 bKy
 asb
 ccI
-cfj
-cfd
-ceW
-bJx
+ccI
+ccI
+bJL
+ccI
 ccI
 ccI
 ccI
@@ -104244,8 +104145,8 @@ cfs
 ccI
 ccI
 ccI
-ceX
-bJx
+bJL
+ccI
 ccI
 ccI
 ccI
@@ -104426,8 +104327,8 @@ cfs
 cfl
 aEq
 brT
-ceX
-bJx
+bJL
+ccI
 brT
 brT
 ccI
@@ -104608,8 +104509,8 @@ bKy
 bKy
 bKy
 ccI
-ceX
-bJx
+bJL
+ccI
 ccI
 ccI
 ccI
@@ -104790,7 +104691,7 @@ cqR
 aJB
 bKy
 ccI
-ccI
+bJL
 ccI
 ccI
 ccI
@@ -104972,7 +104873,7 @@ cqS
 aJB
 bKy
 ccI
-ccI
+bJL
 ccI
 ccI
 ccI
@@ -105154,7 +105055,7 @@ aJB
 aJB
 bKy
 ccI
-ccI
+bJL
 ccI
 ccI
 ccI
@@ -105336,7 +105237,7 @@ aJB
 aJB
 bKy
 ccI
-ccI
+bJL
 ccI
 ccI
 ccI
@@ -105518,7 +105419,7 @@ aJB
 aJB
 bKy
 ccI
-ccI
+bJL
 ccI
 ccI
 ccI
@@ -105700,7 +105601,7 @@ bHR
 bKy
 bKy
 ccI
-ccI
+bJL
 ccI
 ccI
 ccI
@@ -105882,7 +105783,7 @@ bAJ
 bAJ
 bAJ
 ccI
-ccI
+bJL
 ccI
 ccI
 ccI
@@ -106058,13 +105959,13 @@ crq
 crm
 cDW
 bNt
-ccI
-ccI
-ccI
-ccI
-ccI
-ccI
-ccI
+bJy
+bJy
+bJy
+bJy
+bJy
+bJy
+bJM
 ccI
 ccI
 ccI

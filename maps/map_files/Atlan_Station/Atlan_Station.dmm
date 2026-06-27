@@ -6591,7 +6591,7 @@
 "eyz" = (
 /obj/structure/window/framed/prison/reinforced/hull,
 /obj/structure/curtain/red,
-/turf/closed/wall/strata_outpost/reinforced/hull,
+/turf/open/space/basic,
 /area/atlan/oob)
 "eyJ" = (
 /obj/structure/surface/rack{
@@ -31231,10 +31231,6 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/atlan/station/walkway)
-"uMt" = (
-/obj/structure/lattice,
-/turf/closed/wall/strata_outpost/reinforced/hull,
-/area/atlan/oob)
 "uMH" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkyellowfull2,
@@ -42836,7 +42832,7 @@ mCJ
 aAk
 aAk
 aAk
-uMt
+aAk
 aAk
 aAk
 aPY

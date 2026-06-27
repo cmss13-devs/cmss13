@@ -177,7 +177,7 @@
 	idtype = /obj/item/card/id/silver
 
 	minimap_icon = "hgsl"
-	minimap_background = "background_command"
+	minimap_background = "background_mp"
 
 /datum/equipment_preset/wo/cmp/load_gear(mob/living/carbon/human/new_human)
 
@@ -225,7 +225,7 @@
 	idtype = /obj/item/card/id/silver
 
 	minimap_icon = "vhg"
-	minimap_background = "background_command"
+	minimap_background = "background_mp"
 
 /datum/equipment_preset/wo/vhg/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = get_backpack_item(new_human, /obj/item/storage/backpack/satchel/sec, /obj/item/storage/backpack/security)
@@ -444,7 +444,7 @@
 	skills = /datum/skills/CMO
 	idtype = /obj/item/card/id/silver
 
-	minimap_icon = "cmo_wo"
+	minimap_icon = "medic"
 	minimap_background = "background_command"
 
 /datum/equipment_preset/wo/head_surgeon/load_gear(mob/living/carbon/human/new_human)

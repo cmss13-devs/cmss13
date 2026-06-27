@@ -528,7 +528,7 @@
 			if(!perm_ban.act(usr.client, banned_mob))
 				return FALSE
 
-			AH.Resolve(usr.ckey, FALSE)
+			AH.Resolve(current_mob.ckey, FALSE)
 			message_admins("[key_name_admin(usr)] banned [key_name_admin(banned_mob)] and closed ticket #[ticket_id]")
 			log_admin("Ticket #[ticket_id] closed by [key_name(usr)] after banning [banned_mob.ckey]")
 			return TRUE

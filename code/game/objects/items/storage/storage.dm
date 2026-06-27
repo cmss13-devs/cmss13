@@ -383,10 +383,7 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 			for (var/datum/numbered_display/ND in numbered_contents)
 				if (ND.sample_object.type == stored_items.type)
 					ND.number++
-<<<<<<< Updated upstream
-=======
 					stored_items.screen_loc = ND.sample_object.screen_loc
->>>>>>> Stashed changes
 					found = 1
 					break
 			if (!found)

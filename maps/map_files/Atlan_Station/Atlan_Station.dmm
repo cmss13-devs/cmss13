@@ -11,6 +11,11 @@
 /obj/item/clothing/mask/rebreather,
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_dock)
+"aad" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/colonist/random/burst,
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/exports_west)
 "aae" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/machinery/power/apc/no_power/east,
@@ -26,6 +31,27 @@
 /obj/effect/landmark/corpsespawner/colonist/random/burst,
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/exports_east)
+"aah" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/colony,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/atlan/station/security)
+"aai" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/weapon/gun/rifle/type71/carbine,
+/turf/open/floor/strata/red1,
+/area/atlan/station/security)
+"aaj" = (
+/obj/item/storage/belt/medical/full,
+/turf/closed/wall/hybrisa/colony/hospital,
+/area/atlan/station/medical)
+"aak" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/comms/lz1_lift)
 "aax" = (
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/atlan/station/double_dorms)
@@ -262,7 +288,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/upp,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/walkway)
 "aij" = (
@@ -2316,6 +2342,7 @@
 /obj/item/ammo_magazine/rifle/type71,
 /obj/item/ammo_magazine/rifle/type71,
 /obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/type71,
 /turf/open/floor/strata/red1,
 /area/atlan/station/security)
 "bHR" = (
@@ -3450,7 +3477,7 @@
 "cxN" = (
 /obj/structure/machinery/disposal,
 /turf/open/floor/strata/floor2,
-/area/atlan/station/cargooffice)
+/area/atlan/comms/lz1_lift)
 "cxQ" = (
 /turf/open/floor/strata/green1,
 /area/atlan/station/hab_sec)
@@ -4451,7 +4478,7 @@
 /area/atlan/asteroid/processing_offices)
 "dfL" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/upp,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/floor/strata,
 /area/atlan/station/walkway)
 "dfM" = (
@@ -4644,11 +4671,6 @@
 	},
 /turf/open/floor/strata,
 /area/atlan/comms/lz2_bar_south)
-"dlD" = (
-/obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/upp,
-/turf/open/floor/strata/floor2,
-/area/atlan/asteroid/processing_offices)
 "dlE" = (
 /obj/structure/closet/firecloset/full,
 /turf/open/floor/strata/orange_edge,
@@ -4773,7 +4795,7 @@
 "dpu" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/bed/roller,
-/obj/effect/landmark/corpsespawner/upp,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/floor/strata/cyan1,
 /area/atlan/station/medical)
 "dpI" = (
@@ -7475,7 +7497,7 @@
 	pixel_x = 12;
 	pixel_y = 3
 	},
-/obj/effect/landmark/corpsespawner/colonist,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/repairoffice)
 "fdm" = (
@@ -10612,7 +10634,7 @@
 /area/atlan/asteroid/sensors)
 "hmI" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/upp,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_caves)
 "hmP" = (
@@ -11448,10 +11470,8 @@
 /turf/closed/wall/strata_outpost/reinforced,
 /area/atlan/station/atmospherics)
 "hPV" = (
-/obj/structure/machinery/door/airlock/almayer/engineering/glass{
-	dir = 1;
-	autoname = 1;
-	name = "\improper Airlock"
+/obj/structure/machinery/door/airlock/almayer/engineering/glass/colony{
+	dir = 2
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/comms/lz1_engineering)
@@ -12103,16 +12123,14 @@
 /turf/open/floor/strata/red1,
 /area/atlan/asteroid/processing_offices)
 "inb" = (
-/obj/item/ammo_box/magazine/type71{
-	pixel_y = 10;
+/obj/item/ammo_box/magazine/ak4047{
+	pixel_y = 8;
 	pixel_x = -7
 	},
-/obj/item/ammo_box/magazine/type71/ap/empty{
+/obj/item/ammo_box/magazine/ak4047/ap/empty{
 	pixel_x = -7;
-	pixel_y = -5
+	pixel_y = -6
 	},
-/obj/item/ammo_magazine/rifle/type71/ap,
-/obj/item/ammo_magazine/rifle/type71/ap,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/cargooffice)
 "ing" = (
@@ -13522,7 +13540,7 @@
 	dir = 8
 	},
 /turf/open/floor/strata/floor2,
-/area/atlan/station/cargooffice)
+/area/atlan/comms/lz1_lift)
 "jca" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/prop/invuln/lattice_prop{
@@ -16083,8 +16101,6 @@
 	pixel_x = 16;
 	pixel_y = 31
 	},
-/obj/item/weapon/gun/rifle/type71/carbine,
-/obj/item/weapon/gun/rifle/type71/carbine,
 /turf/open/floor/strata/red1,
 /area/atlan/station/security)
 "kKW" = (
@@ -17056,8 +17072,8 @@
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_seperation)
 "lwF" = (
-/obj/effect/landmark/corpsespawner/upp,
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/floor/strata/red3/northwest,
 /area/atlan/station/security)
 "lwK" = (
@@ -23813,10 +23829,8 @@
 /turf/open/floor/strata/floor2,
 /area/atlan/station/cargo)
 "pUD" = (
-/obj/structure/machinery/door/airlock/almayer/engineering/glass{
-	dir = 1;
-	autoname = 1;
-	name = "\improper Airlock"
+/obj/structure/machinery/door/airlock/almayer/engineering/glass/colony{
+	dir = 2
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/storage)
@@ -24059,8 +24073,8 @@
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/cargo)
 "qcp" = (
-/obj/effect/landmark/corpsespawner/colonist,
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/floor/strata/floor2,
 /area/atlan/station/substation)
 "qcs" = (
@@ -28152,10 +28166,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/orange_cover,
 /area/atlan/lz/near_lz1)
-"sOF" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/strata,
-/area/atlan/station/walkway)
 "sOO" = (
 /obj/structure/bed/chair/office/light{
 	dir = 1
@@ -28711,7 +28721,7 @@
 /area/atlan/station/cargooffice)
 "thS" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/engineer,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/asteroid/processing_train_control)
 "thV" = (
@@ -29477,11 +29487,11 @@
 /turf/open/floor/strata,
 /area/atlan/station/promenade)
 "tFe" = (
-/obj/effect/landmark/corpsespawner/engineer,
 /obj/effect/decal/cleanable/blood,
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/floor/strata/purp1,
 /area/atlan/asteroid/sensors)
 "tFr" = (
@@ -32350,8 +32360,8 @@
 /area/atlan/station/single_dorms)
 "vEj" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/colonist,
 /obj/effect/decal/cleanable/blood/gibs/core,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/floor/prison/whitegreencorner/north,
 /area/atlan/station/botany)
 "vEm" = (
@@ -34544,7 +34554,7 @@
 	buckling_x = 4
 	},
 /obj/effect/decal/cleanable/blood/gibs/core,
-/obj/effect/landmark/corpsespawner/colonist,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/floor/strata/green1,
 /area/atlan/station/double_dorms)
 "xpt" = (
@@ -48478,8 +48488,8 @@ eoJ
 eoJ
 eoJ
 eoJ
-eoJ
-eoJ
+aaj
+aaj
 eoJ
 aDV
 jFo
@@ -51885,8 +51895,8 @@ pjT
 pjT
 cAM
 jbN
-hix
-vQC
+knd
+uvR
 cxN
 cAM
 cAM
@@ -52086,13 +52096,13 @@ oqe
 aKh
 pjT
 pjT
-vQC
-hix
-dUH
-dUH
-ddq
-sUu
-vQC
+uvR
+knd
+sbJ
+sbJ
+uMc
+aak
+uvR
 tdX
 mSt
 vQC
@@ -56418,7 +56428,7 @@ tmn
 lwX
 kmL
 tmn
-sOF
+tmn
 tmn
 tmn
 tzU
@@ -59903,7 +59913,7 @@ pnZ
 pnZ
 tqn
 eLg
-scz
+aah
 rWS
 kHm
 bck
@@ -61513,7 +61523,7 @@ pKu
 aiF
 qVC
 aSd
-vdN
+aai
 bck
 bck
 eYV
@@ -65193,7 +65203,7 @@ ltK
 xSI
 dZp
 iuE
-awb
+aad
 iuE
 vcs
 rFf
@@ -68204,7 +68214,7 @@ aSd
 epp
 pOz
 obu
-dlD
+qps
 pOz
 pOz
 pOz

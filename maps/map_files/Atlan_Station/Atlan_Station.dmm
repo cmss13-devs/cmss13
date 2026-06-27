@@ -7706,9 +7706,9 @@
 /turf/open/floor/strata,
 /area/atlan/asteroid/processing_nw_train)
 "fmG" = (
-/obj/effect/decal/cleanable/dirt/alt_dirt,
-/turf/open/floor/strata/floor3/east,
-/area/atlan/station/security)
+/obj/item/clothing/suit/storage/marine/faction/UPP/officer,
+/turf/open/floor/strata/fake_wood,
+/area/atlan/station/admin)
 "fmN" = (
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall{
 	pixel_y = 21
@@ -15268,8 +15268,6 @@
 /obj/structure/safe{
 	spawnkey = 0
 	},
-/obj/item/clothing/suit/storage/marine/faction/UPP/officer,
-/obj/item/clothing/head/uppcap/ushanka,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/strata/blue1,
@@ -15489,6 +15487,10 @@
 "krb" = (
 /turf/open/floor/strata/blue1,
 /area/atlan/station/hab_flight)
+"krc" = (
+/obj/item/clothing/head/uppcap/ushanka,
+/turf/open/floor/strata/fake_wood,
+/area/atlan/station/admin)
 "kre" = (
 /obj/structure/sign/safety/hazard,
 /turf/closed/wall/strata_outpost/reinforced/hull,
@@ -23596,6 +23598,10 @@
 	},
 /turf/open/floor/strata/fake_wood,
 /area/atlan/station/hab_rec)
+"pNL" = (
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/turf/open/floor/strata/floor3/east,
+/area/atlan/station/security)
 "pNT" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -58100,7 +58106,7 @@ xTV
 wdM
 itu
 jEH
-itu
+fmG
 itu
 cuT
 xTV
@@ -58303,7 +58309,7 @@ xTV
 clw
 itu
 dfd
-itu
+krc
 itu
 cxU
 dEC
@@ -58764,7 +58770,7 @@ pnZ
 pnZ
 pnZ
 pnZ
-fmG
+pNL
 trf
 gOH
 wWm

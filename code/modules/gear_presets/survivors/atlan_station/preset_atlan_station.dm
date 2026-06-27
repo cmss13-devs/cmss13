@@ -741,6 +741,20 @@
 
 /datum/equipment_preset/synth/survivor/atlan/engineer/load_gear(mob/living/carbon/human/new_human)
 
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/civi/plant_worker(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/short(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp/alt(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/upp_pfb(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/med_small_stack(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/plasteel/small_stack(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/nailgun(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/maintenance_jack(new_human), WEAR_L_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp/alt(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/color/white/alt(new_human), WEAR_BODY)
 
 	..()
 
@@ -932,17 +946,15 @@
 // CO SURV STATION ADMINISTRATOR
 
 /datum/equipment_preset/survivor/atlan/co_survivor
-	name = "CO Survivor - UPP - Orbital Station Administrator"
+	name = "CO Survivor - UPP - Orbital Station Administrator" // gets UPP UL4 officer  jacket and UL8 ushanka, skills similar to an UPP commisar, cool UPP pistol too
 	assignment = "Menedzher Orbitalnoy Stantsii"
-	job_title =
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	role_comm_title = "UPP Menedzher"
-	paygrades = list(PAY_SHORT_CMBM = JOB_PLAYTIME_TIER_0)
-	minimap_icon = "deputy"
-	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)
-	idtype = /obj/item/card/id/marshal
+	minimap_icon = "upp_plt"
+	minimap_background = "background_upp"
+	faction_group = list(FACTION_SURVIVOR_UPP)
 	faction = FACTION_UPP
-	skills = /datum/skills/cmb/co_survivor
+	skills = /datum/skills/upp/commissar
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_RESEARCH,
@@ -953,30 +965,12 @@
 		ACCESS_CIVILIAN_COMMAND,
 	)
 
-/datum/equipment_preset/survivor/solaris_ridge/co_survivor/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/CM_uniform(new_human), WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster(new_human), WEAR_ACCESSORY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/holobadge/cord(new_human), WEAR_ACCESSORY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(new_human), WEAR_EYES)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/CMB(new_human), WEAR_HEAD)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/cmb/light(new_human), WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine(new_human), WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/swat(new_human), WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CMB/limited(new_human), WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre(new_human), WEAR_IN_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/revolver/cmb/tactical(new_human), WEAR_IN_ACCESSORY)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/cmb/normalpoint(new_human), WEAR_IN_ACCESSORY)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/cmb/normalpoint(new_human), WEAR_IN_ACCESSORY)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/wy(new_human), WEAR_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(new_human), WEAR_R_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/mp5/mp5a5(new_human), WEAR_J_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5(new_human), WEAR_IN_BELT)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5(new_human), WEAR_IN_BELT)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5(new_human), WEAR_IN_BELT)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5(new_human), WEAR_IN_BELT)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5(new_human), WEAR_IN_BELT)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/cmb(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/mgoggles/cmb_riot_shield(new_human), WEAR_IN_BACK)
+/datum/equipment_preset/survivor/atlan/co_survivor/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp, WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/command(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/revolver(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/beret(new_human), WEAR_HEAD)
 	..()

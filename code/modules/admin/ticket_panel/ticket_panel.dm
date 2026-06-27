@@ -553,13 +553,13 @@
 		to_chat(usr, SPAN_WARNING("You need to be an admin or mentor in order to access this panel..."))
 		return
 
-	var/datum/ticket_panel/T = usr.client.ticket_panel
+	var/datum/ticket_panel/ticket_panel = usr.client.ticket_panel
 
-	if(!T)
-		T = new()
-		usr.client.ticket_panel = T
+	if(!ticket_panel)
+		ticket_panel = new()
+		usr.client.ticket_panel = ticket_panel
 
-	T.tgui_interact(usr)
+	ticket_panel.tgui_interact(usr)
 
 #undef ADMIN_TAB
 #undef MENTOR_TAB

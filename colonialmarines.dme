@@ -1983,6 +1983,7 @@
 #include "code\modules\gear_presets\yautja.dm"
 #include "code\modules\gear_presets\survivors\misc.dm"
 #include "code\modules\gear_presets\survivors\survivors.dm"
+#include "code\modules\gear_presets\survivors\atlan_station\preset_atlan_station.dm"
 #include "code\modules\gear_presets\survivors\corsat\preset_corsat.dm"
 #include "code\modules\gear_presets\survivors\fiorina_sciannex\preset_fiorina_sciannex.dm"
 #include "code\modules\gear_presets\survivors\fiorina_sciannex\riot_in_progress_insert_fiorina_nightmare.dm"
@@ -2721,4 +2722,5 @@
 #include "interface\interface.dm"
 #include "interface\skin.dmf"
 #include "maps\_basemap.dm"
+#include "maps\map_files\Atlan_Station\Atlan_Station.dmm"
 // END_INCLUDE

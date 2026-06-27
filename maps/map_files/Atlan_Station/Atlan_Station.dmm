@@ -1,4 +1,24 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aaa" = (
+/obj/item/clothing/head/uppcap/civi/plant_worker,
+/turf/open/floor/strata,
+/area/atlan/station/admin)
+"aab" = (
+/obj/item/clothing/head/uppcap/civi/plant_worker,
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_nw_train)
+"aac" = (
+/obj/item/clothing/mask/rebreather,
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_dock)
+"aad" = (
+/obj/structure/prop/almayer/ship_memorial{
+	name = "slab of triumph";
+	pixel_y = 2;
+	desc = "A large piece of polished limestone, itched into it is; Drathek- thank you for your endless patience and support."
+	},
+/turf/open/space/basic,
+/area/atlan/oob)
 "aax" = (
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/atlan/station/double_dorms)
@@ -7170,10 +7190,6 @@
 /obj/structure/curtain/open/red,
 /turf/open/floor/plating,
 /area/atlan/station/single_dorms)
-"eVr" = (
-/obj/item/clothing/suit/storage/marine/faction/UPP/officer,
-/turf/open/floor/strata/fake_wood,
-/area/atlan/station/admin)
 "eVw" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -27508,10 +27524,6 @@
 	},
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_seperation)
-"sos" = (
-/obj/item/clothing/head/uppcap/ushanka,
-/turf/open/floor/strata/fake_wood,
-/area/atlan/station/admin)
 "soF" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
@@ -56093,7 +56105,7 @@ woX
 woX
 woX
 xCN
-lnR
+aaa
 med
 med
 lnR
@@ -58128,7 +58140,7 @@ xTV
 wdM
 itu
 jEH
-eVr
+itu
 itu
 cuT
 xTV
@@ -58331,7 +58343,7 @@ xTV
 clw
 itu
 dfd
-sos
+itu
 itu
 cxU
 dEC
@@ -60557,7 +60569,7 @@ mkk
 bag
 cwE
 mkk
-mkk
+aab
 lpW
 mkk
 mkk
@@ -68868,7 +68880,7 @@ dIA
 dIA
 dIA
 uBv
-hLh
+aac
 mdE
 qHd
 mCM
@@ -78149,7 +78161,7 @@ obO
 obO
 obO
 obO
-obO
+aad
 obO
 obO
 obO
@@ -79164,7 +79176,7 @@ obO
 obO
 obO
 obO
-obO
+aad
 obO
 obO
 obO

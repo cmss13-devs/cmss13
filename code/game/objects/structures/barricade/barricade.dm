@@ -44,8 +44,6 @@
 	var/metallic = TRUE
 	/// Lower limit of damage beyond which the barricade cannot be fixed by welder. Compared to damage_state. If null it can be repaired at any damage_state.
 	var/welder_lower_damage_limit = null
-	/// Check if cade is on acid, if yes, do not leave debris after melting.
-	var/on_acid = FALSE
 
 /obj/structure/barricade/Initialize(mapload, mob/user)
 	. = ..()
@@ -323,7 +321,7 @@
 
 	return TRUE
 
-/obj/structure/barricade/deconstruct(disassembled = TRUE)
+/obj/structure/barricade/deconstruct(disassembled = TRUE, debris = TRUE)
 	if(disassembled)
 		if(is_wired)
 			new /obj/item/stack/barbed_wire(loc)
@@ -332,10 +330,10 @@
 			stack_amt = floor(stack_amount * (health/starting_maxhealth)) //Get an amount of sheets back equivalent to remaining health. Obviously, fully destroyed means 0
 			if(upgraded)
 				stack_amt += floor(2 * (health/starting_maxhealth))
-			if(stack_amt)
+			if(stack_amt && debris)
 				new stack_type(loc, stack_amt)
 	else
-		if(!on_acid && destroyed_stack_amount)
+		if(destroyed_stack_amount)
 			new stack_type(loc, destroyed_stack_amount)
 	return ..()
 
@@ -379,7 +377,7 @@
 	update_icon()
 
 /obj/structure/barricade/acid_spray_act()
-	take_damage((25 * burn_multiplier), TRUE)
+	take_damage(25 * burn_multiplier)
 	visible_message(SPAN_WARNING("[src] is hit by the acid spray!"))
 	new /datum/effects/acid(src, null, null)
 
@@ -389,15 +387,15 @@
 /obj/structure/barricade/proc/hit_barricade(obj/item/item)
 	take_damage(item.force * item.demolition_mod * 0.5 * brute_multiplier)
 
-/obj/structure/barricade/proc/take_damage(damage, acided = FALSE)
+/obj/structure/barricade/proc/take_damage(damage)
 	for(var/obj/structure/barricade/barricade in get_step(src,dir)) //discourage double-stacking barricades by removing health from opposing barricade
 		if(barricade.dir == reverse_direction(dir))
 			barricade.update_health(damage)
 
 	update_health(damage)
 
-/obj/structure/barricade/proc/take_acid_damage(damage)
-	take_damage((damage * burn_multiplier), TRUE)
+/obj/structure/barricade/corrosive_acid_act(damage)
+	take_damage(damage * burn_multiplier)
 
 /obj/structure/barricade/update_health(damage, nomessage)
 	health -= damage

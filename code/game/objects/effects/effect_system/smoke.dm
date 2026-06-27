@@ -562,7 +562,7 @@
 /obj/effect/particle_effect/smoke/xeno_burn/apply_smoke_effect(turf/cur_turf)
 	..()
 	for(var/obj/structure/barricade/barricade in cur_turf)
-		barricade.take_acid_damage(XENO_ACID_GAS_BARRICADE_DAMAGE)
+		barricade.corrosive_acid_act(XENO_ACID_GAS_BARRICADE_DAMAGE)
 		if(prob(75)) // anti sound spam
 			playsound(src, pick("acid_sizzle", "acid_hit"), 25)
 

@@ -6,17 +6,21 @@
     "weather_holder": "/datum/weather_ss_map_holder/new_varadero",
 
     "survivor_types": [
-        "/datum/equipment_preset/survivor/scientist/nv",
-        "/datum/equipment_preset/survivor/doctor/nv",
-        "/datum/equipment_preset/survivor/hybrisa/paramedic",
-        "/datum/equipment_preset/survivor/chaplain/nv",
-        "/datum/equipment_preset/survivor/engineer/nv",
-        "/datum/equipment_preset/survivor/trucker/nv",
-        "/datum/equipment_preset/survivor/interstellar_commerce_commission_liaison/nv",
-        "/datum/equipment_preset/survivor/security/nv",
+        "/datum/equipment_preset/survivor/new_varadero/lacn_police",
+        "/datum/equipment_preset/survivor/new_varadero/lacn_marine",
+        "/datum/equipment_preset/survivor/new_varadero/doctor",
+        "/datum/equipment_preset/survivor/new_varadero/vhccrew",
+        "/datum/equipment_preset/survivor/new_varadero/cargotech",
+        "/datum/equipment_preset/survivor/new_varadero/groundcrew",
+        "/datum/equipment_preset/survivor/new_varadero/pilot",
+        "/datum/equipment_preset/survivor/new_varadero/scientist",
+        "/datum/equipment_preset/survivor/new_varadero/scientist_xenoarchaeologist",
+        "/datum/equipment_preset/survivor/new_varadero/scientist_xenobiologist",
+        "/datum/equipment_preset/survivor/new_varadero/rd",
+        "/datum/equipment_preset/survivor/new_varadero/assrep",
+        "/datum/equipment_preset/survivor/new_varadero/labass",
+        "/datum/equipment_preset/survivor/new_varadero/chaplain",
         "/datum/equipment_preset/survivor/beachbum",
-        "/datum/equipment_preset/survivor/civilian",
-        "/datum/equipment_preset/survivor/civilian_unique",
         "/datum/equipment_preset/survivor/hybrisa/kelland_miner"
     ],
 	"CO_survivor_types": [
@@ -32,7 +36,7 @@
         580,
         0.0
     ],
-    "survivor_message": "The stench of burning phoron still lingers in the coastal breeze of New Varadero, that beast's dying mad cackling still ring through your mind as you begin to process that you are now one of few survivors left on these battle worn shores. Through sheer cunning, aided by United American fire power, you've managed to survive against a now dead lone spector and a ceaseless swarms of aliens... the cry of a new mother snaps you back to reality. Its only a matter of time before another acidc wave of those aliens attempts to wash over you.",
+    "survivor_message": "The stench of burning phoron still lingers in the salty evening breeze of the ruined New Varadero Naval Base, The spector's dying cackle echos through your mind as you realise that you're now one of just a handful of living people left standing on these battle worn shores. Through sheer cunning, grit, and United American fire power, you've managed to survive against both a ceaseless tides of aliens and a now slain lone spector... the cry of a new mother snaps you back to reality. Its only a matter of time before another acidc wave of those horrid aliens attempts to wash over you.",
     "co_briefing": {
         "Hawks": "maps/map_briefings/commanding_officer/new_varadero/NEWVARADEROcpo.html",
         "Doves": "maps/map_briefings/commanding_officer/new_varadero/NEWVARADEROhmm.html",

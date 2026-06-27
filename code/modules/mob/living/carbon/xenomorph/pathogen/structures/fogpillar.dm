@@ -28,6 +28,8 @@
 /obj/effect/alien/resin/special/fogger/Destroy()
 	for(var/cloud in fog_clouds)
 		qdel(cloud)
+	fog_clouds.Cut()
+
 	SSminimaps.remove_marker(src)
 	. = ..()
 

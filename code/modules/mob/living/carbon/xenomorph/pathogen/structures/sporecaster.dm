@@ -9,6 +9,8 @@
 	health = 400
 	appearance_flags = KEEP_TOGETHER
 	layer = FACEHUGGER_LAYER
+	pixel_x = -12
+	pixel_y = -24
 
 	///How many spore clouds are stored in the sporecaster currently.
 	var/stored_sporeclouds = 0

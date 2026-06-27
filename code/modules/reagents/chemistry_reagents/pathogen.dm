@@ -60,6 +60,7 @@
 	dead.set_species(SPECIES_PATHO_WALKER)
 	var/datum/species/pathogen_walker/walker = GLOB.all_species[SPECIES_PATHO_WALKER]
 	walker.handle_alert_ghost(dead)
+	walker.override_equipment(dead)
 	return TRUE
 
 /datum/chem_property/special/mycotainted

@@ -6,8 +6,8 @@
     "survivor_types": [
         "/datum/equipment_preset/survivor/scientist/soro",
         "/datum/equipment_preset/survivor/doctor/soro",
-	    "/datum/equipment_preset/survivor/hyperdyne",
         "/datum/equipment_preset/survivor/cec_liaison",
+	    "/datum/equipment_preset/survivor/hyperdyne",
         "/datum/equipment_preset/survivor/engineer/soro_industry_contractor",
         "/datum/equipment_preset/survivor/engineer/soro_reactor_tech",
         "/datum/equipment_preset/survivor/peoples_armed_police",
@@ -37,7 +37,7 @@
         875,
         0.0
     ],
-    "survivor_message": "You're a resident of Atlan Station, a UPP mining platform over the gas giant KG-256. One of the mining skiffs picked up something while in atmosphere and it erupted during handling. While the station was quickly overwhelmed you've managed to hide or fight for this long...",
+    "survivor_message": "You're a resident of Atlan Station, a UPP mining platform over the gas giant KG-256. One of the mining skiffs picked up something while in atmosphere and it erupted during handling. While the station was quickly overwhelmed by the beasts, you've managed to hide or fight for this long...",
     "co_briefing": {
         "Hawks": "maps/map_briefings/commanding_officer/atlan_station/ATLANcpo.html",
         "Doves": "maps/map_briefings/commanding_officer/atlan_station/ATLANhmm.html",

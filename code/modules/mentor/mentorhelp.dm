@@ -501,7 +501,7 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 		author.current_mhelp = src
 
 	log_mhelp("[usr.key] reopened [author_key]'s mentorhelp thread")
-	notify("<font style='color:green;'>[usr.key]</font> has reopened this mentorhelp thread.",
+	notify("[SPAN_GREEN(usr.key)] has reopened this mentorhelp thread.",
 		unformatted_text = "[usr.key] has reopened this mentorhelp thread.")
 
 // Closes the thread and notifies the author/mentor that it has been closed
@@ -511,7 +511,7 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 
 	// Thread was closed because the author is gone
 	if(!author)
-		notify("<font style='color:red;'>[author_key]</font>'s mentorhelp thread has been closed due to the author disconnecting.")
+		notify("[SPAN_RED(author_key)]'s mentorhelp thread has been closed due to the author disconnecting.")
 		log_mhelp("[author_key]'s mentorhelp thread was closed because of a disconnection")
 		return
 
@@ -534,11 +534,11 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 		log_mhelp("[closer.key] closed [author_key]'s mentorhelp")
 		if(closer == author)
 			to_chat(author, SPAN_NOTICE("You have closed your mentorhelp thread."))
-			notify("<font style='color:red;'>[author_key]</font> closed their mentorhelp thread.",
+			notify("[SPAN_RED(author_key)] closed their mentorhelp thread.",
 				unformatted_text = "[author_key] closed their mentorhelp thread.")
 			return
 	to_chat(author, SPAN_NOTICE("Your mentorhelp thread has been closed."))
-	notify("<font style='color:red;'>[author_key]</font>'s mentorhelp thread has been closed.",
+	notify("[SPAN_RED(author_key)]'s mentorhelp thread has been closed.",
 			unformatted_text = "[author_key]'s mentorhelp thread has been closed.")
 	closed_at = world.time
 	time_activity["closed_at"] = "[worldtime2text(closed_at)]"
@@ -685,7 +685,7 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 
 	new /datum/admin_help(message, author, FALSE)
 
-	notify("<font style='color:red;'>[deferrer.key]</font> deferred this ticket to admins.",
+	notify("[SPAN_RED(deferrer.key)] deferred this ticket to admins.",
 		unformatted_text = "[deferrer.key] deferred this ticket to admins.")
 	to_chat(author, SPAN_MENTORHELP("Your ticket has been deferred to Admins."))
 	log_mhelp("[deferrer.key] deferred [author_key]'s mentorhelp to admins.")

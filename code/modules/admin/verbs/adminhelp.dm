@@ -257,9 +257,9 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 	player_interactions = list()
 
 	if(is_bwoink)
-		AddInteraction("<font color='blue'>[key_name_admin(usr)] PM'd [LinkedReplyName()]</font>",
+		AddInteraction(SPAN_BLUE("[key_name_admin(usr)] PM'd [LinkedReplyName()]"),
 		plain_message = "[initiator.ckey] PM'd [initiator_key_name]")
-		message_admins("<font color='blue'>Ticket [TicketHref("#[id]")] created</font>")
+		message_admins(SPAN_BLUE("Ticket [TicketHref("#[id]")] created"))
 	else
 		MessageNoRecipient(msg_raw, urgent)
 		send_message_to_external(msg, urgent)
@@ -459,7 +459,7 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 	//Message to be sent to all admins
 	var/admin_msg = SPAN_ADMINSAY(SPAN_ADMINHELP("Ticket [TicketHref("#[id]", ref_src)]</span><b>: [LinkedReplyName(ref_src)] [FullMonty(ref_src)]</b><br> <span class='linkify'>[msg]"))
 
-	AddInteraction("<font color='red'>[LinkedReplyName(ref_src)]: [msg]</font>",
+	AddInteraction(SPAN_RED("[LinkedReplyName(ref_src)]: [msg]"),
 		plain_message = "[msg]", message_type = "legacy")
 	log_admin_private("Ticket #[id]: [key_name(initiator)]: [msg]")
 
@@ -506,7 +506,7 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 	if(initiator)
 		initiator.current_ticket = src
 
-	AddInteraction("<font color='purple'>Reopened by [key_name_admin(usr)]</font>",
+	AddInteraction(SPAN_PURPLE("Reopened by [key_name_admin(usr)]"),
 	plain_message = "Reopened by [usr.key]", message_type = "system")
 	var/msg = SPAN_ADMINHELP("Ticket [TicketHref("#[id]")] reopened by [key_name_admin(usr)].")
 	message_admins(msg)
@@ -538,7 +538,7 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 	RemoveActive()
 	state = AHELP_CLOSED
 	GLOB.ahelp_tickets.ListInsert(src)
-	AddInteraction("<font color='red'>Closed by [key_name].</font>", plain_message = "Closed by [usr.key]", message_type = "system")
+	AddInteraction(SPAN_RED("Closed by [key_name]."), plain_message = "Closed by [usr.key]", message_type = "system")
 	if(!silent)
 		var/msg = "Ticket [TicketHref("#[id]")] closed by [key_name]."
 		message_admins(msg)
@@ -561,7 +561,7 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 
 	addtimer(CALLBACK(initiator, /client/proc/giveadminhelpverb), 50)
 
-	AddInteraction("<font color='green'>Resolved by [key_name].</font>",
+	AddInteraction(SPAN_GREEN("Resolved by [key_name]."),
 	plain_message = "Resolved by [usr.key]", message_type = "system")
 	to_chat(initiator, SPAN_ADMINHELP("Your ticket has been resolved by an admin. The Adminhelp verb will be returned to you shortly."), confidential = TRUE)
 	if(!silent)
@@ -653,8 +653,8 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 
 		SEND_SOUND(initiator, sound('sound/effects/adminhelp_new.ogg'))
 
-		to_chat(initiator, "<font color='red' size='4'><b>- AdminHelp Rejected! -</b></font>", confidential = TRUE)
-		to_chat(initiator, "<font color='red'><b>Your admin help was rejected.</b> The adminhelp verb has been returned to you so that you may try again.</font>", confidential = TRUE)
+		to_chat(initiator, SPAN_HIGHDANGER("- AdminHelp Rejected! -"), confidential = TRUE)
+		to_chat(initiator, SPAN_DANGER("<b>Your admin help was rejected.</b> The adminhelp verb has been returned to you so that you may try again."), confidential = TRUE)
 		to_chat(initiator, "Please try to be calm, clear, and descriptive in admin helps, do not assume the admin has seen any related events, and clearly state the names of anybody you are reporting.", confidential = TRUE)
 
 	var/msg = "Ticket [TicketHref("#[id]")] rejected by [key_name]"
@@ -685,8 +685,8 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 	if(!response || !istype(response))
 		return
 
-	var/msg = "<font color='red' size='4'><b>- AdminHelp marked as [response.title]! -</b></font><br>"
-	msg += "<font color='red'>[response.message]</font>"
+	var/msg = "[SPAN_HIGHDANGER("- AdminHelp marked as [response.title]! -")]<br>"
+	msg += SPAN_DANGER("[response.message]")
 
 	if(initiator)
 		to_chat(initiator, msg, confidential = TRUE)
@@ -740,9 +740,9 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 /datum/admin_help/proc/ticket_status()
 	switch(state)
 		if(AHELP_ACTIVE)
-			return "<font color='red'>OPEN</font>"
+			return SPAN_RED("OPEN")
 		if(AHELP_RESOLVED)
-			return "<font color='green'>RESOLVED</font>"
+			return SPAN_GREEN("RESOLVED")
 		if(AHELP_CLOSED)
 			return "CLOSED"
 		else
@@ -811,9 +811,9 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 	dat += "<b>State: "
 	switch(state)
 		if(AHELP_ACTIVE)
-			dat += "<font color='red'>OPEN</font></b>"
+			dat += "[SPAN_RED("OPEN")]</b>"
 		if(AHELP_RESOLVED)
-			dat += "<font color='green'>RESOLVED</font></b>"
+			dat += "[SPAN_GREEN("RESOLVED")]</b>"
 		if(AHELP_CLOSED)
 			dat += "CLOSED</b>"
 		else

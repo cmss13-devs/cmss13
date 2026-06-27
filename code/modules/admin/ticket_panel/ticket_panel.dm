@@ -42,7 +42,7 @@
 	return info
 
 
-/datum/ticket_panel/proc/format_adminhelp_ticket(datum/admin_help/AH)
+/datum/ticket_panel/proc/format_adminhelp_ticket(datum/admin_help/AH, client/viewer = null)
 	var/status = AH.state == AHELP_ACTIVE ? "open" : AH.state == AHELP_RESOLVED ? "resolved" : "closed" // just setting some readable names, I suppose
 
 	var/list/formatted_responses = list()
@@ -63,7 +63,7 @@
 		"closed_at" = AH.time_activity["closed_at"],
 		"claimed_by" = AH.marked_admin,
 		"all_responses" = formatted_responses,
-		"viewer_is_claiming" = (AH.marked_admin == usr.ckey ? TRUE : FALSE),
+		"viewer_is_claiming" = (AH.marked_admin == (viewer ? viewer.ckey : usr?.ckey) ? TRUE : FALSE),
 		"is_archived" = (AH.state != AHELP_ACTIVE),
 		"ic_name" = player_info ? player_info["ic_name"] : null,
 		"faction" = player_info ? player_info["faction"] : null,
@@ -148,13 +148,13 @@
 
 	if(CLIENT_IS_STAFF(user.client))
 		for(var/datum/admin_help/AH in GLOB.ahelp_tickets.active_tickets)
-			data["admin_open_tickets"] += list(format_adminhelp_ticket(AH))
+			data["admin_open_tickets"] += list(format_adminhelp_ticket(AH, C))
 
 		for(var/datum/admin_help/AH in GLOB.ahelp_tickets.closed_tickets)
-			data["admin_archived_tickets"] += list(format_adminhelp_ticket(AH))
+			data["admin_archived_tickets"] += list(format_adminhelp_ticket(AH, C))
 
 		for(var/datum/admin_help/AH in GLOB.ahelp_tickets.resolved_tickets)
-			data["admin_archived_tickets"] += list(format_adminhelp_ticket(AH))
+			data["admin_archived_tickets"] += list(format_adminhelp_ticket(AH, C))
 
 	for(var/id in GLOB.mentorhelp_manager.active_tickets)
 		var/datum/mentorhelp/MH = GLOB.mentorhelp_manager.get_ticket_by_id(id)
@@ -173,10 +173,12 @@
 	if(.)
 		return
 
-	var/client/parent_client = ui.user.client
-	var/mob/parent_mob = ui.user
+	var/client/current_client = ui.user.client
+	var/client/parent_client = current_client
+	var/mob/current_mob = ui.user
+	var/mob/parent_mob = current_mob
 
-	if(!CLIENT_IS_STAFF(parent_client))
+	if(!CLIENT_IS_STAFF(current_client))
 		selected_tab = MENTOR_TAB
 
 	switch(action)
@@ -184,7 +186,7 @@
 			return TRUE
 
 		if("select_tab")
-			if(params["tab"] == ADMIN_TAB && !CLIENT_IS_STAFF(usr.client))
+			if(params["tab"] == ADMIN_TAB && !CLIENT_IS_STAFF(current_client))
 				return FALSE
 			if(!current_client.ticket_panel)
 				parent_client.ticket_panel = new /datum/ticket_panel()
@@ -199,8 +201,8 @@
 			return TRUE
 
 		if("start_adminhelp")
-			if(!CLIENT_IS_STAFF(C))
-				tgui_alert(usr, "Silly! You need to be an admin to use this feature.")
+			if(!CLIENT_IS_STAFF(current_client))
+				tgui_alert(parent_mob, "Silly! You need to be an admin to use this feature.")
 				return FALSE
 
 			var/list/possible_targets = list()
@@ -210,25 +212,25 @@
 				possible_targets[target] = "[target.key]"
 
 			if(!LAZYLEN(possible_targets))
-				tgui_alert(usr, "No players available to message.")
+				tgui_alert(parent_mob, "No players available to message.")
 				return FALSE
 
-			var/client/target = tgui_input_list(usr, "Select a player to message:", "New Adminhelp", possible_targets)
+			var/client/target = tgui_input_list(parent_mob, "Select a player to message:", "New Adminhelp", possible_targets)
 			if(!target || !istype(target) || !target.mob)
 				return FALSE
 
 			if(istype(target.current_ticket) && target.current_ticket.state == AHELP_ACTIVE)
-				C.ticket_panel.selected_tab = ADMIN_TAB
-				C.ticket_panel.selected_ticket = target.current_ticket.id
+				parent_client.ticket_panel.selected_tab = ADMIN_TAB
+				parent_client.ticket_panel.selected_ticket = target.current_ticket.id
 				to_chat(parent_mob, SPAN_NOTICE("Switched to existing admin ticket for [target.key]"))
 				return TRUE
 
-			C.cmd_admin_pm(target, null)
+			parent_client.cmd_admin_pm(target, null)
 			return TRUE
 
 		if("start_mentorhelp")
-			if(!CLIENT_IS_MENTOR(C) && !CLIENT_IS_STAFF(C))
-				tgui_alert(usr, "You need to be a mentor or admin to use this feature.")
+			if(!CLIENT_IS_MENTOR(current_client) && !CLIENT_IS_STAFF(current_client))
+				tgui_alert(parent_mob, "You need to be a mentor or admin to use this feature.")
 				return FALSE
 
 			var/list/possible_targets = list()
@@ -238,39 +240,39 @@
 				possible_targets[target] = "[target.key]"
 
 			if(!LAZYLEN(possible_targets))
-				tgui_alert(usr, "No non-staff players available to message.")
+				tgui_alert(parent_mob, "No non-staff players available to message.")
 				return FALSE
 
-			var/client/target = tgui_input_list(usr, "Select a player to message:", "New Mentorhelp", possible_targets)
+			var/client/target = tgui_input_list(parent_mob, "Select a player to message:", "New Mentorhelp", possible_targets)
 			if(!target || !istype(target) || !target.mob)
 				return FALSE
 
 			if(istype(target.current_mhelp) && target.current_mhelp.open)
-				C.ticket_panel.selected_tab = MENTOR_TAB
-				C.ticket_panel.selected_ticket = target.current_mhelp.id
-				to_chat(usr, "<span class='notice'>Switched to existing mentor ticket for [target.key]</span>")
+				parent_client.ticket_panel.selected_tab = MENTOR_TAB
+				parent_client.ticket_panel.selected_ticket = target.current_mhelp.id
+				to_chat(parent_mob, SPAN_NOTICE("Switched to existing mentor ticket for [target.key]"))
 				return TRUE
 
 			if(GLOB.mentorhelp_manager.get_active_ticket_by_ckey(target.ckey))
-				to_chat(usr, SPAN_WARNING("This user already has an open mentor ticket. Please close it first or use the existing one."), confidential = TRUE)
+				to_chat(current_mob, SPAN_WARNING("This user already has an open mentor ticket. Please close it first or use the existing one."), confidential = TRUE)
 				return FALSE
 
-			var/msg = tgui_input_text(usr, "Enter your message:", "New Mentorhelp")
+			var/msg = tgui_input_text(current_mob, "Enter your message:", "New Mentorhelp")
 			if(!msg)
 				return FALSE
 
 			var/datum/mentorhelp/MH = GLOB.mentorhelp_manager.create_ticket(target, msg)
-			MH.notify("<font color='purple'>[usr.key] started a mentor conversation with [target.key]</font>",
-				unformatted_text = "[usr.key] started a mentor conversation with [target.key]")
+			MH.notify(SPAN_PURPLE("[current_mob.key] started a mentor conversation with [target.key]"),
+				unformatted_text = "[parent_mob.key] started a mentor conversation with [target.key]")
 			MH.initial_message = msg
-			MH.mark(C)
-			MH.Respond(msg, C)
+			MH.mark(parent_client)
+			MH.Respond(msg, parent_client)
 
 			return TRUE
 
 		if("open_player_panel")
-			if(!M.client.admin_holder)
-				to_chat(usr, SPAN_WARNING("You don't have permission to open a player panel."))
+			if(!current_client.admin_holder)
+				to_chat(parent_mob, SPAN_WARNING("You don't have permission to open a player panel."))
 				return FALSE
 
 			var/mob/player
@@ -280,22 +282,22 @@
 				if(ADMIN_TAB)
 					var/datum/admin_help/AH = GLOB.ahelp_tickets.TicketByID(ticket_id)
 					if(!istype(AH))
-						to_chat(usr, SPAN_WARNING("Invalid admin ticket selected."))
+						to_chat(current_mob, SPAN_WARNING("Invalid admin ticket selected."))
 						return FALSE
 					player = AH.initiator.mob
 
 				if(MENTOR_TAB)
 					var/datum/mentorhelp/MH = mentorhelp_by_id(ticket_id)
 					if(!istype(MH))
-						to_chat(usr, SPAN_WARNING("Invalid mentor ticket selected."))
+						to_chat(current_mob, SPAN_WARNING("Invalid mentor ticket selected."))
 						return FALSE
 					player = MH.author.mob
 
 			if(!player || !player.ckey)
-				to_chat(usr, SPAN_WARNING("Could not find player associated with this ticket."))
+				to_chat(current_mob, SPAN_WARNING("Could not find player associated with this ticket."))
 				return FALSE
 
-			M.client.admin_holder.show_player_panel(player)
+			current_client.admin_holder.show_player_panel(player)
 			return TRUE
 
 		if("autoreply")
@@ -308,7 +310,7 @@
 			else
 				var/datum/mentorhelp/MH = mentorhelp_by_id(ticket_id)
 				if(MH)
-					MH.autoresponse(M.client)
+					MH.autoresponse(current_client)
 					return TRUE
 
 		if("reopen_ticket")
@@ -316,16 +318,16 @@
 			if(selected_tab == ADMIN_TAB)
 				var/datum/admin_help/AH = GLOB.ahelp_tickets.TicketByID(ticket_id)
 				if(!AH)
-					to_chat(usr, SPAN_WARNING("Invalid admin ticket selected."))
+					to_chat(current_mob, SPAN_WARNING("Invalid admin ticket selected."))
 					return FALSE
 
 				var/client/target = AH.initiator
 				if(!target)
-					to_chat(usr, SPAN_WARNING("Could not find player associated with this ticket."))
+					to_chat(current_mob, SPAN_WARNING("Could not find player associated with this ticket."))
 					return FALSE
 
 				if(target.current_ticket && target.current_ticket.state == AHELP_ACTIVE)
-					to_chat(usr, SPAN_WARNING("This user already has an open ticket. Please close it first or use the existing one."), confidential = TRUE)
+					to_chat(current_mob, SPAN_WARNING("This user already has an open ticket. Please close it first or use the existing one."), confidential = TRUE)
 					return FALSE
 				AH.Reopen()
 
@@ -333,11 +335,11 @@
 			else
 				var/datum/mentorhelp/MH = mentorhelp_by_id(ticket_id)
 				if(!MH)
-					to_chat(usr, SPAN_WARNING("Invalid mentor ticket selected."))
+					to_chat(current_mob, SPAN_WARNING("Invalid mentor ticket selected."))
 					return FALSE
 
 				if(GLOB.mentorhelp_manager.get_active_ticket_by_ckey(MH.author_key))
-					to_chat(usr, SPAN_WARNING("This user already has an open mentor ticket. Please close it first or use the existing one."), confidential = TRUE)
+					to_chat(current_mob, SPAN_WARNING("This user already has an open mentor ticket. Please close it first or use the existing one."), confidential = TRUE)
 					return FALSE
 
 				MH.reopen()
@@ -350,31 +352,31 @@
 				if(ADMIN_TAB)
 					var/datum/admin_help/AH = GLOB.ahelp_tickets.TicketByID(ticket_id)
 					if(AH)
-						if(AH.marked_admin && AH.marked_admin != usr.ckey)
-							to_chat(usr, SPAN_WARNING("You don't have permission to close this ticket."))
+						if(AH.marked_admin && AH.marked_admin != current_mob.ckey)
+							to_chat(current_mob, SPAN_WARNING("You don't have permission to close this ticket."))
 							return
 						if(AH.state != AHELP_ACTIVE)
-							to_chat(usr, SPAN_WARNING("This ticket is already [AH.state == AHELP_RESOLVED ? "resolved" : "closed"]."))
+							to_chat(current_mob, SPAN_WARNING("This ticket is already [AH.state == AHELP_RESOLVED ? "resolved" : "closed"]."))
 							return
-						AH.Resolve(usr.ckey, FALSE)
-						message_admins("[key_name_admin(usr)] closed ticket #[ticket_id]")
-						log_admin("Ticket #[ticket_id] closed by [key_name(usr)]")
+						AH.Resolve(current_mob.ckey, FALSE)
+						message_admins("[key_name_admin(current_mob)] closed ticket #[ticket_id]")
+						log_admin("Ticket #[ticket_id] closed by [key_name(current_mob)]")
 				if(MENTOR_TAB)
 					var/datum/mentorhelp/MH = mentorhelp_by_id(ticket_id)
 					if(MH)
 						if(!MH.open)
-							to_chat(usr, SPAN_WARNING("This mentor ticket is already closed."))
+							to_chat(current_mob, SPAN_WARNING("This mentor ticket is already closed."))
 							return
 
-						if(MH.mentor && MH.mentor.ckey != usr.ckey && !CLIENT_IS_STAFF(usr.client))
-							to_chat(usr, SPAN_WARNING("You don't have permission to close this ticket."))
+						if(MH.mentor && MH.mentor.ckey != current_mob.ckey && !CLIENT_IS_STAFF(current_client))
+							to_chat(current_mob, SPAN_WARNING("You don't have permission to close this ticket."))
 							return
 
-						MH.close(usr.client)
-						message_mentors("[key_name_admin(usr)] closed mentor ticket from [MH.author_key]")
-						log_admin_private("Mentor ticket from [MH.author_key] closed by [key_name(usr)]")
+						MH.close(current_client)
+						message_mentors("[key_name_admin(current_mob)] closed mentor ticket from [MH.author_key]")
+						log_admin_private("Mentor ticket from [MH.author_key] closed by [key_name(current_mob)]")
 					else
-						to_chat(usr, SPAN_WARNING("This ticket does not exist or has been deleted."))
+						to_chat(current_mob, SPAN_WARNING("This ticket does not exist or has been deleted."))
 			return TRUE
 
 		if("claim_ticket")
@@ -384,28 +386,28 @@
 					var/datum/admin_help/AH = GLOB.ahelp_tickets.TicketByID(ticket_id)
 					if(AH)
 						if(AH.marked_admin)
-							if(AH.marked_admin == usr.ckey)
+							if(AH.marked_admin == current_mob.ckey)
 								AH.unmark_ticket()
-								message_admins("[key_name_admin(usr)] unclaimed ticket #[ticket_id]")
+								message_admins("[key_name_admin(current_mob)] unclaimed ticket #[ticket_id]")
 							else
-								AH.mark_ticket(M)
+								AH.mark_ticket(current_mob)
 						else
-							AH.mark_ticket(M)
-							message_admins("[key_name_admin(usr)] claimed ticket #[ticket_id]")
+							AH.mark_ticket(current_mob)
+							message_admins("[key_name_admin(current_mob)] claimed ticket #[ticket_id]")
 				else
 					var/datum/mentorhelp/MH = mentorhelp_by_id(ticket_id)
 					if(!MH)
 						return FALSE
 
 					if(MH.mentor)
-						if(MH.mentor.ckey == usr.ckey)
-							MH.unmark(usr.client)
-							message_mentors("[key_name_admin(usr)] unclaimed mentor ticket from [MH.author_key]")
+						if(MH.mentor.ckey == current_mob.ckey)
+							MH.unmark(current_client)
+							message_mentors("[key_name_admin(current_mob)] unclaimed mentor ticket from [MH.author_key]")
 						else
-							MH.mark(usr.client)
+							MH.mark(current_mob)
 					else
-						MH.mark(usr.client)
-						message_mentors("[key_name_admin(usr)] claimed mentor ticket from [MH.author_key]")
+						MH.mark(current_mob)
+						message_mentors("[key_name_admin(current_mob)] claimed mentor ticket from [MH.author_key]")
 
 			return TRUE
 
@@ -419,7 +421,7 @@
 				if(MENTOR_TAB)
 					var/datum/mentorhelp/MH = mentorhelp_by_id(ticket_id)
 					if(MH)
-						MH.defer_to_admins(usr.client)
+						MH.defer_to_admins(current_client)
 			return TRUE
 
 		if("reply_ticket")
@@ -427,19 +429,19 @@
 			if(!ticket_id)
 				return
 
-			var/message = tgui_input_text(M, "Enter your response:", "Reply to Ticket", multiline = TRUE)
-			if(!message || !M.client)
+			var/message = tgui_input_text(current_mob, "Enter your response:", "Reply to Ticket", multiline = TRUE)
+			if(!message || !current_mob.client)
 				return
 
 			if(selected_tab == ADMIN_TAB)
 				var/datum/admin_help/AH = GLOB.ahelp_tickets.TicketByID(ticket_id)
 				if(AH)
-					M.client.cmd_admin_pm(AH.initiator, message)
+					current_client.cmd_admin_pm(AH.initiator, message)
 
 			else
 				var/datum/mentorhelp/MH = mentorhelp_by_id(ticket_id)
 				if(MH)
-					MH.Respond(message, M.client)
+					MH.Respond(message, current_client)
 
 			return TRUE
 
@@ -451,50 +453,50 @@
 			if(selected_tab == ADMIN_TAB)
 				var/datum/admin_help/AH = GLOB.ahelp_tickets.TicketByID(ticket_id)
 				if(AH)
-					var/new_subject = tgui_input_text(usr, "Enter a subject for this ticket:", "Set Ticket Subject", AH.subject, 100)
+					var/new_subject = tgui_input_text(current_mob, "Enter a subject for this ticket:", "Set Ticket Subject", AH.subject, 100)
 					if(!new_subject)
 						return
-					AH.set_subject(new_subject, usr.client)
+					AH.set_subject(new_subject, current_client)
 			else
 				var/datum/mentorhelp/MH = mentorhelp_by_id(ticket_id)
 				if(!MH)
-					to_chat(usr, SPAN_WARNING("This ticket does not exist."))
+					to_chat(current_mob, SPAN_WARNING("This ticket does not exist."))
 					return
-				var/new_subject = tgui_input_text(usr, "Enter a subject for this ticket:", "Set Ticket Subject", MH.subject, 100)
+				var/new_subject = tgui_input_text(current_mob, "Enter a subject for this ticket:", "Set Ticket Subject", MH.subject, 100)
 				if(!new_subject)
 					return
-				MH.set_subject(new_subject, M.client)
+				MH.set_subject(new_subject, current_mob.client)
 			return TRUE
 
 		if("get_author_notes")
-			if(!check_rights(R_BAN))
-				to_chat(usr, SPAN_NOTICE("You don't have permission to view author notes."))
+			if(!check_client_rights(current_client, R_BAN))
+				to_chat(current_mob, SPAN_NOTICE("You don't have permission to view author notes."))
 				return FALSE
 
 			if(!(selected_tab == ADMIN_TAB))
-				to_chat(usr, SPAN_WARNING("You can only view author notes from admin tickets."))
+				to_chat(current_mob, SPAN_WARNING("You can only view author notes from admin tickets."))
 				return FALSE
 
 			var/ticket_id = text2num(params["ticket_id"])
 			var/datum/admin_help/AH = GLOB.ahelp_tickets.TicketByID(ticket_id)
 			if(!AH)
-				to_chat(usr, SPAN_WARNING("Unable to find ticket."))
+				to_chat(current_mob, SPAN_WARNING("Unable to find ticket."))
 				return FALSE
 
 			var/mob/noted_mob = AH.initiator.mob
 			if(!noted_mob || !noted_mob.ckey)
-				to_chat(usr, SPAN_WARNING("Unable to find mob."))
+				to_chat(current_mob, SPAN_WARNING("Unable to find mob."))
 				return FALSE
 
 			var/datum/player_action/show_notes = GLOB.pp_actions["show_notes"]
 			if(show_notes)
-				show_notes.act(usr.client, noted_mob)
+				show_notes.act(current_client, noted_mob)
 
 			return TRUE
 
 		if("ban_author")
-			if(!check_rights(R_BAN))
-				to_chat(usr, SPAN_WARNING("You don't have permission to ban players."))
+			if(!check_client_rights(current_client, R_BAN))
+				to_chat(current_mob, SPAN_WARNING("You don't have permission to ban players."))
 				return FALSE
 
 			var/ticket_id = text2num(params["ticket_id"])
@@ -505,19 +507,19 @@
 			if(selected_tab == ADMIN_TAB)
 				AH = GLOB.ahelp_tickets.TicketByID(ticket_id)
 			else
-				to_chat(usr, SPAN_WARNING("Can only ban from admin tickets."))
+				to_chat(current_mob, SPAN_WARNING("Can only ban from admin tickets."))
 				return FALSE
 
 			if(!AH || !AH.initiator)
-				to_chat(usr, SPAN_WARNING("Unable to find ticket or player."))
+				to_chat(current_mob, SPAN_WARNING("Unable to find ticket or player."))
 				return FALSE
 
 			var/mob/banned_mob = AH.initiator.mob
-			if(!M || !M.ckey)
-				to_chat(usr, SPAN_WARNING("Unable to find player to ban."))
+			if(!current_mob || !current_mob.ckey)
+				to_chat(current_mob, SPAN_WARNING("Unable to find player to ban."))
 				return FALSE
 
-			var/choice = tgui_alert(usr, "Are you sure you want to permaban [banned_mob.ckey]?", "Ban [banned_mob.ckey]", list("Ban", "Cancel"))
+			var/choice = tgui_alert(current_mob, "Are you sure you want to permaban [banned_mob.ckey]?", "Ban [banned_mob.ckey]", list("Ban", "Cancel"))
 
 			if(!choice || (choice == "Cancel"))
 				return FALSE
@@ -525,7 +527,7 @@
 			var/datum/player_action/perm_ban = GLOB.pp_actions["permanent_ban"]
 			if(!perm_ban)
 				return FALSE
-			if(!perm_ban.act(usr.client, banned_mob))
+			if(!perm_ban.act(current_client, banned_mob))
 				return FALSE
 
 			AH.Resolve(current_mob.ckey, FALSE)

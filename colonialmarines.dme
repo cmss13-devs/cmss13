@@ -2709,7 +2709,6 @@
 #include "code\modules\vehicles\multitile\multitile_verbs.dm"
 #include "code\modules\vehicles\tank\interior.dm"
 #include "code\modules\vehicles\tank\tank.dm"
-#include "maps\map_files\Atlan_Station\Atlan_Station.dmm"
 #include "code\modules\vehicles\van\box_van.dm"
 #include "code\modules\vehicles\van\clf_van.dm"
 #include "code\modules\vehicles\van\interior.dm"

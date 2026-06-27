@@ -176,7 +176,7 @@
 	var/client/parent_client = ui.user.client
 	var/mob/parent_mob = ui.user
 
-	if(!CLIENT_IS_STAFF(C))
+	if(!CLIENT_IS_STAFF(parent_client))
 		selected_tab = MENTOR_TAB
 
 	switch(action)

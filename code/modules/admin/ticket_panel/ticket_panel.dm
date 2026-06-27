@@ -174,7 +174,7 @@
 		return
 
 	var/client/C = usr.client
-	var/mob/M = C.mob
+	var/mob/parent_mob = ui.user
 
 	if(!CLIENT_IS_STAFF(C))
 		selected_tab = MENTOR_TAB

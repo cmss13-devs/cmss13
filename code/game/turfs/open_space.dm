@@ -29,12 +29,6 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	ADD_TRAIT(src, TURF_Z_TRANSPARENT_TRAIT, TRAIT_SOURCE_INHERENT)
 	return INITIALIZE_HINT_LATELOAD
 
-/turf/open_space/attack_alien(mob/user)
-	attack_hand(user)
-
-/turf/open_space/attack_hand(mob/user)
-	climb_down(user)
-
 /turf/open_space/Enter(atom/movable/mover, atom/forget)
 	. = ..()
 	if(. && !mover.throwing && isliving(mover) && check_blocked())
@@ -88,6 +82,19 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 
 	user.visible_message(SPAN_WARNING("[user] starts climbing down."), SPAN_WARNING("You start climbing down."))
 
+	var/list/grabbed_things = list()
+	var/hands_full = FALSE
+	for(var/obj/item/in_hand in list(user.l_hand, user.r_hand))
+		hands_full = TRUE
+		if(istype(in_hand, /obj/item/grab))
+			var/obj/item/grab/grabbing = in_hand
+			grabbed_things += grabbing.grabbed_thing
+			grabbing.grabbed_thing.forceMove(user.loc)
+		climb_down_time *= 1.2
+
+	if(hands_full)
+		to_chat(user, SPAN_INFO("Trying to climb with your hands full is slowing you down."))
+
 	if(!do_after(user, climb_down_time, INTERRUPT_ALL, BUSY_ICON_CLIMBING))
 		to_chat(user, SPAN_WARNING("You were interrupted!"))
 		return
@@ -99,6 +106,9 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 		below = SSmapping.get_turf_below(below)
 
 	user.forceMove(below)
+	for(var/atom/movable/thing as anything in grabbed_things) // grabbed things aren't moved to the tile immediately to: make the animation better, preserve the grab
+		thing.forceMove(below)
+	below.on_climb_down(user)
 	return
 
 /turf/open_space/proc/check_fall(atom/movable/movable, kill_if_blocked=TRUE)

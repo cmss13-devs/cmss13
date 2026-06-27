@@ -13,7 +13,7 @@
 	var/cur_extra = SSticker.mode.pred_count_modifier
 	var/cur_count = SSticker.mode.pred_current_num
 	var/cur_max = SSticker.mode.calculate_pred_max()
-	var/real_count = length(SSticker.mode.predators)
+	var/real_count = length(SSticker.mode.yautja_hunters)
 	var/possible_min = min(cur_count - cur_max, cur_extra)
 	var/value = tgui_input_number(src, "How many additional predators can join? Current predator count: [cur_count]/[cur_max] (Real: [real_count]) Current setting: [cur_extra]", "Input:", default = cur_extra, min_value = possible_min, integer_only = TRUE)
 
@@ -66,6 +66,31 @@
 
 	message_admins("[key_name_admin(usr)] has [(predator_round.flags_round_type & MODE_PREDATOR) ? "allowed predators to spawn" : "prevented predators from spawning"].")
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_PREDATOR_ROUND_TOGGLED)
+
+/datum/admins/proc/force_colony_joe_round()
+	set name = "Toggle Colony Working Joe Spawning"
+	set desc = "Force-toggle a colony joe round for the round type. Only works on maps that support colony joe spawns."
+	set category = "Server.Round"
+
+	if(!SSticker || SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
+		to_chat(usr, SPAN_WARNING("Wait for the round to start!"))
+		return
+
+	if(length(SSmapping.configs[GROUND_MAP].colony_joe_types) == 0)
+		to_chat(usr, SPAN_WARNING("This map doesn't support colony joes!"))
+		return
+
+	var/datum/game_mode/joe_round = SSticker.mode
+	if(tgui_alert(usr, "Are you sure you want to force-toggle Colony Joe spawning? Colony Joes are currently [(joe_round.flags_round_type & MODE_COLONY_JOE) ? "ENABLED" : "DISABLED"].", "Toggle Colony Joe Spawning", list("Yes", "No")) != "Yes")
+		return
+
+	if(!(joe_round.flags_round_type & MODE_COLONY_JOE))
+		joe_round.flags_round_type |= MODE_COLONY_JOE
+	else
+		joe_round.flags_round_type &= ~MODE_COLONY_JOE
+
+	message_admins("[key_name_admin(usr)] has [(joe_round.flags_round_type & MODE_COLONY_JOE) ? "allowed colony joes to spawn" : "prevented colony joes from spawning"].")
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_COLONY_JOE_ROUND_TOGGLED)
 
 /client/proc/free_slot()
 	set name = "Free Job Slots"

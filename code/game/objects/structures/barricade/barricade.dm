@@ -79,7 +79,7 @@
 
 /obj/structure/barricade/initialize_pass_flags(datum/pass_flags_container/pass_flags)
 	..()
-	if (pass_flags)
+	if(pass_flags)
 		pass_flags.flags_can_pass_all = NONE
 		pass_flags.flags_can_pass_front = NONE
 		pass_flags.flags_can_pass_behind = PASS_OVER^(PASS_OVER_ACID_SPRAY|PASS_OVER_THROW_MOB)
@@ -176,7 +176,7 @@
 	if(istype(atom_movable, /mob/living/carbon/xenomorph/crusher))
 		var/mob/living/carbon/xenomorph/crusher/living_carbon = atom_movable
 
-		if (!living_carbon.throwing)
+		if(!living_carbon.throwing)
 			return
 
 		if(crusher_resistant)
@@ -221,9 +221,15 @@
 
 	return ..()
 
-/obj/structure/barricade/handle_barrier_chance()
+/obj/structure/barricade/handle_barrier_chance(mob/living/attacker)
 	if(!anchored)
 		return FALSE
+
+	if(isxeno(attacker))
+		var/mob/living/carbon/xenomorph/xeno = attacker
+		if(xeno.strain && istype(xeno.strain, /datum/xeno_strain/bulwark))
+			return prob(25) //Bulwark can attack through wired cade with 75% chance.
+
 	return prob(max(30,(100.0*health)/maxhealth))
 
 /obj/structure/barricade/attack_animal(mob/user as mob)
@@ -290,7 +296,7 @@
 				new/obj/item/stack/barbed_wire( src.loc )
 		return
 
-	if(item.force > force_level_absorption)
+	if((item.force > force_level_absorption) && !HAS_TRAIT(item, TRAIT_TOOL_CROWBAR))
 		. = ..()
 		if(barricade_hitsound)
 			playsound(src, barricade_hitsound, 35, 1)

@@ -14,13 +14,31 @@
 	desc = "A heads-up display that scans the humans in view and provides accurate data about their health status."
 	icon_state = "healthhud"
 	item_state = "healthhud"
-	deactive_state = "degoggles"
+	deactivated_state = "degoggles"
 	flags_armor_protection = 0
 	toggleable = TRUE
 	hud_type = MOB_HUD_MEDICAL_ADVANCED
 	actions_types = list(/datum/action/item_action/toggle/hudgoggles, /datum/action/item_action/view_publications)
 	req_skill = SKILL_MEDICAL
 	req_skill_level = SKILL_MEDICAL_MEDIC
+	var/datum/weakref/equipped_user
+
+/obj/item/clothing/glasses/hud/health/equipped(mob/user, slot)
+	. = ..()
+	if(slot == WEAR_EYES)
+		equipped_user = WEAKREF(user)
+		RegisterSignal(GLOB.chemical_data, COMSIG_CHEMICAL_ANNOUNCEMENT, PROC_REF(announce_to_user))
+
+/obj/item/clothing/glasses/hud/health/unequipped(mob/user, slot)
+	. = ..()
+	if(slot == WEAR_EYES)
+		equipped_user = null
+		UnregisterSignal(GLOB.chemical_data, COMSIG_CHEMICAL_ANNOUNCEMENT)
+
+/obj/item/clothing/glasses/hud/health/proc/announce_to_user(datum/source, text, name)
+	var/mob/player = equipped_user.resolve()
+	playsound_client(player.client, 'sound/effects/radiostatic.ogg', player.loc, 25, FALSE)
+	player.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>Chemical Advisory: [name]</u></span><br>[text]", /atom/movable/screen/text/screen_text/chemical_advisory, "#13d182", TRUE)
 
 /obj/item/clothing/glasses/hud/health/prescription
 	name = "\improper Prescription HealthMate HUD"
@@ -135,7 +153,7 @@
 	name = "\improper SensorMate HUD"
 	desc = "A much older heads-up display that displays the last known biometric data from suit sensors of any given individual."
 	icon_state = "sensorhud"
-	deactive_state = "sensorhud_d"
+	deactivated_state = "sensorhud_d"
 	flags_armor_protection = 0
 	toggleable = TRUE
 	hud_type = MOB_HUD_MEDICAL_ADVANCED
@@ -152,7 +170,7 @@
 	name = "\improper PatrolMate HUD"
 	desc = "A heads-up display that scans the humans in view and provides accurate data about their ID status and security records."
 	icon_state = "securityhud"
-	deactive_state = "degoggles"
+	deactivated_state = "degoggles"
 	toggleable = TRUE
 	flags_armor_protection = 0
 	hud_type = MOB_HUD_SECURITY_ADVANCED

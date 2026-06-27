@@ -32,7 +32,7 @@
         580,
         0.0
     ],
-    "survivor_message": "You are an employee for the United Americas on the island outpost of New Varadero. A newfound discovery has unleashed unspeakable horrors. Do everything you can to survive.",
+    "survivor_message": "The stench of burning phoron still lingers in the coastal breeze of New Varadero, that beast's dying mad cackling still ring through your mind as you begin to process that you are now one of few survivors left on these battle worn shores. Through sheer cunning, aided by United American fire power, you've managed to survive against a now dead lone spector and a ceaseless swarms of aliens... the cry of a new mother snaps you back to reality. Its only a matter of time before another acidc wave of those aliens attempts to wash over you.",
     "co_briefing": {
         "Hawks": "maps/map_briefings/commanding_officer/new_varadero/NEWVARADEROcpo.html",
         "Doves": "maps/map_briefings/commanding_officer/new_varadero/NEWVARADEROhmm.html",
@@ -40,7 +40,7 @@
         "Unaligned": "maps/map_briefings/commanding_officer/new_varadero/NEWVARADEROunaligned.html"
     },
     "map_item_type": "/obj/item/map/new_varadero",
-    "announce_text": "An automated distress signal has been received from UA Outpost New Varadero. A response team from the ###SHIPNAME### will be dispatched shortly to investigate.\nDesignation: Island research station and mining facility\n\nPopulation: 47\nCurrent Temperature: 68F Interior, 97F Exterior\nOutpost Commander: UA Rep. Steve Haifisch\nTelecommunications Array: Repairs required\n\nNo further information available at this time.",
+    "announce_text": "An automated distress signal has been received from L.A.C.N. New Varadero Naval Base. A response team from the ###SHIPNAME### will be dispatched shortly to investigate.\nDesignation: UA Naval base, research site and mining facility \n\nPopulation: 47\nCurrent Temperature: 68F Interior, 97F Exterior\nOutpost Commander: UA Rep. Steve Haifisch\nTelecommunications Array: Repairs required\n\nNo further information available at this time.",
     "monkey_types": [
         "monkey"
     ],

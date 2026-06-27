@@ -37,7 +37,7 @@
         875,
         0.0
     ],
-    "survivor_message": "They said one of the mining skiffs picked up something while in KG-256's atmosphere. Creatures of twisted flesh soon burst out of the Helium-3 processing vats and quickly took over parts of the station, burrowing into the asteroid it's built into. You've managed to either hide from or fight them for this long, you can only hope help is coming soon.",
+    "survivor_message": "You're a resident of Atlan Station, a UPP mining platform over the gas giant KG-256. One of the mining skiffs picked up something while in atmosphere and it erupted during handling. While the station was quickly overwhelmed you've managed to hide or fight for this long...",
     "co_briefing": {
         "Hawks": "maps/map_briefings/commanding_officer/atlan_station/ATLANcpo.html",
         "Doves": "maps/map_briefings/commanding_officer/atlan_station/ATLANhmm.html",

@@ -173,7 +173,7 @@
 	if(.)
 		return
 
-	var/client/C = usr.client
+	var/client/parent_client = ui.user.client
 	var/mob/parent_mob = ui.user
 
 	if(!CLIENT_IS_STAFF(C))

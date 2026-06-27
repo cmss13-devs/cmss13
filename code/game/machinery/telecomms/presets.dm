@@ -313,14 +313,24 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/update_state()
 	..()
 	if(inoperable())
-		handle_xeno_acquisition(get_turf(src))
+		handle_xeno_acquisition()
+
+/// Locates a nearby cluster from GLOB.all_xeno_pylon_cluster_nodes otherwise null
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/find_nearby_cluster()
+	for(var/obj/effect/alien/weeds/node/pylon/cluster/cluster as anything in GLOB.all_xeno_pylon_cluster_nodes)
+		if(cluster.is_in_range(src))
+			return cluster
+	return null
 
 /// Handles xenos corrupting the tower when weeds touch the turf it is located on
-/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/handle_xeno_acquisition(turf/weeded_turf)
+/// caller argument just used to simplify the need for calling find_nearby_cluster if needed
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/handle_xeno_acquisition(obj/effect/alien/weeds/signal_source, obj/effect/alien/weeds/node/pylon/caller)
 	SIGNAL_HANDLER
 
 	if(corrupted)
 		return
+
+	var/turf/weeded_turf = get_turf(src)
 
 	if(!weeded_turf.weeds)
 		return
@@ -331,37 +341,43 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	if(!weeded_turf.weeds.parent)
 		return
 
-	if(!istype(weeded_turf.weeds.parent, /obj/effect/alien/weeds/node/pylon/cluster))
-		return
-
 	if(SSticker.mode.is_in_endgame)
 		return
 
 	if(operable())
 		return
 
+	// This might not actually be a cluster node but we'll assert that in a moment
+	var/obj/effect/alien/weeds/node/pylon/cluster/effective_parent = weeded_turf.weeds.parent
+	if(!istype(effective_parent, /obj/effect/alien/weeds/node/pylon/cluster))
+		if(!istype(effective_parent, /obj/effect/alien/weeds/node/pylon/core))
+			return
+		// Core weeds can override cluster weeds so manually look for a cluster if not already passed in args
+		effective_parent = caller || find_nearby_cluster()
+		if(!effective_parent)
+			return
+
 	if(ROUND_TIME < XENO_COMM_ACQUISITION_TIME)
-		addtimer(CALLBACK(src, PROC_REF(handle_xeno_acquisition), weeded_turf), (XENO_COMM_ACQUISITION_TIME - ROUND_TIME), TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+		addtimer(CALLBACK(src, PROC_REF(handle_xeno_acquisition)), (XENO_COMM_ACQUISITION_TIME - ROUND_TIME), TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 		return
 
 	if(!COOLDOWN_FINISHED(src, corruption_delay))
-		addtimer(CALLBACK(src, PROC_REF(handle_xeno_acquisition), weeded_turf), (COOLDOWN_TIMELEFT(src, corruption_delay)), TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+		addtimer(CALLBACK(src, PROC_REF(handle_xeno_acquisition)), (COOLDOWN_TIMELEFT(src, corruption_delay)), TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 		return
 
-	var/obj/effect/alien/weeds/node/pylon/cluster/parent_node = weeded_turf.weeds.parent
-
-	var/obj/effect/alien/resin/special/cluster/cluster_parent = parent_node.resin_parent
-
-	var/list/held_children_weeds = parent_node.children
+	// Prepare to upgrade the cluster
+	var/obj/effect/alien/resin/special/cluster/cluster_parent = effective_parent.resin_parent
+	var/list/held_children_weeds = effective_parent.children - effective_parent // why does it put itself into children...
 	var/cluster_loc = cluster_parent.loc
 	var/linked_hive = cluster_parent.linked_hive
 
-	parent_node.children = list()
-
+	// Delete the old (but don't touch our list)
+	effective_parent.children = list()
 	qdel(cluster_parent)
 
+	// Make a new endgame pylon
 	var/obj/effect/alien/resin/special/pylon/endgame/new_pylon = new(cluster_loc, linked_hive)
-	new_pylon.node.children = held_children_weeds
+	new_pylon.node.children += held_children_weeds
 
 	for(var/obj/effect/alien/weeds/weed in new_pylon.node.children)
 		weed.parent = new_pylon.node
@@ -388,9 +404,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	SIGNAL_HANDLER
 
 	corrupted = FALSE
-
 	overlays -= corruption_image
-
 	COOLDOWN_START(src, corruption_delay, XENO_PYLON_DESTRUCTION_DELAY)
 
 /// Handles moving the overlay from growing to idle
@@ -399,7 +413,6 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 		return
 
 	corruption_image = image(icon, icon_state = "resin_idle")
-
 	overlays += corruption_image
 
 /obj/structure/machinery/telecomms/relay/preset/telecomms

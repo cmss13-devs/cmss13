@@ -946,7 +946,7 @@
 // CO SURV STATION ADMINISTRATOR
 
 /datum/equipment_preset/survivor/atlan/co_survivor
-	name = "CO Survivor - UPP - Orbital Station Administrator" // gets UPP UL4 officer  jacket and UL8 ushanka, skills similar to an UPP commisar, cool UPP pistol too
+	name = "CO Survivor - UPP - Orbital Station Administrator" // gets UPP UL4 officer jacket and UL8 ushanka, skills of an UPP commisar, cool UPP pistol
 	assignment = "Menedzher Orbitalnoy Stantsii"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	role_comm_title = "UPP Menedzher"
@@ -972,5 +972,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/command(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/revolver(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/beret(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/ushanka(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP/officer(new_human), WEAR_JACKET)
 	..()

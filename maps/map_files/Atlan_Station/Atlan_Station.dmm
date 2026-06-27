@@ -11,14 +11,6 @@
 /obj/item/clothing/mask/rebreather,
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_dock)
-"aad" = (
-/obj/structure/prop/almayer/ship_memorial{
-	name = "slab of triumph";
-	pixel_y = 2;
-	desc = "A large piece of polished limestone, itched into it is; Drathek- thank you for your endless patience and support."
-	},
-/turf/open/space/basic,
-/area/atlan/oob)
 "aae" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/machinery/power/apc/no_power/east,
@@ -30,6 +22,10 @@
 	},
 /turf/closed/wall/strata_outpost/reinforced/hull,
 /area/atlan/oob)
+"aag" = (
+/obj/effect/landmark/corpsespawner/colonist/random/burst,
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/exports_east)
 "aax" = (
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/atlan/station/double_dorms)
@@ -1887,7 +1883,7 @@
 	dir = 4;
 	icon_state = "gib6"
 	},
-/obj/effect/landmark/corpsespawner/colonist,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/floor/strata,
 /area/atlan/station/hab_docks)
 "bqo" = (
@@ -5985,6 +5981,7 @@
 "edy" = (
 /obj/effect/decal/cleanable/blood/gibs/up,
 /obj/effect/decal/cleanable/blood/gibs,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/floor/strata,
 /area/atlan/station/walkway)
 "edD" = (
@@ -10698,8 +10695,8 @@
 /turf/open/floor/plating/prison,
 /area/atlan/station/substation)
 "hqc" = (
-/obj/effect/landmark/corpsespawner/colonist/random/burst,
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/colonist/random/burst,
 /turf/open/gm/dirt/brown/variant_5/west,
 /area/atlan/asteroid/exports_cave)
 "hqf" = (
@@ -12465,9 +12462,9 @@
 /turf/open/floor/strata/red1,
 /area/atlan/lz/near_lz2)
 "ixT" = (
-/obj/effect/landmark/corpsespawner/colonist/random,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/limb,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_handling)
 "ixX" = (
@@ -17808,7 +17805,7 @@
 /turf/closed/wall/strata_outpost/reinforced/hull,
 /area/atlan/station/hab_sec)
 "lXw" = (
-/obj/effect/landmark/corpsespawner/engineer,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/gm/river/darkred_pool,
 /area/atlan/station/water_tanks)
 "lXx" = (
@@ -19644,8 +19641,8 @@
 /area/atlan/station/cargo)
 "nmE" = (
 /obj/structure/surface/table/almayer,
-/obj/effect/landmark/corpsespawner/colonist,
 /obj/item/trash/cigbutt,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/floor/strata,
 /area/atlan/comms/lz2_canteen)
 "nne" = (
@@ -19662,8 +19659,8 @@
 /turf/open/floor/plating/prison,
 /area/atlan/asteroid/processing_se_train)
 "nnC" = (
-/obj/effect/landmark/corpsespawner/colonist/random,
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/floor/plating,
 /area/atlan/asteroid/processing_caves)
 "nnM" = (
@@ -19904,7 +19901,6 @@
 /turf/closed/wall/strata_outpost/reinforced/hull,
 /area/atlan/oob)
 "nuz" = (
-/obj/effect/landmark/corpsespawner/colonist,
 /obj/effect/decal/cleanable/blood/gibs,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood{
@@ -19914,6 +19910,7 @@
 	},
 /obj/effect/decal/cleanable/blood/drip,
 /obj/item/attachable/bayonet/upp,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/floor/strata/floor2,
 /area/atlan/station/storage)
 "nuB" = (
@@ -20851,11 +20848,11 @@
 /turf/open/floor/plating/prison,
 /area/atlan/oob)
 "nYC" = (
-/obj/effect/landmark/corpsespawner/colonist,
 /obj/effect/decal/cleanable/blood,
 /obj/structure/barricade/wooden{
 	dir = 4
 	},
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/floor/strata,
 /area/atlan/station/single_dorms)
 "nYH" = (
@@ -21399,7 +21396,6 @@
 "orF" = (
 /obj/effect/landmark/corpsespawner/colonist/random,
 /obj/effect/decal/cleanable/blood,
-/obj/item/clothing/head/helmet/marine/veteran/UPP/firefighter,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/promenade)
 "orH" = (
@@ -22671,6 +22667,7 @@
 /area/atlan/oob)
 "pjO" = (
 /obj/effect/landmark/corpsespawner/colonist/random/burst,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/gm/dirt/brown,
 /area/atlan/asteroid/processing_aux)
 "pjT" = (
@@ -26610,11 +26607,6 @@
 /obj/structure/flora/bush/ausbushes/palebush,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/atlan/station/botany)
-"rKC" = (
-/obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/colonist,
-/turf/open/floor/strata,
-/area/atlan/station/double_dorms)
 "rKT" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -28058,7 +28050,7 @@
 /area/atlan/oob)
 "sLJ" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/colonist,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/floor/strata,
 /area/atlan/station/stairs2)
 "sLR" = (
@@ -29160,7 +29152,7 @@
 /area/atlan/asteroid/processing_dock)
 "tvE" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/colonist/random,
+/obj/effect/landmark/corpsespawner/colonist/random/burst,
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/exports_east)
 "tvL" = (
@@ -29338,7 +29330,7 @@
 /area/atlan/asteroid/processing_dock)
 "tzP" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/colonist,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/floor/strata,
 /area/atlan/station/hab_flight)
 "tzU" = (
@@ -31006,7 +30998,7 @@
 	icon_state = "bigrollerempty2_up";
 	dir = 8
 	},
-/obj/effect/landmark/corpsespawner/colonist,
+/obj/effect/landmark/corpsespawner/colonist/random/burst,
 /turf/open/floor/strata/white_cyan2/west,
 /area/atlan/station/medical)
 "uFu" = (
@@ -35413,7 +35405,7 @@
 /obj/structure/closet/bodybag{
 	icon_state = "bodybag_open"
 	},
-/obj/effect/landmark/corpsespawner/colonist,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/floor/strata/floor2,
 /area/atlan/station/medical)
 "xTx" = (
@@ -35470,8 +35462,8 @@
 /area/atlan/station/double_dorms)
 "xVa" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/engineer,
 /obj/effect/decal/cleanable/blood/gibs/body,
+/obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_seperation)
 "xVi" = (
@@ -44060,7 +44052,7 @@ tPr
 xaV
 hbx
 tPr
-rKC
+hze
 tPr
 tHX
 tPr
@@ -72499,7 +72491,7 @@ tDZ
 vGR
 lGF
 lGF
-vGR
+aag
 xcT
 vGR
 pky
@@ -78048,7 +78040,7 @@ obO
 obO
 obO
 obO
-aad
+obO
 obO
 obO
 obO
@@ -79063,7 +79055,7 @@ obO
 obO
 obO
 obO
-aad
+obO
 obO
 obO
 obO

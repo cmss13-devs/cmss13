@@ -85,7 +85,7 @@
 		var/mob/living/carbon/human/target_human = affected_atom
 		target_human.update_effects()
 		if(acid_level >= 3)
-			to_chat(human, SPAN_WARNING("Your armor returns to normal."))
+			to_chat(target_human, SPAN_WARNING("Your armor returns to normal."))
 
 	if(isobj(affected_atom))
 		var/obj/target_object = affected_atom

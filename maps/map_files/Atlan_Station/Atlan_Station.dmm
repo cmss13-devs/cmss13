@@ -1750,7 +1750,6 @@
 /area/atlan/station/walkway)
 "bmF" = (
 /obj/structure/closet,
-/obj/effect/spawner/random/powercell,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison/darkyellowfull2,
 /area/atlan/station/substation)
@@ -7706,10 +7705,6 @@
 /obj/structure/platform/metal/stair_cut/strata_left,
 /turf/open/floor/strata,
 /area/atlan/asteroid/processing_nw_train)
-"fmG" = (
-/obj/effect/decal/cleanable/blood/oil,
-/turf/open/shuttle/escapepod/west,
-/area/atlan/station/substation)
 "fmN" = (
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall{
 	pixel_y = 21
@@ -13408,9 +13403,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/atlan/asteroid/exports_west)
 "iYm" = (
-/obj/item/device/flashlight/lamp/tripod{
-	on = 0
-	},
+/obj/effect/spawner/random/powercell,
 /turf/open/floor/plating/prison,
 /area/atlan/station/atmospherics)
 "iYD" = (
@@ -42308,7 +42301,7 @@ lni
 tCP
 rQH
 aAk
-aAk
+dnA
 aAk
 eDB
 rDW
@@ -42508,8 +42501,8 @@ uoJ
 nox
 tCP
 aAk
-aAk
-aAk
+oVk
+dnA
 aAk
 wXS
 aAk
@@ -42710,12 +42703,12 @@ uoJ
 kfH
 eUY
 tCP
-aAk
+dnA
 wXS
 wXS
-obO
 wXS
-aAk
+wXS
+dnA
 bwD
 adV
 dQD
@@ -42916,7 +42909,7 @@ mCJ
 aAk
 aAk
 aAk
-aAk
+uMt
 aAk
 aAk
 aPY
@@ -45762,7 +45755,7 @@ idW
 nGM
 wXS
 wXS
-eIP
+oVk
 mew
 tPr
 xxX
@@ -45965,7 +45958,7 @@ vKd
 nGM
 wXS
 obO
-eIP
+oVk
 opV
 tPr
 tMu
@@ -46556,7 +46549,7 @@ npO
 xOF
 iEU
 sTg
-oEg
+anA
 kox
 bAq
 yhq
@@ -46765,7 +46758,7 @@ iEU
 eUm
 sZX
 qea
-anA
+oEg
 rZZ
 wVM
 vTH
@@ -48389,7 +48382,7 @@ bdg
 bdg
 bdg
 bdg
-fmG
+ful
 qUx
 ggL
 mXu

@@ -20310,7 +20310,7 @@
 /obj/structure/prop/almayer/ship_memorial{
 	name = "slab of triumph";
 	pixel_y = 2;
-	desc = "A large piece of polished limestone, itched into it is; XXX, YYY and ZZZ."
+	desc = "A large piece of polished limestone, itched into it is; Drathek- thank you for your endless patience and support."
 	},
 /turf/open/floor/plating/prison,
 /area/atlan/oob/credits)

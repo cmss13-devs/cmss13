@@ -1,6 +1,6 @@
 [
     {
-        "type": "pick", "name": "Soro Global Event",
+        "type": "pick", "name": "Atlan Nothing",
         "choices": [
             { "weight": 5, "type": "def", "values": { "lvevent": "none" } }
         ]

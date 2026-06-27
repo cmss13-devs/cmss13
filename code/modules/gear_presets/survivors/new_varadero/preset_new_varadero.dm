@@ -137,7 +137,7 @@
 /datum/equipment_preset/survivor/new_varadero/vhccrew
 	name = "Survivor - New Varadero Vehicle Crew"
 	assignment = "LACN Vehicle Crewman"
-	job_title = JOB_VEHICLE_CREW
+	job_title = JOB_TANK_CREW
 	paygrades = list(PAY_SHORT_NE3 = JOB_PLAYTIME_TIER_0)
 	minimap_icon = "vc"
 	role_comm_title = "LACN VC"
@@ -400,7 +400,7 @@
 /datum/equipment_preset/survivor/new_varadero/assrep
 	name = "Survivor - New Varadero - UA Assistant Representative"
 	assignment = "UA Assistant Representative"
-	role_comm_title = "Ast Rep"
+	role_comm_title = "Asst Rep"
 	minimap_icon = "recruiter"
 	minimap_background = "background_ua"
 	paygrades = list(PAY_SHORT_CREP = JOB_PLAYTIME_TIER_0)

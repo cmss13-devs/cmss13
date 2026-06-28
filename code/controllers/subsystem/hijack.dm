@@ -723,7 +723,7 @@ SUBSYSTEM_DEF(hijack)
 	if(!ground_origin)
 		CRASH("Unable to determine origin location on groundmap for hijack ground crash! Origin can be manually specified with a /obj/effect/landmark/mainship_crashsite")
 
-	msg_admin_niche("Crashing mainship to[ADMIN_COORDJMP(ground_origin)]")
+	msg_admin_niche("Crashing mainship to [ADMIN_COORDJMP(ground_origin)]")
 
 	shakeship(
 		sstrength = 1,

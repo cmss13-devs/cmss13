@@ -136,6 +136,19 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 		author_ic_name = author.mob.real_name || author.mob.name || "Unknown"
 	return author_ic_name || "Unknown"
 
+/datum/mentorhelp/proc/get_display_name(client/viewer, client/subject)
+	if(!subject)
+		return "Unknown"
+	if(subject == author)
+		if(viewer && CLIENT_IS_STAFF(viewer))
+			return "[subject.username()]/([get_author_ic_name()])"
+		return get_author_ic_name()
+	else
+		var/subject_ic = (subject.mob ? (subject.mob.real_name || subject.mob.name) : null) || (mentor && subject.ckey == mentor.ckey ? mentor_ic_name : null)
+		if(viewer && CLIENT_IS_STAFF(viewer))
+			return subject_ic ? "[subject.username()]/([subject_ic])" : subject.username()
+		return subject.username()
+
 /datum/mentorhelp/proc/get_author_role()
 	if(author && author.mob)
 		var/mob/M = author.mob
@@ -280,7 +293,13 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 		log_message(msg, sender.key, "All mentors", msg_type)
 
 	// Sender feedback
-	to_chat(sender, "[SPAN_MENTORHELP("<span class='prefix'>MentorHelp:</span> Message to [(recipient?.username()) ? "<a href='byond://?src=\ref[src];action=message'>[recipient.username()]</a>" : "mentors"]:")] [SPAN_MENTORBODY(msg)]")
+	var/feedback_recipient_text
+	if(recipient)
+		var/display_text = get_display_name(sender, recipient)
+		feedback_recipient_text = "<a href='byond://?src=\ref[src];action=message'>[display_text]</a>"
+	else
+		feedback_recipient_text = "mentors"
+	to_chat(sender, "[SPAN_MENTORHELP("<span class='prefix'>MentorHelp:</span> Message to [feedback_recipient_text]:")] [SPAN_MENTORBODY(msg)]")
 
 	// Recipient direct message
 	if(recipient)
@@ -303,23 +322,8 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 		// Eavesdrop
 		else if(CLIENT_HAS_RIGHTS(admin_client, R_MENTOR) && (!staff_only || CLIENT_IS_STAFF(admin_client)) && admin_client != sender)
 			if(include_keys)
-				var/sender_text = ""
-				var/recipient_text = ""
-
-				if(CLIENT_IS_STAFF(admin_client))
-					sender_text = key_name(sender, TRUE)
-					recipient_text = key_name(recipient, TRUE)
-				else
-					if(sender == author)
-						sender_text = get_author_ic_name()
-						recipient_text = recipient ? recipient.username() : "All mentors"
-					else if(recipient == author)
-						sender_text = sender.username()
-						recipient_text = get_author_ic_name()
-					else
-						sender_text = sender.username()
-						recipient_text = recipient ? recipient.username() : "All mentors"
-
+				var/sender_text = get_display_name(admin_client, sender)
+				var/recipient_text = recipient ? get_display_name(admin_client, recipient) : "All mentors"
 				formatted = SPAN_MENTORHELP(sender_text + " -> " + recipient_text + ": ") + msg
 
 		else
@@ -367,19 +371,14 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 	// The message is being sent to the mentor and should be formatted as a mentorhelp message
 	if(sender == author)
 		message_title = "MentorHelp"
-		var/display_text = ""
-		if(recipient && CLIENT_IS_STAFF(recipient))
-			display_text = "[sender.username()]/([get_author_ic_name()])"
-		else
-			display_text = "[get_author_ic_name()]"
-
+		var/display_text = get_display_name(recipient, sender)
 		message_sender_key = "<a href='byond://?src=\ref[src];action=message'>[display_text]</a>"
 
 		// If there's a mentor, let them mark it. If not, let them unmark it
 		message_sender_options = " (<a href='byond://?src=\ref[src];action=mark'>Mark/Unmark</a>"
 		message_sender_options += " | <a href='byond://?src=\ref[src];action=close'>Close</a> | <a href='byond://?src=\ref[src];action=autorespond'>AutoResponse</a>)"
 	else
-		var/display_text = sender.username()
+		var/display_text = get_display_name(recipient, sender)
 		message_sender_key = "<a href='byond://?src=\ref[src];action=message'>[display_text]</a>"
 
 	var/message_header = SPAN_MENTORHELP("<span class='prefix'>[message_title] from [message_sender_key]:</span> <span class='message'>[message_sender_options]</span><br>")

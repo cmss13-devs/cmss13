@@ -65,7 +65,10 @@ export const TicketPanel = (props) => {
 
   const changeFontSize = (delta: number) => {
     setFontSize((prev) => {
-      const next = Math.min(FONT_SIZE_MAX, Math.max(FONT_SIZE_MIN, prev + delta));
+      const next = Math.min(
+        FONT_SIZE_MAX,
+        Math.max(FONT_SIZE_MIN, prev + delta),
+      );
       localStorage.setItem(FONT_SIZE_KEY, String(next));
       return next;
     });
@@ -111,7 +114,7 @@ export const TicketPanel = (props) => {
   );
 
   return (
-    <Window theme="crtblue" width={1120} height={800}>
+    <Window theme="crtblue" width={1120} height={880}>
       <Window.Content style={{ fontSize: `${fontSize}px` }}>
         <Stack fill vertical>
           <Stack.Item>

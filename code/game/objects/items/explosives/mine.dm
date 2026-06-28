@@ -566,6 +566,25 @@
 	if(health <= 0)
 		prime()
 
+/obj/item/explosive/mine/sharp/get_examine_text(mob/user)
+	. = ..()
+	if(skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) || user.skills.get_skill_level(SKILL_SPEC_WEAPONS) == SKILL_SPEC_GRENADIER)
+		var/extended_description = ""
+		switch (mine_mode)
+			if (SHARP_DANGER_MODE)
+				extended_description = "DANGER"
+			if (SHARP_DIRECTED_MODE)
+				extended_description = "DIRECTED"
+			if (SHARP_SAFE_MODE)
+				extended_description = "SAFE"
+		. += SPAN_INFO("Your training allows you to discern what mode this mine was fired in: it appears to be set to <b>[extended_description]</b> mode.")
+		if(disarmed)
+			. += SPAN_INFO("The dart's internal timer has already expired, but you are trained in resetting the clock with a multitool.")
+		else if(deploy_time)
+			var/remaining_ds = max(0, (deploy_time + 5 MINUTES) - world.time)
+			var/remaining_mins = round(remaining_ds / 600, 1)
+			. += SPAN_INFO("Your training allows you determine how much time is approximately left on the mine: <b>~[remaining_mins] [remaining_mins == 1 ? "minute" : "minutes"]</b> remaining before auto-disarm.")
+
 /obj/item/explosive/mine/sharp/incendiary
 	name = "\improper P9 SHARP incendiary dart"
 	desc = "An experimental P9 SHARP proximity triggered explosive dart designed by Armat Systems for use by the United States Colonial Marines. This one has full 360 detection range."

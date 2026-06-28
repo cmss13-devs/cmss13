@@ -507,8 +507,10 @@
 		pass() // Don't delete it, just damaj
 
 	else if(istype(acid_t, /obj/structure/dropship_equipment))
-		visible_message(SPAN_XENODANGER("[acid_t] is left damaged by the acid that covered it!"))
-		pass()
+		var/obj/structure/dropship_equipment/module = acid_t
+		visible_message(SPAN_XENODANGER("[acid_t] is ravaged by the acid that covered it!"))
+		if(!module.ship_base)
+			qdel(acid_t)
 	else
 		for(var/mob/mob in acid_t)
 			mob.forceMove(loc)

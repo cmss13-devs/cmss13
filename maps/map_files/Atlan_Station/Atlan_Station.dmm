@@ -1729,12 +1729,6 @@
 /obj/structure/bed/chair/office/light,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/lz/near_lz1)
-"bil" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/strata/floor2,
-/area/atlan/comms/lz1_lift)
 "biO" = (
 /obj/structure/machinery/camera/autoname,
 /turf/open/floor/strata/floor2,
@@ -29138,6 +29132,9 @@
 /area/atlan/oob)
 "ttu" = (
 /obj/item/stack/sheet/wood/large_stack,
+/obj/structure/machinery/light{
+	dir = 4
+	},
 /turf/open/floor/strata/floor2,
 /area/atlan/comms/lz1_lift)
 "tty" = (
@@ -53553,7 +53550,7 @@ tQz
 jwj
 yhG
 ttu
-bil
+uvR
 uvR
 uvR
 knd

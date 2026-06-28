@@ -73,6 +73,20 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/cyan1/east,
 /area/atlan/station/medical)
+"aap" = (
+/obj/structure/platform/metal/strata/north,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_offices)
+"aaq" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/clothing/mask/gas/upp_pfb,
+/obj/item/clothing/mask/gas/upp_pfb,
+/obj/item/clothing/mask/gas/upp_pfb,
+/turf/open/floor/strata/floor2,
+/area/atlan/station/cargo)
 "aax" = (
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/atlan/station/double_dorms)
@@ -1358,14 +1372,13 @@
 /turf/open/floor/strata/green1,
 /area/atlan/comms/lz2_canteen)
 "aUY" = (
-/obj/item/clothing/shoes/marine/upp/black/knife,
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/item/clothing/shoes/marine/upp/black/knife,
 /obj/item/clothing/suit/storage/webbing/brown,
 /obj/item/clothing/suit/storage/webbing/brown,
-/obj/item/clothing/mask/gas/upp_pfb,
+/obj/item/clothing/suit/storage/webbing/brown,
+/obj/item/clothing/suit/storage/webbing/brown,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/cargo)
 "aVu" = (
@@ -4179,10 +4192,6 @@
 	},
 /turf/open/floor/strata,
 /area/atlan/asteroid/sensors)
-"cTL" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/gm/dirt/brown,
-/area/atlan/asteroid/processing_caves)
 "cTP" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -9173,7 +9182,6 @@
 /area/atlan/station/stairs1)
 "gkr" = (
 /obj/item/explosive/plastic/breaching_charge,
-/obj/item/explosive/plastic/breaching_charge,
 /turf/open/gm/dirt/brown,
 /area/atlan/asteroid/processing_nw_train)
 "gkz" = (
@@ -12279,12 +12287,12 @@
 /turf/open/floor/plating/prison,
 /area/atlan/asteroid/processing_ne_train)
 "iqH" = (
-/obj/item/clothing/shoes/marine/upp/black/knife,
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/item/clothing/suit/storage/webbing/brown,
-/obj/item/clothing/suit/storage/webbing/brown,
+/obj/item/clothing/shoes/marine/upp/black/knife,
+/obj/item/clothing/shoes/marine/upp/black/knife,
+/obj/item/clothing/shoes/marine/upp/black/knife,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/cargo)
 "iqK" = (
@@ -14172,11 +14180,11 @@
 /turf/open/floor/plating,
 /area/atlan/asteroid/processing_offices)
 "juW" = (
-/obj/item/weapon/gun/smg/pps43,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgib2"
 	},
 /obj/effect/decal/cleanable/blood/splatter,
+/obj/item/defenses/handheld/sentry/upp,
 /turf/open/gm/dirt/brown,
 /area/atlan/station/water_tanks)
 "jvr" = (
@@ -14808,13 +14816,6 @@
 /obj/structure/sign/safety/bathmens,
 /turf/closed/wall/strata_outpost,
 /area/atlan/station/single_dorms)
-"jRf" = (
-/obj/structure/surface/rack{
-	color = "#98a3ab"
-	},
-/obj/effect/spawner/random/tool,
-/turf/open/floor/strata/floor2,
-/area/atlan/station/cargo)
 "jRi" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/floor2,
@@ -16127,6 +16128,8 @@
 	pixel_x = 16;
 	pixel_y = 31
 	},
+/obj/item/ammo_magazine/handful/shotgun/heavy/dragonsbreath,
+/obj/item/ammo_magazine/handful/shotgun/heavy/dragonsbreath,
 /turf/open/floor/strata/red1,
 /area/atlan/station/security)
 "kKW" = (
@@ -26080,7 +26083,7 @@
 /area/atlan/station/hab_docks)
 "rsP" = (
 /obj/structure/largecrate/random,
-/obj/item/stack/sheet/metal/med_small_stack,
+/obj/item/stack/sheet/metal/medium_stack,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/hab_docks)
 "rsX" = (
@@ -27813,7 +27816,6 @@
 /turf/open/floor/plating/prison,
 /area/atlan/station/double_dorms)
 "syt" = (
-/obj/structure/closet/secure_closet/engineering_welding,
 /obj/structure/machinery/light/double/blue{
 	dir = 4
 	},
@@ -28532,7 +28534,7 @@
 /obj/structure/barricade/deployable{
 	dir = 4
 	},
-/obj/item/defenses/handheld/sentry/upp,
+/obj/item/weapon/gun/smg/pps43,
 /turf/open/floor/strata,
 /area/atlan/station/security)
 "taR" = (
@@ -48710,7 +48712,7 @@ pEv
 kMl
 bja
 uhN
-jRf
+obM
 aAk
 aAk
 aAk
@@ -49521,7 +49523,7 @@ spb
 qKM
 noo
 bja
-obM
+aaq
 pUA
 aAk
 obO
@@ -62542,11 +62544,11 @@ qnF
 giR
 opy
 opy
-sna
+opy
 syt
 opy
 opy
-opy
+sna
 aAk
 pUe
 pKj
@@ -62588,7 +62590,7 @@ xSI
 xSI
 iuE
 iuE
-wyW
+lGF
 iuE
 jab
 mPk
@@ -63393,7 +63395,7 @@ iuE
 iuE
 hFb
 btT
-btT
+lGF
 btT
 btT
 btT
@@ -63595,8 +63597,8 @@ ltK
 iuE
 iuE
 btT
-btT
-btT
+lGF
+lGF
 btT
 btT
 btT
@@ -63798,8 +63800,8 @@ iuE
 pMj
 iuE
 iuE
-iuE
-iuE
+lGF
+lGF
 iuE
 iuE
 btT
@@ -64001,7 +64003,7 @@ iuE
 iuE
 dpo
 kpJ
-kpJ
+lGF
 iuE
 plX
 iuE
@@ -64528,11 +64530,11 @@ dIA
 mdE
 mdE
 mdE
+ffb
 mdE
 mdE
 mdE
-mdE
-mdE
+veb
 mdE
 mdE
 mdE
@@ -64731,8 +64733,8 @@ dIA
 mdE
 mdE
 mdE
-mdE
-mdE
+lGF
+lGF
 mdE
 mdE
 mdE
@@ -64932,12 +64934,12 @@ hLh
 dkg
 dIA
 mdE
+veb
+veb
 mdE
-mdE
-ffb
-mdE
-mdE
-mdE
+lGF
+lGF
+lGF
 mdE
 mdE
 mdE
@@ -68454,8 +68456,8 @@ pOz
 rKm
 mjJ
 vxf
-pgt
-pgt
+pOz
+pOz
 fXJ
 ina
 pOz
@@ -68655,10 +68657,10 @@ pOz
 pOz
 qXd
 skd
-pOz
-wOu
-pOz
-pOz
+aSd
+aap
+pgt
+pgt
 fXJ
 efs
 pOz
@@ -70496,7 +70498,7 @@ mFI
 pKT
 qKb
 vGR
-vGR
+lGF
 lGF
 lGF
 ruz
@@ -71448,8 +71450,8 @@ aSd
 aSd
 jDo
 jDo
-cTL
-cTL
+jDo
+jDo
 hKS
 sYP
 cGN
@@ -71651,9 +71653,9 @@ aSd
 aSd
 jkL
 jDo
-cTL
-vml
 jDo
+aSd
+aSd
 jDo
 jDo
 kpp
@@ -71855,7 +71857,7 @@ aSd
 aHQ
 jDo
 jDo
-jDo
+aSd
 aHQ
 uRE
 kpp

@@ -71,7 +71,7 @@
 	if(istype(item, /obj/item/powerloader_clamp))
 		if((SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)) & COMSIG_ITEM_PICKUP_CANCELLED) //acided
 			to_chat(user, SPAN_WARNING("[src] is covered in acid!"))
-			balloon_alert(user, "Its covered in acid!")
+			balloon_alert(user, "its covered in acid!")
 			return
 
 		var/obj/item/powerloader_clamp/powerloader_clamp = item

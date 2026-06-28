@@ -479,6 +479,7 @@
 		cause_data = create_cause_data(initial(name), user, src)
 	else if(user)
 		cause_data.weak_mob = WEAKREF(user)
+
 	if(mine_level == 1)
 		explosion_strength = 100
 	else if(mine_level == 2)
@@ -490,6 +491,7 @@
 	else
 		explosion_strength = 125
 		explosion_falloff = 25
+
 	switch(mine_mode)
 		if(SHARP_DIRECTED_MODE)
 			explosion_falloff = explosion_strength
@@ -592,6 +594,9 @@
 
 /obj/item/explosive/mine/sharp/incendiary/prime(mob/user)
 	set waitfor = FALSE
+	if (disarmed)
+		qdel(src)
+		return
 	if(!cause_data)
 		cause_data = create_cause_data(initial(name), user, src)
 	else if(user)

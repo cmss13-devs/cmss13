@@ -334,7 +334,7 @@ as having entered the turf.
 		var/ff_living = TRUE
 		if(affected.stat == DEAD)
 			ff_living = FALSE
-		msg_admin_ff(ff_msg, ff_living)
+		msg_admin_ff(ff_msg, ff_living, firing_mob.loc.z)
 
 		if(ishuman(firing_mob))
 			var/mob/living/carbon/human/attacking_human = firing_mob

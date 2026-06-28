@@ -47,13 +47,20 @@
 			sound_to(possible_sea, 'sound/effects/mhelp.ogg')
 
 
-/proc/msg_admin_ff(text, alive = TRUE)
+/proc/msg_admin_ff(text, alive = TRUE, location_z)
 	log_attack(text)
+	var/location_suffix
+	if(is_mainship_level(location_z))
+		location_suffix = SPAN_PREFIX(" [SPAN_DEBUG_NOTICE("(SHIPSIDE)")]")
+	else if(is_ground_level(location_z))
+		location_suffix = SPAN_PREFIX(" [SPAN_ADMIN("(GROUNDSIDE)")]")
+
 	var/rendered = SPAN_COMBAT("[SPAN_PREFIX("ATTACK:")] ")
 	if(alive)
 		rendered += SPAN_FF_ALIVE("[SPAN_MESSAGE("[text]")]")
 	else
 		rendered += SPAN_FF_DEAD("///DEAD/// - [SPAN_MESSAGE("[text]")]")
+	rendered += location_suffix
 	for(var/client/C as anything in GLOB.admins)
 		if(C && C.admin_holder && (R_MOD & C.admin_holder.rights))
 			if(C.prefs.toggles_chat & CHAT_FFATTACKLOGS)

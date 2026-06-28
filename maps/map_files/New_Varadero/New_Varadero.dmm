@@ -174,6 +174,15 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/storage/firstaid/regular/empty,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/device/flashlight/slime{
+	invisibility = 1;
+	mouse_opacity = 0;
+	alpha = 0;
+	explo_proof = 1;
+	light_color = "#FF0000";
+	name = "emergency light";
+	light_range = 5
+	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/varadero/interior/beach_bar)
 "aaA" = (
@@ -1290,6 +1299,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
 "aet" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/gm/dirt/dark_brown,
 /area/varadero/interior_protected/vessel)
 "aeu" = (
@@ -1550,7 +1560,7 @@
 /obj/structure/machinery/light,
 /obj/structure/closet/l3closet/scientist,
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor/shiva/purplefull/west,
+/turf/open/floor/plating/bare_catwalk,
 /area/varadero/interior/research)
 "afj" = (
 /obj/effect/decal/warning_stripes/asteroid{
@@ -2113,7 +2123,6 @@
 /turf/closed/wall/huntership,
 /area/varadero/interior/oob)
 "agL" = (
-/obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/predship/mainfloor/upper,
@@ -2280,6 +2289,7 @@
 /turf/open/predship/mainfloor,
 /area/varadero/interior_protected/vessel)
 "ahf" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/predship/mainfloor/corner/north,
 /area/varadero/interior_protected/vessel)
 "ahg" = (
@@ -2288,13 +2298,6 @@
 "ahh" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/predship/mainfloor/direction_2/north,
-/area/varadero/interior_protected/vessel)
-"ahi" = (
-/obj/effect/decal/cleanable/blood/splatter{
-	icon_state = "mfloor6"
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/predship/mainfloor/direction_1/east,
 /area/varadero/interior_protected/vessel)
 "ahj" = (
 /obj/effect/decal/cleanable/dirt,
@@ -2316,10 +2319,6 @@
 /turf/open/predship/hunter_catwalk_new,
 /area/varadero/interior_protected/vessel)
 "ahm" = (
-/turf/open/predship/tile/red4,
-/area/varadero/interior_protected/vessel)
-"ahn" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/predship/tile/red4,
 /area/varadero/interior_protected/vessel)
 "aho" = (
@@ -2643,7 +2642,6 @@
 /turf/open/predship/mainfloor/edge,
 /area/varadero/interior_protected/vessel)
 "aio" = (
-/obj/effect/landmark/corpsespawner/hybrisa/scientist_xenoarchaeologist,
 /obj/effect/decal/cleanable/blood/splatter{
 	icon_state = "mfloor4"
 	},
@@ -3127,13 +3125,6 @@
 "ajO" = (
 /turf/open/predship/mainfloor/direction_1,
 /area/varadero/interior_protected/vessel)
-"ajP" = (
-/obj/effect/decal/cleanable/blood/splatter{
-	icon_state = "mfloor5"
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/predship/mainfloor/direction_1,
-/area/varadero/interior_protected/vessel)
 "ajQ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/predship/mainfloor/corner/west,
@@ -3289,13 +3280,6 @@
 "ako" = (
 /turf/open/predship/mainfloor/upper,
 /area/varadero/interior_protected/vessel)
-"akp" = (
-/obj/effect/landmark/corpsespawner/hybrisa/scientist_xenoarchaeologist,
-/obj/effect/decal/cleanable/blood/splatter{
-	icon_state = "mfloor3"
-	},
-/turf/open/predship/tile/red4,
-/area/varadero/interior_protected/vessel)
 "akq" = (
 /obj/structure/prop/ice_colony/surveying_device/measuring_device{
 	dir = 1;
@@ -3370,17 +3354,8 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/predship/tile/red4/glow,
 /area/varadero/interior_protected/vessel)
-"akD" = (
-/obj/effect/decal/cleanable/blood/splatter{
-	icon_state = "mfloor4"
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/predship/mainfloor/upper,
-/area/varadero/interior_protected/vessel)
 "akE" = (
-/obj/effect/decal/cleanable/blood/splatter{
-	icon_state = "mfloor3"
-	},
+/obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/predship/mainfloor/upper/north,
 /area/varadero/interior_protected/vessel)
 "akF" = (
@@ -3506,15 +3481,6 @@
 	},
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/varadero/interior_protected/caves/swcaves)
-"akY" = (
-/obj/item/ammo_casing/bullet,
-/obj/structure/prop/hybrisa/misc/floorprops/grate2,
-/obj/structure/cable/orange{
-	icon_state = "4-9";
-	level = 2
-	},
-/turf/open/floor/plating,
-/area/varadero/interior_protected/caves/digsite)
 "akZ" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2,
 /obj/structure/cable/orange{
@@ -3609,7 +3575,6 @@
 /turf/open/predship/tile/red,
 /area/varadero/interior_protected/vessel)
 "aln" = (
-/obj/effect/decal/cleanable/blood/drip,
 /obj/structure/prop/hybrisa/misc/floorprops/grate2,
 /obj/structure/cable/orange{
 	icon_state = "1-6";
@@ -3617,21 +3582,12 @@
 	},
 /turf/open/floor/plating,
 /area/varadero/interior_protected/caves/digsite)
-"alo" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate2,
-/obj/item/ammo_casing/bullet,
-/turf/open/floor/plating,
-/area/varadero/interior_protected/caves/digsite)
 "alp" = (
-/obj/effect/decal/cleanable/blood/splatter{
-	icon_state = "mfloor3"
-	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate2,
 /obj/structure/cable/orange{
 	icon_state = "6-10";
 	level = 2
 	},
-/obj/item/clothing/mask/gas,
 /turf/open/floor/plating,
 /area/varadero/interior_protected/caves/digsite)
 "alq" = (
@@ -3675,14 +3631,18 @@
 /area/varadero/interior_protected/maintenance/south)
 "aly" = (
 /obj/effect/decal/cleanable/blood,
-/obj/structure/fence/overgrown,
 /obj/structure/flora/jungle/vines/light_1,
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/fence/overgrown{
+	cut = 1
+	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/maintenance/south)
 "alz" = (
-/obj/structure/fence/overgrown,
 /obj/structure/flora/jungle/vines/light_1,
+/obj/structure/fence/overgrown{
+	cut = 1
+	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/maintenance/south)
 "alA" = (
@@ -3803,21 +3763,9 @@
 	icon_state = "2-9";
 	level = 2
 	},
-/obj/item/weapon/gun/pistol/m1911,
-/turf/open/floor/plating,
-/area/varadero/interior_protected/caves/digsite)
-"alR" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/decal/cleanable/blood/splatter{
-	icon_state = "mfloor5"
-	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate2,
 /turf/open/floor/plating,
 /area/varadero/interior_protected/caves/digsite)
 "alS" = (
-/obj/effect/decal/cleanable/blood/splatter{
-	icon_state = "mfloor3"
-	},
 /obj/structure/machinery/floodlight/landing{
 	name = "Construction Light";
 	desc = "A powerful light stationed near construction zones to provide better visibility."
@@ -3942,12 +3890,6 @@
 "amn" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/curtain/open/medical,
-/obj/effect/decal/hybrisa/colorable_rug{
-	pixel_x = 0;
-	dir = 8;
-	pixel_y = -7;
-	color = "#706451"
-	},
 /turf/open/floor/plating/bare_catwalk,
 /area/varadero/interior_protected/caves/makeshift_tent)
 "amo" = (
@@ -4047,10 +3989,6 @@
 	dir = 8
 	},
 /obj/structure/prop/hunter/fake_platform/hunter/north,
-/obj/structure/prop/invuln/pipe_water{
-	color = "#94362C";
-	name = "leaking fuel"
-	},
 /turf/open/predship/plating,
 /area/varadero/interior_protected/vessel)
 "amC" = (
@@ -4685,6 +4623,7 @@
 "aoG" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/device/flashlight/lantern/yautja,
+/obj/item/ammo_casing/bullet,
 /turf/open/floor/interior/plastic,
 /area/varadero/interior_protected/caves/makeshift_tent)
 "aoH" = (
@@ -5142,6 +5081,11 @@
 	},
 /turf/open/gm/dirt/dark_brown,
 /area/varadero/interior_protected/caves)
+"aqd" = (
+/obj/item/stack/sheet/metal,
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/vessel)
 "aqe" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/structure/flora/jungle/vines/light_2,
@@ -5235,6 +5179,7 @@
 /area/varadero/exterior/pontoon_beach)
 "aqr" = (
 /obj/effect/decal/cleanable/blood/splatter,
+/obj/item/stool,
 /turf/open/floor/interior/plastic,
 /area/varadero/interior_protected/caves/digsite)
 "aqs" = (
@@ -5438,9 +5383,6 @@
 /turf/open/gm/dirt/dark_brown,
 /area/varadero/interior_protected/caves)
 "aqX" = (
-/obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "mfloor5"
-	},
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 9
 	},
@@ -5483,6 +5425,7 @@
 /obj/effect/decal/cleanable/blood/splatter{
 	icon_state = "mfloor4"
 	},
+/obj/item/weapon/gun/pistol/m1911,
 /turf/open/floor/interior/plastic,
 /area/varadero/interior_protected/caves/makeshift_tent)
 "are" = (
@@ -5585,14 +5528,7 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "mfloor2"
 	},
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior_protected/caves)
-"aru" = (
-/obj/effect/decal/remains/xeno,
-/obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "mfloor4"
-	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/gibspawner/xeno,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
 "arv" = (
@@ -5773,13 +5709,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/varadero/interior_protected/caves)
-"arV" = (
-/obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "mfloor6"
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/gm/dirt/dark_brown,
-/area/varadero/interior_protected/caves)
 "arW" = (
 /obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
@@ -5959,11 +5888,6 @@
 	icon_state = "bshell_";
 	dir = 10
 	},
-/obj/item/ammo_casing/shell,
-/obj/item/ammo_casing/shell{
-	icon_state = "bshell_";
-	dir = 10
-	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/caves/east)
 "ass" = (
@@ -6068,14 +5992,14 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/varadero/interior_protected/caves)
 "asF" = (
-/obj/structure/bed/chair{
-	dir = 4
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_10"
 	},
-/obj/item/explosive/grenade/empgrenade,
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/obj/item/clothing/mask/gas,
 /turf/open/floor/interior/plastic,
 /area/varadero/interior_protected/caves/makeshift_tent)
 "asG" = (
@@ -6242,7 +6166,9 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance/security/south)
 "atc" = (
-/obj/structure/fence/slim,
+/obj/structure/fence/slim{
+	cut = 1
+	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/south)
 "atd" = (
@@ -6421,6 +6347,11 @@
 /obj/item/ammo_magazine/rifle/m41aMK1/heap/empty,
 /turf/open/floor/plating,
 /area/varadero/interior_protected/caves/central)
+"atC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/predship/hunter_grate/east,
+/area/varadero/interior_protected/vessel)
 "atD" = (
 /obj/structure/machinery/door/poddoor/hybrisa{
 	name = "\improper shutters";
@@ -6628,26 +6559,12 @@
 	},
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/varadero/interior_protected/caves)
-"aug" = (
-/obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "mfloor3"
-	},
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior_protected/caves)
 "auh" = (
 /obj/effect/spawner/gibspawner/xeno,
-/obj/item/lightstick/red/spoke,
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "mfloor4"
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/gm/dirt/dark_brown,
-/area/varadero/interior_protected/caves)
-"aui" = (
-/obj/effect/decal/remains/xeno,
-/obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "mfloor5"
-	},
 /turf/open/gm/dirt/dark_brown,
 /area/varadero/interior_protected/caves)
 "auj" = (
@@ -6759,6 +6676,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/south)
+"auA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/vessel)
 "auB" = (
 /obj/effect/decal/warning_stripes/asteroid{
 	icon_state = "warning_s";
@@ -6838,7 +6760,11 @@
 /turf/open/gm/dirt/dark_brown,
 /area/varadero/interior_protected/caves)
 "auN" = (
-/obj/effect/decal/cleanable/blood/gibs/xeno/limb,
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "mfloor6"
+	},
+/obj/effect/spawner/gibspawner/xeno,
+/obj/effect/decal/remains/xeno,
 /turf/open/gm/dirt/dark_brown,
 /area/varadero/interior_protected/caves)
 "auO" = (
@@ -7078,6 +7004,7 @@
 /area/varadero/interior_protected/caves)
 "avw" = (
 /obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/spawner/gibspawner/xeno,
 /turf/open/gm/dirt/dark_brown,
 /area/varadero/interior_protected/caves)
 "avx" = (
@@ -7336,7 +7263,6 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
 "awj" = (
-/obj/effect/decal/cleanable/blood/splatter,
 /obj/structure/machinery/floodlight/landing{
 	name = "Construction Light";
 	desc = "A powerful light stationed near construction zones to provide better visibility."
@@ -7388,12 +7314,6 @@
 	},
 /turf/open/gm/dirt/dark_brown,
 /area/varadero/interior_protected/caves)
-"awq" = (
-/obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "mfloor4"
-	},
-/turf/open/auto_turf/hybrisa_auto_turf/layer0,
-/area/varadero/interior_protected/caves)
 "awr" = (
 /obj/item/stack/sheet/metal,
 /obj/effect/decal/cleanable/dirt,
@@ -7403,6 +7323,7 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "mfloor6"
 	},
+/obj/effect/spawner/gibspawner/xeno,
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/varadero/interior_protected/caves)
 "awt" = (
@@ -7617,20 +7538,6 @@
 	},
 /turf/open/floor/plating/bare_catwalk,
 /area/varadero/exterior/monsoon)
-"awY" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/invuln/pipe_water{
-	color = "#94362C";
-	name = "leaking fuel"
-	},
-/obj/structure/prop/invuln/overhead_pipe{
-	pixel_x = -4;
-	pixel_y = 12;
-	color = "#8E897F";
-	dir = 8
-	},
-/turf/open/predship/hunter_grate/east,
-/area/varadero/interior_protected/vessel)
 "awZ" = (
 /obj/structure/platform/metal/kutjevo_smooth{
 	climb_delay = 1
@@ -7736,7 +7643,6 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
 "axm" = (
-/obj/effect/decal/cleanable/blood/splatter,
 /obj/structure/barricade/wooden,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -7766,15 +7672,6 @@
 	},
 /obj/structure/prop/hybrisa/fakeplatforms/platform4{
 	dir = 8
-	},
-/turf/open/gm/dirt/dark_brown,
-/area/varadero/interior_protected/caves)
-"axr" = (
-/obj/structure/prop/hybrisa/fakeplatforms/platform4{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "mfloor2"
 	},
 /turf/open/gm/dirt/dark_brown,
 /area/varadero/interior_protected/caves)
@@ -7901,7 +7798,6 @@
 /area/varadero/interior_protected/caves)
 "axN" = (
 /obj/effect/decal/remains/xeno,
-/obj/effect/decal/cleanable/blood/gibs/xeno/limb,
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "mfloor4"
 	},
@@ -7910,6 +7806,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/gibspawner/xeno,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
 "axO" = (
@@ -7922,12 +7819,6 @@
 	},
 /turf/open/gm/dirt/dark_brown,
 /area/varadero/interior_protected/caves)
-"axP" = (
-/obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "mfloor4"
-	},
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior_protected/caves)
 "axQ" = (
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/decal/hybrisa/trash{
@@ -7937,7 +7828,6 @@
 /area/varadero/interior_protected/caves)
 "axR" = (
 /obj/item/weapon/gun/shotgun/double/damaged,
-/obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
@@ -7960,30 +7850,10 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
-"axU" = (
-/obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "mfloor4"
-	},
-/obj/effect/decal/warning_stripes/asteroid{
-	icon_state = "warning_s"
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior_protected/caves)
 "axV" = (
 /obj/effect/spawner/gibspawner/xeno,
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "mfloor2"
-	},
-/obj/effect/decal/warning_stripes/asteroid{
-	icon_state = "warning_s"
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior_protected/caves)
-"axW" = (
-/obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "mfloor3"
 	},
 /obj/effect/decal/warning_stripes/asteroid{
 	icon_state = "warning_s"
@@ -7999,6 +7869,7 @@
 	icon_state = "warning_s"
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/gibspawner/xeno,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
 "axY" = (
@@ -8316,30 +8187,6 @@
 	},
 /turf/open/predship/hunter_grate/east,
 /area/varadero/interior_protected/vessel)
-"ayM" = (
-/obj/effect/decal/remains/xeno,
-/obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "mfloor6"
-	},
-/obj/effect/decal/warning_stripes/asteroid{
-	icon_state = "warning_s";
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior_protected/caves)
-"ayN" = (
-/obj/effect/decal/cleanable/blood/gibs/xeno/limb,
-/obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "mfloor5"
-	},
-/obj/effect/decal/warning_stripes/asteroid{
-	icon_state = "warning_s";
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior_protected/caves)
 "ayO" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/predship/hunter_grate/north,
@@ -8577,6 +8424,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/gibspawner/xeno,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
 "azy" = (
@@ -8588,7 +8436,6 @@
 	dir = 1
 	},
 /obj/item/ammo_casing/shell,
-/obj/item/weapon/harpoon,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
@@ -8626,17 +8473,11 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "mfloor4"
 	},
+/obj/effect/decal/remains/xeno,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
 "azC" = (
 /obj/item/tool/pickaxe,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior_protected/caves)
-"azD" = (
-/obj/effect/decal/remains/xeno,
-/obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "mfloor2"
-	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
 "azE" = (
@@ -8644,9 +8485,6 @@
 	layer = 3.1;
 	pixel_x = 2;
 	pixel_y = 18
-	},
-/obj/effect/decal/cleanable/blood/splatter{
-	icon_state = "mfloor3"
 	},
 /obj/item/ammo_casing/shell,
 /obj/effect/decal/cleanable/dirt,
@@ -8855,12 +8693,6 @@
 /obj/item/stack/cable_coil/random,
 /turf/open/floor/asteroidfloor,
 /area/varadero/interior/maintenance/security/south/hangar)
-"aAi" = (
-/obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "mfloor2"
-	},
-/turf/open/gm/dirt/dark_brown,
-/area/varadero/interior_protected/caves)
 "aAj" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/spawner/prop_gun/m41aMK1{
@@ -8870,7 +8702,8 @@
 /area/varadero/interior/mess)
 "aAk" = (
 /obj/item/ammo_casing/shell{
-	icon_state = "shell_9_1"
+	icon_state = "bshell_";
+	dir = 10
 	},
 /turf/open/gm/dirt/dark_brown,
 /area/varadero/interior_protected/caves)
@@ -8889,18 +8722,12 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
 "aAn" = (
-/obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "mfloor3"
-	},
 /obj/item/ammo_casing/shell{
 	icon_state = "cartridge_3_1"
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
 "aAo" = (
-/obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "mfloor6"
-	},
 /obj/structure/largecrate/random/mini/med{
 	layer = 3.01;
 	pixel_x = -8;
@@ -8913,12 +8740,7 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "mfloor5"
 	},
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior_protected/caves)
-"aAq" = (
-/obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/decal/remains/xeno,
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
 "aAr" = (
@@ -9005,12 +8827,6 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/catwalk,
-/obj/effect/decal/hybrisa/colorable_rug{
-	pixel_x = -8;
-	dir = 8;
-	pixel_y = -5;
-	color = "#706451"
-	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/south/hangar)
 "aAG" = (
@@ -9089,7 +8905,6 @@
 /area/varadero/interior_protected/caves)
 "aAS" = (
 /obj/effect/decal/hybrisa/bloodtrail,
-/obj/effect/decal/cleanable/blood/xeno,
 /obj/effect/decal/warning_stripes/asteroid{
 	icon_state = "warning_s";
 	dir = 1
@@ -9097,9 +8912,6 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
 "aAT" = (
-/obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "mfloor6"
-	},
 /obj/effect/decal/warning_stripes/asteroid{
 	icon_state = "warning_s";
 	dir = 1
@@ -9230,17 +9042,17 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/decal/hybrisa/colorable_rug{
-	pixel_x = 0;
-	dir = 8;
-	pixel_y = -7;
-	color = "#706451"
-	},
 /turf/open/floor/asteroidfloor,
 /area/varadero/interior/maintenance/security/south/hangar)
 "aBi" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
+	},
+/obj/effect/decal/hybrisa/colorable_rug{
+	pixel_x = -7;
+	dir = 8;
+	pixel_y = -38;
+	color = "#706451"
 	},
 /turf/open/floor/asteroidfloor,
 /area/varadero/interior/maintenance/security/south/hangar)
@@ -10392,8 +10204,10 @@
 "aEn" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/fence/slim,
 /obj/structure/catwalk,
+/obj/structure/fence/slim{
+	cut = 1
+	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/south)
 "aEo" = (
@@ -10900,13 +10714,13 @@
 	dir = 8;
 	flipped = 1
 	},
-/obj/effect/landmark/corpsespawner/new_varadero/doctor/burst,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/hall_SE)
 "aFC" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mfloor3"
 	},
+/obj/effect/landmark/corpsespawner/new_varadero/doctor/burst,
 /turf/open/floor/wood,
 /area/varadero/interior/hall_SE)
 "aFD" = (
@@ -11157,14 +10971,18 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva/purple/north,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	pixel_y = 0
+	},
+/turf/open/floor/corsat/darkgreen/northwest,
 /area/varadero/interior/research)
 "aGl" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
-/obj/item/weapon/gun/shotgun/pump,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/purple/north,
 /area/varadero/interior/research)
@@ -11191,9 +11009,6 @@
 /turf/open/floor/panelscorched,
 /area/varadero/interior/research)
 "aGp" = (
-/obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "mfloor4"
-	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
@@ -11503,7 +11318,6 @@
 /turf/open/floor/shiva/north,
 /area/varadero/interior/research)
 "aHi" = (
-/obj/item/attachable/stock/shotgun,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/catwalk{
 	explo_proof = 1
@@ -11718,14 +11532,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/north,
 /area/varadero/interior/research)
-"aHL" = (
-/obj/effect/decal/cleanable/blood{
-	icon_state = "mfloor3"
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva/north,
-/area/varadero/interior/research)
 "aHM" = (
 /mob/living/simple_animal/small/cat{
 	name = "Orion";
@@ -11739,11 +11545,11 @@
 /turf/open/floor/wood,
 /area/varadero/interior/security)
 "aHN" = (
-/obj/effect/decal/cleanable/blood{
-	icon_state = "mfloor2"
-	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva/floor3,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_5"
+	},
+/turf/open/floor/shiva/north,
 /area/varadero/interior/research)
 "aHO" = (
 /obj/effect/decal/hybrisa/trash{
@@ -11976,7 +11782,6 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/research)
 "aIy" = (
-/obj/effect/decal/cleanable/blood,
 /obj/effect/decal/warning_stripes/asteroid{
 	icon_state = "warning_c";
 	dir = 8
@@ -11989,6 +11794,7 @@
 	icon_state = "warning_s";
 	dir = 1
 	},
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/shiva/purple,
 /area/varadero/interior/research)
 "aIA" = (
@@ -12140,6 +11946,17 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroid,
 /area/varadero/interior/maintenance/security/south/hangar)
+"aIT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = -4;
+	pixel_y = 12;
+	color = "#8E897F";
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/predship/hunter_grate/east,
+/area/varadero/interior_protected/vessel)
 "aIU" = (
 /obj/structure/platform_decoration/metal/almayer_smooth/north,
 /obj/effect/decal/cleanable/dirt,
@@ -12356,6 +12173,10 @@
 /obj/structure/flora/wood/stick2,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/monsoon)
+"aJy" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/predship/plating,
+/area/varadero/interior_protected/vessel)
 "aJz" = (
 /obj/item/tool/warning_cone,
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -12808,6 +12629,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/purple/southwest,
 /area/varadero/interior/research)
+"aKS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/predship/mainfloor/upper/north,
+/area/varadero/interior_protected/vessel)
 "aKT" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/r_n_d/destructive_analyzer,
@@ -12908,6 +12734,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/blue,
 /area/varadero/interior/administration)
+"aLh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/pipe_water{
+	color = "#94362C";
+	name = "leaking fuel"
+	},
+/turf/open/predship/plating,
+/area/varadero/interior_protected/vessel)
 "aLi" = (
 /obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
@@ -14445,6 +14279,11 @@
 	},
 /turf/open/auto_turf/sand_white/layer0,
 /area/varadero/exterior/monsoon)
+"aPI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/predship/tile/red4,
+/area/varadero/interior_protected/vessel)
 "aPJ" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_2,
 /obj/structure/platform/stone/kutjevo,
@@ -14457,6 +14296,11 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/monsoon)
+"aPL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/predship/tile/red,
+/area/varadero/interior_protected/vessel)
 "aPM" = (
 /obj/item/stack/rods{
 	amount = 5
@@ -14607,22 +14451,6 @@
 /obj/structure/surface/table,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance)
-"aQe" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/invuln/overhead_pipe{
-	pixel_x = -17;
-	pixel_y = 9;
-	color = "#8E897F";
-	dir = 8
-	},
-/obj/structure/prop/invuln/pipe_water{
-	color = "#94362C";
-	name = "leaking fuel";
-	pixel_x = -18;
-	pixel_y = 1
-	},
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior_protected/vessel)
 "aQf" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -15081,6 +14909,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidwarning/north,
 /area/varadero/interior/maintenance/security/south/hangar)
+"aRw" = (
+/obj/structure/fence/overgrown{
+	cut = 1
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior_protected/maintenance/south)
 "aRx" = (
 /obj/structure/platform/stone/kutjevo/north,
 /turf/open/auto_turf/sand_white/layer0,
@@ -15371,6 +15205,15 @@
 /obj/structure/platform/stone/kutjevo/north,
 /turf/open/auto_turf/sand_white/layer0,
 /area/varadero/exterior/monsoon)
+"aSh" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/fence/overgrown{
+	cut = 1
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior_protected/maintenance/south)
 "aSi" = (
 /turf/open/gm/river/shallow_ocean_shallow_ocean{
 	icon = 'icons/turf/floors/desert_water_toxic.dmi';
@@ -15597,6 +15440,10 @@
 /obj/structure/girder/reinforced,
 /turf/open/floor/platingdmg1,
 /area/varadero/interior/research)
+"aSN" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/predship/mainfloor/direction_1,
+/area/varadero/interior_protected/vessel)
 "aSO" = (
 /obj/item/stack/sheet/metal/small_stack,
 /obj/effect/decal/cleanable/dirt,
@@ -15952,6 +15799,20 @@
 /obj/structure/platform/stone/kutjevo/north,
 /turf/open/auto_turf/sand_white/layer0,
 /area/varadero/exterior/monsoon)
+"aTJ" = (
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = -17;
+	pixel_y = 9;
+	color = "#8E897F";
+	dir = 8
+	},
+/obj/structure/prop/invuln/pipe_water{
+	color = "#94362C";
+	name = "leaking fuel"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/predship/plating,
+/area/varadero/interior_protected/vessel)
 "aTK" = (
 /obj/structure/girder,
 /turf/open/auto_turf/sand_white/layer0,
@@ -16169,7 +16030,6 @@
 /area/varadero/interior/maintenance/security/south/hangar)
 "aUo" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -16339,13 +16199,12 @@
 /turf/closed/wall/huntership,
 /area/varadero/interior/oob)
 "aUM" = (
-/obj/effect/decal/cleanable/blood{
-	icon_state = "mfloor4"
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/catwalk{
 	explo_proof = 1
 	},
+/obj/effect/decal/cleanable/blood,
+/obj/item/attachable/stock/shotgun,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/research)
 "aUN" = (
@@ -16461,6 +16320,11 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/monsoon)
+"aVe" = (
+/obj/structure/inflatable/door,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/predship/mainfloor,
+/area/varadero/interior_protected/vessel)
 "aVf" = (
 /obj/structure/prop/rock/brown,
 /turf/open/gm/river/shallow_ocean_shallow_ocean{
@@ -16807,18 +16671,16 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/hall_NW)
-"aWf" = (
-/obj/structure/prop/invuln/pipe_water{
-	color = "#94362C";
-	name = "leaking fuel"
-	},
+"aWe" = (
+/obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/invuln/overhead_pipe{
-	pixel_x = -17;
-	pixel_y = 9;
+	pixel_x = -4;
+	pixel_y = 12;
 	color = "#8E897F";
 	dir = 8
 	},
-/turf/open/predship/plating,
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/predship/hunter_grate,
 /area/varadero/interior_protected/vessel)
 "aWg" = (
 /obj/effect/decal/cleanable/dirt,
@@ -16867,6 +16729,16 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/snow_mat/north,
 /area/varadero/interior/maintenance)
+"aWn" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/colorable_rug{
+	pixel_x = -7;
+	dir = 8;
+	pixel_y = -38;
+	color = "#706451"
+	},
+/turf/open/floor/interior/plastic,
+/area/varadero/interior_protected/caves/makeshift_tent)
 "aWo" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mfloor4"
@@ -17975,6 +17847,10 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance/research)
+"aZA" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/predship/shuttle_border/north,
+/area/varadero/interior_protected/vessel)
 "aZB" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
@@ -17985,6 +17861,13 @@
 	},
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/hall_NW)
+"aZC" = (
+/obj/effect/spawner/gibspawner/xeno,
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "mfloor4"
+	},
+/turf/open/gm/dirt/dark_brown,
+/area/varadero/interior_protected/caves)
 "aZD" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/xeno{
@@ -18096,6 +17979,13 @@
 "aZS" = (
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/interior/comms2)
+"aZT" = (
+/obj/effect/spawner/gibspawner/xeno,
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "mfloor6"
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/varadero/interior_protected/caves)
 "aZU" = (
 /obj/effect/decal/warning_stripes/asteroid{
 	icon_state = "warning_s";
@@ -19439,6 +19329,10 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/comms2)
+"bdt" = (
+/obj/item/ammo_casing/shell,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/east)
 "bdu" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/spawner/random/toolbox,
@@ -19604,6 +19498,13 @@
 /obj/item/clothing/under/swimsuit/black,
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/exterior/pool)
+"bdS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "mfloor5"
+	},
+/turf/open/gm/dirt/dark_brown,
+/area/varadero/interior_protected/caves)
 "bdT" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop{
@@ -20750,6 +20651,14 @@
 	},
 /turf/open/floor/asteroidwarning/southwest,
 /area/varadero/exterior/eastbeach)
+"bgH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/shell{
+	icon_state = "bshell_";
+	dir = 10
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/east)
 "bgI" = (
 /obj/structure/barricade/handrail/wire{
 	layer = 3.5
@@ -23596,6 +23505,7 @@
 	icon_state = "warning_s";
 	dir = 8
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/green/east,
 /area/varadero/interior/comms1)
 "bou" = (
@@ -23960,6 +23870,7 @@
 	icon_state = "warning_c";
 	dir = 1
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/green/east,
 /area/varadero/interior/comms1)
 "bpx" = (
@@ -24574,6 +24485,13 @@
 	},
 /turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/comms4)
+"brg" = (
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "mfloor4"
+	},
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/gm/dirt/dark_brown,
+/area/varadero/interior_protected/caves)
 "brh" = (
 /obj/item/weapon/gun/rifle/m41aMK1/ap,
 /obj/structure/machinery/light{
@@ -24729,6 +24647,10 @@
 /area/varadero/interior/comms3)
 "brC" = (
 /obj/item/limb/arm/l_arm,
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "mfloor5"
+	},
+/obj/effect/spawner/gibspawner/xeno,
 /turf/open/floor/asteroidwarning/north,
 /area/varadero/interior/comms3)
 "brD" = (
@@ -24878,9 +24800,17 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/hybrisa/street/sidewalkfull,
 /area/varadero/exterior/comms4)
-"brW" = (
-/obj/structure/machinery/power/apc/power/south,
+"brV" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "mfloor5"
+	},
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior_protected/caves)
+"brW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/power/apc/power/south,
 /turf/open/hybrisa/street/sidewalkfull,
 /area/varadero/exterior/comms4)
 "brX" = (
@@ -24898,6 +24828,7 @@
 "brZ" = (
 /obj/effect/spawner/gibspawner/xeno,
 /obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/green/east,
 /area/varadero/interior/comms1)
 "bsa" = (
@@ -24935,6 +24866,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/comms1)
+"bse" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/shell{
+	icon_state = "bshell_";
+	dir = 10
+	},
+/turf/open/gm/dirt/dark_brown,
+/area/varadero/interior_protected/caves)
 "bsf" = (
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
@@ -25280,6 +25219,7 @@
 /area/varadero/interior/maintenance)
 "bsT" = (
 /obj/item/small_shards,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/green/east,
 /area/varadero/interior/comms1)
 "bsU" = (
@@ -25294,6 +25234,7 @@
 /area/varadero/interior/comms1)
 "bsV" = (
 /obj/item/small_shards,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/comms1)
 "bsW" = (
@@ -25424,27 +25365,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroid,
 /area/varadero/exterior/pontoon_beach)
-"btm" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal3"
-	},
-/obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "mfloor3"
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/gibspawner/xeno,
-/turf/open/floor/asteroid,
-/area/varadero/exterior/eastbeach)
-"btn" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal3"
-	},
-/obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "mfloor5"
-	},
-/obj/effect/spawner/gibspawner/xeno,
-/turf/open/floor/asteroid,
-/area/varadero/exterior/eastbeach)
 "bto" = (
 /obj/item/stack/sandbags_empty/half,
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
@@ -25703,11 +25623,13 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/greenfull/west,
 /area/varadero/interior/comms1)
 "btV" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/green,
 /area/varadero/interior/comms1)
 "btW" = (
@@ -26554,6 +26476,7 @@
 /area/varadero/exterior/comms4)
 "bvZ" = (
 /obj/item/explosive/grenade/high_explosive,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/hybrisa/street/sidewalk/north,
 /area/varadero/exterior/comms4)
 "bwa" = (
@@ -27081,6 +27004,7 @@
 "bxn" = (
 /obj/item/stack/sheet/metal/small_stack,
 /obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
 "bxo" = (
@@ -27088,6 +27012,7 @@
 	current_rounds = 0
 	},
 /obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
 "bxp" = (
@@ -27099,6 +27024,9 @@
 /area/varadero/exterior/comms4)
 "bxq" = (
 /obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/hybrisa/road/corner{
+	dir = 4
+	},
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
 "bxr" = (
@@ -27147,10 +27075,30 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/maintenance/south)
+"bxy" = (
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "mfloor2"
+	},
+/obj/effect/decal/remains/xeno,
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior_protected/caves)
 "bxz" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
+"bxA" = (
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_c";
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "mfloor4"
+	},
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior_protected/caves)
 "bxB" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/effect/spawner/gibspawner/xeno,
@@ -27243,15 +27191,10 @@
 	icon_state = "road_edge_decal3";
 	pixel_y = -12
 	},
-/obj/item/trash/uscm_mre,
-/turf/open/floor/asteroid,
-/area/varadero/exterior/eastbeach)
-"bxN" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal3";
-	pixel_y = -12
+/obj/item/trash/uscm_mre{
+	pixel_x = -10;
+	pixel_y = -7
 	},
-/obj/item/storage/box/emps,
 /turf/open/floor/asteroid,
 /area/varadero/exterior/eastbeach)
 "bxO" = (
@@ -27372,6 +27315,7 @@
 	icon_state = "casing_5";
 	dir = 6
 	},
+/obj/effect/decal/hybrisa/road/lines2,
 /turf/open/gm/road,
 /area/varadero/exterior/farocean)
 "byg" = (
@@ -27379,6 +27323,8 @@
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_10"
 	},
+/obj/effect/decal/hybrisa/doubleroad/lines3,
+/obj/effect/decal/hybrisa/road/lines2,
 /turf/open/gm/road,
 /area/varadero/exterior/farocean)
 "byh" = (
@@ -27392,6 +27338,7 @@
 /obj/effect/spawner/prop_gun/m41aMK1{
 	custom_gun_desc = "An older design of the Pulse Rifle commonly used by Colonial Marines. This one has seen better days. With its handle, trigger, and barrel all melted by some form of acid... game over man!."
 	},
+/obj/effect/decal/hybrisa/road/lines2,
 /turf/open/gm/road,
 /area/varadero/exterior/farocean)
 "byi" = (
@@ -27399,6 +27346,7 @@
 /obj/structure/prop/invuln/fire{
 	light_color = "#FF7700"
 	},
+/obj/effect/decal/hybrisa/road/lines2,
 /turf/open/gm/road,
 /area/varadero/exterior/farocean)
 "byj" = (
@@ -27412,6 +27360,7 @@
 	light_color = "#FF7700"
 	},
 /obj/effect/decal/large_stain,
+/obj/effect/decal/hybrisa/road/lines2,
 /turf/open/gm/road,
 /area/varadero/exterior/farocean)
 "byk" = (
@@ -27422,6 +27371,7 @@
 	},
 /obj/effect/decal/hybrisa/road/lines2,
 /obj/structure/blocker/invisible_wall,
+/obj/effect/decal/hybrisa/road/lines2,
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
 "byl" = (
@@ -27460,6 +27410,7 @@
 	icon_state = "mfloor6"
 	},
 /obj/effect/spawner/random/gun/pistol/highchance,
+/obj/effect/decal/hybrisa/road/lines2,
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
 "byn" = (
@@ -27471,6 +27422,7 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "mfloor5"
 	},
+/obj/effect/decal/hybrisa/road/lines2,
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
 "byo" = (
@@ -27478,6 +27430,8 @@
 /obj/effect/spawner/prop_gun/m41aMK1{
 	custom_gun_desc = "An older design of the Pulse Rifle commonly used by Colonial Marines. This one has seen better days. With its handle, trigger, and barrel all melted by some form of acid... game over man!."
 	},
+/obj/effect/decal/hybrisa/doubleroad/lines3,
+/obj/effect/decal/hybrisa/road/lines2,
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
 "byp" = (
@@ -27486,11 +27440,13 @@
 	icon_state = "trash_6"
 	},
 /obj/effect/decal/large_stain,
+/obj/effect/decal/hybrisa/road/lines2,
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
 "byq" = (
 /obj/effect/spawner/random/tool,
 /obj/effect/decal/hybrisa/road/lines4,
+/obj/effect/decal/hybrisa/road/lines2,
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
 "byr" = (
@@ -27510,20 +27466,19 @@
 	},
 /turf/open/hybrisa/street/roadlines3,
 /area/varadero/exterior/comms4)
-"byt" = (
-/obj/item/ammo_magazine/rifle/l42a/heap/empty,
-/turf/open/gm/road,
-/area/varadero/exterior/comms4)
 "byu" = (
 /obj/effect/decal/cleanable/blood/splatter{
 	icon_state = "mfloor4"
 	},
 /obj/effect/spawner/random/pills/midchance,
+/obj/effect/decal/hybrisa/road/lines2,
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
 "byv" = (
 /obj/item/storage/firstaid/adv/empty,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/doubleroad/lines3,
+/obj/effect/decal/hybrisa/road/lines2,
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
 "byw" = (
@@ -27538,6 +27493,7 @@
 	color = "#20d450";
 	basecolor = "#20d450"
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
 "byy" = (
@@ -27950,9 +27906,6 @@
 	pixel_y = -4;
 	pixel_x = -16
 	},
-/obj/structure/prop/invuln/fire{
-	light_color = "#FF7700"
-	},
 /turf/open/gm/road,
 /area/varadero/exterior/farocean)
 "bzz" = (
@@ -27964,6 +27917,9 @@
 /obj/structure/barricade/hesco{
 	dir = 8;
 	color = null
+	},
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1
 	},
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
@@ -27981,6 +27937,9 @@
 	icon_state = "mfloor3"
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1
+	},
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
 "bzC" = (
@@ -27993,6 +27952,9 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1
+	},
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
 "bzD" = (
@@ -28006,20 +27968,24 @@
 	dir = 8
 	},
 /obj/effect/spawner/gibspawner/human,
+/obj/effect/decal/cleanable/blood,
 /turf/open/hybrisa/street/roadlines3,
 /area/varadero/exterior/comms4)
 "bzF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/hybrisa/road/road_stop,
+/obj/item/tool/surgery/scalpel,
+/turf/open/gm/road,
+/area/varadero/exterior/comms4)
+"bzG" = (
+/obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "mfloor5"
 	},
 /obj/effect/spawner/gibspawner/xeno,
-/turf/open/gm/road,
-/area/varadero/exterior/comms4)
-"bzG" = (
-/obj/item/tool/surgery/scalpel,
-/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1
+	},
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
 "bzH" = (
@@ -28035,6 +28001,7 @@
 /obj/item/ammo_magazine/rifle/lmg,
 /obj/item/ammo_magazine/rifle/lmg/holo_target,
 /obj/item/ammo_box/magazine/misc/flashlight/combat,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
 "bzJ" = (
@@ -28083,6 +28050,17 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
+"bzQ" = (
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_s";
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "mfloor2"
+	},
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior_protected/caves)
 "bzR" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -28128,9 +28106,7 @@
 	dir = 4
 	},
 /obj/item/trash/cigbutt,
-/obj/item/ammo_casing/shell{
-	icon_state = "cartridge_10"
-	},
+/obj/item/ammo_casing/bullet,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "bzX" = (
@@ -28329,6 +28305,7 @@
 	pixel_y = -13
 	},
 /obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/hybrisa/doubleroad/lines3,
 /turf/open/gm/road,
 /area/varadero/exterior/farocean)
 "bAu" = (
@@ -28362,12 +28339,16 @@
 	pixel_y = -36;
 	pixel_x = -11
 	},
+/obj/structure/prop/invuln/fire{
+	light_color = "#FF7700"
+	},
 /turf/open/gm/road,
 /area/varadero/exterior/farocean)
 "bAx" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/hybrisa/road/lines2,
 /obj/structure/blocker/invisible_wall,
+/obj/effect/decal/hybrisa/doubleroad/lines3,
 /turf/open/gm/road,
 /area/varadero/exterior/farocean)
 "bAy" = (
@@ -28404,6 +28385,7 @@
 	icon_state = "mfloor5"
 	},
 /obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/hybrisa/doubleroad/lines3,
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
 "bAB" = (
@@ -28415,6 +28397,7 @@
 /obj/structure/bed/roller,
 /obj/effect/decal/hybrisa/road/lines2,
 /obj/effect/landmark/corpsespawner/new_varadero/doctor/burst,
+/obj/effect/decal/cleanable/blood,
 /turf/open/hybrisa/street/roadlines3,
 /area/varadero/exterior/comms4)
 "bAD" = (
@@ -28455,6 +28438,7 @@
 "bAF" = (
 /obj/item/ammo_box/magazine/l42a/heap/empty,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/doubleroad/lines3,
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
 "bAG" = (
@@ -28591,6 +28575,18 @@
 	},
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
+"bAX" = (
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_s";
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "mfloor6"
+	},
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior_protected/caves)
 "bAY" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/item/ammo_magazine/rifle/l42a/heap/empty,
@@ -28601,9 +28597,7 @@
 	icon_state = "csplatter1"
 	},
 /obj/structure/barricade/deployable,
-/obj/item/ammo_casing/shell{
-	icon_state = "cartridge_10"
-	},
+/obj/item/ammo_casing/bullet,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "bBa" = (
@@ -28618,6 +28612,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidwarning,
 /area/varadero/exterior/lz1_near)
+"bBc" = (
+/obj/item/ammo_casing/shell{
+	icon_state = "bshell_";
+	dir = 10
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/varadero/interior_protected/caves)
 "bBd" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/auto_turf/sand_white/layer1,
@@ -28833,12 +28834,12 @@
 /turf/open/hybrisa/street/sidewalk,
 /area/varadero/exterior/comms4)
 "bBG" = (
-/obj/effect/spawner/random/goggles/lowchance,
+/obj/effect/spawner/random/pills/lowchance,
 /turf/open/hybrisa/street/sidewalk/east,
 /area/varadero/exterior/comms4)
 "bBH" = (
-/obj/effect/spawner/random/pills/lowchance,
 /obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
 "bBI" = (
@@ -28908,13 +28909,6 @@
 /area/varadero/interior/cargo)
 "bBQ" = (
 /obj/item/weapon/gun/rifle/l42a,
-/turf/open/floor/shiva/north,
-/area/varadero/interior/cargo)
-"bBR" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/blood/splatter{
-	icon_state = "mfloor5"
-	},
 /turf/open/floor/shiva/north,
 /area/varadero/interior/cargo)
 "bBS" = (
@@ -29219,10 +29213,6 @@
 	},
 /turf/open/hybrisa/street/sidewalk/east,
 /area/varadero/exterior/comms4)
-"bCN" = (
-/obj/effect/decal/hybrisa/road/lines2,
-/turf/open/gm/road,
-/area/varadero/exterior/comms4)
 "bCO" = (
 /obj/effect/decal/hybrisa/road/lines2,
 /obj/item/ammo_magazine/m56d,
@@ -29231,6 +29221,7 @@
 "bCP" = (
 /obj/effect/decal/hybrisa/road/lines2,
 /obj/structure/closet/bodybag,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
 "bCQ" = (
@@ -29295,14 +29286,6 @@
 "bCY" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva/north,
-/area/varadero/interior/cargo)
-"bCZ" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/blood/splatter{
-	icon_state = "mfloor6"
-	},
-/obj/effect/landmark/corpsespawner/new_varadero/lacn_marine_a,
 /turf/open/floor/shiva/north,
 /area/varadero/interior/cargo)
 "bDa" = (
@@ -29659,6 +29642,13 @@
 /obj/effect/decal/remains/xeno,
 /turf/open/hybrisa/street/sidewalkfull,
 /area/varadero/exterior/comms4)
+"bDV" = (
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "mfloor2"
+	},
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/varadero/interior_protected/caves)
 "bDW" = (
 /obj/item/ammo_magazine/rifle/l42a/heap/empty,
 /obj/effect/decal/cleanable/dirt,
@@ -29684,6 +29674,13 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/cargo)
+"bDZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "mfloor4"
+	},
+/turf/open/floor/panelscorched,
+/area/varadero/interior/research)
 "bEa" = (
 /obj/item/stack/sheet/glass{
 	amount = 30
@@ -29804,6 +29801,14 @@
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/plating/almayer,
 /area/varadero/exterior/lz1_near)
+"bEp" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/crap_item,
+/turf/open/floor/shiva/purple,
+/area/varadero/interior/research)
 "bEq" = (
 /obj/structure/flora/wood/stick2,
 /turf/open/gm/dirt/desert0,
@@ -29929,8 +29934,23 @@
 	},
 /obj/item/ammo_magazine/rifle/l42a,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
+"bEG" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_7"
+	},
+/obj/item/paper{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/turf/open/floor/shiva/purple/north,
+/area/varadero/interior/research)
 "bEH" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
 	dir = 1
@@ -30281,6 +30301,12 @@
 	},
 /turf/open/gm/dirt/desert0,
 /area/varadero/exterior/lz2_near)
+"bFD" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/corsat/theta,
+/area/varadero/interior/research)
 "bFE" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	icon_state = "sparsegrass_3"
@@ -30393,19 +30419,10 @@
 /obj/item/parachute,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/pontoon_beach)
-"bFT" = (
-/obj/structure/machinery/light/dropship/green{
-	dir = 1
-	},
-/turf/open/gm/river/shallow_ocean_shallow_ocean,
-/area/varadero/exterior/pontoon_beach)
 "bFU" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidwarning,
 /area/varadero/exterior/lz2_near)
-"bFV" = (
-/turf/open/floor/shiva/multi_tiles,
-/area/varadero/interior/comms1)
 "bFW" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -30459,18 +30476,6 @@
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/lz2_near)
-"bGg" = (
-/obj/effect/decal/cleanable/blood/splatter{
-	icon_state = "mfloor6"
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/gm/road,
-/area/varadero/exterior/comms4)
-"bGh" = (
-/obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/new_varadero/lacn_marine_a/burst,
-/turf/open/gm/road,
-/area/varadero/exterior/comms4)
 "bGi" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/gm/road,
@@ -30574,9 +30579,6 @@
 /area/varadero/exterior/comms4)
 "bGB" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/gun/rifle/m41aMK1{
-	current_mag = null
-	},
 /obj/effect/decal/hybrisa/road/lines2,
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
@@ -31753,12 +31755,6 @@
 	},
 /turf/open/gm/coast/beachcorner/south_east,
 /area/varadero/exterior/pontoon_beach)
-"bJD" = (
-/obj/structure/machinery/light/dropship/red{
-	dir = 1
-	},
-/turf/open/gm/river/ocean/deep_ocean,
-/area/varadero/exterior/pontoon_beach)
 "bJE" = (
 /obj/effect/decal/hybrisa/tiretrack,
 /obj/effect/decal/cleanable/dirt,
@@ -32676,6 +32672,17 @@
 	},
 /turf/open/floor/asteroidwarning/east,
 /area/varadero/interior/cargo)
+"bLX" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_y = 8
+	},
+/turf/open/floor/shiva/purplefull/west,
+/area/varadero/interior/research)
 "bLY" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -32944,6 +32951,9 @@
 /obj/item/ammo_box/magazine/l42a/heap/empty,
 /turf/open/floor/asteroidwarning/southwest,
 /area/varadero/exterior/lz1_near)
+"bMI" = (
+/turf/open/floor/corsat/marked,
+/area/varadero/interior/research)
 "bMJ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -33037,14 +33047,6 @@
 	pixel_y = -2
 	},
 /obj/structure/closet/crate/explosives,
-/obj/structure/machinery/light/small{
-	name = "emergency light";
-	desc = "A small lighting fixture. This one is designed to conserve power during emergencies while still illuminating dark areas.";
-	dir = 8;
-	light_range = 2;
-	light_color = "#FF0000";
-	light_system = 2
-	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/varadero/interior/beach_bar)
 "bMV" = (
@@ -33141,6 +33143,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz2_near)
+"bNg" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/plate,
+/area/varadero/interior/research)
 "bNh" = (
 /obj/structure/prop/invuln/remote_console_pod{
 	pixel_x = -1
@@ -33687,6 +33693,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/multi_tiles/west,
 /area/varadero/interior/cargo)
+"bOu" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/theta,
+/area/varadero/interior/research)
 "bOv" = (
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -33746,6 +33756,14 @@
 /obj/item/hardpoint/locomotion/van_wheels,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/cargo)
+"bOD" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	pixel_y = 0
+	},
+/turf/open/floor/corsat/darkgreen/southwest,
+/area/varadero/interior/research)
 "bOE" = (
 /obj/structure/surface/table/reinforced/prison{
 	breakable = 0;
@@ -34113,15 +34131,6 @@
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/item/clothing/head/headset{
 	pixel_x = 4
-	},
-/obj/item/device/flashlight/slime{
-	invisibility = 1;
-	mouse_opacity = 0;
-	alpha = 0;
-	explo_proof = 1;
-	light_color = "#FF0000";
-	name = "emergency light";
-	light_range = 5
 	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/varadero/interior/beach_bar)
@@ -34895,6 +34904,7 @@
 /area/varadero/interior/cargo)
 "bRo" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/predship/tile/hunter_tile_1/east,
 /area/varadero/interior_protected/vessel)
 "bRp" = (
@@ -35257,6 +35267,13 @@
 	},
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
+"bSd" = (
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "mfloor5"
+	},
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/gm/dirt,
+/area/varadero/exterior/eastbeach)
 "bSe" = (
 /obj/structure/prop/structure_lattice{
 	dir = 1;
@@ -35395,14 +35412,6 @@
 	desc = "A severely damaged dropship intercomm, its hard to tell if this thing is still working even. Only one way to find out; to speak directly into an intercom next to you, use :i.";
 	pixel_y = 25
 	},
-/obj/structure/machinery/light/small{
-	name = "emergency light";
-	desc = "A small lighting fixture. This one is designed to conserve power during emergencies while still illuminating dark areas.";
-	dir = 4;
-	light_range = 2;
-	light_color = "#FF0000";
-	light_system = 2
-	},
 /obj/item/stack/medical/bruise_pack/random_amount,
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/varadero/interior/beach_bar)
@@ -35447,6 +35456,13 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/asteroidwarning/west,
 /area/varadero/exterior/lz2_near)
+"bSy" = (
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "mfloor5"
+	},
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/asteroid,
+/area/varadero/exterior/eastbeach)
 "bSz" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidfloor,
@@ -35980,6 +35996,11 @@
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/predship/hunter_grille,
 /area/varadero/interior_protected/vessel)
+"bTO" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
 "bTP" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 4
@@ -36225,6 +36246,25 @@
 /obj/structure/platform_decoration/metal/kutjevo/north,
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz2_near)
+"bUn" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = -12
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/uscm_mre{
+	pixel_x = -10;
+	pixel_y = -7
+	},
+/turf/open/floor/asteroid,
+/area/varadero/exterior/eastbeach)
+"bUo" = (
+/obj/structure/prop/invuln/fire{
+	light_color = "#FF7700"
+	},
+/obj/effect/decal/hybrisa/road/lines2,
+/turf/open/gm/road,
+/area/varadero/exterior/farocean)
 "bUp" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -36747,6 +36787,20 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz2_near)
+"bVw" = (
+/obj/item/ammo_magazine/rifle/m41aMK1/heap/empty,
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1
+	},
+/turf/open/gm/road,
+/area/varadero/exterior/comms4)
+"bVx" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
 "bVy" = (
 /obj/structure/platform/metal/kutjevo_smooth/west{
 	climb_delay = 1
@@ -36843,7 +36897,7 @@
 	},
 /obj/item/weapon/gun/rifle/l42a,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/corpsespawner/new_varadero/lacn_medic/burst,
+/obj/effect/landmark/corpsespawner/new_varadero/doctor/burst,
 /turf/open/floor/asteroid,
 /area/varadero/interior/cargo)
 "bVM" = (
@@ -37043,6 +37097,14 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz2_near)
+"bWp" = (
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "mfloor4"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/asteroid,
+/area/varadero/exterior/pontoon_beach)
 "bWq" = (
 /obj/structure/platform/metal/almayer/north{
 	density = 0;
@@ -37063,6 +37125,14 @@
 /obj/item/device/cassette_tape/ocean,
 /turf/open/floor/plating/bare_catwalk,
 /area/varadero/exterior/lz2_near)
+"bWs" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"bWt" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/hybrisa/street/sidewalk,
+/area/varadero/exterior/comms4)
 "bWu" = (
 /obj/structure/platform/metal/kutjevo_smooth/east{
 	climb_delay = 1
@@ -37340,6 +37410,20 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz2_near)
+"bXa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"bXb" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 8;
+	layer = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/supply/ammo/m41a_box,
+/turf/open/hybrisa/street/sidewalk/east,
+/area/varadero/exterior/comms4)
 "bXc" = (
 /obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
@@ -37351,6 +37435,10 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/lz2_near)
+"bXd" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/asteroidwarning/west,
+/area/varadero/exterior/lz1_near)
 "bXe" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_8"
@@ -37504,6 +37592,10 @@
 	},
 /turf/open/gm/dirt/desert1,
 /area/varadero/exterior/lz2_near)
+"bXA" = (
+/obj/item/trash/barcardine,
+/turf/open/floor/plating/bare_catwalk,
+/area/varadero/exterior/lz2_near)
 "bXB" = (
 /obj/structure/machinery/landinglight/delayone,
 /obj/effect/decal/cleanable/dirt,
@@ -37546,6 +37638,11 @@
 /obj/structure/surface/table,
 /obj/item/map/new_varadero,
 /turf/open/floor/plating/bare_catwalk,
+/area/varadero/exterior/lz2_near)
+"bXH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/fakeplatforms/platform4/deco,
+/turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz2_near)
 "bXI" = (
 /obj/effect/decal/cleanable/dirt,
@@ -37658,6 +37755,13 @@
 	},
 /turf/open/floor/prison/darkredfull2,
 /area/varadero/interior/dock_control)
+"bXX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/fakeplatforms/platform4/deco{
+	dir = 1
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz2_near)
 "bXY" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
@@ -37794,6 +37898,13 @@
 	density = 0
 	},
 /turf/open/gm/dirt,
+/area/varadero/exterior/lz2_near)
+"bYl" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/prop/hybrisa/fakeplatforms/platform4/deco{
+	dir = 8
+	},
+/turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz2_near)
 "bYm" = (
 /obj/structure/prop/invuln/minecart_tracks/bumper,
@@ -38002,6 +38113,11 @@
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/islands)
+"bYK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/hotdog,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz2_near)
 "bYL" = (
 /obj/structure/prop/hybrisa/fakeplatforms/platform4/deco,
 /obj/effect/decal/cleanable/dirt,
@@ -38020,13 +38136,23 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/predship/mainfloor,
 /area/varadero/interior_protected/vessel)
-"bYR" = (
-/obj/structure/prop/hybrisa/fakeplatforms/platform4,
+"bYP" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/hybrisa/misc/trash_bag_full_prop{
 	pixel_x = -7;
 	pixel_y = 8
 	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz2_near)
+"bYQ" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform4,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/c_tube,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz2_near)
+"bYR" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform4,
+/obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_6"
 	},
@@ -38034,6 +38160,10 @@
 	dir = 4;
 	pixel_x = 1;
 	pixel_y = 3
+	},
+/obj/item/paper{
+	pixel_x = -7;
+	pixel_y = 7
 	},
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz2_near)
@@ -39410,6 +39540,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/gm/dirt/dark_brown,
 /area/varadero/interior_protected/caves)
+"ccK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cheesie,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz2_near)
 "ccL" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
@@ -39451,6 +39586,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/maintenance/south)
+"ccS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/crushed_cup,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz2_near)
 "ccT" = (
 /obj/effect/decal/warning_stripes/asteroid{
 	icon_state = "warning_s";
@@ -39650,12 +39790,14 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/fence/slim,
 /obj/effect/decal/warning_stripes/asteroid{
 	icon_state = "warning_s";
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/fence/slim{
+	cut = 1
+	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/south)
 "cdx" = (
@@ -39720,6 +39862,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/shell,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
 "cdF" = (
@@ -40759,14 +40902,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroid,
 /area/varadero/exterior/eastbeach)
-"cgK" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "mfloor5"
-	},
-/obj/effect/spawner/gibspawner/xeno,
-/turf/open/floor/asteroid,
-/area/varadero/exterior/eastbeach)
 "cgM" = (
 /obj/item/prop/colony/used_flare,
 /obj/effect/decal/cleanable/dirt,
@@ -40780,6 +40915,10 @@
 "cgO" = (
 /obj/effect/decal/hybrisa/bloodtrail,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "mfloor3"
+	},
+/obj/effect/spawner/gibspawner/xeno,
 /turf/open/floor/asteroid,
 /area/varadero/exterior/pontoon_beach)
 "cgP" = (
@@ -40862,6 +41001,8 @@
 	pixel_x = 15;
 	unslashable = 1
 	},
+/obj/effect/decal/hybrisa/doubleroad/lines3,
+/obj/effect/decal/hybrisa/road/lines2,
 /turf/open/gm/road,
 /area/varadero/exterior/farocean)
 "che" = (
@@ -40876,6 +41017,7 @@
 /obj/item/ammo_magazine/rifle/l42a/heap/empty,
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/road/lines2,
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
 "chg" = (
@@ -41171,10 +41313,6 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner2,
 /area/varadero/exterior/comms4)
 "cia" = (
-/obj/structure/largecrate/random/case/small{
-	pixel_x = 0;
-	pixel_y = 12
-	},
 /turf/open/hybrisa/street/sidewalk/east,
 /area/varadero/exterior/comms4)
 "cib" = (
@@ -41188,7 +41326,6 @@
 /area/varadero/interior/laundry)
 "cid" = (
 /obj/effect/decal/hybrisa/doubleroad/lines6,
-/obj/effect/decal/cleanable/dirt,
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
 "cie" = (
@@ -41219,7 +41356,10 @@
 /area/varadero/interior/oob)
 "cii" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/largecrate/random/case/double,
+/obj/structure/largecrate/random/case/small{
+	pixel_x = 0;
+	pixel_y = 12
+	},
 /turf/open/hybrisa/street/sidewalk/east,
 /area/varadero/exterior/comms4)
 "cij" = (
@@ -43328,20 +43468,6 @@
 	},
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
-"coo" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/invuln/pipe_water{
-	color = "#94362C";
-	name = "leaking fuel"
-	},
-/obj/structure/prop/invuln/overhead_pipe{
-	pixel_x = -4;
-	pixel_y = 12;
-	color = "#8E897F";
-	dir = 8
-	},
-/turf/open/predship/hunter_grate,
-/area/varadero/interior_protected/vessel)
 "cop" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/xeno{
@@ -43390,7 +43516,7 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz2_near)
 "coy" = (
-/obj/structure/largecrate/supply/ammo/m41a_box,
+/obj/structure/largecrate/random/case/double,
 /turf/open/hybrisa/street/sidewalk/east,
 /area/varadero/exterior/comms4)
 "coz" = (
@@ -43711,6 +43837,7 @@
 	light_color = "#FF7700"
 	},
 /obj/effect/decal/large_stain,
+/obj/effect/decal/hybrisa/road/lines2,
 /turf/open/gm/road,
 /area/varadero/exterior/farocean)
 "cpt" = (
@@ -44043,6 +44170,7 @@
 /obj/effect/decal/cleanable/blood/splatter{
 	icon_state = "mfloor6"
 	},
+/obj/item/ammo_casing/bullet,
 /turf/open/floor/interior/plastic,
 /area/varadero/interior_protected/caves/makeshift_tent)
 "cql" = (
@@ -44112,6 +44240,7 @@
 	color = "#8E897F";
 	dir = 8
 	},
+/obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/vessel)
 "cqt" = (
@@ -44156,9 +44285,11 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/maintenance/south)
 "cqx" = (
-/obj/structure/fence/overgrown,
 /obj/structure/flora/jungle/vines/light_1,
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/fence/overgrown{
+	cut = 1
+	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/maintenance/south)
 "cqy" = (
@@ -44281,26 +44412,24 @@
 /mob/living/simple_animal/small/mouse/rat/gray,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/south)
-"cqQ" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/paper{
-	pixel_x = 2;
-	pixel_y = 2
-	},
-/turf/open/floor/shiva/floor3,
-/area/varadero/interior/research)
 "cqR" = (
-/obj/effect/decal/cleanable/dirt,
 /obj/item/folder/black_random{
 	pixel_x = 6;
 	pixel_y = -3
 	},
-/turf/open/floor/shiva/floor3,
+/obj/effect/decal/hybrisa/WY/WYworn{
+	dir = 1;
+	pixel_x = -16;
+	pixel_y = 0
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/plate,
 /area/varadero/interior/research)
 "cqS" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_8"
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/research)
 "cqT" = (
@@ -44321,11 +44450,17 @@
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/administration)
 "cqV" = (
-/obj/effect/decal/hybrisa/trash{
-	icon_state = "trash_5"
+/obj/effect/decal/hybrisa/trash,
+/obj/item/paper{
+	pixel_x = -11;
+	pixel_y = 4
 	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva/multi_tiles,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	pixel_y = 0
+	},
+/turf/open/floor/corsat/plate,
 /area/varadero/interior/research)
 "cqW" = (
 /obj/structure/flora/pottedplant{
@@ -44337,11 +44472,11 @@
 /area/varadero/interior/research)
 "cqX" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/paper{
-	pixel_x = -11;
-	pixel_y = 4
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_y = 8
 	},
-/turf/open/floor/shiva/purple,
+/turf/open/floor/shiva/purplefull/west,
 /area/varadero/interior/research)
 "cqY" = (
 /obj/effect/decal/cleanable/dirt,
@@ -44754,7 +44889,6 @@
 /area/varadero/interior/hall_NW)
 "csr" = (
 /obj/structure/prop/ice_colony/flamingo,
-/obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
@@ -45064,6 +45198,7 @@
 	icon_state = "warning_c";
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/greenfull/west,
 /area/varadero/interior/comms1)
 "ctm" = (
@@ -45209,9 +45344,7 @@
 "ctF" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/shell{
-	icon_state = "cartridge_10"
-	},
+/obj/item/ammo_casing/bullet,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "ctG" = (
@@ -45349,6 +45482,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
 /turf/open/floor/prison/ramptop/north,
 /area/varadero/exterior/lz1_near)
 "ctZ" = (
@@ -45434,12 +45568,6 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/pontoon_beach)
-"cuj" = (
-/obj/effect/decal/hybrisa/road/lines2,
-/obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_magazine/rifle/m41aMK1/heap/empty,
-/turf/open/gm/road,
-/area/varadero/exterior/comms4)
 "cuk" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -45451,12 +45579,10 @@
 /turf/open/floor/shiva/north,
 /area/varadero/interior/cargo)
 "cul" = (
-/obj/item/ammo_casing/shell{
-	icon_state = "cartridge_10"
-	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
+/obj/item/ammo_casing/bullet,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "cum" = (
@@ -45478,17 +45604,6 @@
 /obj/effect/spawner/gibspawner/xeno,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/cargo)
-"cup" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/shell{
-	icon_state = "bshell_";
-	dir = 10
-	},
-/obj/item/ammo_casing/shell{
-	icon_state = "cartridge_10"
-	},
-/turf/open/floor/asteroidfloor/north,
-/area/varadero/exterior/lz1_near)
 "cuq" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
@@ -45756,12 +45871,6 @@
 	},
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz2_near)
-"cva" = (
-/obj/structure/largecrate/random,
-/obj/effect/decal/cleanable/dirt,
-/obj/item/clothing/head/cmcap,
-/turf/open/floor/shiva/floor3,
-/area/varadero/interior/cargo)
 "cvb" = (
 /obj/effect/decal/warning_stripes/asteroid{
 	icon_state = "warning_s";
@@ -46053,6 +46162,9 @@
 /area/varadero/exterior/lz2_near)
 "cvN" = (
 /obj/item/stack/cable_coil/cut,
+/obj/structure/prop/hybrisa/fakeplatforms/platform4/deco{
+	dir = 4
+	},
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz2_near)
 "cvO" = (
@@ -47512,9 +47624,7 @@
 /turf/open/floor/wood,
 /area/varadero/interior/administration)
 "djP" = (
-/obj/structure/largecrate/supply/supplies/water,
-/obj/item/inflatable,
-/obj/item/inflatable,
+/obj/structure/largecrate/random/barrel/yellow,
 /turf/open/floor/interior/plastic,
 /area/varadero/interior_protected/caves/makeshift_tent)
 "dkl" = (
@@ -47864,6 +47974,7 @@
 	dir = 10;
 	color = "#b29082"
 	},
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/east,
 /turf/open/floor/plating,
 /area/varadero/interior_protected/caves/digsite)
 "dGh" = (
@@ -49333,6 +49444,7 @@
 /obj/structure/barricade/deployable{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/comms1)
 "eUv" = (
@@ -50280,7 +50392,6 @@
 /turf/open/predship/mainfloor/upper/west,
 /area/varadero/interior_protected/vessel)
 "fFO" = (
-/obj/effect/decal/cleanable/blood,
 /obj/effect/decal/warning_stripes/asteroid{
 	icon_state = "warning_s"
 	},
@@ -52571,7 +52682,7 @@
 /area/varadero/exterior/monsoon)
 "hEN" = (
 /obj/structure/closet/l3closet/scientist,
-/turf/open/floor/shiva/purplefull/west,
+/turf/open/floor/plating/bare_catwalk,
 /area/varadero/interior/research)
 "hFA" = (
 /obj/structure/window/reinforced{
@@ -53672,7 +53783,13 @@
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/cargo)
 "iCy" = (
-/turf/open/floor/shiva/multi_tiles,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	pixel_y = 0
+	},
+/turf/open/floor/corsat/plate,
 /area/varadero/interior/research)
 "iCB" = (
 /obj/effect/landmark/queen_spawn,
@@ -54596,9 +54713,6 @@
 	icon_state = "4-10";
 	level = 2
 	},
-/obj/effect/decal/cleanable/blood/splatter{
-	icon_state = "mfloor5"
-	},
 /obj/structure/fence/slim/dark/door{
 	dir = 4
 	},
@@ -54826,13 +54940,11 @@
 /obj/structure/catwalk{
 	explo_proof = 1
 	},
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/research)
 "jwy" = (
 /obj/item/weapon/gun/revolver/cmb,
-/obj/effect/decal/cleanable/blood{
-	icon_state = "csplatter1"
-	},
 /obj/effect/decal/warning_stripes/asteroid{
 	icon_state = "warning_c";
 	dir = 4
@@ -57016,12 +57128,8 @@
 	icon_state = "road_edge_decal3";
 	pixel_y = -2
 	},
-/obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "mfloor4"
-	},
 /obj/item/prop/colony/used_flare,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/gibspawner/xeno,
 /turf/open/floor/asteroid,
 /area/varadero/exterior/eastbeach)
 "lss" = (
@@ -57599,13 +57707,6 @@
 	},
 /turf/open/floor/carpet,
 /area/varadero/interior/hall_SE)
-"lRU" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva/purplecorners,
-/area/varadero/interior/research)
 "lSg" = (
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/cargo)
@@ -58208,13 +58309,13 @@
 /turf/open/floor/wood,
 /area/varadero/interior/court)
 "mpn" = (
-/obj/item/weapon/baton,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
 /obj/structure/catwalk{
 	explo_proof = 1
 	},
+/obj/item/weapon/baton/damaged,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/research)
 "mpL" = (
@@ -59531,9 +59632,6 @@
 	dir = 1;
 	req_access_txt = "100"
 	},
-/obj/effect/decal/hybrisa/WY/WYworn{
-	dir = 1
-	},
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/hall_NW)
 "nCl" = (
@@ -60665,7 +60763,6 @@
 /obj/structure/pipes/standard/manifold/hidden/green,
 /obj/effect/decal/hybrisa/bloodtrail,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
 /turf/open/floor/shiva/north,
 /area/varadero/interior/research)
 "oyl" = (
@@ -61674,6 +61771,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/item/weapon/gun/shotgun/pump,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/research)
 "pnL" = (
@@ -64137,10 +64235,6 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/south)
 "rex" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22";
-	pixel_y = 8
-	},
 /turf/open/floor/shiva/purplefull/west,
 /area/varadero/interior/research)
 "reA" = (
@@ -64267,6 +64361,7 @@
 /obj/structure/prop/tyrargo/boards/boards_1{
 	pixel_x = -4
 	},
+/obj/item/ammo_casing/bullet,
 /turf/open/gm/dirt/desert2,
 /area/varadero/exterior/lz1_near)
 "rjs" = (
@@ -64274,6 +64369,7 @@
 	climb_delay = 1
 	},
 /obj/structure/surface/rack,
+/obj/item/clothing/head/cmcap,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/cargo)
 "rjE" = (
@@ -64812,10 +64908,6 @@
 /area/varadero/interior_protected/caves)
 "rDK" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/structure/prop/invuln/pipe_water{
-	color = "#94362C";
-	name = "leaking fuel"
-	},
 /turf/open/predship/shuttle_border/north,
 /area/varadero/interior_protected/vessel)
 "rDM" = (
@@ -65327,6 +65419,10 @@
 /area/varadero/interior/disposals)
 "rZr" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/spawner/gibspawner/xeno,
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "mfloor6"
+	},
 /turf/open/shuttle/elevator/grating,
 /area/varadero/interior_protected/caves)
 "sah" = (
@@ -66262,6 +66358,15 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/device/flashlight/slime{
+	invisibility = 1;
+	mouse_opacity = 0;
+	alpha = 0;
+	explo_proof = 1;
+	light_color = "#FF0000";
+	name = "emergency light";
+	light_range = 5
+	},
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
 /area/varadero/interior/beach_bar)
 "sKN" = (
@@ -66864,7 +66969,7 @@
 	dir = 1;
 	req_access_txt = "100"
 	},
-/turf/open/floor/shiva/north,
+/turf/open/floor/corsat/marked,
 /area/varadero/interior/research)
 "toU" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -69490,7 +69595,6 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
 "vBq" = (
-/obj/effect/landmark/objective_landmark/far,
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_7"
 	},
@@ -71177,6 +71281,7 @@
 /area/varadero/interior/disposals)
 "wUr" = (
 /obj/effect/decal/cleanable/blood,
+/obj/effect/spawner/gibspawner/xeno,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
 "wUF" = (
@@ -71336,6 +71441,7 @@
 /obj/structure/window/reinforced/tinted{
 	dir = 8
 	},
+/obj/structure/machinery/portable_atmospherics/powered/scrubber/huge,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/research)
 "xcf" = (
@@ -73242,7 +73348,7 @@ bBy
 chB
 cht
 ctG
-bwT
+cht
 bwS
 aUY
 huF
@@ -73424,7 +73530,7 @@ aUY
 chC
 cht
 chc
-chc
+bUo
 cgS
 aUY
 buP
@@ -75059,7 +75165,7 @@ sNy
 hYr
 bDL
 bCJ
-bBB
+bWt
 bAz
 bzA
 bym
@@ -75242,8 +75348,8 @@ pms
 bDM
 bCK
 bBC
-bCN
-ctH
+cik
+bVw
 byn
 bxe
 bvR
@@ -76146,7 +76252,7 @@ bHG
 bGx
 bFH
 cuu
-bFH
+bXb
 coy
 cii
 cia
@@ -76577,7 +76683,7 @@ rWJ
 dYq
 aHK
 ltW
-lRU
+aGi
 leI
 fay
 aDO
@@ -76873,18 +76979,18 @@ fQK
 cNt
 ciE
 bGA
-bGg
+ctH
 bFL
-bxl
+bGi
 bEF
-bxl
+bGi
 bCQ
 bBK
 bAG
 bzI
 bxq
 bxn
-bvY
+cgQ
 bpt
 qJp
 bsU
@@ -76941,7 +77047,7 @@ aHh
 aIw
 aHh
 aHh
-aGj
+bEp
 gka
 fay
 aDO
@@ -77055,10 +77161,10 @@ pGs
 bHI
 bHd
 bGB
-bGh
+bGi
 bFM
 bFq
-bxl
+bGi
 cid
 cpI
 ctS
@@ -77070,7 +77176,7 @@ bvZ
 uTj
 btV
 bsV
-bFV
+blB
 brk
 blB
 bpy
@@ -77121,7 +77227,7 @@ nQH
 mVc
 nYx
 xAK
-aHL
+aHg
 aHh
 fWn
 vVy
@@ -77302,10 +77408,10 @@ aIx
 fay
 fay
 aBd
-cen
+cei
 aHN
-cqQ
-icn
+aHh
+bEG
 afi
 fay
 pGs
@@ -77419,10 +77525,10 @@ qfr
 bHG
 bHe
 ciz
-byt
+bxl
 bFO
 bFs
-cuj
+cik
 bDR
 oeC
 ctH
@@ -77485,8 +77591,8 @@ cjU
 nLw
 fay
 rex
-aHd
-hDA
+aHh
+aHh
 icn
 hEN
 fay
@@ -77667,7 +77773,7 @@ ltW
 jHI
 fay
 aIx
-hDA
+bMI
 tnN
 cPR
 fay
@@ -77848,10 +77954,10 @@ dmS
 crb
 ucv
 fay
-cqW
-aHd
+bOu
+bNg
 cqR
-bjf
+bFD
 fay
 pGs
 pGs
@@ -77859,7 +77965,7 @@ pGs
 byd
 amb
 awd
-aAi
+amd
 azx
 fFO
 dGu
@@ -78030,7 +78136,7 @@ plc
 aKj
 ckz
 fay
-sDM
+bOD
 cqV
 iCy
 aGk
@@ -78040,7 +78146,7 @@ pGs
 pGs
 ams
 amb
-amb
+bDV
 aAk
 azy
 ayC
@@ -78215,7 +78321,7 @@ fay
 cqX
 aUc
 aUc
-aGk
+bLX
 huF
 pGs
 pGs
@@ -78405,10 +78511,10 @@ huF
 huF
 aBy
 amb
-amb
+bBc
 azz
 ayG
-caL
+bse
 anN
 awe
 pGs
@@ -78589,7 +78695,7 @@ huF
 awf
 aAm
 azA
-axZ
+bxA
 cdt
 axi
 awf
@@ -78963,7 +79069,7 @@ pGs
 amF
 amb
 amd
-amd
+aZC
 uQa
 ccx
 amd
@@ -79136,7 +79242,7 @@ aAQ
 aAn
 azB
 ayH
-axP
+uQa
 caR
 awi
 alL
@@ -79147,7 +79253,7 @@ asC
 uQa
 amd
 caL
-amd
+awp
 amX
 aqc
 aoI
@@ -79317,14 +79423,14 @@ ckP
 aAR
 aAo
 azC
-aug
 uQa
+bxy
 axl
 awj
 asG
 amd
 auf
-amd
+brg
 amd
 amd
 uQa
@@ -79490,7 +79596,7 @@ rjZ
 aHk
 aUx
 aUb
-aEH
+bDZ
 aOp
 luZ
 aDc
@@ -79498,13 +79604,13 @@ aCm
 aBE
 aAS
 aAp
-azD
+uQa
 ayI
 axQ
 axm
 awk
 avx
-caR
+brV
 caL
 ato
 asD
@@ -79679,7 +79785,7 @@ aDd
 aCn
 rZr
 aAT
-aAq
+caR
 azE
 ayJ
 axR
@@ -79687,11 +79793,11 @@ axn
 awl
 avz
 uQa
-aug
+uQa
 trQ
+bdS
 caL
-arV
-aru
+caR
 aqX
 caR
 caR
@@ -79868,11 +79974,11 @@ axS
 axo
 awm
 asG
-auM
+aqW
 auh
 caL
 amF
-mdL
+aZT
 amd
 aqY
 uQa
@@ -80051,7 +80157,7 @@ axp
 awf
 asG
 amd
-aui
+amd
 ams
 pGs
 huF
@@ -80154,8 +80260,8 @@ dss
 bMk
 xTd
 bDY
-bCZ
-bBR
+bMk
+bMk
 cpC
 gwB
 bvi
@@ -80227,7 +80333,7 @@ huF
 huF
 huF
 azF
-auP
+bzQ
 aKD
 axq
 awn
@@ -80327,7 +80433,7 @@ huF
 bJY
 bIl
 bqB
-cva
+bIl
 bHO
 mIL
 mAX
@@ -80592,8 +80698,8 @@ oUU
 aAr
 avF
 ccW
-axU
-axr
+ccP
+asG
 awp
 mdL
 pGs
@@ -80773,10 +80879,10 @@ ykJ
 gAd
 aAr
 azG
-ayM
+ccW
 axV
 asG
-awq
+amb
 amI
 pGs
 pGs
@@ -80955,7 +81061,7 @@ jBv
 gAd
 huF
 avE
-ccW
+bAX
 ccP
 axt
 huF
@@ -81137,8 +81243,8 @@ pGs
 pGs
 pGs
 huF
-ayN
-axW
+ccW
+ccP
 asH
 anw
 pGs
@@ -83051,7 +83157,7 @@ bOH
 bNY
 dob
 byK
-qFC
+bXd
 qFC
 bKE
 pMG
@@ -83882,7 +83988,7 @@ cka
 bNR
 bLg
 kcE
-cas
+cbH
 ksX
 cDc
 cbT
@@ -84155,8 +84261,8 @@ bxz
 bMe
 bxz
 bxz
-cup
-bxz
+cvh
+bXa
 wMw
 bxz
 bxz
@@ -84889,7 +84995,7 @@ bZU
 bDi
 bBb
 ctP
-bzS
+bVx
 byN
 wMw
 wMw
@@ -85252,7 +85358,7 @@ bZU
 bZU
 evX
 bBX
-wMw
+bWs
 ctK
 byO
 wMw
@@ -85797,7 +85903,7 @@ qOh
 bZU
 bEo
 cua
-bxz
+bXa
 bAY
 byL
 byP
@@ -85906,7 +86012,7 @@ akb
 cto
 blJ
 cto
-aeq
+aRw
 xxk
 cto
 agC
@@ -86165,7 +86271,7 @@ lEm
 bAZ
 bzW
 wMw
-rSA
+bTO
 wMw
 rSA
 wMw
@@ -86995,8 +87101,8 @@ akw
 agX
 pGs
 ksX
-cto
-etv
+alx
+aSh
 cto
 ksX
 aby
@@ -91063,7 +91169,7 @@ qwQ
 qwQ
 qwQ
 bKh
-bJD
+qwQ
 eGX
 hKK
 fLY
@@ -92526,7 +92632,7 @@ hKK
 hKK
 fLY
 bGr
-bFT
+lTR
 eGX
 sRs
 tgE
@@ -94541,7 +94647,7 @@ bxK
 bwp
 bvs
 bup
-btm
+cgJ
 bsq
 cFw
 aUY
@@ -94899,7 +95005,7 @@ hXR
 gJy
 ngY
 btj
-bvq
+bWp
 cpv
 xmL
 buG
@@ -95087,9 +95193,9 @@ qKM
 bws
 buG
 buK
-btn
+upb
 bsq
-cFw
+bSd
 bqO
 bqd
 sVH
@@ -95811,7 +95917,7 @@ bCv
 chz
 buG
 eSo
-bxN
+bfX
 bwt
 buG
 eSo
@@ -96175,7 +96281,7 @@ gDr
 cgJ
 bAi
 cof
-qKM
+bUn
 bwN
 cpk
 uRa
@@ -96878,7 +96984,7 @@ bRH
 bSz
 res
 bQe
-coI
+bXA
 sKz
 coI
 tez
@@ -97604,9 +97710,9 @@ cvQ
 cvQ
 bRI
 cvQ
-bDu
+bYl
 bGW
-bGt
+bXH
 cvi
 cvc
 cvi
@@ -97956,7 +98062,7 @@ mPk
 mPk
 vhB
 bLa
-bGt
+ccK
 bYN
 coI
 cws
@@ -98866,7 +98972,7 @@ mPk
 mPk
 xVw
 cwT
-cwK
+bGt
 bYM
 coI
 cwu
@@ -98909,7 +99015,7 @@ bxZ
 bwH
 bvF
 buF
-cgK
+buG
 bsy
 juW
 juW
@@ -99412,7 +99518,7 @@ mPk
 mPk
 wBp
 cwR
-bGt
+ccS
 bYM
 cwA
 dqx
@@ -99454,8 +99560,8 @@ cpr
 coj
 cpn
 buG
-xmL
-btn
+bSy
+upb
 bsq
 brD
 blW
@@ -99594,7 +99700,7 @@ mPk
 cJL
 rYC
 cwU
-bGt
+cwK
 bYM
 coH
 bXC
@@ -99709,7 +99815,7 @@ kbQ
 kbQ
 kbQ
 atR
-aRm
+bgH
 asq
 arO
 pGs
@@ -99777,7 +99883,7 @@ mPk
 xVw
 cwR
 cwM
-bYM
+bYQ
 coH
 vNy
 bJl
@@ -100074,7 +100180,7 @@ pGs
 jqw
 aRm
 qIF
-kbQ
+bdt
 pGs
 pGs
 pGs
@@ -100336,7 +100442,7 @@ coH
 cvR
 cvM
 cvF
-cvF
+cvE
 cvB
 coH
 coI
@@ -100518,7 +100624,7 @@ cvf
 cvd
 cvN
 bGt
-bGt
+bXX
 cvd
 cvd
 cpW
@@ -100690,9 +100796,9 @@ iQr
 cwG
 cwC
 bXI
-bGt
+bYP
 iQr
-bGt
+bYK
 bUp
 bTr
 aCX
@@ -103208,7 +103314,7 @@ oJX
 pqf
 gFH
 ulv
-ulv
+akW
 bsf
 abP
 abP
@@ -103387,9 +103493,9 @@ xka
 nFy
 ojF
 brT
-aJL
+aIT
 gFH
-crq
+aqd
 ulv
 puq
 abP
@@ -104299,7 +104405,7 @@ aeQ
 brT
 adY
 adG
-adY
+atC
 brT
 acA
 pGs
@@ -104460,7 +104566,7 @@ bsf
 aPs
 gFH
 adF
-cmc
+aWe
 brT
 alN
 afC
@@ -104663,7 +104769,7 @@ aeR
 brT
 adn
 adF
-awY
+aJL
 avD
 pGs
 pGs
@@ -104824,7 +104930,7 @@ abx
 aoT
 amA
 adF
-coo
+cmc
 brT
 fbW
 avD
@@ -105193,14 +105299,14 @@ nMN
 fVo
 ajL
 caC
-akD
+caC
 ako
-ajO
+aSN
 dBA
 fhA
 cUE
 lvS
-ahi
+ahj
 agL
 agj
 atM
@@ -105373,11 +105479,11 @@ adG
 iwV
 aeu
 alO
-ajL
-ahn
-ahm
-akp
-ajP
+aVe
+izi
+agk
+agk
+aSN
 lvS
 aiY
 aiy
@@ -105566,14 +105672,14 @@ bnn
 ahR
 ahk
 cav
-cav
+aKS
 afE
 hTQ
 lJJ
 vbE
 xka
 adG
-adp
+auA
 crq
 acC
 aau
@@ -105920,7 +106026,7 @@ amy
 ulv
 kkv
 chq
-aQO
+aTJ
 bPF
 agk
 cat
@@ -106097,7 +106203,7 @@ abP
 puq
 cqt
 amA
-adG
+aZA
 amA
 brT
 bsf
@@ -107026,8 +107132,8 @@ agm
 dXi
 aAC
 awr
-aQe
-gFH
+aPs
+aJy
 adF
 brT
 aoT
@@ -108112,10 +108218,10 @@ ajx
 lDz
 oPb
 ijo
-agk
+aPI
 agP
 agq
-aWf
+aOF
 bsf
 bsf
 bsf
@@ -108294,7 +108400,7 @@ izi
 ajd
 aiF
 ahX
-afC
+aPL
 agQ
 avD
 sOw
@@ -108648,8 +108754,8 @@ ano
 bsf
 bsf
 amm
-alR
-alo
+acf
+abP
 lVf
 iyk
 uvd
@@ -108841,7 +108947,7 @@ aje
 aiH
 ahY
 ahq
-uvd
+aLh
 adp
 bsf
 bsf
@@ -109014,7 +109120,7 @@ jWA
 alT
 ajB
 abP
-akY
+bBt
 luu
 gFH
 ajV
@@ -109374,7 +109480,7 @@ jWA
 oXC
 mzK
 amU
-caG
+aWn
 amn
 ajC
 pSg

@@ -28,8 +28,9 @@
 	var/current_mine_mode = SHARP_SAFE_MODE
 
 /obj/item/weapon/gun/rifle/sharp/Initialize()
-	. = ..()
 	AddElement(/datum/element/corp_label/armat)
+	LAZYADD(actions_types, list(/datum/action/item_action/specialist/sharp_firemode_ability))
+	return ..()
 
 /obj/item/weapon/gun/rifle/sharp/get_examine_text(mob/user)
 	. = ..()
@@ -73,7 +74,54 @@
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
 			return FALSE
 
-//code for changing explosion delay on direct hits
+// Sharp "switch firemode" ability
+/datum/action/item_action/specialist/sharp_firemode_ability
+	ability_primacy = SPEC_PRIMARY_ACTION_1
+
+/datum/action/item_action/specialist/sharp_firemode_ability/New(mob/living/user, obj/item/holder)
+	. = ..()
+	name = "Toggle SHARP Firemode"
+	button.name = name
+	update_button_icon()
+	update_ability_icon()
+
+/datum/action/item_action/specialist/sharp_firemode_ability/proc/update_ability_icon()
+	var/obj/item/weapon/gun/rifle/sharp/sharp_rifle = holder_item
+	var/icon = 'icons/mob/hud/actions.dmi'
+	var/icon_state
+	switch(sharp_rifle.current_mine_mode)
+		if (SHARP_DANGER_MODE)
+			icon_state = "sharp_danger"
+		if (SHARP_DIRECTED_MODE)
+			icon_state = "sharp_directed"
+		if (SHARP_SAFE_MODE)
+			icon_state = "sharp_safe"
+	button.overlays.Cut()
+	var/image/IMG = image(icon, button, icon_state)
+	button.overlays += IMG
+
+/datum/action/item_action/specialist/sharp_firemode_ability/can_use_action()
+	var/obj/item/weapon/gun/rifle/sharp/sharp_rifle = holder_item
+
+	if(owner.is_mob_incapacitated())
+		return FALSE
+
+	if(owner.get_held_item() != sharp_rifle)
+		to_chat(owner, SPAN_WARNING("How do you expect to do this without the SHARP rifle in your hand?"))
+		return FALSE
+	return TRUE
+
+/datum/action/item_action/specialist/sharp_firemode_ability/action_activate()
+	. = ..()
+	var/obj/item/weapon/gun/rifle/sharp/sharp_rifle = holder_item
+
+	if(!ishuman(owner))
+		return
+
+	if(owner.get_held_item() != sharp_rifle)
+		to_chat(owner, SPAN_WARNING("How do you expect to do this without the SHARP rifle in your hand?"))
+		return
+	sharp_rifle.do_toggle_firemode(owner)
 
 /obj/item/weapon/gun/rifle/sharp/do_toggle_firemode(mob/user)
 	. = ..()
@@ -92,7 +140,8 @@
 	user.balloon_alert(user, "[current_mine_mode] mode activated")
 	to_chat(user, SPAN_NOTICE(mine_mode_notice))
 
-
+	var/datum/action/item_action/specialist/sharp_firemode_ability/SFA = locate(/datum/action/item_action/specialist/sharp_firemode_ability) in actions
+	SFA.update_ability_icon()
 
 /*
 //========

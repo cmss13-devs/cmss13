@@ -429,7 +429,7 @@
 			if(!ticket_id)
 				return
 
-			var/message = tgui_input_text(current_mob, "Enter your response:", "Reply to Ticket", multiline = TRUE)
+			var/message = tgui_input_text(current_mob, "Enter your response:", "Reply to Ticket", multiline = TRUE, encode = FALSE)
 			if(!message || !current_mob.client)
 				return
 

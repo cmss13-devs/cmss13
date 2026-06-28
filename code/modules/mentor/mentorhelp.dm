@@ -247,7 +247,7 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 		return TRUE // No need
 
 	var/message = strip_html(
-			tgui_input_text(opener, "Please enter your message:", "MentorHelp", null, 500, TRUE)
+			tgui_input_text(opener, "Please enter your message:", "MentorHelp", null, 500, TRUE, FALSE)
 		)
 	if(!message)
 		return FALSE
@@ -352,7 +352,7 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 	if(sender == mentor)
 		target = author
 
-	var/message = tgui_input_text(sender, "Please enter your message:", "Mentor Help", null, null, TRUE)
+	var/message = tgui_input_text(sender, "Please enter your message:", "Mentor Help", null, null, TRUE, FALSE)
 	if(message)
 		message = strip_html(message)
 		message_handlers(message, sender, target)

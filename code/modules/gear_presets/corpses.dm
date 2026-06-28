@@ -2099,6 +2099,7 @@
 
 /datum/equipment_preset/corpse/new_varadero/lacn_medic/load_gear(mob/living/carbon/human/new_human)
 	var/choice = rand(1,12)
+
 	var/obj/item/clothing/under/marine/lacn/uniform = new()
 	var/obj/item/clothing/accessory/ranks/navy/e3/pin = new()
 	uniform.attach_accessory(new_human,pin)
@@ -2143,14 +2144,13 @@
 
 /datum/equipment_preset/corpse/new_varadero/doctor/load_gear(mob/living/carbon/human/new_human)
 	var/choice = rand(1,12)
-	var/obj/item/clothing/under/rank/utility = new()
-	var/obj/item/clothing/accessory/ranks/navy/e5/pin = new()
-	uniform.attach_accessory(new_human,pin)
-	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/tech/LACN(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/grey/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/fingerless(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)
+
 	switch(choice)
 		if(1 to 4)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(new_human), WEAR_EYES)
@@ -2177,7 +2177,7 @@
 	..()
 
 /datum/equipment_preset/corpse/new_varadero/doctor/burst
-	name = "Corpse - Burst - LACN - Doctor"
+	name = "Corpse - Burst - LACN - Medical Technician"
 	xenovictim = TRUE
 
 
@@ -2196,6 +2196,7 @@
 
 /datum/equipment_preset/corpse/new_varadero/lacn_police/load_gear(mob/living/carbon/human/new_human)
 	var/choice = rand(1,12)
+
 	var/obj/item/clothing/under/marine/lacn/uniform = new()
 	var/obj/item/clothing/accessory/ranks/navy/e6/pin = new()
 	uniform.attach_accessory(new_human,pin)
@@ -2243,10 +2244,7 @@
 	minimap_background = "background_medical_WO" // placeholder
 
 /datum/equipment_preset/corpse/new_varadero/lacn_pilot/load_gear(mob/living/carbon/human/new_human)
-	var/obj/item/clothing/under/marine/officer/pilot/flight = new()
-	var/obj/item/clothing/accessory/ranks/navy/o1/pin = new()
-	uniform.attach_accessory(new_human,pin)
-	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot/flight(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/grey/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
@@ -2270,6 +2268,7 @@
 
 /datum/equipment_preset/corpse/new_varadero/lacn_groundcrew/load_gear(mob/living/carbon/human/new_human)
 	var/choice = rand(1,12)
+
 	var/obj/item/clothing/under/marine/lacn/uniform = new()
 	var/obj/item/clothing/accessory/ranks/navy/e4/pin = new()
 	uniform.attach_accessory(new_human,pin)

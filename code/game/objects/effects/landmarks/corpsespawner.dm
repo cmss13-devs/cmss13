@@ -437,6 +437,16 @@
 	name = "Corpse - Burst - LACN - Medic"
 	equip_path = /datum/equipment_preset/corpse/new_varadero/lacn_medic/burst
 
+// LACN Med Tech //
+
+/obj/effect/landmark/corpsespawner/new_varadero/doctor
+	name = "Corpse - LACN - Medical Technician"
+	equip_path = /datum/equipment_preset/corpse/new_varadero/doctor
+
+/obj/effect/landmark/corpsespawner/new_varadero/doctor/burst
+	name = "Corpse - Burst - LACN - Medical Technician"
+	equip_path = /datum/equipment_preset/corpse/new_varadero/doctor/burst
+
 // LACN MP //
 
 /obj/effect/landmark/corpsespawner/new_varadero/lacn_police

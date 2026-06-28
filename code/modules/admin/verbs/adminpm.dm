@@ -74,7 +74,7 @@
 		if(LAZYLEN(AH.ticket_interactions) == 1)
 			LAZYADD(AH.opening_responders, src)
 
-	var/msg = tgui_input_text(src, message_prompt, "Private message to [C.admin_holder?.fakekey ? "an Administrator" : key_name(C, 0, 0)]", multiline = TRUE, encode = FALSE)
+	var/msg = tgui_input_text(src, message_prompt, "Private message to [C.admin_holder?.fakekey ? "an Administrator" : key_name(C, 0, 0)]", multiline = TRUE)
 
 	if(AH)
 		LAZYREMOVE(AH.opening_responders, src)
@@ -142,10 +142,12 @@ SET_PROTECTED_PROC(/client/proc/cmd_admin_pm)
 
 	//get message text, limit it's length.and clean/escape html
 	if(!msg)
-		msg = tgui_input_text(src, "Message:", "Private message to [recipient.admin_holder?.fakekey ? "an Administrator" : key_name(recipient, 0, 0)]", multiline = TRUE, encode = FALSE)
+		msg = tgui_input_text(src, "Message:", "Private message to [recipient.admin_holder?.fakekey ? "an Administrator" : key_name(recipient, 0, 0)]", multiline = TRUE)
 		msg = trim(msg)
 		if(!msg)
 			return
+
+	msg = html_decode(msg)
 
 	if(!recipient)
 		if(GLOB.directory[recipient_ckey]) // Client has reconnected, lets try to recover

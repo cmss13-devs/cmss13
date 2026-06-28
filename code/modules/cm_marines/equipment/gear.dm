@@ -357,3 +357,220 @@
 
 /obj/item/device/overwatch_camera/see_emote(mob/living/sourcemob, emote, audible)
 	SEND_SIGNAL(src, COMSIG_BROADCAST_SEE_EMOTE, sourcemob, emote, audible, loc == sourcemob && audible)
+
+/obj/item/device/overwatch_camera/tripod
+	name = "FTC Tripod Camera"
+	desc = "A Motoca-430-T deployable tripod camera that connects to the overwatch network. It can be renamed and deployed."
+	icon = 'icons/overwatch.dmi'  // ToDO: Get real sprites
+	icon_state = "undeployed"
+	desc_lore = "Following modernisation efforts in the Marine'70 program, USCM Platoons were shrunk and squads re-organised to emphasise individual firepower and mobility. The Motoca-430-T, the precursor to the Motoca-500 Helmet Camera, was commissioned by the Department of Defense to be utilised by Colonial Marine squads in establishing secure perimeters and watching rear areas remotely through the Overwatch system."
+	var/label
+	var/datum/squad/squad
+
+/obj/item/device/overwatch_camera/tripod/Initialize(mapload, ...)
+	. = ..()
+	camera = new /obj/structure/machinery/camera/overwatch(src)
+	AddComponent(/datum/component/overwatch_console_control)
+
+/obj/item/device/overwatch_camera/tripod/Destroy()
+	QDEL_NULL(camera)
+	return ..()
+
+/obj/item/device/overwatch_camera/tripod/attack_self(mob/user)
+	..()
+	var/choice = tgui_alert(user, "What would you like to do with [src]?", "Tripod Camera", list("Rename", "Deploy", "Cancel"))
+	switch(choice)
+		if("Cancel")
+			return
+		if("Rename")
+			var/new_name = tgui_input_text(user, "Enter new name for the camera:", "Rename Camera", label ? label : initial(name), MAX_NAME_LEN, ui_state=GLOB.not_incapacitated_state, encode=FALSE)
+			if(!new_name)
+				return
+			new_name = trim_right(replace_non_alphanumeric_plus(new_name))
+			if(!length(new_name))
+				to_chat(user, SPAN_WARNING("Invalid name."))
+				return
+			label = new_name
+			name = new_name
+			if(camera)
+				camera.c_tag = new_name
+			to_chat(user, SPAN_NOTICE("Camera renamed to [name]."))
+			return
+		if("Deploy")
+			deploy_tripod(user)
+
+/obj/item/device/overwatch_camera/tripod/proc/deploy_tripod(mob/user)
+	var/datum/squad/user_squad = null // find squad for addition to label
+
+	if(ishuman(user)) // synths can place so not strict check
+		var/mob/living/carbon/human/human_user = user
+		user_squad = human_user.assigned_squad
+		if(isyautja(user))
+			to_chat(user, SPAN_WARNING("You can't think of a reason to interact with [src] and decide to leave it alone."))
+			return
+	if(user.is_mob_incapacitated())
+		return
+	// if(user. != src)
+	// 	to_chat(user, SPAN_WARNING("You need to hold [src] in your hand to deploy it!"))
+	// 	return
+
+	var/turf/deploy_turf = get_turf(user)
+	if(!deploy_turf)
+		return
+
+	var/area/deploy_area = get_area(deploy_turf)
+	if(!deploy_area.allow_construction)
+		to_chat(user, SPAN_WARNING("You cannot deploy [src] here!"))
+		return
+	if(istype(deploy_area, /area/shuttle))
+		to_chat(user, SPAN_WARNING("You cannot deploy [src] in a shuttle area.")) // i copied this from M2C so idk if this is necessary?
+		return
+	if(!istype(deploy_turf, /turf/open))
+		to_chat(user, SPAN_WARNING("[src] must be placed on a solid surface!"))
+		return
+
+	for(var/obj/blocking_object in deploy_turf)
+		if(blocking_object.density && blocking_object != src)
+			to_chat(user, SPAN_WARNING("[blocking_object] is blocking the deployment spot!"))
+			return
+
+	if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
+		to_chat(user, SPAN_WARNING("You must stand still while deploying the tripod."))
+		return
+
+	if(user.stat != CONCIOUS || user.is_mob_incapacitated()) //not sure if this is the same check or not :D
+		return
+
+	if(user.get_active_hand() != src)
+		to_chat(user, SPAN_WARNING("You must hold [src] in your hand to deploy it!"))
+		return
+
+	var/base_label = label ? label : initial(name)
+	var/final_label = user_squad ? "[user_squad.name] - [base_label]" : base_label
+
+	var/obj/structure/overwatch_camera_tripod/deployed_structure = new(deploy_turf) // transform to new struc
+	deployed_structure.label = final_label
+	deployed_structure.name = final_label
+	deployed_structure.squad = user_squad
+	deployed_structure.icon_state = "deployed"
+
+	if(camera)
+		camera.forceMove(deployed_structure)
+		camera.c_tag = final_label
+		camera.status = TRUE
+		deployed_structure.camera = camera
+		src.camera = null
+
+	to_chat(user, SPAN_NOTICE("You deploy [src]."))
+	user.temp_drop_inv_item()
+	qdel(src)
+
+/obj/structure/overwatch_camera_tripod
+	name = "FTC Tripod Camera"
+	desc = "A Motoca-430-T deployed tripod camera connected to the overwatch network."
+	icon = 'icons/overwatch.dmi'  // ToDO: Get real sprites
+	icon_state = "deployed"
+	density = TRUE
+	anchored = TRUE
+	layer = OBJ_LAYER
+	desc_lore = "Following modernisation efforts in the Marine'70 program, USCM Platoons were shrunk and squads re-organised to emphasise individual firepower and mobility. The Motoca-430-T, the precursor to the Motoca-500 Helmet Camera, was commissioned by the Department of Defense to be utilised by Colonial Marine squads in establishing secure perimeters and watching rear areas remotely through the Overwatch system."
+	var/label = "Tripod Camera"
+	var/obj/structure/machinery/camera/camera
+	var/datum/squad/squad
+	var/slash_count = 0 // tracks xeno slashes 4 breaking
+
+/obj/structure/overwatch_camera_tripod/Initialize(mapload)
+	. = ..()
+	icon_state = "deployed"
+	camera = new /obj/structure/machinery/camera/overwatch(src)
+	camera.c_tag = label
+	camera.status = TRUE
+	AddComponent(/datum/component/overwatch_console_control)
+	GLOB.deployed_tripod_cameras += src
+
+/obj/structure/overwatch_camera_tripod/Destroy()
+	GLOB.deployed_tripod_cameras -= src
+	QDEL_NULL(camera)
+	return ..()
+
+/obj/structure/overwatch_camera_tripod/examine(mob/user)
+	. = ..()
+	to_chat(user, SPAN_INFO("The label label reads: [label]")) // ToDO: This maybe should be in the description box I just don't know how to add it atm
+	if(squad)
+		to_chat(user, SPAN_INFO("It is currently assigned to squad: [squad.name]")) // ToDO: This maybe should be in the description box I just don't know how to add it atm
+
+/obj/structure/overwatch_camera_tripod/attack_hand(mob/user)
+	if(user.a_intent != INTENT_HELP) // I've left this in just in case maints want me to change the tgui menu to intent handling or smth.
+		return ..()
+	var/choice = tgui_alert(user, "What would you like to do with [src]?", "Tripod Camera", list("Rename", "Pick Up", "Cancel"))
+	switch(choice)
+		if("Cancel")
+			return
+		if("Rename")
+			if(isyautja(user))
+				to_chat(user, SPAN_WARNING("You can't think of a reason to interact with [src] and decide to leave it alone."))
+				return
+			var/new_name = tgui_input_text(user, "Enter new label for the camera:", "Rename Camera", label, MAX_NAME_LEN, ui_state=GLOB.not_incapacitated_state, encode=FALSE)
+			if(!new_name)
+				return
+			new_name = trim_right(replace_non_alphanumeric_plus(new_name))
+			if(!length(new_name))
+				to_chat(user, SPAN_WARNING("Invalid name."))
+				return
+			label = new_name
+			name = new_name
+			if(camera)
+				camera.c_tag = new_name
+			to_chat(user, SPAN_NOTICE("[src] renamed to [name]."))
+			return
+		if("Pick Up")
+			if(isyautja(user))
+				to_chat(user, SPAN_WARNING("You can't think of a reason to interact with [src] and decide to leave it alone."))
+				return
+			if(!user.Adjacent(src))
+				to_chat(user, SPAN_WARNING("You must be closer to pick up [src]."))
+				return
+			if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+				to_chat(user, SPAN_WARNING("You were interrupted while picking up the [src]."))
+				return
+			// Create a new tripod item from the structure
+			undeploy(user)
+			return // not sure if i need this here
+
+/obj/structure/overwatch_camera_tripod/attack_alien(mob/living/carbon/xenomorph/Xeno)
+	if(islarva(Xeno))
+		return
+	slash_count++
+	Xeno.animation_attack_on(src)
+	Xeno.flick_attack_overlay(src, "slash")
+	playsound(loc, 'sound/weapons/slash.ogg', 25, 1)
+	if(slash_count >= 3)
+		Xeno.visible_message(SPAN_DANGER("[Xeno] slashes [src] apart!"),
+							SPAN_DANGER("You tear through [src]!"))
+		undeploy()
+	else
+		Xeno.visible_message(SPAN_DANGER("[Xeno] slashes [src]!"),
+							SPAN_DANGER("You slash [src]!"))
+	return XENO_ATTACK_ACTION
+
+/obj/structure/overwatch_camera_tripod/proc/undeploy(mob/user)
+	var/obj/item/device/overwatch_camera/tripod/new_tripod = new(get_turf(src))
+	new_tripod.label = label
+	new_tripod.name = label
+	new_tripod.squad = squad
+	if(camera)
+		camera.forceMove(new_tripod)
+		camera.c_tag = label
+		camera.status = TRUE
+		new_tripod.camera = camera
+		src.camera = null
+	if(user && ishuman(user))
+		user.put_in_hands(new_tripod)
+		to_chat(user, SPAN_NOTICE("You disassemble [src]."))
+	else
+		new_tripod.visible_message(SPAN_WARNING("[new_tripod] falls to the floor."))
+	qdel(src)
+
+/obj/structure/overwatch_camera_tripod/ex_act(severity)
+	if(severity >= EXPLOSION_THRESHOLD_LOW) // no idea if i need to add this or it's inherited from parent somewhere
+		undeploy()

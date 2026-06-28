@@ -107,11 +107,13 @@
 		return
 
 	user.grab_level = GRAB_AGGRESSIVE
+	icon_state = "disarm/kill"
 	playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 	user.visible_message(SPAN_WARNING("[user] has grabbed [victim] aggressively!"), null, null, 5)
 
 /obj/item/grab/proc/progress_aggressive(mob/living/carbon/human/user, mob/living/victim)
 	user.grab_level = GRAB_CHOKE
+	icon_state = "disarm/kill1"
 	playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 	user.visible_message(SPAN_WARNING("[user] holds [victim] by the neck and starts choking them!"), null, null, 5)
 	msg_admin_attack("[key_name(user)] started to choke [key_name(victim)] at [get_area_name(victim)]", victim.loc.x, victim.loc.y, victim.loc.z)
@@ -121,6 +123,7 @@
 /obj/item/grab/proc/progress_defensive_xeno(mob/living/carbon/xenomorph/xeno_user, mob/living/victim)
 	last_upgrade = world.time
 	xeno_user.grab_level = GRAB_AGGRESSIVE
+	icon_state = "!reinforce"
 	playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 	xeno_user.visible_message(SPAN_WARNING("[xeno_user] has grabbed [victim] defensively!"), null, null, 5)
 

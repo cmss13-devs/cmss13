@@ -437,13 +437,15 @@
 		return
 	ticks_left -= 1
 
-	var/return_delay = NONE
+	var/return_delay = (rand(20, 30) SECONDS) * acid_delay
 	if(istype(acid_t, /obj/structure/barricade))
 		return_delay = handle_barricade()
 	else if(istype(acid_t, /obj/item/device/flashlight/flare))
 		return_delay = handle_flashlight()
-	else
-		return_delay = (rand(20, 30) SECONDS) * acid_delay
+	else if(istype(acid_t, /obj/structure/dropship_equipment))
+		var/obj/structure/dropship_equipment/module = acid_t
+		if(module.ship_base)
+			return_delay = handle_dropship_module()
 
 	if(!ticks_left)
 		finish_melting()
@@ -501,7 +503,8 @@
 		pass() // Don't delete it, just damaj
 
 	else if(istype(acid_t, /obj/structure/dropship_equipment))
-		visible_message(SPAN_XENODANGER("[acid_t] melts and falls off from its attachment point!"))
+		visible_message(SPAN_XENODANGER("[acid_t] is left damaged by the acid that covered it!"))
+		pass()
 	else
 		for(var/mob/mob in acid_t)
 			mob.forceMove(loc)

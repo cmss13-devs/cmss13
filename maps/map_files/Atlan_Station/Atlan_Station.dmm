@@ -91,6 +91,22 @@
 /obj/structure/prop/hybrisa/furniture/tables/tablepool,
 /turf/open/floor/strata/fake_wood,
 /area/atlan/station/promenade)
+"aas" = (
+/obj/effect/landmark/structure_spawner/spore_sac_rng,
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/exports_west)
+"aat" = (
+/obj/effect/landmark/structure_spawner/spore_sac_rng,
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_seperation)
+"aau" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/gm/dirt/brown,
+/area/atlan/asteroid/processing_ne_train)
+"aav" = (
+/obj/effect/landmark/structure_spawner/spore_sac_rng,
+/turf/open/floor/plating/prison,
+/area/atlan/asteroid/processing_caves)
 "aax" = (
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/atlan/station/double_dorms)
@@ -1037,6 +1053,7 @@
 	pixel_y = 33;
 	layer = 2.9
 	},
+/obj/item/tool/weldingtool/simple,
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/exports_west)
 "aKh" = (
@@ -1505,9 +1522,7 @@
 /area/atlan/asteroid/processing_offices)
 "bbg" = (
 /obj/structure/machinery/light/double/blue{
-	dir = 4;
-	pixel_x = 10;
-	pixel_y = 13
+	dir = 1
 	},
 /turf/open/floor/strata,
 /area/atlan/station/security)
@@ -2367,9 +2382,7 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/item/ammo_magazine/rifle/type71,
-/obj/item/ammo_magazine/rifle/type71,
-/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_box/magazine/type71,
 /obj/item/ammo_magazine/rifle/type71,
 /turf/open/floor/strata/red1,
 /area/atlan/station/security)
@@ -10935,10 +10948,6 @@
 /obj/item/clothing/suit/storage/marine/light/vest/fire_light/upp,
 /turf/open/floor/strata/orange_icorner/west,
 /area/atlan/station/promenade)
-"hxs" = (
-/obj/structure/extinguisher_cabinet,
-/turf/closed/wall/strata_outpost/reinforced,
-/area/atlan/station/security)
 "hxu" = (
 /obj/item/shard{
 	icon_state = "large"
@@ -12248,6 +12257,10 @@
 "ipY" = (
 /obj/structure/platform/metal/strata/north,
 /obj/structure/machinery/power/apc/no_power/west,
+/obj/structure/extinguisher_cabinet{
+	pixel_x = -27;
+	pixel_y = 32
+	},
 /turf/open/floor/strata,
 /area/atlan/station/security)
 "iqd" = (
@@ -16121,6 +16134,7 @@
 	pixel_x = 16;
 	pixel_y = 31
 	},
+/obj/item/ammo_magazine/handful/shotgun/heavy/dragonsbreath,
 /obj/item/ammo_magazine/handful/shotgun/heavy/dragonsbreath,
 /obj/item/ammo_magazine/handful/shotgun/heavy/dragonsbreath,
 /turf/open/floor/strata/red1,
@@ -30510,10 +30524,6 @@
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/asteroid/processing_nw_train)
-"unV" = (
-/obj/effect/decal/cleanable/blood/oil,
-/turf/open/floor/strata/floor2,
-/area/atlan/oob)
 "uoo" = (
 /obj/structure/machinery/light{
 	pixel_x = 15
@@ -31707,12 +31717,6 @@
 /obj/structure/machinery/light,
 /turf/open/floor/strata/orange_edge/north,
 /area/atlan/station/repairs_lift)
-"vdN" = (
-/obj/structure/surface/rack{
-	color = "#98a3ab"
-	},
-/turf/open/floor/strata/red1,
-/area/atlan/station/security)
 "vdZ" = (
 /obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/gm/dirt/brown/variant_2,
@@ -35667,9 +35671,8 @@
 /area/atlan/station/cargooffice)
 "yaK" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/floor/prison/darkyellowfull2,
-/area/atlan/asteroid/processing_seperation)
+/turf/closed/wall/mineral/bone_resin,
+/area/atlan/oob)
 "yaP" = (
 /obj/item/paper,
 /obj/structure/machinery/light{
@@ -60521,7 +60524,7 @@ tYK
 xpt
 tYK
 aSd
-vdN
+cYi
 acl
 bck
 pJD
@@ -60533,10 +60536,10 @@ bnc
 lLz
 aJR
 bnc
-bnc
-bnc
-hxs
-pnZ
+aSd
+aSd
+aSd
+aSd
 bbg
 bck
 qRg
@@ -60737,10 +60740,10 @@ iFC
 iFC
 trf
 saO
-cYi
-bnc
-bnc
-bnc
+aSd
+aSd
+aSd
+aSd
 bnc
 bnc
 bnc
@@ -65829,7 +65832,7 @@ iuE
 ltK
 iuE
 kpJ
-iuE
+aas
 iuE
 iuE
 iuE
@@ -66966,7 +66969,7 @@ rGY
 axJ
 lGF
 lGF
-sZA
+lGF
 uMf
 nzg
 sZA
@@ -68599,7 +68602,7 @@ chP
 nQZ
 oWW
 nQZ
-unV
+hAk
 lGF
 lGF
 pUd
@@ -70833,7 +70836,7 @@ ijq
 nQZ
 aCB
 iiu
-nQZ
+aat
 tjw
 iDE
 sEo
@@ -72832,7 +72835,7 @@ aSd
 atr
 vQq
 buC
-pFD
+aav
 pFD
 ccj
 lGF
@@ -74072,7 +74075,7 @@ uIG
 lGF
 rCr
 rCr
-iEr
+aau
 cxC
 hWp
 rCr

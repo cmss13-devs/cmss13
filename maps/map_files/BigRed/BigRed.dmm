@@ -114,7 +114,7 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 32
 	},
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt,
 /turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "aaB" = (
@@ -1954,7 +1954,10 @@
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "aho" = (
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt{
+	dir = 8;
+	layer = 3.1
+	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/filtration_plant)
 "ahp" = (
@@ -15637,7 +15640,9 @@
 /turf/open/floor/darkblue2/west,
 /area/bigredv2/caves/eta/storage)
 "bxw" = (
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt{
+	dir = 8
+	},
 /turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "bxx" = (
@@ -20676,7 +20681,9 @@
 /area/bigredv2/caves/mining)
 "eWB" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt{
+	dir = 1
+	},
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/dorms)
 "eWE" = (
@@ -25220,7 +25227,7 @@
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
 "jYF" = (
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt,
 /turf/open/floor/almayer/test_floor4,
 /area/bigredv2/outside/engineering)
 "jYL" = (
@@ -32392,6 +32399,12 @@
 	},
 /turf/open/mars_cave/mars_dirt_6,
 /area/bigredv2/caves/mining)
+"ruV" = (
+/obj/structure/machinery/recharge_station/alt{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/filtration_plant)
 "ruZ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
@@ -32681,7 +32694,9 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt{
+	dir = 1
+	},
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/dorms)
 "rKP" = (
@@ -65567,7 +65582,7 @@ bpX
 awp
 bkT
 blG
-aho
+ruV
 aho
 bkT
 bkU

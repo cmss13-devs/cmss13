@@ -9362,7 +9362,9 @@
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/engineering)
 "MO" = (
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt{
+	dir = 8
+	},
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook)
 "MQ" = (
@@ -9873,6 +9875,13 @@
 /obj/structure/closet/emcloset,
 /turf/open/floor/almayer/red/north,
 /area/adminlevel/chinook/sec)
+"Pe" = (
+/obj/structure/machinery/recharge_station/alt{
+	dir = 8;
+	layer = 3.1
+	},
+/turf/open/floor/almayer/cargo,
+/area/adminlevel/chinook)
 "Pf" = (
 /turf/open/floor/kutjevo/colors/blue/edge/east,
 /area/adminlevel/chinook)
@@ -12233,7 +12242,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/chinook/cargo)
 "YN" = (
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt,
 /turf/open/floor/almayer/test_floor5,
 /area/adminlevel/chinook/cryo)
 "YO" = (
@@ -21494,7 +21503,7 @@ OT
 gb
 JD
 MO
-MO
+Pe
 WF
 Wq
 tU

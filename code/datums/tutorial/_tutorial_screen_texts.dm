@@ -1,5 +1,38 @@
+/// Broadcast a message to the player's screen
+/datum/tutorial/proc/message_to_player(script, to_call, message_type = /atom/movable/screen/text/screen_text/command_order/tutorial)
+	if(islist(script))
+		var/list/message_atoms = list()
+		for(var/message in script)
+			message_atoms[message] = new message_type()
+		handle_message_timing(script, message_atoms, to_call)
+		return
+	if(!to_call)
+		tutorial_mob.play_screen_text(script, message_type, rgb(103, 214, 146))
+		return
+	var/atom/movable/screen/text/screen_text/message_atom = new message_type()
+	message_atom.callback = CALLBACK
+	tutorial_mob.play_screen_text(script, message_atom, rgb(103, 214, 146))
+
+/datum/tutorial/proc/speech_to_player(datum/tutorial_speech_preset/speaker, to_call, list/script)
+	if(!speaker)
+		return
+	var/list/message_atoms = list()
+	for(var/message in script)
+		var/atom/movable/screen/text/screen_text/message_atom
+		message_atom = new speaker.message_type(null, null, speaker.speaker_name, speaker.portrait_icon, speaker.portrait_icon_state, speaker.text_color)
+		message_atom.header = speaker.text_header
+		message_atom.sound_to_play = pick(speaker.speech_sounds)
+		message_atoms[message] = message_atom
+
+	if(to_call)
+		handle_message_timing(script, message_atoms, to_call)
+		return
+
+	for(var/message in script)
+		tutorial_mob.play_screen_text(message, message_atoms[message], rgb(103, 214, 146))
+
 /// Dynamically timed tutorial message display. Reads a list of dialogue in a tutorial scene, calculates and returns the delay until text is read by the player.
-/datum/tutorial/proc/dynamic_message_to_player(list/script, list/atom/movable/screen/text/screen_text/message_atoms, callback)
+/datum/tutorial/proc/handle_message_timing(list/script, list/atom/movable/screen/text/screen_text/message_atoms, callback)
 	for(var/message in script)
 		var/word_count = 0
 		for(var/character in 1 to length(message))
@@ -17,29 +50,6 @@
 			message_atoms[message].fade_out_time = 0
 
 		message_atoms[message].fade_out_delay = max(ceil(word_count * 0.26), 1.5) SECONDS
-		tutorial_mob.play_screen_text(message, message_atoms[message], rgb(103, 214, 146))
-
-/// Broadcast a message to the player's screen
-/datum/tutorial/proc/message_to_player(message, message_type = /atom/movable/screen/text/screen_text/command_order/tutorial, to_call)
-	if(to_call)
-		return dynamic_message_to_player(list(message), list(message = new message_type()), to_call)
-	tutorial_mob.play_screen_text(message, message_type, rgb(103, 214, 146))
-
-/datum/tutorial/proc/speech_to_player(datum/tutorial_speech_preset/speaker, to_call, list/script)
-	if(!speaker)
-		return
-	var/list/message_atoms = list()
-	for(var/message in script)
-		var/atom/movable/screen/text/screen_text/message_atom
-		message_atom = new speaker.message_type(null, null, speaker.speaker_name, speaker.portrait_icon, speaker.portrait_icon_state, speaker.text_color)
-		message_atom.header = speaker.text_header
-		message_atom.sound_to_play = pick(speaker.speech_sounds)
-		message_atoms[message] = message_atom
-
-	if(to_call)
-		return dynamic_message_to_player(script, message_atoms, to_call)
-
-	for(var/message in script)
 		tutorial_mob.play_screen_text(message, message_atoms[message], rgb(103, 214, 146))
 
 /atom/movable/screen/text/screen_text/hypersleep_status

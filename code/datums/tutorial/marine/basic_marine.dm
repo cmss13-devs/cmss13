@@ -10,7 +10,10 @@
 	required_tutorial = "ss13_intents_1"
 	var/area/tutorial_area
 	var/list/tutorial_instance_lights = list()
-	dialogue_presets = list("commander" = /datum/tutorial_speech_preset/basic_marine/commander)
+	dialogue_presets = list(
+		"commander" = /datum/tutorial_speech_preset/basic_marine/commander,
+		"doctor" = /datum/tutorial_speech_preset/basic_marine/doctor,
+	)
 
 // START OF SCRIPTING
 
@@ -19,12 +22,6 @@
 	if(!.)
 		return
 
-	tutorial_area = get_area(bottom_left_corner)
-	tutorial_instance_lights = tutorial_area.all_lights.Copy()
-	for(var/obj/structure/machinery/light/light as anything in tutorial_instance_lights)
-		light.set_light(5, 0.5, LIGHT_COLOR_DARK_BLUE)
-
-	init_tracking_markers()
 	init_mob()
 
 	var/mob/living/carbon/human/target = tutorial_mob
@@ -46,23 +43,32 @@
 	RegisterSignal(tracking_atoms[/obj/structure/machinery/cryopod/tutorial], COMSIG_CRYOPOD_GO_OUT, PROC_REF(on_cryopod_exit))
 
 /datum/tutorial/marine/basic/proc/on_cryopod_exit()
+	UnregisterSignal(tracking_atoms[/obj/structure/machinery/cryopod/tutorial], COMSIG_CRYOPOD_GO_OUT)
+	update_objective(shown_onscreen=FALSE)
 	for(var/obj/structure/machinery/light/light as anything in tutorial_instance_lights)
 		light.set_light(8, 1, LIGHT_COLOR_TUNGSTEN)
 	playsound_client(tutorial_mob.client, 'sound/machines/telephone/scout_pick_up.ogg', tutorial_mob, 35, FALSE)
-	speech_to_player(dialogue_presets["commander"], TRUE, list(
-		"Good morning Marine!! Welcome to boot camp!",
-		"This is the tutorial for marine rifleman",
-		" to continue.",
+	speech_to_player(dialogue_presets["commander"], PROC_REF(on_cryopod_exit2), list(
+		"Rise and shine, Marine!<br>Welcome to our state of the art joint personel training facility.",
+		"Our best minds at RnD have put together a handful of simulated exercises to sharpen you into a capable Marine Rifleman... in about 45 seconds flat.",
+		"Unless you're looking for a fast-track to Foxtrot squad, you best pay attention."
 	))
 
 /datum/tutorial/marine/basic/proc/on_cryopod_exit2()
 	SIGNAL_HANDLER
 
-	UnregisterSignal(tracking_atoms[/obj/structure/machinery/cryopod/tutorial], COMSIG_CRYOPOD_GO_OUT)
-	message_to_player("Good. You may notice the yellow \"food\" icon on the right side of your screen. Proceed to the outlined <b>Food Vendor</b> and vend the <b>USCM Protein Bar</b>.")
-	update_objective("Vend a USCM Protein Bar from the outlined <font color='#d19a02'>ColMarTech Food Vendor.</font>")
+	playsound_client(tutorial_mob.client, 'sound/machines/telephone/remote_pickup.ogg', tutorial_mob, 35, FALSE)
+	speech_to_player(dialogue_presets["doctor"], null, list(
+		"As a side effect of long term cryogenic stasis, the human body is often lacking in nutrients when awakened.",
+		"When hungry, be it from natural processes, or blood loss, a yellow \"food\" icon on the right side of your screen.",
+		"To remedy this, proceed to the outlined <b>Food Vendor</b> and vend a <b>USCM Protein Bar</b>.",
+	))
+
+	update_objective("Vend a USCM Protein Bar from the outlined <font color='#00FF00'>ColMarTech Food Vendor.</font>")
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/cm_vending/sorted/marine_food/tutorial, food_vendor)
-	add_highlight(food_vendor)
+	food_vendor.stat &= ~NOPOWER
+	food_vendor.update_icon()
+	add_highlight(food_vendor, COLOR_GREEN)
 	food_vendor.req_access = list()
 	RegisterSignal(food_vendor, COMSIG_VENDOR_SUCCESSFUL_VEND, PROC_REF(on_food_vend))
 
@@ -223,8 +229,35 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/cryopod/tutorial, tutorial_pod)
 	tutorial_pod.go_in_cryopod(tutorial_mob, TRUE, FALSE)
 
+/datum/tutorial/marine/basic/init_map()
+	. = ..()
+
+	tutorial_area = get_area(bottom_left_corner)
+	tutorial_instance_lights = tutorial_area.all_lights.Copy()
+	for(var/obj/structure/machinery/light/light as anything in tutorial_instance_lights)
+		light.set_light(5, 0.5, LIGHT_COLOR_DARK_BLUE)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/cm_vending/sorted/marine_food/tutorial, food_vendor)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/cm_vending/clothing/tutorial, clothing_vendor)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/tutorial, gun_vendor)
+
+	for(var/obj/structure/machinery/vendor as anything in list(food_vendor, clothing_vendor, gun_vendor))	// yeah i know its overkill
+		vendor.stat |= NOPOWER
+		vendor.update_icon()
+
 /datum/tutorial_speech_preset/basic_marine/commander
 	speaker_name = "Maj. John Marine"
 	portrait_icon_state = "overwatch_green"
 	text_color = rgb(103, 214, 146)
-	text_header = "<span class='langchat' style=font-size:24pt;text-align:left valign='top'><u>Command Update:</u></span><br>"
+	text_header = "<span class='langchat' style=font-size:24pt;text-align:left valign='top'><u>Facility Intercom:</u></span><br>"
+
+/datum/tutorial_speech_preset/basic_marine/doctor
+	speaker_name = "Lt. John Doctor"
+	portrait_icon_state = "scientist_green"
+	text_color = rgb(103, 214, 146)
+	text_header = "<span class='langchat' style=font-size:24pt;text-align:left valign='top'><u>Facility Intercom:</u></span><br>"
+
+/datum/tutorial_speech_preset/basic_marine/cheesy_john
+	speaker_name = "Cheesy John"
+	portrait_icon_state = "pmc_bald_blue"
+	text_color = rgb(103, 214, 146)
+	text_header = "<span class='langchat' style=font-size:24pt;text-align:left valign='top'><u>One Way Cheese-Radio:</u></span><br>"

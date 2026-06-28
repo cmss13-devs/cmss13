@@ -56,6 +56,7 @@
 	var/client/player
 	var/sound_to_play
 	var/header
+	var/datum/callback/callback
 
 /atom/movable/screen/text/screen_text/command_order
 	maptext_height = 64
@@ -167,6 +168,9 @@
 
 	if(LAZYLEN(player.screen_texts))
 		player.screen_texts[1].play_to_client() // There's more?
+	else if(callback)
+		callback.InvokeAsync()
+
 /**
  * Proc to create or update an alert. Returns the alert if the alert is new or updated, 0 if it was thrown already
  * category is a text string. Each mob may only have one alert per category; the previous one will be replaced

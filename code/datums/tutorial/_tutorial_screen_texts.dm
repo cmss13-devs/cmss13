@@ -1,58 +1,31 @@
 /// Dynamically timed tutorial message display. Reads a list of dialogue in a tutorial scene, calculates and returns the delay until text is read by the player.
-/datum/tutorial/proc/dynamic_message_to_player(list/script, list/atom/movable/screen/text/screen_text/message_atoms)
-	var/final_fade_out_delay
-	var/scene_length = 0 SECONDS
+/datum/tutorial/proc/dynamic_message_to_player(list/script, list/atom/movable/screen/text/screen_text/message_atoms, callback)
 	for(var/message in script)
-		var/list/lines_to_skip = list()
-		var/static/html_locate_regex = regex("<.*>")
-		var/tag_position = findtext(message, html_locate_regex)
-		var/reading_tag = TRUE
-		while(tag_position)
-			if(reading_tag)
-				if(message[tag_position] == ">")
-					reading_tag = FALSE
-				lines_to_skip += tag_position
-				tag_position++
-			else
-				tag_position = findtext(message, html_locate_regex, tag_position)
-				reading_tag = TRUE
-
 		var/word_count = 0
-		var/valid_letter_count = 0
-		for(var/character in 1 to length_char(message))
-			if(character in lines_to_skip)
-				character++
-				continue
+		for(var/character in 1 to length(message))
 			// ASCII 32 = spacebar thing
 			if(text2ascii(message, character) == 32)
 				word_count++
-			valid_letter_count++
 			character++
 
 		if(!word_count)
 			return
 
-		if(script[length(script)] == message)
-			final_fade_out_delay = message_atoms[message].fade_out_time
+		if(script[length(script)] == message && callback)
+			message_atoms[message].callback = CALLBACK(src, callback)
 		else
 			message_atoms[message].fade_out_time = 0
 
-		var/message_reading_time = max(ceil(word_count * 0.26), 1.5) SECONDS
-		var/message_printing_time = (valid_letter_count * message_atoms[message].play_delay) / message_atoms[message].letters_per_update SECONDS
-		message_atoms[message].fade_out_delay = message_reading_time
-		scene_length += (message_reading_time + message_printing_time)
-
+		message_atoms[message].fade_out_delay = max(ceil(word_count * 0.26), 1.5) SECONDS
 		tutorial_mob.play_screen_text(message, message_atoms[message], rgb(103, 214, 146))
 
-	return scene_length + final_fade_out_delay
-
 /// Broadcast a message to the player's screen
-/datum/tutorial/proc/message_to_player(message, message_type = /atom/movable/screen/text/screen_text/command_order/tutorial, dynamic_timing)
-	if(dynamic_timing)
-		return dynamic_message_to_player(list(message), list(message = new message_type()))
+/datum/tutorial/proc/message_to_player(message, message_type = /atom/movable/screen/text/screen_text/command_order/tutorial, to_call)
+	if(to_call)
+		return dynamic_message_to_player(list(message), list(message = new message_type()), to_call)
 	tutorial_mob.play_screen_text(message, message_type, rgb(103, 214, 146))
 
-/datum/tutorial/proc/speech_to_player(datum/tutorial_speech_preset/speaker, dynamic_timing, list/script)
+/datum/tutorial/proc/speech_to_player(datum/tutorial_speech_preset/speaker, to_call, list/script)
 	if(!speaker)
 		return
 	var/list/message_atoms = list()
@@ -63,8 +36,8 @@
 		message_atom.sound_to_play = pick(speaker.speech_sounds)
 		message_atoms[message] = message_atom
 
-	if(dynamic_timing)
-		return dynamic_message_to_player(script, message_atoms)
+	if(to_call)
+		return dynamic_message_to_player(script, message_atoms, to_call)
 
 	for(var/message in script)
 		tutorial_mob.play_screen_text(message, message_atoms[message], rgb(103, 214, 146))
@@ -91,10 +64,10 @@
 	maptext_width = 400
 	maptext_x = 66
 	maptext_y = 0
-	letters_per_update = 2 // overall, pretty fast while not immediately popping in
+	letters_per_update = 4 // overall, pretty fast while not immediately popping in
 	play_delay = 0.1
 	fade_out_delay = 4.5 SECONDS
-	fade_out_time = 0.5 SECONDS
+	fade_out_time = 0.25 SECONDS
 	layer = INTRO_LAYER
 	plane = INTRO_PLANE
 	style_open = "<span class='langchat' style=font-size:20pt;text-align:left valign='top'>"

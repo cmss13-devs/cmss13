@@ -77,6 +77,7 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 	GLOB.ongoing_tutorials |= src
 	var/area/tutorial_area = get_area(bottom_left_corner)
 	tutorial_area.update_base_lighting() // this will be entirely dark otherwise
+	init_tracking_markers()
 	init_map()
 	if(!tutorial_mob)
 		end_tutorial()

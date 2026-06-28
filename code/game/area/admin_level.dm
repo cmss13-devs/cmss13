@@ -197,6 +197,7 @@
 
 /area/misc/tutorial/no_baselight
 	base_lighting_alpha = 0
+	ambience_exterior = AMBIENCE_ALMAYER
 
 /area/misc/tutorial/no_baselight/open
 	ceiling = CEILING_NONE

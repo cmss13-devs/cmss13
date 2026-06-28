@@ -87,6 +87,10 @@
 /obj/item/clothing/mask/gas/upp_pfb,
 /turf/open/floor/strata/floor2,
 /area/atlan/station/cargo)
+"aar" = (
+/obj/structure/prop/hybrisa/furniture/tables/tablepool,
+/turf/open/floor/strata/fake_wood,
+/area/atlan/station/promenade)
 "aax" = (
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/atlan/station/double_dorms)
@@ -839,10 +843,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/gm/dirt/brown,
 /area/atlan/asteroid/exports_cave)
-"aBV" = (
-/obj/structure/machinery/door/airlock/hybrisa/generic,
-/turf/open/space/basic,
-/area/atlan/station/double_dorms)
 "aCm" = (
 /obj/structure/prop/structure_lattice{
 	dir = 4
@@ -1024,8 +1024,7 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/asteroid/processing_dock)
 "aJR" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass{
-	autoname = 1;
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/colony{
 	dir = 2
 	},
 /turf/open/floor/strata/multi_tiles/west,
@@ -24004,8 +24003,7 @@
 /turf/open/floor/strata/fake_wood,
 /area/atlan/station/promenade)
 "pZP" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass{
-	autoname = 1;
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/colony{
 	dir = 2
 	},
 /turf/open/floor/strata/multi_tiles/west,
@@ -26327,6 +26325,7 @@
 	pixel_x = 20;
 	pixel_y = 18
 	},
+/obj/structure/prop/hybrisa/furniture/tables/tablepool,
 /turf/open/floor/strata/fake_wood,
 /area/atlan/station/promenade)
 "rCH" = (
@@ -26368,17 +26367,6 @@
 	},
 /turf/open/floor/prison/darkyellowfull2,
 /area/atlan/station/water_maintenance)
-"rDB" = (
-/obj/structure/prop/hybrisa/furniture/tables/tablepool{
-	dir = 4;
-	pixel_x = -16;
-	pixel_y = -12
-	},
-/obj/item/weapon/pole{
-	name = "Pool Cue"
-	},
-/turf/open/floor/strata/fake_wood,
-/area/atlan/station/promenade)
 "rDI" = (
 /turf/open/floor/plating,
 /area/atlan/asteroid/processing_sw_train)
@@ -27172,7 +27160,7 @@
 /turf/open/floor/strata/orange_edge,
 /area/atlan/station/hab_docks)
 "scz" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/colony,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/security)
 "scQ" = (
@@ -27465,11 +27453,6 @@
 /turf/open/floor/strata,
 /area/atlan/station/walkway)
 "sog" = (
-/obj/structure/prop/hybrisa/furniture/tables/tablepool{
-	dir = 4;
-	pixel_x = -16;
-	pixel_y = -12
-	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata/fake_wood,
 /area/atlan/station/promenade)
@@ -33882,7 +33865,7 @@
 /obj/item/shard{
 	icon_state = "medium"
 	},
-/turf/open/space/basic,
+/turf/open/floor/strata/green4,
 /area/atlan/station/single_dorms)
 "wPQ" = (
 /obj/structure/machinery/light/double/blue{
@@ -49992,7 +49975,7 @@ tPr
 blM
 eaH
 eaH
-aBV
+adL
 eaH
 eaH
 eaH
@@ -55282,7 +55265,7 @@ gVv
 bEH
 lhj
 elm
-lhj
+aar
 lhj
 lhj
 lhj
@@ -55485,7 +55468,7 @@ aAk
 xcp
 lhj
 lhj
-rDB
+elm
 lhj
 lhj
 lhj

@@ -12,6 +12,7 @@
 	minimap_color = MINIMAP_AREA_COLONY
 	sound_environment = SOUND_ENVIRONMENT_ROOM
 	ambience_exterior = AMBIENCE_ALMAYER
+	ceiling_muffle = FALSE
 	soundscape_interval = 30
 	weather_enabled = FALSE
 

@@ -194,28 +194,34 @@
 		if(new_power <= 0)
 			continue
 
-		var/new_falloff = power_falloff
-		// Handle our falloff function.
-		switch(falloff_shape)
-			if(EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL)
-				new_falloff += new_falloff * dir_falloff
-			if(EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF)
-				new_falloff += (new_falloff*0.5) * dir_falloff
+		var/datum/automata_cell/explosion/new_cell = propagate(dir)
+		if(new_cell)
+			var/new_falloff = power_falloff
+			// Handle our falloff function.
+			switch(falloff_shape)
+				if(EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL)
+					new_falloff += new_falloff * dir_falloff
+				if(EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF)
+					new_falloff += (new_falloff*0.5) * dir_falloff
+				if(EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_IN_PYLON)
+					if(new_cell.in_turf.get_pylon_protection_level() >= TURF_PROTECTION_OB)
+						new_falloff += new_falloff * dir_falloff
+				if(EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF_IN_PYLON)
+					if(new_cell.in_turf.get_pylon_protection_level() >= TURF_PROTECTION_OB)
+						new_falloff += (new_falloff*0.5) * dir_falloff
 
-		var/datum/automata_cell/explosion/E = propagate(dir)
-		if(E)
-			E.power = new_power
-			E.power_falloff = new_falloff
-			E.falloff_shape = falloff_shape
-			E.explosion_cause_data = explosion_cause_data
+			new_cell.power = new_power
+			new_cell.power_falloff = new_falloff
+			new_cell.falloff_shape = falloff_shape
+			new_cell.explosion_cause_data = explosion_cause_data
 
 			// Set the direction the explosion is traveling in
-			E.direction = dir
+			new_cell.direction = dir
 			//Diagonal cells have a small delay when branching off the center. This helps the explosion look circular
 			if(!direction && (dir in GLOB.diagonals))
-				E.delay = 1
+				new_cell.delay = 1
 
-			setup_new_cell(E)
+			setup_new_cell(new_cell)
 
 	// We've done our duty, now die pls
 	qdel(src)

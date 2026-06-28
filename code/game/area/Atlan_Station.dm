@@ -11,6 +11,7 @@
 	powernet_name = "ground"
 	minimap_color = MINIMAP_AREA_COLONY
 	sound_environment = SOUND_ENVIRONMENT_ROOM
+	ambience_exterior = AMBIENCE_ALMAYER
 	soundscape_interval = 30
 	weather_enabled = FALSE
 

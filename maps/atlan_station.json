@@ -25,7 +25,7 @@
         "/datum/equipment_preset/synth/survivor/atlan/corporate"
     ],
     "CO_survivor_types": [
-        "/datum/equipment_preset/survivor/atlan_administrator"
+        "/datum/equipment_preset/survivor/atlan/co_survivor"
     ],
     "colony_joe_types": [
         "/datum/job/civilian/working_joe/colony"
@@ -45,7 +45,7 @@
         "Unaligned": "maps/map_briefings/commanding_officer/atlan_station/ATLANunaligned.html"
     },
     "map_item_type": "/obj/item/map/atlan_station",
-    "announce_text": "An automated distress signal has been received from the UPP gas giant mining platform, \"Atlan Station\", in orbit of the border world KG-256. A response team from the ###SHIPNAME### will be dispatched shortly to investigate.",
+    "announce_text": "An automated distress signal has been received from the UPP mining platform, \"Atlan Station\", in orbit of the border world KG-256. A response team from the ###SHIPNAME### will be dispatched shortly to investigate.",
     "monkey_types": [
         "monkey",
         "stok",

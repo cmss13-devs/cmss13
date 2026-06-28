@@ -1,6 +1,3 @@
-// can't get CO surv (station administrator) and CEC Rep (corporate surv type) to work, this document will stay for future reference/use if I can figure it out or find someone else to do it or help me in great depth
-
-
 /datum/equipment_preset/survivor/engineer/atlan_processing_engineer
 	name = "Survivor - UPP - Ministry of Industry - Refinery Engineer"
 	assignment = "Inzhener Neftepererabatyvayushchiy Zavod"
@@ -497,4 +494,5 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/ushanka(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP/officer(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/upp(new_human), WEAR_HANDS)
+
 	..()

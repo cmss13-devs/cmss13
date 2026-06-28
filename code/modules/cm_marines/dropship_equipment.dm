@@ -40,6 +40,7 @@
 /obj/structure/dropship_equipment/update_health(damage)
 	health = min(initial(health), health-damage)
 	if(health <= 0)
+		visible_message(SPAN_DANGER("[src] is destroyed!"))
 		qdel(src)
 
 /obj/structure/dropship_equipment/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
@@ -68,6 +69,9 @@
 
 /obj/structure/dropship_equipment/attackby(obj/item/item, mob/user)
 	if(istype(item, /obj/item/powerloader_clamp))
+		if((SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)) & COMSIG_ITEM_PICKUP_CANCELLED) //acided
+			return
+
 		var/obj/item/powerloader_clamp/powerloader_clamp = item
 		if(powerloader_clamp.loaded)
 			if(ammo_equipped)

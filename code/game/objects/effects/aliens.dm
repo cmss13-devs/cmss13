@@ -367,6 +367,10 @@
 		ticks_left = 7 // Turf take twice as long to take down.
 	else if(istype(acid_t, /obj/structure/barricade))
 		ticks_left = 9
+	else if(istype(acid_t, /obj/structure/dropship_equipment))
+		var/obj/structure/dropship_equipment/module = acid_t
+		if(module.ship_base)
+			ticks_left = 10
 	handle_weather()
 	RegisterSignal(SSdcs, COMSIG_GLOB_WEATHER_CHANGE, PROC_REF(handle_weather))
 	RegisterSignal(acid_t, COMSIG_ITEM_PICKUP, PROC_REF(attempt_pickup))
@@ -429,7 +433,7 @@
 /obj/effect/xenomorph/acid/proc/handle_dropship_module()
 	var/obj/structure/dropship_equipment/module = acid_t
 	module.update_health(module_damage)
-	return (5 SECONDS)
+	return (5 SECONDS) * acid_delay
 
 /obj/effect/xenomorph/acid/process(delta_time)
 	remaining -= delta_time * (1 SECONDS)
@@ -444,7 +448,7 @@
 		return_delay = handle_flashlight()
 	else if(istype(acid_t, /obj/structure/dropship_equipment))
 		var/obj/structure/dropship_equipment/module = acid_t
-		if(module.ship_base)
+		if(module.ship_base) //If its not installed then we dont give it any special handling
 			return_delay = handle_dropship_module()
 
 	if(!ticks_left)

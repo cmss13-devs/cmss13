@@ -127,6 +127,12 @@
 /obj/effect/decal/floor_symbol/uscm_3x3/northface/northwest,
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/event)
+"az" = (
+/obj/structure/machinery/recharge_station/alt{
+	dir = 8
+	},
+/turf/open/floor/almayer/cargo,
+/area/adminlevel/chinook)
 "aA" = (
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/almayer,
@@ -9363,7 +9369,8 @@
 /area/adminlevel/chinook/engineering)
 "MO" = (
 /obj/structure/machinery/recharge_station/alt{
-	dir = 8
+	dir = 8;
+	layer = 3.1
 	},
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook)
@@ -9875,13 +9882,6 @@
 /obj/structure/closet/emcloset,
 /turf/open/floor/almayer/red/north,
 /area/adminlevel/chinook/sec)
-"Pe" = (
-/obj/structure/machinery/recharge_station/alt{
-	dir = 8;
-	layer = 3.1
-	},
-/turf/open/floor/almayer/cargo,
-/area/adminlevel/chinook)
 "Pf" = (
 /turf/open/floor/kutjevo/colors/blue/edge/east,
 /area/adminlevel/chinook)
@@ -21502,8 +21502,8 @@ qI
 OT
 gb
 JD
+az
 MO
-Pe
 WF
 Wq
 tU

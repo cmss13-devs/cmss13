@@ -2123,6 +2123,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/mars,
 /area/bigredv2/outside/nw)
+"ahY" = (
+/obj/structure/machinery/recharge_station/alt{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/filtration_plant)
 "aia" = (
 /obj/structure/machinery/door_control{
 	id = "Marshal Offices";
@@ -32399,12 +32405,6 @@
 	},
 /turf/open/mars_cave/mars_dirt_6,
 /area/bigredv2/caves/mining)
-"ruV" = (
-/obj/structure/machinery/recharge_station/alt{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/bigredv2/outside/filtration_plant)
 "ruZ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
@@ -65582,7 +65582,7 @@ bpX
 awp
 bkT
 blG
-ruV
+ahY
 aho
 bkT
 bkU

@@ -69,7 +69,9 @@
 /turf/closed/wall/r_wall,
 /area/whiskey_outpost/inside/cic)
 "al" = (
-/obj/structure/machinery/recharge_station/alt,
+/obj/structure/machinery/recharge_station/alt{
+	dir = 1
+	},
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/cic)
 "am" = (
@@ -426,6 +428,10 @@
 	},
 /turf/open/floor/almayer/emeraldfull,
 /area/whiskey_outpost/inside/living)
+"bq" = (
+/obj/structure/machinery/recharge_station/alt,
+/turf/open/floor/prison,
+/area/whiskey_outpost/inside/cic)
 "bs" = (
 /turf/open/floor/carpet,
 /area/whiskey_outpost/inside/cic)
@@ -7726,12 +7732,6 @@
 "FC" = (
 /turf/open/gm/coast/beachcorner/south_west,
 /area/whiskey_outpost/outside/river/west)
-"FD" = (
-/obj/structure/machinery/recharge_station/alt{
-	dir = 1
-	},
-/turf/open/floor/prison,
-/area/whiskey_outpost/inside/cic)
 "FE" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -15547,10 +15547,10 @@ mT
 mT
 ak
 ak
-al
+bq
 fx
 aB
-FD
+al
 ak
 ak
 mT

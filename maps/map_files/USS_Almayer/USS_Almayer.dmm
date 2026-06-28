@@ -4343,6 +4343,10 @@
 /obj/structure/machinery/cryopod/joe/seegson/alt,
 /turf/open/floor/almayer/aicore/no_build/ai_cargo,
 /area/almayer/command/airoom)
+"akm" = (
+/obj/structure/machinery/recharge_station/alt,
+/turf/open/floor/almayer/cargo,
+/area/almayer/engineering/lower/engine_core)
 "akn" = (
 /turf/open/floor/almayer/flooredgesmooth2/west,
 /area/almayer/command/cicconference)
@@ -54108,7 +54112,9 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/lower/port_fore_hallway)
 "fqW" = (
-/obj/structure/machinery/recharge_station/alt,
+/obj/structure/machinery/recharge_station/alt{
+	dir = 1
+	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/engineering/lower/engine_core)
 "fqX" = (
@@ -91205,12 +91211,6 @@
 	},
 /turf/open/floor/almayer/silver/northwest,
 /area/almayer/maint/upper/u_m_p)
-"viz" = (
-/obj/structure/machinery/recharge_station/alt{
-	dir = 1
-	},
-/turf/open/floor/almayer/cargo,
-/area/almayer/engineering/lower/engine_core)
 "viB" = (
 /obj/structure/pipes/standard/manifold/hidden/supply/no_boom{
 	dir = 1
@@ -157831,7 +157831,7 @@ nic
 ppM
 ppM
 hsy
-fqW
+akm
 qYq
 mQn
 anu
@@ -157843,7 +157843,7 @@ hsy
 anu
 mQn
 wQD
-viz
+fqW
 hsy
 aIh
 aIh

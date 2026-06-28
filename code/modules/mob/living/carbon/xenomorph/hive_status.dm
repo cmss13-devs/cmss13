@@ -21,9 +21,9 @@
 	var/color = null
 	var/ui_color = null // Color for hive status collapsible buttons and xeno count list
 	var/prefix = ""
-	var/queen_leader_limit = 2
-	var/list/open_xeno_leader_positions = list(1, 2) // Ordered list of xeno leader positions (indexes in xeno_leader_list) that are not occupied
-	var/list/xeno_leader_list[2] // Ordered list (i.e. index n holds the nth xeno leader)
+	var/queen_leader_limit = 4
+	var/list/open_xeno_leader_positions = list(1, 2, 3, 4) // Ordered list of xeno leader positions (indexes in xeno_leader_list) that are not occupied
+	var/list/xeno_leader_list[4] // Ordered list (i.e. index n holds the nth xeno leader)
 	var/stored_larva = 0
 
 	///used by /datum/hive_status/proc/increase_larva_after_burst() to support non-integer increases to larva
@@ -49,7 +49,8 @@
 	var/allowed_nest_distance = 15 //How far away do we allow nests from an ovied Queen. Default 15 tiles.
 	var/obj/effect/alien/resin/special/pylon/core/hive_location = null //Set to ref every time a core is built, for defining the hive location
 
-	var/tier_slot_multiplier = 1
+	/// Slots are divided by this value to reach final value.
+	var/tier_slot_divisor = 1
 	var/larva_gestation_multiplier = 1
 	var/bonus_larva_spawn_chance = 1
 	var/hijack_burrowed_surge = FALSE //at hijack, start spawning lots of burrowed
@@ -87,7 +88,7 @@
 		XENO_STRUCTURE_PYLON = 2,
 	)
 
-	var/global/list/hive_structure_types = list(
+	var/list/hive_structure_types = list(
 		XENO_STRUCTURE_CORE = /datum/construction_template/xenomorph/core,
 		XENO_STRUCTURE_CLUSTER = /datum/construction_template/xenomorph/cluster,
 		XENO_STRUCTURE_EGGMORPH = /datum/construction_template/xenomorph/eggmorph,
@@ -100,6 +101,8 @@
 
 	/// Lazylist of possible caste defines the hive disallows evolution to
 	var/list/blacklisted_castes = null
+	/// List of caste defines associated with a maximum capacity number.
+	var/list/restricted_castes = null
 
 	var/datum/hive_status_ui/hive_ui
 	var/datum/mark_menu_ui/mark_ui
@@ -377,7 +380,7 @@
 
 /datum/hive_status/proc/recalculate_hive()
 	//No leaders for a Hive without a Queen!
-	queen_leader_limit = living_xeno_queen ? 4 : 0
+	queen_leader_limit = living_xeno_queen ? initial(queen_leader_limit) : 0
 
 	if (length(xeno_leader_list) > queen_leader_limit)
 		var/diff = 0
@@ -516,6 +519,23 @@
 			xeno_counts[xeno.caste.tier+1][xeno.caste.caste_type]++
 
 	return xeno_counts
+
+/// Returns number of xenos in the given hive that are the searched caste.
+/datum/hive_status/proc/get_caste_count(caste_to_check)
+	if(!caste_to_check)
+		return
+	var/caste_count = 0
+	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
+		//don't show xenos in the thunderdome when admins test stuff.
+		if(should_block_game_interaction(xeno))
+			var/area/cur_area = get_area(xeno)
+			if(!(cur_area.flags_atom & AREA_ALLOW_XENO_JOIN))
+				continue
+
+		if(xeno.caste && xeno.counts_for_slots && (xeno.caste.caste_type == caste_to_check))
+			caste_count++
+
+	return caste_count
 
 /// Returns the full minimap icon as base64 string.
 /datum/hive_status/proc/get_xeno_icons()
@@ -743,10 +763,10 @@
 			effective_total++
 
 	// Tier 3 slots are always 20% of the total xenos in the hive
-	slots[TIER_3][OPEN_SLOTS] = max(0, ceil(0.20*effective_total/tier_slot_multiplier) - used_tier_3_slots)
+	slots[TIER_3][OPEN_SLOTS] = max(0, ceil(0.20*effective_total/tier_slot_divisor) - used_tier_3_slots)
 	// Tier 2 slots are between 30% and 50% of the hive, depending
 	// on how many T3s there are.
-	slots[TIER_2][OPEN_SLOTS] = max(0, ceil(0.5*effective_total/tier_slot_multiplier) - used_tier_2_slots - used_tier_3_slots)
+	slots[TIER_2][OPEN_SLOTS] = max(0, ceil(0.5*effective_total/tier_slot_divisor) - used_tier_2_slots - used_tier_3_slots)
 
 	return slots
 
@@ -815,6 +835,8 @@
 
 /datum/hive_status/proc/abandon_on_hijack()
 	var/area/hijacked_dropship = get_area(living_xeno_queen)
+	if(!hijacked_dropship)
+		return FALSE
 	var/shipside_humans_weighted_count = 0
 	var/xenos_count = 0
 	for(var/name_ref in hive_structures)

@@ -75,13 +75,13 @@
 	var/processing = FALSE
 
 	/// skin color of the owner, used for limb appearance, set in [/obj/limb/proc/update_limb()]
-	var/skin_color = "Pale 2"
+	var/skin_color = SKIN_COLOR_PALE2
 
 	/// body size of the owner, used for limb appearance, set in [/obj/limb/proc/update_limb()]
-	var/body_size = "Average"
+	var/body_size = BODY_SIZE_AVERAGE
 
 	/// body muscularity of the owner, used for limb appearance, set in [/obj/limb/proc/update_limb()]
-	var/body_type = "Lean"
+	var/body_type = BODY_TYPE_LEAN
 
 	/// species of the owner, used for limb appearance, set in [/obj/limb/proc/update_limb()]
 	var/datum/species/species
@@ -757,26 +757,14 @@ This function completely restores a damaged organ to perfect condition.
 /obj/limb/proc/update_limb()
 	SHOULD_CALL_PARENT(TRUE)
 
-	var/datum/skin_color/owner_skin_color = GLOB.skin_color_list[owner?.skin_color]
+	var/datum/skin_color/owner_skin_color = GLOB.skin_color_list[owner?.skin_color] || GLOB.skin_color_list[SKIN_COLOR_PALE2]
+	skin_color = owner_skin_color?.icon_name
 
-	if(owner_skin_color)
-		skin_color = owner_skin_color.icon_name
-	else
-		skin_color = "pale2"
+	var/datum/body_type/owner_body_type = GLOB.body_type_list[owner?.body_type] || GLOB.body_type_list[BODY_TYPE_LEAN]
+	body_type = owner_body_type?.icon_name
 
-	var/datum/body_type/owner_body_type = GLOB.body_type_list[owner?.body_type]
-
-	if(owner_body_type)
-		body_type = owner_body_type.icon_name
-	else
-		body_type = "lean"
-
-	var/datum/body_type/owner_body_size = GLOB.body_size_list[owner?.body_size]
-
-	if(owner_body_size)
-		body_size = owner_body_size.icon_name
-	else
-		body_size = "avg"
+	var/datum/body_size/owner_body_size = GLOB.body_size_list[owner?.body_size] || GLOB.body_size_list[BODY_SIZE_AVERAGE]
+	body_size = owner_body_size?.icon_name
 
 	if(isspeciesyautja(owner))
 		skin_color = owner.skin_color

@@ -1,5 +1,0 @@
-author: "MistChristmas"
-delete-after: True
-changes:
-  - rscadd: "Req purchases get logged to ARES"
-  - bugfix: "Total cost is now the actual amount of points spent"

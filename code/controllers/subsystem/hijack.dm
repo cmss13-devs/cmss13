@@ -723,7 +723,7 @@ SUBSYSTEM_DEF(hijack)
 	if(!ground_origin)
 		CRASH("Unable to determine origin location on groundmap for hijack ground crash! Origin can be manually specified with a /obj/effect/landmark/mainship_crashsite")
 
-	msg_admin_niche("Crashing mainship to[ADMIN_COORDJMP(ground_origin)]")
+	msg_admin_niche("Crashing mainship to [ADMIN_COORDJMP(ground_origin)]")
 
 	shakeship(
 		sstrength = 1,
@@ -797,7 +797,7 @@ SUBSYSTEM_DEF(hijack)
 	var/cause_data = create_cause_data("ship explosion")
 	for(var/obj/structure/machinery/power/apc/apc as anything in apcs)
 		var/turf/apc_turf = get_turf(apc)
-		if(apc_turf && prob(chance))
+		if(apc_turf && apc.crash_break_probability && prob(chance))
 			cell_explosion(apc_turf, 30, 5, explosion_cause_data=cause_data, enviro=TRUE)
 			CHECK_TICK
 

@@ -371,7 +371,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 			GLOB.data_core.general -= G
 			qdel(G)
 
-	icon_state = "body_scanner_open"
+	icon_state = initial(icon_state)
 	set_light(0)
 
 	if(occupant.key)

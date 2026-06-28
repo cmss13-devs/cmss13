@@ -101,7 +101,7 @@
 
 	if(!istype(target, /obj/structure/window) && !istype(target, /turf/closed))
 		user.drop_held_item()
-		target.contents += src
+		forceMove(target)
 		overlay = image('icons/obj/items/assemblies.dmi', overlay_image)
 		overlay.layer = ABOVE_XENO_LAYER
 		target.overlays += overlay

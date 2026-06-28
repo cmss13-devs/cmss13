@@ -219,12 +219,32 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		var/datum/job/PJ = temp_roles_for_mode[JOB_PREDATOR]
 		if(istype(PJ))
 			PJ.set_spawn_positions(GLOB.players_preassigned)
+		var/datum/job/pred_surv = temp_roles_for_mode[JOB_PRED_SURVIVOR]
+		if(istype(pred_surv))
+			pred_surv.set_spawn_positions(YAUTJA_SURV_HUNT)
 		REDIS_PUBLISH("byond.round", "type" = "predator-round", "map" = SSmapping.configs[GROUND_MAP].map_name)
 		chance = 0
+
+	var/huntless_chance = CONFIG_GET(number/pred_survivor_huntless_chance)
+	if(!(SSticker.mode.flags_round_type & MODE_PREDATOR) && prob(huntless_chance))//Very rare but it could happen on a non-pred round.
+		var/datum/job/pred_surv = temp_roles_for_mode[JOB_PRED_SURVIVOR]
+		if(istype(pred_surv))
+			pred_surv.set_spawn_positions(YAUTJA_SURV_NO_HUNT)
+			log_debug("YAUTJA SURV: Triggered with no Hunt Round at [huntless_chance]%.")
 
 	chance += 20
 	fdel("data/predchance.txt")
 	WRITE_FILE(file("data/predchance.txt"), chance)
+
+	var/joe_chance = trim(file2text("data/colonyjoechance.txt"))
+	if(joe_chance)
+		joe_chance = text2num(joe_chance)
+	else
+		joe_chance = 20
+		WRITE_FILE(file("data/colonyjoechance.txt"), joe_chance)
+
+	if(prob(joe_chance) && !Check_WO() && length(SSmapping.configs[GROUND_MAP].colony_joe_types) != 0)
+		SSticker.mode.flags_round_type |= MODE_COLONY_JOE
 
 	// Assign the roles, this time for real, respecting limits we have established.
 	var/list/roles_left = assign_roles(temp_roles_for_mode, unassigned_players)
@@ -451,7 +471,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		new_human.client?.prefs.update_slot(new_job.title, 10 SECONDS)
 
 	if(new_job.job_options && new_human?.client?.prefs?.pref_special_job_options[new_job.title])
-		new_job.handle_job_options(new_human.client.prefs.pref_special_job_options[new_job.title])
+		new_job.handle_job_options(new_human.client.prefs.pref_special_job_options[new_job.title], new_human.client)
 
 	var/job_whitelist = new_job.title
 	var/whitelist_status = new_job.get_whitelist_status(new_human.client)

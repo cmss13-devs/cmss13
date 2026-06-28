@@ -87,7 +87,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		current_orbital_cannon = GLOB.almayer_orbital_cannon
 		ob_cannon_safety = GLOB.ob_cannon_safety
 
-	AddComponent(/datum/component/tacmap, has_drawing_tools=TRUE, minimap_flag=minimap_flag, has_update=TRUE)
+	AddComponent(/datum/component/tacmap, has_drawing_tools=TRUE, minimap_flag=minimap_flag, has_update=TRUE, drawing=TRUE)
 
 /obj/structure/machinery/computer/overwatch/Destroy()
 	GLOB.active_overwatch_consoles -= src
@@ -479,6 +479,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 /obj/structure/machinery/computer/overwatch/ui_data(mob/user)
 	var/list/data = list()
 
+	data = pack_radio_data()
 	data["theme"] = ui_theme
 
 	if(!current_squad)
@@ -526,6 +527,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	var/list/data = list()
 
 	data["theme"] = ui_theme
+
+	data = pack_radio_data()
 
 	if(!current_squad)
 		data["squad_list"] = list()
@@ -1513,10 +1516,17 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	plane_controller.add_filter("overwatch_overlay5", 7, layering_filter(x = 480, y = 0, color=overlay_color, icon = overlay_icon, blend_mode = BLEND_INSET_OVERLAY))
 	plane_controller.add_filter("overwatch_overlay6", 8, layering_filter(x = 480, y = 480, color=overlay_color, icon = overlay_icon, blend_mode = BLEND_INSET_OVERLAY))
 
+	RegisterSignal(watcher.client, COMSIG_CLIENT_RESET_VIEW, PROC_REF(clear_overwatch_overlay), TRUE)
+
 /obj/structure/machinery/computer/overwatch/proc/stop_watching_camera(mob/watcher, atom/target)
-	watcher.reset_view(null)
-	set_onscreen_text(watcher, null)
-	var/atom/movable/plane_master_controller/non_master/plane_controller = watcher.hud_used.plane_master_controllers[PLANE_MASTERS_NON_MASTER]
+	watcher.reset_view(null) // This will call the below proc via the above registered signal
+	//Why so complicated? Many things may reset our view (resisting being the most common one)
+
+/obj/structure/machinery/computer/overwatch/proc/clear_overwatch_overlay(client/watcher)
+	SIGNAL_HANDLER
+	UnregisterSignal(watcher, COMSIG_CLIENT_RESET_VIEW)
+	set_onscreen_text(watcher.mob, null)
+	var/atom/movable/plane_master_controller/non_master/plane_controller = watcher.mob.hud_used.plane_master_controllers[PLANE_MASTERS_NON_MASTER]
 	if(!plane_controller)
 		return
 
@@ -1528,6 +1538,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	plane_controller.remove_filter("overwatch_overlay4")
 	plane_controller.remove_filter("overwatch_overlay5")
 	plane_controller.remove_filter("overwatch_overlay6")
+
 
 /obj/structure/machinery/computer/overwatch/proc/set_onscreen_text(mob/watcher, atom/target)
 	if(target == null)
@@ -1675,6 +1686,32 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 /obj/structure/supply_drop/upp4
 	icon_state = "deltadrop"
 	squad = SQUAD_UPP_4
+
+/obj/structure/machinery/computer/overwatch/proc/get_radio_clarity()
+	var/ground_z = length(SSmapping.levels_by_trait(ZTRAIT_GROUND)) ? SSmapping.levels_by_trait(ZTRAIT_GROUND)[1] : null
+	var/current_clarity
+	if(ground_z && (ground_z in SSradio.get_available_tcomm_zs(COMM_FREQ)))
+		return 100
+	if(SSradio.faction_coms_clarity && SSradio.faction_coms_clarity[faction])
+		current_clarity = SSradio.faction_coms_clarity[faction]
+		if(SSradio.faction_coms_codes && length(SSradio.faction_coms_codes[faction]))
+			return current_clarity
+	return 15
+
+/obj/structure/machinery/computer/overwatch/proc/pack_radio_data()
+	var/list/clarity_data = list ()
+	var/clarity = get_radio_clarity()
+	clarity_data["radio_clarity"] = clarity
+	if(clarity >= 80)
+		clarity_data["clarity_color"] = "good"
+		clarity_data["clarity_status"] = "STABLE"
+	else if(clarity >= 45)
+		clarity_data["clarity_color"] = "average"
+		clarity_data["clarity_status"] = "DEGRADED"
+	else
+		clarity_data["clarity_color"] = "bad"
+		clarity_data["clarity_status"] = "CRITICAL BLACKOUT"
+	return clarity_data
 
 #undef HIDE_ALMAYER
 #undef HIDE_GROUND

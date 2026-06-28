@@ -7,6 +7,8 @@
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress/hunt_spawner
 	shuttle_id = ""
 	ert_message = "Prey is being set loose in the Yautja Hunting Grounds"
+	ignore_ftl_or_crash = TRUE
+	alert_sound = 'sound/items/pred_bracer.ogg'
 	/// Multiplier on the base RESERVE_HUNT_COOLDOWN when a given ERT is selected; 1 is no change.
 	var/timer_mult = 1
 	var/hunt_name
@@ -309,6 +311,7 @@
 	ert_message = "A group of Yautja Youngbloods are being awakened for a hunt"
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress/hunt_spawner/pred
 	shuttle_id = ""
+	ignore_ftl_or_crash = TRUE
 
 /datum/emergency_call/young_bloods/New()
 	. = ..()

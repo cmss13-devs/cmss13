@@ -143,6 +143,7 @@
 		log_game("[usr.key] AM failed due to disconnect.")
 		return
 	client.screen.Cut()
+	client.render_plates_shown = alist()
 	if(!client)
 		log_game("[usr.key] AM failed due to disconnect.")
 		return
@@ -255,6 +256,11 @@
 		return
 
 	if(!client)
+		return
+
+	if(istype(client.get_eye(), /mob/hologram))
+		var/mob/hologram/eye = client.get_eye()
+		eye.change_level()
 		return
 
 	if(client.view != world.view)

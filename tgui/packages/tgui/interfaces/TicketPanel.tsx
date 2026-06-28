@@ -53,6 +53,29 @@ export const TicketPanel = (props) => {
   const { act, data } = useBackend<Data>();
   const [ticketUpdateTime, setTicketUpdateTime] = useState(0);
 
+  const FONT_SIZE_KEY = 'ticketPanelFontSize';
+  const FONT_SIZE_DEFAULT = 13;
+  const FONT_SIZE_MIN = 9;
+  const FONT_SIZE_MAX = 20;
+
+  const [fontSize, setFontSize] = useState<number>(() => {
+    const saved = localStorage.getItem(FONT_SIZE_KEY);
+    return saved ? parseInt(saved, 10) : FONT_SIZE_DEFAULT;
+  });
+
+  const changeFontSize = (delta: number) => {
+    setFontSize((prev) => {
+      const next = Math.min(FONT_SIZE_MAX, Math.max(FONT_SIZE_MIN, prev + delta));
+      localStorage.setItem(FONT_SIZE_KEY, String(next));
+      return next;
+    });
+  };
+
+  const resetFontSize = () => {
+    setFontSize(FONT_SIZE_DEFAULT);
+    localStorage.setItem(FONT_SIZE_KEY, String(FONT_SIZE_DEFAULT));
+  };
+
   useEffect(() => {
     const updateTime = Date.now();
     setTicketUpdateTime(updateTime);
@@ -89,7 +112,7 @@ export const TicketPanel = (props) => {
 
   return (
     <Window theme="crtblue" width={1120} height={800}>
-      <Window.Content>
+      <Window.Content style={{ fontSize: `${fontSize}px` }}>
         <Stack fill vertical>
           <Stack.Item>
             <Section>
@@ -121,6 +144,37 @@ export const TicketPanel = (props) => {
                     tooltip="Refresh ticket list"
                     onClick={() => act('refresh')}
                   />
+                </Stack.Item>
+                <Stack.Item ml="auto">
+                  <Stack align="center">
+                    <Stack.Item>
+                      <Button
+                        color="transparent"
+                        tooltip={`Decrease font size (current: ${fontSize}px)`}
+                        onClick={() => changeFontSize(-1)}
+                      >
+                        A-
+                      </Button>
+                    </Stack.Item>
+                    <Stack.Item>
+                      <Button
+                        color="transparent"
+                        tooltip={`Reset font size to default (${FONT_SIZE_DEFAULT}px)`}
+                        onClick={resetFontSize}
+                      >
+                        {fontSize}px
+                      </Button>
+                    </Stack.Item>
+                    <Stack.Item>
+                      <Button
+                        color="transparent"
+                        tooltip={`Increase font size (current: ${fontSize}px)`}
+                        onClick={() => changeFontSize(1)}
+                      >
+                        A+
+                      </Button>
+                    </Stack.Item>
+                  </Stack>
                 </Stack.Item>
               </Stack>
             </Section>
@@ -257,7 +311,7 @@ export const TicketPanel = (props) => {
                                   >
                                     {decodeHtmlEntities(ticket.latest_message)}
                                   </Box>
-                                  <Box color="gray" fontSize="0.8em">
+                                  <Box color="gray" fontSize="0.9em">
                                     {ticket.timestamp}
                                   </Box>
                                 </Stack.Item>
@@ -354,7 +408,7 @@ export const TicketPanel = (props) => {
                                   >
                                     {decodeHtmlEntities(ticket.latest_message)}
                                   </Box>
-                                  <Box color="gray" fontSize="0.8em">
+                                  <Box color="gray" fontSize="0.9em">
                                     {ticket.timestamp}
                                   </Box>
                                 </Stack.Item>
@@ -537,7 +591,7 @@ export const TicketPanel = (props) => {
                         <Box
                           mt={2}
                           style={{
-                            maxHeight: '300px',
+                            maxHeight: '420px',
                             overflowY: 'auto',
                             overflowX: 'hidden',
                             padding: '0.5em',
@@ -552,7 +606,7 @@ export const TicketPanel = (props) => {
                                     <Stack.Item
                                       style={{
                                         width: '120px',
-                                        fontSize: '0.85em',
+                                        fontSize: '1em',
                                         color: 'gray',
                                       }}
                                     >

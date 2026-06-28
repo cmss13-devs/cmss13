@@ -14,7 +14,7 @@
 	name = made_from_player + name
 
 /obj/item/reagent_container/food/snacks/meat/attackby(obj/item/W as obj, mob/user as mob)
-	if(W.sharp == IS_SHARP_ITEM_ACCURATE || W.sharp == IS_SHARP_ITEM_BIG || W.sharp == IS_SHARP_ITEM_SIMPLE)
+	if(W.sharp)
 		var/turf/T = get_turf(src)
 		var/cutlet_amt = roll(1,4)
 		for(var/i in 1 to cutlet_amt)

@@ -13,8 +13,8 @@
 		/datum/action/xeno_action/onclick/toggle_plates, //1st
 		/datum/action/xeno_action/activable/plate_bash, //2nd
 		/datum/action/xeno_action/onclick/tail_swing, //3rd
-		/datum/action/xeno_action/onclick/reflective_shield, //4th
-	)
+		/datum/action/xeno_action/onclick/reflective_shield,
+	) //4th
 
 	behavior_delegate_type = /datum/behavior_delegate/warrior_bulwark
 

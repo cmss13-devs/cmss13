@@ -52,6 +52,27 @@
 	},
 /turf/open/floor/strata/floor2,
 /area/atlan/comms/lz1_lift)
+"aal" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/wall/hybrisa/colony/hospital,
+/area/atlan/station/medical)
+"aam" = (
+/obj/structure/machinery/door/airlock/hybrisa/medical_solid{
+	dir = 1;
+	name = "\improper Medical Airlock"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/atlan/station/medical)
+"aan" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/floor2,
+/area/atlan/station/medical)
+"aao" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/cyan1/east,
+/area/atlan/station/medical)
 "aax" = (
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/atlan/station/double_dorms)
@@ -780,6 +801,7 @@
 	pixel_x = 8;
 	pixel_y = 6
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/floor2,
 /area/atlan/station/medical)
 "aAI" = (
@@ -3909,6 +3931,7 @@
 	color = "#98a3ab"
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/cyan1/east,
 /area/atlan/station/medical)
 "cKC" = (
@@ -7464,7 +7487,7 @@
 /area/atlan/station/hab_docks)
 "fcJ" = (
 /obj/structure/largecrate/random,
-/obj/item/stack/sheet/metal/large_stack,
+/obj/item/stack/sheet/metal/med_large_stack,
 /turf/open/floor/prison/darkyellowfull2,
 /area/atlan/comms/lz1_engineering)
 "fcK" = (
@@ -7587,6 +7610,7 @@
 	pixel_y = 23
 	},
 /obj/structure/machinery/light/small,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/white_cyan2/west,
 /area/atlan/lz/near_lz2)
 "fgZ" = (
@@ -9703,6 +9727,7 @@
 	pixel_x = 10;
 	pixel_y = 13
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/cyan2/east,
 /area/atlan/station/hab_rec)
 "gGf" = (
@@ -14408,6 +14433,7 @@
 	pixel_y = 5;
 	pixel_x = -7
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/white_cyan2,
 /area/atlan/station/medical)
 "jDK" = (
@@ -19986,6 +20012,7 @@
 	pixel_y = 9;
 	pixel_x = -3
 	},
+/obj/item/storage/belt/medical/lifesaver/upp/black/partial,
 /turf/open/floor/strata/white_cyan2,
 /area/atlan/station/medical)
 "nvH" = (
@@ -20795,6 +20822,7 @@
 /area/atlan/station/drydock)
 "nVn" = (
 /obj/structure/machinery/light/double/blue,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/cyan1/east,
 /area/atlan/station/medical)
 "nVo" = (
@@ -24497,6 +24525,7 @@
 /area/atlan/lz/near_lz1)
 "qpb" = (
 /obj/structure/bed/hybrisa/hospital/hospitaldivider,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/floor2,
 /area/atlan/station/medical)
 "qpg" = (
@@ -24511,6 +24540,7 @@
 /area/atlan/station/stairs2)
 "qph" = (
 /obj/structure/sign/safety/outpatient,
+/obj/effect/decal/cleanable/dirt,
 /turf/closed/wall/hybrisa/colony/hospital,
 /area/atlan/station/medical)
 "qpp" = (
@@ -33568,6 +33598,7 @@
 "wDz" = (
 /obj/item/clothing/head/uppcap/ushanka/civi,
 /obj/structure/closet/secure_closet/personal,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/green4,
 /area/atlan/station/single_dorms)
 "wDU" = (
@@ -49708,8 +49739,8 @@ mbC
 lOK
 pPY
 dLu
+aan
 oHj
-hzY
 qpb
 bnz
 bnz
@@ -49911,9 +49942,9 @@ mbC
 nQl
 qgB
 hzY
-hzY
+oHj
 nVn
-eoJ
+aal
 eRX
 bnz
 aDV
@@ -50114,7 +50145,7 @@ otq
 eoJ
 pXE
 uRe
-qgB
+aao
 cKd
 qph
 bnz
@@ -50318,8 +50349,8 @@ eoJ
 eoJ
 hvQ
 aAE
-eoJ
-eoJ
+aal
+aal
 bnz
 bnz
 eoJ
@@ -50521,8 +50552,8 @@ veM
 rQm
 nvr
 jDB
-eoJ
-hzY
+aal
+oHj
 bnz
 dKs
 eoJ
@@ -50723,9 +50754,9 @@ veM
 veM
 veM
 veM
-veM
-vSZ
-bnz
+qDn
+aam
+hIZ
 bnz
 kLL
 eoJ
@@ -50926,9 +50957,9 @@ eUW
 eUW
 eUW
 eoJ
-eoJ
-eoJ
-bnz
+aal
+aal
+hIZ
 nRN
 twM
 eoJ

@@ -89,6 +89,7 @@ em {font-style: normal; font-weight: bold;}
 .orange {color: #EBA000;}
 .purple {color: #602D7B;}
 .red {color: #FF0000;}
+.darker_red {color: #A03C14;}
 
 .normal {font-style: normal;}
 

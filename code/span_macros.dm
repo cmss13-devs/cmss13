@@ -115,6 +115,7 @@
 #define SPAN_ORANGE(X) "<span class='orange'>[X]</span>"
 #define SPAN_PURPLE(X) "<span class='purple'>[X]</span>"
 #define SPAN_RED(X) "<span class='red'>[X]</span>"
+#define SPAN_DARKER_RED(X) "<span class='darker_red'>[X]</span>"
 
 #define SPAN_STAFF_IC(X) "<span class='staff_ic'>[X]</span>"
 #define SPAN_BIGNOTICE(X) "<span class='bigannounce'>[X]</span>"

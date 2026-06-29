@@ -102,24 +102,14 @@
 
 /datum/action/item_action/specialist/sharp_firemode_ability/can_use_action()
 	var/obj/item/weapon/gun/rifle/sharp/sharp_rifle = holder_item
-
 	if(owner.is_mob_incapacitated())
-		return FALSE
-
-	if(owner.get_held_item() != sharp_rifle)
-		to_chat(owner, SPAN_WARNING("How do you expect to do this without the SHARP rifle in your hand?"))
 		return FALSE
 	return TRUE
 
 /datum/action/item_action/specialist/sharp_firemode_ability/action_activate()
 	. = ..()
 	var/obj/item/weapon/gun/rifle/sharp/sharp_rifle = holder_item
-
 	if(!ishuman(owner))
-		return
-
-	if(owner.get_held_item() != sharp_rifle)
-		to_chat(owner, SPAN_WARNING("How do you expect to do this without the SHARP rifle in your hand?"))
 		return
 	sharp_rifle.do_toggle_firemode(owner)
 

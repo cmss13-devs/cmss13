@@ -172,7 +172,7 @@
 	minimum_age = 23
 	role_comm_title = "CMP"
 	skills = /datum/skills/CMP
-	minimap_background = "background_command"
+	minimap_background = "background_mp"
 	minimap_icon = "cmp"
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/warrant)

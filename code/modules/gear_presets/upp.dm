@@ -4039,7 +4039,7 @@
 		new_human.equip_to_slot_or_del(new maybegloves, WEAR_HANDS)
 
 	//gun
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/type71/carbine, WEAR_R_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/type71/carbine, WEAR_L_HAND)
 
 	//webbing or belt?
 	if(prob(30))

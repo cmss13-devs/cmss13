@@ -182,9 +182,16 @@ export const TicketPanel = (props) => {
               </Stack>
             </Section>
           </Stack.Item>
-          <Stack.Item grow basis={0}>
+          <Stack.Item
+            grow
+            basis={0}
+            style={{ display: 'flex', flexDirection: 'column' }}
+          >
             <Stack fill>
-              <Stack.Item width="300px" style={{ display: 'flex', flexDirection: 'column' }}>
+              <Stack.Item
+                width="300px"
+                style={{ display: 'flex', flexDirection: 'column' }}
+              >
                 <Tabs vertical>
                   {data.is_admin ? (
                     <Tabs.Tab
@@ -431,7 +438,11 @@ export const TicketPanel = (props) => {
 
               <Stack.Divider />
 
-              <Stack.Item grow basis={0} style={{ display: 'flex', flexDirection: 'column' }}>
+              <Stack.Item
+                grow
+                basis={0}
+                style={{ display: 'flex', flexDirection: 'column' }}
+              >
                 {selectedTicketData ? (
                   <Stack fill vertical>
                     <Stack.Item grow basis={0} position="relative">
@@ -440,299 +451,307 @@ export const TicketPanel = (props) => {
                         scrollable
                         title={`${selectedTicketData.is_archived ? '[ARCHIVED] ' : ''}Ticket #${selectedTicketData.id} ${selectedTicketData.subject ? ': ' + decodeHtmlEntities(selectedTicketData.subject) : ''}`}
                         buttons={
-                      !selectedTicketData.is_archived ? (
-                        <>
-                          <Button
-                            icon="user"
-                            tooltip="Open Player Panel"
-                            onClick={() => {
-                              act('open_player_panel', {
-                                ticket_id: selectedTicketData.id,
-                              });
-                            }}
-                          />
-                          <Button
-                            icon="pencil-alt"
-                            tooltip="Set Subject"
-                            onClick={() => {
-                              act('set_subject', {
-                                ticket_id: selectedTicketData.id,
-                              });
-                            }}
-                          >
-                            Set Subject
-                          </Button>
-                          <Button
-                            icon="sticky-note"
-                            tooltip="View Author Notes"
-                            onClick={() => {
-                              act('get_author_notes', {
-                                ticket_id: selectedTicketData.id,
-                              });
-                            }}
-                            disabled={data.selected_tab !== 'admin'}
-                          >
-                            View Notes
-                          </Button>
-                          <Button
-                            color="bad"
-                            icon="user-slash"
-                            disabled={data.selected_tab === 'mentor'}
-                            onClick={() =>
-                              act('ban_author', {
-                                ticket_id: selectedTicketData.id,
-                              })
-                            }
-                          >
-                            Ban
-                          </Button>
-                          <Button
-                            icon="exchange-alt"
-                            tooltip={
-                              data.selected_tab === 'admin'
-                                ? 'Defer to Mentors'
-                                : 'Defer to Admins'
-                            }
-                            onClick={() =>
-                              act('defer_ticket', {
-                                ticket_id: selectedTicketData.id,
-                              })
-                            }
-                          >
-                            Defer
-                          </Button>
-                          <Button
-                            icon={
-                              selectedTicketData.claimed_by
-                                ? 'user-slash'
-                                : 'user-check'
-                            }
-                            color={
-                              selectedTicketData.claimed_by ? 'average' : 'good'
-                            }
-                            onClick={() =>
-                              act('claim_ticket', {
-                                ticket_id: selectedTicketData.id,
-                              })
-                            }
-                          >
-                            {selectedTicketData.claimed_by
-                              ? 'Unclaim'
-                              : 'Claim'}
-                          </Button>
-                        </>
-                      ) : (
-                        <Box color="average" italic>
-                          Read-Only (Archived)
-                        </Box>
-                      )
-                    }
-                  >
-                        <LabeledList>
-                      {selectedTicketData.subject ? (
-                        <LabeledList.Item label="Subject">
-                          <Box as="span" color="good">
-                            {selectedTicketData.subject}
-                          </Box>
-                        </LabeledList.Item>
-                      ) : (
-                        ''
-                      )}
-                      <LabeledList.Item label="Author">
-                        <Box
-                          as="span"
-                          color={
-                            selectedTicketData.claimed_by ? 'good' : 'default'
-                          }
-                        >
-                          {selectedTicketData.author}
-                        </Box>
-                      </LabeledList.Item>
-                      {selectedTicketData.ic_name && (
-                        <LabeledList.Item label="IC Name">
-                          {selectedTicketData.ic_name}
-                        </LabeledList.Item>
-                      )}
-                      {selectedTicketData.faction && (
-                        <LabeledList.Item label="Faction">
-                          {selectedTicketData.faction}
-                        </LabeledList.Item>
-                      )}
-                      {selectedTicketData.role && (
-                        <LabeledList.Item label="Role">
-                          {selectedTicketData.role}
-                        </LabeledList.Item>
-                      )}
-                      <LabeledList.Item
-                        label="Status"
-                        color={
-                          selectedTicketData.status === 'open'
-                            ? 'good'
-                            : 'average'
+                          !selectedTicketData.is_archived ? (
+                            <>
+                              <Button
+                                icon="user"
+                                tooltip="Open Player Panel"
+                                onClick={() => {
+                                  act('open_player_panel', {
+                                    ticket_id: selectedTicketData.id,
+                                  });
+                                }}
+                              />
+                              <Button
+                                icon="pencil-alt"
+                                tooltip="Set Subject"
+                                onClick={() => {
+                                  act('set_subject', {
+                                    ticket_id: selectedTicketData.id,
+                                  });
+                                }}
+                              >
+                                Set Subject
+                              </Button>
+                              <Button
+                                icon="sticky-note"
+                                tooltip="View Author Notes"
+                                onClick={() => {
+                                  act('get_author_notes', {
+                                    ticket_id: selectedTicketData.id,
+                                  });
+                                }}
+                                disabled={data.selected_tab !== 'admin'}
+                              >
+                                View Notes
+                              </Button>
+                              <Button
+                                color="bad"
+                                icon="user-slash"
+                                disabled={data.selected_tab === 'mentor'}
+                                onClick={() =>
+                                  act('ban_author', {
+                                    ticket_id: selectedTicketData.id,
+                                  })
+                                }
+                              >
+                                Ban
+                              </Button>
+                              <Button
+                                icon="exchange-alt"
+                                tooltip={
+                                  data.selected_tab === 'admin'
+                                    ? 'Defer to Mentors'
+                                    : 'Defer to Admins'
+                                }
+                                onClick={() =>
+                                  act('defer_ticket', {
+                                    ticket_id: selectedTicketData.id,
+                                  })
+                                }
+                              >
+                                Defer
+                              </Button>
+                              <Button
+                                icon={
+                                  selectedTicketData.claimed_by
+                                    ? 'user-slash'
+                                    : 'user-check'
+                                }
+                                color={
+                                  selectedTicketData.claimed_by
+                                    ? 'average'
+                                    : 'good'
+                                }
+                                onClick={() =>
+                                  act('claim_ticket', {
+                                    ticket_id: selectedTicketData.id,
+                                  })
+                                }
+                              >
+                                {selectedTicketData.claimed_by
+                                  ? 'Unclaim'
+                                  : 'Claim'}
+                              </Button>
+                            </>
+                          ) : (
+                            <Box color="average" italic>
+                              Read-Only (Archived)
+                            </Box>
+                          )
                         }
                       >
-                        {selectedTicketData.status.toUpperCase()}
-                      </LabeledList.Item>
-                      <LabeledList.Item label="Opened At">
-                        {selectedTicketData.timestamp}
-                      </LabeledList.Item>
-                      {selectedTicketData.closed_at && (
-                        <LabeledList.Item label="Closed At">
-                          {selectedTicketData.closed_at}
-                        </LabeledList.Item>
-                      )}
-                      <LabeledList.Item label="Claimed By">
-                        {selectedTicketData.claimed_by
-                          ? selectedTicketData.claimed_by
-                          : 'Unclaimed'}
-                      </LabeledList.Item>
-                      <LabeledList.Item label="Initial Message">
-                        <Box style={{ whiteSpace: 'pre-wrap' }}>
-                          {decodeHtmlEntities(selectedTicketData.message)}
-                        </Box>
-                      </LabeledList.Item>
+                        <LabeledList>
+                          {selectedTicketData.subject ? (
+                            <LabeledList.Item label="Subject">
+                              <Box as="span" color="good">
+                                {selectedTicketData.subject}
+                              </Box>
+                            </LabeledList.Item>
+                          ) : (
+                            ''
+                          )}
+                          <LabeledList.Item label="Author">
+                            <Box
+                              as="span"
+                              color={
+                                selectedTicketData.claimed_by
+                                  ? 'good'
+                                  : 'default'
+                              }
+                            >
+                              {selectedTicketData.author}
+                            </Box>
+                          </LabeledList.Item>
+                          {selectedTicketData.ic_name && (
+                            <LabeledList.Item label="IC Name">
+                              {selectedTicketData.ic_name}
+                            </LabeledList.Item>
+                          )}
+                          {selectedTicketData.faction && (
+                            <LabeledList.Item label="Faction">
+                              {selectedTicketData.faction}
+                            </LabeledList.Item>
+                          )}
+                          {selectedTicketData.role && (
+                            <LabeledList.Item label="Role">
+                              {selectedTicketData.role}
+                            </LabeledList.Item>
+                          )}
+                          <LabeledList.Item
+                            label="Status"
+                            color={
+                              selectedTicketData.status === 'open'
+                                ? 'good'
+                                : 'average'
+                            }
+                          >
+                            {selectedTicketData.status.toUpperCase()}
+                          </LabeledList.Item>
+                          <LabeledList.Item label="Opened At">
+                            {selectedTicketData.timestamp}
+                          </LabeledList.Item>
+                          {selectedTicketData.closed_at && (
+                            <LabeledList.Item label="Closed At">
+                              {selectedTicketData.closed_at}
+                            </LabeledList.Item>
+                          )}
+                          <LabeledList.Item label="Claimed By">
+                            {selectedTicketData.claimed_by
+                              ? selectedTicketData.claimed_by
+                              : 'Unclaimed'}
+                          </LabeledList.Item>
+                          <LabeledList.Item label="Initial Message">
+                            <Box style={{ whiteSpace: 'pre-wrap' }}>
+                              {decodeHtmlEntities(selectedTicketData.message)}
+                            </Box>
+                          </LabeledList.Item>
                         </LabeledList>
 
-                    {(selectedTicketData.all_responses?.length ?? 0) > 0 && (
-                      <Section
-                        title="Conversation Log"
-                        mt={2}
-                        key={`ticket-${selectedTicketData.id}-${ticketUpdateTime}`}
-                      >
-                        <Box
-                          mt={2}
-                          style={{
-                            overflowX: 'hidden',
-                            padding: '0.5em',
-                          }}
-                        >
-                          {selectedTicketData.all_responses?.map(
-                            (response, index) => {
-                              const link = response.islink;
-                              return (
-                                <Box key={index} mb={2}>
-                                  <Stack align="flex-start">
-                                    <Stack.Item
-                                      style={{
-                                        width: '120px',
-                                        fontSize: '1em',
-                                        color: 'gray',
-                                      }}
-                                    >
-                                      {response.timestamp || 'Unknown'}
-                                    </Stack.Item>
-                                    <Stack.Item grow>
-                                      <Box>
-                                        <Box
-                                          as="span"
-                                          color={
-                                            response.type === 'admin'
-                                              ? 'good'
-                                              : response.type === 'mentor'
-                                                ? 'average'
-                                                : response.type === 'system'
-                                                  ? 'label'
-                                                  : 'default'
-                                          }
-                                          bold={response.type !== 'system'}
+                        {(selectedTicketData.all_responses?.length ?? 0) >
+                          0 && (
+                          <Section
+                            title="Conversation Log"
+                            mt={2}
+                            key={`ticket-${selectedTicketData.id}-${ticketUpdateTime}`}
+                          >
+                            <Box
+                              mt={2}
+                              style={{
+                                overflowX: 'hidden',
+                                padding: '0.5em',
+                              }}
+                            >
+                              {selectedTicketData.all_responses?.map(
+                                (response, index) => {
+                                  const link = response.islink;
+                                  return (
+                                    <Box key={index} mb={2}>
+                                      <Stack align="flex-start">
+                                        <Stack.Item
+                                          style={{
+                                            width: '120px',
+                                            fontSize: '1em',
+                                            color: 'gray',
+                                          }}
                                         >
-                                          {response.author}:{' '}
-                                        </Box>
-                                        <Box as="span">
-                                          {link ? (
-                                            <Button
-                                              content={link[0]}
-                                              onClick={() => {
-                                                window.location.href = link[1];
-                                              }}
-                                            />
-                                          ) : (
-                                            decodeHtmlEntities(response.message)
-                                          )}
-                                        </Box>
-                                      </Box>
-                                    </Stack.Item>
-                                  </Stack>
-                                </Box>
-                              );
-                            },
-                          )}
-                        </Box>
-                      </Section>
-                    )}
+                                          {response.timestamp || 'Unknown'}
+                                        </Stack.Item>
+                                        <Stack.Item grow>
+                                          <Box>
+                                            <Box
+                                              as="span"
+                                              color={
+                                                response.type === 'admin'
+                                                  ? 'good'
+                                                  : response.type === 'mentor'
+                                                    ? 'average'
+                                                    : response.type === 'system'
+                                                      ? 'label'
+                                                      : 'default'
+                                              }
+                                              bold={response.type !== 'system'}
+                                            >
+                                              {response.author}:{' '}
+                                            </Box>
+                                            <Box as="span">
+                                              {link ? (
+                                                <Button
+                                                  content={link[0]}
+                                                  onClick={() => {
+                                                    window.location.href =
+                                                      link[1];
+                                                  }}
+                                                />
+                                              ) : (
+                                                decodeHtmlEntities(
+                                                  response.message,
+                                                )
+                                              )}
+                                            </Box>
+                                          </Box>
+                                        </Stack.Item>
+                                      </Stack>
+                                    </Box>
+                                  );
+                                },
+                              )}
+                            </Box>
+                          </Section>
+                        )}
                       </Section>
                     </Stack.Item>
                     <Stack.Item>
                       <Box mt={1}>
                         {!selectedTicketData.is_archived ? (
-                      <Stack vertical>
-                        <Stack.Item>
-                          <Button
-                            icon="reply"
-                            color="good"
-                            fontSize="1.2em"
-                            textAlign="center"
-                            lineHeight={2}
-                            fluid
-                            onClick={() => {
-                              act('reply_ticket', {
-                                ticket_id: selectedTicketData.id,
-                              });
-                            }}
-                          >
-                            Reply
-                          </Button>
-                        </Stack.Item>
-                        <Stack.Item>
-                          <Stack>
-                            <Stack.Item grow>
+                          <Stack vertical>
+                            <Stack.Item>
                               <Button
-                                icon="times"
-                                color="bad"
+                                icon="reply"
+                                color="good"
+                                fontSize="1.2em"
+                                textAlign="center"
+                                lineHeight={2}
                                 fluid
-                                onClick={() =>
-                                  act('close_ticket', {
+                                onClick={() => {
+                                  act('reply_ticket', {
                                     ticket_id: selectedTicketData.id,
-                                  })
-                                }
+                                  });
+                                }}
                               >
-                                Close Ticket
+                                Reply
                               </Button>
                             </Stack.Item>
-                            <Stack.Item grow>
-                              <Button
-                                icon="reply-all"
-                                fluid
-                                onClick={() =>
-                                  act('autoreply', {
-                                    ticket_id: selectedTicketData.id,
-                                  })
-                                }
-                              >
-                                Auto Reply
-                              </Button>
+                            <Stack.Item>
+                              <Stack>
+                                <Stack.Item grow>
+                                  <Button
+                                    icon="times"
+                                    color="bad"
+                                    fluid
+                                    onClick={() =>
+                                      act('close_ticket', {
+                                        ticket_id: selectedTicketData.id,
+                                      })
+                                    }
+                                  >
+                                    Close Ticket
+                                  </Button>
+                                </Stack.Item>
+                                <Stack.Item grow>
+                                  <Button
+                                    icon="reply-all"
+                                    fluid
+                                    onClick={() =>
+                                      act('autoreply', {
+                                        ticket_id: selectedTicketData.id,
+                                      })
+                                    }
+                                  >
+                                    Auto Reply
+                                  </Button>
+                                </Stack.Item>
+                              </Stack>
                             </Stack.Item>
                           </Stack>
-                        </Stack.Item>
-                      </Stack>
-                    ) : (
-                      <>
-                        <Box color="label" italic mb={2}>
-                          This ticket is archived and cannot be modified.
-                        </Box>
-                        <Button
-                          icon="undo"
-                          color="good"
-                          onClick={() =>
-                            act('reopen_ticket', {
-                              ticket_id: selectedTicketData.id,
-                            })
-                          }
-                        >
-                          Reopen Ticket
-                        </Button>
-                      </>
-                    )}
+                        ) : (
+                          <>
+                            <Box color="label" italic mb={2}>
+                              This ticket is archived and cannot be modified.
+                            </Box>
+                            <Button
+                              icon="undo"
+                              color="good"
+                              onClick={() =>
+                                act('reopen_ticket', {
+                                  ticket_id: selectedTicketData.id,
+                                })
+                              }
+                            >
+                              Reopen Ticket
+                            </Button>
+                          </>
+                        )}
                       </Box>
                     </Stack.Item>
                   </Stack>

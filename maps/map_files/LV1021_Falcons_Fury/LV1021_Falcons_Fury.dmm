@@ -21532,6 +21532,11 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleW_north)
+"baf" = (
+/turf/closed/wall/strata_ice/jungle{
+	opacity = 0
+	},
+/area/lv1021/oob)
 "bag" = (
 /obj/effect/decal/cleanable/dirt/greenglow{
 	color = "#140400";
@@ -21539,6 +21544,13 @@
 	},
 /turf/open/asphalt/brown,
 /area/lv1021/outdoors/comms/west_2)
+"bah" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/decal/lv_decals/cave_mud_corner{
+	dir = 5
+	},
+/turf/open/auto_turf/lv_sand_alt/layer0,
+/area/lv1021/indoors/caves/cave_north)
 "bai" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -31;
@@ -28507,7 +28519,9 @@
 	pixel_x = -124;
 	pixel_y = 36
 	},
-/turf/closed/wall/strata_ice/jungle,
+/turf/closed/wall/strata_ice/jungle{
+	opacity = 0
+	},
 /area/lv1021/oob)
 "eyx" = (
 /obj/structure/platform/wood/west,
@@ -39730,7 +39744,9 @@
 	unacidable = 1;
 	health = 100000
 	},
-/turf/closed/wall/strata_ice/jungle,
+/turf/closed/wall/strata_ice/jungle{
+	opacity = 0
+	},
 /area/lv1021/oob)
 "uod" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
@@ -40970,8 +40986,10 @@
 	pixel_x = 16;
 	pixel_y = -2
 	},
-/turf/open/auto_turf/tyrargo_grass/layer0,
-/area/lv1021/outdoors/jungle/jungleC_mid)
+/turf/closed/wall/strata_ice/jungle{
+	opacity = 0
+	},
+/area/lv1021/oob)
 "wdv" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = 8;
@@ -61409,8 +61427,8 @@ roH
 hXu
 hXu
 hXu
-mvR
-mvR
+baf
+baf
 mvR
 aNV
 aNV
@@ -76893,8 +76911,8 @@ spz
 spz
 aYm
 aYm
-wzQ
-wzQ
+asf
+aob
 wzQ
 wzQ
 wzQ
@@ -77060,9 +77078,9 @@ aYp
 spz
 aYm
 spz
+arh
 aob
 aob
-wzQ
 wzQ
 wzQ
 wzQ
@@ -78398,8 +78416,8 @@ spz
 spz
 spz
 spz
-spz
-qaj
+asf
+bah
 spz
 spz
 spz
@@ -78565,8 +78583,8 @@ spz
 atW
 spz
 spz
-spz
-spz
+wzQ
+wzQ
 spz
 spz
 bmt
@@ -78731,9 +78749,9 @@ spz
 spz
 qaj
 spz
-nBh
 spz
-spz
+aro
+asG
 spz
 asf
 wzQ
@@ -79565,7 +79583,7 @@ hXq
 hXq
 spz
 spz
-spz
+nBh
 spz
 qaj
 spz

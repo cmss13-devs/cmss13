@@ -2211,9 +2211,6 @@
 "bzE" = (
 /turf/closed/wall/strata_outpost,
 /area/atlan/station/admin)
-"bzK" = (
-/turf/closed/wall/mineral/bone_resin,
-/area/atlan/station/water_tanks)
 "bAq" = (
 /turf/open/floor/strata,
 /area/atlan/station/substation)
@@ -10685,9 +10682,6 @@
 /obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_caves)
-"hmP" = (
-/turf/closed/wall/strata_outpost/reinforced/hull,
-/area/atlan/station/substation)
 "hmY" = (
 /turf/open/floor/strata/yellow3/southeast,
 /area/atlan/station/hab_docks)
@@ -25488,9 +25482,6 @@
 /obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/strata/orange_edge/east,
 /area/atlan/lz/near_lz2)
-"qWb" = (
-/turf/open/gm/dirt/brown,
-/area/atlan/oob)
 "qWo" = (
 /turf/open/floor/plating,
 /area/atlan/comms/lz2_hab_relay)
@@ -35910,10 +35901,6 @@
 	},
 /turf/open/floor/strata/cyan1,
 /area/atlan/station/medical)
-"yhd" = (
-/obj/structure/sign/safety/synth_storage,
-/turf/closed/wall/strata_outpost/reinforced/hull,
-/area/atlan/station/substation)
 "yhq" = (
 /obj/structure/bed/chair/office/light{
 	dir = 4;
@@ -49124,7 +49111,7 @@ pqu
 ssL
 xOF
 sTg
-hmP
+aAk
 ssq
 ntq
 anA
@@ -49327,7 +49314,7 @@ xOF
 xOF
 cfB
 tke
-hmP
+aAk
 evD
 evD
 cMd
@@ -49530,7 +49517,7 @@ xOF
 xOF
 mYs
 icn
-hmP
+aAk
 gbz
 qNB
 njD
@@ -49731,9 +49718,9 @@ bnz
 rCh
 xOF
 ovw
-yhd
-hmP
-hmP
+oqj
+aAk
+aAk
 anA
 ntq
 ntq
@@ -54797,7 +54784,7 @@ oCj
 soF
 ogm
 med
-xTV
+oCj
 qiS
 eYC
 kac
@@ -55000,7 +54987,7 @@ oCj
 wdM
 lnR
 nuD
-xTV
+oCj
 qiS
 sNt
 cIx
@@ -58814,7 +58801,7 @@ aSd
 lGF
 aSd
 aSd
-bzK
+lGF
 rzU
 tUu
 pGA
@@ -70601,7 +70588,7 @@ aHQ
 aHQ
 aHQ
 jDo
-qWb
+aSd
 jDo
 jDo
 jDo

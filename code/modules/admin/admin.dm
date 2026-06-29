@@ -51,9 +51,9 @@
 	log_attack(text)
 	var/location_suffix
 	if(is_mainship_level(location_z))
-		location_suffix = SPAN_PREFIX(" [SPAN_DEBUG_NOTICE("(SHIPSIDE)")]")
+		location_suffix = SPAN_PREFIX(" [SPAN_DEBUG_ORANGE("(SHIPSIDE)")]")
 	else if(is_ground_level(location_z))
-		location_suffix = SPAN_PREFIX(" [SPAN_ADMIN("(GROUNDSIDE)")]")
+		location_suffix = SPAN_PREFIX(" [SPAN_ADMIN_BLUE("(GROUNDSIDE)")]")
 
 	var/rendered = SPAN_COMBAT("[SPAN_PREFIX("ATTACK:")] ")
 	if(alive)

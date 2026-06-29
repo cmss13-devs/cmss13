@@ -541,29 +541,45 @@ em {
   font-style: italic;
 }
 
+.admin_blue {
+  color: hsl(225, 100%, 63%);
+}
+
+.blue {
+  color: hsl(240, 100%, 50%);
+}
+
+.debug_orange {
+  color: hsl(30, 100%, 55%);
+}
+
 .green {
-  color: hsl(133, 93%, 30%);
+  color: hsl(133, 100%, 51%);
 }
 
 .grey {
   color: hsl(0, 0%, 51%);
 }
 
-.red {
-  color: hsl(0, 100%, 50%);
-}
-
-.blue {
-  color: hsl(224, 100%, 56%);
+.orange {
+  color: hsl(41, 100%, 46%);
 }
 
 .nicegreen {
-  color: hsl(133, 93%, 30%);
+  color: hsl(133, 79%, 37%);
 }
 
 .boldnicegreen {
-  color: hsl(133, 93%, 30%);
+  color: hsl(133, 79%, 37%);
   font-weight: bold;
+}
+
+.purple {
+  color: hsl(279, 46%, 33%);
+}
+
+.red {
+  color: hsl(0, 100%, 50%);
 }
 
 .cult {
@@ -619,10 +635,6 @@ em {
 .hierophant_warning {
   color: hsl(280, 83%, 68%);
   font-style: italic;
-}
-
-.purple {
-  color: hsl(272, 59%, 58%);
 }
 
 .holoparasite {
@@ -1161,10 +1173,6 @@ em {
 
 .underline {
   text-decoration: underline;
-}
-
-.orange {
-  color: hsl(41, 100%, 46%);
 }
 
 .normal {

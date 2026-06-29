@@ -163,19 +163,19 @@
 	xeno.xeno_screech_action()
 	return TRUE
 
-/datum/keybinding/xenomorph/wotq
+/datum/keybinding/xenomorph/queen_announce
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
-	name = "wotq"
+	name = "queen_announce"
 	full_name = "Word of the Queen"
 	keybind_signal = COMSIG_KB_XENO_WORD_OF_THE_QUEEN
 
-/datum/keybinding/xenomorph/wotq/down(client/user)
+/datum/keybinding/xenomorph/queen_announce/down(client/user)
 	. = ..()
 	if(.)
 		return
 	var/mob/living/carbon/xenomorph/xeno = user.mob
-	xeno.xeno_wotq_action()
+	xeno.xeno_queen_announce_action()
 	return TRUE
 
 /datum/keybinding/xenomorph/tail_stab

@@ -177,7 +177,7 @@
 			handle_xeno_macro_datum(src, xeno_action)
 			break
 
-/mob/living/carbon/xenomorph/verb/xeno_wotq_action()
+/mob/living/carbon/xenomorph/verb/xeno_queen_announce_action()
 	set category = "Alien"
 	set name = "Word of the Queen"
 	set hidden = TRUE

@@ -2120,6 +2120,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/mars,
 /area/bigredv2/outside/nw)
+"ahY" = (
+/obj/effect/landmark{
+	name = "Yautja Temple Spawn Location";
+	desc = "Temporary landmark, not for full merge"
+	},
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "aia" = (
 /obj/structure/machinery/door_control{
 	id = "Marshal Offices";
@@ -71409,7 +71416,7 @@ aao
 aao
 aao
 aao
-aao
+ahY
 aab
 "}
 (152,1,1) = {"

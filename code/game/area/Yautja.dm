@@ -328,7 +328,158 @@
 	sound_environment = SOUND_ENVIRONMENT_GENERIC
 	ceiling_muffle = TRUE
 	ceiling = CEILING_NONE
+
 /area/yautja_grounds/prep_room/desert/interior
 	name ="\improper Desert Moon Campsite Interior"
 	ceiling_muffle = FALSE
 	ceiling = CEILING_SANDSTONE_ALLOW_CAS
+
+
+
+
+/area/yautja_ancient_temple
+	name = "\improper Ancient Temple"
+	icon_state = "green"
+	weather_enabled = FALSE
+	flags_area = AREA_YAUTJA_HANGABLE|AREA_NOTUNNEL|AREA_AVOID_BIOSCAN|AREA_YAUTJA_GROUNDS|AREA_YAUTJA_HUNTING_GROUNDS
+	resin_construction_allowed = FALSE
+	can_build_special = FALSE
+	is_resin_allowed = TRUE
+	ceiling = CEILING_SANDSTONE_TEMPLE
+	sound_environment = SOUND_ENVIRONMENT_AUDITORIUM
+	ceiling_muffle = FALSE
+
+/area/yautja_ancient_temple/sanctum
+	name = "\improper Ancient Temple - Sanctum Chamber"
+	icon_state = "purple"
+
+/area/yautja_ancient_temple/sanctum/crypt
+	name = "\improper Ancient Temple - Sanctum Crypt"
+
+/area/yautja_ancient_temple/sanctum/stairs
+	name = "\improper Ancient Temple - Sanctum Stairway"
+
+/area/yautja_ancient_temple/sanctum/acid_pit
+	name = "\improper Ancient Temple - Sanctum Acid Pit"
+
+
+
+/area/yautja_ancient_temple/gate
+	icon_state = "shuttlered"
+/area/yautja_ancient_temple/gate/north
+	name = "\improper Ancient Temple - North Gate"
+
+/area/yautja_ancient_temple/gate/north_west
+	name = "\improper Ancient Temple - North-West Gate"
+
+/area/yautja_ancient_temple/gate/west
+	name = "\improper Ancient Temple - West Gate"
+
+/area/yautja_ancient_temple/gate/west/second
+	name = "\improper Ancient Temple - Minor West Gate"
+
+/area/yautja_ancient_temple/gate/west/blocked
+	name = "\improper Ancient Temple - Old Gate"
+
+
+
+
+
+/area/yautja_ancient_temple/lower
+	name = "\improper Ancient Temple (Lower)"
+
+/area/yautja_ancient_temple/lower/armory
+	name = "\improper Ancient Temple (L) - Armory"
+	icon_state = "storage"
+
+/area/yautja_ancient_temple/lower/crypt
+	name = "\improper Ancient Temple (L) - Crypt"
+
+/area/yautja_ancient_temple/lower/crypt/hall
+	name = "\improper Ancient Temple (L) - Hall of Fallen"
+
+/area/yautja_ancient_temple/lower/lab
+	name = "\improper Ancient Temple (L) - Laboratory"
+	icon_state = "xeno_lab"
+
+/area/yautja_ancient_temple/lower/medical
+	name = "\improper Ancient Temple (L) - Medical Bay"
+	icon_state = "medbay3"
+
+/area/yautja_ancient_temple/lower/arena_grounds
+	name = "\improper Ancient Temple (L) - Arena Grounds"
+	ceiling = CEILING_NONE
+	icon_state = "start"
+
+/area/yautja_ancient_temple/lower/quarters
+	name = "\improper Ancient Temple (L) - Elite Quarters"
+	icon_state = "bunker01_bedroom"
+
+/area/yautja_ancient_temple/lower/offering
+	name = "\improper Ancient Temple (L) - Offering Chamber"
+
+/area/yautja_ancient_temple/lower/central_chamber
+	name = "\improper Ancient Temple (L) - Central Chamber"
+
+/area/yautja_ancient_temple/lower/meeting_hall
+	name = "\improper Ancient Temple (L) - Meeting Chamber"
+
+/area/yautja_ancient_temple/lower/feed_hall
+	name = "\improper Ancient Temple (L) - Feed Hall"
+
+/area/yautja_ancient_temple/lower/north_hall
+	name = "\improper Ancient Temple (L) - North Hall"
+
+/area/yautja_ancient_temple/lower/west_hall
+	name = "\improper Ancient Temple (L) - West Hall"
+
+
+
+/area/yautja_ancient_temple/stairs
+	icon_state = "yellow"
+
+/area/yautja_ancient_temple/stairs/central
+	name = "\improper Ancient Temple (L) - Central Stairs"
+
+/area/yautja_ancient_temple/stairs/central/mid
+	name = "\improper Ancient Temple (M) - Central Stairs"
+
+/area/yautja_ancient_temple/stairs/south
+	name = "\improper Ancient Temple (L) - Southern Stairs"
+
+/area/yautja_ancient_temple/stairs/south/mid
+	name = "\improper Ancient Temple (M) - Southern Stairs"
+
+
+
+/area/yautja_ancient_temple/mid
+	name = "\improper Ancient Temple (Mid)"
+	icon_state = "blue"
+
+/area/yautja_ancient_temple/mid/quarters_elder
+	name = "\improper Ancient Temple (M) - Elder Quarters"
+	icon_state = "bunker01_bedroom"
+
+/area/yautja_ancient_temple/mid/quarters_ancient
+	name = "\improper Ancient Temple (M) - Ancient Quarters"
+	icon_state = "bunker01_bedroom"
+
+/area/yautja_ancient_temple/mid/arena_grounds
+	name = "\improper Ancient Temple (M) - Arena Grounds"
+	ceiling = CEILING_NONE
+	icon_state = "start"
+
+/area/yautja_ancient_temple/mid/temple_altar
+	name = "\improper Ancient Temple (M) - Altar"
+
+
+/area/yautja_ancient_temple/upper
+	name = "\improper Ancient Temple (Upper)"
+
+/area/yautja_ancient_temple/upper/arena_grounds
+	name = "\improper Ancient Temple (U) - Arena Grounds"
+	ceiling = CEILING_NONE
+	icon_state = "start"
+
+/area/yautja_ancient_temple/upper/hangar
+	name = "\improper Ancient Temple (U) - Hangar"

@@ -819,6 +819,19 @@
 	if(istype(M))
 		M.apply_damage(55,TOX)
 
+/turf/open/gm/river/acid
+	name = "acidic water"
+	default_name = "acidic water"
+
+/turf/open/gm/river/acid/Initialize(mapload, ...)
+	. = ..()
+	overlays += image("icon"='icons/mob/xenos/effects.dmi',"icon_state"="acid2-strong","layer"=MOB_LAYER+0.1)
+
+/turf/open/gm/river/acid/Entered(mob/living/M)
+	..()
+	if(istype(M))
+		M.apply_damage(55,BURN)
+
 /turf/open/gm/river/darkred_pool
 	color = "#990000"
 	name = "pool"

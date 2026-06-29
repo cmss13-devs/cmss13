@@ -93,7 +93,7 @@
 		if (SHARP_DANGER_MODE)
 			icon_state = "sharp_danger"
 		if (SHARP_DIRECTED_MODE)
-			icon_state = "sharp_directed"
+			icon_state = "sharp_direct"
 		if (SHARP_SAFE_MODE)
 			icon_state = "sharp_safe"
 	button.overlays.Cut()

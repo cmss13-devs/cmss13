@@ -141,7 +141,8 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/proc/retrieve_shell(selection)
 	var/datum/ammo/ammo_type = GLOB.ammo_list[selection]
 	var/obj/item/ammo_magazine/handful/new_handful = new ammo_type.handful_type()
-	new_handful.generate_handful(selection, gauge, ammo_type.handful_max_rounds, 1, /obj/item/weapon/gun/shotgun)
+	new_handful.current_rounds = 1
+	new_handful.update_icon()
 	return new_handful
 
 /obj/item/weapon/gun/shotgun/proc/check_chamber_position()

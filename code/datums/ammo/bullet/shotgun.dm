@@ -24,6 +24,7 @@
 	accuracy = HIT_ACCURACY_TIER_3
 	damage_armor_punch = 2
 	handful_state = "slug_shell"
+	handful_type = /obj/item/ammo_magazine/handful/shotgun
 
 /datum/ammo/bullet/shotgun/slug/on_hit_mob(mob/M,obj/projectile/P)
 	knockback(M, P, 6)
@@ -54,6 +55,7 @@
 	damage = 60
 	penetration = ARMOR_PENETRATION_TIER_8
 	accuracy = HIT_ACCURACY_TIER_5
+	handful_type = /obj/item/ammo_magazine/handful/shotgun/slug/es7
 
 /datum/ammo/bullet/shotgun/beanbag
 	name = "beanbag slug"
@@ -70,6 +72,7 @@
 	accuracy = HIT_ACCURACY_TIER_3
 	shell_speed = AMMO_SPEED_TIER_3
 	handful_state = "beanbag_slug"
+	handful_type = /obj/item/ammo_magazine/handful/shotgun/beanbag
 
 /datum/ammo/bullet/shotgun/beanbag/on_hit_mob(mob/M, obj/projectile/P)
 	if(!M || M == P.firer)
@@ -96,6 +99,7 @@
 	accuracy = HIT_ACCURACY_TIER_3
 	shell_speed = AMMO_SPEED_TIER_4
 	handful_state = "shock_slug"
+	handful_type = /obj/item/ammo_magazine/handful/shotgun/beanbag/es7
 
 /datum/ammo/bullet/shotgun/beanbag/es7/on_hit_mob(mob/mobs, obj/projectile/P)
 	if(!isyautja(mobs) && !isxeno(mobs))
@@ -118,6 +122,7 @@
 	damage = 55
 	penetration= ARMOR_PENETRATION_TIER_1
 	handful_state = "incendiary_slug"
+	handful_type = /obj/item/ammo_magazine/handful/shotgun/incendiary
 
 /datum/ammo/bullet/shotgun/incendiary/set_bullet_traits()
 	. = ..()
@@ -152,6 +157,7 @@
 	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3
 	handful_state = "flechette_shell"
 	multiple_handful_name = TRUE
+	handful_type = /obj/item/ammo_magazine/handful/shotgun/flechette
 
 /datum/ammo/bullet/shotgun/flechette/setup_faction_clash_values()
 	. = ..()
@@ -195,6 +201,7 @@
 	pen_armor_punch = 0
 	handful_state = "buckshot_shell"
 	multiple_handful_name = TRUE
+	handful_type = /obj/item/ammo_magazine/handful/shotgun/buckshot
 
 /datum/ammo/bullet/shotgun/buckshot/incendiary
 	name = "incendiary buckshot shell"
@@ -267,6 +274,7 @@
 	shell_speed = AMMO_SPEED_TIER_2
 	damage_armor_punch = 0
 	pen_armor_punch = 0
+	handful_type = /obj/item/ammo_magazine/handful/shotgun/heavy/buckshot
 
 /datum/ammo/bullet/shotgun/heavy/buckshot/on_hit_mob(mob/M,obj/projectile/P)
 	knockback(M,P)
@@ -287,6 +295,7 @@
 	accurate_range = 3
 	max_range = 4
 	bonus_projectiles_type = /datum/ammo/bullet/shotgun/heavy/buckshot/dragonsbreath/spread
+	handful_type = /obj/item/ammo_magazine/handful/shotgun/heavy/dragonsbreath
 
 /datum/ammo/bullet/shotgun/heavy/buckshot/dragonsbreath/set_bullet_traits()
 	. = ..()
@@ -311,6 +320,7 @@
 	damage = 90 //ouch.
 	penetration = ARMOR_PENETRATION_TIER_6
 	damage_armor_punch = 2
+	handful_type = /obj/item/ammo_magazine/handful/shotgun/heavy
 
 /datum/ammo/bullet/shotgun/heavy/slug/on_hit_mob(mob/M,obj/projectile/P)
 	knockback(M, P, 7)
@@ -344,6 +354,7 @@
 	stamina_damage = 100
 	accuracy = HIT_ACCURACY_TIER_2
 	shell_speed = AMMO_SPEED_TIER_2
+	handful_type = /obj/item/ammo_magazine/handful/shotgun/heavy/beanbag
 
 /datum/ammo/bullet/shotgun/heavy/beanbag/on_hit_mob(mob/M, obj/projectile/P)
 	if(!M || M == P.firer)
@@ -367,6 +378,7 @@
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8
 	penetration = ARMOR_PENETRATION_TIER_10
 	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_2
+	handful_type = /obj/item/ammo_magazine/handful/shotgun/heavy/flechette
 
 /datum/ammo/bullet/shotgun/heavy/flechette/setup_faction_clash_values()
 	. = ..()
@@ -394,7 +406,7 @@
 
 /datum/ammo/bullet/shotgun/light
 	handful_max_rounds = 6
-	
+
 /datum/ammo/bullet/shotgun/light/breaching
 	name = "light breaching shell"
 	icon_state = "flechette"
@@ -408,6 +420,7 @@
 	max_range = 5
 	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3
 	penetration = ARMOR_PENETRATION_TIER_1
+	handful_type = /obj/item/ammo_magazine/handful/shotgun/light/breaching
 
 /datum/ammo/bullet/shotgun/light/breaching/spread
 	name = "additional light breaching fragments"
@@ -433,6 +446,7 @@
 	stamina_damage = 35
 	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3
 	penetration = ARMOR_PENETRATION_TIER_1
+	handful_type = /obj/item/ammo_magazine/handful/shotgun/light/breaching/rubber
 
 /datum/ammo/bullet/shotgun/light/rubber/spread
 	name = "additional rubber buckshot"
@@ -455,6 +469,7 @@
 	damage_falloff = DAMAGE_FALLOFF_TIER_1 * 3 //It has a lot of energy, but the 26mm bullet drops off fast.
 	effective_range_max = EFFECTIVE_RANGE_MAX_TIER_2 //Full damage up to this distance, then falloff for each tile beyond.
 	var/hit_messages = list()
+	handful_type = /obj/item/ammo_magazine/handful/shotgun/twobore
 
 /datum/ammo/bullet/shotgun/twobore/on_hit_mob(mob/living/M, obj/projectile/P)
 	var/mob/shooter = P.firer

@@ -66,7 +66,7 @@
 /area/abyssal/interior/bunker
 	name = "Abyssal - Emergency Radiation Bunker"
 	icon_state = "police_line"
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL|AREA_NOBURROW
 	minimap_color = MINIMAP_AREA_JUNGLE
 
 //Corridor

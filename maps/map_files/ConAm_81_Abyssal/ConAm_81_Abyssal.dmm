@@ -48,7 +48,6 @@
 /area/abyssal/interior/maintenance/east)
 "aak" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
-	explo_proof = 1;
 	name = "launch bay door";
 	dir = 4
 	},
@@ -122,7 +121,6 @@
 /area/abyssal/interior/maintenance/east)
 "aau" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
-	explo_proof = 1;
 	name = "launch bay door";
 	dir = 4
 	},
@@ -158,7 +156,7 @@
 	dir = 4;
 	pixel_y = -8
 	},
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/east)
 "aaB" = (
@@ -879,7 +877,7 @@
 /turf/open/floor/prison,
 /area/abyssal/interior/command)
 "acL" = (
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/darkred2/east,
 /area/abyssal/interior/command)
 "acM" = (
@@ -1215,7 +1213,7 @@
 "adz" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/item/stack/cable_coil/cyan,
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/darkpurple2/southwest,
 /area/abyssal/interior/science)
 "adA" = (
@@ -1789,7 +1787,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/darkpurplecorners2,
 /area/abyssal/interior/science)
 "afb" = (
@@ -2001,7 +1999,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 9
 	},
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/east)
 "afy" = (
@@ -3595,7 +3593,6 @@
 /area/abyssal/interior/security)
 "aki" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
-	explo_proof = 1;
 	name = "launch bay door";
 	dir = 4
 	},
@@ -3879,7 +3876,6 @@
 /area/abyssal/interior/corridor_west)
 "akY" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
-	explo_proof = 1;
 	name = "launch bay door"
 	},
 /turf/open/floor/engine,
@@ -4689,7 +4685,6 @@
 /area/abyssal/interior/maintenance/north)
 "and" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
-	explo_proof = 1;
 	name = "launch bay door";
 	dir = 4
 	},
@@ -5238,7 +5233,7 @@
 	pixel_x = 8
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/hybrisa/tile/green_bigtile,
 /area/abyssal/interior/command)
 "aov" = (
@@ -8745,7 +8740,7 @@
 /area/abyssal/interior/cargo)
 "awr" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/hybrisa/tile/greencorner_bigtile/north,
 /area/abyssal/interior/command)
 "aws" = (
@@ -10952,7 +10947,7 @@
 /turf/open/floor/plating/prison,
 /area/abyssal/interior/engineering)
 "aBn" = (
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/hybrisa/tile/green_bigtile/southeast,
 /area/abyssal/interior/command)
 "aBo" = (
@@ -14515,7 +14510,6 @@
 /area/abyssal/interior/liaison)
 "aJE" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
-	explo_proof = 1;
 	name = "launch bay door";
 	dir = 4
 	},
@@ -15271,7 +15265,7 @@
 /turf/open/floor/hybrisa/tile/greencorner_bigtile/west,
 /area/abyssal/interior/command)
 "aLn" = (
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/hybrisa/tile/greencorner_bigtile/north,
 /area/abyssal/interior/command)
 "aLo" = (
@@ -15401,7 +15395,7 @@
 /area/abyssal/interior/maintenance/south)
 "aLC" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/hybrisa/tile/green_bigtile/east,
 /area/abyssal/interior/command)
 "aLD" = (
@@ -15606,7 +15600,7 @@
 "aMe" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/hybrisa/tile/green_bigtile/west,
 /area/abyssal/interior/command)
 "aMf" = (
@@ -16240,7 +16234,7 @@
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 1
 	},
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/prison,
 /area/abyssal/interior/command)
 "aNK" = (
@@ -16990,7 +16984,7 @@
 "aPz" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/disposalpipe/segment,
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/darkblue2/east,
 /area/abyssal/interior/command)
 "aPA" = (
@@ -17022,7 +17016,7 @@
 /area/abyssal/interior/medical)
 "aPE" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/abyssal/interior/command)
 "aPF" = (
@@ -20008,7 +20002,6 @@
 /area/abyssal/interior/security)
 "aWF" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
-	explo_proof = 1;
 	name = "launch bay door"
 	},
 /obj/structure/monorail{
@@ -20232,7 +20225,7 @@
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 4
 	},
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/hybrisa/tile/green_bigtile/west,
 /area/abyssal/interior/command)
 "aXc" = (
@@ -21793,7 +21786,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/east)
 "baU" = (
@@ -21871,7 +21864,7 @@
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 4
 	},
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/dark,
 /area/abyssal/interior/science)
 "bbe" = (
@@ -22140,7 +22133,7 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/darkpurple2/west,
 /area/abyssal/interior/science)
 "bbP" = (
@@ -22250,7 +22243,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/darkpurple2/west,
 /area/abyssal/interior/science)
 "bcc" = (
@@ -22387,7 +22380,7 @@
 /area/abyssal/interior/science)
 "bct" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan,
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/darkpurplecorners2/north,
 /area/abyssal/interior/science)
 "bcu" = (
@@ -23839,7 +23832,7 @@
 /area/abyssal/interior/corridor_east)
 "bfM" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/darkblue2/southeast,
 /area/abyssal/interior/command)
 "bfN" = (
@@ -23937,6 +23930,10 @@
 	},
 /obj/item/paper/colonial_grunts,
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/item/weapon/gun/shotgun/pump/m37a{
+	pixel_x = 7;
+	pixel_y = 15
+	},
 /turf/open/floor/hybrisa/tile/blacktileshiny,
 /area/abyssal/interior/bunker)
 "bfU" = (
@@ -24849,6 +24846,9 @@
 	light_on = 1;
 	anchored = 1
 	},
+/obj/item/ammo_magazine/shotgun/buckshot{
+	pixel_y = -4
+	},
 /turf/open/floor/elevatorshaft,
 /area/abyssal/interior/bunker)
 "bht" = (
@@ -25058,7 +25058,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/station/metal/floor/alt2,
 /area/abyssal/interior/corridor_east)
 "bhQ" = (
@@ -25085,7 +25085,7 @@
 /turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_east)
 "bhS" = (
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/darkblue2/west,
 /area/abyssal/interior/command)
 "bhT" = (
@@ -26223,12 +26223,12 @@
 /turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/corridor_central)
 "bky" = (
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/darkblue2,
 /area/abyssal/interior/command)
 "bkz" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/prison,
 /area/abyssal/interior/command)
 "bkA" = (
@@ -26236,11 +26236,11 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/darkblue2/northwest,
 /area/abyssal/interior/command)
 "bkB" = (
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/darkblue2/southwest,
 /area/abyssal/interior/command)
 "bkC" = (

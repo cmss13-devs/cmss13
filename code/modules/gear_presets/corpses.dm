@@ -2133,9 +2133,9 @@
 
 /datum/equipment_preset/corpse/new_varadero/doctor
 	name = "Corpse - LACN - Medical Technician"
-	assignment = "LACN Medical Technician"
+	assignment = JOB_LACN_DOCTOR
 	faction = FACTION_MARINE
-	job_title = JOB_DOCTOR
+	job_title = JOB_LACN_DOCTOR
 	paygrades = list(PAY_SHORT_NE5 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/doctor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND

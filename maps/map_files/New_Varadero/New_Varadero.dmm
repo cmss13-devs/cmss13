@@ -41627,9 +41627,6 @@
 	layer = 3.1;
 	dir = 1
 	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
 /turf/open/hybrisa/street/sidewalk/north,
 /area/varadero/exterior/comms4)
 "chP" = (
@@ -47190,23 +47187,6 @@
 	},
 /turf/open/floor/asteroid,
 /area/varadero/exterior/eastbeach)
-"cxf" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/bed/sofa/hybrisa/misc/bench,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/turf/open/hybrisa/street/sidewalk/north,
-/area/varadero/exterior/comms4)
-"cxg" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/turf/open/hybrisa/street/sidewalk/north,
-/area/varadero/exterior/comms4)
 "cxh" = (
 /obj/structure/platform_decoration/metal/kutjevo/north,
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
@@ -77475,7 +77455,7 @@ wLq
 cim
 cih
 bDN
-cxf
+chO
 bBB
 chw
 chk
@@ -77657,7 +77637,7 @@ hPs
 pGs
 cih
 chZ
-cxg
+bCK
 bBF
 chx
 chl

@@ -101,7 +101,6 @@
 	button.overlays += IMG
 
 /datum/action/item_action/specialist/sharp_firemode_ability/can_use_action()
-	var/obj/item/weapon/gun/rifle/sharp/sharp_rifle = holder_item
 	if(owner.is_mob_incapacitated())
 		return FALSE
 	return TRUE

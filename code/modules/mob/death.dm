@@ -31,7 +31,7 @@
 //This is the proc for turning a mob into ash. Mostly a copy of gib code (above).
 //Originally created for wizard disintegrate. I've removed the virus code since it's irrelevant here.
 //Dusting robots does not eject the MMI, so it's a bit more powerful than gib() /N
-/mob/proc/dust(cause = "dusting")
+/mob/proc/dust(cause = create_cause_data("dusting", src))
 	death(cause, 1)
 	dust_animation()
 	spawn_dust_remains()

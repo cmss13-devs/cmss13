@@ -523,3 +523,29 @@
   fira:
   - bugfix: Hotfixed an issue causing the Synthetic Reset Keys to be unusable
   - bugfix: The Synth Reset Keys now makes no sparks, as intended
+2026-06-29:
+  AmoryBlaine, Detective-Google:
+  - imageadd: surplus uniform vendors have a unique sprite now
+  Drathek:
+  - balance: Almayer ground crash now breaks the powernet and APCs will randomly short
+      out over time
+  - bugfix: Openspace no longer doubles up the openspace backdrop when viewing an
+      intermediate openspace
+  MistChristmas:
+  - admin: Changed the colour of FF alive to Red.
+  - bugfix: Jobs not contained in the RoleAuthority can now cryo. Add Goons job datum
+      so they're in the RoleAuthority stuff
+  - rscadd: Dzho's get a label that they're made by norcomm
+  - bugfix: Daniel's get their synthetic verbs once again
+  Wabberspace:
+  - rscadd: DNA-disintegrating's xeno-transformation-disease now takes less time to
+      reach the final stage, and accounts for instances of ciphering within the host's
+      body.
+  - rscadd: the Xeno-Transformation disease now removes your ability to speak anything
+      but xenomorph-ese!
+  - qol: Xeno-Transformation disease progression is now no longer hidden, and can
+      be tracked freely using scanners. Furthermore, XT disease stages are incremented
+      linearly, and reaching stage 5 will take a lot less time.
+  - code_imp: refactors prop_special.dm to not use single letter variable definitions
+  halgmor:
+  - rscadd: SensorMate HUDs have been returned to squad vendors

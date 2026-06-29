@@ -343,33 +343,36 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 			A.moveToNullspace()
 
 	var/datum/job/job = GET_MAPPED_ROLE(occupant.job)
-	if(ishuman(occupant))
-		var/mob/living/carbon/human/H = occupant
-		job.on_cryo(H)
-		if(H.assigned_squad)
-			var/datum/squad/S = H.assigned_squad
-			S.forget_marine_in_squad(H)
+	if(job)
+		if(ishuman(occupant))
+			var/mob/living/carbon/human/human_cryoing = occupant
+			job.on_cryo(human_cryoing)
+			if(human_cryoing.assigned_squad)
+				var/datum/squad/squad = human_cryoing.assigned_squad
+				squad.forget_marine_in_squad(human_cryoing)
 
-	//Cryoing someone out removes someone from the Marines, blocking further larva spawns until accounted for
-	SSticker.mode.latejoin_update(job, -1)
+		//Cryoing someone out removes someone from the Marines, blocking further larva spawns until accounted for
+		SSticker.mode.latejoin_update(job, -1)
 
-	//Handle job slot/tater cleanup.
-	GLOB.RoleAuthority.free_role(GET_MAPPED_ROLE(occupant.job), TRUE)
+		//Handle job slot/tater cleanup.
+		GLOB.RoleAuthority.free_role(job, TRUE)
 
-	var/occupant_ref = WEAKREF(occupant)
-	//Delete them from datacore.
-	for(var/datum/data/record/R as anything in GLOB.data_core.medical)
-		if((R.fields["ref"] == occupant_ref))
-			GLOB.data_core.medical -= R
-			qdel(R)
-	for(var/datum/data/record/T in GLOB.data_core.security)
-		if((T.fields["ref"] == occupant_ref))
-			GLOB.data_core.security -= T
-			qdel(T)
-	for(var/datum/data/record/G in GLOB.data_core.general)
-		if((G.fields["ref"] == occupant_ref))
-			GLOB.data_core.general -= G
-			qdel(G)
+		var/occupant_ref = WEAKREF(occupant)
+		//Delete them from datacore.
+		for(var/datum/data/record/found_record_med as anything in GLOB.data_core.medical)
+			if((found_record_med.fields["ref"] == occupant_ref))
+				GLOB.data_core.medical -= found_record_med
+				qdel(found_record_med)
+		for(var/datum/data/record/found_record_sec in GLOB.data_core.security)
+			if((found_record_sec.fields["ref"] == occupant_ref))
+				GLOB.data_core.security -= found_record_sec
+				qdel(found_record_sec)
+		for(var/datum/data/record/found_record_gen in GLOB.data_core.general)
+			if((found_record_gen.fields["ref"] == occupant_ref))
+				GLOB.data_core.general -= found_record_gen
+				qdel(found_record_gen)
+	else
+		log_debug("Attempted to process [occupant] without valid job datum found. Job: [occupant.job]. Likely no job datum for given job exists.")
 
 	icon_state = "body_scanner_open"
 	set_light(0)

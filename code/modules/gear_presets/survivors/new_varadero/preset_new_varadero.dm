@@ -1,8 +1,8 @@
 /datum/equipment_preset/survivor/new_varadero
+	job_title = JOB_SURVIVOR
 	faction = FACTION_MARINE
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_SPANISH)
-	minimap_background = "background_medical_WO" // placeholder
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 
@@ -26,7 +26,6 @@
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/l42a(new_human), WEAR_L_HAND)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/l42a/heap/empty(new_human), WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/l42a(new_human), WEAR_IN_BACK)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/l42a(new_human), WEAR_IN_BACK)
 		if(4 to 5)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41aMK1(new_human), WEAR_L_HAND)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1/heap/empty(new_human), WEAR_IN_BACK) // high ammo cap per mag so only gets fluff magazine as extra
@@ -46,6 +45,7 @@
 	assignment = JOB_LACN_POLICE
 	role_comm_title = "LACN MP"
 	minimap_icon = "mp"
+	origin_override = ORIGIN_USCM
 	skills = /datum/skills/military/survivor/lacn_MP
 	paygrades = list(PAY_SHORT_NE6 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag
@@ -61,7 +61,7 @@
 	uniform.attach_accessory(new_human,pin)
 	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR) // placeholder
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/MP(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran(new_human), WEAR_HANDS)
@@ -83,6 +83,7 @@
 	assignment = JOB_LACN_MARINE
 	role_comm_title = "LACN FUS"
 	minimap_icon = "private"
+	origin_override = ORIGIN_USCM
 	skills = /datum/skills/military/survivor/lacn_standard
 	paygrades = list(PAY_SHORT_NE2 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag
@@ -98,7 +99,7 @@
 	uniform.attach_accessory(new_human,pin)
 	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR) // placeholder
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/tech/LACN(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/service/green(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran(new_human), WEAR_HANDS)
@@ -122,6 +123,7 @@
 	assignment = "LACN Commander"
 	role_comm_title = "LACN CDR"
 	minimap_icon = "xo"
+	origin_override = ORIGIN_USCM
 	skills = /datum/skills/commander
 	paygrades = list(PAY_SHORT_NO5 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/gold
@@ -138,7 +140,7 @@
 	suit.attach_accessory(new_human, pin)
 
 	new_human.equip_to_slot_or_del(suit, WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR) // placeholder
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/notepad(new_human), WEAR_IN_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/multicolor/fountain(new_human), WEAR_IN_R_STORE)
@@ -154,9 +156,10 @@
 /datum/equipment_preset/survivor/new_varadero/doctor
 	name = "Survivor - New Varadero - LACN Medical Technician"
 	assignment = "LACN Medical Technician"
-	job_title  = JOB_LACN_MEDIC
+	job_title  = JOB_LACN_DOCTOR
 	role_comm_title = "LACN MEDTECH"
 	minimap_icon = "field_doctor"
+	origin_override = ORIGIN_USCM
 	paygrades = list(PAY_SHORT_NE4 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NE5 = JOB_PLAYTIME_TIER_3)
 	skills = /datum/skills/civilian/survivor/doctor
 	idtype = /obj/item/card/id/dogtag
@@ -168,7 +171,7 @@
 
 	var/choice = rand(1,45)
 
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR) // placeholder
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/surgical(new_human), WEAR_FACE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv(new_human.back), WEAR_IN_BACK)
@@ -194,6 +197,7 @@
 	assignment = "LACN Aviation Rescue & Fire Protection Specialist" //combo of regional names for the role
 	role_comm_title = "LACN ARFPS"
 	minimap_icon = "nurse"
+	origin_override = ORIGIN_USCM
 	paygrades = list(PAY_SHORT_NE4 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NE5 = JOB_PLAYTIME_TIER_3)
 	skills = /datum/skills/civilian/survivor/doctor
 	idtype = /obj/item/card/id/silver/clearance_badge
@@ -205,7 +209,7 @@
 
 	var/choice = rand(1,45)
 
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR) // placeholder
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/lacn(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/surgical(new_human), WEAR_FACE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/vest/fire_light(new_human), WEAR_JACKET)
@@ -246,6 +250,7 @@
 	paygrades = list(PAY_SHORT_NE3 = JOB_PLAYTIME_TIER_0)
 	minimap_icon = "vc"
 	role_comm_title = "LACN VC"
+	origin_override = ORIGIN_USCM
 	skills = /datum/skills/military/survivor/lacn_vhccrew
 	idtype = /obj/item/card/id/dogtag
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_ENGINEERING,ACCESS_CIVILIAN_LOGISTICS,ACCESS_CIVILIAN_MEDBAY,)
@@ -260,7 +265,7 @@
 	uniform.attach_accessory(new_human,pin)
 	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR) // placeholder
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/tech/LACN(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/hardpoint/locomotion/van_wheels(new_human), WEAR_R_HAND)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(new_human), WEAR_R_STORE)
@@ -289,7 +294,8 @@
 	name = "Survivor - New Varadero - LACN Ground Crew"
 	assignment = "LACN Aviation Ground Crewman"
 	role_comm_title = "LACN GCM" // GC = groupchat. Done to at least make it somewhat distinct
-	minimap_icon = "dcc"
+	minimap_icon = "engi"
+	origin_override = ORIGIN_USCM
 	skills = /datum/skills/military/survivor/lacn_groundcrew
 	paygrades = list(PAY_SHORT_NE3 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag
@@ -305,7 +311,7 @@
 	uniform.attach_accessory(new_human,pin)
 	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR) // placeholder
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/tech/LACN(new_human), WEAR_BACK)
 
 	switch(choice)
@@ -356,6 +362,7 @@
 	assignment = JOB_LACN_PILOT
 	role_comm_title = "LACN PO"
 	minimap_icon = "wy_pilot"
+	origin_override = ORIGIN_USCM
 	skills = /datum/skills/military/survivor/lacn_pilot
 	paygrades = list(PAY_SHORT_NO1 = JOB_PLAYTIME_TIER_0,)
 	idtype = /obj/item/card/id/dogtag
@@ -366,7 +373,7 @@
 /datum/equipment_preset/survivor/new_varadero/pilot/load_gear(mob/living/carbon/human/new_human)
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot/flight(new_human), WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR) // placeholder
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/pilot(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/pilot(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
@@ -585,18 +592,20 @@
 /datum/equipment_preset/survivor/new_varadero/assrep
 	name = "Survivor - New Varadero - UA Assistant Representative"
 	assignment = "UA Assistant Representative"
-	role_comm_title = "AST REP"
+	role_comm_title = "UA AST REP"
 	minimap_icon = "recruiter"
 	minimap_background = "background_ua"
+	origin_override = ORIGIN_USCM
 	paygrades = list(PAY_SHORT_CREP = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/civilian/survivor
-	idtype = /obj/item/card/id/silver/clearance_badge/scientist
+	idtype = /obj/item/card/id/silver
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY,ACCESS_CIVILIAN_COMMAND,ACCESS_MARINE_COMMAND, ACCESS_MARINE_GENERAL, ACCESS_MARINE_MEDBAY)
+
 	survivor_variant = CORPORATE_SURVIVOR
 
 /datum/equipment_preset/survivor/new_varadero/assrep/load_gear(mob/living/carbon/human/new_human)
 
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CMB/limited(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CMB/limited(new_human), WEAR_L_EAR) // placeholder
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/black(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/corporate/blue(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran(new_human), WEAR_HANDS)

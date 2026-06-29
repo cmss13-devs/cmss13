@@ -15,6 +15,7 @@
 #define SQUAD_FORECON "FORECON"
 #define SQUAD_SOLAR "Solar Devils"
 #define SQUAD_ARMY "US Army"
+#define SQUAD_LACN "LACN"
 
 // Job name defines
 #define JOB_SQUAD_MARINE "Rifleman"
@@ -392,9 +393,12 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 //-------- LACN --------//
 #define JOB_LACN_MARINE "LACN Fusilier"
 #define JOB_LACN_MEDIC "LACN Médico"
-#define JOB_LACN_PILOT "LACN Piloto"
+#define JOB_LACN_PILOT "LACN Pilot"
 #define JOB_LACN_GROUND "LACN Personal de Tierra"
-#define JOB_LACN_POLICE "LACN Polícia"
+#define JOB_LACN_POLICE "LACN Policia"
+#define JOB_LACN_TANK "LACN Tripulante de vehículo"
+#define JOB_LACN_FIREFIGHTER "LACN Bombero del aeropuerto"
+#define JOB_LACN_DOCTOR "LACN Tecnico medico"
 
 #define JOB_LACN_LIST list(JOB_LACN_PILOT, JOB_LACN_POLICE, JOB_LACN_GROUND, JOB_LACN_MEDIC, JOB_LACN_MARINE)
 

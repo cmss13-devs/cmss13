@@ -2166,10 +2166,12 @@
 /area/varadero/interior_protected/vessel)
 "agN" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/airlock_assembly{
+/obj/structure/prop/structure_lattice{
+	dir = 1;
+	icon = 'icons/obj/structures/doors/airlock_assembly.dmi';
 	icon_state = "assembly_hunter0"
 	},
-/turf/open/predship/mainfloor/upper/east,
+/turf/open/predship/mainfloor,
 /area/varadero/interior_protected/vessel)
 "agO" = (
 /obj/effect/decal/cleanable/dirt,
@@ -3198,6 +3200,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/predship/tile/red4,
 /area/varadero/interior_protected/vessel)
+"ajU" = (
+/obj/item/stack/catwalk,
+/obj/structure/machinery/light/dropship/green{
+	dir = 8
+	},
+/turf/open/gm/coast/west,
+/area/varadero/exterior/pontoon_beach)
 "ajV" = (
 /obj/item/stack/sheet/metal,
 /obj/structure/prop/hunter/catwalk/hunter_grille,
@@ -47410,12 +47419,6 @@
 /obj/effect/sentry_landmark/lz_2/top_left,
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz2_near)
-"cxH" = (
-/obj/structure/machinery/light/dropship/green{
-	dir = 8
-	},
-/turf/open/gm/coast/west,
-/area/varadero/exterior/pontoon_beach)
 "cxI" = (
 /obj/structure/stairs/perspective/kutjevo,
 /turf/open/floor/plating/bare_catwalk,
@@ -54487,7 +54490,8 @@
 "hTQ" = (
 /obj/structure/prop/structure_lattice{
 	dir = 1;
-	health = 300
+	icon = 'icons/obj/structures/doors/airlock_assembly.dmi';
+	icon_state = "assembly_hunter0"
 	},
 /turf/open/predship/mainfloor,
 /area/varadero/interior_protected/vessel)
@@ -94357,8 +94361,8 @@ qwQ
 bUf
 qwQ
 eGX
-coK
-cxH
+ajU
+hKK
 bQz
 xQJ
 uVR

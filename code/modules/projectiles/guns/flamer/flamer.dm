@@ -707,7 +707,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 						user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]. <b>Shooter:</b> [ADMIN_VERBOSEJMP(user)], <b>Victim:</b> [ADMIN_VERBOSEJMP(target_human)]"
 						if(weapon_cause_data.cause_name)
 							target_human.track_friendly_fire(weapon_cause_data.cause_name)
-						var/ff_msg = "[key_name(user)] shot [key_name(target_human)] with \a [name] in [ADMIN_VERBOSEJMP(user)] [ADMIN_JMP(user)] [ADMIN_PM(user)]"
+						var/ff_msg = "[key_name(user)] shot [key_name(target_human)] with \a [name]. [SPAN_BOLD("Shooter:")] [ADMIN_VERBOSEJMP(user)] [ADMIN_PM(user)], [SPAN_BOLD("Victim:")] [ADMIN_VERBOSEJMP(target_human)]."
 						var/ff_living = TRUE
 						if(target_human.stat == DEAD)
 							ff_living = FALSE
@@ -716,7 +716,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 					else
 						target_human.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]. <b>Shooter:</b> [ADMIN_VERBOSEJMP(user)], <b>Victim:</b> [ADMIN_VERBOSEJMP(target_human)]"
 						user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]. <b>Shooter:</b> [ADMIN_VERBOSEJMP(user)], <b>Victim:</b> [ADMIN_VERBOSEJMP(target_human)]"
-						msg_admin_attack("[key_name(user)] shot [key_name(target_human)] with \a [name] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+						msg_admin_attack("[key_name(user)] shot [key_name(target_human)] with \a [name]. Shooter: [AREACOORD(user)] Victim: [AREACOORD(target_human)]", user.loc.x, user.loc.y, user.loc.z)
 				if(weapon_cause_data.cause_name)
 					target_human.track_shot_hit(weapon_cause_data.cause_name, target_human)
 

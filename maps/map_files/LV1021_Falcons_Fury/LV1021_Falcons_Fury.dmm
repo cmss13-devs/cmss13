@@ -7308,15 +7308,6 @@
 	},
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv1021/indoors/caves/cave_north)
-"arp" = (
-/obj/structure/flora/bush/ausbushes/var3/leafybush,
-/obj/effect/decal/strata_decals/mud_corner,
-/turf/open/auto_turf/tyrargo_grass/layer1,
-/area/lv1021/outdoors/jungle/jungleC_mid)
-"arq" = (
-/obj/effect/decal/strata_decals/mud_corner,
-/turf/open/auto_turf/tyrargo_grass/layer1,
-/area/lv1021/outdoors/jungle/jungleC_mid)
 "arr" = (
 /obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -7337,12 +7328,6 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_clf_e)
-"aru" = (
-/obj/effect/decal/strata_decals/mud_corner{
-	dir = 4
-	},
-/turf/open/auto_turf/tyrargo_grass/layer1,
-/area/lv1021/outdoors/jungle/jungleC_mid)
 "arv" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
 	dir = 8
@@ -7436,9 +7421,6 @@
 /area/lv1021/indoors/caves/cave_north)
 "arG" = (
 /obj/structure/flora/wood/stick1,
-/obj/effect/decal/strata_decals/mud_corner{
-	dir = 4
-	},
 /obj/structure/machinery/defenses/sentry/premade/clf,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
@@ -7468,16 +7450,6 @@
 	},
 /turf/open/floor/kutjevo/fake_wood,
 /area/lv1021/indoors/caves/clf_tunnel)
-"arK" = (
-/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
-	pixel_x = -7;
-	pixel_y = 11
-	},
-/obj/effect/decal/strata_decals/mud_corner{
-	dir = 1
-	},
-/turf/open/auto_turf/tyrargo_grass/layer1,
-/area/lv1021/outdoors/jungle/jungleC_clf_n)
 "arL" = (
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 6
@@ -7547,16 +7519,6 @@
 	},
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv1021/indoors/caves/cave_north)
-"arU" = (
-/obj/effect/decal/strata_decals/mud_corner{
-	dir = 6
-	},
-/turf/open/auto_turf/tyrargo_grass/layer1,
-/area/lv1021/outdoors/jungle/jungleC_clf_n)
-"arV" = (
-/obj/effect/decal/strata_decals/mud_corner,
-/turf/open/auto_turf/tyrargo_grass/layer1,
-/area/lv1021/outdoors/jungle/jungleC_clf_n)
 "arW" = (
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 9
@@ -7642,16 +7604,6 @@
 	},
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv1021/indoors/caves/cave_north)
-"asg" = (
-/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
-	pixel_x = -7;
-	pixel_y = 11
-	},
-/obj/effect/decal/strata_decals/mud_corner{
-	dir = 4
-	},
-/turf/open/auto_turf/tyrargo_grass/layer1,
-/area/lv1021/outdoors/jungle/jungleC_clf_n)
 "ash" = (
 /obj/structure/flora/jungle/planttop1,
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -23488,16 +23440,6 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleW_north)
-"bec" = (
-/obj/effect/decal/strata_decals/mud_corner{
-	dir = 1
-	},
-/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
-	pixel_x = 5;
-	pixel_y = 9
-	},
-/turf/open/auto_turf/tyrargo_grass/layer1,
-/area/lv1021/outdoors/jungle/jungleC_clf_n)
 "bed" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -8;
@@ -31645,9 +31587,6 @@
 	closed = 0;
 	density = 1
 	},
-/obj/effect/decal/strata_decals/mud_corner{
-	dir = 5
-	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
 "iPv" = (
@@ -39209,13 +39148,6 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/oob)
-"twv" = (
-/obj/effect/decal/cleanable/dirt/alt_dirt/stain{
-	pixel_x = 16
-	},
-/obj/structure/flora/jungle/vines/heavy,
-/turf/closed/wall/strata_ice/rock,
-/area/lv1021/oob)
 "twY" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/reagent_container/food/snacks/meat/fish/salmon,
@@ -41932,14 +41864,6 @@
 	},
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/east_river)
-"xrG" = (
-/obj/effect/decal/cleanable/dirt/alt_dirt/stain{
-	pixel_y = -16;
-	pixel_x = -1
-	},
-/obj/structure/flora/jungle/vines/heavy,
-/turf/closed/wall/strata_ice/rock,
-/area/lv1021/oob)
 "xsa" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -2;
@@ -47000,27 +46924,27 @@ hXu
 hXu
 hXu
 hXu
-mqH
-mqH
-rGT
-rGT
-rGT
-rGT
+hXu
+hXu
+hXu
+hXu
+hXu
+hXu
 hci
-rGT
 hXu
 hXu
 hXu
 hXu
-mqH
+hXu
+hXu
 vjt
-mqH
+hXu
 wzQ
 wzQ
 wzQ
 bhB
-xwH
-twv
+wzQ
+wzQ
 sHs
 sHs
 sHs
@@ -47166,7 +47090,7 @@ hXu
 hXu
 hXu
 hXu
-mqH
+hXu
 vjt
 sHd
 sHs
@@ -47175,18 +47099,18 @@ ngX
 sHs
 hci
 hci
-mqH
-mqH
-mqH
+hXu
+hXu
+hXu
 vjt
 vjt
 vjt
 vjt
-mqH
+hXu
 hXu
 wzQ
-xwH
-xrG
+wzQ
+wzQ
 siz
 qjK
 xCQ
@@ -47332,7 +47256,7 @@ hXu
 hXu
 hXu
 hXu
-mqH
+hXu
 vjt
 vjt
 xXU
@@ -47350,9 +47274,9 @@ aZy
 aZy
 aZy
 xXU
-mqH
 hXu
-mqH
+hXu
+hXu
 jex
 shD
 rFz
@@ -47498,7 +47422,7 @@ hXu
 hXu
 hXu
 hXu
-mqH
+hXu
 vjt
 vjt
 xXU
@@ -47664,7 +47588,7 @@ hXu
 hXu
 hXu
 hXu
-mqH
+hXu
 vjt
 vjt
 xXU
@@ -47701,7 +47625,7 @@ aSu
 aSv
 aSv
 hXu
-qfe
+hXu
 hXu
 anN
 qBg
@@ -47830,7 +47754,7 @@ hXu
 hXu
 hXu
 hXu
-mqH
+hXu
 vjt
 vjt
 xXU
@@ -47866,10 +47790,10 @@ aSy
 aSy
 aSu
 aSu
-rGT
 hXu
 hXu
-qfe
+hXu
+hXu
 qBg
 qBg
 kFf
@@ -47997,7 +47921,7 @@ hXu
 hXu
 hXu
 hXu
-mqH
+hXu
 vjt
 xXU
 iMl
@@ -48163,7 +48087,7 @@ hXu
 hXu
 hXu
 hXu
-mqH
+hXu
 oxU
 xXU
 sHs
@@ -48200,7 +48124,7 @@ aSy
 aSy
 aSy
 aSA
-nCY
+hXu
 hXu
 hXu
 qBg
@@ -48368,9 +48292,9 @@ aSy
 aSy
 moy
 iHO
-mqH
 hXu
-qfe
+hXu
+hXu
 nTW
 opF
 opF
@@ -48497,8 +48421,8 @@ hXu
 hXu
 hXu
 hXu
-mqH
-mqH
+hXu
+hXu
 hci
 sHs
 ocT
@@ -48535,10 +48459,10 @@ aSy
 aSH
 moy
 aSp
-nCY
 hXu
 hXu
-qfe
+hXu
+hXu
 nTW
 nTW
 opF
@@ -48665,7 +48589,7 @@ hXu
 hXu
 hXu
 hXu
-mqH
+hXu
 bNe
 sHs
 sHs
@@ -48703,7 +48627,7 @@ aSy
 moy
 aSp
 iHO
-mqH
+hXu
 hXu
 hXu
 qfe
@@ -48832,7 +48756,7 @@ hXu
 hXu
 hXu
 hXu
-rGT
+hXu
 sHs
 sHs
 xCQ
@@ -48870,7 +48794,7 @@ aSI
 moy
 iHO
 aSp
-nCY
+hXu
 hXu
 hXu
 hXu
@@ -48998,7 +48922,7 @@ hXu
 hXu
 hXu
 hXu
-rGT
+hXu
 sHs
 eBI
 sHs
@@ -49036,7 +48960,7 @@ aSy
 aSy
 moy
 aSp
-mqH
+hXu
 hXu
 hXu
 hXu
@@ -49165,7 +49089,7 @@ hXu
 hXu
 hXu
 hXu
-rGT
+hXu
 sHs
 sHs
 sHs
@@ -49331,7 +49255,7 @@ hXu
 hXu
 hXu
 hXu
-rGT
+hXu
 sHs
 sHs
 iMl
@@ -49370,7 +49294,7 @@ aSy
 aSA
 aSp
 aSp
-mqH
+hXu
 hXu
 hXu
 hXu
@@ -49497,8 +49421,8 @@ hXu
 hXu
 hXu
 hXu
-mqH
-mqH
+hXu
+hXu
 sHs
 sHs
 sHs
@@ -49536,8 +49460,8 @@ aSy
 aSA
 iHO
 aSB
-mqH
-mqH
+hXu
+hXu
 hXu
 hXu
 hXu
@@ -49664,7 +49588,7 @@ hXu
 hXu
 hXu
 hXu
-mqH
+hXu
 hci
 sHs
 qNU
@@ -49702,7 +49626,7 @@ aSy
 aSy
 hXu
 hXu
-mqH
+hXu
 hXu
 hXu
 hXu
@@ -49831,7 +49755,7 @@ hXu
 hXu
 hXu
 hXu
-mqH
+hXu
 hci
 hci
 sHs
@@ -49866,8 +49790,8 @@ xCQ
 xCQ
 xCQ
 aSy
-mqH
-rGT
+hXu
+hXu
 hXu
 hXu
 hXu
@@ -49999,7 +49923,7 @@ hXu
 hXu
 hXu
 hXu
-mqH
+hXu
 hci
 sHs
 ocT
@@ -50033,8 +49957,8 @@ xCQ
 sHs
 eww
 aSZ
-mqH
-rGT
+hXu
+hXu
 hXu
 hXu
 hXu
@@ -50166,7 +50090,7 @@ hXu
 hXu
 hXu
 hXu
-rGT
+hXu
 sHs
 sHs
 dhk
@@ -50201,7 +50125,7 @@ ocT
 pHs
 aTa
 tlW
-mqH
+hXu
 hXu
 hXu
 hXu
@@ -50334,7 +50258,7 @@ hXu
 hXu
 hXu
 hXu
-mqH
+hXu
 gjD
 sHs
 gyb
@@ -50368,7 +50292,7 @@ sHs
 glF
 aoo
 aSu
-mqH
+hXu
 hXu
 hXu
 hXu
@@ -50501,7 +50425,7 @@ hXu
 hXu
 hXu
 hXu
-mqH
+hXu
 sHs
 sHs
 sHs
@@ -50535,8 +50459,8 @@ tMZ
 rxv
 aSy
 aSy
-mqH
-rGT
+hXu
+hXu
 hXu
 hXu
 hXu
@@ -50669,7 +50593,7 @@ hXu
 hXu
 hXu
 hXu
-mqH
+hXu
 sHs
 lEi
 sHs
@@ -50704,8 +50628,8 @@ aSy
 aSy
 aSG
 oYn
-rGT
-rGT
+hXu
+hXu
 hXu
 anN
 anO
@@ -50836,7 +50760,7 @@ hXu
 hXu
 hXu
 hXu
-rGT
+hXu
 hXu
 sHs
 sHs
@@ -51005,7 +50929,7 @@ hXu
 hXu
 hXu
 hXu
-rGT
+hXu
 hci
 hci
 hci
@@ -51173,8 +51097,8 @@ hXu
 hXu
 hXu
 hXu
-rGT
-mqH
+hXu
+hXu
 hci
 hci
 hci
@@ -51342,7 +51266,7 @@ hXu
 hXu
 hXu
 hXu
-mqH
+hXu
 qGB
 sHs
 sHs
@@ -51509,7 +51433,7 @@ hXu
 hXu
 hXu
 hXu
-mqH
+hXu
 hci
 sHs
 sHs
@@ -51523,7 +51447,7 @@ sHs
 xCQ
 pHs
 siz
-mqH
+hXu
 hXu
 aSy
 sYo
@@ -51677,7 +51601,7 @@ hXu
 hXu
 hXu
 hXu
-mqH
+hXu
 aSy
 fgU
 aSy
@@ -51689,8 +51613,8 @@ aSy
 aSu
 ver
 aTw
-mqH
-mqH
+hXu
+hXu
 hXu
 bif
 bif
@@ -51855,18 +51779,18 @@ aSy
 aSy
 aSy
 aSy
-mqH
 hXu
-rGT
-mqH
-mqH
-rGT
+hXu
+hXu
+hXu
+hXu
+hXu
 xws
 bhU
 jjw
 oMy
 nJk
-mqH
+hXu
 hXu
 hXu
 anN
@@ -52022,7 +51946,7 @@ aSy
 aSo
 aSo
 aSy
-mqH
+hXu
 hXu
 bif
 bif
@@ -52032,7 +51956,7 @@ bhU
 mgs
 bEV
 ows
-rGT
+hXu
 hXu
 hXu
 hXu
@@ -52344,7 +52268,7 @@ hXu
 hXu
 hXu
 hXu
-nCY
+hXu
 aTB
 oYn
 aSy
@@ -52510,8 +52434,8 @@ hXu
 hXu
 hXu
 hXu
-nCY
-mqH
+hXu
+hXu
 koH
 bQs
 pRJ
@@ -52677,21 +52601,21 @@ hXu
 hXu
 hXu
 hXu
-mqH
+hXu
 koH
 oXt
 aSo
 koH
 oYn
-rGT
-rGT
-rGT
+hXu
+hXu
+hXu
 oYn
 pRJ
 oYn
 hXu
 hXu
-rGT
+hXu
 biQ
 biN
 biJ
@@ -52845,14 +52769,14 @@ hXu
 hXu
 hXu
 hXu
-mqH
+hXu
 aSi
 aSi
 aSi
 uFv
 qBg
-mqH
-mqH
+hXu
+hXu
 anN
 anO
 anO
@@ -56474,7 +56398,7 @@ hXu
 hXu
 hXu
 hXu
-mqH
+hXu
 aMY
 ano
 ano
@@ -56483,10 +56407,10 @@ aMZ
 aMY
 ano
 aMY
-rGT
 hXu
 hXu
-rGT
+hXu
+hXu
 hXu
 hXu
 hXu
@@ -56641,7 +56565,7 @@ hXu
 hXu
 hXu
 hXu
-mqH
+hXu
 ano
 aMY
 aMY
@@ -56650,9 +56574,9 @@ ano
 abN
 aec
 aMY
-mqH
 hXu
-mqH
+hXu
+hXu
 hXu
 hXu
 hXu
@@ -56885,7 +56809,7 @@ ipG
 pWL
 hhB
 dAh
-arU
+mxN
 dpa
 hXu
 hXu
@@ -57052,7 +56976,7 @@ dGg
 dGg
 dGg
 rDj
-arV
+mxN
 mxN
 hXu
 mqH
@@ -57139,7 +57063,7 @@ hXu
 hXu
 hXu
 hXu
-mqH
+hXu
 ano
 aMZ
 aMZ
@@ -57218,9 +57142,9 @@ arW
 mcr
 asw
 aso
-asg
+lJT
 ccR
-arK
+lJT
 xfx
 fgG
 cKP
@@ -57323,7 +57247,7 @@ aMZ
 abN
 aQB
 aQA
-mqH
+hXu
 hXu
 hXu
 hXu
@@ -57387,11 +57311,11 @@ apX
 bej
 bdC
 bee
-bec
+bdC
 oSt
 yiJ
 cch
-arp
+jty
 mvR
 roH
 mvR
@@ -57558,7 +57482,7 @@ bed
 arG
 iOI
 aNV
-arq
+mvR
 mvR
 byI
 mvR
@@ -57634,8 +57558,8 @@ hXu
 hXu
 hXu
 hXu
-rGT
-rGT
+hXu
+hXu
 aQW
 aQA
 aQV
@@ -57724,7 +57648,7 @@ lkt
 dGg
 apX
 mNm
-aru
+mvR
 mvR
 qfe
 pSo
@@ -57797,10 +57721,10 @@ hXu
 hXu
 hXu
 hXu
-rGT
-rGT
-rGT
-rGT
+hXu
+hXu
+hXu
+hXu
 abR
 abR
 abR
@@ -57961,8 +57885,8 @@ hXu
 hXu
 hXu
 hXu
-rGT
-rGT
+hXu
+hXu
 aMZ
 aMZ
 aQF
@@ -58126,9 +58050,9 @@ hXu
 hXu
 hXu
 hXu
-rGT
-rGT
-rGT
+hXu
+hXu
+hXu
 aMZ
 aMZ
 aQF
@@ -58293,7 +58217,7 @@ hXu
 hXu
 hXu
 hXu
-rGT
+hXu
 ahG
 aRb
 aMZ
@@ -58460,7 +58384,7 @@ hXu
 hXu
 aQF
 aQY
-rGT
+hXu
 ano
 aMZ
 abN
@@ -58804,7 +58728,7 @@ abN
 abN
 aQF
 aQF
-rGT
+hXu
 hXu
 hXu
 hXu
@@ -58826,7 +58750,7 @@ dBC
 dBC
 dBC
 wzQ
-xwH
+wzQ
 wzQ
 wzQ
 wzQ
@@ -58969,9 +58893,9 @@ abN
 abN
 aMZ
 aMZ
-rGT
 hXu
-rGT
+hXu
+hXu
 hXu
 hXu
 hXu
@@ -59124,7 +59048,7 @@ hXu
 hXu
 hXu
 hXu
-rGT
+hXu
 aQF
 aQO
 ahT
@@ -59135,12 +59059,12 @@ abN
 abN
 ahh
 aMZ
-rGT
 hXu
 hXu
 hXu
 hXu
-rGT
+hXu
+hXu
 hXu
 acJ
 acJ
@@ -59291,7 +59215,7 @@ hXu
 hXu
 hXu
 hXu
-rGT
+hXu
 aQF
 aQO
 abN
@@ -59305,8 +59229,8 @@ aMZ
 aif
 hXu
 hXu
-rGT
-rGT
+hXu
+hXu
 dBC
 aaf
 dBC
@@ -59457,9 +59381,9 @@ hXu
 hXu
 hXu
 hXu
-rGT
 hXu
-rGT
+hXu
+hXu
 aib
 abN
 ahh
@@ -59791,7 +59715,7 @@ hXu
 hXu
 hXu
 hXu
-rGT
+hXu
 aMZ
 aQQ
 aid
@@ -59957,7 +59881,7 @@ hXu
 hXu
 hXu
 hXu
-mqH
+hXu
 ano
 abN
 aid
@@ -60124,7 +60048,7 @@ ajE
 hXu
 hXu
 hXu
-rGT
+hXu
 aMY
 aQL
 ail
@@ -60134,7 +60058,7 @@ abN
 ahI
 hXu
 hXu
-rGT
+hXu
 aWK
 acH
 afk
@@ -60290,8 +60214,8 @@ ajU
 hbP
 hbP
 ann
-mqH
-rGT
+hXu
+hXu
 aif
 aiC
 aim
@@ -60299,9 +60223,9 @@ aig
 aQL
 ahQ
 aQA
-rGT
 hXu
-rGT
+hXu
+hXu
 acH
 afR
 aum
@@ -60329,7 +60253,7 @@ acX
 acX
 adb
 dBC
-acE
+wzQ
 wzQ
 wzQ
 wzQ
@@ -60458,17 +60382,17 @@ hbP
 ajl
 ann
 aMY
-rGT
+hXu
 aQF
 aMZ
 ain
 aQL
 aec
 ahR
-rGT
 hXu
 hXu
-rGT
+hXu
+hXu
 afk
 aum
 aum
@@ -60631,11 +60555,11 @@ aiD
 abN
 aid
 ahU
-mqH
 hXu
 hXu
 hXu
-rGT
+hXu
+hXu
 aes
 aum
 aeE
@@ -60802,7 +60726,7 @@ aRe
 hXu
 hXu
 hXu
-rGT
+hXu
 agz
 aeE
 agK
@@ -60830,7 +60754,7 @@ aum
 tCf
 acS
 aum
-acE
+wzQ
 wzQ
 wzQ
 wzQ
@@ -61135,7 +61059,7 @@ aum
 hXu
 hXu
 hXu
-rGT
+hXu
 dBC
 dBC
 agX
@@ -61300,8 +61224,8 @@ aio
 abN
 dBC
 dBC
-rGT
-rGT
+hXu
+hXu
 aaf
 dBC
 aeE
@@ -61332,7 +61256,7 @@ aum
 lsO
 acS
 aum
-acE
+wzQ
 wzQ
 wzQ
 wzQ
@@ -61468,7 +61392,7 @@ aRg
 dBC
 dBC
 dBC
-rGT
+hXu
 dBC
 dBC
 aeE
@@ -61499,7 +61423,7 @@ adn
 aum
 acS
 acL
-acE
+wzQ
 wzQ
 wzQ
 wzQ
@@ -61666,7 +61590,7 @@ aum
 aum
 acS
 aum
-acE
+wzQ
 wzQ
 wzQ
 wzQ

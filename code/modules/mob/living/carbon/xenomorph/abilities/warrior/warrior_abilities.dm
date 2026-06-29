@@ -40,3 +40,56 @@
 	var/base_punch_damage_synth = 30
 	var/base_punch_damage_pred = 25
 	var/damage_variance = 5
+
+///Bulwark Strain
+
+/datum/action/xeno_action/onclick/toggle_plates
+	name = "Toggle Encasing Plates"
+	action_icon_state = "encased_plates"
+	macro_path = /datum/action/xeno_action/verb/verb_toggle_plates
+	action_type = XENO_ACTION_ACTIVATE
+	xeno_cooldown = 1 SECONDS
+	ability_primacy = XENO_PRIMARY_ACTION_1
+
+	var/speed_debuff = 1.35
+
+/datum/action/xeno_action/activable/plate_bash
+	name = "Plate Bash"
+	action_icon_state = "plate_bash"
+	macro_path = /datum/action/xeno_action/verb/verb_plate_bash
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_2
+	xeno_cooldown = 4 SECONDS
+
+	var/base_damage = 20
+
+/datum/action/xeno_action/onclick/tail_swing
+	name = "Tail Swing"
+	action_icon_state = "tail_swing"
+	macro_path = /datum/action/xeno_action/verb/verb_tail_swing
+	action_type = XENO_ACTION_ACTIVATE
+	ability_primacy = XENO_PRIMARY_ACTION_3
+	plasma_cost = 20
+	xeno_cooldown = 10 SECONDS
+
+	var/swing_range = 1
+
+/datum/action/xeno_action/onclick/reflective_shield
+	name = "Reflective Shield"
+	action_icon_state = "reflective_shield"
+	macro_path = /datum/action/xeno_action/verb/verb_reflective_shield
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_4
+
+	/// used to calculate reflective plates refunding.
+	var/duration = BULWARK_REFLECTIVE_TIME
+	/// reflective plates addtimer ID (for deletion)
+	var/reflective_shield_timer_id = TIMER_ID_NULL
+	/// Used to countdown BULWARK_REFLECTIVE_TIME.
+	var/reflective_start_time = -1
+	/// How much refund we want to get back? 1 is 1s used to 1s cooldown, 2 is 1s used 2s cooldown.
+	var/reflective_refund_multiplier = 2
+	/// Used in calculation, finalized number will be displayed as cooldown.
+	var/reflective_recharge_time = null
+	/// Cooldown after activation to prevent accidental double click.
+	var/reflective_safe_click_cooldown = 0

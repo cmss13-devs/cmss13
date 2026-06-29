@@ -1943,10 +1943,6 @@
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
 	},
-/obj/item/storage/box/clf{
-	pixel_x = 8;
-	pixel_y = 1
-	},
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/central)
 "Gh" = (
@@ -2630,6 +2626,7 @@
 	pixel_x = 8;
 	pixel_y = 10
 	},
+/obj/item/weapon/gun/rifle/mar40/carbine,
 /turf/open/shuttle/dropship/medium_grey_single_wide_left_to_right,
 /area/caperiver/indoors/clf_dropship)
 "SO" = (

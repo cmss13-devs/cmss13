@@ -182,9 +182,9 @@ export const TicketPanel = (props) => {
               </Stack>
             </Section>
           </Stack.Item>
-          <Stack.Item grow>
+          <Stack.Item grow basis={0}>
             <Stack fill>
-              <Stack.Item width="300px">
+              <Stack.Item width="300px" style={{ display: 'flex', flexDirection: 'column' }}>
                 <Tabs vertical>
                   {data.is_admin ? (
                     <Tabs.Tab
@@ -207,7 +207,11 @@ export const TicketPanel = (props) => {
                 </Tabs>
 
                 <Box
-                  style={{ height: 'calc(100vh - 100px)', overflowY: 'auto' }}
+                  style={{
+                    flexGrow: '1',
+                    minHeight: '0',
+                    overflowY: 'auto',
+                  }}
                 >
                   <Stack vertical>
                     <Section
@@ -427,11 +431,15 @@ export const TicketPanel = (props) => {
 
               <Stack.Divider />
 
-              <Stack.Item grow={1}>
+              <Stack.Item grow basis={0} style={{ display: 'flex', flexDirection: 'column' }}>
                 {selectedTicketData ? (
-                  <Section
-                    title={`${selectedTicketData.is_archived ? '[ARCHIVED] ' : ''}Ticket #${selectedTicketData.id} ${selectedTicketData.subject ? ': ' + decodeHtmlEntities(selectedTicketData.subject) : ''}`}
-                    buttons={
+                  <Stack fill vertical>
+                    <Stack.Item grow basis={0} position="relative">
+                      <Section
+                        fill
+                        scrollable
+                        title={`${selectedTicketData.is_archived ? '[ARCHIVED] ' : ''}Ticket #${selectedTicketData.id} ${selectedTicketData.subject ? ': ' + decodeHtmlEntities(selectedTicketData.subject) : ''}`}
+                        buttons={
                       !selectedTicketData.is_archived ? (
                         <>
                           <Button
@@ -520,7 +528,7 @@ export const TicketPanel = (props) => {
                       )
                     }
                   >
-                    <LabeledList>
+                        <LabeledList>
                       {selectedTicketData.subject ? (
                         <LabeledList.Item label="Subject">
                           <Box as="span" color="good">
@@ -583,7 +591,7 @@ export const TicketPanel = (props) => {
                           {decodeHtmlEntities(selectedTicketData.message)}
                         </Box>
                       </LabeledList.Item>
-                    </LabeledList>
+                        </LabeledList>
 
                     {(selectedTicketData.all_responses?.length ?? 0) > 0 && (
                       <Section
@@ -594,8 +602,6 @@ export const TicketPanel = (props) => {
                         <Box
                           mt={2}
                           style={{
-                            maxHeight: '420px',
-                            overflowY: 'auto',
                             overflowX: 'hidden',
                             padding: '0.5em',
                           }}
@@ -654,7 +660,11 @@ export const TicketPanel = (props) => {
                         </Box>
                       </Section>
                     )}
-                    {!selectedTicketData.is_archived ? (
+                      </Section>
+                    </Stack.Item>
+                    <Stack.Item>
+                      <Box mt={1}>
+                        {!selectedTicketData.is_archived ? (
                       <Stack vertical>
                         <Stack.Item>
                           <Button
@@ -723,7 +733,9 @@ export const TicketPanel = (props) => {
                         </Button>
                       </>
                     )}
-                  </Section>
+                      </Box>
+                    </Stack.Item>
+                  </Stack>
                 ) : (
                   <Section fill textAlign="center" align="center">
                     <Box fontSize="1.2em" color="label">

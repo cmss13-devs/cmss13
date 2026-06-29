@@ -28564,10 +28564,6 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/sekhmet/int_reg/southwest_complex)
-"odx" = (
-/obj/structure/closet/firecloset,
-/turf/open/floor/strata/floor3,
-/area/sekhmet/int_reg/military_hangar)
 "odC" = (
 /obj/structure/prop/swamp_plants/algae/corner2/south_east{
 	pixel_y = -5
@@ -89347,7 +89343,7 @@ vas
 nUz
 nUz
 efi
-odx
+ouG
 iwf
 jVv
 wlD

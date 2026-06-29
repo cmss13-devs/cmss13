@@ -404,13 +404,15 @@
 	var/deploy_time = 0
 	var/mine_state = ""
 	var/mine_mode = ""
-	var/timer_id
+	var/setup_timer // initialized in sharp.dm drop_dart
+	var/upgrade_timer // used here
+	var/disarm_timer // initialized in sharp.dm drop_dart
 
 /obj/item/explosive/mine/sharp/proc/upgrade_mine()
 	mine_level++
 	icon_state = mine_state + "_[mine_level]"
 	if(mine_level < 4)
-		timer_id = addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/item/explosive/mine/sharp, upgrade_mine)), 30 SECONDS, TIMER_DELETE_ME | TIMER_STOPPABLE)
+		upgrade_timer = addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/item/explosive/mine/sharp, upgrade_mine)), 30 SECONDS, TIMER_DELETE_ME | TIMER_STOPPABLE)
 
 /obj/item/explosive/mine/sharp/proc/set_mine_mode(mode)
 	mine_mode = mode
@@ -512,7 +514,8 @@
 	desc = "A disarmed P9 SHARP rifle dart. With the right training, it can potentially be rearmed with a security access tuner."
 	QDEL_NULL(tripwire)
 	disarmed = TRUE
-	deltimer(timer_id)
+	deltimer(upgrade_timer)
+	deltimer(disarm_timer)
 	playsound(src, 'sound/weapons/smartgun_fail.ogg', src, 25)
 
 /obj/item/explosive/mine/sharp/proc/rearm(mob/user)
@@ -520,6 +523,7 @@
 	mine_level = 1
 	desc = "An experimental P9 SHARP proximity triggered explosive dart designed by Armat Systems for use by the United States Colonial Marines. This one has full 360 detection range."
 	deploy_mine(user)
+	disarm_timer = addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/item/explosive/mine/sharp, disarm)), 5 MINUTES, TIMER_DELETE_ME | TIMER_STOPPABLE)
 
 /obj/item/explosive/mine/sharp/attack_self(mob/living/user)
 	if(disarmed)
@@ -540,7 +544,7 @@
 	update_icon()
 	deploy_time = world.time
 	mine_state = icon_state
-	timer_id = addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/item/explosive/mine/sharp, upgrade_mine)), 30 SECONDS, TIMER_DELETE_ME | TIMER_STOPPABLE)
+	upgrade_timer = addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/item/explosive/mine/sharp, upgrade_mine)), 30 SECONDS, TIMER_DELETE_ME | TIMER_STOPPABLE)
 	anchored = TRUE
 	for(var/mob/living/carbon/mob in range(1, src))
 		try_to_prime(mob)

@@ -2169,7 +2169,9 @@
 /obj/structure/prop/structure_lattice{
 	dir = 1;
 	icon = 'icons/obj/structures/doors/airlock_assembly.dmi';
-	icon_state = "assembly_hunter0"
+	icon_state = "assembly_hunter0";
+	name = "broken airlock";
+	desc = "It opens and closes. at least it used to...."
 	},
 /turf/open/predship/mainfloor,
 /area/varadero/interior_protected/vessel)
@@ -5786,6 +5788,15 @@
 /obj/item/lightstick/variant/planted,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/monsoon)
+"arS" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/obj/structure/prop/ice_colony/soil_net{
+	name = "aquatic barrier mesh";
+	desc = "A now free floating mesh loosely anchored to the ground below, typically these should be orintated vertically..."
+	},
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/farocean)
 "arT" = (
 /obj/item/tool/pickaxe,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -47633,10 +47644,6 @@
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
 	layer = 3.5
 	},
-/obj/structure/prop/ice_colony/soil_net{
-	name = "aquatic barrier mesh";
-	desc = "A now free floating mesh loosely anchored to the ground below, typically these should be orintated vertically..."
-	},
 /turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/farocean)
 "cyh" = (
@@ -54491,7 +54498,9 @@
 /obj/structure/prop/structure_lattice{
 	dir = 1;
 	icon = 'icons/obj/structures/doors/airlock_assembly.dmi';
-	icon_state = "assembly_hunter0"
+	icon_state = "assembly_hunter0";
+	name = "broken airlock";
+	desc = "It opens and closes. at least it used to...."
 	},
 /turf/open/predship/mainfloor,
 /area/varadero/interior_protected/vessel)
@@ -105351,7 +105360,7 @@ cuj
 coo
 btm
 btm
-xVw
+arS
 ciD
 chb
 cgK
@@ -105533,12 +105542,12 @@ pRa
 mPk
 cnt
 byt
-byt
+mPk
 byt
 mPk
 mPk
 btm
-cdh
+cyw
 bGh
 byC
 aNn

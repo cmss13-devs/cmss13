@@ -56,15 +56,18 @@
 		location_suffix = SPAN_PREFIX(" [SPAN_ADMIN_BLUE("(GROUNDSIDE)")]")
 
 	var/rendered = SPAN_COMBAT("[SPAN_PREFIX("ATTACK:")] ")
+	var/text_holder
 	if(alive)
-		rendered += SPAN_FF_ALIVE("[SPAN_MESSAGE("[text]")]")
+		text_holder = "[SPAN_MESSAGE("[text]")]"
 	else
-		rendered += SPAN_FF_DEAD("///DEAD/// - [SPAN_MESSAGE("[text]")]")
+		text_holder = "///DEAD/// - [SPAN_MESSAGE("[text]")]"
 	rendered += location_suffix
-	for(var/client/C as anything in GLOB.admins)
-		if(C && C.admin_holder && (R_MOD & C.admin_holder.rights))
-			if(C.prefs.toggles_chat & CHAT_FFATTACKLOGS)
-				to_chat(C, rendered)
+	for(var/client/admin_client as anything in GLOB.admins)
+		if(admin_client && admin_client.admin_holder && (R_MOD & admin_client.admin_holder.rights))
+			var/datum/preferences/admin_prefs = admin_client.prefs
+			if(admin_prefs.toggles_chat & CHAT_FFATTACKLOGS)
+				rendered += "<font color=[alive ? admin_prefs.ff_log_color : admin_prefs.ffd_log_color]><b>[text_holder]</b></font>[location_suffix]"
+				to_chat(admin_client, rendered)
 
 ///////////////////////////////////////////////////////////////////////////////////////////////Panels
 

@@ -1,0 +1,7 @@
+author: "Wabberspace"
+delete-after: True
+changes:
+  - rscadd: "DNA-disintegrating's xeno-transformation-disease now takes less time to reach the final stage, and accounts for instances of ciphering within the host's body."
+  - rscadd: "the Xeno-Transformation disease now removes your ability to speak anything but xenomorph-ese!"
+  - qol: "Xeno-Transformation disease progression is now no longer hidden, and can be tracked freely using scanners. Furthermore, XT disease stages are incremented linearly, and reaching stage 5 will take a lot less time."
+  - code_imp: "refactors prop_special.dm to not use single letter variable definitions"

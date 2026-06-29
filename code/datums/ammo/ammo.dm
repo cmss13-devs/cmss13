@@ -80,6 +80,7 @@
 	var/handful_state = "bullet"
 	/// so handfuls say 'buckshot shells' not 'shell'
 	var/multiple_handful_name
+	var/handful_max_rounds
 
 	/// Does this apply xenomorph behaviour delegate?
 	var/apply_delegate = TRUE

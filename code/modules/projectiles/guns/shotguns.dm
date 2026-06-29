@@ -139,9 +139,9 @@ can cause issues with ammo types getting mixed up during the burst.
 		//this is the most resource efficient way to do it.
 		// what the hell are you talking about cm dev
 /obj/item/weapon/gun/shotgun/proc/retrieve_shell(selection)
-	var/datum/ammo/A = GLOB.ammo_list[selection]
-	var/obj/item/ammo_magazine/handful/new_handful = new A.handful_type()
-	new_handful.generate_handful(selection, gauge, 5, 1, /obj/item/weapon/gun/shotgun)
+	var/datum/ammo/ammo_type = GLOB.ammo_list[selection]
+	var/obj/item/ammo_magazine/handful/new_handful = new ammo_type.handful_type()
+	new_handful.generate_handful(selection, gauge, ammo_type.handful_max_rounds, 1, /obj/item/weapon/gun/shotgun)
 	return new_handful
 
 /obj/item/weapon/gun/shotgun/proc/check_chamber_position()

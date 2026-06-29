@@ -1,0 +1,4 @@
+author: "AmoryBlaine, Detective-Google"
+delete-after: True
+changes:
+  - imageadd: "surplus uniform vendors have a unique sprite now"

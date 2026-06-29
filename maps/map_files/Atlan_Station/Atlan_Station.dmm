@@ -107,9 +107,22 @@
 /obj/effect/landmark/structure_spawner/spore_sac_rng,
 /turf/open/floor/plating/prison,
 /area/atlan/asteroid/processing_caves)
+"aaw" = (
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	icon_state = "p_stair_sn_full_cap"
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/atlan/asteroid/exports_east)
 "aax" = (
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/atlan/station/double_dorms)
+"aay" = (
+/turf/open/floor/strata,
+/area/atlan/oob)
+"aaz" = (
+/turf/open/floor/strata/multi_tiles,
+/area/atlan/station/medical)
 "aaE" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
@@ -1353,7 +1366,7 @@
 	},
 /obj/structure/platform/metal/strata,
 /obj/structure/machinery/light/double/blue,
-/turf/open/floor/strata/multi_tiles,
+/turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/medical)
 "aTG" = (
 /obj/structure/machinery/camera/autoname{
@@ -1820,7 +1833,7 @@
 /obj/structure/cargo_container/ferret/right{
 	layer = 4
 	},
-/turf/open/space/basic,
+/turf/open/floor/strata/floor2,
 /area/atlan/asteroid/exports_west)
 "bma" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -1914,7 +1927,7 @@
 	color = "#6e6e6e";
 	icon_state = "p_stair_sn_full_cap"
 	},
-/turf/open/floor/strata,
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/walkway)
 "bpj" = (
 /obj/structure/machinery/light,
@@ -2771,7 +2784,7 @@
 /obj/structure/cargo_container/ferret/mid{
 	layer = 4
 	},
-/turf/open/space/basic,
+/turf/open/floor/strata/floor2,
 /area/atlan/asteroid/exports_west)
 "bYc" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -5202,7 +5215,7 @@
 	dir = 4;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/asteroid/exports_east)
 "dCj" = (
 /obj/structure/platform_decoration/metal/strata/north,
@@ -5758,7 +5771,7 @@
 	health = 25000;
 	pixel_y = 4
 	},
-/turf/open/space/basic,
+/turf/open/floor/strata,
 /area/atlan/station/stairs2)
 "dTb" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -7988,7 +8001,7 @@
 /obj/structure/platform/metal/strata{
 	layer = 2.7
 	},
-/turf/open/floor/strata/multi_tiles,
+/turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/medical)
 "fsR" = (
 /obj/structure/sign/safety/storage,
@@ -9348,7 +9361,7 @@
 /obj/structure/cargo_container/ferret/left{
 	layer = 4
 	},
-/turf/open/space/basic,
+/turf/open/floor/strata/floor2,
 /area/atlan/asteroid/exports_west)
 "gqo" = (
 /obj/structure/machinery/light/small{
@@ -9767,10 +9780,6 @@
 	},
 /turf/open/floor/strata/multi_tiles,
 /area/atlan/asteroid/processing_ne_train)
-"gHE" = (
-/obj/structure/window/framed/prison/reinforced/hull,
-/turf/open/floor/strata,
-/area/atlan/oob)
 "gHQ" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/strata,
@@ -12228,7 +12237,7 @@
 /obj/structure/machinery/light/double/blue{
 	dir = 4
 	},
-/turf/open/floor/strata,
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/walkway)
 "iph" = (
 /obj/structure/bed/chair/office/light{
@@ -12432,9 +12441,6 @@
 	},
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/cargooffice)
-"iuq" = (
-/turf/closed/wall/mineral/bone_resin,
-/area/atlan/asteroid/caves)
 "iuu" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -13786,7 +13792,7 @@
 	color = "#6e6e6e";
 	icon_state = "p_stair_sn_full_cap"
 	},
-/turf/open/floor/strata,
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/walkway)
 "jiU" = (
 /obj/effect/decal/cleanable/dirt,
@@ -14347,7 +14353,7 @@
 	},
 /obj/structure/platform/metal/stair_cut/strata_right,
 /obj/structure/platform/metal/strata,
-/turf/open/floor/strata/multi_tiles,
+/turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/substation)
 "jzy" = (
 /obj/structure/platform_decoration/metal/strata/west,
@@ -15888,7 +15894,7 @@
 	dir = 4;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/turf/open/floor/strata,
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/security)
 "kCE" = (
 /obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic,
@@ -17775,7 +17781,7 @@
 	icon_state = "p_stair_sn_full_cap";
 	dir = 4
 	},
-/turf/open/floor/strata,
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/walkway)
 "lTa" = (
 /turf/open/floor/strata/green3/north,
@@ -18127,7 +18133,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/sheet/metal,
 /turf/open/gm/dirt/brown,
-/area/atlan/asteroid/processing_caves)
+/area/atlan/asteroid/processing_seperation)
 "mhT" = (
 /obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/strata/floor3/east,
@@ -18845,7 +18851,7 @@
 	layer = 2.41
 	},
 /obj/structure/platform/metal/strata/east,
-/turf/open/floor/prison/darkyellowfull2,
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/security)
 "mJN" = (
 /turf/open/floor/strata/red1,
@@ -19890,7 +19896,7 @@
 /obj/structure/closet,
 /obj/item/clothing/under/marine/veteran/UPP/civi1,
 /obj/effect/landmark/yautja_teleport,
-/turf/open/floor/strata/green4/east,
+/turf/open/floor/strata/green4,
 /area/atlan/station/single_dorms)
 "nsr" = (
 /obj/structure/bed/chair{
@@ -20768,7 +20774,7 @@
 	color = "#6e6e6e";
 	icon_state = "p_stair_sn_full_cap"
 	},
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/asteroid/exports_west)
 "nUH" = (
 /obj/structure/window/framed/strata,
@@ -23187,7 +23193,7 @@
 	icon_state = "p_stair_sn_full_cap"
 	},
 /obj/structure/platform/metal/strata/west,
-/turf/open/floor/strata,
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/security)
 "pyT" = (
 /obj/item/stool{
@@ -24730,7 +24736,7 @@
 	icon_state = "p_stair_full";
 	layer = 2.41
 	},
-/turf/open/floor/strata,
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/walkway)
 "quM" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt,
@@ -24979,7 +24985,7 @@
 	icon_state = "p_stair_full";
 	layer = 2.41
 	},
-/turf/open/space/basic,
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/asteroid/exports_west)
 "qFr" = (
 /obj/structure/window/reinforced/tinted{
@@ -25891,7 +25897,7 @@
 /obj/item/stack/sandbags/small_stack,
 /obj/effect/decal/cleanable/blood/gibs,
 /obj/effect/landmark/yautja_teleport,
-/turf/open/space/basic,
+/turf/open/floor/strata/green4,
 /area/atlan/station/single_dorms)
 "rkv" = (
 /obj/structure/window/framed/strata/reinforced,
@@ -27594,7 +27600,7 @@
 	dir = 4;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/asteroid/exports_west)
 "srY" = (
 /turf/open/floor/whiteredcorner/west,
@@ -28612,7 +28618,7 @@
 /area/atlan/station/admin)
 "tee" = (
 /obj/structure/machinery/door/airlock/prison_hatch/autoname,
-/turf/open/space/basic,
+/turf/open/floor/plating/prison,
 /area/atlan/comms/lz1_lift)
 "tes" = (
 /turf/open/floor/corsat/redcorner,
@@ -28820,7 +28826,7 @@
 	dir = 4;
 	health = 25000
 	},
-/turf/open/space/basic,
+/turf/open/floor/strata,
 /area/atlan/station/stairs1)
 "tiZ" = (
 /obj/structure/machinery/light{
@@ -29637,14 +29643,6 @@
 /obj/item/stack/cable_coil,
 /turf/open/floor/strata/purp1,
 /area/atlan/asteroid/sensors)
-"tIH" = (
-/obj/structure/stairs/perspective{
-	color = "#6e6e6e";
-	dir = 8;
-	icon_state = "p_stair_full"
-	},
-/turf/open/space/basic,
-/area/atlan/station/medical)
 "tII" = (
 /obj/structure/machinery/light/double/blue,
 /obj/structure/largecrate/random/secure{
@@ -33592,12 +33590,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/storage)
-"wEr" = (
-/obj/structure/machinery/door/airlock/prison_hatch/autoname{
-	dir = 1
-	},
-/turf/open/space/basic,
-/area/atlan/comms/lz1_lift)
 "wEx" = (
 /obj/item/trash/cheesie{
 	pixel_y = -4
@@ -33692,10 +33684,6 @@
 	},
 /turf/open/floor/prison/darkyellowfull2,
 /area/atlan/asteroid/processing_offices)
-"wJh" = (
-/obj/structure/machinery/door/airlock/prison_hatch/autoname,
-/turf/open/space/basic,
-/area/atlan/station/admin)
 "wJj" = (
 /obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/prison/darkyellowfull2,
@@ -35936,7 +35924,7 @@
 /area/atlan/station/substation)
 "yhG" = (
 /obj/structure/largecrate/empty/case/double,
-/turf/open/floor/strata/floor3/east,
+/turf/open/floor/plating/prison,
 /area/atlan/comms/lz1_lift)
 "yhM" = (
 /obj/effect/landmark/lv624/xeno_tunnel,
@@ -42007,10 +41995,10 @@ rDa
 rDa
 cSy
 rDa
-rDa
+ivx
 rDa
 dqc
-aAk
+aay
 tiW
 qFx
 aAk
@@ -49288,9 +49276,9 @@ ebn
 aAk
 aAk
 aAk
-rEg
+iyR
 ehH
-rEg
+iyR
 xYA
 nEV
 laD
@@ -50405,8 +50393,8 @@ irO
 foR
 ape
 aAk
-gHE
-gHE
+oVk
+oVk
 aAk
 fje
 fje
@@ -53368,7 +53356,7 @@ vlj
 bnz
 jHO
 kLL
-eoJ
+aaz
 eoJ
 lzt
 lzt
@@ -53938,7 +53926,7 @@ mzw
 mzw
 tnM
 pjT
-wEr
+ash
 aZe
 aZe
 cBF
@@ -54176,8 +54164,8 @@ eoJ
 eoJ
 eoJ
 ibp
-qcN
-tIH
+dee
+arv
 aTF
 oCj
 llN
@@ -54381,7 +54369,7 @@ hzY
 kUy
 hzY
 bnz
-bnz
+auc
 oCj
 rqh
 itu
@@ -55191,7 +55179,7 @@ aSd
 hAz
 hzY
 hzY
-qcN
+dee
 fsN
 vuq
 oCj
@@ -58862,7 +58850,7 @@ kiV
 lnR
 vfA
 xTV
-wJh
+oJS
 wTm
 oCj
 oCj
@@ -69462,7 +69450,7 @@ pOz
 lID
 hlD
 pZQ
-eyp
+aaw
 stz
 vGR
 vGR
@@ -69814,7 +69802,7 @@ jDo
 jFv
 hKS
 aSd
-jDo
+wqR
 iiu
 wqR
 nQZ
@@ -70017,7 +70005,7 @@ jDo
 cfC
 gMK
 jvN
-uRE
+anq
 lch
 ijq
 nQZ
@@ -70220,7 +70208,7 @@ jDo
 kpp
 abB
 jvN
-kpp
+iiu
 oiT
 anq
 nQZ
@@ -70626,7 +70614,7 @@ kpp
 kpp
 jFv
 lGF
-uRE
+anq
 wqR
 ijq
 qis
@@ -77140,7 +77128,7 @@ mVN
 mVN
 lGF
 lGF
-iuq
+lGF
 ohr
 lGF
 lGF

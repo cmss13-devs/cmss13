@@ -28,6 +28,7 @@
 			hud_icon_state = "dcom"
 		if(JOB_NSPA_COM)
 			hud_icon_state = "com"
-
+		if(JOB_NSPA_SYN)
+			hud_icon_state = "syn"
 	if(hud_icon_state)
 		holder.overlays += image(override_icon_file ? override_icon_file : base_icon_file, human, "nspa_[hud_icon_state]")

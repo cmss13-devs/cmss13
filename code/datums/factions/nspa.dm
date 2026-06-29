@@ -15,7 +15,7 @@
 		if(JOB_NSPA_CST)
 			hud_icon_state = "con"
 		if(JOB_NSPA_SC)
-			hud_icon_state = "scon"
+			hud_icon_state = "sc"
 		if(JOB_NSPA_SGT)
 			hud_icon_state = "sgt"
 		if(JOB_NSPA_INSP)
@@ -25,7 +25,7 @@
 		if(JOB_NSPA_CMD)
 			hud_icon_state = "cmd"
 		if(JOB_NSPA_DCO)
-			hud_icon_state = "dcom"
+			hud_icon_state = "dco"
 		if(JOB_NSPA_COM)
 			hud_icon_state = "com"
 		if(JOB_NSPA_SYN)

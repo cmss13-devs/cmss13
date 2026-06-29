@@ -87,8 +87,8 @@ em {font-style: normal; font-weight: bold;}
 .green {color: #00ff00;}
 .maroon {color: #800000;}
 .orange {color: #EBA000;}
-.red {color: #FF0000;}
 .purple {color: #602D7B;}
+.red {color: #FF0000;}
 
 .normal {font-style: normal;}
 

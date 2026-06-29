@@ -198,11 +198,6 @@
 	assignment = "Con-Am - Corporate Liaison"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	paygrades = list(PAY_SHORT_WYC2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_WYC3 = JOB_PLAYTIME_TIER_2, PAY_SHORT_WYC4 = JOB_PLAYTIME_TIER_3, PAY_SHORT_WYC5 = JOB_PLAYTIME_TIER_4)
-	faction_group = FACTION_CONAM
-	job_title = JOB_HC_EXECUTIVE
-	faction = FACTION_CONAM
-	faction_group = list(FACTION_CONAM, FACTION_SURVIVOR)
 	idtype = /obj/item/card/id/silver/cl
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,

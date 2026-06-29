@@ -607,19 +607,23 @@
 		cause_data.weak_mob = WEAKREF(user)
 
 	var/datum/reagent
-	var/smoke_radius = 2
-	var/flame_radius = 2
+	var/flame_radius = 1
+	var/flame_duration_modifier
 
-	if(mine_level == 2)
+	if(mine_level == 1)
 		reagent = new /datum/reagent/napalm/green()
+		flame_duration_modifier = 1
+	else if(mine_level == 2)
+		reagent = new /datum/reagent/napalm/green()
+		flame_duration_modifier = 1.5
 	else if(mine_level == 3)
 		reagent = new /datum/reagent/napalm/ut()
+		flame_duration_modifier = 2
 	else
 		reagent = new /datum/reagent/napalm/ut()
-		flame_radius = 3
+		flame_duration_modifier = 3
 	switch(mine_mode)
 		if (SHARP_DIRECTED_MODE)
-			smoke_radius = 0
 			flame_radius = 0
 		if (SHARP_SAFE_MODE)
 			for(var/mob/living/carbon/human in range(flame_radius, src))
@@ -627,12 +631,6 @@
 					disarm()
 					return
 
-	if (mine_level > 1)
-		playsound(loc, 'sound/weapons/gun_flamethrower3.ogg', 45)
-		new /obj/flamer_fire(loc, cause_data, reagent, flame_radius)
-	else
-		playsound(loc, 'sound/weapons/gun_sharp_explode.ogg', 100)
-		var/datum/effect_system/smoke_spread/phosphorus/smoke = new /datum/effect_system/smoke_spread/phosphorus/sharp
-		smoke.set_up(smoke_radius, 0, loc)
-		smoke.start()
+	playsound(loc, 'sound/weapons/gun_flamethrower3.ogg', 45)
+	new /obj/flamer_fire(loc, cause_data, reagent, flame_radius, null, FLAMESHAPE_STAR, null, null, flame_duration_modifier)
 	qdel(src)

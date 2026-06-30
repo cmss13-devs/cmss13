@@ -399,7 +399,7 @@
 	health = 50
 	var/disarmed = FALSE
 	var/explosion_strength = 100
-	var/explosion_falloff = 50
+	var/explosion_falloff = 30
 	var/mine_level = 1
 	var/deploy_time = 0
 	var/mine_state = ""
@@ -483,26 +483,24 @@
 		cause_data.weak_mob = WEAKREF(user)
 
 	if(mine_level == 1)
-		explosion_strength = 100
+		explosion_strength = 100 // 100, (70), 10, 0
 	else if(mine_level == 2)
-		explosion_strength = 100
-		explosion_falloff = 25
+		explosion_strength = 110 // 110, (80), 20, 0
 	else if(mine_level == 3)
-		explosion_strength = 125
-		explosion_falloff = 30
+		explosion_strength = 120 // 120, (90), 30, 0
 	else
-		explosion_strength = 125
-		explosion_falloff = 25
+		explosion_strength = 130 // 130, (100), 40, 0
 
 	switch(mine_mode)
 		if(SHARP_DIRECTED_MODE)
 			explosion_falloff = explosion_strength
 		if(SHARP_SAFE_MODE)
-			for(var/mob/living/carbon/human in range((explosion_strength / explosion_falloff) - 1, src))
+			var/iff_range = mine_level == 1 ? 1 : 2
+			for(var/mob/living/carbon/human in range(iff_range, src))
 				if (human.get_target_lock(iff_signal))
 					disarm()
 					return
-	cell_explosion(loc, explosion_strength, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, CARDINAL_ALL_DIRS, cause_data, enviro=map_deployed)
+	cell_explosion(loc, explosion_strength, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, CARDINAL_ALL_DIRS, cause_data, enviro=map_deployed)
 	playsound(loc, 'sound/weapons/gun_sharp_explode.ogg', 100)
 	qdel(src)
 

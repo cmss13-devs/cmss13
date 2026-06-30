@@ -648,7 +648,7 @@
 				return TRUE
 			shuttle.alarm_sound_loop.start()
 			shuttle.playing_launch_announcement_alarm = TRUE
-			COOLDOWN_START(src, dropship_alarm, 10 SECONDS)
+			COOLDOWN_START(src, dropship_alarm, 6 SECONDS)
 			return TRUE
 		if ("stop_playing_launch_announcement_alarm")
 			if(!shuttle)

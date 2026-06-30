@@ -645,6 +645,7 @@
 				to_chat(usr, SPAN_WARNING("The Launch Announcement Alarm is designed to tell people that you're going to take off soon."))
 				return TRUE
 			if(!(COOLDOWN_FINISHED(src, dropship_alarm)))
+				to_chat(usr, SPAN_WARNING("The Launch Announcement Alarm can not be restarted yet."))
 				return TRUE
 			shuttle.alarm_sound_loop.start()
 			shuttle.playing_launch_announcement_alarm = TRUE

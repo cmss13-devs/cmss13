@@ -469,6 +469,56 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/gm/dirt/brown/variant_2,
 /area/atlan/asteroid/processing_caves)
+"abC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/platform_decoration/metal/strata/east{
+	layer = 2.9
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/atlan/station/hab_docks)
+"abD" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33
+	},
+/obj/structure/platform_decoration/metal/strata/west{
+	layer = 2.9
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/atlan/station/hab_docks)
+"abE" = (
+/obj/structure/girder/displaced,
+/turf/open/floor/strata,
+/area/atlan/station/hab_docks)
+"abF" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "atlanpool"
+	},
+/turf/closed/wall/strata_outpost/reinforced/hull,
+/area/atlan/oob)
+"abG" = (
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/turf/open/floor/strata,
+/area/atlan/station/security)
+"abH" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "gurney"
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/station/medical)
+"abI" = (
+/obj/structure/platform_decoration/metal/strata/west{
+	layer = 2.9
+	},
+/turf/open/floor/strata/cyan1,
+/area/atlan/station/medical)
+"abJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/boonie,
+/turf/open/floor/strata/floor2,
+/area/atlan/station/medical_maint)
 "abK" = (
 /obj/structure/closet,
 /obj/structure/machinery/light/double/blue{
@@ -477,6 +527,35 @@
 /obj/effect/spawner/random/gun/upp_primary/midchance,
 /turf/open/floor/strata/red1,
 /area/atlan/asteroid/processing_offices)
+"abL" = (
+/obj/structure/largecrate/random/mini/med{
+	layer = 3.01;
+	pixel_x = -5;
+	pixel_y = 7
+	},
+/obj/item/tool/weldingtool/simple,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/plating/prison,
+/area/atlan/station/cargo)
+"abM" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "boxfort"
+	},
+/turf/open/floor/strata/orange_edge/west,
+/area/atlan/station/storage)
+"abN" = (
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/obj/effect/landmark/nightmare{
+	insert_tag = "miningskiff"
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_dock)
+"abO" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/gm/dirt/brown/variant_1,
+/area/atlan/asteroid/processing_dock)
 "ack" = (
 /obj/structure/largecrate/random/secure,
 /obj/structure/machinery/light{
@@ -1476,7 +1555,6 @@
 "aPj" = (
 /obj/structure/platform/metal/strata/north,
 /obj/structure/platform/metal/strata/west,
-/obj/structure/platform_decoration/metal/strata/east,
 /turf/open/floor/plating,
 /area/atlan/station/hab_docks)
 "aPr" = (
@@ -4066,10 +4144,6 @@
 	},
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/storage)
-"cGA" = (
-/obj/effect/landmark/yautja_teleport,
-/turf/open/floor/plating,
-/area/atlan/asteroid/processing_dock)
 "cGN" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/plating,
@@ -4169,6 +4243,7 @@
 	color = "#858680"
 	},
 /obj/effect/decal/cleanable/blood/oil,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/plating,
 /area/atlan/station/hab_docks)
 "cJI" = (
@@ -5414,10 +5489,6 @@
 	},
 /turf/closed/wall/hybrisa/colony/hospital,
 /area/atlan/station/medical)
-"dBc" = (
-/obj/item/trash/boonie,
-/turf/open/floor/strata/floor2,
-/area/atlan/station/medical_maint)
 "dBg" = (
 /turf/open/floor/whitered/north,
 /area/atlan/station/hab_rec)
@@ -10024,7 +10095,6 @@
 "gIv" = (
 /obj/structure/platform/metal/strata/north,
 /obj/structure/platform/metal/strata/east,
-/obj/structure/platform_decoration/metal/strata/west,
 /turf/open/floor/plating,
 /area/atlan/station/hab_docks)
 "gIF" = (
@@ -20431,7 +20501,7 @@
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	name = "Dropship Hold Lockdown"
 	},
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/test_floor6,
 /area/atlan/station/hab_docks)
 "nDe" = (
 /obj/item/weapon/twohanded/folded_metal_chair{
@@ -20491,7 +20561,7 @@
 /obj/structure/prop/almayer/ship_memorial{
 	name = "slab of triumph";
 	pixel_y = 2;
-	desc = "A large piece of polished limestone, itched into it is; Drathek- thank you for your endless patience and support."
+	desc = "A large piece of polished limestone, itched into it is; Drathek- thank you for your endless patience and support, Steelpoint- thank you for your guidance and support."
 	},
 /turf/open/floor/plating/prison,
 /area/atlan/oob/credits)
@@ -27320,7 +27390,6 @@
 	pixel_x = 7;
 	pixel_y = 6
 	},
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/plating/prison,
 /area/atlan/station/substation)
 "scj" = (
@@ -27772,19 +27841,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/prison,
 /area/atlan/station/substation)
-"ssC" = (
-/obj/structure/machinery/light/small{
-	dir = 1;
-	pixel_x = -16
-	},
-/obj/structure/largecrate/random/mini/med{
-	layer = 3.01;
-	pixel_x = -5;
-	pixel_y = 7
-	},
-/obj/item/tool/weldingtool/simple,
-/turf/open/floor/plating/prison,
-/area/atlan/station/cargo)
 "ssL" = (
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/substation)
@@ -28684,7 +28740,7 @@
 /obj/structure/barricade/deployable{
 	dir = 4
 	},
-/obj/item/weapon/gun/smg/pps43,
+/obj/item/weapon/gun/shotgun/type23,
 /turf/open/floor/strata,
 /area/atlan/station/security)
 "taR" = (
@@ -30286,7 +30342,9 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/asteroid/processing_offices)
 "uaA" = (
-/obj/structure/machinery/power/power_generator/reactor/rostock,
+/obj/structure/machinery/power/power_generator/reactor/rostock{
+	is_on = 0
+	},
 /turf/open/floor/corsat,
 /area/atlan/station/substation)
 "uaD" = (
@@ -34141,10 +34199,6 @@
 /obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/repairoffice)
-"wVv" = (
-/obj/item/flag/plantable/upp,
-/turf/open/floor/strata,
-/area/atlan/station/walkway)
 "wVL" = (
 /obj/structure/bed/sofa/vert/grey/bot,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -35702,8 +35756,10 @@
 /turf/closed/wall/strata_outpost/reinforced,
 /area/atlan/station/hab_docks)
 "xXQ" = (
-/obj/structure/platform_decoration/metal/strata/west,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/platform_decoration/metal/strata/west{
+	layer = 2.9
+	},
 /turf/open/floor/strata/floor2,
 /area/atlan/station/medical)
 "xYb" = (
@@ -41705,7 +41761,7 @@ fdM
 foK
 rtM
 rZw
-fdM
+abM
 fdM
 fdM
 fdM
@@ -44242,7 +44298,7 @@ ohy
 ohy
 ohy
 pKE
-ohy
+abE
 ohy
 ohy
 ohy
@@ -44655,7 +44711,7 @@ aPj
 ofK
 hEd
 ofK
-jBe
+abC
 vwQ
 ofK
 ofK
@@ -46076,7 +46132,7 @@ gIv
 bxc
 xPA
 xPA
-abA
+abD
 mgs
 xPA
 xPA
@@ -47601,7 +47657,7 @@ nUR
 nUR
 fel
 xYA
-qfT
+abJ
 mSQ
 nCG
 eoJ
@@ -47805,7 +47861,7 @@ ppM
 ojb
 xYA
 mSQ
-dBc
+mSQ
 mSQ
 eoJ
 hYV
@@ -50105,7 +50161,7 @@ sUb
 sUb
 fFO
 sUb
-aAk
+abF
 obO
 wXS
 aAk
@@ -50269,7 +50325,7 @@ fVo
 mLk
 pnM
 pnM
-hzY
+abH
 cjT
 anA
 ntq
@@ -51452,8 +51508,8 @@ fEq
 fEq
 aAk
 aAk
+abL
 fEq
-ssC
 fEq
 oCa
 bnz
@@ -51872,7 +51928,7 @@ jwC
 jwC
 phk
 nNM
-jmP
+abI
 pVS
 xlz
 cwd
@@ -56152,7 +56208,7 @@ rnM
 lYr
 lnR
 hzE
-mBo
+oCj
 jTp
 pwg
 mBo
@@ -57584,7 +57640,7 @@ lwX
 hTJ
 boR
 dGM
-wVv
+tmn
 tmn
 hTJ
 wIR
@@ -59644,7 +59700,7 @@ bck
 usI
 bnc
 bUd
-bck
+abG
 niq
 aAk
 aAk
@@ -64033,7 +64089,7 @@ hLh
 mdE
 mdE
 hLh
-xWB
+abN
 tTW
 kCE
 aTN
@@ -65030,7 +65086,7 @@ aSd
 aSd
 aSd
 lGF
-uNN
+abO
 jml
 hLh
 dkg
@@ -65845,7 +65901,7 @@ lGF
 pMx
 euI
 pMx
-cGA
+mdE
 lGF
 lGF
 lGF

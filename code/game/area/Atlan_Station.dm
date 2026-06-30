@@ -400,3 +400,8 @@
 	minimap_color = MINIMAP_AREA_CAVES_DEEP
 	always_unpowered = TRUE
 
+/area/atlan/asteroid/ship
+	name = "Voskhod Mining Skiff: PSV Malenkyi Shevnyk"
+	icon_state = "sewers3"
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
+

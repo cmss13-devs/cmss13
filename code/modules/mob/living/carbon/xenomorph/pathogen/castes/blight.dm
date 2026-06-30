@@ -23,6 +23,7 @@
 	evolves_to = list(PATHOGEN_CREATURE_VENATOR, PATHOGEN_CREATURE_HARBINGER)
 
 	heal_resting = 1.2
+	minimum_evolve_time = 10 MINUTES
 
 	minimap_icon = "blight"
 

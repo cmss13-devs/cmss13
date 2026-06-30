@@ -21,7 +21,9 @@
 	deevolves_to = list()
 	caste_desc = "Fury and death..."
 	evolves_to = list()
+	can_be_revived = FALSE
 
+	fire_vulnerability_mult = FIRE_MULTIPLIER_LOW
 	heal_resting = 1.4
 	is_intelligent = TRUE
 
@@ -52,8 +54,9 @@
 		/datum/action/xeno_action/onclick/shatter, // Macro 1
 		/datum/action/xeno_action/activable/rav_spikes/matriarch, // Macro 2
 		/datum/action/xeno_action/onclick/spike_shed/matriarch, // Macro 3
-		/datum/action/xeno_action/onclick/blight_wave, // Macro 4
+		//, // Macro 4
 		/datum/action/xeno_action/onclick/pathogen_paralyze, //Macro 5
+		/datum/action/xeno_action/onclick/blight_wave, // Screech Macro
 	)
 	claw_type = CLAW_TYPE_VERY_SHARP
 
@@ -67,8 +70,8 @@
 	skull = /obj/item/skull/pathogen_matriarch
 	pelt = /obj/item/pelt/pathogen_matriarch
 
-	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
-	mycelium_food_icon = 'icons/mob/pathogen/pathogen_weeds_48x48.dmi'
+	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
+	mycelium_food_icon = 'icons/mob/pathogen/pathogen_weeds_64x64.dmi'
 	weed_food_states = list("Matriarch_1","Matriarch_2","Matriarch_3")
 	weed_food_states_flipped = list("Matriarch_1","Matriarch_2","Matriarch_3")
 
@@ -214,18 +217,31 @@
 	button_icon_state = "template_pathogen"
 	icon_file = 'icons/mob/hud/actions_pathogen.dmi'
 	action_icon_state = "screech"
-	macro_path = /datum/action_xeno_action/verb/verb_doom
+	macro_path = /datum/action_xeno_action/verb/verb_blight_wave
 	xeno_cooldown = 90 SECONDS
 	plasma_cost = 200
-	ability_primacy = XENO_PRIMARY_ACTION_4
+	ability_primacy = XENO_SCREECH
+
+	cooldown_message = "You feel your spore sacs replenish. You are ready to release them again."
+	no_cooldown_msg = FALSE // Needed for onclick actions
 
 	var/daze_length_seconds = 1
 	var/slow_length_seconds = 4
 
+/datum/action_xeno_action/verb/verb_blight_wave()
+	set category = "Alien"
+	set name = "Blight Wave"
+	set hidden = TRUE
+	var/action_name = "Blight Wave"
+	handle_xeno_macro(src, action_name)
+
 /datum/action/xeno_action/onclick/blight_wave/overmind
 	xeno_cooldown = 120 SECONDS
 	plasma_cost = 400
-	ability_primacy = XENO_NOT_PRIMARY_ACTION
+
+/datum/action/xeno_action/onclick/blight_wave/archon
+	xeno_cooldown = 180 SECONDS
+	plasma_cost = 400
 
 /datum/action/xeno_action/onclick/blight_wave/overmind/can_use_action(silent = FALSE, override_flags)
 	if(owner?.status_flags & INCORPOREAL)

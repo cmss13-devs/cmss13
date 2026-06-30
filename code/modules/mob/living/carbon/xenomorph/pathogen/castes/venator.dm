@@ -48,9 +48,9 @@
 		/datum/action/xeno_action/watch_xeno/pathogen,
 		/datum/action/xeno_action/activable/tail_stab/pathogen/tier3,
 		/datum/action/xeno_action/activable/venator_abduct, // Macro 1
-		/datum/action/xeno_action/activable/prae_impale/venator, //Macro 2
+		/datum/action/xeno_action/onclick/empower/venator, //Macro 2
 		/datum/action/xeno_action/activable/venator_savage, // Macro 3
-		//, // Macro 4
+		/datum/action/xeno_action/activable/prae_impale/venator, // Macro 4
 		/datum/action/xeno_action/onclick/pathogen_paralyze, //Macro 5
 	)
 	claw_type = CLAW_TYPE_VERY_SHARP
@@ -309,6 +309,13 @@
 	var/damage = 40
 
 	var/superslow_duration = 3 SECONDS
+	var/attack_desc = "tentacle spikes"
+
+/datum/action/xeno_action/activable/venator_savage/archon
+	ability_primacy = XENO_PRIMARY_ACTION_1
+	damage = 50
+	superslow_duration = 4.5 SECONDS
+	attack_desc = "rending claws"
 
 /datum/action/xeno_action/activable/venator_savage/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -318,6 +325,17 @@
 
 	if (!xeno.check_state())
 		return
+
+	// Determine whether or not we should daze here
+	var/should_sslow = FALSE
+	var/datum/behavior_delegate/pathogen_base/venator/venator_delegate = xeno.behavior_delegate
+	if(istype(venator_delegate))
+		if(venator_delegate.empower_targets >= venator_delegate.super_empower_threshold)
+			should_sslow = TRUE
+	else if(istype(xeno.behavior_delegate, /datum/behavior_delegate/pathogen_base/archon))
+		var/datum/behavior_delegate/pathogen_base/archon/archon_delegate = xeno.behavior_delegate
+		if(archon_delegate.kills >= archon_delegate.max_kills/2)
+			should_sslow = TRUE
 
 	// Get line of turfs
 	var/list/turf/target_turfs = list()
@@ -368,7 +386,7 @@
 	// Hmm today I will kill a marine while looking away from them
 	xeno.face_atom(target_atom)
 	xeno.emote("roar")
-	xeno.visible_message(SPAN_XENODANGER("[xeno] sweeps its tentacle spikes through the area in front of it!"), SPAN_XENODANGER("We sweep our tentacle spikes through the area in front of us!"))
+	xeno.visible_message(SPAN_XENODANGER("[xeno] sweeps its [attack_desc] through the area in front of it!"), SPAN_XENODANGER("We sweep our [attack_desc] through the area in front of us!"))
 
 	// Loop through our turfs, finding any humans there and dealing damage to them
 	for (var/turf/target_turf in target_turfs)
@@ -385,8 +403,8 @@
 			carbon_target.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE)
 			playsound(get_turf(carbon_target), "alien_claw_flesh", 30, TRUE)
 
-//			if(should_sslow)
-//				new /datum/effects/xeno_slow/superslow(carbon_target, xeno, ttl = superslow_duration)
+			if(should_sslow)
+				new /datum/effects/xeno_slow/superslow(carbon_target, xeno, ttl = superslow_duration)
 
 	apply_cooldown()
 	return ..()
@@ -394,8 +412,45 @@
 /datum/action/xeno_action/activable/prae_impale/venator
 	button_icon_state = "template_pathogen"
 	icon_file = 'icons/mob/hud/actions_pathogen.dmi'
-	ability_primacy = XENO_PRIMARY_ACTION_2
+	ability_primacy = XENO_PRIMARY_ACTION_4
 
+/datum/action/xeno_action/onclick/empower/venator
+	button_icon_state = "template_pathogen"
+	icon_file = 'icons/mob/hud/actions_pathogen.dmi'
 
 /datum/behavior_delegate/pathogen_base/venator
 	name = "Base Venator Behavior Delegate"
+
+	var/shield_decay_time = 15 SECONDS // Time in deciseconds before our shield decays
+	var/empower_targets = 0
+	var/super_empower_threshold = 3
+	var/dmg_buff_per_target = 2
+
+/datum/behavior_delegate/pathogen_base/venator/melee_attack_modify_damage(original_damage, mob/living/carbon/carbon)
+	var/damage_plus
+	if(empower_targets)
+		damage_plus = dmg_buff_per_target * empower_targets
+
+	return original_damage + damage_plus
+
+/datum/behavior_delegate/pathogen_base/venator/append_to_stat()
+	. = list()
+	var/shield_total = 0
+	for (var/datum/xeno_shield/xeno_shield in bound_xeno.xeno_shields)
+		if (xeno_shield.shield_source == XENO_SHIELD_SOURCE_RAVAGER)
+			shield_total += xeno_shield.amount
+
+	. += "Empower Shield: [shield_total]"
+	. += "Bonus Slash Damage: [dmg_buff_per_target * empower_targets]"
+
+/datum/behavior_delegate/pathogen_base/venator/on_life()
+	var/datum/xeno_shield/rav_shield
+	for (var/datum/xeno_shield/xeno_shield in bound_xeno.xeno_shields)
+		if (xeno_shield.shield_source == XENO_SHIELD_SOURCE_RAVAGER)
+			rav_shield = xeno_shield
+			break
+
+	if (rav_shield && ((rav_shield.last_damage_taken + shield_decay_time) < world.time))
+		QDEL_NULL(rav_shield)
+		to_chat(bound_xeno, SPAN_XENODANGER("We feel our shield decay!"))
+		bound_xeno.overlay_shields()

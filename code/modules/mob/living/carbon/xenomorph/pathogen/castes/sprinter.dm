@@ -16,7 +16,7 @@
 
 	available_strains = list()
 	behavior_delegate_type = /datum/behavior_delegate/pathogen_base/sprinter
-	evolves_to = list(PATHOGEN_CREATURE_NEOMORPH, PATHOGEN_CREATURE_BLIGHT)
+	evolves_to = list(PATHOGEN_CREATURE_BLIGHT)
 	deevolves_to = list(PATHOGEN_CREATURE_BURSTER)
 
 	tackle_min = 4
@@ -26,6 +26,7 @@
 	tacklestrength_max = 4
 
 	heal_resting = 1.4
+	minimum_evolve_time = 5 MINUTES
 
 	minimap_icon = "sprinter"
 

@@ -33,6 +33,7 @@
 #define isconditor(A) (istype(A, /mob/living/carbon/xenomorph/conditor))
 #define ispopper(A) (istype(A, /mob/living/carbon/xenomorph/popper))
 #define ismatriarch(A) (istype(A, /mob/living/carbon/xenomorph/matriarch))
+#define isarchon(A) (istype(A, /mob/living/carbon/xenomorph/archon))
 #define is_pathogen_overmind(A) (istype(A, /mob/living/carbon/xenomorph/overmind))
 #define isaberration(A) (istype(A, /mob/living/carbon/xenomorph/aberration))
 

@@ -690,64 +690,6 @@
 		var/datum/action/A = Z
 		A.update_button_icon()
 
-/mob/living/carbon/xenomorph/queen/proc/queen_gut(atom/target)
-	if(!iscarbon(target))
-		return FALSE
-	if(HAS_TRAIT(target, TRAIT_HAULED))
-		to_chat(src, SPAN_XENOWARNING("[target] needs to be released first."))
-		return FALSE
-	var/mob/living/carbon/victim = target
-
-	if(get_dist(src, victim) > 1)
-		return FALSE
-
-	if(!check_state())
-		return FALSE
-
-	if(issynth(victim))
-		var/obj/limb/head/synthhead = victim.get_limb("head")
-		if(synthhead.status & LIMB_DESTROYED)
-			return FALSE
-
-	if(isxeno(victim))
-		var/mob/living/carbon/xenomorph/xeno = victim
-		if(hivenumber == xeno.hivenumber)
-			to_chat(src, SPAN_WARNING("You can't bring yourself to harm a fellow sister to this magnitude."))
-			return FALSE
-
-	var/turf/cur_loc = victim.loc
-	if(!istype(cur_loc))
-		return FALSE
-
-	if(action_busy)
-		return FALSE
-
-	if(!check_plasma(200))
-		return FALSE
-
-	visible_message(SPAN_XENOWARNING("[src] begins slowly lifting [victim] into the air."),
-	SPAN_XENOWARNING("You begin focusing your anger as you slowly lift [victim] into the air."))
-	if(do_after(src, 80, INTERRUPT_ALL, BUSY_ICON_HOSTILE, victim))
-		if(!victim)
-			return FALSE
-		if(victim.loc != cur_loc)
-			return FALSE
-		if(!check_plasma(200))
-			return FALSE
-
-		use_plasma(200)
-
-		visible_message(SPAN_XENODANGER("[src] viciously smashes and wrenches [victim] apart!"),
-		SPAN_XENODANGER("You suddenly unleash pure anger on [victim], instantly wrenching \him apart!"))
-		emote("roar")
-
-		attack_log += text("\[[time_stamp()]\] <font color='red'>gibbed [key_name(victim)]</font>")
-		victim.attack_log += text("\[[time_stamp()]\] <font color='orange'>was gibbed by [key_name(src)]</font>")
-		victim.gib(create_cause_data("Queen gutting", src)) //Splut
-
-		stop_pulling()
-		return TRUE
-
 /mob/living/carbon/xenomorph/queen/death(cause, gibbed)
 	if(src == hive?.living_xeno_queen)
 		UnregisterSignal(src, COMSIG_MOVABLE_PRE_MOVE)

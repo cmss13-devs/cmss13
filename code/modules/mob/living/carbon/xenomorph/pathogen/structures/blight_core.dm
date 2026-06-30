@@ -1,154 +1,6 @@
 #define PYLON_REPAIR_TIME (4 SECONDS)
 #define PYLON_WEEDS_REGROWTH_TIME (15 SECONDS)
 
-/datum/action/xeno_action/activable/create_core
-	name = "Create Blight Core (400)"
-	action_icon_state = "morph_resin"
-	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_NOT_PRIMARY_ACTION
-
-/datum/action/xeno_action/activable/create_core/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/creature = owner
-	if(!creature.check_state())
-		return FALSE
-
-	if(isstorage(A.loc) || creature.contains(A) || istype(A, /atom/movable/screen))
-		return FALSE
-
-	var/datum/hive_status/pathogen/hive = creature.hive
-	if(!istype(hive))
-		to_chat(creature, SPAN_WARNING("We cannot reach the mycelial link!"))
-		return FALSE
-
-	//Make sure construction is unrestricted
-	if(IS_NORMAL_XENO(creature))
-		if(!HAS_FLAG(creature.hive.hive_flags, XENO_CONSTRUCTION_NORMAL))
-			to_chat(creature, SPAN_WARNING("Construction by normal creatures is currently restricted!"))
-			return FALSE
-	else if(IS_XENO_LEADER(creature))
-		if(!HAS_FLAG(creature.hive.hive_flags, XENO_CONSTRUCTION_LEADERS))
-			to_chat(creature, SPAN_WARNING("Construction by leaders is currently restricted!"))
-			return FALSE
-//	else if(is_pathogen_overmind(creature))
-//		if(!HAS_FLAG(creature.hive.hive_flags, XENO_CONSTRUCTION_QUEEN))
-//			to_chat(creature, SPAN_WARNING("We are currently not allowed to designate construction!"))
-//			return FALSE
-	else
-		to_chat(creature, SPAN_DANGER("Something went wrong!"))
-		CRASH("Something went wrong determining hive_pos during place_construction!")
-
-	var/turf/target_turf = get_turf(A)
-
-	var/area/AR = get_area(target_turf)
-	if(isnull(AR) || !(AR.is_resin_allowed))
-		if(AR.flags_area & AREA_UNWEEDABLE)
-			to_chat(creature, SPAN_XENOWARNING("This area is unsuited to host the hive!"))
-			return
-		to_chat(creature, SPAN_XENOWARNING("It's too early to spread the hive this far."))
-		return FALSE
-
-	if(target_turf.z != creature.z)
-		to_chat(creature, SPAN_XENOWARNING("This area is too far away to affect!"))
-		return FALSE
-
-	if(SSinterior.in_interior(creature))
-		to_chat(creature, SPAN_XENOWARNING("It's too tight in here to build."))
-		return FALSE
-
-	if(!creature.check_alien_construction(target_turf))
-		return FALSE
-
-	if(hive.hivecore_cooldown)
-		to_chat(creature, SPAN_WARNING("The blight is still recovering from the death of the last core, wait until the blight has recovered!"))
-		return FALSE
-
-	if(hive.has_structure(PATHOGEN_STRUCTURE_CORE))
-		to_chat(creature, SPAN_WARNING("We already have a blight core!"))
-		return FALSE
-
-	if(!hive.can_build_structure(PATHOGEN_STRUCTURE_CORE))
-		to_chat(creature, SPAN_WARNING("We cannot create a blight core!"))
-		return FALSE
-
-	if(!creature.check_state(TRUE))
-		return FALSE
-	var/structure_type = hive.hive_structure_types[PATHOGEN_STRUCTURE_CORE]
-	var/datum/construction_template/xenomorph/structure_template = new structure_type()
-
-	if(!spacecheck(creature, target_turf, structure_template))
-		return FALSE
-
-	if(!do_after(creature, XENO_STRUCTURE_BUILD_TIME, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-		return FALSE
-
-	if(!spacecheck(creature, target_turf, structure_template)) //doublechecking
-		return FALSE
-
-	// Currently, we will never get here, I think.
-	if(hive.has_structure(PATHOGEN_STRUCTURE_CORE))
-		if(alert(creature, "Are we sure that we want to move the confluence and destroy the old blight core?", "Confirm Move", "Yes", "No") != "Yes")
-			return FALSE
-		qdel(hive.hive_location)
-	else if(!hive.can_build_structure(PATHOGEN_STRUCTURE_CORE))
-		to_chat(creature, SPAN_WARNING("We can't build any more [PATHOGEN_STRUCTURE_CORE]s for the hive."))
-		qdel(structure_template)
-		return FALSE
-
-	if(QDELETED(target_turf))
-		to_chat(creature, SPAN_WARNING("We cannot build here!"))
-		qdel(structure_template)
-		return FALSE
-
-	if(SSinterior.in_interior(creature))
-		to_chat(creature, SPAN_WARNING("It's too tight in here to build."))
-		qdel(structure_template)
-		return FALSE
-
-	if(target_turf.is_weedable < FULLY_WEEDABLE)
-		to_chat(creature, SPAN_WARNING("\The [target_turf] can't support a [structure_template.name]!"))
-		qdel(structure_template)
-		return FALSE
-
-	var/obj/effect/alien/weeds/weeds = locate() in target_turf
-	if(weeds?.block_structures >= BLOCK_SPECIAL_STRUCTURES)
-		to_chat(creature, SPAN_WARNING("\The [weeds] block the construction of any special structures!"))
-		qdel(structure_template)
-		return FALSE
-
-	creature.place_construction(target_turf, structure_template)
-
-	return ..()
-
-// XSS Spacecheck
-
-/datum/action/xeno_action/activable/create_core/proc/spacecheck(mob/living/carbon/xenomorph/X, turf/T, datum/construction_template/xenomorph/tem)
-	if(tem.block_range)
-		for(var/turf/TA in range(tem.block_range, T))
-			if(!X.check_alien_construction(TA, FALSE, TRUE, ignore_nest = TRUE))
-				to_chat(X, SPAN_WARNING("We need more open space to build here."))
-				qdel(tem)
-				return FALSE
-		if(!X.check_alien_construction(T, ignore_nest = TRUE))
-			to_chat(X, SPAN_WARNING("We need more open space to build here."))
-			qdel(tem)
-			return FALSE
-		var/obj/effect/alien/weeds/alien_weeds = locate() in T
-		if(!alien_weeds || alien_weeds.weed_strength < WEED_LEVEL_HIVE || alien_weeds.linked_hive.hivenumber != X.hivenumber)
-			to_chat(X, SPAN_WARNING("We can only shape on [lowertext(GLOB.hive_datum[X.hivenumber].prefix)]hive weeds. We must find a hive node or core before we start building!"))
-			qdel(tem)
-			return FALSE
-		if(T.density)
-			qdel(tem)
-			to_chat(X, SPAN_WARNING("We need empty space to build this."))
-			return FALSE
-	return TRUE
-
-
-
-
-
-
-
 /datum/construction_template/xenomorph/pathogen_core
 	name = PATHOGEN_STRUCTURE_CORE
 	description = "Heart of the hive, grows hive weeds (which are necessary for other structures) and protects the hive from skyfire."
@@ -234,9 +86,6 @@
 
 /obj/effect/alien/resin/special/pylon/pathogen_core/Initialize(mapload, datum/hive_status/hive_ref)
 	. = ..()
-
-	// Pick the closest xeno resource activator
-
 	update_minimap_icon()
 
 	if(hive_ref)
@@ -328,14 +177,12 @@
 		return TRUE
 	return FALSE
 
-
-
 /obj/effect/alien/resin/special/pylon/pathogen_core/attack_alien(mob/living/carbon/xenomorph/attacking_xeno)
 	if((attacking_xeno.a_intent == INTENT_HELP) && (attacking_xeno.hivenumber == linked_hive.hivenumber))
 		if(allowed_to_overmind(attacking_xeno))
 			var/datum/hive_status/pathogen/confluence = linked_hive
 			if(tgui_alert(attacking_xeno, "Do you seek to become the Mycelial Overmind?", "Become Overmind?", list("Yes", "No"), 5 SECONDS) == "Yes")
-				if((confluence.last_overmind == attacking_xeno.ckey) && do_after(attacking_xeno, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
+				if((isarchon(attacking_xeno) || (confluence.last_overmind == attacking_xeno.ckey)) && do_after(attacking_xeno, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
 					make_overmind(attacking_xeno)
 				else
 					admin_request_overmind(attacking_xeno)
@@ -400,7 +247,6 @@
 		last_attempt = world.time // update the spam check
 		return XENO_NO_DELAY_ACTION
 	blight_dissovling = TRUE
-	//give_action(dissolver, /datum/action/xeno_action/activable/create_core)
 	qdel(src)
 
 /obj/effect/alien/resin/special/pylon/pathogen_core/proc/cooldownFinish(datum/hive_status/linked_hive)

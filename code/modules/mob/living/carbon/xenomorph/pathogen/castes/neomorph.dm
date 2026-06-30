@@ -18,12 +18,13 @@
 	available_strains = list()
 	behavior_delegate_type = /datum/behavior_delegate/pathogen_base/neomorph
 
-	deevolves_to = list(PATHOGEN_CREATURE_SPRINTER)
-	caste_desc = "A fast, powerful combatant."
+	deevolves_to = list(PATHOGEN_CREATURE_NEOPHYTE)
+	caste_desc = "A nimble combatant and invaluable builder."
 	evolves_to = list(PATHOGEN_CREATURE_CONDITOR, PATHOGEN_CREATURE_BRUTE)
 
 	heal_resting = 1
 	max_build_dist = 1
+	minimum_evolve_time = 10 MINUTES
 
 	minimap_icon = "neomorph"
 
@@ -51,7 +52,7 @@
 		/datum/action/xeno_action/activable/tail_stab/pathogen,
 		/datum/action/xeno_action/activable/place_pathogen_structure/not_primary,
 		/datum/action/xeno_action/onclick/plant_weeds/pathogen/macro_one, // Macro 1
-		/datum/action/xeno_action/activable/pounce/runner/pathogen/neomorph, // Macro 2 // Shared macro with Conditor
+		/datum/action/xeno_action/activable/pounce/runner/pathogen/neomorph, // Macro 2
 		/datum/action/xeno_action/onclick/choose_resin/pathogen/not_primary,
 		/datum/action/xeno_action/activable/secrete_resin/pathogen, // Macro 3 // Shared macro with Conditor
 		/datum/action/xeno_action/activable/headbite/neomorph, // Macro 4
@@ -109,6 +110,9 @@
 	freeze_time = 5
 	can_be_shield_blocked = TRUE // Some legacy stuff, self explanatory
 	ability_primacy = XENO_PRIMARY_ACTION_2
+
+/datum/action/xeno_action/activable/pounce/runner/pathogen/neomorph/neophyte
+	slash = FALSE
 
 /datum/action/xeno_action/activable/headbite/neomorph
 	button_icon_state = "template_pathogen"

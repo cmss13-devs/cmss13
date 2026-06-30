@@ -1850,6 +1850,11 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	desc = "The mycelial pelt of a mysterious hybrid creature, a nightmare on the field."
 	icon_state = "aberration_pelt"
 
+/obj/item/pelt/pathogen_archon
+	name = "Archon pelt"
+	desc = "The mycelial pelt of a terrifying creature, a walking apocalypse."
+	icon_state = "archon_pelt"
+
 /obj/item/pelt/pathogen_matriarch
 	name = "Matriarch pelt"
 	desc = "The mycelial pelt of a huge creature, bringer of doom and death."
@@ -1880,6 +1885,11 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	desc = "The mycelial pelt of a strange creature, a worker and hunter."
 	icon_state = "neomorph_pelt"
 
+/obj/item/pelt/pathogen_neophyte
+	name = "Neophyte pelt"
+	desc = "The mycelial pelt of a strange creature, a juvenile worker and hunter."
+	icon_state = "neophyte_pelt"
+
 /obj/item/pelt/pathogen_blight
 	name = "Blight pelt"
 	desc = "The mycelial pelt of a strange creature, a stealthy killer."
@@ -1889,6 +1899,12 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	name = "Sprinter pelt"
 	desc = "The mycelial pelt of a strange creature, a terror on the prowl."
 	icon_state = "sprinter_pelt"
+
+/obj/item/skull/pathogen_archon
+	name = "Archon skull"
+	desc = "The skull of a terrifying creature, a walking apocalypse."
+	icon_state = "archon_skull"
+
 /obj/item/skull/pathogen_matriarch
 	name = "Matriarch skull"
 	desc = "The skull of a huge creature, bringer of doom and death."
@@ -1908,6 +1924,11 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	name = "Neomorph skull"
 	desc = "The skull of a strange creature, a worker and hunter."
 	icon_state = "neomorph_skull"
+
+/obj/item/skull/pathogen_neophyte
+	name = "Neophyte skull"
+	desc = "The skull of a strange creature, a juvenile worker and hunter."
+	icon_state = "neophyte_skull"
 
 /obj/item/skull/pathogen_sprinter
 	name = "Sprinter skull"

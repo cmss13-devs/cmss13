@@ -114,6 +114,15 @@
 	var/cycle_shield_duration = 2 SECONDS
 	var/cycle_shield_value = 50
 
+/datum/action/xeno_action/activable/cyclone/archon
+	ability_primacy = XENO_PRIMARY_ACTION_2
+	activation_delay = 1 SECONDS
+	base_damage = 35
+	cycle_damage = 25
+	cycle_shield_duration = 3 SECONDS
+	cycle_shield_value = 65
+	xeno_cooldown = 35 SECONDS
+
 /datum/action/xeno_action/activable/cyclone/use_ability(atom/affected_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
 	var/range = base_range

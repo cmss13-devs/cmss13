@@ -173,6 +173,11 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 	color = "white"
 	),
 	list(
+	name = PATHOGEN_CREATURE_NEOPHYTE,
+	key = /mob/living/carbon/xenomorph/neophyte,
+	color = "white"
+	),
+	list(
 	name = PATHOGEN_CREATURE_NEOMORPH,
 	key = /mob/living/carbon/xenomorph/neomorph,
 	color = "white"
@@ -188,7 +193,7 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 	list(
 	name = PATHOGEN_CREATURE_CONDITOR,
 	key = /mob/living/carbon/xenomorph/conditor,
-	color="white"
+	color = "white"
 	),
 	list(
 	name = PATHOGEN_CREATURE_BRUTE,
@@ -198,12 +203,12 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 	list(
 	name = PATHOGEN_CREATURE_VENATOR,
 	key = /mob/living/carbon/xenomorph/venator,
-	color="white"
+	color = "white"
 	),
 	list(
 	name = PATHOGEN_CREATURE_HARBINGER,
 	key = /mob/living/carbon/xenomorph/harbinger,
-	color="white"
+	color = "white"
 	)
 	),
 
@@ -211,7 +216,7 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 	list(
 	name = PATHOGEN_CREATURE_ABER_BURSTER,
 	key = /mob/living/carbon/xenomorph/bloodburster/aberrant,
-	color="white"
+	color = "white"
 	),
 	list(
 	name = PATHOGEN_CREATURE_ABERRATION,
@@ -221,12 +226,17 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 	list(
 	name = PATHOGEN_CREATURE_MATRIARCH,
 	key = /mob/living/carbon/xenomorph/matriarch,
-	color="white"
+	color = "white"
+	),
+	list(
+	name = PATHOGEN_CREATURE_ARCHON,
+	key = /mob/living/carbon/xenomorph/archon,
+	color = "white"
 	)/*
 	list(
 	name = PATHOGEN_CREATURE_OVERMIND,
 	key = /mob/living/carbon/xenomorph/overmind,
-	color="white"
+	color = "white"
 	)*/
 	),
 

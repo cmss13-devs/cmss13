@@ -21,12 +21,6 @@
 		return TRUE
 	return FALSE
 
-/mob/living/carbon/xenomorph/proc/give_blight_core()
-	if(hivenumber == XENO_HIVE_PATHOGEN)
-		give_action(src, /datum/action/xeno_action/activable/create_core)
-		return TRUE
-	return FALSE
-
 //####################################################################
 //####################################################################
 //####################################################################
@@ -279,9 +273,13 @@
 
 	var/list/castes_available = caste.evolves_to.Copy()
 
-	// Also offer queen to any tier 1 that can evolve at all if there isn't a queen
-//	if(tier <= 2 && !hive.living_xeno_queen)
-//		castes_available |= PATHOGEN_CREATURE_OVERMIND
+	// Also offer Archon to any tier 1/2 that can evolve at all if there isn't a Archon
+	if(tier <= 2 && !hive.get_caste_count(PATHOGEN_CREATURE_ARCHON))
+		castes_available |= PATHOGEN_CREATURE_ARCHON
+
+	// Allow drones to evo into any T2 before first drop
+	if(caste_type == PATHOGEN_CREATURE_NEOPHYTE && !SSobjectives.first_drop_complete)
+		castes_available = caste.early_evolves_to.Copy()
 
 	for(var/caste in castes_available)
 		if(GLOB.xeno_datum_list[caste].minimum_evolve_time > ROUND_TIME)
@@ -451,6 +449,10 @@
 	SEND_SIGNAL(src, COMSIG_XENO_EVOLVE_TO_NEW_CASTE, new_xeno)
 
 
+/datum/action/xeno_action/onclick/evolve/pathogen
+	button_icon_state = "template_pathogen"
+	icon_file = 'icons/mob/hud/actions_pathogen.dmi'
+
 /mob/living/carbon/xenomorph/bloodburster/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
 	. = ..()
 	make_pathogen_speaker()
@@ -469,6 +471,13 @@
 	. = ..()
 	make_pathogen_speaker()
 /mob/living/carbon/xenomorph/sprinter/do_evolve()
+	do_pathogen_evolve()
+	return
+
+/mob/living/carbon/xenomorph/neophyte/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
+	. = ..()
+	make_pathogen_speaker()
+/mob/living/carbon/xenomorph/neophyte/do_evolve()
 	do_pathogen_evolve()
 	return
 
@@ -507,15 +516,19 @@
 	do_pathogen_evolve()
 	return
 
+// Aberration, Archon, Brute & Matriarch Init handled in their own files.
 /mob/living/carbon/xenomorph/aberration/do_evolve()
 	do_pathogen_evolve()
 	return
 
-// Brute & Matriarch Init handled in their own files.
+/mob/living/carbon/xenomorph/archon/do_evolve()
+	do_pathogen_evolve()
+	return
 
 /mob/living/carbon/xenomorph/brute/do_evolve()
 	do_pathogen_evolve()
 	return
+
 /mob/living/carbon/xenomorph/matriarch/do_evolve()
 	do_pathogen_evolve()
 	return

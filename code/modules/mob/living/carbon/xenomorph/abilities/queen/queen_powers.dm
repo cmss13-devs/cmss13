@@ -870,10 +870,10 @@
 	return ..()
 
 /datum/action/xeno_action/activable/gut/use_ability(atom/target)
-	var/mob/living/carbon/xenomorph/queen/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!action_cooldown_check())
 		return
-	if(xeno.queen_gut(target))
+	if(xeno.xeno_gut(target))
 		apply_cooldown()
 	return ..()
 

@@ -77,7 +77,11 @@
 	to_chat(src, SPAN_XENODANGER("Our carapace crackles and our tendons strengthen. We are ready to <a href='byond://?src=\ref[src];evolve=1;'>evolve</a>!")) //Makes this bold so the Xeno doesn't miss it
 	playsound_client(client, sound('sound/effects/xeno_evolveready.ogg'))
 
-	var/datum/action/xeno_action/onclick/evolve/evolve_action = new()
+	var/datum/action/xeno_action/onclick/evolve/evolve_action
+	if(hivenumber == XENO_HIVE_PATHOGEN)
+		evolve_action = new /datum/action/xeno_action/onclick/evolve/pathogen()
+	else
+		evolve_action = new()
 	evolve_action.give_to(src)
 
 // Always deal 80% of damage and deal the other 20% depending on how many fire stacks mob has

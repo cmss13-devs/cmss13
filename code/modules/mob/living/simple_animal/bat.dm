@@ -9,6 +9,8 @@
 	speak = list("screech")
 	speak_emote = list("screeches")
 	emote_hear = list("screeches")
+	min_turns_per_move = 1
+	max_turns_per_move = 4
 
 /mob/living/simple_animal/small/bat/Life(delta_time)
 	. = ..()

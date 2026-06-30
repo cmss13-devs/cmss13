@@ -33,6 +33,10 @@
 	///Unlike speak_emote, the list of things in this variable only show by themselves with no spoken text. IE: Ian barks, Ian yaps.
 	var/list/emote_see = list()
 
+	///How many ticks before the animal moves. Can be overridden.
+	var/min_turns_per_move = 1
+	var/max_turns_per_move = 1
+
 	var/turns_per_move = 1
 	var/turns_since_move = 0
 	universal_speak = FALSE //No, just no.
@@ -79,6 +83,10 @@
 /mob/living/simple_animal/Initialize()
 	. = ..()
 	SSmob.living_misc_mobs += src
+
+	// Randomize each simple mobs movement timer
+	turns_per_move = rand(min_turns_per_move, max_turns_per_move)
+	turns_since_move = rand(0, turns_per_move)
 
 /mob/living/simple_animal/Destroy()
 	SSmob.living_misc_mobs -= src
@@ -190,6 +198,7 @@
 					Move(get_step(src, move_dir ))
 					setDir(move_dir)
 					turns_since_move = 0
+					turns_per_move = rand(min_turns_per_move, max_turns_per_move)
 
 	//Speaking
 	if(!client && speak_chance)

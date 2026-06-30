@@ -11,7 +11,8 @@
 	emote_hear = list("barks.", "woofs.", "yaps.", "pants.")
 	emote_see = list("shakes its head.", "shivers.")
 	speak_chance = 1
-	turns_per_move = 10
+	min_turns_per_move = 2
+	max_turns_per_move = 6
 	holder_type = /obj/item/holder/corgi
 	meat_type = /obj/item/reagent_container/food/snacks/meat/corgi
 	meat_amount = 3

@@ -47632,23 +47632,19 @@
 /turf/open/floor/almayer/redcorner,
 /area/almayer/shipboard/brig/yard)
 "ckt" = (
-/obj/structure/bed/chair/comfy/beige,
-/turf/open/floor/almayer/red/south,
-/area/almayer/shipboard/brig/yard)
-"cku" = (
 /turf/open/floor/almayer/red/southeast,
 /area/almayer/shipboard/brig/yard)
-"ckv" = (
+"cku" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig/yard)
-"ckw" = (
+"ckv" = (
 /obj/structure/sign/calendar{
 	pixel_y = 30
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig/yard)
-"ckx" = (
+"ckw" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	layer = 3.33;
@@ -47656,14 +47652,14 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig/yard)
-"cky" = (
+"ckx" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/yard)
-"ckz" = (
+"cky" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/cryopod{
 	layer = 3.1;
@@ -47672,7 +47668,7 @@
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/shipboard/brig/yard)
-"ckA" = (
+"ckz" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/disposal,
 /obj/structure/machinery/door_control{
@@ -47689,7 +47685,7 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig/yard)
-"ckB" = (
+"ckA" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
@@ -47698,14 +47694,14 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/visitation)
-"ckC" = (
+"ckB" = (
 /obj/structure/machinery/status_display{
 	pixel_y = -30
 	},
 /obj/structure/machinery/light,
 /turf/open/floor/almayer/silver/south,
 /area/almayer/shipboard/brig/visitation_waiting)
-"ckD" = (
+"ckC" = (
 /obj/structure/window/framed/almayer,
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 8
@@ -47717,7 +47713,7 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/shipboard/brig/visitation_waiting)
-"ckE" = (
+"ckD" = (
 /obj/structure/desertdam/decals/road_edge{
 	pixel_x = -12
 	},
@@ -47728,26 +47724,26 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plating,
 /area/almayer/shipboard/brig/yard)
-"ckF" = (
+"ckE" = (
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/yard)
-"ckG" = (
+"ckF" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 8
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/yard)
-"ckH" = (
+"ckG" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/yard)
-"ckI" = (
+"ckH" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/almayer/red/east,
 /area/almayer/shipboard/brig/yard)
-"ckJ" = (
+"ckI" = (
 /obj/structure/transmitter/no_dnd{
 	pixel_x = -5;
 	pixel_y = 28;
@@ -47767,7 +47763,7 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig/yard)
-"ckK" = (
+"ckJ" = (
 /obj/structure/machinery/door/airlock/almayer/security/reinforced{
 	dir = 2;
 	name = "\improper Interrogation";
@@ -47779,7 +47775,7 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/brig/interrogation)
-"ckL" = (
+"ckK" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/reinforced{
 	name = "\improper Visitation Observation";
 	dir = 2;
@@ -47791,11 +47787,11 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/red/west,
 /area/almayer/shipboard/brig/visitation)
-"ckM" = (
+"ckL" = (
 /obj/structure/window/framed/almayer,
 /turf/open/floor/plating,
 /area/almayer/shipboard/brig/visitation)
-"ckN" = (
+"ckM" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/door/window/brigdoor/southright,
 /obj/structure/machinery/door_control{
@@ -47815,7 +47811,7 @@
 	},
 /turf/open/floor/almayer/red/east,
 /area/almayer/shipboard/brig/visitation)
-"ckO" = (
+"ckN" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
@@ -47823,6 +47819,16 @@
 	dir = 4
 	},
 /turf/open/floor/almayer,
+/area/almayer/shipboard/brig/visitation_waiting)
+"ckO" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 9
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/visitation_waiting)
 "ckP" = (
 /obj/structure/surface/table/almayer,
@@ -47843,16 +47849,6 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/delta)
 "ckS" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 9
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/shipboard/brig/visitation_waiting)
-"ckT" = (
 /obj/structure/bookcase{
 	opacity = 0
 	},
@@ -47863,12 +47859,16 @@
 /obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/almayer/silver/east,
 /area/almayer/shipboard/brig/visitation_waiting)
-"ckU" = (
+"ckT" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/yard)
-"ckV" = (
+"ckU" = (
 /turf/open/floor/almayer/redcorner/east,
+/area/almayer/shipboard/brig/yard)
+"ckV" = (
+/obj/structure/machinery/camera/autoname/almayer/brig,
+/turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/brig/yard)
 "ckW" = (
 /obj/structure/window/framed/almayer/hull,
@@ -47878,9 +47878,9 @@
 /turf/open/floor/almayer/blue/north,
 /area/almayer/squads/delta)
 "ckY" = (
-/obj/structure/machinery/camera/autoname/almayer/brig,
-/turf/open/floor/almayer/red/north,
-/area/almayer/shipboard/brig/yard)
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/red/southwest,
+/area/almayer/shipboard/brig/interrogation)
 "ckZ" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -47892,10 +47892,6 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/engineering/lower/engine_core)
 "cla" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer/red/southwest,
-/area/almayer/shipboard/brig/interrogation)
-"clb" = (
 /obj/structure/surface/table/almayer,
 /obj/item/clipboard{
 	pixel_x = 7
@@ -47911,22 +47907,19 @@
 	},
 /turf/open/floor/almayer/red/south,
 /area/almayer/shipboard/brig/interrogation)
-"clc" = (
+"clb" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/yard)
-"cld" = (
+"clc" = (
 /obj/structure/bed/chair{
 	dir = 8
 	},
 /turf/open/floor/almayer/red/east,
 /area/almayer/shipboard/brig/yard)
-"cle" = (
-/turf/open/floor/almayer/sterile_green_side/east,
-/area/almayer/medical/lower_medical_lobby)
-"clf" = (
+"cld" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/reinforced{
 	name = "\improper Yard Observation Bubble";
 	dir = 2;
@@ -47939,6 +47932,16 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/brig/cells)
+"cle" = (
+/turf/open/floor/almayer/sterile_green_side/east,
+/area/almayer/medical/lower_medical_lobby)
+"clf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/turf/open/floor/almayer/red/southwest,
+/area/almayer/shipboard/brig/interrogation)
 "clg" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/delta)
@@ -55301,12 +55304,8 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
 "ezX" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/pipes/vents/pump{
-	dir = 4
-	},
-/turf/open/floor/almayer/red/southwest,
-/area/almayer/shipboard/brig/interrogation)
+/turf/open/floor/almayer/red/south,
+/area/almayer/shipboard/brig/yard)
 "eAg" = (
 /obj/structure/flora/pottedplant{
 	desc = "It is made of Fiberbush(tm). It contains asbestos.";
@@ -70140,6 +70139,7 @@
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/charlie)
 "lbs" = (
+/obj/structure/bed/chair/comfy/beige,
 /turf/open/floor/almayer/red/south,
 /area/almayer/shipboard/brig/yard)
 "lbB" = (
@@ -198548,7 +198548,7 @@ vlM
 vlM
 iHG
 dCe
-ckE
+ckD
 vCy
 vCy
 eyV
@@ -198639,7 +198639,7 @@ col
 tUx
 iTI
 nVR
-ckF
+ckE
 ckn
 nux
 tau
@@ -198948,7 +198948,7 @@ cQG
 tUx
 iTI
 cnK
-ckF
+ckE
 ckn
 aaB
 aaB
@@ -199059,11 +199059,11 @@ lMc
 cjX
 cjX
 cjX
-ckF
+ckE
 cjX
 cjX
 cjX
-ckF
+ckE
 cjX
 cjX
 cjX
@@ -199156,17 +199156,17 @@ tpn
 xkd
 hjM
 xTH
-ckU
-ckU
+ckT
+ckT
 ade
-ckU
-ckU
-ckU
-ckU
+ckT
+ckT
+ckT
+ckT
 ade
-ckU
-ckU
-ckG
+ckT
+ckT
+ckF
 cks
 dfk
 vzz
@@ -199259,18 +199259,18 @@ iTI
 pUD
 cnz
 ckn
-ckF
-ckF
-ckF
-ckF
-ckF
-ckF
-ckF
-ckF
-ckF
-ckF
+ckE
+ckE
+ckE
+ckE
+ckE
+ckE
+ckE
+ckE
+ckE
+ckE
 ckn
-ckt
+lbs
 ckl
 cjY
 cXi
@@ -199363,17 +199363,17 @@ xkd
 nkF
 hkH
 kuJ
-ckF
-ckF
+ckE
+ckE
 icM
-ckF
-ckF
-ckF
+ckE
+ckE
+ckE
 icM
-clc
-ckF
-ckH
-ckt
+clb
+ckE
+ckG
+lbs
 nYd
 thL
 jVa
@@ -199466,7 +199466,7 @@ xkd
 xvQ
 eDt
 kuJ
-ckF
+ckE
 kAL
 xkd
 cma
@@ -199474,9 +199474,9 @@ cma
 cma
 xkd
 ohJ
-ckF
-ckH
-ckt
+ckE
+ckG
+lbs
 liZ
 thL
 cjQ
@@ -199576,10 +199576,10 @@ cmx
 cmj
 qxe
 clO
-cld
-ckV
-ckH
-lbs
+clc
+ckU
+ckG
+ezX
 uaU
 rUk
 xaM
@@ -199682,7 +199682,7 @@ xkd
 xkd
 omt
 ckn
-lbs
+ezX
 uxa
 iZU
 nhG
@@ -199783,9 +199783,9 @@ eZH
 cmc
 eZo
 xkd
-ckY
+ckV
 ckn
-lbs
+ezX
 tov
 iZU
 sUs
@@ -199885,10 +199885,10 @@ cmz
 cmm
 tlp
 lXb
-clf
+cld
 oXp
-ckI
-cku
+ckH
+ckt
 ckm
 iZU
 cXi
@@ -199990,8 +199990,8 @@ hvd
 hvd
 hvd
 hvd
-ckJ
-ckv
+ckI
+cku
 iFc
 cjZ
 cjR
@@ -200091,10 +200091,10 @@ hvd
 lSs
 cmd
 pgP
-ezX
+clf
 hvd
 hvd
-ckw
+ckv
 ckn
 cka
 cjS
@@ -200195,9 +200195,9 @@ cmn
 fKw
 clP
 clq
-cla
-ckK
-ckx
+ckY
+ckJ
+ckw
 cko
 cjL
 cjT
@@ -200300,7 +200300,7 @@ clt
 clt
 hvd
 hvd
-cky
+ckx
 ckp
 cjL
 cjU
@@ -200401,9 +200401,9 @@ cjk
 cmg
 clQ
 clu
-clb
+cla
 hvd
-ckz
+cky
 ckp
 cjL
 oEE
@@ -200506,7 +200506,7 @@ clR
 uVV
 iBl
 hvd
-ckA
+ckz
 rkV
 cjL
 vYi
@@ -200711,7 +200711,7 @@ qUz
 cjK
 clx
 iTl
-ckL
+ckK
 frt
 vUI
 tgJ
@@ -200815,7 +200815,7 @@ cjK
 vxK
 gwj
 cjK
-ckB
+ckA
 csy
 bWQ
 deH
@@ -200917,7 +200917,7 @@ mBx
 cjK
 cly
 gwj
-ckM
+ckL
 wxF
 vJc
 kUg
@@ -201226,7 +201226,7 @@ gXx
 wdh
 cjK
 mHz
-ckN
+ckM
 jPS
 xrt
 ckf
@@ -201844,7 +201844,7 @@ uwN
 uVd
 ckg
 tiF
-ckO
+ckN
 rFg
 kkv
 ckg
@@ -201948,7 +201948,7 @@ vka
 clB
 opF
 vAG
-ckC
+ckB
 ckg
 ckg
 pdp
@@ -202050,7 +202050,7 @@ cmh
 clU
 clC
 wtY
-ckS
+ckO
 jIT
 ckg
 aCA
@@ -202153,7 +202153,7 @@ laO
 rKQ
 ckg
 yeR
-ckT
+ckS
 nNg
 ckg
 pjz
@@ -202255,9 +202255,9 @@ pZS
 jHh
 vCx
 ckg
-ckD
-ckD
-ckD
+ckC
+ckC
+ckC
 ckg
 hrI
 ioM

@@ -16,6 +16,8 @@
 
 	/// Whether or not the pipe will explode (when on the Almayer) during hijack
 	var/explodey = TRUE
+	/// Whether the pipe is currently exploding
+	var/exploding = FALSE
 	/// The grenade subtypes that pipes will use when they explode
 	var/static/list/exploding_types = list(/obj/item/explosive/grenade/high_explosive/bursting_pipe, /obj/item/explosive/grenade/incendiary/bursting_pipe)
 
@@ -199,6 +201,9 @@
  * time_till: required, the time until the explosion occurs. The sound file lasts 5 seconds.
  */
 /obj/structure/pipes/proc/warning_explode(time_till)
+	if(exploding)
+		return // Already going to happen
+
 	if(!time_till)
 		CRASH("No time given to /warning_explode.")
 	var/turf/position = get_turf(src)
@@ -209,6 +214,7 @@
 	playsound(src, 'sound/effects/pipe_hissing.ogg', vol = 40)
 	addtimer(CALLBACK(src, PROC_REF(kablooie)), time_till)
 	visible_message(SPAN_HIGHDANGER("[src] begins hissing violently!"))
+	exploding = TRUE
 
 /**
  * Makes the pipe go boom.

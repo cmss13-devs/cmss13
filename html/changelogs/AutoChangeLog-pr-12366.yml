@@ -1,4 +1,0 @@
-author: "MistChristmas"
-delete-after: True
-changes:
-  - bugfix: "Radial Menus no longer get stuck unable to appear for new, reconnecting, or aghosting users."

@@ -197,9 +197,9 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/b_eyes = 0 //Eye color
 	var/species = "Human"    //Species datum to use.
 	var/ethnicity = "Western" //Legacy, kept to update save files
-	var/skin_color = "Pale 2" // Skin color
-	var/body_size = "Average" // Body Size
-	var/body_type = "Lean" // Body Type
+	var/skin_color = SKIN_COLOR_PALE2 // Skin color
+	var/body_size = BODY_SIZE_AVERAGE // Body Size
+	var/body_type = BODY_TYPE_LEAN // Body Type
 	var/language = "None" //Secondary language
 	var/preferred_squad = "None"
 	var/preferred_spec = list()

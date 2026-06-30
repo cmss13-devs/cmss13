@@ -262,7 +262,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		to_chat(src, SPAN_WARNING("Our link to the hive is being suppressed...we should wait a bit."))
 		return FALSE
 
-	if(lock_evolve)
+	if(lock_evolve || (hive.evolution_locked && !islarva(src)))
 		if(banished)
 			to_chat(src, SPAN_WARNING("We are banished and cannot reach the hivemind."))
 		else
@@ -381,7 +381,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(length(caste.deevolves_to) < 1)
 		to_chat(src, SPAN_XENOWARNING("We can't deevolve any further."))
 		return
-	if(lock_evolve)
+	if(lock_evolve || hive.evolution_locked)
 		if(banished)
 			to_chat(src, SPAN_WARNING("We are banished and cannot reach the hivemind."))
 		else
@@ -459,6 +459,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 	new_xeno.built_structures = built_structures.Copy()
 	built_structures = null
+	new_xeno.lock_evolve = lock_evolve
 
 	if(mind)
 		mind.transfer_to(new_xeno)

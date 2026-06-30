@@ -556,6 +556,13 @@
 /obj/effect/landmark/yautja_teleport,
 /turf/open/gm/dirt/brown/variant_1,
 /area/atlan/asteroid/processing_dock)
+"abP" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/stack/sheet/metal/small_stack,
+/turf/open/floor/strata/green1,
+/area/atlan/station/hab_docks)
 "ack" = (
 /obj/structure/largecrate/random/secure,
 /obj/structure/machinery/light{
@@ -17606,6 +17613,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/item/stack/sheet/metal/med_small_stack,
 /turf/open/floor/prison/darkyellowfull2,
 /area/atlan/station/water_maintenance)
 "lEV" = (
@@ -29621,7 +29629,7 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/item/stack/sheet/metal/medium_stack,
+/obj/item/stack/sheet/metal/med_large_stack,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/storage)
 "tBO" = (
@@ -48570,7 +48578,7 @@ wEE
 wEE
 eRE
 aNp
-cTc
+abP
 wEE
 wEE
 wEE

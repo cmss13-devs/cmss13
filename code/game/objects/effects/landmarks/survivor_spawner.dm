@@ -801,8 +801,8 @@
 	intro_text = list("You are a member of a UPP response team!",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive. This station's armoury and cargo should hold additional supplies./span>")
-	story_text = "<span style='color:#607c4c; font-size:95%;'>You are part of an response team—of the Union of Progressive Peoples, deployed alongside the CEC to build garrisons on distant worlds. While garrisoned on a nearby post you received a distress signal from the Atlan Station mining platform in orbit of the gas giant KG-256. Vital to the region's fuel economy, your team is sent to investigate.</span><br><br>\
-<span style='color:#607c4c; font-size:95%;'>The distress signal was automated and held no intel on what occured though it was likely pirates holding the station for hostage or a systems failure. When your team landed however, the station was eerily empty.</span><br><br>\
+	story_text = "<span style='color:#607c4c; font-size:95%;'>You are part of an response team of the Union of Progressive Peoples, deployed alongside the CEC to build garrisons on distant worlds. While garrisoned on a nearby post you received a distress signal from the Atlan Station mining platform in orbit of the gas giant KG-256. Vital to the region's fuel economy, your team was sent to investigate.</span><br><br>\
+<span style='color:#607c4c; font-size:95%;'>The distress signal was automated and gave no information, your best guesses wwere pirates or a systems failure. When your team landed however, the station was eerily empty.</span><br><br>\
 <span style='color:#607c4c; font-size:95%;'>While trying to locate the station's administrator your squad was attacked by Xenomorphs and you were forced to fall back to your ship, only to find they had attacked in your absence- killing your pilot and damaging the engines. All you can do now is hope someone else heard the distress signal. </span>"
 	spawn_priority = SPAWN_PRIORITY_LOW
 
@@ -814,8 +814,8 @@
 	intro_text = list("You are a member of a UPP response team!",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive. This station's armoury and cargo should hold additional supplies./span>")
-	story_text = "<span style='color:#607c4c; font-size:95%;'>You are part of an response team—of the Union of Progressive Peoples, deployed alongside the CEC to build garrisons on distant worlds. While garrisoned on a nearby post you received a distress signal from the Atlan Station mining platform in orbit of the gas giant KG-256. Vital to the region's fuel economy, your team is sent to investigate.</span><br><br>\
-<span style='color:#607c4c; font-size:95%;'>The distress signal was automated and held no intel on what occured though it was likely pirates holding the station for hostage or a systems failure. When your team landed however, the station was eerily empty.</span><br><br>\
+	story_text = "<span style='color:#607c4c; font-size:95%;'>You are part of an response team of the Union of Progressive Peoples, deployed alongside the CEC to build garrisons on distant worlds. While garrisoned on a nearby post you received a distress signal from the Atlan Station mining platform in orbit of the gas giant KG-256. Vital to the region's fuel economy, your team was sent to investigate.</span><br><br>\
+<span style='color:#607c4c; font-size:95%;'>The distress signal was automated and gave no information, your best guesses wwere pirates or a systems failure. When your team landed however, the station was eerily empty.</span><br><br>\
 <span style='color:#607c4c; font-size:95%;'>While trying to locate the station's administrator your squad was attacked by Xenomorphs and you were forced to fall back to your ship, only to find they had attacked in your absence- killing your pilot and damaging the engines. All you can do now is hope someone else heard the distress signal. </span>"
 	spawn_priority = SPAWN_PRIORITY_MEDIUM
 
@@ -827,8 +827,8 @@
 	intro_text = list("You are a member of a UPP response team!",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive. This station's armoury and cargo should hold additional supplies./span>")
-	story_text = "<span style='color:#607c4c; font-size:95%;'>You are part of an response team—of the Union of Progressive Peoples, deployed alongside the CEC to build garrisons on distant worlds. While garrisoned on a nearby post you received a distress signal from the Atlan Station mining platform in orbit of the gas giant KG-256. Vital to the region's fuel economy, your team is sent to investigate.</span><br><br>\
-<span style='color:#607c4c; font-size:95%;'>The distress signal was automated and held no intel on what occured though it was likely pirates holding the station for hostage or a systems failure. When your team landed however, the station was eerily empty.</span><br><br>\
+	story_text = "<span style='color:#607c4c; font-size:95%;'>You are part of an response team of the Union of Progressive Peoples, deployed alongside the CEC to build garrisons on distant worlds. While garrisoned on a nearby post you received a distress signal from the Atlan Station mining platform in orbit of the gas giant KG-256. Vital to the region's fuel economy, your team was sent to investigate.</span><br><br>\
+<span style='color:#607c4c; font-size:95%;'>The distress signal was automated and gave no information, your best guesses wwere pirates or a systems failure. When your team landed however, the station was eerily empty.</span><br><br>\
 <span style='color:#607c4c; font-size:95%;'>While trying to locate the station's administrator your squad was attacked by Xenomorphs and you were forced to fall back to your ship, only to find they had attacked in your absence- killing your pilot and damaging the engines. All you can do now is hope someone else heard the distress signal. </span>"
 	spawn_priority = SPAWN_PRIORITY_MEDIUM
 
@@ -840,8 +840,8 @@
 	intro_text = list("You are a member of a UPP response team!",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive. This station's armoury and cargo should hold additional supplies./span>")
-	story_text = "<span style='color:#607c4c; font-size:95%;'>You are part of an response team—of the Union of Progressive Peoples, deployed alongside the CEC to build garrisons on distant worlds. While garrisoned on a nearby post you received a distress signal from the Atlan Station mining platform in orbit of the gas giant KG-256. Vital to the region's fuel economy, your team is sent to investigate.</span><br><br>\
-<span style='color:#607c4c; font-size:95%;'>The distress signal was automated and held no intel on what occured though it was likely pirates holding the station for hostage or a systems failure. When your team landed however, the station was eerily empty.</span><br><br>\
+	story_text = "<span style='color:#607c4c; font-size:95%;'>You are part of an response team of the Union of Progressive Peoples, deployed alongside the CEC to build garrisons on distant worlds. While garrisoned on a nearby post you received a distress signal from the Atlan Station mining platform in orbit of the gas giant KG-256. Vital to the region's fuel economy, your team was sent to investigate.</span><br><br>\
+<span style='color:#607c4c; font-size:95%;'>The distress signal was automated and gave no information, your best guesses wwere pirates or a systems failure. When your team landed however, the station was eerily empty.</span><br><br>\
 <span style='color:#607c4c; font-size:95%;'>While trying to locate the station's administrator your squad was attacked by Xenomorphs and you were forced to fall back to your ship, only to find they had attacked in your absence- killing your pilot and damaging the engines. All you can do now is hope someone else heard the distress signal. </span>"
 	spawn_priority = SPAWN_PRIORITY_HIGH
 
@@ -853,8 +853,8 @@
 	intro_text = list("You are a member of a UPP response team!",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive. This station's armoury and cargo should hold additional supplies./span>")
-	story_text = "<span style='color:#607c4c; font-size:95%;'>You are part of an response team—of the Union of Progressive Peoples, deployed alongside the CEC to build garrisons on distant worlds. While garrisoned on a nearby post you received a distress signal from the Atlan Station mining platform in orbit of the gas giant KG-256. Vital to the region's fuel economy, your team is sent to investigate.</span><br><br>\
-<span style='color:#607c4c; font-size:95%;'>The distress signal was automated and held no intel on what occured though it was likely pirates holding the station for hostage or a systems failure. When your team landed however, the station was eerily empty.</span><br><br>\
+	story_text = "<span style='color:#607c4c; font-size:95%;'>You are part of an response team of the Union of Progressive Peoples, deployed alongside the CEC to build garrisons on distant worlds. While garrisoned on a nearby post you received a distress signal from the Atlan Station mining platform in orbit of the gas giant KG-256. Vital to the region's fuel economy, your team was sent to investigate.</span><br><br>\
+<span style='color:#607c4c; font-size:95%;'>The distress signal was automated and gave no information, your best guesses wwere pirates or a systems failure. When your team landed however, the station was eerily empty.</span><br><br>\
 <span style='color:#607c4c; font-size:95%;'>While trying to locate the station's administrator your squad was attacked by Xenomorphs and you were forced to fall back to your ship, only to find they had attacked in your absence- killing your pilot and damaging the engines. All you can do now is hope someone else heard the distress signal. </span>"
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
 

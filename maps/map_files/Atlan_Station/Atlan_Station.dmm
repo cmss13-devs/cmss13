@@ -64,11 +64,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/medical)
-"aan" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/strata/cyan1,
-/area/atlan/station/medical)
 "aao" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/cyan1/east,
@@ -117,6 +112,15 @@
 "aax" = (
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/atlan/station/double_dorms)
+"aay" = (
+/obj/structure/bed/chair{
+	dir = 4;
+	pixel_x = -5;
+	pixel_y = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/cyan1/east,
+/area/atlan/station/medical)
 "aaA" = (
 /obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/strata,
@@ -49004,7 +49008,7 @@ eoJ
 aAk
 eoJ
 sCH
-dgc
+aay
 dgc
 dgc
 dgc
@@ -49615,7 +49619,7 @@ eoJ
 puB
 ibp
 wyS
-bnz
+hIZ
 abY
 aco
 dsp
@@ -49820,7 +49824,7 @@ eoJ
 rZQ
 bnz
 bnz
-bnz
+hIZ
 dsp
 aca
 abV
@@ -50022,7 +50026,7 @@ mbC
 lOK
 pPY
 dLu
-aan
+bnz
 hIZ
 qpb
 aca

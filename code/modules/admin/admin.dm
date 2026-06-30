@@ -7,7 +7,7 @@
 		jump_click = ADMIN_JUMP_COORDS(jump_x, jump_y, jump_z)
 	var/rendered = "[SPAN_PREFIX("ADMIN LOG:")] [SPAN_MESSAGE("[text]")] [jump_click]"
 	for(var/client/admin_client as anything in GLOB.admins)
-		if(admin_client && admin_client.admin_holder && (R_MOD & admin_client.admin_holder.rights))
+		if(CLIENT_IS_STAFF(admin_client))
 			to_chat(admin_client, SPAN_ADMIN(rendered))
 
 /proc/msg_admin_attack(text, jump_x, jump_y, jump_z) //Toggleable Attack Messages; server logs don't include the JMP part
@@ -20,7 +20,7 @@
 		jump_click = ADMIN_JUMP_COORDS(jump_x, jump_y, jump_z)
 	var/rendered = SPAN_COMBAT("[SPAN_PREFIX("ATTACK:")] [SPAN_MESSAGE("[text]")] [jump_click]")
 	for(var/client/admin_client as anything in GLOB.admins)
-		if(admin_client && admin_client.admin_holder && (R_MOD & admin_client.admin_holder.rights))
+		if(CLIENT_IS_STAFF(admin_client))
 			if(admin_client.prefs.toggles_chat & CHAT_ATTACKLOGS)
 				to_chat(admin_client, rendered)
 
@@ -32,7 +32,7 @@
 		jump_click = ADMIN_COORDJMP(jump_location)
 	var/rendered = SPAN_NICHE("[SPAN_PREFIX("ADMIN NICHE LOG:")] [SPAN_MESSAGE("[text]")] [jump_click]")
 	for(var/client/admin_client as anything in GLOB.admins)
-		if(admin_client && admin_client.admin_holder && (R_MOD & admin_client.admin_holder.rights))
+		if(CLIENT_IS_STAFF(admin_client))
 			if(admin_client.prefs.toggles_chat & CHAT_NICHELOGS)
 				to_chat(admin_client, rendered)
 
@@ -62,7 +62,7 @@
 	else
 		text_holder = "///DEAD/// - [SPAN_MESSAGE("[text]")]"
 	for(var/client/admin_client as anything in GLOB.admins)
-		if(admin_client && admin_client.admin_holder && (R_MOD & admin_client.admin_holder.rights))
+		if(CLIENT_IS_STAFF(admin_client))
 			var/datum/preferences/admin_prefs = admin_client.prefs
 			if(admin_prefs.toggles_chat & CHAT_FFATTACKLOGS)
 				rendered += "<font color=[alive ? admin_prefs.ff_log_color : admin_prefs.ffd_log_color]><b>[text_holder]</b></font>[location_suffix]"

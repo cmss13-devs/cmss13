@@ -608,7 +608,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			dat += "<h2><b><u>Chat Settings:</u></b></h2>"
 			if(CONFIG_GET(flag/ooc_country_flags))
 				dat += "<b>OOC Country Flag:</b> <a href='byond://?_src_=prefs;preference=ooc_flag'><b>[(toggle_prefs & TOGGLE_OOC_FLAG) ? "Enabled" : "Disabled"]</b></a><br>"
-			if(user.client.admin_holder && user.client.admin_holder.rights & R_DEBUG)
+			if(CLIENT_HAS_RIGHTS(user.client, R_DEBUG))
 				dat += "<b>View Master Controller Tab:</b> <a href='byond://?_src_=prefs;preference=ViewMC'><b>[View_MC ? "TRUE" : "FALSE"]</b></a><br>"
 			if(unlock_content)
 				dat += "<b>BYOND Membership Publicity:</b> <a href='byond://?_src_=prefs;preference=publicity'><b>[(toggle_prefs & TOGGLE_MEMBER_PUBLIC) ? "Public" : "Hidden"]</b></a><br>"
@@ -620,8 +620,9 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			dat += "<b>Ghost Hivemind:</b> <a href='byond://?_src_=prefs;preference=ghost_hivemind'><b>[(toggles_chat & CHAT_GHOSTHIVEMIND) ? "Show Hivemind" : "Hide Hivemind"]</b></a><br>"
 			dat += "<b>Abovehead Chat:</b> <a href='byond://?_src_=prefs;preference=lang_chat_disabled'><b>[lang_chat_disabled ? "Hide" : "Show"]</b></a><br>"
 			dat += "<b>Abovehead Emotes:</b> <a href='byond://?_src_=prefs;preference=langchat_emotes'><b>[(toggles_langchat & LANGCHAT_SEE_EMOTES) ? "Show" : "Hide"]</b></a><br>"
-			dat += "<b>FF Log Color:</b> <a href='byond://?_src_=prefs;preference=fflogcolor'><b>[ff_log_color]</b> <table style='display:inline;' bgcolor='[ff_log_color]'><tr><td>__</td></tr></table></a><br>"
-			dat += "<b>FF Log Color (Dead):</b> <a href='byond://?_src_=prefs;preference=ffdlogcolor'><b>[ffd_log_color]</b> <table style='display:inline;' bgcolor='[ffd_log_color]'><tr><td>__</td></tr></table></a><br>"
+			if(CLIENT_IS_STAFF(user.client))
+				dat += "<b>FF Log Color:</b> <a href='byond://?_src_=prefs;preference=fflogcolor'><b>[ff_log_color]</b> <table style='display:inline;' bgcolor='[ff_log_color]'><tr><td>__</td></tr></table></a><br>"
+				dat += "<b>FF Log Color (Dead):</b> <a href='byond://?_src_=prefs;preference=ffdlogcolor'><b>[ffd_log_color]</b> <table style='display:inline;' bgcolor='[ffd_log_color]'><tr><td>__</td></tr></table></a><br>"
 
 			dat += "</div>"
 
@@ -1869,7 +1870,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					no_radial_labels_preference = !no_radial_labels_preference
 
 				if("ViewMC")
-					if(user.client.admin_holder && user.client.admin_holder.rights & R_DEBUG)
+					if(CLIENT_HAS_RIGHTS(user.client, R_DEBUG))
 						View_MC = !View_MC
 
 				if("playtime_perks")

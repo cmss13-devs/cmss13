@@ -61,7 +61,6 @@
 		text_holder = "[SPAN_MESSAGE("[text]")]"
 	else
 		text_holder = "///DEAD/// - [SPAN_MESSAGE("[text]")]"
-	rendered += location_suffix
 	for(var/client/admin_client as anything in GLOB.admins)
 		if(admin_client && admin_client.admin_holder && (R_MOD & admin_client.admin_holder.rights))
 			var/datum/preferences/admin_prefs = admin_client.prefs

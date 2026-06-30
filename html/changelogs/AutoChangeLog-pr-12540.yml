@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - balance: "HE OB now has exponential falloff when entering into pylon protected areas"

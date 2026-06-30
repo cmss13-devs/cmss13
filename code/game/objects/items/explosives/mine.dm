@@ -574,8 +574,15 @@
 
 /obj/item/explosive/mine/sharp/get_examine_text(mob/user)
 	. = ..()
-	if(skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) || user.skills.get_skill_level(SKILL_SPEC_WEAPONS) == SKILL_SPEC_GRENADIER)
-		var/extended_description = ""
+	var/extended_description = ""
+	if(!ishuman(user))
+		switch (mine_mode)
+			if (SHARP_DANGER_MODE, SHARP_SAFE_MODE)
+				extended_description = "one comes near it"
+			if (SHARP_DIRECTED_MODE)
+				extended_description = "directly stepped on"
+		. += SPAN_INFO("Your heightened senses allow you to discern how this sharp stick triggers: This will blow up <b>when [extended_description]</b>.")
+	else if(skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_GRENADIER))
 		switch (mine_mode)
 			if (SHARP_DANGER_MODE)
 				extended_description = "DANGER"
@@ -589,7 +596,7 @@
 		else if(deploy_time)
 			var/remaining_ds = max(0, (deploy_time + 5 MINUTES) - world.time)
 			var/remaining_mins = round(remaining_ds / 600, 1)
-			. += SPAN_INFO("Your training allows you determine how much time is approximately left on the mine: <b>~[remaining_mins] [remaining_mins == 1 ? "minute" : "minutes"]</b> remaining before auto-disarm.")
+			. += SPAN_INFO("Your training allows you to determine how much time is approximately left on the mine: <b>~[remaining_mins] [remaining_mins == 1 ? "minute" : "minutes"]</b> remaining before auto-disarm.")
 
 /obj/item/explosive/mine/sharp/incendiary
 	name = "\improper P9 SHARP incendiary dart"

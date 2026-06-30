@@ -1,8 +1,9 @@
 [
     {
-        "type": "pick", "name": "Atlan Nothing",
+        "type": "pick", "name": "Atlan Event",
         "choices": [
-            { "weight": 5, "type": "def", "values": { "lvevent": "none" } }
+            { "weight": 8, "type": "def", "values": { "lvevent": "none" } },
+    	    { "weight": 2, "type": "def", "values": { "lvevent": "uppresponders" } }
         ]
     }
 

@@ -1,0 +1,513 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"dF" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 8
+	},
+/obj/effect/landmark/survivor_spawner/atlan_responder_UPP/specialist,
+/turf/open/floor/plating,
+/area/atlan/station/hab_docks)
+"ee" = (
+/obj/structure/platform_decoration/metal/strata/north,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/atlan/station/hab_docks)
+"en" = (
+/obj/structure/platform/metal/strata/north,
+/obj/structure/platform/metal/strata/west,
+/obj/structure/platform_decoration/metal/strata/east,
+/turf/open/floor/plating,
+/area/atlan/station/hab_docks)
+"gS" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 1;
+	pixel_y = 9;
+	buckling_y = 9;
+	layer = 3.6
+	},
+/obj/effect/landmark/survivor_spawner/atlan_responder_UPP/squad_leader,
+/turf/open/floor/almayer/plate,
+/area/atlan/station/hab_docks)
+"hW" = (
+/turf/open/floor/almayer/plate,
+/area/atlan/station/hab_docks)
+"if" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plate,
+/area/atlan/station/hab_docks)
+"jI" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/tool/extinguisher/mini,
+/turf/open/floor/strata/green1,
+/area/atlan/station/hab_docks)
+"kW" = (
+/obj/structure/sign/poster/upp,
+/turf/closed/shuttle/ert{
+	icon_state = "upp22"
+	},
+/area/atlan/station/hab_docks)
+"lo" = (
+/obj/structure/shuttle/part/ert/transparent/left_engine,
+/turf/open/floor/plating,
+/area/atlan/station/hab_docks)
+"lw" = (
+/obj/structure/platform/metal/stair_cut/strata_left,
+/obj/structure/stairs{
+	color = "#a6aeab";
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/atlan/station/hab_docks)
+"lO" = (
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "upp27"
+	},
+/area/atlan/station/hab_docks)
+"ma" = (
+/obj/structure/platform/metal/strata/north,
+/obj/structure/platform/metal/strata/east,
+/obj/structure/platform_decoration/metal/strata/west,
+/turf/open/floor/plating,
+/area/atlan/station/hab_docks)
+"nG" = (
+/obj/structure/platform_decoration/metal/strata/east,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/atlan/station/hab_docks)
+"qP" = (
+/obj/structure/platform_decoration/metal/strata/west,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/atlan/station/hab_docks)
+"qQ" = (
+/obj/structure/shuttle/part/ert/transparent/right_engine,
+/turf/open/floor/plating,
+/area/atlan/station/hab_docks)
+"rF" = (
+/obj/item/tool/wrench,
+/turf/open/floor/almayer/plate,
+/area/atlan/station/hab_docks)
+"rQ" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
+/turf/closed/shuttle/ert{
+	icon_state = "upp23"
+	},
+/area/atlan/station/hab_docks)
+"sA" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp16"
+	},
+/area/atlan/station/hab_docks)
+"sO" = (
+/obj/structure/platform/metal/strata/west,
+/turf/open/floor/plating,
+/area/atlan/station/hab_docks)
+"uO" = (
+/obj/structure/machinery/floodlight,
+/turf/open/floor/strata/green1,
+/area/atlan/station/hab_docks)
+"uV" = (
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "rightengine_3"
+	},
+/area/atlan/station/hab_docks)
+"vm" = (
+/obj/structure/platform/metal/strata,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/atlan/station/hab_docks)
+"vX" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp3"
+	},
+/area/atlan/station/hab_docks)
+"wJ" = (
+/obj/item/tool/screwdriver,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner/atlan_responder_UPP/medic,
+/turf/open/floor/almayer/plate,
+/area/atlan/station/hab_docks)
+"wO" = (
+/obj/structure/platform/metal/strata,
+/obj/structure/stairs{
+	color = "#a6aeab";
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/atlan/station/hab_docks)
+"wR" = (
+/obj/structure/shuttle/part/ert/front_right_upp,
+/turf/open/floor/plating,
+/area/atlan/station/hab_docks)
+"xl" = (
+/obj/structure/platform_decoration/metal/strata,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/atlan/station/hab_docks)
+"xB" = (
+/obj/structure/machinery/door/airlock/dropship_hatch{
+	dir = 8
+	},
+/turf/open/floor/almayer/test_floor6,
+/area/atlan/station/hab_docks)
+"yC" = (
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "leftengine_2"
+	},
+/area/atlan/station/hab_docks)
+"zh" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 1;
+	pixel_y = 9;
+	buckling_y = 9;
+	layer = 3.6
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/gibs/down,
+/turf/open/floor/almayer/plate,
+/area/atlan/station/hab_docks)
+"zC" = (
+/obj/structure/platform/metal/strata,
+/turf/open/floor/plating,
+/area/atlan/station/hab_docks)
+"zO" = (
+/obj/structure/platform/metal/strata/north,
+/turf/open/floor/plating,
+/area/atlan/station/hab_docks)
+"Ai" = (
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "leftengine_3"
+	},
+/area/atlan/station/hab_docks)
+"CZ" = (
+/obj/item/stack/cable_coil,
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/atlan/station/hab_docks)
+"DY" = (
+/obj/structure/platform/metal/strata,
+/obj/structure/stairs{
+	color = "#a6aeab";
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/atlan/station/hab_docks)
+"Et" = (
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "rightengine_2"
+	},
+/area/atlan/station/hab_docks)
+"EW" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/splatter{
+	icon_state = "gibdown1"
+	},
+/obj/effect/landmark/corpsespawner/upp,
+/turf/open/floor/almayer/plate,
+/area/atlan/station/hab_docks)
+"FJ" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp8"
+	},
+/area/atlan/station/hab_docks)
+"FT" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/landmark/survivor_spawner/atlan_responder_UPP/sapper,
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/atlan/station/hab_docks)
+"FV" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/atlan/station/hab_docks)
+"Gv" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp4"
+	},
+/area/atlan/station/hab_docks)
+"HT" = (
+/obj/structure/platform/metal/strata,
+/obj/structure/platform/metal/strata/west,
+/turf/open/floor/plating,
+/area/atlan/station/hab_docks)
+"Ic" = (
+/obj/structure/machinery/big_computers/computerblack/computer5{
+	icon_state = "blacksensor_comp1_off"
+	},
+/turf/open/floor/almayer/plate,
+/area/atlan/station/hab_docks)
+"Iv" = (
+/obj/structure/machinery/big_computers/computerblack/computer4{
+	icon_state = "blacksensor_comp2_off"
+	},
+/turf/open/floor/almayer/plate,
+/area/atlan/station/hab_docks)
+"JW" = (
+/turf/open/floor/strata/green1,
+/area/atlan/station/hab_docks)
+"JX" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/atlan/station/hab_docks)
+"Kf" = (
+/obj/structure/platform/metal/strata/east,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/atlan/station/hab_docks)
+"KX" = (
+/obj/structure/platform/metal/stair_cut/strata_right,
+/obj/structure/stairs{
+	color = "#a6aeab";
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/atlan/station/hab_docks)
+"Lf" = (
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/almayer/plate,
+/area/atlan/station/hab_docks)
+"Lt" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp5"
+	},
+/area/atlan/station/hab_docks)
+"Oq" = (
+/obj/structure/shuttle/part/ert/front_left_upp,
+/turf/open/floor/plating,
+/area/atlan/station/hab_docks)
+"Pb" = (
+/obj/structure/platform/metal/strata,
+/obj/structure/platform/metal/strata/east,
+/turf/open/floor/plating,
+/area/atlan/station/hab_docks)
+"Sd" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp_leftengine"
+	},
+/area/atlan/station/hab_docks)
+"Sk" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp9"
+	},
+/area/atlan/station/hab_docks)
+"VA" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp_rightengine"
+	},
+/area/atlan/station/hab_docks)
+"Wi" = (
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	name = "Dropship Hold Lockdown"
+	},
+/turf/open/floor/almayer/plate,
+/area/atlan/station/hab_docks)
+"XJ" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp1"
+	},
+/area/atlan/station/hab_docks)
+"XK" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 8
+	},
+/obj/effect/landmark/survivor_spawner/atlan_responder_UPP/soldier,
+/turf/open/floor/almayer/plate,
+/area/atlan/station/hab_docks)
+"XP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/turf/open/floor/almayer/plate,
+/area/atlan/station/hab_docks)
+"XQ" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/device/radio,
+/turf/open/floor/strata/green1,
+/area/atlan/station/hab_docks)
+"YN" = (
+/obj/structure/platform/metal/strata/east,
+/turf/open/floor/plating,
+/area/atlan/station/hab_docks)
+"YV" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner/atlan_responder_UPP/soldier,
+/turf/open/floor/almayer/plate,
+/area/atlan/station/hab_docks)
+
+(1,1,1) = {"
+uO
+JW
+JW
+JW
+JW
+lw
+wO
+jI
+JW
+JW
+JW
+JW
+JW
+uO
+"}
+(2,1,1) = {"
+JW
+en
+sO
+sO
+sO
+nG
+ee
+sO
+sO
+sO
+sO
+sO
+HT
+JW
+"}
+(3,1,1) = {"
+JW
+zO
+FV
+Oq
+Gv
+xB
+sA
+Gv
+Sd
+Ai
+yC
+lo
+vm
+JW
+"}
+(4,1,1) = {"
+JW
+zO
+Oq
+kW
+hW
+Lf
+YV
+JX
+FJ
+Gv
+Gv
+XJ
+zC
+JW
+"}
+(5,1,1) = {"
+JW
+zO
+lO
+Ic
+zh
+hW
+hW
+hW
+hW
+wJ
+EW
+Wi
+zC
+JW
+"}
+(6,1,1) = {"
+JW
+zO
+lO
+Iv
+gS
+hW
+if
+hW
+rF
+FT
+CZ
+Wi
+zC
+JW
+"}
+(7,1,1) = {"
+JW
+zO
+wR
+rQ
+XP
+if
+XK
+dF
+Sk
+Lt
+Lt
+vX
+zC
+JW
+"}
+(8,1,1) = {"
+JW
+zO
+FV
+wR
+Lt
+xB
+Lt
+Lt
+VA
+uV
+Et
+qQ
+zC
+JW
+"}
+(9,1,1) = {"
+JW
+ma
+YN
+YN
+YN
+qP
+xl
+YN
+YN
+YN
+Kf
+YN
+Pb
+JW
+"}
+(10,1,1) = {"
+uO
+XQ
+JW
+JW
+JW
+KX
+DY
+JW
+JW
+JW
+JW
+JW
+JW
+uO
+"}

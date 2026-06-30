@@ -1,4 +1,4 @@
-// as far as i understand this is only done for one insert
+// as far as i understand this is only done for one insert - This is now used for Atlan too :)
 //crashlanding-upp-bar.dmm map.
 /datum/equipment_preset/survivor/upp
 	name = "Survivor - UPP"

@@ -441,6 +441,22 @@
 /obj/effect/decal/strata_decals/grime/grime3,
 /turf/open/floor/strata/floor2,
 /area/atlan/station/airlock_maints)
+"aby" = (
+/obj/structure/machinery/floodlight,
+/obj/effect/landmark/nightmare{
+	insert_tag = atlanUPP
+	},
+/turf/open/floor/strata/green1,
+/area/atlan/station/hab_docks)
+"abz" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/clothing/head/hardhat,
+/obj/item/clothing/head/hardhat,
+/obj/item/clothing/head/hardhat/orange,
+/turf/open/floor/strata/floor3/east,
+/area/atlan/station/hab_docks)
 "abA" = (
 /obj/structure/platform_decoration/metal/strata/west,
 /obj/effect/decal/warning_stripes{
@@ -2637,6 +2653,7 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
+/obj/item/ammo_box/magazine/type71,
 /obj/item/ammo_box/magazine/type71,
 /obj/item/ammo_magazine/rifle/type71,
 /turf/open/floor/strata/red1,
@@ -36047,6 +36064,7 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
+/obj/item/device/radio,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/hab_docks)
 "yid" = (
@@ -47675,7 +47693,7 @@ rFm
 pbw
 ohy
 scy
-yia
+abz
 cCk
 vUU
 scy
@@ -48502,7 +48520,7 @@ wEE
 wEE
 wEE
 wEE
-img
+aby
 ohy
 trI
 kem

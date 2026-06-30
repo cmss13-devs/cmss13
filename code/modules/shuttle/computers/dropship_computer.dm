@@ -33,6 +33,7 @@
 
 	/// If this computer should respect the faction variable of destination LZ
 	var/use_factions = TRUE
+	COOLDOWN_DECLARE(dropship_alarm)
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/upp
 	icon_state = "console_upp"
@@ -637,13 +638,17 @@
 			if(shuttle.in_flyby && shuttle.timer && shuttle.timeLeft(1) >= DROPSHIP_WARMUP_TIME)
 				shuttle.setTimer(DROPSHIP_WARMUP_TIME)
 		if("play_launch_announcement_alarm")
+
 			if(!shuttle)
 				return FALSE
 			if (shuttle.mode != SHUTTLE_IDLE && shuttle.mode != SHUTTLE_RECHARGING)
 				to_chat(usr, SPAN_WARNING("The Launch Announcement Alarm is designed to tell people that you're going to take off soon."))
 				return TRUE
+			if(!(COOLDOWN_FINISHED(src, dropship_alarm)))
+				return TRUE
 			shuttle.alarm_sound_loop.start()
 			shuttle.playing_launch_announcement_alarm = TRUE
+			COOLDOWN_START(src, dropship_alarm, 10 SECONDS)
 			return TRUE
 		if ("stop_playing_launch_announcement_alarm")
 			if(!shuttle)

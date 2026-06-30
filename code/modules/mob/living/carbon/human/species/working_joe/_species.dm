@@ -38,14 +38,9 @@
 /datum/species/synthetic/gen_two/gen_one/working_joe/daniel/handle_death(mob/living/carbon/human/dying_joe, gibbed)
 	playsound(get_turf(dying_joe), "daniel_death", 25, FALSE)
 
-/datum/species/synthetic/gen_two/gen_one/working_joe/daniel/handle_post_spawn(mob/living/carbon/human/joe)
-	give_action(joe, /datum/action/joe_emote_panel)
-	joe.AddElement(/datum/element/corp_label/wy)
-
 /datum/species/synthetic/gen_two/gen_one/working_joe/handle_post_spawn(mob/living/carbon/human/joe)
 	. = ..()
 	give_action(joe, /datum/action/joe_emote_panel)
-	joe.AddElement(/datum/element/corp_label/seegson)
 
 // Special death noise for Working Joe
 /datum/species/synthetic/gen_two/gen_one/working_joe/handle_death(mob/living/carbon/human/dying_joe, gibbed)

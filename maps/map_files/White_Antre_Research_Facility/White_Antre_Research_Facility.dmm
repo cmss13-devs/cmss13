@@ -13273,7 +13273,9 @@
 /turf/open/floor/almayer/silver/west,
 /area/white_antre/indoors/main_level/research)
 "aEC" = (
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt{
+	dir = 4
+	},
 /turf/open/floor/almayer/emeraldfull2,
 /area/white_antre/indoors/main_level/research)
 "aED" = (
@@ -24369,7 +24371,9 @@
 	color = "#5d524b";
 	alpha = 155
 	},
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt{
+	dir = 1
+	},
 /turf/open/floor/prison/darkyellowfull2,
 /area/white_antre/indoors/exterior/prefab_3)
 "bjC" = (
@@ -32632,8 +32636,8 @@
 /turf/open/floor/corsat/squares,
 /area/white_antre/indoors/upper_level/south_overwatch)
 "bEx" = (
-/obj/structure/machinery/recharge_station,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/recharge_station/alt,
 /turf/open/floor/corsat/plate,
 /area/white_antre/indoors/upper_level/south_overwatch)
 "bEy" = (
@@ -34999,8 +35003,10 @@
 /turf/open/floor/corsat/squares,
 /area/white_antre/indoors/upper_level/north_overwatch)
 "bJy" = (
-/obj/structure/machinery/recharge_station,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/recharge_station/alt{
+	dir = 1
+	},
 /turf/open/floor/corsat/plate,
 /area/white_antre/indoors/upper_level/north_overwatch)
 "bJz" = (
@@ -55809,7 +55815,9 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/white_antre/indoors/main_level/east_containment_hive)
 "wPy" = (
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt{
+	dir = 1
+	},
 /turf/open/floor/prison/darkyellow2/east,
 /area/white_antre/indoors/main_level/engineering)
 "wQD" = (

@@ -114,7 +114,7 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 32
 	},
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt,
 /turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "aaB" = (
@@ -1954,7 +1954,10 @@
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "aho" = (
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt{
+	dir = 8;
+	layer = 3.1
+	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/filtration_plant)
 "ahp" = (
@@ -2121,11 +2124,13 @@
 /turf/open/mars,
 /area/bigredv2/outside/nw)
 "ahY" = (
-/obj/effect/landmark/structure_spawner/spore_sac_rng/ten,
-/turf/open/floor/freezerfloor,
-/area/bigredv2/outside/virology)
+/obj/structure/machinery/recharge_station/alt{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/filtration_plant)
 "ahZ" = (
-/obj/effect/landmark/structure_spawner/spore_sac_rng/twenty,
+/obj/effect/landmark/structure_spawner/spore_sac_rng/ten,
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/virology)
 "aia" = (
@@ -2194,6 +2199,10 @@
 /obj/structure/bed/roller,
 /turf/open/floor/freezerfloor,
 /area/bigredv2/caves/lambda/xenobiology)
+"aim" = (
+/obj/effect/landmark/structure_spawner/spore_sac_rng/twenty,
+/turf/open/floor/freezerfloor,
+/area/bigredv2/outside/virology)
 "ain" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
@@ -15645,7 +15654,9 @@
 /turf/open/floor/darkblue2/west,
 /area/bigredv2/caves/eta/storage)
 "bxw" = (
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt{
+	dir = 8
+	},
 /turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "bxx" = (
@@ -20684,7 +20695,9 @@
 /area/bigredv2/caves/mining)
 "eWB" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt{
+	dir = 1
+	},
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/dorms)
 "eWE" = (
@@ -25228,7 +25241,7 @@
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
 "jYF" = (
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt,
 /turf/open/floor/almayer/test_floor4,
 /area/bigredv2/outside/engineering)
 "jYL" = (
@@ -32689,7 +32702,9 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt{
+	dir = 1
+	},
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/dorms)
 "rKP" = (
@@ -45088,7 +45103,7 @@ aHZ
 aFv
 aFv
 aoD
-ahZ
+aim
 aNi
 aNi
 aNi
@@ -45305,7 +45320,7 @@ aNi
 aOt
 aNj
 aNi
-ahZ
+aim
 arT
 aNc
 aNc
@@ -45525,16 +45540,16 @@ aNc
 aNc
 asl
 aWS
-ahY
+ahZ
 asl
 aYC
-ahY
+ahZ
 asl
 swJ
-ahY
+ahZ
 asl
 aYC
-ahY
+ahZ
 aoD
 aao
 aao
@@ -45729,7 +45744,7 @@ aFv
 aoD
 aNi
 aNi
-ahZ
+aim
 aOt
 aNj
 arT
@@ -65575,7 +65590,7 @@ bpX
 awp
 bkT
 blG
-aho
+ahY
 aho
 bkT
 bkU

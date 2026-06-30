@@ -902,7 +902,7 @@
 		to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You pick up \the [src], registering yourself as its owner."))
 
 /obj/item/weapon/gun/smartgun/co/proc/name_after_co(mob/living/carbon/human/smartgun_user, obj/item/weapon/gun/smartgun/co/co_smartgun)
-	linked_human = co_smartgun_user 
+	linked_human = smartgun_user 
 	RegisterSignal(linked_human, COMSIG_PARENT_QDELETING, PROC_REF(remove_idlock))
 
 /obj/item/weapon/gun/smartgun/co/get_examine_text()

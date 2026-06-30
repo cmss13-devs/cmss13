@@ -14911,9 +14911,6 @@
 /obj/structure/platform_decoration/metal/strata/east,
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_offices)
-"jIW" = (
-/turf/closed/wall/strata_outpost,
-/area/atlan/station/stairs2)
 "jJr" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/structure/machinery/power/apc/no_power/north,
@@ -48511,11 +48508,11 @@ qUx
 ggL
 mXu
 rAD
-eaH
-eaH
-eaH
-eaH
-eaH
+rAD
+rAD
+rAD
+rAD
+rAD
 eaH
 ilo
 pco
@@ -50382,9 +50379,9 @@ nEq
 nEq
 tWn
 tWn
-tWn
-jIW
-jIW
+ugt
+ifK
+ifK
 mQv
 hOl
 ifK

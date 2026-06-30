@@ -444,7 +444,7 @@
 "aby" = (
 /obj/structure/machinery/floodlight,
 /obj/effect/landmark/nightmare{
-	insert_tag = atlanUPP
+	insert_tag = "UPPresponders"
 	},
 /turf/open/floor/strata/green1,
 /area/atlan/station/hab_docks)

@@ -2,7 +2,7 @@
 	{ "type": "map_sprinkle", "path": "sprinkles/" },
     {
 		"type": "map_insert",
-		"landmark": "atlanUPP",
+		"landmark": "UPPresponders",
 		"chance": 1.0,
 		"path": "standalone/UPPresponders.dmm",
 		"when": { "lvevent": "uppresponders" }

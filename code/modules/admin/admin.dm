@@ -55,7 +55,7 @@
 	else if(is_ground_level(location_z))
 		location_suffix = SPAN_PREFIX(" [SPAN_ADMIN_BLUE("(GROUNDSIDE)")]")
 
-	var/rendered = SPAN_COMBAT("[SPAN_PREFIX("ATTACK:")] ")
+	var/prefix = SPAN_COMBAT("[SPAN_PREFIX("ATTACK:")] ")
 	var/text_holder
 	if(alive)
 		text_holder = "[SPAN_MESSAGE("[text]")]"
@@ -65,8 +65,8 @@
 		if(CLIENT_IS_STAFF(admin_client))
 			var/datum/preferences/admin_prefs = admin_client.prefs
 			if(admin_prefs.toggles_chat & CHAT_FFATTACKLOGS)
-				rendered += "<font color=[alive ? admin_prefs.ff_log_color : admin_prefs.ffd_log_color]><b>[text_holder]</b></font>[location_suffix]"
-				to_chat(admin_client, rendered)
+				var/final_text = "[prefix]<font color=[alive ? admin_prefs.ff_log_color : admin_prefs.ffd_log_color]><b>[text_holder]</b></font>[location_suffix]"
+				to_chat(admin_client, final_text)
 
 ///////////////////////////////////////////////////////////////////////////////////////////////Panels
 

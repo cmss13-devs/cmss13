@@ -32,8 +32,6 @@ em {font-style: normal; font-weight: bold;}
 .staffsay {color: #b5850d; font-weight: bold;}
 .staff_ic {color: #000099;}
 .niche {color: #386aff; font-weight: bold;}
-.ffalive {color: #00FF00;}
-.ffdead {color: #FFA500;}
 
 .name { font-weight: bold;}
 

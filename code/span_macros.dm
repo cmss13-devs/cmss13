@@ -54,8 +54,6 @@
 #define SPAN_MENTORSAY(X) ("<span class='mentorsay'>" + X + "</span>")
 #define SPAN_MENTORBODY(X) ("<span class='mentorbody'>" + X + "</span>")
 #define SPAN_NICHE(X) "<span class='niche'>[X]</span>"
-#define SPAN_FF_ALIVE(X) "<span class='ffalive'>[X]</span>"
-#define SPAN_FF_DEAD(X) "<span class='ffdead'>[X]</span>"
 
 #define SPAN_PM(X) "<span class='pm'>[X]</span>"
 

@@ -85,6 +85,15 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 		to_chat(user, SPAN_WARNING("It would be too dangerous to go that way."))
 		return
 
+	var/turf/below = get_turf_below()
+	while(istype(below, /turf/open_space))
+		below = SSmapping.get_turf_below(below)
+	if(!below)
+		to_chat(user, SPAN_WARNING("You can't go that way."))
+		return
+
+	user.visible_message(SPAN_WARNING("[user] starts climbing down."), SPAN_WARNING("You start climbing down."))
+
 	var/climb_down_time = 1 SECONDS
 	if(ishuman_strict(user))
 		climb_down_time = 2.5 SECONDS
@@ -95,8 +104,6 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 		else
 			climb_down_time = 1 SECONDS
 
-	user.visible_message(SPAN_WARNING("[user] starts climbing down."), SPAN_WARNING("You start climbing down."))
-
 	var/list/grabbed_things = list()
 	var/hands_full = FALSE
 	for(var/obj/item/in_hand in list(user.l_hand, user.r_hand))
@@ -106,13 +113,6 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 			grabbed_things += grabbing.grabbed_thing
 			grabbing.grabbed_thing.forceMove(user.loc)
 		climb_down_time *= 1.2
-
-	var/turf/below = get_turf_below()
-	while(istype(below, /turf/open_space))
-		below = SSmapping.get_turf_below(below)
-	if(!below)
-		to_chat(user, SPAN_WARNING("You can't go that way."))
-		return
 
 	if(hands_full)
 		to_chat(user, SPAN_INFO("Trying to climb with your hands full is slowing you down."))

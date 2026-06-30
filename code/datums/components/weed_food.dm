@@ -87,6 +87,7 @@
 	parent_buckle = null
 
 /datum/component/weed_food/RegisterWithParent()
+	// COMSIG_MOVABLE_TURF_ENTERED to handle movement and ChangeTurf
 	RegisterSignal(parent_mob, list(COMSIG_MOVABLE_TURF_ENTERED, COMSIG_ATOM_AFTER_SHUTTLE_MOVE), PROC_REF(on_move))
 	RegisterSignal(parent_mob, list(COMSIG_LIVING_REJUVENATED, COMSIG_HUMAN_REVIVED), PROC_REF(on_rejuv))
 	RegisterSignal(parent_mob, COMSIG_HUMAN_SET_UNDEFIBBABLE, PROC_REF(on_update))

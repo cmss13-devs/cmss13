@@ -79,6 +79,7 @@
 		weeded_turf = turf
 		SEND_SIGNAL(turf, COMSIG_WEEDNODE_GROWTH) // Currently for weed_food wakeup
 
+	// COMSIG_MOVABLE_TURF_ENTERED to handle ChangeTurf
 	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTERED, PROC_REF(set_turf_weeded))
 
 	if(hivenumber == XENO_HIVE_NORMAL)

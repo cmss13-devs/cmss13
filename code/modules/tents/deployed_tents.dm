@@ -27,6 +27,7 @@
 	. = ..()
 	bound_width = x_dim * world.icon_size
 	bound_height = y_dim * world.icon_size
+	// COMSIG_MOVABLE_TURF_ENTERED to handle ChangeTurf
 	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTERED, PROC_REF(register_turf_signals))
 	register_turf_signals()
 
@@ -46,7 +47,7 @@
 		roof_image.appearance_flags = KEEP_APART
 		src.overlays += roof_image
 
-/// Handler for callback of COMSIG_MOVABLE_TURF_ENTERED if we're moved (turf changed)
+/// Handler for callback of COMSIG_MOVABLE_TURF_ENTERED (turf changed)
 /obj/structure/tent/proc/register_turf_signals()
 	SIGNAL_HANDLER
 	for(var/turf/turf in locs)
@@ -59,7 +60,7 @@
 
 	var/mob/subject_mob = subject
 
-
+	// COMSIG_MOVABLE_TURF_ENTERED to handle movement and ChangeTurf
 	RegisterSignal(subject_mob, list(COMSIG_MOVABLE_TURF_ENTERED, COMSIG_GHOST_MOVED), PROC_REF(mob_moved), override = TRUE) // Must override because we can't know if mob was already inside tent without keeping an awful ref list
 	subject_mob.RegisterSignal(src, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/mob, tent_deletion_clean_up), override = TRUE)
 
@@ -72,10 +73,12 @@
 	if(ishuman(subject))
 		RegisterSignal(subject, COMSIG_HUMAN_COLD_PROTECTION_APPLY_MODIFIERS, PROC_REF(cold_protection), override = TRUE)
 
+/// Handler for callback of COMSIG_HUMAN_COLD_PROTECTION_APPLY_MODIFIERS
 /obj/structure/tent/proc/cold_protection(mob/source, list/protection_data)
 	SIGNAL_HANDLER
 	protection_data["protection"] += cold_protection_factor
 
+/// Handler for callback of COMSIG_MOVABLE_TURF_ENTERED and COMSIG_GHOST_MOVED
 /obj/structure/tent/proc/mob_moved(mob/subject, turf/target_turf)
 	SIGNAL_HANDLER
 

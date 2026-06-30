@@ -1,10 +1,14 @@
-/// From /turf/Entered(): (turf/entered_turf)
-/// NOTE: This will occur for all locs including when turf/ChangeTurf() has New'd a turf
+/**
+ * From /turf/Entered(): (turf/entered_turf)
+ * NOTE: This will occur for all locs including during turf/ChangeTurf() once Initialize occurs (mapload may delay it)
+ */
 #define COMSIG_MOVABLE_TURF_ENTERED "movable_turf_entered"
 
-/// from base of turf/ChangeTurf(): (path, list/new_baseturfs, flags, list/post_change_callbacks).
-/// `post_change_callbacks` is a list that signal handlers can mutate to append `/datum/callback` objects.
-/// They will be called with the new turf after the turf has changed.
+/**
+ * From base of turf/ChangeTurf(): (path, list/new_baseturfs, flags, list/post_change_callbacks)
+ * `post_change_callbacks` is a list that signal handlers can mutate to append `/datum/callback` objects.
+ * They will be called with the new turf after the turf has changed (but the turf's Initialize may not have occured yet for mapload).
+ */
 #define COMSIG_PRE_TURF_CHANGE "pre_turf_change"
 
 #define COMSIG_TURF_ENTER "turf_enter"

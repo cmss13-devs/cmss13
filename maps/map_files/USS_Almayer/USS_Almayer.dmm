@@ -48549,16 +48549,10 @@
 /turf/open/floor/almayer/sterile_green_side/east,
 /area/almayer/shipboard/brig/medical)
 "cmt" = (
-/obj/structure/sign/safety/six{
-	pixel_y = 24;
-	desc = "Semiotic Standard denoting the number six. It should not be placed next to a Seven semiotic."
+/obj/structure/noticeboard{
+	pixel_y = 32
 	},
-/obj/structure/sign/safety/seven{
-	pixel_y = 24;
-	pixel_x = 15;
-	desc = "Semiotic Standard denoting the number seven. It is placed next to a Six semiotic."
-	},
-/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/wheeled,
+/obj/item/paper/almayer_brig_storage,
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig/perma)
 "cmu" = (
@@ -62909,11 +62903,6 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/living/starboard_emb)
 "hUU" = (
-/obj/structure/bed/chair/bolted{
-	dir = 8;
-	name = "Kneecapping Chair";
-	desc = "Just don't let the Provost know."
-	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice8";
 	pixel_x = 16;
@@ -62923,6 +62912,7 @@
 	icon_state = "lattice12";
 	pixel_y = 16
 	},
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/wheeled,
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig/perma)
 "hUW" = (

@@ -1,4 +1,0 @@
-author: "Ammoniacres"
-delete-after: True
-changes:
-  - imagetweak: "fixes flamethrower sprite issues in PR 12345"

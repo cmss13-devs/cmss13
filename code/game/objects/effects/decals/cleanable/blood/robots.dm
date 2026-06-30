@@ -53,3 +53,4 @@
 	desc = "A thick white fluid that serves as blood for synthetic beings. It smells faintly chemical."
 	icon = 'icons/effects/blood.dmi'
 	amount = 1
+	color = "#EEEEEE"

@@ -1610,7 +1610,7 @@
 /obj/structure/prop/invuln/working_joe/large_storage
 	name = "synthetic storage unit"
 	desc = "A vertical storage bay designed to house inactive Working Joe synthetics, keeping them bagged, preserved, and ready for deployment."
-	icon = 'icons/obj/structures/props/working_joe_storage.dmi'
+	icon = 'icons/obj/structures/machinery/working_joe_storage.dmi'
 	icon_state = "working_joe_storage"
 	unslashable = FALSE
 	wrenchable = FALSE
@@ -1645,7 +1645,7 @@
 	light_power = FALSE
 
 /obj/effect/working_joe/corpse
-	icon = 'icons/obj/structures/props/working_joe_storage.dmi'
+	icon = 'icons/obj/structures/props/working_joe_corpse.dmi'
 	icon_state = "working_joe_corpse"
 	layer = TURF_LAYER
 	plane = FLOOR_PLANE

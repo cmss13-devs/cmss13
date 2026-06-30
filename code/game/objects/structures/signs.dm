@@ -309,6 +309,9 @@
 	desc = "Semiotic Standard denoting the nearby presence of a biological laboratory."
 	icon_state = "biolab"
 
+/obj/structure/sign/safety/biolab/alt
+	icon_state = "biolab_alt"
+
 /obj/structure/sign/safety/bridge
 	name = "bridge semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of a starship's bridge."

@@ -487,13 +487,13 @@
 
 // Engineer
 
-/datum/equipment_preset/synth/survivor/fire_colony/engineer_survivor
+/datum/equipment_preset/synth/survivor/fire_colony/engineer
 	name = "Survivor - Fire Colony - Synthetic - Engineer"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	survivor_variant = ENGINEERING_SURVIVOR
 
-/datum/equipment_preset/synth/survivor/fire_colony/engineer_survivor/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/synth/survivor/fire_colony/engineer/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)
 	var/choice = rand(1,5)
 	switch(choice)
@@ -588,13 +588,13 @@
 
 // Security
 
-/datum/equipment_preset/synth/survivor/fire_colony/exec_bodyguard
+/datum/equipment_preset/synth/survivor/fire_colony/security
 	name = "Survivor - Fire Colony - Synthetic - Executive Bodyguard"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	survivor_variant = CORPORATE_SURVIVOR
 
-/datum/equipment_preset/synth/survivor/fire_colony/exec_bodyguard/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/synth/survivor/fire_colony/security/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc/corporate/lasalle_security(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/black(new_human), WEAR_JACKET)

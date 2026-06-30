@@ -252,18 +252,18 @@
 		overlays += "+[base_gun_icon]_cover_open"
 	update_action_icons()
 /obj/item/weapon/gun/smartgun/proc/update_action_icons()
-	for (var/datum/action/item_action/smartgun/Action in actions)
-		Action.update_button_icon()
+	for (var/datum/action/item_action/smartgun/smartgun_action in actions)
+		smartgun_action.update_button_icon()
 
 //---ability actions--\\
 
 /datum/action/item_action/smartgun/action_activate()
 	. = ..()
-	var/obj/item/weapon/gun/smartgun/G = holder_item
+	var/obj/item/weapon/gun/smartgun/held_smartgun = holder_item
 	if(!ishuman(owner))
 		return
-	var/mob/living/carbon/human/H = owner
-	if(H.is_mob_incapacitated() || G.get_active_firearm(H, FALSE) != holder_item)
+	var/mob/living/carbon/human/smartgun_user = owner
+	if(smartgun_user.is_mob_incapacitated() || held_smartgun.get_active_firearm(smartgun_user, FALSE) != holder_item)
 		return
 
 /datum/action/item_action/smartgun/update_button_icon()
@@ -284,17 +284,17 @@
 
 /datum/action/item_action/smartgun/toggle_motion_detector/action_activate()
 	. = ..()
-	var/obj/item/weapon/gun/smartgun/G = holder_item
-	if(G)
-		G.toggle_motion_detector(owner)
+	var/obj/item/weapon/gun/smartgun/held_smartgun = holder_item
+	if(held_smartgun)
+		held_smartgun.toggle_motion_detector(owner)
 	update_button_icon()
 
 /datum/action/item_action/smartgun/toggle_motion_detector/refresh_icon_state()
 	if(!holder_item)
 		return
-	var/obj/item/weapon/gun/smartgun/G = holder_item
-	if(G)
-		action_icon_state = G.motion_detector ? "motion_detector_off" : "motion_detector"
+	var/obj/item/weapon/gun/smartgun/held_smartgun = holder_item
+	if(held_smartgun)
+		action_icon_state = held_smartgun.motion_detector ? "motion_detector_off" : "motion_detector"
 
 /datum/action/item_action/smartgun/toggle_auto_fire/New(Target, obj/item/holder)
 	. = ..()
@@ -304,17 +304,17 @@
 
 /datum/action/item_action/smartgun/toggle_auto_fire/action_activate()
 	. = ..()
-	var/obj/item/weapon/gun/smartgun/G = holder_item
-	if(G)
-		G.toggle_auto_fire(owner)
+	var/obj/item/weapon/gun/smartgun/held_smartgun = holder_item
+	if(held_smartgun)
+		held_smartgun.toggle_auto_fire(owner)
 	update_button_icon()
 
 /datum/action/item_action/smartgun/toggle_auto_fire/refresh_icon_state()
 	if(!holder_item)
 		return
-	var/obj/item/weapon/gun/smartgun/G = holder_item
-	if(G)
-		action_icon_state = G.auto_fire ? "autofire_off" : "autofire"
+	var/obj/item/weapon/gun/smartgun/held_smartgun = holder_item
+	if(held_smartgun)
+		action_icon_state = held_smartgun.auto_fire ? "autofire_off" : "autofire"
 
 /datum/action/item_action/smartgun/toggle_aim_assist/New(Target, obj/item/holder)
 	. = ..()
@@ -325,17 +325,17 @@
 
 /datum/action/item_action/smartgun/toggle_aim_assist/action_activate()
 	. = ..()
-	var/obj/item/weapon/gun/smartgun/G = holder_item
-	if(G)
-		G.toggle_aim_assist(owner)
+	var/obj/item/weapon/gun/smartgun/held_smartgun = holder_item
+	if(held_smartgun)
+		held_smartgun.toggle_aim_assist(owner)
 	update_button_icon()
 
 /datum/action/item_action/smartgun/toggle_aim_assist/refresh_icon_state()
 	if(!holder_item)
 		return
-	var/obj/item/weapon/gun/smartgun/G = holder_item
-	if(G)
-		action_icon_state = G.aim_assist ? "aimassist_off" : "aimassist"
+	var/obj/item/weapon/gun/smartgun/held_smartgun = holder_item
+	if(held_smartgun)
+		action_icon_state = held_smartgun.aim_assist ? "aimassist_off" : "aimassist"
 
 /datum/action/item_action/smartgun/toggle_accuracy_improvement/New(Target, obj/item/holder)
 	. = ..()
@@ -344,15 +344,15 @@
 	update_button_icon()
 
 /datum/action/item_action/smartgun/toggle_accuracy_improvement/refresh_icon_state()
-	var/obj/item/weapon/gun/smartgun/G = holder_item
-	if(G)
-		action_icon_state = G.accuracy_improvement ? "accuracy_improvement_off" : "accuracy_improvement"
+	var/obj/item/weapon/gun/smartgun/held_smartgun = holder_item
+	if(held_smartgun)
+		action_icon_state = held_smartgun.accuracy_improvement ? "accuracy_improvement_off" : "accuracy_improvement"
 
 /datum/action/item_action/smartgun/toggle_accuracy_improvement/action_activate()
 	. = ..()
-	var/obj/item/weapon/gun/smartgun/G = holder_item
-	if(G)
-		G.toggle_accuracy_improvement(owner)
+	var/obj/item/weapon/gun/smartgun/held_smartgun = holder_item
+	if(held_smartgun)
+		held_smartgun.toggle_accuracy_improvement(owner)
 	update_button_icon()
 
 /datum/action/item_action/smartgun/toggle_recoil_compensation/New(Target, obj/item/holder)
@@ -362,15 +362,15 @@
 	update_button_icon()
 
 /datum/action/item_action/smartgun/toggle_recoil_compensation/refresh_icon_state()
-	var/obj/item/weapon/gun/smartgun/G = holder_item
-	if(G)
-		action_icon_state= G.recoil_compensation ? "recoil_compensation_off" : "recoil_compensation"
+	var/obj/item/weapon/gun/smartgun/held_smartgun = holder_item
+	if(held_smartgun)
+		action_icon_state= held_smartgun.recoil_compensation ? "recoil_compensation_off" : "recoil_compensation"
 
 /datum/action/item_action/smartgun/toggle_recoil_compensation/action_activate()
 	. = ..()
-	var/obj/item/weapon/gun/smartgun/G = holder_item
-	if(G)
-		G.toggle_recoil_compensation(owner)
+	var/obj/item/weapon/gun/smartgun/held_smartgun = holder_item
+	if(held_smartgun)
+		held_smartgun.toggle_recoil_compensation(owner)
 	update_button_icon()
 
 /datum/action/item_action/smartgun/toggle_frontline_mode/New(Target, obj/item/holder)
@@ -381,15 +381,15 @@
 	update_button_icon()
 
 /datum/action/item_action/smartgun/toggle_frontline_mode/refresh_icon_state()
-	var/obj/item/weapon/gun/smartgun/G = holder_item
-	if(G)
-		action_icon_state= G.frontline_enabled ? "frontline_toggle_on" : "frontline_toggle_off"
+	var/obj/item/weapon/gun/smartgun/held_smartgun = holder_item
+	if(held_smartgun)
+		action_icon_state= held_smartgun.frontline_enabled ? "frontline_toggle_on" : "frontline_toggle_off"
 
 /datum/action/item_action/smartgun/toggle_frontline_mode/action_activate()
 	. = ..()
-	var/obj/item/weapon/gun/smartgun/G = holder_item
-	if(G)
-		G.toggle_frontline_mode(owner)
+	var/obj/item/weapon/gun/smartgun/held_smartgun = holder_item
+	if(held_smartgun)
+		held_smartgun.toggle_frontline_mode(owner)
 	update_button_icon()
 
 /datum/action/item_action/smartgun/toggle_lethal_mode/New(Target, obj/item/holder)
@@ -399,15 +399,15 @@
 	update_button_icon()
 
 /datum/action/item_action/smartgun/toggle_lethal_mode/refresh_icon_state()
-	var/obj/item/weapon/gun/smartgun/G = holder_item
-	if(G)
-		action_icon_state = G.iff_enabled ? "iff_toggle_on" : "iff_toggle_off"
+	var/obj/item/weapon/gun/smartgun/held_smartgun = holder_item
+	if(held_smartgun)
+		action_icon_state = held_smartgun.iff_enabled ? "iff_toggle_on" : "iff_toggle_off"
 
 /datum/action/item_action/smartgun/toggle_lethal_mode/action_activate()
 	. = ..()
-	var/obj/item/weapon/gun/smartgun/G = holder_item
-	if(G)
-		G.toggle_lethal_mode(owner)
+	var/obj/item/weapon/gun/smartgun/held_smartgun = holder_item
+	if(held_smartgun)
+		held_smartgun.toggle_lethal_mode(owner)
 	update_button_icon()
 
 /datum/action/item_action/smartgun/toggle_ammo_type/New(Target, obj/item/holder)
@@ -417,15 +417,15 @@
 	update_button_icon()
 
 /datum/action/item_action/smartgun/toggle_ammo_type/refresh_icon_state()
-	var/obj/item/weapon/gun/smartgun/G = holder_item
-	if(G)
-		action_icon_state = G.secondary_toggled ? "ammo_swap_ap" : "ammo_swap_normal"
+	var/obj/item/weapon/gun/smartgun/held_smartgun = holder_item
+	if(held_smartgun)
+		action_icon_state = held_smartgun.secondary_toggled ? "ammo_swap_ap" : "ammo_swap_normal"
 
 /datum/action/item_action/smartgun/toggle_ammo_type/action_activate()
 	. = ..()
-	var/obj/item/weapon/gun/smartgun/G = holder_item
-	if(G)
-		G.toggle_ammo_type(owner)
+	var/obj/item/weapon/gun/smartgun/held_smartgun = holder_item
+	if(held_smartgun)
+		held_smartgun.toggle_ammo_type(owner)
 	update_button_icon()
 
 //more general procs
@@ -435,14 +435,14 @@
 		iff_enabled = TRUE //force IFF on if you want to frontline
 		if(user)
 			to_chat(user, SPAN_NOTICE("Frontline mode requires IFF to be on. Enabling IFF systems..."))
-	if (user)
+	if(user)
 		to_chat(user, "[icon2html(src, user)] You [frontline_enabled? "<B>enable</b>" : "<B>disable</b>"] [src]'s frontline mode. You will now [frontline_enabled ? "deal increased damage but be unable to shoot through friendlies" : "be able to shoot through friendlies"].")
 		if(!silent)
 			balloon_alert(user, "frontline mode [frontline_enabled ? "enabled" : "disabled"]")
 			playsound(loc,'sound/machines/click.ogg', 25, 1)
 
 ///Determines the color of the muzzle flash, depending on whether frontline mode is enabled or not.
-	if (frontline_enabled)
+	if(frontline_enabled)
 		muzzle_flash = "muzzle_flash"
 		muzzle_flash_color = COLOR_VERY_SOFT_YELLOW
 	else
@@ -461,16 +461,16 @@
 	if(.)
 		if(!ishuman(user))
 			return FALSE
-		var/mob/living/carbon/human/H = user
+		var/mob/living/carbon/human/smartgun_user = user
 		if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_SMARTGUN) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
 			balloon_alert(user, "insufficient skills")
 			return FALSE
 		if(requires_harness)
-			if(!H.wear_suit || !(H.wear_suit.flags_inventory & SMARTGUN_HARNESS))
+			if(!smartgun_user.wear_suit || !(smartgun_user.wear_suit.flags_inventory & SMARTGUN_HARNESS))
 				balloon_alert(user, "harness required")
 				return FALSE
 		if(cover_open)
-			to_chat(H, SPAN_WARNING("You can't fire \the [src] with the feed cover open! (alt-click to close)"))
+			to_chat(smartgun_user, SPAN_WARNING("You can't fire \the [src] with the feed cover open! (alt-click to close)"))
 			balloon_alert(user, "cannot fire; feed cover open")
 			return FALSE
 
@@ -901,8 +901,8 @@
 		src.name_after_co(user, src)
 		to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You pick up \the [src], registering yourself as its owner."))
 
-/obj/item/weapon/gun/smartgun/co/proc/name_after_co(mob/living/carbon/human/H, obj/item/weapon/gun/smartgun/co/I)
-	linked_human = H
+/obj/item/weapon/gun/smartgun/co/proc/name_after_co(mob/living/carbon/human/smartgun_user, obj/item/weapon/gun/smartgun/co/co_smartgun)
+	linked_human = co_smartgun_user 
 	RegisterSignal(linked_human, COMSIG_PARENT_QDELETING, PROC_REF(remove_idlock))
 
 /obj/item/weapon/gun/smartgun/co/get_examine_text()

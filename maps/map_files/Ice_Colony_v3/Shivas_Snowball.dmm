@@ -12997,7 +12997,7 @@
 /area/shiva/interior/colony/n_admin)
 "jhR" = (
 /obj/structure/surface/table/woodentable,
-/obj/item/tool/kitchen/utensil/pknife{
+/obj/item/tool/kitchen/utensil/knife/plastic{
 	pixel_x = 12;
 	pixel_y = 7
 	},

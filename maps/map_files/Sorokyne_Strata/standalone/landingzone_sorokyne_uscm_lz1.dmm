@@ -2023,7 +2023,7 @@
 /turf/open/asphalt/cement/cement9,
 /area/strata/interior/landing_zones/lz1)
 "JC" = (
-/obj/item/tool/kitchen/utensil/pknife,
+/obj/item/tool/kitchen/utensil/knife/plastic,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/white_cyan1,
 /area/strata/interior/mining_outpost)

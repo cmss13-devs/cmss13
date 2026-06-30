@@ -1771,7 +1771,7 @@
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/white_antre/indoors/upper_level/canteen)
 "aex" = (
-/obj/item/tool/kitchen/utensil/pknife,
+/obj/item/tool/kitchen/utensil/knife/plastic,
 /obj/item/tool/kitchen/utensil/pspoon,
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
@@ -1915,7 +1915,7 @@
 	name = "\improper UA Prepared Meal (cornbread)";
 	pixel_y = 9
 	},
-/obj/item/tool/kitchen/utensil/pknife,
+/obj/item/tool/kitchen/utensil/knife/plastic,
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
 	},
@@ -1995,7 +1995,7 @@
 /obj/item/tool/kitchen/utensil/pspoon{
 	pixel_y = 1
 	},
-/obj/item/tool/kitchen/utensil/pknife{
+/obj/item/tool/kitchen/utensil/knife/plastic{
 	pixel_x = 8;
 	pixel_y = -1
 	},

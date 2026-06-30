@@ -604,7 +604,7 @@
 	products = list(
 		/obj/item/tool/kitchen/tray = 8,
 		/obj/item/tool/kitchen/utensil/pfork = 6,
-		/obj/item/tool/kitchen/utensil/pknife = 3,
+		/obj/item/tool/kitchen/utensil/knife/plastic = 3,
 		/obj/item/reagent_container/food/drinks/sillycup = 8,
 		/obj/item/clothing/suit/chef/classic = 2,
 		/obj/item/reagent_container/food/condiment/saltshaker = 4,

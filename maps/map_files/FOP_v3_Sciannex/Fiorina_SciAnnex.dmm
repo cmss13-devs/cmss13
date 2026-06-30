@@ -27278,7 +27278,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/lz/near_lzII)
 "uSX" = (
-/obj/item/tool/kitchen/utensil/pknife,
+/obj/item/tool/kitchen/utensil/knife/plastic,
 /turf/open/floor/prison,
 /area/fiorina/station/power_ring)
 "uTb" = (

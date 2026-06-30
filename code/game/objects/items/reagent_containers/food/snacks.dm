@@ -163,7 +163,7 @@
 	if(istype(W,/obj/item/storage))
 		..() // -> item/attackby()
 
-	if(istype(W,/obj/item/tool/kitchen/utensil))
+	if(istype(W,/obj/item/tool/kitchen/utensil) && !istype(W,/obj/item/tool/kitchen/utensil/knife))
 
 		var/obj/item/tool/kitchen/utensil/U = W
 

@@ -339,7 +339,7 @@
 "BL" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/trash/ceramic_plate,
-/obj/item/tool/kitchen/utensil/pknife{
+/obj/item/tool/kitchen/utensil/knife/plastic{
 	pixel_x = 9;
 	pixel_y = 5
 	},

@@ -47459,10 +47459,10 @@
 /obj/structure/surface/table/almayer,
 /obj/item/tool/kitchen/utensil/pfork,
 /obj/item/tool/kitchen/utensil/pfork,
-/obj/item/tool/kitchen/utensil/pknife{
+/obj/item/tool/kitchen/utensil/knife/plastic{
 	pixel_x = 7
 	},
-/obj/item/tool/kitchen/utensil/pknife{
+/obj/item/tool/kitchen/utensil/knife/plastic{
 	pixel_x = 7
 	},
 /obj/item/tool/kitchen/utensil/pspoon{
@@ -47580,25 +47580,9 @@
 	pixel_y = 8;
 	pixel_x = -7
 	},
-/obj/item/trash/plate{
-	pixel_x = -7;
-	pixel_y = 14
-	},
-/obj/item/trash/plate{
-	pixel_x = -7;
-	pixel_y = 14
-	},
-/obj/item/trash/plate{
-	pixel_x = -7;
-	pixel_y = 14
-	},
-/obj/item/trash/plate{
-	pixel_x = -7;
-	pixel_y = 14
-	},
-/obj/item/trash/plate{
-	pixel_x = -7;
-	pixel_y = 16
+/obj/item/reagent_container/spray/cleaner{
+	pixel_x = -8;
+	pixel_y = 18
 	},
 /turf/open/floor/prison/kitchen,
 /area/almayer/shipboard/brig/yard)
@@ -90877,16 +90861,8 @@
 /turf/open/floor/almayer/plating,
 /area/almayer/living/basketball)
 "uaU" = (
-/obj/structure/surface/table/almayer,
-/obj/item/clothing/head/chefhat{
-	pixel_x = -6;
-	pixel_y = 4
-	},
-/obj/item/clothing/suit/chef/classic{
-	pixel_x = 8;
-	pixel_y = 3
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/secure_closet/fridge/dry/stock,
 /turf/open/floor/prison/kitchen,
 /area/almayer/shipboard/brig/yard)
 "uaV" = (
@@ -199294,7 +199270,7 @@ ckF
 ckF
 ckF
 ckn
-lbs
+ckt
 ckl
 cjY
 cXi
@@ -199603,7 +199579,7 @@ clO
 cld
 ckV
 ckH
-ckt
+lbs
 uaU
 rUk
 xaM

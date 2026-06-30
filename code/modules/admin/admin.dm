@@ -6,9 +6,9 @@
 	if(jump_x && jump_y && jump_z)
 		jump_click = ADMIN_JUMP_COORDS(jump_x, jump_y, jump_z)
 	var/rendered = "[SPAN_PREFIX("ADMIN LOG:")] [SPAN_MESSAGE("[text]")] [jump_click]"
-	for(var/client/C as anything in GLOB.admins)
-		if(C && C.admin_holder && (R_MOD & C.admin_holder.rights))
-			to_chat(C, SPAN_ADMIN(rendered))
+	for(var/client/admin_client as anything in GLOB.admins)
+		if(admin_client && admin_client.admin_holder && (R_MOD & admin_client.admin_holder.rights))
+			to_chat(admin_client, SPAN_ADMIN(rendered))
 
 /proc/msg_admin_attack(text, jump_x, jump_y, jump_z) //Toggleable Attack Messages; server logs don't include the JMP part
 	if(GLOB.perf_flags & PERF_TOGGLE_ATTACKLOGS)
@@ -19,10 +19,10 @@
 	if(jump_x && jump_y && jump_z)
 		jump_click = ADMIN_JUMP_COORDS(jump_x, jump_y, jump_z)
 	var/rendered = SPAN_COMBAT("[SPAN_PREFIX("ATTACK:")] [SPAN_MESSAGE("[text]")] [jump_click]")
-	for(var/client/C as anything in GLOB.admins)
-		if(C && C.admin_holder && (R_MOD & C.admin_holder.rights))
-			if(C.prefs.toggles_chat & CHAT_ATTACKLOGS)
-				to_chat(C, rendered)
+	for(var/client/admin_client as anything in GLOB.admins)
+		if(admin_client && admin_client.admin_holder && (R_MOD & admin_client.admin_holder.rights))
+			if(admin_client.prefs.toggles_chat & CHAT_ATTACKLOGS)
+				to_chat(admin_client, rendered)
 
 /proc/msg_admin_niche(text, atom/jump_location) //Toggleable Niche Messages - At somepoint refactor all of the msg_admin stuff to point to atoms instead of feeding them coords like the other procs do
 	log_admin(text)
@@ -31,10 +31,10 @@
 	if(jump_location)
 		jump_click = ADMIN_COORDJMP(jump_location)
 	var/rendered = SPAN_NICHE("[SPAN_PREFIX("ADMIN NICHE LOG:")] [SPAN_MESSAGE("[text]")] [jump_click]")
-	for(var/client/C as anything in GLOB.admins)
-		if(C && C.admin_holder && (R_MOD & C.admin_holder.rights))
-			if(C.prefs.toggles_chat & CHAT_NICHELOGS)
-				to_chat(C, rendered)
+	for(var/client/admin_client as anything in GLOB.admins)
+		if(admin_client && admin_client.admin_holder && (R_MOD & admin_client.admin_holder.rights))
+			if(admin_client.prefs.toggles_chat & CHAT_NICHELOGS)
+				to_chat(admin_client, rendered)
 
 /proc/msg_sea(text, nosound = FALSE) //Only used for newplayer ticker message, hence no logging
 	var/rendered = FONT_SIZE_LARGE("[SPAN_ADMIN("[SPAN_PREFIX("MENTOR ALERT:")]")] [SPAN_MESSAGE("[text]")]")

@@ -249,10 +249,10 @@ explosion resistance exactly as much as their health
 		if(!turf_exploding)
 			turf_exploding = locate(x,y,z)
 
-		for(var/atom/possible_mob in turf_exploding)
+		for(var/atom/exploding_atom in turf_exploding)
 			spawn(0)
-				if(isliving(possible_mob))
-					var/mob/exploding_mob = possible_mob
+				if(isliving(exploding_atom))
+					var/mob/exploding_mob = exploding_atom
 					var/explosion_source
 					if(explosion_cause_data)
 						explosion_source = explosion_cause_data.resolve_mob()
@@ -294,7 +294,7 @@ explosion resistance exactly as much as their health
 						exploding_mob.attack_log += "\[[time_stamp()]\] <b>[exploding_mob]/[exploding_mob.ckey]</b> was blown up with a <b>[explosion_source]</b> in [get_area(exploding_mob)].</b>"
 					else
 						exploding_mob.attack_log += "\[[time_stamp()]\] <b>[exploding_mob]/[exploding_mob.ckey]</b> was blown up in [get_area(exploding_mob)]."
-				possible_mob.ex_act(severity, direction, explosion_cause_data)
+				exploding_atom.ex_act(severity, direction, explosion_cause_data)
 
 		tiles_processed++
 		if(tiles_processed >= increment)

@@ -225,8 +225,6 @@ a.popt {
 .name,
 .debugnotice,
 .prefix,
-.ffalive,
-.ffdead,
 .ooc,
 .looc,
 .adminooc,
@@ -305,14 +303,6 @@ em {
 
 .niche .message {
   color: hsl(227, 56%, 44%);
-}
-
-.ffalive {
-  color: hsl(17.1, 77.8%, 35.3%);
-}
-
-.ffdead {
-  color: hsl(40, 100%, 50%);
 }
 
 .name {

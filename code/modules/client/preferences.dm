@@ -1941,12 +1941,12 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					lang_chat_disabled = !lang_chat_disabled
 
 				if("fflogcolor")
-					var/ff_log_color_new = input(user, "Choose your FF log color!", ff_log_color) as color|null
+					var/ff_log_color_new = tgui_color_picker(user, "Choose your FF log color!", ff_log_color, "#00FF00")
 					if(ff_log_color_new)
 						ff_log_color = ff_log_color_new
 
 				if("ffdlogcolor")
-					var/ffd_log_color_new = input(user, "Choose your dead FF log color!", ffd_log_color) as color|null
+					var/ffd_log_color_new = tgui_color_picker(user, "Choose your dead FF log color!", ffd_log_color, "#FFA500")
 					if(ffd_log_color_new)
 						ffd_log_color = ffd_log_color_new
 

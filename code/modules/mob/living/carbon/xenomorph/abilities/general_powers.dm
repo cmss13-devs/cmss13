@@ -1129,9 +1129,9 @@
 	// allows tailstabs into mobs riding atop the tank
 	var/obj/vehicle/multitile/tank/skip_tank = null
 	if(ismob(targetted_atom))
-		var/mob/living/M = targetted_atom
-		if(istype(M) && M.tank_on_top_of)
-			skip_tank = M.tank_on_top_of
+		var/mob/living/target_mob = targetted_atom
+		if(istype(target_mob))
+			skip_tank = target_mob.get_tank_on_top_of()
 
 	var/list/turf/path = get_line(stabbing_xeno, targetted_atom, include_start_atom = FALSE)
 	for(var/turf/path_turf as anything in path)

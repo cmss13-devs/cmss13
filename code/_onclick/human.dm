@@ -156,20 +156,20 @@
 
 	grab_level = GRAB_CARRY
 
-	if(tank_on_top_of && !target.tank_on_top_of)
-		var/obj/vehicle/multitile/tank/T = tank_on_top_of
+	var/obj/vehicle/multitile/tank/tank = get_tank_on_top_of()
+	if(tank && !target.get_tank_on_top_of())
 
-		if(istype(T))
+		if(istype(tank))
 			var/turf/target_turf = get_turf(target)
 			var/adjacent_to_tank = FALSE
-			for(var/turf/tank_turf in T.locs)
+			for(var/turf/tank_turf in tank.locs)
 				if(get_dist(target_turf, tank_turf) <= 1 && target_turf != tank_turf)
 					adjacent_to_tank = TRUE
 					break
 
 			if(adjacent_to_tank)
 				target.forceMove(user.loc)
-				T.mark_on_top(target)
+				tank.mark_on_top(target)
 				target.update_transform(TRUE)
 				return
 

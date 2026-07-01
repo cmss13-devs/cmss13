@@ -177,32 +177,32 @@
  * * FALSE    - When the mob dismounts improperly, and must be punished.
  */
 /mob/living/proc/_handle_tank_edge_move(NewLoc, direct)
-	var/obj/vehicle/multitile/tank/T = tank_on_top_of
+	var/obj/vehicle/multitile/tank/tank = get_tank_on_top_of()
 
-	if(!T)
+	if(!tank)
 		return FALSE
 
 	var/turf/here = get_turf(src)
-	if(!(here in T.locs))
-		T.clear_on_top(src)
+	if(!(here in tank.locs))
+		tank.clear_on_top(src)
 		return FALSE
 
 	// only care about steps that would leave the hull.
-	if(isturf(NewLoc) && !(NewLoc in T.locs))
+	if(isturf(NewLoc) && !(NewLoc in tank.locs))
 		if(!(flags_atom & DIRLOCK))
 			setDir(direct)
 		SEND_SIGNAL(src, COMSIG_MOB_MOVE_OR_LOOK, TRUE, direct, direct)
 		if(pulledby || throwing)
 			return FALSE
 		var/turf/edge = get_step(here, direct)
-		if(!edge || edge.z != z || (edge in T.locs))
+		if(!edge || edge.z != z || (edge in tank.locs))
 			return FALSE
-		if(T._blocked_except_mobs(edge))
+		if(tank._blocked_except_mobs(edge))
 			return TRUE
 		// special interaction for simple_animals and (edge case) silicons...
 		// ...to prevent SpacemanDMM from sleeping and still allow dismounts.
 		if(!iscarbon(src))
-			T.clear_on_top(src)
+			tank.clear_on_top(src)
 			src.forceMove(NewLoc)
 			return TRUE
 		return TRUE
@@ -210,21 +210,21 @@
 	return FALSE
 
 /**
- * is_on_tank_hull checks if a mob has a valid tank_on_top_of.
+ * is_on_tank_hull checks if a mob has a valid tank rider component.
  *
- * This proc checks the tank_on_top_of var of a mob.
- * If it is anything except null, it means this mob is atop a tank tile.
+ * This proc checks the tank this mob's tank_rider component (if any) points to.
+ * If there is a valid tank, it means this mob is atop a tank tile.
  *
  * Returns:
  * * TRUE    - If there is a valid tile under the tank, and if mob and tank are on the same Z-level.
- * * FALSE   - If tank_on_top_of is null, if the Z-levels of the mob and Tank mistmach, if the tile Tu is invalid,
+ * * FALSE   - If the mob has no tank_rider component, if the Z-levels of the mob and Tank mistmach, if the tile Tu is invalid,
  * *              ...Or if the tile Tu is not, in fact, underneath a tank.
  */
 /mob/living/proc/is_on_tank_hull()
-	var/obj/vehicle/multitile/tank/T = tank_on_top_of
-	if(!T || z != T.z) return FALSE
+	var/obj/vehicle/multitile/tank/tank = get_tank_on_top_of()
+	if(!tank || z != tank.z) return FALSE
 	var/turf/Tu = get_turf(src)
-	return Tu && (Tu in T.locs)
+	return Tu && (Tu in tank.locs)
 
 /mob/living/Move(NewLoc, direct)
 	if(lying_angle != 0)
@@ -239,15 +239,15 @@
 		if(_handle_tank_edge_move(NewLoc, direct))
 			return FALSE
 		if(isturf(NewLoc))
-			var/obj/vehicle/multitile/tank/T = tank_on_top_of
-			if(T && !(NewLoc in T.locs))
+			var/obj/vehicle/multitile/tank/tank = get_tank_on_top_of()
+			if(tank && !(NewLoc in tank.locs))
 				if(ishuman(src))
 					var/mob/living/carbon/human/H = src
 					H.apply_effect(1.5, WEAKEN)
 					H.apply_effect(3, SUPERSLOW)
 					H.apply_effect(5, SLOW)
 					playsound(src, "punch", 25, TRUE)
-					T.clear_on_top(src)
+					tank.clear_on_top(src)
 
 	var/atom/movable/pullee = pulling
 	if(pullee && get_dist(src, pullee) > 1) //Is the pullee adjacent?
@@ -482,10 +482,10 @@
 		return
 
 	if(src_on_tank && target_on_tank)
-		if(tank_on_top_of == living_mob.tank_on_top_of)
-			var/obj/vehicle/multitile/tank/T = tank_on_top_of
+		var/obj/vehicle/multitile/tank/tank = get_tank_on_top_of()
+		if(tank == living_mob.get_tank_on_top_of())
 			var/turf/destination = get_step(living_mob.loc, dir)
-			if(destination && !(destination in T.locs))
+			if(destination && !(destination in tank.locs))
 				if(src.a_intent != INTENT_HELP || living_mob.a_intent != INTENT_HELP)
 					now_pushing = FALSE
 					return

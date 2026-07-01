@@ -236,19 +236,20 @@
 
 /obj/Moved(atom/oldloc, direction, Forced = FALSE)
 	. = ..()
-	if(is_atop_vehicle && isturf(loc))
+	var/obj/vehicle/multitile/tank/tank = src.get_tank_on_top_of()
+	if(tank && isturf(loc))
 		var/still_on_tank = FALSE
-		for(var/obj/vehicle/multitile/tank/T in loc)
-			if(loc in T.locs)
+		for(var/obj/vehicle/multitile/tank/candidate in loc)
+			if(loc in candidate.locs)
 				still_on_tank = TRUE
 				break
 		if(!still_on_tank)
-			src.tank_on_top_of.obj_clear_on_top(src)
+			tank.obj_clear_on_top(src)
 
 /obj/Move(NewLoc, direct)
 	. = ..()
 	handle_rotation()
-	if(src.is_atop_vehicle)
+	if(src.is_atop_vehicle())
 		var/still_on_tank = FALSE
 		if(isturf(NewLoc))
 			for(var/obj/vehicle/multitile/tank/T in NewLoc)
@@ -257,10 +258,10 @@
 					break
 
 		if(!still_on_tank && buckled_mob && ismob(buckled_mob))
-			var/mob/living/M = buckled_mob
-			var/obj/vehicle/multitile/tank/temp_tank = M.tank_on_top_of
+			var/mob/living/buckled_living = buckled_mob
+			var/obj/vehicle/multitile/tank/temp_tank = buckled_living.get_tank_on_top_of()
 			if(temp_tank)
-				temp_tank.clear_on_top(M)
+				temp_tank.clear_on_top(buckled_living)
 
 		src.forceMove(NewLoc)
 		if(buckled_mob)
@@ -380,8 +381,8 @@
 
 /obj/handle_flamer_fire(obj/flamer_fire/fire, damage, delta_time)
 	if(isitem(src))
-		var/obj/item/T = src
-		if(T.is_atop_vehicle) // don't process flamer fire if the item is atop a climbable vehicle.
+		var/obj/item/dropped_item = src
+		if(dropped_item.is_atop_vehicle()) // don't process flamer fire if the item is atop a climbable vehicle.
 			return
 	. = ..()
 	flamer_fire_act(damage, fire.weapon_cause_data)

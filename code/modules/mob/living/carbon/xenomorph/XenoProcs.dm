@@ -236,10 +236,10 @@
 // this proc only serves to fix a visual bug where hauled mobs get layered below the tank.
 // this is a rare edge case, because xenos won't usually be hauling mobs atop the tank, but just for completeness...
 /mob/living/carbon/xenomorph/proc/check_on_tank_hauled_mob(mob/victim)
-	var/obj/vehicle/multitile/tank/T = null
+	var/obj/vehicle/multitile/tank/tank = null
 	if(src.is_on_tank_hull())
-		T = src.tank_on_top_of
-		T._apply_rider_visuals(victim)
+		tank = src.get_tank_on_top_of()
+		tank._apply_rider_visuals(victim)
 	else
 		victim.layer   = initial(victim.layer)
 		victim.plane   = initial(victim.plane)
@@ -369,12 +369,14 @@
 		ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
 		pounceAction.freeze_timer_id = addtimer(CALLBACK(src, PROC_REF(unfreeze_pounce)), pounceAction.freeze_time, TIMER_STOPPABLE)
 	pounceAction.additional_effects(carbon_mob)
-	if(pounced_mob.tank_on_top_of)
-		var/obj/vehicle/multitile/tank/T = pounced_mob.tank_on_top_of
+	var/obj/vehicle/multitile/tank/pounced_tank = pounced_mob.get_tank_on_top_of()
+	if(pounced_tank)
 		src.forceMove(get_turf(pounced_mob))
-		T.mark_on_top(src)
-	else if(src.tank_on_top_of)
-		src.tank_on_top_of.clear_on_top(src)
+		pounced_tank.mark_on_top(src)
+	else
+		var/obj/vehicle/multitile/tank/tank = src.get_tank_on_top_of()
+		if(tank)
+			tank.clear_on_top(src)
 
 	if(pounceAction.slash)
 		carbon_mob.attack_alien(src, pounceAction.slash_bonus_damage)
@@ -405,9 +407,10 @@
 			if(facing && (facing in T.locs))
 				forceMove(facing)
 				T.mark_on_top(src)
-	else if(src.tank_on_top_of)
-		if(!(locate(/obj/vehicle/multitile/tank) in get_turf(src)))
-			src.tank_on_top_of.clear_on_top(src) // if we're not atop the tank still, clear us from it.
+	else
+		var/obj/vehicle/multitile/tank/current_tank = src.get_tank_on_top_of()
+		if(current_tank && !(locate(/obj/vehicle/multitile/tank) in get_turf(src)))
+			current_tank.clear_on_top(src) // if we're not atop the tank still, clear us from it.
 
 	if (pounceAction.should_destroy_objects)
 		if(istype(O, /obj/structure/surface/table) || istype(O, /obj/structure/surface/rack) || istype(O, /obj/structure/window_frame))

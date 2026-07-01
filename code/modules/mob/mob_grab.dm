@@ -119,19 +119,19 @@
 
 	// allows pulling ppl onto the tank if you are already ontop of it..
 	// the idea is to allow the tank to charge into an incend OB and for corpsmen ontop to recover people.
-	if(user.tank_on_top_of && !victim.tank_on_top_of)
-		var/obj/vehicle/multitile/tank/T = user.tank_on_top_of
-		if(istype(T))
+	var/obj/vehicle/multitile/tank/tank = user.get_tank_on_top_of()
+	if(tank && !victim.get_tank_on_top_of())
+		if(istype(tank))
 			var/turf/victim_turf = get_turf(victim)
 			var/adjacent_to_tank = FALSE
-			for(var/turf/tank_turf in T.locs)
+			for(var/turf/tank_turf in tank.locs)
 				if(get_dist(victim_turf, tank_turf) <= 1 && victim_turf != tank_turf)
 					adjacent_to_tank = TRUE
 					break
 
 			if(adjacent_to_tank)
 				victim.forceMove(user.loc)
-				T.mark_on_top(victim)
+				tank.mark_on_top(victim)
 				victim.update_transform(TRUE)
 				return
 

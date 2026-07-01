@@ -401,29 +401,29 @@
  * This proc does three things:
  *
  * It adds a mob to the tank's list of passengers (on_top_mobs)
- * It adds the tank to a mob's tank_on_top_of var
+ * It attaches a /datum/component/tank_rider to the mob, marking us as the tank it's atop of
  * It calls _apply_rider_visuals() to set the layer atop the tank's
  *
  * If a xeno is hidden, it gets un-hidden.
  *
  * Arguments:
- * * mob/living/M - The mob being marked ontop.
+ * * mob/living/rider_mob - The mob being marked ontop.
  */
-/obj/vehicle/multitile/tank/proc/mark_on_top(mob/living/M)
-	if(!istype(M))
+/obj/vehicle/multitile/tank/proc/mark_on_top(mob/living/rider_mob)
+	if(!istype(rider_mob))
 		return
-	if(M.z != z)
+	if(rider_mob.z != z)
 		return
-	if(!(get_turf(M) in locs))
+	if(!(get_turf(rider_mob) in locs))
 		return
-	if(M.tank_on_top_of == src)
+	if(rider_mob.get_tank_on_top_of() == src)
 		return
-	on_top_mobs |= M
-	M.tank_on_top_of = src
-	_apply_rider_visuals(M)
+	on_top_mobs |= rider_mob
+	rider_mob.AddComponent(/datum/component/tank_rider, src)
+	_apply_rider_visuals(rider_mob)
 
-	if(isxeno(M))
-		var/mob/living/carbon/xenomorph/X = M
+	if(isxeno(rider_mob))
+		var/mob/living/carbon/xenomorph/X = rider_mob
 		if(X.layer == XENO_HIDING_LAYER)
 			var/datum/action/xeno_action/onclick/xenohide/hide = get_action(X, /datum/action/xeno_action/onclick/xenohide)
 			if(hide)
@@ -436,76 +436,74 @@
  *
  * Checks if the obj can be brought atop a tank.
  * It adds the obj to the tank's list of objs (on_top_objs)
- * It adds the tank to a obj'ss tank_on_top_of var
+ * It attaches a /datum/component/tank_rider to the obj, marking us as the tank it's atop of
  * It calls _obj_apply_rider_visuals() to set the layer atop the tank's
  *
  * Arguments:
- * * obj/O - The obj being marked ontop.
+ * * obj/rider_obj - The obj being marked ontop.
  */
-/obj/vehicle/multitile/tank/proc/obj_mark_on_top(obj/O)
-	if(!istype(O))
+/obj/vehicle/multitile/tank/proc/obj_mark_on_top(obj/rider_obj)
+	if(!istype(rider_obj))
 		return
-	if(!O.is_allowed_atop_vehicle)
+	if(!rider_obj.is_allowed_atop_vehicle)
 		return
-	if(O.z != z)
+	if(rider_obj.z != z)
 		return
-	if(!(get_turf(O) in locs))
+	if(!(get_turf(rider_obj) in locs))
 		return
-	if(O.tank_on_top_of == src)
-		O.layer = TANK_RIDER_OBJ_LAYER // prevents a visual bug with layering
+	if(rider_obj.get_tank_on_top_of() == src)
+		rider_obj.layer = TANK_RIDER_OBJ_LAYER // prevents a visual bug with layering
 		return
-	on_top_obj       |= O
-	O.tank_on_top_of  = src
-	O.is_atop_vehicle = TRUE
-	O.layer           = TANK_RIDER_OBJ_LAYER
-	if(istype(O, /obj/structure/closet/bodybag))
-		var/obj/structure/closet/bodybag/BB = O
+	on_top_obj |= rider_obj
+	rider_obj.AddComponent(/datum/component/tank_rider, src)
+	rider_obj.layer = TANK_RIDER_OBJ_LAYER
+	if(istype(rider_obj, /obj/structure/closet/bodybag))
+		var/obj/structure/closet/bodybag/BB = rider_obj
 		if(BB.roller_buckled)
 			BB.pixel_y = BB.buckle_offset + 12
 		else
-			BB.pixel_y = initial(O.pixel_y) + 12
+			BB.pixel_y = initial(rider_obj.pixel_y) + 12
 	else
-		O.pixel_y = initial(O.pixel_y) + 12
+		rider_obj.pixel_y = initial(rider_obj.pixel_y) + 12
 
 /**
  * clear_on_top removes rider effects from a mob who was previously atop the tank.
  *
  * This proc resets the layer and plane of a rider.
  * This proc removes a rider from the on_top_mobs list of the tank.
- * This proc sets the tank_on_top_of variable of a mob to null.
+ * This proc removes the mob's /datum/component/tank_rider.
  *
  * Arguments:
- * * mob/living/M - The mob who has disembarked.
+ * * mob/living/rider_mob - The mob who has disembarked.
  */
-/obj/vehicle/multitile/tank/proc/clear_on_top(mob/living/M)
-	if(!istype(M))
+/obj/vehicle/multitile/tank/proc/clear_on_top(mob/living/rider_mob)
+	if(!istype(rider_mob))
 		return
-	on_top_mobs      -= M
-	M.tank_on_top_of  = null
-	M.layer           = initial(M.layer)
-	M.plane           = initial(M.plane)
-	M.pixel_y         = initial(M.pixel_y)
+	on_top_mobs -= rider_mob
+	qdel(rider_mob.GetComponent(/datum/component/tank_rider))
+	rider_mob.layer   = initial(rider_mob.layer)
+	rider_mob.plane   = initial(rider_mob.plane)
+	rider_mob.pixel_y = initial(rider_mob.pixel_y)
 
 /**
  * obj_clear_on_top removes rider effects from an obj atop the tank.
  *
  * This behaves as an ad-hoc polymorphic version of clear_on_top.
  */
-/obj/vehicle/multitile/tank/proc/obj_clear_on_top(obj/O)
-	if(!istype(O))
+/obj/vehicle/multitile/tank/proc/obj_clear_on_top(obj/rider_obj)
+	if(!istype(rider_obj))
 		return
-	on_top_obj         -= O
-	O.tank_on_top_of    = null
-	O.is_atop_vehicle   = FALSE
-	O.layer             = initial(O.layer)
-	if(istype(O, /obj/structure/closet/bodybag))
-		var/obj/structure/closet/bodybag/BB = O
+	on_top_obj -= rider_obj
+	qdel(rider_obj.GetComponent(/datum/component/tank_rider))
+	rider_obj.layer = initial(rider_obj.layer)
+	if(istype(rider_obj, /obj/structure/closet/bodybag))
+		var/obj/structure/closet/bodybag/BB = rider_obj
 		if(BB.roller_buckled)
 			BB.pixel_y = BB.buckle_offset
 		else
-			BB.pixel_y = initial(O.pixel_y)
+			BB.pixel_y = initial(rider_obj.pixel_y)
 	else
-		O.pixel_y = initial(O.pixel_y)
+		rider_obj.pixel_y = initial(rider_obj.pixel_y)
 
 /**
  * Destroy proc. This shouldn't normally be called, but just in case.
@@ -556,16 +554,16 @@
  */
 /obj/vehicle/multitile/tank/BlockedPassDirs(atom/movable/mover, target_dir)
 	if(ismob(mover))
-		var/mob/living/M = mover
-		if(istype(M) && M.tank_on_top_of == src)
-			var/turf/start = get_turf(M)
+		var/mob/living/mover_mob = mover
+		if(istype(mover_mob) && mover_mob.get_tank_on_top_of() == src)
+			var/turf/start = get_turf(mover_mob)
 			var/turf/target = get_step(start, target_dir)
 			if(target && (target in src.locs))
 				return NO_BLOCKED_MOVEMENT
 	else if(isobj(mover))
-		var/obj/O = mover
-		if(O.is_atop_vehicle)
-			var/turf/start = get_turf(O)
+		var/obj/mover_obj = mover
+		if(mover_obj.is_atop_vehicle())
+			var/turf/start = get_turf(mover_obj)
 			var/turf/target = get_step(start, target_dir)
 			if(target && (target in src.locs))
 				return NO_BLOCKED_MOVEMENT
@@ -594,11 +592,11 @@
  */
 /obj/vehicle/multitile/tank/take_damage_type(damage, type, atom/attacker)
 	if(type == "slash" && istype(attacker, /mob/living/carbon/xenomorph))
-		var/mob/living/carbon/xenomorph/X = attacker
+		var/mob/living/carbon/xenomorph/attacker_xeno = attacker
 
 		// must actually be on top of THIS tank (exterior), same z, and stading on one of our tiles
-		if(X.tank_on_top_of == src && X.z == z)
-			var/turf/xturf = get_turf(X)
+		if(attacker_xeno.get_tank_on_top_of() == src && attacker_xeno.z == z)
+			var/turf/xturf = get_turf(attacker_xeno)
 			if(xturf && (xturf in src.locs))
 				var/adj_damage = damage * 0.7
 				var/all_broken = TRUE

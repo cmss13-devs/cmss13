@@ -414,13 +414,14 @@
 	src.do_drop_animation(user)
 
 	if(isliving(user))
-		var/mob/living/L = user
-		var/obj/vehicle/multitile/tank/T = L.tank_on_top_of
-		if(T && !src.is_atop_vehicle) // tank exists, our user is atop the tank, we are not marked as atop the tank yet.
-			T.obj_mark_on_top(src)
-		else if (!T && src.is_atop_vehicle) // only remove from vehicle if it is atop a vehicle to begin with
-			src.tank_on_top_of.obj_clear_on_top(src)
-		else if (T && src.is_atop_vehicle) // User on tank AND already marked
+		var/mob/living/living_mob = user
+		var/obj/vehicle/multitile/tank/tank = living_mob.get_tank_on_top_of()
+		var/obj/vehicle/multitile/tank/current_tank = src.get_tank_on_top_of()
+		if(tank && !current_tank) // tank exists, our user is atop the tank, we are not marked as atop the tank yet.
+			tank.obj_mark_on_top(src)
+		else if (!tank && current_tank) // only remove from vehicle if it is atop a vehicle to begin with
+			current_tank.obj_clear_on_top(src)
+		else if (tank && current_tank) // User on tank AND already marked
 			src.pixel_y = initial(src.pixel_y) + 12 // Just refresh the pixel offset and layer to avoid a visual bug with animations
 			src.layer = TANK_RIDER_OBJ_LAYER
 

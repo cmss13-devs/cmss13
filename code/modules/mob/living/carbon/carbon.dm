@@ -31,11 +31,11 @@
 
 // Same as the parent proc, but adds 1 additional check for climb_down
 /mob/living/carbon/_handle_tank_edge_move(NewLoc, direct)
-	var/obj/vehicle/multitile/tank/T = tank_on_top_of
+	var/obj/vehicle/multitile/tank/tank = get_tank_on_top_of()
 	var/result = ..()
 	if(result)
 		var/turf/edge = get_step(get_turf(src), direct)
-		if(T.climb_down(src, edge))
+		if(tank.climb_down(src, edge))
 			return TRUE
 	return result
 
@@ -550,7 +550,7 @@
 	pixel_y = 0
 	var/obj/vehicle/multitile/tank/TANK = null
 	if(hauling_xeno.is_on_tank_hull())
-		TANK = hauling_xeno.tank_on_top_of
+		TANK = hauling_xeno.get_tank_on_top_of()
 	UnregisterSignal(src, list(COMSIG_ATTEMPT_MOB_PULL, COMSIG_LIVING_PREIGNITION, COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED))
 	UnregisterSignal(hauling_xeno, COMSIG_MOB_DEATH)
 	hauling_xeno = null

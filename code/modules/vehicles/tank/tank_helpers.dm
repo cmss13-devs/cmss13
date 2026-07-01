@@ -579,17 +579,17 @@
 /**
  * Helper function to know if a mob is a rider of this specific tank
  *
- * Checks if this tank is the 'tank_on_top_of' of a given mob.
+ * Checks if this tank is the tank the given mob's /datum/component/tank_rider is tracking.
  *
  * Arguments:
  * * atom/movable/AM = whatever mob/atom we want to check if its a rider.
  *
  * Returns:
- * * TRUE    = If AM is a mob/living and this tank is tank_on_top_of.
- * * FALSE   = If AM is not a mob/living, or if this tank is not tank_on_top_of.
+ * * TRUE    = If AM is a mob/living and this tank is what its tank_rider component points to.
+ * * FALSE   = If AM is not a mob/living, or if this tank isn't what its tank_rider component points to.
  */
 /obj/vehicle/multitile/tank/proc/_is_our_rider(atom/movable/AM)
 	if(!ismob(AM))
 		return FALSE
-	var/mob/living/M = AM
-	return istype(M) && M.tank_on_top_of == src
+	var/mob/living/rider_mob = AM
+	return istype(rider_mob) && rider_mob.get_tank_on_top_of() == src

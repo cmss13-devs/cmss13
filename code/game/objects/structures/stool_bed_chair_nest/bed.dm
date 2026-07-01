@@ -60,7 +60,7 @@
 /obj/structure/bed/afterbuckle(mob/M)
 	. = ..()
 	if(. && buckled_mob == M)
-		if(is_atop_vehicle)
+		if(is_atop_vehicle())
 			M.pixel_y = buckling_y + 12 // Magic number bad. TODO: Make tank pixel offset its own variable.
 		else
 			M.pixel_y = buckling_y
@@ -70,7 +70,7 @@
 		if(base_bed_icon)
 			density = TRUE
 	else
-		if(is_atop_vehicle)
+		if(is_atop_vehicle())
 			M.pixel_y = initial(buckled_mob.pixel_y) + 12 // Magic number bad. TODO: Make tank pixel offset its own variable.
 		else
 			M.pixel_y = initial(buckled_mob.pixel_y)
@@ -91,8 +91,9 @@
 	buckled_bodybag = B
 	density = TRUE
 	update_icon()
-	if(is_atop_vehicle)
-		tank_on_top_of.obj_mark_on_top(buckled_bodybag)
+	var/obj/vehicle/multitile/tank/tank = get_tank_on_top_of()
+	if(tank)
+		tank.obj_mark_on_top(buckled_bodybag)
 		buckled_bodybag.pixel_y = buckled_bodybag.buckle_offset + 12 // Magic number bad. TODO: Make tank pixel offset its own variable.
 	else if(buckling_y)
 		buckled_bodybag.pixel_y = buckled_bodybag.buckle_offset + buckling_y
@@ -103,7 +104,7 @@
 
 /obj/structure/bed/unbuckle()
 	if(buckled_bodybag)
-		if(is_atop_vehicle)
+		if(is_atop_vehicle())
 			buckled_bodybag.pixel_y = initial(buckled_bodybag.pixel_y) + 12 // Magic number bad. TODO: Make tank pixel offset its own variable.
 		else
 			buckled_bodybag.pixel_y = initial(buckled_bodybag.pixel_y)
@@ -325,12 +326,13 @@
 	user.temp_drop_inv_item(src)
 	forceMove(roller)
 	if(isliving(user))
-		var/mob/living/L = user
-		var/obj/vehicle/multitile/tank/T = L.tank_on_top_of
-		if(T && !roller.is_atop_vehicle) // tank exists, our user is atop the tank, we are not marked as atop the tank yet.
-			T.obj_mark_on_top(roller)
-		else if (!T && roller.is_atop_vehicle) // only remove from vehicle if it is atop a vehicle to begin with
-			roller.tank_on_top_of.obj_clear_on_top(roller)
+		var/mob/living/living_mob = user
+		var/obj/vehicle/multitile/tank/tank = living_mob.get_tank_on_top_of()
+		var/obj/vehicle/multitile/tank/roller_tank = roller.get_tank_on_top_of()
+		if(tank && !roller_tank) // tank exists, our user is atop the tank, we are not marked as atop the tank yet.
+			tank.obj_mark_on_top(roller)
+		else if (!tank && roller_tank) // only remove from vehicle if it is atop a vehicle to begin with
+			roller_tank.obj_clear_on_top(roller)
 	SEND_SIGNAL(user, COMSIG_MOB_ITEM_ROLLER_DEPLOYED, roller)
 	if(target_mob)
 		roller.buckle_mob(target_mob, user)

@@ -220,9 +220,13 @@ a.popt {
 
 /* ADD HERE FOR BOLD */
 
+.attacklog,
 .bold,
 .name,
+.debugnotice,
 .prefix,
+.ffalive,
+.ffdead,
 .ooc,
 .looc,
 .adminooc,
@@ -293,6 +297,22 @@ em {
 .niche {
   color: hsl(227, 64%, 60%);
   font-weight: bold;
+}
+
+.niche .prefix {
+  font-weight: bolder;
+}
+
+.niche .message {
+  color: hsl(227, 56%, 44%);
+}
+
+.ffalive {
+  color: hsl(0, 100%, 60%);
+}
+
+.ffdead {
+  color: hsl(40, 100%, 50%);
 }
 
 .name {
@@ -1196,6 +1216,30 @@ em {
 .debuginfo {
   color: hsl(39, 32%, 22%);
   font-style: italic;
+}
+
+.attacklog {
+  color: hsl(225, 100%, 63%);
+}
+
+.attacklog .message {
+  color: hsl(230, 35%, 45%);
+}
+
+.attacklog .prefix {
+  font-weight: bolder;
+}
+
+.debugnotice {
+  color: hsl(30, 100%, 55%);
+}
+
+.debugnotice .message {
+  color: hsl(30, 40%, 50%);
+}
+
+.debugnotice .prefix {
+  font-weight: bolder;
 }
 
 .xenonotice {

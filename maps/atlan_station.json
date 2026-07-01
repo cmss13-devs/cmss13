@@ -28,7 +28,7 @@
         "/datum/equipment_preset/survivor/atlan/co_survivor"
     ],
     "colony_joe_types": [
-        "/datum/job/civilian/working_joe/colony"
+        "/datum/job/antag/upp/dzho_automaton/colony"
     ],
     "defcon_triggers": [
         3750,

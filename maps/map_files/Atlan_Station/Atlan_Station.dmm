@@ -12289,7 +12289,9 @@
 /turf/open/floor/strata/fake_wood,
 /area/atlan/station/promenade)
 "icn" = (
-/obj/structure/machinery/cryopod/joe/seegson,
+/obj/structure/machinery/cryopod/joe/seegson/alt{
+	dir = 1
+	},
 /turf/open/floor/prison/darkyellowfull2,
 /area/atlan/station/substation)
 "icI" = (
@@ -29206,7 +29208,9 @@
 /area/atlan/station/hab_docks)
 "tke" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/cryopod/joe/seegson,
+/obj/structure/machinery/cryopod/joe/seegson/alt{
+	dir = 1
+	},
 /turf/open/floor/prison/darkyellowfull2,
 /area/atlan/station/substation)
 "tkB" = (

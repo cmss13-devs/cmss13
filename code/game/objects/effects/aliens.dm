@@ -43,7 +43,7 @@
 	density = FALSE
 	opacity = FALSE
 	anchored = TRUE
-	layer = ABOVE_OBJ_LAYER
+	layer = TANK_RIDER_LAYER
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	var/datum/cause_data/cause_data
 

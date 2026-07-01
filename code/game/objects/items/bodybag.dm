@@ -26,9 +26,17 @@
 			deploy_bodybag(user, T)
 
 /obj/item/bodybag/proc/deploy_bodybag(mob/user, atom/location)
-	var/obj/structure/closet/bodybag/R = new unfolded_path(location, src)
-	R.add_fingerprint(user)
-	R.open(user)
+	var/obj/structure/closet/bodybag/bodybag = new unfolded_path(location, src)
+	bodybag.add_fingerprint(user)
+	bodybag.open(user)
+	if(isliving(user))
+		var/mob/living/living_mob = user
+		var/obj/vehicle/multitile/tank/tank = living_mob.get_tank_on_top_of()
+		var/obj/vehicle/multitile/tank/current_tank = bodybag.get_tank_on_top_of()
+		if(tank && !current_tank) // tank exists, our user is atop the tank, we are not marked as atop the tank yet.
+			tank.obj_mark_on_top(bodybag)
+		else if (!tank && current_tank) // only remove from vehicle if it is atop a vehicle to begin with
+			current_tank.obj_clear_on_top(bodybag)
 	user.temp_drop_inv_item(src)
 	qdel(src)
 
@@ -83,6 +91,7 @@
 	/// How many extra pixels to offset the bag by when buckled, since rollerbeds are set up to offset a centered horizontal human sprite.
 	var/buckle_offset = 5
 	store_items = FALSE
+	is_allowed_atop_vehicle = TRUE // Allows bodybags, exceptionally, as structures, to be used atop vehicles such as the tank.
 
 /obj/structure/closet/bodybag/Initialize()
 	. = ..()
@@ -208,7 +217,8 @@
 
 /obj/structure/closet/bodybag/forceMove(atom/destination)
 	if(roller_buckled)
-		roller_buckled.unbuckle()
+		if(!is_atop_vehicle() && !roller_buckled.is_atop_vehicle())
+			roller_buckled.unbuckle()
 	. = ..()
 
 
@@ -272,10 +282,16 @@
 	overlays.Cut()	// makes sure any previous triage cards are removed
 
 	if(!stasis_mob)
-		layer = initial(layer)
+		if(is_atop_vehicle())
+			layer = TANK_RIDER_OBJ_LAYER
+		else
+			layer = initial(layer)
 		return
 
-	layer = LYING_BETWEEN_MOB_LAYER
+	if(is_atop_vehicle())
+		layer = TANK_RIDER_OBJ_LAYER
+	else
+		layer = LYING_BETWEEN_MOB_LAYER
 
 	if(stasis_mob.holo_card_color && !opened)
 		var/image/holo_card_icon = image('icons/obj/bodybag.dmi', src, "cryocard_[stasis_mob.holo_card_color]")
@@ -297,6 +313,12 @@
 	if(stasis_mob)
 		stasis_mob.in_stasis = FALSE
 		UnregisterSignal(stasis_mob, COMSIG_HUMAN_TRIAGE_CARD_UPDATED)
+		var/obj/vehicle/multitile/tank/tank = src.get_tank_on_top_of()
+		var/obj/vehicle/multitile/tank/mob_tank = stasis_mob.get_tank_on_top_of()
+		if(tank)
+			tank.mark_on_top(stasis_mob)
+		else if (mob_tank)
+			mob_tank.clear_on_top(stasis_mob)
 		stasis_mob = null
 	STOP_PROCESSING(SSobj, src)
 	if(used > max_uses)

@@ -39,6 +39,11 @@
 	/// Holds a reference to the emissive blocker overlay
 	var/emissive_overlay
 
+	/// Is this item allowed atop a climbable vehicle?
+	/// Not at all intended for structures: This is meant for grabbable items. Weapons, ammo, pizza crates, etc...
+	/// ...However, defining it as part of obj instead of obj/item helps us handle exceptions.
+	/// E.G: Exceptionally, as QoL for corpsmen: bodybags, stasis bags, and roller beds are allowed.
+	var/is_allowed_atop_vehicle = FALSE
 	/// A weakref to the mob currently interacting with us.
 	var/datum/weakref/interactor
 
@@ -500,8 +505,18 @@
 	SEND_SIGNAL(src, COMSIG_OBJ_AFTER_BUCKLE, buckled_mob)
 	if(!buckled_mob)
 		UnregisterSignal(buckle_target, COMSIG_PARENT_QDELETING)
+		if(isliving(buckle_target))
+			var/mob/living/living_M = buckle_target
+			var/obj/vehicle/multitile/tank/tank = living_M.get_tank_on_top_of()
+			if(tank)
+				tank.clear_on_top(living_M)
 	else
 		RegisterSignal(buckled_mob, COMSIG_PARENT_QDELETING, PROC_REF(unbuckle))
+		if(isliving(buckled_mob))
+			var/mob/living/living_M = buckled_mob
+			var/obj/vehicle/multitile/tank/tank = get_tank_on_top_of()
+			if(tank)
+				tank.mark_on_top(living_M)
 	return buckled_mob
 
 /atom/movable/proc/handle_rotation()
@@ -548,3 +563,12 @@
 		return NO_BLOCKED_MOVEMENT
 
 	return ..()
+
+/atom/movable/proc/get_tank_on_top_of()
+	var/datum/component/tank_rider/rider = GetComponent(/datum/component/tank_rider)
+	if(!rider)
+		return null
+	return rider.get_tank()
+
+/atom/movable/proc/is_atop_vehicle()
+	return GetComponent(/datum/component/tank_rider) ? TRUE : FALSE

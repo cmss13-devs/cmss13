@@ -25609,7 +25609,7 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/engineer)
 "bmn" = (
-/turf/open/floor/almayer/flooredge/west,
+/turf/open/floor/almayer/silver/west,
 /area/almayer/command/cic)
 "bmo" = (
 /obj/effect/decal/warning_stripes{

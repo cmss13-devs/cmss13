@@ -48539,7 +48539,6 @@
 /obj/structure/noticeboard{
 	pixel_y = 32
 	},
-/obj/item/paper/almayer_brig_storage,
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig/perma)
 "cmu" = (

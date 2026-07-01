@@ -10,6 +10,7 @@
 	damage = 72
 	penetration = ARMOR_PENETRATION_TIER_1
 	accuracy = HIT_ACCURACY_TIER_1
+	handful_type = /obj/item/ammo_magazine/handful/revolver
 
 /datum/ammo/bullet/revolver/marksman
 	name = "marksman revolver bullet"
@@ -18,6 +19,7 @@
 	damage_falloff = 0
 	accurate_range = 12
 	penetration = ARMOR_PENETRATION_TIER_7
+	handful_type = /obj/item/ammo_magazine/handful/revolver/marksman
 
 /datum/ammo/bullet/revolver/heavy
 	name = "heavy revolver bullet"
@@ -26,6 +28,7 @@
 	penetration = ARMOR_PENETRATION_TIER_4
 	accuracy = HIT_ACCURACY_TIER_3
 	var/add_thing = 1
+	handful_type = /obj/item/ammo_magazine/handful/revolver/heavy
 
 /datum/ammo/bullet/revolver/heavy/on_hit_mob(mob/living/M, obj/projectile/bullet)
 	. = ..()
@@ -38,6 +41,7 @@
 /datum/ammo/bullet/revolver/incendiary
 	name = "incendiary revolver bullet"
 	damage = 40
+	handful_type = /obj/item/ammo_magazine/handful/revolver/incendiary
 
 /datum/ammo/bullet/revolver/incendiary/set_bullet_traits()
 	..()
@@ -49,6 +53,7 @@
 	name = "toxic revolver bullet"
 	var/acid_per_hit = 10
 	var/organic_damage_mult = 3
+	handful_type = /obj/item/ammo_magazine/handful/revolver/marksman/toxin
 
 /datum/ammo/bullet/revolver/marksman/toxin/on_hit_mob(mob/M, obj/projectile/P)
 	. = ..()
@@ -81,6 +86,7 @@
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 	penetration = ARMOR_PENETRATION_TIER_4
 	damage = 70
+	handful_type = /obj/item/ammo_magazine/handful/revolver/upp
 
 
 /datum/ammo/bullet/revolver/upp/shrapnel
@@ -99,6 +105,7 @@
 	shrapnel_chance = 100
 	shrapnel_type = /obj/item/shard/shrapnel/upp
 	//roughly 90 or so damage with the additional shrapnel, around 130 in total with primary round
+	handful_type = /obj/item/ammo_magazine/handful/revolver/upp/shrapnel
 
 /datum/ammo/bullet/revolver/upp/shrapnel/on_hit_mob(mob/M, obj/projectile/P)
 	pushback(M, P, 1)
@@ -117,13 +124,13 @@
 /datum/ammo/bullet/revolver/small
 	name = "small revolver bullet"
 	headshot_state = HEADSHOT_OVERLAY_LIGHT
-
 	damage = 45
-
 	penetration = ARMOR_PENETRATION_TIER_3
+	handful_type = /obj/item/ammo_magazine/handful/revolver/small
 
 /datum/ammo/bullet/revolver/small/cmb
 	damage = 60
+	handful_type = /obj/item/ammo_magazine/handful/revolver/small/cmb
 
 /datum/ammo/bullet/revolver/small/hollowpoint
 	name = "small hollowpoint revolver bullet"
@@ -132,6 +139,7 @@
 	damage = 75 // way too strong because it's hard to make a good balance between HP and normal with this system, but the damage falloff is really strong
 	penetration = 0
 	damage_falloff = DAMAGE_FALLOFF_TIER_6
+	handful_type = /obj/item/ammo_magazine/handful/revolver/small/hollowpoint
 
 /datum/ammo/bullet/revolver/mateba
 	name = ".454 heavy revolver bullet"
@@ -141,6 +149,7 @@
 	damage_var_high = PROJECTILE_VARIANCE_TIER_6
 	penetration = ARMOR_PENETRATION_TIER_4
 	headshot_state = HEADSHOT_OVERLAY_HEAVY
+	handful_type = /obj/item/ammo_magazine/handful/revolver/mateba
 
 /datum/ammo/bullet/revolver/mateba/New()
 	..()
@@ -151,11 +160,13 @@
 	debilitate = list(0,2,0,0,0,1,0,0)
 	penetration = ARMOR_PENETRATION_TIER_5
 	flags_ammo_behavior = AMMO_BALLISTIC
+	handful_type = /obj/item/ammo_magazine/handful/revolver/mateba/highimpact
 
 /datum/ammo/bullet/revolver/mateba/highimpact/ap
 	name = ".454 heavy high-impact armor piercing revolver bullet"
 	penetration = ARMOR_PENETRATION_TIER_10
 	damage = 50
+	handful_type = /obj/item/ammo_magazine/handful/revolver/mateba/highimpact/ap
 
 /datum/ammo/bullet/revolver/mateba/highimpact/on_hit_mob(mob/M, obj/projectile/P)
 	knockback(M, P, 4)
@@ -167,6 +178,7 @@
 	damage_var_high = PROJECTILE_VARIANCE_TIER_1
 	penetration = ARMOR_PENETRATION_TIER_10
 	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_BALLISTIC
+	handful_type = /obj/item/ammo_magazine/handful/revolver/mateba/highimpact/explosive
 
 /datum/ammo/bullet/revolver/mateba/highimpact/explosive/on_hit_mob(mob/M, obj/projectile/P)
 	..()
@@ -186,3 +198,4 @@
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8
 	damage_var_high = PROJECTILE_VARIANCE_TIER_6
 	penetration = ARMOR_PENETRATION_TIER_2
+	handful_type = /obj/item/ammo_magazine/handful/revolver/webley

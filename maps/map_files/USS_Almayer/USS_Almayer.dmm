@@ -17833,7 +17833,12 @@
 /area/almayer/medical/containment)
 "aVj" = (
 /obj/structure/platform/metal/almayer_smooth/north,
-/obj/structure/machinery/camera/autoname/almayer,
+/obj/structure/machinery/door_control/brbutton{
+	pixel_y = 26;
+	name = "Armory Lockdown";
+	id = "bot_armory";
+	req_one_access_txt = "1;4"
+	},
 /turf/open/floor/almayer/flooredgesmooth2/north,
 /area/almayer/command/cic)
 "aVk" = (

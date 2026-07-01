@@ -4906,6 +4906,9 @@
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/living/tankerbunks)
+"alZ" = (
+/turf/open/floor/almayer/flooredge,
+/area/almayer/hallways/upper/fore_hallway)
 "ama" = (
 /obj/structure/stairs/perspective{
 	dir = 4
@@ -6132,6 +6135,9 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/pilotbunks)
+"apo" = (
+/turf/open/floor/almayer/green/northeast,
+/area/almayer/hallways/upper/fore_hallway)
 "app" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/flora/pottedplant{
@@ -7080,6 +7086,20 @@
 /obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/s_bow)
+"arF" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 4;
+	name = "ship-grade camera"
+	},
+/turf/open/floor/almayer/green/west,
+/area/almayer/hallways/upper/fore_hallway)
+"arG" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Midship Upper Medical Ladders";
+	dir = 2
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/medical/upper_medical)
 "arH" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer/redfull,
@@ -7154,6 +7174,12 @@
 "arO" = (
 /turf/open/floor/wood/ship,
 /area/almayer/living/offices/flight)
+"arP" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/almayer/green/east,
+/area/almayer/hallways/upper/fore_hallway)
 "arQ" = (
 /obj/structure/surface/table/gamblingtable,
 /obj/item/spacecash/c10,
@@ -7162,6 +7188,12 @@
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/offices/flight)
+"arR" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/medical/upper_medical)
 "arS" = (
 /obj/structure/surface/table/gamblingtable,
 /obj/item/toy/dice,
@@ -7574,6 +7606,12 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/offices/cryo)
+"asQ" = (
+/obj/structure/machinery/status_display{
+	pixel_x = 32
+	},
+/turf/open/floor/almayer/green/east,
+/area/almayer/hallways/upper/fore_hallway)
 "asR" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/computer/cameras/almayer_network/vehicle,
@@ -8205,6 +8243,12 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/p_bow)
+"auT" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Midship Upper Medical Ladders"
+	},
+/turf/closed/wall/almayer/white,
+/area/almayer/medical/morgue)
 "auU" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/plating_striped/west,
@@ -8498,6 +8542,10 @@
 "avK" = (
 /turf/open/floor/almayer/blue/south,
 /area/almayer/living/bridgebunks)
+"avL" = (
+/obj/structure/machinery/camera/autoname/almayer,
+/turf/open/floor/almayer/blue/north,
+/area/almayer/hallways/upper/fore_hallway)
 "avM" = (
 /obj/structure/largecrate/random/barrel/white,
 /turf/open/floor/almayer/plate,
@@ -8751,6 +8799,9 @@
 "awz" = (
 /turf/closed/wall/almayer/reinforced,
 /area/almayer/command/cichallway)
+"awA" = (
+/turf/open/floor/almayer/green/southeast,
+/area/almayer/hallways/upper/fore_hallway)
 "awB" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
 	name = "\improper Damage Control Storage";
@@ -8764,6 +8815,12 @@
 "awC" = (
 /turf/closed/wall/almayer,
 /area/almayer/shipboard/port_missiles)
+"awD" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = -30
+	},
+/turf/open/floor/almayer/mono,
+/area/almayer/lifeboat_pumps/north1)
 "awE" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/lower/port_midship_hallway)
@@ -58075,6 +58132,9 @@
 	light_color = "#a7dbc7";
 	dir = 4
 	},
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Midship Upper Medical Ladders"
+	},
 /turf/open/floor/grass,
 /area/almayer/medical/upper_medical)
 "gXs" = (
@@ -82127,9 +82187,6 @@
 	},
 /turf/open/floor/almayer/blue/north,
 /area/almayer/hallways/upper/midship_hallway)
-"rnN" = (
-/turf/open/floor/almayer/greenfull,
-/area/almayer/hallways/upper/fore_hallway)
 "rnP" = (
 /obj/structure/largecrate/random,
 /obj/structure/largecrate/random{
@@ -203697,7 +203754,7 @@ kcp
 aCY
 aCY
 qmK
-oIp
+lSN
 pTS
 awF
 hRk
@@ -203888,7 +203945,7 @@ add
 ajI
 add
 add
-add
+awD
 adq
 iFn
 nwL
@@ -204211,7 +204268,7 @@ aCY
 aCY
 aCY
 aDf
-hOd
+avL
 oIp
 wCn
 aET
@@ -204918,12 +204975,12 @@ awW
 acW
 awW
 awW
-awW
 bVE
 hiy
 bRZ
-iKy
-iKy
+bvp
+bvp
+arF
 oyB
 bvp
 iKy
@@ -204942,13 +204999,13 @@ iKy
 iKy
 iKy
 iKy
+arF
 iKy
 oyB
 aBe
 kmT
 pEY
 aXe
-baw
 fGg
 baw
 sgU
@@ -205021,12 +205078,12 @@ oGC
 xjD
 ajf
 ajf
-ajf
 oAO
 pIZ
 nsr
 fSx
 tTZ
+pcs
 tTZ
 tTZ
 dNj
@@ -205041,9 +205098,10 @@ plK
 tuX
 tuX
 plK
-plK
+ayG
 plK
 tuX
+plK
 plK
 plK
 plK
@@ -205051,7 +205109,6 @@ ayG
 xFx
 tFW
 aZC
-aZz
 aZz
 aZz
 nsc
@@ -205124,11 +205181,11 @@ sHp
 oGC
 awW
 awW
-awW
 aSJ
 bVe
 gvu
-xCB
+nbH
+qQu
 nyK
 llo
 epT
@@ -205139,22 +205196,22 @@ llo
 llo
 llo
 llo
-aVK
+asQ
 llo
 pub
 llo
 llo
-llo
+arP
 llo
 llo
 epT
 llo
 aWM
-ayH
+qQu
+ayJ
 tJm
 asu
 aXe
-baw
 baw
 baw
 mnA
@@ -205229,11 +205286,11 @@ gLl
 gLl
 gLl
 gLl
-gLl
 gvu
-xCB
-tJm
-rnN
+nbH
+nyK
+awA
+dfa
 aoe
 aoe
 aoe
@@ -205245,17 +205302,17 @@ aoe
 aoe
 aoe
 aoe
-aoe
-aoe
-aoe
-aoe
-aoe
-aoe
-rnN
-gvu
-ayH
+ajl
+ajl
+arR
+arG
+ajl
+ajl
+ajl
+apo
+aWM
+ayJ
 kaj
-vIo
 vIo
 vIo
 vIo
@@ -205333,7 +205390,7 @@ mfL
 hto
 gLl
 ciI
-xCB
+nbH
 tJm
 aoe
 aoe
@@ -205357,7 +205414,7 @@ ccs
 ajl
 ajl
 hwB
-ayH
+ayJ
 tJm
 vIo
 giD
@@ -205436,7 +205493,7 @@ cZq
 utp
 kYF
 cbN
-xCB
+nbH
 kaj
 aoe
 cim
@@ -205461,7 +205518,7 @@ cca
 gWG
 gvu
 ayH
-tJm
+alZ
 lST
 awK
 pep
@@ -206375,7 +206432,7 @@ cgG
 isN
 isN
 aoe
-aoe
+auT
 wJo
 uol
 anp

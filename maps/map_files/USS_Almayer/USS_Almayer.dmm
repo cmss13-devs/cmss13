@@ -12372,10 +12372,10 @@
 	pixel_y = 7;
 	pixel_x = 12
 	},
-/obj/item/tool/kitchen/utensil/pfork{
+/obj/item/tool/kitchen/utensil/fork/plastic{
 	pixel_x = -3
 	},
-/obj/item/tool/kitchen/utensil/pspoon{
+/obj/item/tool/kitchen/utensil/spoon/plastic{
 	pixel_x = -12
 	},
 /turf/open/floor/almayer/silver/southeast,
@@ -47457,18 +47457,18 @@
 /area/almayer/shipboard/brig/yard)
 "cjY" = (
 /obj/structure/surface/table/almayer,
-/obj/item/tool/kitchen/utensil/pfork,
-/obj/item/tool/kitchen/utensil/pfork,
+/obj/item/tool/kitchen/utensil/fork/plastic,
+/obj/item/tool/kitchen/utensil/fork/plastic,
 /obj/item/tool/kitchen/utensil/knife/plastic{
 	pixel_x = 7
 	},
 /obj/item/tool/kitchen/utensil/knife/plastic{
 	pixel_x = 7
 	},
-/obj/item/tool/kitchen/utensil/pspoon{
+/obj/item/tool/kitchen/utensil/spoon/plastic{
 	pixel_x = -8
 	},
-/obj/item/tool/kitchen/utensil/pspoon{
+/obj/item/tool/kitchen/utensil/spoon/plastic{
 	pixel_x = -8
 	},
 /turf/open/floor/prison/kitchen,
@@ -55710,7 +55710,7 @@
 /turf/open/floor/almayer/blue/north,
 /area/almayer/squads/delta)
 "eIN" = (
-/obj/item/tool/kitchen/utensil/pfork,
+/obj/item/tool/kitchen/utensil/fork/plastic,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/p_stern)
 "eIO" = (
@@ -63003,11 +63003,11 @@
 	pixel_x = 5;
 	pixel_y = 2
 	},
-/obj/item/tool/kitchen/utensil/pfork{
+/obj/item/tool/kitchen/utensil/fork/plastic{
 	pixel_x = -8;
 	pixel_y = 7
 	},
-/obj/item/tool/kitchen/utensil/pfork{
+/obj/item/tool/kitchen/utensil/fork/plastic{
 	pixel_x = -7;
 	pixel_y = 8
 	},
@@ -69859,7 +69859,7 @@
 	pixel_y = 10
 	},
 /obj/structure/surface/table/almayer,
-/obj/item/tool/kitchen/utensil/pfork{
+/obj/item/tool/kitchen/utensil/fork/plastic{
 	pixel_x = 9;
 	pixel_y = 8
 	},
@@ -98360,7 +98360,7 @@
 /area/almayer/maint/hull/upper/p_bow)
 "xaC" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/tool/kitchen/utensil/pfork{
+/obj/item/tool/kitchen/utensil/fork/plastic{
 	pixel_x = -6;
 	pixel_y = 5
 	},

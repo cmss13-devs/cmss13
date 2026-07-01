@@ -163,6 +163,8 @@
 	if(istype(W,/obj/item/storage))
 		..() // -> item/attackby()
 
+	// No longer scoop up food with knife utensils, instead try to actually cut with them
+	// This works for all subtypes of the knife utensil, and was why plastic knives were repathed
 	if(istype(W,/obj/item/tool/kitchen/utensil) && !istype(W,/obj/item/tool/kitchen/utensil/knife))
 
 		var/obj/item/tool/kitchen/utensil/U = W

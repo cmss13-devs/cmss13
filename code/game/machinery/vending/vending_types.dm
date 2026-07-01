@@ -603,7 +603,7 @@
 /obj/structure/machinery/vending/dinnerware/prison
 	products = list(
 		/obj/item/tool/kitchen/tray = 8,
-		/obj/item/tool/kitchen/utensil/pfork = 6,
+		/obj/item/tool/kitchen/utensil/fork/plastic = 6,
 		/obj/item/tool/kitchen/utensil/knife/plastic = 3,
 		/obj/item/reagent_container/food/drinks/sillycup = 8,
 		/obj/item/clothing/suit/chef/classic = 2,

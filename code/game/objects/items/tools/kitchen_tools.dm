@@ -78,7 +78,7 @@
 	icon_state = "fork"
 	item_state = "fork"
 
-/obj/item/tool/kitchen/utensil/pfork
+/obj/item/tool/kitchen/utensil/fork/plastic
 	name = "plastic fork"
 	desc = "Yay, no washing up to do."
 	icon_state = "pfork"
@@ -91,7 +91,7 @@
 	item_state = "spoon"
 	attack_verb = list("attacked", "poked")
 
-/obj/item/tool/kitchen/utensil/pspoon
+/obj/item/tool/kitchen/utensil/spoon/plastic
 	name = "plastic spoon"
 	desc = "It's a plastic spoon. How dull."
 	icon_state = "pspoon"
@@ -130,6 +130,7 @@
 	if(.)
 		playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1, 5)
 
+// Plastic utensils have been repathed to subtypes of their respective dinnerwares
 /obj/item/tool/kitchen/utensil/knife/plastic
 	name = "plastic knife"
 	desc = "The bluntest of blades."
@@ -140,13 +141,7 @@
 	)
 	item_state = "pknife"
 	sharp = IS_SHARP_ITEM_SIMPLE
-	force = 10
-	throwforce = 10
-
-/obj/item/tool/kitchen/utensil/knife/plastic/attack(target as mob, mob/living/user as mob)
-	. = ..()
-	if(.)
-		playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1, 5)
+	edge = 0
 
 /*
  * Kitchen knives

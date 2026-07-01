@@ -1339,7 +1339,7 @@
 	pixel_x = 8;
 	pixel_y = 6
 	},
-/obj/item/tool/kitchen/utensil/pfork,
+/obj/item/tool/kitchen/utensil/fork/plastic,
 /obj/item/device/flashlight/lamp,
 /turf/open/floor/strata/red1,
 /area/strata/interior/research)
@@ -3295,7 +3295,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
-/obj/item/tool/kitchen/utensil/pspoon{
+/obj/item/tool/kitchen/utensil/spoon/plastic{
 	pixel_x = -11;
 	pixel_y = 5
 	},
@@ -4872,7 +4872,7 @@
 	pixel_x = -5;
 	pixel_y = -8
 	},
-/obj/item/tool/kitchen/utensil/pfork{
+/obj/item/tool/kitchen/utensil/fork/plastic{
 	pixel_x = 7;
 	pixel_y = -5
 	},
@@ -11558,7 +11558,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
-/obj/item/tool/kitchen/utensil/pfork{
+/obj/item/tool/kitchen/utensil/fork/plastic{
 	pixel_x = 6;
 	pixel_y = 2
 	},
@@ -12360,7 +12360,7 @@
 	color = "#98a3ab"
 	},
 /obj/item/pizzabox/mushroom,
-/obj/item/tool/kitchen/utensil/pspoon{
+/obj/item/tool/kitchen/utensil/spoon/plastic{
 	pixel_x = -5;
 	pixel_y = -18
 	},

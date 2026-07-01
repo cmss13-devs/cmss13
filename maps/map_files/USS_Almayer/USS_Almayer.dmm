@@ -4906,9 +4906,6 @@
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/living/tankerbunks)
-"alZ" = (
-/turf/open/floor/almayer/flooredge,
-/area/almayer/hallways/upper/fore_hallway)
 "ama" = (
 /obj/structure/stairs/perspective{
 	dir = 4
@@ -5726,11 +5723,14 @@
 /turf/open/floor/almayer/plating,
 /area/almayer/hallways/upper/fore_hallway)
 "aoq" = (
-/obj/structure/sign/safety/restrictedarea{
-	pixel_x = -17
+/obj/structure/sign/nosmoking_2{
+	pixel_x = 32
 	},
-/turf/open/floor/almayer/red,
-/area/almayer/command/cichallway)
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/lifeboat_pumps/south1)
 "aor" = (
 /obj/structure/curtain/open/medical{
 	pixel_x = -1
@@ -6135,9 +6135,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/pilotbunks)
-"apo" = (
-/turf/open/floor/almayer/green/northeast,
-/area/almayer/hallways/upper/fore_hallway)
 "app" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/flora/pottedplant{
@@ -6733,7 +6730,9 @@
 /turf/open/floor/almayer/blue,
 /area/almayer/living/offices/flight)
 "aqP" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/sign/safety/restrictedarea{
+	pixel_x = -17
+	},
 /turf/open/floor/almayer/red,
 /area/almayer/command/cichallway)
 "aqQ" = (
@@ -6761,10 +6760,7 @@
 /turf/open/floor/almayer/plating_striped/north,
 /area/almayer/shipboard/panic)
 "aqS" = (
-/obj/structure/sign/safety/reception{
-	pixel_x = 32;
-	pixel_y = 7
-	},
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/red,
 /area/almayer/command/cichallway)
 "aqT" = (
@@ -7086,20 +7082,6 @@
 /obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/s_bow)
-"arF" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 4;
-	name = "ship-grade camera"
-	},
-/turf/open/floor/almayer/green/west,
-/area/almayer/hallways/upper/fore_hallway)
-"arG" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Midship Upper Medical Ladders";
-	dir = 2
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/almayer/medical/upper_medical)
 "arH" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer/redfull,
@@ -7174,12 +7156,6 @@
 "arO" = (
 /turf/open/floor/wood/ship,
 /area/almayer/living/offices/flight)
-"arP" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/turf/open/floor/almayer/green/east,
-/area/almayer/hallways/upper/fore_hallway)
 "arQ" = (
 /obj/structure/surface/table/gamblingtable,
 /obj/item/spacecash/c10,
@@ -7188,12 +7164,6 @@
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/offices/flight)
-"arR" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/almayer/medical/upper_medical)
 "arS" = (
 /obj/structure/surface/table/gamblingtable,
 /obj/item/toy/dice,
@@ -7441,14 +7411,12 @@
 /turf/open/floor/almayer/silver/northwest,
 /area/almayer/hallways/lower/repair_bay)
 "asu" = (
-/obj/structure/sign/nosmoking_2{
-	pixel_x = 32
+/obj/structure/sign/safety/reception{
+	pixel_x = 32;
+	pixel_y = 7
 	},
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/almayer/lifeboat_pumps/south1)
+/turf/open/floor/almayer/red,
+/area/almayer/command/cichallway)
 "asv" = (
 /obj/structure/flora/pottedplant/random{
 	pixel_y = 5;
@@ -7606,12 +7574,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/offices/cryo)
-"asQ" = (
-/obj/structure/machinery/status_display{
-	pixel_x = 32
-	},
-/turf/open/floor/almayer/green/east,
-/area/almayer/hallways/upper/fore_hallway)
 "asR" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/computer/cameras/almayer_network/vehicle,
@@ -8071,12 +8033,8 @@
 /turf/open/floor/almayer,
 /area/almayer/engineering/upper_engineering)
 "auv" = (
-/obj/structure/sign/safety/galley{
-	pixel_x = 8;
-	pixel_y = -25
-	},
-/turf/open/floor/almayer/flooredgesmooth/south,
-/area/almayer/command/cichallway)
+/turf/open/floor/almayer/flooredge,
+/area/almayer/hallways/upper/fore_hallway)
 "auw" = (
 /obj/structure/window/reinforced/tinted{
 	dir = 4
@@ -8243,12 +8201,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/p_bow)
-"auT" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Midship Upper Medical Ladders"
-	},
-/turf/closed/wall/almayer/white,
-/area/almayer/medical/morgue)
 "auU" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/plating_striped/west,
@@ -8297,8 +8249,10 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/s_bow)
 "ava" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/disposalpipe/segment,
+/obj/structure/sign/safety/galley{
+	pixel_x = 8;
+	pixel_y = -25
+	},
 /turf/open/floor/almayer/flooredgesmooth/south,
 /area/almayer/command/cichallway)
 "avb" = (
@@ -8520,7 +8474,9 @@
 /turf/open_space,
 /area/almayer/medical/containment)
 "avG" = (
-/turf/open/floor/plating/plating_catwalk,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer/flooredgesmooth/south,
 /area/almayer/command/cichallway)
 "avH" = (
 /obj/effect/decal/warning_stripes{
@@ -8542,10 +8498,6 @@
 "avK" = (
 /turf/open/floor/almayer/blue/south,
 /area/almayer/living/bridgebunks)
-"avL" = (
-/obj/structure/machinery/camera/autoname/almayer,
-/turf/open/floor/almayer/blue/north,
-/area/almayer/hallways/upper/fore_hallway)
 "avM" = (
 /obj/structure/largecrate/random/barrel/white,
 /turf/open/floor/almayer/plate,
@@ -8799,9 +8751,6 @@
 "awz" = (
 /turf/closed/wall/almayer/reinforced,
 /area/almayer/command/cichallway)
-"awA" = (
-/turf/open/floor/almayer/green/southeast,
-/area/almayer/hallways/upper/fore_hallway)
 "awB" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
 	name = "\improper Damage Control Storage";
@@ -8815,12 +8764,6 @@
 "awC" = (
 /turf/closed/wall/almayer,
 /area/almayer/shipboard/port_missiles)
-"awD" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	pixel_y = -30
-	},
-/turf/open/floor/almayer/mono,
-/area/almayer/lifeboat_pumps/north1)
 "awE" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/lower/port_midship_hallway)
@@ -9096,8 +9039,16 @@
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/medical/upper_medical)
 "axn" = (
-/turf/open/floor/almayer,
-/area/almayer/command/cichallway)
+/obj/structure/sign/safety/high_voltage{
+	pixel_y = -8;
+	pixel_x = -17
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_x = -17;
+	pixel_y = 7
+	},
+/turf/open/floor/almayer/green/west,
+/area/almayer/hallways/upper/fore_hallway)
 "axo" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 1
@@ -9528,11 +9479,7 @@
 /turf/open/floor/almayer/orange/north,
 /area/almayer/maint/upper/mess)
 "ayF" = (
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 8
-	},
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/almayer,
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/cichallway)
 "ayG" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
@@ -9586,16 +9533,14 @@
 /turf/open/floor/almayer/green/east,
 /area/almayer/hallways/upper/fore_hallway)
 "ayO" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/almayer,
 /area/almayer/command/cichallway)
 "ayP" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 8
 	},
-/turf/open/floor/almayer/silvercorner/east,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer,
 /area/almayer/command/cichallway)
 "ayQ" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
@@ -9638,16 +9583,13 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/turf/open/floor/almayer/silver/north,
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/cichallway)
 "ayX" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/almayer/silver/north,
+/turf/open/floor/almayer/silvercorner/east,
 /area/almayer/command/cichallway)
 "ayY" = (
 /obj/structure/sign/safety/maint{
@@ -10456,16 +10398,11 @@
 /turf/open/floor/almayer/cargo,
 /area/almayer/medical/upper_medical)
 "aBe" = (
-/obj/structure/sign/safety/high_voltage{
-	pixel_y = -8;
-	pixel_x = -17
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
 	},
-/obj/structure/sign/safety/hazard{
-	pixel_x = -17;
-	pixel_y = 7
-	},
-/turf/open/floor/almayer/green/west,
-/area/almayer/hallways/upper/fore_hallway)
+/turf/open/floor/almayer/silver/north,
+/area/almayer/command/cichallway)
 "aBf" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/no_build,
@@ -10981,10 +10918,13 @@
 /turf/open/floor/almayer/silver/north,
 /area/almayer/command/computerlab)
 "aCw" = (
-/obj/structure/disposalpipe/segment{
+/obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/turf/open/floor/plating/plating_catwalk,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/almayer/silver/north,
 /area/almayer/command/cichallway)
 "aCx" = (
 /obj/structure/dartboard{
@@ -11061,7 +11001,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/almayer/silver/east,
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/cichallway)
 "aCG" = (
 /turf/closed/wall/almayer/reinforced,
@@ -11678,11 +11618,10 @@
 /turf/open/floor/almayer/orange/north,
 /area/almayer/engineering/lower)
 "aEp" = (
-/obj/structure/machinery/disposal,
-/obj/structure/disposalpipe/trunk{
-	dir = 8
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/almayer/silver/east,
 /area/almayer/command/cichallway)
 "aEq" = (
 /obj/structure/pipes/vents/pump/on{
@@ -11871,7 +11810,10 @@
 /turf/closed/wall/almayer,
 /area/almayer/living/captain_mess)
 "aEU" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/cichallway)
 "aEW" = (
@@ -11920,17 +11862,9 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/lower/vehiclehangar)
 "aFa" = (
-/obj/structure/machinery/door/poddoor/almayer/blended/liaison{
-	dir = 2;
-	id = "bot_armory";
-	emp_proof = 1
-	},
-/obj/structure/machinery/cm_vending/gear/staff_officer_armory{
-	density = 0;
-	pixel_y = -18
-	},
-/turf/open/floor/almayer/red2/north,
-/area/almayer/command/cic)
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/command/cichallway)
 "aFb" = (
 /obj/structure/sign/prop2{
 	pixel_y = 30;
@@ -12554,7 +12488,7 @@
 	id = "bot_armory";
 	emp_proof = 1
 	},
-/obj/structure/closet/secure_closet/securecom{
+/obj/structure/machinery/cm_vending/gear/staff_officer_armory{
 	density = 0;
 	pixel_y = -18
 	},
@@ -13502,9 +13436,9 @@
 	id = "bot_armory";
 	emp_proof = 1
 	},
-/obj/structure/closet/toolcloset{
+/obj/structure/closet/secure_closet/securecom{
 	density = 0;
-	pixel_y = -22
+	pixel_y = -18
 	},
 /turf/open/floor/almayer/red2/north,
 /area/almayer/command/cic)
@@ -14322,11 +14256,15 @@
 /area/almayer/shipboard/weapon_room)
 "aLZ" = (
 /obj/structure/machinery/door/poddoor/almayer/blended/liaison{
-	dir = 4;
+	dir = 2;
 	id = "bot_armory";
 	emp_proof = 1
 	},
-/turf/open/floor/almayer/red2/east,
+/obj/structure/closet/toolcloset{
+	density = 0;
+	pixel_y = -22
+	},
+/turf/open/floor/almayer/red2/north,
 /area/almayer/command/cic)
 "aMa" = (
 /obj/effect/decal/warning_stripes{
@@ -14381,11 +14319,12 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/maint/hull/upper/u_f_s)
 "aMg" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22";
-	pixel_y = 8
+/obj/structure/machinery/door/poddoor/almayer/blended/liaison{
+	dir = 4;
+	id = "bot_armory";
+	emp_proof = 1
 	},
-/turf/open/floor/almayer/silver/southwest,
+/turf/open/floor/almayer/red2/east,
 /area/almayer/command/cic)
 "aMh" = (
 /turf/open_space,
@@ -14746,10 +14685,11 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/paft)
 "aNr" = (
-/obj/structure/bed/chair/comfy/blue{
-	dir = 1
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_y = 8
 	},
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/silver/southwest,
 /area/almayer/command/cic)
 "aNs" = (
 /obj/effect/decal/warning_stripes{
@@ -15018,11 +14958,10 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sb)
 "aOd" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22";
-	pixel_y = 8
+/obj/structure/bed/chair/comfy/blue{
+	dir = 1
 	},
-/turf/open/floor/almayer/silver/southeast,
+/turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "aOe" = (
 /turf/open/floor/almayer/test_floor4,
@@ -15460,16 +15399,11 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/alpha)
 "aPp" = (
-/obj/structure/machinery/door/poddoor/almayer/blended/liaison{
-	dir = 4;
-	id = "bot_armory";
-	emp_proof = 1
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_y = 8
 	},
-/obj/structure/closet/secure_closet/guncabinet/red/cic_armory_mk1_rifle_ap{
-	density = 0;
-	pixel_x = 14
-	},
-/turf/open/floor/almayer/red2/west,
+/turf/open/floor/almayer/silver/southeast,
 /area/almayer/command/cic)
 "aPq" = (
 /obj/effect/decal/cleanable/dirt,
@@ -16205,7 +16139,11 @@
 	id = "bot_armory";
 	emp_proof = 1
 	},
-/turf/open/floor/almayer/red2/southeast,
+/obj/structure/closet/secure_closet/guncabinet/red/cic_armory_mk1_rifle_ap{
+	density = 0;
+	pixel_x = 14
+	},
+/turf/open/floor/almayer/red2/west,
 /area/almayer/command/cic)
 "aRe" = (
 /turf/open/floor/almayer/no_build/plating,
@@ -16449,7 +16387,7 @@
 	id = "bot_armory";
 	emp_proof = 1
 	},
-/turf/open/floor/almayer/red2/northeast,
+/turf/open/floor/almayer/red2/southeast,
 /area/almayer/command/cic)
 "aRK" = (
 /obj/structure/ladder/multiz,
@@ -16718,17 +16656,12 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/pb)
 "aSs" = (
-/obj/structure/surface/table/reinforced/black,
-/obj/item/paper_bin/uscm{
-	pixel_y = 4
+/obj/structure/machinery/door/poddoor/almayer/blended/liaison{
+	dir = 4;
+	id = "bot_armory";
+	emp_proof = 1
 	},
-/obj/item/clipboard{
-	pixel_x = -12
-	},
-/obj/item/tool/pen{
-	pixel_x = -15
-	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer/red2/northeast,
 /area/almayer/command/cic)
 "aSt" = (
 /turf/open/floor/almayer/bluefull,
@@ -17650,13 +17583,17 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/briefing)
 "aUH" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/device/flashlight/lamp{
-	pixel_x = 12;
-	pixel_y = -4
+/obj/structure/surface/table/reinforced/black,
+/obj/item/paper_bin/uscm{
+	pixel_y = 4
 	},
-/obj/effect/landmark/map_item,
-/turf/open/floor/almayer/plate,
+/obj/item/clipboard{
+	pixel_x = -12
+	},
+/obj/item/tool/pen{
+	pixel_x = -15
+	},
+/turf/open/floor/almayer,
 /area/almayer/command/cic)
 "aUI" = (
 /obj/effect/decal/cleanable/dirt,
@@ -17720,6 +17657,15 @@
 /area/almayer/middeck/medical)
 "aUP" = (
 /obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/device/flashlight/lamp{
+	pixel_x = 12;
+	pixel_y = -4
+	},
+/obj/effect/landmark/map_item,
+/turf/open/floor/almayer/plate,
+/area/almayer/command/cic)
+"aUQ" = (
+/obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/transmitter/rotary/no_dnd{
 	name = "Support #2 Overwatch Telephone";
 	phone_category = "Command";
@@ -17735,10 +17681,6 @@
 	pixel_y = 5
 	},
 /turf/open/floor/almayer/plate,
-/area/almayer/command/cic)
-"aUQ" = (
-/obj/structure/platform_decoration/metal/almayer_smooth/west,
-/turf/open/floor/almayer/silver/northwest,
 /area/almayer/command/cic)
 "aUR" = (
 /obj/structure/reagent_dispensers/tank/fuel/custom,
@@ -17818,11 +17760,8 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/saft)
 "aVb" = (
-/obj/structure/platform/metal/almayer_smooth/north,
-/obj/structure/sign/third_fleet_info{
-	pixel_y = 29
-	},
-/turf/open/floor/plating/plating_catwalk,
+/obj/structure/platform_decoration/metal/almayer_smooth/west,
+/turf/open/floor/almayer/silver/northwest,
 /area/almayer/command/cic)
 "aVc" = (
 /obj/effect/decal/cleanable/dirt,
@@ -17872,12 +17811,15 @@
 /area/almayer/medical/containment)
 "aVj" = (
 /obj/structure/platform/metal/almayer_smooth/north,
-/obj/structure/machinery/camera/autoname/almayer,
-/turf/open/floor/almayer/flooredgesmooth2/north,
+/obj/structure/sign/third_fleet_info{
+	pixel_y = 29
+	},
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/cic)
 "aVk" = (
-/obj/structure/platform_decoration/metal/almayer_smooth/east,
-/turf/open/floor/almayer/silver/northeast,
+/obj/structure/platform/metal/almayer_smooth/north,
+/obj/structure/machinery/camera/autoname/almayer,
+/turf/open/floor/almayer/flooredgesmooth2/north,
 /area/almayer/command/cic)
 "aVl" = (
 /obj/effect/decal/warning_stripes{
@@ -17928,12 +17870,8 @@
 /turf/open/floor/engine,
 /area/almayer/engineering/airmix)
 "aVp" = (
-/obj/structure/machinery/door/poddoor/almayer/blended/liaison{
-	dir = 4;
-	id = "bot_armory";
-	emp_proof = 1
-	},
-/turf/open/floor/almayer/red2/west,
+/obj/structure/platform_decoration/metal/almayer_smooth/east,
+/turf/open/floor/almayer/silver/northeast,
 /area/almayer/command/cic)
 "aVq" = (
 /obj/effect/decal/warning_stripes{
@@ -17991,15 +17929,19 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/pb)
 "aVv" = (
+/obj/structure/machinery/door/poddoor/almayer/blended/liaison{
+	dir = 4;
+	id = "bot_armory";
+	emp_proof = 1
+	},
+/turf/open/floor/almayer/red2/west,
+/area/almayer/command/cic)
+"aVw" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8;
 	layer = 3.25
 	},
 /turf/open/floor/almayer/blue,
-/area/almayer/command/cic)
-"aVw" = (
-/obj/structure/machinery/computer/tech_control,
-/turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "aVx" = (
 /obj/structure/machinery/light/red{
@@ -18015,11 +17957,8 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/engineer)
 "aVy" = (
-/obj/structure/stairs{
-	dir = 1
-	},
-/obj/structure/platform/metal/almayer_smooth/west,
-/turf/open/floor/almayer/plating,
+/obj/structure/machinery/computer/tech_control,
+/turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "aVz" = (
 /obj/effect/decal/warning_stripes{
@@ -18069,10 +18008,11 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/engineer)
 "aVE" = (
-/obj/structure/machinery/light{
-	dir = 4
+/obj/structure/stairs{
+	dir = 1
 	},
-/turf/open/floor/almayer/silver/north,
+/obj/structure/platform/metal/almayer_smooth/west,
+/turf/open/floor/almayer/plating,
 /area/almayer/command/cic)
 "aVF" = (
 /obj/structure/machinery/light,
@@ -18082,13 +18022,10 @@
 /turf/open/floor/almayer/silver/southwest,
 /area/almayer/command/cichallway)
 "aVH" = (
-/obj/structure/machinery/door_control{
-	id = "Final CIC Lockdown";
-	name = "CIC Lockdown";
-	pixel_y = 10;
-	req_access_txt = "1"
+/obj/structure/machinery/light{
+	dir = 4
 	},
-/turf/closed/wall/almayer/reinforced,
+/turf/open/floor/almayer/silver/north,
 /area/almayer/command/cic)
 "aVI" = (
 /obj/structure/machinery/power/apc/almayer/north,
@@ -18222,14 +18159,13 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/medical)
 "aVU" = (
-/obj/structure/machinery/status_display{
-	pixel_y = -30
+/obj/structure/machinery/door_control{
+	id = "Final CIC Lockdown";
+	name = "CIC Lockdown";
+	pixel_y = 10;
+	req_access_txt = "1"
 	},
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22";
-	pixel_y = 8
-	},
-/turf/open/floor/almayer/silver/north,
+/turf/closed/wall/almayer/reinforced,
 /area/almayer/command/cic)
 "aVV" = (
 /obj/structure/bed/chair/office/dark,
@@ -18253,7 +18189,13 @@
 /turf/open/floor/almayer/plating,
 /area/almayer/middeck/maintenance/pb)
 "aVZ" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/status_display{
+	pixel_y = -30
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_y = 8
+	},
 /turf/open/floor/almayer/silver/north,
 /area/almayer/command/cic)
 "aWa" = (
@@ -18631,7 +18573,8 @@
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/containment)
 "aWS" = (
-/turf/open/floor/almayer/red/southwest,
+/obj/structure/machinery/light,
+/turf/open/floor/almayer/silver/north,
 /area/almayer/command/cic)
 "aWT" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
@@ -20583,8 +20526,7 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/briefing)
 "bbo" = (
-/obj/structure/machinery/power/apc/almayer/hardened/west,
-/turf/open/floor/almayer/silver/east,
+/turf/open/floor/almayer/red/southwest,
 /area/almayer/command/cic)
 "bbp" = (
 /obj/effect/decal/warning_stripes{
@@ -21044,10 +20986,8 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/medical)
 "bcl" = (
-/obj/item/device/radio/listening_bug/radio_linked/fax/uscm_hc{
-	nametag = "CIC"
-	},
-/turf/open/floor/almayer/plate,
+/obj/structure/machinery/power/apc/almayer/hardened/west,
+/turf/open/floor/almayer/silver/east,
 /area/almayer/command/cic)
 "bcm" = (
 /turf/closed/wall/almayer,
@@ -21076,6 +21016,12 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
 "bcq" = (
+/obj/item/device/radio/listening_bug/radio_linked/fax/uscm_hc{
+	nametag = "CIC"
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/command/cic)
+"bcr" = (
 /obj/structure/window/framed/almayer/hull/hijack_bustable,
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
@@ -21083,21 +21029,6 @@
 	name = "\improper Internal Combat Information Center Blast Door"
 	},
 /turf/open/floor/plating,
-/area/almayer/command/cic)
-"bcr" = (
-/obj/structure/machinery/door/airlock/almayer/command/reinforced{
-	closeOtherId = "ciclobby_n";
-	name = "\improper Combat Information Center"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Final CIC Lockdown";
-	name = "\improper Internal Combat Information Center Blast Door"
-	},
-/turf/open/floor/almayer/test_floor4,
 /area/almayer/command/cic)
 "bcs" = (
 /obj/effect/decal/cleanable/dirt,
@@ -21734,11 +21665,11 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/req)
 "bdT" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Midship Upper Medical Ladders"
 	},
-/turf/open/floor/almayer/uscm/directional/northwest,
-/area/almayer/command/cic)
+/turf/closed/wall/almayer/white,
+/area/almayer/medical/morgue)
 "bdU" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -22003,10 +21934,19 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/medical)
 "beC" = (
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 1
+/obj/structure/machinery/door/airlock/almayer/command/reinforced{
+	closeOtherId = "ciclobby_n";
+	name = "\improper Combat Information Center"
 	},
-/turf/open/floor/plating/plating_catwalk,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	id = "Final CIC Lockdown";
+	name = "\improper Internal Combat Information Center Blast Door"
+	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/command/cic)
 "beD" = (
 /obj/effect/decal/cleanable/dirt,
@@ -22067,12 +22007,11 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/shipboard/navigation)
 "beJ" = (
-/obj/structure/sign/safety/storage{
-	pixel_x = 8;
-	pixel_y = 25
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
 	},
-/turf/open/floor/almayer/blue/north,
-/area/almayer/hallways/upper/fore_hallway)
+/turf/open/floor/almayer/uscm/directional/northwest,
+/area/almayer/command/cic)
 "beK" = (
 /obj/structure/pipes/standard/manifold/hidden/supply/no_boom{
 	dir = 1
@@ -22490,12 +22429,11 @@
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/medical/containment)
 "bfO" = (
-/obj/structure/sign/safety/rewire{
-	pixel_x = 8;
-	pixel_y = 25
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
 	},
-/turf/open/floor/almayer/blue/north,
-/area/almayer/hallways/upper/fore_hallway)
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/command/cic)
 "bfP" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
@@ -22605,11 +22543,12 @@
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/medical/containment)
 "bgb" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/sign/safety/storage{
+	pixel_x = 8;
 	pixel_y = 25
 	},
-/turf/open/floor/almayer/silver,
-/area/almayer/command/cic)
+/turf/open/floor/almayer/blue/north,
+/area/almayer/hallways/upper/fore_hallway)
 "bgc" = (
 /obj/structure/pipes/vents/scrubber/no_boom{
 	welded = 1;
@@ -22793,15 +22732,12 @@
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/medical/containment)
 "bgy" = (
-/obj/structure/machinery/status_display{
-	pixel_y = 30
+/obj/structure/sign/safety/rewire{
+	pixel_x = 8;
+	pixel_y = 25
 	},
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22";
-	pixel_y = 8
-	},
-/turf/open/floor/almayer/silver,
-/area/almayer/command/cic)
+/turf/open/floor/almayer/blue/north,
+/area/almayer/hallways/upper/fore_hallway)
 "bgz" = (
 /obj/structure/window/framed/almayer/white,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
@@ -22958,8 +22894,8 @@
 /turf/open/floor/almayer/orange/northeast,
 /area/almayer/hallways/upper/midship_hallway)
 "bgN" = (
-/obj/structure/machinery/light{
-	dir = 1
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = 25
 	},
 /turf/open/floor/almayer/silver,
 /area/almayer/command/cic)
@@ -23024,11 +22960,14 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/charlie)
 "bgX" = (
-/obj/structure/bed/chair/office/dark{
-	dir = 8;
-	layer = 3.25
+/obj/structure/machinery/status_display{
+	pixel_y = 30
 	},
-/turf/open/floor/almayer/orange/north,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_y = 8
+	},
+/turf/open/floor/almayer/silver,
 /area/almayer/command/cic)
 "bgY" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -23086,22 +23025,10 @@
 /turf/open/floor/almayer,
 /area/almayer/medical/containment)
 "bhd" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/transmitter/rotary/no_dnd{
-	name = "Alpha Overwatch Telephone";
-	phone_category = "Command";
-	phone_id = "Alpha Overwatch"
+/obj/structure/machinery/light{
+	dir = 1
 	},
-/obj/item/clothing/glasses/hud/health{
-	pixel_y = 10;
-	pixel_x = 2
-	},
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	name = "General Listening Channel";
-	pixel_y = 31
-	},
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/silver,
 /area/almayer/command/cic)
 "bhe" = (
 /obj/structure/machinery/light/red{
@@ -23201,21 +23128,11 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sb)
 "bho" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	name = "General Listening Channel";
-	pixel_y = 31
+/obj/structure/bed/chair/office/dark{
+	dir = 8;
+	layer = 3.25
 	},
-/obj/item/clothing/glasses/hud/health{
-	pixel_x = -8
-	},
-/obj/structure/transmitter/rotary/no_dnd{
-	name = "Bravo Overwatch Telephone";
-	phone_category = "Command";
-	phone_id = "Bravo Overwatch"
-	},
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/orange/north,
 /area/almayer/command/cic)
 "bhp" = (
 /obj/effect/decal/warning_stripes{
@@ -23299,13 +23216,19 @@
 /area/almayer/medical/containment)
 "bhB" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/device/flashlight/lamp{
-	pixel_x = -1;
-	pixel_y = 10
+/obj/structure/transmitter/rotary/no_dnd{
+	name = "Alpha Overwatch Telephone";
+	phone_category = "Command";
+	phone_id = "Alpha Overwatch"
 	},
-/obj/structure/machinery/computer/cameras/almayer/vehicle{
-	dir = 4;
-	pixel_y = -15
+/obj/item/clothing/glasses/hud/health{
+	pixel_y = 10;
+	pixel_x = 2
+	},
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_y = 31
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
@@ -23413,17 +23336,12 @@
 	pixel_y = 31
 	},
 /obj/item/clothing/glasses/hud/health{
-	pixel_x = 5;
-	pixel_y = 9
+	pixel_x = -8
 	},
 /obj/structure/transmitter/rotary/no_dnd{
-	name = "Support #1 Overwatch Telephone";
+	name = "Bravo Overwatch Telephone";
 	phone_category = "Command";
-	phone_id = "Support #1 Overwatch"
-	},
-/obj/item/storage/fancy/cigarettes/kpack{
-	pixel_x = -16;
-	pixel_y = 9
+	phone_id = "Bravo Overwatch"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
@@ -23515,8 +23433,16 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/saft)
 "bhZ" = (
-/obj/structure/platform_decoration/metal/almayer_smooth/north,
-/turf/open/floor/almayer/silver/west,
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/device/flashlight/lamp{
+	pixel_x = -1;
+	pixel_y = 10
+	},
+/obj/structure/machinery/computer/cameras/almayer/vehicle{
+	dir = 4;
+	pixel_y = -15
+	},
+/turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "bia" = (
 /obj/effect/decal/warning_stripes{
@@ -23548,8 +23474,26 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/navigation)
 "bid" = (
-/obj/structure/platform_decoration/metal/almayer_smooth,
-/turf/open/floor/almayer/silver/east,
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_y = 31
+	},
+/obj/item/clothing/glasses/hud/health{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/structure/transmitter/rotary/no_dnd{
+	name = "Support #1 Overwatch Telephone";
+	phone_category = "Command";
+	phone_id = "Support #1 Overwatch"
+	},
+/obj/item/storage/fancy/cigarettes/kpack{
+	pixel_x = -16;
+	pixel_y = 9
+	},
+/turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "bie" = (
 /obj/structure/surface/table/almayer,
@@ -23604,8 +23548,8 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/medical)
 "bij" = (
-/obj/structure/platform/metal/almayer_smooth,
-/turf/open/floor/almayer/plating,
+/obj/structure/platform_decoration/metal/almayer_smooth/north,
+/turf/open/floor/almayer/silver/west,
 /area/almayer/command/cic)
 "bik" = (
 /obj/structure/ladder/multiz,
@@ -23796,20 +23740,8 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/saft)
 "biE" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
-/obj/structure/machinery/door/airlock/almayer/command/reinforced{
-	dir = 1;
-	name = "\improper Combat Information Center"
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 2;
-	id = "Internal CIC Lockdown";
-	name = "\improper Internal Combat Information Center Blast Door"
-	},
-/turf/open/floor/almayer/test_floor4,
+/obj/structure/platform_decoration/metal/almayer_smooth,
+/turf/open/floor/almayer/silver/east,
 /area/almayer/command/cic)
 "biF" = (
 /obj/structure/machinery/door_control{
@@ -24891,10 +24823,8 @@
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/maintenance/sp)
 "bkM" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/almayer/plate,
+/obj/structure/platform/metal/almayer_smooth,
+/turf/open/floor/almayer/plating,
 /area/almayer/command/cic)
 "bkN" = (
 /obj/structure/bed/chair/office/dark{
@@ -25669,7 +25599,20 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/engineer)
 "bmn" = (
-/turf/open/floor/almayer/blackfull,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/machinery/door/airlock/almayer/command/reinforced{
+	dir = 1;
+	name = "\improper Combat Information Center"
+	},
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 2;
+	id = "Internal CIC Lockdown";
+	name = "\improper Internal Combat Information Center Blast Door"
+	},
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/command/cic)
 "bmo" = (
 /obj/effect/decal/warning_stripes{
@@ -26263,18 +26206,10 @@
 /turf/open/floor/almayer/cargo_arrow/west,
 /area/almayer/squads/bravo)
 "bnC" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/cameras/almayer/ares{
-	dir = 8;
-	pixel_y = 20;
-	layer = 2.99
+/obj/structure/machinery/light{
+	dir = 8
 	},
-/obj/structure/machinery/computer/cameras/almayer_brig{
-	layer = 3;
-	dir = 8;
-	pixel_y = 6
-	},
-/turf/open/floor/almayer/blackfull,
+/turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "bnD" = (
 /obj/effect/decal/cleanable/dirt,
@@ -26288,8 +26223,7 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/medical)
 "bnE" = (
-/obj/structure/platform/metal/almayer_smooth/west,
-/turf/open/floor/almayer/silver/west,
+/turf/open/floor/almayer/blackfull,
 /area/almayer/command/cic)
 "bnF" = (
 /obj/effect/decal/cleanable/dirt,
@@ -26645,11 +26579,19 @@
 /turf/open/floor/wood/ship,
 /area/almayer/living/pilotbunks)
 "bot" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 1
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/cameras/almayer/ares{
+	dir = 8;
+	pixel_y = 20;
+	layer = 2.99
 	},
-/turf/open/floor/almayer/silvercorner/east,
-/area/almayer/command/cichallway)
+/obj/structure/machinery/computer/cameras/almayer_brig{
+	layer = 3;
+	dir = 8;
+	pixel_y = 6
+	},
+/turf/open/floor/almayer/blackfull,
+/area/almayer/command/cic)
 "bou" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
@@ -26719,12 +26661,8 @@
 /turf/open/floor/almayer/mono,
 /area/almayer/squads/req)
 "boC" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/working_joe{
-	dir = 8;
-	pixel_y = 2
-	},
-/turf/open/floor/almayer/blackfull,
+/obj/structure/platform/metal/almayer_smooth/west,
+/turf/open/floor/almayer/silver/west,
 /area/almayer/command/cic)
 "boD" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -27338,9 +27276,11 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sp)
 "bqa" = (
-/obj/structure/machinery/computer/med_data,
-/turf/open/floor/almayer/silver/east,
-/area/almayer/command/cic)
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 1
+	},
+/turf/open/floor/almayer/silvercorner/east,
+/area/almayer/command/cichallway)
 "bqb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
@@ -27928,24 +27868,16 @@
 /turf/open/floor/almayer/test_floor5,
 /area/almayer/squads/req)
 "brk" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 1
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/working_joe{
+	dir = 8;
+	pixel_y = 2
 	},
-/obj/structure/sign/safety/restrictedarea{
-	pixel_x = 32
-	},
-/turf/open/floor/almayer/silver/east,
-/area/almayer/command/cichallway)
+/turf/open/floor/almayer/blackfull,
+/area/almayer/command/cic)
 "brl" = (
-/obj/structure/sign/safety/ammunition{
-	pixel_x = -25;
-	pixel_y = 8
-	},
-/obj/structure/sign/safety/hazard{
-	pixel_x = -25;
-	pixel_y = -6
-	},
-/turf/open/floor/almayer/plate,
+/obj/structure/machinery/computer/med_data,
+/turf/open/floor/almayer/silver/east,
 /area/almayer/command/cic)
 "brm" = (
 /obj/structure/surface/table/almayer,
@@ -28836,12 +28768,24 @@
 /turf/open/floor/almayer/silver/southwest,
 /area/almayer/command/computerlab)
 "btj" = (
-/obj/structure/platform/metal/almayer_smooth/east,
-/turf/open/floor/almayer/plate,
-/area/almayer/command/cic)
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 1
+	},
+/obj/structure/sign/safety/restrictedarea{
+	pixel_x = 32
+	},
+/turf/open/floor/almayer/silver/east,
+/area/almayer/command/cichallway)
 "btk" = (
-/obj/structure/machinery/computer/almayer_encryption/encoder,
-/turf/open/floor/almayer/blackfull,
+/obj/structure/sign/safety/ammunition{
+	pixel_x = -25;
+	pixel_y = 8
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_x = -25;
+	pixel_y = -6
+	},
+/turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "btl" = (
 /obj/effect/decal/cleanable/dirt,
@@ -29308,11 +29252,11 @@
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/operating_room_one)
 "buk" = (
-/obj/structure/machinery/computer/almayer_encryption,
-/turf/open/floor/almayer/blackfull,
+/obj/structure/platform/metal/almayer_smooth/east,
+/turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "bul" = (
-/obj/structure/machinery/computer/almayer_encryption/decoder,
+/obj/structure/machinery/computer/almayer_encryption/encoder,
 /turf/open/floor/almayer/blackfull,
 /area/almayer/command/cic)
 "bum" = (
@@ -29330,8 +29274,8 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/engineer)
 "bun" = (
-/obj/structure/platform/metal/almayer_smooth/west,
-/turf/open/floor/almayer/plate,
+/obj/structure/machinery/computer/almayer_encryption,
+/turf/open/floor/almayer/blackfull,
 /area/almayer/command/cic)
 "buo" = (
 /obj/effect/decal/cleanable/dirt,
@@ -29814,8 +29758,8 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/sp)
 "bvk" = (
-/obj/structure/machinery/computer/crew,
-/turf/open/floor/almayer/plate,
+/obj/structure/machinery/computer/almayer_encryption/decoder,
+/turf/open/floor/almayer/blackfull,
 /area/almayer/command/cic)
 "bvl" = (
 /obj/effect/decal/cleanable/dirt,
@@ -29852,8 +29796,9 @@
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/req)
 "bvp" = (
-/turf/open/floor/almayer/flooredgesmooth2/west,
-/area/almayer/hallways/upper/fore_hallway)
+/obj/structure/platform/metal/almayer_smooth/west,
+/turf/open/floor/almayer/plate,
+/area/almayer/command/cic)
 "bvq" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2";
@@ -29923,15 +29868,9 @@
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/req)
 "bvy" = (
-/obj/structure/machinery/light,
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 9
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/almayer/silver,
-/area/almayer/command/cichallway)
+/obj/structure/machinery/computer/crew,
+/turf/open/floor/almayer/plate,
+/area/almayer/command/cic)
 "bvz" = (
 /obj/structure/pipes/vents/scrubber{
 	dir = 4
@@ -29939,11 +29878,8 @@
 /turf/open/floor/almayer/dark_sterile2,
 /area/almayer/medical/operating_room_one)
 "bvA" = (
-/obj/structure/machinery/status_display{
-	pixel_y = 30
-	},
-/turf/closed/wall/almayer/reinforced,
-/area/almayer/command/cic)
+/turf/open/floor/almayer/flooredgesmooth2/west,
+/area/almayer/hallways/upper/fore_hallway)
 "bvB" = (
 /obj/structure/machinery/shower{
 	dir = 8;
@@ -30314,16 +30250,15 @@
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/medical)
 "bwy" = (
-/obj/structure/platform_decoration/metal/almayer_smooth/north,
-/obj/structure/machinery/light{
+/obj/structure/machinery/light,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 9
+	},
+/obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22";
-	pixel_y = 8
-	},
-/turf/open/floor/almayer/silvercorner/west,
-/area/almayer/command/cic)
+/turf/open/floor/almayer/silver,
+/area/almayer/command/cichallway)
 "bwz" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/invuln/lifeboat_hatch_placeholder{
@@ -31091,20 +31026,26 @@
 /turf/open/floor/almayer/sterile_green_side/southeast,
 /area/almayer/medical/containment)
 "byq" = (
-/obj/structure/machinery/power/apc/almayer/north,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/upper/fore_hallway)
+/obj/structure/machinery/status_display{
+	pixel_y = 30
+	},
+/turf/closed/wall/almayer/reinforced,
+/area/almayer/command/cic)
 "byr" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
 "bys" = (
-/obj/structure/disposalpipe/junction{
-	dir = 2;
-	icon_state = "pipe-j2"
+/obj/structure/platform_decoration/metal/almayer_smooth/north,
+/obj/structure/machinery/light{
+	dir = 4
 	},
-/turf/open/floor/almayer/silver/east,
-/area/almayer/command/cichallway)
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_y = 8
+	},
+/turf/open/floor/almayer/silvercorner/west,
+/area/almayer/command/cic)
 "byt" = (
 /obj/structure/surface/rack,
 /obj/item/tool/crowbar,
@@ -34445,8 +34386,9 @@
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/medical)
 "bGk" = (
-/turf/closed/wall/almayer/reinforced,
-/area/almayer/living/synthcloset)
+/obj/structure/machinery/power/apc/almayer/north,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/upper/fore_hallway)
 "bGl" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/random/barrel/true_random,
@@ -34519,10 +34461,11 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "bGv" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 6
+/obj/structure/disposalpipe/junction{
+	dir = 2;
+	icon_state = "pipe-j2"
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/almayer/silver/east,
 /area/almayer/command/cichallway)
 "bGw" = (
 /obj/structure/bed/chair{
@@ -34725,15 +34668,8 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/medical)
 "bGW" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
-/turf/open/floor/almayer/silvercorner,
-/area/almayer/command/cichallway)
+/turf/open/floor/almayer/green/southeast,
+/area/almayer/hallways/upper/fore_hallway)
 "bGX" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -36450,15 +36386,8 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/brig/starboard_hallway)
 "bLG" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/machinery/light,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/almayer/silver,
-/area/almayer/command/cichallway)
+/turf/closed/wall/almayer/reinforced,
+/area/almayer/living/synthcloset)
 "bLH" = (
 /turf/open/floor/almayer/red/west,
 /area/almayer/shipboard/weapon_room)
@@ -36502,12 +36431,10 @@
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "bLM" = (
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 6
 	},
-/obj/structure/pipes/standard/manifold/hidden/supply,
-/turf/open/floor/almayer/silver,
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/cichallway)
 "bLN" = (
 /obj/structure/machinery/cryopod{
@@ -36910,7 +36837,11 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/turf/open/floor/almayer/silver,
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/almayer/silvercorner,
 /area/almayer/command/cichallway)
 "bMR" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
@@ -37730,9 +37661,14 @@
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/weapon_room)
 "bPi" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer/silver/north,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/machinery/light,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/almayer/silver,
 /area/almayer/command/cichallway)
 "bPj" = (
 /obj/structure/sign/safety/conference_room{
@@ -38994,8 +38930,13 @@
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
 "bRZ" = (
-/turf/open/floor/almayer/green/northwest,
-/area/almayer/hallways/upper/fore_hallway)
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply,
+/turf/open/floor/almayer/silver,
+/area/almayer/command/cichallway)
 "bSa" = (
 /obj/structure/target,
 /turf/open/floor/almayer/plating_striped/east,
@@ -39366,9 +39307,11 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/upper/u_m_p)
 "bST" = (
-/obj/effect/landmark/start/synthetic,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/synthcloset)
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/almayer/silver,
+/area/almayer/command/cichallway)
 "bSU" = (
 /obj/structure/machinery/computer/cameras/wooden_tv/broadcast{
 	dir = 4;
@@ -39973,10 +39916,9 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/command/corporateliaison)
 "bUm" = (
-/obj/structure/sign/safety/restrictedarea{
-	pixel_x = -17
-	},
-/turf/open/floor/almayer/red/north,
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer/silver/north,
 /area/almayer/command/cichallway)
 "bUn" = (
 /obj/effect/decal/warning_stripes{
@@ -40101,9 +40043,9 @@
 /turf/open/floor/almayer/blue,
 /area/almayer/hallways/upper/midship_hallway)
 "bUB" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer/red/north,
-/area/almayer/command/cichallway)
+/obj/effect/landmark/start/synthetic,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/living/synthcloset)
 "bUC" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
@@ -40122,9 +40064,8 @@
 /turf/open/floor/almayer/cargo,
 /area/almayer/hallways/upper/midship_hallway)
 "bUF" = (
-/obj/structure/sign/safety/reception{
-	pixel_x = 32;
-	pixel_y = -8
+/obj/structure/sign/safety/restrictedarea{
+	pixel_x = -17
 	},
 /turf/open/floor/almayer/red/north,
 /area/almayer/command/cichallway)
@@ -40264,14 +40205,9 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/port_point_defense)
 "bVe" = (
-/obj/structure/sign/nosmoking_2{
-	pixel_x = 32
-	},
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/almayer/lifeboat_pumps/north1)
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer/red/north,
+/area/almayer/command/cichallway)
 "bVf" = (
 /obj/structure/machinery/landinglight/delaythree{
 	dir = 4
@@ -40411,11 +40347,12 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/shipboard/starboard_point_defense)
 "bVE" = (
-/obj/structure/sign/safety/storage{
-	pixel_x = -17
+/obj/structure/sign/safety/reception{
+	pixel_x = 32;
+	pixel_y = -8
 	},
-/turf/open/floor/almayer/red,
-/area/almayer/lifeboat_pumps/north1)
+/turf/open/floor/almayer/red/north,
+/area/almayer/command/cichallway)
 "bVF" = (
 /obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
@@ -42826,8 +42763,14 @@
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/req)
 "caj" = (
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/synthcloset)
+/obj/structure/sign/nosmoking_2{
+	pixel_x = 32
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/lifeboat_pumps/north1)
 "cak" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/evidence_storage)
@@ -43759,6 +43702,13 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/upper/midship_hallway)
+"cbS" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 4;
+	name = "ship-grade camera"
+	},
+/turf/open/floor/almayer/green/west,
+/area/almayer/hallways/upper/fore_hallway)
 "cbT" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
@@ -44142,6 +44092,13 @@
 "ccS" = (
 /turf/open/floor/almayer/silverfull,
 /area/almayer/hallways/upper/midship_hallway)
+"ccU" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Midship Upper Medical Ladders";
+	dir = 2
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/medical/upper_medical)
 "ccV" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/sterile_green_side/southwest,
@@ -44354,6 +44311,18 @@
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/medical/medical_science)
+"cdr" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/almayer/green/east,
+/area/almayer/hallways/upper/fore_hallway)
+"cds" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/medical/upper_medical)
 "cdt" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -45120,6 +45089,12 @@
 	},
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
+"cfg" = (
+/obj/structure/machinery/status_display{
+	pixel_x = 32
+	},
+/turf/open/floor/almayer/green/east,
+/area/almayer/hallways/upper/fore_hallway)
 "cfh" = (
 /obj/structure/machinery/light/double/blue{
 	light_color = "#a7dbc7";
@@ -45259,6 +45234,10 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/wood/ship,
 /area/almayer/medical/medical_science)
+"cfx" = (
+/obj/structure/machinery/camera/autoname/almayer,
+/turf/open/floor/almayer/blue/north,
+/area/almayer/hallways/upper/fore_hallway)
 "cfy" = (
 /obj/structure/morgue{
 	dir = 1
@@ -45966,12 +45945,8 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/upper/starboard)
 "chc" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	pixel_y = -25
-	},
-/obj/structure/largecrate/random/case/small,
-/turf/open/floor/almayer/mono,
-/area/almayer/lifeboat_pumps/north1)
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/living/synthcloset)
 "chd" = (
 /obj/structure/machinery/vending/cigarette/koorlander{
 	pixel_x = 1
@@ -46657,6 +46632,9 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/flooredge/north,
 /area/almayer/hallways/upper/midship_hallway)
+"ciH" = (
+/turf/open/floor/almayer/green/northwest,
+/area/almayer/hallways/upper/fore_hallway)
 "ciI" = (
 /obj/structure/sign/safety/maint{
 	pixel_x = 8;
@@ -46681,6 +46659,12 @@
 	},
 /turf/open/floor/almayer/green/north,
 /area/almayer/hallways/upper/fore_hallway)
+"ciM" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = -30
+	},
+/turf/open/floor/almayer/mono,
+/area/almayer/lifeboat_pumps/north1)
 "ciN" = (
 /turf/open/floor/almayer/silver/southeast,
 /area/almayer/shipboard/brig/cic_hallway)
@@ -46692,6 +46676,19 @@
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/south1)
 "ciU" = (
+/obj/structure/sign/safety/storage{
+	pixel_x = -17
+	},
+/turf/open/floor/almayer/red,
+/area/almayer/lifeboat_pumps/north1)
+"ciV" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = -25
+	},
+/obj/structure/largecrate/random/case/small,
+/turf/open/floor/almayer/mono,
+/area/almayer/lifeboat_pumps/north1)
+"ciW" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/storage/bible{
 	desc = "As the legendary US Army chaplain once said, 'There are no Athiests in fancy offices'.";
@@ -46704,7 +46701,7 @@
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
-"ciV" = (
+"ciX" = (
 /obj/structure/machinery/door/airlock/almayer/command/reinforced{
 	name = "\improper Commanding Officer's Quarters";
 	req_access = null;
@@ -46712,24 +46709,24 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/commandbunks)
-"ciW" = (
+"ciY" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
 /area/almayer/maint/hull/upper/u_f_s)
-"ciX" = (
+"ciZ" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10
 	},
 /turf/open/floor/almayer,
 /area/almayer/maint/hull/upper/u_f_s)
-"ciY" = (
+"cja" = (
 /obj/structure/sign/safety/hvac_old{
 	pixel_x = 8;
 	pixel_y = 25
 	},
 /turf/open/floor/almayer,
 /area/almayer/maint/hull/upper/u_f_s)
-"ciZ" = (
+"cjb" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
 	pixel_y = 1
@@ -82187,6 +82184,9 @@
 	},
 /turf/open/floor/almayer/blue/north,
 /area/almayer/hallways/upper/midship_hallway)
+"rnN" = (
+/turf/open/floor/almayer/green/northeast,
+/area/almayer/hallways/upper/fore_hallway)
 "rnP" = (
 /obj/structure/largecrate/random,
 /obj/structure/largecrate/random{
@@ -200853,13 +200853,13 @@ aag
 cZe
 cCL
 vDz
-bGk
-bGk
-bGk
-bGk
-bGk
-bGk
-bGk
+bLG
+bLG
+bLG
+bLG
+bLG
+bLG
+bLG
 kWq
 qnh
 aVG
@@ -200956,7 +200956,7 @@ cZe
 cZe
 iPq
 cmr
-bGk
+bLG
 aGL
 aGJ
 aGy
@@ -201059,7 +201059,7 @@ gSy
 ltw
 iPq
 cGA
-bGk
+bLG
 rlf
 soq
 eYQ
@@ -201068,8 +201068,8 @@ dmA
 hyQ
 iur
 lTt
-brk
-bot
+btj
+bqa
 dCK
 dCK
 esF
@@ -201162,11 +201162,11 @@ sit
 snx
 oVY
 cmr
-bGk
+bLG
 rBa
-caj
+chc
 vEj
-bST
+bUB
 rJD
 hyQ
 fEk
@@ -201259,13 +201259,13 @@ aaf
 aag
 cZe
 sit
-ciW
-ciW
+ciY
+ciY
 nRE
 cmr
 cmr
 sWw
-bGk
+bLG
 rIW
 oGx
 wvU
@@ -201282,7 +201282,7 @@ wVW
 wVW
 swH
 ucz
-bbo
+bcl
 atO
 sEM
 wVW
@@ -201484,7 +201484,7 @@ wVW
 bMV
 bMV
 wVW
-bhd
+bhB
 avS
 awk
 asR
@@ -201580,8 +201580,8 @@ kcN
 cod
 ufL
 aFk
-avG
-avG
+ayF
+ayF
 aov
 wVW
 bMV
@@ -201601,8 +201601,8 @@ bMV
 bMV
 wVW
 aKi
-avG
-avG
+ayF
+ayF
 aKz
 aVg
 aVV
@@ -201683,30 +201683,30 @@ kcN
 yff
 ufL
 aFk
-axn
-axn
+ayO
+ayO
 aov
 wVW
 bMV
 bMV
 wVW
+bhO
 bho
-bgX
 awk
 aqN
-bcl
+bcq
 aqN
 asc
-aVv
+aVw
 alX
 wVW
 bMV
 bMV
 bMV
 aKn
-axn
-axn
-auv
+ayO
+ayO
+ava
 mKq
 aws
 aWW
@@ -201786,14 +201786,14 @@ kcN
 kcN
 agj
 aFo
-axn
-axn
+ayO
+ayO
 aov
 wVW
 bMV
 bMV
 wVW
-bhB
+bhZ
 lVX
 awk
 auQ
@@ -201801,15 +201801,15 @@ wVW
 auQ
 asc
 snI
-aUH
+aUP
 wVW
 aIf
 azM
 bMV
 azj
 ayS
-ayF
-ava
+ayP
+avG
 ayA
 axP
 lcy
@@ -201889,14 +201889,14 @@ xxh
 xpi
 agj
 amI
-bGv
-aEU
-bvy
+bLM
+aFa
+bwy
 wVW
 bMV
 bMV
 wVW
-bhO
+bid
 awt
 awk
 avY
@@ -201904,14 +201904,14 @@ aqN
 avY
 asc
 ays
-aUP
+aUQ
 wVW
 cvZ
 asN
 bMV
 aTj
-aCw
-ayO
+aCF
+ayW
 aKa
 ayy
 aws
@@ -201986,35 +201986,35 @@ dyj
 fnv
 bVs
 xZG
-ciU
+ciW
 mXj
 ulo
 kJW
 agj
 aic
-bGW
-bys
+bMQ
+bGv
 aoA
 wVW
 bMV
 bMV
 wVW
 wVW
-aVw
+aVy
 abk
 avY
 aqN
 avY
-aVE
-aVw
+aVH
+aVy
 wVW
 wVW
 mPn
 xMA
 bMV
 aKo
-aCF
-ayP
+aEp
+ayX
 aKa
 mKq
 aws
@@ -202087,7 +202087,7 @@ pMH
 agj
 mXj
 mXj
-ciV
+ciX
 mXj
 mXj
 mXj
@@ -202096,7 +202096,7 @@ mXj
 agj
 aic
 aov
-aEp
+aEU
 wVW
 wVW
 wVW
@@ -202105,10 +202105,10 @@ wVW
 wVW
 wVW
 azW
+beC
 bcr
-bcq
 aCa
-aVH
+aVU
 wVW
 wVW
 wVW
@@ -202116,8 +202116,8 @@ vSl
 xMA
 bMV
 bMV
-aEp
-ayW
+aEU
+aBe
 aKz
 aVg
 axS
@@ -202198,14 +202198,14 @@ faE
 mXj
 agj
 aic
-bLG
+bPi
 wVW
-bvA
-brl
+byq
+btk
 aCr
 aCr
-bkM
-bhZ
+bnC
+bij
 rOC
 soX
 avY
@@ -202213,14 +202213,14 @@ aqN
 avY
 aDv
 wVW
-aLZ
-aLZ
+aMg
+aMg
+aSs
 aRJ
-aRd
-aLZ
+aMg
 bMV
 bMV
-ayW
+aBe
 aKy
 mKq
 axT
@@ -202304,11 +202304,11 @@ aic
 aov
 wVW
 acS
-btj
+buk
 awG
 awG
 ayI
-bid
+biE
 wbX
 awk
 bPs
@@ -202316,14 +202316,14 @@ aAE
 aCq
 asc
 gvq
-aUQ
+aVb
 aqN
 avY
 vHW
-aMg
+aNr
 ccg
 bMV
-ayW
+aBe
 aKz
 mKq
 aES
@@ -202407,14 +202407,14 @@ aic
 aov
 wVW
 sxW
-btk
+bul
 jSc
 atN
 cEl
-bij
+bkM
 wVW
-bgb
-bdT
+bgN
+beJ
 pON
 ixv
 asc
@@ -202423,10 +202423,10 @@ sOi
 aHR
 aJI
 wFn
-aNr
-aFa
+aOd
+aGQ
 bMV
-ayW
+aBe
 aKz
 mKq
 cWy
@@ -202506,30 +202506,30 @@ aiW
 xyk
 xyk
 mDX
-bPi
-bLM
+bUm
+bRZ
 wVW
 dLe
-buk
+bun
 atx
-bmn
+bnE
 ajm
-bij
+bkM
 wVW
-bgy
+bgX
 aas
 aAF
 azZ
-aVU
+aVZ
 wVW
-aVb
+aVj
 aHR
 qEk
 iaa
-aNr
-aGQ
+aOd
+aJD
 bMV
-ayW
+aBe
 aKz
 mKq
 oKx
@@ -202610,29 +202610,29 @@ agc
 agc
 agj
 aic
-bMQ
+bST
 wVW
 sxW
-bul
-boC
-bnC
+bvk
+brk
+bot
 cEl
-bij
+bkM
 wVW
-bgN
+bhd
 hxm
 aAA
 tUo
-aVZ
+aWS
 wVW
-aVj
+aVk
 aHR
-aSs
+aUH
 wFn
-aNr
-aFa
+aOd
+aGQ
 bMV
-ayW
+aBe
 aKz
 mKq
 aES
@@ -202713,29 +202713,29 @@ kDK
 iEz
 agj
 aic
-bMQ
+bST
 wVW
-bwy
-bun
-bnE
-bnE
+bys
+bvp
+boC
+boC
 hrm
-bhZ
+bij
 rOC
 awk
-beC
+bfO
 tCT
 aBV
 asc
-aVy
-aVk
+aVE
+aVp
 aqN
 avY
 mje
-aOd
-aJD
+aPp
+aLZ
 bMV
-ayW
+aBe
 aKz
 mKq
 cWy
@@ -202816,14 +202816,14 @@ hmV
 mXj
 agj
 akL
-bMQ
+bST
 wVW
-bvA
-bvk
-bqa
+byq
+bvy
+brl
 jvX
 ato
-bid
+biE
 wbX
 awk
 wlE
@@ -202831,14 +202831,14 @@ aqN
 wlE
 asc
 wVW
-aVp
-aPp
-aPp
-aPp
-aPp
+aVv
+aRd
+aRd
+aRd
+aRd
 bMV
 bMV
-ayX
+aCw
 aKz
 mKq
 oKx
@@ -202919,8 +202919,8 @@ agj
 agj
 agj
 aic
-bMQ
-avG
+bST
+ayF
 wVW
 wVW
 wVW
@@ -202940,8 +202940,8 @@ bMV
 bMV
 bMV
 bMV
-avG
-ayW
+ayF
+aBe
 aKz
 mKq
 mKq
@@ -203009,8 +203009,8 @@ aaa
 aaa
 aad
 cZe
-ciY
-ciX
+cja
+ciZ
 snx
 fZy
 gpY
@@ -203020,7 +203020,7 @@ awW
 awW
 aSJ
 alE
-bUm
+bUF
 aic
 kAh
 aom
@@ -203035,7 +203035,7 @@ awm
 aCc
 xQa
 aCc
-aWS
+bbo
 aBS
 laV
 whB
@@ -203046,7 +203046,7 @@ aom
 aom
 vjb
 aKz
-aoq
+aqP
 alE
 aXe
 baw
@@ -203123,16 +203123,16 @@ ajf
 ajf
 oAO
 anr
-bUB
+bVe
 vta
 rmD
-aEU
-aEU
-aEU
-aEU
-aEU
-aEU
-biE
+aFa
+aFa
+aFa
+aFa
+aFa
+aFa
+bmn
 aDA
 ayK
 aAd
@@ -203143,13 +203143,13 @@ aCj
 bYY
 aKv
 aAa
-aEU
-aEU
-aEU
-aEU
+aFa
+aFa
+aFa
+aFa
 rmD
 mtM
-aqP
+aqS
 anr
 aZC
 aZz
@@ -203226,7 +203226,7 @@ awW
 awW
 aSJ
 alE
-bUF
+bVE
 aKo
 aBX
 bYz
@@ -203252,7 +203252,7 @@ aBX
 cPg
 aBX
 cZb
-aqS
+asu
 alE
 aXe
 baw
@@ -203945,7 +203945,7 @@ add
 ajI
 add
 add
-awD
+ciM
 adq
 iFn
 nwL
@@ -204268,7 +204268,7 @@ aCY
 aCY
 aCY
 aDf
-avL
+cfx
 oIp
 wCn
 aET
@@ -204474,7 +204474,7 @@ aqz
 aKH
 dcR
 aDf
-beJ
+bgb
 oIp
 ayg
 fyT
@@ -204577,7 +204577,7 @@ bAM
 aDN
 aDF
 aDf
-bfO
+bgy
 oIp
 qUK
 aET
@@ -204665,14 +204665,14 @@ awW
 awW
 abB
 add
-chc
+ciV
 adq
 adq
 aFH
 aFH
 aFH
 aau
-byq
+bGk
 aEP
 aDF
 aDf
@@ -204975,14 +204975,14 @@ awW
 acW
 awW
 awW
-bVE
+ciU
 hiy
-bRZ
-bvp
-bvp
-arF
+ciH
+bvA
+bvA
+cbS
 oyB
-bvp
+bvA
 iKy
 iKy
 gJC
@@ -204999,10 +204999,10 @@ iKy
 iKy
 iKy
 iKy
-arF
+cbS
 iKy
 oyB
-aBe
+axn
 kmT
 pEY
 aXe
@@ -205167,7 +205167,7 @@ mis
 mis
 mis
 qqn
-ciZ
+cjb
 akt
 awW
 gLl
@@ -205182,7 +205182,7 @@ oGC
 awW
 awW
 aSJ
-bVe
+caj
 gvu
 nbH
 qQu
@@ -205196,12 +205196,12 @@ llo
 llo
 llo
 llo
-asQ
+cfg
 llo
 pub
 llo
 llo
-arP
+cdr
 llo
 llo
 epT
@@ -205210,7 +205210,7 @@ aWM
 qQu
 ayJ
 tJm
-asu
+aoq
 aXe
 baw
 baw
@@ -205289,7 +205289,7 @@ gLl
 gvu
 nbH
 nyK
-awA
+bGW
 dfa
 aoe
 aoe
@@ -205304,12 +205304,12 @@ aoe
 aoe
 ajl
 ajl
-arR
-arG
+cds
+ccU
 ajl
 ajl
 ajl
-apo
+rnN
 aWM
 ayJ
 kaj
@@ -205518,7 +205518,7 @@ cca
 gWG
 gvu
 ayH
-alZ
+auv
 lST
 awK
 pep
@@ -206432,7 +206432,7 @@ cgG
 isN
 isN
 aoe
-auT
+bdT
 wJo
 uol
 anp

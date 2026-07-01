@@ -1,0 +1,79 @@
+{
+    "map_name": "Atlan Station",
+    "map_path": "map_files/Atlan_Station",
+    "map_file": "Atlan_Station.dmm",
+    "webmap_url": "LV624",
+    "survivor_types": [
+        "/datum/equipment_preset/survivor/scientist/soro",
+        "/datum/equipment_preset/survivor/doctor/soro",
+        "/datum/equipment_preset/survivor/cec_liaison/atlan",
+	    "/datum/equipment_preset/survivor/hyperdyne",
+        "/datum/equipment_preset/survivor/engineer/atlan_processing_engineer",
+        "/datum/equipment_preset/survivor/engineer/soro_reactor_tech",
+        "/datum/equipment_preset/survivor/peoples_armed_police",
+        "/datum/equipment_preset/survivor/upp/army",
+        "/datum/equipment_preset/survivor/upp_colonist",
+        "/datum/equipment_preset/survivor/upp_atlan_miner",
+        "/datum/equipment_preset/survivor/upp_fire_fighter"
+    ],
+    "synth_survivor_types": [
+        "/datum/equipment_preset/synth/survivor/atlan/engineer",
+        "/datum/equipment_preset/synth/survivor/atlan/security",
+        "/datum/equipment_preset/synth/survivor/atlan/scientist",
+        "/datum/equipment_preset/synth/survivor/atlan/civilian",
+        "/datum/equipment_preset/synth/survivor/atlan/doctor",
+        "/datum/equipment_preset/synth/survivor/atlan/corporate"
+    ],
+    "CO_survivor_types": [
+        "/datum/equipment_preset/survivor/atlan/co_survivor"
+    ],
+    "colony_joe_types": [
+        "/datum/job/antag/upp/dzho_automaton/colony"
+    ],
+    "defcon_triggers": [
+        3750,
+        2600,
+        1450,
+        875,
+        0.0
+    ],
+    "survivor_message": "You're a resident of Atlan Station, a UPP mining platform over the gas giant KG-256. One of the mining skiffs picked up something while in atmosphere and it erupted during handling. While the station was quickly overwhelmed by the beasts, you've managed to hide or fight for this long...",
+    "co_briefing": {
+        "Hawks": "maps/map_briefings/commanding_officer/atlan_station/ATLANcpo.html",
+        "Doves": "maps/map_briefings/commanding_officer/atlan_station/ATLANhmm.html",
+        "Magpies": "maps/map_briefings/commanding_officer/atlan_station/ATLANmodi.html",
+        "Unaligned": "maps/map_briefings/commanding_officer/atlan_station/ATLANunaligned.html"
+    },
+    "map_item_type": "/obj/item/map/atlan_station",
+    "announce_text": "An automated distress signal has been received from the UPP mining platform, \"Atlan Station\", in orbit of the border world KG-256. A response team from the ###SHIPNAME### will be dispatched shortly to investigate.",
+    "monkey_types": [
+        "monkey",
+        "stok",
+        "neaera"
+    ],
+    "environment_traits": { "InSpace": true },
+    "traits": [
+        {
+            "Ground": true,
+            "Up": 1
+        },
+        {
+            "Ground": true,
+            "Down": -1
+        }
+    ],
+    "nightmare_path": "maps/Nightmare/maps/Atlan/",
+    "xvx_hives": {
+        "xeno_hive_alpha": 0,
+        "xeno_hive_bravo": 0,
+        "xeno_hive_charlie": 70
+    },
+    "camouflage": "classic",
+    "gamemodes": [
+        "Distress Signal",
+        "Hunter Games",
+        "Hive Wars",
+        "Faction Clash",
+        "Infection"
+    ]
+}

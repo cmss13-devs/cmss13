@@ -1,0 +1,37 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/strata/floor2,
+/area/space)
+"w" = (
+/mob/living/simple_animal/hostile/retaliate/goat{
+	name = "Gurney"
+	},
+/turf/open/floor/strata/floor2,
+/area/space)
+"x" = (
+/turf/open/floor/strata/floor2,
+/area/space)
+"B" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/floor3/east,
+/area/space)
+"Q" = (
+/turf/open/floor/strata/floor3/east,
+/area/space)
+
+(1,1,1) = {"
+Q
+Q
+x
+"}
+(2,1,1) = {"
+x
+w
+B
+"}
+(3,1,1) = {"
+a
+x
+x
+"}

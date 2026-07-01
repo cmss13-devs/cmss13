@@ -1,0 +1,513 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"am" = (
+/obj/structure/bedsheetbin{
+	icon_state = "linenbin-empty"
+	},
+/turf/open/floor/whitered,
+/area/atlan/station/hab_rec)
+"aC" = (
+/turf/closed/wall/strata_outpost/reinforced/hull,
+/area/atlan/oob)
+"bo" = (
+/obj/structure/machinery/light/double/blue,
+/turf/open/floor/whitered,
+/area/atlan/station/hab_rec)
+"cS" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/wood_clock{
+	pixel_y = 38
+	},
+/turf/closed/wall/strata_outpost,
+/area/atlan/station/hab_rec)
+"dw" = (
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/atlan/station/hab_rec)
+"eW" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/firstaid/regular,
+/obj/item/storage/firstaid/regular,
+/turf/open/floor/whitered/north,
+/area/atlan/station/hab_rec)
+"hP" = (
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3,
+/turf/closed/wall/strata_outpost,
+/area/atlan/station/hab_rec)
+"hX" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/floor/whitered/west,
+/area/atlan/station/hab_rec)
+"iE" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/floor/whitered/north,
+/area/atlan/station/hab_rec)
+"mb" = (
+/obj/item/toy/inflatable_duck,
+/obj/effect/landmark/survivor_spawner,
+/turf/open/gm/river,
+/area/atlan/station/hab_rec)
+"nk" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "csplatter1"
+	},
+/turf/open/floor/white,
+/area/atlan/station/hab_rec)
+"oU" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/whitered/north,
+/area/atlan/station/hab_rec)
+"qc" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 4
+	},
+/turf/open/floor/whitered/east,
+/area/atlan/station/hab_rec)
+"qT" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/floor/whitered,
+/area/atlan/station/hab_rec)
+"rj" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony,
+/turf/open/floor/strata/multi_tiles/west,
+/area/atlan/station/hab_rec)
+"rs" = (
+/obj/structure/sign/safety/water,
+/turf/closed/wall/strata_outpost,
+/area/atlan/station/hab_rec)
+"rR" = (
+/obj/structure/machinery/power/apc/no_power/south,
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/floor/whitered,
+/area/atlan/station/hab_rec)
+"vd" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 4
+	},
+/obj/structure/bed/chair,
+/turf/open/floor/whitered/west,
+/area/atlan/station/hab_rec)
+"wC" = (
+/turf/open/floor/whiteredcorner/west,
+/area/atlan/station/hab_rec)
+"xH" = (
+/turf/open/floor/whitered/northwest,
+/area/atlan/station/hab_rec)
+"yk" = (
+/obj/item/tool/wet_sign,
+/turf/open/floor/barber,
+/area/atlan/station/hab_rec)
+"yD" = (
+/obj/structure/bedsheetbin{
+	pixel_x = 1;
+	pixel_y = 3
+	},
+/turf/open/floor/whitered/southwest,
+/area/atlan/station/hab_rec)
+"zM" = (
+/obj/structure/surface/table/almayer,
+/obj/item/device/binoculars,
+/turf/open/floor/whitered,
+/area/atlan/station/hab_rec)
+"zZ" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/atlan/station/hab_rec)
+"Az" = (
+/obj/structure/machinery/light/double/blue,
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/whitered,
+/area/atlan/station/hab_rec)
+"Cb" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/floor/whitered,
+/area/atlan/station/hab_rec)
+"Cv" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic{
+	dir = 1
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/atlan/station/hab_rec)
+"Cw" = (
+/turf/open/floor/barber,
+/area/atlan/station/hab_rec)
+"EB" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/barber,
+/area/atlan/station/hab_rec)
+"EY" = (
+/turf/open/floor/whitered,
+/area/atlan/station/hab_rec)
+"HL" = (
+/obj/item/toy/beach_ball,
+/turf/open/gm/river,
+/area/atlan/station/hab_rec)
+"IB" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/toy/beach_ball,
+/turf/open/floor/whitered,
+/area/atlan/station/hab_rec)
+"IZ" = (
+/turf/open/floor/whitered/west,
+/area/atlan/station/hab_rec)
+"JD" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/whitered/north,
+/area/atlan/station/hab_rec)
+"Kc" = (
+/turf/open/floor/whitered/east,
+/area/atlan/station/hab_rec)
+"Kg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/double/blue,
+/turf/open/floor/whitered,
+/area/atlan/station/hab_rec)
+"Ku" = (
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_rook,
+/turf/open/floor/whitered/west,
+/area/atlan/station/hab_rec)
+"Lq" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	pixel_y = 21
+	},
+/turf/open/floor/whitered/north,
+/area/atlan/station/hab_rec)
+"Ob" = (
+/turf/open/floor/whitered/southeast,
+/area/atlan/station/hab_rec)
+"Qt" = (
+/turf/open/floor/strata/multi_tiles/west,
+/area/atlan/station/hab_rec)
+"Rf" = (
+/obj/structure/sign/safety/maint,
+/turf/closed/wall/strata_outpost,
+/area/atlan/station/hab_rec)
+"Sf" = (
+/obj/structure/closet/secure_closet/personal,
+/obj/structure/machinery/light/double/blue{
+	dir = 4
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/whitered/northeast,
+/area/atlan/station/hab_rec)
+"Sv" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 8
+	},
+/turf/open/floor/whitered/west,
+/area/atlan/station/hab_rec)
+"SQ" = (
+/turf/closed/wall/strata_outpost,
+/area/atlan/station/hab_rec)
+"Ty" = (
+/turf/open/gm/river,
+/area/atlan/station/hab_rec)
+"TV" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/whitered/west,
+/area/atlan/station/hab_rec)
+"Vu" = (
+/turf/open/floor/whitered/southwest,
+/area/atlan/station/hab_rec)
+"VF" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/storage/firstaid/regular,
+/turf/open/floor/whitered/southeast,
+/area/atlan/station/hab_rec)
+"Wo" = (
+/obj/structure/machinery/door/airlock/hybrisa/generic,
+/turf/open/floor/strata/multi_tiles/west,
+/area/atlan/station/hab_rec)
+"WZ" = (
+/turf/open/floor/whiteredcorner,
+/area/atlan/station/hab_rec)
+"Ye" = (
+/obj/structure/window/framed/strata,
+/turf/open/floor/plating,
+/area/atlan/station/hab_rec)
+"Yg" = (
+/turf/open/floor/white,
+/area/atlan/station/hab_rec)
+"Yw" = (
+/turf/open/floor/whitered/north,
+/area/atlan/station/hab_rec)
+
+(1,1,1) = {"
+SQ
+rs
+Wo
+SQ
+SQ
+SQ
+SQ
+SQ
+rj
+SQ
+aC
+"}
+(2,1,1) = {"
+SQ
+xH
+TV
+Sv
+vd
+Ku
+hX
+Sv
+IZ
+Vu
+aC
+"}
+(3,1,1) = {"
+rs
+Yw
+Yg
+Yg
+Yg
+Yg
+Yg
+Yg
+nk
+wC
+yD
+"}
+(4,1,1) = {"
+zZ
+Yg
+Cw
+Cw
+Cw
+Cw
+Cw
+Cw
+Cw
+Yg
+am
+"}
+(5,1,1) = {"
+dw
+Yg
+Cw
+Ty
+Ty
+Ty
+Ty
+Ty
+Cw
+Yg
+EY
+"}
+(6,1,1) = {"
+hP
+Lq
+Cw
+Ty
+Ty
+Ty
+Ty
+Ty
+Cw
+Yg
+Kg
+"}
+(7,1,1) = {"
+Ye
+Yw
+Cw
+Ty
+Ty
+Ty
+Ty
+Ty
+yk
+Yg
+EY
+"}
+(8,1,1) = {"
+Ye
+JD
+Cw
+Ty
+Ty
+Ty
+Ty
+Ty
+Cw
+Yg
+EY
+"}
+(9,1,1) = {"
+Ye
+eW
+Cw
+Ty
+Ty
+mb
+Ty
+Ty
+EB
+WZ
+Ob
+"}
+(10,1,1) = {"
+Ye
+iE
+Cw
+Ty
+Ty
+Ty
+Ty
+Ty
+Cw
+bo
+SQ
+"}
+(11,1,1) = {"
+Ye
+Yw
+Cw
+Ty
+Ty
+Ty
+Ty
+Ty
+Cw
+rR
+SQ
+"}
+(12,1,1) = {"
+Ye
+oU
+Cw
+Ty
+Ty
+Ty
+Ty
+Ty
+Cw
+Cb
+SQ
+"}
+(13,1,1) = {"
+SQ
+Lq
+Cw
+Ty
+Ty
+Ty
+Ty
+Ty
+Cw
+EY
+SQ
+"}
+(14,1,1) = {"
+zZ
+Yg
+Cw
+Ty
+HL
+Ty
+Ty
+Ty
+Cw
+EY
+Rf
+"}
+(15,1,1) = {"
+dw
+Yg
+yk
+Ty
+Ty
+Ty
+Ty
+Ty
+Cw
+Az
+hP
+"}
+(16,1,1) = {"
+rs
+Yw
+Cw
+Ty
+Ty
+Ty
+Ty
+Ty
+Cw
+zM
+SQ
+"}
+(17,1,1) = {"
+Ye
+Yw
+Cw
+Ty
+Ty
+Ty
+Ty
+Ty
+Cw
+qT
+SQ
+"}
+(18,1,1) = {"
+Ye
+Yw
+Cw
+Cw
+Cw
+Cw
+Cw
+Cw
+Cw
+IB
+aC
+"}
+(19,1,1) = {"
+SQ
+Sf
+Kc
+qc
+Yg
+Yg
+Kc
+qc
+Kc
+VF
+aC
+"}
+(20,1,1) = {"
+SQ
+SQ
+SQ
+cS
+Qt
+Cv
+rs
+SQ
+SQ
+aC
+aC
+"}

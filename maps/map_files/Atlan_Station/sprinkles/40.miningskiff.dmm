@@ -1,0 +1,1076 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ad" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/clothing/gloves/fyellow,
+/turf/open/floor/almayer/plate,
+/area/atlan/asteroid/ship)
+"aA" = (
+/turf/open/gm/dirt/brown,
+/area/atlan/asteroid/processing_dock)
+"aQ" = (
+/turf/closed/wall/mineral/bone_resin,
+/area/atlan/oob)
+"aR" = (
+/obj/item/device/flashlight/lamp/tripod{
+	on = 0
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_dock)
+"aT" = (
+/obj/item/stack/rods,
+/turf/open/floor/plating/panelscorched,
+/area/atlan/asteroid/ship)
+"aZ" = (
+/obj/structure/prop/invuln/fire,
+/turf/closed/shuttle/ert{
+	icon_state = "upp4";
+	dir = 4
+	},
+/area/atlan/asteroid/ship)
+"bp" = (
+/turf/open/floor/almayer/test_floor5,
+/area/atlan/asteroid/ship)
+"cq" = (
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/gm/dirt/brown,
+/area/atlan/asteroid/processing_dock)
+"cV" = (
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/plating,
+/area/atlan/asteroid/processing_dock)
+"cW" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/structure/machinery/computer/atmos_alert{
+	dir = 8
+	},
+/turf/open/floor/almayer/plate,
+/area/atlan/asteroid/ship)
+"cZ" = (
+/obj/item/stack/rods,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/atlan/asteroid/processing_dock)
+"dd" = (
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/turf/open/floor/plating/panelscorched,
+/area/atlan/asteroid/processing_dock)
+"dp" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp_leftengine";
+	dir = 8
+	},
+/area/atlan/asteroid/ship)
+"ea" = (
+/turf/open/floor/plating,
+/area/atlan/asteroid/processing_dock)
+"eL" = (
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_dock)
+"fi" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/gm/dirt/brown,
+/area/atlan/asteroid/processing_dock)
+"fQ" = (
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/plating,
+/area/atlan/asteroid/ship)
+"fR" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/floor3/east,
+/area/atlan/asteroid/processing_dock)
+"fS" = (
+/turf/open/floor/plating/panelscorched,
+/area/atlan/asteroid/ship)
+"fV" = (
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/atlan/asteroid/processing_dock)
+"go" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_dock)
+"hi" = (
+/obj/structure/prop/static_tank/fuel,
+/turf/open/floor/almayer/test_floor5,
+/area/atlan/asteroid/ship)
+"ig" = (
+/obj/structure/bed/chair/dropship/passenger,
+/obj/effect/landmark/monkey_spawn,
+/turf/open/floor/almayer/plate,
+/area/atlan/asteroid/ship)
+"iC" = (
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/plating,
+/area/atlan/asteroid/processing_dock)
+"iI" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -12
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_dock)
+"iS" = (
+/obj/structure/shuttle/part/ert/transparent/right_engine{
+	dir = 8
+	},
+/obj/structure/prop/invuln/fire,
+/turf/open/floor/plating,
+/area/atlan/asteroid/ship)
+"ji" = (
+/obj/item/tool/warning_cone{
+	pixel_y = 16;
+	pixel_x = -11
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_dock)
+"jz" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/structure/machinery/computer/emails{
+	dir = 8;
+	pixel_y = 4;
+	pixel_x = -2
+	},
+/turf/open/floor/almayer/plate,
+/area/atlan/asteroid/ship)
+"jR" = (
+/obj/item/clothing/head/uppcap/civi/plant_worker,
+/turf/open/floor/almayer/test_floor5,
+/area/atlan/asteroid/ship)
+"kE" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/platingdmg1,
+/area/atlan/asteroid/processing_dock)
+"lG" = (
+/obj/structure/prop/static_tank/fuel,
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/almayer/test_floor5,
+/area/atlan/asteroid/ship)
+"lJ" = (
+/obj/structure/prop/invuln/fire,
+/turf/closed/shuttle/ert{
+	icon_state = "upp_rightengine";
+	dir = 8
+	},
+/area/atlan/asteroid/ship)
+"lQ" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/structure/machinery/computer/communications{
+	dir = 8;
+	pixel_y = 5
+	},
+/turf/open/floor/almayer/plate,
+/area/atlan/asteroid/ship)
+"mr" = (
+/obj/item/frame/rack,
+/turf/open/floor/prison/darkyellowfull2,
+/area/atlan/asteroid/processing_dock)
+"my" = (
+/obj/item/clothing/mask/rebreather,
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_dock)
+"mT" = (
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/prison/darkyellowfull2,
+/area/atlan/asteroid/processing_dock)
+"mW" = (
+/obj/structure/prop/invuln/fire,
+/turf/closed/shuttle/ert{
+	icon_state = "upp_leftengine";
+	dir = 8
+	},
+/area/atlan/asteroid/ship)
+"nE" = (
+/turf/open/floor/plating/panelscorched,
+/area/atlan/asteroid/processing_dock)
+"nN" = (
+/turf/open/floor/prison/darkyellowfull2,
+/area/atlan/asteroid/processing_dock)
+"oh" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/gm/dirt/brown,
+/area/atlan/asteroid/processing_dock)
+"os" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -1;
+	pixel_y = 3
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_dock)
+"oA" = (
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/almayer/plate,
+/area/atlan/asteroid/ship)
+"oE" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating,
+/area/atlan/asteroid/processing_dock)
+"pH" = (
+/turf/open/floor/strata/floor3/east,
+/area/atlan/asteroid/processing_dock)
+"pZ" = (
+/turf/open/floor/plating,
+/area/atlan/asteroid/ship)
+"qd" = (
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "upp27";
+	dir = 8
+	},
+/area/atlan/asteroid/ship)
+"qq" = (
+/turf/open/gm/dirt/brown/variant_2,
+/area/atlan/asteroid/processing_dock)
+"qX" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
+	},
+/obj/effect/landmark/monkey_spawn,
+/turf/open/floor/almayer/plate,
+/area/atlan/asteroid/ship)
+"rf" = (
+/obj/structure/girder/reinforced,
+/turf/open/space/basic,
+/area/atlan/asteroid/ship)
+"rr" = (
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/turf/open/gm/dirt/brown/variant_1,
+/area/atlan/asteroid/processing_dock)
+"sb" = (
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/closed/wall/mineral/bone_resin,
+/area/atlan/oob)
+"sh" = (
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/almayer/test_floor5,
+/area/atlan/asteroid/ship)
+"sk" = (
+/turf/open/floor/almayer/test_floor6,
+/area/atlan/asteroid/ship)
+"sA" = (
+/obj/item/stack/sheet/metal,
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/almayer/test_floor5,
+/area/atlan/asteroid/ship)
+"sC" = (
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_dock)
+"sE" = (
+/obj/item/tool/extinguisher,
+/turf/open/floor/almayer/test_floor5,
+/area/atlan/asteroid/ship)
+"sH" = (
+/obj/structure/shuttle/part/ert/front_right_upp{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/atlan/asteroid/ship)
+"sO" = (
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/prison/darkyellowfull2,
+/area/atlan/asteroid/processing_dock)
+"tE" = (
+/obj/structure/shuttle/part/ert/front_left_upp{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/atlan/asteroid/ship)
+"ux" = (
+/turf/open/floor/almayer/plate,
+/area/atlan/asteroid/ship)
+"uL" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/prison/darkyellowfull2,
+/area/atlan/asteroid/processing_dock)
+"uQ" = (
+/obj/item/stack/rods,
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/plating/panelscorched,
+/area/atlan/asteroid/ship)
+"vQ" = (
+/obj/structure/machinery/door/airlock/dropship_hatch{
+	dir = 1
+	},
+/turf/open/floor/almayer/test_floor6,
+/area/atlan/asteroid/ship)
+"wm" = (
+/obj/structure/largecrate/random/barrel/true_random,
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/almayer/test_floor5,
+/area/atlan/asteroid/ship)
+"wt" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_dock)
+"wU" = (
+/turf/open/floor/strata/yellow3/northeast,
+/area/atlan/asteroid/processing_dock)
+"xj" = (
+/obj/structure/shuttle/part/ert/transparent/left_engine{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/atlan/asteroid/ship)
+"xD" = (
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/platingdmg1,
+/area/atlan/asteroid/ship)
+"yf" = (
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/plating,
+/area/atlan/asteroid/processing_dock)
+"yq" = (
+/obj/structure/girder/displaced,
+/turf/open/floor/plating,
+/area/atlan/asteroid/ship)
+"yy" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plate,
+/area/atlan/asteroid/ship)
+"yE" = (
+/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "csplatter1";
+	pixel_y = 4;
+	pixel_x = -10
+	},
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/spawner/gibspawner/human,
+/turf/open/floor/almayer/test_floor5,
+/area/atlan/asteroid/ship)
+"zo" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/turf/open/floor/prison/darkyellowfull2,
+/area/atlan/asteroid/processing_dock)
+"zr" = (
+/obj/item/tool/warning_cone{
+	pixel_y = 19
+	},
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/prison/darkyellowfull2,
+/area/atlan/asteroid/processing_dock)
+"zQ" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating/panelscorched,
+/area/atlan/asteroid/ship)
+"At" = (
+/obj/structure/prop/invuln/fire,
+/turf/closed/shuttle/ert{
+	icon_state = "upp4";
+	dir = 8
+	},
+/area/atlan/asteroid/ship)
+"AR" = (
+/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/turf/open/floor/almayer/test_floor5,
+/area/atlan/asteroid/ship)
+"BH" = (
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_dock)
+"BX" = (
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/strata/floor3/east,
+/area/atlan/asteroid/processing_dock)
+"CA" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/atlan/asteroid/processing_dock)
+"Da" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/almayer/plate,
+/area/atlan/asteroid/ship)
+"Dc" = (
+/obj/effect/decal/cleanable/liquid_fuel,
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/plating/panelscorched,
+/area/atlan/asteroid/ship)
+"Ej" = (
+/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/structure/reagent_dispensers/tank/fuel/gas,
+/turf/open/floor/almayer/test_floor5,
+/area/atlan/asteroid/ship)
+"ER" = (
+/obj/structure/girder/reinforced,
+/turf/open/floor/plating,
+/area/atlan/asteroid/ship)
+"Hh" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp4";
+	dir = 4
+	},
+/area/atlan/asteroid/ship)
+"Hl" = (
+/obj/structure/reagent_dispensers/tank/fuel/gas,
+/turf/open/floor/almayer/test_floor5,
+/area/atlan/asteroid/ship)
+"Hn" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/almayer/plate,
+/area/atlan/asteroid/ship)
+"HV" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/plating,
+/area/atlan/asteroid/processing_dock)
+"HZ" = (
+/obj/item/stack/rods,
+/turf/open/floor/plating,
+/area/atlan/asteroid/processing_dock)
+"If" = (
+/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating/panelscorched,
+/area/atlan/asteroid/ship)
+"Ip" = (
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/obj/structure/reagent_dispensers/tank/fuel/gas,
+/turf/open/floor/almayer/test_floor5,
+/area/atlan/asteroid/ship)
+"Jj" = (
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/turf/open/floor/almayer/test_floor6,
+/area/atlan/asteroid/ship)
+"JG" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/atlan/asteroid/ship)
+"JI" = (
+/obj/item/stack/rods,
+/turf/open/floor/platingdmg1,
+/area/atlan/asteroid/ship)
+"JR" = (
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/turf/open/floor/strata/floor3/east,
+/area/atlan/asteroid/processing_dock)
+"JV" = (
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/plating/panelscorched,
+/area/atlan/asteroid/ship)
+"Mc" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp4";
+	dir = 8
+	},
+/area/atlan/asteroid/ship)
+"Oa" = (
+/turf/open/floor/platingdmg1,
+/area/atlan/asteroid/processing_dock)
+"Of" = (
+/obj/item/stack/rods,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/platingdmg1,
+/area/atlan/asteroid/ship)
+"Oq" = (
+/obj/item/clothing/head/uppcap/civi/plant_worker,
+/turf/open/floor/platingdmg1,
+/area/atlan/asteroid/ship)
+"Pw" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkyellowfull2,
+/area/atlan/asteroid/processing_dock)
+"PE" = (
+/turf/open/gm/dirt/brown/variant_1,
+/area/atlan/asteroid/processing_dock)
+"Ql" = (
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/platingdmg1,
+/area/atlan/asteroid/processing_dock)
+"Rg" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood{
+	dir = 4;
+	icon_state = "gib6";
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/atlan/asteroid/ship)
+"Rx" = (
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/turf/open/floor/almayer/plate,
+/area/atlan/asteroid/ship)
+"RW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/plating,
+/area/atlan/asteroid/processing_dock)
+"Sv" = (
+/obj/item/stack/sheet/metal,
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/plating/panelscorched,
+/area/atlan/asteroid/ship)
+"To" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_dock)
+"Ty" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/platingdmg1,
+/area/atlan/asteroid/ship)
+"Uw" = (
+/obj/structure/machinery/floodlight,
+/turf/open/floor/prison/darkyellowfull2,
+/area/atlan/asteroid/processing_dock)
+"UL" = (
+/obj/structure/largecrate/random/barrel/true_random,
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/almayer/plate,
+/area/atlan/asteroid/ship)
+"VL" = (
+/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/plating,
+/area/atlan/asteroid/processing_dock)
+"VW" = (
+/obj/structure/girder/reinforced,
+/turf/open/floor/platingdmg1,
+/area/atlan/asteroid/ship)
+"We" = (
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_dock)
+"XA" = (
+/obj/structure/girder/displaced,
+/turf/open/floor/plating/panelscorched,
+/area/atlan/asteroid/ship)
+"XW" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/spawner/gibspawner/human,
+/turf/open/floor/plating,
+/area/atlan/asteroid/ship)
+"ZS" = (
+/turf/open/floor/platingdmg1,
+/area/atlan/asteroid/ship)
+
+(1,1,1) = {"
+eL
+eL
+eL
+eL
+wt
+eL
+pH
+eL
+We
+eL
+eL
+pH
+eL
+ea
+ea
+eL
+We
+"}
+(2,1,1) = {"
+eL
+wt
+fR
+BH
+eL
+eL
+eL
+eL
+wt
+wt
+ea
+eL
+os
+ea
+eL
+go
+eL
+"}
+(3,1,1) = {"
+eL
+eL
+Uw
+zr
+nN
+zo
+nN
+nN
+nN
+nN
+nN
+nN
+nN
+nN
+Uw
+eL
+ea
+"}
+(4,1,1) = {"
+eL
+eL
+nN
+RW
+yf
+ea
+ea
+dd
+ea
+ea
+CA
+ea
+ea
+ea
+Pw
+eL
+eL
+"}
+(5,1,1) = {"
+pH
+eL
+Pw
+CA
+yf
+Ql
+ea
+ea
+Oa
+ea
+ea
+ea
+ea
+ea
+nN
+We
+eL
+"}
+(6,1,1) = {"
+eL
+BX
+nN
+CA
+RW
+ea
+yq
+Jj
+sk
+fS
+fS
+cZ
+ea
+ea
+nN
+fR
+eL
+"}
+(7,1,1) = {"
+To
+ea
+nN
+oE
+cV
+xj
+At
+ux
+fS
+Ty
+ER
+fQ
+oE
+ea
+nN
+eL
+We
+"}
+(8,1,1) = {"
+eL
+eL
+nN
+CA
+Oa
+mW
+Mc
+ux
+ux
+JI
+ER
+ZS
+ea
+CA
+nN
+eL
+eL
+"}
+(9,1,1) = {"
+ea
+ea
+aQ
+yf
+xj
+ER
+ig
+xD
+ux
+Da
+JG
+JV
+iS
+CA
+Pw
+eL
+eL
+"}
+(10,1,1) = {"
+aA
+ea
+aQ
+aQ
+dp
+Of
+ad
+oA
+Rx
+ux
+UL
+aT
+lJ
+ea
+Pw
+eL
+eL
+"}
+(11,1,1) = {"
+aA
+aQ
+aQ
+aQ
+At
+lG
+bp
+jR
+ux
+sh
+lG
+fQ
+Hh
+yf
+nN
+aR
+pH
+"}
+(12,1,1) = {"
+aA
+aA
+aQ
+aQ
+Mc
+Dc
+sh
+bp
+oA
+xD
+sh
+Ej
+aZ
+oE
+nN
+To
+wt
+"}
+(13,1,1) = {"
+ea
+qq
+aA
+aQ
+aQ
+wm
+lG
+xD
+oA
+AR
+sh
+lG
+Hh
+ea
+nN
+eL
+sC
+"}
+(14,1,1) = {"
+aA
+fi
+nN
+nE
+Mc
+yE
+sh
+bp
+ux
+fQ
+sh
+sh
+Hh
+CA
+nN
+wt
+eL
+"}
+(15,1,1) = {"
+aA
+ea
+nN
+ea
+vQ
+oA
+yy
+ux
+oA
+ux
+Rx
+oA
+vQ
+ea
+nN
+eL
+To
+"}
+(16,1,1) = {"
+aA
+ea
+nN
+ea
+Mc
+Hl
+bp
+pZ
+ux
+Oq
+sA
+hi
+aQ
+Ql
+mT
+eL
+eL
+"}
+(17,1,1) = {"
+cq
+eL
+sO
+ea
+At
+hi
+JV
+Ip
+zQ
+sE
+uQ
+sb
+aQ
+aQ
+aQ
+eL
+eL
+"}
+(18,1,1) = {"
+aA
+oh
+nN
+Oa
+yq
+sh
+xD
+lG
+fS
+JV
+sh
+sA
+sb
+aQ
+nN
+BH
+eL
+"}
+(19,1,1) = {"
+rr
+aQ
+nN
+ea
+xD
+Sv
+If
+JV
+pZ
+fQ
+bp
+xD
+fQ
+ea
+nN
+eL
+aR
+"}
+(20,1,1) = {"
+aQ
+aQ
+aQ
+HZ
+ZS
+JV
+fQ
+XW
+fS
+ux
+Hl
+VW
+pZ
+ea
+nN
+eL
+JR
+"}
+(21,1,1) = {"
+aQ
+eL
+nN
+ea
+ea
+Oa
+XA
+Rg
+Hn
+qX
+rf
+kE
+ea
+HZ
+Pw
+iI
+eL
+"}
+(22,1,1) = {"
+aQ
+aQ
+mr
+HV
+ea
+HZ
+At
+jz
+lQ
+cW
+Hh
+ea
+ea
+ea
+nN
+ji
+eL
+"}
+(23,1,1) = {"
+aA
+aQ
+nN
+ea
+ea
+ea
+tE
+qd
+qd
+qd
+sH
+ea
+VL
+ea
+nN
+eL
+eL
+"}
+(24,1,1) = {"
+PE
+To
+nN
+ea
+ea
+ea
+ea
+ea
+CA
+ea
+ea
+ea
+ea
+ea
+nN
+eL
+eL
+"}
+(25,1,1) = {"
+aA
+eL
+Uw
+nN
+nN
+uL
+nN
+nN
+nN
+nN
+nN
+nN
+Pw
+nN
+Uw
+my
+ea
+"}
+(26,1,1) = {"
+ea
+aA
+eL
+eL
+wt
+eL
+eL
+pH
+eL
+eL
+eL
+eL
+pH
+wt
+eL
+eL
+eL
+"}
+(27,1,1) = {"
+wU
+eL
+iC
+eL
+eL
+eL
+ea
+eL
+eL
+To
+aA
+fV
+eL
+eL
+eL
+eL
+ea
+"}

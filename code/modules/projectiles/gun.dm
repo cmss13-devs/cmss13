@@ -2131,7 +2131,6 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	shots_fired = 0//Let's clean everything
 	set_target(null)
 	set_auto_firing(FALSE)
-	display_ammo()
 
 /// adder for fire_delay
 /obj/item/weapon/gun/proc/modify_fire_delay(value)
@@ -2276,6 +2275,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	set_target(get_turf_on_clickcatcher(object, gun_user, params))
 	if((gun_firemode == GUN_FIREMODE_SEMIAUTO) || active_attachable)
 		if(Fire(object, gun_user, modifiers))
+			display_ammo(gun_user)
 			reset_fire()
 		return COMSIG_MOB_CLICK_HANDLED
 	SEND_SIGNAL(src, COMSIG_GUN_FIRE)

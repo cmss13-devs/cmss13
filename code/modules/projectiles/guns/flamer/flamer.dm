@@ -132,8 +132,8 @@
 			to_chat(user, SPAN_NOTICE("You disable [active_attachable]."))
 			active_attachable.activate_attachment(src, null, TRUE)
 		else
-			active_attachable.fire_attachment(target, src, user) //Fire it.
-			active_attachable.last_fired = world.time
+			if(active_attachable.fire_attachment(target, src, user)) //Fire it.
+				active_attachable.last_fired = world.time
 		return NONE
 
 	if(flags_gun_features & GUN_TRIGGER_SAFETY)

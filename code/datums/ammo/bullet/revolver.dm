@@ -10,6 +10,7 @@
 	damage = 72
 	penetration = ARMOR_PENETRATION_TIER_1
 	accuracy = HIT_ACCURACY_TIER_1
+	handful_type = /obj/item/ammo_magazine/handful/revolver
 
 /datum/ammo/bullet/revolver/marksman
 	name = "marksman revolver bullet"
@@ -141,10 +142,6 @@
 	damage_var_high = PROJECTILE_VARIANCE_TIER_6
 	penetration = ARMOR_PENETRATION_TIER_4
 	headshot_state = HEADSHOT_OVERLAY_HEAVY
-
-/datum/ammo/bullet/revolver/mateba/New()
-	..()
-	RegisterSignal(src, COMSIG_AMMO_POINT_BLANK, PROC_REF(handle_battlefield_execution))
 
 /datum/ammo/bullet/revolver/mateba/highimpact
 	name = ".454 heavy high-impact revolver bullet"

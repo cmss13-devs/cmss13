@@ -25,6 +25,7 @@
 	map_specific_decoration = TRUE
 	aim_slowdown = SLOWDOWN_ADS_QUICK
 	flags_item = TWOHANDED|NO_CRYO_STORE
+	caliber = list("10x24mm", "A19")
 
 	accepted_ammo = list(
 		/obj/item/ammo_magazine/rifle/m4ra,

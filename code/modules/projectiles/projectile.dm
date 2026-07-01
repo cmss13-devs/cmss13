@@ -509,7 +509,16 @@
 		return FALSE
 
 /obj/projectile/proc/handle_mob(mob/living/target_living)
-	// If we've already handled this atom, don't do it again
+	// If a xeno is "defensively" grabbing a target, redirect the attack to them if they have atleast 25% health
+	var/mob/living/original_intended_target = null
+	var/is_target_xeno = isxeno(target_living)
+	if(!is_target_xeno && isxeno(target_living.pulledby) && target_living.pulledby.grab_level >= GRAB_AGGRESSIVE)
+		var/mob/living/carbon/xenomorph/puller = target_living.pulledby
+		if(puller.health / puller.maxHealth > 0.25 && puller.stat == CONSCIOUS)
+			// Protect the target
+			original_intended_target = target_living
+			is_target_xeno = TRUE
+			target_living = puller
 
 	if(SEND_SIGNAL(src, COMSIG_BULLET_PRE_HANDLE_MOB, target_living, .) & COMPONENT_BULLET_PASS_THROUGH)
 		return FALSE
@@ -517,7 +526,7 @@
 	if((MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_attacking_corpses) && target_living.stat == DEAD) || (target_living in permutated))
 		return FALSE
 
-	if(isxeno(target_living))
+	if(is_target_xeno)
 		var/mob/living/carbon/xenomorph/xeno = target_living
 		var/directional_chance = xeno.get_reflection_chance(src)
 		if(directional_chance > 0 && prob(directional_chance))
@@ -544,15 +553,12 @@
 		// Wasn't the clicked target
 		if(original != target_living)
 			def_zone = rand_zone()
-
 		// Xenos get a RNG limb miss chance regardless of being clicked target or not, see below
-		else if(isxeno(target_living) && hit_roll > hit_chance - 20)
+		else if(is_target_xeno && hit_roll > hit_chance - 20)
 			def_zone = rand_zone()
-
 		// Other targets do the same roll with penalty - a near hit will hit but redirected to another limb
-		else if(!isxeno(target_living) && hit_roll > hit_chance - 20 - GLOB.base_miss_chance[def_zone])
+		else if(!is_target_xeno && hit_roll > hit_chance - 20 - GLOB.base_miss_chance[def_zone])
 			def_zone = rand_zone()
-
 		else
 			direct_hit = TRUE
 			if(firer && projectile_flags & PROJECTILE_BULLSEYE)
@@ -562,7 +568,7 @@
 		// Therefore we exempt the shooter from direct hit accuracy penalties as well,
 		// simply to avoid them from resetting target to chest every time they want to shoot a xeno
 
-		if(!direct_hit || !isxeno(target_living)) // For normal people or direct hits we apply the limb accuracy penalty
+		if(!direct_hit || !is_target_xeno) // For normal people or direct hits we apply the limb accuracy penalty
 			hit_chance -= GLOB.base_miss_chance[def_zone]
 		// else for direct hits on xenos, we skip it, pretending it's a chest shot with zero penalty
 
@@ -584,8 +590,8 @@
 				// We "hit" the current turf but strike the actual blockage
 				ammo.on_hit_turf(get_turf(src),src)
 				turf.bullet_act(src)
-			else if(target_living && target_living.loc && (target_living.bullet_act(src) != -1))
-				ammo.on_hit_mob(target_living,src, firer)
+			else if(target_living && target_living.loc && (target_living.bullet_act(src, original_intended_target) != -1))
+				ammo.on_hit_mob(target_living, src, firer)
 
 				// If we are a xeno shooting something
 				if(istype(ammo, /datum/ammo/xeno) && isxeno(firer) && target_living.stat != DEAD && ammo.apply_delegate)
@@ -596,7 +602,7 @@
 						MD.ranged_attack_additional_effects_self(target_living)
 
 				// If the thing we're hitting is a Xeno
-				if(istype(target_living, /mob/living/carbon/xenomorph))
+				if(is_target_xeno)
 					var/mob/living/carbon/xenomorph/xeno = target_living
 					if(xeno.behavior_delegate)
 						xeno.behavior_delegate.on_hitby_projectile(ammo)
@@ -978,7 +984,7 @@
 /mob/dead/bullet_act(/obj/projectile/bullet)
 	return FALSE
 
-/mob/living/bullet_act(obj/projectile/bullet)
+/mob/living/bullet_act(obj/projectile/bullet, mob/living/original_intended_target)
 	if(!bullet)
 		return
 
@@ -988,7 +994,7 @@
 		apply_effects(arglist(bullet.ammo.debilitate))
 
 	. = TRUE
-	bullet_message(bullet, damaging = damage)
+	bullet_message(bullet, damage, original_intended_target)
 	if(damage)
 		apply_damage(damage, bullet.ammo.damage_type, bullet.def_zone, 0, 0, bullet, enviro=bullet.ammo.damage_enviro)
 		bullet.play_hit_effect(src)
@@ -996,7 +1002,7 @@
 	SEND_SIGNAL(bullet, COMSIG_BULLET_ACT_LIVING, src, damage, damage)
 
 
-/mob/living/carbon/human/bullet_act(obj/projectile/bullet)
+/mob/living/carbon/human/bullet_act(obj/projectile/bullet, mob/living/original_intended_target)
 	if(!bullet)
 		return
 
@@ -1070,7 +1076,7 @@
 		if(!isspeciesyautja(src) && !isspeciessynth(src))
 			apply_effects(arglist(bullet.ammo.debilitate))
 
-	bullet_message(bullet) //We still want this, regardless of whether or not the bullet did damage. For griefers and such.
+	bullet_message(bullet, TRUE, original_intended_target) //We still want this, regardless of whether or not the bullet did damage. For griefers and such.
 
 	if(SEND_SIGNAL(src, COMSIG_HUMAN_BULLET_ACT, damage_result, ammo_flags, bullet) & COMPONENT_CANCEL_BULLET_ACT)
 		return
@@ -1112,7 +1118,7 @@
 	SEND_SIGNAL(bullet, COMSIG_POST_BULLET_ACT_HUMAN, src, damage, damage_result)
 
 //Deal with xeno bullets.
-/mob/living/carbon/xenomorph/bullet_act(obj/projectile/bullet)
+/mob/living/carbon/xenomorph/bullet_act(obj/projectile/bullet, mob/living/original_intended_target)
 	if(!bullet || !istype(bullet))
 		return
 
@@ -1171,7 +1177,7 @@
 			damage = 0
 			bullet_ping(bullet)
 
-	bullet_message(bullet) //Message us about the bullet, since damage was inflicted.
+	bullet_message(bullet, TRUE, original_intended_target) //Message us about the bullet, since damage was inflicted.
 
 
 
@@ -1301,12 +1307,13 @@
 /// People getting shot by a large amount of bullets in a very short period of time can lag them out, with chat messages being one cause, so a 1s cooldown per hit message is introduced to assuage that
 /mob/var/shot_cooldown = 0
 
-/mob/proc/bullet_message(obj/projectile/bullet, damaging = TRUE)
+/mob/proc/bullet_message(obj/projectile/bullet, damaging = TRUE, original_intended_target = null)
 	if(!bullet)
 		return
+	var/intended_for = original_intended_target ? " intended for [original_intended_target]" : ""
 	if(damaging && COOLDOWN_FINISHED(src, shot_cooldown))
-		visible_message(SPAN_DANGER("[src] is hit by the [bullet.name] in the [parse_zone(bullet.def_zone)]!"),
-			SPAN_HIGHDANGER("[isxeno(src) ? "We" : "You"] are hit by the [bullet.name] in the [parse_zone(bullet.def_zone)]!"), null, 4, CHAT_TYPE_TAKING_HIT)
+		visible_message(SPAN_DANGER("[src] is hit by the [bullet.name][intended_for] in the [parse_zone(bullet.def_zone)]!"),
+			SPAN_HIGHDANGER("[isxeno(src) ? "We" : "You"] are hit by the [bullet.name][intended_for] in the [parse_zone(bullet.def_zone)]!"), null, 4, CHAT_TYPE_TAKING_HIT)
 		COOLDOWN_START(src, shot_cooldown, 1 SECONDS)
 
 	var/shot_from = bullet.shot_from ? " from \a [bullet.shot_from]" : ""
@@ -1317,7 +1324,7 @@
 		if(ishuman(firingMob) && ishuman(src) && faction == firingMob.faction && !A?.statistic_exempt) //One human shot another, be worried about it but do everything basically the same //special_role should be null or an empty string if done correctly
 			if(!istype(bullet.ammo, /datum/ammo/energy/taser))
 				GLOB.round_statistics.total_friendly_fire_instances++
-				var/ff_msg = "[key_name(firingMob)] shot [key_name(src)] with \a [bullet][shot_from] in [get_area(firingMob)] [ADMIN_JMP(firingMob)] [ADMIN_PM(firingMob)]"
+				var/ff_msg = "[key_name(firingMob)] shot [key_name(src)] with \a [bullet][shot_from][intended_for] in [get_area(firingMob)] [ADMIN_JMP(firingMob)] [ADMIN_PM(firingMob)]"
 				var/ff_living = TRUE
 				if(src.stat == DEAD)
 					ff_living = FALSE
@@ -1327,15 +1334,15 @@
 					var/mob/living/carbon/human/H = firingMob
 					H.track_friendly_fire(bullet.weapon_cause_data.cause_name)
 			else
-				msg_admin_attack("[key_name(firingMob)] tased [key_name(src)][shot_from] in [get_area(firingMob)] ([firingMob.x],[firingMob.y],[firingMob.z]).", firingMob.x, firingMob.y, firingMob.z)
+				msg_admin_attack("[key_name(firingMob)] tased [key_name(src)][shot_from][intended_for] in [get_area(firingMob)] ([firingMob.x],[firingMob.y],[firingMob.z]).", firingMob.x, firingMob.y, firingMob.z)
 		else
-			msg_admin_attack("[key_name(firingMob)] shot [key_name(src)] with \a [bullet][shot_from] in [get_area(firingMob)] ([firingMob.x],[firingMob.y],[firingMob.z]).", firingMob.x, firingMob.y, firingMob.z)
-		attack_log += "\[[time_stamp()]\] <b>[key_name(firingMob)]</b> shot <b>[key_name(src)]</b> with \a <b>[bullet]</b>[shot_from] in [get_area(firingMob)]."
-		firingMob.attack_log += "\[[time_stamp()]\] <b>[key_name(firingMob)]</b> shot <b>[key_name(src)]</b> with \a <b>[bullet]</b>[shot_from] in [get_area(firingMob)]."
+			msg_admin_attack("[key_name(firingMob)] shot [key_name(src)] with \a [bullet][shot_from][intended_for] in [get_area(firingMob)] ([firingMob.x],[firingMob.y],[firingMob.z]).", firingMob.x, firingMob.y, firingMob.z)
+		attack_log += "\[[time_stamp()]\] <b>[key_name(firingMob)]</b> shot <b>[key_name(src)]</b> with \a <b>[bullet]</b>[shot_from][intended_for] in [get_area(firingMob)]."
+		firingMob.attack_log += "\[[time_stamp()]\] <b>[key_name(firingMob)]</b> shot <b>[key_name(src)]</b> with \a <b>[bullet]</b>[shot_from][intended_for] in [get_area(firingMob)]."
 		return
 
-	attack_log += "\[[time_stamp()]\] <b>[bullet.firer ? bullet.firer : "SOMETHING??"]</b> shot <b>[key_name(src)]</b> with a <b>[bullet]</b>[shot_from]"
-	msg_admin_attack("[bullet.firer ? bullet.firer : "SOMETHING??"] shot [key_name(src)] with \a [bullet][shot_from] in [get_area(src)] ([loc.x],[loc.y],[loc.z]).", loc.x, loc.y, loc.z)
+	attack_log += "\[[time_stamp()]\] <b>[bullet.firer ? bullet.firer : "SOMETHING??"]</b> shot <b>[key_name(src)]</b> with a <b>[bullet]</b>[shot_from][intended_for]"
+	msg_admin_attack("[bullet.firer ? bullet.firer : "SOMETHING??"] shot [key_name(src)] with \a [bullet][shot_from][intended_for] in [get_area(src)] ([loc.x],[loc.y],[loc.z]).", loc.x, loc.y, loc.z)
 
 //Abby -- Just check if they're 1 tile horizontal or vertical, no diagonals
 /proc/get_adj_simple(atom/Loc1,atom/Loc2)

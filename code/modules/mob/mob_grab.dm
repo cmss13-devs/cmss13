@@ -64,12 +64,11 @@
 	if(!ismob(grabbed_thing) || world.time < (last_upgrade + grab_delay * user.get_skill_duration_multiplier(SKILL_CQC)))
 		return
 
-	if(!ishuman(user)) //only humans can reinforce a grab.
+	if(!ishuman(user)) //only humans can reinforce a grab in this proc
 		if(isxeno(user))
 			var/mob/living/carbon/xenomorph/xeno = user
-			xeno.pull_power(grabbed_thing)
+			xeno.pull_power(src)
 		return
-
 
 	var/mob/victim = grabbed_thing
 	var/max_grab_size = user.mob_size
@@ -108,16 +107,25 @@
 		return
 
 	user.grab_level = GRAB_AGGRESSIVE
-	playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
+	icon_state = "disarm/kill"
+	playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 	user.visible_message(SPAN_WARNING("[user] has grabbed [victim] aggressively!"), null, null, 5)
 
 /obj/item/grab/proc/progress_aggressive(mob/living/carbon/human/user, mob/living/victim)
 	user.grab_level = GRAB_CHOKE
+	icon_state = "disarm/kill1"
 	playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 	user.visible_message(SPAN_WARNING("[user] holds [victim] by the neck and starts choking them!"), null, null, 5)
 	msg_admin_attack("[key_name(user)] started to choke [key_name(victim)] at [get_area_name(victim)]", victim.loc.x, victim.loc.y, victim.loc.z)
 	victim.Move(user.loc, get_dir(victim.loc, user.loc))
 	victim.update_transform(TRUE)
+
+/obj/item/grab/proc/progress_defensive_xeno(mob/living/carbon/xenomorph/xeno_user, mob/living/victim)
+	last_upgrade = world.time
+	xeno_user.grab_level = GRAB_AGGRESSIVE
+	icon_state = "!reinforce"
+	playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
+	xeno_user.visible_message(SPAN_WARNING("[xeno_user] has grabbed [victim] defensively!"), null, null, 5)
 
 /obj/item/grab/attack(mob/living/dragged_mob, mob/living/user)
 	if(dragged_mob == grabbed_thing)
@@ -126,32 +134,28 @@
 		var/mob/living/carbon/xenomorph/xeno = user
 		var/mob/living/carbon/pulled = xeno.pulling
 		if(!istype(pulled))
-			return
+			return FALSE
 		if(isxeno(pulled) || issynth(pulled))
 			to_chat(xeno, SPAN_WARNING("That wouldn't serve a purpose."))
-			return 0
+			return FALSE
 		if(pulled.buckled)
 			to_chat(xeno, SPAN_WARNING("[pulled] is buckled to something."))
-			return 0
+			return FALSE
 		if(pulled.stat == DEAD && !pulled.chestburst)
 			to_chat(xeno, SPAN_WARNING("Ew, [pulled] is already starting to rot."))
-			return 0
+			return FALSE
 		if(xeno.hauled_mob?.resolve()) // We can't carry more than one mob
 			to_chat(xeno, SPAN_WARNING("You already are carrying something, there's no way that will work."))
-			return 0
+			return FALSE
 		if(HAS_TRAIT(pulled, TRAIT_HAULED))
 			to_chat(xeno, SPAN_WARNING("They are already being hauled by someone else."))
-			return 0
-			/* Saving this in case we want to allow hauling of dead bodies UNLESS their client is still online somewhere
-			if(pulled.client) //The client is still inside the body
-			else // The client is observing
-				for(var/mob/dead/observer/G in player_list)
-					if(ckey(G.mind.original.ckey) == pulled.ckey)
-						to_chat(src, "You start to haul [pulled] but realize \he is already dead.")
-						return */
+			return FALSE
 		if(user.action_busy)
 			to_chat(xeno, SPAN_WARNING("We are already busy with something."))
-			return
+			return FALSE
+		if(xeno.grab_level < GRAB_AGGRESSIVE)
+			progress_defensive_xeno(xeno, pulled)
+			return FALSE
 		SEND_SIGNAL(xeno, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
 		xeno.visible_message(SPAN_DANGER("[xeno] starts to restrain [pulled]!"),
 		SPAN_DANGER("We start restraining [pulled]!"), null, 5)
@@ -160,7 +164,7 @@
 		if(do_after(xeno, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			if((isxeno(pulled.loc) && !xeno.hauled_mob) || HAS_TRAIT(pulled, TRAIT_HAULED))
 				to_chat(xeno, SPAN_WARNING("Someone already took \the [pulled]."))
-				return 0
+				return FALSE
 			if(xeno.pulling == pulled && !pulled.buckled && (pulled.stat != DEAD || pulled.chestburst) && !xeno.hauled_mob?.resolve()) //make sure you've still got them in your claws, and alive
 				if(SEND_SIGNAL(pulled, COMSIG_MOB_HAULED, xeno) & COMPONENT_CANCEL_HAUL)
 					return FALSE

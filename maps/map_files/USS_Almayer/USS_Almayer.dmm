@@ -4906,6 +4906,12 @@
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/living/tankerbunks)
+"alZ" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = 25
+	},
+/turf/open/floor/almayer/silver,
+/area/almayer/command/cic)
 "ama" = (
 /obj/structure/stairs/perspective{
 	dir = 4
@@ -202303,7 +202309,7 @@ atN
 cEl
 bhd
 wVW
-awk
+alZ
 wlE
 aqN
 wlE

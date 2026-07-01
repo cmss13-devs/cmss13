@@ -21035,24 +21035,6 @@
 /obj/structure/prop/almayer/hangar_stencil,
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
-"bcq" = (
-/obj/structure/machinery/door/airlock/almayer/command/reinforced{
-	closeOtherId = "ciclobby_n";
-	name = "\improper Combat Information Center"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Final CIC Lockdown";
-	name = "\improper Internal Combat Information Center Blast Door"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/almayer/command/cic)
 "bcr" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
@@ -202303,7 +202285,7 @@ bMV
 wVW
 wVW
 azW
-bcq
+aCa
 bbo
 aCa
 bPs

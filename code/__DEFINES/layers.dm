@@ -132,8 +132,6 @@
 #define FACEHUGGER_LAYER 4.13
 /// For Signs above everything but below weather
 #define BILLBOARD_LAYER 4.13
-/// For WEATHER
-#define WEATHER_LAYER 4.14
 
 /// For objs atop a tank
 #define TANK_RIDER_OBJ_LAYER 4.505
@@ -146,6 +144,9 @@
 #define TANK_LYING_RIDER_LAYER 4.509
 #define TANK_RIDER_LAYER 4.51
 #define TANK_ABOVE_RIDER_LAYER 4.515
+
+/// For WEATHER
+#define WEATHER_LAYER 5
 
 //#define FLY_LAYER 5
 

@@ -6123,15 +6123,6 @@
 	},
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv1021/indoors/caves/cave_north)
-"aog" = (
-/obj/structure/prop/colorable_rock/colorable/alt{
-	color = "#9d796a";
-	dir = 4;
-	pixel_x = -4;
-	pixel_y = -10
-	},
-/turf/open/auto_turf/lv_sand_alt/layer0,
-/area/lv1021/indoors/caves/cave_north)
 "aoh" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d796a";
@@ -7308,6 +7299,23 @@
 	},
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv1021/indoors/caves/cave_north)
+"arp" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = -20;
+	pixel_y = 19;
+	dir = 10
+	},
+/turf/closed/wall/strata_ice/rock,
+/area/lv1021/oob)
+"arq" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_y = 2;
+	pixel_x = 6
+	},
+/turf/closed/wall/strata_ice/rock,
+/area/lv1021/oob)
 "arr" = (
 /obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -7328,6 +7336,14 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_clf_e)
+"aru" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 8;
+	pixel_y = 3
+	},
+/turf/closed/wall/strata_ice/rock,
+/area/lv1021/oob)
 "arv" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
 	dir = 8
@@ -20145,9 +20161,6 @@
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_e)
 "aWR" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 1
-	},
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
 	dir = 8;
@@ -21426,45 +21439,6 @@
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud,
 /area/lv1021/indoors/clf_camp/ancil_e)
-"aZZ" = (
-/obj/effect/decal/lv_decals/cave_mud_corner{
-	dir = 8
-	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#9d7766";
-	pixel_x = -20;
-	pixel_y = 19;
-	dir = 10
-	},
-/turf/open/auto_turf/lv_sand_alt/layer0,
-/area/lv1021/indoors/caves/cave_south)
-"baa" = (
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#9d7766";
-	pixel_x = -20;
-	pixel_y = 19;
-	dir = 10
-	},
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#9d7766";
-	pixel_x = -2;
-	pixel_y = 9
-	},
-/turf/open/auto_turf/lv_sand_alt/layer0,
-/area/lv1021/indoors/caves/cave_south)
-"bab" = (
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#9d7766";
-	pixel_x = 7
-	},
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#9d7766";
-	dir = 8;
-	pixel_y = 3
-	},
-/turf/open/auto_turf/lv_sand_alt/layer0,
-/area/lv1021/indoors/caves/cave_south)
 "bac" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
 	dir = 8
@@ -21804,35 +21778,6 @@
 	},
 /turf/open/floor/interior/wood_sat,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
-"baS" = (
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#967969";
-	dir = 8
-	},
-/turf/open/auto_turf/lv_sand_alt/layer0,
-/area/lv1021/indoors/caves/cave_north)
-"baT" = (
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#9d796a";
-	dir = 9;
-	pixel_x = -5;
-	pixel_y = 6
-	},
-/turf/open/auto_turf/lv_sand_alt/layer0,
-/area/lv1021/indoors/caves/cave_north)
-"baU" = (
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#9d796a";
-	dir = 9;
-	pixel_x = -5;
-	pixel_y = 6
-	},
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#967969";
-	dir = 8
-	},
-/turf/open/auto_turf/lv_sand_alt/layer0,
-/area/lv1021/indoors/caves/cave_north)
 "baV" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
 	dir = 8
@@ -21846,8 +21791,8 @@
 	dir = 8;
 	pixel_x = -23
 	},
-/turf/open/auto_turf/lv_sand_alt/layer0,
-/area/lv1021/indoors/caves/cave_north)
+/turf/closed/wall/strata_ice/rock,
+/area/lv1021/oob)
 "baW" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -21885,28 +21830,6 @@
 	color = "#9d7766";
 	dir = 4;
 	pixel_y = 1
-	},
-/turf/open/auto_turf/lv_sand_alt/layer0,
-/area/lv1021/indoors/caves/cave_north)
-"bba" = (
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#9d7766";
-	pixel_x = -2;
-	pixel_y = 9
-	},
-/turf/open/auto_turf/lv_sand_alt/layer0,
-/area/lv1021/indoors/caves/cave_north)
-"bbb" = (
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#9d7766";
-	dir = 4;
-	pixel_y = 1
-	},
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#9d796a";
-	dir = 9;
-	pixel_x = 4;
-	pixel_y = -13
 	},
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv1021/indoors/caves/cave_north)
@@ -24749,17 +24672,6 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_clf_e)
-"bgH" = (
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#9d7766";
-	pixel_y = 2;
-	pixel_x = 6
-	},
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 9
-	},
-/turf/open/auto_turf/lv_sand_alt/layer0,
-/area/lv1021/indoors/caves/cave_south)
 "bgI" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -1;
@@ -24925,14 +24837,10 @@
 "bgZ" = (
 /obj/structure/flora/jungle/vines/light_1,
 /obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 5
+	dir = 4
 	},
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv1021/outdoors/jungle/jungleC_e)
-"bha" = (
-/obj/structure/flora/grass/tallgrass/jungle,
-/turf/open/auto_turf/lv_sand_alt/layer0,
-/area/lv1021/indoors/caves/cave_south)
 "bhb" = (
 /obj/structure/flora/jungle/vines/light_1,
 /obj/structure/flora/grass/tallgrass/jungle,
@@ -76522,8 +76430,8 @@ aGj
 aCB
 aWS
 aWR
-abB
-abB
+wzQ
+wzQ
 wzQ
 wzQ
 wzQ
@@ -76687,11 +76595,11 @@ wzQ
 acE
 acE
 acE
-bha
-bgH
-abB
-bay
-abB
+wzQ
+arq
+wzQ
+arp
+wzQ
 wzQ
 wzQ
 wzQ
@@ -76836,7 +76744,7 @@ spz
 aYm
 aYm
 asf
-aob
+wzQ
 wzQ
 wzQ
 wzQ
@@ -76855,10 +76763,10 @@ wzQ
 wzQ
 wzQ
 wzQ
-abB
-aZR
-aUG
-bay
+wzQ
+aru
+arq
+arp
 wzQ
 wzQ
 wzQ
@@ -76986,7 +76894,7 @@ wzQ
 wzQ
 wzQ
 wzQ
-aog
+wzQ
 aYL
 spz
 aYI
@@ -77003,8 +76911,8 @@ spz
 aYm
 spz
 arh
-aob
-aob
+wzQ
+wzQ
 wzQ
 wzQ
 wzQ
@@ -77024,8 +76932,8 @@ wzQ
 wzQ
 wzQ
 wzQ
-abB
-abB
+wzQ
+wzQ
 wzQ
 wzQ
 wzQ
@@ -77151,9 +77059,9 @@ aYo
 hXq
 wzQ
 wzQ
-baZ
-aob
-aoh
+wzQ
+wzQ
+wzQ
 aYM
 asI
 spz
@@ -77169,9 +77077,9 @@ aYq
 spz
 spz
 asf
-aob
-baE
-baS
+wzQ
+wzQ
+wzQ
 wzQ
 wzQ
 wzQ
@@ -77316,10 +77224,10 @@ aYI
 aYQ
 aYo
 hXq
-baK
 wzQ
-bbb
-bba
+wzQ
+wzQ
+wzQ
 wzQ
 wzQ
 auL
@@ -77336,9 +77244,9 @@ aYr
 aYn
 hXq
 wzQ
-aob
-baO
-baT
+wzQ
+wzQ
+wzQ
 wzQ
 wzQ
 wzQ
@@ -77483,10 +77391,10 @@ spz
 spz
 arh
 hXq
-aob
-aob
-aob
-aob
+wzQ
+wzQ
+wzQ
+wzQ
 wzQ
 wzQ
 wzQ
@@ -77503,9 +77411,9 @@ aYo
 aYo
 hXq
 wzQ
-baT
-baS
-aob
+wzQ
+wzQ
+wzQ
 wzQ
 wzQ
 wzQ
@@ -77651,9 +77559,9 @@ aYm
 arh
 aYO
 aob
-bbd
-aob
-aob
+wzQ
+wzQ
+wzQ
 wzQ
 wzQ
 wzQ
@@ -77670,9 +77578,9 @@ hXq
 hXq
 hXq
 wzQ
-aob
-baU
-aob
+wzQ
+wzQ
+wzQ
 wzQ
 wzQ
 wzQ
@@ -78539,7 +78447,7 @@ pPm
 pPm
 gDN
 wzQ
-abB
+wzQ
 aok
 wzQ
 wzQ
@@ -78706,10 +78614,10 @@ adc
 aoG
 wzQ
 wzQ
-aTW
-abB
-abB
-aTW
+wzQ
+wzQ
+wzQ
+wzQ
 wzQ
 wzQ
 wzQ
@@ -78873,9 +78781,9 @@ aXs
 aXl
 wzQ
 wzQ
-abB
-bab
-baa
+wzQ
+wzQ
+wzQ
 wzQ
 wzQ
 wzQ
@@ -79042,8 +78950,8 @@ wzQ
 wzQ
 wzQ
 wzQ
-abB
-abB
+wzQ
+wzQ
 wzQ
 wzQ
 wzQ
@@ -79208,9 +79116,9 @@ wzQ
 wzQ
 wzQ
 wzQ
-abB
-aTW
-aZR
+wzQ
+wzQ
+wzQ
 wzQ
 wzQ
 wzQ
@@ -79377,7 +79285,7 @@ wzQ
 wzQ
 wzQ
 aoj
-aZZ
+aHO
 abB
 wzQ
 abB

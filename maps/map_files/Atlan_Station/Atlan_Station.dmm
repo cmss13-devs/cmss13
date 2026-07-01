@@ -64,6 +64,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/medical)
+"aan" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "alternatedorms"
+	},
+/turf/open/floor/strata,
+/area/atlan/station/single_dorms)
 "aao" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/cyan1/east,
@@ -121,6 +127,9 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/cyan1/east,
 /area/atlan/station/medical)
+"aaz" = (
+/turf/open/floor/strata/blue1,
+/area/atlan/asteroid/processing_train_control)
 "aaA" = (
 /obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/strata,
@@ -145,7 +154,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
 	},
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/blue1,
 /area/atlan/asteroid/processing_train_control)
 "aaF" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
@@ -737,6 +746,16 @@
 /obj/effect/sentry_landmark/lz_1/top_right,
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/atlan/lz/near_lz1)
+"acH" = (
+/obj/structure/platform/metal/strata/east,
+/turf/open/floor/strata/floor3/east,
+/area/atlan/station/admin)
+"acI" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "morgue"
+	},
+/turf/open/floor/strata/cyan1,
+/area/atlan/station/medical)
 "acM" = (
 /obj/structure/terminal{
 	dir = 4
@@ -2657,7 +2676,7 @@
 /area/atlan/station/hab_docks)
 "bxd" = (
 /obj/structure/machinery/light/double/blue,
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/blue1,
 /area/atlan/asteroid/processing_train_control)
 "bxk" = (
 /obj/structure/machinery/door/airlock/prison_hatch/autoname,
@@ -2870,7 +2889,7 @@
 	pixel_y = 6;
 	pixel_x = -3
 	},
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/blue1,
 /area/atlan/asteroid/processing_train_control)
 "bGK" = (
 /obj/structure/cargo_container/upp/mid,
@@ -5131,7 +5150,7 @@
 	color = "#98a3ab"
 	},
 /obj/item/device/radio,
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/blue1,
 /area/atlan/asteroid/processing_train_control)
 "djG" = (
 /obj/structure/shuttle/part/dropship_upp2/transparent/left_outer_inner_wing{
@@ -6667,7 +6686,7 @@
 	dir = 8
 	},
 /obj/effect/landmark/objective_landmark/far,
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/blue1,
 /area/atlan/asteroid/processing_train_control)
 "eii" = (
 /obj/structure/machinery/disposal,
@@ -7418,7 +7437,7 @@
 /obj/structure/machinery/light/double/blue{
 	dir = 8
 	},
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/blue1,
 /area/atlan/asteroid/processing_train_control)
 "eMD" = (
 /obj/structure/machinery/light/double/blue,
@@ -7825,6 +7844,7 @@
 /obj/effect/decal/cleanable/blood/gibs,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/sheet/wood,
+/obj/effect/spawner/gibspawner/human,
 /turf/open/floor/strata/green4,
 /area/atlan/station/double_dorms)
 "eYA" = (
@@ -9558,7 +9578,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/objective_landmark/far,
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/blue1,
 /area/atlan/asteroid/processing_train_control)
 "giW" = (
 /turf/open/floor/strata/floor2,
@@ -13036,7 +13056,7 @@
 	pixel_x = -6;
 	pixel_y = 9
 	},
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/blue1,
 /area/atlan/asteroid/processing_train_control)
 "iBi" = (
 /obj/structure/bed/hybrisa/hospital/hospitaldivider,
@@ -13681,7 +13701,7 @@
 	dir = 4;
 	pixel_y = 2
 	},
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/blue1,
 /area/atlan/asteroid/processing_train_control)
 "iSF" = (
 /obj/structure/flora/pottedplant{
@@ -16262,6 +16282,7 @@
 	pixel_x = -5
 	},
 /obj/effect/decal/cleanable/blood/gibs/limb,
+/obj/effect/spawner/gibspawner/human,
 /turf/open/floor/plating,
 /area/atlan/station/double_dorms)
 "kBG" = (
@@ -16582,7 +16603,7 @@
 /area/atlan/station/medical)
 "kLW" = (
 /obj/structure/machinery/power/apc/no_power/west,
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/blue1,
 /area/atlan/asteroid/processing_train_control)
 "kMb" = (
 /obj/effect/decal/warning_stripes{
@@ -20922,7 +20943,7 @@
 /obj/structure/sign/banners/upp_flag{
 	pixel_y = 31
 	},
-/turf/open/floor/strata/floor3/east,
+/turf/open/floor/strata/blue1,
 /area/atlan/asteroid/processing_train_control)
 "nND" = (
 /obj/structure/barricade/handrail/strata{
@@ -21651,7 +21672,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
 	},
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/blue1,
 /area/atlan/asteroid/processing_train_control)
 "olC" = (
 /obj/structure/machinery/light{
@@ -24817,7 +24838,7 @@
 	pixel_x = -10;
 	pixel_y = -3
 	},
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/floor3/east,
 /area/atlan/station/medical_maint)
 "qmU" = (
 /turf/open/floor/strata/floor3/east,
@@ -24864,7 +24885,7 @@
 	pixel_y = 7
 	},
 /obj/effect/landmark/objective_landmark/far,
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/blue1,
 /area/atlan/asteroid/processing_train_control)
 "qnO" = (
 /obj/effect/decal/cleanable/dirt,
@@ -27811,7 +27832,7 @@
 /area/atlan/asteroid/sensors)
 "sna" = (
 /obj/structure/closet/secure_closet/engineering_personal,
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/blue1,
 /area/atlan/asteroid/processing_train_control)
 "snb" = (
 /obj/structure/monorail{
@@ -28165,7 +28186,7 @@
 /obj/structure/machinery/light/double/blue{
 	dir = 4
 	},
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/blue1,
 /area/atlan/asteroid/processing_train_control)
 "syC" = (
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble11,
@@ -28736,12 +28757,6 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/asteroid/processing_se_train)
-"sWi" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
-	},
-/turf/open/floor/strata/floor3/east,
-/area/atlan/asteroid/processing_train_control)
 "sWq" = (
 /obj/structure/surface/table,
 /obj/item/paper_bin{
@@ -29348,10 +29363,10 @@
 "toa" = (
 /obj/structure/bed/chair{
 	pixel_y = 5;
-	layer = 4;
 	pixel_x = -1
 	},
 /obj/effect/decal/cleanable/blood/oil,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison/darkyellowfull2,
 /area/atlan/station/atmospherics)
 "tok" = (
@@ -30118,7 +30133,7 @@
 	dir = 8;
 	network = list("sigma")
 	},
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/blue1,
 /area/atlan/asteroid/processing_train_control)
 "tMf" = (
 /obj/structure/machinery/door/poddoor/railing,
@@ -33994,7 +34009,7 @@
 	color = "#98a3ab"
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/blue1,
 /area/atlan/asteroid/processing_train_control)
 "wJb" = (
 /obj/structure/bed/chair/comfy{
@@ -46781,8 +46796,8 @@ qfT
 mSQ
 idv
 mSQ
-mSQ
 qmU
+mSQ
 cIn
 aAk
 shT
@@ -46985,7 +47000,7 @@ nCG
 nCG
 mSQ
 mSQ
-qmU
+mSQ
 qfT
 eoJ
 eoJ
@@ -47188,7 +47203,7 @@ eqj
 iqK
 mSQ
 mSQ
-mSQ
+qmU
 wbQ
 eoJ
 iQS
@@ -47390,7 +47405,7 @@ mSQ
 yeD
 iqK
 mSQ
-qmU
+mSQ
 mSQ
 qmU
 eoJ
@@ -47796,7 +47811,7 @@ eoJ
 hSi
 eoJ
 eoJ
-mSQ
+qmU
 mSQ
 mSQ
 mxv
@@ -52105,7 +52120,7 @@ via
 via
 dLF
 via
-via
+aan
 via
 via
 dMD
@@ -53060,7 +53075,7 @@ eoJ
 gEu
 cQC
 bnz
-bnz
+acI
 jwC
 kPy
 vkt
@@ -56328,7 +56343,7 @@ fLd
 kLl
 lnR
 lnR
-rnM
+lnR
 lnR
 rnM
 lnR
@@ -56531,7 +56546,7 @@ pAB
 pAB
 pAB
 pAB
-pAB
+acH
 pAB
 pAB
 pAB
@@ -62017,7 +62032,7 @@ mkk
 ybM
 ccR
 ehY
-sWi
+aaE
 iSv
 wIW
 eMx
@@ -62228,7 +62243,7 @@ thS
 opy
 lRP
 whs
-opy
+aaz
 ijI
 kTK
 ktO
@@ -62634,7 +62649,7 @@ opy
 whs
 opy
 gkY
-opy
+aaz
 aAk
 kSN
 vWe
@@ -62833,7 +62848,7 @@ qnF
 giR
 opy
 opy
-opy
+aaz
 syt
 opy
 opy

@@ -11863,9 +11863,6 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/lower/vehiclehangar)
-"aFa" = (
-/turf/closed/wall/almayer/reinforced/temphull,
-/area/almayer/command/cic)
 "aFb" = (
 /obj/structure/sign/prop2{
 	pixel_y = 30;
@@ -201592,10 +201589,10 @@ mJu
 asc
 aVw
 alX
-aFa
 aHK
 aHK
-aFa
+aHK
+aHK
 aKn
 axn
 axn
@@ -201695,10 +201692,10 @@ xMB
 asc
 snI
 aUP
-aFa
+aHK
 aIf
 azM
-aFa
+aHK
 azj
 ayS
 ayF
@@ -201798,10 +201795,10 @@ bbo
 asc
 ays
 aUQ
-aFa
+aHK
 cvZ
 asN
-aFa
+aHK
 aTj
 aCw
 ayO
@@ -201901,10 +201898,10 @@ wlE
 aVH
 aVy
 wVW
-aFa
+aHK
 mPn
 xMA
-aFa
+aHK
 aKo
 aCF
 ayP
@@ -202003,12 +202000,12 @@ bcq
 aCa
 aVU
 wVW
-aFa
-aFa
+wVW
+aHK
 vSl
 xMA
-aFa
-aFa
+aHK
+wVW
 aEp
 ayW
 aKz

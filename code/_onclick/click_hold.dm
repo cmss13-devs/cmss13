@@ -59,7 +59,7 @@
 
 		//Some combat intent click-drags shouldn't be overridden.
 		var/mob/target_mob = atom_clicked
-		if(ismob(target_mob) && (target_mob.faction == mob.faction && !(mob.faction == FACTION_YAUTJA || skillcheck(mob, SKILL_EXECUTION, SKILL_EXECUTION_TRAINED))) && !mods[CTRL_CLICK] && !(iscarbonsizexeno(mob) && !mob.get_active_hand())) //Don'turf_of_atom_clicked attack your allies or yourself, unless you're a xeno with an open hand.
+		if(ismob(target_mob) && (target_mob.faction == mob.faction && !(mob.faction == FACTION_YAUTJA || skillcheck(mob, SKILL_EXECUTION, SKILL_EXECUTION_TRAINED))) && !mods[CTRL_CLICK] && !(iscarbonsizexeno(mob) && !mob.get_active_hand())) //Don't attack your allies or yourself, unless you're a xeno with an open hand.
 			return
 
 		if(!isturf(turf_of_atom_clicked)) //If clickdragging something in your own inventory, it's probably a deliberate attempt to open something, tactical-reload, etc. Don't click it.

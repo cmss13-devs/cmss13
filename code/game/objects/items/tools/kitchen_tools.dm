@@ -130,7 +130,6 @@
 	if(.)
 		playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1, 5)
 
-// Plastic utensils have been repathed to subtypes of their respective dinnerwares
 /obj/item/tool/kitchen/utensil/knife/plastic
 	name = "plastic knife"
 	desc = "The bluntest of blades."
@@ -141,7 +140,7 @@
 	)
 	item_state = "pknife"
 	sharp = IS_SHARP_ITEM_SIMPLE
-	edge = 0
+	edge = FALSE
 
 /*
  * Kitchen knives

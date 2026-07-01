@@ -1,0 +1,4 @@
+author: "Drathek MistChristmas"
+delete-after: True
+changes:
+  - bugfix: "Fixed a runtime with set_gun_user causing a bad index"

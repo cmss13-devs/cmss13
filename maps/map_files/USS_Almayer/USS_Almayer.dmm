@@ -6666,10 +6666,10 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/repair_bay)
 "aqF" = (
-/obj/structure/sign/safety/bridge{
-	pixel_x = -17
-	},
 /obj/structure/machinery/vending/security,
+/obj/structure/sign/safety/bridge{
+	pixel_x = -21
+	},
 /turf/open/floor/almayer/red/west,
 /area/almayer/command/cic)
 "aqG" = (
@@ -10732,7 +10732,7 @@
 	pixel_x = 10
 	},
 /obj/structure/sign/safety/bridge{
-	pixel_x = -17
+	pixel_x = -21
 	},
 /obj/structure/machinery/vending/snack{
 	pixel_x = -11
@@ -11891,10 +11891,7 @@
 	id = "bot_armory";
 	emp_proof = 1
 	},
-/obj/structure/machinery/cm_vending/gear/staff_officer_armory{
-	density = 0;
-	pixel_y = -18
-	},
+/obj/structure/machinery/cm_vending/gear/staff_officer_armory,
 /turf/open/floor/almayer/red2/north,
 /area/almayer/command/cic)
 "aFb" = (
@@ -12518,10 +12515,7 @@
 	id = "bot_armory";
 	emp_proof = 1
 	},
-/obj/structure/closet/secure_closet/securecom{
-	density = 0;
-	pixel_y = -18
-	},
+/obj/structure/closet/secure_closet/securecom,
 /turf/open/floor/almayer/red2/north,
 /area/almayer/command/cic)
 "aGR" = (
@@ -13472,10 +13466,7 @@
 	id = "bot_armory";
 	emp_proof = 1
 	},
-/obj/structure/closet/toolcloset{
-	density = 0;
-	pixel_y = -22
-	},
+/obj/structure/closet/toolcloset,
 /turf/open/floor/almayer/red2/north,
 /area/almayer/command/cic)
 "aJE" = (
@@ -43879,11 +43870,8 @@
 	id = "bot_armory";
 	emp_proof = 1
 	},
-/obj/structure/machinery/cm_vending/sorted/medical/marinemed{
-	density = 0;
-	pixel_y = -18
-	},
 /obj/structure/medical_supply_link,
+/obj/structure/machinery/cm_vending/sorted/medical/marinemed,
 /turf/open/floor/almayer/red2/north,
 /area/almayer/command/cic)
 "cch" = (
@@ -50526,7 +50514,7 @@
 	pixel_x = 2;
 	pixel_y = 1
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/almayer,
 /area/almayer/command/cichallway)
 "dDj" = (
 /obj/structure/cargo_container/hybrisa/containersextended/greenright,
@@ -59385,9 +59373,6 @@
 	pixel_y = 4
 	},
 /obj/structure/pipes/standard/manifold/fourway/hidden/supply,
-/obj/item/storage/box/handcuffs{
-	pixel_y = -6
-	},
 /turf/open/floor/almayer,
 /area/almayer/command/cic)
 "hvx" = (
@@ -69990,7 +69975,7 @@
 	icon_state = "E";
 	pixel_x = 2
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/almayer,
 /area/almayer/command/cichallway)
 "miV" = (
 /obj/structure/machinery/light{

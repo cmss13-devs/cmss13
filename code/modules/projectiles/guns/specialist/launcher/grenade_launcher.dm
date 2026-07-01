@@ -25,7 +25,7 @@
 	internal_max_w_class = SIZE_MEDIUM //MEDIUM = M15.
 
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
-	wield_delay = WIELD_DELAY_SLOW
+	wield_delay = WEAPON_DELAY_SLOW
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 	///Can you access the storage by clicking it, put things into it, or take things out? Meant for break-actions mostly but useful for any state where you want access to be toggleable. Make sure to call cylinder.close(user) so they don't still have the screen open!
 	var/open_chamber = TRUE

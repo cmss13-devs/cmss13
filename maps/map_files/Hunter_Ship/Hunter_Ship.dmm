@@ -11350,13 +11350,13 @@
 	pixel_x = 7;
 	density = 0
 	},
-/obj/structure/machinery/juicer/yautja{
-	pixel_x = -9;
-	pixel_y = 16
-	},
 /obj/structure/window/reinforced/toughened{
 	dir = 4;
 	color = "#912727"
+	},
+/obj/structure/machinery/reagentgrinder/yautja{
+	pixel_x = -9;
+	pixel_y = 16
 	},
 /turf/open/predship/tile/red4/glow,
 /area/yautja_ship/middle_deck/research)

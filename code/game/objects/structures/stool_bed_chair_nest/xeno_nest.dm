@@ -58,7 +58,6 @@
 		pixel_y = buckling_y["[dir]"]
 		pixel_x = buckling_x["[dir]"]
 		if(dir == SOUTH)
-			buckled_mob.plane = TURF_PLANE
 			buckled_mob.layer = ABOVE_TURF_LAYER
 			if(ishuman(current_mob))
 				var/mob/living/carbon/human/current_human = current_mob
@@ -72,7 +71,6 @@
 	REMOVE_TRAIT(current_mob, TRAIT_UNDENSE, XENO_NEST_TRAIT)
 	if(dir == SOUTH)
 		current_mob.layer = initial(current_mob.layer)
-		current_mob.plane = initial(current_mob.plane)
 		if(!ishuman(current_mob))
 			var/mob/living/carbon/human/current_human = current_mob
 			for(var/obj/limb/current_mobs_limb in current_human.limbs)

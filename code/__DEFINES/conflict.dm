@@ -50,6 +50,8 @@
 #define PROJECTILE_SHRAPNEL  (1<<0)
 /// Apply additional effects upon hitting clicked target
 #define PROJECTILE_BULLSEYE  (1<<1)
+/// Reflected projectiles
+#define PROJECTILE_REFLECTED (1<<2)
 
 ///Bonus Projectile Check Defines
 #define PROJECTILE_LONE 0
@@ -140,15 +142,14 @@
 #define SLOWDOWN_ADS_MINISCOPE_DYNAMIC 1.8
 #define SLOWDOWN_ADS_SUPERWEAPON 2.75
 
-//Wield delays, in milliseconds. 10 is 1 second
-#define WIELD_DELAY_NONE 0
-#define WIELD_DELAY_MIN 1
-#define WIELD_DELAY_VERY_FAST 2
-#define WIELD_DELAY_FAST 4
-#define WIELD_DELAY_NORMAL 6
-#define WIELD_DELAY_SLOW 8
-#define WIELD_DELAY_VERY_SLOW 10
-#define WIELD_DELAY_HORRIBLE 12
+#define WEAPON_DELAY_NONE 0
+#define WEAPON_DELAY_MIN 1
+#define WEAPON_DELAY_VERY_FAST 2
+#define WEAPON_DELAY_FAST 4
+#define WEAPON_DELAY_NORMAL 6
+#define WEAPON_DELAY_SLOW 8
+#define WEAPON_DELAY_VERY_SLOW 10
+#define WEAPON_DELAY_HORRIBLE 12
 
 ///This is how long you must wait to throw again after throwing two things
 #define THROW_DELAY (1.5 SECONDS)

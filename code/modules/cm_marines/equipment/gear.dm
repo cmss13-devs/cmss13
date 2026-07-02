@@ -369,7 +369,7 @@
 
 /obj/item/device/overwatch_camera/tripod/Initialize(mapload, ...)
 	. = ..()
-	label = "FCT"
+	label = "FTC - Field Tripod Camera"
 	camera = new /obj/structure/machinery/camera/overwatch(src)
 	AddComponent(/datum/component/overwatch_console_control)
 
@@ -390,7 +390,7 @@
 		if("Cancel")
 			return
 		if("Rename")
-			var/new_name = tgui_input_text(user, "Enter a new name for the camera:", "Rename Camera", label ? label : "FCT", MAX_NAME_LEN, ui_state=GLOB.not_incapacitated_state, encode=FALSE)
+			var/new_name = tgui_input_text(user, "Enter a new name for the camera:", "Rename Camera", label ? label : "FTC - Field Tripod Camera", MAX_NAME_LEN, ui_state=GLOB.not_incapacitated_state, encode=FALSE)
 			if(!new_name)
 				return
 			if(user.get_active_hand() != src)
@@ -401,11 +401,11 @@
 				return
 			new_name = trim_right(replace_non_alphanumeric_plus(new_name))
 			if(!length(new_name))
-				label = "FCT"
-				name = "FCT"
+				label = "FTC - Field Tripod Camera"
+				name = "FTC - Field Tripod Camera"
 				if(camera)
-					camera.c_tag = "FCT"
-				to_chat(user, SPAN_NOTICE("Invalid name – defaulting to 'FCT'."))
+					camera.c_tag = "FTC - Field Tripod Camera"
+				to_chat(user, SPAN_NOTICE("Invalid name – defaulting to 'FTC - Field Tripod Camera'."))
 				return
 			label = new_name
 			name = label
@@ -470,7 +470,7 @@
 		var/mob/living/carbon/human/human_user = user
 		user_squad = human_user.assigned_squad
 
-	var/base_label = label ? label : "FCT"
+	var/base_label = label ? label : "FTC - Field Tripod Camera"
 
 	var/obj/structure/overwatch_camera_tripod/deployed_structure = new(deploy_turf) // transform to new struc
 	deployed_structure.base_label = base_label
@@ -502,8 +502,8 @@
 	anchored = TRUE
 	layer = OBJ_LAYER
 	desc_lore = "Following modernisation efforts in the Marine'70 program, USCM Platoons were shrunk and squads re-organised to emphasise individual firepower and mobility. The Motoca-430-T, the precursor to the Motoca-500 Helmet Camera, was commissioned by the Department of Defense to be utilised by Colonial Marine squads in establishing secure perimeters and watching rear areas remotely through the Overwatch system."
-	var/label = "Tripod Camera"
-	var/base_label = "FCT"
+	var/label = "FTC - Field Tripod Camera"
+	var/base_label = "FTC"
 	var/obj/structure/machinery/camera/camera
 	var/datum/squad/squad
 	var/slash_count = 0 // tracks xeno slashes 4 breaking
@@ -512,7 +512,7 @@
 /obj/structure/overwatch_camera_tripod/Initialize(mapload)
 	. = ..()
 	icon_state = "north-south" // this probably shouldn't be placed roundstart in maps but :shrug:
-	base_label = "FCT"
+	base_label = "FTC - Field Tripod Camera"
 	update_full_label()
 	camera = new /obj/structure/machinery/camera/overwatch(src)
 	camera.c_tag = label
@@ -564,9 +564,9 @@
 				return
 			new_name = trim_right(replace_non_alphanumeric_plus(new_name))
 			if(!length(new_name))
-				base_label = "FCT"
+				base_label = "FTC - Field Tripod Camera"
 				update_full_label()
-				to_chat(user, SPAN_NOTICE("Invalid name – defaulting to 'FCT'."))
+				to_chat(user, SPAN_NOTICE("Invalid name – defaulting to 'FTC - Field Tripod Camera'."))
 				return
 			base_label = new_name
 			update_full_label()

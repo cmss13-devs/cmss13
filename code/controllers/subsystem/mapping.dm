@@ -17,13 +17,13 @@ SUBSYSTEM_DEF(mapping)
 	/// Uses num keys, NOT stringified num keys. Do areas_in_z[2] not areas_in_2["[2]"].
 	var/alist/areas_in_z = alist()
 
-	var/list/turf/unused_turfs = list() //Not actually unused turfs they're unused but reserved for use for whatever requests them. "[zlevel_of_turf]" = list(turfs)
+	var/alist/unused_turfs = alist() //Not actually unused turfs they're unused but reserved for use for whatever requests them. zlevel_of_turf = list(turfs)
 	var/list/datum/turf_reservations //list of turf reservations
 	var/list/used_turfs = list() //list of turf = datum/turf_reservation
-	/// List of lists of turfs to reserve
-	var/list/lists_to_reserve = list()
+	/// List of lists of turfs to release so they can be reserved again
+	var/list/lists_to_release = list()
 
-	var/list/reservation_ready = list()
+	var/alist/reservation_ready = alist()
 	var/clearing_reserved_turfs = FALSE
 
 	// Z-manager stuff
@@ -79,28 +79,31 @@ SUBSYSTEM_DEF(mapping)
 
 	return SS_INIT_SUCCESS
 
-/datum/controller/subsystem/mapping/fire(resumed)
+/datum/controller/subsystem/mapping/proc/canonize_reserved_turfs(do_mc_check)
 	// Cache for sonic speed
-	var/list/unused_turfs = src.unused_turfs
+	var/alist/unused_turfs = src.unused_turfs
 	// CM TODO: figure out if these 2 are needed. Might be required by updated versions of map reader
 	var/area/world_area = GLOB.areas_by_type[world.area]
 	var/list/world_contents = world_area.contents
 	var/list/world_turf_contents_by_z = world_area.turfs_by_zlevel
-	var/list/lists_to_reserve = src.lists_to_reserve
+	var/list/lists_to_release = src.lists_to_release
 	var/index = 0
-	while(index < length(lists_to_reserve))
-		var/list/packet = lists_to_reserve[index + 1]
+	while(index < length(lists_to_release))
+		var/list/packet = lists_to_release[index + 1]
 		var/packetlen = length(packet)
 		while(packetlen)
-			if(MC_TICK_CHECK)
-				if(index)
-					lists_to_reserve.Cut(1, index)
-				return
+			if(do_mc_check)
+				if(MC_TICK_CHECK)
+					if(index)
+						lists_to_release.Cut(1, index)
+					return
+			else
+				CHECK_TICK
 			var/turf/reserving_turf = packet[packetlen]
 			var/area/old_area = reserving_turf.loc
 			reserving_turf.empty(RESERVED_TURF_TYPE, RESERVED_TURF_TYPE, null, TRUE)
-			LAZYINITLIST(unused_turfs["[reserving_turf.z]"])
-			unused_turfs["[reserving_turf.z]"] |= reserving_turf
+			LAZYINITLIST(unused_turfs[reserving_turf.z])
+			unused_turfs[reserving_turf.z] |= reserving_turf
 			reserving_turf.turf_flags |= UNUSED_RESERVATION_TURF
 			if(old_area != world_area)
 				LISTASSERTLEN(old_area.turfs_to_uncontain_by_zlevel, reserving_turf.z, list())
@@ -113,7 +116,10 @@ SUBSYSTEM_DEF(mapping)
 			packetlen = length(packet)
 
 		index++
-	lists_to_reserve.Cut(1, index)
+	lists_to_release.Cut(1, index)
+
+/datum/controller/subsystem/mapping/fire(resumed)
+	canonize_reserved_turfs(do_mc_check = TRUE)
 
 /datum/controller/subsystem/mapping/proc/wipe_reservations(wipe_safety_delay = 100)
 	if(clearing_reserved_turfs || !initialized) //in either case this is just not needed.
@@ -362,19 +368,34 @@ SUBSYSTEM_DEF(mapping)
 	reservation_type = /datum/turf_reservation,
 	turf_type_override = null,
 )
-	UNTIL((!z_reservation || reservation_ready["[z_reservation]"]) && !clearing_reserved_turfs)
+	UNTIL((!z_reservation || reservation_ready[z_reservation]) && !clearing_reserved_turfs)
 	var/datum/turf_reservation/reserve = new reservation_type
 	if(!isnull(turf_type_override))
 		reserve.turf_type = turf_type_override
 	if(!z_reservation)
-		for(var/i in levels_by_trait(ZTRAIT_RESERVED))
-			if(reserve.reserve(width, height, z_size, i))
+		if(z_size > 1) // this is probably less efficient so we only do it for multiz reservations
+			// we should maybe also only do it for ones at least half the world size on one axis, maybe?
+			if(reserve.reserve(width, height, z_size, levels_by_trait(ZTRAIT_RESERVED)))
 				return reserve
+		else
+			for(var/i in levels_by_trait(ZTRAIT_RESERVED))
+				if(reserve.reserve(width, height, z_size, i))
+					return reserve
 		//If we didn't return at this point, theres a good chance we ran out of room on the exisiting reserved z levels, so lets try a new one
-		var/datum/space_level/newReserved = add_reservation_zlevel()
-		initialize_reserved_level(newReserved.z_value)
-		if(reserve.reserve(width, height, z_size, newReserved.z_value))
-			return reserve
+		if(z_size > 1)
+			// if we're multi-z, we may still have enough room on an existing level, so we need to make sure we free all the released turfs
+			SSmapping.canonize_reserved_turfs()
+		for(var/_ in 1 to z_size) // try once per z level we need, just in case
+			var/datum/space_level/newReserved = add_reservation_zlevel()
+			initialize_reserved_level(newReserved.z_value)
+			if(z_size > 1) // see above
+				// this is probably expensive, but means that if we failed because only one level was free, we won't make more z-levels than necessary
+				if(reserve.reserve(width, height, z_size, levels_by_trait(ZTRAIT_RESERVED)))
+					return reserve
+				SSmapping.canonize_reserved_turfs() // again, refund the turfs we just released
+			else
+				if(reserve.reserve(width, height, z_size, newReserved.z_value))
+					return reserve
 	else
 		if(!level_trait(z_reservation, ZTRAIT_RESERVED))
 			qdel(reserve)
@@ -393,27 +414,25 @@ SUBSYSTEM_DEF(mapping)
 	if(!level_trait(z,ZTRAIT_RESERVED))
 		clearing_reserved_turfs = FALSE
 		CRASH("Invalid z level prepared for reservations.")
-	var/block = block(SHUTTLE_TRANSIT_BORDER, SHUTTLE_TRANSIT_BORDER, z, world.maxx - SHUTTLE_TRANSIT_BORDER, world.maxy - SHUTTLE_TRANSIT_BORDER, z)
+	var/block = block(1, 1, z, world.maxx, world.maxy, z)
 	for(var/turf/T as anything in block)
 		// No need to empty() these, because they just got created and are already /turf/open/space/basic.
 		T.turf_flags |= UNUSED_RESERVATION_TURF
 		CHECK_TICK
 
-	// Gotta create these suckers if we've not done so already
-	if(SSatoms.initialized)
-		SSatoms.InitializeAtoms(Z_TURFS(z))
+	// Don't initialize these, basicturfs just don't do that
 
-	unused_turfs["[z]"] = block
-	reservation_ready["[z]"] = TRUE
+	unused_turfs[z] = block
+	reservation_ready[z] = TRUE
 	clearing_reserved_turfs = FALSE
 
-/// Schedules a group of turfs to be handed back to the reservation system's control
+/// Schedules a group of turfs to be released to the reservation system's control
 /// If await is true, will sleep until the turfs are finished work
-/datum/controller/subsystem/mapping/proc/reserve_turfs_async(list/turfs)
-	lists_to_reserve += list(turfs)
+/datum/controller/subsystem/mapping/proc/release_reserved_turfs_async(list/turfs)
+	lists_to_release += list(turfs)
 
-/datum/controller/subsystem/mapping/proc/reserve_turfs(list/turfs)
-	reserve_turfs_async(turfs)
+/datum/controller/subsystem/mapping/proc/release_reserved_turfs(list/turfs)
+	release_reserved_turfs_async(turfs)
 	UNTIL(!length(turfs))
 
 //DO NOT CALL THIS PROC DIRECTLY, CALL wipe_reservations().
@@ -429,10 +448,10 @@ SUBSYSTEM_DEF(mapping)
 	for(var/l in unused_turfs) //unused_turfs is an assoc list by z = list(turfs)
 		if(islist(unused_turfs[l]))
 			clearing |= unused_turfs[l]
-	clearing |= used_turfs //used turfs is an associative list, BUT, reserve_turfs() can still handle it. If the code above works properly, this won't even be needed as the turfs would be freed already.
+	clearing |= used_turfs //used turfs is an associative list, BUT, release_reserved_turfs() can still handle it. If the code above works properly, this won't even be needed as the turfs would be freed already.
 	unused_turfs.Cut()
 	used_turfs.Cut()
-	reserve_turfs(clearing)
+	release_reserved_turfs(clearing)
 
 /// Takes a z level datum, and tells the mapping subsystem to manage it
 /// Also handles things like plane offset generation, and other things that happen on a z level to z level basis

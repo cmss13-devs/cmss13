@@ -38,7 +38,7 @@
 	/// The turf type the reservation is initially made with
 	var/turf_type = /turf/open/space
 
-	///Distance away from the cordon where we can put a "sort-cordon" and run some extra code (see make_repel). 0 makes nothing happen
+	///Distance away from the cordon where we can put a "soft-cordon" and run some extra code (see make_repel). 0 makes nothing happen
 	var/pre_cordon_distance = 0
 
 /datum/turf_reservation/proc/get_turf_z(turf/turf)
@@ -60,7 +60,7 @@
 
 /datum/turf_reservation/transit
 	turf_type = /turf/open/space/transit
-	pre_cordon_distance = 7
+	// pre_cordon_distance = 7 // currently not used
 
 /datum/turf_reservation/interior
 	turf_type = /turf/open/void/vehicle
@@ -82,8 +82,7 @@
 	for(var/turf/reserved_turf as anything in release_turfs)
 		SEND_SIGNAL(reserved_turf, COMSIG_TURF_RESERVATION_RELEASED, src)
 
-	// Makes the linter happy, even tho we don't await this
-	SSmapping.reserve_turfs_async(release_turfs)
+	SSmapping.release_reserved_turfs_async(release_turfs)
 
 /// Attempts to calaculate and store a list of turfs around the reservation for cordoning. Returns whether a valid cordon was calculated
 /datum/turf_reservation/proc/calculate_cordon_turfs(turf/bottom_left, turf/top_right)
@@ -100,7 +99,7 @@
 
 	if(pre_cordon_distance)
 		var/turf/offset_turf = locate(bottom_left.x + pre_cordon_distance, bottom_left.y + pre_cordon_distance, bottom_left.z)
-		var/list/to_add = CORNER_OUTLINE(offset_turf, width - pre_cordon_distance * 2, height - pre_cordon_distance * 2) //we step-by-stop move inwards from the outer cordon
+		var/list/to_add = CORNER_OUTLINE(offset_turf, width - (pre_cordon_distance * 2), height - (pre_cordon_distance * 2)) //we step-by-stop move inwards from the outer cordon
 		for(var/turf/turf_being_added as anything in to_add)
 			pre_cordon_turfs |= turf_being_added //add one by one so we can filter out duplicates
 
@@ -117,7 +116,7 @@
 		// Its no longer unused, but its also not "used"
 		cordon_turf.turf_flags &= ~UNUSED_RESERVATION_TURF
 		cordon_turf.ChangeTurf(CORDON_TURF_TYPE, CORDON_TURF_TYPE)
-		SSmapping.unused_turfs["[cordon_turf.z]"] -= cordon_turf
+		SSmapping.unused_turfs[cordon_turf.z] -= cordon_turf
 		// still gets linked to us though
 		SSmapping.used_turfs[cordon_turf] = src
 
@@ -129,7 +128,7 @@
 	src.height = height
 	if(width > world.maxx || height > world.maxy || width < 1 || height < 1)
 		return FALSE
-	var/list/avail = SSmapping.unused_turfs["[zlevel]"]
+	var/list/avail = SSmapping.unused_turfs[zlevel]
 	var/turf/BL
 	var/turf/TR
 	var/list/turf/final = list()
@@ -159,10 +158,9 @@
 		break
 	if(!passing || !istype(BL) || !istype(TR))
 		return FALSE
-	for(var/i in final)
-		var/turf/T = i
+	for(var/turf/T as anything in final)
 		reserved_turfs |= T
-		SSmapping.unused_turfs["[T.z]"] -= T
+		SSmapping.unused_turfs[T.z] -= T
 		SSmapping.used_turfs[T] = src
 		T.turf_flags = (T.turf_flags | RESERVATION_TURF) & ~UNUSED_RESERVATION_TURF
 		T.ChangeTurf(turf_type, turf_type)
@@ -174,10 +172,28 @@
 /datum/turf_reservation/proc/reserve(width, height, z_size, z_reservation)
 	src.z_size = z_size
 	var/failed_reservation = FALSE
-	for(var/_ in 1 to z_size)
-		if(!_reserve_area(width, height, z_reservation))
+	// allow us to pass a list
+	// the idea here is that we should be okay with splitting the reservation across multiple z levels
+	// and also that each chunk on each level is the same size, so any level that fails shouldn't be re-checked
+	if(islist(z_reservation))
+		var/list/reservation_zs = z_reservation
+		var/next_z_to_use = 1
+		var/zs_left = z_size
+		for(var/_ in 1 to z_size)
+			while(next_z_to_use <= length(reservation_zs))
+				if(!_reserve_area(width, height, reservation_zs[next_z_to_use]))
+					next_z_to_use++ // we know the prior ones aren't gonna work
+					continue
+				//successfully reserved
+				zs_left--
+				break
+		if(zs_left > 0)
 			failed_reservation = TRUE
-			break
+	else
+		for(var/_ in 1 to z_size)
+			if(!_reserve_area(width, height, z_reservation))
+				failed_reservation = TRUE
+				break
 
 	if(failed_reservation)
 		Release()
@@ -238,8 +254,8 @@
 		return null
 
 	var/z_idx = bounds_info["z_idx"]
-	// check what z level, if its the min, then there is no turf above
-	if(z_idx == z_size)
+	// check what z level, if its the max, then there is no turf above
+	if(z_idx == length(bottom_left_turfs) || z_idx == z_size)
 		return null
 
 	var/offset_x = bounds_info["offset_x"]

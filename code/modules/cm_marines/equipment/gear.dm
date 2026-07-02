@@ -498,6 +498,7 @@
 
 /obj/structure/overwatch_camera_tripod/Destroy()
 	GLOB.deployed_tripod_cameras -= src
+	squad = null
 	QDEL_NULL(camera)
 	return ..()
 

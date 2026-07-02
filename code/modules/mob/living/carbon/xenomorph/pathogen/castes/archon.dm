@@ -99,7 +99,7 @@
 /mob/living/carbon/xenomorph/archon/Initialize()
 	. = ..()
 	make_pathogen_speaker()
-	SStracking.set_leader("hive_[hivenumber]", src)
+	//SStracking.set_leader("hive_[hivenumber]", src)
 	if(!should_block_game_interaction(src))//so admins can safely spawn Archons in Thunderdome for tests.
 		xeno_message(SPAN_XENOANNOUNCE("A new Archon has risen to lead the Confluence! Rejoice!"),3,hivenumber)
 		notify_ghosts(header = "New Archon", message = "A new Archon has risen.", source = src, action = NOTIFY_ORBIT)

@@ -192,7 +192,8 @@ export const OpenSearchQuery = (props) => {
           title={
             <Box as="span">
               <Button
-                color={LOGTYPE_TO_COLOR[onedoc._source.logtype] || 'gray'}
+                pr={1}
+                color={LOGTYPE_TO_COLOR[onedoc._source.logtype] || 'grey'}
               >
                 {onedoc._source.logtype}
               </Button>

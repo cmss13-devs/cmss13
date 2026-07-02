@@ -110,9 +110,9 @@
 /datum/opensearch_query/proc/bootstrap_lucene_dsl()
 	PRIVATE_PROC(TRUE)
 	. = "Internal error creating the Lucene-based DSL"
-	dsl = list("query" = list("bool" = list("filter" = list())))
-	var/list/filter = dsl["query"]["bool"]["filter"]
-	filter[++filter.len] = list("query_string" = list("query" = user_query))
+	dsl = list("query" = list("bool" = list("must" = list())))
+	var/list/must = dsl["query"]["bool"]["must"]
+	must[++must.len] = list("query_string" = list("query" = user_query))
 	. = null
 
 

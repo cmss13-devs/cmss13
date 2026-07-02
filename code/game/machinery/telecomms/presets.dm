@@ -218,9 +218,19 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	/// Holds the delay for when a cluster can recorrupt the comms tower after a pylon has been destroyed
 	COOLDOWN_DECLARE(corruption_delay)
 
-/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/Initialize()
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/Initialize(mapload, ...)
 	. = ..()
-	RegisterSignal(get_turf(src), COMSIG_WEEDNODE_GROWTH, PROC_REF(handle_xeno_acquisition))
+	// COMSIG_MOVABLE_TURF_ENTERED to handle ChangeTurf
+	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTERED, PROC_REF(register_with_turf))
+	if(!mapload)
+		register_with_turf()
+
+/// Handler for callback of COMSIG_MOVABLE_TURF_ENTERED (turf changed)
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/register_with_turf(atom/movable/source, turf/new_turf)
+	SIGNAL_HANDLER
+	var/turf/location = get_turf(src)
+	if(location && (!new_turf || location == new_turf)) // We only need to monitor our loc not our locs
+		RegisterSignal(location, COMSIG_WEEDNODE_GROWTH, PROC_REF(handle_xeno_acquisition))
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/get_examine_text(mob/user)
 	. = ..()

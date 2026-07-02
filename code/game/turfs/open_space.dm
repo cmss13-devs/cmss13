@@ -16,7 +16,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	plane = OPEN_SPACE_PLANE_START
 	is_weedable = NOT_WEEDABLE
 
-/turf/open_space/Initialize()
+/turf/open_space/Initialize(mapload, ...)
 	pass_flags = GLOB.pass_flags_cache[type]
 
 	if (isnull(pass_flags))
@@ -27,6 +27,21 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 		initialize_pass_flags()
 
 	ADD_TRAIT(src, TURF_Z_TRANSPARENT_TRAIT, TRAIT_SOURCE_INHERENT)
+
+	#if defined(UNIT_TESTS) || defined(TESTING)
+	// Assert when testing that this open_space is placed somewhere valid
+	if(!istype(get_area(src), /area/misc/testroom))
+		var/turf/below = get_turf_below()
+		while(istype(below, /turf/open_space))
+			below = SSmapping.get_turf_below(below)
+		if(!below)
+			stack_trace("[src] at [COORD(src)] falls through the world!")
+	#endif
+
+	// We don't call parent and this is important
+	for(var/atom/movable/thing in src)
+		Entered(thing)
+
 	return INITIALIZE_HINT_LATELOAD
 
 /turf/open_space/Enter(atom/movable/mover, atom/forget)
@@ -71,6 +86,15 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 		to_chat(user, SPAN_WARNING("It would be too dangerous to go that way."))
 		return
 
+	var/turf/below = get_turf_below()
+	while(istype(below, /turf/open_space))
+		below = SSmapping.get_turf_below(below)
+	if(!below)
+		to_chat(user, SPAN_WARNING("You can't go that way."))
+		return
+
+	user.visible_message(SPAN_WARNING("[user] starts climbing down."), SPAN_WARNING("You start climbing down."))
+
 	var/climb_down_time = 1 SECONDS
 	if(ishuman_strict(user))
 		climb_down_time = 2.5 SECONDS
@@ -80,8 +104,6 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 			climb_down_time = 3 SECONDS
 		else
 			climb_down_time = 1 SECONDS
-
-	user.visible_message(SPAN_WARNING("[user] starts climbing down."), SPAN_WARNING("You start climbing down."))
 
 	var/list/grabbed_things = list()
 	var/hands_full = FALSE
@@ -102,15 +124,10 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 
 	user.visible_message(SPAN_WARNING("[user] climbs down."), SPAN_WARNING("You climb down."))
 
-	var/turf/below = get_turf_below()
-	while(istype(below, /turf/open_space))
-		below = SSmapping.get_turf_below(below)
-
 	user.forceMove(below)
 	for(var/atom/movable/thing as anything in grabbed_things) // grabbed things aren't moved to the tile immediately to: make the animation better, preserve the grab
 		thing.forceMove(below)
 	below.on_climb_down(user)
-	return
 
 /turf/open_space/proc/check_fall(atom/movable/movable, kill_if_blocked=TRUE)
 	if(movable.flags_atom & NO_ZFALL)
@@ -121,6 +138,9 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	while(istype(below, /turf/open_space))
 		below = SSmapping.get_turf_below(below)
 		height++
+
+	if(!below)
+		return
 
 	movable.forceMove(below)
 	movable.onZImpact(below, height)

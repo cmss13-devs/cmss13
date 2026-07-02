@@ -30,7 +30,7 @@
 	..()
 
 /obj/item/storage/belt/update_icon()
-	overlays.Cut()
+	..()
 
 	if(skip_fullness_overlays)
 		return
@@ -1270,7 +1270,7 @@
 	new /obj/item/explosive/grenade/high_explosive/airburst(src)
 
 /obj/item/storage/belt/grenade/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/storage/box/nade_box) || istype(W, /obj/item/storage/backpack/marine/grenadepack))
+	if(istype(W, /obj/item/storage/box/nade_box) || istype(W, /obj/item/storage/belt/grenade))
 		dump_into(W,user)
 	else
 		return ..()
@@ -1314,16 +1314,9 @@
 /obj/item/storage/belt/grenade/upp
 	name="\improper Type 46 pattern Type 6/8 Grenade rig"
 	desc="The Type 46 is the standard load-bearing equipment of the UPP. It consists of a modular belt with various clips. This version is designed to carry bulk quantities of Type 6 and 8 pattern grenades."
-	icon_state = "grenadebelt" // temp
-	item_state = "grenadebelt"
 	item_state_slots = list(
 		WEAR_L_HAND = "s_marinebelt",
 		WEAR_R_HAND = "s_marinebelt")
-	w_class = SIZE_LARGE
-	storage_slots = 12
-	max_w_class = SIZE_MEDIUM
-	max_storage_space = 24
-	can_hold = list(/obj/item/explosive/grenade)
 
 /obj/item/storage/belt/grenade/upp/full/fill_preset_inventory()
 	new /obj/item/explosive/grenade/phosphorus/upp(src)
@@ -1335,11 +1328,14 @@
 	new /obj/item/explosive/grenade/high_explosive/upp(src)
 	new /obj/item/explosive/grenade/high_explosive/upp(src)
 
-/obj/item/storage/belt/grenade/upp/attackby(obj/item/attacked_item, mob/user)
-	if(istype(attacked_item, /obj/item/storage/box/nade_box) || istype(attacked_item, /obj/item/storage/backpack/marine/grenadepack))
-		dump_into(attacked_item, user)
-	else
-		return ..()
+/obj/item/storage/belt/grenade/grenadepack
+	name = "\improper USCM IMP M63A1 secure grenade belt"
+	desc = "A reinforced, intrusion resistant belt with dedicated grenade pouches meant to minimize risks of secondary ignition."
+	icon_state = "grenadierpack"
+	overlays = list("+grenadierpack_unlocked")
+	max_storage_space = 36 //12 grenades
+	is_id_lockable = TRUE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
 ////////////////////////////// GUN BELTS /////////////////////////////////////
 

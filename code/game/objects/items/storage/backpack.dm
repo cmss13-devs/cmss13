@@ -25,19 +25,10 @@
 		)
 	drop_sound = "armorequip"
 	var/worn_accessible = FALSE //whether you can access its content while worn on the back
-	var/obj/item/card/id/locking_id = null
-	var/is_id_lockable = FALSE
-	var/lock_overridable = TRUE
 	var/xeno_icon_state = null //the icon_state for xeno's wearing this (using the dmi defined in default_xeno_onmob_icons list)
 	var/list/xeno_types = null //what xeno types can equip this backpack
 
 /obj/item/storage/backpack/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/card/id/) && is_id_lockable && ishuman(user))
-		var/mob/living/carbon/human/H = user
-		var/obj/item/card/id/card = W
-		toggle_lock(card, H)
-		return
-
 	if (..() && use_sound)
 		playsound(loc, use_sound, 15, TRUE, 6)
 
@@ -86,18 +77,6 @@
 	target_mob.put_in_back(src)
 	return FALSE
 
-/obj/item/storage/backpack/proc/toggle_lock(obj/item/card/id/card, mob/living/carbon/human/H)
-	if(QDELETED(locking_id))
-		to_chat(H, SPAN_NOTICE("You lock \the [src]!"))
-		locking_id = card
-	else
-		if(locking_id.registered_name == card.registered_name || (lock_overridable && (ACCESS_MARINE_SENIOR in card.access)))
-			to_chat(H, SPAN_NOTICE("You unlock \the [src]!"))
-			locking_id = null
-		else
-			to_chat(H, SPAN_NOTICE("The ID lock rejects your ID."))
-	update_icon()
-
 /obj/item/storage/backpack/equipped(mob/user, slot, silent)
 	if(slot == WEAR_BACK)
 		mouse_opacity = MOUSE_OPACITY_OPAQUE //so it's easier to click when properly equipped.
@@ -120,9 +99,6 @@
 
 /obj/item/storage/backpack/open(mob/user)
 	if(!is_accessible_by(user))
-		return
-	if(locking_id && !compare_id(user))//if id locked we the user's id against the locker's
-		to_chat(user, SPAN_NOTICE("[src] is locked by [locking_id.registered_name]'s ID! You decide to leave it alone."))
 		return
 	..()
 
@@ -153,32 +129,13 @@
 		if(H.back == src && !worn_accessible && !content_watchers) //Backpack on back needs to be opened; if it's already opened, it can be emptied immediately.
 			if(!is_accessible_by(user))
 				return
-	if(locking_id && !compare_id(user))//if id locked we the user's id against the locker's
-		to_chat(user, SPAN_NOTICE("[src] is locked by [locking_id.registered_name]'s ID! You decide to leave it alone."))
-		return
 	..()
 
-//Returns true if the user's id matches the lock's
-/obj/item/storage/backpack/proc/compare_id(mob/living/carbon/human/H)
-	var/obj/item/card/id/card = H.get_idcard()
-	if(!card || locking_id.registered_name != card.registered_name)
-		return FALSE
-	else
-		return TRUE
-
 /obj/item/storage/backpack/update_icon()
-	overlays.Cut()
+	..()
 
-	if(content_watchers) //If someone's looking inside it, don't close the flap. Lockables display as temporarily unlocked.
-		if(is_id_lockable)
-			overlays += "+[icon_state]_unlocked"
+	if(content_watchers)
 		return
-
-	if(locking_id) // if it's locked, we expect the casing to be shut.
-		overlays += "+[icon_state]_full"
-		overlays += "+[icon_state]_locked"
-		return
-
 	var/sum_storage_cost = 0
 	for(var/obj/item/I in contents)
 		sum_storage_cost += I.get_storage_cost()
@@ -187,16 +144,6 @@
 			overlays += "+[icon_state]_half"
 		else
 			overlays += "+[icon_state]_full"
-
-	if(is_id_lockable) // assumption: !locking_id
-		overlays += "+[icon_state]_unlocked"
-
-/obj/item/storage/backpack/get_examine_text(mob/user)
-	. = ..()
-	if(is_id_lockable)
-		. += "Features an ID lock. Swipe your ID card to lock or unlock it."
-		if(lock_overridable)
-			. += "This lock can be overridden with command-level access."
 
 /*
  * Backpack Types
@@ -877,29 +824,6 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	worn_accessible = TRUE
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	xeno_types = null
-
-/obj/item/storage/backpack/marine/grenadepack
-	name = "\improper USCM IMP M63A1 grenade satchel"
-	desc = "A secure satchel with dedicated grenade pouches meant to minimize risks of secondary ignition."
-	icon_state = "grenadierpack"
-	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
-	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi'
-	)
-	overlays = list("+grenadierpack_unlocked")
-	worn_accessible = TRUE
-	max_storage_space = 36 //12 grenades
-	storage_slots = 12
-	can_hold = list(/obj/item/explosive/grenade)
-	is_id_lockable = TRUE
-	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
-	xeno_types = null
-
-/obj/item/storage/backpack/marine/grenadepack/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/storage/box/nade_box) || istype(W, /obj/item/storage/backpack/marine/grenadepack) || istype(W, /obj/item/storage/belt/grenade))
-		dump_into(W,user)
-	else
-		return ..()
 
 /obj/item/storage/backpack/marine/mortarpack
 	name = "\improper USCM mortar shell backpack"

@@ -51,7 +51,6 @@
 		list("Mortar Shell Backpack", floor(scale * 1), /obj/item/storage/backpack/marine/mortarpack, VENDOR_ITEM_REGULAR),
 		list("IMP Ammo Rack", floor(scale * 2), /obj/item/storage/backpack/marine/ammo_rack, VENDOR_ITEM_REGULAR),
 		list("Parachute", floor(scale * 20), /obj/item/parachute, VENDOR_ITEM_REGULAR),
-		list("Grenade Satchel", floor(scale * 2), /obj/item/storage/backpack/marine/grenadepack, VENDOR_ITEM_REGULAR),
 
 		list("BELTS", -1, null, null),
 		list("Type 41 Ammo Load Rig", floor(scale * 15), /obj/item/storage/belt/marine/upp, VENDOR_ITEM_REGULAR),
@@ -61,6 +60,7 @@
 		list("M276 M82F Holster Rig", floor(scale * 2), /obj/item/storage/belt/gun/flaregun, VENDOR_ITEM_REGULAR),
 		list("M276 Shotgun Shell Loading Rig", floor(scale * 10), /obj/item/storage/belt/shotgun, VENDOR_ITEM_REGULAR),
 		list("M276 Mortar Operator Belt", floor(scale * 2), /obj/item/storage/belt/gun/mortarbelt, VENDOR_ITEM_REGULAR),
+		list("Secure Grenade Belt", floor(scale * 2), /obj/item/storage/belt/grenade/grenadepack, VENDOR_ITEM_REGULAR),
 
 		list("POUCHES", -1, null, null),
 		list("Autoinjector Pouch", floor(scale * 1), /obj/item/storage/pouch/autoinjector, VENDOR_ITEM_REGULAR),

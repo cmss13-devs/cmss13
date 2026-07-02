@@ -33843,8 +33843,8 @@
 /obj/item/storage/backpack/marine/rocketpack,
 /obj/item/storage/backpack/marine/mortarpack,
 /obj/item/storage/backpack/marine/mortarpack,
-/obj/item/storage/backpack/marine/grenadepack,
-/obj/item/storage/backpack/marine/grenadepack,
+/obj/item/storage/belt/grenade/grenadepack,
+/obj/item/storage/belt/grenade/grenadepack,
 /turf/open/floor/almayer/cargo,
 /area/almayer/engineering/lower/workshop/hangar)
 "bFP" = (

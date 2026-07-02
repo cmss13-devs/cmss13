@@ -26,6 +26,54 @@ For explosion resistance, an explosion should never go through a wall or window 
 explosion resistance exactly as much as their health
 */
 
+GLOBAL_VAR_INIT(create_and_destroy_ignore_paths2, generate_ignore_paths2())
+/proc/generate_ignore_paths2()
+	. = list(
+		//Never meant to be created, errors out the ass for mobcode reasons
+		/mob/living/carbon,
+		/obj/effect/node,
+		/obj/item/seeds/cutting,
+		//lighting singleton
+		/mob/dview,
+		// These use walk_away() after initialization, which causes false positives
+		/obj/item/explosive/grenade/flashbang/cluster/segment,
+		/obj/item/explosive/grenade/flashbang/cluster_piece,
+		/mob/living/simple_animal/hostile/retaliate/giant_lizard,
+		/obj/effect/landmark/lizard_spawn,
+		/obj/effect/fake_attacker,
+		/atom/movable/lighting_mask, //leave it alone
+		//This is meant to fail extremely loud every single time it occurs in any environment in any context, and it falsely alarms when this unit test iterates it. Let's not spawn it in.
+		/obj/merge_conflict_marker,
+		/obj/effect/projector_anchor, // Needs a link ID set to work as intended
+		/obj/effect/projector/linked, // Needs a link ID set to work as intended
+	)
+	//This turf existing is an error in and of itself
+	. += typesof(/turf/baseturf_skipover)
+	. += typesof(/turf/baseturf_bottom)
+	//Our system doesn't support it without warning spam from unregister calls on things that never registered
+	. += typesof(/obj/docking_port)
+	. += typesof(/obj/item/storage/internal)
+	// fuck interiors
+	. += typesof(/obj/vehicle)
+	. += typesof(/obj/effect/vehicle_spawner)
+	// Always ought to have an associated escape menu. Any references it could possibly hold would need one regardless.
+	. += subtypesof(/atom/movable/screen/escape_menu)
+	. += typesof(/obj/effect/timed_event)
+	// Need a defined ID, mapping-only, will and should fail loudly if spawned without one
+	. += typesof(/obj/effect/landmark/dispersal_initiator)
+
+/mob/verb/explosion_test()
+	set name = "Explosion Test"
+	set category = "Debug"
+
+	var/turf/location = get_turf(usr)
+	var/mob/living/carbon/human/body = new(location)
+	body.death()
+	cell_explosion(location, 60, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, SOUTH, create_cause_data("testing"))
+	cell_explosion(location, 60, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, SOUTH, create_cause_data("testing"))
+	for(var/turf/turf_path as anything in subtypesof(/turf) - GLOB.create_and_destroy_ignore_paths2)
+		location = location.ChangeTurf(turf_path)
+
 /proc/explosion_rec(turf/epicenter, power, falloff = 20, datum/cause_data/explosion_cause_data)
 	var/obj/effect/explosion/Controller = new /obj/effect/explosion(epicenter)
 	Controller.initiate_explosion(epicenter, power, falloff, explosion_cause_data)
@@ -325,18 +373,20 @@ explosion resistance exactly as much as their health
 	if(anchored)
 		return
 
-	if(!istype(src.loc, /turf))
+	if(!isturf(loc))
 		return
+
+	if(direction < 0)
+		return // Don't do anything if explicitly directionless
+
+	var/range = min(round(severity/w_class * 0.2, 1), 14)
 
 	if(!direction)
 		direction = pick(GLOB.alldirs)
-	var/range = min(round(severity/src.w_class * 0.2, 1), 14)
-	if(!direction)
-		range = round( range/2 ,1)
+		range = round(range/2, 1)
 
 	if(range < 1)
 		return
-
 
 	var/speed = max(range*2.5, SPEED_SLOW)
 	var/atom/target = get_ranged_target_turf(src, direction, range)
@@ -345,19 +395,20 @@ explosion resistance exactly as much as their health
 		var/scatter = range/4 * scatter_multiplier
 		var/scatter_x = rand(-scatter,scatter)
 		var/scatter_y = rand(-scatter,scatter)
-		target = locate(target.x + round( scatter_x , 1),target.y + round( scatter_y , 1),target.z) //Locate an adjacent turf.
+		target = locate(target.x + round(scatter_x , 1), target.y + round(scatter_y , 1), target.z) //Locate an adjacent turf.
 
 	//time for the explosion to destroy windows, walls, etc which might be in the way
 	INVOKE_ASYNC(src, TYPE_PROC_REF(/atom/movable, throw_atom), target, range, speed, null, TRUE)
-
-	return
 
 /mob/proc/explosion_throw(severity, direction)
 	if(anchored)
 		return
 
-	if(!istype(src.loc, /turf))
+	if(!isturf(loc))
 		return
+
+	if(direction < 0)
+		return // Don't do anything if explicitly directionless
 
 	var/weight = 1
 	switch(mob_size)

@@ -29,7 +29,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	ADD_TRAIT(src, TURF_Z_TRANSPARENT_TRAIT, TRAIT_SOURCE_INHERENT)
 	return INITIALIZE_HINT_LATELOAD
 
-/turf/open_space/Enter(atom/movable/mover, atom/forget)
+/turf/open_space/Enter(atom/movable/mover, atom/old_loc)
 	. = ..()
 	if(. && !mover.throwing && isliving(mover) && check_blocked())
 		to_chat(mover, SPAN_WARNING("It would be too dangerous to go that way."))
@@ -37,7 +37,10 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 
 /turf/open_space/Entered(atom/movable/entered_movable, atom/old_loc)
 	. = ..()
-	check_fall(entered_movable)
+	if(old_loc != src)
+		check_fall(entered_movable)
+	else
+		INVOKE_NEXT_TICK(src, PROC_REF(check_fall), entered_movable)
 
 /turf/open_space/on_throw_end(atom/movable/thrown_atom)
 	check_fall(thrown_atom)

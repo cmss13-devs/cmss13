@@ -165,12 +165,12 @@
 	icon_state = "grass1"
 	is_weedable = NOT_WEEDABLE
 
-/turf/open/slippery/Enter(atom/movable/mover, atom/forget)
+/turf/open/slippery/Enter(atom/movable/mover, atom/old_loc)
 	. = ..()
 	if(isliving(mover))
 		return FALSE
 
-/turf/open/slippery/Entered(atom/movable/crosser)
+/turf/open/slippery/Entered(atom/movable/crosser, atom/old_loc)
 	. = ..()
 	if(isobserver(crosser) || crosser.anchored)
 		return
@@ -178,7 +178,10 @@
 	if(!(isitem(crosser) || isliving(crosser)))
 		return
 
-	INVOKE_ASYNC(crosser, TYPE_PROC_REF(/atom/movable, throw_atom), (get_step(src, dir)), 50, SPEED_FAST, null, TRUE)
+	if(old_loc != src)
+		INVOKE_ASYNC(crosser, TYPE_PROC_REF(/atom/movable, throw_atom), (get_step(src, dir)), 50, SPEED_FAST, null, TRUE)
+	else
+		INVOKE_NEXT_TICK(crosser, TYPE_PROC_REF(/atom/movable, throw_atom), (get_step(src, dir)), 50, SPEED_FAST, null, TRUE)
 
 /turf/open/slippery/hull
 	name = "sloped roof"
@@ -853,28 +856,28 @@
 	default_name = "deep ocean"
 	allow_construction = FALSE
 
-/turf/open/gm/river/ocean/Entered(atom/movable/AM)
+/turf/open/gm/river/ocean/Entered(atom/movable/entered_movable, atom/old_loc)
 	. = ..()
-	if(prob(20)) // fuck you
-		if(!ismob(AM))
+	if(old_loc != src && prob(20)) // fuck you
+		if(!ismob(entered_movable))
 			return
-		var/mob/unlucky_mob = AM
-		var/turf/target_turf = get_random_turf_in_range(AM, 3, 0)
-		var/datum/launch_metadata/LM = new()
-		LM.target = target_turf
-		LM.range = get_dist(AM.loc, target_turf)
-		LM.speed = SPEED_FAST
-		LM.thrower = unlucky_mob
-		LM.spin = TRUE
-		LM.pass_flags = NO_FLAGS
+		var/mob/unlucky_mob = entered_movable
+		var/turf/target_turf = get_random_turf_in_range(entered_movable, 3, 0)
+		var/datum/launch_metadata/launch = new()
+		launch.target = target_turf
+		launch.range = get_dist(entered_movable.loc, target_turf)
+		launch.speed = SPEED_FAST
+		launch.thrower = unlucky_mob
+		launch.spin = TRUE
+		launch.pass_flags = NO_FLAGS
 		to_chat(unlucky_mob, SPAN_WARNING("The ocean currents sweep you off your feet and throw you away!"))
 		// Entered can occur during Initialize so we need to not sleep
-		INVOKE_ASYNC(unlucky_mob, TYPE_PROC_REF(/atom/movable, launch_towards), LM)
+		INVOKE_ASYNC(unlucky_mob, TYPE_PROC_REF(/atom/movable, launch_towards), launch)
 		return
 
 	if(world.time % 5)
-		if(ismob(AM))
-			var/mob/rivermob = AM
+		if(ismob(entered_movable))
+			var/mob/rivermob = entered_movable
 			if(!HAS_TRAIT(rivermob, TRAIT_HAULED))
 				to_chat(rivermob, SPAN_WARNING("Moving through the incredibly deep ocean slows you down a lot!"))
 

@@ -2219,6 +2219,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	gun_user?.face_atom(target)
 
 ///Check if the gun can fire and add it to bucket auto_fire system if needed, or just fire the gun if not
+/// SIGNAL_HANDLER for COMSIG_MOB_MOUSEDOWN
 /obj/item/weapon/gun/proc/start_fire(datum/source, atom/object, turf/location, control, params, bypass_checks = FALSE)
 	SIGNAL_HANDLER
 

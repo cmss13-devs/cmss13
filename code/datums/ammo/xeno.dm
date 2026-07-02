@@ -409,15 +409,17 @@
 
 	max_range = 3 // Very short range
 
-/datum/ammo/xeno/bone_chips/spread/runner_skillshot
+/datum/ammo/xeno/bone_chips/runner
 	name = "bone chips"
 
+	damage = 10
 	scatter = 0
 	max_range = 5
-	damage = 10
 	shrapnel_chance = 0
+	bonus_projectiles_amount = 0
+	shell_speed = AMMO_SPEED_TIER_2
 
-/datum/ammo/xeno/bone_chips/spread/runner/on_hit_mob(mob/living/M, obj/projectile/P)
+/datum/ammo/xeno/bone_chips/runner/on_hit_mob(mob/living/M, obj/projectile/P)
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
 		if((HAS_FLAG(C.status_flags, XENO_HOST) && HAS_TRAIT(C, TRAIT_NESTED)) || C.stat == DEAD || HAS_TRAIT(C, TRAIT_HAULED))

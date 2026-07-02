@@ -29,7 +29,7 @@
 	xeno_cooldown = 11 SECONDS
 	plasma_cost = 0
 
-	var/ammo_type = /datum/ammo/xeno/bone_chips/spread/runner_skillshot
+	var/ammo_type = /datum/ammo/xeno/bone_chips/runner
 
 /datum/action/xeno_action/activable/acider_acid
 	name = "Corrosive Acid"

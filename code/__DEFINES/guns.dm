@@ -68,3 +68,8 @@
 #define CO_GUN_2006MB_COUNCIL "Colonel's golden 2006M black handle"
 #define CO_GUN_2006MS_COUNCIL "Colonel's silver 2006M"
 #define CO_GUN_DEAGLE_COUNCIL "Colonel's golden Desert Eagle"
+
+//SHARP modes
+#define SHARP_DANGER_MODE "DANGER"
+#define SHARP_DIRECTED_MODE "DIRECTED"
+#define SHARP_SAFE_MODE "SAFE"

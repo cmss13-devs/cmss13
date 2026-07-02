@@ -516,6 +516,7 @@
 	AddComponent(/datum/component/overwatch_console_control)
 	GLOB.deployed_tripod_cameras += src
 
+/// This is used to append squad names to the Field Camera Tripods' user-made label.
 /obj/structure/overwatch_camera_tripod/proc/update_full_label()
 	if(squad)
 		label = "[squad.name] - [base_label]"

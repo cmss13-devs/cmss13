@@ -7,9 +7,9 @@
 
 /datum/action/xeno_action/verb/verb_toggle_gut_targeting()
 	set category = "Alien"
-	set name = "Toggle Gutting Type"
+	set name = "Toggle Frenzy Type"
 	set hidden = TRUE
-	var/action_name = "Toggle Gutting Type"
+	var/action_name = "Toggle Frenzy Type"
 	handle_xeno_macro(src, action_name)
 
 

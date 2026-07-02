@@ -15,7 +15,6 @@
 	anchored = TRUE
 	block_range = 1
 	var/boosted_structure = FALSE
-	var/datum/hive_status/linked_hive
 	var/protection_level = TURF_PROTECTION_NONE
 
 	plane = FLOOR_PLANE

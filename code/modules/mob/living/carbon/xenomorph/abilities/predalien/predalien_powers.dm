@@ -174,7 +174,7 @@
 		armor_buff = FALSE
 
 
-/datum/action/xeno_action/onclick/toggle_gut_targeting/use_ability(atom/A)
+/datum/action/xeno_action/onclick/toggle_frenzy_targeting/use_ability(atom/A)
 
 	var/mob/living/carbon/xenomorph/xeno = owner
 	var/action_icon_result

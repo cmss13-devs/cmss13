@@ -9,6 +9,9 @@
 	health = 1
 	flags_obj = OBJ_ORGANIC
 
+	var/datum/hive_status/linked_hive = null
+	var/hivenumber = XENO_HIVE_NORMAL
+
 /*
  * Resin
  */
@@ -156,7 +159,6 @@
 	layer = RESIN_STRUCTURE_LAYER
 	plane = FLOOR_PLANE
 	var/slow_amt = 8
-	var/hivenumber = XENO_HIVE_NORMAL
 
 /obj/effect/alien/resin/sticky/Initialize(mapload, hive)
 	. = ..()
@@ -195,7 +197,6 @@
 	health = HEALTH_RESIN_XENO_SPIKE
 	layer = RESIN_STRUCTURE_LAYER
 	should_track_build = TRUE
-	var/hivenumber = XENO_HIVE_NORMAL
 	var/damage = 8
 	var/penetration = 50
 
@@ -276,7 +277,6 @@
 	var/list/xenos_tracking = list()
 	var/datum/xeno_mark_define/mark_meaning = null
 	var/image/seenMeaning //this needs to be a static image because it needs to be dynamically added/removed from xenos' huds as resin marks are created/destroyed
-	var/datum/hivenumber = null
 	var/createdby = null
 	var/createdTime = null
 
@@ -583,7 +583,6 @@
 	icon_state = "acid_pillar_idle"
 
 	health = HEALTH_RESIN_XENO_ACID_PILLAR
-	var/hivenumber = XENO_HIVE_NORMAL
 	should_track_build = TRUE
 	anchored = TRUE
 
@@ -722,7 +721,6 @@
 	pixel_y = -16
 
 	health = HEALTH_RESIN_XENO_SHIELD_PILLAR
-	var/hivenumber = XENO_HIVE_NORMAL
 	anchored = TRUE
 
 	var/decay_rate = AMOUNT_PER_TIME(1, 10 SECONDS)

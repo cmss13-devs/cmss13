@@ -75,7 +75,7 @@
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE, ACCESS_MARINE_DATABASE)
 
 	minimap_icon = "doctor"
-	minimap_background = "background_medical"
+	minimap_background = "background_officer"
 
 /datum/equipment_preset/uscm_ship/uscm_medical/doctor/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel
@@ -93,6 +93,8 @@
 /datum/equipment_preset/uscm_ship/uscm_medical/doctor/surgeon
 	name = "USCM Surgeon"
 	assignment = JOB_SURGEON
+	role_comm_title = "Surg"
+	minimap_icon = "surgeon"
 
 /datum/equipment_preset/uscm_ship/uscm_medical/doctor/surgeon/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel
@@ -108,6 +110,8 @@
 /datum/equipment_preset/uscm_ship/uscm_medical/doctor/pharmacist
 	name = "USCM Pharmaceutical Physician"
 	assignment = JOB_PHARMACIST
+	role_comm_title = "Phm. Phys"
+	minimap_icon = "pharmacist"
 
 /datum/equipment_preset/uscm_ship/uscm_medical/doctor/pharmacist/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel
@@ -134,7 +138,7 @@
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE, ACCESS_MARINE_FIELD_DOC, ACCESS_MARINE_DATABASE)
 
 	minimap_icon = "field_doctor"
-	minimap_background = "background_medical"
+	minimap_background = "background_officer"
 
 /datum/equipment_preset/uscm_ship/uscm_medical/field_doctor/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel

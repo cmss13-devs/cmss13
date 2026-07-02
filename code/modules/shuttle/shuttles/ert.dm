@@ -137,6 +137,14 @@
 	preferred_direction = SOUTH
 	port_direction = NORTH
 
+// ERT Shuttle 6 - CMB
+
+/obj/docking_port/mobile/emergency_response/ert6
+	name = "CMB Shuttle"
+	id = MOBILE_SHUTTLE_ID_ERT6
+	preferred_direction = SOUTH
+	port_direction = NORTH
+
 /obj/docking_port/mobile/emergency_response/hunter
 	name = "Hunter Shuttle"
 	id = MOBILE_SHUTTLE_ID_HUNTER
@@ -421,6 +429,12 @@
 	height = 29
 	roundstart_template = /datum/map_template/shuttle/mcaste_ert
 
+/obj/docking_port/stationary/emergency_response/idle_port8
+	name = "Anchorpoint CMB Response Landing Pad"
+	dir = NORTH
+	id = ADMIN_LANDING_PAD_8
+	roundstart_template = /datum/map_template/shuttle/cmb_ert
+
 /obj/docking_port/stationary/emergency_response/chinook_port
 	name = "Chinook Station Landing Pad 1"
 	dir = NORTH
@@ -446,6 +460,10 @@
 /datum/map_template/shuttle/mcaste_ert
 	name = "Military Caste Shuttle"
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT5
+
+/datum/map_template/shuttle/cmb_ert
+	name = "CMB Shuttle"
+	shuttle_id = MOBILE_SHUTTLE_ID_ERT6
 
 /datum/map_template/shuttle/small_ert
 	name = "Rescue Shuttle"

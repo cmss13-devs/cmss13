@@ -30,3 +30,6 @@
 
 /datum/lazy_template/ssv_rostock
 	map_name = "ssv_rostock"
+
+/datum/lazy_template/ert/cmb_station
+	map_name = "cmb_ert_station"

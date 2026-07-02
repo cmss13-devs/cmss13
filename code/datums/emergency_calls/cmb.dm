@@ -3,7 +3,10 @@
 	name = "CMB - Colonial Marshals Patrol Team (Friendly)"
 	mob_max = 5
 	probability = 10
-	home_base = /datum/lazy_template/ert/weyland_station
+	home_base = /datum/lazy_template/ert/cmb_station
+	shuttle_id = MOBILE_SHUTTLE_ID_ERT6
+	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_cmb
+	item_spawn = /obj/effect/landmark/ert_spawns/distress_cmb/item
 
 	var/max_synths = 1
 	var/synths = 0
@@ -215,7 +218,6 @@
 	mob_max = 8
 	mob_min = 3
 	probability = 20
-	home_base = /datum/lazy_template/ert/weyland_station
 	max_heavies = 1
 	max_medics = 2
 	max_synths = 1
@@ -300,3 +302,12 @@
 	..()
 	arrival_message = "CMB Team, this is Anchorpoint Station. We have confirmed you are in distress. Routing nearby units to assist!"
 	objectives = "Patrol Unit 5807, we have nearby Marshals in Distress! Locate and assist them immediately."
+
+/obj/effect/landmark/ert_spawns/distress_cmb
+	name = "Distress_CMB"
+	icon_state = "spawn_distress_cmb"
+
+/obj/effect/landmark/ert_spawns/distress_cmb/item
+	name = "Distress_CMBitem"
+	icon_state = "distress_item"
+

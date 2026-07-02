@@ -99,6 +99,7 @@
 #define MOBILE_SHUTTLE_ID_ERT3 "ert_upp_shuttle"
 #define MOBILE_SHUTTLE_ID_ERT4 "ert_twe_shuttle"
 #define MOBILE_SHUTTLE_ID_ERT5 "ert_mcaste_shuttle"
+#define MOBILE_SHUTTLE_ID_ERT6 "ert_cmb_shuttle"
 #define MOBILE_SHUTTLE_ID_ERT_SMALL "ert_small_shuttle_north"
 #define MOBILE_SHUTTLE_ID_ERT_BIG "ert_shuttle_big"
 #define MOBILE_SHUTTLE_ID_HUNTER "hunter_shuttle"
@@ -156,3 +157,5 @@
 #define ADMIN_LANDING_PAD_4 "base-ert4"
 #define ADMIN_LANDING_PAD_5 "base-ert5"
 #define ADMIN_LANDING_PAD_6 "base-ert6"
+#define ADMIN_LANDING_PAD_7 "base-ert7"
+#define ADMIN_LANDING_PAD_8 "base-ert8"

@@ -351,6 +351,8 @@ GLOBAL_LIST_INIT(daniel_emotes, setup_daniel_emotes())
 GLOBAL_LIST_EMPTY(wy_droid_categories)
 /// dict ("category" : (emotes)) of every wy droid emote typepath
 GLOBAL_LIST_INIT(wy_droid_emotes, setup_wy_droid_emotes())
+///Dropship CAS overlays
+GLOBAL_LIST_EMPTY(dropship_reticles)
 
 /proc/cached_params_decode(params_data, decode_proc)
 	. = GLOB.paramslist_cache[params_data]

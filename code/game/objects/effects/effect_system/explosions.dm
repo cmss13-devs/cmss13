@@ -148,3 +148,8 @@
 		S.start()
 		if(!do_NOT_delete)
 			qdel(src)
+
+/proc/explosion_particles(location, number = 10)
+	var/datum/effect_system/expl_particles/Particle = new /datum/effect_system/expl_particles()
+	Particle.set_up(number, 0, location)
+	Particle.start()

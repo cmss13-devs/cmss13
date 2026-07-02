@@ -9,6 +9,10 @@
 /// From /atom/movable/Move(): (atom/NewLoc)
 #define COMSIG_MOVABLE_PRE_MOVE "movable_pre_move"
 	#define COMPONENT_CANCEL_MOVE (1<<0)
+/// From /area/shuttle/drop1/Entered() and /area/shuttle/drop2/Entered(): (area/dropship_area)
+#define COMSIG_MOVABLE_ENTERED_DROPSHIP "movable_entered_dropship"
+/// From /area/shuttle/drop1/Exited() and /area/shuttle/drop2/Exited(): (area/dropship_area)
+#define COMSIG_MOVABLE_EXITED_DROPSHIP "movable_exited_dropship"
 /// From /turf/open/gm/river/Entered(): (turf/open/gm/river/river, covered)
 #define COMSIG_MOVABLE_ENTERED_RIVER "movable_entered_river"
 /// From /atom/movable/proc/doMove: I think it only works with forceMove so watch out

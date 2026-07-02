@@ -208,6 +208,10 @@
 
 		if(interactee && isatom(interactee))
 			interactee.check_eye(src)
+
+	// Update dropship HUD overlays
+	init_dropship_hud_overlays()
+
 	return TRUE
 
 /mob/living/carbon/human/on_dazed_trait_gain(datum/source)

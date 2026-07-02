@@ -8415,7 +8415,7 @@
 	},
 /obj/structure/machinery/computer/shuttle/dropship/flight/lz2,
 /turf/open/gm/grass/grass1,
-/area/lv624/landing/console2)
+/area/lv624/landing/console)
 "aRu" = (
 /obj/structure/machinery/landinglight{
 	dir = 8
@@ -12148,7 +12148,7 @@
 /obj/structure/surface/table,
 /obj/structure/machinery/computer/shuttle/dropship/flight/lz1,
 /turf/open/gm/dirt,
-/area/lv624/landing/console)
+/area/lv624/landing/console2)
 "eDy" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
 /turf/open/gm/grass/grass1,

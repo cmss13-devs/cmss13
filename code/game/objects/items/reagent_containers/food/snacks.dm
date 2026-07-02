@@ -3221,6 +3221,17 @@
 	else
 		..()
 
+/obj/item/reagent_container/food/snacks/tortilla
+	name = "tortilla"
+	desc = "A baked flatbread, perfect for tacos."
+	icon = 'icons/obj/items/food/food_ingredients.dmi'
+	icon_state = "tortilla"
+	bitesize = 3
+
+/obj/item/reagent_container/food/snacks/tortilla/Initialize(mapload, ...)
+	. = ..()
+	reagents.add_reagent("nutriment", 7)
+
 /obj/item/reagent_container/food/snacks/taco
 	name = "taco"
 	desc = "Take a bite!"
@@ -3252,6 +3263,26 @@
 	. = ..()
 	reagents.add_reagent("meatprotein", 2)
 
+/obj/item/reagent_container/food/snacks/raw_bacon
+	name = "raw bacon"
+	desc = "God's gift to man in uncooked form."
+	icon = 'icons/obj/items/food/meat.dmi'
+	icon_state = "raw_bacon"
+
+/obj/item/reagent_container/food/snacks/raw_bacon/Initialize()
+	. = ..()
+	reagents.add_reagent("meatprotein", 1)
+
+/obj/item/reagent_container/food/snacks/bacon
+	name = "bacon"
+	desc = "It looks crispy and tastes amazing! Mmm... Bacon."
+	icon = 'icons/obj/items/food/meat.dmi'
+	icon_state = "bacon"
+
+/obj/item/reagent_container/food/snacks/bacon/Initialize()
+	. = ..()
+	reagents.add_reagent("meatprotein", 4)
+
 /obj/item/reagent_container/food/snacks/rawmeatball
 	name = "raw meatball"
 	desc = "A raw meatball."
@@ -3262,6 +3293,22 @@
 /obj/item/reagent_container/food/snacks/rawmeatball/Initialize()
 	. = ..()
 	reagents.add_reagent("meatprotein", 2)
+
+/obj/item/reagent_container/food/snacks/rawmeatball/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_NOTICE("Use unique action to flatten it into a patty.")
+
+/obj/item/reagent_container/food/snacks/rawmeatball/unique_action(mob/user)
+	user.visible_message(
+		SPAN_NOTICE("[user] flattens [src] into a patty."),
+		SPAN_NOTICE("You flatten [src] into a raw patty.")
+	)
+	playsound(user, 'sound/effects/blobattack.ogg', 50, TRUE)
+	var/obj/item/reagent_container/food/snacks/meat/patty_raw/M = new(get_turf(user))
+	user.drop_held_item(src)
+	qdel(src)
+	user.put_in_hands(M)
+	return TRUE
 
 /obj/item/reagent_container/food/snacks/hotdog
 	name = "hotdog"

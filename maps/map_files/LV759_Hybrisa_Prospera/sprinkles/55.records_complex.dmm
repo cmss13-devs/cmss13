@@ -1894,8 +1894,8 @@
 	pixel_x = -5;
 	pixel_y = -10
 	},
-/obj/item/book/manual/chef_recipes,
-/obj/item/book/manual/chef_recipes,
+/obj/item/chef_recipes,
+/obj/item/chef_recipes,
 /obj/item/book/manual/hydroponics_beekeeping,
 /obj/item/book/manual/hydroponics_beekeeping,
 /obj/item/prop/magazine/book/starshiptroopers{
@@ -2710,9 +2710,9 @@
 /obj/item/book/manual/barman_recipes,
 /obj/item/book/manual/barman_recipes,
 /obj/item/book/manual/barman_recipes,
-/obj/item/book/manual/chef_recipes,
-/obj/item/book/manual/chef_recipes,
-/obj/item/book/manual/chef_recipes,
+/obj/item/chef_recipes,
+/obj/item/chef_recipes,
+/obj/item/chef_recipes,
 /turf/open/floor/hybrisa/wood/whitewood,
 /area/lv759/indoors/admin_records)
 "Cr" = (

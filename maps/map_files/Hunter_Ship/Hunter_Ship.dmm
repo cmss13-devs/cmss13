@@ -20879,7 +20879,7 @@
 /obj/item/book/manual/barman_recipes{
 	name = "Barman Recipes: Mixing Drinks and Changing Lives Under the Hunt"
 	},
-/obj/item/book/manual/chef_recipes{
+/obj/item/chef_recipes{
 	name = "Pans and Dishes: Your Way Around the Clan Kitchens"
 	},
 /obj/item/book/manual/engineering_construction{

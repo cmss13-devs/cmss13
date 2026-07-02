@@ -1605,7 +1605,7 @@
 /area/lv522/oob)
 "ans" = (
 /obj/structure/surface/table/almayer,
-/obj/item/book/manual/chef_recipes,
+/obj/item/chef_recipes,
 /turf/open/floor/prison/kitchen,
 /area/lv522/indoors/a_block/kitchen)
 "anv" = (

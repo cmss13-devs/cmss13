@@ -1,0 +1,115 @@
+/datum/cooking_surface/stovetop_burner
+	surface_name = "burner"
+	cooker_id = COOKER_SURFACE_STOVE
+
+/obj/structure/machinery/cooking/stovetop
+	name = "stovetop"
+	desc = "An electric stovetop with four burners."
+	icon_state = "stove"
+	density = FALSE
+	anchored = TRUE
+	layer = BELOW_OBJ_LAYER
+	cooking = FALSE
+	allowed_containers = list(
+		/obj/item/reagent_container/cooking/pot,
+		/obj/item/reagent_container/cooking/pan,
+	)
+
+/obj/structure/machinery/cooking/stovetop/Initialize(mapload)
+	. = ..()
+
+	for(var/index in 1 to 4)
+		surfaces += new/datum/cooking_surface/stovetop_burner(src)
+
+/obj/structure/machinery/cooking/stovetop/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_NOTICE("<b>Ctrl-Click</b> on a burner to set its timer, temperature, and toggle it on or off.")
+
+#define ICON_SPLIT_X 16
+#define ICON_SPLIT_Y 21
+
+/obj/structure/machinery/cooking/stovetop/clickpos_to_surface(modifiers)
+	var/icon_x = text2num(modifiers["icon-x"])
+	var/icon_y = text2num(modifiers["icon-y"])
+	if(icon_x <= ICON_SPLIT_X && icon_y <= ICON_SPLIT_Y)
+		return 1
+	else if(icon_x > ICON_SPLIT_X && icon_y <= ICON_SPLIT_Y)
+		return 2
+	else if(icon_x <= ICON_SPLIT_X && icon_y > ICON_SPLIT_Y)
+		return 3
+	else if(icon_x > ICON_SPLIT_X && icon_y > ICON_SPLIT_Y)
+		return 4
+
+#undef ICON_SPLIT_X
+#undef ICON_SPLIT_Y
+
+/obj/structure/machinery/cooking/stovetop/attack_hand(mob/user, params)
+	var/input = clickpos_to_surface(params)
+	if(!input)
+		return
+
+	var/datum/cooking_surface/burner = surfaces[input]
+	if(burner && burner.container)
+		if(burner.on)
+			SEND_SIGNAL(burner.container, COMSIG_COOK_MACHINE_STEP_INTERRUPTED, burner)
+			var/mob/living/carbon/human/burn_victim = user
+			if(istype(burn_victim) && !burn_victim.gloves)
+				var/which_hand = "l_hand"
+				if(!burn_victim.hand)
+					which_hand = "r_hand"
+				switch(burner.temperature)
+					if(J_HI)
+						burn_victim.apply_damage(5, BURN, which_hand, enviro = TRUE)
+					if(J_MED)
+						burn_victim.apply_damage(2, BURN, which_hand, enviro = TRUE)
+					if(J_LO)
+						burn_victim.apply_damage(1, BURN, which_hand, enviro = TRUE)
+
+				to_chat(burn_victim, SPAN_DANGER("You burn your hand a little taking [burner.container] off of the stove."))
+		user.put_in_hands(burner.container)
+		burner.UnregisterSignal(burner.container, COMSIG_PARENT_EXAMINE)
+		burner.container = null
+		update_icon()
+
+/obj/structure/machinery/cooking/stovetop/update_surface_icon(surface_idx)
+	var/datum/cooking_surface/surface = surfaces[surface_idx]
+
+	if(!surface.container)
+		return
+	switch(surface_idx)
+		if(1)
+			surface.container.pixel_x = -7
+			surface.container.pixel_y = 1
+		if(2)
+			surface.container.pixel_x = 7
+			surface.container.pixel_y = 1
+		if(3)
+			surface.container.pixel_x = -7
+			surface.container.pixel_y = 12
+		if(4)
+			surface.container.pixel_x = 7
+			surface.container.pixel_y = 12
+	add_to_visible(surface.container, surface_idx)
+
+/obj/structure/machinery/cooking/stovetop/update_icon()
+	. = ..()
+	overlays.Cut()
+
+	if(cooking)
+		overlays += image(icon, icon_state = "indicator")
+
+	for(var/index in 1 to length(surfaces))
+		var/datum/cooking_surface/surface = surfaces[index]
+		if(surface.on)
+			overlays += image(icon, icon_state = "burner_[index]")
+			if(surface.container)
+				overlays += image(icon, icon_state="steam_[index]", layer = ABOVE_OBJ_LAYER)
+
+/obj/structure/machinery/cooking/stovetop/add_to_visible(obj/item/reagent_container/cooking/container, surface_idx)
+	container.vis_flags = VIS_INHERIT_LAYER | VIS_INHERIT_PLANE | VIS_INHERIT_ID
+	container.make_mini()
+	vis_contents += container
+	if(surface_idx == 2 || surface_idx == 4)
+		var/matrix/transform_matrix = matrix()
+		transform_matrix.Scale(-1, 1)
+		container.apply_transform(transform_matrix)

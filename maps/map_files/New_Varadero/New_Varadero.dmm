@@ -41,6 +41,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/predship/tile/hunter_tile_6/west,
 /area/varadero/interior_protected/vessel)
+"aag" = (
+/obj/structure/surface/table,
+/obj/item/tool/pickaxe/plasmacutter,
+/turf/open/floor/corsat/cargo,
+/area/varadero/interior_protected/caves/digsite)
 "aah" = (
 /obj/structure/bed/chair/hunter{
 	name = "alien chair";
@@ -71,6 +76,9 @@
 	color = "#94362C";
 	name = "leaking fuel"
 	},
+/obj/effect/decal/cleanable/blood/yautja{
+	icon_state = "mfloor6"
+	},
 /turf/open/predship/hunter_catwalk_new,
 /area/varadero/interior_protected/vessel)
 "aaj" = (
@@ -88,6 +96,7 @@
 "aal" = (
 /obj/item/device/multitool/yautja,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/yautja,
 /turf/open/predship/tile/red,
 /area/varadero/interior_protected/vessel)
 "aam" = (
@@ -122,11 +131,31 @@
 	},
 /turf/closed/wall/r_wall/unmeltable,
 /area/varadero/interior/oob)
+"aas" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/gm/dirt/dark_brown,
+/area/varadero/interior_protected/caves/digsite)
+"aat" = (
+/turf/closed/wall/mineral/bone_resin,
+/area/varadero/interior/oob)
+"aau" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_13"
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/gm/dirt/dark_brown,
+/area/varadero/interior_protected/caves/digsite)
 "aav" = (
 /obj/item/tool/pickaxe,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/caves/east)
+"aaw" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	icon_state = "sparsegrass_3"
+	},
+/turf/open/gm/dirt/dark_brown,
+/area/varadero/interior_protected/caves/digsite)
 "aax" = (
 /obj/structure/shuttle/part/dropship3/transparent/engine_right_exhaust{
 	name = "\improper UD-6D - Las Guasimas"
@@ -181,6 +210,14 @@
 	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/varadero/interior/beach_bar)
+"aaA" = (
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = -4;
+	pixel_y = 12;
+	color = "#8E897F"
+	},
+/turf/closed/wall/mineral/bone_resin,
+/area/varadero/interior/oob)
 "aaB" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice8";
@@ -198,12 +235,20 @@
 /obj/structure/platform_decoration/metal/kutjevo/east,
 /turf/open/gm/coast/east,
 /area/varadero/exterior/pontoon_beach)
+"aaD" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/predship/plating,
+/area/varadero/interior_protected/vessel)
 "aaE" = (
 /turf/open/gm/coast/beachcorner2/north_east,
 /area/varadero/exterior/islands)
 "aaF" = (
 /turf/open/gm/coast/north,
 /area/varadero/exterior/islands)
+"aaG" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/caves/digsite)
 "aaH" = (
 /turf/open/gm/coast/beachcorner2/north_west,
 /area/varadero/exterior/islands)
@@ -213,6 +258,11 @@
 "aaJ" = (
 /turf/open/gm/coast/west,
 /area/varadero/exterior/islands)
+"aaK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/yautja,
+/turf/open/predship/tile/red,
+/area/varadero/interior_protected/vessel)
 "aaL" = (
 /turf/open/gm/coast/beachcorner2/south_east,
 /area/varadero/exterior/islands)
@@ -242,6 +292,13 @@
 	},
 /turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior/caves/north_research)
+"aaR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/yautja{
+	icon_state = "mfloor6"
+	},
+/turf/open/predship/tile/red4/glow,
+/area/varadero/interior_protected/vessel)
 "aaS" = (
 /obj/structure/sign/calendar{
 	pixel_y = 29
@@ -252,6 +309,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/varadero/interior/security)
+"aaT" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/tool/pickaxe/plasmacutter,
+/turf/open/predship/tile,
+/area/varadero/interior_protected/vessel)
 "aaU" = (
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/asteroidfloor/north,
@@ -364,6 +427,17 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/varadero/interior/medical)
+"abg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/yautja{
+	icon_state = "mfloor6"
+	},
+/turf/open/predship/tile/red4,
+/area/varadero/interior_protected/vessel)
+"abh" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/bare_catwalk,
+/area/varadero/interior_protected/caves/digsite)
 "abi" = (
 /turf/open/floor/shiva/yellow/north,
 /area/varadero/interior/comms1)
@@ -387,6 +461,16 @@
 "abn" = (
 /turf/open/floor/shiva/yellow/west,
 /area/varadero/interior/comms1)
+"abo" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/bare_catwalk,
+/area/varadero/interior_protected/caves/digsite)
+"abp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/monsoon)
 "abq" = (
 /obj/effect/acid_hole,
 /turf/closed/wall,
@@ -423,25 +507,12 @@
 /area/sky/level4)
 "abw" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/landmark/start/working_joe/colony,
-/obj/effect/landmark/late_join/working_joe/colony,
 /turf/open/floor/shiva/yellowfull/west,
 /area/varadero/interior/maintenance/security/north)
 "abx" = (
 /obj/structure/surface/rack,
 /obj/item/tool/screwdriver,
 /obj/effect/decal/cleanable/dirt,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/cryopod/joe/weyland/alt,
 /turf/open/floor/shiva/yellow/east,
 /area/varadero/interior/maintenance/security/north)
 "aby" = (
@@ -489,6 +560,14 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/central)
+"abK" = (
+/obj/structure/sign/safety/west,
+/obj/structure/sign/safety/synth_storage{
+	pixel_x = 15;
+	pixel_y = 0
+	},
+/turf/closed/wall,
+/area/varadero/interior/maintenance/security/north)
 "abL" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /obj/effect/decal/cleanable/dirt,
@@ -593,19 +672,13 @@
 /obj/structure/flora/jungle/vines/light_2,
 /turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/central)
-"aci" = (
-/obj/effect/landmark/objective_landmark/medium,
-/obj/effect/decal/hybrisa/trash{
-	icon_state = "trash_13"
-	},
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior_protected/caves/digsite)
 "acj" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_6"
 	},
 /obj/effect/landmark/objective_landmark/far,
-/turf/open/gm/dirt/dark_brown,
+/obj/structure/surface/table,
+/turf/open/floor/corsat/cargo,
 /area/varadero/interior_protected/caves/digsite)
 "ack" = (
 /obj/effect/decal/cleanable/dirt,
@@ -713,11 +786,6 @@
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/central)
-"acE" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate2,
-/obj/item/tool/pickaxe/plasmacutter,
-/turf/open/floor/plating,
-/area/varadero/interior_protected/caves/digsite)
 "acF" = (
 /obj/structure/machinery/floodlight/landing{
 	name = "Construction Light";
@@ -782,12 +850,6 @@
 /area/varadero/interior_protected/caves/digsite)
 "acR" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior_protected/caves/digsite)
-"acS" = (
-/obj/structure/surface/table{
-	flipped = 1
-	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
 "acT" = (
@@ -1061,6 +1123,7 @@
 	color = "#8E897F";
 	dir = 5
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/predship/hunter_grate/east,
 /area/varadero/interior_protected/vessel)
 "adO" = (
@@ -1232,6 +1295,7 @@
 /area/varadero/interior_protected/vessel)
 "aes" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/predship/plating,
 /area/varadero/interior_protected/vessel)
 "aet" = (
@@ -2185,10 +2249,8 @@
 /area/varadero/interior/dock_control)
 "ahh" = (
 /obj/effect/decal/remains/human,
-/obj/effect/decal/cleanable/blood{
-	icon_state = "mfloor3";
-	color = "#20d450";
-	basecolor = "#20d450"
+/obj/effect/decal/cleanable/blood/yautja{
+	icon_state = "mfloor5"
 	},
 /turf/open/predship/tile/red,
 /area/varadero/interior_protected/vessel)
@@ -3231,6 +3293,12 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance)
+"akg" = (
+/obj/structure/sign/safety/airlock{
+	pixel_x = 8
+	},
+/turf/closed/wall,
+/area/varadero/interior/maintenance/security/north)
 "akh" = (
 /obj/structure/prop/colorable_rock/colorable{
 	dir = 4;
@@ -3331,12 +3399,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/predship/mainfloor/edge,
 /area/varadero/interior_protected/vessel)
-"akv" = (
-/obj/effect/decal/cleanable/blood/splatter{
-	icon_state = "mfloor4"
-	},
-/turf/open/predship/mainfloor/direction_1,
-/area/varadero/interior_protected/vessel)
 "akw" = (
 /obj/effect/decal/cleanable/blood/splatter{
 	icon_state = "mfloor6"
@@ -3347,10 +3409,14 @@
 /area/varadero/interior_protected/vessel)
 "akx" = (
 /obj/effect/hunter/rune,
+/obj/effect/decal/cleanable/blood/splatter{
+	icon_state = "mfloor4"
+	},
 /turf/open/predship/tile,
 /area/varadero/interior_protected/vessel)
 "aky" = (
 /obj/effect/landmark/corpsespawner/new_varadero/lacn_groundcrew,
+/obj/effect/decal/cleanable/blood,
 /turf/open/predship/tile/red4,
 /area/varadero/interior_protected/vessel)
 "akz" = (
@@ -3648,6 +3714,8 @@
 	pixel_y = 12;
 	color = "#8E897F"
 	},
+/obj/effect/decal/cleanable/blood/yautja,
+/obj/effect/decal/remains/human,
 /turf/open/predship/tile/red4/glow,
 /area/varadero/interior_protected/vessel)
 "als" = (
@@ -3719,22 +3787,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_12"
-	},
-/turf/open/predship/tile/red4,
-/area/varadero/interior_protected/vessel)
-"alF" = (
-/obj/effect/decal/cleanable/blood{
-	color = "#20d450";
-	basecolor = "#20d450"
-	},
-/obj/effect/decal/hybrisa/dirt,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/decal/cleanable/blood{
-	color = "#20d450"
 	},
 /turf/open/predship/tile/red4,
 /area/varadero/interior_protected/vessel)
@@ -3952,6 +4004,18 @@
 	},
 /turf/open/gm/dirt/dark_brown,
 /area/varadero/interior_protected/maintenance/south)
+"ami" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/fence/slim{
+	cut = 1;
+	density = 0
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/north)
 "amj" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -4070,21 +4134,6 @@
 /obj/effect/decal/large_stain,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/predship/tile/red4,
-/area/varadero/interior_protected/vessel)
-"amA" = (
-/obj/effect/decal/cleanable/blood{
-	color = "#20d450";
-	basecolor = "#20d450"
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/decal/cleanable/blood{
-	color = "#20d450"
-	},
-/turf/open/predship/hunter_grille,
 /area/varadero/interior_protected/vessel)
 "amB" = (
 /obj/structure/machinery/door/poddoor/yautja/open{
@@ -4541,28 +4590,17 @@
 /turf/closed/wall/huntership,
 /area/varadero/interior/oob)
 "anT" = (
-/obj/effect/decal/cleanable/blood{
-	color = "#20d450";
-	basecolor = "#20d450"
+/obj/effect/decal/remains/human,
+/obj/structure/prop/ice_colony/ground_wire,
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8
 	},
 /obj/effect/decal/remains/human,
 /obj/structure/prop/ice_colony/ground_wire,
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 8
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/decal/cleanable/blood{
-	color = "#20d450"
-	},
-/obj/effect/decal/remains/human,
-/obj/structure/prop/ice_colony/ground_wire,
-/obj/structure/prop/ice_colony/ground_wire{
-	dir = 8
-	},
+/obj/effect/decal/cleanable/blood/yautja,
 /turf/open/predship/mainfloor/direction_4/east,
 /area/varadero/interior_protected/vessel)
 "anU" = (
@@ -5321,6 +5359,13 @@
 /obj/structure/largecrate/supply/supplies/water,
 /turf/open/floor/corsat/brown/southeast,
 /area/varadero/interior_protected/caves/makeshift_tent)
+"aqh" = (
+/obj/structure/sign/safety/synth_storage{
+	pixel_x = 15;
+	pixel_y = 0
+	},
+/turf/closed/wall,
+/area/varadero/interior/maintenance/security/north)
 "aqi" = (
 /obj/structure/prop/colorable_rock/colorable{
 	dir = 5;
@@ -7134,6 +7179,12 @@
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/maintenance/south)
+"avI" = (
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_s"
+	},
+/turf/open/floor/bcircuit,
+/area/varadero/interior/maintenance/security/north)
 "avJ" = (
 /obj/structure/girder,
 /turf/open/gm/dirt/dark_brown,
@@ -7452,9 +7503,11 @@
 /turf/open/floor/plating/bare_catwalk,
 /area/varadero/interior_protected/caves/digsite)
 "awG" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/brown/southwest,
 /area/varadero/interior_protected/caves/digsite)
 "awH" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/brown/southeast,
 /area/varadero/interior_protected/caves/digsite)
 "awI" = (
@@ -7610,19 +7663,20 @@
 /turf/open/floor/plating/bare_catwalk,
 /area/varadero/interior_protected/caves/digsite)
 "axe" = (
-/obj/effect/landmark/objective_landmark/far,
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_6"
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/brown/west,
 /area/varadero/interior_protected/caves/digsite)
 "axf" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/brown/east,
 /area/varadero/interior_protected/caves/digsite)
 "axg" = (
-/obj/effect/decal/cleanable/blood/splatter,
 /obj/item/stool,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/brown/east,
 /area/varadero/interior_protected/caves/digsite)
 "axh" = (
@@ -7637,6 +7691,7 @@
 	},
 /obj/effect/landmark/objective_landmark/medium,
 /obj/structure/barricade/handrail/wire,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/cargo,
 /area/varadero/interior_protected/caves/digsite)
 "axj" = (
@@ -7756,12 +7811,15 @@
 /obj/structure/barricade/handrail/wire{
 	layer = 3.01
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/bare_catwalk,
 /area/varadero/interior_protected/caves/digsite)
 "axB" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/brown/west,
 /area/varadero/interior_protected/caves/digsite)
 "axC" = (
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat/brown/east,
 /area/varadero/interior_protected/caves/digsite)
 "axD" = (
@@ -7770,11 +7828,13 @@
 	},
 /obj/item/stool,
 /obj/item/stool,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/brown/east,
 /area/varadero/interior_protected/caves/digsite)
 "axE" = (
 /obj/structure/barricade/handrail/wire,
 /obj/structure/closet/hybrisa/wy_bio,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/cargo,
 /area/varadero/interior_protected/caves/digsite)
 "axF" = (
@@ -7891,12 +7951,14 @@
 /turf/open/floor/wood,
 /area/varadero/interior/research)
 "axZ" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/brown/northeast,
 /area/varadero/interior_protected/caves/digsite)
 "aya" = (
 /obj/effect/decal/cleanable/blood/splatter{
 	icon_state = "mfloor5"
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/brown/east,
 /area/varadero/interior_protected/caves/digsite)
 "ayb" = (
@@ -8032,6 +8094,16 @@
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/caves/east)
+"ayx" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_sn_full_cap";
+	color = "#b29082"
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/north)
 "ayy" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/inflatable/popped/door,
@@ -8667,6 +8739,17 @@
 	},
 /turf/open/gm/dirt/dark_brown/variant_5,
 /area/varadero/interior_protected/caves)
+"aAl" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_sn_full_cap";
+	dir = 4;
+	color = "#b29082"
+	},
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/turf/open/floor/bcircuit,
+/area/varadero/interior/maintenance/security/north)
 "aAm" = (
 /obj/structure/prop/hybrisa/fakeplatforms/platform4{
 	dir = 1
@@ -8797,6 +8880,14 @@
 	},
 /turf/open/floor/shiva/greenfull/west,
 /area/varadero/interior/hall_SE)
+"aAC" = (
+/obj/structure/reagent_dispensers/tank/fuel/spacecraft,
+/obj/item/engi_upgrade_kit{
+	pixel_x = -1;
+	pixel_y = 12
+	},
+/turf/open/floor/asteroidwarning/southwest,
+/area/varadero/interior/maintenance/security/north)
 "aAD" = (
 /obj/structure/surface/rack,
 /obj/structure/machinery/light/small{
@@ -8958,6 +9049,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
+"aAX" = (
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/bcircuit,
+/area/varadero/interior/maintenance/security/north)
 "aAY" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -9426,6 +9522,19 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/platingdmg3,
 /area/varadero/interior/hall_SE)
+"aCo" = (
+/obj/item/device/defibrillator/synthetic/seegson,
+/obj/item/device/defibrillator/synthetic/seegson{
+	pixel_x = 0;
+	pixel_y = -3
+	},
+/obj/item/stack/cable_coil/cut,
+/obj/item/cell/high,
+/obj/item/cell/high,
+/obj/structure/closet/secure_closet/engineering_electrical,
+/obj/item/maintenance_jack,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/interior/maintenance/security/north)
 "aCp" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
@@ -10084,28 +10193,19 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/lz1_near)
 "aEg" = (
-/obj/effect/decal/cleanable/blood{
-	color = "#20d450";
-	basecolor = "#20d450"
-	},
 /obj/effect/decal/remains/human,
 /obj/structure/prop/ice_colony/ground_wire,
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/decal/cleanable/blood{
-	color = "#20d450"
-	},
 /obj/effect/decal/remains/human,
 /obj/structure/prop/ice_colony/ground_wire,
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/yautja{
+	icon_state = "mfloor5"
 	},
 /turf/open/predship/mainfloor/direction_4/east,
 /area/varadero/interior_protected/vessel)
@@ -12140,10 +12240,6 @@
 /turf/open/floor/shiva,
 /area/varadero/interior/disposals)
 "aJp" = (
-/obj/effect/decal/cleanable/blood{
-	color = "#20d450";
-	basecolor = "#20d450"
-	},
 /obj/effect/decal/remains/human,
 /obj/structure/prop/ice_colony/ground_wire,
 /obj/structure/prop/ice_colony/ground_wire{
@@ -12156,14 +12252,6 @@
 	dir = 1
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/decal/cleanable/blood{
-	color = "#20d450"
-	},
 /obj/effect/decal/remains/human,
 /obj/structure/prop/ice_colony/ground_wire,
 /obj/structure/prop/ice_colony/ground_wire{
@@ -12175,6 +12263,7 @@
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 1
 	},
+/obj/effect/decal/cleanable/blood/yautja,
 /turf/open/predship/tile/red4,
 /area/varadero/interior_protected/vessel)
 "aJq" = (
@@ -14369,6 +14458,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/bluefull/west,
 /area/varadero/interior/hall_SE)
+"aPe" = (
+/obj/structure/machinery/cryopod/joe/seegson/alt,
+/obj/effect/decal/warning_stripes/asteroid,
+/turf/open/floor/mech_bay_recharge_floor,
+/area/varadero/interior/maintenance/security/north)
 "aPf" = (
 /obj/structure/platform_decoration/metal/kutjevo,
 /turf/open/gm/river/ocean/deep_ocean,
@@ -14823,6 +14917,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/security)
+"aQq" = (
+/obj/structure/machinery/meter,
+/turf/closed/wall/r_wall/unmeltable,
+/area/varadero/interior/oob)
 "aQr" = (
 /obj/effect/decal/hybrisa/trash,
 /obj/effect/decal/cleanable/dirt,
@@ -15894,6 +15992,17 @@
 	name = "water"
 	},
 /area/varadero/interior/maintenance/security/south)
+"aTg" = (
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "mfloor3"
+	},
+/turf/open/floor/asteroid,
+/area/varadero/exterior/monsoon)
+"aTh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/asteroid,
+/area/varadero/exterior/monsoon)
 "aTi" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -16402,6 +16511,15 @@
 /obj/structure/platform_decoration/metal/kutjevo/north,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/pontoon_beach)
+"aUA" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/shiva/multi_tiles,
+/area/varadero/interior/comms1)
 "aUB" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/weapon/dart,
@@ -17386,6 +17504,16 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
+"aXn" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "mfloor6"
+	},
+/turf/open/floor/shiva/green,
+/area/varadero/interior/comms1)
 "aXo" = (
 /obj/structure/platform/stone/kutjevo/north,
 /obj/structure/platform/stone/kutjevo/west,
@@ -18318,6 +18446,17 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/security)
+"aZX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/gibspawner/human,
+/obj/effect/decal/cleanable/blood/splatter{
+	icon_state = "mfloor5"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/gm/dirt/dark_brown,
+/area/varadero/exterior/eastbeach)
 "aZY" = (
 /obj/structure/catwalk,
 /obj/structure/bed/chair,
@@ -19179,6 +19318,10 @@
 /obj/effect/hunter/ancient_temple/rubble/rubble,
 /turf/open/gm/coast/west,
 /area/varadero/exterior/eastocean)
+"bcD" = (
+/obj/item/ammo_magazine/rifle/l42a/heap/empty,
+/turf/open/gm/dirt/dark_brown,
+/area/varadero/exterior/eastbeach)
 "bcE" = (
 /obj/structure/platform/metal/kutjevo_smooth/north{
 	climb_delay = 1
@@ -19380,6 +19523,15 @@
 /obj/structure/catwalk,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/pool)
+"bde" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/obj/effect/decal/cleanable/blood/yautja{
+	icon_state = "mfloor5"
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/varadero/exterior/eastbeach)
 "bdf" = (
 /obj/item/clothing/under/swimsuit/black,
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
@@ -20122,6 +20274,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/multi_tiles/north,
 /area/varadero/interior/mess)
+"bfe" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/asteroid,
+/area/varadero/exterior/pontoon_beach)
 "bff" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/small_shards,
@@ -21066,7 +21222,7 @@
 "bhD" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/coast/west,
-/area/varadero/exterior/eastbeach)
+/area/varadero/interior/caves/east)
 "bhE" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Underground Hangar";
@@ -21300,6 +21456,16 @@
 /obj/structure/surface/rack,
 /turf/open/floor/shiva/blue,
 /area/varadero/interior/maintenance)
+"bio" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/obj/effect/decal/cleanable/blood/gibs/yautja/limb,
+/obj/effect/decal/cleanable/blood/yautja{
+	icon_state = "mfloor5"
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/varadero/exterior/eastbeach)
 "bip" = (
 /obj/structure/surface/rack,
 /turf/open/floor/shiva/blue/north,
@@ -21658,16 +21824,7 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/north)
-"bjo" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/fence/slim{
-	cut = 1;
-	density = 0
-	},
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/maintenance/security/north)
 "bjp" = (
-/obj/structure/reagent_dispensers/tank/fuel/spacecraft,
 /obj/effect/decal/warning_stripes/asteroid{
 	icon_state = "warning_c";
 	dir = 4
@@ -21730,11 +21887,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/yellow,
 /area/varadero/interior/maintenance/security/north)
-"bjy" = (
-/obj/effect/landmark/start/working_joe/colony,
-/obj/effect/landmark/late_join/working_joe/colony,
-/turf/closed/wall,
-/area/varadero/interior/maintenance/security/south/hangar)
 "bjz" = (
 /obj/structure/reagent_dispensers/tank/fuel/oxygentank,
 /turf/open/floor/asteroid,
@@ -22012,24 +22164,17 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/north)
-"bkq" = (
+"bkr" = (
+/obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/fence/slim/door{
-	dir = 8
-	},
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/maintenance/security/north)
-"bkr" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 9
-	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/north)
 "bks" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /obj/structure/machinery/door/airlock/almayer/maint{
 	name = "\improper Underground Maintenance";
 	req_one_access = null;
@@ -22041,6 +22186,9 @@
 /obj/effect/decal/warning_stripes/asteroid{
 	icon_state = "warning_s";
 	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 9
 	},
 /turf/open/floor/shiva/yellow/west,
 /area/varadero/interior/maintenance/security/north)
@@ -22055,15 +22203,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva/multi_tiles/north,
 /area/varadero/interior/maintenance/security/north)
-"bkx" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/cryopod/joe/weyland/alt,
-/turf/closed/wall,
-/area/varadero/interior/maintenance/security/south/hangar)
 "bky" = (
 /obj/structure/cargo_container/lockmart/right,
 /turf/open/floor/asteroid,
@@ -22314,6 +22453,9 @@
 	dir = 8
 	},
 /obj/structure/largecrate/random,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/shiva/yellow/north,
 /area/varadero/interior/maintenance/security/north)
 "blg" = (
@@ -22772,19 +22914,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance/security/north)
-"bmz" = (
-/obj/structure/prop/structure_lattice{
-	dir = 1;
-	health = 300
-	},
-/obj/structure/prop/structure_lattice{
-	dir = 1;
-	layer = 3.1;
-	pixel_y = 10;
-	health = 300
-	},
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior/maintenance/security/north)
 "bmA" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -23238,6 +23367,14 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/interior/caves/north_research)
+"bnH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/obj/effect/decal/cleanable/blood/yautja{
+	icon_state = "mfloor2"
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/varadero/exterior/eastbeach)
 "bnI" = (
 /obj/item/stack/sheet/metal{
 	amount = 1
@@ -24032,6 +24169,15 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
+"bpP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/obj/effect/decal/cleanable/blood/yautja{
+	icon_state = "mfloor6"
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/varadero/exterior/eastbeach)
 "bpQ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -27270,6 +27416,13 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
+"byw" = (
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/obj/item/stack/sheet/metal{
+	amount = 1
+	},
+/turf/open/gm/dirt/dark_brown,
+/area/varadero/exterior/eastbeach)
 "byx" = (
 /obj/structure/closet/secure_closet/guncabinet{
 	locked = 0;
@@ -27681,10 +27834,6 @@
 "bzC" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
-	},
-/obj/effect/decal/cleanable/blood{
-	color = "#20d450";
-	basecolor = "#20d450"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/carpet,
@@ -28513,12 +28662,6 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
-"bBF" = (
-/obj/effect/decal/cleanable/blood/xeno,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/gibspawner/xeno,
-/turf/open/floor/asteroid,
-/area/varadero/exterior/monsoon)
 "bBG" = (
 /obj/structure/blocker/invisible_wall/water,
 /obj/structure/prop/ice_colony/ground_wire{
@@ -28603,11 +28746,6 @@
 /obj/structure/machinery/power/apc/fully_broken/no_cell/north,
 /turf/open/floor/shiva/greenfull/west,
 /area/varadero/interior/comms1)
-"bBS" = (
-/obj/effect/decal/cleanable/blood/gibs/robot/limb,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva/floor3,
-/area/varadero/interior/hall_N)
 "bBT" = (
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "mfloor3"
@@ -29087,17 +29225,6 @@
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/monsoon)
-"bDl" = (
-/obj/structure/desertdam/decals/road_edge{
-	pixel_x = 16
-	},
-/obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "mfloor3"
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/gibspawner/xeno,
-/turf/open/floor/asteroid,
-/area/varadero/exterior/monsoon)
 "bDm" = (
 /obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/medium,
@@ -29154,7 +29281,7 @@
 "bDt" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "mfloor6"
+	icon_state = "mfloor4"
 	},
 /turf/open/floor/shiva/green/north,
 /area/varadero/interior/comms1)
@@ -29476,9 +29603,6 @@
 /area/varadero/interior/comms1)
 "bEl" = (
 /obj/structure/surface/rack,
-/obj/effect/decal/cleanable/blood/splatter{
-	icon_state = "mfloor6"
-	},
 /obj/item/clothing/suit/storage/jacket/marine/service/green,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/comms1)
@@ -29570,11 +29694,13 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/comms1)
 "bEx" = (
-/obj/effect/spawner/gibspawner/xeno,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood/xeno,
+/obj/item/ammo_casing{
+	icon_state = "cartridge_2";
+	dir = 8
+	},
 /turf/open/floor/shiva/green/east,
 /area/varadero/interior/comms1)
 "bEy" = (
@@ -29846,6 +29972,14 @@
 /obj/structure/largecrate/random/secure,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/eastbeach)
+"bFo" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "mfloor6";
+	layer = 2.5
+	},
+/turf/open/gm/road,
+/area/varadero/exterior/comms4)
 "bFp" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
@@ -29906,6 +30040,9 @@
 "bFy" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/small_shards,
+/obj/effect/decal/cleanable/blood/splatter{
+	icon_state = "mfloor6"
+	},
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/comms1)
 "bFz" = (
@@ -29957,22 +30094,13 @@
 "bFE" = (
 /obj/effect/decal/remains/xeno,
 /obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/spawner/gibspawner/xeno,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/comms1)
 "bFF" = (
-/obj/item/ammo_casing{
-	icon_state = "cartridge_2";
-	dir = 8
-	},
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/spawner/gibspawner/xeno,
 /turf/open/floor/shiva/green/east,
-/area/varadero/interior/comms1)
-"bFG" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "mfloor4"
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva/floor3,
 /area/varadero/interior/comms1)
 "bFH" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -30086,11 +30214,6 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
-"bFV" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood/gibs/robot/limb,
-/turf/open/floor/shiva/multi_tiles,
-/area/varadero/interior/comms1)
 "bFW" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes/asteroid{
@@ -30134,6 +30257,14 @@
 	},
 /turf/open/gm/dirt/desert_dug,
 /area/varadero/exterior/pontoon_beach)
+"bGe" = (
+/obj/effect/spawner/gibspawner/human,
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/gm/dirt/dark_brown,
+/area/varadero/exterior/eastbeach)
 "bGf" = (
 /obj/structure/barricade/handrail/wire{
 	layer = 3.01
@@ -30247,9 +30378,6 @@
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/comms1)
 "bGx" = (
-/obj/effect/decal/cleanable/blood{
-	icon_state = "mfloor4"
-	},
 /obj/item/explosive/grenade/high_explosive/airburst/buckshot,
 /turf/open/floor/shiva/green/east,
 /area/varadero/interior/comms1)
@@ -30565,7 +30693,6 @@
 /turf/open/floor/shiva/green/east,
 /area/varadero/interior/comms1)
 "bHt" = (
-/obj/effect/decal/remains/xeno,
 /obj/effect/decal/cleanable/blood/splatter{
 	icon_state = "mfloor5"
 	},
@@ -30580,6 +30707,7 @@
 /obj/effect/spawner/gibspawner/xeno,
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/remains/xeno,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/comms1)
 "bHw" = (
@@ -31176,6 +31304,11 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/asteroid,
 /area/varadero/exterior/monsoon)
+"bIR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/yautja,
+/turf/open/auto_turf/sand_white/layer0,
+/area/varadero/exterior/eastbeach)
 "bIS" = (
 /obj/structure/platform/metal/kutjevo_smooth/north{
 	climb_delay = 1
@@ -31485,6 +31618,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroid,
 /area/varadero/exterior/eastbeach)
+"bJH" = (
+/obj/effect/decal/cleanable/blood/splatter{
+	icon_state = "mfloor4"
+	},
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/gm/dirt/dark_brown,
+/area/varadero/exterior/eastbeach)
 "bJI" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3"
@@ -31492,12 +31633,12 @@
 /turf/open/floor/asteroid,
 /area/varadero/exterior/eastbeach)
 "bJJ" = (
-/obj/item/stack/sandbags_empty/half,
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /turf/open/gm/dirt2,
 /area/varadero/exterior/eastbeach)
 "bJK" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_4,
+/obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/gm/dirt/dark_brown,
 /area/varadero/exterior/eastbeach)
@@ -31571,17 +31712,6 @@
 	icon_state = "road_edge_decal3"
 	},
 /obj/structure/ship_ammo/heavygun/antitank,
-/turf/open/floor/asteroid,
-/area/varadero/exterior/monsoon)
-"bJW" = (
-/obj/effect/decal/hybrisa/colorable_rug{
-	pixel_x = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/gibspawner/xeno,
-/obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "mfloor3"
-	},
 /turf/open/floor/asteroid,
 /area/varadero/exterior/monsoon)
 "bJX" = (
@@ -31669,6 +31799,7 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "mfloor5"
 	},
+/obj/effect/spawner/gibspawner/xeno,
 /turf/open/hybrisa/street/sidewalkfull,
 /area/varadero/exterior/comms4)
 "bKg" = (
@@ -31703,6 +31834,11 @@
 "bKl" = (
 /obj/item/small_shards,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "mfloor5"
+	},
+/obj/effect/spawner/gibspawner/xeno,
+/obj/effect/decal/remains/xeno,
 /turf/open/floor/shiva/green,
 /area/varadero/interior/comms1)
 "bKm" = (
@@ -31874,6 +32010,7 @@
 /obj/effect/hunter/ancient_temple/rubble/rubble_1,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_magazine/rifle/m41aMK1/heap/empty,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/gm/dirt/dark_brown,
 /area/varadero/exterior/eastbeach)
 "bKJ" = (
@@ -31887,12 +32024,8 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/varadero/exterior/eastbeach)
 "bKL" = (
-/obj/effect/spawner/gibspawner/human,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood{
-	color = "#20d450";
-	basecolor = "#20d450"
-	},
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
 /turf/open/auto_turf/sand_white/layer0,
 /area/varadero/exterior/eastbeach)
 "bKM" = (
@@ -31901,15 +32034,20 @@
 /area/varadero/exterior/eastbeach)
 "bKN" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/gibspawner/xeno,
-/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sheet/metal{
+	amount = 1
+	},
 /turf/open/gm/dirt/dark_brown,
 /area/varadero/exterior/eastbeach)
 "bKO" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_1,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_magazine/rifle/l42a/heap/empty,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/spawner/gibspawner/xeno,
 /turf/open/gm/dirt/dark_brown,
 /area/varadero/exterior/eastbeach)
 "bKP" = (
@@ -32159,7 +32297,6 @@
 	},
 /obj/effect/spawner/random/tool,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/gibspawner/xeno,
 /turf/open/hybrisa/street/sidewalkfull,
 /area/varadero/exterior/comms4)
 "bLl" = (
@@ -32369,6 +32506,15 @@
 	},
 /turf/open/floor/asteroid,
 /area/varadero/exterior/eastbeach)
+"bLN" = (
+/obj/effect/hunter/ancient_temple/rubble/rubble_4,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sheet/metal{
+	amount = 1
+	},
+/turf/open/gm/dirt/dark_brown,
+/area/varadero/exterior/eastbeach)
 "bLO" = (
 /obj/item/weapon/gun/rifle/m41aMK1,
 /obj/effect/decal/cleanable/dirt,
@@ -32392,6 +32538,7 @@
 /obj/item/ammo_casing/shell{
 	icon_state = "cartridge_3_1"
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/eastbeach)
 "bLS" = (
@@ -32440,10 +32587,6 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/varadero/exterior/eastbeach)
 "bLY" = (
-/obj/effect/decal/cleanable/blood{
-	color = "#20d450";
-	basecolor = "#20d450"
-	},
 /obj/effect/hunter/ancient_temple/rubble/rubble_4,
 /turf/open/auto_turf/sand_white/layer0,
 /area/varadero/exterior/eastbeach)
@@ -32665,7 +32808,6 @@
 /turf/open/gm/road,
 /area/varadero/interior/cargo)
 "bMH" = (
-/obj/effect/decal/hybrisa/bloodtrail,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/hybrisa/street/sidewalkcorner{
 	dir = 1
@@ -32853,13 +32995,11 @@
 /turf/open/floor/asteroid,
 /area/varadero/exterior/eastbeach)
 "bNf" = (
-/obj/effect/decal/cleanable/blood{
-	icon_state = "csplatter1";
-	color = "#20d450";
-	basecolor = "#20d450"
-	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/yautja{
+	icon_state = "mfloor5"
+	},
 /turf/open/floor/asteroid,
 /area/varadero/exterior/eastbeach)
 "bNg" = (
@@ -32891,17 +33031,12 @@
 	},
 /turf/open/auto_turf/sand_white/layer0,
 /area/varadero/exterior/eastbeach)
-"bNk" = (
-/obj/effect/decal/cleanable/blood{
-	color = "#20d450";
-	basecolor = "#20d450"
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/auto_turf/sand_white/layer0,
-/area/varadero/exterior/eastbeach)
 "bNl" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/yautja{
+	icon_state = "mfloor3"
+	},
 /turf/open/auto_turf/sand_white/layer0,
 /area/varadero/exterior/eastbeach)
 "bNm" = (
@@ -33131,6 +33266,7 @@
 	icon_state = "trash_5";
 	layer = 3.1
 	},
+/obj/effect/decal/cleanable/blood/drip,
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
 "bNN" = (
@@ -33150,6 +33286,7 @@
 /obj/item/explosive/grenade/high_explosive,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/cleanable/blood/drip,
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
 "bNP" = (
@@ -33246,13 +33383,14 @@
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
 "bOb" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/effect/decal/remains/xeno,
 /obj/effect/spawner/gibspawner/xeno,
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "mfloor5"
 	},
-/obj/effect/decal/remains/xeno,
-/obj/effect/decal/hybrisa/road/lines3,
-/obj/effect/decal/hybrisa/road/lines4,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
 "bOc" = (
@@ -33400,6 +33538,8 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/hunter/ancient_temple/rubble/rubble_5,
 /obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/gm/dirt/dark_brown,
 /area/varadero/exterior/eastbeach)
 "bOy" = (
@@ -33418,20 +33558,22 @@
 "bOA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood{
-	icon_state = "mfloor3";
-	color = "#20d450";
-	basecolor = "#20d450"
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/obj/item/clothing/mask/yautja_flavor{
+	name = "smoking alien mask";
+	desc = "A beautifully designed metallic face mask, both ornate and functional. This one appears to have been severly damaged by a recent blast...";
+	icon = 'icons/obj/items/hunter/badblood_gear.dmi';
+	icon_state = "pred_mask_bb_patchworkalt"
+	},
+/obj/effect/decal/cleanable/blood/gibs/yautja/core,
+/obj/effect/decal/cleanable/blood/yautja{
+	icon_state = "mfloor3"
 	},
 /turf/open/auto_turf/sand_white/layer0,
 /area/varadero/exterior/eastbeach)
 "bOB" = (
-/obj/effect/decal/cleanable/blood{
-	icon_state = "mfloor3";
-	color = "#20d450";
-	basecolor = "#20d450"
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
 /turf/open/auto_turf/sand_white/layer0,
 /area/varadero/exterior/eastbeach)
 "bOC" = (
@@ -33638,10 +33780,10 @@
 	pixel_x = 5;
 	pixel_y = -3
 	},
-/obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "mfloor5"
-	},
 /obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "mfloor4"
+	},
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
 "bPa" = (
@@ -33714,14 +33856,6 @@
 	},
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
-"bPj" = (
-/obj/effect/decal/cleanable/blood{
-	color = "#20d450";
-	basecolor = "#20d450"
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/gm/road,
-/area/varadero/exterior/comms4)
 "bPk" = (
 /obj/item/stack/medical/bruise_pack/random_amount,
 /obj/effect/decal/cleanable/dirt,
@@ -33743,14 +33877,6 @@
 /area/varadero/interior/hall_SE)
 "bPn" = (
 /obj/item/ammo_magazine/rifle/m16,
-/turf/open/gm/road,
-/area/varadero/exterior/comms4)
-"bPo" = (
-/obj/effect/spawner/gibspawner/xeno,
-/obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "mfloor5"
-	},
-/obj/effect/decal/remains/xeno,
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
 "bPp" = (
@@ -33810,13 +33936,6 @@
 	explo_proof = 1
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/cargo)
-"bPw" = (
-/obj/effect/decal/cleanable/blood{
-	color = "#20d450";
-	basecolor = "#20d450"
-	},
-/turf/open/floor/shiva/north,
 /area/varadero/interior/cargo)
 "bPx" = (
 /obj/structure/machinery/prop/yautja/bubbler{
@@ -33950,13 +34069,6 @@
 /obj/structure/barricade/deployable,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
-"bPK" = (
-/obj/effect/decal/cleanable/blood{
-	color = "#20d450";
-	basecolor = "#20d450"
-	},
-/turf/open/floor/asteroidfloor/north,
-/area/varadero/exterior/lz1_near)
 "bPL" = (
 /obj/item/restraint/handcuffs{
 	pixel_x = 2;
@@ -34003,11 +34115,11 @@
 /turf/open/floor/asteroid,
 /area/varadero/exterior/pontoon_beach)
 "bPR" = (
-/obj/effect/decal/cleanable/blood/splatter{
-	icon_state = "mfloor6"
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/gibspawner/xeno,
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "mfloor3"
+	},
 /turf/open/floor/asteroid,
 /area/varadero/exterior/pontoon_beach)
 "bPS" = (
@@ -34035,16 +34147,9 @@
 /obj/effect/decal/cleanable/blood/splatter{
 	icon_state = "mfloor3"
 	},
-/turf/open/gm/dirt/dark_brown,
-/area/varadero/exterior/eastbeach)
-"bPW" = (
-/obj/effect/decal/cleanable/blood{
-	icon_state = "mfloor4";
-	color = "#20d450";
-	basecolor = "#20d450"
-	},
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/gm/dirt/dark_brown,
 /area/varadero/exterior/eastbeach)
 "bPX" = (
 /obj/item/shard/shrapnel/bone_chips/human,
@@ -34058,27 +34163,21 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/varadero/exterior/eastbeach)
 "bPY" = (
-/obj/item/clothing/mask/yautja_flavor{
-	name = "smoking alien mask";
-	desc = "A beautifully designed metallic face mask, both ornate and functional. This one appears to have been severly damaged by a recent blast...";
-	icon = 'icons/obj/items/hunter/badblood_gear.dmi';
-	icon_state = "pred_mask_bb_patchworkalt"
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood{
-	color = "#20d450";
-	basecolor = "#20d450"
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/obj/effect/decal/cleanable/blood/gibs/yautja/body,
+/obj/effect/decal/cleanable/blood/yautja{
+	icon_state = "mfloor5"
 	},
 /turf/open/auto_turf/sand_white/layer0,
 /area/varadero/exterior/eastbeach)
 "bPZ" = (
-/obj/effect/decal/cleanable/blood{
-	icon_state = "mfloor6";
-	color = "#20d450";
-	basecolor = "#20d450"
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/yautja{
+	icon_state = "mfloor2"
+	},
+/obj/effect/decal/cleanable/blood/gibs/yautja/limb,
 /turf/open/auto_turf/sand_white/layer0,
 /area/varadero/exterior/eastbeach)
 "bQa" = (
@@ -34265,12 +34364,12 @@
 /obj/structure/barricade/handrail/wire{
 	layer = 3.1
 	},
+/obj/effect/decal/cleanable/blood{
+	icon_state = "mfloor3"
+	},
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
 "bQy" = (
-/obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "mfloor3"
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/handrail/wire{
 	layer = 3.1
@@ -34365,9 +34464,6 @@
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_12"
 	},
-/turf/open/gm/road,
-/area/varadero/exterior/comms4)
-"bQJ" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
@@ -34585,6 +34681,7 @@
 "bRo" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/gibs/robot/limb,
 /turf/open/floor/shiva/yellow/west,
 /area/varadero/interior/cargo)
 "bRp" = (
@@ -34626,6 +34723,9 @@
 "bRt" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/hunter/ancient_temple/rubble/rubble_3,
+/obj/item/stack/sheet/metal{
+	amount = 1
+	},
 /turf/open/gm/dirt/dark_brown,
 /area/varadero/exterior/eastbeach)
 "bRu" = (
@@ -34791,10 +34891,6 @@
 /area/varadero/exterior/comms4)
 "bRL" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/gibspawner/human,
-/obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "mfloor5"
-	},
 /obj/effect/decal/hybrisa/road/lines2,
 /obj/effect/decal/hybrisa/doubleroad/lines3,
 /turf/open/gm/road,
@@ -34920,6 +35016,11 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/cargo)
+"bSd" = (
+/obj/effect/hunter/ancient_temple/rubble/rubble,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/gm/dirt/dark_brown,
+/area/varadero/exterior/eastbeach)
 "bSe" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/catwalk{
@@ -35138,6 +35239,9 @@
 /obj/effect/decal/cleanable/blood/splatter{
 	icon_state = "mfloor4"
 	},
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/gm/dirt/dark_brown,
 /area/varadero/exterior/eastbeach)
 "bSM" = (
@@ -35270,7 +35374,7 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "mfloor5"
 	},
-/obj/effect/spawner/gibspawner/human,
+/obj/effect/spawner/gibspawner/xeno,
 /turf/open/hybrisa/street/sidewalk,
 /area/varadero/exterior/farocean)
 "bTa" = (
@@ -35313,6 +35417,8 @@
 /area/varadero/interior/maintenance/north)
 "bTg" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/gibspawner/human,
+/obj/effect/decal/cleanable/blood,
 /turf/open/hybrisa/street/sidewalk,
 /area/varadero/exterior/comms4)
 "bTh" = (
@@ -35354,6 +35460,7 @@
 "bTn" = (
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/drip,
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
 "bTo" = (
@@ -35652,13 +35759,6 @@
 	color = "#b29082"
 	},
 /turf/open/floor/asteroidfloor/north,
-/area/varadero/exterior/lz2_near)
-"bUf" = (
-/obj/effect/decal/cleanable/blood/splatter{
-	icon_state = "mfloor4"
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/gm/dirt,
 /area/varadero/exterior/lz2_near)
 "bUg" = (
 /obj/structure/machinery/microwave{
@@ -37155,14 +37255,6 @@
 	},
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
-"bYa" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "mfloor5"
-	},
-/obj/effect/spawner/gibspawner/xeno,
-/turf/open/gm/road,
-/area/varadero/exterior/comms4)
 "bYb" = (
 /obj/item/ammo_casing{
 	icon_state = "casing_10_1"
@@ -37440,6 +37532,11 @@
 /obj/effect/sentry_landmark/lz_1/top_left,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
+"bYO" = (
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/turf/open/gm/dirt/dark_brown,
+/area/varadero/exterior/eastbeach)
 "bYP" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -37638,6 +37735,11 @@
 	},
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/exterior/pontoon_beach)
+"bZv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/gm/road,
+/area/varadero/exterior/comms4)
 "bZw" = (
 /obj/structure/barricade/deployable,
 /turf/open/floor/asteroidfloor/north,
@@ -37656,6 +37758,17 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/sentry_landmark/lz_2/top_right,
 /turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz2_near)
+"bZA" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "mfloor4"
+	},
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/gm/dirt/desert0,
 /area/varadero/exterior/lz2_near)
 "bZB" = (
 /obj/structure/barricade/deployable,
@@ -37714,6 +37827,13 @@
 /obj/structure/platform_decoration/metal/kutjevo/north,
 /turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/farocean)
+"bZI" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/lz2_near)
 "bZJ" = (
 /obj/structure/blocker/invisible_wall/water,
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
@@ -37762,9 +37882,6 @@
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
 "bZQ" = (
-/obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "mfloor3"
-	},
 /obj/effect/decal/hybrisa/road/lines2,
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
@@ -37889,6 +38006,12 @@
 	explo_proof = 1
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz2_near)
+"cak" = (
+/obj/effect/decal/cleanable/blood/splatter{
+	icon_state = "mfloor4"
+	},
+/turf/open/gm/dirt/desert_dug,
 /area/varadero/exterior/lz2_near)
 "cal" = (
 /obj/effect/decal/cleanable/blood/drip,
@@ -39889,6 +40012,13 @@
 /obj/structure/platform_decoration/metal/kutjevo/north,
 /turf/open/floor/shiva/north,
 /area/varadero/interior/cargo)
+"cfq" = (
+/obj/effect/spawner/gibspawner/xeno,
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "mfloor3"
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/varadero/exterior/comms4)
 "cfr" = (
 /obj/structure/platform_decoration/metal/kutjevo,
 /turf/open/floor/shiva/north,
@@ -39906,12 +40036,14 @@
 /obj/structure/prop/wooden_cross{
 	desc = "A wooden grave marker. It has had the name 'Ensign J. Cortez' engraved into it."
 	},
-/obj/item/clothing/head/helmet/marine/desert{
-	pixel_y = 1
-	},
 /obj/item/clothing/head/hairflower{
 	pixel_x = 11;
-	pixel_y = -10
+	pixel_y = -10;
+	desc = "Do you feel bonita?."
+	},
+/obj/item/clothing/head/helmet/marine/pilot{
+	desc = "The MK30 tactical helmet has an eyepiece filter used to filter tactical data. It is required to fly the dropships manually and in safety. It has the name 'Cortez' written on it in permenant marker.";
+	name = "\improper 'Cortez's' MK30 tactical helmet"
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/lz1_near)
@@ -40334,6 +40466,10 @@
 	},
 /turf/open/gm/coast/beachcorner,
 /area/varadero/exterior/pontoon_beach)
+"cgr" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz2_near)
 "cgs" = (
 /obj/structure/platform/metal/kutjevo_smooth/north{
 	climb_delay = 1
@@ -41445,6 +41581,7 @@
 "cjh" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/spawner/gibspawner/xeno,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "cji" = (
@@ -42962,6 +43099,11 @@
 	icon_state = "62"
 	},
 /area/varadero/interior/beach_bar)
+"cmU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sandbags_empty/half,
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz2_near)
 "cmV" = (
 /obj/structure/machinery/prop/almayer/CICmap,
 /obj/item/paper{
@@ -44128,6 +44270,13 @@
 /obj/structure/morgue,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/morgue)
+"cpB" = (
+/obj/effect/spawner/gibspawner/xeno,
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "mfloor5"
+	},
+/turf/open/gm/road,
+/area/varadero/exterior/comms4)
 "cpC" = (
 /turf/closed/shuttle/dropship3/tornado{
 	name = "\improper UD-6D - Las Guasimas";
@@ -45317,6 +45466,17 @@
 "csk" = (
 /turf/open/floor/asteroidwarning/southwest,
 /area/varadero/exterior/islands)
+"csl" = (
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "mfloor3"
+	},
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/hybrisa/street/sidewalk/south,
+/area/varadero/exterior/comms4)
 "csm" = (
 /turf/open/floor/asteroidwarning,
 /area/varadero/exterior/islands)
@@ -47866,6 +48026,12 @@
 	},
 /turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/farocean)
+"cxT" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
 "cxU" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
 /turf/open_space,
@@ -47909,11 +48075,6 @@
 /obj/effect/landmark/lv624/fog_blocker{
 	time_to_dispel = 25000
 	},
-/turf/open_space,
-/area/sky)
-"cyc" = (
-/obj/structure/prop/hybrisa/misc/fake/lattice/full,
-/obj/structure/prop/hybrisa/misc/fake/lattice/full,
 /turf/open_space,
 /area/sky)
 "cyd" = (
@@ -48028,9 +48189,23 @@
 /obj/effect/landmark/lv624/fog_blocker/long,
 /turf/closed/wall/rock/brown,
 /area/sky/level4)
-"cyw" = (
-/turf/open/auto_turf/sand_white/layer0,
-/area/sky/level4)
+"cyx" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/blocker/invisible_wall,
+/turf/open_space,
+/area/sky)
+"cyy" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/blocker/invisible_wall,
+/turf/open_space,
+/area/sky)
+"cyz" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/blocker/invisible_wall,
+/obj/structure/blocker/invisible_wall,
+/turf/open_space,
+/area/sky)
 "cyP" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/light/small{
@@ -49634,6 +49809,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/gibs/robot/up,
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/shiva/greenfull/west,
 /area/varadero/interior/comms1)
 "dSs" = (
@@ -50473,14 +50649,6 @@
 "eBL" = (
 /turf/open/floor/freezerfloor,
 /area/varadero/interior/cargo)
-"eBS" = (
-/obj/effect/decal/cleanable/blood{
-	color = "#20d450";
-	basecolor = "#20d450"
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/predship/tile/red4/glow,
-/area/varadero/interior_protected/vessel)
 "eBT" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/cup{
@@ -50889,6 +51057,9 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "mfloor4"
+	},
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/comms1)
 "eUv" = (
@@ -51093,10 +51264,6 @@
 /obj/item/device/camera,
 /turf/open/floor/corsat/cargo,
 /area/varadero/interior_protected/caves/digsite)
-"fcg" = (
-/obj/effect/decal/cleanable/blood/gibs/robot/limb,
-/turf/open/floor/shiva/north,
-/area/varadero/interior/cargo)
 "fcp" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/dirt,
@@ -53903,21 +54070,6 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance)
-"hoU" = (
-/obj/effect/decal/cleanable/blood{
-	color = "#20d450";
-	basecolor = "#20d450"
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/decal/cleanable/blood{
-	color = "#20d450"
-	},
-/turf/open/predship/tile/hunter_tile_6/west,
-/area/varadero/interior_protected/vessel)
 "hpv" = (
 /obj/structure/platform/metal/kutjevo_smooth{
 	climb_delay = 1
@@ -54067,12 +54219,6 @@
 /obj/structure/largecrate/random,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance)
-"hwr" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/closed/wall/r_wall,
-/area/varadero/interior/maintenance/security/north)
 "hwE" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
@@ -54821,10 +54967,6 @@
 /obj/structure/prop/rock/brown,
 /turf/closed/wall/rock/brown,
 /area/varadero/interior/oob)
-"icm" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/gm/dirt/dark_brown,
-/area/varadero/exterior/eastbeach)
 "icn" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -56013,9 +56155,6 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/lz1_near)
 "iVi" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
 /obj/effect/decal/warning_stripes/asteroid{
 	icon_state = "warning_c";
 	dir = 4
@@ -57882,8 +58021,6 @@
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "kvS" = (
-/obj/effect/spawner/gibspawner/xeno,
-/obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/comms1)
 "kwB" = (
@@ -60011,10 +60148,12 @@
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/maintenance)
 "mms" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 6
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_s"
 	},
-/turf/open/auto_turf/sand_white/layer1,
+/turf/open/floor/bcircuit,
 /area/varadero/interior/maintenance/security/north)
 "mmv" = (
 /obj/effect/decal/cleanable/dirt,
@@ -61158,15 +61297,8 @@
 	unslashable = 1
 	},
 /obj/structure/blocker/invisible_wall,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/effect/decal/remains/human,
-/obj/effect/decal/cleanable/blood{
-	color = "#20d450"
-	},
+/obj/effect/decal/cleanable/blood,
 /turf/open/predship/tile,
 /area/varadero/interior_protected/vessel)
 "nkF" = (
@@ -61811,6 +61943,7 @@
 "nOO" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/blood/gibs/robot/down,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/hall_N)
 "nOQ" = (
@@ -63403,10 +63536,6 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance)
 "pcH" = (
-/obj/effect/decal/cleanable/blood{
-	color = "#20d450";
-	basecolor = "#20d450"
-	},
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 1
 	},
@@ -63414,20 +63543,15 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/decal/cleanable/blood{
-	color = "#20d450"
-	},
 /obj/effect/decal/remains/human,
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 1
 	},
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/yautja{
+	icon_state = "mfloor3"
 	},
 /turf/open/predship/mainfloor/direction_4,
 /area/varadero/interior_protected/vessel)
@@ -63683,6 +63807,7 @@
 "pmW" = (
 /obj/item/limb/hand/l_hand,
 /obj/effect/landmark/objective_landmark/far,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/eastbeach)
 "pnn" = (
@@ -63766,7 +63891,6 @@
 /turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/pontoon_beach/lz)
 "pqf" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/structure/window/reinforced/ultra{
 	name = "reinforced phoron window";
 	desc = "A phoron-glass alloy window with a rod matrix. It looks hopelessly tough to break. It also looks completely fireproof, considering how basic phoron windows are insanely fireproof.";
@@ -64162,14 +64286,14 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
 /obj/effect/decal/warning_stripes/asteroid{
 	icon_state = "warning_c";
 	dir = 1
 	},
 /obj/structure/largecrate/random/case,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 6
+	},
 /turf/open/floor/shiva/yellowfull/west,
 /area/varadero/interior/maintenance/security/north)
 "pGi" = (
@@ -64185,11 +64309,6 @@
 "pGs" = (
 /turf/closed/wall/rock/brown,
 /area/varadero/interior/oob)
-"pGy" = (
-/obj/effect/decal/cleanable/blood/xeno,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva/multi_tiles,
-/area/varadero/interior/comms1)
 "pGJ" = (
 /turf/closed/wall/r_wall,
 /area/varadero/interior/hall_N)
@@ -65093,10 +65212,6 @@
 	},
 /turf/open/predship/hunter_grate/north,
 /area/varadero/interior_protected/vessel)
-"qpK" = (
-/obj/effect/decal/cleanable/blood/gibs/robot/down,
-/turf/open/floor/asteroidfloor/north,
-/area/varadero/interior/maintenance/north)
 "qpZ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes/asteroid{
@@ -65169,11 +65284,14 @@
 /turf/open/floor/shiva/red/east,
 /area/varadero/interior/security)
 "qsJ" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
 	},
-/obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/auto_turf/sand_white/layer1,
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_s"
+	},
+/turf/open/floor/bcircuit,
 /area/varadero/interior/maintenance/security/north)
 "qto" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
@@ -65977,6 +66095,7 @@
 "qTE" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_1,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/gm/dirt/dark_brown,
 /area/varadero/exterior/eastbeach)
 "qTL" = (
@@ -66227,14 +66346,6 @@
 /obj/effect/overlay/coconut,
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
-"rfm" = (
-/obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "mfloor6";
-	layer = 2.5
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/hybrisa/street/sidewalk/west,
-/area/varadero/exterior/comms4)
 "rfn" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
@@ -68731,7 +68842,6 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/tool/pickaxe/plasmacutter,
 /obj/effect/hunter/fake_platform/hunter/east,
 /obj/effect/hunter/fake_platform/hunter/west,
 /turf/open/predship/hunter_grate/west,
@@ -70103,6 +70213,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/blood/gibs/robot/down,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/cargo)
 "ukX" = (
@@ -72129,6 +72240,7 @@
 	},
 /obj/effect/decal/hybrisa/trash,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/shiva/green/west,
 /area/varadero/interior/comms1)
 "vNG" = (
@@ -73910,9 +74022,6 @@
 /area/varadero/exterior/lz1_near)
 "xhj" = (
 /obj/effect/spawner/gibspawner/xeno,
-/obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "mfloor5"
-	},
 /obj/effect/decal/remains/xeno,
 /turf/open/hybrisa/street/roadlines3,
 /area/varadero/exterior/comms4)
@@ -74584,12 +74693,12 @@
 	pixel_y = 6
 	},
 /obj/item/weapon/gun/rifle/l42a,
-/obj/item/clothing/head/helmet/marine/desert{
-	pixel_x = 5;
-	pixel_y = 8
-	},
 /obj/structure/prop/tyrargo/boards/boards_1{
 	dir = 4
+	},
+/obj/item/clothing/head/helmet/marine{
+	pixel_x = 6;
+	pixel_y = 8
 	},
 /turf/open/floor/asteroidwarning/west,
 /area/varadero/exterior/lz1_near)
@@ -74702,11 +74811,6 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/machinery/light,
 /obj/structure/closet/emcloset,
 /turf/open/floor/shiva/yellow,
@@ -77966,7 +78070,7 @@ sNy
 sNy
 bXh
 bVW
-bMu
+cfq
 bTi
 bRL
 bQy
@@ -79601,14 +79705,14 @@ caD
 bZP
 bQK
 bYD
-bYa
+bQK
 bQK
 bWe
 bUE
 bTr
 bRV
 bQI
-bPj
+bQK
 bNX
 bMD
 uTj
@@ -79779,7 +79883,7 @@ cdX
 nbB
 ccq
 cbt
-caE
+csl
 bZQ
 bQK
 bQK
@@ -79789,7 +79893,7 @@ bWf
 bUF
 bTs
 bQK
-bQJ
+bXn
 bPk
 bNY
 bME
@@ -79963,15 +80067,15 @@ qfr
 cbs
 caE
 bZR
-bXn
+cpB
 bYE
 bYc
 bXo
 bWg
 oeC
-bQK
+bZv
 bRW
-bQK
+bFo
 bPn
 bNZ
 bMC
@@ -80154,7 +80258,7 @@ bUG
 bQK
 sGp
 bQL
-bPo
+bQK
 bOa
 bMC
 bLq
@@ -80335,7 +80439,7 @@ bWh
 bUH
 bPp
 wzb
-bPp
+wzb
 bPp
 bOb
 bMF
@@ -80344,7 +80448,7 @@ bKm
 bJm
 bIi
 xpP
-pkG
+aXn
 kvS
 laN
 rGE
@@ -80512,7 +80616,7 @@ bZT
 bZe
 bUI
 bYe
-rfm
+bUI
 bUI
 bUI
 bTt
@@ -80527,8 +80631,8 @@ lFI
 bIj
 ifB
 jvx
-pGy
-ehH
+bAZ
+aUA
 bDo
 ifB
 aZu
@@ -81255,7 +81359,7 @@ bJn
 abi
 fjK
 haV
-bFG
+pVz
 baN
 wGl
 ifB
@@ -81423,7 +81527,7 @@ bYI
 eBL
 bYg
 mzT
-fcg
+oJB
 bGI
 hic
 bSa
@@ -82352,7 +82456,7 @@ aJl
 huF
 ifB
 bBR
-bFV
+bAZ
 ehH
 bzw
 byV
@@ -82520,7 +82624,7 @@ bGI
 oJB
 oJB
 dFd
-bPw
+oJB
 bGI
 bMM
 bLw
@@ -82897,7 +83001,7 @@ sfs
 xaK
 bDv
 qKb
-bBS
+nnw
 uww
 bAp
 bqP
@@ -85793,7 +85897,7 @@ bJu
 wMw
 bWz
 dEJ
-qpK
+ptC
 bOi
 bgE
 ptC
@@ -85953,7 +86057,7 @@ cmA
 cns
 wMw
 bJu
-vpr
+cxT
 ckD
 cjS
 cjd
@@ -88344,7 +88448,7 @@ bVf
 bTG
 bSt
 bPC
-bPK
+wMw
 bJu
 bJu
 bJu
@@ -96203,14 +96307,14 @@ wOO
 pGs
 pGs
 pGs
-gWu
+vJf
 dZn
 gWu
 kZu
 bjn
 bjl
 fEZ
-dgY
+jqw
 pGs
 wVf
 aHM
@@ -96392,7 +96496,7 @@ hPm
 bjn
 bjm
 bir
-nwq
+kbQ
 wVf
 wVf
 rpT
@@ -96574,7 +96678,7 @@ blc
 bkn
 bjm
 bir
-nwq
+kbQ
 xvF
 cYa
 lVB
@@ -96717,7 +96821,7 @@ bTY
 bJE
 bRq
 bKC
-bKC
+bfe
 bMW
 bLH
 iaT
@@ -96749,14 +96853,14 @@ poE
 bpv
 mrT
 pGs
-pGs
-bmz
+huF
 fEZ
-bck
-bkp
+fEZ
+aqh
+ami
 bjn
 bir
-nwq
+kbQ
 xvF
 etE
 swi
@@ -96931,12 +97035,12 @@ cuc
 bpw
 boF
 pGs
-gWu
-gWu
-gWu
-fEZ
-bkq
-bjo
+aPe
+aAX
+ayx
+avI
+kZu
+bjn
 fEZ
 bhD
 wVf
@@ -97113,9 +97217,9 @@ bqv
 tlT
 mrT
 pGs
-dZn
-gWu
-gWu
+aPe
+aAX
+aAl
 mms
 bkr
 bjn
@@ -97295,11 +97399,11 @@ wae
 sdZ
 hwZ
 pGs
-pGs
-gWu
-gWu
+aQq
+aCo
+aAC
 qsJ
-bjn
+bkr
 mnC
 bck
 jqw
@@ -97478,11 +97582,11 @@ wOO
 wOO
 wOO
 blR
-bmA
+bvQ
 wOO
-hwr
-bks
 bck
+bks
+akg
 bck
 bgf
 ofC
@@ -98533,7 +98637,7 @@ bYr
 adH
 bWP
 bVw
-bUc
+bZA
 bJG
 bLP
 xmL
@@ -98575,7 +98679,7 @@ nOg
 blg
 bkw
 bju
-bck
+abK
 pGs
 pGs
 ofC
@@ -99078,7 +99182,7 @@ bYV
 bVx
 bXM
 iQr
-aQN
+cgr
 vAt
 vuA
 jks
@@ -99261,7 +99365,7 @@ lTg
 wlB
 bWS
 wlB
-aKJ
+bZI
 bSK
 bRt
 bPU
@@ -99301,8 +99405,8 @@ pGs
 aEd
 aEd
 aQC
-bkx
-bjy
+aQC
+aQC
 bhe
 bhE
 aEd
@@ -99443,15 +99547,15 @@ lTg
 qNu
 nCl
 bbK
-bUf
+res
 iUH
-icm
+ivo
 bPV
 bOx
 bNh
 bLS
 bKI
-jks
+eHs
 bIC
 jNn
 cFw
@@ -99625,10 +99729,10 @@ adH
 adH
 adH
 bbK
-hmh
-bJK
-bNn
-bPW
+cak
+bLN
+bGe
+bLX
 bOy
 bNj
 bLT
@@ -99808,11 +99912,11 @@ bXN
 wlB
 bbK
 bUh
-bPU
-bLX
+bSd
+bIR
 bPX
 bOz
-bNk
+bKL
 bLU
 agq
 jrr
@@ -99990,10 +100094,10 @@ bXO
 bWT
 bVy
 bUi
-bIE
+bYO
 bRu
-bNl
-bNl
+bpP
+bio
 bNl
 bLW
 bKK
@@ -100170,16 +100274,16 @@ bYW
 bYt
 bXP
 lTg
-res
+cmU
 bUj
 bSL
 bLX
 bPY
 bOA
-bNl
+bde
 bKK
 bKL
-ivo
+aZX
 bBw
 cFw
 adH
@@ -100354,10 +100458,10 @@ bXP
 lTg
 hmh
 atu
-bIE
+ivo
 bRv
 bPZ
-bLX
+bnH
 bNm
 bLX
 bKM
@@ -100537,7 +100641,7 @@ mdg
 wlB
 bUh
 bPU
-bIE
+bJH
 bQb
 bOB
 bKK
@@ -100720,10 +100824,10 @@ bVz
 bUk
 bSM
 bRw
-bIE
+byw
 bOC
 bNn
-bIE
+bcD
 bKO
 bJM
 gFA
@@ -104010,7 +104114,7 @@ bFu
 bEf
 aNf
 aNf
-bBF
+aNf
 bmK
 aNf
 adH
@@ -104108,7 +104212,7 @@ avD
 mqe
 mqe
 avD
-bsf
+aaG
 bsf
 acR
 abA
@@ -104190,8 +104294,8 @@ aSA
 aNf
 aQS
 aNf
-bDl
-aNf
+aQS
+aTh
 aQS
 aNf
 aSA
@@ -104233,7 +104337,7 @@ aXp
 aWq
 aVq
 qlw
-esA
+abp
 aNg
 aSA
 aNf
@@ -104293,7 +104397,7 @@ adk
 avD
 aeN
 pDX
-abA
+abB
 abA
 bsf
 acr
@@ -104415,7 +104519,7 @@ aXq
 aWr
 aVr
 aTr
-pmM
+qlw
 aNg
 aQT
 aNf
@@ -104446,7 +104550,7 @@ axC
 axf
 awH
 awh
-abZ
+auh
 abZ
 abZ
 acq
@@ -104475,7 +104579,7 @@ aaa
 avD
 aeN
 aeN
-aeM
+aeN
 aek
 bsf
 puq
@@ -104546,10 +104650,10 @@ aNg
 aNg
 bMj
 bMj
-aNg
+bHT
 bJV
 aNg
-bHT
+aNg
 bHj
 aNg
 aNf
@@ -104663,7 +104767,7 @@ abA
 abA
 abZ
 abZ
-abA
+aas
 pGs
 pGs
 pGs
@@ -104729,7 +104833,7 @@ aNf
 bmg
 bMl
 aNf
-bJW
+aQQ
 bIQ
 bHU
 aNZ
@@ -104739,7 +104843,7 @@ bmg
 aNf
 aNg
 aNZ
-aNg
+aTg
 aNf
 adH
 bnA
@@ -104780,7 +104884,7 @@ aWs
 aVv
 esA
 aNg
-esA
+abp
 aNf
 aNf
 aQU
@@ -104805,10 +104909,10 @@ bGU
 rvD
 aza
 ayz
+abh
+abo
 awK
-awK
-awK
-awK
+abh
 awi
 abZ
 bsf
@@ -104841,8 +104945,8 @@ bsf
 bsf
 bsf
 abB
-pGs
-abA
+aat
+aaw
 abZ
 abZ
 abB
@@ -105023,11 +105127,11 @@ abA
 bsf
 abA
 abA
-pGs
-pGs
+aat
+aat
 abZ
 abZ
-bsf
+abA
 pGs
 pGs
 pGs
@@ -105194,7 +105298,7 @@ jub
 amX
 amp
 als
-akv
+and
 szZ
 ahe
 aeS
@@ -105206,7 +105310,7 @@ bsf
 abA
 bsf
 abA
-pGs
+aat
 abZ
 abZ
 abY
@@ -105387,8 +105491,8 @@ abA
 afq
 aeO
 gFH
-avD
-bsf
+aat
+abA
 abZ
 abZ
 abZ
@@ -105570,7 +105674,7 @@ ofJ
 aeP
 gFH
 adI
-gFH
+ulv
 acP
 abZ
 abZ
@@ -105750,8 +105854,8 @@ fbW
 rnj
 oJX
 pqf
+aaD
 gFH
-ulv
 adj
 bsf
 abZ
@@ -106104,12 +106208,12 @@ cRn
 avD
 amr
 akz
-akz
+aaT
 ajF
 avD
 xka
 xka
-xka
+aaK
 ndp
 kjI
 brT
@@ -106290,9 +106394,9 @@ akA
 ajG
 mRs
 ais
-lvS
+aaR
 ahh
-eBS
+lvS
 afW
 brT
 aeR
@@ -106481,7 +106585,7 @@ adL
 aen
 gFH
 brT
-bsf
+abB
 puq
 acr
 abZ
@@ -106663,8 +106767,8 @@ adL
 aeo
 adL
 brT
+acQ
 abA
-abB
 bsf
 abZ
 abZ
@@ -106845,9 +106949,9 @@ adL
 aep
 adM
 brT
-acQ
-pGs
-pGs
+abB
+aat
+aat
 abZ
 abZ
 bsf
@@ -107026,10 +107130,10 @@ brT
 aeR
 aeq
 adN
-avD
-pGs
-pGs
-pGs
+aat
+aat
+aat
+aat
 abZ
 abZ
 bsf
@@ -107182,7 +107286,7 @@ abZ
 abZ
 aca
 bsf
-abA
+bsf
 asF
 uvd
 aep
@@ -107208,10 +107312,10 @@ brT
 adV
 aeo
 adO
-avD
-pGs
-pGs
-abB
+aat
+aat
+aat
+bsf
 abZ
 abZ
 abA
@@ -107362,9 +107466,9 @@ avP
 abZ
 abZ
 auH
-abA
-pGs
-abA
+bsf
+aat
+bsf
 adn
 aqz
 aeo
@@ -107390,9 +107494,9 @@ brT
 adL
 aer
 adP
-adk
-pGs
-abA
+aaA
+aat
+aau
 bsf
 abZ
 abZ
@@ -107539,14 +107643,14 @@ pGs
 pGs
 pGs
 pGs
-abA
+abB
 aej
 abZ
 abZ
-aqx
-pGs
-pGs
-pGs
+puq
+aat
+aat
+aat
 brT
 aqz
 aeo
@@ -107573,8 +107677,8 @@ adL
 aeo
 gFH
 brT
-acR
-bsf
+apU
+kkv
 acs
 abZ
 abZ
@@ -107725,10 +107829,10 @@ aeN
 hre
 abZ
 abZ
-pGs
-pGs
-pGs
-pGs
+aat
+aat
+aat
+aat
 brT
 aqz
 aeo
@@ -107907,9 +108011,9 @@ aeN
 avQ
 abZ
 abZ
-abA
-pGs
-age
+bsf
+aat
+bsf
 app
 brT
 aqz
@@ -107933,7 +108037,7 @@ izi
 agH
 nzb
 afr
-iwV
+apV
 aeo
 uvd
 ulv
@@ -107941,7 +108045,7 @@ bsf
 abZ
 abZ
 aca
-kkv
+abB
 pGs
 pGs
 pGs
@@ -108089,8 +108193,8 @@ aul
 avR
 abZ
 abZ
-kkv
-abA
+aej
+bsf
 bsf
 bsf
 brT
@@ -108119,10 +108223,10 @@ aeS
 aep
 adS
 crq
-acS
-acE
+bsf
 abZ
-aci
+abZ
+bsf
 abB
 pGs
 pGs
@@ -108301,9 +108405,9 @@ adV
 aes
 ulv
 gFH
-acS
+bsf
 abZ
-act
+abZ
 abA
 pGs
 pGs
@@ -108482,8 +108586,8 @@ brT
 adV
 adl
 adT
-avD
-acS
+aat
+bsf
 abZ
 abZ
 pGs
@@ -108664,7 +108768,7 @@ brT
 uvd
 aeo
 gFH
-avD
+aat
 bsf
 act
 abZ
@@ -108850,7 +108954,7 @@ adl
 bsf
 abZ
 abZ
-abA
+aag
 pGs
 pGs
 pGs
@@ -109030,9 +109134,9 @@ aep
 adU
 adl
 bsf
-acF
 abZ
-abA
+abZ
+gFY
 abA
 pGs
 pGs
@@ -109212,7 +109316,7 @@ aeo
 adU
 brT
 bsf
-abZ
+gRU
 abZ
 pDX
 abA
@@ -111198,7 +111302,7 @@ lVf
 iyk
 uvd
 aje
-amA
+ahZ
 aah
 fxR
 ajX
@@ -111380,7 +111484,7 @@ abZ
 fVw
 uvd
 xka
-akA
+abg
 alE
 akR
 ajY
@@ -111563,7 +111667,7 @@ luu
 gFH
 ank
 xka
-alF
+akS
 akS
 ajZ
 ajg
@@ -111746,7 +111850,7 @@ ahl
 sOw
 kZl
 alH
-hoU
+akP
 ahZ
 ajh
 ahl
@@ -112659,7 +112763,7 @@ abZ
 abZ
 gRU
 abY
-pGs
+aat
 acs
 abZ
 abZ
@@ -125699,9 +125803,9 @@ drq
 drq
 drq
 ssW
-tem
-tem
-tem
+cyx
+cyx
+cyx
 cWe
 drq
 drq
@@ -126244,7 +126348,7 @@ drq
 ssW
 tem
 tem
-tem
+cyx
 tem
 tem
 tem
@@ -126426,7 +126530,7 @@ drq
 ssW
 tem
 tem
-tem
+cyx
 tem
 tem
 tem
@@ -126608,7 +126712,7 @@ btp
 nHL
 tem
 tem
-tem
+cyx
 tem
 tem
 tem
@@ -126790,7 +126894,7 @@ tem
 tem
 tem
 tem
-tem
+cyx
 tem
 tem
 tem
@@ -126972,7 +127076,7 @@ tem
 tem
 tem
 tem
-tem
+cyx
 tem
 tem
 tem
@@ -127877,9 +127981,9 @@ drq
 drq
 drq
 ssW
-tem
-tem
-tem
+cyx
+cyx
+cyx
 cWe
 drq
 drq
@@ -129156,7 +129260,7 @@ tem
 tem
 tem
 tem
-cxU
+cyx
 tem
 tem
 tem
@@ -129338,7 +129442,7 @@ tem
 tem
 tem
 tem
-cxU
+cyx
 tem
 tem
 tem
@@ -129520,7 +129624,7 @@ tem
 tem
 tem
 tem
-cxU
+cyx
 tem
 tem
 tem
@@ -129691,11 +129795,11 @@ ayE
 ayE
 ayE
 cCt
-cxU
-cxU
-cxU
-cxU
-cxU
+cyx
+cyx
+cyx
+cyx
+cyx
 tem
 tem
 tem
@@ -129706,9 +129810,9 @@ ezB
 ezB
 ezB
 ezB
-cxU
-cxU
-cxU
+cyx
+cyx
+cyx
 cWe
 drq
 drq
@@ -129874,10 +129978,10 @@ drq
 drq
 ssW
 tem
-cxU
+cyx
 tem
 tem
-cxU
+cyx
 tem
 tem
 tem
@@ -130056,10 +130160,10 @@ drq
 drq
 ssW
 tem
-cxU
+cyx
 tem
 tem
-cxU
+cyx
 tem
 tem
 tem
@@ -130069,7 +130173,7 @@ tem
 tem
 tem
 tem
-cxU
+cyx
 tem
 tem
 tem
@@ -130237,11 +130341,11 @@ drq
 drq
 drq
 ssW
-cxU
-cyc
-cxU
-cxU
-cxU
+cyx
+cyy
+cyx
+cyx
+cyx
 tem
 tem
 tem
@@ -130251,7 +130355,7 @@ tem
 tem
 tem
 tem
-cxU
+cyx
 tem
 tem
 tem
@@ -130420,23 +130524,23 @@ drq
 drq
 ssW
 tem
-cxU
+cyx
 tem
 tem
-cxU
-cxU
-cxU
-cxU
+cyx
+cyx
+cyx
+cyx
 ezB
 ezB
-cxU
-cxU
-cxU
-cxU
-cxU
-cxU
-cxU
-cxU
+cyx
+cyx
+cyx
+cyx
+cyx
+cyx
+cyx
+cyx
 cWe
 drq
 drq
@@ -130615,7 +130719,7 @@ ezB
 tem
 tem
 tem
-cxU
+cyx
 tem
 tem
 tem
@@ -130644,8 +130748,8 @@ tem
 tem
 tem
 tem
-ezB
-ezB
+tem
+tem
 tem
 tem
 tem
@@ -130797,7 +130901,7 @@ ezB
 tem
 tem
 tem
-cxU
+cyx
 tem
 tem
 tem
@@ -130970,26 +131074,26 @@ drq
 drq
 drq
 ssW
-cxU
-cxU
-cxU
-cxU
-cxU
-cxU
-cxU
-cxU
-cxU
-cxU
+cyx
+cyx
+cyx
+cyx
+cyx
+cyx
+cyx
+cyx
+cyx
+cyx
 tem
 tem
 tem
-cxU
+cyx
 tem
 tem
-cxU
+cyx
 tem
 tem
-cxU
+cyx
 tem
 cWe
 drq
@@ -131156,22 +131260,22 @@ tem
 tem
 tem
 tem
-cxU
+cyx
 tem
 tem
 tem
 tem
-cxU
+cyx
 tem
 tem
 tem
-cxU
+cyx
 tem
 tem
-cxU
+cyx
 tem
 tem
-cxU
+cyx
 tem
 cWe
 drq
@@ -131338,22 +131442,22 @@ tem
 tem
 tem
 tem
-cxU
+cyx
 tem
 tem
 tem
 tem
-cxU
+cyx
 tem
 tem
 tem
-cxU
+cyx
 tem
 tem
-cxU
+cyx
 tem
 tem
-cxU
+cyx
 tem
 cWe
 drq
@@ -131520,12 +131624,12 @@ tem
 tem
 tem
 tem
-cxU
+cyx
 tem
 tem
 tem
 tem
-cxU
+cyx
 tem
 tem
 tem
@@ -131698,19 +131802,19 @@ drq
 drq
 drq
 ssW
-cxU
-cxU
-cxU
-cxU
-cxU
-cxU
-cxU
-cxU
-cxU
-cxU
-cxU
-cxU
-cxU
+cyx
+cyx
+cyx
+cyx
+cyx
+cyx
+cyx
+cyx
+cyx
+cyx
+cyx
+cyx
+cyx
 cWe
 drq
 drq
@@ -131884,12 +131988,12 @@ tem
 tem
 tem
 tem
-cxU
+cyx
 tem
 tem
 tem
 tem
-cxU
+cyx
 tem
 tem
 tem
@@ -134600,15 +134704,15 @@ drq
 drq
 drq
 ssW
-cxU
+cyx
 tem
-cxU
+cyx
 tem
-cxU
+cyx
 tem
-cxU
+cyx
 tem
-cxU
+cyx
 tem
 tem
 tem
@@ -134641,7 +134745,7 @@ btp
 btp
 nHL
 tem
-tem
+cyx
 tem
 tem
 cWe
@@ -134782,15 +134886,15 @@ drq
 drq
 drq
 ssW
-cxU
+cyx
 tem
-cxU
+cyx
 tem
-cxU
+cyx
 tem
-cxU
+cyx
 tem
-cxU
+cyx
 tem
 tem
 tem
@@ -134817,13 +134921,13 @@ tem
 tem
 tem
 tem
+cyx
 tem
 tem
 tem
 tem
 tem
-tem
-tem
+cyx
 tem
 tem
 cWe
@@ -134964,15 +135068,15 @@ drq
 drq
 drq
 ssW
-cxU
+cyx
 tem
-cxU
+cyx
 tem
-cxU
+cyx
 tem
-cxU
+cyx
 tem
-cxU
+cyx
 tem
 tem
 tem
@@ -134995,19 +135099,19 @@ drq
 drq
 drq
 ssW
-tem
-tem
-tem
-tem
-tem
-tem
-tem
-tem
-tem
-tem
-tem
-tem
-tem
+cyx
+cyx
+cyx
+cyx
+cyx
+cyx
+cyx
+cyx
+cyx
+cyx
+cyx
+cyx
+cyx
 cWe
 drq
 drq
@@ -135146,18 +135250,18 @@ drq
 drq
 drq
 ssW
-cxU
-cxU
-cxU
-cxU
-cxU
-cxU
-cxU
-cxU
-cxU
-cxU
-cxU
-cxU
+cyx
+cyx
+cyx
+cyx
+cyx
+cyx
+cyx
+cyx
+cyx
+cyx
+cyx
+cyx
 cWe
 ezB
 drq
@@ -135181,13 +135285,13 @@ tem
 tem
 tem
 tem
+cyx
 tem
 tem
 tem
 tem
 tem
-tem
-tem
+cyx
 tem
 tem
 cWe
@@ -135336,7 +135440,7 @@ tem
 tem
 tem
 tem
-cxU
+cyx
 tem
 tem
 tem
@@ -135368,10 +135472,10 @@ ayE
 ayE
 ayE
 cCt
-tem
-tem
-tem
-tem
+cyx
+cyx
+cyx
+cyx
 gKO
 btp
 btp
@@ -135518,10 +135622,10 @@ tem
 tem
 tem
 ezB
-cxU
-cxU
-cxU
-cxU
+cyx
+cyx
+cyx
+cyx
 cWe
 ezB
 drq
@@ -135554,13 +135658,13 @@ tem
 tem
 tem
 tem
+cyx
 tem
 tem
+cyx
 tem
 tem
-tem
-tem
-gKO
+cWe
 drq
 drq
 drq
@@ -135700,7 +135804,7 @@ tem
 tem
 tem
 tem
-cxU
+cyx
 tem
 tem
 tem
@@ -135736,14 +135840,14 @@ tem
 tem
 tem
 tem
+cyx
 tem
 tem
+cyx
 tem
 tem
-tem
-tem
-tem
-cWe
+gKO
+drq
 drq
 drq
 ezB
@@ -135882,10 +135986,10 @@ tem
 tem
 tem
 tem
-cxU
-cxU
-cxU
-cxU
+cyx
+cyx
+cyx
+cyx
 ezB
 ezB
 drq
@@ -135918,10 +136022,10 @@ tem
 tem
 tem
 tem
+cyx
 tem
 tem
-tem
-tem
+cyx
 tem
 tem
 tem
@@ -136064,11 +136168,11 @@ ezB
 tem
 tem
 tem
-cxU
+cyx
 tem
 tem
 tem
-cxU
+cyx
 ezB
 ezB
 drq
@@ -136246,11 +136350,11 @@ ezB
 ezB
 tem
 ezB
-cxU
+cyx
 tem
 tem
 tem
-cxU
+cyx
 tem
 cWe
 drq
@@ -136428,11 +136532,11 @@ ezB
 ezB
 ezB
 ezB
-cxU
+cyx
 tem
 tem
 tem
-cxU
+cyx
 tem
 cWe
 drq
@@ -136610,11 +136714,11 @@ cCt
 ezB
 ezB
 ezB
-cxU
-cxU
-cxU
-cxU
-cxU
+cyx
+cyx
+cyx
+cyx
+cyx
 tem
 cWe
 drq
@@ -136791,12 +136895,12 @@ drq
 ssW
 ezB
 ezB
-cxU
+cyx
 ezB
-cxU
+cyx
 tem
 tem
-cxU
+cyx
 tem
 cWe
 drq
@@ -136973,12 +137077,12 @@ drq
 ssW
 ezB
 tem
-cxU
+cyx
 tem
-cxU
+cyx
 tem
 tem
-cxU
+cyx
 tem
 cWe
 drq
@@ -137154,13 +137258,13 @@ drq
 drq
 ssW
 ezB
-cxU
-cxU
-cxU
-cxU
-cxU
-cxU
-cxU
+cyx
+cyx
+cyx
+cyx
+cyx
+cyx
+cyx
 tem
 ezB
 drq
@@ -137337,12 +137441,12 @@ drq
 ssW
 ezB
 ezB
-cxU
+cyx
 tem
-cxU
+cyx
 tem
 tem
-cxU
+cyx
 tem
 ezB
 ezB
@@ -137544,8 +137648,8 @@ ezB
 ezB
 drq
 drq
-btp
-btp
+drq
+drq
 drq
 drq
 drq
@@ -137746,7 +137850,7 @@ tem
 tem
 tem
 tem
-tem
+cyx
 ezB
 ezB
 ezB
@@ -137928,7 +138032,7 @@ tem
 tem
 tem
 tem
-tem
+cyx
 ezB
 ezB
 ezB
@@ -138106,11 +138210,11 @@ drq
 drq
 drq
 ssW
-tem
-tem
-tem
-tem
-tem
+cyx
+cyx
+cyx
+cyx
+cyx
 tem
 ezB
 ezB
@@ -138292,9 +138396,9 @@ tem
 tem
 tem
 tem
+cyx
 tem
-tem
-cxU
+cyx
 ezB
 ezB
 ezB
@@ -138447,9 +138551,9 @@ ezB
 ezB
 ezB
 ezB
-ezB
-ezB
-ezB
+drq
+drq
+drq
 ezB
 ezB
 ezB
@@ -138474,9 +138578,9 @@ tem
 tem
 tem
 tem
-cxU
-cxU
-cxU
+cyy
+cyx
+cyx
 ezB
 ezB
 ezB
@@ -138656,9 +138760,9 @@ tem
 tem
 tem
 tem
-cxU
-cxU
-cxU
+cyy
+tem
+cyx
 ezB
 ezB
 ezB
@@ -138804,11 +138908,11 @@ ayE
 ayE
 ayE
 ayE
+ayE
+ayE
 drq
-drq
-drq
-drq
-drq
+ezB
+ezB
 ezB
 ezB
 ezB
@@ -138834,12 +138938,12 @@ ezB
 ezB
 ezB
 ssW
+cyx
+cyx
+cyx
+cyx
+cyx
 tem
-tem
-tem
-tem
-tem
-cxU
 ezB
 ezB
 ezB
@@ -138989,8 +139093,8 @@ drq
 drq
 drq
 drq
-ezB
 drq
+ezB
 ezB
 ezB
 ezB
@@ -139020,8 +139124,8 @@ tem
 tem
 tem
 tem
+cyx
 tem
-cxU
 ezB
 ezB
 ezB
@@ -139362,14 +139466,14 @@ ezB
 ezB
 ezB
 ezB
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
+btp
+btp
+btp
+btp
+btp
+btp
+btp
+btp
 ezB
 drq
 drq
@@ -139543,7 +139647,7 @@ ezB
 ezB
 ezB
 ezB
-ezB
+drq
 drq
 drq
 drq
@@ -139724,8 +139828,8 @@ drq
 ezB
 ezB
 ezB
-ezB
-ezB
+drq
+drq
 drq
 drq
 drq
@@ -139744,10 +139848,10 @@ ezB
 ezB
 ezB
 ezB
-tem
-tem
-tem
-tem
+cyx
+cyx
+cyx
+cyx
 ezB
 ezB
 ezB
@@ -139916,7 +140020,7 @@ drq
 drq
 drq
 drq
-drq
+ssW
 drq
 drq
 drq
@@ -140098,13 +140202,13 @@ drq
 drq
 drq
 drq
+ssW
 drq
 drq
 drq
-drq
-drq
-cxU
-cxU
+ssW
+cyx
+cyz
 ezB
 ezB
 ezB
@@ -140280,13 +140384,13 @@ drq
 drq
 drq
 drq
+ssW
 drq
 drq
 drq
-drq
-drq
+ssW
 tem
-cxU
+cyx
 ezB
 ezB
 ezB
@@ -140445,7 +140549,7 @@ drq
 drq
 drq
 ssW
-cxU
+cyx
 drq
 drq
 drq
@@ -140462,16 +140566,16 @@ drq
 drq
 drq
 drq
+ssW
 drq
 drq
 drq
 drq
-drq
-drq
-drq
-drq
-drq
-drq
+ayE
+ayE
+ayE
+ayE
+cCt
 tem
 tem
 tem
@@ -140627,7 +140731,7 @@ drq
 drq
 drq
 ssW
-cxU
+cyx
 drq
 drq
 drq
@@ -140644,6 +140748,7 @@ drq
 drq
 drq
 drq
+ssW
 drq
 drq
 drq
@@ -140652,8 +140757,7 @@ drq
 drq
 drq
 drq
-drq
-drq
+ssW
 tem
 tem
 tem
@@ -140809,7 +140913,7 @@ drq
 drq
 drq
 ssW
-cxU
+cyx
 drq
 drq
 drq
@@ -140826,6 +140930,7 @@ drq
 drq
 drq
 drq
+ssW
 drq
 drq
 drq
@@ -140834,8 +140939,7 @@ drq
 drq
 drq
 drq
-drq
-drq
+ssW
 tem
 tem
 tem
@@ -140990,7 +141094,7 @@ drq
 drq
 drq
 drq
-cxU
+cyx
 drq
 drq
 drq
@@ -141008,6 +141112,7 @@ drq
 drq
 drq
 drq
+ssW
 drq
 drq
 drq
@@ -141016,8 +141121,7 @@ drq
 drq
 drq
 drq
-drq
-drq
+ssW
 tem
 tem
 tem
@@ -141190,7 +141294,7 @@ drq
 drq
 drq
 drq
-drq
+ssW
 drq
 drq
 drq
@@ -141372,7 +141476,7 @@ drq
 drq
 drq
 drq
-drq
+ssW
 drq
 drq
 drq
@@ -141554,7 +141658,7 @@ drq
 drq
 drq
 drq
-drq
+ssW
 drq
 drq
 drq
@@ -141716,7 +141820,7 @@ drq
 drq
 drq
 drq
-cxU
+cyx
 tem
 tem
 drq
@@ -141736,7 +141840,7 @@ drq
 drq
 drq
 drq
-drq
+ssW
 drq
 drq
 drq
@@ -141918,7 +142022,7 @@ drq
 drq
 drq
 drq
-drq
+ssW
 drq
 drq
 drq
@@ -142079,11 +142183,11 @@ drq
 drq
 drq
 drq
-cxU
-cxU
+cyx
 tem
 tem
-cxU
+tem
+cyx
 drq
 drq
 drq
@@ -142100,7 +142204,7 @@ drq
 drq
 drq
 drq
-drq
+ssW
 drq
 drq
 drq
@@ -142264,8 +142368,8 @@ drq
 tem
 tem
 tem
-cxU
-cyc
+cyx
+cyy
 btp
 btp
 btp
@@ -142282,7 +142386,7 @@ drq
 drq
 drq
 drq
-drq
+ssW
 drq
 drq
 drq
@@ -142442,11 +142546,11 @@ btp
 btp
 btp
 btp
-cxU
+cyx
 tem
 tem
 tem
-cxU
+cyx
 btp
 btp
 btp
@@ -142469,8 +142573,8 @@ btp
 btp
 btp
 btp
-drq
-drq
+btp
+btp
 ezB
 ezB
 ezB
@@ -143020,7 +143124,7 @@ ezB
 ezB
 ezB
 ezB
-cxY
+ezB
 cxW
 ezB
 ezB
@@ -180148,8 +180252,8 @@ abs
 abs
 abs
 abs
-abr
-abr
+abs
+abs
 abr
 abr
 abr
@@ -180331,7 +180435,7 @@ abs
 abs
 abs
 abs
-abr
+abs
 abr
 abr
 abr
@@ -180515,8 +180619,8 @@ abs
 abs
 abs
 abs
-abs
-abs
+abr
+abr
 abr
 abr
 abr
@@ -180698,8 +180802,8 @@ abs
 abs
 abs
 abs
-abs
-abs
+abr
+abr
 abr
 abr
 abr
@@ -180880,8 +180984,8 @@ abs
 abs
 abs
 abs
-abs
-abs
+abr
+abr
 abr
 abr
 abr
@@ -181062,7 +181166,7 @@ abs
 abs
 abs
 abs
-abs
+abr
 abr
 abr
 abr
@@ -182336,8 +182440,8 @@ abr
 abr
 abr
 abr
-cyw
-abr
+abs
+abs
 abr
 abr
 abr
@@ -182517,8 +182621,8 @@ abr
 abr
 abr
 abr
-cyw
-cyw
+abs
+abs
 abr
 abr
 abr
@@ -182698,9 +182802,9 @@ abr
 abr
 abr
 abr
-cyw
-cyw
-cyw
+abs
+abs
+abs
 abr
 abr
 abr
@@ -182879,9 +182983,9 @@ abs
 abr
 abr
 abr
-cyw
-cyw
-cyw
+abs
+abs
+abs
 abr
 abr
 abr
@@ -183060,10 +183164,10 @@ abs
 abr
 abr
 abr
-cyw
-cyw
 abs
-cyw
+abs
+abs
+abs
 abr
 abr
 abr
@@ -183241,11 +183345,11 @@ abs
 abs
 abr
 abr
-cyw
-cyw
-cyw
+abr
 abs
-cyw
+abs
+abs
+abs
 abr
 abr
 abr
@@ -183422,13 +183526,13 @@ abs
 abs
 abs
 abr
-cyw
-cyw
-cyw
-cyw
+abr
 abs
-cyw
-cyw
+abs
+abs
+abs
+abs
+abs
 abr
 abr
 abr
@@ -183604,13 +183708,13 @@ abs
 abs
 abs
 abs
-cyw
-cyw
-cyw
 abs
 abs
-cyw
-cyw
+abs
+abs
+abs
+abs
+abr
 abr
 abr
 abr
@@ -183787,12 +183891,12 @@ abs
 abs
 abs
 abs
-cyw
 abs
 abs
-cyw
-cyw
-cyw
+abs
+abs
+abs
+abr
 abr
 abr
 abr
@@ -183973,9 +184077,9 @@ abs
 abs
 abs
 abs
-cyw
-cyw
+abs
 abr
+abs
 abr
 abr
 abr
@@ -184155,9 +184259,9 @@ abs
 abs
 abs
 abs
-cyw
-cyw
-cyw
+abs
+abs
+abs
 abr
 abr
 abr
@@ -187972,10 +188076,10 @@ abt
 abt
 abt
 abt
-abt
-abt
-abt
-abt
+abs
+abs
+abs
+abs
 abs
 abs
 abr
@@ -188341,10 +188445,10 @@ abt
 abt
 abt
 abt
-abs
-abs
-abs
-abs
+abt
+abt
+abt
+abt
 abr
 abr
 abr
@@ -188524,12 +188628,12 @@ abt
 abt
 abt
 abt
-abs
-abs
-abs
-abs
-abs
-abs
+abt
+abt
+abt
+abt
+abt
+abt
 abr
 abr
 abr
@@ -188706,14 +188810,14 @@ abt
 abt
 abt
 abt
-abs
-abs
-abs
-abs
-abs
-abs
-abs
-abs
+abt
+abt
+abt
+abt
+abt
+abt
+abt
+abt
 abr
 abr
 abr
@@ -188888,15 +188992,15 @@ abt
 abt
 abt
 abt
-abs
-abs
-abs
-abs
-abs
-abs
-abs
-abs
-abs
+abt
+abt
+abt
+abt
+abt
+abt
+abt
+abt
+abt
 abr
 abr
 abr
@@ -189070,15 +189174,15 @@ abt
 abt
 abt
 abt
-abs
-abs
-abs
-abs
-abs
-abs
-abs
-abs
-abs
+abt
+abt
+abt
+abt
+abt
+abt
+abt
+abt
+abt
 abr
 abr
 abr
@@ -189252,16 +189356,16 @@ abt
 abt
 abt
 abt
-abs
-abs
-abs
-abs
-abs
-abs
-abs
-abs
-abs
-abs
+abt
+abt
+abt
+abt
+abt
+abt
+abt
+abt
+abt
+abt
 abr
 abr
 abr
@@ -189434,16 +189538,16 @@ abt
 abt
 abt
 abt
-abs
-abs
-abs
-abs
-abs
-abs
-abs
-abs
-abs
-abs
+abt
+abt
+abt
+abt
+abt
+abt
+abt
+abt
+abt
+abt
 abr
 abr
 abr
@@ -189618,15 +189722,15 @@ abt
 abt
 abt
 abt
-abs
-abs
-abs
-abs
-abs
-abs
-abs
-abs
-abs
+abt
+abt
+abt
+abt
+abt
+abt
+abt
+abt
+abt
 abr
 abr
 abr
@@ -189804,11 +189908,11 @@ abs
 abs
 abs
 abs
-abs
-abs
-abs
-abs
-abs
+abt
+abt
+abt
+abt
+abt
 abr
 abr
 abr
@@ -189986,11 +190090,11 @@ abt
 abt
 abt
 abt
-abs
-abs
-abs
-abs
-abs
+abt
+abt
+abt
+abt
+abt
 abr
 abr
 abr
@@ -190168,10 +190272,10 @@ abt
 abt
 abt
 abt
-abs
-abs
-abs
-abs
+abt
+abt
+abt
+abt
 abt
 abr
 abr
@@ -191448,7 +191552,7 @@ abt
 abt
 abt
 abt
-abs
+abt
 abr
 abr
 abr
@@ -191630,7 +191734,7 @@ abt
 abt
 abt
 abt
-abs
+abt
 abr
 abr
 abr
@@ -191812,7 +191916,7 @@ abt
 abt
 abt
 abt
-abs
+abt
 abr
 abr
 abr
@@ -192175,7 +192279,7 @@ abt
 abt
 abt
 abt
-abs
+abt
 abr
 abr
 abr
@@ -192355,9 +192459,9 @@ abt
 abt
 abt
 abt
-abs
-abs
-abs
+abt
+abt
+abt
 abr
 abr
 abr
@@ -192537,7 +192641,7 @@ abt
 abt
 abt
 abt
-abs
+abt
 abr
 abr
 abr
@@ -192718,7 +192822,7 @@ abt
 abt
 abt
 abt
-cyv
+abr
 abr
 abr
 abr
@@ -192899,7 +193003,7 @@ abt
 abt
 abt
 abt
-cyv
+abr
 abr
 abr
 abr
@@ -193080,8 +193184,8 @@ abt
 abt
 abt
 abt
-cyv
-cyv
+abr
+abr
 abr
 abr
 abr
@@ -193256,14 +193360,14 @@ abt
 abt
 abt
 abt
-cyv
-cyv
+abr
+abr
 abt
-cyv
-cyv
-cyv
-cyv
-cyv
+abr
+abr
+abr
+abr
+abr
 abr
 abr
 abr
@@ -193437,15 +193541,15 @@ abt
 abt
 abt
 abt
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
 abr
 abr
 abr
@@ -193620,13 +193724,13 @@ abt
 abt
 abt
 abt
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
+abr
+abr
+abr
+abr
+abr
+abr
+abr
 abr
 abr
 abr
@@ -193796,19 +193900,19 @@ abt
 abt
 abt
 abt
-cyv
-cyv
-cyv
+abr
+abr
+abr
 abt
 abt
-abt
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
 abr
 abr
 abr
@@ -193976,21 +194080,21 @@ abt
 abt
 abt
 abt
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
 abr
 abr
 abr
@@ -194159,20 +194263,20 @@ abt
 abt
 abt
 abt
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
 abr
 abr
 abr
@@ -194340,21 +194444,21 @@ abt
 abt
 abt
 abt
-abt
-abt
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
 abr
 abr
 abr
@@ -194519,24 +194623,24 @@ abt
 abt
 abt
 abt
-cyv
-cyv
-abt
-abt
-abt
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
 abr
 abr
 abr
@@ -194700,25 +194804,25 @@ abt
 abt
 abt
 abt
-cyv
-cyv
-cyv
-cyv
-cyv
-abt
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
 abr
 abr
 abr
@@ -194881,18 +194985,18 @@ abt
 abt
 abt
 abt
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
 abr
 abr
 abr
@@ -195064,15 +195168,15 @@ abt
 abt
 abt
 abt
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
+abr
 abr
 abr
 abr
@@ -195247,12 +195351,12 @@ abt
 abt
 abt
 abt
-cyv
-cyv
-cyv
-cyv
-cyv
-cyv
+abr
+abr
+abr
+abr
+abr
+abr
 abr
 abr
 abr

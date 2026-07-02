@@ -119,9 +119,14 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 	if(!storage)
 		return FALSE
 	//Make the chem storage scale with number of dispensers
-	storage.recharge_rate += 5
-	storage.max_energy += 100
-	storage.energy = storage.max_energy
+	if(storage.dynamic_storage)
+		storage.base_recharge_rate += 5
+		storage.base_max_energy += 100
+		storage.energy = storage.base_max_energy
+	else
+		storage.recharge_rate += 5
+		storage.max_energy += 100
+		storage.energy = storage.max_energy
 	return storage
 
 /datum/chemical_data/proc/disconnect_chem_storage(network)

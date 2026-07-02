@@ -1301,7 +1301,7 @@ Additional game mode variables.
 		var/obj/structure/machinery/chem_storage/chem_storage = GLOB.chemical_data.chemical_networks[chem_storage_network]
 		if(!chem_storage.dynamic_storage)
 			continue
-		chem_storage.calculate_dynamic_storage(gear_scale)
+		chem_storage.calculate_dynamic_storage(gear_scale, TRUE)
 
 	//Scale the amount of cargo points through a direct multiplier
 	GLOB.supply_controller.points += floor(GLOB.supply_controller.points_scale * gear_scale)

@@ -38,7 +38,7 @@
 	inv_overlay = null
 	. = ..()
 
-/obj/item/clothing/accessory/proc/can_attach_to(mob/user, obj/item/clothing/C)
+/obj/item/clothing/accessory/proc/can_attach_to(mob/user, obj/item/clothing/clothes)
 	return TRUE
 
 //when user attached an accessory to clothing/clothes
@@ -81,7 +81,7 @@
 	return TRUE
 
 //default attackby behaviour
-/obj/item/clothing/accessory/attackby(obj/item/I, mob/user)
+/obj/item/clothing/accessory/attackby(obj/item/attacking_object, mob/user)
 	..()
 
 //default attack_hand behaviour
@@ -185,7 +185,7 @@
 						if(ORGAN_BROKEN)
 							sound += "<font color='red'>barely hear any respiration sounds</font> and a lot of difficulty to breath, [being.p_their()] lungs are <font color='red'>heavily failing</font>"
 						else
-							sound += "hear <font color='green'>normal respiration sounds</font> aswell, that means [being.p_their()] lungs are <font color='green'>healthy</font>, probably"
+							sound += "hear <font color='green'>normal respiration sounds</font> as well, that means [being.p_their()] lungs are <font color='green'>healthy</font>, probably"
 				else
 					sound = "can't hear. Really, anything at all, how weird"
 			else
@@ -218,96 +218,96 @@
 	worn_accessory_limit = 2
 	var/awarding_faction
 
-/obj/item/clothing/accessory/medal/on_attached(obj/item/clothing/S, mob/living/user, silent)
+/obj/item/clothing/accessory/medal/on_attached(obj/item/clothing/Stuff, mob/living/user, silent)
 	. = ..()
 	if(.)
-		RegisterSignal(S, COMSIG_ITEM_EQUIPPED, PROC_REF(remove_medal))
+		RegisterSignal(Stuff, COMSIG_ITEM_EQUIPPED, PROC_REF(remove_medal))
 
-/obj/item/clothing/accessory/medal/proc/remove_medal(obj/item/clothing/C, mob/user, slot)
+/obj/item/clothing/accessory/medal/proc/remove_medal(obj/item/clothing/clothes, mob/user, slot)
 	SIGNAL_HANDLER
 	if(user.real_name != recipient_name && (slot == WEAR_BODY || slot == WEAR_JACKET))
-		C.remove_accessory(user, src)
+		clothes.remove_accessory(user, src)
 		user.drop_held_item(src)
 
-/obj/item/clothing/accessory/medal/on_removed(mob/living/user, obj/item/clothing/C)
+/obj/item/clothing/accessory/medal/on_removed(mob/living/user, obj/item/clothing/clothes)
 	. = ..()
 	if(.)
-		UnregisterSignal(C, COMSIG_ITEM_EQUIPPED)
+		UnregisterSignal(clothes, COMSIG_ITEM_EQUIPPED)
 
-/obj/item/clothing/accessory/medal/attack(mob/living/carbon/human/H, mob/living/carbon/human/user)
-	if(!(istype(H) && istype(user)))
+/obj/item/clothing/accessory/medal/attack(mob/living/carbon/human/human, mob/living/carbon/human/user)
+	if(!(istype(human) && istype(user)))
 		return ..()
-	if(recipient_name != H.real_name)
-		to_chat(user, SPAN_WARNING("[src] wasn't awarded to [H]."))
+	if(recipient_name != human.real_name)
+		to_chat(user, SPAN_WARNING("[src] wasn't awarded to [human]."))
 		return
 
-	var/obj/item/clothing/U
-	if(H.wear_suit && H.wear_suit.can_attach_accessory(src)) //Prioritises topmost garment, IE service jackets, if possible.
-		U = H.wear_suit
+	var/obj/item/clothing/uniform
+	if(human.wear_suit && human.wear_suit.can_attach_accessory(src)) //Prioritizes topmost garment, IE service jackets, if possible.
+		uniform = human.wear_suit
 	else
-		U = H.w_uniform //Will be null if no uniform. That this allows medal ceremonies in which the hero is wearing no pants is correct and just.
-	if(!U)
-		if(user == H)
+		uniform = human.w_uniform //Will be null if no uniform. That this allows medal ceremonies in which the hero is wearing no pants is correct and just.
+	if(!uniform)
+		if(user == human)
 			to_chat(user, SPAN_WARNING("You aren't wearing anything you can pin [src] to."))
 		else
-			to_chat(user, SPAN_WARNING("[H] isn't wearing anything you can pin [src] to."))
+			to_chat(user, SPAN_WARNING("[human] isn't wearing anything you can pin [src] to."))
 		return
 
-	if(user == H)
-		user.visible_message(SPAN_NOTICE("[user] pins [src] to \his [U.name]."),
-		SPAN_NOTICE("You pin [src] to your [U.name]."))
+	if(user == human)
+		user.visible_message(SPAN_NOTICE("[user] pins [src] to \his [uniform.name]."),
+		SPAN_NOTICE("You pin [src] to your [uniform.name]."))
 
 	else
 		if(user.action_busy)
 			return
 		if(user.a_intent != INTENT_HARM)
-			user.affected_message(H,
-			SPAN_NOTICE("You start to pin [src] onto [H]."),
+			user.affected_message(human,
+			SPAN_NOTICE("You start to pin [src] onto [human]."),
 			SPAN_NOTICE("[user] starts to pin [src] onto you."),
-			SPAN_NOTICE("[user] starts to pin [src] onto [H]."))
-			if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, H))
+			SPAN_NOTICE("[user] starts to pin [src] onto [human]."))
+			if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, human))
 				return
-			if(!(U == H.w_uniform || U == H.wear_suit))
-				to_chat(user, SPAN_WARNING("[H] took off \his [U.name] before you could finish pinning [src] to it."))
+			if(!(uniform == human.w_uniform || uniform == human.wear_suit))
+				to_chat(user, SPAN_WARNING("[human] took off \his [uniform.name] before you could finish pinning [src] to it."))
 				return
-			user.affected_message(H,
-			SPAN_NOTICE("You pin [src] to [H]'s [U.name]."),
-			SPAN_NOTICE("[user] pins [src] to your [U.name]."),
-			SPAN_NOTICE("[user] pins [src] to [H]'s [U.name]."))
+			user.affected_message(human,
+			SPAN_NOTICE("You pin [src] to [human]'s [uniform.name]."),
+			SPAN_NOTICE("[user] pins [src] to your [uniform.name]."),
+			SPAN_NOTICE("[user] pins [src] to [human]'s [uniform.name]."))
 
 		else
-			user.affected_message(H,
-			SPAN_ALERT("You start to pin [src] to [H]."),
+			user.affected_message(human,
+			SPAN_ALERT("You start to pin [src] to [human]."),
 			SPAN_ALERT("[user] starts to pin [src] to you."),
-			SPAN_ALERT("[user] starts to pin [src] to [H]."))
-			if(!do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE, H))
+			SPAN_ALERT("[user] starts to pin [src] to [human]."))
+			if(!do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE, human))
 				return
-			if(!(U == H.w_uniform || U == H.wear_suit))
-				to_chat(user, SPAN_WARNING("[H] took off \his [U.name] before you could finish pinning [src] to \him."))
+			if(!(uniform == human.w_uniform || uniform == human.wear_suit))
+				to_chat(user, SPAN_WARNING("[human] took off \his [uniform.name] before you could finish pinning [src] to \him."))
 				return
-			user.affected_message(H,
-			SPAN_DANGER("You slam the [src.name]'s pin through [H]'s [U.name] and into \his chest."),
-			SPAN_DANGER("[user] slams the [src.name]'s pin through your [U.name] and into your chest!"),
-			SPAN_DANGER("[user] slams the [src.name]'s pin through [H]'s [U.name] and into \his chest."))
+			user.affected_message(human,
+			SPAN_DANGER("You slam the [src.name]'s pin through [human]'s [uniform.name] and into \his chest."),
+			SPAN_DANGER("[user] slams the [src.name]'s pin through your [uniform.name] and into your chest!"),
+			SPAN_DANGER("[user] slams the [src.name]'s pin through [human]'s [uniform.name] and into \his chest."))
 
 			/*Some duplication from punch code due to attack message and damage stats.
 			This does cut damage and awarding multiple medals like this to the same person will cause bleeding.*/
-			H.last_damage_data = create_cause_data("macho bullshit", user)
-			user.animation_attack_on(H)
-			user.flick_attack_overlay(H, "punch")
+			human.last_damage_data = create_cause_data("macho bullshit", user)
+			user.animation_attack_on(human)
+			user.flick_attack_overlay(human, "punch")
 			playsound(user.loc, "punch", 25, 1)
-			H.apply_damage(5, BRUTE, "chest", 1)
+			human.apply_damage(5, BRUTE, "chest", 1)
 
-			if(!H.stat && H.pain.feels_pain)
+			if(!human.stat && human.pain.feels_pain)
 				if(prob(35))
-					INVOKE_ASYNC(H, TYPE_PROC_REF(/mob, emote), "pain")
+					INVOKE_ASYNC(human, TYPE_PROC_REF(/mob, emote), "pain")
 				else
-					INVOKE_ASYNC(H, TYPE_PROC_REF(/mob, emote), "me", 1, "winces.")
+					INVOKE_ASYNC(human, TYPE_PROC_REF(/mob, emote), "me", 1, "winces.")
 
-	if(U.can_attach_accessory(src) && user.drop_held_item())
-		U.attach_accessory(H, src, TRUE)
+	if(uniform.can_attach_accessory(src) && user.drop_held_item())
+		uniform.attach_accessory(human, src, TRUE)
 
-/obj/item/clothing/accessory/medal/can_attach_to(mob/user, obj/item/clothing/C)
+/obj/item/clothing/accessory/medal/can_attach_to(mob/user, obj/item/clothing/clothes)
 	if(user.real_name != recipient_name)
 		return FALSE
 	return TRUE
@@ -320,6 +320,7 @@
 		citation_to_read = "The citation reads \'[medal_citation]\'."
 
 	. += "Awarded to: \'[recipient_rank] [recipient_name]\'. [citation_to_read]"
+
 
 /obj/item/clothing/accessory/medal/ribbon
 	name = "award ribbon"
@@ -877,37 +878,38 @@
 	if (hold.handle_mousedrop(usr, over_object))
 		..(over_object)
 
-/obj/item/clothing/accessory/storage/attackby(obj/item/W, mob/user)
-	return hold.attackby(W, user)
+/obj/item/clothing/accessory/storage/attackby(obj/item/attacking_object, mob/user)
+	return hold.attackby(attacking_object, user)
 
 /obj/item/clothing/accessory/storage/emp_act(severity)
 	. = ..()
 	hold.emp_act(severity)
 
-/obj/item/clothing/accessory/storage/hear_talk(mob/M, msg)
-	hold.hear_talk(M, msg)
+/obj/item/clothing/accessory/storage/hear_talk(mob/listening_mob, msg)
+	hold.hear_talk(listening_mob, msg)
 	..()
 
 /obj/item/clothing/accessory/storage/attack_self(mob/user)
 	..()
 	to_chat(user, SPAN_NOTICE("You empty [src]."))
-	var/turf/T = get_turf(src)
+	var/turf/Turf = get_turf(src)
 	hold.storage_close(usr)
-	for(var/obj/item/I in hold.contents)
-		hold.remove_from_storage(I, T)
+	for(var/obj/item/something in hold.contents)
+		hold.remove_from_storage(something, Turf)
 	src.add_fingerprint(user)
 
-/obj/item/clothing/accessory/storage/on_attached(obj/item/clothing/C, mob/living/user, silent)
+/obj/item/clothing/accessory/storage/on_attached(obj/item/clothing/clothes, mob/living/user, silent)
 	. = ..()
 	if(.)
-		C.w_class = w_class //To prevent monkey business.
-		C.verbs += /obj/item/clothing/suit/storage/verb/toggle_draw_mode
+		clothes.w_class = w_class //To prevent monkey business.
+		clothes.verbs += /obj/item/clothing/suit/storage/verb/toggle_draw_mode
 
-/obj/item/clothing/accessory/storage/on_removed(mob/living/user, obj/item/clothing/C)
+/obj/item/clothing/accessory/storage/on_removed(mob/living/user, obj/item/clothing/clothes)
 	. = ..()
 	if(.)
-		C.w_class = initial(C.w_class)
-		C.verbs -= /obj/item/clothing/suit/storage/verb/toggle_draw_mode
+		clothes.w_class = initial(clothes.w_class)
+		clothes.verbs -= /obj/item/clothing/suit/storage/verb/toggle_draw_mode
+
 
 /obj/item/storage/internal/accessory/webbing
 	bypass_w_limit = list(
@@ -918,38 +920,41 @@
 
 /obj/item/clothing/accessory/storage/webbing
 	name = "webbing"
-	desc = "A sturdy mess of synthcotton belts and buckles, ready to share your burden."
+	desc = "A sturdy mess of synthcotton belts and buckles, ready to share your burden of three items."
 	icon_state = "webbing"
 	hold = /obj/item/storage/internal/accessory/webbing
 
 /obj/item/clothing/accessory/storage/webbing/black
 	name = "black webbing"
+	desc = "A sturdy mess of synthcotton belts and buckles, ready to share your burden with three pockets. This one is black as coal."
 	icon_state = "webbing_black"
 	item_state = "webbing_black"
 
 /obj/item/clothing/accessory/storage/webbing/iasf
 	name = "IASF airborne webbing"
-	desc = "A durable harness system issued to IASF airborne forces, designed to distribute weight evenly for comfort and mobility. Fitted with reinforced pouches for carrying essential gear during high-risk insertions."
+	desc = "A durable harness system issued to IASF airborne forces, designed to distribute weight evenly for comfort and mobility. Fitted with three reinforced pockets for carrying essential gear during high-risk insertions."
 	icon_state = "webbing_twe"
 	item_state = "webbing_twe"
 
-/obj/item/clothing/accessory/storage/webbing/five_slots
-	hold = /obj/item/storage/internal/accessory/webbing/five_slots
-
 /obj/item/storage/internal/accessory/webbing/five_slots
 	storage_slots = 5
+
+/obj/item/clothing/accessory/storage/webbing/five_slots
+	name = "large webbing"
+	desc = "A larger variant of the standard webbing model with five pockets to carry your burden."
+	hold = /obj/item/storage/internal/accessory/webbing/five_slots
 
 /obj/item/storage/internal/accessory/black_vest
 	storage_slots = 5
 
 /obj/item/clothing/accessory/storage/black_vest
 	name = "black webbing vest"
-	desc = "Robust black synthcotton vest with lots of pockets to hold whatever you need, but cannot hold in hands."
+	desc = "Robust black synthcotton vest with five pockets to hold whatever you need, but cannot hold in hands."
 	icon_state = "vest_black"
 	hold = /obj/item/storage/internal/accessory/black_vest
 
-/obj/item/clothing/accessory/storage/black_vest/attackby(obj/item/W, mob/living/user)
-	if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS) && skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
+/obj/item/clothing/accessory/storage/black_vest/attackby(obj/item/attacking_object, mob/living/user)
+	if(HAS_TRAIT(attacking_object, TRAIT_TOOL_WIRECUTTERS) && skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
 		var/components = 0
 		var/obj/item/reagent_container/glass/beaker/beaker
 		var/obj/item/cell/battery
@@ -957,9 +962,9 @@
 			if(istype(item, /obj/item/device/radio) || istype(item, /obj/item/stack/cable_coil) || istype(item, /obj/item/device/healthanalyzer))
 				components++
 			else if(istype(item, /obj/item/reagent_container/hypospray) && !istype(item, /obj/item/reagent_container/hypospray/autoinjector))
-				var/obj/item/reagent_container/hypospray/H = item
-				if(H.mag)
-					beaker = H.mag
+				var/obj/item/reagent_container/hypospray/hypospray = item
+				if(hypospray.mag)
+					beaker = hypospray.mag
 				components++
 			else if(istype(item, /obj/item/cell))
 				battery = item
@@ -967,39 +972,39 @@
 			else
 				components--
 		if(components == 5)
-			var/obj/item/clothing/accessory/storage/black_vest/acid_harness/AH
+			var/obj/item/clothing/accessory/storage/black_vest/acid_harness/harness
 			if(istype(src, /obj/item/clothing/accessory/storage/black_vest/brown_vest))
-				AH = new /obj/item/clothing/accessory/storage/black_vest/acid_harness/brown(get_turf(loc))
+				harness = new /obj/item/clothing/accessory/storage/black_vest/acid_harness/brown(get_turf(loc))
 			else
-				AH = new /obj/item/clothing/accessory/storage/black_vest/acid_harness(get_turf(loc))
+				harness = new /obj/item/clothing/accessory/storage/black_vest/acid_harness(get_turf(loc))
 			if(beaker)
-				AH.beaker = beaker
-				AH.hold.handle_item_insertion(beaker)
-			AH.battery = battery
-			AH.hold.handle_item_insertion(battery)
+				harness.beaker = beaker
+				harness.hold.handle_item_insertion(beaker)
+			harness.battery = battery
+			harness.hold.handle_item_insertion(battery)
 			qdel(src)
 			return
 	. = ..()
 
 /obj/item/clothing/accessory/storage/black_vest/brown_vest
 	name = "brown webbing vest"
-	desc = "Worn brownish synthcotton vest with lots of pockets to unload your hands."
+	desc = "Worn brownish synthcotton vest with five pockets to hold whatever you need."
 	icon_state = "vest_brown"
+
+/obj/item/clothing/accessory/storage/black_vest/owlf_vest
+	name = "\improper OWLF agent vest"
+	desc = "This is a fancy-looking ballistics vest with five pockets. It is meant to be attached to a uniform."
+	icon_state = "owlf_vest"
+	item_state = "owlf_vest"
 
 /obj/item/clothing/accessory/storage/black_vest/waistcoat
 	name = "tactical waistcoat"
-	desc = "A stylish black waistcoat with plenty of discreet pouches, to be both utilitarian and fashionable without compromising looks."
+	desc = "A stylish black waistcoat with five discreet pouches, to be both utilitarian and fashionable without compromising looks."
 	icon_state = "waistcoat"
 
-/obj/item/clothing/accessory/storage/tool_webbing
-	name = "Tool Webbing"
-	desc = "A brown synthcotton webbing that is similar in function to civilian tool aprons, but is more durable for field usage."
-	hold = /obj/item/storage/internal/accessory/tool_webbing
-	icon_state = "vest_brown"
-
 /obj/item/clothing/accessory/storage/black_vest/leg_pouch
-	name = "Leg Pouch"
-	desc = "A camo conforming leg pouch usually worn by hunters, military and people who dream of being military."
+	name = "leg pouch"
+	desc = "A camo-conforming leg pouch with five pockets usually worn by hunters, military and people who dream of being military."
 	icon = 'icons/obj/items/clothing/accessory/legpouch.dmi'
 	icon_state = "leg_pouch"
 	inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/legpouch.dmi'
@@ -1031,7 +1036,7 @@
 			icon_state = "u_leg_pouch"
 
 /obj/item/clothing/accessory/storage/black_vest/black_leg_pouch
-	name = "Black Leg Pouch"
+	name = "black leg pouch"
 	desc = "A black leg pouch usually worn by hunters, military and people who dream of being military."
 	icon = 'icons/obj/items/clothing/accessory/legpouch.dmi'
 	icon_state = "leg_pouch_black"
@@ -1041,10 +1046,6 @@
 	)
 	flags_atom = NO_GAMEMODE_SKIN
 
-/obj/item/clothing/accessory/storage/tool_webbing/small
-	name = "Small Tool Webbing"
-	desc = "A brown synthcotton webbing that is similar in function to civilian tool aprons, but is more durable for field usage. This is the small low-budget version."
-	hold = /obj/item/storage/internal/accessory/tool_webbing/small
 
 /obj/item/storage/internal/accessory/tool_webbing
 	storage_slots = 7
@@ -1060,24 +1061,14 @@
 		/obj/item/weapon/gun/smg/nailgun/compact,
 		/obj/item/device/defibrillator/synthetic,
 		/obj/item/stack/rods,
+
+
 	)
-
-/obj/item/storage/internal/accessory/tool_webbing/small
-	storage_slots = 6
-
-/obj/item/clothing/accessory/storage/tool_webbing/small/equipped
-	hold = /obj/item/storage/internal/accessory/tool_webbing/small/equipped
-
-/obj/item/storage/internal/accessory/tool_webbing/small/equipped/fill_preset_inventory()
-	new /obj/item/tool/screwdriver(src)
-	new /obj/item/tool/wrench(src)
-	new /obj/item/tool/weldingtool(src)
-	new /obj/item/tool/crowbar(src)
-	new /obj/item/tool/wirecutters(src)
-	new /obj/item/device/multitool(src)
-
-/obj/item/clothing/accessory/storage/tool_webbing/equipped
-	hold = /obj/item/storage/internal/accessory/tool_webbing/equipped
+/obj/item/clothing/accessory/storage/tool_webbing
+	name = "tool webbing"
+	desc = "A brown synthcotton webbing with seven pockets that is similar in function to civilian tool aprons, but is more durable for field usage."
+	hold = /obj/item/storage/internal/accessory/tool_webbing
+	icon_state = "vest_brown"
 
 /obj/item/storage/internal/accessory/tool_webbing/equipped/fill_preset_inventory()
 	new /obj/item/tool/screwdriver(src)
@@ -1088,18 +1079,40 @@
 	new /obj/item/stack/cable_coil(src)
 	new /obj/item/device/multitool(src)
 
-/obj/item/clothing/accessory/storage/tool_webbing/yellow_drop
-	name = "Tool Drop Pouch"
-	desc = "A durable pair of drop pouches purpose-made for carrying tools."
-	icon_state = "drop_pouch_engineering"
+/obj/item/clothing/accessory/storage/tool_webbing/equipped
+	hold = /obj/item/storage/internal/accessory/tool_webbing/equipped
 
-/obj/item/clothing/accessory/storage/tool_webbing/yellow_drop/small
-	name = "Small Tool Drop Pouch"
-	desc = "A durable pair of drop pouches purpose-made for carrying tools. These are the slightly smaller budget-version."
+/obj/item/storage/internal/accessory/tool_webbing/small
+	storage_slots = 6
+
+/obj/item/storage/internal/accessory/tool_webbing/small/equipped/fill_preset_inventory()
+	new /obj/item/tool/screwdriver(src)
+	new /obj/item/tool/wrench(src)
+	new /obj/item/tool/weldingtool(src)
+	new /obj/item/tool/crowbar(src)
+	new /obj/item/tool/wirecutters(src)
+	new /obj/item/device/multitool(src)
+
+/obj/item/clothing/accessory/storage/tool_webbing/small
+	name = "small tool webbing"
+	desc = "A brown synthcotton webbing that is similar in function to civilian tool aprons, but is more durable for field usage. This is the small low-budget version with only six pockets."
 	hold = /obj/item/storage/internal/accessory/tool_webbing/small
+
+/obj/item/clothing/accessory/storage/tool_webbing/small/equipped
+	hold = /obj/item/storage/internal/accessory/tool_webbing/small/equipped
+
+/obj/item/clothing/accessory/storage/tool_webbing/yellow_drop
+	name = "tool drop pouch"
+	desc = "A durable pair of yellow-colored drop pouches with enough space for carrying seven tools."
+	icon_state = "drop_pouch_engineering"
 
 /obj/item/clothing/accessory/storage/tool_webbing/yellow_drop/equipped
 	hold = /obj/item/storage/internal/accessory/tool_webbing/equipped
+
+/obj/item/clothing/accessory/storage/tool_webbing/yellow_drop/small
+	name = "small tool drop pouch"
+	desc = "A durable pair of yellow-colored drop pouches purpose-made for carrying tools. These are the slightly smaller budget-version that can only carry six tools."
+	hold = /obj/item/storage/internal/accessory/tool_webbing/small
 
 /obj/item/clothing/accessory/storage/tool_webbing/yellow_drop/small/equipped
 	hold = /obj/item/storage/internal/accessory/tool_webbing/small/equipped
@@ -1112,22 +1125,22 @@
 		/obj/item/stack/nanopaste,
 	)
 
-/obj/item/storage/internal/accessory/surg_vest/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/storage/surgical_tray))
-		var/obj/item/storage/surgical_tray/ST = W
-		if(!length(ST.contents))
+/obj/item/storage/internal/accessory/surg_vest/attackby(obj/item/attacking_object, mob/user)
+	if(istype(attacking_object, /obj/item/storage/surgical_tray))
+		var/obj/item/storage/surgical_tray/tray = attacking_object
+		if(!length(tray.contents))
 			return
 		if(length(contents) >= storage_slots)
 			to_chat(user, SPAN_WARNING("The surgical webbing vest is already full."))
 			return
 		if(!do_after(user, 5 SECONDS * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			return
-		for(var/obj/item/I in ST)
+		for(var/obj/item/something in tray)
 			if(length(contents) >= storage_slots)
 				break
-			ST.remove_from_storage(I)
-			attempt_item_insertion(I, TRUE, user)
-		user.visible_message("[user] transfers the tools from \the [ST] to the surgical webbing vest.", SPAN_NOTICE("You transfer the tools from \the [ST] to the surgical webbing vest."), max_distance = 3)
+			tray.remove_from_storage(something)
+			attempt_item_insertion(something, TRUE, user)
+		user.visible_message("[user] transfers the tools from \the [tray] to the surgical webbing vest.", SPAN_NOTICE("You transfer the tools from \the [tray] to the surgical webbing vest."), max_distance = 3)
 		return
 	return ..()
 
@@ -1149,7 +1162,7 @@
 
 /obj/item/clothing/accessory/storage/surg_vest
 	name = "surgical webbing vest"
-	desc = "Greenish synthcotton vest purpose-made for holding surgical tools."
+	desc = "Greenish synthcotton vest with fourteen pockets purpose-made for holding surgical tools."
 	icon_state = "vest_surg"
 	hold = /obj/item/storage/internal/accessory/surg_vest
 
@@ -1158,7 +1171,7 @@
 
 /obj/item/clothing/accessory/storage/surg_vest/drop_green
 	name = "green surgical drop pouch"
-	desc = "A greenish synthcotton drop pouch purpose-made for holding surgical tools."
+	desc = "A greenish synthcotton drop pouch with fourteen pockets purpose-made for holding surgical tools."
 	icon_state = "drop_pouch_surgical_green"
 
 /obj/item/clothing/accessory/storage/surg_vest/drop_green/equipped
@@ -1185,7 +1198,7 @@
 
 /obj/item/clothing/accessory/storage/surg_vest/blue
 	name = "blue surgical webbing vest"
-	desc = "A matte blue synthcotton vest purpose-made for holding surgical tools."
+	desc = "A matte blue synthcotton vest with fourteen pockets purpose-made for holding surgical tools."
 	icon_state = "vest_blue"
 
 /obj/item/clothing/accessory/storage/surg_vest/blue/equipped
@@ -1193,7 +1206,7 @@
 
 /obj/item/clothing/accessory/storage/surg_vest/drop_blue
 	name = "blue surgical drop pouch"
-	desc = "A matte blue synthcotton drop pouch purpose-made for holding surgical tools."
+	desc = "A matte blue synthcotton drop pouch with fourteen pockets purpose-made for holding surgical tools."
 	icon_state = "drop_pouch_surgical_blue"
 
 /obj/item/clothing/accessory/storage/surg_vest/drop_blue/equipped
@@ -1201,7 +1214,7 @@
 
 /obj/item/clothing/accessory/storage/surg_vest/black
 	name = "black surgical webbing vest"
-	desc = "A tactical black synthcotton vest purpose-made for holding surgical tools."
+	desc = "A tactical black synthcotton vest with fourteen pockets purpose-made for holding surgical tools."
 	icon_state = "vest_black"
 
 /obj/item/clothing/accessory/storage/surg_vest/black/equipped
@@ -1209,7 +1222,7 @@
 
 /obj/item/clothing/accessory/storage/surg_vest/drop_black
 	name = "black surgical drop pouch"
-	desc = "A tactical black synthcotton drop pouch purpose-made for holding surgical tools."
+	desc = "A tactical black synthcotton drop pouch with fourteen pockets purpose-made for holding surgical tools."
 	icon_state = "drop_pouch_surgical_black"
 
 /obj/item/clothing/accessory/storage/surg_vest/drop_black/equipped
@@ -1264,17 +1277,6 @@
 	..()
 	playsound(src, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 
-/obj/item/clothing/accessory/storage/droppouch
-	name = "drop pouch"
-	desc = "A convenient pouch to carry loose items around."
-	icon_state = "drop_pouch"
-
-	hold = /obj/item/storage/internal/accessory/drop_pouch
-
-/obj/item/clothing/accessory/storage/droppouch/black
-	name = "black drop pouch"
-	icon_state = "drop_pouch_black"
-
 /obj/item/storage/internal/accessory/drop_pouch
 	w_class = SIZE_LARGE //Allow storage containers that's medium or below
 	storage_slots = null
@@ -1287,13 +1289,17 @@
 		)
 	storage_flags = STORAGE_ALLOW_DRAWING_METHOD_TOGGLE
 
-/obj/item/clothing/accessory/storage/holster
-	name = "shoulder holster"
-	desc = "A handgun holster with an attached pouch, allowing two magazines or speedloaders to be stored along with it."
-	icon_state = "holster"
-	worn_accessory_slot = ACCESSORY_SLOT_STORAGE
-	high_visibility = TRUE
-	hold = /obj/item/storage/internal/accessory/holster
+/obj/item/clothing/accessory/storage/droppouch
+	name = "drop pouch"
+	desc = "A convenient pouch with five pockets to carry loose items around."
+	icon_state = "drop_pouch"
+
+	hold = /obj/item/storage/internal/accessory/drop_pouch
+
+/obj/item/clothing/accessory/storage/droppouch/black
+	name = "black drop pouch"
+	desc = "A convenient, coal-black pouch with five pockets to carry loose items around."
+	icon_state = "drop_pouch_black"
 
 /obj/item/storage/internal/accessory/holster
 	w_class = SIZE_LARGE
@@ -1314,30 +1320,38 @@
 	/obj/item/device/flashlight/flare
 	)
 
+/obj/item/clothing/accessory/storage/holster
+	name = "shoulder holster"
+	desc = "A handgun holster with an attached pouch, allowing two magazines or speedloaders to be stored along with it."
+	icon_state = "holster"
+	worn_accessory_slot = ACCESSORY_SLOT_STORAGE
+	high_visibility = TRUE
+	hold = /obj/item/storage/internal/accessory/holster
+
 /obj/item/storage/internal/accessory/holster/on_stored_atom_del(atom/movable/AM)
 	if(AM == current_gun)
 		current_gun = null
 
 /obj/item/clothing/accessory/storage/holster/attack_hand(mob/user, mods)
-	var/obj/item/storage/internal/accessory/holster/H = hold
-	if(H.current_gun && ishuman(user) && (loc == user || has_suit))
-		if(mods && mods[ALT_CLICK] && length(H.contents) > 1) //Withdraw the most recently inserted magazine, if possible.
-			var/obj/item/I = H.contents[length(H.contents)]
-			if(isgun(I))
-				I = H.contents[length(H.contents) - 1]
-			I.attack_hand(user)
+	var/obj/item/storage/internal/accessory/holster/holster = hold
+	if(holster.current_gun && ishuman(user) && (loc == user || has_suit))
+		if(mods && mods[ALT_CLICK] && length(holster.contents) > 1) //Withdraw the most recently inserted magazine, if possible.
+			var/obj/item/contents = holster.contents[length(holster.contents)]
+			if(isgun(contents))
+				contents = holster.contents[length(holster.contents) - 1]
+			contents.attack_hand(user)
 		else
-			H.current_gun.attack_hand(user)
+			holster.current_gun.attack_hand(user)
 		return
 
 	..()
 
-/obj/item/storage/internal/accessory/holster/can_be_inserted(obj/item/W, mob/user, stop_messages = FALSE)
+/obj/item/storage/internal/accessory/holster/can_be_inserted(obj/item/attacking_object, mob/user, stop_messages = FALSE)
 	if( ..() ) //If the parent did their thing, this should be fine. It pretty much handles all the checks.
-		if(isgun(W))
+		if(isgun(attacking_object))
 			if(current_gun)
 				if(!stop_messages)
-					to_chat(usr, SPAN_WARNING("[src] already holds \a [W]."))
+					to_chat(usr, SPAN_WARNING("[src] already holds \a [attacking_object]."))
 				return
 		else //Must be ammo.
 			var/ammo_slots = storage_slots - 1 //We have a slot reserved for the gun
@@ -1350,14 +1364,14 @@
 				return
 		return 1
 
-/obj/item/storage/internal/accessory/holster/_item_insertion(obj/item/W)
-	if(isgun(W))
-		current_gun = W //If there's no active gun, we want to make this our gun
+/obj/item/storage/internal/accessory/holster/_item_insertion(obj/item/attacking_object)
+	if(isgun(attacking_object))
+		current_gun = attacking_object //If there's no active gun, we want to make this our gun
 		playsound(src, sheatheSound, 15, TRUE)
 	. = ..()
 
-/obj/item/storage/internal/accessory/holster/_item_removal(obj/item/W)
-	if(isgun(W))
+/obj/item/storage/internal/accessory/holster/_item_removal(obj/item/attacking_object)
+	if(isgun(attacking_object))
 		current_gun = null
 		playsound(src, drawSound, 15, TRUE)
 	. = ..()
@@ -1413,13 +1427,13 @@
 	if(isliving(user))
 		user.visible_message(SPAN_DANGER("[user] displays their Wey-Yu Internal Security Legal Authorization Badge.\nIt reads: [stored_name], Wey-Yu Security."),SPAN_DANGER("You display your Wey-Yu Internal Security Legal Authorization Badge.\nIt reads: [stored_name], Wey-Yu Security."))
 
-/obj/item/clothing/accessory/holobadge/attackby(obj/item/O, mob/user)
-	if(istype(O, /obj/item/card/id))
+/obj/item/clothing/accessory/holobadge/attackby(obj/item/something, mob/user)
+	if(istype(something, /obj/item/card/id))
 
 		var/obj/item/card/id/id_card = null
 
-		if(istype(O, /obj/item/card/id))
-			id_card = O
+		if(istype(something, /obj/item/card/id))
+			id_card = something
 
 		if(ACCESS_MARINE_BRIG in id_card.access)
 			to_chat(user, "You imprint your ID details onto the badge.")
@@ -1448,12 +1462,6 @@
 	new /obj/item/clothing/accessory/holobadge/cord(src)
 	..()
 	return
-
-/obj/item/clothing/accessory/storage/owlf_vest
-	name = "\improper OWLF agent vest"
-	desc = "This is a fancy-looking ballistics vest, meant to be attached to a uniform." //No stats for these yet, just placeholder implementation.
-	icon_state = "owlf_vest"
-	item_state = "owlf_vest"
 
 /*
 Wrist Accessories

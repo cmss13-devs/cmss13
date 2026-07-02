@@ -19,18 +19,38 @@
 	for(var/i in 1 to storage_slots)
 		new stimulant_type(src)
 
+/obj/item/storage/pouch/stimulant_injector/update_icon()
+	overlays.Cut()
+	if(!length(contents))
+		return TRUE //For the pistol pouch to know it's empty.
+	if(content_watchers && flap) //If it has a flap and someone's looking inside it, don't close the flap.
+		return
+
+	if(storage_slots > 0 && length(contents) <= storage_slots)
+		var/number = length(contents)
+		overlays += "+[storage_slots]_slot_[number]"
+
 /obj/item/storage/pouch/stimulant_injector/speed
-	desc = "A pouch that holds speed stimulant injectors."
+	name = "speed stimulant pouch"
+	desc = "A pouch that can hold up to 3 speed stimulant injectors."
+	icon_state = "stimulant_speed"
 	stimulant_type = /obj/item/reagent_container/hypospray/autoinjector/stimulant/speed_stimulant
+	can_hold = list(/obj/item/reagent_container/hypospray/autoinjector/stimulant/speed_stimulant)
 
 /obj/item/storage/pouch/stimulant_injector/brain
+	name = "brain stimulant pouch"
+	icon_state = "stimulant_brain"
+	desc = "A pouch that can hold up to 3 brain stimulant injectors."
 	stimulant_type = /obj/item/reagent_container/hypospray/autoinjector/stimulant/brain_stimulant
-	desc = "A pouch that holds brain stimulant injectors."
+	can_hold = list(/obj/item/reagent_container/hypospray/autoinjector/stimulant/brain_stimulant)
 
 /obj/item/storage/pouch/stimulant_injector/redemption
-	desc = "A pouch that holds redemption stimulant injectors."
+	name = "redemption stimulant pouch"
+	desc = "A pouch that holds one redemption stimulant injector at a time."
+	icon_state = "stimulant_redemption"
 	storage_slots = 1
 	stimulant_type = /obj/item/reagent_container/hypospray/autoinjector/stimulant/redemption_stimulant
+	can_hold = list(/obj/item/reagent_container/hypospray/autoinjector/stimulant/redemption_stimulant) //no more abusing slipping these into other stimulant pouches. - Puckaboo2
 
 /obj/item/reagent_container/hypospray/autoinjector/stimulant
 	icon_state = "stimpack"
@@ -48,13 +68,13 @@
 		return
 
 	icon_state = "stimpack"
-	var/datum/reagent/R = GLOB.chemical_reagents_list[chemname]
+	var/datum/reagent/chemical = GLOB.chemical_reagents_list[chemname]
 
-	if(!R)
+	if(!chemical)
 		return
-	var/image/I = image(icon, src, icon_state="+stimpack_custom")
-	I.color = R.color
-	overlays += I
+	var/image/image = image(icon, src, icon_state="+stimpack_custom")
+	image.color = chemical.color
+	overlays += image
 
 /obj/item/reagent_container/hypospray/autoinjector/stimulant/speed_stimulant
 	name = "speed stimulant autoinjector"
@@ -63,14 +83,12 @@
 	maptext_label = "StSp"
 
 /obj/item/reagent_container/hypospray/autoinjector/stimulant/brain_stimulant
-	name = "brain stimulant stimpack"
+	name = "brain stimulant autoinjector"
 	chemname = "brain_stimulant"
 	desc = "A stimpack loaded with an experimental CNS stimulant. Extremely nerve-stimulating. Lasts 5 minutes."
 	maptext_label = "StBr"
 
 /obj/item/reagent_container/hypospray/autoinjector/stimulant/redemption_stimulant
-	amount_per_transfer_from_this = 5
-	volume = 5
 	name = "redemption stimulant autoinjector"
 	chemname = "redemption_stimulant"
 	desc = "A stimpack loaded with an experimental bone, organ and muscle stimulant. Significantly increases what a human can take before they go down. Lasts 5 minutes."

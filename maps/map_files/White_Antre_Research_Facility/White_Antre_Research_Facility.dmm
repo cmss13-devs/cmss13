@@ -15237,7 +15237,7 @@
 	pixel_y = 15;
 	pixel_x = 1
 	},
-/obj/item/storage/pouch/pressurized_reagent_canister/tricordrazine{
+/obj/item/storage/pouch/pressurized_reagent_canister/damage_mend{
 	pixel_y = -2
 	},
 /turf/open/floor/hybrisa/tile/tilewhite,

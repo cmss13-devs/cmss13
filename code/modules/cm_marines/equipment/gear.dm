@@ -620,9 +620,12 @@
 	qdel(src)
 
 /obj/structure/overwatch_camera_tripod/ex_act(severity)
-	if(severity == EXPLOSION_THRESHOLD_LOW)
-		undeploy()
-	else
-		var/obj/item/device/overwatch_camera/tripod/new_tripod
-		new_tripod.visible_message(SPAN_WARNING("[new_tripod] is obliterated!"))
-		qdel(src)
+	switch(severity)
+		if(EXPLOSION_THRESHOLD_VLOW | EXPLOSION_THRESHOLD_LOW | EXPLOSION_THRESHOLD_MEDIUM)
+			undeploy()
+		if(EXPLOSION_THRESHOLD_HIGH)
+			visible_message(SPAN_DANGER("[src] is obliterated by the explosion!"))
+			GLOB.deployed_tripod_cameras -= src
+			if(camera)
+				QDEL_NULL(camera)
+			qdel(src)

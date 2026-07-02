@@ -2792,7 +2792,8 @@
 	icon_state = "w_ek_17"
 	item_state = "w_ek_17"
 
-	fire_sound = 'sound/weapons/smg_heavy.ogg'
+	fire_sound = 'sound/weapons/gun_w_ek.ogg'
+
 	current_mag = /obj/item/ammo_magazine/rifle/w_ek_17
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,

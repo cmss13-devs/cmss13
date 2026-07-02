@@ -1,7 +1,8 @@
 
-// Areas for the Fire Colony map (nickname is "Shiva's Snowball")
+// Areas for LV-376 Charon's Crucible (nickname is "Fire Colony")
 
 //Base Instance
+
 /area/fire_colony
 	name = "\improper Fire Colony"
 	icon_state = "ice_colony"
@@ -30,64 +31,77 @@
 /// Exterior - Surface
 //
 
-/area/fire_colony/exterior/surface
+/area/fire_colony/exterior
 	name = "\improper Fire Colony - Exterior Surface"
 	soundscape_playlist = SCAPE_PL_LV522_OUTDOORS
 
 //Equivalent of space. None of this area should be accessible.
-/area/fire_colony/exterior/surface/cliff
+
+/area/fire_colony/exterior/cliff
 	name = "\improper Basalt Cliffs"
 	icon_state = "cliff_blocked"
+	ceiling = CEILING_MAX
+	is_resin_allowed = FALSE
+	flags_area = AREA_NOBURROW
+	minimap_color = MINIMAP_AREA_OOB
+	requires_power = FALSE
 
-/area/fire_colony/exterior/surface/landing_pad
-	name = "\improper Aerodrome Landing Pad"
+//Everything around the physical landing pad
+
+/area/fire_colony/exterior/landing_pad
+	name = "\improper Old Seegson - Aerodrome - Landing Pad"
 	icon_state = "landing_pad"
 	minimap_color = MINIMAP_AREA_LZ
 
-//Everything around the physical landing pad
-/area/fire_colony/exterior/surface/landing_pad_external
-	name = "\improper Aerodrome Landing Valley"
+/area/fire_colony/exterior/landing_pad_external
+	name = "\improper Old Seegson - Aerodrome - Landing Valley"
 	icon_state = "clear_pass"
 	minimap_color = MINIMAP_AREA_LZ
 
-/area/fire_colony/exterior/surface/container_yard
-	name = "\improper Aerodrome Container Yard"
+/area/fire_colony/exterior/container_yard
+	name = "\improper Old Seegson - Aerodrome - Container Yard"
 	icon_state = "green"
 	minimap_color = MINIMAP_AREA_LZ
+
+// Lava River - Bridge
+
+/area/fire_colony/exterior/lava_bridge
+	name = "\improper Colony Central - Lava Transit Bridge"
+	icon_state = "red"
 
 //
 /// Valleys
 //
 
-/area/fire_colony/exterior/surface/valley
-	name = "\improper Ice Cliffs Valley"
+/area/fire_colony/exterior/valley
+	name = "\improper Basalt Cliffs Valley"
 	icon_state = "clear_pass"
 
-/area/fire_colony/exterior/surface/valley/north
+/area/fire_colony/exterior/valley/north
 	name = "\improper Northern Valleys"
 	icon_state = "clear_pass"
 
-/area/fire_colony/exterior/surface/valley/northeast
+/area/fire_colony/exterior/valley/northeast
 	name = "\improper North Eastern Valleys"
 	icon_state = "clear_pass"
 
-/area/fire_colony/exterior/surface/valley/northwest
+/area/fire_colony/exterior/valley/northwest
 	name = "\improper North Western Valleys"
 	icon_state = "clear_pass"
 
-/area/fire_colony/exterior/surface/valley/west
+/area/fire_colony/exterior/valley/west
 	name = "\improper Western Valleys"
 	icon_state = "clear_pass"
 
-/area/fire_colony/exterior/surface/valley/south
+/area/fire_colony/exterior/valley/south
 	name = "\improper Southern Valleys"
 	icon_state = "clear_pass"
 
-/area/fire_colony/exterior/surface/valley/southeast
+/area/fire_colony/exterior/valley/southeast
 	name = "\improper Eastern Valleys"
 	icon_state = "clear_pass"
 
-/area/fire_colony/exterior/surface/valley/southwest
+/area/fire_colony/exterior/valley/southwest
 	name = "\improper South Western Valleys"
 	icon_state = "clear_pass"
 
@@ -96,27 +110,27 @@
 // The Colony Center, so to speak
 //
 
-/area/fire_colony/exterior/surface/clearing
+/area/fire_colony/exterior/clearing
 	name = "\improper Fire Colony - Clearing"
 	icon_state = "clear_pass"
 
-/area/fire_colony/exterior/surface/clearing/pass
+/area/fire_colony/exterior/clearing/pass
 	name = "\improper Colony Central Valley"
 	icon_state = "clear_pass"
 
-/area/fire_colony/exterior/surface/clearing/south
+/area/fire_colony/exterior/clearing/south
 	name = "\improper Colony Southern Clearing"
 	icon_state = "clear_pass"
 
-/area/fire_colony/exterior/surface/clearing/south_west
+/area/fire_colony/exterior/clearing/south_west
 	name = "\improper Colony South Western Clearing"
 	icon_state = "clear_pass"
 
-/area/fire_colony/exterior/surface/clearing/north
+/area/fire_colony/exterior/clearing/north
 	name = "\improper Colony Northern Clearing"
 	icon_state = "clear_pass"
 
-/area/fire_colony/exterior/surface/clearing/north_east
+/area/fire_colony/exterior/clearing/north_east
 	name = "\improper Colony North Eastern Clearing"
 	icon_state = "clear_pass"
 
@@ -133,6 +147,7 @@
 	ambience_exterior = AMBIENCE_CAVE
 	minimap_color = MINIMAP_AREA_CAVES
 	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
+	ceiling_muffle = FALSE
 
 /area/fire_colony/exterior/underground/excavation/south
 	name = "\improper Southern Valleys - Excavation Site"
@@ -155,6 +170,7 @@
 	ambience_exterior = AMBIENCE_CAVE
 	minimap_color = MINIMAP_AREA_CAVES
 	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
+	ceiling_muffle = FALSE
 
 /area/fire_colony/exterior/underground/caves/south_west
 	icon_state = "alarm_down"
@@ -162,32 +178,27 @@
 /area/fire_colony/exterior/underground/caves/north_west
 	icon_state = "alarm_down"
 
-/area/fire_colony/exterior/underground/caves/dig
-	icon_state = "mining_living"
-	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
-
-
 /*
  *  ---------------------
  * | Built Surface Areas |
  *  ---------------------
  */
 
-/area/fire_colony/surface
+/area/fire_colony/interior
 	name = "\improper Fire Colony - Built Surface"
 	icon_state = "clear_pass"
 	ceiling = CEILING_METAL
 
 /*
- * Surface - Bar
+ * Surface - Refurbished Bar
  */
 
 
-/area/fire_colony/surface/bar
+/area/fire_colony/interior/bar
 	name = "\improper The Lava Lamp - Bar"
 	icon_state = "bar"
 
-/area/fire_colony/surface/bar/canteen
+/area/fire_colony/interior/bar/canteen
 	name = "\improper The Lava Lamp - Canteen"
 	icon_state = "bar"
 
@@ -195,165 +206,198 @@
  * Surface - Seegson - Eastern Large Facility
  */
 
-/area/fire_colony/surface/seegson
-	name = "\improper Seegson"
+/area/fire_colony/interior/seegson
+	name = "\improper Old Seegson"
 	icon_state = "dk_yellow"
 	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 	ambience_exterior = AMBIENCE_HYBRISA_INTERIOR
 	minimap_color = MINIMAP_AREA_CELL_HIGH
+	ceiling = CEILING_METAL
 
-/area/fire_colony/surface/seegson/synthetic_storage
-	name = "\improper Seegson - Synthetic Storage Facility"
+/area/fire_colony/interior/seegson/synthetic_storage
+	name = "\improper Old Seegson - Synthetic Storage Facility"
 
-/area/fire_colony/surface/seegson/operations
-	name = "\improper Seegson - Synthetic Operations"
+/area/fire_colony/interior/seegson/operations
+	name = "\improper Old Seegson - Synthetic Operations"
 
-/area/fire_colony/surface/seegson/smelting
-	name = "\improper Seegson - Refinement & Production"
+/area/fire_colony/interior/seegson/smelting
+	name = "\improper Old Seegson - Refinement & Production"
+	ceiling = CEILING_GLASS
 
-/area/fire_colony/surface/seegson/engineering
-	name = "\improper Seegson - Power Management Center"
+/area/fire_colony/interior/seegson/engineering
+	name = "\improper Old Seegson - Power Management Center"
 
-/area/fire_colony/surface/seegson/engineering/electric_storage
-	name = "\improper Seegson - Power Management Center - Electric Storage"
+/area/fire_colony/interior/seegson/engineering/electric_storage
+	name = "\improper Old Seegson - Power Management Center - Electric Storage"
 
-/area/fire_colony/surface/seegson/engineering/generator_room
-	name = "\improper Seegson - Power Management Center - Generator Room"
+/area/fire_colony/interior/seegson/engineering/generator_room
+	name = "\improper Old Seegson - Power Management Center - Generator Room"
 
-/area/fire_colony/surface/seegson/engineering/tool_storage
-	name = "\improper Seegson - Power Management Center - Tool Storage"
+/area/fire_colony/interior/seegson/engineering/tool_storage
+	name = "\improper Old Seegson - Power Management Center - Tool Storage"
 
-/area/fire_colony/surface/seegson/ai_core
-	name = "\improper Seegson - Synthetic Control Mainframe"
+/area/fire_colony/interior/seegson/ai_core
+	name = "\improper Old Seegson - Synthetic Control Mainframe"
 	icon_state = "alarm_ready"
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
 
-/area/fire_colony/surface/seegson/ai_core/lobby
-	name = "\improper Seegson - Synthetic Control - Lobby"
+/area/fire_colony/interior/seegson/ai_core/lobby
+	name = "\improper Old Seegson - Synthetic Control - Lobby"
 	icon_state = "alarm_ready"
-
+	ceiling = CEILING_GLASS
 
 /*
- * Surface - Disposals
+ * Surface - Seegson - Disposals
  */
 
-/area/fire_colony/surface/disposals
-	name = "\improper Seegson - Disposals Unit"
+/area/fire_colony/interior/disposals
+	name = "\improper Old Seegson - Disposals Unit"
 	icon_state = "disposal"
 
 /*
- * Surface - Dormitories
+ * Surface - Seegson - Habitation Complex
  */
 
-/area/fire_colony/surface/dorms
-	name = "\improper Dormitories"
+/area/fire_colony/interior/dorms
+	name = "\improper Old Seegson - Habitation Complex"
+	icon_state = "alarm_evac"
+	ceiling = CEILING_GLASS
+
+/area/fire_colony/interior/dorms/north
+	name = "\improper Old Seegson - Habitation Complex - North"
 	icon_state = "alarm_evac"
 
-/area/fire_colony/surface/dorms/canteen
-	name = "\improper Dormitories Canteen"
+/area/fire_colony/interior/dorms/south
+	name = "\improper Old Seegson - Habitation Complex - South"
+	icon_state = "alarm_evac"
+	ceiling = CEILING_METAL
+
+/area/fire_colony/interior/dorms/relaxation
+	name = "\improper Old Seegson - Habitation Complex - Relaxation Module"
 	icon_state = "alarm_evac"
 
-/area/fire_colony/surface/dorms/lavatory
-	name = "\improper Dormitories Lavatory"
+/area/fire_colony/interior/dorms/offices
+	name = "\improper Old Seegson - Habitation Complex - Management Offices"
 	icon_state = "alarm_evac"
 
-/area/fire_colony/surface/dorms/restroom_w
-	name = "\improper Dormitories West Restroom"
+/area/fire_colony/interior/dorms/dorms_p
+	name = "\improper Old Seegson - Habitation Complex - Private Accommodation Units"
 	icon_state = "alarm_evac"
+	ceiling = CEILING_METAL
 
-/area/fire_colony/surface/dorms/restroom_e
-	name = "\improper Dormitories East Restroom"
+/area/fire_colony/interior/dorms/dorms_f
+	name = "\improper Old Seegson - Habitation Complex - Female Accommodation Wing"
 	icon_state = "alarm_evac"
+	ceiling = CEILING_METAL
+
+/area/fire_colony/interior/dorms/dorms_m
+	name = "\improper Old Seegson - Habitation Complex - Male Accommodation Wing"
+	icon_state = "alarm_evac"
+	ceiling = CEILING_METAL
 
 /*
  * Surface - Excavation Preparation
  */
 
-/area/fire_colony/surface/excavation
+/area/fire_colony/interior/excavation
 	name = "\improper Lasalle Bionational - Excavation Outpost"
 	icon_state = "mining_outpost"
 	minimap_color = MINIMAP_AREA_ENGI
 
-/area/fire_colony/surface/excavation/storage
+/area/fire_colony/interior/excavation/storage
 	name = "\improper Lasalle Bionational - Excavation Outpost External Storage"
 	icon_state = "mining_storage"
+	ceiling = CEILING_NONE
 
 /*
  * Surface - Garage
  */
 
-/area/fire_colony/surface/garage
-	name = "\improper Seegson - Old Mining Power & Stroag"
+/area/fire_colony/interior/garage
+	name = "\improper Old Seegson - Old Mining Power & Stroag"
 	icon_state = "garage"
 
-/area/fire_colony/surface/garage/one
-	name = "\improper Seegson - Synthetic Storage Facility"
+/area/fire_colony/interior/garage/one
+	name = "\improper Old Seegson - Synthetic Storage Facility"
 	icon_state = "garage_one"
 
 /*
  * Surface - Hangar
  */
 
-/area/fire_colony/surface/hangar
-	name = "\improper Aerodrome Hangar"
+/area/fire_colony/interior/hangar
+	name = "\improper Old Seegson - Aerodrome - Hangar"
 	icon_state = "hangar"
 
-/area/fire_colony/surface/hangar/hallway
-	name = "\improper Aerodrome Hangar Hallway"
+/area/fire_colony/interior/hangar/hallway
+	name = "\improper Old Seegson - Aerodrome - Hangar - Hallway"
 
-/area/fire_colony/surface/hangar/alpha
-	name = "\improper Aerodrome Hangar 'Alpha'"
+/area/fire_colony/interior/hangar/hallway_north
+	name = "\improper Old Seegson - Aerodrome - Hangar - Hallway"
+	icon_state = "hangar"
+
+/area/fire_colony/interior/hangar/alpha
+	name = "\improper Old Seegson - Aerodrome - Hangar - 'Alpha'"
 	icon_state = "hangar_alpha"
 
-/area/fire_colony/surface/hangar/beta
-	name = "\improper Aerodrome Hangar 'Beta'"
+/area/fire_colony/interior/hangar/beta
+	name = "\improper Old Seegson - Aerodrome - Hangar - 'Beta'"
 	icon_state = "hangar_beta"
 
-/area/fire_colony/surface/hangar/checkpoint
-	name = "\improper Aerodrome Hangar Security Checkpoint"
+/area/fire_colony/interior/hangar/checkpoint
+	name = "\improper Old Seegson - Aerodrome - Hangar - Seegson Security Facility - Checkpoint"
+	icon_state = "security"
+
+/area/fire_colony/interior/hangar/security
+	name = "\improper Old Seegson - Aerodrome - Hangar - Seegson Security Facility"
+	icon_state = "security"
+
+/area/fire_colony/interior/hangar/security/armory
+	name = "\improper Old Seegson - Aerodrome - Hangar - Seegson Security Facility - Armory"
 	icon_state = "security"
 
 /*
  * Surface - Hydroponics
  */
 
-/area/fire_colony/surface/hydroponics
-	name = "\improper Fire Colony - Hydroponics"
+/area/fire_colony/interior/hydroponics
+	name = "\improper Lasalle Bionational - Xenoflora Research Complex"
 	icon_state = "hydro"
 	ceiling = CEILING_GLASS
 	minimap_color = MINIMAP_AREA_RESEARCH
 
-/area/fire_colony/surface/hydroponics/lobby
-	name = "\improper Hydroponics Relaxation Module"
+/area/fire_colony/interior/hydroponics/lobby
+	name = "\improper Lasalle Bionational - Xenoflora Research Complex - Relaxation Module"
 	icon_state = "garden"
 
-/area/fire_colony/surface/hydroponics/north
-	name = "\improper Hydroponics North Wing"
+/area/fire_colony/interior/hydroponics/north
+	name = "\improper Lasalle Bionational - Xenoflora Research Complex - Greenhouse - North Wing"
 	icon_state = "hydro_north"
 
-/area/fire_colony/surface/hydroponics/south
-	name = "\improper Hydroponics South Wing"
+/area/fire_colony/interior/hydroponics/south
+	name = "\improper Lasalle Bionational - Xenoflora Research Complex - Greenhouse - South Wing"
 	icon_state = "hydro_south"
 
-/area/fire_colony/surface/hydroponics/science
-	name = "\improper Lasalle Bionational - Hydroponics Science Module"
+/area/fire_colony/interior/hydroponics/science
+	name = "\improper Lasalle Bionational - Xenoflora Research Complex - Science Module"
 	icon_state = "garden"
 
 /*
  * Surface - Mining
  */
 
-/area/fire_colony/surface/mining
-	name = "\improper Seegson - South Western Valleys - Old Mining Outpost - Power"
+/area/fire_colony/interior/mining
+	name = "\improper Old Seegson - South Western Valleys - Old Mining Outpost - Power"
 	icon_state = "mining_production"
 	minimap_color = MINIMAP_AREA_ENGI
 
-/area/fire_colony/surface/mining_garage
-	name = "\improper Seegson - South Western Valleys - Old Mining Outpost - Garage"
+/area/fire_colony/interior/mining_garage
+	name = "\improper Old Seegson - South Western Valleys - Old Mining Outpost - Garage"
 	icon_state = "mining_production"
 	minimap_color = MINIMAP_AREA_ENGI
 
-/area/fire_colony/surface/mining_north_west
-	name = "\improper Seegson - North Eastern Clearing - Old Mining Outpost"
+/area/fire_colony/interior/mining_north_west
+	name = "\improper Old Seegson - North Eastern Clearing - Old Mining Outpost"
 	icon_state = "mining_production"
 	minimap_color = MINIMAP_AREA_ENGI
 
@@ -361,70 +405,71 @@
  * Surface - Lasalle Bionational - Labs - NW corner of map
  */
 
-/area/fire_colony/surface/epsilon_facility
+/area/fire_colony/interior/epsilon_facility
 	name = "\improper Lasalle Bionational - Epsilon Facility"
 	icon_state = "purple"
 	minimap_color = MINIMAP_AREA_RESEARCH
 	ceiling = CEILING_DEEP_UNDERGROUND_METAL
 
-/area/fire_colony/surface/epsilon_facility/containment
+/area/fire_colony/interior/epsilon_facility/containment
 	name = "\improper Lasalle Bionational - Epsilon Facility - Secure Containment Annex"
 
 /*
  * Surface - Lasalle Bionational - Hospital & Disembarking Lobby / Passthrough
  */
 
-/area/fire_colony/surface/omicron_facility
+/area/fire_colony/interior/omicron_facility
 	name = "\improper Lasalle Bionational - Omicron Facility"
 	icon_state = "green"
 	minimap_color = MINIMAP_AREA_ENGI
 
-/area/fire_colony/surface/omicron_facility/hospital
+/area/fire_colony/interior/omicron_facility/hospital
 	name = "\improper Lasalle Bionational - Omicron Facility - Hospital"
 	icon_state = "medbay3"
 
-/area/fire_colony/surface/omicron_facility/hospital/storage
+/area/fire_colony/interior/omicron_facility/hospital/storage
 	name = "\improper Lasalle Bionational - Omicron Facility - Hospital Storage"
 	icon_state = "medbay3"
 
-/area/fire_colony/surface/omicron_facility/passthrough
+/area/fire_colony/interior/omicron_facility/passthrough
 	name = "\improper Lasalle Bionational - Omicron Facility - Facility Passthrough"
 	icon_state = "bluenew"
+	ceiling = CEILING_GLASS
 
-/area/fire_colony/surface/omicron_facility/lobby
-	name = "\improper Lasalle Bionational - Omicron Facility - Lobby"
+/area/fire_colony/interior/omicron_facility/lobby
+	name = "\improper Lasalle Bionational - Omicron Facility - Departure Lounge"
 	icon_state = "bluenew"
 
 /*
  * Surface - Storage Units - Various small units across the map
  */
 
-/area/fire_colony/surface/storage_unit
+/area/fire_colony/interior/storage_unit
 	name = "\improper Storage Unit"
 	icon_state = "storage"
 
-/area/fire_colony/surface/storage_unit/s_caves
+/area/fire_colony/interior/storage_unit/s_caves
 	name = "\improper Storage Unit - South Excavation Caves"
 	icon_state = "storage"
 
-/area/fire_colony/surface/storage_unit/n_caves
+/area/fire_colony/interior/storage_unit/n_caves
 	name = "\improper Storage Unit - North Caves"
 	icon_state = "storage"
 	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
 
-/area/fire_colony/surface/storage_unit/sw_valley
+/area/fire_colony/interior/storage_unit/sw_valley
 	name = "\improper Storage Unit - South Western Valley"
 	icon_state = "storage"
 
-/area/fire_colony/surface/storage_unit/e_valley
+/area/fire_colony/interior/storage_unit/e_valley
 	name = "\improper Storage Unit - Eastern Valley"
 	icon_state = "storage"
 
-/area/fire_colony/surface/storage_unit/e_valley
+/area/fire_colony/interior/storage_unit/e_valley
 	name = "\improper Storage Unit - Eastern Valley"
 	icon_state = "storage"
 
-/area/fire_colony/surface/storage_unit/t_comms_storage
+/area/fire_colony/interior/storage_unit/t_comms_storage
 	name = "\improper Telecommunications - Storage Unit - Southern Clearing"
 	icon_state = "storage"
 
@@ -432,9 +477,44 @@
  * Surface - Telecommunications
  */
 
-/area/fire_colony/surface/tcomms
-	name = "\improper Colony Telecommunications"
+/area/fire_colony/exterior/tcomms/container_one
+	name = "\improper Old Seegson - Aerodrome - Container Yard - Colony Telecommunications"
 	icon_state = "blueold"
+	ceiling = CEILING_NONE
+
+/area/fire_colony/exterior/tcomms/container_two
+	name = "\improper Old Seegson - Aerodrome - Container Yard - Colony Telecommunications"
+	icon_state = "blueold"
+	ceiling = CEILING_NONE
+
+/area/fire_colony/exterior/tcomms/lz2
+	name = "\improper Lasalle Bionational - Omicron Facility - Colony Telecommunications"
+	icon_state = "blueold"
+	ceiling = CEILING_NONE
+
+/area/fire_colony/exterior/tcomms/lz1
+	name = "\improper Old Seegson - South Bar - Colony Telecommunications"
+	icon_state = "blueold"
+	ceiling = CEILING_NONE
+
+/*
+ * Lasalle Bionational - Hangar
+ */
+
+/area/fire_colony/exterior/hangar
+	name = "\improper Lasalle Bionational - Hangar"
+	icon_state = "landing_pad_ext"
+	ceiling = CEILING_NONE
+
+/area/fire_colony/interior/hangar/flight_control
+	name = "\improper Lasalle Bionational - Hangar - Flight Control Office"
+	icon_state = "landing_pad_ext"
+	ceiling = CEILING_METAL
+
+/area/fire_colony/interior/hangar/garage
+	name = "\improper Lasalle Bionational - Hangar - Garage"
+	icon_state = "landing_pad_ext"
+	ceiling = CEILING_METAL
 
 /*
  *  -------------------------
@@ -450,22 +530,3 @@
 	ceiling_muffle = FALSE
 	sound_environment = SOUND_ENVIRONMENT_ROOM
 	minimap_color = MINIMAP_AREA_CAVES
-
-/*
- * Underground - Hangar
- */
-
-/area/fire_colony/underground/hangar
-	name = "\improper Lasalle Bionational - Underground Hangar"
-	icon_state = "landing_pad_ext"
-	ceiling = CEILING_NONE
-
-/area/fire_colony/underground/hangar/flight_control
-	name = "\improper Lasalle Bionational - Underground Hangar - Flight Control Office"
-	icon_state = "landing_pad_ext"
-	ceiling = CEILING_METAL
-
-/area/fire_colony/underground/hangar/garage
-	name = "\improper Lasalle Bionational - Underground Hangar - Garage"
-	icon_state = "landing_pad_ext"
-	ceiling = CEILING_METAL

@@ -1610,29 +1610,17 @@
 
 // Working Joe Storage 64x64
 
+// Prop version, no functionality
+
 /obj/structure/prop/invuln/working_joe/large_storage
 	name = "synthetic storage unit"
 	desc = "A vertical storage bay designed to house inactive Working Joe synthetics, keeping them bagged, preserved, and ready for deployment."
 	icon = 'icons/obj/structures/machinery/working_joe_storage.dmi'
-	icon_state = "working_joe_storage"
+	icon_state = "working_joe_storage_bluebag1_alt"
 	unslashable = FALSE
 	wrenchable = FALSE
 	bound_height = 32
 	bound_width = 32
-	light_on = 1
-	light_color = "#dcc687"
-	light_range = 2
-	light_power = 1
-
-/obj/structure/prop/invuln/working_joe/large_storage/alt
-	icon_state = "working_joe_storage_alt"
-	light_on = 1
-	light_color = "#dcc687"
-	light_range = 2
-	light_power = 1
-
-/obj/structure/prop/invuln/working_joe/large_storage/empty
-	icon_state = "working_joe_storage_empty"
 	light_on = 1
 	light_color = "#dcc687"
 	light_range = 2

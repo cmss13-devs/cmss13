@@ -163,7 +163,7 @@ GLOBAL_LIST_INIT(mapless_maps, list(MAP_RUNTIME, MAP_CHINOOK, MAIN_SHIP_DEFAULT_
 
 /obj/item/map/fire_colony
 	name = "\improper LV-376 map"
-	desc = "A map of the Lasalle Bionational owned colony on LV-376, commonly known as Charon's Crucible."
+	desc = "A map of the Lasalle Bionational owned colony on LV-376, commonly known as 'Charon's Crucible'."
 	html_link = "images/1/18/Map_icecolony.png"
 	color = "#d2440c"
 

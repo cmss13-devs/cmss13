@@ -1,5 +1,6 @@
 {
-    "map_name": "Fire Colony",
+    "map_name": "LV-376 Charon's Crucible",
+    "short_name": "Fire Colony",
     "map_path": "map_files/Fire_Colony",
     "map_file": "Fire_Colony.dmm",
     "webmap_url": "Fire_Colony",
@@ -34,8 +35,8 @@
         1000,
         0.0
     ],
-    "map_item_type": "/obj/item/map/big_red_map",
-    "announce_text": "Weyland-Yutani has lost contact with one of its Biological Storage Facilities, Solaris Ridge, on the planet of LV-1413. The ###SHIPNAME### has been requested to look into the blackout by Weyland-Yutani.",
+    "map_item_type": "/obj/item/map/fire_colony",
+    "announce_text": "An automated distress signal has been received from Lasalle Bionational's LV-376 Ecological Research Site on the volcanic world known as 'Charon's Crucible'. All communications with the colony have since been lost. The ###SHIPNAME### has been dispatched to investigate.",
     "co_briefing": {
         "Hawks": "maps/map_briefings/commanding_officer/big_red/SOLARISRIDGEcpo.html",
         "Doves": "maps/map_briefings/commanding_officer/big_red/SOLARISRIDGEhmm.html",

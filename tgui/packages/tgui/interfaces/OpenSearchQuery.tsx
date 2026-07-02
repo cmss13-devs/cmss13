@@ -116,7 +116,7 @@ export const OpenSearchQuery = (props) => {
     setLogTypes(newLogTypes);
   };
 
-  const submitQuery = (executeNow: boolean) => {
+  const submitQuery = (executeNow: boolean, queryOverride) => {
     act('update_query', {
       execute: executeNow,
       query_name: localQueryName,
@@ -126,7 +126,8 @@ export const OpenSearchQuery = (props) => {
       query_time_end: localQueryTimeEnd,
       // query_roundid: localQueryRoundId,
       log_types: localLogTypes,
-      user_query: localUserQuery,
+      // for some reason localUserQuery is not updated here when fired through enter key on the query text field, so we do a little manual overriding of the value
+      user_query: queryOverride || localUserQuery,
     });
   };
 
@@ -229,7 +230,7 @@ export const OpenSearchQuery = (props) => {
                   }
                   disabled={queryStatus === OPENSEARCH_QUERY_STATUS_EXECUTING}
                   tooltip="Save and Start the query"
-                  onClick={() => submitQuery(true)}
+                  onClick={() => submitQuery(true, null)}
                 >
                   Exec
                 </Button>
@@ -239,7 +240,7 @@ export const OpenSearchQuery = (props) => {
                   icon="floppy-disk"
                   color="blue"
                   tooltip="Save the query without executing it"
-                  onClick={() => submitQuery(false)}
+                  onClick={() => submitQuery(false, null)}
                 >
                   Save
                 </Button>
@@ -399,7 +400,7 @@ export const OpenSearchQuery = (props) => {
                   onChange={(e, value) => setUserQuery(value)}
                   onEnter={(e, value) => {
                     setUserQuery(value);
-                    submitQuery(true);
+                    submitQuery(true, value);
                   }}
                 />
               </Stack.Item>

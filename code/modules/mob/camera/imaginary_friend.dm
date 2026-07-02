@@ -8,11 +8,12 @@
 	stat = DEAD // Keep hearing ghosts and other IFs
 	invisibility = INVISIBILITY_MAXIMUM
 	sight = SEE_MOBS|SEE_TURFS|SEE_OBJS
+	mob_flags = CAN_READ
 	see_in_dark = 8
 	move_on_shuttle = TRUE
 	move_delay = 0
 
-	var/aghosted_original_mob
+	var/mob/aghosted_original_mob
 
 	var/icon/friend_image
 	var/image/current_image
@@ -25,6 +26,13 @@
 	var/list/outfit_choices = list(/datum/equipment_preset/uscm_ship/sea)
 
 	var/list/current_huds = list()
+
+	var/static/list/hud_options = list(
+		"Medical HUD" = MOB_HUD_MEDICAL_OBSERVER,
+		"Security HUD" = MOB_HUD_SECURITY_ADVANCED,
+		"Squad HUD" = MOB_HUD_FACTION_OBSERVER,
+		"Xeno Status HUD" = MOB_HUD_XENO_STATUS,
+	)
 
 /mob/camera/imaginary_friend/Login()
 	. = ..()
@@ -47,6 +55,8 @@
 
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
+	RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, PROC_REF(update_image))
+
 	orbit = new
 	orbit.give_to(src)
 	hide = new
@@ -57,6 +67,16 @@
 	name = client.prefs.real_name
 	real_name = name
 	gender = client.prefs.gender
+
+	var/list/observer_huds = client.prefs.observer_huds
+	for(var/observer_hud in observer_huds)
+		if(!observer_huds[observer_hud])
+			continue
+		if(!listgetindex(hud_options, observer_hud))
+			continue
+		var/datum/mob_hud/friend_hud = GLOB.huds[hud_options[observer_hud]]
+		friend_hud?.add_hud_to(src, src)
+
 	var/available_appearances = outfit_choices + "Drone"
 	var/outfit_choice = tgui_input_list(usr, "Choose your appearance:", "[src]", available_appearances)
 	if(!outfit_choice)
@@ -66,6 +86,62 @@
 		name = "Helpful Drone"
 		return
 	friend_image = get_flat_human_icon(null, outfit_choice, client.prefs)
+
+/mob/camera/imaginary_friend/click(atom/clicked_atom, list/mods)
+	if(mods[SHIFT_CLICK] && mods[MIDDLE_CLICK])
+		point_to(clicked_atom)
+		return TRUE
+
+	return ..()
+
+/mob/camera/imaginary_friend/canface()
+	return TRUE
+
+/mob/camera/imaginary_friend/is_mob_incapacitated()
+	return FALSE
+
+/mob/camera/imaginary_friend/point_to_atom(atom/target_atom, turf/target_turf)
+	recently_pointed_to = world.time + 2.5 SECONDS
+	new /obj/effect/overlay/temp/point/imaginary_friend(target_turf, src, target_atom)
+
+	visible_message("<b>[src]</b> points to [target_atom]", null, null, 5)
+
+	return TRUE
+
+/obj/effect/overlay/temp/point/imaginary_friend
+	invisibility = INVISIBILITY_MAXIMUM
+	var/list/client/clients
+	var/image/self_icon
+
+/obj/effect/overlay/temp/point/imaginary_friend/Initialize(mapload, mob/camera/imaginary_friend/user)
+	. = ..()
+
+	if(!user)
+		return INITIALIZE_HINT_QDEL
+
+	self_icon = image(icon, src, icon_state = icon_state)
+	LAZYINITLIST(clients)
+
+	show_to_client(user.client)
+
+	show_to_client(user.owner.client)
+
+/obj/effect/overlay/temp/point/imaginary_friend/Destroy()
+	for(var/client/client in clients)
+		client.images -= self_icon
+		LAZYREMOVE(clients, client)
+
+	clients = null
+	self_icon = null
+
+	return ..()
+
+/obj/effect/overlay/temp/point/imaginary_friend/proc/show_to_client(client/target_client)
+	if(!target_client)
+		return
+
+	target_client.images |= self_icon
+	clients |= target_client
 
 /// gets a directional icon for the xeno appearance
 /mob/camera/imaginary_friend/proc/get_xeno_appearance()
@@ -105,6 +181,8 @@
 		owner.client?.images.Remove(friend_image)
 
 	client?.images.Remove(friend_image)
+
+	UnregisterSignal(src, COMSIG_ATOM_DIR_CHANGE)
 
 	owner = null
 	current_image = null
@@ -147,20 +225,6 @@
 /mob/camera/imaginary_friend/verb/toggle_hud()
 	set category = "Imaginary Friend"
 	set name = "Toggle HUD"
-
-	var/list/hud_options = list(
-		"Medical HUD" = MOB_HUD_MEDICAL_OBSERVER,
-		"Security HUD" = MOB_HUD_SECURITY_ADVANCED,
-		"Squad HUD" = MOB_HUD_FACTION_OBSERVER,
-		"Xeno Status HUD" = MOB_HUD_XENO_STATUS,
-		"Hunter HUD" = MOB_HUD_HUNTER,
-		"Faction UPP HUD" = MOB_HUD_FACTION_UPP,
-		"Faction Wey-Yu HUD" = MOB_HUD_FACTION_WY,
-		"Faction TWE HUD" = MOB_HUD_FACTION_TWE,
-		"Faction CLF HUD" = MOB_HUD_FACTION_CLF,
-		"Faction WO HUD" = MOB_HUD_FACTION_WO,
-		"Faction Hyperdyne HUD" = MOB_HUD_FACTION_HC,
-	)
 
 	var/hud_choice = tgui_input_list(usr, "Choose a HUD to toggle", "Toggle HUD prefs", hud_options)
 	var/datum/mob_hud/hud = GLOB.huds[hud_options[hud_choice]]
@@ -219,7 +283,7 @@
 		var/link = "<a href='byond://?src=\ref[ghost];track=\ref[src]'>F</a>"
 		to_chat(ghost, "[dead_rendered] ([link])")
 
-/mob/camera/imaginary_friend/Move(newloc, Dir = 0)
+/mob/camera/imaginary_friend/Move(newloc)
 	if(world.time < move_delay)
 		return FALSE
 
@@ -260,7 +324,10 @@
 /mob/camera/imaginary_friend/proc/deactivate()
 	log_admin("[key_name(src)] stopped being imaginary friend of [key_name(owner)].")
 	message_admins("[key_name_admin(src)] stopped being imaginary friend of [key_name_admin(owner)].")
-	ghostize(TRUE, TRUE)
+	if(aghosted_original_mob?.stat != DEAD)
+		mind.transfer_to(aghosted_original_mob)
+	else
+		ghostize(TRUE, TRUE)
 	qdel(src)
 
 /mob/camera/imaginary_friend/ghostize(can_reenter_corpse = FALSE, aghosted = FALSE)

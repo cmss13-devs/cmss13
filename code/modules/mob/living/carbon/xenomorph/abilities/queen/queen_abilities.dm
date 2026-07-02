@@ -51,6 +51,7 @@
 	action_icon_state = "queen_word"
 	plasma_cost = 50
 	xeno_cooldown = 10 SECONDS
+	ability_primacy = XENO_WORD_OF_THE_QUEEN
 
 /datum/action/xeno_action/activable/gut
 	name = "Gut (200)"

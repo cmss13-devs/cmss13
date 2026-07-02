@@ -177,6 +177,22 @@
 			handle_xeno_macro_datum(src, xeno_action)
 			break
 
+/mob/living/carbon/xenomorph/verb/xeno_queen_announce_action()
+	set category = "Alien"
+	set name = "Word of the Queen"
+	set hidden = TRUE
+	var/mob/living/carbon/xenomorph/xeno = src
+	if (!istype(xeno))
+		return
+	for(var/datum/action/xeno_action/xeno_action in xeno.actions)
+		if(!istype(xeno_action))
+			continue
+		if(xeno_action.hidden)
+			continue
+		if(xeno_action.ability_primacy == XENO_WORD_OF_THE_QUEEN)
+			handle_xeno_macro_datum(src, xeno_action)
+			break
+
 /mob/living/carbon/xenomorph/proc/xeno_tail_stab_action()
 	var/mob/living/carbon/xenomorph/xeno = src
 	if (!istype(xeno))

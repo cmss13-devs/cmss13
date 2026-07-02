@@ -288,6 +288,18 @@
 /obj/structure/machinery/door/airlock/prison_hatch/autoname
 	autoname = TRUE
 
+/obj/structure/machinery/door/airlock/prison_hatch/brown
+	icon = 'icons/obj/structures/doors/brown_hatch_blue_stripe.dmi'
+
+/obj/structure/machinery/door/airlock/prison_hatch/brown/autoname
+	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/prison_hatch/brown/alt
+	icon = 'icons/obj/structures/doors/brown_hatch.dmi'
+
+/obj/structure/machinery/door/airlock/prison_hatch/brown/alt/autoname
+	autoname = TRUE
+
 //ALMAYER AIRLOCKS
 
 /obj/structure/machinery/door/airlock/almayer

@@ -213,9 +213,6 @@ can cause issues with ammo types getting mixed up during the burst.
 	if(!gun_user)
 		set_gun_user(source)
 
-	if(gun_user == object)
-		return FALSE
-
 	if(gun_user.get_active_hand() != src)
 		return FALSE
 

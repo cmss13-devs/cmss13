@@ -41,6 +41,7 @@ GLOBAL_LIST_INIT(cm_vending_equipment_yautja, list(
 		list("Third-Cape", 0, /obj/item/clothing/yautja_cape/third, YAUTJA_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Half-Cape", 0, /obj/item/clothing/yautja_cape/half, YAUTJA_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Poncho", 0, /obj/item/clothing/yautja_cape/poncho, YAUTJA_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Bone Third-Cape", 0, /obj/item/clothing/yautja_cape/bone/third, YAUTJA_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 
 		list("Spare Equipment", 0, null, null, null),
 		list("Falcon Drone", 20, /obj/item/falcon_drone, null, VENDOR_ITEM_REGULAR),
@@ -96,7 +97,9 @@ GLOBAL_LIST_INIT(cm_vending_elder_yautja, list(
 		list("Poncho", 0, /obj/item/clothing/yautja_cape/poncho, YAUTJA_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Damaged-Cape", 0, /obj/item/clothing/yautja_cape/damaged, YAUTJA_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Full-Cape", 0, /obj/item/clothing/yautja_cape, YAUTJA_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Bone Full-Cape", 0, /obj/item/clothing/yautja_cape/bone, YAUTJA_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Ceremonial Cape", 0, /obj/item/clothing/yautja_cape/ceremonial, YAUTJA_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Ceremonial Bone Cape", 0, /obj/item/clothing/yautja_cape/bone/ceremonial, YAUTJA_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 
 		list("Spare Equipment", 0, null, null, null),
 		list("Falcon Drone", 20, /obj/item/falcon_drone, null, VENDOR_ITEM_REGULAR),
@@ -455,7 +458,8 @@ GLOBAL_LIST_INIT(cm_vending_equipment_badblood, list(
 		return
 	var/client/mob_client = user.client
 
-	if(mob_client.can_use_pred_legacies() && mob_client.prefs.predator_use_legacy != "None")
+	var/legacy_type = mob_client.prefs.predator_use_legacy
+	if(mob_client.can_use_pred_legacies() && (legacy_type != "None") && (legacy_type in PRED_LEGACIES))
 		switch(mob_client.prefs.predator_use_legacy)
 			if("Dragon")
 				icon_state = "halfarmor_legacy_dragon"
@@ -469,10 +473,23 @@ GLOBAL_LIST_INIT(cm_vending_equipment_badblood, list(
 			if("Collector")
 				icon_state = "halfarmor_legacy_collector"
 				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_legacy_collector")
+			if("Shadow")
+				icon_state = "halfarmor_legacy_collector_dark"
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_legacy_collector_dark")
+			if("Serpent")
+				icon_state = "halfarmor_legacy_serpent"
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_legacy_serpent")
+			if("Knight")
+				icon_state = "halfarmor_legacy_knight"
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_legacy_knight")
+			if("Seeker")
+				icon_state = "halfarmor_legacy_seeker"
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_legacy_seeker")
 		user.update_inv_wear_suit()
 		return
 
-	if(mob_client.can_use_pred_specials() && mob_client.prefs.predator_use_unique != "None")
+	var/unique_type = mob_client.prefs.predator_use_unique
+	if(mob_client.can_use_pred_specials() && (unique_type != "None") && (unique_type in PRED_UNIQUES))
 		switch(mob_client.prefs.predator_use_unique)
 			if("Anubys")
 				icon_state = "halfarmor_elite_anubys"
@@ -486,6 +503,26 @@ GLOBAL_LIST_INIT(cm_vending_equipment_badblood, list(
 			if("Ronin")
 				icon_state = "halfarmor_elite_ronin"
 				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elite_ronin")
+			if("Defender")
+				icon_state = "halfarmor_elite_xenobone_d"
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elite_xenobone_d")
+			if("Warrior")
+				icon_state = "halfarmor_elite_xenobone_w"
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elite_xenobone_w")
+			if("Seeker Initiate")
+				icon_state = "halfarmor_elite_seeker_a"
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elite_seeker_a")
+			if("Seeker Adept")
+				icon_state = "halfarmor_elite_seeker_b"
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elite_seeker_b")
+		user.update_inv_wear_suit()
+		return
+
+	if(mob_client.can_use_pred_specials(higher_lock = TRUE) && (unique_type != "None") && (unique_type in PRED_UNIQUES_LEAD))
+		switch(mob_client.prefs.predator_use_unique)
+			if("Praetorian")
+				icon_state = "halfarmor_lead_xenobone_p"
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_lead_xenobone_p")
 		user.update_inv_wear_suit()
 		return
 
@@ -511,28 +548,48 @@ GLOBAL_LIST_INIT(cm_vending_equipment_badblood, list(
 		return
 	var/client/mob_client = user.client
 
-	if(mob_client.can_use_pred_legacies() && mob_client.prefs.predator_use_legacy != "None")
+	var/legacy_type = mob_client.prefs.predator_use_legacy
+	if(mob_client.can_use_pred_legacies() && (legacy_type != "None") && (legacy_type in PRED_LEGACIES))
 		switch(mob_client.prefs.predator_use_legacy)
 			if("Dragon")
-				icon_state = "halfarmor_legacy_dragon"
-				LAZYSET(item_state_slots, WEAR_FACE, "halfarmor_legacy_dragon")
+				icon_state = "pred_mask_legacy_dragon"
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_legacy_dragon")
 			if("Swamp")
-				icon_state = "halfarmor_legacy_swamp"
-				LAZYSET(item_state_slots, WEAR_FACE, "halfarmor_legacy_swamp")
+				icon_state = "pred_mask_legacy_swamp"
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_legacy_swamp")
 			if("Enforcer")
-				icon_state = "halfarmor_legacy_enforcer"
-				LAZYSET(item_state_slots, WEAR_FACE, "halfarmor_legacy_enforcer")
+				icon_state = "pred_mask_legacy_enforcer"
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_legacy_enforcer")
 			if("Collector")
-				icon_state = "halfarmor_legacy_collector"
-				LAZYSET(item_state_slots, WEAR_FACE, "halfarmor_legacy_collector")
+				icon_state = "pred_mask_legacy_collector"
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_legacy_collector")
+			if("Shadow")
+				icon_state = "pred_mask_legacy_collector_dark"
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_legacy_collector_dark")
+			if("Serpent")
+				item_icons = list(
+					WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_mask64.dmi'
+				)
+				icon_state = "pred_mask_legacy_serpent"
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_legacy_serpent")
+			if("Knight")
+				icon_state = "pred_mask_legacy_knight"
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_legacy_knight")
+			if("Seeker")
+				item_icons = list(
+					WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_mask64.dmi'
+				)
+				icon_state = "pred_mask_legacy_seeker"
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_legacy_seeker")
 		user.update_inv_wear_mask()
 		return
 
-	if(mob_client.can_use_pred_specials() && mob_client.prefs.predator_use_unique != "None")
+	var/unique_type = mob_client.prefs.predator_use_unique
+	if(mob_client.can_use_pred_specials() && (unique_type != "None") && (unique_type in PRED_UNIQUES))
 		switch(mob_client.prefs.predator_use_unique)
 			if("Anubys")
 				item_icons = list(
-					WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_gear64.dmi' // fat fuckass mask
+					WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_mask64.dmi' // fat fuckass mask
 				)
 				icon_state = "pred_mask_elite_anubys"
 				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elite_anubys")
@@ -544,10 +601,39 @@ GLOBAL_LIST_INIT(cm_vending_equipment_badblood, list(
 				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elite_plated")
 			if("Ronin")
 				item_icons = list(
-					WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_gear64.dmi'
+					WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_mask64.dmi'
 				)
 				icon_state = "pred_mask_elite_ronin"
 				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elite_ronin")
+			if("Defender")
+				item_icons = list(
+					WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_mask64.dmi'
+				)
+				icon_state = "pred_mask_elite_xenobone_d"
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elite_xenobone_d")
+			if("Warrior")
+				item_icons = list(
+					WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_mask64.dmi'
+				)
+				icon_state = "pred_mask_elite_xenobone_w"
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elite_xenobone_w")
+			if("Seeker Initiate")
+				icon_state = "pred_mask_elite_seeker_a"
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elite_seeker_a")
+			if("Seeker Adept")
+				icon_state = "pred_mask_elite_seeker_b"
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elite_seeker_b")
+		user.update_inv_wear_mask()
+		return
+
+	if(mob_client.can_use_pred_specials(higher_lock = TRUE) && (unique_type != "None") && (unique_type in PRED_UNIQUES_LEAD))
+		switch(mob_client.prefs.predator_use_unique)
+			if("Praetorian")
+				item_icons = list(
+					WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_mask64.dmi'
+				)
+				icon_state = "pred_mask_lead_xenobone_p"
+				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_lead_xenobone_p")
 		user.update_inv_wear_mask()
 		return
 
@@ -574,7 +660,8 @@ GLOBAL_LIST_INIT(cm_vending_equipment_badblood, list(
 		return
 	var/client/mob_client = user.client
 
-	if(mob_client.can_use_pred_legacies() && mob_client.prefs.predator_use_legacy != "None")
+	var/legacy_type = mob_client.prefs.predator_use_legacy
+	if(mob_client.can_use_pred_legacies() && (legacy_type != "None") && (legacy_type in PRED_LEGACIES))
 		switch(mob_client.prefs.predator_use_legacy)
 			if("Dragon")
 				icon_state = "legacy_y-boots_dragon"
@@ -588,10 +675,23 @@ GLOBAL_LIST_INIT(cm_vending_equipment_badblood, list(
 			if("Collector")
 				icon_state = "legacy_y-boots_collector"
 				LAZYSET(item_state_slots, WEAR_FEET, "legacy_y-boots_collector")
+			if("Shadow")
+				icon_state = "legacy_y-boots_collector_dark"
+				LAZYSET(item_state_slots, WEAR_FEET, "legacy_y-boots_collector_dark")
+			if("Serpent")
+				icon_state = "legacy_y-boots_serpent"
+				LAZYSET(item_state_slots, WEAR_FEET, "legacy_y-boots_serpent")
+			if("Knight")
+				icon_state = "legacy_y-boots_knight"
+				LAZYSET(item_state_slots, WEAR_FEET, "legacy_y-boots_knight")
+			if("Seeker")
+				icon_state = "legacy_y-boots_seeker"
+				LAZYSET(item_state_slots, WEAR_FEET, "legacy_y-boots_seeker")
 		user.update_inv_shoes()
 		return
 
-	if(mob_client.can_use_pred_specials() && mob_client.prefs.predator_use_unique != "None")
+	var/unique_type = mob_client.prefs.predator_use_unique
+	if(mob_client.can_use_pred_specials() && (unique_type != "None") && (unique_type in PRED_UNIQUES))
 		switch(mob_client.prefs.predator_use_unique)
 			if("Anubys")
 				icon_state = "elite_y-boots1_anubys"
@@ -605,6 +705,26 @@ GLOBAL_LIST_INIT(cm_vending_equipment_badblood, list(
 			if("Ronin")
 				icon_state = "elite_y-boots1_ronin"
 				LAZYSET(item_state_slots, WEAR_FEET, "elite_y-boots1_ronin")
+			if("Defender")
+				icon_state = "elite_y-boots_xenobone_d"
+				LAZYSET(item_state_slots, WEAR_FEET, "elite_y-boots_xenobone_d")
+			if("Warrior")
+				icon_state = "elite_y-boots_xenobone_w"
+				LAZYSET(item_state_slots, WEAR_FEET, "elite_y-boots_xenobone_w")
+			if("Seeker Initiate")
+				icon_state = "elite_y-boots_seeker_a"
+				LAZYSET(item_state_slots, WEAR_FEET, "elite_y-boots_seeker_a")
+			if("Seeker Adept")
+				icon_state = "elite_y-boots_seeker_b"
+				LAZYSET(item_state_slots, WEAR_FEET, "elite_y-boots_seeker_b")
+		user.update_inv_shoes()
+		return
+
+	if(mob_client.can_use_pred_specials(higher_lock = TRUE) && (unique_type != "None") && (unique_type in PRED_UNIQUES_LEAD))
+		switch(mob_client.prefs.predator_use_unique)
+			if("Praetorian")
+				icon_state = "lead_y-boots_xenobone_p"
+				LAZYSET(item_state_slots, WEAR_FEET, "lead_y-boots_xenobone_p")
 		user.update_inv_shoes()
 		return
 

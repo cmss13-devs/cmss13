@@ -54,9 +54,6 @@
 #define SPAN_MENTORSAY(X) ("<span class='mentorsay'>" + X + "</span>")
 #define SPAN_MENTORBODY(X) ("<span class='mentorbody'>" + X + "</span>")
 #define SPAN_NICHE(X) "<span class='niche'>[X]</span>"
-#define SPAN_FF_ALIVE(X) "<span class='ffalive'>[X]</span>"
-#define SPAN_FF_DEAD(X) "<span class='ffdead'>[X]</span>"
-
 #define SPAN_PM(X) "<span class='pm'>[X]</span>"
 
 // Misc
@@ -107,12 +104,15 @@
 #define SPAN_SCANNERB(X) "<span class='scannerb'>[X]</span>"
 
 // Colors
+#define SPAN_ADMIN_BLUE(X) "<span class='admin_blue'>[X]</span>"
 #define SPAN_BLUE(X) "<span class='blue'>[X]</span>"
+#define SPAN_DEBUG_ORANGE(X) "<span class='debug_orange'>[X]</span>"
 #define SPAN_GREEN(X) "<span class='green'>[X]</span>"
-#define SPAN_RED(X) "<span class='red'>[X]</span>"
+#define SPAN_MAROON(X) "<span class='maroon'>[X]</span>"
 #define SPAN_ORANGE(X) "<span class='orange'>[X]</span>"
 #define SPAN_PURPLE(X) "<span class='purple'>[X]</span>"
-#define SPAN_MAROON(X) "<font color=Maroon>[X]</font>"
+#define SPAN_RED(X) "<span class='red'>[X]</span>"
+#define SPAN_DARKER_RED(X) "<span class='darker_red'>[X]</span>"
 
 #define SPAN_STAFF_IC(X) "<span class='staff_ic'>[X]</span>"
 #define SPAN_BIGNOTICE(X) "<span class='bigannounce'>[X]</span>"

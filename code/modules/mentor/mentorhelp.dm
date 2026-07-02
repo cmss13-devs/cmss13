@@ -714,9 +714,9 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 	if(!message)
 		return
 
-	var/datum/admin_help/AH = new /datum/admin_help(message, author, FALSE)
-	AH.subject = subject
-	AH.AddInteraction("Deferred from Mentorhelp by [deferrer.key].", plain_message = "Deferred from Mentorhelp by [deferrer.key]", message_type = "system")
+	var/datum/admin_help/help_ticket = new /datum/admin_help(message, author, FALSE)
+	help_ticket.subject = subject
+	help_ticket.AddInteraction("Deferred from Mentorhelp by [deferrer.key].", plain_message = "Deferred from Mentorhelp by [deferrer.key]", message_type = "system")
 
 	notify("[SPAN_RED(deferrer.key)] deferred this ticket to admins.",
 		unformatted_text = "[deferrer.key] deferred this ticket to admins.")

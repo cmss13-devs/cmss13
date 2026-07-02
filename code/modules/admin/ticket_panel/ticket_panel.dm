@@ -19,11 +19,13 @@
 	if(M.real_name)
 		info["ic_name"] = M.real_name
 
-	var/datum/faction/F = get_faction(M.faction)
+	var/datum/faction/F = GLOB.faction_datums[M.faction]
 	if(F)
 		info["faction"] = F.name
 	else if(M.faction)
 		info["faction"] = "[M.faction]"
+	else
+		info["faction"] = FACTION_NEUTRAL
 
 	if(isobserver(M))
 		info["role"] = "Ghost"
@@ -373,7 +375,6 @@
 							return
 
 						MH.close(current_client)
-						message_mentors("[key_name_admin(current_mob)] closed mentor ticket from [MH.author_key]")
 						log_admin_private("Mentor ticket from [MH.author_key] closed by [key_name(current_mob)]")
 					else
 						to_chat(current_mob, SPAN_WARNING("This ticket does not exist or has been deleted."))
@@ -402,12 +403,10 @@
 					if(MH.mentor)
 						if(MH.mentor.ckey == current_mob.ckey)
 							MH.unmark(current_client)
-							message_mentors("[key_name_admin(current_mob)] unclaimed mentor ticket from [MH.author_key]")
 						else
-							MH.mark(current_mob)
+							MH.mark(current_client)
 					else
-						MH.mark(current_mob)
-						message_mentors("[key_name_admin(current_mob)] claimed mentor ticket from [MH.author_key]")
+						MH.mark(current_client)
 
 			return TRUE
 
@@ -436,11 +435,14 @@
 			if(selected_tab == ADMIN_TAB)
 				var/datum/admin_help/AH = GLOB.ahelp_tickets.TicketByID(ticket_id)
 				if(AH)
+					if(!AH.marked_admin)
+						AH.mark_ticket(current_mob)
 					current_client.cmd_admin_pm(AH.initiator, message)
-
 			else
 				var/datum/mentorhelp/MH = mentorhelp_by_id(ticket_id)
 				if(MH)
+					if(!MH.mentor)
+						MH.mark(current_client)
 					MH.Respond(message, current_client)
 
 			return TRUE

@@ -591,22 +591,32 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 		if("First Message")
 			message = initial_message
 		if("Custom")
-			message = tgui_input_text(usr, "Text to Send to Mentors", "Defer to Mentors")
+			var/custom_msg = tgui_input_text(usr, "Text to Send to Mentors", "Defer to Mentors")
+			if(!custom_msg)
+				return
+			message = "DEFERRED BY ADMIN [usr.key]: [custom_msg]\n\nOriginal message: [initial_message]"
 
 	if(!message)
 		return
 
 	var/datum/mentorhelp/MH = GLOB.mentorhelp_manager.create_ticket(initiator, message)
+	MH.subject = subject
 	MH.broadcast_unhandled(message, initiator)
 
 	AddInteraction("Deferred to Mentors by [key_name_admin(usr)].", plain_message = "Deferred to Mentors by [usr.key]", message_type = "system")
-	to_chat(initiator, SPAN_ADMINHELP("Your ticket has been deferred to Mentors."))
+	to_chat(initiator, SPAN_ADMINHELP("[usr.key] has deferred your ticket to Mentors."))
 	log_admin_private("Ticket [TicketHref("#[id]")] deferred to mentors by [usr.key].")
+	for(var/client/C in GLOB.admins)
+		if(CLIENT_IS_STAFF(C) || CLIENT_HAS_RIGHTS(C, R_MENTOR))
+			to_chat(C, SPAN_ADMINNOTICE("[usr.key] has deferred [initiator.key]'s ticket to Mentors."))
 	log_ahelp(id, "Defer", "Deferred to mentors by [usr.key]", null,  usr.ckey)
 	Close(silent = TRUE)
 
 /datum/admin_help/proc/mark_ticket(mob/marking_admin)
 	var/mob/user = marking_admin || usr
+	if(state != AHELP_ACTIVE)
+		to_chat(user, SPAN_WARNING("This ticket is already closed!"))
+		return
 	if(marked_admin)
 		if(marked_admin == user.ckey)
 			unmark_ticket()
@@ -675,9 +685,9 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 	if(marked_admin != usr.ckey)
 		if(marked_admin)
 			to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin]. Please override their mark to interact with this ticket!"))
+			return
 		else
-			to_chat(usr, SPAN_WARNING("This ticket is not currently marked. Please mark it first to interact with this ticket!"))
-		return
+			mark_ticket(usr)
 
 	var/chosen = tgui_input_list(usr, "Which auto response do you wish to send?", "AutoReply", GLOB.adminreplies)
 	var/datum/autoreply/admin/response = GLOB.adminreplies[chosen]

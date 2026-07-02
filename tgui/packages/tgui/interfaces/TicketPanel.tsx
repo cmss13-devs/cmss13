@@ -90,6 +90,13 @@ export const TicketPanel = (props) => {
     data.selected_ticket,
   ]);
 
+  const [isInitialMessageExpanded, setIsInitialMessageExpanded] =
+    useState(false);
+
+  useEffect(() => {
+    setIsInitialMessageExpanded(false);
+  }, [data.selected_ticket]);
+
   const openTickets =
     data.selected_tab === 'admin'
       ? Array.isArray(data.admin_open_tickets)
@@ -102,10 +109,10 @@ export const TicketPanel = (props) => {
   const archivedTickets =
     data.selected_tab === 'admin'
       ? Array.isArray(data.admin_archived_tickets)
-        ? data.admin_archived_tickets
+        ? [...data.admin_archived_tickets].reverse()
         : []
       : Array.isArray(data.mentor_archived_tickets)
-        ? data.mentor_archived_tickets
+        ? [...data.mentor_archived_tickets].reverse()
         : [];
 
   const tickets = [...openTickets, ...archivedTickets];
@@ -114,7 +121,7 @@ export const TicketPanel = (props) => {
   );
 
   return (
-    <Window theme="crtblue" width={1120} height={880}>
+    <Window theme="crtblue" width={1120} height={900}>
       <Window.Content style={{ fontSize: `${fontSize}px` }}>
         <Stack fill vertical>
           <Stack.Item>
@@ -190,7 +197,11 @@ export const TicketPanel = (props) => {
             <Stack fill>
               <Stack.Item
                 width="300px"
-                style={{ display: 'flex', flexDirection: 'column' }}
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  height: '100%',
+                }}
               >
                 <Tabs vertical>
                   {data.is_admin ? (
@@ -221,215 +232,233 @@ export const TicketPanel = (props) => {
                   }}
                 >
                   <Stack vertical>
-                    <Section
-                      title={`Open Tickets (${openTickets.length})`}
-                      scrollable
-                    >
+                    <Section title={`Open Tickets (${openTickets.length})`}>
                       {openTickets.length === 0 ? (
                         <Box>No open tickets.</Box>
                       ) : (
-                        <Stack vertical>
-                          {openTickets.map((ticket) => (
-                            <Box
-                              key={ticket.id}
-                              className={[
-                                'TicketItem',
-                                data.selected_ticket === ticket.id &&
-                                  'TicketItem--selected',
-                              ]
-                                .filter(Boolean)
-                                .join(' ')}
-                              onClick={() =>
-                                act('select_ticket', { ticket_id: ticket.id })
-                              }
-                              p={1}
-                              mb={1}
-                              style={{
-                                cursor: 'pointer',
-                                borderRadius: '6px',
-                                backgroundColor:
-                                  data.selected_ticket === ticket.id
-                                    ? 'rgba(0,0,0,0.15)'
-                                    : 'transparent',
-                              }}
-                            >
-                              <Stack align="center">
-                                <Stack.Item>
-                                  <Button
-                                    icon="times"
-                                    color={
-                                      ticket.claimed_by &&
-                                      !ticket.viewer_is_claiming
-                                        ? 'default'
-                                        : 'bad'
-                                    }
-                                    tooltip="Close Ticket"
-                                    disabled={
-                                      !!ticket.claimed_by &&
-                                      !ticket.viewer_is_claiming
-                                    }
-                                    onClick={(e) => {
-                                      e.stopPropagation();
-                                      act('close_ticket', {
-                                        ticket_id: ticket.id,
-                                      });
-                                    }}
-                                  />
-                                </Stack.Item>
-                                <Stack.Item>
-                                  <Icon
-                                    name={
-                                      ticket.claimed_by ? 'user-check' : 'user'
-                                    }
-                                    color={
-                                      ticket.claimed_by ? 'good' : 'average'
-                                    }
-                                    mr={1}
-                                  />
-                                </Stack.Item>
-                                <Stack.Item grow={1} overflow="hidden">
-                                  <Box
-                                    bold
-                                    color={
-                                      ticket.claimed_by ? 'good' : 'default'
-                                    }
-                                  >
-                                    {ticket.author}
-                                    {ticket.role ? ` (${ticket.role})` : ''}
-                                  </Box>
-                                  {decodeHtmlEntities(ticket.subject) ? (
+                        <Box
+                          style={{
+                            maxHeight: '320px',
+                            overflowY: 'auto',
+                            paddingRight: '4px',
+                          }}
+                        >
+                          <Stack vertical>
+                            {openTickets.map((ticket) => (
+                              <Box
+                                key={ticket.id}
+                                className={[
+                                  'TicketItem',
+                                  data.selected_ticket === ticket.id &&
+                                    'TicketItem--selected',
+                                ]
+                                  .filter(Boolean)
+                                  .join(' ')}
+                                onClick={() =>
+                                  act('select_ticket', { ticket_id: ticket.id })
+                                }
+                                p={1}
+                                mb={1}
+                                style={{
+                                  cursor: 'pointer',
+                                  borderRadius: '6px',
+                                  backgroundColor:
+                                    data.selected_ticket === ticket.id
+                                      ? 'rgba(0,0,0,0.15)'
+                                      : 'transparent',
+                                }}
+                              >
+                                <Stack align="center">
+                                  <Stack.Item>
+                                    <Button
+                                      icon="times"
+                                      color={
+                                        ticket.claimed_by &&
+                                        !ticket.viewer_is_claiming
+                                          ? 'default'
+                                          : 'bad'
+                                      }
+                                      tooltip="Close Ticket"
+                                      disabled={
+                                        !!ticket.claimed_by &&
+                                        !ticket.viewer_is_claiming
+                                      }
+                                      onClick={(e) => {
+                                        e.stopPropagation();
+                                        act('close_ticket', {
+                                          ticket_id: ticket.id,
+                                        });
+                                      }}
+                                    />
+                                  </Stack.Item>
+                                  <Stack.Item>
+                                    <Icon
+                                      name={
+                                        ticket.claimed_by
+                                          ? 'user-check'
+                                          : 'user'
+                                      }
+                                      color={
+                                        ticket.claimed_by ? 'good' : 'average'
+                                      }
+                                      mr={1}
+                                    />
+                                  </Stack.Item>
+                                  <Stack.Item grow={1} overflow="hidden">
                                     <Box
-                                      color={'average'}
+                                      bold
+                                      color={
+                                        ticket.claimed_by ? 'good' : 'default'
+                                      }
+                                    >
+                                      {ticket.author}
+                                      {ticket.role ? ` (${ticket.role})` : ''}
+                                    </Box>
+                                    {decodeHtmlEntities(ticket.subject) ? (
+                                      <Box
+                                        color={'average'}
+                                        style={{
+                                          whiteSpace: 'nowrap',
+                                          overflow: 'hidden',
+                                          textOverflow: 'ellipsis',
+                                        }}
+                                      >
+                                        <b>
+                                          {'[' +
+                                            decodeHtmlEntities(ticket.subject) +
+                                            ']'}
+                                        </b>
+                                      </Box>
+                                    ) : (
+                                      ''
+                                    )}
+                                    <Box
+                                      color="label"
                                       style={{
                                         whiteSpace: 'nowrap',
                                         overflow: 'hidden',
                                         textOverflow: 'ellipsis',
                                       }}
                                     >
-                                      <b>
-                                        {'[' +
-                                          decodeHtmlEntities(ticket.subject) +
-                                          ']'}
-                                      </b>
+                                      {decodeHtmlEntities(
+                                        ticket.latest_message,
+                                      )}
                                     </Box>
-                                  ) : (
-                                    ''
-                                  )}
-                                  <Box
-                                    color="label"
-                                    style={{
-                                      whiteSpace: 'nowrap',
-                                      overflow: 'hidden',
-                                      textOverflow: 'ellipsis',
-                                    }}
-                                  >
-                                    {decodeHtmlEntities(ticket.latest_message)}
-                                  </Box>
-                                  <Box color="gray" fontSize="0.9em">
-                                    {ticket.timestamp}
-                                  </Box>
-                                </Stack.Item>
-                              </Stack>
-                            </Box>
-                          ))}
-                        </Stack>
+                                    <Box color="gray" fontSize="0.9em">
+                                      {ticket.timestamp}
+                                    </Box>
+                                  </Stack.Item>
+                                </Stack>
+                              </Box>
+                            ))}
+                          </Stack>
+                        </Box>
                       )}
                     </Section>
 
-                    <Section
-                      title={`Archived (Read-Only) (${archivedTickets.length})`}
-                      scrollable
-                    >
+                    <Section title={`Archived (${archivedTickets.length})`}>
                       {archivedTickets.length === 0 ? (
                         <Box>No archived tickets.</Box>
                       ) : (
-                        <Stack vertical>
-                          {archivedTickets.map((ticket) => (
-                            <Box
-                              key={ticket.id}
-                              className={[
-                                'TicketItem',
-                                data.selected_ticket === ticket.id &&
-                                  'TicketItem--selected',
-                              ]
-                                .filter(Boolean)
-                                .join(' ')}
-                              onClick={() =>
-                                act('select_ticket', { ticket_id: ticket.id })
-                              }
-                              p={1}
-                              mb={1}
-                              style={{
-                                cursor: 'pointer',
-                                borderRadius: '6px',
-                                backgroundColor:
-                                  data.selected_ticket === ticket.id
-                                    ? 'rgba(0,0,0,0.15)'
-                                    : 'rgba(0,0,0,0.05)',
-                                opacity: '0.7',
-                              }}
-                            >
-                              <Stack align="center">
-                                <Stack.Item>
-                                  <Icon name="lock" color="average" mr={1} />
-                                </Stack.Item>
-                                <Stack.Item>
-                                  <Icon
-                                    name={
-                                      ticket.claimed_by ? 'user-check' : 'user'
-                                    }
-                                    color={
-                                      ticket.claimed_by ? 'good' : 'average'
-                                    }
-                                    mr={1}
-                                  />
-                                </Stack.Item>
-                                <Stack.Item grow={1} overflow="hidden">
-                                  <Box
-                                    bold
-                                    color={
-                                      ticket.claimed_by ? 'good' : 'default'
-                                    }
-                                  >
-                                    {ticket.author}
-                                    {ticket.role ? ` (${ticket.role})` : ''}
-                                  </Box>
-                                  {decodeHtmlEntities(ticket.subject) ? (
+                        <Box
+                          style={{
+                            maxHeight: '320px',
+                            overflowY: 'auto',
+                            paddingRight: '4px',
+                          }}
+                        >
+                          <Stack vertical>
+                            {archivedTickets.map((ticket) => (
+                              <Box
+                                key={ticket.id}
+                                className={[
+                                  'TicketItem',
+                                  data.selected_ticket === ticket.id &&
+                                    'TicketItem--selected',
+                                ]
+                                  .filter(Boolean)
+                                  .join(' ')}
+                                onClick={() =>
+                                  act('select_ticket', { ticket_id: ticket.id })
+                                }
+                                p={1}
+                                mb={1}
+                                style={{
+                                  cursor: 'pointer',
+                                  borderRadius: '6px',
+                                  backgroundColor:
+                                    data.selected_ticket === ticket.id
+                                      ? 'rgba(0,0,0,0.15)'
+                                      : 'rgba(0,0,0,0.05)',
+                                  opacity: '0.7',
+                                }}
+                              >
+                                <Stack align="center">
+                                  <Stack.Item>
+                                    <Icon name="lock" color="average" mr={1} />
+                                  </Stack.Item>
+                                  <Stack.Item>
+                                    <Icon
+                                      name={
+                                        ticket.claimed_by
+                                          ? 'user-check'
+                                          : 'user'
+                                      }
+                                      color={
+                                        ticket.claimed_by ? 'good' : 'average'
+                                      }
+                                      mr={1}
+                                    />
+                                  </Stack.Item>
+                                  <Stack.Item grow={1} overflow="hidden">
                                     <Box
-                                      color={'average'}
+                                      bold
+                                      color={
+                                        ticket.claimed_by ? 'good' : 'default'
+                                      }
+                                    >
+                                      {ticket.author}
+                                      {ticket.role ? ` (${ticket.role})` : ''}
+                                    </Box>
+                                    {decodeHtmlEntities(ticket.subject) ? (
+                                      <Box
+                                        color={'average'}
+                                        style={{
+                                          whiteSpace: 'nowrap',
+                                          overflow: 'hidden',
+                                          textOverflow: 'ellipsis',
+                                        }}
+                                      >
+                                        <b>
+                                          {'[' +
+                                            decodeHtmlEntities(ticket.subject) +
+                                            ']'}
+                                        </b>
+                                      </Box>
+                                    ) : (
+                                      ''
+                                    )}
+                                    <Box
+                                      color="label"
                                       style={{
                                         whiteSpace: 'nowrap',
                                         overflow: 'hidden',
                                         textOverflow: 'ellipsis',
                                       }}
                                     >
-                                      <b>
-                                        {'[' +
-                                          decodeHtmlEntities(ticket.subject) +
-                                          ']'}
-                                      </b>
+                                      {decodeHtmlEntities(
+                                        ticket.latest_message,
+                                      )}
                                     </Box>
-                                  ) : (
-                                    ''
-                                  )}
-                                  <Box
-                                    color="label"
-                                    style={{
-                                      whiteSpace: 'nowrap',
-                                      overflow: 'hidden',
-                                      textOverflow: 'ellipsis',
-                                    }}
-                                  >
-                                    {decodeHtmlEntities(ticket.latest_message)}
-                                  </Box>
-                                  <Box color="gray" fontSize="0.9em">
-                                    {ticket.timestamp}
-                                  </Box>
-                                </Stack.Item>
-                              </Stack>
-                            </Box>
-                          ))}
-                        </Stack>
+                                    <Box color="gray" fontSize="0.9em">
+                                      {ticket.timestamp}
+                                    </Box>
+                                  </Stack.Item>
+                                </Stack>
+                              </Box>
+                            ))}
+                          </Stack>
+                        </Box>
                       )}
                     </Section>
                   </Stack>
@@ -448,7 +477,6 @@ export const TicketPanel = (props) => {
                     <Stack.Item grow basis={0} position="relative">
                       <Section
                         fill
-                        scrollable
                         title={`${selectedTicketData.is_archived ? '[ARCHIVED] ' : ''}Ticket #${selectedTicketData.id} ${selectedTicketData.subject ? ': ' + decodeHtmlEntities(selectedTicketData.subject) : ''}`}
                         buttons={
                           !selectedTicketData.is_archived ? (
@@ -473,30 +501,32 @@ export const TicketPanel = (props) => {
                               >
                                 Set Subject
                               </Button>
-                              <Button
-                                icon="sticky-note"
-                                tooltip="View Author Notes"
-                                onClick={() => {
-                                  act('get_author_notes', {
-                                    ticket_id: selectedTicketData.id,
-                                  });
-                                }}
-                                disabled={data.selected_tab !== 'admin'}
-                              >
-                                View Notes
-                              </Button>
-                              <Button
-                                color="bad"
-                                icon="user-slash"
-                                disabled={data.selected_tab === 'mentor'}
-                                onClick={() =>
-                                  act('ban_author', {
-                                    ticket_id: selectedTicketData.id,
-                                  })
-                                }
-                              >
-                                Ban
-                              </Button>
+                              {!!data.is_admin && (
+                                <>
+                                  <Button
+                                    icon="sticky-note"
+                                    tooltip="View Author Notes"
+                                    onClick={() => {
+                                      act('get_author_notes', {
+                                        ticket_id: selectedTicketData.id,
+                                      });
+                                    }}
+                                  >
+                                    View Notes
+                                  </Button>
+                                  <Button
+                                    color="bad"
+                                    icon="user-slash"
+                                    onClick={() =>
+                                      act('ban_author', {
+                                        ticket_id: selectedTicketData.id,
+                                      })
+                                    }
+                                  >
+                                    Ban
+                                  </Button>
+                                </>
+                              )}
                               <Button
                                 icon="exchange-alt"
                                 tooltip={
@@ -541,144 +571,215 @@ export const TicketPanel = (props) => {
                           )
                         }
                       >
-                        <LabeledList>
-                          {selectedTicketData.subject ? (
-                            <LabeledList.Item label="Subject">
-                              <Box as="span" color="good">
-                                {selectedTicketData.subject}
-                              </Box>
-                            </LabeledList.Item>
-                          ) : (
-                            ''
-                          )}
-                          <LabeledList.Item label="Author">
-                            <Box
-                              as="span"
-                              color={
-                                selectedTicketData.claimed_by
-                                  ? 'good'
-                                  : 'default'
-                              }
-                            >
-                              {selectedTicketData.author}
-                            </Box>
-                          </LabeledList.Item>
-                          {selectedTicketData.ic_name && (
-                            <LabeledList.Item label="IC Name">
-                              {selectedTicketData.ic_name}
-                            </LabeledList.Item>
-                          )}
-                          {selectedTicketData.faction && (
-                            <LabeledList.Item label="Faction">
-                              {selectedTicketData.faction}
-                            </LabeledList.Item>
-                          )}
-                          {selectedTicketData.role && (
-                            <LabeledList.Item label="Role">
-                              {selectedTicketData.role}
-                            </LabeledList.Item>
-                          )}
-                          <LabeledList.Item
-                            label="Status"
-                            color={
-                              selectedTicketData.status === 'open'
-                                ? 'good'
-                                : 'average'
-                            }
-                          >
-                            {selectedTicketData.status.toUpperCase()}
-                          </LabeledList.Item>
-                          <LabeledList.Item label="Opened At">
-                            {selectedTicketData.timestamp}
-                          </LabeledList.Item>
-                          {selectedTicketData.closed_at && (
-                            <LabeledList.Item label="Closed At">
-                              {selectedTicketData.closed_at}
-                            </LabeledList.Item>
-                          )}
-                          <LabeledList.Item label="Claimed By">
-                            {selectedTicketData.claimed_by
-                              ? selectedTicketData.claimed_by
-                              : 'Unclaimed'}
-                          </LabeledList.Item>
-                          <LabeledList.Item label="Initial Message">
-                            <Box style={{ whiteSpace: 'pre-wrap' }}>
-                              {decodeHtmlEntities(selectedTicketData.message)}
-                            </Box>
-                          </LabeledList.Item>
-                        </LabeledList>
-
-                        {(selectedTicketData.all_responses?.length ?? 0) >
-                          0 && (
-                          <Section
-                            title="Conversation Log"
-                            mt={2}
-                            key={`ticket-${selectedTicketData.id}-${ticketUpdateTime}`}
-                          >
-                            <Box
-                              mt={2}
-                              style={{
-                                overflowX: 'hidden',
-                                padding: '0.5em',
-                              }}
-                            >
-                              {selectedTicketData.all_responses?.map(
-                                (response, index) => {
-                                  const link = response.islink;
-                                  return (
-                                    <Box key={index} mb={2}>
-                                      <Stack align="flex-start">
-                                        <Stack.Item
-                                          style={{
-                                            width: '120px',
-                                            fontSize: '1em',
-                                            color: 'gray',
-                                          }}
-                                        >
-                                          {response.timestamp || 'Unknown'}
-                                        </Stack.Item>
-                                        <Stack.Item grow>
-                                          <Box>
-                                            <Box
-                                              as="span"
-                                              color={
-                                                response.type === 'admin'
-                                                  ? 'good'
-                                                  : response.type === 'mentor'
-                                                    ? 'average'
-                                                    : response.type === 'system'
-                                                      ? 'label'
-                                                      : 'default'
-                                              }
-                                              bold={response.type !== 'system'}
-                                            >
-                                              {response.author}:{' '}
-                                            </Box>
-                                            <Box as="span">
-                                              {link ? (
-                                                <Button
-                                                  content={link[0]}
-                                                  onClick={() => {
-                                                    window.location.href =
-                                                      link[1];
-                                                  }}
-                                                />
-                                              ) : (
-                                                decodeHtmlEntities(
-                                                  response.message,
-                                                )
-                                              )}
-                                            </Box>
-                                          </Box>
-                                        </Stack.Item>
-                                      </Stack>
-                                    </Box>
-                                  );
-                                },
+                        <Stack fill vertical>
+                          <Stack.Item>
+                            <LabeledList>
+                              {selectedTicketData.subject ? (
+                                <LabeledList.Item label="Subject">
+                                  <Box as="span" color="good">
+                                    {selectedTicketData.subject}
+                                  </Box>
+                                </LabeledList.Item>
+                              ) : (
+                                ''
                               )}
-                            </Box>
-                          </Section>
-                        )}
+                              <LabeledList.Item label="Author">
+                                <Box
+                                  as="span"
+                                  color={
+                                    selectedTicketData.claimed_by
+                                      ? 'good'
+                                      : 'default'
+                                  }
+                                >
+                                  {selectedTicketData.author}
+                                </Box>
+                              </LabeledList.Item>
+                              {selectedTicketData.ic_name && (
+                                <LabeledList.Item label="IC Name">
+                                  {selectedTicketData.ic_name}
+                                </LabeledList.Item>
+                              )}
+                              {selectedTicketData.faction && (
+                                <LabeledList.Item label="Faction">
+                                  {selectedTicketData.faction}
+                                </LabeledList.Item>
+                              )}
+                              {selectedTicketData.role && (
+                                <LabeledList.Item label="Role">
+                                  {selectedTicketData.role}
+                                </LabeledList.Item>
+                              )}
+                              <LabeledList.Item
+                                label="Status"
+                                color={
+                                  selectedTicketData.status === 'open'
+                                    ? 'good'
+                                    : 'average'
+                                }
+                              >
+                                {selectedTicketData.status.toUpperCase()}
+                              </LabeledList.Item>
+                              <LabeledList.Item label="Opened At">
+                                {selectedTicketData.timestamp}
+                              </LabeledList.Item>
+                              {selectedTicketData.closed_at && (
+                                <LabeledList.Item label="Closed At">
+                                  {selectedTicketData.closed_at}
+                                </LabeledList.Item>
+                              )}
+                              <LabeledList.Item label="Claimed By">
+                                {selectedTicketData.claimed_by
+                                  ? selectedTicketData.claimed_by
+                                  : 'Unclaimed'}
+                              </LabeledList.Item>
+                              <LabeledList.Item label="Initial Message">
+                                <Box
+                                  style={{
+                                    whiteSpace: 'pre-wrap',
+                                    wordBreak: 'break-all',
+                                  }}
+                                >
+                                  {(() => {
+                                    const message = decodeHtmlEntities(
+                                      selectedTicketData.message || '',
+                                    );
+                                    if (message.length <= 200) {
+                                      return message;
+                                    }
+                                    if (isInitialMessageExpanded) {
+                                      return (
+                                        <>
+                                          {message}
+                                          <Box
+                                            as="span"
+                                            color="average"
+                                            style={{
+                                              cursor: 'pointer',
+                                              marginLeft: '6px',
+                                              textDecoration: 'underline',
+                                            }}
+                                            onClick={() =>
+                                              setIsInitialMessageExpanded(false)
+                                            }
+                                          >
+                                            Show Less
+                                          </Box>
+                                        </>
+                                      );
+                                    }
+                                    return (
+                                      <>
+                                        {message.substring(0, 200)}...
+                                        <Box
+                                          as="span"
+                                          color="average"
+                                          style={{
+                                            cursor: 'pointer',
+                                            marginLeft: '6px',
+                                            textDecoration: 'underline',
+                                          }}
+                                          onClick={() =>
+                                            setIsInitialMessageExpanded(true)
+                                          }
+                                        >
+                                          Show More
+                                        </Box>
+                                      </>
+                                    );
+                                  })()}
+                                </Box>
+                              </LabeledList.Item>
+                            </LabeledList>
+                          </Stack.Item>
+                          <Stack.Item
+                            grow
+                            basis={0}
+                            style={{ display: 'flex', flexDirection: 'column' }}
+                          >
+                            {(selectedTicketData.all_responses?.length ?? 0) >
+                              0 && (
+                              <Section
+                                fill
+                                scrollable
+                                title="Conversation Log"
+                                key={`ticket-${selectedTicketData.id}-${ticketUpdateTime}`}
+                              >
+                                <Box
+                                  mt={2}
+                                  style={{
+                                    overflowX: 'hidden',
+                                    padding: '0.5em',
+                                  }}
+                                >
+                                  {selectedTicketData.all_responses?.map(
+                                    (response, index) => {
+                                      const link = response.islink;
+                                      return (
+                                        <Box key={index} mb={2}>
+                                          <Stack align="flex-start">
+                                            <Stack.Item
+                                              style={{
+                                                width: '120px',
+                                                fontSize: '1em',
+                                                color: 'gray',
+                                              }}
+                                            >
+                                              {response.timestamp || 'Unknown'}
+                                            </Stack.Item>
+                                            <Stack.Item grow>
+                                              <Box
+                                                style={{
+                                                  whiteSpace: 'pre-wrap',
+                                                  wordBreak: 'break-all',
+                                                }}
+                                              >
+                                                <Box
+                                                  as="span"
+                                                  color={
+                                                    response.type === 'admin'
+                                                      ? 'good'
+                                                      : response.type ===
+                                                          'mentor'
+                                                        ? 'average'
+                                                        : response.type ===
+                                                            'system'
+                                                          ? 'label'
+                                                          : 'default'
+                                                  }
+                                                  bold={
+                                                    response.type !== 'system'
+                                                  }
+                                                >
+                                                  {response.author}:{' '}
+                                                </Box>
+                                                <Box as="span">
+                                                  {link ? (
+                                                    <Button
+                                                      content={link[0]}
+                                                      onClick={() => {
+                                                        window.location.href =
+                                                          link[1];
+                                                      }}
+                                                    />
+                                                  ) : (
+                                                    decodeHtmlEntities(
+                                                      response.message,
+                                                    )
+                                                  )}
+                                                </Box>
+                                              </Box>
+                                            </Stack.Item>
+                                          </Stack>
+                                        </Box>
+                                      );
+                                    },
+                                  )}
+                                </Box>
+                              </Section>
+                            )}
+                          </Stack.Item>
+                        </Stack>
                       </Section>
                     </Stack.Item>
                     <Stack.Item>

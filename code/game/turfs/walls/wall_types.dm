@@ -915,6 +915,7 @@
 	blend_turfs = list(/turf/closed/wall/resin)
 	blend_objects = list(/obj/structure/mineral_door/resin)
 	repair_materials = list()
+	var/destroy_override = FALSE
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/should_track_build = FALSE
 	var/upgrading_now = FALSE //flag to track upgrading/thickening process
@@ -928,8 +929,9 @@
 /turf/closed/wall/resin/Initialize(mapload)
 	. = ..()
 
-	for(var/obj/effect/alien/weeds/node/weed_node in contents)
-		qdel(weed_node)
+	if(!destroy_override)
+		for(var/obj/effect/alien/weeds/node/weed_node in contents)
+			qdel(weed_node)
 
 	set_hive_data(src, hivenumber)
 

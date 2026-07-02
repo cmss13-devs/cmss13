@@ -199,7 +199,7 @@ SUBSYSTEM_DEF(hijack)
 		// Handle power shortage by ship being cracked in half
 		if(crashed && hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)
 			for(var/obj/structure/machinery/power/apc/almayer/apc as anything in apcs)
-				if(prob(5))
+				if(prob(5) && apc.crash_break_probability)
 					apc.shorted = TRUE
 					playsound(apc.loc, 'sound/effects/sparks2.ogg', 25, 1)
 					var/datum/effect_system/spark_spread/spark = new /datum/effect_system/spark_spread

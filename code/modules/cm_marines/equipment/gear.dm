@@ -400,19 +400,21 @@
 			deploy_tripod(user)
 
 /obj/item/device/overwatch_camera/tripod/proc/deploy_tripod(mob/user)
-	var/datum/squad/user_squad = null // find squad for addition to label
-
-	if(ishuman(user)) // synths can place so not strict check
-		var/mob/living/carbon/human/human_user = user
-		user_squad = human_user.assigned_squad
-		if(isyautja(user))
-			to_chat(user, SPAN_WARNING("You can't think of a reason to interact with [src] and decide to leave it alone."))
-			return
-	if(user.is_mob_incapacitated())
+	if(!user || user.stat != CONSCIOUS) // pre-do-after
+		to_chat(user, SPAN_WARNING("You can't do that right now."))
 		return
-	// if(user. != src)
-	// 	to_chat(user, SPAN_WARNING("You need to hold [src] in your hand to deploy it!"))
-	// 	return
+
+	if(user.is_mob_incapacitated())
+		to_chat(user, SPAN_WARNING("You are incapacitated."))
+		return
+
+	if(isyautja(user) || isxeno(user))
+		to_chat(user, SPAN_WARNING("You can't think of a reason to interact with [src] and decide to leave it alone."))
+		return
+
+	if(user.get_active_hand() != src)
+		to_chat(user, SPAN_WARNING("You must hold [src] in your active hand to deploy it."))
+		return
 
 	var/turf/deploy_turf = get_turf(user)
 	if(!deploy_turf)
@@ -434,16 +436,22 @@
 			to_chat(user, SPAN_WARNING("[blocking_object] is blocking the deployment spot!"))
 			return
 
-	if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
+	if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD)) // do-after
 		to_chat(user, SPAN_WARNING("You must stand still while deploying the tripod."))
 		return
 
-	if(user.stat != CONCIOUS || user.is_mob_incapacitated()) //not sure if this is the same check or not :D
+	if(user.stat != CONSCIOUS || user.is_mob_incapacitated()) // post do-after
+		to_chat(user, SPAN_WARNING("You were interrupted!"))
 		return
 
 	if(user.get_active_hand() != src)
-		to_chat(user, SPAN_WARNING("You must hold [src] in your hand to deploy it!"))
+		to_chat(user, SPAN_WARNING("You must hold [src] in your active hand to deploy it."))
 		return
+
+	var/datum/squad/user_squad = null // deployment & labelling
+	if(ishuman(user)) // second human check just in case
+		var/mob/living/carbon/human/human_user = user
+		user_squad = human_user.assigned_squad
 
 	var/base_label = label ? label : initial(name)
 	var/final_label = user_squad ? "[user_squad.name] - [base_label]" : base_label

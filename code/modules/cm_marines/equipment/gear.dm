@@ -380,6 +380,11 @@
 
 /obj/item/device/overwatch_camera/tripod/attack_self(mob/user)
 	..()
+	if(!user || user.stat != CONSCIOUS || user.is_mob_incapacitated())
+		return
+	if(user.get_active_hand() != src)
+		to_chat(user, SPAN_WARNING("You must hold [src] in your active hand."))
+		return
 	var/choice = tgui_alert(user, "What would you like to do with [src]?", "Tripod Camera", list("Rename", "Deploy", "Cancel"))
 	switch(choice)
 		if("Cancel")
@@ -387,6 +392,12 @@
 		if("Rename")
 			var/new_name = tgui_input_text(user, "Enter a new name for the camera:", "Rename Camera", label ? label : "FCT", MAX_NAME_LEN, ui_state=GLOB.not_incapacitated_state, encode=FALSE)
 			if(!new_name)
+				return
+			if(user.get_active_hand() != src)
+				to_chat(user, SPAN_WARNING("You must hold [src] in your active hand."))
+				return
+			if(!user.Adjacent(src))
+				to_chat(user, SPAN_WARNING("You must be closer to rename [src]."))
 				return
 			new_name = trim_right(replace_non_alphanumeric_plus(new_name))
 			if(!length(new_name))
@@ -529,11 +540,17 @@
 		if("Cancel")
 			return
 		if("Rename")
+			if(!user.Adjacent(src))
+				to_chat(user, SPAN_WARNING("You must be closer to rename [src]."))
+				return
 			if(isyautja(user))
 				to_chat(user, SPAN_WARNING("You can't think of a reason to interact with [src] and decide to leave it alone."))
 				return
 			var/new_name = tgui_input_text(user, "Enter a new label for the camera:", "Rename Camera", base_label, MAX_NAME_LEN, ui_state=GLOB.not_incapacitated_state, encode=FALSE)
 			if(!new_name)
+				return
+			if(!user.Adjacent(src))
+				to_chat(user, SPAN_WARNING("You must be closer to rename [src]."))
 				return
 			new_name = trim_right(replace_non_alphanumeric_plus(new_name))
 			if(!length(new_name))

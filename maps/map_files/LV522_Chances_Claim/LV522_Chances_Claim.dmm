@@ -1294,6 +1294,15 @@
 /obj/structure/machinery/computer/objective,
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
+"aey" = (
+/obj/effect/landmark/survivor_spawner/lv522_forecon_major,
+/turf/open/floor/prison,
+/area/lv522/indoors/a_block/admin)
+"aez" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner/lv522_forecon_synth,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv522/indoors/a_block/admin)
 "aeD" = (
 /obj/structure/largecrate/random,
 /obj/effect/decal/cleanable/dirt,
@@ -78489,7 +78498,7 @@ fRk
 ibk
 qcd
 mEx
-sWr
+aey
 lxZ
 lHV
 wGY
@@ -79312,7 +79321,7 @@ lsa
 svf
 ydV
 sWT
-oGF
+aez
 dkq
 iBr
 wGY

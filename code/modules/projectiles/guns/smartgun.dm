@@ -457,21 +457,21 @@
 
 /obj/item/weapon/gun/smartgun/able_to_fire(mob/living/user)
 	. = ..()
-	if(.)
+	if((. & WEAPON_FIRES))
 		if(!ishuman(user))
-			return FALSE
+			return WEAPON_NOT_ABLE_TO_FIRE
 		var/mob/living/carbon/human/H = user
 		if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_SMARTGUN) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
 			balloon_alert(user, "insufficient skills")
-			return FALSE
+			return WEAPON_NOT_ABLE_TO_FIRE
 		if(requires_harness)
 			if(!H.wear_suit || !(H.wear_suit.flags_inventory & SMARTGUN_HARNESS))
 				balloon_alert(user, "harness required")
-				return FALSE
+				return WEAPON_NOT_ABLE_TO_FIRE
 		if(cover_open)
 			to_chat(H, SPAN_WARNING("You can't fire \the [src] with the feed cover open! (alt-click to close)"))
 			balloon_alert(user, "cannot fire; feed cover open")
-			return FALSE
+			return WEAPON_NOT_ABLE_TO_FIRE
 
 /obj/item/weapon/gun/smartgun/unique_action(mob/user)
 	if(isobserver(usr) || isxeno(usr))

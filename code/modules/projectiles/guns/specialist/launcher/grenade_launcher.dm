@@ -156,15 +156,15 @@
 
 /obj/item/weapon/gun/launcher/grenade/able_to_fire(mob/living/user) //Skillchecks and fire blockers go in the child items.
 	. = ..()
-	if(.)
+	if((. & WEAPON_FIRES))
 		if(!length(cylinder.contents))
 			to_chat(user, SPAN_WARNING("The [name] is empty."))
-			return FALSE
-		var/obj/item/explosive/grenade/G = cylinder.contents[1]
-		if(G.antigrief_protection && user.faction == FACTION_MARINE && explosive_antigrief_check(G, user))
+			return WEAPON_NOT_ABLE_TO_FIRE
+		var/obj/item/explosive/grenade/grenade_to_check = cylinder.contents[1]
+		if(grenade_to_check.antigrief_protection && user.faction == FACTION_MARINE && explosive_antigrief_check(grenade_to_check, user))
 			to_chat(user, SPAN_WARNING("\The [name]'s safe-area accident inhibitor prevents you from firing!"))
-			msg_admin_niche("[key_name(user)] attempted to prime \a [G.name] in [get_area(src)] [ADMIN_JMP(src.loc)]")
-			return FALSE
+			msg_admin_niche("[key_name(user)] attempted to prime \a [grenade_to_check.name] in [get_area(src)] [ADMIN_JMP(src.loc)]")
+			return WEAPON_NOT_ABLE_TO_FIRE
 
 
 /obj/item/weapon/gun/launcher/grenade/afterattack(atom/target, mob/user, flag) //Not actually after the attack. After click, more like.

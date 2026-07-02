@@ -45,7 +45,7 @@
 
 /obj/item/weapon/gun/rifle/sniper/able_to_fire(mob/living/user)
 	. = ..()
-	if(. && istype(user) && skill_locked) //Let's check all that other stuff first.
+	if((. & WEAPON_FIRES) && istype(user) && skill_locked) //Let's check all that other stuff first.
 		if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SNIPER)
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
 			return 0
@@ -101,7 +101,7 @@
 		return
 
 	var/obj/item/weapon/gun/rifle/sniper/sniper_rifle = holder_item
-	if(world.time < sniper_rifle.aimed_shot_cooldown || !sniper_rifle.able_to_fire(human))
+	if(world.time < sniper_rifle.aimed_shot_cooldown || !(sniper_rifle.able_to_fire(human) & WEAPON_FIRES))
 		return
 
 	if(!check_can_use(target))
@@ -182,8 +182,7 @@
 	target.overlays -= lockon_icon
 	target.overlays -= lockon_direction_icon
 	qdel(laser_beam)
-
-	if(!check_can_use(target, TRUE) || target.is_dead() || !sniper_rifle.able_to_fire(human))
+	if(!check_can_use(target, TRUE) || target.is_dead() || !(sniper_rifle.able_to_fire(human) & WEAPON_FIRES))
 		return
 
 	var/obj/projectile/aimed_proj = sniper_rifle.in_chamber

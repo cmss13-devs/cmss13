@@ -3814,6 +3814,7 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
 	recoil_mod = -RECOIL_AMOUNT_TIER_5
 	scatter_mod = -SCATTER_AMOUNT_TIER_10
+	wield_delay_mod = WEAPON_DELAY_VERY_FAST
 	burst_scatter_mod = -2
 	movement_onehanded_acc_penalty_mod = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
 	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3

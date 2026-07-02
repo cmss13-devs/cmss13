@@ -1367,11 +1367,12 @@
 	update_special_overlay(new_icon_state)
 
 /obj/item/weapon/gun/launcher/spike/able_to_fire(mob/user)
+	. = ..()
+	if(!(. & WEAPON_FIRES))
+		return WEAPON_NOT_ABLE_TO_FIRE
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		to_chat(user, SPAN_WARNING("You have no idea how this thing works!"))
-		return
-
-	return ..()
+		return WEAPON_NOT_ABLE_TO_FIRE
 
 /obj/item/weapon/gun/launcher/spike/load_into_chamber()
 	if(spikes > 0)
@@ -1462,12 +1463,15 @@
 		. += SPAN_NOTICE("This thing looks like an alien rifle of some kind. Strange.")
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/able_to_fire(mob/user)
+	. = ..()
+	if(!(. & WEAPON_FIRES))
+		return WEAPON_NOT_ABLE_TO_FIRE
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		to_chat(user, SPAN_WARNING("You have no idea how this thing works!"))
-		return
+		return WEAPON_NOT_ABLE_TO_FIRE
 	if(charge_time < 7)
 		to_chat(user, SPAN_WARNING("The rifle does not have enough power remaining!"))
-		return
+		return WEAPON_NOT_ABLE_TO_FIRE
 
 	return ..()
 
@@ -1566,11 +1570,12 @@
 
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol/able_to_fire(mob/user)
+	. = ..()
+	if(!(. & WEAPON_FIRES))
+		return WEAPON_NOT_ABLE_TO_FIRE
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		to_chat(user, SPAN_WARNING("You have no idea how this thing works!"))
-		return
-	else
-		return ..()
+		return WEAPON_NOT_ABLE_TO_FIRE
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol/load_into_chamber()
 	if(charge_time < 1)
@@ -1754,12 +1759,12 @@
 	..()
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/able_to_fire(mob/user)
-	if(!source)
-		return
+	. = ..()
+	if(!(. & WEAPON_FIRES) || !source)
+		return WEAPON_NOT_ABLE_TO_FIRE
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		to_chat(user, SPAN_WARNING("You have no idea how this thing works!"))
-		return
-	return ..()
+		return WEAPON_NOT_ABLE_TO_FIRE
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/load_into_chamber(mob/user)
 	if(source.drain_power(user, charge_cost))

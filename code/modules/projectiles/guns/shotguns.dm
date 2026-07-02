@@ -19,10 +19,10 @@ can cause issues with ammo types getting mixed up during the burst.
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
 	gun_category = GUN_CATEGORY_SHOTGUN
 	aim_slowdown = SLOWDOWN_ADS_SHOTGUN
-	wield_delay = WEAPON_DELAY_NORMAL //Shotguns are as hard to pull up as a rifle. They're quite bulky after all
 	has_empty_icon = FALSE
 	has_open_icon = FALSE
 	fire_delay_group = list(FIRE_DELAY_GROUP_SHOTGUN)
+	delay_style = WEAPON_DELAY_NO_FIRE_PULL_ONLY|WEAPON_DELAY_SCATTER_AND_ACCURACY
 
 	fire_sound = 'sound/weapons/gun_shotgun.ogg'
 	reload_sound = "shell_load"
@@ -693,12 +693,12 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/double/able_to_fire(mob/user)
 	. = ..()
-	if(. && istype(user))
+	if((. & WEAPON_FIRES) && istype(user))
 		if(!current_mag)
-			return
+			return WEAPON_NOT_ABLE_TO_FIRE
 		if(!current_mag.chamber_closed)
 			to_chat(user, SPAN_DANGER("Close the chamber!"))
-			return 0
+			return WEAPON_NOT_ABLE_TO_FIRE
 
 /obj/item/weapon/gun/shotgun/double/empty_chamber(mob/user)
 	if(!current_mag)
@@ -797,6 +797,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	damage_mult = BASE_BULLET_DAMAGE_MULT // Less barrel = less velocity
 	recoil = RECOIL_AMOUNT_TIER_1
 	recoil_unwielded = RECOIL_AMOUNT_TIER_1
+	wield_delay = WEAPON_DELAY_FAST
 	wield_delay = WEAPON_DELAY_FAST
 
 // COULDN'T THINK OF ANOTHER WAY SORRY!!!! SOMEONE ADD A GUN COMPONENT!!
@@ -1019,7 +1020,6 @@ can cause issues with ammo types getting mixed up during the burst.
 	seal_sound = 'sound/weapons/handling/gun_mou_close.ogg'//replace w/ uniques
 	cocked_sound = null //We don't want this.
 	attachable_allowed = list()
-	delay_style = WEAPON_DELAY_NO_FIRE //This is a heavy, bulky weapon, and tricky to snapshot with.
 	flags_equip_slot = SLOT_BACK
 	actions_types = list(/datum/action/item_action/specialist/twobore_brace)
 	hud_offset = 10 //A sprite long enough to touch the Moon.

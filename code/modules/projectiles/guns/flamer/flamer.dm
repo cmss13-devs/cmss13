@@ -514,13 +514,13 @@
 
 /obj/item/weapon/gun/flamer/m240/spec/able_to_fire(mob/user)
 	. = ..()
-	if(.)
+	if((. & WEAPON_FIRES))
 		if(!current_mag || !current_mag.current_rounds)
-			return FALSE
+			return WEAPON_NOT_ABLE_TO_FIRE
 
 		if(!skillcheck(user, SKILL_SPEC_WEAPONS,  SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_PYRO)
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
-			return FALSE
+			return WEAPON_NOT_ABLE_TO_FIRE
 
 /obj/item/weapon/gun/flamer/m240/spec/proc/link_fuelpack(mob/user)
 	if (fuelpack)

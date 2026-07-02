@@ -117,9 +117,9 @@
 /obj/item/weapon/gun/boltaction/able_to_fire(mob/user)
 	. = ..()
 
-	if(. && !bolted)
+	if((. & WEAPON_FIRES) && !bolted)
 		to_chat(user, SPAN_WARNING("The bolt is still open, you can't fire [src]."))
-		return FALSE
+		return WEAPON_NOT_ABLE_TO_FIRE
 
 /obj/item/weapon/gun/boltaction/load_into_chamber(mob/user)
 	return in_chamber
@@ -218,11 +218,10 @@
 	attachable_offset = list("muzzle_x" = 39, "muzzle_y" = 19, "rail_x" = 17, "rail_y" = 24, "under_x" = 31, "under_y" = 14, "stock_x" = 11, "stock_y" = 15)
 
 /obj/item/weapon/gun/boltaction/vulture/able_to_fire(mob/user)
-	if(!bypass_trait && !HAS_TRAIT(user, TRAIT_VULTURE_USER))
+	. = ..()
+	if((. & WEAPON_FIRES) && !bypass_trait && !HAS_TRAIT(user, TRAIT_VULTURE_USER))
 		to_chat(user, SPAN_WARNING("You don't know how to use this!"))
-		return FALSE
-
-	return ..()
+		return WEAPON_NOT_ABLE_TO_FIRE
 
 /obj/item/weapon/gun/boltaction/vulture/Fire(atom/target, mob/living/user, params, reflex, dual_wield)
 	var/obj/item/attachable/vulture_scope/scope = attachments["rail"]

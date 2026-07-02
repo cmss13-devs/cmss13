@@ -32,9 +32,6 @@ SUBSYSTEM_DEF(techtree)
 
 		trees += list("[tree.name]" = tree)
 
-		var/datum/space_level/zpos = SSmapping.add_new_zlevel(tree.name, list(ZTRAIT_TECHTREE))
-		tree.zlevel = zpos
-
 		for(var/tier in tree.tree_tiers)
 			tree.unlocked_techs += tier
 			tree.all_techs += tier

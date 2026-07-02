@@ -111,7 +111,7 @@ GLOBAL_LIST_INIT_TYPED(plasteel_recipes, /datum/stack_recipe, list ( \
 	desc = "Plasteel is an expensive, durable material made from combining platinum, steel, and advanced polymers to create a metal that is corrosion-resistant, highly durable, and lightweight. The only reason this isn't used more often is because of how damn costly it is."
 	icon_state = "sheet-plasteel"
 	item_state = "sheet-plasteel"
-	matter = list("metal" = 3750)
+	matter = list("plasteel" = 3750)
 	throwforce = 15
 	flags_atom = FPRINT|CONDUCT
 	amount_sprites = TRUE

@@ -10,6 +10,7 @@
 	desc = "A custom warhead meant for 84mm rocket shells."
 	icon_state = "warhead_rocket"
 	max_container_volume = 210
+	max_cartridges = 2
 	allow_star_shape = FALSE
 	shrapnel_spread = 90
 	matter = list("metal" = 11250) //3 sheets
@@ -24,6 +25,7 @@
 	desc = "A custom warhead meant for 80mm mortar shells."
 	icon_state = "warhead_mortar"
 	max_container_volume = 240
+	max_cartridges = 3
 	matter = list("metal" = 11250) //3 sheets
 	reaction_limits = list( "max_ex_power" = 360, "base_ex_falloff" = 130, "max_ex_shards" = 200,
 							"max_fire_rad" = 8, "max_fire_int" = 45, "max_fire_dur" = 48,

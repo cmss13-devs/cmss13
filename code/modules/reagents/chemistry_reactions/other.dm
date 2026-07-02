@@ -179,7 +179,7 @@
 /datum/chemical_reaction/flash_powder
 	name = "Flash powder"
 	id = "flash_powder"
-	result = null
+	result = "flash_powder"
 	required_reagents = list("aluminum" = 1, "potassium" = 1, "sulfur" = 1 )
 	result_amount = 3
 	reaction_type =  parent_type::reaction_type | CHEM_REACTION_FIRE

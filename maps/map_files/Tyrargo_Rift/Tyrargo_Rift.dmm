@@ -50751,6 +50751,7 @@
 /area/tyrargo/outdoors/colony_streets/north_west)
 "crK" = (
 /obj/effect/decal/cleanable/blood,
+/obj/item/device/binoculars/range/designator,
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north)
 "crL" = (

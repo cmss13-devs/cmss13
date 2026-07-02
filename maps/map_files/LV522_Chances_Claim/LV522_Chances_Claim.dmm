@@ -16202,6 +16202,7 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms/glass)
 "iGk" = (
+/obj/item/device/binoculars/range/designator,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "iGl" = (

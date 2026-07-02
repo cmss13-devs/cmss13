@@ -86,7 +86,10 @@
 
 		if(target.stat == CONSCIOUS)
 			to_chat(target, SPAN_HIGHDANGER("Your organs are melting!"))
-			target.emote("scream")
+			if(target.pain.reduction_pain >= surgery.pain_reduction_required) //if patient is under the proper anesthesia
+				target.emote("pain")
+			else
+				target.emote("scream") //MY ORGANS! AAAA!
 
 		larva_blood_spray(user, target)
 		target.apply_damage(15, BURN, target_zone)
@@ -108,7 +111,10 @@
 
 	if(target.stat == CONSCIOUS)
 		to_chat(target, SPAN_HIGHDANGER("Your organs are melting!"))
-		target.emote("scream")
+		if(target.pain.reduction_pain >= surgery.pain_reduction_required) //if patient is under the proper anesthesia
+			target.emote("pain")
+		else
+			target.emote("scream")
 
 	larva_blood_spray(user, target)
 	target.apply_damage(15, BURN, target_zone)
@@ -136,18 +142,19 @@
 /datum/surgery_step/remove_larva/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(tool)
 		user.affected_message(target,
-			SPAN_NOTICE("You try to extract the larva from [target]'s chest with [tool]."),
-			SPAN_NOTICE("[user] tries to extract the larva from your chest with [tool]."),
+			SPAN_NOTICE("You try to extract the writhing larva from [target]'s chest with [tool]."),
+			SPAN_NOTICE("[user] tries to extract the writhing larva from your chest with [tool]."),
 			SPAN_NOTICE("[user] tries to extract the larva from [target]'s chest with [tool]."))
 	else
 		user.affected_message(target,
-			SPAN_NOTICE("You try to forcefully rip the larva from [target]'s chest with your bare hand."),
-			SPAN_NOTICE("[user] tries to forcefully rip the larva from your chest with \his bare hand."),
-			SPAN_NOTICE("[user] tries to forcefully rip the larva from [target]'s chest with \his bare hand."))
+			SPAN_NOTICE("You try to forcefully rip the writhing larva from [target]'s chest with your bare hand."),
+			SPAN_NOTICE("[user] tries to forcefully rip the writhing larva from your chest with \his bare hand."),
+			SPAN_NOTICE("[user] tries to forcefully rip the writhing larva from [target]'s chest with \his bare hand."))
 
 	to_chat(target, SPAN_HIGHDANGER("IT'S COMING OUT! BRACE YOURSELF!"))
 	if(target.stat == CONSCIOUS)
-		target.emote("burstscream")
+		target.emote("burstscream") //special case, larba is fighting inside your chest
+
 	log_interact(user, target, "[key_name(user)] started to remove an embryo from [key_name(target)]'s ribcage.")
 
 /datum/surgery_step/remove_larva/success(mob/living/carbon/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -164,20 +171,24 @@
 				SPAN_WARNING("Your insides and [user]'s hands are burned by acid as \he rips a wriggling parasite out of your ribcage! It's a girl!"),
 				SPAN_WARNING("[user]'s hands are burned by acid as \he rips a wriggling parasite out of [target]'s ribcage! It's a girl!"))
 
-			to_chat(target, SPAN_WARNING("Your organs in your chest burn like hell!"))
 			var/datum/internal_organ/impacted_organ = pick(surgery.affected_limb.internal_organs)
 			impacted_organ.take_damage(5, FALSE)
 			if(target.stat == CONSCIOUS)
-				target.emote("scream")
+				to_chat(target, SPAN_HIGHDANGER("Your [impacted_organ.name] burns like hell in your [surgery.affected_limb.cavity]!"))
+				if(target.pain.reduction_pain >= surgery.pain_reduction_required) //if patient is under the proper anesthesia
+					target.emote("pain")
+				else
+					target.emote("scream")
+
 			target.apply_damage(15, BURN, target_zone)
 
 			play_failure_sound(user, target, target_zone, tool, surgery)
 			user.emote("pain")
 
-			if(user.hand)
-				user.apply_damage(15, BURN, "l_hand")
-			else
-				user.apply_damage(15, BURN, "r_hand")
+			to_chat(user, SPAN_HIGHDANGER("Your hands are scalded by acid!"))
+			user.emote("pain")
+			user.apply_damage(15, BURN, "l_hand")
+			user.apply_damage(15, BURN, "r_hand")
 
 		to_chat(target, SPAN_NOTICE("The heaviness in your chest is gone. You feel monumentally better."))
 		user.count_niche_stat(STATISTICS_NICHE_SURGERY_LARVA)
@@ -204,15 +215,17 @@
 	var/datum/internal_organ/int_organ = pick(surgery.affected_limb.internal_organs)
 	int_organ.take_damage(5,0)
 	if(target.stat == CONSCIOUS)
-		target.emote("scream")
-	to_chat(target, SPAN_WARNING("Your organs in your [surgery.affected_limb.cavity] feel like they're in living hell!"))
+		to_chat(target, SPAN_HIGHDANGER("Your [int_organ.name] burns like hell in your [surgery.affected_limb.cavity]!"))
+		if(target.pain.reduction_pain >= surgery.pain_reduction_required) //if patient is under the proper anesthesia
+			target.emote("pain")
+		else
+			target.emote("scream")
 	target.apply_damage(15, BURN, target_zone)
 
+	to_chat(user, SPAN_HIGHDANGER("Your hands are scalded by acid!"))
 	user.emote("pain")
-	if(user.hand)
-		user.apply_damage(15, BURN, "l_hand")
-	else
-		user.apply_damage(15, BURN, "r_hand")
+	user.apply_damage(15, BURN, "l_hand")
+	user.apply_damage(15, BURN, "r_hand")
 
 	log_interact(user, target, "[key_name(user)] failed to remove an embryo from [key_name(target)]'s ribcage with [tool ? "[tool]" : "their hands"].")
 	return FALSE

@@ -94,20 +94,24 @@
 
 /datum/surgery_step/remove_bone_chips/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_WARNING("Your hand slips, tearing a blood vessel in [target]'s [surgery.affected_limb.display_name] with [tool], causing internal bleeding!"),
+		SPAN_WARNING("Your hand slips, tearing a blood vessel in [target]'s [surgery.affected_limb.display_name] with [tool]!"),
 		SPAN_WARNING("[user]'s hand slips, tearing a blood vessel in your [surgery.affected_limb.display_name] with [tool], causing internal bleeding!"),
 		SPAN_WARNING("[user]'s hand slips, tearing a blood vessel in [target]'s [surgery.affected_limb.display_name] with [tool]!"))
 
 	log_interact(user, target, "[key_name(user)] failed to take the bone chips out of [key_name(target)]'s brain with [tool], possibly aborting [surgery].")
 
+	target.custom_pain("You feel something rip in your [surgery.affected_limb.display_name]!", 1)
 	if(target.stat == CONSCIOUS)
-		target.emote("pain")
+		to_chat(user, SPAN_WARNING("Blood is gushing out of your [surgery.affected_limb.display_name]! It looks horrifying!"))
+		if(target.pain.reduction_pain < surgery.pain_reduction_required)//if patient is not under the proper anesthesia
+			target.emote("pain")
+		else
+			return
 	var/datum/wound/internal_bleeding/int_bleeding = new (0)
 	surgery.affected_limb.add_bleeding(int_bleeding, TRUE)
 	surgery.affected_limb.wounds += int_bleeding
 	target.apply_damage(5, BRUTE, target_zone)
 	surgery.affected_limb.add_bleeding(null, FALSE, 15)
-	target.custom_pain("You feel something rip in your [surgery.affected_limb.display_name]!", 1)
 	return FALSE
 
 //------------------------------------

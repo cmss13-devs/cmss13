@@ -56,7 +56,11 @@ w//////////////////////////////////////////////////////////////////
 	if(prob(40))
 		user.add_blood(target.get_blood_color(), BLOOD_HANDS)
 
-	to_chat(target, SPAN_NOTICE(" The discomfort in your [surgery.affected_limb.display_name] fades. You feel better."))
+
+	if(target.stat == CONSCIOUS)
+		to_chat(target, SPAN_NOTICE(" The discomfort in your [surgery.affected_limb.display_name] fades. You feel better."))
+	else
+		return
 	target.pain.recalculate_pain()
 	log_interact(user, target, "[key_name(user)] successfully repaired internal bleeding in [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")
 

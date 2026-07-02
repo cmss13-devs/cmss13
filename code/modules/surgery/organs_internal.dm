@@ -103,8 +103,11 @@ and organ transplant code which may come in handy in future but haven't been edi
 		SPAN_WARNING("[user]'s hand slips, bruising your organs and contaminating your [surgery.affected_limb.cavity]!"),
 		SPAN_WARNING("[user]'s hand slips, bruising [target]'s organs and contaminating \his [surgery.affected_limb.cavity]!"))
 
-	if(target.stat == CONSCIOUS)
+	if(target.stat == CONSCIOUS && target.pain.reduction_pain < surgery.pain_reduction_required)//if patient is not under the proper anesthesia
 		target.emote("pain")
+	else
+		return
+
 	var/dam_amt = 2
 	switch(tool_type)
 		if(/obj/item/stack/medical/bruise_pack)

@@ -143,14 +143,18 @@
 			SPAN_NOTICE("[user] tears some blood vessels trying to fit such a bulky object in your [surgery.affected_limb.cavity]."),
 			SPAN_NOTICE("[user] tears some blood vessels trying to fit such a bulky object in [target]'s [surgery.affected_limb.cavity]."))
 
+		target.custom_pain("You feel something rip in your [surgery.affected_limb.cavity]!", 1)
 		if(target.stat == CONSCIOUS)
-			target.emote("pain")
+			to_chat(user, SPAN_WARNING("Blood is gushing out of your [surgery.affected_limb.display_name]! It looks horrifying!"))
+			if(target.pain.reduction_pain < surgery.pain_reduction_required)//if patient is not under the proper anesthesia
+				target.emote("pain")
+			else
+				return
 		var/datum/wound/internal_bleeding/int_organ = new (0)
 		surgery.affected_limb.add_bleeding(int_organ, TRUE)
 		surgery.affected_limb.wounds += int_organ
 		target.apply_damage(5, BRUTE, target_zone)
 		surgery.affected_limb.add_bleeding(null, FALSE, 15)
-		target.custom_pain("You feel something rip in your [surgery.affected_limb.cavity]!", 1)
 
 	user.drop_inv_item_to_loc(tool, target)
 	surgery.affected_limb.hidden = tool

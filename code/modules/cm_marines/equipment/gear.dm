@@ -373,6 +373,7 @@
 	AddComponent(/datum/component/overwatch_console_control)
 
 /obj/item/device/overwatch_camera/tripod/Destroy()
+	squad = null
 	QDEL_NULL(camera)
 	return ..()
 

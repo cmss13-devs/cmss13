@@ -7,6 +7,7 @@ import {
   Input,
   Section,
   Stack,
+  Table,
   TextArea,
 } from 'tgui/components';
 import { Window } from 'tgui/layouts';
@@ -173,6 +174,23 @@ export const OpenSearchQuery = (props) => {
     return `${remaining}${suffix}`;
   };
 
+  const debloatDocument = (input) => {
+    let cloned = { ...input };
+    delete cloned['host'];
+    delete cloned['@timestamp'];
+    delete cloned['@version'];
+    delete cloned['event'];
+    delete cloned['log'];
+    delete cloned['roundid'];
+    delete cloned['filetype'];
+    // Those are already in the quick view above, no need to display again
+    delete cloned['logtype'];
+    delete cloned['ckey'];
+    delete cloned['character_name'];
+    delete cloned['playertext'];
+    return cloned;
+  };
+
   const generateLogElements = (results) => {
     let parsed = JSON.parse(results);
     let documents = parsed?.hits?.hits;
@@ -187,31 +205,77 @@ export const OpenSearchQuery = (props) => {
 
   const generateSingleLogElement = (onedoc) => {
     return (
-      <Stack.Item>
-        <Collapsible
-          title={
-            <Box as="span">
-              <Button
-                pr={1}
-                color={LOGTYPE_TO_COLOR[onedoc._source.logtype] || 'grey'}
-              >
-                {onedoc._source.logtype}
-              </Button>
-              {onedoc._id}
-            </Box>
-          }
-        >
-          {onedoc._source.message}
-        </Collapsible>
-      </Stack.Item>
+      onedoc._source && (
+        <Stack.Item>
+          <Collapsible
+            icon="non-existent-icon"
+            title={
+              <Box as="span">
+                <Table>
+                  <Table.Row>
+                    <Button
+                      pr={1}
+                      color={LOGTYPE_TO_COLOR[onedoc._source.logtype] || 'grey'}
+                    >
+                      {onedoc._source.logtype}
+                    </Button>
+                    {onedoc._source.loc_x &&
+                      onedoc._source.loc_y &&
+                      onedoc._source.loc_z && (
+                        <Button
+                          color="average"
+                          onClick={() =>
+                            act('jmp', {
+                              x: onedoc._source.loc_x,
+                              y: onedoc._source.loc_y,
+                              z: onedoc._source.loc_z,
+                            })
+                          }
+                          tooltip={`Jump to (${onedoc._source.loc_x},${onedoc._source.loc_y},${onedoc._source.loc_z})`}
+                        >
+                          JMP
+                        </Button>
+                      )}
+                    {onedoc._source.message_mode && (
+                      <Button pr={1} color="purple">
+                        [{onedoc._source.message_mode}]
+                      </Button>
+                    )}
+                    {onedoc._source.ckey && (
+                      <Button pr={1} color="blue">
+                        ckey:{onedoc._source.ckey}
+                      </Button>
+                    )}
+                    {onedoc._source.character_name && (
+                      <Button pr={1} color="good">
+                        {onedoc._source.character_name}
+                      </Button>
+                    )}
+                    {onedoc._source.area && (
+                      <Button pr={1} color="grey">
+                        area:{onedoc._source.area}
+                      </Button>
+                    )}
+                  </Table.Row>
+                  <Table.Row>
+                    {onedoc._source.playertext || onedoc._source.message}
+                  </Table.Row>
+                </Table>
+              </Box>
+            }
+          >
+            {JSON.stringify(debloatDocument(onedoc._source))}
+          </Collapsible>
+        </Stack.Item>
+      )
     );
   };
 
   return (
     <Window
       title={`OpenSearch Query Builder &${queryId}`}
-      width={700}
-      height={700}
+      width={900}
+      height={750}
     >
       <Window.Content>
         <Stack vertical fill>

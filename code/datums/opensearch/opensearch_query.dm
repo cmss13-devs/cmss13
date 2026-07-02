@@ -258,6 +258,14 @@
 			if(params["execute"])
 				execute()
 			SStgui.update_uis(src)
+		if("jmp")
+			var/x = text2num(params["x"])
+			var/y = text2num(params["y"])
+			var/z = text2num(params["z"])
+			var/client/client = usr?.client
+			if(x && y && z && client)
+				client.jumptocoord(x, y, z)
+
 
 // ====
 // DEBUG VERB, TODO FIXE make a more involved UI with selector

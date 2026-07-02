@@ -818,3 +818,18 @@
 		if(do_after(user,30, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			user.visible_message("[user] finishes wiping off [AM]!")
 			AM.clean_blood()
+
+
+/obj/item/reagent_container/glass/beaker/jar
+	name = "jar"
+	desc = "This is a jar. It may hold mayonnaise, and numerous forms of non-mayonnaise. It has a capacity of 80 units."
+	icon_state = "jar"
+	item_state = "har"
+	volume = 80
+	amount_per_transfer_from_this = 10
+	matter = list()
+	possible_transfer_amounts = list(10, 20, 40, 80)
+	flags_atom = FPRINT|OPENCONTAINER
+	has_lid = FALSE
+	ground_offset_x = 9
+	ground_offset_y = 8

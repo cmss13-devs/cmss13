@@ -103,7 +103,9 @@ SUBSYSTEM_DEF(mapping)
 			var/area/old_area = reserving_turf.loc
 			reserving_turf.empty(RESERVED_TURF_TYPE, RESERVED_TURF_TYPE, null, TRUE)
 			LAZYINITLIST(unused_turfs[reserving_turf.z])
-			unused_turfs[reserving_turf.z] |= reserving_turf
+			var/list/unused_z = unused_turfs[reserving_turf.z]
+			// this is probably pretty slow, but it ensures we return them back in the right order for optimal packing
+			BINARY_INSERT_GLOBAL_PROC_COMPARE(reserving_turf, unused_z, /turf, reserving_turf, cmp_turf_coord_order_same_z, COMPARE_KEY)
 			reserving_turf.turf_flags |= UNUSED_RESERVATION_TURF
 			if(old_area != world_area)
 				LISTASSERTLEN(old_area.turfs_to_uncontain_by_zlevel, reserving_turf.z, list())
@@ -369,6 +371,7 @@ SUBSYSTEM_DEF(mapping)
 	turf_type_override = null,
 )
 	UNTIL((!z_reservation || reservation_ready[z_reservation]) && !clearing_reserved_turfs)
+	SSmapping.canonize_reserved_turfs() // why is this even done on Fire()? it makes properly packing reservations really hard
 	var/datum/turf_reservation/reserve = new reservation_type
 	if(!isnull(turf_type_override))
 		reserve.turf_type = turf_type_override

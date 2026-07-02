@@ -59,6 +59,7 @@ SUBSYSTEM_DEF(shuttle)
 
 /datum/controller/subsystem/shuttle/Initialize(timeofday)
 	initial_load()
+	SSmapping.canonize_reserved_turfs() // we just created and got rid of a ton of temporary reservations, we should really make sure those are done returning
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/shuttle/proc/initial_load()

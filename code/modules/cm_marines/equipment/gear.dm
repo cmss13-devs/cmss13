@@ -361,7 +361,7 @@
 /obj/item/device/overwatch_camera/tripod
 	name = "FTC Tripod Camera"
 	desc = "A Motoca-430-T deployable tripod camera that connects to the overwatch network. It can be renamed and deployed."
-	icon = 'icons/overwatch.dmi'  // ToDO: Get real sprites
+	icon = 'icons/obj/structures/machinery/defenses/overwatch.dmi'  // ToDO: Get real sprites
 	icon_state = "undeployed"
 	desc_lore = "Following modernisation efforts in the Marine'70 program, USCM Platoons were shrunk and squads re-organised to emphasise individual firepower and mobility. The Motoca-430-T, the precursor to the Motoca-500 Helmet Camera, was commissioned by the Department of Defense to be utilised by Colonial Marine squads in establishing secure perimeters and watching rear areas remotely through the Overwatch system."
 	var/label
@@ -492,7 +492,7 @@
 /obj/structure/overwatch_camera_tripod
 	name = "FTC Tripod Camera"
 	desc = "A Motoca-430-T deployed tripod camera connected to the overwatch network."
-	icon = 'icons/overwatch.dmi'  // ToDO: Get real sprites
+	icon = 'icons/obj/structures/machinery/defenses/overwatch.dmi'  // ToDO: Get real sprites
 	icon_state = "deployed"
 	density = FALSE
 	anchored = TRUE

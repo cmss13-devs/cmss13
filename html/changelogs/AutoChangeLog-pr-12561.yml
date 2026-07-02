@@ -1,0 +1,4 @@
+author: "TheManWithNoHands"
+delete-after: True
+changes:
+  - code_imp: "Removes SensorMate hud from SG vendor"

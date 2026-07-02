@@ -214,7 +214,7 @@
 /obj/item/tool/surgery/bonegel
 	name = "bottle of bone gel"
 	desc = "A container for bone gel, a substance capable of fixing fractures using an analogue that mimics bone. It needs to be refilled from a specialized machine."
-	desc_lore = "Bone gel is a biological synthetic bone-analogue with the consistency of clay. It is capable of fixing hairline fractures and complex fractures alike by sealing cracks through adhesion to compact bone and solidifying; the gel then naturally erodes away as the bone remodels itself. Bone gel should not be used to fix missing bone, as it does not replace the body's bone marrow. Overuse in a short period may cause acute immunodeficiency or anemia."
+	desc_lore = "Bone gel is a biological synthetic bone-analogue. Made with collagen and minerals, it has a consistency similar to clay when first applied. It is capable of fixing any sort of fracture by sealing cracks through adhesion to compact bone and solidifying; the body metabolizes the gel as the bone remodels itself. Bone gel should not be used to fix missing bone, as it does not replace the body's bone marrow. Overuse in a short period may cause acute immunodeficiency or anemia."
 	icon_state = "bone-gel"
 	w_class = SIZE_SMALL
 	matter = list("plastic" = 7500)
@@ -373,7 +373,7 @@
 
 /obj/item/tool/surgery/bonesetter
 	name = "bone setter"
-	desc = "Known formally as 'bone reduction forceps,' it is a surgical tool used for a procedure called 'fracture reduction,' during which it to repositions fractured bones into their proper positions so they may heal properly."
+	desc = "Known formally as 'bone reduction forceps,' it is a surgical tool used for a procedure called 'fracture reduction,' during which a surgeon repositions fractured bones into their proper positions so they may heal properly."
 	icon_state = "bonesetter"
 	hitsound = 'sound/weapons/genhit3.ogg'
 	force = 15

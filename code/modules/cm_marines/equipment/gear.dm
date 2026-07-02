@@ -411,7 +411,7 @@
 			name = label
 			if(camera)
 				camera.c_tag = label
-			to_chat(user, SPAN_NOTICE("Camera renamed to [name]."))
+			to_chat(user, SPAN_NOTICE("Camera renamed to [name]. It will appear with your squads' name when deployed."))
 			return
 		if("Deploy")
 			deploy_tripod(user)

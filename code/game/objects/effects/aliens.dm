@@ -413,7 +413,7 @@
 		visible_message(SPAN_XENOWARNING("Acid on \The [acid_t] subsides!"))
 		return NONE
 	var/obj/structure/barricade/cade = acid_t
-	cade.take_acid_damage(barricade_damage)
+	cade.corrosive_acid_act(barricade_damage)
 	return (5 SECONDS)
 
 /obj/effect/xenomorph/acid/proc/handle_flashlight()
@@ -679,7 +679,7 @@
 /obj/effect/xenomorph/acid_damage_delay/boiler_landmine/deal_damage()
 	var/total_hits = 0
 	for (var/obj/structure/barricade/B in loc)
-		B.take_acid_damage(damage*(1.15 + 0.55 * empowered))
+		B.corrosive_acid_act(damage*(1.15 + 0.55 * empowered))
 
 	for (var/mob/living/carbon/human in loc)
 		if (human.stat == DEAD)

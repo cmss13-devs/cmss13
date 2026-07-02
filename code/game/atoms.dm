@@ -379,7 +379,11 @@ directive is properly returned.
 /atom/proc/flamer_fire_act(dam = BURN_LEVEL_TIER_1, datum/cause_data/flame_cause_data)
 	return
 
+//Xeno Abilities Proc's.
 /atom/proc/acid_spray_act()
+	return
+
+/atom/proc/corrosive_acid_act()
 	return
 
 

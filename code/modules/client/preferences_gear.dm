@@ -258,6 +258,11 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	category = "Masks and scarves"
 	slot = WEAR_FACE
 
+/datum/gear/mask/pride_scarf
+	display_name = "Pride Scarf, recolorable"
+	fluff_cost = 1
+	path = /obj/item/clothing/mask/rebreather/pride_scarf
+
 /datum/gear/mask/balaclava_black
 	display_name = "Balaclava, black"
 	path = /obj/item/clothing/mask/balaclava

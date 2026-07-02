@@ -469,3 +469,44 @@
 	flags_armor_protection = 0
 	w_class = SIZE_SMALL
 	gas_transfer_coefficient = 0.10
+
+
+/obj/item/clothing/mask/rebreather/pride_scarf
+	name = "pride scarf"
+	desc = "You can use your \[Unique-Action\] hotkey while holding this to change the type of scarf."
+	icon_state = "rainbow scarf"
+	item_state = "rainbow scarf"
+	icon = 'icons/obj/items/clothing/masks/scarf_pride_obj.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/scarf_pride_mob.dmi'
+	)
+	flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
+	flags_inv_hide = HIDEFACE
+	flags_cold_protection = BODY_FLAG_HEAD
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	flags_obj = OBJ_CAN_ACCESSORIZE
+	worn_accessory_slot = ACCESSORY_SLOT_MASK
+	worn_accessory_limit = 2
+
+	var/static/list/gays = list(
+		"Rainbow Scarf" = image(icon = 'icons/obj/items/clothing/masks/scarf_pride_obj.dmi', icon_state = "rainbow scarf"),
+		"Gay Scarf" = image(icon = 'icons/obj/items/clothing/masks/scarf_pride_obj.dmi', icon_state = "gay scarf"),
+		"Lesbian Scarf" = image(icon = 'icons/obj/items/clothing/masks/scarf_pride_obj.dmi', icon_state = "lesbian scarf"),
+		"Bisexual Scarf" = image(icon = 'icons/obj/items/clothing/masks/scarf_pride_obj.dmi', icon_state = "bisexual scarf"),
+		"Asexual Scarf" = image(icon = 'icons/obj/items/clothing/masks/scarf_pride_obj.dmi', icon_state = "asexual scarf"),
+		"Pansexual Scarf" = image(icon = 'icons/obj/items/clothing/masks/scarf_pride_obj.dmi', icon_state = "pansexual scarf"),
+		"Transgender Scarf" = image(icon = 'icons/obj/items/clothing/masks/scarf_pride_obj.dmi', icon_state = "transgender scarf"),
+		)
+
+
+/obj/item/clothing/mask/rebreather/pride_scarf/unique_action(mob/user)
+	var/picked = show_radial_menu(user, src, gays, require_near = TRUE)
+	if(!picked)
+		return
+
+	if(user.stat != CONSCIOUS) // no recoloring scarves while dead!!!
+		return
+
+	icon_state = lowertext(picked)
+	item_state = lowertext(picked)
+	name = picked

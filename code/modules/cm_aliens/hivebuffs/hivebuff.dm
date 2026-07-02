@@ -488,13 +488,12 @@
 	radial_icon = "shield_m"
 
 /datum/hivebuff/adaptability/apply_buff_effects(mob/living/carbon/xenomorph/xeno)
-	if(xeno.caste.tier > 3)
+	if(xeno.caste.tier < 1 || xeno.caste.tier > 3)
 		return
 
 	if(get_action(xeno, /datum/action/xeno_action/onclick/transmute))
 		return
 
-	add_verb(xeno, /mob/living/carbon/xenomorph/proc/transmute_verb)
 	var/datum/action/xeno_action/onclick/transmute/transmute_action = new()
 	transmute_action.give_to(xeno)
 

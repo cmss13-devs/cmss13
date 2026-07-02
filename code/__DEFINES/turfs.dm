@@ -29,10 +29,10 @@
 
 /// Returns an outline (neighboring turfs) of the given block
 #define CORNER_OUTLINE(corner, width, height) ( \
-	CORNER_BLOCK_OFFSET(corner, width + 2, 1, -1, -1) + \
-	CORNER_BLOCK_OFFSET(corner, width + 2, 1, -1, height) + \
-	CORNER_BLOCK_OFFSET(corner, 1, height, -1, 0) + \
-	CORNER_BLOCK_OFFSET(corner, 1, height, width, 0))
+	CORNER_BLOCK_OFFSET(corner, 1 + width + 1, 1,      -1,    -1) + \
+	CORNER_BLOCK_OFFSET(corner, 1 + width + 1, 1,      -1,    height) + \
+	CORNER_BLOCK_OFFSET(corner, 1,             height, -1,    0) + \
+	CORNER_BLOCK_OFFSET(corner, 1,             height, width, 0))
 
 #define TURF_FROM_COORDS_LIST(List) (locate(List[1], List[2], List[3]))
 

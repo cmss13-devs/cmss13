@@ -1,0 +1,566 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/prop/hybrisa/airport/dropshipenginedamage{
+	light_on = 1;
+	light_power = 5;
+	light_range = 6;
+	pixel_y = -13;
+	pixel_x = -6
+	},
+/turf/closed/shuttle/ert{
+	icon_state = "leftengine_3";
+	opacity = 0
+	},
+/area/navalis/indoors/clf_shuttle)
+"aK" = (
+/obj/structure/monorail{
+	dir = 9;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?";
+	unacidable = 1;
+	explo_proof = 1
+	},
+/obj/effect/decal/hybrisa/warningstripes_angled{
+	dir = 4;
+	pixel_y = 1
+	},
+/turf/open/floor/plating/catwalk/grate/lattice,
+/area/navalis/outdoors/exterior_xeno_only/lz1)
+"bb" = (
+/turf/open/floor/plating/catwalk/grate/lattice,
+/area/navalis/outdoors/exterior/com_ext)
+"cu" = (
+/obj/structure/bed/chair/dropship/passenger,
+/obj/structure/machinery/door_control/brbutton{
+	id = "clf_umbilical_1";
+	pixel_x = 1;
+	pixel_y = 28;
+	range = 20
+	},
+/obj/effect/landmark/survivor_spawner/clf/navalis,
+/turf/open/floor/almayer,
+/area/navalis/indoors/clf_shuttle)
+"cG" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1,
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/turf/solid_open_space{
+	density = 0
+	},
+/area/navalis/oob/empty_space)
+"cY" = (
+/turf/open/floor/plating/catwalk/grate,
+/area/navalis/outdoors/exterior/med_ext)
+"db" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 8
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = 25
+	},
+/obj/effect/landmark/survivor_spawner/clf/navalis,
+/turf/open/floor/almayer/orange/west,
+/area/navalis/indoors/clf_shuttle)
+"dm" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan5"
+	},
+/area/navalis/indoors/clf_shuttle)
+"eP" = (
+/obj/effect/landmark/survivor_spawner/clf/navalis,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/navalis/indoors/clf_shuttle)
+"fw" = (
+/obj/structure/surface/table/almayer,
+/obj/item/weapon/gun/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/almayer,
+/area/navalis/indoors/clf_shuttle)
+"gx" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/station_alert{
+	icon_state = "atmosb";
+	stat = 1
+	},
+/turf/open/floor/almayer,
+/area/navalis/indoors/clf_shuttle)
+"hg" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1/east,
+/obj/structure/monorail{
+	dir = 9;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?";
+	unacidable = 1;
+	explo_proof = 1
+	},
+/obj/effect/decal/hybrisa/warningstripes_angled{
+	dir = 4;
+	pixel_y = 1
+	},
+/obj/structure/blocker/forcefield/human{
+	dir = 4;
+	invisibility = 101
+	},
+/turf/open/floor/plating/catwalk/grate/lattice,
+/area/navalis/outdoors/exterior_xeno_only/lz1)
+"hC" = (
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = -10;
+	pixel_y = 2
+	},
+/turf/closed/shuttle/ert{
+	icon_state = "stan1"
+	},
+/area/navalis/indoors/clf_shuttle)
+"lB" = (
+/turf/closed/wall/hybrisa/colony/office/reinforced,
+/area/navalis/indoors/command/maintenance_port)
+"og" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/floor/plating/catwalk/grate,
+/area/navalis/outdoors/exterior/com_ext)
+"pz" = (
+/obj/structure/monorail{
+	dir = 6;
+	name = "support beam";
+	desc = "Do you think the bugs are using these to move around this rig?";
+	explo_proof = 1;
+	unacidable = 1
+	},
+/obj/effect/decal/hybrisa/warningstripes_angled{
+	dir = 4;
+	pixel_y = 1
+	},
+/turf/open/floor/plating/catwalk/grate/lattice,
+/area/navalis/outdoors/exterior_xeno_only/lz1)
+"pE" = (
+/obj/structure/machinery/door/airlock/almayer/generic/autoname{
+	dir = 1
+	},
+/turf/open/floor/almayer,
+/area/navalis/indoors/clf_shuttle)
+"rA" = (
+/obj/structure/prop/hybrisa/airport/dropshipenginedamagenofire{
+	pixel_x = 5;
+	pixel_y = 2
+	},
+/turf/closed/shuttle/ert{
+	icon_state = "stan5"
+	},
+/area/navalis/indoors/clf_shuttle)
+"rP" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan9"
+	},
+/area/navalis/indoors/clf_shuttle)
+"se" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan23"
+	},
+/area/navalis/indoors/clf_shuttle)
+"sq" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan22"
+	},
+/area/navalis/indoors/clf_shuttle)
+"sT" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/communications{
+	icon_state = "commb";
+	stat = 1
+	},
+/turf/open/floor/almayer,
+/area/navalis/indoors/clf_shuttle)
+"ua" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan_leftengine"
+	},
+/area/navalis/indoors/clf_shuttle)
+"uR" = (
+/obj/structure/barricade/handrail/strata/navalis{
+	dir = 1
+	},
+/turf/open/floor/plating/catwalk/grate,
+/area/navalis/outdoors/exterior/med_ext)
+"vj" = (
+/turf/closed/shuttle/ert{
+	icon_state = "rightengine_1"
+	},
+/area/navalis/indoors/clf_shuttle)
+"vm" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan3"
+	},
+/area/navalis/indoors/clf_shuttle)
+"vL" = (
+/obj/structure/machinery/colony_floodlight/navalis_wall_light{
+	dir = 4
+	},
+/turf/open/floor/plating/catwalk/grate,
+/area/navalis/outdoors/exterior/com_ext)
+"wz" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan8"
+	},
+/area/navalis/indoors/clf_shuttle)
+"xr" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 8
+	},
+/obj/effect/landmark/survivor_spawner/clf/navalis,
+/turf/open/floor/almayer/orange/west,
+/area/navalis/indoors/clf_shuttle)
+"xA" = (
+/turf/open/floor/plating/catwalk/grate,
+/area/navalis/outdoors/exterior/com_ext)
+"yc" = (
+/obj/structure/bed/chair/dropship/pilot{
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	dir = 1
+	},
+/obj/effect/landmark/survivor_spawner/clf_lead/navalis,
+/turf/open/floor/almayer,
+/area/navalis/indoors/clf_shuttle)
+"zc" = (
+/turf/open/floor/plating/catwalk/grate/lattice,
+/area/navalis/outdoors/exterior_xeno_only/lz1)
+"zo" = (
+/obj/structure/machinery/power/apc/power/north,
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner/clf_engi/navalis,
+/turf/open/floor/almayer/orange/east,
+/area/navalis/indoors/clf_shuttle)
+"zU" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/faxmachine{
+	department = "CLF - Cell 42"
+	},
+/obj/item/paper/varadero/clf,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/almayer,
+/area/navalis/indoors/clf_shuttle)
+"AQ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_x = -1;
+	dir = 1
+	},
+/obj/effect/landmark/survivor_spawner/clf_heavy,
+/turf/open/floor/almayer,
+/area/navalis/indoors/clf_shuttle)
+"Bs" = (
+/turf/closed/shuttle/ert{
+	icon_state = "leftengine_1";
+	opacity = 0
+	},
+/area/navalis/indoors/clf_shuttle)
+"BD" = (
+/obj/effect/landmark/survivor_spawner/clf/navalis,
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/almayer,
+/area/navalis/indoors/clf_shuttle)
+"Co" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner/clf_medic/navalis,
+/turf/open/floor/almayer/orange/east,
+/area/navalis/indoors/clf_shuttle)
+"CK" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/turf/open/floor/plating/catwalk/grate/lattice,
+/area/navalis/outdoors/exterior/med_ext)
+"Dm" = (
+/obj/structure/blocker/forcefield/all{
+	invisibility = 101
+	},
+/turf/solid_open_space{
+	density = 0
+	},
+/area/navalis/oob/empty_space)
+"Dw" = (
+/turf/open/floor/corsat,
+/area/navalis/outdoors/exterior/com_ext)
+"DL" = (
+/obj/effect/landmark/survivor_spawner/clf/navalis,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/almayer,
+/area/navalis/indoors/clf_shuttle)
+"Ep" = (
+/obj/structure/barricade/handrail/strata/navalis{
+	dir = 4
+	},
+/turf/open/floor/plating/catwalk/grate,
+/area/navalis/outdoors/exterior/med_ext)
+"FF" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan_l_w"
+	},
+/area/navalis/indoors/clf_shuttle)
+"GA" = (
+/turf/closed/wall/hybrisa/colony/hospital/reinforced,
+/area/navalis/indoors/med_sci/maintenance_port)
+"Hg" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan_rightengine"
+	},
+/area/navalis/indoors/clf_shuttle)
+"JT" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan27"
+	},
+/area/navalis/indoors/clf_shuttle)
+"Nk" = (
+/turf/closed/wall/hybrisa/colony/reinforced/hull,
+/area/navalis/indoors/med_sci/maintenance_port)
+"NY" = (
+/obj/effect/landmark/survivor_spawner/clf/navalis,
+/turf/open/floor/almayer,
+/area/navalis/indoors/clf_shuttle)
+"OY" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	id = "clf_umbilical_1";
+	name = "\improper Umbillical Airlock"
+	},
+/turf/open/floor/plating/kutjevo,
+/area/navalis/indoors/clf_shuttle)
+"Pt" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan_r_w"
+	},
+/area/navalis/indoors/clf_shuttle)
+"PI" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan20"
+	},
+/area/navalis/indoors/clf_shuttle)
+"PM" = (
+/obj/structure/barricade/handrail/strata/navalis{
+	dir = 1
+	},
+/obj/structure/barricade/handrail/strata/navalis{
+	dir = 8
+	},
+/turf/open/floor/plating/catwalk/grate,
+/area/navalis/outdoors/exterior/com_ext)
+"Rm" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate4,
+/turf/open/floor/plating/catwalk/grate,
+/area/navalis/outdoors/exterior/com_ext)
+"RE" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan_inner_w_1"
+	},
+/area/navalis/indoors/clf_shuttle)
+"Sy" = (
+/turf/open/floor/plating/catwalk/grate/lattice,
+/area/navalis/outdoors/exterior/med_ext)
+"SS" = (
+/turf/closed/shuttle/ert{
+	icon_state = "rightengine_3"
+	},
+/area/navalis/indoors/clf_shuttle)
+"UO" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/turf/open/floor/plating/catwalk/grate/lattice,
+/area/navalis/outdoors/exterior/med_ext)
+"US" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate4{
+	dir = 8
+	},
+/turf/open/floor/plating/catwalk/grate,
+/area/navalis/outdoors/exterior/med_ext)
+"VM" = (
+/turf/closed/shuttle/ert,
+/area/navalis/indoors/clf_shuttle)
+"XM" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan25"
+	},
+/area/navalis/indoors/clf_shuttle)
+"YC" = (
+/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/north,
+/turf/open/floor/plating/catwalk/grate/lattice,
+/area/navalis/outdoors/exterior/med_ext)
+"YP" = (
+/turf/solid_open_space{
+	density = 0
+	},
+/area/navalis/oob/empty_space)
+"YS" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/obj/structure/platform/metal/hybrisa/metalplatform1,
+/turf/open/floor/plating/catwalk/grate/lattice,
+/area/navalis/outdoors/exterior/med_ext)
+"ZD" = (
+/obj/structure/machinery/colony_floodlight/navalis_wall_light,
+/turf/open/floor/plating/catwalk/grate,
+/area/navalis/outdoors/exterior/med_ext)
+
+(1,1,1) = {"
+YP
+Dm
+zc
+pz
+aK
+zc
+Dm
+Dm
+cG
+uR
+cY
+cY
+GA
+"}
+(2,1,1) = {"
+Dm
+zc
+PI
+VM
+Pt
+VM
+VM
+ua
+aa
+Bs
+cY
+ZD
+Nk
+"}
+(3,1,1) = {"
+zc
+PI
+sq
+fw
+RE
+zo
+Co
+wz
+VM
+hC
+cY
+Sy
+US
+"}
+(4,1,1) = {"
+pz
+JT
+sT
+yc
+RE
+cu
+NY
+DL
+eP
+OY
+cY
+cY
+cY
+"}
+(5,1,1) = {"
+hg
+JT
+gx
+AQ
+pE
+NY
+NY
+BD
+eP
+OY
+Sy
+cY
+Sy
+"}
+(6,1,1) = {"
+PM
+XM
+se
+zU
+RE
+db
+xr
+rP
+rA
+vm
+YC
+YS
+Ep
+"}
+(7,1,1) = {"
+og
+bb
+XM
+dm
+FF
+dm
+dm
+Hg
+SS
+vj
+Sy
+YC
+CK
+"}
+(8,1,1) = {"
+xA
+vL
+bb
+xA
+xA
+xA
+bb
+xA
+xA
+UO
+Sy
+Sy
+Sy
+"}
+(9,1,1) = {"
+lB
+lB
+lB
+Dw
+Rm
+xA
+xA
+xA
+UO
+Sy
+Sy
+Sy
+Sy
+"}

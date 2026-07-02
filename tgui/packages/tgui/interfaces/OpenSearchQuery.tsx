@@ -417,7 +417,6 @@ export const OpenSearchQuery = (props) => {
                   : 'No results') + (timeElapsed ? ` in ${timeElapsed}ms` : '')
               }
             >
-              {queryResults}
               {generateLogElements(queryResults)}
             </Section>
           </Stack.Item>

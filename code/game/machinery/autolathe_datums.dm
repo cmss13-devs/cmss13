@@ -256,11 +256,6 @@
 	path = /obj/item/frame/camera
 	category = AUTOLATHE_CATEGORY_ENGINEERING
 
-/datum/autolathe/recipe/matrix_frame
-	name = "matrix assembly"
-	path = /obj/item/frame/matrix_frame
-	category = AUTOLATHE_CATEGORY_ENGINEERING
-
 /datum/autolathe/recipe/electropack
 	name = "electropack"
 	path = /obj/item/device/radio/electropack

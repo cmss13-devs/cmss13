@@ -660,9 +660,9 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 
 
 /proc/message_mentors(message)
-	for(var/client/C in GLOB.clients)
-		if(CLIENT_IS_MENTOR(C))
-			to_chat(C, message)
+	for(var/client/mentor in GLOB.clients)
+		if(CLIENT_IS_MENTOR(mentor))
+			to_chat(mentor, message)
 	return TRUE
 
 /proc/mentorhelp_by_id(id)

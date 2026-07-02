@@ -5,7 +5,7 @@
 	icon = 'icons/obj/items/storage/mre.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/mres_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/mres_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/mres_righthand.dmi',
 	)
 	icon_state = "mealpack"
 	item_state = "mealpack"

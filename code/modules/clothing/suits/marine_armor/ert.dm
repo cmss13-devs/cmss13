@@ -7,7 +7,7 @@
 	icon_state = "marsoc"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi',
 	)
 	armor_melee = CLOTHING_ARMOR_HIGH
 	armor_bullet = CLOTHING_ARMOR_HIGH
@@ -26,7 +26,7 @@
 	icon_state = "marsoc_harness"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi',
 	)
 	armor_melee = CLOTHING_ARMOR_HIGH
 	armor_bullet = CLOTHING_ARMOR_HIGH
@@ -158,7 +158,7 @@
 	icon_state = "upp_armor"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UPP.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UPP.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UPP.dmi',
 	)
 	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_energy = CLOTHING_ARMOR_MEDIUM
@@ -335,7 +335,7 @@
 	uniform_restricted = FALSE
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UPP.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UPP.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UPP.dmi',
 	)
 
 /obj/item/clothing/suit/storage/CMB/pap/Initialize()
@@ -350,7 +350,7 @@
 	icon_state = "sof_vest"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UPP.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UPP.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UPP.dmi',
 	)
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW // Goon stats & covers arms
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
@@ -443,7 +443,7 @@
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/CLF.dmi'
 	icon_state = "rebel_armor"
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/CLF.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/CLF.dmi',
 	)
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_1.dmi')
 	slowdown = SLOWDOWN_ARMOR_VERY_LIGHT
@@ -541,7 +541,7 @@
 	item_state = "CMB_jacket"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/CMB.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/CMB.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/CMB.dmi',
 	)
 	blood_overlay_type = "coat"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
@@ -599,7 +599,7 @@
 	desc = "A dark set of armor, which is a modification of the security variant of Armat Systems M3 armor. Designed for riot control and protest suppression in mind. The side of it has a metallic insignia with 'CMB RIOT CONTROL' on it. The laws of the Earth stretch beyond the Sol."
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/CMB.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/CMB.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/CMB.dmi',
 	)
 	icon_state = "cmb_heavy_armor"
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
@@ -682,7 +682,7 @@
 	icon_state = "mercenary_heavy_armor"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/CLF.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/CLF.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/CLF.dmi',
 	)
 	flags_inventory = BLOCKSHARPOBJ|BLOCK_KNOCKDOWN
 	armor_melee = CLOTHING_ARMOR_VERYHIGH
@@ -780,7 +780,7 @@
 	item_state_slots = list(WEAR_JACKET = "pvmedium")
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi',
 	)
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
@@ -829,7 +829,7 @@
 	icon_state = "ua_riot"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi',
 	)
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
@@ -874,7 +874,7 @@
 	item_state = "rmc_light"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/TWE.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/TWE.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/TWE.dmi',
 	)
 	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	allowed = list(
@@ -997,7 +997,7 @@
 	item_state = "cbrn"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi',
 	)
 	slowdown = SLOWDOWN_ARMOR_HEAVY
 	armor_melee = CLOTHING_ARMOR_MEDIUM

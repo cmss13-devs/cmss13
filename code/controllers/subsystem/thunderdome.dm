@@ -6,7 +6,7 @@ SUBSYSTEM_DEF(thunderdome)
 	var/list/datum/thunderdome_clean/to_clean = list()
 
 	var/list/immune_areas = list(
-		/area/tdome/tdomeobserve
+		/area/tdome/tdomeobserve,
 	)
 
 /datum/controller/subsystem/thunderdome/fire(resumed)

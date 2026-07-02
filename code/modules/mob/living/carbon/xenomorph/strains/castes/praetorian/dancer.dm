@@ -269,10 +269,10 @@
 					SPAN_DANGER("We slice [target_atom] with our tail[buffed?" twice":""]!"))
 
 	var/list/attack_data = list(
-			"attacker" = dancer_user,
-			"target" = target_carbon,
-			"damage" = damage
-		)
+		"attacker" = dancer_user,
+		"target" = target_carbon,
+		"damage" = damage,
+	)
 	impale_strike(attack_data)
 
 	if(buffed)

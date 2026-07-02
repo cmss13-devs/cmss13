@@ -118,7 +118,7 @@
 	tools = list(
 		/obj/item/tool/surgery/hemostat = 1.5 * SURGERY_TOOL_MULT_IDEAL,
 		/obj/item/tool/wirecutters = 1.5 * SURGERY_TOOL_MULT_SUBOPTIMAL,
-		/obj/item/tool/kitchen/utensil/fork = 1.5 * SURGERY_TOOL_MULT_SUBSTITUTE
+		/obj/item/tool/kitchen/utensil/fork = 1.5 * SURGERY_TOOL_MULT_SUBSTITUTE,
 		)
 	time = 6 SECONDS
 	preop_sound = 'sound/surgery/hemostat1.ogg'

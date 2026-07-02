@@ -166,6 +166,6 @@
 	icon_state = "mercenary_miner_armor"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/CLF.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/CLF.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/CLF.dmi',
 	)
 	flags_atom = MOB_LOCK_ON_EQUIP|NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE

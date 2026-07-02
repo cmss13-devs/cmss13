@@ -250,28 +250,20 @@ if [ "$pcre2_support" -eq 1 ]; then
 		st=1
 	fi;
 	part "long list formatting"
-	if $grep -PU '^(\t)[\w_]+ = list\(\n\1\t{2,}' code/**/*.dm; then
-		echo -e "${RED}ERROR: Long list overindented, should be two tabs.${NC}"
-		st=1
-	fi;
-	if $grep -PU '^(\t)[\w_]+ = list\(\n\1\S' code/**/*.dm; then
-		echo -e "${RED}ERROR: Long list underindented, should be two tabs.${NC}"
-		st=1
-	fi;
-	if $grep -PU '^(\t)[\w_]+ = list\([^\s)]+( ?= ?[\w\d]+)?,\n' code/**/*.dm; then
+	if $grep -PU '^(\t+)[\w_\/]+ ?= ?list\([^\s)]+( ?= ?[\w\d]+)?,\n' $code_files; then
 		echo -e "${RED}ERROR: First item in a long list should be on the next line.${NC}"
 		st=1
 	fi;
-	if $grep -PU '^(\t)[\w_]+ = list\(\n(\1\t\S+( ?= ?[\w\d]+)?,\n)*\1\t[^\s,)]+( ?= ?[\w\d]+)?\n' code/**/*.dm; then
-		echo -e "${RED}ERROR: Last item in a long list should still have a comma.${NC}"
+	if $grep -PU '^(\t+)[\w_\/]+ ?= ?list\((\n\1\t(\(.*\)|[^\n\t()])+)*(\n(?!\1\t)(\(.*\)|[^\n\t()])+|\n(?!\1\t\S)\t*(\(.*\)|[^\n\t()])+)+(\n\t*(\(.*\)|[^\n\t()])+)*\s*\)\s*$' $code_files; then
+		echo -e "${RED}ERROR: All items in a long list should be indented one more than the opening list line.${NC}"
 		st=1
 	fi;
-	if $grep -PU '^(\t)[\w_]+ = list\(\n(\1\t[^\s)]+( ?= ?[\w\d]+)?,\n)*\1\t[^\s)]+( ?= ?[\w\d]+)?\)' code/**/*.dm; then
-		echo -e "${RED}ERROR: The ) in a long list should be on a new line.${NC}"
+	if $grep -PU '^(\t+)[\w_\/]+ ?= ?list\((\n\1\t.+)+[^,](\n\t*)\)' $code_files; then
+		echo -e "${RED}ERROR: Last item in a long list should end with a comma (and nothing after it that line).${NC}"
 		st=1
 	fi;
-	if $grep -PU '^(\t)[\w_]+ = list\(\n(\1\t[^\s)]+( ?= ?[\w\d]+)?,\n)+\1\t\)' code/**/*.dm; then
-		echo -e "${RED}ERROR: The ) in a long list should match identation of the opening list line.${NC}"
+	if $grep -PU '^(\t+)[\w_\/]+ ?= ?list\((\n\1\t.+)+\)\s*$' $code_files; then
+		echo -e "${RED}ERROR: The ) in a long list should be on a new line (or is missing a comma, or the ) appeared at the end of a comment).${NC}"
 		st=1
 	fi;
 else

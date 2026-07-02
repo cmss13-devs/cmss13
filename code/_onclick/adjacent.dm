@@ -171,7 +171,7 @@ Quick adjacency (to turf):
 
 	var/list/list/blockers = list(
 		"fd1" = list(),
-		"fd2" = list()
+		"fd2" = list(),
 	)
 	var/list/dense_blockers
 

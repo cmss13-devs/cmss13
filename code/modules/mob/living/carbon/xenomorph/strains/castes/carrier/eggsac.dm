@@ -12,8 +12,8 @@
 	)
 	actions_to_add = list(
 		/datum/action/xeno_action/active_toggle/generate_egg,
-		/datum/action/xeno_action/activable/retrieve_egg, // readding it so it gets at the end of the ability list
-	)
+		/datum/action/xeno_action/activable/retrieve_egg,
+	) // readding it so it gets at the end of the ability list
 
 	behavior_delegate_type = /datum/behavior_delegate/carrier_eggsac
 

@@ -9,7 +9,7 @@
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/backpacks_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/backpacks_righthand.dmi',
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks.dmi',
 	)
 	icon_state = "backpack"
 	w_class = SIZE_LARGE
@@ -485,9 +485,17 @@
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_map/jungle.dmi'
 	flags_atom = FPRINT // has gamemode skin
 	xeno_icon_state = "marinepack"
-	xeno_types = list(/mob/living/carbon/xenomorph/runner, /mob/living/carbon/xenomorph/praetorian, /mob/living/carbon/xenomorph/drone, /mob/living/carbon/xenomorph/warrior, /mob/living/carbon/xenomorph/defender, /mob/living/carbon/xenomorph/sentinel, /mob/living/carbon/xenomorph/spitter)
+	xeno_types = list(
+		/mob/living/carbon/xenomorph/runner,
+		/mob/living/carbon/xenomorph/praetorian,
+		/mob/living/carbon/xenomorph/drone,
+		/mob/living/carbon/xenomorph/warrior,
+		/mob/living/carbon/xenomorph/defender,
+		/mob/living/carbon/xenomorph/sentinel,
+		/mob/living/carbon/xenomorph/spitter,
+	)
 	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_map/jungle.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_map/jungle.dmi',
 	)
 
 
@@ -520,7 +528,7 @@
 	icon_state = "ammo_pack_0"
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
 	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi',
 	)
 	can_hold = list(/obj/item/ammo_box, /obj/item/stack/folding_barricade, /obj/item/stack/sandbags, /obj/item/stack/sandbags_empty)
 	max_w_class = SIZE_MASSIVE
@@ -552,7 +560,15 @@
 	icon_state = "marinepack_medic"
 	item_state = "marinepack_medic"
 	xeno_icon_state = "medicpack"
-	xeno_types = list(/mob/living/carbon/xenomorph/runner, /mob/living/carbon/xenomorph/praetorian, /mob/living/carbon/xenomorph/drone, /mob/living/carbon/xenomorph/warrior, /mob/living/carbon/xenomorph/defender, /mob/living/carbon/xenomorph/sentinel, /mob/living/carbon/xenomorph/spitter)
+	xeno_types = list(
+		/mob/living/carbon/xenomorph/runner,
+		/mob/living/carbon/xenomorph/praetorian,
+		/mob/living/carbon/xenomorph/drone,
+		/mob/living/carbon/xenomorph/warrior,
+		/mob/living/carbon/xenomorph/defender,
+		/mob/living/carbon/xenomorph/sentinel,
+		/mob/living/carbon/xenomorph/spitter,
+	)
 
 /obj/item/storage/backpack/marine/saddle
 	name = "\improper USCM XX-121 Saddle"
@@ -623,7 +639,15 @@
 	icon_state = "marinepack_techi"
 	item_state = "marinepack_techi"
 	xeno_icon_state = "marinepack"
-	xeno_types = list(/mob/living/carbon/xenomorph/runner, /mob/living/carbon/xenomorph/praetorian, /mob/living/carbon/xenomorph/drone, /mob/living/carbon/xenomorph/warrior, /mob/living/carbon/xenomorph/defender, /mob/living/carbon/xenomorph/sentinel, /mob/living/carbon/xenomorph/spitter)
+	xeno_types = list(
+		/mob/living/carbon/xenomorph/runner,
+		/mob/living/carbon/xenomorph/praetorian,
+		/mob/living/carbon/xenomorph/drone,
+		/mob/living/carbon/xenomorph/warrior,
+		/mob/living/carbon/xenomorph/defender,
+		/mob/living/carbon/xenomorph/sentinel,
+		/mob/living/carbon/xenomorph/spitter,
+	)
 
 /obj/item/storage/backpack/marine/satchel/intel
 	name = "\improper USCM lightweight expedition pack"
@@ -649,7 +673,7 @@
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi',
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi',
 	)
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN
 
@@ -703,7 +727,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/backpacks_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/backpacks_righthand.dmi',
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi',
 	)
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	actions_types = list(/datum/action/item_action/rto_pack/use_phone)
@@ -860,7 +884,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	icon_state = "tacrucksack"
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
 	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi',
 	)
 	worn_accessible = TRUE
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
@@ -872,7 +896,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	icon_state = "rocketpack"
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
 	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi',
 	)
 	worn_accessible = TRUE
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
@@ -884,7 +908,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	icon_state = "grenadierpack"
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
 	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi',
 	)
 	overlays = list("+grenadierpack_unlocked")
 	worn_accessible = TRUE
@@ -922,7 +946,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	item_state = "g8pouch"
 	icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
 	item_icons = list(
-		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/jungle.dmi'
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/jungle.dmi',
 	)
 	flags_atom = FPRINT // has gamemode skin
 	can_hold_skill = list()
@@ -972,7 +996,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	icon_state = "scout_cloak"
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
 	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi',
 	)
 	unacidable = TRUE
 	explo_proof = TRUE
@@ -1155,7 +1179,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/WY.dmi'
 	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/WY.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/WY.dmi',
 	)
 	uniform_restricted = list(/obj/item/clothing/suit/storage/marine/veteran/pmc/wy_droid/dark)
 	allow_gun_usage = TRUE
@@ -1257,7 +1281,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	item_state = "satchel_marine_welder"
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
 	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi',
 	)
 	max_storage_space = 12
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
@@ -1342,7 +1366,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/backpacks_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/backpacks_righthand.dmi',
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi',
 	)
 	max_fuel = 350
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
@@ -1385,7 +1409,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	icon_state = "ERT_satchel_welder"
 	icon = 'icons/obj/items/clothing/backpack/backpacks.dmi'
 	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks.dmi',
 	)
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	worn_accessible = TRUE
@@ -1441,7 +1465,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/WY.dmi'
 	icon_state = "pmc_satchel"
 	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/WY.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/WY.dmi',
 	)
 	worn_accessible = TRUE
 	max_storage_space = 15
@@ -1473,7 +1497,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/backpacks_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/backpacks_righthand.dmi',
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/WY.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/WY.dmi',
 	)
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
@@ -1493,7 +1517,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	icon_state = "pmc_welderpack"
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/WY.dmi'
 	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/WY.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/WY.dmi',
 	)
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	worn_accessible = TRUE
@@ -1514,7 +1538,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	icon_state = "combat_android_powerpack"
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/WY.dmi'
 	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/WY.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/WY.dmi',
 	)
 	worn_accessible = TRUE
 
@@ -1528,7 +1552,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	icon_state = "marinepack"
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_map/jungle.dmi'
 	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_map/jungle.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_map/jungle.dmi',
 	)
 	storage_slots = null
 	max_storage_space = 30
@@ -1587,7 +1611,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	icon_state = "satchel_upp"
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UPP.dmi'
 	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UPP.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UPP.dmi',
 	)
 	worn_accessible = TRUE
 	max_storage_space = 15
@@ -1603,7 +1627,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	icon_state = "satchel_upp_welder"
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UPP.dmi'
 	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UPP.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UPP.dmi',
 	)
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	worn_accessible = TRUE
@@ -1638,7 +1662,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	icon_state = ""
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/TWE.dmi'
 	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/TWE.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/TWE.dmi',
 	)
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
@@ -1697,7 +1721,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	item_state = "rmc_general"
 	icon = 'icons/obj/items/clothing/belts/belts_by_faction/TWE.dmi'
 	item_icons = list(
-		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_faction/TWE.dmi'
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_faction/TWE.dmi',
 	)
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	max_storage_space = 15

@@ -637,7 +637,7 @@
 			"max_ammo" = equipment.ammo_equipped?.max_ammo_count,
 			"firemission_delay" = equipment.ammo_equipped?.fire_mission_delay,
 			"burst" = equipment.ammo_equipped?.ammo_used_per_firing,
-			"data" = equipment.ui_data(user)
+			"data" = equipment.ui_data(user),
 		)
 
 		. += list(data)

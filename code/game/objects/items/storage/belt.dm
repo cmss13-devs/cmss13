@@ -6,7 +6,7 @@
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi',
-		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi'
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
 	)
 	item_state = "utility"
 	flags_equip_slot = SLOT_WAIST
@@ -60,7 +60,7 @@
 	item_state = "champion"
 	icon = 'icons/obj/items/clothing/belts/misc.dmi'
 	item_icons = list(
-		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/misc.dmi'
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/misc.dmi',
 	)
 	storage_slots = 1
 	can_hold = list(/obj/item/clothing/mask/luchador)
@@ -242,7 +242,7 @@
 	item_state = "medicbag"
 	icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
 	item_icons = list(
-		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/jungle.dmi'
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/jungle.dmi',
 	)
 	storage_slots = 21 //can hold 3 "rows" of very limited medical equipment, but it *should* give a decent boost to squad medics.
 	max_storage_space = 42
@@ -326,7 +326,7 @@
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi',
 	)
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
@@ -339,11 +339,11 @@
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_faction/WY.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi',
 	)
 	item_state_slots = list(
 		WEAR_L_HAND = "medicbag",
-		WEAR_R_HAND = "medicbag"
+		WEAR_R_HAND = "medicbag",
 	)
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
@@ -422,7 +422,7 @@
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_faction/UPP.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi',
 	)
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
@@ -554,11 +554,11 @@
 	item_state = "security"//Could likely use a better one.
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi',
 	)
 	item_state_slots = list(
 		WEAR_L_HAND = "marinebelt",
-		WEAR_R_HAND = "marinebelt"
+		WEAR_R_HAND = "marinebelt",
 	)
 	storage_slots = 7
 	max_w_class = SIZE_MEDIUM
@@ -714,7 +714,7 @@
 	item_state = "marinebelt"
 	icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
 	item_icons = list(
-		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/jungle.dmi'
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/jungle.dmi',
 	)
 	w_class = SIZE_LARGE
 	storage_slots = 5
@@ -889,7 +889,8 @@
 	)
 	item_state_slots = list(
 		WEAR_L_HAND = "utility",
-		WEAR_R_HAND = "utility")
+		WEAR_R_HAND = "utility",
+		)
 	storage_slots = 8
 	max_storage_space = 8
 	can_hold = list(
@@ -908,7 +909,7 @@
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_faction/UPP.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi',
 	)
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
@@ -937,13 +938,13 @@
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_faction/WY.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi',
 	)
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	item_state_slots = list(
 		WEAR_WAIST = "wy_ammobelt",
 		WEAR_L_HAND = "marinebelt",
-		WEAR_R_HAND = "marinebelt"
+		WEAR_R_HAND = "marinebelt",
 	)
 
 /obj/item/storage/belt/marine/wy/m39_pmc/fill_preset_inventory()
@@ -971,11 +972,11 @@
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi',
 	)
 	item_state_slots = list(
 		WEAR_L_HAND = "marinebelt",
-		WEAR_R_HAND = "marinebelt"
+		WEAR_R_HAND = "marinebelt",
 	)
 	storage_slots = 7
 	max_w_class = SIZE_LARGE
@@ -1001,7 +1002,7 @@
 	item_state = "marinebelt"
 	icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
 	item_icons = list(
-		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/jungle.dmi'
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/jungle.dmi',
 	)
 	w_class = SIZE_LARGE
 	storage_slots = 14 // Make it FLUSH with the UI. *scream
@@ -1051,7 +1052,7 @@
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi',
 	)
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
@@ -1092,7 +1093,7 @@
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/misc.dmi',
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/misc.dmi',
-		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/misc.dmi'
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/misc.dmi',
 	)
 	flags_equip_slot = SLOT_WAIST|SLOT_BACK
 	storage_slots = null
@@ -1102,7 +1103,7 @@
 	item_state_slots = list(
 		WEAR_J_STORE = "van_bandolier_10",
 		WEAR_BACK = "van_bandolier_10",
-		WEAR_WAIST = "van_bandolier_10"
+		WEAR_WAIST = "van_bandolier_10",
 	)
 	skip_fullness_overlays = TRUE
 
@@ -1181,7 +1182,7 @@
 	item_state = "marinebelt" // aslo temp, maybe somebody update these icons with better ones?
 	icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
 	item_icons = list(
-		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/jungle.dmi'
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/jungle.dmi',
 	)
 	w_class = SIZE_LARGE
 	storage_slots = 12
@@ -1246,11 +1247,11 @@
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi',
 	)
 	item_state_slots = list(
 		WEAR_L_HAND = "marinebelt",
-		WEAR_R_HAND = "marinebelt"
+		WEAR_R_HAND = "marinebelt",
 	)
 	w_class = SIZE_LARGE
 	storage_slots = 12
@@ -1318,7 +1319,8 @@
 	item_state = "grenadebelt"
 	item_state_slots = list(
 		WEAR_L_HAND = "s_marinebelt",
-		WEAR_R_HAND = "s_marinebelt")
+		WEAR_R_HAND = "s_marinebelt",
+		)
 	w_class = SIZE_LARGE
 	storage_slots = 12
 	max_w_class = SIZE_MEDIUM
@@ -1350,7 +1352,7 @@
 	item_state = "marinebelt" //see post_skin_selection() - this is used for inhand states, the belt sprites use the same filename as the icon state.
 	icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
 	item_icons = list(
-		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/jungle.dmi'
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/jungle.dmi',
 	)
 	use_sound = null
 	w_class = SIZE_LARGE
@@ -1365,7 +1367,9 @@
 			"underlay_sprite" = null,
 			"underlay_transform" = null,
 			"icon_x" = 0,
-			"icon_y" = 0))
+			"icon_y" = 0,
+			),
+		)
 
 	var/list/holstered_guns = list()
 
@@ -1382,8 +1386,8 @@
 		/obj/item/weapon/gun/pistol/kt42, // HONKed currently
 		/obj/item/weapon/gun/pistol/auto9, // HONKed currently
 		/obj/item/weapon/gun/pistol/chimp, // HONKed currently
-		/obj/item/weapon/gun/pistol/skorpion, // HONKed currently
-	)
+		/obj/item/weapon/gun/pistol/skorpion,
+	) // HONKed currently
 
 	///Where update_gun_icon should look for their holstered gun icon
 	var/gun_slot_icon = 'icons/obj/items/clothing/belts/holstered_guns.dmi'
@@ -1602,8 +1606,8 @@
 		/obj/item/weapon/gun/pistol/kt42, // HONKed currently
 		/obj/item/weapon/gun/pistol/auto9, // HONKed currently
 		/obj/item/weapon/gun/pistol/chimp, // HONKed currently
-		/obj/item/weapon/gun/pistol/skorpion, // HONKed currently
-	)
+		/obj/item/weapon/gun/pistol/skorpion,
+	) // HONKed currently
 	flags_atom = FPRINT // has gamemode skin
 
 /obj/item/storage/belt/gun/m4a3/full/fill_preset_inventory()
@@ -1644,13 +1648,15 @@
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_faction/WY.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi',
 	)
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	holster_slots = list(
 		"1" = list(
 			"icon_x" = -3,
-			"icon_y" = 0))
+			"icon_y" = 0,
+			),
+		)
 
 /obj/item/storage/belt/gun/m4a3/wy/mod88/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/mod88())
@@ -1718,7 +1724,7 @@
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi',
 	)
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
@@ -1745,7 +1751,7 @@
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi',
 	)
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
@@ -1778,7 +1784,7 @@
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi',
 	)
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
@@ -1790,12 +1796,12 @@
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi',
 	)
 	item_state_slots = list(
 		WEAR_WAIST = "combatutility",
 		WEAR_L_HAND = "utility",
-		WEAR_R_HAND = "utility"
+		WEAR_R_HAND = "utility",
 	)
 	storage_slots = 3
 	can_hold = list(
@@ -1818,7 +1824,7 @@
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi',
 	)
 	storage_slots = 3
 	max_w_class = 5
@@ -1830,7 +1836,9 @@
 	holster_slots = list(
 		"1" = list(
 			"icon_x" = -11,
-			"icon_y" = -5))
+			"icon_y" = -5,
+			),
+		)
 
 /obj/item/storage/belt/gun/m39/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/smg/m39(src))
@@ -1872,7 +1880,9 @@
 	holster_slots = list(
 		"1" = list(
 			"icon_x" = -11,
-			"icon_y" = -4))
+			"icon_y" = -4,
+			),
+		)
 
 /obj/item/storage/belt/gun/m10/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/m10(src))
@@ -1907,7 +1917,9 @@
 	holster_slots = list(
 		"1" = list(
 			"icon_x" = 10,
-			"icon_y" = -1))
+			"icon_y" = -1,
+			),
+		)
 
 	//Keep a track of how many magazines are inside the belt.
 	var/magazines = 0
@@ -1946,7 +1958,7 @@
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi',
 	)
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
@@ -1972,7 +1984,9 @@
 	holster_slots = list(
 		"1" = list(
 			"icon_x" = -1,
-			"icon_y" = -3))
+			"icon_y" = -3,
+			),
+		)
 
 /obj/item/storage/belt/gun/m44/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/revolver/m44())
@@ -2006,7 +2020,7 @@
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi',
 	)
 	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	storage_slots = 6
@@ -2017,7 +2031,8 @@
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	holster_slots = list(
 		"1" = list("icon_x" = -9, "icon_y" = -3),
-		"2" = list("icon_x" = 9, "icon_y" = -3))
+		"2" = list("icon_x" = 9, "icon_y" = -3),
+		)
 	skip_fullness_overlays = TRUE
 
 /obj/item/storage/belt/gun/m44/gunslinger/Initialize()
@@ -2049,7 +2064,9 @@
 	holster_slots = list(
 		"1" = list(
 			"icon_x" = 10,
-			"icon_y" = 3))
+			"icon_y" = 3,
+			),
+		)
 
 /obj/item/storage/belt/gun/m44/lever_action/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/ammo_magazine/lever_action))
@@ -2099,7 +2116,7 @@
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi',
 	)
 	storage_slots = 7
 	max_w_class = SIZE_MEDIUM
@@ -2111,7 +2128,9 @@
 	holster_slots = list(
 		"1" = list(
 			"icon_x" = -1,
-			"icon_y" = -3))
+			"icon_y" = -3,
+			),
+		)
 
 /obj/item/storage/belt/gun/mateba/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/revolver/mateba/impact())
@@ -2171,7 +2190,7 @@
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi',
 	)
 	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 
@@ -2232,7 +2251,7 @@
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi',
 	)
 	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 
@@ -2265,7 +2284,7 @@
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi',
 	)
 	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 
@@ -2304,7 +2323,7 @@
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi',
 	)
 	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 
@@ -2326,7 +2345,7 @@
 		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/belts/belts_by_faction/UPP.dmi',
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_faction/UPP.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi',
 	)
 	storage_slots = 7
 	can_hold = list(
@@ -2405,8 +2424,8 @@
 		/obj/item/weapon/gun/pistol/kt42, // HONKed currently
 		/obj/item/weapon/gun/pistol/auto9, // HONKed currently
 		/obj/item/weapon/gun/pistol/chimp, // HONKed currently
-		/obj/item/weapon/gun/pistol/skorpion, // HONKed currently
-	)
+		/obj/item/weapon/gun/pistol/skorpion,
+	) // HONKed currently
 
 	var/list/picklist = subtypesof(/obj/item/ammo_magazine) - (internal_mags + bad_mags + sentry_mags + training_mags)
 	var/random_mag = pick(picklist)
@@ -2424,7 +2443,9 @@
 	holster_slots = list(
 		"1" = list(
 			"icon_x" = -5,
-			"icon_y" = -2))
+			"icon_y" = -2,
+			),
+		)
 	can_hold = list(
 		/obj/item/weapon/gun/pistol/smart,
 		/obj/item/ammo_magazine/pistol/smart,
@@ -2450,7 +2471,7 @@
 	icon = 'icons/obj/items/clothing/belts/belts.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi',
 	)
 	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	can_hold = list(
@@ -2460,7 +2481,9 @@
 	holster_slots = list(
 		"1" = list(
 			"icon_x" = -1,
-			"icon_y" = -3))
+			"icon_y" = -3,
+			),
+		)
 
 /obj/item/storage/belt/gun/flaregun/dump_into(obj/item/storage/origin_storage, mob/user)
 
@@ -2506,7 +2529,7 @@
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/jungle.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi',
 	)
 	storage_slots = 7
 	can_hold = list(
@@ -2517,7 +2540,9 @@
 	holster_slots = list(
 		"1" = list(
 			"icon_x" = -1,
-			"icon_y" = -3))
+			"icon_y" = -3,
+			),
+		)
 
 /obj/item/storage/belt/gun/webley/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/revolver/m44/custom/webley())
@@ -2533,7 +2558,7 @@
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_faction/TWE.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi',
 	)
 	storage_slots = 8
 	can_hold = list(
@@ -2546,7 +2571,9 @@
 	holster_slots = list(
 		"1" = list(
 			"icon_x" = -1,
-			"icon_y" = -3))
+			"icon_y" = -3,
+			),
+		)
 
 /obj/item/storage/belt/gun/iasf_para_belt/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/revolver/m44/custom/webley/IASF_webley())
@@ -2576,7 +2603,9 @@
 	holster_slots = list(
 		"1" = list(
 			"icon_x" = 5,
-			"icon_y" = -2))
+			"icon_y" = -2,
+			),
+		)
 	can_hold = list(
 		/obj/item/device/flashlight/flare,
 		/obj/item/weapon/gun/flare,
@@ -2599,7 +2628,7 @@
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi',
 	)
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
@@ -2625,7 +2654,7 @@
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_faction/WY.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi',
 	)
 	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	can_hold = list(
@@ -2654,7 +2683,7 @@
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_faction/WY.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi',
 	)
 	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	can_hold = list(
@@ -2682,7 +2711,7 @@
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/jungle.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi',
 	)
 	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	can_hold = list(
@@ -2753,12 +2782,12 @@
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi',
 	)
 	item_state_slots = list(
 		WEAR_WAIST = "combatutility",
 		WEAR_L_HAND = "utility",
-		WEAR_R_HAND = "utility"
+		WEAR_R_HAND = "utility",
 	)
 	can_hold = list(
 		/obj/item/weapon/gun/pistol,
@@ -2798,7 +2827,9 @@
 	holster_slots = list(
 		"1" = list(
 			"icon_x" = -9,
-			"icon_y" = -6))
+			"icon_y" = -6,
+			),
+		)
 
 
 /obj/item/storage/belt/gun/utility/full/fill_preset_inventory()
@@ -2818,7 +2849,7 @@
 	item_state = "tankbelt"
 	item_state_slots = list(
 		WEAR_L_HAND = "utility",
-		WEAR_R_HAND = "utility"
+		WEAR_R_HAND = "utility",
 	)
 	storage_slots = 2 //can hold 2 only two large items such as Tank Ammo.
 	max_w_class = SIZE_LARGE
@@ -2846,7 +2877,7 @@
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/misc.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi',
 	)
 	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	flags_equip_slot = SLOT_WAIST
@@ -2883,11 +2914,11 @@
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_faction/TWE.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi',
 	)
 	item_state_slots = list(
 		WEAR_L_HAND = "upp_belt",
-		WEAR_R_HAND = "upp_belt"
+		WEAR_R_HAND = "upp_belt",
 	)
 	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 
@@ -2915,11 +2946,11 @@
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_faction/TWE.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi',
 	)
 	item_state_slots = list(
 		WEAR_L_HAND = "upp_belt",
-		WEAR_R_HAND = "upp_belt"
+		WEAR_R_HAND = "upp_belt",
 	)
 	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 
@@ -2967,7 +2998,7 @@
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_faction/TWE.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi',
 	)
 	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	storage_slots = 7
@@ -2978,7 +3009,9 @@
 	holster_slots = list(
 		"1" = list(
 			"icon_x" = -1,
-			"icon_y" = -3))
+			"icon_y" = -3,
+			),
+		)
 
 /obj/item/storage/belt/gun/l905/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/vp78())
@@ -3009,7 +3042,7 @@
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_faction/TWE.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi',
 	)
 	flags_atom = FPRINT|NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	storage_slots = 7

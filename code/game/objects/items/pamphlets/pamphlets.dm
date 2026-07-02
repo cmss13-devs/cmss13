@@ -10,7 +10,7 @@
 	item_state = "paper"
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_righthand.dmi',
 	)
 	pickup_sound = 'sound/handling/paper_pickup.ogg'
 	drop_sound = 'sound/handling/paper_drop.ogg'

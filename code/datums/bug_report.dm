@@ -137,7 +137,7 @@
 	var/list/payload = list(
 		"title" = bug_report_data["title"],
 		"body" = payload_body,
-		"labels" = list("Bug")
+		"labels" = list("Bug"),
 	)
 
 	request.prepare(RUSTG_HTTP_METHOD_POST, url, json_encode(payload), headers)

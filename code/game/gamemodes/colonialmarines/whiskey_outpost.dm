@@ -340,18 +340,20 @@
 			if(0 to 3)//Marine Gear 3% Chance.
 				crate = new /obj/structure/closet/crate/secure/gear(T)
 				choosemax = rand(5,10)
-				randomitems = list(/obj/item/clothing/head/helmet/marine,
-								/obj/item/clothing/head/helmet/marine,
-								/obj/item/clothing/head/helmet/marine,
-								/obj/item/clothing/suit/storage/marine/medium,
-								/obj/item/clothing/suit/storage/marine/medium,
-								/obj/item/clothing/suit/storage/marine/medium,
-								/obj/item/clothing/head/helmet/marine/tech,
-								/obj/item/clothing/head/helmet/marine/medic,
-								/obj/item/clothing/under/marine/medic,
-								/obj/item/clothing/under/marine/engineer,
-								/obj/effect/landmark/wo_supplies/storage/webbing,
-								/obj/item/device/binoculars)
+				randomitems = list(
+					/obj/item/clothing/head/helmet/marine,
+					/obj/item/clothing/head/helmet/marine,
+					/obj/item/clothing/head/helmet/marine,
+					/obj/item/clothing/suit/storage/marine/medium,
+					/obj/item/clothing/suit/storage/marine/medium,
+					/obj/item/clothing/suit/storage/marine/medium,
+					/obj/item/clothing/head/helmet/marine/tech,
+					/obj/item/clothing/head/helmet/marine/medic,
+					/obj/item/clothing/under/marine/medic,
+					/obj/item/clothing/under/marine/engineer,
+					/obj/effect/landmark/wo_supplies/storage/webbing,
+					/obj/item/device/binoculars,
+					)
 
 			if(4 to 6)//Lights and shiet 2%
 				new /obj/structure/largecrate/supply/floodlights(T)
@@ -360,138 +362,161 @@
 
 			if(7 to 10) //3% Chance to drop this !FUN! junk.
 				crate = new /obj/structure/closet/crate/secure/gear(T)
-				spawnitems = list(/obj/item/storage/belt/utility/full,
-									/obj/item/storage/belt/utility/full,
-									/obj/item/storage/belt/utility/full,
-									/obj/item/storage/belt/utility/full)
+				spawnitems = list(
+					/obj/item/storage/belt/utility/full,
+					/obj/item/storage/belt/utility/full,
+					/obj/item/storage/belt/utility/full,
+					/obj/item/storage/belt/utility/full,
+				)
 
 			if(11 to 22)//Materials 12% Chance.
 				crate = new /obj/structure/closet/crate/secure/gear(T)
 				choosemax = rand(3,8)
-				randomitems = list(/obj/item/stack/sheet/metal,
-								/obj/item/stack/sheet/metal,
-								/obj/item/stack/sheet/metal,
-								/obj/item/stack/sheet/plasteel,
-								/obj/item/stack/sandbags_empty/half,
-								/obj/item/stack/sandbags_empty/half,
-								/obj/item/stack/sandbags_empty/half)
+				randomitems = list(
+					/obj/item/stack/sheet/metal,
+					/obj/item/stack/sheet/metal,
+					/obj/item/stack/sheet/metal,
+					/obj/item/stack/sheet/plasteel,
+					/obj/item/stack/sandbags_empty/half,
+					/obj/item/stack/sandbags_empty/half,
+					/obj/item/stack/sandbags_empty/half,
+				)
 
 			if(23 to 25)//Blood Crate 2% chance
 				crate = new /obj/structure/closet/crate/medical(T)
-				spawnitems = list(/obj/item/reagent_container/blood/OMinus,
-								/obj/item/reagent_container/blood/OMinus,
-								/obj/item/reagent_container/blood/OMinus,
-								/obj/item/reagent_container/blood/OMinus,
-								/obj/item/reagent_container/blood/OMinus)
+				spawnitems = list(
+					/obj/item/reagent_container/blood/OMinus,
+					/obj/item/reagent_container/blood/OMinus,
+					/obj/item/reagent_container/blood/OMinus,
+					/obj/item/reagent_container/blood/OMinus,
+					/obj/item/reagent_container/blood/OMinus,
+				)
 
 			if(26 to 30)//Advanced meds Crate 5%
 				crate = new /obj/structure/closet/crate/medical(T)
-				spawnitems = list(/obj/item/storage/firstaid/fire,
-								/obj/item/storage/firstaid/regular,
-								/obj/item/storage/firstaid/toxin,
-								/obj/item/storage/firstaid/o2,
-								/obj/item/storage/firstaid/adv,
-								/obj/item/bodybag/cryobag,
-								/obj/item/bodybag/cryobag,
-								/obj/item/storage/belt/medical/lifesaver/full,
-								/obj/item/storage/belt/medical/lifesaver/full,
-								/obj/item/clothing/glasses/hud/health,
-								/obj/item/clothing/glasses/hud/health,
-								/obj/item/device/defibrillator)
+				spawnitems = list(
+					/obj/item/storage/firstaid/fire,
+					/obj/item/storage/firstaid/regular,
+					/obj/item/storage/firstaid/toxin,
+					/obj/item/storage/firstaid/o2,
+					/obj/item/storage/firstaid/adv,
+					/obj/item/bodybag/cryobag,
+					/obj/item/bodybag/cryobag,
+					/obj/item/storage/belt/medical/lifesaver/full,
+					/obj/item/storage/belt/medical/lifesaver/full,
+					/obj/item/clothing/glasses/hud/health,
+					/obj/item/clothing/glasses/hud/health,
+					/obj/item/device/defibrillator,
+				)
 
 			if(31 to 34)//Random Medical Items 4%. Made the list have less small junk
 				crate = new /obj/structure/closet/crate/medical(T)
-				spawnitems = list(/obj/item/storage/belt/medical/lifesaver/full,
-								/obj/item/storage/belt/medical/lifesaver/full,
-								/obj/item/storage/belt/medical/lifesaver/full,
-								/obj/item/storage/belt/medical/lifesaver/full,
-								/obj/item/storage/belt/medical/lifesaver/full)
+				spawnitems = list(
+					/obj/item/storage/belt/medical/lifesaver/full,
+					/obj/item/storage/belt/medical/lifesaver/full,
+					/obj/item/storage/belt/medical/lifesaver/full,
+					/obj/item/storage/belt/medical/lifesaver/full,
+					/obj/item/storage/belt/medical/lifesaver/full,
+				)
 
 			if(35 to 40)//Random explosives Crate 5% because the lord commeth and said let there be explosives.
 				crate = new /obj/structure/closet/crate/ammo(T)
 				choosemax = rand(1,5)
-				randomitems = list(/obj/item/storage/box/explosive_mines,
-								/obj/item/storage/box/explosive_mines,
-								/obj/item/explosive/grenade/high_explosive/m15,
-								/obj/item/explosive/grenade/high_explosive/m15,
-								/obj/item/explosive/grenade/high_explosive,
-								/obj/item/storage/box/nade_box
-								)
+				randomitems = list(
+					/obj/item/storage/box/explosive_mines,
+					/obj/item/storage/box/explosive_mines,
+					/obj/item/explosive/grenade/high_explosive/m15,
+					/obj/item/explosive/grenade/high_explosive/m15,
+					/obj/item/explosive/grenade/high_explosive,
+					/obj/item/storage/box/nade_box,
+				)
 			if(41 to 44)
 				crate = new /obj/structure/closet/crate/ammo(T)
 				spawnitems = list(
-									/obj/item/attachable/heavy_barrel,
-									/obj/item/attachable/heavy_barrel,
-									/obj/item/attachable/heavy_barrel,
-									/obj/item/attachable/heavy_barrel)
+					/obj/item/attachable/heavy_barrel,
+					/obj/item/attachable/heavy_barrel,
+					/obj/item/attachable/heavy_barrel,
+					/obj/item/attachable/heavy_barrel,
+				)
 
 			if(45 to 50)//Weapon + supply beacon drop. 5%
 				crate = new /obj/structure/closet/crate/ammo(T)
-				spawnitems = list(/obj/item/device/whiskey_supply_beacon,
-								/obj/item/device/whiskey_supply_beacon,
-								/obj/item/device/whiskey_supply_beacon,
-								/obj/item/device/whiskey_supply_beacon)
+				spawnitems = list(
+					/obj/item/device/whiskey_supply_beacon,
+					/obj/item/device/whiskey_supply_beacon,
+					/obj/item/device/whiskey_supply_beacon,
+					/obj/item/device/whiskey_supply_beacon,
+				)
 
 			if(51 to 57)//Rare weapons. Around 6%
 				crate = new /obj/structure/closet/crate/ammo(T)
-				spawnitems = list(/obj/effect/landmark/wo_supplies/ammo/box/rare/m41aap,
-								/obj/effect/landmark/wo_supplies/ammo/box/rare/m41aapmag,
-								/obj/effect/landmark/wo_supplies/ammo/box/rare/m41aextend,
-								/obj/effect/landmark/wo_supplies/ammo/box/rare/smgap,
-								/obj/effect/landmark/wo_supplies/ammo/box/rare/smgextend)
+				spawnitems = list(
+					/obj/effect/landmark/wo_supplies/ammo/box/rare/m41aap,
+					/obj/effect/landmark/wo_supplies/ammo/box/rare/m41aapmag,
+					/obj/effect/landmark/wo_supplies/ammo/box/rare/m41aextend,
+					/obj/effect/landmark/wo_supplies/ammo/box/rare/smgap,
+					/obj/effect/landmark/wo_supplies/ammo/box/rare/smgextend,
+				)
 
 			if(58 to 65) // Sandbags kit
 				crate = new /obj/structure/closet/crate(T)
-				spawnitems = list(/obj/item/tool/shovel/etool,
-								/obj/item/stack/sandbags_empty/half,
-								/obj/item/stack/sandbags_empty/half,
-								/obj/item/stack/sandbags_empty/half)
+				spawnitems = list(
+					/obj/item/tool/shovel/etool,
+					/obj/item/stack/sandbags_empty/half,
+					/obj/item/stack/sandbags_empty/half,
+					/obj/item/stack/sandbags_empty/half,
+				)
 
 			if(66 to 70) // Mortar shells. Pew Pew!
 				crate = new /obj/structure/closet/crate/secure/mortar_ammo(T)
 				choosemax = rand(6,10)
-				randomitems = list(/obj/item/mortar_shell/he,
-								/obj/item/mortar_shell/incendiary,
-								/obj/item/mortar_shell/flare,
-								/obj/item/mortar_shell/frag)
+				randomitems = list(
+					/obj/item/mortar_shell/he,
+					/obj/item/mortar_shell/incendiary,
+					/obj/item/mortar_shell/flare,
+					/obj/item/mortar_shell/frag,
+				)
 
 			if(71 to 79)
 				crate = new /obj/structure/closet/crate/ammo(T)
 				choosemax = rand(2, 3)
-				randomitems = list(/obj/item/ammo_box/rounds,
-								/obj/item/ammo_box/rounds/ap,
-								/obj/item/ammo_box/rounds/smg,
-								/obj/item/ammo_box/rounds/smg/ap,
-								/obj/item/ammo_box/magazine/ap,
-								/obj/item/ammo_box/magazine/ext,
-								/obj/item/ammo_box/magazine/m4ra/ap,
-								/obj/item/ammo_box/magazine/m4ra/ap,
-								/obj/item/ammo_box/magazine/m39/ap,
-								/obj/item/ammo_box/magazine/m39/ext,
+				randomitems = list(
+					/obj/item/ammo_box/rounds,
+					/obj/item/ammo_box/rounds/ap,
+					/obj/item/ammo_box/rounds/smg,
+					/obj/item/ammo_box/rounds/smg/ap,
+					/obj/item/ammo_box/magazine/ap,
+					/obj/item/ammo_box/magazine/ext,
+					/obj/item/ammo_box/magazine/m4ra/ap,
+					/obj/item/ammo_box/magazine/m4ra/ap,
+					/obj/item/ammo_box/magazine/m39/ap,
+					/obj/item/ammo_box/magazine/m39/ext,
 				)
 
 			if(80 to 82)
 				crate = new /obj/structure/closet/crate/ammo(T)
 				choosemax = rand(2, 3)
-				randomitems = list(/obj/item/ammo_magazine/rifle/lmg/holo_target,
-								/obj/item/ammo_magazine/rifle/lmg/holo_target,
-								/obj/item/ammo_magazine/rifle/lmg,
-								/obj/item/ammo_magazine/rifle/lmg,
+				randomitems = list(
+					/obj/item/ammo_magazine/rifle/lmg/holo_target,
+					/obj/item/ammo_magazine/rifle/lmg/holo_target,
+					/obj/item/ammo_magazine/rifle/lmg,
+					/obj/item/ammo_magazine/rifle/lmg,
 				)
 
 			if(83 to 86)
 				crate = new /obj/structure/closet/crate/ammo(T)
 				spawnitems = list(
-									/obj/item/attachable/magnetic_harness,
-									/obj/item/attachable/magnetic_harness,
-									/obj/item/attachable/magnetic_harness,
-									/obj/item/attachable/magnetic_harness)
+					/obj/item/attachable/magnetic_harness,
+					/obj/item/attachable/magnetic_harness,
+					/obj/item/attachable/magnetic_harness,
+					/obj/item/attachable/magnetic_harness,
+				)
 
 			if(86 to 90)
 				crate = new /obj/structure/closet/crate/secure/gear(T)
 				spawnitems = list(
-									/obj/item/device/binoculars/range,
-									/obj/item/device/binoculars/range,
+					/obj/item/device/binoculars/range,
+					/obj/item/device/binoculars/range,
 				)
 
 	if(crate)
@@ -700,85 +725,101 @@
 	crate = new /obj/structure/closet/crate/secure/weapon(T)
 	switch(SD)
 		if(0) // Alright 2 mags for the SL, a few mags for M41As that people would need. M39s get some love and split the shotgun load between slugs and buckshot.
-			spawnitems = list(/obj/item/ammo_magazine/rifle/m41aMK1,
-							/obj/item/ammo_magazine/rifle/m41aMK1,
-							/obj/item/ammo_magazine/rifle,
-							/obj/item/ammo_magazine/rifle,
-							/obj/item/ammo_magazine/rifle,
-							/obj/item/ammo_magazine/rifle/ap,
-							/obj/item/ammo_magazine/rifle/ap,
-							/obj/item/ammo_magazine/rifle/ap,
-							/obj/item/ammo_magazine/rifle/ap,
-							/obj/item/ammo_magazine/smg/m39,
-							/obj/item/ammo_magazine/smg/m39,
-							/obj/item/ammo_magazine/smg/m39,
-							/obj/item/ammo_magazine/smg/m39,
-							/obj/item/ammo_magazine/smg/m39/ap,
-							/obj/item/ammo_magazine/smg/m39/ap,
-							/obj/item/ammo_magazine/smg/m39/ap,
-							/obj/item/ammo_magazine/smg/m39/ap,
-							/obj/item/ammo_magazine/shotgun/slugs,
-							/obj/item/ammo_magazine/shotgun/slugs,
-							/obj/item/ammo_magazine/shotgun/slugs,
-							/obj/item/ammo_magazine/shotgun/buckshot,
-							/obj/item/ammo_magazine/shotgun/buckshot,
-							/obj/item/ammo_magazine/shotgun/buckshot)
+			spawnitems = list(
+				/obj/item/ammo_magazine/rifle/m41aMK1,
+				/obj/item/ammo_magazine/rifle/m41aMK1,
+				/obj/item/ammo_magazine/rifle,
+				/obj/item/ammo_magazine/rifle,
+				/obj/item/ammo_magazine/rifle,
+				/obj/item/ammo_magazine/rifle/ap,
+				/obj/item/ammo_magazine/rifle/ap,
+				/obj/item/ammo_magazine/rifle/ap,
+				/obj/item/ammo_magazine/rifle/ap,
+				/obj/item/ammo_magazine/smg/m39,
+				/obj/item/ammo_magazine/smg/m39,
+				/obj/item/ammo_magazine/smg/m39,
+				/obj/item/ammo_magazine/smg/m39,
+				/obj/item/ammo_magazine/smg/m39/ap,
+				/obj/item/ammo_magazine/smg/m39/ap,
+				/obj/item/ammo_magazine/smg/m39/ap,
+				/obj/item/ammo_magazine/smg/m39/ap,
+				/obj/item/ammo_magazine/shotgun/slugs,
+				/obj/item/ammo_magazine/shotgun/slugs,
+				/obj/item/ammo_magazine/shotgun/slugs,
+				/obj/item/ammo_magazine/shotgun/buckshot,
+				/obj/item/ammo_magazine/shotgun/buckshot,
+				/obj/item/ammo_magazine/shotgun/buckshot,
+			)
 		if(1) // Six rockets should be good. Tossed in two AP rockets for possible late round fighting.
-			spawnitems = list(/obj/item/ammo_magazine/rocket,
-							/obj/item/ammo_magazine/rocket,
-							/obj/item/ammo_magazine/rocket,
-							/obj/item/ammo_magazine/rocket,
-							/obj/item/ammo_magazine/rocket,
-							/obj/item/ammo_magazine/rocket,
-							/obj/item/ammo_magazine/rocket,
-							/obj/item/ammo_magazine/rocket,
-							/obj/item/ammo_magazine/rocket/ap,
-							/obj/item/ammo_magazine/rocket/ap,
-							/obj/item/ammo_magazine/rocket/ap,
-							/obj/item/ammo_magazine/rocket/wp,
-							/obj/item/ammo_magazine/rocket/wp,
-							/obj/item/ammo_magazine/rocket/wp)
+			spawnitems = list(
+				/obj/item/ammo_magazine/rocket,
+				/obj/item/ammo_magazine/rocket,
+				/obj/item/ammo_magazine/rocket,
+				/obj/item/ammo_magazine/rocket,
+				/obj/item/ammo_magazine/rocket,
+				/obj/item/ammo_magazine/rocket,
+				/obj/item/ammo_magazine/rocket,
+				/obj/item/ammo_magazine/rocket,
+				/obj/item/ammo_magazine/rocket/ap,
+				/obj/item/ammo_magazine/rocket/ap,
+				/obj/item/ammo_magazine/rocket/ap,
+				/obj/item/ammo_magazine/rocket/wp,
+				/obj/item/ammo_magazine/rocket/wp,
+				/obj/item/ammo_magazine/rocket/wp,
+			)
 		if(2) //Smartgun supplies
 			spawnitems = list(
-					/obj/item/smartgun_battery,
-					/obj/item/smartgun_battery,
-					/obj/item/ammo_magazine/smartgun,
-					/obj/item/ammo_magazine/smartgun,
-					/obj/item/ammo_magazine/smartgun,
-					/obj/item/ammo_magazine/smartgun,
-					/obj/item/ammo_magazine/smartgun,
-					/obj/item/ammo_magazine/smartgun,
-				)
+				/obj/item/smartgun_battery,
+				/obj/item/smartgun_battery,
+				/obj/item/ammo_magazine/smartgun,
+				/obj/item/ammo_magazine/smartgun,
+				/obj/item/ammo_magazine/smartgun,
+				/obj/item/ammo_magazine/smartgun,
+				/obj/item/ammo_magazine/smartgun,
+				/obj/item/ammo_magazine/smartgun,
+			)
 		if(3) //Full Sniper ammo loadout.
-			spawnitems = list(/obj/item/ammo_magazine/sniper,
-							/obj/item/ammo_magazine/sniper,
-							/obj/item/ammo_magazine/sniper,
-							/obj/item/ammo_magazine/sniper/incendiary,
-							/obj/item/ammo_magazine/sniper/flak)
+			spawnitems = list(
+				/obj/item/ammo_magazine/sniper,
+				/obj/item/ammo_magazine/sniper,
+				/obj/item/ammo_magazine/sniper,
+				/obj/item/ammo_magazine/sniper/incendiary,
+				/obj/item/ammo_magazine/sniper/flak,
+			)
 		if(4) //Amr sniper ammo.
-			spawnitems = list(/obj/item/ammo_magazine/sniper/anti_materiel,
-							/obj/item/ammo_magazine/sniper/anti_materiel,
-							/obj/item/ammo_magazine/sniper/anti_materiel,
-							/obj/item/ammo_magazine/sniper/anti_materiel,
-							/obj/item/ammo_magazine/sniper/anti_materiel)
+			spawnitems = list(
+				/obj/item/ammo_magazine/sniper/anti_materiel,
+				/obj/item/ammo_magazine/sniper/anti_materiel,
+				/obj/item/ammo_magazine/sniper/anti_materiel,
+				/obj/item/ammo_magazine/sniper/anti_materiel,
+				/obj/item/ammo_magazine/sniper/anti_materiel,
+			)
 		if(5) // Give them explosives + Grenades for the Grenade spec. Might be too many grenades, but we'll find out.
-			spawnitems = list(/obj/item/storage/box/explosive_mines,
-							/obj/item/storage/belt/grenade/full)
+			spawnitems = list(
+				/obj/item/storage/box/explosive_mines,
+				/obj/item/storage/belt/grenade/full,
+			)
 		if(6) // SHARP ammo
-			spawnitems = list(/obj/item/ammo_magazine/rifle/sharp/explosive,
-							/obj/item/ammo_magazine/rifle/sharp/explosive,
-							/obj/item/ammo_magazine/rifle/sharp/incendiary,
-							/obj/item/ammo_magazine/rifle/sharp/flechette,)
+			spawnitems = list(
+				/obj/item/ammo_magazine/rifle/sharp/explosive,
+				/obj/item/ammo_magazine/rifle/sharp/explosive,
+				/obj/item/ammo_magazine/rifle/sharp/incendiary,
+				/obj/item/ammo_magazine/rifle/sharp/flechette,
+			)
 		if(7) // Pyrotech
 			var/fuel = pick(/obj/item/ammo_magazine/flamer_tank/large/B, /obj/item/ammo_magazine/flamer_tank/large/X)
-			spawnitems = list(/obj/item/ammo_magazine/flamer_tank/large,
-							/obj/item/ammo_magazine/flamer_tank/large,
-							fuel)
+			spawnitems = list(
+				/obj/item/ammo_magazine/flamer_tank/large,
+				/obj/item/ammo_magazine/flamer_tank/large,
+				fuel,
+			)
 		if(8) // Scout
-			spawnitems = list(/obj/item/ammo_magazine/rifle/m4ra/custom,
-							/obj/item/ammo_magazine/rifle/m4ra/custom,
-							/obj/item/ammo_magazine/rifle/m4ra/custom/incendiary,
-							/obj/item/ammo_magazine/rifle/m4ra/custom/impact)
+			spawnitems = list(
+				/obj/item/ammo_magazine/rifle/m4ra/custom,
+				/obj/item/ammo_magazine/rifle/m4ra/custom,
+				/obj/item/ammo_magazine/rifle/m4ra/custom/incendiary,
+				/obj/item/ammo_magazine/rifle/m4ra/custom/impact,
+			)
 	crate.storage_capacity = 60
 	for(var/path in spawnitems)
 		new path(crate)
@@ -792,13 +833,30 @@
 	storage_slots = 3
 	max_w_class = 0
 	foldable = null
-	var/list/common = list(/obj/item/attachable/suppressor, /obj/item/attachable/bayonet, /obj/item/attachable/flashlight)
-	var/list/attachment_1 = list(/obj/item/attachable/reddot, /obj/item/attachable/burstfire_assembly, /obj/item/attachable/lasersight,
-								/obj/item/attachable/extended_barrel,/obj/item/attachable/verticalgrip, /obj/item/attachable/angledgrip,
-								/obj/item/attachable/gyro, /obj/item/attachable/bipod)
-	var/list/attachment_2 = list(/obj/item/attachable/stock/smg, /obj/item/attachable/stock/shotgun, /obj/item/attachable/stock/rifle, /obj/item/attachable/magnetic_harness,
-								/obj/item/attachable/heavy_barrel, /obj/item/attachable/scope,
-								/obj/item/attachable/scope/mini)
+	var/list/common = list(
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/flashlight,
+	)
+	var/list/attachment_1 = list(
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/burstfire_assembly,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/angledgrip,
+		/obj/item/attachable/gyro,
+		/obj/item/attachable/bipod,
+	)
+	var/list/attachment_2 = list(
+		/obj/item/attachable/stock/smg,
+		/obj/item/attachable/stock/shotgun,
+		/obj/item/attachable/stock/rifle,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/scope,
+		/obj/item/attachable/scope/mini,
+	)
 
 /obj/item/storage/box/attachments/fill_preset_inventory()
 	var/a1 = pick(common)

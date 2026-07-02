@@ -28,7 +28,7 @@ Defined in conflicts.dm of the #defines folder.
 	item_state = null
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_righthand.dmi',
 	)
 	var/attach_icon //the sprite to show when the attachment is attached when we want it different from the icon_state.
 	var/pixel_shift_x = 16 //Determines the amount of pixels to move the icon state for the overlay.
@@ -322,7 +322,7 @@ Defined in conflicts.dm of the #defines folder.
 	item_icons = list(
 		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/objects.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_righthand.dmi',
 	)
 	desc = "The standard-issue bayonet of the Colonial Marines. You can slide this knife into your boots, or attach it to the end of a rifle."
 	sharp = IS_SHARP_ITEM_ACCURATE
@@ -2909,9 +2909,10 @@ Defined in conflicts.dm of the #defines folder.
 	hud_offset_mod = 7 //Extremely long.
 	var/folded = FALSE
 	var/list/allowed_hat_items = list(
-					/obj/item/ammo_magazine/revolver,
-					/obj/item/ammo_magazine/revolver/marksman,
-					/obj/item/ammo_magazine/revolver/heavy)
+		/obj/item/ammo_magazine/revolver,
+		/obj/item/ammo_magazine/revolver/marksman,
+		/obj/item/ammo_magazine/revolver/heavy,
+	)
 
 /obj/item/attachable/stock/revolver/New()
 	..()
@@ -3735,7 +3736,7 @@ Defined in conflicts.dm of the #defines folder.
 	var/static/list/fire_sounds = list(
 		'sound/weapons/gun_flamethrower1.ogg',
 		'sound/weapons/gun_flamethrower2.ogg',
-		'sound/weapons/gun_flamethrower3.ogg'
+		'sound/weapons/gun_flamethrower3.ogg',
 	)
 
 /obj/item/attachable/attached_gun/flamer_nozzle/handle_attachment_description(slot)

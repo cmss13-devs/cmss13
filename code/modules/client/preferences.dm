@@ -92,13 +92,13 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/View_MC = FALSE
 	var/window_skin = 0
 	var/list/observer_huds = list(
-							"Medical HUD" = FALSE,
-							"Security HUD" = FALSE,
-							"Squad HUD" = FALSE,
-							"Xeno Status HUD" = FALSE,
-							"Hunter HUD"= FALSE,
-							HUD_MENTOR_SIGHT = FALSE
-							)
+		"Medical HUD" = FALSE,
+		"Security HUD" = FALSE,
+		"Squad HUD" = FALSE,
+		"Xeno Status HUD" = FALSE,
+		"Hunter HUD"= FALSE,
+		HUD_MENTOR_SIGHT = FALSE,
+	)
 	var/ghost_vision_pref = GHOST_VISION_LEVEL_MID_NVG
 	var/ghost_orbit = GHOST_ORBIT_CIRCLE
 	var/dual_wield_pref = DUAL_WIELD_FIRE
@@ -210,13 +210,13 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/preferred_spec = list()
 	var/night_vision_preference = "Green"
 	var/list/nv_color_list = list(
-						"Green" = NV_COLOR_GREEN,
-						"White" = NV_COLOR_WHITE,
-						"Yellow" = NV_COLOR_YELLOW,
-						"Orange" = NV_COLOR_ORANGE,
-						"Red" = NV_COLOR_RED,
-						"Blue" = NV_COLOR_BLUE
-					)
+		"Green" = NV_COLOR_GREEN,
+		"White" = NV_COLOR_WHITE,
+		"Yellow" = NV_COLOR_YELLOW,
+		"Orange" = NV_COLOR_ORANGE,
+		"Red" = NV_COLOR_RED,
+		"Blue" = NV_COLOR_BLUE,
+	)
 		//Some faction information.
 	var/origin = ORIGIN_USCM
 	var/faction = "None" //Antag faction/general associated faction.
@@ -1269,7 +1269,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					var/static/list/mouse_button_list = list(
 						xeno_ability_mouse_pref_to_string(XENO_ABILITY_CLICK_MIDDLE) = XENO_ABILITY_CLICK_MIDDLE,
 						xeno_ability_mouse_pref_to_string(XENO_ABILITY_CLICK_SHIFT) = XENO_ABILITY_CLICK_SHIFT,
-						xeno_ability_mouse_pref_to_string(XENO_ABILITY_CLICK_RIGHT) = XENO_ABILITY_CLICK_RIGHT
+						xeno_ability_mouse_pref_to_string(XENO_ABILITY_CLICK_RIGHT) = XENO_ABILITY_CLICK_RIGHT,
 					)
 					var/choice = tgui_input_list(user, "Choose how you will activate your xenomorph and human abilities.", "Mouse Activation Button", mouse_button_list)
 					if(!choice)

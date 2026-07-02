@@ -27,7 +27,7 @@
 	var/list/inbuilt_tracking_options = list(
 		"Squad Leader" = TRACKER_SL,
 		"Fireteam Leader" = TRACKER_FTL,
-		"Landing Zone" = TRACKER_LZ
+		"Landing Zone" = TRACKER_LZ,
 	)
 	var/list/tracking_options = list()
 
@@ -94,7 +94,7 @@
 		RADIO_VOLUME_QUIET_STR = RADIO_VOLUME_QUIET,
 		RADIO_VOLUME_RAISED_STR = RADIO_VOLUME_RAISED,
 		RADIO_VOLUME_IMPORTANT_STR = RADIO_VOLUME_IMPORTANT,
-		RADIO_VOLUME_CRITICAL_STR = RADIO_VOLUME_CRITICAL
+		RADIO_VOLUME_CRITICAL_STR = RADIO_VOLUME_CRITICAL,
 	)
 
 	var/volume_setting = tgui_input_list(usr, "Select the volume you want your headset to transmit at.", "Headset Volume", volume_settings)
@@ -571,7 +571,7 @@
 		"Delta SL" = TRACKER_DSL,
 		"Echo SL" = TRACKER_ESL,
 		"Foxtrot SL" = TRACKER_FSL,
-		"Intel SL" = TRACKER_ISL
+		"Intel SL" = TRACKER_ISL,
 	)
 
 /obj/item/device/radio/headset/almayer/mcom/alt
@@ -588,7 +588,7 @@
 	inbuilt_tracking_options = list(
 		"Squad Leader" = TRACKER_SL,
 		"Fireteam Leader" = TRACKER_FTL,
-		"Landing Zone" = TRACKER_LZ
+		"Landing Zone" = TRACKER_LZ,
 	)
 
 /obj/item/device/radio/headset/almayer/mcom/ce
@@ -603,7 +603,7 @@
 	inbuilt_tracking_options = list(
 		"Landing Zone" = TRACKER_LZ,
 		"Squad Leader" = TRACKER_SL,
-		"Fireteam Leader" = TRACKER_FTL
+		"Fireteam Leader" = TRACKER_FTL,
 	)
 
 /obj/item/device/radio/headset/almayer/mcom/cmo
@@ -617,7 +617,7 @@
 	inbuilt_tracking_options = list(
 		"Squad Leader" = TRACKER_SL,
 		"Fireteam Leader" = TRACKER_FTL,
-		"Landing Zone" = TRACKER_LZ
+		"Landing Zone" = TRACKER_LZ,
 	)
 
 /obj/item/device/radio/headset/almayer/mcom/po
@@ -630,7 +630,7 @@
 	locate_setting = TRACKER_LZ // mostly just in case
 
 	inbuilt_tracking_options = list(
-		"Landing Zone" = TRACKER_LZ
+		"Landing Zone" = TRACKER_LZ,
 	)
 
 /obj/item/device/radio/headset/almayer/mcom/io
@@ -729,7 +729,7 @@
 		"Delta SL" = TRACKER_DSL,
 		"Echo SL" = TRACKER_ESL,
 		"Foxtrot SL" = TRACKER_FSL,
-		"Intel SL" = TRACKER_ISL
+		"Intel SL" = TRACKER_ISL,
 	)
 
 /obj/item/device/radio/headset/almayer/mcom/cdrcom/co
@@ -744,7 +744,7 @@
 		"Delta SL" = TRACKER_DSL,
 		"Echo SL" = TRACKER_ESL,
 		"Foxtrot SL" = TRACKER_FSL,
-		"Intel SL" = TRACKER_ISL
+		"Intel SL" = TRACKER_ISL,
 	)
 
 /obj/item/device/radio/headset/almayer/mcom/sea
@@ -758,7 +758,7 @@
 	inbuilt_tracking_options = list(
 		"Commanding Officer" = TRACKER_CO,
 		"Executive Officer" = TRACKER_XO,
-		"Chief MP" = TRACKER_CMP
+		"Chief MP" = TRACKER_CMP,
 	)
 
 /obj/item/device/radio/headset/almayer/mcom/synth
@@ -805,7 +805,7 @@
 		"Delta SL" = TRACKER_DSL,
 		"Echo SL" = TRACKER_ESL,
 		"Foxtrot SL" = TRACKER_FSL,
-		"Intel SL" = TRACKER_ISL
+		"Intel SL" = TRACKER_ISL,
 	)
 
 /obj/item/device/radio/headset/almayer/marine/alpha/tl
@@ -849,7 +849,7 @@
 		"Delta SL" = TRACKER_DSL,
 		"Echo SL" = TRACKER_ESL,
 		"Foxtrot SL" = TRACKER_FSL,
-		"Intel SL" = TRACKER_ISL
+		"Intel SL" = TRACKER_ISL,
 	)
 
 /obj/item/device/radio/headset/almayer/marine/bravo/tl
@@ -893,7 +893,7 @@
 		"Delta SL" = TRACKER_DSL,
 		"Echo SL" = TRACKER_ESL,
 		"Foxtrot SL" = TRACKER_FSL,
-		"Intel SL" = TRACKER_ISL
+		"Intel SL" = TRACKER_ISL,
 	)
 
 /obj/item/device/radio/headset/almayer/marine/charlie/tl
@@ -937,7 +937,7 @@
 		"Charlie SL" = TRACKER_CSL,
 		"Echo SL" = TRACKER_ESL,
 		"Foxtrot SL" = TRACKER_FSL,
-		"Intel SL" = TRACKER_ISL
+		"Intel SL" = TRACKER_ISL,
 	)
 
 /obj/item/device/radio/headset/almayer/marine/delta/tl
@@ -1026,7 +1026,7 @@
 		"Charlie SL" = TRACKER_CSL,
 		"Delta SL" = TRACKER_DSL,
 		"Echo SL" = TRACKER_ESL,
-		"Intel SL" = TRACKER_ISL
+		"Intel SL" = TRACKER_ISL,
 	)
 
 /obj/item/device/radio/headset/almayer/marine/cryo/tl
@@ -1147,7 +1147,7 @@
 	misc_tracking = TRUE
 	locate_setting = TRACKER_CL
 	inbuilt_tracking_options = list(
-		"Corporate Liaison" = TRACKER_CL
+		"Corporate Liaison" = TRACKER_CL,
 	)
 	additional_hud_types = list(MOB_HUD_FACTION_MARINE)
 	initial_keys = list(/obj/item/device/encryptionkey/wy_bodyguard)
@@ -1209,7 +1209,7 @@
 	misc_tracking = TRUE
 	locate_setting = TRACKER_CL
 	inbuilt_tracking_options = list(
-		"Corporate Liaison" = TRACKER_CL
+		"Corporate Liaison" = TRACKER_CL,
 	)
 	additional_hud_types = list(MOB_HUD_FACTION_WY)
 

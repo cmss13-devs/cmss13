@@ -2235,7 +2235,7 @@
 	gear_preset_whitelist = list(
 		"[JOB_CO][WHITELIST_NORMAL]" = /datum/equipment_preset/upp/officer/major/co,
 		"[JOB_CO][WHITELIST_COUNCIL]" = /datum/equipment_preset/upp/officer/flag/podpolkovnik/co,
-		"[JOB_CO][WHITELIST_LEADER]" = /datum/equipment_preset/upp/officer/flag/polkovnik/co
+		"[JOB_CO][WHITELIST_LEADER]" = /datum/equipment_preset/upp/officer/flag/polkovnik/co,
 	)
 
 /datum/job/antag/upp/officer/major

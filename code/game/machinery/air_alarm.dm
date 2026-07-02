@@ -771,7 +771,8 @@ table tr:first-child th:first-child { border: none;}
 				"oxygen"  = "O<sub>2</sub>",
 				"carbon dioxide" = "CO<sub>2</sub>",
 				"phoron"  = "Toxin",
-				"other"   = "Other",)
+				"other"   = "Other",
+				)
 
 			var/list/selected
 			for (var/g in gases)

@@ -8,7 +8,7 @@
 	item_state = "thrallarmor_ebony"
 	item_state_slots = list(WEAR_JACKET = "thrallarmor_ebony")
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/hunter/thrall_gear.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/hunter/thrall_gear.dmi',
 	)
 	random_icon = FALSE
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
@@ -55,7 +55,7 @@
 	icon_state = "thrallgreaves_ebony"
 	item_state = "thrallgreaves_ebony"
 	item_icons = list(
-		WEAR_FEET = 'icons/mob/humans/onmob/hunter/thrall_gear.dmi'
+		WEAR_FEET = 'icons/mob/humans/onmob/hunter/thrall_gear.dmi',
 	)
 	random_icon = FALSE
 	allowed_items_typecache = list(

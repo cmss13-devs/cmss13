@@ -149,7 +149,7 @@
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/melee_weapons.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/axes_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/axes_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/axes_righthand.dmi',
 	)
 	sharp = IS_SHARP_ITEM_BIG
 	edge = 1
@@ -212,7 +212,7 @@
 	icon = 'icons/obj/items/weapons/melee/energy.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/energy_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/energy_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/energy_righthand.dmi',
 	)
 	force = 3
 	throwforce = 5
@@ -261,7 +261,7 @@
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/spears_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/spears_righthand.dmi',
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/melee_weapons.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/melee_weapons.dmi',
 	)
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
@@ -281,7 +281,7 @@
 	icon = 'icons/obj/items/weapons/melee/spears.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/spears_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/spears_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/spears_righthand.dmi',
 	)
 	desc = "A crude but intimidatingly bulky shaped explosive charge, fixed to the end of a pole. To use it, one must grasp it firmly in both hands, and thrust the prongs of the shaped charge into the target. That the resulting explosion occurs directly in front of the user's face was not an apparent concern of the designer. A true hero's weapon."
 	force = MELEE_FORCE_WEAK
@@ -365,7 +365,7 @@
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/melee_weapons.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/melee_weapons.dmi',
 	)
 	icon_state = "d2_breacher"
 	item_state = "d2_breacher"

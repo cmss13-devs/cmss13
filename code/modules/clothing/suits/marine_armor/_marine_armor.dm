@@ -37,7 +37,7 @@
 	item_state = "marine_armor" //Make unique states for Officer & Intel armors.
 	icon = 'icons/obj/items/clothing/suits/suits_by_map/jungle.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/jungle.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/jungle.dmi',
 	)
 	flags_atom = FPRINT|CONDUCT
 	flags_inventory = BLOCKSHARPOBJ
@@ -289,7 +289,7 @@
 	icon_state = "army_armor"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi',
 	)
 	specialty = "Personal Body Armor System"
 	storage_slots = 3
@@ -354,7 +354,7 @@
 	icon_state = "golden"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi',
 	)
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bio = CLOTHING_ARMOR_MEDIUM
@@ -404,7 +404,7 @@
 	desc = "A robust, well-polished suit of armor for the Commanding Officer. Custom-made to fit its owner with special straps to operate a smartgun. Show those Marines who's really in charge. This one has a coat over it for added warmth."
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi',
 	)
 	icon_state = "bridge_coat_armored"
 	item_state = "bridge_coat_armored"
@@ -521,7 +521,7 @@
 	icon_state = "VL"
 	icon = 'icons/obj/items/clothing/suits/armor.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/armor.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/armor.dmi',
 	)
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 	flags_marine_armor = ARMOR_LAMP_OVERLAY //No squad colors when wearing this since it'd look funny.
@@ -545,7 +545,7 @@
 	item_state = "VL_FLAK"
 	icon = 'icons/obj/items/clothing/suits/suits_by_map/jungle.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/jungle.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/jungle.dmi',
 	)
 	flags_atom = NO_NAME_OVERRIDE
 	storage_slots = 2
@@ -574,7 +574,7 @@
 	icon_state = "VL_syn"
 	icon = 'icons/obj/items/clothing/suits/armor.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/armor.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/armor.dmi',
 	)
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 
@@ -584,7 +584,7 @@
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/jungle.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi',
 	)
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 
@@ -594,7 +594,7 @@
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/snow.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi',
 	)
 	flags_atom = NO_GAMEMODE_SKIN
 
@@ -604,7 +604,7 @@
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/desert.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi',
 	)
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 
@@ -614,7 +614,7 @@
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/classic.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi',
 	)
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 
@@ -624,7 +624,7 @@
 	icon_state = "VL_syn_army"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi',
 	)
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 	armor_melee = CLOTHING_ARMOR_VERYLOW
@@ -794,7 +794,7 @@
 	icon_state = "cc_armor"
 	icon = 'icons/obj/items/clothing/suits/armor.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/armor.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/armor.dmi',
 	)
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 

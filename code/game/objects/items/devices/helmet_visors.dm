@@ -126,7 +126,7 @@
 /obj/item/device/helmet_visor/medical/advanced/ui_data(mob/user)
 	var/list/data = list(
 		"published_documents" = GLOB.chemical_data.research_publications,
-		"terminal_view" = FALSE
+		"terminal_view" = FALSE,
 	)
 	return data
 

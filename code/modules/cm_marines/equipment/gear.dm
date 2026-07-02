@@ -74,8 +74,10 @@
 	icon_state = "reactivetarp_closed"
 	icon_closed = "reactivetarp_closed"
 	icon_opened = "reactivetarp_open"
-	open_sound = 'sound/effects/vegetation_walk_1.ogg'
-	close_sound = 'sound/effects/vegetation_walk_2.ogg'
+	open_sound = 'sound/items/zip.ogg'
+	close_sound = 'sound/items/zip.ogg'
+	cloak_time = 10
+	closed_alpha = 50
 
 	item_path = /obj/item/bodybag/tarp/reactive
 	anchored = FALSE

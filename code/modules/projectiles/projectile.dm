@@ -25,15 +25,15 @@
 	var/p_y = 0 // the pixel location of the clicked/aimed location in target turf
 
 	var/current  = null
-	var/atom/shot_from  = null // the object which shot us
-	var/atom/original  = null // the original target clicked
-	var/atom/firer  = null // Who shot it
+	var/atom/shot_from = null // the object which shot us
+	var/atom/original = null // the original target clicked
+	var/atom/firer = null // Who shot it
 
 	var/turf/target_turf = null
-	var/turf/starting  = null // the projectile's starting turf
+	var/turf/starting = null // the projectile's starting turf
 
-	var/turf/path[]  = null
-	var/permutated[]  = null // we've passed through these atoms, don't try to hit them again
+	var/turf/path[] = null
+	var/permutated[] = null // we've passed through these atoms, don't try to hit them again
 
 	/// Additional ammo flags applied to the projectile
 	var/projectile_override_flags = NONE
@@ -90,6 +90,10 @@
 	/// Was this projectile affected by damage_boost.dm? If so, what was the last modifier?
 	var/damage_boosted = 0
 	var/last_damage_mult = 1
+
+	/// How much of the path could the projectile trevel on source and end z level
+	var/traveled_in_open = 0
+	var/traveled_in_closed = 0
 
 /obj/projectile/Initialize(mapload, datum/cause_data/cause_data)
 	. = ..()
@@ -378,6 +382,19 @@
 	forceMove(next_turf)
 	distance_travelled++
 	vis_travelled++
+	if(original.z > starting.z && original.z == z)
+		if(istype(next_turf, /turf/open_space)) //if we target up we move up and count open space tiles as open
+			traveled_in_open++
+		else
+			traveled_in_closed++
+	else if(original.z < starting.z) //if we fly down we count tiles on the same level as closed
+		traveled_in_open = max(1, traveled_in_open)
+		var/turf/above = SSmapping.get_turf_above(next_turf)
+		if(istype(next_turf, /turf/open_space) || (next_turf.z == original.z && above && istype(above, /turf/open_space))) //we either are flying up in open or we did curve down already but above us is open
+			traveled_in_open++
+		else
+			traveled_in_closed++
+
 
 	// Check we're still flying - in the highly unlikely but apparently possible case
 	// we hit something through forceMove callbacks that we didn't pick up in scan_a_turf
@@ -645,7 +662,7 @@
 //----------------------------------------------------------
 
 
-/obj/projectile/proc/get_effective_accuracy()
+/obj/projectile/proc/get_effective_accuracy(obj/target)
 	#if DEBUG_HIT_CHANCE
 	to_world(SPAN_DEBUG("Base accuracy is <b>[accuracy]</b>; scatter: <b>[scatter]</b>;accurate_range: <b>[ammo.accurate_range]<b>; distance: <b>[distance_travelled]</b>"))
 	#endif
@@ -669,8 +686,16 @@
 			effective_accuracy += shooter_human.marksman_aura * 1.5 //Flat buff of 3 % accuracy per aura level
 			effective_accuracy += distance_travelled * 0.35 * shooter_human.marksman_aura //Flat buff to accuracy per tile travelled
 
+	if(target && target.z != starting.z)
+		if(traveled_in_open < traveled_in_closed)
+			effective_accuracy = 0
+		else if(traveled_in_open == traveled_in_closed)
+			effective_accuracy *= 0.5
+
 	#if DEBUG_HIT_CHANCE
-	to_world(SPAN_DEBUG("Final accuracy is <b>[effective_accuracy]</b>"))
+	to_world(SPAN_DEBUG("Final accuracy is <b>[effective_accuracy]</b> (open: [traveled_in_open] closed: [traveled_in_closed])"))
+	var/turf/fire_turf = get_turf(firer)
+	fire_turf?.maptext = "[effective_accuracy]"
 	#endif
 
 	return effective_accuracy
@@ -694,7 +719,7 @@
 		return FALSE
 
 	//an object's "projectile_coverage" var indicates the maximum probability of blocking a projectile
-	var/effective_accuracy = bullet.get_effective_accuracy()
+	var/effective_accuracy = bullet.get_effective_accuracy(src)
 	var/distance_limit = 6 //number of tiles needed to max out block probability
 	var/accuracy_factor = 50 //degree to which accuracy affects probability   (if accuracy is 100, probability is unaffected. Lower accuracies will increase block chance)
 
@@ -709,7 +734,7 @@
 /obj/structure/machinery/get_projectile_hit_boolean(obj/projectile/bullet)
 
 	if(src == bullet.original && layer > ATMOS_DEVICE_LAYER) //clicking on the object itself hits the object
-		var/hitchance = bullet.get_effective_accuracy()
+		var/hitchance = bullet.get_effective_accuracy(src)
 
 		#if DEBUG_HIT_CHANCE
 		to_world(SPAN_DEBUG("([name]) Distance travelled: [bullet.distance_travelled]  |  Effective accuracy: [hitchance]  |  Hit chance: [hitchance]"))
@@ -747,7 +772,7 @@
 
 /obj/structure/get_projectile_hit_boolean(obj/projectile/bullet)
 	if(src == bullet.original && layer > ATMOS_DEVICE_LAYER) //clicking on the object itself hits the object
-		var/hitchance = bullet.get_effective_accuracy()
+		var/hitchance = bullet.get_effective_accuracy(src)
 
 		#if DEBUG_HIT_CHANCE
 		to_world(SPAN_DEBUG("([name]) Distance travelled: [bullet.distance_travelled]  |  Effective accuracy: [hitchance]  |  Hit chance: [hitchance]"))
@@ -795,7 +820,7 @@
 
 	if(bullet && src == bullet.original) //clicking on the object itself. Code copied from mob get_projectile_hit_chance
 
-		var/hitchance = bullet.get_effective_accuracy()
+		var/hitchance = bullet.get_effective_accuracy(src)
 
 		switch(w_class) //smaller items are harder to hit
 			if(SIZE_TINY)
@@ -826,7 +851,7 @@
 /obj/vehicle/get_projectile_hit_boolean(obj/projectile/bullet)
 
 	if(src == bullet.original) //clicking on the object itself hits the object
-		var/hitchance = bullet.get_effective_accuracy()
+		var/hitchance = bullet.get_effective_accuracy(src)
 
 		#if DEBUG_HIT_CHANCE
 		to_world(SPAN_DEBUG("([bullet.name]) Distance travelled: [bullet.distance_travelled]  |  Effective accuracy: [hitchance]  |  Hit chance: [hitchance]"))
@@ -877,7 +902,7 @@
 		if((status_flags & XENO_HOST) && HAS_TRAIT(src, TRAIT_NESTED))
 			return FALSE
 
-	. = bullet.get_effective_accuracy()
+	. = bullet.get_effective_accuracy(src)
 
 	if(body_position == LYING_DOWN && stat)
 		. += 15 //Bonus hit against unconscious people.

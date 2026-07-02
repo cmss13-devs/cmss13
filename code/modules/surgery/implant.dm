@@ -4,7 +4,7 @@
 // ITEM PLACEMENT SURGERY //
 //////////////////////////////////////////////////////////////////
 
-//Implant and removal surgeries allow either removing the implant just inserted or replacing a removed one with a new item.
+//int_organmplant and removal surgeries allow either removing the implant just inserted or replacing a removed one with a new item.
 /datum/surgery/implant
 	name = "Implant Surgery"
 	priority = SURGERY_PRIORITY_LOW
@@ -22,8 +22,8 @@
 	possible_locs = list("groin")
 	invasiveness = list(SURGERY_DEPTH_SHALLOW)
 
-/datum/surgery/implant/can_start(mob/user, mob/living/carbon/patient, obj/limb/L, obj/item/tool)
-	return !L.hidden
+/datum/surgery/implant/can_start(mob/user, mob/living/carbon/patient, obj/limb/patient_limb, obj/item/tool)
+	return !patient_limb.hidden
 
 //------------------------------------
 
@@ -39,8 +39,8 @@
 	possible_locs = list("groin")
 	invasiveness = list(SURGERY_DEPTH_SHALLOW)
 
-/datum/surgery/implant/removal/can_start(mob/user, mob/living/carbon/patient, obj/limb/L, obj/item/tool)
-	return L.hidden
+/datum/surgery/implant/removal/can_start(mob/user, mob/living/carbon/patient, obj/limb/patient_limb, obj/item/tool)
+	return patient_limb.hidden
 
 //------------------------------------
 
@@ -145,9 +145,9 @@
 
 		if(target.stat == CONSCIOUS)
 			target.emote("pain")
-		var/datum/wound/internal_bleeding/I = new (0)
-		surgery.affected_limb.add_bleeding(I, TRUE)
-		surgery.affected_limb.wounds += I
+		var/datum/wound/internal_bleeding/int_organ = new (0)
+		surgery.affected_limb.add_bleeding(int_organ, TRUE)
+		surgery.affected_limb.wounds += int_organ
 		target.apply_damage(5, BRUTE, target_zone)
 		surgery.affected_limb.add_bleeding(null, FALSE, 15)
 		target.custom_pain("You feel something rip in your [surgery.affected_limb.cavity]!", 1)
@@ -277,8 +277,8 @@
 	pain_reduction_required = PAIN_REDUCTION_LIGHT //This is Yank Object without the damage or IB risk.
 	required_surgery_skill = SKILL_SURGERY_NOVICE
 
-/datum/surgery/embedded/can_start(mob/user, mob/living/carbon/patient, obj/limb/L, obj/item/tool)
-	return length(L.implants)
+/datum/surgery/embedded/can_start(mob/user, mob/living/carbon/patient, obj/limb/patient_limb, obj/item/tool)
+	return length(patient_limb.implants)
 
 //------------------------------------
 

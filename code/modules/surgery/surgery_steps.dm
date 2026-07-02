@@ -122,7 +122,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 		step_duration *= tool_modifier
 
 	if(surgery.lying_required) //Surgery surface modifier.
-		surface_modifier = target.buckled?.surgery_duration_multiplier //If they're buckled, use the surface modifier of the thing they're buckled to.
+		surface_modifier = target.buckled?.surgery_duration_multiplier //int_organf they're buckled, use the surface modifier of the thing they're buckled to.
 		if(!surface_modifier)
 			surface_modifier = SURGERY_SURFACE_MULT_AWFUL //Surgery on a completely unsuitable surface takes twice as long.
 			for(var/obj/surface in get_turf(target)) //Otherwise, get the lowest surface modifier of objects on their turf.
@@ -146,7 +146,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 		if(self_surgery)
 			message += "[pick("performing surgery", "working", "operating")] on [pick("yourself", "your own body")] is [pick("awkward", "tricky")]"
 
-		switch(tool_modifier) //Implicitly means tool exists as accept_any_item item or accept_hand would = 1x. No message for 1x - that's the default.
+		switch(tool_modifier) //int_organmplicitly means tool exists as accept_any_item item or accept_hand would = 1x. No message for 1x - that's the default.
 			if(SURGERY_TOOL_MULT_SUBOPTIMAL)
 				message += "this tool [pick("is perfectly serviceable, but less efficient",  "takes some extra patience to work with", "is a bit different than what you're accustomed to using", "could be better, but considering the alternatives, it's fine")]"
 			if(SURGERY_TOOL_MULT_SUBSTITUTE)
@@ -190,7 +190,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 
 	play_preop_sound(user, target, target_zone, tool, surgery)
 
-	if(tool?.flags_item & ANIMATED_SURGICAL_TOOL) //If we have an animated tool sprite, run it while we do any do_afters.
+	if(tool?.flags_item & ANIMATED_SURGICAL_TOOL) //int_organf we have an animated tool sprite, run it while we do any do_afters.
 		tool.icon_state += "_on"
 
 	if(try_to_fail)

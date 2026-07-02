@@ -13,15 +13,15 @@
 	var/dmg_min = 0
 	var/dmg_max = BONECHIPS_MAX_DAMAGE
 
-/datum/surgery/brain_repair/can_start(mob/user, mob/living/carbon/human/patient, obj/limb/L, obj/item/tool)
-	var/datum/internal_organ/brain/B = patient.internal_organs_by_name["brain"]
-	if(!B || B.robotic == ORGAN_ROBOT)
+/datum/surgery/brain_repair/can_start(mob/user, mob/living/carbon/human/patient, obj/limb/patient_limb, obj/item/tool)
+	var/datum/internal_organ/brain/patient_brain = patient.internal_organs_by_name["brain"]
+	if(!patient_brain || patient_brain.robotic == ORGAN_ROBOT)
 		return FALSE
 	if(patient.disabilities & NERVOUS || patient.sdisabilities & DISABILITY_MUTE || patient.sdisabilities & DISABILITY_DEAF) //if people want to start out with disabilities and change their mind later they don't need brain damage to remove them.
 		return TRUE
-	if(B.damage <= dmg_min)
+	if(patient_brain.damage <= dmg_min)
 		return FALSE
-	if(dmg_max && B.damage > dmg_max)
+	if(dmg_max && patient_brain.damage > dmg_max)
 		return FALSE
 	return TRUE
 
@@ -74,15 +74,15 @@
 
 	user.count_niche_stat(STATISTICS_NICHE_SURGERY_BRAIN)
 
-	var/datum/internal_organ/brain/B = target.internal_organs_by_name["brain"]
-	if(B)
-		B.heal_damage(B.damage)
+	var/datum/internal_organ/brain/patient_brain = target.internal_organs_by_name["brain"]
+	if(patient_brain)
+		patient_brain.heal_damage(patient_brain.damage)
 
 	to_chat(target, SPAN_NOTICE("The rattling and piercing feelings in your brain cease. Your mind and ears feel more clear."))
 
-	var/obj/item/shard/shrapnel/bone_chips/human/C = locate() in target
-	if(C)
-		C.forceMove(user.loc)
+	var/obj/item/shard/shrapnel/bone_chips/human/bone_chips = locate() in target
+	if(bone_chips)
+		bone_chips.forceMove(user.loc)
 
 	target.disabilities &= ~NERVOUS
 	target.sdisabilities &= ~DISABILITY_DEAF
@@ -102,9 +102,9 @@
 
 	if(target.stat == CONSCIOUS)
 		target.emote("pain")
-	var/datum/wound/internal_bleeding/I = new (0)
-	surgery.affected_limb.add_bleeding(I, TRUE)
-	surgery.affected_limb.wounds += I
+	var/datum/wound/internal_bleeding/int_bleeding = new (0)
+	surgery.affected_limb.add_bleeding(int_bleeding, TRUE)
+	surgery.affected_limb.wounds += int_bleeding
 	target.apply_damage(5, BRUTE, target_zone)
 	surgery.affected_limb.add_bleeding(null, FALSE, 15)
 	target.custom_pain("You feel something rip in your [surgery.affected_limb.display_name]!", 1)
@@ -139,22 +139,22 @@
 
 	log_interact(user, target, "[key_name(user)] finished mending a hematoma in [key_name(target)]'s brain with [tool], beginning [surgery].")
 
-	var/datum/internal_organ/brain/B = target.internal_organs_by_name["brain"]
-	if(B && B.damage >= BONECHIPS_MAX_DAMAGE) // severe brain damage won't be fixed by curing the hematoma
-		B.damage = BONECHIPS_MAX_DAMAGE
+	var/datum/internal_organ/brain/patient_brain = target.internal_organs_by_name["brain"]
+	if(patient_brain && patient_brain.damage >= BONECHIPS_MAX_DAMAGE) // severe brain damage won't be fixed by curing the hematoma
+		patient_brain.damage = BONECHIPS_MAX_DAMAGE
 
 	to_chat(target, SPAN_NOTICE("The agonizing pressure in your skull ceases, but something still feels pokey up there!"))
 	new /obj/item/shard/shrapnel/bone_chips/human(target) //secretly adds bone chips
 	target.pain.recalculate_pain()
 
 /datum/surgery_step/treat_hematoma/failure(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	var/datum/internal_organ/brain/B = target.internal_organs_by_name["brain"]
+	var/datum/internal_organ/brain/patient_brain = target.internal_organs_by_name["brain"]
 	user.affected_message(target,
 		SPAN_WARNING("Your hand slips, bruising [target]'s brain with [tool]!"),
 		SPAN_WARNING("[user]'s hand slips, bruising your brain with [tool]!"),
 		SPAN_WARNING("[user]'s hand slips, bruising [target]'s brain with [tool]!"))
 
-	B.take_damage(10, FALSE)
+	patient_brain.take_damage(10, FALSE)
 	log_interact(user, target, "[key_name(user)] failed to mend the hematoma in [key_name(target)]'s brain with [tool], aborting [surgery].")
 
 	return FALSE

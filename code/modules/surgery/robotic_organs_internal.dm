@@ -12,9 +12,9 @@ and organ transplant code which may come in handy in future but haven't been edi
 	required_surgery_skill = SKILL_SURGERY_TRAINED
 	steps = list(/datum/surgery_step/repair_robotic_organs)
 
-/datum/surgery/robotic_organ_repair/can_start(mob/user, mob/living/carbon/patient, obj/limb/L, obj/item/tool)
-	for(var/datum/internal_organ/IO as anything in L.internal_organs)
-		if(IO.damage > 0 && IO.robotic == ORGAN_ROBOT)
+/datum/surgery/robotic_organ_repair/can_start(mob/user, mob/living/carbon/patient, obj/limb/patient_limb, obj/item/tool)
+	for(var/datum/internal_organ/int_organ as anything in patient_limb.internal_organs)
+		if(int_organ.damage > 0 && int_organ.robotic == ORGAN_ROBOT)
 			return TRUE
 	return FALSE
 
@@ -40,17 +40,17 @@ and organ transplant code which may come in handy in future but haven't been edi
 	failure_sound = 'sound/surgery/organ2.ogg'
 
 /datum/surgery_step/repair_robotic_organs/repeat_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	for(var/datum/internal_organ/IO as anything in surgery.affected_limb.internal_organs)
-		if(IO.damage > 0 && IO.robotic == ORGAN_ROBOT)
+	for(var/datum/internal_organ/int_organ as anything in surgery.affected_limb.internal_organs)
+		if(int_organ.damage > 0 && int_organ.robotic == ORGAN_ROBOT)
 			return TRUE
 	return FALSE
 
 /datum/surgery_step/repair_robotic_organs/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	var/list/damaged_organs = list()
 	var/toolname
-	for(var/datum/internal_organ/IO as anything in surgery.affected_limb.internal_organs)
-		if(IO.damage > 0 && IO.robotic == ORGAN_ROBOT)
-			damaged_organs += IO
+	for(var/datum/internal_organ/int_organ as anything in surgery.affected_limb.internal_organs)
+		if(int_organ.damage > 0 && int_organ.robotic == ORGAN_ROBOT)
+			damaged_organs += int_organ
 
 	switch(tool_type)
 		if(/obj/item/stack/nanopaste)
@@ -74,15 +74,15 @@ and organ transplant code which may come in handy in future but haven't been edi
 
 /datum/surgery_step/repair_robotic_organs/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	log_interact(user, target, "[key_name(user)] mended an organ in [key_name(target)]'s [surgery.affected_limb.display_name], possibly ending [surgery].")
-	for(var/datum/internal_organ/I as anything in surgery.affected_limb.internal_organs)
-		if(I && I.damage > 0 && I.robotic == ORGAN_ROBOT)
+	for(var/datum/internal_organ/int_organ as anything in surgery.affected_limb.internal_organs)
+		if(int_organ && int_organ.damage > 0 && int_organ.robotic == ORGAN_ROBOT)
 			user.affected_message(target,
-				SPAN_NOTICE("You finish treating [target]'s damaged [I.name]."),
-				SPAN_NOTICE("[user] finishes treating your damaged [I.name]."),
-				SPAN_NOTICE("[user] finishes treating [target]'s damaged [I.name]."))
+				SPAN_NOTICE("You finish treating [target]'s damaged [int_organ.name]."),
+				SPAN_NOTICE("[user] finishes treating your damaged [int_organ.name]."),
+				SPAN_NOTICE("[user] finishes treating [target]'s damaged [int_organ.name]."))
 
 			user.count_niche_stat(STATISTICS_NICHE_SURGERY_ORGAN_REPAIR)
-			I.rejuvenate()
+			int_organ.rejuvenate()
 			break
 
 /datum/surgery_step/repair_robotic_organs/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -97,9 +97,9 @@ and organ transplant code which may come in handy in future but haven't been edi
 	target.apply_damage(10, TOX)
 	target.apply_damage(5, BRUTE, target_zone)
 
-	for(var/datum/internal_organ/I as anything in surgery.affected_limb.internal_organs)
-		if(I && I.damage > 0)
-			I.take_damage(dam_amt, 0)
+	for(var/datum/internal_organ/int_organ as anything in surgery.affected_limb.internal_organs)
+		if(int_organ && int_organ.damage > 0)
+			int_organ.take_damage(dam_amt, 0)
 
 	log_interact(user, target, "[key_name(user)] failed to mend organs in [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")
 	return FALSE

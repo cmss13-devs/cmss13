@@ -9,8 +9,8 @@
 		/datum/surgery_step/graft_exposed_flesh,
 	)
 
-/datum/surgery/eschar_mend/can_start(mob/user, mob/living/carbon/patient, obj/limb/L, obj/item/tool)
-	return L.status & LIMB_ESCHAR
+/datum/surgery/eschar_mend/can_start(mob/user, mob/living/carbon/patient, obj/limb/patient_limb, obj/item/tool)
+	return patient_limb.status & LIMB_ESCHAR
 
 /datum/surgery_step/separate_eschar
 	name = "Remove the Eschar"

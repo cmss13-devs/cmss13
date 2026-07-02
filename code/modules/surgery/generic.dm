@@ -57,7 +57,7 @@
 			SPAN_NOTICE("[user] has constructed a prepared incision in your [surgery.affected_limb.display_name] that is now bleeding."),
 			SPAN_NOTICE("[user] has constructed a prepared incision in [target]'s [surgery.affected_limb.display_name] that is now bleeding."))
 
-		surgery.status += 2 //IMS completes all steps.
+		surgery.status += 2 //int_organMS completes all steps.
 
 		switch(target_zone) //forces application of overlays
 			if("chest")
@@ -130,8 +130,8 @@
 	self_operable = TRUE
 	pain_reduction_required = PAIN_REDUCTION_MEDIUM
 
-/datum/surgery/clamp_bleeders/can_start(mob/user, mob/living/carbon/patient, obj/limb/L, obj/item/tool)
-	for(var/datum/effects/bleeding/external/B in L.bleeding_effects_list)
+/datum/surgery/clamp_bleeders/can_start(mob/user, mob/living/carbon/patient, obj/limb/patient_limb, obj/item/tool)
+	for(var/datum/effects/bleeding/external/patient_brain in patient_limb.bleeding_effects_list)
 		return TRUE
 	return FALSE
 
@@ -210,9 +210,9 @@
 
 	if(target.stat == CONSCIOUS)
 		target.emote("pain")
-	var/datum/wound/internal_bleeding/I = new (0)
-	surgery.affected_limb.add_bleeding(I, TRUE)
-	surgery.affected_limb.wounds += I
+	var/datum/wound/internal_bleeding/int_organ = new (0)
+	surgery.affected_limb.add_bleeding(int_organ, TRUE)
+	surgery.affected_limb.wounds += int_organ
 	target.apply_damage(4, BRUTE, target_zone)
 	target.custom_pain("You feel something rip in your [surgery.affected_limb.display_name]!", 1)
 	log_interact(user, target, "[key_name(user)] failed to clamp bleeders in [key_name(target)]'s [surgery.affected_limb.display_name], possibly ending [surgery].")
@@ -503,7 +503,7 @@
 //------------------------------------
 
 //This step can be skipped, and ends the surgery when completed. In rib-opening surgery, it can be skipped to abort the operation.
-//In rib-closing surgery, it can be skipped to finish closing the ribcage, or completed to abort the operation.
+//int_organn rib-closing surgery, it can be skipped to finish closing the ribcage, or completed to abort the operation.
 /datum/surgery_step/open_encased_step
 	name = "Pry Bones Open"
 	desc = "pry the sawed bones open"
@@ -664,7 +664,7 @@
 //Use materials to mend bones, same as /datum/surgery_step/mend_bones
 /datum/surgery_step/mend_encased/extra_checks(mob/living/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, repeating, skipped)
 	. = ..()
-	if(istype(tool, /obj/item/tool/surgery/bonegel)) //If bone gel, use some of the gel
+	if(istype(tool, /obj/item/tool/surgery/bonegel)) //int_organf bone gel, use some of the gel
 		var/obj/item/tool/surgery/bonegel/gel = tool
 		if(!gel.use_gel(gel.mend_bones_fix_cost))
 			to_chat(user, SPAN_BOLDWARNING("[gel] is empty!"))

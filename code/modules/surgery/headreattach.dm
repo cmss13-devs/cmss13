@@ -22,7 +22,7 @@
 	var/obj/item/limb/head/synth/patient_head
 	var/no_revive = FALSE
 
-/datum/surgery/head_reattach/can_start(mob/user, mob/living/carbon/human/patient, obj/limb/L, obj/item/tool)
+/datum/surgery/head_reattach/can_start(mob/user, mob/living/carbon/human/patient, obj/limb/patient_limb, obj/item/tool)
 	if(IS_SYNTHETIC)
 		return TRUE
 	return FALSE
@@ -169,9 +169,9 @@
 		surgery.patient_head.brainmob.mind.transfer_to(target)
 
 	else // attempt to transfer linked ghost if not found
-		for(var/mob/dead/observer/G in GLOB.observer_list)
-			if(istype(G) && G.mind && G.mind.original == surgery.patient_head.brainmob && G.can_reenter_corpse)
-				G.mind.original = target
+		for(var/mob/dead/observer/observer in GLOB.observer_list)
+			if(istype(observer) && observer.mind && observer.mind.original == surgery.patient_head.brainmob && observer.can_reenter_corpse)
+				observer.mind.original = target
 				break
 
 	qdel(surgery.patient_head) //Destroy head item.

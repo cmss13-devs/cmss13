@@ -11,8 +11,8 @@ w//////////////////////////////////////////////////////////////////
 	pain_reduction_required = PAIN_REDUCTION_HEAVY
 	steps = list(/datum/surgery_step/fix_vein)
 
-/datum/surgery/internal_bleeding/can_start(mob/user, mob/living/carbon/patient, obj/limb/L, obj/item/tool)
-	for(var/datum/wound/W as anything in L.wounds)
+/datum/surgery/internal_bleeding/can_start(mob/user, mob/living/carbon/patient, obj/limb/patient_limb, obj/item/tool)
+	for(var/datum/wound/W as anything in patient_limb.wounds)
 		if(W.internal)
 			return TRUE
 	return FALSE

@@ -32,8 +32,8 @@
 	)
 	requires_bodypart = FALSE
 
-/datum/surgery/amputate/repair/can_start(mob/user, mob/living/carbon/patient, obj/limb/L, obj/item/tool)
-	return !(L.status & LIMB_AMPUTATED)
+/datum/surgery/amputate/repair/can_start(mob/user, mob/living/carbon/patient, obj/limb/patient_limb, obj/item/tool)
+	return !(patient_limb.status & LIMB_AMPUTATED)
 
 //Mend the stump left by a traumatic amputation of a prosthetic. Needs a doctor, prosthetics are hard.
 /datum/surgery/amputate/repair/robot

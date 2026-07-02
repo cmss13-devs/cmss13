@@ -14,8 +14,8 @@
 	requires_bodypart_type = LIMB_ROBOT
 	lying_required = FALSE
 
-/datum/surgery/prosthetic_recalibration/can_start(mob/user, mob/living/carbon/patient, obj/limb/L, obj/item/tool)
-	if(L.status & LIMB_UNCALIBRATED_PROSTHETIC)
+/datum/surgery/prosthetic_recalibration/can_start(mob/user, mob/living/carbon/patient, obj/limb/patient_limb, obj/item/tool)
+	if(patient_limb.status & LIMB_UNCALIBRATED_PROSTHETIC)
 		return TRUE
 	return FALSE
 

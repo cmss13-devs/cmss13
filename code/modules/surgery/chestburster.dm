@@ -16,7 +16,7 @@
 		/datum/surgery_step/remove_larva,
 	)
 
-/datum/surgery/chestburster_removal/can_start(mob/user, mob/living/carbon/patient, obj/limb/L, obj/item/tool)
+/datum/surgery/chestburster_removal/can_start(mob/user, mob/living/carbon/patient, obj/limb/patient_limb, obj/item/tool)
 	if(!locate(/obj/structure/machinery/optable) in get_turf(patient))
 		return FALSE
 
@@ -94,9 +94,9 @@
 		/*10-30 dam across 1-3 organs. This may shred one organ, but will most likely scatter a decent amount of damage across several.
 		Xeno acid can melt steel beams, and y'all just spilled it in his thoracic cavity.
 		You're also right there with the ribs cracked to fix it, so you can use the 3-9 seconds you spend on that to think about using the PICT next time.*/
-		for(var/I in 1 to rand(2,6))
-			var/datum/internal_organ/O = pick(surgery.affected_limb.internal_organs)
-			O.take_damage(5, I == 1)
+		for(var/internal in 1 to rand(2,6))
+			var/datum/internal_organ/organ = pick(surgery.affected_limb.internal_organs)
+			organ.take_damage(5, organ == 1)
 
 	log_interact(user, target, "[key_name(user)] cut the roots of a larva in [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], starting [surgery].")
 
@@ -151,8 +151,8 @@
 	log_interact(user, target, "[key_name(user)] started to remove an embryo from [key_name(target)]'s ribcage.")
 
 /datum/surgery_step/remove_larva/success(mob/living/carbon/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	var/obj/item/alien_embryo/A = locate() in target
-	if(A)
+	var/obj/item/alien_embryo/embryo = locate() in target
+	if(embryo)
 		if(tool)
 			user.affected_message(target,
 				SPAN_WARNING("You pull a wriggling parasite out of [target]'s ribcage! It's a girl!"),
@@ -181,16 +181,16 @@
 
 		to_chat(target, SPAN_NOTICE("The heaviness in your chest is gone. You feel monumentally better."))
 		user.count_niche_stat(STATISTICS_NICHE_SURGERY_LARVA)
-		var/mob/living/carbon/xenomorph/larva/L = locate() in target //the larva was fully grown, ready to burst.
-		if(L)
-			L.forceMove(target.loc)
-			qdel(A)
+		var/mob/living/carbon/xenomorph/larva/larba = locate() in target //the larva was fully grown, ready to burst.
+		if(larba)
+			larba.forceMove(target.loc)
+			qdel(larba)
 			user.affected_message(target,
 				SPAN_HIGHDANGER("You removed the larva just in time, but it is fully grown and alive!"),
 				SPAN_HIGHDANGER("[user] removed the larva just in time, but it is fully grown and alive!"),
 				SPAN_HIGHDANGER("[user] removed the larva just in time, but it is fully grown and alive!"))
 		else
-			A.forceMove(target.loc)
+			larba.forceMove(target.loc)
 			target.status_flags &= ~XENO_HOST
 
 		log_interact(user, target, "[key_name(user)] removed an embryo from [key_name(target)]'s ribcage with [tool ? "[tool]" : "their hands"], ending [surgery].")
@@ -201,8 +201,8 @@
 		SPAN_WARNING("[user]'s hands slip, bruising your organs and wounding the larva, which spills acid over \his hands and into your [surgery.affected_limb.cavity]!"),
 		SPAN_WARNING("[user]'s hands slip, bruising [target]'s organs and spilling acid in \his [surgery.affected_limb.cavity]!"))
 
-	var/datum/internal_organ/I = pick(surgery.affected_limb.internal_organs)
-	I.take_damage(5,0)
+	var/datum/internal_organ/int_organ = pick(surgery.affected_limb.internal_organs)
+	int_organ.take_damage(5,0)
 	if(target.stat == CONSCIOUS)
 		target.emote("scream")
 	to_chat(target, SPAN_WARNING("Your organs in your [surgery.affected_limb.cavity] feel like they're in living hell!"))

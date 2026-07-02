@@ -16,7 +16,7 @@
 	requires_bodypart_type = NONE
 	requires_bodypart = FALSE
 
-/datum/surgery/xenomorph/can_start(mob/user, mob/living/carbon/xenomorph/patient, obj/limb/L, obj/item/tool)
+/datum/surgery/xenomorph/can_start(mob/user, mob/living/carbon/xenomorph/patient, obj/limb/patient_limb, obj/item/tool)
 	if(islarva(patient) || isfacehugger(patient))
 		to_chat(user, SPAN_DANGER("This organism is probably too small to have a mature organ worthy of extraction..."))
 		return FALSE

@@ -62,7 +62,7 @@
 	. = ..()
 
 ///Catch-all proc for additional preconditions for starting the surgery. Return FALSE if the surgery can't be done.
-/datum/surgery/proc/can_start(mob/user, mob/living/carbon/patient, obj/limb/L, obj/item/tool)
+/datum/surgery/proc/can_start(mob/user, mob/living/carbon/patient, obj/limb/patient_limb, obj/item/tool)
 	return TRUE
 	//Might add the surgery computer later
 
@@ -113,7 +113,7 @@
 		if(current_step.attempt_step(user, target, user.zone_selected, tool, src, repeating)) //First, try this step.
 			return TRUE
 		var/datum/surgery_step/next_step
-		if(current_step.skip_step_criteria(user, target, user.zone_selected, tool, src) && status < length(steps)) //If that doesn't work but the step is optional and not the last in the list, try the next step.
+		if(current_step.skip_step_criteria(user, target, user.zone_selected, tool, src) && status < length(steps)) //int_organf that doesn't work but the step is optional and not the last in the list, try the next step.
 			next_step = GLOB.surgery_step_list[steps[status + 1]]
 			if(next_step.attempt_step(user, target, user.zone_selected, tool, src, skipped = TRUE))
 				return TRUE

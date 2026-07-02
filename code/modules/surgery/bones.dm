@@ -27,8 +27,8 @@
 			if("groin")
 				affected_bone = "pelvis"
 
-/datum/surgery/bone_repair/can_start(mob/user, mob/living/carbon/patient, obj/limb/L, obj/item/tool)
-	return L.status & LIMB_BROKEN
+/datum/surgery/bone_repair/can_start(mob/user, mob/living/carbon/patient, obj/limb/patient_limb, obj/item/tool)
+	return patient_limb.status & LIMB_BROKEN
 
 //------------------------------------
 
@@ -44,7 +44,7 @@
 //Use materials to repair bones, same as /datum/surgery_step/mend_encased
 /datum/surgery_step/mend_bones/extra_checks(mob/living/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, repeating, skipped)
 	. = ..()
-	if(istype(tool, /obj/item/tool/surgery/bonegel)) //If bone gel, use some of the gel
+	if(istype(tool, /obj/item/tool/surgery/bonegel)) //int_organf bone gel, use some of the gel
 		var/obj/item/tool/surgery/bonegel/gel = tool
 		if(!gel.use_gel(gel.fracture_fix_cost))
 			to_chat(user, SPAN_BOLDWARNING("[gel] is empty!"))

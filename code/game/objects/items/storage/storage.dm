@@ -378,16 +378,17 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 	if (storage_flags & STORAGE_CONTENT_NUM_DISPLAY)
 		numbered_contents = list()
 		adjusted_contents = 0
-		for (var/obj/item/I in contents)
+		for (var/obj/item/stored_items in contents)
 			var/found = 0
-			for (var/datum/numbered_display/ND in numbered_contents)
-				if (ND.sample_object.type == I.type)
-					ND.number++
+			for (var/datum/numbered_display/display in numbered_contents)
+				if (display.sample_object.type == stored_items.type)
+					display.number++
+					stored_items.screen_loc = display.sample_object.screen_loc
 					found = 1
 					break
 			if (!found)
 				adjusted_contents++
-				numbered_contents.Add( new/datum/numbered_display(I) )
+				numbered_contents.Add( new/datum/numbered_display(stored_items) )
 
 	if (storage_slots == null)
 		space_orient_objs(numbered_contents)

@@ -473,11 +473,7 @@
 
 	if(only_leader)
 		if(squad_leader && squad_leader.stat == CONSCIOUS && squad_leader.client)
-			playsound_client(squad_leader.client, 'sound/effects/radiostatic.ogg', squad_leader.loc, 25, FALSE)
-			if(squad_leader in targets_to_garble)
-				squad_leader.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>[garbled_text]", /atom/movable/screen/text/screen_text/command_order, message_color)
-			else
-				squad_leader.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>[text]", /atom/movable/screen/text/screen_text/command_order, message_color)
+			squad_leader.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>[text]", /atom/movable/screen/text/screen_text/command_order, message_color)
 		return
 
 	for(var/mob/living/carbon/human/marine in marines_list)
@@ -499,10 +495,7 @@
 		if(squad_leader && squad_leader.stat == CONSCIOUS && squad_leader.client)
 			if(transmitter)
 				squad_leader << sound('sound/effects/tech_notification.ogg')
-			if(squad_leader in targets_to_garble)
-				to_chat(squad_leader, "[SPAN_BLUE("<B>SL Overwatch:</b> [nametext][garbled_text]")]", type = MESSAGE_TYPE_RADIO)
-			else
-				to_chat(squad_leader, "[SPAN_BLUE("<B>SL Overwatch:</b> [nametext][text]")]", type = MESSAGE_TYPE_RADIO)
+			to_chat(squad_leader, "[SPAN_BLUE("<B>SL Overwatch:</b> [nametext][text]")]", type = MESSAGE_TYPE_RADIO)
 		return
 
 	for(var/mob/living/carbon/human/marine in marines_list)
@@ -584,6 +577,8 @@
 		var/is_shipside = is_mainship_level(current_turf?.z)
 		if(!is_shipside && !(current_turf?.z in coms_zs))
 			targets_to_garble += current_mob
+		if(current_mob.back == /obj/item/storage/backpack/marine/satchel/rto)
+			targets_to_garble -= current_mob
 
 	return targets_to_garble
 

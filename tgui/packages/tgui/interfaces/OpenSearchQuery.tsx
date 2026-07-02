@@ -1,8 +1,8 @@
+import { useState } from 'react';
 import { useBackend, useSharedState } from 'tgui/backend';
 import {
   Box,
   Button,
-  Collapsible,
   Dropdown,
   Input,
   Section,
@@ -60,8 +60,25 @@ const DEFAULT_QUERY_MODE = 'Lucene';
 const LOGTYPE_TO_COLOR = {
   ATTACK: 'bad',
   SAY: 'purple',
+  HIVEMIND: 'purple',
+  EMOTE: 'purple',
+  OOC: 'violet',
   GAME: 'blue',
   ADMIN: 'good',
+};
+
+const MiniCollapsible = (props) => {
+  const { children, header, color, ...rest } = props;
+  const [open, setOpen] = useState(props.open);
+
+  return (
+    <Box mb={1}>
+      <Button fluid color={color} onClick={() => setOpen(!open)} {...rest}>
+        {header}
+      </Button>
+      {open && <Box mt={1}>{children}</Box>}
+    </Box>
+  );
 };
 
 export const OpenSearchQuery = (props) => {
@@ -183,6 +200,7 @@ export const OpenSearchQuery = (props) => {
     delete cloned['log'];
     delete cloned['roundid'];
     delete cloned['filetype'];
+    delete cloned['tags'];
     // Those are already in the quick view above, no need to display again
     delete cloned['logtype'];
     delete cloned['ckey'];
@@ -203,16 +221,25 @@ export const OpenSearchQuery = (props) => {
     );
   };
 
+  const generateTimestampButton = (timestamp) => {
+    let dd: Date = new Date(timestamp);
+    return (
+      <Button pr={1} color="label">
+        {`${dd.getUTCHours()}:${dd.getUTCMinutes}:${dd.getUTCSeconds()}`}
+      </Button>
+    );
+  };
+
   const generateSingleLogElement = (onedoc) => {
     return (
       onedoc._source && (
         <Stack.Item>
-          <Collapsible
-            icon="non-existent-icon"
-            title={
+          <MiniCollapsible
+            header={
               <Box as="span">
                 <Table>
                   <Table.Row>
+                    {generateTimestampButton(onedoc._source.timestamp)}
                     <Button
                       pr={1}
                       color={LOGTYPE_TO_COLOR[onedoc._source.logtype] || 'grey'}
@@ -265,7 +292,7 @@ export const OpenSearchQuery = (props) => {
             }
           >
             {JSON.stringify(debloatDocument(onedoc._source))}
-          </Collapsible>
+          </MiniCollapsible>
         </Stack.Item>
       )
     );

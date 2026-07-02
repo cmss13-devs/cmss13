@@ -35,7 +35,7 @@
 	/// but you might want to let it be selectable later for performance
 	var/target_index = "gamelogs-*"
 	/// Max amount of results to be fetched. Be conservative, BYOND's json decode is a killer
-	var/max_results = 200
+	var/max_results = 500
 
 	/// What mode the time selector is in
 	var/time_mode = OPENSEARCH_QUERY_TIME_MODE_RELATIVE

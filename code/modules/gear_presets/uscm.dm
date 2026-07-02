@@ -11,7 +11,7 @@
 	utility_shoes = list(/obj/item/clothing/shoes/marine)
 	utility_extra = list(/obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
 
-	service_under = list(/obj/item/clothing/under/marine/officer/bridge)
+	service_under = list(/obj/item/clothing/under/marine/officer/bridge, /obj/item/clothing/under/marine/officer/bridge/skirt)
 	service_over = list(/obj/item/clothing/suit/storage/jacket/marine/service, /obj/item/clothing/suit/storage/jacket/marine/service/mp)
 	service_hat = list(/obj/item/clothing/head/cmcap)
 	service_shoes = list(/obj/item/clothing/shoes/dress)

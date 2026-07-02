@@ -11,16 +11,13 @@
 
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), src), ttl)
 
-	if(istype(from, /mob/living/carbon/xenomorph))
-		source_xeno = from
-
-	if(ishuman(target_atom))
-		var/mob/living/carbon/human/target_human = target_atom
-		target_human.update_xeno_hostile_hud()
+	if (ishuman(target_atom))
+		var/mob/living/carbon/human/human = target_atom
+		human.update_xeno_hostile_hud()
 
 
-/datum/effects/dancer_tag/validate_atom(mob/living/carbon/target_human)
-	if(!isxeno_human(target_human) || target_human.stat == DEAD)
+/datum/effects/dancer_tag/validate_atom(mob/living/carbon/human)
+	if (!isxeno_human(human) || human.stat == DEAD)
 		return FALSE
 	return ..()
 
@@ -32,18 +29,16 @@
 	if(!istype(affected_atom, /mob/living/carbon/human))
 		return
 
-	var/mob/living/carbon/human/target_human = affected_atom
-	target_human.update_xeno_hostile_hud()
+	var/mob/living/carbon/human/human = affected_atom
+	human.update_xeno_hostile_hud()
 
 
 /datum/effects/dancer_tag/Destroy()
-	if(ishuman(affected_atom))
-		var/mob/living/carbon/human/target_human = affected_atom
-		target_human.update_xeno_hostile_hud()
-		if(spread)
-			to_chat(target_human, SPAN_XENODANGER("You calm down and get back to your senses."))
-			to_chat(source_xeno, SPAN_XENODANGER("Our surging instincts fade away, we no longer feel compelled to hunt them."))
-			spread = FALSE
+	if (!ishuman(affected_atom))
+		return ..()
+
+	var/mob/living/carbon/human/human = affected_atom
+	addtimer(CALLBACK(human, TYPE_PROC_REF(/mob/living/carbon/human, update_xeno_hostile_hud)), 3)
 
 	return ..()
 

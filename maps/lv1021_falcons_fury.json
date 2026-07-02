@@ -1,0 +1,53 @@
+{
+    "map_name": "LV-1021: Operation Falcon's Fury",
+    "map_path": "map_files/LV1021_Falcons_Fury",
+    "map_file": "LV1021_Falcons_Fury.dmm",
+
+    "survivor_types": [
+        "/datum/equipment_preset/survivor/clf_lv1021/standard"
+    ],
+	"synth_survivor_types": [
+        "/datum/equipment_preset/synth/survivor/clf/lv1021"
+    ],
+    "CO_insert_survivor_types": [
+        "/datum/equipment_preset/survivor/clf_lv1021/coordinator"
+    ],
+    "map_item_type": "/obj/item/map/lv1021_map",
+    "announce_text": "###SHIPNAME###, this is Third Fleet Command. Earlier this month, your vessel was involved in Operation Tychon Tackle, a counter-insurgency mission against the CLF. Whilst successful, it proved a difficult mission.\n\nYour next mission is a followup. You are in orbit of LV-1021, an uncharted jungle world. This planet hosts a CLF training camp linked to the enemy you clashed with on Tychon. Your objective is search and destroy. A FORECON squad, the Snake Eaters, has deployed ahead of you, expect a transmission from them shortly.\n\nWe have only this one short window to engage and destroy the enemy before they disperse, we won't get a better chance to catch the insurgents unprepared.\n\nOperation Falcon’s Fury is authorized.",
+    "monkey_types": [
+        "farwa",
+        "monkey",
+        "neaera",
+        "stok"
+    ],
+    "environment_traits": { "Fog": true },
+    "traits": [
+        {
+            "Ground": true,
+            "Up": 1
+        },
+        {
+            "Ground": true,
+            "Up": 1,
+            "Down": -1
+        },
+        {
+            "Ground": true,
+            "Down": -1
+        }
+    ],
+    "nightmare_path": "maps/Nightmare/maps/LV1021_Falcons_Fury/",
+    "xvx_hives": {
+        "xeno_hive_alpha": 0,
+        "xeno_hive_bravo": 0,
+        "xeno_hive_charlie": 70
+    },
+    "camouflage": "jungle",
+    "gamemodes": [
+        "Distress Signal",
+        "Hunter Games",
+        "Hive Wars",
+        "Faction Clash",
+        "Infection"
+    ]
+}

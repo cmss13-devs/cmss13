@@ -353,6 +353,10 @@
 /obj/item/explosive/mine/active/no_iff
 	iff_signal = null
 
+/obj/item/explosive/mine/active/clf
+	name = "\improper Hacked M20 Claymore anti-personnel mine"
+	desc = "Appears to be a standard M20 Claymore. On visual inspection, this one appears to have been tampered with."
+	iff_signal = FACTION_CLF
 
 /obj/item/explosive/mine/pmc
 	name = "\improper M20P Claymore anti-personnel mine"

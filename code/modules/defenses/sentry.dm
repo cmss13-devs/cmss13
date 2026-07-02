@@ -513,6 +513,14 @@
 	faction_group = FACTION_LIST_MARINE
 	static = TRUE
 
+/obj/structure/machinery/defenses/sentry/premade/clf
+	name = "\improper Hacked UA-577 Gauss Turret"
+	desc = "A deployable, semi-automated turret with AI targeting capabilities. Armed with an M30 Autocannon and a high-capacity drum magazine. This one's IFF system has been hacked and its color scheme is non-standard issue. Best to treat it as hostile."
+	icon = 'icons/obj/structures/machinery/defenses/clf_defenses.dmi'
+	icon_state = "premade" //for the map editor only
+	faction_group = FACTION_LIST_CLF
+	static = TRUE
+
 /obj/structure/machinery/defenses/sentry/premade/lowammo
 	name = "\improper UA-577 Gauss Turret"
 	immobile = TRUE
@@ -1003,6 +1011,21 @@
 	omni_directional = TRUE
 	minimap_icon_state = "sentry_omni"
 	handheld_type = /obj/item/defenses/handheld/sentry/upp/light
+
+/obj/structure/machinery/defenses/sentry/clf
+	name = "CLF Hacked UA-577 Gauss Turret"
+	desc = "A deployable, semi-automated turret with AI targeting capabilities. Armed with an M30 Autocannon and a high-capacity drum magazine. This one's IFF system has been hacked and its color scheme is non-standard issue. Best to treat it as hostile."
+	icon = 'icons/obj/structures/machinery/defenses/clf_defenses.dmi'
+	sentry_type = "uac_sentry"
+	health = 300
+	health_max = 300
+	damage_mult = 1.2
+	disassemble_time = 5 SECONDS
+	handheld_type = /obj/item/defenses/handheld/sentry/clf
+	ammo = new /obj/item/ammo_magazine/sentry
+	selected_categories = list(
+		SENTRY_CATEGORY_IFF = FACTION_CLF,
+	)
 
 /obj/structure/machinery/defenses/sentry/omni
 	name = "\improper UA 571-D omnidirectional sentry gun"

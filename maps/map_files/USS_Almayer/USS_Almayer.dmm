@@ -8768,10 +8768,7 @@
 /obj/item/device/radio/listening_bug/radio_linked/fax/uscm_hc{
 	nametag = "CIC"
 	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
-	},
+/obj/structure/machinery/door/window/westleft,
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "awE" = (

@@ -178,7 +178,8 @@
 		to_chat(src, SPAN_WARNING("You would break your tools if you did this!"))
 		return
 
-	if(isxeno(target))
+	var/pathogen_creature = is_pathogen_creature(target)
+	if(pathogen_creature || isxeno(target))
 		xeno_victim = target
 
 	var/static/list/procedure_choices = list(
@@ -224,8 +225,11 @@
 			if(do_after(src, 6.5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 				visible_message(SPAN_DANGER("[src] hacks away at \the [target]'s limbs and slices off strips of dripping meat."), SPAN_NOTICE("You slice off a few of \the [target]'s limbs, making sure to get the finest cuts."))
 				if(xeno_victim && isturf(xeno_victim.loc))
-					var/obj/item/reagent_container/food/snacks/meat/xenomeat = new /obj/item/reagent_container/food/snacks/meat/xenomeat(target.loc)
-					xenomeat.name = "raw [xeno_victim.age_prefix][xeno_victim.caste_type] steak"
+					var/foodtype = /obj/item/reagent_container/food/snacks/meat/xenomeat
+					if(pathogen_creature)
+						foodtype = /obj/item/reagent_container/food/snacks/mycelial_flesh
+					var/obj/item/reagent_container/food/snacks/flesh = new foodtype(target.loc)
+					flesh.name = "raw [xeno_victim.age_prefix][xeno_victim.caste_type] steak"
 				else if(victim && isturf(victim.loc))
 					victim.apply_damage(100, BRUTE, pick("r_leg", "l_leg", "r_arm", "l_arm"), FALSE, TRUE) //Basically just rips off a random limb.
 					var/obj/item/reagent_container/food/snacks/meat/meat = new /obj/item/reagent_container/food/snacks/meat(victim.loc)
@@ -239,8 +243,11 @@
 			if(do_after(src, 7 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 				visible_message(SPAN_DANGER("[src] tears apart \the [target]'s ribcage and begins chopping off bit and pieces."), SPAN_NOTICE("You rip open \the [target]'s ribcage and start tearing the tastiest bits out."))
 				if(xeno_victim && isturf(xeno_victim.loc))
-					var/obj/item/reagent_container/food/snacks/meat/xenomeat = new /obj/item/reagent_container/food/snacks/meat/xenomeat(target.loc)
-					xenomeat.name = "raw [xeno_victim.age_prefix][xeno_victim.caste_type] tenderloin"
+					var/foodtype = /obj/item/reagent_container/food/snacks/meat/xenomeat
+					if(pathogen_creature)
+						foodtype = /obj/item/reagent_container/food/snacks/mycelial_flesh
+					var/obj/item/reagent_container/food/snacks/flesh = new foodtype(target.loc)
+					flesh.name = "raw [xeno_victim.age_prefix][xeno_victim.caste_type] tenderloin"
 				else if(victim && isturf(target.loc))
 					var/obj/item/reagent_container/food/snacks/meat/meat = new /obj/item/reagent_container/food/snacks/meat(victim.loc)
 					meat.name = "raw [victim.name] tenderloin"

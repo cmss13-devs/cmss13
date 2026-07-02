@@ -37,3 +37,7 @@
 	action_type = XENO_ACTION_ACTIVATE //doesn't really need a macro
 	xeno_cooldown =  4 MINUTES
 	cooldown_message = "We can dig a tunnel again."
+
+/datum/action/xeno_action/onclick/build_tunnel/pathogen
+	button_icon_state = "template_pathogen"
+	icon_file = 'icons/mob/hud/actions_pathogen.dmi'

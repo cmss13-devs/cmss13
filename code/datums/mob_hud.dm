@@ -25,6 +25,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 	MOB_HUD_XENO_HIVE_HUNTED = new /datum/mob_hud/xeno/xeno_hive_hunted(),
 	MOB_HUD_XENO_HIVE_RENEGADE = new /datum/mob_hud/xeno/xeno_hive_renegade(),
 	MOB_HUD_XENO_HIVE_TUTORIAL = new /datum/mob_hud/xeno/xeno_hive_tutorial(),
+	MOB_HUD_XENO_HIVE_PATHOGEN = new /datum/mob_hud/xeno/xeno_hive_pathogen(),
 	MOB_HUD_XENO_HOSTILE = new /datum/mob_hud/xeno_hostile(),
 	MOB_HUD_FACTION_MARINE = new /datum/mob_hud/faction(),
 	MOB_HUD_FACTION_OBSERVER = new /datum/mob_hud/faction/observer(),
@@ -44,6 +45,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 	MOB_HUD_EXECUTE = new /datum/mob_hud/execute_hud(),
 	MOB_HUD_NEW_PLAYER = new /datum/mob_hud/new_player(),
 	MOB_HUD_SPYCAMS = new /datum/mob_hud/spy_cams(),
+	MOB_HUD_MYCOTOXIN = new /datum/mob_hud/pathogen_myco(),
 	)))
 
 /datum/mob_hud
@@ -180,7 +182,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 /datum/mob_hud/xeno_infection
 	hud_icons = list(STATUS_HUD_XENO_INFECTION, STATUS_HUD_XENO_CULTIST)
 
-
+/datum/mob_hud/pathogen_myco
+	hud_icons = list(STATUS_HUD_MYCO)
 
 /datum/mob_hud/new_player
 	hud_icons = list(NEW_PLAYER_HUD)
@@ -204,6 +207,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 /datum/mob_hud/xeno/xeno_hive_k_series
 /datum/mob_hud/xeno/xeno_hive_renegade
 /datum/mob_hud/xeno/xeno_hive_tutorial
+/datum/mob_hud/xeno/xeno_hive_pathogen
 
 /datum/mob_hud/xeno_hostile
 	hud_icons = list(XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_TAG_SPREAD, XENO_HOSTILE_FREEZE)
@@ -336,6 +340,10 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 		var/datum/mob_hud/execute = GLOB.huds[MOB_HUD_EXECUTE]
 		execute.remove_hud_from(src, src)
 
+	if(is_pathogen_creature(src))
+		var/datum/mob_hud/myco = GLOB.huds[MOB_HUD_MYCOTOXIN]
+		myco.remove_hud_from(src, src)
+
 /mob/proc/refresh_huds(mob/source_mob)
 	var/mob/M = source_mob ? source_mob : src
 	for(var/datum/mob_hud/hud in GLOB.huds)
@@ -376,6 +384,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 			hud = GLOB.huds[MOB_HUD_XENO_HIVE_RENEGADE]
 		if(XENO_HIVE_TUTORIAL)
 			hud = GLOB.huds[MOB_HUD_XENO_HIVE_TUTORIAL]
+		if(XENO_HIVE_PATHOGEN)
+			hud = GLOB.huds[MOB_HUD_XENO_HIVE_PATHOGEN]
 	if(!hive_choice)
 		CRASH("The hive_choice '[hive_choice]' is not defined. Please define a new hive HUD.")
 	hud.add_hud_to(src, src)
@@ -481,15 +491,18 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 	holder2.overlays.Cut()
 	var/image/holder3 = hud_list[STATUS_HUD_XENO_INFECTION]
 	var/image/holder4 = hud_list[STATUS_HUD_XENO_CULTIST]
+	var/image/holder5 = hud_list[STATUS_HUD_MYCO]
 
 	holder2.color = null
 	holder3.color = null
 	holder4.color = null
+	holder5.color = null
 
 	holder2.alpha = alpha
 	holder3.alpha = alpha
 
 	holder4.icon_state = "hudblank"
+	holder5.icon_state = "hudblank"
 
 	if(species && species.flags & IS_SYNTHETIC)
 		holder3.icon_state = "hudsynth" // xenos have less awareness of synth status
@@ -517,7 +530,9 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 			revive_enabled = check_tod() && is_revivable()
 
 		var/holder2_set = 0
-		if(hivenumber)
+		if(iswalker(src))
+			holder4.icon_state = "hudalien_walker"
+		else if(hivenumber)
 			holder4.icon_state = "hudalien"
 
 			if(GLOB.hive_datum[hivenumber])
@@ -533,8 +548,12 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 			holder2.icon_state = "hudxeno"//Observer and admin HUD only
 			holder2_set = 1
 			var/obj/item/alien_embryo/E = locate(/obj/item/alien_embryo) in src
+			var/base_state = "infected"
 			if(E)
-				holder3.icon_state = "infected[E.stage]"
+				if(E.hivenumber == XENO_HIVE_PATHOGEN)
+					holder2.icon_state = "hudpathogen"
+					base_state = "spored"
+				holder3.icon_state = "[base_state][E.stage]"
 				var/datum/hive_status/hive = GLOB.hive_datum[E.hivenumber]
 
 				if(hive && hive.color)
@@ -559,12 +578,15 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 							holder2.icon_state = "huddeaddnr"
 							holder3.icon_state = "huddead"
 							holder2_set = 1
+						if(world.time > timeofdeath + revive_grace_period - 1 MINUTES)
+							holder5.icon_state = "hudalien_mycoready"
 						return
 					else if(!G.client)
 						holder.overlays += image('icons/mob/hud/hud.dmi', "hudnoclient")
 						holder2.overlays += image('icons/mob/hud/hud.dmi', "hudnoclient")
 				if(world.time > timeofdeath + revive_grace_period - 1 MINUTES)
 					holder.icon_state = "huddeadalmost"
+					holder5.icon_state = "hudalien_mycoready"
 					if(!holder2_set)
 						holder2.icon_state = "huddeadalmost"
 						holder3.icon_state = "huddead"

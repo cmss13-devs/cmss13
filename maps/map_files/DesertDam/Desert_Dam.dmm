@@ -1761,6 +1761,10 @@
 /obj/structure/surface/table,
 /turf/open/floor/darkyellow2,
 /area/desert_dam/interior/dam_interior/control_room)
+"aft" = (
+/obj/effect/landmark/structure_spawner/spore_sac_rng/twenty,
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/west_caves)
 "afu" = (
 /obj/structure/surface/table,
 /obj/item/paper{
@@ -2500,6 +2504,10 @@
 	},
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/break_room/upper)
+"ahJ" = (
+/obj/effect/landmark/structure_spawner/spore_sac_rng/twenty,
+/turf/open/desert/rock/deep/rock3,
+/area/desert_dam/interior/caves/west_caves)
 "ahK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table,
@@ -94432,7 +94440,7 @@ rfS
 aZa
 acl
 acl
-acl
+aft
 aEp
 aem
 rfS
@@ -96543,7 +96551,7 @@ acl
 acl
 acl
 acl
-acl
+aft
 acl
 acl
 aEn
@@ -96764,7 +96772,7 @@ rfS
 rfS
 rfS
 aem
-aem
+ahJ
 aEy
 acl
 acl
@@ -96793,7 +96801,7 @@ acl
 acl
 acl
 aYW
-acl
+aft
 acl
 aEp
 aem
@@ -100765,7 +100773,7 @@ rfS
 rfS
 acl
 acl
-acl
+aft
 acl
 acl
 aEw

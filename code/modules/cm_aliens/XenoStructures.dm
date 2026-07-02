@@ -9,6 +9,9 @@
 	health = 1
 	flags_obj = OBJ_ORGANIC
 
+	var/datum/hive_status/linked_hive
+	var/hivenumber = XENO_HIVE_NORMAL
+
 /*
  * Resin
  */
@@ -156,7 +159,7 @@
 	layer = RESIN_STRUCTURE_LAYER
 	plane = FLOOR_PLANE
 	var/slow_amt = 8
-	var/hivenumber = XENO_HIVE_NORMAL
+	hivenumber = XENO_HIVE_NORMAL
 
 /obj/effect/alien/resin/sticky/Initialize(mapload, hive)
 	. = ..()
@@ -195,7 +198,7 @@
 	health = HEALTH_RESIN_XENO_SPIKE
 	layer = RESIN_STRUCTURE_LAYER
 	should_track_build = TRUE
-	var/hivenumber = XENO_HIVE_NORMAL
+	hivenumber = XENO_HIVE_NORMAL
 	var/damage = 8
 	var/penetration = 50
 
@@ -276,7 +279,6 @@
 	var/list/xenos_tracking = list()
 	var/datum/xeno_mark_define/mark_meaning = null
 	var/image/seenMeaning //this needs to be a static image because it needs to be dynamically added/removed from xenos' huds as resin marks are created/destroyed
-	var/datum/hivenumber = null
 	var/createdby = null
 	var/createdTime = null
 
@@ -569,12 +571,27 @@
 		set_hive_data(src, XENO_HIVE_FORSAKEN)
 
 	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
+
 /obj/structure/mineral_door/resin/thick
 	name = "thick resin door"
 	icon_state = "thick resin"
 	health = HEALTH_DOOR_XENO_THICK
 	hardness = 2
 	mineralType = "thick resin"
+
+/obj/structure/mineral_door/resin/pathogen
+	name = "mycelial door"
+	icon = 'icons/mob/pathogen/pathogen_effects.dmi'
+	icon_state = "mycelium"
+	mineralType = "mycelium"
+	hivenumber = XENO_HIVE_PATHOGEN
+
+/obj/structure/mineral_door/resin/pathogen/thick
+	name = "thick mycelial door"
+	icon_state = "thick mycelium"
+	health = HEALTH_DOOR_XENO_THICK
+	hardness = 2
+	mineralType = "thick mycelium"
 
 /obj/effect/alien/resin/acid_pillar
 	name = "acid pillar"
@@ -583,7 +600,7 @@
 	icon_state = "acid_pillar_idle"
 
 	health = HEALTH_RESIN_XENO_ACID_PILLAR
-	var/hivenumber = XENO_HIVE_NORMAL
+	hivenumber = XENO_HIVE_NORMAL
 	should_track_build = TRUE
 	anchored = TRUE
 
@@ -722,7 +739,7 @@
 	pixel_y = -16
 
 	health = HEALTH_RESIN_XENO_SHIELD_PILLAR
-	var/hivenumber = XENO_HIVE_NORMAL
+	hivenumber = XENO_HIVE_NORMAL
 	anchored = TRUE
 
 	var/decay_rate = AMOUNT_PER_TIME(1, 10 SECONDS)

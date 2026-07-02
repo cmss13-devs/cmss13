@@ -25,7 +25,16 @@
 #define iswarrior(A) (istype(A, /mob/living/carbon/xenomorph/warrior))
 #define isburrower(A) (istype(A, /mob/living/carbon/xenomorph/burrower))
 
-#define isxeno_builder(A) (isdrone(A) || ishivelord(A) || iscarrier(A) || isburrower(A) || isqueen(A))
+#define isxeno_builder(A) (isdrone(A) || ishivelord(A) || iscarrier(A) || isburrower(A) || isqueen(A) || isneomorph(A) || isconditor(A))
+
+#define is_pathogen_creature(A) (istype(A, /mob/living/carbon/xenomorph)) && (istype(A?:caste, /datum/caste_datum/pathogen))
+#define isbloodburster(A) (istype(A, /mob/living/carbon/xenomorph/bloodburster))
+#define isneomorph(A) (istype(A, /mob/living/carbon/xenomorph/neomorph))
+#define isconditor(A) (istype(A, /mob/living/carbon/xenomorph/conditor))
+#define ispopper(A) (istype(A, /mob/living/carbon/xenomorph/popper))
+#define ismatriarch(A) (istype(A, /mob/living/carbon/xenomorph/matriarch))
+#define is_pathogen_overmind(A) (istype(A, /mob/living/carbon/xenomorph/overmind))
+#define isaberration(A) (istype(A, /mob/living/carbon/xenomorph/aberration))
 
 /// Returns true if the xenomorph can not harm the passed carbon mob.
 /mob/living/carbon/xenomorph/proc/can_not_harm(mob/living/carbon/attempt_harm_mob, check_hive_flags=TRUE)

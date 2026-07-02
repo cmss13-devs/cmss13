@@ -278,6 +278,11 @@
 			continue //hasn't moved recently
 		if(current_mob.get_target_lock(iff_signal))
 			continue
+		if(current_mob.status_flags & INCORPOREAL)
+			ping_count++
+			if(human_user)
+				show_blip(human_user, current_mob, "queen_eye")
+			continue
 
 		apply_debuff(current_mob)
 		ping_count++

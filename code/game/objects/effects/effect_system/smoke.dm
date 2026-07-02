@@ -432,6 +432,7 @@
 	var/xeno_affecting = FALSE
 	opacity = FALSE
 	alpha = 75
+	obscuring = FALSE
 
 /obj/effect/particle_effect/smoke/cn20/xeno
 	name = "CN20-X nerve gas"

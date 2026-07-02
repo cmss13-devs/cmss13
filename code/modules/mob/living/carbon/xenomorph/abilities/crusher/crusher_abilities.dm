@@ -71,6 +71,10 @@
 	var/explosion_immunity_dur = 2.5 SECONDS
 	var/shield_dur = 7 SECONDS
 
+/datum/action/xeno_action/onclick/crusher_shield/pathogen
+	button_icon_state = "template_pathogen"
+	icon_file = 'icons/mob/hud/actions_pathogen.dmi'
+
 /datum/action/xeno_action/activable/fling/charger
 	name = "Headbutt"
 	action_icon_state = "ram"

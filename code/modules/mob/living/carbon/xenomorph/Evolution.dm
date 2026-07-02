@@ -338,12 +338,20 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	var/list/options = list()
 	var/static/list/option_images = list()
 
-	if(tier == 1)
-		options = XENO_T1_CASTES
-	else if (tier == 2)
-		options = XENO_T2_CASTES
-	else if (tier == 3)
-		options = XENO_T3_CASTES
+	if(hivenumber == XENO_HIVE_PATHOGEN)
+		if(tier == 1)
+			options = PATHOGEN_T1_CASTES
+		else if (tier == 2)
+			options = PATHOGEN_T2_CASTES
+		else if (tier == 3)
+			options = PATHOGEN_T3_CASTES
+	else
+		if(tier == 1)
+			options = XENO_T1_CASTES
+		else if (tier == 2)
+			options = XENO_T2_CASTES
+		else if (tier == 3)
+			options = XENO_T3_CASTES
 
 	if(!option_images["[tier]"])
 		option_images["[tier]"] = collect_xeno_images(options)
@@ -354,6 +362,16 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		newcaste = tgui_input_list(src, "Choose a caste you want to transmute to.", "Transmute", options, theme="hive_status")
 
 	if(!newcaste)
+		return
+
+	if(hive.restricted_castes && (newcaste in hive.restricted_castes))
+		var/max_num = hive.restricted_castes[newcaste]
+		if(hive.get_caste_count(newcaste) >= max_num)
+			to_chat(src, SPAN_WARNING("The Hive has reached capacity for this caste!"))
+			return
+
+	if(newcaste == caste_type)
+		to_chat(src, SPAN_WARNING("We cannot transmute into the caste we already are."))
 		return
 
 	transmute(newcaste, "We transmute into a new form.")

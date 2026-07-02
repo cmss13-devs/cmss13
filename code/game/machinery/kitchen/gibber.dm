@@ -164,16 +164,18 @@
 
 	var/obj/item/reagent_container/food/snacks/meat/meat_template = /obj/item/reagent_container/food/snacks/meat/monkey
 	if(istype(occupant, /mob/living/carbon/xenomorph))
-		var/mob/living/carbon/xenomorph/X = occupant
+		var/mob/living/carbon/xenomorph/food_mob = occupant
 		meat_template = /obj/item/reagent_container/food/snacks/meat/xenomeat
 		totalslabs = 1
-		if(X.caste_type == XENO_CASTE_QUEEN)//have to do queen and predalien first because they are T0 and T1
-			totalslabs = 5
-		else
-			if(X.caste_type == XENO_CASTE_PREDALIEN)
+		if(is_pathogen_creature(food_mob))
+			meat_template = /obj/item/reagent_container/food/snacks/mycelial_flesh
+		switch(food_mob.caste_type)
+			if(XENO_CASTE_QUEEN, PATHOGEN_CREATURE_MATRIARCH)//have to do queen and predalien first because they are T0 and T1
+				totalslabs = 5
+			if(XENO_CASTE_PREDALIEN, PATHOGEN_CREATURE_ABERRATION)
 				totalslabs = 6
 			else
-				totalslabs += X.tier
+				totalslabs += food_mob.tier
 	else
 		if(istypestrict(occupant, /mob/living/carbon/human))
 			meat_template = /obj/item/reagent_container/food/snacks/meat/human
@@ -250,6 +252,8 @@
 		if (!Tx.density)
 			if(istype(meatslab, /obj/item/reagent_container/food/snacks/meat/xenomeat))
 				new /obj/effect/decal/cleanable/blood/gibs/xeno(Tx)
+			else if(istype(meatslab, /obj/item/reagent_container/food/snacks/mycelial_flesh))
+				continue
 			else
 				new /obj/effect/decal/cleanable/blood/gibs(Tx)
 	operating = FALSE

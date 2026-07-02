@@ -8,6 +8,7 @@
 #define QUEEN_MOTHER_ANNOUNCE "Queen Mother Psychic Directive"
 #define XENO_GENERAL_ANNOUNCE "You sense something unusual..." //general xeno announcement that don't involve Queen, for nuke for example
 #define HIGHER_FORCE_ANNOUNCE SPAN_ANNOUNCEMENT_HEADER_BLUE("Unknown Higher Force")
+#define PATHOGEN_ANNOUNCE SPAN_ANNOUNCEMENT_HEADER_BEIGE("Higher Mycelial Entity")
 
 //civilian white antre announcement
 /proc/venir_announcement(message, title = VENIR_ANNOUNCE, sound_to_play = sound('sound/misc/notice2.ogg'), faction_to_display = FACTION_SURVIVOR)

@@ -2129,6 +2129,10 @@
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/filtration_plant)
+"ahZ" = (
+/obj/effect/landmark/structure_spawner/spore_sac_rng/ten,
+/turf/open/floor/freezerfloor,
+/area/bigredv2/outside/virology)
 "aia" = (
 /obj/structure/machinery/door_control{
 	id = "Marshal Offices";
@@ -2195,6 +2199,10 @@
 /obj/structure/bed/roller,
 /turf/open/floor/freezerfloor,
 /area/bigredv2/caves/lambda/xenobiology)
+"aim" = (
+/obj/effect/landmark/structure_spawner/spore_sac_rng/twenty,
+/turf/open/floor/freezerfloor,
+/area/bigredv2/outside/virology)
 "ain" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
@@ -45095,7 +45103,7 @@ aHZ
 aFv
 aFv
 aoD
-aNi
+aim
 aNi
 aNi
 aNi
@@ -45312,7 +45320,7 @@ aNi
 aOt
 aNj
 aNi
-aNi
+aim
 arT
 aNc
 aNc
@@ -45532,16 +45540,16 @@ aNc
 aNc
 asl
 aWS
-aNi
+ahZ
 asl
 aYC
-aNi
+ahZ
 asl
 swJ
-aNi
+ahZ
 asl
 aYC
-aNi
+ahZ
 aoD
 aao
 aao
@@ -45736,7 +45744,7 @@ aFv
 aoD
 aNi
 aNi
-aNi
+aim
 aOt
 aNj
 arT

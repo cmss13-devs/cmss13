@@ -20,7 +20,6 @@
 	name = "pathogen spore sac spawner (10)"
 	chance = 10
 
-/*
 /obj/effect/landmark/structure_spawner/spore_sac_rng/post_setup()
 	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/no_random_spores) || !prob(chance))
 		qdel(src)
@@ -30,4 +29,3 @@
 	else
 		new /obj/effect/pathogen/spore_sac(loc)
 	qdel(src)
-*/

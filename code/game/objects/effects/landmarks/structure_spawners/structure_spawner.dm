@@ -48,6 +48,10 @@
 /// Setup spawners will all be evaluated by game mode on start, and deleted after
 /obj/effect/landmark/structure_spawner/setup
 	name = "abstract gamemode structure spawner"
+
 /obj/effect/landmark/structure_spawner/setup/post_setup()
 	qdel(src)
 	return FALSE
+
+/obj/effect/landmark/structure_spawner/setup/proc/set_pathogen_spawns()
+	return

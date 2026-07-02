@@ -153,6 +153,83 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 	)
 	),
 
+	"Pathogen Creatures (Minor)" = list(
+	list(
+	name = PATHOGEN_CREATURE_BURSTER,
+	key = /mob/living/carbon/xenomorph/bloodburster,
+	color = "white"
+	),
+	list(
+	name = PATHOGEN_CREATURE_POPPER,
+	key = /mob/living/carbon/xenomorph/popper,
+	color = "white"
+	)
+	),
+
+	"Pathogen Creatures (Standard)" = list(
+	list(
+	name = PATHOGEN_CREATURE_SPRINTER,
+	key = /mob/living/carbon/xenomorph/sprinter,
+	color = "white"
+	),
+	list(
+	name = PATHOGEN_CREATURE_NEOMORPH,
+	key = /mob/living/carbon/xenomorph/neomorph,
+	color = "white"
+	),
+	list(
+	name = PATHOGEN_CREATURE_BLIGHT,
+	key = /mob/living/carbon/xenomorph/blight,
+	color = "white"
+	)
+	),
+
+	"Pathogen Creatures (Major)" = list(
+	list(
+	name = PATHOGEN_CREATURE_CONDITOR,
+	key = /mob/living/carbon/xenomorph/conditor,
+	color="white"
+	),
+	list(
+	name = PATHOGEN_CREATURE_BRUTE,
+	key = /mob/living/carbon/xenomorph/brute,
+	color = "white"
+	),
+	list(
+	name = PATHOGEN_CREATURE_VENATOR,
+	key = /mob/living/carbon/xenomorph/venator,
+	color="white"
+	),
+	list(
+	name = PATHOGEN_CREATURE_HARBINGER,
+	key = /mob/living/carbon/xenomorph/harbinger,
+	color="white"
+	)
+	),
+
+	"Pathogen Creatures (Exotic)" = list(
+	list(
+	name = PATHOGEN_CREATURE_ABER_BURSTER,
+	key = /mob/living/carbon/xenomorph/bloodburster/aberrant,
+	color="white"
+	),
+	list(
+	name = PATHOGEN_CREATURE_ABERRATION,
+	key = /mob/living/carbon/xenomorph/aberration,
+	color = "white"
+	),
+	list(
+	name = PATHOGEN_CREATURE_MATRIARCH,
+	key = /mob/living/carbon/xenomorph/matriarch,
+	color="white"
+	)/*
+	list(
+	name = PATHOGEN_CREATURE_OVERMIND,
+	key = /mob/living/carbon/xenomorph/overmind,
+	color="white"
+	)*/
+	),
+
 	"Miscellaneous" = list(
 	list(
 	name = "Cat",

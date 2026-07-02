@@ -46,7 +46,6 @@
 	var/list/total_dead_xenos = list()
 	var/xeno_queen_timer
 	var/isSlotOpen = TRUE //Set true for starting alerts only after the hive has reached its full potential
-	var/allowed_nest_distance = 15 //How far away do we allow nests from an ovied Queen. Default 15 tiles.
 	var/obj/effect/alien/resin/special/pylon/core/hive_location = null //Set to ref every time a core is built, for defining the hive location
 
 	/// Slots are divided by this value to reach final value.
@@ -101,7 +100,7 @@
 	var/list/list/hive_constructions = list() //Stringref list of structures that are being built
 
 	/// Lazylist of possible caste defines the hive disallows evolution to
-	var/list/blacklisted_castes = null
+	var/list/blacklisted_castes = ALL_PATHOGEN_CREATURES
 	/// List of caste defines associated with a maximum capacity number.
 	var/list/restricted_castes = null
 
@@ -297,7 +296,7 @@
 		return
 
 	// Can only have one queen.
-	if(isqueen(X))
+	if(isqueen(X))// || is_pathogen_overmind(X))
 		if(!living_xeno_queen && !should_block_game_interaction(X)) // Don't consider xenos in admin level
 			set_living_xeno_queen(X)
 
@@ -542,10 +541,10 @@
 /datum/hive_status/proc/get_xeno_icons()
 	// Must match hardcoded xeno counts order.
 	var/list/xeno_icons = list(
-		list(XENO_CASTE_LARVA = "", XENO_CASTE_QUEEN = "", XENO_CASTE_PREDALIEN_LARVA = "", XENO_CASTE_HELLHOUND = ""),
-		list(XENO_CASTE_DRONE = "", XENO_CASTE_RUNNER = "", XENO_CASTE_SENTINEL = "", XENO_CASTE_DEFENDER = "", XENO_CASTE_PREDALIEN = ""),
-		list(XENO_CASTE_HIVELORD = "", XENO_CASTE_BURROWER = "", XENO_CASTE_CARRIER = "", XENO_CASTE_LURKER = "", XENO_CASTE_SPITTER = "", XENO_CASTE_WARRIOR = ""),
-		list(XENO_CASTE_BOILER = "", XENO_CASTE_CRUSHER = "", XENO_CASTE_PRAETORIAN = "", XENO_CASTE_RAVAGER = "", XENO_CASTE_DESPOILER = "")
+		list(XENO_CASTE_LARVA = "", XENO_CASTE_QUEEN = "", XENO_CASTE_PREDALIEN_LARVA = "", XENO_CASTE_HELLHOUND = "", PATHOGEN_CREATURE_BURSTER = "", PATHOGEN_CREATURE_POPPER = "", PATHOGEN_CREATURE_ABER_BURSTER = ""),
+		list(XENO_CASTE_DRONE = "", XENO_CASTE_RUNNER = "", XENO_CASTE_SENTINEL = "", XENO_CASTE_DEFENDER = "", XENO_CASTE_PREDALIEN = "", PATHOGEN_CREATURE_SPRINTER = "", PATHOGEN_CREATURE_ABERRATION = ""),
+		list(XENO_CASTE_HIVELORD = "", XENO_CASTE_BURROWER = "", XENO_CASTE_CARRIER = "", XENO_CASTE_LURKER = "", XENO_CASTE_SPITTER = "", XENO_CASTE_WARRIOR = "", PATHOGEN_CREATURE_NEOMORPH = "", PATHOGEN_CREATURE_BLIGHT = ""),
+		list(XENO_CASTE_BOILER = "", XENO_CASTE_CRUSHER = "", XENO_CASTE_PRAETORIAN = "", XENO_CASTE_RAVAGER = "", XENO_CASTE_DESPOILER = "", PATHOGEN_CREATURE_CONDITOR = "", PATHOGEN_CREATURE_BRUTE = "", PATHOGEN_CREATURE_VENATOR = "", PATHOGEN_CREATURE_HARBINGER = "")
 	)
 
 	for(var/caste in GLOB.xeno_datum_list)
@@ -770,6 +769,39 @@
 	slots[TIER_2][OPEN_SLOTS] = max(0, ceil(0.5*effective_total/tier_slot_divisor) - used_tier_2_slots - used_tier_3_slots)
 
 	return slots
+
+/datum/hive_status/proc/debug_tier_slots()
+	var/used_tier_2_slots = length(tier_2_xenos)
+	var/used_tier_3_slots = length(tier_3_xenos)
+
+	for(var/caste_path in free_slots)
+		var/slots_free = free_slots[caste_path]
+		var/slots_used = used_slots[caste_path]
+		var/datum/caste_datum/current_caste = caste_path
+		if(slots_used)
+			// Don't count any free slots in use
+			switch(initial(current_caste.tier))
+				if(2)
+					used_tier_2_slots -= min(slots_used, slots_free)
+				if(3)
+					used_tier_3_slots -= min(slots_used, slots_free)
+		if(slots_free <= slots_used)
+			continue
+
+	var/burrowed_factor = min(stored_larva, sqrt(4*stored_larva))
+	var/effective_total = floor(burrowed_factor)
+	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
+		if(xeno.counts_for_slots)
+			effective_total++
+
+	message_admins(SPAN_WARNING("DEBUG: BURROW FACT: [burrowed_factor]"))
+	message_admins(SPAN_WARNING("DEBUG: EFFECT TOTAL: [effective_total]"))
+	message_admins(SPAN_WARNING("DEBUG: DIVISOR: [tier_slot_divisor]"))
+	message_admins(SPAN_WARNING("DEBUG: TIER-3: [max(0, ceil(0.20*effective_total/tier_slot_divisor) - used_tier_3_slots)]"))
+	message_admins(SPAN_WARNING("DEBUG: TIER-2: [max(0, ceil(0.5*effective_total/tier_slot_divisor) - used_tier_2_slots - used_tier_3_slots)]"))
+
+	return
+
 
 #undef TIER_3
 #undef TIER_2
@@ -1858,3 +1890,310 @@
 	desc = "Attack the enemy here!"
 	icon_state = "attack"
 
+/datum/hive_status/pathogen
+	name = FACTION_PATHOGEN
+	reporting_id = "pathogen"
+	hivenumber = XENO_HIVE_PATHOGEN
+	prefix = ""
+	color = "#bdc9c4"
+	ui_color = "#bdc9c4"
+
+	hive_inherited_traits = list(TRAIT_NO_COLOR)
+	latejoin_burrowed = FALSE
+	allow_no_queen_actions = TRUE
+	allow_queen_evolve = FALSE
+	allow_no_queen_evo = TRUE
+	queen_leader_limit = 5
+
+	hive_flags = XENO_SLASH_ALLOW_ALL|XENO_CONSTRUCTION_ALLOW_ALL|XENO_DECONSTRUCTION_ALLOW_ALL
+
+	larva_gestation_multiplier = 1.2
+
+	hive_orders = "Kill everyone and everything."
+
+	free_slots = list(
+		PATHOGEN_CREATURE_NEOMORPH = 2,
+		PATHOGEN_CREATURE_CONDITOR = 2,
+	)
+
+	restricted_castes = list(
+		PATHOGEN_CREATURE_HARBINGER = 2,
+	)
+	blacklisted_castes = ALL_XENO_CASTES
+
+	tier_slot_divisor = 1.5 // Experimental change.
+
+	hive_structures_limit = list(
+		PATHOGEN_STRUCTURE_CORE = 1,
+		PATHOGEN_STRUCTURE_COCOON = 6,
+		PATHOGEN_STRUCTURE_CLUSTER = 8,
+		PATHOGEN_STRUCTURE_PYLON = 2,
+		PATHOGEN_STRUCTURE_RECOVERY = 6,
+		PATHOGEN_STRUCTURE_SPORECASTER = 3,
+		PATHOGEN_STRUCTURE_FOGGER = 3,
+	)
+
+	hive_structure_types = list(
+		PATHOGEN_STRUCTURE_CORE = /datum/construction_template/xenomorph/pathogen_core,
+		PATHOGEN_STRUCTURE_CLUSTER = /datum/construction_template/xenomorph/pathogen_cluster,
+		PATHOGEN_STRUCTURE_RECOVERY = /datum/construction_template/xenomorph/patho_recovery,
+		PATHOGEN_STRUCTURE_SPORECASTER = /datum/construction_template/xenomorph/sporecaster,
+		PATHOGEN_STRUCTURE_FOGGER = /datum/construction_template/xenomorph/fogger
+	)
+
+	tacmap_requires_queen_ovi = FALSE
+	var/max_poppers = 8
+	var/matriarch_enabled = FALSE
+	/// Ckey of the player who rolled Queen, so they don't need admin approval.
+	var/last_overmind
+
+/datum/hive_status/pathogen/setup_banned_allies()
+	banned_allies = list("All")
+
+/datum/hive_status/pathogen/post_setup()
+	addtimer(CALLBACK(src, PROC_REF(allow_matriarch), GLOB.king_acquisition_time))
+
+/datum/hive_status/pathogen/proc/allow_matriarch()
+	if(matriarch_enabled)
+		return FALSE
+
+	xeno_message(SPAN_PATHOGEN_ANNOUNCE("The Confluence is now strong enough to support the Matriarch"), hivenumber = XENO_HIVE_PATHOGEN)
+	xeno_maptext("The Confluence can now support the Matriarch", "Matriarch", XENO_HIVE_PATHOGEN)
+
+	matriarch_enabled = TRUE
+	for(var/mob/current_mob as anything in GLOB.mob_list)
+		if(!is_ground_level(current_mob.z))
+			continue
+
+		if(!current_mob.client)
+			continue
+
+		playsound_client(current_mob.client, 'sound/pathogen_creatures/pathogen_matriarch_screech_distant.ogg', current_mob.loc, 70, "minor")
+
+		if(ishuman(current_mob))
+			to_chat(current_mob, SPAN_HIGHDANGER("You hear a distant screech and feel your insides freeze up... something new is with you in this colony."))
+
+		if(issynth(current_mob))
+			to_chat(current_mob, SPAN_HIGHDANGER("You hear the distant call of an unknown bioform, unlike anything you've ever heard before. You begin to analyze and decrypt the strange vocalization."))
+			current_mob.add_language(LANGUAGE_PATHOGEN)
+
+	addtimer(CALLBACK(src, PROC_REF(build_matrarch_cocoon)), 3 MINUTES)
+	return TRUE
+
+/datum/hive_status/pathogen/proc/build_matrarch_cocoon()
+	if(!matriarch_enabled || has_hatchery)
+		return FALSE
+	if(length(active_endgame_pylons) < 2)
+		addtimer(CALLBACK(src, PROC_REF(build_matrarch_cocoon)), 5 MINUTES)
+		if(living_xeno_queen)
+			to_chat(living_xeno_queen, SPAN_PATHOGEN_ANNOUNCE("The Matriarch cocoon is unable to grow due to insufficient pylons. It will attempt to grow again in 5 minutes."))
+		return FALSE
+	if(!hive_location)
+		addtimer(CALLBACK(src, PROC_REF(build_matrarch_cocoon)), 5 MINUTES)
+		if(living_xeno_queen)
+			to_chat(living_xeno_queen, SPAN_PATHOGEN_ANNOUNCE("The Matriarch cocoon is unable to grow due to there being no blight core. It will attempt to grow again in 5 minutes."))
+		return FALSE
+
+	var/turf/spawn_turf
+	for(var/turf/potential_turf in orange(5, hive_location))
+		var/failed = FALSE
+		for(var/x_offset in -1 to 1)
+			for(var/y_offset in -1 to 1)
+				var/turf/turf_to_check = locate(potential_turf.x + x_offset, potential_turf.y + y_offset, potential_turf.z)
+				if(turf_to_check.density)
+					failed = TRUE
+					break
+				if(!turf_to_check.is_weedable)
+					failed = TRUE
+					break
+				var/area/target_area = get_area(turf_to_check)
+				if(target_area.flags_area & AREA_NOBURROW)
+					failed = TRUE
+					break
+				for(var/obj/structure/struct in turf_to_check)
+					if(struct.density)
+						failed = TRUE
+						break
+				for(var/obj/effect/alien/resin/special in turf_to_check)
+					failed = TRUE
+					break
+		if(!failed)
+			spawn_turf = potential_turf
+			break
+
+	if(!spawn_turf)
+		xeno_message(SPAN_PATHOGEN_ANNOUNCE("Unable to find viable spawn point for the Matriarch cocoon."), hivenumber = XENO_HIVE_PATHOGEN)
+		addtimer(CALLBACK(src, PROC_REF(build_matrarch_cocoon)), 2 MINUTES)
+		if(living_xeno_queen)
+			to_chat(living_xeno_queen, SPAN_PATHOGEN_ANNOUNCE("The Matriarch cocoon is unable to grow due to there not being enough space. It will attempt to grow again in 2 minutes."))
+		return FALSE
+
+	for(var/obj/effect/alien/resin/special/pylon/pylon as anything in active_endgame_pylons)
+		pylon.protection_level = TURF_PROTECTION_OB
+		pylon.update_icon()
+
+	new /obj/effect/alien/resin/matriarch_cocoon(spawn_turf, XENO_HIVE_PATHOGEN)
+	return TRUE
+
+/datum/hive_status/pathogen/bless_on_hijack()
+	return
+
+/datum/hive_status/pathogen/get_xeno_counts()
+	// Every caste is manually defined here so you get
+	var/list/xeno_counts = list(
+		list(PATHOGEN_CREATURE_BURSTER = 0),
+		list(PATHOGEN_CREATURE_SPRINTER = 0),
+		list(PATHOGEN_CREATURE_NEOMORPH = 0, PATHOGEN_CREATURE_BLIGHT = 0),
+		list(PATHOGEN_CREATURE_CONDITOR = 0, PATHOGEN_CREATURE_BRUTE = 0, PATHOGEN_CREATURE_VENATOR = 0, PATHOGEN_CREATURE_HARBINGER = 0)
+	)
+
+	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
+		//don't show xenos in the thunderdome when admins test stuff.
+		if(should_block_game_interaction(xeno))
+			var/area/cur_area = get_area(xeno)
+			if(!(cur_area.flags_atom & AREA_ALLOW_XENO_JOIN))
+				continue
+
+		if(xeno.caste && xeno.counts_for_slots)
+			xeno_counts[xeno.caste.tier+1][xeno.caste.caste_type]++
+
+	return xeno_counts
+
+/datum/hive_status/pathogen/set_hive_location(obj/effect/alien/resin/special/pylon/core/C)
+	if(!C || C == hive_location)
+		return
+	var/area/A = get_area(C)
+	xeno_message(SPAN_XENOANNOUNCE("The confluence location has been set as \the [A]."), 3, hivenumber)
+	hive_location = C
+	hive_ui.update_hive_location()
+
+/datum/hive_status/pathogen/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
+	if(HAS_TRAIT(src, TRAIT_NO_HIVE_DELAY))
+		return FALSE
+
+	var/danger_mobs = 0
+	for(var/mob/living/carbon/xenomorph/mob in totalXenos)
+		if(ispopper(mob) || !mob.counts_for_roundend)
+			continue
+		if(mob == living_xeno_queen)
+			continue
+		danger_mobs++
+
+	if(!danger_mobs)
+		return FALSE
+
+	return TRUE
+
+/datum/hive_status/pathogen/get_available_hivebuffs()
+	var/list/potential_hivebuffs = subtypesof(/datum/hivebuff)
+
+	// First check if we any pylons which are capable of supporting hivebuffs
+	if(!LAZYLEN(active_endgame_pylons))
+		return
+
+	for(var/datum/hivebuff/possible_hivebuff as anything in potential_hivebuffs)
+		// Round isn't old enough yet
+		if(ROUND_TIME < initial(possible_hivebuff.roundtime_to_enable))
+			potential_hivebuffs -= possible_hivebuff
+			continue
+
+		if(initial(possible_hivebuff.number_of_required_pylons) > LAZYLEN(active_endgame_pylons))
+			potential_hivebuffs -= possible_hivebuff
+			continue
+
+		if(possible_hivebuff.pathogen_forbidden)
+			potential_hivebuffs -= possible_hivebuff
+			continue
+
+		// Prevent the same lineage of buff in active hivebuffs (e.g. no minor and major health allowed)
+		var/already_active = FALSE
+		for(var/datum/hivebuff/buff as anything in active_hivebuffs)
+			if(istype(buff, possible_hivebuff))
+				already_active = TRUE
+				break
+			if(ispath(possible_hivebuff, buff.type))
+				already_active = TRUE
+				break
+		if(already_active)
+			potential_hivebuffs -= possible_hivebuff
+			continue
+
+		//If this buff isn't combineable, check if any other active hivebuffs aren't combineable
+		if(!initial(possible_hivebuff.is_combineable))
+			var/found_conflict = FALSE
+			for(var/datum/hivebuff/active_hivebuff in active_hivebuffs)
+				if(!active_hivebuff.is_combineable)
+					found_conflict = TRUE
+					break
+			if(found_conflict)
+				potential_hivebuffs -= possible_hivebuff
+				continue
+
+		// If the buff is not reusable check against used hivebuffs.
+		if(!initial(possible_hivebuff.is_reusable))
+			if(locate(possible_hivebuff) in used_hivebuffs)
+				potential_hivebuffs -= possible_hivebuff
+				continue
+
+	return potential_hivebuffs
+
+/datum/hive_status/pathogen/respawn_on_turf(client/xeno_client, turf/spawning_turf)
+	var/mob/living/carbon/xenomorph/larva/new_xeno = spawn_hivenumber_larva(spawning_turf, hivenumber)
+	if(isnull(new_xeno))
+		return FALSE
+
+	if(!SSticker.mode.transfer_xeno(xeno_client.mob, new_xeno))
+		qdel(new_xeno)
+		return FALSE
+
+	new_xeno.visible_message(SPAN_XENODANGER("A bloodburster suddenly emerges from a dead husk!"),
+	SPAN_XENOANNOUNCE("The confluence has no core! You manage to emerge from your old husk as a bloodburster!"))
+	msg_admin_niche("[key_name(new_xeno)] respawned at \a [spawning_turf]. [ADMIN_JMP(spawning_turf)]")
+	to_chat(new_xeno, SPAN_XENOANNOUNCE("Remember you should not be leaving the safety of the confluence unless under threat, and should be keeping yourself safe until you evolve!"))
+	playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 50, 1)
+	if(new_xeno.client?.prefs?.toggles_flashing & FLASH_POOLSPAWN)
+		window_flash(new_xeno.client)
+
+	hive_ui.update_burrowed_larva()
+
+/datum/hive_status/pathogen/do_buried_larva_spawn(mob/xeno_candidate)
+	var/spawning_area
+	if(hive_location)
+		spawning_area = hive_location
+	else if(living_xeno_queen)
+		spawning_area = living_xeno_queen
+	else
+		for(var/mob/living/carbon/xenomorpheus as anything in totalXenos)
+			if(isbloodburster(xenomorpheus) || isxeno_builder(xenomorpheus)) //next to xenos that should be in a safe spot
+				spawning_area = xenomorpheus
+	if(!spawning_area)
+		spawning_area = pick(totalXenos) // FUCK IT JUST GO ANYWHERE
+	var/list/turf_list
+	for(var/turf/open/open_turf in orange(3, spawning_area))
+		if(istype(open_turf, /turf/open/space))
+			continue
+		LAZYADD(turf_list, open_turf)
+	// just on the off-chance
+	if(!LAZYLEN(turf_list))
+		return FALSE
+	var/turf/open/spawning_turf = pick(turf_list)
+
+	var/mob/living/carbon/xenomorph/larva/new_xeno = spawn_hivenumber_larva(spawning_turf, hivenumber)
+	if(isnull(new_xeno))
+		return FALSE
+
+	if(!SSticker.mode.transfer_xeno(xeno_candidate, new_xeno))
+		qdel(new_xeno)
+		return FALSE
+	new_xeno.visible_message(SPAN_XENODANGER("A bloodburster suddenly burrows out of \the [spawning_turf]!"),
+	SPAN_XENODANGER("You burrow out of \the [spawning_turf] and awaken from your slumber. For the Confluence!"))
+	msg_admin_niche("[key_name(new_xeno)] burrowed out from \a [spawning_turf]. [ADMIN_JMP(spawning_turf)]")
+	playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 50, 1)
+	to_chat(new_xeno, SPAN_XENOANNOUNCE("You are a pathogen bloodburster awakened from slumber!"))
+	to_chat(new_xeno, SPAN_XENOANNOUNCE("Remember you should not be leaving the safety of the confluence unless under threat, and should be keeping yourself safe until you evolve!"))
+	if(new_xeno.client)
+		if(new_xeno.client?.prefs?.toggles_flashing & FLASH_POOLSPAWN)
+			window_flash(new_xeno.client)
+
+	stored_larva--
+	hive_ui.update_burrowed_larva()

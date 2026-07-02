@@ -171,6 +171,8 @@
 #define TRAIT_CANT_RIDE "cant_ride"
 /// Makes mob immune to dir lock slowdown.
 #define TRAIT_NO_DIR_LOCK_SLOWDOWN "no_dir_lock_slowdown"
+/// When a pathogen creature is acting as overmind.
+#define TRAIT_PATHOGEN_OVERMIND "trait_pathogen_overmind"
 
 // SPECIES TRAITS
 /// Knowledge of Yautja technology
@@ -406,6 +408,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_CARDPLAYING_THUMBS" = TRAIT_CARDPLAYING_THUMBS,
 		"TRAIT_INTERFERENCE" = TRAIT_HIVEMIND_INTERFERENCE,
 		"TRAIT_VALKYRIE_ARMOR" = TRAIT_VALKYRIE_ARMORED,
+		"TRAIT_PATHOGEN_OVERMIND" = TRAIT_PATHOGEN_OVERMIND,
 	),
 	/datum/hive_status = list(
 		"TRAIT_XENONID" = TRAIT_XENONID,
@@ -550,3 +553,5 @@ GLOBAL_LIST(trait_name_map)
 #define TURF_Z_TRANSPARENT_TRAIT "turf_z_transparent"
 /// traits from wall hiding
 #define WALL_HIDING_TRAIT "wallhiding"
+/// trait effect related to the pathogen overmind
+#define OVERMIND_TRAIT "overmind"

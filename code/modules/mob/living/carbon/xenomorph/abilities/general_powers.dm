@@ -148,7 +148,7 @@
 			break
 	to_chat(xeno, SPAN_NOTICE("We will now spit [xeno.ammo.name] ([xeno.ammo.spit_cost] plasma)."))
 	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, "shift_spit_[xeno.ammo.icon_state]")
+	button.overlays += image(icon_file, button, "shift_spit_[xeno.ammo.icon_state]")
 	return ..()
 
 /datum/action/xeno_action/onclick/release_haul/use_ability(atom/atom)
@@ -254,7 +254,7 @@
 	if(to_chat)
 		to_chat(usr, SPAN_NOTICE("We will now build <b>[resin_construction.construction_name]\s</b> when secreting resin."))
 	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, resin_construction.construction_name)
+	button.overlays += image('icons/mob/hud/xeno_building.dmi', button, resin_construction.construction_name)
 
 // Resin
 /datum/action/xeno_action/activable/secrete_resin/use_ability(atom/target)
@@ -310,7 +310,7 @@
 		to_chat(xeno, SPAN_XENOWARNING("Our mind cannot reach that far."))
 		return
 
-	if(!xeno.hive.living_xeno_queen || !SSmapping.same_z_map(xeno.hive.living_xeno_queen.z, xeno.z))
+	if(!xeno.hive.allow_no_queen_actions && (!xeno.hive.living_xeno_queen || !SSmapping.same_z_map(xeno.hive.living_xeno_queen.z, xeno.z)))
 		to_chat(xeno, SPAN_XENOWARNING("Our psychic link is gone, the Queen is either dead or too far away!"))
 		return
 

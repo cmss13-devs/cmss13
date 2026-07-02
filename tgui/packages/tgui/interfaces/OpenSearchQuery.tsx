@@ -406,11 +406,10 @@ export const OpenSearchQuery = (props) => {
               </Stack.Item>
             </Stack>
           </Stack.Item>
-          <Stack.Item>
+          <Stack.Item grow>
             <Section
               fill
               scrollable
-              minHeight="50%"
               title={
                 (resultsFetched
                   ? `${resultsFetched}/${resultsTotal} results`

@@ -401,9 +401,13 @@
 				return
 			new_name = trim_right(replace_non_alphanumeric_plus(new_name))
 			if(!length(new_name))
-				to_chat(user, SPAN_WARNING("Invalid name."))
+				label = "FCT"
+				name = "FCT"
+				if(camera)
+					camera.c_tag = "FCT"
+				to_chat(user, SPAN_NOTICE("Invalid name – defaulting to 'FCT'."))
 				return
-			label = strip_squad_prefix(new_name)
+			label = new_name
 			name = label
 			if(camera)
 				camera.c_tag = label
@@ -499,6 +503,7 @@
 	var/obj/structure/machinery/camera/camera
 	var/datum/squad/squad
 	var/slash_count = 0 // tracks xeno slashes 4 breaking
+	var/broken = FALSE // might prevent duplicate undeploys
 
 /obj/structure/overwatch_camera_tripod/Initialize(mapload)
 	. = ..()
@@ -554,9 +559,11 @@
 				return
 			new_name = trim_right(replace_non_alphanumeric_plus(new_name))
 			if(!length(new_name))
-				to_chat(user, SPAN_WARNING("Invalid name."))
+				base_label = "FCT"
+				update_full_label()
+				to_chat(user, SPAN_NOTICE("Invalid name – defaulting to 'FCT'."))
 				return
-			base_label = strip_squad_prefix(new_name)
+			base_label = new_name
 			update_full_label()
 			to_chat(user, SPAN_NOTICE("[src] renamed to [name]."))
 			return
@@ -591,6 +598,10 @@
 	return XENO_ATTACK_ACTION
 
 /obj/structure/overwatch_camera_tripod/proc/undeploy(mob/user)
+	if(broken)
+		return
+	broken = TRUE
+
 	var/obj/item/device/overwatch_camera/tripod/new_tripod = new(get_turf(src))
 	new_tripod.label = base_label
 	new_tripod.name = base_label
@@ -609,12 +620,9 @@
 	qdel(src)
 
 /obj/structure/overwatch_camera_tripod/ex_act(severity)
-	if(severity >= EXPLOSION_THRESHOLD_LOW) // no idea if i need to add this or it's inherited from parent somewhere
+	if(severity == EXPLOSION_THRESHOLD_LOW)
 		undeploy()
-/// This can be used to remove squad names from a string.
-/proc/strip_squad_prefix(input_string) // no idea if this should be a base / global proc or should be on the item ,maybe this'll be needed elsewhere?
-	for(var/datum/squad/S in GLOB.RoleAuthority.squads)
-		var/prefix = "[S.name] - "
-		if(findtext(input_string, prefix) == 1)
-			return copytext(input_string, length(prefix) + 1)
-	return input_string
+	else
+		var/obj/item/device/overwatch_camera/tripod/new_tripod
+		new_tripod.visible_message(SPAN_WARNING("[new_tripod] is obliterated!"))
+		qdel(src)

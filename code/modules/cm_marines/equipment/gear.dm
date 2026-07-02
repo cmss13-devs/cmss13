@@ -369,6 +369,7 @@
 
 /obj/item/device/overwatch_camera/tripod/Initialize(mapload, ...)
 	. = ..()
+	label = "FCT"
 	camera = new /obj/structure/machinery/camera/overwatch(src)
 	AddComponent(/datum/component/overwatch_console_control)
 
@@ -384,17 +385,17 @@
 		if("Cancel")
 			return
 		if("Rename")
-			var/new_name = tgui_input_text(user, "Enter new name for the camera:", "Rename Camera", label ? label : initial(name), MAX_NAME_LEN, ui_state=GLOB.not_incapacitated_state, encode=FALSE)
+			var/new_name = tgui_input_text(user, "Enter a new name for the camera:", "Rename Camera", label ? label : "FCT", MAX_NAME_LEN, ui_state=GLOB.not_incapacitated_state, encode=FALSE)
 			if(!new_name)
 				return
 			new_name = trim_right(replace_non_alphanumeric_plus(new_name))
 			if(!length(new_name))
 				to_chat(user, SPAN_WARNING("Invalid name."))
 				return
-			label = new_name
-			name = new_name
+			label = strip_squad_prefix(new_name)
+			name = label
 			if(camera)
-				camera.c_tag = new_name
+				camera.c_tag = label
 			to_chat(user, SPAN_NOTICE("Camera renamed to [name]."))
 			return
 		if("Deploy")
@@ -454,18 +455,17 @@
 		var/mob/living/carbon/human/human_user = user
 		user_squad = human_user.assigned_squad
 
-	var/base_label = label ? label : initial(name)
-	var/final_label = user_squad ? "[user_squad.name] - [base_label]" : base_label
+	var/base_label = label ? label : "FCT"
 
 	var/obj/structure/overwatch_camera_tripod/deployed_structure = new(deploy_turf) // transform to new struc
-	deployed_structure.label = final_label
-	deployed_structure.name = final_label
+	deployed_structure.base_label = base_label
 	deployed_structure.squad = user_squad
+	deployed_structure.update_full_label()
 	deployed_structure.icon_state = "deployed"
 
 	if(camera)
 		camera.forceMove(deployed_structure)
-		camera.c_tag = final_label
+		camera.c_tag = deployed_structure.label
 		camera.status = TRUE
 		deployed_structure.camera = camera
 		src.camera = null
@@ -484,6 +484,7 @@
 	layer = OBJ_LAYER
 	desc_lore = "Following modernisation efforts in the Marine'70 program, USCM Platoons were shrunk and squads re-organised to emphasise individual firepower and mobility. The Motoca-430-T, the precursor to the Motoca-500 Helmet Camera, was commissioned by the Department of Defense to be utilised by Colonial Marine squads in establishing secure perimeters and watching rear areas remotely through the Overwatch system."
 	var/label = "Tripod Camera"
+	var/base_label = "FCT"
 	var/obj/structure/machinery/camera/camera
 	var/datum/squad/squad
 	var/slash_count = 0 // tracks xeno slashes 4 breaking
@@ -491,11 +492,22 @@
 /obj/structure/overwatch_camera_tripod/Initialize(mapload)
 	. = ..()
 	icon_state = "deployed"
+	base_label = "FCT"
+	update_full_label()
 	camera = new /obj/structure/machinery/camera/overwatch(src)
 	camera.c_tag = label
 	camera.status = TRUE
 	AddComponent(/datum/component/overwatch_console_control)
 	GLOB.deployed_tripod_cameras += src
+
+/obj/structure/overwatch_camera_tripod/proc/update_full_label()
+	if(squad)
+		label = "[squad.name] - [base_label]"
+	else
+		label = base_label
+	name = label
+	if(camera)
+		camera.c_tag = label
 
 /obj/structure/overwatch_camera_tripod/Destroy()
 	GLOB.deployed_tripod_cameras -= src
@@ -520,17 +532,15 @@
 			if(isyautja(user))
 				to_chat(user, SPAN_WARNING("You can't think of a reason to interact with [src] and decide to leave it alone."))
 				return
-			var/new_name = tgui_input_text(user, "Enter new label for the camera:", "Rename Camera", label, MAX_NAME_LEN, ui_state=GLOB.not_incapacitated_state, encode=FALSE)
+			var/new_name = tgui_input_text(user, "Enter a new label for the camera:", "Rename Camera", base_label, MAX_NAME_LEN, ui_state=GLOB.not_incapacitated_state, encode=FALSE)
 			if(!new_name)
 				return
 			new_name = trim_right(replace_non_alphanumeric_plus(new_name))
 			if(!length(new_name))
 				to_chat(user, SPAN_WARNING("Invalid name."))
 				return
-			label = new_name
-			name = new_name
-			if(camera)
-				camera.c_tag = new_name
+			base_label = strip_squad_prefix(new_name)
+			update_full_label()
 			to_chat(user, SPAN_NOTICE("[src] renamed to [name]."))
 			return
 		if("Pick Up")
@@ -565,12 +575,12 @@
 
 /obj/structure/overwatch_camera_tripod/proc/undeploy(mob/user)
 	var/obj/item/device/overwatch_camera/tripod/new_tripod = new(get_turf(src))
-	new_tripod.label = label
-	new_tripod.name = label
+	new_tripod.label = base_label
+	new_tripod.name = base_label
 	new_tripod.squad = squad
 	if(camera)
 		camera.forceMove(new_tripod)
-		camera.c_tag = label
+		camera.c_tag = base_label
 		camera.status = TRUE
 		new_tripod.camera = camera
 		src.camera = null
@@ -584,3 +594,10 @@
 /obj/structure/overwatch_camera_tripod/ex_act(severity)
 	if(severity >= EXPLOSION_THRESHOLD_LOW) // no idea if i need to add this or it's inherited from parent somewhere
 		undeploy()
+/// This can be used to remove squad names from a string.
+/proc/strip_squad_prefix(input_string) // no idea if this should be a base / global proc or should be on the item ,maybe this'll be needed elsewhere?
+	for(var/datum/squad/S in GLOB.RoleAuthority.squads)
+		var/prefix = "[S.name] - "
+		if(findtext(input_string, prefix) == 1)
+			return copytext(input_string, length(prefix) + 1)
+	return input_string

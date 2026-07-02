@@ -421,8 +421,8 @@ GLOBAL_LIST_INIT(shotgun_handfuls_12g, list(
 	name = "handful of revolver bullets (.44)"
 	default_ammo = /datum/ammo/bullet/revolver
 	caliber = ".44"
-	max_rounds = 8
-	current_rounds = 8
+	max_rounds = 7
+	current_rounds = 7
 	gun_type = /obj/item/weapon/gun/shotgun/double/cane
 
 /obj/item/ammo_magazine/handful/revolver/marksman

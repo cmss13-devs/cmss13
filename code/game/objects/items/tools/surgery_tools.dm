@@ -214,7 +214,7 @@
 /obj/item/tool/surgery/bonegel
 	name = "bottle of bone gel"
 	desc = "A container for bone gel, a substance capable of fixing fractures using an analogue that mimics bone. It needs to be refilled from a specialized machine."
-	desc_lore = "Bone gel is a biological synthetic bone-analogue. Made with collagen and minerals, it has a consistency similar to clay when first applied. It is capable of fixing any sort of fracture by sealing cracks through adhesion to compact bone and solidifying; the body metabolizes the gel as the bone remodels itself. Bone gel should not be used to fix missing bone, as it does not replace the body's bone marrow. Overuse in a short period may cause acute immunodeficiency or anemia."
+	desc_lore = "Bone gel is a biological bone-analogue made of collagen, proteins, and minerals, used by surgeons to repair fractures. The substance has a clay-like consistency and spreads thinly when first applied. It is capable of fixing any fracture by sealing cracks through adhesion to compact bone and solidifying over the crack, after which the body metabolizes the gel for nutrients as the bone remodels itself beneath the gel. Bone gel should never be used as a substitute for missing bones as it requires two ends to form a bond and it does not replace the body's bone marrow or spongy tissue. Overuse in a short period may cause acute hypercalcemia and hyperphosphatemia from the body absorbing too much calcium and phosphorus."
 	icon_state = "bone-gel"
 	w_class = SIZE_SMALL
 	matter = list("plastic" = 7500)

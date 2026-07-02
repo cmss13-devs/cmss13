@@ -1,3 +1,5 @@
+#define ARCHON_DEATH_DELAY 10 MINUTES
+
 /datum/caste_datum/pathogen/archon
 	caste_type = PATHOGEN_CREATURE_ARCHON
 	tier = 0
@@ -5,7 +7,7 @@
 	melee_damage_lower = XENO_DAMAGE_TIER_4
 	melee_damage_upper = XENO_DAMAGE_TIER_6
 	melee_vehicle_damage = XENO_DAMAGE_TIER_9
-	max_health = XENO_HEALTH_IMMORTAL
+	max_health = XENO_HEALTH_QUEEN
 	plasma_gain = XENO_PLASMA_GAIN_TIER_8
 	plasma_max = XENO_PLASMA_TIER_10
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_10
@@ -129,6 +131,13 @@
 			xeno.KnockDown((5 DECISECONDS) / GLOBAL_STATUS_MULTIPLIER)
 			playsound(src, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 
+/mob/living/carbon/xenomorph/archon/death(cause, gibbed)
+	UnregisterSignal(src, COMSIG_MOVABLE_PRE_MOVE)
+	hive.xeno_queen_timer = world.time + ARCHON_DEATH_DELAY
+
+/mob/living/carbon/xenomorph/archon/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
+	death(cause, 1)
+
 /datum/action/xeno_action/activable/gut/archon
 	button_icon_state = "template_pathogen"
 	icon_file = 'icons/mob/hud/actions_pathogen.dmi'
@@ -203,3 +212,5 @@
 
 /datum/behavior_delegate/pathogen_base/archon/proc/lifesteal_lock()
 	bound_xeno.remove_filter("self_heal")
+
+#undef ARCHON_DEATH_DELAY

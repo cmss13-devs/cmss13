@@ -227,6 +227,8 @@
 
 	var/daze_length_seconds = 1
 	var/slow_length_seconds = 4
+	var/smoke_radius = 7
+	var/status_radius = 7
 
 /datum/action_xeno_action/verb/verb_blight_wave()
 	set category = "Alien"
@@ -242,6 +244,8 @@
 /datum/action/xeno_action/onclick/blight_wave/archon
 	xeno_cooldown = 180 SECONDS
 	plasma_cost = 400
+	smoke_radius = 4
+	status_radius = 5
 
 /datum/action/xeno_action/onclick/blight_wave/overmind/can_use_action(silent = FALSE, override_flags)
 	if(owner?.status_flags & INCORPOREAL)
@@ -257,10 +261,10 @@
 	xeno.create_shriekwave()
 
 	var/datum/effect_system/smoke_spread/blight_wave/smoke_gas = new()
-	smoke_gas.set_up(7, 0, get_turf(xeno), null, 6, create_cause_data("blight wave", xeno))
+	smoke_gas.set_up(smoke_radius, 0, get_turf(xeno), null, 6, create_cause_data("blight wave", xeno))
 	smoke_gas.start()
 
-	for(var/atom/current_atom as anything in view(owner))
+	for(var/atom/current_atom as anything in view(status_radius, owner))
 		if(istype(current_atom, /obj/item/device))
 			var/obj/item/device/potential_lightsource = current_atom
 
@@ -503,6 +507,9 @@
 	xeno_message(SPAN_XENOANNOUNCE("A sudden tremor ripples through the confluence... the Matriarch has been slain! Vengeance!"), 3, XENO_HIVE_PATHOGEN)
 
 	return ..()
+
+/mob/living/carbon/xenomorph/matriarch/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
+	death(cause, 1)
 
 /mob/living/carbon/xenomorph/matriarch/is_xeno_grabbable()
 	return TRUE

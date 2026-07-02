@@ -321,6 +321,11 @@
 	if(!evolve_checks())
 		return
 
+	if(castepick == PATHOGEN_CREATURE_ARCHON) //Special case for dealing with queenae
+		if(SSticker.mode && hive.xeno_queen_timer > world.time)
+			to_chat(src, SPAN_WARNING("We must wait about [DisplayTimeText(hive.xeno_queen_timer - world.time, 1)] for the Confluence to recover from the previous Archon's death."))
+			return
+
 	if(evolution_threshold)// && castepick != PATHOGEN_CREATURE_OVERMIND) //Does the caste have an evolution timer? Then check it
 		if(evolution_stored < evolution_threshold)
 			to_chat(src, SPAN_WARNING("We must wait before evolving. Currently at: [evolution_stored] / [evolution_threshold]."))

@@ -51,7 +51,6 @@
 		/datum/action/xeno_action/activable/tail_stab/pathogen,
 		/datum/action/xeno_action/activable/place_pathogen_structure/not_primary,
 		/datum/action/xeno_action/onclick/plant_weeds/pathogen/macro_one, // Macro 1
-		/datum/action/xeno_action/activable/pounce/runner/pathogen/neomorph/neophyte, // Macro 2
 		/datum/action/xeno_action/onclick/choose_resin/pathogen/not_primary,
 		/datum/action/xeno_action/activable/secrete_resin/pathogen, // Macro 3 // Shared macro with Conditor
 	)

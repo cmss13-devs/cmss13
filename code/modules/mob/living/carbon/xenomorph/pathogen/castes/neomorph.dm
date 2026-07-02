@@ -111,9 +111,6 @@
 	can_be_shield_blocked = TRUE // Some legacy stuff, self explanatory
 	ability_primacy = XENO_PRIMARY_ACTION_2
 
-/datum/action/xeno_action/activable/pounce/runner/pathogen/neomorph/neophyte
-	slash = FALSE
-
 /datum/action/xeno_action/activable/headbite/neomorph
 	button_icon_state = "template_pathogen"
 	icon_file = 'icons/mob/hud/actions_pathogen.dmi'

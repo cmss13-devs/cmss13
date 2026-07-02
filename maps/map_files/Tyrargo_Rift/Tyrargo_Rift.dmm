@@ -12311,7 +12311,7 @@
 /area/tyrargo/landing_zone_2/road)
 "aEZ" = (
 /obj/structure/surface/table/reinforced/black,
-/obj/item/tool/kitchen/utensil/pfork,
+/obj/item/tool/kitchen/utensil/fork/plastic,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/almayer/blackfull/west,
 /area/tyrargo/indoors/security/ground)

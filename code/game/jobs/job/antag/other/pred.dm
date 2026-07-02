@@ -18,6 +18,7 @@
 		"[JOB_PREDATOR][CLAN_RANK_ELITE]" = /datum/equipment_preset/yautja/elite,
 		"[JOB_PREDATOR][CLAN_RANK_ELDER]" = /datum/equipment_preset/yautja/elder,
 		"[JOB_PREDATOR][CLAN_RANK_LEADER]" = /datum/equipment_preset/yautja/leader,
+		"[JOB_PREDATOR]Enforcer" = /datum/equipment_preset/yautja/enforcer,
 		"[JOB_PREDATOR][CLAN_RANK_ADMIN]" = /datum/equipment_preset/yautja/ancient
 	)
 
@@ -42,8 +43,8 @@
 	if(!("[JOB_PREDATOR][rank]" in gear_preset_whitelist))
 		return CLAN_RANK_BLOODED
 
-	if(player.check_whitelist_status(WHITELIST_YAUTJA_LEADER|WHITELIST_YAUTJA_COUNCIL|WHITELIST_YAUTJA_COUNCIL_LEGACY) && get_desired_status(player.prefs.yautja_status, WHITELIST_COUNCIL) == WHITELIST_NORMAL)
-		return CLAN_RANK_BLOODED
+	if(player.check_whitelist_status(WHITELIST_YAUTJA_LEADER|WHITELIST_YAUTJA_COUNCIL) && get_desired_status(player.prefs.yautja_status, WHITELIST_COUNCIL) == WHITELIST_COUNCIL)
+		return "Enforcer"
 
 	return rank
 

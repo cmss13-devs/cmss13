@@ -360,7 +360,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				leader_count++
 				marine_count--
 
-	for(var/obj/structure/overwatch_camera_tripod/tripod_camera in GLOB.deployed_tripod_cameras) // add cameras to list o' marines
+	for(var/obj/structure/overwatch_camera_tripod/tripod_camera as anything in GLOB.deployed_tripod_cameras) // add cameras to list o' marines
 		if(current_squad && current_squad.name != "Root")
 			if(!tripod_camera.squad || tripod_camera.squad != current_squad) // tldr: show cameras in root squad if placed by non-squad marines
 				continue

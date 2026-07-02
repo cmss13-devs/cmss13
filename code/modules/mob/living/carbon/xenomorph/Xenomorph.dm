@@ -1271,24 +1271,11 @@
 
 /mob/living/carbon/xenomorph/proc/get_throw_range(obj/item/I)
 	return 1
-/**
- * Checks if user can mount src
- *
- * Arguments:
- * * user - The mob trying to mount
- * * target_mounting - Is the target initiating the mounting process?
- */
-/mob/living/carbon/xenomorph/proc/can_mount(mob/living/user, target_mounting = FALSE)
+
+/mob/living/carbon/xenomorph/can_mount(mob/living/user, target_mounting = FALSE)
 	return FALSE
 
-/**
- * Handles the target trying to ride src
- *
- * Arguments:
- * * target - The mob being put on the back
- * * target_mounting - Is the target initiating the mounting process?
- */
-/mob/living/carbon/xenomorph/proc/carry_target(mob/living/carbon/target, target_mounting = FALSE)
+/mob/living/carbon/xenomorph/carry_target(mob/living/carbon/target, target_mounting = FALSE)
 	if(!ismob(target))
 		return
 	if(target.is_mob_incapacitated())

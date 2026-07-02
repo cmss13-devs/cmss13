@@ -1844,7 +1844,7 @@
 /area/almayer/lifeboat_pumps/north2)
 "aeD" = (
 /obj/effect/landmark/start/field_doctor,
-/obj/effect/landmark/late_join/field_doctor,
+/obj/effect/landmark/late_join/medical/field_doctor,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/lower_medical_medbay)
 "aeE" = (
@@ -2221,7 +2221,7 @@
 /area/almayer/command/airoom)
 "afz" = (
 /obj/effect/landmark/start/doctor,
-/obj/effect/landmark/late_join/doctor,
+/obj/effect/landmark/late_join/medical/doctor,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
@@ -6154,6 +6154,7 @@
 "apA" = (
 /obj/effect/landmark/start/pilot/dropship_pilot,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/late_join/transport/dropship_pilot,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/pilotbunks)
 "apB" = (
@@ -7547,6 +7548,7 @@
 	icon_state = "S"
 	},
 /obj/effect/landmark/start/chef,
+/obj/effect/landmark/late_join/supply/chef,
 /turf/open/floor/almayer,
 /area/almayer/living/offices/cryo)
 "asW" = (
@@ -8356,6 +8358,7 @@
 "avy" = (
 /obj/effect/landmark/start/auxiliary_officer,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/late_join/command/auxiliary_officer,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/bridgebunks)
 "avz" = (
@@ -8493,6 +8496,7 @@
 /area/almayer/living/intel)
 "avU" = (
 /obj/effect/landmark/start/crew_chief,
+/obj/effect/landmark/late_join/transport/crew_chief,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/pilotbunks)
 "avV" = (
@@ -8906,6 +8910,7 @@
 "axd" = (
 /obj/effect/landmark/start/bridge,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/late_join/command/bridge,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/bridgebunks)
 "axe" = (
@@ -9089,7 +9094,7 @@
 /area/almayer/engineering/upper_engineering)
 "axC" = (
 /obj/effect/landmark/start/intel,
-/obj/effect/landmark/late_join/intel,
+/obj/effect/landmark/late_join/command/intel,
 /obj/effect/decal/cleanable/generic,
 /obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/plating/plating_catwalk,
@@ -9125,6 +9130,7 @@
 /area/almayer/command/combat_correspondent)
 "axH" = (
 /obj/effect/landmark/start/otech,
+/obj/effect/landmark/late_join/engineering/otech,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/upper_engineering/port)
 "axI" = (
@@ -9150,6 +9156,7 @@
 	layer = 2.9;
 	dir = 8
 	},
+/obj/effect/landmark/late_join/command/bridge,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/bridgebunks)
 "axL" = (
@@ -9309,6 +9316,7 @@
 /area/almayer/command/lifeboat)
 "ayj" = (
 /obj/effect/landmark/start/cargo,
+/obj/effect/landmark/late_join/supply/cargo,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/req)
 "ayk" = (
@@ -14490,13 +14498,13 @@
 	icon_state = "pipe-c"
 	},
 /obj/effect/landmark/start/marine/smartgunner/alpha,
-/obj/effect/landmark/late_join/alpha,
+/obj/effect/landmark/late_join/marine/alpha,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/alpha)
 "aMI" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/landmark/start/marine/spec/delta,
-/obj/effect/landmark/late_join/delta,
+/obj/effect/landmark/late_join/marine/delta,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/delta)
 "aMJ" = (
@@ -15478,8 +15486,7 @@
 	pixel_y = 12
 	},
 /obj/structure/filingcabinet/documentation/uscm_mp{
-	pixel_x = 8;
-	icon_state = "chestdrawer"
+	pixel_x = 8
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
@@ -21924,7 +21931,7 @@
 "beV" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/landmark/start/marine/leader/alpha,
-/obj/effect/landmark/late_join/alpha,
+/obj/effect/landmark/late_join/marine/alpha,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/alpha)
 "beW" = (
@@ -30236,7 +30243,7 @@
 	dir = 10
 	},
 /obj/effect/landmark/start/marine/alpha,
-/obj/effect/landmark/late_join/alpha,
+/obj/effect/landmark/late_join/marine/alpha,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/alpha)
 "bxC" = (
@@ -30586,7 +30593,7 @@
 /area/almayer/hallways/hangar)
 "byn" = (
 /obj/effect/landmark/start/marine/leader/bravo,
-/obj/effect/landmark/late_join/bravo,
+/obj/effect/landmark/late_join/marine/bravo,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/bravo)
 "byo" = (
@@ -35585,7 +35592,7 @@
 /area/almayer/shipboard/starboard_point_defense)
 "bKM" = (
 /obj/effect/landmark/start/marine/medic/charlie,
-/obj/effect/landmark/late_join/charlie,
+/obj/effect/landmark/late_join/marine/charlie,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/charlie)
 "bKN" = (
@@ -39013,6 +39020,7 @@
 /area/almayer/command/corporateliaison)
 "bTn" = (
 /obj/effect/landmark/start/tank_crew,
+/obj/effect/landmark/late_join/transport/tank_crew,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/tankerbunks)
 "bTo" = (
@@ -39447,7 +39455,7 @@
 /area/almayer/squads/req)
 "bUp" = (
 /obj/effect/landmark/start/marine/alpha,
-/obj/effect/landmark/late_join/alpha,
+/obj/effect/landmark/late_join/marine/alpha,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/alpha)
@@ -39484,6 +39492,7 @@
 /area/almayer/maint/hull/upper/u_m_p)
 "bUt" = (
 /obj/effect/landmark/start/corp_sec,
+/obj/effect/landmark/late_join/corp_sec,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/upper/u_m_p)
 "bUu" = (
@@ -44014,7 +44023,7 @@
 /area/almayer/medical/medical_science)
 "cdN" = (
 /obj/effect/landmark/start/researcher,
-/obj/effect/landmark/late_join/researcher,
+/obj/effect/landmark/late_join/medical/researcher,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/medical_science)
 "cdO" = (
@@ -46251,7 +46260,7 @@
 /area/almayer/powered)
 "cjc" = (
 /obj/effect/landmark/start/marine/alpha,
-/obj/effect/landmark/late_join/alpha,
+/obj/effect/landmark/late_join/marine/alpha,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/alpha)
 "cjd" = (
@@ -46885,6 +46894,7 @@
 	dir = 8
 	},
 /obj/effect/landmark/start/tank_crew,
+/obj/effect/landmark/late_join/transport/tank_crew,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/tankerbunks)
 "cov" = (
@@ -49101,7 +49111,7 @@
 /area/almayer/hallways/upper/starboard)
 "dlu" = (
 /obj/effect/landmark/start/marine/bravo,
-/obj/effect/landmark/late_join/bravo,
+/obj/effect/landmark/late_join/marine/bravo,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/bravo)
@@ -49327,7 +49337,7 @@
 /area/almayer/squads/charlie_delta_shared)
 "drk" = (
 /obj/effect/landmark/start/intel,
-/obj/effect/landmark/late_join/intel,
+/obj/effect/landmark/late_join/command/intel,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/intel)
 "dro" = (
@@ -49444,7 +49454,7 @@
 /area/almayer/living/grunt_rnr)
 "dut" = (
 /obj/effect/landmark/start/nurse,
-/obj/effect/landmark/late_join/nurse,
+/obj/effect/landmark/late_join/medical/nurse,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/lower_medical_medbay)
 "duv" = (
@@ -50703,6 +50713,7 @@
 "dWg" = (
 /obj/effect/landmark/start/cargo,
 /obj/structure/machinery/light,
+/obj/effect/landmark/late_join/supply/cargo,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/req)
 "dWA" = (
@@ -51192,7 +51203,7 @@
 /area/almayer/lifeboat_pumps/south2)
 "ehx" = (
 /obj/effect/landmark/start/marine/tl/alpha,
-/obj/effect/landmark/late_join/alpha,
+/obj/effect/landmark/late_join/marine/alpha,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/alpha)
 "ehL" = (
@@ -51701,7 +51712,7 @@
 	icon_state = "pipe-j2"
 	},
 /obj/effect/landmark/start/marine/smartgunner/delta,
-/obj/effect/landmark/late_join/delta,
+/obj/effect/landmark/late_join/marine/delta,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/delta)
 "erL" = (
@@ -54605,7 +54616,7 @@
 /area/almayer/command/telecomms)
 "fDJ" = (
 /obj/effect/landmark/start/marine/engineer/charlie,
-/obj/effect/landmark/late_join/charlie,
+/obj/effect/landmark/late_join/marine/charlie,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/charlie)
 "fDU" = (
@@ -54759,7 +54770,7 @@
 /area/almayer/engineering/starboard_atmos)
 "fIM" = (
 /obj/effect/landmark/start/marine/tl/bravo,
-/obj/effect/landmark/late_join/bravo,
+/obj/effect/landmark/late_join/marine/bravo,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/bravo)
 "fIX" = (
@@ -55243,7 +55254,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj/effect/landmark/late_join/warden,
+/obj/effect/landmark/late_join/police/warden,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cryo)
 "fSl" = (
@@ -55408,7 +55419,7 @@
 /area/almayer/command/combat_correspondent)
 "fXN" = (
 /obj/effect/landmark/start/marine/delta,
-/obj/effect/landmark/late_join/delta,
+/obj/effect/landmark/late_join/marine/delta,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/delta)
 "fXO" = (
@@ -55515,7 +55526,7 @@
 /area/almayer/shipboard/brig/execution)
 "fZZ" = (
 /obj/effect/landmark/start/marine/medic/bravo,
-/obj/effect/landmark/late_join/bravo,
+/obj/effect/landmark/late_join/marine/bravo,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/bravo)
 "gac" = (
@@ -55898,7 +55909,7 @@
 /area/almayer/medical/operating_room_three)
 "gkd" = (
 /obj/effect/landmark/start/marine/charlie,
-/obj/effect/landmark/late_join/charlie,
+/obj/effect/landmark/late_join/marine/charlie,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/charlie)
@@ -57671,7 +57682,7 @@
 "gWE" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/landmark/start/marine/spec/alpha,
-/obj/effect/landmark/late_join/alpha,
+/obj/effect/landmark/late_join/marine/alpha,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/alpha)
 "gWG" = (
@@ -59124,7 +59135,7 @@
 /area/almayer/living/briefing)
 "hDx" = (
 /obj/effect/landmark/start/marine/tl/delta,
-/obj/effect/landmark/late_join/delta,
+/obj/effect/landmark/late_join/marine/delta,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/delta)
@@ -59156,7 +59167,7 @@
 /area/almayer/medical/lower_medical_lobby)
 "hEb" = (
 /obj/effect/landmark/start/marine/medic/bravo,
-/obj/effect/landmark/late_join/bravo,
+/obj/effect/landmark/late_join/marine/bravo,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/bravo)
@@ -59846,7 +59857,7 @@
 /area/almayer/medical/morgue)
 "hWr" = (
 /obj/effect/landmark/start/marine/smartgunner/bravo,
-/obj/effect/landmark/late_join/bravo,
+/obj/effect/landmark/late_join/marine/bravo,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/bravo)
 "hWs" = (
@@ -60763,7 +60774,7 @@
 /area/almayer/living/starboard_garden)
 "ipM" = (
 /obj/effect/landmark/start/marine/tl/alpha,
-/obj/effect/landmark/late_join/alpha,
+/obj/effect/landmark/late_join/marine/alpha,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/alpha)
@@ -61224,7 +61235,7 @@
 /area/almayer/maint/upper/u_a_p)
 "iDf" = (
 /obj/effect/landmark/start/marine/alpha,
-/obj/effect/landmark/late_join/alpha,
+/obj/effect/landmark/late_join/marine/alpha,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/alpha)
@@ -61997,7 +62008,7 @@
 /area/almayer/maint/hull/upper/u_a_p)
 "iSZ" = (
 /obj/effect/landmark/start/marine/engineer/alpha,
-/obj/effect/landmark/late_join/alpha,
+/obj/effect/landmark/late_join/marine/alpha,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/alpha)
@@ -63061,6 +63072,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/effect/landmark/late_join/engineering/maint,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/upper_engineering/port)
 "jmY" = (
@@ -67504,7 +67516,7 @@
 /area/almayer/maint/hull/lower/l_f_p)
 "ljs" = (
 /obj/effect/landmark/start/marine/spec/bravo,
-/obj/effect/landmark/late_join/bravo,
+/obj/effect/landmark/late_join/marine/bravo,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/bravo)
@@ -68344,7 +68356,7 @@
 /area/almayer/maint/hull/upper/s_bow)
 "lDV" = (
 /obj/effect/landmark/start/marine/medic/bravo,
-/obj/effect/landmark/late_join/bravo,
+/obj/effect/landmark/late_join/marine/bravo,
 /obj/structure/sign/safety/cryo{
 	pixel_y = 25
 	},
@@ -69646,7 +69658,7 @@
 	dir = 8
 	},
 /obj/effect/landmark/start/intel,
-/obj/effect/landmark/late_join/intel,
+/obj/effect/landmark/late_join/command/intel,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/intel)
@@ -69825,7 +69837,7 @@
 /area/almayer/living/briefing)
 "mpJ" = (
 /obj/effect/landmark/start/marine/medic/charlie,
-/obj/effect/landmark/late_join/charlie,
+/obj/effect/landmark/late_join/marine/charlie,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/charlie)
@@ -70012,7 +70024,7 @@
 /area/almayer/engineering/upper_engineering)
 "muy" = (
 /obj/effect/landmark/start/marine/engineer/alpha,
-/obj/effect/landmark/late_join/alpha,
+/obj/effect/landmark/late_join/marine/alpha,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/alpha)
@@ -70060,7 +70072,7 @@
 /area/almayer/squads/delta)
 "mvy" = (
 /obj/effect/landmark/start/marine/delta,
-/obj/effect/landmark/late_join/delta,
+/obj/effect/landmark/late_join/marine/delta,
 /obj/structure/machinery/light,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/delta)
@@ -70831,6 +70843,7 @@
 /area/almayer/living/port_emb)
 "mKN" = (
 /obj/effect/landmark/start/pilot/cas_pilot,
+/obj/effect/landmark/late_join/transport/cas_pilot,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/pilotbunks)
 "mLg" = (
@@ -70850,7 +70863,7 @@
 /area/almayer/underdeck/req)
 "mLF" = (
 /obj/effect/landmark/start/marine/medic/bravo,
-/obj/effect/landmark/late_join/bravo,
+/obj/effect/landmark/late_join/marine/bravo,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/bravo)
@@ -72388,7 +72401,7 @@
 /area/almayer/squads/charlie)
 "nrN" = (
 /obj/effect/landmark/start/doctor,
-/obj/effect/landmark/late_join/doctor,
+/obj/effect/landmark/late_join/medical/doctor,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/lower_medical_medbay)
 "nrO" = (
@@ -72516,7 +72529,7 @@
 /area/almayer/lifeboat_pumps/south2)
 "nuN" = (
 /obj/effect/landmark/start/marine/medic/alpha,
-/obj/effect/landmark/late_join/alpha,
+/obj/effect/landmark/late_join/marine/alpha,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/alpha)
 "nuZ" = (
@@ -72805,7 +72818,7 @@
 /area/almayer/hallways/lower/repair_bay)
 "nCf" = (
 /obj/effect/landmark/start/marine/tl/charlie,
-/obj/effect/landmark/late_join/charlie,
+/obj/effect/landmark/late_join/marine/charlie,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/charlie)
 "nCj" = (
@@ -74459,7 +74472,7 @@
 /area/almayer/medical/lower_medical_medbay)
 "oka" = (
 /obj/effect/landmark/start/marine/medic/charlie,
-/obj/effect/landmark/late_join/charlie,
+/obj/effect/landmark/late_join/marine/charlie,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/charlie)
 "okd" = (
@@ -75505,7 +75518,7 @@
 /area/almayer/hallways/upper/midship_hallway)
 "oEo" = (
 /obj/effect/landmark/start/marine/medic/delta,
-/obj/effect/landmark/late_join/delta,
+/obj/effect/landmark/late_join/marine/delta,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/delta)
 "oEy" = (
@@ -75732,6 +75745,7 @@
 /area/almayer/shipboard/brig/processing)
 "oIn" = (
 /obj/effect/landmark/start/liaison,
+/obj/effect/landmark/late_join/liaison,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/upper/u_m_p)
 "oIp" = (
@@ -76424,7 +76438,7 @@
 /area/almayer/maint/hull/upper/u_a_p)
 "oXb" = (
 /obj/effect/landmark/start/marine/charlie,
-/obj/effect/landmark/late_join/charlie,
+/obj/effect/landmark/late_join/marine/charlie,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/charlie)
 "oXp" = (
@@ -78501,7 +78515,7 @@
 /area/almayer/command/corporateliaison)
 "pWb" = (
 /obj/effect/landmark/start/marine/tl/delta,
-/obj/effect/landmark/late_join/delta,
+/obj/effect/landmark/late_join/marine/delta,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/delta)
 "pWd" = (
@@ -78597,7 +78611,7 @@
 /area/almayer/squads/req)
 "pXZ" = (
 /obj/effect/landmark/start/marine/spec/charlie,
-/obj/effect/landmark/late_join/charlie,
+/obj/effect/landmark/late_join/marine/charlie,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/charlie)
 "pYh" = (
@@ -79154,7 +79168,7 @@
 /area/almayer/shipboard/stern_point_defense)
 "qki" = (
 /obj/effect/landmark/start/marine/smartgunner/charlie,
-/obj/effect/landmark/late_join/charlie,
+/obj/effect/landmark/late_join/marine/charlie,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/charlie)
 "qkP" = (
@@ -80086,6 +80100,7 @@
 /area/almayer/shipboard/brig/cells)
 "qCy" = (
 /obj/effect/landmark/start/captain,
+/obj/effect/landmark/late_join/command/commander,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/bridgebunks)
 "qCA" = (
@@ -80130,7 +80145,7 @@
 /area/almayer/shipboard/brig/perma)
 "qDq" = (
 /obj/effect/landmark/start/marine/bravo,
-/obj/effect/landmark/late_join/bravo,
+/obj/effect/landmark/late_join/marine/bravo,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/bravo)
 "qDt" = (
@@ -80553,6 +80568,7 @@
 /area/almayer/maint/upper/u_a_p)
 "qLs" = (
 /obj/effect/landmark/start/maint,
+/obj/effect/landmark/late_join/engineering/maint,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/upper_engineering/port)
 "qLt" = (
@@ -81523,7 +81539,7 @@
 /area/almayer/maint/lower/cryo_cells)
 "rfa" = (
 /obj/effect/landmark/start/marine/medic/alpha,
-/obj/effect/landmark/late_join/alpha,
+/obj/effect/landmark/late_join/marine/alpha,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/alpha)
@@ -81951,6 +81967,7 @@
 /area/almayer/living/grunt_rnr)
 "rpp" = (
 /obj/effect/landmark/start/executive,
+/obj/effect/landmark/late_join/command/executive,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/bridgebunks)
 "rpG" = (
@@ -83067,7 +83084,7 @@
 /area/almayer/living/starboard_emb)
 "rNd" = (
 /obj/effect/landmark/start/marine/engineer/delta,
-/obj/effect/landmark/late_join/delta,
+/obj/effect/landmark/late_join/marine/delta,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/delta)
@@ -83633,7 +83650,7 @@
 /area/almayer/living/gym)
 "rYp" = (
 /obj/effect/landmark/start/marine/medic/delta,
-/obj/effect/landmark/late_join/delta,
+/obj/effect/landmark/late_join/marine/delta,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/delta)
@@ -83748,7 +83765,7 @@
 	icon_state = "W";
 	layer = 2.5
 	},
-/obj/effect/landmark/late_join/police,
+/obj/effect/landmark/late_join/police/police,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cryo)
 "sbZ" = (
@@ -84159,6 +84176,7 @@
 /area/almayer/hallways/upper/aft_hallway)
 "sjM" = (
 /obj/effect/landmark/start/reporter,
+/obj/effect/landmark/late_join/reporter,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/upper/u_m_p)
 "skg" = (
@@ -85812,7 +85830,7 @@
 /area/almayer/squads/alpha)
 "sXw" = (
 /obj/effect/landmark/start/marine/engineer/bravo,
-/obj/effect/landmark/late_join/bravo,
+/obj/effect/landmark/late_join/marine/bravo,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/bravo)
 "sXB" = (
@@ -86282,7 +86300,7 @@
 /area/almayer/engineering/upper_engineering/starboard)
 "tgV" = (
 /obj/effect/landmark/start/doctor,
-/obj/effect/landmark/late_join/doctor,
+/obj/effect/landmark/late_join/medical/doctor,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
@@ -87422,7 +87440,7 @@
 /area/almayer/living/briefing)
 "tEO" = (
 /obj/effect/landmark/start/marine/medic/charlie,
-/obj/effect/landmark/late_join/charlie,
+/obj/effect/landmark/late_join/marine/charlie,
 /obj/structure/sign/safety/cryo{
 	pixel_x = 8;
 	pixel_y = -25
@@ -87905,7 +87923,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj/effect/landmark/late_join/chief_police,
+/obj/effect/landmark/late_join/police/chief_police,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cryo)
 "tQV" = (
@@ -88331,7 +88349,7 @@
 	icon_state = "S"
 	},
 /obj/effect/landmark/start/professor,
-/obj/effect/landmark/late_join/cmo,
+/obj/effect/landmark/late_join/medical/cmo,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
@@ -88703,6 +88721,7 @@
 	icon_state = "S"
 	},
 /obj/effect/landmark/start/chef,
+/obj/effect/landmark/late_join/supply/chef,
 /turf/open/floor/almayer/cargo_arrow/east,
 /area/almayer/living/offices/cryo)
 "uhq" = (
@@ -89122,7 +89141,7 @@
 /area/almayer/underdeck/hangar)
 "urN" = (
 /obj/effect/landmark/start/marine/leader/charlie,
-/obj/effect/landmark/late_join/charlie,
+/obj/effect/landmark/late_join/marine/charlie,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/charlie)
 "usm" = (
@@ -90703,7 +90722,7 @@
 /area/almayer/engineering/lower)
 "uYH" = (
 /obj/effect/landmark/start/marine/medic/delta,
-/obj/effect/landmark/late_join/delta,
+/obj/effect/landmark/late_join/marine/delta,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/delta)
@@ -90885,6 +90904,7 @@
 /area/almayer/shipboard/brig/perma)
 "vcu" = (
 /obj/effect/landmark/start/engineering,
+/obj/effect/landmark/late_join/engineering/engineering,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/upper_engineering/port)
 "vcE" = (
@@ -91166,7 +91186,7 @@
 /area/almayer/squads/bravo)
 "vio" = (
 /obj/effect/landmark/start/marine/delta,
-/obj/effect/landmark/late_join/delta,
+/obj/effect/landmark/late_join/marine/delta,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/delta)
@@ -91226,7 +91246,7 @@
 /area/almayer/living/briefing)
 "viS" = (
 /obj/effect/landmark/start/marine/engineer/bravo,
-/obj/effect/landmark/late_join/bravo,
+/obj/effect/landmark/late_join/marine/bravo,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/bravo)
 "vjb" = (
@@ -91789,7 +91809,7 @@
 /area/almayer/shipboard/sea_office)
 "vug" = (
 /obj/effect/landmark/start/marine/engineer/alpha,
-/obj/effect/landmark/late_join/alpha,
+/obj/effect/landmark/late_join/marine/alpha,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/alpha)
 "vuA" = (
@@ -92303,6 +92323,7 @@
 /area/almayer/command/airoom)
 "vCO" = (
 /obj/effect/landmark/start/bridge,
+/obj/effect/landmark/late_join/command/bridge,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/bridgebunks)
 "vDa" = (
@@ -93125,7 +93146,7 @@
 /area/almayer/hallways/lower/starboard_fore_hallway)
 "vUb" = (
 /obj/effect/landmark/start/marine/alpha,
-/obj/effect/landmark/late_join/alpha,
+/obj/effect/landmark/late_join/marine/alpha,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/alpha)
 "vUe" = (
@@ -93629,7 +93650,7 @@
 /area/almayer/engineering/lower/engine_core)
 "wdz" = (
 /obj/effect/landmark/start/marine/engineer/charlie,
-/obj/effect/landmark/late_join/charlie,
+/obj/effect/landmark/late_join/marine/charlie,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/charlie)
 "wdG" = (
@@ -93689,7 +93710,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj/effect/landmark/late_join/police,
+/obj/effect/landmark/late_join/police/police,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cryo)
 "wer" = (
@@ -95147,7 +95168,7 @@
 "wGE" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/landmark/start/marine/leader/delta,
-/obj/effect/landmark/late_join/delta,
+/obj/effect/landmark/late_join/marine/delta,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/delta)
 "wGX" = (
@@ -95969,7 +95990,7 @@
 /area/almayer/medical/medical_science)
 "wWX" = (
 /obj/effect/landmark/start/marine/engineer/delta,
-/obj/effect/landmark/late_join/delta,
+/obj/effect/landmark/late_join/marine/delta,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/delta)
 "wXh" = (
@@ -96672,6 +96693,7 @@
 /area/almayer/command/lifeboat)
 "xnI" = (
 /obj/effect/landmark/start/requisition,
+/obj/effect/landmark/late_join/supply/requisition,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/req)
 "xnX" = (
@@ -98808,7 +98830,7 @@
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "yfm" = (
 /obj/effect/landmark/start/marine/delta,
-/obj/effect/landmark/late_join/delta,
+/obj/effect/landmark/late_join/marine/delta,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/delta)
 "yfn" = (
@@ -99052,7 +99074,7 @@
 /area/almayer/engineering/lower)
 "yle" = (
 /obj/effect/landmark/start/marine/engineer/delta,
-/obj/effect/landmark/late_join/delta,
+/obj/effect/landmark/late_join/marine/delta,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/delta)
 "ylh" = (

@@ -550,7 +550,8 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left)
 
 	if(slot in list(WEAR_L_HAND, WEAR_R_HAND))
-		set_gun_user(user)
+		if(user.get_active_hand() == src)
+			set_gun_user(user)
 		if(HAS_TRAIT_FROM_ONLY(src, TRAIT_GUN_LIGHT_FORCE_DEACTIVATED, WEAKREF(user)))
 			force_light(on = TRUE)
 			REMOVE_TRAIT(src, TRAIT_GUN_LIGHT_FORCE_DEACTIVATED, WEAKREF(user))
@@ -1258,6 +1259,7 @@ and you're good to go.
 	var/fired_by_akimbo = FALSE
 	if(dual_wield)
 		fired_by_akimbo = TRUE
+		gun_user = null
 
 	//Dual wielding. Do we have a gun in the other hand and is it the same category?
 	var/obj/item/weapon/gun/akimbo = user.get_inactive_hand()
@@ -1689,7 +1691,7 @@ and you're good to go.
 			time += "\[[time_stamp()]\] <b>[key_name(user)]</b> tried to commit suicide with a [name]"
 			cause_data = create_cause_data("failed suicide by [initial(name)]")
 			to_chat(user, SPAN_HIGHDANGER("Ow..."))
-			msg_admin_ff("[key_name(user)] tried to commit suicide with a [name] in [get_area(user)] [ffl]")
+			msg_admin_ff("[key_name(user)] tried to commit suicide with a [name] in [get_area(user)] [ffl]", TRUE, user.loc.z)
 			user.apply_damage(200, HALLOSS)
 		else
 			time += "\[[time_stamp()]\] <b>[key_name(user)]</b> committed suicide with <b>[src]</b>" //Log it.
@@ -1714,7 +1716,7 @@ and you're good to go.
 			user.apply_damage(projectile_to_fire.damage * 3, projectile_to_fire.ammo.damage_type, "head", used_weapon = used_weapon_text, no_limb_loss = TRUE, permanent_kill = TRUE)
 			user.apply_damage(200, OXY) //Fill out the rest of their healthbar.
 			user.death(cause_data) //Make sure they're dead. permanent_kill above will make them unrevivable.
-			msg_admin_ff(admin_msg)
+			msg_admin_ff(admin_msg, FALSE, user.loc.z)
 			to_chat(user, SPAN_HIGHDANGER("Your life flashes before you as your spirit is torn from your body!"))
 
 		user.last_damage_data = cause_data
@@ -1877,12 +1879,15 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if(active_attachable)
 		return
 
-	if(!user)
-		user = gun_user
+	if(!current_mag)
+		return
 
-	if(flags_gun_features & GUN_AMMO_COUNTER && current_mag)
+	if(!user)
+		return
+
+	if(flags_gun_features & GUN_AMMO_COUNTER)
 		// toggleable spam control.
-		if(user.client.prefs.toggle_prefs & TOGGLE_AMMO_DISPLAY_TYPE && gun_firemode == GUN_FIREMODE_SEMIAUTO && current_mag.current_rounds % 5 != 0 && current_mag.current_rounds > 15)
+		if(user.client?.prefs?.toggle_prefs & TOGGLE_AMMO_DISPLAY_TYPE && gun_firemode == GUN_FIREMODE_SEMIAUTO && current_mag.current_rounds % 5 != 0 && current_mag.current_rounds > 15)
 			return
 		var/chambered = in_chamber ? TRUE : FALSE
 		to_chat(user, SPAN_DANGER("[current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] ROUNDS REMAINING."))
@@ -2186,15 +2191,11 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 	if(gun_firemode == GUN_FIREMODE_AUTOMATIC)
 		reset_fire()
-		display_ammo()
+		display_ammo(gun_user)
 	SEND_SIGNAL(src, COMSIG_GUN_STOP_FIRE)
 
 /obj/item/weapon/gun/proc/set_gun_user(mob/to_set)
 	if(to_set == gun_user)
-		if(!(comp_lookup[COMSIG_MOB_MOUSEDOWN]) && to_set)
-			RegisterSignal(gun_user, COMSIG_MOB_MOUSEDOWN, PROC_REF(start_fire))
-			RegisterSignal(gun_user, COMSIG_MOB_MOUSEDRAG, PROC_REF(change_target))
-			RegisterSignal(gun_user, COMSIG_MOB_MOUSEUP, PROC_REF(stop_fire))
 		return
 	if(gun_user)
 		UnregisterSignal(gun_user, list(COMSIG_MOB_MOUSEUP, COMSIG_MOB_MOUSEDOWN, COMSIG_MOB_MOUSEDRAG))
@@ -2256,8 +2257,8 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	set_target(get_turf_on_clickcatcher(object, gun_user, params))
 	if((gun_firemode == GUN_FIREMODE_SEMIAUTO) || active_attachable)
 		Fire(object, gun_user, modifiers)
+		display_ammo(gun_user)
 		reset_fire()
-		display_ammo()
 		return
 	SEND_SIGNAL(src, COMSIG_GUN_FIRE)
 

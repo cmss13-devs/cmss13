@@ -67,7 +67,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	. = ..()
 	if(on)
 		playsound(src, 'sound/machines/tcomms_on.ogg', vol = 80, vary = FALSE, sound_range = 16, falloff = 0.5)
-		msg_admin_niche("Portable communication relay started for Z-Level [src.z] [ADMIN_JMP(src)]")
+		msg_admin_niche("Portable communication relay started for Z-Level [src.z]", src)
 
 		if(SSobjectives && SSobjectives.comms)
 			// This is the first time colony comms have been established.
@@ -77,7 +77,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 /obj/structure/machinery/telecomms/relay/preset/tower/tcomms_shutdown()
 	. = ..()
 	if(!on)
-		msg_admin_niche("Portable communication relay shut down for Z-Level [src.z] [ADMIN_JMP(src)]")
+		msg_admin_niche("Portable communication relay shut down for Z-Level [src.z]", src)
 
 /obj/structure/machinery/telecomms/relay/preset/tower/bullet_act(obj/projectile/P)
 	..()

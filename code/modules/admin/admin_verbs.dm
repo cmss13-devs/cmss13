@@ -222,6 +222,7 @@ GLOBAL_LIST_INIT(admin_verbs_debug, list(
 	/client/proc/admin_blurb,
 	/datum/admins/proc/open_shuttlepanel,
 	/client/proc/allow_browser_inspect,
+	/client/proc/opensearch_query_builder
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_debug_advanced, list(

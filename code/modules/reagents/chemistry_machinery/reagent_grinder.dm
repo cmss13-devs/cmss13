@@ -68,7 +68,7 @@
 /obj/structure/machinery/reagentgrinder/process()
 	if(linked_storage)
 		if(QDELETED(linked_storage) || src.z != linked_storage.z || get_dist(src, linked_storage) > tether_range)
-			visible_message(SPAN_WARNING("<b>The [src] beeps:</b> Smartfridge connection lost."))
+			visible_message(SPAN_WARNING("<b>\The [src] beeps:</b> Smartfridge connection lost."))
 			cleanup()
 			SStgui.update_uis(src)
 
@@ -254,9 +254,9 @@
 	linked_storage = locate(/obj/structure/machinery/smartfridge/chemistry) in range(tether_range, src)
 	if(linked_storage)
 		RegisterSignal(linked_storage, COMSIG_PARENT_QDELETING, PROC_REF(cleanup), override = TRUE)
-		visible_message(SPAN_NOTICE("<b>The [src] beeps:</b> Smartfridge connected."))
+		visible_message(SPAN_NOTICE("<b>\The [src] beeps:</b> Smartfridge connected."))
 	else
-		visible_message(SPAN_WARNING("<b>The [src] beeps:</b> No smartfridge detected in range."))
+		visible_message(SPAN_WARNING("<b>\The [src] beeps:</b> No smartfridge detected in range."))
 
 /obj/structure/machinery/reagentgrinder/proc/is_allowed(obj/item/reagent_container/O)
 	for(var/i in blend_items)

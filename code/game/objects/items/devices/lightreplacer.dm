@@ -82,7 +82,7 @@
 			return
 		else if(glass.use(1))
 			AddUses(5)
-			to_chat(user, SPAN_NOTICE("You insert a piece of glass into the [src]. You have [uses] lights remaining."))
+			to_chat(user, SPAN_NOTICE("You insert a piece of glass into \the [src]. You have [uses] lights remaining."))
 			return
 		else
 			to_chat(user, SPAN_WARNING("You need one sheet of glass to replace lights."))
@@ -92,13 +92,13 @@
 		if(bulb.status == 0) // LIGHT OKAY
 			if(uses < max_uses)
 				AddUses(1)
-				to_chat(user, SPAN_NOTICE("You insert the [bulb] into [src]. You have [uses] lights remaining."))
+				to_chat(user, SPAN_NOTICE("You insert \the [bulb] into [src]. You have [uses] lights remaining."))
 				user.drop_held_item()
 				qdel(bulb)
 				return
 		else
 			Recycle()
-			to_chat(user, SPAN_NOTICE("You insert the [bulb] into [src] for recycling."))
+			to_chat(user, SPAN_NOTICE("You insert \the [bulb] into [src] for recycling."))
 			user.drop_held_item()
 			qdel(bulb)
 			return

@@ -284,7 +284,7 @@
 
 	else if(F && F.hivenumber == xeno.hivenumber)
 		if(F.mature)
-			to_chat(xeno, SPAN_XENONOTICE("The [F] is already mature. The [src.name] does nothing."))
+			to_chat(xeno, SPAN_XENONOTICE("\The [F] is already mature. The [src.name] does nothing."))
 			xeno_cooldown *= 0.5
 		else
 			to_chat(xeno, SPAN_XENONOTICE("We pour all our energy equal to [F] growth, bringing it to swift maturity!"))

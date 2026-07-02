@@ -26,7 +26,7 @@
 	// Are we trying to immobilize the vehicle?
 	if(istype(O, /obj/item/vehicle_clamp))
 		if(clamped)
-			to_chat(user, SPAN_WARNING("[src] already has a [O.name] attached."))
+			to_chat(user, SPAN_WARNING("[src] already has \a [O.name] attached."))
 			return
 
 		//only can clamp friendly vehicles
@@ -107,15 +107,15 @@
 				entrance_used = entrance
 				break
 		if(entrance_used) //if we are at a door, throw it in, else do nothing.
-			user.visible_message(SPAN_WARNING("[user] takes position to throw [nade] through the door of the [src]."),
-			SPAN_WARNING("You take position to throw [nade] through the door of the [src]."))
+			user.visible_message(SPAN_WARNING("[user] takes position to throw [nade] through the door of \the [src]."),
+			SPAN_WARNING("You take position to throw [nade] through the door of \the [src]."))
 			if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 				return
 			if(mob_x != user.x - x || mob_y != user.y - y)
 				return
 
-			user.visible_message(SPAN_WARNING("[user] throws [nade] through the door of the [src]!"),
-			SPAN_WARNING("You throw [nade] through the door of the [src]."))
+			user.visible_message(SPAN_WARNING("[user] throws [nade] through the door of \the [src]!"),
+			SPAN_WARNING("You throw [nade] through the door of \the [src]."))
 
 			user.drop_held_item()
 			interior.enter(nade, entrance_used)

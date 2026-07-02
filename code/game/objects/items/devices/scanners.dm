@@ -545,7 +545,7 @@ K9 SCANNER
 	var/area/scanner_area = get_area(scanner_turf)
 
 	if(self_turf.z != scanner_turf.z || self_area.fake_zlevel != scanner_area.fake_zlevel)
-		to_chat(user, SPAN_BOLDWARNING("The [src] lights up: <b>UNABLE TO REACH LINKED K9!<b>"))
+		to_chat(user, SPAN_BOLDWARNING("\The [src] lights up: <b>UNABLE TO REACH LINKED K9!<b>"))
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 15, TRUE)
 		return
 

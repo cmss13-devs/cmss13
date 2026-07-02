@@ -79,7 +79,7 @@
 /area/bigredv2/outside/space_port)
 "aau" = (
 /obj/docking_port/stationary/marine_dropship/lz1{
-	name = "LZ1: Communications Landing Zone"
+	name = "LZ1: NW: Communications Landing Zone"
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
@@ -13185,7 +13185,7 @@
 /area/bigredv2/outside/space_port_lz2)
 "biI" = (
 /obj/docking_port/stationary/marine_dropship/lz2{
-	name = "LZ2: Engineering Landing Zone"
+	name = "LZ2: SW: Engineering Landing Zone"
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port_lz2)
@@ -24043,9 +24043,7 @@
 "iFT" = (
 /obj/structure/platform_decoration/metal/almayer/west,
 /obj/structure/platform_decoration/metal/almayer,
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /turf/open/floor/bluegrid/bcircuitoff,
 /area/bigredv2/caves/lambda/research)
 "iGp" = (
@@ -25532,9 +25530,7 @@
 "kkJ" = (
 /obj/structure/platform_decoration/metal/almayer/north,
 /obj/structure/platform_decoration/metal/almayer/east,
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /obj/item/stack/cable_coil/random,
 /turf/open/floor/bluegrid/bcircuitoff,
 /area/bigredv2/caves/lambda/research)
@@ -27990,9 +27986,7 @@
 /area/bigredv2/outside/space_port)
 "mSC" = (
 /obj/structure/platform/metal/almayer/east,
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /turf/open/floor/bluegrid/bcircuitoff,
 /area/bigredv2/caves/lambda/research)
 "mSS" = (

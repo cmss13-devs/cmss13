@@ -20716,7 +20716,7 @@
 /area/tyrargo/landing_zone_1)
 "aWu" = (
 /obj/docking_port/stationary/marine_dropship/lz1{
-	name = "LZ1 - Firebase Charlie"
+	name = "LZ1 - NW - Firebase Charlie"
 	},
 /turf/open/gm/dirt/dark_brown,
 /area/tyrargo/landing_zone_1)
@@ -44495,9 +44495,7 @@
 /obj/item/prop/colony/usedbandage{
 	dir = 5
 	},
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /turf/open/floor/hybrisa/carpet/carpetpatternblue,
 /area/tyrargo/indoors/apartment/north_upper)
 "bYo" = (
@@ -104223,9 +104221,7 @@
 "frV" = (
 /obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood,
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /turf/open/floor/hybrisa/carpet/carpetpatternblue,
 /area/tyrargo/indoors/apartment/north_upper)
 "fsJ" = (
@@ -104617,9 +104613,7 @@
 /turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/north,
 /area/tyrargo/indoors/apartment/north_ground)
 "gjw" = (
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/tyrargo/indoors/apartment/north_ground)
 "gjE" = (
@@ -108312,9 +108306,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/oob)
 "nOY" = (
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /turf/open/floor/plating/platingdmg3,
 /area/tyrargo/indoors/apartment/north_ground)
 "nQz" = (
@@ -110261,7 +110253,7 @@
 /area/tyrargo/indoors/apartment/north_ground)
 "rus" = (
 /obj/docking_port/stationary/marine_dropship/lz2{
-	name = "LZ2 - USASF Airbase Anderson"
+	name = "LZ2 - SW - USASF Airbase Anderson"
 	},
 /turf/open/floor/plating,
 /area/tyrargo/landing_zone_2)
@@ -111961,9 +111953,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/underground/museum_carpark)
 "uBN" = (
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /turf/open/floor/prison/darkyellow2,
 /area/tyrargo/indoors/engineering/ground)
 "uBU" = (
@@ -113559,9 +113549,7 @@
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "xao" = (
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /turf/open/floor/plating,
 /area/tyrargo/indoors/engineering/ground)
 "xaO" = (

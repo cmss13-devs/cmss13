@@ -25542,7 +25542,9 @@
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/northwestern_tunnel)
 "cbN" = (
-/obj/docking_port/stationary/marine_dropship/lz2,
+/obj/docking_port/stationary/marine_dropship/lz2{
+	name = "LZ2: SW: Landing Zone"
+	},
 /turf/open/floor/plating,
 /area/desert_dam/exterior/landing_pad_two)
 "cbO" = (
@@ -79902,7 +79904,9 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/desert_dam/exterior/landing_pad_two)
 "xnl" = (
-/obj/docking_port/stationary/marine_dropship/lz1,
+/obj/docking_port/stationary/marine_dropship/lz1{
+	name = "LZ1: NW: Landing Zone"
+	},
 /turf/open/floor/plating,
 /area/desert_dam/exterior/landing_pad_one)
 "xnr" = (

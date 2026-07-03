@@ -132,6 +132,9 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	if(movable.flags_atom & NO_ZFALL)
 		return
 
+	if(movable.loc != src && length(movable.locs) > 1)
+		return // Ignore multiloc things unless their primary loc is here
+
 	var/height = 1
 	var/turf/below = get_turf_below()
 	while(istype(below, /turf/open_space))

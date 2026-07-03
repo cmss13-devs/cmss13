@@ -50751,7 +50751,6 @@
 /area/tyrargo/outdoors/colony_streets/north_west)
 "crK" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/device/binoculars/range/designator,
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north)
 "crL" = (
@@ -104227,6 +104226,7 @@
 /obj/item/shard{
 	icon_state = "medium"
 	},
+/obj/item/device/binoculars/range/designator,
 /turf/open/floor/hybrisa/carpet/carpetpatternblue,
 /area/tyrargo/indoors/apartment/north_upper)
 "fsJ" = (

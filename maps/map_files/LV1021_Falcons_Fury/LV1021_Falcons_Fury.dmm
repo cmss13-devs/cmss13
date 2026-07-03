@@ -35633,17 +35633,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/closed/wall/wood/green,
 /area/lv1021/indoors/clf_camp/education)
-"nUP" = (
-/obj/structure/prop/hybrisa/boulders/wide_boulderdark/wide_boulder1{
-	layer = 4.13;
-	pixel_y = 45;
-	pixel_x = 13;
-	health = 100000;
-	explo_proof = 1;
-	unacidable = 1
-	},
-/turf/open/auto_turf/tyrargo_grass/layer1,
-/area/lv1021/outdoors/jungle/jungleC_mid)
 "nVX" = (
 /obj/structure/flora/bush/ausbushes/reedbush{
 	pixel_y = 30
@@ -41339,13 +41328,21 @@
 	pixel_x = -30;
 	pixel_y = -60
 	},
+/obj/structure/prop/hybrisa/boulders/wide_boulderdark/wide_boulder1{
+	layer = 4.13;
+	pixel_y = 19;
+	pixel_x = -6;
+	health = 100000;
+	explo_proof = 1;
+	unacidable = 1
+	},
 /obj/structure/prop/hybrisa/boulders/smallboulderdark/boulder_dark1{
 	layer = 4.13;
-	pixel_y = -8;
+	pixel_y = -2;
 	health = 100000;
 	explo_proof = 1;
 	unacidable = 1;
-	pixel_x = -4
+	pixel_x = -1
 	},
 /obj/structure/prop/hybrisa/boulders/smallboulderdark/boulder_dark3{
 	unacidable = 1;
@@ -61293,7 +61290,7 @@ hXu
 phz
 bQP
 mvR
-nUP
+mvR
 doE
 hmP
 abO

@@ -1317,25 +1317,25 @@
 		if(ishuman(firingMob) && ishuman(src) && faction == firingMob.faction && !A?.statistic_exempt) //One human shot another, be worried about it but do everything basically the same //special_role should be null or an empty string if done correctly
 			if(!istype(bullet.ammo, /datum/ammo/energy/taser))
 				GLOB.round_statistics.total_friendly_fire_instances++
-				var/ff_msg = "[key_name(firingMob)] shot [key_name(src)] with \a [bullet][shot_from] in [get_area(firingMob)] [ADMIN_JMP(firingMob)] [ADMIN_PM(firingMob)]"
+				var/ff_msg = "[key_name(firingMob)] shot [key_name(src)] with \a [bullet][shot_from]. [SPAN_BOLD("Shooter:")] [ADMIN_VERBOSEJMP(firingMob)] [ADMIN_PM(firingMob)], [SPAN_BOLD("Victim:")] [ADMIN_VERBOSEJMP(src)]"
 				var/ff_living = TRUE
 				if(src.stat == DEAD)
 					ff_living = FALSE
 				if(!(((mob_flags & MUTINY_MUTINEER) && (firingMob.mob_flags & MUTINY_LOYALIST)) || ((mob_flags & MUTINY_LOYALIST) && (firingMob.mob_flags & MUTINY_MUTINEER))))
-					msg_admin_ff(ff_msg, ff_living)
+					msg_admin_ff(ff_msg, ff_living, loc.z)
 				if(ishuman(firingMob) && bullet.weapon_cause_data)
 					var/mob/living/carbon/human/H = firingMob
 					H.track_friendly_fire(bullet.weapon_cause_data.cause_name)
 			else
-				msg_admin_attack("[key_name(firingMob)] tased [key_name(src)][shot_from] in [get_area(firingMob)] ([firingMob.x],[firingMob.y],[firingMob.z]).", firingMob.x, firingMob.y, firingMob.z)
+				msg_admin_attack("[key_name(firingMob)] tased [key_name(src)][shot_from]. Shooter: [AREACOORD(firingMob)] Victim: [AREACOORD(src)]", firingMob.x, firingMob.y, firingMob.z)
 		else
-			msg_admin_attack("[key_name(firingMob)] shot [key_name(src)] with \a [bullet][shot_from] in [get_area(firingMob)] ([firingMob.x],[firingMob.y],[firingMob.z]).", firingMob.x, firingMob.y, firingMob.z)
-		attack_log += "\[[time_stamp()]\] <b>[key_name(firingMob)]</b> shot <b>[key_name(src)]</b> with \a <b>[bullet]</b>[shot_from] in [get_area(firingMob)]."
-		firingMob.attack_log += "\[[time_stamp()]\] <b>[key_name(firingMob)]</b> shot <b>[key_name(src)]</b> with \a <b>[bullet]</b>[shot_from] in [get_area(firingMob)]."
+			msg_admin_attack("[key_name(firingMob)] shot [key_name(src)] with \a [bullet][shot_from]. Shooter: [AREACOORD(firingMob)] Victim: [AREACOORD(src)]", firingMob.x, firingMob.y, firingMob.z)
+		attack_log += "\[[time_stamp()]\] <b>[key_name(firingMob)]</b> shot <b>[key_name(src)]</b> with \a <b>[bullet]</b>[shot_from]. <b>Shooter:</b> [ADMIN_VERBOSEJMP(firingMob)], <b>Victim:</b> [ADMIN_VERBOSEJMP(src)]."
+		firingMob.attack_log += "\[[time_stamp()]\] <b>[key_name(firingMob)]</b> shot <b>[key_name(src)]</b> with \a <b>[bullet]</b>[shot_from]. <b>Shooter:</b> [ADMIN_VERBOSEJMP(firingMob)], <b>Victim:</b> [ADMIN_VERBOSEJMP(src)]."
 		return
 
 	attack_log += "\[[time_stamp()]\] <b>[bullet.firer ? bullet.firer : "SOMETHING??"]</b> shot <b>[key_name(src)]</b> with a <b>[bullet]</b>[shot_from]"
-	msg_admin_attack("[bullet.firer ? bullet.firer : "SOMETHING??"] shot [key_name(src)] with \a [bullet][shot_from] in [get_area(src)] ([loc.x],[loc.y],[loc.z]).", loc.x, loc.y, loc.z)
+	msg_admin_attack("[bullet.firer ? bullet.firer : "SOMETHING??"] shot [key_name(src)] with \a [bullet][shot_from] in [AREACOORD(src)].", loc.x, loc.y, loc.z)
 
 //Abby -- Just check if they're 1 tile horizontal or vertical, no diagonals
 /proc/get_adj_simple(atom/Loc1,atom/Loc2)

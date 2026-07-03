@@ -890,6 +890,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
+/obj/structure/platform/metal/strata,
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/asteroid/processing_nw_train)
 "adf" = (
@@ -1178,6 +1179,84 @@
 "aed" = (
 /turf/closed/wall/strata_outpost/reinforced,
 /area/atlan/asteroid/processing_train_control)
+"aee" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/monkey_spawn,
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/exports_west)
+"aef" = (
+/obj/structure/machinery/door/airlock/prison_hatch/autoname,
+/turf/open/space/basic,
+/area/atlan/station/admin)
+"aeg" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 8;
+	pixel_x = -10;
+	pixel_y = -3
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_nw_train)
+"aeh" = (
+/obj/vehicle/train/cargo/engine{
+	light_power = 0
+	},
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/floor/strata/floor3/east,
+/area/atlan/asteroid/processing_nw_train)
+"aei" = (
+/obj/vehicle/train/cargo/trolley,
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_nw_train)
+"aej" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/storage/toolbox/mechanical/green{
+	pixel_y = -4
+	},
+/turf/open/floor/strata/floor3/east,
+/area/atlan/asteroid/processing_nw_train)
+"aek" = (
+/turf/open/floor/strata/yellow3/north,
+/area/atlan/asteroid/processing_seperation)
+"ael" = (
+/obj/structure/sign/poster/safety{
+	pixel_y = 33
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_seperation)
+"aem" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 1
+	},
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/tool/wrench,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_nw_train)
+"aen" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_y = 1
+	},
+/obj/structure/largecrate/random,
+/turf/open/floor/strata/multi_tiles/west,
+/area/atlan/asteroid/processing_nw_train)
+"aeo" = (
+/obj/structure/platform/metal/strata/north,
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_nw_train)
+"aep" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_nw_train)
 "aeq" = (
 /obj/structure/platform/metal/kutjevo_smooth,
 /obj/structure/lattice,
@@ -6161,6 +6240,7 @@
 /area/atlan/oob)
 "dGf" = (
 /obj/structure/platform/metal/strata/north,
+/obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_sw_train)
 "dGB" = (
@@ -7607,6 +7687,11 @@
 /turf/open/floor/plating/prison,
 /area/atlan/station/hab_flight)
 "eDD" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_y = 3;
+	pixel_x = 1
+	},
 /turf/open/floor/strata,
 /area/atlan/asteroid/processing_nw_train)
 "eDU" = (
@@ -10979,18 +11064,6 @@
 	},
 /turf/open/floor/strata/fake_wood,
 /area/atlan/station/hab_rec)
-"gXc" = (
-/obj/structure/surface/rack{
-	color = "#98a3ab"
-	},
-/obj/item/storage/belt/utility/full,
-/obj/item/storage/box/lights{
-	pixel_y = 11
-	},
-/obj/item/storage/box/lights/mixed,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/prison,
-/area/atlan/station/admin)
 "gXe" = (
 /obj/structure/cargo_container/upp/left,
 /turf/open/floor/prison/floor_marked,
@@ -11622,6 +11695,11 @@
 "hsz" = (
 /obj/structure/platform_decoration/metal/strata/north,
 /obj/effect/decal/cleanable/blood/oil,
+/obj/structure/machinery/light/double/blue{
+	dir = 8;
+	pixel_x = -10;
+	pixel_y = -1
+	},
 /turf/open/floor/strata,
 /area/atlan/asteroid/processing_nw_train)
 "hsK" = (
@@ -12920,8 +12998,8 @@
 /turf/open/gm/dirt/brown,
 /area/atlan/asteroid/exports_cave)
 "imZ" = (
-/obj/structure/sign/poster/safety{
-	pixel_y = 33
+/obj/structure/machinery/light/double/blue{
+	dir = 1
 	},
 /turf/open/floor/strata/yellow3/west,
 /area/atlan/asteroid/processing_seperation)
@@ -14314,6 +14392,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
+/obj/structure/platform/metal/strata,
 /turf/open/asphalt/cement/cement1,
 /area/atlan/asteroid/processing_nw_train)
 "jaC" = (
@@ -16106,6 +16185,7 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
+/obj/item/ammo_magazine/flamer_tank/survivor/empty,
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_handling)
 "klm" = (
@@ -19510,6 +19590,15 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/atlan/station/admin)
 "mJc" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/storage/belt/utility/full,
+/obj/item/storage/box/lights{
+	pixel_y = 11
+	},
+/obj/item/storage/box/lights/mixed,
+/obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light/small{
 	dir = 4;
 	pixel_y = 6
@@ -22894,6 +22983,7 @@
 /area/atlan/station/medical)
 "oSC" = (
 /obj/effect/decal/cleanable/blood/oil,
+/obj/vehicle/train/cargo/trolley,
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_nw_train)
 "oTa" = (
@@ -24912,6 +25002,7 @@
 /turf/open/floor/strata,
 /area/atlan/station/walkway)
 "qfD" = (
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/strata/yellow3/northeast,
 /area/atlan/asteroid/processing_dock)
 "qfT" = (
@@ -26815,10 +26906,10 @@
 /turf/open/floor/upp_hull/outerhull_dir/northeast,
 /area/atlan/station/drydock)
 "rxM" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 8
-	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/gibs/core,
+/obj/effect/decal/cleanable/blood,
+/obj/item/tool/screwdriver,
+/obj/item/stack/cable_coil,
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_nw_train)
 "ryz" = (
@@ -30206,14 +30297,6 @@
 /obj/structure/machinery/light/small,
 /turf/open/floor/plating/prison,
 /area/atlan/asteroid/sensors)
-"tHa" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 8;
-	pixel_x = -10;
-	pixel_y = -1
-	},
-/turf/open/floor/strata,
-/area/atlan/asteroid/processing_nw_train)
 "tHk" = (
 /obj/structure/surface/table{
 	color = "#8B7B5B"
@@ -31608,12 +31691,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkyellowfull2,
 /area/atlan/station/atmospherics)
-"uEx" = (
-/obj/item/ammo_magazine/flamer_tank/survivor/empty{
-	pixel_x = 11
-	},
-/turf/open/floor/strata/floor2,
-/area/atlan/asteroid/processing_nw_train)
 "uEJ" = (
 /obj/structure/bed/roller/hospital_empty/bigrollerempty2{
 	icon_state = "bigrollerempty2_up";
@@ -32189,6 +32266,7 @@
 /obj/effect/decal/hybrisa/warning/redandwhite_N{
 	pixel_y = 1
 	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/corsat/marked,
 /area/atlan/asteroid/exports_east)
 "vaa" = (
@@ -34246,6 +34324,7 @@
 	desc = "A board for pinning important notices upon. There are a few pushpins dangling from it. Crudely carved into the baseboard is a picture of what seems to be a screaming warlock. To their right is a whip lashing out comically over what you figure are software engineers slaving over a box labeled CM13. The words 'spriterz rule' is carved beneath the box.";
 	pixel_y = 32
 	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison/darkbrownfull2,
 /area/atlan/asteroid/processing_offices)
 "wJj" = (
@@ -60204,8 +60283,8 @@ aSd
 aSd
 aSd
 aSd
-gXc
-oVK
+aSd
+aSd
 mJc
 imK
 oVK
@@ -60404,13 +60483,13 @@ hlC
 aSd
 aSd
 aSd
-aSd
-aSd
-aSd
-aSd
-oJS
+aem
+cwE
+aei
+aeh
+xOt
 bzE
-bzE
+aef
 bzE
 bzE
 bzE
@@ -60600,18 +60679,18 @@ aSd
 aSd
 bEl
 geF
-mkk
+aep
 adf
 ade
 eDD
 rvz
+aeo
 mkk
-aSd
-aSd
 mkk
-rxM
 cwE
-lpW
+rxM
+mkk
+aeg
 tQc
 mkk
 qtZ
@@ -60808,12 +60887,12 @@ tcm
 lUv
 dND
 xWh
-xWh
 gnS
-cwE
-cwE
-cwE
 mkk
+mkk
+lpW
+mkk
+cwE
 mkk
 wqV
 mkk
@@ -60823,8 +60902,8 @@ mkk
 mkk
 mkk
 mkk
-mkk
-tHa
+cnE
+aSd
 nQr
 hsz
 kdI
@@ -61015,7 +61094,7 @@ lpW
 mkk
 mkk
 oSC
-lpW
+aej
 mkk
 mkk
 cwE
@@ -61025,8 +61104,8 @@ wqV
 mkk
 mkk
 lpW
-mkk
 uIi
+mkk
 mkk
 lpW
 mkk
@@ -62027,7 +62106,7 @@ qdS
 qdS
 qdS
 qdS
-qdS
+aen
 qbe
 aAk
 aAk
@@ -62228,7 +62307,7 @@ wqV
 mkk
 mkk
 mkk
-rox
+mkk
 mkk
 mkk
 mkk
@@ -62310,7 +62389,7 @@ mlu
 ltK
 woB
 aWz
-awb
+aee
 aSd
 aSd
 wXS
@@ -62639,7 +62718,7 @@ mkk
 wPQ
 mkk
 fix
-uEx
+mkk
 iFo
 mkk
 dzk
@@ -64054,13 +64133,13 @@ aVY
 sZA
 sZA
 sZA
-lGF
+lcx
 lGF
 lGF
 lGF
 lGF
 aFj
-lGF
+aek
 nQZ
 nQZ
 nQZ
@@ -64252,12 +64331,12 @@ hLh
 pJa
 sZA
 sZA
-qvm
 sZA
 sZA
 sZA
 sZA
-lGF
+sZA
+sZA
 klj
 sZA
 lGF
@@ -64463,9 +64542,9 @@ uMf
 sZA
 sZA
 sZA
-sZA
+wCY
 axJ
-nQZ
+ael
 nQZ
 nQZ
 hTB
@@ -64665,7 +64744,7 @@ sZA
 sZA
 sZA
 sZA
-qvm
+sZA
 lmz
 ule
 amh
@@ -68519,7 +68598,7 @@ gtB
 pIa
 pIa
 sZA
-sZA
+qvm
 sZA
 sZA
 aVY

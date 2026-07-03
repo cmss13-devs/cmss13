@@ -1,11 +1,11 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /turf/closed/wall/hybrisa/colony/hospital,
-/area/space)
+/area/atlan/station/medical)
 "b" = (
 /obj/structure/sign/safety/biolab,
 /turf/closed/wall/hybrisa/colony/hospital,
-/area/space)
+/area/atlan/station/medical)
 "c" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -17,18 +17,18 @@
 /obj/effect/decal/cleanable/blood/gibs/up,
 /obj/effect/decal/cleanable/blood/gibs,
 /turf/open/floor/strata/multi_tiles/southwest,
-/area/space)
+/area/atlan/station/medical)
 "e" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/up,
 /turf/open/floor/strata/multi_tiles/southwest,
-/area/space)
+/area/atlan/station/medical)
 "g" = (
 /obj/structure/closet/bodybag,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/down,
 /turf/open/floor/strata/multi_tiles/southwest,
-/area/space)
+/area/atlan/station/medical)
 "h" = (
 /obj/structure/machinery/door/airlock/hybrisa/medical_solid{
 	dir = 1;
@@ -36,7 +36,7 @@
 	id_tag = "bunker_or1"
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
-/area/space)
+/area/atlan/station/medical)
 "i" = (
 /obj/structure/machinery/light/small,
 /obj/structure/closet/bodybag{
@@ -51,7 +51,7 @@
 	pixel_y = 3
 	},
 /turf/open/floor/strata/multi_tiles/southwest,
-/area/space)
+/area/atlan/station/medical)
 "j" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
@@ -63,7 +63,7 @@
 	layer = 2.5
 	},
 /turf/open/floor/strata/multi_tiles/southwest,
-/area/space)
+/area/atlan/station/medical)
 "k" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "csplatter1";
@@ -71,27 +71,27 @@
 	pixel_x = -10
 	},
 /turf/open/floor/strata/multi_tiles/southwest,
-/area/space)
+/area/atlan/station/medical)
 "l" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/down,
 /turf/open/floor/strata/multi_tiles/southwest,
-/area/space)
+/area/atlan/station/medical)
 "m" = (
 /obj/structure/curtain/colorable_transparent{
 	color = "#22282c";
 	alpha = 235
 	},
 /turf/open/floor/strata/multi_tiles/west,
-/area/space)
+/area/atlan/station/medical)
 "p" = (
 /obj/structure/morgue,
 /turf/open/floor/strata/cyan1/east,
-/area/space)
+/area/atlan/station/medical)
 "q" = (
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3,
 /turf/closed/wall/hybrisa/colony/hospital,
-/area/space)
+/area/atlan/station/medical)
 "r" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
@@ -102,7 +102,7 @@
 	pixel_y = 2
 	},
 /turf/open/floor/strata/multi_tiles/southwest,
-/area/space)
+/area/atlan/station/medical)
 "t" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "csplatter1";
@@ -120,27 +120,27 @@
 	icon_state = "bodybag_open"
 	},
 /turf/open/floor/strata/multi_tiles/southwest,
-/area/space)
+/area/atlan/station/medical)
 "x" = (
 /obj/structure/morgue{
 	dir = 8
 	},
 /turf/open/floor/strata/cyan1/east,
-/area/space)
+/area/atlan/station/medical)
 "y" = (
 /obj/structure/sign/nosmoking_1,
 /turf/closed/wall/hybrisa/colony/hospital,
-/area/space)
+/area/atlan/station/medical)
 "z" = (
 /turf/open/floor/strata/multi_tiles/southwest,
-/area/space)
+/area/atlan/station/medical)
 "A" = (
 /obj/structure/machinery/light/small{
 	dir = 1;
 	pixel_y = 20
 	},
 /turf/open/floor/strata/multi_tiles/southwest,
-/area/space)
+/area/atlan/station/medical)
 "B" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -157,15 +157,15 @@
 	icon_state = "bodybag_open"
 	},
 /turf/open/floor/strata/multi_tiles/southwest,
-/area/space)
+/area/atlan/station/medical)
 "C" = (
 /obj/structure/sign/safety/medical,
 /turf/closed/wall/hybrisa/colony/hospital,
-/area/space)
+/area/atlan/station/medical)
 "D" = (
 /obj/structure/closet/bodybag,
 /turf/open/floor/strata/multi_tiles/southwest,
-/area/space)
+/area/atlan/station/medical)
 "E" = (
 /obj/structure/machinery/light/small{
 	dir = 8;
@@ -173,7 +173,7 @@
 	},
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/strata/multi_tiles/southwest,
-/area/space)
+/area/atlan/station/medical)
 "F" = (
 /obj/structure/bookcase{
 	pixel_y = 22;
@@ -190,30 +190,30 @@
 	icon_state = "csplatter1"
 	},
 /turf/open/floor/strata/multi_tiles/southwest,
-/area/space)
+/area/atlan/station/medical)
 "G" = (
 /turf/open/floor/strata/cyan1,
-/area/space)
+/area/atlan/station/medical)
 "J" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "csplatter1"
 	},
 /turf/open/floor/strata/multi_tiles/southwest,
-/area/space)
+/area/atlan/station/medical)
 "N" = (
 /obj/structure/machinery/bioprinter{
 	stored_metal = 1000
 	},
 /turf/open/floor/strata/cyan1,
-/area/space)
+/area/atlan/station/medical)
 "O" = (
 /obj/structure/sign/safety/biohazard,
 /obj/structure/sign/safety/biolab{
 	pixel_x = 13
 	},
 /turf/closed/wall/hybrisa/colony/hospital,
-/area/space)
+/area/atlan/station/medical)
 "R" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt{
 	color = "#140400"
@@ -221,7 +221,7 @@
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata/multi_tiles/southwest,
-/area/space)
+/area/atlan/station/medical)
 "S" = (
 /obj/effect/decal/cleanable/blood/gibs/down,
 /obj/effect/decal/cleanable/blood/gibs,
@@ -233,16 +233,16 @@
 	icon_state = "bodybag_open"
 	},
 /turf/open/floor/strata/multi_tiles/southwest,
-/area/space)
+/area/atlan/station/medical)
 "T" = (
 /obj/structure/extinguisher_cabinet,
 /turf/closed/wall/hybrisa/colony/hospital,
-/area/space)
+/area/atlan/station/medical)
 "V" = (
 /obj/structure/morgue,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/strata/cyan1/east,
-/area/space)
+/area/atlan/station/medical)
 "W" = (
 /obj/structure/morgue,
 /obj/effect/decal/cleanable/blood{
@@ -250,13 +250,13 @@
 	pixel_y = -8
 	},
 /turf/open/floor/strata/cyan1/east,
-/area/space)
+/area/atlan/station/medical)
 "X" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt{
 	color = "#140400"
 	},
 /turf/open/floor/strata/multi_tiles/southwest,
-/area/space)
+/area/atlan/station/medical)
 "Z" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
@@ -266,7 +266,7 @@
 	},
 /obj/item/tank/anesthetic,
 /turf/open/floor/strata/cyan1,
-/area/space)
+/area/atlan/station/medical)
 
 (1,1,1) = {"
 O

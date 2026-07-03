@@ -1,11 +1,11 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /turf/open/floor/strata,
-/area/space)
+/area/atlan/station/promenade)
 "k" = (
 /obj/structure/machinery/cm_vending/sorted/walkman,
 /turf/open/floor/strata,
-/area/space)
+/area/atlan/station/promenade)
 "l" = (
 /obj/structure/bed/chair{
 	dir = 1;
@@ -13,36 +13,36 @@
 	pixel_x = -3
 	},
 /turf/open/floor/strata,
-/area/space)
+/area/atlan/station/promenade)
 "n" = (
 /turf/closed/wall/strata_outpost/reinforced/hull,
-/area/space)
+/area/atlan/station/promenade)
 "o" = (
 /turf/open/space/basic,
-/area/space)
+/area/atlan/station/promenade)
 "p" = (
 /obj/item/weapon/twohanded/folded_metal_chair{
 	pixel_x = 6;
 	pixel_y = 9
 	},
 /turf/open/floor/strata,
-/area/space)
+/area/atlan/station/promenade)
 "s" = (
 /obj/structure/machinery/light/double/blue{
 	pixel_y = -1
 	},
 /turf/open/floor/strata,
-/area/space)
+/area/atlan/station/promenade)
 "v" = (
 /obj/structure/lattice,
 /turf/open/space/basic,
-/area/space)
+/area/atlan/station/promenade)
 "w" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 4
 	},
 /turf/open/floor/strata/floor3/east,
-/area/space)
+/area/atlan/station/promenade)
 "z" = (
 /obj/structure/surface/table/almayer,
 /obj/item/trash/plate{
@@ -50,7 +50,7 @@
 	pixel_y = 4
 	},
 /turf/open/floor/strata,
-/area/space)
+/area/atlan/station/promenade)
 "A" = (
 /obj/effect/decal/cleanable/generic{
 	color = "#5d524b";
@@ -59,44 +59,44 @@
 	pixel_y = 3
 	},
 /turf/open/floor/strata,
-/area/space)
+/area/atlan/station/promenade)
 "C" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/floor3/east,
-/area/space)
+/area/atlan/station/promenade)
 "D" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata,
-/area/space)
+/area/atlan/station/promenade)
 "F" = (
 /obj/structure/bed/chair{
 	pixel_x = 3;
 	pixel_y = 2
 	},
 /turf/open/floor/strata,
-/area/space)
+/area/atlan/station/promenade)
 "M" = (
 /obj/effect/landmark/yautja_teleport,
 /turf/open/floor/strata,
-/area/space)
+/area/atlan/station/promenade)
 "Q" = (
 /obj/structure/surface/table/almayer,
 /turf/open/floor/strata,
-/area/space)
+/area/atlan/station/promenade)
 "R" = (
 /obj/structure/bed/chair{
 	dir = 4;
 	pixel_y = 9
 	},
 /turf/open/floor/strata,
-/area/space)
+/area/atlan/station/promenade)
 "U" = (
 /turf/open/floor/strata/floor3/east,
-/area/space)
+/area/atlan/station/promenade)
 "Z" = (
 /obj/structure/machinery/vending/cola,
 /turf/open/floor/strata,
-/area/space)
+/area/atlan/station/promenade)
 
 (1,1,1) = {"
 a

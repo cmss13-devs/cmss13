@@ -1,14 +1,14 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /turf/open/floor/strata,
-/area/space)
+/area/atlan/station/double_dorms)
 "c" = (
 /turf/open/floor/strata/green1,
-/area/space)
+/area/atlan/station/double_dorms)
 "d" = (
 /obj/structure/machinery/light/double/blue,
 /turf/open/floor/strata,
-/area/space)
+/area/atlan/station/double_dorms)
 "k" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 4;
@@ -16,23 +16,23 @@
 	pixel_y = 13
 	},
 /turf/open/floor/strata,
-/area/space)
+/area/atlan/station/double_dorms)
 "l" = (
 /obj/structure/bed/hybrisa/bunkbed3,
 /turf/open/floor/strata/green4/north,
-/area/space)
+/area/atlan/station/double_dorms)
 "n" = (
 /turf/open/floor/strata/green3/west,
-/area/space)
+/area/atlan/station/double_dorms)
 "o" = (
 /turf/closed/wall/strata_outpost/reinforced/hull,
-/area/space)
+/area/atlan/station/double_dorms)
 "p" = (
 /turf/open/floor/strata/green3,
-/area/space)
+/area/atlan/station/double_dorms)
 "s" = (
 /turf/open/floor/strata/floor3/east,
-/area/space)
+/area/atlan/station/double_dorms)
 "u" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8;
@@ -46,13 +46,13 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/strata/green3/north,
-/area/space)
+/area/atlan/station/double_dorms)
 "x" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table,
 /obj/item/explosive/grenade/high_explosive/upp,
 /turf/open/floor/strata/green4,
-/area/space)
+/area/atlan/station/double_dorms)
 "C" = (
 /obj/structure/closet{
 	icon_state = "open"
@@ -61,12 +61,12 @@
 /obj/item/explosive/grenade/high_explosive/upp,
 /obj/item/explosive/grenade/high_explosive/upp,
 /turf/open/floor/strata/green4/west,
-/area/space)
+/area/atlan/station/double_dorms)
 "E" = (
 /obj/structure/window/framed/strata,
 /obj/structure/curtain/red,
 /turf/open/floor/plating,
-/area/space)
+/area/atlan/station/double_dorms)
 "I" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 4
@@ -74,23 +74,23 @@
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs,
 /turf/open/floor/strata/green3/east,
-/area/space)
+/area/atlan/station/double_dorms)
 "K" = (
 /turf/open/floor/strata/green4/east,
-/area/space)
+/area/atlan/station/double_dorms)
 "Q" = (
 /obj/structure/sign/banners/upp_flag,
 /turf/closed/wall/strata_outpost,
-/area/space)
+/area/atlan/station/double_dorms)
 "Y" = (
 /obj/structure/machinery/door/airlock/hybrisa/generic{
 	dir = 1
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
-/area/space)
+/area/atlan/station/double_dorms)
 "Z" = (
 /turf/closed/wall/strata_outpost,
-/area/space)
+/area/atlan/station/double_dorms)
 
 (1,1,1) = {"
 a

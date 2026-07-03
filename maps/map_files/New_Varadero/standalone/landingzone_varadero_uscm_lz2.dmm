@@ -1,27 +1,30 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/open/floor/plating/icefloor,
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/lz2_near)
 "b" = (
 /obj/docking_port/stationary/marine_dropship/lz2{
 	name = "LZ2: LACN Navybase Port";
 	faction = "Yautja"
 	},
-/turf/open/floor/plating/icefloor,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz2_near)
+"c" = (
+/turf/open/floor/plating/almayer,
 /area/varadero/exterior/lz2_near)
 
 (1,1,1) = {"
 a
-a
+c
 a
 "}
 (2,1,1) = {"
-a
+c
 b
-a
+c
 "}
 (3,1,1) = {"
 a
-a
+c
 a
 "}

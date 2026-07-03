@@ -2450,7 +2450,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		click_empty(user)
 		user.visible_message(SPAN_HIGHDANGER(uppertext("...but the [name] dry fires with a resolute click! Embarassing...")),
 			SPAN_HIGHDANGER(uppertext("...but your [name] dry fires with quite the authoratitively embarassing click...")))
-		balloon_alert_to_viewers(SPAN_BOLD("*click*"))
+		balloon_alert_to_viewers("<b>*click*</b>")
 		return
 
 	QDEL_NULL(projectile_to_fire)
@@ -2510,7 +2510,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		click_empty(user)
 		user.visible_message(SPAN_HIGHDANGER(uppertext("...but the [name] dry fires with a resolute click! Embarassing...")),
 			SPAN_HIGHDANGER(uppertext("...but your [name] dry fires with quite the authoratitively embarassing click...")))
-		balloon_alert_to_viewers(SPAN_BOLD("*click*"))
+		balloon_alert_to_viewers("<b>*click*</b>")
 		return
 
 	var/actual_sound

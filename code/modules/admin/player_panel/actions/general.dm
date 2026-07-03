@@ -137,6 +137,18 @@
 	user.cmd_admin_pm(target.client)
 	return TRUE
 
+/datum/player_action/opensearch_query
+	action_tag = "opensearch_query"
+	name = "OpenSearch"
+
+/datum/player_action/opensearch_query/act(client/user, mob/target, list/params)
+	if(!target.client || !user.mob)
+		return
+
+	var/datum/opensearch_query/query = SSopensearch.new_query(target.client.ckey)
+	query.tgui_interact(user.mob)
+	return TRUE
+
 /datum/player_action/alert_message
 	action_tag = "alert_message"
 	name = "Alert Message"

@@ -41,10 +41,11 @@ SUBSYSTEM_DEF(opensearch)
 			return
 
 /// Create a new query and register it
-/datum/controller/subsystem/opensearch/proc/new_query()
+/// [bootstrap] : Important text to seed the query with
+/datum/controller/subsystem/opensearch/proc/new_query(bootstrap)
 	RETURN_TYPE(/datum/opensearch_query)
 	var/id = query_counter++
-	var/datum/opensearch_query/query = new(id)
+	var/datum/opensearch_query/query = new(id, bootstrap)
 	queries[id] = query
 	return query
 

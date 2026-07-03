@@ -209,98 +209,103 @@ export const OpenSearchQuery = (props) => {
     return cloned;
   };
 
-  const generateLogElements = (results) => {
-    let parsed = JSON.parse(results);
-    let documents = parsed?.hits?.hits;
-    return (
-      <Stack vertical scrollable>
-        {documents
-          ? documents.map((onedoc) => generateSingleLogElement(onedoc))
-          : ''}
-      </Stack>
-    );
+  const doubleDigitize = (input) => {
+    return input >= 10 ? `${input}` : `0${input}`;
   };
 
   const generateTimestampButton = (timestamp) => {
     let dd: Date = new Date(timestamp);
     return (
       <Button pr={1} color="label">
-        {`${dd.getUTCHours()}:${dd.getUTCMinutes}:${dd.getUTCSeconds()}`}
+        {`${doubleDigitize(dd.getUTCHours())}:${doubleDigitize(dd.getUTCMinutes())}:${doubleDigitize(dd.getUTCSeconds())}`}
       </Button>
     );
+  };
+
+  const generateLogElements = (results) => {
+    let parsed = JSON.parse(results);
+    let documents = parsed?.hits?.hits;
+    return documents
+      ? documents.map((onedoc) => generateSingleLogElement(onedoc))
+      : '';
   };
 
   const generateSingleLogElement = (onedoc) => {
     return (
       onedoc._source && (
-        <Stack.Item>
-          <MiniCollapsible
-            header={
-              <Box as="span">
-                <Table>
-                  <Table.Row>
-                    {generateTimestampButton(onedoc._source.timestamp)}
+        <MiniCollapsible
+          header={
+            <Box as="span">
+              <Table>
+                <Table.Row>
+                  {generateTimestampButton(onedoc._source.timestamp)}
+                  <Button
+                    pr={1}
+                    color={LOGTYPE_TO_COLOR[onedoc._source.logtype] || 'grey'}
+                  >
+                    {onedoc._source.logtype}
+                  </Button>
+                  {onedoc._source.loc_x &&
+                    onedoc._source.loc_y &&
+                    onedoc._source.loc_z && (
+                      <Button
+                        color="average"
+                        onClick={() =>
+                          act('jmp', {
+                            x: onedoc._source.loc_x,
+                            y: onedoc._source.loc_y,
+                            z: onedoc._source.loc_z,
+                          })
+                        }
+                        tooltip={`Jump to (${onedoc._source.loc_x},${onedoc._source.loc_y},${onedoc._source.loc_z})`}
+                      >
+                        JMP
+                      </Button>
+                    )}
+                  {onedoc._source.message_mode && (
+                    <Button pr={1} color="purple">
+                      [{onedoc._source.message_mode}]
+                    </Button>
+                  )}
+                  {onedoc._source.ckey && (
                     <Button
                       pr={1}
-                      color={LOGTYPE_TO_COLOR[onedoc._source.logtype] || 'grey'}
+                      color="blue"
+                      tooltip="Click to open Player Panel"
+                      onClick={() =>
+                        act('playerpanel', { ckey: onedoc._source.ckey })
+                      }
                     >
-                      {onedoc._source.logtype}
+                      ckey:{onedoc._source.ckey}
                     </Button>
-                    {onedoc._source.loc_x &&
-                      onedoc._source.loc_y &&
-                      onedoc._source.loc_z && (
-                        <Button
-                          color="average"
-                          onClick={() =>
-                            act('jmp', {
-                              x: onedoc._source.loc_x,
-                              y: onedoc._source.loc_y,
-                              z: onedoc._source.loc_z,
-                            })
-                          }
-                          tooltip={`Jump to (${onedoc._source.loc_x},${onedoc._source.loc_y},${onedoc._source.loc_z})`}
-                        >
-                          JMP
-                        </Button>
-                      )}
-                    {onedoc._source.message_mode && (
-                      <Button pr={1} color="purple">
-                        [{onedoc._source.message_mode}]
-                      </Button>
-                    )}
-                    {onedoc._source.ckey && (
-                      <Button pr={1} color="blue">
-                        ckey:{onedoc._source.ckey}
-                      </Button>
-                    )}
-                    {onedoc._source.character_name && (
-                      <Button pr={1} color="good">
-                        {onedoc._source.character_name}
-                      </Button>
-                    )}
-                    {onedoc._source.area && (
-                      <Button pr={1} color="grey">
-                        area:{onedoc._source.area}
-                      </Button>
-                    )}
-                  </Table.Row>
-                  <Table.Row>
-                    {onedoc._source.playertext || onedoc._source.message}
-                  </Table.Row>
-                </Table>
-              </Box>
-            }
-          >
-            {JSON.stringify(debloatDocument(onedoc._source))}
-          </MiniCollapsible>
-        </Stack.Item>
+                  )}
+                  {onedoc._source.character_name && (
+                    <Button pr={1} color="good">
+                      {onedoc._source.character_name}
+                    </Button>
+                  )}
+                  {onedoc._source.area && (
+                    <Button pr={1} color="grey">
+                      area:{onedoc._source.area}
+                    </Button>
+                  )}
+                </Table.Row>
+                <Table.Row>
+                  {onedoc._source.playertext || onedoc._source.message}
+                </Table.Row>
+              </Table>
+            </Box>
+          }
+        >
+          {JSON.stringify(debloatDocument(onedoc._source))}
+        </MiniCollapsible>
       )
     );
   };
 
   return (
     <Window
-      title={`OpenSearch Query Builder &${queryId}`}
+      title={`OpenSearch Query Builder ~${queryId}`}
       width={900}
       height={750}
     >
@@ -348,7 +353,7 @@ export const OpenSearchQuery = (props) => {
                 <Input
                   minWidth={25}
                   value={localQueryName}
-                  onChange={(e, value) => setQueryName(value)}
+                  onEnter={(e, value) => setQueryName(value)}
                 />
               </Stack.Item>
               <Stack.Item align="right">
@@ -475,7 +480,7 @@ export const OpenSearchQuery = (props) => {
                 <Input
                   width={5}
                   value={timeOffsetToDisplay(localQueryTimeEnd)}
-                  onChange={(e, value) =>
+                  onEnter={(e, value) =>
                     setQueryTimeEnd(localTimeOffsetToNumber(value))
                   }
                 />
@@ -489,7 +494,6 @@ export const OpenSearchQuery = (props) => {
                   minHeight="2em"
                   value={localUserQuery}
                   placeholder="Query"
-                  onChange={(e, value) => setUserQuery(value)}
                   onEnter={(e, value) => {
                     setUserQuery(value);
                     submitQuery(true, value);

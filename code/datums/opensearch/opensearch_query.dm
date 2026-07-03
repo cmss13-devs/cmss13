@@ -53,14 +53,19 @@
 	var/list/log_types = list()
 
 
-/datum/opensearch_query/New(id)
+/datum/opensearch_query/New(id, bootstrap)
 	. = ..()
 	src.id = id // To be attributed by SSopensearch, don't instantiate this directly
 	if(target_roundid == NONE)
-		//target_roundid = GLOB.round_id
-		target_roundid = 35086 // DEBUG
-	name = "Unnamed Query &[id]"
+		target_roundid = GLOB.round_id
+	name = "Query ~[id]"
 	query_status = OPENSEARCH_QUERY_STATUS_READY
+	if(bootstrap)
+		var/list/splitwords = splittext(bootstrap, " ")
+		user_query = ""
+		for(var/word in splitwords)
+			user_query += "[word]~2"
+		user_query = "([user_query])^3 "
 
 /datum/opensearch_query/Destroy(force)
 	SStgui.close_uis(src)
@@ -112,7 +117,10 @@
 	. = "Internal error creating the Lucene-based DSL"
 	dsl = list("query" = list("bool" = list("must" = list())))
 	var/list/must = dsl["query"]["bool"]["must"]
-	must[++must.len] = list("query_string" = list("query" = user_query))
+	if(length(user_query))
+		must[++must.len] = list("query_string" = list("query" = user_query))
+	else
+		must[++must.len] = list("match_all" = alist())
 	. = null
 
 
@@ -208,7 +216,7 @@
 /datum/opensearch_query/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
-		ui = new(user, src, "OpenSearchQuery", "Query &[id]")
+		ui = new(user, src, "OpenSearchQuery", "Query ~[id]")
 		ui.open()
 
 /datum/opensearch_query/ui_data(mob/user)
@@ -265,17 +273,32 @@
 			var/client/client = usr?.client
 			if(x && y && z && client)
 				client.jumptocoord(x, y, z)
+		if("playerpanel")
+			var/client/target_client = GLOB.directory[params["ckey"]]
+			var/mob/target_mob = target_client?.mob
+			var/datum/admins/admin_user = GLOB.admin_datums[usr?.client?.ckey]
+			if(target_mob && admin_user)
+				admin_user.show_player_panel(target_mob)
 
 
-// ====
-// DEBUG VERB, TODO FIXE make a more involved UI with selector
-// ====
 /client/proc/opensearch_query_builder()
 	set name = "Open OpenSearch Query Builder"
-	set category = "Debug"
+	set category = "Admin"
 
-	var/datum/opensearch_query/query
-	if(!SSopensearch.queries[1])
-		SSopensearch.new_query()
-	query = SSopensearch.queries[1]
-	query.tgui_interact(mob)
+	var/list/options = list("New")
+
+	for(var/id in SSopensearch.queries)
+		var/datum/opensearch_query/query = SSopensearch.queries[id]
+		options[query] = "[query.id] : [query.name]"
+
+	var/reply = tgui_input_list(usr, "Select the query to edit", "OpenSearch Query Builder", options)
+
+	if(!usr)
+		return
+
+	var/datum/opensearch_query/query = reply
+	if(reply == "New")
+		query = SSopensearch.new_query()
+	if(!istype(query) || QDELETED(query))
+		return
+	query.tgui_interact(usr)

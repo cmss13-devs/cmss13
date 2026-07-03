@@ -875,7 +875,7 @@
 
 		// Overdoses are life-threatening
 		for (var/datum/reagent/reagent as anything in reagents.reagent_list)
-			if (reagent.volume > reagent.overdose)
+			if (reagent.volume > reagent.overdose && reagent.overdose != 0)
 				tag_severity = 2
 
 		// The highest holotag you can get from limbs is red, so we can safely break out of the limb loop if we find a red-worthy injury

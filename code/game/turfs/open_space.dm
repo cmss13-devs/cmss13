@@ -132,6 +132,9 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	if(movable.flags_atom & NO_ZFALL)
 		return
 
+	if(SSticker.current_state < GAME_STATE_PLAYING)
+		return // Don't drop mapped in stuff
+
 	if(movable.loc != src && length(movable.locs) > 1)
 		return // Ignore multiloc things unless their primary loc is here
 

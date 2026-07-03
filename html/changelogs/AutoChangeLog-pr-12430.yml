@@ -1,0 +1,4 @@
+author: "Antlers"
+delete-after: True
+changes:
+  - qol: "Health scanners will now automatically apply the appropriate triage holocard."

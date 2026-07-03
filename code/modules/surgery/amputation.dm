@@ -345,7 +345,7 @@
 		SPAN_NOTICE("[user] finishes repairing the stump of [target]'s [surgery.affected_limb.display_name]."))
 
 	if(target.stat == CONSCIOUS)
-		to_chat(target, SPAN_NOTICE("The pain in your [surgery.affected_limb.display_name] is gone. You feel better."))
+		to_chat(target, SPAN_NOTICE("The pain in your [surgery.affected_limb.display_name] stump is gone. You feel better."))
 
 	surgery.affected_limb.setAmputatedTree()
 	target.pain.recalculate_pain()

@@ -61,13 +61,6 @@
 /obj/structure/platform_decoration/metal/almayer_smooth/east,
 /turf/open_space,
 /area/event/dynamic)
-"ao" = (
-/obj/structure/platform/metal/almayer_smooth/east,
-/obj/structure/roof/hybrisa/lattice_prop{
-	icon_state = "lattice6"
-	},
-/turf/open_space,
-/area/event/dynamic)
 "ap" = (
 /turf/open/floor/almayer/mono,
 /area/event/dynamic)
@@ -1112,7 +1105,7 @@ WS
 WS
 WS
 WS
-BS
+WS
 BS
 BS
 WS
@@ -1128,9 +1121,9 @@ Ad
 Ad
 Ad
 aw
-ao
 ar
-ao
+ar
+ar
 al
 Ad
 Ad

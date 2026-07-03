@@ -28,6 +28,9 @@
 /area/lv1021/oob
 	name = "Out Of Bounds"
 	icon_state = "unknown"
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
+	ambience_exterior = AMBIENCE_JUNGLE_ALT
+	ceiling_muffle = FALSE
 	ceiling = CEILING_MAX
 	is_resin_allowed = FALSE
 	flags_area = AREA_NOTUNNEL|AREA_NOBURROW

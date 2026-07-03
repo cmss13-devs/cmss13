@@ -190,7 +190,6 @@
 			user.apply_damage(15, BURN, "l_hand")
 			user.apply_damage(15, BURN, "r_hand")
 
-		to_chat(target, SPAN_NOTICE("The heaviness in your chest is gone. You feel monumentally better."))
 		user.count_niche_stat(STATISTICS_NICHE_SURGERY_LARVA)
 		var/mob/living/carbon/xenomorph/larva/larba = locate() in target //the larva was fully grown, ready to burst.
 		if(larba)

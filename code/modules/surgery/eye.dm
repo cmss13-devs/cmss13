@@ -239,7 +239,7 @@
 	log_interact(user, target, "[key_name(user)] cauterized the incision around [key_name(target)]'s eyes with [tool], ending [surgery].")
 
 	if(target.stat == CONSCIOUS)
-		to_chat(target, SPAN_NOTICE("The pain in your eyeballs is gone and you can see again!"))
+		to_chat(target, SPAN_NOTICE("You can see again!"))
 
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SURFACE
 	target.disabilities &= ~NEARSIGHTED

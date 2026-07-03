@@ -203,9 +203,6 @@
 	if(surgery.affected_limb.status & LIMB_SPLINTED_INDESTRUCTIBLE)
 		new /obj/item/stack/medical/splint/nano(get_turf(target), 1)
 
-	if(target.stat == CONSCIOUS)
-		to_chat(target, SPAN_NOTICE("It no longer hurts to move your [surgery.affected_limb.display_name], now. You feel much better."))
-
 	surgery.affected_limb.status &= ~(LIMB_SPLINTED|LIMB_SPLINTED_INDESTRUCTIBLE|LIMB_BROKEN)
 	surgery.affected_limb.perma_injury = 0
 	target.pain.recalculate_pain()

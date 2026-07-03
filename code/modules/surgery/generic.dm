@@ -401,9 +401,6 @@
 	surgery.affected_limb.remove_all_bleeding(TRUE, FALSE)
 	target.pain.recalculate_pain()
 
-	if(target.stat == CONSCIOUS)
-		to_chat(target, SPAN_NOTICE("Your [surgery.affected_limb.display_name] feels better."))
-
 	log_interact(user, target, "[key_name(user)] cauterized an incision in [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")
 
 /datum/surgery_step/cauterize/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

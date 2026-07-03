@@ -344,9 +344,6 @@
 		SPAN_NOTICE("[user] finishes repairing the stump of your [surgery.affected_limb.display_name]."),
 		SPAN_NOTICE("[user] finishes repairing the stump of [target]'s [surgery.affected_limb.display_name]."))
 
-	if(target.stat == CONSCIOUS)
-		to_chat(target, SPAN_NOTICE("The pain in your [surgery.affected_limb.display_name] stump is gone. You feel better."))
-
 	surgery.affected_limb.setAmputatedTree()
 	target.pain.recalculate_pain()
 	log_interact(user, target, "[key_name(user)] closed the stump of [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], ending [surgery].")
@@ -425,7 +422,6 @@
 		SPAN_NOTICE("[user] has revealed the stump of [target]'s [surgery.affected_limb.display_name]."))
 
 	if(target.stat == CONSCIOUS)
-		to_chat(target, SPAN_NOTICE("Your stump feels cold, but the pain is gone. You feel better."))
 
 	surgery.affected_limb.setAmputatedTree()
 	target.pain.recalculate_pain()

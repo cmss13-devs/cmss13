@@ -150,7 +150,7 @@
 
 	new /obj/item/shard/shrapnel/bone_chips/human(target) //secretly adds bone chips
 	if(target.stat == CONSCIOUS)
-		to_chat(target, SPAN_NOTICE("The agonizing pressure in your skull releases. You feel monumentally better."))
+		to_chat(target, SPAN_NOTICE("The agonizing pressure in your skull releases."))
 
 	target.pain.recalculate_pain()
 

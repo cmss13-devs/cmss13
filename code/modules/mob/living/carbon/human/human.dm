@@ -921,12 +921,13 @@
 			else if (lungs.organ_status >= ORGAN_BRUISED) tag_severity = max(tag_severity, 1)
 
 			// Bruised livers and kidneys will accumulate toxin damage
-			// It's debatable whether or not this should be orange or red, but better safe than sorry
 			var/datum/internal_organ/kidneys/kidneys = internal_organs_by_name["kidneys"]
-			if (kidneys.organ_status >= ORGAN_BRUISED) tag_severity = 2
+			if (kidneys.organ_status >= ORGAN_BROKEN) tag_severity = 2
+			else if (kidneys.organ_status >= ORGAN_BRUISED) tag_severity = max(tag_severity, 1)
 
 			var/datum/internal_organ/liver/liver = internal_organs_by_name["liver"]
-			if (liver.organ_status >= ORGAN_BRUISED) tag_severity = 2
+			if (liver.organ_status >= ORGAN_BROKEN) tag_severity = 2
+			else if (liver.organ_status >= ORGAN_BRUISED) tag_severity = max(tag_severity, 1)
 
 			// Brainrot is bad
 			var/datum/internal_organ/brain/brain = internal_organs_by_name["brain"]

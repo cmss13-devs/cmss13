@@ -421,8 +421,6 @@
 		SPAN_NOTICE("[user] has revealed the stump of your [surgery.affected_limb.display_name]."),
 		SPAN_NOTICE("[user] has revealed the stump of [target]'s [surgery.affected_limb.display_name]."))
 
-	if(target.stat == CONSCIOUS)
-
 	surgery.affected_limb.setAmputatedTree()
 	target.pain.recalculate_pain()
 	log_interact(user, target, "[key_name(user)] successfully removed the last of [key_name(target)]'s severed prosthetic [surgery.affected_limb.display_name], ending [surgery].")

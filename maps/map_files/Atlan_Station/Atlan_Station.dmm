@@ -994,6 +994,41 @@
 "adt" = (
 /turf/open/floor/strata/multi_tiles,
 /area/atlan/asteroid/processing_caves)
+"adu" = (
+/obj/structure/sign/poster/upp{
+	pixel_y = -26
+	},
+/turf/open/floor/strata,
+/area/atlan/station/walkway)
+"adv" = (
+/obj/structure/sign/poster/upp,
+/turf/closed/wall/strata_outpost/reinforced,
+/area/atlan/station/cent_maintenace)
+"adw" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/obj/structure/sign/poster/upp{
+	pixel_y = 33;
+	layer = 5
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/atlan/station/walkway)
+"adx" = (
+/obj/structure/sign/poster/upp,
+/turf/closed/wall/hybrisa/colony/office,
+/area/atlan/station/cent_maintenace)
+"ady" = (
+/obj/effect/decal/strata_decals/grasses,
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 26;
+	pixel_x = -1
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/atlan/station/walkway)
+"adz" = (
+/obj/structure/sign/poster/upp,
+/turf/closed/wall/hybrisa/colony/office,
+/area/atlan/station/admin)
 "adL" = (
 /obj/structure/machinery/door/airlock/hybrisa/generic,
 /turf/open/floor/strata/multi_tiles/west,
@@ -8235,6 +8270,11 @@
 "fgG" = (
 /obj/structure/flora/wood/stick2,
 /obj/effect/decal/strata_decals/grasses,
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 26;
+	pixel_x = -1
+	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/atlan/station/walkway)
 "fgN" = (
@@ -8252,6 +8292,10 @@
 /area/atlan/lz/near_lz2)
 "fgZ" = (
 /obj/structure/flora/wood/stick1,
+/obj/structure/sign/poster/upp{
+	pixel_y = 33;
+	layer = 2.9
+	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/atlan/station/walkway)
 "fhg" = (
@@ -10471,6 +10515,11 @@
 "gLQ" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass{
 	pixel_y = -1
+	},
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 26;
+	pixel_x = -1
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/atlan/station/walkway)
@@ -12798,6 +12847,10 @@
 	dir = 4
 	},
 /obj/effect/decal/strata_decals/grasses,
+/obj/structure/sign/poster/upp{
+	pixel_y = 33;
+	layer = 5
+	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/atlan/station/walkway)
 "ioV" = (
@@ -31815,6 +31868,7 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/lz/near_lz1)
 "uQF" = (
+/obj/structure/sign/poster/upp,
 /turf/closed/wall/strata_outpost,
 /area/atlan/station/walkway)
 "uQP" = (
@@ -56255,7 +56309,7 @@ tmn
 ofa
 ehB
 aAk
-jCT
+adw
 fSC
 bYK
 uKO
@@ -57051,7 +57105,7 @@ cRJ
 bJt
 lnR
 nuD
-oCj
+adz
 tmn
 lwX
 lrP
@@ -57664,7 +57718,7 @@ med
 poi
 nrh
 aSd
-uKO
+ady
 snO
 tmn
 tmn
@@ -57902,7 +57956,7 @@ tmn
 tmn
 tmn
 tmn
-tmn
+adu
 aAk
 loF
 gZE
@@ -58887,7 +58941,7 @@ qwF
 peZ
 bmu
 jCT
-lUS
+adx
 snO
 tmn
 tmn
@@ -58895,7 +58949,7 @@ mVy
 pDz
 pDz
 pDz
-pDz
+adv
 pDz
 pDz
 pDz

@@ -223,7 +223,7 @@
 	minimap_color = MINIMAP_AREA_LZ
 
 /area/atlan/lz/lz1
-	name = "NE LZ1 Pad - Cargo and Drydock"
+	name = "NW LZ1 Pad - Cargo and Drydock"
 	unlimited_power = 1 //So the DS computer always works for the Queen
 	requires_power = FALSE
 	icon_state = "lz1"
@@ -231,7 +231,7 @@
 	linked_lz = DROPSHIP_LZ1
 
 /area/atlan/lz/near_lz1
-	name = "NE LZ1 - Cargo and Drydock"
+	name = "NW LZ1 - Cargo and Drydock"
 	icon_state = "lz1"
 	is_landing_zone = TRUE
 	linked_lz = DROPSHIP_LZ1

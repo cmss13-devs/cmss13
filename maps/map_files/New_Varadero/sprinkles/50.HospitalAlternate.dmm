@@ -26,10 +26,6 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
-/obj/item/clothing/under/rank/medical/pharmacist{
-	pixel_x = -7;
-	pixel_y = 12
-	},
 /obj/item/toy/plush/therapy/random_color,
 /obj/structure/surface/table{
 	color = "#8B7B5B"
@@ -1143,6 +1139,7 @@
 	color = "#8B7B5B"
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/suit/storage/labcoat/chemist,
 /turf/open/floor/shiva/snow_mat/north,
 /area/template_noop)
 "rb" = (

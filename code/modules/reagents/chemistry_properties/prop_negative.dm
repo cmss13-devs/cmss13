@@ -49,7 +49,7 @@
 /datum/chem_property/negative/toxic/process_critical(mob/living/victim, potency = 1)
 	victim.apply_damage(potency * POTENCY_MULTIPLIER_VHIGH, TOX)
 
-/datum/chem_property/negative/toxic/reaction_mob(mob/living/victim, method=TOUChuman, volume, potency = 1)
+/datum/chem_property/negative/toxic/reaction_mob(mob/living/victim, method=TOUCH, volume, potency = 1)
 	if(!iscarbon(victim))
 		return
 	var/mob/living/carbon/humanoid = victim
@@ -83,7 +83,7 @@
 /datum/chem_property/negative/corrosive/process_critical(mob/living/victim, potency = 1)
 	victim.take_limb_damage(0,POTENCY_MULTIPLIER_VHIGH*potency)
 
-/datum/chem_property/negative/corrosive/reaction_mob(mob/living/victim, method=TOUChuman, volume, potency) //from sacid
+/datum/chem_property/negative/corrosive/reaction_mob(mob/living/victim, method=TOUCH, volume, potency) //from sacid
 	var/meltprob = potency * POTENCY_MULTIPLIER_HIGH
 	if(!istype(victim, /mob/living))
 		return
@@ -285,7 +285,7 @@
 		limb.add_bleeding(int_bleeding, TRUE)
 		limb.wounds += int_bleeding
 
-/datum/chem_property/negative/hemorrhaging/reaction_mob(mob/victim, method = TOUChuman, volume, potency)
+/datum/chem_property/negative/hemorrhaging/reaction_mob(mob/victim, method = TOUCH, volume, potency)
 	victim.AddComponent(/datum/component/status_effect/healing_reduction, potency * volume * POTENCY_MULTIPLIER_VLOW) //deals brute DOT to humans, prevents healing for xenos
 
 /datum/chem_property/negative/hemorrhaging/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
@@ -517,7 +517,7 @@
 	if(prob(15*potency))
 		apply_neuro(victim, POTENCY_MULTIPLIER_MEDIUM * potency, FALSE)
 
-/datum/chem_property/negative/neurotoxic/reaction_mob(mob/victim, method = TOUChuman, volume, potency)
+/datum/chem_property/negative/neurotoxic/reaction_mob(mob/victim, method = TOUCH, volume, potency)
 	if(ishuman(victim))
 		var/mob/living/carbon/human/human = victim
 		human.Daze(potency * volume * POTENCY_MULTIPLIER_VLOW)

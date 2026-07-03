@@ -1,0 +1,163 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/open/floor/strata,
+/area/space)
+"k" = (
+/obj/structure/machinery/cm_vending/sorted/walkman,
+/turf/open/floor/strata,
+/area/space)
+"l" = (
+/obj/structure/bed/chair{
+	dir = 1;
+	pixel_y = 8;
+	pixel_x = -3
+	},
+/turf/open/floor/strata,
+/area/space)
+"n" = (
+/turf/closed/wall/strata_outpost/reinforced/hull,
+/area/space)
+"o" = (
+/turf/open/space/basic,
+/area/space)
+"p" = (
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = 6;
+	pixel_y = 9
+	},
+/turf/open/floor/strata,
+/area/space)
+"s" = (
+/obj/structure/machinery/light/double/blue{
+	pixel_y = -1
+	},
+/turf/open/floor/strata,
+/area/space)
+"v" = (
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/space)
+"w" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 4
+	},
+/turf/open/floor/strata/floor3/east,
+/area/space)
+"z" = (
+/obj/structure/surface/table/almayer,
+/obj/item/trash/plate{
+	pixel_x = -5;
+	pixel_y = 4
+	},
+/turf/open/floor/strata,
+/area/space)
+"A" = (
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155;
+	pixel_x = -5;
+	pixel_y = 3
+	},
+/turf/open/floor/strata,
+/area/space)
+"C" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/floor3/east,
+/area/space)
+"D" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata,
+/area/space)
+"F" = (
+/obj/structure/bed/chair{
+	pixel_x = 3;
+	pixel_y = 2
+	},
+/turf/open/floor/strata,
+/area/space)
+"M" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/floor/strata,
+/area/space)
+"Q" = (
+/obj/structure/surface/table/almayer,
+/turf/open/floor/strata,
+/area/space)
+"R" = (
+/obj/structure/bed/chair{
+	dir = 4;
+	pixel_y = 9
+	},
+/turf/open/floor/strata,
+/area/space)
+"U" = (
+/turf/open/floor/strata/floor3/east,
+/area/space)
+"Z" = (
+/obj/structure/machinery/vending/cola,
+/turf/open/floor/strata,
+/area/space)
+
+(1,1,1) = {"
+a
+a
+a
+A
+a
+a
+a
+"}
+(2,1,1) = {"
+D
+a
+a
+a
+U
+a
+a
+"}
+(3,1,1) = {"
+a
+a
+F
+Q
+l
+a
+Z
+"}
+(4,1,1) = {"
+a
+R
+a
+a
+a
+s
+n
+"}
+(5,1,1) = {"
+a
+z
+C
+U
+M
+n
+n
+"}
+(6,1,1) = {"
+a
+p
+a
+w
+n
+n
+v
+"}
+(7,1,1) = {"
+a
+a
+k
+n
+n
+o
+v
+"}

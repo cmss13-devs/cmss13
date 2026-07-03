@@ -4902,6 +4902,15 @@
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/living/tankerbunks)
+"alZ" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/crew/alt{
+	dir = 1;
+	pixel_y = -3;
+	pixel_x = 5
+	},
+/turf/open/floor/almayer/bluefull,
+/area/almayer/command/cic)
 "ama" = (
 /obj/structure/stairs/perspective{
 	dir = 4
@@ -5795,6 +5804,15 @@
 /obj/structure/platform_decoration/metal/almayer_smooth/north,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/lower/port_fore)
+"aoA" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/crew/alt{
+	dir = 1;
+	pixel_y = -3;
+	pixel_x = 5
+	},
+/turf/open/floor/almayer/greenfull,
+/area/almayer/command/cic)
 "aoB" = (
 /obj/structure/window/reinforced/tinted{
 	dir = 8
@@ -7160,6 +7178,21 @@
 "arO" = (
 /turf/open/floor/wood/ship,
 /area/almayer/living/offices/flight)
+"arP" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/overwatch/almayer{
+	dir = 8
+	},
+/obj/structure/machinery/computer/cameras/almayer/vehicle{
+	dir = 4;
+	pixel_y = -15;
+	layer = 3.0
+	},
+/obj/item/clothing/glasses/hud/health{
+	layer = 3.3
+	},
+/turf/open/floor/almayer/bluecorner,
+/area/almayer/command/cic)
 "arQ" = (
 /obj/structure/surface/table/gamblingtable,
 /obj/item/spacecash/c10,
@@ -7570,6 +7603,21 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/offices/cryo)
+"asQ" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/overwatch/almayer{
+	dir = 8
+	},
+/obj/structure/machinery/computer/cameras/almayer/vehicle{
+	dir = 4;
+	pixel_y = -15;
+	layer = 3.0
+	},
+/obj/item/clothing/glasses/hud/health{
+	layer = 3.3
+	},
+/turf/open/floor/almayer/greencorner,
+/area/almayer/command/cic)
 "asR" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/computer/cameras/almayer_network/vehicle,
@@ -8168,6 +8216,17 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/upper/u_m_p)
+"auQ" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/overwatch/almayer{
+	dir = 8;
+	layer = 3.2
+	},
+/obj/item/clothing/glasses/hud/health{
+	layer = 3.3
+	},
+/turf/open/floor/almayer/orangecorner/east,
+/area/almayer/command/cic)
 "auR" = (
 /obj/structure/largecrate/random/mini/wooden{
 	pixel_y = -5;
@@ -8194,6 +8253,17 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/p_bow)
+"auT" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/overwatch/almayer{
+	dir = 8;
+	layer = 3.2
+	},
+/obj/item/clothing/glasses/hud/health{
+	layer = 3.3
+	},
+/turf/open/floor/almayer/greencorner/east,
+/area/almayer/command/cic)
 "auU" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/plating_striped/west,
@@ -8491,6 +8561,11 @@
 "avK" = (
 /turf/open/floor/almayer/blue/south,
 /area/almayer/living/bridgebunks)
+"avL" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/crew/alt,
+/turf/open/floor/almayer/greenfull,
+/area/almayer/command/cic)
 "avM" = (
 /obj/structure/largecrate/random/barrel/white,
 /turf/open/floor/almayer/plate,
@@ -12404,7 +12479,7 @@
 	pixel_x = 22;
 	pixel_y = 1
 	},
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/emerald/east,
 /area/almayer/command/cic)
 "aGq" = (
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -12413,7 +12488,7 @@
 	pixel_y = -3;
 	pixel_x = 5
 	},
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/emeraldfull,
 /area/almayer/command/cic)
 "aGr" = (
 /turf/open/floor/almayer,
@@ -15624,7 +15699,7 @@
 	pixel_x = 22;
 	pixel_y = 1
 	},
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/blue/east,
 /area/almayer/command/cic)
 "aPJ" = (
 /obj/structure/disposalpipe/segment{
@@ -17800,7 +17875,7 @@
 	pixel_x = 22;
 	pixel_y = 1
 	},
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/green/east,
 /area/almayer/command/cic)
 "aUR" = (
 /obj/structure/reagent_dispensers/tank/fuel/custom,
@@ -23050,7 +23125,7 @@
 "bgN" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/computer/crew/alt,
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/redfull,
 /area/almayer/command/cic)
 "bgO" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -23118,7 +23193,7 @@
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 25
 	},
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/orangefull,
 /area/almayer/command/cic)
 "bgY" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -23187,7 +23262,7 @@
 	phone_id = "Support #1 Overwatch";
 	pixel_x = 16
 	},
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/green/east,
 /area/almayer/command/cic)
 "bhe" = (
 /obj/structure/machinery/light/red{
@@ -69665,7 +69740,7 @@
 /obj/item/clothing/glasses/hud/health{
 	layer = 3.3
 	},
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/redcorner/east,
 /area/almayer/command/cic)
 "lWr" = (
 /obj/structure/largecrate/random/case,
@@ -69796,7 +69871,7 @@
 	phone_id = "Alpha Overwatch";
 	pixel_x = 15
 	},
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/red/east,
 /area/almayer/command/cic)
 "lZH" = (
 /obj/structure/platform/metal/almayer/east,
@@ -76696,7 +76771,7 @@
 	phone_id = "Bravo Overwatch";
 	pixel_x = 16
 	},
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/orange/east,
 /area/almayer/command/cic)
 "oPF" = (
 /obj/structure/machinery/light/red{
@@ -77279,16 +77354,15 @@
 	name = "Combat Information Center Telephone";
 	phone_category = "Command";
 	phone_id = "Combat Information Center";
-	pixel_x = -5;
+	pixel_x = -6;
 	pixel_y = 7
 	},
 /obj/item/device/binoculars{
-	pixel_x = 10;
+	pixel_x = 9;
 	pixel_y = 5
 	},
 /obj/item/clothing/accessory/device/whistle{
-	pixel_x = 1;
-	pixel_y = -5
+	pixel_y = -6
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
@@ -84922,6 +84996,9 @@
 /turf/open/floor/almayer/redfull,
 /area/almayer/shipboard/panic)
 "sni" = (
+/obj/structure/machinery/computer/station_alert{
+	pixel_y = 15
+	},
 /turf/open/floor/almayer/orange/northwest,
 /area/almayer/command/cic)
 "snt" = (
@@ -84967,7 +85044,7 @@
 /obj/item/clothing/glasses/hud/health{
 	layer = 3.3
 	},
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/emeraldcorner,
 /area/almayer/command/cic)
 "snM" = (
 /obj/structure/disposalpipe/segment{
@@ -201997,13 +202074,13 @@ arG
 bnC
 bMV
 oPE
-lVX
+auQ
 awk
 bZJ
 awD
 bZJ
 asc
-snI
+arP
 aPI
 bMV
 bMV
@@ -202107,7 +202184,7 @@ bcq
 aqN
 asc
 alX
-aGq
+alZ
 bMV
 aRd
 azM
@@ -202203,13 +202280,13 @@ buk
 bnC
 bMV
 bhd
-lVX
+auT
 awk
 aqN
 euV
 aqN
 asc
-snI
+asQ
 aUQ
 bMV
 aRJ
@@ -202305,7 +202382,7 @@ bwy
 arR
 bnC
 bMV
-bgN
+avL
 awt
 awk
 aqN
@@ -202313,7 +202390,7 @@ bcr
 aqN
 asc
 ays
-aGq
+aoA
 bMV
 aRJ
 asN

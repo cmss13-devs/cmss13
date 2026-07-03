@@ -164,7 +164,11 @@
 	. = ..()
 	switch(dir)
 		if (NORTH)
-			layer = OBJ_LAYER+0.1
+			layer = ABOVE_MOB_LAYER+0.1
+		if (NORTHEAST)
+			layer = ABOVE_MOB_LAYER+0.1
+		if (NORTHWEST)
+			layer = ABOVE_MOB_LAYER+0.1
 		if (SOUTH)
 			layer = ABOVE_MOB_LAYER+0.1
 		if (SOUTHEAST)
@@ -172,9 +176,9 @@
 		if (SOUTHWEST)
 			layer = ABOVE_MOB_LAYER+0.1
 		if (EAST)
-			layer = MOB_LAYER+0.1
+			layer = OBJ_LAYER+0.1
 		if (WEST)
-			layer = MOB_LAYER+0.1
+			layer = OBJ_LAYER+0.1
 
 /obj/structure/platform_decoration/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()

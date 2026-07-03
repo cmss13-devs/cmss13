@@ -1,4 +1,127 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/platform_decoration/metal/almayer_smooth/west,
+/turf/open/floor/almayer/plating,
+/area/event)
+"ab" = (
+/obj/structure/platform/metal/almayer_smooth/north,
+/turf/open/floor/almayer/plating,
+/area/event)
+"ac" = (
+/obj/structure/platform_decoration/metal/almayer_smooth/west,
+/obj/structure/platform_decoration/metal/almayer_smooth/east,
+/turf/open/floor/almayer/plating,
+/area/event)
+"ad" = (
+/obj/structure/platform_decoration/metal/almayer_smooth/east,
+/turf/open/floor/almayer/plating,
+/area/event)
+"ae" = (
+/obj/structure/platform/metal/almayer_smooth/east,
+/turf/open/floor/almayer/plating,
+/area/event)
+"af" = (
+/obj/structure/platform/metal/almayer_smooth/east,
+/obj/structure/platform/metal/almayer_smooth/west,
+/turf/open/floor/almayer/plating,
+/area/event)
+"ag" = (
+/obj/structure/platform/metal/almayer_smooth/west,
+/turf/open/floor/almayer/plating,
+/area/event)
+"ah" = (
+/obj/structure/platform/metal/almayer_smooth/east,
+/obj/structure/platform/metal/almayer_smooth/west,
+/obj/structure/platform/metal/almayer_smooth/north,
+/obj/structure/platform_decoration/metal/almayer_smooth/northwest,
+/obj/structure/platform_decoration/metal/almayer_smooth/northeast,
+/turf/open/floor/almayer/plating,
+/area/event)
+"ai" = (
+/obj/structure/platform_decoration/metal/almayer_smooth,
+/turf/open/floor/almayer/plating,
+/area/event)
+"aj" = (
+/obj/structure/platform/metal/almayer_smooth,
+/turf/open/floor/almayer/plating,
+/area/event)
+"ak" = (
+/obj/structure/platform_decoration/metal/almayer_smooth/north,
+/turf/open/floor/almayer/plating,
+/area/event)
+"al" = (
+/obj/structure/platform_decoration/metal/almayer_smooth/west,
+/turf/open_space,
+/area/event/dynamic)
+"am" = (
+/obj/structure/platform/metal/almayer_smooth/north,
+/turf/open_space,
+/area/event/dynamic)
+"an" = (
+/obj/structure/platform_decoration/metal/almayer_smooth/east,
+/turf/open_space,
+/area/event/dynamic)
+"ao" = (
+/obj/structure/platform/metal/almayer_smooth/east,
+/obj/structure/roof/hybrisa/lattice_prop{
+	icon_state = "lattice6"
+	},
+/turf/open_space,
+/area/event/dynamic)
+"ap" = (
+/turf/open/floor/almayer/mono,
+/area/event/dynamic)
+"aq" = (
+/obj/structure/platform/metal/almayer_smooth/west,
+/turf/open_space,
+/area/event/dynamic)
+"ar" = (
+/obj/structure/platform/metal/almayer_smooth/east,
+/turf/open_space,
+/area/event/dynamic)
+"as" = (
+/obj/structure/platform/metal/almayer_smooth,
+/obj/structure/platform/metal/almayer_smooth/east,
+/obj/structure/platform/metal/almayer_smooth/west,
+/obj/structure/platform_decoration/metal/almayer_smooth/southeast,
+/obj/structure/platform_decoration/metal/almayer_smooth/southwest,
+/turf/open_space,
+/area/event/dynamic)
+"at" = (
+/obj/structure/platform/metal/almayer_smooth/west,
+/obj/structure/platform/metal/almayer_smooth,
+/obj/structure/platform/metal/almayer_smooth/north,
+/obj/structure/platform_decoration/metal/almayer_smooth/northwest,
+/obj/structure/platform_decoration/metal/almayer_smooth/southwest,
+/turf/open_space,
+/area/event/dynamic)
+"au" = (
+/obj/structure/platform_decoration/metal/almayer_smooth/east,
+/obj/structure/platform_decoration/metal/almayer_smooth/north,
+/turf/open_space,
+/area/event/dynamic)
+"av" = (
+/obj/structure/platform/metal/almayer_smooth/east,
+/obj/structure/platform/metal/almayer_smooth/west,
+/turf/open_space,
+/area/event/dynamic)
+"aw" = (
+/obj/structure/platform_decoration/metal/almayer_smooth,
+/turf/open_space,
+/area/event/dynamic)
+"ax" = (
+/obj/structure/platform/metal/almayer_smooth,
+/turf/open_space,
+/area/event/dynamic)
+"ay" = (
+/obj/structure/platform_decoration/metal/almayer_smooth,
+/obj/structure/platform_decoration/metal/almayer_smooth/north,
+/turf/open_space,
+/area/event/dynamic)
+"az" = (
+/obj/structure/platform_decoration/metal/almayer_smooth/north,
+/turf/open_space,
+/area/event/dynamic)
 "bk" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/closet/secure_closet/surgical{
@@ -511,11 +634,11 @@ yP
 AN
 AN
 AN
-AN
-AN
-AN
-AN
-AN
+ai
+ae
+ae
+ae
+aa
 AN
 AN
 br
@@ -530,11 +653,11 @@ SA
 AN
 AN
 AN
-AN
-AN
-AN
-AN
-AN
+aj
+FW
+FW
+FW
+ab
 AN
 AN
 br
@@ -549,11 +672,11 @@ cI
 AN
 AN
 AN
-AN
-AN
-AN
-AN
-AN
+aj
+FW
+ah
+af
+ac
 AN
 AN
 br
@@ -568,11 +691,11 @@ AN
 AN
 AN
 AN
-AN
-AN
-AN
-AN
-AN
+aj
+FW
+FW
+FW
+ab
 AN
 AN
 br
@@ -587,11 +710,11 @@ AN
 AN
 AN
 AN
-AN
-AN
-AN
-AN
-AN
+ak
+ag
+ag
+ag
+ad
 AN
 AN
 br
@@ -1004,11 +1127,11 @@ iD
 Ad
 Ad
 Ad
-Ad
-Ad
-Ad
-Ad
-Ad
+aw
+ao
+ar
+ao
+al
 Ad
 Ad
 SR
@@ -1023,11 +1146,11 @@ iD
 Ad
 Ad
 Ad
-Ad
-Ad
-Ad
-Ad
-Ad
+ax
+ap
+ap
+ap
+am
 Ad
 Ad
 SR
@@ -1042,11 +1165,11 @@ iD
 Ad
 Ad
 Ad
-Ad
-Ad
-Ad
-Ad
-Ad
+ay
+av
+as
+ap
+am
 Ad
 Ad
 SR
@@ -1061,11 +1184,11 @@ iD
 Ad
 Ad
 Ad
-Ad
-Ad
-Ad
-Ad
-Ad
+ax
+ap
+ap
+ap
+am
 Ad
 Ad
 SR
@@ -1080,11 +1203,11 @@ iD
 Ad
 Ad
 Ad
-Ad
-Ad
-Ad
-Ad
-Ad
+ax
+ap
+at
+ap
+am
 Ad
 Ad
 SR
@@ -1099,11 +1222,11 @@ iD
 Ad
 Ad
 Ad
-Ad
-Ad
-Ad
-Ad
-Ad
+az
+aq
+au
+aq
+an
 Ad
 Ad
 SR

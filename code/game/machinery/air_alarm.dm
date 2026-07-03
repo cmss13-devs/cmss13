@@ -984,7 +984,7 @@ table tr:first-child th:first-child { border: none;}
 			return
 
 		if(1)
-			if(iscoil(W))
+			if(iswire(W))
 				var/obj/item/stack/cable_coil/C = W
 				if(C.use(5))
 					to_chat(user, SPAN_NOTICE("You wire \the [src]."))

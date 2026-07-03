@@ -48,6 +48,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/toggle_ability_deactivation,
 	/client/proc/toggle_clickdrag_override,
 	/client/proc/toggle_dualwield,
+	/client/proc/toggle_auto_holotag,
 	/client/proc/toggle_middle_mouse_swap_hands,
 	/client/proc/toggle_vend_item_to_hand,
 	/client/proc/switch_item_animations,
@@ -552,6 +553,15 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CLIENT_LOGGED_IN, src)
 	SEND_SIGNAL(src, COMSIG_CLIENT_LOGGED_IN)
+
+	GLOB.all_player_keys |= key
+	GLOB.all_player_keys_regex = regex(jointext(GLOB.all_player_keys, "|"), "g")
+
+	GLOB.all_player_ckeys |= ckey
+	GLOB.all_player_ckeys_regex = regex(jointext(GLOB.all_player_ckeys, "|"), "g")
+
+	GLOB.all_player_cids |= computer_id
+	GLOB.all_player_cids_regex = regex(jointext(GLOB.all_player_cids, "|"), "g")
 
 	if(CONFIG_GET(flag/ooc_country_flags))
 		spawn if(src)

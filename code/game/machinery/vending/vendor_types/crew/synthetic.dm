@@ -111,6 +111,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 		list("Brown Boots", 0, /obj/item/clothing/shoes/marine/brown/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_REGULAR),
 		list("Grey Boots", 0, /obj/item/clothing/shoes/marine/grey/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_REGULAR),
 		list("Jungle Boots", 0, /obj/item/clothing/shoes/marine/jungle/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_REGULAR),
+		list("Urban Boots", 0, /obj/item/clothing/shoes/marine/urban/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_REGULAR),
+		list("Snow Boots", 0, /obj/item/clothing/shoes/marine/snow/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_REGULAR),
 		list("Shoes, White", 0, /obj/item/clothing/shoes/white, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_RECOMMENDED),
 
 		list("SUIT (CHOOSE 1)", 0, null, null, null),

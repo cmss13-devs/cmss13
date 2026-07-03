@@ -9,8 +9,8 @@
         "/datum/equipment_preset/survivor/new_varadero/lacn_police",
         "/datum/equipment_preset/survivor/new_varadero/lacn_marine",
         "/datum/equipment_preset/survivor/new_varadero/doctor",
+        "/datum/equipment_preset/survivor/new_varadero/firefighter",
         "/datum/equipment_preset/survivor/new_varadero/vhccrew",
-        "/datum/equipment_preset/survivor/new_varadero/cargotech",
         "/datum/equipment_preset/survivor/new_varadero/groundcrew",
         "/datum/equipment_preset/survivor/new_varadero/pilot",
         "/datum/equipment_preset/survivor/new_varadero/scientist",
@@ -30,7 +30,7 @@
         "/datum/equipment_preset/survivor/clf/coordinator"
     ],
     "colony_joe_types": [
-        "/datum/job/civilian/working_joe/daniel"
+        "/datum/job/civilian/working_joe/colony"
     ],
     "defcon_triggers": [
         3300,

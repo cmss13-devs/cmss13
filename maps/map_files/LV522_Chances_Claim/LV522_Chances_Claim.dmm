@@ -1294,6 +1294,11 @@
 /obj/structure/machinery/computer/objective,
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
+"aey" = (
+/obj/item/device/binoculars/range/designator,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/asphalt/cement/cement3,
+/area/lv522/outdoors/nw_rockies)
 "aeD" = (
 /obj/structure/largecrate/random,
 /obj/effect/decal/cleanable/dirt,
@@ -42516,11 +42521,6 @@
 /obj/structure/safe,
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/casino)
-"vMr" = (
-/obj/item/device/binoculars/range/designator,
-/obj/effect/decal/cleanable/blood/splatter,
-/turf/open/asphalt/cement/cement3,
-/area/lv522/outdoors/nw_rockies)
 "vMu" = (
 /obj/item/weapon/gun/boltaction,
 /turf/open/floor/prison,
@@ -62188,7 +62188,7 @@ frZ
 gXR
 gXR
 hvE
-vMr
+aey
 bHA
 uSo
 xyL

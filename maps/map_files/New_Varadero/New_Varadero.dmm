@@ -672,6 +672,11 @@
 /obj/structure/flora/jungle/vines/light_2,
 /turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/central)
+"aci" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/crushed_cup,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/interior/comms3)
 "acj" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_6"
@@ -786,6 +791,10 @@
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/central)
+"acE" = (
+/obj/item/trash/c_tube,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/eastbeach)
 "acF" = (
 /obj/structure/machinery/floodlight/landing{
 	name = "Construction Light";
@@ -852,6 +861,23 @@
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
+"acS" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = 4
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = 1
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = -2
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/boonie,
+/turf/open/floor/asteroid,
+/area/varadero/exterior/pontoon_beach)
 "acT" = (
 /obj/structure/prop/ice_colony/surveying_device{
 	dir = 1
@@ -1960,7 +1986,6 @@
 /turf/open/gm/dirt/dark_brown,
 /area/varadero/interior_protected/caves/swcaves)
 "agn" = (
-/obj/item/trash/crushed_cup,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/interior/comms3)
@@ -3399,6 +3424,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/predship/mainfloor/edge,
 /area/varadero/interior_protected/vessel)
+"akv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/candy,
+/turf/open/floor/asteroid,
+/area/varadero/exterior/eastbeach)
 "akw" = (
 /obj/effect/decal/cleanable/blood/splatter{
 	icon_state = "mfloor6"
@@ -4458,8 +4488,7 @@
 "anA" = (
 /obj/effect/decal/remains/human{
 	pixel_x = -4;
-	pixel_y = -4;
-	
+	pixel_y = -4
 	},
 /obj/effect/spawner/gibspawner/human,
 /obj/effect/decal/cleanable/blood/splatter{
@@ -27538,6 +27567,10 @@
 	pixel_x = 9;
 	pixel_y = 7
 	},
+/obj/item/trash/cigbutt/cigarbutt{
+	pixel_x = 5;
+	pixel_y = 11
+	},
 /turf/open/floor/plating/bare_catwalk,
 /area/varadero/interior/comms3)
 "byN" = (
@@ -27990,10 +28023,6 @@
 	},
 /obj/effect/landmark/objective_landmark/medium,
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/trash/cigbutt/cigarbutt{
-	pixel_x = 11;
-	pixel_y = 12
-	},
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor/plating/bare_catwalk,
 /area/varadero/interior/comms3)
@@ -49083,8 +49112,8 @@
 /area/varadero/interior_protected/maintenance/south)
 "diK" = (
 /obj/structure/prop/hybrisa/airport/dropshipenginedamagenofire{
-	pixel_x = 8;
-	pixel_y = -1
+	pixel_x = -35;
+	pixel_y = -29
 	},
 /turf/closed/shuttle/dropship3/tornado/transparent{
 	name = "\improper UD-6D - Las Guasimas";
@@ -53661,8 +53690,8 @@
 "gYh" = (
 /obj/structure/prop/hybrisa/airport/dropshipenginedamage{
 	layer = 3.1;
-	pixel_x = -8;
-	pixel_y = 10;
+	pixel_x = -3;
+	pixel_y = 5;
 	light_range = 6;
 	light_power = 5;
 	light_color = "#FF7700";
@@ -57117,8 +57146,7 @@
 	},
 /obj/item/clothing/mask/cigarette/cigar/tarbacks{
 	pixel_x = -7;
-	pixel_y = 8;
-	
+	pixel_y = 8
 	},
 /obj/item/ashtray/plastic{
 	pixel_x = 6;
@@ -96091,7 +96119,7 @@ bKB
 bKC
 bKB
 bKC
-iaH
+acS
 bJE
 bIx
 tgE
@@ -101374,7 +101402,7 @@ jks
 bII
 bHK
 bHd
-nnb
+acE
 bFp
 nnb
 bDb
@@ -101925,7 +101953,7 @@ bBB
 bBB
 bDe
 bBB
-bBB
+aci
 pll
 bzp
 bzp
@@ -103371,7 +103399,7 @@ xmL
 xmL
 bJP
 bJP
-bJP
+akv
 bJI
 azU
 bsP

@@ -360,6 +360,7 @@ export const OpenSearchQuery = (props) => {
                 <Button
                   icon={STATUS_TO_ICON[queryStatus]}
                   color={STATUS_TO_COLOR[queryStatus]}
+                  tooltip={statusText}
                 >
                   {STATUS_TO_NAME[queryStatus]}
                 </Button>

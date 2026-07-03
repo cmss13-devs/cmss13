@@ -355,6 +355,7 @@
 	name = "raised metal edge"
 	desc = "A raised level of metal, often used to elevate areas above others, or construct bridges. You could probably climb it."
 	icon = 'icons/obj/structures/props/platforms.dmi'
+	icon_state = null // This is an abstract type
 	density = FALSE
 	anchored = TRUE
 	flags_atom = NO_ZFALL

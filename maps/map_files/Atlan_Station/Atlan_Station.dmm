@@ -811,7 +811,9 @@
 /area/atlan/asteroid/processing_ne_train)
 "acS" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/item/device/flashlight/lamp/tripod,
+/obj/item/device/flashlight/lamp/tripod{
+	on = 0
+	},
 /turf/open/floor/plating/prison,
 /area/atlan/station/admin)
 "acT" = (
@@ -1343,10 +1345,10 @@
 /area/atlan/comms/lz1_lift)
 "asx" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
-/obj/item/weapon/gun/revolver/cmb/custom,
 /obj/item/ammo_casing/bullet{
 	layer = 3.1
 	},
+/obj/item/weapon/gun/revolver/upp,
 /turf/open/floor/greengrid,
 /area/atlan/station/cargooffice)
 "asR" = (
@@ -11667,7 +11669,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/atlan/station/admin)
 "hAS" = (
-/obj/item/ammo_magazine/revolver/cmb,
+/obj/item/ammo_magazine/revolver/upp,
 /turf/open/floor/strata/floor2,
 /area/atlan/station/cargooffice)
 "hAV" = (

@@ -47,8 +47,6 @@
 
 /area/atlan/station
 	name = "Atlan - Station"
-	icon_state = "station0"
-	ceiling = CEILING_GLASS
 
 /area/atlan/station/medical
 	name = "Station - Medical Bay"
@@ -113,7 +111,7 @@
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 
 /area/atlan/station/walkway
-	name = "Station - Proletariat Walkway"
+	name = "Station - Walkway of the Proletariat"
 	icon_state = "walkway"
 
 /area/atlan/station/promenade
@@ -204,7 +202,7 @@
 	linked_lz = DROPSHIP_LZ1
 
 /area/atlan/station/drydock
-	name = "Station - Drydock Bay"
+	name = "Station - Drydock"
 	icon_state = "drydock"
 	flags_area = AREA_NOBURROW|AREA_UNWEEDABLE
 	linked_lz = DROPSHIP_LZ1
@@ -225,7 +223,7 @@
 	minimap_color = MINIMAP_AREA_LZ
 
 /area/atlan/lz/lz1
-	name = "LZ1 Pad - Cargo and Drydock"
+	name = "NE LZ1 Pad - Cargo and Drydock"
 	unlimited_power = 1 //So the DS computer always works for the Queen
 	requires_power = FALSE
 	icon_state = "lz1"
@@ -233,13 +231,13 @@
 	linked_lz = DROPSHIP_LZ1
 
 /area/atlan/lz/near_lz1
-	name = "LZ1 - Cargo and Drydock"
+	name = "NE LZ1 - Cargo and Drydock"
 	icon_state = "lz1"
 	is_landing_zone = TRUE
 	linked_lz = DROPSHIP_LZ1
 
 /area/atlan/lz/lz2
-	name = "LZ2 Pad - Habitation Ring"
+	name = "SW LZ2 Pad - Habitation Ring"
 	unlimited_power = 1 //So the DS computer always works for the Queen
 	requires_power = FALSE
 	icon_state = "lz2"
@@ -247,7 +245,7 @@
 	linked_lz = DROPSHIP_LZ2
 
 /area/atlan/lz/near_lz2
-	name = "LZ2 - Habitation Ring"
+	name = "SW LZ2 - Habitation Ring"
 	icon_state = "lz2"
 	is_landing_zone = TRUE
 	linked_lz = DROPSHIP_LZ2
@@ -261,14 +259,14 @@
 	ceiling = CEILING_GLASS
 
 /area/atlan/comms/lz1_control
-	name = "Station - Drydock Control Office"
+	name = "Station - Drydock Control Office Relay"
 	icon_state = "telecomms"
 	minimap_color = MINIMAP_AREA_SEC
 	linked_lz = DROPSHIP_LZ1
 	ceiling = CEILING_METAL
 
 /area/atlan/comms/lz1_lift
-	name = "Station - Drydock Cargo"
+	name = "Station - Drydock Cargo Relay"
 	icon_state = "telecomms"
 	linked_lz = DROPSHIP_LZ1
 
@@ -279,7 +277,7 @@
 	linked_lz = DROPSHIP_LZ1
 
 /area/atlan/comms/lz2_hab_relay
-	name = "Hab Ring - Relay"
+	name = "Hab Ring - Double Dorms Relay"
 	icon_state = "telecomms"
 	linked_lz = DROPSHIP_LZ2
 
@@ -288,13 +286,8 @@
 	icon_state = "telecomms"
 	linked_lz = DROPSHIP_LZ2
 
-//    /area/atlan/comms/lz2_bar_north
-//	name = "Hab Ring - North Bar Relay"
-//	icon_state = "telecomms"
-//	linked_lz = DROPSHIP_LZ2
-
 /area/atlan/comms/lz2_canteen
-	name = "Hab Ring - Canteen"
+	name = "Hab Ring - Canteen Relay"
 	icon_state = "telecomms"
 	linked_lz = DROPSHIP_LZ2
 
@@ -311,7 +304,7 @@
 	unoviable_timer = FALSE
 
 /area/atlan/asteroid/processing_seperation
-	name = "Processing - Seperation Vats"
+	name = "Processing - Distillation Vats"
 	icon_state = "prosep"
 	minimap_color = MINIMAP_AREA_MINING
 

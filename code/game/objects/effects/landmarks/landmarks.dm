@@ -4,6 +4,7 @@
 	icon_state = "x2"
 	anchored = TRUE
 	unacidable = TRUE
+	flags_atom = NO_ZFALL
 
 	var/invisibility_value = INVISIBILITY_MAXIMUM
 	var/spawn_chance = 100

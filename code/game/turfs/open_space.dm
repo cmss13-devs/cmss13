@@ -141,6 +141,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	if(!below)
 		return
 
+	stack_trace("[movable] ([movable.type]) fell from [ADMIN_VERBOSEJMP(src)]!") // TODO: REMOVE THIS TEMPORARY
 	movable.forceMove(below)
 	movable.onZImpact(below, height)
 

@@ -24,10 +24,23 @@
 /datum/species/synthetic/gen_two/gen_one/working_joe/upp/handle_death(mob/living/carbon/human/dying_joe, gibbed)
 	playsound(get_turf(dying_joe), "upp_wj_death", 25, FALSE)
 
+/datum/species/synthetic/gen_two/gen_one/working_joe/daniel
+	name = SYNTH_DANIEL
+	name_plural = "Daniels"
+	emote_panel_type = /datum/joe_emote_panel/daniel
+	icobase = 'icons/mob/humans/species/r_daniel.dmi'
+
+	eyes_help = list(15, 237, 237) //red, green, blue
+	eyes_disarm = list(15, 237, 237)
+	eyes_grab = list(15, 237, 237)
+	eyes_harm = list(255, 0, 0)
+
+/datum/species/synthetic/gen_two/gen_one/working_joe/daniel/handle_death(mob/living/carbon/human/dying_joe, gibbed)
+	playsound(get_turf(dying_joe), "daniel_death", 25, FALSE)
+
 /datum/species/synthetic/gen_two/gen_one/working_joe/handle_post_spawn(mob/living/carbon/human/joe)
 	. = ..()
 	give_action(joe, /datum/action/joe_emote_panel)
-	joe.AddElement(/datum/element/corp_label/seegson)
 
 // Special death noise for Working Joe
 /datum/species/synthetic/gen_two/gen_one/working_joe/handle_death(mob/living/carbon/human/dying_joe, gibbed)
@@ -128,6 +141,23 @@
 	data["emotes"] = list()
 
 	for(var/datum/emote/living/carbon/human/synthetic/working_joe/emote as anything in GLOB.uppj_emotes)
+		data["emotes"] += list(list(
+			"id" = initial(emote.key),
+			"text" = (initial(emote.override_say) || initial(emote.say_message)),
+			"category" = initial(emote.category),
+			"path" = "[emote]",
+		))
+
+	return data
+
+/datum/joe_emote_panel/daniel/ui_static_data(mob/user)
+	var/list/data = list()
+
+	data["theme"] = "crtwhite"
+	data["categories"] = GLOB.daniel_categories
+	data["emotes"] = list()
+
+	for(var/datum/emote/living/carbon/human/synthetic/working_joe/emote as anything in GLOB.daniel_emotes)
 		data["emotes"] += list(list(
 			"id" = initial(emote.key),
 			"text" = (initial(emote.override_say) || initial(emote.say_message)),

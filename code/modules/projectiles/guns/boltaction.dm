@@ -25,7 +25,7 @@
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_WIELDED_FIRING_ONLY
 	gun_category = GUN_CATEGORY_RIFLE
 	aim_slowdown = SLOWDOWN_ADS_RIFLE
-	wield_delay = WIELD_DELAY_NORMAL
+	wield_delay = WEAPON_DELAY_NORMAL
 	current_mag = /obj/item/ammo_magazine/rifle/boltaction
 	attachable_allowed = list(
 		/obj/item/attachable/bayonet,
@@ -47,7 +47,7 @@
 	)
 	starting_attachment_types = list(/obj/item/attachable/scope/mini/hunting)
 	aim_slowdown = SLOWDOWN_ADS_RIFLE
-	wield_delay = WIELD_DELAY_NORMAL
+	wield_delay = WEAPON_DELAY_NORMAL
 	civilian_usable_override = TRUE
 	unacidable = TRUE // Like other 1-of-a-kind weapons, it can't be gotten rid of that fast
 	explo_proof = TRUE
@@ -188,7 +188,7 @@
 	flags_gun_features = NONE
 	gun_category = GUN_CATEGORY_HEAVY
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST // Consider SUPERWEAPON, but it's not like you can fire this without being bipodded
-	wield_delay = WIELD_DELAY_VERY_SLOW
+	wield_delay = WEAPON_DELAY_VERY_SLOW
 	map_specific_decoration = TRUE
 	current_mag = /obj/item/ammo_magazine/rifle/boltaction/vulture
 	attachable_allowed = list(

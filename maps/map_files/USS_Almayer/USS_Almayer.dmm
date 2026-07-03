@@ -5803,11 +5803,6 @@
 /obj/structure/platform_decoration/metal/almayer_smooth/north,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/lower/port_fore)
-"aoA" = (
-/turf/closed/wall/almayer/outer/internal{
-	blend_objects = list(/obj/structure/window_frame,/obj/structure/window/framed)
-	},
-/area/almayer/command/cic)
 "aoB" = (
 /obj/structure/window/reinforced/tinted{
 	dir = 8
@@ -7173,11 +7168,6 @@
 "arO" = (
 /turf/open/floor/wood/ship,
 /area/almayer/living/offices/flight)
-"arP" = (
-/turf/closed/wall/almayer/reinforced{
-	blend_objects = list(/obj/structure/window_frame,/obj/structure/window/framed)
-	},
-/area/almayer/command/cic)
 "arQ" = (
 /obj/structure/surface/table/gamblingtable,
 /obj/item/spacecash/c10,
@@ -13793,6 +13783,9 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sp)
+"aKq" = (
+/turf/closed/wall/almayer/outer/internal,
+/area/almayer/command/cic)
 "aKr" = (
 /turf/open_space,
 /area/almayer/stair_clone/lower/starboard_aft)
@@ -37092,7 +37085,9 @@
 /turf/open/floor/almayer/no_build,
 /area/almayer/shipboard/navigation)
 "bMV" = (
-/turf/closed/wall/almayer/outer/internal,
+/turf/closed/wall/almayer/outer/internal{
+	blend_objects = list(/obj/structure/window_frame,/obj/structure/window/framed)
+	},
 /area/almayer/command/cic)
 "bMW" = (
 /turf/open/floor/almayer/flooredge/south,
@@ -56763,6 +56758,11 @@
 "gkr" = (
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/s_bow)
+"gkK" = (
+/turf/closed/wall/almayer/reinforced{
+	blend_objects = list(/obj/structure/window_frame,/obj/structure/window/framed)
+	},
+/area/almayer/command/cic)
 "gll" = (
 /obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/almayer,
@@ -201672,13 +201672,13 @@ feD
 fEk
 boC
 iBY
-bMV
-bMV
-bMV
-bMV
-bMV
-bMV
-bMV
+aKq
+aKq
+aKq
+aKq
+aKq
+aKq
+aKq
 dmg
 vMI
 aBX
@@ -201774,16 +201774,16 @@ wVW
 bvy
 sEp
 bqa
-bMV
-bMV
+aKq
+aKq
 swH
 ucz
 beC
 atO
 sEM
-bMV
-bMV
-bMV
+aKq
+aKq
+aKq
 osz
 wVW
 wVW
@@ -201876,7 +201876,7 @@ aov
 wVW
 apo
 fHh
-bMV
+aKq
 lZs
 lVX
 awk
@@ -201886,7 +201886,7 @@ aQg
 asc
 snI
 aGp
-bMV
+aKq
 aDv
 aHK
 wVW
@@ -201979,7 +201979,7 @@ aov
 wVW
 arF
 brl
-bMV
+aKq
 bhO
 avS
 awk
@@ -201989,7 +201989,7 @@ pbV
 asc
 aJG
 aGq
-bMV
+aKq
 aIf
 aEA
 wVW
@@ -202082,7 +202082,7 @@ bVe
 bGW
 arG
 brl
-bMV
+aKq
 oPE
 alZ
 awk
@@ -202092,10 +202092,10 @@ bZJ
 asc
 axp
 aPI
-bMV
-bMV
-bMV
-bMV
+aKq
+aKq
+aKq
+aKq
 aCw
 ayF
 asu
@@ -202185,7 +202185,7 @@ fEk
 luZ
 aEz
 btj
-bMV
+aKq
 bhZ
 bho
 awk
@@ -202195,11 +202195,11 @@ aqN
 asc
 aVy
 alX
-bMV
+aKq
 aRd
 azM
-bMV
-bMV
+aKq
+aKq
 aKi
 asu
 aqP
@@ -202288,7 +202288,7 @@ aEV
 uTU
 bvA
 brl
-bMV
+aKq
 bid
 bhB
 awk
@@ -202298,11 +202298,11 @@ aqN
 asc
 aVE
 aUQ
-bMV
+aKq
 aRJ
 aNr
 atx
-bMV
+aKq
 ayS
 uCW
 aqS
@@ -202391,7 +202391,7 @@ bVE
 bLG
 arR
 brl
-bMV
+aKq
 bij
 awt
 awk
@@ -202401,11 +202401,11 @@ aqN
 asc
 ays
 aVb
-bMV
+aKq
 aRJ
 asN
 atx
-bMV
+aKq
 ayO
 auv
 aKa
@@ -202494,7 +202494,7 @@ cZb
 wVW
 teY
 btk
-bMV
+aKq
 wVW
 aVH
 abk
@@ -202504,11 +202504,11 @@ aBZ
 aVZ
 aVH
 wVW
-bMV
+aKq
 mPn
 aNr
 atx
-bMV
+aKq
 ayP
 ava
 aKa
@@ -202593,11 +202593,11 @@ agj
 aic
 cjh
 ciY
-bMV
+aKq
 bLM
 awA
 sEp
-bMV
+aKq
 wVW
 wVW
 azW
@@ -202606,12 +202606,12 @@ aAC
 aCa
 aWS
 wVW
-arP
-aoA
+gkK
+bMV
 vSl
 aNr
 atx
-aoA
+bMV
 ayW
 avG
 aKz
@@ -202695,8 +202695,8 @@ mXj
 agj
 aic
 cji
-bMV
-bMV
+aKq
+aKq
 bMQ
 bwy
 buk
@@ -202714,8 +202714,8 @@ aUP
 aSs
 aOd
 aFa
+aKq
 bMV
-aoA
 avG
 aKy
 mKq
@@ -202798,7 +202798,7 @@ gLN
 agj
 aic
 aov
-bMV
+aKq
 acS
 bPi
 awG
@@ -202818,7 +202818,7 @@ avY
 vHW
 aGQ
 ccg
-aoA
+bMV
 avG
 aKz
 mKq
@@ -202901,7 +202901,7 @@ agc
 agj
 aic
 aov
-bMV
+aKq
 sxW
 bRZ
 jSc
@@ -202921,7 +202921,7 @@ aJI
 wFn
 aJD
 aCF
-aoA
+bMV
 avG
 aKz
 mKq
@@ -203004,7 +203004,7 @@ xyk
 mDX
 cjn
 cjj
-bMV
+aKq
 dLe
 bST
 byq
@@ -203024,7 +203024,7 @@ qEk
 iaa
 aJD
 aEp
-aoA
+bMV
 avG
 aKz
 mKq
@@ -203107,7 +203107,7 @@ agc
 agj
 aic
 cjl
-bMV
+aKq
 caj
 bUm
 bys
@@ -203127,7 +203127,7 @@ aUH
 wFn
 aJD
 aCF
-aoA
+bMV
 avG
 aKz
 mKq
@@ -203210,7 +203210,7 @@ iEz
 agj
 aic
 cjl
-bMV
+aKq
 chc
 bUB
 bvk
@@ -203230,7 +203230,7 @@ avY
 mje
 aLZ
 aEU
-aoA
+bMV
 avG
 aKz
 mKq
@@ -203313,8 +203313,8 @@ mXj
 agj
 akL
 cjl
-bMV
-bMV
+aKq
+aKq
 bUF
 bGk
 jvX
@@ -203332,8 +203332,8 @@ aMg
 aMg
 aMg
 aMg
+aKq
 bMV
-aoA
 axn
 aKz
 mKq
@@ -203417,12 +203417,12 @@ agj
 aic
 cjl
 ayX
-bMV
-bMV
-bMV
-bMV
-bMV
-bMV
+aKq
+aKq
+aKq
+aKq
+aKq
+aKq
 wVW
 kcx
 aCf
@@ -203430,12 +203430,12 @@ wVW
 aCf
 wpt
 wVW
-aoA
-aoA
-aoA
-aoA
-aoA
 bMV
+bMV
+bMV
+bMV
+bMV
+aKq
 ayX
 avG
 aKz

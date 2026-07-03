@@ -200,9 +200,10 @@
 	sound = 'sound/voice/joe/where_are_you_going.ogg'
 	haz_sound = 'sound/voice/joe/where_are_you_going_haz.ogg'
 	upp_joe_sound = 'sound/voice/joe/upp_joe/kudasobralis.ogg'
+	daniel_sound = 'sound/voice/joe/daniel/where_are_you_going.ogg'
 	say_message = "Where are you going?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE|DANIEL_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/question/cant_see_you
 	key = "cantseeyou"
@@ -274,3 +275,10 @@
 	say_message = "What are you trying to achieve?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = UPP_JOE_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/question/assistance
+	key = "assistance"
+	sound = 'sound/voice/joe/daniel/are_you_sure_i_cant_be.ogg'
+	say_message = "Are you sure I can't be of assistance?"
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = DANIEL_EMOTE

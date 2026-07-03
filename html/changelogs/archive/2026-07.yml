@@ -1,0 +1,3 @@
+2026-07-02:
+  Drathek MistChristmas:
+  - bugfix: Fixed a runtime with set_gun_user causing a bad index

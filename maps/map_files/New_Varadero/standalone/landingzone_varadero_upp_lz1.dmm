@@ -117,6 +117,30 @@
 /turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/central)
 "az" = (
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/caves/central)
+"aA" = (
+/obj/structure/inflatable/popped,
+/turf/open/gm/grass/grass1/weedable,
+/area/varadero/interior_protected/caves/central)
+"aB" = (
+/obj/structure/ladder,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/farocean)
+"aC" = (
+/obj/structure/prop/rock/black_ground,
+/turf/open/gm/dirt/dark_brown,
+/area/varadero/interior_protected/caves/central)
+"aD" = (
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/varadero/interior_protected/caves/central)
+"aE" = (
+/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/caves/central)
+"aF" = (
 /obj/item/device/flashlight/lamp/tripod/grey,
 /obj/structure/machinery/storm_siren{
 	dir = 4;
@@ -124,19 +148,18 @@
 	},
 /turf/open/floor/interior/wood,
 /area/event/dynamic/lit)
-"aA" = (
-/turf/open/auto_turf/hybrisa_auto_turf/layer0,
-/area/varadero/interior_protected/caves/central)
-"aB" = (
-/obj/structure/ladder,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/exterior/farocean)
-"aI" = (
-/obj/structure/flora/jungle/vines/heavy,
+"aG" = (
+/obj/structure/flora/wood/stick4,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/central)
+"aH" = (
+/turf/open/gm/dirt/dark_brown,
+/area/varadero/interior_protected/maintenance/south)
+"aI" = (
+/turf/open/floor/asteroid,
+/area/varadero/interior_protected/maintenance/south)
 "aJ" = (
-/obj/structure/inflatable/popped,
+/obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/central)
 "aK" = (
@@ -160,37 +183,47 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/event/dynamic/lit)
 "aN" = (
-/obj/structure/prop/rock/black_ground,
-/turf/open/gm/dirt/dark_brown,
-/area/varadero/interior_protected/caves/central)
+/turf/closed/wall/r_wall,
+/area/varadero/interior/toilets)
 "aO" = (
 /turf/closed/wall,
 /area/varadero/interior/toilets)
+"aP" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior_protected/maintenance/south)
 "aQ" = (
 /obj/structure/blocker/invisible_wall/water,
 /obj/item/lightstick/variant/planted,
 /turf/open/gm/coast/beachcorner/south_east,
 /area/varadero/exterior/farocean)
 "aR" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior_protected/caves/central)
-"aS" = (
-/obj/structure/flora/wood/stick4,
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior_protected/caves/central)
-"aT" = (
-/obj/structure/flora/jungle/vines/light_3,
-/turf/open/gm/grass/grass1/weedable,
-/area/varadero/interior_protected/caves/central)
-"aU" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/maintenance/south)
-"aV" = (
+"aS" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/r_wall,
+/area/varadero/interior_protected/caves/central)
+"aT" = (
+/obj/structure/prop/rock/brown,
+/obj/structure/flora/jungle/vines/light_2,
+/turf/open/gm/dirt/dark_brown,
+/area/varadero/interior_protected/caves/central)
+"aU" = (
+/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/jungle/vines/heavy,
+/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/turf/open/gm/grass/grass1/weedable,
+/area/varadero/interior_protected/caves/central)
+"aV" = (
+/obj/structure/barricade/handrail/hybrisa/road/wood/orange{
+	dir = 8;
+	pixel_x = -12;
+	pixel_y = -14
+	},
+/turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/central)
 "aW" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -201,38 +234,49 @@
 /area/event/dynamic/lit)
 "aX" = (
 /obj/structure/prop/rock/brown,
-/obj/structure/flora/jungle/vines/light_2,
-/turf/open/gm/dirt/dark_brown,
-/area/varadero/interior_protected/caves/central)
-"aY" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
-/obj/structure/flora/jungle/vines/heavy,
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/central)
+"aY" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/barricade/handrail/wire,
+/obj/structure/machinery/storm_siren{
+	dir = 4;
+	pixel_x = -3
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/caves/east)
 "aZ" = (
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/south)
-"bc" = (
+"ba" = (
+/obj/structure/flora/jungle/vines/light_1,
+/obj/structure/prop/rock/black_ground,
+/turf/open/gm/dirt/dark_brown,
+/area/varadero/interior_protected/caves/central)
+"bb" = (
 /obj/structure/barricade/handrail/hybrisa/road/wood/orange{
 	dir = 8;
-	pixel_x = -12;
-	pixel_y = -14
+	pixel_x = -10;
+	pixel_y = -10
 	},
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior_protected/caves/central)
-"bd" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior_protected/maintenance/south)
-"be" = (
-/obj/structure/prop/rock/brown,
-/obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/central)
+"bc" = (
+/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/turf/open/gm/dirt/dark_brown,
+/area/varadero/interior_protected/caves/central)
+"bd" = (
+/obj/structure/prop/rock/brown,
+/turf/open/gm/dirt/dark_brown,
+/area/varadero/interior/caves/east)
+"be" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/caves/east)
 "bf" = (
 /obj/structure/machinery/telecomms/broadcaster,
 /turf/open/floor/almayer/tcomms,
@@ -242,38 +286,33 @@
 /turf/open/floor/almayer/plate,
 /area/event/metal/dynamic)
 "bh" = (
-/obj/structure/flora/jungle/vines/light_1,
-/obj/structure/prop/rock/black_ground,
-/turf/open/gm/dirt/dark_brown,
-/area/varadero/interior_protected/caves/central)
-"bi" = (
-/obj/structure/barricade/handrail/hybrisa/road/wood/orange{
-	dir = 8;
-	pixel_x = -10;
-	pixel_y = -10
-	},
-/turf/open/gm/grass/grass1/weedable,
-/area/varadero/interior_protected/caves/central)
-"bj" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
-/turf/open/gm/dirt/dark_brown,
-/area/varadero/interior_protected/caves/central)
-"bk" = (
-/obj/structure/prop/rock/brown,
-/turf/open/gm/dirt/dark_brown,
-/area/varadero/interior/caves/east)
-"bl" = (
 /obj/structure/barricade/wooden,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/caves/east)
-"bm" = (
+"bi" = (
 /obj/structure/flora/wood/stick2,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/caves/east)
-"bn" = (
+"bj" = (
+/obj/structure/curtain/red,
+/turf/closed/wall/rock/brown,
+/area/varadero/interior/oob)
+"bk" = (
 /obj/structure/tunnel{
 	id = "north_research_tunnel"
 	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/east)
+"bl" = (
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/interior/oob)
+"bm" = (
+/obj/structure/girder,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/east)
+"bn" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/caves/east)
 "bo" = (
@@ -341,21 +380,17 @@
 /obj/structure/ore_box,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/caves/east)
+"bz" = (
+/obj/structure/prop/rock/brown,
+/obj/structure/prop/rock/brown,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/east)
 "bA" = (
-/obj/item/tool/pickaxe,
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior/caves/east)
-"bB" = (
-/obj/structure/prop/rock/brown,
-/obj/structure/prop/rock/brown,
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior/caves/east)
-"bC" = (
 /obj/item/tool/warning_cone,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/south)
-"bD" = (
+"bB" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/barricade/handrail/wire{
 	dir = 8
@@ -363,171 +398,17 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/south)
-"bE" = (
-/obj/structure/girder,
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior/caves/east)
-"bJ" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/maintenance/security/south)
-"bL" = (
-/turf/open/gm/coast/beachcorner/south_west,
-/area/varadero/exterior/monsoon)
-"bM" = (
-/obj/item/tool/warning_cone,
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior/maintenance/security/south)
-"bN" = (
-/obj/structure/prop/rock/brown,
-/turf/open/gm/grass/grass1/weedable,
-/area/varadero/interior_protected/caves/central)
-"bO" = (
-/turf/open/floor/plating/plating_catwalk/strata,
-/area/event/metal/dynamic/lit)
-"bP" = (
-/obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior/caves/east)
-"bQ" = (
-/obj/structure/prop/rock/brown,
-/obj/structure/prop/rock/brown,
-/turf/open/gm/dirt,
-/area/varadero/interior/caves/east)
-"bR" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/item/tool/warning_cone{
-	pixel_x = -5;
-	pixel_y = -6
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior/maintenance/security/south)
-"bT" = (
-/obj/structure/prop/rock/brown,
-/obj/structure/prop/rock/brown,
-/turf/open/auto_turf/hybrisa_auto_turf/layer0,
-/area/varadero/interior_protected/caves/central)
-"bU" = (
-/obj/structure/flora/wood/stick3,
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior/caves/east)
-"bV" = (
-/obj/structure/catwalk,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/maintenance/security/south)
-"bW" = (
-/obj/structure/machinery/storm_siren,
-/obj/structure/catwalk,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/maintenance/security/south)
-"bX" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/maint{
-	name = "\improper Underground Maintenance";
-	dir = 1;
-	req_one_access = null;
-	req_access_txt = "100"
-	},
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/maintenance/security/south)
-"bY" = (
-/turf/closed/wall/r_wall,
-/area/varadero/interior/maintenance/security/south/hangar)
-"bZ" = (
-/obj/structure/largecrate/random,
-/obj/structure/catwalk,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/maintenance/security/south/hangar)
-"ca" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/catwalk,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/maintenance/security/south/hangar)
-"cb" = (
-/obj/structure/catwalk,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/maintenance/security/south/hangar)
-"cc" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
-/obj/structure/largecrate/random,
-/obj/structure/catwalk,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/maintenance/security/south/hangar)
-"cd" = (
-/obj/structure/closet/secure_closet/engineering_electrical,
-/obj/structure/catwalk,
-/obj/structure/barricade/wooden,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/maintenance/security/south/hangar)
-"ce" = (
-/obj/structure/platform/metal/kutjevo_smooth/north{
-	climb_delay = 1
-	},
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior/caves/east)
-"cf" = (
-/obj/structure/prop/rock/brown,
-/obj/structure/platform/metal/kutjevo_smooth/north{
-	climb_delay = 1
-	},
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior/caves/east)
-"cg" = (
-/obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/obj/structure/platform/metal/kutjevo_smooth/north{
-	climb_delay = 1
-	},
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior/caves/east)
-"ch" = (
-/obj/structure/platform/metal/kutjevo_smooth/north{
-	climb_delay = 1
-	},
-/obj/item/device/flashlight/lamp/tripod,
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior/caves/east)
-"ci" = (
-/obj/structure/platform_decoration/metal/kutjevo/north,
-/turf/open/gm/river/shallow_ocean_shallow_ocean,
-/area/varadero/exterior/farocean)
-"cj" = (
-/turf/open/floor/asteroid,
-/area/varadero/interior_protected/maintenance/south)
-"ck" = (
-/turf/closed/wall/r_wall,
-/area/varadero/interior/toilets)
-"cl" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/caves/east)
-"cm" = (
-/obj/structure/curtain/red,
-/turf/closed/wall/rock/brown,
-/area/varadero/interior/oob)
-"cn" = (
-/turf/open/gm/river/shallow_ocean_shallow_ocean,
-/area/varadero/interior/oob)
-"co" = (
-/obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior/caves/east)
-"cp" = (
+"bC" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/south)
-"cq" = (
+"bD" = (
 /obj/structure/barricade/handrail/hybrisa/road/wood/orange{
 	dir = 1
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/monsoon)
-"cr" = (
+"bE" = (
 /obj/structure/barricade/handrail/hybrisa/road/wood/orange{
 	dir = 1;
 	pixel_x = -4;
@@ -535,14 +416,14 @@
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/monsoon)
-"cs" = (
+"bF" = (
 /turf/open/gm/dirt/dark_brown,
 /area/varadero/exterior/monsoon)
-"ct" = (
+"bG" = (
 /obj/structure/platform_decoration/metal/kutjevo/west,
 /turf/closed/wall/rock/brown,
 /area/varadero/interior/oob)
-"cu" = (
+"bH" = (
 /obj/structure/platform/metal/kutjevo_smooth/north{
 	climb_delay = 1
 	},
@@ -554,7 +435,7 @@
 	},
 /turf/open/gm/dirt/desert3,
 /area/varadero/exterior/monsoon)
-"cv" = (
+"bI" = (
 /obj/structure/platform/metal/kutjevo_smooth/north{
 	climb_delay = 1
 	},
@@ -566,7 +447,7 @@
 	},
 /turf/open/gm/dirt/desert0,
 /area/varadero/exterior/monsoon)
-"cw" = (
+"bJ" = (
 /obj/structure/platform/metal/kutjevo_smooth/north{
 	climb_delay = 1
 	},
@@ -578,17 +459,7 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
-"cx" = (
-/obj/structure/desertdam/decals/road_stop{
-	icon_state = "stop_decal5";
-	dir = 1
-	},
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal4"
-	},
-/turf/open/floor/asteroid,
-/area/event/dynamic/lit)
-"cy" = (
+"bK" = (
 /obj/structure/platform/metal/kutjevo_smooth/north{
 	climb_delay = 1
 	},
@@ -600,51 +471,70 @@
 	},
 /turf/open/gm/dirt/desert2,
 /area/varadero/exterior/monsoon)
-"cz" = (
+"bL" = (
+/turf/open/gm/coast/beachcorner/south_west,
+/area/varadero/exterior/monsoon)
+"bM" = (
 /obj/structure/platform_decoration/metal/kutjevo/east,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/monsoon)
-"cA" = (
-/obj/structure/barricade/metal/wired{
-	dir = 8
-	},
-/obj/structure/barricade/sandbags/wired{
-	icon_state = "sandbag_0";
-	dir = 1
-	},
-/turf/open/floor/interior/wood,
-/area/event/dynamic/lit)
-"cB" = (
+"bN" = (
+/obj/structure/prop/rock/brown,
+/turf/open/gm/grass/grass1/weedable,
+/area/varadero/interior_protected/caves/central)
+"bO" = (
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/event/metal/dynamic/lit)
+"bP" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice1";
 	pixel_y = -8
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/south)
-"cC" = (
+"bQ" = (
+/obj/item/tool/warning_cone,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/maintenance/security/south)
+"bR" = (
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/east)
+"bS" = (
+/obj/structure/prop/rock/brown,
+/obj/structure/prop/rock/brown,
+/turf/open/gm/dirt,
+/area/varadero/interior/caves/east)
+"bT" = (
+/obj/structure/prop/rock/brown,
+/obj/structure/prop/rock/brown,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/varadero/interior_protected/caves/central)
+"bU" = (
 /obj/structure/machinery/floodlight/landing{
 	name = "Construction Light";
 	desc = "A powerful light stationed near construction zones to provide better visibility."
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
-"cD" = (
+"bV" = (
 /obj/structure/platform/metal/kutjevo_smooth/east{
 	climb_delay = 1
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
-"cE" = (
+"bW" = (
 /obj/item/lightstick/red/spoke/planted{
 	unacidable = 1;
 	explo_proof = 1
 	},
 /turf/open/floor/plating/bare_catwalk,
 /area/varadero/exterior/monsoon)
-"cF" = (
+"bX" = (
 /turf/open/floor/plating/bare_catwalk,
 /area/varadero/exterior/monsoon)
-"cG" = (
+"bY" = (
 /obj/structure/platform_decoration/metal/kutjevo/west,
 /obj/structure/prop/rock/brown,
 /obj/structure/platform/metal/kutjevo_smooth/west{
@@ -673,10 +563,7 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
-"cH" = (
-/turf/open/gm/dirt,
-/area/varadero/exterior/monsoon)
-"cI" = (
+"bZ" = (
 /obj/structure/barricade/handrail{
 	name = "support struts";
 	desc = "Your platforms look pretty heavy king, let me support them for you.";
@@ -688,7 +575,7 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
-"cJ" = (
+"ca" = (
 /obj/structure/barricade/handrail{
 	name = "support struts";
 	desc = "Your platforms look pretty heavy king, let me support them for you.";
@@ -700,19 +587,12 @@
 	},
 /turf/open/gm/dirt/desert0,
 /area/varadero/exterior/monsoon)
-"cK" = (
+"cb" = (
 /obj/structure/prop/rock/brown,
 /obj/structure/platform_decoration/metal/kutjevo/east,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/monsoon)
-"cL" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/maintenance/security/south)
-"cM" = (
+"cc" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -722,56 +602,53 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/south)
-"cN" = (
+"cd" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/item/tool/warning_cone{
+	pixel_x = -5;
+	pixel_y = -6
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/maintenance/security/south)
+"ce" = (
+/obj/structure/flora/wood/stick3,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/east)
+"cf" = (
 /obj/structure/prop/rock/brown_degree,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/monsoon)
-"cO" = (
-/obj/structure/prop/rock/brown,
-/turf/open/gm/river/shallow_ocean_shallow_ocean,
-/area/varadero/exterior/farocean)
-"cP" = (
+"cg" = (
 /obj/structure/platform/metal/kutjevo_smooth/east{
 	climb_delay = 1
 	},
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
-"cQ" = (
-/obj/structure/platform/metal/strata/west,
-/obj/structure/largecrate/random/barrel/green,
-/turf/open/auto_turf/sand_white/layer1,
-/area/event/dynamic/lit)
-"cR" = (
+"ch" = (
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_12"
 	},
 /turf/open/floor/plating/bare_catwalk,
 /area/varadero/exterior/monsoon)
-"cS" = (
-/obj/effect/overlay/palmtree_r{
-	icon_state = "palm2";
-	density = 0
-	},
-/turf/open/gm/dirt,
-/area/varadero/exterior/monsoon)
-"cT" = (
+"ci" = (
+/obj/structure/platform_decoration/metal/kutjevo/north,
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/farocean)
+"cj" = (
 /obj/structure/prop/tyrargo/watchtower,
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/monsoon)
-"cU" = (
+"ck" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/monsoon)
-"cV" = (
-/obj/structure/barricade/handrail/wire{
-	dir = 4
-	},
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/event/dynamic/lit)
-"cW" = (
+"cl" = (
 /obj/structure/platform/metal/kutjevo_smooth/east{
 	climb_delay = 1
 	},
@@ -780,6 +657,227 @@
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/monsoon)
+"cm" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/monsoon)
+"cn" = (
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/obj/structure/prop/rock/brown,
+/turf/open/gm/dirt,
+/area/varadero/exterior/monsoon)
+"co" = (
+/turf/closed/wall/rock/brown,
+/area/varadero/exterior/farocean)
+"cp" = (
+/obj/structure/catwalk,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/south)
+"cq" = (
+/obj/structure/machinery/storm_siren,
+/obj/structure/catwalk,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/south)
+"cr" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice3";
+	pixel_y = -8
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/south)
+"cs" = (
+/obj/item/tool/warning_cone,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/monsoon)
+"ct" = (
+/obj/structure/prop/rock/brown,
+/turf/open/gm/coast/beachcorner/south_west,
+/area/varadero/exterior/monsoon)
+"cu" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2";
+	pixel_y = -8
+	},
+/turf/closed/wall/r_wall,
+/area/varadero/interior/maintenance/security/south)
+"cv" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/machinery/door/airlock/almayer/maint{
+	name = "\improper Underground Maintenance";
+	dir = 1;
+	req_one_access = null;
+	req_access_txt = "100"
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/south)
+"cw" = (
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/monsoon)
+"cx" = (
+/obj/structure/desertdam/decals/road_stop{
+	icon_state = "stop_decal5";
+	dir = 1
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/turf/open/floor/asteroid,
+/area/event/dynamic/lit)
+"cy" = (
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/turf/open/gm/coast/beachcorner/south_west,
+/area/varadero/exterior/monsoon)
+"cz" = (
+/obj/structure/prop/rock/brown,
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/farocean)
+"cA" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0";
+	dir = 1
+	},
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit)
+"cB" = (
+/turf/closed/wall/r_wall,
+/area/varadero/interior/maintenance/security/south/hangar)
+"cC" = (
+/obj/structure/largecrate/random,
+/obj/structure/catwalk,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/south/hangar)
+"cD" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/catwalk,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/south/hangar)
+"cE" = (
+/obj/structure/catwalk,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/south/hangar)
+"cF" = (
+/obj/structure/platform_decoration/metal/kutjevo,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	icon_state = "sparsegrass_2"
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/monsoon)
+"cG" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/monsoon)
+"cH" = (
+/turf/open/gm/dirt,
+/area/varadero/exterior/monsoon)
+"cI" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/monsoon)
+"cJ" = (
+/obj/structure/platform_decoration/metal/kutjevo,
+/obj/structure/platform_decoration/metal/kutjevo/north,
+/turf/open/gm/dirt,
+/area/varadero/exterior/monsoon)
+"cK" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/turf/open/gm/coast/south,
+/area/varadero/exterior/monsoon)
+"cL" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/south)
+"cM" = (
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/farocean)
+"cN" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/obj/structure/largecrate/random,
+/obj/structure/catwalk,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/south/hangar)
+"cO" = (
+/obj/structure/prop/rock/brown,
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/farocean)
+"cP" = (
+/obj/structure/closet/secure_closet/engineering_electrical,
+/obj/structure/catwalk,
+/obj/structure/barricade/wooden,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/south/hangar)
+"cQ" = (
+/obj/structure/platform/metal/strata/west,
+/obj/structure/largecrate/random/barrel/green,
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"cR" = (
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/east)
+"cS" = (
+/obj/effect/overlay/palmtree_r{
+	icon_state = "palm2";
+	density = 0
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/monsoon)
+"cT" = (
+/obj/structure/prop/rock/brown,
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/east)
+"cU" = (
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/east)
+"cV" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 4
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/event/dynamic/lit)
+"cW" = (
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/item/device/flashlight/lamp/tripod,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/east)
 "cX" = (
 /obj/structure/barricade/sandbags/wired{
 	icon_state = "sandbag_0";
@@ -793,106 +891,6 @@
 /area/varadero/interior_protected/caves/central)
 "cY" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/exterior/monsoon)
-"cZ" = (
-/obj/structure/platform/metal/kutjevo_smooth/west{
-	climb_delay = 1
-	},
-/obj/structure/prop/rock/brown,
-/turf/open/gm/dirt,
-/area/varadero/exterior/monsoon)
-"da" = (
-/turf/closed/wall/rock/brown,
-/area/varadero/exterior/farocean)
-"db" = (
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice3";
-	pixel_y = -8
-	},
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/maintenance/security/south)
-"dc" = (
-/obj/item/tool/warning_cone,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/exterior/monsoon)
-"dd" = (
-/obj/structure/prop/rock/brown,
-/turf/open/gm/coast/beachcorner/south_west,
-/area/varadero/exterior/monsoon)
-"de" = (
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice2";
-	pixel_y = -8
-	},
-/turf/closed/wall/r_wall,
-/area/varadero/interior/maintenance/security/south)
-"df" = (
-/obj/structure/platform/metal/kutjevo_smooth/east{
-	climb_delay = 1
-	},
-/obj/structure/platform/metal/kutjevo_smooth/west{
-	climb_delay = 1
-	},
-/turf/open/gm/dirt,
-/area/varadero/exterior/monsoon)
-"dg" = (
-/obj/structure/platform/metal/kutjevo_smooth/west{
-	climb_delay = 1
-	},
-/obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/turf/open/gm/coast/beachcorner/south_west,
-/area/varadero/exterior/monsoon)
-"dh" = (
-/obj/structure/prop/rock/brown,
-/obj/structure/blocker/invisible_wall/water,
-/turf/open/gm/river/ocean/deep_ocean,
-/area/varadero/exterior/farocean)
-"di" = (
-/obj/structure/window/framed/colony/reinforced,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	dir = 8
-	},
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/maintenance/security/south/hangar)
-"dj" = (
-/obj/structure/platform_decoration/metal/kutjevo,
-/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
-	icon_state = "sparsegrass_2"
-	},
-/turf/open/gm/dirt,
-/area/varadero/exterior/monsoon)
-"dk" = (
-/obj/structure/platform/metal/kutjevo_smooth{
-	climb_delay = 1
-	},
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/exterior/monsoon)
-"dl" = (
-/obj/structure/platform/metal/kutjevo_smooth{
-	climb_delay = 1
-	},
-/turf/open/gm/dirt,
-/area/varadero/exterior/monsoon)
-"dm" = (
-/obj/structure/platform_decoration/metal/kutjevo,
-/obj/structure/platform_decoration/metal/kutjevo/north,
-/turf/open/gm/dirt,
-/area/varadero/exterior/monsoon)
-"dn" = (
-/obj/structure/platform/metal/kutjevo_smooth{
-	climb_delay = 1
-	},
-/turf/open/gm/coast/south,
-/area/varadero/exterior/monsoon)
-"do" = (
-/obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/obj/structure/blocker/invisible_wall/water,
-/turf/open/gm/river/shallow_ocean_shallow_ocean,
-/area/varadero/exterior/farocean)
-"dp" = (
-/obj/effect/decal/cleanable/dirt,
 /obj/item/prop/colony/used_flare{
 	pixel_x = -11;
 	pixel_y = 2
@@ -900,44 +898,44 @@
 /obj/structure/flora/wood/stick4,
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
-"dq" = (
-/obj/structure/prop/dam/crane/damaged,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/exterior/farocean)
-"dr" = (
+"cZ" = (
 /obj/effect/overlay/palmtree_r{
 	density = 0
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/monsoon)
+"da" = (
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/turf/open/floor/plating/bare_catwalk,
+/area/varadero/exterior/monsoon)
+"db" = (
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/turf/open/floor/plating/bare_catwalk,
+/area/varadero/exterior/monsoon)
+"dq" = (
+/obj/structure/prop/dam/crane/damaged,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/farocean)
 "ds" = (
 /obj/structure/platform/metal/strata/west,
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/auto_turf/sand_white/layer1,
 /area/event/dynamic/lit)
-"dt" = (
-/obj/structure/platform/metal/kutjevo_smooth/west{
-	climb_delay = 1
-	},
-/obj/structure/platform/metal/kutjevo_smooth/east{
-	climb_delay = 1
-	},
-/turf/open/floor/plating/bare_catwalk,
-/area/varadero/exterior/monsoon)
 "du" = (
 /turf/closed/shuttle/ert{
 	icon_state = "upp1"
 	},
 /area/event/metal/dynamic)
-"dv" = (
-/obj/structure/platform/metal/kutjevo_smooth/east{
-	climb_delay = 1
-	},
-/obj/structure/platform/metal/kutjevo_smooth/west{
-	climb_delay = 1
-	},
-/turf/open/floor/plating/bare_catwalk,
-/area/varadero/exterior/monsoon)
 "dG" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/coast/beachcorner2/south_west,
@@ -1013,7 +1011,7 @@
 /turf/open/floor/plating/bare_catwalk,
 /area/varadero/exterior/farocean)
 "ev" = (
-/turf/open/gm/dirt/dark_brown,
+/turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/maintenance/south)
 "eQ" = (
 /obj/effect/decal/warning_stripes{
@@ -1500,7 +1498,6 @@
 /area/event/metal/dynamic/lit)
 "mQ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/maintenance/south)
 "mR" = (
@@ -1995,7 +1992,6 @@
 /area/event/metal/dynamic/lit)
 "wt" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/caves/east)
 "wz" = (
@@ -2046,13 +2042,8 @@
 /area/varadero/exterior/monsoon)
 "xz" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/barricade/handrail/wire,
-/obj/structure/machinery/storm_siren{
-	dir = 4;
-	pixel_x = -3
-	},
 /turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/caves/east)
+/area/varadero/interior/maintenance/security/south)
 "xP" = (
 /turf/closed/wall/r_wall,
 /area/varadero/interior/caves/east)
@@ -2298,9 +2289,6 @@
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/coast/beachcorner/south_west,
 /area/varadero/exterior/farocean)
-"Ed" = (
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior_protected/maintenance/south)
 "Em" = (
 /obj/structure/sign/flag/upp{
 	dir = 1;
@@ -2313,6 +2301,14 @@
 /obj/structure/prop/rock/brown,
 /turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/farocean)
+"Ep" = (
+/obj/structure/window/framed/colony/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa{
+	name = "\improper shutters";
+	dir = 8
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/south/hangar)
 "Er" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -3403,6 +3399,10 @@
 	},
 /turf/open/floor/asteroid,
 /area/varadero/interior_protected/caves/central)
+"ZI" = (
+/obj/item/tool/pickaxe,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/east)
 "ZS" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -3420,34 +3420,34 @@
 VX
 SV
 SV
-bV
-cL
 cp
+cL
 bC
+bA
 XC
-co
+wt
 VX
-ck
+aN
 aO
 aO
 aO
 MG
 aO
-ck
+aN
 aO
 MG
 aO
 aO
 aO
-ck
+aN
 HU
 hD
-ev
+aH
 HJ
 HJ
 HH
 ar
-aN
+aC
 ar
 VX
 HH
@@ -3477,29 +3477,29 @@ VX
 VX
 SV
 aj
-bV
+cp
 Qa
-bJ
-bD
+xz
+bB
 bu
-cl
-cl
-cl
-cl
-cl
-cl
+be
+be
+be
+be
+be
+be
 aq
-cl
+be
 qd
-cl
+be
 aq
 ht
-xz
-bd
+aY
 mQ
+aP
 Np
+aH
 ev
-Ed
 kF
 ar
 tM
@@ -3534,10 +3534,10 @@ VX
 VX
 SV
 Rc
-bV
+cp
 cL
 pJ
-cp
+bC
 bx
 Rg
 Hc
@@ -3556,7 +3556,7 @@ hD
 iF
 Wh
 Og
-cj
+aI
 kF
 kF
 ar
@@ -3591,29 +3591,29 @@ VX
 VX
 SV
 SV
-bV
+cp
 cL
 Ma
-cp
+bC
 MS
 Rg
 Rg
 Rg
-bE
+bm
 EM
 Rg
 Rg
 Rg
 Pg
-bl
+bh
 Hc
 Rg
 Rg
 hD
-aU
+aR
 hD
 hD
-ev
+aH
 ar
 kF
 ar
@@ -3648,7 +3648,7 @@ VX
 VX
 VX
 SV
-bW
+cq
 cL
 pJ
 xP
@@ -3667,7 +3667,7 @@ VX
 bv
 bv
 bv
-aV
+aS
 HH
 HH
 VX
@@ -3734,7 +3734,7 @@ ar
 ar
 HH
 ar
-aA
+aD
 ar
 HH
 YQ
@@ -3816,23 +3816,23 @@ VX
 VX
 "}
 (8,1,1) = {"
-bY
-bY
-de
-db
-cM
 cB
+cB
+cu
+cr
+cc
+bP
 xP
 VX
 Wk
 EM
 Of
-wt
+bn
 VX
 EM
 EM
 EM
-bm
+bi
 EM
 VL
 HH
@@ -3843,7 +3843,7 @@ HJ
 HJ
 HJ
 HJ
-aR
+aE
 HH
 HH
 ar
@@ -3873,13 +3873,13 @@ VX
 VX
 "}
 (9,1,1) = {"
-cc
-bZ
+cN
+cC
 SV
 pJ
-bR
+cd
 uf
-bE
+bm
 EM
 EM
 EM
@@ -3931,13 +3931,13 @@ VX
 "}
 (10,1,1) = {"
 Iv
-ca
-bX
-bJ
+cD
+cv
+xz
 YI
 uf
 EM
-wt
+bn
 EM
 EM
 bp
@@ -3956,7 +3956,7 @@ ag
 ar
 VX
 ar
-aS
+aG
 HH
 ar
 HJ
@@ -3987,29 +3987,29 @@ VX
 VX
 "}
 (11,1,1) = {"
-cd
-cb
+cP
+cE
 SV
 pJ
-cp
-bM
+bC
+bQ
 EM
 EM
 EM
 EM
 EM
 EM
-bn
-VX
-VX
-VX
-VX
-VX
 bk
+VX
+VX
+VX
+VX
+VX
+bd
 ar
 HJ
 ae
-aX
+aT
 VX
 VX
 ar
@@ -4020,7 +4020,7 @@ HJ
 bN
 VX
 ar
-aI
+az
 ap
 kF
 fe
@@ -4044,8 +4044,8 @@ CT
 CT
 "}
 (12,1,1) = {"
-di
-di
+Ep
+Ep
 SV
 EM
 EM
@@ -4063,11 +4063,11 @@ VX
 VX
 VX
 VX
-bj
+bc
 HJ
-aT
+aJ
 ac
-aT
+aJ
 ae
 HJ
 HH
@@ -4078,7 +4078,7 @@ HJ
 HJ
 ag
 ap
-aI
+az
 kF
 kF
 kF
@@ -4101,7 +4101,7 @@ Sz
 aa
 "}
 (13,1,1) = {"
-ce
+cR
 EM
 nx
 EM
@@ -4121,9 +4121,9 @@ VX
 VX
 VX
 VX
-bh
+ba
 am
-aY
+aU
 ae
 ar
 HH
@@ -4158,8 +4158,8 @@ Pi
 aa
 "}
 (14,1,1) = {"
-ce
-bP
+cR
+bR
 EM
 EM
 EM
@@ -4179,7 +4179,7 @@ VX
 VX
 VX
 VX
-be
+aX
 HJ
 JT
 HJ
@@ -4215,7 +4215,7 @@ zS
 aa
 "}
 (15,1,1) = {"
-cf
+cT
 EM
 EM
 EM
@@ -4248,7 +4248,7 @@ HJ
 ar
 ar
 ar
-aN
+aC
 HH
 HH
 HH
@@ -4329,12 +4329,12 @@ VX
 VX
 "}
 (17,1,1) = {"
-cg
+cU
 EM
 EM
-wt
+bn
 Wk
-bP
+bR
 Wk
 EM
 bt
@@ -4386,14 +4386,14 @@ VX
 VX
 "}
 (18,1,1) = {"
+cR
+EM
+EM
+EM
 ce
 EM
 EM
-EM
-bU
-EM
-EM
-bA
+ZI
 VX
 VX
 VX
@@ -4406,7 +4406,7 @@ VX
 VX
 VX
 HJ
-bi
+bb
 HH
 av
 HH
@@ -4443,14 +4443,14 @@ VX
 VX
 "}
 (19,1,1) = {"
-ch
+cW
 Mk
-bP
+bR
 EM
 EM
 EM
 EM
-bB
+bz
 VX
 VX
 VX
@@ -4465,7 +4465,7 @@ ty
 JT
 HJ
 ar
-bc
+aV
 HH
 ai
 VX
@@ -4477,7 +4477,7 @@ HJ
 HH
 oD
 HJ
-aJ
+aA
 ty
 VX
 VX
@@ -4500,10 +4500,10 @@ VX
 VX
 "}
 (20,1,1) = {"
-ce
+cR
 VX
 VX
-bB
+bz
 EM
 Wk
 EM
@@ -4562,7 +4562,7 @@ VX
 VX
 VX
 Wk
-bQ
+bS
 VX
 VX
 VX
@@ -4641,7 +4641,7 @@ yW
 BQ
 Xy
 Xy
-az
+aF
 Xy
 TT
 yW
@@ -5076,7 +5076,7 @@ cH
 ms
 TF
 cH
-cq
+bD
 TF
 yW
 gj
@@ -5184,9 +5184,9 @@ VX
 VX
 "}
 (32,1,1) = {"
-dp
-Bq
 cY
+Bq
+cm
 Sn
 cH
 cH
@@ -5247,7 +5247,7 @@ Sn
 Sn
 TF
 TF
-cr
+bE
 cH
 yW
 yW
@@ -5299,12 +5299,12 @@ VX
 "}
 (34,1,1) = {"
 pu
-cY
+cm
 Sn
 Sn
 TF
-cC
-cs
+bU
+bF
 cH
 VX
 RF
@@ -5357,8 +5357,8 @@ VX
 (35,1,1) = {"
 Xs
 Sn
-cY
-dc
+cm
+cs
 VX
 VX
 VX
@@ -5414,8 +5414,8 @@ VX
 (36,1,1) = {"
 Pn
 XM
-cY
-cY
+cm
+cm
 TF
 VX
 VX
@@ -5472,7 +5472,7 @@ VX
 EE
 cH
 Sn
-cY
+cm
 qv
 VX
 VX
@@ -5483,7 +5483,7 @@ VX
 CT
 NN
 NI
-cm
+bj
 VX
 VX
 VX
@@ -5526,11 +5526,11 @@ VX
 VX
 "}
 (38,1,1) = {"
-dr
+cZ
 qv
 Sn
-cY
-cN
+cm
+cf
 VX
 VX
 VX
@@ -5584,12 +5584,12 @@ VX
 "}
 (39,1,1) = {"
 cH
-dj
+cF
 Sn
 Sn
-cP
-cD
-ct
+cg
+bV
+bG
 VX
 VX
 VX
@@ -5640,13 +5640,13 @@ VX
 VX
 "}
 (40,1,1) = {"
-dt
-dk
-cE
-cF
-cR
-cE
-cu
+da
+cG
+bW
+bX
+ch
+bW
+bH
 VX
 VX
 VX
@@ -5698,12 +5698,12 @@ VX
 "}
 (41,1,1) = {"
 TF
-dl
-cF
-cU
-cT
-cF
-cv
+cI
+bX
+ck
+cj
+bX
+bI
 VX
 VX
 VX
@@ -5755,12 +5755,12 @@ VX
 "}
 (42,1,1) = {"
 TF
-dl
-cF
-cU
-cU
-cF
-cw
+cI
+bX
+ck
+ck
+bX
+bJ
 VX
 VX
 VX
@@ -5811,13 +5811,13 @@ VX
 VX
 "}
 (43,1,1) = {"
-dv
-dk
-cE
-cF
-cF
-cE
-cy
+db
+cG
+bW
+bX
+bX
+bW
+bK
 VX
 VX
 VX
@@ -5869,12 +5869,12 @@ VX
 "}
 (44,1,1) = {"
 bL
-dm
-df
-cF
-cW
-cG
-cz
+cJ
+cw
+bX
+cl
+bY
+bM
 VX
 VX
 VX
@@ -5927,10 +5927,10 @@ VX
 (45,1,1) = {"
 um
 xl
-cY
-cY
-cY
-cI
+cm
+cm
+cm
+bZ
 VX
 VX
 VX
@@ -5983,11 +5983,11 @@ VX
 "}
 (46,1,1) = {"
 Du
-dn
+cK
 Sn
-cU
+ck
 Sn
-cJ
+ca
 VX
 VX
 VX
@@ -6040,11 +6040,11 @@ VX
 "}
 (47,1,1) = {"
 Du
-dn
+cK
 Sn
 Sn
 Sn
-cI
+bZ
 VX
 VX
 VX
@@ -6098,10 +6098,10 @@ VX
 (48,1,1) = {"
 mR
 WS
-dg
+cy
 ip
-cZ
-cK
+cn
+cb
 VX
 VX
 VX
@@ -6156,7 +6156,7 @@ VX
 KE
 IL
 dG
-dd
+ct
 qv
 VX
 VX
@@ -6211,10 +6211,10 @@ VX
 "}
 (50,1,1) = {"
 tU
-do
-dh
+cM
+cz
 Js
-da
+co
 VX
 VX
 VX
@@ -7637,7 +7637,7 @@ VX
 (75,1,1) = {"
 pV
 dH
-da
+co
 dH
 pV
 dH
@@ -7695,16 +7695,16 @@ VX
 ix
 VX
 VX
-cn
-cn
-cn
+bl
+bl
+bl
 ix
-cn
-cn
-cn
-cn
-cn
-cn
+bl
+bl
+bl
+bl
+bl
+bl
 oY
 VX
 VX
@@ -7751,17 +7751,17 @@ VX
 (77,1,1) = {"
 ix
 ix
-cn
-cn
+bl
+bl
 VX
 VX
 VX
 VX
-cn
-cn
-cn
-cn
-cn
+bl
+bl
+bl
+bl
+bl
 oY
 VX
 VX
@@ -7809,16 +7809,16 @@ VX
 ix
 ix
 ix
-cn
-cn
+bl
+bl
 VX
 VX
 VX
 VX
-cn
-cn
-cn
-cn
+bl
+bl
+bl
+bl
 oY
 VX
 VX
@@ -7866,15 +7866,15 @@ VX
 ix
 ix
 ix
-cn
+bl
 ix
-cn
-cn
+bl
+bl
 VX
 VX
-cn
-cn
-cn
+bl
+bl
+bl
 ix
 VX
 VX
@@ -7922,15 +7922,15 @@ VX
 (80,1,1) = {"
 ix
 ix
-cn
-cn
+bl
+bl
 ix
 ix
-cn
-cn
-cn
-cn
-cn
+bl
+bl
+bl
+bl
+bl
 VX
 VX
 VX

@@ -42,6 +42,7 @@
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
 "ah" = (
+/obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/hybrisa/hospital/hospitaldivider{
 	layer = 3.8;
 	pixel_y = 5
@@ -386,7 +387,6 @@
 /turf/open/floor/shiva/wredfull,
 /area/template_noop)
 "be" = (
-/obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/hybrisa/hospital/hospitaldivider{
 	layer = 3.8;
 	pixel_y = 5
@@ -2543,7 +2543,7 @@ MM
 kX
 KT
 Xk
-be
+ah
 TP
 aS
 aM
@@ -2563,7 +2563,7 @@ UZ
 am
 BS
 aj
-ah
+be
 QD
 aT
 vn

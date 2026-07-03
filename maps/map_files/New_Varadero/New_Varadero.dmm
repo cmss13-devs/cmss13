@@ -6878,11 +6878,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
 "auN" = (
-/turf/open/gm/river/shallow_ocean_shallow_ocean{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi';
-	icon_state = "shallow";
-	color = null
-	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean/fuelspill,
 /area/varadero/exterior/farocean)
 "auO" = (
 /obj/structure/prop/structure_lattice{
@@ -7022,11 +7018,7 @@
 /turf/open/gm/dirt,
 /area/varadero/interior_protected/caves/digsite)
 "avf" = (
-/turf/open/gm/river/shallow_ocean_shallow_ocean{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi';
-	icon_state = "deep";
-	color = null
-	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean/fuelspill/deep,
 /area/varadero/exterior/farocean)
 "avg" = (
 /obj/structure/prop/colorable_rock/colorable{
@@ -7969,6 +7961,10 @@
 /obj/structure/prop/hybrisa/vehicles/Mining_Crawlers,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/caves/east)
+"axW" = (
+/turf/open/gm/river/shallow_ocean_shallow_ocean/fuelspill,
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/farocean)
 "axX" = (
 /turf/open/floor/corsat/brown/northwest,
 /area/varadero/interior_protected/caves/digsite)
@@ -8148,11 +8144,7 @@
 	desc = "A supportive lattice connected to two floating pontoons.";
 	density = 0
 	},
-/turf/open/gm/river/shallow_ocean_shallow_ocean{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi';
-	icon_state = "deep";
-	color = null
-	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean/fuelspill/deep,
 /area/varadero/exterior/farocean)
 "ayB" = (
 /obj/structure/platform_decoration/stone/soro/north,
@@ -10759,11 +10751,7 @@
 /obj/structure/platform/metal/kutjevo_smooth{
 	climb_delay = 1
 	},
-/turf/open/gm/river/shallow_ocean_shallow_ocean{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi';
-	icon_state = "shallow";
-	color = null
-	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean/fuelspill,
 /area/varadero/exterior/farocean)
 "aFD" = (
 /obj/effect/decal/warning_stripes/asteroid{
@@ -12980,6 +12968,10 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/south/hangar)
+"aLg" = (
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/farocean)
 "aLh" = (
 /obj/structure/noticeboard,
 /turf/closed/wall/r_wall,
@@ -15030,25 +15022,19 @@
 	pixel_x = 0;
 	pixel_y = -5
 	},
-/turf/open/gm/river/desert/deep/no_slowdown{
-	name = "water"
-	},
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/exterior/monsoon)
 "aQA" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 8
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate2,
-/turf/open/gm/river/desert/deep/no_slowdown{
-	name = "water"
-	},
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/interior/maintenance/security/south)
 "aQB" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/river/desert/deep/no_slowdown{
-	name = "water"
-	},
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/interior/maintenance/security/south)
 "aQC" = (
 /turf/closed/wall,
@@ -15997,9 +15983,7 @@
 	pixel_x = 0;
 	pixel_y = -5
 	},
-/turf/open/gm/river/desert/deep/no_slowdown{
-	name = "water"
-	},
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/exterior/monsoon)
 "aTf" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2,
@@ -16009,9 +15993,7 @@
 	pixel_x = 16;
 	pixel_y = 24
 	},
-/turf/open/gm/river/desert/deep/no_slowdown{
-	name = "water"
-	},
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/interior/maintenance/security/south)
 "aTg" = (
 /obj/effect/decal/cleanable/blood/xeno{
@@ -16262,9 +16244,7 @@
 	pixel_x = 0;
 	pixel_y = -5
 	},
-/turf/open/gm/river/desert/deep/no_slowdown{
-	name = "water"
-	},
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/exterior/monsoon)
 "aTM" = (
 /obj/structure/barricade/handrail/wire{
@@ -16276,9 +16256,7 @@
 	pixel_x = 16;
 	pixel_y = -8
 	},
-/turf/open/gm/river/desert/deep/no_slowdown{
-	name = "water"
-	},
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/interior/maintenance/security/south)
 "aTN" = (
 /obj/effect/decal/cleanable/dirt,
@@ -16469,6 +16447,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/security)
+"aUq" = (
+/turf/open/gm/river/ocean/deep_ocean,
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/farocean)
 "aUr" = (
 /obj/structure/fence/slim/door,
 /obj/structure/catwalk,
@@ -16500,9 +16482,7 @@
 	pixel_x = 0;
 	pixel_y = -5
 	},
-/turf/open/gm/river/desert/deep/no_slowdown{
-	name = "water"
-	},
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/exterior/monsoon)
 "aUu" = (
 /obj/effect/decal/cleanable/dirt,
@@ -16866,11 +16846,7 @@
 /obj/structure/prop/invuln/fire{
 	light_color = "#FF7700"
 	},
-/turf/open/gm/river/shallow_ocean_shallow_ocean{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi';
-	icon_state = "deep";
-	color = null
-	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean/fuelspill/deep,
 /area/varadero/exterior/farocean)
 "aVA" = (
 /obj/structure/prop/rock/brown,
@@ -17259,6 +17235,10 @@
 	},
 /turf/open/floor/shiva/north,
 /area/varadero/interior/research)
+"aWz" = (
+/turf/open/gm/river/shallow_ocean_shallow_ocean/fuelspill,
+/turf/open/gm/river/shallow_ocean_shallow_ocean/fuelspill/deep,
+/area/varadero/exterior/farocean)
 "aWA" = (
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/shiva/purple/east,
@@ -17564,9 +17544,7 @@
 /obj/structure/catwalk,
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/gm/river/desert/deep/no_slowdown{
-	name = "water"
-	},
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/interior/maintenance/north)
 "aXu" = (
 /obj/effect/decal/cleanable/dirt,
@@ -17918,32 +17896,20 @@
 /area/varadero/exterior/eastocean)
 "aYv" = (
 /obj/structure/blocker/invisible_wall/water,
-/turf/open/gm/river/shallow_ocean_shallow_ocean{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi';
-	icon_state = "shallow";
-	color = null
-	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean/fuelspill,
 /area/varadero/exterior/farocean)
 "aYw" = (
 /obj/structure/blocker/invisible_wall/water,
 /obj/item/lightstick/variant/planted,
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/turf/open/gm/river/shallow_ocean_shallow_ocean{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi';
-	icon_state = "shallow";
-	color = null
-	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean/fuelspill,
 /area/varadero/exterior/farocean)
 "aYx" = (
 /obj/structure/blocker/invisible_wall/water,
 /obj/structure/prop/invuln/fire{
 	light_color = "#FF7700"
 	},
-/turf/open/gm/river/shallow_ocean_shallow_ocean{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi';
-	icon_state = "shallow";
-	color = null
-	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean/fuelspill,
 /area/varadero/exterior/farocean)
 "aYy" = (
 /obj/structure/window/framed/colony/reinforced,
@@ -18226,19 +18192,11 @@
 /obj/structure/prop/invuln/fire{
 	light_color = "#FF7700"
 	},
-/turf/open/gm/river/shallow_ocean_shallow_ocean{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi';
-	icon_state = "deep";
-	color = null
-	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean/fuelspill/deep,
 /area/varadero/exterior/farocean)
 "aZs" = (
 /obj/item/stack/sheet/metal,
-/turf/open/gm/river/shallow_ocean_shallow_ocean{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi';
-	icon_state = "shallow";
-	color = null
-	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean/fuelspill,
 /area/varadero/exterior/farocean)
 "aZt" = (
 /obj/structure/prop/structure_lattice{
@@ -19008,11 +18966,7 @@
 /area/varadero/exterior/farocean)
 "bbD" = (
 /obj/structure/girder/reinforced,
-/turf/open/gm/river/shallow_ocean_shallow_ocean{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi';
-	icon_state = "shallow";
-	color = null
-	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean/fuelspill,
 /area/varadero/exterior/farocean)
 "bbE" = (
 /obj/effect/decal/cleanable/dirt,
@@ -19381,21 +19335,13 @@
 /obj/item/stack/rods{
 	amount = 5
 	},
-/turf/open/gm/river/shallow_ocean_shallow_ocean{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi';
-	icon_state = "shallow";
-	color = null
-	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean/fuelspill,
 /area/varadero/exterior/farocean)
 "bcK" = (
 /obj/item/trash/falcon_drone{
 	desc = "The wreckage of some alien drone..."
 	},
-/turf/open/gm/river/shallow_ocean_shallow_ocean{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi';
-	icon_state = "shallow";
-	color = null
-	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean/fuelspill,
 /area/varadero/exterior/farocean)
 "bcL" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
@@ -19759,11 +19705,7 @@
 /area/varadero/exterior/farocean)
 "bdM" = (
 /obj/structure/girder/reinforced,
-/turf/open/gm/river/shallow_ocean_shallow_ocean{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi';
-	icon_state = "deep";
-	color = null
-	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean/fuelspill/deep,
 /area/varadero/exterior/farocean)
 "bdN" = (
 /obj/effect/decal/cleanable/dirt,
@@ -20141,11 +20083,7 @@
 /area/varadero/exterior/monsoon)
 "beJ" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_4,
-/turf/open/gm/river/shallow_ocean_shallow_ocean{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi';
-	icon_state = "shallow";
-	color = null
-	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean/fuelspill,
 /area/varadero/exterior/eastocean)
 "beK" = (
 /turf/open/gm/coast/beachcorner/north_east,
@@ -20463,18 +20401,10 @@
 /turf/closed/wall/huntership,
 /area/varadero/exterior/farocean)
 "bfE" = (
-/turf/open/gm/river/shallow_ocean_shallow_ocean{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi';
-	icon_state = "deep";
-	color = null
-	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean/fuelspill/deep,
 /area/varadero/exterior/eastocean)
 "bfF" = (
-/turf/open/gm/river/shallow_ocean_shallow_ocean{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi';
-	icon_state = "shallow";
-	color = null
-	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean/fuelspill,
 /area/varadero/exterior/eastocean)
 "bfG" = (
 /turf/open/gm/coast/beachcorner2/south_east,
@@ -20499,11 +20429,7 @@
 /area/varadero/exterior/farocean)
 "bfJ" = (
 /obj/item/stack/sheet/metal,
-/turf/open/gm/river/shallow_ocean_shallow_ocean{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi';
-	icon_state = "deep";
-	color = null
-	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean/fuelspill/deep,
 /area/varadero/exterior/farocean)
 "bfK" = (
 /obj/effect/decal/cleanable/dirt,
@@ -20818,11 +20744,7 @@
 	light_color = "#FF7700"
 	},
 /obj/structure/girder/reinforced,
-/turf/open/gm/river/shallow_ocean_shallow_ocean{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi';
-	icon_state = "deep";
-	color = null
-	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean/fuelspill/deep,
 /area/varadero/exterior/farocean)
 "bgz" = (
 /obj/structure/prop/invuln/lattice_prop{
@@ -21083,11 +21005,7 @@
 /area/varadero/exterior/monsoon)
 "bhk" = (
 /obj/item/stack/sheet/metal/small_stack,
-/turf/open/gm/river/shallow_ocean_shallow_ocean{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi';
-	icon_state = "deep";
-	color = null
-	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean/fuelspill/deep,
 /area/varadero/exterior/eastocean)
 "bhl" = (
 /obj/structure/prop/ice_colony/dense/planter_box/hydro{
@@ -21313,11 +21231,7 @@
 /area/varadero/exterior/eastocean)
 "bhR" = (
 /obj/structure/prop/rock/brown,
-/turf/open/gm/river/shallow_ocean_shallow_ocean{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi';
-	icon_state = "deep";
-	color = null
-	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean/fuelspill/deep,
 /area/varadero/exterior/eastocean)
 "bhS" = (
 /obj/structure/prop/ice_colony/ground_wire{
@@ -21625,11 +21539,7 @@
 /obj/structure/prop/invuln/fire{
 	light_color = "#FF7700"
 	},
-/turf/open/gm/river/shallow_ocean_shallow_ocean{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi';
-	icon_state = "deep";
-	color = null
-	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean/fuelspill/deep,
 /area/varadero/exterior/farocean)
 "biK" = (
 /obj/effect/decal/cleanable/dirt,
@@ -22000,11 +21910,7 @@
 /area/varadero/exterior/eastocean)
 "bjO" = (
 /obj/item/stack/barbed_wire,
-/turf/open/gm/river/shallow_ocean_shallow_ocean{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi';
-	icon_state = "shallow";
-	color = null
-	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean/fuelspill,
 /area/varadero/exterior/eastocean)
 "bjP" = (
 /obj/structure/filingcabinet,
@@ -22842,11 +22748,7 @@
 /obj/structure/prop/invuln/fire{
 	light_color = "#FF7700"
 	},
-/turf/open/gm/river/shallow_ocean_shallow_ocean{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi';
-	icon_state = "deep";
-	color = null
-	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean/fuelspill/deep,
 /area/varadero/exterior/farocean)
 "bmk" = (
 /obj/structure/prop/invuln/lattice_prop{
@@ -23040,11 +22942,7 @@
 /obj/structure/showcase/yautja/alt{
 	plane = -7
 	},
-/turf/open/gm/river/shallow_ocean_shallow_ocean{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi';
-	icon_state = "deep";
-	color = null
-	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean/fuelspill/deep,
 /area/varadero/exterior/farocean)
 "bmP" = (
 /obj/effect/decal/cleanable/dirt,
@@ -23654,11 +23552,7 @@
 /obj/structure/prop/invuln/fire{
 	light_color = "#FF7700"
 	},
-/turf/open/gm/river/shallow_ocean_shallow_ocean{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi';
-	icon_state = "deep";
-	color = null
-	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean/fuelspill/deep,
 /area/varadero/exterior/farocean)
 "bop" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
@@ -24178,11 +24072,7 @@
 /obj/structure/prop/invuln/fire{
 	light_color = "#FF7700"
 	},
-/turf/open/gm/river/shallow_ocean_shallow_ocean{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi';
-	icon_state = "deep";
-	color = null
-	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean/fuelspill/deep,
 /area/varadero/exterior/farocean)
 "bpN" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -25132,11 +25022,7 @@
 /area/varadero/exterior/monsoon)
 "bsp" = (
 /obj/item/toy/plush/yautja,
-/turf/open/gm/river/shallow_ocean_shallow_ocean{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi';
-	icon_state = "deep";
-	color = null
-	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean/fuelspill/deep,
 /area/varadero/exterior/farocean)
 "bsq" = (
 /obj/effect/decal/cleanable/dirt,
@@ -29773,9 +29659,7 @@
 "bEC" = (
 /obj/structure/catwalk,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/gm/river/desert/deep/no_slowdown{
-	name = "water"
-	},
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/interior/maintenance/north)
 "bED" = (
 /obj/effect/decal/warning_stripes/asteroid{
@@ -31562,17 +31446,13 @@
 	density = 0;
 	layer = 2.1
 	},
-/turf/open/gm/river/desert/deep/no_slowdown{
-	name = "water"
-	},
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/interior/maintenance/north)
 "bJq" = (
 /obj/structure/catwalk,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/gm/river/desert/deep/no_slowdown{
-	name = "water"
-	},
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/interior/maintenance/north)
 "bJr" = (
 /obj/effect/decal/cleanable/dirt,
@@ -32811,9 +32691,7 @@
 /obj/effect/spawner/random/toolbox,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/hybrisa/street/sidewalkcorner{
-	dir = 1
-	},
+/turf/open/hybrisa/street/sidewalkfull,
 /area/varadero/exterior/comms4)
 "bMx" = (
 /obj/structure/largecrate/random/case/double,
@@ -32823,7 +32701,7 @@
 /obj/item/ammo_box/magazine/mk1/ap/empty,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/hybrisa/street/sidewalkcorner,
+/turf/open/hybrisa/street/sidewalkfull,
 /area/varadero/exterior/comms4)
 "bMz" = (
 /obj/effect/spawner/gibspawner/xeno,
@@ -32871,12 +32749,6 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/gm/road,
 /area/varadero/interior/cargo)
-"bMH" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/hybrisa/street/sidewalkcorner{
-	dir = 1
-	},
-/area/varadero/exterior/comms4)
 "bMI" = (
 /obj/structure/platform/metal/kutjevo_smooth/east{
 	climb_delay = 1
@@ -34045,9 +33917,7 @@
 /obj/structure/catwalk,
 /obj/item/small_shards,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/gm/river/desert/deep/no_slowdown{
-	name = "water"
-	},
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/interior/maintenance/north)
 "bPz" = (
 /obj/effect/decal/warning_stripes/asteroid{
@@ -34297,9 +34167,7 @@
 "bQa" = (
 /obj/structure/catwalk,
 /obj/structure/largecrate/random,
-/turf/open/gm/river/desert/deep/no_slowdown{
-	name = "water"
-	},
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/interior/maintenance/north)
 "bQb" = (
 /obj/effect/decal/cleanable/dirt,
@@ -35565,7 +35433,7 @@
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/storage/box/bodybags,
-/turf/open/hybrisa/street/sidewalk,
+/turf/open/hybrisa/street/sidewalkfull,
 /area/varadero/exterior/comms4)
 "bTl" = (
 /obj/effect/spawner/random/pills/lowchance,
@@ -35668,9 +35536,7 @@
 /obj/structure/catwalk{
 	layer = 3
 	},
-/turf/open/gm/river/desert/deep/no_slowdown{
-	name = "water"
-	},
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/interior/maintenance/north)
 "bTz" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -36296,10 +36162,7 @@
 /obj/effect/decal/cleanable/blood/splatter{
 	icon_state = "mfloor4"
 	},
-/turf/open/gm/dirt{
-	pixel_x = 0;
-	pixel_y = 0
-	},
+/turf/open/gm/dirt,
 /area/varadero/exterior/pontoon_beach)
 "bVm" = (
 /obj/structure/flora/wood/stick1,
@@ -38294,9 +38157,7 @@
 	layer = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/hybrisa/street/sidewalkcorner{
-	dir = 4
-	},
+/turf/open/hybrisa/street/sidewalkfull,
 /area/varadero/exterior/comms4)
 "caB" = (
 /obj/effect/decal/cleanable/dirt,
@@ -38346,9 +38207,7 @@
 	icon_state = "mfloor6"
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/hybrisa/street/sidewalkcorner{
-	dir = 8
-	},
+/turf/open/hybrisa/street/sidewalkfull,
 /area/varadero/exterior/comms4)
 "caI" = (
 /obj/effect/decal/cleanable/dirt,
@@ -42592,7 +42451,7 @@
 	pixel_y = 1
 	},
 /obj/effect/decal/cleanable/blood/oil/streak,
-/turf/open/floor/plating/panelscorched,
+/turf/open/floor/plating/platingdmg3,
 /area/varadero/interior/beach_bar)
 "clq" = (
 /turf/open/floor/asteroidwarning/northwest,
@@ -43875,9 +43734,7 @@
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
 	color = "#C6D3D1"
 	},
-/turf/open/floor/plating/platingdmg3{
-	color = "#9EA8A6"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/varadero/exterior/pontoon_beach)
 "coy" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -44286,9 +44143,7 @@
 	amount = 5
 	},
 /obj/effect/decal/cleanable/blood/oil/streak,
-/turf/open/floor/plating/platingdmg3{
-	color = "#9EA8A6"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/varadero/exterior/pontoon_beach)
 "cpx" = (
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
@@ -44298,9 +44153,7 @@
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
 	color = "#C6D3D1"
 	},
-/turf/open/floor/plating/platingdmg3{
-	color = "#9EA8A6"
-	},
+/turf/open/floor/plating/platingdmg3,
 /area/varadero/exterior/pontoon_beach)
 "cpy" = (
 /obj/effect/decal/cleanable/dirt,
@@ -51328,11 +51181,7 @@
 	desc = "A supportive lattice connected to two floating pontoons.";
 	density = 0
 	},
-/turf/open/gm/river/shallow_ocean_shallow_ocean{
-	icon = 'icons/turf/floors/desert_water_toxic.dmi';
-	icon_state = "shallow";
-	color = null
-	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean/fuelspill,
 /area/varadero/exterior/farocean)
 "eXO" = (
 /obj/structure/platform/metal/kutjevo_smooth/north{
@@ -51906,9 +51755,7 @@
 	layer = 3
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/gm/river/desert/deep/no_slowdown{
-	name = "water"
-	},
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/interior/maintenance/north)
 "fqY" = (
 /obj/structure/disposalpipe/segment{
@@ -52043,9 +51890,7 @@
 	layer = 3.01
 	},
 /obj/structure/catwalk,
-/turf/open/gm/river/desert/deep/no_slowdown{
-	name = "water"
-	},
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/interior/maintenance/north)
 "fyH" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -58940,9 +58785,7 @@
 	pixel_x = 0;
 	pixel_y = -5
 	},
-/turf/open/gm/river/desert/deep/no_slowdown{
-	name = "water"
-	},
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/exterior/monsoon)
 "ldJ" = (
 /obj/structure/machinery/power/apc/no_power/north,
@@ -59056,9 +58899,7 @@
 /area/varadero/interior/security)
 "liM" = (
 /obj/structure/pipes/binary/passive_gate,
-/turf/open/gm/river/desert/deep/no_slowdown{
-	name = "water"
-	},
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/interior/maintenance/north)
 "liN" = (
 /obj/effect/decal/cleanable/dirt,
@@ -64635,9 +64476,7 @@
 /obj/structure/barricade/handrail/wire{
 	layer = 3.01
 	},
-/turf/open/gm/river/desert/deep/no_slowdown{
-	name = "water"
-	},
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/interior/maintenance/north)
 "pNk" = (
 /obj/effect/decal/remains/human{
@@ -68238,9 +68077,7 @@
 	layer = 3
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/gm/river/desert/deep/no_slowdown{
-	name = "water"
-	},
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/interior/maintenance/north)
 "ssW" = (
 /turf/open/slippery/hull/dir,
@@ -71277,9 +71114,7 @@
 	layer = 3.1
 	},
 /obj/structure/pipes/binary/passive_gate,
-/turf/open/gm/river/desert/deep/no_slowdown{
-	name = "water"
-	},
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/interior/maintenance/north)
 "uXu" = (
 /obj/structure/platform/metal/kutjevo_smooth{
@@ -72004,9 +71839,7 @@
 	layer = 2.1
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/gm/river/desert/deep/no_slowdown{
-	name = "water"
-	},
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/interior/maintenance/north)
 "vyX" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -72841,9 +72674,7 @@
 /area/varadero/interior/administration)
 "weG" = (
 /obj/structure/catwalk,
-/turf/open/gm/river/desert/deep/no_slowdown{
-	name = "water"
-	},
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/interior/maintenance/north)
 "weJ" = (
 /obj/structure/machinery/landinglight/spoke{
@@ -73400,9 +73231,7 @@
 	layer = 2.1
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/gm/river/desert/deep/no_slowdown{
-	name = "water"
-	},
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/interior/maintenance/north)
 "wws" = (
 /obj/item/reagent_container/food/snacks/eat_bar,
@@ -75419,9 +75248,7 @@
 /obj/structure/catwalk{
 	explo_proof = 1
 	},
-/turf/open/gm/river/desert/deep/no_slowdown{
-	name = "water"
-	},
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/interior/maintenance/north)
 "ygy" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -80759,7 +80586,7 @@ iNO
 xhj
 ajS
 qJh
-bMH
+bJf
 pPE
 bKn
 lFI
@@ -108651,7 +108478,7 @@ pRa
 pRa
 pRa
 auN
-auN
+aWz
 auN
 pRa
 mPk
@@ -108836,7 +108663,7 @@ auN
 auN
 auN
 auN
-mPk
+aUq
 mPk
 mPk
 mPk
@@ -109383,7 +109210,7 @@ pRa
 pRa
 auN
 pRa
-auN
+axW
 auN
 auN
 auN
@@ -110482,7 +110309,7 @@ auN
 auN
 pRa
 auN
-auN
+axW
 pRa
 mPk
 pRa
@@ -110844,7 +110671,7 @@ pRa
 pRa
 pRa
 mPk
-pRa
+aLg
 pRa
 pRa
 pRa

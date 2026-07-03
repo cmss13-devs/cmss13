@@ -756,10 +756,6 @@
 	dir = 8;
 	pixel_x = 3
 	},
-/obj/structure/machinery/storm_siren{
-	dir = 8;
-	pixel_x = 3
-	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/caves/north_research)
 "fV" = (
@@ -1146,7 +1142,6 @@
 /turf/open/gm/dirt/dark_brown,
 /area/varadero/interior/caves/north_research)
 "nI" = (
-/obj/structure/machinery/portable_atmospherics/hydroponics,
 /obj/structure/machinery/portable_atmospherics/hydroponics,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance/research)
@@ -1787,7 +1782,6 @@
 	pixel_x = 8;
 	pixel_y = 6
 	},
-/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/barricade/sandbags/wired{
 	dir = 1
 	},
@@ -1841,13 +1835,6 @@
 /turf/open/floor/shiva/purple/southwest,
 /area/varadero/interior/research)
 "Dt" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 10
-	},
-/obj/effect/landmark/objective_landmark/medium,
-/obj/structure/machinery/storm_siren{
-	pixel_y = 5
-	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
@@ -1990,7 +1977,6 @@
 /area/varadero/interior/research)
 "FI" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/pipes/standard/simple/hidden/green,
 /obj/item/paper_bin{
 	pixel_x = 6;
 	pixel_y = 9
@@ -2022,7 +2008,6 @@
 /area/varadero/interior/research)
 "Gy" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/spawner/gibspawner/xeno,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -2030,7 +2015,6 @@
 "GG" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance/research)
 "Hh" = (
@@ -2495,7 +2479,7 @@
 "Rs" = (
 /obj/structure/window_frame/colony/reinforced,
 /obj/item/shard,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
 "RV" = (
 /obj/structure/surface/rack,
@@ -2795,7 +2779,6 @@
 /turf/open/floor/plating,
 /area/varadero/interior/research)
 "Wy" = (
-/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/item/frame/table,
 /turf/open/floor/plating/icefloor/asteroidplating,

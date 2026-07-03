@@ -58,6 +58,14 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/lz1_near)
+"af" = (
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_s";
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/north,
+/area/varadero/interior/cargo)
 "ag" = (
 /obj/structure/machinery/landinglight/spoke{
 	pixel_x = -1;
@@ -443,9 +451,7 @@
 	layer = 3.01
 	},
 /obj/structure/catwalk,
-/turf/open/gm/river/desert/deep/no_slowdown{
-	name = "water"
-	},
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/interior/maintenance/north)
 "bq" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -929,12 +935,6 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/freezerfloor,
 /area/varadero/interior/cargo)
-"cR" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/shiva/multi_tiles,
-/area/varadero/interior/cargo)
 "cS" = (
 /obj/structure/catwalk,
 /obj/structure/filtration/flacculation_arm{
@@ -942,9 +942,7 @@
 	layer = 2.1
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/gm/river/desert/deep/no_slowdown{
-	name = "water"
-	},
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/interior/maintenance/north)
 "cT" = (
 /obj/structure/bed/chair/comfy/beige{
@@ -1556,9 +1554,7 @@
 "eG" = (
 /obj/structure/catwalk,
 /obj/structure/largecrate/random,
-/turf/open/gm/river/desert/deep/no_slowdown{
-	name = "water"
-	},
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/interior/maintenance/north)
 "eH" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1580,6 +1576,7 @@
 /area/varadero/interior/cargo)
 "eJ" = (
 /obj/item/holder/mouse/gray,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/cargo)
 "eK" = (
@@ -1644,9 +1641,7 @@
 /obj/structure/barricade/handrail/wire{
 	layer = 3.01
 	},
-/turf/open/gm/river/desert/deep/no_slowdown{
-	name = "water"
-	},
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/interior/maintenance/north)
 "eT" = (
 /obj/structure/machinery/firealarm{
@@ -1963,6 +1958,7 @@
 	pixel_y = 5
 	},
 /obj/item/storage/firstaid/adv,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/north,
 /area/varadero/interior/cargo)
 "fQ" = (
@@ -2075,6 +2071,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/cargo)
 "gj" = (
@@ -2415,9 +2412,6 @@
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/comms1)
 "he" = (
-/obj/structure/platform/metal/kutjevo_smooth/west{
-	climb_delay = 1
-	},
 /obj/structure/platform/metal/kutjevo_smooth/west{
 	climb_delay = 1
 	},
@@ -2919,10 +2913,6 @@
 	},
 /turf/open/floor/shiva/yellow,
 /area/varadero/interior/cargo)
-"iC" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/closed/wall/r_wall/unmeltable,
-/area/varadero/interior/oob)
 "iD" = (
 /turf/open/slippery/hull/dir/southwest,
 /area/sky)
@@ -3240,9 +3230,7 @@
 /obj/structure/catwalk,
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/gm/river/desert/deep/no_slowdown{
-	name = "water"
-	},
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/interior/maintenance/north)
 "jB" = (
 /obj/structure/sign/safety/bulkhead_door,
@@ -3295,9 +3283,7 @@
 "jI" = (
 /obj/structure/catwalk,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/gm/river/desert/deep/no_slowdown{
-	name = "water"
-	},
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/interior/maintenance/north)
 "jJ" = (
 /obj/effect/decal/cleanable/dirt,
@@ -3441,15 +3427,6 @@
 "kd" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/asteroidfloor/north,
-/area/varadero/exterior/lz1_near)
-"ke" = (
-/obj/structure/machinery/landinglight/delaythree{
-	dir = 4
-	},
-/obj/structure/machinery/landinglight/delaythree{
-	dir = 4
-	},
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "kf" = (
@@ -4017,9 +3994,7 @@
 /area/varadero/exterior/lz1_near)
 "lR" = (
 /obj/structure/catwalk,
-/turf/open/gm/river/desert/deep/no_slowdown{
-	name = "water"
-	},
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/interior/maintenance/north)
 "lS" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
@@ -4136,9 +4111,7 @@
 	layer = 3
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/gm/river/desert/deep/no_slowdown{
-	name = "water"
-	},
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/interior/maintenance/north)
 "mi" = (
 /obj/vehicle/train/cargo/trolley,
@@ -4208,9 +4181,7 @@
 /area/varadero/exterior/lz1_near)
 "mr" = (
 /obj/structure/pipes/binary/passive_gate,
-/turf/open/gm/river/desert/deep/no_slowdown{
-	name = "water"
-	},
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/interior/maintenance/north)
 "ms" = (
 /obj/item/ammo_casing/shell,
@@ -4589,10 +4560,6 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
-	},
-/obj/structure/machinery/storm_siren{
-	dir = 4;
-	pixel_x = -3
 	},
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
@@ -5117,12 +5084,6 @@
 /obj/structure/catwalk,
 /turf/open/floor/plating/plating_catwalk,
 /area/varadero/interior/maintenance/north)
-"oT" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 6
-	},
-/turf/closed/wall/rock/brown,
-/area/varadero/interior/oob)
 "oU" = (
 /turf/open/slippery/hull/dir/east,
 /area/sky)
@@ -5174,13 +5135,6 @@
 /obj/structure/platform_decoration/metal/kutjevo/west,
 /obj/structure/platform_decoration/metal/kutjevo,
 /turf/open/gm/river/ocean/deep_ocean,
-/area/varadero/exterior/pontoon_beach)
-"pc" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate2,
-/turf/open/gm/river/desert/deep/no_slowdown{
-	icon = 'icons/turf/ground_map.dmi';
-	icon_state = "seashallow"
-	},
 /area/varadero/exterior/pontoon_beach)
 "pd" = (
 /turf/open/floor/shiva/green/east,
@@ -6219,15 +6173,6 @@
 	},
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/exterior/pontoon_beach/lz)
-"sa" = (
-/obj/structure/platform/metal/kutjevo_smooth/east{
-	climb_delay = 1
-	},
-/obj/structure/platform/metal/kutjevo_smooth/east{
-	climb_delay = 1
-	},
-/turf/open/gm/river/ocean/deep_ocean,
-/area/varadero/exterior/pontoon_beach)
 "sc" = (
 /obj/item/reagent_container/food/snacks/carpmeat{
 	name = "human-ish teeth";
@@ -7060,9 +7005,6 @@
 /turf/open/floor/prison/chapel_carpet/doubleside/north,
 /area/varadero/interior/chapel)
 "vE" = (
-/obj/structure/platform/metal/kutjevo_smooth{
-	climb_delay = 1
-	},
 /obj/structure/sign/safety/east,
 /turf/closed/wall/rock/brown,
 /area/varadero/interior/oob)
@@ -7316,9 +7258,7 @@
 /obj/structure/catwalk,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/gm/river/desert/deep/no_slowdown{
-	name = "water"
-	},
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/interior/maintenance/north)
 "ym" = (
 /obj/structure/machinery/light{
@@ -8343,9 +8283,7 @@
 	layer = 3.1
 	},
 /obj/structure/pipes/binary/passive_gate,
-/turf/open/gm/river/desert/deep/no_slowdown{
-	name = "water"
-	},
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/interior/maintenance/north)
 "GQ" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -9045,9 +8983,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/reagent_dispensers/tank/water,
-/turf/open/gm/river/desert/deep/no_slowdown{
-	name = "water"
-	},
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/interior/maintenance/north)
 "NR" = (
 /obj/effect/decal/cleanable/dirt,
@@ -9127,9 +9063,7 @@
 /obj/structure/catwalk{
 	explo_proof = 1
 	},
-/turf/open/gm/river/desert/deep/no_slowdown{
-	name = "water"
-	},
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/interior/maintenance/north)
 "ON" = (
 /obj/structure/reagent_dispensers/tank/water,
@@ -9420,9 +9354,7 @@
 	},
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
-/turf/open/gm/river/desert/deep/no_slowdown{
-	name = "water"
-	},
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/interior/maintenance/north)
 "RQ" = (
 /obj/structure/platform/metal/kutjevo_smooth{
@@ -9831,9 +9763,7 @@
 /obj/structure/catwalk{
 	layer = 3
 	},
-/turf/open/gm/river/desert/deep/no_slowdown{
-	name = "water"
-	},
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/interior/maintenance/north)
 "Vx" = (
 /obj/structure/platform/metal/kutjevo_smooth/north{
@@ -10605,7 +10535,7 @@ qM
 PQ
 PQ
 PQ
-iC
+PQ
 PQ
 qP
 sP
@@ -11114,9 +11044,9 @@ Ie
 gw
 dy
 dy
-Iw
-Iw
-cR
+dy
+dy
+dn
 eJ
 Qg
 Qg
@@ -11180,7 +11110,7 @@ dy
 Iw
 Iw
 cb
-Iw
+dy
 dy
 dy
 dy
@@ -11241,7 +11171,7 @@ Uk
 gf
 Ie
 Ie
-Ie
+ep
 Yn
 ep
 ep
@@ -11299,12 +11229,12 @@ vZ
 UD
 UD
 EC
-oi
-Iw
-gg
-Iw
-Iw
-Iw
+SW
+dy
+gj
+dy
+dy
+dy
 cK
 jj
 yU
@@ -11363,10 +11293,10 @@ UD
 gZ
 fR
 oi
-Iw
+dy
 gi
 fO
-QX
+af
 Uj
 Yl
 qP
@@ -12735,7 +12665,7 @@ fr
 oA
 PC
 Ap
-ke
+fr
 oA
 iP
 MB
@@ -13538,7 +13468,7 @@ OF
 Wy
 BL
 BL
-qR
+BL
 BL
 BL
 BL
@@ -13606,7 +13536,7 @@ hw
 hw
 BL
 BL
-oT
+BL
 cm
 ns
 DS
@@ -13980,7 +13910,7 @@ hw
 Wy
 hw
 sM
-sa
+kx
 kx
 kx
 pK
@@ -14110,7 +14040,7 @@ sd
 qw
 qu
 pO
-pc
+tK
 od
 rM
 ib
@@ -14173,7 +14103,7 @@ sf
 qw
 qw
 pO
-pc
+tK
 od
 nt
 ng

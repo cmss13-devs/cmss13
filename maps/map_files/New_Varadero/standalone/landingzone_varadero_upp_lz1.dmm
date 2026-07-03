@@ -116,6 +116,14 @@
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/central)
+"az" = (
+/obj/item/device/flashlight/lamp/tripod/grey,
+/obj/structure/machinery/storm_siren{
+	dir = 4;
+	pixel_x = -3
+	},
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit)
 "aA" = (
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/varadero/interior_protected/caves/central)
@@ -400,15 +408,7 @@
 /area/varadero/interior/maintenance/security/south)
 "bT" = (
 /obj/structure/prop/rock/brown,
-/obj/structure/machinery/storm_siren{
-	dir = 4;
-	pixel_x = -3
-	},
 /obj/structure/prop/rock/brown,
-/obj/structure/machinery/storm_siren{
-	dir = 4;
-	pixel_x = -3
-	},
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/varadero/interior_protected/caves/central)
 "bU" = (
@@ -2047,6 +2047,10 @@
 "xz" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/barricade/handrail/wire,
+/obj/structure/machinery/storm_siren{
+	dir = 4;
+	pixel_x = -3
+	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/caves/east)
 "xP" = (
@@ -2309,15 +2313,6 @@
 /obj/structure/prop/rock/brown,
 /turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/farocean)
-"Ep" = (
-/obj/structure/window/framed/colony/reinforced,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	dir = 8
-	},
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/maintenance/security/south/hangar)
 "Er" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -4049,7 +4044,7 @@ CT
 CT
 "}
 (12,1,1) = {"
-Ep
+di
 di
 SV
 EM
@@ -4646,7 +4641,7 @@ yW
 BQ
 Xy
 Xy
-Qq
+az
 Xy
 TT
 yW

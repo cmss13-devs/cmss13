@@ -487,6 +487,7 @@
 		src.camera = null
 
 	to_chat(user, SPAN_NOTICE("You deploy [src]."))
+	playsound(loc, 'sound/weapons/mine_armed.ogg', 25, 1)
 	user.temp_drop_inv_item()
 	qdel(src)
 

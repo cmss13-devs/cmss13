@@ -165,7 +165,7 @@
 
 	var/list/rounds_in_cylinder = list()
 	for(var/ammo_path in chamber_contents)
-		if(ammo_path != "empty" && ammo_path != "blank")
+		if(ammo_path != "empty")
 			rounds_in_cylinder[ammo_path]++
 
 	var/first_put = TRUE

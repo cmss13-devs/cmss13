@@ -116,9 +116,22 @@ They're all essentially identical when it comes to getting the job done.
 	// It should never have negative ammo after spawn. If it does, we need to know about it.
 	if(current_rounds < 0)
 		. += "Something went horribly wrong. Ahelp the following: ERROR CODE R1: negative current_rounds on examine."
-		log_debug("ERROR CODE R1: negative current_rounds on examine. User: <b>[usr]</b> Magazine: <b>[src]</b>")
+		log_debug("ERROR CODE R1: negative current_rounds on examine. User: [SPAN_BOLD(usr)] Magazine: [SPAN_BOLD(src)]")
 	else
-		. += SPAN_NOTICE("It has <b>[current_rounds]</b> round[current_rounds == 1 ? "" : "s"] out of <b>[max_rounds]</b>.")
+		. += SPAN_NOTICE("It has [SPAN_BOLD(current_rounds)] round[current_rounds == 1 ? "" : "s"] out of [SPAN_BOLD(max_rounds)].")
+
+/obj/item/ammo_magazine/attack_self(mob/user) // literally just a copy of attack_hand
+	if(flags_magazine & AMMUNITION_REFILLABLE)
+		if(flags_magazine & AMMUNITION_CANNOT_REMOVE_BULLETS)
+			to_chat(user, SPAN_WARNING("You can't remove ammo from \the [src]!"))
+			return
+		if(current_rounds > 0)
+			if(create_handful(user))
+				return
+		else
+			to_chat(user, SPAN_INFO("[src] is empty. Nothing to grab."))
+		return
+	return ..()
 
 /obj/item/ammo_magazine/attack_hand(mob/user)
 	if(flags_magazine & AMMUNITION_REFILLABLE) //actual refillable magazine, not just a handful of bullets or a fuel tank.
@@ -126,11 +139,11 @@ They're all essentially identical when it comes to getting the job done.
 			if(flags_magazine & AMMUNITION_CANNOT_REMOVE_BULLETS)
 				to_chat(user, SPAN_WARNING("You can't remove ammo from \the [src]!"))
 				return
-			if (current_rounds > 0)
+			if(current_rounds > 0)
 				if(create_handful(user))
 					return
 			else
-				to_chat(user, "[src] is empty. Nothing to grab.")
+				to_chat(user, SPAN_INFO("[src] is empty. Nothing to grab."))
 			return
 	return ..() //Do normal stuff.
 
@@ -145,7 +158,7 @@ They're all essentially identical when it comes to getting the job done.
 					if(default_ammo == transfer_from.default_ammo)
 						var/transferred = transfer_ammo(transfer_from,user,transfer_from.current_rounds)
 						if(transferred) // This takes care of the rest.
-							to_chat(user, SPAN_NOTICE("You transfer <b>[transferred]</b> round[transferred == 1 ? "" : "s"] to [src] from [transfer_from]."))
+							to_chat(user, SPAN_NOTICE("You transfer [SPAN_BOLD(transferred)] round[transferred == 1 ? "" : "s"] to [src] from [transfer_from]."))
 					else
 						to_chat(user, SPAN_NOTICE("Those aren't the same rounds. Better not mix them up."))
 				else
@@ -214,7 +227,7 @@ They're all essentially identical when it comes to getting the job done.
 
 		if(user)
 			user.put_in_hands(new_handful)
-			to_chat(user, SPAN_NOTICE("You grab <b>[amount_to_transfer]</b> round[amount_to_transfer == 1 ? "" : "s"] from [obj_name]."))
+			to_chat(user, SPAN_NOTICE("You grab [SPAN_BOLD(amount_to_transfer)] round[amount_to_transfer == 1 ? "" : "s"] from [obj_name]."))
 
 		else
 			new_handful.forceMove(get_turf(src))
@@ -251,7 +264,7 @@ They're all essentially identical when it comes to getting the job done.
 	//For revolvers and shotguns.
 	var/chamber_contents[] //What is actually in the chamber. Initiated on New().
 	var/chamber_position = 1 //Where the firing pin is located. We usually move this instead of the contents.
-	var/chamber_closed = 1 //Starts out closed. Depends on firearm.
+	var/chamber_closed = TRUE //Starts out closed. Depends on firearm.
 
 //Helper proc, to allow us to see a percentage of how full the magazine is.
 /obj/item/ammo_magazine/proc/get_ammo_percent() // return % charge of cell
@@ -337,7 +350,7 @@ bullets/shells. ~N
 			if(hand.default_ammo == new_handful.default_ammo && hand.current_rounds < hand.max_rounds)
 				var/transferred = hand.transfer_ammo(new_handful, user, 1)
 				if(transferred)
-					to_chat(user, SPAN_NOTICE("You transfer <b>[transferred]</b> round[transferred > 1 ? "s" : ""] to [hand] from [src]."))
+					to_chat(user, SPAN_NOTICE("You transfer [SPAN_BOLD(transferred)] round[transferred > 1 ? "s" : ""] to [hand] from [src]."))
 				qdel(new_handful)
 				new_handful = null
 				break
@@ -358,7 +371,7 @@ If it is the same and the other stack isn't full, transfer an amount (default 1)
 		if(default_ammo == transfer_from.default_ammo) //Has to match.
 			var/transferred = transfer_ammo(transfer_from,user, transfer_from.current_rounds) // Transfer it from currently held to src
 			if(transferred)
-				to_chat(user, SPAN_NOTICE("You transfer <b>[transferred]</b> round[transferred > 1 ? "s" : ""] to [src] from [transfer_from]."))
+				to_chat(user, SPAN_NOTICE("You transfer [SPAN_BOLD(transferred)] round[transferred > 1 ? "s" : ""] to [src] from [transfer_from]."))
 		else
 			to_chat(user, "Those aren't the same rounds. Better not mix them up.")
 

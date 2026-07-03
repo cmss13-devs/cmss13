@@ -647,7 +647,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	recoil = RECOIL_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
-/obj/item/weapon/gun/shotgun/double/ammo_desc(mob/user)
+/obj/item/weapon/gun/shotgun/double/ammo_desc(mob/user) // also, god forbid someone makes a shotgun with ten thousand chambers
 	var/dat = ""
 
 	if(current_mag.chamber_closed)
@@ -656,6 +656,10 @@ can cause issues with ammo types getting mixed up during the burst.
 
 	if(!user || !Adjacent(user))
 		dat += SPAN_NOTICE("It's open.<br>")
+		return dat
+
+	if(!current_mag.current_rounds)
+		dat += SPAN_NOTICE("It's open but [SPAN_DANGER("it's completely empty")].<br>")
 		return dat
 
 	// annoying
@@ -670,7 +674,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		if(shell_name)
 			descriptions += "a [SPAN_ORANGE(shell_name)]"
 		else
-			descriptions += SPAN_DANGER("empty")
+			descriptions += SPAN_DANGER("nothing")
 
 	var/len = length(descriptions)
 	var/description = "It's open with "
@@ -1331,7 +1335,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	if(world.time < (recent_pump + pump_delay) )
 		return //Don't spam it.
 	if(pumped)
-		to_chat(user, SPAN_WARNING("<i>[src] already has a shell in the chamber!<i>"))
+		to_chat(user, SPAN_WARNING(SPAN_ITALIC("[src] already has a shell in the chamber!")))
 		return
 	if(in_chamber) //eject the chambered round
 		in_chamber = null
@@ -1342,10 +1346,10 @@ can cause issues with ammo types getting mixed up during the burst.
 
 	playsound(user, pump_sound, 10, 1)
 	if(in_chamber)
-		to_chat(user, SPAN_WARNING("<i>You pump [src], loading a shell into the chamber!<i>"))
+		to_chat(user, SPAN_WARNING(SPAN_ITALIC("You pump [src], loading a shell into the chamber!")))
 		pumped = TRUE
 	else
-		to_chat(user, SPAN_WARNING("<i>You pump [src]!<i>"))
+		to_chat(user, SPAN_WARNING(SPAN_ITALIC("You pump [src].")))
 
 	recent_pump = world.time
 
@@ -1427,7 +1431,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	. = ..()
 	var/has_chamber_swap = locate(/datum/action/item_action/dual_tube/toggle_chamber_swap) in actions
 	if(has_chamber_swap)
-		. += SPAN_NOTICE("Use <b>toggle firemode</b> to toggle chamber-swapping.</b>")
+		. += SPAN_NOTICE("Use [SPAN_BOLD("toggle firemode")] to toggle chamber-swapping.")
 
 /obj/item/weapon/gun/shotgun/pump/dual_tube/do_toggle_firemode(datum/source, datum/keybinding, new_firemode)
 	var/datum/action/item_action/dual_tube/toggle_chamber_swap/chamber_swap_ability = locate() in actions
@@ -1478,7 +1482,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		if(in_chamber)
 			pumped = TRUE
 
-	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You switch \the [src]'s active magazine to the [(current_mag == primary_tube) ? "<b>first</b>" : "<b>second</b>"] magazine."))
+	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You switch \the [src]'s active magazine to the [(current_mag == primary_tube) ? SPAN_BOLD("first") : SPAN_BOLD("second")] magazine."))
 	playsound(src, 'sound/machines/switch.ogg', 15, TRUE)
 	return TRUE
 
@@ -1509,10 +1513,10 @@ can cause issues with ammo types getting mixed up during the burst.
 	playsound(owner, 'sound/weapons/handling/gun_burst_toggle.ogg', 15, 1)
 
 	if(holder_gun.chamber_swap)
-		to_chat(owner, SPAN_NOTICE("[icon2html(holder_gun, owner)] You will <b>start swapping</b> the chambered shell with the other tube. <b>Your current tube must be underloaded or it will forcefully eject the shell out of the chamber.</b>"))
+		to_chat(owner, SPAN_NOTICE("[icon2html(holder_gun, owner)] You will [SPAN_BOLD("start swapping")] the chambered shell with the other tube. [SPAN_BOLD("Your current tube must be underloaded or it will forcefully eject the shell out of the chamber.")]"))
 		action_icon_state = "chamber_swap_off"
 	else
-		to_chat(owner, SPAN_NOTICE("[icon2html(holder_gun, owner)] You will <b>stop swapping</b> the chambered shell with the other tube."))
+		to_chat(owner, SPAN_NOTICE("[icon2html(holder_gun, owner)] You will [SPAN_BOLD("stop swapping")] the chambered shell with the other tube."))
 		action_icon_state = "chamber_swap"
 
 	button.overlays.Cut()

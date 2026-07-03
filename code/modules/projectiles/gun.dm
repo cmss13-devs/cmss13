@@ -612,9 +612,9 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		if(!has_open_icon && current_mag)
 			if(flags_gun_features & GUN_AMMO_COUNTER)
 				if(adjacent)
-					dat += SPAN_NOTICE("Ammo counter shows <b>[SPAN_ORANGE(current_mag.current_rounds)]</b> round[current_mag.current_rounds == 1 ? "" : "s"] remaining with [in_chamber ? SPAN_HELPFUL("a [in_chamber.name]") : SPAN_RED("nothing")] chambered.<br>")
+					dat += SPAN_NOTICE("Ammo counter shows [SPAN_BOLD(SPAN_ORANGE(current_mag.current_rounds))] round[current_mag.current_rounds == 1 ? "" : "s"] remaining with [in_chamber ? SPAN_HELPFUL("a [in_chamber.name]") : SPAN_RED("nothing")] chambered.<br>")
 				else
-					dat += SPAN_NOTICE("Ammo counter shows <b>[SPAN_ORANGE(current_mag.current_rounds)]</b> round[current_mag.current_rounds == 1 ? "" : "s"] remaining.<br>")
+					dat += SPAN_NOTICE("Ammo counter shows [SPAN_BOLD(SPAN_ORANGE(current_mag.current_rounds))] round[current_mag.current_rounds == 1 ? "" : "s"] remaining.<br>")
 			else
 				if(adjacent)
 					dat += SPAN_NOTICE((in_chamber ? "It has [SPAN_ORANGE("a [in_chamber.name]")] chambered." : "It's [SPAN_RED("empty")].") + "<br>") // kind of annoying but w/e, this entire codeblock has been pretty annoying
@@ -622,9 +622,9 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		if(current_mag)
 			if(flags_gun_features & GUN_AMMO_COUNTER)
 				if(adjacent)
-					dat += SPAN_NOTICE("Ammo counter shows <b>[SPAN_ORANGE(current_mag.current_rounds)]</b> round[current_mag.current_rounds == 1 ? "" : "s"] remaining with [in_chamber ? SPAN_HELPFUL("a [in_chamber.name]") : SPAN_RED("nothing")] chambered.<br>")
+					dat += SPAN_NOTICE("Ammo counter shows [SPAN_BOLD(SPAN_ORANGE(current_mag.current_rounds))] round[current_mag.current_rounds == 1 ? "" : "s"] remaining with [in_chamber ? SPAN_HELPFUL("a [in_chamber.name]") : SPAN_RED("nothing")] chambered.<br>")
 				else
-					dat += SPAN_NOTICE("Ammo counter shows <b>[SPAN_ORANGE(current_mag.current_rounds)]</b> round[current_mag.current_rounds == 1 ? "" : "s"] remaining.<br>")
+					dat += SPAN_NOTICE("Ammo counter shows [SPAN_BOLD(SPAN_ORANGE(current_mag.current_rounds))] round[current_mag.current_rounds == 1 ? "" : "s"] remaining.<br>")
 			else
 				if(adjacent)
 					if(current_mag.current_rounds > 0)
@@ -931,13 +931,13 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 /obj/item/weapon/gun/proc/replace_ammo(mob/user = null, obj/item/ammo_magazine/magazine)
 	if(!magazine.default_ammo)
 		to_chat(user, "Something went horribly wrong. Ahelp the following: ERROR CODE A1: null ammo while reloading.")
-		log_debug("ERROR CODE A1: null ammo while reloading. User: <b>[user]</b> Weapon: <b>[src]</b> Magazine: <b>[magazine]</b>")
+		log_debug("ERROR CODE A1: null ammo while reloading. User: [SPAN_BOLD(user)] Weapon: [SPAN_BOLD(src)] Magazine: [SPAN_BOLD(magazine)]")
 		ammo = GLOB.ammo_list[/datum/ammo/bullet] //Looks like we're defaulting it.
 	else
 		ammo = GLOB.ammo_list[magazine.default_ammo]
 	if(!magazine.caliber)
 		to_chat(user, "Something went horribly wrong. Ahelp the following: ERROR CODE A2: null calibre while reloading.")
-		log_debug("ERROR CODE A2: null calibre while reloading. User: <b>[user]</b> Weapon: <b>[src]</b> Magazine: <b>[magazine]</b>")
+		log_debug("ERROR CODE A2: null calibre while reloading. User: [SPAN_BOLD(user)] Weapon: [SPAN_BOLD(src)] Magazine: [SPAN_BOLD(magazine)]")
 		caliber = "bugged calibre"
 	else if(!islist(caliber)) // if a gun is already assigned as a list, then you dont really need to update it obviously
 		caliber = magazine.caliber
@@ -1221,7 +1221,7 @@ and you're good to go.
 /obj/item/weapon/gun/proc/create_bullet(datum/ammo/chambered, bullet_source)
 	if(!chambered)
 		to_chat(usr, "Something has gone horribly wrong. Ahelp the following: ERROR CODE I2: null ammo while create_bullet()")
-		log_debug("ERROR CODE I2: null ammo while create_bullet(). User: <b>[usr]</b> Weapon: <b>[src]</b> Magazine: <b>[current_mag]</b>")
+		log_debug("ERROR CODE I2: null ammo while create_bullet(). User: [SPAN_BOLD(usr)] Weapon: [SPAN_BOLD(src)] Magazine: [SPAN_BOLD(current_mag)]")
 		chambered = GLOB.ammo_list[/datum/ammo/bullet] //Slap on a default bullet if somehow ammo wasn't passed.
 
 	var/weapon_source_mob = null
@@ -1407,7 +1407,7 @@ and you're good to go.
 	//Finally, make with the pew pew!
 	if(QDELETED(projectile_to_fire) || !isobj(projectile_to_fire))
 		to_chat(user, "ERROR CODE I1: Gun malfunctioned due to invalid chambered projectile, clearing it. AHELP if this persists.")
-		log_debug("ERROR CODE I1: projectile malfunctioned while firing. User: <b>[user]</b> Weapon: <b>[src]</b> Magazine: <b>[current_mag]</b>")
+		log_debug("ERROR CODE I1: projectile malfunctioned while firing. User: [SPAN_BOLD(user)] Weapon: [SPAN_BOLD(src)] Magazine: [SPAN_BOLD(current_mag)]")
 		flags_gun_features &= ~GUN_BURST_FIRING
 		in_chamber = null
 		click_empty(user)
@@ -1774,13 +1774,13 @@ and you're good to go.
 		var/time
 		var/datum/cause_data/cause_data
 		if(projectile_to_fire.ammo.damage <= 0)
-			time += "\[[time_stamp()]\] <b>[key_name(user)]</b> tried to commit suicide with a [name]"
+			time += "\[[time_stamp()]\] [SPAN_BOLD(key_name(user))] tried to commit suicide with a [name]"
 			cause_data = create_cause_data("failed suicide by [initial(name)]")
 			to_chat(user, SPAN_HIGHDANGER("Ow..."))
 			msg_admin_ff("[key_name(user)] tried to commit suicide with a [name] in [get_area(user)] [ffl]", TRUE, user.loc.z)
 			user.apply_damage(200, HALLOSS)
 		else
-			time += "\[[time_stamp()]\] <b>[key_name(user)]</b> committed suicide with <b>[src]</b>" //Log it.
+			time += "\[[time_stamp()]\] [SPAN_BOLD(key_name(user))] committed suicide with [SPAN_BOLD(src)]" //Log it.
 			cause_data = create_cause_data("suicide by [initial(name)]")
 			var/used_weapon_text = "Point blank shot in the mouth with \a [projectile_to_fire]"
 			var/admin_msg = "[key_name(user)] committed suicide with \a [name] in [get_area(user)] [ffl]"
@@ -1949,9 +1949,9 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	var/dry_fire_text
 	var/obj/item/weapon/gun/current_gun = src
 	if(istype(current_gun, /obj/item/weapon/gun/flamer))
-		dry_fire_text = "<b>*pshhhh*</b>"
+		dry_fire_text = SPAN_BOLD("*pshhhh*")
 	else
-		dry_fire_text = "<b>*click*</b>"
+		dry_fire_text = SPAN_BOLD("*click*")
 
 	if(user)
 		to_chat(user, SPAN_WARNING(dry_fire_text))
@@ -2450,7 +2450,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		click_empty(user)
 		user.visible_message(SPAN_HIGHDANGER(uppertext("...but the [name] dry fires with a resolute click! Embarassing...")),
 			SPAN_HIGHDANGER(uppertext("...but your [name] dry fires with quite the authoratitively embarassing click...")))
-		balloon_alert_to_viewers("<b>*click*</b>")
+		balloon_alert_to_viewers(SPAN_BOLD("*click*"))
 		return
 
 	QDEL_NULL(projectile_to_fire)
@@ -2510,7 +2510,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		click_empty(user)
 		user.visible_message(SPAN_HIGHDANGER(uppertext("...but the [name] dry fires with a resolute click! Embarassing...")),
 			SPAN_HIGHDANGER(uppertext("...but your [name] dry fires with quite the authoratitively embarassing click...")))
-		balloon_alert_to_viewers("<b>*click*</b>")
+		balloon_alert_to_viewers(SPAN_BOLD("*click*"))
 		return
 
 	var/actual_sound
@@ -2553,7 +2553,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	user.count_niche_stat(STATISTICS_NICHE_EXECUTION, 1, projectile_to_fire.weapon_cause_data?.cause_name)
 
 	var/area/execution_area = get_area(execution_target)
-	msg_admin_ff("[key_name(user)] [ADMIN_JMP_USER(user)] [ADMIN_PM(user)] has <b>battlefield executed</b> [key_name(execution_target)] [ADMIN_JMP(execution_target)] [ADMIN_PM(execution_target)] at [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]) using [src].")
+	msg_admin_ff("[key_name(user)] [ADMIN_JMP_USER(user)] [ADMIN_PM(user)] has [SPAN_BOLD("battlefield executed")] [key_name(execution_target)] [ADMIN_JMP(execution_target)] [ADMIN_PM(execution_target)] at [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]) using [src].")
 	log_attack("[key_name(user)] battlefield executed [key_name(execution_target)] at [execution_area.name].")
 
 	last_fired = world.time

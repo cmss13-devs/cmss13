@@ -33,7 +33,7 @@
 
 	var/trick_delay = 4 SECONDS
 	var/recent_trick //So they're not spamming tricks.
-	var/russian_roulette = 0 //God help you if you do this.
+	var/russian_roulette = FALSE //God help you if you do this.
 	var/trickster_gun = FALSE //If true, allows gun spinning.
 	var/threat_gun = FALSE //If true, will give a hint about warning shot ability
 
@@ -68,13 +68,77 @@
 					in_chamber_name = in_chamber.name
 				else if(current_mag.current_rounds > 0)
 					var/ammo_path = current_mag.chamber_contents[current_mag.chamber_position]
-					if(ammo_path && ammo_path != "empty" && ammo_path != "blank")
+					if(ammo_path && ammo_path != "empty")
 						var/datum/ammo/bullet = GLOB.ammo_list[ammo_path]
 						if(bullet) in_chamber_name = bullet.name
 
-				dat += SPAN_NOTICE("It's open with <b>[SPAN_ORANGE(current_mag.current_rounds)]</b> round[current_mag.current_rounds == 1 ? "" : "s"] loaded[in_chamber_name ? " and has a [SPAN_HELPFUL(in_chamber_name)] ready to fire" : ""].<br>")
+				dat += SPAN_NOTICE("It's open with [SPAN_BOLD(SPAN_ORANGE(current_mag.current_rounds))] round[current_mag.current_rounds == 1 ? "" : "s"] loaded[in_chamber_name ? " and has a [SPAN_HELPFUL(in_chamber_name)] ready to fire" : ""].<br>")
+				dat += "<a href='byond://?src=\ref[src];list_cylinder=1'>\[See cylinder contents]</a> <br>"
 
 	return dat
+
+/obj/item/weapon/gun/revolver/Topic(href, href_list)
+	. = ..()
+	if(.)
+		return
+
+	if(href_list["list_cylinder"])
+		if(!usr || usr.get_inactive_hand() != src || !current_mag || current_mag.chamber_closed)
+			to_chat(usr, SPAN_WARNING("You can't see [src]'s cylinder from here!"))
+			return
+
+		var/description = "[src]'s cylinder contains:<br>"
+
+		for(var/i = 1 to current_mag.max_rounds)
+			var/ammo_path = current_mag.chamber_contents[i]
+			var/bullet_name
+			if(ammo_path && ammo_path != "empty")
+				var/datum/ammo/bullet = GLOB.ammo_list[ammo_path]
+				if(bullet) bullet_name = bullet.name
+
+			description += "[SPAN_BOLD("Chamber [i]")]: "
+
+			if(bullet_name)
+				if(i == current_mag.chamber_position)
+					description += "[SPAN_HELPFUL(bullet_name)]"
+				else
+					description += "[SPAN_ORANGE(bullet_name)]"
+			else if(i == current_mag.chamber_position)
+				description += "[SPAN_BOLD(SPAN_RED("nothing"))] <a href='byond://?src=\ref[src];load_chamber=[i]'>\[Load]</a>"
+			else
+				description += "[SPAN_DANGER("nothing")] <a href='byond://?src=\ref[src];load_chamber=[i]'>\[Load]</a>"
+			description += "<br>"
+
+		to_chat(usr, SPAN_NOTICE(description))
+		return TRUE
+
+	if(href_list["load_chamber"])
+		if(!usr || usr.get_inactive_hand() != src || !current_mag || current_mag.chamber_closed)
+			to_chat(usr, SPAN_WARNING("You can't load [src]'s cylinder from here!"))
+			return
+
+		var/chamber_to_load = text2num(href_list["load_chamber"])
+		if(!chamber_to_load || chamber_to_load < 1 || chamber_to_load > current_mag.max_rounds)
+			return
+
+		if(current_mag.chamber_contents[chamber_to_load] != "empty")
+			to_chat(usr, SPAN_WARNING("That chamber is already loaded!"))
+			return
+
+		var/obj/item/ammo_magazine/handful/bullet = usr.get_active_hand()
+		if(!istype(bullet) || bullet.caliber != current_mag.caliber)
+			to_chat(usr, SPAN_WARNING("You need to be holding a compatible bullet in your active hand!"))
+			return
+
+		if(bullet.current_rounds > 0 && add_to_cylinder(usr, bullet.default_ammo, chamber_to_load))
+			bullet.current_rounds--
+			bullet.update_icon()
+			if(bullet.current_rounds <= 0)
+				qdel(bullet)
+			current_mag.current_rounds++
+
+			Topic(href, list("list_cylinder" = 1))
+		return TRUE
 
 /obj/item/weapon/gun/revolver/get_examine_text(mob/user)
 	. = ..()
@@ -85,6 +149,12 @@
 
 	if(threat_gun)
 		. += SPAN_INFO ("To perform a warning shot, swap on <span class='corp_label_yellow'>grab</span> intent.")
+
+	if(russian_roulette)
+		. += SPAN_RED("You are now playing Russian Roulette with [src]!")
+		. += SPAN_NOTICE("To cancel Russian Roulette, simply toggle your chamber via <span class='corp_label_green'>help</span> intent.")
+	else
+		. += SPAN_INFO("To start playing Russian Roulette, spin the cylinder via <span class='corp_label_red'>harm</span> intent.")
 
 /obj/item/weapon/gun/revolver/display_ammo(mob/user) // revolvers don't *really* have a chamber, at least in a way that matters for ammo displaying
 	if(flags_gun_features & GUN_AMMO_COUNTER && !(flags_gun_features & GUN_BURST_FIRING) && current_mag)
@@ -106,7 +176,7 @@
 			if(!russian_roulette) // look, i know it doesnt make sense given that you have to open the cylinder to actually check the bullet type, but bear with me here... #balance....
 				var/ammo_path = current_mag.chamber_contents[current_mag.chamber_position]
 				var/bullet_name = "empty"
-				if(ammo_path && ammo_path != "empty" && ammo_path != "blank")
+				if(ammo_path && ammo_path != "empty")
 					var/datum/ammo/bullet = GLOB.ammo_list[ammo_path]
 					if(bullet)
 						bullet_name = bullet.name
@@ -141,20 +211,23 @@
 		current_mag.current_rounds = 0
 
 //The cylinder is always emptied out before a reload takes place.
-/obj/item/weapon/gun/revolver/proc/add_to_cylinder(mob/user, ammo_type) //Bullets are added forward.
-	if(current_mag)
-		//First we're going to try and replace the current bullet.
-		if(!current_mag.current_rounds)
-			current_mag.chamber_contents[current_mag.chamber_position] = ammo_type
-		else //Failing that, we'll try to replace the next bullet in line.
-			if((current_mag.chamber_position + 1) > current_mag.max_rounds)
-				current_mag.chamber_contents[1] = ammo_type
-				current_mag.chamber_position = 1
-			else
-				current_mag.chamber_contents[current_mag.chamber_position + 1] = ammo_type
-				current_mag.chamber_position++
-		playsound(user, hand_reload_sound, 25, 1)
-		return 1
+/obj/item/weapon/gun/revolver/proc/add_to_cylinder(mob/user, ammo_type, specific_chamber) //Bullets are added forward.
+	if(!current_mag)
+		return
+
+	if(specific_chamber)
+		current_mag.chamber_contents[specific_chamber] = ammo_type
+		playsound(user, hand_reload_sound, 25, TRUE)
+		return TRUE
+	else
+		for(var/i = 0 to current_mag.max_rounds - 1)
+			var/check_pos = (current_mag.chamber_position + i - 1) % current_mag.max_rounds + 1
+			if(current_mag.chamber_contents[check_pos] == "empty")
+				current_mag.chamber_contents[check_pos] = ammo_type
+				playsound(user, hand_reload_sound, 25, TRUE)
+				return TRUE
+
+	return FALSE
 
 /obj/item/weapon/gun/revolver/reload(mob/user, obj/item/ammo_magazine/magazine)
 	if(flags_gun_features & GUN_BURST_FIRING)
@@ -235,7 +308,7 @@
 	if(current_mag)
 		if(current_mag.current_rounds > 0)
 			var/ammo_path = current_mag.chamber_contents[current_mag.chamber_position]
-			if(ammo_path != "empty" && ammo_path != "blank")
+			if(ammo_path != "empty")
 				in_chamber = create_bullet(GLOB.ammo_list[ammo_path], initial(name))
 				apply_traits(in_chamber)
 				return in_chamber
@@ -250,7 +323,7 @@
 	if(current_mag)
 		if(current_mag.current_rounds > 0)
 			current_mag.current_rounds-- // Subtract the round from the mag only after firing is confirmed
-		current_mag.chamber_contents[current_mag.chamber_position] = "blank" //We shot the bullet.
+		current_mag.chamber_contents[current_mag.chamber_position] = "empty" //We shot the bullet.
 		rotate_cylinder()
 		return 1
 
@@ -266,6 +339,7 @@
 		current_mag.chamber_closed = TRUE
 		to_chat(user, SPAN_NOTICE("You close the cylinder of [src]."))
 		playsound(user, chamber_close_sound, 25, 1)
+		russian_roulette = FALSE
 		update_icon()
 
 /obj/item/weapon/gun/revolver/proc/open_cylinder(mob/user)
@@ -273,12 +347,25 @@
 		current_mag.chamber_closed = FALSE
 		to_chat(user, SPAN_NOTICE("You open the cylinder of [src]."))
 		playsound(user, unload_sound, 25, 1)
+		russian_roulette = FALSE
 		update_icon()
 
-/obj/item/weapon/gun/revolver/unique_action(mob/user)
-	if(current_mag && !current_mag.chamber_closed)
+/obj/item/weapon/gun/revolver/proc/toggle_cylinder(mob/user)
+	if(!current_mag)
+		return FALSE
+
+	if(current_mag.chamber_closed)
+		if(user.a_intent == INTENT_HELP)
+			open_cylinder(user)
+			return TRUE
+	else
 		close_chamber(user)
+		return TRUE
+
+/obj/item/weapon/gun/revolver/unique_action(mob/user)
+	if(toggle_cylinder(user))
 		return
+
 	if(trickster_gun && user.a_intent == INTENT_DISARM)
 		perform_tricks(user)
 		return
@@ -377,7 +464,7 @@
 					revolver_throw_catch(user)
 		return TRUE
 	else
-		user.visible_message(SPAN_INFO("<b>[user]</b> fumbles with [src] like a huge idiot!"), null, null, 3)
+		user.visible_message(SPAN_INFO("[SPAN_BOLD(user)] fumbles with [src] like a huge idiot!"), null, null, 3)
 		to_chat(user, SPAN_WARNING("You fumble with [src] like an idiot... Uncool."))
 		return FALSE
 
@@ -986,7 +1073,7 @@
 
 /obj/item/weapon/gun/revolver/cmb/click_empty(mob/user)
 	if(user)
-		to_chat(user, SPAN_WARNING("<b>*click*</b>"))
+		to_chat(user, SPAN_WARNING(SPAN_BOLD("*click*")))
 		playsound(user, pick('sound/weapons/handling/gun_cmb_click1.ogg', 'sound/weapons/handling/gun_cmb_click2.ogg'), 25, 1, 5) //5 tile range
 	else
 		playsound(src, pick('sound/weapons/handling/gun_cmb_click1.ogg', 'sound/weapons/handling/gun_cmb_click2.ogg'), 25, 1, 5)

@@ -14695,7 +14695,7 @@
 /area/almayer/middeck/maintenance/sp)
 "aNu" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/power/apc/almayer/east,
+/obj/structure/machinery/power/apc/almayer/hardened/east,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plating,
 /area/almayer/shipboard/navigation)

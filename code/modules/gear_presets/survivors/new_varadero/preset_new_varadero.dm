@@ -626,6 +626,7 @@
 	assignment = "LACN Base Chaplain"
 	paygrades = list(PAY_SHORT_NE4 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "LACN CHAP"
+	idtype = /obj/item/card/id/dogtag
 	skills = /datum/skills/civilian/survivor/chaplain
 
 	survivor_variant = CIVILIAN_SURVIVOR

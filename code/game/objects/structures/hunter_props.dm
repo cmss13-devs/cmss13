@@ -351,16 +351,19 @@
 
 // Fake platform
 
-/obj/structure/prop/hunter/fake_platform/hunter
-	icon = 'icons/obj/structures/props/platforms.dmi'
-	icon_state = "hunter_platform"
+/obj/structure/prop/hunter/fake_platform
 	name = "raised metal edge"
-	desc =  "A raised level of metal, often used to elevate areas above others, or construct bridges. You could probably climb it."
+	desc = "A raised level of metal, often used to elevate areas above others, or construct bridges. You could probably climb it."
+	icon = 'icons/obj/structures/props/platforms.dmi'
 	density = FALSE
 	anchored = TRUE
+	flags_atom = NO_ZFALL
 	layer = WEED_LAYER
 	plane = FLOOR_PLANE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/obj/structure/prop/hunter/fake_platform/hunter
+	icon_state = "hunter_platform"
 
 /obj/structure/prop/hunter/fake_platform/hunter/north
 	dir = NORTH

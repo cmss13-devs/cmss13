@@ -379,6 +379,10 @@
 	opacity = FALSE
 
 /obj/effect/stairs
+	density = FALSE
+	anchored = TRUE
+	flags_atom = NO_ZFALL
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	var/direction
 
 /obj/effect/stairs/Initialize(mapload, ...)

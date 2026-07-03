@@ -48,7 +48,8 @@
 		SPAN_NOTICE("[user] replaces your severed [parse_zone(target_zone)] with [tool]."),
 		SPAN_NOTICE("[user] replaces [target]'s severed [parse_zone(target_zone)] with [tool]."))
 
-	to_chat(target, SPAN_NOTICE("You can't move your [parse_zone(target_zone)], but you somehow feel a little better."))
+	if(target.stat == CONSCIOUS)
+		to_chat(target, SPAN_NOTICE("You can't move your [parse_zone(target_zone)], but you somehow feel a little better with the prosthetic attached to your stump."))
 	surgery.affected_limb.robotize(surgery_in_progress = TRUE, uncalibrated = TRUE, synth_skin = issynth(target))
 	target.update_body()
 	target.pain.recalculate_pain()
@@ -135,7 +136,9 @@
 		SPAN_NOTICE("[user] finishes calibrating your prosthetic [surgery.affected_limb.display_name] and it now moves as you command."),
 		SPAN_NOTICE("[user] finishes calibrating [target]'s prosthetic [surgery.affected_limb.display_name] and it now moves as \he commands."))
 
-	to_chat(target, SPAN_NOTICE("You can move your [surgery.affected_limb.display_name]!"))
+	if(target.stat == CONSCIOUS)
+		to_chat(target, SPAN_NOTICE("You can move your [surgery.affected_limb.display_name]!"))
+
 	log_interact(user, target, "[key_name(user)] calibrated a prosthesis on [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")
 	surgery.affected_limb.calibrate_prosthesis()
 

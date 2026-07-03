@@ -36,7 +36,9 @@
 		SPAN_NOTICE("[user] has removed the eschar from your [surgery.affected_limb.display_name] and exposed the pink and healthy tissue beneath it."),
 		SPAN_NOTICE("[user] has removed the eschar from [target]'s [surgery.affected_limb.display_name] and exposed the pink and healthy tissue beneath it."))
 
-	to_chat(target, SPAN_NOTICE("The air feels cold around the exposed skin on your [surgery.affected_limb.display_name]."))
+	if(target.stat == CONSCIOUS)
+		to_chat(target, SPAN_NOTICE("The air feels cold around the exposed skin on your [surgery.affected_limb.display_name]."))
+
 	log_interact(user, target, "[key_name(user)] has removed the eschar from [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], starting [surgery].")
 
 /datum/surgery_step/separate_eschar/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/eschar_mend/surgery)
@@ -97,8 +99,7 @@
 
 	if(target.stat == CONSCIOUS)
 		to_chat(target, SPAN_NOTICE("Your skin is covered and safe. You feel better."))
-	else
-		return
+
 	log_interact(user, target, "[key_name(user)] sealed a skin graft over the exposed skin on [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], ending [surgery].")
 	surgery.affected_limb.status &= ~LIMB_ESCHAR
 	surgery.affected_limb.heal_damage(0, surgery.affected_limb.burn_healing_threshold)

@@ -63,7 +63,7 @@
 	var/muscle_type = target.get_muscle_type() //Uses the proc in surgery_steps.dm to fetch the correct type for the species.
 	user.affected_message(target,
 		SPAN_NOTICE("You begin to sever the [muscle_type] in [target]'s [surgery.affected_limb.display_name] with [tool]."),
-		SPAN_WARNING("[user] begins to sever the [muscle_type] in your [surgery.affected_limb.display_name] with [tool]! Somebody, help!"),
+		SPAN_WARNING("[user] begins to sever the [muscle_type] in your [surgery.affected_limb.display_name] with [tool]!"),
 		SPAN_NOTICE("[user] begins to sever the [muscle_type] in [target]'s [surgery.affected_limb.display_name] with [tool]."))
 
 	target.custom_pain("It feels as if your [surgery.affected_limb.display_name] is being ripped apart!", 1)
@@ -132,7 +132,9 @@
 		SPAN_NOTICE("[user] has reconnected the [muscle_type] in your [surgery.affected_limb.display_name]."),
 		SPAN_NOTICE("[user] has reconnected the [muscle_type] in [target]'s [surgery.affected_limb.display_name]."))
 
-	to_chat(target, SPAN_NOTICE("You can move your [surgery.affected_limb.display_name] again."))
+	if(target.stat == CONSCIOUS)
+		to_chat(target, SPAN_NOTICE("You can move your [surgery.affected_limb.display_name] again."))
+
 	complete(target, surgery)
 	log_interact(user, target, "[key_name(user)] successfully aborted an amputation on [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], ending [surgery].")
 
@@ -199,9 +201,7 @@
 		user.affected_message(target,
 			SPAN_WARNING("Your hand slips, cutting into the wrong part of [target]'s [surgery.affected_limb.display_name], shattering it!"),
 			SPAN_WARNING("[user]'s hand slips, cutting into the wrong part of your [surgery.affected_limb.display_name], shattering it!"),
-			SPAN_WARNING("[user]'s hand slips, cutting into the wrong part of [target]'s [surgery.affected_limb.display_name]!"))
-
-		to_chat(target, SPAN_HIGHDANGER("This is a rare and final opportunity to tell [user] to stitch you back up!"))
+			SPAN_WARNING("[user]'s hand slips, cutting into the wrong part of [target]'s [surgery.affected_limb.display_name], shattering it!"))
 
 		if(target.stat == CONSCIOUS)
 			to_chat(target, SPAN_HIGHDANGER("This is a rare and final opportunity to tell [user] to stitch you back up!"))
@@ -294,7 +294,7 @@
 	user.affected_message(target,
 		SPAN_NOTICE("You finish repairing the [vasculature_type] in [target]'s [surgery.affected_limb.parent.display_name]'s stump, stopping any bleeding."),
 		SPAN_NOTICE("[user] finishes repairing the [vasculature_type] in your [surgery.affected_limb.parent.display_name]'s stump, stopping any bleeding."),
-		SPAN_NOTICE("[user] finishes repairing the [vasculature_type] in [target]'s [surgery.affected_limb.parent.display_name]'s stump."))
+		SPAN_NOTICE("[user] finishes repairing the [vasculature_type] in [target]'s [surgery.affected_limb.parent.display_name]'s stump, stopping any bleeding."))
 
 	surgery.affected_limb.remove_all_bleeding()
 	log_interact(user, target, "[key_name(user)] mended torn [vasculature_type] in the stump of [key_name(target)]'s [surgery.affected_limb.display_name] with [tool].")
@@ -346,8 +346,7 @@
 
 	if(target.stat == CONSCIOUS)
 		to_chat(target, SPAN_NOTICE("The pain in your [surgery.affected_limb.display_name] is gone. You feel better."))
-	else
-		return
+
 	surgery.affected_limb.setAmputatedTree()
 	target.pain.recalculate_pain()
 	log_interact(user, target, "[key_name(user)] closed the stump of [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], ending [surgery].")
@@ -425,11 +424,9 @@
 		SPAN_NOTICE("[user] has revealed the stump of your [surgery.affected_limb.display_name]."),
 		SPAN_NOTICE("[user] has revealed the stump of [target]'s [surgery.affected_limb.display_name]."))
 
-
 	if(target.stat == CONSCIOUS)
 		to_chat(target, SPAN_NOTICE("Your stump feels cold, but the pain is gone. You feel better."))
-	else
-		return
+
 	surgery.affected_limb.setAmputatedTree()
 	target.pain.recalculate_pain()
 	log_interact(user, target, "[key_name(user)] successfully removed the last of [key_name(target)]'s severed prosthetic [surgery.affected_limb.display_name], ending [surgery].")

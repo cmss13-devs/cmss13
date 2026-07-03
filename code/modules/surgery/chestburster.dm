@@ -169,7 +169,7 @@
 			user.affected_message(target,
 				SPAN_WARNING("Your hands and your patient's insides are burned by acid as you forcefully rip a wriggling parasite out of [target]'s ribcage! It's a girl!"),
 				SPAN_WARNING("Your insides and [user]'s hands are burned by acid as \he rips a wriggling parasite out of your ribcage! It's a girl!"),
-				SPAN_WARNING("[user]'s hands are burned by acid as \he rips a wriggling parasite out of [target]'s ribcage! It's a girl!"))
+				SPAN_WARNING("[user]'s hands and [target]'s insices are burned by acid as \he rips a wriggling parasite out of [target]'s ribcage! It's a girl!"))
 
 			var/datum/internal_organ/impacted_organ = pick(surgery.affected_limb.internal_organs)
 			impacted_organ.take_damage(5, FALSE)
@@ -210,7 +210,7 @@
 	user.affected_message(target,
 		SPAN_WARNING("Your hands slip, bruising [target]'s organs and wounding the larva, which spills acid over your hands and into \his [surgery.affected_limb.cavity]."),
 		SPAN_WARNING("[user]'s hands slip, bruising your organs and wounding the larva, which spills acid over \his hands and into your [surgery.affected_limb.cavity]!"),
-		SPAN_WARNING("[user]'s hands slip, bruising [target]'s organs and spilling acid in \his [surgery.affected_limb.cavity]!"))
+		SPAN_WARNING("[user]'s hands slip, bruising [target]'s organs and spilling acid in the patient's [surgery.affected_limb.cavity] and the doctor's hands!"))
 
 	var/datum/internal_organ/int_organ = pick(surgery.affected_limb.internal_organs)
 	int_organ.take_damage(5,0)

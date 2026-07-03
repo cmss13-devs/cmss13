@@ -58,7 +58,8 @@
 
 	log_interact(user, target, "[key_name(user)] separated the corneas on [key_name(target)]'s eyes with [tool], starting [surgery].")
 
-	to_chat(target, SPAN_WARNING("Everything goes blurry."))
+	if(target.stat == CONSCIOUS)
+		to_chat(target, SPAN_WARNING("Everything goes blurry."))
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SHALLOW
 	target.disabilities |= NEARSIGHTED // My corneas! I can't see!
 
@@ -237,7 +238,9 @@
 
 	log_interact(user, target, "[key_name(user)] cauterized the incision around [key_name(target)]'s eyes with [tool], ending [surgery].")
 
-	to_chat(target, SPAN_NOTICE("The pain in your eyeballs is gone and you can see again!"))
+	if(target.stat == CONSCIOUS)
+		to_chat(target, SPAN_NOTICE("The pain in your eyeballs is gone and you can see again!"))
+
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SURFACE
 	target.disabilities &= ~NEARSIGHTED
 	target.sdisabilities &= ~DISABILITY_BLIND

@@ -190,7 +190,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 
 	play_preop_sound(user, target, target_zone, tool, surgery)
 
-	if(tool?.flags_item & ANIMATED_SURGICAL_TOOL) //int_organf we have an animated tool sprite, run it while we do any do_afters.
+	if(tool?.flags_item & ANIMATED_SURGICAL_TOOL) //If we have an animated tool sprite, run it while we do any do_afters.
 		tool.icon_state += "_on"
 
 	if(try_to_fail)

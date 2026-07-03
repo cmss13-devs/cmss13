@@ -78,7 +78,8 @@
 	if(patient_brain)
 		patient_brain.heal_damage(patient_brain.damage)
 
-	to_chat(target, SPAN_NOTICE("The rattling and piercing feelings in your brain cease. Your mind and ears feel more clear."))
+	if(target.stat == CONSCIOUS)
+		to_chat(target, SPAN_NOTICE("The rattling and piercing feelings in your brain cease. Your mind and ears feel more clear."))
 
 	var/obj/item/shard/shrapnel/bone_chips/human/bone_chips = locate() in target
 	if(bone_chips)
@@ -147,8 +148,10 @@
 	if(patient_brain && patient_brain.damage >= BONECHIPS_MAX_DAMAGE) // severe brain damage won't be fixed by curing the hematoma
 		patient_brain.damage = BONECHIPS_MAX_DAMAGE
 
-	to_chat(target, SPAN_NOTICE("The agonizing pressure in your skull ceases, but something still feels pokey up there!"))
 	new /obj/item/shard/shrapnel/bone_chips/human(target) //secretly adds bone chips
+	if(target.stat == CONSCIOUS)
+		to_chat(target, SPAN_NOTICE("The agonizing pressure in your skull releases. You feel monumentally better."))
+
 	target.pain.recalculate_pain()
 
 /datum/surgery_step/treat_hematoma/failure(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

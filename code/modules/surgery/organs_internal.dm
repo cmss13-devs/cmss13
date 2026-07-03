@@ -88,7 +88,7 @@ and organ transplant code which may come in handy in future but haven't been edi
 				if(int_organ && int_organ.damage > 0 && int_organ.robotic != ORGAN_ROBOT)
 					user.affected_message(target,
 						SPAN_NOTICE("You finish treating [target]'s damaged [int_organ.name]."),
-						SPAN_NOTICE("[user] finishes treating your damaged [int_organ.name]. It never felt better!"),
+						SPAN_NOTICE("[user] finishes treating your damaged [int_organ.name]."),
 						SPAN_NOTICE("[user] finishes treating [target]'s damaged [int_organ.name]."))
 
 					log_interact(user, target, "[key_name(user)] mended an organ in [key_name(target)]'s [surgery.affected_limb.display_name], possibly ending [surgery].")
@@ -105,8 +105,7 @@ and organ transplant code which may come in handy in future but haven't been edi
 
 	if(target.stat == CONSCIOUS && target.pain.reduction_pain < surgery.pain_reduction_required)//if patient is not under the proper anesthesia
 		target.emote("pain")
-	else
-		return
+
 
 	var/dam_amt = 2
 	switch(tool_type)

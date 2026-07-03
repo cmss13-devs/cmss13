@@ -4253,6 +4253,7 @@
 /turf/open/hybrisa/street/sidewalkcorner{
 	dir = 8
 	},
+/turf/open/hybrisa/street/sidewalkfull,
 /area/varadero/exterior/comms4)
 "mC" = (
 /obj/structure/closet/crate/ammo/alt,
@@ -4824,24 +4825,6 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
-"oh" = (
-/obj/structure/platform/metal/kutjevo_smooth/north{
-	climb_delay = 1
-	},
-/obj/structure/barricade/handrail{
-	name = "support struts";
-	desc = "Your platforms look pretty heavy king, let me support them for you.";
-	icon_state = "hr_kutjevo";
-	dir = 1
-	},
-/obj/structure/barricade/handrail{
-	name = "support struts";
-	desc = "Your platforms look pretty heavy king, let me support them for you.";
-	icon_state = "hr_kutjevo";
-	dir = 1
-	},
-/turf/open/gm/river/shallow_ocean_shallow_ocean,
-/area/varadero/exterior/pontoon_beach)
 "oi" = (
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/cargo)
@@ -8737,6 +8720,7 @@
 /turf/open/hybrisa/street/sidewalkcorner{
 	dir = 1
 	},
+/turf/open/hybrisa/street/sidewalkfull,
 /area/varadero/exterior/comms4)
 "Ly" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -8945,7 +8929,6 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
 "Ny" = (
-/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/barricade/plasteel/wired,
 /obj/structure/prop/tyrargo/boards/boards_1{
@@ -14671,7 +14654,7 @@ BL
 pI
 mD
 pg
-oh
+ji
 tK
 ng
 ln

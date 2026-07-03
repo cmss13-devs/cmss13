@@ -12968,10 +12968,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/south/hangar)
-"aLg" = (
-/turf/open/gm/river/shallow_ocean_shallow_ocean,
-/turf/open/gm/river/ocean/deep_ocean,
-/area/varadero/exterior/farocean)
 "aLh" = (
 /obj/structure/noticeboard,
 /turf/closed/wall/r_wall,
@@ -16447,10 +16443,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/security)
-"aUq" = (
-/turf/open/gm/river/ocean/deep_ocean,
-/turf/open/gm/river/shallow_ocean_shallow_ocean,
-/area/varadero/exterior/farocean)
 "aUr" = (
 /obj/structure/fence/slim/door,
 /obj/structure/catwalk,
@@ -17235,10 +17227,6 @@
 	},
 /turf/open/floor/shiva/north,
 /area/varadero/interior/research)
-"aWz" = (
-/turf/open/gm/river/shallow_ocean_shallow_ocean/fuelspill,
-/turf/open/gm/river/shallow_ocean_shallow_ocean/fuelspill/deep,
-/area/varadero/exterior/farocean)
 "aWA" = (
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/shiva/purple/east,
@@ -19140,7 +19128,6 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/pool)
 "bcc" = (
-/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice8";
 	pixel_x = 16;
@@ -22939,9 +22926,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/farocean)
 "bmO" = (
-/obj/structure/showcase/yautja/alt{
-	plane = -7
-	},
+/obj/structure/showcase/yautja/alt,
 /turf/open/gm/river/shallow_ocean_shallow_ocean/fuelspill/deep,
 /area/varadero/exterior/farocean)
 "bmP" = (
@@ -37500,10 +37485,6 @@
 /obj/effect/decal/hybrisa/road/lines4,
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
-"bYH" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/closed/wall/r_wall/unmeltable,
-/area/varadero/interior/oob)
 "bYI" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/vomit,
@@ -44537,10 +44518,7 @@
 /obj/structure/prop/hybrisa/misc/fake/lattice/full{
 	color = "#C6D3D1"
 	},
-/turf/open/gm/river/desert/deep/no_slowdown{
-	icon = 'icons/turf/ground_map.dmi';
-	icon_state = "seashallow"
-	},
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/exterior/pontoon_beach)
 "cqq" = (
 /obj/structure/shuttle/part/dropship3/transparent/inner_right_weapons{
@@ -80940,7 +80918,7 @@ enU
 huF
 huF
 huF
-bYH
+huF
 huF
 ykc
 bWj
@@ -108478,7 +108456,7 @@ pRa
 pRa
 pRa
 auN
-aWz
+avf
 auN
 pRa
 mPk
@@ -108663,7 +108641,7 @@ auN
 auN
 auN
 auN
-aUq
+pRa
 mPk
 mPk
 mPk
@@ -109210,7 +109188,7 @@ pRa
 pRa
 auN
 pRa
-axW
+pRa
 auN
 auN
 auN
@@ -110671,7 +110649,7 @@ pRa
 pRa
 pRa
 mPk
-aLg
+mPk
 pRa
 pRa
 pRa

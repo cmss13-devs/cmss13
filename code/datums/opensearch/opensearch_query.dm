@@ -169,7 +169,6 @@
 /// Gets the correct time string for a given time
 /datum/opensearch_query/proc/render_time_param(time_param)
 	SHOULD_BE_PURE(TRUE)
-	var/as_string = "[time_param]"
 	switch(time_mode)
 		if(OPENSEARCH_QUERY_TIME_MODE_RELATIVE)
 			return "now-[time_param]s"

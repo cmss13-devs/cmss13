@@ -7961,10 +7961,6 @@
 /obj/structure/prop/hybrisa/vehicles/Mining_Crawlers,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/caves/east)
-"axW" = (
-/turf/open/gm/river/shallow_ocean_shallow_ocean/fuelspill,
-/turf/open/gm/river/shallow_ocean_shallow_ocean,
-/area/varadero/exterior/farocean)
 "axX" = (
 /turf/open/floor/corsat/brown/northwest,
 /area/varadero/interior_protected/caves/digsite)
@@ -110287,7 +110283,7 @@ auN
 auN
 pRa
 auN
-axW
+pRa
 pRa
 mPk
 pRa

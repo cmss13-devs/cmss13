@@ -4250,9 +4250,6 @@
 	icon_state = "mfloor6"
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/hybrisa/street/sidewalkcorner{
-	dir = 8
-	},
 /turf/open/hybrisa/street/sidewalkfull,
 /area/varadero/exterior/comms4)
 "mC" = (
@@ -8717,9 +8714,6 @@
 /area/varadero/exterior/lz1_near)
 "Lx" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/hybrisa/street/sidewalkcorner{
-	dir = 1
-	},
 /turf/open/hybrisa/street/sidewalkfull,
 /area/varadero/exterior/comms4)
 "Ly" = (

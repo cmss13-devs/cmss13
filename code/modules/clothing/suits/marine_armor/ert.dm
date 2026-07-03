@@ -1023,22 +1023,25 @@
 	armor_rad = CLOTHING_ARMOR_GIGAHIGHPLUS
 	armor_internaldamage = CLOTHING_ARMOR_HIGHPLUS
 
-//LACN
+//======================//=LACN=\\==============================\\
+//===============================================================\\
 
 /obj/item/clothing/suit/storage/marine/light/vest/LACN
 	name = "LACN LM2 pattern armor"
 	desc = "A LACN variant of the Marine M2 Pattern Chestplate. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage. Notably this model of the M2 lacks the rigging and such of the later generation M2s still in use by the USCM making it easier to handle."
-	icon_state = "lacn_armor"
+	icon_state = "lacn_armor" //these sprites are all placeholders
+	item_state = "lacn_armor"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
 	)
+
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS // no bracers = no arm protection
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
 	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS
 	movement_compensation = SLOWDOWN_ARMOR_LIGHT
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	armor_internaldamage = CLOTHING_ARMOR_LOW
 	storage_slots = 3

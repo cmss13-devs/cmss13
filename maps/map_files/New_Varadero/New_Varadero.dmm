@@ -4459,8 +4459,7 @@
 /obj/effect/decal/remains/human{
 	pixel_x = -4;
 	pixel_y = -4;
-	step_x = 11;
-	step_y = 2
+	
 	},
 /obj/effect/spawner/gibspawner/human,
 /obj/effect/decal/cleanable/blood/splatter{
@@ -27148,9 +27147,8 @@
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/morgue)
 "bxK" = (
-/obj/effect/decal/cleanable/blood{
-	color = "#20d450";
-	basecolor = "#20d450"
+/obj/effect/decal/cleanable/blood/yautja{
+	icon_state = "mfloor5"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
@@ -41975,7 +41973,7 @@
 	},
 /obj/item/prop/almayer/flight_recorder{
 	name = "\improper  UD-6D 'Las Guasimas' flight recorder";
-	step_x = -5
+	pixel_x = -5
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/splatter{
@@ -49085,8 +49083,6 @@
 /area/varadero/interior_protected/maintenance/south)
 "diK" = (
 /obj/structure/prop/hybrisa/airport/dropshipenginedamagenofire{
-	step_x = -39;
-	step_y = -26;
 	pixel_x = 8;
 	pixel_y = -1
 	},
@@ -57122,8 +57118,7 @@
 /obj/item/clothing/mask/cigarette/cigar/tarbacks{
 	pixel_x = -7;
 	pixel_y = 8;
-	step_x = 15;
-	step_y = -1
+	
 	},
 /obj/item/ashtray/plastic{
 	pixel_x = 6;

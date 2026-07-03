@@ -477,10 +477,7 @@
 	deployed_structure.squad = user_squad
 	deployed_structure.update_full_label()
 	deployed_structure.setDir(user.dir)
-	if(user.dir == EAST || user.dir == WEST)
-		deployed_structure.icon_state = "east-west"
-	else
-		deployed_structure.icon_state = "north-south"
+	deployed_structure.icon_state = "deployed"
 
 	if(camera)
 		camera.forceMove(deployed_structure)
@@ -497,7 +494,7 @@
 	name = "FTC Tripod Camera"
 	desc = "A Motoca-430-T deployed tripod camera connected to the overwatch network."
 	icon = 'icons/obj/structures/machinery/defenses/overwatch.dmi'  // ToDO: Get real sprites
-	icon_state = "east-west"
+	icon_state = "deployed"
 	density = FALSE
 	anchored = TRUE
 	layer = OBJ_LAYER
@@ -511,7 +508,6 @@
 
 /obj/structure/overwatch_camera_tripod/Initialize(mapload)
 	. = ..()
-	icon_state = "north-south" // this probably shouldn't be placed roundstart in maps but :shrug:
 	base_label = "FTC - Field Tripod Camera"
 	update_full_label()
 	camera = new /obj/structure/machinery/camera/overwatch(src)

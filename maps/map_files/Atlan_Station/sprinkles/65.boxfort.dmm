@@ -1,4 +1,30 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/closed/wall/strata_outpost/reinforced/hull,
+/area/atlan/oob)
+"ab" = (
+/obj/structure/sign/poster/safety{
+	pixel_y = 33
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/station/storage)
+"ac" = (
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "xgib5"
+	},
+/obj/effect/spawner/gibspawner/xeno,
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/turf/open/floor/strata/floor2,
+/area/atlan/station/storage)
+"ad" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/station/storage)
+"ae" = (
+/turf/open/floor/strata/orange_edge/northeast,
+/area/atlan/station/storage)
 "au" = (
 /turf/open/floor/strata/orange_edge/southwest,
 /area/atlan/station/storage)
@@ -12,16 +38,12 @@
 	dir = 4;
 	pixel_y = 2
 	},
-/turf/open/floor/strata/floor3/east,
+/turf/open/floor/strata/orange_edge/north,
 /area/atlan/station/storage)
 "ds" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata/orange_edge/east,
-/area/atlan/station/storage)
-"eE" = (
-/obj/structure/barricade/wooden,
-/turf/open/floor/strata/floor3/east,
 /area/atlan/station/storage)
 "fl" = (
 /obj/effect/decal/cleanable/blood/gibs/xeno/down,
@@ -34,19 +56,11 @@
 /turf/open/floor/strata/orange_edge/west,
 /area/atlan/station/storage)
 "fv" = (
-/obj/structure/flag/plantable/upp,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/strata/floor3/east,
+/turf/open/floor/strata/orange_edge/north,
 /area/atlan/station/storage)
 "hI" = (
 /obj/effect/decal/cleanable/blood/gibs/xeno/body,
-/turf/open/floor/strata/floor2,
-/area/atlan/station/storage)
-"jh" = (
-/obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "xgib5"
-	},
-/obj/effect/spawner/gibspawner/xeno,
 /turf/open/floor/strata/floor2,
 /area/atlan/station/storage)
 "jr" = (
@@ -60,16 +74,14 @@
 /area/atlan/station/storage)
 "oJ" = (
 /obj/structure/surface/table/woodentable/poor,
-/obj/item/weapon/gun/rifle/ak4047,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/rifle/ak4047,
+/obj/item/ammo_magazine/rifle/ak4047,
+/obj/item/weapon/gun/rifle/ak4047,
 /turf/open/floor/strata/orange_edge/east,
 /area/atlan/station/storage)
 "rF" = (
-/obj/structure/surface/rack{
-	color = "#98a3ab"
-	},
-/obj/item/ammo_magazine/rifle/ak4047,
-/obj/item/ammo_magazine/rifle/ak4047,
+/obj/structure/flag/plantable/upp,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/storage)
 "rV" = (
@@ -93,31 +105,23 @@
 "uT" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/empty/secure,
-/turf/open/floor/strata/orange_edge/west,
+/turf/open/floor/strata/floor2,
 /area/atlan/station/storage)
 "vW" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/storage/box/mre/upp{
-	pixel_x = -1;
-	pixel_y = 7
+/obj/structure/surface/rack{
+	color = "#98a3ab"
 	},
-/turf/open/floor/strata/floor3/east,
+/obj/item/weapon/gun/smg/pps43,
+/obj/structure/machinery/light,
+/turf/open/floor/strata/floor2,
 /area/atlan/station/storage)
 "wl" = (
 /obj/structure/cargo_container/hybrisa/containersextended/blueright,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/storage)
-"wS" = (
-/obj/structure/cargo_container/upp_small/container_6/left,
-/turf/open/floor/strata/floor3/east,
-/area/atlan/station/storage)
 "xv" = (
 /obj/structure/cargo_container/upp_small/container_19/right,
-/turf/open/floor/strata/orange_edge/east,
-/area/atlan/station/storage)
-"zk" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/strata/orange_edge/east,
+/turf/open/floor/strata/floor2,
 /area/atlan/station/storage)
 "zI" = (
 /obj/effect/decal/cleanable/dirt,
@@ -138,25 +142,12 @@
 	},
 /turf/open/floor/strata/orange_edge/west,
 /area/atlan/station/storage)
-"DO" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/device/flashlight/lamp/tripod,
-/turf/open/floor/strata/floor3/east,
-/area/atlan/station/storage)
 "EY" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/orange_edge/west,
 /area/atlan/station/storage)
 "Ft" = (
 /turf/open/floor/strata/orange_edge/northwest,
-/area/atlan/station/storage)
-"Hk" = (
-/obj/structure/barricade/wooden{
-	dir = 4;
-	pixel_y = 2
-	},
-/obj/structure/barricade/wooden,
-/turf/open/floor/strata/floor3/east,
 /area/atlan/station/storage)
 "Hl" = (
 /obj/effect/decal/cleanable/dirt,
@@ -170,14 +161,15 @@
 /turf/open/floor/strata/orange_edge,
 /area/atlan/station/storage)
 "IN" = (
-/obj/structure/largecrate/random,
+/obj/item/device/flashlight/lamp/tripod,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/storage)
 "KC" = (
-/obj/effect/decal/cleanable/blood/gibs/xeno/body,
-/obj/effect/decal/cleanable/blood/gibs/xeno/limb,
-/obj/effect/spawner/gibspawner/xeno,
-/turf/open/floor/strata/floor3/east,
+/obj/structure/largecrate/random/barrel/true_random,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/strata/floor2,
 /area/atlan/station/storage)
 "KK" = (
 /obj/effect/decal/cleanable/dirt,
@@ -185,7 +177,6 @@
 /area/atlan/station/storage)
 "Lp" = (
 /obj/effect/decal/strata_decals/grime/grime4,
-/obj/structure/largecrate/random,
 /turf/open/floor/plating,
 /area/atlan/station/storage)
 "Lt" = (
@@ -195,18 +186,14 @@
 /area/atlan/station/storage)
 "LY" = (
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor/strata/floor3/east,
+/turf/open/floor/strata/orange_edge/north,
 /area/atlan/station/storage)
 "MM" = (
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/storage)
 "NN" = (
 /obj/structure/largecrate/random,
-/turf/open/floor/strata/orange_edge/west,
-/area/atlan/station/storage)
-"Py" = (
-/obj/structure/cargo_container/upp_small/container_6/right,
-/turf/open/floor/strata/floor3/east,
+/turf/open/floor/strata/orange_edge/northwest,
 /area/atlan/station/storage)
 "PM" = (
 /obj/structure/barricade/wooden,
@@ -222,11 +209,6 @@
 /obj/structure/cargo_container/upp/mk6/mid,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/storage)
-"Rg" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/largecrate/random/barrel/true_random,
-/turf/open/floor/strata/floor3/east,
-/area/atlan/station/storage)
 "Sb" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/decal/cleanable/blood/drip{
@@ -234,8 +216,7 @@
 	pixel_y = 4
 	},
 /obj/effect/decal/cleanable/blood,
-/obj/item/weapon/gun/smg/pps43,
-/turf/open/floor/strata/floor3/east,
+/turf/open/floor/strata/orange_edge/north,
 /area/atlan/station/storage)
 "Tt" = (
 /obj/effect/decal/cleanable/blood/gibs/xeno/body,
@@ -250,8 +231,11 @@
 /turf/open/floor/strata/floor2,
 /area/atlan/station/storage)
 "UQ" = (
-/obj/effect/decal/cleanable/blood/gibs/up,
-/turf/open/floor/strata/floor3/east,
+/obj/structure/sign/poster/upp{
+	pixel_y = -26
+	},
+/obj/structure/largecrate/random,
+/turf/open/floor/strata/floor2,
 /area/atlan/station/storage)
 "UZ" = (
 /obj/item/stack/sheet/wood,
@@ -262,13 +246,11 @@
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/storage)
 "VU" = (
-/obj/effect/decal/cleanable/blood/gibs/xeno/limb,
-/obj/effect/decal/cleanable/blood/xeno,
-/obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "xgib5"
+/obj/structure/largecrate/random,
+/obj/structure/machinery/light{
+	dir = 4
 	},
-/obj/effect/spawner/gibspawner/xeno,
-/turf/open/floor/strata/orange_edge/east,
+/turf/open/floor/strata/floor2,
 /area/atlan/station/storage)
 "Xv" = (
 /obj/structure/largecrate/random,
@@ -293,7 +275,7 @@ Cn
 jr
 jr
 Ft
-TF
+ac
 au
 jr
 "}
@@ -307,7 +289,7 @@ PM
 hI
 sO
 sO
-sO
+TF
 "}
 (3,1,1) = {"
 Hl
@@ -319,7 +301,7 @@ tq
 BD
 sO
 Lp
-jh
+sO
 "}
 (4,1,1) = {"
 Bz
@@ -327,23 +309,23 @@ rV
 uQ
 oJ
 ds
-rV
+ae
 xv
 VU
-zk
-rV
+Hl
+Bz
 "}
 (5,1,1) = {"
 HH
 MM
 QY
 rF
-DO
+KK
 LY
-eE
-Rg
-MM
-IN
+aa
+aa
+aa
+HH
 "}
 (6,1,1) = {"
 HH
@@ -353,9 +335,9 @@ zI
 IN
 fv
 UQ
-wS
+aa
 KC
-MM
+HH
 "}
 (7,1,1) = {"
 HH
@@ -365,9 +347,9 @@ wl
 UZ
 Sb
 vW
-Py
-Vl
-MM
+aa
+ab
+HH
 "}
 (8,1,1) = {"
 HH
@@ -376,10 +358,10 @@ Tt
 UZ
 Lt
 aw
-Hk
-IN
-MM
-KK
+aa
+aa
+aa
+HH
 "}
 (9,1,1) = {"
 au
@@ -389,7 +371,7 @@ fl
 jr
 NN
 uT
-jr
-jr
-jr
+ad
+sO
+au
 "}

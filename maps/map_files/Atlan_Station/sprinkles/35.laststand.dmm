@@ -28,14 +28,6 @@
 	},
 /turf/open/floor/plating/prison,
 /area/space)
-"j" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 8;
-	pixel_x = -10;
-	pixel_y = -1
-	},
-/turf/open/floor/strata/floor2,
-/area/space)
 "k" = (
 /turf/open/floor/strata/floor2,
 /area/space)
@@ -207,7 +199,7 @@ k
 b
 H
 k
-j
+k
 "}
 (3,1,1) = {"
 G

@@ -47,6 +47,8 @@
 
 /area/atlan/station
 	name = "Atlan - Station"
+	icon_state = "station0"
+	ceiling = CEILING_GLASS
 
 /area/atlan/station/medical
 	name = "Station - Medical Bay"
@@ -146,6 +148,7 @@
 	icon_state = "atmos"
 	linked_lz = list(DROPSHIP_LZ1, DROPSHIP_LZ2)
 	minimap_color = MINIMAP_AREA_ENGI
+	ceiling = CEILING_METAL
 
 /area/atlan/station/stairs1
 	name = "Station - West Staircase"
@@ -163,6 +166,7 @@
 	name = "Hab Ring - Electrical Substation"
 	icon_state = "outpost_engi_1"
 	minimap_color = MINIMAP_AREA_ENGI
+	ceiling = CEILING_METAL
 
 /area/atlan/station/cargo
 	name = "Station - Cargo"

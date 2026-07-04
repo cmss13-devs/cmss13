@@ -18338,6 +18338,13 @@
 /obj/structure/platform/stone/soro,
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
+"aUl" = (
+/obj/structure/prop/invuln/rope{
+	pixel_x = 4;
+	pixel_y = 14
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud,
+/area/lv1021/outdoors/jungle/jungleW_north)
 "aUm" = (
 /obj/structure/flora/grass/temperate{
 	icon_state = "9";
@@ -18346,6 +18353,20 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/landing_zone_1)
+"aUn" = (
+/obj/structure/prop/invuln/rope{
+	pixel_x = -10;
+	pixel_y = 6
+	},
+/turf/open_space,
+/area/lv1021/oob)
+"aUo" = (
+/obj/structure/prop/invuln/rope{
+	pixel_x = 4;
+	pixel_y = 14
+	},
+/turf/open_space,
+/area/lv1021/oob)
 "aUp" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -34634,9 +34655,9 @@
 /turf/open/floor/interior/wood,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
 "oFT" = (
-/obj/effect/rappel_rope{
-	pixel_x = -11;
-	pixel_y = 3
+/obj/structure/prop/invuln/rope{
+	pixel_x = -10;
+	pixel_y = 6
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleW_south)
@@ -51622,7 +51643,7 @@ hXu
 rGT
 rGT
 hXu
-opF
+aUl
 qBg
 qBg
 qBg
@@ -83617,7 +83638,7 @@ hiw
 hiw
 hiw
 hiw
-jTM
+aUn
 hiw
 fej
 hXu
@@ -91703,7 +91724,7 @@ vSS
 vSS
 jvq
 fej
-hiw
+aUo
 hiw
 hiw
 hiw

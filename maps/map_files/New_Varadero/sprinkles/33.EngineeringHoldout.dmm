@@ -41,16 +41,14 @@
 /turf/open/floor/shiva,
 /area/template_noop)
 "ae" = (
-/turf/closed/wall/r_wall/unmeltable,
+/obj/structure/sign/safety/maint,
+/turf/closed/wall/r_wall,
 /area/template_noop)
 "af" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva/multi_tiles,
+/turf/closed/wall/r_wall/unmeltable,
 /area/template_noop)
 "ag" = (
-/obj/effect/decal/cleanable/blood/xeno,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/gibspawner/human,
 /turf/open/floor/shiva/multi_tiles,
 /area/template_noop)
 "ah" = (
@@ -66,38 +64,40 @@
 /turf/open/floor/shiva/blue,
 /area/template_noop)
 "ai" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/gibspawner/human,
+/turf/open/floor/shiva/multi_tiles,
+/area/template_noop)
+"aj" = (
 /obj/structure/sign/poster/safety,
 /turf/closed/wall/r_wall,
 /area/template_noop)
-"aj" = (
+"ak" = (
 /obj/structure/window_frame/colony/reinforced,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/template_noop)
-"ak" = (
+"al" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/effect/spawner/gibspawner/xeno,
 /turf/open/floor/shiva/multi_tiles,
 /area/template_noop)
-"al" = (
+"am" = (
 /obj/structure/sign/poster/propaganda{
 	pixel_x = 6;
 	pixel_y = 1
 	},
 /turf/closed/wall/r_wall,
 /area/template_noop)
-"am" = (
+"an" = (
 /obj/structure/sign/poster/hunk,
 /turf/closed/wall/r_wall,
 /area/template_noop)
-"an" = (
+"ao" = (
 /obj/structure/sign/poster/ad{
 	icon_state = "poster35"
 	},
-/turf/closed/wall/r_wall,
-/area/template_noop)
-"ao" = (
-/obj/structure/sign/safety/maint,
 /turf/closed/wall/r_wall,
 /area/template_noop)
 "aY" = (
@@ -873,10 +873,10 @@
 IE
 Ng
 Ng
-aj
+ak
 SC
 Ng
-ae
+af
 Ng
 GY
 er
@@ -885,7 +885,7 @@ Ng
 aa
 "}
 (2,1,1) = {"
-al
+am
 wP
 cJ
 jg
@@ -902,8 +902,8 @@ Ng
 (3,1,1) = {"
 IE
 zQ
-af
-af
+ag
+ag
 Bi
 GU
 Ng
@@ -918,8 +918,8 @@ lb
 IE
 WQ
 RF
-ak
-af
+al
+ag
 NA
 Ng
 tP
@@ -934,7 +934,7 @@ IE
 ZX
 Ah
 uh
-ag
+ai
 ah
 GY
 bw
@@ -945,9 +945,9 @@ Nl
 ab
 "}
 (6,1,1) = {"
-am
+an
 pz
-af
+ag
 no
 Op
 kt
@@ -960,7 +960,7 @@ PA
 nL
 "}
 (7,1,1) = {"
-an
+ao
 Fm
 Wk
 jD
@@ -979,7 +979,7 @@ IE
 OM
 RF
 lE
-af
+ag
 yI
 Ng
 jE
@@ -992,9 +992,9 @@ LP
 (9,1,1) = {"
 IE
 lj
-af
+ag
 lE
-af
+ag
 Di
 GY
 qY
@@ -1007,9 +1007,9 @@ ab
 (10,1,1) = {"
 IE
 Kg
-af
+ag
 lE
-af
+ag
 Gm
 Ng
 dN
@@ -1038,14 +1038,14 @@ kr
 IE
 IE
 sB
-ao
-ai
+ae
+aj
 IE
 IE
 IE
 IE
 sB
-ao
+ae
 IE
 ac
 "}

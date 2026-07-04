@@ -9473,6 +9473,9 @@
 	color = "#9d7766";
 	pixel_x = 7
 	},
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
 /turf/open/auto_turf/lv_grass/layer0,
 /area/lv1021/indoors/caves/landing_zone)
 "awU" = (
@@ -9933,6 +9936,9 @@
 	pixel_x = 12;
 	pixel_y = -8
 	},
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/indoors/caves/landing_zone)
 "axZ" = (
@@ -10022,9 +10028,6 @@
 	color = "#9d7766";
 	pixel_x = 12;
 	pixel_y = -8
-	},
-/obj/structure/machinery/light/small{
-	dir = 4
 	},
 /turf/open/auto_turf/lv_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_s_e)
@@ -26561,10 +26564,6 @@
 /obj/structure/tunnel,
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lv1021/indoors/caves/landing_zone)
-"bnE" = (
-/obj/structure/machinery/light/small,
-/turf/open/auto_turf/tyrargo_grass/layer1,
-/area/lv1021/outdoors/jungle/jungleC_s_e)
 "bnF" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/auto_turf/lv_grass/layer0,
@@ -74266,7 +74265,7 @@ ajL
 ayu
 ayo
 ayc
-bnE
+sdt
 axI
 axu
 wzQ

@@ -71,13 +71,13 @@
 
 	if (href_list["login"])
 		if(istype(usr,/mob/living/silicon))
-			locked = 0
+			locked = FALSE
 			last_configurator = usr.name
 		else
-			var/obj/item/card_with_access = usr.get_active_hand()
-			if (card_with_access && src.check_access(card_with_access))
-				locked = 0
-				last_configurator = card_with_access:registered_name
+			var/obj/item/card/id/card_with_access = usr.get_active_hand()
+			if (istype(card_with_access) && check_access(card_with_access))
+				locked = FALSE
+				last_configurator = card_with_access.registered_name
 
 	if (locked)
 		return

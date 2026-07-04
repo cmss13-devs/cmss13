@@ -45,10 +45,6 @@
 /obj/item/weapon/gun/rifle/type71/carbine,
 /turf/open/floor/strata/red1,
 /area/atlan/station/security)
-"aaj" = (
-/obj/item/storage/belt/medical/full,
-/turf/closed/wall/hybrisa/colony/hospital,
-/area/atlan/station/medical)
 "aak" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -1151,13 +1147,6 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/interior/plastic,
 /area/atlan/station/double_dorms)
-"adZ" = (
-/obj/item/limb/head/synth{
-	name = "shattered synthetic head";
-	desc = "This appears to be the head of a Nyugen synthetic, though it is so destroyed there is no way in hell anyone is going to bring it back to even basic functionality."
-	},
-/turf/open/floor/strata/floor2,
-/area/atlan/station/substation)
 "aea" = (
 /obj/structure/sign/poster/safety{
 	pixel_x = -5;
@@ -3892,10 +3881,6 @@
 "cfB" = (
 /obj/effect/landmark/start/working_joe/colony,
 /obj/effect/landmark/late_join/working_joe/colony,
-/obj/item/limb/head/synth{
-	name = "shattered synthetic head";
-	desc = "This appears to be the head of a Nyugen synthetic, though it is so destroyed there is no way in hell anyone is going to bring it back to even basic functionality."
-	},
 /turf/open/floor/strata/floor2,
 /area/atlan/station/substation)
 "cfC" = (
@@ -17807,9 +17792,6 @@
 /turf/open/floor/strata,
 /area/atlan/station/single_dorms)
 "lss" = (
-/obj/structure/barricade/deployable{
-	dir = 4
-	},
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs,
 /obj/effect/decal/cleanable/blood/xeno{
@@ -21294,10 +21276,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/white_cyan2/west,
 /area/atlan/station/medical)
-"nNT" = (
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3,
-/turf/closed/wall/almayer/white/hull,
-/area/atlan/oob)
 "nOL" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8
@@ -49088,8 +49066,8 @@ eoJ
 eoJ
 eoJ
 eoJ
-aaj
-aaj
+eoJ
+eoJ
 eoJ
 aDV
 jFo
@@ -49718,7 +49696,7 @@ vBS
 anA
 pqu
 ssL
-adZ
+xOF
 sTg
 aAk
 ssq
@@ -60835,7 +60813,7 @@ aSd
 lGF
 aSd
 lGF
-lGF
+aAk
 frk
 isk
 iOU
@@ -61643,7 +61621,7 @@ aSd
 aSd
 aSd
 aSd
-lGF
+aAk
 lGF
 lGF
 lGF
@@ -61846,7 +61824,7 @@ aSd
 aSd
 lGF
 aSd
-lGF
+aAk
 lGF
 lGF
 lGF
@@ -62049,7 +62027,7 @@ aSd
 lGF
 aSd
 aSd
-lGF
+aAk
 lGF
 lGF
 lGF
@@ -62252,9 +62230,9 @@ aSd
 lGF
 lGF
 aSd
-lGF
-lGF
-lGF
+aAk
+aAk
+aAk
 aev
 mkk
 cwE
@@ -62668,7 +62646,7 @@ nsM
 mkk
 qbJ
 lGF
-lGF
+aSd
 mkk
 isk
 mkk
@@ -62862,7 +62840,7 @@ aSd
 lGF
 lGF
 lGF
-lGF
+aAk
 fPU
 adA
 lpW
@@ -62870,9 +62848,9 @@ mkk
 lpW
 mkk
 mkk
-lGF
-lGF
-lGF
+aSd
+aSd
+aSd
 nai
 pPE
 mkk
@@ -63074,8 +63052,8 @@ cwE
 mkk
 lGF
 lGF
-lGF
-lGF
+aSd
+aSd
 isk
 isk
 isk
@@ -63276,8 +63254,8 @@ dkg
 mkk
 lpW
 lGF
-lGF
-lGF
+aSd
+aSd
 api
 isk
 isk
@@ -63479,7 +63457,7 @@ hLh
 hLh
 dkg
 lGF
-lGF
+aSd
 pMx
 pMx
 isk
@@ -63884,7 +63862,7 @@ hLh
 iWS
 iWS
 lGF
-lGF
+aSd
 lGF
 qkj
 pMx
@@ -65746,7 +65724,7 @@ pUd
 pUd
 pUd
 saK
-nNT
+saK
 nQZ
 nQZ
 nQZ

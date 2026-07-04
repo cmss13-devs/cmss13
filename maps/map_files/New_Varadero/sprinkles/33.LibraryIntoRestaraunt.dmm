@@ -42,7 +42,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/icefloor/asteroidplating,
-/area/template_noop)
+/area/varadero/interior/library)
 "aj" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 4;
@@ -56,7 +56,7 @@
 	opened = 1
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
-/area/template_noop)
+/area/varadero/interior/library)
 "ak" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -73,7 +73,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidwarning/east,
-/area/template_noop)
+/area/varadero/interior/library)
 "an" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 4;
@@ -84,7 +84,7 @@
 	},
 /obj/structure/closet/bodybag,
 /turf/open/floor/plating/icefloor/asteroidplating,
-/area/template_noop)
+/area/varadero/interior/library)
 "ao" = (
 /obj/effect/landmark/corpsespawner/new_varadero/lacn_police,
 /obj/effect/decal/cleanable/blood,
@@ -101,7 +101,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/icefloor/asteroidplating,
-/area/template_noop)
+/area/varadero/interior/library)
 "aq" = (
 /obj/effect/landmark/crap_item,
 /obj/structure/surface/table/woodentable/fancy,
@@ -117,7 +117,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidwarning/east,
-/area/template_noop)
+/area/varadero/interior/library)
 "as" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 4;
@@ -129,7 +129,7 @@
 /obj/structure/machinery/portable_atmospherics/canister/empty,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/icefloor/asteroidplating,
-/area/template_noop)
+/area/varadero/interior/library)
 "at" = (
 /obj/effect/decal/warning_stripes/asteroid{
 	icon_state = "warning_s";
@@ -151,7 +151,7 @@
 	pixel_y = -9
 	},
 /turf/closed/wall,
-/area/template_noop)
+/area/varadero/interior/library)
 "av" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/cmo,
@@ -175,14 +175,14 @@
 	explo_proof = 1
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
-/area/template_noop)
+/area/varadero/interior/library)
 "ay" = (
 /turf/open/floor/asteroidwarning/west,
-/area/template_noop)
+/area/varadero/interior/library)
 "az" = (
 /obj/structure/fence/slim,
 /turf/open/floor/asteroidfloor/north,
-/area/template_noop)
+/area/varadero/interior/library)
 "aA" = (
 /obj/structure/closet/secure_closet/guncabinet{
 	locked = 0;
@@ -192,11 +192,11 @@
 	explo_proof = 1
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
-/area/template_noop)
+/area/varadero/interior/library)
 "aB" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidwarning/west,
-/area/template_noop)
+/area/varadero/interior/library)
 "aC" = (
 /obj/structure/closet/secure_closet/guncabinet{
 	locked = 0;
@@ -208,7 +208,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/icefloor/asteroidplating,
-/area/template_noop)
+/area/varadero/interior/library)
 "aD" = (
 /obj/structure/window/framed/colony,
 /obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
@@ -217,7 +217,7 @@
 "aE" = (
 /obj/structure/fence/slim/door,
 /turf/open/floor/asteroidfloor/north,
-/area/template_noop)
+/area/varadero/interior/library)
 "bl" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/eastright,
@@ -335,7 +335,7 @@
 	req_one_access = null
 	},
 /turf/open/floor/asteroidfloor/north,
-/area/template_noop)
+/area/varadero/interior/library)
 "lK" = (
 /obj/structure/closet/secure_closet/freezer/fridge/groceries,
 /obj/effect/decal/cleanable/dirt,
@@ -384,7 +384,7 @@
 /area/varadero/interior/library/restaraunt)
 "re" = (
 /turf/closed/wall,
-/area/template_noop)
+/area/varadero/interior/library)
 "sP" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -412,7 +412,7 @@
 	},
 /obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/asteroidwarning/east,
-/area/template_noop)
+/area/varadero/interior/library)
 "vS" = (
 /obj/structure/machinery/storm_siren{
 	pixel_x = -7;
@@ -580,7 +580,7 @@
 /obj/item/book/manual/paperwork,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidwarning/east,
-/area/template_noop)
+/area/varadero/interior/library)
 "JM" = (
 /obj/structure/bed/chair/wood/wings{
 	dir = 4;
@@ -627,7 +627,7 @@
 	pixel_x = 15
 	},
 /turf/closed/wall,
-/area/template_noop)
+/area/varadero/interior/library)
 "Ol" = (
 /obj/structure/machinery/door/window/eastright,
 /obj/effect/decal/cleanable/dirt,
@@ -677,7 +677,7 @@
 	explo_proof = 1
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
-/area/template_noop)
+/area/varadero/interior/library)
 "Vs" = (
 /obj/item/tool/kitchen/tray{
 	pixel_y = 25

@@ -1,0 +1,4 @@
+author: "MistChristmas"
+delete-after: True
+changes:
+  - rscadd: "Harm intent forces Auto-Fire instead of PB. Ground/Restrained Executes now need the head targeted."

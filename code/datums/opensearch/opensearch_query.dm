@@ -62,9 +62,7 @@
 	query_status = OPENSEARCH_QUERY_STATUS_READY
 	if(bootstrap)
 		var/list/splitwords = splittext(bootstrap, " ")
-		user_query = ""
-		for(var/word in splitwords)
-			user_query += "[word]~2"
+		user_query = splitwords.Join(" ")
 		user_query = "([user_query])^3 "
 
 /datum/opensearch_query/Destroy(force)
@@ -120,7 +118,7 @@
 	if(length(user_query))
 		must[++must.len] = list("query_string" = list("query" = user_query))
 	else
-		must[++must.len] = list("match_all" = alist())
+		must[++must.len] = list("match_all" = alist()) // This must be an alist so we get a JSON {} and not a []
 	. = null
 
 
@@ -269,13 +267,13 @@
 			var/x = text2num(params["x"])
 			var/y = text2num(params["y"])
 			var/z = text2num(params["z"])
-			var/client/client = usr?.client
+			var/client/client = ui.user?.client
 			if(x && y && z && client)
 				client.jumptocoord(x, y, z)
 		if("playerpanel")
 			var/client/target_client = GLOB.directory[params["ckey"]]
 			var/mob/target_mob = target_client?.mob
-			var/datum/admins/admin_user = GLOB.admin_datums[usr?.client?.ckey]
+			var/datum/admins/admin_user = GLOB.admin_datums[ui.user?.client?.ckey]
 			if(target_mob && admin_user)
 				admin_user.show_player_panel(target_mob)
 

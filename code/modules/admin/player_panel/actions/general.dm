@@ -142,10 +142,10 @@
 	name = "OpenSearch"
 
 /datum/player_action/opensearch_query/act(client/user, mob/target, list/params)
-	if(!target.client || !user.mob)
+	if(!target || !user.mob)
 		return
 
-	var/datum/opensearch_query/query = SSopensearch.new_query(target.client.ckey)
+	var/datum/opensearch_query/query = SSopensearch.new_query(target.persistent_ckey)
 	query.tgui_interact(user.mob)
 	return TRUE
 

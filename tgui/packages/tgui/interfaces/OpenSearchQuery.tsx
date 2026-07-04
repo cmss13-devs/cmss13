@@ -342,13 +342,6 @@ export const OpenSearchQuery = (props) => {
                   Save
                 </Button>
               </Stack.Item>
-              {/*
-              <Stack.Item align="left">
-                <Box width={5} mt={0.5} color="label">
-                  ID: &amp;{queryId}
-                </Box>
-              </Stack.Item>
-              */}
               <Stack.Item grow align="center">
                 <Input
                   minWidth={25}

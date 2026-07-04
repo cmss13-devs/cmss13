@@ -112,6 +112,11 @@
 
 	/// Currently loaded ammo that we shoot from.
 	var/obj/item/ammo_magazine/hardpoint/ammo
+	/// The type of magazine this hardpoint accepts, cached from ammo's class-default in Initialize()
+	/// unlike ammo itself, this stays set even while ammo is temporary null, so
+	/// get_hardpoints_with_ammo()/try_add_clip()/the weapons loader can still recognize this
+	/// hardpoint as reloadable and know whatt magazine type to accept
+	var/ammo_type
 	/// Spare magazines that we can reload from.
 	var/list/backup_clips
 	/// Maximum amount of spare mags.
@@ -174,6 +179,8 @@
 /obj/item/hardpoint/Initialize()
 	. = ..()
 	set_bullet_traits()
+	if(ammo)
+		ammo_type = ammo.type
 	AddComponent(/datum/component/automatedfire/autofire, fire_delay, burst_delay, burst_amount, gun_firemode, autofire_slow_mult, CALLBACK(src, PROC_REF(set_burst_firing)), CALLBACK(src, PROC_REF(reset_fire)), CALLBACK(src, PROC_REF(fire_wrapper)), callback_set_firing = CALLBACK(src, PROC_REF(set_auto_firing)))
 
 /obj/item/hardpoint/Destroy()

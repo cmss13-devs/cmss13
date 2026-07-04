@@ -16,8 +16,8 @@
 	health = 500
 	traverse_arc = 60
 
-	ammo = new /obj/item/ammo_magazine/hardpoint/ltb_cannon
-	max_clips = 3
+	ammo = new /obj/item/ammo_magazine/hardpoint/ltb_cannon/he_shell
+	max_clips = 1
 
 	px_offsets = list(
 		"1" = list(0, 21),

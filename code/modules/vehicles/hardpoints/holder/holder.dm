@@ -166,7 +166,7 @@
 /obj/item/hardpoint/holder/proc/get_hardpoints_with_ammo(seat)
 	var/list/hps = list()
 	for(var/obj/item/hardpoint/H in hardpoints)
-		if(!H.ammo || seat && seat != H.allowed_seat)
+		if(!H.ammo_type || seat && seat != H.allowed_seat)
 			continue
 		hps += H
 	return hps

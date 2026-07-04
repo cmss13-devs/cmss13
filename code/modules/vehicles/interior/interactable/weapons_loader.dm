@@ -88,7 +88,16 @@
 		return
 
 	if(!LAZYLEN(HP.backup_clips))
-		to_chat(user, SPAN_WARNING("\The [HP] has no remaining backup magazines!"))
+		if(!HP.ammo)
+			to_chat(user, SPAN_WARNING("\The [HP] has no remaining backup magazines, and no magazine currently loaded!"))
+			return
+
+		to_chat(user, SPAN_WARNING("\The [HP] has no remaining backup magazines, so you remove the current magazine instead."))
+		HP.ammo.forceMove(get_turf(user))
+		HP.ammo.update_icon()
+		HP.ammo = null
+		HP.owner?.update_icon()
+		playsound(loc, 'sound/machines/hydraulics_3.ogg', 50)
 		return
 
 	var/obj/item/ammo_magazine/M = LAZYACCESS(HP.backup_clips, 1)
@@ -102,10 +111,12 @@
 		to_chat(user, SPAN_WARNING("Something interrupted you while reloading \the [HP]."))
 		return
 
-	HP.ammo.forceMove(get_turf(src))
-	HP.ammo.update_icon()
+	if(HP.ammo)
+		HP.ammo.forceMove(get_turf(src))
+		HP.ammo.update_icon()
 	HP.ammo = M
 	LAZYREMOVE(HP.backup_clips, M)
+	HP.owner?.update_icon()
 
 	playsound(loc, 'sound/machines/hydraulics_3.ogg', 50)
 	to_chat(user, SPAN_NOTICE("You reload \the [HP]. Ammo: <b>[SPAN_HELPFUL(HP.ammo.current_rounds)]/[SPAN_HELPFUL(HP.ammo.max_rounds)]</b> | Mags: <b>[SPAN_HELPFUL(LAZYLEN(HP.backup_clips))]/[SPAN_HELPFUL(HP.max_clips)]</b>"))

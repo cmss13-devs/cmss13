@@ -375,11 +375,18 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 	desc = "A giant cannon firing explosive 86mm shells. You'd be lucky if this even leaves the dust of whatever you hit with it."
 	spawned_gear_list = list(
 		/obj/item/hardpoint/primary/cannon,
-		/obj/item/ammo_magazine/hardpoint/ltb_cannon,
-		/obj/item/ammo_magazine/hardpoint/ltb_cannon,
-		/obj/item/ammo_magazine/hardpoint/ltb_cannon,
-		/obj/item/ammo_magazine/hardpoint/ltb_cannon,
-		/obj/item/ammo_magazine/hardpoint/ltb_cannon,
+		/obj/item/ammo_magazine/hardpoint/ltb_cannon/he_shell,
+		/obj/item/ammo_magazine/hardpoint/ltb_cannon/he_shell,
+		/obj/item/ammo_magazine/hardpoint/ltb_cannon/he_shell,
+		/obj/item/ammo_magazine/hardpoint/ltb_cannon/he_shell,
+		/obj/item/ammo_magazine/hardpoint/ltb_cannon/he_shell,
+		/obj/item/ammo_magazine/hardpoint/ltb_cannon/he_shell,
+		/obj/item/ammo_magazine/hardpoint/ltb_cannon/he_shell,
+		/obj/item/ammo_magazine/hardpoint/ltb_cannon/he_shell,
+		/obj/item/ammo_magazine/hardpoint/ltb_cannon/he_shell,
+		/obj/item/ammo_magazine/hardpoint/ltb_cannon/he_shell,
+		/obj/item/ammo_magazine/hardpoint/ltb_cannon/he_shell,
+		/obj/item/ammo_magazine/hardpoint/ltb_cannon/he_shell,
 	)
 
 /obj/effect/essentials_set/tank/gatling

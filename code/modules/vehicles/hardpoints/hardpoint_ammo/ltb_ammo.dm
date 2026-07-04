@@ -11,3 +11,13 @@
 
 /obj/item/ammo_magazine/hardpoint/ltb_cannon/update_icon()
 	icon_state = "ltbcannon_[current_rounds]"
+
+// Single-round alternative magazine, still istype()-matched against the hardpoint's cached ammo_type
+/obj/item/ammo_magazine/hardpoint/ltb_cannon/he_shell
+	name = "86x455mm HE Shell"
+	desc = "A single high-explosive 86x455mm shell for the LTB Cannon."
+	icon_state = "lbtshell_1"
+	max_rounds = 1
+
+/obj/item/ammo_magazine/hardpoint/ltb_cannon/he_shell/update_icon()
+	icon_state = "lbtshell_[current_rounds]"

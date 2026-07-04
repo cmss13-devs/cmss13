@@ -508,7 +508,7 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 	if(author)
 		author.current_mhelp = src
 
-	log_mhelp("[usr.key] reopened [author_key]'s mentorhelp thread")
+	log_mhelp("[usr.username()] reopened [author_key]'s mentorhelp thread")
 	notify("[SPAN_GREEN(usr.username())] has reopened this mentorhelp thread.",
 		unformatted_text = "[usr.username()] has reopened this mentorhelp thread.")
 

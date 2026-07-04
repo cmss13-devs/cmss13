@@ -507,11 +507,11 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 		initiator.current_ticket = src
 
 	AddInteraction(SPAN_PURPLE("Reopened by [key_name_admin(usr)]"),
-	plain_message = "Reopened by [usr.key]", message_type = "system")
+	plain_message = "Reopened by [usr.username()]", message_type = "system")
 	var/msg = SPAN_ADMINHELP("Ticket [TicketHref("#[id]")] reopened by [key_name_admin(usr)].")
 	message_admins(msg)
 	log_admin_private(msg)
-	log_ahelp(id, "Reopened", "Reopened by [usr.key]", usr.ckey)
+	log_ahelp(id, "Reopened", "Reopened by [usr.username()]", usr.ckey)
 
 //private
 /datum/admin_help/proc/RemoveActive()
@@ -537,11 +537,11 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 	RemoveActive()
 	state = AHELP_CLOSED
 	GLOB.ahelp_tickets.ListInsert(src)
-	AddInteraction(SPAN_RED("Closed by [key_name]."), plain_message = "Closed by [usr.key]", message_type = "system")
+	AddInteraction(SPAN_RED("Closed by [key_name]."), plain_message = "Closed by [usr.username()]", message_type = "system")
 	if(!silent)
 		var/msg = "Ticket [TicketHref("#[id]")] closed by [key_name]."
 		message_admins(msg)
-		log_ahelp(id, "Closed", "Closed by [usr.key]", null, usr.ckey)
+		log_ahelp(id, "Closed", "Closed by [usr.username()]", null, usr.ckey)
 		log_admin_private(msg)
 
 //Mark open ticket as resolved/legitimate, returns ahelp verb
@@ -561,12 +561,12 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 	addtimer(CALLBACK(initiator, /client/proc/giveadminhelpverb), 50)
 
 	AddInteraction(SPAN_GREEN("Resolved by [key_name]."),
-	plain_message = "Resolved by [usr.key]", message_type = "system")
+	plain_message = "Resolved by [usr.username()]", message_type = "system")
 	to_chat(initiator, SPAN_ADMINHELP("Your ticket has been resolved by an admin. The Adminhelp verb will be returned to you shortly."), confidential = TRUE)
 	if(!silent)
 		var/msg = "Ticket [TicketHref("#[id]")] resolved by [key_name]"
 		message_admins(msg)
-		log_ahelp(id, "Resolved", "Resolved by [usr.key]", null, usr.ckey)
+		log_ahelp(id, "Resolved", "Resolved by [usr.username()]", null, usr.ckey)
 		log_admin_private(msg)
 
 /datum/admin_help/proc/defer_to_mentors()
@@ -602,13 +602,13 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 	MH.subject = subject
 	MH.broadcast_unhandled(message, initiator)
 
-	AddInteraction("Deferred to Mentors by [key_name_admin(usr)].", plain_message = "Deferred to Mentors by [usr.key]", message_type = "system")
+	AddInteraction("Deferred to Mentors by [key_name_admin(usr)].", plain_message = "Deferred to Mentors by [usr.username()]", message_type = "system")
 	to_chat(initiator, SPAN_ADMINHELP("[usr.username()] has deferred your ticket to Mentors."))
-	log_admin_private("Ticket [TicketHref("#[id]")] deferred to mentors by [usr.key].")
+	log_admin_private("Ticket [TicketHref("#[id]")] deferred to mentors by [usr.username()].")
 	for(var/client/admin in GLOB.admins)
 		if(CLIENT_IS_STAFF(admin) || CLIENT_IS_MENTOR(admin))
 			to_chat(admin, SPAN_ADMINNOTICE("[usr.username()] has deferred [initiator.username()]'s ticket to Mentors."))
-	log_ahelp(id, "Defer", "Deferred to mentors by [usr.key]", null, usr.ckey)
+	log_ahelp(id, "Defer", "Deferred to mentors by [usr.username()]", null, usr.ckey)
 	Close(silent = TRUE)
 
 /datum/admin_help/proc/mark_ticket(mob/marking_admin)
@@ -641,11 +641,11 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 /datum/admin_help/proc/unmark_ticket()
 	var/key_name = key_name_admin(usr)
 	AddInteraction("Unmarked by [key_name] (previously [marked_admin]).",
-		plain_message = "Unmarked by [usr.key] (previously [marked_admin])", message_type = "system")
+		plain_message = "Unmarked by [usr.username()] (previously [marked_admin])", message_type = "system")
 	var/msg = "Ticket [TicketHref("#[id]")] unmarked by [key_name]."
 	message_admins(msg)
 	log_admin_private(msg)
-	log_ahelp(id, "Unmarked", "Unmarked by [usr.key] (previously [marked_admin])", sender = usr.ckey)
+	log_ahelp(id, "Unmarked", "Unmarked by [usr.username()] (previously [marked_admin])", sender = usr.ckey)
 	marked_admin = null
 
 //Close and return ahelp verb, use if ticket is incoherent
@@ -670,8 +670,8 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 	message_admins(msg)
 	log_admin_private(msg)
 	AddInteraction("Rejected by [key_name].",
-		plain_message = "Rejected by [usr.key]", message_type = "system")
-	log_ahelp(id, "Rejected", "Rejected by [usr.key]", null, usr.ckey)
+		plain_message = "Rejected by [usr.username()]", message_type = "system")
+	log_ahelp(id, "Rejected", "Rejected by [usr.username()]", null, usr.ckey)
 	Close(silent = TRUE)
 
 /// Resolve ticket with a premade message
@@ -704,8 +704,8 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 	message_admins(msg)
 	log_admin_private(msg)
 	AddInteraction("Marked as [response.title] by [key_name]",
-		plain_message = "Marked as [response.title] by [usr.key]", message_type = "system")
-	log_ahelp(id, "Autoreply", "Marked as [response.title] by [usr.key]", null,  usr.ckey)
+		plain_message = "Marked as [response.title] by [usr.username()]", message_type = "system")
+	log_ahelp(id, "Autoreply", "Marked as [response.title] by [usr.username()]", null,  usr.ckey)
 	if(response.closer)
 		Resolve(silent = TRUE)
 

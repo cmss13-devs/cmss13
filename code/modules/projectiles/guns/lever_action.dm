@@ -39,7 +39,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 	var/cur_onehand_chance = 85
 	var/reset_onehand_chance = 85
 	var/hit_buff_reset_cooldown = 1 SECONDS //how much time after a direct hit until streaks reset
-	var/lever_message = "<i>You work the lever.<i>"
+	var/lever_message = "You work the lever."
 	var/lever_name = "lever" //the thing we use to chamber the next round. Lever, button, etc. for to_chats
 	var/buff_fire_reduc = 2
 	var/streak
@@ -78,6 +78,8 @@ their unique feature is that a direct hit will buff your damage and firerate
 /obj/item/weapon/gun/lever_action/dropped(mob/user)
 	. = ..()
 	reset_hit_buff(user)
+	if(flags_gun_lever_action & USES_STREAKS)
+		UnregisterSignal(user, COMSIG_BULLET_DIRECT_HIT)
 	addtimer(VARSET_CALLBACK(src, cur_onehand_chance, reset_onehand_chance), 4 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE)
 
 /obj/item/weapon/gun/lever_action/proc/direct_hit_buff(mob/user, mob/target, obj/item/weapon/gun/projectile_source, one_hand_lever = FALSE)
@@ -122,7 +124,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 
 /obj/item/weapon/gun/lever_action/proc/apply_hit_buff(mob/user, mob/target, one_hand_lever = FALSE)
 	lever_sound = lever_super_sound
-	lever_message = "<b><i>You quickly work the [lever_name]!<i><b>"
+	lever_message = SPAN_BOLD("You quickly work the [lever_name]!")
 	last_fired = world.time - buff_fire_reduc //to shoot the next round faster
 	lever_delay = FIRE_DELAY_TIER_12
 	damage_mult = initial(damage_mult) + BULLET_DAMAGE_MULT_TIER_10
@@ -382,7 +384,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 	levering_sprite = null
 	flags_gun_lever_action = USES_STREAKS
 	lever_name = "chambering button"
-	lever_message = "<i>You press the chambering button.<i>"
+	lever_message = "You press the chambering button."
 	current_mag = /obj/item/ammo_magazine/internal/lever_action/xm88
 	default_caliber = ".458"
 	hit_buff_reset_cooldown = 2 SECONDS //how much time after a direct hit until streaks reset
@@ -487,7 +489,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 
 /obj/item/weapon/gun/lever_action/xm88/apply_hit_buff()
 	lever_sound = lever_super_sound
-	lever_message = "<b><i>You quickly press the [lever_name]!<i><b>"
+	lever_message = SPAN_BOLD("You quickly press the [lever_name]!")
 	last_fired = world.time - buff_fire_reduc //to shoot the next round faster
 	set_fire_delay(FIRE_DELAY_TIER_3)
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_4

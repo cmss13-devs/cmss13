@@ -434,10 +434,11 @@ GLOBAL_LIST_INIT(cm_vending_clothing_field_doctor, list(
 /obj/effect/essentials_set/medical/researcher
 	spawned_gear_list = list(
 		/obj/item/device/healthanalyzer,
+		/obj/item/storage/firstaid/adv,
 		/obj/item/device/reagent_scanner,
 		/obj/item/clothing/accessory/stethoscope,
 		/obj/item/device/flashlight/pen,
-		/obj/item/clothing/accessory/storage/black_vest,
+		/obj/item/clothing/mask/surgical,
 	)
 
 

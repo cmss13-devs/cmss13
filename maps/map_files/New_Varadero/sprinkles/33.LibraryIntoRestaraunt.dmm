@@ -27,10 +27,8 @@
 /area/varadero/interior/library/restaraunt)
 "ag" = (
 /obj/structure/window/framed/colony,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	dir = 8;
-	opacity = 0
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 8
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/library/restaraunt)
@@ -213,10 +211,7 @@
 /area/template_noop)
 "aD" = (
 /obj/structure/window/framed/colony,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	opacity = 0
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/library/restaraunt)
 "aE" = (

@@ -12711,6 +12711,7 @@
 	icon_state = "warning_c";
 	dir = 8
 	},
+/obj/structure/machinery/power/apc/fully_broken/no_cell/north,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
 "aKF" = (
@@ -23767,10 +23768,6 @@
 /obj/structure/prop/almayer/computers/sensor_computer2,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
-	},
-/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
-	pixel_y = 32;
-	density = 0
 	},
 /turf/open/floor/prison/darkredfull2,
 /area/varadero/interior/dock_control)
@@ -37186,14 +37183,6 @@
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
-"bWw" = (
-/obj/item/ammo_magazine/rifle/l42a/heap/empty,
-/obj/effect/decal/warning_stripes/asteroid{
-	icon_state = "warning_s";
-	dir = 4
-	},
-/turf/open/floor/asteroidfloor/north,
-/area/varadero/exterior/lz1_near)
 "bWx" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "csplatter1"
@@ -37757,7 +37746,11 @@
 	pixel_x = 2;
 	pixel_y = -7
 	},
-/turf/open/floor/asteroidfloor/north,
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_s";
+	dir = 4
+	},
+/turf/open/floor/prison/ramptop/north,
 /area/varadero/exterior/lz1_near)
 "bXY" = (
 /obj/structure/machinery/landinglight{
@@ -48561,19 +48554,11 @@
 	icon_state = "warning_s";
 	dir = 8
 	},
-/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
-	pixel_y = 32;
-	density = 0
-	},
 /turf/open/floor/wood,
 /area/varadero/interior/dock_control)
 "cxY" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
-	},
-/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
-	pixel_y = 32;
-	density = 0
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/dock_control)
@@ -48582,10 +48567,6 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
-	pixel_y = 32;
-	density = 0
-	},
 /turf/open/floor/wood,
 /area/varadero/interior/dock_control)
 "cya" = (
@@ -48833,6 +48814,16 @@
 /area/varadero/interior/cargo)
 "cyB" = (
 /obj/structure/window/framed/colony/reinforced/hull,
+/obj/structure/prop{
+	name = "\improper reinforced shutters";
+	desc = "Reinforced metal shutters, more for show than security. They redirect light and add a bit of structure to the space.";
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi';
+	icon_state = "almayer_pdoor1";
+	dir = 2;
+	unacidable = 1;
+	explo_proof = 1;
+	unslashable = 1
+	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/oob)
 "cyC" = (
@@ -52754,10 +52745,6 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
-	},
-/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
-	pixel_y = 32;
-	density = 0
 	},
 /turf/open/floor/prison/darkredfull2,
 /area/varadero/interior/dock_control)
@@ -60704,10 +60691,6 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/blood/oil,
-/obj/effect/decal/warning_stripes/asteroid{
-	icon_state = "warning_s";
-	dir = 4
-	},
 /obj/effect/decal/cleanable/blood{
 	dir = 8;
 	icon_state = "gib6";
@@ -61591,7 +61574,11 @@
 /area/varadero/interior/hall_SE)
 "lEm" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/asteroidwarning,
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_s";
+	dir = 4
+	},
+/turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "lEw" = (
 /obj/structure/disposalpipe/segment{
@@ -74096,6 +74083,7 @@
 /area/varadero/interior/hall_SE)
 "vqG" = (
 /obj/structure/largecrate/random,
+/obj/structure/machinery/power/apc/fully_broken/no_cell/east,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/caves/east)
 "vqK" = (
@@ -74617,10 +74605,6 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
-	},
-/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
-	pixel_y = 32;
-	density = 0
 	},
 /turf/open/floor/prison/darkredfull2,
 /area/varadero/interior/dock_control)
@@ -91158,7 +91142,7 @@ bZU
 bZU
 bZU
 kMy
-bWw
+bVd
 bnf
 bTL
 xXr

@@ -86,8 +86,8 @@
 /obj/effect/landmark/lv624/fog_blocker/long,
 /turf/open/slippery/hull/dir/north,
 /area/sky)
-"ak" = (
-/obj/effect/sentry_landmark/lz_1/bottom_left,
+"aj" = (
+/obj/structure/closet/secure_closet/engineering_electrical,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "al" = (
@@ -166,6 +166,19 @@
 	},
 /turf/open/floor/shiva/red/north,
 /area/varadero/interior/morgue)
+"ax" = (
+/obj/structure/platform/stone/kutjevo,
+/obj/structure/barricade/sandbags/wired,
+/obj/structure/platform/stone/kutjevo/north{
+	layer = 2.96;
+	density = 0
+	},
+/obj/structure/platform/stone/kutjevo/west{
+	density = 0;
+	layer = 2.96
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/lz1_near)
 "ay" = (
 /obj/structure/machinery/landinglight{
 	dir = 1
@@ -221,6 +234,11 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_casing/shell{
 	icon_state = "cartridge_10"
+	},
+/obj/item/stack/tile/plasteel{
+	layer = 2.89;
+	pixel_x = 17;
+	pixel_y = 16
 	},
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
@@ -316,6 +334,27 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/carpet,
 /area/varadero/interior/chapel)
+"aU" = (
+/obj/structure/platform/stone/kutjevo,
+/obj/structure/prop/tyrargo/boards/boards_2,
+/obj/structure/prop/tyrargo/boards/boards_1{
+	dir = 8;
+	pixel_x = -24;
+	pixel_y = -4
+	},
+/obj/structure/barricade/sandbags/wired,
+/obj/structure/prop/tyrargo/boards/boards_2{
+	dir = 1;
+	pixel_x = -2;
+	pixel_y = 19
+	},
+/obj/structure/platform/stone/kutjevo/north{
+	layer = 2.96;
+	density = 0
+	},
+/obj/effect/sentry_landmark/lz_1/bottom_left,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/lz1_near)
 "aV" = (
 /obj/structure/barricade/metal/wired{
 	dir = 8
@@ -428,6 +467,22 @@
 /obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
+"bl" = (
+/obj/structure/platform/stone/kutjevo,
+/obj/structure/prop/tyrargo/boards/boards_1{
+	dir = 4
+	},
+/obj/structure/barricade/sandbags/wired,
+/obj/structure/platform/stone/kutjevo/north{
+	layer = 2.96;
+	density = 0
+	},
+/obj/structure/platform/stone/kutjevo/east{
+	layer = 2.96;
+	density = 0
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/lz1_near)
 "bm" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -499,6 +554,19 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/morgue)
+"bw" = (
+/obj/structure/platform/stone/kutjevo,
+/obj/structure/prop/tyrargo/boards/boards_1{
+	dir = 4
+	},
+/obj/structure/barricade/sandbags/wired,
+/obj/structure/platform/stone/kutjevo/north{
+	layer = 2.96;
+	density = 0
+	},
+/obj/effect/sentry_landmark/lz_1/bottom_left,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/lz1_near)
 "bx" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -600,13 +668,6 @@
 /obj/structure/prop/hybrisa/misc/machinery/screens/redalert,
 /turf/closed/wall/r_wall/unmeltable,
 /area/varadero/interior/oob)
-"bN" = (
-/obj/effect/landmark/survivor_spawner,
-/obj/structure/catwalk{
-	explo_proof = 1
-	},
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/library)
 "bO" = (
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/morgue)
@@ -623,6 +684,20 @@
 "bQ" = (
 /turf/open/floor/shiva/green,
 /area/varadero/interior/library)
+"bR" = (
+/obj/structure/platform/stone/kutjevo,
+/obj/structure/prop/tyrargo/boards/boards_2,
+/obj/structure/barricade/sandbags/wired,
+/obj/structure/platform/stone/kutjevo/north{
+	layer = 2.96;
+	density = 0
+	},
+/obj/structure/platform/stone/kutjevo/east{
+	layer = 2.96;
+	density = 0
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/lz1_near)
 "bS" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -713,6 +788,33 @@
 /obj/structure/window_frame/colony,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/cargo)
+"cg" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/item/stack/tile/plasteel{
+	pixel_x = -14;
+	pixel_y = 16
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"ch" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/item/stack/tile/plasteel{
+	pixel_x = 8;
+	pixel_y = 6
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"ci" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/sentry_landmark/lz_1/top_left,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
 "cj" = (
 /obj/structure/platform/metal/almayer/north{
 	density = 0;
@@ -726,6 +828,10 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/gm/road,
+/area/varadero/interior/cargo)
+"ck" = (
+/obj/structure/sign/banners/colonial_marines_flag_worn,
+/turf/closed/wall,
 /area/varadero/interior/cargo)
 "cl" = (
 /obj/structure/machinery/door/airlock/multi_tile/elevator/access/dormatory,
@@ -790,6 +896,24 @@
 /obj/structure/closet/secure_closet/guncabinet,
 /turf/open/floor/plating/bare_catwalk,
 /area/varadero/interior/library)
+"cx" = (
+/obj/structure/platform/stone/kutjevo,
+/obj/structure/barricade/sandbags/wired,
+/obj/structure/prop/tyrargo/boards/boards_2{
+	dir = 1;
+	pixel_x = 2;
+	pixel_y = -1
+	},
+/obj/structure/platform/stone/kutjevo/north{
+	layer = 2.96;
+	density = 0
+	},
+/obj/structure/platform/stone/kutjevo/west{
+	density = 0;
+	layer = 2.96
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/lz1_near)
 "cy" = (
 /turf/open/floor/asteroidwarning/west,
 /area/varadero/interior/library)
@@ -905,6 +1029,17 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/cargo)
+"cM" = (
+/obj/structure/platform/stone/kutjevo,
+/obj/structure/barricade/sandbags/wired,
+/obj/structure/prop/tyrargo/boards/boards_2,
+/obj/structure/platform/stone/kutjevo/north{
+	layer = 2.96;
+	density = 0
+	},
+/obj/effect/sentry_landmark/lz_1/top_left,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/lz1_near)
 "cN" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/catwalk{
@@ -935,6 +1070,23 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/freezerfloor,
 /area/varadero/interior/cargo)
+"cR" = (
+/obj/structure/platform/stone/kutjevo,
+/obj/structure/barricade/sandbags/wired,
+/obj/structure/prop/tyrargo/boards/boards_1{
+	dir = 8;
+	layer = 2.8
+	},
+/obj/structure/platform/stone/kutjevo/north{
+	layer = 2.96;
+	density = 0
+	},
+/obj/structure/platform/stone/kutjevo/east{
+	layer = 2.96;
+	density = 0
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/lz1_near)
 "cS" = (
 /obj/structure/catwalk,
 /obj/structure/filtration/flacculation_arm{
@@ -1026,6 +1178,13 @@
 	},
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
+"de" = (
+/obj/item/stack/tile/plasteel{
+	pixel_x = -12;
+	pixel_y = -4
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
 "df" = (
 /obj/structure/fence/slim/door{
 	dir = 8;
@@ -1048,14 +1207,6 @@
 "di" = (
 /obj/effect/landmark/hunter_secondary,
 /turf/open/floor/plating/almayer,
-/area/varadero/exterior/lz1_near)
-"dj" = (
-/obj/item/ammo_magazine/rifle/l42a/heap/empty,
-/obj/effect/decal/warning_stripes/asteroid{
-	icon_state = "warning_s";
-	dir = 4
-	},
-/turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "dk" = (
 /turf/open/floor/shiva/green/east,
@@ -1085,7 +1236,6 @@
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/interior/library)
 "dq" = (
-/obj/effect/landmark/survivor_spawner,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mfloor2"
 	},
@@ -1291,6 +1441,13 @@
 "dR" = (
 /turf/closed/wall/r_wall,
 /area/varadero/interior/hall_N)
+"dS" = (
+/obj/item/stack/tile/plasteel{
+	pixel_x = 4;
+	pixel_y = -6
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
 "dT" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -1373,7 +1530,6 @@
 /turf/open/floor/shiva/yellow/east,
 /area/varadero/interior/cargo)
 "ef" = (
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/comms1)
 "eg" = (
@@ -1386,6 +1542,12 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
+"ei" = (
+/turf/closed/wall/strata_ice/dirty/rock{
+	name = "rubble pile";
+	desc = "A large pile of rubble from a blast."
+	},
+/area/varadero/interior/oob)
 "ej" = (
 /obj/structure/platform/metal/kutjevo_smooth/west{
 	climb_delay = 1
@@ -1500,11 +1662,6 @@
 /obj/item/trash/crushed_cup,
 /turf/open/floor/shiva/yellow/north,
 /area/varadero/interior/cargo)
-"ey" = (
-/obj/item/device/motiondetector/hacked,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/carpet,
-/area/varadero/interior/maintenance/north)
 "ez" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/red/north,
@@ -1516,6 +1673,21 @@
 /obj/effect/sentry_landmark/lz_1/bottom_right,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
+"eB" = (
+/obj/structure/window/framed/colony/reinforced/hull,
+/obj/structure/prop{
+	name = "\improper reinforced shutters";
+	desc = "Reinforced metal shutters, more for show than security. They redirect light and add a bit of structure to the space.";
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi';
+	icon_state = "almayer_pdoor1";
+	dir = 2;
+	unacidable = 1;
+	explo_proof = 1;
+	unslashable = 1
+	},
+/obj/structure/sign/banners/united_americas_flag,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/oob)
 "eC" = (
 /obj/structure/platform_decoration/metal/kutjevo,
 /obj/effect/decal/cleanable/dirt,
@@ -1668,6 +1840,12 @@
 	},
 /turf/open/gm/road,
 /area/varadero/interior/cargo)
+"eV" = (
+/turf/closed/wall/strata_ice/dirty/rock{
+	name = "rubble pile";
+	desc = "A large pile of rubble from a blast."
+	},
+/area/sky)
 "eW" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_6"
@@ -1866,10 +2044,6 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/blood/oil,
-/obj/effect/decal/warning_stripes/asteroid{
-	icon_state = "warning_s";
-	dir = 4
-	},
 /turf/open/floor/prison/ramptop/north,
 /area/varadero/exterior/lz1_near)
 "fD" = (
@@ -1933,7 +2107,6 @@
 	icon_state = "mfloor3"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/shiva/north,
 /area/varadero/interior/cargo)
 "fM" = (
@@ -2151,7 +2324,6 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/sentry_landmark/lz_1/top_left,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "gs" = (
@@ -2216,7 +2388,6 @@
 	dir = 4;
 	pixel_x = -3
 	},
-/obj/structure/closet/secure_closet/engineering_electrical,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "gC" = (
@@ -3147,6 +3318,7 @@
 /area/varadero/interior/maintenance/north)
 "jn" = (
 /obj/structure/platform_decoration/metal/kutjevo,
+/obj/item/trash/cigbutt,
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
 "jo" = (
@@ -3319,10 +3491,17 @@
 /obj/structure/window/framed/colony/reinforced/hull{
 	explo_proof = 1
 	},
-/obj/structure/sign/banners/happybirthdaysteve,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters"
+/obj/structure/prop{
+	name = "\improper reinforced shutters";
+	desc = "Reinforced metal shutters, more for show than security. They redirect light and add a bit of structure to the space.";
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi';
+	icon_state = "almayer_pdoor1";
+	dir = 2;
+	unacidable = 1;
+	explo_proof = 1;
+	unslashable = 1
 	},
+/obj/structure/sign/banners/united_americas_flag_worn,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/oob)
 "jO" = (
@@ -3527,7 +3706,11 @@
 	},
 /obj/effect/decal/cleanable/blood/drip,
 /obj/item/ammo_magazine/rifle/m41aMK1/heap/empty,
-/turf/open/floor/asteroidfloor/north,
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_s";
+	dir = 4
+	},
+/turf/open/floor/prison/ramptop/north,
 /area/varadero/exterior/lz1_near)
 "ku" = (
 /turf/open/floor/plating/bare_catwalk,
@@ -3618,16 +3801,22 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/library)
-"kK" = (
-/obj/item/ammo_magazine/handful/shotgun/buckshot,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/carpet,
-/area/varadero/interior/maintenance/north)
 "kL" = (
 /obj/effect/decal/cleanable/blood/drip,
-/obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
-/turf/open/floor/asteroidfloor/north,
+/obj/structure/platform/stone/kutjevo,
+/obj/structure/prop/tyrargo/boards/boards_1{
+	dir = 8
+	},
+/obj/structure/barricade/sandbags/wired,
+/obj/structure/platform/stone/kutjevo/north{
+	layer = 2.96;
+	density = 0
+	},
+/obj/structure/platform/stone/kutjevo/west{
+	density = 0;
+	layer = 2.96
+	},
+/turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/lz1_near)
 "kM" = (
 /obj/structure/prop/rock/brown,
@@ -3710,15 +3899,6 @@
 	},
 /turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/pontoon_beach)
-"kW" = (
-/obj/structure/window/framed/colony/reinforced/hull{
-	explo_proof = 1
-	},
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters"
-	},
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/oob)
 "kX" = (
 /obj/structure/closet/crate/ammo/alt/flame,
 /obj/effect/decal/cleanable/dirt,
@@ -3897,15 +4077,6 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/carpet,
 /area/varadero/interior/chapel)
-"lz" = (
-/obj/item/ammo_magazine/handful/shotgun/buckshot{
-	pixel_x = 4;
-	pixel_y = -16
-	},
-/obj/item/card/id/silver/clearance_badge,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/carpet,
-/area/varadero/interior/maintenance/north)
 "lA" = (
 /obj/structure/platform/metal/kutjevo_smooth{
 	climb_delay = 1
@@ -3922,11 +4093,6 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
-"lD" = (
-/obj/item/reagent_container/food/snacks/birthdaycakeslice,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/wood,
-/area/varadero/interior/maintenance/north)
 "lE" = (
 /obj/structure/prop/rock/brown,
 /obj/structure/platform/metal/kutjevo_smooth/west{
@@ -4128,11 +4294,6 @@
 	},
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/cargo)
-"mj" = (
-/obj/structure/window/framed/wood/reinforced,
-/obj/item/trash/cigbutt,
-/turf/open/floor/plating/wood,
-/area/varadero/interior/dock_control)
 "mk" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/hybrisa/street/roadlines3,
@@ -4923,11 +5084,6 @@
 	},
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/cargo)
-"oz" = (
-/obj/item/weapon/gun/shotgun/pump,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/carpet,
-/area/varadero/interior/maintenance/north)
 "oA" = (
 /obj/structure/machinery/landinglight{
 	dir = 4
@@ -5051,7 +5207,6 @@
 /area/varadero/interior/maintenance/north)
 "oQ" = (
 /obj/structure/bed/chair/comfy/beige,
-/obj/effect/landmark/survivor_spawner,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/varadero/interior/dock_control)
@@ -5399,7 +5554,6 @@
 /turf/open/floor/asteroidwarning,
 /area/varadero/exterior/islands)
 "pP" = (
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/shiva/north,
 /area/varadero/interior/morgue)
 "pQ" = (
@@ -5530,7 +5684,6 @@
 /turf/open/hybrisa/street/sidewalk/west,
 /area/varadero/exterior/comms4)
 "qc" = (
-/obj/effect/landmark/survivor_spawner,
 /obj/structure/bed/chair{
 	dir = 8
 	},
@@ -5759,7 +5912,11 @@
 /area/varadero/interior/oob)
 "qS" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/asteroidwarning,
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_s";
+	dir = 4
+	},
+/turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "qT" = (
 /obj/item/ammo_box/magazine/misc/flares,
@@ -5898,6 +6055,10 @@
 /obj/item/ammo_casing/shell{
 	icon_state = "cartridge_10"
 	},
+/obj/item/stack/tile/plasteel{
+	pixel_x = 8;
+	pixel_y = -8
+	},
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "rn" = (
@@ -6035,17 +6196,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/asteroidwarning/north,
 /area/varadero/interior/library)
-"rJ" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/communications{
-	dir = 1
-	},
-/obj/item/ammo_magazine/shotgun/buckshot{
-	pixel_x = 17;
-	pixel_y = -4
-	},
-/turf/open/floor/wood,
-/area/varadero/interior/maintenance/north)
 "rK" = (
 /obj/structure/platform_decoration/metal/kutjevo/east,
 /turf/open/auto_turf/sand_white/layer1,
@@ -6501,8 +6651,15 @@
 /area/varadero/interior/dock_control)
 "tc" = (
 /obj/structure/window/framed/colony/reinforced/hull,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters"
+/obj/structure/prop{
+	name = "\improper reinforced shutters";
+	desc = "Reinforced metal shutters, more for show than security. They redirect light and add a bit of structure to the space.";
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi';
+	icon_state = "almayer_pdoor1";
+	dir = 2;
+	unacidable = 1;
+	explo_proof = 1;
+	unslashable = 1
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/oob)
@@ -6744,10 +6901,6 @@
 /obj/item/trash/ceramic_plate{
 	pixel_x = -8;
 	pixel_y = 12
-	},
-/obj/item/ammo_casing/shell{
-	icon_state = "bshell_";
-	dir = 10
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/carpet,
@@ -7286,6 +7439,7 @@
 /area/varadero/interior/cargo)
 "yD" = (
 /obj/structure/machinery/light,
+/obj/structure/closet/toolcloset,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "yE" = (
@@ -7712,10 +7866,6 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
-"Cy" = (
-/obj/effect/sentry_landmark/lz_1/top_left,
-/turf/open/floor/asteroidfloor/north,
-/area/varadero/exterior/lz1_near)
 "CB" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/gm/dirt,
@@ -8107,11 +8257,6 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
-"FN" = (
-/obj/item/ammo_casing/shell,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/carpet,
-/area/varadero/interior/maintenance/north)
 "FO" = (
 /obj/structure/platform/metal/kutjevo_smooth/west{
 	climb_delay = 1
@@ -8483,10 +8628,6 @@
 	},
 /turf/open/floor/plating/bare_catwalk,
 /area/varadero/exterior/lz1_near)
-"JH" = (
-/obj/structure/window/framed/colony,
-/turf/open/floor/plating,
-/area/varadero/interior/morgue)
 "JL" = (
 /obj/structure/bed/chair/office/dark,
 /obj/structure/disposalpipe/segment,
@@ -8656,7 +8797,7 @@
 /area/varadero/exterior/pontoon_beach)
 "KU" = (
 /obj/structure/window/framed/colony,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
 "KV" = (
 /obj/effect/overlay/palmtree_r{
@@ -9029,10 +9170,6 @@
 "OF" = (
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/hall_N)
-"OJ" = (
-/obj/structure/closet/toolcloset,
-/turf/open/floor/asteroidfloor/north,
-/area/varadero/exterior/lz1_near)
 "OL" = (
 /obj/structure/catwalk{
 	explo_proof = 1
@@ -9824,10 +9961,6 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/pontoon_beach)
-"Wd" = (
-/obj/structure/sign/prop1,
-/turf/closed/wall,
-/area/varadero/interior/cargo)
 "Wf" = (
 /obj/effect/decal/warning_stripes/asteroid{
 	icon_state = "warning_c";
@@ -10006,10 +10139,17 @@
 /obj/structure/window/framed/colony/reinforced/hull{
 	explo_proof = 1
 	},
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters"
+/obj/structure/prop{
+	name = "\improper reinforced shutters";
+	desc = "Reinforced metal shutters, more for show than security. They redirect light and add a bit of structure to the space.";
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi';
+	icon_state = "almayer_pdoor1";
+	dir = 2;
+	unacidable = 1;
+	explo_proof = 1;
+	unslashable = 1
 	},
-/turf/open/floor/plating/icefloor,
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/oob)
 "XN" = (
 /obj/effect/decal/warning_stripes/asteroid{
@@ -10204,7 +10344,6 @@
 /area/varadero/interior/cargo)
 "Zv" = (
 /obj/effect/decal/cleanable/blood/drip,
-/obj/effect/landmark/survivor_spawner,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_5";
@@ -10293,13 +10432,13 @@ BL
 BL
 BL
 BL
-PQ
-PQ
 BL
 BL
 BL
-PQ
-PQ
+BL
+BL
+BL
+BL
 BL
 BL
 BL
@@ -10354,26 +10493,26 @@ Co
 (2,1,1) = {"
 BL
 BL
+ei
+ei
+ei
+ei
 BL
 BL
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
+BL
+BL
+BL
+BL
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
 PQ
 PQ
 JX
@@ -10416,26 +10555,26 @@ Co
 "}
 (3,1,1) = {"
 BL
+ei
+ei
+ei
+ei
+ei
+ei
 BL
 BL
-BL
-BL
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
 PQ
 PQ
 MY
@@ -10479,26 +10618,26 @@ Co
 "}
 (4,1,1) = {"
 BL
-BL
-BL
-BL
-BL
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
 PQ
 PQ
 sq
@@ -10542,25 +10681,25 @@ Co
 "}
 (5,1,1) = {"
 BL
-BL
-BL
-BL
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
 PQ
 PQ
 PQ
@@ -10604,27 +10743,27 @@ Co
 Co
 "}
 (6,1,1) = {"
-BL
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
 PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
+ei
 PQ
 PQ
 ip
@@ -10667,27 +10806,27 @@ Co
 Co
 "}
 (7,1,1) = {"
-BL
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
 PQ
 PQ
 ip
@@ -10730,26 +10869,26 @@ Co
 Co
 "}
 (8,1,1) = {"
-BL
-BL
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
 PQ
 PQ
 PQ
@@ -10793,25 +10932,25 @@ Co
 Co
 "}
 (9,1,1) = {"
-BL
-BL
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
 PQ
 PQ
 PQ
@@ -10856,25 +10995,25 @@ Co
 Co
 "}
 (10,1,1) = {"
-BL
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
 PQ
 PQ
 PQ
@@ -10919,26 +11058,26 @@ Co
 Co
 "}
 (11,1,1) = {"
-BL
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
 PQ
 PQ
 xJ
@@ -10982,27 +11121,27 @@ Co
 Co
 "}
 (12,1,1) = {"
-BL
-BL
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
 PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
+ei
 PQ
 xJ
 Hb
@@ -11045,26 +11184,26 @@ Co
 Co
 "}
 (13,1,1) = {"
-BL
-BL
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
 PQ
 PQ
 JT
@@ -11108,27 +11247,27 @@ Co
 Co
 "}
 (14,1,1) = {"
-BL
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
 PQ
 PQ
 is
@@ -11171,27 +11310,27 @@ gx
 Mp
 "}
 (15,1,1) = {"
-BL
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
 PQ
 PQ
 iu
@@ -11235,26 +11374,26 @@ qk
 "}
 (16,1,1) = {"
 BL
-BL
-BL
-BL
-BL
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
 PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
+ei
 PQ
 PQ
 iY
@@ -11299,25 +11438,25 @@ nH
 (17,1,1) = {"
 BL
 BL
-BL
-BL
-BL
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
 PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
+ei
 PQ
 PQ
 PQ
@@ -11362,24 +11501,24 @@ ot
 (18,1,1) = {"
 BL
 BL
-BL
-BL
-BL
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
 PQ
 PQ
 PQ
@@ -11425,25 +11564,25 @@ an
 (19,1,1) = {"
 BL
 BL
-BL
-BL
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
 PQ
 PQ
 rB
@@ -11487,26 +11626,26 @@ Tq
 "}
 (20,1,1) = {"
 BL
+ei
 BL
-BL
-BL
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
 PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
+ei
 PQ
 PQ
 rB
@@ -11550,26 +11689,26 @@ aa
 "}
 (21,1,1) = {"
 BL
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
 PQ
 xJ
 rB
@@ -11613,24 +11752,24 @@ yT
 "}
 (22,1,1) = {"
 BL
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
+ei
 PQ
 PQ
 PQ
@@ -11642,7 +11781,7 @@ PQ
 PQ
 PQ
 PQ
-Wd
+qP
 wB
 bo
 bo
@@ -11678,20 +11817,20 @@ pY
 BL
 PQ
 PQ
+ei
+ei
+ei
+ei
+ei
+ei
+PQ
+ei
 PQ
 PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
-PQ
+ei
+ei
+ei
+ei
 PQ
 PQ
 PQ
@@ -11741,13 +11880,13 @@ LQ
 BL
 PQ
 PQ
+ei
 PQ
 PQ
+ei
+ei
 PQ
-PQ
-PQ
-PQ
-PQ
+ei
 PQ
 PQ
 PQ
@@ -11768,7 +11907,7 @@ PQ
 PQ
 PQ
 PQ
-qP
+ck
 NI
 rL
 Rr
@@ -12073,7 +12212,7 @@ lm
 nm
 jt
 jY
-mj
+lF
 jn
 mq
 cZ
@@ -12169,11 +12308,11 @@ jI
 Vc
 lg
 pq
-JH
+ap
 HI
 HI
 HI
-JH
+ap
 Zd
 HI
 PQ
@@ -12210,7 +12349,7 @@ qj
 ks
 DS
 pj
-Cy
+DS
 ks
 DS
 gr
@@ -12243,7 +12382,7 @@ TE
 "}
 (32,1,1) = {"
 tw
-tc
+eB
 ZQ
 ml
 Ms
@@ -12334,12 +12473,12 @@ ks
 nU
 nk
 ks
-ks
+cx
 DS
 ks
 ks
 ks
-eL
+ci
 DS
 ks
 DS
@@ -12396,8 +12535,8 @@ fl
 DS
 nU
 mR
-DS
-ks
+de
+cM
 DS
 ks
 DS
@@ -12459,8 +12598,8 @@ IK
 DS
 kR
 hZ
-DS
-DS
+dS
+cR
 DS
 DS
 DS
@@ -12721,13 +12860,13 @@ gN
 Zr
 rW
 lt
-eL
-DS
+cg
+ax
 DS
 DS
 gB
+aj
 HG
-OJ
 yD
 Yt
 wH
@@ -12785,7 +12924,7 @@ ny
 rW
 nB
 pB
-DS
+aU
 DS
 DS
 DS
@@ -12848,12 +12987,12 @@ iR
 vU
 lQ
 eL
+bl
 DS
 DS
 DS
 DS
 DS
-ak
 KI
 rd
 yu
@@ -13042,7 +13181,7 @@ ks
 ks
 ks
 ks
-ak
+DS
 qC
 rd
 jk
@@ -13160,7 +13299,7 @@ gN
 gN
 gN
 fC
-dj
+lt
 iw
 aF
 kL
@@ -13226,7 +13365,7 @@ kt
 qS
 ob
 jG
-DS
+bw
 kw
 DS
 Wb
@@ -13287,9 +13426,9 @@ KJ
 gN
 oJ
 Hh
-DS
-rl
-ks
+ob
+ch
+bR
 DS
 DS
 DS
@@ -13481,10 +13620,10 @@ kv
 eO
 KJ
 jN
-lD
-oz
-lz
-rJ
+my
+lN
+lN
+tj
 Yt
 vV
 cV
@@ -13543,7 +13682,7 @@ rW
 KJ
 Ua
 KJ
-kW
+XH
 my
 lN
 Zv
@@ -13609,7 +13748,7 @@ KJ
 PQ
 Qi
 tL
-ey
+lN
 hr
 Yt
 rc
@@ -13671,8 +13810,8 @@ BL
 BL
 dB
 pZ
-kK
-FN
+lN
+lN
 jr
 nc
 iS
@@ -14310,7 +14449,7 @@ Wh
 uy
 ba
 Fv
-bN
+kF
 nG
 dE
 gS
@@ -14720,9 +14859,9 @@ rq
 rq
 rq
 rq
-rq
-rq
-rq
+eV
+eV
+eV
 rg
 rg
 rg
@@ -14765,26 +14904,26 @@ Co
 (2,1,2) = {"
 rq
 rq
+eV
+eV
+eV
+eV
 rq
 rq
 rq
 rq
 rq
-kl
 rq
-nv
-cv
-nv
-rq
-rq
-kl
-nv
-nv
-rq
-kl
-rq
-rq
-rq
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
 cv
 nv
 nv
@@ -14827,27 +14966,27 @@ Co
 "}
 (3,1,2) = {"
 rq
+eV
+eV
+eV
+eV
+eV
+eV
 rq
 rq
-rq
-rq
-rq
-nv
-nv
-nv
-nv
-cv
-nv
-nv
-nv
-cv
-nv
-nv
-nv
-cv
-nv
-nv
-nv
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
 cv
 nv
 nv
@@ -14890,27 +15029,27 @@ Co
 "}
 (4,1,2) = {"
 rq
-rq
-rq
-rq
-rq
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
 nv
-nv
-nv
-nv
-nv
-cv
-nv
-nv
-nv
-cv
-nv
-nv
-nv
-cv
-nv
-nv
-nv
+eV
 cv
 nv
 nv
@@ -14953,26 +15092,26 @@ Co
 "}
 (5,1,2) = {"
 rq
-rq
-rq
-rq
-rq
-nv
-nv
-nv
-nv
-nv
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
 cv
-nv
-nv
-nv
-cv
-nv
-nv
-nv
-cv
-nv
-nv
 nv
 cv
 nv
@@ -15015,28 +15154,28 @@ Co
 Co
 "}
 (6,1,2) = {"
-rq
-kl
-kl
-kl
-kl
-nv
-nv
-nv
-nv
-nv
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
 cv
-nv
-nv
-nv
 cv
-nv
-nv
-nv
-cv
-nv
-nv
-nv
+iD
 cv
 nv
 nv
@@ -15078,28 +15217,28 @@ Co
 Co
 "}
 (7,1,2) = {"
-rq
-kl
-kl
-kl
-kl
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
 nv
-nv
-nv
-nv
-nv
-cv
-nv
-nv
-nv
-cv
-nv
-nv
-nv
-cv
-nv
-nv
-nv
+eV
 cv
 nv
 nv
@@ -15141,28 +15280,28 @@ Co
 Co
 "}
 (8,1,2) = {"
-rq
-kl
-kl
-kl
-kl
-nv
-nv
-nv
-nv
-nv
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
 cv
-nv
-nv
-nv
-cv
-nv
-nv
-nv
-cv
-nv
-nv
-nv
+eV
 cv
 nv
 nv
@@ -15204,29 +15343,29 @@ Co
 Co
 "}
 (9,1,2) = {"
-rq
-kl
-kl
-kl
-kl
-nv
-nv
-nv
-nv
-nv
-cv
-nv
-nv
-nv
-cv
-nv
-nv
-nv
-cv
-nv
-nv
-nv
-cv
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+Sh
+eV
+Sh
 nv
 nv
 nv
@@ -15267,28 +15406,28 @@ Co
 Co
 "}
 (10,1,2) = {"
-rq
-kl
-kl
-kl
-kl
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
 nv
-nv
-nv
-nv
-nv
-cv
-nv
-nv
-nv
-cv
-nv
-nv
-nv
-cv
-nv
-nv
-nv
+Sh
 cv
 nv
 nv
@@ -15330,27 +15469,27 @@ Co
 Co
 "}
 (11,1,2) = {"
-rq
-kl
-kl
-kl
-kl
-nv
-nv
-nv
-nv
-nv
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
 cv
-nv
-nv
-nv
-cv
-nv
-nv
-nv
-cv
-nv
-nv
 nv
 cv
 nv
@@ -15393,27 +15532,27 @@ Co
 Co
 "}
 (12,1,2) = {"
-rq
-kl
-kl
-kl
-kl
-nv
-nv
-nv
-nv
-nv
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
 cv
-nv
-nv
-nv
-cv
-nv
-nv
-nv
-cv
-nv
-nv
+eV
 nv
 cv
 nv
@@ -15456,28 +15595,28 @@ Co
 Co
 "}
 (13,1,2) = {"
-rq
-kl
-kl
-kl
-kl
-nv
-nv
-nv
-nv
-nv
-cv
-nv
-nv
-nv
-cv
-nv
-nv
-nv
-cv
-nv
-nv
-nv
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
 cv
 nv
 nv
@@ -15519,27 +15658,27 @@ Co
 Co
 "}
 (14,1,2) = {"
-rq
-kl
-kl
-kl
-kl
-nv
-nv
-nv
-nv
-nv
-cv
-nv
-nv
-nv
-cv
-nv
-nv
-nv
-cv
-nv
-nv
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
 nv
 cv
 nv
@@ -15582,27 +15721,27 @@ nv
 nv
 "}
 (15,1,2) = {"
-rq
-kl
-kl
-kl
-kl
-nv
-nv
-nv
-nv
-nv
-cv
-nv
-nv
-nv
-cv
-nv
-nv
-nv
-cv
-nv
-nv
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
 nv
 cv
 nv
@@ -15646,27 +15785,27 @@ nv
 "}
 (16,1,2) = {"
 rq
-rq
-rq
-rq
-rq
-nv
-nv
-nv
-nv
-nv
-cv
-nv
-nv
-nv
-cv
-nv
-nv
-nv
-cv
-nv
-nv
-nv
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+sw
+Sh
 cv
 nv
 nv
@@ -15710,25 +15849,25 @@ nv
 (17,1,2) = {"
 rq
 rq
-rq
-rq
-rq
-nv
-nv
-nv
-nv
-nv
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
 cv
-nv
-nv
-nv
-cv
-nv
-nv
-nv
-cv
-nv
-nv
 nv
 cv
 nv
@@ -15773,26 +15912,26 @@ nv
 (18,1,2) = {"
 rq
 rq
-rq
-rq
-kl
-nv
-nv
-nv
-nv
-nv
-cv
-nv
-nv
-nv
-cv
-nv
-nv
-nv
-cv
-nv
-nv
-nv
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+iD
 cv
 oU
 oU
@@ -15836,26 +15975,26 @@ nv
 (19,1,2) = {"
 rq
 rq
-rq
-rq
-rq
-nv
-nv
-nv
-nv
-nv
-cv
-nv
-nv
-nv
-cv
-nv
-nv
-nv
-cv
-nv
-nv
-nv
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+lj
 cv
 re
 re
@@ -15898,27 +16037,27 @@ nv
 "}
 (20,1,2) = {"
 rq
+eV
 rq
-rq
-kl
-xW
-oU
-oU
-oU
-oU
-oU
-Sh
-oU
-oU
-oU
-Sh
-oU
-oU
-oU
-Sh
-oU
-oU
-oU
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
 Sh
 re
 re
@@ -15961,27 +16100,27 @@ iD
 "}
 (21,1,2) = {"
 rq
-rq
-rq
-rq
-lj
-nv
-nv
-nv
-nv
-nv
-lj
-nv
-nv
-nv
-nv
-nv
-nv
-nv
-nv
-cv
-nv
-nv
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
 cv
 re
 re
@@ -16024,27 +16163,27 @@ cv
 "}
 (22,1,2) = {"
 rq
-kl
-nv
-nv
-lj
-nv
-nv
-nv
-nv
-nv
-lj
-nv
-nv
-nv
-nv
-nv
-nv
-nv
-nv
-cv
-nv
-nv
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
 cv
 re
 re
@@ -16087,25 +16226,25 @@ cv
 "}
 (23,1,2) = {"
 rq
-ai
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
+eV
 nv
+eV
+eV
+eV
+eV
 nv
-lj
-nv
-nv
-nv
-nv
-nv
-lj
-nv
-nv
-nv
-nv
-nv
-nv
-nv
-nv
-cv
+oU
+sw
 nv
 nv
 cv
@@ -16151,19 +16290,19 @@ cv
 (24,1,2) = {"
 Bh
 ai
+eV
+eV
+eV
+eV
 nv
+eV
+eV
 nv
-lj
+eV
+eV
 nv
-nv
-nv
-nv
-nv
-lj
-nv
-nv
-nv
-nv
+eV
+Sh
 nv
 nv
 nv
@@ -16215,18 +16354,18 @@ cv
 Bh
 ai
 nv
+eV
 nv
-lj
-nv
-nv
-nv
+eV
 nv
 nv
-lj
+eV
 nv
 nv
 nv
 nv
+nv
+cv
 oU
 oU
 oU

@@ -40,7 +40,9 @@
 		/obj/item/hardpoint/secondary/small_flamer,
 		/obj/item/hardpoint/secondary/towlauncher,
 		/obj/item/hardpoint/secondary/m56cupola,
-		/obj/item/hardpoint/secondary/grenade_launcher
+		/obj/item/hardpoint/secondary/grenade_launcher,
+		/obj/item/hardpoint/secondary/brute_launcher,
+		/obj/item/hardpoint/secondary/united_americas_flag
 	)
 
 	hdpt_layer = HDPT_LAYER_TURRET

@@ -147,6 +147,7 @@ GLOBAL_LIST_INIT(cm_vending_vehicle_crew_tank, list(
 	list("M92T Grenade Launcher", 0, /obj/effect/essentials_set/tank/tankgl, VEHICLE_SECONDARY_AVAILABLE, VENDOR_ITEM_REGULAR),
 	list("M56 Cupola", 0, /obj/effect/essentials_set/tank/m56cupola, VEHICLE_SECONDARY_AVAILABLE, VENDOR_ITEM_REGULAR),
 	list("LZR-N Flamer Unit", 0, /obj/effect/essentials_set/tank/tankflamer, VEHICLE_SECONDARY_AVAILABLE, VENDOR_ITEM_RECOMMENDED),
+	list("M6H-BRUTE Launcher", 0, /obj/effect/essentials_set/tank/brute_launcher, VEHICLE_SECONDARY_AVAILABLE, VENDOR_ITEM_REGULAR),
 	list("Mounted UA Flag", 0, /obj/effect/essentials_set/tank/united_americas_flag, VEHICLE_SECONDARY_AVAILABLE, VENDOR_ITEM_RECOMMENDED),
 
 	list("SUPPORT MODULE", 0, null, null, null),
@@ -447,6 +448,18 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 		/obj/item/ammo_magazine/hardpoint/tank_glauncher,
 		/obj/item/ammo_magazine/hardpoint/tank_glauncher,
 		/obj/item/ammo_magazine/hardpoint/tank_glauncher,
+	)
+
+/obj/effect/essentials_set/tank/brute_launcher
+	desc = "A tank-mounted BRUTE breaching rocket launcher. Laser-guides a single 90mm shaped-charge rocket onto structures and walls, given a few seconds to lock on."
+	spawned_gear_list = list(
+		/obj/item/hardpoint/secondary/brute_launcher,
+		/obj/item/ammo_magazine/rocket/brute,
+		/obj/item/ammo_magazine/rocket/brute,
+		/obj/item/ammo_magazine/rocket/brute,
+		/obj/item/ammo_magazine/rocket/brute,
+		/obj/item/ammo_magazine/rocket/brute,
+		/obj/item/ammo_magazine/rocket/brute,
 	)
 
 /obj/effect/essentials_set/tank/united_americas_flag

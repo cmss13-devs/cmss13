@@ -26568,6 +26568,10 @@
 /obj/structure/tunnel,
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lv1021/indoors/caves/landing_zone)
+"bnE" = (
+/obj/structure/flora/jungle/vines/light_1,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/indoors/caves/landing_zone)
 "bnF" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/auto_turf/lv_grass/layer0,
@@ -27962,6 +27966,13 @@
 /obj/item/trash/cigbutt,
 /turf/open/floor/interior/wood,
 /area/lv1021/indoors/clf_camp/ancil_e)
+"brj" = (
+/obj/structure/flora/jungle/vines/light_1,
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 8
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/indoors/caves/landing_zone)
 "bsf" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -4;
@@ -77437,7 +77448,7 @@ aUT
 axg
 ajL
 axi
-wzQ
+acE
 wzQ
 wzQ
 wzQ
@@ -77603,9 +77614,9 @@ sdt
 axy
 nWS
 ajL
-wzQ
-wzQ
-wzQ
+ayN
+brj
+acE
 wzQ
 wzQ
 wzQ
@@ -77770,9 +77781,9 @@ jDQ
 axk
 azG
 azu
-acE
-wzQ
-wzQ
+azz
+bnE
+bnE
 wzQ
 wzQ
 wzQ
@@ -77934,15 +77945,15 @@ aaR
 aLn
 sdt
 sdt
-nWS
-acE
+axk
+ayn
+azz
+bnE
+bnE
+aoy
+aoy
 wzQ
-wzQ
-wzQ
-wzQ
-wzQ
-wzQ
-wzQ
+aoy
 wzQ
 sDl
 sDl
@@ -78101,13 +78112,13 @@ suO
 azl
 axg
 wzQ
-wzQ
-wzQ
-wzQ
-wzQ
-wzQ
-wzQ
-wzQ
+ayn
+ayn
+bnE
+bnE
+aoy
+aoy
+aoy
 aoy
 aoy
 aoy
@@ -78268,11 +78279,11 @@ wzQ
 wzQ
 wzQ
 wzQ
-wzQ
-wzQ
-wzQ
-wzQ
-wzQ
+acE
+acE
+bnE
+aoy
+aoy
 bmZ
 aoy
 aoy
@@ -78436,9 +78447,9 @@ wzQ
 wzQ
 wzQ
 wzQ
-wzQ
-wzQ
-wzQ
+acE
+acE
+aoy
 aoy
 aoy
 aoy

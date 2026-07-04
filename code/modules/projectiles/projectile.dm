@@ -512,7 +512,7 @@
 	// If a xeno is "defensively" grabbing a target, redirect the attack to them if they have atleast 25% health
 	var/mob/living/original_intended_target = null
 	var/is_target_xeno = isxeno(target_living)
-	if(!is_target_xeno && isxeno(target_living.pulledby) && target_living.pulledby.grab_level >= GRAB_AGGRESSIVE)
+	if(!is_target_xeno && isxeno(target_living.pulledby) && target_living.pulledby.grab_level >= GRAB_AGGRESSIVE && !(ammo.flags_ammo_behavior & AMMO_XENO))
 		var/mob/living/carbon/xenomorph/puller = target_living.pulledby
 		if(puller.health / puller.maxHealth > 0.25 && puller.stat == CONSCIOUS)
 			// Protect the target

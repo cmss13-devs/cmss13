@@ -1,3 +1,21 @@
 2026-07-02:
   Drathek MistChristmas:
   - bugfix: Fixed a runtime with set_gun_user causing a bad index
+2026-07-03:
+  MistChristmas:
+  - admin: Attack logs with guns and flamer more verbose about positions. VV logs
+      include jump buttons.
+  - bugfix: Some log related runtimes I missed
+  TheManWithNoHands:
+  - code_imp: Removes SensorMate hud from SG vendor
+  ori-disillusion-mirnov:
+  - bugfix: colony dzho not spawning properly
+2026-07-04:
+  Antlers:
+  - qol: Health scanners will now automatically apply the appropriate triage holocard.
+  MistChristmas:
+  - rscadd: Cooldown to the dropship alarm.
+  - rscadd: Harm intent forces Auto-Fire instead of PB. Ground/Restrained Executes
+      now need the head targeted.
+  MoondancerPony:
+  - code_imp: made the spawn_humans unit test wait 5 seconds instead of 60

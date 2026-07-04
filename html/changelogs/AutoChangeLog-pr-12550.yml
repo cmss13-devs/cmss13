@@ -1,5 +1,0 @@
-author: "MistChristmas"
-delete-after: True
-changes:
-  - admin: "Attack logs with guns and flamer more verbose about positions. VV logs include jump buttons."
-  - bugfix: "Some log related runtimes I missed"

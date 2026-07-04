@@ -512,7 +512,6 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 	message_admins(msg)
 	log_admin_private(msg)
 	log_ahelp(id, "Reopened", "Reopened by [usr.key]", usr.ckey)
-//	TicketPanel() //can only be done from here, so refresh it
 
 //private
 /datum/admin_help/proc/RemoveActive()
@@ -594,7 +593,7 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 			var/custom_msg = tgui_input_text(usr, "Text to Send to Mentors", "Defer to Mentors")
 			if(!custom_msg)
 				return
-			message = "DEFERRED BY ADMIN [usr.key]: [custom_msg]\n\nOriginal message: [initial_message]"
+			message = "DEFERRED BY ADMIN [usr.username()]: [custom_msg]\n\nOriginal message: [initial_message]"
 
 	if(!message)
 		return
@@ -604,12 +603,12 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 	MH.broadcast_unhandled(message, initiator)
 
 	AddInteraction("Deferred to Mentors by [key_name_admin(usr)].", plain_message = "Deferred to Mentors by [usr.key]", message_type = "system")
-	to_chat(initiator, SPAN_ADMINHELP("[usr.key] has deferred your ticket to Mentors."))
+	to_chat(initiator, SPAN_ADMINHELP("[usr.username()] has deferred your ticket to Mentors."))
 	log_admin_private("Ticket [TicketHref("#[id]")] deferred to mentors by [usr.key].")
-	for(var/client/C in GLOB.admins)
-		if(CLIENT_IS_STAFF(C) || CLIENT_HAS_RIGHTS(C, R_MENTOR))
-			to_chat(C, SPAN_ADMINNOTICE("[usr.key] has deferred [initiator.key]'s ticket to Mentors."))
-	log_ahelp(id, "Defer", "Deferred to mentors by [usr.key]", null,  usr.ckey)
+	for(var/client/admin in GLOB.admins)
+		if(CLIENT_IS_STAFF(admin) || CLIENT_IS_MENTOR(admin))
+			to_chat(admin, SPAN_ADMINNOTICE("[usr.username()] has deferred [initiator.username()]'s ticket to Mentors."))
+	log_ahelp(id, "Defer", "Deferred to mentors by [usr.key]", null, usr.ckey)
 	Close(silent = TRUE)
 
 /datum/admin_help/proc/mark_ticket(mob/marking_admin)
@@ -631,7 +630,7 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 
 	var/key_name = key_name_admin(user)
 	AddInteraction("Marked by [key_name].",
-		plain_message = "Marked by [user.ckey]", message_type = "system")
+		plain_message = "Marked by [user.key]", message_type = "system")
 	to_chat(initiator, SPAN_ADMINHELP("An admin is preparing to respond to your ticket."))
 	var/msg = "Ticket [TicketHref("#[id]")] marked by [key_name]."
 	message_admins(msg)
@@ -654,7 +653,7 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 	if(state != AHELP_ACTIVE)
 		return
 
-	if(marked_admin && marked_admin != usr.ckey)
+	if(marked_admin && ckey(marked_admin) != usr.ckey)
 		to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin]. Please override their mark to interact with this ticket!"))
 		return
 

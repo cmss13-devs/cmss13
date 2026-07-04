@@ -405,7 +405,7 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 		if(mentor == thread_mentor)
 			to_chat(thread_mentor, SPAN_MENTORHELP("<b>NOTICE:</b> You are already handling this thread!"))
 			return
-		var/choice = tgui_alert(thread_mentor, "This mentorhelp is already claimed by [mentor.key]. Do you want to override and take over?", "Claim Mentorhelp", list("Override", "Cancel"))
+		var/choice = tgui_alert(thread_mentor, "This mentorhelp is already claimed by [mentor.username()]. Do you want to override and take over?", "Claim Mentorhelp", list("Override", "Cancel"))
 		if(choice != "Override")
 			return
 		var/client/prev_mentor = mentor
@@ -413,7 +413,7 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 		if(thread_mentor.mob)
 			mentor_ic_name = thread_mentor.mob.real_name || thread_mentor.mob.name || "Unknown"
 
-		log_mhelp("[mentor.username()] has overridden [prev_mentor.username()] on [author_key]'s mentorhelp")
+		log_mhelp("[mentor.key] has overridden [prev_mentor.key] on [author_key]'s mentorhelp")
 		notify("[SPAN_GREEN(mentor.username())] has overridden [SPAN_GREEN(prev_mentor.username())] on [SPAN_RED(author_key)]'s mentorhelp.",
 			unformatted_text = "[mentor.username()] has overridden [prev_mentor.username()] on [author_key]'s mentorhelp.")
 		to_chat(author, SPAN_MENTORHELP("NOTICE: [mentor.username()] has taken over your thread and is preparing to respond."))
@@ -437,7 +437,7 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 	if(thread_mentor.mob)
 		mentor_ic_name = thread_mentor.mob.real_name || thread_mentor.mob.name || "Unknown"
 
-	log_mhelp("[mentor.username()] has marked [author_key]'s mentorhelp")
+	log_mhelp("[mentor.key] has marked [author_key]'s mentorhelp")
 	notify("[SPAN_GREEN(mentor.username())] has marked [SPAN_RED(author_key)]'s mentorhelp.",
 		unformatted_text = "[mentor.username()] has marked [author_key]'s mentorhelp.")
 	to_chat(author, SPAN_MENTORHELP("NOTICE: [mentor.username()] has marked your thread and is preparing to respond."))
@@ -458,7 +458,7 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 	if((!thread_mentor || thread_mentor != mentor) && !CLIENT_IS_STAFF(thread_mentor))
 		return
 
-	log_mhelp("[mentor.username()] has unmarked [author_key]'s mentorhelp")
+	log_mhelp("[mentor.key] has unmarked [author_key]'s mentorhelp")
 	notify("[SPAN_GREEN(mentor.username())] has unmarked [SPAN_RED(author_key)]'s mentorhelp.",
 		unformatted_text = "[mentor.username()] has unmarked [author_key]'s mentorhelp.")
 	to_chat(author, SPAN_MENTORHELP("NOTICE: [mentor.username()] has unmarked your thread and is no longer responding to it."))
@@ -509,8 +509,8 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 		author.current_mhelp = src
 
 	log_mhelp("[usr.key] reopened [author_key]'s mentorhelp thread")
-	notify("[SPAN_GREEN(usr.key)] has reopened this mentorhelp thread.",
-		unformatted_text = "[usr.key] has reopened this mentorhelp thread.")
+	notify("[SPAN_GREEN(usr.username())] has reopened this mentorhelp thread.",
+		unformatted_text = "[usr.username()] has reopened this mentorhelp thread.")
 
 // Closes the thread and notifies the author/mentor that it has been closed
 /datum/mentorhelp/proc/close(client/closer)
@@ -545,14 +545,14 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 		GLOB.mentorhelp_manager.archived_tickets["[id]"] = src
 
 	if(closer)
-		log_mhelp("[closer.key] closed [author_key]'s mentorhelp")
+		log_mhelp("[closer.username()] closed [author_key]'s mentorhelp")
 		if(closer == author)
 			to_chat(author, SPAN_NOTICE("You have closed your mentorhelp thread."))
 			notify("[SPAN_RED(author_key)] closed their mentorhelp thread.",
 				unformatted_text = "[author_key] closed their mentorhelp thread.")
 			return
 		else
-			to_chat(author, SPAN_NOTICE("Your mentorhelp thread has been closed by [closer.key]."))
+			to_chat(author, SPAN_NOTICE("Your mentorhelp thread has been closed by [closer.username()]."))
 			notify("[SPAN_GREEN(closer.key)] closed [SPAN_RED(author_key)]'s mentorhelp thread.",
 				unformatted_text = "[closer.key] closed [author_key]'s mentorhelp thread.")
 			return
@@ -688,7 +688,7 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 		return
 
 	if(mentor && mentor != deferrer)
-		to_chat(deferrer, SPAN_WARNING("This ticket is currently marked by [mentor.key]. Please override their mark to interact with this ticket!"))
+		to_chat(deferrer, SPAN_WARNING("This ticket is currently marked by [mentor.username()]. Please override their mark to interact with this ticket!"))
 		return
 
 	if(author.current_ticket)
@@ -699,7 +699,7 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 	if(!options)
 		return
 
-	var/defer_header = "[deferrer.key] has deferred a ticket ([author_key]) to admins"
+	var/defer_header = "[deferrer.username()] has deferred a ticket ([author_key]) to admins"
 
 	var/message = ""
 	switch(options)
@@ -709,7 +709,7 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 			var/custom_msg = tgui_input_text(deferrer, "Text to Send to Admins", "Defer to Admins")
 			if(!custom_msg)
 				return
-			message = "[defer_header]\n\nDEFERRED BY MENTOR [deferrer.key]: [custom_msg]\n\nOriginal message: [initial_message]"
+			message = "[defer_header]\n\n[custom_msg]\n\nOriginal message: [initial_message]"
 
 	if(!message)
 		return
@@ -718,11 +718,11 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 	help_ticket.subject = subject
 	help_ticket.AddInteraction("Deferred from Mentorhelp by [deferrer.key].", plain_message = "Deferred from Mentorhelp by [deferrer.key]", message_type = "system")
 
-	notify("[SPAN_RED(deferrer.key)] deferred this ticket to admins.",
-		unformatted_text = "[deferrer.key] deferred this ticket to admins.")
-	to_chat(author, SPAN_MENTORHELP("[deferrer.key] has deferred your ticket to Admins."))
+	notify("[SPAN_RED(deferrer.username())] deferred this ticket to admins.",
+		unformatted_text = "[deferrer.username()] deferred this ticket to admins.")
+	to_chat(author, SPAN_MENTORHELP("[deferrer.username()] has deferred your ticket to Admins."))
 	log_mhelp("[deferrer.key] deferred [author_key]'s mentorhelp to admins.")
 	for(var/client/admin in GLOB.admins)
 		if(CLIENT_IS_MENTOR(admin) || CLIENT_IS_STAFF(admin))
-			to_chat(admin, SPAN_MENTORHELP("[deferrer.key] has deferred [author_key]'s ticket to Admins."))
+			to_chat(admin, SPAN_MENTORHELP("[deferrer.username()] has deferred [author_key]'s ticket to Admins."))
 	close(deferrer)

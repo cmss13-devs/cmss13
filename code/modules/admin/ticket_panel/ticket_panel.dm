@@ -224,7 +224,7 @@
 			if(istype(target.current_ticket) && target.current_ticket.state == AHELP_ACTIVE)
 				parent_client.ticket_panel.selected_tab = ADMIN_TAB
 				parent_client.ticket_panel.selected_ticket = target.current_ticket.id
-				to_chat(parent_mob, SPAN_NOTICE("Switched to existing admin ticket for [target.key]"))
+				to_chat(parent_mob, SPAN_NOTICE("Switched to existing admin ticket for [target.username()]"))
 				return TRUE
 
 			parent_client.cmd_admin_pm(target, null)

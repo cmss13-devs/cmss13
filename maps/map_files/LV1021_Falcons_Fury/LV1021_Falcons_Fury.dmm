@@ -5319,6 +5319,10 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_clf_e)
+"anh" = (
+/obj/effect/decal/cleanable/blood/gibs/body,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
+/area/lv1021/indoors/caves/landing_zone)
 "ani" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -8;
@@ -75771,7 +75775,7 @@ wzQ
 wzQ
 axN
 aot
-bmx
+anh
 sDl
 bnr
 sDl
@@ -76443,7 +76447,7 @@ wzQ
 brb
 aUM
 bno
-bmx
+anh
 sDl
 sDl
 sDl

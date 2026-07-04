@@ -1,4 +1,0 @@
-author: "MoondancerPony"
-delete-after: True
-changes:
-  - code_imp: "made the spawn_humans unit test wait 5 seconds instead of 60"

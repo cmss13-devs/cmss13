@@ -686,6 +686,7 @@
  * in_turret_firing_arc() above.
  */
 /obj/item/hardpoint/proc/get_rotation_owner()
+	RETURN_TYPE(/obj/item/hardpoint)
 	if(self_gimballed)
 		return src
 	var/obj/item/hardpoint/holder/tank_turret/turret = loc

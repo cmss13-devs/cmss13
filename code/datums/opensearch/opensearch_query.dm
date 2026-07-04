@@ -8,62 +8,48 @@
 	/// User given name to the query
 	var/name = ""
 
-	/// BYOND-side representation of the query DSL that will be sent to
-	/// OpenSearch - This is either direct user input, or the cached query
-	/// buiilt from the user arguments
-	/// Note that PPL/SQL modes do not use this
-	var/list/dsl = list()
-
-	/// Mode the query builder is in, providing user the appropriate UI
-	/// before finally turning it into the final query DSL
-	var/query_mode = OPENSEARCH_QUERY_MODE_LUCENE
-	/// If true, we sort by query ranks instead of by time
-	var/ranking_mode = FALSE
-
-
+	// Query state
 	/// Current status of the query
 	var/query_status = NONE
-	/// Status text, human readable, including errors
-	var/status_text = "Ready"
-	/// Raw results of the last query, to be passed as stringified JSON to TGUI
+	/// Last error message if applicable
+	var/error_text
+	/// Raw results of the last query, as stringified JSON, to be passed to TGUI for parsing clientside
 	var/query_results
 
-
-	// Basic query parameters go below
-
-	/// Index pattern to query against, basically a config option for now,
-	/// but you might want to let it be selectable later for performance
-	var/target_index = "gamelogs-*"
-	/// Max amount of results to be fetched. Be conservative, BYOND's json decode is a killer
-	var/max_results = 500
-
-	/// What mode the time selector is in
-	var/time_mode = OPENSEARCH_QUERY_TIME_MODE_RELATIVE
-	/// Start time (or time offset in the past from now) in seconds
-	var/time_start = (240 * 3600)
-	/// End time for the selected time range, defaults to 0 so now in relative mode
-	var/time_end = 0
-
-	/// Selected round_id if any. If null, the filter is inactive. If zero, autofilled to current round.
-	var/target_roundid = NONE
-
-	/// User input query text if any - such as DSL/PPL/Lucene
+	// Query parameters
+	/// How long ago to stop search, this lets us look further back in time unbothered or do simple pagination
+	/// If this is 3600 for example, we'll search from forever ago to 1 hour ago.
+	/// The beginning range is configured separately in config entries.
+	var/time_ago = 0
+	/// Round ID to look at
+	var/roundid
+	/// The actual Lucene query text that the user is requesting. It'll be mashed with everything else.
 	var/user_query = ""
+	/// Ranging part of the filter, allowing an user to set to only display events near a position
+	var/range_query
 	/// Filter for the type of logs to view. If empty, show everything.
 	var/list/log_types = list()
+	/// If true, we sort by query score instead of by time
+	var/ranking_mode = TRUE
 
-
-/datum/opensearch_query/New(id, bootstrap)
+/datum/opensearch_query/New(id, bootstrap, boostfield, boostfactor = 3)
 	. = ..()
 	src.id = id // To be attributed by SSopensearch, don't instantiate this directly
-	if(target_roundid == NONE)
-		target_roundid = GLOB.round_id
 	name = "Query ~[id]"
-	query_status = OPENSEARCH_QUERY_STATUS_READY
+
 	if(bootstrap)
-		var/list/splitwords = splittext(bootstrap, " ")
-		user_query = splitwords.Join(" ")
-		user_query = "([user_query])^3 "
+		// First we allow searching all fields by the user's query
+		user_query = "\"[bootstrap]\""
+		// Then we add a second boosted search term for the query if applicable
+		// This is because we routinely want to do ckey searches, and a direct match
+		// to the ckey field is more important than in the other fields.
+		// Note that we could also do this via injecting boosted parameters in the DSL,
+		// but then that needs a whole new UI for user interaction
+		if(boostfield && boostfactor)
+			user_query = "([boostfield]:\"[bootstrap]\"^[boostfactor]) [user_query]"
+
+	roundid = GLOB.round_id
+	query_status = OPENSEARCH_QUERY_STATUS_READY
 
 /datum/opensearch_query/Destroy(force)
 	SStgui.close_uis(src)
@@ -71,63 +57,48 @@
 	return ..()
 
 /// Launches the query, returning an error text if something went wrong
-/datum/opensearch_query/proc/execute()
+/datum/opensearch_query/proc/execute(mob/logging_user)
 	PRIVATE_PROC(TRUE)
-	. = "Unknown Error"
+	error_text = ""
 	if(query_status == OPENSEARCH_QUERY_STATUS_EXECUTING)
-		return "Already in progress"
-	. = build_dsl()
-	if(!SSopensearch.queue(src, "_search", query_mode == OPENSEARCH_QUERY_MODE_DSL_RAW ? user_query : dsl))
-		return "Failed to start query"
-	. = null
+		error_text = "Already executing"
+		return
+	var/list/dsl = build_dsl() // Build the final query to be made to OpenSearch
+	if(dsl)
+		if(logging_user)
+			log_debug("OPENSEARCH: [key_name(logging_user)] executing a query: [json_encode(dsl)]")
+		if(!SSopensearch.queue(src, "_search", dsl))
+			error_text = "Could not start query"
 
 /// Builds the query DSL based on the query builder parameters
 /// This returns either null on success or an error message
 /datum/opensearch_query/proc/build_dsl()
 	PRIVATE_PROC(TRUE)
-	if(query_status == OPENSEARCH_QUERY_STATUS_EXECUTING)
-		return "Already in progress"
-
-	. = "Unknown error"
-
-	switch(query_mode)
-		if(OPENSEARCH_QUERY_MODE_DSL_RAW)
-			. = null // Nothing to do, this will send the user input directly
-
-		if(OPENSEARCH_QUERY_MODE_DSL)
-			try
-				dsl = json_decode(user_query)
-			catch
-				. = "Failed to parse DSL into JSON"
-			if(!.)
-				. = inject_parameters_in_dsl()
-
-		if(OPENSEARCH_QUERY_MODE_LUCENE)
-			. = bootstrap_lucene_dsl()
-			if(!.)
-				. = inject_parameters_in_dsl()
-
-	query_status = . ? OPENSEARCH_QUERY_STATUS_BUILD_ERROR : OPENSEARCH_QUERY_STATUS_READY
+	RETURN_TYPE(/list)
+	var/list/dsl = bootstrap_lucene_dsl()
+	if(!dsl || !inject_parameters_in_dsl(dsl))
+		query_status = OPENSEARCH_QUERY_STATUS_BUILD_ERROR
+		return
+	query_status = OPENSEARCH_QUERY_STATUS_READY
+	return dsl
 
 /// Creates the base DSL for executing a Lucene based search
 /datum/opensearch_query/proc/bootstrap_lucene_dsl()
 	PRIVATE_PROC(TRUE)
-	. = "Internal error creating the Lucene-based DSL"
-	dsl = list("query" = list("bool" = list("must" = list())))
+	var/list/dsl = list("query" = list("bool" = list("must" = list())))
 	var/list/must = dsl["query"]["bool"]["must"]
 	if(length(user_query))
-		must[++must.len] = list("query_string" = list("query" = user_query))
+		must[++must.len] = list("query_string" = list("query" = create_lucene_query()))
 	else
 		must[++must.len] = list("match_all" = alist()) // This must be an alist so we get a JSON {} and not a []
-	. = null
+	return dsl
 
+///
 
 /// Adds additional query builder parameters into the DSL
-/datum/opensearch_query/proc/inject_parameters_in_dsl()
+/datum/opensearch_query/proc/inject_parameters_in_dsl(list/dsl)
 	PRIVATE_PROC(TRUE)
-	. = "Failed to inject query builder params into DSL"
-	dsl["size"] = max_results
-	. = "Malformed DSL query - it needs to use query.bool"
+	dsl["size"] = CONFIG_GET(number/opensearch_max_results)
 
 	var/list/bool = dsl["query"]["bool"]
 	if(!bool["filter"])
@@ -137,23 +108,21 @@
 
 	var/list/filter = bool["filter"]
 	var/list/must = bool["must"]
-	. = "Unknown error"
 
-	// If requested, inject log_type filtering in the must close
+	// If requested, inject log_type filtering in the must clause
 	if(length(log_types))
 		var/list/lower_logtypes = list()
 		for(var/logtype in log_types)
 			lower_logtypes += lowertext(logtype) // OpenSearch wants them in lower case, presumably because it's stored as a keyword
 		must[++must.len] = list("terms" = list("logtype" = lower_logtypes))
 
-	// Inject Time range in the filter clause
-	var/timefilter = list("range" = list("@timestamp" = list("gte" = render_time_param(time_start), "lte" = render_time_param(time_end))))
+	// Inject Time range in the filter clause. Arbitrarily limit to 30 days, this isn't meant for long term use anyway. Use dashboards.
+	var/timefilter = list("range" = list("@timestamp" = list("gte" = "now-30d", "lte" = render_time_param(time_ago))))
 	filter[++filter.len] = timefilter
 
 	// Inject Round ID filtering in the filter clause
-	if(target_roundid)
-		var/roundidfilter = list("term" = list("roundid" = target_roundid))
-		filter[++filter.len] = roundidfilter
+	var/roundidfilter = list("term" = list("roundid" = "[roundid]"))
+	filter[++filter.len] = roundidfilter
 
 	// Set sorting mode by most recent by default, unless we want to have ranking sorting
 	if(!ranking_mode)
@@ -161,39 +130,54 @@
 
 	// Output the ranking information regardless of time sorting
 	dsl["track_scores"] = "true" // BYOND json won't let us get a real true, but OpenSearch is nice enough to accept it as string
-	. = null
+
+	return dsl
+
+/// Creates the full Lucene query for use by us
+/// All the extras handled here could be injected into the DSL instead,
+/// but this requires more intricate handling of internal state and UI work.
+/datum/opensearch_query/proc/create_lucene_query()
+	if(range_query)
+		return "([range_query]) AND ([user_query])"
+	return user_query
+
+/// Creates an expanded Lucene query with additional filters that are normally injected into the DSL
+/// This is because passing filters and such in a Dashboards URL is very unwieldy.
+/// So instead, we just do best-effort by shoving equivalent filters into the Lucene query.
+/// Note that this doesn't include the time filter, which we can set easily in URL.
+/datum/opensearch_query/proc/create_dashboards_lucene_query()
+	var/query = "roundid:[roundid]"
+	if(length(log_types))
+		query = " AND logtype:([log_types.Join(" OR ")])"
+	if(range_query)
+		query += " AND ([range_query])"
+	query += " AND ([user_query])"
+	return query
+
+/// Creates the Link to Dashboards for our query
+/datum/opensearch_query/proc/create_dashboards_link()
+	if(!CONFIG_GET(string/opensearch_dashboards_url) || !CONFIG_GET(string/opensearch_dashboards_saved_discover))
+		return
+	var/lucene_query = rustg_url_encode(create_dashboards_lucene_query())
+	lucene_query = replacetext(lucene_query, "'", "!'") // Escaping
+	var/_q = "(filters:!(),query:(language:lucene,query:'[lucene_query]'))"
+	// By default we create the discover view with 30d max and refresh every 30 seconds
+	var/_g = "(filters:!(),refreshInterval:(pause:!f,value:30000),time:(from:now-30d,to:[render_time_param(time_ago)]))"
+	var/url = "[CONFIG_GET(string/opensearch_dashboards_url)]"
+	url += "/app/data-explorer/discover/#/view/"
+	url += "[CONFIG_GET(string/opensearch_dashboards_saved_discover)]"
+	return "[url]?_q=[_q]&_g=[_g]"
 
 
 /// Gets the correct time string for a given time
 /datum/opensearch_query/proc/render_time_param(time_param)
 	SHOULD_BE_PURE(TRUE)
-	switch(time_mode)
-		if(OPENSEARCH_QUERY_TIME_MODE_RELATIVE)
-			return "now-[time_param]s"
-		else
-			CRASH("Unimplemented")
-
+	return "now-[time_param]s" // Expand this if you want absolute time ranges
 
 /// Callback for an errored HTTP request (probably at network level)
 /datum/opensearch_query/proc/on_error(datum/http_response/response_object)
 	query_status = OPENSEARCH_QUERY_STATUS_FAILED
-	status_text = response_object.error
-	SStgui.update_uis(src)
-
-/// Callback for an request that was unsucessful at OpenSearch level
-/datum/opensearch_query/proc/on_failure(datum/http_response/response_object)
-	query_status = OPENSEARCH_QUERY_STATUS_FAILED
-	var/list/parsed_response
-	try
-		parsed_response = json_decode(response_object.body)
-	catch
-		status_text = "Request failed, and failed to parse OpenSearch response"
-		return
-	var/list/error = parsed_response["error"]
-	if(error["root_cause"])
-		status_text = "OpenSearch error: [json_encode(error["root_cause"])]"
-		return
-	status_text = "Unknown Opensearch Error"
+	error_text = response_object.error
 	SStgui.update_uis(src)
 
 /// Callback for a successful request
@@ -202,7 +186,7 @@
 	// We don't actually do anything here. For server performance reasons, we just pass the
 	// entire response object as string to TGUI, without any JSON encoding.
 	query_results = response_object.body
-	status_text = "Request successful"
+	error_text = ""
 	SStgui.update_uis(src)
 
 
@@ -222,14 +206,13 @@
 	.["queryName"] = name
 	.["queryStatus"] = query_status
 	.["queryResults"] = query_results
-	.["queryMode"] = query_mode
+	.["queryTimeAgo"] = time_ago
 	.["rankingMode"] = ranking_mode
-	.["queryTimeStart"] = time_start
-	.["queryTimeEnd"] = time_end
-	.["queryRoundId"] = target_roundid
 	.["userQuery"] = user_query
 	.["logTypes"] = log_types
-	.["statusText"] = status_text
+	.["errorText"] = error_text
+	.["roundid"] = roundid
+	.["rangedQuery"] = !!range_query
 
 /datum/opensearch_query/ui_state(mob/user)
 	return GLOB.admin_state
@@ -240,29 +223,26 @@
 		return FALSE
 	switch(action)
 		if("delete")
+			log_admin("[key_name(usr)] deleted OpenSearch Query ~[id]")
 			qdel(src)
+
 		if("update_query")
 			if(params["query_name"])
 				name = params["query_name"]
-			if(params["query_mode"])
-				query_mode = params["query_mode"]
 			if(params["ranking_mode"])
 				ranking_mode = params["ranking_mode"]
-			if(params["query_time_start"])
-				time_start = params["query_time_start"]
-			if(params["query_time_end"])
-				time_end = params["query_time_end"]
-			if(!isnull(params["query_roundid"]))
-				target_roundid = params["query_roundid"]
-				if(!(text2num(target_roundid) < 1))
-					target_roundid = null
+			if(params["roundid"])
+				roundid = params["roundid"]
 			if(params["user_query"])
 				user_query = params["user_query"]
 			if(params["log_types"])
 				log_types = params["log_types"]
+			if(params["time_ago"])
+				time_ago = params["time_ago"]
 			if(params["execute"])
-				execute()
+				execute(ui.user)
 			SStgui.update_uis(src)
+
 		if("jmp")
 			var/x = text2num(params["x"])
 			var/y = text2num(params["y"])
@@ -270,6 +250,7 @@
 			var/client/client = ui.user?.client
 			if(x && y && z && client)
 				client.jumptocoord(x, y, z)
+
 		if("playerpanel")
 			var/client/target_client = GLOB.directory[params["ckey"]]
 			var/mob/target_mob = target_client?.mob
@@ -277,7 +258,56 @@
 			if(target_mob && admin_user)
 				admin_user.show_player_panel(target_mob)
 
+		if("toggle_range") // Add a ranging component to the query
+			if(range_query)
+				// Remove it.
+				range_query = null
+				SStgui.update_uis(src)
+				return
 
+			var/turf/turf = get_turf(ui.user)
+			if(!turf.z)
+				return
+			var/range = tgui_input_number(ui.user, "How far from here? Zero to cancel.", "Range Picker", 8, 1000, 0)
+			if(!range)
+				return
+
+			// Scan min/max Z coordinates
+			var/turf/scan_turf
+
+			// Up
+			var/max_z = turf.z
+			scan_turf = turf
+			while(scan_turf)
+				scan_turf = SSmapping.get_turf_above(scan_turf)
+				if(scan_turf)
+					max_z = scan_turf.z
+			max_z = min(turf.z + range, max_z)
+
+			// Down
+			var/min_z = turf.z
+			scan_turf = turf
+			while(scan_turf)
+				scan_turf = SSmapping.get_turf_below(scan_turf)
+				if(scan_turf)
+					min_z = scan_turf.z
+			min_z = max(turf.z - range, min_z)
+
+			// X / Y is easier, fill out the query now
+			range_query = "loc_x: \[[turf.x - range] TO [turf.x + range]\]"
+			range_query += " AND loc_y: \[[turf.y - range] TO [turf.y + range]\]"
+			range_query += " AND loc_z: \[[min_z] TO [max_z]\]"
+
+			SStgui.update_uis(src)
+
+
+		if("open_dashboards")
+			var/link = create_dashboards_link()
+			if(link)
+				ui.user << link(link)
+
+
+/// Opens the full on builder letting us select a query to edit
 /client/proc/opensearch_query_builder()
 	set name = "Open OpenSearch Query Builder"
 	set category = "Admin"
@@ -298,4 +328,13 @@
 		query = SSopensearch.new_query()
 	if(!istype(query) || QDELETED(query))
 		return
+	query.tgui_interact(usr)
+
+/// Creates a new query quickly with the passed text
+/client/proc/opensearch_quick_query(bootstrap as text)
+	set name = ".opensearch"
+	set desc = "Create an OpenSearch query quickly"
+	set category = null
+
+	var/datum/opensearch_query/query = SSopensearch.new_query(bootstrap)
 	query.tgui_interact(usr)

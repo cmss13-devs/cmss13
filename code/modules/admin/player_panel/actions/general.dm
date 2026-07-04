@@ -145,7 +145,7 @@
 	if(!target || !user.mob)
 		return
 
-	var/datum/opensearch_query/query = SSopensearch.new_query(target.persistent_ckey)
+	var/datum/opensearch_query/query = SSopensearch.new_query(target.persistent_ckey, "ckey", 3)
 	query.tgui_interact(user.mob)
 	return TRUE
 

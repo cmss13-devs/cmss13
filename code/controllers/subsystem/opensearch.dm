@@ -42,10 +42,10 @@ SUBSYSTEM_DEF(opensearch)
 
 /// Create a new query and register it
 /// [bootstrap] : Important text to seed the query with
-/datum/controller/subsystem/opensearch/proc/new_query(bootstrap)
+/datum/controller/subsystem/opensearch/proc/new_query(bootstrap, boostfield, boostfactor)
 	RETURN_TYPE(/datum/opensearch_query)
 	var/id = query_counter++
-	var/datum/opensearch_query/query = new(id, bootstrap)
+	var/datum/opensearch_query/query = new(id, bootstrap, boostfield, boostfactor)
 	queries[id] = query
 	return query
 
@@ -69,7 +69,10 @@ SUBSYSTEM_DEF(opensearch)
 		else if(response.status_code == 200)
 			query.on_success(response)
 		else
-			query.on_failure(response)
+			// This should have different handling to catch OpenSearch errors, but rustg is dumb
+			// and won't actually let us grab the response body on an opensearch error.
+			// It'll just trip over itself in parsing and report "host returned status 400"
+			query.on_error(response)
 
 /// Queues a new HTTP request to the OpenSearch backend:
 ///  * [query] : The query this request is attributed to. Has no real effect, is just to know who to fire callbacks to.
@@ -100,3 +103,14 @@ SUBSYSTEM_DEF(opensearch)
 /// Index patterns to be accessed by OpenSearch query tool
 /datum/config_entry/string/opensearch_pattern
 	protection = CONFIG_ENTRY_LOCKED
+
+/// Max results to fetch in an OpenSearch query. Without pagination, OpenSearch limits it to 10000 results on top of that.
+/datum/config_entry/number/opensearch_max_results
+	config_entry_value = 500
+
+/// URL to the OpenSearch-Dashboards instance for the "link to dashboards" button
+/datum/config_entry/string/opensearch_dashboards_url
+	protection = CONFIG_ENTRY_LOCKED
+
+/// OpenSearch-Dashboards Discovery Saved Object that will be used as basis for the link-to-dashboards feature
+/datum/config_entry/string/opensearch_dashboards_saved_discover

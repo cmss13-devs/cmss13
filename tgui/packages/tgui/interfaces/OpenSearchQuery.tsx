@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useBackend, useSharedState } from 'tgui/backend';
 import {
   Box,
   Button,
-  Dropdown,
   Input,
+  NoticeBox,
   Section,
   Stack,
   Table,
@@ -17,14 +17,13 @@ type Data = {
   queryName: string;
   queryStatus: number;
   queryResults: string;
-  queryMode: number;
   rankingMode: boolean;
-  queryTimeStart: number;
-  queryTimeEnd: number;
-  queryRoundId: string; // String because it can be empty
+  queryTimeAgo: number;
   userQuery: string;
+  roundid: string;
   logTypes: Array<string>;
-  statusText: string;
+  errorText: string;
+  rangedQuery: boolean;
 };
 
 const OPENSEARCH_QUERY_STATUS_READY = 1;
@@ -50,13 +49,6 @@ const STATUS_TO_ICON = [
 ];
 const STATUS_TO_COLOR = ['bad', 'good', 'average', 'blue', 'bad', 'good'];
 
-const OPENSEARCH_QUERY_MODE_DSL_RAW = 0;
-const OPENSEARCH_QUERY_MODE_DSL = 1;
-const OPENSEARCH_QUERY_MODE_LUCENE = 2;
-
-const QUERY_MODE_TO_NAME = ['DSL (RAW)', 'DSL', 'Lucene'];
-const DEFAULT_QUERY_MODE = 'Lucene';
-
 const LOGTYPE_TO_COLOR = {
   ATTACK: 'bad',
   SAY: 'purple',
@@ -67,13 +59,25 @@ const LOGTYPE_TO_COLOR = {
   ADMIN: 'good',
 };
 
+// A vastly simplified version of TGUI's Collapsible, with no icon, less margins, etc
 const MiniCollapsible = (props) => {
   const { children, header, color, ...rest } = props;
   const [open, setOpen] = useState(props.open);
 
   return (
     <Box mb={1}>
-      <Button fluid color={color} onClick={() => setOpen(!open)} {...rest}>
+      <Button
+        fluid
+        color={color}
+        onClick={(e) => {
+          e.cancelBubble = true;
+          if (e.stopPropagation) {
+            e.stopPropagation();
+          }
+          setOpen(!open);
+        }}
+        {...rest}
+      >
         {header}
       </Button>
       {open && <Box mt={1}>{children}</Box>}
@@ -88,36 +92,43 @@ export const OpenSearchQuery = (props) => {
     queryName,
     queryStatus,
     queryResults,
-    queryMode,
     rankingMode,
-    queryTimeStart,
-    queryTimeEnd,
-    queryRoundId,
+    queryTimeAgo,
+    roundid,
     userQuery,
     logTypes,
-    statusText,
+    errorText,
+    rangedQuery,
   } = data;
 
-  const [localQueryName, setQueryName] = useSharedState('queryName', queryName);
-  const [localQueryMode, setQueryMode] = useSharedState('queryMode', queryMode);
+  const [localUserQuery, setUserQuery] = useState(userQuery);
+  const [localQueryName, setQueryName] = useState(queryName);
+  const [localRangedQuery, setRangedQuery] = useState(rangedQuery);
+
+  // Force refresh the important bits if they're updated by backend
+  useEffect(() => {
+    setQueryName(queryName);
+  }, [queryName]);
+
+  useEffect(() => {
+    setUserQuery(userQuery);
+  }, [userQuery]);
+
+  useEffect(() => {
+    setRangedQuery(rangedQuery);
+  }, [rangedQuery]);
+
+  // The smaller stuff is fine as shared states as they're manipulated only in UI
+  const [localQueryTimeAgo, setQueryTimeAgo] = useSharedState(
+    'queryTimeAgo',
+    queryTimeAgo,
+  );
+  const [localLogTypes, setLogTypes] = useSharedState('logTypes', logTypes);
   const [localRankingMode, setRankingMode] = useSharedState(
     'rankingMode',
     rankingMode,
   );
-  const [localQueryTimeStart, setQueryTimeStart] = useSharedState(
-    'queryTimeStart',
-    queryTimeStart,
-  );
-  const [localQueryTimeEnd, setQueryTimeEnd] = useSharedState(
-    'queryTimeEnd',
-    queryTimeEnd,
-  );
-  const [localQueryRoundId, setQueryRoundId] = useSharedState(
-    'queryRoundId',
-    queryRoundId,
-  );
-  const [localUserQuery, setUserQuery] = useSharedState('userQuery', userQuery);
-  const [localLogTypes, setLogTypes] = useSharedState('logTypes', logTypes);
+  const [localRoundid, setRoundid] = useSharedState('roundid', roundid);
 
   const parsedResults = queryResults ? JSON.parse(queryResults) : {};
   const resultsTotal = parsedResults?.hits?.total?.value;
@@ -134,17 +145,31 @@ export const OpenSearchQuery = (props) => {
     setLogTypes(newLogTypes);
   };
 
-  const submitQuery = (executeNow: boolean) => {
+  const logTypeButton = (logType: string) => {
+    return (
+      <Stack.Item>
+        <Button.Checkbox
+          checked={localLogTypes.indexOf(logType) !== -1}
+          color={localLogTypes.indexOf(logType) !== -1 ? 'good' : 'bad'}
+          onClick={() => toggleLogType(logType)}
+        >
+          {logType}
+        </Button.Checkbox>
+      </Stack.Item>
+    );
+  };
+
+  // For some reason, storing the state within a onEnter does NOT work,
+  // so we'll have to override the query when doing that
+  const submitQuery = (executeNow: boolean, queryOverride) => {
     act('update_query', {
       execute: executeNow,
       query_name: localQueryName,
-      query_mode: localQueryMode,
       ranking_mode: localRankingMode,
-      query_time_start: localQueryTimeStart,
-      query_time_end: localQueryTimeEnd,
-      // query_roundid: localQueryRoundId,
+      query_time_end: localQueryTimeAgo,
       log_types: localLogTypes,
-      user_query: localUserQuery,
+      roundid: localRoundid,
+      user_query: queryOverride || localUserQuery,
     });
   };
 
@@ -305,8 +330,8 @@ export const OpenSearchQuery = (props) => {
   return (
     <Window
       title={`OpenSearch Query Builder ~${queryId}`}
-      width={900}
-      height={750}
+      width={700}
+      height={700}
     >
       <Window.Content>
         <Stack vertical fill>
@@ -326,7 +351,7 @@ export const OpenSearchQuery = (props) => {
                   }
                   disabled={queryStatus === OPENSEARCH_QUERY_STATUS_EXECUTING}
                   tooltip="Save and Start the query"
-                  onClick={() => submitQuery(true)}
+                  onClick={() => submitQuery(true, null)}
                 >
                   Exec
                 </Button>
@@ -336,27 +361,40 @@ export const OpenSearchQuery = (props) => {
                   icon="floppy-disk"
                   color="blue"
                   tooltip="Save the query without executing it"
-                  onClick={() => submitQuery(false)}
+                  onClick={() => submitQuery(false, null)}
                 >
                   Save
                 </Button>
               </Stack.Item>
-              <Stack.Item grow align="center">
+              <Stack.Item>
+                <Button
+                  icon="fa-globe"
+                  color="violet"
+                  tooltip="Saves and Opens the query on OpenSearch Dashboards"
+                  onClick={() => {
+                    submitQuery(false, null);
+                    act('open_dashboards');
+                  }}
+                >
+                  Dashboards
+                </Button>
+              </Stack.Item>
+              <Stack.Item align="center">
                 <Input
-                  minWidth={25}
+                  minWidth={20}
                   value={localQueryName}
                   onChange={(e, value) => setQueryName(value)}
                 />
               </Stack.Item>
-              <Stack.Item align="right">
-                <Button
-                  icon={STATUS_TO_ICON[queryStatus]}
-                  color={STATUS_TO_COLOR[queryStatus]}
-                  tooltip={statusText}
-                >
-                  {STATUS_TO_NAME[queryStatus]}
-                </Button>
+              <Stack.Item>
+                <Input
+                  width={6}
+                  value={localRoundid}
+                  onChange={(e, value) => setRoundid(value)}
+                  placeholder="#round"
+                />
               </Stack.Item>
+              <Stack.Item grow />
               <Stack.Item align="right">
                 <Button.Confirm
                   ml={1}
@@ -374,17 +412,6 @@ export const OpenSearchQuery = (props) => {
           <Stack.Item>
             <Stack fill>
               <Stack.Item>
-                <Dropdown
-                  width="8em"
-                  selected={DEFAULT_QUERY_MODE}
-                  displayText={QUERY_MODE_TO_NAME[localQueryMode]}
-                  options={QUERY_MODE_TO_NAME}
-                  onSelected={(selected) =>
-                    setQueryMode(QUERY_MODE_TO_NAME.indexOf(selected))
-                  }
-                />
-              </Stack.Item>
-              <Stack.Item>
                 <Button.Checkbox
                   checked={localRankingMode}
                   onClick={() => setRankingMode(!localRankingMode)}
@@ -395,118 +422,74 @@ export const OpenSearchQuery = (props) => {
                 </Button.Checkbox>
               </Stack.Item>
 
-              <Stack.Item>
-                <Button.Checkbox
-                  width={5}
-                  checked={localLogTypes.indexOf('GAME') !== -1}
-                  color={localLogTypes.indexOf('GAME') !== -1 ? 'good' : 'bad'}
-                  onClick={() => toggleLogType('GAME')}
-                >
-                  GAME
-                </Button.Checkbox>
-              </Stack.Item>
-              <Stack.Item>
-                <Button.Checkbox
-                  width={6}
-                  checked={localLogTypes.indexOf('ADMIN') !== -1}
-                  color={localLogTypes.indexOf('ADMIN') !== -1 ? 'good' : 'bad'}
-                  onClick={() => toggleLogType('ADMIN')}
-                >
-                  ADMIN
-                </Button.Checkbox>
-              </Stack.Item>
-              <Stack.Item>
-                <Button.Checkbox
-                  width={4}
-                  checked={localLogTypes.indexOf('SAY') !== -1}
-                  color={localLogTypes.indexOf('SAY') !== -1 ? 'good' : 'bad'}
-                  onClick={() => toggleLogType('SAY')}
-                >
-                  SAY
-                </Button.Checkbox>
-              </Stack.Item>
-              <Stack.Item>
-                <Button.Checkbox
-                  width={6}
-                  checked={localLogTypes.indexOf('ATTACK') !== -1}
-                  color={
-                    localLogTypes.indexOf('ATTACK') !== -1 ? 'good' : 'bad'
-                  }
-                  onClick={() => toggleLogType('ATTACK')}
-                >
-                  ATTACK
-                </Button.Checkbox>
-              </Stack.Item>
+              <Button.Checkbox
+                ml={1}
+                color={localRangedQuery ? 'purple' : 'blue'}
+                checked={rangedQuery}
+                onClick={() => act('toggle_range')}
+                tooltip="Click to toggle additional filtering based on the position you're standing at when clicking it. Only events that have location information can be filtered that way, so some might be omitted."
+              >
+                Filter Nearby
+              </Button.Checkbox>
 
-              {/* Round ID picker. Potentially don't need it because if you do you can open OpenSearch-Dashboards which does a better job than this UI }
-              <Stack.Item>
-                <Box color="label">round:</Box>
-              </Stack.Item>
-              <Stack.Item>
-                <Input
-                  width={6}
-                  value={localQueryRoundId}
-                  onChange={(e, value) => setQueryRoundId(value)}
-                />
-              </Stack.Item>
-              */}
+              {logTypeButton('GAME')}
+              {logTypeButton('ADMIN')}
+              {logTypeButton('SAY')}
+              {logTypeButton('ATTACK')}
 
-              {/* Start time picker. Potentially don't need it if you're gonna look at the whole round anyway
-              <Stack.Item>
-                <Box color="label">from:</Box>
-              </Stack.Item>
-              <Stack.Item>
-                <Input
-                  width={6}
-                  value={timeOffsetToDisplay(localQueryTimeStart)}
-                  onChange={(e, value) => {
-                    setQueryTimeStart(localTimeOffsetToNumber(value));
-                  }}
-                />
-              </Stack.Item>
-              */}
               <Stack.Item grow />
               <Stack.Item align="right">
-                <Box color="label">rewind:</Box>
-              </Stack.Item>
-              <Stack.Item align="right">
                 <Input
                   width={5}
-                  value={timeOffsetToDisplay(localQueryTimeEnd)}
+                  value={timeOffsetToDisplay(localQueryTimeAgo)}
                   onChange={(e, value) =>
-                    setQueryTimeEnd(localTimeOffsetToNumber(value))
+                    setQueryTimeAgo(localTimeOffsetToNumber(value))
                   }
                 />
+              </Stack.Item>
+              <Stack.Item align="right">
+                <Box color="label">ago</Box>
               </Stack.Item>
             </Stack>
           </Stack.Item>
           <Stack.Item>
-            <Stack>
-              <Stack.Item grow>
-                <TextArea
-                  minHeight="2em"
-                  value={localUserQuery}
-                  placeholder="Query"
-                  onChange={(e, value) => {
-                    setUserQuery(value);
-                  }}
-                  onEnter={(e, value) => {
-                    submitQuery(true);
-                  }}
-                />
-              </Stack.Item>
-            </Stack>
+            <TextArea
+              scrollbar
+              autoFocus
+              minHeight="5em" // Just enough to scroll i guess, cause you can't actually resize this properly within the Stack.Item
+              value={localUserQuery}
+              placeholder="Query"
+              onChange={(e, value) => {
+                setUserQuery(value);
+              }}
+              onEnter={(e, value) => {
+                setUserQuery(value);
+                submitQuery(true, value);
+              }}
+            />
           </Stack.Item>
           <Stack.Item grow>
             <Section
               fill
               scrollable
               title={
+                (queryStatus === OPENSEARCH_QUERY_STATUS_FAILED &&
+                  'Failed to execute query: ') ||
+                (queryStatus === OPENSEARCH_QUERY_STATUS_BUILD_ERROR &&
+                  'Failed to create query: ') ||
+                (queryStatus === OPENSEARCH_QUERY_STATUS_EXECUTING &&
+                  'Executing...') ||
+                (queryStatus === OPENSEARCH_QUERY_STATUS_READY && 'Ready.') ||
                 (resultsFetched
                   ? `${resultsFetched}/${resultsTotal} results`
                   : 'No results') + (timeElapsed ? ` in ${timeElapsed}ms` : '')
               }
             >
+              {errorText && errorText.length && (
+                <NoticeBox color="bad" warning>
+                  {errorText}
+                </NoticeBox>
+              )}
               {generateLogElements(queryResults)}
             </Section>
           </Stack.Item>

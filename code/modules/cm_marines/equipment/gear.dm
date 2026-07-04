@@ -358,7 +358,7 @@
 /obj/item/device/overwatch_camera/see_emote(mob/living/sourcemob, emote, audible)
 	SEND_SIGNAL(src, COMSIG_BROADCAST_SEE_EMOTE, sourcemob, emote, audible, loc == sourcemob && audible)
 
-/obj/item/device/overwatch_camera/tripod
+/obj/item/device/overwatch_camera_tripod
 	name = "FTC Tripod Camera"
 	desc = "A Motoca-430-T deployable tripod camera that connects to the overwatch network. It can be renamed and deployed."
 	icon = 'icons/obj/structures/machinery/defenses/overwatch.dmi'  // ToDO: Get real sprites
@@ -369,19 +369,20 @@
 	desc_lore = "Following modernisation efforts in the Marine'70 program, USCM Platoons were shrunk and squads re-organised to emphasise individual firepower and mobility. The Motoca-430-T, the precursor to the Motoca-500 Helmet Camera, was commissioned by the Department of Defense to be utilised by Colonial Marine squads in establishing secure perimeters and watching rear areas remotely through the Overwatch system."
 	var/label
 	var/datum/squad/squad
+	var/obj/structure/machinery/camera/camera
 
-/obj/item/device/overwatch_camera/tripod/Initialize(mapload, ...)
+/obj/item/device/overwatch_camera_tripod/Initialize(mapload, ...)
 	. = ..()
 	label = "FTC - Field Tripod Camera"
 	camera = new /obj/structure/machinery/camera/overwatch(src)
 	AddComponent(/datum/component/overwatch_console_control)
 
-/obj/item/device/overwatch_camera/tripod/Destroy()
+/obj/item/device/overwatch_camera_tripod/Destroy()
 	squad = null
 	QDEL_NULL(camera)
 	return ..()
 
-/obj/item/device/overwatch_camera/tripod/attack_self(mob/user)
+/obj/item/device/overwatch_camera_tripod/attack_self(mob/user)
 	..()
 	if(!user || user.stat != CONSCIOUS || user.is_mob_incapacitated())
 		return
@@ -419,7 +420,7 @@
 		if("Deploy")
 			deploy_tripod(user)
 
-/obj/item/device/overwatch_camera/tripod/proc/deploy_tripod(mob/user)
+/obj/item/device/overwatch_camera_tripod/proc/deploy_tripod(mob/user)
 	if(!user || user.stat != CONSCIOUS) // pre-do-after
 		to_chat(user, SPAN_WARNING("You can't do that right now."))
 		return
@@ -577,7 +578,7 @@
 				return
 			base_label = new_name
 			update_full_label()
-			to_chat(user, SPAN_NOTICE("[src] renamed to [name]."))
+			to_chat(user, SPAN_NOTICE("Camera renamed to [name]."))
 			return
 		if("Pick Up")
 			if(isyautja(user))
@@ -614,7 +615,7 @@
 		return
 	broken = TRUE
 
-	var/obj/item/device/overwatch_camera/tripod/new_tripod = new(get_turf(src))
+	var/obj/item/device/overwatch_camera_tripod/new_tripod = new(get_turf(src))
 	new_tripod.label = base_label
 	new_tripod.name = base_label
 	new_tripod.squad = squad

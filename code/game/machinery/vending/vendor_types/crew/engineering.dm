@@ -58,7 +58,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_maintenance_technician, list(
 
 		list("SPARE GEAR", 0, null, null, null),
 		list("Synthetic Reset Key", 20, /obj/item/device/defibrillator/synthetic, null, VENDOR_ITEM_REGULAR),
-		list("FCT - Field Camera Tripod", 10, /obj/item/device/overwatch_camera/tripod, null, VENDOR_ITEM_REGULAR),
+		list("FCT - Field Camera Tripod", 10, /obj/item/device/overwatch_camera_tripod, null, VENDOR_ITEM_REGULAR),
 	))
 
 /obj/structure/machinery/cm_vending/clothing/maintenance_technician

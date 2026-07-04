@@ -5803,6 +5803,11 @@
 /obj/structure/platform_decoration/metal/almayer_smooth/north,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/lower/port_fore)
+"aoA" = (
+/turf/closed/wall/almayer/reinforced/temphull{
+	blend_objects = list(/obj/structure/window_frame,/obj/structure/window/framed)
+	},
+/area/almayer/command/cic)
 "aoB" = (
 /obj/structure/window/reinforced/tinted{
 	dir = 8
@@ -7168,6 +7173,9 @@
 "arO" = (
 /turf/open/floor/wood/ship,
 /area/almayer/living/offices/flight)
+"arP" = (
+/turf/closed/wall/almayer/reinforced/temphull,
+/area/almayer/command/cic)
 "arQ" = (
 /obj/structure/surface/table/gamblingtable,
 /obj/item/spacecash/c10,
@@ -36647,7 +36655,7 @@
 	name = "CIC Emergency Access Shutter";
 	req_one_access_txt = "19"
 	},
-/turf/closed/wall/almayer/outer/internal,
+/turf/closed/wall/almayer/reinforced/temphull,
 /area/almayer/command/cic)
 "bLN" = (
 /obj/structure/machinery/cryopod{
@@ -202093,9 +202101,9 @@ asc
 axp
 aPI
 aKq
-aKq
-aKq
-aKq
+arP
+arP
+arP
 aCw
 ayF
 asu
@@ -202198,8 +202206,8 @@ alX
 aKq
 aRd
 azM
-aKq
-aKq
+arP
+arP
 aKi
 asu
 aqP
@@ -202302,7 +202310,7 @@ aKq
 aRJ
 aNr
 atx
-aKq
+arP
 ayS
 uCW
 aqS
@@ -202405,7 +202413,7 @@ aKq
 aRJ
 asN
 atx
-aKq
+arP
 ayO
 auv
 aKa
@@ -202508,7 +202516,7 @@ aKq
 mPn
 aNr
 atx
-aKq
+arP
 ayP
 ava
 aKa
@@ -202593,7 +202601,7 @@ agj
 aic
 cjh
 ciY
-aKq
+arP
 bLM
 awA
 sEp
@@ -202611,7 +202619,7 @@ bMV
 vSl
 aNr
 atx
-bMV
+aoA
 ayW
 avG
 aKz
@@ -202695,8 +202703,8 @@ mXj
 agj
 aic
 cji
-aKq
-aKq
+arP
+arP
 bMQ
 bwy
 buk
@@ -202714,8 +202722,8 @@ aUP
 aSs
 aOd
 aFa
-aKq
-bMV
+arP
+aoA
 avG
 aKy
 mKq
@@ -202798,7 +202806,7 @@ gLN
 agj
 aic
 aov
-aKq
+arP
 acS
 bPi
 awG
@@ -202818,7 +202826,7 @@ avY
 vHW
 aGQ
 ccg
-bMV
+aoA
 avG
 aKz
 mKq
@@ -202901,7 +202909,7 @@ agc
 agj
 aic
 aov
-aKq
+arP
 sxW
 bRZ
 jSc
@@ -202921,7 +202929,7 @@ aJI
 wFn
 aJD
 aCF
-bMV
+aoA
 avG
 aKz
 mKq
@@ -203004,7 +203012,7 @@ xyk
 mDX
 cjn
 cjj
-aKq
+arP
 dLe
 bST
 byq
@@ -203024,7 +203032,7 @@ qEk
 iaa
 aJD
 aEp
-bMV
+aoA
 avG
 aKz
 mKq
@@ -203107,7 +203115,7 @@ agc
 agj
 aic
 cjl
-aKq
+arP
 caj
 bUm
 bys
@@ -203127,7 +203135,7 @@ aUH
 wFn
 aJD
 aCF
-bMV
+aoA
 avG
 aKz
 mKq
@@ -203210,7 +203218,7 @@ iEz
 agj
 aic
 cjl
-aKq
+arP
 chc
 bUB
 bvk
@@ -203230,7 +203238,7 @@ avY
 mje
 aLZ
 aEU
-bMV
+aoA
 avG
 aKz
 mKq
@@ -203313,8 +203321,8 @@ mXj
 agj
 akL
 cjl
-aKq
-aKq
+arP
+arP
 bUF
 bGk
 jvX
@@ -203332,8 +203340,8 @@ aMg
 aMg
 aMg
 aMg
-aKq
-bMV
+arP
+aoA
 axn
 aKz
 mKq
@@ -203417,12 +203425,12 @@ agj
 aic
 cjl
 ayX
-aKq
-aKq
-aKq
-aKq
-aKq
-aKq
+arP
+arP
+arP
+arP
+arP
+arP
 wVW
 kcx
 aCf
@@ -203430,12 +203438,12 @@ wVW
 aCf
 wpt
 wVW
-bMV
-bMV
-bMV
-bMV
-bMV
-aKq
+aoA
+aoA
+aoA
+aoA
+aoA
+arP
 ayX
 avG
 aKz

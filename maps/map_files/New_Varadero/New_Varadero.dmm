@@ -41,6 +41,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/predship/tile/hunter_tile_6/west,
 /area/varadero/interior_protected/vessel)
+"aag" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
+	dir = 8
+	},
+/turf/open/floor/asteroidwarning,
+/area/varadero/interior/maintenance/security/south/hangar)
 "aah" = (
 /obj/structure/bed/chair/hunter{
 	name = "alien chair";
@@ -137,6 +144,12 @@
 	},
 /turf/closed/wall/r_wall/unmeltable,
 /area/varadero/interior/oob)
+"aas" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz2_near)
 "aav" = (
 /obj/item/tool/pickaxe,
 /obj/effect/decal/cleanable/dirt,
@@ -16730,9 +16743,6 @@
 /area/varadero/interior/maintenance/security/south/hangar)
 "aVc" = (
 /obj/structure/platform/metal/almayer_smooth,
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
-	dir = 8
-	},
 /turf/open/floor/asteroid,
 /area/varadero/interior/maintenance/security/south/hangar)
 "aVd" = (
@@ -22878,7 +22888,7 @@
 "bmn" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble,
 /turf/open/gm/coast/beachcorner/north_west,
-/area/varadero/exterior/monsoon)
+/area/varadero/exterior/eastocean)
 "bmo" = (
 /obj/item/lightstick/variant/planted,
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
@@ -26776,7 +26786,7 @@
 	climb_delay = 1
 	},
 /turf/open/gm/coast/beachcorner/south_west,
-/area/varadero/exterior/monsoon)
+/area/varadero/exterior/eastocean)
 "bwo" = (
 /obj/structure/flora/wood/trunk2,
 /turf/open/floor/asteroid,
@@ -27470,7 +27480,7 @@
 	climb_delay = 1
 	},
 /turf/open/gm/river/ocean/deep_ocean,
-/area/varadero/exterior/monsoon)
+/area/varadero/exterior/eastocean)
 "byg" = (
 /obj/structure/prop/structure_lattice{
 	dir = 1;
@@ -27778,13 +27788,13 @@
 	desc = "Private First Class Duck is the bravest of the LACN"
 	},
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
-/area/varadero/exterior/monsoon)
+/area/varadero/exterior/eastocean)
 "byZ" = (
 /obj/structure/platform/metal/kutjevo_smooth/east{
 	climb_delay = 1
 	},
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
-/area/varadero/exterior/monsoon)
+/area/varadero/exterior/eastocean)
 "bza" = (
 /obj/structure/flora/wood/stick4,
 /turf/open/floor/asteroid,
@@ -29073,7 +29083,7 @@
 	climb_delay = 1
 	},
 /turf/open/gm/coast/north,
-/area/varadero/exterior/monsoon)
+/area/varadero/exterior/eastocean)
 "bCr" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -35200,10 +35210,6 @@
 /obj/item/tool/warning_cone,
 /turf/open/floor/asteroid,
 /area/varadero/exterior/monsoon)
-"bRB" = (
-/obj/structure/blocker/invisible_wall,
-/turf/open/floor/asteroid,
-/area/varadero/exterior/eastbeach)
 "bRC" = (
 /obj/effect/decal/hybrisa/road/lines2,
 /turf/open/gm/road,
@@ -52282,7 +52288,7 @@
 /area/varadero/interior/library)
 "ejM" = (
 /turf/open/gm/coast/north,
-/area/varadero/exterior/monsoon)
+/area/varadero/exterior/eastocean)
 "ejZ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
@@ -67540,9 +67546,6 @@
 /obj/structure/machinery/landinglight/spoke,
 /turf/open/floor/asteroidwarning/northeast,
 /area/varadero/exterior/lz1_near)
-"qoI" = (
-/turf/open/gm/coast/beachcorner/north_west,
-/area/varadero/exterior/monsoon)
 "qps" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -73535,7 +73538,7 @@
 	climb_delay = 1
 	},
 /turf/open/gm/coast/beachcorner2/south_west,
-/area/varadero/exterior/monsoon)
+/area/varadero/exterior/eastocean)
 "uWA" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -76440,9 +76443,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/bare_catwalk,
 /area/varadero/interior/comms3)
-"xfQ" = (
-/turf/open/gm/coast/beachcorner2/north_west,
-/area/varadero/exterior/monsoon)
 "xgG" = (
 /turf/closed/wall/r_wall,
 /area/varadero/interior/administration)
@@ -103030,7 +103030,7 @@ aZw
 aYu
 aHa
 aWn
-aVD
+aag
 aVc
 aTA
 aTw
@@ -104045,7 +104045,7 @@ cgW
 cgW
 aQN
 cgW
-aQN
+aas
 cgW
 cgW
 aQN
@@ -105361,9 +105361,9 @@ huF
 kyp
 bqM
 bGU
-qoI
-gPi
-jTR
+elI
+jek
+dTG
 kyD
 elP
 bjC
@@ -105541,12 +105541,12 @@ huF
 huF
 huF
 bCo
-qoI
-gPi
-xfQ
-bUP
-veV
-jTR
+elI
+jek
+fWd
+dRs
+pjD
+dTG
 cFh
 bGU
 rvD
@@ -105724,11 +105724,11 @@ bDR
 deV
 bCp
 ejM
-hwE
-bUP
-nKR
-bUP
-ghN
+exX
+dRs
+ulb
+dRs
+qvS
 trI
 bGU
 bqM
@@ -105904,14 +105904,14 @@ bqM
 trI
 bGU
 bGU
-qoI
-xfQ
-nKR
-bUP
-bUP
+elI
+fWd
+ulb
+dRs
+dRs
 byY
-veV
-jTR
+pjD
+dTG
 rvD
 bGU
 buS
@@ -106799,7 +106799,7 @@ aNV
 aNh
 aNV
 aRV
-bRB
+bOT
 bLo
 bOT
 bLo

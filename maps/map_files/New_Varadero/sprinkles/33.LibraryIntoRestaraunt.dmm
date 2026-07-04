@@ -608,8 +608,8 @@
 /turf/open/floor/cmo,
 /area/varadero/interior/library/restaraunt)
 "Nf" = (
-/obj/structure/sign/safety/airlock{
-	pixel_x = 8
+/obj/effect/landmark/nightmare{
+	insert_tag = "LibaryIntoRestaraunt"
 	},
 /turf/closed/wall/r_wall/unmeltable,
 /area/varadero/interior/library/restaraunt)

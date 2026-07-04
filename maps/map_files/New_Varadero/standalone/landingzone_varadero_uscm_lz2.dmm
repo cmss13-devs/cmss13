@@ -12,11 +12,17 @@
 "c" = (
 /turf/open/floor/plating/almayer,
 /area/varadero/exterior/lz2_near)
+"d" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/lz2_near)
 
 (1,1,1) = {"
 a
 c
-a
+d
 "}
 (2,1,1) = {"
 c

@@ -203,7 +203,7 @@
 		list("Ushanka", 0, /obj/item/clothing/head/uppcap/ushanka, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 
 		list("HELMET OPTICS", 0, null, null, null),
-		list("Medical Helmet Optic", 15, /obj/item/device/helmet_visor/medical, null, VENDOR_ITEM_REGULAR),
+		list("SensorMate Medical Optic", 15, /obj/item/device/helmet_visor/medical/sensor, null, VENDOR_ITEM_REGULAR),
 		list("Welding Visor", 5, /obj/item/device/helmet_visor/welding_visor, null, VENDOR_ITEM_REGULAR),
 
 		list("BELT (CHOOSE 1)", 0, null, null, null),
@@ -447,7 +447,7 @@
 		list("Drop Pouch", 0, /obj/item/clothing/accessory/storage/droppouch, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 
 		list("HELMET OPTICS", 0, null, null, null),
-		list("Medical Helmet Optic", 12, /obj/item/device/helmet_visor/medical, null, VENDOR_ITEM_REGULAR),
+		list("SensorMate Medical Optic", 12, /obj/item/device/helmet_visor/medical/sensor, null, VENDOR_ITEM_REGULAR),
 		list("Welding Visor", 5, /obj/item/device/helmet_visor/welding_visor, null, VENDOR_ITEM_REGULAR),
 
 		list("PAMPHLETS", 0, null, null, null),
@@ -693,7 +693,7 @@
 		list("Powerloader Pamphlet", 30, /obj/item/pamphlet/upgradeable/powerloader, null, VENDOR_ITEM_REGULAR),
 
 		list("HELMET OPTICS", 0, null, null, null),
-		list("Medical Helmet Optic", 12, /obj/item/device/helmet_visor/medical, null, VENDOR_ITEM_REGULAR),
+		list("SensorMate Medical Optic", 12, /obj/item/device/helmet_visor/medical/sensor, null, VENDOR_ITEM_REGULAR),
 		list("Welding Visor", 5, /obj/item/device/helmet_visor/welding_visor, null, VENDOR_ITEM_REGULAR),
 	)
 
@@ -959,7 +959,7 @@
 
 		list("HELMET OPTICS", 0, null, null, null),
 		list("Welding Visor", 5, /obj/item/device/helmet_visor/welding_visor, null, VENDOR_ITEM_REGULAR),
-		list("Medical Helmet Optic", 4, /obj/item/device/helmet_visor/medical, null, VENDOR_ITEM_RECOMMENDED),
+		list("SensorMate Medical Optic", 4, /obj/item/device/helmet_visor/medical/sensor, null, VENDOR_ITEM_RECOMMENDED),
 
 		list("UTILITIES", 0, null, null, null),
 		list("Roller Bed", 5, /obj/item/roller, null, VENDOR_ITEM_REGULAR),
@@ -1131,7 +1131,7 @@
 
 		list("HELMET OPTICS", 0, null, null, null),
 		list("Welding Visor", 5, /obj/item/device/helmet_visor/welding_visor, null, VENDOR_ITEM_REGULAR),
-		list("Medical Helmet Optic", 4, /obj/item/device/helmet_visor/medical, null, VENDOR_ITEM_RECOMMENDED),
+		list("SensorMate Medical Optic", 4, /obj/item/device/helmet_visor/medical/sensor, null, VENDOR_ITEM_RECOMMENDED),
 		list("Night Vision Optic", 25, /obj/item/device/helmet_visor/night_vision, null, VENDOR_ITEM_RECOMMENDED),
 
 		list("ENGINEERING SUPPLIES", 0, null, null, null),

@@ -85,6 +85,12 @@
 	action_icon_string = "med_sight_down"
 	helmet_overlay = "med_sight_right"
 
+/obj/item/device/helmet_visor/medical/sensor
+	name = "sensormate optic"
+	icon_state = "sensor_sight"
+	action_icon_string = "sensor_sight_down"
+	helmet_overlay = "sensor_sight_right"
+
 /obj/item/device/helmet_visor/medical/advanced
 	name = "advanced medical optic"
 	helmet_overlay = "med_sight_right"

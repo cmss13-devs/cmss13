@@ -36,7 +36,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_leader, list(
 
 		list("HELMET OPTICS", 0, null, null, null),
 		list("Welding Visor", 5, /obj/item/device/helmet_visor/welding_visor, null, VENDOR_ITEM_REGULAR),
-		list("Medical Helmet Optic", 4, /obj/item/device/helmet_visor/medical, null, VENDOR_ITEM_RECOMMENDED),
+		list("SensorMate Medical Optic", 4, /obj/item/device/helmet_visor/medical/sensor, null, VENDOR_ITEM_RECOMMENDED),
 		list("Night Vision Optic", 25, /obj/item/device/helmet_visor/night_vision, null, VENDOR_ITEM_RECOMMENDED),
 
 		list("ENGINEERING SUPPLIES", 0, null, null, null),

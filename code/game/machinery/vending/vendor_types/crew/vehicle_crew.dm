@@ -147,6 +147,7 @@ GLOBAL_LIST_INIT(cm_vending_vehicle_crew_tank, list(
 	list("M92T Grenade Launcher", 0, /obj/effect/essentials_set/tank/tankgl, VEHICLE_SECONDARY_AVAILABLE, VENDOR_ITEM_REGULAR),
 	list("M56 Cupola", 0, /obj/effect/essentials_set/tank/m56cupola, VEHICLE_SECONDARY_AVAILABLE, VENDOR_ITEM_REGULAR),
 	list("LZR-N Flamer Unit", 0, /obj/effect/essentials_set/tank/tankflamer, VEHICLE_SECONDARY_AVAILABLE, VENDOR_ITEM_RECOMMENDED),
+	list("Mounted UA Flag", 0, /obj/effect/essentials_set/tank/united_americas_flag, VEHICLE_SECONDARY_AVAILABLE, VENDOR_ITEM_RECOMMENDED),
 
 	list("SUPPORT MODULE", 0, null, null, null),
 	list("Artillery Module", 0, /obj/item/hardpoint/support/artillery_module, VEHICLE_SUPPORT_AVAILABLE, VENDOR_ITEM_REGULAR),
@@ -446,6 +447,12 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 		/obj/item/ammo_magazine/hardpoint/tank_glauncher,
 		/obj/item/ammo_magazine/hardpoint/tank_glauncher,
 		/obj/item/ammo_magazine/hardpoint/tank_glauncher,
+	)
+
+/obj/effect/essentials_set/tank/united_americas_flag
+	desc = "An United Americas Flag for mounting atop the tank."
+	spawned_gear_list = list(
+		/obj/item/hardpoint/secondary/united_americas_flag
 	)
 
 /obj/effect/essentials_set/tank/turret

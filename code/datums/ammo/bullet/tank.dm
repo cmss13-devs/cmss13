@@ -12,11 +12,11 @@
 	sound_hit  = 'sound/weapons/sting_boom_small1.ogg'
 	damage_falloff = 0
 	flags_ammo_behavior = AMMO_BALLISTIC
-	accurate_range_min = 4
+	accurate_range_min = 3
 
 	accuracy = HIT_ACCURACY_TIER_8
 	scatter = 0
-	damage = 60
+	damage = 140
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8
 	penetration = ARMOR_PENETRATION_TIER_6
 	accurate_range = 32
@@ -24,21 +24,36 @@
 	shell_speed = AMMO_SPEED_TIER_6
 
 /datum/ammo/bullet/tank/flak/on_hit_mob(mob/M,obj/projectile/P)
-	burst(get_turf(M),P,damage_type, 2 , 3)
-	burst(get_turf(M),P,damage_type, 1 , 3 , 0)
+	create_shrapnel(get_turf(M), 24, rand(0, 359), 180, /datum/ammo/bullet/shrapnel/flak, P.weapon_cause_data, FALSE, 0.15, TRUE)
+	apply_micro_stun(M)
 
 /datum/ammo/bullet/tank/flak/on_near_target(turf/T, obj/projectile/P)
-	burst(get_turf(T),P,damage_type, 2 , 3)
-	burst(get_turf(T),P,damage_type, 1 , 3, 0)
+	create_shrapnel(get_turf(T), 24, rand(0, 359), 180, /datum/ammo/bullet/shrapnel/flak, P.weapon_cause_data, FALSE, 0.15, TRUE)
 	return 1
 
 /datum/ammo/bullet/tank/flak/on_hit_obj(obj/O,obj/projectile/P)
-	burst(get_turf(P),P,damage_type, 2 , 3)
-	burst(get_turf(P),P,damage_type, 1 , 3 , 0)
+	create_shrapnel(get_turf(P), 24, rand(0, 359), 180, /datum/ammo/bullet/shrapnel/flak, P.weapon_cause_data, FALSE, 0.15, TRUE)
 
 /datum/ammo/bullet/tank/flak/on_hit_turf(turf/T,obj/projectile/P)
-	burst(get_turf(T),P,damage_type, 2 , 3)
-	burst(get_turf(T),P,damage_type, 1 , 3 , 0)
+	create_shrapnel(get_turf(T), 24, rand(0, 359), 180, /datum/ammo/bullet/shrapnel/flak, P.weapon_cause_data, FALSE, 0.15, TRUE)
+
+// applies a micro-stun modelled after the AMR SPEC's second shot.
+// unlike the AMR spec, this only works on xenos that aren't big sized.
+/datum/ammo/bullet/tank/flak/proc/apply_micro_stun(mob/living/living_mob)
+	if(!isxeno(living_mob) || living_mob.mob_size >= MOB_SIZE_BIG)
+		return
+	var/mob/living/carbon/xenomorph/target = living_mob
+	target.KnockDown(0.15)
+
+/datum/ammo/bullet/tank/flak/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
+	))
+
+/// same shrapnel as any other fragmentation source, just capped to a 4 tile radius
+/datum/ammo/bullet/shrapnel/flak
+	max_range = 4
 
 /datum/ammo/bullet/tank/dualcannon
 	name = "dualcannon bullet"

@@ -110,7 +110,7 @@
 	group = "Vehicle Ammo"
 
 // same as the regular BRUTE ammo. This is just in the vehicle section to avoid mistakes.
-/datum/supply_packs/brute_rockets/vehicle
+/datum/supply_packs/vehicle_brute_rockets
 	name = "M6H-BRUTE Breaching Rocket Crate (x6)"
 	contains = list(
 		/obj/item/ammo_magazine/rocket/brute,

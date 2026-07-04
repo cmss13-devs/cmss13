@@ -95,6 +95,7 @@
 	// Map file name of the vehicle interior
 	var/interior_map = null
 	var/datum/interior/interior = null
+	var/obj/structure/vehicle_intercom/intercom = null
 
 	//common passenger slots
 	var/passengers_slots = 2
@@ -196,6 +197,7 @@
 	var/angle_to_turn = turning_angle(SOUTH, dir)
 	rotate_entrances(angle_to_turn)
 	rotate_bounds(angle_to_turn)
+	update_langchat_height()
 
 	if(bound_width > world.icon_size || bound_height > world.icon_size)
 		lighting_holder = new(src)
@@ -240,6 +242,24 @@
 	GLOB.all_multi_vehicles -= src
 
 	return ..()
+
+// No-op unless an intercom landmark spawned one into this vehicle's interior.
+/obj/vehicle/multitile/hear_talk(mob/living/speaker, msg, verb = "says", datum/language/speaking, italics = 0)
+	if(intercom)
+		intercom.relay_exterior_speech(speaker, msg, verb, speaking, italics)
+		if(!intercom.speaker_muted)
+			for(var/seat_key in seats)
+				var/mob/seated = seats[seat_key]
+				if(seated?.client?.prefs && !seated.client.prefs.lang_chat_disabled && !seated.ear_deaf && seated.say_understands(speaker, speaking))
+					speaker.langchat_display_image(seated)
+	..()
+
+// offsets langchat height to show, properly, above and around the middle of the vehicle.
+/obj/vehicle/multitile/proc/update_langchat_height()
+	langchat_height = bound_height - bound_y - 8
+
+/obj/vehicle/multitile/get_maxptext_x_offset(image/maptext_image)
+	return ..() - bound_x - 16
 
 /obj/vehicle/multitile/proc/initialize_cameras()
 	return

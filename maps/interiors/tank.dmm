@@ -13,7 +13,13 @@
 	phone_category = "Vehicles";
 	phone_id = "M34A2 Longstreet Light Tank";
 	pixel_x = 22;
-	pixel_y = -14
+	pixel_y = -6
+	},
+/obj/effect/landmark/interior/spawn/intercom{
+	pixel_x = 22;
+	pixel_y = -15;
+	dir = 8;
+	drag_delay = 3.05
 	},
 /turf/open/shuttle/vehicle/floor_1_12,
 /area/interior/vehicle/tank)
@@ -67,7 +73,8 @@
 	alpha = 50;
 	icon_state = "exterior_2";
 	layer = 5.2;
-	pixel_y = 32
+	pixel_y = 32;
+	pixel_x = 0
 	},
 /turf/open/void/vehicle,
 /area/space)

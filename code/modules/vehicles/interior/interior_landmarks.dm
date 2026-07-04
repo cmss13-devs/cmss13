@@ -247,6 +247,32 @@
 /obj/effect/landmark/interior/spawn/telephone/wy
 	icon = 'icons/obj/vehicles/interiors/general_wy.dmi'
 
+// Landmark for spawning the ambient vehicle intercom
+/obj/effect/landmark/interior/spawn/intercom
+	name = "vehicle intercom spawner"
+	icon = 'icons/obj/vehicles/interiors/general.dmi'
+	icon_state = "wall_phone"
+	color = "cyan"
+
+/obj/effect/landmark/interior/spawn/intercom/on_load(datum/interior/interior_data)
+	var/obj/structure/vehicle_intercom/Intercom = new(loc)
+	var/obj/vehicle/multitile/vehicle = interior_data.exterior
+
+	Intercom.icon = icon
+	Intercom.icon_state = icon_state
+	Intercom.layer = layer
+	Intercom.setDir(dir)
+	Intercom.alpha = alpha
+	Intercom.update_icon()
+	Intercom.pixel_x = pixel_x
+	Intercom.pixel_y = pixel_y
+	Intercom.vehicle = vehicle
+
+	vehicle.intercom = Intercom
+	vehicle.flags_atom |= USES_HEARING
+
+	qdel(src)
+
 // Landmark for spawning the reloader
 /obj/effect/landmark/interior/spawn/weapons_loader
 	name = "vehicle weapons reloader spawner"

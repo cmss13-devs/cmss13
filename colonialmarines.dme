@@ -2694,6 +2694,7 @@
 #include "code\modules\vehicles\interior\interior_hull.dm"
 #include "code\modules\vehicles\interior\interior_landmarks.dm"
 #include "code\modules\vehicles\interior\interactable\doors.dm"
+#include "code\modules\vehicles\interior\interactable\intercom.dm"
 #include "code\modules\vehicles\interior\interactable\seats.dm"
 #include "code\modules\vehicles\interior\interactable\vehicle_locker.dm"
 #include "code\modules\vehicles\interior\interactable\vendors.dm"

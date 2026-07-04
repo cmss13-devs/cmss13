@@ -107,6 +107,7 @@
 	rotate_hardpoints(deg)
 	rotate_entrances(deg)
 	rotate_bounds(deg)
+	update_langchat_height()
 	setDir(turn(dir, deg), TRUE)
 
 	last_move_dir = dir

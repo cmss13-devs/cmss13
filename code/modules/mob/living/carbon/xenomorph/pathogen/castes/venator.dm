@@ -3,7 +3,7 @@
 	tier = 3
 
 	melee_damage_lower = XENO_DAMAGE_TIER_6 //Stats TBC
-	melee_damage_upper = XENO_DAMAGE_TIER_7
+	melee_damage_upper = XENO_DAMAGE_TIER_6
 	melee_vehicle_damage = XENO_DAMAGE_TIER_7
 	max_health = XENO_HEALTH_TIER_12
 	plasma_gain = XENO_PLASMA_GAIN_TIER_8
@@ -440,7 +440,7 @@
 		if (xeno_shield.shield_source == XENO_SHIELD_SOURCE_RAVAGER)
 			shield_total += xeno_shield.amount
 
-	. += "Empower Shield: [shield_total]"
+	. += "Shield: [shield_total]"
 	. += "Bonus Slash Damage: [dmg_buff_per_target * empower_targets]"
 
 /datum/behavior_delegate/pathogen_base/venator/on_life()

@@ -55,12 +55,6 @@
 /obj/effect/pathogen/spore_sac/silent
 	silent_release = TRUE
 
-/obj/effect/pathogen/spore_sac/one_use
-	max_batches = 1
-
-/obj/effect/pathogen/spore_sac/three_uses
-	max_batches = 3
-
 /obj/effect/pathogen/spore_sac/get_examine_text(mob/user)
 	. = ..()
 	var/patho_user = is_pathogen_creature(user) || isobserver(user)
@@ -348,7 +342,6 @@
 	inhaling = FALSE
 	return FALSE
 
-// Duplicate of above CURRENTLY. Will change.
 /obj/effect/pathogen/spore_cloud/proc/attempt_yautja_inhale(mob/living/carbon/human/pred_passer, forced = FALSE)
 	if(inhaling) // Can't be inhaled by more than one person.
 		return FALSE

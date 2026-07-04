@@ -1,5 +1,5 @@
 /mob/living/carbon/human/Initialize(mapload, new_species = null)
-	blood_type = pick(7;"O-", 38;"O+", 6;"A-", 34;"A+", 2;"B-", 9;"B+", 1;"AB-", 3;"AB+")
+	blood_type = pick(7;"O-", 38;"O+", 6;"A-", 34;"A+", 2;"B-", 9;"B+", 1;"AB-", 3;"AB+") // holy fuck, how did i actually miss this, not even i realized this while working on medical rework, im being genuine here
 	GLOB.human_mob_list += src
 	GLOB.alive_human_list += src
 	SShuman.processable_human_list += src
@@ -24,6 +24,14 @@
 	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/more_crit))
 		health_threshold_dead = -150
 		health_threshold_crit = -100
+
+/mob/living/carbon/human/clicked(mob/user, list/mods)
+	if(..())
+		return TRUE
+	if(mods[ALT_CLICK] && ishuman(user))
+		check_for_injuries(user)
+		return TRUE
+	return FALSE
 
 /mob/living/carbon/human/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -809,7 +817,9 @@
 			return
 
 		stethoscope.attack(src, user)
-
+	if(href_list["remove_splint"])
+		var/part_to_remove = href_list["remove_splint"]
+		remove_splints(user = usr, part = part_to_remove)
 	..()
 	return
 
@@ -1608,7 +1618,7 @@
 
 // target = person whose splints are being removed
 // user = person removing the splints
-/mob/living/carbon/human/proc/remove_splints(mob/living/carbon/human/user)
+/mob/living/carbon/human/proc/remove_splints(mob/living/carbon/human/user, part)
 	var/mob/living/carbon/human/target = src
 
 	if(!istype(user))
@@ -1627,9 +1637,10 @@
 			to_chat(user, SPAN_WARNING("You cannot remove splints without a hand."))
 			return
 		var/is_splint = FALSE
-		for(var/bodypart in list("l_leg","r_leg","l_arm","r_arm","r_hand","l_hand","r_foot","l_foot","chest","head","groin")) //check for any splints before do_after
-			var/obj/limb/l = target.get_limb(bodypart)
-			if(l && (l.status & LIMB_SPLINTED))
+		var/list/parts_to_check = part ? list(part) : list("l_leg","r_leg","l_arm","r_arm","r_hand","l_hand","r_foot","l_foot","chest","head","groin")
+		for(var/bodypart in parts_to_check) //check for any splints before do_after
+			var/obj/limb/limbus = target.get_limb(bodypart)
+			if(limbus && (limbus.status & LIMB_SPLINTED))
 				if(user == target)
 					if((bodypart in list("l_arm", "l_hand")) && (cur_hand == "l_hand"))
 						same_arm_side = TRUE
@@ -1642,10 +1653,16 @@
 
 		var/msg = "" // Have to use this because there are issues with the to_chat macros and text macros and quotation marks
 		if(is_splint)
+			if(user == target)
+				user.visible_message(SPAN_NOTICE("[user] starts to remove the [part ? "splint on their [target.get_limb(part).display_name]" : "splints"]."),
+					SPAN_NOTICE("You start to remove the [part ? "splint on your [target.get_limb(part).display_name]" : "splints"]."))
+			else
+				user.visible_message(SPAN_NOTICE("[user] starts to remove \the [target]'s [part ? "splint on their [target.get_limb(part).display_name]" : "splints"]."),
+					SPAN_NOTICE("You start to remove \the [target]'s [part ? "splint on their [target.get_limb(part).display_name]" : "splints"]."))
 			if(do_after(user, HUMAN_STRIP_DELAY * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_ALL, BUSY_ICON_GENERIC, target, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
-				var/can_reach_splints = TRUE
+				var/can_reach_splints = TRUE // redundant now that the space suit thing is commented out, but i cba to remove it
 				var/amount_removed = 0
-				for(var/bodypart in list("l_leg","r_leg","l_arm","r_arm","r_hand","l_hand","r_foot","l_foot","chest","head","groin")) // make sure the splints still exist before removing
+				for(var/bodypart in parts_to_check) // make sure the splints still exist before removing
 					var/obj/limb/target_limb = target.get_limb(bodypart)
 					if(target_limb && (target_limb.status & LIMB_SPLINTED))
 						if(user == target)
@@ -1662,12 +1679,12 @@
 					else
 						to_chat(user, SPAN_WARNING("There are no splints to remove."))
 					return
-				if(wear_suit && istype(wear_suit,/obj/item/clothing/suit/space))
-					var/obj/item/clothing/suit/space/suit = target.wear_suit
-					if(LAZYLEN(suit.supporting_limbs))
-						msg = "[user == target ? "your":"\proper [target]'s"]"
-						to_chat(user, SPAN_WARNING("You cannot remove the splints, [msg] [suit] is supporting some of the breaks."))
-						can_reach_splints = FALSE
+				//if(wear_suit && istype(wear_suit,/obj/item/clothing/suit/space))
+				//	var/obj/item/clothing/suit/space/suit = target.wear_suit
+				//	if(LAZYLEN(suit.supporting_limbs))
+				//		msg = "[user == target ? "your":"\proper [target]'s"]"
+				//		to_chat(user, SPAN_WARNING("You cannot remove the splints, [msg] [suit] is supporting some of the breaks."))
+				//		can_reach_splints = FALSE
 				if(can_reach_splints)
 					var/obj/item/stack/medical/splint/new_splint = new(user.loc)
 					new_splint.amount = 0 //we checked that we have at least one bodypart splinted, so we can create it no prob. Also we need amount to be 0
@@ -1687,12 +1704,14 @@
 					if(new_splint.amount == 0)
 						qdel(new_splint) //we only removed nano splints
 					msg = "[user == target ? "their own":"\proper [target]'s"]"
-					target.visible_message(SPAN_NOTICE("[user] removes [msg] [amount_removed>1 ? "splints":"splint"]."),
-						SPAN_NOTICE("Your [amount_removed>1 ? "splints are":"splint is"] removed."))
+					target.visible_message(SPAN_NOTICE("[user] removes [msg] [part ? "splint on their [target.get_limb(part).display_name]" : (amount_removed > 1 ? "splints" : "splint")]."),
+						SPAN_NOTICE("Your [part ? "splint on your [target.get_limb(part).display_name] is" : (amount_removed > 1 ? "splints are" : "splint is")] removed."))
 					target.update_med_icon()
+					user.put_in_hands(new_splint)
+			else if(user == target)
+				to_chat(user, SPAN_NOTICE("You stop trying to remove your [part ? "splint on your [target.get_limb(part).display_name]" : "splints"]."))
 			else
-				msg = "[user == target ? "your":"\proper [target]'s"]"
-				to_chat(user, SPAN_NOTICE("You stop trying to remove [msg] splints."))
+				to_chat(user, SPAN_NOTICE("You stop trying to remove \the [target]'s [part ? "splint on their [target.get_limb(part).display_name]" : "splints"]."))
 		else
 			if(same_arm_side)
 				to_chat(user, SPAN_WARNING("You need to use the opposite hand to remove the splints on your arm and hand!"))

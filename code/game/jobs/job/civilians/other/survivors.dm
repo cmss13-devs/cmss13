@@ -43,7 +43,9 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 
 /datum/job/civilian/survivor/proc/get_valid_prefs(mob/new_player)
 	var/list/insert_prefs
-	LAZYINITLIST(insert_prefs) // return a list of all the archetypes the player has opted into, if none, all default landmarks can be used anyway
+	LAZYINITLIST(insert_prefs) // return a list of all the archetypes the player has opted into, if none, you don't get a spot
+	if(HAS_FLAG(new_player.client.prefs.toggles_insert, PLAY_INSERT_STANDARD))
+		insert_prefs += INSERT_STANDARD
 	if(HAS_FLAG(new_player.client.prefs.toggles_insert, PLAY_INSERT_CORPORATE))
 		insert_prefs += INSERT_CORPORATE
 	if(HAS_FLAG(new_player.client.prefs.toggles_insert, PLAY_INSERT_LEADER))
@@ -72,8 +74,14 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 	var/list/valid_prefs
 	LAZYINITLIST(valid_prefs)
 	valid_prefs = get_valid_prefs(new_player)
+	var/no_insert_archetypes = FALSE
+	if(LAZYLEN(valid_prefs) == 0) //If the player's valid_preds list is 0, they have opted out of all possible insert archetypes and cannot spawn if an insert is present
+		no_insert_archetypes = TRUE
 	for(var/obj/effect/landmark/survivor_spawner/spawner as anything in available_landmarks) // for inserts with a higher than default priority to spawn (all of them)
-		if(LAZYISIN(valid_prefs, spawner.archetype) || (spawner.archetype == INSERT_NONE && spawner.spawn_priority != LOWEST_SPAWN_PRIORITY)) //only add landmarks that match prefs or generic ones
+		// There is an insert and player has opted out of inserts, return FALSE
+		if(spawner.archetype != INSERT_NONE && no_insert_archetypes)
+			return FALSE
+		if(LAZYISIN(valid_prefs, spawner.archetype) || (spawner.archetype == INSERT_NONE && spawner.spawn_priority != LOWEST_SPAWN_PRIORITY)) //only add landmarks that match prefs or generic ones with elevated priority (none exist yet)
 			slotted_landmarks[new_player] = spawner
 			available_landmarks -= spawner
 			return TRUE
@@ -347,6 +355,7 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	var/obj/effect/landmark/survivor_spawner/spawner = pick(generic_landmarks)
 	if(spawner) //if there is a generic spawn, use it
 		slotted_landmarks[new_player] = spawner
+		generic_landmarks -= spawner
 		return TRUE
 	return FALSE
 

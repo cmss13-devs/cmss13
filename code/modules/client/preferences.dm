@@ -748,6 +748,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 			dat += "<br><h2><b><u>Nightmare Insert Roles:</u></b></h2>"
 
+			dat += "<b>Spawn as Standard:</b> <a href='byond://?_src_=prefs;preference=toggles_insert;flag=[PLAY_INSERT_STANDARD]'><b>[toggles_insert & PLAY_INSERT_STANDARD ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Spawn as Corporate:</b> <a href='byond://?_src_=prefs;preference=toggles_insert;flag=[PLAY_INSERT_CORPORATE]'><b>[toggles_insert & PLAY_INSERT_CORPORATE ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Spawn as Leader:</b> <a href='byond://?_src_=prefs;preference=toggles_insert;flag=[PLAY_INSERT_LEADER]'><b>[toggles_insert & PLAY_INSERT_LEADER ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Spawn as Medic:</b> <a href='byond://?_src_=prefs;preference=toggles_insert;flag=[PLAY_INSERT_MEDIC]'><b>[toggles_insert & PLAY_INSERT_MEDIC ? "Yes" : "No"]</b></a><br>"

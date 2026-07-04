@@ -59,6 +59,7 @@
 	roundstart_damage_times = 2
 
 	spawn_priority = SPAWN_PRIORITY_MEDIUM
+	archetype = INSERT_STANDARD
 
 /obj/effect/landmark/survivor_spawner/clf_lead
 	icon_state = "surv_clf"
@@ -478,6 +479,7 @@
 	story_text = "You are a Corporate Security Officer stationed on LV-624 from Weyland-Yutani. Suddenly one day you were pulled aside by the Corporate Liaison and told to bring supplies from the Marshals Offices to their office, and fast. You began fortifying the Corporate Dome and was told by the Executive that something big will ravage the entire colony, excluding you. Turns out, the Liaison was right, these so called 'xenomorphs' broke containment from the Research Dome and began destroying the entire colony. Once they came for the Dome and tried to kill all of you, you barely managed to hold them off even after losing one Officer and a lot of the defences. The Liaison said they will soon find a way to contact Weyland-Yutani and to remain steadfast until rescue arrives."
 
 	spawn_priority = SPAWN_PRIORITY_LOW
+	archetype = INSERT_STANDARD
 
 /obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon_medic
 	icon_state = "surv_wy"
@@ -539,6 +541,7 @@
 	roundstart_damage_times = 2
 
 	spawn_priority = SPAWN_PRIORITY_LOW
+	archetype = INSERT_STANDARD
 
 /obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_medic
 	icon_state = "surv_wy"
@@ -699,6 +702,7 @@
 	story_text = "You are a civilian working on 'Ifrit' for Weyland-Yutani. This whole outbreak has been a giant mess, you and all other Company personnel ran to the Operations Panic Room, until you heard shooting outside and closed the shutters. You are running low on food, water and ammunition for the weapons. You remember hearing the alarms blaring and decided to run with a couple others to the Panic Room, hoping to be safe from the threat until rescue arrives. Now you wait along with others for their second attack on the Panic Room. In their first attempt at trying to breach in, the so called 'xenomorphs' have tried attacking the shutters, but to no avail. They will soon try again. You must survive and find a way to contact Weyland-Yutani."
 
 	spawn_priority = SPAWN_PRIORITY_LOW
+	archetype = INSERT_STANDARD
 
 /obj/effect/landmark/survivor_spawner/shivas_panic_room_synth
 	intro_text = list("<h2>You are a synthetic on the Colony!</h2>",\
@@ -730,6 +734,7 @@
 	story_text = "You are a United Americas Riot Control Officer. Your dispatcher received a request from the local OCM Outpost, requesting some men to intervene assist a OCM Officer with handling a riot at Fiorina. The prison was an understaffed mess so you weren't too surprised they had sent out a distress signal, calling you in to do their jobs yet again. Unfortunately for you, this time it also wasn't the 'minor riot' you expected it to be. Loaded up with only beanbags and finding nobody to greet you on the LZ after being dropped off, you and the rest of your team had gone towards the armory to speak to the Quartermaster, but only found corpses of both prisoners and security littered around on the way. Worried about armed prisoners, your team was in the process of switching to lethals in the armory when some sort of huge alien jumped out from the shadows and snatched Jerry away while he was off praying. The thing dragged him off too fast to catch and his screams faded away down the halls, poor bastard. Now, you'll need to decide whether to look for more clues about what the hell happened here, hunt whatever's out there, or hold a position and hope someone else will respond to the distress signal before it's too late..."
 
 	spawn_priority = SPAWN_PRIORITY_MEDIUM
+	archetype = INSERT_STANDARD
 
 /obj/effect/landmark/survivor_spawner/fiorina_armory_cmb_synth
 	equipment = /datum/equipment_preset/synth/survivor/cmb/riotsynth
@@ -835,6 +840,7 @@
 	"<span class='danger'>Your primary objective is to survive. You believe a second dropship crashed somewhere to the south east, which was carrying additional weapons</span>")
 	story_text = "Your orders were simple, Recon the site, ascertain if there is a biological weapons program in the area, and if so to secure the colony and retrieve a sample. However your team failed to account for an active anti-air battery near the area. Both your craft and your sister ship crashed. Barely having a chance to catch your breath, you found yourself being assailed by vile xenomorphs! You and your team have barely held your ground, at the cost of four of your own, but more are coming and ammo is low. You believe an American rescue force is en route."
 	spawn_priority = SPAWN_PRIORITY_LOW
+	archetype = INSERT_STANDARD
 
 /obj/effect/landmark/survivor_spawner/upp_sapper
 	icon_state = "surv_upp"
@@ -899,6 +905,7 @@
 	"<span class='danger' style='color:#7F2F2B;'>Your primary objective is to survive.</span>")
 	story_text = "<p style='font-size:95%; color:#A6A6A6;'>Outpost Souter was your final posting before withdrawal. With Weyland-Yutani buying out Hybrisa, the TWE began pulling its forces off-world — the IASF included. Your Regiment was standing down, preparing to hand over control during the transition. Then the outbreak hit. You've spent the last weeks barely holding the outpost together, repelling wave after wave while sheltering what few survivors you could. Now, only your squad remains. The outpost is falling apart, the armoury's dry, and the dropship in the hangar still has no fuel. A distress signal was sent over a week ago. All you can do now is hold your ground — and pray someone answers.</p>"
 	spawn_priority = SPAWN_PRIORITY_LOW
+	archetype = INSERT_STANDARD
 
 /obj/effect/landmark/survivor_spawner/twe/iasf/engi
 	equipment = /datum/equipment_preset/survivor/iasf/engi
@@ -968,6 +975,7 @@
 <span style='color:#607c4c; font-size:95%;'>Intel suggests CANC separatists or a UA/3WE incursion, but as you touch down in the hangar, something feels wrong. No welcome party. No usual hustle of a working colony. Nothing to suggest an incursion of any kind.</span><br><br>\
 <span style='color:#607c4c; font-size:95%;'>Your mission is clear—find out what happened to your supply ship and comrades, retrieve your equipment, and uncover the truth of what really happened to the colony.</span>"
 	spawn_priority = SPAWN_PRIORITY_LOW
+	archetype = INSERT_STANDARD
 
 /obj/effect/landmark/survivor_spawner/SOF_survivor/sapper
 	equipment = /datum/equipment_preset/survivor/upp/SOF_survivor/sapper

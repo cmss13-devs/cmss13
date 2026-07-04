@@ -52,6 +52,7 @@ GLOBAL_LIST_INIT(job_squad_roles, JOB_SQUAD_ROLES_LIST)
 #define CORPORATE_SURVIVOR "Corporate Survivor"
 #define SURVIVOR_VARIANT_LIST list(ANY_SURVIVOR = "Any", CIVILIAN_SURVIVOR = "Civ", SECURITY_SURVIVOR = "Sec", SCIENTIST_SURVIVOR = "Sci", MEDICAL_SURVIVOR = "Med", ENGINEERING_SURVIVOR = "Eng", CORPORATE_SURVIVOR = "W-Y")
 
+#define INSERT_STANDARD "Insert Standard"
 #define INSERT_CORPORATE "Insert Corporate"
 #define INSERT_LEADER "Insert Leader"
 #define INSERT_MEDIC "Insert Medic"

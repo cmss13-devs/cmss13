@@ -1,4 +1,5 @@
 #define UPGRADE_COOLDOWN 2 SECONDS
+#define XENO_GRAB_MULTIPLIER 0.2
 
 /obj/item/grab
 	name = "grab"
@@ -13,14 +14,13 @@
 	var/atom/movable/grabbed_thing
 	var/last_upgrade = 0 //used for cooldown between grab upgrades.
 
-
 /obj/item/grab/Initialize()
 	. = ..()
 	last_upgrade = world.time
 
 /obj/item/grab/dropped(mob/user)
 	user.stop_pulling()
-	. = ..()
+	return ..()
 
 /obj/item/grab/Destroy()
 	grabbed_thing = null
@@ -28,7 +28,7 @@
 		var/mob/M = loc
 		M.grab_level = 0
 		M.stop_pulling()
-	. = ..()
+	return ..()
 
 /obj/item/grab/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	if(!user)
@@ -40,19 +40,18 @@
 	if(istype(target, /obj/effect))//if you click a blood splatter with a grab instead of the turf,
 		target = get_turf(target) //we still try to move the grabbed thing to the turf.
 	if(isturf(target))
-		var/turf/T = target
-		if(!T.density && T.Adjacent(user))
+		var/turf/turf_target = target
+		if(!turf_target.density && turf_target.Adjacent(user))
 			var/data = SEND_SIGNAL(user.pulling, COMSIG_MOVABLE_PULLED, src)
 			if(!(data & COMPONENT_IGNORE_ANCHORED) && user.pulling.anchored)
 				user.stop_pulling()
 				return
-			var/move_dir = get_dir(user.pulling.loc, T)
+			var/move_dir = get_dir(user.pulling.loc, turf_target)
 			step(user.pulling, move_dir)
 			var/mob/living/pmob = user.pulling
 			if(istype(pmob))
 				SEND_SIGNAL(pmob, COMSIG_MOB_MOVE_OR_LOOK, TRUE, move_dir, move_dir)
 			return ATTACKBY_HINT_UPDATE_NEXT_MOVE
-
 
 /obj/item/grab/attack_self(mob/user)
 	..()
@@ -61,13 +60,22 @@
 	SEND_SIGNAL(user, COMSIG_MOB_GRAB_UPGRADE, grabdata)
 	grab_delay = grabdata["grab_delay"]
 
-	if(!ismob(grabbed_thing) || world.time < (last_upgrade + grab_delay * user.get_skill_duration_multiplier(SKILL_CQC)))
+	if(!ismob(grabbed_thing))
+		return
+
+	var/user_is_xeno = isxeno(user)
+
+	if(user_is_xeno)
+		if(world.time < (last_upgrade + grab_delay * XENO_GRAB_MULTIPLIER)) // Only enough delay for preventing accidental upgrades
+			return
+		var/mob/living/carbon/xenomorph/xeno = user
+		xeno.pull_power(src)
+		return
+
+	if(world.time < (last_upgrade + grab_delay * user.get_skill_duration_multiplier(SKILL_CQC)))
 		return
 
 	if(!ishuman(user)) //only humans can reinforce a grab in this proc
-		if(isxeno(user))
-			var/mob/living/carbon/xenomorph/xeno = user
-			xeno.pull_power(src)
 		return
 
 	var/mob/victim = grabbed_thing
@@ -130,44 +138,19 @@
 /obj/item/grab/attack(mob/living/dragged_mob, mob/living/user)
 	if(dragged_mob == grabbed_thing)
 		attack_self(user)
-	else if(dragged_mob == user && user.pulling && isxeno(user))
-		var/mob/living/carbon/xenomorph/xeno = user
-		var/mob/living/carbon/pulled = xeno.pulling
-		if(!istype(pulled))
-			return FALSE
-		if(isxeno(pulled) || issynth(pulled))
-			to_chat(xeno, SPAN_WARNING("That wouldn't serve a purpose."))
-			return FALSE
-		if(pulled.buckled)
-			to_chat(xeno, SPAN_WARNING("[pulled] is buckled to something."))
-			return FALSE
-		if(pulled.stat == DEAD && !pulled.chestburst)
-			to_chat(xeno, SPAN_WARNING("Ew, [pulled] is already starting to rot."))
-			return FALSE
-		if(xeno.hauled_mob?.resolve()) // We can't carry more than one mob
-			to_chat(xeno, SPAN_WARNING("You already are carrying something, there's no way that will work."))
-			return FALSE
-		if(HAS_TRAIT(pulled, TRAIT_HAULED))
-			to_chat(xeno, SPAN_WARNING("They are already being hauled by someone else."))
-			return FALSE
-		if(user.action_busy)
-			to_chat(xeno, SPAN_WARNING("We are already busy with something."))
-			return FALSE
-		if(xeno.grab_level < GRAB_AGGRESSIVE)
-			progress_defensive_xeno(xeno, pulled)
-			return FALSE
-		SEND_SIGNAL(xeno, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
-		xeno.visible_message(SPAN_DANGER("[xeno] starts to restrain [pulled]!"),
-		SPAN_DANGER("We start restraining [pulled]!"), null, 5)
-		if(HAS_TRAIT(xeno, TRAIT_CLOAKED)) //cloaked don't show the visible message, so we gotta work around
-			to_chat(pulled, FONT_SIZE_HUGE(SPAN_DANGER("[xeno] is trying to restrain you!")))
-		if(do_after(xeno, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-			if((isxeno(pulled.loc) && !xeno.hauled_mob) || HAS_TRAIT(pulled, TRAIT_HAULED))
-				to_chat(xeno, SPAN_WARNING("Someone already took \the [pulled]."))
-				return FALSE
-			if(xeno.pulling == pulled && !pulled.buckled && (pulled.stat != DEAD || pulled.chestburst) && !xeno.hauled_mob?.resolve()) //make sure you've still got them in your claws, and alive
-				if(SEND_SIGNAL(pulled, COMSIG_MOB_HAULED, xeno) & COMPONENT_CANCEL_HAUL)
-					return FALSE
-				xeno.haul(pulled)
-				xeno.stop_pulling()
+		return
+	if(dragged_mob == user && user.pulling && isxeno(user))
+		var/grab_delay = UPGRADE_COOLDOWN
+		var/list/grabdata = list("grab_delay" = grab_delay)
+		SEND_SIGNAL(user, COMSIG_MOB_GRAB_UPGRADE, grabdata)
+		grab_delay = grabdata["grab_delay"]
 
+		if(world.time < (last_upgrade + grab_delay * XENO_GRAB_MULTIPLIER)) // Only enough delay for preventing accidental upgrades
+			return
+
+		var/mob/living/carbon/xenomorph/xeno = user
+		xeno.pull_power(src)
+		return
+
+#undef UPGRADE_COOLDOWN
+#undef XENO_GRAB_MULTIPLIER

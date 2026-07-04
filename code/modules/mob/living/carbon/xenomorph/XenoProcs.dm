@@ -599,7 +599,7 @@
 	if(client)
 		client.mouse_pointer_icon = initial(client.mouse_pointer_icon) // Reset our mouse pointer when we no longer have an action queued.
 
-/// Called when pulling something and attacking yourself wth the pull (Z hotkey) override for caste specific behaviour
+/// Called when pulling something to either upgrade the grab or restrain the pulled mob
 /mob/living/carbon/xenomorph/proc/pull_power(obj/item/grab/grab_obj)
 	var/mob/living/carbon/pulled = pulling
 	if(!istype(pulled))
@@ -630,11 +630,11 @@
 	SPAN_DANGER("We start restraining [pulled]!"), null, 5)
 	if(HAS_TRAIT(src, TRAIT_CLOAKED)) //cloaked don't show the visible message, so we gotta work around
 		to_chat(pulled, FONT_SIZE_HUGE(SPAN_DANGER("[src] is trying to restrain you!")))
-	if(do_after(src, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-		if((isxeno(pulled.loc) && !src.hauled_mob) || HAS_TRAIT(pulled, TRAIT_HAULED))
+	if(do_after(src, 5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+		if((isxeno(pulled.loc) && !hauled_mob) || HAS_TRAIT(pulled, TRAIT_HAULED))
 			to_chat(src, SPAN_WARNING("Someone already took \the [pulled]."))
 			return
-		if(src.pulling == pulled && !pulled.buckled && (pulled.stat != DEAD || pulled.chestburst) && !src.hauled_mob?.resolve()) //make sure you've still got them in your claws, and alive
+		if(pulling == pulled && !pulled.buckled && (pulled.stat != DEAD || pulled.chestburst) && !hauled_mob?.resolve()) //make sure you've still got them in your claws, and alive
 			if(SEND_SIGNAL(pulled, COMSIG_MOB_HAULED, src) & COMPONENT_CANCEL_HAUL)
 				return
 			haul(pulled)

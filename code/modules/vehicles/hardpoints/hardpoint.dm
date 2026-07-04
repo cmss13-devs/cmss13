@@ -94,6 +94,13 @@
 	var/last_desired_update_time = 0
 	/// While TRUE, update_desired_angle() no-ops - set on whichever object get_rotation_owner() resolves
 	/// to while a track_and_charge() lock-on is in progress, so live mouse input can't fight it.
+	var/aim_locked = FALSE
+	/// Guards against spawning more than one concurrent track_and_charge() on this hardpoint.
+	var/charging = FALSE
+	/// Set by cancel_charge() (COMSIG_GUN_STOP_FIRE/COMSIG_GUN_INTERRUPT_FIRE) to abort an in-progress
+	/// track_and_charge() loop. Distinct from fire_wait_cancelled, which guards a different wait
+	/// (arc-entry, not an active charge) and could otherwise interfere if both were active at once.
+	var/charge_cancelled = FALSE
 
 	// Muzzleflash
 	var/use_muzzle_flash = FALSE
@@ -663,6 +670,97 @@
 	if(istype(turret))
 		return turret
 	return src
+
+/// Single choke point for locking/unlocking mouse-driven aim on whichever object get_rotation_owner()
+/// resolves to, so ttrack_and_charge() below can lock/unlock symmetrically.
+/obj/item/hardpoint/proc/lock_rotation(lock)
+	get_rotation_owner().aim_locked = lock
+
+/**
+ * Locks onto target and keeps re-aiming at its live position for aim_time, cancellable if the target
+ * drifts further behind the current facing than this hardpoint's own traverse_arc allows, giving the
+ * mount a litttle bit of allowance to catch up before the shot is considered lost
+ *
+ * Recomputes the true world-space angle to the target fresh every tick from this hardpoint's current
+ * position, so it needs no special-casing for the vehicle itself moving/turning mid-charge
+ *
+ *
+ * Returns TRUE if the charge completed with the target still valid and in arc, FALSE if cancelled.
+ */
+/obj/item/hardpoint/proc/track_and_charge(atom/target, mob/living/user, aim_time)
+	if(charging)
+		return FALSE
+	charging = TRUE
+
+	set_target(target)
+	lock_rotation(TRUE)
+	charge_cancelled = FALSE
+	RegisterSignal(src, list(COMSIG_GUN_STOP_FIRE, COMSIG_GUN_INTERRUPT_FIRE), PROC_REF(cancel_charge))
+	start_aim_visuals(target, user)
+
+	. = TRUE
+	var/elapsed = 0
+	while(elapsed < aim_time)
+		sleep(1)
+		elapsed += 1
+
+		if(charge_cancelled || QDELETED(src) || QDELETED(target) || health <= 0 || (ammo && ammo.current_rounds <= 0))
+			. = FALSE
+			break
+
+		var/turf/origin_turf = get_origin_turf()
+		var/turf/target_turf = get_turf(target)
+		if(origin_turf == target_turf)
+			. = FALSE
+			break
+
+		// Angle uses the target atom itself, not target_turf
+		var/angle_to_target = Get_Angle_Grounded(origin_turf, target)
+		var/obj/item/hardpoint/rotation_owner = get_rotation_owner()
+		var/obj/item/hardpoint/holder/tank_turret/mount = self_gimballed ? loc : null
+
+		if(istype(mount)) // self-gimballed, mounted on a turret
+			var/turret_facing = mount.current_angle
+			var/raw_delta = angle_delta(angle_to_target, turret_facing)
+			if(abs(raw_delta) > SLAVED_GIMBAL_ARC_HALF_WIDTH)
+				to_chat(user, SPAN_WARNING("Target moved out of the firing arc!"))
+				. = FALSE
+				break
+			var/swing = clamp(raw_delta, -SLAVED_GIMBAL_ARC_HALF_WIDTH, SLAVED_GIMBAL_ARC_HALF_WIDTH)
+			rotation_owner.desired_angle = ((turret_facing + swing) % 360 + 360) % 360
+		else
+			rotation_owner.desired_angle = angle_to_target
+			if(traverse_arc && abs(angle_delta(angle_to_target, rotation_owner.current_angle)) > traverse_arc * 0.5)
+				to_chat(user, SPAN_WARNING("Target moved out of the firing arc!"))
+				. = FALSE
+				break
+
+		rotation_owner.start_rotation_if_needed()
+		on_track_tick(target)
+
+	UnregisterSignal(src, list(COMSIG_GUN_STOP_FIRE, COMSIG_GUN_INTERRUPT_FIRE))
+	end_aim_visuals(target, user, .)
+	lock_rotation(FALSE)
+	charging = FALSE
+
+/obj/item/hardpoint/proc/cancel_charge()
+	SIGNAL_HANDLER
+	charge_cancelled = TRUE
+
+/// No-op hook - override to spawn lock-on visuals (overlays/beams) when a track_and_charge() begins.
+// currently overriden by LTB and mounted BRUTE launcher only. Same goes for the other hooks below. - BWSB
+/obj/item/hardpoint/proc/start_aim_visuals(atom/target, mob/living/user)
+	return
+
+/// No-op hook - override to tear down whatever start_aim_visuals() spawned. Always called, success or not.
+/obj/item/hardpoint/proc/end_aim_visuals(atom/target, mob/living/user, success)
+	return
+
+/// No-op hook - called once per tick during track_and_charge(), after desired_angle has been updated.
+/// Override to keep any tick-dependent visuals (e.g. a beam anchor) following the live muzzle position.
+/obj/item/hardpoint/proc/on_track_tick(atom/target)
+	return
+
 /// Actually fires the gun, sets up the projectile and fires it.
 /obj/item/hardpoint/proc/handle_fire(atom/target, mob/living/user, params, atom/original_target)
 	if(isnull(original_target))
@@ -791,6 +889,58 @@
 
 	var/target_angle = Get_Angle(muzzle_turf, target_turf)
 	return abs(angle_delta(target_angle, current_angle)) <= FIRING_GATE_TOLERANCE
+
+/**
+ * records where the mouse currently wants this hardpoint to face. Called on every processed
+ * mouse-move while a relevant crew member is seated.
+ *
+ * A self_gimballed weapon's desired_angle gets clamped to within SLAVED_GIMBAL_ARC_HALF_WIDTH
+ * degrees of the turret's own current continuous facing. the turret can sit anywhere within its own lean, e.g. 168
+ * degrees, and the allowed swing needs to follow that actual angle, not snap to whichever cardinal it's nearest to.
+ */
+/obj/item/hardpoint/proc/update_desired_angle(atom/object, mob/user, params)
+	if(health <= 0)
+		return
+	if(aim_locked) // a track_and_charge() lock-on is in progress - mouse input can't fight it
+		return
+	if(world.time == last_desired_update_time) // collapses same-tick MouseMove spam into one update
+		return
+	last_desired_update_time = world.time
+
+	// Aim at the hovered mob/object itself, not its bare turf
+	var/atom/aim_target
+	if(ismob(object) || isobj(object))
+		aim_target = object
+	else
+		aim_target = get_turf_on_clickcatcher(object, user, params)
+	if(!aim_target)
+		return
+	var/turf/target_turf = get_turf(aim_target)
+	var/turf/origin_turf = get_origin_turf()
+	if(!origin_turf || target_turf == origin_turf)
+		return
+
+	// Using the raw pixel-precise angle here aims at a tall sprite's visual midpoint instead of the tile it's
+	// actually standing on, which is what actually needs to be hit. very shittty bug to fix during testing
+	// which made the autocannon and minigun DPS plummet.
+	desired_angle = Get_Angle_Grounded(origin_turf, aim_target)
+
+	if(self_gimballed)
+		var/obj/item/hardpoint/holder/tank_turret/turret = loc
+		if(istype(turret))
+			var/turret_facing = turret.current_angle
+			var/swing = clamp(angle_delta(desired_angle, turret_facing), -SLAVED_GIMBAL_ARC_HALF_WIDTH, SLAVED_GIMBAL_ARC_HALF_WIDTH)
+			desired_angle = ((turret_facing + swing) % 360 + 360) % 360
+
+	start_rotation_if_needed()
+
+/obj/item/hardpoint/proc/start_rotation_if_needed()
+	if(rotation_active)
+		return
+	rotation_active = TRUE
+	spawn(0)
+		rotation_loop()
+
 /**
  * Ticks current_angle toward desired_angle with inertia (accelerating up to max_angular_velocity,
  * decelerating on approach). Self-terminates once current_angle settles within ROTATION_SETTLE_TOLERANCE of

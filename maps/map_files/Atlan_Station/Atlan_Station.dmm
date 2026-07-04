@@ -1,11 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aaa" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	pixel_y = -1
-	},
-/turf/open/floor/prison/darkbrownfull2,
-/area/atlan/asteroid/processing_handling)
 "aab" = (
 /obj/item/clothing/head/uppcap/civi/plant_worker,
 /turf/open/floor/strata/floor2,
@@ -499,6 +492,12 @@
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/hab_docks)
+"abE" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_nw_train)
 "abF" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "atlanpool"
@@ -1168,6 +1167,16 @@
 	},
 /turf/closed/wall/rock/brown,
 /area/atlan/oob)
+"aeb" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/storage/belt/utility/full,
+/obj/item/storage/toolbox/electrical{
+	pixel_y = 6
+	},
+/turf/open/floor/plating,
+/area/atlan/asteroid/processing_handling)
 "aec" = (
 /obj/structure/sign/poster/upp{
 	pixel_y = -26
@@ -1284,6 +1293,20 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/plating,
 /area/atlan/asteroid/processing_nw_train)
+"aew" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8;
+	layer = 3.3
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_handling)
+"aex" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 1
+	},
+/turf/open/floor/strata/orange_cover,
+/area/atlan/station/storage)
 "afj" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -9756,13 +9779,6 @@
 /obj/structure/platform_decoration/metal/strata/north,
 /turf/open/floor/strata/multi_tiles,
 /area/atlan/station/single_dorms)
-"gbU" = (
-/obj/structure/machinery/light{
-	dir = 8;
-	pixel_y = 16
-	},
-/turf/open/floor/strata/floor2,
-/area/atlan/station/water_tanks)
 "gbV" = (
 /obj/structure/largecrate/random/secure,
 /turf/open/floor/strata/green1,
@@ -11158,10 +11174,7 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/item/storage/belt/utility/full,
-/obj/item/storage/toolbox/electrical{
-	pixel_y = 6
-	},
+/obj/item/ammo_magazine/flamer_tank/survivor/empty,
 /turf/open/floor/prison/darkbrownfull2,
 /area/atlan/asteroid/processing_handling)
 "hbi" = (
@@ -11258,10 +11271,6 @@
 	},
 /turf/open/floor/strata/floor3/east,
 /area/atlan/asteroid/processing_seperation)
-"heb" = (
-/obj/structure/fence/slim/upp,
-/turf/open/floor/strata/floor2,
-/area/atlan/station/storage)
 "heg" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/wood_clock{
 	pixel_y = 38
@@ -12521,6 +12530,7 @@
 /area/atlan/asteroid/processing_handling)
 "hXh" = (
 /obj/structure/machinery/light/double/blue,
+/obj/structure/machinery/light/double/blue,
 /turf/open/floor/prison/darkbrownfull2,
 /area/atlan/asteroid/processing_handling)
 "hXw" = (
@@ -12540,7 +12550,7 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/orange_cover,
 /area/atlan/station/storage)
 "hXI" = (
 /obj/effect/decal/warning_stripes{
@@ -14334,7 +14344,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/orange_cover,
 /area/atlan/station/storage)
 "iZk" = (
 /obj/structure/blocker/invisible_wall,
@@ -16179,13 +16189,6 @@
 /obj/item/trash/crushed_cup,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/comms/lz1_engineering)
-"klj" = (
-/obj/structure/surface/rack{
-	color = "#98a3ab"
-	},
-/obj/item/ammo_magazine/flamer_tank/survivor/empty,
-/turf/open/floor/strata/floor2,
-/area/atlan/asteroid/processing_handling)
 "klm" = (
 /obj/structure/machinery/door/airlock/multi_tile/hybrisa/medical/autoname,
 /turf/open/floor/strata/multi_tiles/southeast,
@@ -24179,7 +24182,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor/strata/floor3/east,
+/turf/open/floor/strata/orange_cover,
 /area/atlan/station/storage)
 "pIu" = (
 /obj/item/tool/mop{
@@ -24618,16 +24621,7 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
-/obj/item/ammo_magazine/shotgun/slugs{
-	pixel_x = 6;
-	pixel_y = -4
-	},
-/obj/item/ammo_magazine/shotgun/buckshot{
-	pixel_x = 6;
-	pixel_y = -4
-	},
-/obj/effect/spawner/random/gun/shotgun/highchance,
+/obj/item/ammo_magazine/rifle/type71/ap,
 /turf/open/floor/strata/red1,
 /area/atlan/asteroid/processing_offices)
 "pVm" = (
@@ -33707,7 +33701,7 @@
 	color = "#98a3ab"
 	},
 /obj/item/stack/sheet/cardboard/small_stack,
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/orange_cover,
 /area/atlan/station/storage)
 "wdg" = (
 /obj/item/shard{
@@ -36051,6 +36045,7 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
+/obj/item/stack/sheet/plasteel/med_small_stack,
 /turf/open/floor/prison/darkbrownfull2,
 /area/atlan/asteroid/processing_offices)
 "xRR" = (
@@ -42696,7 +42691,7 @@ hsL
 hsL
 sDk
 nlx
-fLo
+cin
 ghe
 rDa
 rDa
@@ -43290,7 +43285,7 @@ pXT
 hAV
 dhk
 nlx
-nlx
+vFI
 xNg
 rDa
 rDa
@@ -43488,7 +43483,7 @@ pXT
 bUX
 dhk
 nlx
-mHx
+tmO
 nit
 kBu
 rDa
@@ -43686,7 +43681,7 @@ fdM
 fdM
 foK
 nlx
-nlx
+vFI
 nit
 jCc
 rDa
@@ -43884,7 +43879,7 @@ fLo
 fLo
 nlx
 nlx
-nlx
+vFI
 jwc
 nit
 dBn
@@ -46245,8 +46240,8 @@ xYA
 xYA
 iJm
 nlx
-heb
-weO
+eqq
+aex
 idz
 nEQ
 isY
@@ -55747,7 +55742,7 @@ aSd
 aSd
 aSd
 ycn
-gbU
+nPD
 qBc
 qBc
 wcE
@@ -57739,7 +57734,7 @@ mnY
 xVi
 qBc
 qBc
-qBc
+jOD
 sds
 qBc
 qBc
@@ -61543,7 +61538,7 @@ kTK
 cqC
 bag
 mkk
-mkk
+abE
 wob
 una
 una
@@ -63487,7 +63482,7 @@ aVY
 sZA
 sZA
 sZA
-lcx
+aeb
 lGF
 lGF
 lGF
@@ -63686,7 +63681,7 @@ sZA
 sZA
 sZA
 sZA
-klj
+sZA
 sZA
 lGF
 axJ
@@ -64866,7 +64861,7 @@ xVU
 hLh
 hLh
 pJa
-sZA
+fIp
 sZA
 sZA
 uMf
@@ -65663,7 +65658,7 @@ gWX
 gfz
 ixT
 sZA
-aaa
+lmz
 ule
 mfN
 uMf
@@ -66254,7 +66249,7 @@ mHh
 lGF
 lGF
 lGF
-bqP
+aew
 sZA
 sZA
 oCO
@@ -66450,7 +66445,7 @@ bcS
 hLh
 hLh
 lGF
-sZA
+fIp
 sZA
 lcx
 uMf
@@ -66649,7 +66644,7 @@ rQY
 sZt
 fPU
 lcx
-sZA
+fIp
 nEG
 nEG
 ijs

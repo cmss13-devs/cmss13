@@ -134,7 +134,7 @@ export const OpenSearchQuery = (props) => {
     setLogTypes(newLogTypes);
   };
 
-  const submitQuery = (executeNow: boolean, queryOverride) => {
+  const submitQuery = (executeNow: boolean) => {
     act('update_query', {
       execute: executeNow,
       query_name: localQueryName,
@@ -144,8 +144,7 @@ export const OpenSearchQuery = (props) => {
       query_time_end: localQueryTimeEnd,
       // query_roundid: localQueryRoundId,
       log_types: localLogTypes,
-      // for some reason localUserQuery is not updated here when fired through enter key on the query text field, so we do a little manual overriding of the value
-      user_query: queryOverride || localUserQuery,
+      user_query: localUserQuery,
     });
   };
 
@@ -327,7 +326,7 @@ export const OpenSearchQuery = (props) => {
                   }
                   disabled={queryStatus === OPENSEARCH_QUERY_STATUS_EXECUTING}
                   tooltip="Save and Start the query"
-                  onClick={() => submitQuery(true, null)}
+                  onClick={() => submitQuery(true)}
                 >
                   Exec
                 </Button>
@@ -337,7 +336,7 @@ export const OpenSearchQuery = (props) => {
                   icon="floppy-disk"
                   color="blue"
                   tooltip="Save the query without executing it"
-                  onClick={() => submitQuery(false, null)}
+                  onClick={() => submitQuery(false)}
                 >
                   Save
                 </Button>
@@ -346,7 +345,7 @@ export const OpenSearchQuery = (props) => {
                 <Input
                   minWidth={25}
                   value={localQueryName}
-                  onEnter={(e, value) => setQueryName(value)}
+                  onChange={(e, value) => setQueryName(value)}
                 />
               </Stack.Item>
               <Stack.Item align="right">
@@ -474,7 +473,7 @@ export const OpenSearchQuery = (props) => {
                 <Input
                   width={5}
                   value={timeOffsetToDisplay(localQueryTimeEnd)}
-                  onEnter={(e, value) =>
+                  onChange={(e, value) =>
                     setQueryTimeEnd(localTimeOffsetToNumber(value))
                   }
                 />
@@ -488,9 +487,11 @@ export const OpenSearchQuery = (props) => {
                   minHeight="2em"
                   value={localUserQuery}
                   placeholder="Query"
-                  onEnter={(e, value) => {
+                  onChange={(e, value) => {
                     setUserQuery(value);
-                    submitQuery(true, value);
+                  }}
+                  onEnter={(e, value) => {
+                    submitQuery(true);
                   }}
                 />
               </Stack.Item>

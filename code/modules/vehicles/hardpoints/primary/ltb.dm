@@ -40,7 +40,8 @@
 	)
 
 	scatter = 2
-	fire_delay = 20.0 SECONDS
+	fire_delay = 15.0 SECONDS
+
 	/// How long the lock-on charge takes before firing is allowed.
 	var/f_aiming_time = 4 SECONDS
 	/// Stashed for generate_bullet() below, which doesn't receive target directly.

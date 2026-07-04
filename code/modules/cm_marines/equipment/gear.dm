@@ -363,6 +363,9 @@
 	desc = "A Motoca-430-T deployable tripod camera that connects to the overwatch network. It can be renamed and deployed."
 	icon = 'icons/obj/structures/machinery/defenses/overwatch.dmi'  // ToDO: Get real sprites
 	icon_state = "undeployed"
+	item_icons = null
+	item_state_slots = null
+	flags_equip_slot = null
 	desc_lore = "Following modernisation efforts in the Marine'70 program, USCM Platoons were shrunk and squads re-organised to emphasise individual firepower and mobility. The Motoca-430-T, the precursor to the Motoca-500 Helmet Camera, was commissioned by the Department of Defense to be utilised by Colonial Marine squads in establishing secure perimeters and watching rear areas remotely through the Overwatch system."
 	var/label
 	var/datum/squad/squad
@@ -467,9 +470,10 @@
 		to_chat(user, SPAN_WARNING("[src] must be placed on a solid surface!"))
 		return
 
-	if(blocking_object.density && blocking_object != src)
-		to_chat(user, SPAN_WARNING("[blocking_object] is blocking the deployment spot!"))
-		return
+	for(var/obj/blocking_object in deploy_turf)
+		if(blocking_object.density && blocking_object != src)
+			to_chat(user, SPAN_WARNING("[blocking_object] is blocking the deployment spot!"))
+			return
 
 	var/datum/squad/user_squad = null // deployment & labelling
 	if(ishuman(user)) // second human check just in case

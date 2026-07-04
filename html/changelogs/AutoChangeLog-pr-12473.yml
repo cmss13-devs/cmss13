@@ -1,0 +1,5 @@
+author: "DangerRevolution"
+delete-after: True
+changes:
+  - balance: "Silenced the Scrapeaway Timed Effect for the Marines during the LV-624 CLF Crashed Ship insert."
+  - code_imp: "Added two variables for the scrapeaway timed effect to silence the announcement for Marines, or Xenos, about the walls being deleted."

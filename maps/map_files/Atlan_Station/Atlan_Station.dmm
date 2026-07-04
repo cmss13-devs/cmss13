@@ -1,4 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aaa" = (
+/obj/structure/machinery/newscaster,
+/turf/closed/wall/strata_outpost,
+/area/atlan/station/repairoffice)
 "aab" = (
 /obj/item/clothing/head/uppcap/civi/plant_worker,
 /turf/open/floor/strata/floor2,
@@ -1358,7 +1362,7 @@
 	dir = 1
 	},
 /obj/structure/largecrate/random,
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/cyan1,
 /area/atlan/station/medical)
 "ahF" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -4542,10 +4546,6 @@
 /obj/structure/cargo_container/upp/mid,
 /turf/open/floor/prison/floor_marked,
 /area/atlan/station/cargo)
-"cyW" = (
-/obj/structure/sign/poster/safety,
-/turf/closed/wall/strata_outpost/reinforced,
-/area/atlan/station/airlock_east)
 "cyX" = (
 /obj/structure/largecrate/random/secure,
 /obj/effect/decal/cleanable/dirt,
@@ -11911,7 +11911,7 @@
 /obj/structure/largecrate/random/mini/small_case/c{
 	pixel_x = 7
 	},
-/turf/open/floor/strata/floor3/east,
+/turf/open/floor/strata/cyan1,
 /area/atlan/station/medical)
 "hAE" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -32828,7 +32828,7 @@
 	pixel_x = 2;
 	layer = 3.6
 	},
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/cyan1,
 /area/atlan/station/medical)
 "vuw" = (
 /obj/effect/decal/warning_stripes{
@@ -35454,9 +35454,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/strata/orange_edge/west,
 /area/atlan/asteroid/exports_east)
-"xzP" = (
-/turf/closed/wall/strata_outpost/reinforced/hull,
-/area/atlan/station/storage)
 "xzY" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
@@ -42879,9 +42876,9 @@ owu
 qLO
 pXT
 dhk
-xzP
-xzP
-xzP
+aAk
+aAk
+aAk
 rqN
 pXT
 mhT
@@ -43078,7 +43075,7 @@ qka
 sxK
 dhk
 aec
-xzP
+aAk
 rRb
 rqN
 owu
@@ -43276,7 +43273,7 @@ mhT
 mLi
 dhk
 cDL
-xzP
+aAk
 ybC
 rqN
 pXT
@@ -43473,9 +43470,9 @@ mLi
 pXT
 mhT
 abf
-xzP
-xzP
-xzP
+aAk
+aAk
+aAk
 rqN
 jXg
 mPK
@@ -45028,7 +45025,7 @@ rbw
 vaI
 rbw
 aRN
-iUP
+aaa
 ecq
 rbw
 qnO
@@ -46441,13 +46438,13 @@ bmY
 xYA
 xYA
 dxX
-xYA
+aAk
 dxX
 xYA
 iyR
 xYA
 dxX
-xYA
+aAk
 dxX
 xYA
 xYA
@@ -52150,7 +52147,7 @@ pjT
 pjT
 jlD
 xht
-cyW
+gyU
 bMj
 oFs
 qrH
@@ -52348,7 +52345,7 @@ wgp
 wgp
 pjT
 pjT
-oqe
+aAk
 gdC
 kib
 oqe
@@ -54953,7 +54950,7 @@ fOD
 vQC
 vQC
 hix
-vQC
+ddq
 vQC
 dsp
 acf
@@ -55151,8 +55148,8 @@ nVR
 vQC
 vQC
 vQC
-vQC
-vQC
+ddq
+ddq
 aSd
 aSd
 aSd
@@ -55358,8 +55355,8 @@ aSd
 aSd
 aSd
 hAz
-hzY
-hzY
+bnz
+bnz
 dee
 fsN
 vuq
@@ -55557,9 +55554,9 @@ aSd
 aSd
 aSd
 ahu
-pnM
-hzY
-hzY
+bnz
+aca
+abX
 oCj
 oCj
 oCj
@@ -55944,7 +55941,7 @@ bbG
 qBc
 qBc
 qBc
-qBc
+xVi
 qBc
 ciY
 scQ
@@ -74198,7 +74195,7 @@ uIG
 aMD
 ngK
 poa
-hYl
+iHr
 iHr
 iHr
 iHr
@@ -74394,10 +74391,10 @@ lGF
 rkw
 uIG
 vLM
-iHr
+aSd
 tjc
-aSd
-aSd
+hYl
+iHr
 fOH
 iHr
 iHr

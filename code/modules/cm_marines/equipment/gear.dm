@@ -453,16 +453,22 @@
 			to_chat(user, SPAN_WARNING("[blocking_object] is blocking the deployment spot!"))
 			return
 
-	if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD)) // do-after
-		to_chat(user, SPAN_WARNING("You must stand still while deploying the tripod."))
+	if(!do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD)) // do-after
+		to_chat(user, SPAN_WARNING("You were interrupted while deploying [src]"))
 		return
 
-	if(user.stat != CONSCIOUS || user.is_mob_incapacitated()) // post do-after
-		to_chat(user, SPAN_WARNING("You were interrupted!"))
+	if(!deploy_area.allow_construction) //re-check turf etc.
+		to_chat(user, SPAN_WARNING("You cannot deploy [src] here!"))
+		return
+	if(istype(deploy_area, /area/shuttle))
+		to_chat(user, SPAN_WARNING("You cannot deploy [src] in a shuttle area.")) // i copied this from M2C so idk if this is necessary?
+		return
+	if(!istype(deploy_turf, /turf/open))
+		to_chat(user, SPAN_WARNING("[src] must be placed on a solid surface!"))
 		return
 
-	if(user.get_active_hand() != src)
-		to_chat(user, SPAN_WARNING("You must hold [src] in your active hand to deploy it."))
+	if(blocking_object.density && blocking_object != src)
+		to_chat(user, SPAN_WARNING("[blocking_object] is blocking the deployment spot!"))
 		return
 
 	var/datum/squad/user_squad = null // deployment & labelling

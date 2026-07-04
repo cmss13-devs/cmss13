@@ -7006,13 +7006,6 @@
 /obj/structure/platform/metal/almayer_smooth/north,
 /turf/open/floor/upp_hull/outerhull_dir/west,
 /area/atlan/station/drydock)
-"eef" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_y = 1
-	},
-/turf/open/floor/strata/floor2,
-/area/atlan/asteroid/processing_sw_train)
 "eeq" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "Hydroponics"
@@ -31996,9 +31989,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/floor2,
 /area/atlan/station/single_dorms)
-"uOq" = (
-/turf/open/floor/strata/multi_tiles/southeast,
-/area/atlan/asteroid/exports_west)
 "uOz" = (
 /obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
@@ -65917,7 +65907,7 @@ fwe
 fwe
 aNa
 fwe
-eef
+fwe
 lOz
 vwN
 gKc
@@ -66132,7 +66122,7 @@ fwe
 fwe
 fwe
 hiU
-uOq
+dTL
 qFl
 ukT
 lpj
@@ -66330,7 +66320,7 @@ fwe
 fwe
 qjt
 cgX
-uOq
+dTL
 srR
 ukT
 iuE

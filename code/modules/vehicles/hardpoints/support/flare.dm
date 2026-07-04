@@ -13,7 +13,7 @@
 	activatable = TRUE
 
 	health = 500
-	firing_arc = 120
+	traverse_arc = 120
 
 	ammo = new /obj/item/ammo_magazine/hardpoint/flare_launcher
 	max_clips = 3

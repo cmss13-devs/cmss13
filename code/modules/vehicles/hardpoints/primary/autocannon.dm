@@ -8,7 +8,7 @@
 	activation_sounds = list('sound/weapons/vehicles/autocannon_fire.ogg')
 
 	health = 500
-	firing_arc = 60
+	traverse_arc = 60
 
 	ammo = new /obj/item/ammo_magazine/hardpoint/ace_autocannon
 	max_clips = 2
@@ -18,6 +18,12 @@
 		"2" = list(0, -32),
 		"4" = list(32, 0),
 		"8" = list(-32, 0)
+	)
+	rotation_pivot = list(
+		"1" = list(0, -22),
+		"2" = list(0, 32),
+		"4" = list(-32, 0),
+		"8" = list(32, 0)
 	)
 
 	scatter = 1

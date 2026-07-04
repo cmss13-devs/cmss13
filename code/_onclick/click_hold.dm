@@ -103,6 +103,19 @@
 	// Add the hovered atom to the trace
 	LAZYADD(mouse_trace_history, over_obj)
 
+// Fires at near-pixel granularity while the cursor moves over the map, even with no button held.
+// if this ever gets used anywhere else, be careful: Listeners are expected to rate-limit themselves - BWSB
+/client/MouseMove(atom/object, turf/location, control, params)
+	if(!object)
+		return
+
+	var/click_catcher_click = FALSE
+	CONVERT_CLICK_CATCHER(object, location, click_catcher_click)
+	if(click_catcher_click)
+		params += CLICK_CATCHER_ADD_PARAM
+
+	SEND_SIGNAL(mob, COMSIG_MOB_MOUSEMOVE, object, location, control, params)
+
 /client/MouseDrop(datum/src_object, datum/over_object, src_location, over_location, src_control, over_control, params)
 	. = ..()
 	if(HAS_TRAIT(usr, TRAIT_HAULED))

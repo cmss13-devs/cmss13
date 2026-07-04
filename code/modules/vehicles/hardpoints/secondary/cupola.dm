@@ -8,10 +8,17 @@
 	activation_sounds = list('sound/weapons/gun_smartgun1.ogg', 'sound/weapons/gun_smartgun2.ogg', 'sound/weapons/gun_smartgun3.ogg', 'sound/weapons/gun_smartgun4.ogg')
 
 	health = 350
-	firing_arc = 120
+	traverse_arc = 120
 
 	ammo = new /obj/item/ammo_magazine/hardpoint/m56_cupola
 	max_clips = 1
+
+	gimbal_pivot = list(
+		"1" = list(8, 4),
+		"2" = list(-7, 11),
+		"4" = list(-6, 6),
+		"8" = list(5, 24)
+	)
 
 	muzzle_flash_pos = list(
 		"1" = list(8, -1),

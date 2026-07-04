@@ -73,3 +73,22 @@
 #define BUCKLE_PREVENTS_PULL (1<<3)
 #define BUCKLE_NEEDS_HAND (1<<4)
 #define BUCKLE_NEEDS_TWO_HANDS (1<<5)
+
+//Tank turret mouse-aim rotation
+
+/// How close current_angle needs to be to desired_angle before the turret rotation loop considers itself settled and stops ticking.
+#define ROTATION_SETTLE_TOLERANCE 0.5
+/// How close current_angle needs to be to the angle-to-target before a turret-mounted weapon is allowed to fire.
+#define FIRING_GATE_TOLERANCE 5
+/// Baseline turn speed (degrees per decisecond) for a turret whose median mounted traverse_arc equals TURRET_ARC_NORMALIZATION.
+#define TURRET_BASE_ANGULAR_VELOCITY 6
+/// The traverse_arc value that maps 1:1 onto TURRET_BASE_ANGULAR_VELOCITY.
+#define TURRET_ARC_NORMALIZATION 90
+/// Turn speed floor, so a turret can never be fully immobilized by a degenerate (e.g. 0) traverse_arc value.
+#define TURRET_MIN_ANGULAR_VELOCITY 2
+/// Turn speed used when the turret has no weapons mounted at all.
+#define TURRET_DEFAULT_ANGULAR_VELOCITY 4
+/// Flat angular acceleration (degrees per decisecond^2) used to ramp angular_velocity up/down.
+#define TURRET_ANGULAR_ACCEL 1
+/// Half-width, in degrees, of the arc a self_gimballed weapon's driver-controlled aim is clamped to around the turret's own current facing (see /obj/item/hardpoint/proc/update_desired_angle()) - keeps the visual swivel (see /obj/item/hardpoint/holder/tank_turret/get_hardpoint_image()) to a modest look-around instead of a full swing to any absolute angle.
+#define SLAVED_GIMBAL_ARC_HALF_WIDTH 30

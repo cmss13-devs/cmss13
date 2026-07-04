@@ -242,6 +242,57 @@
 		return
 	T.toggle_gyro(usr)
 
+//hands control of the secondary hardpoint (aim + fire) between the gunner and the driver
+/obj/vehicle/multitile/proc/toggle_slave_secondary_to_driver()
+	set name = "Slave Secondary to Driver"
+	set desc = "Toggles handing control of the secondary weapon's aim and fire between yourself and the driver."
+	set category = "Vehicle"
+
+	var/mob/user = usr
+	if(!user || !istype(user))
+		return
+
+	var/obj/vehicle/multitile/vehicle = user.interactee
+	if(!istype(vehicle))
+		return
+
+	var/obj/item/hardpoint/holder/tank_turret/turret = locate() in vehicle.hardpoints
+	if(!turret)
+		return
+
+	var/obj/item/hardpoint/secondary/secondary_weapon = null
+	for(var/obj/item/hardpoint/secondary/candidate in turret.hardpoints)
+		if(!candidate.is_activatable()) // passive hardpoints (e.g. the mounted flag) can't be slaved/selected
+			continue
+		secondary_weapon = candidate
+		break
+	if(!secondary_weapon)
+		to_chat(user, SPAN_WARNING("No secondary weapon installed."))
+		return
+
+	secondary_weapon.toggle_slaved_to_driver(usr)
+
+//toggles the fire mode for hardpoints. currently only used for the primary and secondary flamers to switch between glob and stream
+/obj/vehicle/multitile/proc/toggle_hardpoint_fire_mode()
+	set name = "Toggle Hardpoint Fire Mode"
+	set desc = "Toggles the fire mode of your currently selected hardpoint, if it supports one."
+	set category = "Vehicle"
+
+	var/mob/user = usr
+	if(!user || !istype(user))
+		return
+
+	var/obj/vehicle/multitile/vehicle = user.interactee
+	if(!istype(vehicle))
+		return
+
+	var/obj/item/hardpoint/selected_hardpoint = vehicle.get_mob_hp(user)
+	if(!selected_hardpoint)
+		to_chat(user, SPAN_WARNING("You have no hardpoint selected."))
+		return
+
+	selected_hardpoint.toggle_fire_mode(usr)
+
 //single use verb that allows VCs to add a nickname in "" at the end of their vehicle name
 /obj/vehicle/multitile/proc/name_vehicle()
 	set name = "Name Vehicle"

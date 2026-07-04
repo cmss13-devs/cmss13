@@ -142,6 +142,11 @@
 
 	H.on_uninstall(owner)
 	H.reset_rotation()
+
+	if(H.self_gimballed)
+		H.self_gimballed = FALSE
+		H.allowed_seat = initial(H.allowed_seat)
+
 	hardpoints -= H
 	H.owner = null
 

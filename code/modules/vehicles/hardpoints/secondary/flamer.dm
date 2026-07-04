@@ -8,7 +8,7 @@
 	activation_sounds = list('sound/weapons/vehicles/flamethrower.ogg')
 
 	health = 300
-	firing_arc = 120
+	traverse_arc = 120
 
 	ammo = new /obj/item/ammo_magazine/hardpoint/secondary_flamer
 	max_clips = 1
@@ -22,6 +22,19 @@
 		"2" = list(-2, 3),
 		"4" = list(3, 0),
 		"8" = list(-3, 18)
+	)
+	rotation_pivot = list(
+		"1" = list(-2, -14),
+		"2" = list(2, -3),
+		"4" = list(-3, 0),
+		"8" = list(3, -18)
+	)
+
+	gimbal_pivot = list(
+		"1" = list(6, -6),
+		"2" = list(-6, 6),
+		"4" = list(-6, 6),
+		"8" = list(6, 6)
 	)
 
 	scatter = 6

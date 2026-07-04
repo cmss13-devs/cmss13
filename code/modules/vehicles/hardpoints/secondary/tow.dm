@@ -7,7 +7,7 @@
 	disp_icon_state = "towlauncher"
 
 	health = 500
-	firing_arc = 60
+	traverse_arc = 120
 
 	ammo = new /obj/item/ammo_magazine/hardpoint/towlauncher
 	max_clips = 1
@@ -17,6 +17,20 @@
 		"2" = list(-1, 5),
 		"4" = list(0, 0),
 		"8" = list(0, 18)
+	)
+
+	rotation_pivot = list(
+		"1" = list(-1, -10),
+		"2" = list(1, -5),
+		"4" = list(0, 0),
+		"8" = list(0, -18)
+	)
+
+	gimbal_pivot = list(
+		"1" = list(6, -6),
+		"2" = list(-6, 6),
+		"4" = list(-6, 6),
+		"8" = list(6, 6)
 	)
 
 	muzzle_flash_pos = list(

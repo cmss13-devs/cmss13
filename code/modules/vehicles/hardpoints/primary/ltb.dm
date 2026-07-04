@@ -8,7 +8,7 @@
 	activation_sounds = list('sound/weapons/vehicles/cannon_fire1.ogg', 'sound/weapons/vehicles/cannon_fire2.ogg')
 
 	health = 500
-	firing_arc = 60
+	traverse_arc = 60
 
 	ammo = new /obj/item/ammo_magazine/hardpoint/ltb_cannon
 	max_clips = 3
@@ -18,6 +18,12 @@
 		"2" = list(0, -32),
 		"4" = list(32, 0),
 		"8" = list(-32, 0)
+	)
+	rotation_pivot = list(
+		"1" = list(0, -21),
+		"2" = list(0, 32),
+		"4" = list(-32, 0),
+		"8" = list(32, 0)
 	)
 
 	muzzle_flash_pos = list(

@@ -7,7 +7,7 @@
 	disp_icon_state = "ltaaap_minigun"
 
 	health = 350
-	firing_arc = 90
+	traverse_arc = 90
 
 	ammo = new /obj/item/ammo_magazine/hardpoint/ltaaap_minigun
 	max_clips = 1

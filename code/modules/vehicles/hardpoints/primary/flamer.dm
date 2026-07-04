@@ -8,16 +8,22 @@
 	activation_sounds = list('sound/weapons/vehicles/flamethrower.ogg')
 
 	health = 400
-	firing_arc = 90
+	traverse_arc = 90
 
 	ammo = new /obj/item/ammo_magazine/hardpoint/primary_flamer
 	max_clips = 1
 
 	px_offsets = list(
-		"1" = list(0, 21),
-		"2" = list(0, -32),
+		"1" = list(0, 27),
+		"2" = list(0, -26),
 		"4" = list(32, 1),
 		"8" = list(-32, 1)
+	)
+	rotation_pivot = list(
+		"1" = list(0, -27),
+		"2" = list(0, 26),
+		"4" = list(-32, -1),
+		"8" = list(32, -1)
 	)
 
 	use_muzzle_flash = FALSE

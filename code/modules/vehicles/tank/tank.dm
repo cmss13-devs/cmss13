@@ -121,11 +121,13 @@
 		add_verb(M.client, list(
 			/obj/vehicle/multitile/proc/toggle_door_lock,
 			/obj/vehicle/multitile/proc/activate_horn,
+			/obj/vehicle/multitile/proc/cycle_hardpoint,
 		))
 	else if(seat == VEHICLE_GUNNER)
 		add_verb(M.client, list(
 			/obj/vehicle/multitile/proc/cycle_hardpoint,
 			/obj/vehicle/multitile/proc/toggle_gyrostabilizer,
+			/obj/vehicle/multitile/proc/toggle_slave_secondary_to_driver,
 		))
 
 
@@ -143,11 +145,13 @@
 		remove_verb(M.client, list(
 			/obj/vehicle/multitile/proc/toggle_door_lock,
 			/obj/vehicle/multitile/proc/activate_horn,
+			/obj/vehicle/multitile/proc/cycle_hardpoint,
 		))
 	else if(seat == VEHICLE_GUNNER)
 		remove_verb(M.client, list(
 			/obj/vehicle/multitile/proc/cycle_hardpoint,
 			/obj/vehicle/multitile/proc/toggle_gyrostabilizer,
+			/obj/vehicle/multitile/proc/toggle_slave_secondary_to_driver,
 		))
 
 //Called when players try to move vehicle
@@ -181,21 +185,8 @@
 				revalidate_on_top()
 				return TRUE
 
-	if(user != seats[VEHICLE_GUNNER])
-		return FALSE
-	var/obj/item/hardpoint/holder/tank_turret/T = null
-	for(var/obj/item/hardpoint/holder/tank_turret/TT in hardpoints)
-		T = TT
-		break
-	if(!T)
-		return FALSE
-
-	if(direction == GLOB.reverse_dir[T.dir] || direction == T.dir)
-		return FALSE
-
-	T.user_rotation(user, turning_angle(T.dir, direction))
-	update_icon()
-	return TRUE
+	// Gunner turret aiming is mouse-driven now (see crew_mousemove() in multitile_interaction.dm).
+	return FALSE
 
 // !!!! No point in keeping this now that you can freely climb onto the tank. !!!!
 // Unless, maybe, you end up stuck in the center (turret) tile.

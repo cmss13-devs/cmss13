@@ -11,6 +11,7 @@
 	/// Whether the human has moved into the turf giving them bloody feet
 	/// Necessary because of how Crossed is called before Moved
 	var/list/entered_bloody_turf
+	var/dry_timer_id
 
 /datum/element/bloody_feet/Attach(datum/target, dry_time, obj/item/clothing/shoes, steps, bcolor)
 	. = ..()

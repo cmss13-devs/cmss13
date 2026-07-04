@@ -465,7 +465,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 /obj/effect/essentials_set/tank/united_americas_flag
 	desc = "An United Americas Flag for mounting atop the tank."
 	spawned_gear_list = list(
-		/obj/item/hardpoint/secondary/united_americas_flag
+		/obj/item/hardpoint/secondary/united_americas_flag,
 	)
 
 /obj/effect/essentials_set/tank/turret

@@ -125,7 +125,6 @@
 /turf/closed/wall/shiva/prefabricated/reinforced,
 /area/varadero/interior_protected/caves/makeshift_tent)
 "aaq" = (
-/obj/structure/machinery/power/apc/fully_broken/no_cell/north,
 /turf/open/predship/mainfloor/borderless_horizontal,
 /area/varadero/interior_protected/vessel)
 "aar" = (
@@ -3563,6 +3562,11 @@
 /obj/item/bracer_attachments/wristblades,
 /turf/open/predship/hunter_catwalk_new,
 /area/varadero/interior_protected/vessel)
+"akO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/north)
 "akP" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -4859,13 +4863,13 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/maintenance/south)
 "aoz" = (
-/obj/structure/pipes/unary/freezer/yautja,
 /obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = -4;
 	pixel_y = 12;
 	color = "#8E897F"
 	},
-/turf/open/predship/mainfloor/upper/west,
+/obj/structure/machinery/power/apc/fully_broken/no_cell/north,
+/turf/open/predship/plating,
 /area/varadero/interior_protected/vessel)
 "aoA" = (
 /obj/structure/bed/alien/yautja{
@@ -25291,7 +25295,6 @@
 	pixel_x = 5;
 	pixel_y = -6
 	},
-/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance/security/north)
 "bsw" = (
@@ -30639,13 +30642,13 @@
 /obj/effect/landmark/survivor_spawner,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood{
-	pixel_x = -13;
-	pixel_y = -14
-	},
-/obj/effect/decal/cleanable/blood{
 	icon_state = "mgibbl1";
 	pixel_x = 10;
 	pixel_y = -19
+	},
+/obj/effect/decal/cleanable/blood{
+	pixel_x = -6;
+	pixel_y = -2
 	},
 /turf/open/floor/asteroidwarning/north,
 /area/varadero/interior/library)
@@ -32459,6 +32462,7 @@
 /obj/structure/closet/crate/ammo/alt,
 /obj/effect/landmark/objective_landmark/close,
 /obj/item/stack/folding_barricade/three,
+/obj/item/stack/sheet/mineral/phoron/medium_stack,
 /turf/open/floor/asteroid,
 /area/varadero/exterior/eastbeach)
 "bLy" = (
@@ -40764,6 +40768,7 @@
 	name = "\improper UD-6D - Las Guasimas";
 	dir = 1
 	},
+/obj/effect/landmark/crap_item,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/beach_bar)
 "cgE" = (
@@ -41337,8 +41342,10 @@
 /area/varadero/interior/beach_bar)
 "cie" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
-/obj/item/weapon/gun/rifle/m41aMK1,
+/obj/effect/landmark/survivor_spawner,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_8"
+	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/varadero/interior/beach_bar)
 "cif" = (
@@ -41346,12 +41353,12 @@
 	icon_state = "0-9"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/survivor_spawner,
-/obj/effect/decal/hybrisa/trash{
-	icon_state = "trash_8"
-	},
 /obj/structure/machinery/power/apc/fully_broken/no_cell/east,
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/obj/effect/decal/cleanable/dirt{
+	name = "impact";
+	icon_state = "thermite"
+	},
+/turf/open/floor/plating,
 /area/varadero/interior/beach_bar)
 "cig" = (
 /turf/closed/shuttle/dropship3/tornado{
@@ -48640,13 +48647,6 @@
 	},
 /turf/open_space,
 /area/sky)
-"cyP" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/caves/east)
 "cyQ" = (
 /obj/effect/landmark/lv624/fog_blocker{
 	time_to_dispel = 25000
@@ -48900,6 +48900,7 @@
 	dir = 8;
 	name = "\improper UD-6D - Las Guasimas"
 	},
+/obj/item/weapon/gun/rifle/m41aMK1,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/varadero/interior/beach_bar)
 "czB" = (
@@ -49763,10 +49764,6 @@
 	pixel_y = 0
 	},
 /turf/closed/wall/r_wall,
-/area/varadero/interior/maintenance/north)
-"cBw" = (
-/obj/structure/machinery/power/apc/no_power/north,
-/turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance/north)
 "cBx" = (
 /obj/structure/barricade/handrail/kutjevo{
@@ -66613,6 +66610,7 @@
 /obj/structure/tunnel{
 	id = "north_research_tunnel"
 	},
+/obj/effect/hunter/bridge_border/brown,
 /turf/open/predship/mainfloor/upper/west,
 /area/varadero/interior_protected/vessel)
 "pBo" = (
@@ -67420,8 +67418,8 @@
 	pixel_x = 3;
 	pixel_y = 5
 	},
-/obj/structure/machinery/power/apc/no_power/south,
 /obj/item/clothing/head/helmet/marine/MP,
+/obj/structure/machinery/power/apc/no_power/south,
 /turf/open/floor/wood,
 /area/varadero/interior/dock_control)
 "qeh" = (
@@ -75235,10 +75233,6 @@
 /obj/effect/spawner/random/tool,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/maintenance/south)
-"wfh" = (
-/obj/item/stack/sheet/mineral/phoron/medium_stack,
-/turf/open/floor/asteroid,
-/area/varadero/exterior/eastbeach)
 "wfr" = (
 /obj/structure/prop/souto_land/pole,
 /obj/structure/prop/souto_land/pole{
@@ -80812,11 +80806,11 @@ bLU
 bKH
 bJG
 bII
-huF
+xpP
 ifB
 bGa
 bEJ
-huF
+xpP
 huF
 bCj
 jhW
@@ -80994,7 +80988,7 @@ cBX
 bIK
 bJI
 bIJ
-huF
+xpP
 bHd
 bGb
 bEK
@@ -92097,7 +92091,7 @@ rFv
 hQP
 iFm
 bgE
-cBw
+giN
 bGu
 ukX
 bEe
@@ -97212,7 +97206,7 @@ iVt
 bEX
 pnL
 wOO
-bjD
+akO
 brD
 bqM
 bpO
@@ -102005,7 +101999,7 @@ auI
 auI
 kmN
 auI
-cyP
+auI
 auI
 kmN
 rKZ
@@ -104828,7 +104822,7 @@ beK
 mtT
 bUT
 bKk
-wfh
+xmL
 bPr
 bPr
 bOa

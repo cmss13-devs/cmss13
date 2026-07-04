@@ -754,6 +754,11 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			dat += "<b>Spawn as Engineer:</b> <a href='byond://?_src_=prefs;preference=toggles_insert;flag=[PLAY_INSERT_ENGINEER]'><b>[toggles_insert & PLAY_INSERT_ENGINEER ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Spawn as Smartgunner:</b> <a href='byond://?_src_=prefs;preference=toggles_insert;flag=[PLAY_INSERT_SMARTGUNNER]'><b>[toggles_insert & PLAY_INSERT_SMARTGUNNER ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Spawn as Specialist:</b> <a href='byond://?_src_=prefs;preference=toggles_insert;flag=[PLAY_INSERT_SPECIALIST]'><b>[toggles_insert & PLAY_INSERT_SPECIALIST ? "Yes" : "No"]</b></a><br>"
+
+			if(owner.check_whitelist_status(WHITELIST_SYNTHETIC))
+				dat += "<b>Spawn as Insert Synth:</b> <a href='byond://?_src_=prefs;preference=toggles_insert;flag=[PLAY_INSERT_SYNTH]'><b>[toggles_insert & PLAY_INSERT_SYNTH ? "Yes" : "No"]</b></a><br>"
+			if(owner.check_whitelist_status(WHITELIST_COMMANDER))
+				dat += "<b>Spawn as Insert CO:</b> <a href='byond://?_src_=prefs;preference=toggles_insert;flag=[PLAY_INSERT_CO]'><b>[toggles_insert & PLAY_INSERT_CO ? "Yes" : "No"]</b></a><br>"
 			dat += "</div>"
 
 	dat += "</div></body>"

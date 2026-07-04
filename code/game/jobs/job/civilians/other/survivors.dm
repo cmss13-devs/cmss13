@@ -264,6 +264,9 @@ AddTimelock(/datum/job/civilian/survivor, list(
 
 	for(var/obj/effect/landmark/survivor_spawner/spawner as anything in available_landmarks)
 		if(spawner.archetype == INSERT_SYNTH) //only pass synth landmarks
+			// If there's an insert but we don't have the pref, return FALSE
+			if(!HAS_FLAG(new_player.client.prefs.toggles_insert, PLAY_INSERT_SYNTH))
+				return FALSE
 			slotted_landmarks[new_player] = spawner
 			available_landmarks -= spawner
 			return TRUE
@@ -334,6 +337,9 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	valid_prefs = get_valid_prefs(new_player)
 	for(var/obj/effect/landmark/survivor_spawner/spawner as anything in available_landmarks)
 		if(spawner.archetype == INSERT_CO || LAZYISIN(valid_prefs, spawner.archetype) || (spawner.archetype == INSERT_NONE && spawner.spawn_priority != LOWEST_SPAWN_PRIORITY)) //only add landmarks that match prefs or CO or generic ones. CO landmarks are always the highest priority, so if one exists, it will get picked first
+			//If there is an insert but the player has it disabled in prefs, return FALSE
+			if(!HAS_FLAG(new_player.client.prefs.toggles_insert, PLAY_INSERT_CO))
+				return FALSE
 			slotted_landmarks[new_player] = spawner
 			available_landmarks -= spawner
 			return TRUE

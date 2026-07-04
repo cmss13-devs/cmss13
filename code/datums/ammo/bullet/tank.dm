@@ -90,6 +90,9 @@
 	damage = 40
 	penetration = ARMOR_PENETRATION_TIER_6
 	damage_armor_punch = 1
+	// Close-range weapon by design: full damage out to 4 tiles, roughly halved by 7 tiles, tapers to nothing by 10 tiles.
+	effective_range_max = 4
+	damage_falloff = 6.7
 
 /datum/ammo/bullet/tank/setup_faction_clash_values()
 	. = ..()

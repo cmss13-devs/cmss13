@@ -18,6 +18,12 @@
 		"4" = list(32, 0),
 		"8" = list(-32, 0)
 	)
+	rotation_pivot = list(
+		"1" = list(0, -21),
+		"2" = list(0, 32),
+		"4" = list(-32, 0),
+		"8" = list(32, 0)
+	)
 
 	muzzle_flash_pos = list(
 		"1" = list(0, 57),
@@ -26,7 +32,7 @@
 		"8" = list(-77, 0)
 	)
 
-	scatter = 18 //base scatter, modified by stake_delay_mult
+	scatter = 2
 	gun_firemode = GUN_FIREMODE_AUTOMATIC
 	gun_firemode_list = list(
 		GUN_FIREMODE_AUTOMATIC,
@@ -35,7 +41,7 @@
 
 	activation_sounds = list('sound/weapons/gun_minigun.ogg')
 	/// Active firing time to reach max spin_stage.
-	var/spinup_time = 10 SECONDS
+	var/spinup_time = 3 SECONDS
 	/// Grace period before losing spin_stage.
 	var/spindown_grace_time = 2 SECONDS
 	COOLDOWN_DECLARE(spindown_grace_cooldown)
@@ -43,8 +49,9 @@
 	var/spindown_time = 3 SECONDS
 	/// Index of stage_rate.
 	var/spin_stage = 1
-	/// Shots fired per fire_delay at a particular spin_stage.
-	var/list/stage_rate = list(1, 1, 2, 2, 3, 3, 3, 4, 4, 4, 5)
+	/// this is meant to be an already-fearsome close range weapon even before it spins
+	/// all the way up, not a weapon that needs several seconds of commitment before it does anything.
+	var/list/stage_rate = list(3, 3, 4, 4, 4, 5, 5, 5, 5, 5, 5)
 	/// Fire delay multiplier for current spin_stage.
 	var/stage_delay_mult = 1
 	/// When it was last fired, related to world.time.
@@ -52,7 +59,7 @@
 
 /obj/item/hardpoint/primary/minigun/set_fire_delay(value)
 	fire_delay = value
-	SEND_SIGNAL(src, COMSIG_GUN_AUTOFIREDELAY_MODIFIED, fire_delay * stage_delay_mult, scatter * stage_delay_mult)
+	SEND_SIGNAL(src, COMSIG_GUN_AUTOFIREDELAY_MODIFIED, fire_delay * stage_delay_mult)
 
 /obj/item/hardpoint/primary/minigun/set_fire_cooldown()
 	calculate_stage_delay_mult() //needs to check grace_cooldown before refreshed
@@ -79,7 +86,7 @@
 	var/new_stage_rate = stage_rate[floor(spin_stage)]
 
 	if(old_stage_rate != new_stage_rate)
-		scatter = initial(scatter) * (1/new_stage_rate)
+		// deliberate low scatter at every stage instead of the old huge-scatter-while-spinning-up behavior.
 		stage_delay_mult = 1 / new_stage_rate
 		SEND_SIGNAL(src, COMSIG_GUN_AUTOFIREDELAY_MODIFIED, fire_delay * stage_delay_mult)
 

@@ -65,7 +65,7 @@
 		/datum/action/xeno_action/activable/place_pathogen_structure/not_primary,
 		/datum/action/xeno_action/activable/gut/archon,
 		/datum/action/xeno_action/activable/tail_stab/pathogen/tier3,
-		/datum/action/xeno_action/onclick/blight_wave/archon,
+		// /datum/action/xeno_action/onclick/blight_wave/archon,
 		/datum/action/xeno_action/activable/venator_savage/archon, // Macro 1
 		/datum/action/xeno_action/activable/cyclone/archon, // Macro 2
 		/datum/action/xeno_action/onclick/tail_sweep/pathogen, // Macro 3

@@ -10,7 +10,8 @@
 	health = 350
 	traverse_arc = 120
 
-	ammo = new /obj/item/ammo_magazine/hardpoint/m56_cupola
+	// Uses the real M56D drum magazine.
+	ammo = new /obj/item/ammo_magazine/m56d
 	max_clips = 1
 
 	gimbal_pivot = list(

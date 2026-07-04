@@ -437,7 +437,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 	desc = "A permanently fixed M56D, firing standard issue 10x28mm rounds."
 	spawned_gear_list = list(
 		/obj/item/hardpoint/secondary/m56cupola,
-		/obj/item/ammo_magazine/hardpoint/m56_cupola,
+		/obj/item/ammo_magazine/m56d,
 	)
 
 /obj/effect/essentials_set/tank/tankgl

@@ -128,8 +128,8 @@
 /datum/supply_packs/ammo_m56_cupola
 	name = "M56 Cupola magazines (x2)"
 	contains = list(
-		/obj/item/ammo_magazine/hardpoint/m56_cupola,
-		/obj/item/ammo_magazine/hardpoint/m56_cupola,
+		/obj/item/ammo_magazine/m56d,
+		/obj/item/ammo_magazine/m56d,
 	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/ammo

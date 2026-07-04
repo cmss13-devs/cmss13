@@ -1311,6 +1311,33 @@
 	},
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/storage)
+"aey" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/floor3/east,
+/area/atlan/asteroid/processing_ne_train)
+"aez" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/strata/floor3/east,
+/area/atlan/asteroid/processing_ne_train)
+"aeA" = (
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/caves)
+"aeB" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/caves)
+"aeC" = (
+/turf/open/floor/plating,
+/area/atlan/asteroid/caves)
+"aeD" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/turf/open/gm/dirt/brown,
+/area/atlan/asteroid/processing_caves)
+"aeE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_caves)
 "afj" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -5524,7 +5551,7 @@
 	pixel_x = -10;
 	pixel_y = 13
 	},
-/turf/open/gm/dirt/brown,
+/turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_ne_train)
 "dhU" = (
 /obj/effect/decal/hybrisa/road/roadmiddle{
@@ -6497,7 +6524,7 @@
 /area/atlan/station/hab_flight)
 "dOm" = (
 /obj/structure/largecrate/random/barrel/true_random,
-/turf/open/gm/dirt/brown,
+/turf/open/floor/prison/darkbrownfull2,
 /area/atlan/asteroid/processing_seperation)
 "dOC" = (
 /obj/structure/barricade/deployable{
@@ -9565,10 +9592,6 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/whitered/north,
 /area/atlan/station/hab_rec)
-"fQj" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
-/turf/open/floor/strata/floor2,
-/area/atlan/asteroid/processing_caves)
 "fQk" = (
 /obj/structure/bed/chair/office/light{
 	dir = 4
@@ -14635,7 +14658,6 @@
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/storage)
 "jij" = (
-/obj/structure/cargo_container/hd/mid/alt,
 /turf/open/gm/dirt/brown/variant_2,
 /area/atlan/asteroid/processing_ne_train)
 "jiH" = (
@@ -69989,9 +70011,9 @@ aSd
 aHQ
 aHQ
 oov
-oov
+aHQ
+aHQ
 aSd
-lGF
 lGF
 aSd
 aSd
@@ -70187,7 +70209,7 @@ jDo
 oov
 aHQ
 gWZ
-oov
+aHQ
 lGF
 lGF
 lGF
@@ -70385,8 +70407,8 @@ lGF
 aHQ
 suH
 aHQ
-oov
-aSd
+aHQ
+lGF
 lGF
 lGF
 lGF
@@ -70583,8 +70605,8 @@ lGF
 iiH
 oov
 aHQ
-lGF
-lGF
+aHQ
+aHQ
 lGF
 lGF
 lGF
@@ -70781,8 +70803,8 @@ lGF
 aSd
 aHQ
 aHQ
+oov
 aHQ
-lGF
 lGF
 lGF
 lGF
@@ -70980,7 +71002,7 @@ lGF
 sZV
 sZV
 sZV
-lGF
+sZV
 lGF
 lGF
 lGF
@@ -71178,8 +71200,8 @@ lGF
 aHQ
 adl
 aHQ
-fQj
-lGF
+aHQ
+aHQ
 lGF
 lGF
 lGF
@@ -71377,8 +71399,8 @@ aHQ
 aHQ
 gWZ
 aHQ
-lGF
-jDo
+aHQ
+aeD
 lGF
 lGF
 aSd
@@ -71577,7 +71599,7 @@ aHQ
 oov
 aHQ
 aHQ
-jDo
+aeD
 lGF
 aSd
 aSd
@@ -71810,8 +71832,8 @@ dhL
 aSd
 aSd
 aSd
-aSd
-aSd
+lGL
+lGL
 pWc
 pDo
 wOo
@@ -72006,8 +72028,8 @@ pDo
 sii
 vQp
 uIG
-giQ
-acT
+aez
+aey
 jFj
 vQp
 oRG
@@ -73157,7 +73179,7 @@ aSd
 aSd
 aSd
 aSd
-suH
+aeE
 aHQ
 hkm
 aHQ
@@ -73972,13 +73994,13 @@ uIG
 uIG
 lGF
 lGF
-uIG
-fYZ
+aeC
+aeB
 mVN
-uIG
+aeA
 mVN
 mVN
-uIG
+aeA
 lGF
 lGF
 lGF

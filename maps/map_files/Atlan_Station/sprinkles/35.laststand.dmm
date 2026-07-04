@@ -5,14 +5,24 @@
 	pixel_y = 1
 	},
 /turf/open/floor/strata/multi_tiles/west,
-/area/space)
+/area/atlan/asteroid/processing_caves)
 "b" = (
 /obj/item/ammo_casing{
 	dir = 8;
 	icon_state = "casing_6"
 	},
 /turf/open/floor/strata/floor2,
-/area/space)
+/area/atlan/asteroid/processing_caves)
+"c" = (
+/obj/structure/monorail{
+	name = "launch track"
+	},
+/turf/open/floor/plating/prison,
+/area/atlan/asteroid/processing_aux)
+"d" = (
+/obj/item/frame/rack,
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_caves)
 "g" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -20,49 +30,49 @@
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/strata/multi_tiles/west,
-/area/space)
+/area/atlan/asteroid/processing_aux)
 "h" = (
 /obj/structure/monorail{
 	dir = 4;
 	name = "launch track"
 	},
 /turf/open/floor/plating/prison,
-/area/space)
+/area/atlan/asteroid/processing_caves)
 "k" = (
 /turf/open/floor/strata/floor2,
-/area/space)
+/area/atlan/asteroid/processing_caves)
 "l" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/strata/multi_tiles,
-/area/space)
+/area/atlan/asteroid/processing_caves)
 "m" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
 	pixel_y = 1
 	},
 /turf/open/floor/strata/multi_tiles/west,
-/area/space)
+/area/atlan/asteroid/processing_caves)
 "n" = (
 /turf/closed/wall/rock/brown,
-/area/space)
+/area/atlan/oob)
 "o" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
 	pixel_x = -1
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
-/area/space)
+/area/atlan/asteroid/processing_caves)
 "r" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/strata/floor2,
-/area/space)
+/area/atlan/asteroid/processing_caves)
 "v" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/colonist/random,
 /obj/item/weapon/gun/rifle/type71/flamer,
 /turf/open/floor/strata/floor2,
-/area/space)
+/area/atlan/asteroid/processing_caves)
 "x" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -74,7 +84,7 @@
 	},
 /obj/effect/spawner/gibspawner/xeno,
 /turf/open/floor/strata/multi_tiles/southeast,
-/area/space)
+/area/atlan/asteroid/processing_caves)
 "C" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -85,7 +95,7 @@
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/strata/multi_tiles/southeast,
-/area/space)
+/area/atlan/asteroid/processing_caves)
 "F" = (
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgib5"
@@ -96,10 +106,10 @@
 	pixel_y = -4
 	},
 /turf/open/floor/plating/prison,
-/area/space)
+/area/atlan/asteroid/processing_caves)
 "G" = (
 /turf/closed/wall/mineral/bone_resin,
-/area/space)
+/area/atlan/oob)
 "H" = (
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgib5"
@@ -107,7 +117,7 @@
 /obj/effect/spawner/gibspawner/xeno,
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/strata/floor3/east,
-/area/space)
+/area/atlan/asteroid/processing_caves)
 "I" = (
 /obj/item/ammo_casing{
 	icon_state = "casing_5"
@@ -119,21 +129,21 @@
 	icon_state = "casing_10_1"
 	},
 /turf/open/floor/plating,
-/area/space)
+/area/atlan/asteroid/processing_caves)
 "J" = (
 /obj/structure/monorail{
 	dir = 10;
 	name = "launch track"
 	},
 /turf/open/floor/plating/prison,
-/area/space)
+/area/atlan/asteroid/processing_caves)
 "K" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgib5"
 	},
 /turf/open/floor/plating,
-/area/space)
+/area/atlan/asteroid/processing_caves)
 "L" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -145,32 +155,32 @@
 /obj/effect/spawner/gibspawner/xeno,
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/strata/multi_tiles/west,
-/area/space)
+/area/atlan/asteroid/processing_caves)
 "M" = (
 /obj/structure/monorail{
 	name = "launch track"
 	},
 /turf/open/floor/plating/prison,
-/area/space)
+/area/atlan/asteroid/processing_caves)
 "N" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 1
 	},
 /turf/open/floor/strata/floor2,
-/area/space)
+/area/atlan/asteroid/processing_caves)
 "R" = (
 /turf/open/floor/plating/prison,
-/area/space)
+/area/atlan/asteroid/processing_caves)
 "S" = (
 /obj/effect/landmark/structure_spawner/spore_sac_rng,
 /turf/open/floor/plating/prison,
-/area/space)
+/area/atlan/asteroid/processing_caves)
 "T" = (
 /turf/open/floor/strata/floor3/east,
-/area/space)
+/area/atlan/asteroid/processing_caves)
 "U" = (
 /turf/open/floor/strata/multi_tiles,
-/area/space)
+/area/atlan/asteroid/processing_caves)
 "Y" = (
 /obj/structure/monorail{
 	dir = 6;
@@ -181,7 +191,7 @@
 	},
 /obj/effect/spawner/gibspawner/xeno,
 /turf/open/floor/plating/prison,
-/area/space)
+/area/atlan/asteroid/processing_caves)
 
 (1,1,1) = {"
 G
@@ -193,7 +203,7 @@ k
 G
 "}
 (2,1,1) = {"
-k
+d
 T
 k
 b
@@ -235,7 +245,7 @@ o
 J
 M
 M
-M
+c
 "}
 (7,1,1) = {"
 n

@@ -41,6 +41,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/predship/tile/hunter_tile_6/west,
 /area/varadero/interior_protected/vessel)
+"aag" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/south)
 "aah" = (
 /obj/structure/bed/chair/hunter{
 	name = "alien chair";
@@ -137,11 +141,34 @@
 	},
 /turf/closed/wall/r_wall/unmeltable,
 /area/varadero/interior/oob)
+"aas" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/maintenance/security/south)
+"aat" = (
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/maintenance/security/north)
+"aau" = (
+/turf/closed/wall/rock/brown,
+/area/varadero/interior/maintenance/security/north)
 "aav" = (
 /obj/item/tool/pickaxe,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/caves/east)
+"aaw" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8;
+	name = "aquatic barrier";
+	desc = "A taut wire connected to two cable floats with inbuilt marking lights, below the surface of the water floats a large cable mesh going all the way down to the sea floor. While originally designed to keep out terrestrial sharks from public beaches, these days auqatic barriers such as this are most commonly used as cheap aquatic perimeter fencing instead."
+	},
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/farocean)
 "aax" = (
 /obj/structure/shuttle/part/dropship3/transparent/engine_right_exhaust{
 	name = "\improper UD-6D - Las Guasimas"
@@ -196,6 +223,26 @@
 	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/varadero/interior/beach_bar)
+"aaA" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8;
+	name = "aquatic barrier";
+	desc = "A taut wire connected to two cable floats with inbuilt marking lights, below the surface of the water floats a large cable mesh going all the way down to the sea floor. While originally designed to keep out terrestrial sharks from public beaches, these days auqatic barriers such as this are most commonly used as cheap aquatic perimeter fencing instead."
+	},
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/obj/structure/blocker/invisible_wall/water,
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = 13;
+	pixel_y = 24;
+	unacidable = 1;
+	explo_proof = 1;
+	name = "aquatic barrier anchor";
+	desc = "A metal pole extending down to the sea floor below. Its connected to a large cable mesh, this one has a marking light installed atop it."
+	},
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/farocean)
 "aaB" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice8";
@@ -213,12 +260,49 @@
 /obj/structure/platform_decoration/metal/kutjevo/east,
 /turf/open/gm/coast/east,
 /area/varadero/exterior/pontoon_beach)
+"aaD" = (
+/obj/structure/window/framed/colony,
+/obj/structure/prop{
+	name = "\improper reinforced shutters";
+	desc = "Reinforced metal shutters, more for show than security. They redirect light and add a bit of structure to the space.";
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi';
+	icon_state = "almayer_pdoor1";
+	dir = 8;
+	unacidable = 1;
+	explo_proof = 1;
+	unslashable = 1
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
 "aaE" = (
 /turf/open/gm/coast/beachcorner2/north_east,
 /area/varadero/exterior/islands)
 "aaF" = (
 /turf/open/gm/coast/north,
 /area/varadero/exterior/islands)
+"aaG" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8;
+	name = "aquatic barrier";
+	desc = "A taut wire connected to two cable floats with inbuilt marking lights, below the surface of the water floats a large cable mesh going all the way down to the sea floor. While originally designed to keep out terrestrial sharks from public beaches, these days auqatic barriers such as this are most commonly used as cheap aquatic perimeter fencing instead."
+	},
+/obj/structure/blocker/invisible_wall/water,
+/obj/structure/barricade/handrail{
+	name = "support struts";
+	desc = "Your platforms look pretty heavy king, let me support them for you.";
+	icon_state = "hr_kutjevo";
+	dir = 1;
+	destroyed_stack_amount = 0;
+	stack_amount = 0
+	},
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/farocean)
 "aaH" = (
 /turf/open/gm/coast/beachcorner2/north_west,
 /area/varadero/exterior/islands)
@@ -228,6 +312,18 @@
 "aaJ" = (
 /turf/open/gm/coast/west,
 /area/varadero/exterior/islands)
+"aaK" = (
+/obj/item/device/flashlight/slime{
+	invisibility = 1;
+	mouse_opacity = 0;
+	alpha = 0;
+	explo_proof = 1;
+	light_color = "#FF0000";
+	name = "emergency light";
+	light_range = 5
+	},
+/turf/open/gm/coast/west,
+/area/varadero/exterior/pontoon_beach)
 "aaL" = (
 /turf/open/gm/coast/beachcorner2/south_east,
 /area/varadero/exterior/islands)
@@ -4796,10 +4892,8 @@
 /area/varadero/interior_protected/vessel)
 "aoE" = (
 /obj/structure/window/framed/colony/reinforced,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	dir = 8;
-	opacity = 0
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 8
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
@@ -5288,7 +5382,7 @@
 /area/varadero/interior_protected/maintenance/south)
 "aqd" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/turf/open/gm/dirt/dark_brown,
 /area/varadero/interior_protected/maintenance/south)
 "aqe" = (
 /obj/structure/prop/invuln/lattice_prop{
@@ -6880,10 +6974,7 @@
 /area/varadero/interior_protected/maintenance/south)
 "auS" = (
 /obj/structure/window/framed/colony,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	opacity = 0
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/hall_SE)
 "auT" = (
@@ -7577,10 +7668,8 @@
 /area/varadero/interior_protected/maintenance/south)
 "awU" = (
 /obj/structure/window/framed/colony,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	dir = 8;
-	opacity = 0
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 8
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/hall_SE)
@@ -9398,10 +9487,8 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/maintenance/south)
 "aCa" = (
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	dir = 8;
-	opacity = 0
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 8
 	},
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -10140,10 +10227,7 @@
 /area/varadero/interior/electrical)
 "aEa" = (
 /obj/structure/window/framed/colony/reinforced,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	opacity = 0
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/security)
 "aEb" = (
@@ -10461,10 +10545,8 @@
 /area/varadero/interior/maintenance/security/south/hangar)
 "aEU" = (
 /obj/structure/window/framed/colony/reinforced,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	dir = 8;
-	opacity = 0
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 8
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/south/hangar)
@@ -11204,10 +11286,7 @@
 /area/varadero/interior_protected/maintenance/south)
 "aGR" = (
 /obj/structure/window/framed/colony,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	opacity = 0
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/records)
 "aGS" = (
@@ -11515,10 +11594,7 @@
 /area/varadero/interior/hall_SE)
 "aHG" = (
 /obj/structure/window/framed/colony,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	opacity = 0
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/hall_SE)
@@ -12545,11 +12621,15 @@
 /obj/structure/window/framed/colony/reinforced/hull{
 	explo_proof = 1
 	},
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
+/obj/structure/prop{
+	name = "\improper reinforced shutters";
+	desc = "Reinforced metal shutters, more for show than security. They redirect light and add a bit of structure to the space.";
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi';
+	icon_state = "almayer_pdoor1";
 	dir = 8;
-	needs_power = 0;
-	opacity = 0
+	unacidable = 1;
+	explo_proof = 1;
+	unslashable = 1
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/oob)
@@ -13424,10 +13504,7 @@
 /area/varadero/interior/medical)
 "aMq" = (
 /obj/structure/window/framed/colony,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	opacity = 0
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/disposals)
 "aMr" = (
@@ -13436,19 +13513,13 @@
 /area/varadero/interior/disposals)
 "aMs" = (
 /obj/structure/window/framed/colony,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	opacity = 0
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/laundry)
 "aMt" = (
 /obj/structure/window/framed/colony,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	opacity = 0
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/laundry)
 "aMu" = (
@@ -14280,10 +14351,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	dir = 8;
-	opacity = 0
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 8
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/security)
@@ -14927,10 +14996,8 @@
 /area/varadero/interior/hall_SE)
 "aQl" = (
 /obj/structure/window/framed/colony,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	dir = 8;
-	opacity = 0
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 8
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/south)
@@ -15433,10 +15500,8 @@
 /area/varadero/interior/security)
 "aRB" = (
 /obj/structure/window/framed/colony/reinforced,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	dir = 8;
-	opacity = 0
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 8
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/security)
@@ -15743,10 +15808,8 @@
 /area/varadero/interior/maintenance)
 "aSs" = (
 /obj/structure/window/framed/colony/reinforced,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	dir = 8;
-	opacity = 0
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 8
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/administration)
@@ -17059,10 +17122,7 @@
 /area/varadero/interior/research)
 "aVT" = (
 /obj/structure/window/framed/colony/reinforced,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	opacity = 0
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /obj/item/clothing/suit/storage/jacket/marine/service/green,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/administration)
@@ -18458,10 +18518,7 @@
 /area/varadero/exterior/farocean)
 "aZN" = (
 /obj/structure/window/framed/colony/reinforced,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	opacity = 0
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/research)
 "aZO" = (
@@ -18535,10 +18592,7 @@
 "aZY" = (
 /obj/structure/window/framed/colony/reinforced,
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	opacity = 0
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/administration)
@@ -19407,9 +19461,6 @@
 	},
 /turf/closed/wall/r_wall,
 /area/varadero/interior/security)
-"bcz" = (
-/turf/closed/wall/r_wall/unmeltable,
-/area/varadero/interior/maintenance/security/north)
 "bcA" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Underground Hangar";
@@ -20385,10 +20436,8 @@
 /area/varadero/interior/maintenance/research)
 "bfp" = (
 /obj/structure/window/framed/colony/reinforced,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	dir = 8;
-	opacity = 0
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 8
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/hall_NW)
@@ -20553,10 +20602,8 @@
 /area/varadero/interior/security)
 "bfJ" = (
 /obj/structure/window/framed/colony/reinforced,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	dir = 8;
-	opacity = 0
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 8
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/north)
@@ -20881,11 +20928,6 @@
 "bgE" = (
 /turf/closed/wall/r_wall,
 /area/varadero/interior/maintenance/north)
-"bgF" = (
-/obj/item/device/flashlight/lamp/tripod,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior/caves/east)
 "bgG" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -21230,7 +21272,7 @@
 	health = 300
 	},
 /turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior/caves/east)
+/area/varadero/interior/maintenance/security/north)
 "bhz" = (
 /obj/structure/reagent_dispensers/tank/fuel/spacecraft,
 /obj/effect/decal/cleanable/dirt,
@@ -21737,10 +21779,8 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/window/framed/colony,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	dir = 8;
-	opacity = 0
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 8
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance)
@@ -21800,7 +21840,7 @@
 "bjb" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/coast/west,
-/area/varadero/interior/caves/east)
+/area/varadero/interior/maintenance/security/north)
 "bjc" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Underground Hangar";
@@ -23703,10 +23743,8 @@
 /area/varadero/interior/maintenance/security/north)
 "bor" = (
 /obj/structure/window/framed/colony/reinforced,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	dir = 8;
-	opacity = 0
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 8
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/electrical)
@@ -23815,6 +23853,10 @@
 /obj/structure/prop/almayer/computers/sensor_computer2,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
+	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	pixel_y = 32;
+	density = 0
 	},
 /turf/open/floor/prison/darkredfull2,
 /area/varadero/interior/dock_control)
@@ -25254,10 +25296,8 @@
 /area/varadero/interior/comms2)
 "bss" = (
 /obj/structure/window/framed/colony/reinforced,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	dir = 8;
-	opacity = 0
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 8
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -25609,10 +25649,8 @@
 /area/varadero/interior/comms2)
 "btr" = (
 /obj/structure/window/framed/colony/reinforced,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	dir = 8;
-	opacity = 0
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 8
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/comms2)
@@ -26754,10 +26792,7 @@
 /area/varadero/interior/electrical)
 "bwd" = (
 /obj/structure/window/framed/colony/reinforced,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	opacity = 0
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/comms2)
 "bwe" = (
@@ -28644,10 +28679,7 @@
 /area/varadero/interior/maintenance/research)
 "bBb" = (
 /obj/structure/window/framed/colony/reinforced,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	opacity = 0
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/caves/north_research)
 "bBc" = (
@@ -28817,10 +28849,8 @@
 /area/varadero/exterior/eastbeach)
 "bBz" = (
 /obj/structure/window/framed/colony/reinforced,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	dir = 8;
-	opacity = 0
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 8
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/comms3)
@@ -30770,10 +30800,8 @@
 /area/varadero/exterior/comms4)
 "bGI" = (
 /obj/structure/window/framed/colony/reinforced,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	dir = 8;
-	opacity = 0
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 8
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/comms1)
@@ -30904,10 +30932,8 @@
 /area/varadero/interior/cargo)
 "bHa" = (
 /obj/structure/window/framed/colony,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	dir = 8;
-	opacity = 0
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 8
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/cargo)
@@ -31352,10 +31378,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	dir = 8;
-	opacity = 0
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 8
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
@@ -31929,12 +31953,19 @@
 /turf/open/floor/plating/prison,
 /area/varadero/exterior/farocean)
 "bJN" = (
-/obj/structure/prop/hybrisa/signs/high_voltage/small,
-/obj/structure/fence/electrified{
-	electrified = 1
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8;
+	name = "aquatic barrier";
+	desc = "A taut wire connected to two cable floats with inbuilt marking lights, below the surface of the water floats a large cable mesh going all the way down to the sea floor. While originally designed to keep out terrestrial sharks from public beaches, these days auqatic barriers such as this are most commonly used as cheap aquatic perimeter fencing instead."
 	},
-/obj/structure/blocker/invisible_wall,
-/turf/open/floor/plating/prison,
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/obj/structure/blocker/invisible_wall/water,
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/farocean)
 "bJO" = (
 /obj/item/weapon/gun/rifle/m41aMK1/ap,
@@ -32246,11 +32277,24 @@
 /turf/open/floor/asteroid,
 /area/varadero/exterior/farocean)
 "bKA" = (
-/obj/structure/fence/electrified{
-	electrified = 1
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8;
+	name = "aquatic barrier";
+	desc = "A taut wire connected to two cable floats with inbuilt marking lights, below the surface of the water floats a large cable mesh going all the way down to the sea floor. While originally designed to keep out terrestrial sharks from public beaches, these days auqatic barriers such as this are most commonly used as cheap aquatic perimeter fencing instead."
 	},
-/obj/structure/blocker/invisible_wall,
-/turf/open/floor/plating/prison,
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/obj/structure/blocker/invisible_wall/water,
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = 13;
+	pixel_y = -3;
+	unacidable = 1;
+	explo_proof = 1;
+	name = "aquatic barrier anchor";
+	desc = "A metal pole extending down to the sea floor below. Its connected to a large cable mesh, this one has a marking light installed atop it."
+	},
+/turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/farocean)
 "bKB" = (
 /obj/structure/barricade/handrail/wire{
@@ -32348,10 +32392,8 @@
 /area/varadero/interior/maintenance/north)
 "bKN" = (
 /obj/structure/window/framed/colony/reinforced,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	dir = 8;
-	opacity = 0
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 8
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
@@ -33669,23 +33711,6 @@
 	},
 /turf/open/floor/asteroid,
 /area/varadero/exterior/farocean)
-"bNR" = (
-/obj/structure/barricade/handrail{
-	name = "support struts";
-	desc = "Your platforms look pretty heavy king, let me support them for you.";
-	icon_state = "hr_kutjevo";
-	dir = 1;
-	destroyed_stack_amount = 0;
-	stack_amount = 0
-	},
-/obj/structure/platform/metal/kutjevo_smooth/north{
-	climb_delay = 1
-	},
-/obj/structure/platform/metal/kutjevo_smooth/west{
-	climb_delay = 1
-	},
-/turf/open/gm/river/ocean/deep_ocean,
-/area/varadero/exterior/comms4)
 "bNS" = (
 /obj/structure/barricade/handrail{
 	name = "support struts";
@@ -33755,10 +33780,7 @@
 /area/varadero/interior/comms1)
 "bNY" = (
 /obj/structure/window/framed/colony/reinforced,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	opacity = 0
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/comms1)
 "bNZ" = (
@@ -37658,10 +37680,7 @@
 /area/varadero/interior/cargo)
 "bXJ" = (
 /obj/structure/window/framed/colony,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	opacity = 0
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/cargo)
 "bXK" = (
@@ -41621,10 +41640,8 @@
 /area/varadero/exterior/lz2_near)
 "chI" = (
 /obj/structure/window/framed/colony/reinforced,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	dir = 8;
-	opacity = 0
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 8
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -41653,10 +41670,8 @@
 /area/varadero/exterior/lz2_near)
 "chL" = (
 /obj/structure/window/framed/colony/reinforced,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	dir = 8;
-	opacity = 0
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 8
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/lz2_near)
@@ -42247,10 +42262,7 @@
 /area/varadero/exterior/lz2_near)
 "cjm" = (
 /obj/structure/window/framed/colony/reinforced,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	opacity = 0
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/lz2_near)
 "cjn" = (
@@ -48550,11 +48562,19 @@
 	icon_state = "warning_s";
 	dir = 8
 	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	pixel_y = 32;
+	density = 0
+	},
 /turf/open/floor/wood,
 /area/varadero/interior/dock_control)
 "cxS" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
+	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	pixel_y = 32;
+	density = 0
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/dock_control)
@@ -48563,6 +48583,10 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	pixel_y = 32;
+	density = 0
+	},
 /turf/open/floor/wood,
 /area/varadero/interior/dock_control)
 "cxV" = (
@@ -48810,11 +48834,6 @@
 /area/varadero/interior/cargo)
 "cyw" = (
 /obj/structure/window/framed/colony/reinforced/hull,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	needs_power = 0;
-	opacity = 0
-	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/oob)
 "cyx" = (
@@ -50955,10 +50974,8 @@
 /area/varadero/interior/hall_NW)
 "dcC" = (
 /obj/structure/window/framed/colony/reinforced,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	dir = 8;
-	opacity = 0
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 8
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/cargo)
@@ -52738,6 +52755,10 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
+	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	pixel_y = 32;
+	density = 0
 	},
 /turf/open/floor/prison/darkredfull2,
 /area/varadero/interior/dock_control)
@@ -55720,10 +55741,8 @@
 /area/varadero/interior_protected/caves/makeshift_tent)
 "gTC" = (
 /obj/structure/window/framed/colony,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	dir = 8;
-	opacity = 0
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 8
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/disposals)
@@ -55731,10 +55750,15 @@
 /obj/structure/window/framed/colony/reinforced/hull{
 	explo_proof = 1
 	},
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	needs_power = 0;
-	opacity = 0
+/obj/structure/prop{
+	name = "\improper reinforced shutters";
+	desc = "Reinforced metal shutters, more for show than security. They redirect light and add a bit of structure to the space.";
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi';
+	icon_state = "almayer_pdoor1";
+	dir = 2;
+	unacidable = 1;
+	explo_proof = 1;
+	unslashable = 1
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/oob)
@@ -56224,10 +56248,7 @@
 /area/varadero/interior/hall_SE)
 "hoP" = (
 /obj/structure/window/framed/colony/reinforced,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	opacity = 0
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance)
 "hpv" = (
@@ -57017,10 +57038,8 @@
 /area/varadero/exterior/pontoon_beach)
 "hYp" = (
 /obj/structure/window/framed/colony,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	dir = 8;
-	opacity = 0
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 8
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance)
@@ -57536,10 +57555,7 @@
 "itb" = (
 /obj/structure/window/framed/colony/reinforced,
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	opacity = 0
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/administration)
 "itw" = (
@@ -59969,10 +59985,8 @@
 /area/varadero/interior/administration)
 "kgw" = (
 /obj/structure/window/framed/colony,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	dir = 8;
-	opacity = 0
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 8
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/records)
@@ -59997,10 +60011,7 @@
 /area/varadero/exterior/farocean)
 "kiE" = (
 /obj/structure/window/framed/colony,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	opacity = 0
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance)
 "kiG" = (
@@ -60200,10 +60211,7 @@
 "krL" = (
 /obj/structure/window/framed/colony/reinforced,
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	opacity = 0
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/administration)
 "krM" = (
@@ -63749,10 +63757,7 @@
 /area/varadero/interior/technical_storage)
 "nqQ" = (
 /obj/structure/window/framed/colony/reinforced,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	opacity = 0
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/dock_control)
 "nrd" = (
@@ -64381,10 +64386,7 @@
 /area/varadero/interior/medical)
 "nSi" = (
 /obj/structure/window/framed/colony/reinforced,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	opacity = 0
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
 "nSW" = (
@@ -65571,10 +65573,7 @@
 /area/varadero/interior/electrical)
 "oSX" = (
 /obj/structure/window/framed/colony/reinforced,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	opacity = 0
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/electrical)
 "oTf" = (
@@ -65849,7 +65848,7 @@
 /obj/structure/prop/rock/brown,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior/caves/east)
+/area/varadero/interior/maintenance/security/north)
 "pco" = (
 /obj/structure/surface/rack,
 /obj/item/tool/surgery/scalpel,
@@ -67714,10 +67713,7 @@
 /area/varadero/exterior/farocean)
 "qvo" = (
 /obj/structure/window/framed/colony/reinforced,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	opacity = 0
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/administration)
 "qvv" = (
@@ -67859,10 +67855,8 @@
 /area/varadero/interior/beach_bar)
 "qzb" = (
 /obj/structure/window/framed/colony,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	dir = 8;
-	opacity = 0
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 8
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
@@ -67910,10 +67904,7 @@
 /area/varadero/interior/maintenance/security/south/hangar)
 "qAp" = (
 /obj/structure/window/framed/colony/reinforced,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	opacity = 0
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
 "qAr" = (
@@ -70255,10 +70246,15 @@
 	explo_proof = 1
 	},
 /obj/structure/sign/banners/happybirthdaysteve,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	needs_power = 0;
-	opacity = 0
+/obj/structure/prop{
+	name = "\improper reinforced shutters";
+	desc = "Reinforced metal shutters, more for show than security. They redirect light and add a bit of structure to the space.";
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi';
+	icon_state = "almayer_pdoor1";
+	dir = 2;
+	unacidable = 1;
+	explo_proof = 1;
+	unslashable = 1
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/oob)
@@ -71447,10 +71443,7 @@
 /area/varadero/interior/electrical)
 "thS" = (
 /obj/structure/window/framed/colony,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	opacity = 0
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
 "thY" = (
@@ -71669,10 +71662,8 @@
 /area/varadero/exterior/lz1_near)
 "tqh" = (
 /obj/structure/window/framed/colony/reinforced,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	dir = 8;
-	opacity = 0
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 8
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/research)
@@ -72718,10 +72709,7 @@
 /area/varadero/exterior/pontoon_beach)
 "upL" = (
 /obj/structure/window/framed/colony,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	opacity = 0
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/maintenance/south)
 "upO" = (
@@ -72768,9 +72756,7 @@
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/maintenance)
 "uqB" = (
-/obj/structure/platform/metal/kutjevo_smooth/west{
-	climb_delay = 1
-	},
+/obj/structure/platform_decoration/metal/kutjevo/north,
 /turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/comms4)
 "uqU" = (
@@ -74529,10 +74515,8 @@
 /area/varadero/interior/maintenance/security/south/hangar)
 "vEM" = (
 /obj/structure/window/framed/colony/reinforced,
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	dir = 8;
-	opacity = 0
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 8
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/library)
@@ -74633,6 +74617,10 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
+	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	pixel_y = 32;
+	density = 0
 	},
 /turf/open/floor/prison/darkredfull2,
 /area/varadero/interior/dock_control)
@@ -80074,9 +80062,9 @@ bSZ
 bRG
 bQm
 adJ
-bJN
-bKA
-bKA
+aaG
+aaA
+aaw
 bKA
 bJN
 adJ
@@ -80256,14 +80244,14 @@ bTa
 bRH
 bQn
 bOV
-bNR
-uqB
-uqB
-uqB
+bNS
+sNy
+sNy
+sNy
 uqB
 bIT
 bHU
-bGH
+sNy
 jDe
 sNy
 jDe
@@ -80439,17 +80427,17 @@ bRI
 bQo
 bOW
 bNS
+bGH
 sNy
-sNy
-sNy
+bGH
 jDe
 sNy
+bGH
 sNy
 sNy
 sNy
 sNy
-sNy
-sNy
+bGH
 tER
 pGs
 pGs
@@ -93178,8 +93166,8 @@ lTR
 kpe
 msS
 huF
-qzb
-qzb
+aaD
+aaD
 bgE
 bgE
 bgE
@@ -98065,7 +98053,7 @@ qwQ
 qwQ
 eGX
 cgI
-hKK
+aaK
 sRs
 bWC
 cmb
@@ -98857,7 +98845,7 @@ blX
 bkV
 bkT
 fEZ
-jqw
+dZn
 pGs
 wVf
 aHM
@@ -99039,7 +99027,7 @@ hPm
 bkV
 bkU
 bjS
-kbQ
+gWu
 wVf
 wVf
 rpT
@@ -99221,7 +99209,7 @@ bmF
 blV
 bkU
 bjS
-kbQ
+gWu
 bil
 cYa
 lVB
@@ -99403,7 +99391,7 @@ mms
 blW
 bkV
 bjS
-kbQ
+gWu
 bil
 etE
 swi
@@ -99774,7 +99762,7 @@ wVf
 wVf
 wVf
 pGs
-ouy
+xRO
 bbn
 aRq
 aZj
@@ -99949,14 +99937,14 @@ qsJ
 blS
 mnC
 bdA
-jqw
+dZn
 pGs
 pGs
 pGs
 pGs
 pGs
 pGs
-ouy
+xRO
 aDo
 aRp
 aZj
@@ -100132,13 +100120,13 @@ blY
 bdA
 bdA
 bhy
-ofC
-jqw
+vJf
+dZn
 pGs
 pGs
-jqw
+dZn
 pGs
-ouy
+xRO
 aVy
 bam
 aZk
@@ -100188,7 +100176,7 @@ arX
 arX
 hbi
 cto
-adH
+adG
 vhI
 abI
 mCF
@@ -100313,14 +100301,14 @@ pGb
 blZ
 bkX
 bdA
-kbQ
-ayY
-kbQ
-kbQ
+gWu
+boo
+gWu
+gWu
 pbT
-kbQ
+gWu
 pGs
-ouy
+xRO
 bbo
 oZv
 aEN
@@ -100495,14 +100483,14 @@ bmJ
 bma
 bkY
 bjT
-kbQ
-ayY
-ayY
-bgF
-kbQ
-ayY
+gWu
+boo
+boo
+bkT
+gWu
+boo
 pbT
-azx
+lBn
 aBr
 aCe
 aAn
@@ -100677,14 +100665,14 @@ bmK
 bmb
 bkZ
 gWu
-kbQ
-kbQ
-kbQ
-ayY
-ayY
-ayY
-ayY
-nZP
+gWu
+gWu
+gWu
+boo
+boo
+boo
+boo
+aag
 aAk
 aCe
 aAn
@@ -100859,14 +100847,14 @@ kZL
 bmb
 bla
 bjT
-kbQ
-ayY
+gWu
+boo
 bhy
-kbQ
-kbQ
-ayY
-kbQ
-iwT
+gWu
+gWu
+boo
+gWu
+aas
 bbp
 ban
 wmj
@@ -101041,14 +101029,14 @@ bmM
 bmb
 blb
 bjT
-kbQ
-jqw
-ayY
-ayY
-kbQ
-ayY
-kbQ
-iwT
+gWu
+dZn
+boo
+boo
+gWu
+boo
+gWu
+aas
 aAn
 aCe
 xpD
@@ -101223,14 +101211,14 @@ bmN
 bmc
 blc
 bIR
-pGs
-pGs
-ofC
-ayY
-jqw
-sgk
-jqw
-azx
+aau
+aau
+vJf
+boo
+dZn
+aat
+dZn
+lBn
 aMO
 aCe
 wmj
@@ -101412,7 +101400,7 @@ bfJ
 bfJ
 bdA
 bdA
-bcz
+huF
 iQM
 rNR
 xRO

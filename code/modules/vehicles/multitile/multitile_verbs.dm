@@ -4,7 +4,7 @@
 
 
 //Used to swap which module a position is using
-//e.g. swapping primary gunner from the minigun to the smoke launcher
+//e.g. swapping primary gunner from the minigun to the flare launcher
 /obj/vehicle/multitile/proc/switch_hardpoint()
 	set name = "Change Active Hardpoint"
 	set category = "Vehicle"

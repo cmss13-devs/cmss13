@@ -2832,7 +2832,7 @@
 		/obj/item/ammo_magazine/hardpoint/towlauncher,
 		/obj/item/ammo_magazine/hardpoint/m56_cupola,
 		/obj/item/ammo_magazine/hardpoint/tank_glauncher,
-		/obj/item/ammo_magazine/hardpoint/turret_smoke,
+		/obj/item/storage/box/packet/flare,
 		/obj/item/ammo_magazine/hardpoint/boyars_dualcannon,
 		/obj/item/ammo_magazine/hardpoint/flare_launcher,
 	)

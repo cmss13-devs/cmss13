@@ -56373,8 +56373,8 @@
 /area/tyrargo/oob/outdoors)
 "cKo" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_magazine/hardpoint/turret_smoke,
-/obj/item/ammo_magazine/hardpoint/turret_smoke,
+/obj/item/storage/box/packet/flare,
+/obj/item/storage/box/packet/flare,
 /obj/item/ammo_magazine/hardpoint/m56_cupola,
 /obj/item/ammo_magazine/hardpoint/m56_cupola,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,

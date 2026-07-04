@@ -361,6 +361,29 @@
 	damage = 2.5
 	flare_type = /obj/item/device/flashlight/flare/on/starshell_ash
 
+// Fired from the tank turret's flare launcher
+/datum/ammo/flare/starshell/burst
+	name = "star shell burst"
+	max_range = 7
+
+/datum/ammo/flare/starshell/burst/on_hit_mob(mob/M, obj/projectile/P)
+	detonate(get_turf(M), P)
+
+/datum/ammo/flare/starshell/burst/on_hit_obj(obj/O, obj/projectile/P)
+	detonate(get_turf(O), P)
+
+/datum/ammo/flare/starshell/burst/on_hit_turf(turf/T, obj/projectile/P)
+	if(T.density && isturf(P.loc))
+		detonate(P.loc, P)
+	else
+		detonate(T, P)
+
+/datum/ammo/flare/starshell/burst/do_at_max_range(obj/projectile/P, mob/firer)
+	detonate(get_turf(P), P)
+
+/datum/ammo/flare/starshell/burst/proc/detonate(turf/hit_turf, obj/projectile/fired_projectile)
+	create_shrapnel(hit_turf, 8, fired_projectile.dir, 360, /datum/ammo/flare/starshell, fired_projectile.weapon_cause_data, FALSE, 0)
+
 /datum/ammo/flare/starshell/set_bullet_traits()
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff),
@@ -464,11 +487,6 @@
 
 /datum/ammo/grenade_container/rifle
 	flags_ammo_behavior = NO_FLAGS
-
-/datum/ammo/grenade_container/smoke
-	name = "smoke grenade shell"
-	nade_type = /obj/item/explosive/grenade/smokebomb
-	icon_state = "smoke_shell"
 
 /datum/ammo/grenade_container/tank_glauncher
 	max_range = 8

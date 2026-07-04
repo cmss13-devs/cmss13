@@ -1,6 +1,6 @@
 /obj/item/hardpoint/holder/tank_turret
 	name = "\improper M34A2-A Multipurpose Turret"
-	desc = "The centerpiece of the tank. Designed to support quick installation and deinstallation of various tank weapon modules. Has inbuilt smoke screen deployment system."
+	desc = "The centerpiece of the tank. Designed to support quick installation and deinstallation of various tank weapon modules. Has inbuilt flare launcher."
 
 	icon = 'icons/obj/vehicles/tank.dmi'
 	icon_state = "tank_turret_0"
@@ -14,8 +14,8 @@
 
 	activatable = TRUE
 
-	ammo = new /obj/item/ammo_magazine/hardpoint/turret_smoke
-	max_clips = 2
+	ammo = new /obj/item/ammo_magazine/hardpoint/turret_flare
+	max_clips = 0
 	use_muzzle_flash = FALSE
 
 	w_class = SIZE_MASSIVE
@@ -53,19 +53,24 @@
 
 	var/gyro = FALSE
 
-	// How long the windup is before the turret rotates
-	var/rotation_windup = 15
-	// Used during the windup
-	var/rotating = FALSE
+	/// Index into accepted_hardpoints, used by /mob/living/carbon/verb/cycle_tank_weapon_hardpoint() to track cycling progress.
+	var/debug_cycle_index = 0
 
 	scatter = 4
-	gun_firemode = GUN_FIREMODE_BURSTFIRE
-	gun_firemode_list = list(
-		GUN_FIREMODE_BURSTFIRE,
-	)
-	burst_amount = 2
-	burst_delay = 1.0 SECONDS
-	extra_delay = 13.0 SECONDS
+	fire_delay = 7.0 SECONDS
+
+	// Total width, in degrees, of the arc in front of the hull that each star shell can land within.
+	var/flare_spread = 45
+	// Minimum/maximum tiles in front of the hull (not the turret's own facing) each star shell can land.
+	var/flare_range_min = 5
+	var/flare_range_max = 7
+
+/obj/item/hardpoint/holder/tank_turret/Initialize()
+	. = ..()
+	current_angle = dir2angle(dir)
+	desired_angle = current_angle
+	// Loaded shell-by-shell rather than swapped as a whole magazine.
+	ammo_type = null
 
 /obj/item/hardpoint/holder/tank_turret/update_icon()
 	var/broken = (health <= 0)
@@ -131,6 +136,14 @@
 	return
 
 /obj/item/hardpoint/holder/tank_turret/attackby(obj/item/I, mob/user)
+	if(istype(I, /obj/item/explosive/grenade/high_explosive/airburst/starshell))
+		load_star_shell(I, user)
+		return TRUE
+
+	if(istype(I, /obj/item/storage/box/packet/flare))
+		load_star_shell_packet(I, user)
+		return TRUE
+
 	if(istype(I, /obj/item/powerloader_clamp))
 		var/obj/item/powerloader_clamp/PC = I
 		if(!PC.linked_powerloader)
@@ -147,16 +160,53 @@
 		return TRUE
 	..()
 
+// Loads a single loose star shell directly into the turret's internal holders.
+/obj/item/hardpoint/holder/tank_turret/proc/load_star_shell(obj/item/explosive/grenade/high_explosive/airburst/starshell/shell, mob/user)
+	if(shell.active)
+		to_chat(user, SPAN_WARNING("You can't load a primed star shell into \the [src]!"))
+		return
+	if(ammo.current_rounds >= ammo.max_rounds)
+		to_chat(user, SPAN_WARNING("\The [src]'s shell holders are already full."))
+		return
+	user.visible_message(SPAN_NOTICE("[user] loads \a [shell] into \the [src]."), SPAN_NOTICE("You load \a [shell] into \the [src]'s shell holders."))
+	playsound(loc, 'sound/weapons/gun_shotgun_shell_insert.ogg', 25, TRUE)
+	ammo.current_rounds++
+	qdel(shell)
+
+// Loads as many star shells as fit out of a star shell packet into the turret's internal holders.
+/obj/item/hardpoint/holder/tank_turret/proc/load_star_shell_packet(obj/item/storage/box/packet/flare/packet, mob/user)
+	var/space_left = ammo.max_rounds - ammo.current_rounds
+	if(space_left <= 0)
+		to_chat(user, SPAN_WARNING("\The [src]'s shell holders are already full."))
+		return
+
+	var/list/shells_to_load = list()
+	for(var/obj/item/explosive/grenade/high_explosive/airburst/starshell/shell in packet.contents)
+		shells_to_load += shell
+		if(length(shells_to_load) >= space_left)
+			break
+
+	if(!length(shells_to_load))
+		to_chat(user, SPAN_WARNING("\The [packet] has no star shells left to load."))
+		return
+
+	for(var/obj/item/explosive/grenade/high_explosive/airburst/starshell/shell as anything in shells_to_load)
+		qdel(shell)
+
+	ammo.current_rounds += length(shells_to_load)
+	packet.update_icon()
+	user.visible_message(SPAN_NOTICE("[user] loads [length(shells_to_load)] star shell\s from \the [packet] into \the [src]."), SPAN_NOTICE("You load [length(shells_to_load)] star shell\s from \the [packet] into \the [src]'s shell holders."))
+	playsound(loc, 'sound/weapons/gun_shotgun_shell_insert.ogg', 25, TRUE)
 
 /obj/item/hardpoint/holder/tank_turret/get_tgui_info()
 	var/list/data = list()
 
-	data += list(list( // turret smokescreen data
-		"name" = "M34A2-A Turret Smoke Screen",
+	data += list(list( // turret flare launcher data
+		"name" = "M34A2-A Turret Flare Launcher",
 		"health" = health <= 0 ? null : floor(get_integrity_percent()),
 		"uses_ammo" = TRUE,
-		"current_rounds" = ammo.current_rounds / 2,
-		"max_rounds"= ammo.max_rounds / 2,
+		"current_rounds" = ammo.current_rounds,
+		"max_rounds"= ammo.max_rounds,
 		"mags" = LAZYLEN(backup_clips),
 		"max_mags" = max_clips,
 	))
@@ -275,26 +325,9 @@
 					user.client.set_pixel_x(-1 * AM.view_tile_offset * 32)
 					user.client.set_pixel_y(0)
 
+// lobs a single starshell forwards
 /obj/item/hardpoint/holder/tank_turret/try_fire(atom/target, mob/living/user, params)
-	var/turf/L
-	var/turf/R
-	switch(owner.dir)
-		if(NORTH)
-			L = locate(owner.x - 2, owner.y + 4, owner.z)
-			R = locate(owner.x + 2, owner.y + 4, owner.z)
-		if(SOUTH)
-			L = locate(owner.x + 2, owner.y - 4, owner.z)
-			R = locate(owner.x - 2, owner.y - 4, owner.z)
-		if(EAST)
-			L = locate(owner.x + 4, owner.y + 2, owner.z)
-			R = locate(owner.x + 4, owner.y - 2, owner.z)
-		else
-			L = locate(owner.x - 4, owner.y + 2, owner.z)
-			R = locate(owner.x - 4, owner.y - 2, owner.z)
-
-	if(shots_fired)
-		target = R
-	else
-		target = L
-
+	var/fire_angle = dir2angle(owner.dir) + rand(-flare_spread * 0.5, flare_spread * 0.5)
+	var/fire_range = rand(flare_range_min, flare_range_max)
+	target = get_angle_target_turf(owner, fire_angle, fire_range)
 	return ..()

@@ -450,8 +450,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 /obj/effect/essentials_set/tank/turret
 	spawned_gear_list = list(
 		/obj/item/hardpoint/holder/tank_turret,
-		/obj/item/ammo_magazine/hardpoint/turret_smoke,
-		/obj/item/ammo_magazine/hardpoint/turret_smoke,
+		/obj/item/storage/box/packet/flare,
+		/obj/item/storage/box/packet/flare,
 	)
 
 /obj/effect/essentials_set/apc/dualcannon

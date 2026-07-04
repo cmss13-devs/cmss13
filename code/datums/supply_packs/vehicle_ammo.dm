@@ -83,16 +83,22 @@
 	containername = "M92T Grenade Launcher ammo crate"
 	group = "Vehicle Ammo"
 
+// Mimicks the star shell pack in the explosive sections. Also, does it really make sense to have those cost 4k ??
 /datum/supply_packs/ammo_slauncher
-	name = "M34A2-A Multipurpose Turret smoke screen magazines (x4)"
+	name = "M74 AGM-S star shell packets (x8)"
 	contains = list(
-		/obj/item/ammo_magazine/hardpoint/turret_smoke,
-		/obj/item/ammo_magazine/hardpoint/turret_smoke,
-		/obj/item/ammo_magazine/hardpoint/turret_smoke,
+		/obj/item/storage/box/packet/flare,
+		/obj/item/storage/box/packet/flare,
+		/obj/item/storage/box/packet/flare,
+		/obj/item/storage/box/packet/flare,
+		/obj/item/storage/box/packet/flare,
+		/obj/item/storage/box/packet/flare,
+		/obj/item/storage/box/packet/flare,
+		/obj/item/storage/box/packet/flare,
 	)
-	cost = 20
-	containertype = /obj/structure/closet/crate/ammo
-	containername = "M34A2-A Multipurpose Turret smoke screen ammo crate"
+	cost = 10
+	containertype = /obj/structure/closet/crate/explosives
+	containername = "M34A2-A Multipurpose Turret flare ammo crate"
 	group = "Vehicle Ammo"
 
 /datum/supply_packs/ammo_towlauncher

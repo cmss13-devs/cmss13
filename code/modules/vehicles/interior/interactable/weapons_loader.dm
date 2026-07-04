@@ -14,7 +14,19 @@
 
 // Loading new magazines
 /obj/structure/weapons_loader/attackby(obj/item/I, mob/user)
-	if(!istype(I, /obj/item/ammo_magazine/hardpoint))
+	// The tank turret's flare launcher isn't loaded via a swappable magazine so it
+	// shouldn't be picked up by the generic magazine-matching loop below. Delegate loose star shells and
+	// star shell packets straight to the turret's own attackby().
+	if(istype(I, /obj/item/explosive/grenade/high_explosive/airburst/starshell) || istype(I, /obj/item/storage/box/packet/flare))
+		if(!skillcheck(user, SKILL_VEHICLE, SKILL_VEHICLE_LARGE))
+			to_chat(user, SPAN_NOTICE("You have no idea how to operate this thing!"))
+			return
+		var/obj/item/hardpoint/holder/tank_turret/turret = locate() in vehicle?.hardpoints
+		if(!turret)
+			return ..()
+		return turret.attackby(I, user)
+
+	if(!istype(I, /obj/item/ammo_magazine))
 		return ..()
 
 	if(!skillcheck(user, SKILL_VEHICLE, SKILL_VEHICLE_LARGE))
@@ -24,10 +36,10 @@
 	// Check if any of the hardpoints accept the magazine
 	var/obj/item/hardpoint/reloading_hardpoint = null
 	for(var/obj/item/hardpoint/H in vehicle.get_hardpoints_with_ammo())
-		if(QDELETED(H) || QDELETED(H.ammo))
+		if(QDELETED(H))
 			continue
 
-		if(istype(I, H.ammo.type))
+		if(H.accepts_magazine(I))
 			reloading_hardpoint = H
 			break
 

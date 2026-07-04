@@ -165,6 +165,8 @@
 	var/atom/target
 	/// The type of projectile to fire
 	var/projectile_type = /obj/projectile
+	/// How many ammo.current_rounds a single base handle_fire() shot costs. The flamer hardpoints (primary/flamer.dm, secondary/flamer.dm) set this to 0 and do their own reagent-based fuel deduction instead, since their ammo tracks real chemical volume rather than plain integer rounds.
+	var/ammo_cost_per_shot = 1
 
 //-----------------------------
 //------GENERAL PROCS----------
@@ -396,17 +398,23 @@
 
 	sleep(20)
 
-	forceMove(ammo, get_turf(src))
-	ammo.update_icon()
+	if(ammo)
+		forceMove(ammo, get_turf(src))
+		ammo.update_icon()
 	ammo = A
 	LAZYREMOVE(backup_clips, A)
+	owner?.update_icon()
 
 	to_chat(user, SPAN_NOTICE("You reload \the [name]."))
 
+/// Whether this hardpoint will accept a given magazine for reloading. Eg, m56d cupola accepts m56d drums.
+/obj/item/hardpoint/proc/accepts_magazine(obj/item/ammo_magazine/magazine)
+	return istype(magazine, ammo_type)
+
 //try adding magazine to hardpoint's backup clips. Called via weapons loader
 /obj/item/hardpoint/proc/try_add_clip(obj/item/ammo_magazine/A, mob/user)
-	if(!ammo)
-		to_chat(user, SPAN_WARNING("\The [name] doesn't use ammunition."))
+	if(!ammo_type)
+		to_chat(user, SPAN_WARNING("\The [name] doesn't use ammunition.")) // UA flag
 		return FALSE
 	if(max_clips == 0)
 		to_chat(user, SPAN_WARNING("\The [name] does not have room for additional ammo."))
@@ -429,7 +437,7 @@
 
 	playsound(loc, 'sound/machines/hydraulics_2.ogg', 50)
 	LAZYADD(backup_clips, A)
-	to_chat(user, SPAN_NOTICE("You load \the [A] into \the [name]. Ammo: <b>[SPAN_HELPFUL(ammo.current_rounds)]/[SPAN_HELPFUL(ammo.max_rounds)]</b> | Mags: <b>[SPAN_HELPFUL(LAZYLEN(backup_clips))]/[SPAN_HELPFUL(max_clips)]</b>"))
+	to_chat(user, SPAN_NOTICE("You load \the [A] into \the [name]. Ammo: <b>[SPAN_HELPFUL(ammo ? ammo.current_rounds : 0)]/[SPAN_HELPFUL(ammo ? ammo.max_rounds : 0)]</b> | Mags: <b>[SPAN_HELPFUL(LAZYLEN(backup_clips))]/[SPAN_HELPFUL(max_clips)]</b>"))
 	return TRUE
 
 /obj/item/hardpoint/attackby(obj/item/O, mob/user)
@@ -617,7 +625,14 @@
 		to_chat(user, SPAN_WARNING("<b>\The [name] is broken!</b>"))
 		return NONE
 
-	if(ammo && ammo.current_rounds <= 0)
+	// A hardpoint can legitimately have no magazine installed at all. This is needed especifically so the
+	// DRGN flamer and the secondary version can 'eject' their magazines to be refueled from a fuel source..
+	// so, other guns can now eject their full magazines and have nothing loaded.
+	if(!ammo)
+		click_empty(user)
+		return NONE
+
+	if(ammo.current_rounds <= 0)
 		click_empty(user)
 		return NONE
 
@@ -786,8 +801,9 @@
 				break
 
 	var/obj/projectile/projectile_to_fire = generate_bullet(user, spawn_turf)
-	ammo.current_rounds--
+	ammo.current_rounds -= ammo_cost_per_shot
 	SEND_SIGNAL(projectile_to_fire, COMSIG_BULLET_USER_EFFECTS, user)
+	projectile_to_fire.original = original_target
 
 	// turf-targeted projectiles are fired without scatter, because proc would raytrace them further away
 	var/ammo_flags = projectile_to_fire.ammo.flags_ammo_behavior | projectile_to_fire.projectile_override_flags
@@ -806,6 +822,51 @@
 	set_fire_cooldown(gun_firemode)
 
 	return AUTOFIRE_CONTINUE
+
+/**
+ * No-op by default - only the flamer hardpoints (primary/flamer.dm, secondary/flamer.dm) override
+ * this to flip between FLAME_MODE_STTREAM and FLAME_MODE_GLOB
+ */
+/obj/item/hardpoint/proc/toggle_fire_mode(mob/user)
+	return
+
+/**
+ * Proc that makes the flamer stream work more closely to how the M240 Incinerator is implemented in game
+ * instead of drawing from an arbitrary ammo pool, it now draws from the chem reagents inside a tank, just like the m240.
+ */
+/obj/item/hardpoint/proc/fire_flame_stream(atom/target, mob/living/user, max_range, flameshape = FLAMESHAPE_LINE)
+	//step forward along path so flame starts outside hull
+	var/list/turfs = get_line(get_origin_turf(), get_turf(target))
+	var/turf/origin_turf
+	for(var/turf/turf as anything in turfs)
+		if(turf in owner.locs)
+			continue
+		origin_turf = turf
+		break
+
+	var/distance = get_dist(origin_turf, get_turf(target))
+	var/fire_amount = min(distance+1, max_range)
+
+	var/datum/reagent/chem = LAZYACCESS(ammo.reagents?.reagent_list, 1)
+	new /obj/flamer_fire(origin_turf, create_cause_data(initial(name), user), chem, fire_amount, ammo.reagents, flameshape, target, CALLBACK(src, PROC_REF(sync_ammo_from_reagents)))
+	sync_ammo_from_reagents()
+
+	play_firing_sounds()
+
+	COOLDOWN_START(src, fire_cooldown, fire_delay)
+
+	return AUTOFIRE_CONTINUE
+
+/**
+ * Re-syncs ammo.current_rounds to match ammo.reagents.total_volume.sync_ammo_from_reagents()
+ * Called both right after firing and again once a since reagent consumption happens asynchronously tile by tile
+ * as the flame propagates, not all at once at the moment of firing. Also refreshes the mounted sprite
+ * immediately.
+ */
+/obj/item/hardpoint/proc/sync_ammo_from_reagents()
+	if(ammo && ammo.reagents)
+		ammo.current_rounds = round(ammo.reagents.total_volume)
+	owner?.update_icon()
 
 /// Start cooldown to respect delay of firemode.
 /obj/item/hardpoint/proc/set_fire_cooldown(firemode)

@@ -92,3 +92,10 @@
 #define TURRET_ANGULAR_ACCEL 1
 /// Half-width, in degrees, of the arc a self_gimballed weapon's driver-controlled aim is clamped to around the turret's own current facing (see /obj/item/hardpoint/proc/update_desired_angle()) - keeps the visual swivel (see /obj/item/hardpoint/holder/tank_turret/get_hardpoint_image()) to a modest look-around instead of a full swing to any absolute angle.
 #define SLAVED_GIMBAL_ARC_HALF_WIDTH 30
+
+// Flamer hardpoint fire modes - see /obj/item/hardpoint/proc/toggle_fire_mode()
+/// Directional line stream (walks toward the target, self-propagating tile by tile).
+#define FLAME_MODE_STREAM "stream"
+/// Single traveling projectile that plants one AOE ignition point on impact.
+#define FLAME_MODE_GLOB "glob"
+/// should these go into a _DEFINES for hardpoints instead???

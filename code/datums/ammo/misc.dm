@@ -48,16 +48,41 @@
 /datum/ammo/flamethrower/do_at_max_range(obj/projectile/P)
 	drop_flame(get_turf(P), P.weapon_cause_data)
 
+// "Glob shot" mode ammo for the tank's primary/secondary flamer hardpoints
 /datum/ammo/flamethrower/tank_flamer
 	flamer_reagent_id = "highdamagenapalm"
 	max_range = 8
 	shell_speed = 1.5
+	var/loaded_chem_id
 
 /datum/ammo/flamethrower/tank_flamer/drop_flame(turf/turf, datum/cause_data/cause_data)
 	if(!istype(turf))
 		return
 
-	var/datum/reagent/napalm/high_damage/reagent = new()
+	var/datum/reagent/reagent = loaded_chem_id ? GLOB.chemical_reagents_list[loaded_chem_id] : null
+	if(!reagent)
+		reagent = new /datum/reagent/napalm/high_damage()
+	new /obj/flamer_fire(turf, cause_data, reagent, 1)
+
+	var/datum/effect_system/smoke_spread/landingsmoke = new /datum/effect_system/smoke_spread
+	landingsmoke.set_up(1, 0, turf, null, 4, cause_data)
+	landingsmoke.start()
+	landingsmoke = null
+
+/// Same as tank_flamer above, but for the secondary flamer hardpoint's smaller glob.
+/datum/ammo/flamethrower/tank_flamer_secondary
+	flamer_reagent_id = "highdamagenapalm"
+	max_range = 8
+	shell_speed = 1.5
+	var/loaded_chem_id
+
+/datum/ammo/flamethrower/tank_flamer_secondary/drop_flame(turf/turf, datum/cause_data/cause_data)
+	if(!istype(turf))
+		return
+
+	var/datum/reagent/reagent = loaded_chem_id ? GLOB.chemical_reagents_list[loaded_chem_id] : null
+	if(!reagent)
+		reagent = new /datum/reagent/napalm/high_damage()
 	new /obj/flamer_fire(turf, cause_data, reagent, 1)
 
 	var/datum/effect_system/smoke_spread/landingsmoke = new /datum/effect_system/smoke_spread

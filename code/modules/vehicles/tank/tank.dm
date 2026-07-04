@@ -122,12 +122,14 @@
 			/obj/vehicle/multitile/proc/toggle_door_lock,
 			/obj/vehicle/multitile/proc/activate_horn,
 			/obj/vehicle/multitile/proc/cycle_hardpoint,
+			/obj/vehicle/multitile/proc/toggle_hardpoint_fire_mode,
 		))
 	else if(seat == VEHICLE_GUNNER)
 		add_verb(M.client, list(
 			/obj/vehicle/multitile/proc/cycle_hardpoint,
 			/obj/vehicle/multitile/proc/toggle_gyrostabilizer,
 			/obj/vehicle/multitile/proc/toggle_slave_secondary_to_driver,
+			/obj/vehicle/multitile/proc/toggle_hardpoint_fire_mode,
 		))
 
 
@@ -146,12 +148,14 @@
 			/obj/vehicle/multitile/proc/toggle_door_lock,
 			/obj/vehicle/multitile/proc/activate_horn,
 			/obj/vehicle/multitile/proc/cycle_hardpoint,
+			/obj/vehicle/multitile/proc/toggle_hardpoint_fire_mode,
 		))
 	else if(seat == VEHICLE_GUNNER)
 		remove_verb(M.client, list(
 			/obj/vehicle/multitile/proc/cycle_hardpoint,
 			/obj/vehicle/multitile/proc/toggle_gyrostabilizer,
 			/obj/vehicle/multitile/proc/toggle_slave_secondary_to_driver,
+			/obj/vehicle/multitile/proc/toggle_hardpoint_fire_mode,
 		))
 
 //Called when players try to move vehicle

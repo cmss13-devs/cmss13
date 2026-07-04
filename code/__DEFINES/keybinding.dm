@@ -232,6 +232,7 @@
 #define COMSIG_KB_VEHICLE_CHANGE_SELECTED_WEAPON "keybinding_change_selected_weapon"
 #define COMSIG_KB_VEHICLE_ACTIVATE_HORN "keybinding_activate_horn"
 #define COMSIG_KB_VEHICLE_RELOAD_WEAPON "keybinding_reload_weapon"
+#define COMSIG_KB_VEHICLE_TOGGLE_HARDPOINT_FIRE_MODE "keybinding_vehicle_toggle_hardpoint_fire_mode"
 
 #define CATEGORY_CLIENT "CLIENT"
 #define CATEGORY_EMOTE "EMOTE"

@@ -90,6 +90,20 @@
 /obj/structure/closet/secure_closet/engineering_electrical,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
+"ak" = (
+/obj/structure/window/framed/colony,
+/obj/structure/prop{
+	name = "\improper reinforced shutters";
+	desc = "Reinforced metal shutters, more for show than security. They redirect light and add a bit of structure to the space.";
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi';
+	icon_state = "almayer_pdoor1";
+	dir = 8;
+	unacidable = 1;
+	explo_proof = 1;
+	unslashable = 1
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
 "al" = (
 /obj/structure/barricade/metal/wired,
 /obj/structure/prop/tyrargo/boards/boards_1{
@@ -8931,9 +8945,15 @@
 /obj/structure/window/framed/colony/reinforced/hull{
 	explo_proof = 1
 	},
-/obj/structure/machinery/door/poddoor/hybrisa{
-	name = "\improper shutters";
-	dir = 8
+/obj/structure/prop{
+	name = "\improper reinforced shutters";
+	desc = "Reinforced metal shutters, more for show than security. They redirect light and add a bit of structure to the space.";
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi';
+	icon_state = "almayer_pdoor1";
+	dir = 8;
+	unacidable = 1;
+	explo_proof = 1;
+	unslashable = 1
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/oob)
@@ -13998,8 +14018,8 @@ Wy
 AK
 fM
 PQ
-nO
-nO
+ak
+ak
 Yt
 Yt
 Yt

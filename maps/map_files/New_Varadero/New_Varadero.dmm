@@ -4766,8 +4766,10 @@
 	pixel_y = 12;
 	color = "#8E897F"
 	},
-/obj/structure/machinery/power/apc/fully_broken/no_cell/north,
-/turf/open/predship/plating,
+/obj/structure/tunnel{
+	id = "north_research_tunnel"
+	},
+/turf/open/predship/mainfloor/upper/west,
 /area/varadero/interior_protected/vessel)
 "aoC" = (
 /obj/structure/bed/alien/yautja{
@@ -66471,11 +66473,10 @@
 /turf/open/floor/shiva/red/southwest,
 /area/varadero/interior/security)
 "pBf" = (
-/obj/structure/tunnel{
-	id = "north_research_tunnel"
-	},
-/obj/effect/hunter/bridge_border/brown,
-/turf/open/predship/mainfloor/upper/west,
+/obj/structure/machinery/power/apc/fully_broken/no_cell/north,
+/obj/effect/hunter/fake_platform/hunter/west,
+/obj/structure/prop/hunter/catwalk/new_alpha,
+/turf/open/floor/plating/prison,
 /area/varadero/interior_protected/vessel)
 "pBo" = (
 /obj/structure/coatrack,

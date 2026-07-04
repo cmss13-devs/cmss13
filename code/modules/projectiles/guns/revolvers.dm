@@ -83,7 +83,7 @@
 		return
 
 	if(href_list["list_cylinder"])
-		if(!usr || usr.get_inactive_hand() != src || !current_mag || current_mag.chamber_closed)
+		if(!usr || usr.get_hands() != src || !current_mag || current_mag.chamber_closed)
 			to_chat(usr, SPAN_WARNING("You can't see [src]'s cylinder from here!"))
 			return
 
@@ -152,7 +152,7 @@
 
 	if(russian_roulette)
 		. += SPAN_RED("You are now playing Russian Roulette with [src]!")
-		. += SPAN_NOTICE("To cancel Russian Roulette, simply toggle your chamber via <span class='corp_label_green'>help</span> intent.")
+		. += SPAN_INFO("To cancel Russian Roulette, simply toggle your chamber via <span class='corp_label_green'>help</span> intent.")
 	else
 		. += SPAN_INFO("To start playing Russian Roulette, spin the cylinder via <span class='corp_label_red'>harm</span> intent.")
 

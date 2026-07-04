@@ -1497,7 +1497,7 @@ and you're good to go.
 
 	if(attacked_mob != user) // i found this out the hard way
 		var/can_battlefield_execute = (user.zone_selected in list("head", "eyes", "mouth")) // apparently i cant do this inline of the check itself so whatever
-		if((flags_gun_features & GUN_BATTLEFIELD_EXECUTION) && can_battlefield_execute && ishuman(user) && user.a_intent == INTENT_HARM && skillcheck(user, SKILL_EXECUTION, SKILL_EXECUTION_TRAINED))
+		if((flags_gun_features & GUN_BATTLEFIELD_EXECUTION) && can_battlefield_execute && ishuman(user) && user.a_intent == INTENT_HARM) // skillcheck not included here, since start_fire already handles the initial checks, and the rest are just in case by this point
 			if(user.action_busy)
 				to_chat(user, SPAN_WARNING("You are a bit preoccupied to execute someone at the moment."))
 				return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
@@ -1585,10 +1585,6 @@ and you're good to go.
 					return TRUE
 				if(before_fire_cancel & COMPONENT_HARD_CANCEL_GUN_BEFORE_FIRE)
 					return NONE
-
-		if(SEND_SIGNAL(projectile_to_fire.ammo, COMSIG_AMMO_BATTLEFIELD_EXECUTION, attacked_mob, projectile_to_fire, user, src) & COMPONENT_CANCEL_BATTLEFIELD_EXECUTION)
-			flags_gun_features &= ~GUN_BURST_FIRING
-			return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 
 		//We actually have a projectile, let's move on. We're going to simulate the fire cycle.
 		if(projectile_to_fire.ammo.on_pointblank(attacked_mob, projectile_to_fire, user, src))
@@ -2345,9 +2341,11 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 						if(!(istypestrict(object, /obj/effect/alien/weeds)))
 							return FALSE
 
-			if(skillcheck(gun_user, SKILL_EXECUTION, SKILL_EXECUTION_TRAINED) && gun_user.zone_selected == "head" && ishuman_strict(object))
-				if(ammo && (COMSIG_AMMO_BATTLEFIELD_EXECUTION in ammo.comp_lookup))
-					return FALSE
+			if(isliving(object))
+				if(flags_gun_features & GUN_BATTLEFIELD_EXECUTION)
+					var/can_battlefield_execute = (gun_user.zone_selected in list("head", "eyes", "mouth"))
+					if(can_battlefield_execute && ishuman(gun_user) && gun_user.a_intent == INTENT_HARM && skillcheck(gun_user, SKILL_EXECUTION, SKILL_EXECUTION_TRAINED))
+						return FALSE
 
 	if(QDELETED(object))
 		return FALSE

@@ -168,6 +168,46 @@
 	},
 /turf/open/auto_turf/lv_sand,
 /area/lv1021/outdoors/jungle/jungleC_south_west)
+"aav" = (
+/obj/structure/platform/stone/soro/east,
+/obj/structure/blocker/invisible_wall/water,
+/obj/effect/landmark/lv624/fog_blocker/long,
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/river/central_lagoon)
+"aaw" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/effect/landmark/lv624/fog_blocker/long,
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/river/central_lagoon)
+"aax" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/obj/effect/landmark/lv624/fog_blocker/long,
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/river/central_lagoon)
+"aay" = (
+/obj/structure/platform/stone/soro/west,
+/obj/structure/platform/stone/soro,
+/turf/open/gm/coast/dirt/beachcorner2/north_west,
+/area/lv1021/outdoors/river/central_south)
+"aaz" = (
+/obj/structure/platform/stone/soro/west,
+/turf/open/gm/coast/dirt/beachcorner/north_west,
+/area/lv1021/outdoors/river/central_south)
+"aaA" = (
+/turf/open/gm/coast/dirt/west,
+/area/lv1021/outdoors/river/central_south)
+"aaB" = (
+/obj/structure/platform/stone/soro/west,
+/turf/open/gm/coast/dirt/beachcorner2/north_west,
+/area/lv1021/outdoors/river/east_river)
+"aaC" = (
+/obj/structure/platform_decoration/stone/soro,
+/turf/open/auto_turf/lv_sand,
+/area/lv1021/outdoors/jungle/jungleC_s_e)
+"aaD" = (
+/turf/open/gm/coast/dirt/beachcorner2/north_west,
+/area/lv1021/outdoors/river/east_river)
 "aaE" = (
 /obj/structure/prop/colorable_rock/colorable/alt{
 	color = "#9d796a";
@@ -177,6 +217,13 @@
 	},
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
+"aaF" = (
+/obj/structure/flora/bush/ausbushes/var3/leafybush,
+/turf/closed/wall/strata_ice/rock,
+/area/lv1021/oob)
+"aaG" = (
+/turf/open/gm/coast/dirt/beachcorner/north_west,
+/area/lv1021/outdoors/river/east_river)
 "aaH" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -185,9 +232,105 @@
 	},
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
+"aaI" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -14;
+	pixel_y = 28
+	},
+/turf/closed/wall/strata_ice/jungle,
+/area/lv1021/oob)
+"aaJ" = (
+/turf/open/gm/coast/dirt/beachcorner2/north_east,
+/area/lv1021/outdoors/river/east_river)
+"aaK" = (
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	dir = 4;
+	pixel_x = -4;
+	pixel_y = -10
+	},
+/turf/open/gm/coast/dirt/beachcorner2/north_west,
+/area/lv1021/outdoors/river/east_river)
+"aaL" = (
+/turf/open/gm/coast/dirt/beachcorner/north_east,
+/area/lv1021/outdoors/river/east_river)
+"aaM" = (
+/turf/open/gm/coast/dirt/beachcorner/south_west,
+/area/lv1021/outdoors/river/east_river)
+"aaN" = (
+/turf/open/gm/coast/dirt/beachcorner2/south_west,
+/area/lv1021/outdoors/river/east_river)
+"aaO" = (
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	dir = 8;
+	pixel_y = -2
+	},
+/turf/open/gm/coast/dirt/north,
+/area/lv1021/outdoors/river/east_river)
 "aaP" = (
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_south_west)
+"aaQ" = (
+/turf/open/gm/coast/dirt/beachcorner2/south_east,
+/area/lv1021/outdoors/river/east_river)
+"aaR" = (
+/turf/open/gm/coast/dirt/south,
+/area/lv1021/outdoors/river/east_river)
+"aaS" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 9
+	},
+/turf/open/gm/coast/dirt/beachcorner/north_east,
+/area/lv1021/outdoors/river/east_river)
+"aaT" = (
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	dir = 1;
+	pixel_x = -12;
+	pixel_y = -13
+	},
+/turf/open/gm/coast/dirt/south,
+/area/lv1021/outdoors/river/east_river)
+"aaU" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 9
+	},
+/turf/open/gm/coast/dirt/beachcorner/south_east,
+/area/lv1021/outdoors/river/east_river)
+"aaV" = (
+/obj/structure/flora/bush/ausbushes/reedbush{
+	pixel_y = 14
+	},
+/turf/open/gm/coast/dirt/north,
+/area/lv1021/outdoors/river/east_river)
+"aaW" = (
+/turf/open/gm/coast/dirt/east,
+/area/lv1021/outdoors/river/east_river)
+"aaX" = (
+/turf/open/auto_turf/lv_sand,
+/area/lv1021/outdoors/river/east_river)
+"aaY" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	dir = 1;
+	pixel_x = 3;
+	pixel_y = -2
+	},
+/turf/open/gm/river/soro,
+/area/lv1021/oob)
+"aaZ" = (
+/obj/structure/flora/bush/ausbushes/reedbush{
+	pixel_y = 14
+	},
+/obj/effect/landmark/lv624/fog_blocker/long,
+/turf/open/gm/river/soro,
+/area/lv1021/oob)
+"aba" = (
+/obj/structure/platform_decoration/stone/soro/west,
+/turf/open/gm/coast/dirt/north,
+/area/lv1021/outdoors/river/east_river)
 "abb" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -8;
@@ -204,6 +347,34 @@
 /obj/structure/flora/jungle/vines/light_2,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_mid)
+"abd" = (
+/obj/structure/platform/stone/soro/north,
+/turf/open/gm/coast/dirt/beachcorner2/north_west,
+/area/lv1021/outdoors/river/east_river)
+"abe" = (
+/turf/open/gm/coast/dirt/beachcorner/south_east,
+/area/lv1021/outdoors/river/east_river)
+"abf" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 9
+	},
+/turf/open/auto_turf/lv_sand,
+/area/lv1021/outdoors/river/east_river)
+"abg" = (
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	dir = 8;
+	pixel_y = -2
+	},
+/turf/open/auto_turf/lv_sand,
+/area/lv1021/outdoors/river/east_river)
+"abh" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 12;
+	pixel_y = 19
+	},
+/turf/open/auto_turf/lv_sand,
+/area/lv1021/outdoors/river/east_river)
 "abi" = (
 /obj/effect/decal/lv_decals/cave_mud_corner,
 /obj/structure/prop/colorable_rock/colorable{
@@ -229,6 +400,23 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"abl" = (
+/obj/structure/platform/wood{
+	pixel_y = 25;
+	layer = 1.9
+	},
+/obj/structure/platform/wood/east{
+	layer = 2
+	},
+/obj/structure/platform/wood/west{
+	layer = 2
+	},
+/obj/structure/platform/wood{
+	pixel_y = 12;
+	layer = 2
+	},
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/river/east_river)
 "abm" = (
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/auto_turf/tyrargo_grass/layer1,
@@ -241,6 +429,27 @@
 /obj/effect/landmark/monkey_spawn,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_mid)
+"abo" = (
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	dir = 4;
+	pixel_y = -14
+	},
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	dir = 8;
+	pixel_x = -35;
+	pixel_y = -5
+	},
+/turf/open/gm/river/soro,
+/area/lv1021/oob)
+"abp" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -11;
+	pixel_y = 19
+	},
+/turf/open/auto_turf/lv_sand,
+/area/lv1021/outdoors/river/east_river)
 "abq" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
 	dir = 1
@@ -252,6 +461,31 @@
 	},
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv1021/indoors/caves/cave_south)
+"abr" = (
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	pixel_x = 7;
+	pixel_y = -9
+	},
+/turf/open/auto_turf/lv_sand,
+/area/lv1021/outdoors/river/east_river)
+"abs" = (
+/obj/effect/decal/lv_decals/red_mud_corner,
+/turf/open/floor/interior/wood/alt,
+/area/lv1021/outdoors/river/east_river)
+"abt" = (
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	dir = 1;
+	pixel_x = 3;
+	pixel_y = -2
+	},
+/turf/open/gm/river/soro,
+/area/lv1021/oob)
+"abu" = (
+/obj/effect/landmark/lv624/fog_blocker/long,
+/turf/open/gm/river/soro,
+/area/lv1021/oob)
 "abv" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 6
@@ -266,6 +500,15 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_mid)
+"abw" = (
+/obj/structure/platform/stone/soro/north,
+/obj/structure/platform/stone/soro/west,
+/turf/open/gm/coast/dirt/beachcorner2/north_east,
+/area/lv1021/outdoors/river/east_river)
+"abx" = (
+/obj/structure/platform_decoration/stone/soro/east,
+/turf/open/gm/coast/dirt/north,
+/area/lv1021/outdoors/river/east_river)
 "aby" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
 	dir = 8
@@ -287,6 +530,10 @@
 	},
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"abA" = (
+/obj/structure/platform/wood/east,
+/turf/open/gm/coast/dirt/beachcorner2/north_east,
+/area/lv1021/outdoors/river/east_river)
 "abB" = (
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv1021/indoors/caves/cave_south)
@@ -302,6 +549,78 @@
 	},
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv1021/indoors/caves/cave_south)
+"abD" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 10
+	},
+/turf/open/floor/interior/wood/alt,
+/area/lv1021/outdoors/river/east_river)
+"abE" = (
+/obj/structure/platform_decoration/wood/north,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 12;
+	pixel_y = 19
+	},
+/turf/open/gm/coast/dirt/beachcorner/north_west,
+/area/lv1021/outdoors/river/east_river)
+"abF" = (
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	dir = 8;
+	pixel_x = -35;
+	pixel_y = -5
+	},
+/turf/open/gm/river/soro,
+/area/lv1021/oob)
+"abG" = (
+/obj/structure/flora/wood/stick1,
+/obj/structure/platform/stone/soro/west,
+/turf/open/auto_turf/lv_sand,
+/area/lv1021/outdoors/jungle/jungleC_s_e)
+"abH" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = 1;
+	pixel_y = 6;
+	dir = 1
+	},
+/turf/open/gm/coast/dirt/beachcorner2/south_east,
+/area/lv1021/outdoors/river/east_river)
+"abI" = (
+/obj/structure/flora/bush/ausbushes/reedbush{
+	pixel_x = -8;
+	pixel_y = 16
+	},
+/turf/open/gm/coast/dirt/beachcorner2/south_west,
+/area/lv1021/outdoors/river/east_river)
+"abJ" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	dir = 4;
+	pixel_y = -14
+	},
+/obj/effect/landmark/lv624/fog_blocker/long,
+/turf/open/gm/river/soro,
+/area/lv1021/oob)
+"abK" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = 1;
+	pixel_y = 6;
+	dir = 1
+	},
+/turf/open/gm/coast/dirt/beachcorner2/south_west,
+/area/lv1021/outdoors/river/east_river)
+"abL" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = 1;
+	pixel_y = 6;
+	dir = 1
+	},
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/river/east_river)
 "abM" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -9;
@@ -827,6 +1146,19 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/landing_zone_2)
+"adm" = (
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	dir = 1;
+	pixel_x = -12;
+	pixel_y = -13
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 4;
+	pixel_y = 10
+	},
+/turf/open/auto_turf/lv_sand,
+/area/lv1021/outdoors/river/east_river)
 "adn" = (
 /obj/structure/flora/grass/temperate{
 	icon_state = "12";
@@ -2967,6 +3299,10 @@
 	pixel_y = 3
 	},
 /obj/structure/blocker/invisible_wall/water,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	pixel_x = -9
+	},
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
 "aiB" = (
@@ -3025,7 +3361,7 @@
 /area/lv1021/landing_zone_2)
 "aiH" = (
 /obj/structure/platform/wood/east,
-/turf/open/auto_turf/lv_sand,
+/turf/open/gm/coast/dirt/beachcorner/north_east,
 /area/lv1021/outdoors/jungle/jungleC_e)
 "aiI" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
@@ -5457,6 +5793,13 @@
 	},
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv1021/indoors/caves/landing_zone)
+"aov" = (
+/turf/open/gm/coast/dirt/beachcorner/south_west,
+/area/lv1021/outdoors/river/central_south)
+"aow" = (
+/obj/structure/platform_decoration/wood/west,
+/turf/open/gm/coast/dirt/beachcorner/south_east,
+/area/lv1021/outdoors/river/east_river)
 "aox" = (
 /obj/structure/prop/tyrargo/boards/boards_1{
 	dir = 4;
@@ -6753,9 +7096,8 @@
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_south)
 "arV" = (
-/obj/structure/platform/stone/soro/east,
 /obj/effect/landmark/lv624/fog_blocker/short,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/east,
 /area/lv1021/outdoors/river/central_south)
 "arW" = (
 /obj/effect/decal/strata_decals/mud_corner{
@@ -6977,6 +7319,12 @@
 	},
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"asy" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 5
+	},
+/turf/open/floor/interior/wood/alt,
+/area/lv1021/outdoors/river/east_river)
 "asz" = (
 /obj/structure/flora/grass/temperate{
 	icon_state = "16"
@@ -7045,7 +7393,7 @@
 /area/lv1021/indoors/caves/cave_north)
 "asH" = (
 /obj/structure/platform/wood/west,
-/turf/open/auto_turf/lv_sand,
+/turf/open/gm/coast/dirt/beachcorner/north_west,
 /area/lv1021/outdoors/jungle/jungleC_e)
 "asI" = (
 /obj/effect/decal/lv_decals/cave_mud_corner{
@@ -7651,9 +7999,8 @@
 	pixel_x = -10;
 	pixel_y = 3
 	},
-/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
-/area/lv1021/oob)
+/area/lv1021/outdoors/river/east_river)
 "aub" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/device/flashlight/lamp/tripod,
@@ -10126,8 +10473,8 @@
 	pixel_x = -14;
 	pixel_y = 28
 	},
-/turf/open/auto_turf/tyrargo_grass/layer1,
-/area/lv1021/outdoors/jungle/jungleC_s_e)
+/turf/closed/wall/strata_ice/jungle,
+/area/lv1021/oob)
 "azt" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
@@ -10363,7 +10710,7 @@
 /area/lv1021/outdoors/river/east_river)
 "azW" = (
 /obj/structure/flora/wood/stick4,
-/turf/open/floor/interior/wood_sat,
+/turf/open/floor/interior/wood/alt,
 /area/lv1021/outdoors/jungle/jungleC_s_e)
 "azX" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
@@ -10400,7 +10747,7 @@
 /area/lv1021/outdoors/jungle/jungleC_s_e)
 "aAc" = (
 /obj/structure/flora/wood/stick2,
-/turf/open/floor/interior/wood_sat,
+/turf/open/floor/interior/wood/alt,
 /area/lv1021/outdoors/jungle/jungleC_s_e)
 "aAd" = (
 /obj/structure/platform/stone/soro,
@@ -10661,20 +11008,6 @@
 /obj/structure/flora/wood/stick3,
 /turf/open/gm/dirt/brown/variant_5,
 /area/lv1021/outdoors/jungle/jungleC_s_e)
-"aAO" = (
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#9d7766";
-	pixel_x = 12;
-	pixel_y = -8
-	},
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#9d7766";
-	pixel_x = 3;
-	pixel_y = -4;
-	dir = 4
-	},
-/turf/open/auto_turf/lv_sand,
-/area/lv1021/outdoors/jungle/jungleC_s_e)
 "aAP" = (
 /obj/structure/flora/grass/temperate{
 	icon_state = "23"
@@ -10889,15 +11222,12 @@
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_s_e)
 "aBr" = (
-/obj/structure/platform/stone/soro/north,
-/obj/structure/platform/stone/soro/west,
 /obj/structure/flora/jungle/vines/light_1,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/beachcorner/north_west,
 /area/lv1021/outdoors/river/east_river)
 "aBs" = (
-/obj/structure/platform_decoration/stone/soro/east,
 /obj/structure/flora/jungle/vines/light_1,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/beachcorner2/north_west,
 /area/lv1021/outdoors/river/east_river)
 "aBt" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -11145,15 +11475,6 @@
 /obj/structure/flora/wood/stick1,
 /turf/open/auto_turf/lv_sand,
 /area/lv1021/outdoors/jungle/jungleC_e)
-"aBX" = (
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#9d7766";
-	pixel_x = -20;
-	pixel_y = 19;
-	dir = 10
-	},
-/turf/open/auto_turf/lv_sand,
-/area/lv1021/outdoors/jungle/jungleC_e)
 "aBY" = (
 /obj/structure/flora/wood/stick2,
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
@@ -11187,9 +11508,8 @@
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_e)
 "aCe" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
-/turf/open/auto_turf/tyrargo_grass/layer1,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud,
 /area/lv1021/outdoors/jungle/jungleC_e)
 "aCf" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -13830,6 +14150,16 @@
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_clf_e)
+"aJt" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d796a";
+	dir = 9;
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/structure/platform/wood/west,
+/turf/open/gm/coast/dirt/beachcorner2/south_west,
+/area/lv1021/outdoors/river/east_river)
 "aJu" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
@@ -13885,9 +14215,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_clf_e)
 "aJB" = (
-/obj/structure/platform/stone/soro/north,
-/obj/structure/platform/stone/soro/west,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/beachcorner/north_west,
 /area/lv1021/outdoors/river/central_south)
 "aJC" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
@@ -15360,6 +15688,15 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_s_e)
+"aNd" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	dir = 4;
+	pixel_y = -14
+	},
+/turf/open/gm/river/soro,
+/area/lv1021/oob)
 "aNe" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 10
@@ -15462,6 +15799,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood,
 /area/lv1021/indoors/clf_camp/ancil_se)
+"aNo" = (
+/obj/structure/flora/bush/ausbushes/reedbush{
+	pixel_x = -8;
+	pixel_y = 16
+	},
+/turf/open/gm/river/soro,
+/area/lv1021/outdoors/river/east_river)
 "aNp" = (
 /obj/effect/landmark/survivor_spawner,
 /turf/open/asphalt/brown,
@@ -15492,23 +15836,22 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_s_e)
-"aNv" = (
-/obj/structure/blocker/invisible_wall/water,
-/obj/structure/prop/colorable_rock/colorable/alt{
-	color = "#9d796a";
-	dir = 4;
-	pixel_x = -4;
-	pixel_y = -10
-	},
-/obj/effect/landmark/lv624/fog_blocker/long,
-/turf/open/gm/river/soro,
-/area/lv1021/oob)
 "aNw" = (
 /obj/structure/platform_decoration/stone/soro/east,
 /obj/structure/blocker/invisible_wall/water,
 /obj/effect/landmark/lv624/fog_blocker/long,
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
+"aNx" = (
+/obj/structure/platform/wood/east,
+/turf/open/gm/coast/dirt/beachcorner2/south_east,
+/area/lv1021/outdoors/river/east_river)
+"aNy" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 1
+	},
+/turf/open/floor/interior/wood/alt,
+/area/lv1021/outdoors/river/east_river)
 "aNz" = (
 /obj/structure/machinery/colony_floodlight{
 	density = 0;
@@ -17831,14 +18174,70 @@
 /obj/effect/decal/cleanable/generic,
 /turf/open/asphalt/brown,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"aTL" = (
+/turf/open/gm/coast/dirt/north,
+/area/lv1021/outdoors/jungle/jungleC_e)
 "aTM" = (
 /obj/structure/platform_decoration/stone/soro/west,
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
+"aTN" = (
+/obj/structure/platform_decoration/stone/soro/west,
+/turf/open/gm/coast/dirt/north,
+/area/lv1021/outdoors/jungle/jungleC_e)
+"aTO" = (
+/obj/structure/platform/stone/soro/north,
+/turf/open/gm/coast/dirt/north,
+/area/lv1021/outdoors/river/east_river)
+"aTP" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 8;
+	pixel_y = 3
+	},
+/obj/structure/flora/jungle/vines/light_1,
+/turf/open/auto_turf/lv_sand,
+/area/lv1021/outdoors/jungle/jungleC_e)
+"aTQ" = (
+/obj/structure/flora/wood/stick1,
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/auto_turf/lv_sand,
+/area/lv1021/outdoors/jungle/jungleC_e)
+"aTR" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#4F7942";
+	pixel_x = -18;
+	pixel_y = -2
+	},
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/auto_turf/lv_sand,
+/area/lv1021/outdoors/jungle/jungleC_e)
 "aTS" = (
 /obj/effect/landmark/monkey_spawn,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_south_west)
+"aTT" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 8;
+	pixel_y = 3
+	},
+/obj/structure/flora/jungle/vines/light_1,
+/turf/closed/wall/strata_ice/jungle,
+/area/lv1021/oob)
+"aTU" = (
+/obj/structure/flora/wood/stick3,
+/obj/structure/flora/jungle/vines/light_1,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_e)
+"aTV" = (
+/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_e)
+"aTW" = (
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/coast/dirt/beachcorner2/north_west,
+/area/lv1021/outdoors/river/central_south)
 "aTX" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -17848,6 +18247,31 @@
 	},
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv1021/indoors/caves/cave_south)
+"aTY" = (
+/turf/open/gm/coast/dirt/beachcorner2/south_west,
+/area/lv1021/outdoors/river/central_north)
+"aTZ" = (
+/turf/open/gm/coast/dirt/west,
+/area/lv1021/outdoors/river/central_north)
+"aUa" = (
+/turf/open/gm/coast/dirt/beachcorner2/north_east,
+/area/lv1021/outdoors/river/central_north)
+"aUb" = (
+/turf/open/gm/coast/dirt/beachcorner2/south_east,
+/area/lv1021/outdoors/river/central_north)
+"aUc" = (
+/turf/open/gm/coast/dirt/beachcorner/south_east,
+/area/lv1021/outdoors/river/central_north)
+"aUd" = (
+/turf/open/gm/coast/dirt/east,
+/area/lv1021/outdoors/river/central_north)
+"aUe" = (
+/obj/structure/platform/wood/north,
+/turf/open/gm/coast/dirt/beachcorner2/north_west,
+/area/lv1021/outdoors/river/central_north)
+"aUf" = (
+/turf/open/floor/interior/wood_sat/alt,
+/area/lv1021/outdoors/river/central_north)
 "aUg" = (
 /obj/effect/decal/cleanable/dirt/greenglow{
 	color = "#140400";
@@ -17861,6 +18285,48 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
+"aUh" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 8
+	},
+/turf/open/floor/interior/wood_sat,
+/area/lv1021/outdoors/jungle/jungleC_clf_n)
+"aUi" = (
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	dir = 8;
+	pixel_x = 23;
+	pixel_y = 19
+	},
+/turf/open/gm/coast/dirt/beachcorner2/south_east,
+/area/lv1021/outdoors/river/central_north)
+"aUj" = (
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	pixel_x = 7;
+	pixel_y = -9
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_y = -4;
+	dir = 8;
+	pixel_x = 3
+	},
+/obj/structure/blocker/invisible_wall,
+/obj/effect/mist/steam{
+	pixel_x = 4;
+	pixel_y = 13
+	},
+/obj/effect/mist/steam{
+	pixel_x = 1;
+	pixel_y = -2
+	},
+/obj/effect/mist/steam{
+	pixel_x = 1;
+	pixel_y = -2
+	},
+/turf/open/gm/coast/dirt/beachcorner2/south_east,
+/area/lv1021/outdoors/river/central_north)
 "aUk" = (
 /obj/structure/platform/stone/soro,
 /turf/open/gm/river/soro,
@@ -18570,16 +19036,14 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/comms/west_2)
 "aWE" = (
-/obj/structure/blocker/invisible_wall/water,
 /obj/structure/prop/colorable_rock/colorable/alt{
 	color = "#9d796a";
 	dir = 4;
 	pixel_x = 11;
 	pixel_y = -10
 	},
-/obj/effect/landmark/lv624/fog_blocker/long,
 /turf/open/gm/river/soro,
-/area/lv1021/oob)
+/area/lv1021/outdoors/river/east_river)
 "aWF" = (
 /obj/structure/machinery/defenses/sentry/premade/clf{
 	dir = 8
@@ -19554,6 +20018,10 @@
 	pixel_x = -7
 	},
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#4F7942";
+	pixel_x = -15
+	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_e)
 "aZh" = (
@@ -20106,15 +20574,12 @@
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud,
 /area/lv1021/outdoors/jungle/jungleW_north)
 "baw" = (
-/obj/structure/platform/stone/soro/north,
-/obj/structure/platform/stone/soro/west,
 /obj/structure/platform/wood,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/beachcorner/north_west,
 /area/lv1021/outdoors/river/central_north)
 "bax" = (
-/obj/structure/platform_decoration/stone/soro/east,
 /obj/structure/platform/wood,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/beachcorner2/north_west,
 /area/lv1021/outdoors/river/central_north)
 "bay" = (
 /obj/structure/prop/colorable_rock/colorable{
@@ -20324,9 +20789,8 @@
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_south)
 "baT" = (
-/obj/structure/platform_decoration/stone/soro/west,
 /obj/effect/landmark/lv624/fog_blocker/short,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/beachcorner2/north_east,
 /area/lv1021/outdoors/river/central_south)
 "baU" = (
 /obj/structure/tunnel,
@@ -20388,10 +20852,8 @@
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv1021/indoors/caves/cave_north)
 "bba" = (
-/obj/structure/platform/stone/soro/north,
-/obj/structure/platform/stone/soro/east,
 /obj/effect/landmark/lv624/fog_blocker/short,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/beachcorner/north_east,
 /area/lv1021/outdoors/river/central_south)
 "bbb" = (
 /obj/structure/prop/colorable_rock/colorable{
@@ -21936,9 +22398,8 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleW_north)
 "bec" = (
-/obj/structure/platform/stone/soro/north,
 /obj/effect/landmark/lv624/fog_blocker/short,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/north,
 /area/lv1021/outdoors/river/central_south)
 "bed" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
@@ -23056,14 +23517,13 @@
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
 "bgr" = (
-/obj/structure/platform/stone/soro/east,
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d796a";
 	dir = 9;
 	pixel_x = 5;
 	pixel_y = 9
 	},
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/east,
 /area/lv1021/outdoors/river/central_north)
 "bgs" = (
 /obj/effect/decal/strata_decals/mud_corner{
@@ -23420,6 +23880,7 @@
 	dir = 1
 	},
 /obj/structure/blocker/invisible_wall/water,
+/obj/effect/landmark/lv624/fog_blocker/long,
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
 "bhm" = (
@@ -23453,9 +23914,8 @@
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv1021/landing_zone_1/ceiling)
 "bhr" = (
-/obj/structure/platform/stone/soro/west,
 /obj/structure/platform/wood,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/west,
 /area/lv1021/outdoors/river/central_south)
 "bhs" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
@@ -23775,7 +24235,6 @@
 	},
 /obj/structure/flora/jungle/vines/light_1,
 /obj/effect/landmark/lv624/fog_blocker/short,
-/obj/structure/platform/stone/soro,
 /obj/structure/platform/stone/soro/east,
 /obj/structure/platform/stone/soro/west,
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
@@ -23794,7 +24253,6 @@
 "bic" = (
 /obj/structure/flora/jungle/vines/light_1,
 /obj/effect/landmark/lv624/fog_blocker/short,
-/obj/structure/platform_decoration/stone/soro,
 /obj/structure/platform_decoration/stone/soro/north,
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/lv1021/landing_zone_1/ceiling)
@@ -23808,7 +24266,6 @@
 	pixel_y = 16
 	},
 /obj/effect/landmark/lv624/fog_blocker/short,
-/obj/structure/platform/stone/soro,
 /obj/structure/platform/stone/soro/east,
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/lv1021/landing_zone_1/ceiling)
@@ -23846,26 +24303,6 @@
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/lv1021/landing_zone_1/ceiling)
-"bij" = (
-/obj/effect/mist/steam{
-	pixel_x = 4;
-	pixel_y = 13
-	},
-/obj/effect/landmark/lv624/fog_blocker/short,
-/obj/structure/platform_decoration/stone/soro,
-/turf/open/gm/river/shallow_ocean_shallow_ocean,
-/area/lv1021/landing_zone_1/ceiling)
-"bik" = (
-/obj/effect/landmark/lv624/fog_blocker/short,
-/obj/structure/platform/stone/soro,
-/turf/open/gm/river/shallow_ocean_shallow_ocean,
-/area/lv1021/landing_zone_1/ceiling)
-"bil" = (
-/obj/structure/platform/stone/soro,
-/obj/structure/platform/stone/soro/east,
-/obj/effect/landmark/lv624/fog_blocker/short,
-/turf/open/gm/river/shallow_ocean_shallow_ocean,
-/area/lv1021/landing_zone_1/ceiling)
 "bim" = (
 /obj/effect/landmark/lv624/fog_blocker/short,
 /obj/structure/prop/colorable_rock/colorable{
@@ -23898,17 +24335,6 @@
 	pixel_x = 4;
 	pixel_y = 13
 	},
-/obj/effect/landmark/lv624/fog_blocker/short,
-/turf/open/gm/river/shallow_ocean_shallow_ocean,
-/area/lv1021/landing_zone_1/ceiling)
-"bir" = (
-/obj/structure/platform_decoration/stone/soro,
-/obj/effect/landmark/lv624/fog_blocker/short,
-/turf/open/gm/river/shallow_ocean_shallow_ocean,
-/area/lv1021/landing_zone_1/ceiling)
-"bis" = (
-/obj/structure/platform/stone/soro/east,
-/obj/structure/platform/stone/soro,
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/lv1021/landing_zone_1/ceiling)
@@ -23984,11 +24410,6 @@
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/auto_turf/lv_sand,
 /area/lv1021/landing_zone_1/ceiling)
-"biD" = (
-/obj/structure/platform/stone/soro/west,
-/obj/effect/landmark/lv624/fog_blocker/short,
-/turf/open/gm/river/shallow_ocean_shallow_ocean,
-/area/lv1021/landing_zone_1/ceiling)
 "biE" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /obj/effect/landmark/lv624/fog_blocker/short,
@@ -24019,7 +24440,6 @@
 /area/lv1021/landing_zone_1/ceiling)
 "biH" = (
 /obj/structure/platform/stone/soro/north,
-/obj/structure/platform/stone/soro/west,
 /obj/effect/mist/steam{
 	pixel_x = 4;
 	pixel_y = 13
@@ -24034,11 +24454,6 @@
 	pixel_y = 13
 	},
 /obj/effect/landmark/lv624/fog_blocker/short,
-/turf/open/gm/river/shallow_ocean_shallow_ocean,
-/area/lv1021/landing_zone_1/ceiling)
-"biJ" = (
-/obj/effect/landmark/lv624/fog_blocker/short,
-/obj/structure/platform_decoration/stone/soro/west,
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/lv1021/landing_zone_1/ceiling)
 "biK" = (
@@ -24080,16 +24495,6 @@
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/auto_turf/lv_sand,
 /area/lv1021/landing_zone_1/ceiling)
-"biP" = (
-/obj/structure/platform/stone/soro/west,
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#9d7766";
-	pixel_x = 7
-	},
-/obj/effect/landmark/lv624/fog_blocker/short,
-/obj/structure/platform_decoration/stone/soro/west,
-/turf/open/gm/river/shallow_ocean_shallow_ocean,
-/area/lv1021/landing_zone_1/ceiling)
 "biQ" = (
 /obj/effect/mist/steam{
 	pixel_x = 4;
@@ -24121,12 +24526,6 @@
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/auto_turf/lv_sand,
 /area/lv1021/landing_zone_1/ceiling)
-"biU" = (
-/obj/structure/platform/stone/soro/west,
-/obj/effect/landmark/lv624/fog_blocker/short,
-/obj/structure/platform/stone/soro/east,
-/turf/open/gm/river/shallow_ocean_shallow_ocean,
-/area/lv1021/landing_zone_1/ceiling)
 "biV" = (
 /obj/effect/landmark/lv624/fog_blocker/short,
 /obj/structure/prop/colorable_rock/colorable{
@@ -24139,7 +24538,6 @@
 /area/lv1021/landing_zone_1/ceiling)
 "biW" = (
 /obj/structure/platform/stone/soro/north,
-/obj/structure/platform/stone/soro/west,
 /obj/effect/landmark/lv624/fog_blocker/short,
 /obj/structure/platform/stone/soro/east,
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
@@ -25214,18 +25612,6 @@
 	},
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
-"bxT" = (
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#9d796a";
-	dir = 9;
-	pixel_x = -5;
-	pixel_y = 6
-	},
-/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
-	pixel_y = -1
-	},
-/turf/open/auto_turf/lv_sand,
-/area/lv1021/outdoors/jungle/jungleC_clf_n)
 "bxW" = (
 /obj/structure/prop/tyrargo/boards/boards_2{
 	dir = 4;
@@ -25565,9 +25951,8 @@
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/oob)
 "bPV" = (
-/obj/structure/platform/stone/soro/west,
 /obj/structure/platform/wood/north,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/west,
 /area/lv1021/outdoors/river/central_south)
 "bQg" = (
 /obj/structure/flora/jungle/alienplant1,
@@ -25825,15 +26210,13 @@
 /turf/open/floor/kutjevo/fake_wood,
 /area/lv1021/outdoors/comms/north_1)
 "cmV" = (
-/obj/structure/blocker/invisible_wall/water,
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d796a";
 	dir = 9;
 	pixel_x = 4;
 	pixel_y = -13
 	},
-/obj/effect/landmark/lv624/fog_blocker/long,
-/turf/open/gm/river/soro,
+/turf/closed/wall/strata_ice/rock,
 /area/lv1021/oob)
 "cnf" = (
 /obj/structure/shuttle/part/dropship_clf/transparent/right_engine,
@@ -25895,11 +26278,6 @@
 /obj/structure/blocker/invisible_wall,
 /turf/closed/wall/strata_ice/jungle,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
-"ctK" = (
-/obj/structure/platform/stone/soro/west,
-/obj/structure/platform/stone/soro/north,
-/turf/open/gm/river/soro,
-/area/lv1021/outdoors/river/central_north)
 "cue" = (
 /obj/structure/platform_decoration/stone/soro,
 /obj/structure/prop/colorable_rock/colorable/alt{
@@ -26111,9 +26489,8 @@
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
 "cJb" = (
-/obj/structure/platform/stone/soro/west,
 /obj/structure/platform/wood,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/west,
 /area/lv1021/outdoors/river/central_north)
 "cJj" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
@@ -26411,8 +26788,7 @@
 /turf/open/floor/interior/wood,
 /area/lv1021/outdoors/jungle/jungleC_mid)
 "den" = (
-/obj/structure/platform/stone/soro/west,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/beachcorner/south_west,
 /area/lv1021/outdoors/river/central_north)
 "dex" = (
 /obj/structure/flora/grass/tallgrass/jungle,
@@ -26434,17 +26810,6 @@
 /obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/landing_zone_1)
-"dik" = (
-/obj/structure/platform/stone/soro/north,
-/obj/structure/platform/stone/soro/west,
-/obj/structure/platform/stone/soro/east,
-/turf/open/gm/river/soro,
-/area/lv1021/outdoors/river/east_river)
-"diL" = (
-/obj/structure/platform/stone/soro/north,
-/obj/structure/platform/stone/soro/east,
-/turf/open/gm/river/soro,
-/area/lv1021/outdoors/river/east_river)
 "djz" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -10;
@@ -26565,19 +26930,17 @@
 /turf/open/auto_turf/lv_sand,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
 "dtj" = (
-/obj/structure/platform_decoration/stone/soro/north,
 /obj/structure/flora/bush/ausbushes/reedbush,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/beachcorner2/south_west,
 /area/lv1021/outdoors/river/central_south)
 "dtt" = (
-/obj/structure/platform_decoration/stone/soro,
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
 	pixel_x = -7;
 	pixel_y = 3;
 	dir = 4
 	},
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/beachcorner2/south_east,
 /area/lv1021/outdoors/river/central_south)
 "dtC" = (
 /obj/effect/decal/cleanable/dirt,
@@ -26694,19 +27057,6 @@
 /obj/structure/flora/wood/stick2,
 /turf/open/asphalt/brown,
 /area/lv1021/indoors/clf_camp/education)
-"dAf" = (
-/obj/structure/blocker/invisible_wall/water,
-/obj/structure/prop/colorable_rock/colorable/alt{
-	color = "#9d796a";
-	dir = 4;
-	pixel_x = 11;
-	pixel_y = -10
-	},
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#9d7766"
-	},
-/turf/open/gm/river/soro,
-/area/lv1021/oob)
 "dAh" = (
 /obj/structure/prop/tyrargo/boards/boards_1{
 	pixel_x = -15;
@@ -26747,15 +27097,6 @@
 "dCN" = (
 /turf/open/floor/interior/wood,
 /area/lv1021/indoors/clf_camp/ancil_e)
-"dDl" = (
-/obj/structure/prop/colorable_rock/colorable/alt{
-	color = "#8D8468";
-	dir = 4;
-	pixel_y = -6
-	},
-/obj/structure/blocker/invisible_wall/water,
-/turf/open/gm/river/soro,
-/area/lv1021/oob)
 "dEL" = (
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
 /obj/effect/landmark/lv624/fog_blocker/short,
@@ -26798,14 +27139,8 @@
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
 "dIl" = (
-/obj/structure/platform_decoration/stone/soro,
-/obj/structure/prop/colorable_rock/colorable/alt{
-	color = "#9d796a";
-	dir = 8;
-	pixel_x = 23;
-	pixel_y = 19
-	},
-/turf/open/gm/river/soro,
+/obj/structure/platform/wood/north,
+/turf/open/gm/coast/dirt/beachcorner2/south_east,
 /area/lv1021/outdoors/river/central_north)
 "dKr" = (
 /obj/structure/flora/jungle/thickbush/large_jungle_bush{
@@ -26994,17 +27329,6 @@
 	},
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_north)
-"dYU" = (
-/obj/structure/blocker/invisible_wall/water,
-/obj/structure/platform/wood/west,
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#9d7766";
-	pixel_y = -4;
-	dir = 8;
-	pixel_x = 3
-	},
-/turf/open/gm/river/soro,
-/area/lv1021/oob)
 "dZa" = (
 /obj/structure/flora/wood/stick2,
 /obj/effect/decal/strata_decals/mud_corner{
@@ -27127,27 +27451,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood,
 /area/lv1021/outdoors/comms/south_2)
-"eiK" = (
-/obj/structure/prop/colorable_rock/colorable/alt{
-	color = "#8D8468";
-	dir = 4;
-	pixel_y = -6
-	},
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#9d796a";
-	dir = 9;
-	pixel_x = -10;
-	pixel_y = 3
-	},
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#9d796a";
-	dir = 9;
-	pixel_x = -10;
-	pixel_y = 3
-	},
-/obj/structure/blocker/invisible_wall/water,
-/turf/open/gm/river/soro,
-/area/lv1021/oob)
 "ejk" = (
 /obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#4F7942";
@@ -27367,9 +27670,8 @@
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
 "esN" = (
-/obj/structure/platform/stone/soro/north,
 /obj/structure/platform/wood/east,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/north,
 /area/lv1021/outdoors/river/east_river)
 "etF" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -27754,13 +28056,6 @@
 	},
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud,
 /area/lv1021/outdoors/jungle/jungleW_north)
-"eVs" = (
-/obj/structure/platform/wood{
-	pixel_y = 11
-	},
-/obj/structure/blocker/invisible_wall/water,
-/turf/open/gm/river/soro,
-/area/lv1021/oob)
 "eVP" = (
 /turf/closed/wall/wood/green,
 /area/lv1021/indoors/clf_camp/education)
@@ -27893,7 +28188,7 @@
 	pixel_y = -10
 	},
 /obj/structure/blocker/invisible_wall,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/beachcorner2/south_east,
 /area/lv1021/outdoors/river/central_north)
 "ffR" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
@@ -28365,13 +28660,12 @@
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud,
 /area/lv1021/outdoors/jungle/jungleC_mid)
 "fKB" = (
-/obj/structure/platform/stone/soro/east,
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
 	pixel_x = 12;
 	pixel_y = -8
 	},
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/east,
 /area/lv1021/outdoors/river/central_north)
 "fKX" = (
 /obj/structure/flora/jungle/thickbush/large_jungle_bush{
@@ -28534,15 +28828,13 @@
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_mid)
 "fQo" = (
-/obj/structure/platform_decoration/stone/soro/north,
 /obj/structure/prop/colorable_rock/colorable/alt{
 	color = "#9d796a";
 	pixel_x = 5;
 	pixel_y = 10
 	},
 /obj/structure/blocker/invisible_wall,
-/obj/effect/mist/steam,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/beachcorner2/south_west,
 /area/lv1021/outdoors/river/central_north)
 "fQN" = (
 /obj/structure/platform/stone/soro/north,
@@ -28640,12 +28932,6 @@
 /obj/structure/mineral_door/wood,
 /turf/open/floor/interior/wood,
 /area/lv1021/outdoors/comms/south_2)
-"fYW" = (
-/obj/structure/platform/stone/soro/north,
-/obj/structure/platform/stone/soro/west,
-/obj/structure/blocker/invisible_wall/water,
-/turf/open/gm/river/soro,
-/area/lv1021/oob)
 "fZD" = (
 /obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#4F7942";
@@ -28823,16 +29109,6 @@
 	},
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud,
 /area/lv1021/outdoors/comms/west_2)
-"gop" = (
-/obj/structure/blocker/invisible_wall/water,
-/obj/structure/prop/colorable_rock/colorable/alt{
-	color = "#9d796a";
-	dir = 4;
-	pixel_x = -4;
-	pixel_y = -10
-	},
-/turf/open/gm/river/soro,
-/area/lv1021/oob)
 "gos" = (
 /obj/item/stack/sheet/wood,
 /turf/open/floor/interior/wood_sat,
@@ -28856,26 +29132,9 @@
 /turf/closed/wall/wood,
 /area/lv1021/oob)
 "gpT" = (
-/obj/structure/platform/stone/soro/east,
 /obj/structure/platform/wood,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/east,
 /area/lv1021/outdoors/river/central_south)
-"gri" = (
-/obj/structure/prop/colorable_rock/colorable/alt{
-	color = "#9d796a";
-	dir = 4;
-	pixel_x = -4;
-	pixel_y = -10
-	},
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#9d796a";
-	dir = 9;
-	pixel_x = -10;
-	pixel_y = 3
-	},
-/obj/structure/blocker/invisible_wall/water,
-/turf/open/gm/river/soro,
-/area/lv1021/oob)
 "grB" = (
 /obj/structure/flora/jungle/vines/light_2,
 /turf/open/auto_turf/tyrargo_grass/layer1,
@@ -28969,10 +29228,6 @@
 /obj/structure/platform_decoration/stone/soro/north,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleW_south)
-"gAE" = (
-/obj/structure/platform_decoration/stone/soro/west,
-/turf/open/gm/river/soro,
-/area/lv1021/outdoors/river/east_river)
 "gAU" = (
 /obj/item/trash/merc_mre{
 	pixel_x = -5;
@@ -29249,9 +29504,8 @@
 /turf/open/floor/interior/wood_sat/damage,
 /area/lv1021/outdoors/river/central_north)
 "gVn" = (
-/obj/structure/platform/stone/soro/west,
 /obj/structure/platform/wood/north,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/beachcorner/north_west,
 /area/lv1021/outdoors/river/central_north)
 "gVs" = (
 /obj/structure/flora/jungle/vines/light_1,
@@ -29375,8 +29629,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
 "hef" = (
-/obj/structure/platform/stone/soro/north,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/north,
 /area/lv1021/outdoors/river/east_river)
 "heP" = (
 /obj/structure/blocker/invisible_wall/water,
@@ -29452,15 +29705,13 @@
 /turf/open_space,
 /area/lv1021/oob)
 "hiK" = (
-/obj/structure/blocker/invisible_wall/water,
 /obj/structure/prop/colorable_rock/colorable/alt{
 	color = "#9d796a";
 	dir = 4;
 	pixel_y = -1
 	},
-/obj/effect/landmark/lv624/fog_blocker/long,
 /turf/open/gm/river/soro,
-/area/lv1021/oob)
+/area/lv1021/outdoors/river/east_river)
 "hkD" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -1;
@@ -29578,9 +29829,8 @@
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_mid)
 "htF" = (
-/obj/structure/platform/stone/soro/west,
 /obj/structure/blocker/invisible_wall,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/west,
 /area/lv1021/outdoors/river/central_north)
 "huS" = (
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -29955,17 +30205,12 @@
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_mid)
 "hVp" = (
-/obj/structure/platform/stone/soro/north{
-	layer = 2.519;
-	density = 0;
-	icon_state = "strata_rock_platform_broken"
-	},
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
 	pixel_x = 12;
 	pixel_y = -8
 	},
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/north,
 /area/lv1021/outdoors/river/east_river)
 "hVv" = (
 /obj/effect/spawner/random/claymore/clf/highchance{
@@ -29993,13 +30238,6 @@
 	},
 /turf/open/gm/dirt/brown/variant_5/east,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
-"hYU" = (
-/obj/structure/blocker/invisible_wall/water,
-/obj/structure/platform/wood{
-	pixel_y = 11
-	},
-/turf/open/gm/river/soro,
-/area/lv1021/oob)
 "hZn" = (
 /obj/item/stack/medical/ointment,
 /obj/structure/blocker/invisible_wall,
@@ -30049,27 +30287,6 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/comms/west_2)
-"idR" = (
-/obj/structure/platform/wood{
-	pixel_y = 25;
-	layer = 2
-	},
-/obj/structure/platform/wood/west{
-	layer = 2
-	},
-/obj/structure/platform/wood/east{
-	layer = 2
-	},
-/obj/structure/platform/wood{
-	pixel_y = 5;
-	layer = 2
-	},
-/obj/structure/platform/wood{
-	pixel_y = 18;
-	layer = 1.9
-	},
-/turf/open/gm/river/soro,
-/area/lv1021/outdoors/river/central_north)
 "ieD" = (
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
 /turf/open/auto_turf/tyrargo_grass/layer1,
@@ -30129,12 +30346,6 @@
 	},
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lv1021/indoors/caves/cave_north)
-"ikO" = (
-/obj/structure/blocker/invisible_wall/water,
-/obj/structure/platform/wood/east,
-/obj/effect/landmark/lv624/fog_blocker/long,
-/turf/open/gm/river/soro,
-/area/lv1021/oob)
 "ilu" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable{
@@ -30280,9 +30491,8 @@
 	pixel_x = 4;
 	pixel_y = -13
 	},
-/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
-/area/lv1021/oob)
+/area/lv1021/outdoors/river/east_river)
 "iws" = (
 /obj/structure/blocker/invisible_wall/water,
 /obj/structure/flora/bush/ausbushes/reedbush{
@@ -30292,9 +30502,8 @@
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_south)
 "iye" = (
-/obj/structure/platform/stone/soro/east,
-/obj/structure/platform/stone/soro,
-/turf/open/gm/river/soro,
+/obj/structure/platform/wood/north,
+/turf/open/gm/coast/dirt/beachcorner/south_east,
 /area/lv1021/outdoors/river/central_north)
 "iyI" = (
 /obj/structure/largecrate/random/mini{
@@ -30353,7 +30562,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
 "iCv" = (
-/turf/open/floor/interior/wood_sat,
+/turf/open/floor/interior/wood/alt,
 /area/lv1021/outdoors/jungle/jungleC_s_e)
 "iCN" = (
 /obj/structure/flora/grass/temperate{
@@ -30395,7 +30604,6 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleW_south)
 "iGo" = (
-/obj/structure/blocker/invisible_wall/water,
 /obj/structure/prop/colorable_rock/colorable/alt{
 	color = "#9d796a";
 	pixel_x = -9
@@ -30406,9 +30614,8 @@
 	pixel_x = -10;
 	pixel_y = 3
 	},
-/obj/effect/landmark/lv624/fog_blocker/long,
 /turf/open/gm/river/soro,
-/area/lv1021/oob)
+/area/lv1021/outdoors/river/east_river)
 "iGB" = (
 /obj/structure/flora/wood/stick4,
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud,
@@ -30443,14 +30650,6 @@
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/landing_zone_1)
-"iIj" = (
-/obj/structure/blocker/invisible_wall/water,
-/obj/structure/prop/colorable_rock/colorable/alt{
-	color = "#9d796a";
-	pixel_x = -9
-	},
-/turf/open/gm/river/soro,
-/area/lv1021/oob)
 "iIp" = (
 /obj/structure/largecrate/random/barrel/brown,
 /obj/structure/barricade/sandbags/wired{
@@ -30655,13 +30854,12 @@
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
 "jaL" = (
-/obj/structure/platform/stone/soro/north,
 /obj/structure/prop/colorable_rock/colorable/alt{
 	color = "#9d796a";
 	pixel_y = -3;
 	pixel_x = 7
 	},
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/north,
 /area/lv1021/outdoors/river/central_south)
 "jbt" = (
 /obj/structure/flora/grass/tallgrass/jungle,
@@ -30758,13 +30956,6 @@
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/lv1021/landing_zone_1/ceiling)
-"jjV" = (
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#9d7766"
-	},
-/obj/structure/blocker/invisible_wall/water,
-/turf/open/gm/river/soro,
-/area/lv1021/oob)
 "jks" = (
 /obj/structure/platform_decoration/wood/north,
 /turf/open/auto_turf/lv_sand,
@@ -30798,7 +30989,6 @@
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleW_south)
 "jlA" = (
-/obj/structure/blocker/invisible_wall/water,
 /obj/structure/prop/colorable_rock/colorable/alt{
 	color = "#9d796a";
 	dir = 8;
@@ -30811,9 +31001,8 @@
 	dir = 8;
 	pixel_x = 3
 	},
-/obj/effect/landmark/lv624/fog_blocker/long,
 /turf/open/gm/river/soro,
-/area/lv1021/oob)
+/area/lv1021/outdoors/river/east_river)
 "jlP" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 5
@@ -30875,33 +31064,21 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_mid)
 "jsu" = (
-/obj/structure/platform/stone/soro/west,
-/obj/structure/platform/stone/soro,
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
 	pixel_x = 12;
 	pixel_y = -8
 	},
 /obj/structure/blocker/invisible_wall,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/beachcorner/south_west,
 /area/lv1021/outdoors/river/central_north)
 "jsV" = (
-/obj/structure/platform/stone/soro/north{
-	layer = 2.519;
-	density = 0;
-	icon_state = "strata_rock_platform_broken"
-	},
-/obj/structure/platform/stone/soro/west{
-	icon_state = "strata_rock_platform_broken";
-	density = 0;
-	layer = 2.519
-	},
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
 	pixel_x = 12;
 	pixel_y = -8
 	},
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/beachcorner/north_west,
 /area/lv1021/outdoors/river/east_river)
 "jty" = (
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
@@ -30946,7 +31123,7 @@
 	pixel_y = 21
 	},
 /obj/item/stack/sheet/wood,
-/turf/open/floor/interior/wood_sat,
+/turf/open/floor/interior/wood/alt,
 /area/lv1021/outdoors/jungle/jungleC_e)
 "jvn" = (
 /obj/effect/decal/cleanable/dirt,
@@ -30991,22 +31168,6 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleW_south)
-"jCD" = (
-/obj/structure/prop/colorable_rock/colorable/alt{
-	color = "#9d796a";
-	dir = 4;
-	pixel_x = -4;
-	pixel_y = -10
-	},
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#9d7766";
-	pixel_y = -4;
-	dir = 8;
-	pixel_x = 3
-	},
-/obj/structure/blocker/invisible_wall/water,
-/turf/open/gm/river/soro,
-/area/lv1021/oob)
 "jCF" = (
 /obj/structure/barricade/sandbags{
 	dir = 8;
@@ -31087,14 +31248,13 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_mid)
 "jGA" = (
-/obj/structure/platform_decoration/stone/soro/west,
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
 	pixel_y = -4;
 	dir = 8;
 	pixel_x = 3
 	},
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/beachcorner2/north_east,
 /area/lv1021/outdoors/river/central_south)
 "jGQ" = (
 /obj/structure/flora/grass/temperate{
@@ -31190,7 +31350,6 @@
 /turf/open/floor/interior/wood,
 /area/lv1021/indoors/clf_camp/coordinator)
 "jOD" = (
-/obj/structure/blocker/invisible_wall/water,
 /obj/structure/platform/stone/soro/north,
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d796a";
@@ -31198,9 +31357,8 @@
 	pixel_x = -10;
 	pixel_y = 3
 	},
-/obj/effect/landmark/lv624/fog_blocker/long,
-/turf/open/gm/river/soro,
-/area/lv1021/oob)
+/turf/open/gm/coast/dirt/beachcorner2/north_west,
+/area/lv1021/outdoors/river/east_river)
 "jPg" = (
 /obj/effect/spawner/random/claymore/clf/lowchance{
 	dir = 8
@@ -31573,23 +31731,6 @@
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud,
 /area/lv1021/landing_zone_1)
-"kpr" = (
-/obj/structure/blocker/invisible_wall/water,
-/obj/structure/prop/colorable_rock/colorable/alt{
-	color = "#9d796a";
-	dir = 1;
-	pixel_x = 3;
-	pixel_y = -2
-	},
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#9d796a";
-	dir = 9;
-	pixel_x = 4;
-	pixel_y = -13
-	},
-/obj/effect/landmark/lv624/fog_blocker/long,
-/turf/open/gm/river/soro,
-/area/lv1021/oob)
 "kpt" = (
 /turf/open/asphalt/brown,
 /area/lv1021/outdoors/comms/west_2)
@@ -31683,9 +31824,8 @@
 	pixel_x = -10;
 	pixel_y = 3
 	},
-/obj/structure/blocker/invisible_wall/water,
-/turf/open/gm/river/soro,
-/area/lv1021/oob)
+/turf/open/auto_turf/lv_sand,
+/area/lv1021/outdoors/river/east_river)
 "kyR" = (
 /obj/effect/mist/steam{
 	pixel_x = 4;
@@ -31723,13 +31863,12 @@
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleW_north)
 "kBZ" = (
-/obj/structure/platform_decoration/stone/soro/east,
 /obj/structure/prop/colorable_rock/colorable/alt{
 	color = "#9d796a";
 	pixel_x = 5;
 	pixel_y = 10
 	},
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/beachcorner2/north_west,
 /area/lv1021/outdoors/river/central_south)
 "kCx" = (
 /obj/effect/landmark/static_comms/net_one,
@@ -31853,10 +31992,8 @@
 /turf/open/floor/interior/wood,
 /area/lv1021/indoors/clf_camp/education)
 "kIF" = (
-/obj/structure/platform/stone/soro/north,
-/obj/structure/platform/stone/soro/east,
 /obj/structure/platform_decoration/wood/west,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/beachcorner/north_east,
 /area/lv1021/outdoors/river/central_south)
 "kKU" = (
 /obj/structure/platform_decoration/stone/soro/north,
@@ -31924,7 +32061,6 @@
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_south)
 "kRJ" = (
-/obj/structure/platform/wood,
 /obj/structure/stairs/perspective/kutjevo{
 	icon_state = "p_stair_full";
 	dir = 8
@@ -32110,16 +32246,6 @@
 	},
 /turf/open/floor/kutjevo/fake_wood,
 /area/lv1021/indoors/caves/cave_north)
-"ljH" = (
-/obj/structure/blocker/invisible_wall/water,
-/obj/structure/prop/colorable_rock/colorable/alt{
-	color = "#9d796a";
-	pixel_y = -3;
-	pixel_x = 7
-	},
-/obj/effect/landmark/lv624/fog_blocker/long,
-/turf/open/gm/river/soro,
-/area/lv1021/oob)
 "lkd" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -11;
@@ -32422,10 +32548,9 @@
 /turf/open/floor/kutjevo/plate,
 /area/lv1021/outdoors/comms/south_2)
 "lDh" = (
-/obj/structure/platform/wood/east,
-/obj/structure/blocker/invisible_wall/water,
-/turf/open/gm/river/soro,
-/area/lv1021/oob)
+/obj/structure/platform_decoration/wood,
+/turf/open/gm/coast/dirt/beachcorner/north_east,
+/area/lv1021/outdoors/river/east_river)
 "lDl" = (
 /obj/structure/prop/tyrargo/boards/boards_2{
 	dir = 8
@@ -32826,8 +32951,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/landing_zone_1)
 "mdX" = (
-/obj/structure/platform_decoration/stone/soro/east,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/beachcorner2/north_west,
 /area/lv1021/outdoors/river/central_north)
 "mfb" = (
 /obj/structure/platform_decoration/metal/strata,
@@ -33017,9 +33141,8 @@
 	pixel_x = 5;
 	pixel_y = 9
 	},
-/obj/structure/blocker/invisible_wall/water,
-/turf/open/gm/river/soro,
-/area/lv1021/oob)
+/turf/open/auto_turf/lv_sand,
+/area/lv1021/outdoors/river/east_river)
 "mrG" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 5
@@ -33127,9 +33250,8 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleW_south)
 "mzk" = (
-/obj/structure/platform/stone/soro/north,
 /obj/structure/platform/wood/west,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/north,
 /area/lv1021/outdoors/river/central_south)
 "mzT" = (
 /obj/structure/platform/wood/east,
@@ -33204,9 +33326,8 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/oob)
 "mID" = (
-/obj/structure/platform/stone/soro/east,
 /obj/structure/platform/wood/north,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/east,
 /area/lv1021/outdoors/river/central_north)
 "mIL" = (
 /obj/structure/machinery/door/airlock/prison_hatch{
@@ -33343,9 +33464,9 @@
 	pixel_x = -8;
 	pixel_y = 16
 	},
-/obj/structure/blocker/invisible_wall/water,
-/turf/open/gm/river/soro,
-/area/lv1021/oob)
+/obj/structure/platform/wood/west,
+/turf/open/gm/coast/dirt/beachcorner2/north_west,
+/area/lv1021/outdoors/river/east_river)
 "mUk" = (
 /obj/item/ammo_magazine/pistol/m1911/highimpact{
 	current_rounds = 0
@@ -33509,9 +33630,8 @@
 	pixel_x = 13;
 	pixel_y = 4
 	},
-/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
-/area/lv1021/oob)
+/area/lv1021/outdoors/river/east_river)
 "ngu" = (
 /turf/open/floor/interior/wood/damage_6,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
@@ -33674,11 +33794,6 @@
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_south)
 "nqG" = (
-/obj/structure/platform/stone/soro/east{
-	icon_state = "strata_rock_platform_broken";
-	density = 0;
-	layer = 2.519
-	},
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
 	pixel_y = -4;
@@ -33691,7 +33806,7 @@
 	pixel_y = 6;
 	dir = 1
 	},
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/east,
 /area/lv1021/outdoors/river/central_north)
 "nrj" = (
 /obj/structure/prop/colorable_rock/colorable{
@@ -33726,15 +33841,6 @@
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_lagoon)
-"nxa" = (
-/obj/structure/blocker/invisible_wall/water,
-/obj/structure/prop/colorable_rock/colorable/alt{
-	color = "#8D8468";
-	dir = 4;
-	pixel_y = -6
-	},
-/turf/open/gm/river/soro,
-/area/lv1021/oob)
 "nxV" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -8;
@@ -33846,13 +33952,12 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/landing_zone_1)
 "nCI" = (
-/obj/structure/platform/stone/soro/west,
 /obj/structure/prop/colorable_rock/colorable/alt{
 	color = "#9d796a";
 	pixel_x = 7;
 	pixel_y = -9
 	},
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/west,
 /area/lv1021/outdoors/river/central_north)
 "nCY" = (
 /obj/structure/flora/jungle/vines/light_3,
@@ -33935,7 +34040,6 @@
 	},
 /obj/structure/flora/jungle/vines/light_1,
 /obj/effect/landmark/lv624/fog_blocker/short,
-/obj/structure/platform/stone/soro,
 /obj/structure/platform/stone/soro/east,
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/lv1021/landing_zone_1/ceiling)
@@ -33956,25 +34060,12 @@
 /turf/open/auto_turf/lv_sand,
 /area/lv1021/outdoors/jungle/jungleC_south_west)
 "nKm" = (
-/obj/structure/platform/stone/soro/north,
-/obj/structure/platform/stone/soro/west,
-/turf/open/gm/river/soro,
+/obj/structure/platform_decoration/stone/soro/north,
+/turf/open/gm/coast/dirt/beachcorner/north_west,
 /area/lv1021/outdoors/river/east_river)
 "nKE" = (
-/obj/structure/platform/stone/soro/north,
-/obj/structure/platform/stone/soro/east,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/beachcorner/north_east,
 /area/lv1021/outdoors/river/central_south)
-"nKK" = (
-/obj/structure/blocker/invisible_wall/water,
-/obj/structure/prop/colorable_rock/colorable/alt{
-	color = "#9d796a";
-	dir = 4;
-	pixel_x = 11;
-	pixel_y = -10
-	},
-/turf/open/gm/river/soro,
-/area/lv1021/oob)
 "nKY" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -34096,12 +34187,7 @@
 	color = "#9d7766";
 	dir = 8
 	},
-/obj/structure/platform/stone/soro/west{
-	icon_state = "strata_rock_platform_broken";
-	density = 0;
-	layer = 2.519
-	},
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/west,
 /area/lv1021/outdoors/river/central_north)
 "nTn" = (
 /turf/open/floor/interior/wood_sat/damage_5,
@@ -34135,6 +34221,7 @@
 "nXg" = (
 /obj/structure/blocker/invisible_wall/water,
 /obj/structure/platform_decoration/stone/soro/east,
+/obj/effect/landmark/lv624/fog_blocker/long,
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_lagoon)
 "nXm" = (
@@ -34336,17 +34423,6 @@
 	},
 /turf/open/floor/interior/wood,
 /area/lv1021/indoors/clf_camp/education)
-"omN" = (
-/obj/structure/prop/colorable_rock/colorable/alt{
-	color = "#9d796a";
-	dir = 4;
-	pixel_x = -4;
-	pixel_y = -10
-	},
-/obj/structure/blocker/invisible_wall/water,
-/obj/effect/landmark/lv624/fog_blocker/long,
-/turf/open/gm/river/soro,
-/area/lv1021/oob)
 "omO" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 10
@@ -34394,8 +34470,7 @@
 /turf/open/auto_turf/lv_sand,
 /area/lv1021/outdoors/jungle/jungleW_north)
 "opn" = (
-/obj/structure/platform_decoration/stone/soro,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/beachcorner2/south_east,
 /area/lv1021/outdoors/river/central_south)
 "opF" = (
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud,
@@ -34453,12 +34528,6 @@
 	},
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud,
 /area/lv1021/outdoors/jungle/jungleW_south)
-"ows" = (
-/obj/structure/flora/jungle/vines/light_1,
-/obj/effect/landmark/lv624/fog_blocker/short,
-/obj/structure/platform/stone/soro,
-/turf/open/gm/river/shallow_ocean_shallow_ocean,
-/area/lv1021/landing_zone_1/ceiling)
 "oxr" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -34490,9 +34559,8 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_mid)
 "oyX" = (
-/obj/structure/platform_decoration/stone/soro/west,
 /obj/structure/platform_decoration/stone/soro/north,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/beachcorner2/north_east,
 /area/lv1021/outdoors/river/central_south)
 "ozt" = (
 /obj/structure/largecrate/random/barrel/red{
@@ -34728,12 +34796,7 @@
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766"
 	},
-/obj/structure/platform/stone/soro/east{
-	icon_state = "strata_rock_platform_broken";
-	density = 0;
-	layer = 2.519
-	},
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/east,
 /area/lv1021/outdoors/river/central_north)
 "oNJ" = (
 /obj/structure/flora/jungle/vines/light_2,
@@ -34766,8 +34829,6 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
 "oPG" = (
-/obj/structure/platform/stone/soro/west,
-/obj/structure/platform/stone/soro,
 /obj/structure/prop/colorable_rock/colorable/alt{
 	color = "#9d796a";
 	dir = 4;
@@ -34775,7 +34836,7 @@
 	pixel_y = -8
 	},
 /obj/structure/blocker/invisible_wall,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/beachcorner/south_west,
 /area/lv1021/outdoors/river/central_north)
 "oPK" = (
 /obj/structure/flora/jungle/planttop1,
@@ -35104,14 +35165,13 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
 "poO" = (
-/obj/structure/platform/stone/soro/east,
 /obj/structure/prop/colorable_rock/colorable/alt{
 	color = "#9d796a";
 	dir = 8;
 	pixel_x = -26;
 	pixel_y = -14
 	},
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/east,
 /area/lv1021/outdoors/river/central_south)
 "ppc" = (
 /obj/structure/largecrate/random/barrel/red,
@@ -35139,8 +35199,7 @@
 /area/lv1021/outdoors/jungle/jungleC_mid)
 "pqJ" = (
 /obj/structure/blocker/invisible_wall,
-/obj/structure/platform_decoration/stone/soro/north,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/beachcorner2/south_west,
 /area/lv1021/outdoors/river/central_north)
 "prf" = (
 /obj/structure/machinery/light/small,
@@ -35339,8 +35398,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_mid)
 "pMM" = (
-/obj/structure/platform/stone/soro/north,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/north,
 /area/lv1021/outdoors/river/central_south)
 "pPm" = (
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
@@ -35565,11 +35623,6 @@
 /obj/structure/platform_decoration/wood/west,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_s_e)
-"qfa" = (
-/obj/structure/platform/stone/soro,
-/obj/structure/platform/stone/soro/east,
-/turf/open/gm/river/soro,
-/area/lv1021/outdoors/river/central_north)
 "qfe" = (
 /obj/structure/flora/jungle/vines/light_2,
 /turf/closed/wall/strata_ice/jungle,
@@ -35641,15 +35694,12 @@
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
 "qkW" = (
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#9d796a";
-	dir = 9;
-	pixel_x = -10;
-	pixel_y = 3
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 8;
+	pixel_y = -5
 	},
-/obj/structure/blocker/invisible_wall/water,
-/turf/open/gm/river/soro,
-/area/lv1021/oob)
+/turf/open/auto_turf/lv_sand,
+/area/lv1021/outdoors/river/east_river)
 "qmE" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -8;
@@ -35806,15 +35856,6 @@
 "qua" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv1021/outdoors/jungle/jungleC_south)
-"qup" = (
-/obj/structure/prop/colorable_rock/colorable/alt{
-	color = "#9d796a";
-	dir = 1;
-	pixel_x = 1
-	},
-/obj/structure/blocker/invisible_wall/water,
-/turf/open/gm/river/soro,
-/area/lv1021/oob)
 "qux" = (
 /obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#4F7942";
@@ -35827,9 +35868,7 @@
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/east_river)
 "qvz" = (
-/obj/structure/platform/stone/soro/north,
-/obj/structure/platform/stone/soro/east,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/beachcorner/north_east,
 /area/lv1021/outdoors/river/central_north)
 "qvW" = (
 /turf/open/floor/interior/wood_sat,
@@ -35847,14 +35886,13 @@
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_north)
 "qxT" = (
-/obj/structure/platform/stone/soro/east,
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d796a";
 	dir = 9;
 	pixel_x = -5;
 	pixel_y = 6
 	},
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/east,
 /area/lv1021/outdoors/river/central_north)
 "qxX" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
@@ -36201,23 +36239,8 @@
 	color = "#9d7766";
 	dir = 8
 	},
-/obj/structure/platform/stone/soro/west{
-	icon_state = "strata_rock_platform_broken";
-	density = 0;
-	layer = 2.519
-	},
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/west,
 /area/lv1021/outdoors/river/central_north)
-"rfN" = (
-/obj/structure/prop/colorable_rock/colorable/alt{
-	color = "#9d796a";
-	dir = 8;
-	pixel_x = 7;
-	pixel_y = 4
-	},
-/obj/structure/blocker/invisible_wall/water,
-/turf/open/gm/river/soro,
-/area/lv1021/oob)
 "rfV" = (
 /obj/structure/prop/colorable_rock/colorable/alt{
 	color = "#9d796a";
@@ -36464,11 +36487,6 @@
 /obj/structure/flora/grass/tallgrass/jungle,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleW_south)
-"rwo" = (
-/obj/structure/platform_decoration/stone/soro/north,
-/obj/structure/blocker/invisible_wall,
-/turf/open/gm/river/soro,
-/area/lv1021/outdoors/river/central_north)
 "rwz" = (
 /turf/closed/wall/wood,
 /area/lv1021/indoors/caves/clf_tunnel)
@@ -36524,7 +36542,6 @@
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleW_north)
 "rCe" = (
-/obj/structure/platform_decoration/stone/soro,
 /obj/structure/flora/bush/ausbushes/reedbush{
 	pixel_x = -3;
 	pixel_y = -6
@@ -36535,7 +36552,7 @@
 	pixel_x = -26;
 	pixel_y = -14
 	},
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/beachcorner2/south_east,
 /area/lv1021/outdoors/river/central_south)
 "rCW" = (
 /obj/structure/barricade/sandbags/wired{
@@ -36554,9 +36571,8 @@
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_north)
 "rDf" = (
-/obj/structure/platform/stone/soro/east,
 /obj/structure/platform/wood/north,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/east,
 /area/lv1021/outdoors/river/central_south)
 "rDj" = (
 /obj/structure/flora/wood/stick4,
@@ -36567,7 +36583,6 @@
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
 "rDn" = (
-/obj/structure/platform/stone/soro/west,
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
 	pixel_y = -4;
@@ -36575,7 +36590,7 @@
 	pixel_x = 3
 	},
 /obj/structure/blocker/invisible_wall,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/west,
 /area/lv1021/outdoors/river/central_north)
 "rDB" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
@@ -36737,16 +36752,6 @@
 /obj/structure/platform/wood,
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_north)
-"rPL" = (
-/obj/structure/blocker/invisible_wall/water,
-/obj/structure/prop/colorable_rock/colorable/alt{
-	color = "#9d796a";
-	dir = 8;
-	pixel_x = 7;
-	pixel_y = 4
-	},
-/turf/open/gm/river/soro,
-/area/lv1021/oob)
 "rQV" = (
 /obj/structure/surface/rack{
 	color = "#8B7B5B"
@@ -36767,7 +36772,6 @@
 /turf/open/floor/plating,
 /area/lv1021/outdoors/jungle/jungleC_clf_e)
 "rRQ" = (
-/obj/structure/platform/stone/soro/east,
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
 	pixel_x = -7;
@@ -36775,8 +36779,7 @@
 	dir = 4
 	},
 /obj/structure/blocker/invisible_wall,
-/obj/structure/platform/stone/soro,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/south,
 /area/lv1021/outdoors/river/central_north)
 "rSk" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
@@ -36805,10 +36808,6 @@
 /obj/structure/flora/wood/stick3,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_mid)
-"rVO" = (
-/obj/structure/platform_decoration/stone/soro/west,
-/turf/open/gm/river/soro,
-/area/lv1021/outdoors/river/central_north)
 "rXf" = (
 /obj/structure/flora/jungle/vines/light_3,
 /turf/closed/wall/solaris/reinforced,
@@ -36871,16 +36870,13 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleW_north)
 "saQ" = (
-/obj/structure/platform_decoration/stone/soro/west,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/beachcorner2/north_east,
 /area/lv1021/outdoors/river/central_south)
 "sbv" = (
 /obj/structure/flora/wood/stick2,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_mid)
 "scn" = (
-/obj/structure/platform/stone/soro/west,
-/obj/structure/platform/stone/soro,
 /obj/structure/prop/colorable_rock/colorable/alt{
 	color = "#9d796a";
 	dir = 4;
@@ -36893,7 +36889,7 @@
 	dir = 8
 	},
 /obj/structure/blocker/invisible_wall,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/beachcorner/south_west,
 /area/lv1021/outdoors/river/central_north)
 "scD" = (
 /obj/structure/flora/wood/stick1,
@@ -36905,22 +36901,6 @@
 /obj/structure/platform/stone/soro/west,
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/east_river)
-"sdi" = (
-/obj/structure/blocker/invisible_wall/water,
-/obj/structure/prop/colorable_rock/colorable/alt{
-	color = "#9d796a";
-	dir = 8;
-	pixel_x = 7;
-	pixel_y = 4
-	},
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#9d7766";
-	dir = 8;
-	pixel_y = 3
-	},
-/obj/effect/landmark/lv624/fog_blocker/long,
-/turf/open/gm/river/soro,
-/area/lv1021/oob)
 "sdt" = (
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_s_e)
@@ -37281,14 +37261,13 @@
 /turf/open/auto_turf/lv_sand,
 /area/lv1021/outdoors/jungle/jungleW_north)
 "sDi" = (
-/obj/structure/platform/stone/soro/west,
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
 	pixel_x = -7;
 	pixel_y = 3;
 	dir = 4
 	},
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/west,
 /area/lv1021/outdoors/river/central_south)
 "sDl" = (
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
@@ -37378,7 +37357,7 @@
 	pixel_x = 4;
 	pixel_y = -13
 	},
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/beachcorner2/north_west,
 /area/lv1021/outdoors/river/central_north)
 "sIV" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
@@ -37419,12 +37398,13 @@
 	},
 /area/lv1021/outdoors/jungle/jungleC_clf_e)
 "sKy" = (
-/obj/structure/blocker/invisible_wall/water,
 /obj/structure/prop/colorable_rock/colorable/alt{
 	color = "#9d796a";
 	pixel_x = -9
 	},
 /obj/structure/platform/stone/soro,
+/obj/structure/blocker/invisible_wall/water,
+/obj/effect/landmark/lv624/fog_blocker/long,
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
 "sLh" = (
@@ -37601,17 +37581,8 @@
 /obj/structure/platform/wood{
 	pixel_y = 11
 	},
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/north,
 /area/lv1021/outdoors/river/east_river)
-"sXU" = (
-/obj/structure/platform/wood{
-	pixel_y = 25
-	},
-/obj/structure/platform/wood,
-/obj/item/stack/sheet/wood,
-/obj/structure/blocker/invisible_wall/water,
-/turf/open/floor/interior/wood_sat,
-/area/lv1021/oob)
 "sXY" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_y = 18;
@@ -37897,11 +37868,14 @@
 /obj/structure/flora/bush/ausbushes/reedbush{
 	pixel_y = 14
 	},
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	dir = 4;
+	pixel_y = -14
+	},
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
 "tss" = (
-/obj/structure/blocker/invisible_wall/water,
 /obj/structure/prop/colorable_rock/colorable/alt{
 	color = "#8D8468";
 	dir = 4;
@@ -37913,10 +37887,8 @@
 	pixel_y = 6;
 	dir = 1
 	},
-/obj/effect/landmark/lv624/fog_blocker/long,
-/obj/effect/landmark/lv624/fog_blocker/long,
 /turf/open/gm/river/soro,
-/area/lv1021/oob)
+/area/lv1021/outdoors/river/east_river)
 "ttp" = (
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 8
@@ -38162,8 +38134,7 @@
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud,
 /area/lv1021/outdoors/jungle/jungleC_mid)
 "tLZ" = (
-/obj/structure/platform_decoration/stone/soro/east,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/beachcorner2/north_west,
 /area/lv1021/outdoors/river/central_south)
 "tMZ" = (
 /obj/effect/sentry_landmark/lz_1/bottom_right,
@@ -38293,8 +38264,7 @@
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_lagoon)
 "tWK" = (
-/obj/structure/platform/stone/soro/east,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/east,
 /area/lv1021/outdoors/river/central_south)
 "tXJ" = (
 /obj/structure/prop/tyrargo/boards{
@@ -38416,16 +38386,6 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleW_north)
-"uhw" = (
-/obj/structure/prop/colorable_rock/colorable/alt{
-	color = "#9d796a";
-	dir = 8;
-	pixel_x = -8;
-	pixel_y = -2
-	},
-/obj/structure/blocker/invisible_wall/water,
-/turf/open/gm/river/soro,
-/area/lv1021/oob)
 "uhP" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = 6;
@@ -38442,9 +38402,8 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleW_north)
 "uja" = (
-/obj/structure/platform/stone/soro/north,
 /obj/structure/platform/wood/east,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/north,
 /area/lv1021/outdoors/river/central_south)
 "ujg" = (
 /obj/structure/barricade/sandbags/wired{
@@ -38554,8 +38513,7 @@
 	pixel_x = -13;
 	pixel_y = 15
 	},
-/obj/structure/platform_decoration/stone/soro/east,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/beachcorner2/north_west,
 /area/lv1021/outdoors/river/east_river)
 "uqS" = (
 /obj/structure/barricade/plasteel/wired{
@@ -38609,7 +38567,7 @@
 /area/lv1021/outdoors/jungle/jungleC_mid)
 "uvK" = (
 /obj/item/stack/sheet/wood,
-/turf/open/floor/interior/wood_sat,
+/turf/open/floor/interior/wood/alt,
 /area/lv1021/outdoors/jungle/jungleC_s_e)
 "uwT" = (
 /obj/effect/decal/warning_stripes{
@@ -38728,22 +38686,6 @@
 /obj/structure/flora/wood/stick4,
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud,
 /area/lv1021/outdoors/jungle/jungleC_mid)
-"uJg" = (
-/obj/structure/prop/colorable_rock/colorable/alt{
-	color = "#9d796a";
-	dir = 1;
-	pixel_x = -12;
-	pixel_y = -13
-	},
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#9d796a";
-	dir = 9;
-	pixel_x = 4;
-	pixel_y = -13
-	},
-/obj/structure/blocker/invisible_wall/water,
-/turf/open/gm/river/soro,
-/area/lv1021/oob)
 "uJl" = (
 /obj/item/prop/colony/canister{
 	pixel_x = -1;
@@ -38893,16 +38835,11 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleW_south)
 "uRe" = (
-/obj/structure/platform/stone/soro/west,
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
 	pixel_x = 7
 	},
-/turf/open/gm/river/soro,
-/area/lv1021/outdoors/river/central_north)
-"uRl" = (
-/obj/structure/platform_decoration/stone/soro/north,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/west,
 /area/lv1021/outdoors/river/central_north)
 "uRM" = (
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud,
@@ -39110,10 +39047,8 @@
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_north)
 "vhX" = (
-/obj/structure/platform_decoration/stone/soro/east,
-/obj/structure/platform_decoration/stone/soro/west,
-/turf/open/gm/river/soro,
-/area/lv1021/outdoors/river/east_river)
+/turf/open/gm/coast/dirt/beachcorner/north_west,
+/area/lv1021/outdoors/jungle/jungleC_e)
 "vic" = (
 /obj/structure/platform_decoration/metal/strata,
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
@@ -39168,7 +39103,6 @@
 /area/lv1021/outdoors/jungle/jungleC_mid)
 "vmy" = (
 /obj/structure/blocker/invisible_wall/water,
-/obj/structure/platform/stone/soro/east,
 /obj/structure/prop/colorable_rock/colorable/alt{
 	color = "#9d796a";
 	dir = 8;
@@ -39180,7 +39114,8 @@
 	dir = 1;
 	pixel_x = 1
 	},
-/turf/open/gm/river/soro,
+/obj/structure/platform_decoration/stone/soro,
+/turf/open/gm/coast/dirt/beachcorner2/north_east,
 /area/lv1021/outdoors/river/central_lagoon)
 "vmI" = (
 /obj/structure/prop/colorable_rock/colorable{
@@ -39392,15 +39327,14 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleW_south)
 "vyz" = (
-/obj/structure/platform/stone/soro/east,
 /obj/structure/platform/wood,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/east,
 /area/lv1021/outdoors/river/central_north)
 "vza" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/obj/structure/blocker/invisible_wall/water,
-/turf/open/gm/river/soro,
-/area/lv1021/oob)
+/obj/structure/platform_decoration/wood/east,
+/turf/open/gm/coast/dirt/beachcorner/south_west,
+/area/lv1021/outdoors/river/east_river)
 "vzp" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/storage/firstaid/adv/empty,
@@ -39453,16 +39387,6 @@
 "vDE" = (
 /turf/open/floor/kutjevo/fake_wood,
 /area/lv1021/indoors/caves/clf_tunnel)
-"vDZ" = (
-/obj/structure/blocker/invisible_wall/water,
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#9d7766";
-	pixel_y = -4;
-	dir = 8;
-	pixel_x = 3
-	},
-/turf/open/gm/river/soro,
-/area/lv1021/oob)
 "vEB" = (
 /turf/closed/wall/solaris/reinforced,
 /area/lv1021/outdoors/comms/south_2)
@@ -39502,14 +39426,11 @@
 /turf/open/auto_turf/lv_sand,
 /area/lv1021/outdoors/river/central_north)
 "vMR" = (
-/obj/structure/platform/stone/soro/north,
-/obj/structure/platform/stone/soro/west,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/beachcorner/north_west,
 /area/lv1021/outdoors/river/central_north)
 "vNa" = (
 /obj/structure/platform/wood/west,
-/obj/structure/platform/stone/soro/north,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/north,
 /area/lv1021/outdoors/river/east_river)
 "vNd" = (
 /obj/structure/platform/stone/soro/north,
@@ -40084,12 +40005,18 @@
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
 "wBa" = (
-/obj/structure/platform/wood/west{
-	pixel_x = -6
+/obj/effect/decal/lv_decals/red_mud_corner,
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 1
 	},
-/obj/structure/blocker/invisible_wall/water,
-/turf/open/gm/river/soro,
-/area/lv1021/oob)
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 8
+	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 4
+	},
+/turf/open/floor/interior/wood/alt,
+/area/lv1021/outdoors/river/east_river)
 "wBd" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/kutjevo/fake_wood,
@@ -40165,10 +40092,8 @@
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_mid)
 "wHA" = (
-/obj/structure/platform/stone/soro,
-/obj/structure/platform/stone/soro/east,
 /obj/structure/blocker/invisible_wall,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/beachcorner/south_east,
 /area/lv1021/outdoors/river/central_north)
 "wHH" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt/stain{
@@ -40220,7 +40145,7 @@
 	pixel_y = 21
 	},
 /obj/structure/flora/wood/stick2,
-/turf/open/floor/interior/wood_sat,
+/turf/open/floor/interior/wood/alt,
 /area/lv1021/outdoors/jungle/jungleC_e)
 "wKS" = (
 /turf/closed/shuttle/dropship_clf/Fire{
@@ -40242,23 +40167,15 @@
 /turf/open/asphalt/cement/cement15,
 /area/lv1021/outdoors/jungle/jungleC_clf_e)
 "wLQ" = (
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#9d7766";
-	dir = 8;
-	pixel_y = 3
-	},
-/obj/structure/blocker/invisible_wall/water,
-/turf/open/gm/river/soro,
-/area/lv1021/oob)
+/turf/open/gm/coast/dirt/west,
+/area/lv1021/outdoors/river/east_river)
 "wMe" = (
-/obj/structure/platform/stone/soro/east,
-/obj/structure/platform/stone/soro,
 /obj/structure/prop/colorable_rock/colorable/alt{
 	color = "#9d796a";
 	pixel_x = 5;
 	pixel_y = 10
 	},
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/beachcorner/south_east,
 /area/lv1021/outdoors/river/central_south)
 "wMl" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner,
@@ -40399,9 +40316,9 @@
 	dir = 8;
 	pixel_x = 3
 	},
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/platform/wood/west,
 /turf/open/gm/river/soro,
-/area/lv1021/oob)
+/area/lv1021/outdoors/river/east_river)
 "wUc" = (
 /obj/item/storage/box/mre{
 	pixel_x = 3;
@@ -40666,12 +40583,6 @@
 /obj/structure/machinery/landinglight/spoke,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/landing_zone_2)
-"xkz" = (
-/obj/structure/blocker/invisible_wall/water,
-/obj/structure/platform_decoration/stone/soro,
-/obj/effect/landmark/lv624/fog_blocker/long,
-/turf/open/gm/river/soro,
-/area/lv1021/oob)
 "xkL" = (
 /obj/structure/flora/wood/stick3,
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
@@ -40684,9 +40595,7 @@
 /turf/open/floor/interior/wood_sat,
 /area/lv1021/outdoors/river/central_south)
 "xqk" = (
-/obj/structure/platform/stone/soro/east,
-/obj/structure/platform/stone/soro,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/beachcorner/south_east,
 /area/lv1021/outdoors/river/central_south)
 "xql" = (
 /obj/effect/landmark/lv624/fog_blocker/long,
@@ -40881,7 +40790,6 @@
 /obj/structure/flora/bush/ausbushes/reedbush{
 	pixel_y = 30
 	},
-/obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/oob)
 "xJl" = (
@@ -40916,22 +40824,6 @@
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleW_north)
-"xLa" = (
-/obj/structure/prop/colorable_rock/colorable/alt{
-	color = "#9d796a";
-	pixel_y = -3;
-	pixel_x = 7
-	},
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#9d7766";
-	pixel_x = 1;
-	pixel_y = 6;
-	dir = 1
-	},
-/obj/structure/blocker/invisible_wall/water,
-/obj/effect/landmark/lv624/fog_blocker/long,
-/turf/open/gm/river/soro,
-/area/lv1021/oob)
 "xLb" = (
 /obj/structure/surface/rack{
 	color = "#8B7B5B"
@@ -41031,9 +40923,7 @@
 /area/lv1021/outdoors/jungle/jungleW_north)
 "xPR" = (
 /obj/structure/blocker/invisible_wall,
-/obj/structure/platform/stone/soro/west,
-/obj/structure/platform/stone/soro,
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/beachcorner/south_west,
 /area/lv1021/outdoors/river/central_north)
 "xQt" = (
 /obj/structure/flora/jungle/thickbush/large_jungle_bush{
@@ -41199,11 +41089,6 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
-"ybe" = (
-/obj/structure/platform/stone/soro/west,
-/obj/structure/platform/stone/soro,
-/turf/open/gm/river/soro,
-/area/lv1021/outdoors/river/central_north)
 "ycz" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -7;
@@ -41231,19 +41116,17 @@
 /turf/open/auto_turf/lv_sand,
 /area/lv1021/outdoors/jungle/jungleC_mid)
 "ycI" = (
-/obj/structure/platform_decoration/stone/soro/north,
 /obj/structure/prop/colorable_rock/colorable/alt{
 	color = "#9d796a";
 	pixel_y = -3;
 	pixel_x = 7
 	},
 /obj/structure/blocker/invisible_wall,
-/obj/effect/mist/steam,
 /obj/effect/mist/steam{
 	pixel_x = 4;
 	pixel_y = 13
 	},
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/beachcorner2/south_west,
 /area/lv1021/outdoors/river/central_north)
 "ycX" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -41255,9 +41138,6 @@
 /obj/item/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleW_north)
-"ydH" = (
-/turf/open/floor/interior/wood_sat,
-/area/lv1021/outdoors/river/east_river)
 "yed" = (
 /obj/item/storage/bag/trash{
 	pixel_x = 2;
@@ -41369,12 +41249,11 @@
 /turf/open/floor/almayer/test_floor4,
 /area/lv1021/outdoors/jungle/jungleC_clf_e)
 "yjF" = (
-/obj/structure/platform_decoration/stone/soro,
 /obj/structure/flora/bush/ausbushes/reedbush{
 	pixel_x = -3;
 	pixel_y = -6
 	},
-/turf/open/gm/river/soro,
+/turf/open/gm/coast/dirt/beachcorner2/south_east,
 /area/lv1021/outdoors/river/central_north)
 "ykj" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
@@ -44194,8 +44073,8 @@ bWq
 fCC
 bWq
 kKU
-aJB
-rnO
+aaz
+aay
 wzQ
 wzQ
 wzQ
@@ -45033,7 +44912,7 @@ nXw
 nXw
 nXw
 nXw
-heP
+aaw
 heP
 heP
 heP
@@ -46369,7 +46248,7 @@ nXw
 nXw
 lBx
 nXw
-heP
+aaw
 heP
 heP
 heP
@@ -47205,7 +47084,7 @@ arK
 arK
 arK
 arK
-heP
+aaw
 heP
 heP
 heP
@@ -48043,7 +47922,7 @@ kIF
 saQ
 nXw
 aog
-aog
+aax
 heP
 heP
 heP
@@ -48545,7 +48424,7 @@ xUI
 jaL
 nXw
 nXw
-aog
+aax
 heP
 heP
 heP
@@ -48881,7 +48760,7 @@ pMM
 nXw
 aog
 heP
-heP
+aaw
 heP
 heP
 heP
@@ -49046,9 +48925,9 @@ vdp
 hEG
 pMM
 goP
-arK
+nXw
 aog
-heP
+aaw
 heP
 heP
 heP
@@ -49717,7 +49596,7 @@ giC
 nXw
 nXw
 aog
-heP
+aaw
 heP
 heP
 heP
@@ -50219,8 +50098,8 @@ nXw
 nXw
 heP
 aog
-aog
-heP
+aax
+aaw
 heP
 heP
 heP
@@ -50387,7 +50266,7 @@ nXw
 nXw
 heP
 aog
-aog
+aax
 heP
 heP
 heP
@@ -50556,7 +50435,7 @@ heP
 heP
 aog
 dze
-heP
+aaw
 heP
 oqi
 aGb
@@ -50724,7 +50603,7 @@ heP
 aog
 heP
 oqi
-aGb
+aav
 uDd
 wzQ
 wzQ
@@ -50791,7 +50670,7 @@ biB
 bhU
 mgs
 bEV
-ows
+bii
 hXu
 hXu
 hXu
@@ -51121,10 +51000,10 @@ biT
 bif
 biM
 biH
-biD
+biw
 biv
 bip
-bij
+biq
 bid
 hXu
 hXu
@@ -51284,14 +51163,14 @@ aSy
 aSG
 biX
 biW
-biU
-biP
-biD
+biN
+bip
+biw
 biI
 biE
 biw
 biq
-bik
+biw
 bie
 hXu
 hXu
@@ -51454,11 +51333,11 @@ hXu
 hXu
 biQ
 biN
-biJ
+biw
 biF
 biw
-bir
-bil
+biw
+bix
 bif
 rGT
 hXu
@@ -51624,7 +51503,7 @@ hXu
 biK
 bix
 bix
-bis
+bix
 bif
 bhY
 rGT
@@ -51652,17 +51531,17 @@ qyU
 uTu
 wVt
 vMR
+aTZ
+aTZ
+aTZ
+aTZ
+aTZ
+aTZ
+aTZ
+aTZ
+aTZ
+aTZ
 den
-den
-den
-den
-den
-den
-den
-den
-den
-den
-ybe
 cAc
 sBe
 cAc
@@ -51829,9 +51708,9 @@ gBU
 jKx
 gBU
 ujZ
-uRl
-den
-den
+aTY
+aTZ
+aTZ
 den
 hXu
 hXu
@@ -51871,7 +51750,7 @@ cAc
 cAc
 cAc
 aJB
-oNj
+aaA
 tLZ
 nXw
 nXw
@@ -51984,7 +51863,7 @@ fHx
 baw
 fgv
 fgv
-fFG
+aUe
 gBU
 gBU
 gBU
@@ -51999,8 +51878,8 @@ gBU
 gBU
 gBU
 jKx
-gBU
-bAi
+aTY
+aTW
 iRg
 bAi
 hXu
@@ -52202,7 +52081,7 @@ cAc
 osl
 cAc
 aJB
-oNj
+aaA
 tLZ
 nXw
 rcB
@@ -52353,8 +52232,8 @@ hXu
 hXu
 hXu
 hXu
-oNj
-rnO
+aaA
+aov
 oIV
 cAc
 fQf
@@ -52479,7 +52358,7 @@ fHx
 fHx
 fHx
 vMR
-den
+aTZ
 mdX
 gBU
 lBk
@@ -52522,18 +52401,18 @@ hXu
 cpc
 pnj
 dtj
-oNj
-oNj
+aaA
+aaA
 bhr
 tXO
 xpV
 bPV
-oNj
-oNj
-oNj
-oNj
-oNj
-oNj
+aaA
+aaA
+aaA
+aaA
+aaA
+aaA
 tLZ
 goP
 dtt
@@ -52644,7 +52523,7 @@ hXu
 fHx
 rOc
 vMR
-den
+aTZ
 mdX
 gBU
 jKx
@@ -53156,8 +53035,8 @@ fgv
 fFG
 mbA
 jKx
-gBU
-gBU
+aUb
+aUa
 ndr
 vKw
 abV
@@ -53305,8 +53184,8 @@ dWe
 fHx
 fHx
 dWe
-ctK
-mdX
+vMR
+gBU
 yfZ
 hmn
 gBU
@@ -53316,14 +53195,14 @@ gBU
 gBU
 gBU
 vTg
-dVg
+aUb
 vyz
 fgv
 fgv
 mID
-uFb
-uFb
-uFb
+aUd
+aUd
+aUc
 hXu
 hXu
 hXu
@@ -53464,14 +53343,14 @@ hsI
 aWj
 xPO
 qyU
+wdQ
 uTu
 wVt
 fHx
 fHx
-fHx
-ctK
-den
-den
+vMR
+aTZ
+aTZ
 mdX
 gBU
 rOq
@@ -53482,8 +53361,8 @@ gBU
 gBU
 gBU
 gBU
-dVg
-qfa
+aUb
+aUc
 nPg
 bap
 cqu
@@ -53602,7 +53481,7 @@ obi
 uBa
 flc
 aCL
-rwo
+pqJ
 oPG
 fHx
 fHx
@@ -53632,10 +53511,10 @@ fHx
 sCP
 get
 kRJ
+iYn
 gVn
-den
-den
-den
+aTZ
+aTZ
 mdX
 gBU
 rCX
@@ -53649,7 +53528,7 @@ rCX
 mbA
 gBU
 yjF
-qfa
+aUc
 hrI
 xDr
 baq
@@ -53791,16 +53670,16 @@ fHx
 fHx
 fHx
 fHx
-ctK
-den
-den
-den
+vMR
+aTZ
+aTZ
+aTZ
 nCI
 cJb
 dSG
+aUf
 fgv
-fFG
-hPh
+aUe
 jKx
 gBU
 gBU
@@ -53813,9 +53692,9 @@ hmn
 vTg
 gBU
 gBU
-dVg
-uFb
-qfa
+aUb
+aUd
+aUc
 hrI
 hrI
 qNL
@@ -53941,23 +53820,23 @@ lhX
 pYS
 kvu
 pqJ
-den
+aTZ
 uRe
-den
-den
-den
-den
-den
-den
-den
-den
-den
+aTZ
+aTZ
+aTZ
+aTZ
+aTZ
+aTZ
+aTZ
+aTZ
+aTZ
 nRi
 rfl
-den
+aTZ
 uRe
-den
-den
+aTZ
+aTZ
 mdX
 gBU
 vTg
@@ -53966,8 +53845,8 @@ gBU
 jQg
 fgv
 fgv
+fgv
 fFG
-gBU
 gBU
 gBU
 rCX
@@ -53979,8 +53858,8 @@ hca
 bNb
 gBU
 hPh
-dVg
-qfa
+aUb
+aUc
 xDr
 hrI
 hrI
@@ -54132,6 +54011,7 @@ gBU
 gBU
 lBk
 gHs
+gHs
 fgv
 skD
 gBU
@@ -54141,12 +54021,11 @@ gBU
 gBU
 gBU
 gBU
-gBU
 iZM
 eos
-dVg
-uFb
-qfa
+aUb
+aUd
+aUc
 hrI
 hrI
 hrI
@@ -54300,18 +54179,18 @@ gBU
 tIM
 fgv
 fgv
+fgv
 fFG
-gBU
 hfm
 gBU
 vTg
 jKx
 gBU
-dVg
-uFb
+aUb
+aUd
 nqG
 oNH
-iye
+aUc
 ycG
 jPg
 hrI
@@ -54465,16 +54344,16 @@ vtG
 gBU
 gBU
 rPH
-idR
 fgv
-fFG
+fgv
+fgv
 dIl
-uFb
-uFb
-uFb
-uFb
-uFb
-iye
+aUd
+aUd
+aUd
+aUd
+aUd
+aUc
 cYR
 ezd
 ekG
@@ -54608,14 +54487,14 @@ uBa
 qHS
 vsq
 mDX
-vsq
-uFb
-uFb
-uFb
-uFb
-uFb
-uFb
-rVO
+aUj
+aUd
+aUd
+aUd
+aUd
+aUd
+aUd
+aUa
 gBU
 gBU
 gBU
@@ -54626,15 +54505,15 @@ wlY
 ene
 gBU
 gBU
-dIl
-uFb
-uFb
+aUi
+aUd
+aUd
 fKB
-uFb
+aUd
 vyz
 fgv
+fgv
 gUw
-mID
 iye
 cYR
 mfU
@@ -54783,26 +54662,26 @@ cYR
 wor
 xgr
 qvz
-uFb
-uFb
+aUd
+aUd
 qxT
-uFb
+aUd
 nqG
 oNH
-uFb
-uFb
+aUd
+aUd
 bgr
-uFb
-iye
+aUd
+aUc
 xNl
 cYR
 pHy
 cYR
 gDg
 baR
+aUh
 fEz
 pBT
-bxT
 cYR
 rzI
 ipD
@@ -54967,8 +54846,8 @@ yaT
 wWu
 cYR
 ekG
+ekG
 nCq
-cYR
 cYR
 sQY
 pWL
@@ -65898,7 +65777,7 @@ sdt
 ayg
 sdt
 ayJ
-aLn
+aaC
 wzQ
 wzQ
 wzQ
@@ -66066,7 +65945,7 @@ sdt
 ayV
 aLn
 nKm
-pVO
+aaB
 drz
 wzQ
 wzQ
@@ -66231,8 +66110,8 @@ ayn
 azA
 aLn
 aLn
-nKm
-qgn
+aaG
+aaD
 lRU
 aln
 wzQ
@@ -66397,8 +66276,8 @@ ays
 ayl
 aWs
 aLn
-nKm
-qgn
+aaG
+aaD
 gyi
 quY
 kfB
@@ -66897,8 +66776,8 @@ azU
 sdt
 azC
 axo
-nKm
-qgn
+aaG
+aaD
 quY
 quY
 quY
@@ -67063,8 +66942,8 @@ aAa
 sdt
 sdt
 azO
-nKm
-qgn
+aaG
+aaD
 quY
 quY
 quY
@@ -67396,8 +67275,8 @@ sdt
 aAb
 aLn
 aLn
-nKm
-qgn
+aaG
+aaD
 quY
 quY
 quY
@@ -67562,8 +67441,8 @@ czu
 azk
 aLn
 axP
-nKm
-qgn
+aaG
+aaD
 quY
 quY
 quY
@@ -67728,8 +67607,8 @@ sqs
 czu
 sdt
 aLn
-nKm
-qgn
+aaG
+aaD
 lRU
 quY
 quY
@@ -68728,8 +68607,8 @@ aNh
 eyx
 hVX
 azP
-nKm
-qgn
+aaG
+aaD
 quY
 quY
 quY
@@ -69228,8 +69107,8 @@ aAL
 nWS
 sdt
 aLn
-nKm
-qgn
+aaG
+aaD
 quY
 quY
 quY
@@ -69728,8 +69607,8 @@ hXu
 nWS
 axy
 aLn
-nKm
-qgn
+aaG
+aaD
 quY
 quY
 quY
@@ -70228,8 +70107,8 @@ ayl
 axV
 nWS
 aLn
-nKm
-qgn
+aaG
+aaD
 quY
 lRU
 quY
@@ -71729,12 +71608,12 @@ ayd
 sdt
 sdt
 sdt
-aAO
 aLn
-hef
+wzQ
+aba
 quY
-quY
-quY
+aaQ
+aaJ
 quY
 quY
 aln
@@ -71895,14 +71774,14 @@ azD
 azd
 sdt
 sdt
-aLn
-aLn
-aLn
-hef
+wzQ
+wzQ
+wzQ
+abd
 quY
-quY
-quY
-quY
+wzQ
+aaS
+aaJ
 quY
 azR
 aLn
@@ -72061,15 +71940,15 @@ ajL
 axC
 azd
 aBq
-aLn
-aLn
-nKm
+wzQ
+wzQ
+abw
 pVO
 qgn
 quY
-quY
-quY
-quY
+wzQ
+wzQ
+hef
 nzk
 aln
 aLn
@@ -72228,15 +72107,15 @@ ayM
 ayd
 sdt
 azD
-sdt
-azP
+wzQ
+abG
+abx
+quY
+quY
+quY
+aaT
+wzQ
 hef
-quY
-quY
-quY
-quY
-quY
-quY
 quY
 aln
 axP
@@ -72400,10 +72279,10 @@ aLn
 hef
 jrw
 quY
-quY
-quY
-quY
-quY
+aaQ
+aaU
+wzQ
+aaO
 tBa
 suO
 aLn
@@ -72563,14 +72442,14 @@ aBK
 aBE
 aLn
 aLn
-nKm
-qgn
+aaG
+aaD
 quY
 quY
-quY
-quY
-quY
-quY
+aaN
+wzQ
+wzQ
+aaD
 aln
 aLn
 azl
@@ -72729,13 +72608,13 @@ aAD
 aBL
 aBF
 aBr
-pVO
-qgn
+wLQ
+aaD
 kzJ
 quY
-quY
-quY
-quY
+aaQ
+aaW
+aaJ
 quY
 quY
 aln
@@ -72899,11 +72778,11 @@ aBs
 lRU
 quY
 quY
-quY
-quY
-quY
-quY
-quY
+aaQ
+abe
+aaX
+hef
+lRU
 quY
 kfB
 sdc
@@ -73061,15 +72940,15 @@ hXu
 hXu
 hXu
 hXu
-qgn
+aaD
 xEW
 quY
 quY
-quY
-quY
-quY
-quY
-quY
+aaQ
+abe
+abf
+aaX
+hef
 quY
 quY
 quY
@@ -73232,14 +73111,14 @@ bMq
 quY
 quY
 quY
+aaR
+aaX
+abg
+wzQ
+aaV
 quY
-quY
-quY
-quY
-lRU
-quY
-quY
-quY
+aaQ
+aaJ
 quY
 axX
 aLn
@@ -73387,7 +73266,7 @@ yhv
 aCt
 aCo
 aCi
-rGT
+bie
 rGT
 nII
 nII
@@ -73399,23 +73278,23 @@ hXu
 tss
 quY
 quY
-quY
-quY
-quY
-quY
-quY
-quY
-quY
-quY
-quY
+aaR
+aaX
+aaX
+wzQ
+hef
+aaQ
+wzQ
+aaL
+aaJ
 kfB
 sdc
 aLn
 sdt
 ayl
 ayl
-axV
-ayl
+xwH
+acE
 acE
 wzQ
 axM
@@ -73554,34 +73433,34 @@ gCD
 yhv
 aCp
 aCh
-aCc
-aBW
+aTU
+aTQ
 nII
 aBU
 nII
+nII
+hXu
+hXu
+quY
+quY
+quY
+aaQ
+abe
+abp
+abh
+wzQ
 hef
-hXu
-hXu
-jqI
-aNi
-xLa
-nxa
-jqI
-quY
-quY
-quY
-quY
-quY
-quY
-quY
-quY
+aaN
+aaM
+wzQ
+hef
 nzk
 aln
 azp
 aLn
-sdt
-axg
-axV
+wzQ
+aaF
+xwH
 acE
 wzQ
 wzQ
@@ -73722,33 +73601,33 @@ gCD
 yhv
 aCj
 yhv
+aTR
+aTP
+nII
 nII
 aBU
-nII
-nKm
-qgn
-ljH
-jqI
-jqI
-jqI
-jqI
-wLQ
+hXu
+hXu
+quY
+quY
+aaQ
+abe
 kxF
-nKK
+aaX
+wzQ
+wzQ
+hef
 quY
-quY
-quY
-quY
-quY
-quY
-quY
-quY
+aaR
+wzQ
+aaL
+aaJ
 aln
 aLn
 aLn
 sdt
 ayI
-ayl
+acE
 acE
 wzQ
 wzQ
@@ -73889,27 +73768,27 @@ gCD
 yhv
 yhv
 aCd
-nII
+rGT
 aBW
-dik
+nII
 vhX
-jql
-sdi
-jjV
-mTY
-tsk
-bhl
-jqI
-qkW
+hXu
+hXu
+xEW
+aNo
+lRU
+abK
+aaM
+aaX
 qkW
 cmV
+aaG
+aaD
 quY
-quY
-quY
-quY
-quY
-quY
-bMq
+aaN
+aaM
+wzQ
+aaK
 aln
 aLn
 aza
@@ -74055,27 +73934,27 @@ yhv
 yhv
 gCD
 yhv
-yhv
-aBU
+rGT
+aTT
 nII
 nII
-hef
+aTL
 gul
 jlA
-wLQ
-jqI
-jqI
-bhl
-jqI
-jqI
-jqI
-eiK
-aNi
+jql
+quY
+quY
+abL
+aaN
+aaM
+abr
+aaG
+aaD
 quY
 quY
 quY
-quY
-quY
+aaN
+aaD
 sfR
 aln
 aLn
@@ -74222,23 +74101,23 @@ aCD
 aCt
 yhv
 gCD
-yhv
-yhv
+aTV
+hXu
+rGT
 nII
-nII
-hef
+aTL
 quY
-aNv
-dDl
-jqI
-jqI
-jqI
-jqI
-bhl
+quY
+quY
+quY
+quY
+quY
+quY
+aaN
 wLQ
-iwe
+aaD
 aua
-aNi
+quY
 quY
 quY
 quY
@@ -74388,24 +74267,24 @@ aCh
 yhv
 aCh
 aCq
-yhv
+aCt
 gCD
-yhv
-aBX
+hXu
+rGT
 aBV
-diL
-gAE
-iIj
-wLQ
+aTL
+quY
+kzJ
+jql
 iwe
-jqI
-jqI
-jqI
-jqI
-tsk
+aaQ
+aaW
+aaJ
+quY
+lRU
 iwe
-omN
-jqI
+bMq
+quY
 quY
 xEW
 tBa
@@ -74557,22 +74436,22 @@ aCl
 yhv
 aCt
 aCe
-yhv
-nII
+rGT
+hXu
 xir
 aiH
-esN
-gop
-jqI
-jqI
-jqI
+abA
+chQ
+chQ
+aNx
+aow
+adm
 lDh
-lDh
-jqI
-jqI
-jqI
-rfN
-ikO
+abA
+chQ
+chQ
+chQ
+chQ
 chQ
 chQ
 kOX
@@ -74719,33 +74598,33 @@ yhv
 aCZ
 aCW
 aCN
-aCF
+wzQ
 aCu
 aCl
 aCk
 aCt
-aBZ
-nII
+bgF
+hXu
 nII
 juq
-ydH
-dAf
-jCD
-jqI
-jqI
-eVs
-sXU
-jqI
-jqI
-jqI
-qup
-hYU
+nXR
+nXR
+nXR
+aNy
+aaX
+aaX
+aaX
+abD
+nXR
+abl
+nXR
+nXR
 uvK
 iCv
 azW
 wJZ
 otk
-azD
+aaI
 azs
 azd
 axi
@@ -74892,21 +74771,21 @@ aCi
 aCl
 yhv
 aCt
-yhv
+gCD
 nII
 wKw
 sXy
-gop
-jqI
-jqI
-jqI
-jqI
+nXR
+nXR
+nXR
+asy
+qkW
 wBa
-jqI
-jqI
-jqI
-uhw
-dYU
+aaX
+abs
+nXR
+nXR
+nXR
 hzA
 aAc
 uvK
@@ -75062,18 +74941,18 @@ aZg
 nII
 rzH
 asH
-hef
-aNi
+aaD
+xOE
 wTT
-jqI
-mrF
+xOE
+aJt
 vza
-jqI
-jqI
+abg
+abE
 mTY
-jqI
-uJg
-aNi
+xOE
+xOE
+xOE
 xOE
 aAd
 tuU
@@ -75228,18 +75107,18 @@ aCg
 aCr
 aZd
 nII
-nKm
-qgn
+aTL
+quY
 iGo
-jqI
-aNi
-jqI
-jqI
-jqI
-aNi
-jqI
-jqI
-jqI
+quY
+quY
+quY
+aaN
+wLQ
+aaD
+quY
+quY
+quY
 hiK
 oqv
 suO
@@ -75395,19 +75274,19 @@ acE
 aZh
 aBY
 aZc
-hef
+aTL
 quY
-rPL
-jqI
-jqI
-jqI
-jqI
-bhl
+quY
+quY
+quY
+quY
+quY
+abH
+cmV
+aaQ
+aaJ
 iwe
-aNi
-jqI
-iwe
-kpr
+quY
 aln
 aLn
 aLn
@@ -75562,19 +75441,19 @@ acE
 aCW
 aZf
 nII
-hef
+aTL
 quY
-jqI
-gri
-jqI
-aNi
-jqI
-jqI
-jqI
-jqI
-jqI
+quY
+quY
+quY
+quY
+quY
+aaR
+wzQ
+wzQ
+hef
 nfR
-vDZ
+quY
 aln
 axo
 azP
@@ -75729,19 +75608,19 @@ acE
 aOx
 aOx
 acE
-hef
+aTN
 djB
-aWC
-jqI
-jqI
-jqI
-aNi
-jqI
+kzJ
+quY
+quY
+quY
+quY
+aaR
 mrF
-jqI
-jqI
+wzQ
+hef
 iwe
-iIj
+kzJ
 aln
 aLn
 sdt
@@ -75896,19 +75775,19 @@ aVb
 bgX
 aOx
 acE
-hef
+aTO
 quY
-aWC
-aNi
-jqI
-vza
-jqI
-mTY
-jqI
-jqI
-jqI
-jCD
-xkz
+quY
+quY
+quY
+gul
+quY
+abI
+wLQ
+wLQ
+aaD
+quY
+tBa
 suO
 azl
 axg
@@ -76066,15 +75945,15 @@ wzQ
 jOD
 aWE
 aiA
-jqI
-jqI
-jqI
-jqI
-jqI
+aNi
+aWC
+aNd
+aNi
+abJ
 jqI
 bhl
-jqI
-jqI
+aNi
+aaY
 sKy
 wzQ
 wzQ
@@ -76229,19 +76108,19 @@ aUG
 abB
 abB
 wzQ
-fYW
+blf
 aNw
 blp
 tsk
-jqI
-jqI
-jqI
-jqI
+abu
+abt
+bkX
+abF
 xHF
-jqI
-jqI
-jqI
-jqI
+abF
+bkX
+abo
+bkX
 vgj
 wzQ
 wzQ
@@ -76397,19 +76276,19 @@ wzQ
 wzQ
 wzQ
 lAN
-jqI
-jqI
-jqI
-jqI
-jqI
-jqI
-jqI
-jqI
-jqI
-jqI
-jqI
-jqI
-vgj
+bkX
+bkX
+bkX
+bkX
+bkX
+bkX
+bkX
+abu
+bkX
+abt
+bkX
+bkX
+aUk
 wzQ
 wzQ
 wzQ
@@ -76575,7 +76454,7 @@ bkX
 bkX
 bkX
 bkX
-bkW
+aaZ
 aUk
 wzQ
 wzQ
@@ -76732,7 +76611,7 @@ wzQ
 blf
 bld
 bkX
-bkX
+abu
 bkX
 bkX
 bkX
@@ -76903,11 +76782,11 @@ bkX
 bkX
 bkX
 bkX
+abu
 bkX
 bkX
 bkX
-bkX
-bkX
+abu
 bkX
 bkX
 kif

@@ -12530,7 +12530,6 @@
 /area/atlan/asteroid/processing_handling)
 "hXh" = (
 /obj/structure/machinery/light/double/blue,
-/obj/structure/machinery/light/double/blue,
 /turf/open/floor/prison/darkbrownfull2,
 /area/atlan/asteroid/processing_handling)
 "hXw" = (
@@ -24621,6 +24620,7 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
+/obj/item/ammo_magazine/rifle/type71/ap,
 /obj/item/ammo_magazine/rifle/type71/ap,
 /turf/open/floor/strata/red1,
 /area/atlan/asteroid/processing_offices)

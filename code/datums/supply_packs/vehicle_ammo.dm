@@ -109,22 +109,6 @@
 	containername = "TOW launcher ammo crate"
 	group = "Vehicle Ammo"
 
-// same as the regular BRUTE ammo. This is just in the vehicle section to avoid mistakes.
-/datum/supply_packs/vehicle_brute_rockets
-	name = "M6H-BRUTE Breaching Rocket Crate (x6)"
-	contains = list(
-		/obj/item/ammo_magazine/rocket/brute,
-		/obj/item/ammo_magazine/rocket/brute,
-		/obj/item/ammo_magazine/rocket/brute,
-		/obj/item/ammo_magazine/rocket/brute,
-		/obj/item/ammo_magazine/rocket/brute,
-		/obj/item/ammo_magazine/rocket/brute,
-	)
-	cost = 30
-	containertype = /obj/structure/closet/crate/explosives
-	containername = "\improper M6H-BRUTE Breaching Rocket Crate (WARNING)"
-	group = "Vehicle Ammo"
-
 /datum/supply_packs/ammo_m56_cupola
 	name = "M56 Cupola magazines (x2)"
 	contains = list(

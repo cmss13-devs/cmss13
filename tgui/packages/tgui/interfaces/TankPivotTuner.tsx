@@ -28,9 +28,9 @@ type Data = {
 const AXIS_STEPS = [-10, -1, 1, 10];
 
 const AxisRow = (props: {
-  axis: 'x' | 'y';
-  value: number;
-  target: 'rotation' | 'gimbal' | 'offset';
+  readonly axis: 'x' | 'y';
+  readonly value: number;
+  readonly target: 'rotation' | 'gimbal' | 'offset';
 }) => {
   const { act } = useBackend<Data>();
   const { axis, value, target } = props;
@@ -77,9 +77,7 @@ export const TankPivotTuner = (props) => {
               <LabeledList.Item key={weaponEntry.ref} label={weaponEntry.name}>
                 <Button
                   selected={weaponEntry.selected}
-                  onClick={() =>
-                    act('select_weapon', { ref: weaponEntry.ref })
-                  }
+                  onClick={() => act('select_weapon', { ref: weaponEntry.ref })}
                 >
                   ({weaponEntry.pivot_x}, {weaponEntry.pivot_y})
                 </Button>
@@ -96,9 +94,7 @@ export const TankPivotTuner = (props) => {
           </Section>
         )}
         {selected_name && (
-          <Section
-            title={`${selected_name} - turret pivot (${tuning_label})`}
-          >
+          <Section title={`${selected_name} - turret pivot (${tuning_label})`}>
             <LabeledList>
               <AxisRow axis="x" value={pivot_x} target="rotation" />
               <AxisRow axis="y" value={pivot_y} target="rotation" />

@@ -1,18 +1,23 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
 /obj/item/trash/c_tube,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/cmo,
 /area/varadero/interior/library/restaraunt)
+"ab" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
+	light_range = 5;
+	light_power = 3;
+	light_color = "#FF0000";
+	light_on = 1
+	},
+/turf/closed/wall/r_wall/unmeltable,
+/area/varadero/interior/library/restaraunt)
 "ac" = (
-/turf/open/floor/plating/icefloor/asteroidplating,
+/turf/open/floor/shiva/floor3,
 /area/varadero/interior/library/restaraunt)
 "ad" = (
-/obj/structure/sign/safety/galley{
-	pixel_x = -2
-	},
-/obj/structure/sign/safety/airlock{
-	pixel_x = 12
-	},
+/obj/structure/sign/safety/galley,
 /turf/closed/wall,
 /area/varadero/interior/library/restaraunt)
 "ae" = (
@@ -62,6 +67,7 @@
 "aj" = (
 /obj/effect/landmark/corpsespawner/new_varadero/lacn_police,
 /obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/varadero/interior/library/restaraunt)
 "ak" = (
@@ -72,6 +78,7 @@
 /obj/structure/catwalk{
 	explo_proof = 1
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/template_noop)
 "al" = (
@@ -80,13 +87,14 @@
 /obj/item/trash/candle{
 	pixel_y = 7
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/varadero/interior/library/restaraunt)
 "am" = (
-/obj/structure/machinery/power/apc/no_power/north,
 /obj/structure/bed/chair{
 	dir = 2
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidwarning/east,
 /area/template_noop)
 "an" = (
@@ -98,6 +106,7 @@
 	explo_proof = 1
 	},
 /obj/structure/machinery/portable_atmospherics/canister/empty,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/template_noop)
 "ao" = (
@@ -141,6 +150,94 @@
 /obj/structure/fence/slim/door,
 /turf/open/floor/asteroidfloor/north,
 /area/template_noop)
+"au" = (
+/obj/structure/window/framed/colony,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/library/restaraunt)
+"av" = (
+/obj/structure/window/framed/colony,
+/obj/structure/machinery/door/poddoor/hybrisa{
+	name = "\improper shutters";
+	dir = 8;
+	opacity = 0
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/library/restaraunt)
+"aw" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/cmo,
+/area/varadero/interior/library/restaraunt)
+"ax" = (
+/obj/structure/catwalk{
+	explo_proof = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/template_noop)
+"ay" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/cmo,
+/area/varadero/interior/library/restaraunt)
+"az" = (
+/obj/structure/bed/chair{
+	icon_state = "chair_alt";
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/asteroidwarning/east,
+/area/template_noop)
+"aA" = (
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_s";
+	dir = 8
+	},
+/turf/open/floor/cmo,
+/area/varadero/interior/library/restaraunt)
+"aB" = (
+/obj/structure/sign/safety/ammunition{
+	pixel_x = 14;
+	pixel_y = 5
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_x = 0;
+	pixel_y = 5
+	},
+/obj/structure/sign/safety/fire_haz{
+	pixel_x = 0;
+	pixel_y = -9
+	},
+/turf/closed/wall,
+/area/template_noop)
+"aC" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/cmo,
+/area/varadero/interior/library/restaraunt)
+"aD" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/asteroidwarning/west,
+/area/template_noop)
+"aE" = (
+/obj/structure/closet/secure_closet/guncabinet{
+	locked = 0;
+	opened = 1
+	},
+/obj/structure/catwalk{
+	explo_proof = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/template_noop)
+"aF" = (
+/obj/structure/window/framed/colony,
+/obj/structure/machinery/door/poddoor/hybrisa{
+	name = "\improper shutters";
+	opacity = 0
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/library/restaraunt)
 "bl" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/eastright,
@@ -156,6 +253,7 @@
 	name = "empty plate";
 	pixel_y = 1
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/cmo,
 /area/varadero/interior/library/restaraunt)
 "cl" = (
@@ -175,6 +273,7 @@
 "cy" = (
 /obj/structure/machinery/door/window,
 /obj/structure/machinery/vending/dinnerware,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/cmo,
 /area/varadero/interior/library/restaraunt)
 "dl" = (
@@ -192,6 +291,7 @@
 /area/varadero/interior/library/restaraunt)
 "eR" = (
 /obj/effect/landmark/survivor_spawner,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/cmo,
 /area/varadero/interior/library/restaraunt)
 "fX" = (
@@ -219,6 +319,7 @@
 /area/varadero/interior/library/restaraunt)
 "ga" = (
 /obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/varadero/interior/library/restaraunt)
 "gq" = (
@@ -226,6 +327,7 @@
 	dir = 4;
 	pixel_x = 9
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/varadero/interior/library/restaraunt)
 "ha" = (
@@ -233,6 +335,7 @@
 /area/varadero/interior/library/restaraunt)
 "ia" = (
 /obj/structure/machinery/light/small,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/varadero/interior/library/restaraunt)
 "ix" = (
@@ -244,16 +347,15 @@
 /obj/structure/machinery/door/window/eastleft,
 /turf/open/floor/cmo,
 /area/varadero/interior/library/restaraunt)
-"kZ" = (
-/turf/open/floor/wood,
-/area/varadero/interior/library/restaraunt)
 "lK" = (
 /obj/structure/closet/secure_closet/freezer/fridge/groceries,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/cmo,
 /area/varadero/interior/library/restaraunt)
 "lY" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 1
 	},
 /turf/open/floor/cmo,
 /area/varadero/interior/library/restaraunt)
@@ -265,6 +367,7 @@
 /area/varadero/interior/library/restaraunt)
 "ol" = (
 /mob/living/simple_animal/small/mouse,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/cmo,
 /area/varadero/interior/library/restaraunt)
 "oW" = (
@@ -284,6 +387,10 @@
 "pO" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/chem_dispenser/soda,
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_c";
+	dir = 4
+	},
 /turf/open/floor/cmo,
 /area/varadero/interior/library/restaraunt)
 "re" = (
@@ -293,6 +400,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/cmo,
 /area/varadero/interior/library/restaraunt)
 "un" = (
@@ -305,6 +413,7 @@
 	pixel_x = 17;
 	pixel_y = -8
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/varadero/interior/library/restaraunt)
 "vt" = (
@@ -312,6 +421,7 @@
 	icon_state = "chair_alt";
 	dir = 4
 	},
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/asteroidwarning/east,
 /area/template_noop)
 "vS" = (
@@ -323,12 +433,10 @@
 	dir = 1;
 	pixel_x = 5
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/varadero/interior/library/restaraunt)
 "vX" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
 /obj/structure/surface/table/reinforced,
 /obj/item/trash/snack_bowl{
 	pixel_x = 5;
@@ -340,14 +448,17 @@
 	pixel_x = -2;
 	pixel_y = 9
 	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/floor/cmo,
 /area/varadero/interior/library/restaraunt)
 "xI" = (
-/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/varadero/interior/library/restaraunt)
 "yT" = (
-/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/bed/chair/wood/wings{
 	dir = 4;
 	pixel_x = 8;
@@ -380,10 +491,10 @@
 /obj/item/circuitboard/airlock{
 	pixel_y = 6
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/cmo,
 /area/varadero/interior/library/restaraunt)
 "Ag" = (
-/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/wood,
 /area/varadero/interior/library/restaraunt)
@@ -404,6 +515,7 @@
 /turf/open/floor/cmo,
 /area/varadero/interior/library/restaraunt)
 "BJ" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood/wood_broken,
 /area/varadero/interior/library/restaraunt)
 "BL" = (
@@ -417,6 +529,7 @@
 	pixel_x = 8;
 	pixel_y = 5
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/varadero/interior/library/restaraunt)
 "Ct" = (
@@ -433,11 +546,13 @@
 /area/varadero/interior/library/restaraunt)
 "FB" = (
 /obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/wood_broken6,
 /area/varadero/interior/library/restaraunt)
 "Hb" = (
 /obj/structure/closet/secure_closet/fridge/fish,
 /obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/cmo,
 /area/varadero/interior/library/restaraunt)
 "Hl" = (
@@ -458,11 +573,10 @@
 /turf/open/floor/wood,
 /area/varadero/interior/library/restaraunt)
 "Hy" = (
-/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper New Varadero Gallery"
 	},
-/turf/open/floor/plating/icefloor/asteroidplating,
+/turf/open/floor/shiva/floor3,
 /area/varadero/interior/library/restaraunt)
 "Io" = (
 /obj/item/tool/kitchen/knife{
@@ -475,15 +589,17 @@
 "Ix" = (
 /obj/structure/surface/table,
 /obj/item/book/manual/paperwork,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidwarning/east,
 /area/template_noop)
 "JM" = (
-/obj/structure/pipes/standard/manifold/hidden/green{
-	dir = 1
-	},
 /obj/structure/bed/chair/wood/wings{
 	dir = 4;
 	pixel_x = 7
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/library/restaraunt)
@@ -499,13 +615,14 @@
 	pixel_x = 3;
 	pixel_y = 9
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/cmo,
 /area/varadero/interior/library/restaraunt)
 "Nf" = (
 /obj/structure/sign/safety/airlock{
 	pixel_x = 8
 	},
-/turf/closed/wall,
+/turf/closed/wall/r_wall/unmeltable,
 /area/varadero/interior/library/restaraunt)
 "Ni" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -524,6 +641,7 @@
 /area/template_noop)
 "Ol" = (
 /obj/structure/machinery/door/window/eastright,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/cmo,
 /area/varadero/interior/library/restaraunt)
 "Pp" = (
@@ -535,6 +653,7 @@
 /obj/structure/machinery/light/small{
 	pixel_x = 5
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/varadero/interior/library/restaraunt)
 "Rf" = (
@@ -554,12 +673,14 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/varadero/interior/library/restaraunt)
 "TN" = (
 /obj/structure/barricade/handrail{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/varadero/interior/library/restaraunt)
 "Vs" = (
@@ -571,6 +692,10 @@
 	},
 /obj/structure/surface/table/almayer,
 /obj/item/tool/kitchen/can_opener,
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_c";
+	dir = 1
+	},
 /turf/open/floor/cmo,
 /area/varadero/interior/library/restaraunt)
 "WR" = (
@@ -589,7 +714,6 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/library/restaraunt)
 "ZE" = (
-/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/spawner/random/toy,
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/item/weapon/twohanded/fireaxe{
@@ -601,14 +725,14 @@
 
 (1,1,1) = {"
 ha
-un
-un
+av
+av
 ha
 Xx
 dl
-un
+av
 ha
-un
+av
 Nf
 "}
 (2,1,1) = {"
@@ -616,17 +740,17 @@ ha
 Ct
 Io
 Vs
-oX
+aA
 pO
 Hb
 lK
 AP
-ha
+ab
 "}
 (3,1,1) = {"
 ha
 co
-oX
+aC
 aa
 sP
 eR
@@ -639,13 +763,13 @@ un
 ha
 WR
 oX
-oX
+aC
 lY
-oX
-oX
-oX
-oX
-un
+ay
+ay
+ay
+aw
+au
 "}
 (5,1,1) = {"
 ha
@@ -672,7 +796,7 @@ Pp
 ha
 "}
 (7,1,1) = {"
-un
+aF
 gq
 Rf
 BJ
@@ -684,7 +808,7 @@ xI
 Hy
 "}
 (8,1,1) = {"
-un
+aF
 BL
 AG
 ao
@@ -692,7 +816,7 @@ Hl
 al
 aj
 uH
-kZ
+xI
 ac
 "}
 (9,1,1) = {"
@@ -721,26 +845,26 @@ ha
 "}
 (11,1,1) = {"
 ar
-as
+aE
 as
 ap
-re
+aB
 am
 Ix
-vt
+az
 vt
 re
 "}
 (12,1,1) = {"
 at
-aq
-aq
+aD
+aD
 aq
 ae
+ax
 af
-af
-af
-af
+ax
+ax
 ae
 "}
 (13,1,1) = {"

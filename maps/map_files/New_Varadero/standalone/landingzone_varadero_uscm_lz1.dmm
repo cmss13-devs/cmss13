@@ -5321,22 +5321,19 @@
 	name = "pole signal";
 	density = 0;
 	dir = 8;
-	pixel_x = 13;
-	pixel_y = 16
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	name = "pole signal";
-	density = 0;
-	dir = 8;
 	pixel_x = 14;
-	pixel_y = 16
+	pixel_y = 16;
+	destroyed_stack_amount = 0;
+	stack_amount = 0
 	},
 /obj/structure/barricade/handrail/kutjevo{
 	name = "pole signal";
 	density = 0;
 	dir = 4;
-	pixel_x = -14;
-	pixel_y = 16
+	pixel_x = -15;
+	pixel_y = 16;
+	destroyed_stack_amount = 0;
+	stack_amount = 0
 	},
 /obj/structure/sign/safety/rad_haz{
 	pixel_x = 7;

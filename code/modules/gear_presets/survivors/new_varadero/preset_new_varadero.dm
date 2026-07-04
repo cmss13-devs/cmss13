@@ -1,10 +1,9 @@
 /datum/equipment_preset/survivor/new_varadero
 	job_title = JOB_SURVIVOR
 	faction = FACTION_MARINE
+	minimap_background = "background_wo" // placeholder
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_SPANISH)
-	flags = EQUIPMENT_PRESET_START_OF_ROUND
-
 
 /datum/equipment_preset/survivor/new_varadero/load_gear(mob/living/carbon/human/new_human)
 	add_random_survivor_equipment(new_human)
@@ -48,6 +47,7 @@
 	origin_override = ORIGIN_USCM
 	skills = /datum/skills/military/survivor/lacn_MP
 	paygrades = list(PAY_SHORT_NE6 = JOB_PLAYTIME_TIER_0)
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/dogtag
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_RESEARCH,ACCESS_CIVILIAN_ENGINEERING,ACCESS_CIVILIAN_LOGISTICS,ACCESS_CIVILIAN_BRIG,ACCESS_CIVILIAN_MEDBAY,ACCESS_CIVILIAN_COMMAND,)
 
@@ -86,6 +86,7 @@
 	origin_override = ORIGIN_USCM
 	skills = /datum/skills/military/survivor/lacn_standard
 	paygrades = list(PAY_SHORT_NE2 = JOB_PLAYTIME_TIER_0)
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/dogtag
 	access = list(ACCESS_CIVILIAN_PUBLIC,)
 
@@ -126,6 +127,7 @@
 	origin_override = ORIGIN_USCM
 	skills = /datum/skills/commander
 	paygrades = list(PAY_SHORT_NO5 = JOB_PLAYTIME_TIER_0)
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/gold
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_RESEARCH,ACCESS_CIVILIAN_ENGINEERING,ACCESS_CIVILIAN_LOGISTICS,ACCESS_CIVILIAN_BRIG,ACCESS_CIVILIAN_MEDBAY,ACCESS_CIVILIAN_COMMAND,)
 
@@ -165,6 +167,7 @@
 	minimap_icon = "field_doctor"
 	origin_override = ORIGIN_USCM
 	paygrades = list(PAY_SHORT_NE4 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NE5 = JOB_PLAYTIME_TIER_3)
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	skills = /datum/skills/civilian/survivor/doctor
 	idtype = /obj/item/card/id/dogtag
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY,)
@@ -204,6 +207,7 @@
 	origin_override = ORIGIN_USCM
 	paygrades = list(PAY_SHORT_NE4 = JOB_PLAYTIME_TIER_0, PAY_SHORT_NE5 = JOB_PLAYTIME_TIER_3)
 	skills = /datum/skills/civilian/survivor/doctor
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/clearance_badge
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY,)
 
@@ -256,6 +260,7 @@
 	role_comm_title = "LACN VC"
 	origin_override = ORIGIN_USCM
 	skills = /datum/skills/military/survivor/lacn_vhccrew
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/dogtag
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_ENGINEERING,ACCESS_CIVILIAN_LOGISTICS,ACCESS_CIVILIAN_MEDBAY,)
 
@@ -302,6 +307,7 @@
 	origin_override = ORIGIN_USCM
 	skills = /datum/skills/military/survivor/lacn_groundcrew
 	paygrades = list(PAY_SHORT_NE3 = JOB_PLAYTIME_TIER_0)
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/dogtag
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_ENGINEERING,ACCESS_CIVILIAN_LOGISTICS,ACCESS_CIVILIAN_MEDBAY,)
 
@@ -369,6 +375,7 @@
 	origin_override = ORIGIN_USCM
 	skills = /datum/skills/military/survivor/lacn_pilot
 	paygrades = list(PAY_SHORT_NO1 = JOB_PLAYTIME_TIER_0,)
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/dogtag
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_ENGINEERING,ACCESS_CIVILIAN_LOGISTICS,ACCESS_CIVILIAN_MEDBAY,ACCESS_CIVILIAN_COMMAND,)
 
@@ -402,6 +409,7 @@
 	faction = FACTION_WY
 	faction_group = list(FACTION_WY, FACTION_SURVIVOR, FACTION_MARINE)
 	skills = /datum/skills/civilian/survivor/scientist
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/clearance_badge/scientist
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY,)
 
@@ -450,6 +458,7 @@
 	faction = FACTION_WY
 	faction_group = list(FACTION_WY, FACTION_SURVIVOR, FACTION_MARINE)
 	skills = /datum/skills/civilian/survivor/scientist
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/clearance_badge/scientist
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY,)
 
@@ -503,6 +512,7 @@
 	faction = FACTION_WY
 	faction_group = list(FACTION_WY, FACTION_SURVIVOR, FACTION_MARINE)
 	skills = /datum/skills/civilian/survivor/scientist
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/clearance_badge/scientist
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY,)
 
@@ -544,6 +554,7 @@
 	faction_group = list(FACTION_WY, FACTION_SURVIVOR, FACTION_MARINE)
 	paygrades = list(PAY_SHORT_CCMOC = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/civilian/survivor/scientist
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/clearance_badge/scientist
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY,ACCESS_CIVILIAN_COMMAND,)
 
@@ -574,6 +585,7 @@
 	minimap_background = "background_pmc"
 	faction = FACTION_WY
 	faction_group = list(FACTION_WY, FACTION_SURVIVOR, FACTION_MARINE)
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	skills = /datum/skills/civilian/survivor
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH,)
 
@@ -602,6 +614,7 @@
 	origin_override = ORIGIN_USCM
 	paygrades = list(PAY_SHORT_CREP = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/civilian/survivor
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY,ACCESS_CIVILIAN_COMMAND,ACCESS_MARINE_COMMAND, ACCESS_MARINE_GENERAL, ACCESS_MARINE_MEDBAY)
 
@@ -626,8 +639,10 @@
 	assignment = "LACN Base Chaplain"
 	paygrades = list(PAY_SHORT_NE4 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "LACN CHAP"
-	idtype = /obj/item/card/id/dogtag
 	skills = /datum/skills/civilian/survivor/chaplain
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	idtype = /obj/item/card/id/dogtag
+	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY,ACCESS_CIVILIAN_COMMAND,ACCESS_MARINE_COMMAND, ACCESS_MARINE_GENERAL, ACCESS_MARINE_MEDBAY)
 
 	survivor_variant = CIVILIAN_SURVIVOR
 

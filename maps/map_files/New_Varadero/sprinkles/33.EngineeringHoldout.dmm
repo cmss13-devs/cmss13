@@ -3,6 +3,18 @@
 /obj/effect/landmark/nightmare{
 	insert_tag = "EngineeringHoldout"
 	},
+/obj/structure/sign/safety/fibre_optics{
+	pixel_x = 0;
+	pixel_y = -8
+	},
+/obj/structure/sign/safety/bridge{
+	pixel_x = 0;
+	pixel_y = 6
+	},
+/obj/structure/sign/safety/east{
+	pixel_x = 15;
+	pixel_y = -8
+	},
 /turf/closed/wall/r_wall/unmeltable,
 /area/template_noop)
 "ab" = (
@@ -10,7 +22,7 @@
 /obj/item/shard{
 	icon_state = "medium"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/template_noop)
 "ac" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
@@ -59,7 +71,7 @@
 /area/template_noop)
 "aj" = (
 /obj/structure/window_frame/colony/reinforced,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/template_noop)
 "ak" = (
 /obj/effect/decal/cleanable/dirt,
@@ -82,6 +94,10 @@
 /obj/structure/sign/poster/ad{
 	icon_state = "poster35"
 	},
+/turf/closed/wall/r_wall,
+/area/template_noop)
+"ao" = (
+/obj/structure/sign/safety/maint,
 /turf/closed/wall/r_wall,
 /area/template_noop)
 "aY" = (
@@ -143,7 +159,7 @@
 	icon_state = "medium"
 	},
 /obj/structure/window_frame/colony/reinforced,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/template_noop)
 "fL" = (
 /obj/effect/decal/warning_stripes/asteroid{
@@ -178,7 +194,7 @@
 /obj/item/shard{
 	icon_state = "medium"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/template_noop)
 "jD" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -202,14 +218,14 @@
 	pixel_y = -21
 	},
 /obj/effect/spawner/random/powercell,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/template_noop)
 "kr" = (
 /obj/structure/window_frame/colony/reinforced,
 /obj/item/shard{
 	icon_state = "large"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/template_noop)
 "kt" = (
 /obj/effect/landmark/objective_landmark/medium,
@@ -245,7 +261,7 @@
 /obj/item/shard{
 	icon_state = "medium"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/template_noop)
 "lj" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -295,7 +311,7 @@
 /obj/effect/spawner/random/gun/pistol,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/template_noop)
 "nL" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
@@ -423,12 +439,12 @@
 /turf/open/floor/shiva/yellow/northwest,
 /area/template_noop)
 "uZ" = (
-/obj/structure/window_frame/colony/reinforced,
-/obj/item/stack/rods,
-/obj/item/shard{
-	icon_state = "medium"
+/obj/structure/sign/safety/fibre_optics,
+/obj/structure/sign/safety/storage{
+	pixel_x = 14;
+	pixel_y = 0
 	},
-/turf/open/floor/plating,
+/turf/closed/wall,
 /area/template_noop)
 "vw" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -608,7 +624,7 @@
 /area/template_noop)
 "GY" = (
 /obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/template_noop)
 "Ha" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -681,6 +697,9 @@
 "Lo" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
 "LP" = (
@@ -691,6 +710,7 @@
 	welded = 1;
 	req_access_txt = "100"
 	},
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
 "MC" = (
@@ -778,11 +798,10 @@
 /turf/open/floor/platingdmg1,
 /area/template_noop)
 "Rf" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/barricade/sandbags/wired{
-	pixel_y = -5
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 5
+	},
 /turf/open/floor/shiva/yellowfull/west,
 /area/template_noop)
 "RF" = (
@@ -1019,14 +1038,14 @@ kr
 IE
 IE
 sB
-IE
+ao
 ai
 IE
 IE
 IE
 IE
 sB
-IE
+ao
 IE
 ac
 "}

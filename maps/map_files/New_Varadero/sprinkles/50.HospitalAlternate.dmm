@@ -32,6 +32,10 @@
 	},
 /turf/open/floor/shiva/snow_mat/east,
 /area/template_noop)
+"ae" = (
+/obj/structure/sign/safety/maint,
+/turf/closed/wall,
+/area/template_noop)
 "af" = (
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/shiva/multi_tiles/west,
@@ -49,21 +53,33 @@
 	},
 /turf/open/floor/shiva/red/north,
 /area/template_noop)
+"ai" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_c";
+	dir = 2
+	},
+/turf/open/floor/shiva/wred,
+/area/template_noop)
 "aj" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/blood,
-/obj/structure/bed/roller/hospital/bloody,
-/obj/effect/landmark/corpsespawner/new_varadero/lacn_marine/burst,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/roller/hospital_empty/bigrollerbloodempty,
+/obj/effect/landmark/corpsespawner/new_varadero/lacn_marine/burst,
 /turf/open/floor/shiva/multi_tiles,
 /area/template_noop)
 "ak" = (
 /obj/structure/window_frame/colony,
 /obj/structure/machinery/door/poddoor/hybrisa/shutters{
 	dir = 4;
-	name = "\improper quarantine shutters"
+	name = "\improper quarantine shutters";
+	needs_power = 0
 	},
 /obj/item/shard{
 	icon_state = "large"
@@ -116,6 +132,10 @@
 /obj/effect/spawner/gibspawner/human,
 /turf/open/floor/shiva/snow_mat/east,
 /area/template_noop)
+"ar" = (
+/obj/structure/sign/safety/reception,
+/turf/closed/wall,
+/area/template_noop)
 "as" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -131,10 +151,15 @@
 	},
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
+"au" = (
+/obj/effect/acid_hole,
+/turf/closed/wall/r_wall,
+/area/template_noop)
 "av" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "HospitalAlternate"
 	},
+/obj/structure/sign/safety/maint,
 /turf/closed/wall,
 /area/template_noop)
 "aw" = (
@@ -163,7 +188,8 @@
 /obj/structure/window/framed/colony,
 /obj/structure/machinery/door/poddoor/hybrisa/shutters{
 	dir = 4;
-	name = "\improper quarantine shutters"
+	name = "\improper quarantine shutters";
+	needs_power = 0
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/template_noop)
@@ -282,14 +308,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
-"aQ" = (
-/obj/structure/window/framed/colony,
-/obj/structure/machinery/door/poddoor/hybrisa/shutters{
-	dir = 4;
-	name = "\improper quarantine shutters"
-	},
-/turf/open/floor/plating,
-/area/template_noop)
 "aR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/hybrisa/hospital/hospitaldivider{
@@ -395,10 +413,6 @@
 /area/template_noop)
 "bf" = (
 /obj/structure/sign/safety/medical,
-/obj/structure/sign/safety/biohazard{
-	pixel_x = 15;
-	pixel_y = 0
-	},
 /turf/closed/wall,
 /area/template_noop)
 "bg" = (
@@ -418,6 +432,10 @@
 /obj/structure/bed/sofa/vert/grey/top,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/floor3,
+/area/template_noop)
+"bi" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/template_noop)
 "bj" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -535,10 +553,6 @@
 /area/template_noop)
 "bz" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/door/poddoor/hybrisa/shutters{
-	dir = 4;
-	name = "\improper quarantine shutters"
-	},
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/template_noop)
@@ -569,7 +583,8 @@
 "bE" = (
 /obj/structure/machinery/door/poddoor/hybrisa/shutters{
 	dir = 4;
-	name = "\improper quarantine shutters"
+	name = "\improper quarantine shutters";
+	needs_power = 0
 	},
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
@@ -613,19 +628,16 @@
 	},
 /turf/closed/wall/r_wall/unmeltable,
 /area/template_noop)
-"bK" = (
-/obj/structure/machinery/door/poddoor/hybrisa/shutters{
-	name = "\improper quarantine shutters"
+"bM" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
 	},
-/obj/structure/window/framed/colony,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/template_noop)
-"bL" = (
-/obj/structure/window/framed/colony,
-/obj/structure/machinery/door/poddoor/hybrisa/shutters{
-	name = "\improper quarantine shutters"
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_s";
+	dir = 4
 	},
-/turf/open/floor/plating,
+/turf/open/floor/shiva/redfull,
 /area/template_noop)
 "bT" = (
 /obj/item/storage/firstaid/o2{
@@ -720,7 +732,8 @@
 "eU" = (
 /obj/structure/window/framed/colony,
 /obj/structure/machinery/door/poddoor/hybrisa/shutters{
-	name = "\improper quarantine shutters"
+	name = "\improper quarantine shutters";
+	needs_power = 0
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/template_noop)
@@ -821,6 +834,10 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_s";
+	dir = 4
+	},
 /turf/open/floor/shiva/redfull/west,
 /area/template_noop)
 "jc" = (
@@ -903,9 +920,11 @@
 /area/template_noop)
 "ky" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/bed/chair/office/light{
-	dir = 8
+/obj/structure/bookcase{
+	icon_state = "book-5";
+	density = 0
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
 "kX" = (
@@ -990,7 +1009,8 @@
 "mQ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/poddoor/hybrisa/shutters{
-	name = "\improper quarantine shutters"
+	name = "\improper quarantine shutters";
+	needs_power = 0
 	},
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "\improper Underground Medical";
@@ -1098,6 +1118,10 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_c";
+	dir = 8
+	},
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
 "pX" = (
@@ -1265,13 +1289,14 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/medical{
-	name = "Underground Medical Laboratory Operating Theatre";
+	name = "Underground Medical Operating Theatre";
 	dir = 1;
 	req_one_access = null;
 	req_access_txt = "100"
 	},
 /obj/structure/machinery/door/poddoor/hybrisa/shutters{
-	name = "\improper quarantine shutters"
+	name = "\improper quarantine shutters";
+	needs_power = 0
 	},
 /turf/open/floor/shiva/snow_mat/east,
 /area/template_noop)
@@ -1294,7 +1319,8 @@
 	},
 /obj/structure/machinery/door/poddoor/hybrisa/shutters{
 	dir = 4;
-	name = "\improper quarantine shutters"
+	name = "\improper quarantine shutters";
+	needs_power = 0
 	},
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
@@ -1310,14 +1336,14 @@
 /area/template_noop)
 "xu" = (
 /obj/structure/machinery/door/airlock/almayer/medical{
-	name = "Underground Medical Laboratory Operating Theatre";
+	name = "Underground Medical Operating Theatre";
 	dir = 1;
 	req_one_access = null;
-	req_access_txt = "100";
-	locked = 1
+	req_access_txt = "100"
 	},
 /obj/structure/machinery/door/poddoor/hybrisa/shutters{
-	name = "\improper quarantine shutters"
+	name = "\improper quarantine shutters";
+	needs_power = 0
 	},
 /turf/open/floor/shiva/snow_mat/east,
 /area/template_noop)
@@ -1333,7 +1359,8 @@
 	},
 /obj/structure/machinery/door/poddoor/hybrisa/shutters{
 	dir = 4;
-	name = "\improper quarantine shutters"
+	name = "\improper quarantine shutters";
+	needs_power = 0
 	},
 /turf/open/floor/shiva/snow_mat/east,
 /area/template_noop)
@@ -1418,6 +1445,10 @@
 "AU" = (
 /obj/structure/surface/rack,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_c";
+	dir = 8
+	},
 /turf/open/floor/shiva/redfull/west,
 /area/template_noop)
 "BH" = (
@@ -1568,6 +1599,10 @@
 	req_access_txt = "100"
 	},
 /obj/structure/machinery/light,
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_c";
+	dir = 1
+	},
 /turf/open/floor/shiva/wred/southeast,
 /area/template_noop)
 "Gx" = (
@@ -1626,6 +1661,9 @@
 "HT" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
+	},
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_s"
 	},
 /turf/open/floor/shiva/wredfull,
 /area/template_noop)
@@ -1729,7 +1767,8 @@
 	},
 /obj/structure/machinery/door/poddoor/hybrisa/shutters{
 	dir = 4;
-	name = "\improper quarantine shutters"
+	name = "\improper quarantine shutters";
+	needs_power = 0
 	},
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
@@ -1889,10 +1928,6 @@
 /area/template_noop)
 "QK" = (
 /obj/structure/sign/safety/medical,
-/obj/structure/sign/safety/biohazard{
-	pixel_x = 15;
-	pixel_y = 0
-	},
 /turf/closed/wall/r_wall/unmeltable,
 /area/template_noop)
 "QV" = (
@@ -1943,11 +1978,9 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/bookcase{
-	icon_state = "book-5";
-	density = 0
+/obj/structure/bed/chair/office/light{
+	dir = 8
 	},
-/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
 "Se" = (
@@ -2062,6 +2095,10 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/used_stasis_bag,
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_c";
+	dir = 2
+	},
 /turf/open/floor/shiva/redfull/west,
 /area/template_noop)
 "Wp" = (
@@ -2103,6 +2140,10 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_c";
+	dir = 2
+	},
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
 "Xk" = (
@@ -2163,7 +2204,8 @@
 	},
 /obj/structure/machinery/door/poddoor/hybrisa/shutters{
 	dir = 4;
-	name = "\improper quarantine shutters"
+	name = "\improper quarantine shutters";
+	needs_power = 0
 	},
 /turf/open/floor/shiva/wredfull,
 /area/template_noop)
@@ -2201,7 +2243,7 @@ bz
 bz
 bu
 Ki
-aA
+bi
 bf
 kb
 aD
@@ -2216,16 +2258,16 @@ zC
 av
 "}
 (2,1,1) = {"
-bK
+bi
 FP
 bT
 bu
 aT
 Su
 Io
-aA
-aA
-aA
+bi
+bi
+bi
 zC
 zC
 aA
@@ -2236,7 +2278,7 @@ Ok
 zC
 "}
 (3,1,1) = {"
-bK
+bi
 Ya
 aT
 bu
@@ -2296,7 +2338,7 @@ zc
 zC
 "}
 (6,1,1) = {"
-bL
+bi
 DY
 bB
 mw
@@ -2316,7 +2358,7 @@ zc
 Sy
 "}
 (7,1,1) = {"
-bL
+bi
 aT
 aT
 mw
@@ -2327,7 +2369,7 @@ ew
 XT
 FN
 oN
-zC
+ar
 ad
 PL
 in
@@ -2350,13 +2392,13 @@ hh
 eU
 qS
 bl
-Rs
+zC
 IR
 ay
 aw
 "}
 (9,1,1) = {"
-bL
+bi
 rA
 bC
 bv
@@ -2376,7 +2418,7 @@ ay
 zC
 "}
 (10,1,1) = {"
-bL
+bi
 He
 Cp
 ao
@@ -2392,7 +2434,7 @@ mo
 ab
 eU
 gi
-ay
+ai
 zC
 "}
 (11,1,1) = {"
@@ -2421,22 +2463,22 @@ bI
 bE
 wb
 zC
-aQ
-aQ
-aQ
+aA
+aA
+aA
 Zr
-aQ
-Rs
+aA
+zC
 dB
 Gx
 yo
 zC
 rb
 Ga
-zC
+ae
 "}
 (13,1,1) = {"
-bL
+eU
 vw
 JS
 bx
@@ -2456,7 +2498,7 @@ zC
 dB
 "}
 (14,1,1) = {"
-bL
+eU
 vS
 VI
 WO
@@ -2476,7 +2518,7 @@ Iz
 Iz
 "}
 (15,1,1) = {"
-bL
+eU
 ta
 br
 oU
@@ -2536,7 +2578,7 @@ Iz
 Iz
 "}
 (18,1,1) = {"
-bL
+eU
 DQ
 bG
 MM
@@ -2547,7 +2589,7 @@ ah
 TP
 aS
 aM
-aw
+zC
 Iz
 Iz
 Iz
@@ -2556,7 +2598,7 @@ Iz
 Iz
 "}
 (19,1,1) = {"
-bL
+eU
 jr
 bH
 UZ
@@ -2567,7 +2609,7 @@ be
 QD
 aT
 vn
-dB
+au
 Iz
 Iz
 Iz
@@ -2596,7 +2638,7 @@ Iz
 Iz
 "}
 (21,1,1) = {"
-Rs
+zC
 Io
 zm
 jc
@@ -2683,7 +2725,7 @@ GU
 bt
 Fa
 aB
-Rs
+zC
 iy
 aX
 Tc
@@ -2741,7 +2783,7 @@ bI
 pp
 by
 Xh
-Xg
+bM
 pz
 eU
 Wi
@@ -2760,11 +2802,11 @@ Iz
 dB
 Io
 zC
-Rs
+ae
 yj
 bm
 dB
-Rs
+ae
 KQ
 zC
 dB

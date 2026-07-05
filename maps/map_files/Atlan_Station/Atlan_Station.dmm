@@ -65,6 +65,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/medical)
+"aan" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "alternatedorms"
+	},
+/turf/open/floor/strata,
+/area/atlan/station/single_dorms)
 "aao" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/cyan1/east,
@@ -1452,6 +1458,12 @@
 	pixel_x = 24
 	},
 /turf/open/floor/strata,
+/area/atlan/station/single_dorms)
+"aeU" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 1
+	},
+/turf/open/floor/strata/green4,
 /area/atlan/station/single_dorms)
 "afj" = (
 /obj/structure/machinery/light{
@@ -22197,9 +22209,6 @@
 /turf/open/floor/strata/green1,
 /area/atlan/station/stairs2)
 "oqd" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 4
-	},
 /obj/structure/closet,
 /obj/effect/landmark/objective_landmark/close,
 /obj/item/clothing/under/marine/veteran/UPP/civi5,
@@ -52031,7 +52040,7 @@ via
 dMD
 dLF
 via
-via
+aan
 via
 via
 dMD
@@ -53214,7 +53223,7 @@ uya
 sZZ
 nou
 aAk
-idL
+aeU
 cPY
 uya
 dMD

@@ -10,6 +10,9 @@
 	pixel_x = -5;
 	pixel_y = 6
 	},
+/obj/structure/machinery/light/double/blue{
+	dir = 1
+	},
 /turf/open/floor/strata/green3/north,
 /area/atlan/station/single_dorms)
 "ac" = (
@@ -282,9 +285,6 @@
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/atlan/station/single_dorms)
 "ya" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 4
-	},
 /obj/item/trash/upp_mre{
 	pixel_y = 1;
 	pixel_x = -6

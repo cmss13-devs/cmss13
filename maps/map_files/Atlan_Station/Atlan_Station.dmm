@@ -3691,6 +3691,23 @@
 	},
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_caves)
+"alq" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/station/repairoffice)
+"alr" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/strata/orange_cover,
+/area/atlan/station/repairoffice)
 "ame" = (
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall{
 	pixel_y = 21
@@ -46702,7 +46719,7 @@ rbw
 rUP
 rbw
 rbw
-rbw
+alq
 rbw
 rbw
 rbw
@@ -46900,7 +46917,7 @@ rbw
 vaI
 rbw
 rbw
-rbw
+alq
 rbw
 rbw
 rbw
@@ -47098,7 +47115,7 @@ rbw
 rbw
 rbw
 rbw
-rbw
+alq
 rbw
 vaI
 qnO
@@ -47296,7 +47313,7 @@ oxI
 cZK
 ePD
 vDJ
-aWI
+alr
 ePD
 ePD
 bpx

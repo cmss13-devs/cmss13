@@ -39,7 +39,7 @@
         580,
         0.0
     ],
-    "survivor_message": "The stench of burning phoron still lingers in the salty evening breeze of the ruined New Varadero Naval Base, The spector's dying cackle echos through your mind as you realise that you're now one of just a handful of living people left standing on these battle worn shores. Through sheer cunning, grit, and United American fire power, you've managed to survive against both a ceaseless tides of aliens and a now slain lone spector... the cry of a new mother snaps you back to reality. Its only a matter of time before another acidc wave of those horrid aliens attempts to wash over you.",
+    "survivor_message": "The stench of burning phoron still lingers in the salty evening breeze of the ruined New Varadero Naval Base, The spector's dying cackle echos through your mind as you realise that you're now one of just a handful of living people left standing on these battle worn shores. Through sheer cunning, grit, and United American fire power, you've managed to survive against both a ceaseless tides of aliens and a now slain lone spector... the cry of a new mother snaps you back to reality. Its only a matter of time before another acidc wave of those horrid things attempts to wash over you.",
     "co_briefing": {
         "Hawks": "maps/map_briefings/commanding_officer/new_varadero/NEWVARADEROcpo.html",
         "Doves": "maps/map_briefings/commanding_officer/new_varadero/NEWVARADEROhmm.html",

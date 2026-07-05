@@ -18935,10 +18935,6 @@
 	},
 /turf/open/floor/shiva/yellowfull/west,
 /area/varadero/interior/hall_NW)
-"bbg" = (
-/obj/item/holder/mouse/gray,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/maintenance)
 "bbh" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/invuln/overhead_pipe{
@@ -22509,16 +22505,9 @@
 	},
 /turf/open/floor/shiva/green/west,
 /area/varadero/interior/hall_SE)
-"bkY" = (
-/obj/structure/prop/invuln/lifeboat_hatch_placeholder{
-	layer = 2.2
-	},
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/maintenance/security/north)
 "bkZ" = (
-/obj/structure/prop/invuln/lifeboat_hatch_placeholder/terminal{
-	layer = 2.2
-	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/rack,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/north)
 "bla" = (
@@ -23398,7 +23387,6 @@
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/medical)
 "bnv" = (
-/obj/item/holder/mouse/brown,
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_8"
 	},
@@ -35784,13 +35772,6 @@
 	dir = 4
 	},
 /turf/open/gm/road,
-/area/varadero/interior/cargo)
-"bSy" = (
-/obj/item/holder/mouse/gray,
-/obj/structure/catwalk{
-	explo_proof = 1
-	},
-/turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/cargo)
 "bSz" = (
 /obj/structure/catwalk,
@@ -85544,7 +85525,7 @@ bYa
 bWD
 bVh
 bTR
-bSy
+bVh
 sGY
 bOv
 bOx
@@ -89414,7 +89395,7 @@ qqA
 uvX
 aUc
 aUc
-bbg
+qqA
 aUc
 aZa
 aUc
@@ -97776,7 +97757,7 @@ fsU
 bnI
 cmL
 ist
-bkY
+mnC
 fEZ
 pGs
 pGs
@@ -97957,7 +97938,7 @@ bld
 bld
 mnC
 bmM
-bma
+bmf
 bkZ
 fEZ
 pGs
@@ -137806,15 +137787,15 @@ drq
 drq
 drq
 ssW
-cBJ
 tem
-cBJ
 tem
-cBJ
 tem
-cBJ
 tem
-cBJ
+tem
+tem
+tem
+tem
+tem
 tem
 tem
 tem
@@ -137988,15 +137969,15 @@ drq
 drq
 drq
 ssW
-cBJ
 tem
-cBJ
 tem
-cBJ
 tem
-cBJ
 tem
-cBJ
+tem
+tem
+tem
+tem
+tem
 tem
 tem
 tem
@@ -138170,15 +138151,15 @@ drq
 drq
 drq
 ssW
-cBJ
 tem
-cBJ
 tem
-cBJ
 tem
-cBJ
 tem
-cBJ
+tem
+tem
+tem
+tem
+tem
 tem
 tem
 tem
@@ -138352,18 +138333,18 @@ drq
 drq
 drq
 ssW
-cBJ
-cBJ
-cBJ
-cBJ
-cBJ
-cBJ
-cBJ
-cBJ
-cBJ
-cBJ
-cBJ
-cBJ
+tem
+tem
+tem
+tem
+tem
+tem
+tem
+tem
+tem
+tem
+tem
+tem
 cWe
 ezB
 drq
@@ -138542,7 +138523,7 @@ tem
 tem
 tem
 tem
-cBJ
+tem
 tem
 tem
 tem
@@ -138724,10 +138705,10 @@ tem
 tem
 tem
 ezB
-cBJ
-cBJ
-cBJ
-cBJ
+tem
+tem
+tem
+tem
 cWe
 ezB
 drq
@@ -138906,7 +138887,7 @@ tem
 tem
 tem
 tem
-cBJ
+tem
 tem
 tem
 tem
@@ -139088,10 +139069,10 @@ tem
 tem
 tem
 tem
-cBJ
-cBJ
-cBJ
-cBJ
+tem
+tem
+tem
+tem
 ezB
 ezB
 drq
@@ -139270,11 +139251,11 @@ ezB
 tem
 tem
 tem
-cBJ
 tem
 tem
 tem
-cBJ
+tem
+tem
 ezB
 ezB
 drq
@@ -139451,12 +139432,12 @@ ezB
 ezB
 ezB
 tem
-ezB
-cBJ
 tem
 tem
 tem
-cBJ
+tem
+tem
+tem
 tem
 cWe
 drq
@@ -139634,11 +139615,11 @@ ezB
 ezB
 ezB
 ezB
-cBJ
 tem
 tem
 tem
-cBJ
+tem
+tem
 tem
 cWe
 drq
@@ -139816,11 +139797,11 @@ cCt
 ezB
 ezB
 ezB
-cBJ
-cBJ
-cBJ
-cBJ
-cBJ
+tem
+tem
+tem
+tem
+tem
 tem
 cWe
 drq
@@ -140002,7 +139983,7 @@ ayE
 cCt
 tem
 tem
-cBJ
+tem
 tem
 cWe
 drq
@@ -140184,7 +140165,7 @@ drq
 ssW
 tem
 tem
-cBJ
+tem
 tem
 cWe
 drq
@@ -140364,9 +140345,9 @@ drq
 drq
 drq
 ssW
-cBJ
-cBJ
-cBJ
+tem
+tem
+tem
 tem
 ezB
 drq
@@ -140548,7 +140529,7 @@ drq
 ssW
 tem
 tem
-cBJ
+tem
 tem
 ezB
 ezB

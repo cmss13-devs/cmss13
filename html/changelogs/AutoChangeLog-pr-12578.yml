@@ -1,5 +1,0 @@
-author: "antlersss"
-delete-after: True
-changes:
-  - bugfix: "Reagents without overdose thresholds will no longer trigger red holocards"
-  - bugfix: "Brusied livers/kidneys no longer immediately trigger red holocards"

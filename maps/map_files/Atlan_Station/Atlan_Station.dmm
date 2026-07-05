@@ -477,7 +477,7 @@
 	icon_state = "E";
 	layer = 3.33
 	},
-/turf/open/floor/strata/multi_tiles/west,
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/atlan/station/hab_docks)
 "abB" = (
 /obj/effect/decal/cleanable/dirt,
@@ -490,7 +490,7 @@
 /obj/structure/platform_decoration/metal/strata/east{
 	layer = 2.9
 	},
-/turf/open/floor/strata/multi_tiles/west,
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/atlan/station/hab_docks)
 "abD" = (
 /obj/effect/decal/warning_stripes{
@@ -500,7 +500,7 @@
 /obj/structure/platform_decoration/metal/strata/west{
 	layer = 2.9
 	},
-/turf/open/floor/strata/multi_tiles/west,
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/atlan/station/hab_docks)
 "abE" = (
 /obj/structure/surface/rack{
@@ -3345,6 +3345,10 @@
 	},
 /turf/open/floor/plating/prison,
 /area/atlan/station/double_dorms)
+"akB" = (
+/obj/structure/prop/dam/crane/cargo,
+/turf/open/floor/strata/floor3/east,
+/area/atlan/station/hab_docks)
 "akC" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
@@ -3352,6 +3356,12 @@
 	},
 /turf/open/floor/strata,
 /area/atlan/station/double_dorms)
+"akD" = (
+/obj/structure/largecrate/random/barrel/true_random{
+	layer = 2.97
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/exports_west)
 "akE" = (
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
@@ -3736,6 +3746,81 @@
 	},
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_sw_train)
+"alw" = (
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/obj/structure/largecrate/random/barrel/true_random{
+	layer = 2.97
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/exports_west)
+"alx" = (
+/obj/item/stack/folding_barricade/three,
+/turf/open/floor/strata,
+/area/atlan/station/walkway)
+"aly" = (
+/obj/structure/barricade/handrail/strata,
+/obj/structure/barricade/handrail/strata{
+	dir = 8;
+	layer = 3.3
+	},
+/obj/structure/prop/static_tank/fuel{
+	layer = 2.97
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_y = 1
+	},
+/turf/open/floor/prison/floor_marked,
+/area/atlan/asteroid/processing_ne_train)
+"alz" = (
+/obj/structure/barricade/handrail/strata,
+/obj/structure/barricade/handrail/strata{
+	dir = 4;
+	layer = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/prison/floor_marked,
+/area/atlan/asteroid/processing_ne_train)
+"alA" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_y = 1
+	},
+/obj/structure/largecrate/random/barrel/true_random{
+	layer = 2.97
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/atlan/asteroid/processing_ne_train)
+"alB" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8;
+	layer = 3.3
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/structure/largecrate/random/barrel/true_random{
+	layer = 2.97
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/prison/floor_marked,
+/area/atlan/asteroid/processing_ne_train)
+"alC" = (
+/obj/structure/largecrate/random/barrel/true_random{
+	layer = 2.97
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_caves)
 "ame" = (
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall{
 	pixel_y = 21
@@ -3963,20 +4048,18 @@
 /turf/open/floor/plating,
 /area/atlan/asteroid/processing_dock)
 "avH" = (
-/obj/structure/machinery/door/poddoor/railing{
-	closed_layer = 4.1;
-	density = 0;
-	dir = 2;
-	id = "ARES Railing";
-	layer = 2.1;
-	open_layer = 2.1;
-	pixel_x = -1;
-	pixel_y = -1;
-	unacidable = 0;
-	unslashable = 0
+/obj/structure/barricade/handrail/strata,
+/obj/structure/barricade/handrail/strata{
+	dir = 8;
+	layer = 3.3
 	},
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 8
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 1
 	},
 /turf/open/floor/prison/floor_marked,
 /area/atlan/asteroid/processing_ne_train)
@@ -4250,22 +4333,20 @@
 /turf/open/floor/strata/blue1,
 /area/atlan/station/admin)
 "aGJ" = (
-/obj/structure/machinery/door/poddoor/railing{
-	closed_layer = 4.1;
-	density = 0;
-	dir = 2;
-	id = "ARES Railing";
-	layer = 2.1;
-	open_layer = 2.1;
-	pixel_x = -1;
-	pixel_y = -1;
-	unacidable = 0;
-	unslashable = 0
+/obj/structure/barricade/handrail/strata,
+/obj/structure/barricade/handrail/strata{
+	dir = 8;
+	layer = 3.3
 	},
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 8
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_y = 1
 	},
-/turf/open/floor/prison/floor_plate/southwest,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 1
+	},
+/turf/open/floor/prison/floor_marked,
 /area/atlan/asteroid/processing_se_train)
 "aHd" = (
 /obj/structure/sign/safety/airlock,
@@ -6068,9 +6149,11 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/double_dorms)
 "caD" = (
-/obj/structure/machinery/door/poddoor/railing,
-/obj/structure/largecrate/random/barrel/true_random,
-/turf/open/floor/prison/floor_marked,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/prison/floor_plate/southwest,
 /area/atlan/asteroid/processing_nw_train)
 "caL" = (
 /obj/structure/machinery/light/double/blue,
@@ -6132,7 +6215,10 @@
 /turf/closed/wall/strata_outpost/reinforced,
 /area/atlan/asteroid/processing_train_control)
 "ccS" = (
-/obj/structure/machinery/door/poddoor/railing,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
 /turf/open/floor/prison/floor_plate/southwest,
 /area/atlan/asteroid/processing_ne_train)
 "ceC" = (
@@ -7640,22 +7726,22 @@
 /turf/open/floor/prison/floor_marked,
 /area/atlan/asteroid/processing_seperation)
 "deN" = (
-/obj/structure/machinery/door/poddoor/railing{
-	closed_layer = 4.1;
-	density = 0;
-	dir = 2;
-	id = "ARES Railing";
-	layer = 2.1;
-	open_layer = 2.1;
-	pixel_x = -1;
-	pixel_y = -1;
-	unacidable = 0;
-	unslashable = 0
+/obj/structure/barricade/handrail/strata,
+/obj/structure/barricade/handrail/strata{
+	dir = 4;
+	layer = 4
 	},
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 4
+/obj/structure/prop/static_tank/fuel{
+	layer = 2.97
 	},
-/obj/structure/prop/static_tank/fuel,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
 /turf/open/floor/prison/floor_marked,
 /area/atlan/asteroid/processing_ne_train)
 "deQ" = (
@@ -8560,10 +8646,11 @@
 /turf/closed/wall/strata_outpost/reinforced,
 /area/atlan/lz/near_lz2)
 "dJJ" = (
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 8
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_y = 1
 	},
-/turf/open/floor/prison/floor_marked,
+/turf/open/floor/prison/floor_plate/southwest,
 /area/atlan/asteroid/processing_nw_train)
 "dJL" = (
 /obj/structure/filingcabinet,
@@ -9553,11 +9640,6 @@
 	},
 /turf/open/floor/strata,
 /area/atlan/station/hab_sec)
-"eqj" = (
-/obj/structure/machinery/door/poddoor/railing,
-/obj/structure/prop/static_tank/fuel,
-/turf/open/floor/prison/floor_marked,
-/area/atlan/asteroid/processing_ne_train)
 "eqo" = (
 /obj/structure/machinery/blackbox_recorder{
 	pixel_y = 16;
@@ -11486,10 +11568,11 @@
 /turf/open/floor/strata/floorscorched2,
 /area/atlan/asteroid/processing_sw_train)
 "fFr" = (
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 4
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
 	},
-/turf/open/floor/prison/floor_marked,
+/turf/open/floor/prison/floor_plate/southwest,
 /area/atlan/asteroid/processing_nw_train)
 "fFO" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony,
@@ -12843,9 +12926,21 @@
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/sensors)
 "gFN" = (
-/obj/structure/machinery/door/poddoor/railing,
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 4
+/obj/structure/barricade/handrail/strata{
+	dir = 4;
+	layer = 4
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/structure/prop/static_tank/fuel,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
 	},
 /turf/open/floor/prison/floor_marked,
 /area/atlan/asteroid/processing_ne_train)
@@ -13517,8 +13612,9 @@
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/cargooffice)
 "hfi" = (
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 4
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
 	},
 /turf/open/floor/prison/floor_plate/southwest,
 /area/atlan/asteroid/processing_se_train)
@@ -15621,9 +15717,20 @@
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_handling)
 "ixX" = (
-/obj/structure/machinery/door/poddoor/railing,
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 8
+/obj/structure/barricade/handrail/strata{
+	dir = 8;
+	layer = 3.3
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
 	},
 /turf/open/floor/prison/floor_marked,
 /area/atlan/asteroid/exports_west)
@@ -16386,20 +16493,11 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/asteroid/processing_sw_train)
 "iUe" = (
-/obj/structure/machinery/door/poddoor/railing{
-	closed_layer = 4.1;
-	density = 0;
-	dir = 2;
-	id = "ARES Railing";
-	layer = 2.1;
-	open_layer = 2.1;
-	pixel_x = -1;
-	pixel_y = -1;
-	unacidable = 0;
-	unslashable = 0
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 1
 	},
-/obj/structure/prop/static_tank/fuel,
-/turf/open/floor/prison/floor_marked,
+/turf/open/floor/prison/floor_plate/southwest,
 /area/atlan/asteroid/processing_se_train)
 "iUm" = (
 /obj/structure/cargo_container/upp_small/container_19/right,
@@ -16882,8 +16980,8 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/item/stack/folding_barricade,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/item/stack/folding_barricade/three,
 /turf/open/floor/strata/red1,
 /area/atlan/station/security)
 "jif" = (
@@ -17488,7 +17586,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/turf/open/floor/strata/multi_tiles/west,
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/atlan/station/hab_docks)
 "jBh" = (
 /obj/structure/machinery/vending/snack,
@@ -17952,11 +18050,24 @@
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/repairoffice)
 "jSt" = (
-/obj/structure/machinery/door/poddoor/railing,
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 4
+/obj/structure/barricade/handrail/strata{
+	dir = 4;
+	layer = 4
 	},
-/obj/structure/prop/static_tank/fuel,
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/structure/largecrate/random/barrel/true_random{
+	layer = 2.97
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
 /turf/open/floor/prison/floor_marked,
 /area/atlan/asteroid/processing_ne_train)
 "jSu" = (
@@ -17981,7 +18092,7 @@
 /turf/open/floor/strata/fake_wood,
 /area/atlan/station/promenade)
 "jSQ" = (
-/turf/open/floor/prison/floor_marked,
+/turf/open/floor/prison/floor_plate/southwest,
 /area/atlan/asteroid/processing_ne_train)
 "jSU" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
@@ -18122,22 +18233,22 @@
 /turf/open/shuttle/escapepod/floor1/east,
 /area/atlan/station/substation)
 "jXU" = (
-/obj/structure/machinery/door/poddoor/railing{
-	closed_layer = 4.1;
-	density = 0;
-	dir = 2;
-	id = "ARES Railing";
-	layer = 2.1;
-	open_layer = 2.1;
-	pixel_x = -1;
-	pixel_y = -1;
-	unacidable = 0;
-	unslashable = 0
+/obj/structure/barricade/handrail/strata,
+/obj/structure/barricade/handrail/strata{
+	dir = 4;
+	layer = 4
 	},
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 4
+/obj/structure/largecrate/random/barrel/true_random{
+	layer = 2.97
 	},
-/obj/structure/prop/static_tank/fuel,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
 /turf/open/floor/prison/floor_marked,
 /area/atlan/asteroid/processing_sw_train)
 "jYs" = (
@@ -18347,20 +18458,11 @@
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/hab_docks)
 "kgS" = (
-/obj/structure/machinery/door/poddoor/railing{
-	closed_layer = 4.1;
-	density = 0;
-	dir = 2;
-	id = "ARES Railing";
-	layer = 2.1;
-	open_layer = 2.1;
-	pixel_x = -1;
-	pixel_y = -1;
-	unacidable = 0;
-	unslashable = 0;
-	is_on = 0
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 1
 	},
-/turf/open/floor/prison/floor_plate,
+/turf/open/floor/prison/floor_plate/southwest,
 /area/atlan/asteroid/exports_west)
 "khs" = (
 /obj/structure/largecrate/random/barrel/true_random,
@@ -19016,8 +19118,9 @@
 /turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/walkway)
 "kDU" = (
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 4
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
 	},
 /turf/open/floor/prison/floor_plate/southwest,
 /area/atlan/asteroid/processing_sw_train)
@@ -19042,22 +19145,20 @@
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/cargo)
 "kFZ" = (
-/obj/structure/machinery/door/poddoor/railing{
-	closed_layer = 4.1;
-	density = 0;
-	dir = 2;
-	id = "ARES Railing";
-	layer = 2.1;
-	open_layer = 2.1;
-	pixel_x = -1;
-	pixel_y = -1;
-	unacidable = 0;
-	unslashable = 0
+/obj/structure/barricade/handrail/strata,
+/obj/structure/barricade/handrail/strata{
+	dir = 8;
+	layer = 3.3
 	},
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 8
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_y = 1
 	},
-/turf/open/floor/prison/floor_plate/southwest,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 1
+	},
+/turf/open/floor/prison/floor_marked,
 /area/atlan/asteroid/processing_nw_train)
 "kGo" = (
 /obj/structure/machinery/door/airlock/prison_hatch/autoname,
@@ -20060,20 +20161,11 @@
 /turf/open/floor/plating,
 /area/atlan/lz/near_lz1)
 "lpJ" = (
-/obj/structure/machinery/door/poddoor/railing{
-	closed_layer = 4.1;
-	density = 0;
-	dir = 2;
-	id = "ARES Railing";
-	layer = 2.1;
-	open_layer = 2.1;
-	pixel_x = -1;
-	pixel_y = -1;
-	unacidable = 0;
-	unslashable = 0
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 1
 	},
-/obj/structure/largecrate/random/barrel/true_random,
-/turf/open/floor/prison/floor_marked,
+/turf/open/floor/prison/floor_plate/southwest,
 /area/atlan/asteroid/processing_ne_train)
 "lpK" = (
 /obj/structure/bed/sofa/vert/grey/top,
@@ -20175,9 +20267,21 @@
 /turf/open/floor/plating,
 /area/atlan/asteroid/processing_se_train)
 "luJ" = (
-/obj/structure/machinery/door/poddoor/railing,
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 8
+/obj/structure/barricade/handrail/strata{
+	dir = 8;
+	layer = 3.3
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/structure/prop/static_tank/fuel,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
 	},
 /turf/open/floor/prison/floor_marked,
 /area/atlan/asteroid/processing_nw_train)
@@ -21027,8 +21131,7 @@
 /area/atlan/asteroid/exports_cave)
 "mbl" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/floor_marked,
+/turf/open/floor/prison/floor_plate/southwest,
 /area/atlan/asteroid/processing_se_train)
 "mbn" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -21159,7 +21262,7 @@
 	icon_state = "E";
 	layer = 3.33
 	},
-/turf/open/floor/strata/multi_tiles/west,
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/atlan/station/hab_docks)
 "mgT" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -21400,8 +21503,7 @@
 /turf/open/floor/corsat,
 /area/atlan/station/airlock_east)
 "mqr" = (
-/obj/structure/largecrate/random/barrel/true_random,
-/turf/open/floor/prison/floor_marked,
+/turf/open/floor/prison/floor_plate/southwest,
 /area/atlan/asteroid/processing_sw_train)
 "mqy" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt{
@@ -21487,11 +21589,11 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/cargo)
 "mug" = (
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 8
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_y = 1
 	},
-/obj/structure/prop/static_tank/fuel,
-/turf/open/floor/prison/floor_marked,
+/turf/open/floor/prison/floor_plate/southwest,
 /area/atlan/asteroid/processing_ne_train)
 "mus" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
@@ -22325,14 +22427,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_cooling)
-"mXN" = (
-/obj/structure/prop/dam/crane/cargo{
-	pixel_y = -26;
-	dir = 1;
-	pixel_x = 5
-	},
-/turf/open/floor/strata/floor3/east,
-/area/atlan/station/hab_docks)
 "mYu" = (
 /obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/plating/prison,
@@ -23269,11 +23363,25 @@
 /turf/open/floor/strata/orange_edge/west,
 /area/atlan/station/walkway)
 "nCg" = (
-/obj/structure/machinery/door/poddoor/railing,
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 4
+/obj/structure/barricade/handrail/strata{
+	dir = 4;
+	layer = 4
 	},
-/turf/open/floor/prison/floor_plate/southwest,
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/structure/largecrate/random/barrel/true_random{
+	layer = 2.97
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/prison/floor_marked,
 /area/atlan/asteroid/processing_nw_train)
 "nCl" = (
 /obj/structure/extinguisher_cabinet,
@@ -23564,11 +23672,22 @@
 /turf/open/floor/strata,
 /area/atlan/station/cent_maintenace)
 "nNz" = (
-/obj/structure/machinery/door/poddoor/railing,
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 8
+/obj/structure/barricade/handrail/strata{
+	dir = 8;
+	layer = 3.3
 	},
-/obj/structure/largecrate/random/barrel/true_random,
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/structure/prop/static_tank/fuel,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
 /turf/open/floor/prison/floor_marked,
 /area/atlan/asteroid/processing_ne_train)
 "nNB" = (
@@ -24299,7 +24418,7 @@
 /turf/open/floor/corsat/redcorner/west,
 /area/atlan/station/airlock_west)
 "oki" = (
-/turf/open/floor/prison/floor_marked,
+/turf/open/floor/prison/floor_plate/southwest,
 /area/atlan/asteroid/processing_nw_train)
 "okq" = (
 /obj/effect/decal/cleanable/dirt,
@@ -24353,22 +24472,22 @@
 /turf/open/floor/strata,
 /area/atlan/station/hab_sec)
 "ono" = (
-/obj/structure/machinery/door/poddoor/railing{
-	closed_layer = 4.1;
-	density = 0;
-	dir = 2;
-	id = "ARES Railing";
-	layer = 2.1;
-	open_layer = 2.1;
-	pixel_x = -1;
-	pixel_y = -1;
-	unacidable = 0;
-	unslashable = 0
+/obj/structure/barricade/handrail/strata,
+/obj/structure/barricade/handrail/strata{
+	dir = 4;
+	layer = 4
 	},
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 4
+/obj/structure/prop/static_tank/fuel{
+	layer = 2.97
 	},
-/obj/structure/largecrate/random/barrel/true_random,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
 /turf/open/floor/prison/floor_marked,
 /area/atlan/asteroid/processing_nw_train)
 "onE" = (
@@ -25103,8 +25222,8 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/item/stack/folding_barricade,
-/obj/item/stack/folding_barricade,
+/obj/item/stack/folding_barricade/three,
+/obj/item/stack/folding_barricade/three,
 /turf/open/floor/strata/red1,
 /area/atlan/station/security)
 "oLL" = (
@@ -27670,9 +27789,14 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/medical)
 "qrR" = (
-/obj/structure/machinery/door/poddoor/railing,
-/obj/structure/largecrate/random/barrel/true_random,
-/turf/open/floor/prison/floor_marked,
+/obj/structure/largecrate/random/barrel/true_random{
+	layer = 2.97
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/prison/floor_plate/southwest,
 /area/atlan/asteroid/processing_se_train)
 "qsd" = (
 /obj/item/prop/alien/hugger,
@@ -28619,7 +28743,7 @@
 /turf/open/floor/strata/floor2,
 /area/atlan/lz/near_lz1)
 "qZG" = (
-/turf/open/floor/prison/floor_marked,
+/turf/open/floor/prison/floor_plate/southwest,
 /area/atlan/asteroid/exports_west)
 "qZO" = (
 /obj/structure/machinery/light/double/blue{
@@ -28941,12 +29065,23 @@
 /turf/open/floor/strata,
 /area/atlan/station/walkway)
 "rns" = (
-/obj/structure/machinery/door/poddoor/railing,
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 4
-	},
-/obj/structure/prop/static_tank/fuel{
+/obj/structure/barricade/handrail/strata{
+	dir = 4;
 	layer = 4
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/structure/largecrate/random/barrel/true_random{
+	layer = 2.97
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
 	},
 /turf/open/floor/prison/floor_marked,
 /area/atlan/asteroid/exports_west)
@@ -29126,20 +29261,11 @@
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_offices)
 "rvv" = (
-/obj/structure/machinery/door/poddoor/railing{
-	closed_layer = 4.1;
-	density = 0;
-	dir = 2;
-	id = "ARES Railing";
-	layer = 2.1;
-	open_layer = 2.1;
-	pixel_x = -1;
-	pixel_y = -1;
-	unacidable = 0;
-	unslashable = 0
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 1
 	},
-/obj/structure/prop/static_tank/fuel,
-/turf/open/floor/prison/floor_marked,
+/turf/open/floor/prison/floor_plate/southwest,
 /area/atlan/asteroid/processing_nw_train)
 "rvz" = (
 /obj/structure/machinery/light/double/blue{
@@ -29852,23 +29978,22 @@
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_offices)
 "rSy" = (
-/obj/structure/machinery/door/poddoor/railing{
-	closed_layer = 4.1;
-	density = 0;
-	dir = 2;
-	id = "ARES Railing";
-	layer = 2.1;
-	open_layer = 2.1;
-	pixel_x = -1;
-	pixel_y = -1;
-	unacidable = 0;
-	unslashable = 0
+/obj/structure/barricade/handrail/strata,
+/obj/structure/barricade/handrail/strata{
+	dir = 4;
+	layer = 4
 	},
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 4
+/obj/structure/largecrate/random/barrel/true_random{
+	layer = 2.97
 	},
-/obj/structure/largecrate/random/barrel/true_random,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
 /turf/open/floor/prison/floor_marked,
 /area/atlan/asteroid/processing_se_train)
 "rSI" = (
@@ -30147,11 +30272,11 @@
 /turf/closed/wall/strata_outpost/reinforced,
 /area/atlan/station/airlock_west)
 "sbw" = (
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 8
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_y = 1
 	},
-/obj/structure/largecrate/random/barrel/true_random,
-/turf/open/floor/prison/floor_marked,
+/turf/open/floor/prison/floor_plate/southwest,
 /area/atlan/asteroid/processing_sw_train)
 "sbE" = (
 /obj/structure/sign/safety/synth_storage,
@@ -31235,11 +31360,22 @@
 /turf/open/floor/strata/floor3/east,
 /area/atlan/asteroid/processing_seperation)
 "sQW" = (
-/obj/structure/machinery/door/poddoor/railing,
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 8
+/obj/structure/barricade/handrail/strata{
+	dir = 8;
+	layer = 3.3
 	},
-/turf/open/floor/prison/floor_plate/southwest,
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/prison/floor_marked,
 /area/atlan/asteroid/processing_se_train)
 "sRk" = (
 /obj/structure/sign/calendar/upp{
@@ -31352,19 +31488,11 @@
 /turf/open/floor/strata/floor2,
 /area/atlan/lz/near_lz1)
 "sVK" = (
-/obj/structure/machinery/door/poddoor/railing{
-	closed_layer = 4.1;
-	density = 0;
-	dir = 2;
-	id = "ARES Railing";
-	layer = 2.1;
-	open_layer = 2.1;
-	pixel_x = -1;
-	pixel_y = -1;
-	unacidable = 0;
-	unslashable = 0
-	},
 /obj/effect/landmark/xeno_spawn,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 1
+	},
 /turf/open/floor/prison/floor_plate/southwest,
 /area/atlan/asteroid/processing_ne_train)
 "sVR" = (
@@ -31880,11 +32008,25 @@
 /turf/open/floor/strata/blue1,
 /area/atlan/station/admin)
 "tkI" = (
-/obj/structure/machinery/door/poddoor/railing,
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 4
+/obj/structure/barricade/handrail/strata{
+	dir = 4;
+	layer = 4
 	},
-/turf/open/floor/prison/floor_plate/southwest,
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/structure/largecrate/random/barrel/true_random{
+	layer = 2.97
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/prison/floor_marked,
 /area/atlan/asteroid/processing_sw_train)
 "tkN" = (
 /obj/item/storage/briefcase,
@@ -31961,15 +32103,25 @@
 /turf/open/floor/plating,
 /area/atlan/station/hab_sec)
 "tmY" = (
-/obj/structure/machinery/door/poddoor/railing,
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 4
+/obj/structure/barricade/handrail/strata{
+	dir = 4;
+	layer = 4
 	},
-/obj/structure/prop/static_tank/fuel,
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/structure/largecrate/random/barrel/true_random{
+	layer = 2.97
+	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "cargo_smooth"
+	icon_state = "N";
+	pixel_y = 1
 	},
-/turf/open/floor/prison/floor_plate/southwest,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/prison/floor_marked,
 /area/atlan/asteroid/processing_se_train)
 "tna" = (
 /obj/effect/decal/hybrisa/road/road_stop{
@@ -31979,8 +32131,8 @@
 /turf/open/floor/corsat/squares,
 /area/atlan/asteroid/exports_west)
 "tnd" = (
-/obj/structure/largecrate/random/barrel/true_random,
-/turf/open/floor/prison/floor_marked,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/prison/floor_plate/southwest,
 /area/atlan/asteroid/processing_ne_train)
 "tnj" = (
 /obj/structure/bed/chair/office/light,
@@ -32472,22 +32624,22 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/asteroid/exports_east)
 "tED" = (
-/obj/structure/machinery/door/poddoor/railing{
-	closed_layer = 4.1;
-	density = 0;
-	dir = 2;
-	id = "ARES Railing";
-	layer = 2.1;
-	open_layer = 2.1;
-	pixel_x = -1;
-	pixel_y = -1;
-	unacidable = 0;
-	unslashable = 0
+/obj/structure/barricade/handrail/strata,
+/obj/structure/barricade/handrail/strata{
+	dir = 8;
+	layer = 3.3
 	},
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 8
+/obj/structure/largecrate/random/barrel/true_random{
+	layer = 2.97
 	},
-/obj/structure/largecrate/random/barrel/true_random,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 1
+	},
 /turf/open/floor/prison/floor_marked,
 /area/atlan/asteroid/processing_sw_train)
 "tEZ" = (
@@ -32754,11 +32906,11 @@
 /turf/open/floor/strata/blue1,
 /area/atlan/asteroid/processing_train_control)
 "tMf" = (
-/obj/structure/machinery/door/poddoor/railing,
-/obj/structure/prop/static_tank/fuel{
-	layer = 4
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
 	},
-/turf/open/floor/prison/floor_marked,
+/turf/open/floor/prison/floor_plate/southwest,
 /area/atlan/asteroid/exports_west)
 "tMt" = (
 /obj/structure/sign/poster/safety{
@@ -33372,11 +33524,23 @@
 /turf/open/floor/prison/darkyellowfull2,
 /area/atlan/station/atmospherics)
 "ukf" = (
-/obj/structure/machinery/door/poddoor/railing,
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 8
+/obj/structure/barricade/handrail/strata{
+	dir = 8;
+	layer = 3.3
 	},
-/turf/open/floor/prison/floor_plate/southwest,
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/structure/prop/static_tank/fuel,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/prison/floor_marked,
 /area/atlan/asteroid/processing_sw_train)
 "uku" = (
 /obj/effect/landmark/monkey_spawn,
@@ -33678,10 +33842,11 @@
 /turf/open/floor/strata,
 /area/atlan/station/hab_flight)
 "uuA" = (
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 4
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
 	},
-/turf/open/floor/prison/floor_marked,
+/turf/open/floor/prison/floor_plate/southwest,
 /area/atlan/asteroid/processing_ne_train)
 "uuC" = (
 /obj/structure/machinery/light,
@@ -35083,17 +35248,9 @@
 /turf/open/floor/strata/green1,
 /area/atlan/station/hab_sec)
 "vtE" = (
-/obj/structure/machinery/door/poddoor/railing{
-	closed_layer = 4.1;
-	density = 0;
-	dir = 2;
-	id = "ARES Railing";
-	layer = 2.1;
-	open_layer = 2.1;
-	pixel_x = -1;
-	pixel_y = -1;
-	unacidable = 0;
-	unslashable = 0
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 1
 	},
 /turf/open/floor/prison/floor_plate/southwest,
 /area/atlan/asteroid/processing_sw_train)
@@ -35179,7 +35336,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/turf/open/floor/strata/multi_tiles/west,
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/atlan/station/hab_docks)
 "vxf" = (
 /obj/structure/platform_decoration/metal/strata/west,
@@ -35198,11 +35355,11 @@
 /turf/open/floor/prison/sterile_white,
 /area/atlan/station/botany)
 "vxW" = (
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 8
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_y = 1
 	},
-/obj/structure/largecrate/random/barrel/true_random,
-/turf/open/floor/prison/floor_marked,
+/turf/open/floor/prison/floor_plate/southwest,
 /area/atlan/asteroid/processing_se_train)
 "vyl" = (
 /obj/structure/stairs{
@@ -35270,11 +35427,14 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/atlan/station/cargooffice)
 "vBJ" = (
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 4
+/obj/structure/largecrate/random/barrel/true_random{
+	layer = 2.97
 	},
-/obj/structure/largecrate/random/barrel/true_random,
-/turf/open/floor/prison/floor_marked,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/prison/floor_plate/southwest,
 /area/atlan/asteroid/processing_ne_train)
 "vBS" = (
 /obj/structure/sign/safety/maint,
@@ -35553,9 +35713,11 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/atlan/station/admin)
 "vMH" = (
-/obj/structure/machinery/door/poddoor/railing,
-/obj/structure/largecrate/random/barrel/true_random,
-/turf/open/floor/prison/floor_marked,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/prison/floor_plate/southwest,
 /area/atlan/asteroid/processing_sw_train)
 "vNh" = (
 /obj/structure/machinery/light{
@@ -35673,12 +35835,6 @@
 /obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/darkyellowfull2,
 /area/atlan/station/substation)
-"vSF" = (
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 8
-	},
-/turf/open/floor/prison/floor_marked,
-/area/atlan/asteroid/processing_ne_train)
 "vSX" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/prop/structure_lattice{
@@ -36005,21 +36161,19 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/asteroid/processing_nw_train)
 "wdo" = (
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 8
+/obj/structure/barricade/handrail/strata{
+	dir = 8;
+	layer = 3.3
 	},
-/obj/structure/machinery/door/poddoor/railing{
-	closed_layer = 4.1;
-	density = 0;
-	dir = 2;
-	id = "ARES Railing";
-	layer = 2.1;
-	open_layer = 2.1;
-	pixel_x = -1;
-	pixel_y = -1;
-	unacidable = 0;
-	unslashable = 0;
-	is_on = 0
+/obj/structure/barricade/handrail/strata{
+	layer = 3.1
+	},
+/obj/structure/prop/static_tank/fuel{
+	layer = 2.97
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_y = 1
 	},
 /turf/open/floor/prison/floor_marked,
 /area/atlan/asteroid/exports_west)
@@ -36559,11 +36713,11 @@
 /turf/open/floor/strata/green1,
 /area/atlan/station/hab_docks)
 "wEN" = (
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 4
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
 	},
-/obj/structure/largecrate/random/barrel/true_random,
-/turf/open/floor/prison/floor_marked,
+/turf/open/floor/prison/floor_plate/southwest,
 /area/atlan/asteroid/exports_west)
 "wFn" = (
 /obj/structure/bed/chair/office/light{
@@ -37042,21 +37196,20 @@
 /turf/open/floor/strata/floor2,
 /area/atlan/station/cargo)
 "wXL" = (
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 4
+/obj/structure/barricade/handrail/strata{
+	dir = 4;
+	layer = 4
 	},
-/obj/structure/machinery/door/poddoor/railing{
-	closed_layer = 4.1;
-	density = 0;
-	dir = 2;
-	id = "ARES Railing";
-	layer = 2.1;
-	open_layer = 2.1;
-	pixel_x = -1;
-	pixel_y = -1;
-	unacidable = 0;
-	unslashable = 0;
-	is_on = 0
+/obj/structure/barricade/handrail/strata{
+	layer = 3.1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
 	},
 /turf/open/floor/prison/floor_marked,
 /area/atlan/asteroid/exports_west)
@@ -38426,10 +38579,11 @@
 /turf/open/floor/strata,
 /area/atlan/station/hab_flight)
 "xUE" = (
-/obj/structure/machinery/door/poddoor/railing{
-	dir = 8
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_y = 1
 	},
-/turf/open/floor/prison/floor_plate,
+/turf/open/floor/prison/floor_plate/southwest,
 /area/atlan/asteroid/exports_west)
 "xUY" = (
 /obj/structure/sign/safety/maint{
@@ -44468,7 +44622,7 @@ krb
 phz
 krb
 eii
-gpl
+djH
 cOp
 qqL
 egc
@@ -44666,7 +44820,7 @@ cFA
 cFA
 ryN
 dxN
-djH
+gpl
 wPc
 jOq
 qqL
@@ -49650,8 +49804,8 @@ pbX
 pbw
 ohy
 scy
-mXN
 cCk
+akB
 vUU
 scy
 tvh
@@ -60298,7 +60452,7 @@ agB
 tmn
 quI
 tmn
-tmn
+alx
 qcs
 edy
 tmn
@@ -63002,7 +63156,7 @@ aSd
 lGF
 lGF
 lGF
-wqV
+isk
 mkk
 wqV
 wqV
@@ -66845,7 +66999,7 @@ iuE
 nUE
 ukT
 iuE
-cnx
+alw
 wyW
 iuE
 xSI
@@ -68036,7 +68190,7 @@ xSI
 iuE
 iuE
 iuE
-iuE
+akD
 btT
 bma
 jIm
@@ -74298,7 +74452,7 @@ aHQ
 gWZ
 aHQ
 suH
-aHQ
+alC
 aHQ
 uIG
 uIG
@@ -74697,9 +74851,9 @@ cEh
 ada
 cEh
 cEh
-nNz
-vSF
-avH
+alB
+mug
+aly
 cEh
 cEh
 cEh
@@ -74895,7 +75049,7 @@ iqC
 pQj
 iqC
 iqC
-eqj
+ccS
 jSQ
 lpJ
 iqC
@@ -75095,7 +75249,7 @@ cEh
 cEh
 jSt
 vBJ
-deN
+alz
 cEh
 ada
 cEh
@@ -75293,7 +75447,7 @@ czq
 czq
 czq
 czq
-czq
+alA
 czq
 czq
 ksc

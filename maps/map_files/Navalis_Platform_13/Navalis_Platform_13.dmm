@@ -4666,6 +4666,10 @@
 	},
 /turf/open/floor/prison/greenfull/east,
 /area/navalis/outdoors/charon/surface_deck/forecastle_deck)
+"ami" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/prison/green/west,
+/area/navalis/indoors/command/starboard_hallway)
 "amj" = (
 /obj/structure/platform/metal/hybrisa/metalplatform4/north,
 /obj/structure/platform/metal/hybrisa/metalplatform4/west,
@@ -7075,12 +7079,6 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/corsat/marked,
 /area/navalis/indoors/command/aft_hallway)
-"auO" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/navalis/indoors/command/aft_hallway)
 "auP" = (
 /turf/closed/wall/hybrisa/colony,
 /area/navalis/indoors/command/security)
@@ -7553,8 +7551,9 @@
 /area/navalis/indoors/command/oft_duty_room)
 "awD" = (
 /obj/structure/window/framed/hybrisa/colony/office/reinforced,
-/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
-	dir = 4
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	dir = 4;
+	id = "command_lock"
 	},
 /turf/open/floor/plating,
 /area/navalis/indoors/command/oft_duty_room)
@@ -7868,8 +7867,9 @@
 /area/navalis/outdoors/exterior/med_ext)
 "axH" = (
 /obj/structure/window/framed/hybrisa/colony/office/reinforced,
-/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
-	dir = 4
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	dir = 4;
+	id = "command_lock"
 	},
 /turf/open/floor/plating,
 /area/navalis/indoors/command/cent_com)
@@ -8365,6 +8365,9 @@
 	},
 /turf/open/floor/prison/darkyellowfull2,
 /area/navalis/outdoors/landing_zone_2/under)
+"azc" = (
+/turf/open/floor/plating/burnt_platingdmg3/west,
+/area/navalis/indoors/med_sci/maintenance_port)
 "azd" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/north,
 /obj/structure/prop/hybrisa/misc/floorprops/grate4{
@@ -8483,6 +8486,9 @@
 	},
 /turf/open/floor/plating/catwalk/grate/lattice,
 /area/navalis/outdoors/exterior_xeno_only)
+"azq" = (
+/turf/open/floor/plating/platingdmg1,
+/area/navalis/indoors/med_sci/maintenance_port)
 "azr" = (
 /obj/structure/platform/metal/almayer/west{
 	pixel_x = -3
@@ -8530,6 +8536,9 @@
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/hybrisa/metal/orangelinecorner,
 /area/navalis/indoors/industrial/refinery)
+"azz" = (
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/navalis/indoors/med_sci/maintenance_port)
 "azA" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/solid_open_space,
@@ -9538,13 +9547,10 @@
 /area/navalis/indoors/residential/landing_pad)
 "aCc" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/barricade/wooden{
-	health = 600;
-	name = "reinforced wooden barricade"
-	},
 /obj/structure/reagent_dispensers/tank/water{
 	layer = 2.9
 	},
+/obj/structure/barricade/metal/wired,
 /turf/open/floor/prison/green/east,
 /area/navalis/indoors/command/starboard_hallway)
 "aCd" = (
@@ -9554,11 +9560,8 @@
 /area/navalis/indoors/charon/surface_deck/rear_deck)
 "aCe" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/barricade/wooden{
-	health = 600;
-	name = "reinforced wooden barricade"
-	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/barricade/metal/wired,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/navalis/indoors/command/starboard_hallway)
 "aCf" = (
@@ -9692,16 +9695,8 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2"
 	},
-/obj/structure/barricade/wooden{
-	dir = 1;
-	pixel_y = 12;
-	health = 600;
-	name = "reinforced wooden barricade"
-	},
-/obj/structure/barricade/wooden{
-	dir = 8;
-	health = 600;
-	name = "reinforced wooden barricade"
+/obj/structure/barricade/metal/wired{
+	dir = 8
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/navalis/indoors/command/aft_hallway)
@@ -9726,11 +9721,6 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/navalis/indoors/logistic/primary_storage)
 "aCy" = (
-/obj/structure/barricade/wooden{
-	dir = 8;
-	health = 600;
-	name = "reinforced wooden barricade"
-	},
 /obj/structure/bed/chair{
 	dir = 4;
 	layer = 2.7
@@ -9749,11 +9739,6 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/navalis/indoors/command/aft_hallway)
 "aCA" = (
-/obj/structure/barricade/wooden{
-	dir = 8;
-	health = 600;
-	name = "reinforced wooden barricade"
-	},
 /obj/structure/bed/chair{
 	dir = 4;
 	layer = 2.7
@@ -9915,12 +9900,6 @@
 /turf/open/floor/plating/catwalk/grate/lattice,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "aCV" = (
-/obj/structure/barricade/wooden{
-	dir = 1;
-	pixel_y = 23;
-	health = 600;
-	name = "reinforced wooden barricade"
-	},
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 6
 	},
@@ -9937,23 +9916,18 @@
 /turf/open/floor/prison/green/southwest,
 /area/navalis/indoors/command/port_hallway)
 "aCX" = (
-/obj/structure/barricade/wooden{
-	dir = 1;
-	pixel_y = 12;
-	health = 600;
-	name = "reinforced wooden barricade"
-	},
-/obj/structure/barricade/wooden{
-	dir = 4;
-	health = 600;
-	name = "reinforced wooden barricade"
-	},
 /obj/structure/bed/chair/wood/normal{
 	layer = 4
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 1
 	},
 /turf/open/floor/prison/green/northeast,
 /area/navalis/indoors/command/port_hallway)
 "aCY" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1
+	},
 /obj/structure/closet/firecloset/full,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/navalis/indoors/command/port_hallway)
@@ -9962,23 +9936,15 @@
 /turf/open/floor/prison/darkbrown2,
 /area/navalis/indoors/logistic/primary_storage)
 "aDa" = (
-/obj/structure/barricade/wooden{
-	dir = 1;
-	pixel_y = 12;
-	health = 600;
-	name = "reinforced wooden barricade"
-	},
-/obj/structure/barricade/wooden{
-	dir = 8;
-	health = 600;
-	name = "reinforced wooden barricade"
-	},
 /obj/structure/bed/chair/office/dark{
 	pixel_y = 5;
 	pixel_x = 2
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 6
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 1
 	},
 /turf/open/floor/prison/green/northwest,
 /area/navalis/indoors/command/port_hallway)
@@ -9995,14 +9961,11 @@
 /turf/open/floor/plating/catwalk/grate/lattice,
 /area/navalis/outdoors/exterior_xeno_only/lz2)
 "aDc" = (
-/obj/structure/barricade/wooden{
-	dir = 1;
-	pixel_y = 12;
-	health = 600;
-	name = "reinforced wooden barricade"
-	},
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 1
 	},
 /turf/open/floor/prison/green/northeast,
 /area/navalis/indoors/command/port_hallway)
@@ -10329,6 +10292,9 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 8
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/navalis/indoors/command/aft_hallway)
@@ -10787,12 +10753,6 @@
 	},
 /turf/open/floor/prison/whitered/east,
 /area/navalis/indoors/med_sci/main_floor)
-"aFk" = (
-/obj/structure/platform/metal/almayer/east{
-	pixel_x = 4
-	},
-/turf/open/floor/plating/catwalk/grate,
-/area/navalis/outdoors/exterior/med_ext)
 "aFl" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/alien/weeds,
@@ -17643,7 +17603,6 @@
 /area/navalis/indoors/residential/access)
 "bbt" = (
 /obj/item/shard{
-	icon_state = "medium";
 	pixel_x = -10;
 	pixel_y = -8
 	},
@@ -21271,11 +21230,8 @@
 /area/navalis/oob/powered)
 "cTj" = (
 /obj/effect/decal/cleanable/generic,
-/obj/structure/barricade/wooden{
-	dir = 1;
-	pixel_y = 12;
-	health = 600;
-	name = "reinforced wooden barricade"
+/obj/structure/barricade/metal/wired{
+	dir = 1
 	},
 /turf/open/floor/prison/green/northwest,
 /area/navalis/indoors/command/port_hallway)
@@ -22072,6 +22028,9 @@
 "dLk" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "2-4"
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 8
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/navalis/indoors/command/aft_hallway)
@@ -26212,6 +26171,7 @@
 	pixel_y = 5
 	},
 /obj/effect/landmark/objective_landmark/science,
+/obj/effect/landmark/map_item,
 /turf/open/floor/prison/blue,
 /area/navalis/indoors/command/cent_com)
 "hVN" = (
@@ -27096,14 +27056,8 @@
 /turf/open/floor/hybrisa/metal/bluemetal1/east,
 /area/navalis/indoors/command/server_room)
 "jao" = (
-/obj/structure/barricade/wooden{
-	dir = 8;
-	health = 600;
-	name = "reinforced wooden barricade"
-	},
-/obj/structure/barricade/wooden{
-	health = 600;
-	name = "reinforced wooden barricade"
+/obj/structure/barricade/metal/wired{
+	dir = 8
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/navalis/indoors/command/aft_hallway)
@@ -28909,9 +28863,15 @@
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/southwest,
 /area/navalis/indoors/command/tertiary_comms)
 "kUH" = (
-/obj/structure/prop/server_equipment/laptop/closed,
+/obj/structure/prop/server_equipment/laptop/closed{
+	pixel_x = 12;
+	pixel_y = 5
+	},
 /obj/structure/surface/table/almayer,
-/obj/effect/landmark/map_item,
+/obj/structure/machinery/door_control{
+	pixel_x = -5;
+	id = "command_lock"
+	},
 /turf/open/floor/prison/blue/southeast,
 /area/navalis/indoors/command/cent_com)
 "kVs" = (
@@ -31250,11 +31210,6 @@
 /area/navalis/outdoors/landing_zone_2)
 "nAd" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/barricade/wooden{
-	dir = 8;
-	health = 600;
-	name = "reinforced wooden barricade"
-	},
 /turf/open/floor/prison/green/northwest,
 /area/navalis/indoors/command/aft_hallway)
 "nAp" = (
@@ -35959,8 +35914,9 @@
 /area/navalis/indoors/command/server_room)
 "sdh" = (
 /obj/structure/window/framed/hybrisa/colony/office/reinforced,
-/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
-	dir = 4
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	dir = 4;
+	id = "command_lock"
 	},
 /turf/open/floor/plating,
 /area/navalis/indoors/command/meeting_hall)
@@ -130010,7 +129966,7 @@ akU
 akU
 aTk
 aTk
-bhR
+azc
 asM
 asM
 asM
@@ -130661,9 +130617,9 @@ bcF
 wmy
 aoE
 aoE
-bhR
-asM
-asM
+azz
+azz
+azq
 auq
 auv
 xDk
@@ -132666,7 +132622,7 @@ ttQ
 hGF
 cbM
 aRC
-aFk
+aoE
 uxP
 ruj
 ruj
@@ -132830,7 +132786,7 @@ wQL
 hGF
 aoH
 aRC
-hnk
+aoE
 hnk
 eiY
 eiY
@@ -132994,7 +132950,7 @@ vOr
 aoR
 aoH
 aRC
-aAM
+aoE
 aAM
 mjM
 mjM
@@ -136615,7 +136571,7 @@ xqE
 whj
 acQ
 aog
-aog
+aNe
 aTk
 akU
 akU
@@ -137059,7 +137015,7 @@ awb
 jao
 dLk
 aDS
-auO
+aCt
 aCt
 auB
 oBz
@@ -137110,7 +137066,7 @@ aoe
 muE
 muE
 acx
-aog
+aMd
 aKd
 aKb
 pXR
@@ -140348,7 +140304,7 @@ lIL
 qiJ
 lIL
 aCg
-tov
+ami
 lJQ
 jCo
 asv

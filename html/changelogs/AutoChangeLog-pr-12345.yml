@@ -1,5 +1,0 @@
-author: "Ammoniacres"
-delete-after: True
-changes:
-  - rscadd: "A unique survivor variant of the flammenwerfer, that uses stabilized metallic foam, has been added to the game within the Hybrisa fire station nightmare insert."
-  - bugfix: "Fixes a bug with the special loot spawner to spawn the correct flamethrower."

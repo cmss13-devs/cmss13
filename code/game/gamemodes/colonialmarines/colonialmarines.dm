@@ -4,6 +4,8 @@
 #define PODLOCKS_OPEN_WAIT (45 MINUTES) // CORSAT pod doors drop at 12:45
 /// How many pipes explode at a time during hijack?
 #define HIJACK_EXPLOSION_COUNT 5
+/// How many pipes explode at a time after a ship ground crash?
+#define HIJACK_CRASHED_EXPLOSION_COUNT 10
 /// What percent do we consider a 'majority?' to win
 #define MAJORITY 0.5
 /// How long to delay the round completion (command is immediately notified)
@@ -595,7 +597,8 @@
 		return
 
 	var/list/shortly_exploding_pipes = list()
-	for(var/i = 1 to HIJACK_EXPLOSION_COUNT)
+	var/explode_count = SShijack?.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH ? HIJACK_CRASHED_EXPLOSION_COUNT : HIJACK_EXPLOSION_COUNT
+	for(var/i = 1 to explode_count)
 		shortly_exploding_pipes += pick(GLOB.mainship_pipes)
 
 	for(var/obj/structure/pipes/exploding_pipe as anything in shortly_exploding_pipes)

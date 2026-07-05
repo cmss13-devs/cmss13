@@ -300,25 +300,25 @@ directive is properly returned.
 	return
 
 /atom/proc/add_hiddenprint(mob/living/M)
-	if(!M || QDELETED(M) || !M.key || !(flags_atom  & FPRINT) || fingerprintslast == M.key)
+	if(!M || QDELETED(M) || !M.logging_ckey || !(flags_atom  & FPRINT) || fingerprintslast == M.logging_ckey)
 		return
 	if (ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if (H.gloves)
-			fingerprintshidden += "\[[time_stamp()]\] (Wearing gloves). Real name: [H.real_name], Key: [H.key]"
+			fingerprintshidden += "\[[time_stamp()]\] (Wearing gloves). Real name: [H.real_name], CKEY: [H.logging_ckey]"
 		else
-			fingerprintshidden += "\[[time_stamp()]\] Real name: [H.real_name], Key: [H.key]"
+			fingerprintshidden += "\[[time_stamp()]\] Real name: [H.real_name], CKEY: [H.logging_ckey]"
 	else
-		fingerprintshidden += "\[[time_stamp()]\] Real name: [M.real_name], Key: [M.key]"
-	fingerprintslast = M.key
+		fingerprintshidden += "\[[time_stamp()]\] Real name: [M.real_name], CKEY: [M.logging_ckey]"
+	fingerprintslast = M.logging_ckey
 
 
 /atom/proc/add_fingerprint(mob/living/M)
-	if(!M || QDELETED(M) || !M.key || !(flags_atom & FPRINT) || fingerprintslast == M.key)
+	if(!M || QDELETED(M) || !M.logging_ckey || !(flags_atom & FPRINT) || fingerprintslast == M.logging_ckey)
 		return
 	if(!fingerprintshidden)
 		fingerprintshidden = list()
-	fingerprintslast = M.key
+	fingerprintslast = M.logging_ckey
 
 	if (ishuman(M))
 		var/mob/living/carbon/human/H = M
@@ -326,15 +326,15 @@ directive is properly returned.
 		//Fibers~
 		blood_touch(H)
 
-		fingerprintslast = M.key
+		fingerprintslast = M.logging_ckey
 
 		//Now, deal with gloves.
 		if (H.gloves && H.gloves != src)
-			fingerprintshidden += "\[[time_stamp()]\](Wearing gloves). Real name: [H.real_name], Key: [H.key]"
+			fingerprintshidden += "\[[time_stamp()]\](Wearing gloves). Real name: [H.real_name], CKEY: [H.logging_ckey]"
 		else
-			fingerprintshidden += "\[[time_stamp()]\]Real name: [H.real_name], Key: [H.key]"
+			fingerprintshidden += "\[[time_stamp()]\]Real name: [H.real_name], CKEY: [H.logging_ckey]"
 	else
-		fingerprintshidden +=  "\[[time_stamp()]\]Real name: [M.real_name], Key: [M.key]"
+		fingerprintshidden +=  "\[[time_stamp()]\]Real name: [M.real_name], CKEY: [M.logging_ckey]"
 
 
 

@@ -200,7 +200,7 @@
 			if(ishuman(user))
 				var/mob/living/carbon/human/human_user = user
 				human_user.remember_dropped_object(fired)
-				fired.fingerprintslast = key_name(user)
+				fired.fingerprintslast = user.logging_ckey
 			pass_flags |= PASS_MOB_THRU_HUMAN|PASS_MOB_IS_OTHER|PASS_OVER
 		else
 			pass_flags |= PASS_MOB_THRU|PASS_HIGH_OVER

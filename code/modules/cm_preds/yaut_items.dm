@@ -1180,6 +1180,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	return COMPONENT_CANCEL_XENO_HEAL
 
 /obj/item/hunting_trap/Crossed(atom/movable/AM)
+	..()
 	if(armed && ismob(AM))
 		var/mob/trap_mob = AM
 		if(!trap_mob.buckled)
@@ -1200,7 +1201,6 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 				armed = FALSE
 				var/mob/living/simple_animal/simple_mob = trap_mob
 				simple_mob.health -= 20
-	..()
 
 /obj/item/hunting_trap/proc/cleanup_tether()
 	if (tether_effect)

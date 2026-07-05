@@ -28759,12 +28759,6 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
-"bBm" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "NormalParking"
-	},
-/turf/closed/wall/rock/brown,
-/area/varadero/interior/oob)
 "bBn" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
@@ -35295,13 +35289,6 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/lz1_near)
-"bRr" = (
-/obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/obj/effect/landmark/nightmare{
-	insert_tag = "DropshipGone"
-	},
-/turf/open/gm/river/shallow_ocean_shallow_ocean,
-/area/varadero/exterior/pontoon_beach)
 "bRs" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3";
@@ -78840,7 +78827,7 @@ pGs
 pGs
 pGs
 pGs
-bBm
+pGs
 pGs
 pGs
 pGs
@@ -94840,7 +94827,7 @@ bMv
 lnO
 pGs
 pGs
-bRr
+daS
 lTR
 lTR
 gVO

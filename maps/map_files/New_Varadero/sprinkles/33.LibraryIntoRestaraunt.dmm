@@ -5,14 +5,8 @@
 /turf/open/floor/cmo,
 /area/varadero/interior/library/restaraunt)
 "ac" = (
-/obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
-	light_range = 5;
-	light_power = 3;
-	light_color = "#FF0000";
-	light_on = 1
-	},
 /turf/closed/wall/r_wall/unmeltable,
-/area/varadero/interior/library/restaraunt)
+/area/varadero/interior/oob)
 "ad" = (
 /obj/structure/window/framed/colony,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -609,10 +603,10 @@
 /area/varadero/interior/library/restaraunt)
 "Nf" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "LibaryIntoRestaraunt"
+	insert_tag = "LibraryIntoRestaraunt"
 	},
 /turf/closed/wall/r_wall/unmeltable,
-/area/varadero/interior/library/restaraunt)
+/area/varadero/interior/oob)
 "Ni" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4

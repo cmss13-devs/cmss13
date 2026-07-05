@@ -379,6 +379,18 @@ export const OpenSearchQuery = (props) => {
                   Dashboards
                 </Button>
               </Stack.Item>
+              <Stack.Item>
+                <Button
+                  icon="window-restore"
+                  color="blue"
+                  tooltip="open another query"
+                  onClick={() => {
+                    act('open_queries');
+                  }}
+                >
+                  Dashboards
+                </Button>
+              </Stack.Item>
               <Stack.Item align="center">
                 <Input
                   minWidth={20}

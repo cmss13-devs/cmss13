@@ -222,6 +222,9 @@
 	if(.)
 		return FALSE
 	switch(action)
+		if("open_queries")
+			ui.user?.client?.opensearch_query_builder()
+
 		if("delete")
 			log_admin("[key_name(usr)] deleted OpenSearch Query ~[id]")
 			qdel(src)

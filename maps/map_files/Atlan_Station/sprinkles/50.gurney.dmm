@@ -8,9 +8,6 @@
 /obj/item/paper,
 /turf/open/floor/strata/floor2,
 /area/atlan/station/medical)
-"c" = (
-/turf/open/floor/strata/floor3/east,
-/area/atlan/station/medical)
 "w" = (
 /mob/living/simple_animal/hostile/retaliate/goat{
 	name = "Gurney"
@@ -25,22 +22,13 @@
 /obj/item/paper/crumpled,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/medical)
-"Q" = (
-/obj/item/paper/crumpled,
-/turf/open/floor/strata/floor3/east,
-/area/atlan/station/medical)
 
 (1,1,1) = {"
-c
-Q
-x
-"}
-(2,1,1) = {"
 x
 w
 B
 "}
-(3,1,1) = {"
+(2,1,1) = {"
 a
 x
 b

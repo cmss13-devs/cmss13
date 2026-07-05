@@ -232,15 +232,15 @@
 		if("update_query")
 			if(params["query_name"])
 				name = params["query_name"]
-			if(params["ranking_mode"])
+			if(!isnull(params["ranking_mode"]))
 				ranking_mode = params["ranking_mode"]
-			if(params["roundid"])
+			if(!isnull(params["roundid"]))
 				roundid = params["roundid"]
 			if(params["user_query"])
 				user_query = params["user_query"]
 			if(params["log_types"])
 				log_types = params["log_types"]
-			if(params["time_ago"])
+			if(!isnull(params["time_ago"]))
 				time_ago = params["time_ago"]
 			if(params["execute"])
 				execute(ui.user)

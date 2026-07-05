@@ -166,7 +166,7 @@ export const OpenSearchQuery = (props) => {
       execute: executeNow,
       query_name: localQueryName,
       ranking_mode: localRankingMode,
-      query_time_end: localQueryTimeAgo,
+      time_ago: localQueryTimeAgo,
       log_types: localLogTypes,
       roundid: localRoundid,
       user_query: queryOverride || localUserQuery,
@@ -393,7 +393,7 @@ export const OpenSearchQuery = (props) => {
               </Stack.Item>
               <Stack.Item align="center">
                 <Input
-                  minWidth={20}
+                  minWidth={15}
                   value={localQueryName}
                   onChange={(e, value) => setQueryName(value)}
                 />
@@ -460,7 +460,13 @@ export const OpenSearchQuery = (props) => {
                 />
               </Stack.Item>
               <Stack.Item align="right">
-                <Box color="label">ago</Box>
+                <Button
+                  color="label"
+                  disabled
+                  tooltip="Enter to the left how long ago you want the search to start. For example if you enter '1d' only events at least 1 day old will be shown. Valid prefix are s (seconds), m (miutes), h (hours), d (days), w (weeks)."
+                >
+                  ... ago
+                </Button>
               </Stack.Item>
             </Stack>
           </Stack.Item>

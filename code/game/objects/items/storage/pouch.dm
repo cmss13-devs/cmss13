@@ -1140,10 +1140,10 @@
 /obj/item/storage/pouch/pressurized_reagent_canister/proc/fill_with(ragent)
 	inner.reagents.add_reagent(ragent, inner.volume)
 	if(length(contents) > 0)
-		var/obj/item/reagent_container/hypospray/autoinjector/empty/A = contents[1]
-		A.reagents.add_reagent(ragent, A.volume)
-		A.update_uses_left()
-		A.update_icon()
+		var/obj/item/reagent_container/hypospray/autoinjector/empty/autoinjector = contents[1]
+		autoinjector.reagents.add_reagent(ragent, autoinjector.volume)
+		autoinjector.update_uses_left()
+		autoinjector.update_icon()
 	update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/damage_mend/Initialize()
@@ -1154,12 +1154,12 @@
 	inner.reagents.add_reagent("kelotane", inner.volume/3)
 	inner.reagents.add_reagent("tricordrazine", inner.volume/3)
 	if(length(contents) > 0)
-		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/A = contents[1]
-		A.reagents.add_reagent("bicaridine", A.volume/3)
-		A.reagents.add_reagent("kelotane", A.volume/3)
-		A.reagents.add_reagent("tricordrazine", A.volume/3)
-		A.update_uses_left()
-		A.update_icon()
+		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/autoinjector = contents[1]
+		autoinjector.reagents.add_reagent("bicaridine", autoinjector.volume/3)
+		autoinjector.reagents.add_reagent("kelotane", autoinjector.volume/3)
+		autoinjector.reagents.add_reagent("tricordrazine", autoinjector.volume/3)
+		autoinjector.update_uses_left()
+		autoinjector.update_icon()
 	update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone/Initialize()
@@ -1178,12 +1178,12 @@
 	inner.reagents.add_reagent("inaprovaline", inner.volume/3)
 	inner.reagents.add_reagent("oxycodone", inner.volume/3)
 	if(length(contents) > 0)
-		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/A = contents[1]
-		A.reagents.add_reagent("adrenaline", A.volume/3)
-		A.reagents.add_reagent("inaprovaline", A.volume/3)
-		A.reagents.add_reagent("oxycodone", A.volume/3)
-		A.update_uses_left()
-		A.update_icon()
+		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/autoinjector = contents[1]
+		autoinjector.reagents.add_reagent("adrenaline", autoinjector.volume/3)
+		autoinjector.reagents.add_reagent("inaprovaline", autoinjector.volume/3)
+		autoinjector.reagents.add_reagent("oxycodone", autoinjector.volume/3)
+		autoinjector.update_uses_left()
+		autoinjector.update_icon()
 	update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord/Initialize()
@@ -1193,12 +1193,12 @@
 	inner.reagents.add_reagent("inaprovaline", inner.volume/3)
 	inner.reagents.add_reagent("tricordrazine", inner.volume/3)
 	if(length(contents) > 0)
-		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/A = contents[1]
-		A.reagents.add_reagent("adrenaline", A.volume/3)
-		A.reagents.add_reagent("inaprovaline", A.volume/3)
-		A.reagents.add_reagent("tricordrazine", A.volume/3)
-		A.update_uses_left()
-		A.update_icon()
+		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/autoinjector = contents[1]
+		autoinjector.reagents.add_reagent("adrenaline", autoinjector.volume/3)
+		autoinjector.reagents.add_reagent("inaprovaline", autoinjector.volume/3)
+		autoinjector.reagents.add_reagent("tricordrazine", autoinjector.volume/3)
+		autoinjector.update_uses_left()
+		autoinjector.update_icon()
 	update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival_peri/Initialize()
@@ -1208,12 +1208,12 @@
 	inner.reagents.add_reagent("inaprovaline", inner.volume/3)
 	inner.reagents.add_reagent("peridaxon", inner.volume/3)
 	if(length(contents) > 0)
-		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/A = contents[1]
-		A.reagents.add_reagent("adrenaline", A.volume/3)
-		A.reagents.add_reagent("inaprovaline", A.volume/3)
-		A.reagents.add_reagent("peridaxon", A.volume/3)
-		A.update_uses_left()
-		A.update_icon()
+		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/autoinjector = contents[1]
+		autoinjector.reagents.add_reagent("adrenaline", autoinjector.volume/3)
+		autoinjector.reagents.add_reagent("inaprovaline", autoinjector.volume/3)
+		autoinjector.reagents.add_reagent("peridaxon", autoinjector.volume/3)
+		autoinjector.update_uses_left()
+		autoinjector.update_icon()
 	update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/surgery_prep/Initialize()
@@ -1224,12 +1224,12 @@
 	inner.reagents.add_reagent("dexalinp", inner.volume/3) //160u
 	inner.reagents.add_reagent("peridaxon", inner.volume/12) //40u. Peri and Dexalin only need to last long enough to give more blood/fix IB/complete organ repair surgery.
 	if(length(contents) > 0)
-		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/A = contents[1]
-		A.reagents.add_reagent("oxycodone", A.volume*(7/12))
-		A.reagents.add_reagent("dexalinp", A.volume/3)
-		A.reagents.add_reagent("peridaxon", A.volume/12)
-		A.update_uses_left()
-		A.update_icon()
+		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/autoinjector = contents[1]
+		autoinjector.reagents.add_reagent("oxycodone", autoinjector.volume*(7/12))
+		autoinjector.reagents.add_reagent("dexalinp", autoinjector.volume/3)
+		autoinjector.reagents.add_reagent("peridaxon", autoinjector.volume/12)
+		autoinjector.update_uses_left()
+		autoinjector.update_icon()
 	update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/attackby(obj/item/insertable_object, mob/user)
@@ -1245,8 +1245,8 @@
 		return
 
 	if(istype(insertable_object, /obj/item/reagent_container/hypospray/autoinjector/empty))
-		var/obj/item/reagent_container/hypospray/autoinjector/A = insertable_object
-		fill_autoinjector(A)
+		var/obj/item/reagent_container/hypospray/autoinjector/autoinjector = insertable_object
+		fill_autoinjector(autoinjector)
 		return ..()
 	else if(istype(insertable_object, /obj/item/reagent_container/hypospray/autoinjector))
 		to_chat(user, SPAN_WARNING("[insertable_object] is not compatible with this system!"))

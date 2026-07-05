@@ -25,16 +25,14 @@
 	can_build_special = FALSE
 	flags_area = AREA_NOBURROW|AREA_UNWEEDABLE
 
+
+/area/atlan/oob/space
+	name = "Atlan Space"
+	base_lighting_alpha = 255
+
 /area/atlan/oob/credits
-	name = "Atlan Credits"
-	icon_state = "oob"
-	requires_power = FALSE
-	ceiling = CEILING_MAX
-	is_resin_allowed = FALSE
-	can_build_special = FALSE
-	flags_area = AREA_NOBURROW|AREA_UNWEEDABLE
-
-
+	base_lighting_alpha = 255
+	always_unpowered = FALSE
 
 //asteroid caves / no CAS, no mortar, no OB, xeno playplace
 

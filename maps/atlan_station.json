@@ -2,7 +2,7 @@
     "map_name": "Atlan Station",
     "map_path": "map_files/Atlan_Station",
     "map_file": "Atlan_Station.dmm",
-    "webmap_url": "LV624",
+    "webmap_url": "AtlanStation",
     "survivor_types": [
         "/datum/equipment_preset/survivor/scientist/soro",
         "/datum/equipment_preset/survivor/doctor/soro",

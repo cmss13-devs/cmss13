@@ -1,4 +1,25 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/strata/green4,
+/area/atlan/station/single_dorms)
+"ab" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8;
+	pixel_x = -5;
+	pixel_y = 6
+	},
+/turf/open/floor/strata/green3/north,
+/area/atlan/station/single_dorms)
+"ac" = (
+/obj/structure/bed,
+/obj/item/bedsheet/colorable{
+	color = "#798675"
+	},
+/obj/item/storage/box/mre/upp,
+/turf/open/floor/strata/green4/north,
+/area/atlan/station/single_dorms)
 "af" = (
 /obj/structure/bed,
 /obj/structure/machinery/light/double/blue{
@@ -11,11 +32,6 @@
 /obj/structure/closet/secure_closet/personal,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/green4,
-/area/atlan/station/single_dorms)
-"aK" = (
-/obj/structure/surface/table,
-/obj/item/clothing/head/uppcap/ushanka/civi,
-/turf/open/floor/strata/green4/west,
 /area/atlan/station/single_dorms)
 "bd" = (
 /obj/structure/machinery/light/double/blue{
@@ -75,10 +91,6 @@
 	pixel_x = 24
 	},
 /turf/open/floor/strata/green1,
-/area/atlan/station/single_dorms)
-"eR" = (
-/obj/structure/barricade/wooden,
-/turf/open/floor/strata/green4/east,
 /area/atlan/station/single_dorms)
 "gk" = (
 /obj/structure/stairs/perspective{
@@ -151,8 +163,12 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/single_dorms)
 "ne" = (
-/obj/structure/surface/table,
-/obj/item/tool/pen,
+/obj/structure/bed,
+/obj/item/clothing/head/uppcap/ushanka/civi,
+/obj/item/reagent_container/food/drinks/cans/waterbottle/upp{
+	pixel_x = -10;
+	pixel_y = 15
+	},
 /turf/open/floor/strata/green4/east,
 /area/atlan/station/single_dorms)
 "no" = (
@@ -228,15 +244,7 @@
 /turf/open/floor/plating,
 /area/atlan/station/single_dorms)
 "ud" = (
-/obj/structure/bed,
-/obj/item/bedsheet/colorable,
-/obj/effect/decal/cleanable/blood/gibs/down,
-/obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/blood{
-	icon_state = "csplatter1";
-	pixel_y = 4;
-	pixel_x = -10
-	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/strata/green3,
 /area/atlan/station/single_dorms)
 "ut" = (
@@ -277,9 +285,14 @@
 /obj/structure/machinery/light/double/blue{
 	dir = 4
 	},
-/obj/structure/closet,
-/obj/effect/landmark/objective_landmark/close,
-/obj/item/clothing/under/marine/veteran/UPP/civi5,
+/obj/item/trash/upp_mre{
+	pixel_y = 1;
+	pixel_x = -6
+	},
+/obj/structure/barricade/wooden{
+	dir = 4;
+	pixel_y = 4
+	},
 /turf/open/floor/strata/green4/west,
 /area/atlan/station/single_dorms)
 "ym" = (
@@ -337,6 +350,7 @@
 "AY" = (
 /obj/structure/closet,
 /obj/item/clothing/under/marine/veteran/UPP/civi1,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/green4,
 /area/atlan/station/single_dorms)
 "BZ" = (
@@ -410,10 +424,6 @@
 /area/atlan/station/single_dorms)
 "IF" = (
 /obj/structure/bed,
-/obj/item/reagent_container/food/drinks/cans/waterbottle/upp{
-	pixel_x = -10;
-	pixel_y = 15
-	},
 /obj/item/clothing/shoes/marine/upp/knife,
 /turf/open/floor/strata/green4/west,
 /area/atlan/station/single_dorms)
@@ -452,7 +462,6 @@
 /area/atlan/station/single_dorms)
 "LR" = (
 /obj/structure/surface/table/woodentable/poor,
-/obj/item/storage/box/mre/upp,
 /turf/open/floor/strata/green4/east,
 /area/atlan/station/single_dorms)
 "MI" = (
@@ -500,12 +509,6 @@
 	pixel_y = 21
 	},
 /turf/open/floor/strata/green3/north,
-/area/atlan/station/single_dorms)
-"QP" = (
-/obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/blood/drip,
-/obj/effect/decal/cleanable/blood/gibs/core,
-/turf/open/floor/strata/green3,
 /area/atlan/station/single_dorms)
 "QZ" = (
 /obj/structure/machinery/light/double/blue{
@@ -555,7 +558,8 @@
 	pixel_x = 4;
 	pixel_y = 6
 	},
-/obj/effect/landmark/survivor_spawner,
+/obj/effect/decal/cleanable/blood/gibs/core,
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/strata/green3/north,
 /area/atlan/station/single_dorms)
 "Sy" = (
@@ -582,7 +586,7 @@
 /area/atlan/station/single_dorms)
 "Vn" = (
 /obj/structure/filingcabinet,
-/obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/green3,
 /area/atlan/station/single_dorms)
 "VD" = (
@@ -675,7 +679,7 @@ AY
 Op
 Xl
 iA
-eR
+Op
 tI
 ix
 iY
@@ -691,7 +695,7 @@ vu
 ix
 Xl
 Qw
-QP
+Qk
 iW
 Sq
 Qk
@@ -709,8 +713,8 @@ vO
 vu
 sQ
 Xl
-Ak
-aK
+ac
+Zc
 mP
 RU
 IF
@@ -750,7 +754,7 @@ Xl
 Us
 LR
 mP
-iA
+aa
 ne
 Xl
 ix
@@ -769,7 +773,7 @@ Xl
 Eq
 Vn
 Xl
-IC
+ab
 ud
 Xl
 FG

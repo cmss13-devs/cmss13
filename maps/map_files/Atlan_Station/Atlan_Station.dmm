@@ -6365,11 +6365,6 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/plating,
 /area/atlan/asteroid/processing_seperation)
-"atE" = (
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/strata/floor2,
-/area/atlan/asteroid/processing_seperation)
 "atF" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 5
@@ -6677,11 +6672,6 @@
 /obj/structure/pipes/vents/scrubber{
 	dir = 4
 	},
-/turf/open/floor/strata/floor2,
-/area/atlan/asteroid/processing_seperation)
-"auD" = (
-/obj/structure/pipes/vents/pump,
-/obj/structure/pipes/vents/pump,
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_seperation)
 "auE" = (
@@ -73294,7 +73284,7 @@ lGF
 dLS
 nQZ
 nQZ
-auD
+aue
 nQZ
 uKs
 tjw
@@ -77461,7 +77451,7 @@ bwi
 lwh
 atQ
 asU
-atE
+asU
 asU
 atl
 aSd

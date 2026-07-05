@@ -4398,7 +4398,9 @@
 /area/almayer/medical/upper_medical)
 "akx" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/cm_vending/sorted/vehicle_supply/tent,
+/obj/structure/machinery/cm_vending/sorted/vehicle_supply/tent{
+	desc = "An automated restockable storage vendor for use in organizing supplies."
+	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/req)
 "aky" = (

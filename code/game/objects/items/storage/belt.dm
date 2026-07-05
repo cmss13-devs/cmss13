@@ -759,15 +759,15 @@
 			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/urban.dmi'
 
 /obj/item/storage/belt/marine/m41a/fill_preset_inventory()
-	for(var/i = 1 to storage_slots)
+	for(var/inventory = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle (src)
 
 /obj/item/storage/belt/marine/m41amk1/fill_preset_inventory()
-	for(var/i = 1 to storage_slots)
+	for(var/inventory = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/m41aMK1 (src)
 
 /obj/item/storage/belt/marine/m39/fill_preset_inventory()
-	for(var/i = 1 to storage_slots)
+	for(var/inventory = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smg/m39 (src)
 
 /obj/item/storage/belt/marine/attackby(obj/item/W, mob/user)
@@ -782,62 +782,62 @@
 	desc = "Good for carrying around extra ammo in the heat of the jungle. Made of special rot-resistant fabric, and has five pockets."
 
 /obj/item/storage/belt/marine/dutch/m16/fill_preset_inventory()
-	for(var/i = 1 to storage_slots)
+	for(var/inventory = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/m16 (src)
 
 /obj/item/storage/belt/marine/dutch/m16/ap/fill_preset_inventory()
-	for(var/i = 1 to storage_slots)
+	for(var/inventory = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/m16/ap (src)
 
 /obj/item/storage/belt/marine/dutch/m60/fill_preset_inventory()
-	for(var/i in 1 to storage_slots)
+	for(var/inventory in 1 to storage_slots)
 		new /obj/item/ammo_magazine/m60 (src)
 
 // Outer Rim magazine Belts
 
 /obj/item/storage/belt/marine/ar10/fill_preset_inventory() // AR-10
-	for(var/i = 1 to storage_slots)
+	for(var/inventory = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/ar10 (src)
 /obj/item/storage/belt/marine/m16/fill_preset_inventory() // M16
-	for(var/i = 1 to storage_slots)
+	for(var/inventory = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/m16 (src)
 
 /obj/item/storage/belt/marine/m16/ap/fill_preset_inventory()
-	for(var/i = 1 to storage_slots)
+	for(var/inventory = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/m16/ap (src)
 
 /obj/item/storage/belt/marine/mar40/fill_preset_inventory() // Mar40
-	for(var/i = 1 to storage_slots)
+	for(var/inventory = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/mar40 (src)
 
 /obj/item/storage/belt/marine/mar40/drum/fill_preset_inventory()
-	for(var/i = 1 to storage_slots)
+	for(var/inventory = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/mar40/lmg (src)
 
 /obj/item/storage/belt/marine/mar40/extended/fill_preset_inventory()
-	for(var/i = 1 to storage_slots)
+	for(var/inventory = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/mar40/extended (src)
 
 /obj/item/storage/belt/marine/mp5/fill_preset_inventory() // MP5
-	for(var/i = 1 to storage_slots)
+	for(var/inventory = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smg/mp5 (src)
 /obj/item/storage/belt/marine/uzi/fill_preset_inventory() // uzi
-	for(var/i = 1 to storage_slots)
+	for(var/inventory = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smg/uzi (src)
 /obj/item/storage/belt/marine/boltaction/fill_preset_inventory() // Hunting Rifle
-	for(var/i = 1 to storage_slots)
+	for(var/inventory = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/boltaction(src)
 
 /obj/item/storage/belt/marine/fp9000/fill_preset_inventory() // FP9000
-	for(var/i = 1 to storage_slots)
+	for(var/inventory = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smg/fp9000(src)
 
 /obj/item/storage/belt/marine/nsg23/fill_preset_inventory() // NSG23
-	for(var/i = 1 to storage_slots)
+	for(var/inventory = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/nsg23(src)
 
 /obj/item/storage/belt/marine/shotgun_ammo/fill_preset_inventory() // shotgun ammo for survs, cursed but we want non-optimal storage on purpose
-	for(var/i = 1 to storage_slots)
+	for(var/inventory = 1 to storage_slots)
 		new /obj/item/ammo_magazine/handful/shotgun/buckshot(src)
 
 /obj/item/storage/belt/marine/smartgunner
@@ -914,7 +914,7 @@
 
 //version full of type 71 mags
 /obj/item/storage/belt/marine/upp/full/fill_preset_inventory()
-	for(var/i = 1 to storage_slots)
+	for(var/inventory = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/type71(src)
 
 /obj/item/storage/belt/marine/upp/scarce/fill_preset_inventory()
@@ -1031,11 +1031,11 @@
 			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/urban.dmi'
 
 /obj/item/storage/belt/shotgun/full/fill_preset_inventory()
-	for(var/i = 1 to storage_slots)
+	for(var/inventory = 1 to storage_slots)
 		new /obj/item/ammo_magazine/handful/shotgun/slug(src)
 
 /obj/item/storage/belt/shotgun/full/random/fill_preset_inventory()
-	for(var/i = 1 to storage_slots)
+	for(var/inventory = 1 to storage_slots)
 		var/random_shell_type = pick(GLOB.shotgun_handfuls_12g)
 		new random_shell_type(src)
 
@@ -1063,25 +1063,25 @@
 	storage_slots = 10
 
 /obj/item/storage/belt/shotgun/upp/heavybuck/fill_preset_inventory()
-	for(var/i = 1 to storage_slots)
+	for(var/inventory = 1 to storage_slots)
 		new /obj/item/ammo_magazine/handful/shotgun/heavy/buckshot(src)
 
 /obj/item/storage/belt/shotgun/upp/heavyslug/fill_preset_inventory()
-	for(var/i in 1 to storage_slots)
+	for(var/inventory in 1 to storage_slots)
 		new /obj/item/ammo_magazine/handful/shotgun/heavy/slug(src)
 
 /obj/item/storage/belt/shotgun/black/es7_mixed/fill_preset_inventory()
-	for(var/i in 1 to (storage_slots/2))
+	for(var/inventory in 1 to (storage_slots/2))
 		new /obj/item/ammo_magazine/handful/shotgun/slug/es7(src)
-	for(var/i in 1 to (storage_slots/2))
+	for(var/inventory in 1 to (storage_slots/2))
 		new /obj/item/ammo_magazine/handful/shotgun/beanbag/es7(src)
 
 /obj/item/storage/belt/shotgun/black/es7_stun/fill_preset_inventory()
-	for(var/i in 1 to storage_slots)
+	for(var/inventory in 1 to storage_slots)
 		new /obj/item/ammo_magazine/handful/shotgun/beanbag/es7(src)
 
 /obj/item/storage/belt/shotgun/black/es7_lethal/fill_preset_inventory()
-	for(var/i in 1 to storage_slots)
+	for(var/inventory in 1 to storage_slots)
 		new /obj/item/ammo_magazine/handful/shotgun/slug/es7(src)
 
 /obj/item/storage/belt/shotgun/van_bandolier
@@ -1110,8 +1110,8 @@
 	var/mob/living/carbon/human/user = loc
 	icon_state = "van_bandolier_[round(length(contents) * 0.5, 1)]"
 	var/new_state = "van_bandolier_[length(contents)]"
-	for(var/I in item_state_slots)
-		LAZYSET(item_state_slots, I, new_state)
+	for(var/inventory in item_state_slots)
+		LAZYSET(item_state_slots, inventory, new_state)
 
 	if(!istype(user))
 		return
@@ -1123,7 +1123,7 @@
 		user.update_inv_back()
 
 /obj/item/storage/belt/shotgun/van_bandolier/fill_preset_inventory()
-	for(var/i in 1 to max_storage_space * 0.5)
+	for(var/inventory in 1 to max_storage_space * 0.5)
 		new /obj/item/ammo_magazine/handful/shotgun/twobore(src)
 
 
@@ -1218,7 +1218,7 @@
 			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/urban.dmi'
 
 /obj/item/storage/belt/knifepouch/fill_preset_inventory()
-	for(var/i = 1 to storage_slots)
+	for(var/inventory = 1 to storage_slots)
 		new /obj/item/weapon/throwing_knife(src)
 
 /obj/item/storage/belt/knifepouch/_item_insertion(obj/item/new_item, prevent_warning = FALSE)
@@ -1306,7 +1306,7 @@
 	desc = "Eighteen pockets filled to the brim with all the explosives you could ask for, what more could you want?"
 
 /obj/item/storage/belt/grenade/large/dutch/full/fill_preset_inventory()
-	for(var/i in 1 to 6)
+	for(var/inventory in 1 to 6)
 		new /obj/item/explosive/grenade/incendiary/impact(src)
 		new /obj/item/explosive/grenade/high_explosive/impact(src)
 		new /obj/item/explosive/grenade/high_explosive/airburst/buckshot(src)
@@ -1569,7 +1569,7 @@
 				to_chat(user, SPAN_NOTICE("You start refilling [src] with [ammo_dumping]."))
 				if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 					return
-				for(var/i = 1 to handfuls)
+				for(var/inventory = 1 to handfuls)
 					if(length(contents) < storage_slots - 1)
 						var/obj/item/ammo_magazine/handful/new_handful = new /obj/item/ammo_magazine/handful
 						var/transferred_handfuls = min(ammo_dumping.current_rounds, amount_to_dump)
@@ -1608,7 +1608,7 @@
 
 /obj/item/storage/belt/gun/m4a3/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/m4a3())
-	for(var/i = 1 to storage_slots - 1)
+	for(var/inventory = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol(src)
 
 /obj/item/storage/belt/gun/m4a3/commander/fill_preset_inventory()
@@ -1622,17 +1622,17 @@
 
 /obj/item/storage/belt/gun/m4a3/mod88/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/mod88())
-	for(var/i = 1 to storage_slots - 1)
+	for(var/inventory = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/mod88(src)
 
 /obj/item/storage/belt/gun/m4a3/mod88_near_empty/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/mod88())
-	for(var/i = 1 to 3)
+	for(var/inventory = 1 to 3)
 		new /obj/item/ammo_magazine/pistol/mod88(src)
 
 /obj/item/storage/belt/gun/m4a3/vp78/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/vp78())
-	for(var/i = 1 to storage_slots - 1)
+	for(var/inventory = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/vp78(src)
 
 /obj/item/storage/belt/gun/m4a3/wy
@@ -1654,27 +1654,27 @@
 
 /obj/item/storage/belt/gun/m4a3/wy/mod88/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/mod88())
-	for(var/i = 1 to storage_slots - 1)
+	for(var/inventory = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/mod88(src)
 
 /obj/item/storage/belt/gun/m4a3/wy/mod88_near_empty/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/mod88())
-	for(var/i = 1 to 3)
+	for(var/inventory = 1 to 3)
 		new /obj/item/ammo_magazine/pistol/mod88(src)
 
 /obj/item/storage/belt/gun/m4a3/wy/es4/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/es4())
-	for(var/i = 1 to storage_slots - 1)
+	for(var/inventory = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/es4(src)
 
 /obj/item/storage/belt/gun/m4a3/wy/vp78/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/vp78())
-	for(var/i = 1 to storage_slots - 1)
+	for(var/inventory = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/vp78(src)
 
 /obj/item/storage/belt/gun/m4a3/wy/vp78_near_empty/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/vp78())
-	for(var/i = 1 to 3)
+	for(var/inventory = 1 to 3)
 		new /obj/item/ammo_magazine/pistol/vp78(src)
 
 /obj/item/storage/belt/gun/m4a3/wy/vp78_whiteout/fill_preset_inventory()
@@ -1760,17 +1760,17 @@
 
 /obj/item/storage/belt/gun/m4a3/highpower/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/highpower())
-	for(var/i = 1 to storage_slots - 1)
+	for(var/inventory = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/highpower(src)
 
 /obj/item/storage/belt/gun/m4a3/highpower/black/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/highpower/black())
-	for(var/i = 1 to storage_slots - 1)
+	for(var/inventory = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/highpower/black(src)
 
 /obj/item/storage/belt/gun/m4a3/highpower/tactical/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/highpower/tactical())
-	for(var/i = 1 to storage_slots - 1)
+	for(var/inventory = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/highpower/black(src)
 
 /obj/item/storage/belt/gun/m4a3/black
@@ -1806,7 +1806,7 @@
 
 /obj/item/storage/belt/gun/m4a3/nailgun/prefilled/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/smg/nailgun/compact())
-	for(var/i = 1 to storage_slots - 1)
+	for(var/inventory = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/smg/nailgun(src)
 
 /obj/item/storage/belt/gun/m39
@@ -1834,27 +1834,27 @@
 
 /obj/item/storage/belt/gun/m39/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/smg/m39(src))
-	for(var/i = 1 to storage_slots - 1)
+	for(var/inventory = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/smg/m39(src)
 
 /obj/item/storage/belt/gun/m39/full/extended/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/smg/m39(src))
-	for(var/i = 1 to storage_slots - 1)
+	for(var/inventory = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/smg/m39/extended(src)
 
 /obj/item/storage/belt/gun/m39/corporate/no_lock/full/extended/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/smg/m39/corporate/no_lock(src))
-	for(var/i = 1 to storage_slots - 1)
+	for(var/inventory = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/smg/m39/extended(src)
 
 /obj/item/storage/belt/gun/m39/full/whiteout/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/smg/m39/elite/compact/heap(src))
-	for(var/i = 1 to storage_slots - 1)
+	for(var/inventory = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/smg/m39/heap(src)
 
 /obj/item/storage/belt/gun/m39/full/whiteout_low_threat/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/smg/m39/elite/compact(src))
-	for(var/i = 1 to storage_slots - 1)
+	for(var/inventory = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/smg/m39/ap(src)
 
 /obj/item/storage/belt/gun/m10
@@ -1876,17 +1876,17 @@
 
 /obj/item/storage/belt/gun/m10/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/m10(src))
-	for(var/i = 1 to storage_slots - 1)
+	for(var/inventory = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/m10(src)
 
 /obj/item/storage/belt/gun/m10/full/extended/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/m10(src))
-	for(var/i = 1 to storage_slots - 1)
+	for(var/inventory = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/m10/extended(src)
 
 /obj/item/storage/belt/gun/m10/full/drum/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/m10(src))
-	for(var/i = 1 to storage_slots - 1)
+	for(var/inventory = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/m10/drum(src)
 
 #define MAXIMUM_MAGAZINE_COUNT 2
@@ -1976,26 +1976,26 @@
 
 /obj/item/storage/belt/gun/m44/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/revolver/m44())
-	for(var/i = 1 to storage_slots - 1)
+	for(var/inventory = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/revolver/marksman(src)
 
 /obj/item/storage/belt/gun/m44/custom/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/revolver/m44/custom())
-	for(var/i = 1 to storage_slots - 1)
+	for(var/inventory = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/revolver/marksman(src)
 
 /obj/item/storage/belt/gun/m44/mp/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/revolver/m44/mp())
-	for(var/i = 1 to storage_slots - 1)
+	for(var/inventory = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/revolver/marksman(src)
 
 /obj/item/storage/belt/gun/m44/m2049/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/revolver/m44/custom/pkd_special/k2049())
-	for(var/i = 1 to storage_slots - 1)
+	for(var/inventory = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/revolver/pkd(src)
 
 /obj/item/storage/belt/gun/m44/m2049/nogun/fill_preset_inventory()
-	for(var/i = 1 to storage_slots - 1)
+	for(var/inventory = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/revolver/pkd(src)
 
 /obj/item/storage/belt/gun/m44/gunslinger
@@ -2029,7 +2029,7 @@
 /obj/item/storage/belt/gun/m44/gunslinger/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/revolver/m44())
 	handle_item_insertion(new /obj/item/weapon/gun/revolver/m44())
-	for(var/i = 1 to storage_slots - 2)
+	for(var/inventory = 1 to storage_slots - 2)
 		new /obj/item/ammo_magazine/revolver/marksman(src)
 
 /obj/item/storage/belt/gun/m44/lever_action
@@ -2344,22 +2344,22 @@
 
 /obj/item/storage/belt/gun/type47/np92/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/np92())
-	for(var/i = 1 to storage_slots - 1)
+	for(var/inventory = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/np92(src)
 
 /obj/item/storage/belt/gun/type47/np92/suppressed/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/np92/suppressed())
-	for(var/i = 1 to storage_slots - 1)
+	for(var/inventory = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/np92/suppressed(src)
 
 /obj/item/storage/belt/gun/type47/t73/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/t73())
-	for(var/i = 1 to storage_slots - 1)
+	for(var/inventory = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/t73(src)
 
 /obj/item/storage/belt/gun/type47/t73/leader/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/t73/leader())
-	for(var/i = 1 to storage_slots - 1)
+	for(var/inventory = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/t73_impact(src)
 
 /obj/item/storage/belt/gun/type47/revolver/fill_preset_inventory()
@@ -2433,11 +2433,11 @@
 
 /obj/item/storage/belt/gun/smartpistol/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/smart())
-	for(var/i = 1 to storage_slots - 1)
+	for(var/inventory = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/smart(src)
 
 /obj/item/storage/belt/gun/smartpistol/full_nogun/fill_preset_inventory()
-	for(var/i = 1 to storage_slots - 1)
+	for(var/inventory = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/smart(src)
 
 /obj/item/storage/belt/gun/flaregun
@@ -2484,11 +2484,11 @@
 
 /obj/item/storage/belt/gun/flaregun/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/flare())
-	for(var/i = 1 to storage_slots - 1)
+	for(var/inventory = 1 to storage_slots - 1)
 		new /obj/item/device/flashlight/flare(src)
 
 /obj/item/storage/belt/gun/flaregun/full_nogun/fill_preset_inventory()
-	for(var/i = 1 to storage_slots - 1)
+	for(var/inventory = 1 to storage_slots - 1)
 		new /obj/item/device/flashlight/flare(src)
 
 /obj/item/storage/belt/gun/flaregun/attackby(obj/item/W, mob/user)
@@ -2521,7 +2521,7 @@
 
 /obj/item/storage/belt/gun/webley/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/revolver/m44/custom/webley())
-	for(var/i in 1 to storage_slots - 1)
+	for(var/inventory in 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/revolver/webley(src)
 
 /obj/item/storage/belt/gun/iasf_para_belt
@@ -2550,12 +2550,12 @@
 
 /obj/item/storage/belt/gun/iasf_para_belt/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/revolver/m44/custom/webley/IASF_webley())
-	for(var/i in 1 to storage_slots - 1)
+	for(var/inventory in 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/revolver/webley(src)
 
 /obj/item/storage/belt/gun/iasf_para_belt/webley_near_empty/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/revolver/m44/custom/webley/IASF_webley())
-	for(var/i = 1 to 3)
+	for(var/inventory = 1 to 3)
 		new /obj/item/ammo_magazine/revolver/webley(src)
 
 /obj/item/storage/belt/gun/iasf_para_belt/custom
@@ -2566,7 +2566,7 @@
 
 /obj/item/storage/belt/gun/iasf_para_belt/custom/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/l54_custom())
-	for(var/i in 1 to storage_slots - 1)
+	for(var/inventory in 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/l54_custom(src)
 
 /obj/item/storage/belt/gun/smartgunner
@@ -2861,7 +2861,7 @@
 	AddElement(/datum/element/corp_label/souta)
 
 /obj/item/storage/belt/souto/fill_preset_inventory()
-	for(var/i = 1 to storage_slots)
+	for(var/inventory = 1 to storage_slots)
 		new /obj/item/reagent_container/food/drinks/cans/souto/classic(src)
 
 /obj/item/storage/belt/souto/update_icon()
@@ -2892,19 +2892,19 @@
 	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 
 /obj/item/storage/belt/marine/rmc/rmc_f90_ammo/fill_preset_inventory()
-	for(var/i in 1 to storage_slots)
+	for(var/inventory in 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/rmc_f90(src)
 
 /obj/item/storage/belt/marine/rmc/rmc_f90_ammo/marksman/fill_preset_inventory()
-	for(var/i in 1 to storage_slots)
+	for(var/inventory in 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/rmc_f90/marksman(src)
 
 /obj/item/storage/belt/marine/rmc/l64a3/marksman/fill_preset_inventory()
-	for(var/i in 1 to storage_slots)
+	for(var/inventory in 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/l64/ap(src)
 
 /obj/item/storage/belt/marine/rmc/rmc_l23_ammo/fill_preset_inventory()
-	for(var/i in 1 to storage_slots)
+	for(var/inventory in 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/l23(src)
 
 /obj/item/storage/belt/medical/rmc
@@ -2982,7 +2982,7 @@
 
 /obj/item/storage/belt/gun/l905/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/vp78())
-	for(var/i in 1 to storage_slots - 1)
+	for(var/inventory in 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/vp78(src)
 
 /obj/item/storage/belt/gun/type47/SOF_belt
@@ -2992,12 +2992,12 @@
 
 /obj/item/storage/belt/gun/type47/SOF_belt/t73/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/t73())
-	for(var/i = 1 to storage_slots - 1)
+	for(var/inventory = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/t73(src)
 
 /obj/item/storage/belt/gun/type47/SOF_belt/revolver/upp/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/revolver/upp())
-	for(var/i = 1 to storage_slots - 1)
+	for(var/inventory = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/revolver/upp(src)
 
 /obj/item/storage/belt/gun/l54
@@ -3020,5 +3020,5 @@
 
 /obj/item/storage/belt/gun/l54/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/l54())
-	for(var/i in 1 to storage_slots - 1)
+	for(var/inventory in 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/l54(src)

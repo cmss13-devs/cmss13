@@ -19,3 +19,22 @@
       now need the head targeted.
   MoondancerPony:
   - code_imp: made the spawn_humans unit test wait 5 seconds instead of 60
+2026-07-05:
+  DangerRevolution:
+  - balance: Silenced the Scrapeaway Timed Effect for the Marines during the LV-624
+      CLF Crashed Ship insert.
+  - code_imp: Added two variables for the scrapeaway timed effect to silence the announcement
+      for Marines, or Xenos, about the walls being deleted.
+  Orchidfox:
+  - spellcheck: Improved grammar in a bunch of tips
+  - bugfix: Astronav APC is once again hardened as intended
+  Rug-Dealer:
+  - spellcheck: corrected facehugger tip ("one-second windup" -> "two-second windup")
+  antlersss:
+  - bugfix: Reagents without overdose thresholds will no longer trigger red holocards
+  - bugfix: Brusied livers/kidneys no longer immediately trigger red holocards
+  ori-disillusion-mirnov:
+  - code_imp: fix dusting runtime
+  realforest2001:
+  - rscadd: Split the icons for xeno building into their own icon file.
+  - imageadd: Added build icons for pathogen building, from DimDim.

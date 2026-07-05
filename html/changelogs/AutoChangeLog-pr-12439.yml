@@ -1,5 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Split the icons for xeno building into their own icon file."
-  - imageadd: "Added build icons for pathogen building, from DimDim."

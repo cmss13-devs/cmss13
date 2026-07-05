@@ -1,0 +1,4 @@
+author: "Orchidfox"
+delete-after: True
+changes:
+  - bugfix: "Astronav APC is once again hardened as intended"

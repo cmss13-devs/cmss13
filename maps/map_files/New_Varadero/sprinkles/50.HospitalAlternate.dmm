@@ -32,22 +32,6 @@
 	},
 /turf/open/floor/shiva/snow_mat/east,
 /area/template_noop)
-"ae" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22";
-	pixel_y = 8
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
-	light_range = 5;
-	light_power = 3;
-	light_color = "#FF0000";
-	light_on = 1;
-	pixel_x = 32;
-	pixel_y = 0
-	},
-/turf/open/floor/shiva/redfull,
-/area/template_noop)
 "af" = (
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/shiva/multi_tiles/west,
@@ -644,6 +628,22 @@
 "bM" = (
 /obj/structure/sign/safety/biohazard,
 /turf/closed/wall,
+/area/template_noop)
+"bN" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_y = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
+	light_range = 5;
+	light_power = 3;
+	light_color = "#FF0000";
+	light_on = 1;
+	pixel_x = 32;
+	pixel_y = 0
+	},
+/turf/open/floor/shiva/redfull,
 /area/template_noop)
 "bT" = (
 /obj/item/storage/firstaid/o2{
@@ -2526,7 +2526,7 @@ Iz
 "}
 (15,1,1) = {"
 eU
-ae
+bN
 bv
 oU
 bv

@@ -383,12 +383,12 @@ export const OpenSearchQuery = (props) => {
                 <Button
                   icon="window-restore"
                   color="blue"
-                  tooltip="open another query"
+                  tooltip="Opens the list of queries"
                   onClick={() => {
                     act('open_queries');
                   }}
                 >
-                  Dashboards
+                  Queries
                 </Button>
               </Stack.Item>
               <Stack.Item align="center">

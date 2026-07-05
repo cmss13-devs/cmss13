@@ -3345,32 +3345,12 @@
 	},
 /turf/open/floor/plating/prison,
 /area/atlan/station/double_dorms)
-"akB" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 8
-	},
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice12";
-	pixel_y = 16
-	},
-/turf/open/floor/strata/green1,
-/area/atlan/station/double_dorms)
 "akC" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
 	pixel_y = 16
 	},
 /turf/open/floor/strata,
-/area/atlan/station/double_dorms)
-"akD" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 4
-	},
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice12";
-	pixel_y = 16
-	},
-/turf/open/floor/strata/green1,
 /area/atlan/station/double_dorms)
 "akE" = (
 /obj/structure/prop/invuln/lattice_prop{
@@ -3708,6 +3688,54 @@
 	},
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/repairoffice)
+"als" = (
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 32;
+	layer = 5.4
+	},
+/turf/open/floor/plating/prison,
+/area/atlan/asteroid/processing_sw_train)
+"alt" = (
+/obj/structure/monorail{
+	dir = 4;
+	name = "launch track"
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 32;
+	layer = 5.4
+	},
+/turf/open/floor/plating/prison,
+/area/atlan/asteroid/processing_sw_train)
+"alu" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_x = -1
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 32;
+	layer = 5.4
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/atlan/asteroid/processing_sw_train)
+"alv" = (
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 32;
+	layer = 5.4
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_sw_train)
 "ame" = (
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall{
 	pixel_y = 21
@@ -18198,6 +18226,10 @@
 /area/atlan/asteroid/processing_se_train)
 "kcA" = (
 /obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/comms/lz2_bar_south)
 "kcT" = (
@@ -38004,6 +38036,11 @@
 /area/atlan/asteroid/processing_se_train)
 "xIx" = (
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2";
+	pixel_x = 16;
+	pixel_y = 16
+	},
 /turf/closed/wall/strata_outpost/reinforced,
 /area/atlan/comms/lz2_bar_south)
 "xIA" = (
@@ -51560,7 +51597,7 @@ llS
 oyH
 cju
 gzp
-akB
+ybW
 blM
 kvr
 hij
@@ -51758,7 +51795,7 @@ tPr
 tPr
 tHX
 tPr
-akC
+tPr
 tPr
 kvr
 hij
@@ -51956,7 +51993,7 @@ tPr
 qaV
 tPr
 mew
-akC
+tPr
 tHX
 mew
 eaH
@@ -52154,7 +52191,7 @@ tPr
 tPr
 tPr
 tPr
-akC
+tPr
 tPr
 tPr
 fNL
@@ -52352,7 +52389,7 @@ tPr
 tPr
 blM
 blM
-akD
+cRS
 tPr
 tPr
 kci
@@ -54163,7 +54200,7 @@ csf
 oME
 csf
 xIx
-loF
+aeG
 aeG
 aeG
 aeG
@@ -62779,7 +62816,7 @@ uBw
 mTx
 mkk
 mkk
-mkk
+ajd
 cwE
 lpW
 bag
@@ -62977,7 +63014,7 @@ lCz
 pkO
 lCz
 lCz
-lCz
+ais
 unS
 lCz
 lCz
@@ -63175,7 +63212,7 @@ rUn
 rUn
 rUn
 rUn
-rUn
+ait
 rUn
 rUn
 rUn
@@ -63373,7 +63410,7 @@ ktO
 ktO
 pAn
 ktO
-ktO
+aiu
 ktO
 ktO
 ktO
@@ -65981,11 +66018,11 @@ nQZ
 ijq
 lGL
 kBG
-fwe
-fwe
-xhv
-eXH
-uPi
+alv
+alv
+alu
+alt
+als
 eXH
 gEJ
 fwe

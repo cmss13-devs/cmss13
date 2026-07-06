@@ -18,9 +18,7 @@
 /area/atlan/asteroid/exports_west)
 "aae" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/machinery/power/apc/power/east{
-	start_charge = 30
-	},
+/obj/structure/machinery/power/apc/power/east,
 /turf/open/floor/greengrid,
 /area/atlan/station/substation)
 "aaf" = (
@@ -735,13 +733,6 @@
 	},
 /turf/open/floor/strata/white_cyan3/south,
 /area/atlan/station/medical)
-"acx" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
-	pixel_y = 21
-	},
-/turf/open/floor/strata/white_cyan3/north,
-/area/atlan/station/medical)
 "acy" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -976,6 +967,10 @@
 	pixel_y = 20
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair/wheelchair{
+	pixel_y = 5;
+	pixel_x = 5
+	},
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/atlan/station/medical)
 "adl" = (
@@ -1227,6 +1222,12 @@
 /obj/effect/landmark/monkey_spawn,
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/exports_west)
+"aef" = (
+/obj/structure/machinery/shower{
+	dir = 4
+	},
+/turf/open/floor/strata/cyan1,
+/area/atlan/station/double_dorms)
 "aeg" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 8;
@@ -1526,6 +1527,9 @@
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3,
 /turf/closed/wall/upp_ship/grey,
 /area/atlan/station/hab_docks)
+"afa" = (
+/turf/open/floor/strata/cyan1,
+/area/atlan/station/double_dorms)
 "afb" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -1875,6 +1879,10 @@
 	},
 /turf/open/floor/strata,
 /area/atlan/station/hab_docks)
+"agh" = (
+/obj/structure/platform_decoration/metal/strata/north,
+/turf/open/floor/strata,
+/area/atlan/station/walkway)
 "agi" = (
 /obj/structure/flora/tree/tyrargo/tree_2{
 	layer = 5
@@ -1960,7 +1968,7 @@
 	icon_state = "trash_7";
 	pixel_y = 12
 	},
-/turf/open/floor/prison/darkbrownfull2,
+/turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_offices)
 "agw" = (
 /obj/effect/decal/strata_decals/grasses,
@@ -2085,6 +2093,17 @@
 	},
 /turf/open/floor/corsat,
 /area/atlan/comms/lz2_hab_relay)
+"agO" = (
+/obj/structure/machinery/light/double/blue,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 32;
+	layer = 5.4
+	},
+/turf/open/floor/prison/darkyellowfull2,
+/area/atlan/station/substation)
 "agP" = (
 /obj/structure/platform/metal/strata/east,
 /turf/open/floor/prison/sterile_white/south,
@@ -2979,6 +2998,26 @@
 	},
 /turf/open/floor/strata/floor2,
 /area/atlan/station/admin)
+"ajw" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 10
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/station/substation)
+"ajx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 32;
+	layer = 5.4
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/station/substation)
 "ajy" = (
 /obj/effect/decal/hybrisa/trash,
 /turf/open/floor/strata/fake_wood,
@@ -3472,6 +3511,12 @@
 	},
 /turf/open/floor/strata,
 /area/atlan/station/double_dorms)
+"akK" = (
+/obj/effect/decal/strata_decals/grime/grime4{
+	icon_state = "grime2"
+	},
+/turf/open/floor/prison/darkyellowfull2,
+/area/atlan/comms/lz1_engineering)
 "akL" = (
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
@@ -3556,16 +3601,6 @@
 	},
 /turf/open/floor/strata/floor2,
 /area/atlan/station/medical)
-"akW" = (
-/obj/structure/prop/invuln/lattice_prop{
-	dir = 1;
-	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 32;
-	layer = 5.4
-	},
-/turf/open/floor/strata/floor2,
-/area/atlan/station/stairs1)
 "akX" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12"
@@ -3587,25 +3622,6 @@
 	},
 /turf/open/floor/strata,
 /area/atlan/station/stairs1)
-"ala" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/invuln/lattice_prop{
-	dir = 1;
-	icon_state = "lattice3";
-	pixel_y = 32;
-	layer = 5.4
-	},
-/turf/open/floor/strata/floor2,
-/area/atlan/station/medical_maint)
-"alb" = (
-/obj/structure/prop/invuln/lattice_prop{
-	dir = 1;
-	icon_state = "lattice3";
-	pixel_y = 32;
-	layer = 5.4
-	},
-/turf/open/floor/strata/floor2,
-/area/atlan/station/medical_maint)
 "alc" = (
 /turf/closed/wall/upp_ship/grey/blue/reinforced/outer,
 /area/atlan/station/hab_flight)
@@ -3881,6 +3897,10 @@
 "alI" = (
 /turf/open/floor/corsat/marked,
 /area/atlan/oob/space)
+"alJ" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkyellowfull2,
+/area/atlan/comms/lz1_engineering)
 "alK" = (
 /obj/structure/machinery/washing_machine,
 /obj/structure/machinery/washing_machine{
@@ -3948,6 +3968,12 @@
 /obj/structure/sign/safety/maint,
 /turf/closed/wall/upp_ship/grey,
 /area/atlan/station/hab_rec)
+"alV" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/prison/darkyellowfull2,
+/area/atlan/comms/lz1_engineering)
 "alW" = (
 /obj/structure/machinery/alarm,
 /turf/closed/wall/upp_ship/grey,
@@ -3994,6 +4020,12 @@
 	},
 /turf/open/floor/strata/cyan1,
 /area/atlan/station/medical)
+"amf" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/medical/autoname{
+	dir = 1
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/atlan/station/medical_maint)
 "amg" = (
 /obj/structure/platform_decoration/metal/strata/east,
 /obj/structure/prop/invuln/lattice_prop{
@@ -4029,6 +4061,9 @@
 /obj/structure/machinery/alarm,
 /turf/closed/wall/upp_ship/grey/orange,
 /area/atlan/asteroid/processing_handling)
+"aml" = (
+/turf/open/floor/strata/white_cyan3/south,
+/area/atlan/station/medical_maint)
 "amm" = (
 /obj/structure/machinery/alarm,
 /turf/closed/wall/upp_ship/grey,
@@ -4199,6 +4234,10 @@
 	},
 /turf/open/floor/strata/red1,
 /area/atlan/station/hab_docks)
+"amP" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/white_cyan3/south,
+/area/atlan/station/medical_maint)
 "amQ" = (
 /obj/structure/platform/metal/strata/north,
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -4408,6 +4447,12 @@
 	},
 /turf/open/floor/strata,
 /area/atlan/station/promenade)
+"anC" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/atlan/station/medical_maint)
 "anD" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 10
@@ -5799,6 +5844,12 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_se_train)
+"arY" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/strata/white_cyan3/north,
+/area/atlan/station/medical_maint)
 "arZ" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
@@ -5840,6 +5891,10 @@
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_se_train)
+"asg" = (
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/strata/white_cyan3/north,
+/area/atlan/station/medical_maint)
 "ash" = (
 /obj/structure/machinery/door/airlock/prison_hatch/alt/autoname{
 	dir = 2
@@ -6245,7 +6300,7 @@
 /obj/effect/decal/cleanable/blood,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/floor2,
-/area/atlan/station/stairs1)
+/area/atlan/station/substation)
 "atu" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt,
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -6276,7 +6331,7 @@
 	dir = 5
 	},
 /turf/open/floor/strata/floor3/east,
-/area/atlan/station/stairs1)
+/area/atlan/station/substation)
 "atz" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -6317,30 +6372,6 @@
 	dir = 4
 	},
 /turf/open/floor/strata/floor3/east,
-/area/atlan/station/stairs1)
-"atH" = (
-/obj/structure/prop/invuln/lattice_prop{
-	dir = 1;
-	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 32;
-	layer = 5.4
-	},
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/strata/floor2,
-/area/atlan/station/stairs1)
-"atI" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/strata/floor2,
-/area/atlan/station/stairs1)
-"atJ" = (
-/obj/structure/pipes/vents/pump,
-/turf/open/floor/prison/darkyellowfull2,
 /area/atlan/station/stairs1)
 "atK" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -6569,9 +6600,7 @@
 /area/atlan/station/medical)
 "auu" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 5
-	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/floor2,
 /area/atlan/station/medical_maint)
 "auv" = (
@@ -6580,23 +6609,9 @@
 	},
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/medical_maint)
-"auw" = (
-/obj/structure/prop/invuln/lattice_prop{
-	dir = 1;
-	icon_state = "lattice3";
-	pixel_y = 32;
-	layer = 5.4
-	},
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/strata/floor2,
-/area/atlan/station/medical_maint)
 "aux" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 10
-	},
-/turf/open/floor/strata/floor2,
+/obj/structure/window/framed/upp_ship/grey/teal,
+/turf/open/floor/plating,
 /area/atlan/station/medical_maint)
 "auy" = (
 /obj/structure/pipes/vents/pump,
@@ -6995,11 +7010,6 @@
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_handling)
 "avM" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 8;
-	pixel_x = -10;
-	pixel_y = -3
-	},
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 6
 	},
@@ -7290,6 +7300,9 @@
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/asteroid/processing_handling)
+"awI" = (
+/turf/open/floor/strata/cyan1,
+/area/atlan/station/medical_maint)
 "awJ" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 10
@@ -7630,6 +7643,20 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/floor2,
 /area/atlan/comms/lz1_lift)
+"axP" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 1
+	},
+/turf/open/floor/strata/cyan1,
+/area/atlan/station/medical_maint)
+"axQ" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 8;
+	pixel_x = -10;
+	pixel_y = -3
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/station/medical_maint)
 "axR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -7663,6 +7690,29 @@
 	},
 /turf/open/floor/strata/floor2,
 /area/atlan/station/repairoffice)
+"axX" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12"
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/station/medical_maint)
+"axY" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/machinery/light/double/blue,
+/turf/open/floor/corsat,
+/area/atlan/station/stairs1)
+"axZ" = (
+/obj/structure/machinery/light/double/blue,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/station/medical_maint)
 "aya" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/vents/scrubber{
@@ -7674,6 +7724,27 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/floor2,
 /area/atlan/station/repairs_lift)
+"ayc" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall{
+	pixel_y = 26
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/station/medical_maint)
+"ayd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair/wheelchair,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/atlan/station/medical)
+"aye" = (
+/obj/item/tool/mop{
+	pixel_x = 13;
+	pixel_y = 25
+	},
+/turf/open/floor/strata/cyan1,
+/area/atlan/station/medical)
 "ayf" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 6
@@ -7703,6 +7774,9 @@
 	},
 /turf/open/floor/strata/floor2,
 /area/atlan/station/repairs_lift)
+"ayj" = (
+/turf/closed/wall/upp_ship/grey,
+/area/atlan/station/medical)
 "ayl" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/strata/floor2,
@@ -8652,11 +8726,7 @@
 	pixel_y = 21
 	},
 /turf/open/floor/prison/darkyellowfull2,
-/area/atlan/station/stairs1)
-"aBO" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/darkyellowfull2,
-/area/atlan/station/stairs1)
+/area/atlan/station/substation)
 "aBP" = (
 /obj/structure/toilet{
 	dir = 8
@@ -8664,15 +8734,6 @@
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/strata/white_cyan2/west,
 /area/atlan/station/admin)
-"aBQ" = (
-/obj/structure/prop/invuln/lattice_prop{
-	dir = 1;
-	icon_state = "lattice3";
-	pixel_y = 32;
-	layer = 5.4
-	},
-/turf/closed/wall/upp_ship/grey/orange,
-/area/atlan/comms/lz1_engineering)
 "aBR" = (
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall{
 	pixel_y = 26
@@ -9323,10 +9384,6 @@
 /obj/structure/machinery/portable_atmospherics/canister,
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/exports_east)
-"aNU" = (
-/obj/structure/sign/poster/io,
-/turf/closed/wall/upp_ship/grey/orange,
-/area/atlan/comms/lz1_engineering)
 "aOg" = (
 /obj/structure/cargo_container/canc/tan/right,
 /turf/open/floor/strata/floor3/east,
@@ -10029,13 +10086,6 @@
 "bnz" = (
 /turf/open/floor/strata/cyan1,
 /area/atlan/station/medical)
-"bnQ" = (
-/obj/structure/surface/rack{
-	color = "#98a3ab"
-	},
-/obj/item/storage/box/bodybags,
-/turf/open/floor/strata/white_cyan2/west,
-/area/atlan/station/medical)
 "boy" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -10195,21 +10245,6 @@
 /obj/structure/bed/chair/office/light,
 /turf/open/floor/strata/red1,
 /area/atlan/asteroid/processing_offices)
-"buM" = (
-/obj/item/storage/toolbox/electrical{
-	pixel_y = -3
-	},
-/obj/structure/surface/rack{
-	color = "#98a3ab"
-	},
-/obj/effect/decal/strata_decals/grime/grime4{
-	dir = 1
-	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/prison/darkyellowfull2,
-/area/atlan/comms/lz1_engineering)
 "buY" = (
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
@@ -10310,6 +10345,7 @@
 /area/atlan/station/botany)
 "byJ" = (
 /obj/structure/platform/metal/strata,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/atlan/station/medical)
 "bzx" = (
@@ -11497,15 +11533,6 @@
 	},
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_offices)
-"cvR" = (
-/obj/effect/decal/strata_decals/grime/grime4{
-	icon_state = "grime2"
-	},
-/obj/structure/sign/poster/upp{
-	pixel_y = 33
-	},
-/turf/open/floor/prison/darkyellowfull2,
-/area/atlan/comms/lz1_engineering)
 "cwd" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 8
@@ -11860,10 +11887,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/asteroid/processing_se_train)
-"cIn" = (
-/obj/structure/largecrate/random,
-/turf/open/floor/strata/floor2,
-/area/atlan/station/medical_maint)
 "cIx" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_15";
@@ -13122,10 +13145,11 @@
 /turf/open/floor/plating,
 /area/atlan/asteroid/processing_cooling)
 "dzM" = (
-/obj/structure/bed/chair/wheelchair{
-	pixel_y = 5;
-	pixel_x = 5
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/rack{
+	color = "#98a3ab"
 	},
+/obj/item/storage/box/bodybags,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/atlan/station/medical)
 "dAo" = (
@@ -14350,6 +14374,9 @@
 /obj/structure/window/reinforced{
 	dir = 8;
 	health = 80
+	},
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic{
+	dir = 1
 	},
 /turf/open/floor/strata,
 /area/atlan/station/hab_sec)
@@ -16635,10 +16662,10 @@
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_se_train)
 "fWg" = (
-/obj/structure/largecrate/random,
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/prison/darkyellowfull2,
 /area/atlan/comms/lz1_engineering)
 "fWj" = (
@@ -19391,12 +19418,10 @@
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_seperation)
 "hTl" = (
-/obj/structure/machinery/door/airlock/almayer/engineering/glass{
-	dir = 1;
-	autoname = 1;
-	name = "\improper Airlock"
-	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/machinery/door/airlock/almayer/engineering/glass/colony{
+	dir = 2
+	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/substation)
 "hTn" = (
@@ -20603,6 +20628,9 @@
 	},
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/tool,
+/obj/item/storage/toolbox/electrical{
+	pixel_y = -3
+	},
 /turf/open/floor/prison/darkyellowfull2,
 /area/atlan/comms/lz1_engineering)
 "iEF" = (
@@ -21793,14 +21821,11 @@
 /turf/open/floor/strata/green1,
 /area/atlan/station/double_dorms)
 "jmk" = (
-/obj/structure/prop/invuln/lattice_prop{
-	dir = 1;
-	icon_state = "lattice3";
-	pixel_y = 32;
-	layer = 5.4
-	},
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
+	},
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic{
+	dir = 1
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/stairs1)
@@ -24287,11 +24312,9 @@
 /turf/open/floor/strata/fake_wood,
 /area/atlan/station/admin)
 "kVW" = (
-/obj/structure/bed/chair/wheelchair,
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_2"
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/atlan/station/medical)
 "kWd" = (
@@ -24608,8 +24631,7 @@
 /area/atlan/station/botany)
 "liR" = (
 /obj/effect/decal/cleanable/blood,
-/obj/structure/machinery/light/double/blue,
-/turf/open/floor/strata/multi_tiles/west,
+/turf/open/floor/strata/white_cyan3/south,
 /area/atlan/station/medical)
 "liW" = (
 /obj/item/reagent_container/hypospray/autoinjector/oxycodone,
@@ -25692,6 +25714,9 @@
 "lWd" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 4
+	},
+/obj/structure/surface/rack{
+	color = "#98a3ab"
 	},
 /turf/open/floor/prison/darkyellowfull2,
 /area/atlan/comms/lz1_engineering)
@@ -28433,6 +28458,11 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16
+	},
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/medical_maint)
 "nPz" = (
@@ -29139,9 +29169,6 @@
 /obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/lz/near_lz1)
-"omP" = (
-/turf/open/floor/prison/darkyellowfull2,
-/area/atlan/station/stairs1)
 "onk" = (
 /obj/item/tool/pen,
 /turf/open/floor/strata,
@@ -29205,10 +29232,6 @@
 /turf/open/gm/dirt/brown/variant_5/west,
 /area/atlan/asteroid/caves)
 "ooL" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
-	pixel_y = 21
-	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/stairs1)
 "opr" = (
@@ -29459,10 +29482,6 @@
 "ovf" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt{
 	color = "#140400"
-	},
-/obj/item/tool/mop{
-	pixel_x = 13;
-	pixel_y = 25
 	},
 /turf/open/floor/strata/white_cyan3/north,
 /area/atlan/station/medical)
@@ -31032,12 +31051,12 @@
 /turf/open/floor/strata/orange_icorner/west,
 /area/atlan/lz/near_lz2)
 "pzq" = (
-/obj/structure/platform_decoration/metal/strata/north,
 /obj/structure/machinery/light/double/blue{
 	dir = 8;
 	pixel_x = -10;
 	pixel_y = -3
 	},
+/obj/structure/platform/metal/strata/west,
 /turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/walkway)
 "pzH" = (
@@ -32243,11 +32262,6 @@
 /turf/open/floor/corsat/marked,
 /area/atlan/asteroid/exports_east)
 "qmi" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 8;
-	pixel_x = -10;
-	pixel_y = -3
-	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/medical_maint)
@@ -33144,7 +33158,7 @@
 /area/atlan/station/promenade)
 "qTo" = (
 /obj/structure/platform/metal/strata/north,
-/obj/structure/machinery/power/apc/no_power/north,
+/obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/strata,
 /area/atlan/station/walkway)
 "qTQ" = (
@@ -33638,7 +33652,6 @@
 /turf/open/floor/whitered,
 /area/atlan/station/hab_rec)
 "rjF" = (
-/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /obj/effect/decal/strata_decals/grime/grime4,
 /turf/open/floor/prison/darkyellowfull2,
 /area/atlan/comms/lz1_engineering)
@@ -33854,12 +33867,6 @@
 /obj/structure/largecrate/random,
 /turf/open/floor/prison/darkbrownfull2,
 /area/atlan/asteroid/processing_offices)
-"rri" = (
-/obj/item/device/flashlight/lamp/tripod{
-	on = 0
-	},
-/turf/open/floor/prison/darkyellowfull2,
-/area/atlan/comms/lz1_engineering)
 "rrz" = (
 /obj/structure/machinery/pipedispenser,
 /turf/open/floor/plating/prison,
@@ -39167,10 +39174,6 @@
 	},
 /turf/open/floor/whiteredcorner/west,
 /area/atlan/station/hab_rec)
-"uPV" = (
-/obj/item/stack/sheet/wood,
-/turf/open/floor/prison/darkyellowfull2,
-/area/atlan/station/stairs1)
 "uQp" = (
 /obj/item/stack/rods,
 /turf/open/floor/strata/floor3/east,
@@ -39793,7 +39796,15 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/promenade)
 "vnm" = (
-/turf/open/floor/plating/plating_catwalk/strata,
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/storage/toolbox/emergency,
+/obj/item/device/radio{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/turf/open/floor/strata/cyan1,
 /area/atlan/station/medical_maint)
 "vnI" = (
 /obj/effect/decal/warning_stripes{
@@ -39813,9 +39824,10 @@
 "voh" = (
 /obj/structure/bed/chair{
 	dir = 8;
-	pixel_y = 3
+	pixel_x = 4;
+	pixel_y = 6
 	},
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/floor3/east,
 /area/atlan/comms/lz1_engineering)
 "voj" = (
 /obj/structure/bed/chair{
@@ -40618,21 +40630,6 @@
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/hab_sec)
-"vWS" = (
-/obj/structure/surface/rack{
-	color = "#98a3ab"
-	},
-/obj/item/storage/toolbox/emergency,
-/obj/item/device/radio{
-	pixel_x = 5;
-	pixel_y = 5
-	},
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
-	pixel_y = 21
-	},
-/turf/open/floor/strata/floor2,
-/area/atlan/station/medical_maint)
 "vWY" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -40852,16 +40849,8 @@
 /turf/open/floor/corsat/spiralplate,
 /area/atlan/oob)
 "wdZ" = (
-/obj/structure/sign/safety/maint{
-	pixel_x = 10
-	},
-/obj/structure/prop/invuln/lattice_prop{
-	dir = 1;
-	icon_state = "lattice3";
-	pixel_y = 32;
-	layer = 5.4
-	},
-/turf/closed/wall/upp_ship/grey,
+/obj/structure/window/framed/upp_ship/grey,
+/turf/open/floor/plating,
 /area/atlan/station/stairs1)
 "wef" = (
 /obj/effect/landmark/monkey_spawn,
@@ -41830,10 +41819,6 @@
 	},
 /turf/open/floor/strata/orange_edge,
 /area/atlan/station/storage)
-"wWJ" = (
-/obj/structure/largecrate/empty/secure,
-/turf/open/floor/strata/cyan1,
-/area/atlan/station/medical)
 "wWN" = (
 /obj/structure/largecrate/empty/secure,
 /turf/open/floor/prison/darkyellowfull2,
@@ -42959,7 +42944,7 @@
 	layer = 2.41
 	},
 /obj/effect/decal/cleanable/blood/oil,
-/turf/open/floor/plating/prison,
+/turf/open/floor/strata/cyan1,
 /area/atlan/station/stairs1)
 "xMe" = (
 /obj/structure/cargo_container/canc/tan/left{
@@ -102595,7 +102580,7 @@ jwc
 nit
 dBn
 atz
-ajr
+axY
 wgo
 qrQ
 wgo
@@ -102605,9 +102590,9 @@ ajr
 hhu
 rDa
 qNK
-omP
-omP
-omP
+rDa
+rDa
+rDa
 atG
 rDa
 aBb
@@ -102659,7 +102644,7 @@ wNv
 qqL
 qqL
 qqL
-djH
+aAk
 qqL
 qqL
 qqL
@@ -102819,10 +102804,10 @@ wdD
 iFe
 xzx
 wgo
-omP
-atH
-akW
-aBJ
+rDa
+atz
+rDa
+agj
 agj
 agj
 agj
@@ -103031,9 +103016,9 @@ kPG
 kPG
 ohc
 wgo
-omP
-atI
-cSy
+dZz
+lMJ
+keY
 agj
 alE
 alE
@@ -103229,8 +103214,8 @@ avX
 owu
 eiT
 nit
-rDa
-atz
+mSQ
+auq
 mSQ
 wgo
 aCd
@@ -103243,10 +103228,10 @@ fYC
 ogq
 deb
 wgo
-aBN
-atz
-rDa
-agj
+xOF
+ajx
+agO
+aBJ
 alD
 agj
 agj
@@ -103444,7 +103429,7 @@ vVc
 mSQ
 aup
 qfT
-wgo
+hPV
 rjF
 kPG
 kPG
@@ -103455,9 +103440,9 @@ qYE
 kPG
 rYX
 xzx
-omP
-atz
-rDa
+xOF
+ary
+iEU
 agj
 agj
 agj
@@ -103653,9 +103638,9 @@ avX
 nlx
 azt
 nit
-mSQ
+ali
 nOS
-wbQ
+axZ
 wgo
 fWg
 deb
@@ -103667,11 +103652,11 @@ kPG
 kPG
 kPG
 hPV
-rDa
-atG
-rDa
-omP
-omP
+xOF
+arx
+iEU
+iEU
+iEU
 aBu
 tCP
 iYm
@@ -103869,21 +103854,21 @@ giP
 auq
 qmU
 wgo
-aNU
-rri
-kPG
+xzx
+eoD
+ogq
 voh
-kPG
-kPG
+ogq
+qYE
 kPG
 kPG
 kSC
 wgo
-omP
-atJ
+xOF
+asm
 aty
-rDa
-omP
+xOF
+iEU
 aBb
 aBb
 aBb
@@ -104078,23 +104063,23 @@ eqq
 nit
 nit
 aCn
-auq
+ayc
 mSQ
 mSQ
 xzx
-eoD
-ogq
-ogq
-ogq
-qYE
+glu
+kkP
+kPG
+abk
+wqC
 kPG
 kPG
 jxj
 wgo
 wgo
-omP
-atz
-rDa
+xOF
+ary
+xOF
 iEU
 fjc
 iSF
@@ -104293,20 +104278,20 @@ dxq
 auq
 mSQ
 qfT
-xzx
-glu
-kkP
+wgo
+uuT
 kPG
+qYE
 abk
-wqC
-kPG
+abk
+ogq
 fYC
 qgH
 mEd
 wgo
 aBN
-atz
-rDa
+ary
+xOF
 xOF
 imu
 xOF
@@ -104506,18 +104491,18 @@ ave
 mSQ
 mSQ
 wgo
-uuT
+gMI
 kPG
-qYE
-abk
-abk
-ogq
+kPG
+kPG
+kPG
+kPG
 kPG
 kPG
 nkY
 vdG
-aBO
-atA
+vGc
+ajw
 att
 pbh
 atb
@@ -104718,19 +104703,19 @@ avf
 avb
 wZu
 wgo
-gMI
+bte
 kPG
 kPG
-kPG
+fYC
 kPG
 kPG
 qYE
 kPG
 fcJ
 wgo
-omP
-omP
-uPV
+iEU
+iEU
+fjc
 nUf
 atc
 ssL
@@ -104930,12 +104915,12 @@ mSQ
 auq
 lOt
 wgo
-bte
+wWN
+ufW
+ogq
 kPG
-kPG
-fYC
-kPG
-kPG
+mKq
+alV
 kPG
 ogq
 tyX
@@ -105142,14 +105127,14 @@ mSQ
 auq
 mSQ
 wgo
-wWN
-ufW
-ogq
-kPG
-mKq
+wgo
+wgo
+wdD
+iFe
+agj
+agj
 deb
-kPG
-kPG
+fYC
 deb
 gaZ
 xzx
@@ -105353,15 +105338,15 @@ aTG
 mSQ
 aur
 mSQ
-wgo
-wgo
-wgo
-wdD
-iFe
+mSQ
+axX
+axQ
+mSQ
+mSQ
+mSQ
 agj
-buM
-deb
-kPG
+akK
+fYC
 kPG
 kPG
 wpm
@@ -105569,10 +105554,10 @@ auR
 auM
 qmi
 auu
+avb
 mSQ
 agj
-agj
-cvR
+aCc
 kPG
 jsm
 ogq
@@ -105780,11 +105765,11 @@ qfT
 mSQ
 idv
 mSQ
-auv
-mSQ
-cIn
+qmU
+auq
+qfT
 agj
-shT
+alJ
 kPG
 iEA
 fKh
@@ -105986,16 +105971,16 @@ duJ
 kIx
 avt
 ali
+ali
 nCG
-nCG
+iqK
 ltd
 nCG
 nCG
 mSQ
-auw
-alb
-ala
-aBQ
+auq
+wbQ
+wgo
 wgo
 qrQ
 wgo
@@ -106198,15 +106183,15 @@ ayV
 xYA
 auv
 mSQ
+mSQ
 nCG
 lNx
 mSQ
 rLd
-iqK
-mSQ
+nCG
 aux
-aup
-wbQ
+anC
+amf
 aBn
 iQS
 veM
@@ -106409,16 +106394,16 @@ nUR
 cGf
 xYA
 auq
-wZu
+qmU
+wbQ
 nCG
 adZ
 mSQ
 yeD
-iqK
-mSQ
+nCG
 vnm
-auq
-qmU
+arY
+aml
 aBn
 skz
 qDn
@@ -106622,15 +106607,15 @@ iNM
 xYA
 avu
 gyA
+gyA
 nCG
 ovH
 jjt
 rvI
 nCG
-vWS
-mSQ
-aur
-mSQ
+awI
+arY
+amP
 iUQ
 sOO
 veM
@@ -106834,15 +106819,15 @@ fel
 xYA
 abJ
 mSQ
-nCG
+mSQ
 aBn
 aBn
 aBo
 aBn
 aBn
-qmU
-auq
-mSQ
+axP
+asg
+aml
 mxv
 bnz
 ajj
@@ -107052,8 +107037,8 @@ hYV
 xlA
 iGJ
 aBn
-auc
-asu
+bnz
+atZ
 liR
 aBn
 gQs
@@ -107083,8 +107068,8 @@ tJN
 rAD
 tpy
 adS
-rAD
-tpy
+afa
+aef
 tpy
 eaH
 eaH
@@ -107897,7 +107882,7 @@ mSQ
 aBn
 aBn
 aBn
-aBn
+bnz
 aBn
 aBn
 chi
@@ -108315,7 +108300,7 @@ eCY
 aAk
 alE
 jaK
-aBn
+chi
 asu
 lZK
 aBn
@@ -109371,11 +109356,11 @@ xcR
 aKk
 nUR
 duJ
-xYA
+ayj
 jaK
 jaK
 jaK
-wWJ
+aBn
 avz
 avp
 avg
@@ -109583,12 +109568,12 @@ sQI
 laD
 nUR
 duJ
-xYA
-aBn
-aBn
-aBn
-aBn
-aBn
+ayj
+pCO
+nWj
+nWj
+acz
+bnz
 aca
 avi
 aBn
@@ -109795,12 +109780,12 @@ nUR
 nUR
 nmb
 duJ
-xYA
-aBn
-pCO
+ayj
+oSe
 nWj
-tvQ
-acz
+nWj
+vSZ
+bnz
 aca
 acw
 aBn
@@ -110007,12 +109992,12 @@ qKA
 duJ
 duJ
 nhg
-xYA
+ayj
+tVB
+nWj
+nWj
 aBn
-oSe
-nWj
-nWj
-vSZ
+aye
 aca
 atp
 aBn
@@ -110192,8 +110177,8 @@ vBz
 aRs
 aZm
 feS
-vQC
 jtR
+vQC
 vQC
 vQC
 vQC
@@ -110219,12 +110204,12 @@ xYA
 xYA
 bFc
 xYA
-xYA
-aBn
-tVB
+ayj
+tvQ
 nWj
 nWj
 aBn
+xav
 ovf
 atp
 aBn
@@ -110405,7 +110390,7 @@ aRs
 xET
 xET
 xET
-xET
+lba
 mZp
 wKH
 xET
@@ -110430,14 +110415,14 @@ xls
 ake
 fEq
 fEq
-fEq
 pME
+ayj
+ayj
 aBn
-aBn
-nWj
-bnQ
-aBn
-acx
+eFK
+aDV
+bnz
+aca
 atp
 aBn
 aBn
@@ -110646,9 +110631,9 @@ fEq
 fEq
 fEq
 aBn
-eFK
-aBn
-aDV
+bnz
+bnz
+bnz
 aca
 avj
 abT
@@ -112770,8 +112755,8 @@ btX
 xTh
 aBn
 adk
-lzt
-lzt
+adu
+adu
 byJ
 pft
 aBY
@@ -112981,8 +112966,8 @@ acD
 kLL
 aBn
 aBn
+ayd
 adu
-lzt
 lzt
 vLD
 rdv
@@ -113193,7 +113178,7 @@ abU
 acC
 aBn
 iWy
-lzt
+adu
 lzt
 hxO
 vFZ
@@ -115975,7 +115960,7 @@ asN
 asK
 mus
 anM
-tmn
+agh
 pzq
 pIc
 pIc
@@ -118494,7 +118479,7 @@ qBc
 hjp
 hjp
 vrH
-oCj
+bzE
 oCj
 ofg
 riM
@@ -118706,7 +118691,7 @@ xVi
 hjp
 hjp
 hjp
-oCj
+bzE
 uSj
 mIK
 aSd
@@ -118918,7 +118903,7 @@ iNg
 hjp
 hjp
 hjp
-oCj
+bzE
 drq
 wmA
 aSd
@@ -119130,7 +119115,7 @@ qBc
 oDM
 fEB
 iGi
-oCj
+bzE
 aSd
 aSd
 aSd
@@ -126382,7 +126367,7 @@ aSd
 aSd
 aSd
 aSd
-lGF
+aSd
 jRi
 fwe
 kUL
@@ -126593,10 +126578,10 @@ dro
 xRM
 mei
 iFF
-lGF
-lGF
-lGF
-lGF
+aSd
+aSd
+fwe
+fwe
 fwe
 sPR
 bHR
@@ -126807,7 +126792,7 @@ agI
 oah
 uxg
 aSd
-lGF
+aSd
 fwe
 fwe
 fwe
@@ -127231,7 +127216,7 @@ pOz
 pOz
 vDY
 dfu
-aSd
+aAs
 pOz
 pOz
 pOz

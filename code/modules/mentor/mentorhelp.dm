@@ -219,7 +219,7 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 		else if(mentor && to_key == mentor.key)
 			to_ic = " ([mentor_ic_name])"
 
-		log_msg = "[from_key][from_ic] -> [to_key][to_ic]: [plain_text]"
+		log_msg = "[from_key]/([from_ic]) -> [to_key]/([to_ic]): [plain_text]"
 	log_mhelp(log_msg)
 
 	if(include_in_ticket)

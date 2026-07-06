@@ -78,31 +78,26 @@
 
 	var/status = MH.open ? (MH.mentor ? "claimed" : "open") : "closed"
 
-	var/list/formatted_responses = list()
-	for(var/key in MH.ticket_interactions)
-		var/list/interaction = MH.ticket_interactions[key]
-		var/list/filtered_interaction = interaction.Copy()
-
-		if(interaction["author"] == MH.author_key)
-			if(viewer && !CLIENT_IS_STAFF(viewer))
-				filtered_interaction["author"] = MH.get_author_ic_name()
-			else
-				filtered_interaction["author"] = "[MH.author_key] ([MH.get_author_ic_name()])"
-		else if(MH.mentor && interaction["author"] == MH.mentor.key)
-			if(viewer && CLIENT_IS_STAFF(viewer))
-				filtered_interaction["author"] = "[MH.mentor.key] ([MH.mentor_ic_name])"
-
-		formatted_responses += list(filtered_interaction)
-
 	var/list/player_info = get_player_info(MH.author)
 
 	var/ic_name = (player_info ? player_info["ic_name"] : null) || MH.get_author_ic_name()
 	var/faction = (player_info ? player_info["faction"] : null) || MH.get_author_faction()
 	var/role = (player_info ? player_info["role"] : null) || MH.get_author_role()
 
-	var/display_author = MH.author_key
-	if(viewer && !CLIENT_IS_STAFF(viewer))
-		display_author = ic_name
+	var/list/formatted_responses = list()
+	for(var/key in MH.ticket_interactions)
+		var/list/interaction = MH.ticket_interactions[key]
+		var/list/filtered_interaction = interaction.Copy()
+
+		filtered_interaction["author"] = MH.get_display_name(viewer, interaction["author"])
+
+		if(viewer && !CLIENT_IS_STAFF(viewer))
+			if(MH.author_key && filtered_interaction["message"])
+				filtered_interaction["message"] = replacetext(filtered_interaction["message"], MH.author_key, ic_name)
+
+		formatted_responses += list(filtered_interaction)
+
+	var/display_author = MH.get_display_name(viewer, MH.author)
 
 	var/display_msg = MH.initial_message
 	var/display_latest = MH.latest_message
@@ -239,7 +234,11 @@
 			for(var/client/target in GLOB.clients)
 				if(!target.mob)
 					continue
-				possible_targets[target] = "[target.key]"
+				var/ic_name = target.mob.real_name || target.mob.name || "Unknown"
+				if(CLIENT_IS_STAFF(current_client))
+					possible_targets[target] = "[target.username()]/([ic_name])"
+				else
+					possible_targets[target] = "[ic_name]"
 
 			if(!LAZYLEN(possible_targets))
 				tgui_alert(parent_mob, "No non-staff players available to message.")
@@ -252,7 +251,7 @@
 			if(istype(target.current_mhelp) && target.current_mhelp.open)
 				parent_client.ticket_panel.selected_tab = MENTOR_TAB
 				parent_client.ticket_panel.selected_ticket = target.current_mhelp.id
-				to_chat(parent_mob, SPAN_NOTICE("Switched to existing mentor ticket for [target.key]"))
+				to_chat(parent_mob, SPAN_NOTICE("Switched to existing mentor ticket for [target.current_mhelp.get_display_name(current_client, target)]"))
 				return TRUE
 
 			if(GLOB.mentorhelp_manager.get_active_ticket_by_ckey(target.ckey))
@@ -264,8 +263,8 @@
 				return FALSE
 
 			var/datum/mentorhelp/MH = GLOB.mentorhelp_manager.create_ticket(target, msg)
-			MH.notify(SPAN_PURPLE("[current_mob.key] started a mentor conversation with [target.key]"),
-				unformatted_text = "[parent_mob.key] started a mentor conversation with [target.key]")
+			MH.notify(SPAN_PURPLE("[MH.get_display_name(null, current_client)] started a mentor conversation with [MH.get_display_name(current_client, target)]"),
+				unformatted_text = "[MH.get_display_name(null, parent_client)] started a mentor conversation with [MH.get_display_name(current_client, target)]")
 			MH.initial_message = msg
 			MH.mark(parent_client)
 			MH.Respond(msg, parent_client)

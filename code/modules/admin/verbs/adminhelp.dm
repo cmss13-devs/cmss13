@@ -630,12 +630,12 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 
 	var/key_name = key_name_admin(user)
 	AddInteraction("Marked by [key_name].",
-		plain_message = "Marked by [user.key]", message_type = "system")
+		plain_message = "Marked by [user.username()]", message_type = "system")
 	to_chat(initiator, SPAN_ADMINHELP("An admin is preparing to respond to your ticket."))
 	var/msg = "Ticket [TicketHref("#[id]")] marked by [key_name]."
 	message_admins(msg)
 	log_admin_private(msg)
-	log_ahelp(id, "Marked", "Marked by [user.key]", sender = user.ckey)
+	log_ahelp(id, "Marked", "Marked by [user.username()]", sender = user.ckey)
 	marked_admin = user.ckey
 
 /datum/admin_help/proc/unmark_ticket()

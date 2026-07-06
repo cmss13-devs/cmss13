@@ -24,7 +24,7 @@
 		return
 	var/list/targets = list()
 	for(var/client/client as anything in GLOB.clients)
-		var/display_key = client.username() != client.key ? "[client.username()] ([client.key])" : "[client.key]"
+		var/display_key = client.username() != client.username() ? "[client.username()] ([client.username()])" : "[client.username()]"
 		if(client.mob)
 			if(isnewplayer(client.mob))
 				targets["(New Player) - [display_key]"] = client
@@ -274,7 +274,7 @@ SET_PROTECTED_PROC(/client/proc/cmd_admin_pm)
 
 			admin_ticket_log(recipient, SPAN_GREEN("PM From [key_name_with_username(src)]: [msg]"), log_in_blackbox = FALSE,
 				player_message = SPAN_GREEN("PM From [key_name_with_username(src, include_name = FALSE)]: [msg]"),
-				raw_message = "PM from-[src.key] to-[recipient.key]: [msg]",
+				raw_message = "PM from-[src.username()] to-[recipient.username()]: [msg]",
 				raw_player_message = "[msg]")
 
 			if(!already_logged) //Reply to an existing ticket
@@ -299,12 +299,12 @@ SET_PROTECTED_PROC(/client/proc/cmd_admin_pm)
 
 	window_flash(recipient)
 	log_admin_private("PM: [key_name(src)]->[key_name(recipient)]: [rawmsg]")
-	//we don't use message_admins here because the sender/receiver might get it too
-	for(var/client/X in GLOB.admins)
-		if(!CLIENT_IS_STAFF(X))
+	//we don't use message_admins here because the sender/receiver might get it too - improved some formatting of this code
+	for(var/client/admin in GLOB.admins)
+		if(admin == src || admin == recipient || !CLIENT_IS_STAFF(admin))
 			continue
-		if(X.key!=key && X.key!=recipient.key) //check client/X is an admin and isn't the sender or recipient
-			to_chat(X,
-				type = MESSAGE_TYPE_ADMINPM,
-				html = SPAN_NOTICE("<B>PM: [key_name(src, X, 0, show_username = TRUE)]-&gt;[key_name(recipient, X, 0, show_username = TRUE)]:</B> [msg]") ,
-				confidential = TRUE)
+
+		to_chat(admin,
+			type = MESSAGE_TYPE_ADMINPM,
+			html = SPAN_NOTICE("<b>PM: [key_name(src, TRUE, FALSE, show_username = TRUE)]-&gt;[key_name(recipient, TRUE, FALSE, show_username = TRUE)]:</b> [msg]"),
+			confidential = TRUE)

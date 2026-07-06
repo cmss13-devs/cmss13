@@ -23467,6 +23467,7 @@
 /turf/open/floor/prison/darkyellowfull2,
 /area/atlan/comms/lz1_engineering)
 "kSN" = (
+/obj/structure/blocker/forcefield/all,
 /turf/open_space,
 /area/atlan/station/drydock)
 "kTn" = (
@@ -24779,6 +24780,7 @@
 	icon_state = "lattice12";
 	pixel_y = 16
 	},
+/obj/structure/blocker/forcefield/all,
 /turf/open_space,
 /area/atlan/station/drydock)
 "lOK" = (

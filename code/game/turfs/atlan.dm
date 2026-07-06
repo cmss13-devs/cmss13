@@ -1,7 +1,8 @@
 // Atlan walls
 // grey
 /turf/closed/wall/upp_ship/grey
-    icon = 'icons/turf/walls/upp_grey.dmi'
+	icon = 'icons/turf/walls/upp_grey.dmi'
+	icon_state = "uppwall_interior"
 
 /turf/closed/wall/upp_ship/grey/reinforced
     name = "reinforced hull"

@@ -100,7 +100,7 @@
 	storage_slots = 1
 
 /obj/item/storage/pouch/general/large/m39ap/fill_preset_inventory()
-	for(var/inventory = 1 to storage_slots)
+	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smg/m39/ap(src)
 
 /obj/item/storage/pouch/bayonet
@@ -541,74 +541,74 @@
 		new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 
 /obj/item/storage/pouch/magazine/pistol/large/vp78/fill_preset_inventory()
-	for(var/inventory = 1 to storage_slots)
+	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/pistol/vp78(src)
 
 /obj/item/storage/pouch/magazine/pulse_rifle/fill_preset_inventory()
-	for(var/inventory = 1 to storage_slots)
+	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle(src)
 
 /obj/item/storage/pouch/magazine/pistol/pmc_mateba/fill_preset_inventory()
-	for(var/inventory = 1 to storage_slots)
+	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/revolver/mateba/highimpact/ap(src)
 
 /obj/item/storage/pouch/magazine/pistol/pmc_mod88/fill_preset_inventory()
-	for(var/inventory = 1 to storage_slots)
+	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/pistol/mod88(src)
 
 /obj/item/storage/pouch/magazine/pistol/pmc_vp78/fill_preset_inventory()
-	for(var/inventory = 1 to storage_slots)
+	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/pistol/vp78(src)
 
 /obj/item/storage/pouch/magazine/pistol/m1911/fill_preset_inventory()
-	for(var/inventory = 1 to storage_slots)
+	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/pistol/m1911(src)
 
 /obj/item/storage/pouch/magazine/upp/fill_preset_inventory()
-	for(var/inventory = 1 to storage_slots)
+	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/type71(src)
 
 /obj/item/storage/pouch/magazine/large/upp/fill_preset_inventory()
-	for(var/inventory = 1 to storage_slots)
+	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/type71(src)
 
 /obj/item/storage/pouch/magazine/large/wy
 	icon_state = "wy_ammo_mag"
 
 /obj/item/storage/pouch/magazine/large/wy/pmc_m39/fill_preset_inventory()
-	for(var/inventory = 1 to storage_slots)
+	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smg/m39/ap(src)
 
 /obj/item/storage/pouch/magazine/large/wy/nsg_ap/fill_preset_inventory()
-	for(var/inventory = 1 to storage_slots)
+	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/nsg23/ap(src)
 
 /obj/item/storage/pouch/magazine/large/wy/nsg_ext/fill_preset_inventory()
-	for(var/inventory = 1 to storage_slots)
+	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/nsg23/extended(src)
 
 /obj/item/storage/pouch/magazine/large/wy/nsg_heap/fill_preset_inventory()
-	for(var/inventory = 1 to storage_slots)
+	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/nsg23/heap(src)
 
 /obj/item/storage/pouch/magazine/large/wy/pmc_p90/fill_preset_inventory()
-	for(var/inventory = 1 to storage_slots)
+	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smg/fp9000(src)
 
 /obj/item/storage/pouch/magazine/large/wy/pmc_lmg/fill_preset_inventory()
-	for(var/inventory = 1 to storage_slots)
+	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/lmg(src)
 
 /obj/item/storage/pouch/magazine/large/wy/pmc_sniper/fill_preset_inventory()
-	for(var/inventory = 1 to storage_slots)
+	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/sniper/elite(src)
 
 /obj/item/storage/pouch/magazine/large/wy/pmc_rifle/fill_preset_inventory()
-	for(var/inventory = 1 to storage_slots)
+	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/ap(src)
 
 /obj/item/storage/pouch/magazine/large/wy/smg_heap/fill_preset_inventory()
-	for(var/inventory = 1 to storage_slots)
+	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smg/m39/heap(src)
 
 /obj/item/storage/pouch/magazine/large/pmc_sg
@@ -621,30 +621,30 @@
 	)
 
 /obj/item/storage/pouch/magazine/large/pmc_sg/full/fill_preset_inventory()
-	for(var/inventory = 1 to storage_slots)
+	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smartgun(src)
 
 /obj/item/storage/pouch/magazine/large/pmc_sg/commando/fill_preset_inventory()
-	for(var/inventory = 1 to storage_slots)
+	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smartgun/dirty(src)
 
 /obj/item/storage/pouch/magazine/large/pmc_sg/marsoc
 	icon_state = "socdrums"
 
 /obj/item/storage/pouch/magazine/large/pmc_sg/marsoc/full/fill_preset_inventory()
-	for(var/inventory = 1 to storage_slots)
+	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smartgun/heap(src)
 
 /obj/item/storage/pouch/magazine/large/pmc_sg/marsoc/full_low_threat/fill_preset_inventory()
-	for(var/inventory = 1 to storage_slots)
+	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smartgun(src)
 
 /obj/item/storage/pouch/magazine/large/m16/fill_preset_inventory()
-	for(var/inventory = 1 to storage_slots)
+	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/m16(src)
 
 /obj/item/storage/pouch/magazine/large/m16/ap/fill_preset_inventory()
-	for(var/inventory = 1 to storage_slots)
+	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/m16/ap(src)
 
 /obj/item/storage/pouch/magazine/large/m16/ap/black
@@ -654,7 +654,7 @@
 	icon_state = "wy_ammo_mag"
 
 /obj/item/storage/pouch/magazine/large/rifle_heap/fill_preset_inventory()
-	for(var/inventory = 1 to storage_slots)
+	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/heap(src)
 
 /obj/item/storage/pouch/magazine/large/m60/fill_preset_inventory()
@@ -699,19 +699,19 @@
 	storage_slots = 7
 
 /obj/item/storage/pouch/shotgun/large/beanbag/fill_preset_inventory()
-	for(var/inventory = 1 to storage_slots)
+	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/handful/shotgun/beanbag(src)
 
 /obj/item/storage/pouch/shotgun/large/beanbag/riot/fill_preset_inventory()
-	for(var/inventory = 1 to storage_slots)
+	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/handful/shotgun/beanbag/riot(src)
 
 /obj/item/storage/pouch/shotgun/large/slug/fill_preset_inventory()
-	for(var/inventory = 1 to storage_slots)
+	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/handful/shotgun/slug(src)
 
 /obj/item/storage/pouch/shotgun/large/buckshot/fill_preset_inventory()
-	for(var/inventory = 1 to storage_slots)
+	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/handful/shotgun/buckshot(src)
 
 /obj/item/storage/pouch/explosive
@@ -734,19 +734,19 @@
 		return ..()
 
 /obj/item/storage/pouch/explosive/full/fill_preset_inventory()
-	for(var/inventory = 1 to storage_slots)
+	for(var/i = 1 to storage_slots)
 		new /obj/item/explosive/grenade/high_explosive(src)
 
 /obj/item/storage/pouch/explosive/upp/fill_preset_inventory()
-	for(var/inventory = 1 to storage_slots)
+	for(var/i = 1 to storage_slots)
 		new /obj/item/explosive/grenade/high_explosive/upp(src)
 
 /obj/item/storage/pouch/explosive/C4/fill_preset_inventory()
-	for(var/inventory = 1 to storage_slots)
+	for(var/i = 1 to storage_slots)
 		new /obj/item/explosive/plastic(src)
 
 /obj/item/storage/pouch/explosive/emp_dutch/fill_preset_inventory()
-	for(var/inventory = 1 to storage_slots)
+	for(var/i = 1 to storage_slots)
 		new /obj/item/explosive/grenade/empgrenade/dutch(src)
 
 /obj/item/storage/pouch/medical
@@ -920,7 +920,7 @@
 		return ..()
 
 /obj/item/storage/pouch/vials/full/fill_preset_inventory()
-	for(var/inventory = 1 to storage_slots)
+	for(var/i = 1 to storage_slots)
 		new /obj/item/reagent_container/glass/beaker/vial(src)
 
 /obj/item/storage/pouch/chem
@@ -964,7 +964,7 @@
 	can_hold = list(/obj/item/reagent_container/syringe)
 
 /obj/item/storage/pouch/syringe/full/fill_preset_inventory()
-	for(var/inventory = 1 to storage_slots)
+	for(var/i = 1 to storage_slots)
 		new /obj/item/reagent_container/syringe(src)
 
 /obj/item/storage/pouch/engikit
@@ -1514,7 +1514,7 @@
 		return ..()
 
 /obj/item/storage/pouch/flare/full/fill_preset_inventory()
-	for(var/inventory = 1 to storage_slots)
+	for(var/i = 1 to storage_slots)
 		new /obj/item/device/flashlight/flare(src)
 
 /obj/item/storage/pouch/radio

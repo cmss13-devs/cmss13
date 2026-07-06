@@ -202,7 +202,7 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 		else if(mentor && to_key == mentor.key)
 			to_ic = " ([mentor_ic_name])"
 
-		log_msg = "[from_key][from_ic] -> [to_key][to_ic]: [plain_text]"
+		log_msg = "[from_key]/([from_ic]) -> [to_key]/([to_ic]): [plain_text]"
 	log_mhelp(log_msg)
 
 	if(include_in_ticket)
@@ -508,7 +508,7 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 	if(author)
 		author.current_mhelp = src
 
-	log_mhelp("[usr.username()] reopened [author_key]'s mentorhelp thread")
+	log_mhelp("[usr.key] reopened [author_key]'s mentorhelp thread")
 	notify("[SPAN_GREEN(usr.username())] has reopened this mentorhelp thread.",
 		unformatted_text = "[usr.username()] has reopened this mentorhelp thread.")
 
@@ -545,7 +545,7 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 		GLOB.mentorhelp_manager.archived_tickets["[id]"] = src
 
 	if(closer)
-		log_mhelp("[closer.username()] closed [author_key]'s mentorhelp")
+		log_mhelp("[closer.key] closed [author_key]'s mentorhelp")
 		if(closer == author)
 			to_chat(author, SPAN_NOTICE("You have closed your mentorhelp thread."))
 			notify("[SPAN_RED(author_key)] closed their mentorhelp thread.",

@@ -1,0 +1,40 @@
+2026-07-02:
+  Drathek MistChristmas:
+  - bugfix: Fixed a runtime with set_gun_user causing a bad index
+2026-07-03:
+  MistChristmas:
+  - admin: Attack logs with guns and flamer more verbose about positions. VV logs
+      include jump buttons.
+  - bugfix: Some log related runtimes I missed
+  TheManWithNoHands:
+  - code_imp: Removes SensorMate hud from SG vendor
+  ori-disillusion-mirnov:
+  - bugfix: colony dzho not spawning properly
+2026-07-04:
+  Antlers:
+  - qol: Health scanners will now automatically apply the appropriate triage holocard.
+  MistChristmas:
+  - rscadd: Cooldown to the dropship alarm.
+  - rscadd: Harm intent forces Auto-Fire instead of PB. Ground/Restrained Executes
+      now need the head targeted.
+  MoondancerPony:
+  - code_imp: made the spawn_humans unit test wait 5 seconds instead of 60
+2026-07-05:
+  DangerRevolution:
+  - balance: Silenced the Scrapeaway Timed Effect for the Marines during the LV-624
+      CLF Crashed Ship insert.
+  - code_imp: Added two variables for the scrapeaway timed effect to silence the announcement
+      for Marines, or Xenos, about the walls being deleted.
+  Orchidfox:
+  - spellcheck: Improved grammar in a bunch of tips
+  - bugfix: Astronav APC is once again hardened as intended
+  Rug-Dealer:
+  - spellcheck: corrected facehugger tip ("one-second windup" -> "two-second windup")
+  antlersss:
+  - bugfix: Reagents without overdose thresholds will no longer trigger red holocards
+  - bugfix: Brusied livers/kidneys no longer immediately trigger red holocards
+  ori-disillusion-mirnov:
+  - code_imp: fix dusting runtime
+  realforest2001:
+  - rscadd: Split the icons for xeno building into their own icon file.
+  - imageadd: Added build icons for pathogen building, from DimDim.

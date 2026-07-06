@@ -69,7 +69,9 @@
 /turf/closed/wall/r_wall,
 /area/whiskey_outpost/inside/cic)
 "al" = (
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt{
+	dir = 1
+	},
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/cic)
 "am" = (
@@ -426,6 +428,10 @@
 	},
 /turf/open/floor/almayer/emeraldfull,
 /area/whiskey_outpost/inside/living)
+"bq" = (
+/obj/structure/machinery/recharge_station/alt,
+/turf/open/floor/prison,
+/area/whiskey_outpost/inside/cic)
 "bs" = (
 /turf/open/floor/carpet,
 /area/whiskey_outpost/inside/cic)
@@ -4568,7 +4574,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/whiskey_outpost/inside/engineering)
 "qz" = (
@@ -8285,7 +8291,9 @@
 /turf/open/floor/asteroidfloor/north,
 /area/whiskey_outpost/outside/north/northwest)
 "Iy" = (
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt{
+	dir = 4
+	},
 /turf/open/floor/whitegreen/southwest,
 /area/whiskey_outpost/inside/hospital/triage)
 "IA" = (
@@ -10133,7 +10141,9 @@
 /turf/open/floor/whitegreen,
 /area/whiskey_outpost/inside/hospital/triage)
 "TC" = (
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt{
+	dir = 8
+	},
 /turf/open/floor/whitegreen/southeast,
 /area/whiskey_outpost/inside/hospital/triage)
 "TD" = (
@@ -15537,7 +15547,7 @@ mT
 mT
 ak
 ak
-al
+bq
 fx
 aB
 al

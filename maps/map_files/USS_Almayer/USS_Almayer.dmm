@@ -4343,6 +4343,10 @@
 /obj/structure/machinery/cryopod/joe/seegson/alt,
 /turf/open/floor/almayer/aicore/no_build/ai_cargo,
 /area/almayer/command/airoom)
+"akm" = (
+/obj/structure/machinery/recharge_station/alt,
+/turf/open/floor/almayer/cargo,
+/area/almayer/engineering/lower/engine_core)
 "akn" = (
 /turf/open/floor/almayer/flooredgesmooth2/west,
 /area/almayer/command/cicconference)
@@ -14691,7 +14695,7 @@
 /area/almayer/middeck/maintenance/sp)
 "aNu" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/power/apc/almayer/east,
+/obj/structure/machinery/power/apc/almayer/hardened/east,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plating,
 /area/almayer/shipboard/navigation)
@@ -20968,7 +20972,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/closet/wardrobe/chemistry_white,
+/obj/structure/reagent_dispensers/tank/fuel/custom,
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/chemistry)
 "bcB" = (
@@ -20983,7 +20987,6 @@
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/req)
 "bcC" = (
-/obj/structure/reagent_dispensers/tank/fuel/custom,
 /obj/structure/machinery/power/apc/almayer{
 	dir = 1
 	},
@@ -25457,7 +25460,7 @@
 /turf/open/floor/almayer,
 /area/almayer/living/gym)
 "bmG" = (
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/engineer)
 "bmH" = (
@@ -26142,7 +26145,7 @@
 /area/almayer/middeck/engineer)
 "boh" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt,
 /turf/open/floor/almayer/plate,
 /area/almayer/medical/lower_medical_medbay)
 "boi" = (
@@ -54109,7 +54112,9 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/lower/port_fore_hallway)
 "fqW" = (
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt{
+	dir = 1
+	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/engineering/lower/engine_core)
 "fqX" = (
@@ -57306,7 +57311,7 @@
 /turf/open/floor/plating,
 /area/almayer/maint/lower/constr)
 "gOC" = (
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt,
 /turf/open/floor/almayer/orange/northeast,
 /area/almayer/engineering/lower)
 "gOS" = (
@@ -59736,7 +59741,7 @@
 	name = "storage shutters";
 	pixel_y = 26
 	},
-/obj/structure/machinery/recharge_station{
+/obj/structure/machinery/recharge_station/alt{
 	desc = "Where the cargo department's Working Joe used to charge before it tragically fell into the ASRS elevator three years ago. The replacement still hasn't arrived.";
 	name = "Working Joe charging station"
 	},
@@ -83068,7 +83073,7 @@
 /area/almayer/squads/delta)
 "rNu" = (
 /obj/structure/platform/metal/almayer/west,
-/obj/structure/machinery/recharge_station{
+/obj/structure/machinery/recharge_station/alt{
 	layer = 2.9
 	},
 /obj/structure/sign/safety/high_voltage{
@@ -87581,7 +87586,7 @@
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "tId" = (
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt,
 /turf/open/floor/almayer/aicore/no_build/ai_cargo,
 /area/almayer/command/airoom)
 "tIe" = (
@@ -97770,8 +97775,12 @@
 /obj/structure/platform{
 	layer = 2.9
 	},
-/obj/structure/machinery/recharge_station{
+/obj/structure/machinery/recharge_station/alt{
 	layer = 2.8
+	},
+/obj/structure/machinery/recharge_station/alt{
+	layer = 2.8;
+	dir = 4
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/command/cic)
@@ -157822,7 +157831,7 @@ nic
 ppM
 ppM
 hsy
-fqW
+akm
 qYq
 mQn
 anu

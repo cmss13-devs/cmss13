@@ -813,39 +813,39 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 /obj/structure/flora/jungle/thickbush/Crossed(atom/movable/AM)
 	if(!stump)
 		if(isliving(AM))
-			var/mob/living/L = AM
+			var/mob/living/moving = AM
 			var/bush_sound_prob = 60
-			if(istype(L, /mob/living/carbon/xenomorph))
-				var/mob/living/carbon/xenomorph/X = L
-				bush_sound_prob = X.tier * 20
+			if(istype(moving, /mob/living/carbon/xenomorph))
+				var/mob/living/carbon/xenomorph/xeno = moving
+				bush_sound_prob = xeno.tier * 20
 
 			if(prob(bush_sound_prob))
 				var/sound = pick('sound/effects/vegetation_walk_0.ogg','sound/effects/vegetation_walk_1.ogg','sound/effects/vegetation_walk_2.ogg')
 				playsound(src.loc, sound, 25, 1)
-			if(ishuman(L))
-				var/mob/living/carbon/human/H = L
+			if(ishuman(moving))
+				var/mob/living/carbon/human/human = moving
 				var/stuck = rand(0,10)
-				if(HAS_TRAIT(L, TRAIT_HAULED))
+				if(HAS_TRAIT(moving, TRAIT_HAULED))
 					return
 				switch(stuck)
 					if(0 to 4)
-						var/new_slowdown = H.next_move_slowdown + rand(2,3)
-						H.next_move_slowdown = new_slowdown
+						var/new_slowdown = human.next_move_slowdown + rand(2,3)
+						human.next_move_slowdown = new_slowdown
 						if(prob(2))
-							to_chat(H, SPAN_WARNING("Moving through [src] slows you down."))
+							to_chat(human, SPAN_WARNING("Moving through [src] slows you down."))
 					if(5 to 7)
-						var/new_slowdown = H.next_move_slowdown + rand(4,7)
-						H.next_move_slowdown = new_slowdown
+						var/new_slowdown = human.next_move_slowdown + rand(4,7)
+						human.next_move_slowdown = new_slowdown
 						if(prob(10))
-							to_chat(H, SPAN_WARNING("It is very hard to move through [src]..."))
+							to_chat(human, SPAN_WARNING("It is very hard to move through [src]..."))
 					if(8 to 9)
-						var/new_slowdown = H.next_move_slowdown + rand(8,11)
-						H.next_move_slowdown = new_slowdown
-						to_chat(H, SPAN_WARNING("You got tangled in [src]!"))
+						var/new_slowdown = human.next_move_slowdown + rand(8,11)
+						human.next_move_slowdown = new_slowdown
+						to_chat(human, SPAN_WARNING("You got tangled in [src]!"))
 					if(10)
-						var/new_slowdown = H.next_move_slowdown + rand(12,20)
-						H.next_move_slowdown = new_slowdown
-						to_chat(H, SPAN_WARNING("You got completely tangled in [src]! Oh boy..."))
+						var/new_slowdown = human.next_move_slowdown + rand(12,20)
+						human.next_move_slowdown = new_slowdown
+						to_chat(human, SPAN_WARNING("You got completely tangled in [src]! Oh boy..."))
 
 /obj/structure/flora/jungle/thickbush/attackby(obj/item/I as obj, mob/user as mob)
 	//hatchets and shiet can clear away undergrowth

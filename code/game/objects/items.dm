@@ -195,9 +195,9 @@
 	master = null
 	locked_to_mob = null
 
-	var/obj/item/storage/S = loc
-	if(istype(S))
-		for(var/mob/M in S.can_see_content())
+	var/obj/item/storage/pocket = loc
+	if(istype(pocket))
+		for(var/mob/M in pocket.can_see_content())
 			if(M.client)
 				M.client.remove_from_screen(src)
 	if(ismob(loc))
@@ -336,8 +336,8 @@
 		return
 
 	if(isstorage(loc))
-		var/obj/item/storage/S = loc
-		S.remove_from_storage(src, user.loc, user)
+		var/obj/item/storage/pocket = loc
+		pocket.remove_from_storage(src, user.loc, user)
 	else if(isturf(loc) && HAS_TRAIT(user, TRAIT_HAULED))
 		return
 
@@ -355,32 +355,32 @@
 
 // Due to storage type consolidation this should get used more now.
 // I have cleaned it up a little, but it could probably use more.  -Sayu
-/obj/item/attackby(obj/item/W, mob/user)
-	if(SEND_SIGNAL(src, COMSIG_ITEM_ATTACKED, W, user) & COMPONENT_CANCEL_ITEM_ATTACK)
+/obj/item/attackby(obj/item/object, mob/user)
+	if(SEND_SIGNAL(src, COMSIG_ITEM_ATTACKED, object, user) & COMPONENT_CANCEL_ITEM_ATTACK)
 		return
 
-	if(istype(W,/obj/item/storage))
-		var/obj/item/storage/S = W
-		if(S.storage_flags & STORAGE_CLICK_GATHER && isturf(loc))
-			if(S.storage_flags & STORAGE_GATHER_SIMULTANEOUSLY) //Mode is set to collect all items on a tile and we clicked on a valid one.
+	if(istype(object,/obj/item/storage))
+		var/obj/item/storage/pocket = object
+		if(pocket.storage_flags & STORAGE_CLICK_GATHER && isturf(loc))
+			if(pocket.storage_flags & STORAGE_GATHER_SIMULTANEOUSLY) //Mode is set to collect all items on a tile and we clicked on a valid one.
 				var/success = 0
 				var/failure = 0
 
 				for(var/obj/item/I in src.loc)
-					if(!S.can_be_inserted(I, user, stop_messages = TRUE))
+					if(!pocket.can_be_inserted(I, user, stop_messages = TRUE))
 						failure = 1
 						continue
 					success = 1
-					S.handle_item_insertion(I, TRUE, user) //The 1 stops the "You put \the [src] into [S]" insertion message from being displayed.
+					pocket.handle_item_insertion(I, TRUE, user) //The 1 stops the "You put \the [src] into [pocket]" insertion message from being displayed.
 				if(success && !failure)
-					to_chat(user, SPAN_NOTICE("You put everything in [S]."))
+					to_chat(user, SPAN_NOTICE("You put everything in [pocket]."))
 				else if(success)
-					to_chat(user, SPAN_NOTICE("You put some things in [S]."))
+					to_chat(user, SPAN_NOTICE("You put some things in [pocket]."))
 				else
-					to_chat(user, SPAN_NOTICE("You fail to pick anything up with [S]."))
+					to_chat(user, SPAN_NOTICE("You fail to pick anything up with [pocket]."))
 
-			else if(S.can_be_inserted(src, user))
-				S.handle_item_insertion(src, FALSE, user)
+			else if(pocket.can_be_inserted(src, user))
+				pocket.handle_item_insertion(src, FALSE, user)
 
 	return
 
@@ -444,25 +444,25 @@
 	else
 		last_equipped_slot = storage_item_storage.last_equipped_slot
 
-// called when this item is removed from a storage item, which is passed on as S. The loc variable is already set to the new destination before this is called.
-/obj/item/proc/on_exit_storage(obj/item/storage/S as obj)
+// called when this item is removed from a storage item, which is passed on as pocket. The loc variable is already set to the new destination before this is called.
+/obj/item/proc/on_exit_storage(obj/item/storage/pocket as obj)
 	SHOULD_CALL_PARENT(TRUE)
 	appearance_flags &= ~NO_CLIENT_COLOR
-	if(LAZYISIN(S.hearing_items, src))
-		LAZYREMOVE(S.hearing_items, src)
-		if(!LAZYLEN(S.hearing_items))
-			S.flags_atom &= ~USES_HEARING
-	var/atom/location = S.get_loc_turf()
+	if(LAZYISIN(pocket.hearing_items, src))
+		LAZYREMOVE(pocket.hearing_items, src)
+		if(!LAZYLEN(pocket.hearing_items))
+			pocket.flags_atom &= ~USES_HEARING
+	var/atom/location = pocket.get_loc_turf()
 	do_drop_animation(location)
-	set_last_equipped_slot_of_storage(S)
+	set_last_equipped_slot_of_storage(pocket)
 
-// called when this item is added into a storage item, which is passed on as S. The loc variable is already set to the storage item.
-/obj/item/proc/on_enter_storage(obj/item/storage/S as obj)
+// called when this item is added into a storage item, which is passed on as pocket. The loc variable is already set to the storage item.
+/obj/item/proc/on_enter_storage(obj/item/storage/pocket as obj)
 	SHOULD_CALL_PARENT(TRUE)
 	appearance_flags |= NO_CLIENT_COLOR //It's in an inventory item, so saturation/desaturation etc. effects shouldn't affect it.
 	if(src.flags_atom & USES_HEARING)
-		LAZYADD(S.hearing_items, src)
-		S.flags_atom |= USES_HEARING
+		LAZYADD(pocket.hearing_items, src)
+		pocket.flags_atom |= USES_HEARING
 
 // called when "found" in pockets and storage items. Returns 1 if the search should end.
 /obj/item/proc/on_found(mob/finder as mob)

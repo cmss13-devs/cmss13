@@ -296,10 +296,10 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
 
-/datum/ammo/bullet/pistol/mankey/on_hit_mob(mob/M,obj/projectile/P)
-	if(P && P.loc && !M.stat && !istype(M,/mob/living/carbon/human/monkey))
-		P.visible_message(SPAN_DANGER("\The [src] chimpers furiously!"))
-		new /mob/living/carbon/human/monkey(P.loc)
+/datum/ammo/bullet/pistol/mankey/on_hit_mob(mob/monkey,obj/projectile/boolet)
+    if(boolet && boolet.loc && !monkey.stat && !istype(monkey,/mob/living/carbon/human/monkey))
+        boolet.visible_message(SPAN_DANGER("\The [src] chimpers furiously!"))
+        new /mob/living/carbon/human/monkey(boolet.loc)
 
 /datum/ammo/bullet/pistol/smart
 	name = "smartpistol bullet"

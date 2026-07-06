@@ -146,14 +146,14 @@
 			state = 2
 		if(2)
 			state = 1
-			for(var/atom/movable/O in contents)
-				O.forceMove(loc)
+			for(var/atom/movable/object in contents)
+				object.forceMove(loc)
 		if(3)
 			state = 4
 		if(4)
 			state = 3
-			for(var/atom/movable/O in contents)
-				O.forceMove(loc)
+			for(var/atom/movable/object in contents)
+				object.forceMove(loc)
 			crayon = null
 			state = 1
 		if(5)
@@ -164,10 +164,10 @@
 			if(gibs_ready)
 				gibs_ready = 0
 				if(locate(/mob,contents))
-					var/mob/M = locate(/mob,contents)
-					M.gib()
-			for(var/atom/movable/O in contents)
-				O.forceMove(loc)
+					var/mob/gibbingmob = locate(/mob,contents)
+					gibbingmob.gib()
+			for(var/atom/movable/object in contents)
+				object.forceMove(loc)
 			crayon = null
 			state = 1
 

@@ -459,53 +459,53 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 
 //This proc return 1 if the item can be picked up and 0 if it can't.
 //Set the stop_messages to stop it from printing messages
-/obj/item/storage/proc/can_be_inserted(obj/item/W, mob/user, stop_messages = FALSE)
-	if(!istype(W) || (W.flags_item & NODROP))
+/obj/item/storage/proc/can_be_inserted(obj/item/object, mob/user, stop_messages = FALSE)
+	if(!istype(object) || (object.flags_item & NODROP))
 		return //Not an item
 
-	if(src.loc == W)
+	if(src.loc == object)
 		return 0 //Means the item is already in the storage item
 
 	//specific labeler check
-	if(istype(W, /obj/item/tool/hand_labeler))
-		var/obj/item/tool/hand_labeler/L = W
-		if(L.mode)
+	if(istype(object, /obj/item/tool/hand_labeler))
+		var/obj/item/tool/hand_labeler/labeler = object
+		if(labeler.mode)
 			return 0
 
-	if(istype(W, /obj/item/tool/yautja_cleaner) && user.a_intent == INTENT_HARM) //Cleaner both needs to be able to melt containers and be stored within them.
+	if(istype(object, /obj/item/tool/yautja_cleaner) && user.a_intent == INTENT_HARM) //Cleaner both needs to be able to melt containers and be stored within them.
 		return
 
-	if(W.heat_source && !(W.flags_item & IGNITING_ITEM))
-		to_chat(usr, SPAN_ALERT("[W] is ignited, you can't store it!"))
+	if(object.heat_source && !(object.flags_item & IGNITING_ITEM))
+		to_chat(usr, SPAN_ALERT("[object] is ignited, you can't store it!"))
 		return
 
-	if(!can_hold_type(W.type, user))
+	if(!can_hold_type(object.type, user))
 		if(!stop_messages)
-			to_chat(usr, SPAN_NOTICE("[src] cannot hold [W]."))
+			to_chat(usr, SPAN_NOTICE("[src] cannot hold [object]."))
 		return
 
 	var/w_limit_bypassed = 0
 	if(length(bypass_w_limit))
 		for(var/A in bypass_w_limit)
-			if(istype(W, A))
+			if(istype(object, A))
 				w_limit_bypassed = 1
 				break
 
-	if (!w_limit_bypassed && W.w_class > max_w_class)
+	if (!w_limit_bypassed && object.w_class > max_w_class)
 		if(!stop_messages)
-			to_chat(usr, SPAN_NOTICE("[W] is too long for [src]."))
+			to_chat(usr, SPAN_NOTICE("[object] is too long for [src]."))
 		return 0
 
 	//Checks if there is room for the item.
-	if(!has_room(W))
+	if(!has_room(object))
 		if(!stop_messages)
 			to_chat(usr, SPAN_NOTICE("[src] is full, make some space."))
 		return 0
 
-	if(W.w_class >= src.w_class && (isstorage(W)))
+	if(object.w_class >= src.w_class && (isstorage(object)))
 		if(!istype(src, /obj/item/storage/backpack/holding)) //bohs should be able to hold backpacks again. The override for putting a boh in a boh is in backpack.dm.
 			if(!stop_messages)
-				to_chat(usr, SPAN_NOTICE("[src] cannot hold [W] as it's a storage item of the same size."))
+				to_chat(usr, SPAN_NOTICE("[src] cannot hold [object] as it's a storage item of the same size."))
 			return 0 //To prevent the stacking of same sized storage items.
 
 	return 1
@@ -566,33 +566,33 @@ user can be null, it refers to the potential mob doing the insertion.**/
 and it therefore isn't safe to override it before calling parent. Updates icon when done.
 Can be called directly but only if the item was spawned inside src - handle_item_insertion is safer.
 W is always an item. stop_warning prevents messaging. user may be null.**/
-/obj/item/storage/proc/_item_insertion(obj/item/W, prevent_warning = FALSE, mob/user)
-	W.on_enter_storage(src)
+/obj/item/storage/proc/_item_insertion(obj/item/object, prevent_warning = FALSE, mob/user)
+	object.on_enter_storage(src)
 	if(user)
 		if (user.client && user.s_active != src)
-			user.client.remove_from_screen(W)
+			user.client.remove_from_screen(object)
 		add_fingerprint(user)
 		if(!prevent_warning)
-			var/visidist = W.w_class >= 3 ? 3 : 1
-			user.visible_message(SPAN_NOTICE("[user] puts [W] into [src]."),
-								SPAN_NOTICE("You put \the [W] into [src]."),
+			var/visidist = object.w_class >= 3 ? 3 : 1
+			user.visible_message(SPAN_NOTICE("[user] puts [object] into [src]."),
+								SPAN_NOTICE("You put \the [object] into [src]."),
 								null, visidist)
 	orient2hud()
 	for(var/mob/M in can_see_content())
 		show_to(M)
 	if (storage_slots)
-		W.mouse_opacity = MOUSE_OPACITY_OPAQUE //not having to click the item's tiny sprite to take it out of the storage.
+		object.mouse_opacity = MOUSE_OPACITY_OPAQUE //not having to click the item's tiny sprite to take it out of the storage.
 	update_icon()
 	if(user)
 		user.update_inv_l_hand()
 		user.update_inv_r_hand()
 
 ///Call this proc to handle the removal of an item from the storage item. The item will be moved to the atom sent as new_target.
-/obj/item/storage/proc/remove_from_storage(obj/item/W as obj, atom/new_location, mob/user)
-	if(!istype(W))
+/obj/item/storage/proc/remove_from_storage(obj/item/object as obj, atom/new_location, mob/user)
+	if(!istype(object))
 		return FALSE
 
-	_item_removal(W, new_location, user)
+	_item_removal(object, new_location, user)
 	return TRUE
 
 /obj/item/storage/proc/remove_item_from_screen(obj/item/item)
@@ -638,9 +638,9 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	redraw_items_on_screen(item)
 
 //This proc is called when you want to place an item into the storage item.
-/obj/item/storage/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/storage/attackby(obj/item/object as obj, mob/user as mob)
 	..()
-	return attempt_item_insertion(W, FALSE, user)
+	return attempt_item_insertion(object, FALSE, user)
 
 /obj/item/storage/equipped(mob/user, slot, silent)
 	if ((storage_flags & STORAGE_ALLOW_EMPTY))
@@ -652,12 +652,12 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 			verbs -= /obj/item/storage/verb/toggle_click_empty
 	..()
 
-/obj/item/storage/proc/attempt_item_insertion(obj/item/W as obj, prevent_warning = FALSE, mob/user as mob)
-	if(!can_be_inserted(W, user))
+/obj/item/storage/proc/attempt_item_insertion(obj/item/object as obj, prevent_warning = FALSE, mob/user as mob)
+	if(!can_be_inserted(object, user))
 		return
 
-	W.add_fingerprint(user)
-	return handle_item_insertion(W, prevent_warning, user)
+	object.add_fingerprint(user)
+	return handle_item_insertion(object, prevent_warning, user)
 
 /obj/item/storage/attack_hand(mob/user, mods)
 	if(HAS_TRAIT(user, TRAIT_HAULED) && !HAS_FLAG(storage_flags, STORAGE_ALLOW_WHILE_HAULED))

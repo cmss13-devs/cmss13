@@ -23,20 +23,20 @@
 	update_overlays()
 
 //attaching papers!!
-/obj/structure/noticeboard/attackby(obj/item/O, mob/user, params)
-	if(istype(O, /obj/item/paper) || istype(O, /obj/item/photo))
+/obj/structure/noticeboard/attackby(obj/item/note, mob/user, params)
+	if(istype(note, /obj/item/paper) || istype(note, /obj/item/photo))
 		if(!allowed(user))
 			to_chat(user, SPAN_WARNING("You are not authorized to add notices!"))
 			return
 		if(notices < MAX_NOTICES)
-			if(!user.drop_inv_item_to_loc(O, src))
+			if(!user.drop_inv_item_to_loc(note, src))
 				return
 			notices++
 			update_overlays()
-			to_chat(user, SPAN_NOTICE("You pin \the [O] to the noticeboard."))
+			to_chat(user, SPAN_NOTICE("You pin \the [note] to the noticeboard."))
 		else
 			to_chat(user, SPAN_WARNING("The notice board is full!"))
-	else if(istype(O, /obj/item/tool/pen))
+	else if(istype(note, /obj/item/tool/pen))
 		user.set_interaction(src)
 		tgui_interact(user)
 	else

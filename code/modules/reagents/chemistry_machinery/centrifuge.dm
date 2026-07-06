@@ -2,7 +2,7 @@
 #define INPUT_TURING 1
 
 #define MODE_SPLIT 0
-#define MODE_DISTRIBUTE 1
+#define MODE_DISTRIcontainerUTE 1
 
 /obj/structure/machinery/centrifuge
 	name = "Chemical Centrifuge"
@@ -34,46 +34,46 @@
 		RegisterSignal(connected_turing, COMSIG_PARENT_QDELETING, PROC_REF(cleanup))
 		visible_message(SPAN_NOTICE("<b>\The [src] beeps:</b> Turing Dispenser connected."))
 
-/obj/structure/machinery/centrifuge/attackby(obj/item/B, mob/living/user)
+/obj/structure/machinery/centrifuge/attackby(obj/item/container, mob/living/user)
 	if(machine_processing)
 		to_chat(user, SPAN_WARNING("\The [src] is still running!"))
 		return
 	if(!skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
 		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
 		return
-	if(B.is_open_container() || istype(B, /obj/item/reagent_container/blood))
+	if(container.is_open_container() || istype(container, /obj/item/reagent_container/blood))
 		if(input_container)
 			to_chat(user, SPAN_WARNING("A container is already loaded into \the [src]."))
 			return
 		if(input_source == INPUT_TURING)
 			to_chat(user, SPAN_WARNING("\The [src] is expecting its input from the Turing. Toggle input back to container if you want to centrifuge this."))
 			return
-		if(user.drop_inv_item_to_loc(B, src))
-			input_container = B
+		if(user.drop_inv_item_to_loc(container, src))
+			input_container = container
 			if(output_container)
 				icon_state = "centrifuge_on_closed"
 			else
 				icon_state = "centrifuge_on_open"
-	else if(istype(B, /obj/item/storage/fancy/vials))
+	else if(istype(container, /obj/item/storage/fancy/vials))
 		if(output_container)
 			to_chat(user, SPAN_WARNING("A vial box is already loaded into \the [src]."))
 			return
-		if(user.drop_inv_item_to_loc(B, src))
-			output_container = B
+		if(user.drop_inv_item_to_loc(container, src))
+			output_container = container
 			if(input_container)
 				icon_state = "centrifuge_on_closed"
 			else
 				icon_state = "centrifuge_empty_closed"
 	else
-		to_chat(user, SPAN_WARNING("[B] doesn't fit in \the [src]."))
+		to_chat(user, SPAN_WARNING("[container] doesn't fit in \the [src]."))
 		return
 	if(((input_container && input_source == INPUT_CONTAINER) || turing_ready()) && output_container)
-		to_chat(user, SPAN_NOTICE("You insert [B] and start configuring \the [src]."))
+		to_chat(user, SPAN_NOTICE("You insert [container] and start configuring \the [src]."))
 		updateUsrDialog()
 		icon_state = "centrifuge_spinning"
 		start_processing()
 	else
-		to_chat(user, SPAN_NOTICE("You insert [B] into \the [src]."))
+		to_chat(user, SPAN_NOTICE("You insert [container] into \the [src]."))
 
 /obj/structure/machinery/centrifuge/attack_hand(mob/user as mob)
 	if(machine_processing)
@@ -284,4 +284,4 @@
 #undef INPUT_TURING
 
 #undef MODE_SPLIT
-#undef MODE_DISTRIBUTE
+#undef MODE_DISTRIcontainerUTE

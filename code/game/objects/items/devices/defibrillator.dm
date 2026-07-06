@@ -156,12 +156,12 @@
 		return FALSE
 	return TRUE
 
-/obj/item/device/defibrillator/proc/check_revive(mob/living/carbon/human/H, mob/living/carbon/human/user)
-	if(!ishuman(H) || isyautja(H))
-		to_chat(user, SPAN_WARNING("You can't defibrillate [H]. You don't even know where to put the [fluff_tool]!"))
+/obj/item/device/defibrillator/proc/check_revive(mob/living/carbon/human/victim, mob/living/carbon/human/user)
+	if(!ishuman(victim) || isyautja(victim))
+		to_chat(user, SPAN_WARNING("You can't defibrillate [victim]. You don't even know where to put the [fluff_tool]!"))
 		return
-	if(issynth(H))
-		to_chat(user, SPAN_WARNING("You can't defibrillate [H]. You need a synthetic reset key for reboot!"))
+	if(issynth(victim))
+		to_chat(user, SPAN_WARNING("You can't defibrillate [victim]. You need a synthetic reset key for reboot!"))
 		return
 	if(!ready)
 		balloon_alert(user, "take out the [fluff_tool]")
@@ -170,19 +170,19 @@
 	if(dcell.charge < charge_cost)
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src]'s battery is too low! It needs to recharge."))
 		return
-	if(H.stat != DEAD)
+	if(victim.stat != DEAD)
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Vital signs detected. Aborting."))
 		return
 
-	if(!H.is_revivable())
+	if(!victim.is_revivable())
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Patient's general condition does not allow reviving."))
 		return
 
-	if((!MODE_HAS_MODIFIER(/datum/gamemode_modifier/defib_past_armor) && blocked_by_suit) && H.wear_suit && (istype(H.wear_suit, /obj/item/clothing/suit/armor) || istype(H.wear_suit, /obj/item/clothing/suit/storage/marine)) && prob(95))
+	if((!MODE_HAS_MODIFIER(/datum/gamemode_modifier/defib_past_armor) && blocked_by_suit) && victim.wear_suit && (istype(victim.wear_suit, /obj/item/clothing/suit/armor) || istype(victim.wear_suit, /obj/item/clothing/suit/storage/marine)) && prob(95))
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Paddles registering >100,000 ohms, Possible cause: Suit or Armor interfering."))
 		return
 
-	if(!H.check_tod())
+	if(!victim.check_tod())
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Patient is braindead."))
 		return
 
@@ -393,25 +393,25 @@
 	if(!noskill)
 		. += SPAN_NOTICE("You need some knowledge of electronics and circuitry to use this.")
 
-/obj/item/device/defibrillator/synthetic/check_revive(mob/living/carbon/human/H, mob/living/carbon/human/user)
-	if(!issynth(H))
+/obj/item/device/defibrillator/synthetic/check_revive(mob/living/carbon/human/victim, mob/living/carbon/human/user)
+	if(!issynth(victim))
 		to_chat(user, SPAN_WARNING("You can't use \a [src] on a living being!"))
 		return FALSE
 	if(!ready)
 		balloon_alert(user, "activate it first!")
 		to_chat(user, SPAN_WARNING("You need to activate [src] first."))
 		return FALSE
-	if(synthetic_type_locked && !istype(H.assigned_equipment_preset, synthetic_type_locked))
+	if(synthetic_type_locked && !istype(victim.assigned_equipment_preset, synthetic_type_locked))
 		to_chat(user, SPAN_WARNING("You can't use [src] on this type of synthetic!"))
 		return FALSE
 	if(dcell.charge < charge_cost)
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] has already been used! It needs to be recharged."))
 		return FALSE
-	if(H.stat != DEAD)
+	if(victim.stat != DEAD)
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Function signs detected. Aborting."))
 		return FALSE
 
-	if(!H.is_revivable())
+	if(!victim.is_revivable())
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Unit's general condition does not allow reactivation."))
 		return FALSE
 

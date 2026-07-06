@@ -255,7 +255,7 @@
 	var/turf/target_turf = get_turf(target_atom)
 
 	var/obj/effect/alien/weeds/target_weeds = locate(/obj/effect/alien/weeds) in target_turf
-	var/obj/effect/alien/resin/fruit/F = locate(/obj/effect/alien/resin/fruit) in target_turf
+	var/obj/effect/alien/resin/fruit/froot = locate(/obj/effect/alien/resin/fruit) in target_turf
 	var/obj/structure/mineral_door/resin/door = target_atom
 	var/turf/closed/wall/resin/wall = target_turf
 
@@ -282,14 +282,14 @@
 			to_chat(xeno, SPAN_XENONOTICE("We haplessly try to surge resin around [structure_to_buff], but it's already reinforced. It'll take a moment for us to recover."))
 			xeno_cooldown *= 0.5
 
-	else if(F && F.hivenumber == xeno.hivenumber)
-		if(F.mature)
-			to_chat(xeno, SPAN_XENONOTICE("\The [F] is already mature. The [src.name] does nothing."))
+	else if(froot && froot.hivenumber == xeno.hivenumber)
+		if(froot.mature)
+			to_chat(xeno, SPAN_XENONOTICE("\The [froot] is already mature. The [src.name] does nothing."))
 			xeno_cooldown *= 0.5
 		else
-			to_chat(xeno, SPAN_XENONOTICE("We pour all our energy equal to [F] growth, bringing it to swift maturity!"))
-			F.reduce_timer(60 SECONDS) //We want surge to mature any fruit instantly, but you receive dynamic cooldown depending on fruit growth time.
-			xeno_cooldown *= dynamic_fruit_surge_cooldown(F)
+			to_chat(xeno, SPAN_XENONOTICE("We pour all our energy equal to [froot] growth, bringing it to swift maturity!"))
+			froot.reduce_timer(60 SECONDS) //We want surge to mature any fruit instantly, but you receive dynamic cooldown depending on fruit growth time.
+			xeno_cooldown *= dynamic_fruit_surge_cooldown(froot)
 
 	else if(target_weeds && istype(target_turf, /turf/open) && target_weeds.hivenumber == xeno.hivenumber)
 		xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges the resin, creating an unstable wall!"),

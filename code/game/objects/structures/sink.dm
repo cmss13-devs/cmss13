@@ -54,40 +54,40 @@
 		V.show_message(SPAN_NOTICE("[user] washes their hands using \the [src]."), SHOW_MESSAGE_VISIBLE)
 
 
-/obj/structure/sink/attackby(obj/item/O as obj, mob/user as mob)
+/obj/structure/sink/attackby(obj/item/cleanable as obj, mob/user as mob)
 	if(busy)
 		to_chat(user, SPAN_DANGER("Someone's already washing here."))
 		return
 
-	var/obj/item/reagent_container/RG = O
-	if (istype(RG) && RG.is_open_container())
-		RG.reagents.add_reagent("water", min(RG.volume - RG.reagents.total_volume, RG.amount_per_transfer_from_this))
-		user.visible_message(SPAN_NOTICE("[user] fills \the [RG] using \the [src]."),SPAN_NOTICE("You fill \the [RG] using \the [src]."))
+	var/obj/item/reagent_container/container = cleanable
+	if (istype(container) && container.is_open_container())
+		container.reagents.add_reagent("water", min(container.volume - container.reagents.total_volume, container.amount_per_transfer_from_this))
+		user.visible_message(SPAN_NOTICE("[user] fills \the [container] using \the [src]."),SPAN_NOTICE("You fill \the [container] using \the [src]."))
 		return
 
-	else if (istype(O, /obj/item/weapon/baton))
-		var/obj/item/weapon/baton/B = O
-		if(B.bcell)
-			if(B.bcell.charge > 0 && B.status == 1)
+	else if (istype(cleanable, /obj/item/weapon/baton))
+		var/obj/item/weapon/baton/baton = cleanable
+		if(baton.bcell)
+			if(baton.bcell.charge > 0 && baton.status == 1)
 				flick("baton_active", src)
 				user.apply_effect(10, STUN)
 				user.stuttering = 10
 				user.apply_effect(10, WEAKEN)
-				B.deductcharge(B.hitcost)
+				baton.deductcharge(baton.hitcost)
 				user.visible_message(
-					SPAN_DANGER("[user] was stunned by \his wet [O]!"),
-					SPAN_DANGER("You were stunned by your wet [O]!"))
+					SPAN_DANGER("[user] was stunned by \his wet [cleanable]!"),
+					SPAN_DANGER("You were stunned by your wet [cleanable]!"))
 				return
 
 	var/turf/location = user.loc
 	if(!isturf(location))
 		return
 
-	var/obj/item/I = O
-	if(!I || !istype(I,/obj/item))
+	var/obj/item/needs_cleaning = cleanable
+	if(!needs_cleaning || !istype(needs_cleaning,/obj/item))
 		return
 
-	to_chat(usr, SPAN_NOTICE("You start washing \the [I]."))
+	to_chat(usr, SPAN_NOTICE("You start washing \the [needs_cleaning]."))
 
 	busy = TRUE
 	sleep(40)
@@ -95,15 +95,15 @@
 
 	if(user.loc != location)
 		return //User has moved
-	if(!I)
-		return //Item's been destroyed while washing
-	if(user.get_active_hand() != I)
+	if(!needs_cleaning)
+		return //Item's been destroyed while cleanable
+	if(user.get_active_hand() != needs_cleaning)
 		return //Person has switched hands or the item in their hands
 
-	O.clean_blood()
+	cleanable.clean_blood()
 	user.visible_message(
-		SPAN_NOTICE("[user] washes \a [I] using \the [src]."),
-		SPAN_NOTICE("You wash \a [I] using \the [src]."))
+		SPAN_NOTICE("[user] washes \a [needs_cleaning] using \the [src]."),
+		SPAN_NOTICE("You wash \a [needs_cleaning] using \the [src]."))
 
 
 /obj/structure/sink/clicked(mob/user, list/mods)
@@ -116,16 +116,16 @@
 		return TRUE
 
 	// Check if it's a reagent container
-	var/obj/item/reagent_container/RG = held_item
-	if(!istype(RG) || !RG.is_open_container())
+	var/obj/item/reagent_container/container = held_item
+	if(!istype(container) || !container.is_open_container())
 		return TRUE
 
-	var/remaining_space = RG.volume - RG.reagents.total_volume
+	var/remaining_space = container.volume - container.reagents.total_volume
 	if(remaining_space > 0)
-		RG.reagents.add_reagent("water", remaining_space)
-		user.visible_message(SPAN_NOTICE("[user] fills \the [RG] completely using \the [src]."), SPAN_NOTICE("You fill \the [RG] completely using \the [src]."))
+		container.reagents.add_reagent("water", remaining_space)
+		user.visible_message(SPAN_NOTICE("[user] fills \the [container] completely using \the [src]."), SPAN_NOTICE("You fill \the [container] completely using \the [src]."))
 	else
-		user.visible_message(SPAN_NOTICE("[user] tries to fill \the [RG] but it's already full."), SPAN_NOTICE("\The [RG] is already full."))
+		user.visible_message(SPAN_NOTICE("[user] tries to fill \the [container] but it's already full."), SPAN_NOTICE("\The [container] is already full."))
 
 	return TRUE
 
@@ -145,7 +145,7 @@
 	icon_state = "puddle"
 
 
-/obj/structure/sink/puddle/attackby(obj/item/O as obj, mob/user as mob)
+/obj/structure/sink/puddle/attackby(obj/item/cleanable as obj, mob/user as mob)
 	icon_state = "puddle-splash"
 	. = ..()
 	icon_state = "puddle"

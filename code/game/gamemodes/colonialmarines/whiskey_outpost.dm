@@ -681,13 +681,13 @@
 	playsound(src, 'sound/machines/twobeep.ogg', 15, 1)
 	to_chat(user, "You activate \the [src]. Now toss it, the supplies will arrive in a moment!")
 
-	var/mob/living/carbon/C = user
-	if(istype(C) && !C.throw_mode)
-		C.toggle_throw_mode(THROW_MODE_NORMAL)
+	var/mob/living/carbon/humanoid = user
+	if(istype(humanoid) && !humanoid.throw_mode)
+		humanoid.toggle_throw_mode(THROW_MODE_NORMAL)
 
 	sleep(100) //10 seconds should be enough.
-	var/turf/T = get_turf(src) //Make sure we get the turf we're tossing this on.
-	drop_supplies(T, supply_drop)
+	var/turf/ground = get_turf(src) //Make sure we get the turf we're tossing this on.
+	drop_supplies(ground, supply_drop)
 	playsound(src,'sound/effects/bamf.ogg', 50, 1)
 	qdel(src)
 	return

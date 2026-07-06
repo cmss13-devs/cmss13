@@ -133,8 +133,8 @@ text("<A href='byond://?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes
 			to_chat(usr, SPAN_NOTICE("You press the weird button."))
 			src.updateUsrDialog()
 
-/obj/structure/machinery/bot/cleanbot/attackby(obj/item/W, mob/user as mob)
-	if (istype(W, /obj/item/card/id))
+/obj/structure/machinery/bot/cleanbot/attackby(obj/item/idcard, mob/user as mob)
+	if (istype(idcard, /obj/item/card/id))
 		if(src.allowed(usr) && !open)
 			src.locked = !src.locked
 			to_chat(user, SPAN_NOTICE("You [ src.locked ? "lock" : "unlock"] \the [src] behaviour controls."))

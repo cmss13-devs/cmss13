@@ -56,13 +56,13 @@
 	src.visible_message(SPAN_DANGER("[src] gets an evil-looking gleam in their eye."))
 
 
-/mob/living/simple_animal/hostile/retaliate/goat/attackby(obj/item/O as obj, mob/user as mob)
-	var/obj/item/reagent_container/glass/G = O
-	if(stat == CONSCIOUS && istype(G) && G.is_open_container())
-		user.visible_message(SPAN_NOTICE("[user] milks [src] using \the [O]."))
-		var/transferred = udder.trans_id_to(G, "milk", rand(5,10))
-		if(G.reagents.total_volume >= G.volume)
-			to_chat(user, SPAN_DANGER("[O] is full."))
+/mob/living/simple_animal/hostile/retaliate/goat/attackby(obj/item/container as obj, mob/user as mob)
+	var/obj/item/reagent_container/glass/glass = container
+	if(stat == CONSCIOUS && istype(glass) && glass.is_open_container())
+		user.visible_message(SPAN_NOTICE("[user] milks [src] using \the [container]."))
+		var/transferred = udder.trans_id_to(glass, "milk", rand(5,10))
+		if(glass.reagents.total_volume >= glass.volume)
+			to_chat(user, SPAN_DANGER("[container] is full."))
 		if(!transferred)
 			to_chat(user, SPAN_DANGER("The udder is dry. Wait a bit longer..."))
 	else
@@ -102,13 +102,13 @@
 	QDEL_NULL(udder)
 	return ..()
 
-/mob/living/simple_animal/big/cow/attackby(obj/item/O as obj, mob/user as mob)
-	var/obj/item/reagent_container/glass/G = O
-	if(stat == CONSCIOUS && istype(G) && G.is_open_container())
-		user.visible_message(SPAN_NOTICE("[user] milks [src] using \the [O]."))
-		var/transferred = udder.trans_id_to(G, "milk", rand(5,10))
-		if(G.reagents.total_volume >= G.volume)
-			to_chat(user, SPAN_DANGER("\The [O] is full."))
+/mob/living/simple_animal/big/cow/attackby(obj/item/container as obj, mob/user as mob)
+	var/obj/item/reagent_container/glass/glass = container
+	if(stat == CONSCIOUS && istype(glass) && glass.is_open_container())
+		user.visible_message(SPAN_NOTICE("[user] milks [src] using \the [container]."))
+		var/transferred = udder.trans_id_to(glass, "milk", rand(5,10))
+		if(glass.reagents.total_volume >= glass.volume)
+			to_chat(user, SPAN_DANGER("\The [container] is full."))
 		if(!transferred)
 			to_chat(user, SPAN_DANGER("The udder is dry. Wait a bit longer..."))
 	else
@@ -229,12 +229,12 @@ GLOBAL_VAR_INIT(chicken_count, 0)
 		if(user)
 			user.count_niche_stat(STATISTICS_NICHE_CHICKEN)
 
-/mob/living/simple_animal/small/chicken/attackby(obj/item/O as obj, mob/user as mob)
-	if(istype(O, /obj/item/reagent_container/food/snacks/grown/wheat)) //feedin' dem chickens
+/mob/living/simple_animal/small/chicken/attackby(obj/item/container as obj, mob/user as mob)
+	if(istype(container, /obj/item/reagent_container/food/snacks/grown/wheat)) //feedin' dem chickens
 		if(!stat && eggsleft < 8)
-			user.visible_message(SPAN_NOTICE("[user] feeds [O] to [name]! It clucks happily."),SPAN_NOTICE("You feed [O] to [name]! It clucks happily."))
+			user.visible_message(SPAN_NOTICE("[user] feeds [container] to [name]! It clucks happily."),SPAN_NOTICE("You feed [container] to [name]! It clucks happily."))
 			user.drop_held_item()
-			qdel(O)
+			qdel(container)
 			eggsleft += rand(1, 4)
 			//world << eggsleft
 		else

@@ -74,9 +74,9 @@
 	. = ..()
 	. += "It has [uses] lights remaining, and [recycle] broken lights stored."
 
-/obj/item/device/lightreplacer/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/stack/sheet/glass))
-		var/obj/item/stack/sheet/glass/glass = W
+/obj/item/device/lightreplacer/attackby(obj/item/tool, mob/user)
+	if(istype(tool, /obj/item/stack/sheet/glass))
+		var/obj/item/stack/sheet/glass/glass = tool
 		if(uses >= max_uses)
 			to_chat(user, SPAN_WARNING("[src] is full."))
 			return
@@ -87,8 +87,8 @@
 		else
 			to_chat(user, SPAN_WARNING("You need one sheet of glass to replace lights."))
 
-	if(istype(W, /obj/item/light_bulb))
-		var/obj/item/light_bulb/bulb = W
+	if(istype(tool, /obj/item/light_bulb))
+		var/obj/item/light_bulb/bulb = tool
 		if(bulb.status == 0) // LIGHT OKAY
 			if(uses < max_uses)
 				AddUses(1)

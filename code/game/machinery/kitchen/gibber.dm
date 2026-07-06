@@ -128,8 +128,8 @@
 /obj/structure/machinery/gibber/proc/go_out(launch = FALSE)
 	if (!occupant)
 		return FALSE
-	for(var/obj/O in src)
-		O.forceMove(loc)
+	for(var/obj/object in src)
+		object.forceMove(loc)
 	if (occupant.client)
 		occupant.client.set_eye(occupant.client.mob)
 		occupant.client.perspective = MOB_PERSPECTIVE

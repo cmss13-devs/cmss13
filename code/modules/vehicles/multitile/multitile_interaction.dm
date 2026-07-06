@@ -1,32 +1,32 @@
 
 // Special cases abound, handled below or in subclasses
-/obj/vehicle/multitile/attackby(obj/item/O, mob/user)
+/obj/vehicle/multitile/attackby(obj/item/object, mob/user)
 	// Are we trying to install stuff?
-	if(istype(O, /obj/item/hardpoint))
-		var/obj/item/hardpoint/HP = O
+	if(istype(object, /obj/item/hardpoint))
+		var/obj/item/hardpoint/HP = object
 		install_hardpoint(HP, user)
 		return
 
-	if(ispowerclamp(O))
-		var/obj/item/powerloader_clamp/PC = O
+	if(ispowerclamp(object))
+		var/obj/item/powerloader_clamp/PC = object
 		if(PC.linked_powerloader && PC.loaded && istype(PC.loaded, /obj/item/hardpoint))
 			install_hardpoint(PC, user)
 			return
 
 	// Are we trying to remove stuff?
-	if(HAS_TRAIT(O, TRAIT_TOOL_CROWBAR) || ispowerclamp(O))
-		uninstall_hardpoint(O, user)
+	if(HAS_TRAIT(object, TRAIT_TOOL_CROWBAR) || ispowerclamp(object))
+		uninstall_hardpoint(object, user)
 		return
 
 	// Are we trying to repair the frame?
-	if(iswelder(O) || HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
-		handle_repairs(O, user)
+	if(iswelder(object) || HAS_TRAIT(object, TRAIT_TOOL_WRENCH))
+		handle_repairs(object, user)
 		return
 
 	// Are we trying to immobilize the vehicle?
-	if(istype(O, /obj/item/vehicle_clamp))
+	if(istype(object, /obj/item/vehicle_clamp))
 		if(clamped)
-			to_chat(user, SPAN_WARNING("[src] already has \a [O.name] attached."))
+			to_chat(user, SPAN_WARNING("[src] already has \a [object.name] attached."))
 			return
 
 		//only can clamp friendly vehicles
@@ -35,19 +35,19 @@
 			return
 
 		if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
-			to_chat(user, SPAN_WARNING("You don't know how to use \the [O.name]."))
+			to_chat(user, SPAN_WARNING("You don't know how to use \the [object.name]."))
 			return
 
 		for(var/obj/item/hardpoint/locomotion/Loco in hardpoints)
 			user.visible_message(SPAN_WARNING("[user] attaches the vehicle clamp to \the [src]."), SPAN_NOTICE("You attach the vehicle clamp to \the [src] and lock the mechanism."))
-			attach_clamp(O, user)
+			attach_clamp(object, user)
 			return
 
-		to_chat(user, SPAN_WARNING("There are no treads or wheels to attach \the [O.name] to."))
+		to_chat(user, SPAN_WARNING("There are no treads or wheels to attach \the [object.name] to."))
 		return
 
 	// Are we trying to remove a vehicle clamp?
-	if(HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER))
+	if(HAS_TRAIT(object, TRAIT_TOOL_SCREWDRIVER))
 		if(!clamped)
 			return
 
@@ -66,14 +66,14 @@
 		return
 
 	//try to fit something in vehicle without getting in ourselves
-	if(istype(O, /obj/item/grab) && ishuman(user)) //only humans are allowed to fit dragged stuff inside
+	if(istype(object, /obj/item/grab) && ishuman(user)) //only humans are allowed to fit dragged stuff inside
 		if(user.a_intent == INTENT_HELP)
 			var/mob_x = user.x - src.x
 			var/mob_y = user.y - src.y
 			for(var/entrance in entrances)
 				var/entrance_coord = entrances[entrance]
 				if(mob_x == entrance_coord[1] && mob_y == entrance_coord[2])
-					var/obj/item/grab/G = O
+					var/obj/item/grab/G = object
 					var/atom/dragged_atom = G.grabbed_thing
 					if(istype(/obj/item/explosive/grenade, dragged_atom))
 						var/obj/item/explosive/grenade/nade = dragged_atom
@@ -87,8 +87,8 @@
 			handle_player_entrance(user)
 			return
 
-	if(istype(O, /obj/item/explosive/grenade))
-		var/obj/item/explosive/grenade/nade = O
+	if(istype(object, /obj/item/explosive/grenade))
+		var/obj/item/explosive/grenade/nade = object
 		if(nade.antigrief_protection && user.faction == FACTION_MARINE && explosive_antigrief_check(nade, user))
 			to_chat(user, SPAN_WARNING("\The [nade.name]'s safe-area accident inhibitor prevents you from priming the grenade!"))
 			// Let staff know, in case someone's actually about to try to grief
@@ -123,11 +123,11 @@
 				nade.activate(user)
 		return
 
-	if(istype(O, /obj/item/device/motiondetector))
+	if(istype(object, /obj/item/device/motiondetector))
 		if(!interior)
-			to_chat(user, SPAN_WARNING("It appears that [O] cannot establish borders of space inside \the [src]. (PLEASE, TELL A DEV, SOMETHING BROKE)"))
+			to_chat(user, SPAN_WARNING("It appears that [object] cannot establish borders of space inside \the [src]. (PLEASE, TELL A DEV, SOMETHING BROKE)"))
 			return
-		var/obj/item/device/motiondetector/MD = O
+		var/obj/item/device/motiondetector/MD = object
 
 		if(!MD.active)
 			to_chat(user, SPAN_WARNING("\The [MD] must be activated in order to scan \the [src]'s interior."))
@@ -167,10 +167,10 @@
 		handle_player_entrance(user)
 		return
 
-	take_damage_type(O.force * 0.05, "blunt", user) //Melee weapons from people do very little damage
+	take_damage_type(object.force * 0.05, "blunt", user) //Melee weapons from people do very little damage
 
 // Frame repairs on the vehicle itself
-/obj/vehicle/multitile/proc/handle_repairs(obj/item/O, mob/user)
+/obj/vehicle/multitile/proc/handle_repairs(obj/item/object, mob/user)
 	if(user.action_busy)
 		return
 	var/max_hp = initial(health)
@@ -179,13 +179,13 @@
 		to_chat(user, SPAN_NOTICE("The hull is fully intact."))
 		for(var/obj/item/hardpoint/holder/H in hardpoints)
 			if(H.health > 0)
-				if(!iswelder(O))
+				if(!iswelder(object))
 					to_chat(user, SPAN_WARNING("You need welding tool to repair \the [H.name]."))
 					return
-				if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
+				if(!HAS_TRAIT(object, TRAIT_TOOL_BLOWTORCH))
 					to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 					return
-				H.handle_repair(O, user)
+				H.handle_repair(object, user)
 				update_icon()
 				return
 			else
@@ -198,21 +198,21 @@
 
 	// For health < 75%, the frame needs welderwork, otherwise wrench
 	if(health < max_hp * 0.75)
-		if(!iswelder(O))
+		if(!iswelder(object))
 			to_chat(user, SPAN_NOTICE("The frame is way too busted! Try using a [SPAN_HELPFUL("welder")]."))
 			return
 
-		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
+		if(!HAS_TRAIT(object, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_NOTICE("You need a more powerful blowtorch!"))
 			return
 
-		WT = O
+		WT = object
 		if(!WT.isOn())
 			to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
 			return
 
 	else
-		if(!HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
+		if(!HAS_TRAIT(object, TRAIT_TOOL_WRENCH))
 			to_chat(user, SPAN_NOTICE("The frame is structurally sound, but there are a lot of loose nuts and bolts. Try using a [SPAN_HELPFUL("wrench")]."))
 			return
 
@@ -553,12 +553,12 @@
 	return
 
 //CLAMP procs, unsafe proc, checks are done before calling it
-/obj/vehicle/multitile/proc/attach_clamp(obj/item/vehicle_clamp/O, mob/user)
-	user.temp_drop_inv_item(O, 0)
+/obj/vehicle/multitile/proc/attach_clamp(obj/item/vehicle_clamp/object, mob/user)
+	user.temp_drop_inv_item(object, 0)
 	clamped = TRUE
 	move_delay = VEHICLE_SPEED_STATIC
 	next_move = world.time + move_delay
-	qdel(O)
+	qdel(object)
 	update_icon()
 	message_admins("[key_name(user)] ([user.job]) attached vehicle clamp to [src]")
 
@@ -571,11 +571,11 @@
 		Loco.on_install(src) //we restore speed respective to wheels/treads if any installed
 
 	next_move = world.time + move_delay
-	var/obj/item/vehicle_clamp/O = new(get_turf(src))
+	var/obj/item/vehicle_clamp/object = new(get_turf(src))
 	if(user)
-		O.forceMove(get_turf(user))
+		object.forceMove(get_turf(user))
 		message_admins("[key_name(user)] ([user.job]) detached vehicle clamp from \the [src]")
 	else
-		O.forceMove(get_turf(src))
+		object.forceMove(get_turf(src))
 		message_admins("Vehicle clamp was detached from \the [src].")
 	update_icon()

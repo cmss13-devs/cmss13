@@ -67,14 +67,14 @@
 
 /obj/item/storage/pouch/general/medium
 	name = "medium general pouch"
-	desc = "A general-purpose pouch used to carry a variety of differently sized items. It has enough space for two small or four tiny items."
+	desc = "A medium-sized general-purpose pouch used to carry a variety of differently sized items. It has enough space for two small or four tiny items."
 	icon_state = "medium_drop"
 	storage_slots = null
 	max_storage_space = 4
 
 /obj/item/storage/pouch/general/large
 	name = "large general pouch"
-	desc = "A general-purpose pouch used to carry more differently sized items. It has enough space for three small or six tiny items."
+	desc = "A large, general-purpose pouch used to carry a variety of differently sized items. It has enough space for three small or six tiny items."
 	icon_state = "large_drop"
 	storage_slots = null
 	max_storage_space = 6
@@ -95,6 +95,8 @@
 	)
 
 /obj/item/storage/pouch/general/large/m39ap
+	name = "M39 AP magazine pouch"
+	desc = "A pouch specifically fitted for one M39 AP magazine."
 	storage_slots = 1
 
 /obj/item/storage/pouch/general/large/m39ap/fill_preset_inventory()
@@ -143,7 +145,7 @@
 
 /obj/item/storage/pouch/survival
 	name = "survival pouch"
-	desc = "A pouch with six pockets, given to colonists in the event of an emergency."
+	desc = "A pouch with seven pockets, given to colonists in the event of an emergency."
 	icon_state = "tools"
 	storage_slots = 7
 	max_w_class = SIZE_MEDIUM
@@ -167,12 +169,15 @@
 	new /obj/item/stack/medical/splint(src)
 
 /obj/item/storage/pouch/survival/black
+	desc = "A pouch with seven pockets, given to colonists in the event of an emergency. This one came with black leather."
 	icon_state = "soctools"
 
 /obj/item/storage/pouch/survival/full/black
+	desc = "A pouch with seven pockets, given to colonists in the event of an emergency. This one came with black leather and has an assortment of survival tools."
 	icon_state = "soctools"
 
 /obj/item/storage/pouch/survival/full/wy
+	desc = "A pouch with seven pockets, given to colonists in the event of an emergency. This one came with an assortment of survival tools."
 	icon_state = "soctools"
 
 /obj/item/storage/pouch/survival/full/wy/fill_preset_inventory()
@@ -186,9 +191,9 @@
 
 /obj/item/storage/pouch/survival/synth
 	name = "synth survival pouch"
-	desc = "An emergency pouch with six pockets, given to synthetics in the event of an emergency."
+	desc = "An emergency pouch with seven pockets, given to synthetics in the event of an emergency."
 	icon_state = "tools"
-	storage_slots = 6
+	storage_slots = 7
 	max_w_class = SIZE_MEDIUM
 	can_hold = list(
 		/obj/item/device/flashlight,
@@ -209,6 +214,7 @@
 	new /obj/item/attachable/bayonet(src)
 
 /obj/item/storage/pouch/survival/synth/black
+	desc = "An emergency pouch with seven pockets, given to synthetics in the event of an emergency. This one came with black leather and has an assortment of survival tools."
 	icon_state = "soctools"
 
 /obj/item/storage/pouch/survival/synth/black/full/fill_preset_inventory()
@@ -237,7 +243,7 @@
 
 /obj/item/storage/pouch/firstaid/full
 	name = "autoinjector first-aid pouch"
-	desc = "A four-pocket pouch that contains a variety of autoinjectors for quickly treating injuries."
+	desc = "A four-pocket pouch that contains a variety of autoinjectors for quickly treating injuries. This one arrived full with autoinjectors."
 
 /obj/item/storage/pouch/firstaid/full/fill_preset_inventory()
 	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine(src)
@@ -247,6 +253,7 @@
 
 /obj/item/storage/pouch/firstaid/full/black
 	icon_state = "wy_firstaid"
+	desc = "A four-pocket pouch that contains a variety of autoinjectors for quickly treating injuries. This one came with black leather and it is full of autoinjectors."
 
 /obj/item/storage/pouch/firstaid/full/alternate
 
@@ -262,9 +269,6 @@
 	new /obj/item/stack/medical/splint(src)
 	new /obj/item/stack/medical/ointment(src)
 	new /obj/item/stack/medical/bruise_pack(src)
-
-/obj/item/storage/pouch/firstaid/full/alternate/wy
-	icon_state = "wy_firstaid"
 
 /obj/item/storage/pouch/firstaid/full/pills
 	name = "pill bottle first-aid pouch"
@@ -304,7 +308,7 @@
 
 /obj/item/storage/pouch/firstaid/ert
 	name = "emergency first-aid pouch"
-	desc = "A five-pocket pouch can contain autoinjectors, ointments, and bandages. This one has some extra stuff."
+	desc = "A five-pocket pouch can contain autoinjectors, ointments, and bandages. This one comes with autoinjectors and some gauze."
 	icon_state = "firstaid"
 	storage_slots = 5
 
@@ -384,7 +388,7 @@
 ///CO pouch. This pouch can hold only 1 of each type of item: 1 sidearm, 1 pair of binoculars, 1 CO tablet
 /obj/item/storage/pouch/pistol/command
 	name = "command pouch"
-	desc = "A specialized, sturdy pouch with three pockets, issued to Commanding Officers. Can hold their sidearm, the command tablet and a set of binoculars."
+	desc = "A specialized, sturdy pouch with three pockets, issued to Commanding Officers. Can hold their sidearm, the command tablet, and a set of binoculars."
 	storage_slots = 3
 	icon_state = "command_pouch"
 	can_hold = list(
@@ -502,7 +506,7 @@
 
 /obj/item/storage/pouch/magazine/large
 	name = "large magazine pouch"
-	desc = "It can carry four magazines."
+	desc = "It can carry up to four magazines."
 	icon_state = "large_ammo_mag"
 	storage_slots = 4
 
@@ -524,7 +528,7 @@
 
 /obj/item/storage/pouch/magazine/pistol/large
 	name = "large pistol magazine pouch"
-	desc = "It can carry six pistol magazines or revolver speedloaders."
+	desc = "It can carry up to six pistol magazines or revolver speedloaders."
 	storage_slots = 6
 	icon_state = "large_pistol_mag"
 
@@ -877,7 +881,7 @@
 
 /obj/item/storage/pouch/first_responder
 	name = "first responder pouch"
-	desc = "A pouch with four slots, designed for carrying supplies to assist medical personnel and quickly respond to injuries on the battlefield without immediately treating them. Can hold supplies such as roller beds, stasis bags, and health analysers."
+	desc = "A pouch with four slots, designed for carrying larger supplies to assist medical personnel and quickly respond to injuries on the battlefield without immediately treating them. Can hold supplies such as roller beds, stasis bags, and health analysers."
 	icon_state = "frt_med"
 	storage_slots = 4
 
@@ -1118,7 +1122,7 @@
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival_peri
 	name = "\improper Pressurized Reagent Canister Pouch (Peridaxon Revival Mix)"
-	desc = "A pouch that carries a 15u reagent pouch autoinjector and a pressurized reagent canister filled with equal-parts Epinephrine, Inaprovaline, and Peridaxon for stabilizing and staving off effects of defibrillation-related heart damage. You can refill 160 units of each reagent with a reagent tank or chemical dispenser."
+	desc = "A pouch that carries a 15u reagent pouch autoinjector and a pressurized reagent canister filled with equal-parts Epinephrine, Inaprovaline, and Peridaxon for stabilizing defibrillated patients and their damaged organs until they can get to an operating table. You can refill 160 units of each reagent with a reagent tank or chemical dispenser."
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord
 	name = "\improper Pressurized Reagent Canister Pouch (Tricordrazine Revival Mix)"

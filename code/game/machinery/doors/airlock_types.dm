@@ -288,6 +288,23 @@
 /obj/structure/machinery/door/airlock/prison_hatch/autoname
 	autoname = TRUE
 
+/obj/structure/machinery/door/airlock/prison_hatch/alt
+    name = "\improper Maintenance Hatch"
+    icon = 'icons/obj/structures/doors/upp/atlan_hatch.dmi'
+    openspeed = 5
+    req_access = null
+    req_one_access = null
+    tiles_with = list(
+        /obj/structure/window/framed/prison,
+        /obj/structure/machinery/door/airlock,
+    )
+
+/obj/structure/machinery/door/airlock/prison_hatch/alt/autoname
+    autoname = TRUE
+
+
+
+
 //ALMAYER AIRLOCKS
 
 /obj/structure/machinery/door/airlock/almayer

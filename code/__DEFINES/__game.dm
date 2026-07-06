@@ -41,9 +41,10 @@
 #define MAP_LV759_HYBRISA_PROSPERA "LV-759 Hybrisa Prospera" // Highpop Only
 #define MAP_NEW_VARADERO "New Varadero"//ice colony underground but as its own map
 #define MAP_TYRARGO_RIFT "Tyrargo Rift"
+#define MAP_WHITE_ANTRE_RESEARCH_FACILITY "White Antre Research Facility"
 #define MAP_CHINOOK "Chinook 91 GSO" //admin level
 #define MAP_ROSTOCK "SSV Rostock" //UPP Warship
-
+#define MAP_HUNTERSHIP "Hunter Ship"
 #define GAMEMODE_WHISKEY_OUTPOST "Whiskey Outpost"
 #define GAMEMODE_HIVE_WARS "Hive Wars"
 #define GAMEMODE_FACTION_CLASH_UPP_CM "Faction Clash UPP CM"
@@ -225,7 +226,6 @@
 #define ERT_SHUTTLE_TRANSIT_DURATION 30 SECONDS
 
 #define SHUTTLE_RECHARGE  2 MINUTES
-#define ELEVATOR_RECHARGE 15 SECONDS
 
 //Shuttle moving status
 //#define SHUTTLE_IDLE 0
@@ -420,10 +420,13 @@
 #define WALL_KUTJEVO_COLONYR "colonyr"
 #define WALL_DEVWALL "devwall"
 #define WALL_DEVWALL_R "devwall_r"
-#define WALL_HUNTERSHIP "metal"//DMI specific name
+#define WALL_HUNTERSHIP "hunter"
+#define WALL_ENGINEERSHIP "metal"
 #define WALL_AICORE "aiwall"
 #define WALL_UPP_SHIP "uppwall_interior"
 #define WALL_UPP_BASE "uppwall"
+#define WALL_ANCIENT_BASE "ancient_stone"
+#define WALL_RUNEDSTONE "runedstone"
 
 //Defines for dropship weapon gimbals
 #define GIMBAL_LEFT -1

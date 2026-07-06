@@ -92,7 +92,7 @@
 
 	if(antigrief_protection && user.faction == FACTION_MARINE && explosive_antigrief_check(src, user))
 		to_chat(user, SPAN_WARNING("\The [name]'s safe-area accident inhibitor prevents you from planting!"))
-		msg_admin_niche("[key_name(user)] attempted to plant \a [name] in [get_area(src)] [ADMIN_JMP(src.loc)]")
+		msg_admin_niche("[key_name(user)] attempted to plant \a [name] in [ADMIN_VERBOSEJMP(src)]")
 		return
 
 	user.visible_message(SPAN_NOTICE("[user] starts deploying [src]."),
@@ -117,6 +117,7 @@
 	if(!hard_iff_lock && user)
 		iff_signal = user.faction
 
+	msg_admin_attack("[key_name(user)] has deployed \a [name] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z])", src.loc.x, src.loc.y, src.loc.z)
 	cause_data = create_cause_data(initial(name), user, src)
 	anchored = TRUE
 	playsound(loc, 'sound/weapons/mine_armed.ogg', 25, 1)

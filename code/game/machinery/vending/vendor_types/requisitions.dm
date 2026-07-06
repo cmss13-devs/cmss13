@@ -467,7 +467,7 @@
 /obj/structure/machinery/cm_vending/sorted/uniform_supply
 	name = "\improper ColMarTech Surplus Uniform Vendor"
 	desc = "An automated supply rack hooked up to a big storage of standard marine uniforms. Can be accessed by the Quartermaster and Cargo Technicians."
-	icon_state = "clothing"
+	icon_state = "clothing_surplus"
 	req_access = list()
 	req_one_access = list(ACCESS_MARINE_CARGO)
 	vendor_theme = VENDOR_THEME_USCM
@@ -549,7 +549,7 @@
 		list("Falling Falcons Shoulder Patch", 15, /obj/item/clothing/accessory/patch/falcon, VENDOR_ITEM_REGULAR),
 		list("Falling Falcons UA Shoulder Patch", 15, /obj/item/clothing/accessory/patch/falconalt, VENDOR_ITEM_REGULAR),
 		list("USCM Large Chest Patch", 15, /obj/item/clothing/accessory/patch/uscmlarge, VENDOR_ITEM_REGULAR),
-		list("USCM Shoulder Patch", 15, /obj/item/clothing/accessory/patch, VENDOR_ITEM_REGULAR),
+		list("USCM Shoulder Patch", 15, /obj/item/clothing/accessory/patch/uscmpatch, VENDOR_ITEM_REGULAR),
 		list("United Americas Shoulder patch", 10, /obj/item/clothing/accessory/patch/ua, VENDOR_ITEM_REGULAR),
 		list("United Americas Flag Shoulder patch", 10, /obj/item/clothing/accessory/patch/uasquare, VENDOR_ITEM_REGULAR),
 		list("Bedroll", 30, /obj/item/roller/bedroll, VENDOR_ITEM_REGULAR),

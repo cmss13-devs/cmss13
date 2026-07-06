@@ -642,6 +642,16 @@
 	desc = "Semiotic Standard denoting the number nine."
 	icon_state = "9"
 
+/obj/structure/sign/safety/big_one
+	name = "one semiotic"
+	desc = "Semiotic Standard denoting the number one."
+	icon_state = "big1"
+
+/obj/structure/sign/safety/fire_station
+	name = "fire-station semiotic"
+	desc = "Semiotic Standard denoting the nearby presence of a fire-station."
+	icon_state = "firestation"
+
 //===================//
 //   Marine signs   //
 //=================//
@@ -649,6 +659,21 @@
 /obj/structure/sign/ROsign
 	name = "\improper USCM Requisitions Office Guidelines"
 	desc = "1. You are not entitled to service or equipment. Attachments are a privilege, not a right.\n 2. You must be fully dressed to obtain service. Cryosleep underwear is non-permissible.\n 3. The Quartermaster has the final say and the right to decline service. Only the Acting Commanding Officer may override their decisions.\n 4. Please treat your Requisitions staff with respect. They work hard."
+	icon_state = "roplaque"
+	deconstructable = FALSE
+
+/obj/structure/sign/third_fleet_info
+	name = "\improper USCM Disposition and Readiness"
+	desc = "A plaque describing the deployment and arrangment of the troops that compose the United States Colonial Marines."
+	desc_lore = {"
+		The United States Colonial Marine Corps is organized into Marine Space Forces, each being responsible for military operations within a defined region of space. An MSF commands the ground, aerospace, and support elements needed to conduct sustained interstellar operations. Each MSF consists of the following major components:
+		A Division is the primary large-scale ground formation within an MSF. Each division is organized around three infantry regiments that work in conjunction to create a balanced force of combat, support, and service elements. They are designed to be capable of executing both orbital assault missions and sustained surface operations.,
+		A dedicated Aerospace Wing responsible for all dropships, strike, and support craft. Aerospace Wings provide orbital insertion, reconnaissance, close air support, and logistical transport throughout the MSF's operating theatre. They operate alongside the Division to project force across multiple star systems.,
+		A Brigade is a self-contained, all-purpose formation composed of a single reinforced regiment, supported by an attached aircraft group and logistics support. Brigades function as a compact, all-in-one division capable of conducting independent campaigns, sustaining prolonged operations, and deploying across multiple worlds.,
+		A Marine Assault Unit is a rapid-deployment, battalion sized expeditionary force. Composed of a reinforced infantry element, dropship squadron, and combat logistics battalion, MAUs provide flexible, self-contained capabilities for crises, assaults, and emergency operations within an MSF's operating theatre.,
+		MSF Sol oversees operations through the Core Systems, including a separate division solely for the Sol System.
+		MSF Eridani administers operations across the Outer Rim and Coreward Frontier, providing coverage for the American Corridor, Advance, and hotly contested frontier border regions.
+		MSF Herculis (to which the USS Almayer belongs) operates along the Anglo-Japanese Arm, the Tartarus Sector, and as deep into the American Arm as Alpha Caeli."}
 	icon_state = "roplaque"
 	deconstructable = FALSE
 

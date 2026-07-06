@@ -46,8 +46,8 @@ Additional game mode variables.
 	var/datum/mind/CO_survivor = null
 	var/datum/mind/hellhounds[] = list() //Hellhound spawning is not supported at round start.
 	var/list/dead_queens // A list of messages listing the dead queens
-	var/list/predators	= list()
 	var/list/joes		= list()
+	var/list/colony_joes = list()
 	var/list/fax_responders = list()
 
 	var/xeno_required_num = 0 //We need at least one. You can turn this off in case we don't care if we spawn or don't spawn xenos.
@@ -56,6 +56,11 @@ Additional game mode variables.
 	var/surv_starting_num = 0 //To clamp starting survivors.
 	var/merc_starting_num = 0 //PMC clamp.
 	var/marine_starting_num = 0 //number of players not in something special
+
+	var/list/yautja_hunters	= list()
+	var/list/yautja_youngbloods = list()
+	var/list/yautja_stranded = list()
+	var/list/yautja_badbloods = list()
 	/// How many predators utilize slots currently
 	var/pred_current_num = 0
 	/// How many additional preds per client
@@ -144,52 +149,46 @@ Additional game mode variables.
 //===================================================\\
 
 /datum/game_mode/proc/initialize_predator(mob/living/carbon/human/new_predator, ignore_pred_num = FALSE)
-	predators[new_predator.username()] = list("Name" = new_predator.real_name, "Status" = "Alive")
-	if(!ignore_pred_num)
-		pred_current_num++
-
-/datum/game_mode/proc/get_whitelisted_predators(readied = 1)
-	// Assemble a list of active players who are whitelisted.
-	var/players[] = new
-
-	var/mob/new_player/new_pred
-	for(var/mob/player in GLOB.player_list)
-		if(!player.client)
-			continue //No client. DCed.
-		if(isyautja(player))
-			continue //Already a predator. Might be dead, who knows.
-		if(readied) //Ready check for new players.
-			new_pred = player
-			if(!istype(new_pred))
-				continue //Have to be a new player here.
-			if(!new_pred.ready)
-				continue //Have to be ready.
-		else
-			if(!istype(player,/mob/dead))
-				continue //Otherwise we just want to grab the ghosts.
-
-		if(player?.client.check_whitelist_status(WHITELIST_PREDATOR))  //Are they whitelisted?
-			if(!player.client.prefs)
-				player.client.prefs = new /datum/preferences(player.client) //Somehow they don't have one.
-
-			if(player.client.prefs.get_job_priority(JOB_PREDATOR) > 0) //Are their prefs turned on?
-				if(!player.mind) //They have to have a key if they have a client.
-					player.mind_initialize() //Will work on ghosts too, but won't add them to active minds.
-				player.mind.setup_human_stats()
-				player.faction = FACTION_YAUTJA
-				player.faction_group = FACTION_LIST_YAUTJA
-				players += player.mind
-	return players
+	if(new_predator.faction == FACTION_YAUTJA_YOUNG)
+		yautja_youngbloods[new_predator.persistent_username] = list("Name" = new_predator.real_name, "Status" = "Alive")
+	else if(new_predator.faction == FACTION_YAUTJA_BADBLOOD)
+		yautja_badbloods[new_predator.persistent_username] = list("Name" = new_predator.real_name, "Status" = "Alive")
+	else if(new_predator.faction == FACTION_YAUTJA_STRANDED)
+		yautja_stranded[new_predator.persistent_username] = list("Name" = new_predator.real_name, "Status" = "Alive")
+	else
+		yautja_hunters[new_predator.persistent_username] = list("Name" = new_predator.real_name, "Status" = "Alive")
+		if(!ignore_pred_num)//Only mainstream preds should contribute, exept where told not to.
+			pred_current_num++
 
 /datum/game_mode/proc/attempt_to_join_as_predator(mob/pred_candidate)
 	var/mob/living/carbon/human/new_predator = transform_predator(pred_candidate) //Initialized and ready.
 	if(!new_predator)
 		return
 
-	msg_admin_niche("([new_predator.key]) joined as Yautja, [new_predator.real_name].")
+	msg_admin_niche("([new_predator.key]) joined as a Yautja, [new_predator.real_name].")
 
-	if(pred_candidate && !QDELETED(pred_candidate))
+	if(!QDELETED(pred_candidate))
 		pred_candidate.moveToNullspace() //Nullspace it for garbage collection later.
+
+/datum/game_mode/proc/attempt_to_join_as_badblood(mob/badblood_candidate)
+	var/mob/living/carbon/human/new_predator = transform_badblood(badblood_candidate) //Initialized and ready.
+	if(!new_predator)
+		return
+
+	msg_admin_niche("([new_predator.key]) joined as a Yautja Bad-Blood, [new_predator.real_name].")
+
+	if(!QDELETED(badblood_candidate))
+		badblood_candidate.moveToNullspace() //Nullspace it for garbage collection later.
+
+/datum/game_mode/proc/attempt_to_make_stranded_pred(mob/stranded_candidate)
+	var/mob/living/carbon/human/new_predator = transform_stranded_pred(stranded_candidate) //Initialized and ready.
+	if(!new_predator)
+		return
+
+	msg_admin_niche("([new_predator.key]) joined as a Stranded Yautja, [new_predator.real_name].")
+
+	if(!QDELETED(stranded_candidate))
+		stranded_candidate.moveToNullspace() //Nullspace it for garbage collection later.
 
 /datum/game_mode/proc/calculate_pred_max()
 	return floor(length(GLOB.player_list) / pred_per_players) + pred_count_modifier + pred_start_count
@@ -215,7 +214,7 @@ Additional game mode variables.
 			to_chat(pred_candidate, SPAN_WARNING("There is no Hunt this round! Maybe the next one."))
 		return FALSE
 
-	if(pred_candidate.key in predators)
+	if(has_been_predator(pred_candidate.key))
 		if(show_warning)
 			to_chat(pred_candidate, SPAN_WARNING("You already were a Yautja! Give someone else a chance."))
 		return FALSE
@@ -233,6 +232,32 @@ Additional game mode variables.
 
 	return TRUE
 
+/datum/game_mode/proc/has_been_predator(key)
+	if(key in yautja_hunters)
+		return TRUE
+	if(key in yautja_youngbloods)
+		return TRUE
+	if(key in yautja_badbloods)
+		return TRUE
+	if(key in yautja_stranded)
+		return TRUE
+	return FALSE
+
+/// Attempts to load the predator survival base if its not already loaded. Returns TRUE if it is/was fully loaded.
+/datum/game_mode/proc/load_predsurv_base()
+	if(loaded_predsurv_base == "loading")
+		UNTIL(loaded_predsurv_base != "loading")
+		return !!loaded_predsurv_base
+	if(loaded_predsurv_base != null)
+		return TRUE
+	loaded_predsurv_base = "loading"
+	loaded_predsurv_base = SSmapping.lazy_load_template(/datum/lazy_template/predsurv_base, force = TRUE)
+	if(!loaded_predsurv_base || loaded_predsurv_base == "loading")
+		stack_trace("Error loading pred survivor base!")
+		loaded_predsurv_base = null
+		return FALSE
+	return TRUE
+
 /datum/game_mode/proc/transform_predator(mob/pred_candidate)
 	if(!pred_candidate.client) // Legacy - probably due to spawn code sync sleeps
 		log_debug("Null client attempted to transform_predator")
@@ -240,13 +265,11 @@ Additional game mode variables.
 
 	pred_candidate.client.prefs.find_assigned_slot(JOB_PREDATOR) // Probably does not do anything relevant, predator preferences are not tied to specific slot.
 
-	var/clan_id = CLAN_SHIP_PUBLIC
 	var/datum/entity/clan_player/clan_info = pred_candidate?.client?.clan_info
 	clan_info?.sync()
-	SSpredships.load_new(clan_id)
-	var/turf/spawn_point = SAFEPICK(SSpredships.get_clan_spawnpoints(clan_id))
+	var/turf/spawn_point = SAFEPICK(GLOB.yautja_spawnpoints)
 	if(!isturf(spawn_point))
-		log_debug("Failed to find spawn point for pred ship in transform_predator - clan_id=[clan_id]")
+		log_debug("Failed to find spawn point for pred ship in transform_predator.")
 		to_chat(pred_candidate, SPAN_WARNING("Unable to setup spawn location - you might want to tell someone about this."))
 		return
 	if(!pred_candidate?.mind) // Legacy check
@@ -260,6 +283,12 @@ Additional game mode variables.
 		new_player_mob.spawning = TRUE
 		new_player_mob.close_spawn_windows()
 
+	var/datum/job/predator_job = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
+	if(!predator_job)
+		stack_trace("Tried to spawn a predator but the job could not be found!")
+		to_chat(pred_candidate, SPAN_WARNING("Unable to setup job - you might want to tell someone about this."))
+		return
+
 	var/mob/living/carbon/human/yautja/new_predator = new(spawn_point)
 	pred_candidate.mind.transfer_to(new_predator, TRUE)
 	new_predator.client = pred_candidate.client
@@ -267,18 +296,201 @@ Additional game mode variables.
 	if(new_player_mob)
 		qdel(new_player_mob)
 
-	var/datum/job/J = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
-
-	if(!J)
-		qdel(new_predator)
-		return
-
-	GLOB.RoleAuthority.equip_role(new_predator, J, new_predator.loc)
+	GLOB.RoleAuthority.equip_role(new_predator, predator_job, new_predator.loc)
 
 	if(new_predator.client.check_whitelist_status(WHITELIST_YAUTJA_LEADER) && (tgui_alert(new_predator, "Do you wish to announce your presence?", "Announce Arrival", list("Yes","No"), 10 SECONDS) != "No"))
-		elder_overseer_message("[new_predator.real_name] has joined the hunting party.")
+		elder_overseer_message("[new_predator.real_name] has joined the hunting party.", broadcast_network = YAUTJA_NET_HUNTING)
 
 	return new_predator
+
+/datum/game_mode/proc/transform_badblood(mob/badblood_candidate)
+	set waitfor = FALSE
+
+	if(!badblood_candidate.client) // Legacy - probably due to spawn code sync sleeps
+		log_debug("Null client attempted to transform_badblood")
+		return
+
+	var/mob/new_player/new_player_mob
+	if(isnewplayer(badblood_candidate))
+		new_player_mob = badblood_candidate
+		new_player_mob.spawning = TRUE
+		new_player_mob.close_spawn_windows()
+
+	if(!load_predsurv_base())
+		return
+
+	var/turf/spawn_point = pick(GLOB.badblood_spawns)
+	if(!isturf(spawn_point))
+		stack_trace("Failed to find spawn point for pred survivor in transform_badblood.")
+		to_chat(badblood_candidate, SPAN_WARNING("Unable to setup spawn location - you might want to tell someone about this."))
+		return
+	if(!badblood_candidate?.mind) // Legacy check
+		log_debug("Tried to spawn invalid pred player in transform_badblood - new_player name=[badblood_candidate]")
+		message_admins("transform_badblood attempted to trigger but the target player is missing a mind. - new_player name=[badblood_candidate]")
+		to_chat(badblood_candidate, SPAN_WARNING("Could not setup character - staff have been alerted."))
+		return
+
+	var/datum/job/badblood_job = GLOB.RoleAuthority.roles_by_name[JOB_BADBLOOD]
+	if(!badblood_job)
+		stack_trace("Tried to spawn a badblood but the job could not be found!")
+		to_chat(badblood_candidate, SPAN_WARNING("Unable to setup job - you might want to tell someone about this."))
+		return
+
+	var/mob/living/carbon/human/yautja/new_badblood = new(spawn_point)
+	badblood_candidate.mind.transfer_to(new_badblood, TRUE)
+	new_badblood.client = badblood_candidate.client
+
+	if(new_player_mob)
+		qdel(new_player_mob)
+
+	GLOB.RoleAuthority.equip_role(new_badblood, badblood_job, new_badblood.loc)
+
+	return new_badblood
+
+/datum/game_mode/proc/transform_stranded_pred(mob/stranded_candidate)
+	set waitfor = FALSE
+
+	if(!stranded_candidate.client) // Legacy - probably due to spawn code sync sleeps
+		log_debug("Null client attempted to transform_stranded_pred")
+		return
+
+	var/mob/new_player/new_player_mob
+	if(isnewplayer(stranded_candidate))
+		new_player_mob = stranded_candidate
+		new_player_mob.spawning = TRUE
+		new_player_mob.close_spawn_windows()
+
+	if(!load_predsurv_base())
+		return
+
+	//var/obj/effect/landmark/yautja_teleport/position = pick(GLOB.yautja_teleports)
+	//var/turf/spawn_point = get_turf(position)
+	var/turf/spawn_point = pick(GLOB.badblood_spawns)
+	if(!isturf(spawn_point))
+		stack_trace("Failed to find spawn point for pred survivor in transform_stranded_pred.")
+		to_chat(stranded_candidate, SPAN_WARNING("Unable to setup spawn location - you might want to tell someone about this."))
+		return
+	if(!stranded_candidate?.mind) // Legacy check
+		log_debug("Tried to spawn invalid pred player in transform_stranded_pred - new_player name=[stranded_candidate]")
+		message_admins("transform_stranded_pred attempted to trigger but the target player is missing a mind. - new_player name=[stranded_candidate]")
+		to_chat(stranded_candidate, SPAN_WARNING("Could not setup character - staff have been alerted."))
+		return
+
+	var/datum/job/stranded_job = GLOB.RoleAuthority.roles_by_name[JOB_STRANDED_PRED]
+	if(!stranded_job)
+		stack_trace("Tried to spawn a stranded pred but the job could not be found!")
+		to_chat(stranded_candidate, SPAN_WARNING("Unable to setup job - you might want to tell someone about this."))
+		return
+
+	var/mob/living/carbon/human/yautja/new_stranded = new(spawn_point)
+	stranded_candidate.mind.transfer_to(new_stranded, TRUE)
+	new_stranded.client = stranded_candidate.client
+
+	if(new_player_mob)
+		qdel(new_player_mob)
+
+	GLOB.RoleAuthority.equip_role(new_stranded, stranded_job, new_stranded.loc)
+
+	return new_stranded
+
+//===================================================\\
+
+			  //COLONY JOE INITIALIZE\\
+
+//===================================================\\
+
+/datum/game_mode/proc/initialize_colony_joe(mob/living/carbon/human/new_joe)
+	colony_joes[new_joe.persistent_username] = list("Name" = new_joe.real_name, "Status" = "Alive")
+
+/datum/game_mode/proc/attempt_to_join_as_colony_joe(mob/joe_candidate)
+	var/mob/living/carbon/human/new_joe = transform_colony_joe(joe_candidate) //Initialized and ready.
+	if(!new_joe)
+		return
+
+	msg_admin_niche("([new_joe.key]) joined as a Colony Working Joe, [new_joe.real_name].")
+
+	if(joe_candidate)
+		joe_candidate.moveToNullspace() //Nullspace it for garbage collection later.
+
+/datum/game_mode/proc/check_colony_joe_late_join(mob/joe_candidate, show_warning = TRUE)
+	if(!joe_candidate?.client)
+		return
+
+	var/datum/job/joe_job = GLOB.RoleAuthority.roles_by_name[JOB_COLONY_JOE]
+
+	if(!joe_job)
+		if(show_warning)
+			to_chat(joe_candidate, SPAN_WARNING("Something went wrong!"))
+		return FALSE
+
+	if(!joe_candidate.client.check_whitelist_status(WHITELIST_SYNTHETIC) && !joe_candidate.client.check_whitelist_status(WHITELIST_JOE))
+		if(show_warning)
+			to_chat(joe_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a synthetic."))
+		return FALSE
+
+	if(!(flags_round_type & MODE_COLONY_JOE))
+		if(show_warning)
+			to_chat(joe_candidate, SPAN_WARNING("There are no Colony Working Joes this round! Maybe the next one."))
+		return FALSE
+
+	if(joe_candidate.key in colony_joes)
+		if(show_warning)
+			to_chat(joe_candidate, SPAN_WARNING("You already were a Colony Working Joe! Give someone else a chance."))
+		return FALSE
+
+	if(show_warning && tgui_alert(joe_candidate, "Confirm joining as a Colony Working Joe.", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
+		return FALSE
+
+	if(joe_job.current_positions >= joe_job.total_positions)
+		if(show_warning)
+			to_chat(joe_candidate, SPAN_WARNING("Only [joe_job.total_positions] Colony Working Joes may spawn this round."))
+		return FALSE
+
+	return TRUE
+
+/datum/game_mode/proc/transform_colony_joe(mob/joe_candidate)
+	if(!joe_candidate.client) // Legacy - probably due to spawn code sync sleeps
+		log_debug("Null client attempted to transform_colony_joe")
+		return
+
+	var/turf/spawn_point = null
+	var/list/joe_types = SSmapping.configs[GROUND_MAP].colony_joe_types
+
+	if(length(joe_types) == 0)
+		to_chat(joe_candidate, SPAN_WARNING("This map does not have colony joe spawns, and a colony joe round should not have started!"))
+		return
+
+	var/datum/job/joe_job = pick(joe_types)
+	if(!ispath(joe_job))
+		joe_job = text2path(joe_job)
+
+	if(get_turf(pick(GLOB.latejoin_by_job[JOB_COLONY_JOE])))
+		spawn_point = get_turf(pick(GLOB.latejoin_by_job[JOB_COLONY_JOE]))
+	else
+		log_debug("No valid colony joe spawn points!")
+		return
+
+	var/mob/living/carbon/human/synthetic/new_joe = new(spawn_point)
+	joe_candidate.mind.transfer_to(new_joe, TRUE)
+
+	// text2path wont text to path so you get this
+	switch(joe_job)
+		if(/datum/job/civilian/working_joe/colony)
+			joe_job = GLOB.RoleAuthority.roles_by_name[JOB_COLONY_JOE]
+			joe_job.handle_job_options(new_joe.client.prefs.pref_special_job_options[JOB_WORKING_JOE])
+		if(/datum/job/civilian/working_joe/daniel)
+			joe_job = GLOB.RoleAuthority.roles_by_name[JOB_DANIEL]
+		if(/datum/job/antag/upp/dzho_automaton/colony)
+			joe_job = GLOB.RoleAuthority.roles_by_name[JOB_UPP_JOE]
+
+	if(!joe_job)
+		qdel(new_joe)
+		return
+	// This is usually done in assign_role, a proc which is not executed in this case, since check_joe_late_join is running its own checks.
+	joe_job.current_positions++
+	GLOB.RoleAuthority.equip_role(new_joe, joe_job, new_joe.loc)
+	SSticker.minds += new_joe.mind
+	return new_joe
 
 //===================================================\\
 
@@ -318,13 +530,18 @@ Additional game mode variables.
 
 /datum/game_mode/proc/attempt_to_join_as_fax_responder(mob/responder_candidate, from_lobby = FALSE)
 	var/list/options = get_fax_responder_slots(responder_candidate)
-	if(!options || !options.len)
+	if(!options || !length(options))
 		to_chat(responder_candidate, SPAN_WARNING("No Available Slot!"))
 		return FALSE
 
 	var/choice = tgui_input_list(responder_candidate, "What Fax Responder do you want to join as?", "Which Responder?", options, 30 SECONDS)
 	if(!(choice in FAX_RESPONDER_JOB_LIST))
 		to_chat(responder_candidate, SPAN_WARNING("Error: No valid responder selected."))
+		return FALSE
+
+	options = get_fax_responder_slots(responder_candidate)
+	if(!(choice in options))
+		to_chat(responder_candidate, SPAN_WARNING("Error: Option is no longer available."))
 		return FALSE
 
 	if(!transform_fax_responder(responder_candidate, choice))
@@ -341,10 +558,8 @@ Additional game mode variables.
 	if(!responder_candidate.client) // Legacy - probably due to spawn code sync sleeps
 		log_debug("Null client attempted to transform_fax_responder")
 		return FALSE
-	if(!loaded_fax_base)
-		load_fax_base()
-		if(!loaded_fax_base)
-			return FALSE
+	if(!load_fax_base())
+		return FALSE
 
 	responder_candidate.close_spawn_windows()
 	responder_candidate.client.prefs.find_assigned_slot(JOB_FAX_RESPONDER)
@@ -376,10 +591,15 @@ Additional game mode variables.
 	return TRUE
 
 /datum/game_mode/proc/load_fax_base()
+	if(loaded_fax_base == "loading")
+		UNTIL(loaded_fax_base != "loading")
+		return !!loaded_fax_base
+	if(loaded_fax_base != null)
+		return TRUE
 	loaded_fax_base = "loading"
 	loaded_fax_base = SSmapping.lazy_load_template(/datum/lazy_template/fax_response_base, force = TRUE)
-	if(!loaded_fax_base || (loaded_fax_base == "loading"))
-		log_debug("Error loading fax response base!")
+	if(!loaded_fax_base || loaded_fax_base == "loading")
+		stack_trace("Error loading fax response base!")
 		loaded_fax_base = null
 		return FALSE
 	return TRUE
@@ -1164,7 +1384,7 @@ Additional game mode variables.
 			to_chat(joe_candidate, SPAN_WARNING("Something went wrong!"))
 		return
 
-	if(!joe_job.check_whitelist_status(joe_candidate))
+	if(!joe_job.check_whitelist_status(joe_candidate) && !MODE_HAS_MODIFIER(/datum/gamemode_modifier/ignore_wj_restrictions))
 		if(show_warning)
 			to_chat(joe_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a synth."))
 		return
@@ -1189,11 +1409,6 @@ Additional game mode variables.
 			if(show_warning)
 				to_chat(joe_candidate, SPAN_WARNING("Only [joe_max] Working Joes may spawn per round."))
 			return
-
-	if(!GLOB.enter_allowed && !MODE_HAS_MODIFIER(/datum/gamemode_modifier/ignore_wj_restrictions))
-		if(show_warning)
-			to_chat(joe_candidate, SPAN_WARNING("There is an administrative lock from entering the game."))
-		return
 
 	if(show_warning && tgui_alert(joe_candidate, "Confirm joining as a Working Joe.", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
 		return

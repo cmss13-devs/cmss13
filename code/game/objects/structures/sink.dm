@@ -139,7 +139,7 @@
 	icon_state = "puddle"
 
 
-/obj/structure/sink/puddle/attack_hand(mob/M as mob)
+/obj/structure/sink/puddle/attack_hand(mob/user)
 	icon_state = "puddle-splash"
 	..()
 	icon_state = "puddle"

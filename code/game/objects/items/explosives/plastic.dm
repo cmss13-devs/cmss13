@@ -78,7 +78,7 @@
 
 	if(antigrief_protection && user.faction == FACTION_MARINE && explosive_antigrief_check(src, user))
 		to_chat(user, SPAN_WARNING("[name]'s safe-area accident inhibitor prevents you from planting it!"))
-		msg_admin_niche("[key_name(user)] attempted to prime \a [name] in [get_area(src)] [ADMIN_JMP(src.loc)]")
+		msg_admin_niche("[key_name(user)] attempted to prime \a [name] in [ADMIN_VERBOSEJMP(src)]")
 		return
 
 	user.visible_message(SPAN_WARNING("[user] is trying to plant [name] on [target]!"),
@@ -101,7 +101,7 @@
 
 	if(!istype(target, /obj/structure/window) && !istype(target, /turf/closed))
 		user.drop_held_item()
-		target.contents += src
+		forceMove(target)
 		overlay = image('icons/obj/items/assemblies.dmi', overlay_image)
 		overlay.layer = ABOVE_XENO_LAYER
 		target.overlays += overlay

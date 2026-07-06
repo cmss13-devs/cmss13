@@ -197,7 +197,7 @@
 	for(var/obj/docking_port/stationary/emergency_response/dock as anything in targets)
 		if(dock.name == dock_name)
 			var/obj/docking_port/stationary/target = SSshuttle.getDock(dock.id)
-			ert.request(target)
+			ert.request(target, force=TRUE)
 			launched=TRUE
 	if(!launched)
 		to_chat(usr, SPAN_WARNING("Unable to launch this Distress shuttle at this moment. Aborting."))
@@ -574,7 +574,7 @@
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
-	var/faction = tgui_input_list(usr, "Please choose faction your announcement will be shown to.", "Faction Selection", (FACTION_LIST_HUMANOID - list(FACTION_YAUTJA) + list("Everyone (-Yautja)")))
+	var/faction = tgui_input_list(usr, "Please choose faction your announcement will be shown to.", "Faction Selection", (FACTION_LIST_HUMANOID - list(FACTION_YAUTJA, FACTION_YAUTJA_YOUNG, FACTION_YAUTJA_BADBLOOD) + list("Everyone (-Yautja)")))
 	if(!faction)
 		return
 	var/input = input(usr, "Please enter announcement text. Be advised, this announcement will be heard both on Almayer and planetside by conscious humans of selected faction.", "What?", "") as message|null
@@ -694,7 +694,11 @@
 			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It's APOLLO processor may be offline or destroyed."))
 			return FALSE
 
-	ares_apollo_talk(input)
+	var/prompt = tgui_alert(src, "Do you want an APOLLO report (shipside) or an ARTEMIS report (groundside)?", "Choose.", list("APOLLO", "ARTEMIS"), 20 SECONDS)
+	if(prompt == "APOLLO")
+		ares_apollo_talk(input)
+	if(prompt == "ARTEMIS")
+		ares_artemis_talk(input)
 	message_admins("[key_name_admin(src)] has created an AI APOLLO report")
 	log_admin("AI APOLLO report: [input]")
 
@@ -727,8 +731,21 @@
 		return
 	var/input = tgui_input_text(usr, "This is a message from the Yautja Elder Overseer. They are not an AI, but they have witnessed everything that has happened this round through the eyes of all predators, both alive and dead. This message will appear on the screens of all living predator mobs. Check with online staff before sending.", "What Will The Elder Say?")
 	if(!input)
-		return FALSE
-	elder_overseer_message(input, elder_user = "[key_name(src)]")
+		return
+	var/new_broadcast_network = YAUTJA_NET_HUNTING
+	var/choice = tgui_alert(usr, "Who is this announcement for?", "Target Network?", list("Hunting Party", "Bad-Bloods", "Stranded", "All"))
+	switch(choice)
+		if("Hunting Party")
+			new_broadcast_network = YAUTJA_NET_HUNTING
+		if("Bad-Bloods")
+			new_broadcast_network = YAUTJA_NET_BADBLOOD
+		if("Stranded")
+			new_broadcast_network = YAUTJA_NET_STRANDED
+		if("All")
+			new_broadcast_network = YAUTJA_NET_ALL
+		else
+			return
+	elder_overseer_message(input, elder_user = "[key_name(src)]", broadcast_network = new_broadcast_network)
 
 /client/proc/cmd_admin_world_narrate() // Allows administrators to fluff events a little easier -- TLE
 	set name = "Narrate to Everyone"

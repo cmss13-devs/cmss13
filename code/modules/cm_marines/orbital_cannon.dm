@@ -21,6 +21,7 @@ GLOBAL_LIST(ob_type_fuel_requirements)
 	var/loaded_tray = FALSE
 	var/ob_cannon_busy = FALSE
 	var/is_disabled = FALSE
+	var/action_queued = FALSE
 
 	COOLDOWN_DECLARE(ob_firing_cooldown) //cooldown for shooting the gun
 	var/fire_cooldown_time = 500 SECONDS
@@ -476,27 +477,27 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 	new /obj/effect/overlay/temp/ob_impact (target, warhead, 1.5)
 	sleep(10)
 	var/datum/cause_data/cause_data = create_cause_data(name, source_mob)
-	cell_explosion(target, clear_power, clear_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data) //break shit around
+	cell_explosion(target, clear_power, clear_falloff, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_IN_PYLON, null, cause_data) //break shit around
 	sleep(clear_delay)
 
 	// Explosion if turf is not a wall.
 	if(!target.density)
-		cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
+		cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_IN_PYLON, null, cause_data)
 		handle_ob_shake(target)
 		if(double_explosion_delay)
 			sleep(double_explosion_delay)
-			cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
+			cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_IN_PYLON, null, cause_data)
 		qdel(src)
 		return
 
 	// Checks turf around the target
 	for(var/turf/T in range(2, target))
 		if(!T.density)
-			cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
+			cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_IN_PYLON, null, cause_data)
 			handle_ob_shake(target)
 			if(double_explosion_delay)
 				sleep(double_explosion_delay)
-				cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
+				cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_IN_PYLON, null, cause_data)
 			qdel(src)
 			return
 

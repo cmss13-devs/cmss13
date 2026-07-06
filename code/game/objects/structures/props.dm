@@ -441,6 +441,7 @@
 /obj/structure/prop/invuln/dropship_parts/lifeboat
 	name = "Lifeboat"
 	icon_state = ""
+	desc = "Separates you from certain death."
 	icon = 'icons/turf/lifeboat.dmi'
 
 #define STATE_COMPLETE 0
@@ -1265,6 +1266,9 @@
 	desc = "Windsocks, Air-Con units, solarpanels, oh my!"
 	density = FALSE
 
+/obj/structure/prop/invuln/ice_prefab/roof_greeble/turf_layer
+	layer = ABOVE_TURF_LAYER
+	name = "roof installation"
 
 /obj/structure/prop/invuln/ice_prefab/standalone
 	density = TRUE

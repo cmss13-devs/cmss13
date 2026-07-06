@@ -59,6 +59,8 @@
 	var/list/CO_insert_survivor_types
 	var/list/CO_insert_survivor_types_by_variant
 
+	var/list/colony_joe_types
+
 	var/list/defcon_triggers = list(5150, 4225, 2800, 1000, 0.0)
 
 	var/survivor_message = "You are a survivor of the attack on the colony. You worked or lived in the archaeology colony, and managed to avoid the alien attacks... until now."
@@ -326,6 +328,23 @@
 		pathed_CO_insert_survivor_types += CO_insert_survivor_typepath
 	CO_insert_survivor_types = pathed_CO_insert_survivor_types.Copy()
 
+	if(islist(json["colony_joe_types"]))
+		colony_joe_types = json["colony_joe_types"]
+	else if ("colony_joe_types" in json)
+		log_world("map_config colony_joe_types is not a list!")
+		return
+
+	var/list/pathed_colony_joe_types = list()
+	for(var/joe_type in colony_joe_types)
+		var/colony_joe_typepath = joe_type
+		if(!ispath(colony_joe_typepath))
+			colony_joe_typepath = text2path(joe_type)
+			if(!ispath(colony_joe_typepath))
+				log_world("[joe_type] isn't a proper typepath, removing from colony_joe_typepath list")
+				continue
+		pathed_colony_joe_types += colony_joe_typepath
+	colony_joe_types = pathed_colony_joe_types.Copy()
+
 	if (islist(json["monkey_types"]))
 		monkey_types = list()
 		for(var/monkey in json["monkey_types"])
@@ -362,7 +381,7 @@
 	traits = json["traits"]
 	if(islist(traits))
 		for(var/list/ztraits in traits) // Defaults to ground map if not specified
-			if(!ztraits[ZTRAIT_GROUND] && !ztraits[ZTRAIT_MARINE_MAIN_SHIP])
+			if(!ztraits[ZTRAIT_GROUND] && !ztraits[ZTRAIT_MARINE_MAIN_SHIP] && !ztraits[ZTRAIT_BACKGROUND_MAP])
 				ztraits[ZTRAIT_GROUND] = TRUE
 	else if(traits)
 		log_world("map_config traits is not a list!")

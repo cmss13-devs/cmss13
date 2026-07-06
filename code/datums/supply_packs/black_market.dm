@@ -974,7 +974,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 
 /datum/supply_packs/contraband/deep_storage/rosary
 	name = "Rosary"
-	contains = list(/obj/item/prop/helmetgarb/rosary)
+	contains = list(/obj/item/clothing/accessory/rosary)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
@@ -1131,7 +1131,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 
 /datum/supply_packs/contraband/deep_storage/clf_holdout
 	name = "D18 Holdout Pistol"
-	contains = list(/obj/item/storage/box/clf)
+	contains = list(/obj/item/storage/box/fluff_gun/clf)
 	dollar_cost = 10
 	crate_heat = 2
 	containertype = /obj/structure/largecrate/black_market

@@ -277,6 +277,7 @@ CLIENT_VERB(toggle_prefs) // Toggle whether anything will happen when you click 
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_clickdrag_override'>Toggle Combat Click-Drag Override</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_dualwield'>Toggle Alternate-Fire Dual Wielding</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_auto_shove'>Toggle Auto Shove</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_auto_holotag'>Toggle Auto Holotags</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_middle_mouse_swap_hands'>Toggle Middle Mouse Swapping Hands</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_vend_item_to_hand'>Toggle Vendors Vending to Hands</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/switch_item_animations'>Toggle Item Animations</a><br>",
@@ -427,6 +428,24 @@ CLIENT_VERB(toggle_prefs) // Toggle whether anything will happen when you click 
 			to_chat(src, SPAN_BOLDNOTICE("Dual-wielding now has no effect on how you fire."))
 
 	prefs.save_preferences()
+
+// Toggles whether or not using a body scanner/handheld scanner applies a triage tag to patients automatically
+
+/client/proc/toggle_auto_holotag()
+	switch (prefs.auto_holotag) {
+		if (NEVER_TAG_PATIENTS)
+			prefs.auto_holotag = ALWAYS_TAG_PATIENTS
+			to_chat(src, SPAN_BOLDNOTICE("Body scanners and handheld scanners will now automatically apply holocards."))
+		if (ALWAYS_TAG_PATIENTS)
+			prefs.auto_holotag = BODYSCAN_TAG_PATIENTS
+			to_chat(src, SPAN_BOLDNOTICE("Only body scanners will automatically apply triage holocards."))
+		if (BODYSCAN_TAG_PATIENTS)
+			prefs.auto_holotag = NEVER_TAG_PATIENTS
+			to_chat(src, SPAN_BOLDNOTICE("Triage holocards will never be automatically applied by health scanning devices."))
+		else
+			// Redundancy case, if defines ever get changed
+			prefs.auto_holotag = ALWAYS_TAG_PATIENTS
+	}
 
 /client/proc/toggle_middle_mouse_swap_hands() //Toggle whether middle click swaps your hands
 	prefs.toggle_prefs ^= TOGGLE_MIDDLE_MOUSE_SWAP_HANDS
@@ -681,6 +700,8 @@ CLIENT_VERB(toggle_minimap_ceiling_protection)
 
 	// Refresh minimaps for this client
 	for(var/atom/movable/screen/minimap/mini_map in screen)
+		if(mini_map.assigned_map) // Skip shared popup maps
+			continue
 		mini_map.update_ceiling_overlay(src)
 
 //------------ GHOST PREFERENCES ---------------------------------
@@ -771,6 +792,7 @@ CLIENT_VERB(toggle_minimap_ceiling_protection)
 		"Security HUD" = MOB_HUD_SECURITY_ADVANCED,
 		"Squad HUD" = MOB_HUD_FACTION_OBSERVER,
 		"Xeno Status HUD" = MOB_HUD_XENO_STATUS,
+		"Xeno Effects HUD" = MOB_HUD_XENO_HOSTILE,
 		"Hunter HUD" = MOB_HUD_HUNTER,
 		"Faction UPP HUD" = MOB_HUD_FACTION_UPP,
 		"Faction Wey-Yu HUD" = MOB_HUD_FACTION_WY,

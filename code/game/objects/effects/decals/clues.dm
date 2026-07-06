@@ -1,3 +1,4 @@
+/*
 /obj/effect/decal/prints
 	name = "suspicious prints"
 	gender = PLURAL
@@ -96,3 +97,4 @@
 	SSclues.prints_list -= src
 
 	. = ..()
+*/

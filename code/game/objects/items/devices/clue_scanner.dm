@@ -12,6 +12,7 @@
 	var/scanning = FALSE
 	var/newlyfound
 
+/*
 /obj/item/device/clue_scanner/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_INFO("Print sets stored: [length(print_list)]")
@@ -53,3 +54,4 @@
 		to_chat(user, SPAN_INFO("No new print sets found!"))
 	else
 		to_chat(user, SPAN_INFO("New print sets found: [newlyfound], total stored amount: [length(print_list)]"))
+*/

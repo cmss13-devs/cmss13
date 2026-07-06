@@ -250,7 +250,7 @@
 	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
 	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
 	ceiling_muffle = FALSE
-	minimap_color = MINIMAP_AREA_HYBRISACAVES
+	minimap_color = MINIMAP_AREA_MINING
 	unoviable_timer = FALSE
 	always_unpowered = TRUE
 

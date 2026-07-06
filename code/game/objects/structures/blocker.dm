@@ -196,8 +196,10 @@
 	invisibility = 101
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
+// from zenith, adds invisible walls you can shoot through
 /obj/structure/blocker/forcefield/all
-    types = list(/mob/living/carbon/human, /mob/living/carbon/xenomorph, /obj/item/weapon, /mob/living/simple_animal/hostile/retaliate/giant_lizard)
-    icon_state = "purple_line"
-    alpha = 0
-    visible = TRUE
+
+	types = list(/mob/living/carbon/human, /mob/living/carbon/xenomorph, /obj/item/weapon, /mob/living/simple_animal/hostile/retaliate/giant_lizard)
+	icon_state = "purple_line"
+	alpha = 0
+	visible = TRUE

@@ -352,17 +352,11 @@
 /datum/action/xeno_action/activable/fortify/proc/unconscious_check()
 	SIGNAL_HANDLER
 
-	if(QDELETED(owner))
-		return
-
 	UnregisterSignal(owner, COMSIG_MOB_STATCHANGE)
 	fortify_switch(owner, FALSE)
 
 /datum/action/xeno_action/onclick/toggle_crest/proc/unconscious_check()
 	SIGNAL_HANDLER
-
-	if(QDELETED(owner))
-		return
 
 	UnregisterSignal(owner, COMSIG_MOB_STATCHANGE)
 	headcrest_switch(owner, FALSE)

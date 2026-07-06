@@ -286,6 +286,7 @@
 	faction_group = FACTION_LIST_SURVIVOR_UPP
 	origin_override = ORIGIN_UPP
 
+
 	survivor_variant = MEDICAL_SURVIVOR
 
 /datum/equipment_preset/synth/survivor/atlan/doctor/load_gear(mob/living/carbon/human/new_human)
@@ -442,6 +443,7 @@
 	faction_group = FACTION_LIST_SURVIVOR_UPP
 	origin_override = ORIGIN_UPP
 
+
 	survivor_variant = SCIENTIST_SURVIVOR
 
 /datum/equipment_preset/synth/survivor/atlan/scientist/load_gear(mob/living/carbon/human/new_human)
@@ -472,6 +474,7 @@
 	minimap_icon = "upp_plt"
 	minimap_background = "background_upp"
 	faction_group = FACTION_LIST_SURVIVOR_UPP
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_CHINESE, LANGUAGE_GERMAN)
 	faction = FACTION_UPP
 	skills = /datum/skills/upp/commissar
 	access = list(

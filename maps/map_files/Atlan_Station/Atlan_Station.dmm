@@ -8542,12 +8542,6 @@
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/lz/near_lz1)
-"aXM" = (
-/obj/structure/platform/metal/almayer_smooth,
-/obj/structure/platform/metal/almayer_smooth,
-/obj/structure/blocker/forcefield/all,
-/turf/open_space,
-/area/atlan/oob)
 "aYs" = (
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/asteroid/processing_handling)
@@ -107248,7 +107242,7 @@ vWe
 djG
 tfN
 djG
-aXM
+gjm
 nXW
 gLn
 rEb

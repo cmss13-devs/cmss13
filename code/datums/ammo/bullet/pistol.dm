@@ -297,9 +297,9 @@
 	))
 
 /datum/ammo/bullet/pistol/mankey/on_hit_mob(mob/monkey,obj/projectile/boolet)
-    if(boolet && boolet.loc && !monkey.stat && !istype(monkey,/mob/living/carbon/human/monkey))
-        boolet.visible_message(SPAN_DANGER("\The [src] chimpers furiously!"))
-        new /mob/living/carbon/human/monkey(boolet.loc)
+	if(boolet && boolet.loc && !monkey.stat && !istype(monkey,/mob/living/carbon/human/monkey))
+		boolet.visible_message(SPAN_DANGER("\The [src] chimpers furiously!"))
+		new /mob/living/carbon/human/monkey(boolet.loc)
 
 /datum/ammo/bullet/pistol/smart
 	name = "smartpistol bullet"

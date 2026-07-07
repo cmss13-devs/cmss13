@@ -93,7 +93,7 @@
 
 /mob/living/carbon/xenomorph/hellhound/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
-	if (PF)
+	if(PF)
 		PF.flags_pass = PASS_FLAGS_CRAWLER
 
 /mob/living/carbon/xenomorph/hellhound/Login()
@@ -173,7 +173,7 @@
 	playsound(hellhound_gorger, "giant_lizard_growl", 30)
 	playsound(carbon, "alien_bite", 30)
 
-/datum/action/xeno_action/onclick/sense_owner/use_ability(atom/layer)
+/datum/action/xeno_action/onclick/sense_owner/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/hellhound/xeno = owner
 	var/datum/behavior_delegate/hellhound_base/hound_owner = xeno.behavior_delegate
 	var/direction = -3

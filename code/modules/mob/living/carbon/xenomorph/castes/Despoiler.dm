@@ -71,7 +71,7 @@
 /mob/living/carbon/xenomorph/despoiler/proc/update_hypertension()
 	var/image/holder = hud_list[SPECIAL_HUD]
 	holder.overlays.Cut()
-	if (stat == DEAD)
+	if(stat == DEAD)
 		return
 
 	var/datum/behavior_delegate/despoiler_base/delegate = behavior_delegate
@@ -98,7 +98,6 @@
 /datum/behavior_delegate/despoiler_base
 	name = "Base Despoiler Behavior Delegate"
 
-	var/next_ability_empowered = FALSE
 	var/image/empowered_overlay
 
 	// State
@@ -119,7 +118,7 @@
 		xeno.update_hypertension()
 
 /datum/behavior_delegate/despoiler_base/on_life()
-	if (last_hypertension_loss_time <= last_combat_time &&  last_combat_time + hypertension_loss_time <= world.time)
+	if(last_hypertension_loss_time <= last_combat_time &&  last_combat_time + hypertension_loss_time <= world.time)
 		hypertension_stacks = max(0, hypertension_stacks - 1)
 		var/mob/living/carbon/xenomorph/despoiler/xeno = bound_xeno
 		xeno.update_hypertension()
@@ -129,7 +128,7 @@
 	last_combat_time = world.time
 
 /datum/behavior_delegate/despoiler_base/melee_attack_modify_burn_damage(original_damage, mob/living/carbon/target_carbon)
-	if (!isxeno_human(target_carbon))
+	if(!isxeno_human(target_carbon))
 		return original_damage
 
 	increase_hypertension(100)
@@ -149,33 +148,32 @@
 
 	return original_damage + burn_damage
 
-/datum/action/xeno_action/activable/tail_stab/despoiler/ability_act(mob/living/carbon/xenomorph/stabbing_xeno, mob/living/carbon/target, obj/limb/limb, apply_behavior_delagate = FALSE)
+/datum/action/xeno_action/activable/tail_stab/despoiler/ability_act(mob/living/carbon/xenomorph/stabbing_xeno, mob/living/carbon/target_carbon, obj/limb/target_limb, apply_behavior_delagate = FALSE)
 	. = ..()
-	var/datum/effects/acid/acid_effect = locate() in target.effects_list
+	var/datum/effects/acid/acid_effect = locate() in target_carbon.effects_list
 	if(!acid_effect)
 		return
-	target.apply_armoured_damage(acid_effect.acid_level * 15, ARMOR_BIO, BURN, limb ? limb.name : "chest", acid_effect.acid_level * 10)
+	target_carbon.apply_armoured_damage(acid_effect.acid_level * 15, ARMOR_BIO, BURN, target_limb ? target_limb.name : "chest", acid_effect.acid_level * 10)
 
 /datum/action/xeno_action/activable/acid_barrage/on_select(mob/user)
 	RegisterSignal(user, COMSIG_MOB_MOUSEDOWN, PROC_REF(on_mouse_down))
 
-/datum/action/xeno_action/activable/acid_barrage/proc/on_mouse_down(mob/source, atom/target, turf, skin_ctl, params)
+/datum/action/xeno_action/activable/acid_barrage/proc/on_mouse_down(mob/source, atom/target_atom, target_turf, skin_ctl, params)
 	SIGNAL_HANDLER
 	var/list/mods = params2list(params)
-	source.click(target, mods)
+	source.click(target_atom, mods)
 
 /datum/action/xeno_action/activable/acid_barrage/on_deselect(mob/user)
 	UnregisterSignal(user, COMSIG_MOB_MOUSEDOWN)
 
-/datum/action/xeno_action/activable/acid_barrage/use_ability(atom/target)
+/datum/action/xeno_action/activable/acid_barrage/use_ability(atom/target_atom)
 	. = ..()
 	var/mob/living/carbon/xenomorph/despoiler/xeno = owner
 	if(!action_cooldown_check())
 		to_chat(xeno, SPAN_WARNING("We must wait for our spit glands to refill."))
 		return
 
-	if(!check_and_use_plasma_owner())
-		return
+	XENO_ACTION_CHECK_USE_PLASMA(xeno)
 
 	// Prevent some mouse down shenangians
 	apply_cooldown()
@@ -202,7 +200,7 @@
 /datum/action/xeno_action/activable/acid_barrage/proc/notify_max_charge()
 	to_chat(owner, SPAN_XENOHIGHDANGER("Our acid barrage is full!"))
 
-/datum/action/xeno_action/activable/acid_barrage/proc/release_barrage(atom/source, atom/target, turf, skin_ctl, params)
+/datum/action/xeno_action/activable/acid_barrage/proc/release_barrage(atom/source, atom/target_atom, turf, skin_ctl, params)
 	SIGNAL_HANDLER
 	// The real cooldown starts here
 	apply_cooldown_override(xeno_cooldown)
@@ -220,8 +218,8 @@
 	var/datum/behavior_delegate/despoiler_base/delegate = xeno.behavior_delegate
 	var/time_charged = min(world.time - start_time, max_charge_time)
 	var/modifier = 0
-	if(delegate.next_ability_empowered)
-		delegate.next_ability_empowered = FALSE
+	if(HAS_TRAIT(xeno, TRAIT_ABILITY_CATALYZE_EMPOWER))
+		REMOVE_TRAIT(xeno, TRAIT_ABILITY_CATALYZE_EMPOWER, TRAIT_SOURCE_ABILITY("catalyze_empower"))
 		modifier += empower_modifier
 		xeno.overlays -= delegate.empowered_overlay
 
@@ -229,7 +227,7 @@
 	playsound(xeno, 'sound/voice/xeno_praetorian_screech.ogg', 75, 0, status = 0)
 	playsound(xeno.loc, "acid_spit", 25, 1)
 	for(var/index in 1 to barrage_size)
-		var/initial_angle = Get_Angle(xeno, target)
+		var/initial_angle = Get_Angle(xeno, target_atom)
 		var/rand_angle = rand(-scatter, scatter)
 		var/turf/new_target = get_angle_target_turf(xeno, initial_angle + rand_angle, rand(1, 6))
 		var/obj/projectile/proj = new (get_turf(xeno), create_cause_data(xeno.ammo.name, xeno))
@@ -242,10 +240,11 @@
 		proj.def_zone = xeno.get_limbzone_target()
 		proj.fire_at(new_target, xeno, xeno, xeno.ammo.max_range, xeno.ammo.shell_speed)
 
-/datum/action/xeno_action/activable/pounce/caustic_embrace/use_ability(atom/target)
+
+
+/datum/action/xeno_action/activable/pounce/caustic_embrace/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/despoiler/xeno = owner
-	var/datum/behavior_delegate/despoiler_base/delegate = xeno.behavior_delegate
-	if(delegate.next_ability_empowered)
+	if(HAS_TRAIT(xeno, TRAIT_ABILITY_CATALYZE_EMPOWER))
 		distance = empowered_distance
 	else
 		distance = initial(distance)
@@ -257,44 +256,44 @@
 	var/datum/behavior_delegate/despoiler_base/delegate = xeno.behavior_delegate
 	xeno.emote("roar")
 
-	if(delegate.next_ability_empowered)
-		delegate.next_ability_empowered = FALSE
+	if(HAS_TRAIT(xeno, TRAIT_ABILITY_CATALYZE_EMPOWER))
+		REMOVE_TRAIT(xeno, TRAIT_ABILITY_CATALYZE_EMPOWER, TRAIT_SOURCE_ABILITY("catalyze_empower"))
 		xeno.overlays -= delegate.empowered_overlay
 		return // Handled in additional_effects()
 
 	var/list/turfs = orange(1, get_turf(xeno)) - get_step(xeno.loc, REVERSE_DIR(xeno.dir))
-	for(var/turf/turf in turfs)
-		for(var/mob/living/carbon/human/target in turf)
-			playsound(target.loc, "acid_strike", 25, 1)
-			var/armor_block_acid = target.getarmor("chest", ARMOR_BIO)
+	for(var/turf/target_turf in turfs)
+		for(var/mob/living/carbon/human/target_human in target_turf)
+			playsound(target_human.loc, "acid_strike", 25, 1)
+			var/armor_block_acid = target_human.getarmor("chest", ARMOR_BIO)
 			var/n_acid_damage = armor_damage_reduction(GLOB.marine_melee, damage, armor_block_acid)
 			if(n_acid_damage <= 0.34*damage)
-				to_chat(target, SPAN_WARNING("Your armor absorbs the acid!"))
+				to_chat(target_human, SPAN_WARNING("Your armor absorbs the acid!"))
 			else if(n_acid_damage <= 0.67*damage)
-				to_chat(target, SPAN_WARNING("Your armor softens the acid!"))
-			target.apply_damage(n_acid_damage, BURN, "chest")
+				to_chat(target_human, SPAN_WARNING("Your armor softens the acid!"))
+			target_human.apply_damage(n_acid_damage, BURN, "chest")
 		if(prob(30))
-			new /obj/effect/lingering_acid(turf, xeno.hivenumber)
-		new /obj/effect/xenomorph/xeno_telegraph/yellow(turf, 2)
+			new /obj/effect/lingering_acid(target_turf, xeno.hivenumber)
+		new /obj/effect/xenomorph/xeno_telegraph/yellow(target_turf, 2)
 
-/datum/action/xeno_action/activable/pounce/caustic_embrace/additional_effects(mob/living/carbon/target)
+/datum/action/xeno_action/activable/pounce/caustic_embrace/additional_effects(mob/living/carbon/target_carbon)
 	var/mob/living/carbon/xenomorph/despoiler/xeno = owner
-	var/datum/behavior_delegate/despoiler_base/delegate = xeno.behavior_delegate
 
-	if(!delegate.next_ability_empowered)
+	if(!HAS_TRAIT(xeno, TRAIT_ABILITY_CATALYZE_EMPOWER))
 		return
 
-	xeno.visible_message(SPAN_XENODANGER("[xeno] ravages [target] as it charges at them!"), SPAN_XENODANGER("We ruthlessly ravage [target] as we charge at them!"))
-	target.apply_effect(weaken_duration, WEAKEN)
-	target.attack_alien(xeno, rand(xeno.melee_damage_lower, xeno.melee_damage_upper))
-	xeno.flick_attack_overlay(target, "embrace_slash")
+	xeno.visible_message(SPAN_XENODANGER("[xeno] ravages [target_carbon] as it charges at them!"), SPAN_XENODANGER("We ruthlessly ravage [target_carbon] as we charge at them!"))
+	target_carbon.apply_effect(weaken_duration, WEAKEN)
+	target_carbon.attack_alien(xeno, rand(xeno.melee_damage_lower, xeno.melee_damage_upper))
+	xeno.flick_attack_overlay(target_carbon, "embrace_slash")
 
-	var/datum/effects/acid/acid_effect = locate() in target.effects_list
+	var/datum/effects/acid/acid_effect = locate() in target_carbon.effects_list
 
 	if(!acid_effect)
-		acid_effect = new /datum/effects/acid(target)
+		acid_effect = new /datum/effects/acid(target_carbon)
 	acid_effect.enhance_acid()
 	acid_effect.enhance_acid(TRUE)
+
 
 
 /datum/action/xeno_action/onclick/oozing_wounds/use_ability()
@@ -307,35 +306,35 @@
 		to_chat(xeno, SPAN_WARNING("We must wait for our acid glands to refill."))
 		return
 
-	if(!check_and_use_plasma_owner())
-		return
+	XENO_ACTION_CHECK_USE_PLASMA(xeno)
 
 	apply_cooldown()
 
 	playsound(xeno, 'sound/voice/xeno_praetorian_screech.ogg', 75, 0, status = 0)
 	var/severity = (xeno.health <= (0.7 * xeno.maxHealth)) + (xeno.health <= (0.3 * xeno.maxHealth))
 	var/acid_range = severity + 1
-	var/empowered = delegate.next_ability_empowered
 
-	if(empowered)
-		delegate.next_ability_empowered = FALSE
+	if(HAS_TRAIT(xeno, TRAIT_ABILITY_CATALYZE_EMPOWER))
+		REMOVE_TRAIT(xeno, TRAIT_ABILITY_CATALYZE_EMPOWER, TRAIT_SOURCE_ABILITY("catalyze_empower"))
 		xeno.overlays -= delegate.empowered_overlay
 
-	for(var/turf/turf in orange(acid_range, get_turf(xeno)))
-		if(get_dist_sqrd(turf, xeno) > acid_range ** 2)
+	for(var/turf/target_turf in orange(acid_range, get_turf(xeno)))
+		if(get_dist_sqrd(target_turf, xeno) > acid_range ** 2)
 			continue
-		addtimer(CALLBACK(src, PROC_REF(spawn_acid), xeno, turf, empowered), 0.2 SECONDS * get_dist(turf, xeno))
+		addtimer(CALLBACK(src, PROC_REF(spawn_acid), xeno, target_turf), 0.2 SECONDS * get_dist(target_turf, xeno))
 
-/datum/action/xeno_action/onclick/oozing_wounds/proc/spawn_acid(mob/living/carbon/xenomorph/xeno, turf/turf, empowered)
-	if(empowered)
-		new /obj/effect/xenomorph/spray/despoiler/empowered(turf, create_cause_data(initial(xeno.caste_type), src), xeno.hivenumber)
+/datum/action/xeno_action/onclick/oozing_wounds/proc/spawn_acid(mob/living/carbon/xenomorph/xeno, turf/target_turf)
+	if(HAS_TRAIT(xeno, TRAIT_ABILITY_CATALYZE_EMPOWER))
+		new /obj/effect/xenomorph/spray/despoiler/empowered(target_turf, create_cause_data(initial(xeno.caste_type), src), xeno.hivenumber)
 	else
-		new /obj/effect/xenomorph/spray/despoiler(turf, create_cause_data(initial(xeno.caste_type), src), xeno.hivenumber)
+		new /obj/effect/xenomorph/spray/despoiler(target_turf, create_cause_data(initial(xeno.caste_type), src), xeno.hivenumber)
 
 	if(prob(20))
-		new /obj/effect/lingering_acid(turf, xeno.hivenumber)
+		new /obj/effect/lingering_acid(target_turf, xeno.hivenumber)
 
-/datum/action/xeno_action/onclick/catalyze/use_ability(atom/target)
+
+
+/datum/action/xeno_action/onclick/catalyze/use_ability(atom/target_atom)
 	. = ..()
 	var/mob/living/carbon/xenomorph/despoiler/xeno = owner
 	var/datum/behavior_delegate/despoiler_base/delegate = xeno.behavior_delegate
@@ -344,8 +343,7 @@
 		to_chat(xeno, SPAN_WARNING("We must wait before empowering an ability again."))
 		return
 
-	if(!check_and_use_plasma_owner())
-		return
+	XENO_ACTION_CHECK_USE_PLASMA(xeno)
 
 	if(delegate.hypertension_stacks < 1)
 		to_chat(xeno, SPAN_WARNING("We don't enough acid to do that."))
@@ -354,7 +352,7 @@
 	apply_cooldown()
 
 	delegate.hypertension_stacks--
-	delegate.next_ability_empowered = TRUE
+	ADD_TRAIT(xeno, TRAIT_ABILITY_CATALYZE_EMPOWER, TRAIT_SOURCE_ABILITY("catalyze_empower"))
 	delegate.empowered_overlay = image('icons/mob/xenos/castes/tier_3/despoiler.dmi', "hypertension")
 	delegate.empowered_overlay.layer = FLY_LAYER
 	delegate.empowered_overlay.plane = ABOVE_GAME_PLANE
@@ -366,10 +364,12 @@
 /datum/action/xeno_action/onclick/catalyze/proc/debuff_next_ability()
 	var/mob/living/carbon/xenomorph/despoiler/xeno = owner
 	var/datum/behavior_delegate/despoiler_base/delegate = xeno.behavior_delegate
-	if(delegate.next_ability_empowered)
-		to_chat(owner, SPAN_XENOHIGHDANGER("We waited too long, our next ability is no longer empowered!"))
+	if(HAS_TRAIT(xeno, TRAIT_ABILITY_CATALYZE_EMPOWER))
+		to_chat(xeno, SPAN_XENOHIGHDANGER("We waited too long, our next ability is no longer empowered!"))
 		xeno.overlays -= delegate.empowered_overlay
-		delegate.next_ability_empowered = FALSE
+		REMOVE_TRAIT(xeno, TRAIT_ABILITY_CATALYZE_EMPOWER, TRAIT_SOURCE_ABILITY("catalyze_empower"))
+
+
 
 /obj/effect/lingering_acid
 	name = "acid"
@@ -393,30 +393,31 @@
 
 /obj/effect/lingering_acid/Initialize(mapload, hive)
 	. = ..()
-	if (hive)
+	if(hive)
 		hivenumber = hive
 
 	var/decay_time = rand(15 SECONDS, 20 SECONDS)
 	animate(src, alpha = 127, time = decay_time)
 	QDEL_IN(src, decay_time)
 
-/obj/effect/lingering_acid/Crossed(atom/movable/movable)
+/obj/effect/lingering_acid/Crossed(atom/movable/target_movable)
 	. = ..()
-	var/mob/living/carbon/carbon = movable
-	if(!istype(carbon))
+	var/mob/living/carbon/target_carbon = target_movable
+	if(!istype(target_carbon))
 		return
 
-	if(carbon.ally_of_hivenumber(hivenumber))
+	if(target_carbon.ally_of_hivenumber(hivenumber))
 		return
 
-	if(HAS_TRAIT(carbon, TRAIT_HAULED))
+	if(HAS_TRAIT(target_carbon, TRAIT_HAULED))
 		return
 
 	playsound(loc, "sound/bullets/acid_impact1.ogg", 15)
-	if(!isliving(movable))
+	if(!isliving(target_movable))
 		return
 
-	var/mob/living/target_mob = movable
+	var/mob/living/target_mob = target_movable
 	if(!target_mob.ally_of_hivenumber(hivenumber))
 		target_mob.next_move_slowdown = max(target_mob.next_move_slowdown, slow_amt)
-		carbon.apply_armoured_damage(damage, damage_type = BURN, def_zone = pick(target_limbs))
+		target_carbon.apply_armoured_damage(damage, damage_type = BURN, def_zone = pick(target_limbs))
+

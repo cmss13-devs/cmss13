@@ -83,27 +83,64 @@
 	///reward for hitting shots instead of spamming acid ball
 	var/reward_shield = 15
 
-/datum/behavior_delegate/praetorian_base/ranged_attack_additional_effects_target(atom/A)
-	if (!ishuman(A))
+/datum/behavior_delegate/praetorian_base/ranged_attack_additional_effects_target(atom/target_atom)
+	if(!ishuman(target_atom))
 		return
 
-	var/mob/living/carbon/human/H = A
+	var/mob/living/carbon/human/target_human = target_atom
 
-	var/datum/effects/prae_acid_stacks/PAS = null
-	for (var/datum/effects/prae_acid_stacks/prae_acid_stacks in H.effects_list)
-		PAS = prae_acid_stacks
+	var/datum/effects/prae_acid_stacks/acid_stack = null
+	for(var/datum/effects/prae_acid_stacks/prae_acid_stacks in target_human.effects_list)
+		acid_stack = prae_acid_stacks
 		break
 
-	if (PAS == null)
-		new /datum/effects/prae_acid_stacks(H)
+	if(acid_stack == null)
+		new /datum/effects/prae_acid_stacks(target_human)
 		return
 	else
-		PAS.increment_stack_count()
+		acid_stack.increment_stack_count()
 		return
 
-/datum/behavior_delegate/praetorian_base/ranged_attack_additional_effects_self(atom/A)
-	if(!ismob(A))
+/datum/behavior_delegate/praetorian_base/ranged_attack_additional_effects_self(atom/target_atom)
+	if(!ismob(target_atom))
 		return
 	bound_xeno.add_xeno_shield(reward_shield, XENO_SHIELD_SOURCE_BASE_PRAE, add_shield_on = TRUE, max_shield = 45)
 	to_chat(bound_xeno, SPAN_NOTICE("Your exoskeleton shimmers for a fraction of a second as the acid coats your target."))
 	return
+
+/datum/action/xeno_action/activable/pounce/base_prae_dash/start_airbone()
+	var/mob/living/carbon/xenomorph/xeno = owner
+
+	ADD_TRAIT(xeno, TRAIT_ABILITY_AIRBONE, TRAIT_SOURCE_ABILITY("airbone"))
+
+
+/datum/action/xeno_action/activable/prae_acid_ball/use_ability(atom/target_atom)
+	var/mob/living/carbon/xenomorph/xeno = owner
+
+	if(xeno.action_busy)
+		return
+
+	XENO_ACTION_CHECK(xeno)
+
+	var/turf/current_turf = get_turf(xeno)
+
+	if(!current_turf)
+		return
+
+	if(!do_after(xeno, activation_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+		to_chat(xeno, SPAN_XENODANGER("We cancel our acid ball."))
+		return
+
+	XENO_ACTION_CHECK_USE_PLASMA(xeno)
+
+	apply_cooldown()
+
+	to_chat(xeno, SPAN_XENOWARNING("We lob a compressed ball of acid into the air!"))
+
+	var/obj/item/explosive/grenade/xeno_acid_grenade/grenade = new /obj/item/explosive/grenade/xeno_acid_grenade
+	grenade.cause_data = create_cause_data(initial(xeno.caste_type), xeno)
+	grenade.forceMove(get_turf(xeno))
+	grenade.throw_atom(target_atom, 5, SPEED_AVERAGE, xeno, TRUE, HIGH_LAUNCH)
+	addtimer(CALLBACK(grenade, TYPE_PROC_REF(/obj/item/explosive, prime)), prime_delay)
+
+	return ..()

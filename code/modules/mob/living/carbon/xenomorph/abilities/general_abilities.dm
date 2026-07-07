@@ -261,6 +261,21 @@
 /datum/action/xeno_action/activable/pounce/proc/pre_pounce_effects()
 	return
 
+/**
+ * Effects to apply before "thrown" xeno to choosen tile.
+ */
+/datum/action/xeno_action/activable/pounce/proc/start_airbone()
+	return
+
+/**
+ * Effects to apply after xeno is "thrown" to choosen tile.
+ */
+/datum/action/xeno_action/activable/pounce/proc/end_airbone()
+	var/mob/living/carbon/xenomorph/xeno = owner
+
+	if(HAS_TRAIT(xeno, TRAIT_ABILITY_AIRBONE))
+		REMOVE_TRAIT(xeno, TRAIT_ABILITY_AIRBONE , TRAIT_SOURCE_ABILITY("airbone"))
+
 /datum/action/xeno_action/activable/pounce/proc/end_pounce_freeze()
 	if(freeze_timer_id == TIMER_ID_NULL)
 		return
@@ -457,30 +472,11 @@
 	no_cooldown_msg = TRUE // Currently [14.6.25], every xeno that uses this save Boiler has a cooldown far too fast for messages to be worth it
 	ability_uses_acid_overlay = TRUE
 
-	/// Var that keeps track of in-progress wind-up spits like Bombard to prevent spitting multiple spits at the same time
-	var/spitting = FALSE
 	var/sound_to_play = "acid_spit"
 	var/aim_turf = FALSE
 
 /datum/action/xeno_action/activable/xeno_spit/queen_macro //so it doesn't screw other macros up
 	ability_primacy = XENO_PRIMARY_ACTION_3
-
-/datum/action/xeno_action/activable/bombard
-	name = "Bombard"
-	action_icon_state = "bombard"
-	plasma_cost = 75
-	macro_path = /datum/action/xeno_action/verb/verb_bombard
-	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_1
-	xeno_cooldown = 23 SECONDS
-	ability_uses_acid_overlay = TRUE
-
-	// Range and other config
-	var/effect_range = 3
-	var/effect_type = /obj/effect/xenomorph/boiler_bombard
-	var/activation_delay = 1.5 SECONDS
-	var/range = 15
-	var/interrupt_flags = INTERRUPT_ALL|BEHAVIOR_IMMOBILE
 
 /datum/action/xeno_action/activable/tail_stab
 	name = "Tail Stab"

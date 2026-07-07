@@ -768,7 +768,7 @@
 
 //DEFENDER
 /mob/living/carbon/xenomorph/defender/handle_vehicle_bump(obj/vehicle/multitile/V)
-	if(fortify)
+	if(HAS_TRAIT(src, TRAIT_ABILITY_FORTIFY))
 		if(V.vehicle_flags & VEHICLE_CLASS_WEAK) //defenders being able to completely block armored vehicles by crawling into a boulder is ridiculous
 			visible_message(SPAN_DANGER("[src] digs its claws into the ground, anchoring itself in place and halting [V] in its tracks!"),
 			SPAN_DANGER("You dig your claws into the ground, stopping [V] in its tracks!"))

@@ -58,9 +58,9 @@
 			if(hive.living_xeno_queen)
 				if(hive.living_xeno_queen.hivenumber == hive.hivenumber)
 					continue
-			for(var/mob/living/carbon/xenomorph/queen/Q in GLOB.living_xeno_list)
-				if(Q.hivenumber == hive.hivenumber && !should_block_game_interaction(Q))
-					hive.living_xeno_queen = Q
+			for(var/mob/living/carbon/xenomorph/queen/queen_user in GLOB.living_xeno_list)
+				if(queen_user.hivenumber == hive.hivenumber && !should_block_game_interaction(queen_user))
+					hive.living_xeno_queen = queen_user
 					xeno_message(SPAN_XENOANNOUNCE("A new Queen has risen to lead the Hive! Rejoice!"),3,hive.hivenumber)
 					continue outer_loop
 			hive.living_xeno_queen = null
@@ -73,7 +73,6 @@
 	color = "#a800a8"
 
 	hud_possible = list(XENO_STATUS_HUD)
-
 	var/mob/is_watching
 
 	var/hivenumber = XENO_HIVE_NORMAL
@@ -82,40 +81,40 @@
 	var/point_delay = 1 SECONDS
 
 
-/mob/hologram/queen/Initialize(mapload, mob/living/carbon/xenomorph/queen/Q)
-	if(!Q)
+/mob/hologram/queen/Initialize(mapload, mob/living/carbon/xenomorph/queen/queen_user)
+	if(!queen_user)
 		return INITIALIZE_HINT_QDEL
 
-	if(!istype(Q))
-		stack_trace("Tried to initialize a /mob/hologram/queen on type ([Q.type])")
+	if(!istype(queen_user))
+		stack_trace("Tried to initialize a /mob/hologram/queen on type ([queen_user.type])")
 		return INITIALIZE_HINT_QDEL
 
-	if(!Q.ovipositor)
+	if(!queen_user.ovipositor)
 		return INITIALIZE_HINT_QDEL
 
 	// Make sure to turn off any previous overwatches
-	Q.overwatch(stop_overwatch = TRUE)
+	queen_user.overwatch(stop_overwatch = TRUE)
 
 	. = ..()
-	RegisterSignal(Q, COMSIG_MOB_PRE_CLICK, PROC_REF(handle_overwatch))
-	RegisterSignal(Q, COMSIG_QUEEN_DISMOUNT_OVIPOSITOR, PROC_REF(exit_hologram))
-	RegisterSignal(Q, COMSIG_XENO_OVERWATCH_XENO, PROC_REF(start_watching))
-	RegisterSignal(Q, list(
+	RegisterSignal(queen_user, COMSIG_MOB_PRE_CLICK, PROC_REF(handle_overwatch))
+	RegisterSignal(queen_user, COMSIG_QUEEN_DISMOUNT_OVIPOSITOR, PROC_REF(exit_hologram))
+	RegisterSignal(queen_user, COMSIG_XENO_OVERWATCH_XENO, PROC_REF(start_watching))
+	RegisterSignal(queen_user, list(
 		COMSIG_XENO_STOP_OVERWATCH,
 		COMSIG_XENO_STOP_OVERWATCH_XENO
 	), PROC_REF(stop_watching))
-	RegisterSignal(Q, COMSIG_MOB_REAL_NAME_CHANGED, PROC_REF(on_name_changed))
+	RegisterSignal(queen_user, COMSIG_MOB_REAL_NAME_CHANGED, PROC_REF(on_name_changed))
 	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTER, PROC_REF(turf_weed_only))
 
 	// Default color
-	if(Q.hive.color)
-		color = Q.hive.color
+	if(queen_user.hive.color)
+		color = queen_user.hive.color
 
-	hivenumber = Q.hivenumber
+	hivenumber = queen_user.hivenumber
 	med_hud_set_status()
 	add_to_all_mob_huds()
 
-	Q.sight |= SEE_TURFS|SEE_OBJS
+	queen_user.sight |= SEE_TURFS|SEE_OBJS
 
 /mob/hologram/queen/proc/exit_hologram()
 	SIGNAL_HANDLER
@@ -131,43 +130,43 @@
 
 	qdel(src)
 
-/mob/hologram/queen/handle_move(mob/living/carbon/xenomorph/X, NewLoc, direct)
+/mob/hologram/queen/handle_move(mob/living/carbon/xenomorph/xeno, NewLoc, direct)
 	if(is_watching && (turf_weed_only(src, is_watching.loc) & COMPONENT_TURF_DENY_MOVEMENT))
 		return COMPONENT_OVERRIDE_MOVE
 
-	X.overwatch(stop_overwatch = TRUE)
+	xeno.overwatch(stop_overwatch = TRUE)
 
 	return ..()
 
 
-/mob/hologram/queen/proc/start_watching(mob/living/carbon/xenomorph/X, mob/living/carbon/xenomorph/target)
+/mob/hologram/queen/proc/start_watching(mob/living/carbon/xenomorph/xeno, mob/living/carbon/xenomorph/target_xeno)
 	SIGNAL_HANDLER
-	forceMove(target)
-	is_watching = target
+	forceMove(target_xeno)
+	is_watching = target_xeno
 
-	RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(target_watching_qdeleted))
+	RegisterSignal(target_xeno, COMSIG_PARENT_QDELETING, PROC_REF(target_watching_qdeleted))
 	return
 
 // able to stop watching here before the loc is set to null
-/mob/hologram/queen/proc/target_watching_qdeleted(mob/living/carbon/xenomorph/target)
+/mob/hologram/queen/proc/target_watching_qdeleted(mob/living/carbon/xenomorph/target_xeno)
 	SIGNAL_HANDLER
-	stop_watching(linked_mob, target)
+	stop_watching(linked_mob, target_xeno)
 
-/mob/hologram/queen/proc/stop_watching(mob/living/carbon/xenomorph/X, mob/living/carbon/xenomorph/target)
+/mob/hologram/queen/proc/stop_watching(mob/living/carbon/xenomorph/xeno, mob/living/carbon/xenomorph/target_xeno)
 	SIGNAL_HANDLER
-	if(target)
-		if(loc == target)
-			var/turf/T = get_turf(target)
+	if(target_xeno)
+		if(loc == target_xeno)
+			var/turf/target_turf = get_turf(target_xeno)
 
-			if(T)
-				forceMove(T)
-		UnregisterSignal(target, COMSIG_PARENT_QDELETING)
+			if(target_turf)
+				forceMove(target_turf)
+		UnregisterSignal(target_xeno, COMSIG_PARENT_QDELETING)
 
 	if(!isturf(loc) || (turf_weed_only(src, loc) & COMPONENT_TURF_DENY_MOVEMENT))
-		forceMove(X.loc)
+		forceMove(xeno.loc)
 
 	is_watching = null
-	X.reset_view()
+	xeno.reset_view()
 	return
 
 /mob/hologram/queen/proc/on_name_changed(mob/parent, old_name, new_name)
@@ -196,11 +195,11 @@
 
 	return COMPONENT_TURF_DENY_MOVEMENT
 
-/mob/hologram/queen/proc/handle_overwatch(mob/living/carbon/xenomorph/queen/Q, atom/A, mods)
+/mob/hologram/queen/proc/handle_overwatch(mob/living/carbon/xenomorph/queen/queen_user, atom/target_atom, mods)
 	SIGNAL_HANDLER
 
-	var/turf/T = get_turf(A)
-	if(!istype(T))
+	var/turf/target_turf = get_turf(target_atom)
+	if(!istype(target_turf))
 		return
 
 	if(mods[SHIFT_CLICK] && mods[MIDDLE_CLICK])
@@ -209,15 +208,15 @@
 
 		next_point = world.time + point_delay
 
-		var/message = SPAN_XENONOTICE("[Q] points at [A].")
+		var/message = SPAN_XENONOTICE("[queen_user] points at [target_atom].")
 
-		to_chat(Q, message)
-		for(var/mob/living/carbon/xenomorph/X in viewers(7, src))
-			if(X == Q)
+		to_chat(queen_user, message)
+		for(var/mob/living/carbon/xenomorph/xeno in viewers(7, src))
+			if(xeno == queen_user)
 				continue
-			to_chat(X, message)
+			to_chat(xeno, message)
 
-		var/obj/effect/overlay/temp/point/big/queen/point = new(T, src, A)
+		var/obj/effect/overlay/temp/point/big/queen/point = new(target_turf, src, target_atom)
 		point.color = color
 
 		return COMPONENT_INTERRUPT_CLICK
@@ -225,36 +224,36 @@
 	if(!mods[CTRL_CLICK])
 		return
 
-	if(isxeno(A))
-		var/mob/living/carbon/xenomorph/X = A
-		if(X.ally_of_hivenumber(hivenumber))
-			Q.overwatch(A)
+	if(isxeno(target_atom))
+		var/mob/living/carbon/xenomorph/xeno = target_atom
+		if(xeno.ally_of_hivenumber(hivenumber))
+			queen_user.overwatch(target_atom)
 		return COMPONENT_INTERRUPT_CLICK
 
-	if(!(turf_weed_only(src, T) & COMPONENT_TURF_ALLOW_MOVEMENT))
+	if(!(turf_weed_only(src, target_turf) & COMPONENT_TURF_ALLOW_MOVEMENT))
 		return
 
-	forceMove(T)
+	forceMove(target_turf)
 	if(is_watching)
-		Q.overwatch(stop_overwatch = TRUE)
+		queen_user.overwatch(stop_overwatch = TRUE)
 
 	return COMPONENT_INTERRUPT_CLICK
 
-/mob/hologram/queen/handle_view(mob/M, atom/target)
-	if(M.client)
-		M.client.perspective = EYE_PERSPECTIVE
+/mob/hologram/queen/handle_view(mob/target_mob, atom/target_atom)
+	if(target_mob.client)
+		target_mob.client.perspective = EYE_PERSPECTIVE
 
 		if(is_watching)
-			M.client.set_eye(is_watching)
+			target_mob.client.set_eye(is_watching)
 		else
-			M.client.set_eye(src)
+			target_mob.client.set_eye(src)
 
 	return COMPONENT_OVERRIDE_VIEW
 
 /mob/hologram/queen/Destroy()
 	if(linked_mob)
-		var/mob/living/carbon/xenomorph/queen/Q = linked_mob
-		if(Q.ovipositor)
+		var/mob/living/carbon/xenomorph/queen/queen_user = linked_mob
+		if(queen_user.ovipositor)
 			give_action(linked_mob, /datum/action/xeno_action/onclick/eye)
 
 		linked_mob.sight &= ~(SEE_TURFS|SEE_OBJS)
@@ -644,8 +643,8 @@
 			egg_amount += 0.07 //one egg approximately every 30 seconds
 			if(egg_amount >= 1)
 				if(isturf(loc))
-					var/turf/T = loc
-					if(length(T.contents) <= 25) //so we don't end up with a million object on that turf.
+					var/turf/target_turf = loc
+					if(length(target_turf.contents) <= 25) //so we don't end up with a million object on that turf.
 						egg_amount--
 						new /obj/item/xeno_egg(loc, hivenumber)
 			overlays -= acid_overlay
@@ -680,17 +679,17 @@
 
 /mob/living/carbon/xenomorph/queen/proc/screech_ready()
 	to_chat(src, SPAN_WARNING("You feel your throat muscles vibrate. You are ready to screech again."))
-	for(var/Z in actions)
-		var/datum/action/A = Z
-		A.update_button_icon()
+	for(var/xeno_ability in actions)
+		var/datum/action/target_action = xeno_ability
+		target_action.update_button_icon()
 
-/mob/living/carbon/xenomorph/queen/proc/queen_gut(atom/target)
-	if(!iscarbon(target))
+/mob/living/carbon/xenomorph/queen/proc/queen_gut(atom/target_atom)
+	if(!iscarbon(target_atom))
 		return FALSE
-	if(HAS_TRAIT(target, TRAIT_HAULED))
-		to_chat(src, SPAN_XENOWARNING("[target] needs to be released first."))
+	if(HAS_TRAIT(target_atom, TRAIT_HAULED))
+		to_chat(src, SPAN_XENOWARNING("[target_atom] needs to be released first."))
 		return FALSE
-	var/mob/living/carbon/victim = target
+	var/mob/living/carbon/victim = target_atom
 
 	if(get_dist(src, victim) > 1)
 		return FALSE
@@ -874,8 +873,8 @@
 			break
 	anchored = FALSE
 
-	for(var/mob/living/carbon/xenomorph/L in hive.xeno_leader_list)
-		L.handle_xeno_leader_pheromones()
+	for(var/mob/living/carbon/xenomorph/xeno_leader in hive.xeno_leader_list)
+		xeno_leader.handle_xeno_leader_pheromones()
 
 	if(!instant_dismount)
 		xeno_message(SPAN_XENOANNOUNCE("The Queen has shed her ovipositor, evolution progress paused."), 3, hivenumber)

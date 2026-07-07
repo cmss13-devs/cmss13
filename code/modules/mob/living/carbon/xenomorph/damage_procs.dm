@@ -1,4 +1,6 @@
 /mob/living/carbon/xenomorph/attackby(obj/item/item, mob/user)
+	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
+		return
 	if(user.a_intent != INTENT_HELP)
 		return ..()
 	if(HAS_TRAIT(item, TRAIT_TOOL_MULTITOOL) && ishuman(user))
@@ -45,6 +47,8 @@
 	return ..()
 
 /mob/living/carbon/xenomorph/ex_act(severity, direction, datum/cause_data/cause_data, pierce=0, enviro=FALSE)
+	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
+		return
 
 	if(body_position == LYING_DOWN && direction)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
@@ -327,4 +331,8 @@
 			fire.set_on_fire(src) //Deals an extra proc of fire when you're crossing it. 30 damage per tile crossed, plus 15 per Process().
 			next_move_slowdown = next_move_slowdown + (SLOWDOWN_AMT_GREENFIRE * resist_modifier)
 			if(resist_modifier > 0)
-				to_chat(src, SPAN_DANGER("We feel pieces of our exoskeleton fusing with the viscous fluid below and tearing off as we struggle to move through the flames!"))
+				if(!HAS_TRAIT(src, TRAIT_ABILITY_AIRBONE))
+					to_chat(src, SPAN_DANGER("We feel pieces of our exoskeleton fusing with the viscous fluid below and tearing off as we struggle to move through the flames!"))
+				else
+					if(!prob(75))
+						to_chat(src, SPAN_DANGER("We feel searing heat full of chemicals from below us, melting our exoskeleton as we pass above the flames!"))

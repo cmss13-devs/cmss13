@@ -64,25 +64,49 @@
 	pelt = /obj/item/pelt/defender
 
 /mob/living/carbon/xenomorph/defender/handle_special_state()
-	if(fortify)
+	if(HAS_TRAIT(src, TRAIT_ABILITY_FORTIFY))
 		return TRUE
-	if(crest_defense)
+	if(HAS_TRAIT(src, TRAIT_ABILITY_CREST))
 		return TRUE
 	return FALSE
 
 /mob/living/carbon/xenomorph/defender/handle_special_wound_states(severity)
 	. = ..()
-	if(fortify)
+	if(HAS_TRAIT(src, TRAIT_ABILITY_FORTIFY))
 		return "Defender_fortify_[severity]"
-	if(crest_defense)
+	if(HAS_TRAIT(src, TRAIT_ABILITY_CREST))
 		return "Defender_crest_[severity]"
 
 /mob/living/carbon/xenomorph/defender/handle_special_backpack_states()
 	. = ..()
-	if(fortify)
+	if(HAS_TRAIT(src, TRAIT_ABILITY_FORTIFY))
 		return " Fortify"
-	if(crest_defense)
+	if(HAS_TRAIT(src, TRAIT_ABILITY_CREST))
 		return " Crest"
+
+/mob/living/carbon/xenomorph/defender/ex_act()
+	. = ..()
+	if(HAS_TRAIT(src, TRAIT_INCAPACITATED) && HAS_TRAIT(src, TRAIT_FLOORED))
+		if(HAS_TRAIT(src, TRAIT_ABILITY_FORTIFY))
+			var/datum/action/xeno_action/activable/fortify/fortify_used = get_action(src, /datum/action/xeno_action/activable/fortify)
+			fortify_used.stop_fortify()
+
+		if(HAS_TRAIT(src, TRAIT_ABILITY_CREST))
+			var/datum/action/xeno_action/onclick/toggle_crest/crest_used = get_action(src, /datum/action/xeno_action/onclick/toggle_crest)
+			crest_used.stop_crest()
+
+
+/mob/living/carbon/xenomorph/defender/death()
+	var/datum/action/xeno_action/activable/fortify/fortify_used = get_action(src, /datum/action/xeno_action/activable/fortify)
+	if(HAS_TRAIT(src, TRAIT_ABILITY_FORTIFY))
+		fortify_used.stop_fortify()
+
+	var/datum/action/xeno_action/onclick/toggle_crest/crest_used = get_action(src, /datum/action/xeno_action/onclick/toggle_crest)
+	if(HAS_TRAIT(src, TRAIT_ABILITY_CREST))
+		crest_used.stop_crest()
+
+	return ..()
+
 
 /datum/behavior_delegate/defender_base
 	name = "Base Defender Behavior Delegate"
@@ -91,144 +115,149 @@
 	if(bound_xeno.stat == DEAD)
 		return
 
-	if(bound_xeno.fortify && bound_xeno.health > 0)
-		bound_xeno.icon_state = "[bound_xeno.get_strain_icon()] Defender Fortify"
-		return TRUE
-	if(bound_xeno.crest_defense && bound_xeno.health > 0)
-		bound_xeno.icon_state = "[bound_xeno.get_strain_icon()] Defender Crest"
-		return TRUE
+	if(!HAS_TRAIT(bound_xeno, TRAIT_INCAPACITATED) && !HAS_TRAIT(bound_xeno, TRAIT_FLOORED))
+		if(HAS_TRAIT(bound_xeno, TRAIT_ABILITY_FORTIFY) && bound_xeno.health > 0)
+			bound_xeno.icon_state = "[bound_xeno.get_strain_icon()] Defender Fortify"
+			return TRUE
 
+		if(HAS_TRAIT(bound_xeno, TRAIT_ABILITY_CREST) && bound_xeno.health > 0)
+			bound_xeno.icon_state = "[bound_xeno.get_strain_icon()] Defender Crest"
+			return TRUE
 
-/datum/action/xeno_action/onclick/toggle_crest/use_ability(atom/target)
-	var/mob/living/carbon/xenomorph/xeno = owner
-	if (!istype(xeno))
-		return
-
-	if(xeno.fortify)
-		to_chat(xeno, SPAN_XENOWARNING("We cannot use abilities while fortified."))
-		return
-
-	if(!xeno.check_state())
-		return
-
-	if(!action_cooldown_check())
-		return
-
-	xeno.crest_defense = !xeno.crest_defense
-
-	if(xeno.crest_defense)
-		to_chat(xeno, SPAN_XENOWARNING("We lower our crest."))
-
-		xeno.ability_speed_modifier += speed_debuff
-		xeno.armor_deflection_buff += armor_buff
-		xeno.mob_size = MOB_SIZE_BIG //knockback immune
-		button.icon_state = "template_active"
-		xeno.update_icons()
 	else
-		to_chat(xeno, SPAN_XENOWARNING("We raise our crest."))
+		bound_xeno.icon_state = "[bound_xeno.get_strain_icon()] Defender Knocked Down"
 
-		xeno.ability_speed_modifier -= speed_debuff
-		xeno.armor_deflection_buff -= armor_buff
-		xeno.mob_size = MOB_SIZE_XENO //no longer knockback immune
-		button.icon_state = "template_xeno"
-		xeno.update_icons()
 
-	apply_cooldown()
+/datum/action/xeno_action/onclick/toggle_crest/use_ability(atom/target_atom)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!istype(xeno))
+		return
+
+	if(HAS_TRAIT(xeno, TRAIT_ABILITY_FORTIFY))
+		to_chat(xeno, SPAN_XENOWARNING("We cannot use crest while fortified."))
+		return
+
+	XENO_ACTION_CHECK(xeno)
+
+	if(HAS_TRAIT(xeno, TRAIT_ABILITY_CREST))
+		stop_crest()
+	else
+		start_crest()
+
 	return ..()
+
+/datum/action/xeno_action/onclick/toggle_crest/proc/start_crest()
+	var/mob/living/carbon/xenomorph/xeno = owner
+
+	ADD_TRAIT(xeno, TRAIT_ABILITY_CREST, TRAIT_SOURCE_ABILITY("crest"))
+	to_chat(xeno, SPAN_XENOWARNING("We lower our crest."))
+	xeno.ability_speed_modifier += speed_debuff
+	xeno.armor_deflection_buff += armor_buff
+	xeno.mob_size = MOB_SIZE_BIG //knockback immune
+	button.icon_state = "template_active"
+	xeno.update_icons()
+	apply_cooldown()
+
+/datum/action/xeno_action/onclick/toggle_crest/proc/stop_crest()
+	var/mob/living/carbon/xenomorph/xeno = owner
+
+	REMOVE_TRAIT(xeno, TRAIT_ABILITY_CREST, TRAIT_SOURCE_ABILITY("crest"))
+	to_chat(xeno, SPAN_XENOWARNING("We raise our crest."))
+	xeno.ability_speed_modifier -= speed_debuff
+	xeno.armor_deflection_buff -= armor_buff
+	xeno.mob_size = MOB_SIZE_XENO //no longer knockback immune
+	button.icon_state = "template_xeno"
+	xeno.update_icons()
+	apply_cooldown()
+
+
 
 // Defender Headbutt
 /datum/action/xeno_action/activable/headbutt/use_ability(atom/target_atom)
-	var/mob/living/carbon/xenomorph/fendy = owner
-	if(!istype(fendy))
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!istype(xeno))
 		return
 
-	if(!isxeno_human(target_atom) || fendy.can_not_harm(target_atom))
+	if(!isxeno_human(target_atom) || xeno.can_not_harm(target_atom))
 		return
 
-	if(!fendy.check_state())
+	XENO_ACTION_CHECK_USE_PLASMA(xeno)
+
+	if(HAS_TRAIT(xeno, TRAIT_ABILITY_FORTIFY) && !usable_while_fortified)
+		to_chat(xeno, SPAN_XENOWARNING("We cannot use headbutt while fortified."))
 		return
 
-	if(!action_cooldown_check())
+	var/mob/living/carbon/target_carbon = target_atom
+	if(target_carbon.stat == DEAD)
 		return
 
-	if(!check_and_use_plasma_owner())
-		return
+	var/fortify = HAS_TRAIT(xeno, TRAIT_ABILITY_FORTIFY)
+	var/crest_defense = HAS_TRAIT(xeno, TRAIT_ABILITY_CREST)
 
-	if(fendy.fortify && !usable_while_fortified)
-		to_chat(fendy, SPAN_XENOWARNING("We cannot use headbutt while fortified."))
-		return
+	var/distance = get_dist(xeno, target_carbon)
 
-	var/mob/living/carbon/carbone = target_atom
-	if(carbone.stat == DEAD)
-		return
-
-	var/distance = get_dist(fendy, carbone)
-
-	var/max_distance = 3 - (fendy.crest_defense * 2)
+	var/max_distance = 3 - (crest_defense ? 2 : 0)
 
 	if(distance > max_distance)
 		return
 
-	if(!fendy.crest_defense)
+	if(!crest_defense)
 		apply_cooldown()
-		fendy.throw_atom(get_step_towards(carbone, fendy), 3, SPEED_SLOW, fendy, tracking=TRUE)
-	if(!fendy.Adjacent(carbone))
+		xeno.throw_atom(get_step_towards(target_carbon, xeno), 3, SPEED_SLOW, xeno, tracking=TRUE)
+	if(!xeno.Adjacent(target_carbon))
 		on_cooldown_end()
 		return
 
-	carbone.last_damage_data = create_cause_data(fendy.caste_type, fendy)
-	fendy.visible_message(SPAN_XENOWARNING("[fendy] rams [carbone] with its armored crest!"),
-	SPAN_XENOWARNING("We ram [carbone] with our armored crest!"))
+	target_carbon.last_damage_data = create_cause_data(xeno.caste_type, xeno)
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] rams [target_carbon] with its armored crest!"),
+	SPAN_XENOWARNING("We ram [target_carbon] with our armored crest!"))
 
-	if(carbone.stat != DEAD && (!(carbone.status_flags & XENO_HOST) || !HAS_TRAIT(carbone, TRAIT_NESTED)))
+	if(target_carbon.stat != DEAD && (!(target_carbon.status_flags & XENO_HOST) || !HAS_TRAIT(target_carbon, TRAIT_NESTED)))
 		// -10 damage if their crest is down.
-		var/damage = base_damage - (fendy.crest_defense * 10)
-		carbone.apply_armoured_damage(get_xeno_damage_slash(carbone, damage), ARMOR_MELEE, BRUTE, "chest", 5)
+		var/damage = base_damage - (crest_defense ? 10 : 0)
+		target_carbon.apply_armoured_damage(get_xeno_damage_slash(target_carbon, damage), ARMOR_MELEE, BRUTE, "chest", 5)
 
-	var/facing = get_dir(fendy, carbone)
-	var/headbutt_distance = 1 + (fendy.crest_defense * 2) + (fendy.fortify * 2)
+	var/facing = get_dir(xeno, target_carbon)
+	var/headbutt_distance = 1 + (crest_defense ? 2 : 0) + (fortify ? 2 : 0)
 
 	// Hmm today I will kill a marine while looking away from them
-	fendy.face_atom(carbone)
-	fendy.animation_attack_on(carbone)
-	fendy.flick_attack_overlay(carbone, "punch")
-	fendy.throw_carbon(carbone, facing, headbutt_distance, SPEED_SLOW, shake_camera = FALSE, immobilize = FALSE)
-	playsound(carbone,'sound/weapons/alien_claw_block.ogg', 50, 1)
+	xeno.face_atom(target_carbon)
+	xeno.animation_attack_on(target_carbon)
+	xeno.flick_attack_overlay(target_carbon, "punch")
+	xeno.throw_carbon(target_carbon, facing, headbutt_distance, SPEED_SLOW, shake_camera = FALSE, immobilize = FALSE)
+	playsound(target_carbon,'sound/weapons/alien_claw_block.ogg', 50, 1)
 	apply_cooldown()
 	return ..()
 
+
+
 // Defender Tail Sweep
-/datum/action/xeno_action/onclick/tail_sweep/use_ability(atom/A)
+/datum/action/xeno_action/onclick/tail_sweep/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
-	if (!istype(xeno))
+	if(!istype(xeno))
 		return
 
-	if(!xeno.check_state())
+	XENO_ACTION_CHECK(xeno)
+
+	if(HAS_TRAIT(xeno, TRAIT_ABILITY_FORTIFY))
+		to_chat(xeno, SPAN_XENOWARNING("We cannot use tail swipe while fortified."))
 		return
 
-	if (!action_cooldown_check())
-		return
-
-	if(xeno.fortify)
-		to_chat(src, SPAN_XENOWARNING("We cannot use tail swipe while fortified."))
-		return
-
-	if(xeno.crest_defense)
+	if(HAS_TRAIT(xeno, TRAIT_ABILITY_CREST))
 		xeno.balloon_alert(xeno, "our crest is lowered!", text_color = "#7d32bb", delay = 1 SECONDS)
 		return
 
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] sweeps its tail in a wide circle!"),
 	SPAN_XENOWARNING("We sweep our tail in a wide circle!"))
 
-	if(!check_and_use_plasma_owner())
-		return
+	XENO_ACTION_CHECK_USE_PLASMA(xeno)
 
 	xeno.spin_circle()
 	xeno.emote("tail")
 
 	var/sweep_range = 1
 	for(var/mob/living/carbon/human in orange(sweep_range, get_turf(xeno)))
-		if (!isxeno_human(human) || xeno.can_not_harm(human))
+		if(!isxeno_human(human) || xeno.can_not_harm(human))
 			continue
 		if(human.stat == DEAD)
 			continue
@@ -249,76 +278,66 @@
 	apply_cooldown()
 	return ..()
 
+
+
 // Defender Fortify
-/datum/action/xeno_action/activable/fortify/use_ability(atom/target)
+/datum/action/xeno_action/activable/fortify/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
-	if (!istype(xeno))
+	if(!istype(xeno))
 		return
 
-	if(xeno.crest_defense)
+	if(HAS_TRAIT(xeno, TRAIT_ABILITY_CREST))
 		xeno.balloon_alert(xeno, "our crest is lowered!", text_color = "#7d32bb", delay = 1 SECONDS)
 		return
 
-	if(!xeno.check_state())
-		return
-
-	if (!action_cooldown_check())
-		return
+	XENO_ACTION_CHECK(xeno)
 
 	playsound(get_turf(xeno), 'sound/effects/stonedoor_openclose.ogg', 30, 1)
 
-	if(!xeno.fortify)
-		RegisterSignal(owner, COMSIG_XENO_ENTER_CRIT, PROC_REF(unconscious_check))
-		RegisterSignal(owner, COMSIG_MOB_DEATH, PROC_REF(unconscious_check))
-		fortify_switch(xeno, TRUE)
-		if(xeno.selected_ability != src)
-			button.icon_state = "template_active"
-	else
-		UnregisterSignal(owner, COMSIG_XENO_ENTER_CRIT)
-		UnregisterSignal(owner, COMSIG_MOB_DEATH)
-		fortify_switch(xeno, FALSE)
+	if(HAS_TRAIT(xeno, TRAIT_ABILITY_FORTIFY))
+		stop_fortify()
 		if(xeno.selected_ability != src)
 			button.icon_state = "template_xeno"
+	else
+		start_fortify()
+		if(xeno.selected_ability != src)
+			button.icon_state = "template_active"
 
+	xeno.update_icons()
 	apply_cooldown()
 	return ..()
 
-/datum/action/xeno_action/activable/fortify/action_activate()
-	. = ..()
-	..()
+/datum/action/xeno_action/activable/fortify/proc/start_fortify()
 	var/mob/living/carbon/xenomorph/xeno = owner
-	if(xeno.fortify && xeno.selected_ability != src)
-		button.icon_state = "template_active"
 
-/datum/action/xeno_action/activable/fortify/action_deselect()
-	..()
+	RegisterSignal(xeno, COMSIG_XENO_ENTER_CRIT, PROC_REF(unconscious_check))
+	RegisterSignal(xeno, COMSIG_MOB_DEATH, PROC_REF(unconscious_check))
+	RegisterSignal(xeno, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, PROC_REF(check_directional_projectile_armor))
+
+	ADD_TRAIT(xeno, TRAIT_ABILITY_FORTIFY, TRAIT_SOURCE_ABILITY("fortify"))
+	to_chat(xeno, SPAN_XENOWARNING("We tuck ourself into a defensive stance."))
+
+	apply_modifiers(xeno, TRUE)
+	xeno.mob_size = MOB_SIZE_IMMOBILE //knockback immune
+	xeno.mob_flags &= ~SQUEEZE_UNDER_VEHICLES
+
+/datum/action/xeno_action/activable/fortify/proc/stop_fortify()
 	var/mob/living/carbon/xenomorph/xeno = owner
-	if(xeno.fortify)
-		button.icon_state = "template_active"
 
-/datum/action/xeno_action/activable/fortify/proc/fortify_switch(mob/living/carbon/xenomorph/xeno, fortify_state)
-	if(xeno.fortify == fortify_state)
-		return
+	UnregisterSignal(xeno, COMSIG_XENO_ENTER_CRIT)
+	UnregisterSignal(xeno, COMSIG_MOB_DEATH)
+	UnregisterSignal(xeno, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE)
 
-	if(fortify_state)
-		to_chat(xeno, SPAN_XENOWARNING("We tuck ourself into a defensive stance."))
-		RegisterSignal(owner, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, PROC_REF(check_directional_armor))
-		xeno.mob_size = MOB_SIZE_IMMOBILE //knockback immune
-		xeno.mob_flags &= ~SQUEEZE_UNDER_VEHICLES
-		xeno.fortify = TRUE
-	else
-		to_chat(xeno, SPAN_XENOWARNING("We resume our normal stance."))
-		REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Fortify"))
-		xeno.anchored = FALSE
-		UnregisterSignal(owner, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE)
-		xeno.mob_size = MOB_SIZE_XENO //no longer knockback immune
-		xeno.mob_flags |= SQUEEZE_UNDER_VEHICLES
-		xeno.fortify = FALSE
+	REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Fortify"))
+	REMOVE_TRAIT(xeno, TRAIT_ABILITY_FORTIFY, TRAIT_SOURCE_ABILITY("fortify"))
+	to_chat(xeno, SPAN_XENOWARNING("We resume our normal stance."))
 
-	apply_modifiers(xeno, fortify_state)
-	xeno.update_icons()
+	apply_modifiers(xeno, FALSE)
+	xeno.anchored = FALSE
+	xeno.mob_size = MOB_SIZE_XENO //no longer knockback immune
+	xeno.mob_flags |= SQUEEZE_UNDER_VEHICLES
 
-/datum/action/xeno_action/activable/fortify/proc/apply_modifiers(mob/living/carbon/xenomorph/xeno, fortify_state)
+/datum/action/xeno_action/activable/fortify/proc/apply_modifiers(mob/living/carbon/xenomorph/xeno, fortify_state = FALSE)
 	if(fortify_state)
 		xeno.armor_deflection_buff += 30
 		xeno.armor_explosive_buff += 60
@@ -329,3 +348,17 @@
 		xeno.armor_deflection_buff -= 30
 		xeno.armor_explosive_buff -= 60
 		xeno.small_explosives_stun = TRUE
+
+/datum/action/xeno_action/activable/fortify/action_activate()
+	. = ..()
+	..()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(HAS_TRAIT(xeno, TRAIT_ABILITY_FORTIFY) && xeno.selected_ability != src)
+		button.icon_state = "template_active"
+
+/datum/action/xeno_action/activable/fortify/action_deselect()
+	..()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(HAS_TRAIT(xeno, TRAIT_ABILITY_FORTIFY))
+		button.icon_state = "template_active"
+

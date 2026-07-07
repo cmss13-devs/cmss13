@@ -39488,7 +39488,7 @@
 /area/almayer/maint/hull/upper/u_m_p)
 "bUt" = (
 /obj/effect/landmark/start/corp_sec,
-/obj/effect/landmark/late_join/corp_sec,
+/obj/effect/landmark/late_join/corporate/corp_sec,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/upper/u_m_p)
 "bUu" = (
@@ -44019,7 +44019,7 @@
 /area/almayer/medical/medical_science)
 "cdN" = (
 /obj/effect/landmark/start/researcher,
-/obj/effect/landmark/late_join/medical/researcher,
+/obj/effect/landmark/late_join/corporate/researcher,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/medical_science)
 "cdO" = (
@@ -75739,7 +75739,7 @@
 /area/almayer/shipboard/brig/processing)
 "oIn" = (
 /obj/effect/landmark/start/liaison,
-/obj/effect/landmark/late_join/liaison,
+/obj/effect/landmark/late_join/corporate/liaison,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/upper/u_m_p)
 "oIp" = (

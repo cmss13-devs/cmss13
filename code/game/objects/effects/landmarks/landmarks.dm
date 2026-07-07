@@ -522,6 +522,8 @@
 /obj/effect/landmark/late_join/command
 	icon_state = "late_join_command"
 
+/obj/effect/landmark/late_join/corporate
+	icon_state = "late_join_corporate"
 
 /obj/effect/landmark/late_join/marine/alpha
 	name = "alpha late join"
@@ -546,10 +548,6 @@
 /obj/effect/landmark/late_join/medical/cmo
 	name = "Chief Medical Officer late join"
 	job = JOB_CMO
-
-/obj/effect/landmark/late_join/medical/researcher
-	name = "Researcher late join"
-	job = JOB_RESEARCHER
 
 /obj/effect/landmark/late_join/medical/doctor
 	name = "Doctor late join"
@@ -660,16 +658,20 @@
 	icon_state = "late_join_misc"
 	job = JOB_COMBAT_REPORTER
 
-/obj/effect/landmark/late_join/liaison
+/obj/effect/landmark/late_join/corporate/liaison
 	name = "Corporate Liaison late join"
 	icon_state = "late_join_corporate"
 	job = JOB_CORPORATE_LIAISON
 
-/obj/effect/landmark/late_join/corp_sec
+/obj/effect/landmark/late_join/corporate/corp_sec
 	name = "Corporate Bodyguard late join"
 	icon_state = "late_join_corporate"
 	job = JOB_CORPORATE_BODYGUARD
 
+/obj/effect/landmark/late_join/corporate/researcher
+	name = "Researcher late join"
+	icon_state = "late_join_corporate"
+	job = JOB_RESEARCHER
 
 /obj/effect/landmark/late_join/Initialize(mapload, ...)
 	. = ..()

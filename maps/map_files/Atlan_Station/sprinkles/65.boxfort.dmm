@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/turf/closed/wall/strata_outpost/reinforced/hull,
+/turf/closed/wall/upp_ship/grey/reinforced/outer,
 /area/atlan/oob)
 "ab" = (
 /obj/structure/sign/poster/safety{
@@ -24,6 +24,15 @@
 /area/atlan/station/storage)
 "ae" = (
 /turf/open/floor/strata/orange_edge/northeast,
+/area/atlan/station/storage)
+"af" = (
+/obj/item/stack/sheet/wood,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_16";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/floor/strata/floor3/east,
 /area/atlan/station/storage)
 "au" = (
 /turf/open/floor/strata/orange_edge/southwest,
@@ -113,6 +122,10 @@
 	},
 /obj/item/weapon/gun/smg/pps43,
 /obj/structure/machinery/light,
+/obj/item/explosive/grenade/high_explosive/stick,
+/obj/structure/sign/poster/upp{
+	pixel_y = -26
+	},
 /turf/open/floor/strata/floor2,
 /area/atlan/station/storage)
 "wl" = (
@@ -177,6 +190,7 @@
 /area/atlan/station/storage)
 "Lp" = (
 /obj/effect/decal/strata_decals/grime/grime4,
+/obj/effect/decal/hybrisa/trash,
 /turf/open/floor/plating,
 /area/atlan/station/storage)
 "Lt" = (
@@ -231,10 +245,7 @@
 /turf/open/floor/strata/floor2,
 /area/atlan/station/storage)
 "UQ" = (
-/obj/structure/sign/poster/upp{
-	pixel_y = -26
-	},
-/obj/structure/largecrate/random,
+/obj/structure/machinery/power/apc/power/south,
 /turf/open/floor/strata/floor2,
 /area/atlan/station/storage)
 "UZ" = (
@@ -344,7 +355,7 @@ HH
 MM
 Vl
 wl
-UZ
+af
 Sb
 vW
 aa

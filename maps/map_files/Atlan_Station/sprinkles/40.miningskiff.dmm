@@ -170,7 +170,7 @@
 /area/atlan/asteroid/ship)
 "mr" = (
 /obj/item/frame/rack,
-/turf/open/floor/prison/darkyellowfull2,
+/turf/open/floor/prison/darkbrownfull2,
 /area/atlan/asteroid/processing_dock)
 "my" = (
 /obj/item/clothing/mask/rebreather,
@@ -178,7 +178,7 @@
 /area/atlan/asteroid/processing_dock)
 "mT" = (
 /obj/effect/alien/resin/sticky,
-/turf/open/floor/prison/darkyellowfull2,
+/turf/open/floor/prison/darkbrownfull2,
 /area/atlan/asteroid/processing_dock)
 "mW" = (
 /obj/structure/prop/invuln/fire,
@@ -191,7 +191,7 @@
 /turf/open/floor/plating/panelscorched,
 /area/atlan/asteroid/processing_dock)
 "nN" = (
-/turf/open/floor/prison/darkyellowfull2,
+/turf/open/floor/prison/darkbrownfull2,
 /area/atlan/asteroid/processing_dock)
 "oh" = (
 /obj/effect/decal/cleanable/dirt,
@@ -274,7 +274,7 @@
 /area/atlan/asteroid/ship)
 "sO" = (
 /obj/effect/decal/cleanable/liquid_fuel,
-/turf/open/floor/prison/darkyellowfull2,
+/turf/open/floor/prison/darkbrownfull2,
 /area/atlan/asteroid/processing_dock)
 "tE" = (
 /obj/structure/shuttle/part/ert/front_left_upp{
@@ -287,7 +287,7 @@
 /area/atlan/asteroid/ship)
 "uL" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor/prison/darkyellowfull2,
+/turf/open/floor/prison/darkbrownfull2,
 /area/atlan/asteroid/processing_dock)
 "uQ" = (
 /obj/item/stack/rods,
@@ -310,6 +310,7 @@
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_dock)
 "wU" = (
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/strata/yellow3/northeast,
 /area/atlan/asteroid/processing_dock)
 "xj" = (
@@ -348,14 +349,14 @@
 "zo" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt/alt_dirt,
-/turf/open/floor/prison/darkyellowfull2,
+/turf/open/floor/prison/darkbrownfull2,
 /area/atlan/asteroid/processing_dock)
 "zr" = (
 /obj/item/tool/warning_cone{
 	pixel_y = 19
 	},
 /obj/effect/decal/cleanable/liquid_fuel,
-/turf/open/floor/prison/darkyellowfull2,
+/turf/open/floor/prison/darkbrownfull2,
 /area/atlan/asteroid/processing_dock)
 "zQ" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -481,7 +482,7 @@
 /area/atlan/asteroid/ship)
 "Pw" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/darkyellowfull2,
+/turf/open/floor/prison/darkbrownfull2,
 /area/atlan/asteroid/processing_dock)
 "PE" = (
 /turf/open/gm/dirt/brown/variant_1,
@@ -528,7 +529,7 @@
 /area/atlan/asteroid/ship)
 "Uw" = (
 /obj/structure/machinery/floodlight,
-/turf/open/floor/prison/darkyellowfull2,
+/turf/open/floor/prison/darkbrownfull2,
 /area/atlan/asteroid/processing_dock)
 "UL" = (
 /obj/structure/largecrate/random/barrel/true_random,
@@ -901,7 +902,7 @@ sb
 aQ
 nN
 BH
-eL
+fV
 "}
 (19,1,1) = {"
 rr

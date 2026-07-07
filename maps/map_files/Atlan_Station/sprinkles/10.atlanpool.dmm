@@ -1,22 +1,26 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3,
+/turf/closed/wall/upp_ship/grey,
+/area/atlan/station/hab_rec)
 "am" = (
 /obj/structure/bedsheetbin{
 	icon_state = "linenbin-empty"
 	},
-/turf/open/floor/whitered,
+/turf/open/floor/whiteblue,
 /area/atlan/station/hab_rec)
 "aC" = (
-/turf/closed/wall/strata_outpost/reinforced/hull,
-/area/atlan/oob)
+/turf/closed/wall/upp_ship/grey,
+/area/atlan/station/hab_rec)
 "bo" = (
 /obj/structure/machinery/light/double/blue,
-/turf/open/floor/whitered,
+/turf/open/floor/whiteblue,
 /area/atlan/station/hab_rec)
 "cS" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/wood_clock{
 	pixel_y = 38
 	},
-/turf/closed/wall/strata_outpost,
+/turf/closed/wall/upp_ship/grey,
 /area/atlan/station/hab_rec)
 "dw" = (
 /turf/open/floor/strata/multi_tiles/southeast,
@@ -25,7 +29,7 @@
 /obj/structure/surface/table/almayer,
 /obj/item/storage/firstaid/regular,
 /obj/item/storage/firstaid/regular,
-/turf/open/floor/whitered/north,
+/turf/open/floor/whiteblue/north,
 /area/atlan/station/hab_rec)
 "hP" = (
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3,
@@ -35,13 +39,13 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/turf/open/floor/whitered/west,
+/turf/open/floor/whiteblue/west,
 /area/atlan/station/hab_rec)
 "iE" = (
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/open/floor/whitered/north,
+/turf/open/floor/whiteblue/north,
 /area/atlan/station/hab_rec)
 "mb" = (
 /obj/item/toy/inflatable_duck,
@@ -57,66 +61,66 @@
 /area/atlan/station/hab_rec)
 "oU" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/whitered/north,
+/turf/open/floor/whiteblue/north,
 /area/atlan/station/hab_rec)
 "qc" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 4
 	},
-/turf/open/floor/whitered/east,
+/turf/open/floor/whiteblue/east,
 /area/atlan/station/hab_rec)
 "qT" = (
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/open/floor/whitered,
+/turf/open/floor/whiteblue,
 /area/atlan/station/hab_rec)
 "rj" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony,
-/turf/open/floor/strata/multi_tiles/west,
+/obj/structure/machinery/door/airlock/prison_hatch/alt/autoname,
+/turf/closed/wall/upp_ship/grey,
 /area/atlan/station/hab_rec)
 "rs" = (
 /obj/structure/sign/safety/water,
-/turf/closed/wall/strata_outpost,
+/turf/closed/wall/upp_ship/grey,
 /area/atlan/station/hab_rec)
 "rR" = (
 /obj/structure/machinery/power/apc/no_power/south,
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/turf/open/floor/whitered,
+/turf/open/floor/whiteblue,
 /area/atlan/station/hab_rec)
 "vd" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 4
 	},
 /obj/structure/bed/chair,
-/turf/open/floor/whitered/west,
+/turf/open/floor/whiteblue/west,
 /area/atlan/station/hab_rec)
 "wC" = (
-/turf/open/floor/whiteredcorner/west,
+/turf/open/floor/whitebluecorner/west,
 /area/atlan/station/hab_rec)
 "xH" = (
-/turf/open/floor/whitered/northwest,
+/turf/open/floor/whiteblue/northwest,
 /area/atlan/station/hab_rec)
 "yk" = (
 /obj/item/tool/wet_sign,
-/turf/open/floor/barber,
+/turf/open/floor/whitebluefull,
 /area/atlan/station/hab_rec)
 "yD" = (
 /obj/structure/bedsheetbin{
 	pixel_x = 1;
 	pixel_y = 3
 	},
-/turf/open/floor/whitered/southwest,
+/turf/open/floor/whiteblue/southwest,
 /area/atlan/station/hab_rec)
 "zM" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/binoculars,
-/turf/open/floor/whitered,
+/turf/open/floor/whiteblue,
 /area/atlan/station/hab_rec)
 "zZ" = (
-/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic,
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/hab_rec)
 "Az" = (
@@ -125,29 +129,29 @@
 	dir = 4
 	},
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/whitered,
+/turf/open/floor/whiteblue,
 /area/atlan/station/hab_rec)
 "Cb" = (
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/turf/open/floor/whitered,
+/turf/open/floor/whiteblue,
 /area/atlan/station/hab_rec)
 "Cv" = (
-/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic{
-	dir = 1
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname{
+	dir = 2
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/hab_rec)
 "Cw" = (
-/turf/open/floor/barber,
+/turf/open/floor/whitebluefull,
 /area/atlan/station/hab_rec)
 "EB" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/barber,
+/turf/open/floor/whitebluefull,
 /area/atlan/station/hab_rec)
 "EY" = (
-/turf/open/floor/whitered,
+/turf/open/floor/whiteblue,
 /area/atlan/station/hab_rec)
 "HL" = (
 /obj/item/toy/beach_ball,
@@ -158,46 +162,46 @@
 	color = "#98a3ab"
 	},
 /obj/item/toy/beach_ball,
-/turf/open/floor/whitered,
+/turf/open/floor/whiteblue,
 /area/atlan/station/hab_rec)
 "IZ" = (
-/turf/open/floor/whitered/west,
+/turf/open/floor/whiteblue/west,
 /area/atlan/station/hab_rec)
 "JD" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/open/floor/whitered/north,
+/turf/open/floor/whiteblue/north,
 /area/atlan/station/hab_rec)
 "Kc" = (
-/turf/open/floor/whitered/east,
+/turf/open/floor/whiteblue/east,
 /area/atlan/station/hab_rec)
 "Kg" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light/double/blue,
-/turf/open/floor/whitered,
+/turf/open/floor/whiteblue,
 /area/atlan/station/hab_rec)
 "Ku" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_rook,
-/turf/open/floor/whitered/west,
+/turf/open/floor/whiteblue/west,
 /area/atlan/station/hab_rec)
 "Lq" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 1;
 	pixel_y = 21
 	},
-/turf/open/floor/whitered/north,
+/turf/open/floor/whiteblue/north,
 /area/atlan/station/hab_rec)
 "Ob" = (
-/turf/open/floor/whitered/southeast,
+/turf/open/floor/whiteblue/southeast,
 /area/atlan/station/hab_rec)
 "Qt" = (
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/hab_rec)
 "Rf" = (
 /obj/structure/sign/safety/maint,
-/turf/closed/wall/strata_outpost,
+/turf/closed/wall/upp_ship/grey,
 /area/atlan/station/hab_rec)
 "Sf" = (
 /obj/structure/closet/secure_closet/personal,
@@ -205,67 +209,64 @@
 	dir = 4
 	},
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/whitered/northeast,
+/turf/open/floor/whiteblue/northeast,
 /area/atlan/station/hab_rec)
 "Sv" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 8
 	},
-/turf/open/floor/whitered/west,
-/area/atlan/station/hab_rec)
-"SQ" = (
-/turf/closed/wall/strata_outpost,
+/turf/open/floor/whiteblue/west,
 /area/atlan/station/hab_rec)
 "Ty" = (
 /turf/open/gm/river,
 /area/atlan/station/hab_rec)
 "TV" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/whitered/west,
+/turf/open/floor/white,
 /area/atlan/station/hab_rec)
 "Vu" = (
-/turf/open/floor/whitered/southwest,
+/turf/open/floor/whiteblue/southwest,
 /area/atlan/station/hab_rec)
 "VF" = (
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
 /obj/item/storage/firstaid/regular,
-/turf/open/floor/whitered/southeast,
+/turf/open/floor/whiteblue/southeast,
 /area/atlan/station/hab_rec)
 "Wo" = (
-/obj/structure/machinery/door/airlock/hybrisa/generic,
+/obj/structure/machinery/door/airlock/hybrisa/generic/autoname,
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/hab_rec)
 "WZ" = (
-/turf/open/floor/whiteredcorner,
+/turf/open/floor/whitebluecorner,
 /area/atlan/station/hab_rec)
 "Ye" = (
-/obj/structure/window/framed/strata,
+/obj/structure/window/framed/upp_ship/grey,
 /turf/open/floor/plating,
 /area/atlan/station/hab_rec)
 "Yg" = (
 /turf/open/floor/white,
 /area/atlan/station/hab_rec)
 "Yw" = (
-/turf/open/floor/whitered/north,
+/turf/open/floor/whiteblue/north,
 /area/atlan/station/hab_rec)
 
 (1,1,1) = {"
-SQ
+aC
 rs
 Wo
-SQ
-SQ
-SQ
-SQ
-SQ
+aC
+aC
+aC
+aC
+aC
 rj
-SQ
+aC
 aC
 "}
 (2,1,1) = {"
-SQ
+aC
 xH
 TV
 Sv
@@ -304,7 +305,7 @@ Yg
 am
 "}
 (5,1,1) = {"
-dw
+zZ
 Yg
 Cw
 Ty
@@ -379,7 +380,7 @@ Ty
 Ty
 Cw
 bo
-SQ
+aC
 "}
 (11,1,1) = {"
 Ye
@@ -392,7 +393,7 @@ Ty
 Ty
 Cw
 rR
-SQ
+aC
 "}
 (12,1,1) = {"
 Ye
@@ -405,10 +406,10 @@ Ty
 Ty
 Cw
 Cb
-SQ
+aC
 "}
 (13,1,1) = {"
-SQ
+aC
 Lq
 Cw
 Ty
@@ -418,7 +419,7 @@ Ty
 Ty
 Cw
 EY
-SQ
+aC
 "}
 (14,1,1) = {"
 zZ
@@ -444,7 +445,7 @@ Ty
 Ty
 Cw
 Az
-hP
+aa
 "}
 (16,1,1) = {"
 rs
@@ -457,7 +458,7 @@ Ty
 Ty
 Cw
 zM
-SQ
+aC
 "}
 (17,1,1) = {"
 Ye
@@ -470,7 +471,7 @@ Ty
 Ty
 Cw
 qT
-SQ
+aC
 "}
 (18,1,1) = {"
 Ye
@@ -486,7 +487,7 @@ IB
 aC
 "}
 (19,1,1) = {"
-SQ
+aC
 Sf
 Kc
 qc
@@ -499,15 +500,15 @@ VF
 aC
 "}
 (20,1,1) = {"
-SQ
-SQ
-SQ
+aC
+aC
+aC
 cS
 Qt
 Cv
 rs
-SQ
-SQ
+aC
+aC
 aC
 aC
 "}

@@ -1,9 +1,6 @@
 /// Low end of the LTB's aiming laser opacity ramp
 #define LTB_LASER_MIN_ALPHA 50
 
-/// Multiply-tint applied to the "dark" phase of the flicker
-#define LTB_LASER_DARK_TINT "#787878"
-
 /obj/item/hardpoint/primary/cannon
 	name = "\improper LTB Cannon"
 	desc = "A primary cannon for tanks that shoots explosive rounds."
@@ -49,6 +46,8 @@
 
 	var/image/lockon_icon
 	var/image/lockon_direction_icon
+	var/lockon_pixel_x = 0
+	var/lockon_pixel_y = 0
 	var/datum/beam/laser_beam
 	var/obj/effect/beam_anchor/anchor
 	/// Incrementted every start_aim_visuals(), lets a stale cycle_laser_color() invocation from a
@@ -65,6 +64,7 @@
  */
 /obj/item/hardpoint/primary/cannon/handle_fire(atom/target, mob/living/user, params)
 	if(charging)
+		SEND_SIGNAL(src, COMSIG_GUN_INTERRUPT_FIRE)
 		return NONE
 
 	if(!isliving(target))
@@ -123,28 +123,14 @@
 /obj/item/hardpoint/primary/cannon/start_aim_visuals(atom/target, mob/living/user)
 	anchor = new(get_origin_turf())
 	charge_start_time = world.time
-	build_lockon_icons(target)
-	apply_beam_visuals(target, FALSE)
-	aim_generation++
-	INVOKE_ASYNC(src, PROC_REF(cycle_laser_color), target, aim_generation)
-
-//Builds the two reticle overlay images once for the whole charge
-/obj/item/hardpoint/primary/cannon/proc/build_lockon_icons(atom/target)
-	var/turf/origin_turf = get_origin_turf()
 
 	var/mob/living_target = target
-	var/x_offset = -living_target.pixel_x + living_target.base_pixel_x
-	var/y_offset = (living_target.icon_size - world.icon_size) * 0.5 - living_target.pixel_y + living_target.base_pixel_y
+	lockon_pixel_x = -living_target.pixel_x + living_target.base_pixel_x
+	lockon_pixel_y = (living_target.icon_size - world.icon_size) * 0.5 - living_target.pixel_y + living_target.base_pixel_y
 
-	lockon_icon = image(icon = 'icons/effects/Targeted.dmi', icon_state = "sniper_lockon_intense")
-	lockon_icon.pixel_x = x_offset
-	lockon_icon.pixel_y = y_offset
-	target.overlays += lockon_icon
-
-	lockon_direction_icon = image(icon = 'icons/effects/Targeted.dmi', icon_state = "sniper_lockon_intense_direction", dir = get_cardinal_dir(target, origin_turf))
-	lockon_direction_icon.pixel_x = x_offset
-	lockon_direction_icon.pixel_y = y_offset
-	target.overlays += lockon_direction_icon
+	apply_beam_visuals(target, TRUE)
+	aim_generation++
+	INVOKE_ASYNC(src, PROC_REF(cycle_laser_color), target, aim_generation)
 
 /**
  * Recolors the (already-built) reticle icons and rebuilds the beam using the AMR's focused-fire beam,
@@ -156,17 +142,26 @@
  * The intent, with the flickering, and the blue color of the AMR focused shot, is to make it clear for xenos that
  * they are being targeted by something dangerous.
  */
-/obj/item/hardpoint/primary/cannon/proc/apply_beam_visuals(atom/target, use_dark_look)
+/obj/item/hardpoint/primary/cannon/proc/apply_beam_visuals(atom/target, use_intense)
 	var/turf/origin_turf = get_origin_turf()
 
-	lockon_icon.color = use_dark_look ? LTB_LASER_DARK_TINT : null
-	lockon_direction_icon.color = use_dark_look ? LTB_LASER_DARK_TINT : null
-	lockon_direction_icon.dir = get_cardinal_dir(target, origin_turf)
+	if(lockon_icon)
+		target.overlays -= lockon_icon
+	if(lockon_direction_icon)
+		target.overlays -= lockon_direction_icon
+
+	lockon_icon = image(icon = 'icons/effects/Targeted.dmi', icon_state = use_intense ? "sniper_lockon_intense" : "sniper_lockon")
+	lockon_icon.pixel_x = lockon_pixel_x
+	lockon_icon.pixel_y = lockon_pixel_y
+	target.overlays += lockon_icon
+
+	lockon_direction_icon = image(icon = 'icons/effects/Targeted.dmi', icon_state = use_intense ? "sniper_lockon_intense_direction" : "sniper_lockon_direction", dir = get_cardinal_dir(target, origin_turf))
+	lockon_direction_icon.pixel_x = lockon_pixel_x
+	lockon_direction_icon.pixel_y = lockon_pixel_y
+	target.overlays += lockon_direction_icon
 
 	QDEL_NULL(laser_beam)
-	laser_beam = anchor.beam(target, "laser_beam_intense", 'icons/effects/beam.dmi', (f_aiming_time + 1 SECONDS), beam_type = /obj/effect/ebeam/laser/intense/tank_mounted)
-	if(use_dark_look)
-		laser_beam.visuals.color = LTB_LASER_DARK_TINT
+	laser_beam = anchor.beam(target, use_intense ? "laser_beam_intense" : "laser_beam", 'icons/effects/beam.dmi', (f_aiming_time + 1 SECONDS), beam_type = /obj/effect/ebeam/laser/intense/tank_mounted)
 
 	var/elapsed = world.time - charge_start_time
 	var/current_progress = clamp(elapsed / f_aiming_time, 0, 1)
@@ -174,16 +169,15 @@
 	laser_beam.visuals.alpha = LTB_LASER_MIN_ALPHA + (255 - LTB_LASER_MIN_ALPHA) * current_progress
 	animate(laser_beam.visuals, alpha = LTB_LASER_MIN_ALPHA + (255 - LTB_LASER_MIN_ALPHA) * next_progress, 0.5 SECONDS, easing = SINE_EASING|EASE_OUT)
 
-/// Flickers the reticle/beam between the AMR-intense blue's native brightness and a darker shade of
-/// the same blue about twice a second while charging
+/// Flickers the reticle/beam between red and blue about twice a second while charging
 /obj/item/hardpoint/primary/cannon/proc/cycle_laser_color(atom/locked_target, my_generation)
-	var/use_dark_look = FALSE
+	var/use_intense = TRUE
 	while(laser_beam && !QDELETED(laser_beam) && !QDELETED(locked_target) && aim_generation == my_generation)
 		sleep(5)
 		if(!laser_beam || QDELETED(laser_beam) || QDELETED(locked_target) || aim_generation != my_generation)
 			break
-		use_dark_look = !use_dark_look
-		apply_beam_visuals(locked_target, use_dark_look)
+		use_intense = !use_intense
+		apply_beam_visuals(locked_target, use_intense)
 
 /obj/item/hardpoint/primary/cannon/on_track_tick(atom/target)
 	if(!anchor)

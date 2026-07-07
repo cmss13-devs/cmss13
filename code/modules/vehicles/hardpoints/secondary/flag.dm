@@ -120,6 +120,10 @@
 	if(signal && signal.z_initial != owner_turf.z)
 		signal.z_initial = owner_turf.z
 
+	// Keep the CAS camera view following the tank.
+	if(signal?.linked_cam && signal.linked_cam.loc != owner_turf)
+		signal.linked_cam.forceMove(owner_turf)
+
 	range_bounds = SQUARE(owner_turf.x, owner_turf.y, buff_range)
 
 	var/list/targets = SSquadtree.players_in_range(range_bounds, owner_turf.z, QTREE_SCAN_MOBS | QTREE_FILTER_LIVING)
@@ -142,18 +146,6 @@
 	if(flag_active)
 		deactivate_flag()
 	..()
-
-// Movement handling, update buff area when vehicle moves
-/obj/item/hardpoint/secondary/united_americas_flag/on_move(turf/old, turf/new_turf, move_dir)
-	..()
-	if(flag_active)
-		// Force immediate buff reapplication at new position
-		apply_area_effect()
-		// Keep the CAS camera view following the tank
-		if(signal?.linked_cam)
-			var/turf/owner_turf = get_turf(owner)
-			if(owner_turf)
-				signal.linked_cam.forceMove(owner_turf)
 
 #undef PLANTED_FLAG_BUFF
 #undef PLANTED_FLAG_RANGE

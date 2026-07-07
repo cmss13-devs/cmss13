@@ -361,6 +361,11 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	PRIVATE_PROC(TRUE)
 	var/turf/current_turf = get_turf(src)
+
+	// Lets homing-style components continuously re-aim toward their live ttarget
+	// keeps the shot actually curving to follow a moving target over the whole flight.
+	SEND_SIGNAL(src, COMSIG_BULLET_STEP)
+
 	var/turf/next_turf = popleft(path)
 
 	// Terminal projectiles (about to hit) are handled firer for retarget logic
@@ -411,6 +416,7 @@
 	path.Cut(1, 2) // remove the turf we're already on
 	var/atom/source = keep_angle ? original : current_turf
 	update_angle(source, new_target)
+	target_turf = get_turf(new_target)
 
 /obj/projectile/proc/scan_a_turf(turf/turf, proj_dir)
 	. = TRUE // Sleep safeguard: stop the bullet

@@ -101,6 +101,7 @@
 	/// track_and_charge() loop. Distinct from fire_wait_cancelled, which guards a different wait
 	/// (arc-entry, not an active charge) and could otherwise interfere if both were active at once.
 	var/charge_cancelled = FALSE
+	var/trigger_held = FALSE
 
 	// Muzzleflash
 	var/use_muzzle_flash = FALSE
@@ -573,6 +574,7 @@
 
 /// Reset variables used in firing and remove the gun from the autofire system.
 /obj/item/hardpoint/proc/stop_fire(datum/source, atom/object, turf/location, control, params)
+	trigger_held = FALSE
 	SEND_SIGNAL(src, COMSIG_GUN_STOP_FIRE)
 	if(auto_firing)
 		reset_fire() //automatic fire doesn't reset itself from COMSIG_GUN_STOP_FIRE
@@ -595,6 +597,7 @@
 		return
 
 	set_target(get_turf_on_clickcatcher(object, source, params))
+	trigger_held = TRUE
 
 	if(gun_firemode == GUN_FIREMODE_SEMIAUTO)
 		INVOKE_ASYNC(src, PROC_REF(fire_semiauto), object, source, params)
@@ -669,7 +672,7 @@
 	. = TRUE
 	while(!in_firing_arc(target))
 		sleep(1)
-		if(fire_wait_cancelled || QDELETED(src) || QDELETED(target) || health <= 0 || (ammo && ammo.current_rounds <= 0))
+		if(fire_wait_cancelled || !trigger_held || QDELETED(src) || QDELETED(target) || health <= 0 || (ammo && ammo.current_rounds <= 0))
 			. = FALSE
 			break
 
@@ -727,9 +730,15 @@
 		sleep(1)
 		elapsed += 1
 
-		if(charge_cancelled || QDELETED(src) || QDELETED(target) || health <= 0 || (ammo && ammo.current_rounds <= 0))
+		if(charge_cancelled || !trigger_held || QDELETED(src) || QDELETED(target) || health <= 0 || (ammo && ammo.current_rounds <= 0))
 			. = FALSE
 			break
+
+		if(isliving(target))
+			var/mob/living/living_target = target
+			if(living_target.is_dead())
+				. = FALSE
+				break
 
 		var/turf/origin_turf = get_origin_turf()
 		var/turf/target_turf = get_turf(target)
@@ -737,29 +746,35 @@
 			. = FALSE
 			break
 
-		// Angle uses the target atom itself, not target_turf
-		var/angle_to_target = Get_Angle_Grounded(origin_turf, target)
-		var/obj/item/hardpoint/rotation_owner = get_rotation_owner()
-		var/obj/item/hardpoint/holder/tank_turret/mount = self_gimballed ? loc : null
+		try
+			// Angle uses the target atom itself, not target_turf
+			var/angle_to_target = Get_Angle_Grounded(origin_turf, target)
+			var/obj/item/hardpoint/rotation_owner = get_rotation_owner()
+			var/obj/item/hardpoint/holder/tank_turret/mount = self_gimballed ? loc : null
 
-		if(istype(mount)) // self-gimballed, mounted on a turret
-			var/turret_facing = mount.current_angle
-			var/raw_delta = angle_delta(angle_to_target, turret_facing)
-			if(abs(raw_delta) > SLAVED_GIMBAL_ARC_HALF_WIDTH)
-				to_chat(user, SPAN_WARNING("Target moved out of the firing arc!"))
-				. = FALSE
-				break
-			var/swing = clamp(raw_delta, -SLAVED_GIMBAL_ARC_HALF_WIDTH, SLAVED_GIMBAL_ARC_HALF_WIDTH)
-			rotation_owner.desired_angle = ((turret_facing + swing) % 360 + 360) % 360
-		else
-			rotation_owner.desired_angle = angle_to_target
-			if(traverse_arc && abs(angle_delta(angle_to_target, rotation_owner.current_angle)) > traverse_arc * 0.5)
-				to_chat(user, SPAN_WARNING("Target moved out of the firing arc!"))
-				. = FALSE
-				break
+			if(istype(mount)) // self-gimballed, mounted on a turret
+				var/turret_facing = mount.current_angle
+				var/raw_delta = angle_delta(angle_to_target, turret_facing)
+				if(abs(raw_delta) > SLAVED_GIMBAL_ARC_HALF_WIDTH)
+					to_chat(user, SPAN_WARNING("Target moved out of the firing arc!"))
+					. = FALSE
+				else
+					var/swing = clamp(raw_delta, -SLAVED_GIMBAL_ARC_HALF_WIDTH, SLAVED_GIMBAL_ARC_HALF_WIDTH)
+					rotation_owner.desired_angle = ((turret_facing + swing) % 360 + 360) % 360
+			else
+				rotation_owner.desired_angle = angle_to_target
+				if(traverse_arc && abs(angle_delta(angle_to_target, rotation_owner.current_angle)) > traverse_arc * 0.5)
+					to_chat(user, SPAN_WARNING("Target moved out of the firing arc!"))
+					. = FALSE
+			if(. != FALSE)
+				rotation_owner.start_rotation_if_needed()
+				on_track_tick(target)
+		catch(var/exception/tick_error)
+			log_runtime(tick_error)
+			. = FALSE
 
-		rotation_owner.start_rotation_if_needed()
-		on_track_tick(target)
+		if(. == FALSE)
+			break
 
 	UnregisterSignal(src, list(COMSIG_GUN_STOP_FIRE, COMSIG_GUN_INTERRUPT_FIRE))
 	end_aim_visuals(target, user, .)
@@ -993,6 +1008,7 @@
 	// actually standing on, which is what actually needs to be hit. very shittty bug to fix during testing
 	// which made the autocannon and minigun DPS plummet.
 	desired_angle = Get_Angle_Grounded(origin_turf, aim_target)
+	desired_angle = Get_Angle_Grounded(origin_turf, target_turf)
 
 	if(self_gimballed)
 		var/obj/item/hardpoint/holder/tank_turret/turret = loc

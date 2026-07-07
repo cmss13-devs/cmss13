@@ -53,6 +53,7 @@
 
 /obj/item/hardpoint/secondary/brute_launcher/handle_fire(atom/target, mob/living/user, params)
 	if(charging)
+		SEND_SIGNAL(src, COMSIG_GUN_INTERRUPT_FIRE)
 		return NONE
 
 	if(!(istype(target, /obj/structure) || istype(target, /turf/closed/wall)))

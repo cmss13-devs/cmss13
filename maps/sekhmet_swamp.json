@@ -26,8 +26,11 @@
     "CO_insert_survivor_types": [
         "/datum/equipment_preset/survivor/clf/coordinator"
     ],
+    "colony_joe_types": [
+        "/datum/job/antag/upp/dzho_automaton/colony"
+    ],
     "map_item_type": "/obj/item/map/sekhmet_swamp_map",
-    "announce_text": "An automated distress signal has been recieved from a Union of Progressive People's experimental medical research colony on border world SI-391, \"Sekhmet Swamp\". Authorization has been granted for a response team from the ###SHIPNAME### to conduct a reconnaissance in force.",
+    "announce_text": "An automated distress signal has been recieved from a Union of Progressive People's experimental medical research colony on the border world SI-391, \"Sekhmet Swamp\". Authorization has been granted for a response team from the ###SHIPNAME### to conduct a reconnaissance in force.",
     "monkey_types": [
         "stok"
     ],

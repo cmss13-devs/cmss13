@@ -111,7 +111,7 @@
 /datum/action/xeno_action/activable/pounce/base_prae_dash/start_airbone()
 	var/mob/living/carbon/xenomorph/xeno = owner
 
-	ADD_TRAIT(xeno, TRAIT_ABILITY_AIRBONE, TRAIT_SOURCE_ABILITY("airbone"))
+	ADD_TRAIT(xeno, TRAIT_ABILITY_POUNCE, TRAIT_SOURCE_ABILITY("pounce"))
 
 
 /datum/action/xeno_action/activable/prae_acid_ball/use_ability(atom/target_atom)

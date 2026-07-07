@@ -113,7 +113,7 @@
 /datum/action/xeno_action/activable/pounce/runner/start_airbone()
 	var/mob/living/carbon/xenomorph/xeno = owner
 
-	ADD_TRAIT(xeno, TRAIT_ABILITY_AIRBONE , TRAIT_SOURCE_ABILITY("airbone"))
+	ADD_TRAIT(xeno, TRAIT_ABILITY_POUNCE, TRAIT_SOURCE_ABILITY("pounce"))
 
 /datum/action/xeno_action/activable/runner_skillshot/use_ability(atom/affected_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner

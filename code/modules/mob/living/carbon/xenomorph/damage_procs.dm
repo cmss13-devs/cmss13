@@ -331,7 +331,7 @@
 			fire.set_on_fire(src) //Deals an extra proc of fire when you're crossing it. 30 damage per tile crossed, plus 15 per Process().
 			next_move_slowdown = next_move_slowdown + (SLOWDOWN_AMT_GREENFIRE * resist_modifier)
 			if(resist_modifier > 0)
-				if(!HAS_TRAIT(src, TRAIT_ABILITY_AIRBONE))
+				if(!HAS_TRAIT(src, TRAIT_ABILITY_POUNCE))
 					to_chat(src, SPAN_DANGER("We feel pieces of our exoskeleton fusing with the viscous fluid below and tearing off as we struggle to move through the flames!"))
 				else
 					if(!prob(75))

@@ -269,11 +269,10 @@
 #define TRAIT_ABILITY_SIGHT_IGNORE_REST "t_ability_sight_ignore_rest"
 /// Xenos with this trait cannot spit multiple times.
 #define TRAIT_ABILITY_SPITTING "t_ability_charge_spitting"
-/// Used by xenos that are mid-flight like pounce or jump.
-#define TRAIT_ABILITY_AIRBONE "t_ability_airbone"
 
 
 // -- specific ability traits --
+#define TRAIT_ABILITY_POUNCE "t_ability_pounce"
 #define TRAIT_ABILITY_ASSASINATE "t_ability_assasinate"
 #define TRAIT_ABILITY_INVIS "t_ability_invis"
 #define TRAIT_ABILITY_LUNGE "t_ability_lunge"

@@ -484,7 +484,7 @@
 	if(duration_timer_id != TIMER_ID_NULL)
 		deltimer(duration_timer_id)
 
-	duration_timer_id = addtimer(CALLBACK(src, PROC_REF(end_duration_display)), duration, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE)
+	duration_timer_id = addtimer(CALLBACK(src, PROC_REF(end_duration_display)), duration, TIMER_STOPPABLE)
 
 	current_duration_start_time = world.time
 	current_duration_duration = duration

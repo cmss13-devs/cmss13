@@ -8,6 +8,7 @@
 	name = "reinforced hull"
 	damage_cap = HEALTH_WALL_REINFORCED
 	// get a walltype for a ribbed here? for r-wall visual representation?
+	icon = 'icons/turf/walls/upp_grey_ribbed.dmi'
 	icon_state = "uppwall_reinforced"
 
 /turf/closed/wall/upp_ship/grey/reinforced/outer
@@ -25,6 +26,7 @@
 	name = "reinforced hull"
 	damage_cap = HEALTH_WALL_REINFORCED
 	// get a walltype for a ribbed here? for r-wall visual representation?
+	icon = 'icons/turf/walls/upp_grey_orange_ribbed.dmi'
 	icon_state = "uppwall_reinforced"
 
 /turf/closed/wall/upp_ship/grey/orange/reinforced/outer
@@ -42,6 +44,7 @@
 	name = "reinforced hull"
 	damage_cap = HEALTH_WALL_REINFORCED
 	// get a walltype for a ribbed here? for r-wall visual representation?
+	icon = 'icons/turf/walls/upp_grey_blue_ribbed.dmi'
 	icon_state = "uppwall_reinforced"
 
 /turf/closed/wall/upp_ship/grey/blue/reinforced/outer
@@ -59,6 +62,7 @@
 	name = "reinforced hull"
 	damage_cap = HEALTH_WALL_REINFORCED
 	// get a walltype for a ribbed here? for r-wall visual representation?
+	icon = 'icons/turf/walls/upp_grey_green_ribbed.dmi'
 	icon_state = "uppwall_reinforced"
 
 /turf/closed/wall/upp_ship/grey/green/reinforced/outer
@@ -76,6 +80,7 @@
 	name = "reinforced hull"
 	damage_cap = HEALTH_WALL_REINFORCED
 	// get a walltype for a ribbed here? for r-wall visual representation?
+	icon = 'icons/turf/walls/upp_grey_red_ribbed.dmi'
 	icon_state = "uppwall_reinforced"
 
 /turf/closed/wall/upp_ship/grey/red/reinforced/outer
@@ -93,6 +98,7 @@
 	name = "reinforced hull"
 	damage_cap = HEALTH_WALL_REINFORCED
 	// get a walltype for a ribbed here? for r-wall visual representation?
+	icon = 'icons/turf/walls/upp_grey_teal_ribbed.dmi'
 	icon_state = "uppwall_reinforced"
 
 /turf/closed/wall/upp_ship/grey/teal/reinforced/outer

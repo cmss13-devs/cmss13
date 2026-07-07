@@ -1191,7 +1191,7 @@
 /turf/open/floor/interior/plastic,
 /area/atlan/station/double_dorms)
 "adZ" = (
-/obj/structure/machinery/power/apc/no_power/north,
+/obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/prison/darkyellowfull2,
 /area/atlan/station/medical_maint)
 "aea" = (
@@ -1529,6 +1529,10 @@
 "aeZ" = (
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3,
 /turf/closed/wall/upp_ship/grey,
+/area/atlan/station/hab_docks)
+"afa" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname,
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/hab_docks)
 "afb" = (
 /obj/structure/disposalpipe/segment{
@@ -4202,8 +4206,8 @@
 /turf/open/floor/strata/yellow3/northeast,
 /area/atlan/station/hab_docks)
 "amE" = (
-/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic,
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/hab_docks)
 "amF" = (
@@ -4817,8 +4821,8 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/atlan/asteroid/processing_handling)
 "aoL" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2/autoname,
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic_solid/autoname,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/asteroid/sensors)
 "aoM" = (
@@ -5347,6 +5351,11 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata,
 /area/atlan/comms/lz2_hab_relay)
+"aqs" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/athletic_mixed,
+/turf/open/floor/whitered,
+/area/atlan/station/hab_rec)
 "aqt" = (
 /obj/structure/pipes/vents/scrubber,
 /turf/open/floor/strata,
@@ -6028,12 +6037,6 @@
 	dir = 4
 	},
 /turf/open/floor/prison/sterile_white,
-/area/atlan/station/botany)
-"asA" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/strata,
 /area/atlan/station/botany)
 "asB" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan{
@@ -7976,16 +7979,6 @@
 /obj/structure/window/framed/upp_ship/grey/orange/hull,
 /turf/open/space/basic,
 /area/atlan/oob/space)
-"ayS" = (
-/obj/structure/machinery/door/airlock/prison_hatch/alt,
-/turf/open/space/basic,
-/area/atlan/oob/space)
-"ayT" = (
-/obj/structure/machinery/door/airlock/prison_hatch/alt{
-	dir = 2
-	},
-/turf/open/space/basic,
-/area/atlan/oob/space)
 "ayU" = (
 /turf/closed/wall/upp_ship/grey,
 /area/atlan/oob/space)
@@ -8548,6 +8541,11 @@
 	},
 /turf/open/floor/strata,
 /area/atlan/station/single_dorms)
+"aAX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/athletic_mixed,
+/turf/open/floor/whitered/west,
+/area/atlan/station/hab_rec)
 "aAY" = (
 /obj/structure/sign/poster/art,
 /turf/closed/wall/upp_ship/grey,
@@ -9266,10 +9264,6 @@
 /obj/structure/machinery/vending/cigarette,
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/repairoffice)
-"aDz" = (
-/obj/structure/machinery/power/apc/power/south,
-/turf/open/floor/strata/floor2,
-/area/atlan/station/repairs_lift)
 "aDA" = (
 /obj/structure/closet/firecloset/full,
 /obj/item/clothing/head/helmet/marine/veteran/UPP/firefighter,
@@ -9278,6 +9272,14 @@
 	dir = 1
 	},
 /turf/open/floor/strata/orange_edge/west,
+/area/atlan/lz/near_lz1)
+"aDB" = (
+/obj/structure/closet/athletic_mixed,
+/turf/open/floor/whitered/west,
+/area/atlan/station/hab_rec)
+"aDC" = (
+/obj/structure/machinery/power/apc/power/east,
+/turf/open/floor/strata/floor2,
 /area/atlan/lz/near_lz1)
 "aDD" = (
 /obj/effect/decal/strata_decals/grasses,
@@ -10905,9 +10907,6 @@
 /obj/structure/curtain/red,
 /turf/open/floor/plating,
 /area/atlan/station/double_dorms)
-"bRp" = (
-/turf/open/floor/strata,
-/area/atlan/station/botany)
 "bRA" = (
 /obj/structure/reagent_dispensers/water_cooler,
 /turf/open/floor/strata/orange_cover,
@@ -13505,9 +13504,8 @@
 /turf/open/floor/strata,
 /area/atlan/station/walkway)
 "dHA" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	dir = 2;
-	name = "Hydroponics"
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname{
+	dir = 2
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/botany)
@@ -14172,9 +14170,7 @@
 /turf/open/floor/upp_hull/outerhull_dir/west,
 /area/atlan/station/drydock)
 "eeq" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "Hydroponics"
-	},
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/botany_storage)
 "eeA" = (
@@ -18674,9 +18670,6 @@
 	},
 /turf/open/floor/strata/red1,
 /area/atlan/station/security)
-"hlC" = (
-/turf/closed/wall/hybrisa/colony,
-/area/atlan/station/water_tanks)
 "hlD" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -18773,15 +18766,6 @@
 /obj/item/storage/briefcase/inflatable,
 /obj/item/storage/briefcase/inflatable,
 /obj/item/storage/briefcase/inflatable,
-/obj/structure/surface/rack{
-	color = "#98a3ab";
-	pixel_y = 19;
-	layer = 3
-	},
-/obj/item/tool/weldingtool/simple{
-	pixel_y = 25;
-	pixel_x = -2
-	},
 /turf/open/floor/plating/prison,
 /area/atlan/station/substation)
 "hqc" = (
@@ -22937,7 +22921,7 @@
 	dir = 4
 	},
 /turf/open/floor/strata,
-/area/atlan/station/botany)
+/area/atlan/station/walkway)
 "jTL" = (
 /obj/structure/surface/rack{
 	color = "#98a3ab"
@@ -25584,10 +25568,6 @@
 	},
 /turf/open/floor/strata/red1,
 /area/atlan/station/security)
-"lNa" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2/autoname,
-/turf/open/floor/strata/multi_tiles/southeast,
-/area/atlan/asteroid/sensors)
 "lNn" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -29053,10 +29033,6 @@
 	},
 /turf/open/floor/strata/floor3/east,
 /area/atlan/comms/lz2_canteen)
-"oeJ" = (
-/obj/structure/machinery/power/apc/no_power/west,
-/turf/open/floor/strata/floor3/east,
-/area/atlan/lz/near_lz1)
 "oeO" = (
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/cargo)
@@ -30610,7 +30586,7 @@
 /turf/open/floor/strata/floor2,
 /area/atlan/station/cargooffice)
 "phg" = (
-/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic,
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/hab_sec)
 "phk" = (
@@ -31048,7 +31024,7 @@
 	},
 /obj/structure/platform/metal/strata,
 /turf/open/floor/strata,
-/area/atlan/station/botany)
+/area/atlan/station/walkway)
 "pwr" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 2
@@ -31079,9 +31055,7 @@
 	},
 /area/atlan/station/hab_docks)
 "pxr" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "Hydroponics"
-	},
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/botany)
 "pxy" = (
@@ -33521,7 +33495,7 @@
 /turf/closed/wall/upp_ship/grey,
 /area/atlan/lz/near_lz2)
 "rao" = (
-/obj/structure/machinery/power/apc/no_power/east,
+/obj/structure/machinery/power/apc/power/east,
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_offices)
 "rbh" = (
@@ -34101,7 +34075,7 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/hab_flight)
 "ryS" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2/autoname{
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic_solid/autoname{
 	dir = 2
 	},
 /turf/open/floor/strata/multi_tiles/west,
@@ -35614,7 +35588,7 @@
 /turf/open/floor/strata/red1,
 /area/atlan/station/hab_docks)
 "svO" = (
-/obj/structure/machinery/power/apc/no_power/north,
+/obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/prison/blue_plate/north,
 /area/atlan/station/water_tanks)
 "swo" = (
@@ -36643,8 +36617,8 @@
 /turf/open/floor/strata,
 /area/atlan/asteroid/exports_east)
 "thc" = (
-/obj/structure/machinery/power/apc/no_power/west,
 /obj/flamer_fire,
+/obj/structure/machinery/power/apc/power/west,
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_nw_train)
 "thl" = (
@@ -40075,7 +40049,7 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/atlan/station/cargo)
 "vuS" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2/glass/autoname,
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic_solid/autoname,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/asteroid/sensors)
 "vuT" = (
@@ -40452,6 +40426,7 @@
 "vJn" = (
 /obj/structure/closet,
 /obj/effect/landmark/objective_landmark/close,
+/obj/item/tool/weldingtool/simple,
 /turf/open/floor/plating/prison,
 /area/atlan/station/substation)
 "vJS" = (
@@ -95597,8 +95572,8 @@ alD
 alD
 alD
 alD
-ayS
-ayK
+alD
+alD
 alD
 alD
 alD
@@ -95809,8 +95784,8 @@ alD
 alD
 alD
 alD
-ayT
-ayL
+alD
+alD
 alD
 alD
 alD
@@ -96229,17 +96204,17 @@ alD
 alD
 alD
 alD
-azp
-azj
-azd
 alD
-ayU
-ayM
-ayE
 alD
-ayy
-auD
-ain
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 alD
 alD
@@ -96441,17 +96416,17 @@ alD
 alD
 alD
 alD
-azq
-azk
-aze
 alD
-ayW
-ayN
-ayF
 alD
-ayz
-ayt
-aiV
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 alD
 alD
@@ -96653,17 +96628,17 @@ alD
 alD
 alD
 alD
-azr
-azl
-azf
-alD
-ayX
-ayO
 alD
 alD
-ayA
-ayu
-aiW
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 alD
 alD
@@ -97077,17 +97052,17 @@ alD
 alD
 alD
 alD
-azs
-azm
-azg
 alD
-ayY
-ayP
-ayG
 alD
-ayB
-ayv
-aiX
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 alD
 alD
@@ -97289,17 +97264,17 @@ alD
 alD
 alD
 alD
-azu
-azn
-azh
 alD
-ayZ
-ayQ
-ayH
 alD
-ayC
-ayw
-ajV
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 alD
 alD
@@ -97501,17 +97476,17 @@ alD
 alD
 alD
 alD
-azv
-azo
-azi
 alD
-aza
-ayR
-ayJ
 alD
-ayD
-ayx
-atE
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 alD
 alD
@@ -97961,7 +97936,7 @@ qxj
 lzk
 oTC
 mIS
-oeJ
+vUh
 pMv
 oBN
 cZP
@@ -102613,7 +102588,7 @@ eOT
 quM
 eOT
 kvm
-tBt
+aDC
 iBA
 oQW
 wQb
@@ -107500,7 +107475,7 @@ djG
 djG
 djG
 djG
-aAj
+agj
 cvn
 mrP
 pZP
@@ -107711,8 +107686,8 @@ djG
 djG
 kSN
 djG
-aAj
-aAj
+agj
+agj
 tkB
 giW
 giW
@@ -107834,7 +107809,7 @@ agg
 ohy
 ohy
 cCk
-wXl
+afa
 ohy
 sub
 pKE
@@ -107923,7 +107898,7 @@ lou
 djG
 kSN
 gkb
-aAj
+agj
 tQF
 hGZ
 giW
@@ -109195,7 +109170,7 @@ gTu
 djG
 kSN
 gkb
-aAj
+agj
 wno
 hGZ
 giW
@@ -109407,8 +109382,8 @@ djG
 djG
 kSN
 djG
-aAj
-aAj
+agj
+agj
 iFJ
 giW
 giW
@@ -109620,7 +109595,7 @@ djG
 djG
 djG
 djG
-aAj
+agj
 cvn
 mrP
 pZP
@@ -109717,8 +109692,8 @@ ohH
 gdd
 dJU
 uqc
-kES
-gdd
+aDB
+aAX
 kES
 kES
 tIM
@@ -110572,7 +110547,7 @@ hNr
 mtP
 mtP
 mtP
-afE
+aqs
 tWn
 alO
 pwN
@@ -111726,7 +111701,7 @@ pjT
 akx
 ayn
 ayo
-aDz
+pjT
 agj
 gdC
 kib
@@ -115616,8 +115591,8 @@ lnR
 tcX
 oil
 aSd
-asA
-bRp
+anK
+tmn
 ggm
 mBo
 ubh
@@ -115781,7 +115756,7 @@ aSd
 aSd
 aSd
 aSd
-hlC
+iGi
 svO
 qBc
 qBc
@@ -116675,7 +116650,7 @@ vch
 bJt
 asQ
 nuD
-oCj
+aAf
 aAf
 wnq
 qfx
@@ -117172,8 +117147,8 @@ alD
 alD
 alD
 alD
-ayS
-ayK
+alD
+alD
 alD
 alD
 alD
@@ -117384,8 +117359,8 @@ alD
 alD
 alD
 alD
-ayT
-ayL
+alD
+alD
 alD
 alD
 alD
@@ -117523,7 +117498,7 @@ tYq
 bJt
 asQ
 nuD
-oCj
+aAf
 aAf
 qob
 pIc
@@ -117804,17 +117779,17 @@ alD
 alD
 alD
 alD
-azp
-azj
-azd
 alD
-ayU
-ayM
-ayE
 alD
-ayy
-auD
-ain
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 alD
 alD
@@ -118016,17 +117991,17 @@ alD
 alD
 alD
 alD
-azq
-azk
-aze
 alD
-ayW
-ayN
-ayF
 alD
-ayz
-ayt
-aiV
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 alD
 alD
@@ -118228,17 +118203,17 @@ alD
 alD
 alD
 alD
-azr
-azl
-azf
-alD
-ayX
-ayO
 alD
 alD
-ayA
-ayu
-aiW
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 alD
 alD
@@ -118652,17 +118627,17 @@ alD
 alD
 alD
 alD
-azs
-azm
-azg
 alD
-ayY
-ayP
-ayG
 alD
-ayB
-ayv
-aiX
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 alD
 alD
@@ -118864,17 +118839,17 @@ alD
 alD
 alD
 alD
-azu
-azn
-azh
 alD
-ayZ
-ayQ
-ayH
 alD
-ayC
-ayw
-ajV
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 alD
 alD
@@ -119076,17 +119051,17 @@ alD
 alD
 alD
 alD
-azv
-azo
-azi
 alD
-aza
-ayR
-ayJ
 alD
-ayD
-ayx
-atE
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 alD
 alD
@@ -119999,8 +119974,8 @@ alD
 alD
 alD
 alD
-ayS
-ayK
+alD
+alD
 alD
 alD
 alD
@@ -120211,8 +120186,8 @@ alD
 alD
 alD
 alD
-ayT
-ayL
+alD
+alD
 alD
 alD
 alD
@@ -120501,7 +120476,7 @@ mkk
 pLi
 oTa
 wqV
-lNa
+vuS
 pnx
 pnx
 uyZ
@@ -120631,17 +120606,17 @@ alD
 alD
 alD
 alD
-azp
-azj
-azd
 alD
-ayU
-ayM
-ayE
 alD
-ayy
-auD
-ain
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 alD
 alD
@@ -120843,17 +120818,17 @@ alD
 alD
 alD
 alD
-azq
-azk
-aze
 alD
-ayW
-ayN
-ayF
 alD
-ayz
-ayt
-aiV
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 alD
 alD
@@ -121055,17 +121030,17 @@ alD
 alD
 alD
 alD
-azr
-azl
-azf
-alD
-ayX
-ayO
 alD
 alD
-ayA
-ayu
-aiW
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 alD
 alD
@@ -121479,17 +121454,17 @@ alD
 alD
 alD
 alD
-azs
-azm
-azg
 alD
-ayY
-ayP
-ayG
 alD
-ayB
-ayv
-aiX
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 alD
 alD
@@ -121691,17 +121666,17 @@ alD
 alD
 alD
 alD
-azu
-azn
-azh
 alD
-ayZ
-ayQ
-ayH
 alD
-ayC
-ayw
-ajV
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 alD
 alD
@@ -121903,17 +121878,17 @@ alD
 alD
 alD
 alD
-azv
-azo
-azi
 alD
-aza
-ayR
-ayJ
 alD
-ayD
-ayx
-atE
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 alD
 alD

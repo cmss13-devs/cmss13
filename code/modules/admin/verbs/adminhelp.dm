@@ -399,7 +399,7 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 		"message" = html_encode(plain_text),
 		"html_message" = formatted_message,
 		"type" = message_type,
-		"islink" = link_data
+		"islink" = link_data,
 	)
 
 	ticket_interactions[html_message] = structured_data

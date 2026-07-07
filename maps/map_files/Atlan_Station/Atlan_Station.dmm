@@ -733,6 +733,10 @@
 	},
 /turf/open/floor/strata/white_cyan3/south,
 /area/atlan/station/medical)
+"acx" = (
+/obj/structure/machinery/disposal/broken,
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_offices)
 "acy" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -2258,14 +2262,6 @@
 	},
 /turf/closed/wall/upp_ship/grey,
 /area/atlan/asteroid/sensors)
-"ahm" = (
-/obj/effect/decal/hybrisa/trash{
-	icon_state = "trash_14";
-	pixel_y = 15;
-	layer = 2.6
-	},
-/turf/open/floor/strata/floor2,
-/area/atlan/asteroid/processing_offices)
 "ahn" = (
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/atlan/asteroid/processing_se_train)
@@ -3601,6 +3597,25 @@
 	},
 /turf/open/floor/strata/floor2,
 /area/atlan/station/medical)
+"akW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_9";
+	pixel_y = 3;
+	pixel_x = -5
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_14";
+	pixel_y = 15;
+	layer = 2.6
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_16";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_offices)
 "akX" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12"
@@ -8533,11 +8548,6 @@
 "aBb" = (
 /turf/closed/wall/upp_ship/grey/orange,
 /area/atlan/station/atmospherics)
-"aBc" = (
-/obj/structure/lattice,
-/obj/structure/window/framed/upp_ship/grey/hull,
-/turf/open/space/basic,
-/area/atlan/oob/space)
 "aBd" = (
 /obj/structure/machinery/door/airlock/prison_hatch/alt/autoname{
 	dir = 2
@@ -8937,10 +8947,6 @@
 	},
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/storage)
-"aCz" = (
-/obj/structure/window/framed/upp_ship/grey/reinforced,
-/turf/closed/wall/upp_ship/grey,
-/area/atlan/station/water_tanks)
 "aCA" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -8955,10 +8961,6 @@
 "aCC" = (
 /turf/closed/wall/upp_ship/grey/orange,
 /area/atlan/station/cargo)
-"aCD" = (
-/obj/structure/lattice,
-/turf/closed/wall/upp_ship/grey/reinforced/outer,
-/area/atlan/oob)
 "aCE" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkyellowfull2,
@@ -12767,10 +12769,6 @@
 	},
 /turf/open/floor/plating/prison,
 /area/atlan/asteroid/processing_se_train)
-"dnA" = (
-/obj/structure/window/framed/upp_ship/grey/hull,
-/turf/closed/wall/upp_ship/grey/reinforced/outer,
-/area/atlan/oob)
 "dnB" = (
 /obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/prison/darkyellowfull2,
@@ -28666,15 +28664,6 @@
 	},
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/cargo)
-"nUN" = (
-/obj/structure/machinery/disposal/broken,
-/obj/effect/decal/hybrisa/trash{
-	icon_state = "trash_9";
-	pixel_y = 3;
-	pixel_x = -5
-	},
-/turf/open/floor/strata/floor2,
-/area/atlan/asteroid/processing_offices)
 "nUQ" = (
 /obj/effect/decal/hybrisa/warning/redandwhite_N{
 	pixel_y = 1
@@ -97046,7 +97035,7 @@ oVk
 aAk
 aAk
 aAk
-aCD
+aAk
 alE
 alE
 alD
@@ -101343,7 +101332,7 @@ lni
 tCP
 tCP
 aAk
-dnA
+oVk
 aAk
 agS
 rDW
@@ -101764,7 +101753,7 @@ kfH
 aBb
 tCP
 oVk
-aBc
+alE
 alE
 alE
 alE
@@ -116553,7 +116542,7 @@ qUQ
 oJI
 qBc
 qBc
-aCz
+oJI
 qUQ
 qUQ
 gDt
@@ -126781,7 +126770,7 @@ aSd
 aSd
 aSd
 uhW
-ahm
+pOz
 pOz
 pOz
 pOz
@@ -126989,10 +126978,10 @@ aSd
 aSd
 aSd
 aSd
-pOz
-pOz
 aSd
-nUN
+acx
+pOz
+pOz
 pOz
 lID
 pOz
@@ -127202,7 +127191,7 @@ lID
 pOz
 pOz
 pOz
-lJg
+akW
 obu
 pOz
 pOz

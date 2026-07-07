@@ -141,21 +141,17 @@
 
 	switch(rand(0, 100))
 		if(0 to 5)
-			playsound_client(client, pick('sound/voice/alien_pounce.ogg','sound/voice/alien_pounce.ogg'))
-			KnockDown(3)
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), client,"alien_claw_flesh"), 1 SECONDS)
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), client,"bonebreak"), 1 SECONDS)
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), client,"alien_claw_flesh"), 1.5 SECONDS)
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), client,"alien_claw_flesh"), 2 SECONDS)
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), client,"bonebreak"), 2.5 SECONDS)
-			apply_effect(AGONY,10)
-			emote("pain")
+			to_chat(src, SPAN_WARNING(pick("Something feels off.", "Something isn't right.", "You feel nauseous.", "You feel like you're going to throw up!")))
+			addtimer(CALLBACK(src, PROC_REF(process_hallucination_lurker)), 3 SECONDS)
+
 		if(6 to 10)
 			playsound_client(client, 'sound/effects/ob_alert.ogg')
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), client,'sound/weapons/gun_orbital_travel.ogg'), 2 SECONDS)
+
 		if(11 to 16)
-			playsound_client(client, 'sound/voice/alien_queen_screech.ogg')
-			KnockDown(1)
+			to_chat(src, SPAN_WARNING(pick("Something feels off.", "Something isn't right.", "You feel nauseous.", "You feel like you're going to throw up!")))
+			addtimer(CALLBACK(src, PROC_REF(process_hallucination_queen)), 3 SECONDS)
+
 		if(17 to 24)
 			//Fake CAS sequence
 			playsound_client(client,'sound/weapons/dropship_sonic_boom.ogg', vol = 5)
@@ -190,12 +186,30 @@
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), client,"explosion", null, 5), 11 SECONDS)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), client,'sound/effects/gauimpact.ogg', null, 5), 11 SECONDS)
 			emote("pain")
+
 		if(25 to 42)
 			to_chat(src,SPAN_HIGHDANGER("A SHELL IS ABOUT TO IMPACT [pick(SPAN_UNDERLINE("TOWARDS THE [pick("WEST","EAST","SOUTH","NORTH")]"),SPAN_UNDERLINE("RIGHT ONTOP OF YOU!"))]!"))
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), client,'sound/weapons/gun_mortar_travel.ogg'), 1 SECONDS)
+
 		if(43 to 69)
 			emote(pick("twitch","drool","moan","giggle"))
 			hallucination = 3
 			druggy = 3
+
 		if(70 to 100) // sound based hallucination
 			playsound_client(client=client, soundin=pick('sound/voice/alien_distantroar_3.ogg','sound/voice/xenos_roaring.ogg','sound/voice/alien_queen_breath1.ogg', 'sound/voice/4_xeno_roars.ogg','sound/misc/notice2.ogg',"bone_break","gun_pulse","metalbang","pry","shatter"),vol = 65)
+
+/mob/living/carbon/human/proc/process_hallucination_lurker()
+	playsound_client(client, pick('sound/voice/alien_pounce.ogg','sound/voice/alien_pounce.ogg'))
+	KnockDown(3)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), client,"alien_claw_flesh"), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), client,"bonebreak"), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), client,"alien_claw_flesh"), 1.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), client,"alien_claw_flesh"), 2 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), client,"bonebreak"), 2.5 SECONDS)
+	apply_effect(AGONY,10)
+	emote("pain")
+
+/mob/living/carbon/human/proc/process_hallucination_queen()
+	playsound_client(client, 'sound/voice/alien_queen_screech.ogg')
+	KnockDown(1)

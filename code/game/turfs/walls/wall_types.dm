@@ -1131,14 +1131,6 @@
 	opacity = FALSE
 	alpha = 180
 
-/turf/closed/wall/resin/membrane/can_bombard(mob/living/carbon/xenomorph/X)
-	if(!istype(X))
-		return FALSE
-
-	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-
-	return hive.is_ally(X)
-
 /turf/closed/wall/resin/membrane/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)

@@ -144,41 +144,6 @@
 /datum/action/xeno_action/activable/secrete_resin/remote/queen/proc/override_secrete_thick_resin()
 	return COMPONENT_THICK_BYPASS
 
-/datum/action/xeno_action/activable/bombard/queen
-	// Range and other config
-	interrupt_flags = NO_FLAGS
-	xeno_cooldown = 4 SECONDS
-
-	charges = 0
-
-/datum/action/xeno_action/activable/bombard/queen/give_to(mob/living/carbon/xenomorph/queen/Q)
-	. = ..()
-	if(!Q.ovipositor)
-		hide_from(Q)
-	RegisterSignal(Q, COMSIG_QUEEN_MOUNT_OVIPOSITOR, PROC_REF(handle_mount_ovipositor))
-	RegisterSignal(Q, COMSIG_QUEEN_DISMOUNT_OVIPOSITOR, PROC_REF(handle_dismount_ovipositor))
-
-/datum/action/xeno_action/activable/bombard/queen/remove_from(mob/living/carbon/xenomorph/X)
-	. = ..()
-	UnregisterSignal(X, list(
-		COMSIG_QUEEN_MOUNT_OVIPOSITOR,
-		COMSIG_QUEEN_DISMOUNT_OVIPOSITOR,
-	))
-
-/datum/action/xeno_action/activable/bombard/queen/proc/handle_mount_ovipositor(mob/living/carbon/xenomorph/queen/Q)
-	SIGNAL_HANDLER
-	unhide_from(Q)
-
-/datum/action/xeno_action/activable/bombard/queen/proc/handle_dismount_ovipositor(mob/living/carbon/xenomorph/queen/Q)
-	SIGNAL_HANDLER
-	hide_from(Q)
-
-/datum/action/xeno_action/activable/bombard/queen/get_bombard_source()
-	var/mob/hologram/queen/H = owner?.client?.get_eye()
-	if(istype(H))
-		return H
-	return owner
-
 /datum/action/xeno_action/activable/place_queen_beacon
 	name = "Place Queen Beacon"
 	action_icon_state = "place_queen_beacon"

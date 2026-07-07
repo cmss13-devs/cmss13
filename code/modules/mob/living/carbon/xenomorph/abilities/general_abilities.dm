@@ -465,23 +465,6 @@
 /datum/action/xeno_action/activable/xeno_spit/queen_macro //so it doesn't screw other macros up
 	ability_primacy = XENO_PRIMARY_ACTION_3
 
-/datum/action/xeno_action/activable/bombard
-	name = "Bombard"
-	action_icon_state = "bombard"
-	plasma_cost = 75
-	macro_path = /datum/action/xeno_action/verb/verb_bombard
-	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_1
-	xeno_cooldown = 23 SECONDS
-	ability_uses_acid_overlay = TRUE
-
-	// Range and other config
-	var/effect_range = 3
-	var/effect_type = /obj/effect/xenomorph/boiler_bombard
-	var/activation_delay = 1.5 SECONDS
-	var/range = 15
-	var/interrupt_flags = INTERRUPT_ALL|BEHAVIOR_IMMOBILE
-
 /datum/action/xeno_action/activable/tail_stab
 	name = "Tail Stab"
 	action_icon_state = "tail_attack"

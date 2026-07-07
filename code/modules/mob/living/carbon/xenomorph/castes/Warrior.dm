@@ -207,7 +207,7 @@
 		to_chat(lunge_user, SPAN_XENOWARNING("We can't lunge from here!"))
 		return
 
-	if(!lunge_user.check_state() || lunge_user.agility)
+	if(!lunge_user.check_state())
 		return
 
 	if(lunge_user.can_not_harm(affected_atom) || !ismob(affected_atom))
@@ -246,7 +246,7 @@
 	if(!isxeno_human(affected_atom) || fling_user.can_not_harm(affected_atom))
 		return
 
-	if(!fling_user.check_state() || fling_user.agility)
+	if(!fling_user.check_state())
 		return
 
 	if(!fling_user.Adjacent(affected_atom))
@@ -300,7 +300,7 @@
 	if(!isxeno_human(affected_atom) || punch_user.can_not_harm(affected_atom))
 		return
 
-	if(!punch_user.check_state() || punch_user.agility)
+	if(!punch_user.check_state())
 		return
 
 	var/distance = get_dist(punch_user, affected_atom)

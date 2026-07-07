@@ -2410,10 +2410,6 @@
 /obj/item/device/analyzer/plant_analyzer,
 /turf/open/floor/prison/whitegreenfull,
 /area/atlan/station/botany)
-"ahH" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/whitegreen/southwest,
-/area/atlan/station/botany)
 "ahI" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/invuln/lattice_prop{
@@ -4325,6 +4321,11 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/promenade)
+"anc" = (
+/obj/structure/platform/metal/strata/north,
+/obj/structure/largecrate/random/case/small,
+/turf/open/floor/strata/floor2,
+/area/atlan/station/single_dorms)
 "and" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 5
@@ -8303,6 +8304,10 @@
 /obj/structure/sign/safety/landingzone,
 /turf/closed/wall/upp_ship/grey/orange,
 /area/atlan/lz/near_lz2)
+"aAj" = (
+/obj/structure/largecrate/random/secure,
+/turf/open/floor/strata,
+/area/atlan/station/single_dorms)
 "aAk" = (
 /turf/closed/wall/upp_ship/grey/reinforced/outer,
 /area/atlan/oob)
@@ -9117,6 +9122,10 @@
 /obj/structure/sign/poster/safety,
 /turf/closed/wall/upp_ship/grey/orange/reinforced/outer,
 /area/atlan/oob)
+"aDd" = (
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/strata,
+/area/atlan/station/single_dorms)
 "aDe" = (
 /obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
 	dir = 4
@@ -9380,6 +9389,10 @@
 "aDX" = (
 /turf/closed/wall/upp_ship/grey/red,
 /area/atlan/station/repairoffice)
+"aDY" = (
+/obj/structure/window/framed/upp_ship/grey/teal,
+/turf/open/floor/plating,
+/area/atlan/station/single_dorms)
 "aFh" = (
 /obj/structure/platform_decoration/metal/strata/west,
 /turf/open/floor/corsat/marked,
@@ -10580,15 +10593,6 @@
 	},
 /turf/open/floor/strata/floor3/east,
 /area/atlan/lz/near_lz2)
-"byu" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 4;
-	pixel_x = 10;
-	pixel_y = -1
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/whitegreenfull/southwest,
-/area/atlan/station/botany)
 "byJ" = (
 /obj/structure/platform/metal/strata,
 /obj/effect/decal/cleanable/dirt,
@@ -43468,6 +43472,10 @@
 	dir = 8;
 	pixel_x = 4;
 	pixel_y = 6
+	},
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall{
+	pixel_y = 21;
+	pixel_x = 24
 	},
 /turf/open/floor/strata/floor2,
 /area/atlan/station/single_dorms)
@@ -110789,7 +110797,7 @@ evD
 bJU
 xob
 vEt
-via
+aAj
 gvM
 kwm
 via
@@ -113971,7 +113979,7 @@ uNZ
 xob
 kwm
 gvM
-aDE
+anc
 kwm
 agU
 agQ
@@ -114394,7 +114402,7 @@ mBo
 xYo
 kwm
 kwm
-uya
+gvM
 bYX
 kwm
 vJS
@@ -114603,7 +114611,7 @@ jza
 eje
 tih
 mBo
-mBo
+via
 kwm
 xob
 uya
@@ -114813,10 +114821,10 @@ eUN
 dxR
 eUN
 dKN
-vVm
 lUp
 mBo
 pRt
+via
 via
 uya
 hxJ
@@ -115025,9 +115033,9 @@ aUq
 aUq
 aUq
 aUq
-ahH
 lUp
 hKG
+aDd
 kwm
 via
 uya
@@ -115237,9 +115245,9 @@ ahV
 ahV
 fNr
 fNr
-jza
 gzC
 mBo
+aDY
 rhM
 rMQ
 uya
@@ -115449,9 +115457,9 @@ vVm
 tvL
 xTy
 tLa
-byu
 hKV
 mBo
+tmn
 tmn
 lwX
 uya
@@ -115662,8 +115670,8 @@ ubh
 ubh
 ubh
 mBo
-mBo
 vau
+qmZ
 tmn
 tmn
 ofa

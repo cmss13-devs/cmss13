@@ -131,6 +131,11 @@
 			/obj/vehicle/multitile/proc/toggle_slave_secondary_to_driver,
 			/obj/vehicle/multitile/proc/toggle_hardpoint_fire_mode,
 		))
+	if(seat == VEHICLE_DRIVER || seat == VEHICLE_GUNNER)
+		add_verb(M.client, list(
+			/obj/vehicle/multitile/proc/toggle_artillery_optics,
+			/obj/vehicle/multitile/proc/toggle_artillery_nvg,
+		))
 
 
 /obj/vehicle/multitile/tank/remove_seated_verbs(mob/living/M, seat)
@@ -157,6 +162,18 @@
 			/obj/vehicle/multitile/proc/toggle_slave_secondary_to_driver,
 			/obj/vehicle/multitile/proc/toggle_hardpoint_fire_mode,
 		))
+	if(seat == VEHICLE_DRIVER || seat == VEHICLE_GUNNER)
+		remove_verb(M.client, list(
+			/obj/vehicle/multitile/proc/toggle_artillery_optics,
+			/obj/vehicle/multitile/proc/toggle_artillery_nvg,
+		))
+		var/obj/item/hardpoint/support/artillery_module/AM = get_artillery_module()
+		AM?.clear_user_effects(M)
+
+/obj/vehicle/multitile/tank/proc/get_artillery_module()
+	for(var/obj/item/hardpoint/support/artillery_module/AM in hardpoints)
+		return AM
+	return null
 
 //Called when players try to move vehicle
 //Another wrapper for try_move()

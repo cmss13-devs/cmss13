@@ -242,6 +242,48 @@
 		return
 	T.toggle_gyro(usr)
 
+//toggles the artillery module's magnified optics for your own view - available to both driver and gunner
+/obj/vehicle/multitile/proc/toggle_artillery_optics()
+	set name = "Toggle Artillery Optics"
+	set desc = "Toggles the artillery module's magnified optics for your own view."
+	set category = "Vehicle"
+
+	var/mob/living/user = usr
+	if(!user || !istype(user))
+		return
+
+	var/obj/vehicle/multitile/vehicle = user.interactee
+	if(!istype(vehicle))
+		return
+
+	var/obj/item/hardpoint/support/artillery_module/AM = locate() in vehicle.hardpoints
+	if(!AM)
+		to_chat(user, SPAN_WARNING("No artillery module installed."))
+		return
+
+	AM.toggle_optics(user)
+
+//toggles the artillery module's night vision overlay for your own view - available to both driver and gunner
+/obj/vehicle/multitile/proc/toggle_artillery_nvg()
+	set name = "Toggle Artillery Night Vision"
+	set desc = "Toggles the artillery module's night vision overlay for your own view."
+	set category = "Vehicle"
+
+	var/mob/living/user = usr
+	if(!user || !istype(user))
+		return
+
+	var/obj/vehicle/multitile/vehicle = user.interactee
+	if(!istype(vehicle))
+		return
+
+	var/obj/item/hardpoint/support/artillery_module/AM = locate() in vehicle.hardpoints
+	if(!AM)
+		to_chat(user, SPAN_WARNING("No artillery module installed."))
+		return
+
+	AM.toggle_nvg(user)
+
 //hands control of the secondary hardpoint (aim + fire) between the gunner and the driver
 /obj/vehicle/multitile/proc/toggle_slave_secondary_to_driver()
 	set name = "Slave Secondary to Driver"

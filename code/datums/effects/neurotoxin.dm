@@ -14,8 +14,6 @@
 	var/stumble_prob = 0
 	/// Chance of blood_cough per proc (damaging)
 	var/bloodcough_prob = 0
-	/// Whether or not we hallucinate. (small rng stun chance)
-	var/hallucinate = TRUE
 	// Tick-based chat cooldown so it doesn't get too spammy
 	var/chat_cd = 0
 	/// Stamina damage per tick. Major balance number.
@@ -84,11 +82,9 @@
 	if(duration > 14) // 3 ticks in smoke
 		affected_mob.apply_effect(5,AGONY)  // Fake crit, a good way to induce panic
 		affected_mob.make_jittery(15)
-		if(hallucinate && affected_mob.client && ishuman_strict(affected_mob))
+		if(prob(50) && affected_mob.client && ishuman_strict(affected_mob))
 			var/mob/living/carbon/human/affected_human = affected_mob
 			affected_human.process_hallucination()
-			hallucinate = FALSE
-			addtimer(VARSET_CALLBACK(src,hallucinate,TRUE),rand(4 SECONDS,10 SECONDS))
 
 	if(duration > 19) // 4 ticks in smoke, neuro is affecting cereberal activity
 		affected_mob.eye_blind = max(affected_mob.eye_blind, floor(strength/4))

@@ -837,6 +837,7 @@
 		to_chat(user, SPAN_WARNING("[src] is too far away."))
 		return
 	if(newcolor == "none")
+		holo_card_accuracy = 0
 		if(!holo_card_color)
 			return
 		holo_card_color = null
@@ -847,7 +848,147 @@
 			return
 		holo_card_color = newcolor
 		to_chat(user, SPAN_NOTICE("You add a [newcolor] holo card on [src]."))
+
+	holo_card_accuracy = HOLOCARD_ACCURACY_MANUAL
 	hud_set_holocard()
+
+// Scans the health of a human, then assigns an appropriate holotag based on their injuries
+// Will use new_accuracy to determine both:
+//  - What injuries should be included (for example, organ damage would not show up on a handheld scan)
+//  - Whether to update a holotag to a more accurate reading, or to keep the old one
+// Manual assignments will not change the color of the holotag, but will change the recorded accuracy
+//
+// If a manual assignment or body scanner determines there are no injuries worthy of a holotag, it will reset the accuracy rating (clean slate)
+/mob/living/carbon/human/proc/auto_assign_holotag(mob/user, new_accuracy)
+	if (new_accuracy == HOLOCARD_ACCURACY_MANUAL)
+		holo_card_accuracy = HOLOCARD_ACCURACY_MANUAL
+		return
+
+	// Only handle automatic holotags if the user has the skill to
+	if (skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+		var/tag_severity = 0
+
+		if (blood_volume < BLOOD_VOLUME_OKAY)
+			tag_severity = 2
+		else if (blood_volume < BLOOD_VOLUME_SAFE)
+			tag_severity = 1 // Severity could only ever be 0 at this point, safe to directly assign
+
+		// Overdoses are life-threatening
+		for (var/datum/reagent/reagent as anything in reagents.reagent_list)
+			if (reagent.volume > reagent.overdose && reagent.overdose != 0)
+				tag_severity = 2
+
+		// The highest holotag you can get from limbs is red, so we can safely break out of the limb loop if we find a red-worthy injury
+		for (var/obj/limb/limb as anything in limbs)
+			// Uncleaned amputations, while technically not life threatening because amputations
+			// don't bleed, cause an incredible amount of pain, usually enough to paincrit the injured human.
+			if (limb.status & LIMB_DESTROYED)
+				tag_severity = 2
+				break
+
+			// An argument could be made for cleaned and dressed amputations to be red tag, but at that point
+			// it no longer causes any pain and only applies the slowdown/missing hand, so nonlethal
+			if (limb.status & LIMB_AMPUTATED)
+				tag_severity = max(tag_severity, 1)
+
+			// Internal bleeding requires immediate surgery
+			var/internal_bleeding = FALSE
+			for(var/datum/effects/bleeding/internal/ib in limb.bleeding_effects_list)
+				tag_severity = 2
+				internal_bleeding = TRUE
+				break
+			if (internal_bleeding)
+				break
+
+			// Splinted fractures do not require immediate surgical intervention
+			// Unsplinted fractures should be handled immediately before more damage is done
+			if (limb.status & LIMB_BROKEN)
+				tag_severity = max(tag_severity, 1)
+
+			// Severe burns and eschars are not immediately life-threatening
+			if (limb.status & LIMB_ESCHAR)
+				tag_severity = max(tag_severity, 1)
+
+		// Check if this new scan would have had the accuracy to view organs
+		if (new_accuracy >= HOLOCARD_ACCURACY_BODYSCANNER)
+			// Heartbroken marines should be operated on IMMEDIATELY
+			var/datum/internal_organ/kidneys/heart = internal_organs_by_name["heart"]
+			if (heart.organ_status >= ORGAN_BROKEN)
+				tag_severity = 2
+			else if (heart.organ_status >= ORGAN_BRUISED)
+				tag_severity = max(tag_severity, 1)
+
+			// Ditto for ruptured lungs
+			var/datum/internal_organ/kidneys/lungs = internal_organs_by_name["lungs"]
+			if (is_lung_ruptured())
+				tag_severity = 2
+			else if (lungs.organ_status >= ORGAN_BRUISED)
+				tag_severity = max(tag_severity, 1)
+
+			// Bruised livers and kidneys will accumulate toxin damage
+			var/datum/internal_organ/kidneys/kidneys = internal_organs_by_name["kidneys"]
+			if (kidneys.organ_status >= ORGAN_BROKEN)
+				tag_severity = 2
+			else if (kidneys.organ_status >= ORGAN_BRUISED)
+				tag_severity = max(tag_severity, 1)
+
+			var/datum/internal_organ/liver/liver = internal_organs_by_name["liver"]
+			if (liver.organ_status >= ORGAN_BROKEN)
+				tag_severity = 2
+			else if (liver.organ_status >= ORGAN_BRUISED)
+				tag_severity = max(tag_severity, 1)
+
+			// Brainrot is bad
+			var/datum/internal_organ/brain/brain = internal_organs_by_name["brain"]
+			if (brain.organ_status >= ORGAN_BRUISED)
+				tag_severity = 2
+
+			// Eye damage is not nearly as bad as the previous three organs, and isn't NECESSARY to be fixed, technically
+			var/datum/internal_organ/eyes/eyes = internal_organs_by_name["eyes"]
+			if (eyes.organ_status >= ORGAN_BRUISED)
+				tag_severity = max(tag_severity, 1)
+
+		if (status_flags & PERMANENTLY_DEAD) tag_severity = 3
+
+		// For some reason, decapitated humans don't have the permanently dead tag
+		var/obj/limb/head/head
+		for (var/obj/limb/limb in src.limbs)
+			if (istype(limb, /obj/limb/head))
+				head = limb
+		if (head == null || head.status & (LIMB_DESTROYED | LIMB_AMPUTATED))
+			tag_severity = 3
+
+		if (status_flags & XENO_HOST && new_accuracy >= HOLOCARD_ACCURACY_BODYSCANNER)
+			tag_severity = 4
+
+		var/old_severity
+		// Yes, switching between strings and numbers like this is terrible and I should be using a custom define, but I don't want to touch the code already in place
+		// Technical debt schmectical debt
+		switch (holo_card_color)
+			if("", null) old_severity = 0
+			if("orange") old_severity = 1
+			if("red") old_severity = 2
+			if("black") old_severity = 3
+			if("purple") old_severity = 4 // Even if they're unrevivable, we need to get the larva out
+			else old_severity = 0
+
+		// If the scan's accuracy is equal to or greater than the previous scan, or if the severity is higher than the old severity, update the card
+		if (tag_severity > old_severity || new_accuracy >= holo_card_accuracy)
+			holo_card_accuracy = new_accuracy
+			// See previous comment
+			switch (tag_severity)
+				if (0)
+					holo_card_color = ""
+					holo_card_accuracy = HOLOCARD_ACCURACY_HANDHELD // Reset accuracy for new wounds
+				if (1)
+					holo_card_color = "orange"
+				if (2)
+					holo_card_color = "red"
+				if (3)
+					holo_card_color = "black"
+				if (4)
+					holo_card_color = "purple"
+			hud_set_holocard()
 
 /mob/living/carbon/human/tgui_interact(mob/user, datum/tgui/ui) // I'M SORRY, SO FUCKING SORRY
 	. = ..()

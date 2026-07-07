@@ -1,5 +1,0 @@
-author: "MistChristmas"
-delete-after: True
-changes:
-  - admin: "Changed the colour of FF alive to Red."
-  - bugfix: "Jobs not contained in the RoleAuthority can now cryo. Add Goons job datum so they're in the RoleAuthority stuff"

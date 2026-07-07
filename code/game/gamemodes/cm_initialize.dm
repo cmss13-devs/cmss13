@@ -480,7 +480,7 @@ Additional game mode variables.
 			joe_job.handle_job_options(new_joe.client.prefs.pref_special_job_options[JOB_WORKING_JOE])
 		if(/datum/job/civilian/working_joe/daniel)
 			joe_job = GLOB.RoleAuthority.roles_by_name[JOB_DANIEL]
-		if(/datum/job/antag/upp/dzho_automaton)
+		if(/datum/job/antag/upp/dzho_automaton/colony)
 			joe_job = GLOB.RoleAuthority.roles_by_name[JOB_UPP_JOE]
 
 	if(!joe_job)

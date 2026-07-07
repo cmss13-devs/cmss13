@@ -3,6 +3,13 @@
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3,
 /turf/closed/wall/upp_ship/grey,
 /area/atlan/station/hab_rec)
+"ab" = (
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/atlan/station/hab_rec)
+"ac" = (
+/obj/item/clothing/accessory/device/whistle,
+/turf/open/floor/whitebluefull,
+/area/atlan/station/hab_rec)
 "am" = (
 /obj/structure/bedsheetbin{
 	icon_state = "linenbin-empty"
@@ -31,10 +38,6 @@
 /obj/item/storage/firstaid/regular,
 /turf/open/floor/whiteblue/north,
 /area/atlan/station/hab_rec)
-"hP" = (
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3,
-/turf/closed/wall/strata_outpost,
-/area/atlan/station/hab_rec)
 "hX" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -50,7 +53,7 @@
 "mb" = (
 /obj/item/toy/inflatable_duck,
 /obj/effect/landmark/survivor_spawner,
-/turf/open/gm/river,
+/turf/open/gm/river/pool,
 /area/atlan/station/hab_rec)
 "nk" = (
 /obj/effect/decal/cleanable/blood,
@@ -84,10 +87,10 @@
 /turf/closed/wall/upp_ship/grey,
 /area/atlan/station/hab_rec)
 "rR" = (
-/obj/structure/machinery/power/apc/no_power/south,
 /obj/structure/bed/chair{
 	dir = 1
 	},
+/obj/structure/machinery/power/apc/power/south,
 /turf/open/floor/whiteblue,
 /area/atlan/station/hab_rec)
 "vd" = (
@@ -155,7 +158,7 @@
 /area/atlan/station/hab_rec)
 "HL" = (
 /obj/item/toy/beach_ball,
-/turf/open/gm/river,
+/turf/open/gm/river/pool,
 /area/atlan/station/hab_rec)
 "IB" = (
 /obj/structure/surface/rack{
@@ -218,7 +221,7 @@
 /turf/open/floor/whiteblue/west,
 /area/atlan/station/hab_rec)
 "Ty" = (
-/turf/open/gm/river,
+/turf/open/gm/river/pool,
 /area/atlan/station/hab_rec)
 "TV" = (
 /obj/effect/decal/cleanable/dirt,
@@ -266,7 +269,7 @@ aC
 aC
 "}
 (2,1,1) = {"
-aC
+aa
 xH
 TV
 Sv
@@ -305,7 +308,7 @@ Yg
 am
 "}
 (5,1,1) = {"
-zZ
+dw
 Yg
 Cw
 Ty
@@ -318,7 +321,7 @@ Yg
 EY
 "}
 (6,1,1) = {"
-hP
+aC
 Lq
 Cw
 Ty
@@ -350,7 +353,7 @@ Cw
 Ty
 Ty
 Ty
-Ty
+ab
 Ty
 Cw
 Yg
@@ -450,7 +453,7 @@ aa
 (16,1,1) = {"
 rs
 Yw
-Cw
+ac
 Ty
 Ty
 Ty

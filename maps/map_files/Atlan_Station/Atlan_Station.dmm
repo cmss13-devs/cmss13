@@ -4099,6 +4099,9 @@
 /obj/structure/machinery/alarm,
 /turf/closed/wall/upp_ship/grey,
 /area/atlan/station/water_tanks)
+"amn" = (
+/turf/closed/wall/upp_ship/grey/red/reinforced,
+/area/atlan/lz/near_lz2)
 "amo" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -4322,9 +4325,6 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/promenade)
-"anc" = (
-/turf/closed/wall/mineral/bone_resin,
-/area/atlan/asteroid/exports_west)
 "and" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 5
@@ -6034,7 +6034,7 @@
 "asA" = (
 /obj/structure/machinery/door/airlock/hybrisa/generic/autoname,
 /turf/open/floor/strata/multi_tiles/west,
-/area/atlan/station/double_dorms)
+/area/atlan/station/hab_rec)
 "asB" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 8
@@ -6280,6 +6280,9 @@
 	},
 /turf/open/floor/strata/floor2,
 /area/atlan/station/substation)
+"ato" = (
+/turf/closed/wall/upp_ship/grey/red/reinforced,
+/area/atlan/station/hab_sec)
 "atp" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -6921,6 +6924,10 @@
 	},
 /turf/open/floor/strata/floor2,
 /area/atlan/station/medical_maint)
+"avu" = (
+/obj/structure/sign/safety/security,
+/turf/closed/wall/upp_ship/grey/red/reinforced,
+/area/atlan/station/hab_sec)
 "avv" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/strata/floor2,
@@ -8296,9 +8303,6 @@
 /obj/structure/sign/safety/landingzone,
 /turf/closed/wall/upp_ship/grey/orange,
 /area/atlan/lz/near_lz2)
-"aAj" = (
-/turf/closed/wall/upp_ship/grey/red,
-/area/atlan/oob)
 "aAk" = (
 /turf/closed/wall/upp_ship/grey/reinforced/outer,
 /area/atlan/oob)
@@ -8378,7 +8382,7 @@
 /turf/open/floor/strata,
 /area/atlan/station/double_dorms)
 "aAy" = (
-/turf/closed/wall/upp_ship/grey/red,
+/turf/closed/wall/upp_ship/grey/red/reinforced,
 /area/atlan/asteroid/sensors)
 "aAz" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt{
@@ -8798,6 +8802,10 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/admin)
+"aBV" = (
+/obj/structure/sign/safety/security,
+/turf/closed/wall/upp_ship/grey/red/reinforced,
+/area/atlan/station/security)
 "aBW" = (
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/strata/floor2,
@@ -9037,7 +9045,7 @@
 /area/atlan/oob)
 "aCN" = (
 /obj/structure/machinery/alarm,
-/turf/closed/wall/upp_ship/grey/red,
+/turf/closed/wall/upp_ship/grey/red/reinforced,
 /area/atlan/lz/near_lz1)
 "aCO" = (
 /turf/closed/wall/upp_ship/grey,
@@ -9109,10 +9117,6 @@
 /obj/structure/sign/poster/safety,
 /turf/closed/wall/upp_ship/grey/orange/reinforced/outer,
 /area/atlan/oob)
-"aDd" = (
-/obj/structure/sign/safety/flightcontrol,
-/turf/closed/wall/upp_ship/grey,
-/area/atlan/lz/near_lz1)
 "aDe" = (
 /obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
 	dir = 4
@@ -9354,10 +9358,28 @@
 /obj/structure/machinery/power/apc/no_power/south,
 /turf/open/floor/strata/orange_edge/west,
 /area/atlan/station/cargooffice)
+"aDS" = (
+/obj/structure/machinery/door/airlock/hybrisa/generic/autoname{
+	dir = 2
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/atlan/station/double_dorms)
+"aDT" = (
+/turf/closed/wall/upp_ship/grey/orange/reinforced,
+/area/atlan/station/atmospherics)
+"aDU" = (
+/turf/closed/wall/upp_ship/grey/reinforced,
+/area/atlan/station/stairs1)
 "aDV" = (
 /obj/structure/sign/safety/medical,
 /turf/closed/wall/upp_ship/grey/teal,
 /area/atlan/station/medical)
+"aDW" = (
+/turf/closed/wall/upp_ship/grey/red/reinforced,
+/area/atlan/lz/near_lz1)
+"aDX" = (
+/turf/closed/wall/upp_ship/grey/red,
+/area/atlan/station/repairoffice)
 "aFh" = (
 /obj/structure/platform_decoration/metal/strata/west,
 /turf/open/floor/corsat/marked,
@@ -10550,8 +10572,8 @@
 /area/atlan/station/substation)
 "bxC" = (
 /obj/structure/sign/safety/landingzone,
-/turf/closed/wall/upp_ship/grey/red/reinforced/outer,
-/area/atlan/oob)
+/turf/closed/wall/upp_ship/grey/red/reinforced,
+/area/atlan/lz/near_lz2)
 "byn" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 4
@@ -12848,7 +12870,7 @@
 /turf/open/floor/plating/prison,
 /area/atlan/station/substation)
 "djp" = (
-/turf/closed/wall/upp_ship/grey/red,
+/turf/closed/wall/upp_ship/grey/red/reinforced,
 /area/atlan/comms/lz1_control)
 "djs" = (
 /obj/structure/machinery/light{
@@ -15211,7 +15233,7 @@
 /area/atlan/oob)
 "eRy" = (
 /obj/structure/sign/nosmoking_1,
-/turf/closed/wall/upp_ship/grey/orange,
+/turf/closed/wall/upp_ship/grey/orange/reinforced,
 /area/atlan/station/atmospherics)
 "eRB" = (
 /obj/item/stack/rods,
@@ -17207,7 +17229,7 @@
 /area/atlan/comms/lz1_control)
 "gjf" = (
 /obj/structure/sign/poster/safety,
-/turf/closed/wall/upp_ship/grey/red,
+/turf/closed/wall/upp_ship/grey/red/reinforced,
 /area/atlan/comms/lz1_control)
 "gjm" = (
 /obj/structure/platform/metal/almayer_smooth,
@@ -17539,7 +17561,7 @@
 /area/atlan/station/storage)
 "gtw" = (
 /obj/item/device/radio/intercom,
-/turf/closed/wall/upp_ship/grey/red,
+/turf/closed/wall/upp_ship/grey/red/reinforced,
 /area/atlan/station/hab_sec)
 "gtB" = (
 /obj/structure/machinery/door/airlock/hybrisa/generic,
@@ -22467,7 +22489,7 @@
 /area/atlan/station/walkway)
 "jCX" = (
 /obj/item/device/radio/intercom,
-/turf/closed/wall/upp_ship/grey/red,
+/turf/closed/wall/upp_ship/grey/red/reinforced,
 /area/atlan/station/security)
 "jDb" = (
 /obj/effect/decal/hybrisa/warning/redandwhite_N,
@@ -24519,8 +24541,8 @@
 /area/atlan/station/atmospherics)
 "kYf" = (
 /obj/structure/sign/safety/flightcontrol,
-/turf/closed/wall/upp_ship/grey/red/reinforced/outer,
-/area/atlan/oob)
+/turf/closed/wall/upp_ship/grey/red/reinforced,
+/area/atlan/lz/near_lz2)
 "kYj" = (
 /obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/strata/orange_edge,
@@ -30261,7 +30283,7 @@
 /area/atlan/lz/near_lz2)
 "oUF" = (
 /obj/structure/sign/safety/flightcontrol,
-/turf/closed/wall/upp_ship/grey/red,
+/turf/closed/wall/upp_ship/grey/red/reinforced,
 /area/atlan/lz/near_lz1)
 "oUG" = (
 /obj/effect/decal/cleanable/blood,
@@ -39820,7 +39842,7 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/asteroid/processing_sw_train)
 "vjG" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/autoname,
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/asteroid/processing_offices)
 "vjT" = (
@@ -42364,7 +42386,7 @@
 /area/atlan/lz/near_lz1)
 "xmk" = (
 /obj/structure/sign/safety/ammunition,
-/turf/closed/wall/upp_ship/grey/red,
+/turf/closed/wall/upp_ship/grey/red/reinforced,
 /area/atlan/station/security)
 "xna" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -98455,14 +98477,14 @@ cLb
 bIR
 iif
 tJT
-aBb
-aBb
-aBb
-aBb
-aBb
-aBb
-aBb
-aBb
+aDT
+aDT
+aDT
+aDT
+aDT
+aDT
+aDT
+aDT
 ogg
 lfd
 bIR
@@ -98667,14 +98689,14 @@ hYE
 bIR
 bIR
 nhO
-aBb
+aDT
 jKo
 wao
-aBb
+aDT
 kOO
 wao
 kOO
-aBb
+aDT
 qUh
 bIR
 bIR
@@ -98878,16 +98900,16 @@ xMQ
 tgy
 eFG
 jPQ
-aBb
-aBb
+aDT
+aDT
 wao
 fQM
-aBb
+aDT
 wao
 imq
 wao
-aBb
-aBb
+aDT
+aDT
 eFG
 jPQ
 aBb
@@ -99091,10 +99113,10 @@ tgy
 fDP
 tXw
 mUb
-aBb
+aDT
 aBf
 aBf
-aBb
+aDT
 aBf
 aBf
 aBf
@@ -99103,8 +99125,8 @@ fIy
 tXw
 bIR
 aBb
-aBb
-aBb
+aDT
+aDT
 agj
 alD
 alD
@@ -99951,9 +99973,9 @@ mOt
 bIR
 bIR
 tJT
-aBb
-aBb
-aBb
+aDT
+aDT
+aDT
 iOR
 aAk
 oVk
@@ -100568,9 +100590,9 @@ akZ
 ivx
 rDa
 uTN
-aBM
-aBb
-aBb
+aDU
+aDT
+aDT
 lBY
 bIR
 arg
@@ -100780,7 +100802,7 @@ akZ
 aBM
 aBM
 aBM
-aBM
+aDU
 hvC
 aBf
 uss
@@ -100994,9 +101016,9 @@ aAk
 aAk
 aAk
 aAk
-aBb
+aDT
 eRy
-aBb
+aDT
 xbT
 uoJ
 aAh
@@ -102198,7 +102220,7 @@ azb
 azb
 aDe
 aDe
-kvm
+aDW
 aDA
 eOT
 eOT
@@ -102228,8 +102250,8 @@ pMv
 oUF
 aCR
 aCR
-aCI
-aCI
+aDW
+aDW
 mEb
 nlx
 rqN
@@ -102410,8 +102432,8 @@ azb
 szy
 xlP
 gQM
-kvm
-aDd
+aDW
+oUF
 oHv
 eOT
 eOT
@@ -102436,13 +102458,13 @@ eOT
 eOT
 eOT
 vUh
-aCI
-aCI
+aDW
+aDW
 xfw
 gZc
 xzY
-aCI
-aCI
+aDW
+aDW
 lGI
 eMO
 fdM
@@ -102764,7 +102786,7 @@ eWw
 eWw
 eWw
 eWw
-azb
+amn
 kYf
 nML
 idD
@@ -103072,7 +103094,7 @@ aCV
 hWS
 uQB
 kvm
-aCI
+aDW
 rcW
 eOT
 eOT
@@ -103258,9 +103280,9 @@ azb
 cVU
 xlP
 xlP
-kvm
-kvm
-kvm
+aDW
+aDW
+aCI
 hWS
 uQB
 kvm
@@ -103284,13 +103306,13 @@ alq
 rbw
 vaI
 vaI
-aCI
-aCI
+aDW
+aDW
 uQY
 xlP
 gZc
-aCI
-aCI
+aDW
+aDW
 fXm
 nlx
 rqN
@@ -103469,8 +103491,8 @@ alE
 azb
 azb
 xwQ
-kvm
-kvm
+aDW
+aDW
 oEr
 oxI
 rbw
@@ -103497,7 +103519,7 @@ rbw
 rbw
 vaI
 vaI
-aCI
+aDW
 aCR
 qKe
 aCR
@@ -103682,7 +103704,7 @@ aAk
 akz
 rbw
 rbw
-aCO
+aDX
 flH
 aym
 axB
@@ -104233,11 +104255,11 @@ qqL
 qqL
 idD
 jgD
-cwf
+avu
 vYS
 eqd
 uVH
-kYt
+ato
 qqL
 fRe
 qqL
@@ -104444,13 +104466,13 @@ kTZ
 eWw
 mSe
 kYt
-kYt
-kYt
+ato
+ato
 ego
 jxO
 nOL
 gtw
-kYt
+ato
 bGp
 ohy
 mqJ
@@ -105292,13 +105314,13 @@ afw
 afq
 vLT
 heE
-kYt
-kYt
+ato
+ato
 jGS
 gfU
 ahm
-kYt
-kYt
+ato
+ato
 gRg
 ohy
 ohy
@@ -105505,11 +105527,11 @@ afr
 vLT
 heE
 ewz
-kYt
+ato
 ewy
 gfU
 jxO
-kYt
+ato
 cyj
 upF
 ohy
@@ -105717,11 +105739,11 @@ afs
 kvr
 kvr
 oal
-kYt
+ato
 azK
 vWn
 azK
-kYt
+ato
 gvS
 ohy
 ohy
@@ -106540,7 +106562,7 @@ eaH
 eXO
 xgC
 vdC
-caz
+aDS
 tHX
 tPr
 blM
@@ -109516,12 +109538,12 @@ tHX
 aoB
 tPr
 blM
-eaH
-eaH
+tWn
+tWn
 asA
-eaH
-eaH
-eaH
+tWn
+tWn
+tWn
 azP
 azP
 fFO
@@ -111780,7 +111802,7 @@ uzY
 ubj
 nWj
 bnz
-aBn
+eUW
 wxg
 nWj
 nWj
@@ -117995,7 +118017,7 @@ ioQ
 suD
 nrh
 rDO
-aAj
+azb
 aAe
 aAe
 ygA
@@ -118201,13 +118223,13 @@ iFm
 hDW
 iDq
 vQz
-azX
-azX
-azX
+bnc
+bnc
+bnc
 afG
 afG
-azX
-azX
+bnc
+bnc
 cFL
 abb
 lbb
@@ -118413,12 +118435,12 @@ pDz
 pDz
 utP
 gRU
-azX
+bnc
 hFo
 eeP
 trf
 wRT
-azX
+bnc
 xAC
 aVx
 pnZ
@@ -118625,12 +118647,12 @@ qvG
 fXL
 tYK
 apm
-azX
+bnc
 pKn
 fbo
 iFC
 trf
-azX
+bnc
 xjv
 pnZ
 pnZ
@@ -118837,7 +118859,7 @@ umn
 tYK
 tGl
 cLu
-azX
+bnc
 fBM
 pYl
 iFC
@@ -119261,12 +119283,12 @@ ahs
 apH
 apw
 aIX
-azX
+bnc
 dQq
 vVY
 trf
 dJL
-azX
+bnc
 xvq
 trf
 trf
@@ -119473,14 +119495,14 @@ tYK
 tYK
 ygA
 azX
-azX
-azX
-azX
-azX
-azX
-azX
-azX
-azX
+bnc
+bnc
+bnc
+bnc
+bnc
+bnc
+bnc
+bnc
 mHW
 anP
 anN
@@ -120747,9 +120769,9 @@ aSd
 aSd
 xmk
 otP
-azX
-azX
-azX
+bnc
+bnc
+bnc
 eyP
 gzS
 nCD
@@ -120961,7 +120983,7 @@ ags
 anS
 jic
 oLt
-azX
+bnc
 gkl
 hqF
 iFC
@@ -121385,7 +121407,7 @@ bck
 apb
 aoR
 wzG
-azX
+bnc
 pAu
 iFC
 iFC
@@ -121597,7 +121619,7 @@ bck
 bck
 aoS
 eyJ
-azX
+bnc
 xKN
 fzl
 uUB
@@ -121809,7 +121831,7 @@ fOE
 wQQ
 aoT
 eCm
-azX
+bnc
 awy
 bxk
 azX
@@ -122017,11 +122039,11 @@ kXF
 yid
 aAy
 aAy
-azX
-ygA
+bnc
+aBV
 otP
-azX
-azX
+bnc
+bnc
 kEn
 jHW
 lQV
@@ -124374,8 +124396,8 @@ lGF
 lGF
 iuE
 iuE
-anc
-anc
+lGF
+lGF
 iuE
 iuE
 iuE
@@ -124586,8 +124608,8 @@ lGF
 iuE
 iuE
 ltK
-anc
-anc
+lGF
+lGF
 iuE
 xSI
 iuE
@@ -130513,7 +130535,7 @@ ruz
 haO
 nTn
 pky
-vGR
+jAF
 vGR
 vGR
 vGR
@@ -130725,7 +130747,7 @@ ruz
 haO
 nTn
 pky
-jAF
+lGF
 urd
 vGR
 vGR
@@ -130937,8 +130959,8 @@ ruz
 haO
 nTn
 pky
-pky
-pky
+lGF
+lGF
 idM
 pky
 cRB
@@ -131150,7 +131172,7 @@ pWR
 cGr
 clt
 clt
-clt
+lGF
 clt
 clt
 xzy

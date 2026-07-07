@@ -129,6 +129,16 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 		if(listener.hear_apollo())//Only plays sound to mobs and not observers, to reduce spam.
 			playsound_client(listener.client, sound('sound/misc/interference.ogg'), listener, vol = 45)
 
+/proc/ares_artemis_talk(broadcast_message)
+	var/datum/language/artemis/artemis = GLOB.all_languages[LANGUAGE_ARTEMIS]
+	for(var/mob/living/silicon/decoy/ship_ai/ai in GLOB.ai_mob_list)
+		if(ai.stat == DEAD)
+			return FALSE
+		artemis.broadcast(ai, broadcast_message)
+	for(var/mob/listener in (GLOB.human_mob_list + GLOB.dead_mob_list))
+		if(listener.hear_artemis())//Only plays sound to mobs and not observers, to reduce spam.
+			playsound_client(listener.client, sound('sound/misc/interference.ogg'), listener, vol = 45)
+
 /proc/ares_can_interface()
 	var/obj/structure/machinery/ares/processor/interface/processor = GLOB.ares_link.processor_interface
 	if(!istype(GLOB.ares_link) || !ares_is_active())

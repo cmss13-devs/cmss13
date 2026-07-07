@@ -1,4 +1,0 @@
-author: "hry-gh"
-delete-after: True
-changes:
-  - server: "events sent to sentry are now scrubbed for user PII and ignoring sensitive datums, procs"

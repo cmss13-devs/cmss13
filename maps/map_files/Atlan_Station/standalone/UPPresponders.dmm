@@ -1317,6 +1317,17 @@
 	icon_state = "folding_2"
 	},
 /obj/item/weapon/gun/pkp,
+/obj/item/ammo_casing/bullet{
+	icon_state = "cartridge_1_1";
+	pixel_y = -3;
+	dir = 10
+	},
+/obj/item/ammo_casing/bullet{
+	icon_state = "cartridge_1_1";
+	pixel_y = 8;
+	dir = 10;
+	pixel_x = -5
+	},
 /turf/open/floor/strata/floor2,
 /area/atlan/station/admin)
 "xM" = (
@@ -1804,8 +1815,12 @@
 /turf/open/floor/almayer/plate,
 /area/atlan/station/hab_docks)
 "Fd" = (
-/obj/effect/decal/cleanable/blood/gibs/xeno,
-/obj/effect/spawner/gibspawner/xeno,
+/obj/item/ammo_casing/bullet{
+	icon_state = "cartridge_1_1";
+	pixel_y = -3;
+	dir = 10;
+	pixel_x = 5
+	},
 /turf/open/floor/strata,
 /area/atlan/station/admin)
 "Fi" = (
@@ -2150,14 +2165,6 @@
 /obj/effect/spawner/gibspawner/xeno,
 /turf/open/floor/strata,
 /area/atlan/station/admin)
-"ND" = (
-/obj/item/ammo_casing/bullet{
-	icon_state = "cartridge_1_1";
-	pixel_y = -3;
-	dir = 10
-	},
-/turf/open/floor/strata/floor3/east,
-/area/atlan/station/admin)
 "NG" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 8;
@@ -2453,6 +2460,11 @@
 /obj/item/ammo_magazine/rifle/type71/heap{
 	current_rounds = 0
 	},
+/obj/item/ammo_casing/bullet{
+	icon_state = "cartridge_1_1";
+	pixel_y = -3;
+	dir = 10
+	},
 /turf/open/floor/strata/blue1,
 /area/atlan/station/admin)
 "SX" = (
@@ -2712,6 +2724,12 @@
 	dir = 4
 	},
 /obj/item/stack/sheet/metal,
+/obj/item/ammo_casing/bullet{
+	icon_state = "cartridge_1_1";
+	pixel_y = 8;
+	dir = 10;
+	pixel_x = -5
+	},
 /turf/open/floor/strata,
 /area/atlan/station/admin)
 "XJ" = (
@@ -7247,7 +7265,7 @@ yR
 ai
 NY
 ok
-ND
+Qs
 Qs
 rT
 HC

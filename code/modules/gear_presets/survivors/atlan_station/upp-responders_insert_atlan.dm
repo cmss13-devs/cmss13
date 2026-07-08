@@ -2,6 +2,7 @@
 // /obj/effect/landmark/survivor_spawner/atlan_responders_UPP/soldier
 
 /datum/equipment_preset/survivor/atlan_responder_UPP
+	name = "Survivor - Atlan UPP"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_UPP
 	job_title = JOB_SURVIVOR

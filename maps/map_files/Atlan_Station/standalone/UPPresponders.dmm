@@ -315,7 +315,6 @@
 	pixel_y = 9;
 	buckling_y = 9
 	},
-/obj/structure/bed/chair/dropship/passenger,
 /turf/open/floor/almayer/plate,
 /area/atlan/station/hab_docks)
 "gU" = (

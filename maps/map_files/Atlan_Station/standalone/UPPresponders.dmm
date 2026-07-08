@@ -158,7 +158,6 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/atlan/station/walkway)
 "dw" = (
-/obj/item/weapon/gun/rifle/type71/carbine,
 /obj/item/ammo_casing/bullet{
 	icon_state = "cartridge_1_1";
 	pixel_y = -3;
@@ -388,6 +387,7 @@
 /area/atlan/station/promenade)
 "if" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sheet/metal/medium_stack,
 /turf/open/floor/almayer/plate,
 /area/atlan/station/hab_docks)
 "im" = (
@@ -2737,6 +2737,7 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
+/obj/item/ammo_box/magazine/type71,
 /turf/open/floor/almayer/plate,
 /area/atlan/station/hab_docks)
 "XQ" = (

@@ -1081,10 +1081,6 @@
 	},
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_nw_train)
-"adB" = (
-/obj/structure/machinery/door/airlock/hybrisa/generic/autoname,
-/turf/open/floor/strata/floor2,
-/area/atlan/station/cargooffice)
 "adC" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/strata,
@@ -1681,6 +1677,9 @@
 /obj/structure/platform/metal/strata/west,
 /turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/canteen)
+"afz" = (
+/turf/closed/wall/upp_ship/grey/orange,
+/area/atlan/station/cargo)
 "afA" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -4614,6 +4613,9 @@
 	},
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/exports_west/cas)
+"aod" = (
+/turf/closed/wall/upp_ship/grey/orange/reinforced,
+/area/atlan/station/cargo)
 "aoe" = (
 /obj/structure/pipes/vents/pump,
 /obj/effect/decal/cleanable/dirt,
@@ -4855,6 +4857,9 @@
 /area/atlan/station/security)
 "aoT" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/barricade/deployable{
 	dir = 4
 	},
 /turf/open/floor/strata/floor3/east,
@@ -7621,6 +7626,10 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/floor2,
 /area/atlan/station/repairoffice)
+"axD" = (
+/obj/structure/cargo_container/upp_small/container_1/left,
+/turf/open/floor/strata/orange_cover,
+/area/atlan/station/cargooffice)
 "axE" = (
 /obj/structure/pipes/vents/scrubber{
 	dir = 4
@@ -7659,6 +7668,10 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/floor2,
 /area/atlan/lz/near_lz1)
+"axL" = (
+/obj/structure/cargo_container/upp_small/container_1/right,
+/turf/open/floor/strata/orange_cover,
+/area/atlan/station/cargooffice)
 "axM" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -7835,6 +7848,10 @@
 	},
 /turf/open/floor/strata/floor2,
 /area/atlan/station/repairs_lift)
+"ayp" = (
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/strata/orange_cover,
+/area/atlan/station/cargooffice)
 "ayq" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12"
@@ -7859,6 +7876,24 @@
 	},
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_nw_train)
+"ayt" = (
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 32;
+	layer = 5.4
+	},
+/turf/open/floor/strata/orange_cover,
+/area/atlan/station/cargooffice)
+"ayu" = (
+/obj/item/storage/toolbox/mechanical/green,
+/turf/open/floor/strata/floor2,
+/area/atlan/station/cargooffice)
+"ayv" = (
+/obj/structure/closet/emcloset,
+/turf/open/floor/strata/orange_cover,
+/area/atlan/station/cargooffice)
 "ayI" = (
 /obj/structure/surface/table{
 	color = "#8B7B5B"
@@ -9106,23 +9141,6 @@
 	},
 /turf/open/floor/corsat,
 /area/atlan/oob)
-"aEe" = (
-/obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/barricade/handrail/no_vault{
-	layer = 4
-	},
-/mob/living/simple_animal/hostile/retaliate/clown{
-	desc = "Always returning. Always watching.";
-	health = 10000;
-	move_to_delay = 2;
-	name = "Gonzo the Magnificent";
-	rapid = 1
-	},
-/turf/open/floor/corsat,
-/area/atlan/oob)
 "aEf" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/disposalpipe/segment{
@@ -9881,10 +9899,6 @@
 	},
 /turf/open/floor/prison/floor_marked,
 /area/atlan/asteroid/processing_se_train)
-"aGK" = (
-/obj/structure/machinery/power/apc/power/south,
-/turf/open/floor/strata/green1,
-/area/atlan/station/canteen)
 "aGL" = (
 /obj/effect/decal/hybrisa/road/roadmiddle{
 	dir = 8;
@@ -10120,10 +10134,10 @@
 /turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/walkway)
 "aHE" = (
-/obj/item/stack/sheet/metal/medium_stack,
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
+/obj/item/stack/sheet/metal/med_small_stack,
 /turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/walkway)
 "aHF" = (
@@ -10453,7 +10467,7 @@
 /turf/closed/wall/upp_ship/grey,
 /area/atlan/station/security)
 "aIM" = (
-/obj/structure/machinery/power/apc/power/east,
+/obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/strata/red1,
 /area/atlan/station/security)
 "aIN" = (
@@ -11421,6 +11435,7 @@
 	pixel_x = -10;
 	pixel_y = -3
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/walkway)
 "aLL" = (
@@ -14369,9 +14384,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/atlan/lz/near_lz1)
 "aVM" = (
-/obj/structure/surface/rack{
-	color = "#98a3ab"
-	},
+/obj/structure/closet/firecloset/full,
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/repairoffice)
 "aVN" = (
@@ -14457,13 +14470,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 5
 	},
-/turf/open/floor/strata/orange_cover,
-/area/atlan/station/cargooffice)
-"aVW" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/strata/orange_cover,
+/turf/open/floor/strata/floor2,
 /area/atlan/station/cargooffice)
 "aVX" = (
 /obj/effect/decal/cleanable/generic{
@@ -25240,6 +25247,7 @@
 	pixel_y = 1;
 	pixel_x = -6
 	},
+/obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/strata/cyan2/east,
 /area/atlan/station/canteen)
 "iCN" = (
@@ -32637,6 +32645,7 @@
 "ocT" = (
 /obj/structure/cargo_container/upp_small/container_19/right,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/hab_docks)
 "ocV" = (
@@ -38919,7 +38928,7 @@
 	pixel_y = 32;
 	layer = 5.4
 	},
-/turf/open/floor/strata/orange_cover,
+/turf/open/floor/strata/floor2,
 /area/atlan/station/cargooffice)
 "sKb" = (
 /obj/structure/cargo_container/upp/mk6/right,
@@ -79410,7 +79419,7 @@ aEa
 aEa
 aEk
 aEh
-aEe
+aEd
 aEb
 aEa
 saK
@@ -109173,7 +109182,7 @@ cCk
 cyX
 vUU
 aeW
-cCk
+sNj
 sqP
 vUU
 scy
@@ -109810,7 +109819,7 @@ ohy
 rou
 rou
 ohy
-ohy
+pKE
 ohy
 ohy
 ohy
@@ -109997,7 +110006,7 @@ anz
 anw
 anl
 anp
-aGK
+heE
 mqJ
 quB
 gfU
@@ -110024,7 +110033,7 @@ aNp
 abP
 wEE
 wEE
-wEE
+vQH
 wEE
 wEE
 aby
@@ -111173,7 +111182,7 @@ mEn
 axq
 dUH
 mEn
-aaf
+axD
 aVv
 tDk
 nUR
@@ -111385,7 +111394,7 @@ mEn
 axy
 aCG
 vQC
-mEn
+axL
 aCv
 cgE
 nUR
@@ -111592,7 +111601,7 @@ giW
 giW
 afI
 gjf
-mEn
+ayv
 mEn
 axq
 vQC
@@ -111807,7 +111816,7 @@ djp
 aWh
 vQC
 lVd
-mEn
+vQC
 mEn
 aVE
 xYA
@@ -112019,14 +112028,14 @@ aWy
 mEn
 vQC
 axs
+vQC
 mEn
 cAM
 cAM
 cAM
 cAM
 cAM
-cAM
-xYA
+afz
 wmD
 nUR
 ezm
@@ -112079,7 +112088,7 @@ eVN
 ahc
 ntq
 bJU
-slC
+ntq
 ntq
 anA
 wLR
@@ -112231,14 +112240,14 @@ aWA
 vQC
 aUZ
 axq
-uuj
+hix
+ayp
 cAM
 hYN
 kyk
 dWJ
 hDn
-cAM
-xYA
+afz
 uph
 nhg
 duJ
@@ -112291,7 +112300,7 @@ evD
 ahc
 anA
 anA
-ntq
+slC
 ntq
 anA
 dYf
@@ -112444,13 +112453,13 @@ vQC
 vQC
 axz
 aVV
+aaf
 aCF
 cGu
 vQC
 vQC
 dWJ
-cAM
-aTP
+aod
 aTP
 ehH
 aCv
@@ -112655,14 +112664,14 @@ xET
 xET
 lLW
 vQC
-aVW
+axs
+mEn
 aCF
 qiH
 vQC
 vQC
 aCE
-cAM
-aTP
+aod
 olC
 nUR
 duJ
@@ -112861,20 +112870,20 @@ aXq
 xET
 kKE
 mEn
-adB
+vQC
 mEn
 nqY
 aAk
 kyg
 akr
 sJs
+ayt
 akp
 thP
 vQC
 vQC
 jNN
-cAM
-aTP
+aod
 lnf
 laD
 fAB
@@ -113080,13 +113089,13 @@ aAk
 nww
 mZp
 axr
+mZp
 cAM
 cAM
 fZM
 aCF
 cAM
-cAM
-aTP
+aod
 qam
 mgT
 sxc
@@ -113289,7 +113298,7 @@ vQC
 hAL
 oNt
 lba
-vQC
+ayu
 vQC
 axq
 ddq
@@ -117802,7 +117811,7 @@ ubh
 mBo
 aLJ
 snO
-tmn
+kmL
 tmn
 tmn
 ofa

@@ -273,38 +273,3 @@
 /datum/action/xeno_action/activable/cleave/proc/remove_buff()
 	buffed = FALSE
 
-
-
-/datum/action/xeno_action/onclick/toggle_cleave/can_use_action()
-	var/mob/living/carbon/xenomorph/xeno = owner
-	if(xeno && !xeno.buckled && !xeno.is_mob_incapacitated())
-		return TRUE
-
-/datum/action/xeno_action/onclick/toggle_cleave/use_ability(atom/target_atom)
-	var/mob/living/carbon/xenomorph/xeno = owner
-
-	if(!istype(xeno))
-		return
-
-	if(!xeno.check_state(TRUE))
-		return
-
-	var/datum/action/xeno_action/activable/cleave/cAction = get_action(xeno, /datum/action/xeno_action/activable/cleave)
-
-	if(!istype(cAction))
-		return
-
-	cAction.root_toggle = !cAction.root_toggle
-
-	var/action_icon_result
-	if(cAction.root_toggle)
-		action_icon_result = "prae_cleave_root"
-		to_chat(xeno, SPAN_WARNING("We will now root marines with our cleave."))
-	else
-		action_icon_result = "prae_cleave_fling" // TODO: update
-		to_chat(xeno, SPAN_WARNING("We will now throw marines with our cleave."))
-
-	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_result)
-	return ..()
-

@@ -65,6 +65,13 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat/squares,
 /area/adminlevel/ert_station/cmb_station)
+"al" = (
+/obj/structure/sign/nosmoking_1{
+	pixel_x = 0;
+	pixel_y = 28
+	},
+/turf/open/floor/corsat/green/north,
+/area/adminlevel/ert_station/cmb_station)
 "am" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -457,6 +464,13 @@
 	},
 /turf/open/floor/corsat/blue,
 /area/adminlevel/ert_station/cmb_station)
+"bq" = (
+/obj/structure/sign/nosmoking_1{
+	pixel_x = -26;
+	pixel_y = 0
+	},
+/turf/open/floor/corsat/blue/west,
+/area/adminlevel/ert_station/cmb_station)
 "br" = (
 /obj/structure/machinery/disposal,
 /turf/open/floor/corsat/squares,
@@ -566,6 +580,10 @@
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/machinery/light{
 	dir = 8
+	},
+/obj/structure/sign/poster/blacklight{
+	pixel_x = 0;
+	pixel_y = 32
 	},
 /turf/open/floor/corsat/squares,
 /area/adminlevel/ert_station/cmb_station)
@@ -924,10 +942,6 @@
 	},
 /turf/open/floor/corsat/green/north,
 /area/adminlevel/ert_station/cmb_station)
-"cL" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/corsat/green/north,
-/area/adminlevel/ert_station/cmb_station)
 "cM" = (
 /obj/structure/closet/medical_wall{
 	pixel_x = 0;
@@ -1119,7 +1133,7 @@
 /area/adminlevel/ert_station/cmb_station)
 "di" = (
 /obj/structure/sign/safety/high_voltage{
-	pixel_x = 0;
+	pixel_x = -2;
 	pixel_y = -25
 	},
 /turf/open/floor/corsat/squares,
@@ -1157,6 +1171,13 @@
 	},
 /turf/open/floor/corsat/blue/north,
 /area/adminlevel/ert_station/cmb_station)
+"dn" = (
+/obj/structure/sign/prop2{
+	pixel_x = -1;
+	pixel_y = 31
+	},
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/cmb_station)
 "do" = (
 /obj/structure/roof/hybrisa/lattice_prop/lattice_5{
 	pixel_x = -8;
@@ -1186,18 +1207,6 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/adminlevel/ert_station/cmb_station)
-"dr" = (
-/obj/structure/pipes/vents/pump{
-	dir = 8
-	},
-/turf/open/floor/corsat/plate,
-/area/space)
-"ds" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 10
-	},
-/turf/open/floor/corsat/plate,
-/area/space)
 "dt" = (
 /obj/structure/sign/safety/fire_station{
 	pixel_x = 31;
@@ -1205,31 +1214,6 @@
 	},
 /turf/open/floor/corsat/brown/east,
 /area/adminlevel/ert_station/cmb_station)
-"du" = (
-/turf/open/floor/almayer/tcomms,
-/area/space)
-"dv" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 4
-	},
-/turf/open/floor/almayer/tcomms,
-/area/space)
-"dw" = (
-/obj/structure/showcase{
-	icon_state = "hub";
-	icon = 'icons/obj/structures/props/server_equipment.dmi';
-	name = "Telecommunication Hub"
-	},
-/turf/open/floor/corsat/plate,
-/area/space)
-"dx" = (
-/obj/structure/showcase{
-	icon_state = "processor";
-	icon = 'icons/obj/structures/props/server_equipment.dmi';
-	name = "Processor Unit"
-	},
-/turf/open/floor/corsat/plate,
-/area/space)
 "dy" = (
 /obj/structure/sign/safety/bathunisex{
 	pixel_x = 7;
@@ -1373,6 +1357,41 @@
 /obj/structure/sign/safety/airtraffictower{
 	pixel_x = 0;
 	pixel_y = 27
+	},
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/cmb_station)
+"dP" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 1
+	},
+/turf/open/floor/corsat/arrow_south,
+/area/adminlevel/ert_station/cmb_station)
+"dQ" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/corsat/arrow_south,
+/area/adminlevel/ert_station/cmb_station)
+"dR" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/sign/poster/corporate{
+	pixel_x = 13;
+	pixel_y = 36
+	},
+/turf/open/floor/corsat/blue/north,
+/area/adminlevel/ert_station/cmb_station)
+"dS" = (
+/obj/structure/sign/poster/wylogo{
+	pixel_x = 0;
+	pixel_y = 34
+	},
+/turf/open/floor/corsat/blue/north,
+/area/adminlevel/ert_station/cmb_station)
+"dT" = (
+/obj/structure/platform_decoration/metal/almayer_smooth/east,
+/obj/structure/sign/prop3{
+	pixel_x = -1;
+	pixel_y = 30
 	},
 /turf/open/floor/corsat/squares,
 /area/adminlevel/ert_station/cmb_station)
@@ -1697,13 +1716,15 @@
 	density = 0
 	},
 /obj/structure/noticeboard{
-	pixel_y = 32
+	pixel_y = 32;
+	pixel_x = -16
 	},
 /obj/structure/noticeboard{
-	pixel_y = 33;
+	pixel_y = 32;
 	icon_state = "notices_8";
 	name = "sticky notes";
-	desc = "One Note reads: 'Stop leaving your damn coffee cups on the photocopier, christ dude.' Another reads: 'please make sure request a refill for the water cooler before it runs out, I don't want my plants to die. Thank you!'"
+	desc = "One Note reads: 'Stop leaving your damn coffee cups on the photocopier, christ dude.' Another reads: 'please make sure request a refill for the water cooler before it runs out, I don't want my plants to die. Thank you!'";
+	pixel_x = -15
 	},
 /turf/open/floor/hybrisa/wood/darkerwood,
 /area/adminlevel/ert_station/cmb_station)
@@ -2234,12 +2255,6 @@
 /obj/structure/machinery/recharge_station,
 /turf/open/floor/corsat/plate,
 /area/adminlevel/ert_station/cmb_station)
-"qh" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/closed/wall/almayer/outer,
-/area/adminlevel/ert_station/cmb_station)
 "qn" = (
 /obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard5{
 	dir = 10;
@@ -2282,15 +2297,15 @@
 "qv" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/microwave{
-	pixel_y = 11;
+	pixel_y = 2;
 	pixel_x = 0
 	},
 /obj/structure/machinery/microwave{
-	pixel_y = 23;
+	pixel_y = 15;
 	pixel_x = 0
 	},
 /obj/item/storage/fancy/egg_box{
-	pixel_y = 39;
+	pixel_y = 29;
 	pixel_x = 0
 	},
 /turf/open/floor/corsat/officetiles,
@@ -2730,7 +2745,8 @@
 /area/adminlevel/ert_station/cmb_station)
 "yk" = (
 /obj/structure/sign/calendar/ua{
-	pixel_y = 26
+	pixel_y = 26;
+	pixel_x = -3
 	},
 /obj/structure/bed/chair/comfy/teal{
 	dir = 2
@@ -2861,6 +2877,10 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/sign/poster/io{
+	pixel_x = -14;
+	pixel_y = 31
+	},
 /turf/open/floor/hybrisa/tile/tilered,
 /area/adminlevel/ert_station/cmb_station)
 "zE" = (
@@ -2984,6 +3004,10 @@
 "Bo" = (
 /obj/structure/bed/sofa{
 	icon_state = "couch_hori3"
+	},
+/obj/structure/sign/poster/marshalls{
+	pixel_x = 0;
+	pixel_y = 33
 	},
 /turf/open/floor/hybrisa/wood/darkerwood,
 /area/adminlevel/ert_station/cmb_station)
@@ -5947,11 +5971,11 @@ Ki
 Ki
 bs
 bs
-Ki
+bq
 cU
 tt
 vj
-cJ
+al
 cD
 cf
 cf
@@ -6009,7 +6033,7 @@ ad
 ac
 aI
 cO
-cL
+cy
 cE
 cf
 cf
@@ -6050,7 +6074,7 @@ vj
 tN
 ru
 vj
-dN
+dn
 vI
 aC
 eM
@@ -6203,7 +6227,7 @@ vj
 vj
 vj
 vj
-kx
+dT
 uC
 aN
 dN
@@ -6344,8 +6368,8 @@ ae
 bH
 ku
 bC
-qh
-qh
+vj
+vj
 vj
 iT
 xQ
@@ -6629,7 +6653,7 @@ fg
 aK
 aG
 vj
-bO
+dR
 ae
 qx
 vj
@@ -6687,7 +6711,7 @@ Dr
 aK
 YG
 vj
-Ac
+dS
 bG
 dl
 vj
@@ -6746,7 +6770,7 @@ aK
 YG
 vj
 Ac
-aA
+dP
 ac
 ui
 ay
@@ -6804,7 +6828,7 @@ aL
 HA
 vj
 Ac
-ae
+dQ
 dN
 rM
 dN
@@ -6978,7 +7002,7 @@ YG
 YG
 vj
 Ac
-ae
+aD
 qx
 vj
 Rk
@@ -7036,7 +7060,7 @@ YG
 YG
 vj
 Ac
-aD
+ae
 qx
 vj
 Rk
@@ -7727,9 +7751,9 @@ YG
 YG
 YG
 YG
-dw
-du
-dr
+YG
+YG
+YG
 vj
 Ac
 dN
@@ -7785,9 +7809,9 @@ YG
 YG
 YG
 YG
-dx
-dv
-ds
+YG
+YG
+YG
 vj
 Ac
 dN

@@ -127,7 +127,7 @@
 
 /area/adminlevel/ert_station/cmb_station
 	name = "Anchorpoint Station"
-	icon_state = "blue"
+	icon_state = "cmb_ert_station"
 
 /area/adminlevel/ert_station/uscm_station
 	name = "USCM Station"

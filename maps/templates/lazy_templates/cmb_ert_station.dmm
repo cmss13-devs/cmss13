@@ -65,12 +65,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat/squares,
 /area/adminlevel/ert_station/cmb_station)
-"al" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 5
-	},
-/turf/open/floor/corsat/squares,
-/area/adminlevel/ert_station/cmb_station)
 "am" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -162,6 +156,9 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/cmb_station)
+"az" = (
+/turf/open/space/basic,
 /area/adminlevel/ert_station/cmb_station)
 "aA" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -460,14 +457,6 @@
 	},
 /turf/open/floor/corsat/blue,
 /area/adminlevel/ert_station/cmb_station)
-"bq" = (
-/obj/effect/decal/hybrisa/dirt_2,
-/obj/item/trash/hybrisa/cuppa_joes/empty_cup{
-	pixel_x = 3;
-	pixel_y = 5
-	},
-/turf/open/floor/corsat/blue,
-/area/adminlevel/ert_station/cmb_station)
 "br" = (
 /obj/structure/machinery/disposal,
 /turf/open/floor/corsat/squares,
@@ -557,9 +546,9 @@
 /area/adminlevel/ert_station/cmb_station)
 "bD" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/medical/colony{
-	dir = 1;
-	name = "\improper CMB Medical Lab"
+/obj/structure/machinery/door/airlock/almayer{
+	dir = 2;
+	name = "\improper CMB Synthetic Closet"
 	},
 /turf/open/floor/corsat/marked,
 /area/adminlevel/ert_station/cmb_station)
@@ -595,7 +584,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/corsat,
+/turf/open/floor/plating,
 /area/adminlevel/ert_station/cmb_station)
 "bJ" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -604,7 +593,7 @@
 "bK" = (
 /obj/structure/machinery/vending/cola{
 	density = 0;
-	pixel_x = 10;
+	pixel_x = 4;
 	pixel_y = 16
 	},
 /obj/effect/decal/hybrisa/dirt_2,
@@ -618,7 +607,8 @@
 "bL" = (
 /obj/structure/machinery/vending/snack{
 	density = 0;
-	pixel_y = 16
+	pixel_y = 16;
+	pixel_x = -7
 	},
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/hybrisa/trash{
@@ -717,10 +707,226 @@
 /turf/open/floor/corsat/squares,
 /area/adminlevel/ert_station/cmb_station)
 "bX" = (
-/obj/structure/machinery/medical_pod/autodoc/unskilled{
-	dir = 1
+/obj/structure/showcase{
+	icon_state = "bus";
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	},
-/turf/open/floor/corsat/cargo,
+/turf/open/floor/corsat/plate,
+/area/adminlevel/ert_station/cmb_station)
+"bY" = (
+/obj/structure/machinery/door/poddoor/almayer/blended{
+	name = "Anchorpoint Medical Outpost Ambulance Bay";
+	dir = 4
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/corsat/marked,
+/area/adminlevel/ert_station/cmb_station)
+"bZ" = (
+/turf/open/floor/corsat/blue/southwest,
+/area/adminlevel/ert_station/cmb_station)
+"ca" = (
+/turf/open/floor/corsat/blue/northwest,
+/area/adminlevel/ert_station/cmb_station)
+"cb" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/door/poddoor/almayer/blended{
+	name = "Anchorpoint Medical Outpost Ambulance Bay"
+	},
+/turf/open/floor/corsat/marked,
+/area/adminlevel/ert_station/cmb_station)
+"cc" = (
+/turf/open/floor/corsat/green/southwest,
+/area/adminlevel/ert_station/cmb_station)
+"cd" = (
+/turf/open/floor/corsat/green/southeast,
+/area/adminlevel/ert_station/cmb_station)
+"ce" = (
+/turf/open/floor/corsat/green/west,
+/area/adminlevel/ert_station/cmb_station)
+"cf" = (
+/turf/open/floor/corsat/plate,
+/area/adminlevel/ert_station/cmb_station)
+"cg" = (
+/obj/structure/bed/chair/wheelchair{
+	dir = 8
+	},
+/turf/open/floor/corsat/green/east,
+/area/adminlevel/ert_station/cmb_station)
+"ch" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/machinery/door/airlock/almayer{
+	name = "\improper Cryostasis Pod Closet"
+	},
+/turf/open/floor/corsat/marked,
+/area/adminlevel/ert_station/cmb_station)
+"ci" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/roller,
+/obj/item/roller{
+	pixel_x = 0;
+	pixel_y = 8
+	},
+/turf/open/floor/corsat/green/southwest,
+/area/adminlevel/ert_station/cmb_station)
+"cj" = (
+/turf/open/floor/corsat/greencorner/west,
+/area/adminlevel/ert_station/cmb_station)
+"ck" = (
+/turf/open/floor/corsat/greencorner,
+/area/adminlevel/ert_station/cmb_station)
+"cl" = (
+/obj/structure/machinery/cm_vending/sorted/medical/blood{
+	req_access = null
+	},
+/turf/open/floor/corsat/green/southeast,
+/area/adminlevel/ert_station/cmb_station)
+"cm" = (
+/obj/structure/sign/safety/cryo{
+	pixel_x = 15;
+	pixel_y = 0
+	},
+/turf/closed/wall/almayer/outer,
+/area/adminlevel/ert_station/cmb_station)
+"cn" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/obj/structure/machinery/medical_pod/sleeper/upgraded,
+/turf/open/floor/corsat/green/west,
+/area/adminlevel/ert_station/cmb_station)
+"co" = (
+/obj/structure/machinery/sleep_console,
+/turf/open/floor/corsat/plate,
+/area/adminlevel/ert_station/cmb_station)
+"cp" = (
+/obj/structure/bed,
+/obj/item/bedsheet/medical,
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/corsat/green/east,
+/area/adminlevel/ert_station/cmb_station)
+"cq" = (
+/obj/structure/sign/safety/restrictedarea{
+	pixel_x = 32;
+	pixel_y = 6
+	},
+/obj/structure/sign/safety/ammunition{
+	pixel_x = 32;
+	pixel_y = -6
+	},
+/turf/open/floor/corsat/redcorner/east,
+/area/adminlevel/ert_station/cmb_station)
+"cr" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/device/defibrillator/upgraded,
+/obj/structure/sign/safety/med_life_support{
+	pixel_x = -16;
+	pixel_y = 0
+	},
+/turf/open/floor/corsat/green/west,
+/area/adminlevel/ert_station/cmb_station)
+"cs" = (
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/corsat/plate,
+/area/adminlevel/ert_station/cmb_station)
+"ct" = (
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/corsat/green/east,
+/area/adminlevel/ert_station/cmb_station)
+"cu" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/corsat/red/east,
+/area/adminlevel/ert_station/cmb_station)
+"cv" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/corsat/red/west,
+/area/adminlevel/ert_station/cmb_station)
+"cw" = (
+/obj/structure/machinery/medical_pod/bodyscanner,
+/turf/open/floor/corsat/green/west,
+/area/adminlevel/ert_station/cmb_station)
+"cx" = (
+/obj/structure/machinery/body_scanconsole,
+/turf/open/floor/corsat/plate,
+/area/adminlevel/ert_station/cmb_station)
+"cy" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/corsat/plate,
+/area/adminlevel/ert_station/cmb_station)
+"cz" = (
+/turf/open/floor/corsat/red/east,
+/area/adminlevel/ert_station/cmb_station)
+"cA" = (
+/turf/open/floor/corsat/red/west,
+/area/adminlevel/ert_station/cmb_station)
+"cB" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/corsat/green/west,
+/area/adminlevel/ert_station/cmb_station)
+"cC" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 6
+	},
+/turf/open/floor/corsat/plate,
+/area/adminlevel/ert_station/cmb_station)
+"cD" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/corsat/plate,
+/area/adminlevel/ert_station/cmb_station)
+"cE" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 9
+	},
+/turf/open/floor/corsat/plate,
+/area/adminlevel/ert_station/cmb_station)
+"cF" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/sign/safety/terminal{
+	pixel_x = -19;
+	pixel_y = -7
+	},
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/cmb_station)
+"cG" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/corsat/redcorner,
+/area/adminlevel/ert_station/cmb_station)
+"cH" = (
+/obj/structure/sign/safety/ammunition{
+	pixel_x = -20;
+	pixel_y = -6
+	},
+/turf/open/floor/corsat/redcorner/west,
+/area/adminlevel/ert_station/cmb_station)
+"cI" = (
+/turf/open/floor/corsat/green/northwest,
+/area/adminlevel/ert_station/cmb_station)
+"cJ" = (
+/turf/open/floor/corsat/green/north,
+/area/adminlevel/ert_station/cmb_station)
+"cK" = (
+/obj/structure/sign/safety/autodoc{
+	pixel_x = 7;
+	pixel_y = 31
+	},
+/turf/open/floor/corsat/green/north,
+/area/adminlevel/ert_station/cmb_station)
+"cL" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/corsat/green/north,
 /area/adminlevel/ert_station/cmb_station)
 "cM" = (
 /obj/structure/closet/medical_wall{
@@ -728,6 +934,116 @@
 	pixel_y = -28
 	},
 /turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/cmb_station)
+"cN" = (
+/obj/structure/machinery/cm_vending/sorted/medical/no_access{
+	req_access = null;
+	pixel_x = 0;
+	pixel_y = 0
+	},
+/turf/open/floor/corsat/green/northeast,
+/area/adminlevel/ert_station/cmb_station)
+"cO" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/machinery/door/airlock/almayer/medical/colony{
+	dir = 1;
+	name = "\improper Anchorpoint Medical Outpost"
+	},
+/turf/open/floor/corsat/marked,
+/area/adminlevel/ert_station/cmb_station)
+"cP" = (
+/obj/structure/sign/safety/medical{
+	pixel_x = 7;
+	pixel_y = 7
+	},
+/turf/closed/wall/almayer/outer,
+/area/adminlevel/ert_station/cmb_station)
+"cQ" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/corsat/plate,
+/area/adminlevel/ert_station/cmb_station)
+"cR" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 0;
+	pixel_y = 1
+	},
+/turf/open/floor/corsat/red/southwest,
+/area/adminlevel/ert_station/cmb_station)
+"cS" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1;
+	pixel_x = 0
+	},
+/turf/open/floor/corsat/red,
+/area/adminlevel/ert_station/cmb_station)
+"cT" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_x = 0;
+	pixel_y = 1
+	},
+/turf/open/floor/corsat/red/southeast,
+/area/adminlevel/ert_station/cmb_station)
+"cU" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup{
+	pixel_x = -1;
+	pixel_y = 5
+	},
+/turf/open/floor/corsat/blue/west,
+/area/adminlevel/ert_station/cmb_station)
+"cV" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 0;
+	pixel_y = 0
+	},
+/turf/open/floor/corsat/red/west,
+/area/adminlevel/ert_station/cmb_station)
+"cW" = (
+/obj/structure/machinery/medical_pod/autodoc/unskilled,
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/adminlevel/ert_station/cmb_station)
+"cX" = (
+/obj/structure/machinery/autodoc_console/upgraded{
+	dir = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/corsat/red/east,
+/area/adminlevel/ert_station/cmb_station)
+"cY" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/sign/safety/terminal{
+	pixel_x = 7;
+	pixel_y = 30
+	},
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/cmb_station)
+"cZ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 0;
+	pixel_y = 0
+	},
+/obj/structure/bed/roller,
+/turf/open/floor/corsat/red/northwest,
+/area/adminlevel/ert_station/cmb_station)
+"da" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/corsat/red/north,
 /area/adminlevel/ert_station/cmb_station)
 "db" = (
 /obj/effect/decal/hybrisa/gold/line4{
@@ -754,6 +1070,60 @@
 	},
 /turf/open/floor/hybrisa/wood/darkerwood,
 /area/adminlevel/ert_station/cmb_station)
+"dc" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	layer = 2.5
+	},
+/turf/open/floor/corsat/red/northeast,
+/area/adminlevel/ert_station/cmb_station)
+"dd" = (
+/obj/structure/sign/safety/security{
+	pixel_x = 32;
+	pixel_y = 6
+	},
+/obj/structure/sign/safety/reception{
+	pixel_x = 32;
+	pixel_y = -8
+	},
+/turf/open/floor/corsat/blue/east,
+/area/adminlevel/ert_station/cmb_station)
+"de" = (
+/obj/structure/sign/safety/luggageclaim{
+	pixel_x = 1;
+	pixel_y = 6
+	},
+/turf/closed/wall/almayer/outer,
+/area/adminlevel/ert_station/cmb_station)
+"df" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/sign/safety/landingzone{
+	pixel_x = 14;
+	pixel_y = -26
+	},
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/cmb_station)
+"dg" = (
+/obj/structure/machinery/light,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/corsat/red/east,
+/area/adminlevel/ert_station/cmb_station)
+"dh" = (
+/obj/structure/sign/safety/synth_storage{
+	pixel_x = 0;
+	pixel_y = 24
+	},
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/cmb_station)
+"di" = (
+/obj/structure/sign/safety/high_voltage{
+	pixel_x = 0;
+	pixel_y = -25
+	},
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/cmb_station)
 "dj" = (
 /obj/item/tool/warning_cone{
 	pixel_x = -3;
@@ -761,14 +1131,31 @@
 	},
 /turf/open/floor/corsat/bluecorner/west,
 /area/adminlevel/ert_station/cmb_station)
-"dn" = (
-/obj/structure/machinery/cm_vending/sorted/medical/blood{
-	req_access = null;
-	pixel_x = -1;
-	pixel_y = 17;
-	density = 0
+"dk" = (
+/obj/structure/sign/safety/high_voltage{
+	pixel_x = 14;
+	pixel_y = -8
 	},
-/turf/open/floor/corsat/squares,
+/turf/closed/wall/almayer/outer,
+/area/adminlevel/ert_station/cmb_station)
+"dl" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/sign/safety/security{
+	pixel_x = 0;
+	pixel_y = -24
+	},
+/obj/structure/sign/safety/reception{
+	pixel_x = 14;
+	pixel_y = -24
+	},
+/turf/open/floor/corsat/blue,
+/area/adminlevel/ert_station/cmb_station)
+"dm" = (
+/obj/structure/sign/safety/landingzone{
+	pixel_x = 7;
+	pixel_y = 29
+	},
+/turf/open/floor/corsat/blue/north,
 /area/adminlevel/ert_station/cmb_station)
 "do" = (
 /obj/structure/roof/hybrisa/lattice_prop/lattice_5{
@@ -792,8 +1179,83 @@
 	},
 /turf/open/floor/hybrisa/tile/tilered,
 /area/adminlevel/ert_station/cmb_station)
+"dq" = (
+/obj/structure/sign/safety/fire_station{
+	pixel_x = -18;
+	pixel_y = -7
+	},
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/cmb_station)
+"dr" = (
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/turf/open/floor/corsat/plate,
+/area/space)
+"ds" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
+/turf/open/floor/corsat/plate,
+/area/space)
+"dt" = (
+/obj/structure/sign/safety/fire_station{
+	pixel_x = 31;
+	pixel_y = 0
+	},
+/turf/open/floor/corsat/brown/east,
+/area/adminlevel/ert_station/cmb_station)
+"du" = (
+/turf/open/floor/almayer/tcomms,
+/area/space)
+"dv" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 4
+	},
+/turf/open/floor/almayer/tcomms,
+/area/space)
+"dw" = (
+/obj/structure/showcase{
+	icon_state = "hub";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
+	name = "Telecommunication Hub"
+	},
+/turf/open/floor/corsat/plate,
+/area/space)
+"dx" = (
+/obj/structure/showcase{
+	icon_state = "processor";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
+	name = "Processor Unit"
+	},
+/turf/open/floor/corsat/plate,
+/area/space)
+"dy" = (
+/obj/structure/sign/safety/bathunisex{
+	pixel_x = 7;
+	pixel_y = 24
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/adminlevel/ert_station/cmb_station)
 "dz" = (
 /turf/closed/shuttle/elevator/arrivals,
+/area/adminlevel/ert_station/cmb_station)
+"dA" = (
+/obj/structure/machinery/door/airlock/almayer{
+	dir = 2
+	},
+/turf/open/floor/corsat/marked,
+/area/adminlevel/ert_station/cmb_station)
+"dB" = (
+/obj/structure/sign/safety/landingzone{
+	pixel_x = 32;
+	pixel_y = 0
+	},
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/cmb_station)
+"dC" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/hybrisa/tile/tilered,
 /area/adminlevel/ert_station/cmb_station)
 "dD" = (
 /obj/structure/surface/table/almayer,
@@ -824,12 +1286,26 @@
 	},
 /turf/open/floor/corsat/blue/north,
 /area/adminlevel/ert_station/cmb_station)
+"dF" = (
+/obj/structure/sign/safety/galley{
+	pixel_x = 8;
+	pixel_y = -26
+	},
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/cmb_station)
 "dG" = (
 /obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat/blue/east,
+/area/adminlevel/ert_station/cmb_station)
+"dH" = (
+/obj/structure/sign/safety/landingzone{
+	pixel_x = 33;
+	pixel_y = 0
+	},
+/turf/open/floor/corsat/squares,
 /area/adminlevel/ert_station/cmb_station)
 "dI" = (
 /obj/structure/surface/rack{
@@ -869,7 +1345,35 @@
 	},
 /turf/open/floor/corsat/bluecorner/east,
 /area/adminlevel/ert_station/cmb_station)
+"dK" = (
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/cmb_station)
+"dL" = (
+/obj/structure/sign/safety/elevator{
+	pixel_x = 2;
+	pixel_y = -7
+	},
+/turf/closed/wall/almayer/outer,
+/area/adminlevel/ert_station/cmb_station)
+"dM" = (
+/obj/structure/sign/safety/fire_station{
+	pixel_x = 16;
+	pixel_y = -1
+	},
+/turf/closed/wall/almayer/outer,
+/area/adminlevel/ert_station/cmb_station)
 "dN" = (
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/cmb_station)
+"dO" = (
+/obj/structure/sign/safety/debark_lounge{
+	pixel_x = 13;
+	pixel_y = 27
+	},
+/obj/structure/sign/safety/airtraffictower{
+	pixel_x = 0;
+	pixel_y = 27
+	},
 /turf/open/floor/corsat/squares,
 /area/adminlevel/ert_station/cmb_station)
 "eh" = (
@@ -1036,21 +1540,12 @@
 	},
 /turf/open/floor/hybrisa/wood/darkerwood,
 /area/adminlevel/ert_station/cmb_station)
-"fJ" = (
-/obj/structure/bed/chair/bolted{
-	dir = 1
-	},
-/turf/open/floor/whitered,
-/area/adminlevel/ert_station/cmb_station)
 "fV" = (
 /obj/structure/stairs{
 	icon_state = "ramptop"
 	},
 /obj/structure/platform/metal/almayer_smooth/east,
 /turf/open/floor/corsat/squares,
-/area/adminlevel/ert_station/cmb_station)
-"gg" = (
-/turf/open/floor/whitered,
 /area/adminlevel/ert_station/cmb_station)
 "gj" = (
 /obj/structure/machinery/landinglight/delayone{
@@ -1294,11 +1789,6 @@
 	},
 /obj/structure/closet/emcloset{
 	density = 0;
-	pixel_x = 8;
-	pixel_y = 15
-	},
-/obj/structure/closet/firecloset/full{
-	density = 0;
 	pixel_x = -8;
 	pixel_y = 15
 	},
@@ -1359,11 +1849,8 @@
 /turf/open/floor/corsat/brown/east,
 /area/adminlevel/ert_station/cmb_station)
 "li" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/corsat/squares,
+/turf/open/floor/almayer/tcomms,
 /area/adminlevel/ert_station/cmb_station)
 "lk" = (
 /obj/structure/machinery/door/window/brigdoor/northleft{
@@ -1449,6 +1936,10 @@
 /obj/structure/closet/hydrant{
 	pixel_y = 30
 	},
+/obj/structure/sign/safety/fire_station{
+	pixel_x = -10;
+	pixel_y = 29
+	},
 /turf/open/floor/corsat/squares,
 /area/adminlevel/ert_station/cmb_station)
 "mi" = (
@@ -1459,7 +1950,7 @@
 	pixel_x = -3;
 	pixel_y = 12
 	},
-/turf/open/floor/corsat/squares,
+/turf/open/floor/plating,
 /area/adminlevel/ert_station/cmb_station)
 "mk" = (
 /obj/structure/platform/metal/kutjevo_smooth/north,
@@ -1471,8 +1962,7 @@
 /turf/open/space/basic,
 /area/space)
 "ml" = (
-/obj/structure/machinery/sleep_console,
-/turf/open/floor/corsat/squares,
+/turf/open/floor/almayer/tcomms,
 /area/adminlevel/ert_station/cmb_station)
 "mo" = (
 /obj/structure/machinery/vending/cigarette/wy{
@@ -1621,6 +2111,11 @@
 /turf/open/floor/corsat/arrow_south,
 /area/adminlevel/ert_station/cmb_station)
 "op" = (
+/obj/item/reagent_container/food/drinks/cans/souto{
+	icon_state = "blank_can_crushed";
+	pixel_x = 11;
+	pixel_y = -7
+	},
 /obj/structure/roof/hybrisa/signs/pizzasign{
 	light_color = "#FF9100";
 	light_on = 1;
@@ -1629,11 +2124,6 @@
 	pixel_x = 1;
 	pixel_y = 4
 	},
-/obj/item/reagent_container/food/drinks/cans/souto{
-	icon_state = "blank_can_crushed";
-	pixel_x = 11;
-	pixel_y = -7
-	},
 /turf/open/floor/corsat/greencorner,
 /area/adminlevel/ert_station/cmb_station)
 "or" = (
@@ -1641,6 +2131,10 @@
 /obj/item/paper_bin{
 	pixel_x = 0;
 	pixel_y = 6
+	},
+/obj/structure/sign/safety/coffee{
+	pixel_x = 7;
+	pixel_y = 25
 	},
 /turf/open/floor/hybrisa/wood/darkerwood,
 /area/adminlevel/ert_station/cmb_station)
@@ -1713,7 +2207,8 @@
 	pixel_x = 0;
 	pixel_y = 0
 	},
-/turf/open/floor/corsat,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/plating,
 /area/adminlevel/ert_station/cmb_station)
 "px" = (
 /obj/effect/decal/warning_stripes{
@@ -1736,13 +2231,8 @@
 /turf/open/floor/corsat/squares,
 /area/adminlevel/ert_station/cmb_station)
 "qf" = (
-/obj/structure/machinery/cm_vending/sorted/medical/no_access{
-	req_access = null;
-	pixel_x = 0;
-	pixel_y = 17;
-	density = 0
-	},
-/turf/open/floor/corsat/squares,
+/obj/structure/machinery/recharge_station,
+/turf/open/floor/corsat/plate,
 /area/adminlevel/ert_station/cmb_station)
 "qh" = (
 /obj/structure/machinery/light{
@@ -1783,6 +2273,10 @@
 	pixel_x = 6;
 	pixel_y = 18
 	},
+/obj/structure/sign/safety/fire_station{
+	pixel_x = 0;
+	pixel_y = -24
+	},
 /turf/open/floor/hybrisa/tile/tileblue,
 /area/adminlevel/ert_station/cmb_station)
 "qv" = (
@@ -1801,13 +2295,6 @@
 	},
 /turf/open/floor/corsat/officetiles,
 /area/adminlevel/ert_station/cmb_station)
-"qw" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/device/defibrillator/upgraded,
-/obj/item/roller,
-/obj/item/roller,
-/turf/open/floor/corsat/squares,
-/area/adminlevel/ert_station/cmb_station)
 "qx" = (
 /turf/open/floor/corsat/blue,
 /area/adminlevel/ert_station/cmb_station)
@@ -1820,11 +2307,15 @@
 /turf/open/floor/whitered/northwest,
 /area/adminlevel/ert_station/cmb_station)
 "qR" = (
-/obj/structure/machinery/iv_drip,
+/obj/structure/showcase{
+	icon_state = "broadcast receiver";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
+	name = "Subspace Receiver"
+	},
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/turf/open/floor/corsat/squares,
+/turf/open/floor/corsat/plate,
 /area/adminlevel/ert_station/cmb_station)
 "qV" = (
 /obj/structure/machinery/atm{
@@ -2035,9 +2526,6 @@
 	},
 /turf/open/floor/hybrisa/wood/redwood,
 /area/adminlevel/ert_station/cmb_station)
-"tT" = (
-/turf/open/floor/whitered/north,
-/area/adminlevel/ert_station/cmb_station)
 "tU" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/mirror{
@@ -2105,7 +2593,7 @@
 	pixel_x = 0;
 	pixel_y = 1
 	},
-/turf/open/floor/corsat/squares,
+/turf/open/floor/plating,
 /area/adminlevel/ert_station/cmb_station)
 "vt" = (
 /obj/structure/bed/chair{
@@ -2146,6 +2634,7 @@
 /area/adminlevel/ert_station/cmb_station)
 "ww" = (
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat/green,
 /area/adminlevel/ert_station/cmb_station)
 "wz" = (
@@ -2405,6 +2894,10 @@
 	pixel_x = 0;
 	pixel_y = 15
 	},
+/obj/structure/sign/safety/fire_station{
+	pixel_x = -17;
+	pixel_y = -1
+	},
 /turf/open/floor/corsat/squares,
 /area/adminlevel/ert_station/cmb_station)
 "AK" = (
@@ -2432,9 +2925,8 @@
 /turf/open/floor/hybrisa/wood/darkerwood,
 /area/adminlevel/ert_station/cmb_station)
 "AX" = (
-/obj/structure/machinery/body_scanconsole,
 /obj/structure/pipes/vents/pump,
-/turf/open/floor/corsat/cargo,
+/turf/open/floor/almayer/tcomms,
 /area/adminlevel/ert_station/cmb_station)
 "Bg" = (
 /obj/structure/machinery/light/small{
@@ -2561,6 +3053,10 @@
 	density = 0;
 	pixel_x = -8;
 	pixel_y = 15
+	},
+/obj/structure/sign/safety/fire_station{
+	pixel_x = 32;
+	pixel_y = 5
 	},
 /turf/open/floor/corsat/squares,
 /area/adminlevel/ert_station/cmb_station)
@@ -2697,10 +3193,6 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/adminlevel/ert_station/cmb_station)
-"Fx" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/whitered/southeast,
-/area/adminlevel/ert_station/cmb_station)
 "Fz" = (
 /obj/structure/roof/hybrisa/lattice_prop/lattice_4{
 	pixel_x = 11;
@@ -2736,11 +3228,19 @@
 	pixel_x = 4;
 	pixel_y = -1
 	},
+/obj/structure/sign/safety/coffee{
+	pixel_x = 32;
+	pixel_y = 0
+	},
 /turf/open/floor/hybrisa/tile/tileblue,
 /area/adminlevel/ert_station/cmb_station)
 "Gm" = (
-/obj/structure/machinery/medical_pod/sleeper/upgraded,
-/turf/open/floor/corsat/squares,
+/obj/structure/showcase{
+	icon_state = "relay";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
+	name = "Telecommunication Relay"
+	},
+/turf/open/floor/corsat/plate,
 /area/adminlevel/ert_station/cmb_station)
 "Go" = (
 /obj/item/paper_bin{
@@ -2917,7 +3417,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor/corsat,
+/turf/open/floor/plating,
 /area/adminlevel/ert_station/cmb_station)
 "Io" = (
 /obj/structure/machinery/landinglight{
@@ -2935,6 +3435,10 @@
 /obj/structure/bedsheetbin{
 	pixel_x = 0;
 	pixel_y = 8
+	},
+/obj/structure/sign/safety/terminal{
+	pixel_x = 7;
+	pixel_y = 26
 	},
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/adminlevel/ert_station/cmb_station)
@@ -2970,7 +3474,7 @@
 /area/adminlevel/ert_station/cmb_station)
 "Jj" = (
 /obj/item/tool/warning_cone,
-/turf/open/floor/corsat,
+/turf/open/floor/plating,
 /area/adminlevel/ert_station/cmb_station)
 "Js" = (
 /obj/structure/platform_decoration/metal/almayer_smooth/west,
@@ -2992,7 +3496,7 @@
 /area/adminlevel/ert_station/cmb_station)
 "Kb" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/corsat,
+/turf/open/floor/plating,
 /area/adminlevel/ert_station/cmb_station)
 "Kh" = (
 /obj/effect/decal/heavy_cable/cable_horizontal,
@@ -3447,7 +3951,7 @@
 /obj/structure/bed/hybrisa/prisonbed{
 	dir = 4
 	},
-/turf/open/floor/whiteredfull,
+/turf/open/floor/corsat/plate,
 /area/adminlevel/ert_station/cmb_station)
 "Rq" = (
 /obj/structure/roof/hybrisa/lattice_prop/lattice_6,
@@ -3463,7 +3967,11 @@
 	pixel_y = 21;
 	density = 0
 	},
-/turf/open/floor/corsat/squares,
+/obj/structure/sign/safety/restrictedarea{
+	pixel_x = 15;
+	pixel_y = 25
+	},
+/turf/open/floor/corsat/red/east,
 /area/adminlevel/ert_station/cmb_station)
 "RE" = (
 /obj/structure/machinery/chem_dispenser/soda{
@@ -3590,7 +4098,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
-/turf/open/floor/corsat,
+/turf/open/floor/plating,
 /area/adminlevel/ert_station/cmb_station)
 "Tg" = (
 /obj/structure/bed/sofa/vert/grey/top,
@@ -3728,7 +4236,7 @@
 /obj/structure/bed/chair/bolted{
 	dir = 1
 	},
-/turf/open/floor/whitered/southwest,
+/turf/open/floor/corsat/plate,
 /area/adminlevel/ert_station/cmb_station)
 "UZ" = (
 /obj/structure/platform/metal/kutjevo_smooth/west,
@@ -3823,7 +4331,7 @@
 /area/adminlevel/ert_station/cmb_station)
 "XB" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/turf/open/floor/whiteredfull,
+/turf/open/floor/corsat/plate,
 /area/adminlevel/ert_station/cmb_station)
 "XD" = (
 /obj/structure/bed/chair{
@@ -3837,11 +4345,11 @@
 	pixel_x = 2;
 	pixel_y = -25
 	},
-/obj/structure/prop/hybrisa/signs/high_voltage/small{
-	pixel_x = 7;
-	pixel_y = -23
-	},
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/sign/safety/rewire{
+	pixel_x = 16;
+	pixel_y = -25
+	},
 /turf/open/floor/corsat/squares,
 /area/adminlevel/ert_station/cmb_station)
 "XX" = (
@@ -3887,11 +4395,6 @@
 	pixel_x = 8;
 	pixel_y = 15
 	},
-/obj/structure/closet/firecloset/full{
-	density = 0;
-	pixel_x = -8;
-	pixel_y = 15
-	},
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -3901,8 +4404,12 @@
 /turf/open/floor/corsat/bluecorner/west,
 /area/adminlevel/ert_station/cmb_station)
 "YE" = (
-/obj/structure/machinery/medical_pod/bodyscanner,
-/turf/open/floor/corsat/cargo,
+/obj/structure/showcase{
+	icon_state = "processor";
+	icon = 'icons/obj/structures/props/server_equipment.dmi';
+	name = "Processor Unit"
+	},
+/turf/open/floor/corsat/plate,
 /area/adminlevel/ert_station/cmb_station)
 "YG" = (
 /turf/open/space/basic,
@@ -3970,7 +4477,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor/corsat,
+/turf/open/floor/plating,
 /area/adminlevel/ert_station/cmb_station)
 "Zh" = (
 /obj/structure/machinery/power/apc/antag{
@@ -3986,10 +4493,10 @@
 /turf/open/floor/corsat/squares,
 /area/adminlevel/ert_station/cmb_station)
 "Zw" = (
-/obj/structure/machinery/autodoc_console/upgraded{
-	dir = 1
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
 	},
-/turf/open/floor/corsat/cargo,
+/turf/open/floor/almayer/tcomms,
 /area/adminlevel/ert_station/cmb_station)
 "ZB" = (
 /obj/structure/machinery/landinglight/delaythree{
@@ -4002,7 +4509,7 @@
 /area/adminlevel/ert_station/cmb_station)
 "ZF" = (
 /obj/structure/pipes/vents/pump/no_boom,
-/turf/open/floor/whitered/northeast,
+/turf/open/floor/corsat/plate,
 /area/adminlevel/ert_station/cmb_station)
 "ZG" = (
 /obj/structure/machinery/light,
@@ -4728,7 +5235,7 @@ dN
 dN
 dN
 dN
-dN
+dq
 Uy
 bN
 dN
@@ -4857,8 +5364,8 @@ aw
 ar
 Rq
 dN
-bc
-vj
+df
+de
 dN
 dN
 Rq
@@ -4938,7 +5445,7 @@ Br
 "}
 (16,1,1) = {"
 vj
-dN
+dO
 dN
 bc
 rZ
@@ -5191,7 +5698,7 @@ lg
 aQ
 lg
 lg
-lg
+dt
 eR
 bP
 do
@@ -5207,9 +5714,9 @@ Dp
 vd
 Px
 vj
-Mz
-Hv
-mk
+cZ
+cV
+cR
 vj
 vj
 vj
@@ -5264,24 +5771,24 @@ at
 ac
 hU
 dN
-KJ
-Mz
-Hv
-mk
-YG
-hS
-YG
-YG
-YG
-YG
-YG
-YG
+vj
+da
+cW
+cS
+cf
+cf
+cI
+cB
+cw
+cr
+cn
+ci
 vj
 vj
 vj
-vj
-vj
-vj
+bY
+bY
+bY
 vj
 "}
 (22,1,1) = {"
@@ -5323,24 +5830,24 @@ ap
 vd
 Zh
 vj
-Mz
-Hv
-mk
-YG
-hS
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
+dc
+cX
+cT
+cQ
+cf
+cJ
+cf
+cx
+cf
+co
+cj
+ce
+cc
+vj
+dN
+dN
+dN
+vj
 "}
 (23,1,1) = {"
 vj
@@ -5352,7 +5859,7 @@ YU
 dN
 Ic
 Nm
-dN
+dF
 vj
 zA
 wS
@@ -5375,30 +5882,30 @@ ae
 dN
 bc
 bc
+di
+vj
+vj
+vj
+vj
+vj
+vj
+vj
+vj
+vj
+vj
+cK
+cC
+cy
+cs
+cf
+cf
+cf
+dN
+cb
+dN
+dN
 dN
 vj
-vj
-vj
-vj
-vj
-vj
-vj
-vj
-vj
-vj
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
 "}
 (24,1,1) = {"
 vj
@@ -5410,16 +5917,16 @@ MY
 pO
 SR
 ps
-dN
+ac
 ww
-wS
-wS
+dC
+dC
 no
 wS
 DM
 vj
 tU
-rM
+dA
 aS
 nM
 rO
@@ -5441,22 +5948,22 @@ Ki
 bs
 bs
 Ki
-bs
+cU
 tt
 vj
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
+cJ
+cD
+cf
+cf
+cf
+cf
+cf
+dN
+cb
+dN
+dN
+dN
+vj
 "}
 (25,1,1) = {"
 YG
@@ -5478,7 +5985,7 @@ dp
 vj
 vj
 vj
-up
+dy
 up
 rO
 NH
@@ -5498,23 +6005,23 @@ bv
 ac
 ac
 ac
-al
-dN
-bq
+ad
+ac
+aI
+cO
+cL
+cE
+cf
+cf
+cf
+ck
+cg
+cd
 vj
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
+dN
+dN
+dN
+vj
 "}
 (26,1,1) = {"
 YG
@@ -5535,7 +6042,7 @@ pd
 ls
 vj
 tU
-rM
+dA
 up
 bR
 vj
@@ -5555,24 +6062,24 @@ ku
 ku
 bt
 bt
-ku
+dd
 ae
 dN
 IY
+cP
+cN
+cp
+ct
+ct
+cp
+cl
 vj
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
+vj
+vj
+vj
+vj
+vj
+vj
 "}
 (27,1,1) = {"
 YG
@@ -5622,15 +6129,15 @@ vj
 vj
 vj
 vj
+vj
+vj
+vj
 YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
+az
+az
+az
+az
+az
 "}
 (28,1,1) = {"
 YG
@@ -5684,11 +6191,11 @@ YG
 YG
 YG
 YG
-YG
-YG
-YG
-YG
-YG
+az
+az
+az
+az
+az
 "}
 (29,1,1) = {"
 vj
@@ -5742,11 +6249,11 @@ vj
 YG
 YG
 YG
-YG
-YG
-YG
-YG
-YG
+az
+az
+az
+az
+az
 "}
 (30,1,1) = {"
 ni
@@ -5800,11 +6307,11 @@ vj
 YG
 YG
 YG
-YG
-YG
-YG
-YG
-YG
+az
+az
+az
+az
+az
 "}
 (31,1,1) = {"
 dz
@@ -5846,7 +6353,7 @@ xQ
 ZK
 AR
 vj
-ae
+cY
 dN
 vj
 UL
@@ -5858,11 +6365,11 @@ vj
 vj
 vj
 YG
-YG
-YG
-YG
-YG
-YG
+az
+az
+az
+az
+az
 "}
 (32,1,1) = {"
 PM
@@ -5883,7 +6390,7 @@ dN
 dN
 ae
 dN
-dN
+dB
 vj
 KJ
 KJ
@@ -5916,22 +6423,22 @@ vj
 NT
 vj
 YG
-YG
-YG
-YG
-YG
-YG
+az
+az
+az
+az
+az
 "}
 (33,1,1) = {"
 BY
 nx
 nx
 zo
-vj
+dL
 Jj
 uC
 Kb
-dN
+dH
 vj
 KJ
 KJ
@@ -5975,10 +6482,10 @@ vj
 vj
 vj
 vj
-YG
-YG
-YG
-YG
+az
+az
+az
+az
 "}
 (34,1,1) = {"
 vj
@@ -5986,7 +6493,7 @@ vj
 vj
 vj
 vj
-tZ
+dK
 bI
 Li
 vj
@@ -6033,10 +6540,10 @@ Gs
 sZ
 ii
 vj
-YG
-YG
-YG
-YG
+az
+az
+az
+az
 "}
 (35,1,1) = {"
 YG
@@ -6091,10 +6598,10 @@ Gs
 Hb
 ii
 vj
-vj
-vj
-vj
-vj
+az
+az
+az
+az
 "}
 (36,1,1) = {"
 YG
@@ -6149,9 +6656,9 @@ Mt
 wl
 ii
 vj
-Ac
-dN
-qx
+vj
+vj
+vj
 vj
 "}
 (37,1,1) = {"
@@ -6182,7 +6689,7 @@ YG
 vj
 Ac
 bG
-bJ
+dl
 vj
 vj
 MU
@@ -6203,13 +6710,13 @@ vj
 aa
 eF
 vj
+cm
+ch
 vj
-aa
 vj
-vj
-Ac
-dN
-qx
+ca
+Ki
+bZ
 vj
 "}
 (38,1,1) = {"
@@ -6257,7 +6764,7 @@ ac
 ad
 ac
 ac
-ac
+cF
 aj
 ad
 ac
@@ -6315,10 +6822,10 @@ xU
 Pc
 dN
 dN
-xI
-dN
-ae
-dN
+cG
+cz
+cu
+cq
 dN
 dN
 dN
@@ -6359,8 +6866,8 @@ ae
 qx
 vj
 vj
-QB
-QB
+MU
+MU
 vj
 rM
 VE
@@ -6381,7 +6888,7 @@ vj
 vj
 vj
 vj
-dN
+Ac
 dN
 qx
 vj
@@ -6417,7 +6924,7 @@ ae
 qx
 vj
 XB
-jx
+cf
 UX
 QB
 dN
@@ -6475,8 +6982,8 @@ ae
 qx
 vj
 Rk
-tT
-fJ
+cf
+UX
 QB
 Wn
 aq
@@ -6533,8 +7040,8 @@ aD
 qx
 vj
 Rk
-tT
-gg
+cf
+cf
 vj
 lS
 ae
@@ -6592,7 +7099,7 @@ qx
 vj
 Gs
 ZF
-Fx
+cy
 lk
 ac
 af
@@ -6702,7 +7209,7 @@ vj
 vj
 vj
 vj
-Ac
+dm
 aD
 qx
 vj
@@ -6737,7 +7244,7 @@ YG
 (47,1,1) = {"
 YG
 YG
-vj
+dM
 bp
 tZ
 tZ
@@ -6769,7 +7276,7 @@ vj
 vj
 vj
 RB
-aq
+dg
 vj
 MN
 GL
@@ -6832,10 +7339,10 @@ vj
 vj
 vj
 vj
-QB
-QB
-QB
-QB
+MU
+MU
+MU
+MU
 vj
 vj
 rM
@@ -6883,8 +7390,8 @@ vj
 qf
 AX
 ml
-vj
-dN
+dk
+dh
 ae
 dN
 dN
@@ -6895,9 +7402,9 @@ dN
 dN
 dN
 BT
-dN
-dN
-ae
+cH
+cA
+cv
 vj
 YG
 YG
@@ -6938,7 +7445,7 @@ Ac
 dN
 qx
 vj
-dn
+qf
 Zw
 li
 bD
@@ -6996,7 +7503,7 @@ tk
 tk
 tk
 vj
-qw
+YE
 bX
 vj
 vj
@@ -7220,9 +7727,9 @@ YG
 YG
 YG
 YG
-YG
-YG
-YG
+dw
+du
+dr
 vj
 Ac
 dN
@@ -7278,9 +7785,9 @@ YG
 YG
 YG
 YG
-YG
-YG
-YG
+dx
+dv
+ds
 vj
 Ac
 dN

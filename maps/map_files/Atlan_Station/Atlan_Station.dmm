@@ -27,6 +27,12 @@
 	},
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/cargooffice)
+"aag" = (
+/obj/structure/machinery/door/airlock/hybrisa/generic/autoname{
+	dir = 2
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/atlan/station/admin)
 "aah" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/colony,
 /turf/open/floor/strata/multi_tiles/southeast,
@@ -43,6 +49,10 @@
 /obj/effect/alien/resin/sticky,
 /turf/open/floor/plating,
 /area/atlan/asteroid/exports_west/cas)
+"aak" = (
+/obj/structure/machinery/door/airlock/hybrisa/generic/autoname,
+/turf/open/floor/strata/multi_tiles/west,
+/area/atlan/station/admin)
 "aal" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/sign/safety/outpatient,
@@ -116208,7 +116218,7 @@ itu
 itu
 itu
 itu
-eEz
+aag
 lYr
 asQ
 lYr
@@ -117052,7 +117062,7 @@ oCj
 oCj
 oCj
 iuG
-gDg
+aak
 oCj
 oCj
 oCj

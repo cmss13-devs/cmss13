@@ -3,31 +3,47 @@
 /obj/structure/machinery/vending/hydronutrients,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/atlan/station/botany)
+"ab" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/strata,
+/area/atlan/station/admin)
+"ac" = (
+/obj/effect/decal/cleanable/blood/gibs/xeno/body,
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/strata,
+/area/atlan/station/admin)
+"ad" = (
+/obj/effect/decal/cleanable/blood/gibs/xeno/body,
+/obj/effect/decal/cleanable/blood/gibs/xeno/down,
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/strata,
+/area/atlan/station/admin)
+"ae" = (
+/obj/item/ammo_magazine/pkp,
+/turf/open/floor/strata/blue1,
+/area/atlan/station/admin)
+"af" = (
+/obj/effect/landmark/survivor_spawner/atlan_responder_UPP/medic,
+/turf/open/floor/strata/blue1,
+/area/atlan/station/admin)
 "ag" = (
-/obj/structure/closet/crate/ammo,
-/obj/item/ammo_magazine/rifle/type71,
-/obj/item/ammo_magazine/rifle/type71,
-/obj/item/ammo_magazine/rifle/type71,
-/obj/item/ammo_magazine/rifle/type71,
-/obj/item/ammo_magazine/rifle/type71,
-/obj/item/ammo_magazine/rifle/type71,
-/obj/item/ammo_magazine/rifle/type71,
-/obj/item/ammo_magazine/rifle/type71,
-/obj/item/ammo_magazine/rifle/type71,
-/obj/item/weapon/gun/rifle/type71,
 /obj/item/weapon/gun/rifle/type71,
 /turf/open/floor/almayer/plate,
 /area/atlan/station/hab_docks)
+"ah" = (
+/obj/item/explosive/grenade/high_explosive/upp,
+/turf/open/floor/strata/floor3/east,
+/area/atlan/station/admin)
 "ai" = (
 /obj/effect/decal/floor_symbol/upp/westface/northeast,
-/obj/effect/decal/cleanable/blood/gibs,
-/obj/item/explosive/grenade/high_explosive/upp,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/admin)
 "aj" = (
 /obj/effect/decal/floor_symbol/upp/westface/northwest,
-/obj/effect/decal/cleanable/blood,
-/obj/effect/spawner/gibspawner/human,
+/turf/open/floor/strata/floor3/east,
+/area/atlan/station/admin)
+"ak" = (
+/obj/effect/landmark/survivor_spawner/atlan_responder_UPP/specialist,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/admin)
 "ap" = (
@@ -161,7 +177,6 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8
 	},
-/obj/effect/landmark/survivor_spawner/atlan_responder_UPP/specialist,
 /turf/open/floor/plating,
 /area/atlan/station/hab_docks)
 "dI" = (
@@ -204,8 +219,8 @@
 /turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/walkway)
 "eE" = (
-/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic{
-	dir = 1
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname{
+	dir = 2
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/single_dorms)
@@ -309,7 +324,6 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/atlan/station/botany)
 "gS" = (
-/obj/effect/landmark/survivor_spawner/atlan_responder_UPP/squad_leader,
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 1;
 	pixel_y = 9;
@@ -427,6 +441,7 @@
 	icon_state = "trash_7";
 	pixel_y = 12
 	},
+/obj/effect/landmark/survivor_spawner/atlan_responder_UPP/sapper,
 /turf/open/floor/strata/blue1,
 /area/atlan/station/admin)
 "jd" = (
@@ -705,14 +720,12 @@
 /area/atlan/station/admin)
 "ok" = (
 /obj/effect/decal/floor_symbol/upp/westface/southeast,
-/obj/effect/decal/cleanable/blood,
-/obj/item/clothing/head/helmet/marine/veteran/UPP/army,
-/obj/effect/spawner/gibspawner/human,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/admin)
 "oz" = (
 /obj/effect/decal/cleanable/blood/gibs/xeno/body,
 /obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/spawner/gibspawner/xeno,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/admin)
 "oA" = (
@@ -776,8 +789,9 @@
 /area/atlan/station/walkway)
 "px" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
-	dir = 1;
-	name = "\improper Airlock"
+	name = "\improper Airlock";
+	req_one_access = null;
+	dir = 2
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/admin)
@@ -1022,6 +1036,7 @@
 /obj/structure/barricade/deployable{
 	dir = 1
 	},
+/obj/effect/landmark/survivor_spawner/atlan_responder_UPP/soldier,
 /turf/open/floor/strata/blue1,
 /area/atlan/station/admin)
 "sY" = (
@@ -1256,7 +1271,6 @@
 "wJ" = (
 /obj/item/tool/screwdriver,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/survivor_spawner/atlan_responder_UPP/medic,
 /turf/open/floor/almayer/plate,
 /area/atlan/station/hab_docks)
 "wN" = (
@@ -1316,6 +1330,7 @@
 	health = 140;
 	icon_state = "folding_2"
 	},
+/obj/item/weapon/gun/pkp,
 /turf/open/floor/strata/floor2,
 /area/atlan/station/admin)
 "xM" = (
@@ -1687,11 +1702,28 @@
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/walkway)
 "DB" = (
-/obj/effect/decal/floor_symbol/upp/northface/north,
+/obj/structure/closet/crate/ammo,
+/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/type71,
+/obj/item/weapon/gun/rifle/type71,
+/obj/item/weapon/gun/rifle/type71,
 /obj/structure/machinery/light/double/blue{
 	dir = 1;
 	pixel_y = 21
 	},
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	pixel_y = 21
+	},
+/obj/effect/decal/floor_symbol/upp/northface/north,
+/obj/item/ammo_magazine/rifle/type71,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/admin)
 "DR" = (
@@ -1717,12 +1749,6 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/atlan/station/walkway)
-"Eh" = (
-/obj/item/ammo_magazine/rifle/type71/heap{
-	current_rounds = 0
-	},
-/turf/open/floor/strata/green1,
-/area/atlan/station/hab_docks)
 "Ej" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -1741,7 +1767,6 @@
 	pixel_x = 7;
 	pixel_y = 11
 	},
-/obj/item/weapon/gun/rifle/type71,
 /turf/open/floor/strata/blue1,
 /area/atlan/station/admin)
 "Et" = (
@@ -1814,16 +1839,6 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata,
 /area/atlan/station/admin)
-"Fl" = (
-/obj/effect/landmark/corpsespawner/upp,
-/obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/blood{
-	icon_state = "gib6";
-	pixel_y = -8
-	},
-/obj/effect/decal/cleanable/blood/gibs,
-/turf/open/floor/strata/floor3/east,
-/area/atlan/station/admin)
 "Fp" = (
 /obj/item/explosive/grenade/high_explosive/upp,
 /obj/item/explosive/grenade/high_explosive/upp,
@@ -1831,6 +1846,7 @@
 /area/atlan/station/admin)
 "Fu" = (
 /obj/effect/decal/floor_symbol/upp/westface/southwest,
+/obj/effect/landmark/survivor_spawner/atlan_responder_UPP/squad_leader,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/admin)
 "FG" = (
@@ -1865,7 +1881,6 @@
 /area/atlan/station/admin)
 "FT" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/effect/landmark/survivor_spawner/atlan_responder_UPP/sapper,
 /turf/open/floor/plating/burnt_platingdmg3,
 /area/atlan/station/hab_docks)
 "FV" = (
@@ -2186,6 +2201,7 @@
 	pixel_y = 10
 	},
 /obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/landmark/survivor_spawner/atlan_responder_UPP/soldier,
 /turf/open/floor/strata/blue1,
 /area/atlan/station/admin)
 "NT" = (
@@ -2201,6 +2217,8 @@
 /area/atlan/station/single_dorms)
 "NY" = (
 /obj/effect/decal/floor_symbol/upp/northface/east,
+/obj/item/explosive/grenade/high_explosive/upp,
+/obj/item/explosive/grenade/high_explosive/upp,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/admin)
 "Oq" = (
@@ -2262,15 +2280,6 @@
 /obj/effect/decal/strata_decals/grasses,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/atlan/station/walkway)
-"OZ" = (
-/obj/item/explosive/grenade/high_explosive/upp,
-/obj/item/explosive/grenade/high_explosive/upp,
-/obj/item/explosive/grenade/high_explosive/upp,
-/obj/structure/surface/rack{
-	color = "#98a3ab"
-	},
-/turf/open/floor/almayer/plate,
-/area/atlan/station/hab_docks)
 "Pa" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
@@ -2381,12 +2390,10 @@
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/admin)
 "Rm" = (
-/obj/effect/decal/cleanable/blood,
 /obj/item/paper/crumpled{
 	pixel_y = -3
 	},
 /obj/effect/spawner/gibspawner/human,
-/obj/item/stack/sheet/metal,
 /turf/open/floor/strata/blue1,
 /area/atlan/station/admin)
 "Rp" = (
@@ -2595,6 +2602,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 10
 	},
+/obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/strata,
 /area/atlan/station/admin)
 "VA" = (
@@ -2689,6 +2697,7 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/decal/cleanable/blood/gibs,
 /obj/item/weapon/gun/rifle/type71/sapper,
+/obj/effect/spawner/gibspawner/human,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/admin)
 "WP" = (
@@ -2696,8 +2705,8 @@
 /turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/walkway)
 "Xc" = (
-/obj/structure/machinery/door/airlock/hybrisa/generic{
-	dir = 1
+/obj/structure/machinery/door/airlock/hybrisa/generic/autoname{
+	dir = 2
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/admin)
@@ -2741,7 +2750,6 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8
 	},
-/obj/effect/landmark/survivor_spawner/atlan_responder_UPP/soldier,
 /turf/open/floor/almayer/plate,
 /area/atlan/station/hab_docks)
 "XM" = (
@@ -2756,8 +2764,6 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/item/ammo_magazine/pkp,
-/obj/item/weapon/gun/pkp,
 /turf/open/floor/almayer/plate,
 /area/atlan/station/hab_docks)
 "XQ" = (
@@ -2814,10 +2820,11 @@
 /turf/open/floor/strata/floor2,
 /area/atlan/station/admin)
 "YH" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
-	name = "\improper Airlock"
-	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+	name = "\improper Airlock";
+	req_one_access = null
+	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/admin)
 "YJ" = (
@@ -2844,13 +2851,6 @@
 /obj/structure/platform/metal/strata/west,
 /turf/open/floor/strata,
 /area/atlan/station/admin)
-"YV" = (
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 4
-	},
-/obj/effect/landmark/survivor_spawner/atlan_responder_UPP/soldier,
-/turf/open/floor/almayer/plate,
-/area/atlan/station/hab_docks)
 "YX" = (
 /obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -3276,9 +3276,9 @@ JW
 zO
 Oq
 kW
-OZ
+hW
 Lf
-YV
+JX
 JX
 FJ
 Gv
@@ -3864,7 +3864,7 @@ DY
 JW
 JW
 JW
-Eh
+JW
 JW
 JW
 uO
@@ -6886,7 +6886,7 @@ iH
 rT
 UN
 TB
-rT
+af
 YJ
 Sy
 Kv
@@ -7073,9 +7073,9 @@ kv
 (44,1,1) = {"
 MJ
 Rm
-Fl
-yR
 Qs
+yR
+ah
 aj
 vj
 Fu
@@ -7364,7 +7364,7 @@ kv
 (47,1,1) = {"
 lm
 WC
-Qs
+ak
 Qs
 Sg
 Qs
@@ -7759,9 +7759,9 @@ jd
 Qs
 kL
 jd
-jd
-jd
 qU
+jd
+jd
 ef
 rT
 bx
@@ -7857,7 +7857,7 @@ EM
 jd
 rT
 Bm
-rT
+ae
 Fd
 PU
 pk
@@ -8246,8 +8246,8 @@ Vs
 Il
 QX
 jF
-jd
-jd
+ad
+ab
 Qs
 xV
 kv
@@ -8343,8 +8343,8 @@ UA
 Rd
 QX
 yr
-jd
-jd
+ab
+ac
 zT
 QX
 kv

@@ -124,8 +124,6 @@
 	if(body_position == LYING_DOWN)
 		handle_movement(xeno)
 
-
-
 /datum/action/xeno_action/onclick/charger_charge/proc/handle_movement(mob/living/carbon/xenomorph/Xeno, atom/oldloc, dir, forced)
 	SIGNAL_HANDLER
 	if(Xeno.pulling)

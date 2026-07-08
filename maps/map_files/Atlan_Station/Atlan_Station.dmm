@@ -3125,6 +3125,11 @@
 	},
 /turf/open/floor/corsat,
 /area/atlan/station/stairs1)
+"ajG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_sw_train)
 "ajH" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/disposalpipe/junction{
@@ -3228,6 +3233,10 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/hab_docks)
+"ajV" = (
+/obj/structure/machinery/power/apc/no_power/south,
+/turf/open/floor/prison/darkbrownfull2,
+/area/atlan/asteroid/processing_seperation/cas)
 "ajW" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12"
@@ -3287,10 +3296,27 @@
 	},
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/storage)
+"ake" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/barricade/handrail/no_vault{
+	dir = 4
+	},
+/obj/structure/machinery/power/apc/no_power/east,
+/turf/open/floor/corsat,
+/area/atlan/asteroid/processing_seperation/interior)
+"akf" = (
+/obj/structure/machinery/light/double/blue,
+/obj/structure/largecrate/empty,
+/turf/open/floor/prison/sterile_white/south,
+/area/atlan/station/medical_maint)
 "akg" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/strata/orange_icorner/west,
 /area/atlan/asteroid/exports_west)
+"akh" = (
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/strata/floor2,
+/area/atlan/station/medical_maint)
 "aki" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_9";
@@ -3414,6 +3440,14 @@
 	},
 /turf/open/floor/strata/floor2,
 /area/atlan/station/repairs_lift)
+"aky" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/prison/darkbrownfull2,
+/area/atlan/asteroid/processing_handling/cas)
+"akz" = (
+/obj/structure/machinery/power/apc/no_power/east,
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_dock)
 "akA" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12"
@@ -8726,6 +8760,7 @@
 /area/atlan/station/single_dorms)
 "aDH" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/botany)
 "aDI" = (
@@ -14971,10 +15006,6 @@
 /obj/item/tool/weldingtool/largetank,
 /turf/open/floor/upp_hull,
 /area/atlan/station/drydock)
-"aYm" = (
-/obj/structure/machinery/power/apc/power/west,
-/turf/closed/wall/upp_ship/grey/orange/reinforced/outer,
-/area/atlan/oob)
 "aYn" = (
 /obj/structure/surface/rack{
 	color = "#98a3ab"
@@ -19044,9 +19075,7 @@
 /area/atlan/station/botany_storage)
 "eeA" = (
 /obj/structure/platform_decoration/metal/strata/east,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/exports_west)
 "eeL" = (
@@ -20714,10 +20743,6 @@
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/strata/green1,
 /area/atlan/station/canteen)
-"fry" = (
-/obj/structure/fence/slim/upp,
-/turf/open/floor/strata/orange_edge/east,
-/area/atlan/asteroid/exports_west)
 "frF" = (
 /obj/structure/cargo_container/upp_small/container_2/left,
 /turf/open/floor/strata/floor3/east,
@@ -27729,6 +27754,9 @@
 /area/atlan/station/hab_rec)
 "kvX" = (
 /obj/structure/closet/firecloset/full,
+/obj/structure/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/strata/orange_edge,
 /area/atlan/asteroid/exports_west)
 "kwm" = (
@@ -32668,6 +32696,10 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
+	},
+/obj/structure/prop/hybrisa/misc/machinery/screens/wood_clock{
+	pixel_x = 1;
+	pixel_y = 41
 	},
 /turf/open/floor/strata/blue1,
 /area/atlan/asteroid/processing_train_control)
@@ -107457,7 +107489,7 @@ vFI
 bmY
 bmY
 nit
-mSQ
+akh
 aTG
 mSQ
 aur
@@ -109579,7 +109611,7 @@ mSQ
 mSQ
 auq
 mSQ
-wZu
+akf
 aBn
 lzt
 lzt
@@ -113342,7 +113374,7 @@ sZi
 pjT
 gwg
 pjT
-aYm
+agj
 agj
 aAh
 aAh
@@ -124878,7 +124910,7 @@ mnU
 eRp
 mnU
 aAk
-jRi
+ajG
 apo
 fwe
 cmV
@@ -126136,7 +126168,7 @@ aNr
 aNr
 aNr
 aNr
-mEy
+ajV
 aMW
 aBx
 crp
@@ -126960,7 +126992,7 @@ aRz
 hbb
 uhS
 aPX
-aQi
+aky
 aQo
 aQo
 aQi
@@ -128030,7 +128062,7 @@ aNr
 aNr
 gmV
 aNM
-aNZ
+ake
 aNZ
 aPh
 aNZ
@@ -128925,7 +128957,7 @@ hwP
 fwe
 aSd
 aSd
-wWR
+aSd
 eeA
 pOw
 iuE
@@ -130008,7 +130040,7 @@ kKp
 cSE
 kKp
 kKp
-fry
+kKp
 gHT
 aAk
 aAk
@@ -131820,7 +131852,7 @@ jDo
 hLh
 hLh
 dkg
-hLh
+akz
 mdE
 tvz
 oMH

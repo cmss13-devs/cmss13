@@ -3233,10 +3233,6 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/hab_docks)
-"ajV" = (
-/obj/structure/machinery/power/apc/no_power/south,
-/turf/open/floor/prison/darkbrownfull2,
-/area/atlan/asteroid/processing_seperation/cas)
 "ajW" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12"
@@ -3547,6 +3543,10 @@
 	},
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/double_dorms)
+"akM" = (
+/obj/structure/machinery/power/apc/no_power/south,
+/turf/open/floor/prison/darkbrownfull2,
+/area/atlan/asteroid/processing_seperation)
 "akN" = (
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
@@ -3731,6 +3731,14 @@
 	},
 /turf/closed/wall/mineral/bone_resin,
 /area/atlan/oob)
+"all" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/machinery/power/apc/power/east,
+/turf/open/floor/corsat,
+/area/atlan/asteroid/processing_seperation/cas)
 "alm" = (
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
@@ -24036,7 +24044,6 @@
 /turf/open/floor/corsat,
 /area/atlan/asteroid/processing_seperation/cas)
 "hTG" = (
-/obj/structure/machinery/power/apc/no_power/west,
 /obj/structure/largecrate/random/mini,
 /turf/open/floor/prison/darkbrownfull2,
 /area/atlan/asteroid/processing_seperation/cas)
@@ -44411,11 +44418,6 @@
 /obj/item/stack/cable_coil/random,
 /turf/open/floor/prison/darkyellowfull2,
 /area/atlan/station/atmospherics)
-"xeh" = (
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/machinery/power/apc/power/west,
-/turf/open/floor/strata/floor2,
-/area/atlan/station/repairs_lift)
 "xfa" = (
 /turf/open/gm/dirt/brown,
 /area/atlan/asteroid/processing_cooling)
@@ -113586,7 +113588,7 @@ qnx
 ayr
 aYv
 ayb
-xeh
+ayb
 ayq
 pjT
 jlD
@@ -126168,7 +126170,7 @@ aNr
 aNr
 aNr
 aNr
-ajV
+mEy
 aMW
 aBx
 crp
@@ -126791,7 +126793,7 @@ aPM
 aNr
 aNg
 aNr
-aPt
+all
 aNr
 saK
 saK
@@ -130407,7 +130409,7 @@ mDP
 nQZ
 atg
 nQZ
-ijq
+akM
 lez
 pOz
 pOz

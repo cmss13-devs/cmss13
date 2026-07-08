@@ -477,3 +477,7 @@
 /obj/structure/machinery/reagentgrinder/industrial/update_icon()
 	icon_state = "industry"+num2text(!isnull(beaker))
 	return
+
+/obj/structure/machinery/reagentgrinder/yautja
+	name = "Bone Grinder"
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'

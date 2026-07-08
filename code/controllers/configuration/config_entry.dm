@@ -6,6 +6,8 @@
 #define KEY_MODE_TYPE 1
 #define KEY_MODE_TEXT_UNALTERED 2
 
+SET_PROTECTED_DATUM(/datum/config_entry)
+
 /datum/config_entry
 	var/name //read-only, this is determined by the last portion of the derived entry type
 	var/config_entry_value

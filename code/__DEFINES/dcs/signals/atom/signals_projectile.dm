@@ -11,9 +11,9 @@
 #define COMSIG_BULLET_CHECK_MOB_SKIPPING "bullet_check_mob_skipping"
 	#define COMPONENT_SKIP_MOB (1<<0)
 
-/// Called on point blank for ammo effects
-#define COMSIG_AMMO_POINT_BLANK "ammo_point_blank"
-	#define COMPONENT_CANCEL_AMMO_POINT_BLANK (1<<0)
+/// From /obj/item/weapon/gun/attack(): (mob/living/target, mob/living/user)
+#define COMSIG_AMMO_BATTLEFIELD_EXECUTION "ammo_battlefield_execution"
+	#define COMPONENT_CANCEL_BATTLEFIELD_EXECUTION (1<<0)
 
 /// From /obj/projectile/handle_mob(): (mob/living/target)
 #define COMSIG_BULLET_PRE_HANDLE_MOB "bullet_pre_handle_mob"

@@ -467,7 +467,7 @@
 /obj/structure/machinery/cm_vending/sorted/uniform_supply
 	name = "\improper ColMarTech Surplus Uniform Vendor"
 	desc = "An automated supply rack hooked up to a big storage of standard marine uniforms. Can be accessed by the Quartermaster and Cargo Technicians."
-	icon_state = "clothing"
+	icon_state = "clothing_surplus"
 	req_access = list()
 	req_one_access = list(ACCESS_MARINE_CARGO)
 	vendor_theme = VENDOR_THEME_USCM

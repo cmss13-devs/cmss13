@@ -176,7 +176,7 @@
 		playsound(src, 'sound/items/Crowbar.ogg', 25, 1)
 		new /obj/item/stack/sheet/metal(loc)
 		if(supplies_remaining)
-			msg_admin_niche("[key_name(user)] deconstructed [src] with [supplies_remaining] [supply_descriptor] remaining in [get_area(src)] [ADMIN_JMP(loc)]", loc.x, loc.y, loc.z)
+			msg_admin_niche("[key_name(user)] deconstructed [src] with [supplies_remaining] [supply_descriptor] remaining in [ADMIN_VERBOSEJMP(src)]")
 		deconstruct(TRUE)
 		return
 
@@ -185,7 +185,7 @@
 /obj/structure/restock_cart/proc/healthcheck(mob/user)
 	if(health <= 0)
 		if(supplies_remaining && ishuman(user))
-			msg_admin_niche("[key_name(user)] destroyed [src] with [supplies_remaining] [supply_descriptor] remaining in [get_area(src)] [ADMIN_JMP(loc)]", loc.x, loc.y, loc.z)
+			msg_admin_niche("[key_name(user)] destroyed [src] with [supplies_remaining] [supply_descriptor] remaining in [ADMIN_VERBOSEJMP(src)]")
 		deconstruct(FALSE)
 
 /obj/structure/restock_cart/bullet_act(obj/projectile/Proj)

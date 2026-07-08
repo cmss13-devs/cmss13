@@ -92,7 +92,7 @@
 	desc = "A pamphlet used to quickly impart vital knowledge on heavier-duty equipments and firearms. You suppose you can utilize some of its teachings for some engineering practices."
 	icon_state = "pamphlet_machinegunner"
 	skill_upgrade = SKILL_ENGINEER
-	skill_cap = 2
+	skill_cap = 1
 
 /obj/item/pamphlet/upgradeable/surgery
 	name = "Surgery instructional pamphlet"
@@ -111,3 +111,9 @@
 	name = "overwatch console manual"
 	desc = "A manual used to quickly impart vital knowledge on operating overwatch consoles."
 	skill_upgrade = SKILL_OVERWATCH
+
+/obj/item/pamphlet/upgradeable/fireman_carry
+	name = "fireman carry instructional pamphlet"
+	desc = "A pamphlet used to quickly impart vital knowledge. This one has the image of a figure carrying another person on their shoulders on it."
+	icon_state = "pamphlet_fireman_carry"
+	skill_upgrade = SKILL_FIREMAN

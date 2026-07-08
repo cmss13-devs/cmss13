@@ -4,7 +4,7 @@
 
 /obj/vehicle/multitile/van
 	name = "Colony Van"
-	desc = "A rather old hunk of metal with four wheels, you know what to do. Entrance on the back and sides."
+	desc = "A rather old hunk of metal with six wheels, you know what to do. Entrance on the back and sides."
 	layer = ABOVE_XENO_LAYER
 
 	icon = 'icons/obj/vehicles/van.dmi'

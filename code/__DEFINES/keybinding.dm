@@ -65,6 +65,9 @@
 #define COMSIG_KB_HUMAN_ROTATE_CHAIR "keybinding_human_rotate_chair"
 #define COMSIG_KB_HUMAN_SHOW_HELD_ITEM "keybinding_human_show_held_item"
 #define COMSIG_KB_HUMAN_CYCLE_HELMET_HUD "keybinding_human_cycle_helmet_hud"
+#define COMSIG_KB_HUMAN_SINGLE_NORMAL_PUSHUP "keybinding_human_single_normal_pushup"
+#define COMSIG_KB_HUMAN_SINGLE_WEAK_PUSHUP "keybinding_human_single_weak_pushup"
+#define COMSIG_KB_HUMAN_PUSHUP_ROUTINE "keybinding_human_pushup_routine"
 
 // Human Inventory Navigation
 #define COMSIG_KB_HUMAN_INTERACT_OTHER_HAND "keybinding_human_interact_other_hand"

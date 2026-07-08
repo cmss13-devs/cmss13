@@ -1623,6 +1623,12 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	max_storage_space = 21
 	camo_alpha = 10
 
+/obj/item/storage/backpack/marine/satchel/scout_cloak/upp/strong
+	name = "\improper V87 Thermal Cloak"
+	desc = "A thermo-optic camouflage cloak commonly used by UPP commando units. This advanced version can stay cloaked even while shooting."
+	allow_gun_usage = TRUE
+	allowed_stealth_shooting = TRUE
+
 /obj/item/storage/backpack/marine/satchel/scout_cloak/upp/weak
 	desc = "A thermo-optic camouflage cloak commonly used by UPP commando units. This one is less effective than normal."
 	actions_types = null

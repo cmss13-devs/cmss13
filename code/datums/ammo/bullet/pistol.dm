@@ -129,7 +129,7 @@
 
 /datum/ammo/bullet/pistol/heavy/highimpact/New()
 	..()
-	RegisterSignal(src, COMSIG_AMMO_POINT_BLANK, PROC_REF(handle_battlefield_execution))
+	RegisterSignal(src, COMSIG_AMMO_BATTLEFIELD_EXECUTION, PROC_REF(handle_battlefield_execution))
 
 /datum/ammo/bullet/pistol/heavy/highimpact/on_hit_mob(mob/M, obj/projectile/P)
 	knockback(M, P, 4)
@@ -163,7 +163,7 @@
 
 /datum/ammo/bullet/pistol/deagle/highimpact/New()
 	..()
-	RegisterSignal(src, COMSIG_AMMO_POINT_BLANK, PROC_REF(handle_battlefield_execution))
+	RegisterSignal(src, COMSIG_AMMO_BATTLEFIELD_EXECUTION, PROC_REF(handle_battlefield_execution))
 
 /datum/ammo/bullet/pistol/deagle/highimpact/on_hit_mob(mob/M, obj/projectile/P)
 	knockback(M, P, 4)

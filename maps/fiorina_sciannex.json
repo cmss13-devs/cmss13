@@ -19,6 +19,9 @@
     "CO_insert_survivor_types": [
         "/datum/equipment_preset/survivor/clf/coordinator"
     ],
+    "colony_joe_types": [
+        "/datum/job/civilian/working_joe/daniel"
+    ],
     "defcon_triggers": [
         3750,
         2600,

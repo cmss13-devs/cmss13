@@ -107,6 +107,12 @@ K9 SCANNER
 			last_health_display = new(target_mob)
 		else
 			last_health_display.target_mob = target_mob
+
+		// Handle automatic holotags
+		if (user?.client.prefs.auto_holotag >= ALWAYS_TAG_PATIENTS && istype(target_mob, /mob/living/carbon/human))
+			var/mob/living/carbon/human/human = target_mob
+			human.auto_assign_holotag(user, HOLOCARD_ACCURACY_HANDHELD)
+
 		SStgui.close_user_uis(user, src)
 		last_scan = last_health_display.ui_data(user, DETAIL_LEVEL_HEALTHANALYSER)
 		last_health_display.look_at(user, DETAIL_LEVEL_HEALTHANALYSER, bypass_checks = FALSE, ignore_delay = FALSE, alien = alien)

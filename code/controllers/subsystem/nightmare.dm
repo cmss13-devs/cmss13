@@ -12,8 +12,6 @@ SUBSYSTEM_DEF(nightmare)
 	var/list/contexts = list()
 	/// List of parsed file nodes
 	var/list/roots = list()
-	/// Associated list of scenarios that indicate hostile survivor spawning
-	var/list/hostile_survivor_scenarios = NIGHTMARE_SCENARIO_HOSTILE_SURVIVOR
 
 /datum/controller/subsystem/nightmare/Initialize(start_timeofday)
 	var/global_nightmare_path = CONFIG_GET(string/nightmare_path)
@@ -150,9 +148,5 @@ SUBSYSTEM_DEF(nightmare)
 /datum/controller/subsystem/nightmare/proc/get_scenario_is_hostile_survivor()
 	// Assumption: Only ground context is relevant
 	var/datum/nmcontext/ground_context = contexts[NIGHTMARE_CTX_GROUND]
-	for(var/key in hostile_survivor_scenarios)
-		var/scenario = ground_context.get_scenario_value(key)
-		for(var/value in hostile_survivor_scenarios[key])
-			if(scenario == value)
-				return TRUE
-	return FALSE
+	var/scenario = ground_context.get_scenario_value(NIGHTMARE_SCENARIO_HOSTILE_SURVIVOR)
+	return !!scenario

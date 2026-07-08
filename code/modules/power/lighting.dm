@@ -834,3 +834,13 @@
 	icon_on = "lz_spoke_light_on"
 	icon_off = "lz_spoke_light_off"
 	light_strength = 3
+
+/obj/structure/machinery/landinglight/yautja
+	name = "alien landing light"
+	icon_state = "yautja_landing_off"
+	icon_on = "yautja_landing_on"
+	icon_off = "yautja_landing_off"
+	light_strength = 5
+	mouse_opacity = FALSE //These are meant to appear part of the floor with no need to interact with them.
+	plane = FLOOR_PLANE
+	layer = ABOVE_TURF_LAYER

@@ -257,7 +257,7 @@
 				marine_rk = "hgsl"
 			if(JOB_WO_SO)
 				marine_rk = "vhg"
-			if(JOB_WO_CREWMAN)
+			if(JOB_WO_WARDEN)
 				marine_rk = "hgspec"
 			if(JOB_WO_POLICE)
 				marine_rk = "hg"

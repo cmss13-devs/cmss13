@@ -267,7 +267,8 @@
 /area/lv624/lazarus/crashed_ship)
 "aT" = (
 /obj/effect/timed_event/scrapeaway{
-	time = 25
+	time = 25;
+	silent_announce_marine = 1
 	},
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/south_west_caves)

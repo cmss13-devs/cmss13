@@ -6,6 +6,7 @@
 	role_comm_title = "ARMY"
 	minimap_background = "background_ua"
 	job_title  = JOB_ARMY_TROOPER
+	faction = FACTION_MARINE
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	flags = EQUIPMENT_PRESET_EXTRA
 	access = list(
@@ -329,6 +330,8 @@
 	job_title  = JOB_ARMY_CO
 	idtype = /obj/item/card/id/gold
 	skills = /datum/skills/commander
+	faction = FACTION_MARINE
+	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	minimap_icon = "hudsquad_co_army"
 
 /datum/equipment_preset/survivor/army/co/load_gear(mob/living/carbon/human/new_human)
@@ -376,9 +379,9 @@
 /datum/equipment_preset/synth/survivor/army
 	name = "Survivor - US Army Synthetic"
 	paygrades = list(PAY_SHORT_AE8E = JOB_PLAYTIME_TIER_0)
+	faction = FACTION_MARINE
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	assignment = JOB_ARMY_SYN
-	job_title  = "Synthetic"
 	idtype = /obj/item/card/id/gold
 
 /datum/equipment_preset/synth/survivor/army/load_gear(mob/living/carbon/human/preset_human)

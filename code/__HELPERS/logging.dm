@@ -93,7 +93,8 @@ GLOBAL_VAR_INIT(log_end, world.system_type == UNIX ? ascii2text(13) : "")
 	for(var/client/client in GLOB.admins)
 		if(CLIENT_IS_STAFF(client))
 			if(client.prefs.toggles_chat & CHAT_DEBUGLOGS)
-				to_chat(client, "DEBUG: [text]", type = MESSAGE_TYPE_DEBUG)
+				var/rendered = SPAN_DEBUG_NOTICE("[SPAN_PREFIX("DEBUG:")] [SPAN_MESSAGE("[text]")]")
+				to_chat(client, rendered, type = MESSAGE_TYPE_DEBUG)
 
 
 /proc/log_game(text)

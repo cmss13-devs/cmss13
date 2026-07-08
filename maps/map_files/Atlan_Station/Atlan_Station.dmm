@@ -3233,6 +3233,14 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/hab_docks)
+"ajV" = (
+/obj/structure/platform/metal/strata/west,
+/obj/item/tool/warning_cone{
+	pixel_x = -4;
+	pixel_y = 17
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_nw_train)
 "ajW" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12"
@@ -3755,6 +3763,13 @@
 	},
 /turf/open/floor/strata/floor2,
 /area/atlan/station/repairoffice)
+"alo" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -4;
+	pixel_y = 17
+	},
+/turf/open/floor/plating,
+/area/atlan/station/admin)
 "alp" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/invuln/lattice_prop{
@@ -3764,6 +3779,13 @@
 	},
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_caves)
+"alq" = (
+/obj/item/tool/warning_cone{
+	pixel_y = 16;
+	pixel_x = -11
+	},
+/turf/open/floor/plating,
+/area/atlan/asteroid/processing_nw_train)
 "als" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 1
@@ -33638,6 +33660,10 @@
 /turf/open/space/basic,
 /area/atlan/oob)
 "oVK" = (
+/obj/item/tool/warning_cone{
+	pixel_y = 18;
+	pixel_x = -25
+	},
 /turf/open/floor/plating/prison,
 /area/atlan/station/admin)
 "oVT" = (
@@ -120859,7 +120885,7 @@ kiV
 ajt
 xTV
 xTV
-aOW
+alo
 nZX
 oCj
 oCj
@@ -122345,7 +122371,7 @@ aPn
 aPb
 ajk
 aOL
-aOw
+ajV
 aOw
 aOl
 aOb
@@ -122554,7 +122580,7 @@ ajd
 cwE
 mkk
 mkk
-wqV
+alq
 ara
 mkk
 lpW

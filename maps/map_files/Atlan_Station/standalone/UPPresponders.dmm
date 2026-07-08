@@ -316,9 +316,6 @@
 	},
 /turf/open/floor/strata/blue1,
 /area/atlan/station/admin)
-"gp" = (
-/turf/closed/wall/upp_ship/grey,
-/area/atlan/station/single_dorms)
 "gI" = (
 /obj/structure/closet/secure_closet/hydroponics,
 /turf/open/floor/prison/whitegreenfull/southwest,
@@ -1067,17 +1064,6 @@
 	},
 /turf/open/floor/strata/blue1,
 /area/atlan/station/admin)
-"ty" = (
-/obj/structure/bed/hybrisa/dingy,
-/obj/structure/machinery/light/double/blue{
-	dir = 4
-	},
-/obj/item/bedsheet/colorable{
-	dir = 4;
-	color = "#856f63"
-	},
-/turf/open/floor/strata/green4/north,
-/area/atlan/station/single_dorms)
 "tH" = (
 /turf/closed/wall/upp_ship/grey,
 /area/atlan/station/promenade)
@@ -1517,17 +1503,8 @@
 /area/atlan/station/walkway)
 "zN" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/blood/gibs/limb,
-/obj/structure/sign/poster/upp{
-	pixel_y = 32;
-	pixel_x = -3
-	},
-/obj/structure/sign/poster/upp{
-	pixel_y = 33;
-	layer = 2.9
-	},
-/turf/open/floor/strata/green3/north,
-/area/atlan/station/single_dorms)
+/turf/template_noop,
+/area/template_noop)
 "zO" = (
 /obj/structure/platform/metal/strata/north,
 /turf/open/floor/plating,
@@ -6226,7 +6203,7 @@ uI
 sp
 KA
 ap
-gp
+kv
 zN
 kv
 kv
@@ -6323,8 +6300,8 @@ Wh
 fS
 eE
 NV
-gp
-ty
+kv
+kv
 kv
 kv
 kv
@@ -6420,8 +6397,8 @@ Sx
 hE
 hE
 aN
-gp
-gp
+kv
+kv
 kv
 kv
 kv

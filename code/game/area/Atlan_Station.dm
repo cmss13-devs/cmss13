@@ -287,6 +287,7 @@
 	name = "Station - South Staircase Relay"
 	icon_state = "telecomms"
 	linked_lz = DROPSHIP_LZ2
+	ceiling = CEILING_METAL
 
 // Atlan Underground Caves
 

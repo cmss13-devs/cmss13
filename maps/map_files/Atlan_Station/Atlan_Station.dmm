@@ -1085,6 +1085,10 @@
 /obj/structure/machinery/door/airlock/hybrisa/generic/autoname,
 /turf/open/floor/strata/floor2,
 /area/atlan/station/cargooffice)
+"adC" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/strata,
+/area/atlan/station/atmospherics)
 "adD" = (
 /obj/structure/largecrate/random/secure,
 /turf/open/floor/strata,
@@ -1535,6 +1539,10 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/corsat/squares,
 /area/atlan/asteroid/exports_east)
+"afb" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/prison,
+/area/atlan/station/stairs1)
 "afc" = (
 /obj/structure/machinery/portable_atmospherics/canister,
 /turf/open/floor/strata/floor3/east,
@@ -27398,6 +27406,7 @@
 /area/atlan/station/botany)
 "kbk" = (
 /obj/structure/largecrate/random/barrel/true_random,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata,
 /area/atlan/comms/lz2_hab_relay)
 "kbG" = (
@@ -28485,7 +28494,7 @@
 /turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/walkway)
 "kPh" = (
-/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+/obj/structure/machinery/door/airlock/almayer/engineering/autoname{
 	dir = 2
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
@@ -101446,7 +101455,7 @@ alE
 alD
 aAk
 aAk
-xMQ
+afb
 xMQ
 aji
 xMQ
@@ -101661,7 +101670,7 @@ aji
 xMQ
 aOH
 aji
-xMQ
+afb
 tgy
 yew
 uoJ
@@ -101875,7 +101884,7 @@ aBM
 aBM
 tgy
 tgy
-uoJ
+uEt
 uoJ
 aBF
 bIR
@@ -102938,7 +102947,7 @@ aBf
 uss
 nqr
 arg
-bIR
+adC
 uoJ
 aAh
 alD
@@ -107791,7 +107800,7 @@ wwf
 nUR
 xYA
 aCu
-nll
+nUR
 nll
 xYA
 avs

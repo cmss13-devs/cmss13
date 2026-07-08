@@ -33015,7 +33015,8 @@
 	layer = 3.2
 	},
 /obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
-	dir = 4
+	dir = 4;
+	needs_power = 0
 	},
 /turf/open/floor/asteroid,
 /area/varadero/interior/oob)
@@ -35007,7 +35008,8 @@
 /area/varadero/exterior/monsoon)
 "bQP" = (
 /obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
-	dir = 4
+	dir = 4;
+	needs_power = 0
 	},
 /obj/structure/prop{
 	name = "\improper Emergency Podlock";
@@ -35640,7 +35642,8 @@
 	layer = 3.2
 	},
 /obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
-	dir = 4
+	dir = 4;
+	needs_power = 0
 	},
 /turf/open/gm/dirt/dark_brown,
 /area/varadero/interior/oob)

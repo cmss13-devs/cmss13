@@ -54,6 +54,12 @@
 	minimap_color = MINIMAP_AREA_MEDBAY
 	ceiling = CEILING_GLASS
 
+/area/atlan/station/medical/morgue
+	name = "Station - Medical Bay Morgue"
+	icon_state = "station_med"
+	minimap_color = MINIMAP_AREA_MEDBAY
+	ceiling = CEILING_GLASS
+
 /area/atlan/station/medical_maint
 	name = "Station - Medical Maintenance"
 	icon_state = "outpost_engi_3"
@@ -81,6 +87,11 @@
 	name = "Hab Ring - Single Dorms"
 	icon_state = "single_dorms"
 	ceiling = CEILING_GLASS
+
+/area/atlan/station/canteen
+	name = "Hab Ring - Commissary"
+	icon_state = "botany"
+	linked_lz = DROPSHIP_LZ2
 
 /area/atlan/station/double_dorms
 	name = "Hab Ring - Double Dorms"
@@ -288,12 +299,6 @@
 	icon_state = "telecomms"
 	linked_lz = DROPSHIP_LZ2
 
-/area/atlan/comms/lz2_canteen
-	name = "Hab Ring - Canteen Relay"
-	icon_state = "telecomms"
-	linked_lz = DROPSHIP_LZ2
-
-
 
 // Atlan Underground Caves
 
@@ -310,6 +315,18 @@
 	icon_state = "prosep"
 	minimap_color = MINIMAP_AREA_MINING
 
+/area/atlan/asteroid/processing_seperation/interior
+	name = "Processing - Distillation Vats"
+	icon_state = "prosep"
+	minimap_color = MINIMAP_AREA_MINING
+	temperature = ICE_COLONY_TEMPERATURE
+
+/area/atlan/asteroid/processing_seperation/cas
+	name = "Processing - Distillation Vats"
+	icon_state = "prosep"
+	minimap_color = MINIMAP_AREA_MINING
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
+
 /area/atlan/asteroid/processing_cooling
 	name = "Processing - Cooling Vats"
 	icon_state = "proco"
@@ -319,6 +336,11 @@
 	name = "Processing - Transfer Dock"
 	icon_state = "prodock"
 	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
+
+/area/atlan/asteroid/processing_dock/cas
+	name = "Processing - Transfer Dock"
+	icon_state = "prodock"
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 
 /area/atlan/asteroid/processing_caves
 	name = "Processing - Caves"
@@ -330,6 +352,11 @@
 	icon_state = "prohan"
 	minimap_color = MINIMAP_AREA_MINING
 
+/area/atlan/asteroid/processing_handling/cas
+	name = "Processing - Handling"
+	icon_state = "prohan"
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
+
 /area/atlan/asteroid/processing_aux
 	name = "Processing - Auxililary Vats"
 	icon_state = "proaux"
@@ -340,6 +367,7 @@
 	name = "Processing - NW Train"
 	icon_state = "nwtrain"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
+	minimap_color = MINIMAP_AREA_CAVES
 
 /area/atlan/asteroid/processing_ne_train
 	name = "Processing - NE Train"
@@ -355,6 +383,7 @@
 	name = "Processing - SW Train"
 	icon_state = "swtrain"
 	minimap_color = MINIMAP_AREA_CAVES
+	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 
 /area/atlan/asteroid/processing_train_control
 	name = "Processing - Train Control"
@@ -382,10 +411,15 @@
 	icon_state = "exportswest"
 	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
 
-/area/atlan/asteroid/sensors
+/area/atlan/asteroid/exports_west/cas
+	name = "Processing - Exports West Dock"
+	icon_state = "exportswest"
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
+
+/area/atlan/asteroid/servers
 	name = "Station - Servers and Monitoring"
 	icon_state = "sensors"
-	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 	minimap_color = MINIMAP_AREA_RESEARCH
 
 /area/atlan/asteroid/caves

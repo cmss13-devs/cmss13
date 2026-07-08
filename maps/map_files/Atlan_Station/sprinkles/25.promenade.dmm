@@ -36,10 +36,10 @@
 /area/atlan/station/promenade)
 "n" = (
 /turf/closed/wall/upp_ship/grey/reinforced/outer,
-/area/atlan/station/promenade)
+/area/atlan/oob)
 "o" = (
 /turf/open/space/basic,
-/area/atlan/station/promenade)
+/area/atlan/oob/space)
 "p" = (
 /obj/item/weapon/twohanded/folded_metal_chair{
 	pixel_x = 6;
@@ -51,15 +51,24 @@
 /obj/structure/machinery/light/double/blue{
 	pixel_y = -1
 	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_18";
+	pixel_y = 11;
+	pixel_x = 2
+	},
 /turf/open/floor/strata,
 /area/atlan/station/promenade)
 "v" = (
 /obj/structure/lattice,
 /turf/open/space/basic,
-/area/atlan/station/promenade)
+/area/atlan/oob/space)
 "w" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 4
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_x = -8
 	},
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/promenade)
@@ -70,6 +79,7 @@
 	pixel_y = 4
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata,
 /area/atlan/station/promenade)
 "A" = (
@@ -99,6 +109,7 @@
 /area/atlan/station/promenade)
 "M" = (
 /obj/effect/landmark/yautja_teleport,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata,
 /area/atlan/station/promenade)
 "Q" = (
@@ -113,10 +124,12 @@
 	dir = 4;
 	pixel_y = 9
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata,
 /area/atlan/station/promenade)
 "U" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/promenade)
 "Z" = (
@@ -144,17 +157,17 @@ b
 "}
 (3,1,1) = {"
 a
-a
+D
 F
 Q
 l
-a
+D
 Z
 "}
 (4,1,1) = {"
-a
+D
 R
-a
+D
 d
 a
 s
@@ -180,7 +193,7 @@ v
 "}
 (7,1,1) = {"
 a
-a
+D
 k
 n
 n

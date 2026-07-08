@@ -795,9 +795,9 @@
 
 /obj/effect/landmark/survivor_spawner/atlan_responder_UPP/soldier
 	icon_state = "surv_upp"
-	equipment = /datum/equipment_preset/survivor/upp/soldier
-	CO_equipment = /datum/equipment_preset/survivor/upp/soldier
-	synth_equipment = /datum/equipment_preset/synth/survivor/upp
+	equipment = /datum/equipment_preset/survivor/atlan_responder_UPP/soldier
+	CO_equipment = /datum/equipment_preset/survivor/atlan_responder_UPP/soldier
+	synth_equipment = /datum/equipment_preset/synth/survivor/atlan_responder_UPP
 	intro_text = list("You are a member of a UPP response team!",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive. This station's armoury and cargo should hold additional supplies./span>")
@@ -808,9 +808,9 @@
 
 /obj/effect/landmark/survivor_spawner/atlan_responder_UPP/sapper
 	icon_state = "surv_upp"
-	equipment = /datum/equipment_preset/survivor/upp/sapper
-	CO_equipment = /datum/equipment_preset/survivor/upp/sapper
-	synth_equipment = /datum/equipment_preset/synth/survivor/upp
+	equipment = /datum/equipment_preset/survivor/atlan_responder_UPP/sapper
+	CO_equipment = /datum/equipment_preset/survivor/atlan_responder_UPP/sapper
+	synth_equipment = /datum/equipment_preset/synth/survivor/atlan_responder_UPP
 	intro_text = list("You are a member of a UPP response team!",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive. This station's armoury and cargo should hold additional supplies./span>")
@@ -821,9 +821,9 @@
 
 /obj/effect/landmark/survivor_spawner/atlan_responder_UPP/medic
 	icon_state = "surv_upp"
-	equipment = /datum/equipment_preset/survivor/upp/medic
-	CO_equipment = /datum/equipment_preset/survivor/upp/medic
-	synth_equipment = /datum/equipment_preset/synth/survivor/upp
+	equipment = /datum/equipment_preset/survivor/atlan_responder_UPP/medic
+	CO_equipment = /datum/equipment_preset/survivor/atlan_responder_UPP/medic
+	synth_equipment = /datum/equipment_preset/synth/survivor/atlan_responder_UPP
 	intro_text = list("You are a member of a UPP response team!",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive. This station's armoury and cargo should hold additional supplies./span>")
@@ -834,9 +834,9 @@
 
 /obj/effect/landmark/survivor_spawner/atlan_responder_UPP/specialist
 	icon_state = "surv_upp"
-	equipment = /datum/equipment_preset/survivor/upp/specialist
-	CO_equipment = /datum/equipment_preset/survivor/upp/specialist
-	synth_equipment = /datum/equipment_preset/synth/survivor/upp
+	equipment = /datum/equipment_preset/survivor/atlan_responder_UPP/specialist
+	CO_equipment = /datum/equipment_preset/survivor/atlan_responder_UPP/specialist
+	synth_equipment = /datum/equipment_preset/synth/survivor/atlan_responder_UPP
 	intro_text = list("You are a member of a UPP response team!",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive. This station's armoury and cargo should hold additional supplies./span>")
@@ -847,9 +847,9 @@
 
 /obj/effect/landmark/survivor_spawner/atlan_responder_UPP/squad_leader
 	icon_state = "surv_upp"
-	equipment = /datum/equipment_preset/survivor/upp/squad_leader
-	CO_equipment = /datum/equipment_preset/survivor/upp/squad_leader
-	synth_equipment = /datum/equipment_preset/synth/survivor/upp
+	equipment = /datum/equipment_preset/survivor/atlan_responder_UPP/squad_leader
+	CO_equipment = /datum/equipment_preset/survivor/atlan_responder_UPP/squad_leader
+	synth_equipment = /datum/equipment_preset/synth/survivor/atlan_responder_UPP
 	intro_text = list("You are a member of a UPP response team!",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive. This station's armoury and cargo should hold additional supplies./span>")

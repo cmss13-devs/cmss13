@@ -1,4 +1,14 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_dock/cas)
+"ab" = (
+/turf/open/floor/plating,
+/area/atlan/asteroid/processing_dock/cas)
+"ac" = (
+/obj/structure/machinery/floodlight,
+/turf/open/floor/prison/darkbrownfull2,
+/area/atlan/asteroid/processing_dock/cas)
 "ad" = (
 /obj/structure/surface/rack{
 	color = "#98a3ab"
@@ -6,6 +16,47 @@
 /obj/item/clothing/gloves/fyellow,
 /turf/open/floor/almayer/plate,
 /area/atlan/asteroid/ship)
+"ae" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkbrownfull2,
+/area/atlan/asteroid/processing_dock/cas)
+"af" = (
+/turf/open/floor/prison/darkbrownfull2,
+/area/atlan/asteroid/processing_dock/cas)
+"ag" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/atlan/asteroid/processing_dock/cas)
+"ah" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating,
+/area/atlan/asteroid/processing_dock/cas)
+"ai" = (
+/turf/open/floor/strata/floor3/east,
+/area/atlan/asteroid/processing_dock/cas)
+"aj" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_dock/cas)
+"ak" = (
+/turf/open/floor/platingdmg1,
+/area/atlan/asteroid/processing_dock/cas)
+"al" = (
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/platingdmg1,
+/area/atlan/asteroid/processing_dock/cas)
+"am" = (
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/plating,
+/area/atlan/asteroid/processing_dock/cas)
+"an" = (
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_dock/cas)
+"ao" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_dock/cas)
 "aA" = (
 /turf/open/gm/dirt/brown,
 /area/atlan/asteroid/processing_dock)
@@ -41,7 +92,7 @@
 /obj/effect/decal/cleanable/dirt/alt_dirt,
 /obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/floor/plating,
-/area/atlan/asteroid/processing_dock)
+/area/atlan/asteroid/processing_dock/cas)
 "cW" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
@@ -55,11 +106,11 @@
 /obj/item/stack/rods,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
-/area/atlan/asteroid/processing_dock)
+/area/atlan/asteroid/processing_dock/cas)
 "dd" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt,
 /turf/open/floor/plating/panelscorched,
-/area/atlan/asteroid/processing_dock)
+/area/atlan/asteroid/processing_dock/cas)
 "dp" = (
 /turf/closed/shuttle/ert{
 	icon_state = "upp_leftengine";
@@ -83,7 +134,7 @@
 "fR" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/floor3/east,
-/area/atlan/asteroid/processing_dock)
+/area/atlan/asteroid/processing_dock/cas)
 "fS" = (
 /turf/open/floor/plating/panelscorched,
 /area/atlan/asteroid/ship)
@@ -93,7 +144,7 @@
 "go" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/strata/floor2,
-/area/atlan/asteroid/processing_dock)
+/area/atlan/asteroid/processing_dock/cas)
 "hi" = (
 /obj/structure/prop/static_tank/fuel,
 /turf/open/floor/almayer/test_floor5,
@@ -203,7 +254,7 @@
 	pixel_y = 3
 	},
 /turf/open/floor/strata/floor2,
-/area/atlan/asteroid/processing_dock)
+/area/atlan/asteroid/processing_dock/cas)
 "oA" = (
 /obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/floor/almayer/plate,
@@ -350,14 +401,14 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt/alt_dirt,
 /turf/open/floor/prison/darkbrownfull2,
-/area/atlan/asteroid/processing_dock)
+/area/atlan/asteroid/processing_dock/cas)
 "zr" = (
 /obj/item/tool/warning_cone{
 	pixel_y = 19
 	},
 /obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/floor/prison/darkbrownfull2,
-/area/atlan/asteroid/processing_dock)
+/area/atlan/asteroid/processing_dock/cas)
 "zQ" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating/panelscorched,
@@ -381,7 +432,7 @@
 "BX" = (
 /obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/floor/strata/floor3/east,
-/area/atlan/asteroid/processing_dock)
+/area/atlan/asteroid/processing_dock/cas)
 "CA" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
@@ -513,7 +564,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/floor/plating,
-/area/atlan/asteroid/processing_dock)
+/area/atlan/asteroid/processing_dock/cas)
 "Sv" = (
 /obj/item/stack/sheet/metal,
 /obj/effect/decal/cleanable/liquid_fuel,
@@ -548,7 +599,7 @@
 "We" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt,
 /turf/open/floor/strata/floor2,
-/area/atlan/asteroid/processing_dock)
+/area/atlan/asteroid/processing_dock/cas)
 "XA" = (
 /obj/structure/girder/displaced,
 /turf/open/floor/plating/panelscorched,
@@ -563,124 +614,124 @@
 /area/atlan/asteroid/ship)
 
 (1,1,1) = {"
-eL
-eL
-eL
-eL
-wt
-eL
-pH
-eL
+aa
+aa
+aa
+aa
+aj
+aa
+ai
+aa
 We
-eL
-eL
-pH
-eL
-ea
-ea
-eL
+aa
+aa
+ai
+aa
+ab
+ab
+aa
 We
 "}
 (2,1,1) = {"
-eL
-wt
+aa
+aj
 fR
-BH
-eL
-eL
-eL
-eL
-wt
-wt
-ea
-eL
+an
+aa
+aa
+aa
+aa
+aj
+aj
+ab
+aa
 os
-ea
-eL
+ab
+aa
 go
-eL
+aa
 "}
 (3,1,1) = {"
-eL
-eL
-Uw
+aa
+aa
+ac
 zr
-nN
+af
 zo
-nN
-nN
-nN
-nN
-nN
-nN
-nN
-nN
-Uw
-eL
-ea
+af
+af
+af
+af
+af
+af
+af
+af
+ac
+aa
+ab
 "}
 (4,1,1) = {"
-eL
-eL
-nN
+aa
+aa
+af
 RW
-yf
-ea
-ea
+am
+ab
+ab
 dd
-ea
-ea
-CA
-ea
-ea
-ea
-Pw
-eL
-eL
+ab
+ab
+ag
+ab
+ab
+ab
+ae
+aa
+aa
 "}
 (5,1,1) = {"
-pH
-eL
-Pw
-CA
-yf
-Ql
-ea
-ea
-Oa
-ea
-ea
-ea
-ea
-ea
-nN
+ai
+aa
+ae
+ag
+am
+al
+ab
+ab
+ak
+ab
+ab
+ab
+ab
+ab
+af
 We
-eL
+aa
 "}
 (6,1,1) = {"
-eL
+aa
 BX
-nN
-CA
+af
+ag
 RW
-ea
+ab
 yq
 Jj
 sk
 fS
 fS
 cZ
-ea
-ea
-nN
+ab
+ab
+af
 fR
-eL
+aa
 "}
 (7,1,1) = {"
-To
-ea
-nN
-oE
+ao
+ab
+af
+ah
 cV
 xj
 At
@@ -689,18 +740,18 @@ fS
 Ty
 ER
 fQ
-oE
-ea
-nN
-eL
+ah
+ab
+af
+aa
 We
 "}
 (8,1,1) = {"
-eL
-eL
-nN
-CA
-Oa
+aa
+aa
+af
+ag
+ak
 mW
 Mc
 ux
@@ -708,17 +759,17 @@ ux
 JI
 ER
 ZS
-ea
-CA
-nN
-eL
-eL
+ab
+ag
+af
+aa
+aa
 "}
 (9,1,1) = {"
-ea
-ea
+ab
+ab
 aQ
-yf
+am
 xj
 ER
 ig
@@ -728,14 +779,14 @@ Da
 JG
 JV
 iS
-CA
-Pw
-eL
-eL
+ag
+ae
+aa
+aa
 "}
 (10,1,1) = {"
 aA
-ea
+ab
 aQ
 aQ
 dp
@@ -747,10 +798,10 @@ ux
 UL
 aT
 lJ
-ea
-Pw
-eL
-eL
+ab
+ae
+aa
+aa
 "}
 (11,1,1) = {"
 aA

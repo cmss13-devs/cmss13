@@ -225,6 +225,8 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/item/weapon/gun/shotgun/pump/m37a,
+/obj/item/ammo_magazine/handful/shotgun/slug,
 /turf/open/floor/strata,
 /area/atlan/station/single_dorms)
 "aN" = (
@@ -338,10 +340,6 @@
 "bt" = (
 /turf/open/floor/plating/prison,
 /area/atlan/station/single_dorms)
-"dI" = (
-/obj/structure/platform/metal/strata/north,
-/turf/open/floor/strata/floor2,
-/area/atlan/station/single_dorms)
 "dT" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_16";
@@ -356,14 +354,6 @@
 	pixel_x = 24
 	},
 /turf/open/floor/strata/green1,
-/area/atlan/station/single_dorms)
-"gk" = (
-/obj/structure/stairs/perspective{
-	color = "#6e6e6e";
-	dir = 4;
-	icon_state = "p_stair_sn_full_cap"
-	},
-/turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/single_dorms)
 "gE" = (
 /obj/item/stack/sheet/wood/small_stack,
@@ -456,6 +446,7 @@
 "tq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/power/apc/power/south,
+/obj/item/explosive/grenade/incendiary/molotov,
 /turf/open/floor/strata/green1,
 /area/atlan/station/single_dorms)
 "ud" = (
@@ -688,16 +679,12 @@
 /turf/open/floor/strata/green3/north,
 /area/atlan/station/single_dorms)
 "QZ" = (
-/obj/structure/stairs/perspective{
-	color = "#6e6e6e";
-	icon_state = "p_stair_sn_full_cap"
-	},
 /obj/structure/machinery/light/double/blue{
 	dir = 8;
 	pixel_x = -10;
 	pixel_y = -1
 	},
-/turf/open/floor/strata/multi_tiles/southeast,
+/turf/open/floor/strata/floor2,
 /area/atlan/station/single_dorms)
 "Rv" = (
 /obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic{
@@ -1019,7 +1006,7 @@ vu
 ae
 "}
 (12,1,1) = {"
-gk
+HK
 HK
 aY
 aU
@@ -1038,7 +1025,7 @@ vu
 ak
 "}
 (13,1,1) = {"
-dI
+HK
 HK
 aZ
 aV
@@ -1057,7 +1044,7 @@ ap
 al
 "}
 (14,1,1) = {"
-dI
+HK
 HK
 ba
 aW
@@ -1076,7 +1063,7 @@ Hu
 am
 "}
 (15,1,1) = {"
-ay
+HK
 HK
 YI
 vu

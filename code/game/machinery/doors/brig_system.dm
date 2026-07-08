@@ -160,14 +160,24 @@
 
 
 // Eject this incident from the machine.
-/obj/structure/machinery/brig_cell/proc/remove_report(mob/living/user)
+/obj/structure/machinery/brig_cell/proc/remove_report(mob/living/user = null, eject_dir = null)
 	if(!viewed_report)
 		return
 
 	if(viewed_report.incident.status & BRIG_SENTENCE_ACTIVE)
 		timer_pause(user)
 
-	viewed_report.forceMove(get_turf(user))
+	if (!user || !istype(user, /mob/living))
+		if (!eject_dir)
+			viewed_report.forceMove(get_turf(src))
+		else
+			viewed_report.forceMove(get_step(src, eject_dir))
+	else
+		viewed_report.forceMove(get_turf(user))
+
+	if (active_report == viewed_report)
+		active_report = null
+
 	incident_reports -= viewed_report
 	viewed_report = null
 

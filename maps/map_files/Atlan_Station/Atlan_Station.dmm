@@ -34,7 +34,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/admin)
 "aah" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/colony,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/autoname,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/security)
 "aai" = (
@@ -380,6 +380,14 @@
 	},
 /turf/closed/wall/upp_ship/grey,
 /area/atlan/lz/near_lz2)
+"abo" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+	name = "\improper Airlock";
+	req_one_access = null
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/atlan/station/admin)
 "abp" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
@@ -441,6 +449,11 @@
 /obj/structure/largecrate/random/mini/chest,
 /turf/open/floor/upp_hull,
 /area/atlan/station/drydock)
+"abw" = (
+/obj/structure/platform/metal/strata,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata,
+/area/atlan/station/admin)
 "abx" = (
 /obj/effect/decal/strata_decals/grime/grime3,
 /turf/open/floor/strata/floor2,
@@ -492,6 +505,13 @@
 	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/atlan/station/hab_docks)
+"abE" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata,
+/area/atlan/station/admin)
 "abF" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "atlanpool"
@@ -572,6 +592,10 @@
 /obj/structure/machinery/vending/walkman,
 /turf/open/floor/strata/red1,
 /area/atlan/lz/near_lz2)
+"abR" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/floor2,
+/area/atlan/station/admin)
 "abS" = (
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/atlan/asteroid/processing_cooling)
@@ -821,6 +845,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/prison,
 /area/atlan/asteroid/processing_ne_train)
+"acS" = (
+/obj/effect/decal/strata_decals/grime/grime4,
+/turf/open/floor/strata,
+/area/atlan/station/admin)
 "acT" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/hunter/ancient_temple/rubble/rubble,
@@ -930,6 +958,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/cargo)
+"adi" = (
+/obj/structure/machinery/light,
+/turf/open/floor/strata/orange_cover,
+/area/atlan/station/repairoffice)
 "adj" = (
 /obj/item/trash/cigbutt/cigarbutt{
 	pixel_y = 11;
@@ -1049,6 +1081,15 @@
 	},
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_nw_train)
+"adB" = (
+/obj/structure/machinery/door/airlock/hybrisa/generic/autoname,
+/turf/open/floor/strata/floor2,
+/area/atlan/station/cargooffice)
+"adC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/door/airlock/hybrisa/generic/autoname,
+/turf/open/floor/strata/floor2,
+/area/atlan/station/repairs_lift)
 "adD" = (
 /obj/structure/largecrate/random/secure,
 /turf/open/floor/strata,
@@ -4259,11 +4300,11 @@
 /turf/open/floor/strata,
 /area/atlan/station/security)
 "anT" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/colony{
-	dir = 2
-	},
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
+	},
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/autoname{
+	dir = 2
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/security)
@@ -5566,10 +5607,6 @@
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/strata/white_cyan3/north,
 /area/atlan/station/medical_maint)
-"ash" = (
-/obj/structure/lattice,
-/turf/closed/wall/upp_ship/grey/reinforced/outer,
-/area/atlan/oob)
 "asi" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan,
 /turf/open/floor/strata/floor3/east,
@@ -6024,7 +6061,7 @@
 /turf/open/floor/strata/cyan3/east,
 /area/atlan/station/double_dorms)
 "atJ" = (
-/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic,
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/single_dorms)
 "atK" = (
@@ -8550,7 +8587,6 @@
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/single_dorms)
 "aDH" = (
-/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/botany)
@@ -8603,7 +8639,7 @@
 /area/atlan/station/atmospherics)
 "aDU" = (
 /turf/closed/wall/upp_ship/grey/reinforced,
-/area/atlan/station/stairs1)
+/area/atlan/station/atmospherics)
 "aDV" = (
 /obj/structure/sign/safety/medical,
 /turf/closed/wall/upp_ship/grey/teal,
@@ -9607,11 +9643,6 @@
 /obj/structure/platform_decoration/metal/strata/north,
 /turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/canteen)
-"aHq" = (
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/open/space/basic,
-/area/atlan/oob/space)
 "aHr" = (
 /obj/effect/decal/hybrisa/road/roadmiddle{
 	pixel_y = 17
@@ -10341,7 +10372,7 @@
 /turf/open/floor/strata/purp1,
 /area/atlan/asteroid/servers)
 "aJR" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/autoname{
 	dir = 2
 	},
 /turf/open/floor/strata/multi_tiles/west,
@@ -12867,12 +12898,6 @@
 	},
 /turf/open/floor/prison/blue_plate/north,
 /area/atlan/station/water_tanks)
-"aRW" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/closed/wall/mineral/bone_resin,
-/area/atlan/oob)
 "aRX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -13642,8 +13667,8 @@
 /turf/open/floor/strata/floor2,
 /area/atlan/station/cargo)
 "aUK" = (
-/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic,
-/turf/open/floor/strata/floor2,
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname,
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/medical/morgue)
 "aUL" = (
 /obj/structure/window/framed/upp_ship/grey,
@@ -13830,6 +13855,7 @@
 /area/atlan/station/cargooffice)
 "aVn" = (
 /obj/structure/platform/metal/strata/east,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/cargooffice)
 "aVo" = (
@@ -14144,6 +14170,7 @@
 	dir = 1;
 	pixel_y = 20
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/white_cyan2/west,
 /area/atlan/station/cargooffice)
 "aWk" = (
@@ -14222,10 +14249,6 @@
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata/white_cyan2/west,
 /area/atlan/station/medical)
-"aWx" = (
-/obj/structure/machinery/light,
-/turf/open/floor/strata/floor2,
-/area/atlan/station/repairoffice)
 "aWy" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/invuln/lattice_prop{
@@ -14371,7 +14394,7 @@
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/cargooffice)
 "aWV" = (
-/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic,
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/repairs_lift)
 "aWW" = (
@@ -16226,9 +16249,6 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/strata/cyan1,
 /area/atlan/station/medical)
-"cgk" = (
-/turf/open/floor/prison/darkyellowfull2,
-/area/atlan/station/stairs1)
 "cgE" = (
 /obj/structure/bed/chair{
 	can_buckle = 0;
@@ -18003,6 +18023,7 @@
 /obj/structure/sign/poster/upp{
 	pixel_y = 33
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/cargooffice)
 "dwC" = (
@@ -19961,12 +19982,6 @@
 	},
 /turf/open/floor/plating/prison,
 /area/atlan/station/substation)
-"eVO" = (
-/obj/structure/machinery/door/airlock/multi_tile/hybrisa/black_double{
-	dir = 1
-	},
-/turf/open/floor/strata/multi_tiles/west,
-/area/atlan/station/water_maintenance)
 "eVZ" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
@@ -20156,6 +20171,7 @@
 	pixel_y = -16
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/cargooffice)
 "fcq" = (
@@ -20521,8 +20537,9 @@
 /area/atlan/station/double_dorms)
 "fpQ" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
-	dir = 1;
-	name = "\improper Airlock"
+	name = "\improper Airlock";
+	req_one_access = null;
+	dir = 2
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/asteroid/processing_train_control)
@@ -22698,8 +22715,8 @@
 /turf/open/floor/strata,
 /area/atlan/station/promenade)
 "gZQ" = (
-/obj/structure/machinery/door/airlock/hybrisa/generic{
-	dir = 1
+/obj/structure/machinery/door/airlock/hybrisa/generic/autoname{
+	dir = 2
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/repairs_lift)
@@ -23209,7 +23226,7 @@
 /turf/open/floor/strata,
 /area/atlan/asteroid/processing_nw_train)
 "hsK" = (
-/obj/structure/machinery/door/airlock/hybrisa/generic,
+/obj/structure/machinery/door/airlock/hybrisa/generic/autoname,
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/cargooffice)
 "hsL" = (
@@ -24656,6 +24673,7 @@
 	pixel_x = 2;
 	pixel_y = 14
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/cargooffice)
 "iuu" = (
@@ -25392,8 +25410,8 @@
 /turf/open/floor/strata/fake_wood,
 /area/atlan/station/hab_rec)
 "iST" = (
-/obj/structure/machinery/door/airlock/multi_tile/hybrisa/black_double{
-	dir = 1
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/black_double/autoname{
+	dir = 2
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/water_tanks)
@@ -26365,6 +26383,7 @@
 /area/atlan/station/botany)
 "jzy" = (
 /obj/structure/platform_decoration/metal/strata/west,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/floor2,
 /area/atlan/station/cargooffice)
 "jAa" = (
@@ -27604,6 +27623,7 @@
 "kxX" = (
 /obj/structure/largecrate/supply/supplies/tables_racks,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/cargooffice)
 "kyg" = (
@@ -27640,8 +27660,8 @@
 /turf/open/floor/shiva/radiator_tile,
 /area/atlan/station/substation)
 "kyn" = (
-/obj/structure/machinery/door/airlock/hybrisa/generic{
-	dir = 1
+/obj/structure/machinery/door/airlock/hybrisa/generic/autoname{
+	dir = 2
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/cargooffice)
@@ -28675,11 +28695,10 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/hab_docks)
 "loj" = (
-/obj/structure/machinery/door/airlock/almayer/security/colony{
-	dir = 2;
-	name = "Security Barracks"
-	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/machinery/door/airlock/almayer/security/autoname{
+	dir = 2
+	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/security)
 "lou" = (
@@ -31099,8 +31118,8 @@
 /turf/open/floor/prison/darkyellowfull2,
 /area/atlan/comms/lz1_engineering)
 "nll" = (
-/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic{
-	dir = 1
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname{
+	dir = 2
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/cargo)
@@ -31488,6 +31507,7 @@
 	pixel_y = 4
 	},
 /obj/item/toy/deck,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/cargooffice)
 "nyq" = (
@@ -31758,8 +31778,9 @@
 /area/atlan/asteroid/processing_seperation)
 "nJW" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
-	dir = 1;
-	name = "\improper Airlock"
+	name = "\improper Airlock";
+	req_one_access = null;
+	dir = 2
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/admin)
@@ -32772,10 +32793,10 @@
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_sw_train)
 "otP" = (
-/obj/structure/machinery/door/airlock/almayer/security/colony,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/structure/machinery/door/airlock/almayer/security/autoname,
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/security)
 "otX" = (
@@ -33328,9 +33349,9 @@
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/repairoffice)
 "oQm" = (
-/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/repairoffice)
 "oQC" = (
@@ -34069,6 +34090,7 @@
 	layer = 3.5
 	},
 /obj/structure/platform/metal/stair_cut/strata_right,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/floor2,
 /area/atlan/station/cargooffice)
 "pui" = (
@@ -34812,7 +34834,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/cargo)
 "pUD" = (
-/obj/structure/machinery/door/airlock/almayer/engineering/glass/colony{
+/obj/structure/machinery/door/airlock/almayer/engineering/autoname{
 	dir = 2
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
@@ -34935,7 +34957,7 @@
 /turf/open/floor/strata/fake_wood,
 /area/atlan/station/promenade)
 "pZP" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/autoname{
 	dir = 2
 	},
 /turf/open/floor/strata/multi_tiles/west,
@@ -35842,9 +35864,7 @@
 /turf/open/floor/strata/yellow3/north,
 /area/atlan/asteroid/exports_east)
 "qKe" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	dir = 8
-	},
+/obj/structure/machinery/door/airlock/almayer/security/glass/autoname,
 /turf/open/floor/strata/floor2,
 /area/atlan/lz/near_lz1)
 "qKg" = (
@@ -35933,9 +35953,7 @@
 /turf/open/floor/strata/white_cyan4/north,
 /area/atlan/station/medical)
 "qOo" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
-	name = "Engineering"
-	},
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/autoname,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/cent_maintenace)
 "qOy" = (
@@ -36020,8 +36038,7 @@
 /turf/open/floor/strata/orange_edge,
 /area/atlan/station/storage)
 "qRg" = (
-/obj/structure/machinery/door/airlock/almayer/security/colony{
-	name = "\improper Brig Cell";
+/obj/structure/machinery/door/airlock/almayer/security/autoname{
 	dir = 2
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
@@ -36572,9 +36589,8 @@
 /turf/open/floor/upp_hull/outerhull_dir/north,
 /area/atlan/station/drydock)
 "rji" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	dir = 2;
-	name = "Chief of Security's Office"
+/obj/structure/machinery/door/airlock/almayer/security/glass/autoname{
+	dir = 2
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/security)
@@ -36612,6 +36628,7 @@
 	pixel_y = 8
 	},
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/cargooffice)
 "rku" = (
@@ -37815,7 +37832,7 @@
 /turf/open/floor/strata/orange_edge,
 /area/atlan/station/hab_docks)
 "scz" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/colony,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/autoname,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/security)
 "scQ" = (
@@ -40145,7 +40162,7 @@
 /turf/open/floor/corsat/marked,
 /area/atlan/asteroid/exports_west)
 "tLi" = (
-/obj/structure/machinery/door/airlock/multi_tile/hybrisa/black_double,
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/black_double/autoname,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/water_maintenance)
 "tLw" = (
@@ -40710,6 +40727,7 @@
 	pixel_y = 36;
 	pixel_x = -1
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/white_cyan2/west,
 /area/atlan/station/cargooffice)
 "uiU" = (
@@ -41555,11 +41573,6 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/atlan/station/drydock)
-"uNu" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light,
-/turf/open/floor/strata/orange_cover,
-/area/atlan/station/repairoffice)
 "uNA" = (
 /obj/item/tool/wet_sign{
 	pixel_y = 8;
@@ -41633,8 +41646,8 @@
 /turf/open/gm/dirt/brown/variant_5/south,
 /area/atlan/asteroid/processing_dock/cas)
 "uQB" = (
-/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic{
-	dir = 1
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname{
+	dir = 2
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/lz/near_lz1)
@@ -42503,10 +42516,8 @@
 /turf/open/floor/strata/blue1,
 /area/atlan/station/admin)
 "vzm" = (
-/obj/structure/machinery/door/airlock/almayer/engineering/glass{
-	dir = 1;
-	autoname = 1;
-	name = "\improper Airlock"
+/obj/structure/machinery/door/airlock/almayer/engineering/autoname{
+	dir = 2
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/cent_maintenace)
@@ -43389,9 +43400,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/atlan/asteroid/processing_se_train)
 "wrT" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
-	name = "Engineering"
-	},
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/autoname,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/airlock_maints)
 "wrW" = (
@@ -43718,8 +43727,8 @@
 /turf/open/floor/strata,
 /area/atlan/lz/near_lz2)
 "wKH" = (
-/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic{
-	dir = 1
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname{
+	dir = 2
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/cargooffice)
@@ -44039,7 +44048,7 @@
 /turf/open/floor/plating,
 /area/atlan/station/drydock)
 "wXK" = (
-/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic,
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname,
 /turf/open/floor/strata/floor2,
 /area/atlan/station/cargo)
 "wXL" = (
@@ -44635,14 +44644,13 @@
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/servers)
 "xwQ" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	dir = 8
-	},
+/obj/structure/machinery/door/airlock/almayer/security/glass/autoname,
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/lz/near_lz1)
 "xwX" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
-	name = "\improper Airlock"
+	name = "\improper Airlock";
+	req_one_access = null
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/asteroid/processing_train_control)
@@ -45428,7 +45436,7 @@
 /turf/closed/wall/upp_ship/grey,
 /area/atlan/station/double_dorms)
 "xZY" = (
-/obj/structure/machinery/door/airlock/hybrisa/generic,
+/obj/structure/machinery/door/airlock/hybrisa/generic/autoname,
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/repairs_lift)
 "yaI" = (
@@ -101812,7 +101820,7 @@ aOT
 aOa
 aOa
 aOt
-cgk
+uoJ
 uoJ
 bIR
 aBF
@@ -107517,7 +107525,7 @@ wwf
 nUR
 xYA
 aCu
-oeO
+nll
 nll
 xYA
 avs
@@ -107916,8 +107924,8 @@ aDp
 axk
 vaI
 rbw
-aWx
-aCO
+rbw
+oLd
 rbw
 rbw
 alj
@@ -108551,7 +108559,7 @@ rbw
 rbw
 axk
 rbw
-ePD
+adi
 aCO
 aCO
 oBk
@@ -108763,7 +108771,7 @@ ePD
 rbw
 axk
 xvF
-uNu
+bvt
 aCO
 aWn
 rbw
@@ -112578,7 +112586,7 @@ aXq
 xET
 kKE
 mEn
-vQC
+adB
 mEn
 nqY
 aAk
@@ -113652,7 +113660,7 @@ vQC
 vQC
 vQC
 vQC
-aSo
+aRL
 aSo
 aSE
 aSo
@@ -114252,7 +114260,7 @@ aXc
 qnx
 aAk
 uZp
-wgp
+adC
 oiD
 dJq
 uyi
@@ -115123,7 +115131,7 @@ gwg
 aXa
 xET
 dvV
-vQC
+hix
 vQC
 vQC
 ddq
@@ -115335,9 +115343,9 @@ aXc
 aXb
 xET
 dUG
-vQC
-vQC
-vQC
+hix
+hix
+hix
 vQC
 vQC
 kyn
@@ -115547,7 +115555,7 @@ btJ
 aXc
 xET
 iui
-mEn
+uuj
 fbw
 nym
 rjR
@@ -115557,7 +115565,7 @@ vQC
 fUt
 vQC
 vQC
-vQC
+hix
 vQC
 aUZ
 vQC
@@ -115766,7 +115774,7 @@ xAJ
 xAJ
 xET
 tZQ
-vQC
+hix
 enf
 qAk
 aVn
@@ -115973,7 +115981,7 @@ alE
 alE
 alE
 alE
-ash
+aAk
 uiP
 aWb
 vQC
@@ -116219,7 +116227,7 @@ itu
 itu
 itu
 aag
-lYr
+abR
 asQ
 lYr
 hNw
@@ -116432,7 +116440,7 @@ itu
 nuD
 oCj
 xOH
-asQ
+abE
 lnR
 dSo
 oCj
@@ -116617,7 +116625,7 @@ kxX
 xEG
 enf
 nVR
-vQC
+hix
 vQC
 vQC
 ddq
@@ -117279,7 +117287,7 @@ alg
 alf
 jgX
 aBZ
-med
+vfA
 asQ
 aBT
 fwQ
@@ -117339,7 +117347,7 @@ xjz
 aHK
 aHC
 aAk
-aHq
+alE
 aAk
 gMY
 bEH
@@ -117467,7 +117475,7 @@ aSd
 iGi
 aVo
 qBc
-qBc
+aTH
 qBc
 qBc
 qBc
@@ -117485,7 +117493,7 @@ lEz
 kNb
 avP
 avB
-mus
+abo
 asK
 alh
 auW
@@ -117933,7 +117941,7 @@ asY
 cZl
 asN
 asK
-mus
+abo
 anM
 agh
 pzq
@@ -118127,9 +118135,9 @@ aSd
 aSd
 cIF
 lnR
+acS
 lnR
-lnR
-fAO
+abw
 vsT
 dpm
 fjq
@@ -119176,7 +119184,7 @@ jOD
 wQw
 pNc
 bvH
-eVO
+aRi
 nAw
 pNc
 aQf
@@ -119841,7 +119849,7 @@ qtX
 bJt
 asO
 asM
-mus
+abo
 dey
 asn
 asa
@@ -124474,7 +124482,7 @@ isk
 isk
 lGF
 lGF
-aRW
+lGF
 lGF
 lGF
 aSd
@@ -124686,7 +124694,7 @@ aTt
 isk
 isk
 lGF
-aRW
+lGF
 lGF
 aSd
 aSd
@@ -124898,7 +124906,7 @@ isk
 aSY
 lGF
 gep
-aRW
+lGF
 lGF
 lGF
 lGF

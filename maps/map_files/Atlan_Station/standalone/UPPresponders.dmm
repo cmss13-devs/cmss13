@@ -2673,8 +2673,8 @@
 /obj/effect/landmark/corpsespawner/upp,
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/decal/cleanable/blood/gibs,
-/obj/item/weapon/gun/rifle/type71/sapper,
 /obj/effect/spawner/gibspawner/human,
+/obj/item/weapon/gun/rifle/type71/rifleman,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/admin)
 "WP" = (

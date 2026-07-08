@@ -626,6 +626,7 @@
 	pixel_y = 21;
 	pixel_x = 24
 	},
+/obj/item/explosive/grenade/incendiary/molotov,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/single_dorms)
 "LR" = (

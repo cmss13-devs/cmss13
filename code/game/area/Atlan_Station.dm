@@ -165,12 +165,6 @@
 	linked_lz = DROPSHIP_LZ1
 	ceiling = CEILING_METAL
 
-/area/atlan/station/stairs2
-	name = "Station - South Staircase"
-	icon_state = "weststairs"
-	linked_lz = DROPSHIP_LZ2
-	ceiling = CEILING_METAL
-
 /area/atlan/station/substation
 	name = "Hab Ring - Electrical Substation"
 	icon_state = "outpost_engi_1"
@@ -278,11 +272,6 @@
 	linked_lz = DROPSHIP_LZ1
 	ceiling = CEILING_METAL
 
-/area/atlan/comms/lz1_lift
-	name = "Station - Drydock Cargo Relay"
-	icon_state = "telecomms"
-	linked_lz = DROPSHIP_LZ1
-
 /area/atlan/comms/lz1_engineering
 	name = "Station - Engineering Relay"
 	icon_state = "telecomms"
@@ -294,11 +283,10 @@
 	icon_state = "telecomms"
 	linked_lz = DROPSHIP_LZ2
 
-/area/atlan/comms/lz2_bar_south
-	name = "Hab Ring - South Bar Relay"
+/area/atlan/comms/lz2_stairs
+	name = "Station - South Staircase Relay"
 	icon_state = "telecomms"
 	linked_lz = DROPSHIP_LZ2
-
 
 // Atlan Underground Caves
 

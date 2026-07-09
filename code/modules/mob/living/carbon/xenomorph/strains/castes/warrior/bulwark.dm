@@ -25,7 +25,6 @@
 	warrior.add_plasma += XENO_PLASMA_TIER_2
 	warrior.speed += XENO_SPEED_TIER_1
 	warrior.tackle_max_modifier += 1
-	warrior.melee_vulnerability_mult += 1.5
 
 	warrior.recalculate_everything()
 
@@ -81,14 +80,18 @@
 	if(bound_xeno.stat == DEAD)
 		return
 
-	if(!HAS_TRAIT(bound_xeno, TRAIT_ABILITY_REFLECTIVE_PLATES))
+	if(!HAS_TRAIT(bound_xeno, TRAIT_INCAPACITATED) && !HAS_TRAIT(bound_xeno, TRAIT_FLOORED))
+		if(HAS_TRAIT(bound_xeno, TRAIT_ABILITY_REFLECTIVE_PLATES) && bound_xeno.health > 0)
+			bound_xeno.icon_state = "[bound_xeno.get_strain_icon()] Warrior Shield Reflective"
+			return TRUE
+
 		if(HAS_TRAIT(bound_xeno, TRAIT_ABILITY_ENCLOSED_PLATES) && bound_xeno.health > 0)
 			bound_xeno.icon_state = "[bound_xeno.get_strain_icon()] Warrior Shield"
 			return TRUE
 
-	if(HAS_TRAIT(bound_xeno, TRAIT_ABILITY_REFLECTIVE_PLATES) && bound_xeno.health > 0)
-		bound_xeno.icon_state = "[bound_xeno.get_strain_icon()] Warrior Shield Reflective"
-		return TRUE
+	else
+		bound_xeno.icon_state = "[bound_xeno.get_strain_icon()] Warrior Shield Knocked Down"
+
 
 /datum/behavior_delegate/warrior_bulwark/melee_attack_additional_effects_target(mob/living/carbon/carbon_target)
 	if(HAS_TRAIT(bound_xeno, TRAIT_ABILITY_ENCLOSED_PLATES))

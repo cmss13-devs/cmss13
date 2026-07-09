@@ -17,10 +17,9 @@
 
 /datum/xeno_strain/steel_crest/apply_strain(mob/living/carbon/xenomorph/defender/defender)
 	defender.damage_modifier -= XENO_DAMAGE_MOD_VERY_SMALL
-	if(defender.fortify)
+	if(HAS_TRAIT(defender, TRAIT_ABILITY_FORTIFY))
 		defender.ability_speed_modifier += 2.5
 	defender.recalculate_stats()
-
 
 
 // Steel crest override
@@ -36,7 +35,7 @@
 		xeno.ability_speed_modifier -= 3
 		xeno.damage_modifier += XENO_DAMAGE_MOD_SMALL
 
-/datum/action/xeno_action/activable/fortify/proc/check_directional_armor(mob/living/carbon/xenomorph/defendy, list/damagedata)
+/datum/action/xeno_action/activable/fortify/proc/check_directional_projectile_armor(mob/living/carbon/xenomorph/defendy, list/damagedata)
 	SIGNAL_HANDLER
 	var/projectile_direction = damagedata["direction"]
 	// If the defender is facing the projectile.
@@ -51,28 +50,20 @@
 
 	UnregisterSignal(owner, COMSIG_XENO_ENTER_CRIT)
 	UnregisterSignal(owner, COMSIG_MOB_DEATH)
-	fortify_switch(owner, FALSE)
 
-/datum/action/xeno_action/onclick/soak/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/steelcrest = owner
+/datum/action/xeno_action/onclick/soak/use_ability(atom/target_atom)
+	var/mob/living/carbon/xenomorph/xeno = owner
 
-	if (!action_cooldown_check())
-		return
+	XENO_ACTION_CHECK_USE_PLASMA(xeno)
 
-	if (!steelcrest.check_state())
-		return
-
-	if(!check_and_use_plasma_owner())
-		return
-
-	RegisterSignal(steelcrest, COMSIG_MOB_TAKE_DAMAGE, PROC_REF(damage_accumulate))
+	RegisterSignal(xeno, COMSIG_MOB_TAKE_DAMAGE, PROC_REF(damage_accumulate))
 	addtimer(CALLBACK(src, PROC_REF(stop_accumulating)), 6 SECONDS)
 
-	steelcrest.balloon_alert(steelcrest, "begins to tank incoming damage!")
+	xeno.balloon_alert(xeno, "begins to tank incoming damage!")
 
-	to_chat(steelcrest, SPAN_XENONOTICE("We begin to tank incoming damage!"))
+	to_chat(xeno, SPAN_XENONOTICE("We begin to tank incoming damage!"))
 
-	steelcrest.add_filter("steelcrest_enraging", 1, list("type" = "outline", "color" = "#421313", "size" = 1))
+	xeno.add_filter("steelcrest_enraging", 1, list("type" = "outline", "color" = "#421313", "size" = 1))
 
 	apply_cooldown()
 	return ..()
@@ -95,20 +86,19 @@
 	owner.remove_filter("steelcrest_enraging")
 
 /datum/action/xeno_action/onclick/soak/proc/enraged()
-
 	owner.remove_filter("steelcrest_enraging")
 	owner.add_filter("steelcrest_enraged", 1, list("type" = "outline", "color" = "#ad1313", "size" = 1))
-	owner.visible_message(SPAN_XENOWARNING("[owner] gets enraged after being damaged enough!"), SPAN_XENOWARNING("We feel enraged after taking in oncoming damage! Our tail slam's cooldown is reset and we heal!"))
+	owner.visible_message(SPAN_XENOWARNING("[owner] gets enraged and their carapace start to rapidly mend!"), SPAN_XENOWARNING("We feel enraged after taking in oncoming damage! Our tail slam's cooldown is reset and our carapace start to rapidly mend!"))
+	owner.flick_heal_overlay(3 SECONDS, "#00B800")
 
-	var/mob/living/carbon/xenomorph/enraged_mob = owner
-	enraged_mob.gain_health(75) // pretty reasonable amount of health recovered
+	var/mob/living/carbon/xenomorph/xeno = owner
+	xeno.gain_health(75) // pretty reasonable amount of health recovered
 
 	// Check actions list for tail slam and reset it's cooldown if it's there
 	var/datum/action/xeno_action/activable/tail_stab/slam/slam_action = locate() in owner.actions
 
-	if (slam_action && !slam_action.action_cooldown_check())
+	if(slam_action && !slam_action.action_cooldown_check())
 		slam_action.end_cooldown()
-
 
 	addtimer(CALLBACK(src, PROC_REF(remove_enrage), owner), 3 SECONDS)
 

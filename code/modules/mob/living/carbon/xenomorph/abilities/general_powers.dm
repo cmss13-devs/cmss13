@@ -98,7 +98,7 @@
 		to_chat(src, SPAN_WARNING("No time to rest, must KILL!"))
 		return
 
-	if(fortify)
+	if(HAS_TRAIT(src, TRAIT_ABILITY_FORTIFY))
 		to_chat(src, SPAN_WARNING("We cannot rest while fortified!"))
 		return
 
@@ -106,7 +106,7 @@
 		to_chat(src, SPAN_WARNING("We cannot rest while burrowed!"))
 		return
 
-	if(crest_defense)
+	if(HAS_TRAIT(src, TRAIT_ABILITY_CREST))
 		to_chat(src, SPAN_WARNING("We cannot rest while our crest is down!"))
 		return
 

@@ -297,8 +297,6 @@
 	var/tunnel = FALSE
 	/// for check on lurker invisibility
 	var/stealth = FALSE
-	var/fortify = FALSE
-	var/crest_defense = FALSE
 	/// 0/FALSE - upright, 1/TRUE - all fours
 	var/agility = FALSE
 	/// For drones/hivelords. Extends the maximum build range they have

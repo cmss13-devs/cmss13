@@ -87,6 +87,32 @@
 	if(HAS_TRAIT(src, TRAIT_ABILITY_ENCLOSED_PLATES))
 		return "Warrior_plates_[severity]"
 
+/mob/living/carbon/xenomorph/warrior/ex_act()
+	. = ..()
+
+	if(HAS_TRAIT(src, TRAIT_ABILITY_REFLECTIVE_PLATES) || HAS_TRAIT(src, TRAIT_ABILITY_ENCLOSED_PLATES))
+		if(HAS_TRAIT(src, TRAIT_INCAPACITATED) && HAS_TRAIT(src, TRAIT_FLOORED))
+			if(HAS_TRAIT(src, TRAIT_ABILITY_REFLECTIVE_PLATES))
+				var/datum/action/xeno_action/onclick/reflective_shield/reflect_used = get_action(src, /datum/action/xeno_action/onclick/reflective_shield)
+				reflect_used.remove_reflective_shield()
+
+			if(HAS_TRAIT(src, TRAIT_ABILITY_ENCLOSED_PLATES))
+				var/datum/action/xeno_action/onclick/toggle_plates/plates_used = get_action(src, /datum/action/xeno_action/onclick/toggle_plates)
+				plates_used.disengage_plates()
+
+
+/mob/living/carbon/xenomorph/warrior/death()
+	if(HAS_TRAIT(src, TRAIT_ABILITY_REFLECTIVE_PLATES) || HAS_TRAIT(src, TRAIT_ABILITY_ENCLOSED_PLATES))
+		var/datum/action/xeno_action/onclick/reflective_shield/reflect_used = get_action(src, /datum/action/xeno_action/onclick/reflective_shield)
+		if(HAS_TRAIT(src, TRAIT_ABILITY_REFLECTIVE_PLATES))
+			reflect_used.remove_reflective_shield()
+
+		var/datum/action/xeno_action/onclick/toggle_plates/plates_used = get_action(src, /datum/action/xeno_action/onclick/toggle_plates)
+		if(HAS_TRAIT(src, TRAIT_ABILITY_ENCLOSED_PLATES))
+			plates_used.disengage_plates()
+
+	return ..()
+
 /mob/living/carbon/xenomorph/warrior/throw_item(atom/target)
 	toggle_throw_mode(THROW_MODE_OFF)
 

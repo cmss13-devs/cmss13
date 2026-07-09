@@ -34,6 +34,9 @@
 	requires_power = FALSE
 	soundscape_playlist = AMBIENCE_LASTBUNKER
 
+/area/last_bunker/oob/surface_light
+	base_lighting_alpha = 50
+
 //Landing Zones
 
 /area/last_bunker/landing_zone_1
@@ -50,7 +53,7 @@
 	is_landing_zone = TRUE
 	minimap_color = MINIMAP_AREA_LZ
 	linked_lz = DROPSHIP_LZ2
-	base_lighting_alpha = 100
+	base_lighting_alpha = 50
 
 //Exterior Areas
 
@@ -60,7 +63,7 @@
 	name = "Surface Exterior"
 	icon_state = "green"
 	minimap_color = MINIMAP_SNOW
-	base_lighting_alpha = 100
+	base_lighting_alpha = 50
 
 /area/last_bunker/outdoors/surface_exterior/south
 	icon_state = "central"
@@ -88,19 +91,19 @@
 	name = "Eastern Cavern - Bunker Eastern Exterior"
 	icon_state = "central"
 	minimap_color = MINIMAP_SNOW
-	base_lighting_alpha = 100
+	base_lighting_alpha = 40
 
 /area/last_bunker/outdoors/eastern_cavern/mid_light
 	name = "Eastern Cavern - Bunker Eastern Exterior"
 	icon_state = "central"
 	minimap_color = MINIMAP_SNOW
-	base_lighting_alpha = 75
+	base_lighting_alpha = 30
 
 /area/last_bunker/outdoors/eastern_cavern/low_light
 	name = "Eastern Cavern - Bunker Eastern Exterior"
 	icon_state = "central"
 	minimap_color = MINIMAP_SNOW
-	base_lighting_alpha = 40
+	base_lighting_alpha = 20
 
 //Interior Areas
 

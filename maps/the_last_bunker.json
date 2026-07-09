@@ -1,5 +1,5 @@
 {
-    "map_name": "The Laser Bunker",
+    "map_name": "The Last Bunker",
     "map_path": "map_files/The_Last_Bunker",
     "map_file": "The_Last_Bunker.dmm",
     "webmap_url": "LV624",
@@ -19,7 +19,7 @@
         "/datum/equipment_preset/survivor/clf/coordinator"
     ],
     "map_item_type": "/obj/item/map/the_last_bunker_map",
-    "announce_text": "###SHIPNAME###, this is Third Fleet Command. For this operation, you will be working alongside other elements of the Third Regiment on a search and recovery operation. The ongoing anti-corporate riots on Hybrisa Prospera have pushed several VIPs to ground, most of who withdrew to several off-world bunkers, furthermore, intelligence suggests one or more of the VIPs have stolen an artefact from the planet whilst in flight.\n\nYour objective is to locate the VIPs, ascertain their current status. and if foul play is suspected, you are to take the VIP in to custody and secure any notable assets.\n\nYour vessel is closest to Bunker K31 on LV-843. The other three bunkers are already being scoured by the other Battalions, your's is the Last Bunker. Good luck Falling Falcons.",
+    "announce_text": "###SHIPNAME###, this is Third Fleet Command. For this operation, you will be working alongside other elements of the Third Regiment on a search and recovery operation. The ongoing anti-corporate riots on Hybrisa Prospera have pushed several VIPs to ground, most of who withdrew to several off-world bunkers, furthermore, intelligence suggests one or more of the VIPs have stolen an artefact from the planet whilst in flight.\n\nYour objective is to locate the VIPs, ascertain their current status. and if foul play is suspected, you are to take the VIP in to custody and secure any notable assets.\n\nYour vessel is closest to Bunker K31 on LV-843. The other three bunkers are already being scoured by the other Battalions, yours is the Last Bunker. Good luck Falling Falcons.",
     "monkey_types": [
         "farwa",
         "neaera",

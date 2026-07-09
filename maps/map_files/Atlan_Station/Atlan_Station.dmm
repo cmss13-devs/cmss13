@@ -405,7 +405,7 @@
 	pixel_x = 1;
 	pixel_y = 1
 	},
-/obj/structure/machinery/power/apc/no_power/south,
+/obj/structure/machinery/power/apc/power/south,
 /turf/open/floor/corsat/marked,
 /area/atlan/station/drydock)
 "abr" = (
@@ -3900,6 +3900,7 @@
 /turf/open/floor/plating,
 /area/atlan/oob/space)
 "alH" = (
+/obj/structure/blocker/invisible_wall,
 /turf/closed/shuttle/dropship_upp/transparent{
 	icon_state = "dropship_console_middle"
 	},
@@ -4085,6 +4086,15 @@
 "aml" = (
 /turf/open/floor/strata/white_cyan3/south,
 /area/atlan/station/medical_maint)
+"amm" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/atlan/oob)
 "amn" = (
 /turf/closed/wall/upp_ship/grey/red/reinforced,
 /area/atlan/lz/near_lz2)
@@ -5572,6 +5582,10 @@
 /obj/effect/decal/cleanable/dirt/alt_dirt,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/asteroid/processing_nw_train)
+"ard" = (
+/obj/effect/attach_point/crew_weapon/dropship_upp,
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/atlan/oob)
 "are" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 9
@@ -6029,6 +6043,18 @@
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/prison/whitegreen,
 /area/atlan/station/botany)
+"asx" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_x = -30
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/atlan/oob)
 "asy" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -6069,6 +6095,18 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/asteroid/processing_nw_train)
+"asE" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_x = 30
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/atlan/oob)
 "asF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/vents/pump,
@@ -9712,6 +9750,12 @@
 /obj/structure/platform/metal/strata,
 /turf/open/gm/river/darkred_pool,
 /area/atlan/oob)
+"aEu" = (
+/obj/item/device/radio/intercom/morana{
+	pixel_y = 26
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/atlan/oob)
 "aEv" = (
 /obj/structure/platform/metal/strata/west,
 /turf/open/gm/river/darkred_pool,
@@ -12123,6 +12167,10 @@
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/strata,
 /area/atlan/asteroid/processing_sw_train)
+"aMm" = (
+/obj/structure/platform/metal/strata/north,
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/atlan/oob)
 "aMn" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_2,
 /turf/open/gm/dirt/brown,
@@ -13438,6 +13486,10 @@
 	},
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_handling/cas)
+"aQy" = (
+/obj/structure/stairs,
+/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
+/area/atlan/oob)
 "aQz" = (
 /obj/structure/sign/safety/storage,
 /turf/closed/wall/upp_ship/grey,
@@ -14506,6 +14558,13 @@
 /obj/effect/decal/cleanable/dirt/alt_dirt,
 /turf/open/floor/plating,
 /area/atlan/asteroid/processing_dock/cas)
+"aUu" = (
+/obj/structure/barricade/handrail/strata,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/atlan/oob)
 "aUv" = (
 /obj/item/clothing/head/helmet/marine/veteran/UPP,
 /obj/item/clothing/head/helmet/marine/veteran/UPP,
@@ -14585,6 +14644,12 @@
 /obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating,
 /area/atlan/asteroid/processing_offices)
+"aUF" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
+/area/atlan/oob)
 "aUG" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_3,
 /turf/open/floor/strata/floor2,
@@ -15948,9 +16013,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/redcorner/north,
 /area/atlan/station/airlock_east)
-"aYJ" = (
-/turf/open/floor/strata/floor2,
-/area/atlan/oob)
 "aYK" = (
 /obj/structure/largecrate/random/mini{
 	pixel_y = 2
@@ -16038,10 +16100,79 @@
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/floor/strata/floor2,
 /area/atlan/station/repairoffice)
+"aZa" = (
+/obj/docking_port/mobile/marine_dropship/morana,
+/turf/closed/shuttle/dropship_upp{
+	icon_state = "68"
+	},
+/area/atlan/oob)
+"aZb" = (
+/obj/effect/attach_point/crew_weapon/dropship_upp,
+/obj/item/device/radio/intercom/morana{
+	pixel_y = 26
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/atlan/oob)
+"aZc" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/sign/flag/upp{
+	dir = 8;
+	pixel_y = 28
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/atlan/oob)
+"aZd" = (
+/obj/item/device/radio/intercom/morana{
+	pixel_y = 26
+	},
+/turf/open/shuttle/dropship/light_grey_top_left,
+/area/atlan/oob)
 "aZe" = (
 /obj/structure/largecrate/random,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/repairs_lift)
+"aZf" = (
+/obj/structure/machinery/door_control{
+	name = "Dropship Lockdown";
+	pixel_y = -19;
+	id = "dropship_morana";
+	throw_range = 15;
+	normaldoorcontrol = 3;
+	req_one_access_txt = "235;240"
+	},
+/turf/open/shuttle/dropship/light_grey_left_to_right,
+/area/atlan/oob)
+"aZg" = (
+/obj/item/device/radio/intercom/morana{
+	pixel_y = 26
+	},
+/turf/open/shuttle/dropship/light_grey_top_right,
+/area/atlan/oob)
+"aZh" = (
+/obj/structure/bed/chair/dropship/pilot{
+	dir = 1
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/atlan/oob)
+"aZi" = (
+/obj/item/device/radio/intercom/morana{
+	pixel_y = 50;
+	pixel_x = 32
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/atlan/oob)
+"aZj" = (
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/turf/open/floor/strata/orange_cover,
+/area/atlan/lz/near_lz1)
 "aZm" = (
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3,
 /turf/closed/wall/upp_ship/grey,
@@ -22532,9 +22663,8 @@
 /turf/closed/wall/upp_ship/grey/teal,
 /area/atlan/station/botany)
 "ggF" = (
-/turf/closed/shuttle/dropship_upp/transparent{
-	icon_state = "20"
-	},
+/obj/structure/shuttle/part/dropship_upp/transparent/engine_left_exhaust,
+/turf/open/floor/corsat/squares,
 /area/atlan/oob)
 "ggL" = (
 /turf/open/shuttle/escapepod/floor2/east,
@@ -37868,6 +37998,7 @@
 /turf/open/floor/strata/red1,
 /area/atlan/lz/near_lz2)
 "rxi" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/machinery/door/airlock/hatch/cockpit/upp{
 	req_access = null;
 	req_one_access = list(235, 240)
@@ -38325,6 +38456,7 @@
 /turf/open/floor/strata/fake_wood,
 /area/atlan/station/promenade)
 "rMw" = (
+/obj/structure/blocker/invisible_wall,
 /turf/closed/shuttle/dropship_upp/transparent{
 	icon_state = "dropship_console_right"
 	},
@@ -39674,9 +39806,8 @@
 /turf/open/floor/strata/orange_cover,
 /area/atlan/lz/near_lz1)
 "sOE" = (
-/turf/closed/shuttle/dropship_upp/transparent{
-	icon_state = "21"
-	},
+/obj/structure/shuttle/part/dropship_upp/transparent/engine_right_exhaust,
+/turf/open/floor/corsat/squares,
 /area/atlan/oob)
 "sOO" = (
 /obj/structure/bed/chair/office/light{
@@ -40892,6 +41023,7 @@
 /turf/open/floor/strata/orange_edge,
 /area/atlan/lz/near_lz1)
 "tCG" = (
+/obj/structure/blocker/invisible_wall,
 /turf/closed/shuttle/dropship_upp/transparent{
 	icon_state = "dropship_console_left"
 	},
@@ -61950,13 +62082,13 @@ aED
 aEL
 aEO
 niW
+aZc
+amm
+amm
 slu
 slu
-slu
-slu
-slu
-slu
-slu
+amm
+amm
 tVX
 iZk
 iZk
@@ -62162,19 +62294,19 @@ leH
 pUT
 tqk
 hTc
-nnM
+aZd
 ewR
 ewR
 ewR
 ewR
 ewR
 evU
-slu
-slu
-slu
-slu
-slu
-slu
+aUu
+aMm
+amm
+asx
+amm
+amm
 srj
 dcd
 jJk
@@ -62372,17 +62504,17 @@ sOT
 bzC
 bfX
 tCG
-slu
+aZh
 edD
 dzh
-slu
-slu
-slu
+amm
+amm
+amm
 dzh
-slu
+amm
 nxD
-ewR
-ewR
+aUF
+aQy
 ewR
 ewR
 ewR
@@ -62584,21 +62716,21 @@ aEG
 bzC
 wUv
 alH
-slu
+aZi
 rxi
-dzh
+aZf
 iRV
 haG
-slu
+aZb
 dzh
-iRV
+aZa
 lKw
 lKw
 haG
+aEu
+ard
 slu
-slu
-slu
-slu
+ard
 slu
 aEK
 aEE
@@ -62796,17 +62928,17 @@ aFa
 bzC
 wtS
 rMw
-slu
+aZh
 jca
 dzh
-slu
-slu
-slu
+amm
+amm
+amm
 dzh
-slu
+amm
 nnM
-ewR
-ewR
+aUF
+aQy
 ewR
 ewR
 ewR
@@ -63010,19 +63142,19 @@ dej
 lDT
 eOA
 mpE
-nxD
+aZg
 ewR
 ewR
 ewR
 ewR
 ewR
 fPy
-slu
-slu
-slu
-slu
-slu
-slu
+aUu
+aMm
+amm
+asE
+amm
+amm
 srj
 gPW
 bds
@@ -63222,13 +63354,13 @@ aEJ
 aEE
 aEE
 nDX
+aZc
+amm
+amm
 slu
 slu
-slu
-slu
-slu
-slu
-slu
+amm
+amm
 grD
 qJp
 qJp
@@ -63872,8 +64004,8 @@ aEN
 aEK
 aEE
 aEH
-aEE
-aEE
+sOT
+sOT
 sOT
 sOT
 agj
@@ -64295,7 +64427,7 @@ sOT
 sOT
 sOT
 aEH
-sOT
+aEE
 sOT
 agj
 agj
@@ -101166,7 +101298,7 @@ alD
 alE
 alE
 alE
-aYJ
+aAk
 aAk
 pBz
 vUh
@@ -102027,11 +102159,11 @@ qoP
 qoP
 qoP
 qoP
+lpD
 qoP
 qoP
 qoP
-qoP
-qoP
+fxC
 qoP
 qoP
 qoP
@@ -102457,7 +102589,7 @@ qoP
 qoP
 qoP
 qoP
-qoP
+lpD
 qoP
 qoP
 qoP
@@ -102679,7 +102811,7 @@ qoP
 qoP
 qoP
 qoP
-oJX
+aZj
 bgS
 eOT
 pkY

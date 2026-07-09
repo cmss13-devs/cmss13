@@ -71,38 +71,37 @@
 	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/onclick/toggle_cleave/can_use_action()
-	var/mob/living/carbon/xenomorph/xeno = owner
-	if(xeno && !xeno.buckled && !xeno.is_mob_incapacitated())
+	var/mob/living/carbon/xenomorph/X = owner
+	if(X && !X.buckled && !X.is_mob_incapacitated())
 		return TRUE
 
-/datum/action/xeno_action/onclick/toggle_cleave/use_ability(atom/target_atom)
-	var/mob/living/carbon/xenomorph/xeno = owner
+/datum/action/xeno_action/onclick/toggle_cleave/use_ability(atom/A)
+	var/mob/living/carbon/xenomorph/X = owner
 
-	if(!istype(xeno))
+	if (!istype(X))
 		return
 
-	if(!xeno.check_state(TRUE))
+	if (!X.check_state(1))
 		return
 
-	var/datum/action/xeno_action/activable/cleave/cAction = get_action(xeno, /datum/action/xeno_action/activable/cleave)
+	var/datum/action/xeno_action/activable/cleave/cAction = get_action(X, /datum/action/xeno_action/activable/cleave)
 
-	if(!istype(cAction))
+	if (!istype(cAction))
 		return
 
 	cAction.root_toggle = !cAction.root_toggle
 
 	var/action_icon_result
-	if(cAction.root_toggle)
+	if (cAction.root_toggle)
 		action_icon_result = "prae_cleave_root"
-		to_chat(xeno, SPAN_WARNING("We will now root marines with our cleave."))
+		to_chat(X, SPAN_WARNING("We will now root marines with our cleave."))
 	else
 		action_icon_result = "prae_cleave_fling" // TODO: update
-		to_chat(xeno, SPAN_WARNING("We will now throw marines with our cleave."))
+		to_chat(X, SPAN_WARNING("We will now throw marines with our cleave."))
 
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_result)
 	return ..()
-
 
 ////////// Oppressor powers
 
@@ -252,33 +251,37 @@
 	var/activation_delay = 1 SECONDS
 	var/prime_delay = 1 SECONDS
 
-/datum/action/xeno_action/activable/prae_acid_ball/use_ability(atom/target_atom)
-	var/mob/living/carbon/xenomorph/xeno = owner
-
-	if(xeno.action_busy)
+/datum/action/xeno_action/activable/prae_acid_ball/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/acidball_user = owner
+	if (!target)
 		return
 
-	XENO_ACTION_CHECK(xeno)
+	var/mob/living/carbon/xenomorph/acidball_user = owner
+	if (!acidball_user.check_state() || acidball_user.action_busy)
+		return
 
-	var/turf/current_turf = get_turf(xeno)
+	if (!action_cooldown_check())
+		return
+	var/turf/current_turf = get_turf(acidball_user)
 
 	if(!current_turf)
 		return
 
-	if(!do_after(xeno, activation_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
-		to_chat(xeno, SPAN_XENODANGER("We cancel our acid ball."))
+	if (!do_after(acidball_user, activation_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+		to_chat(acidball_user, SPAN_XENODANGER("We cancel our acid ball."))
 		return
 
-	XENO_ACTION_CHECK_USE_PLASMA(xeno)
+	if (!check_and_use_plasma_owner())
+		return
 
 	apply_cooldown()
 
-	to_chat(xeno, SPAN_XENOWARNING("We lob a compressed ball of acid into the air!"))
+	to_chat(acidball_user, SPAN_XENOWARNING("We lob a compressed ball of acid into the air!"))
 
 	var/obj/item/explosive/grenade/xeno_acid_grenade/grenade = new /obj/item/explosive/grenade/xeno_acid_grenade
-	grenade.cause_data = create_cause_data(initial(xeno.caste_type), xeno)
-	grenade.forceMove(get_turf(xeno))
-	grenade.throw_atom(target_atom, 5, SPEED_SLOW, xeno, TRUE, NORMAL_LAUNCH)
+	grenade.cause_data = create_cause_data(initial(acidball_user.caste_type), acidball_user)
+	grenade.forceMove(get_turf(acidball_user))
+	grenade.throw_atom(target_atom, 5, SPEED_SLOW, acidball_user, TRUE, NORMAL_LAUNCH)
 	addtimer(CALLBACK(grenade, TYPE_PROC_REF(/obj/item/explosive, prime)), prime_delay)
 
 	return ..()

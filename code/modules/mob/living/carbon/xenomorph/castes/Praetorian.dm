@@ -83,26 +83,26 @@
 	///reward for hitting shots instead of spamming acid ball
 	var/reward_shield = 15
 
-/datum/behavior_delegate/praetorian_base/ranged_attack_additional_effects_target(atom/target_atom)
-	if(!ishuman(target_atom))
+/datum/behavior_delegate/praetorian_base/ranged_attack_additional_effects_target(atom/A)
+	if (!ishuman(A))
 		return
 
-	var/mob/living/carbon/human/target_human = target_atom
+	var/mob/living/carbon/human/H = A
 
-	var/datum/effects/prae_acid_stacks/acid_stack = null
-	for(var/datum/effects/prae_acid_stacks/prae_acid_stacks in target_human.effects_list)
-		acid_stack = prae_acid_stacks
+	var/datum/effects/prae_acid_stacks/PAS = null
+	for (var/datum/effects/prae_acid_stacks/prae_acid_stacks in H.effects_list)
+		PAS = prae_acid_stacks
 		break
 
-	if(acid_stack == null)
-		new /datum/effects/prae_acid_stacks(target_human)
+	if (PAS == null)
+		new /datum/effects/prae_acid_stacks(H)
 		return
 	else
-		acid_stack.increment_stack_count()
+		PAS.increment_stack_count()
 		return
 
-/datum/behavior_delegate/praetorian_base/ranged_attack_additional_effects_self(atom/target_atom)
-	if(!ismob(target_atom))
+/datum/behavior_delegate/praetorian_base/ranged_attack_additional_effects_self(atom/A)
+	if(!ismob(A))
 		return
 	bound_xeno.add_xeno_shield(reward_shield, XENO_SHIELD_SOURCE_BASE_PRAE, add_shield_on = TRUE, max_shield = 45)
 	to_chat(bound_xeno, SPAN_NOTICE("Your exoskeleton shimmers for a fraction of a second as the acid coats your target."))

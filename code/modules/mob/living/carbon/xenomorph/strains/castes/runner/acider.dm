@@ -144,7 +144,7 @@
 	if(acid_amount >= acid_gen_cap)
 		holder.overlays += image('icons/mob/hud/hud.dmi', "cap[percentage_acid_cap]")
 
-/datum/behavior_delegate/runner_acider/handle_death(mob/target_mob)
+/datum/behavior_delegate/runner_acider/handle_death(mob/M)
 	var/image/holder = bound_xeno.hud_list[SPECIAL_HUD]
 	holder.overlays.Cut()
 	STOP_PROCESSING(SSfasteffects, src)
@@ -252,9 +252,9 @@
 	var/perc_index = 0
 	if(acid_amount > max_acid * 0.8)
 		perc_index = 3
-	else if(acid_amount > max_acid * 0.5)
+	else if (acid_amount > max_acid * 0.5)
 		perc_index = 2
-	else if(acid_amount > max_acid * 0.2)
+	else if (acid_amount > max_acid * 0.2)
 		perc_index = 1
 
 	if(perc_index && bound_runner.stat != DEAD)

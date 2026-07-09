@@ -40,19 +40,69 @@
 /area/atlan/station/admin)
 "aj" = (
 /obj/effect/decal/floor_symbol/upp/westface/northwest,
+/obj/effect/decal/cleanable/dirt/alt_dirt,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/admin)
 "ak" = (
 /obj/effect/landmark/survivor_spawner/atlan_responder_UPP/specialist,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/floor3/east,
+/area/atlan/station/admin)
+"al" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/turf/open/floor/strata,
+/area/atlan/station/admin)
+"am" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/floor3/east,
+/area/atlan/station/admin)
+"an" = (
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/turf/open/floor/strata/floor3/east,
+/area/atlan/station/admin)
+"ao" = (
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/turf/open/floor/strata,
 /area/atlan/station/admin)
 "ap" = (
 /turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/single_dorms)
+"aq" = (
+/obj/structure/platform/metal/strata/west,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata,
+/area/atlan/station/admin)
+"ar" = (
+/obj/item/storage/toolbox/mechanical{
+	pixel_y = 6
+	},
+/obj/item/stack/rods,
+/turf/open/floor/plating,
+/area/atlan/station/admin)
+"as" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating,
+/area/atlan/station/admin)
+"at" = (
+/obj/item/stack/cable_coil{
+	amount = 2
+	},
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/turf/open/floor/plating,
+/area/atlan/station/admin)
 "au" = (
 /obj/effect/decal/cleanable/blood/xtracks,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/walkway)
+"av" = (
+/obj/structure/platform/metal/strata/east,
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/turf/open/floor/strata,
+/area/atlan/station/admin)
+"aw" = (
+/turf/closed/wall/upp_ship/grey,
+/area/atlan/station/admin)
 "ax" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata,
@@ -423,6 +473,7 @@
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_2"
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/blue1,
 /area/atlan/station/admin)
 "iv" = (
@@ -534,6 +585,7 @@
 	icon_state = "trash_7";
 	pixel_y = 12
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/blue1,
 /area/atlan/station/admin)
 "kW" = (
@@ -647,6 +699,7 @@
 	pixel_x = 5;
 	layer = 4
 	},
+/obj/effect/decal/cleanable/dirt/alt_dirt,
 /turf/open/floor/plating,
 /area/atlan/station/admin)
 "mT" = (
@@ -723,6 +776,7 @@
 /obj/effect/decal/cleanable/blood/gibs/xeno/body,
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/effect/spawner/gibspawner/xeno,
+/obj/effect/decal/cleanable/dirt/alt_dirt,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/admin)
 "oA" = (
@@ -743,6 +797,7 @@
 "oY" = (
 /obj/structure/platform/metal/strata/west,
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/admin)
 "oZ" = (
@@ -918,6 +973,7 @@
 /turf/open/floor/strata,
 /area/atlan/station/admin)
 "rf" = (
+/obj/effect/decal/cleanable/dirt/alt_dirt,
 /turf/open/floor/plating,
 /area/atlan/station/admin)
 "rh" = (
@@ -1339,6 +1395,7 @@
 /area/atlan/station/admin)
 "xP" = (
 /obj/item/tool/pen/red,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/admin)
 "xV" = (
@@ -1798,6 +1855,7 @@
 	pixel_y = 15;
 	layer = 2.6
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/blue1,
 /area/atlan/station/admin)
 "EO" = (
@@ -1940,6 +1998,7 @@
 /obj/structure/window/reinforced{
 	color = "#969696"
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/blue1,
 /area/atlan/station/admin)
 "HK" = (
@@ -1956,6 +2015,7 @@
 "HZ" = (
 /obj/structure/machinery/power/apc/power/east,
 /obj/effect/decal/hybrisa/trash,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/blue1,
 /area/atlan/station/admin)
 "Ia" = (
@@ -2131,6 +2191,7 @@
 /obj/structure/machinery/light/double/blue{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata,
 /area/atlan/station/admin)
 "MO" = (
@@ -2150,6 +2211,7 @@
 /obj/effect/spawner/gibspawner/human,
 /obj/effect/decal/cleanable/blood,
 /obj/item/weapon/gun/rifle/type71/carbine,
+/obj/effect/decal/cleanable/dirt/alt_dirt,
 /turf/open/floor/strata,
 /area/atlan/station/walkway)
 "Nt" = (
@@ -2671,6 +2733,7 @@
 /obj/structure/sign/calendar/upp{
 	pixel_y = 29
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/blue1,
 /area/atlan/station/admin)
 "WG" = (
@@ -6290,7 +6353,7 @@ kv
 Yb
 Yb
 AR
-jd
+ao
 Tj
 QX
 mv
@@ -6676,7 +6739,7 @@ kv
 "}
 (40,1,1) = {"
 Ao
-Ao
+av
 Ao
 Ao
 Qv
@@ -6871,7 +6934,7 @@ kv
 (42,1,1) = {"
 QE
 Fp
-rT
+zT
 vb
 OX
 iH
@@ -7169,7 +7232,7 @@ DB
 AN
 bN
 yY
-Qs
+am
 rT
 Sy
 Kv
@@ -7265,9 +7328,9 @@ yR
 ai
 NY
 ok
-Qs
-Qs
-rT
+an
+am
+zT
 HC
 Kv
 ef
@@ -7357,14 +7420,14 @@ kv
 lm
 WC
 ak
-Qs
+am
 Sg
 Qs
 xP
 Qs
 Rh
 WL
-rT
+zT
 pV
 Kv
 ef
@@ -7474,7 +7537,7 @@ hE
 nb
 hE
 Cz
-hE
+Uk
 aP
 WG
 hE
@@ -7649,7 +7712,7 @@ Af
 bC
 cL
 ge
-CX
+aq
 nZ
 CX
 xM
@@ -7753,7 +7816,7 @@ kL
 jd
 qU
 jd
-jd
+ax
 ef
 rT
 bx
@@ -7846,7 +7909,7 @@ vv
 Nt
 yw
 EM
-jd
+ao
 rT
 Bm
 ae
@@ -8239,7 +8302,7 @@ Il
 QX
 jF
 ad
-ab
+al
 Qs
 xV
 kv
@@ -8325,10 +8388,10 @@ kv
 "}
 (57,1,1) = {"
 kv
-kv
-kv
-kv
-kv
+aw
+as
+ar
+QX
 ck
 QX
 UA
@@ -8422,10 +8485,10 @@ kv
 "}
 (58,1,1) = {"
 kv
-kv
-kv
-kv
-kv
+aw
+at
+as
+QX
 lm
 lm
 lm

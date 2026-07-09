@@ -66,12 +66,12 @@
 		praetorian.add_xeno_shield(800, XENO_SHIELD_SOURCE_VANGUARD_PRAE, /datum/xeno_shield/vanguard)
 	else
 		var/datum/xeno_shield/vanguard/new_shield = praetorian.add_xeno_shield(800, XENO_SHIELD_SOURCE_VANGUARD_PRAE, /datum/xeno_shield/vanguard)
-		praetorian.explosivearmor_modifier += 1.5*XENO_EXPOSIVEARMOR_MOD_VERY_LARGE
-		praetorian.recalculate_armor()
+		bound_xeno.explosivearmor_modifier += 1.5*XENO_EXPOSIVEARMOR_MOD_VERY_LARGE
+		bound_xeno.recalculate_armor()
 		new_shield.explosive_armor_amount = 1.5*XENO_EXPOSIVEARMOR_MOD_VERY_LARGE
 		to_chat(praetorian, SPAN_XENOHIGHDANGER("We feel our defensive shell regenerate! It will block one hit!"))
 
-	var/datum/action/xeno_action/activable/cleave/caction = get_action(praetorian, /datum/action/xeno_action/activable/cleave)
+	var/datum/action/xeno_action/activable/cleave/caction = get_action(bound_xeno, /datum/action/xeno_action/activable/cleave)
 	if(istype(caction))
 		caction.buffed = TRUE
 
@@ -92,6 +92,7 @@
 	if (!check_and_use_plasma_owner())
 		return
 
+	//X = xeno user, A = target atom
 	var/list/turf/target_turfs = get_line(pierce_user, targetted_atom, include_start_atom = FALSE)
 	var/length_of_line = LAZYLEN(target_turfs)
 	if(length_of_line > 3)
@@ -159,8 +160,6 @@
 	apply_cooldown()
 	return ..()
 
-
-
 /datum/action/xeno_action/activable/pounce/prae_dash/use_ability(atom/A)
 	if(!activated_once && !action_cooldown_check() || owner.throwing)
 		return
@@ -221,8 +220,6 @@
 		var/datum/behavior_delegate/praetorian_vanguard/behavior = dash_user.behavior_delegate
 		if (istype(behavior))
 			behavior.regen_shield()
-
-
 
 /datum/action/xeno_action/activable/cleave/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/cleave_user = owner

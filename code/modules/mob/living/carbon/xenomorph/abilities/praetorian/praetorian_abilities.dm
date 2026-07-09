@@ -81,7 +81,7 @@
 	if (!istype(X))
 		return
 
-	if (!X.check_state(1))
+	if(!X.check_state(1))
 		return
 
 	var/datum/action/xeno_action/activable/cleave/cAction = get_action(X, /datum/action/xeno_action/activable/cleave)
@@ -252,7 +252,6 @@
 	var/prime_delay = 1 SECONDS
 
 /datum/action/xeno_action/activable/prae_acid_ball/use_ability(atom/target)
-	var/mob/living/carbon/xenomorph/acidball_user = owner
 	if (!target)
 		return
 
@@ -264,7 +263,7 @@
 		return
 	var/turf/current_turf = get_turf(acidball_user)
 
-	if(!current_turf)
+	if (!current_turf)
 		return
 
 	if (!do_after(acidball_user, activation_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
@@ -281,7 +280,7 @@
 	var/obj/item/explosive/grenade/xeno_acid_grenade/grenade = new /obj/item/explosive/grenade/xeno_acid_grenade
 	grenade.cause_data = create_cause_data(initial(acidball_user.caste_type), acidball_user)
 	grenade.forceMove(get_turf(acidball_user))
-	grenade.throw_atom(target, 5, SPEED_SLOW, acidball_user, TRUE, NORMAL_LAUNCH)
+	grenade.throw_atom(target, 5, SPEED_SLOW, acidball_user, TRUE)
 	addtimer(CALLBACK(grenade, TYPE_PROC_REF(/obj/item/explosive, prime)), prime_delay)
 
 	return ..()

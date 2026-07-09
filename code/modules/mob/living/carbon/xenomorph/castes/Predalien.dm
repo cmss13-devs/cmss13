@@ -154,7 +154,7 @@ You must still listen to the queen.
 	. = list()
 	. += "Kills: [kills]/[max_kills]"
 
-/datum/behavior_delegate/predalien_base/on_kill_mob(mob/target_mob)
+/datum/behavior_delegate/predalien_base/on_kill_mob(mob/M)
 	. = ..()
 
 	kills = min(kills + 1, max_kills)

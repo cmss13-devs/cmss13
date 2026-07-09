@@ -785,6 +785,12 @@
 	},
 /turf/open/floor/plating/kutjevo,
 /area/space)
+"en" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_5"
+	},
+/turf/open/floor/prison,
+/area/space)
 "es" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -822,6 +828,13 @@
 "ey" = (
 /turf/open/floor/prison/blue/north,
 /area/space)
+"eK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/prison/floor_plate,
+/area/space)
 "eQ" = (
 /turf/open/floor/prison/floor_marked,
 /area/space)
@@ -857,6 +870,10 @@
 	pixel_y = -1
 	},
 /turf/open/floor/shiva/red,
+/area/space)
+"fG" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/blue,
 /area/space)
 "fH" = (
 /turf/open/floor/shiva/radiator_tile,
@@ -947,6 +964,21 @@
 	},
 /turf/open/floor/strata,
 /area/space)
+"hx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/prison/floor_plate,
+/area/space)
+"hA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/empty/secure,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 60
+	},
+/turf/open/floor/prison/blue/west,
+/area/space)
 "hH" = (
 /obj/structure/machinery/big_computers/messaging_server/brown,
 /obj/structure/prop/hybrisa/misc/machinery/screens/multimonitorsmall_off{
@@ -1012,6 +1044,14 @@
 /area/space)
 "iD" = (
 /turf/open/auto_turf/ice/layer2,
+/area/space)
+"iE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/prison/blue/north,
 /area/space)
 "iM" = (
 /obj/structure/machinery/cryopod/joe/seegson/alt{
@@ -1208,6 +1248,10 @@
 /area/space)
 "mj" = (
 /turf/open_space,
+/area/space)
+"mr" = (
+/obj/structure/machinery/light,
+/turf/open/floor/prison/blue/northwest,
 /area/space)
 "mw" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
@@ -1521,6 +1565,14 @@
 "sh" = (
 /turf/open/floor/darkblue2/northwest,
 /area/space)
+"sj" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3";
+	pixel_y = 12
+	},
+/obj/structure/machinery/light,
+/turf/open/floor/prison/blue/northeast,
+/area/space)
 "sp" = (
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/north,
 /area/space)
@@ -1533,6 +1585,12 @@
 "sN" = (
 /obj/structure/monorail,
 /turf/open/floor/corsat,
+/area/space)
+"sR" = (
+/obj/item/stack/sheet/cardboard{
+	layer = 1
+	},
+/turf/open/floor/prison/blue/east,
 /area/space)
 "sU" = (
 /obj/structure/platform/metal/almayer/east,
@@ -1554,6 +1612,13 @@
 "tt" = (
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/northeast,
 /area/space)
+"tD" = (
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/prison/blue/west,
+/area/space)
 "tI" = (
 /turf/closed/shuttle/dropship_wy/StarGlider{
 	icon_state = "82"
@@ -1566,9 +1631,7 @@
 /turf/open/floor/plating,
 /area/space)
 "tM" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#98a3ab"
-	},
+/obj/structure/machinery/photocopier,
 /turf/open/floor/prison,
 /area/space)
 "tP" = (
@@ -1593,14 +1656,23 @@
 "tX" = (
 /turf/open/floor/shiva/red/northwest,
 /area/space)
+"uj" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/floor_plate,
+/area/space)
 "uo" = (
 /obj/structure/machinery/big_computers/computerbrown/computer4,
+/obj/structure/sign/poster/blacklight{
+	layer = 3.1;
+	pixel_y = 32
+	},
 /turf/open/floor/prison,
 /area/space)
 "ur" = (
 /turf/open/floor/prison/blue/northeast,
 /area/space)
 "ux" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/blue/southeast,
 /area/space)
 "uC" = (
@@ -2037,6 +2109,14 @@
 "AS" = (
 /turf/open/floor/prison/green/northwest,
 /area/space)
+"Bf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/prison,
+/area/space)
 "Bp" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -2064,6 +2144,10 @@
 	layer = 2.5
 	},
 /turf/closed/wall/hybrisa/colony,
+/area/space)
+"BP" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/blue/north,
 /area/space)
 "BS" = (
 /obj/structure/machinery/big_computers/messaging_server/black{
@@ -2099,6 +2183,12 @@
 	},
 /obj/structure/prop/hybrisa/fakeplatforms/platform3,
 /turf/open/floor/plating,
+/area/space)
+"CB" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/prison/floor_plate,
 /area/space)
 "CD" = (
 /turf/open/shuttle/escapepod/floor3/north,
@@ -2322,6 +2412,11 @@
 /area/space)
 "GQ" = (
 /obj/effect/landmark/start/working_joe/colony,
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 4;
+	pixel_x = 2
+	},
 /turf/open/floor/prison/cell_stripe/west,
 /area/space)
 "GS" = (
@@ -2507,6 +2602,9 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
+/obj/structure/machinery/computer/cameras{
+	dir = 8
+	},
 /turf/open/floor/prison,
 /area/space)
 "Ku" = (
@@ -2524,12 +2622,22 @@
 	},
 /turf/open/floor/plating,
 /area/space)
+"KC" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/turf/open/floor/prison/blue,
+/area/space)
 "KL" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
 /obj/structure/window/reinforced{
 	dir = 8
+	},
+/obj/structure/machinery/computer/communications/simple{
+	dir = 4;
+	pixel_y = -5
 	},
 /turf/open/floor/prison,
 /area/space)
@@ -2571,6 +2679,20 @@
 "Lv" = (
 /turf/open/floor/prison/green/northeast,
 /area/space)
+"Lx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 20
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = 8;
+	pixel_y = 20
+	},
+/turf/open/floor/prison/blue/east,
+/area/space)
 "Ly" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -2609,6 +2731,15 @@
 	},
 /turf/open/floor/prison,
 /area/space)
+"LW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_7";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/floor/prison/blue,
+/area/space)
 "LY" = (
 /turf/open/floor/shiva/yellow/southwest,
 /area/space)
@@ -2639,7 +2770,11 @@
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/space)
 "ME" = (
-/turf/open/antre/plating/alt,
+/obj/item/paper/crumpled{
+	pixel_x = 10;
+	pixel_y = -1
+	},
+/turf/open/floor/prison/floor_plate,
 /area/space)
 "ML" = (
 /obj/structure/stairs/multiz/up{
@@ -2703,6 +2838,10 @@
 /area/space)
 "NW" = (
 /obj/effect/landmark/start/working_joe/colony,
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 8
+	},
 /turf/open/floor/prison/cell_stripe/east,
 /area/space)
 "NY" = (
@@ -2714,6 +2853,10 @@
 	},
 /obj/structure/window/reinforced{
 	dir = 8
+	},
+/obj/structure/machinery/computer/communications/simple{
+	dir = 4;
+	pixel_y = 5
 	},
 /turf/open/floor/prison/blue,
 /area/space)
@@ -2873,6 +3016,16 @@
 /obj/structure/shuttle/part/dropship_wy/right_outer_wing_connector,
 /turf/open/floor/plating,
 /area/space)
+"Rv" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/structure/machinery/faxmachine,
+/obj/item/paper{
+	pixel_x = -5
+	},
+/turf/open/floor/prison,
+/area/space)
 "RF" = (
 /obj/structure/pipes/standard/simple/hidden/dark,
 /turf/open/floor/hybrisa/metal/grated,
@@ -2925,6 +3078,9 @@
 /area/space)
 "Tj" = (
 /obj/structure/machinery/big_computers/computerbrown/computer3,
+/obj/structure/sign/poster/corporate{
+	pixel_y = 32
+	},
 /turf/open/floor/prison,
 /area/space)
 "Tl" = (
@@ -2992,6 +3148,14 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
+/obj/item/paper_bin{
+	pixel_x = 5;
+	pixel_y = 7;
+	layer = 3.01
+	},
+/obj/item/tool/pen/blue/clicky{
+	pixel_x = -8
+	},
 /turf/open/floor/prison/blue,
 /area/space)
 "UO" = (
@@ -3002,6 +3166,14 @@
 /area/space)
 "Ve" = (
 /turf/open/floor/shiva/floor3,
+/area/space)
+"Vj" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_6";
+	pixel_x = -8;
+	pixel_y = 29
+	},
+/turf/open/floor/prison/floor_plate,
 /area/space)
 "Vm" = (
 /turf/open/floor/shiva/red/east,
@@ -3103,6 +3275,7 @@
 /area/space)
 "Xv" = (
 /obj/structure/bed/chair/office/dark,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/space)
 "Xz" = (
@@ -3155,7 +3328,8 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
-/turf/open/floor/prison/floor_plate,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/blue/north,
 /area/space)
 "Yn" = (
 /obj/structure/stairs/multiz/down{
@@ -3224,6 +3398,12 @@
 	pixel_y = 1
 	},
 /turf/open/floor/almayer/plating/northeast,
+/area/space)
+"ZR" = (
+/obj/item/paper/crumpled{
+	pixel_y = -3
+	},
+/turf/open/floor/prison/blue/north,
 /area/space)
 "ZU" = (
 /obj/effect/decal/warning_stripes{
@@ -81446,13 +81626,13 @@ bG
 oi
 oi
 bd
-Yh
+KC
+CB
 aZ
 aZ
 aZ
-aZ
-aZ
-lI
+eK
+iE
 bd
 oi
 Nm
@@ -81648,13 +81828,13 @@ sa
 oi
 oi
 dm
-lI
+fG
 Fq
 Fq
 Fq
 Fq
 Fq
-lI
+BP
 dm
 oi
 oi
@@ -81850,13 +82030,13 @@ OW
 bz
 bu
 bd
-lI
+fG
+uj
 Fq
 Fq
 Fq
-Fq
-Fq
-lI
+Vj
+BP
 bd
 oi
 oi
@@ -82053,11 +82233,11 @@ Nm
 Nm
 tb
 tb
-As
-As
+hA
+tD
 Gs
 Fq
-xc
+mr
 tb
 tb
 Dy
@@ -82662,7 +82842,7 @@ ea
 qE
 KL
 Oa
-ME
+lI
 ey
 eb
 tb
@@ -82679,12 +82859,12 @@ oi
 qu
 Nm
 Nm
-df
-df
-df
-df
-df
-df
+MW
+MW
+MW
+MW
+MW
+MW
 Nm
 Nm
 Nm
@@ -82863,17 +83043,17 @@ Nm
 ea
 uo
 Xv
-rP
+LW
 Fq
-ey
-tM
+ZR
+Rv
 tb
 bh
 bh
 bh
 Nm
 Nm
-Nm
+bh
 bh
 OW
 oi
@@ -82881,12 +83061,12 @@ oi
 oi
 Tc
 Nm
-df
+MW
 ng
 ng
 ng
 ng
-df
+MW
 Nm
 Nm
 Nm
@@ -83063,11 +83243,11 @@ bA
 Nm
 tb
 tb
-IK
-IK
+Lx
+sR
 ux
 Fq
-ur
+sj
 tb
 tb
 be
@@ -83076,23 +83256,23 @@ bh
 Nm
 Nm
 Nm
-df
-df
+MW
+MW
 cv
 bi
 cv
-df
-df
-df
+MW
+MW
+MW
 ex
 ex
 ex
 ex
-df
-df
-df
-df
-df
+MW
+MW
+MW
+MW
+MW
 Nm
 Nm
 bh
@@ -83264,21 +83444,21 @@ OW
 bC
 bv
 bd
+fG
 lI
 Fq
 Fq
 Fq
-Fq
-Fq
 lI
+BP
 bd
 oi
 oi
 qu
+bh
 Nm
-Nm
-df
-df
+MW
+MW
 Fq
 Fq
 Fq
@@ -83294,7 +83474,7 @@ Fq
 Fq
 Fq
 Fq
-df
+MW
 Nm
 bh
 bh
@@ -83466,20 +83646,20 @@ OW
 oi
 oi
 dm
-lI
+fG
 Fq
 Fq
+en
 Fq
-Fq
-Fq
-lI
+Bf
+BP
 dm
 oi
 oi
 bf
 qu
-df
-df
+MW
+MW
 aF
 aA
 aA
@@ -83496,7 +83676,7 @@ aA
 aA
 aJ
 Fq
-df
+MW
 bh
 bh
 bh
@@ -83668,12 +83848,12 @@ OW
 oi
 oi
 bd
-lI
+fG
+hx
 aZ
 aZ
 aZ
-aZ
-aZ
+hx
 Yh
 bd
 oi
@@ -84081,10 +84261,10 @@ ea
 Nm
 Nm
 Nm
-df
+MW
 cv
 cv
-df
+MW
 Fq
 as
 pO
@@ -84283,7 +84463,7 @@ ea
 Nm
 Nm
 Nm
-df
+MW
 Fq
 Fq
 Fq
@@ -84485,8 +84665,8 @@ Nm
 Nm
 bo
 Nm
-df
-df
+MW
+MW
 Fq
 Fq
 Fq
@@ -84688,7 +84868,7 @@ bh
 bh
 Nm
 Nm
-df
+MW
 Fq
 Fq
 Fq
@@ -84708,7 +84888,7 @@ LK
 dX
 an
 Fq
-df
+MW
 Nm
 Nm
 Nm
@@ -84890,7 +85070,7 @@ bh
 MD
 be
 Nm
-df
+MW
 Fq
 Fq
 Fq
@@ -84910,7 +85090,7 @@ mz
 bW
 an
 Fq
-df
+MW
 Nm
 Nm
 Nm
@@ -85112,7 +85292,7 @@ ak
 ak
 Hj
 Fq
-df
+MW
 Nm
 Nm
 bh
@@ -85310,11 +85490,11 @@ Fq
 Fq
 Fq
 Fq
-df
+MW
 cv
 bi
 cv
-df
+MW
 Nm
 bh
 bh
@@ -85496,11 +85676,11 @@ bh
 qn
 Dy
 Dy
-df
-df
-df
-df
-df
+MW
+MW
+MW
+MW
+MW
 Fq
 Fq
 Fq
@@ -85709,8 +85889,8 @@ Fq
 Fq
 Fq
 Fq
-df
-df
+MW
+MW
 Fq
 Fq
 qR
@@ -85910,10 +86090,10 @@ Fq
 Fq
 Fq
 Fq
-df
-df
-df
-df
+MW
+bc
+bc
+MW
 Fq
 qR
 cv
@@ -86106,19 +86286,19 @@ oi
 oi
 AR
 Dy
-df
-df
-df
+MW
+MW
+MW
 Fq
 Fq
 Mu
-df
-df
-df
-df
-df
-df
-df
+MW
+bc
+bc
+MW
+MW
+MW
+MW
 Fq
 oi
 oi
@@ -86310,11 +86490,11 @@ bl
 bh
 Nm
 Nm
-df
+MW
 Fq
 Mu
 Fq
-df
+MW
 Nm
 Nm
 Nm
@@ -86516,7 +86696,7 @@ Mu
 Mu
 Mu
 Mu
-df
+MW
 Nm
 Nm
 Nm
@@ -192417,9 +192597,9 @@ St
 St
 St
 St
-mj
-mj
-mj
+Nm
+Nm
+Nm
 Nm
 Nm
 Nm
@@ -192612,16 +192792,16 @@ St
 St
 St
 St
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
 Nm
 Nm
 Nm
@@ -192803,8 +192983,8 @@ Nm
 Nm
 Nm
 Nm
-mj
-mj
+Nm
+Nm
 Nm
 Nm
 St
@@ -192813,17 +192993,17 @@ St
 St
 St
 St
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
 Nm
 Nm
 Nm
@@ -192998,33 +193178,33 @@ Nm
 Nm
 Nm
 Nm
-mj
-mj
-mj
-mj
-mj
 Nm
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
 Nm
 Nm
 Nm
@@ -193198,35 +193378,35 @@ Nm
 Nm
 Nm
 Nm
-mj
-mj
-mj
-mj
-mj
-mj
-mj
 Nm
 Nm
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
 Nm
 Nm
 Nm
@@ -193398,38 +193578,38 @@ Nm
 Nm
 Nm
 Nm
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
 Nm
 Nm
 Nm
@@ -193602,37 +193782,37 @@ Nm
 Nm
 Nm
 Nm
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
 Nm
 Nm
 Nm
@@ -193806,35 +193986,35 @@ Nm
 Nm
 Nm
 Nm
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
 Nm
 Nm
 Nm
@@ -194009,33 +194189,33 @@ Nm
 Nm
 Nm
 Nm
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
 Nm
 Nm
 Nm
@@ -194211,33 +194391,33 @@ Nm
 Nm
 Nm
 Nm
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
 Nm
 Nm
 Nm
@@ -194413,33 +194593,33 @@ Nm
 Nm
 Nm
 Nm
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
 Nm
 Nm
 Nm
@@ -194616,32 +194796,32 @@ mj
 mj
 Nm
 mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
 Nm
 Nm
 Nm
@@ -194822,6 +195002,10 @@ mj
 mj
 mj
 mj
+Nm
+Nm
+Nm
+Nm
 mj
 mj
 mj
@@ -194829,21 +195013,17 @@ mj
 mj
 mj
 mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
 Nm
 Nm
 Nm
@@ -195038,14 +195218,14 @@ mj
 mj
 mj
 mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
-mj
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
+Nm
 Nm
 Nm
 Nm
@@ -195244,9 +195424,9 @@ mj
 mj
 mj
 mj
-mj
-mj
-mj
+Nm
+Nm
+Nm
 Nm
 Nm
 Nm
@@ -195447,8 +195627,8 @@ mj
 mj
 mj
 Nm
-mj
-mj
+Nm
+Nm
 Nm
 Nm
 Nm

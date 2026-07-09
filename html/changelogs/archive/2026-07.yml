@@ -43,3 +43,6 @@
   - rscadd: Adds Ticket Panel
   Git-Nivrak:
   - bugfix: Fixes acid barrage stacking acid spray dots on barricades
+2026-07-09:
+  ori-disillusion-mirnov:
+  - bugfix: colony dzho spawn as colony dzho

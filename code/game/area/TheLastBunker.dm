@@ -21,6 +21,7 @@
 	icon_state = "unknown"
 	ceiling = CEILING_NONE
 	soundscape_playlist = AMBIENCE_LASTBUNKER
+	temperature = ICE_COLONY_TEMPERATURE
 
 /area/last_bunker/oob
 	name = "Out Of Bounds"
@@ -41,6 +42,7 @@
 	is_landing_zone = TRUE
 	minimap_color = MINIMAP_AREA_LZ
 	linked_lz = DROPSHIP_LZ1
+	base_lighting_alpha = 100
 
 /area/last_bunker/landing_zone_2
 	name = "Surface Exterior - South - Landing Zone Two"
@@ -48,6 +50,7 @@
 	is_landing_zone = TRUE
 	minimap_color = MINIMAP_AREA_LZ
 	linked_lz = DROPSHIP_LZ2
+	base_lighting_alpha = 100
 
 //Exterior Areas
 

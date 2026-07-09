@@ -1,0 +1,63 @@
+{
+    "map_name": "The Laser Bunker",
+    "map_path": "map_files/The_Last_Bunker",
+    "map_file": "The_Last_Bunker.dmm",
+    "webmap_url": "LV624",
+    "survivor_types": [
+        "/datum/equipment_preset/survivor/goon",
+        "/datum/equipment_preset/survivor/hybrisa/kelland_miner",
+        "/datum/equipment_preset/survivor/civilian",
+        "/datum/equipment_preset/survivor/civilian_unique",
+        "/datum/equipment_preset/survivor/scientist",
+        "/datum/equipment_preset/survivor/doctor",
+        "/datum/equipment_preset/survivor/chef",
+        "/datum/equipment_preset/survivor/engineer",
+        "/datum/equipment_preset/survivor/corporate",
+        "/datum/equipment_preset/survivor/trucker"
+    ],
+    "CO_insert_survivor_types": [
+        "/datum/equipment_preset/survivor/clf/coordinator"
+    ],
+    "map_item_type": "/obj/item/map/the_last_bunker_map",
+    "announce_text": "###SHIPNAME###, this is Third Fleet Command. For this operation, you will be working alongside other elements of the Third Regiment on a search and recovery operation. The ongoing anti-corporate riots on Hybrisa Prospera have pushed several VIPs to ground, most of who withdrew to several off-world bunkers, furthermore, intelligence suggests one or more of the VIPs have stolen an artefact from the planet whilst in flight.\n\nYour objective is to locate the VIPs, ascertain their current status. and if foul play is suspected, you are to take the VIP in to custody and secure any notable assets.\n\nYour vessel is closest to Bunker K31 on LV-843. The other three bunkers are already being scoured by the other Battalions, your's is the Last Bunker. Good luck Falling Falcons.",
+    "monkey_types": [
+        "farwa",
+        "neaera",
+        "stok"
+    ],
+    "environment_traits": { "Fog": true },
+    "traits": [
+        {
+            "Ground": true,
+            "Up": 1
+        },
+        {
+            "Ground": true,
+            "Up": 1,
+            "Down": -1
+        },
+        {
+            "Ground": true,
+            "Up": 1,
+            "Down": -1
+        },
+        {
+            "Ground": true,
+            "Down": -1
+        }
+    ],
+    "nightmare_path": "maps/Nightmare/maps/The_Last_Bunker/",
+    "xvx_hives": {
+        "xeno_hive_alpha": 0,
+        "xeno_hive_bravo": 0,
+        "xeno_hive_charlie": 70
+    },
+    "camouflage": "snow",
+    "gamemodes": [
+        "Distress Signal",
+        "Hunter Games",
+        "Hive Wars",
+        "Faction Clash",
+        "Infection"
+    ]
+}

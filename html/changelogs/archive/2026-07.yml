@@ -46,3 +46,6 @@
 2026-07-09:
   ori-disillusion-mirnov:
   - bugfix: colony dzho spawn as colony dzho
+2026-07-10:
+  fira:
+  - admin: Removed some doubled up logging.

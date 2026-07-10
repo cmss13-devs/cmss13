@@ -43,15 +43,15 @@
 	name = "Surface Exterior - East - Landing Zone One"
 	icon_state = "shuttlered2"
 	is_landing_zone = TRUE
-	minimap_color = MINIMAP_AREA_LZ
+	minimap_color = MINIMAP_ICE
 	linked_lz = DROPSHIP_LZ1
-	base_lighting_alpha = 100
+	base_lighting_alpha = 50
 
 /area/last_bunker/landing_zone_2
 	name = "Surface Exterior - South - Landing Zone Two"
 	icon_state = "shuttlered2"
 	is_landing_zone = TRUE
-	minimap_color = MINIMAP_AREA_LZ
+	minimap_color = MINIMAP_ICE
 	linked_lz = DROPSHIP_LZ2
 	base_lighting_alpha = 50
 
@@ -65,25 +65,34 @@
 	minimap_color = MINIMAP_SNOW
 	base_lighting_alpha = 50
 
+/area/last_bunker/outdoors/surface_exterior/center
+	icon_state = "central"
+	name = "Surface Exterior - South Bunker Exterior"
+
 /area/last_bunker/outdoors/surface_exterior/south
 	icon_state = "central"
 	name = "Surface Exterior - South"
+	linked_lz = DROPSHIP_LZ1
 
 /area/last_bunker/outdoors/surface_exterior/south_west
 	icon_state = "southwest"
 	name = "Surface Exterior - Southwest"
+	linked_lz = DROPSHIP_LZ1
 
 /area/last_bunker/outdoors/surface_exterior/south_east
 	icon_state = "southeast"
 	name = "Surface Exterior - Southeast"
+	linked_lz = DROPSHIP_LZ2
 
 /area/last_bunker/outdoors/surface_exterior/east
 	icon_state = "east"
 	name = "Surface Exterior - East"
+	linked_lz = DROPSHIP_LZ1
 
 /area/last_bunker/outdoors/surface_exterior/north_east
 	icon_state = "northeast"
 	name = "Surface Exterior - Northeast"
+	linked_lz = DROPSHIP_LZ1
 
 // --
 
@@ -104,6 +113,12 @@
 	icon_state = "central"
 	minimap_color = MINIMAP_SNOW
 	base_lighting_alpha = 20
+
+/area/last_bunker/outdoors/eastern_cavern/no_light
+	name = "Eastern Cavern - Bunker Eastern Exterior"
+	icon_state = "central"
+	minimap_color = MINIMAP_SNOW
+	base_lighting_alpha = 0
 
 //Interior Areas
 

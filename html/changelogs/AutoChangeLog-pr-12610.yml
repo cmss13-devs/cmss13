@@ -1,4 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - admin: "Removed some doubled up logging."

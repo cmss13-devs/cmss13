@@ -27,6 +27,14 @@
 	},
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/cargooffice)
+"aag" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 8;
+	pixel_x = -10;
+	pixel_y = -1
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/station/single_dorms)
 "aah" = (
 /obj/structure/machinery/door/airlock/multi_tile/upp_grey/security/autoname,
 /turf/open/floor/strata/multi_tiles/southeast,
@@ -43,6 +51,12 @@
 /obj/effect/alien/resin/sticky,
 /turf/open/floor/plating,
 /area/atlan/asteroid/exports_west/cas)
+"aak" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 4
+	},
+/turf/open/floor/prison/darkyellowfull2,
+/area/atlan/station/medical)
 "aal" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/sign/safety/outpatient,
@@ -1980,17 +1994,10 @@
 /area/atlan/station/security)
 "agt" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/stack/sheet/metal,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/single_dorms)
 "agu" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/barricade/deployable{
-	damage_state = 2;
-	dir = 4;
-	health = 140;
-	icon_state = "folding_2"
-	},
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/strata,
 /area/atlan/station/single_dorms)
@@ -2332,7 +2339,7 @@
 "ahu" = (
 /obj/structure/closet/firecloset/full,
 /obj/effect/landmark/objective_landmark/far,
-/turf/open/floor/strata/cyan1,
+/turf/open/floor/strata/floor2,
 /area/atlan/station/medical/morgue)
 "ahv" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -4739,7 +4746,7 @@
 /area/atlan/station/security)
 "aox" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/plating/prison,
+/turf/open/floor/strata/red1,
 /area/atlan/station/security)
 "aoy" = (
 /obj/structure/surface/rack{
@@ -8676,18 +8683,6 @@
 	},
 /turf/open/floor/corsat,
 /area/atlan/asteroid/processing_sw_train)
-"aAW" = (
-/obj/structure/stairs/perspective{
-	color = "#6e6e6e";
-	icon_state = "p_stair_sn_full_cap"
-	},
-/obj/structure/machinery/light/double/blue{
-	dir = 8;
-	pixel_x = -10;
-	pixel_y = -1
-	},
-/turf/open/floor/strata/multi_tiles/southeast,
-/area/atlan/station/single_dorms)
 "aAX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/athletic_mixed,
@@ -11834,7 +11829,7 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/item/stack/sheet/plasteel/small_stack,
+/obj/item/stack/sheet/plasteel/med_small_stack,
 /turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/single_dorms)
 "aLu" = (
@@ -13856,7 +13851,7 @@
 /obj/structure/closet/emcloset{
 	dir = 4
 	},
-/turf/open/floor/strata/cyan1,
+/turf/open/floor/strata/floor2,
 /area/atlan/station/medical/morgue)
 "aRU" = (
 /turf/open/floor/strata/orange_edge/west,
@@ -14009,7 +14004,7 @@
 /obj/structure/largecrate/random/mini/small_case/c{
 	pixel_x = 7
 	},
-/turf/open/floor/strata/cyan1,
+/turf/open/floor/strata/floor2,
 /area/atlan/station/medical/morgue)
 "aSv" = (
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall{
@@ -24200,7 +24195,7 @@
 	color = "#98a3ab"
 	},
 /obj/structure/machinery/light/double/blue,
-/turf/open/floor/strata/cyan1,
+/turf/open/floor/strata/floor2,
 /area/atlan/station/medical)
 "hkm" = (
 /obj/effect/decal/cleanable/dirt,
@@ -24535,8 +24530,7 @@
 /turf/open/floor/prison/whitegreenfull,
 /area/atlan/station/botany_storage)
 "hyX" = (
-/obj/item/stack/sheet/metal,
-/obj/item/stack/sheet/metal,
+/obj/item/stack/sheet/metal/med_small_stack,
 /turf/open/floor/strata,
 /area/atlan/station/substation)
 "hze" = (
@@ -31112,7 +31106,7 @@
 /area/atlan/asteroid/processing_sw_train)
 "mrN" = (
 /obj/structure/machinery/disposal,
-/turf/open/floor/strata/cyan1,
+/turf/open/floor/strata/floor2,
 /area/atlan/station/medical)
 "mrP" = (
 /turf/open/floor/strata/multi_tiles/west,
@@ -33006,7 +33000,7 @@
 /area/atlan/asteroid/processing_handling/cas)
 "nNM" = (
 /obj/structure/platform/metal/strata/east,
-/turf/open/floor/strata/cyan1,
+/turf/open/floor/strata/floor2,
 /area/atlan/station/medical)
 "nNQ" = (
 /obj/structure/surface/rack{
@@ -34323,7 +34317,7 @@
 /area/atlan/oob)
 "oJN" = (
 /obj/structure/machinery/vending/snack,
-/turf/open/floor/strata/cyan1,
+/turf/open/floor/strata/floor2,
 /area/atlan/station/medical)
 "oJX" = (
 /obj/structure/machinery/landinglight/delaytwo{
@@ -41434,7 +41428,7 @@
 	pixel_y = 17;
 	pixel_x = -6
 	},
-/turf/open/floor/strata/cyan1,
+/turf/open/floor/strata/floor2,
 /area/atlan/station/medical)
 "tTW" = (
 /obj/effect/decal/warning_stripes{
@@ -43482,7 +43476,7 @@
 	pixel_x = 2;
 	layer = 3.6
 	},
-/turf/open/floor/strata/cyan1,
+/turf/open/floor/strata/floor2,
 /area/atlan/station/medical/morgue)
 "vuw" = (
 /obj/effect/decal/warning_stripes{
@@ -109641,7 +109635,7 @@ vSZ
 bnz
 aca
 atp
-bnz
+hzY
 iEU
 eba
 tlk
@@ -109853,7 +109847,7 @@ aBn
 lzl
 aca
 atp
-bnz
+hzY
 iEU
 aBg
 yld
@@ -109901,7 +109895,7 @@ wLD
 ukV
 kvr
 iIs
-aZl
+aSd
 aHf
 hij
 kvr
@@ -110065,7 +110059,7 @@ aBn
 bnz
 tzL
 atp
-bnz
+hzY
 rZZ
 dme
 hhH
@@ -110277,7 +110271,7 @@ aBn
 bnz
 aca
 atp
-bnz
+hzY
 rZZ
 rCh
 rZZ
@@ -110489,7 +110483,7 @@ abT
 abT
 ace
 atp
-eZp
+aak
 iEU
 bjC
 jLa
@@ -110907,7 +110901,7 @@ aDV
 jFo
 atZ
 abX
-bnz
+hzY
 aBn
 aBn
 aBn
@@ -111755,7 +111749,7 @@ aco
 dsp
 atZ
 abX
-bnz
+hzY
 aBn
 aIb
 aIb
@@ -111790,7 +111784,7 @@ dMD
 rJN
 dMD
 dMD
-blM
+qZc
 blM
 tPr
 aoY
@@ -116443,8 +116437,8 @@ aLz
 aoE
 via
 atJ
-aAW
-kwm
+aWg
+aag
 via
 xob
 via
@@ -117883,7 +117877,7 @@ aZr
 aZr
 aZr
 aSu
-aQK
+aSo
 aIe
 fsN
 vuq
@@ -118096,8 +118090,8 @@ aZr
 aZr
 ahu
 aRT
-aRe
-aRh
+aSo
+aSo
 bzE
 oCj
 oCj
@@ -121339,7 +121333,7 @@ trf
 wRT
 bnc
 xAC
-aVx
+trf
 pnZ
 pnZ
 pnZ

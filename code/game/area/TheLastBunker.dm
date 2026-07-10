@@ -191,7 +191,7 @@
 // --
 
 /area/last_bunker/indoors/sustainment_zone
-	name = "Bunker K31 - Sustainment/Medical Zone"
+	name = "Bunker K31 - Admin/Medical Zone"
 	minimap_color = MINIMAP_AREA_MEDBAY
 	icon_state = "medbay"
 

@@ -173,6 +173,9 @@
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/last_bunker/indoors/comms/tcomms_2_b)
 "aL" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
 /turf/open/floor/prison/cell_stripe,
 /area/last_bunker/indoors/residential_zone)
 "aM" = (
@@ -484,6 +487,7 @@
 /turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/last_bunker/indoors/cavern/north)
 "bS" = (
+/obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/snow/layer1,
 /area/last_bunker/oob)
 "bT" = (
@@ -522,9 +526,11 @@
 /turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/last_bunker/indoors/cavern/north)
 "bY" = (
+/obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/snow/layer4,
 /area/last_bunker/oob)
 "bZ" = (
+/obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/snow/layer3,
 /area/last_bunker/oob)
 "ca" = (
@@ -743,7 +749,8 @@
 /area/last_bunker/indoors/command_zone)
 "da" = (
 /obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic{
-	dir = 1
+	dir = 1;
+	name = "\improper Foodary"
 	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/last_bunker/indoors/sustainment_zone)
@@ -769,6 +776,9 @@
 /obj/effect/decal/cleanable/generic{
 	color = "#5d524b";
 	alpha = 155
+	},
+/obj/structure/barricade/handrail{
+	dir = 1
 	},
 /turf/open/floor/prison/green/northeast,
 /area/last_bunker/indoors/sustainment_zone)
@@ -803,6 +813,9 @@
 	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/last_bunker/indoors/synthetic_zone)
+"do" = (
+/turf/open/auto_turf/shale/layer1/weedable,
+/area/last_bunker/indoors/cavern/north_entrance/zero_light)
 "dp" = (
 /turf/open/floor/shiva/radiator_tile,
 /area/last_bunker/outdoors/surface_exterior/center)
@@ -815,6 +828,12 @@
 	icon_state = "trash_5"
 	},
 /turf/open/floor/prison,
+/area/last_bunker/indoors/sustainment_zone)
+"dt" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/prison/green/east,
 /area/last_bunker/indoors/sustainment_zone)
 "dw" = (
 /turf/open/floor/shiva/multi_tiles,
@@ -863,6 +882,12 @@
 /obj/structure/bed/chair/office/dark,
 /turf/open/floor/darkblue2/west,
 /area/last_bunker/indoors/command_zone)
+"dS" = (
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28
+	},
+/turf/open/floor/prison/green/north,
+/area/last_bunker/indoors/sustainment_zone)
 "dT" = (
 /obj/structure/window/framed/hybrisa/colony/engineering/hull,
 /obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
@@ -881,6 +906,18 @@
 	},
 /turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/last_bunker/indoors/cavern/south_entrance)
+"dW" = (
+/obj/effect/decal/hybrisa/colorable_rug{
+	color = "#483248";
+	pixel_x = 3;
+	name = "rubber mat";
+	pixel_y = 9
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/corsat/spiralplate,
+/area/last_bunker/indoors/residential_zone)
 "dX" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -921,6 +958,20 @@
 /obj/structure/largecrate/random/barrel/medical,
 /turf/open/floor/darkpurple2/north,
 /area/last_bunker/indoors/command_zone)
+"ek" = (
+/obj/effect/decal/hybrisa/grate{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/warningstripes_angled,
+/turf/open/auto_turf/shale/layer1/weedable,
+/area/last_bunker/indoors/cavern/north_entrance/low_light)
+"el" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33
+	},
+/turf/open/floor/strata/blue3/southwest,
+/area/last_bunker/indoors/entry_zone/train)
 "em" = (
 /turf/open/floor/shiva/radiator_tile,
 /area/last_bunker/indoors/entry_zone)
@@ -975,6 +1026,13 @@
 /obj/structure/surface/table/almayer,
 /turf/open/floor/prison/green/southeast,
 /area/last_bunker/indoors/sustainment_zone)
+"eD" = (
+/obj/item/stack/tile/plasteel{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/shale/layer1/weedable,
+/area/last_bunker/outdoors/cavern_external_access/south_west/adj)
 "eE" = (
 /obj/structure/closet/secure_closet/medical2,
 /turf/open/floor/hybrisa/metal/greenmetalfull,
@@ -1017,6 +1075,18 @@
 "eR" = (
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/last_bunker/outdoors/surface_exterior/south_east)
+"eT" = (
+/obj/effect/decal/hybrisa/colorable_rug{
+	color = "#3f5b41";
+	pixel_x = 4;
+	pixel_y = 11;
+	name = "rubber mat"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/corsat/spiralplate,
+/area/last_bunker/indoors/sustainment_zone)
 "eU" = (
 /turf/open/floor/prison/cell_stripe/east,
 /area/last_bunker/indoors/entry_zone/power)
@@ -1028,6 +1098,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/last_bunker/indoors/sustainment_zone)
+"fb" = (
+/obj/effect/decal/hybrisa/colorable_rug{
+	color = "#3d3d3d";
+	pixel_x = 5;
+	name = "rubber mat";
+	pixel_y = 8
+	},
+/turf/open/floor/corsat/officetiles,
+/area/last_bunker/indoors/hanger_zone)
 "fc" = (
 /obj/structure/prop/ice_colony/ground_wire{
 	layer = 4
@@ -1053,6 +1132,13 @@
 "fh" = (
 /turf/open/floor/prison/darkred2/north,
 /area/last_bunker/indoors/entry_zone)
+"fj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/tile/plasteel{
+	pixel_x = 6
+	},
+/turf/open/floor/prison/green/southwest,
+/area/last_bunker/indoors/sustainment_zone)
 "fm" = (
 /obj/effect/hybrisa/misc/fake/pipes/pipe1,
 /obj/effect/hybrisa/misc/fake/wire/blue{
@@ -1068,6 +1154,21 @@
 "fo" = (
 /turf/open/floor/prison/darkyellowcorners2,
 /area/last_bunker/indoors/comms/tcomms_1)
+"fp" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/prison,
+/area/last_bunker/indoors/residential_zone)
+"fr" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname{
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/last_bunker/indoors/residential_zone)
 "fs" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/flora/pottedplant{
@@ -1076,12 +1177,20 @@
 	},
 /turf/open/floor/hybrisa/metal/greenmetalfull,
 /area/last_bunker/indoors/sustainment_zone)
-"fw" = (
-/obj/structure/prop/ice_colony/ground_wire{
-	dir = 8
+"fv" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_6";
+	pixel_x = -8;
+	pixel_y = 12
 	},
-/turf/open/auto_turf/shale/layer1/weedable,
-/area/last_bunker/indoors/cavern/north_entrance/zero_light)
+/turf/open/floor/prison/blue,
+/area/last_bunker/indoors/sustainment_zone)
+"fy" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic{
+	name = "\improper Administration Office"
+	},
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/last_bunker/indoors/sustainment_zone)
 "fB" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/darkgreen2,
@@ -1105,7 +1214,21 @@
 /turf/open/floor/shiva/red,
 /area/last_bunker/indoors/entry_zone/power)
 "fF" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/structure/janitorialcart,
+/obj/item/tool/wet_sign,
+/obj/item/tool/wet_sign,
+/obj/item/tool/wet_sign,
+/obj/item/tool/wet_sign,
+/obj/item/storage/toolbox/mechanical/green{
+	pixel_y = 8
+	},
+/obj/item/clothing/head/beret/jan{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/structure/sign/poster/safety{
+	pixel_y = 32
+	},
 /turf/open/floor/antre/metal/black/northeast,
 /area/last_bunker/indoors/sustainment_zone)
 "fG" = (
@@ -1174,11 +1297,18 @@
 	icon_state = "75"
 	},
 /area/last_bunker/oob)
+"gc" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 1
+	},
+/turf/open/floor/prison/greencorner/east,
+/area/last_bunker/indoors/sustainment_zone)
 "gd" = (
 /obj/structure/machinery/light{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/prison/green/east,
 /area/last_bunker/indoors/sustainment_zone)
 "ge" = (
@@ -1324,6 +1454,12 @@
 	},
 /turf/open/floor/prison/green/west,
 /area/last_bunker/indoors/entry_zone)
+"gW" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_2"
+	},
+/turf/open/floor/hybrisa/carpet/carpetblackdeco,
+/area/last_bunker/indoors/sustainment_zone)
 "gX" = (
 /obj/structure/medical_supply_link/green{
 	pixel_x = 1;
@@ -1359,6 +1495,8 @@
 	color = "#5d524b";
 	alpha = 155
 	},
+/obj/structure/closet,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison/green/east,
 /area/last_bunker/indoors/sustainment_zone)
 "hh" = (
@@ -1385,6 +1523,13 @@
 	},
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/last_bunker/indoors/cavern/west)
+"hn" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28
+	},
+/turf/open/floor/prison/blue/north,
+/area/last_bunker/indoors/sustainment_zone)
 "hp" = (
 /turf/open/floor/darkblue2/southwest,
 /area/last_bunker/indoors/command_zone)
@@ -1413,6 +1558,10 @@
 	},
 /turf/open/floor/darkblue2/north,
 /area/last_bunker/indoors/command_zone)
+"hu" = (
+/obj/item/device/flashlight/lamp/tripod,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/last_bunker/indoors/cavern/north_entrance/low_light)
 "hv" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -1449,6 +1598,15 @@
 "hD" = (
 /turf/open/auto_turf/ice/layer1,
 /area/last_bunker/indoors/cavern/central)
+"hG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/prison/green/east,
+/area/last_bunker/indoors/sustainment_zone)
 "hH" = (
 /obj/structure/machinery/big_computers/messaging_server/brown,
 /obj/structure/prop/hybrisa/misc/machinery/screens/multimonitorsmall_off{
@@ -1457,12 +1615,28 @@
 	},
 /turf/open/floor/prison,
 /area/last_bunker/indoors/synthetic_zone)
+"hI" = (
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_x = -8;
+	pixel_y = 7
+	},
+/obj/item/card/id/guest,
+/obj/item/reagent_container/food/drinks/coffeecup/wy,
+/obj/effect/landmark/objective_landmark/medium,
+/obj/structure/surface/table/almayer{
+	color = "#848484"
+	},
+/turf/open/floor/prison,
+/area/last_bunker/indoors/sustainment_zone)
 "hJ" = (
 /obj/effect/hybrisa/misc/fake/pipes/pipe2{
 	dir = 4
 	},
 /obj/effect/hybrisa/misc/fake/wire/yellow{
 	pixel_x = -1
+	},
+/obj/structure/prop/hybrisa/misc/redmeter{
+	pixel_y = 32
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/last_bunker/indoors/sustainment_zone)
@@ -1474,12 +1648,21 @@
 	},
 /turf/open/floor/prison/green/east,
 /area/last_bunker/indoors/entry_zone)
+"hL" = (
+/obj/structure/surface/table/almayer{
+	color = "#848484"
+	},
+/turf/open/floor/shiva/floor3,
+/area/last_bunker/indoors/sustainment_zone)
 "hM" = (
 /obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/floor/plating,
 /area/last_bunker/landing_zone_2)
+"hN" = (
+/turf/open/floor/strata/blue4,
+/area/last_bunker/indoors/entry_zone/train)
 "hQ" = (
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/darkred2/southwest,
@@ -1514,6 +1697,12 @@
 "ie" = (
 /turf/open/auto_turf/snow/layer1,
 /area/last_bunker/outdoors/surface_exterior/north_east)
+"if" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/last_bunker/indoors/sustainment_zone)
 "ig" = (
 /turf/closed/wall/hybrisa/colony/engineering/reinforced/hull,
 /area/last_bunker/oob/electrical_tunnel)
@@ -1525,12 +1714,9 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/last_bunker/landing_zone_1)
-"im" = (
-/obj/structure/prop/ice_colony/ground_wire{
-	dir = 4
-	},
-/turf/open/auto_turf/shale/layer1/weedable,
-/area/last_bunker/indoors/cavern/north_entrance/low_light)
+"in" = (
+/turf/open/floor/strata/blue3/southwest,
+/area/last_bunker/indoors/entry_zone/train)
 "ip" = (
 /turf/closed/wall/hybrisa/colony/reinforced,
 /area/last_bunker/oob)
@@ -1557,11 +1743,17 @@
 "ix" = (
 /turf/open/floor/darkgreen2/west,
 /area/last_bunker/indoors/command_zone)
+"iy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt,
+/turf/open/floor/prison/green/west,
+/area/last_bunker/indoors/sustainment_zone)
 "iz" = (
 /obj/item/prop/alien/hugger,
 /turf/open/floor/dark,
 /area/last_bunker/indoors/command_zone)
 "iD" = (
+/obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/ice/layer2,
 /area/last_bunker/oob)
 "iE" = (
@@ -1582,6 +1774,12 @@
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
+/area/last_bunker/indoors/sustainment_zone)
+"iJ" = (
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/turf/open/floor/prison/green/east,
 /area/last_bunker/indoors/sustainment_zone)
 "iL" = (
 /turf/closed/wall/wood,
@@ -1616,9 +1814,6 @@
 	},
 /turf/open/floor/prison/greencorner/north,
 /area/last_bunker/indoors/sustainment_zone)
-"iW" = (
-/turf/open/auto_turf/hybrisa_auto_turf/layer1,
-/area/last_bunker/indoors/cavern/north_entrance/zero_light)
 "iY" = (
 /obj/structure/stairs/multiz/down{
 	layer = 1
@@ -1656,6 +1851,12 @@
 "jm" = (
 /turf/open/floor/prison/floor_marked,
 /area/last_bunker/indoors/comms/tcomms_2_b)
+"jo" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 5
+	},
+/turf/open/floor/prison/green,
+/area/last_bunker/indoors/sustainment_zone)
 "jq" = (
 /obj/structure/barricade/handrail{
 	dir = 4;
@@ -1667,7 +1868,11 @@
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/last_bunker/indoors/cavern/west)
 "jt" = (
-/turf/open/floor/plating/platingdmg2,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/prison/blue/southwest,
 /area/last_bunker/indoors/sustainment_zone)
 "jv" = (
 /obj/structure/barricade/handrail/no_vault,
@@ -1691,6 +1896,13 @@
 /obj/effect/hybrisa/misc/fake/pipes/pipe1,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/last_bunker/indoors/sustainment_zone)
+"jC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/turf/open/floor/strata/cyan3/northeast,
+/area/last_bunker/indoors/entry_zone/train)
 "jD" = (
 /turf/open/floor/prison/greencorner,
 /area/last_bunker/indoors/sustainment_zone)
@@ -1698,6 +1910,12 @@
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/darkred2/northeast,
 /area/last_bunker/indoors/command_zone)
+"jF" = (
+/obj/effect/decal/strata_decals/grime/grime3{
+	dir = 8
+	},
+/turf/open/floor/prison/floor_plate,
+/area/last_bunker/indoors/sustainment_zone)
 "jG" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -1751,6 +1969,12 @@
 /obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/prison/darkyellow2/north,
 /area/last_bunker/indoors/comms/tcomms_2_b)
+"jT" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 1
+	},
+/turf/open/floor/prison,
+/area/last_bunker/indoors/sustainment_zone)
 "jV" = (
 /turf/open/floor/corsat/spiralplate,
 /area/last_bunker/indoors/command_zone)
@@ -1765,6 +1989,19 @@
 	},
 /turf/open/floor/strata,
 /area/last_bunker/oob/train)
+"kc" = (
+/obj/structure/surface/table/almayer{
+	color = "#848484"
+	},
+/obj/structure/machinery/faxmachine{
+	pixel_y = 5
+	},
+/obj/item/paper,
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 30
+	},
+/turf/open/floor/prison/blue/northeast,
+/area/last_bunker/indoors/sustainment_zone)
 "ke" = (
 /obj/structure/bed/chair{
 	dir = 8;
@@ -1808,6 +2045,26 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/blue/east,
 /area/last_bunker/indoors/sustainment_zone)
+"kt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/filingcabinet{
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/obj/structure/filingcabinet{
+	pixel_x = 8;
+	pixel_y = 4
+	},
+/obj/effect/landmark/objective_landmark/far,
+/obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitorsmall_on{
+	light_color = "#00f4ff";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_y = 32
+	},
+/turf/open/floor/prison/blue/north,
+/area/last_bunker/indoors/sustainment_zone)
 "ku" = (
 /turf/open/floor/prison,
 /area/last_bunker/indoors/entry_zone)
@@ -1842,6 +2099,15 @@
 /obj/effect/hybrisa/misc/fake/pipes/pipe1,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/last_bunker/indoors/sustainment_zone)
+"ky" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/implantcase/loyalty{
+	pixel_x = -1;
+	pixel_y = 7
+	},
+/obj/structure/machinery/photocopier/wyphotocopier,
+/turf/open/floor/prison/floor_plate,
+/area/last_bunker/indoors/sustainment_zone)
 "kA" = (
 /turf/open/floor/shiva/radiator_tile2,
 /area/last_bunker/indoors/hanger_zone)
@@ -1874,6 +2140,9 @@
 	pixel_y = 18
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 10
+	},
 /turf/open/floor/prison/green/north,
 /area/last_bunker/indoors/sustainment_zone)
 "kM" = (
@@ -1923,6 +2192,10 @@
 "kY" = (
 /turf/open/auto_turf/snow/layer0,
 /area/last_bunker/outdoors/surface_exterior/east)
+"kZ" = (
+/obj/item/tool/pickaxe/drill,
+/turf/open/auto_turf/shale/layer1/weedable,
+/area/last_bunker/outdoors/cavern_external_access/south_west/adj)
 "la" = (
 /turf/open/floor/prison/darkpurplecorners2/north,
 /area/last_bunker/indoors/residential_zone)
@@ -1967,6 +2240,12 @@
 /obj/structure/largecrate/random,
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/north,
 /area/last_bunker/indoors/command_zone)
+"ln" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/prison/floor_plate,
+/area/last_bunker/indoors/sustainment_zone)
 "lo" = (
 /turf/open/floor/prison/darkyellow2/west,
 /area/last_bunker/indoors/comms/tcomms_1)
@@ -1977,7 +2256,8 @@
 /turf/open/auto_turf/snow/layer1,
 /area/last_bunker/indoors/cavern/south_entrance)
 "ls" = (
-/turf/open/floor/plating/panelscorched,
+/obj/item/device/flashlight/lamp/tripod,
+/turf/open/floor/plating,
 /area/last_bunker/indoors/sustainment_zone)
 "lt" = (
 /obj/structure/prop/hybrisa/fakeplatforms/platform3,
@@ -1988,7 +2268,7 @@
 	icon_state = "E";
 	layer = 3.33
 	},
-/turf/closed/wall/hybrisa/colony/hospital/reinforced/hull,
+/turf/closed/wall/hybrisa/colony/reinforced/hull,
 /area/last_bunker/oob)
 "lw" = (
 /obj/structure/machinery/door/poddoor/hybrisa/shutters,
@@ -2009,6 +2289,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/prison/green/west,
 /area/last_bunker/indoors/sustainment_zone)
 "lC" = (
@@ -2064,7 +2345,7 @@
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/last_bunker/indoors/cavern/west)
 "lR" = (
-/turf/open/auto_turf/shale/layer1/weedable,
+/turf/open/floor/prison,
 /area/last_bunker/indoors/cavern/north_entrance/zero_light)
 "lS" = (
 /obj/effect/decal/warning_stripes{
@@ -2134,22 +2415,30 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/hybrisa/metal/greenmetalfull,
 /area/last_bunker/indoors/sustainment_zone)
-"mg" = (
-/obj/effect/decal/hybrisa/grate{
-	dir = 8
-	},
-/obj/effect/decal/hybrisa/warningstripes_angled,
-/turf/open/auto_turf/shale/layer1/weedable,
-/area/last_bunker/indoors/cavern/north_entrance/low_light)
 "mh" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 2
 	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/last_bunker/oob/electrical_tunnel)
+"mi" = (
+/obj/structure/flora/pottedplant{
+	desc = "It is made of Fiberbush(tm). It contains asbestos. Studies say that greenery calms the mind due to some sort evolved mechanism in the brain. This plant is not calming.";
+	icon_state = "pottedplant_21";
+	layer = 3.1;
+	name = "synthethic potted plant";
+	pixel_x = -8;
+	pixel_y = 0
+	},
+/turf/open/floor/prison/blue/southwest,
+/area/last_bunker/indoors/sustainment_zone)
 "mj" = (
 /turf/open_space,
 /area/last_bunker/oob)
+"mn" = (
+/obj/structure/barricade/handrail,
+/turf/open/floor/prison/green/southwest,
+/area/last_bunker/indoors/sustainment_zone)
 "mo" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/darkredcorners2/west,
@@ -2169,6 +2458,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/last_bunker/landing_zone_2)
 "mx" = (
+/obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/ice/layer0,
 /area/last_bunker/oob)
 "mz" = (
@@ -2178,6 +2468,10 @@
 	},
 /turf/open/floor/plating,
 /area/last_bunker/indoors/hanger_zone)
+"mA" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/last_bunker/indoors/sustainment_zone)
 "mE" = (
 /turf/open/auto_turf/snow/layer1,
 /area/last_bunker/outdoors/eastern_cavern/mid_light)
@@ -2188,6 +2482,18 @@
 	},
 /turf/open/floor/darkblue2/north,
 /area/last_bunker/indoors/command_zone)
+"mI" = (
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/obj/structure/pipes/standard/manifold/hidden/cyan,
+/turf/open/floor/prison/floor_plate,
+/area/last_bunker/indoors/sustainment_zone)
+"mJ" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/prison,
+/area/last_bunker/indoors/sustainment_zone)
 "mK" = (
 /obj/structure/window/framed/hybrisa/research/reinforced,
 /turf/open/floor/prison,
@@ -2214,12 +2520,8 @@
 /turf/open/floor/prison,
 /area/last_bunker/indoors/sustainment_zone)
 "mW" = (
-/obj/item/stack/tile/plasteel{
-	pixel_x = 1;
-	pixel_y = 9
-	},
-/turf/open/floor/plating/platingdmg3,
-/area/last_bunker/indoors/sustainment_zone)
+/turf/open/floor/strata/blue3/west,
+/area/last_bunker/indoors/entry_zone/train)
 "mX" = (
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/dark,
@@ -2249,6 +2551,15 @@
 "nd" = (
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/last_bunker/indoors/cavern/north_entrance/low_light)
+"ne" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/sign/poster/corporate{
+	pixel_y = 32
+	},
+/turf/open/floor/prison/green/northwest,
+/area/last_bunker/indoors/sustainment_zone)
 "ng" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/floor/shiva/radiator_tile2,
@@ -2265,6 +2576,12 @@
 	},
 /turf/open/floor/shiva/yellowfull,
 /area/last_bunker/indoors/entry_zone/power)
+"nk" = (
+/obj/structure/prop/hybrisa/misc/redmeter{
+	pixel_y = 32
+	},
+/turf/open/floor/prison/blue/north,
+/area/last_bunker/indoors/sustainment_zone)
 "nl" = (
 /obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
 	dir = 4
@@ -2292,6 +2609,17 @@
 /area/last_bunker/oob/train)
 "nw" = (
 /turf/open/floor/prison/darkyellow2/southwest,
+/area/last_bunker/indoors/sustainment_zone)
+"nx" = (
+/obj/structure/surface/table/almayer{
+	color = "#848484"
+	},
+/obj/item/tool/kitchen/utensil/pspoon,
+/obj/item/reagent_container/food/condiment/saltshaker{
+	pixel_x = -11;
+	pixel_y = 12
+	},
+/turf/open/floor/strata/floor3,
 /area/last_bunker/indoors/sustainment_zone)
 "ny" = (
 /obj/effect/decal/cleanable/dirt,
@@ -2342,6 +2670,9 @@
 "nT" = (
 /obj/structure/bed/chair,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/poster/ad{
+	pixel_y = 32
+	},
 /turf/open/floor/strata/floor3,
 /area/last_bunker/indoors/sustainment_zone)
 "nU" = (
@@ -2388,17 +2719,13 @@
 	},
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/west,
 /area/last_bunker/indoors/command_zone)
-"ov" = (
-/obj/structure/prop/ice_colony/ground_wire{
-	dir = 8
-	},
-/turf/open/auto_turf/sand_white/layer0,
-/area/last_bunker/indoors/cavern/north_entrance/low_light)
 "ow" = (
 /turf/closed/wall/wood,
 /area/last_bunker/indoors/cavern/west)
 "ox" = (
-/obj/structure/machinery/door/airlock/hybrisa/medical/autoname,
+/obj/structure/machinery/door/airlock/hybrisa/medical/autoname{
+	name = "\improper Medical"
+	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/last_bunker/indoors/sustainment_zone)
 "oy" = (
@@ -2406,6 +2733,12 @@
 	icon_state = "92"
 	},
 /area/last_bunker/oob)
+"oA" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/prison/green/north,
+/area/last_bunker/indoors/sustainment_zone)
 "oC" = (
 /obj/structure/stairs/multiz/up{
 	layer = 1
@@ -2428,6 +2761,16 @@
 	},
 /turf/open/floor/strata,
 /area/last_bunker/oob/train)
+"oF" = (
+/obj/structure/machinery/computer/cameras{
+	dir = 4
+	},
+/obj/structure/surface/table/almayer{
+	color = "#848484"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/prison,
+/area/last_bunker/indoors/sustainment_zone)
 "oG" = (
 /obj/effect/decal/hybrisa/grate{
 	dir = 4
@@ -2467,6 +2810,11 @@
 "oR" = (
 /turf/open/auto_turf/snow/layer4,
 /area/last_bunker/outdoors/cavern_external_access/north)
+"oU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/prison/blue/north,
+/area/last_bunker/indoors/sustainment_zone)
 "oV" = (
 /obj/effect/landmark/static_comms/net_one,
 /turf/open/floor/prison/floor_marked,
@@ -2488,6 +2836,9 @@
 	},
 /turf/open/auto_turf/snow/layer2,
 /area/last_bunker/outdoors/cavern_external_access/central)
+"pf" = (
+/turf/open/floor/strata/cyan4/east,
+/area/last_bunker/indoors/entry_zone/train)
 "pj" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_10";
@@ -2500,8 +2851,18 @@
 "pl" = (
 /turf/closed/wall/hybrisa/colony,
 /area/last_bunker/indoors/comms/tcomms_2_a)
+"pn" = (
+/obj/effect/decal/strata_decals/grime/grime4{
+	dir = 1
+	},
+/turf/open/floor/prison/green/east,
+/area/last_bunker/indoors/sustainment_zone)
 "po" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/vending/snack,
+/obj/structure/prop/hybrisa/misc/redmeter{
+	pixel_y = 32
+	},
 /turf/open/floor/strata/floor3,
 /area/last_bunker/indoors/sustainment_zone)
 "pr" = (
@@ -2519,9 +2880,22 @@
 "px" = (
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/last_bunker/indoors/comms/tcomms_2_a)
+"pC" = (
+/obj/structure/prop/hybrisa/misc/metergreen{
+	pixel_y = 32
+	},
+/turf/open/floor/prison/green/northwest,
+/area/last_bunker/indoors/sustainment_zone)
 "pD" = (
 /turf/open/floor/darkred2/southeast,
 /area/last_bunker/indoors/command_zone)
+"pF" = (
+/obj/structure/surface/table/almayer{
+	color = "#848484"
+	},
+/obj/structure/machinery/computer/objective,
+/turf/open/floor/prison,
+/area/last_bunker/indoors/sustainment_zone)
 "pH" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
@@ -2555,11 +2929,10 @@
 /turf/open/floor/antre/metal/black/west,
 /area/last_bunker/indoors/comms/tcomms_1)
 "pX" = (
-/obj/effect/hybrisa/misc/fake/pipes/pipe5{
-	dir = 8;
-	pixel_y = -1
+/obj/effect/hybrisa/misc/fake/pipes/pipe1{
+	dir = 4
 	},
-/turf/open/floor/plating/platingdmg3,
+/turf/open/floor/plating,
 /area/last_bunker/indoors/sustainment_zone)
 "pZ" = (
 /obj/effect/decal/cleanable/dirt,
@@ -2602,6 +2975,9 @@
 	},
 /turf/open/auto_turf/shale/layer2/weedable,
 /area/last_bunker/indoors/cavern/central)
+"qk" = (
+/turf/open/floor/strata/cyan3/southwest,
+/area/last_bunker/indoors/entry_zone/train)
 "ql" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
@@ -2666,14 +3042,32 @@
 "qx" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/landmark/objective_landmark/far,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28
+	},
 /turf/open/floor/prison/floor_plate,
 /area/last_bunker/indoors/sustainment_zone)
 "qy" = (
 /obj/structure/surface/table/almayer{
-	color = "#848484";
-	layer = 4
+	color = "#848484"
+	},
+/obj/item/reagent_container/food/snacks/mre_pack/meal1{
+	desc = "A tray of standard UA food. Stale cornbread, tomato paste and some green goop fill this tray.";
+	name = "\improper UA Prepared Meal (cornbread)";
+	pixel_y = 9
 	},
 /turf/open/floor/shiva/floor3,
+/area/last_bunker/indoors/sustainment_zone)
+"qz" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/computer/cameras{
+	dir = 1;
+	pixel_x = -10
+	},
+/obj/effect/spawner/random/technology_scanner{
+	pixel_x = 10
+	},
+/turf/open/floor/hybrisa/carpet/carpetblackdeco,
 /area/last_bunker/indoors/sustainment_zone)
 "qC" = (
 /obj/structure/machinery/landinglight/delaythree{
@@ -2793,6 +3187,13 @@
 	},
 /turf/open/floor/prison/red,
 /area/last_bunker/indoors/sustainment_zone)
+"rd" = (
+/obj/structure/surface/rack,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/flamer_tank/survivor,
+/obj/item/weapon/gun/flamer/survivor,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/last_bunker/indoors/hanger_zone)
 "rf" = (
 /obj/effect/hybrisa/misc/fake/wire/blue{
 	dir = 4;
@@ -2831,6 +3232,10 @@
 	},
 /turf/open/floor/hybrisa/metal/greenmetalfull,
 /area/last_bunker/indoors/sustainment_zone)
+"rx" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/auto_turf/snow/layer2,
+/area/last_bunker/oob)
 "ry" = (
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/last_bunker/outdoors/cavern_external_access/north/adj)
@@ -2857,6 +3262,10 @@
 "rK" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/blue/northwest,
+/area/last_bunker/indoors/sustainment_zone)
+"rL" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/prison/green/west,
 /area/last_bunker/indoors/sustainment_zone)
 "rM" = (
 /obj/item/device/flashlight/lamp/tripod,
@@ -2919,6 +3328,26 @@
 	},
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/last_bunker/indoors/cavern/south_entrance)
+"se" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/paper_bin{
+	pixel_x = 5;
+	pixel_y = 7
+	},
+/obj/item/ashtray/bronze{
+	pixel_x = -7;
+	pixel_y = 9
+	},
+/obj/item/trash/cigbutt/cigarbutt{
+	pixel_y = 21;
+	pixel_x = -1
+	},
+/obj/item/storage/belt/gun/m4a3/wy/mod88{
+	pixel_y = -6;
+	pixel_x = -5
+	},
+/turf/open/floor/hybrisa/carpet/carpetblackdeco,
+/area/last_bunker/indoors/sustainment_zone)
 "sg" = (
 /obj/structure/machinery/cryopod/joe/seegson/alt{
 	dir = 8;
@@ -2937,6 +3366,14 @@
 /obj/structure/machinery/light,
 /turf/open/floor/prison/blue/northeast,
 /area/last_bunker/indoors/synthetic_zone)
+"sk" = (
+/obj/structure/bed/chair/comfy/teal{
+	dir = 4;
+	pixel_x = -14
+	},
+/obj/item/trash/cigbutt,
+/turf/open/floor/prison/green/west,
+/area/last_bunker/indoors/sustainment_zone)
 "sl" = (
 /turf/open/floor/prison/green/southwest,
 /area/last_bunker/indoors/sustainment_zone)
@@ -2978,12 +3415,25 @@
 	},
 /turf/open/floor/strata/floor3,
 /area/last_bunker/indoors/sustainment_zone)
+"ss" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname{
+	name = "\improper Admin/Medical Zone";
+	dir = 2
+	},
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/last_bunker/indoors/sustainment_zone)
+"st" = (
+/obj/structure/prop/ice_colony/ground_wire,
+/turf/open/auto_turf/shale/layer2/weedable,
+/area/last_bunker/indoors/cavern/north_entrance/low_light)
 "su" = (
 /obj/structure/prop/ice_colony/ground_wire,
 /turf/open/auto_turf/shale/layer2/weedable,
 /area/last_bunker/indoors/cavern/north_entrance)
 "sx" = (
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/antre/metal/black/southeast,
 /area/last_bunker/indoors/sustainment_zone)
 "sy" = (
@@ -3014,12 +3464,24 @@
 /obj/structure/prop/ice_colony/ground_wire,
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/last_bunker/indoors/cavern/central)
+"sK" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 6
+	},
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/turf/open/floor/prison/green/northeast,
+/area/last_bunker/indoors/sustainment_zone)
 "sL" = (
 /obj/structure/machinery/colony_floodlight_switch{
 	pixel_y = 30
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/last_bunker/indoors/comms/tcomms_1)
+"sM" = (
+/turf/open/floor/strata/cyan4/west,
+/area/last_bunker/indoors/entry_zone/train)
 "sN" = (
 /obj/structure/monorail,
 /turf/open/floor/corsat,
@@ -3083,6 +3545,15 @@
 	},
 /turf/open/floor/dark,
 /area/last_bunker/indoors/command_zone)
+"tk" = (
+/obj/effect/hybrisa/misc/fake/wire/red{
+	pixel_x = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 6
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/last_bunker/indoors/sustainment_zone)
 "tn" = (
 /turf/open/floor/prison/darkyellow2/southeast,
 /area/last_bunker/indoors/comms/tcomms_2_b)
@@ -3096,12 +3567,29 @@
 /obj/item/tool/pen/blue/clicky,
 /turf/open/floor/darkish,
 /area/last_bunker/indoors/command_zone)
+"tp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 10
+	},
+/turf/open/floor/prison/greencorner/north,
+/area/last_bunker/indoors/sustainment_zone)
 "tq" = (
+/obj/structure/prop/hybrisa/misc/redmeter{
+	pixel_y = 32
+	},
 /turf/open/floor/prison/darkyellow2/northeast,
 /area/last_bunker/indoors/sustainment_zone)
 "ts" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/defibrillator,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28
+	},
 /turf/open/floor/hybrisa/metal/greenmetalfull,
 /area/last_bunker/indoors/sustainment_zone)
 "tt" = (
@@ -3113,7 +3601,36 @@
 /area/last_bunker/indoors/sustainment_zone)
 "tA" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/almayer,
+/obj/item/storage/bag/trash{
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/obj/item/storage/bag/trash{
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/obj/item/storage/bag/trash{
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/obj/item/storage/bag/trash{
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/obj/item/reagent_container/spray/cleaner{
+	pixel_x = 6
+	},
+/obj/item/reagent_container/glass/bucket/mopbucket{
+	pixel_x = 3;
+	pixel_y = 12
+	},
 /turf/open/floor/antre/metal/blackfull,
+/area/last_bunker/indoors/sustainment_zone)
+"tC" = (
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/turf/open/floor/prison/blue,
 /area/last_bunker/indoors/sustainment_zone)
 "tD" = (
 /obj/effect/decal/cleanable/generic{
@@ -3147,6 +3664,9 @@
 "tJ" = (
 /obj/structure/machinery/smartfridge/seeds,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/poster/corporate{
+	pixel_y = 32
+	},
 /turf/open/floor/prison/greenfull,
 /area/last_bunker/indoors/sustainment_zone)
 "tK" = (
@@ -3167,8 +3687,16 @@
 /turf/open/floor/prison,
 /area/last_bunker/indoors/synthetic_zone)
 "tN" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/plating_catwalk/prison,
+/obj/structure/machinery/computer/objective{
+	dir = 8
+	},
+/obj/structure/bed/chair/office/dark,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/floor/prison,
 /area/last_bunker/indoors/sustainment_zone)
 "tO" = (
 /obj/structure/machinery/light{
@@ -3189,11 +3717,18 @@
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/last_bunker/outdoors/surface_exterior/center)
 "tT" = (
+/obj/structure/terminal,
 /turf/open/floor/prison/darkyellow2,
 /area/last_bunker/indoors/sustainment_zone)
 "tX" = (
 /turf/open/floor/shiva/red/northwest,
 /area/last_bunker/indoors/entry_zone/power)
+"tY" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/prison/blue/east,
+/area/last_bunker/indoors/sustainment_zone)
 "tZ" = (
 /turf/open/auto_turf/ice/layer1,
 /area/last_bunker/indoors/cavern/west)
@@ -3202,6 +3737,17 @@
 /turf/open/floor/prison/floor_plate,
 /area/last_bunker/indoors/sustainment_zone)
 "uc" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 20
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = 8;
+	pixel_y = 20
+	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison/greenblue/northwest,
 /area/last_bunker/indoors/sustainment_zone)
 "ud" = (
@@ -3214,6 +3760,19 @@
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
+/area/last_bunker/indoors/sustainment_zone)
+"ug" = (
+/obj/structure/machinery/light,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/prison/green,
+/area/last_bunker/indoors/sustainment_zone)
+"ui" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 8
+	},
+/turf/open/floor/prison/greencorner,
 /area/last_bunker/indoors/sustainment_zone)
 "uj" = (
 /obj/effect/decal/cleanable/dirt,
@@ -3236,6 +3795,11 @@
 "ul" = (
 /turf/open/auto_turf/snow/layer2,
 /area/last_bunker/indoors/cavern/north_entrance)
+"um" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/prison/green/west,
+/area/last_bunker/indoors/sustainment_zone)
 "un" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
@@ -3258,7 +3822,7 @@
 /turf/open/floor/prison/blue/northeast,
 /area/last_bunker/indoors/sustainment_zone)
 "us" = (
-/turf/closed/wall/hybrisa/colony/reinforced/hull,
+/turf/closed/wall/hybrisa/colony/reinforced,
 /area/last_bunker/indoors/entry_zone/train)
 "ut" = (
 /turf/open/auto_turf/sand_white/layer0,
@@ -3278,6 +3842,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/blue/southeast,
 /area/last_bunker/indoors/synthetic_zone)
+"uy" = (
+/obj/structure/closet,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/prison/green/east,
+/area/last_bunker/indoors/sustainment_zone)
 "uz" = (
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/last_bunker/indoors/sustainment_zone)
@@ -3292,10 +3861,19 @@
 "uC" = (
 /turf/open/floor/antre/metal/blackcorner,
 /area/last_bunker/indoors/entry_zone)
+"uD" = (
+/obj/item/trash/cigbutt,
+/turf/open/floor/prison/blue/east,
+/area/last_bunker/indoors/sustainment_zone)
 "uH" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/recharger,
 /turf/open/floor/hybrisa/metal/greenmetalfull,
+/area/last_bunker/indoors/sustainment_zone)
+"uI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/manifold/hidden/cyan,
+/turf/open/floor/prison/greencorner/east,
 /area/last_bunker/indoors/sustainment_zone)
 "uJ" = (
 /obj/effect/decal/cleanable/dirt,
@@ -3310,6 +3888,9 @@
 "uM" = (
 /turf/closed/wall/strata_ice,
 /area/last_bunker/oob/hydro)
+"uO" = (
+/turf/open/floor/hybrisa/carpet/carpetblackdeco,
+/area/last_bunker/indoors/sustainment_zone)
 "uQ" = (
 /obj/structure/stairs/perspective{
 	dir = 9;
@@ -3346,7 +3927,9 @@
 /turf/open/floor/prison/redcorner/west,
 /area/last_bunker/indoors/sustainment_zone)
 "ve" = (
-/obj/structure/machinery/door/airlock/multi_tile/hybrisa/medical_solid/autoname,
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/medical_solid{
+	name = "\improper Surgery"
+	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/last_bunker/indoors/sustainment_zone)
 "vf" = (
@@ -3384,6 +3967,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/darkred2/west,
 /area/last_bunker/indoors/command_zone)
+"vq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/prison/green/north,
+/area/last_bunker/indoors/sustainment_zone)
 "vt" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/darkred2,
@@ -3393,7 +3983,16 @@
 	layer = 3
 	},
 /obj/item/device/analyzer/plant_analyzer,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28
+	},
 /turf/open/floor/corsat/box,
+/area/last_bunker/indoors/sustainment_zone)
+"vv" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/prison/greencorner,
 /area/last_bunker/indoors/sustainment_zone)
 "vw" = (
 /turf/open/auto_turf/snow/layer0,
@@ -3405,6 +4004,9 @@
 /obj/structure/window/framed/hybrisa/colony,
 /turf/open/floor/plating,
 /area/last_bunker/indoors/sustainment_zone)
+"vB" = (
+/turf/open/floor/strata/blue3/northwest,
+/area/last_bunker/indoors/entry_zone/train)
 "vC" = (
 /turf/open/auto_turf/snow/layer1,
 /area/last_bunker/outdoors/eastern_cavern)
@@ -3417,6 +4019,9 @@
 /area/last_bunker/oob/electrical_tunnel)
 "vI" = (
 /obj/effect/hybrisa/misc/fake/pipes/pipe4,
+/obj/structure/prop/hybrisa/misc/metergreen{
+	pixel_y = 32
+	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/last_bunker/indoors/sustainment_zone)
 "vJ" = (
@@ -3486,6 +4091,12 @@
 	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/last_bunker/indoors/hanger_zone)
+"wc" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/prison,
+/area/last_bunker/indoors/sustainment_zone)
 "wd" = (
 /turf/open/auto_turf/ice/layer2,
 /area/last_bunker/indoors/cavern/west)
@@ -3504,6 +4115,9 @@
 "wg" = (
 /turf/open/floor/prison/sterile_white,
 /area/last_bunker/indoors/sustainment_zone)
+"wh" = (
+/turf/open/floor/strata/cyan3/northeast,
+/area/last_bunker/indoors/entry_zone/train)
 "wi" = (
 /turf/open/floor/darkgreen2/east,
 /area/last_bunker/indoors/command_zone)
@@ -3545,6 +4159,7 @@
 	icon_state = "trash_4";
 	pixel_y = 14
 	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/prison/greencorner/north,
 /area/last_bunker/indoors/sustainment_zone)
 "wy" = (
@@ -3558,6 +4173,13 @@
 	},
 /turf/open/floor/prison/blue/east,
 /area/last_bunker/indoors/entry_zone)
+"wA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 5
+	},
+/turf/open/floor/prison/green/west,
+/area/last_bunker/indoors/sustainment_zone)
 "wB" = (
 /turf/open/floor/prison/darkpurple2/north,
 /area/last_bunker/indoors/residential_zone)
@@ -3572,7 +4194,7 @@
 	icon_state = "E";
 	layer = 3.33
 	},
-/turf/closed/wall/hybrisa/colony/hospital/reinforced/hull,
+/turf/closed/wall/hybrisa/colony/reinforced/hull,
 /area/last_bunker/oob)
 "wG" = (
 /turf/open/floor/antre/metal/black,
@@ -3736,8 +4358,12 @@
 /turf/open/floor/hybrisa/metal/greenmetalfull,
 /area/last_bunker/indoors/sustainment_zone)
 "xy" = (
-/turf/open/auto_turf/shale/layer2/weedable,
-/area/last_bunker/indoors/cavern/north_entrance/zero_light)
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 6
+	},
+/turf/open/floor/prison/greencorner,
+/area/last_bunker/indoors/sustainment_zone)
 "xA" = (
 /turf/closed/shuttle/dropship_wy/StarGlider{
 	icon_state = "19"
@@ -3753,6 +4379,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/last_bunker/landing_zone_1)
+"xE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/prison/floor_plate,
+/area/last_bunker/indoors/sustainment_zone)
 "xG" = (
 /obj/structure/prop/ice_colony/ground_wire{
 	layer = 4
@@ -3768,6 +4401,13 @@
 	},
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/last_bunker/indoors/cavern/south_entrance)
+"xJ" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/last_bunker/indoors/sustainment_zone)
 "xK" = (
 /turf/closed/wall/hybrisa/colony/engineering,
 /area/last_bunker/indoors/entry_zone/power)
@@ -3792,10 +4432,13 @@
 /area/last_bunker/outdoors/cavern_external_access/central)
 "xQ" = (
 /obj/structure/surface/table/almayer{
-	color = "#848484";
-	layer = 4
+	color = "#848484"
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_container/food/drinks/sillycup{
+	pixel_x = -5;
+	pixel_y = 10
+	},
 /turf/open/floor/shiva/floor3,
 /area/last_bunker/indoors/sustainment_zone)
 "xR" = (
@@ -3833,7 +4476,19 @@
 	pixel_x = -8;
 	pixel_y = 29
 	},
+/obj/structure/barricade/handrail,
 /turf/open/floor/prison/green,
+/area/last_bunker/indoors/sustainment_zone)
+"xX" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/computer/wy_intranet{
+	dir = 8
+	},
+/obj/item/tool/pen{
+	pixel_x = -10;
+	pixel_y = 8
+	},
+/turf/open/floor/hybrisa/carpet/carpetblackdeco,
 /area/last_bunker/indoors/sustainment_zone)
 "xY" = (
 /turf/open/auto_turf/shale/layer1/weedable,
@@ -3866,6 +4521,9 @@
 /area/last_bunker/landing_zone_2)
 "yk" = (
 /turf/open/floor/prison/greencorner/west,
+/area/last_bunker/indoors/sustainment_zone)
+"yl" = (
+/turf/closed/wall/hybrisa/colony/office/reinforced,
 /area/last_bunker/indoors/sustainment_zone)
 "ym" = (
 /obj/effect/decal/warning_stripes{
@@ -3979,9 +4637,32 @@
 "yO" = (
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/last_bunker/indoors/sustainment_zone)
+"yQ" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/prison/green/southeast,
+/area/last_bunker/indoors/sustainment_zone)
+"yR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_8";
+	pixel_y = 12
+	},
+/turf/open/floor/prison/floor_plate,
+/area/last_bunker/indoors/sustainment_zone)
+"yS" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/last_bunker/indoors/cavern/north_entrance/low_light)
 "yT" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/vents/pump,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28
+	},
 /turf/open/floor/prison/green/northwest,
 /area/last_bunker/indoors/sustainment_zone)
 "yU" = (
@@ -4050,6 +4731,13 @@
 /obj/structure/largecrate/empty/case/double,
 /turf/open/floor/prison/greenfull,
 /area/last_bunker/indoors/sustainment_zone)
+"zt" = (
+/obj/effect/decal/hybrisa/grate,
+/obj/effect/decal/hybrisa/warningstripes_angled{
+	pixel_x = -4
+	},
+/turf/open/auto_turf/shale/layer1/weedable,
+/area/last_bunker/indoors/cavern/north_entrance/low_light)
 "zv" = (
 /turf/open/floor/prison/green/north,
 /area/last_bunker/indoors/sustainment_zone)
@@ -4074,7 +4762,10 @@
 /turf/open/floor/darkpurple2,
 /area/last_bunker/indoors/command_zone)
 "zI" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/item/tool/mop{
+	pixel_x = -6;
+	pixel_y = 24
+	},
 /turf/open/floor/antre/metal/black/southwest,
 /area/last_bunker/indoors/sustainment_zone)
 "zJ" = (
@@ -4092,6 +4783,14 @@
 	},
 /turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/last_bunker/indoors/cavern/central)
+"zN" = (
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/prison/green/west,
+/area/last_bunker/indoors/sustainment_zone)
 "zO" = (
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/last_bunker/outdoors/surface_exterior/center)
@@ -4102,6 +4801,13 @@
 	},
 /turf/open/auto_turf/sand_white/layer0,
 /area/last_bunker/indoors/cavern/central)
+"zU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 8
+	},
+/turf/open/floor/prison/green/west,
+/area/last_bunker/indoors/sustainment_zone)
 "zV" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -4115,6 +4821,20 @@
 /obj/structure/prop/invuln/overhead/flammable_pipe/fly,
 /turf/open/shuttle/escapepod/floor2/west,
 /area/last_bunker/oob/electrical_tunnel)
+"Aa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 8
+	},
+/turf/open/floor/prison/greencorner/west,
+/area/last_bunker/indoors/sustainment_zone)
+"Ab" = (
+/obj/structure/prop/hybrisa/cavedecor/stalagmite2{
+	pixel_x = 11;
+	pixel_y = 3
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/last_bunker/indoors/cavern/north_entrance/zero_light)
 "Ad" = (
 /turf/open/auto_turf/snow/layer2,
 /area/last_bunker/outdoors/eastern_cavern)
@@ -4146,6 +4866,9 @@
 	},
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/last_bunker/indoors/cavern/north)
+"Ap" = (
+/turf/open/floor/strata/cyan3/southeast,
+/area/last_bunker/indoors/entry_zone/train)
 "As" = (
 /turf/open/floor/prison/blue/west,
 /area/last_bunker/indoors/entry_zone)
@@ -4153,6 +4876,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/blue,
 /area/last_bunker/indoors/synthetic_zone)
+"Au" = (
+/obj/structure/machinery/light/double,
+/turf/open/floor/prison/blue/southeast,
+/area/last_bunker/indoors/sustainment_zone)
 "Av" = (
 /obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic,
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
@@ -4164,6 +4891,12 @@
 	},
 /turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/last_bunker/indoors/cavern/central)
+"AE" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 4
+	},
+/turf/open/auto_turf/shale/layer1/weedable,
+/area/last_bunker/indoors/cavern/north_entrance/low_light)
 "AF" = (
 /obj/structure/shuttle/part/dropship_wy/transparent/left_outer_inner_wing,
 /turf/open/floor/plating,
@@ -4287,7 +5020,14 @@
 /area/last_bunker/indoors/cavern/central)
 "Bk" = (
 /obj/structure/machinery/seed_extractor,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28
+	},
 /turf/open/floor/prison/greenfull,
+/area/last_bunker/indoors/sustainment_zone)
+"Bl" = (
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/last_bunker/indoors/sustainment_zone)
 "Bp" = (
 /turf/open/floor/prison/darkpurple2/southeast,
@@ -4295,6 +5035,10 @@
 "Bs" = (
 /turf/open/floor/prison/blue/northeast,
 /area/last_bunker/indoors/entry_zone)
+"Bv" = (
+/obj/structure/barricade/handrail,
+/turf/open/floor/prison/green,
+/area/last_bunker/indoors/sustainment_zone)
 "BB" = (
 /obj/structure/flora/bush/snow{
 	icon_state = "snowgrassall_1"
@@ -4366,6 +5110,13 @@
 "BZ" = (
 /turf/open/antre/plating/direction_north/west_edge,
 /area/last_bunker/indoors/entry_zone)
+"Cf" = (
+/obj/structure/surface/table/almayer{
+	color = "#848484"
+	},
+/obj/item/reagent_container/food/condiment/chocolate_syrup,
+/turf/open/floor/strata/floor3,
+/area/last_bunker/indoors/sustainment_zone)
 "Cg" = (
 /obj/structure/surface/table/almayer,
 /turf/open/floor/prison/green/southwest,
@@ -4381,6 +5132,11 @@
 "Ck" = (
 /turf/open/shuttle/escapepod/floor2/east,
 /area/last_bunker/oob/electrical_tunnel)
+"Cl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/prison/green/east,
+/area/last_bunker/indoors/sustainment_zone)
 "Cm" = (
 /obj/structure/machinery/power/apc/power/north{
 	start_charge = 60
@@ -4405,10 +5161,10 @@
 /turf/open/floor/plating,
 /area/last_bunker/indoors/hanger_zone)
 "Cq" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/generic{
-	color = "#5d524b";
-	alpha = 155
+/obj/structure/machinery/light/double{
+	dir = 1;
+	layer = 2.9;
+	pixel_y = 9
 	},
 /turf/open/floor/prison/blue/northeast,
 /area/last_bunker/indoors/sustainment_zone)
@@ -4432,6 +5188,7 @@
 /area/last_bunker/indoors/sustainment_zone)
 "Cv" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/prison/greencorner,
 /area/last_bunker/indoors/sustainment_zone)
 "Cx" = (
@@ -4493,6 +5250,9 @@
 /area/last_bunker/indoors/comms/tcomms_1)
 "CL" = (
 /obj/item/tool/surgery/circular_saw,
+/obj/structure/prop/hybrisa/misc/redmeter{
+	pixel_y = 32
+	},
 /turf/open/floor/hybrisa/metal/greenmetal1/north,
 /area/last_bunker/indoors/sustainment_zone)
 "CM" = (
@@ -4509,10 +5269,6 @@
 "CO" = (
 /turf/open/floor/prison/darkyellow2/north,
 /area/last_bunker/indoors/comms/tcomms_1)
-"CP" = (
-/obj/structure/prop/ice_colony/ground_wire,
-/turf/open/auto_turf/shale/layer2/weedable,
-/area/last_bunker/indoors/cavern/north_entrance/low_light)
 "CQ" = (
 /obj/structure/machinery/cryopod/joe/seegson/alt{
 	dir = 8;
@@ -4520,6 +5276,13 @@
 	},
 /turf/open/floor/plating/kutjevo,
 /area/last_bunker/indoors/synthetic_zone)
+"CT" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/turf/open/floor/strata/cyan4/north,
+/area/last_bunker/indoors/entry_zone/train)
 "CU" = (
 /turf/open/floor/prison/darkpurple2/northwest,
 /area/last_bunker/indoors/residential_zone)
@@ -4544,6 +5307,10 @@
 "Da" = (
 /turf/closed/wall/hybrisa/colony,
 /area/last_bunker/indoors/entry_zone)
+"Dd" = (
+/obj/item/tool/pickaxe/drill,
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/last_bunker/indoors/sustainment_zone)
 "De" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -4573,6 +5340,13 @@
 "Dt" = (
 /turf/open/auto_turf/snow/layer4,
 /area/last_bunker/outdoors/surface_exterior/south_west)
+"Dv" = (
+/obj/item/reagent_container/glass/bucket/mopbucket{
+	pixel_x = 5;
+	pixel_y = 16
+	},
+/turf/open/floor/prison/green/north,
+/area/last_bunker/indoors/sustainment_zone)
 "Dw" = (
 /obj/effect/hybrisa/misc/fake/pipes/pipe1{
 	dir = 4;
@@ -4621,6 +5395,20 @@
 "DE" = (
 /turf/open/floor/darkbluecorners2/west,
 /area/last_bunker/indoors/command_zone)
+"DG" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 20
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = 8;
+	pixel_y = 20
+	},
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/prison/floor_plate,
+/area/last_bunker/indoors/sustainment_zone)
 "DH" = (
 /obj/structure/flora/bush/snow{
 	icon_state = "snowgrassall_3"
@@ -4629,6 +5417,11 @@
 /area/last_bunker/outdoors/cavern_external_access/south_west)
 "DK" = (
 /obj/structure/machinery/light,
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/snacks/stew{
+	pixel_y = 14;
+	pixel_x = -4
+	},
 /turf/open/floor/prison/green/southwest,
 /area/last_bunker/indoors/sustainment_zone)
 "DL" = (
@@ -4644,7 +5437,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/turf/closed/wall/hybrisa/colony/hospital/reinforced/hull,
+/turf/closed/wall/hybrisa/colony/reinforced/hull,
 /area/last_bunker/oob)
 "DN" = (
 /turf/open/auto_turf/snow/layer1,
@@ -4655,6 +5448,9 @@
 	pixel_y = 3;
 	pixel_x = 6
 	},
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28
+	},
 /turf/open/floor/prison/green/northeast,
 /area/last_bunker/indoors/sustainment_zone)
 "DS" = (
@@ -4664,6 +5460,9 @@
 /obj/structure/bed/chair{
 	dir = 8;
 	pixel_y = 3
+	},
+/obj/structure/sign/poster/ad{
+	pixel_y = 32
 	},
 /turf/open/floor/strata/floor3,
 /area/last_bunker/indoors/sustainment_zone)
@@ -4684,7 +5483,17 @@
 /obj/effect/hybrisa/misc/fake/pipes/pipe3{
 	dir = 4
 	},
+/obj/structure/prop/hybrisa/misc/metergreen{
+	pixel_y = 32
+	},
 /turf/open/floor/plating/plating_catwalk/prison,
+/area/last_bunker/indoors/sustainment_zone)
+"Ed" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/prison/greencorner/west,
 /area/last_bunker/indoors/sustainment_zone)
 "Ef" = (
 /obj/structure/stairs/perspective{
@@ -4712,6 +5521,27 @@
 	},
 /turf/open/floor/strata,
 /area/last_bunker/indoors/entry_zone/train)
+"En" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8
+	},
+/turf/open/floor/prison/green,
+/area/last_bunker/indoors/sustainment_zone)
+"Eo" = (
+/obj/structure/filingcabinet/chestdrawer{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 18;
+	layer = 2.9
+	},
+/obj/effect/landmark/objective_landmark/science,
+/obj/structure/sign/poster/corporate{
+	pixel_y = 32;
+	pixel_x = 7
+	},
+/obj/effect/decal/hybrisa/trash,
+/turf/open/floor/prison/blue/northwest,
+/area/last_bunker/indoors/sustainment_zone)
 "Eq" = (
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
 /obj/effect/decal/cleanable/dirt,
@@ -4720,6 +5550,10 @@
 "Es" = (
 /turf/open/floor/darkred2/north,
 /area/last_bunker/indoors/command_zone)
+"Eu" = (
+/obj/structure/machinery/cm_vending/sorted/boozeomat,
+/turf/open/floor/prison/green,
+/area/last_bunker/indoors/sustainment_zone)
 "Ev" = (
 /turf/open/floor/darkredcorners2,
 /area/last_bunker/oob)
@@ -4752,9 +5586,25 @@
 	},
 /turf/open/floor/prison/darkred2/southwest,
 /area/last_bunker/indoors/sustainment_zone)
+"ED" = (
+/turf/open/floor/strata/cyan4/north,
+/area/last_bunker/indoors/entry_zone/train)
 "EE" = (
 /turf/open/floor/kutjevo/multi_tiles/west,
 /area/last_bunker/indoors/entry_zone/train)
+"EF" = (
+/obj/structure/surface/table/almayer{
+	color = "#848484"
+	},
+/obj/item/reagent_container/food/condiment/peppermill{
+	pixel_x = 3;
+	pixel_y = 9
+	},
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28
+	},
+/turf/open/floor/shiva/floor3,
+/area/last_bunker/indoors/sustainment_zone)
 "EJ" = (
 /turf/open/auto_turf/sand_white/layer0,
 /area/last_bunker/indoors/cavern/north)
@@ -4797,6 +5647,10 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/last_bunker/indoors/sustainment_zone)
+"Fb" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan,
+/turf/open/floor/prison/green,
+/area/last_bunker/indoors/sustainment_zone)
 "Fd" = (
 /obj/structure/prop/invuln/overhead/flammable_pipe/fly{
 	dir = 1
@@ -4806,6 +5660,13 @@
 "Fg" = (
 /turf/open/auto_turf/snow/layer2,
 /area/last_bunker/outdoors/cavern_external_access/west)
+"Fi" = (
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/prison/floor_plate,
+/area/last_bunker/indoors/sustainment_zone)
 "Fj" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony,
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
@@ -4816,6 +5677,9 @@
 "Fm" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
 /turf/open/floor/prison/green,
 /area/last_bunker/indoors/sustainment_zone)
 "Fn" = (
@@ -4847,6 +5711,19 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/darkish,
 /area/last_bunker/indoors/command_zone)
+"Fv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/prison,
+/area/last_bunker/indoors/sustainment_zone)
+"Fy" = (
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28
+	},
+/turf/open/floor/prison/green/northeast,
+/area/last_bunker/indoors/sustainment_zone)
 "FA" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics{
 	icon_state = "hydrotray4"
@@ -4871,6 +5748,21 @@
 "FG" = (
 /turf/open/auto_turf/shale/layer2/weedable,
 /area/last_bunker/indoors/cavern/west)
+"FH" = (
+/obj/structure/window/framed/hybrisa/colony/office/reinforced,
+/turf/open/floor/plating,
+/area/last_bunker/indoors/sustainment_zone)
+"FJ" = (
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/snacks/dough{
+	pixel_x = 4
+	},
+/obj/item/tool/kitchen/rollingpin{
+	pixel_y = 8;
+	pixel_x = -6
+	},
+/turf/open/floor/prison/green/west,
+/area/last_bunker/indoors/sustainment_zone)
 "FK" = (
 /obj/structure/monorail{
 	dir = 9
@@ -4888,6 +5780,17 @@
 "FP" = (
 /turf/open/antre/plating/corner_dir,
 /area/last_bunker/indoors/entry_zone)
+"FQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_21";
+	pixel_y = 3
+	},
+/obj/structure/sign/poster/safety{
+	pixel_y = 32
+	},
+/turf/open/floor/hybrisa/metal/greenmetalfull,
+/area/last_bunker/indoors/sustainment_zone)
 "FR" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/darkred2/east,
@@ -4934,15 +5837,25 @@
 	},
 /turf/open/floor/plating,
 /area/last_bunker/landing_zone_2)
+"FZ" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/last_bunker/indoors/sustainment_zone)
 "Gb" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/darkblue2/north,
 /area/last_bunker/indoors/command_zone)
+"Gc" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/prison/greencorner,
+/area/last_bunker/indoors/sustainment_zone)
 "Gd" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/structure/closet,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison/green/east,
 /area/last_bunker/indoors/sustainment_zone)
 "Ge" = (
@@ -4965,6 +5878,16 @@
 	},
 /turf/open/floor/plating,
 /area/last_bunker/landing_zone_2)
+"Gm" = (
+/obj/structure/barricade/handrail/no_vault{
+	dir = 8
+	},
+/obj/structure/machinery/power/monitor{
+	density = 0;
+	pixel_y = 16
+	},
+/turf/open/floor/shiva/yellowfull,
+/area/last_bunker/indoors/entry_zone/power)
 "Gr" = (
 /obj/structure/machinery/cm_vending/sorted/medical/blood,
 /obj/structure/machinery/light{
@@ -4996,13 +5919,6 @@
 /obj/structure/window/framed/hybrisa/colony/engineering/reinforced,
 /turf/open/floor/plating,
 /area/last_bunker/indoors/sustainment_zone)
-"Gw" = (
-/obj/structure/prop/hybrisa/cavedecor/stalagmite2{
-	pixel_x = 11;
-	pixel_y = 3
-	},
-/turf/open/auto_turf/hybrisa_auto_turf/layer1,
-/area/last_bunker/indoors/cavern/north_entrance/zero_light)
 "Gz" = (
 /obj/structure/stairs/multiz/down{
 	dir = 4
@@ -5032,6 +5948,14 @@
 "GI" = (
 /obj/structure/window/framed/hybrisa/colony/reinforced,
 /turf/open/floor/plating,
+/area/last_bunker/indoors/sustainment_zone)
+"GJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/prison/green/west,
 /area/last_bunker/indoors/sustainment_zone)
 "GN" = (
 /obj/structure/stairs/multiz/up{
@@ -5070,6 +5994,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/closet/secure_closet/freezer/fridge/full,
 /turf/open/floor/prison/green/northeast,
 /area/last_bunker/indoors/sustainment_zone)
 "GX" = (
@@ -5098,6 +6023,15 @@
 /turf/open/floor/prison/blue/north,
 /area/last_bunker/indoors/entry_zone)
 "Hd" = (
+/obj/structure/safe,
+/obj/effect/landmark/objective_landmark/far,
+/obj/item/clothing/suit/armor/vest/hybrisa/civilian_vest,
+/obj/item/reagent_container/food/drinks/bottle/patron,
+/obj/item/spacecash/c1000{
+	worth = 10000;
+	name = "10000 dollars"
+	},
+/obj/item/paper/research_notes/unique/tier_four,
 /turf/open/floor/prison/bluefull,
 /area/last_bunker/indoors/sustainment_zone)
 "Hf" = (
@@ -5151,9 +6085,10 @@
 /area/last_bunker/indoors/command_zone)
 "Hu" = (
 /obj/structure/surface/table/almayer{
-	color = "#848484";
-	layer = 4
+	color = "#848484"
 	},
+/obj/item/trash/plate,
+/obj/item/tool/kitchen/utensil/pknife,
 /turf/open/floor/strata/floor3,
 /area/last_bunker/indoors/sustainment_zone)
 "Hw" = (
@@ -5179,9 +6114,37 @@
 /obj/structure/largecrate/random/barrel/yellow,
 /turf/open/floor/darkred2/southwest,
 /area/last_bunker/indoors/command_zone)
+"HG" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 8
+	},
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/turf/open/floor/prison,
+/area/last_bunker/indoors/sustainment_zone)
 "HH" = (
 /turf/open/floor/darkredcorners2,
 /area/last_bunker/indoors/command_zone)
+"HI" = (
+/obj/item/paper/crumpled{
+	pixel_x = 15;
+	pixel_y = -9
+	},
+/turf/open/floor/prison/blue/west,
+/area/last_bunker/indoors/sustainment_zone)
+"HJ" = (
+/obj/structure/bed/chair/wheelchair{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/metal/greenmetalfull,
+/area/last_bunker/indoors/sustainment_zone)
+"HK" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/black_double{
+	dir = 1;
+	name = ""\improper Executive Office"
+	},
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/last_bunker/indoors/sustainment_zone)
 "HM" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/floor_plate,
@@ -5195,6 +6158,10 @@
 "HR" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/greenblue/north,
+/area/last_bunker/indoors/sustainment_zone)
+"HS" = (
+/obj/item/trash/cigbutt,
+/turf/open/floor/prison/floor_plate,
 /area/last_bunker/indoors/sustainment_zone)
 "HT" = (
 /obj/structure/platform_decoration/stone/strata/east,
@@ -5211,8 +6178,17 @@
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/darkyellow2/north,
 /area/last_bunker/indoors/command_zone)
+"Ic" = (
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28
+	},
+/turf/open/floor/prison/blue/north,
+/area/last_bunker/indoors/sustainment_zone)
 "Id" = (
 /obj/item/trash/cigbutt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
 /turf/open/floor/prison/green,
 /area/last_bunker/indoors/sustainment_zone)
 "Ie" = (
@@ -5229,7 +6205,7 @@
 	icon_state = "W";
 	layer = 2.5
 	},
-/turf/closed/wall/hybrisa/colony/hospital/reinforced/hull,
+/turf/closed/wall/hybrisa/colony/reinforced/hull,
 /area/last_bunker/oob)
 "Ih" = (
 /turf/open/auto_turf/snow/layer4,
@@ -5294,6 +6270,15 @@
 "Iy" = (
 /turf/open/floor/corsat/darkgreen/east,
 /area/last_bunker/oob/hydro)
+"Iz" = (
+/obj/structure/bed/chair/comfy/teal{
+	dir = 4;
+	pixel_x = -14
+	},
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/turf/open/floor/prison/green/west,
+/area/last_bunker/indoors/sustainment_zone)
 "IA" = (
 /turf/open/floor/prison/darkyellowfull2,
 /area/last_bunker/indoors/comms/tcomms_2_a)
@@ -5303,9 +6288,16 @@
 "ID" = (
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/last_bunker/indoors/hanger_zone)
-"IG" = (
-/turf/open/floor/prison,
-/area/last_bunker/indoors/cavern/north_entrance/zero_light)
+"IE" = (
+/obj/structure/coatrack{
+	pixel_x = 10
+	},
+/obj/item/clothing/suit/storage/manager{
+	pixel_x = 10;
+	pixel_y = 7
+	},
+/turf/open/floor/prison/blue/east,
+/area/last_bunker/indoors/sustainment_zone)
 "IH" = (
 /obj/effect/decal/cleanable/generic{
 	color = "#5d524b";
@@ -5337,10 +6329,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/last_bunker/landing_zone_2)
 "IQ" = (
-/obj/structure/machinery/power/smes/buildable{
-	capacity = 1e+006;
-	dir = 1
-	},
+/obj/structure/machinery/power/smes/buildable,
 /turf/open/floor/corsat,
 /area/last_bunker/indoors/entry_zone/power)
 "IS" = (
@@ -5354,7 +6343,11 @@
 /turf/open/auto_turf/snow/layer0,
 /area/last_bunker/outdoors/surface_exterior/south_west)
 "Ja" = (
-/turf/open/floor/plating/platingdmg3,
+/obj/item/stack/tile/plasteel{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/turf/open/floor/plating,
 /area/last_bunker/indoors/sustainment_zone)
 "Jb" = (
 /turf/open/antre/plating/direction_north/east_edge,
@@ -5383,6 +6376,26 @@
 	},
 /turf/open/auto_turf/snow/layer2,
 /area/last_bunker/outdoors/cavern_external_access/west)
+"Ju" = (
+/turf/open/floor/strata/cyan3,
+/area/last_bunker/indoors/entry_zone/train)
+"Jw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 1
+	},
+/turf/open/floor/prison/green/east,
+/area/last_bunker/indoors/sustainment_zone)
+"Jx" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 1
+	},
+/turf/open/floor/prison/floor_plate,
+/area/last_bunker/indoors/sustainment_zone)
 "Jz" = (
 /obj/structure/prop/hybrisa/fakeplatforms/platform3{
 	dir = 8
@@ -5410,11 +6423,23 @@
 	},
 /turf/open/floor/plating,
 /area/last_bunker/landing_zone_1)
+"JJ" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/prison/green,
+/area/last_bunker/indoors/sustainment_zone)
 "JN" = (
 /obj/structure/machinery/chem_dispenser/corpsman{
 	pixel_y = 3
 	},
 /turf/open/floor/hybrisa/metal/greenmetalfull,
+/area/last_bunker/indoors/sustainment_zone)
+"JO" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 10
+	},
+/turf/open/floor/prison,
 /area/last_bunker/indoors/sustainment_zone)
 "JP" = (
 /obj/structure/machinery/door/airlock/dropship_hatch/two,
@@ -5450,6 +6475,17 @@
 /obj/structure/window/framed/hybrisa/colony/engineering/reinforced,
 /turf/open/floor/plating,
 /area/last_bunker/indoors/entry_zone/power)
+"JV" = (
+/turf/open/floor/strata/blue4/east,
+/area/last_bunker/indoors/entry_zone/train)
+"JX" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 1
+	},
+/turf/open/floor/strata/blue3/southwest,
+/area/last_bunker/indoors/entry_zone/train)
 "JY" = (
 /turf/open/auto_turf/snow/layer0,
 /area/last_bunker/outdoors/eastern_cavern)
@@ -5466,6 +6502,9 @@
 	pixel_x = 11
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/misc/metergreen{
+	pixel_y = 32
+	},
 /turf/open/floor/prison/greenblue/northeast,
 /area/last_bunker/indoors/sustainment_zone)
 "Kf" = (
@@ -5500,12 +6539,30 @@
 "Kk" = (
 /turf/open/floor/plating,
 /area/last_bunker/indoors/entry_zone/power)
+"Kl" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
+/turf/open/floor/prison/green/east,
+/area/last_bunker/indoors/sustainment_zone)
+"Km" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/paper/crumpled{
+	pixel_x = 15;
+	pixel_y = -9
+	},
+/turf/open/floor/prison/floor_plate,
+/area/last_bunker/indoors/sustainment_zone)
 "Ko" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_4";
 	pixel_y = 4;
 	pixel_x = -4
 	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/prison/green/west,
 /area/last_bunker/indoors/sustainment_zone)
 "Kp" = (
@@ -5529,6 +6586,18 @@
 "Kr" = (
 /turf/open/floor/prison/green/west,
 /area/last_bunker/indoors/entry_zone)
+"Ks" = (
+/obj/effect/hybrisa/misc/fake/wire/red{
+	pixel_x = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	pixel_x = -1
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/last_bunker/indoors/sustainment_zone)
 "Kt" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -5575,6 +6644,10 @@
 	},
 /turf/open/floor/prison/blue,
 /area/last_bunker/indoors/synthetic_zone)
+"KE" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/prison/green,
+/area/last_bunker/indoors/sustainment_zone)
 "KF" = (
 /turf/closed/wall/hybrisa/marhsalls/reinforced,
 /area/last_bunker/indoors/entry_zone)
@@ -5628,6 +6701,12 @@
 	},
 /turf/open/floor/strata,
 /area/last_bunker/oob/train)
+"KU" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/strata/blue3/northeast,
+/area/last_bunker/indoors/entry_zone/train)
 "KX" = (
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 4
@@ -5797,9 +6876,43 @@
 "Md" = (
 /turf/open/floor/hybrisa/metal/greenmetal1/north,
 /area/last_bunker/indoors/sustainment_zone)
+"Me" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/processor{
+	pixel_x = -2;
+	pixel_y = 2
+	},
+/turf/open/floor/prison/green/west,
+/area/last_bunker/indoors/sustainment_zone)
+"Mi" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/turf/open/floor/strata/cyan3/east,
+/area/last_bunker/indoors/entry_zone/train)
+"Ml" = (
+/turf/open/floor/strata/cyan3/east,
+/area/last_bunker/indoors/entry_zone/train)
+"Mm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/prison/greencorner/west,
+/area/last_bunker/indoors/sustainment_zone)
 "Mo" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/cigbutt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8
+	},
 /turf/open/floor/prison/greencorner/north,
 /area/last_bunker/indoors/sustainment_zone)
 "Mp" = (
@@ -5847,6 +6960,12 @@
 	},
 /turf/open/floor/plating,
 /area/last_bunker/landing_zone_2)
+"MC" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
+/turf/open/floor/prison/green,
+/area/last_bunker/indoors/sustainment_zone)
 "MD" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
@@ -5861,8 +6980,19 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/last_bunker/indoors/synthetic_zone)
+"MF" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/prison/floor_plate,
+/area/last_bunker/indoors/sustainment_zone)
+"MG" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/prison/greencorner/west,
+/area/last_bunker/indoors/sustainment_zone)
 "MH" = (
 /obj/item/trash/cigbutt,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28
+	},
 /turf/open/floor/prison/green/north,
 /area/last_bunker/indoors/sustainment_zone)
 "MI" = (
@@ -5918,6 +7048,12 @@
 /obj/structure/largecrate/random/barrel/medical,
 /turf/open/floor/darkred2/southeast,
 /area/last_bunker/oob)
+"MT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/prison/greencorner/north,
+/area/last_bunker/indoors/sustainment_zone)
 "MU" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/greencorner/east,
@@ -5940,6 +7076,12 @@
 "Ne" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
+/area/last_bunker/indoors/sustainment_zone)
+"Ng" = (
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/turf/open/floor/prison/green/northwest,
 /area/last_bunker/indoors/sustainment_zone)
 "Nh" = (
 /turf/open/floor/antre/metal/black/southwest,
@@ -6001,16 +7143,17 @@
 	},
 /turf/open/auto_turf/snow/layer2,
 /area/last_bunker/indoors/cavern/north_entrance)
+"NE" = (
+/turf/closed/wall/hybrisa/colony/office,
+/area/last_bunker/indoors/sustainment_zone)
 "NG" = (
 /turf/open/floor/antre/metal/blackcorner/east,
 /area/last_bunker/indoors/comms/tcomms_1)
-"NK" = (
-/obj/effect/decal/hybrisa/grate,
-/obj/effect/decal/hybrisa/warningstripes_angled{
-	pixel_x = -4
-	},
-/turf/open/auto_turf/shale/layer1/weedable,
-/area/last_bunker/indoors/cavern/north_entrance/low_light)
+"NH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/manifold/hidden/cyan,
+/turf/open/floor/prison/greencorner/west,
+/area/last_bunker/indoors/sustainment_zone)
 "NL" = (
 /obj/structure/window/framed/hybrisa/research/reinforced,
 /turf/open/floor/plating,
@@ -6033,6 +7176,16 @@
 	},
 /turf/open/floor/darkblue2/east,
 /area/last_bunker/indoors/command_zone)
+"NR" = (
+/obj/structure/bed/chair/comfy/hybrisa/black{
+	dir = 4
+	},
+/obj/structure/sign/calendar/wy{
+	pixel_y = 0;
+	pixel_x = -32
+	},
+/turf/open/floor/hybrisa/carpet/carpetblackdeco,
+/area/last_bunker/indoors/sustainment_zone)
 "NS" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
@@ -6040,6 +7193,9 @@
 	},
 /turf/open/floor/darkblue2/west,
 /area/last_bunker/indoors/command_zone)
+"NT" = (
+/turf/open/floor/strata/blue3,
+/area/last_bunker/indoors/entry_zone/train)
 "NU" = (
 /obj/item/stack/tile/plasteel{
 	pixel_x = 6
@@ -6089,9 +7245,26 @@
 	},
 /turf/open/floor/strata/floor3,
 /area/last_bunker/indoors/sustainment_zone)
+"Od" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28
+	},
+/obj/item/storage/toolbox/mechanical,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/last_bunker/indoors/sustainment_zone)
 "Oj" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/green/west,
+/area/last_bunker/indoors/sustainment_zone)
+"Ol" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_12";
+	pixel_x = 7;
+	layer = 3.6;
+	pixel_y = 10
+	},
+/turf/open/floor/prison/blue/east,
 /area/last_bunker/indoors/sustainment_zone)
 "Om" = (
 /obj/structure/shuttle/part/dropship_wy/left_outer_wing_connector,
@@ -6128,8 +7301,24 @@
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/last_bunker/indoors/cavern/north)
 "Ow" = (
-/turf/open/auto_turf/sand_white/layer0,
-/area/last_bunker/indoors/cavern/north_entrance/zero_light)
+/obj/structure/blocker/invisible_wall,
+/turf/open/auto_turf/ice/layer1,
+/area/last_bunker/oob)
+"Ox" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
+/turf/open/floor/prison,
+/area/last_bunker/indoors/sustainment_zone)
+"Oy" = (
+/obj/structure/curtain/colorable_transparent{
+	color = "#5a5a5a";
+	alpha = 220;
+	layer = 3.2
+	},
+/obj/structure/window/framed/hybrisa/colony/office/reinforced,
+/turf/open/floor/plating,
+/area/last_bunker/indoors/sustainment_zone)
 "Oz" = (
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F";
@@ -6156,6 +7345,9 @@
 	layer = 3
 	},
 /obj/item/weapon/twohanded/fireaxe,
+/obj/structure/prop/hybrisa/misc/metergreen{
+	pixel_y = 32
+	},
 /turf/open/floor/corsat/box,
 /area/last_bunker/indoors/sustainment_zone)
 "OF" = (
@@ -6186,6 +7378,15 @@
 	},
 /turf/open/auto_turf/snow/layer2,
 /area/last_bunker/indoors/cavern/south_entrance)
+"OR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/prison/green/west,
+/area/last_bunker/indoors/sustainment_zone)
 "OS" = (
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 4
@@ -6206,6 +7407,13 @@
 	},
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/last_bunker/indoors/cavern/north)
+"OY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/prison/green,
+/area/last_bunker/indoors/sustainment_zone)
 "OZ" = (
 /turf/open/floor/corsat/darkgreen/west,
 /area/last_bunker/oob/hydro)
@@ -6289,7 +7497,8 @@
 /area/last_bunker/indoors/entry_zone/train)
 "Pt" = (
 /obj/structure/machinery/door/airlock/hybrisa/medical_solid{
-	dir = 1
+	dir = 1;
+	name = "\improper Consultants Office"
 	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/last_bunker/indoors/sustainment_zone)
@@ -6304,6 +7513,9 @@
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_4";
 	pixel_y = 14
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
 	},
 /turf/open/floor/prison/green,
 /area/last_bunker/indoors/sustainment_zone)
@@ -6327,6 +7539,12 @@
 	},
 /turf/open/floor/plating,
 /area/last_bunker/landing_zone_1)
+"PB" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/turf/open/floor/prison/blue/west,
+/area/last_bunker/indoors/sustainment_zone)
 "PD" = (
 /turf/open/auto_turf/snow/layer2,
 /area/last_bunker/outdoors/surface_exterior/east)
@@ -6353,9 +7571,10 @@
 	layer = 3.33;
 	pixel_y = 1
 	},
-/turf/closed/wall/hybrisa/colony/hospital/reinforced/hull,
+/turf/closed/wall/hybrisa/colony/reinforced/hull,
 /area/last_bunker/oob)
 "PO" = (
+/obj/item/storage/toolbox/mechanical,
 /turf/open/floor/prison/darkyellow2/southeast,
 /area/last_bunker/indoors/sustainment_zone)
 "PP" = (
@@ -6412,6 +7631,18 @@
 /area/last_bunker/indoors/sustainment_zone)
 "Qh" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/almayer,
+/obj/item/tool/kitchen/tray{
+	pixel_y = 6
+	},
+/obj/item/tool/kitchen/tray{
+	pixel_x = 4;
+	pixel_y = -6
+	},
+/obj/item/tool/kitchen/knife/butcher,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28
+	},
 /turf/open/floor/prison/green/northwest,
 /area/last_bunker/indoors/sustainment_zone)
 "Qi" = (
@@ -6451,13 +7682,29 @@
 /turf/open/floor/plating,
 /area/last_bunker/landing_zone_2)
 "Qq" = (
+/obj/structure/sign/nosmoking_1{
+	pixel_y = 39;
+	layer = 2.8
+	},
+/obj/structure/machinery/power/monitor{
+	density = 0;
+	pixel_y = 16
+	},
 /turf/open/floor/prison/darkyellow2/northwest,
 /area/last_bunker/indoors/sustainment_zone)
+"Qr" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/turf/open/floor/strata/blue3/northeast,
+/area/last_bunker/indoors/entry_zone/train)
 "Qt" = (
 /turf/open/floor/hybrisa/metal/zbrownfloor1/west,
 /area/last_bunker/indoors/hanger_zone)
 "Qu" = (
 /obj/structure/machinery/door/airlock/hybrisa/medical/autoname{
+	name = "\improper Medical";
 	dir = 2
 	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
@@ -6465,6 +7712,15 @@
 "Qv" = (
 /turf/open/floor/prison/darkyellow2/west,
 /area/last_bunker/indoors/entry_zone)
+"Qx" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_17";
+	layer = 4;
+	pixel_x = 10;
+	pixel_y = 11
+	},
+/turf/open/floor/prison/green/northeast,
+/area/last_bunker/indoors/sustainment_zone)
 "QB" = (
 /turf/open/floor/prison/floor_plate,
 /area/last_bunker/indoors/synthetic_zone)
@@ -6505,6 +7761,9 @@
 /turf/open/floor/prison/blue/east,
 /area/last_bunker/indoors/entry_zone)
 "QR" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 1
+	},
 /turf/open/floor/prison/bluecorner/west,
 /area/last_bunker/indoors/sustainment_zone)
 "QS" = (
@@ -6513,6 +7772,17 @@
 	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/last_bunker/indoors/residential_zone)
+"QT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/prison/floor_plate,
+/area/last_bunker/indoors/sustainment_zone)
 "QU" = (
 /turf/open/floor/darkred2/northeast,
 /area/last_bunker/indoors/command_zone)
@@ -6551,6 +7821,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/last_bunker/landing_zone_2)
+"Rk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/tool/mop{
+	pixel_x = -6;
+	pixel_y = 24
+	},
+/turf/open/floor/prison/green/north,
+/area/last_bunker/indoors/sustainment_zone)
 "Rl" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/prop/alien/hugger,
@@ -6611,6 +7889,10 @@
 	},
 /turf/open/floor/strata,
 /area/last_bunker/indoors/entry_zone/train)
+"RC" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/prison/green/east,
+/area/last_bunker/indoors/sustainment_zone)
 "RD" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
@@ -6658,6 +7940,12 @@
 	},
 /turf/open/floor/prison,
 /area/last_bunker/indoors/sustainment_zone)
+"RN" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/prison/greencorner/north,
+/area/last_bunker/indoors/sustainment_zone)
 "RS" = (
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 4
@@ -6668,8 +7956,13 @@
 "RU" = (
 /turf/open/floor/darkblue2,
 /area/last_bunker/indoors/command_zone)
+"RV" = (
+/turf/open/floor/strata/blue4/north,
+/area/last_bunker/indoors/entry_zone/train)
 "RW" = (
-/obj/structure/machinery/door/airlock/almayer,
+/obj/structure/machinery/door/airlock/almayer{
+	name = "\improper Janitorial"
+	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/last_bunker/indoors/sustainment_zone)
 "RX" = (
@@ -6704,6 +7997,9 @@
 "Sd" = (
 /turf/open/floor/plating,
 /area/last_bunker/landing_zone_1)
+"Se" = (
+/turf/open/auto_turf/sand_white/layer0,
+/area/last_bunker/indoors/cavern/north_entrance/zero_light)
 "Sg" = (
 /obj/structure/machinery/light,
 /turf/open/floor/prison/darkredfull2,
@@ -6732,6 +8028,13 @@
 "St" = (
 /turf/closed/wall/hybrisa/colony/reinforced/hull,
 /area/last_bunker/oob)
+"Su" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic{
+	name = "\improper Administration Office";
+	dir = 2
+	},
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/last_bunker/indoors/sustainment_zone)
 "Sy" = (
 /obj/structure/machinery/landinglight{
 	dir = 1
@@ -6745,6 +8048,10 @@
 "SA" = (
 /turf/open/auto_turf/shale/layer2/weedable,
 /area/last_bunker/outdoors/cavern_external_access/west/adj)
+"SD" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/prison/greencorner/east,
+/area/last_bunker/indoors/sustainment_zone)
 "SE" = (
 /turf/open/floor/shiva/floor3,
 /area/last_bunker/outdoors/surface_exterior/center)
@@ -6818,9 +8125,16 @@
 "SV" = (
 /turf/open/auto_turf/snow/layer1,
 /area/last_bunker/outdoors/eastern_cavern/low_light)
+"SY" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8
+	},
+/turf/open/auto_turf/shale/layer1/weedable,
+/area/last_bunker/indoors/cavern/north_entrance/zero_light)
 "Ta" = (
 /obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname{
-	dir = 1
+	name = "\improper Admin/Medical Zone";
+	dir = 2
 	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/last_bunker/indoors/sustainment_zone)
@@ -6836,6 +8150,7 @@
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/last_bunker/indoors/cavern/west)
 "Td" = (
+/obj/structure/machinery/power/smes/buildable,
 /turf/open/floor/prison/darkyellowfull2,
 /area/last_bunker/indoors/sustainment_zone)
 "Te" = (
@@ -6866,6 +8181,18 @@
 	},
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/last_bunker/indoors/cavern/central)
+"Tn" = (
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 11;
+	pixel_y = 1;
+	layer = 3.1
+	},
+/obj/effect/decal/strata_decals/grime/grime3{
+	pixel_x = -10
+	},
+/turf/open/floor/prison/green/southeast,
+/area/last_bunker/indoors/sustainment_zone)
 "To" = (
 /obj/structure/flora/bush/snow{
 	icon_state = "snowbush_6"
@@ -6898,17 +8225,39 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/darkred2/southwest,
 /area/last_bunker/indoors/command_zone)
+"Tt" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/turf/open/floor/strata/cyan3/southeast,
+/area/last_bunker/indoors/entry_zone/train)
+"TD" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/turf/open/floor/strata/cyan4/west,
+/area/last_bunker/indoors/entry_zone/train)
 "TF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic{
 	color = "#5d524b";
 	alpha = 155
 	},
+/obj/structure/pipes/standard/manifold/hidden/cyan,
 /turf/open/floor/prison/greencorner/west,
 /area/last_bunker/indoors/sustainment_zone)
 "TH" = (
 /turf/open/floor/prison/darkyellow2/southeast,
 /area/last_bunker/indoors/comms/tcomms_1)
+"TK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/prison/greencorner,
+/area/last_bunker/indoors/sustainment_zone)
 "TL" = (
 /obj/structure/shuttle/part/dropship_wy/nose_front_left,
 /turf/open/floor/plating,
@@ -6976,14 +8325,11 @@
 /area/last_bunker/indoors/sustainment_zone)
 "Ug" = (
 /obj/structure/machinery/door/airlock/hybrisa/generic{
-	dir = 1
+	dir = 1;
+	name = "\improper Hydroponics"
 	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/last_bunker/indoors/sustainment_zone)
-"Uh" = (
-/obj/item/device/flashlight/lamp/tripod,
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/last_bunker/indoors/cavern/north_entrance/low_light)
 "Ui" = (
 /turf/open/floor/prison/darkyellow2/southwest,
 /area/last_bunker/indoors/comms/tcomms_1)
@@ -7009,6 +8355,9 @@
 "Uo" = (
 /turf/open/auto_turf/snow/layer3,
 /area/last_bunker/outdoors/surface_exterior/center)
+"Up" = (
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/last_bunker/indoors/cavern/north_entrance/zero_light)
 "Ut" = (
 /obj/structure/prop/hybrisa/fakeplatforms/platform3{
 	pixel_y = 25
@@ -7033,6 +8382,10 @@
 /area/last_bunker/landing_zone_2)
 "Uz" = (
 /turf/open/auto_turf/shale/layer2/weedable,
+/area/last_bunker/indoors/sustainment_zone)
+"UB" = (
+/obj/structure/barricade/handrail,
+/turf/open/floor/prison/green/southeast,
 /area/last_bunker/indoors/sustainment_zone)
 "UC" = (
 /obj/effect/decal/strata_decals/catwalk/prison{
@@ -7070,6 +8423,9 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 30
 	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 10
+	},
 /turf/open/floor/prison/green/northeast,
 /area/last_bunker/indoors/sustainment_zone)
 "UH" = (
@@ -7089,9 +8445,24 @@
 /obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname,
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/last_bunker/indoors/sustainment_zone)
+"UK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/poster/wylogo{
+	pixel_y = 32;
+	layer = 2.9;
+	pixel_x = 1
+	},
+/turf/open/floor/hybrisa/metal/greenmetalfull,
+/area/last_bunker/indoors/sustainment_zone)
 "UL" = (
 /turf/open_space,
 /area/last_bunker/indoors/comms/tcomms_2_b)
+"UM" = (
+/obj/structure/surface/rack,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sheet/plasteel/med_small_stack,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/last_bunker/indoors/sustainment_zone)
 "UN" = (
 /obj/effect/landmark/railgun_camera_pos,
 /turf/open/auto_turf/snow/layer2,
@@ -7123,6 +8494,9 @@
 	},
 /obj/item/trash/cigbutt,
 /obj/item/trash/cigbutt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
 /turf/open/floor/prison/greencorner/north,
 /area/last_bunker/indoors/sustainment_zone)
 "UV" = (
@@ -7174,6 +8548,11 @@
 "Vm" = (
 /turf/open/floor/shiva/red/east,
 /area/last_bunker/indoors/entry_zone/power)
+"Vn" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/prison/greencorner/north,
+/area/last_bunker/indoors/sustainment_zone)
 "Vp" = (
 /turf/open/floor/shiva/snow_mat/north,
 /area/last_bunker/outdoors/surface_exterior/center)
@@ -7183,16 +8562,37 @@
 	},
 /turf/open/auto_turf/snow/layer2,
 /area/last_bunker/outdoors/cavern_external_access/west)
+"Vs" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/last_bunker/indoors/sustainment_zone)
+"Vt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/prison/greencorner/north,
+/area/last_bunker/indoors/sustainment_zone)
 "Vv" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/multi_tiles,
 /area/last_bunker/indoors/command_zone)
 "Vw" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
 /turf/open/floor/prison/darkyellow2/west,
 /area/last_bunker/indoors/sustainment_zone)
 "Vx" = (
 /turf/closed/wall/strata_ice,
 /area/last_bunker/outdoors/eastern_cavern)
+"Vy" = (
+/turf/open/floor/strata/blue3/northeast,
+/area/last_bunker/indoors/entry_zone/train)
 "Vz" = (
 /obj/effect/decal/cleanable/generic{
 	color = "#5d524b";
@@ -7215,11 +8615,43 @@
 /area/last_bunker/indoors/command_zone)
 "VF" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/jcloset,
+/obj/item/clothing/shoes/galoshes,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28
+	},
 /turf/open/floor/antre/metal/black/northwest,
 /area/last_bunker/indoors/sustainment_zone)
 "VH" = (
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/last_bunker/indoors/comms/tcomms_1)
+"VJ" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/sign/poster/wylogo{
+	pixel_y = 32;
+	layer = 2.9;
+	pixel_x = 1
+	},
+/obj/item/device/flashlight/lamp/green{
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/obj/item/device/implanter/subdermal_armor{
+	pixel_y = -2
+	},
+/obj/item/storage/fancy/cigar{
+	pixel_y = 10;
+	pixel_x = 7
+	},
+/obj/item/tool/lighter/zippo/executive{
+	pixel_x = 13
+	},
+/obj/item/clothing/mask/cigarette/cigar/tarbacks{
+	pixel_y = 9;
+	pixel_x = 7
+	},
+/turf/open/floor/hybrisa/carpet/carpetblackdeco,
+/area/last_bunker/indoors/sustainment_zone)
 "VK" = (
 /turf/open/floor/hybrisa/metal/zbrownfloor1,
 /area/last_bunker/indoors/hanger_zone)
@@ -7307,6 +8739,21 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/darkbluecorners2/west,
 /area/last_bunker/indoors/command_zone)
+"Wi" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_7";
+	pixel_y = 12
+	},
+/turf/open/floor/prison/green/east,
+/area/last_bunker/indoors/sustainment_zone)
+"Wj" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/prison,
+/area/last_bunker/indoors/sustainment_zone)
 "Wk" = (
 /turf/open/floor/darkpurple2/northeast,
 /area/last_bunker/indoors/command_zone)
@@ -7322,6 +8769,7 @@
 	icon_state = "trash_8";
 	pixel_y = -12
 	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/prison/greencorner/west,
 /area/last_bunker/indoors/sustainment_zone)
 "Wn" = (
@@ -7352,6 +8800,13 @@
 	},
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/last_bunker/indoors/command_zone)
+"Wu" = (
+/obj/effect/hybrisa/misc/fake/pipes/pipe1,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/last_bunker/indoors/sustainment_zone)
 "Wv" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_7";
@@ -7370,6 +8825,15 @@
 	},
 /turf/open/floor/strata,
 /area/last_bunker/oob/train)
+"Wx" = (
+/obj/structure/machinery/computer/cameras{
+	dir = 1
+	},
+/obj/structure/surface/table/almayer{
+	color = "#848484"
+	},
+/turf/open/floor/prison,
+/area/last_bunker/indoors/sustainment_zone)
 "Wy" = (
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 4
@@ -7413,6 +8877,9 @@
 "WK" = (
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/east,
 /area/last_bunker/indoors/command_zone)
+"WL" = (
+/turf/open/auto_turf/shale/layer2/weedable,
+/area/last_bunker/indoors/cavern/north_entrance/zero_light)
 "WO" = (
 /turf/open/auto_turf/snow/layer4,
 /area/last_bunker/outdoors/eastern_cavern/low_light)
@@ -7452,6 +8919,9 @@
 	color = "#98a3ab"
 	},
 /obj/item/storage/pouch/autoinjector/full,
+/obj/structure/prop/hybrisa/misc/metergreen{
+	pixel_y = 32
+	},
 /turf/open/floor/hybrisa/metal/greenmetal1/north,
 /area/last_bunker/indoors/sustainment_zone)
 "WZ" = (
@@ -7495,7 +8965,7 @@
 	layer = 3.33;
 	pixel_y = 1
 	},
-/turf/closed/wall/hybrisa/colony/hospital/reinforced/hull,
+/turf/closed/wall/hybrisa/colony/reinforced/hull,
 /area/last_bunker/oob)
 "Xn" = (
 /obj/structure/flora/bush/snow{
@@ -7536,6 +9006,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/last_bunker/indoors/synthetic_zone)
+"Xw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sheet/cardboard,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/last_bunker/indoors/sustainment_zone)
 "Xx" = (
 /obj/structure/largecrate/random/barrel/black,
 /turf/open/floor/dark,
@@ -7546,6 +9021,15 @@
 	},
 /turf/open/floor/strata,
 /area/last_bunker/indoors/entry_zone/train)
+"XB" = (
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 30
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/prison/green/north,
+/area/last_bunker/indoors/sustainment_zone)
 "XC" = (
 /obj/structure/prop/hybrisa/signs/high_voltage/small{
 	pixel_y = 32
@@ -7700,6 +9184,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/blue/north,
 /area/last_bunker/indoors/synthetic_zone)
+"Yj" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 1
+	},
+/turf/open/floor/strata/cyan3/southeast,
+/area/last_bunker/indoors/entry_zone/train)
 "Ym" = (
 /obj/structure/sink{
 	pixel_y = 21
@@ -7746,11 +9238,18 @@
 "YA" = (
 /turf/open/auto_turf/sand_white/layer0,
 /area/last_bunker/indoors/cavern/central)
+"YB" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/prison/greencorner/north,
+/area/last_bunker/indoors/sustainment_zone)
 "YC" = (
 /obj/structure/bed/chair/comfy/teal{
 	dir = 8
 	},
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/sign/poster/safety{
+	pixel_y = 32
+	},
 /turf/open/floor/hybrisa/carpet/carpet_colorable/pink,
 /area/last_bunker/indoors/sustainment_zone)
 "YF" = (
@@ -7771,9 +9270,8 @@
 /turf/open/floor/shiva/radiator_tile,
 /area/last_bunker/indoors/command_zone)
 "YL" = (
-/obj/structure/machinery/door/airlock/hybrisa/generic,
-/turf/open/floor/hybrisa/metal/yellow_warning_floor,
-/area/last_bunker/indoors/sustainment_zone)
+/turf/open/floor/strata/blue3/north,
+/area/last_bunker/indoors/entry_zone/train)
 "YM" = (
 /turf/open_space,
 /area/last_bunker/oob/train)
@@ -7786,6 +9284,13 @@
 	},
 /turf/open/auto_turf/sand_white/layer0,
 /area/last_bunker/indoors/cavern/west)
+"YR" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/computer/cameras{
+	dir = 1
+	},
+/turf/open/floor/hybrisa/carpet/carpetblackdeco,
+/area/last_bunker/indoors/sustainment_zone)
 "YS" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8
@@ -7818,11 +9323,27 @@
 "Zc" = (
 /obj/structure/bed/roller/hospital_empty/bigrollerempty3,
 /obj/structure/machinery/medical_pod/bodyscanner,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28
+	},
 /turf/open/floor/hybrisa/metal/greenmetalfull,
 /area/last_bunker/indoors/sustainment_zone)
 "Zf" = (
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/last_bunker/outdoors/surface_exterior/north_east)
+"Zg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/prison/greencorner/north,
+/area/last_bunker/indoors/sustainment_zone)
+"Zh" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/prison/greencorner/west,
+/area/last_bunker/indoors/sustainment_zone)
 "Zj" = (
 /turf/closed/wall/hybrisa/colony/reinforced,
 /area/last_bunker/indoors/entry_zone)
@@ -7854,9 +9375,19 @@
 	},
 /turf/open/auto_turf/snow/layer4,
 /area/last_bunker/indoors/cavern/south_entrance)
+"Zs" = (
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/prison/green/southwest,
+/area/last_bunker/indoors/sustainment_zone)
 "Zu" = (
 /turf/open/floor/prison/darkyellowcorners2/north,
 /area/last_bunker/indoors/comms/tcomms_2_b)
+"Zv" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/prison/greencorner/east,
+/area/last_bunker/indoors/sustainment_zone)
 "Zx" = (
 /turf/open/floor/corsat/darkgreen,
 /area/last_bunker/oob/hydro)
@@ -7922,10 +9453,24 @@
 /obj/effect/hybrisa/misc/fake/wire/red,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/last_bunker/indoors/sustainment_zone)
-"ZX" = (
-/turf/closed/shuttle/dropship_wy/StarGlider{
-	icon_state = "79"
+"ZW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/filingcabinet{
+	pixel_x = -8;
+	pixel_y = 4
 	},
+/obj/structure/filingcabinet{
+	pixel_x = 8;
+	pixel_y = 4
+	},
+/obj/effect/landmark/objective_landmark/far,
+/obj/structure/sign/poster/corporate{
+	pixel_y = 32
+	},
+/turf/open/floor/prison/blue/northwest,
+/area/last_bunker/indoors/sustainment_zone)
+"ZX" = (
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/last_bunker/oob)
 "ZY" = (
 /obj/effect/landmark/xeno_spawn,
@@ -43360,12 +44905,12 @@ Nm
 Nm
 Nm
 Nm
-Nm
-Nm
-Nm
-Nm
-Nm
-Nm
+ea
+ea
+ea
+ea
+ea
+ea
 Nm
 Nm
 Nm
@@ -43375,9 +44920,9 @@ Nm
 Nm
 tF
 tF
-Nm
-Nm
-Nm
+nA
+fL
+SR
 Nm
 Nm
 Nm
@@ -43561,14 +45106,14 @@ Nm
 Nm
 Nm
 Nm
-Nm
-Nm
-Nm
-Nm
-Nm
-Nm
-Nm
-Nm
+ea
+ea
+VJ
+NR
+uO
+YR
+ea
+ea
 Nm
 Nm
 Nm
@@ -43578,9 +45123,9 @@ Hf
 Hf
 kv
 UX
-Nm
-Nm
-Nm
+nA
+kZ
+fL
 Nm
 Nm
 Nm
@@ -43759,19 +45304,19 @@ Nm
 Nm
 Nm
 Nm
-wR
-wR
-wR
-wR
 St
 St
 St
 St
-St
-St
-St
-St
-St
+ea
+DG
+se
+xX
+gW
+qz
+ky
+ea
+ea
 St
 St
 Nm
@@ -43781,8 +45326,8 @@ nA
 Hf
 tF
 UX
-Nm
-Nm
+nA
+SR
 Nm
 Nm
 Nm
@@ -43960,31 +45505,31 @@ Nm
 Nm
 Nm
 Nm
-wR
-wR
+St
+St
 tA
 ij
 hJ
-ij
-rK
+yl
+Eo
+Mp
+PB
 Mp
 Mp
-Mp
-Mp
-Gs
+jt
 Hd
-ij
+yl
 SJ
 St
-Ja
+Uf
 fL
 OU
 nA
 nA
 DH
 UX
-Nm
-Nm
+nA
+fL
 Nm
 Nm
 Nm
@@ -44162,24 +45707,24 @@ Nm
 Nm
 Nm
 Nm
-wR
+St
 VF
 zI
 ij
-Sz
-ij
+iJ
+yl
 Cq
-ks
-ks
-ks
 IK
-nJ
-ij
-ij
+IE
+ks
+Ol
+Au
+yl
+yl
 WC
 sl
 ls
-fL
+eD
 AO
 OU
 nA
@@ -44364,20 +45909,20 @@ Nm
 Nm
 Nm
 Nm
-wR
+St
 fF
 sx
 ij
 Ue
-ij
-YL
-GI
-GI
-GI
-ij
-ij
-ij
-ij
+yl
+uz
+HK
+Oy
+Oy
+yl
+yl
+yl
+yl
 zv
 pX
 NU
@@ -44564,9 +46109,9 @@ js
 ow
 ow
 Nm
-wR
-wR
-wR
+St
+St
+St
 ij
 RW
 ij
@@ -44576,15 +46121,15 @@ Oj
 Fk
 Fk
 Fk
+Iz
+sk
 Fk
 Fk
-Fk
-Fk
-rQ
+gc
 UO
 yk
-mW
-Uz
+Ja
+uz
 fL
 AO
 nA
@@ -44774,19 +46319,19 @@ MI
 Oj
 MU
 Ne
+xy
+RC
+RC
+Wi
+YB
+MF
 Cv
-Sz
-Sz
-Sz
-HC
-lI
-Cv
-he
-Gd
-Uj
-vb
-vM
-Uf
+hG
+Jw
+Vn
+mJ
+jo
+Dd
 Ja
 SR
 Nm
@@ -44969,27 +46514,27 @@ FG
 js
 jz
 TO
-zv
+dS
 RM
 vb
 vb
 vb
 Ne
 vb
-vQ
-St
-St
-ij
-gx
+OY
+ea
+ea
+NE
+Qx
 dd
 yV
-St
-St
+ea
+ea
 rH
 Ne
-yk
+Vs
 sl
-jt
+Uf
 Nm
 Nm
 Nm
@@ -45179,18 +46724,18 @@ lI
 vb
 yO
 Fm
-St
-St
-ij
-GI
-GI
-GI
-St
-St
-ij
+ea
+ea
+NE
+FH
+FH
+FH
+ea
+ea
+NE
 rH
 Mo
-vM
+En
 St
 St
 Nm
@@ -45378,22 +46923,22 @@ vb
 cP
 vb
 nm
-vb
-yO
-vM
-ij
-ij
-rK
+mJ
+mA
+Fb
+NE
+NE
+ZW
 pZ
 pZ
 pZ
-Mp
-Gs
-ij
-ij
+HI
+mi
+NE
+NE
 kK
-rO
-sl
+Aa
+Zs
 St
 Nm
 Nm
@@ -45582,17 +47127,17 @@ vb
 lI
 mU
 tE
-yk
+Zh
 Cg
-ij
-Wz
+NE
+kt
 tN
-Ne
-Ne
-yO
+Wx
+uj
+pF
 QR
 Gs
-ij
+NE
 QJ
 UU
 vM
@@ -45784,19 +47329,19 @@ vb
 vb
 vb
 vb
-vb
+wc
 vM
-Av
+fy
 Wz
-Ne
-Ne
-vb
-vb
-vb
-rP
-ij
-ij
-zv
+Km
+yR
+Bl
+lI
+lI
+fv
+NE
+NE
+oA
 yk
 Zo
 St
@@ -45979,28 +47524,28 @@ oH
 oH
 Tc
 TO
-ij
-ij
+NE
+NE
 IY
 Sz
 kX
 kX
 HC
-lI
-vM
-uz
-Wz
-yO
-vb
-RM
-yO
-vb
-rP
-ij
-ij
+Jx
+KE
+FZ
+oU
+Wj
+oF
+mI
+hI
+HG
+tC
+NE
+NE
 UG
 wx
-vM
+jo
 St
 St
 Nm
@@ -46181,28 +47726,28 @@ oH
 oH
 JS
 TO
-ij
-ij
+NE
+NE
 GI
 GI
-St
-St
+ea
+ea
 zv
-lI
+ln
 vM
-ij
-ur
+NE
+kc
 IK
 IK
+tY
 IK
-IK
-IK
+uD
 nJ
-yO
-ij
-ij
+Xw
+NE
+NE
 Pj
-yk
+Zh
 qd
 St
 Nm
@@ -46382,29 +47927,29 @@ oH
 oH
 AR
 Nm
-wR
+St
 rK
 Ua
 Wz
 Ne
-St
-St
+ea
+ea
 Zq
-nD
+QT
 Ij
-ij
-GI
-St
-St
-uz
-da
-St
-St
-yO
-yO
-ij
+NE
+FH
+ea
+ea
+if
+Su
+ea
+ea
+Od
+UM
+NE
 gx
-Uj
+Zg
 vQ
 St
 Nm
@@ -46584,29 +48129,29 @@ oH
 AR
 js
 Nm
-wR
-Wz
+St
+hn
 fG
-ij
-ij
-ij
+NE
+NE
+NE
 pu
 MU
-Ne
+Fv
 yk
 Vz
 sl
-St
-St
-AS
-qd
-St
-St
-GI
-ij
-ij
-ij
-Zq
+ea
+ea
+ne
+fj
+ea
+ea
+FH
+NE
+NE
+NE
+vq
 vQ
 St
 Nm
@@ -46786,7 +48331,7 @@ AR
 js
 Nm
 Nm
-wR
+St
 Wz
 fG
 Av
@@ -46794,13 +48339,13 @@ AS
 Oj
 MU
 uj
-uj
+xE
 uj
 uj
 HD
 Fk
 Fk
-rQ
+Zv
 rO
 Oj
 Fk
@@ -46808,7 +48353,7 @@ Oj
 Oj
 Oj
 MI
-rQ
+Zv
 vQ
 St
 St
@@ -46988,30 +48533,30 @@ FG
 js
 Nm
 Nm
-wR
+St
 Oq
 fG
 uz
 zv
 eL
-tE
-jD
-Sz
-dd
+tk
+Gc
+dt
+Cl
 gd
-dd
-Mo
-jD
-Sz
-Sz
-iU
+Cl
+MT
+Gc
+dt
+RC
+Vt
 Cv
 gd
-Sz
-HC
-jD
-HN
-dr
+RC
+YB
+ui
+Kl
+UB
 yU
 St
 Nm
@@ -47190,13 +48735,13 @@ js
 Nm
 Nm
 Nm
-wR
-ey
+St
+nk
 rP
 GI
 zv
 EY
-jD
+vv
 dr
 rY
 zp
@@ -47211,7 +48756,7 @@ yV
 St
 St
 zv
-vM
+JJ
 ij
 ij
 ij
@@ -47392,13 +48937,13 @@ js
 Nm
 Nm
 Nm
-wR
+St
 ey
 rP
 GI
 zv
 vb
-Ij
+ug
 ij
 ij
 ij
@@ -47413,7 +48958,7 @@ ij
 St
 St
 zv
-vM
+JJ
 ij
 Bk
 cY
@@ -47594,28 +49139,28 @@ Nm
 Nm
 Nm
 Nm
-wR
+St
 ey
 rP
-ij
+NE
 zv
 tK
-vM
+JJ
 ij
 Qh
-MI
-Oj
+Me
+iy
 Fk
-Fk
+FJ
 DK
 ij
 ij
-qy
-Hu
+EF
+nx
 xQ
 ij
 Xp
-vM
+JJ
 ij
 uc
 kh
@@ -47796,20 +49341,20 @@ Nm
 Nm
 Nm
 Nm
-wR
-ey
+St
+Ic
 rP
-ij
+NE
 MH
 lI
-vM
+JJ
 GI
-Zq
+Rk
 OV
 lI
-lI
+jF
 jA
-vM
+Eu
 ij
 ij
 DT
@@ -47817,7 +49362,7 @@ UD
 ke
 ij
 zv
-vM
+JJ
 vA
 IH
 it
@@ -47998,18 +49543,18 @@ Nm
 Nm
 Nm
 Nm
-wR
+St
 ur
 nJ
-ij
+NE
 zv
 vb
-vM
+JJ
 GI
-zv
+Dv
 yO
-lI
-lI
+Fi
+HS
 ZU
 vM
 XF
@@ -48019,7 +49564,7 @@ Cu
 Ph
 Oc
 zv
-vM
+JJ
 Ug
 HR
 it
@@ -48200,28 +49745,28 @@ Nm
 Nm
 Nm
 Nm
-wR
-ij
-ij
-ij
+St
+NE
+NE
+NE
 Pj
 EY
-vM
+JJ
 ij
 GW
+pn
 Sz
 Sz
 Sz
-Sz
-dr
+Tn
 XF
 Tq
 Hu
 iq
-Hu
+Cf
 VM
 Zq
-vQ
+OY
 vA
 HR
 it
@@ -48402,13 +49947,13 @@ Nm
 Nm
 Nm
 Nm
-wR
+St
 Ec
-AS
+Ng
 Fk
 rQ
 EY
-vM
+JJ
 ij
 ij
 GI
@@ -48420,7 +49965,7 @@ ij
 nT
 qy
 CA
-qy
+hL
 eH
 Zq
 Pw
@@ -48604,16 +50149,16 @@ KP
 Nm
 Nm
 Nm
-wR
+St
 qs
-gx
-Sz
-Sz
-Uj
-rO
+sK
+RC
+RC
+Vn
+NH
 sl
 ij
-AS
+pC
 Fk
 Fk
 sl
@@ -48625,7 +50170,7 @@ Ph
 sc
 Qg
 Zq
-vM
+JJ
 ij
 ij
 tJ
@@ -48806,27 +50351,27 @@ Hz
 Hz
 Nm
 Nm
-wR
+St
 Lb
-bi
+xJ
 Lb
 Lb
 rH
-iU
-rO
-Oj
-rQ
-lI
-lI
-yk
+tp
+Mm
+zU
+SD
+MF
+MF
+MG
 lB
 Ko
-Fk
-Fk
-Fk
-Fk
-Fk
-rQ
+rL
+rL
+rL
+rL
+rL
+SD
 TF
 GX
 ij
@@ -49008,7 +50553,7 @@ GB
 bo
 Nm
 Nm
-wR
+St
 Qq
 Vw
 nw
@@ -49016,7 +50561,7 @@ Lb
 bc
 GH
 Uj
-Ne
+Fv
 vb
 vb
 vb
@@ -49029,12 +50574,12 @@ vb
 vb
 vb
 vb
-vb
-rO
-un
-Oj
+JO
+Mm
+GJ
+wA
 Fk
-sl
+mn
 Cr
 St
 Nm
@@ -49210,7 +50755,7 @@ GB
 bo
 AD
 Nm
-wR
+St
 BH
 nm
 tT
@@ -49218,7 +50763,7 @@ Td
 bc
 bc
 Pj
-Ne
+Fv
 Ne
 kx
 uk
@@ -49234,9 +50779,9 @@ XX
 UT
 Ne
 Bf
+xE
 uj
-uj
-vM
+Bv
 yU
 St
 Nm
@@ -49412,7 +50957,7 @@ GB
 GB
 Nm
 Nm
-wR
+St
 tq
 Pf
 PO
@@ -49420,7 +50965,7 @@ Lb
 bc
 AS
 rQ
-vb
+wc
 vb
 Va
 dY
@@ -49436,7 +50981,7 @@ kB
 lV
 vb
 ds
-lI
+ln
 uj
 xU
 qs
@@ -49614,7 +51159,7 @@ GB
 GB
 Nm
 Nm
-wR
+St
 Lb
 bi
 Lb
@@ -49622,23 +51167,23 @@ Lb
 AS
 MU
 Zz
-vb
+wc
 jD
 Sz
-Sz
+uy
 Gd
 he
 dd
 dd
 dd
 dd
-Sz
-Sz
+XQ
+XQ
 HN
 Sz
 Sz
 HC
-vb
+wc
 lI
 vM
 wR
@@ -49816,15 +51361,15 @@ dz
 GB
 Nm
 Nm
-wR
+St
 qs
-AS
+Ng
 Oj
 Oj
 rQ
 Ne
 lI
-jD
+vv
 aN
 wR
 wR
@@ -49840,7 +51385,7 @@ wR
 wR
 wR
 Mx
-HC
+RN
 lI
 Ij
 wR
@@ -50018,7 +51563,7 @@ dz
 GB
 Nm
 Nm
-wR
+St
 vI
 de
 dd
@@ -50026,7 +51571,7 @@ dd
 dd
 HC
 vb
-vM
+JJ
 wR
 wR
 gX
@@ -50042,7 +51587,7 @@ Ka
 KO
 wR
 wR
-Xp
+XB
 vb
 vM
 wR
@@ -50228,9 +51773,9 @@ jx
 jx
 zv
 sm
-vM
+JJ
 wN
-fs
+FQ
 uf
 uj
 Wp
@@ -50244,7 +51789,7 @@ NM
 iH
 fs
 wN
-zv
+oA
 yt
 oN
 IL
@@ -50446,7 +51991,7 @@ ub
 vb
 BN
 BJ
-zv
+oA
 yt
 Gu
 IL
@@ -50632,7 +52177,7 @@ pr
 jx
 MK
 sm
-vM
+JJ
 BJ
 uH
 yZ
@@ -50648,7 +52193,7 @@ Ne
 nG
 AK
 BJ
-zv
+oA
 jJ
 Gu
 IL
@@ -50834,7 +52379,7 @@ pr
 oZ
 zv
 sm
-vM
+JJ
 wN
 ts
 oc
@@ -50850,7 +52395,7 @@ JE
 RZ
 UI
 wN
-Zq
+vq
 jJ
 vM
 Pt
@@ -51036,23 +52581,23 @@ pr
 oZ
 zv
 vb
-vM
+JJ
 wN
 wN
 Rs
 mf
-In
+HJ
 wN
 BJ
 ox
 BJ
 wN
-BN
+UK
 AK
 UI
 wJ
 wN
-Zq
+vq
 Ne
 Ij
 IL
@@ -51238,7 +52783,7 @@ fD
 jx
 zv
 vb
-rO
+Ed
 qd
 wN
 wN
@@ -51254,7 +52799,7 @@ wN
 wN
 wN
 yT
-MU
+uI
 nD
 vM
 IL
@@ -51440,23 +52985,23 @@ Sg
 jx
 zv
 lI
-vb
+jT
 Wm
-Oj
-un
-MI
-Oj
-Fk
-Fk
-Fk
-Fk
-Fk
-Vz
-Fk
+um
+GJ
+OR
+zU
+rL
+rL
+rL
+rL
+rL
+zN
+rL
 lB
-Fk
-rQ
-vb
+rL
+SD
+Ox
 lI
 wn
 Fk
@@ -51642,13 +53187,13 @@ MO
 jx
 Pj
 lI
-Cv
+TK
 dd
 dd
 dd
 HC
+Ks
 lV
-kB
 vb
 lI
 xj
@@ -51844,13 +53389,13 @@ oc
 AS
 rQ
 lI
-vM
+JJ
 wN
 wN
 wN
 zv
+Wu
 UT
-jA
 jD
 XQ
 me
@@ -51863,7 +53408,7 @@ vM
 St
 mQ
 St
-gx
+Fy
 UW
 dr
 St
@@ -52046,12 +53591,12 @@ Pc
 gx
 HC
 nm
-vM
+MC
 wN
 Qc
 uz
 Zq
-vb
+wc
 jD
 eC
 wN
@@ -52253,7 +53798,7 @@ wN
 WY
 uz
 Zq
-Cv
+TK
 lO
 wN
 wN
@@ -52432,7 +53977,7 @@ bg
 FX
 FX
 FX
-kg
+ha
 bp
 bw
 bw
@@ -52469,9 +54014,9 @@ rO
 Fk
 sl
 ij
-IG
-IG
-IG
+lR
+lR
+lR
 JD
 Nm
 Tb
@@ -52657,7 +54202,7 @@ wN
 Ln
 uz
 Zq
-vM
+JJ
 wN
 Ym
 Md
@@ -52671,8 +54216,8 @@ vb
 RM
 vM
 Gv
-IG
-IG
+lR
+lR
 JD
 JD
 If
@@ -52859,7 +54404,7 @@ Lc
 In
 Qu
 rH
-dr
+yQ
 BJ
 LL
 Md
@@ -52873,7 +54418,7 @@ lI
 lI
 vZ
 UJ
-IG
+lR
 JD
 rE
 VA
@@ -53061,7 +54606,7 @@ JN
 In
 BJ
 Yw
-SS
+eT
 BJ
 tG
 Md
@@ -53263,7 +54808,7 @@ wN
 wN
 wN
 uz
-Ta
+ss
 wN
 wN
 wR
@@ -53491,8 +55036,8 @@ Tb
 Nm
 Nm
 Nm
-fw
-fw
+SY
+SY
 St
 St
 St
@@ -53689,7 +55234,7 @@ Py
 VA
 VA
 of
-NK
+zt
 Nm
 Nm
 Nm
@@ -53892,12 +55437,12 @@ Py
 VA
 nd
 xh
-RX
-aV
-aV
-aV
-aV
-aV
+JX
+mW
+mW
+mW
+mW
+JV
 St
 St
 St
@@ -54071,7 +55616,7 @@ St
 Aj
 Aj
 Pb
-QS
+fr
 Aj
 Aj
 Aj
@@ -54091,7 +55636,7 @@ Tb
 vz
 vz
 aX
-mg
+ek
 nd
 Pp
 RA
@@ -54099,8 +55644,8 @@ aV
 aV
 aV
 aV
-aV
-aV
+in
+JV
 St
 St
 St
@@ -54273,7 +55818,7 @@ qc
 QZ
 Aj
 Lw
-Lu
+dW
 qc
 QZ
 Aj
@@ -54294,7 +55839,7 @@ To
 lq
 Tb
 lt
-gt
+Qr
 RA
 El
 El
@@ -54302,7 +55847,7 @@ El
 El
 El
 El
-El
+el
 qW
 Hr
 jX
@@ -54475,7 +56020,7 @@ yy
 bI
 Aj
 wB
-SK
+fp
 SK
 bI
 WS
@@ -54496,7 +56041,7 @@ VX
 vz
 Mt
 lt
-aV
+YL
 FB
 ET
 aP
@@ -54698,7 +56243,7 @@ VX
 Tb
 EP
 lt
-aV
+YL
 FB
 Iv
 ko
@@ -54900,7 +56445,7 @@ VX
 fn
 yK
 lt
-aV
+YL
 FB
 Iv
 ko
@@ -55102,7 +56647,7 @@ VX
 fn
 Tb
 Nm
-aV
+YL
 FB
 Iv
 ko
@@ -55110,7 +56655,7 @@ Iv
 PN
 Ig
 gt
-gt
+Tt
 yq
 ew
 Ho
@@ -55304,15 +56849,15 @@ Tb
 Tb
 Tb
 Nm
-aV
+YL
 FB
 Iv
 ko
 Iv
 Xm
 aV
-aV
-aV
+Ap
+sM
 St
 St
 St
@@ -55506,14 +57051,14 @@ Tb
 tH
 tH
 Nm
-aV
+YL
 FB
 Iv
 ko
 Iv
 RX
-aV
-aV
+Ap
+sM
 Da
 St
 St
@@ -55708,13 +57253,13 @@ vz
 tH
 Nm
 Nm
-aV
+YL
 FB
 Iv
 ko
 Iv
 RX
-aV
+Ju
 Da
 Da
 ku
@@ -55893,11 +57438,11 @@ sX
 SK
 bI
 Aj
-IG
-IG
-IG
-IG
-IG
+lR
+lR
+lR
+lR
+lR
 Nm
 tH
 tH
@@ -55910,13 +57455,13 @@ tH
 tH
 Nm
 Nm
-aV
+YL
 FB
 Iv
 ko
 Iv
 RX
-aV
+qk
 Da
 ku
 ku
@@ -56095,10 +57640,10 @@ la
 SK
 bI
 Aj
-IG
-IG
-IG
-IG
+lR
+lR
+lR
+lR
 JD
 Nm
 sd
@@ -56112,7 +57657,7 @@ tH
 tH
 Nm
 Nm
-aV
+YL
 hr
 zn
 zn
@@ -56297,9 +57842,9 @@ wB
 CM
 sn
 WS
-IG
-IG
-IG
+lR
+lR
+lR
 JD
 JD
 If
@@ -56314,7 +57859,7 @@ tH
 Nm
 Nm
 Nm
-aV
+YL
 aV
 qt
 qt
@@ -56499,8 +58044,8 @@ wB
 CM
 Lw
 Pb
-IG
-IG
+lR
+lR
 JD
 JD
 JD
@@ -56516,7 +58061,7 @@ Tb
 Nm
 Nm
 Nm
-aV
+YL
 Xz
 le
 le
@@ -56701,7 +58246,7 @@ es
 RF
 Bp
 Aj
-IG
+lR
 JD
 JD
 rE
@@ -56718,13 +58263,13 @@ Nm
 Nm
 Nm
 Nm
-aV
+YL
 FB
 Iv
 ko
 Iv
 RX
-aV
+Ap
 Da
 ku
 ku
@@ -56920,13 +58465,13 @@ Nm
 Nm
 Nm
 Nm
-aV
+YL
 FB
 Iv
 ko
 Iv
 RX
-aV
+Ju
 Da
 Da
 ku
@@ -57122,13 +58667,13 @@ Nm
 Nm
 df
 df
-aV
+YL
 FB
 Iv
 ko
 Iv
 RX
-aV
+Ju
 Da
 St
 Da
@@ -57270,7 +58815,7 @@ tI
 ID
 tI
 OF
-OF
+fb
 wW
 oL
 OC
@@ -57323,14 +58868,14 @@ Nm
 Nm
 df
 df
-aV
-aV
+hN
+vB
 FB
 Iv
 ko
 Iv
 RX
-aV
+Ju
 Da
 St
 Da
@@ -57518,21 +59063,21 @@ Py
 VA
 VA
 of
-NK
+zt
 rS
 Nm
 Nm
 Nm
 df
-aV
-aV
+hN
+vB
 aV
 FB
 Iv
 ko
 Iv
 RX
-aV
+Ju
 Da
 St
 Da
@@ -57722,11 +59267,11 @@ VA
 nd
 xh
 RX
-aV
-aV
-aV
-aV
-aV
+in
+mW
+mW
+mW
+vB
 aV
 aV
 DM
@@ -57734,7 +59279,7 @@ Iv
 ko
 Iv
 RX
-aV
+Ju
 Da
 St
 Da
@@ -57920,7 +59465,7 @@ VX
 ST
 lq
 aX
-mg
+ek
 nd
 Pp
 ql
@@ -57936,7 +59481,7 @@ Iv
 ko
 Iv
 RX
-aV
+Ju
 Da
 Da
 ku
@@ -58138,7 +59683,7 @@ qb
 ko
 Iv
 RX
-aV
+qk
 Da
 ku
 ku
@@ -58528,7 +60073,7 @@ yK
 uu
 DS
 Nm
-aV
+Vy
 FB
 Iv
 ko
@@ -58679,7 +60224,7 @@ MW
 MW
 pR
 LT
-LT
+rd
 LT
 LT
 LT
@@ -58689,8 +60234,8 @@ aJ
 LT
 qR
 AI
-IG
-IG
+lR
+lR
 JD
 JD
 Ns
@@ -58730,7 +60275,7 @@ AV
 QC
 Nm
 Nm
-aV
+YL
 FB
 Iv
 ko
@@ -58891,7 +60436,7 @@ pR
 LT
 qR
 bk
-IG
+lR
 JD
 rE
 sH
@@ -58932,21 +60477,21 @@ dV
 Nm
 Nm
 Nm
-aV
+YL
 FB
 Iv
 ko
 Iv
 RX
 aV
-aV
-aV
-aV
-aV
-aV
-aV
-aV
-aV
+Ap
+Ml
+Ml
+Ml
+Ml
+Ml
+Ml
+Ml
 Da
 ku
 ku
@@ -58955,10 +60500,10 @@ ku
 ku
 ku
 ku
-Da
-Da
+Zj
+Zj
 Io
-Da
+Zj
 St
 St
 St
@@ -59134,33 +60679,33 @@ Nm
 Nm
 Nm
 Nm
-aV
+YL
 FB
 Iv
 ko
 Iv
 RX
 aV
-aV
+Ju
 us
 us
 us
-St
-St
-St
-St
-St
-St
+ip
+ip
+ip
+ip
+ip
+ip
 ku
 ku
 ku
 ku
 ku
-Da
-Da
+Zj
+Zj
 rh
 RI
-Da
+Zj
 Nm
 Nm
 Nm
@@ -59303,7 +60848,7 @@ Xt
 Px
 oI
 Hw
-CP
+st
 uu
 Nm
 Nm
@@ -59336,14 +60881,14 @@ Nm
 Nm
 Nm
 GD
-aV
+YL
 FB
 Iv
 ko
 Iv
 RX
 aV
-aV
+Ju
 St
 rh
 rh
@@ -59352,17 +60897,17 @@ RI
 rh
 rh
 rh
-St
-St
+ip
+ip
 ku
 ku
 ku
-Da
-Da
+Zj
+Zj
 RI
 rh
 RI
-Da
+Zj
 Nm
 Nm
 Nm
@@ -59504,7 +61049,7 @@ Xt
 Xt
 Xt
 Px
-NK
+zt
 rS
 GD
 GD
@@ -59538,24 +61083,24 @@ Nm
 Nm
 Nm
 GD
-aV
+YL
 FB
 Iv
 ko
 Iv
 RX
 aV
-aV
+qk
 St
 rh
 rh
-Da
+Zj
 rh
 rh
 RI
 rh
 RI
-St
+ip
 ku
 ku
 ku
@@ -59564,7 +61109,7 @@ rh
 rh
 rh
 rh
-Da
+Zj
 Nm
 Nm
 Nm
@@ -59707,8 +61252,8 @@ Xt
 nd
 nd
 Co
-RX
-aV
+JX
+JV
 GD
 Nm
 Nm
@@ -59740,7 +61285,7 @@ Nm
 Nm
 GD
 GD
-aV
+YL
 FB
 Iv
 ko
@@ -59751,22 +61296,22 @@ aV
 af
 RI
 rh
-St
-St
+ip
+ip
 Io
-St
-St
-St
-St
+ip
+ip
+ip
+ip
 ku
 ku
 ku
-Da
+Zj
 RI
 rh
 RI
-Da
-Da
+Zj
+Zj
 St
 St
 St
@@ -59890,10 +61435,10 @@ bm
 Nm
 Nm
 Nm
-Ow
-lR
-lR
-lR
+Se
+do
+do
+do
 Nm
 Nm
 Nm
@@ -59905,19 +61450,19 @@ Dr
 Hw
 Hw
 xa
-mg
-Uh
+ek
+hu
 nd
 Pp
 RA
-aV
+NT
 GD
 Nm
 Nm
-lR
-im
-im
-im
+do
+AE
+AE
+AE
 Nm
 Nm
 Nm
@@ -59929,9 +61474,9 @@ Nm
 Tb
 Nm
 DS
-ov
+yS
 FU
-ov
+yS
 Nm
 Nm
 Nm
@@ -59941,19 +61486,19 @@ Nm
 Nm
 GD
 GD
-aV
-aV
+hN
+vB
 FB
 Iv
 ko
 Iv
 RX
 aV
-aV
-St
-St
-St
-St
+Ap
+ip
+ip
+ip
+ip
 ku
 ku
 ku
@@ -59966,9 +61511,9 @@ ku
 St
 St
 Io
-Da
-Da
-Da
+Zj
+Zj
+Zj
 St
 St
 St
@@ -60091,11 +61636,11 @@ Nm
 Nm
 Nm
 Nm
-Ow
-Ow
-lR
-xy
-lR
+Se
+Se
+do
+WL
+do
 Nm
 Nm
 Nm
@@ -60108,11 +61653,11 @@ GD
 GD
 GD
 GD
-gt
+Qr
 gt
 RA
 aV
-aV
+NT
 GD
 GD
 GD
@@ -60142,8 +61687,8 @@ Nm
 GD
 GD
 GD
-aV
-aV
+hN
+vB
 aV
 FB
 Iv
@@ -60151,8 +61696,8 @@ ko
 Iv
 RX
 aV
-aV
-aV
+qk
+pf
 Da
 Da
 ku
@@ -60293,10 +61838,10 @@ Nm
 Nm
 Nm
 Nm
-Ow
-lR
-lR
-lR
+Se
+do
+do
+do
 Nm
 Nm
 DS
@@ -60307,44 +61852,44 @@ ul
 Hw
 GD
 GD
+hN
+mW
+mW
+vB
 aV
 aV
 aV
-aV
-aV
-aV
-aV
-aV
-aV
-aV
-aV
-aV
-aV
-aV
-aV
-aV
-aV
-aV
-aV
-aV
-aV
-aV
-aV
-aV
-aV
-aV
-aV
-aV
-aV
-aV
-aV
-aV
-aV
-aV
-aV
-aV
-aV
-aV
+in
+mW
+mW
+mW
+mW
+mW
+mW
+mW
+mW
+mW
+mW
+mW
+mW
+mW
+mW
+mW
+mW
+mW
+mW
+mW
+mW
+mW
+mW
+mW
+mW
+mW
+mW
+mW
+mW
+mW
+vB
 aV
 aV
 DM
@@ -60354,7 +61899,7 @@ Iv
 RX
 aV
 aV
-aV
+Ju
 Da
 ku
 ku
@@ -60494,11 +62039,11 @@ Nm
 Nm
 Nm
 Nm
-lR
-lR
-xy
-lR
-lR
+do
+do
+WL
+do
+do
 Nm
 Nm
 DS
@@ -60508,8 +62053,8 @@ HA
 HA
 Hw
 GD
-aV
-aV
+hN
+vB
 Xz
 El
 El
@@ -60556,7 +62101,7 @@ Iv
 Xm
 aV
 aV
-aV
+Ju
 Da
 ku
 ku
@@ -60696,11 +62241,11 @@ Nm
 Nm
 Nm
 Nm
-iW
-lR
-lR
-lR
-lR
+Up
+do
+do
+do
+do
 Nm
 DS
 DS
@@ -60710,7 +62255,7 @@ Hw
 Hw
 yd
 GD
-aV
+YL
 aV
 FB
 ET
@@ -60758,7 +62303,7 @@ Iv
 Xm
 aV
 aV
-aV
+Ju
 Da
 ku
 ku
@@ -60897,12 +62442,12 @@ Nm
 Nm
 Nm
 Nm
-Gw
-iW
-lR
-lR
-lR
-lR
+Ab
+Up
+do
+do
+do
+do
 DS
 DS
 DS
@@ -60912,7 +62457,7 @@ Hw
 su
 Hw
 gr
-aV
+YL
 aV
 FB
 Iv
@@ -60960,7 +62505,7 @@ Iv
 Xm
 aV
 aV
-aV
+Ju
 Da
 ku
 ku
@@ -61101,10 +62646,10 @@ Nm
 Nm
 Nm
 Nm
-lR
-lR
-xy
-lR
+do
+do
+WL
+do
 DS
 uu
 uu
@@ -61114,7 +62659,7 @@ Hw
 Ub
 WZ
 gr
-aV
+YL
 aV
 FB
 Iv
@@ -61161,8 +62706,8 @@ aP
 qb
 RX
 aV
-aV
-aV
+Ap
+sM
 Da
 ku
 ku
@@ -61303,10 +62848,10 @@ Nm
 Nm
 Nm
 Nm
-lR
-lR
-lR
-lR
+do
+do
+do
+do
 DS
 DS
 XY
@@ -61316,18 +62861,18 @@ Hw
 KQ
 WZ
 St
-aV
-aV
+RV
+Vy
 FB
 Iv
 ko
 Iv
 hR
-gt
-gt
+Tt
+TD
 St
-gt
-gt
+CT
+jC
 RA
 aV
 Xa
@@ -61342,18 +62887,18 @@ Ig
 gt
 gt
 gt
-gt
-gt
-gt
+Tt
+Mi
+jC
 RA
 Xa
-gt
-gt
+Tt
+jC
 RA
 Xa
-gt
-gt
-gt
+Tt
+Mi
+jC
 gt
 gt
 gt
@@ -61363,7 +62908,7 @@ gt
 gt
 RA
 aV
-aV
+Ju
 Da
 Da
 ku
@@ -61506,10 +63051,10 @@ Nm
 Nm
 Nm
 Nm
-lR
-lR
-lR
-lR
+do
+do
+do
+do
 QC
 QC
 Nm
@@ -61519,53 +63064,53 @@ DS
 St
 St
 St
-aV
-FB
+RV
+KU
 Iv
 ko
 Iv
-RX
-aV
+Yj
+sM
 St
 St
 St
+ED
+Ml
+Ml
+Ml
+Ml
+Ml
+Ml
+wh
 aV
 aV
 aV
 aV
 aV
 aV
-aV
-aV
-aV
-aV
-aV
-aV
-aV
-aV
-aV
-aV
-St
-St
-Ql
-Ql
+Ap
+sM
 St
 St
 Ql
 Ql
 St
 St
+Ql
+Ql
+St
+St
+ED
+wh
+Ap
+wh
 aV
 aV
 aV
-aV
-aV
-aV
-aV
-aV
-aV
-aV
-aV
+Ap
+wh
+Ap
+sM
 Da
 ku
 ku
@@ -61709,9 +63254,9 @@ Nm
 Nm
 Nm
 Nm
-lR
-xy
-lR
+do
+WL
+do
 Nm
 Nm
 Nm
@@ -61738,14 +63283,14 @@ Ql
 St
 Da
 Da
-aV
-aV
-aV
-aV
-aV
-aV
-aV
-aV
+ED
+Ml
+Ml
+Ml
+Ml
+Ml
+Ml
+sM
 Da
 St
 St
@@ -61758,15 +63303,15 @@ ku
 St
 St
 Da
-aV
-aV
+ED
+sM
 St
 aV
 aV
 aV
 St
-aV
-aV
+ED
+sM
 Da
 Da
 ku
@@ -61910,13 +63455,13 @@ Nm
 Nm
 Nm
 Nm
-lR
-lR
-lR
-lR
-Ow
-Ow
-Ow
+do
+do
+do
+do
+Se
+Se
+Se
 Nm
 Nm
 St
@@ -62111,15 +63656,15 @@ Nm
 Nm
 Nm
 Nm
-xy
-lR
-xy
-xy
-lR
-Ow
-Ow
-Ow
-Ow
+WL
+do
+WL
+WL
+do
+Se
+Se
+Se
+Se
 Nm
 St
 St
@@ -62315,12 +63860,12 @@ Nm
 Nm
 Nm
 Nm
-lR
-lR
-Ow
-Ow
-Ow
-Ow
+do
+do
+Se
+Se
+Se
+Se
 Nm
 Nm
 St
@@ -62518,10 +64063,10 @@ Nm
 Nm
 Nm
 Nm
-lR
-Ow
-Ow
-Ow
+do
+Se
+Se
+Se
 Nm
 Nm
 Nm
@@ -62722,7 +64267,7 @@ Nm
 Nm
 Nm
 Nm
-Ow
+Se
 Nm
 Nm
 Nm
@@ -67629,7 +69174,7 @@ Nm
 Nm
 Nm
 bc
-sU
+Gm
 iS
 WV
 WV
@@ -77915,11 +79460,11 @@ Nm
 Nm
 Nm
 Nm
-Pa
-Pa
+Ow
+Ow
 bS
-rq
-rq
+rx
+rx
 bY
 Nm
 Nm
@@ -78117,7 +79662,7 @@ Nm
 Nm
 Nm
 bS
-Pa
+Ow
 cx
 cG
 Nm
@@ -78325,7 +79870,7 @@ cH
 cG
 Nm
 Nm
-rq
+rx
 bY
 Nm
 Nm
@@ -78519,16 +80064,16 @@ Nm
 Nm
 Nm
 Nm
-rq
-Pa
+rx
+Ow
 cJ
 cz
 mj
 cH
 cG
 Nm
-rq
-rq
+rx
+rx
 Nm
 Nm
 Nm
@@ -78721,15 +80266,15 @@ Nm
 Nm
 Nm
 Nm
-rq
+rx
 bS
-Pa
+Ow
 cJ
 cz
 mj
 cr
 Nm
-rq
+rx
 Nm
 Nm
 Nm
@@ -78925,8 +80470,8 @@ Nm
 Nm
 Nm
 Nm
-Pa
-Pa
+Ow
+Ow
 cJ
 cz
 cH
@@ -79085,9 +80630,9 @@ Nm
 Nm
 bY
 bS
-Pa
-Pa
-Pa
+Ow
+Ow
+Ow
 Nm
 Nm
 Nm
@@ -79128,12 +80673,12 @@ Nm
 Nm
 Nm
 Nm
-Pa
+Ow
 bS
 cA
 cu
 cs
-Pa
+Ow
 Nm
 Nm
 Nm
@@ -79284,12 +80829,12 @@ Nm
 Nm
 Nm
 Nm
-rq
+rx
 bS
-Pa
+Ow
 cx
 RL
-Pa
+Ow
 Nm
 Nm
 Nm
@@ -79331,11 +80876,11 @@ Nm
 Nm
 Nm
 Nm
-rq
+rx
 cJ
 cs
-Pa
-Pa
+Ow
+Ow
 Nm
 Nm
 Nm
@@ -79491,8 +81036,8 @@ cx
 ct
 cy
 cr
-Pa
-Pa
+Ow
+Ow
 Nm
 Nm
 Nm
@@ -79533,9 +81078,9 @@ Nm
 Nm
 Nm
 Nm
-rq
+rx
 bY
-rq
+rx
 bS
 Nm
 Nm
@@ -79894,8 +81439,8 @@ PI
 mj
 cu
 dQ
-Pa
-rq
+Ow
+rx
 Nm
 Nm
 Nm
@@ -80091,11 +81636,11 @@ Nm
 Nm
 Nm
 bS
-Pa
+Ow
 cJ
 cK
 dQ
-Pa
+Ow
 bS
 bY
 Nm
@@ -80293,11 +81838,11 @@ Nm
 Nm
 Nm
 bY
-rq
-rq
-Pa
-Pa
-Pa
+rx
+rx
+Ow
+Ow
+Ow
 bS
 Nm
 Nm
@@ -80497,7 +82042,7 @@ Nm
 Nm
 Nm
 bY
-rq
+rx
 bS
 Nm
 Nm
@@ -88548,7 +90093,7 @@ Nm
 Nm
 Nm
 Nm
-Pa
+Ow
 mx
 Nm
 Nm
@@ -88750,8 +90295,8 @@ Nm
 Nm
 Nm
 bZ
-Pa
-Pa
+Ow
+Ow
 bY
 Nm
 Nm
@@ -88951,11 +90496,11 @@ Nm
 Nm
 Nm
 Nm
-rq
-Pa
+rx
+Ow
 cn
-Pa
-rq
+Ow
+rx
 Nm
 Nm
 Nm
@@ -88994,8 +90539,8 @@ Nm
 Nm
 Nm
 Nm
-Pa
-Pa
+Ow
+Ow
 bS
 Nm
 Nm
@@ -89152,12 +90697,12 @@ Nm
 Nm
 Nm
 Nm
-Pa
-Pa
-Pa
+Ow
+Ow
+Ow
 cp
-Pa
-rq
+Ow
+rx
 Nm
 Nm
 Nm
@@ -89195,10 +90740,10 @@ Nm
 Nm
 Nm
 Nm
-rq
-Pa
+rx
+Ow
 ff
-rq
+rx
 bY
 Nm
 Nm
@@ -89354,12 +90899,12 @@ Nm
 Nm
 Nm
 mx
-Pa
+Ow
 cx
 ct
 cq
-Pa
-Pa
+Ow
+Ow
 Nm
 Nm
 Nm
@@ -89396,7 +90941,7 @@ Nm
 Nm
 Nm
 Nm
-rq
+rx
 bS
 cx
 HT
@@ -89554,14 +91099,14 @@ Nm
 Nm
 Nm
 Nm
-rq
-Pa
+rx
+Ow
 cx
 cy
 mj
 cr
-Pa
-Pa
+Ow
+Ow
 Nm
 Nm
 Nm
@@ -89597,14 +91142,14 @@ Nm
 Nm
 Nm
 Nm
-Pa
+Ow
 mx
 cx
 cy
 mj
 cr
-Pa
-Pa
+Ow
+Ow
 Nm
 Nm
 Nm
@@ -89755,14 +91300,14 @@ Nm
 Nm
 Nm
 Nm
-rq
+rx
 bS
-Pa
+Ow
 cA
 mj
 mj
 cr
-Pa
+Ow
 mx
 Nm
 Nm
@@ -89800,13 +91345,13 @@ Nm
 Nm
 Nm
 Nm
-Pa
+Ow
 cJ
 cK
 vf
 cs
-Pa
-Pa
+Ow
+Ow
 Nm
 Nm
 Nm
@@ -89957,14 +91502,14 @@ Nm
 Nm
 Nm
 Nm
-rq
-Pa
+rx
+Ow
 cF
 cE
 cz
 cu
 cs
-Pa
+Ow
 bS
 Nm
 Nm
@@ -90002,9 +91547,9 @@ Nm
 Nm
 Nm
 Nm
-Pa
-Pa
-Pa
+Ow
+Ow
+Ow
 cB
 bS
 iD
@@ -90160,14 +91705,14 @@ Nm
 Nm
 Nm
 Nm
-Pa
-Pa
+Ow
+Ow
 Nm
 cA
 cr
-Pa
-Pa
-rq
+Ow
+Ow
+rx
 Nm
 Nm
 Nm
@@ -90208,7 +91753,7 @@ Nm
 Nm
 iD
 bY
-rq
+rx
 Nm
 Nm
 Nm
@@ -90362,13 +91907,13 @@ Nm
 Nm
 Nm
 Nm
-Pa
-Pa
+Ow
+Ow
 Nm
 cA
 cs
-Pa
-rq
+Ow
+rx
 Nm
 Nm
 Nm
@@ -90408,8 +91953,8 @@ Nm
 Nm
 Nm
 Nm
-Pa
-Pa
+Ow
+Ow
 Nm
 Nm
 Nm
@@ -90565,11 +92110,11 @@ Nm
 Nm
 Nm
 iD
-Pa
-Pa
+Ow
+Ow
 cB
-Pa
-rq
+Ow
+rx
 Nm
 Nm
 Nm
@@ -90768,9 +92313,9 @@ Nm
 Nm
 Nm
 Nm
-Pa
-Pa
-Pa
+Ow
+Ow
+Ow
 bY
 Nm
 Nm
@@ -90970,8 +92515,8 @@ Nm
 Nm
 Nm
 Nm
-rq
-Pa
+rx
+Ow
 mx
 Nm
 Nm
@@ -91811,7 +93356,7 @@ mj
 mj
 ck
 ci
-ci
+ck
 ci
 ci
 cc
@@ -92013,7 +93558,7 @@ ck
 ci
 cl
 ch
-ch
+cl
 ch
 ch
 ch
@@ -92215,7 +93760,7 @@ cl
 ch
 cl
 ch
-ch
+cl
 ch
 ch
 ch
@@ -92417,7 +93962,7 @@ cm
 cj
 cl
 ch
-ch
+cl
 ch
 ch
 ch
@@ -92619,7 +94164,7 @@ mj
 mj
 cm
 cj
-cj
+cm
 cj
 cj
 cg

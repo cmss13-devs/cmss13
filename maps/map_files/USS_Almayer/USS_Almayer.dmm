@@ -4396,6 +4396,13 @@
 "akw" = (
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/medical/upper_medical)
+"akx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/cm_vending/sorted/vehicle_supply/tent{
+	desc = "An automated restockable storage vendor for use in organizing supplies."
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/req)
 "aky" = (
 /obj/structure/sign/safety/ladder{
 	pixel_x = 32;
@@ -15478,8 +15485,7 @@
 	pixel_y = 12
 	},
 /obj/structure/filingcabinet/documentation/uscm_mp{
-	pixel_x = 8;
-	icon_state = "chestdrawer"
+	pixel_x = 8
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
@@ -115596,7 +115602,7 @@ aHU
 aHU
 aHU
 aHU
-dST
+akx
 tuq
 jVH
 jVH

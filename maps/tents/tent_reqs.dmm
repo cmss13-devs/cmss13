@@ -79,6 +79,10 @@
 	dir = 8
 	},
 /obj/structure/surface/table,
+/obj/item/paper_bin/uscm{
+	pixel_x = -7;
+	pixel_y = 9
+	},
 /turf/template_noop,
 /area/template_noop)
 "U" = (

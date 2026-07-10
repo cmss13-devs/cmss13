@@ -25,6 +25,7 @@
 	warrior.add_plasma += XENO_PLASMA_TIER_2
 	warrior.speed += XENO_SPEED_TIER_1
 	warrior.tackle_max_modifier += 1
+	warrior.melee_vulnerability_mult += 1.5
 
 	warrior.recalculate_everything()
 

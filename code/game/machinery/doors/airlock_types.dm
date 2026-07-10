@@ -1227,3 +1227,123 @@
 
 /obj/structure/machinery/door/airlock/upp/cic/solid/autoname
 	autoname = TRUE
+
+
+// -- UPP 1 tile grey doors from PvE + recolours -- (thanks whoever made the original doors) //
+
+//grey//
+/obj/structure/machinery/door/airlock/upp_grey
+
+/obj/structure/machinery/door/airlock/upp_grey/generic
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/upp/uppdoor_grey.dmi'
+	openspeed = 5
+	req_access = null
+	req_one_access = null
+
+/obj/structure/machinery/door/airlock/upp_grey/generic/autoname
+	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/upp_grey/generic/window
+	icon = 'icons/obj/structures/doors/upp/uppdoor_glass_grey.dmi'
+	opacity = FALSE
+	glass = TRUE
+
+/obj/structure/machinery/door/airlock/upp_grey/generic/window/autoname
+	autoname = TRUE
+
+
+//engi//
+/obj/structure/machinery/door/airlock/upp_grey/engi
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/upp/uppdoor_grey_engi.dmi'
+	openspeed = 5
+	req_access = null
+	req_one_access = null
+
+/obj/structure/machinery/door/airlock/upp_grey/engi/autoname
+	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/upp_grey/engi/window
+	icon = 'icons/obj/structures/doors/upp/uppdoor_glass_grey_engi.dmi'
+	opacity = FALSE
+	glass = TRUE
+
+/obj/structure/machinery/door/airlock/upp_grey/engi/window/autoname
+	autoname = TRUE
+
+//medical//
+/obj/structure/machinery/door/airlock/upp_grey/medical
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/upp/uppdoor_grey_medi.dmi'
+	openspeed = 5
+	req_access = null
+	req_one_access = null
+
+/obj/structure/machinery/door/airlock/upp_grey/medical/autoname
+	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/upp_grey/medical/window
+	icon = 'icons/obj/structures/doors/upp/uppdoor_glass_grey_medi.dmi'
+	opacity = FALSE
+	glass = TRUE
+
+/obj/structure/machinery/door/airlock/upp_grey/medical/window/autoname
+	autoname = TRUE
+
+//req//
+/obj/structure/machinery/door/airlock/upp_grey/req
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/upp/uppdoor_grey_req.dmi'
+	openspeed = 5
+	req_access = null
+	req_one_access = null
+
+/obj/structure/machinery/door/airlock/upp_grey/req/autoname
+	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/upp_grey/req/window
+	icon = 'icons/obj/structures/doors/upp/uppdoor_glass_grey_req.dmi'
+	opacity = FALSE
+	glass = TRUE
+
+/obj/structure/machinery/door/airlock/upp_grey/req/window/autoname
+	autoname = TRUE
+
+//security//
+/obj/structure/machinery/door/airlock/upp_grey/security
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/upp/uppdoor_grey_sec.dmi'
+	openspeed = 5
+	req_access = null
+	req_one_access = null
+
+/obj/structure/machinery/door/airlock/upp_grey/security/autoname
+	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/upp_grey/security/window
+	icon = 'icons/obj/structures/doors/upp/uppdoor_glass_grey_sec.dmi'
+	opacity = FALSE
+	glass = TRUE
+
+/obj/structure/machinery/door/airlock/upp_grey/security/window/autoname
+	autoname = TRUE
+
+//control//
+/obj/structure/machinery/door/airlock/upp_grey/control
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/upp/uppdoor_grey_control.dmi'
+	openspeed = 5
+	req_access = null
+	req_one_access = null
+
+/obj/structure/machinery/door/airlock/upp_grey/control/autoname
+	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/upp_grey/control/window
+	icon = 'icons/obj/structures/doors/upp/uppdoor_glass_grey_control.dmi'
+	opacity = FALSE
+	glass = TRUE
+
+/obj/structure/machinery/door/airlock/upp_grey/control/window/autoname
+	autoname = TRUE

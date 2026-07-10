@@ -259,7 +259,7 @@
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/maint/reinforced/colony/autoname
 	autoname = TRUE
- 
+
 //------Containment 3-tile Doors -----//
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/containment
@@ -985,4 +985,129 @@
 	req_one_access = list(ACCESS_UPP_ENGINEERING, ACCESS_UPP_LEADERSHIP)
 
 /obj/structure/machinery/door/airlock/multi_tile/upp/eng_solid/autoname
+	autoname = TRUE
+
+
+// --- UPP 2 tile grey doors from PvE + recolourations of my machinations (thanks whoever made the original doors) -- //
+//generic//
+/obj/structure/machinery/door/airlock/multi_tile/upp_grey
+	openspeed = 4
+
+/obj/structure/machinery/door/airlock/multi_tile/upp_grey/generic
+	name = "Airlock"
+	icon = 'icons/obj/structures/doors/upp/2x1upp_grey.dmi'
+	opacity = FALSE
+	glass = FALSE
+
+/obj/structure/machinery/door/airlock/multi_tile/upp_grey/generic/autoname
+	autoname = TRUE
+
+
+/obj/structure/machinery/door/airlock/multi_tile/upp_grey/generic/glass
+	name = "Glass Airlock"
+	icon = 'icons/obj/structures/doors/upp/2x1upp_glass_grey.dmi'
+	glass = TRUE
+
+
+/obj/structure/machinery/door/airlock/multi_tile/upp_grey/generic/glass/autoname
+	autoname = TRUE
+
+//engi//
+
+/obj/structure/machinery/door/airlock/multi_tile/upp_grey/eng
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/upp/2x1upp_grey_engi.dmi'
+	opacity = FALSE
+	glass = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/upp_grey/eng/autoname
+	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/upp_grey/eng/glass
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/upp/2x1upp_glass_grey_engi.dmi'
+	opacity = TRUE
+	glass = FALSE
+
+/obj/structure/machinery/door/airlock/multi_tile/upp_grey/eng/glass/autoname
+	autoname = TRUE
+
+//medical//
+
+/obj/structure/machinery/door/airlock/multi_tile/upp_grey/medical
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/upp/2x1upp_grey_medi.dmi'
+	opacity = FALSE
+	glass = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/upp_grey/medical/autoname
+	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/upp_grey/medical/glass
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/upp/2x1upp_glass_grey_medi.dmi'
+	opacity = TRUE
+	glass = FALSE
+
+/obj/structure/machinery/door/airlock/multi_tile/upp_grey/medical/glass/autoname
+	autoname = TRUE
+
+//security//
+
+/obj/structure/machinery/door/airlock/multi_tile/upp_grey/security
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/upp/2x1upp_grey_sec.dmi'
+	opacity = FALSE
+	glass = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/upp_grey/security/autoname
+	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/upp_grey/security/glass
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/upp/2x1upp_glass_grey_sec.dmi'
+	opacity = TRUE
+	glass = FALSE
+
+/obj/structure/machinery/door/airlock/multi_tile/upp_grey/security/glass/autoname
+	autoname = TRUE
+
+//req/green//
+
+/obj/structure/machinery/door/airlock/multi_tile/upp_grey/req
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/upp/2x1upp_grey_req.dmi'
+	opacity = FALSE
+	glass = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/upp_grey/req/autoname
+	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/upp_grey/req/glass
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/upp/2x1upp_glass_grey_req.dmi'
+	opacity = TRUE
+	glass = FALSE
+
+/obj/structure/machinery/door/airlock/multi_tile/upp_grey/req/glass/autoname
+	autoname = TRUE
+
+//admin/blue//
+
+/obj/structure/machinery/door/airlock/multi_tile/upp_grey/control
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/upp/2x1upp_grey_control.dmi'
+	opacity = FALSE
+	glass = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/upp_grey/control/autoname
+	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/upp_grey/control/glass
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/upp/2x1upp_glass_grey_control.dmi'
+	opacity = TRUE
+	glass = FALSE
+
+/obj/structure/machinery/door/airlock/multi_tile/upp_grey/control/glass/autoname
 	autoname = TRUE

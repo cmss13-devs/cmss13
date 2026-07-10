@@ -57,6 +57,8 @@
 /obj/item/explosive/grenade/high_explosive/upp,
 /obj/item/explosive/grenade/high_explosive/upp,
 /obj/item/explosive/grenade/high_explosive/upp,
+/obj/item/explosive/grenade/high_explosive/upp,
+/obj/item/explosive/grenade/high_explosive/upp,
 /turf/open/floor/strata/green4/west,
 /area/atlan/station/double_dorms)
 "E" = (
@@ -80,8 +82,8 @@
 /turf/closed/wall/upp_ship/grey,
 /area/atlan/station/double_dorms)
 "Y" = (
-/obj/structure/machinery/door/airlock/hybrisa/generic{
-	dir = 1
+/obj/structure/machinery/door/airlock/upp_grey/generic/window/autoname{
+	dir = 2
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/double_dorms)

@@ -46,7 +46,7 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/atlan/station/medical/morgue)
 "m" = (
-/obj/structure/machinery/door/airlock/prison_hatch/alt/autoname,
+/obj/structure/machinery/door/airlock/upp_grey/medical/autoname,
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/medical/morgue)
 "n" = (
@@ -118,8 +118,8 @@
 /turf/open/floor/strata/cyan1,
 /area/atlan/station/medical/morgue)
 "z" = (
-/obj/structure/machinery/door/airlock/hybrisa/medical_solid/autoname{
-	dir = 2
+/obj/structure/machinery/door/airlock/upp_grey/medical/autoname{
+	dir = 1
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/medical/morgue)

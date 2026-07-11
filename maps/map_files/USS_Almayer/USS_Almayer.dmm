@@ -6598,10 +6598,6 @@
 	},
 /turf/open/floor/almayer/red/southeast,
 /area/almayer/shipboard/panic)
-"aqB" = (
-/obj/structure/blocker/fuelpump,
-/turf/open/floor/almayer,
-/area/almayer/lifeboat_pumps/south1)
 "aqC" = (
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage{
 	req_access = null;
@@ -15478,8 +15474,7 @@
 	pixel_y = 12
 	},
 /obj/structure/filingcabinet/documentation/uscm_mp{
-	pixel_x = 8;
-	icon_state = "chestdrawer"
+	pixel_x = 8
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
@@ -46983,10 +46978,6 @@
 /obj/structure/window/framed/almayer/hull/hijack_bustable,
 /turf/open/floor/plating,
 /area/almayer/squads/req)
-"cpP" = (
-/obj/structure/blocker/fuelpump,
-/turf/open/floor/almayer/mono,
-/area/almayer/lifeboat_pumps/north1)
 "cqd" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -48035,10 +48026,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/grunt_rnr)
-"cOd" = (
-/obj/structure/blocker/fuelpump,
-/turf/open/floor/almayer/mono,
-/area/almayer/lifeboat_pumps/south2)
 "cOe" = (
 /turf/open/floor/almayer/blue/northeast,
 /area/almayer/hallways/upper/midship_hallway)
@@ -53954,10 +53941,6 @@
 	},
 /turf/open/floor/almayer/green,
 /area/almayer/hallways/lower/port_midship_hallway)
-"fnk" = (
-/obj/structure/blocker/fuelpump,
-/turf/open/floor/almayer,
-/area/almayer/lifeboat_pumps/north1)
 "fnv" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -61240,10 +61223,6 @@
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/u_a_s)
-"iDK" = (
-/obj/structure/blocker/fuelpump,
-/turf/open/floor/almayer/mono,
-/area/almayer/lifeboat_pumps/north2)
 "iEa" = (
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F"
@@ -81849,10 +81828,6 @@
 	},
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/engineering/upper_engineering/port)
-"rmG" = (
-/obj/structure/blocker/fuelpump,
-/turf/open/floor/almayer,
-/area/almayer/lifeboat_pumps/north2)
 "rna" = (
 /obj/structure/machinery/status_display{
 	pixel_y = 30
@@ -85935,10 +85910,6 @@
 	},
 /turf/open/floor/almayer/blue/northeast,
 /area/almayer/living/port_emb)
-"sZY" = (
-/obj/structure/blocker/fuelpump,
-/turf/open/floor/almayer,
-/area/almayer/lifeboat_pumps/south2)
 "tab" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/storage/box/flashbangs{
@@ -203960,7 +203931,7 @@ awW
 sAn
 okG
 aTm
-cpP
+add
 aTm
 gYW
 hzS
@@ -204006,7 +203977,7 @@ baw
 dsn
 hxX
 vbB
-aqB
+baw
 vbB
 rko
 rAT
@@ -204063,7 +204034,7 @@ awW
 tYQ
 eBj
 aTm
-cpP
+add
 cbM
 xKs
 lqM
@@ -204109,7 +204080,7 @@ baw
 wQh
 bVx
 vbB
-aqB
+baw
 vbB
 tyo
 vGz
@@ -204166,7 +204137,7 @@ add
 fsU
 ieH
 aTm
-fnk
+awW
 aTm
 oZX
 fsU
@@ -204212,7 +204183,7 @@ aJU
 gBW
 ixL
 vbB
-aqB
+baw
 tBq
 iwm
 gBW
@@ -212714,7 +212685,7 @@ aeA
 lgf
 dbK
 atr
-iDK
+aeC
 atr
 tqG
 kEV
@@ -212762,7 +212733,7 @@ lJY
 iyf
 roB
 faO
-cOd
+vcE
 bXe
 joS
 leT
@@ -212817,7 +212788,7 @@ aeA
 dtE
 akX
 atr
-iDK
+aeC
 atr
 taI
 qMo
@@ -212865,7 +212836,7 @@ lJY
 tRh
 sij
 bXe
-cOd
+vcE
 tGi
 gkg
 qxn
@@ -212920,7 +212891,7 @@ aeC
 wXh
 hYo
 atr
-rmG
+aeA
 bXz
 wkZ
 wXh
@@ -212968,7 +212939,7 @@ vcE
 kpo
 mDR
 bXe
-sZY
+lJY
 mzF
 leU
 kpo

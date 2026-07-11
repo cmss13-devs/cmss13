@@ -203,11 +203,27 @@
 /obj/structure/barricade/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	if(charger_ability.momentum)
 		visible_message(
-			SPAN_DANGER("[xeno] rams into \the [src] and skids to a halt!"),
-			SPAN_XENOWARNING("You ram into \the [src] and skid to a halt!")
+			SPAN_DANGER("[xeno] rams into [src] and skids to a halt!"),
+			SPAN_XENOWARNING("You ram into [src] and skid to a halt!")
 		)
-		take_damage(charger_ability.momentum * 22)
+		take_damage(CHARGER_DAMAGE_CADE)
 		playsound(src, barricade_hitsound, 25, TRUE)
+
+	charger_ability.stop_momentum()
+
+// Fuel pumps
+
+/obj/structure/machinery/fuelpump/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+	if(charger_ability.momentum)
+		visible_message(
+			SPAN_DANGER("[xeno] rams into [src] and skids to a halt!"),
+			SPAN_XENOWARNING("You ram into [src] and skid to a halt!")
+		)
+		update_health(CHARGER_DAMAGE_CADE)
+		if(charger_ability.momentum > 3)
+			playsound(src, 'sound/effects/metalscrape.ogg', 25, TRUE)
+		else
+			playsound(src, 'sound/effects/metalhit.ogg', 25, TRUE)
 
 	charger_ability.stop_momentum()
 

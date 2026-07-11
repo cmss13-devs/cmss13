@@ -479,7 +479,7 @@
 	if(aiming)
 		return
 
-	if(!((istype(target, /obj/structure) && !istype(target, /obj/structure/blocker)) || (istype(target,/turf/closed/wall) && !istype(target, /turf/closed/wall/resin/reflective))) )
+	if(!((istype(target, /obj/structure) && !istype(target, /obj/structure/blocker)) || istype(target,/turf/closed/wall)) )
 		to_chat(user, SPAN_WARNING("Invalid target!"))
 		return
 

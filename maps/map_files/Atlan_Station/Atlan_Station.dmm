@@ -43,7 +43,8 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/item/weapon/gun/rifle/type71/carbine,
+/obj/item/weapon/gun/rifle/type71,
+/obj/item/weapon/gun/rifle/type71,
 /turf/open/floor/strata/red1,
 /area/atlan/station/security)
 "aaj" = (
@@ -7947,7 +7948,6 @@
 	},
 /obj/effect/decal/cleanable/blood/gibs/down,
 /obj/effect/decal/cleanable/blood/gibs/body,
-/obj/item/ammo_magazine/rifle/type71,
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/cargooffice)
 "ayz" = (
@@ -10033,8 +10033,6 @@
 	color = "#98a3ab"
 	},
 /obj/item/weapon/gun/rifle/ak4047,
-/obj/item/ammo_magazine/rifle/ak4047,
-/obj/item/ammo_magazine/rifle/ak4047,
 /turf/open/floor/strata/red1,
 /area/atlan/lz/near_lz2)
 "aFs" = (
@@ -10751,6 +10749,13 @@
 /obj/structure/platform/metal/strata,
 /turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/canteen)
+"aHV" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/ammo_box/magazine/ak4047,
+/turf/open/floor/strata/red1,
+/area/atlan/station/security)
 "aHW" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt,
 /turf/open/floor/strata/floor2,
@@ -14764,17 +14769,6 @@
 /obj/structure/largecrate/empty/case/double,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/cargooffice)
-"aUX" = (
-/obj/item/ammo_box/magazine/ak4047{
-	pixel_y = 8;
-	pixel_x = -7
-	},
-/obj/item/ammo_box/magazine/type71{
-	pixel_x = -7;
-	pixel_y = -5
-	},
-/turf/open/floor/strata/floor3/east,
-/area/atlan/station/cargooffice)
 "aUY" = (
 /obj/structure/surface/rack{
 	color = "#98a3ab"
@@ -15961,6 +15955,20 @@
 	},
 /turf/open/floor/strata/floor2,
 /area/atlan/station/repairoffice)
+"aYx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/rifle/type71,
+/turf/open/floor/strata,
+/area/atlan/station/walkway)
+"aYy" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/item/ammo_magazine/rifle/ak4047{
+	current_rounds = 0
+	},
+/turf/open/floor/strata,
+/area/atlan/station/walkway)
 "aYA" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -18257,7 +18265,6 @@
 	pixel_y = -26
 	},
 /obj/item/weapon/gun/rifle/type71/carbine,
-/obj/item/weapon/gun/rifle/type71/carbine,
 /turf/open/floor/strata/floor2,
 /area/atlan/station/storage)
 "cDT" = (
@@ -19931,8 +19938,6 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/item/weapon/gun/rifle/type71/carbine,
-/obj/item/weapon/gun/rifle/type71/carbine,
 /turf/open/floor/strata/red1,
 /area/atlan/station/hab_flight)
 "dOm" = (
@@ -20815,7 +20820,6 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/item/ammo_magazine/rifle/ak4047,
 /obj/item/ammo_magazine/rifle/ak4047,
 /obj/item/ammo_magazine/rifle/ak4047,
 /obj/item/ammo_magazine/rifle/ak4047,
@@ -23100,9 +23104,7 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/item/ammo_magazine/rifle/ak4047,
 /obj/structure/machinery/camera/autoname,
-/obj/item/ammo_magazine/rifle/ak4047,
 /turf/open/floor/strata/red1,
 /area/atlan/station/security)
 "gmB" = (
@@ -23216,7 +23218,9 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/obj/item/ammo_magazine/rifle/ak4047,
+/obj/item/ammo_magazine/rifle/ak4047{
+	current_rounds = 0
+	},
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/atlan/station/storage)
 "gpX" = (
@@ -26171,9 +26175,6 @@
 	},
 /obj/item/ammo_magazine/rifle/type71,
 /obj/item/ammo_magazine/rifle/type71,
-/obj/item/ammo_magazine/rifle/type71,
-/obj/item/ammo_magazine/rifle/type71,
-/obj/item/ammo_magazine/rifle/type71,
 /turf/open/floor/strata/red1,
 /area/atlan/station/hab_flight)
 "iAW" = (
@@ -26540,7 +26541,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/atlan/asteroid/processing_caves)
 "iMt" = (
-/obj/item/weapon/gun/rifle/type71/carbine,
+/obj/item/weapon/gun/rifle/type71,
 /turf/open/floor/strata,
 /area/atlan/station/walkway)
 "iMD" = (
@@ -38270,10 +38271,6 @@
 	pixel_y = 21
 	},
 /obj/item/clothing/suit/storage/CMB/pap,
-/obj/item/ammo_box/magazine/ak4047{
-	pixel_y = 8;
-	pixel_x = -7
-	},
 /turf/open/floor/strata/red1,
 /area/atlan/station/hab_flight)
 "rzu" = (
@@ -38866,9 +38863,11 @@
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/repairs_lift)
 "rTh" = (
-/obj/item/ammo_magazine/rifle/ak4047,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/decal/strata_decals/catwalk/prison,
+/obj/item/ammo_magazine/rifle/ak4047{
+	current_rounds = 0
+	},
 /turf/open/floor/strata,
 /area/atlan/station/walkway)
 "rTm" = (
@@ -115950,7 +115949,7 @@ vQC
 ddq
 aVm
 ddq
-aUX
+ddq
 xOA
 aRI
 aUo
@@ -120466,7 +120465,7 @@ tmn
 agy
 tmn
 quI
-kmL
+aYx
 anK
 tmn
 rnm
@@ -120669,7 +120668,7 @@ quI
 tmn
 iMt
 nFx
-anK
+aYy
 tmn
 tmn
 tmn
@@ -124072,7 +124071,7 @@ rlO
 aJJ
 aSd
 aSd
-eCm
+aHV
 qXM
 ags
 anS

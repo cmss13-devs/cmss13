@@ -156,9 +156,9 @@ GLOBAL_LIST_INIT(mapless_maps, list(MAP_RUNTIME, MAP_CHINOOK, MAIN_SHIP_DEFAULT_
 	color = "cyan"
 
 /obj/item/map/the_last_bunker_map
-	name = "\improper Bunker K31  map"
+	name = "\improper Bunker K31 map"
 	desc = "A labeled blueprint of Bunker K31, a corporate VIP bunker."
-//	html_link = "images/7/79/Tyrargo_Rift.png"
+	html_link = "images/6/65/Atlan_Station.png"
 
 /obj/item/map/galaxy
 	name = "\improper Galaxy map"

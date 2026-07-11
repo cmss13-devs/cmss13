@@ -225,6 +225,12 @@
 			to_chat(user, SPAN_WARNING("ARE YOU OUT OF YOUR MIND?!"))
 			return FALSE
 
+	if(istype(target, /obj/structure/closet/bodybag/cryobag))
+		var/obj/structure/closet/bodybag/cryobag/C = target
+		if(user.faction == C.stasis_mob.faction)
+			to_chat(user, SPAN_WARNING("ARE YOU OUT OF YOUR MIND?!"))
+			return
+
 	if(customizable && assembly_stage < ASSEMBLY_LOCKED)
 		return FALSE
 

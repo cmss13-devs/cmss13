@@ -479,9 +479,21 @@
 	if(aiming)
 		return
 
-	if(!(istype(target, /obj/structure) || istype(target,/turf/closed/wall)) )
+	if(!((istype(target, /obj/structure) && !istype(target, /obj/structure/blocker)) || (istype(target,/turf/closed/wall) && !istype(target, /turf/closed/wall/resin/reflective))) )
 		to_chat(user, SPAN_WARNING("Invalid target!"))
 		return
+
+	if(istype(target, /obj/structure/closet/bodybag/cryobag))
+		var/obj/structure/closet/bodybag/cryobag/C = target
+		if(user.faction == C.stasis_mob.faction)
+			to_chat(user, SPAN_WARNING("\The [src]'s accident inhibitor recognises a friendly ID signal from the target and prevents you from firing!"))
+			return
+
+	if(istype(target, /turf/closed/wall))
+		var/turf/closed/wall/W = target
+		if(W.turf_flags & TURF_HULL)
+			to_chat(user, SPAN_WARNING("[W] is much too tough for you to do anything to it with [src]."))
+			return
 
 	var/list/turf/path = get_line(user, target, include_start_atom = FALSE)
 	for(var/turf/turf_path in path)

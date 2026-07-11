@@ -158,7 +158,7 @@ GLOBAL_LIST_INIT(mapless_maps, list(MAP_RUNTIME, MAP_CHINOOK, MAIN_SHIP_DEFAULT_
 /obj/item/map/atlan_station
 	name = "\improper Atlan Station map"
 	desc = "A labeled blueprint of the UPP mining platform Atlan Station."
-	html_link = "images/9/98/AtlanStation.png"
+	html_link = "images/6/65/AtlanStation.png"
 	color = "#e88a10"
 
 /obj/item/map/galaxy

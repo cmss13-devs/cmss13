@@ -583,6 +583,16 @@
 /obj/effect/landmark/yautja_teleport,
 /turf/open/gm/dirt/brown/variant_1,
 /area/atlan/asteroid/processing_dock/cas)
+"abP" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/sign/poster/upp{
+	pixel_y = 33;
+	layer = 2.9
+	},
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/atlan/station/substation)
 "abQ" = (
 /obj/structure/machinery/vending/walkman,
 /turf/open/floor/strata/red1,
@@ -34290,10 +34300,6 @@
 	},
 /turf/open/floor/strata/floor2,
 /area/atlan/station/water_tanks)
-"oEg" = (
-/obj/structure/sign/poster/corporate,
-/turf/closed/wall/upp_ship/grey/orange/reinforced,
-/area/atlan/station/substation)
 "oEo" = (
 /obj/structure/bed/hybrisa/bunkbed4,
 /obj/effect/landmark/objective_landmark/medium,
@@ -109100,8 +109106,8 @@ iEU
 eUm
 sZX
 qea
-oEg
-arK
+aBg
+abP
 wVM
 vTH
 aBg

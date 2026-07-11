@@ -211,8 +211,7 @@
 /area/atlan/station/drydock
 	name = "Station - Drydock"
 	icon_state = "drydock"
-	flags_area = AREA_NOBURROW|AREA_UNWEEDABLE
-	linked_lz = DROPSHIP_LZ1
+	flags_area = AREA_NOBURROW
 	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
 
 /area/atlan/station/repairs_lift

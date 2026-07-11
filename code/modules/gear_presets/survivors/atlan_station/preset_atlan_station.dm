@@ -73,7 +73,7 @@
 	minimap_icon = "upp_sci"
 	minimap_background = "background_hc_management"
 	skills = /datum/skills/civilian/survivor/scientist
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_CHINESE)
+	languages = list(LANGUAGE_GERMAN, LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_CHINESE)
 	faction = FACTION_UPP
 	faction_group = FACTION_LIST_SURVIVOR_UPP
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -468,13 +468,13 @@
 
 /datum/equipment_preset/survivor/atlan/co_survivor
 	name = "CO Survivor - UPP - Orbital Station Administrator" // gets UPP UL4 officer jacket and UL8 ushanka, skills of an UPP commisar, cool UPP pistol
-	assignment = "Menedzher Orbitalnoy Stantsii"
+	assignment = "Nachalnik Orbitalnoy Stantsii"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	role_comm_title = "UPP Menedzher"
+	role_comm_title = "UPP Nachalnik"
 	minimap_icon = "upp_plt"
 	minimap_background = "background_upp"
 	faction_group = FACTION_LIST_SURVIVOR_UPP
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_CHINESE, LANGUAGE_GERMAN)
+	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH, LANGUAGE_CHINESE, LANGUAGE_GERMAN)
 	faction = FACTION_UPP
 	skills = /datum/skills/upp/commissar
 	access = list(

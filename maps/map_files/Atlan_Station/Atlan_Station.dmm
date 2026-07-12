@@ -1714,10 +1714,7 @@
 	pixel_x = 8;
 	pixel_y = 11
 	},
-/obj/item/tool/kitchen/utensil/pfork{
-	pixel_x = 6;
-	pixel_y = 2
-	},
+/obj/item/tool/kitchen/utensil/fork,
 /turf/open/floor/strata,
 /area/atlan/station/canteen)
 "afC" = (
@@ -17821,10 +17818,12 @@
 	pixel_x = -3;
 	pixel_y = 3
 	},
-/obj/item/tool/kitchen/utensil/pknife,
-/obj/item/tool/kitchen/utensil/pfork{
-	pixel_x = 6;
-	pixel_y = 2
+/obj/item/tool/kitchen/utensil/fork{
+	pixel_x = 10;
+	pixel_y = 6
+	},
+/obj/item/tool/kitchen/utensil/knife{
+	pixel_x = -6
 	},
 /turf/open/floor/strata/cyan2/east,
 /area/atlan/station/promenade)
@@ -22800,9 +22799,8 @@
 	pixel_x = 4;
 	pixel_y = 11
 	},
-/obj/item/tool/kitchen/utensil/pfork{
-	pixel_x = 7;
-	pixel_y = -5
+/obj/item/tool/kitchen/utensil/fork{
+	pixel_x = 5
 	},
 /turf/open/floor/strata,
 /area/atlan/station/canteen)
@@ -24749,7 +24747,7 @@
 	pixel_x = 8;
 	pixel_y = 11
 	},
-/obj/item/tool/kitchen/utensil/pspoon,
+/obj/item/tool/kitchen/utensil/spoon,
 /turf/open/floor/strata/cyan2/east,
 /area/atlan/station/promenade)
 "hAL" = (
@@ -36564,10 +36562,6 @@
 	pixel_x = -6;
 	pixel_y = 13
 	},
-/obj/item/tool/kitchen/utensil/pfork{
-	pixel_x = 6;
-	pixel_y = 2
-	},
 /obj/item/tool/kitchen/can_opener,
 /turf/open/floor/strata,
 /area/atlan/station/canteen)
@@ -42054,7 +42048,7 @@
 /area/atlan/asteroid/exports_west)
 "ukV" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/tool/kitchen/utensil/pknife,
+/obj/item/tool/kitchen/utensil/knife,
 /turf/open/floor/strata,
 /area/atlan/station/canteen)
 "uld" = (

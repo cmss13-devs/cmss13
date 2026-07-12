@@ -544,11 +544,11 @@
 	QDEL_NULL(camera)
 	return ..()
 
-/obj/structure/overwatch_camera_tripod/examine(mob/user)
+obj/structure/overwatch_camera_tripod/get_examine_text(mob/user)
 	. = ..()
-	to_chat(user, SPAN_INFO("The label label reads: [label]")) // ToDO: This maybe should be in the description box I just don't know how to add it atm
+	. += "The label reads: [label]"
 	if(squad)
-		to_chat(user, SPAN_INFO("It is currently assigned to squad: [squad.name]")) // ToDO: This maybe should be in the description box I just don't know how to add it atm
+		. += "It is currently assigned to squad: [squad.name]"
 
 /obj/structure/overwatch_camera_tripod/attack_hand(mob/user)
 	if(user.a_intent != INTENT_HELP) // I've left this in just in case maints want me to change the tgui menu to intent handling or smth.

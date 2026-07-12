@@ -176,9 +176,8 @@
 
 /datum/component/tacmap/ui_status(mob/user, datum/ui_state/state)
 	// For embedded tacmap, delegate to parent's UI status
-	if(is_embedded && istype(parent, /atom))
-		var/atom/parent_atom = parent
-		return parent_atom.ui_status(user, state)
+	if(is_embedded)
+		return parent.ui_status(user, state)
 
 	if(get_dist(parent, user) > 1)
 		return UI_CLOSE

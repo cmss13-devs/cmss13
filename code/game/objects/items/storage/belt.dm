@@ -157,6 +157,7 @@
 		/obj/item/stack/rods,
 		/obj/item/stack/tile,
 		/obj/item/device/defibrillator/synthetic,
+		/obj/item/device/overwatch_camera_tripod,
 	)
 
 	bypass_w_limit = list(
@@ -166,6 +167,7 @@
 		/obj/item/stack/sandbags_empty,
 		/obj/item/stack/sandbags,
 		/obj/item/defenses/handheld,
+		/obj/item/device/overwatch_camera_tripod,
 	)
 
 /obj/item/storage/belt/medical

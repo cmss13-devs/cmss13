@@ -54,21 +54,24 @@
 /datum/player_action/permanent_ban/act(client/user, mob/target, list/params)
 	var/reason = tgui_input_text(user, "What message should be given to the permabanned user?", "Permanent Ban", encode = FALSE)
 	if(!reason)
-		return
+		return FALSE
 
 	var/internal_reason = tgui_input_text(user, "What's the reason for the ban? This is shown internally, and not displayed in public notes and ban messages. Include as much detail as necessary.", "Permanent Ban", multiline = TRUE, encode = FALSE)
 	if(!internal_reason)
-		return
+		return FALSE
 
 	var/datum/entity/player/target_entity = target.client?.player_data
 	if(!target_entity)
 		target_entity = get_player_from_key(target.ckey || target.persistent_ckey)
 
 	if(!target_entity)
-		return
+		return FALSE
 
 	if(!target_entity.add_perma_ban(reason, internal_reason, user.player_data))
 		to_chat(user, SPAN_ADMIN("The user is already permabanned! If necessary, you can remove the permaban, and place a new one."))
+		return FALSE
+
+	return TRUE
 
 /datum/player_action/sticky_ban
 	action_tag = "sticky_ban"

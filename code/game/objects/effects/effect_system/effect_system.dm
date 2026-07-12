@@ -29,7 +29,25 @@ would spawn and follow the beaker, even if it is carried or thrown.
 /datum/effect_system/proc/attach(atom/atom)
 	holder = atom
 
-/datum/effect_system/proc/start()
+/**
+ * Starts the effect system, which will invariably lead to objects being
+ * created in the most irresponsible way possible.
+ * Since this is decade old legacy code and nobody cares about using this properly,
+ * it provides the following arg:
+ *
+ * [do_NOT_delete] : if TRUE, then effect_system will NOT seld delete after a single
+ *                   start, and YOU have to do it by YOURSELF (defaults to FALSE)
+ *
+ * When you override this proc, you sign a blood contract to uphold this behavior.
+ * Failure to do so leads to a penalty of rewriting the entire effect_system.
+ * I dare you.
+ *
+ * Note: This is purposedly used as named argument because it will cause linter to
+ * complain about someone skipping it in implementations. And hopefully to read this.
+ */
+/datum/effect_system/proc/start(do_NOT_delete = FALSE)
+	if(!do_NOT_delete)
+		qdel(src)
 
 
 /////////////////////////////////////////////
@@ -62,7 +80,7 @@ would spawn and follow the beaker, even if it is carried or thrown.
 	cardinals = c
 	location = loc
 
-/datum/effect_system/steam_spread/start()
+/datum/effect_system/steam_spread/start(do_NOT_delete = FALSE)
 	var/i = 0
 	for(i=0, i<number, i++)
 		spawn(0)
@@ -78,6 +96,8 @@ would spawn and follow the beaker, even if it is carried or thrown.
 				sleep(5)
 				step(steam,direction)
 			QDEL_IN(steam, 20)
+	if(!do_NOT_delete)
+		QDEL_IN(src, 2 SECONDS)
 
 
 /////////////////////////////////////////////
@@ -117,7 +137,7 @@ would spawn and follow the beaker, even if it is carried or thrown.
 	else
 		location = get_turf(loca)
 
-/datum/effect_system/spark_spread/start()
+/datum/effect_system/spark_spread/start(do_NOT_delete = FALSE)
 	var/i = 0
 	for(i=0, i<number, i++)
 		if(total_sparks > 20)
@@ -139,7 +159,8 @@ would spawn and follow the beaker, even if it is carried or thrown.
 				if(sparks)
 					qdel(sparks)
 				total_sparks--
-
+	if(!do_NOT_delete)
+		QDEL_IN(src, 2 SECONDS)
 
 
 /////////////////////////////////////////////
@@ -159,11 +180,19 @@ would spawn and follow the beaker, even if it is carried or thrown.
 	var/processing = TRUE
 	var/on = TRUE
 
+/datum/effect_system/ion_trail_follow/Destroy()
+	. = ..()
+	oldposition = null
+
 /datum/effect_system/ion_trail_follow/set_up(atom/atom)
 	attach(atom)
 	oldposition = get_turf(atom)
 
-/datum/effect_system/ion_trail_follow/start()
+/datum/effect_system/ion_trail_follow/start(do_NOT_delete = FALSE)
+	if(!do_NOT_delete)
+		qdel(src) // The recursive spawn loop below is so screwed we only support explicit deletion as in the single instance of code using it
+		return
+
 	if(!on)
 		on = TRUE
 		processing = TRUE
@@ -185,63 +214,13 @@ would spawn and follow the beaker, even if it is carried or thrown.
 				spawn(2)
 					if(on)
 						processing = TRUE
-						start()
+						start(do_NOT_delete)
 			else
 				spawn(2)
 					if(on)
 						processing = TRUE
-						start()
+						start(do_NOT_delete)
 
 /datum/effect_system/ion_trail_follow/proc/stop()
 	processing = FALSE
 	on = FALSE
-
-
-
-
-/////////////////////////////////////////////
-//////// Attach a steam trail to an object (eg. a reacting beaker) that will follow it
-// even if it's carried of thrown.
-/////////////////////////////////////////////
-
-/datum/effect_system/steam_trail_follow
-	var/turf/oldposition
-	var/processing = TRUE
-	var/on = TRUE
-
-/datum/effect_system/steam_trail_follow/set_up(atom/atom)
-	attach(atom)
-	oldposition = get_turf(atom)
-
-/datum/effect_system/steam_trail_follow/start()
-	if(!on)
-		on = TRUE
-		processing = TRUE
-	if(processing)
-		processing = FALSE
-		spawn(0)
-			if(number < 3)
-				var/obj/effect/particle_effect/steam/trails = new /obj/effect/particle_effect/steam(oldposition)
-				number++
-				oldposition = get_turf(holder)
-				if(isnull(oldposition))
-					qdel(src)
-					return
-				trails.setDir(holder.dir)
-				spawn(10)
-					qdel(trails)
-					number--
-				spawn(2)
-					if(on)
-						processing = TRUE
-						start()
-			else
-				spawn(2)
-					if(on)
-						processing = TRUE
-						start()
-
-/datum/effect_system/steam_trail_follow/proc/stop()
-	processing = FALSE
-	on = FALSE
-

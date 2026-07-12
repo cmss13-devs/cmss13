@@ -21,7 +21,7 @@
 		/datum/job/civilian/synthetic/whiskey = JOB_SYNTH,
 		/datum/job/command/warrant/whiskey = JOB_CHIEF_POLICE,
 		/datum/job/command/bridge/whiskey = JOB_SO,
-		/datum/job/command/tank_crew/whiskey = JOB_TANK_CREW,
+		/datum/job/command/warden/whiskey = JOB_WARDEN,
 		/datum/job/command/police/whiskey = JOB_POLICE,
 		/datum/job/command/pilot/whiskey = JOB_CAS_PILOT,
 		/datum/job/logistics/requisition/whiskey = JOB_CHIEF_REQUISITION,
@@ -238,7 +238,6 @@
 			J.total_positions = J.current_positions
 		J.current_positions = J.get_total_positions(TRUE)
 	to_world("<B>New players may no longer join the game.</B>")
-	message_admins("Wave one has begun. Disabled new player game joining.")
 	message_admins("Wave one has begun. Disabled new player game joining except for replacement of cryoed marines.")
 	world.update_status()
 

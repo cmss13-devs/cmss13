@@ -60,6 +60,7 @@
 	var/dynamic_evolution = TRUE
 	var/evolution_rate = 3 // Only has use if dynamic_evolution is false
 	var/evolution_bonus = 0
+	var/evolution_locked = FALSE
 
 	var/allow_no_queen_actions = FALSE
 	var/allow_no_queen_evo = FALSE
@@ -1311,6 +1312,7 @@
 	latejoin_burrowed = FALSE
 	see_humans_on_tacmap = TRUE
 	tacmap_requires_queen_ovi = FALSE
+	evolution_locked = TRUE
 
 	need_round_end_check = TRUE
 

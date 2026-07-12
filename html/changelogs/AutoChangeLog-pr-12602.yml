@@ -1,0 +1,4 @@
+author: "AnCopper"
+delete-after: True
+changes:
+  - imagetweak: "Fixed a 1 pixel alignment issue with the west-facing onmob sprites for the Jungle and Classic CO M11C helmets."

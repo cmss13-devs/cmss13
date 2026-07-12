@@ -108,7 +108,8 @@
 	if(!(welder.remove_fuel(2, user)))
 		return
 	playsound(loc, 'sound/items/Welder.ogg', 25, 1)
-	if(!do_after(user, 5 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
+	if(!do_after(user, 5 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+		return
 	update_health(-50)
 	user.visible_message(SPAN_NOTICE("[user] repairs parts of [src]."),
 	SPAN_NOTICE("You repair damaged parts of [src]."))

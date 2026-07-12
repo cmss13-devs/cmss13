@@ -1,6 +1,8 @@
 #define BASE_CHEM_STORAGE_RECHARGE_RATE 10
 #define BASE_CHEM_STORAGE_MAX_ENERGY 100
-#define DYNAMIC_SCALING_CHEM_STORAGE_MULTIPLIER 5
+#define DYNAMIC_SCALING_CHEM_ENERGY_RATE_PER_MEDIC 5
+#define DYNAMIC_SCALING_CHEM_MAX_ENERGY_PER_MEDIC 60
+#define DYNAMIC_SCALING_CHEM_ENERGY_MINIMUM_SCALE 4
 
 /obj/structure/machinery/chem_storage
 	name = "Chemical Storage System"
@@ -53,9 +55,10 @@
 /obj/structure/machinery/chem_storage/proc/calculate_dynamic_storage(scale, round_start=FALSE)
 	if(!dynamic_storage)
 		return
-	var/multiplier = 1 + (scale - 1) * DYNAMIC_SCALING_CHEM_STORAGE_MULTIPLIER
-	recharge_rate = initial(recharge_rate) + floor(base_recharge_rate * multiplier)
-	max_energy = initial(max_energy) + floor(base_max_energy * multiplier)
+	if(scale < DYNAMIC_SCALING_CHEM_ENERGY_MINIMUM_SCALE)
+		scale = DYNAMIC_SCALING_CHEM_ENERGY_MINIMUM_SCALE
+	recharge_rate = initial(recharge_rate) + base_recharge_rate + floor(scale * DYNAMIC_SCALING_CHEM_ENERGY_RATE_PER_MEDIC)
+	max_energy = initial(max_energy) + base_max_energy + floor(scale * DYNAMIC_SCALING_CHEM_MAX_ENERGY_PER_MEDIC)
 	if(round_start)
 		energy = max_energy
 

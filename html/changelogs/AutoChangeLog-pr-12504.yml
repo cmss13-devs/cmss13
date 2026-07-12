@@ -1,0 +1,5 @@
+author: "DangerRevolution, Thwompa, Axon Man"
+delete-after: True
+changes:
+  - rscadd: "Added the FCT - Field Camera Tripod for use by Combat Technicians in the Field, allowing Overwatch to see static positions."
+  - balance: "Added the FCT to Maintenance Technician, Requisition and Combat Technician vendors."

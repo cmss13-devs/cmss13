@@ -263,7 +263,7 @@
 	pixel_x = 7;
 	pixel_y = 7
 	},
-/obj/item/tool/kitchen/utensil/pfork{
+/obj/item/tool/kitchen/utensil/fork/plastic{
 	pixel_x = -6;
 	pixel_y = 5
 	},

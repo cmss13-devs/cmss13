@@ -9241,7 +9241,7 @@
 /obj/item/device/cassette_tape/pop3{
 	pixel_y = 7
 	},
-/obj/item/tool/kitchen/utensil/pfork{
+/obj/item/tool/kitchen/utensil/fork/plastic{
 	pixel_x = -6;
 	pixel_y = 7
 	},
@@ -18190,7 +18190,7 @@
 "oMa" = (
 /obj/structure/surface/table,
 /obj/item/storage/pill_bottle/packet/bicaridine,
-/obj/item/tool/kitchen/utensil/pknife{
+/obj/item/tool/kitchen/utensil/knife/plastic{
 	pixel_x = 9;
 	pixel_y = 2
 	},
@@ -29545,7 +29545,7 @@
 	pixel_x = -9;
 	pixel_y = 7
 	},
-/obj/item/tool/kitchen/utensil/pknife{
+/obj/item/tool/kitchen/utensil/knife/plastic{
 	pixel_x = 12;
 	pixel_y = 7
 	},

@@ -132,6 +132,8 @@
 			if(!R)
 				continue
 			var/atom/loc = R.loc
+			if (!loc)
+				continue
 			if(R.receive_range(display_freq, level) > -1 && OBJECTS_CAN_REACH(loc, radio_loc))
 				radios += R
 

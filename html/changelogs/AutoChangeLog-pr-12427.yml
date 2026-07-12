@@ -1,0 +1,8 @@
+author: "AnCopper"
+delete-after: True
+changes:
+  - qol: "Expanded SEA, XO, ASO, and Staff Officer vendor equipment options."
+  - qol: "Added Operations Uniforms, External Webbing, Insulated Combat Gloves, Security HUD Glasses, and additional storage accessories to applicable vendors."
+  - qol: "Added additional cosmetic patch options to SEA and ASO vendors."
+  - qol: "Made command-role patch items unlimited stock."
+  - balance: "Removed HEFA Grenade Packs from the XO vendor."

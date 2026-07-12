@@ -19,9 +19,6 @@
 	var/recharge_rate = 50
 	var/energy = 200
 	var/max_energy = 200
-	// dynamic chemical supply variables
-	var/base_recharge_rate
-	var/base_max_energy
 	var/dynamic_storage = FALSE
 
 	unslashable = TRUE
@@ -43,8 +40,6 @@
 /obj/structure/machinery/chem_storage/Initialize()
 	. = ..()
 	GLOB.chemical_data.add_chem_storage(src)
-	base_recharge_rate = BASE_CHEM_STORAGE_RECHARGE_RATE
-	base_max_energy = BASE_CHEM_STORAGE_MAX_ENERGY
 	start_processing()
 
 /obj/structure/machinery/chem_storage/Destroy()
@@ -57,8 +52,8 @@
 		return
 	if(scale < DYNAMIC_SCALING_CHEM_ENERGY_MINIMUM_SCALE)
 		scale = DYNAMIC_SCALING_CHEM_ENERGY_MINIMUM_SCALE
-	recharge_rate = initial(recharge_rate) + base_recharge_rate + floor(scale * DYNAMIC_SCALING_CHEM_ENERGY_RATE_PER_MEDIC)
-	max_energy = initial(max_energy) + base_max_energy + floor(scale * DYNAMIC_SCALING_CHEM_MAX_ENERGY_PER_MEDIC)
+	recharge_rate = initial(recharge_rate) + floor(scale * DYNAMIC_SCALING_CHEM_ENERGY_RATE_PER_MEDIC)
+	max_energy = initial(max_energy) + floor(scale * DYNAMIC_SCALING_CHEM_MAX_ENERGY_PER_MEDIC)
 	if(round_start)
 		energy = max_energy
 

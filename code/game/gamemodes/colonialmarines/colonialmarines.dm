@@ -408,21 +408,16 @@
 	if(commander) // pre-provided commander overrides the automatic selection.
 		person_in_charge = commander
 	else
+		var/list/all_leaders = deep_copy_list(GLOB.marine_leaders + GLOB.marine_officers)
 		for(var/job_by_chain in CHAIN_OF_COMMAND_ROLES)
 			//Checks for non-unique roles
-			if(job_by_chain == JOB_SO || job_by_chain == JOB_INTEL || job_by_chain == JOB_DOCTOR)
-				var/list/candidates = deep_copy_list(GLOB.marine_leaders + GLOB.marine_officers)
-				while(candidates[job_by_chain])
-					person_in_charge = pick(candidates[job_by_chain])
-					if(is_mob_cryoing(person_in_charge))
-						candidates[job_by_chain] -= person_in_charge
-						person_in_charge = null
-						//If we emptied the list then lets delete it
-						if(!length(candidates[job_by_chain]))
-							candidates[job_by_chain] = null
-							break
-					else break
-				if(person_in_charge)
+			if(job_by_chain in list(JOB_SO, JOB_INTEL, JOB_DOCTOR))
+				var/list/mob/living/candidates = list()
+				for(var/mob/living/candidate as anything in all_leaders[job_by_chain])
+					if(!is_mob_cryoing(candidate))
+						candidates += candidate
+				if(length(candidates))
+					person_in_charge = pick(candidates)
 					break
 			else
 				//Checks for unique roles

@@ -227,11 +227,9 @@
 
 /obj/structure/barricade/handrail/corrosive_acid_act()
 	deconstruct(debris = FALSE)
-	..()
 
 /obj/structure/barricade/handrail/acid_spray_act()
 	deconstruct(debris = FALSE)
-	..()
 
 
 /obj/structure/barricade/handrail/no_vault

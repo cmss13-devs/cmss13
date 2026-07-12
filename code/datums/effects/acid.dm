@@ -29,7 +29,7 @@
 		var/mob/living/carbon/human/target_human = target_atom
 		target_human.update_effects()
 
-	if(isobj(target_atom))
+	else if(isobj(target_atom))
 		var/obj/target_object = target_atom
 		if(istype(target_object, /obj/structure/barricade))
 			var/obj/structure/barricade/target_barricade = target_object

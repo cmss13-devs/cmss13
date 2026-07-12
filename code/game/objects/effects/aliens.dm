@@ -678,11 +678,11 @@
 
 /obj/effect/xenomorph/acid_damage_delay/boiler_landmine/deal_damage()
 	var/total_hits = 0
-	for (var/obj/structure/barricade/B in loc)
-		B.corrosive_acid_act(damage*(1.15 + 0.55 * empowered))
+	for(var/obj/structure/barricade/cade in loc)
+		cade.corrosive_acid_act(damage*(1.15 + 0.55 * empowered))
 
-	for (var/mob/living/carbon/human in loc)
-		if (human.stat == DEAD)
+	for(var/mob/living/carbon/human in loc)
+		if(human.stat == DEAD)
 			continue
 
 		if(human.ally_of_hivenumber(hivenumber))

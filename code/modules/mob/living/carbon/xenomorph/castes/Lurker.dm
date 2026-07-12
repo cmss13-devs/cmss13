@@ -116,6 +116,33 @@
 	if(lurker_invis_action)
 		lurker_invis_action.invisibility_off() // Full cooldown
 
+/datum/behavior_delegate/lurker_base/append_to_stat()
+	. = list()
+
+	var/datum/action/xeno_action/onclick/lurker_invisibility/lurker_inv = get_action(bound_xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
+
+	// Invisible
+	if(lurker_inv.invis_start_time != -1)
+		var/time_left = (lurker_inv.invis_duration-(world.time - lurker_inv.invis_start_time)) / 10
+		. += "Invisibility Remaining: [time_left] second\s."
+		return
+
+	if(!lurker_inv)
+		return
+
+	if(!bound_xeno.client?.prefs.show_cooldown_messages)
+		return
+
+	// Recharged
+	if(lurker_inv.cooldown_timer_id == TIMER_ID_NULL)
+		. += "Invisibility Recharge: Ready."
+		return
+
+	// Recharging
+	var/time_left = timeleft(lurker_inv.cooldown_timer_id) / 10
+	. += "Invisibility Recharge: [time_left] second\s."
+
+
 /datum/behavior_delegate/lurker_base/on_collide(atom/movable/movable_atom)
 	. = ..()
 

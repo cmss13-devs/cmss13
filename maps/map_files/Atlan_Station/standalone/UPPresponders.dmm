@@ -1760,14 +1760,11 @@
 /obj/item/ammo_magazine/rifle/type71,
 /obj/item/ammo_magazine/rifle/type71,
 /obj/item/ammo_magazine/rifle/type71,
-/obj/item/weapon/gun/rifle/type71,
-/obj/item/weapon/gun/rifle/type71,
 /obj/structure/machinery/light/double/blue{
 	dir = 1;
 	pixel_y = 21
 	},
 /obj/effect/decal/floor_symbol/upp/northface/north,
-/obj/item/ammo_magazine/rifle/type71,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/admin)
 "DR" = (

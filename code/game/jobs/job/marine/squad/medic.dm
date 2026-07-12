@@ -27,14 +27,14 @@
 
 	return (slots*4)
 
-/datum/job/marine/medic/generate_entry_conditions(mob/living/M)
+/datum/job/marine/medic/generate_entry_conditions(mob/living/carbon/human/current_human)
 	. = ..()
-	GLOB.marine_medics += M
-	RegisterSignal(M, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_medic_role))
+	GLOB.marine_medics += current_human
+	RegisterSignal(current_human, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_medic_role))
 
-/datum/job/marine/medic/proc/cleanup_medic_role(mob/M)
+/datum/job/marine/medic/proc/cleanup_medic_role(mob/current_human)
 	SIGNAL_HANDLER
-	GLOB.marine_medics -= M
+	GLOB.marine_medics -= current_human
 
 /datum/job/marine/medic/whiskey
 	title = JOB_WO_SQUAD_MEDIC

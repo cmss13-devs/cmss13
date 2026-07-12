@@ -57,7 +57,7 @@
 	desc = "The disassembled M2C HMG, with its telescopic tripods folded up and unable to fire."
 	w_class = SIZE_HUGE
 	flags_equip_slot = SLOT_BACK
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi'
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/machineguns.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_lefthand.dmi',
@@ -65,6 +65,8 @@
 	)
 	icon_state = "M2C_gun_mount"
 	item_state = "M2C_gun_mount"
+	pixel_x = -5
+	hud_offset = -5
 	var/rounds = 0
 	var/overheat_value = 0
 	var/anti_cadehugger_range = 1
@@ -87,6 +89,11 @@
 		icon_name += "_e"
 
 	icon_state = icon_name
+
+/obj/item/device/m2c_gun/get_examine_text(mob/user) //Let us see how much ammo we got in this thing.
+	. = ..()
+	if(rounds && (ishuman(user) || HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS)))
+		. += SPAN_NOTICE("It has [rounds] round\s out of 125 rounds.")
 
 /obj/item/device/m2c_gun/proc/check_can_setup(mob/user, turf/rotate_check, turf/open/OT, list/ACR)
 	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
@@ -210,6 +217,7 @@
 	rounds_max = 125
 	ammo = /datum/ammo/bullet/machinegun/auto
 	fire_delay = 0.1 SECONDS
+	gun_has_gamemode_skin = FALSE
 	var/grip_dir = null
 	var/fold_time = 1.5 SECONDS
 	var/repair_time = 5 SECONDS
@@ -366,7 +374,7 @@
 			return
 		if(user.action_busy)
 			return
-		user.visible_message(SPAN_NOTICE("[user] loads [src] with an ammo box! "), SPAN_NOTICE("You load [src] with an ammo box!"))
+		user.visible_message(SPAN_NOTICE("[user] loads [src] with an ammo box!"), SPAN_NOTICE("You load [src] with an ammo box!"))
 		playsound(src.loc, 'sound/items/m56dauto_load.ogg', 75, 1)
 		rounds = min(rounds + magazine.current_rounds, rounds_max)
 		update_icon()
@@ -493,7 +501,7 @@
 			return
 		if((rounds > 0) && (user.a_intent & (INTENT_GRAB)))
 			playsound(src.loc, 'sound/items/m56dauto_load.ogg', 75, 1)
-			user.visible_message(SPAN_NOTICE("[user] removes [src]'s ammo box."),SPAN_NOTICE(" You remove [src]'s ammo box, preparing the gun for disassembly."))
+			user.visible_message(SPAN_NOTICE("[user] removes [src]'s ammo box."),SPAN_NOTICE("You remove [src]'s ammo box, preparing the gun for disassembly."))
 			var/obj/item/ammo_magazine/m2c/used_ammo = new(user.loc)
 			used_ammo.current_rounds = rounds
 			user.put_in_active_hand(used_ammo)

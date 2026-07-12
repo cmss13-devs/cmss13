@@ -220,9 +220,13 @@ a.popt {
 
 /* ADD HERE FOR BOLD */
 
+.attacklog,
 .bold,
 .name,
+.debugnotice,
 .prefix,
+.ffalive,
+.ffdead,
 .ooc,
 .looc,
 .adminooc,
@@ -293,6 +297,22 @@ em {
 .niche {
   color: hsl(227, 64%, 60%);
   font-weight: bold;
+}
+
+.niche .prefix {
+  font-weight: bolder;
+}
+
+.niche .message {
+  color: hsl(227, 56%, 44%);
+}
+
+.ffalive {
+  color: hsl(0, 100%, 60%);
+}
+
+.ffdead {
+  color: hsl(40, 100%, 50%);
 }
 
 .name {
@@ -1004,6 +1024,9 @@ em {
 .ciaradio {
   color: hsl(16, 75%, 60%);
 }
+.armyradio {
+  color: hsl(170, 47%, 36%);
+}
 .cryoradio {
   color: hsl(22, 41%, 48%);
 }
@@ -1042,6 +1065,14 @@ em {
 
 .wyradio {
   color: hsl(33, 99%, 57%);
+}
+
+.wypubradio {
+  color: hsl(33, 90%, 62%);
+}
+
+.wysecradio {
+  color: hsl(33, 85%, 44%);
 }
 
 .hdcradio {
@@ -1185,6 +1216,30 @@ em {
 .debuginfo {
   color: hsl(39, 32%, 22%);
   font-style: italic;
+}
+
+.attacklog {
+  color: hsl(225, 100%, 63%);
+}
+
+.attacklog .message {
+  color: hsl(230, 35%, 45%);
+}
+
+.attacklog .prefix {
+  font-weight: bolder;
+}
+
+.debugnotice {
+  color: hsl(30, 100%, 55%);
+}
+
+.debugnotice .message {
+  color: hsl(30, 40%, 50%);
+}
+
+.debugnotice .prefix {
+  font-weight: bolder;
 }
 
 .xenonotice {
@@ -1469,7 +1524,7 @@ em {
 
 .commando {
   color: hsl(33, 99%, 57%);
-  font-style: bold;
+  font-weight: bold;
 }
 
 .say_quote {

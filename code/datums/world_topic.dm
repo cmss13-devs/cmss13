@@ -94,8 +94,8 @@
 /datum/world_topic/playerlist/Run(list/input)
 	. = ..()
 	data = list()
-	for(var/client/C as() in GLOB.clients)
-		data += C.ckey
+	for(var/client/current as anything in GLOB.clients)
+		data += current.ckey
 	statuscode = 200
 	response = "Player list fetched"
 
@@ -175,6 +175,14 @@
 	data["roles"] = get_whitelisted_roles(player.ckey)
 	statuscode = 200
 	response = "Lookup successful."
+
+/datum/world_topic/refresh_admins
+	key = "refresh_admins"
+
+/datum/world_topic/refresh_admins/Run(list/input)
+	. = ..()
+
+	load_admins()
 
 /datum/world_topic/cmtv
 	key = "cmtv"

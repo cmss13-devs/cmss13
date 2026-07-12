@@ -1,0 +1,5 @@
+author: "MistChristmas"
+delete-after: True
+changes:
+  - rscadd: "Dzho's get a label that they're made by norcomm"
+  - bugfix: "Daniel's get their synthetic verbs once again"

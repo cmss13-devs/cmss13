@@ -144,7 +144,7 @@ GLOBAL_LIST_INIT_TYPED(combining_properties, /list, list( PROPERTY_DEFIBRILLATIN
 											PROPERTY_ANTIADDICTIVE = list(PROPERTY_PSYCHOSTIMULATING, PROPERTY_ANTIHALLUCINOGENIC),\
 											PROPERTY_ADDICTIVE = list(PROPERTY_PSYCHOSTIMULATING, PROPERTY_NEUROTOXIC),\
 											PROPERTY_CIPHERING_PREDATOR = list(PROPERTY_CIPHERING, PROPERTY_CROSSMETABOLIZING),\
-											PROPERTY_FIRE_PENETRATING = list(PROPERTY_OXYGENATING, PROPERTY_VISCOUS),\
+											PROPERTY_FIRE_PENETRATING = list(PROPERTY_OXYGENATING, PROPERTY_EXPLOSIVE),\
 											PROPERTY_BONEMENDING = list(PROPERTY_CRYSTALLIZATION, PROPERTY_NUTRITIOUS)))
 
 //List of all id's from classed /datum/reagent datums indexed by class or tier. Used by chemistry generator and chem spawners.
@@ -157,6 +157,9 @@ GLOBAL_LIST_INIT_TYPED(space_weapons_ammo, /datum/space_weapon_ammo, setup_ship_
 
 GLOBAL_LIST_INIT_TYPED(ammo_list, /datum/ammo, setup_ammo()) //List of all ammo types. Used by guns to tell the projectile how to act.
 GLOBAL_REFERENCE_LIST_INDEXED(joblist, /datum/job, title) //List of all jobstypes, minus borg and AI
+
+GLOBAL_LIST_INIT(body_type_spectrum, list(BODY_TYPE_NOMUSCLE, BODY_TYPE_LEAN, BODY_TYPE_RIPPED))
+GLOBAL_LIST_INIT(body_size_spectrum, list(BODY_SIZE_THIN, BODY_SIZE_AVERAGE, BODY_SIZE_LARGE))
 
 /*Surgical lists.
 surgery_invasiveness_levels lists possible incision depths.
@@ -218,11 +221,13 @@ GLOBAL_LIST_INIT_TYPED(hive_datum, /datum/hive_status, list(
 	XENO_HIVE_BRAVO = new /datum/hive_status/bravo(),
 	XENO_HIVE_CHARLIE = new /datum/hive_status/charlie(),
 	XENO_HIVE_DELTA = new /datum/hive_status/delta(),
+	XENO_HIVE_K_SERIES = new /datum/hive_status/kseries(),
 	XENO_HIVE_FERAL = new /datum/hive_status/feral(),
 	XENO_HIVE_TAMED = new /datum/hive_status/corrupted/tamed(),
 	XENO_HIVE_MUTATED = new /datum/hive_status/mutated(),
 	XENO_HIVE_FORSAKEN = new /datum/hive_status/forsaken(),
 	XENO_HIVE_YAUTJA = new /datum/hive_status/yautja(),
+	XENO_HIVE_YAUTJA_BADBLOOD = new /datum/hive_status/yautja_bad(),
 	XENO_HIVE_HUNTED = new /datum/hive_status/hunted(),
 	XENO_HIVE_RENEGADE = new /datum/hive_status/corrupted/renegade(),
 	XENO_HIVE_TUTORIAL = new /datum/hive_status/tutorial()
@@ -256,7 +261,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(hair_gradient_list, /datum/sprite_accessory/hair_g
 GLOBAL_REFERENCE_LIST_INDEXED(yautja_hair_styles_list, /datum/sprite_accessory/yautja_hair, name)
 
 	//Backpacks
-GLOBAL_LIST_INIT(backbaglist, list("Backpack", "Satchel"))
+GLOBAL_LIST_INIT(backbaglist, list("Backpack", "Satchel", "Chestrig"))
 
 	//NVG colors
 GLOBAL_LIST_INIT(nvg_color_list, list("Green", "White", "Yellow", "Orange", "Red", "Blue"))
@@ -336,8 +341,12 @@ GLOBAL_LIST_EMPTY(hj_categories)
 GLOBAL_LIST_INIT(hj_emotes, setup_hazard_joe_emotes())
 /// list of categories for upp joes
 GLOBAL_LIST_EMPTY(uppj_categories)
+/// list of categories for daniels
+GLOBAL_LIST_EMPTY(daniel_categories)
 /// dict ("category" : (emotes)) of every uppj emote typepath
 GLOBAL_LIST_INIT(uppj_emotes, setup_upp_joe_emotes())
+/// dict ("category" : (emotes)) of every daniel emote typepath
+GLOBAL_LIST_INIT(daniel_emotes, setup_daniel_emotes())
 /// list of categories for wy combat droids
 GLOBAL_LIST_EMPTY(wy_droid_categories)
 /// dict ("category" : (emotes)) of every wy droid emote typepath
@@ -423,6 +432,8 @@ GLOBAL_LIST_INIT(wy_droid_emotes, setup_wy_droid_emotes())
 		path_presets_list[preset.type] = preset
 
 		var/list/categories_to_check = list("All", preset.faction)
+		if(preset.no_faction_category)
+			categories_to_check = list("All")
 		categories_to_check += preset.selection_categories
 		for(var/category in categories_to_check)
 			if(!(category in all_categories))
@@ -635,10 +646,23 @@ GLOBAL_LIST_INIT_TYPED(specialist_set_datums, /datum/specialist_set, setup_speci
 		emotes_to_add += emote
 	return emotes_to_add
 
+/// Setup for Daniel emotes and category list, returns data for daniel_emotes
+/proc/setup_daniel_emotes()
+	var/list/emotes_to_add = list()
+	for(var/datum/emote/living/carbon/human/synthetic/working_joe/emote as anything in subtypesof(/datum/emote/living/carbon/human/synthetic/working_joe))
+		if(!(initial(emote.joe_flag) & DANIEL_EMOTE) || !initial(emote.key) || !initial(emote.say_message))
+			continue
+
+		if(!(initial(emote.category) in GLOB.daniel_categories))
+			GLOB.daniel_categories += initial(emote.category)
+
+		emotes_to_add += emote
+	return emotes_to_add
+
 /// Setup for WY droid emotes and category list, returns data for wy_droid_emotes
 /proc/setup_wy_droid_emotes()
 	var/list/emotes_to_add = list()
-	for(var/datum/emote/living/carbon/human/synthetic/colonial/wy_droid/emote as anything in subtypesof(/datum/emote/living/carbon/human/synthetic/colonial/wy_droid))
+	for(var/datum/emote/living/carbon/human/synthetic/gen_two/gen_one/wy_droid/emote as anything in subtypesof(/datum/emote/living/carbon/human/synthetic/gen_two/gen_one/wy_droid))
 		if(!initial(emote.key) || !initial(emote.say_message))
 			continue
 

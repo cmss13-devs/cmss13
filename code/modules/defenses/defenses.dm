@@ -102,13 +102,13 @@
 	if(!(placed||static))
 		return FALSE
 
-	msg_admin_niche("[key_name(usr)] turned on [src] at [get_location_in_text(src)] [ADMIN_JMP(loc)]")
+	msg_admin_niche("[key_name(usr)] turned on [src] at [get_location_in_text(src)]")
 	turned_on = TRUE
 	power_on_action()
 	update_icon()
 
 /obj/structure/machinery/defenses/proc/power_off()
-	msg_admin_niche("[key_name(usr)] turned off [src] at [get_location_in_text(src)] [ADMIN_JMP(loc)]")
+	msg_admin_niche("[key_name(usr)] turned off [src] at [get_location_in_text(src)]")
 	turned_on = FALSE
 	power_off_action()
 	update_icon()
@@ -120,7 +120,7 @@
  * @param selection: configuration value for category.
  */
 /obj/structure/machinery/defenses/proc/update_choice(mob/user, category, selection)
-	msg_admin_niche("[key_name(user)] changed the [category] of [src] at [get_location_in_text(src)] to [selection] [ADMIN_JMP(loc)]")
+	msg_admin_niche("[key_name(user)] changed the [category] of [src] at [get_location_in_text(src, FALSE)] to [selection] [ADMIN_JMP(loc)]")
 	if(category in selected_categories)
 		selected_categories[category] = selection
 		switch(category)
@@ -451,9 +451,8 @@
 		if(prob(50))
 			visible_message("[icon2html(src, viewers(src))] <span class='danger'>[src] beeps and buzzes wildly, flashing odd symbols on its screen before shutting down!</span>")
 			playsound(loc, 'sound/mecha/critdestrsyndi.ogg', 25, 1)
-			for(var/i = 1 to 6)
+			for(var/i in 1 to 6)
 				setDir(pick(1, 2, 3, 4))
-				sleep(2)
 			turned_on = FALSE
 	if(health > 0)
 		update_health(25)

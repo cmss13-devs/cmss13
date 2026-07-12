@@ -47,7 +47,6 @@
 	var/recalculate_move_delay = TRUE // Whether move delay needs to be recalculated, on by default so that new mobs actually get movement delay calculated upon creation
 	var/crawling = FALSE
 	var/can_crawl = TRUE
-	var/dirlock_slowdown = TRUE // are they slowed down by dirlocking
 	var/monkeyizing = null //Carbon
 	var/hand = null
 
@@ -95,6 +94,7 @@
 	var/mob_size = MOB_SIZE_HUMAN
 	var/list/embedded = list()   // Embedded items, since simple mobs don't have organs.
 	var/list/datum/language/languages = list()  // For speaking/listening.
+	var/list/language_flags = list()
 	var/list/speak_emote = list("says") // Verbs used when speaking. Defaults to 'say' if speak_emote is null.
 	var/emote_type = 1 // Define emote default type, 1 for seen emotes, 2 for heard emotes
 

@@ -6,6 +6,7 @@
 	unacidable = TRUE
 
 	var/invisibility_value = INVISIBILITY_MAXIMUM
+	var/spawn_chance = 100
 
 /obj/effect/landmark/New()
 	tag = "landmark*[name]"
@@ -117,6 +118,10 @@
 	name = "distress_groundside_xeno"
 	icon_state = "spawn_distress_xeno"
 
+/obj/effect/landmark/ert_spawns/groundside_army
+	name = "distress_groundside_army"
+	icon_state = "spawn_distress_wo"
+
 /obj/effect/landmark/monkey_spawn
 	name = "monkey_spawn"
 	icon_state = "monkey_spawn"
@@ -168,6 +173,7 @@
 	new /mob/living/simple_animal/hostile/retaliate/giant_lizard(loc)
 
 #undef MAXIMUM_LIZARD_AMOUNT
+
 
 /obj/effect/landmark/latewhiskey
 	name = "Whiskey Outpost Late join"
@@ -247,6 +253,7 @@
 /obj/effect/landmark/xeno_spawn
 	name = "xeno spawn"
 	icon_state = "xeno_spawn"
+	var/species
 
 /obj/effect/landmark/xeno_spawn/Initialize(mapload, ...)
 	. = ..()
@@ -449,9 +456,9 @@
 	icon_state = "mo_spawn"
 	job = /datum/job/command/pilot/whiskey
 
-/obj/effect/landmark/start/whiskey/tank_crew
+/obj/effect/landmark/start/whiskey/warden
 	icon_state = "spec_hg_spawn"
-	job = /datum/job/command/tank_crew/whiskey
+	job = /datum/job/command/warden/whiskey
 
 /obj/effect/landmark/start/whiskey/intel
 	icon_state = "io_spawn"
@@ -513,10 +520,20 @@
 	icon_state = "late_join_delta"
 	squad = SQUAD_MARINE_4
 
+/obj/effect/landmark/late_join/synthetic
+	name = "synthetic late join"
+	icon_state = "late_join_misc"
+	job = JOB_SYNTH
+
 /obj/effect/landmark/late_join/working_joe
 	name = "working joe late join"
 	icon_state = "late_join_misc"
 	job = JOB_WORKING_JOE
+
+/obj/effect/landmark/late_join/working_joe/colony
+	name = "colony working joe late join"
+	icon_state = "late_join_misc"
+	job = JOB_COLONY_JOE
 
 /obj/effect/landmark/late_join/dzho_automaton
 	name = "dzho automaton late join"
@@ -662,6 +679,79 @@
 	GLOB.comm_tower_landmarks_net_two -= src
 	return ..()
 
+// AMMO SPAWN (tyrargo)
+
+// m41a ammo
+
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn
+	name = "m41a ammo spawn"
+	icon_state = "ipool"
+
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn/Initialize(mapload, ...)
+	. = ..()
+	if(!prob(spawn_chance))
+		return
+
+	new /obj/item/ammo_magazine/rifle(loc)
+
+/obj/effect/landmark/ammo_spawn/m41a_ext_random_spawn
+	name = "m41a extended ammo spawn"
+	icon_state = "ipool"
+
+/obj/effect/landmark/ammo_spawn/m41a_ext_random_spawn/Initialize(mapload, ...)
+	. = ..()
+	if(!prob(spawn_chance))
+		return
+
+	new /obj/item/ammo_magazine/rifle/extended(loc)
+
+// M4RA Rifle ammo
+
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn
+	name = "m4ra ammo spawn"
+	icon_state = "ipool"
+
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn/Initialize(mapload, ...)
+	. = ..()
+	if(!prob(spawn_chance))
+		return
+
+	new /obj/item/ammo_magazine/rifle/m4ra(loc)
+
+/obj/effect/landmark/ammo_spawn/m4ra_ext_random_spawn
+	name = "m41a extended ammo spawn"
+	icon_state = "ipool"
+
+/obj/effect/landmark/ammo_spawn/m4ra_ext_random_spawn/Initialize(mapload, ...)
+	. = ..()
+	if(!prob(spawn_chance))
+		return
+
+	new /obj/item/ammo_magazine/rifle/m4ra/extended(loc)
+
+// vp78 ammo
+/obj/effect/landmark/ammo_spawn/vp78_ammo
+	name = "vp78 ammo"
+	icon_state = "ipool"
+
+/obj/effect/landmark/ammo_spawn/vp78_ammo/Initialize(mapload, ...)
+	. = ..()
+	if(!prob(spawn_chance))
+		return
+
+	new /obj/item/ammo_magazine/pistol/vp78(loc)
+
+// smg ammo
+/obj/effect/landmark/ammo_spawn/smg_ammo
+	name = "SMG ammo (60)"
+	icon_state = "ipool"
+
+/obj/effect/landmark/ammo_spawn/smg_ammo/Initialize(mapload, ...)
+	. = ..()
+	if(!prob(spawn_chance))
+		return
+
+	new /obj/item/ammo_magazine/smg/m39(loc)
 
 // zombie spawn
 /obj/effect/landmark/zombie

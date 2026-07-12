@@ -18,6 +18,8 @@
 	var/sound_shield_hit
 	/// Snipers use this to simulate poor accuracy at close ranges
 	var/accurate_range_min = 0
+	/// Completely prevents shots hitting in this range
+	var/accurate_range_min_strict = 0
 	/// How much the ammo scatters when burst fired, added to gun scatter, along with other mods
 	var/scatter = 0
 	var/stamina_damage = 0
@@ -96,6 +98,24 @@
 
 /datum/ammo/New()
 	set_bullet_traits()
+
+/**
+ * Does smoke with the awful outdated effect system
+ * Inherits the location and cause from the source projectile,
+ * but exact location and direction can be overriden
+ */
+/datum/ammo/proc/do_smoke(obj/projectile/source, atom/loca, direct = -1, datum/cause_data/cause_data)
+	if(!loca)
+		loca = source?.loc
+	if(!loca)
+		return
+	if(source && direct == -1)
+		direct = reverse_direction(source.dir)
+	if(!cause_data)
+		cause_data = source?.weapon_cause_data
+	var/datum/effect_system/smoke_spread/smoke = new()
+	smoke.set_up(1, loca = get_turf(loca), direct = direct, new_cause_data = cause_data)
+	smoke.start()
 
 /datum/ammo/proc/setup_faction_clash_values()
 	accuracy = (accuracy - 85)/2

@@ -149,11 +149,11 @@
 	if(HUD_toggled[HUD_nbr])
 		HUD_toggled[HUD_nbr] = 0
 		H.remove_hud_from(src, src)
-		to_chat(src, SPAN_NOTICE(" <B>[hud_choice] Disabled</B>"))
+		to_chat(src, SPAN_NOTICE("<B>[hud_choice] Disabled</B>"))
 	else
 		HUD_toggled[HUD_nbr] = 1
 		H.add_hud_to(src, src)
-		to_chat(src, SPAN_NOTICE(" <B>[hud_choice] Enabled</B>"))
+		to_chat(src, SPAN_NOTICE("<B>[hud_choice] Enabled</B>"))
 
 /mob/living/silicon/verb/pose()
 	set name = "Set Pose"
@@ -170,6 +170,9 @@
 	flavor_text =  strip_html(input(usr, "Please enter your new flavour text.", "Flavour text", null)  as text)
 
 /mob/living/silicon/hear_apollo()
+	return TRUE
+
+/mob/living/silicon/hear_artemis()
 	return TRUE
 
 /mob/living/silicon/rejuvenate()

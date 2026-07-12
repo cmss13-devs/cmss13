@@ -111,7 +111,7 @@
 
 // ORDERS
 #define COMMAND_ORDER_RANGE 7
-#define COMMAND_ORDER_COOLDOWN 800
+#define COMMAND_ORDER_COOLDOWN 800 // 1 minute 20 seconds
 #define COMMAND_ORDER_MOVE "move"
 #define COMMAND_ORDER_FOCUS "focus"
 #define COMMAND_ORDER_HOLD "hold"
@@ -189,21 +189,19 @@
 //////////////////////////////////
 
 //Synthetic Defines
-#define SYNTH_COLONY "Third Generation Colonial Synthetic"
-#define SYNTH_COLONY_GEN_TWO "Second Generation Colonial Synthetic"
-#define SYNTH_COLONY_GEN_ONE "First Generation Colonial Synthetic"
+#define SYNTH_GEN_ONE "First Generation Synthetic"
+#define SYNTH_GEN_TWO "Second Generation Synthetic"
+#define SYNTH_GEN_THREE "Third Generation Synthetic"
 #define SYNTH_COMBAT "W-Y Combat Android"
 #define SYNTH_INFILTRATOR "Infiltrator Synthetic"
 #define SYNTH_WORKING_JOE "Working Joe"
 #define SYNTH_HAZARD_JOE "Hazard Joe"
 #define SYNTH_UPP_JOE "Dzho Automaton"
-#define SYNTH_GEN_ONE "First Generation Synthetic"
-#define SYNTH_GEN_TWO "Second Generation Synthetic"
-#define SYNTH_GEN_THREE "Third Generation Synthetic"
+#define SYNTH_DANIEL "Daniel"
 #define SYNTH_K9 "Synthetic K9"
 
 #define PLAYER_SYNTHS list(SYNTH_GEN_ONE, SYNTH_GEN_TWO, SYNTH_GEN_THREE)
-#define SYNTH_TYPES list(SYNTH_COLONY, SYNTH_COLONY_GEN_ONE, SYNTH_COLONY_GEN_TWO, SYNTH_COMBAT, SYNTH_INFILTRATOR, SYNTH_WORKING_JOE, SYNTH_GEN_ONE, SYNTH_GEN_TWO, SYNTH_GEN_THREE)
+#define SYNTH_TYPES list(SYNTH_COMBAT, SYNTH_INFILTRATOR, SYNTH_WORKING_JOE, SYNTH_DANIEL, SYNTH_GEN_ONE, SYNTH_GEN_TWO, SYNTH_GEN_THREE)
 
 // Human religion defines
 #define RELIGION_PROTESTANT "Christianity (Protestant)"
@@ -224,4 +222,21 @@
 #define RELIGION_ATHEISM "Atheism"
 #define RELIGION_AGNOSTICISM "Agnostic"
 
-#define MAXIMUM_DROPPED_OBJECTS_REMEMBERED 2
+#define MAXIMUM_DROPPED_OBJECTS_REMEMBERED 5
+
+//--- body 'cosmetic' stuff ---//
+
+#define BODY_TYPE_NOMUSCLE "No Muscles"
+/// default body type
+#define BODY_TYPE_LEAN "Lean"
+#define BODY_TYPE_RIPPED "Ripped"
+
+#define BODY_SIZE_THIN "Thin"
+/// default body size
+#define BODY_SIZE_AVERAGE "Average"
+#define BODY_SIZE_LARGE "Large"
+
+/// default skin color
+#define SKIN_COLOR_PALE2 "Pale 2"
+
+//--- end ---//

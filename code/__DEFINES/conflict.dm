@@ -42,7 +42,7 @@
 /// Handles sentry flamers glob
 #define AMMO_FLAME (1<<22)
 // If the projectile hits a dense turf it'll do on_hit_turf on the turf just in front of the turf instead of on the turf itself (This one does not work on mobs)
-#define AMMO_STRIKES_SURFACE_ONLY	(1<<23) 
+#define AMMO_STRIKES_SURFACE_ONLY	(1<<23)
 // NOTE: Don't add flags past 1<<23, it'll break things due to BYOND limitations. You can usually use a Component instead.
 
 
@@ -50,6 +50,8 @@
 #define PROJECTILE_SHRAPNEL  (1<<0)
 /// Apply additional effects upon hitting clicked target
 #define PROJECTILE_BULLSEYE  (1<<1)
+/// Reflected projectiles
+#define PROJECTILE_REFLECTED (1<<2)
 
 //Gun defines for gun related thing. More in the projectile folder.
 
@@ -135,15 +137,14 @@
 #define SLOWDOWN_ADS_MINISCOPE_DYNAMIC 1.8
 #define SLOWDOWN_ADS_SUPERWEAPON 2.75
 
-//Wield delays, in milliseconds. 10 is 1 second
-#define WIELD_DELAY_NONE 0
-#define WIELD_DELAY_MIN 1
-#define WIELD_DELAY_VERY_FAST 2
-#define WIELD_DELAY_FAST 4
-#define WIELD_DELAY_NORMAL 6
-#define WIELD_DELAY_SLOW 8
-#define WIELD_DELAY_VERY_SLOW 10
-#define WIELD_DELAY_HORRIBLE 12
+#define WEAPON_DELAY_NONE 0
+#define WEAPON_DELAY_MIN 1
+#define WEAPON_DELAY_VERY_FAST 2
+#define WEAPON_DELAY_FAST 4
+#define WEAPON_DELAY_NORMAL 6
+#define WEAPON_DELAY_SLOW 8
+#define WEAPON_DELAY_VERY_SLOW 10
+#define WEAPON_DELAY_HORRIBLE 12
 
 ///This is how long you must wait to throw again after throwing two things
 #define THROW_DELAY (1.5 SECONDS)
@@ -284,7 +285,7 @@
 #define MOLOTOV_POTENCY_MAX 20
 #define MOLOTOV_TIME_MAX 20
 
-/// A gun filled with this percentage of it's total ammo or lower is considered to have low ammo
+/// A gun filled with this percentage of its total ammo or lower is considered to have low ammo
 #define GUN_LOW_AMMO_PERCENTAGE 0.25
 
 // Fire

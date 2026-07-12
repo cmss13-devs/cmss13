@@ -1,0 +1,1467 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 1;
+	light_color = "#A7DBB6"
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/indoors/bar/ground)
+"ab" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 4
+	},
+/obj/effect/decal/grass_overlay/grass1/dark,
+/turf/open/asphalt/cement/cement2,
+/area/tyrargo/outdoors/colony_exterior/north_west)
+"af" = (
+/obj/effect/decal/siding,
+/turf/closed/wall/mineral/bone_resin,
+/area/tyrargo/indoors/bar/ground)
+"ag" = (
+/obj/effect/decal/siding{
+	icon_state = "siding8"
+	},
+/obj/effect/decal/siding{
+	icon_state = "siding4"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/tyrargo/indoors/bar/ground)
+"ap" = (
+/obj/item/prop/colony/used_flare,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_10";
+	pixel_y = 22;
+	pixel_x = 2
+	},
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/north_west)
+"aA" = (
+/obj/effect/decal/siding{
+	icon_state = "siding4"
+	},
+/turf/open/floor/wood,
+/area/tyrargo/indoors/bar/ground)
+"bl" = (
+/obj/structure/bed/chair/comfy{
+	dir = 4;
+	icon_state = "chair_alt"
+	},
+/turf/open/floor/hybrisa/wood/darkerwood,
+/area/tyrargo/indoors/bar/ground)
+"bs" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement/cement3,
+/area/tyrargo/outdoors/colony_streets/north_west)
+"bC" = (
+/obj/structure/barricade/handrail/hybrisa/road/wood/orange,
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/north_west)
+"bL" = (
+/obj/effect/decal/siding{
+	icon_state = "siding8"
+	},
+/obj/effect/decal/siding{
+	icon_state = "siding4"
+	},
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
+/turf/open/floor/wood,
+/area/tyrargo/indoors/bar/ground)
+"bO" = (
+/obj/effect/decal/siding,
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/wall/mineral/bone_resin,
+/area/tyrargo/indoors/bar/ground)
+"dC" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/indoors/bar/ground)
+"dX" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/floor/hybrisa/wood/darkerwood,
+/area/tyrargo/indoors/bar/ground)
+"ea" = (
+/obj/structure/prop/resin_prop,
+/turf/open/floor/hybrisa/wood/darkerwood,
+/area/tyrargo/indoors/bar/ground)
+"ek" = (
+/obj/effect/decal/siding,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/closed/wall/mineral/bone_resin,
+/area/tyrargo/indoors/bar/ground)
+"eD" = (
+/obj/effect/decal/siding{
+	icon_state = "siding4"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_16";
+	pixel_y = 35
+	},
+/turf/open/floor/wood,
+/area/tyrargo/indoors/bar/ground)
+"fB" = (
+/obj/structure/stairs/multiz/up{
+	dir = 4
+	},
+/turf/open/floor/almayer_hull,
+/area/tyrargo/indoors/bar/ground)
+"fJ" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_exterior/north)
+"fP" = (
+/turf/closed/wall/mineral/bone_resin,
+/area/tyrargo/outdoors/colony_streets/north_west)
+"gq" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -2;
+	pixel_y = 24
+	},
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/north_west)
+"gw" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/obj/effect/decal/remains/robot,
+/turf/open/floor/corsat/marked,
+/area/tyrargo/indoors/bar/ground)
+"gC" = (
+/obj/structure/bed/chair/comfy{
+	dir = 8;
+	icon_state = "chair_alt"
+	},
+/turf/open/floor/hybrisa/wood/redwood,
+/area/tyrargo/indoors/bar/ground)
+"hl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/barbed_wire,
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/north_west)
+"hr" = (
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 8;
+	icon_state = "sandbag_0"
+	},
+/obj/item/ammo_casing/bullet,
+/obj/structure/prop/tyrargo/boards{
+	dir = 4;
+	pixel_x = 5;
+	layer = 2.98
+	},
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/north_west)
+"hN" = (
+/obj/effect/decal/siding{
+	icon_state = "siding2"
+	},
+/turf/open/floor/wood,
+/area/tyrargo/indoors/bar/ground)
+"jj" = (
+/obj/effect/decal/siding{
+	icon_state = "siding2"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/stairs/multiz/up{
+	dir = 8
+	},
+/obj/structure/barricade/handrail/type_b,
+/turf/open/floor/almayer_hull,
+/area/tyrargo/indoors/bar/ground)
+"jC" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_9"
+	},
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/north_west)
+"kj" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/obj/item/stack/sheet/wood,
+/turf/open/floor/hybrisa/carpet/pink,
+/area/tyrargo/indoors/bar/ground)
+"kR" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/north_west)
+"kX" = (
+/obj/structure/girder/displaced,
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/north_west)
+"la" = (
+/turf/closed/wall/mineral/bone_resin,
+/area/tyrargo/outdoors/colony_exterior/north_west)
+"ls" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/indoors/bar/ground)
+"lQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/hybrisa/wood/darkerwood,
+/area/tyrargo/indoors/bar/ground)
+"lY" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2";
+	pixel_x = 1;
+	pixel_y = 24
+	},
+/obj/structure/girder/displaced,
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/north_west)
+"mF" = (
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/tyrargo/outdoors/colony_exterior/north_west)
+"mI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/turf/open/asphalt/cement/cement1,
+/area/tyrargo/outdoors/colony_streets/north_west)
+"mZ" = (
+/obj/effect/decal/siding{
+	icon_state = "siding4"
+	},
+/obj/effect/decal/siding{
+	icon_state = "siding8"
+	},
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 30
+	},
+/turf/open/floor/wood,
+/area/tyrargo/indoors/bar/ground)
+"nM" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/hybrisa/wood/darkerwood,
+/area/tyrargo/indoors/bar/ground)
+"oi" = (
+/obj/structure/surface/table/reinforced/cloth{
+	color = "#4A0404"
+	},
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	icon_state = "shotglass";
+	pixel_x = 8;
+	pixel_y = 16
+	},
+/turf/open/floor/hybrisa/carpet/pink,
+/area/tyrargo/indoors/bar/ground)
+"ol" = (
+/obj/effect/decal/siding{
+	icon_state = "siding2"
+	},
+/turf/closed/wall/strata_outpost,
+/area/tyrargo/indoors/bar/ground)
+"oM" = (
+/obj/structure/surface/table/reinforced/cloth{
+	color = "#4A0404"
+	},
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	icon_state = "shotglass";
+	pixel_x = 16;
+	pixel_y = 10
+	},
+/turf/open/floor/hybrisa/carpet/pink,
+/area/tyrargo/indoors/bar/ground)
+"oU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_12";
+	pixel_y = 1
+	},
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/north_west)
+"qF" = (
+/obj/effect/decal/siding{
+	icon_state = "siding4"
+	},
+/turf/closed/wall/mineral/bone_resin,
+/area/tyrargo/indoors/bar/ground)
+"qT" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/hybrisa/wood/darkerwood,
+/area/tyrargo/indoors/bar/ground)
+"rc" = (
+/turf/open/floor/wood,
+/area/tyrargo/indoors/bar/ground)
+"ru" = (
+/obj/effect/decal/siding{
+	icon_state = "siding2"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/wall/strata_outpost,
+/area/tyrargo/indoors/bar/ground)
+"sb" = (
+/obj/effect/decal/siding{
+	icon_state = "siding2"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/wood,
+/area/tyrargo/indoors/bar/ground)
+"sf" = (
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/indoors/bar/ground)
+"so" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_8";
+	pixel_y = -20
+	},
+/turf/open/floor/hybrisa/wood/redwood,
+/area/tyrargo/indoors/bar/ground)
+"sp" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	icon_state = "shotglass";
+	pixel_x = 8;
+	pixel_y = 16
+	},
+/obj/item/reagent_container/food/drinks/bottle/whiskey{
+	pixel_x = 8;
+	pixel_y = 3
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/indoors/bar/ground)
+"sw" = (
+/obj/structure/girder,
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_exterior/north_west)
+"sY" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/indoors/bar/ground)
+"tO" = (
+/turf/open/floor/hybrisa/wood/darkerwood,
+/area/tyrargo/indoors/bar/ground)
+"tX" = (
+/obj/structure/window_frame/strata,
+/turf/open/floor/plating,
+/area/tyrargo/indoors/bar/ground)
+"uE" = (
+/obj/effect/decal/siding,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/tyrargo/indoors/bar/ground)
+"uT" = (
+/turf/closed/wall/mineral/bone_resin,
+/area/tyrargo/indoors/bar/ground)
+"vb" = (
+/obj/structure/surface/table/reinforced/cloth{
+	color = "#4A0404"
+	},
+/obj/item/reagent_container/food/snacks/cheesyfries,
+/turf/open/floor/hybrisa/carpet/pink,
+/area/tyrargo/indoors/bar/ground)
+"vm" = (
+/turf/open/floor/hybrisa/wood/redwood,
+/area/tyrargo/indoors/bar/ground)
+"vw" = (
+/obj/structure/roof/hybrisa/signs/barsign{
+	light_color = "#00AAFF";
+	light_on = 1;
+	light_power = 4;
+	light_range = 6;
+	pixel_x = -12;
+	pixel_y = 8
+	},
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/north_west)
+"wv" = (
+/turf/open/asphalt/cement/cement3,
+/area/tyrargo/outdoors/colony_exterior/north_west)
+"wX" = (
+/obj/effect/decal/siding{
+	icon_state = "siding4"
+	},
+/obj/effect/decal/siding{
+	icon_state = "siding8"
+	},
+/turf/open/floor/wood,
+/area/tyrargo/indoors/bar/ground)
+"xg" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/indoors/bar/ground)
+"xx" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_14";
+	pixel_y = 13
+	},
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/north_west)
+"xM" = (
+/turf/closed/wall/strata_outpost/reinforced/hull,
+/area/tyrargo/oob)
+"xP" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
+/turf/open/floor/wood,
+/area/tyrargo/indoors/bar/ground)
+"xR" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/tyrargo/indoors/bar/ground)
+"yh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/hybrisa/wood/redwood,
+/area/tyrargo/indoors/bar/ground)
+"yF" = (
+/obj/effect/decal/siding{
+	icon_state = "siding8"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
+/turf/open/floor/wood,
+/area/tyrargo/indoors/bar/ground)
+"yX" = (
+/obj/structure/surface/table/reinforced/cloth{
+	color = "#4A0404"
+	},
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_x = 8;
+	pixel_y = -5
+	},
+/turf/open/floor/hybrisa/carpet/pink,
+/area/tyrargo/indoors/bar/ground)
+"zc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/north_west)
+"zS" = (
+/obj/item/prop/colony/used_flare,
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/north_west)
+"AC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/roof/hybrisa/signs/mechanicsign,
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/north_west)
+"AV" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/hybrisa/wood/redwood,
+/area/tyrargo/indoors/bar/ground)
+"Bu" = (
+/obj/structure/girder,
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/north_west)
+"BR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair/comfy{
+	icon_state = "chair_alt"
+	},
+/turf/open/floor/hybrisa/wood/redwood,
+/area/tyrargo/indoors/bar/ground)
+"BU" = (
+/obj/item/stack/sheet/wood,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/indoors/bar/ground)
+"Cb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/structure/prop/tyrargo/military_alert_sign/alt{
+	pixel_y = 31
+	},
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/north_west)
+"CM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 4
+	},
+/turf/open/asphalt/cement/cement3,
+/area/tyrargo/outdoors/colony_exterior/north)
+"CY" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/north_west)
+"Di" = (
+/obj/structure/surface/table/reinforced/cloth{
+	color = "#4A0404"
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft,
+/turf/open/floor/hybrisa/carpet/pink,
+/area/tyrargo/indoors/bar/ground)
+"Dz" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/indoors/bar/ground)
+"DJ" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_9";
+	pixel_y = 3;
+	pixel_x = -5
+	},
+/turf/open/floor/hybrisa/wood/darkerwood,
+/area/tyrargo/indoors/bar/ground)
+"Fl" = (
+/obj/structure/bed/chair/comfy{
+	icon_state = "chair_alt"
+	},
+/turf/open/floor/hybrisa/carpet/pink,
+/area/tyrargo/indoors/bar/ground)
+"Fo" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/closed/wall/mineral/bone_resin,
+/area/tyrargo/indoors/bar/ground)
+"Fq" = (
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_y = -6
+	},
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_y = 24
+	},
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/north_west)
+"FB" = (
+/obj/effect/decal/siding{
+	icon_state = "siding2"
+	},
+/turf/closed/wall/strata_outpost/reinforced/hull,
+/area/tyrargo/indoors/bar/ground)
+"FG" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement/cement1,
+/area/tyrargo/outdoors/colony_streets/north_west)
+"FN" = (
+/obj/structure/surface/table/woodentable/fancy,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/indoors/bar/ground)
+"Gj" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/floor/hybrisa/carpet/pink,
+/area/tyrargo/indoors/bar/ground)
+"Gq" = (
+/obj/structure/surface/table/reinforced/cloth{
+	color = "#4A0404"
+	},
+/obj/item/trash/plate,
+/turf/open/floor/hybrisa/carpet/pink,
+/area/tyrargo/indoors/bar/ground)
+"GC" = (
+/obj/effect/decal/siding,
+/turf/open/floor/wood,
+/area/tyrargo/indoors/bar/ground)
+"GO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 8
+	},
+/turf/open/asphalt/cement/cement9,
+/area/tyrargo/outdoors/colony_exterior/north)
+"HE" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/roof/hybrisa/signs/opensign2,
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/north_west)
+"Ic" = (
+/obj/effect/decal/siding{
+	icon_state = "siding2"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/structure/stairs/multiz/up{
+	dir = 4
+	},
+/obj/structure/barricade/handrail/type_b,
+/turf/open/floor/almayer_hull,
+/area/tyrargo/indoors/bar/ground)
+"It" = (
+/obj/structure/prop/tyrargo/traffic_signal/traffic_signal_2,
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/north_west)
+"IC" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_6";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/floor/hybrisa/wood/darkerwood,
+/area/tyrargo/indoors/bar/ground)
+"IF" = (
+/obj/effect/decal/siding{
+	icon_state = "siding2"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/tyrargo/indoors/bar/ground)
+"IJ" = (
+/obj/structure/bed/chair/comfy{
+	dir = 1;
+	icon_state = "chair_alt"
+	},
+/turf/open/floor/hybrisa/carpet/pink,
+/area/tyrargo/indoors/bar/ground)
+"IW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/resin_prop{
+	icon_state = "rack"
+	},
+/turf/open/floor/hybrisa/wood/redwood,
+/area/tyrargo/indoors/bar/ground)
+"Jb" = (
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 4
+	},
+/turf/open/asphalt/cement/cement2,
+/area/tyrargo/outdoors/colony_exterior/north_west)
+"Jt" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_exterior/north_west)
+"JG" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/obj/effect/landmark/corpsespawner/hybrisa/civilian,
+/turf/open/floor/wood,
+/area/tyrargo/indoors/bar/ground)
+"JT" = (
+/turf/open/floor/hybrisa/carpet/carpetfadedred,
+/area/tyrargo/indoors/bar/ground)
+"JV" = (
+/obj/effect/decal/siding{
+	icon_state = "siding4"
+	},
+/obj/effect/decal/siding{
+	icon_state = "siding8"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
+/turf/open/floor/wood,
+/area/tyrargo/indoors/bar/ground)
+"KI" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement/cement4,
+/area/tyrargo/outdoors/colony_exterior/north_west)
+"Lx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/hybrisa/road/wood/orange{
+	dir = 4;
+	pixel_y = 4;
+	pixel_x = -14
+	},
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/north_west)
+"LB" = (
+/obj/effect/decal/siding{
+	icon_state = "siding8"
+	},
+/turf/open/floor/wood,
+/area/tyrargo/indoors/bar/ground)
+"LF" = (
+/obj/effect/decal/siding{
+	icon_state = "siding4"
+	},
+/obj/effect/decal/siding{
+	icon_state = "siding8"
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
+/turf/open/floor/wood,
+/area/tyrargo/indoors/bar/ground)
+"LG" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4";
+	pixel_y = 12
+	},
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/north_west)
+"LM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/grass_overlay/grass1/dark,
+/turf/open/asphalt/cement/cement2,
+/area/tyrargo/outdoors/colony_exterior/north_west)
+"LO" = (
+/obj/effect/decal/siding{
+	icon_state = "siding8"
+	},
+/obj/effect/decal/siding{
+	icon_state = "siding4"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/tyrargo/indoors/bar/ground)
+"LU" = (
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/tyrargo/outdoors/colony_exterior/north)
+"LY" = (
+/turf/closed/wall/strata_outpost/reinforced/hull,
+/area/tyrargo/indoors/bar/ground)
+"Mz" = (
+/obj/effect/decal/siding,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/wood,
+/area/tyrargo/indoors/bar/ground)
+"MD" = (
+/obj/structure/window/framed/strata/reinforced,
+/turf/open/floor/plating,
+/area/tyrargo/indoors/bar/ground)
+"MT" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/floor/hybrisa/wood/redwood,
+/area/tyrargo/indoors/bar/ground)
+"MU" = (
+/obj/effect/decal/siding{
+	icon_state = "siding4"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/tyrargo/indoors/bar/ground)
+"Nr" = (
+/obj/effect/decal/siding{
+	icon_state = "siding2"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/wall/strata_outpost/reinforced/hull,
+/area/tyrargo/indoors/bar/ground)
+"NN" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_15";
+	pixel_y = 12
+	},
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/north_west)
+"OG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/resin_prop{
+	icon_state = "sheater0"
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/indoors/bar/ground)
+"OM" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/prop{
+	desc = "Empty and useless now.";
+	icon = 'icons/obj/items/casings.dmi';
+	icon_state = "cartridge_10_1";
+	name = "spent casings";
+	dir = 6
+	},
+/obj/item/stack/medical/bruise_pack/random_amount,
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/north_west)
+"Pb" = (
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/north_west)
+"Qn" = (
+/obj/structure/stairs/multiz/up{
+	dir = 8
+	},
+/turf/open/floor/almayer_hull,
+/area/tyrargo/indoors/bar/ground)
+"Qx" = (
+/obj/item/stack/sheet/metal,
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/north_west)
+"Qy" = (
+/turf/open/floor/hybrisa/carpet/pink,
+/area/tyrargo/indoors/bar/ground)
+"QC" = (
+/turf/open/asphalt/cement/cement4,
+/area/tyrargo/outdoors/colony_exterior/north_west)
+"QH" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2";
+	pixel_x = 1;
+	pixel_y = 24
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/north_west)
+"QI" = (
+/turf/open/floor/corsat/marked,
+/area/tyrargo/indoors/bar/ground)
+"QT" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/obj/effect/landmark/corpsespawner/hybrisa/civilian,
+/turf/open/floor/hybrisa/wood/darkerwood,
+/area/tyrargo/indoors/bar/ground)
+"QU" = (
+/obj/effect/decal/siding,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/obj/effect/landmark/corpsespawner/hybrisa/civilian,
+/turf/open/floor/wood,
+/area/tyrargo/indoors/bar/ground)
+"Sd" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_10";
+	pixel_y = 22;
+	pixel_x = 2
+	},
+/turf/open/asphalt/cement/cement3,
+/area/tyrargo/outdoors/colony_exterior/north_west)
+"Sh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/wood,
+/area/tyrargo/indoors/bar/ground)
+"Sp" = (
+/obj/structure/prop/resin_prop{
+	icon_state = "chair"
+	},
+/turf/open/floor/hybrisa/wood/darkerwood,
+/area/tyrargo/indoors/bar/ground)
+"Sz" = (
+/obj/effect/decal/siding{
+	icon_state = "siding8"
+	},
+/obj/effect/decal/siding{
+	icon_state = "siding4"
+	},
+/turf/open/floor/wood,
+/area/tyrargo/indoors/bar/ground)
+"SC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/hybrisa/wood/darkerwood,
+/area/tyrargo/indoors/bar/ground)
+"SP" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement/cement3,
+/area/tyrargo/outdoors/colony_exterior/north_west)
+"SX" = (
+/obj/structure/machinery/light{
+	dir = 1;
+	light_color = "#A7DBB6"
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/indoors/bar/ground)
+"Tc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_12";
+	pixel_y = 12
+	},
+/turf/open/asphalt/cement/cement4,
+/area/tyrargo/outdoors/colony_exterior/north_west)
+"Te" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sheet/glass/reinforced,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/indoors/bar/ground)
+"Uf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/asphalt/cement/cement1,
+/area/tyrargo/outdoors/colony_streets/north_west)
+"Ul" = (
+/turf/closed/wall/strata_outpost,
+/area/tyrargo/indoors/bar/ground)
+"Vj" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/wood/redwood,
+/area/tyrargo/indoors/bar/ground)
+"Vn" = (
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/indoors/bar/ground)
+"VN" = (
+/obj/effect/decal/siding,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
+/turf/open/floor/wood,
+/area/tyrargo/indoors/bar/ground)
+"VX" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -2;
+	pixel_y = 24
+	},
+/turf/closed/wall/strata_outpost/reinforced/hull,
+/area/tyrargo/indoors/bar/ground)
+"Wc" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
+/turf/open/floor/hybrisa/wood/redwood,
+/area/tyrargo/indoors/bar/ground)
+"Wv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/indoors/bar/ground)
+"WR" = (
+/obj/item/trash/plate,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/indoors/bar/ground)
+"WS" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
+/turf/open/floor/hybrisa/wood/darkerwood,
+/area/tyrargo/indoors/bar/ground)
+"Xd" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/closed/wall/mineral/bone_resin,
+/area/tyrargo/indoors/bar/ground)
+"XH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_17";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/indoors/bar/ground)
+"XZ" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/wood/darkerwood,
+/area/tyrargo/indoors/bar/ground)
+"Yt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/grass_overlay/grass1/dark,
+/turf/open/asphalt/cement/cement4,
+/area/tyrargo/outdoors/colony_streets/north_west)
+"YE" = (
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 1;
+	icon_state = "sandbag_0";
+	pixel_y = 4;
+	layer = 4
+	},
+/obj/structure/prop/tyrargo/boards/boards_2{
+	layer = 2.1
+	},
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/north_west)
+"YP" = (
+/turf/open/floor/plating,
+/area/tyrargo/indoors/bar/ground)
+"YW" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/floor/corsat/marked,
+/area/tyrargo/indoors/bar/ground)
+"Zi" = (
+/obj/effect/decal/siding,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/wood,
+/area/tyrargo/indoors/bar/ground)
+"Zx" = (
+/obj/effect/decal/siding{
+	icon_state = "siding8"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/tyrargo/indoors/bar/ground)
+"ZI" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/indoors/bar/ground)
+"ZP" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname,
+/turf/open/floor/corsat/marked,
+/area/tyrargo/indoors/bar/ground)
+"ZS" = (
+/obj/structure/surface/table/reinforced/cloth{
+	color = "#4A0404"
+	},
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/hybrisa/carpet/pink,
+/area/tyrargo/indoors/bar/ground)
+"ZX" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/wall/mineral/bone_resin,
+/area/tyrargo/indoors/bar/ground)
+
+(1,1,1) = {"
+mF
+mF
+LM
+SP
+wv
+wv
+Sd
+wv
+SP
+SP
+SP
+bs
+kR
+bC
+"}
+(2,1,1) = {"
+mF
+ab
+Jt
+LY
+Ul
+MD
+MD
+MD
+MD
+Ul
+Ul
+fP
+ap
+Lx
+"}
+(3,1,1) = {"
+Jb
+Jt
+LY
+LY
+aA
+eD
+MU
+MU
+MU
+qF
+uT
+uT
+HE
+It
+"}
+(4,1,1) = {"
+QC
+LY
+LY
+hN
+MT
+bl
+vm
+qT
+IW
+ZX
+af
+uT
+LY
+kR
+"}
+(5,1,1) = {"
+QC
+Ul
+SX
+hN
+XZ
+oi
+Qy
+Qy
+kj
+yh
+af
+xP
+ZP
+zc
+"}
+(6,1,1) = {"
+QC
+MD
+Vn
+IF
+Vj
+Qy
+JT
+JT
+Gj
+tO
+Zi
+xR
+QI
+QH
+"}
+(7,1,1) = {"
+QC
+MD
+fB
+Ic
+XZ
+Qy
+JT
+JT
+Qy
+Vj
+GC
+xR
+MD
+Pb
+"}
+(8,1,1) = {"
+KI
+Ul
+xM
+FB
+BR
+yX
+Qy
+Qy
+ZS
+WS
+uE
+rc
+MD
+Pb
+"}
+(9,1,1) = {"
+KI
+Ul
+Ul
+ol
+IC
+Vj
+tO
+vm
+Sp
+vm
+QU
+Ul
+Ul
+Fq
+"}
+(10,1,1) = {"
+Tc
+sw
+LY
+Ul
+mZ
+JV
+wX
+wX
+wX
+LF
+Ul
+uT
+Bu
+Pb
+"}
+(11,1,1) = {"
+QC
+sw
+LY
+uT
+AV
+XZ
+Vj
+tO
+BU
+sf
+Ul
+uT
+uT
+Pb
+"}
+(12,1,1) = {"
+QC
+uT
+uT
+uT
+ea
+vm
+XZ
+vm
+WR
+Wv
+xg
+uT
+uT
+kX
+"}
+(13,1,1) = {"
+la
+uT
+uT
+uT
+Vj
+lQ
+Vj
+tO
+ls
+XH
+uT
+ZX
+uT
+lY
+"}
+(14,1,1) = {"
+QC
+uT
+uT
+ZX
+tO
+vm
+dX
+vm
+BU
+ZI
+uT
+ZX
+uT
+Pb
+"}
+(15,1,1) = {"
+KI
+gw
+uT
+SC
+Wc
+tO
+vm
+tO
+sp
+sf
+OG
+ZX
+MD
+xx
+"}
+(16,1,1) = {"
+KI
+MD
+Xd
+Vj
+DJ
+vm
+XZ
+vm
+sf
+ZI
+sf
+sY
+Ul
+kR
+"}
+(17,1,1) = {"
+KI
+Ul
+Ul
+QT
+Vj
+XZ
+so
+tO
+Te
+sf
+sf
+Ul
+Ul
+Cb
+"}
+(18,1,1) = {"
+QC
+sw
+LY
+Ul
+tO
+Vj
+XZ
+vm
+dC
+FN
+Ul
+LY
+Bu
+hl
+"}
+(19,1,1) = {"
+KI
+sw
+LY
+Ul
+Sz
+LO
+ag
+ag
+ag
+bL
+Ul
+LY
+Bu
+kR
+"}
+(20,1,1) = {"
+KI
+Ul
+Ul
+ru
+vm
+tO
+vm
+tO
+vm
+tO
+Mz
+Ul
+Ul
+hr
+"}
+(21,1,1) = {"
+KI
+Ul
+xM
+Nr
+tO
+oM
+IJ
+Qy
+vb
+vm
+VN
+JG
+tX
+OM
+"}
+(22,1,1) = {"
+KI
+MD
+Qn
+jj
+Vj
+Qy
+JT
+JT
+Qy
+tO
+uE
+xR
+YP
+CY
+"}
+(23,1,1) = {"
+KI
+MD
+Dz
+sb
+XZ
+Qy
+JT
+JT
+Qy
+vm
+ek
+Sh
+gw
+Pb
+"}
+(24,1,1) = {"
+KI
+Ul
+aa
+IF
+Vj
+Gq
+Qy
+Fl
+Di
+nM
+bO
+ZX
+YW
+kR
+"}
+(25,1,1) = {"
+KI
+LY
+LY
+hN
+XZ
+gC
+tO
+vm
+uT
+Fo
+bO
+uT
+uT
+jC
+"}
+(26,1,1) = {"
+GO
+fJ
+VX
+LY
+Zx
+Zx
+LB
+yF
+Zx
+uT
+LY
+uT
+vw
+Pb
+"}
+(27,1,1) = {"
+LU
+Yt
+gq
+LY
+Ul
+MD
+MD
+MD
+MD
+Ul
+LY
+Pb
+Qx
+zS
+"}
+(28,1,1) = {"
+CM
+AC
+gq
+LG
+Pb
+kR
+kR
+oU
+kR
+YE
+mI
+Uf
+FG
+NN
+"}

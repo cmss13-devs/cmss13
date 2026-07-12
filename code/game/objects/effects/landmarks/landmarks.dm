@@ -500,25 +500,138 @@
 	var/job
 	var/job_list
 
-/obj/effect/landmark/late_join/alpha
+//Parents purly for organisation purposes and cleaner mapping menus
+/obj/effect/landmark/late_join/marine
+	icon_state = "late_join_alpha"
+
+/obj/effect/landmark/late_join/medical
+	icon_state = "late_join_medical"
+
+/obj/effect/landmark/late_join/supply
+	icon_state = "late_join_supply"
+
+/obj/effect/landmark/late_join/engineering
+	icon_state = "late_join_engineering"
+
+/obj/effect/landmark/late_join/transport
+	icon_state = "late_join_command"
+
+/obj/effect/landmark/late_join/police
+	icon_state = "late_join_police"
+
+/obj/effect/landmark/late_join/command
+	icon_state = "late_join_command"
+
+/obj/effect/landmark/late_join/corporate
+	icon_state = "late_join_corporate"
+
+/obj/effect/landmark/late_join/marine/alpha
 	name = "alpha late join"
 	icon_state = "late_join_alpha"
 	squad = SQUAD_MARINE_1
 
-/obj/effect/landmark/late_join/bravo
+/obj/effect/landmark/late_join/marine/bravo
 	name = "bravo late join"
 	icon_state = "late_join_bravo"
 	squad = SQUAD_MARINE_2
 
-/obj/effect/landmark/late_join/charlie
+/obj/effect/landmark/late_join/marine/charlie
 	name = "charlie late join"
 	icon_state = "late_join_charlie"
 	squad = SQUAD_MARINE_3
 
-/obj/effect/landmark/late_join/delta
+/obj/effect/landmark/late_join/marine/delta
 	name = "delta late join"
 	icon_state = "late_join_delta"
 	squad = SQUAD_MARINE_4
+
+/obj/effect/landmark/late_join/medical/cmo
+	name = "Chief Medical Officer late join"
+	job = JOB_CMO
+
+/obj/effect/landmark/late_join/medical/doctor
+	name = "Doctor late join"
+	job = JOB_DOCTOR
+
+/obj/effect/landmark/late_join/medical/field_doctor
+	name = "Field Doctor late join"
+	job = JOB_FIELD_DOCTOR
+
+/obj/effect/landmark/late_join/medical/nurse
+	name = "Nurse late join"
+	job = JOB_NURSE
+
+/obj/effect/landmark/late_join/supply/cargo
+	name = "Cargo Technician late join"
+	job = JOB_CARGO_TECH
+
+/obj/effect/landmark/late_join/supply/chef
+	name = "Mess Technician late join"
+	job = JOB_MESS_SERGEANT
+
+/obj/effect/landmark/late_join/supply/requisition
+	name = "Quartermaster late join"
+	job = JOB_CHIEF_REQUISITION
+
+/obj/effect/landmark/late_join/engineering/otech
+	name = "Ordnance Technician late join"
+	job = JOB_ORDNANCE_TECH
+
+/obj/effect/landmark/late_join/engineering/maint
+	name = "Maintenance Technician late join"
+	job = JOB_MAINT_TECH
+
+/obj/effect/landmark/late_join/engineering/engineering
+	name = "Chief Engineer late join"
+	job = JOB_CHIEF_ENGINEER
+
+/obj/effect/landmark/late_join/transport/crew_chief
+	name = "Dropship Crew Chief late join"
+	job = JOB_DROPSHIP_CREW_CHIEF
+
+/obj/effect/landmark/late_join/transport/cas_pilot
+	name = "Gunship Pilot late join"
+	job = JOB_CAS_PILOT
+
+/obj/effect/landmark/late_join/transport/dropship_pilot
+	name = "Dropship Pilot late join"
+	job = JOB_DROPSHIP_PILOT
+
+/obj/effect/landmark/late_join/transport/tank_crew
+	name = "Tank Crew late join"
+	job = JOB_TANK_CREW
+
+/obj/effect/landmark/late_join/police/police
+	name = "Military Police late join"
+	job = JOB_POLICE
+
+/obj/effect/landmark/late_join/police/warden
+	name = "Military Warden late join"
+	job = JOB_WARDEN
+
+/obj/effect/landmark/late_join/police/chief_police
+	name = "Chief Military Police late join"
+	job = JOB_CHIEF_POLICE
+
+/obj/effect/landmark/late_join/command/intel
+	name = "Intelligence Officer late join"
+	job = JOB_INTEL
+
+/obj/effect/landmark/late_join/command/auxiliary_officer
+	name = "Auxiliary Support Officer late join"
+	job = JOB_AUXILIARY_OFFICER
+
+/obj/effect/landmark/late_join/command/bridge
+	name = "Staff Officer late join"
+	job = JOB_SO
+
+/obj/effect/landmark/late_join/command/executive
+	name = "Executive Officer late join"
+	job = JOB_XO
+
+/obj/effect/landmark/late_join/command/commander
+	name = "Commanding Officer late join"
+	job = JOB_CO
 
 /obj/effect/landmark/late_join/synthetic
 	name = "synthetic late join"
@@ -540,51 +653,25 @@
 	icon_state = "late_join_upp"
 	job = JOB_UPP_JOE
 
-/obj/effect/landmark/late_join/cmo
-	name = "Chief Medical Officer late join"
-	icon_state = "late_join_medical"
-	job = JOB_CMO
+/obj/effect/landmark/late_join/reporter
+	name = "Combat Correspondent late join"
+	icon_state = "late_join_misc"
+	job = JOB_COMBAT_REPORTER
 
-/obj/effect/landmark/late_join/researcher
+/obj/effect/landmark/late_join/corporate/liaison
+	name = "Corporate Liaison late join"
+	icon_state = "late_join_corporate"
+	job = JOB_CORPORATE_LIAISON
+
+/obj/effect/landmark/late_join/corporate/corp_sec
+	name = "Corporate Bodyguard late join"
+	icon_state = "late_join_corporate"
+	job = JOB_CORPORATE_BODYGUARD
+
+/obj/effect/landmark/late_join/corporate/researcher
 	name = "Researcher late join"
-	icon_state = "late_join_medical"
+	icon_state = "late_join_corporate"
 	job = JOB_RESEARCHER
-
-/obj/effect/landmark/late_join/doctor
-	name = "Doctor late join"
-	icon_state = "late_join_medical"
-	job = JOB_DOCTOR
-
-/obj/effect/landmark/late_join/field_doctor
-	name = "Field Doctor late join"
-	icon_state = "late_join_medical"
-	job = JOB_FIELD_DOCTOR
-
-/obj/effect/landmark/late_join/nurse
-	name = "Nurse late join"
-	icon_state = "late_join_medical"
-	job = JOB_NURSE
-
-/obj/effect/landmark/late_join/intel
-	name = "Intelligence Officer late join"
-	icon_state = "late_join_command"
-	job = JOB_INTEL
-
-/obj/effect/landmark/late_join/police
-	name = "Military Police late join"
-	icon_state = "late_join_police"
-	job = JOB_POLICE
-
-/obj/effect/landmark/late_join/warden
-	name = "Military Warden late join"
-	icon_state = "late_join_police"
-	job = JOB_WARDEN
-
-/obj/effect/landmark/late_join/chief_police
-	name = "Chief Military Police late join"
-	icon_state = "late_join_police"
-	job = JOB_CHIEF_POLICE
-
 
 /obj/effect/landmark/late_join/Initialize(mapload, ...)
 	. = ..()

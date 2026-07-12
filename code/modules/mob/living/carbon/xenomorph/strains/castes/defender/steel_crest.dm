@@ -35,13 +35,6 @@
 		xeno.ability_speed_modifier -= 3
 		xeno.damage_modifier += XENO_DAMAGE_MOD_SMALL
 
-/datum/action/xeno_action/activable/fortify/proc/check_directional_projectile_armor(mob/living/carbon/xenomorph/defendy, list/damagedata)
-	SIGNAL_HANDLER
-	var/projectile_direction = damagedata["direction"]
-	// If the defender is facing the projectile.
-	if(defendy.dir & REVERSE_DIR(projectile_direction))
-		damagedata["armor"] += frontal_armor
-
 /datum/action/xeno_action/activable/fortify/proc/unconscious_check()
 	SIGNAL_HANDLER
 

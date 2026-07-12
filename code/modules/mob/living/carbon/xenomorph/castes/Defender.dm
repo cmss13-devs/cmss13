@@ -307,6 +307,19 @@
 	apply_cooldown()
 	return ..()
 
+/datum/action/xeno_action/activable/fortify/action_activate()
+	. = ..()
+	..()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(HAS_TRAIT(xeno, TRAIT_ABILITY_FORTIFY) && xeno.selected_ability != src)
+		button.icon_state = "template_active"
+
+/datum/action/xeno_action/activable/fortify/action_deselect()
+	..()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(HAS_TRAIT(xeno, TRAIT_ABILITY_FORTIFY))
+		button.icon_state = "template_active"
+
 /datum/action/xeno_action/activable/fortify/proc/start_fortify()
 	var/mob/living/carbon/xenomorph/xeno = owner
 
@@ -349,16 +362,10 @@
 		xeno.armor_explosive_buff -= 60
 		xeno.small_explosives_stun = TRUE
 
-/datum/action/xeno_action/activable/fortify/action_activate()
-	. = ..()
-	..()
-	var/mob/living/carbon/xenomorph/xeno = owner
-	if(HAS_TRAIT(xeno, TRAIT_ABILITY_FORTIFY) && xeno.selected_ability != src)
-		button.icon_state = "template_active"
-
-/datum/action/xeno_action/activable/fortify/action_deselect()
-	..()
-	var/mob/living/carbon/xenomorph/xeno = owner
-	if(HAS_TRAIT(xeno, TRAIT_ABILITY_FORTIFY))
-		button.icon_state = "template_active"
+/datum/action/xeno_action/activable/fortify/proc/check_directional_projectile_armor(mob/living/carbon/xenomorph/defendy, list/damagedata)
+	SIGNAL_HANDLER
+	var/projectile_direction = damagedata["direction"]
+	// If the defender is facing the projectile.
+	if(defendy.dir & REVERSE_DIR(projectile_direction))
+		damagedata["armor"] += frontal_armor
 

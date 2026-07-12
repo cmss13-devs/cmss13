@@ -114,7 +114,7 @@
 		if (1)
 			new_human.equip_to_slot_or_del(new /obj/item/prop/helmetgarb/compass, WEAR_IN_JACKET)
 		if (2)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/box/plinker, WEAR_IN_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/box/fluff_gun/plinker, WEAR_IN_JACKET)
 		if (3)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/fancy/trading_card, WEAR_IN_JACKET)
 		if (4)

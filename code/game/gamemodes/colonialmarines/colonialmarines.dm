@@ -390,10 +390,6 @@
 					if(is_mob_cryoing(person_in_charge))
 						candidates[job_by_chain] -= person_in_charge
 						person_in_charge = null
-						//If we emptied the list then lets delete it
-						if(!length(candidates[job_by_chain]))
-							del(candidates[job_by_chain])
-							break
 					else break
 				if(person_in_charge)
 					break

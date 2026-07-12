@@ -92,9 +92,9 @@
 			xeno.set_action_cursor('icons/effects/mouse_pointer/designer/const_door_mouse.dmi')
 		return
 
-//////////////////////////
-///   Change Design    ///
-//////////////////////////
+//------------------------------------------//
+//-----------// Change Design //------------//
+//------------------------------------------//
 
 /datum/action/xeno_action/onclick/change_design
 	name = "Choose Action"
@@ -233,9 +233,9 @@
 		if("refresh_ui")
 			. = TRUE
 
-/////////////////////////////
-///     Place Design      ///
-/////////////////////////////
+//------------------------------------------//
+//-----------// Place Design //-------------//
+//------------------------------------------//
 
 /datum/action/xeno_action/activable/place_design
 	name = "Influence"
@@ -256,8 +256,15 @@
 
 /datum/action/xeno_action/activable/place_design/use_ability(atom/target_atom, mods, use_plasma = TRUE, message = TRUE)
 	var/mob/living/carbon/xenomorph/xeno = owner
-	if(!can_remote_build())
-		to_chat(owner, SPAN_XENONOTICE("We must be standing on weeds to channel our nutrients and influence."))
+
+	var/obj/effect/alien/weeds/current_weeds = locate(/obj/effect/alien/weeds) in get_turf(xeno)
+
+	if(!current_weeds)
+		to_chat(xeno, SPAN_XENONOTICE("We must be standing on weeds to channel our nutrients and influence."))
+		return
+
+	if(current_weeds.hivenumber != xeno.hivenumber)
+		to_chat(xeno, SPAN_XENOWARNING("These weeds we stand on do not belong to our hive."))
 		return
 
 	XENO_ACTION_CHECK(xeno)
@@ -486,11 +493,6 @@
 	apply_cooldown()
 	return ..()
 
-/datum/action/xeno_action/activable/place_design/proc/can_remote_build()
-	if(!locate(/obj/effect/alien/weeds) in get_turf(owner))
-		return FALSE
-	return TRUE
-
 /mob/living/carbon/xenomorph/proc/try_toggle_resin_door(atom/target_atom)
 	if(!istype(target_atom, /obj/structure/mineral_door/resin))
 		return FALSE
@@ -529,9 +531,9 @@
 		return FALSE
 	return TRUE
 
-///////////////////////////////
-///   Change Node Marker    ///
-///////////////////////////////
+//------------------------------------------//
+//---------// Change Node Marker //---------//
+//------------------------------------------//
 
 /datum/action/xeno_action/onclick/toggle_design_icons
 	name = "Change Design Mark"
@@ -577,9 +579,9 @@
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_result)
 	return ..()
 
-//////////////////////////
-// Greater Resin Surge. //
-//////////////////////////
+//------------------------------------------//
+//-------// Greater Resin Surge. //---------//
+//------------------------------------------//
 
 /datum/action/xeno_action/activable/greater_resin_surge
 	name = "Greater Resin Surge (250)"
@@ -708,7 +710,7 @@
 	. = ..()
 
 	if(bound_weed.hivenumber != bound_xeno.hivenumber)
-		qdel(src)
+		return INITIALIZE_HINT_QDEL
 
 	if(xeno.selected_design_mark)
 		mark_meaning = new xeno.selected_design_mark

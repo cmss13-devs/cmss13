@@ -496,6 +496,7 @@
 	plane = FLOOR_PLANE
 	var/static/staticnode
 	var/overlay_node = TRUE
+	var/destroy_node = FALSE
 
 	// Which weeds are being kept alive by this node?
 	var/list/obj/effect/alien/weeds/children = list()
@@ -529,6 +530,8 @@
 	overlays += staticnode
 
 /obj/effect/alien/weeds/node/Initialize(mapload, obj/effect/alien/weeds/node/node, mob/living/carbon/xenomorph/xeno, datum/hive_status/hive)
+	if(destroy_node)
+		return INITIALIZE_HINT_QDEL
 	if (istype(hive))
 		linked_hive = hive
 	else if (istype(xeno) && xeno.hive)

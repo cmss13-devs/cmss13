@@ -931,7 +931,7 @@
 
 	if(!destroy_override)
 		for(var/obj/effect/alien/weeds/node/weed_node in contents)
-			qdel(weed_node)
+			weed_node.destroy_node = TRUE
 
 	set_hive_data(src, hivenumber)
 

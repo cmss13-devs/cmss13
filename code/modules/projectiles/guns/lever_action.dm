@@ -212,9 +212,8 @@ their unique feature is that a direct hit will buff your damage and firerate
 	return TRUE
 
 /obj/item/weapon/gun/lever_action/proc/retrieve_bullet(selection)
-	var/datum/ammo/ammo_type = GLOB.ammo_list[selection]
-	var/obj/item/ammo_magazine/handful/new_handful = new ammo_type.handful_type()
-	new_handful.generate_handful(selection, default_caliber, ammo_type.handful_max_rounds, 1, /obj/item/weapon/gun/lever_action)
+	var/obj/item/ammo_magazine/handful/new_handful = new /obj/item/ammo_magazine/handful
+	new_handful.generate_handful(selection, default_caliber, 9, 1, /obj/item/weapon/gun/lever_action)
 	return new_handful
 
 /obj/item/weapon/gun/lever_action/reload(mob/user, obj/item/ammo_magazine/magazine)

@@ -6,7 +6,6 @@
 
 /datum/ammo/bullet/shotgun
 	headshot_state = HEADSHOT_OVERLAY_HEAVY
-	handful_max_rounds = 5
 
 /datum/ammo/bullet/shotgun/setup_faction_clash_values()
 	. = ..()
@@ -257,9 +256,6 @@
 					8 GAUGE SHOTGUN AMMO
 */
 
-/datum/ammo/bullet/shotgun/heavy
-	handful_max_rounds = 4
-
 /datum/ammo/bullet/shotgun/heavy/buckshot
 	name = "heavy buckshot shell"
 	icon_state = "buckshot"
@@ -404,9 +400,6 @@
 					16 GAUGE SHOTGUN AMMO
 */
 
-/datum/ammo/bullet/shotgun/light
-	handful_max_rounds = 6
-
 /datum/ammo/bullet/shotgun/light/breaching
 	name = "light breaching shell"
 	icon_state = "flechette"
@@ -460,7 +453,6 @@
 	name = "two bore bullet"
 	icon_state = "autocannon"
 	handful_state = "twobore"
-	handful_max_rounds = 3
 
 	accurate_range = 8 //Big low-velocity projectile; this is for blasting dangerous game at close range.
 	max_range = 14 //At this range, it's lost all its damage anyway.

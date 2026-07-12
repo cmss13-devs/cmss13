@@ -38,17 +38,14 @@ SUBSYSTEM_DEF(landmark_init)
 		var/datum/item_pool_holder/pool = pools[pool_key]
 
 		if (!istype(pool))
-			log_debug("Item pool incorrectly initialized by pool spawner landmarks. Code: ITEM_POOL_2")
 			message_admins("Item pool incorrectly initialized by pool spawner landmarks. Tell the devs. Code: ITEM_POOL_2")
 			continue
 
 		if (!pool.quota || !pool.type_to_spawn)
-			log_debug("Item pool [pool.pool_name] has no master landmark, aborting item spawns. Code: ITEM_POOL_3")
 			message_admins("Item pool [pool.pool_name] has no master landmark, aborting item spawns. Tell the devs. Code: ITEM_POOL_3")
 			continue
 
 		if (pool.quota > length(pool.turfs))
-			log_debug("Item pool [pool.pool_name] wants to spawn more items than it has landmarks for. Spawning [length(pool.turfs)] instances of [pool.type_to_spawn] instead. Code: ITEM_POOL_4")
 			message_admins("Item pool [pool.pool_name] wants to spawn more items than it has landmarks for. Spawning [length(pool.turfs)] instances of [pool.type_to_spawn] instead. Tell the devs. Code: ITEM_POOL_4")
 			pool.quota = length(pool.turfs)
 

@@ -56797,6 +56797,24 @@
 	dir = 2
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/machinery/light,
+/obj/structure/surface/table,
+/obj/item/device/cassette_tape/pop2{
+	pixel_x = 5;
+	pixel_y = 11
+	},
+/obj/item/device/cassette_tape/pop3{
+	pixel_y = 7
+	},
+/obj/item/tool/kitchen/utensil/fork/plastic{
+	pixel_x = -6;
+	pixel_y = 7
+	},
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/laundry)
 "hmp" = (
@@ -66090,6 +66108,21 @@
 /obj/structure/machinery/washing_machine,
 /obj/structure/barricade/handrail/wire{
 	layer = 3.1
+	},
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/surface/table,
+/obj/item/storage/pill_bottle/packet/bicaridine,
+/obj/item/tool/kitchen/utensil/knife/plastic{
+	pixel_x = 9;
+	pixel_y = 2
+	},
+/obj/item/spacecash/c100{
+	pixel_x = -4;
+	pixel_y = 12
 	},
 /turf/open/floor/white,
 /area/varadero/interior/cargo)
@@ -77853,6 +77886,31 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
+"xKq" = (
+/obj/structure/surface/table/almayer{
+	flipped = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/paper_bin{
+	pixel_x = 2;
+	pixel_y = 8
+	},
+/obj/item/reagent_container/food/condiment/saltshaker{
+	pixel_x = -9;
+	pixel_y = 7
+	},
+/obj/item/tool/kitchen/utensil/knife/plastic{
+	pixel_x = 12;
+	pixel_y = 7
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/hall_SE)
 "xKv" = (
 /obj/structure/desertdam/decals/road_edge{
 	pixel_x = 16
@@ -96643,7 +96701,7 @@ nWS
 aFg
 jHb
 iwf
-nIR
+xKq
 aMc
 aLk
 oKo

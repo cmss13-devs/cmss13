@@ -210,6 +210,9 @@ can cause issues with ammo types getting mixed up during the burst.
 	if(modifiers[CTRL_CLICK] || modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[RIGHT_CLICK] || modifiers[BUTTON4] || modifiers[BUTTON5])
 		return FALSE
 
+	if(gun_user == object) //Throw back to click logic here to handle self harm prefrence
+		return FALSE
+
 	if(!gun_user)
 		set_gun_user(source)
 

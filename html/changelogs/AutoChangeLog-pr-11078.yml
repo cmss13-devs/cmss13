@@ -1,0 +1,9 @@
+author: "Drathek, Puckaboo2"
+delete-after: True
+changes:
+  - rscadd: "You can close unprepared incisions without having to skip to using the retractor, now."
+  - rscadd: "Multiple skippable surgery steps are now possible."
+  - rscadd: "Adds two Abort Surgery surgeries, one with surgical line and one with the cautery."
+  - qol: "If you can't complete a surgical step with a tool, the game will tell you so and it will also tell you what surgeries are available at the current step to give you a clue on what tools you CAN use."
+  - bugfix: "Fixes being able to execute certain surgery steps out of order."
+  - bugfix: "Prevents the ability to cauterize/sew a patient early during an incomplete surface or deep surgery."

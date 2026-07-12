@@ -467,34 +467,32 @@
 		for(var/mob/living/carbon/xenomorph/L in hive.xeno_leader_list)
 			L.handle_xeno_leader_pheromones()
 
-/datum/action/xeno_action/activable/pounce/use_ability(atom/target)
+/datum/action/xeno_action/activable/pounce/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
 
-	if(!action_cooldown_check())
+	if(!istype(xeno))
 		return
 
-	if(!target)
+	XENO_ACTION_CHECK(xeno)
+
+	if(!target_atom)
 		return
 
-	while(istype(target, /turf/open_space))
-		target = SSmapping.get_turf_below(target)
+	while(istype(target_atom, /turf/open_space))
+		target_atom = SSmapping.get_turf_below(target_atom)
 
-	if(target.layer >= FLY_LAYER)//anything above that shouldn't be pounceable (hud stuff)
+	if(target_atom.layer >= FLY_LAYER)//anything above that shouldn't be pounceable (hud stuff)
 		return
 
 	if(!isturf(xeno.loc))
 		to_chat(xeno, SPAN_XENOWARNING("We can't [action_text] from here!"))
 		return
 
-	if(!xeno.check_state())
-		return
-
 	if(xeno.legcuffed)
 		to_chat(xeno, SPAN_XENODANGER("We can't [action_text] with that thing on our leg!"))
 		return
 
-	if(!check_and_use_plasma_owner())
-		return
+	XENO_ACTION_CHECK_USE_PLASMA(xeno)
 
 	if(xeno.layer == XENO_HIDING_LAYER) //Xeno is currently hiding, unhide him
 		var/datum/action/xeno_action/onclick/xenohide/hide = get_action(xeno, /datum/action/xeno_action/onclick/xenohide)
@@ -504,13 +502,13 @@
 	if(isravager(xeno))
 		xeno.emote("roar")
 
-	if (!tracks_target)
-		target = get_turf(target)
+	if(!tracks_target)
+		target_atom = get_turf(target_atom)
 
 	//everyone gets (extra) timer to pounce up
-	if(target.z != xeno.z)
-		var/maximum_z = max(target.z, xeno.z)
-		var/list/turf/path = get_line(locate(xeno.x, xeno.y, maximum_z), locate(target.x, target.y, maximum_z))
+	if(target_atom.z != xeno.z)
+		var/maximum_z = max(target_atom.z, xeno.z)
+		var/list/turf/path = get_line(locate(xeno.x, xeno.y, maximum_z), locate(target_atom.x, target_atom.y, maximum_z))
 		for(var/turf/turf_in_path in path)
 			while(istype(turf_in_path, /turf/open_space))
 				turf_in_path = SSmapping.get_turf_below(turf_in_path)
@@ -524,43 +522,45 @@
 					to_chat(xeno, SPAN_WARNING("You can't jump over an object in your path."))
 					return
 
-		if (!do_after(xeno, 0.5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+		if(!do_after(xeno, 0.5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			return
 
-	if(target.z != xeno.z && xeno.mob_size >= MOB_SIZE_BIG)
-		if (!do_after(xeno, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+	if(target_atom.z != xeno.z && xeno.mob_size >= MOB_SIZE_BIG)
+		if(!do_after(xeno, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			return
 
 	apply_cooldown()
 
-	if (windup)
-		xeno.set_face_dir(get_cardinal_dir(xeno, target))
-		if (!windup_interruptable)
+	if(windup)
+		xeno.set_face_dir(get_cardinal_dir(xeno, target_atom))
+		if(!windup_interruptable)
 			ADD_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
 			xeno.anchored = TRUE
 		pre_windup_effects()
 
-		if (!do_after(xeno, windup_duration, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+		if(!do_after(xeno, windup_duration, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			to_chat(xeno, SPAN_XENODANGER("We cancel our [action_text]!"))
-			if (!windup_interruptable)
+			if(!windup_interruptable)
 				REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
 				xeno.anchored = FALSE
 			post_windup_effects(interrupted = TRUE)
 			return
 
-		if (!windup_interruptable)
+		if(!windup_interruptable)
 			REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
 			xeno.anchored = FALSE
 		post_windup_effects()
 
-	xeno.visible_message(SPAN_XENOWARNING("[xeno] [action_text][findtext(action_text, "e", -1) || findtext(action_text, "p", -1) ? "s" : "es"] at [target]!"), SPAN_XENOWARNING("We [action_text] at [target]!"))
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] [action_text][findtext(action_text, "e", -1) || findtext(action_text, "p", -1) ? "s" : "es"] at [target_atom]!"), SPAN_XENOWARNING("We [action_text] at [target_atom]!"))
 
 	pre_pounce_effects()
 
-	xeno.pounce_distance = get_dist(xeno, target)
-	if(xeno.z != target.z)
+	xeno.pounce_distance = get_dist(xeno, target_atom)
+	if(xeno.z != target_atom.z)
 		xeno.pounce_distance += 2
-	xeno.throw_atom(target, distance, throw_speed, xeno, launch_type = LOW_LAUNCH, pass_flags = pounce_pass_flags, collision_callbacks = pounce_callbacks, tracking=TRUE)
+	start_airbone()
+	xeno.throw_atom(target_atom, distance, throw_speed, xeno, launch_type = LOW_LAUNCH, pass_flags = pounce_pass_flags, collision_callbacks = pounce_callbacks, tracking=TRUE)
+	end_airbone()
 	xeno.update_icons()
 
 	additional_effects_always()

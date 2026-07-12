@@ -31,6 +31,13 @@
 
 	lurker.recalculate_everything()
 
+
+/datum/action/xeno_action/activable/pounce/rush/start_airbone()
+	var/mob/living/carbon/xenomorph/xeno = owner
+
+	ADD_TRAIT(xeno, TRAIT_ABILITY_POUNCE, TRAIT_SOURCE_ABILITY("pounce"))
+
+
 /datum/action/xeno_action/activable/pounce/rush/additional_effects(mob/living/living_target) //pounce effects
 	var/mob/living/carbon/target = living_target
 	var/mob/living/carbon/xenomorph/xeno = owner

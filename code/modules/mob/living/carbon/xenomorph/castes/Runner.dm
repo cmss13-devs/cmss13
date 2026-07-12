@@ -109,3 +109,8 @@
 	var/datum/action/xeno_action/onclick/xenohide/hide = get_action(bound_xeno, /datum/action/xeno_action/onclick/xenohide)
 	if(hide)
 		hide.post_attack()
+
+/datum/action/xeno_action/activable/pounce/runner/start_airbone()
+	var/mob/living/carbon/xenomorph/xeno = owner
+
+	ADD_TRAIT(xeno, TRAIT_ABILITY_POUNCE, TRAIT_SOURCE_ABILITY("pounce"))

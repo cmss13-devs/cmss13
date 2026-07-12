@@ -148,6 +148,7 @@
 	SSticker.minds += character.mind//Cyborgs and AIs handle this in the transform proc. //TODO!!!!! ~Carn
 	SSticker.mode.latejoin_update(player_rank)
 	SSticker.mode.update_gear_scale()
+	SSticker.mode.update_energy_scale()
 
 	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
 		if(target_squad)

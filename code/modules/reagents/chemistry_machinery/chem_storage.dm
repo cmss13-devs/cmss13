@@ -1,4 +1,6 @@
-#define DYNAMIC_CHEM_STORAGE_MULTIPLIER 10
+#define BASE_CHEM_STORAGE_RECHARGE_RATE 10
+#define BASE_CHEM_STORAGE_MAX_ENERGY 100
+#define DYNAMIC_SCALING_CHEM_STORAGE_MULTIPLIER 5
 
 /obj/structure/machinery/chem_storage
 	name = "Chemical Storage System"
@@ -12,12 +14,12 @@
 
 	var/network = "Ground"
 	var/recharge_cooldown = 15
-	var/recharge_rate = 10
-	var/energy = 100
-	var/max_energy = 100
+	var/recharge_rate = 50
+	var/energy = 200
+	var/max_energy = 200
 	// dynamic chemical supply variables
-	var/base_recharge_rate = 10
-	var/base_max_energy = 100
+	var/base_recharge_rate
+	var/base_max_energy
 	var/dynamic_storage = FALSE
 
 	unslashable = TRUE
@@ -39,6 +41,8 @@
 /obj/structure/machinery/chem_storage/Initialize()
 	. = ..()
 	GLOB.chemical_data.add_chem_storage(src)
+	base_recharge_rate = BASE_CHEM_STORAGE_RECHARGE_RATE
+	base_max_energy = BASE_CHEM_STORAGE_MAX_ENERGY
 	start_processing()
 
 /obj/structure/machinery/chem_storage/Destroy()
@@ -49,9 +53,9 @@
 /obj/structure/machinery/chem_storage/proc/calculate_dynamic_storage(scale, round_start=FALSE)
 	if(!dynamic_storage)
 		return
-	var/multiplier = 1 + (scale -1 ) * DYNAMIC_CHEM_STORAGE_MULTIPLIER
-	recharge_rate = floor(base_recharge_rate * multiplier)
-	max_energy = floor(base_max_energy * multiplier)
+	var/multiplier = 1 + (scale - 1) * DYNAMIC_SCALING_CHEM_STORAGE_MULTIPLIER
+	recharge_rate = initial(recharge_rate) + floor(base_recharge_rate * multiplier)
+	max_energy = initial(max_energy) + floor(base_max_energy * multiplier)
 	if(round_start)
 		energy = max_energy
 

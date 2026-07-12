@@ -27,6 +27,15 @@
 
 	return (slots*4)
 
+/datum/job/marine/medic/generate_entry_conditions(mob/living/M)
+	. = ..()
+	GLOB.marine_medics += M
+	RegisterSignal(M, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_medic_role))
+
+/datum/job/marine/medic/proc/cleanup_medic_role(mob/M)
+	SIGNAL_HANDLER
+	GLOB.marine_medics -= M
+
 /datum/job/marine/medic/whiskey
 	title = JOB_WO_SQUAD_MEDIC
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD

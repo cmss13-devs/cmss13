@@ -502,7 +502,6 @@
 /turf/open/floor/wood/wood_broken,
 /area/varadero/interior/library/restaraunt)
 "BL" = (
-/obj/structure/surface/table/woodentable/fancy,
 /obj/item/reagent_container/food/snacks/meatballsoup,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/woodentable/fancy,

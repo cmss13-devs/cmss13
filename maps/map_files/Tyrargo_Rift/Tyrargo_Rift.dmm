@@ -12311,7 +12311,7 @@
 /area/tyrargo/landing_zone_2/road)
 "aEZ" = (
 /obj/structure/surface/table/reinforced/black,
-/obj/item/tool/kitchen/utensil/pfork,
+/obj/item/tool/kitchen/utensil/fork/plastic,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/almayer/blackfull/west,
 /area/tyrargo/indoors/security/ground)
@@ -104222,6 +104222,7 @@
 /obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood,
 /obj/item/shard,
+/obj/item/device/binoculars/range/designator,
 /turf/open/floor/hybrisa/carpet/carpetpatternblue,
 /area/tyrargo/indoors/apartment/north_upper)
 "fsJ" = (

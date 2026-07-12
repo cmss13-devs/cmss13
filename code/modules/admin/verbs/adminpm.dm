@@ -24,7 +24,7 @@
 		return
 	var/list/targets = list()
 	for(var/client/client as anything in GLOB.clients)
-		var/display_key = client.username() != client.key ? "[client.username()] ([client.key])" : "[client.key]"
+		var/display_key = client.username() != client.username() ? "[client.username()] ([client.username()])" : "[client.username()]"
 		if(client.mob)
 			if(isnewplayer(client.mob))
 				targets["(New Player) - [display_key]"] = client
@@ -34,8 +34,9 @@
 				targets["[client.mob.real_name](as [client.mob.name]) - [display_key]"] = client
 		else
 			targets["(No Mob) - [display_key]"] = client
-	var/target = input(src,"To whom shall we send a message?","Admin PM",null) as null|anything in sort_list(targets)
-	cmd_admin_pm(targets[target],null)
+	var/target = tgui_input_list(src, "To whom shall we send a message?", "Admin PM", sort_list(targets))
+	if(target)
+		cmd_admin_pm(targets[target], null)
 
 /client/proc/cmd_ahelp_reply(whom)
 	if(prefs.muted & MUTE_ADMINHELP)
@@ -70,10 +71,10 @@
 
 	if(AH)
 		message_admins("[key_name_admin(src)] has started replying to [key_name_admin(C, 0, 0)]'s admin help.")
-		if(length(AH.ticket_interactions) == 1) // add the admin who is currently responding to the list of people responding
+		if(LAZYLEN(AH.ticket_interactions) == 1)
 			LAZYADD(AH.opening_responders, src)
 
-	var/msg = input(src, message_prompt, "Private message to [C.admin_holder?.fakekey ? "an Administrator" : key_name(C, 0, 0)].") as message|null
+	var/msg = tgui_input_text(src, message_prompt, "Private message to [C.admin_holder?.fakekey ? "an Administrator" : key_name(C, 0, 0)]", multiline = TRUE)
 
 	if(AH)
 		LAZYREMOVE(AH.opening_responders, src)
@@ -93,7 +94,8 @@
 				type = MESSAGE_TYPE_ADMINPM,
 				html = "[SPAN_DANGER("<b>Message not sent:</b>")]<br>[msg]",
 				confidential = TRUE)
-			AH.AddInteraction("<b>No client found, message not sent:</b><br>[msg]")
+			AH.AddInteraction("<b>No client found, message not sent:</b><br>[msg]",
+			plain_message = "No client found, message not sent: [msg]")
 			return
 	cmd_admin_pm(whom, msg)
 
@@ -140,10 +142,12 @@ SET_PROTECTED_PROC(/client/proc/cmd_admin_pm)
 
 	//get message text, limit it's length.and clean/escape html
 	if(!msg)
-		msg = input(src,"Message:", "Private message to [recipient.admin_holder?.fakekey ? "an Administrator" : key_name(recipient, 0, 0)].") as message|null
+		msg = tgui_input_text(src, "Message:", "Private message to [recipient.admin_holder?.fakekey ? "an Administrator" : key_name(recipient, 0, 0)]", multiline = TRUE)
 		msg = trim(msg)
 		if(!msg)
 			return
+
+	msg = html_decode(msg)
 
 	if(!recipient)
 		if(GLOB.directory[recipient_ckey]) // Client has reconnected, lets try to recover
@@ -159,7 +163,8 @@ SET_PROTECTED_PROC(/client/proc/cmd_admin_pm)
 					html = "[SPAN_DANGER("<b>Message not sent:</b>")]<br>[msg]",
 					confidential = TRUE)
 				if(recipient_ticket)
-					recipient_ticket.AddInteraction("<b>No client found, message not sent:</b><br>[msg]")
+					recipient_ticket.AddInteraction("<b>No client found, message not sent:</b><br>[msg]",
+					plain_message = "No client found, message not sent: [msg]")
 				return
 			else
 				current_ticket.MessageNoRecipient(msg)
@@ -204,18 +209,27 @@ SET_PROTECTED_PROC(/client/proc/cmd_admin_pm)
 				confidential = TRUE)
 			SEND_SIGNAL(src, COMSIG_ADMIN_HELP_RECEIVED, msg)
 			//omg this is dumb, just fill in both their tickets
-			var/interaction_message = "<font color='green'>PM from-<b>[key_name(src, recipient, TRUE, show_username = TRUE)]</b> to-<b>[key_name(recipient, src, TRUE, show_username = TRUE)]</b>: [msg]</font>"
-			var/player_interaction_message = "<font color='green'>PM from-<b>[key_name(src, recipient, FALSE)]</b> to-<b>[key_name(recipient, src, FALSE)]</b>: [msg]</font>"
-			admin_ticket_log(src, interaction_message, log_in_blackbox = FALSE, player_message = player_interaction_message)
+			var/interaction_message = SPAN_GREEN("PM from-<b>[key_name(src, recipient, TRUE, show_username = TRUE)]</b> to-<b>[key_name(recipient, src, TRUE, show_username = TRUE)]</b>: [msg]")
+			var/player_interaction_message = SPAN_GREEN("PM from-<b>[key_name(src, recipient, FALSE)]</b> to-<b>[key_name(recipient, src, FALSE)]</b>: [msg]")
+			var/interaction_message_raw = "[msg]"
+			var/player_interaction_raw = "[msg]"
+			admin_ticket_log(src, interaction_message, log_in_blackbox = FALSE, player_message = player_interaction_message,
+				raw_message = interaction_message_raw, raw_player_message = player_interaction_raw)
 			if(recipient != src) //reeee
-				admin_ticket_log(recipient, interaction_message, log_in_blackbox = FALSE, player_message = player_interaction_message)
-			log_ahelp(current_ticket.id, "Reply", msg, recipient.ckey, src.ckey)
+				admin_ticket_log(recipient, interaction_message, log_in_blackbox = FALSE, player_message = player_interaction_message,
+				raw_message = interaction_message_raw, raw_player_message = player_interaction_raw)
+			if(current_ticket)
+				log_ahelp(current_ticket.id, "Reply", msg, recipient.ckey, src.ckey)
 		else //recipient is an admin but sender is not
-			current_ticket.player_replied = TRUE
-			SEND_SIGNAL(current_ticket, COMSIG_ADMIN_HELP_REPLIED)
+			if(current_ticket)
+				current_ticket.player_replied = TRUE
+				SEND_SIGNAL(current_ticket, COMSIG_ADMIN_HELP_REPLIED)
 			var/replymsg = "Reply PM from-<b>[key_name(src, recipient, TRUE, show_username = TRUE)]</b>: <span class='linkify'>[msg]</span>"
 			var/player_replymsg = "Reply PM from-<b>[key_name(src, recipient, FALSE)]</b>: <span class='linkify'>[msg]</span>"
-			admin_ticket_log(src, "<font color='red'>[replymsg]</font>", log_in_blackbox = FALSE, player_message = player_replymsg)
+			var/replymsg_raw = "[msg]"
+			var/player_replymsg_raw = "[msg]"
+			admin_ticket_log(src, SPAN_RED("[replymsg]"), log_in_blackbox = FALSE, player_message = player_replymsg,
+				raw_message = replymsg_raw, raw_player_message = player_replymsg_raw)
 			to_chat(recipient,
 				type = MESSAGE_TYPE_ADMINPM,
 				html = SPAN_DANGER("\n[replymsg]\n"),
@@ -224,7 +238,8 @@ SET_PROTECTED_PROC(/client/proc/cmd_admin_pm)
 				type = MESSAGE_TYPE_ADMINPM,
 				html = SPAN_NOTICE("PM to-<b>Admins</b>: <span class='linkify'>[msg]</span>"),
 				confidential = TRUE)
-			log_ahelp(current_ticket.id, "Reply", msg, recipient.ckey, src.ckey)
+			if(current_ticket)
+				log_ahelp(current_ticket.id, "Reply", msg, recipient.ckey, src.ckey)
 
 		//play the receiving admin the adminhelp sound (if they have them enabled)
 		if(recipient.prefs.toggles_sound & SOUND_ADMINHELP)
@@ -236,12 +251,13 @@ SET_PROTECTED_PROC(/client/proc/cmd_admin_pm)
 				var/datum/admin_help/new_ticket = new(msg, recipient, TRUE)
 				new_ticket.marked_admin = ckey
 				already_logged = TRUE
-				log_ahelp(recipient.current_ticket.id, "Ticket Opened", msg, recipient.ckey, src.ckey)
+				if(recipient.current_ticket)
+					log_ahelp(recipient.current_ticket.id, "Ticket Opened", msg, recipient.ckey, src.ckey)
 
 			SEND_SIGNAL(src, COMSIG_ADMIN_HELP_RECEIVED, msg)
 			to_chat(recipient,
 				type = MESSAGE_TYPE_ADMINPM,
-				html = "\n<font color='red' size='4'><b>-- Administrator private message --</b></font>",
+				html = "\n" + SPAN_HIGHDANGER("-- Administrator private message --") + "\n",
 				confidential = TRUE)
 			to_chat(recipient,
 				type = MESSAGE_TYPE_ADMINPM,
@@ -256,10 +272,14 @@ SET_PROTECTED_PROC(/client/proc/cmd_admin_pm)
 				html = SPAN_NOTICE("Admin PM to-<b>[key_name(recipient, src, 1, show_username = TRUE)]</b>: <span class='linkify'>[msg]</span>"),
 				confidential = TRUE)
 
-			admin_ticket_log(recipient, "<font color='green'>PM From [key_name_with_username(src)]: [msg]</font>", log_in_blackbox = FALSE, player_message = "<font color='green'>PM From [admin_holder?.fakekey ? "an Administrator" : username()]: [msg]</font>")
+			admin_ticket_log(recipient, SPAN_GREEN("PM From [key_name_with_username(src)]: [msg]"), log_in_blackbox = FALSE,
+				player_message = SPAN_GREEN("PM From [key_name_with_username(src, include_name = FALSE)]: [msg]"),
+				raw_message = "PM from-[src.username()] to-[recipient.username()]: [msg]",
+				raw_player_message = "[msg]")
 
 			if(!already_logged) //Reply to an existing ticket
-				log_ahelp(recipient.current_ticket.id, "Reply", msg, recipient.ckey, src.ckey)
+				if(recipient.current_ticket)
+					log_ahelp(recipient.current_ticket.id, "Reply", msg, recipient.ckey, src.ckey)
 
 			//always play non-admin recipients the adminhelp sound
 			SEND_SOUND(recipient, sound('sound/effects/adminhelp_new.ogg'))
@@ -279,12 +299,12 @@ SET_PROTECTED_PROC(/client/proc/cmd_admin_pm)
 
 	window_flash(recipient)
 	log_admin_private("PM: [key_name(src)]->[key_name(recipient)]: [rawmsg]")
-	//we don't use message_admins here because the sender/receiver might get it too
-	for(var/client/X in GLOB.admins)
-		if(!CLIENT_IS_STAFF(X))
+	//we don't use message_admins here because the sender/receiver might get it too - improved some formatting of this code
+	for(var/client/admin in GLOB.admins)
+		if(admin == src || admin == recipient || !CLIENT_IS_STAFF(admin))
 			continue
-		if(X.key!=key && X.key!=recipient.key) //check client/X is an admin and isn't the sender or recipient
-			to_chat(X,
-				type = MESSAGE_TYPE_ADMINPM,
-				html = SPAN_NOTICE("<B>PM: [key_name(src, X, 0, show_username = TRUE)]-&gt;[key_name(recipient, X, 0, show_username = TRUE)]:</B> [msg]") ,
-				confidential = TRUE)
+
+		to_chat(admin,
+			type = MESSAGE_TYPE_ADMINPM,
+			html = SPAN_NOTICE("<b>PM: [key_name(src, TRUE, FALSE, show_username = TRUE)]-&gt;[key_name(recipient, TRUE, FALSE, show_username = TRUE)]:</b> [msg]"),
+			confidential = TRUE)

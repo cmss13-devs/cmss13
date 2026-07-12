@@ -4627,7 +4627,7 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/fiorina/station/research_cells/east)
 "doe" = (
-/obj/item/tool/kitchen/utensil/pspoon,
+/obj/item/tool/kitchen/utensil/spoon/plastic,
 /turf/open/space/basic,
 /area/fiorina/oob)
 "doq" = (
@@ -25127,7 +25127,7 @@
 /turf/open/floor/prison/blue/west,
 /area/fiorina/station/civres_blue)
 "thV" = (
-/obj/item/tool/kitchen/utensil/pfork,
+/obj/item/tool/kitchen/utensil/fork/plastic,
 /turf/open/floor/prison/blue/east,
 /area/fiorina/station/power_ring)
 "tii" = (
@@ -27254,7 +27254,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/lz/near_lzII)
 "uSX" = (
-/obj/item/tool/kitchen/utensil/pknife,
+/obj/item/tool/kitchen/utensil/knife/plastic,
 /turf/open/floor/prison,
 /area/fiorina/station/power_ring)
 "uTb" = (
@@ -30872,7 +30872,7 @@
 /turf/open/floor/prison/whitegreen/north,
 /area/fiorina/station/central_ring)
 "xTf" = (
-/obj/item/tool/kitchen/utensil/pspoon,
+/obj/item/tool/kitchen/utensil/spoon/plastic,
 /turf/open/floor/prison/blue/east,
 /area/fiorina/station/power_ring)
 "xTD" = (

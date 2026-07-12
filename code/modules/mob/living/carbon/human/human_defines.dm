@@ -89,6 +89,7 @@
 	var/undefibbable = FALSE //whether the human is dead and past the defibbrillation period.
 
 	var/holo_card_color = "" //which color type of holocard is printed on us
+	var/holo_card_accuracy = HOLOCARD_ACCURACY_HANDHELD // What placed this holocard on the human
 
 	var/list/obj/limb/limbs = list()
 	var/list/internal_organs_by_name = list() // so internal organs have less ickiness too

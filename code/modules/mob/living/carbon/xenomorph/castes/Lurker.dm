@@ -199,7 +199,7 @@
 	var/mob/living/carbon/xenomorph/xeno = owner
 	return xeno.deselect_timer < world.time // We clicked the same ability in a very short time
 
-/datum/action/xeno_action/onclick/lurker_invisibility/use_ability()
+/datum/action/xeno_action/onclick/lurker_invisibility/use_ability(atom/targeted_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if(!istype(xeno))
@@ -282,7 +282,7 @@
 	UnregisterSignal(xeno, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
 	invis_start_time = -1
 
-/datum/action/xeno_action/onclick/lurker_invisibility/proc/decloak_handler()
+/datum/action/xeno_action/onclick/lurker_invisibility/proc/decloak_handler(mob/source)
 	SIGNAL_HANDLER
 	invisibility_off(0.5) // Partial refund of remaining time
 
@@ -291,7 +291,7 @@
 		to_chat(owner, SPAN_XENOHIGHDANGER("We are ready to use our invisibility again!"))
 	..()
 
-/datum/action/xeno_action/onclick/lurker_assassinate/use_ability()
+/datum/action/xeno_action/onclick/lurker_assassinate/use_ability(atom/targeted_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if(!istype(xeno))

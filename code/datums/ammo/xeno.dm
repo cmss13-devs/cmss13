@@ -269,7 +269,8 @@
 	if(. == FALSE)
 		return
 	var/datum/effects/acid/acid_effect = locate() in mob.effects_list
-	acid_effect = new /datum/effects/acid(mob, projectile.firer)
+	if(!acid_effect)
+		acid_effect = new /datum/effects/acid(mob, projectile.firer)
 	acid_effect.enhance_acid()
 	acid_effect.increment_duration(acid_progression)
 	splatter(mob, 1, projectile)
@@ -278,7 +279,7 @@
 	. = ..()
 	if(istype(target_object, /obj/structure/barricade))
 		var/obj/structure/barricade/barricade = target_object
-		var/datum/effects/acid/acid_effect = locate() in barricade
+		var/datum/effects/acid/acid_effect = locate() in barricade.effects_list
 		if(!acid_effect)
 			barricade.acid_spray_act()
 
@@ -316,8 +317,7 @@
 	set_xeno_smoke()
 
 /datum/ammo/xeno/boiler_gas/Destroy()
-	qdel(smoke_system)
-	smoke_system = null
+	QDEL_NULL(smoke_system)
 	. = ..()
 
 /datum/ammo/xeno/boiler_gas/on_hit_mob(mob/moob, obj/projectile/proj)
@@ -354,7 +354,7 @@
 		cause_data = proj.weapon_cause_data
 	smoke_system.set_up(smokerange, 0, turf, new_cause_data = cause_data)
 	smoke_system.lifetime = 12 * lifetime_mult
-	smoke_system.start()
+	smoke_system.start(do_NOT_delete = TRUE)
 	turf.visible_message(SPAN_DANGER("A glob of acid lands with a splat and explodes into noxious fumes!"))
 
 

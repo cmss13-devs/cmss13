@@ -729,6 +729,20 @@
 	var/obj/structure/dropship_equipment/sentry_holder/deployment_system
 	var/obj/structure/machinery/camera/cas/linked_cam
 
+/obj/structure/machinery/defenses/sentry/premade/dropship/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(islarva(xeno))
+		return
+	xeno.visible_message(SPAN_DANGER("[xeno] has slashed [src]!"),
+	SPAN_DANGER("You slash [src]!"))
+	xeno.animation_attack_on(src)
+	xeno.flick_attack_overlay(src, "slash")
+	playsound(loc, "alien_claw_metal", 25)
+	var/damage = rand(xeno.melee_damage_lower,xeno.melee_damage_upper)
+	if(deployment_system)
+		deployment_system.update_health(damage)
+	update_health(damage)
+	return XENO_ATTACK_ACTION
+
 /obj/structure/machinery/defenses/sentry/premade/dropship/Destroy()
 	if(deployment_system)
 		deployment_system.deployed_turret = null

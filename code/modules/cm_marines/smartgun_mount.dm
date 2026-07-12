@@ -1305,8 +1305,25 @@
 	var/obj/structure/dropship_equipment/mg_holder/deployment_system
 	gun_has_gamemode_skin = FALSE
 
+/obj/structure/machinery/m56d_hmg/mg_turret/dropship/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(islarva(xeno))
+		return
+	if(xeno.IsAdvancedToolUser() && xeno.a_intent == INTENT_HELP)
+		try_mount_gun(xeno)
+		return XENO_NO_DELAY_ACTION
+	xeno.visible_message(SPAN_DANGER("[xeno] has slashed [src]!"),
+	SPAN_DANGER("You slash [src]!"))
+	xeno.animation_attack_on(src)
+	xeno.flick_attack_overlay(src, "slash")
+	playsound(loc, "alien_claw_metal", 25)
+	var/damage = rand(xeno.melee_damage_lower,xeno.melee_damage_upper)
+	if(deployment_system)
+		deployment_system.update_health(damage)
+	update_health(damage)
+	return XENO_ATTACK_ACTION
+
 /obj/structure/machinery/m56d_hmg/mg_turret/dropship/Destroy()
 	if(deployment_system)
 		deployment_system.deployed_mg = null
 		deployment_system = null
-	return ..()
+	. = ..()

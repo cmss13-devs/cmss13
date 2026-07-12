@@ -91,28 +91,30 @@
 		return TRUE
 
 	if(iswelder(item))
-		try_repair(item, user)
+		try_repair(item, user, -50)
 
-/obj/structure/dropship_equipment/proc/try_repair(obj/item/tool/weldingtool/welder, mob/user)
+/obj/structure/dropship_equipment/proc/try_repair(obj/item/tool/weldingtool/welder, mob/user, amount)
 	if(health == initial(health))
 		to_chat(user, SPAN_WARNING("[src] is in working condition."))
-		return
+		return FALSE
 	if(!HAS_TRAIT(welder, TRAIT_TOOL_BLOWTORCH))
 		to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
-		return
+		return FALSE
 	if(user.action_busy)
-		return
+		return FALSE
 	if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
 		to_chat(user, SPAN_WARNING("You are not trained to fix [src]..."))
-		return
+		return FALSE
 	if(!(welder.remove_fuel(2, user)))
-		return
+		return FALSE
 	playsound(loc, 'sound/items/Welder.ogg', 25, 1)
 	if(!do_after(user, 5 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
-		return
-	update_health(-50)
+		return FALSE
+	update_health(amount)
 	user.visible_message(SPAN_NOTICE("[user] repairs parts of [src]."),
 	SPAN_NOTICE("You repair damaged parts of [src]."))
+
+	return TRUE
 
 /obj/structure/dropship_equipment/proc/load_ammo(obj/item/powerloader_clamp/powerloader_clamp, mob/living/user)
 	if(!ship_base || !uses_ammo || ammo_equipped || !istype(powerloader_clamp.loaded, /obj/structure/ship_ammo))
@@ -228,6 +230,24 @@
 	if(!deployed_turret)
 		deployed_turret = new(src)
 		deployed_turret.deployment_system = src
+
+/obj/structure/dropship_equipment/sentry_holder/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
+	if(unslashable)
+		return XENO_NO_DELAY_ACTION
+	current_xenomorph.animation_attack_on(src)
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	var/damage = rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper)
+	if(deployed_turret)
+		deployed_turret.update_health(damage)
+	update_health(damage)
+	return XENO_ATTACK_ACTION
+
+/obj/structure/dropship_equipment/sentry_holder/try_repair(obj/item/tool/weldingtool/welder, mob/user, amount)
+	. = ..()
+	if(.)
+		deployed_turret.update_health(amount)
 
 /obj/structure/dropship_equipment/sentry_holder/get_examine_text(mob/user)
 	. = ..()
@@ -394,6 +414,24 @@
 	if(!deployed_mg)
 		deployed_mg = new(src)
 		deployed_mg.deployment_system = src
+
+/obj/structure/dropship_equipment/mg_holder/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
+	if(unslashable)
+		return XENO_NO_DELAY_ACTION
+	current_xenomorph.animation_attack_on(src)
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	var/damage = rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper)
+	if(deployed_mg)
+		deployed_mg.update_health(damage)
+	update_health(damage)
+	return XENO_ATTACK_ACTION
+
+/obj/structure/dropship_equipment/mg_holder/try_repair(obj/item/tool/weldingtool/welder, mob/user, amount)
+	. = ..()
+	if(.)
+		deployed_mg.update_health(amount)
 
 /obj/structure/dropship_equipment/mg_holder/Destroy()
 	QDEL_NULL(deployed_mg)

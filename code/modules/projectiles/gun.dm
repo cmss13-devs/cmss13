@@ -1013,9 +1013,9 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 	if(!in_chamber)
 		return
 
-	var/datum/ammo/ammo_type = get_ammo_type_chambered(user)
-	var/obj/item/ammo_magazine/handful/new_handful = new ammo_type.handful_type()
-	new_handful.generate_handful(ammo_type, caliber, ammo_type.handful_max_rounds, 1, type)
+	var/ammo_type = get_ammo_type_chambered(user)
+	var/obj/item/ammo_magazine/handful/new_handful = new()
+	new_handful.generate_handful(ammo_type, caliber, 8, 1, type)
 
 	for(var/obj/item/ammo_magazine/handful/hand in user.get_hands())
 		if(hand.default_ammo == new_handful.default_ammo && hand.current_rounds < hand.max_rounds) // fetching the caliber was somewhat redundant, and honestly seemed safer to just fetch default_ammo overall

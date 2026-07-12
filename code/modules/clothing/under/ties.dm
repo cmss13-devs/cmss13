@@ -1242,7 +1242,6 @@
 	max_storage_space = 5
 	can_hold = list(
 		/obj/item/tool/kitchen/utensil/knife,
-		/obj/item/tool/kitchen/utensil/pknife,
 		/obj/item/tool/kitchen/knife,
 		/obj/item/attachable/bayonet,
 		/obj/item/weapon/throwing_knife,

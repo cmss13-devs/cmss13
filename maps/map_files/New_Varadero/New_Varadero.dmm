@@ -396,6 +396,15 @@
 "abv" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/sky/level4)
+"abw" = (
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/north)
+"abx" = (
+/obj/structure/machinery/cryopod/joe/weyland/alt,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/north)
 "abK" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 4
@@ -9232,7 +9241,7 @@
 /obj/item/device/cassette_tape/pop3{
 	pixel_y = 7
 	},
-/obj/item/tool/kitchen/utensil/pfork{
+/obj/item/tool/kitchen/utensil/fork/plastic{
 	pixel_x = -6;
 	pixel_y = 7
 	},
@@ -17933,10 +17942,6 @@
 /obj/item/tool/soap/syndie,
 /turf/open/floor/interior/plastic/alt,
 /area/varadero/interior/laundry)
-"oBP" = (
-/obj/structure/closet/emcloset,
-/turf/open/floor/shiva/yellow/east,
-/area/varadero/interior/electrical)
 "oBQ" = (
 /obj/structure/bed/chair{
 	icon_state = "chair_alt"
@@ -18185,7 +18190,7 @@
 "oMa" = (
 /obj/structure/surface/table,
 /obj/item/storage/pill_bottle/packet/bicaridine,
-/obj/item/tool/kitchen/utensil/pknife{
+/obj/item/tool/kitchen/utensil/knife/plastic{
 	pixel_x = 9;
 	pixel_y = 2
 	},
@@ -29540,7 +29545,7 @@
 	pixel_x = -9;
 	pixel_y = 7
 	},
-/obj/item/tool/kitchen/utensil/pknife{
+/obj/item/tool/kitchen/utensil/knife/plastic{
 	pixel_x = 12;
 	pixel_y = 7
 	},
@@ -29700,6 +29705,7 @@
 /area/varadero/interior/research)
 "xPV" = (
 /obj/structure/machinery/light,
+/obj/structure/closet/emcloset,
 /turf/open/floor/shiva/yellow,
 /area/varadero/interior/electrical)
 "xQJ" = (
@@ -53851,7 +53857,7 @@ jtU
 jtU
 qId
 jtU
-oBP
+jtU
 kLA
 vnH
 jtU
@@ -54046,8 +54052,8 @@ wOO
 wOO
 wOO
 fEZ
-mnC
-mnC
+abx
+abw
 hPm
 mnC
 lFE
@@ -54228,8 +54234,8 @@ pGs
 pGs
 pGs
 fEZ
-fsU
-mnC
+abx
+abw
 hPm
 mnC
 lFE

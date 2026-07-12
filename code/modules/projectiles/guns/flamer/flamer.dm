@@ -703,20 +703,20 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 				if(user)
 					var/area/thearea = get_area(user)
 					if(user.faction == target_human.faction && !thearea?.statistic_exempt)
-						target_human.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]."
-						user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]."
+						target_human.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]. <b>Shooter:</b> [ADMIN_VERBOSEJMP(user)], <b>Victim:</b> [ADMIN_VERBOSEJMP(target_human)]"
+						user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]. <b>Shooter:</b> [ADMIN_VERBOSEJMP(user)], <b>Victim:</b> [ADMIN_VERBOSEJMP(target_human)]"
 						if(weapon_cause_data.cause_name)
 							target_human.track_friendly_fire(weapon_cause_data.cause_name)
-						var/ff_msg = "[key_name(user)] shot [key_name(target_human)] with \a [name] in [get_area(user)] [ADMIN_JMP(user)] [ADMIN_PM(user)]"
+						var/ff_msg = "[key_name(user)] shot [key_name(target_human)] with \a [name]. [SPAN_BOLD("Shooter:")] [ADMIN_VERBOSEJMP(user)] [ADMIN_PM(user)], [SPAN_BOLD("Victim:")] [ADMIN_VERBOSEJMP(target_human)]."
 						var/ff_living = TRUE
 						if(target_human.stat == DEAD)
 							ff_living = FALSE
-						if(!((user.mob_flags & MUTINY_MUTINEER) && (target_human.mob_flags & MUTINY_LOYALIST)) && ((user.mob_flags & MUTINY_LOYALIST) && (target_human.mob_flags & MUTINY_MUTINEER)))
-							msg_admin_ff(ff_msg, ff_living)
+						if(!(((user.mob_flags & MUTINY_MUTINEER) && (target_human.mob_flags & MUTINY_LOYALIST)) || ((user.mob_flags & MUTINY_LOYALIST) && (target_human.mob_flags & MUTINY_MUTINEER))))
+							msg_admin_ff(ff_msg, ff_living, user.loc.z)
 					else
-						target_human.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]."
-						user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]."
-						msg_admin_attack("[key_name(user)] shot [key_name(target_human)] with \a [name] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+						target_human.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]. <b>Shooter:</b> [ADMIN_VERBOSEJMP(user)], <b>Victim:</b> [ADMIN_VERBOSEJMP(target_human)]"
+						user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]. <b>Shooter:</b> [ADMIN_VERBOSEJMP(user)], <b>Victim:</b> [ADMIN_VERBOSEJMP(target_human)]"
+						msg_admin_attack("[key_name(user)] shot [key_name(target_human)] with \a [name]. Shooter: [AREACOORD(user)] Victim: [AREACOORD(target_human)]", user.loc.x, user.loc.y, user.loc.z)
 				if(weapon_cause_data.cause_name)
 					target_human.track_shot_hit(weapon_cause_data.cause_name, target_human)
 
@@ -907,30 +907,38 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 /obj/flamer_fire/lasting/process_firelevel()
 	return
 
-/proc/create_fire_reagent(fire_lvl, burn_lvl, f_color, burn_sprite = "dynamic")
-	var/datum/reagent/fire_reag = new()
-	fire_reag.intensityfire = burn_lvl
-	fire_reag.durationfire = fire_lvl
-	fire_reag.burn_sprite = burn_sprite
-	fire_reag.burncolor = f_color
-	return fire_reag
-
-/proc/fire_spread_recur(turf/target, datum/cause_data/cause_data, remaining_distance, direction, datum/reagent/fire_reagent, aerial_flame_level)
-	set waitfor = FALSE
+/proc/fire_spread_recur(turf/target, datum/cause_data/cause_data, remaining_distance, direction, fire_lvl, burn_lvl, f_color, burn_sprite = "dynamic", aerial_flame_level)
+	var/direction_angle = dir2angle(direction)
 	var/obj/flamer_fire/foundflame = locate() in target
 	if(!foundflame)
-		new/obj/flamer_fire(target, cause_data, fire_reagent)
+		var/datum/reagent/fire_reag = new()
+		fire_reag.intensityfire = burn_lvl
+		fire_reag.durationfire = fire_lvl
+		fire_reag.burn_sprite = burn_sprite
+		fire_reag.burncolor = f_color
+		new/obj/flamer_fire(target, cause_data, fire_reag)
 	if(target.density)
 		return
 
-	for(var/spread_angle in list(-45, 0, 45))
-		var/spread_direction = turn(direction, spread_angle)
+	for(var/spread_direction in GLOB.alldirs)
+
 		var/spread_power = remaining_distance
-		if(abs(spread_angle) == 45) // diagonal
-			spread_power -= sqrt(2)
-			spread_power *= 0.75 //this reduces power when the explosion is going around corners
-		else // cardinal
-			spread_power -= 1
+
+		var/spread_direction_angle = dir2angle(spread_direction)
+
+		var/angle = 180 - abs( abs( direction_angle - spread_direction_angle ) - 180 ) // the angle difference between the spread direction and initial direction
+
+		switch(angle) //this reduces power when the explosion is going around corners
+			if (45)
+				spread_power *= 0.75
+			if (90 to 180) //turns out angles greater than 90 degrees almost never happen. This bit also prevents trying to spread backwards
+				continue
+
+		switch(spread_direction)
+			if(NORTH,SOUTH,EAST,WEST)
+				spread_power--
+			else
+				spread_power -= 1.414 //diagonal spreading
 
 		if (spread_power < 1)
 			continue
@@ -942,33 +950,37 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 
 		if(aerial_flame_level)
 			if(picked_turf.get_pylon_protection_level() >= aerial_flame_level)
-				continue
-			var/area/picked_area = picked_turf.loc // get_area() is slower here when we know we have a turf
+				break
+			var/area/picked_area = get_area(picked_turf)
 			if(CEILING_IS_PROTECTED(picked_area?.ceiling, get_ceiling_protection_level(aerial_flame_level)))
-				continue
+				break
 
-		CHECK_TICK // before the recursive call
-		fire_spread_recur(picked_turf, cause_data, spread_power, spread_direction, fire_reagent, aerial_flame_level)
+		spawn(0)
+			fire_spread_recur(picked_turf, cause_data, spread_power, spread_direction, fire_lvl, burn_lvl, f_color, burn_sprite, aerial_flame_level)
 
-/proc/fire_spread(turf/target, datum/cause_data/cause_data, range, fire_reagent, aerial_flame_level = TURF_PROTECTION_NONE)
-	set waitfor = FALSE
-	new/obj/flamer_fire(target, cause_data, fire_reagent)
-	for(var/turf/picked_turf in orange(1, target))
-		var/direction = get_dir(target, picked_turf)
+/proc/fire_spread(turf/target, datum/cause_data/cause_data, range, fire_lvl, burn_lvl, f_color, burn_sprite = "dynamic", aerial_flame_level = TURF_PROTECTION_NONE)
+	var/datum/reagent/fire_reag = new()
+	fire_reag.intensityfire = burn_lvl
+	fire_reag.durationfire = fire_lvl
+	fire_reag.burn_sprite = burn_sprite
+	fire_reag.burncolor = f_color
+
+	new/obj/flamer_fire(target, cause_data, fire_reag)
+	for(var/direction in GLOB.alldirs)
 		var/spread_power = range
 		switch(direction)
 			if(NORTH,SOUTH,EAST,WEST)
 				spread_power--
 			else
 				spread_power -= 1.414 //diagonal spreading
+		var/turf/picked_turf = get_step(target, direction)
 		if(aerial_flame_level)
 			if(picked_turf.get_pylon_protection_level() >= aerial_flame_level)
 				continue
 			var/area/picked_area = get_area(picked_turf)
 			if(CEILING_IS_PROTECTED(picked_area?.ceiling, get_ceiling_protection_level(aerial_flame_level)))
 				continue
-		fire_spread_recur(picked_turf, cause_data, spread_power, direction, fire_reagent, aerial_flame_level)
-		CHECK_TICK // don't overrun spreading in just one direction
+		fire_spread_recur(picked_turf, cause_data, spread_power, direction, fire_lvl, burn_lvl, f_color, burn_sprite, aerial_flame_level)
 
 // So it doens't do the spinny animation
 /obj/flamer_fire/onZImpact(turf/impact_turf, height)
@@ -1001,7 +1013,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 /obj/item/weapon/gun/flamer/flammenwerfer3
 	name = "\improper Flammenwerfer 3 Heavy Incineration Unit"
 	desc = "A heavy industrial incineration unit produced by Weyland Corporation and later by Weyland-Yutani Corporation. Often found among foliage cleaning missions on frontier colonies, usually aren't seen in combat, but devastating when actually used."
-	desc_lore = "This century-old flamethrower is seeing a comeback on Frontier colonies. Heavy Incinerator Units are often used for clearing out dead foliage and burning disease ridden corpses. Current market price of is 2000$."
+	desc_lore = "This century-old flamethrower is seeing a comeback on Frontier colonies. Heavy Incinerator Units are often used for clearing out dead foliage, demolishing buildings, and removing evidence of colonial disease. After a century, it remains available to the public sector, at a market price of 2000$."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/flamers.dmi'
 	icon_state = "fl3"
 	item_state = "fl3"
@@ -1015,6 +1027,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	accepted_ammo = list(
 		/obj/item/ammo_magazine/flamer_tank/flammenwerfer,
 		/obj/item/ammo_magazine/flamer_tank/flammenwerfer/whiteout,
+		/obj/item/ammo_magazine/flamer_tank/flammenwerfer/survivor,
 	)
 	current_mag = /obj/item/ammo_magazine/flamer_tank/flammenwerfer
 
@@ -1050,3 +1063,17 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 
 /obj/item/weapon/gun/flamer/flammenwerfer3/deathsquad/standard
 	current_mag = /obj/item/ammo_magazine/flamer_tank/flammenwerfer
+
+/obj/item/weapon/gun/flamer/flammenwerfer3/survivor
+	name = "\improper Flammenwerfer 3 Heavy DE-cineration Unit"
+	desc = "A civilian modification of the heavy incineration unit produced by Weyland Corporation and later by Weyland-Yutani Corporation. Normally, these would be found on frontier colonies, for burning down forests and foliage. In this case, this seems to be a reclaimed model used by the local firefighters. \nIt even has a note attached, which hopefully explains *why* anyone would use an incinerator to fight fire...\n"
+	desc_lore = "This century-old flamethrower is seeing a comeback on Frontier colonies. Heavy Incinerator Units are often used for clearing out dead foliage, demolishing buildings, and removing evidence of colonial disease. Current market price of this device is 2000$- or, it would be, if this particular one hasn't had its warranty voided. Apparently a diligent professional has swapped out the propellant gas for... stabilized metallic foam."
+	icon_state = "fl3_survivor"
+	item_state = "fl3"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/flamers.dmi'
+
+	current_mag = /obj/item/ammo_magazine/flamer_tank/flammenwerfer/survivor
+
+/obj/item/weapon/gun/flamer/flammenwerfer3/survivor/Initialize()
+	. = ..()
+	RemoveElement(/datum/element/corp_label/wy)

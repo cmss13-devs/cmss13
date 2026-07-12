@@ -1,4 +1,0 @@
-author: "cuberound"
-delete-after: True
-changes:
-  - bugfix: "explosions on upper xeno walls destroy the lower portion too"

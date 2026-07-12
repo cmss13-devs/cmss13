@@ -11,7 +11,7 @@
 	random_icon_states = list("mfloor1", "mfloor2", "mfloor3", "mfloor4", "mfloor5", "mfloor6", "mfloor7")
 	cleanable_type = CLEANABLE_BLOOD
 	overlay_on_initialize = FALSE
-	color= "#830303" // Color when wet.
+	color = "#830303" // Color when wet.
 	var/base_icon = 'icons/effects/blood.dmi'
 	var/list/viruses
 	var/amount = 3
@@ -126,9 +126,6 @@
 /obj/effect/decal/cleanable/blood/writing/get_examine_text(mob/user)
 	. = ..()
 	. += "It reads: <font color='[color]'>\"[message]\"<font>"
-
-/obj/effect/decal/cleanable/blood/writing/yautja
-	color = BLOOD_COLOR_YAUTJA
 
 /obj/effect/decal/cleanable/blood/gibs
 	name = "gibs"

@@ -338,6 +338,7 @@ Defined in conflicts.dm of the #defines folder.
 	flags_equip_slot = SLOT_FACE
 	flags_armor_protection = SLOT_FACE
 	flags_item = CAN_DIG_SHRAPNEL
+	gun_traits = list(TRAIT_GUN_BAYONET)
 
 
 	attach_icon = "bayonet_a"
@@ -684,6 +685,7 @@ Defined in conflicts.dm of the #defines folder.
 	sound_override = TRUE
 	verb_override = TRUE
 	attack_speed = 9
+	gun_traits = list(TRAIT_GUN_BAYONET)
 
 /obj/item/attachable/shotgun_choke
 	name = "shotgun choke"

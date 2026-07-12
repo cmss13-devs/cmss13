@@ -238,8 +238,10 @@ a.popt {
 
 /* ADD HERE FOR BOLD */
 
+.attacklog,
 .bold,
 .name,
+.debugnotice,
 .prefix,
 .ooc,
 .looc,
@@ -311,6 +313,10 @@ em {
 .niche {
   color: hsl(225, 100%, 63%);
   font-weight: bold;
+}
+
+.niche .prefix {
+  font-weight: bolder;
 }
 
 .name {
@@ -557,6 +563,18 @@ h2.alert {
   font-style: italic;
 }
 
+.admin_blue {
+  color: hsl(225, 100%, 63%);
+}
+
+.blue {
+  color: hsl(240, 100%, 50%);
+}
+
+.debug_orange {
+  color: hsl(30, 100%, 55%);
+}
+
 .green {
   color: hsl(133, 100%, 51%);
 }
@@ -565,12 +583,12 @@ h2.alert {
   color: hsl(0, 0%, 51%);
 }
 
-.red {
-  color: hsl(0, 100%, 50%);
+.maroon {
+  color: hsl(0, 100%, 25%);
 }
 
-.blue {
-  color: hsl(240, 100%, 50%);
+.orange {
+  color: hsl(41, 100%, 46%);
 }
 
 .nicegreen {
@@ -580,6 +598,18 @@ h2.alert {
 .boldnicegreen {
   color: hsl(133, 79%, 37%);
   font-weight: bold;
+}
+
+.purple {
+  color: hsl(279, 46%, 33%);
+}
+
+.red {
+  color: hsl(0, 100%, 50%);
+}
+
+.darker_red {
+  color: hsl(0, 100%, 29.4%);
 }
 
 .cult {
@@ -635,10 +665,6 @@ h2.alert {
 .hierophant_warning {
   color: hsl(280, 100%, 30%);
   font-style: italic;
-}
-
-.purple {
-  color: hsl(279, 46%, 33%);
 }
 
 .holoparasite {
@@ -1177,10 +1203,6 @@ h2.alert {
   text-decoration: underline;
 }
 
-.orange {
-  color: hsl(41, 100%, 46%);
-}
-
 .normal {
   font-style: normal;
 }
@@ -1230,6 +1252,31 @@ h2.alert {
 .debuginfo {
   color: hsl(39, 32%, 22%);
   font-style: italic;
+}
+
+.attacklog {
+  color: hsl(225, 100%, 63%);
+}
+
+.attacklog .message {
+  color: hsl(230, 35%, 45%);
+}
+
+.attacklog .prefix {
+  font-weight: bolder;
+}
+
+.debugnotice {
+  color: hsl(30, 100%, 55%);
+  font-weight: bold;
+}
+
+.debugnotice .message {
+  color: hsl(30, 40%, 50%);
+}
+
+.debugnotice .prefix {
+  font-weight: bolder;
 }
 
 .xenonotice {

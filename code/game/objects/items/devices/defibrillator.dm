@@ -23,10 +23,9 @@
 	var/max_heart_damage_dealt = 5
 	var/ready = 0
 	var/damage_heal_threshold = 12 //This is the maximum non-oxy damage the defibrillator will heal to get a patient above -100, in all categories
-	var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread
 	var/charge_cost = 66 //How much energy is used.
 	var/obj/item/cell/dcell = null
-	var/datum/effect_system/spark_spread/sparks = new
+	var/datum/effect_system/spark_spread/sparks
 	var/defib_cooldown = 0 //Cooldown for toggling the defib
 	var/shock_cooldown = 0 //cooldown for shocking someone - separate to toggling
 	var/base_icon_state = "defib" //used for overlays of charge
@@ -66,6 +65,7 @@
 	. = ..()
 
 	if(should_spark)
+		sparks = new
 		sparks.set_up(5, 0, src)
 		sparks.attach(src)
 	dcell = new/obj/item/cell(src)
@@ -73,8 +73,7 @@
 
 /obj/item/device/defibrillator/Destroy()
 	QDEL_NULL(dcell)
-	if(should_spark)
-		QDEL_NULL(sparks)
+	QDEL_NULL(sparks)
 	return ..()
 
 /obj/item/device/defibrillator/update_icon()
@@ -238,7 +237,7 @@
 		return FALSE
 
 	//Do this now, order doesn't matter
-	sparks.start()
+	sparks?.start(do_NOT_delete = TRUE)
 	dcell.use(charge_cost)
 	update_icon()
 	playsound(get_turf(src), sound_release, 25, 1)

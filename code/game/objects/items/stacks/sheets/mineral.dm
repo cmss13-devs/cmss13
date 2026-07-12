@@ -86,9 +86,9 @@ GLOBAL_LIST_INIT(phoron_recipes, list ( \
 GLOBAL_LIST_INIT(plastic_recipes, list ( \
 	new/datum/stack_recipe("plastic crate", /obj/structure/closet/crate/plastic, 10, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	new/datum/stack_recipe("plastic ashtray", /obj/item/ashtray/plastic, 2, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
-	new/datum/stack_recipe("plastic fork", /obj/item/tool/kitchen/utensil/pfork, 1, on_floor = 1), \
-	new/datum/stack_recipe("plastic spoon", /obj/item/tool/kitchen/utensil/pspoon, 1, on_floor = 1), \
-	new/datum/stack_recipe("plastic knife", /obj/item/tool/kitchen/utensil/pknife, 1, on_floor = 1), \
+	new/datum/stack_recipe("plastic fork", /obj/item/tool/kitchen/utensil/fork/plastic, 1, on_floor = 1), \
+	new/datum/stack_recipe("plastic spoon", /obj/item/tool/kitchen/utensil/spoon/plastic, 1, on_floor = 1), \
+	new/datum/stack_recipe("plastic knife", /obj/item/tool/kitchen/utensil/knife/plastic, 1, on_floor = 1), \
 	))
 
 GLOBAL_LIST_INIT(iron_recipes, list ( \

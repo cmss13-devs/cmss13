@@ -288,7 +288,7 @@
 	var/list/all_target_turfs = get_all_target_turfs(initial_turf, direction, steps)
 	for(var/turf/impact_turf in all_target_turfs)
 		if(impact_turf)
-			var/obj/effect/overlay/temp/dropship_reticle/firemission/firemission_reticle = new /obj/effect/overlay/temp/dropship_reticle/firemission(null, impact_turf)
+			var/obj/effect/overlay/temp/dropship_reticle/firemission/firemission_reticle = new /obj/effect/overlay/temp/dropship_reticle/firemission(impact_turf)
 			all_firemission_reticles += firemission_reticle
 			// Only show to CAS HUD users
 			if(GLOB.huds[MOB_HUD_DROPSHIP])

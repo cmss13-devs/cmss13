@@ -94,6 +94,13 @@
 		qdel(pilot_overlay)
 	cas_hud_overlays.Cut()
 
+/datum/component/camera_manager/proc/clear_dropship_reticle()
+	if(!istype(parent, /obj/structure/machinery/computer/dropship_weapons))
+		return
+	var/obj/structure/machinery/computer/dropship_weapons/console = parent
+	var/atom/movable/screen/plane_master/above_lighting = cam_plane_masters["[ABOVE_LIGHTING_PLANE]"]
+	console.clear_direct_fire_reticle(above_lighting)
+
 /datum/component/camera_manager/proc/register(source, mob/user)
 	SIGNAL_HANDLER
 	var/client/user_client = user.client
@@ -112,16 +119,7 @@
 		return
 	user_client.clear_map(map_name)
 	hide_pilot_camera()
-	// Remove dropship reticle overlay if present when exiting console
-	if(parent && istype(parent, /obj/structure/machinery/computer/dropship_weapons))
-		var/obj/structure/machinery/computer/dropship_weapons/console = parent
-		if(console.direct_fire_reticle)
-			var/atom/movable/screen/plane_master/above_lighting = cam_plane_masters["[ABOVE_LIGHTING_PLANE]"]
-			if(above_lighting)
-				above_lighting.vis_contents -= console.direct_fire_reticle
-			console.direct_fire_reticle.remove_from_all_clients()
-			qdel(console.direct_fire_reticle)
-			console.direct_fire_reticle = null
+	clear_dropship_reticle()
 
 /datum/component/camera_manager/RegisterWithParent()
 	. = ..()
@@ -150,16 +148,7 @@
 	SIGNAL_HANDLER
 	if(current)
 		UnregisterSignal(current, COMSIG_PARENT_QDELETING)
-	// Remove dropship reticle overlay if present
-	if(parent && istype(parent, /obj/structure/machinery/computer/dropship_weapons))
-		var/obj/structure/machinery/computer/dropship_weapons/console = parent
-		if(console.direct_fire_reticle)
-			var/atom/movable/screen/plane_master/above_lighting = cam_plane_masters["[ABOVE_LIGHTING_PLANE]"]
-			if(above_lighting)
-				above_lighting.vis_contents -= console.direct_fire_reticle
-			console.direct_fire_reticle.remove_from_all_clients()
-			qdel(console.direct_fire_reticle)
-			console.direct_fire_reticle = null
+	clear_dropship_reticle()
 	current_area = null
 	current = null
 	target_x = null
@@ -346,21 +335,10 @@
 	// Spawn Dropship Reticle
 	if(cas_camera)
 		var/obj/structure/machinery/computer/dropship_weapons/console = parent
-		// Remove any previous reticle image overlays from all clients
-		if(console.direct_fire_reticle)
-			// Remove from plane master vis_contents if present
-			var/atom/movable/screen/plane_master/above_lighting = cam_plane_masters["[ABOVE_LIGHTING_PLANE]"]
-			if(above_lighting)
-				above_lighting.vis_contents -= console.direct_fire_reticle
-			console.direct_fire_reticle.remove_from_all_clients()
-			qdel(console.direct_fire_reticle)
-			console.direct_fire_reticle = null
+		clear_dropship_reticle()
 
 		// Create dropship reticle
-		console.direct_fire_reticle = new /obj/effect/overlay/temp/dropship_reticle()
-
-		console.direct_fire_reticle.loc = null
-		console.direct_fire_reticle.update_target(center_turf.x, center_turf.y, center_turf.z)
+		console.direct_fire_reticle = new /obj/effect/overlay/temp/dropship_reticle(center_turf)
 
 		// Add the reticle image to clients
 		var/datum/mob_hud/dropship/dropship_hud = GLOB.huds[MOB_HUD_DROPSHIP]

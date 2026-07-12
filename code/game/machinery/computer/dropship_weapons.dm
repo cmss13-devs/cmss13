@@ -67,10 +67,19 @@
 	if(selected_cas_signal)
 		UnregisterSignal(selected_cas_signal, COMSIG_PARENT_QDELETING)
 		selected_cas_signal = null
-	QDEL_NULL(direct_fire_reticle)
+	installed_equipment = null
+	selected_equipment = null
+	clear_direct_fire_reticle()
 	QDEL_NULL(firemission_envelope)
 	UnregisterSignal(src, COMSIG_CAMERA_MAPNAME_ASSIGNED)
 	. = ..()
+
+/obj/structure/machinery/computer/dropship_weapons/proc/clear_direct_fire_reticle(atom/movable/screen/plane_master/above_lighting = null)
+	if(!direct_fire_reticle)
+		return
+	if(above_lighting)
+		above_lighting.vis_contents -= direct_fire_reticle
+	QDEL_NULL(direct_fire_reticle)
 
 /obj/structure/machinery/computer/dropship_weapons/proc/camera_mapname_update(source, value)
 	camera_map_name = value
@@ -656,7 +665,7 @@
 	camera_target_id = target_ref
 
 	// --- IN-WORLD DROPSHIP RETICLE LOGIC ---
-	QDEL_NULL(direct_fire_reticle)
+	clear_direct_fire_reticle()
 
 	if(target && target.signal_loc)
 		selected_cas_signal = target
@@ -683,7 +692,7 @@
 		return
 	selected_cas_signal = null
 	camera_target_id = null
-	QDEL_NULL(direct_fire_reticle)
+	clear_direct_fire_reticle()
 	SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
 
 /obj/structure/machinery/computer/dropship_weapons/proc/get_screen_mode()

@@ -236,8 +236,7 @@
 	. = ..()
 	if (!owner)
 		log_debug("Created a [type] without `owner`")
-		qdel(src)
-		return
+		return INITIALIZE_HINT_QDEL
 	size_mod = size
 	appearance = owner.appearance
 	var/matrix/shell_transform = matrix().Turn(-90)
@@ -259,8 +258,7 @@
 	. = ..()
 	if (!owner)
 		log_debug("Created a [type] without `owner`")
-		qdel(src)
-		return
+		return INITIALIZE_HINT_QDEL
 	appearance = owner.appearance
 	apply_transform(matrix().Turn(-180))
 	add_filter("motionblur", 1, motion_blur_filter(x = 0, y = 1))
@@ -280,8 +278,7 @@
 	. = ..()
 	if (!owner)
 		log_debug("Created a [type] without `owner`")
-		qdel(src)
-		return
+		return INITIALIZE_HINT_QDEL
 	size_mod = rocket_size
 	icon = owner.icon
 	icon_state = "[initial(owner.icon_state)]_proj"
@@ -305,8 +302,7 @@
 	. = ..()
 	if (!owner)
 		log_debug("Created a [type] without `owner`")
-		qdel(src)
-		return
+		return INITIALIZE_HINT_QDEL
 	icon = owner.icon
 	icon_state = "[initial(owner.icon_state)]_proj"
 	var/matrix/minirocket_transform = matrix().Turn(90)
@@ -328,8 +324,7 @@
 	. = ..()
 	if (!owner)
 		log_debug("Created a [type] without `owner`")
-		qdel(src)
-		return
+		return INITIALIZE_HINT_QDEL
 	icon = owner.icon
 	icon_state = "[initial(owner.icon_state)]_proj"
 	var/matrix/cannon_transform = matrix().Turn(-180) // Straight down
@@ -352,12 +347,13 @@
 	. = ..()
 	if (!owner)
 		log_debug("Created a [type] without `owner`")
-		qdel(src)
-		return
+		return INITIALIZE_HINT_QDEL
 	size_mod = bomb_size
 	icon = owner.icon
 	icon_state = "[initial(owner.icon_state)]_mini"
-	transform *= size_mod
+	var/matrix/bomb_transform = matrix()
+	bomb_transform *= size_mod
+	apply_transform(bomb_transform)
 	layer = initial(layer)
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	pixel_x = -16
@@ -453,17 +449,18 @@
 	anchored = TRUE
 	layer = ABOVE_LIGHTING_LAYER
 	plane = ABOVE_LIGHTING_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	alpha = 0
 	effect_duration = 600
 
-	var/turf/target_turf = null
 	var/image/reticle_image = null
 
 	var/shuttle_tag = null
 
 /obj/effect/overlay/temp/dropship_reticle/Initialize(mapload, ...)
 	. = ..()
-	if(isturf(loc))
-		target_turf = loc
+	if(!isturf(loc))
+		return INITIALIZE_HINT_QDEL
 	GLOB.dropship_reticles += src
 
 /obj/effect/overlay/temp/dropship_reticle/Destroy()
@@ -472,30 +469,26 @@
 	return ..()
 
 /obj/effect/overlay/temp/dropship_reticle/proc/update_visibility_for_mob(mob/mob_user)
-	var/show_reticle = FALSE
-	if(GLOB.huds[MOB_HUD_DROPSHIP] && (mob_user in GLOB.huds[MOB_HUD_DROPSHIP].hudusers))
-		show_reticle = TRUE
-	if(show_reticle)
-		var/datum/mob_hud/dropship/dropship_hud = GLOB.huds[MOB_HUD_DROPSHIP]
-		if(dropship_hud)
-			dropship_hud.add_hud_to(mob_user, src)
+	var/datum/mob_hud/dropship/dropship_hud = GLOB.huds[MOB_HUD_DROPSHIP]
+	if(dropship_hud?.can_see_reticles(mob_user))
 		if(mob_user.client)
 			mob_user.client.images += src.get_reticle_image()
 	else
-		var/datum/mob_hud/dropship/dropship_hud = GLOB.huds[MOB_HUD_DROPSHIP]
-		if(dropship_hud)
-			dropship_hud.remove_hud_from(mob_user, src)
 		if(mob_user.client)
 			mob_user.client.images -= src.get_reticle_image()
 
 /obj/effect/overlay/temp/dropship_reticle/proc/get_reticle_image()
 	if(!reticle_image)
-		reticle_image = image(icon, target_turf, icon_state, layer)
+		reticle_image = image(icon, loc, icon_state, layer)
 		reticle_image.plane = ABOVE_LIGHTING_PLANE
+		reticle_image.alpha = 255
 	return reticle_image
 
 /obj/effect/overlay/temp/dropship_reticle/proc/update_target(x, y, z)
-	target_turf = locate(x, y, z)
+	var/turf/new_loc = locate(x, y, z)
+	if(!new_loc)
+		return
+	forceMove(new_loc)
 	reticle_image = null
 
 /obj/effect/overlay/temp/dropship_reticle/proc/remove_from_all_clients()
@@ -505,7 +498,6 @@
 			if(mob_user.client)
 				if(reticle_image)
 					mob_user.client.images -= reticle_image
-			dropship_hud.remove_hud_from(mob_user, src)
 	for(var/mob/living/carbon/human/mob_user in GLOB.alive_human_list)
 		if(mob_user.client && reticle_image)
 			mob_user.client.images -= reticle_image
@@ -517,16 +509,7 @@
 	icon_state = "impact_reticle"
 
 /obj/effect/overlay/temp/dropship_reticle/direct/proc/spawn_reticle(x, y, z)
-	var/obj/effect/overlay/temp/dropship_reticle/direct/On_Target = new()
-	On_Target.target_turf = locate(x, y, z)
-	On_Target.reticle_image = null
-	return On_Target
-
-/obj/effect/overlay/temp/dropship_reticle/direct/New(loc)
-	if(loc)
-		qdel(src)
-		return
-	..()
+	return new /obj/effect/overlay/temp/dropship_reticle/direct(locate(x, y, z))
 
 // --- Firemission Reticle ---
 /obj/effect/overlay/temp/dropship_reticle/firemission
@@ -536,10 +519,4 @@
 	icon_state = "firemission_reticle"
 
 /obj/effect/overlay/temp/dropship_reticle/firemission/proc/spawn_reticle(x, y, z)
-	return new /obj/effect/overlay/temp/dropship_reticle/firemission(null, locate(x, y, z))
-
-/obj/effect/overlay/temp/dropship_reticle/firemission/Initialize(mapload, turf/new_target_turf)
-	target_turf = new_target_turf
-	if(!target_turf)
-		return INITIALIZE_HINT_QDEL
-	return ..()
+	return new /obj/effect/overlay/temp/dropship_reticle/firemission(locate(x, y, z))

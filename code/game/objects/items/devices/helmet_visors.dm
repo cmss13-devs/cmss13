@@ -473,6 +473,8 @@
 
 /obj/item/device/helmet_visor/pilot/activate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
 	. = ..()
+	for(var/obj/effect/overlay/temp/dropship_reticle/reticle as anything in GLOB.dropship_reticles)
+		reticle.update_visibility_for_mob(user)
 
 /obj/item/device/helmet_visor/pilot/deactivate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
 	. = ..()
@@ -492,5 +494,5 @@
 	// Remove any stuck reticle overlays from the client
 	if(user?.client)
 		for(var/image/Image_Reticle in user.client.images)
-			if(Image_Reticle.icon_state == "direct_fire_reticle" || Image_Reticle.icon_state == "dropship_reticle")
+			if(Image_Reticle.icon_state == "direct_fire_reticle" || Image_Reticle.icon_state == "impact_reticle" || Image_Reticle.icon_state == "firemission_reticle")
 				user.client.images -= Image_Reticle

@@ -812,9 +812,7 @@
 	var/turf/impact = pick(possible_turfs)
 	var/obj/effect/overlay/temp/dropship_reticle/direct/impact_overlay = null
 	if(impact)
-		impact_overlay = new()
-		impact_overlay.target_turf = impact
-		impact_overlay.reticle_image = null
+		impact_overlay = new /obj/effect/overlay/temp/dropship_reticle/direct(impact)
 		// Only show to CAS HUD users
 		if(GLOB.huds[MOB_HUD_DROPSHIP])
 			for(var/mob/Mob_Pilot in GLOB.huds[MOB_HUD_DROPSHIP].hudusers)
@@ -837,9 +835,7 @@
 				possible_turfs = RANGE_TURFS(ammo_accuracy_range, target_turf)
 				impact = pick(possible_turfs)
 				if(impact)
-					impact_overlay = new()
-					impact_overlay.target_turf = impact
-					impact_overlay.reticle_image = null
+					impact_overlay = new /obj/effect/overlay/temp/dropship_reticle/direct(impact)
 					// Show the new overlay to CAS HUD users
 					if(GLOB.huds[MOB_HUD_DROPSHIP])
 						for(var/mob/Mob_Pilot in GLOB.huds[MOB_HUD_DROPSHIP].hudusers)

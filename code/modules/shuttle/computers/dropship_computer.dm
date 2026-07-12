@@ -33,6 +33,7 @@
 
 	/// If this computer should respect the faction variable of destination LZ
 	var/use_factions = TRUE
+	COOLDOWN_DECLARE(dropship_alarm)
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/upp
 	icon_state = "console_upp"
@@ -502,7 +503,7 @@
 				var/new_shuttle = params["new_shuttle"]
 				return set_shuttle(new_shuttle)
 		return
-	var/mob/user = usr
+	var/mob/user = ui.user
 	if (shuttle)
 		var/obj/structure/machinery/computer/shuttle/dropship/flight/comp = shuttle.getControlConsole()
 		if(comp.dropship_control_lost)
@@ -517,7 +518,7 @@
 			if(!shuttle)
 				return FALSE
 			if(shuttle.mode != SHUTTLE_IDLE && (shuttle.mode != SHUTTLE_CALL && !shuttle.destination))
-				to_chat(usr, SPAN_WARNING("You can't move to a new destination right now."))
+				to_chat(user, SPAN_WARNING("You can't move to a new destination right now."))
 				return TRUE
 
 			var/is_optimised = FALSE
@@ -640,10 +641,14 @@
 			if(!shuttle)
 				return FALSE
 			if (shuttle.mode != SHUTTLE_IDLE && shuttle.mode != SHUTTLE_RECHARGING)
-				to_chat(usr, SPAN_WARNING("The Launch Announcement Alarm is designed to tell people that you're going to take off soon."))
+				to_chat(user, SPAN_WARNING("The Launch Announcement Alarm is designed to tell people that you're going to take off soon."))
+				return TRUE
+			if(!(COOLDOWN_FINISHED(src, dropship_alarm)))
+				to_chat(user, SPAN_WARNING("The Launch Announcement Alarm can not be restarted yet."))
 				return TRUE
 			shuttle.alarm_sound_loop.start()
 			shuttle.playing_launch_announcement_alarm = TRUE
+			COOLDOWN_START(src, dropship_alarm, 6 SECONDS)
 			return TRUE
 		if ("stop_playing_launch_announcement_alarm")
 			if(!shuttle)

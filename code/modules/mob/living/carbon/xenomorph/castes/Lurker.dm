@@ -216,7 +216,6 @@
 	ADD_TRAIT(xeno, TRAIT_ABILITY_INVIS, TRAIT_SOURCE_ABILITY("invis"))
 	RegisterSignal(xeno, COMSIG_MOB_EFFECT_CLOAK_CANCEL, PROC_REF(decloak_handler))
 	invis_start_time = world.time
-	start_duration_display(invis_duration)
 
 /// Implementation for disabling invisibility.
 /// (refund_multiplier) indicates how much cooldown to refund based on time remaining
@@ -251,7 +250,6 @@
 		invis_recharge_time = invis_recharge_time - remaining * refund_multiplier * invis_recharge_time
 
 	apply_cooldown_override(invis_recharge_time)
-	end_duration_display()
 
 	var/datum/action/xeno_action/activable/pounce/lurker/lurker_pounce_action = get_action(xeno, /datum/action/xeno_action/activable/pounce/lurker)
 	if(lurker_pounce_action)

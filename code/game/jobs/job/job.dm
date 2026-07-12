@@ -208,6 +208,9 @@
 /datum/job/proc/set_spawn_positions(count)
 	return spawn_positions
 
+/datum/job/proc/create_landmark_lists()
+	return
+
 /datum/job/proc/spawn_and_equip(mob/new_player/player)
 	CRASH("A job without a set spawn_and_equip proc has handle_spawn_and_equip set to TRUE!")
 

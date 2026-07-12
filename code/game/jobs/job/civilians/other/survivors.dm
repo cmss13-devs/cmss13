@@ -26,6 +26,8 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 /datum/job/civilian/survivor/set_spawn_positions(count)
 	spawn_positions = clamp((floor(count * SURVIVOR_TO_TOTAL_SPAWN_RATIO)), 2, 8)
 	total_positions = spawn_positions
+
+/datum/job/civilian/survivor/create_landmark_lists()
 	slotted_landmarks = list()
 	available_landmarks = list()
 	generic_landmarks = list()
@@ -40,6 +42,7 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 					continue
 				if(spawner.hostile == hostile_scenario)
 					available_landmarks += spawner
+
 
 /datum/job/civilian/survivor/proc/get_valid_prefs(mob/new_player)
 	var/list/insert_prefs
@@ -87,7 +90,7 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 			return TRUE
 
 	// There is no insert, so now we have to assign a random generic spawn
-	var/obj/effect/landmark/survivor_spawner/spawner = pick(generic_landmarks)
+	var/obj/effect/landmark/survivor_spawner/spawner = SAFEPICK(generic_landmarks)
 
 	if(spawner) //if there is a generic spawn, use it
 		slotted_landmarks[new_player] = spawner
@@ -249,6 +252,9 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	job_options = null
 
 /datum/job/civilian/survivor/synth/set_spawn_positions(count)
+	return spawn_positions
+
+/datum/job/civilian/survivor/synth/create_landmark_lists()
 	slotted_landmarks = list()
 	available_landmarks = list()
 	generic_landmarks = list()
@@ -280,7 +286,7 @@ AddTimelock(/datum/job/civilian/survivor, list(
 			return TRUE
 
 	// There is no insert, so now we have to assign a random generic spawn
-	var/obj/effect/landmark/survivor_spawner/spawner = pick(generic_landmarks)
+	var/obj/effect/landmark/survivor_spawner/spawner = SAFEPICK(generic_landmarks)
 	if(spawner) //if there is a generic spawn, use it
 		slotted_landmarks[new_player] = spawner
 		return TRUE
@@ -312,16 +318,19 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	job_options = null
 
 /datum/job/civilian/survivor/commanding_officer/set_spawn_positions()
-	slotted_landmarks = list()
-	available_landmarks = list()
-	generic_landmarks = list()
-
 	var/list/CO_survivor_types = SSmapping.configs[GROUND_MAP].CO_survivor_types
 	var/list/CO_insert_survivor_types = SSmapping.configs[GROUND_MAP].CO_insert_survivor_types
 	if(!length(CO_survivor_types) && !length(CO_insert_survivor_types))
 		return
 	total_positions = 1
 	spawn_positions = 1
+	return spawn_positions
+
+/datum/job/civilian/survivor/commanding_officer/create_landmark_lists()
+	slotted_landmarks = list()
+	available_landmarks = list()
+	generic_landmarks = list()
+
 	var/hostile_scenario = SSnightmare.get_scenario_is_hostile_survivor()
 	for(var/priority = 1 to LOWEST_SPAWN_PRIORITY)
 		if(length(GLOB.survivor_spawns_by_priority["[priority]"]))

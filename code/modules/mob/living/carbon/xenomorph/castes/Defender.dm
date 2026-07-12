@@ -91,11 +91,6 @@
 			var/datum/action/xeno_action/activable/fortify/fortify_used = get_action(src, /datum/action/xeno_action/activable/fortify)
 			fortify_used.stop_fortify()
 
-		if(HAS_TRAIT(src, TRAIT_ABILITY_CREST))
-			var/datum/action/xeno_action/onclick/toggle_crest/crest_used = get_action(src, /datum/action/xeno_action/onclick/toggle_crest)
-			crest_used.stop_crest()
-
-
 /mob/living/carbon/xenomorph/defender/death()
 	var/datum/action/xeno_action/activable/fortify/fortify_used = get_action(src, /datum/action/xeno_action/activable/fortify)
 	if(HAS_TRAIT(src, TRAIT_ABILITY_FORTIFY))

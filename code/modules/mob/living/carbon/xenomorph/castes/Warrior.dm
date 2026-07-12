@@ -96,10 +96,6 @@
 				var/datum/action/xeno_action/onclick/reflective_shield/reflect_used = get_action(src, /datum/action/xeno_action/onclick/reflective_shield)
 				reflect_used.remove_reflective_shield()
 
-			if(HAS_TRAIT(src, TRAIT_ABILITY_ENCLOSED_PLATES))
-				var/datum/action/xeno_action/onclick/toggle_plates/plates_used = get_action(src, /datum/action/xeno_action/onclick/toggle_plates)
-				plates_used.disengage_plates()
-
 
 /mob/living/carbon/xenomorph/warrior/death()
 	if(HAS_TRAIT(src, TRAIT_ABILITY_REFLECTIVE_PLATES) || HAS_TRAIT(src, TRAIT_ABILITY_ENCLOSED_PLATES))

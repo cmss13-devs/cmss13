@@ -38,6 +38,8 @@
 
 /obj/structure/prop/engineer_ruins/pillars/fallen/fallen_long
 	icon_state = "pillar_fallen_long"
+	bound_width = 64
+	bound_height = 32
 
 /obj/structure/prop/engineer_ruins/pillars/fallen/fallen_middle
 	icon_state = "pillar_fallen_middle"

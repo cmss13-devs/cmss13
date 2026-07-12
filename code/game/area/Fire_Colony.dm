@@ -18,7 +18,7 @@
  */
 
 /area/fire_colony/exterior
-	name = "\improper Fire Colony"
+	name = "\improper Fire Colony - Exterior"
 	icon_state = "cliff_blocked"
 	requires_power = 1
 	always_unpowered = 1
@@ -26,13 +26,6 @@
 	power_equip = FALSE
 	power_environ = FALSE
 	temperature = T20C
-
-//
-/// Exterior - Surface
-//
-
-/area/fire_colony/exterior
-	name = "\improper Fire Colony - Exterior Surface"
 	soundscape_playlist = SCAPE_PL_LV522_OUTDOORS
 
 //Equivalent of space. None of this area should be accessible.
@@ -157,6 +150,14 @@
 	name = "\improper North Eastern Valleys - Excavation Site"
 	icon_state = "alarm_down"
 
+/area/fire_colony/exterior/underground/excavation/south/excavation
+	name = "\improper Southern Valleys - Excavation Site - Checkpoint"
+	icon_state = "security"
+
+/area/fire_colony/exterior/underground/excavation/north/excavation
+	name = "\improper North Eastern Valleys - Excavation Site - Checkpoint"
+	icon_state = "security"
+
 //
 /// Caves
 //
@@ -185,14 +186,15 @@
  */
 
 /area/fire_colony/interior
-	name = "\improper Fire Colony - Built Surface"
+	name = "\improper Fire Colony - Interior"
 	icon_state = "clear_pass"
 	ceiling = CEILING_METAL
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
+	ambience_exterior = AMBIENCE_HYBRISA_INTERIOR
 
 /*
  * Surface - Refurbished Bar
  */
-
 
 /area/fire_colony/interior/bar
 	name = "\improper The Lava Lamp - Bar"
@@ -209,8 +211,6 @@
 /area/fire_colony/interior/seegson
 	name = "\improper Old Seegson"
 	icon_state = "dk_yellow"
-	soundscape_playlist = SCAPE_PL_LV759_INDOORS
-	ambience_exterior = AMBIENCE_HYBRISA_INTERIOR
 	minimap_color = MINIMAP_AREA_CELL_HIGH
 	ceiling = CEILING_METAL
 
@@ -346,6 +346,10 @@
 
 /area/fire_colony/interior/hangar/checkpoint
 	name = "\improper Old Seegson - Aerodrome - Hangar - Seegson Security Facility - Checkpoint"
+	icon_state = "security"
+
+/area/fire_colony/interior/hangar/checkpoint/excavation
+	name = "\improper Old Seegson - Aerodrome - Landing Pad - Excavation Checkpoint"
 	icon_state = "security"
 
 /area/fire_colony/interior/hangar/security
@@ -497,8 +501,9 @@
 	icon_state = "blueold"
 	ceiling = CEILING_NONE
 
+
 /*
- * Lasalle Bionational - Hangar
+ * Surface - Lasalle Bionational - Hangar
  */
 
 /area/fire_colony/exterior/hangar
@@ -515,18 +520,3 @@
 	name = "\improper Lasalle Bionational - Hangar - Garage"
 	icon_state = "landing_pad_ext"
 	ceiling = CEILING_METAL
-
-/*
- *  -------------------------
- * | Built Underground Areas |
- *  -------------------------
- */
-
-/area/fire_colony/underground
-	name = "\improper Fire Colony - Built Underground"
-	icon_state = "explored"
-	ceiling = CEILING_DEEP_UNDERGROUND_METAL
-	ambience_exterior = AMBIENCE_ALMAYER
-	ceiling_muffle = FALSE
-	sound_environment = SOUND_ENVIRONMENT_ROOM
-	minimap_color = MINIMAP_AREA_CAVES

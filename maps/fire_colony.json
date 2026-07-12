@@ -12,7 +12,7 @@
         "/datum/equipment_preset/survivor/fire_colony/scientist_xenobiologist",
         "/datum/equipment_preset/survivor/fire_colony/scientist_xenoflora",
         "/datum/equipment_preset/survivor/fire_colony/engineer",
-        "/datum/equipment_preset/survivor/corporate/lasalle_bionational",
+        "/datum/equipment_preset/survivor/lasalle_bionational",
         "/datum/equipment_preset/survivor/fire_colony/corporate_goon"
     ],
     "synth_survivor_types": [

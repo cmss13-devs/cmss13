@@ -318,6 +318,32 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_HC_DEPUTY_DIRECTOR "HC Deputy Director"
 #define JOB_HC_DIRECTOR "HC Director"
 
+//-------- Lasalle Bionational --------//
+
+#define JOB_LB_SEC "L-B Corporate Security"
+#define JOB_LB_SEC_SYNTH "L-B Corporate Security Synthetic"
+#define JOB_LB_TRAINEE "Corporate Trainee"
+#define JOB_LB_JUNIOR_EXECUTIVE "Corporate Junior Executive"
+#define JOB_LB_CORPORATE_LIAISON "Corporate Liaison"
+#define JOB_LB_EXECUTIVE "Corporate Executive"
+#define JOB_LB_SENIOR_EXECUTIVE "Corporate Senior Executive"
+#define JOB_LB_EXECUTIVE_SPECIALIST "Corporate Executive Specialist"
+#define JOB_LB_LEGAL_SPECIALIST "Corporate Legal Specialist"
+#define JOB_LB_EXECUTIVE_SUPERVISOR "Corporate Executive Supervisor"
+#define JOB_LB_LEGAL_SUPERVISOR "Corporate Legal Supervisor"
+#define JOB_LB_ASSISTANT_MANAGER "Corporate Assistant Manager"
+#define JOB_LB_DIVISION_MANAGER "Corporate Division Manager"
+#define JOB_LB_CHIEF_EXECUTIVE "Corporate Chief Executive"
+#define JOB_LB_DEPUTY_DIRECTOR "L-B Deputy Director"
+#define JOB_LB_DIRECTOR "L-B Director"
+
+#define JOB_LB_MERC "L-B Operator"
+#define JOB_LB_MERC_MEDIC "L-B Medical Specialist"
+#define JOB_LB_MERC_ENGI "L-B Technical Specialist"
+#define JOB_LB_MERC_SP "L-B Senior Operator"
+#define JOB_LB_MERC_TL "L-B Team Leader"
+#define JOB_LB_MERC_SYN "L-B Support Synthetic"
+
 //---- Contractors ----//
 #define JOB_CONTRACTOR "VAIPO Mercenary"
 #define JOB_CONTRACTOR_ST "VAIPO Mercenary"

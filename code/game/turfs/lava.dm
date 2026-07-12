@@ -513,11 +513,6 @@ engineer_floor_deco
 
 ///
 
-/turf/open/lava/metal/plating_catwalk
-	icon = 'icons/turf/floors/strata_floor.dmi'
-	icon_state = "platingalt_catwalk"
-	baseturfs = /turf/open/floor/strata
-
 /turf/open/lava/metal/warning_grate
 	icon_state = "warning_grate"
 

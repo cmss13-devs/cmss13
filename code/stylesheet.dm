@@ -56,6 +56,7 @@ em {font-style: normal; font-weight: bold;}
 .intelradio {color: #027D02;}
 .wyradio {color: #FE9B24;}
 .hdcradio {color: #FE6C24;}
+.lbradio {color: #47a0bc;}
 .pmcradio {color: #A13852;}
 
 .clfradio {color: #6f679c}

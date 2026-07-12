@@ -781,6 +781,7 @@ CLIENT_VERB(toggle_minimap_ceiling_protection)
 		"Faction CLF HUD" = MOB_HUD_FACTION_CLF,
 		"Faction WO HUD" = MOB_HUD_FACTION_WO,
 		"Faction Hyperdyne HUD" = MOB_HUD_FACTION_HC,
+		"Faction Lasalle Bionational HUD" = MOB_HUD_FACTION_LB,
 	)
 
 	var/hud_choice = tgui_input_list(usr, "Choose a HUD to toggle", "Toggle HUD prefs", hud_options)

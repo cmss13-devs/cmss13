@@ -991,3 +991,79 @@
 	item_state = "p90_twe"
 
 	current_mag = /obj/item/ammo_magazine/smg/p90/ap
+
+//----------------"A-M36 experimental" (Laser SMG)------------------------//
+
+/obj/item/weapon/gun/smg/a_m36
+	name = "\improper A-M36 Experimental"
+	desc = "An experimental directed-energy SMG developed for Lasalle Bionational's corporate security forces. Issued to high-threat response teams and select elite personnel, its high-energy laser bursts are capable of occasionally igniting organic targets."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/smgs.dmi'
+	icon_state = "a_m36"
+	item_state = "a_m36"
+	fire_sound = 'sound/weapons/a_m36.ogg'
+	current_mag = /obj/item/ammo_magazine/smg/a_m36
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+	wield_delay = WEAPON_DELAY_MIN
+	aim_slowdown = SLOWDOWN_ADS_QUICK_MINUS
+	flags_equip_slot = SLOT_BACK
+	muzzle_flash = "muzzle_laser"
+	muzzle_flash_color = COLOR_LASER_RED
+
+	attachable_allowed = list(
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reddot/small,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/lasersight/micro,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/bayonet/co2,
+		/obj/item/attachable/bayonet/antique,
+		/obj/item/attachable/bayonet/custom,
+		/obj/item/attachable/bayonet/wy,
+		/obj/item/attachable/bayonet/custom/red,
+		/obj/item/attachable/bayonet/custom/blue,
+		/obj/item/attachable/bayonet/custom/black,
+		/obj/item/attachable/bayonet/tanto,
+		/obj/item/attachable/bayonet/tanto/blue,
+		/obj/item/attachable/bayonet/rmc_replica,
+		/obj/item/attachable/bayonet/rmc,
+		/obj/item/attachable/bayonet/co2,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/magnetic_harness,
+	)
+
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+
+	start_automatic = TRUE
+
+	random_spawn_chance = 100
+	random_spawn_rail = list(
+		/obj/item/attachable/reddot/small,
+	)
+	random_spawn_under = list(
+		/obj/item/attachable/lasersight/micro,
+	)
+
+/obj/item/weapon/gun/smg/a_m36/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 20,"rail_x" = 13, "rail_y" = 21, "under_x" = 21, "under_y" = 15, "stock_x" = 24, "stock_y" = 15)
+
+/obj/item/weapon/gun/smg/a_m36/set_gun_config_values()
+	..()
+	set_fire_delay(FIRE_DELAY_TIER_SMG)
+	set_burst_delay(FIRE_DELAY_TIER_SMG)
+	set_burst_amount(BURST_AMOUNT_TIER_3)
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
+	scatter = SCATTER_AMOUNT_TIER_9
+	scatter_unwielded = SCATTER_AMOUNT_TIER_4
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil_unwielded = RECOIL_AMOUNT_TIER_1
+	fa_max_scatter = SCATTER_AMOUNT_TIER_10 + 0.5
+
+/obj/item/weapon/gun/smg/a_m36/Initialize(mapload, spawn_empty)
+	. = ..()
+	if(spawn_empty)
+		return

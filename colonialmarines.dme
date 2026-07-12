@@ -627,6 +627,7 @@
 #include "code\datums\factions\helpers.dm"
 #include "code\datums\factions\hyperdyne.dm"
 #include "code\datums\factions\iasf.dm"
+#include "code\datums\factions\lasalle_bionational.dm"
 #include "code\datums\factions\nspa.dm"
 #include "code\datums\factions\pap.dm"
 #include "code\datums\factions\pmc.dm"

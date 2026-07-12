@@ -165,3 +165,24 @@
 	penetration = ARMOR_PENETRATION_TIER_4
 	damage_falloff = DAMAGE_FALLOFF_TIER_6
 	scatter = SCATTER_AMOUNT_TIER_6
+
+/datum/ammo/bullet/smg/a_m36
+	name = "armor-piercing laserbolt"
+	icon_state = "redtrac"
+	damage = 25
+	accurate_range = 5
+	effective_range_max = 6
+	penetration = ARMOR_PENETRATION_TIER_2
+	shell_speed = AMMO_SPEED_TIER_4
+	scatter = SCATTER_AMOUNT_TIER_3
+	accuracy = HIT_ACCURACY_TIER_2
+	damage_type = BURN
+	shrapnel_chance = 0
+	flags_ammo_behavior = AMMO_LASER
+	///chance of the bullet burning the mob
+	var/ignition_probability = 5
+
+/datum/ammo/bullet/smg/a_m36/on_hit_mob(mob/target, obj/projectile/bullet)
+	..()
+	if(prob(ignition_probability))
+		target.fire_act()

@@ -21,6 +21,9 @@
 	icon = 'icons/turf/floors/strata_floor.dmi'
 	icon_state = "floor"
 
+/turf/open/floor/strata/fake_catwalk
+	icon_state = "plating_catwalk_alt"
+
 /turf/open/floor/strata/grey_multi_tiles
 	icon_state = "grey_multi_tiles"
 

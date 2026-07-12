@@ -2175,12 +2175,14 @@
 /obj/item/clothing/under/marine/seegson_security
 	name = "Seegson security uniform"
 	desc = "An armored uniform worn by Seegson corporate security members."
-	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/seegson.dmi'
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/SEEGSON.dmi'
 	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/seegson.dmi',
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/SEEGSON.dmi',
 	)
 	icon_state = "seegson_security_uniform"
 	worn_state = "seegson_security_uniform"
+
+	flags_atom = FPRINT|NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 
 /obj/item/clothing/under/marine/seegson_security/Initialize()
 	. = ..()

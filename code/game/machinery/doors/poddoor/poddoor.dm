@@ -232,6 +232,9 @@
 	unslashable = TRUE
 	emp_proof = TRUE
 
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door/open
+	density = FALSE
+
 /obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door
 	desc = "A heavily reinforced metal-alloy door, designed to be virtually indestructible—nothing can penetrate its defenses."
 	icon_state = "udoor1"

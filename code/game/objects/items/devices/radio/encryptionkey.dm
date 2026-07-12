@@ -294,6 +294,15 @@
 	tracking_options = list("Corporate Liaison" = TRACKER_CL)
 
 //---------------------------------------------------
+//Lasalle Bionational Keys
+
+/obj/item/device/encryptionkey/lasalle_bionational
+	name = "\improper Lasalle Bionational encryption key"
+	icon_state = "ce_key"
+	channels = list(RADIO_CHANNEL_LASALLE_BIONATIONAL = TRUE)
+	tracking_options = list("Corporate Liaison" = TRACKER_CL)
+
+//---------------------------------------------------
 //UPP Keys
 /obj/item/device/encryptionkey/upp
 	name = "\improper UPP Radio Encryption Key"

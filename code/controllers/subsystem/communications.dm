@@ -123,6 +123,10 @@ Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency
 
 #define HDC_FREQ 1331
 
+//Lasalle Bionational channels (1401-1460)
+
+#define LB_FREQ 1401
+
 //General Radio
 #define MIN_FREQ 1460 // ------------------------------------------------------
 #define PUB_FREQ 1461
@@ -208,6 +212,8 @@ GLOBAL_LIST_INIT(radiochannels, list(
 	RADIO_CHANNEL_COLONY = COLONY_FREQ,
 
 	RADIO_CHANNEL_HYPERDYNE = HDC_FREQ,
+
+	RADIO_CHANNEL_LASALLE_BIONATIONAL = LB_FREQ,
 
 	RADIO_CHANNEL_WY = WY_FREQ,
 	RADIO_CHANNEL_WY_PUB = WY_PUB_FREQ,
@@ -356,6 +362,7 @@ SUBSYSTEM_DEF(radio)
 		"[FAX_USCM_HC_FREQ]" = "aiprivradio",
 		"[FAX_USCM_PVST_FREQ]" = "aiprivradio",
 		"[HDC_FREQ]" = "hdcradio",
+		"[LB_FREQ]" = "lbradio",
 	)
 
 /datum/controller/subsystem/radio/fire(resumed)

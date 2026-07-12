@@ -1162,6 +1162,15 @@
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_HC
 
+/obj/item/device/radio/headset/distress/lasalle_bionational
+	name = "LB corporate headset"
+	desc = "A headset commonly worn by Lasalle Bionational corporate personnel."
+	icon_state = "generic_headset"
+	frequency = LB_FREQ
+	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/lasalle_bionational)
+	has_hud = TRUE
+	hud_type = MOB_HUD_FACTION_LB
+
 /obj/item/device/radio/headset/distress/dutch
 	name = "Dutch's Dozen headset"
 	desc = "A special headset used by small groups of trained operatives. Or terrorists. To access the colony channel, use :h."

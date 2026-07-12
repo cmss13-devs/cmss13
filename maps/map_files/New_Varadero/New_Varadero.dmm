@@ -13324,6 +13324,10 @@
 	pixel_y = 7
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/tool/kitchen/utensil/knife/plastic{
+	pixel_x = 12;
+	pixel_y = 7
+	},
 /turf/open/floor/wood/wood_broken6,
 /area/varadero/interior/hall_SE)
 "aMe" = (
@@ -13970,14 +13974,6 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood/wood_broken7,
-/area/varadero/interior/hall_SE)
-"aNR" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/tool/kitchen/utensil/pknife{
-	pixel_x = 12;
-	pixel_y = 7
-	},
-/turf/open/floor/wood,
 /area/varadero/interior/hall_SE)
 "aNS" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -56779,17 +56775,12 @@
 /turf/open/gm/dirt/desert_dug,
 /area/varadero/exterior/lz2_near)
 "hmm" = (
-/obj/structure/machinery/light,
 /obj/structure/surface/table,
 /obj/item/device/cassette_tape/pop2{
 	pixel_x = 5;
 	pixel_y = 11
 	},
 /obj/item/device/cassette_tape/pop3{
-	pixel_y = 7
-	},
-/obj/item/tool/kitchen/utensil/pfork{
-	pixel_x = -6;
 	pixel_y = 7
 	},
 /obj/effect/decal/warning_stripes/asteroid{
@@ -56797,24 +56788,7 @@
 	dir = 2
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/machinery/light,
-/obj/structure/surface/table,
-/obj/item/device/cassette_tape/pop2{
-	pixel_x = 5;
-	pixel_y = 11
-	},
-/obj/item/device/cassette_tape/pop3{
-	pixel_y = 7
-	},
-/obj/item/tool/kitchen/utensil/fork/plastic{
-	pixel_x = -6;
-	pixel_y = 7
-	},
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/laundry)
 "hmp" = (
@@ -66109,21 +66083,6 @@
 /obj/structure/barricade/handrail/wire{
 	layer = 3.1
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/surface/table,
-/obj/item/storage/pill_bottle/packet/bicaridine,
-/obj/item/tool/kitchen/utensil/knife/plastic{
-	pixel_x = 9;
-	pixel_y = 2
-	},
-/obj/item/spacecash/c100{
-	pixel_x = -4;
-	pixel_y = 12
-	},
 /turf/open/floor/white,
 /area/varadero/interior/cargo)
 "oMg" = (
@@ -68699,15 +68658,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/security)
-"qEf" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/structure/surface/table/almayer,
-/obj/item/tool/kitchen/utensil/pknife,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/wood,
-/area/varadero/interior/hall_SE)
 "qEn" = (
 /obj/item/stack/sheet/metal,
 /turf/open/predship/tile/red,
@@ -77886,31 +77836,6 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
-"xKq" = (
-/obj/structure/surface/table/almayer{
-	flipped = 1
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/paper_bin{
-	pixel_x = 2;
-	pixel_y = 8
-	},
-/obj/item/reagent_container/food/condiment/saltshaker{
-	pixel_x = -9;
-	pixel_y = 7
-	},
-/obj/item/tool/kitchen/utensil/knife/plastic{
-	pixel_x = 12;
-	pixel_y = 7
-	},
-/turf/open/floor/wood,
-/area/varadero/interior/hall_SE)
 "xKv" = (
 /obj/structure/desertdam/decals/road_edge{
 	pixel_x = 16
@@ -96701,7 +96626,7 @@ nWS
 aFg
 jHb
 iwf
-xKq
+nIR
 aMc
 aLk
 oKo
@@ -96886,7 +96811,7 @@ scD
 nIR
 aZv
 aLk
-qEf
+bpT
 aZv
 pNI
 nTG
@@ -97064,7 +96989,7 @@ qus
 aQH
 aPI
 aOP
-aNR
+hoK
 hoK
 aMd
 gFx

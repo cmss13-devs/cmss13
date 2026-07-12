@@ -503,21 +503,8 @@
 /area/varadero/interior/library/restaraunt)
 "BL" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/item/tool/kitchen/utensil/pfork{
-	pixel_x = -9;
-	pixel_y = 5
-	},
 /obj/item/reagent_container/food/snacks/meatballsoup,
-/obj/item/tool/kitchen/utensil/pspoon{
-	pixel_x = 8;
-	pixel_y = 5
-	},
 /obj/effect/decal/cleanable/dirt,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/trash/ceramic_plate,
 /obj/item/tool/kitchen/utensil/knife/plastic{
@@ -541,23 +528,6 @@
 	dir = 1
 	},
 /turf/open/floor/cmo,
-/area/varadero/interior/library/restaraunt)
-"Dh" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/surface/table/woodentable/fancy,
-/obj/item/tool/kitchen/utensil/spoon/plastic{
-	pixel_y = 5;
-	pixel_x = 8
-	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
-/obj/item/reagent_container/food/snacks/meatballsoup,
-/turf/closed/wall,
 /area/varadero/interior/library/restaraunt)
 "FB" = (
 /obj/effect/decal/cleanable/blood/splatter,
@@ -854,7 +824,7 @@ af
 "}
 (10,1,1) = {"
 ha
-Dh
+ha
 ha
 ha
 ha

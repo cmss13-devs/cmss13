@@ -199,18 +199,6 @@
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space)
-"aaD" = (
-/obj/structure/bed,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/flasher{
-	id = "Perma 1";
-	pixel_y = -24
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/shipboard/brig/perma)
 "aaE" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/almayer/plating_striped/south,
@@ -11529,18 +11517,6 @@
 	},
 /turf/open/floor/almayer/silver/east,
 /area/almayer/command/cic)
-"aDL" = (
-/obj/structure/sink{
-	dir = 8;
-	pixel_x = -12;
-	pixel_y = 2
-	},
-/obj/structure/toilet{
-	pixel_y = 11;
-	pixel_x = 4
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/shipboard/brig/perma)
 "aDM" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/faxmachine/uscm/almayer/command{
@@ -20744,12 +20720,6 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/medical)
-"bbi" = (
-/obj/structure/bed,
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/camera/autoname/almayer/brig,
-/turf/open/floor/almayer/plate,
-/area/almayer/shipboard/brig/perma)
 "bbj" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -21312,10 +21282,7 @@
 /area/almayer/shipboard/brig/lower)
 "bcr" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/computer/cryopod/brig{
-	dir = 8;
-	pixel_x = -6
-	},
+/obj/structure/largecrate/supply,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/shipboard/brig/lower)
 "bcs" = (
@@ -23118,9 +23085,6 @@
 /obj/structure/surface/rack,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/aft)
-"bgG" = (
-/turf/closed/wall/almayer,
-/area/almayer/shipboard/brig/warden_office)
 "bgH" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -23276,9 +23240,6 @@
 	},
 /turf/open/floor/almayer/flooredge/east,
 /area/almayer/medical/containment)
-"bha" = (
-/turf/closed/wall/almayer,
-/area/almayer/shipboard/brig/processing)
 "bhb" = (
 /turf/open/floor/almayer/sterile_green_side,
 /area/almayer/medical/containment)
@@ -23346,9 +23307,6 @@
 	},
 /turf/open/floor/almayer/plating_striped/south,
 /area/almayer/shipboard/port_point_defense)
-"bhk" = (
-/turf/closed/wall/almayer,
-/area/almayer/shipboard/brig)
 "bhl" = (
 /obj/structure/largecrate/random/barrel/true_random,
 /obj/effect/decal/heavy_cable/cable_vertical,
@@ -23465,9 +23423,6 @@
 /obj/effect/spawner/random/tool,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_m_p)
-"bhz" = (
-/turf/closed/wall/almayer,
-/area/almayer/shipboard/brig/chief_mp_office)
 "bhA" = (
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/containment)
@@ -49251,11 +49206,12 @@
 /turf/closed/wall/almayer/reinforced,
 /area/almayer/shipboard/brig/cells)
 "cnO" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/cryopod/wall/brig{
-	pixel_y = 25;
-	cell_id = "Perma 1"
+/obj/structure/toilet{
+	pixel_y = 8;
+	pixel_x = -10
 	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/camera/autoname/almayer/brig,
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig/perma)
 "cnP" = (
@@ -56621,9 +56577,9 @@
 /obj/structure/bed/chair/bolted{
 	dir = 4
 	},
-/obj/structure/machinery/cryopod/wall/brig{
-	pixel_y = 25;
-	cell_id = "Perma 2"
+/obj/structure/machinery/flasher{
+	id = "Perma 2";
+	pixel_y = 24
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig/perma)
@@ -56837,6 +56793,9 @@
 	pixel_x = -10
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/camera/autoname/almayer/brig{
+	dir = 1
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig/perma)
 "feo" = (
@@ -77593,6 +77552,10 @@
 /obj/structure/bed/chair/bolted{
 	dir = 4
 	},
+/obj/structure/machinery/flasher{
+	id = "Perma 1";
+	pixel_y = -24
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig/perma)
 "ooh" = (
@@ -84067,10 +84030,6 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/flasher{
-	id = "Perma 2";
-	pixel_y = 24
-	},
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig/perma)
 "rbY" = (
@@ -86259,9 +86218,6 @@
 "rXE" = (
 /obj/structure/bed,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/camera/autoname/almayer/brig{
-	dir = 1
-	},
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig/perma)
 "rXF" = (
@@ -169624,7 +169580,7 @@ bcq
 bun
 bia
 bhB
-bvk
+bdT
 aVZ
 aVk
 jNT
@@ -197651,8 +197607,8 @@ aaf
 aag
 cnY
 hPI
-aDL
-aaD
+rib
+rbK
 naB
 rbK
 rib
@@ -197856,7 +197812,7 @@ coE
 cou
 coh
 cHk
-bbi
+rXE
 fgl
 dBS
 naB
@@ -198058,10 +198014,10 @@ uDg
 uDg
 jvB
 cHk
-bgG
-bgG
+cHk
+cHk
 coi
-bgG
+cHk
 fLF
 qPD
 cnf
@@ -198568,7 +198524,7 @@ cth
 wIC
 ddj
 wlg
-bhz
+wIC
 cpx
 cpi
 jXc
@@ -198671,7 +198627,7 @@ xyZ
 wIC
 vGn
 aaV
-bhz
+wIC
 uXu
 cpl
 alp
@@ -198773,8 +198729,8 @@ cqo
 wIC
 wIC
 iRp
-bhz
-bhz
+wIC
+wIC
 cpy
 cpb
 vzy
@@ -198877,7 +198833,7 @@ wIC
 iUX
 aTg
 gIO
-bhz
+wIC
 cpA
 cpb
 oyC
@@ -198980,7 +198936,7 @@ wIC
 cqg
 aTg
 cKJ
-bhz
+wIC
 keG
 cpm
 cpb
@@ -199082,10 +199038,10 @@ xkc
 wIC
 cqh
 aTg
-bhz
-bhz
-bhz
-bhz
+wIC
+wIC
+wIC
+wIC
 uhA
 aaP
 coH
@@ -199183,9 +199139,9 @@ uDg
 cth
 qsp
 wIC
-bhz
+wIC
 cpW
-bhz
+wIC
 cpG
 vKB
 cpn
@@ -199291,7 +199247,7 @@ aTg
 aTg
 nqe
 aTg
-bhz
+wIC
 cpc
 coz
 xhU
@@ -199497,7 +199453,7 @@ cpY
 cpS
 cpI
 aTg
-bhz
+wIC
 cpd
 coH
 coz
@@ -199702,12 +199658,12 @@ wIC
 wIC
 wIC
 wIC
-bhz
-bhz
+wIC
+wIC
 kXt
 coU
-bha
-bha
+emp
+emp
 emp
 cob
 xkd
@@ -200242,7 +200198,7 @@ ckY
 ckJ
 ckw
 cko
-cXi
+cjL
 cjT
 cjL
 hmA
@@ -200345,7 +200301,7 @@ hvd
 hvd
 ckx
 ckp
-cXi
+cjL
 cjU
 cjN
 hmA
@@ -200448,7 +200404,7 @@ cla
 hvd
 cky
 ckp
-cXi
+cjL
 oEE
 cjO
 hmA
@@ -200551,7 +200507,7 @@ iBl
 hvd
 ckz
 rkV
-cXi
+cjL
 vYi
 cjP
 hmA
@@ -200631,7 +200587,7 @@ cpM
 cpM
 may
 hoK
-bhk
+coP
 hzG
 eyD
 tsX
@@ -200734,7 +200690,7 @@ cpV
 cpO
 tfZ
 cpu
-bhk
+coP
 coX
 coO
 tsX

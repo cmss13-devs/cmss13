@@ -576,53 +576,6 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 		return TRUE
 	return FALSE
 
-/obj/structure/machinery/cryopod/wall
-	icon_state = "wall_pod_open"
-	can_block_movement = FALSE
-
-/obj/structure/machinery/cryopod/wall/go_in_cryopod(mob/mob, silent)
-	. = ..()
-	flick("wall_pod_closing", src)
-	icon_state = "wall_pod_closed"
-
-/obj/structure/machinery/cryopod/wall/brig
-	var/cell_id = null
-	var/obj/structure/machinery/brig_cell/target = null
-
-	var/eject_dir = EAST
-
-/obj/structure/machinery/cryopod/wall/brig/Initialize()
-	. = ..()
-	addtimer(CALLBACK(src, PROC_REF(search_for_components)), 20)
-
-/obj/structure/machinery/cryopod/wall/brig/proc/search_for_components()
-	for(var/obj/structure/machinery/brig_cell/cell in GLOB.machines)
-		if(cell.id == cell_id)
-			target = cell
-
-
-/obj/structure/machinery/cryopod/wall/brig/despawn_occupant()
-	var/occupant_name = occupant.name
-	var/occupant_gid = occupant.gid
-	. = ..()
-
-	if (!target)
-		return
-
-	for (var/obj/item/paper/incident/report in target.incident_reports)
-		if (!report.incident)
-			continue
-		if (hex2num(report.incident.criminal_gid) == occupant_gid)
-			// Force the brig report to eject the cryo'd prisoner's timer
-			// Doing it through remove_report() is perhaps a little spaghetti but future-proofs against changes to brig cell timers
-			var/previous_report = target.viewed_report
-			target.viewed_report = report
-			target.remove_report(user = null, eject_dir = src.eject_dir)
-			target.viewed_report = previous_report
-
-			// Let the MP's know they don't have a prisoner anymore
-			ai_silent_announcement("BRIG REPORT: [occupant_name] has entered cryogenic storage from [target]. Incident report ejected.", ":p")
-
 /obj/structure/machinery/cryopod/joe/seegson // joe storage closets
 	icon = 'icons/obj/structures/machinery/working_joe_storage.dmi'
 	icon_state = "working_joe_storage_empty"

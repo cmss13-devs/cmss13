@@ -796,7 +796,7 @@
 		M.apply_damage(20, enviro=TRUE)
 
 /obj/structure/machinery/defenses/sentry/shotgun/hitby(atom/movable/AM)
-	if(AM.throwing && turned_on)
+	if(HAS_TRAIT(AM, TRAIT_LAUNCHED) && turned_on)
 		if(ismob(AM))
 			var/mob/living/L = AM
 			L.apply_damage(20, enviro=TRUE)

@@ -245,8 +245,8 @@
 
 	// Force reset throw now because [/atom/movable/proc/launch_impact] only does that later on
 	// If we DON'T, step()'s move below can collide, rebound, trigger this proc again, into infinite recursion
-	throwing = FALSE
-	rebounding = FALSE
+	REMOVE_TRAIT(src, TRAIT_LAUNCHED, LAUNCHED_TRAIT)
+	REMOVE_TRAIT(src, TRAIT_REBOUNDING, REBOUNDING_TRAIT)
 
 	if(leaping && can_hug(L, hivenumber))
 		attach(L)

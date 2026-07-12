@@ -64,7 +64,7 @@
 	if(parent_human.stat || parent_human.buckled && !HAS_TRAIT(parent_human, TRAIT_USING_WHEELCHAIR) || parent_human.is_mob_incapacitated() || parent_human.is_mob_restrained())
 		return
 
-	if(parent_human.throwing == TRUE)
+	if(HAS_TRAIT(parent_human, TRAIT_LAUNCHED))
 		return // unaffected on throws
 
 	if(HAS_TRAIT(parent_human, TRAIT_USING_WHEELCHAIR))

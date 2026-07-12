@@ -78,11 +78,11 @@
 		Moved(oldloc, direct)
 
 	handle_rotation()
-	
+
 
 /// Called when a movable atom has hit an atom via movement
 /atom/movable/proc/Collide(atom/A)
-	if (throwing)
+	if (HAS_TRAIT(src, TRAIT_LAUNCHED))
 		launch_impact(A)
 
 	if (A && !QDELETED(A))

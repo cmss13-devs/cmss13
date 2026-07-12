@@ -71,7 +71,7 @@
 		else
 			playsound(loc, 'sound/effects/thud.ogg', 25, TRUE, falloff = 2)
 
-	O.throwing = 0 //it hit, so stop moving
+	REMOVE_TRAIT(O, TRAIT_LAUNCHED, LAUNCHED_TRAIT) //it hit, so stop moving
 
 	var/mob/M
 	if(launch_meta_valid && ismob(LM.thrower))
@@ -99,7 +99,7 @@
 /mob/living/obj_launch_collision(obj/O)
 	var/datum/launch_metadata/LM = launch_metadata
 	var/launch_meta_valid = istype(LM)
-	if(!rebounding && (!launch_meta_valid || LM.thrower != src))
+	if(!HAS_TRAIT(src, TRAIT_REBOUNDING) && (!launch_meta_valid || LM.thrower != src))
 		var/impact_damage = (1 + MOB_SIZE_COEFF/(mob_size + 1))*THROW_SPEED_DENSE_COEFF*cur_speed
 		apply_damage(impact_damage)
 		visible_message(SPAN_DANGER("\The [name] slams into [O]!"), null, null, 5) //feedback to know that you got slammed into a wall and it hurt
@@ -110,7 +110,7 @@
 /mob/living/turf_launch_collision(turf/T)
 	var/datum/launch_metadata/LM = launch_metadata
 	var/launch_meta_valid = istype(LM)
-	if(!rebounding && (!launch_meta_valid || LM.thrower != src))
+	if(!HAS_TRAIT(src, TRAIT_REBOUNDING) && (!launch_meta_valid || LM.thrower != src))
 		if(LM.thrower)
 			last_damage_data = create_cause_data("wall tossing", LM.thrower)
 		var/impact_damage = (1 + MOB_SIZE_COEFF/(mob_size + 1))*THROW_SPEED_DENSE_COEFF*cur_speed

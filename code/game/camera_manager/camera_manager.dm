@@ -18,6 +18,7 @@
 	var/target_width
 	var/target_height
 	var/list/cam_plane_masters
+	var/list/cas_hud_overlays
 	var/isXRay = FALSE
 	var/render_mode = RENDER_MODE_TARGET
 	var/nvg_enabled = FALSE
@@ -38,6 +39,7 @@
 	cam_background.appearance_flags |= TILE_BOUND
 
 	cam_plane_masters = list()
+	cas_hud_overlays = list()
 	for(var/plane in subtypesof(/atom/movable/screen/plane_master) - /atom/movable/screen/plane_master/blackness)
 		var/atom/movable/screen/plane_master/instance = new plane()
 		add_plane(instance)
@@ -46,6 +48,8 @@
 	. = ..()
 	range_turfs = null
 	current_area = null
+	hide_pilot_camera()
+	cas_hud_overlays = null
 	QDEL_LIST_ASSOC_VAL(cam_plane_masters)
 	QDEL_NULL(cam_background)
 	QDEL_NULL(cam_screen)
@@ -65,11 +69,11 @@
 
 /datum/component/camera_manager/proc/show_pilot_camera(mob/user)
 	if(user && parent && istype(parent, /obj/structure/machinery/computer/dropship_weapons))
+		if(length(cas_hud_overlays))
+			return
 		for(var/plane_id in cam_plane_masters)
 			var/atom/movable/screen/plane_master/plane = cam_plane_masters[plane_id]
-			var/atom/movable/screen/fullscreen/pilot_camera/overlay
-			overlay = new /atom/movable/screen/fullscreen/pilot_camera()
-			var/atom/movable/screen/fullscreen/pilot_camera/pilot_overlay = overlay
+			var/atom/movable/screen/fullscreen/pilot_camera/pilot_overlay = new()
 			var/atom/movable/screen/plane_master/screen_plane = plane
 			pilot_overlay.assigned_map = map_name
 			pilot_overlay.pixel_x = -224
@@ -78,20 +82,17 @@
 			pilot_overlay.layer = screen_plane.layer + 1
 			pilot_overlay.plane = screen_plane.plane
 			screen_plane.vis_contents += pilot_overlay
-			if(!islist(screen_plane.cas_hud_overlays)) screen_plane.cas_hud_overlays = list()
-			screen_plane.cas_hud_overlays += pilot_overlay
+			cas_hud_overlays[pilot_overlay] = screen_plane
 
-/datum/component/camera_manager/proc/hide_pilot_camera(mob/user)
-	if(user && parent && istype(parent, /obj/structure/machinery/computer/dropship_weapons))
-		// Remove the CAS HUD overlay from the camera panel's plane masters
-		for(var/plane_id in cam_plane_masters)
-			var/atom/movable/screen/plane_master/plane = cam_plane_masters[plane_id]
-			if(islist(plane.cas_hud_overlays))
-				for(var/overlay in plane.cas_hud_overlays)
-					var/atom/movable/screen/fullscreen/pilot_camera/pilot_overlay = overlay
-					plane.vis_contents -= pilot_overlay
-					qdel(pilot_overlay)
-				plane.cas_hud_overlays = list()
+/datum/component/camera_manager/proc/hide_pilot_camera()
+	if(!cas_hud_overlays)
+		return
+	for(var/atom/movable/screen/fullscreen/pilot_camera/pilot_overlay as anything in cas_hud_overlays)
+		var/atom/movable/screen/plane_master/plane = cas_hud_overlays[pilot_overlay]
+		if(plane)
+			plane.vis_contents -= pilot_overlay
+		qdel(pilot_overlay)
+	cas_hud_overlays.Cut()
 
 /datum/component/camera_manager/proc/register(source, mob/user)
 	SIGNAL_HANDLER
@@ -110,7 +111,7 @@
 	if(!user_client)
 		return
 	user_client.clear_map(map_name)
-	hide_pilot_camera(user)
+	hide_pilot_camera()
 	// Remove dropship reticle overlay if present when exiting console
 	if(parent && istype(parent, /obj/structure/machinery/computer/dropship_weapons))
 		var/obj/structure/machinery/computer/dropship_weapons/console = parent

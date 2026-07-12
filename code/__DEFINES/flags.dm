@@ -43,3 +43,5 @@
 #define HAZARD_JOE_EMOTE (1<<1)
 /// UPP Joe emote
 #define UPP_JOE_EMOTE (1<<2)
+/// Daniel emote
+#define DANIEL_EMOTE (1<<3)

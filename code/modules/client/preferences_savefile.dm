@@ -406,6 +406,9 @@
 	S["fax_name_press"] >> fax_name_press
 	S["fax_name_clf"] >> fax_name_clf
 
+	S["ff_log_color"] >> ff_log_color
+	S["ffd_log_color"] >> ffd_log_color
+
 	S["lang_chat_disabled"] >> lang_chat_disabled
 	S["show_permission_errors"] >> show_permission_errors
 	S["hear_vox"] >> hear_vox
@@ -563,6 +566,9 @@
 	fax_name_press = fax_name_press ? sanitize_text(fax_name_press, initial(fax_name_press)) : generate_name(FACTION_COLONIST)
 	fax_name_clf = fax_name_clf ? sanitize_text(fax_name_clf, initial(fax_name_clf)) : generate_name(FACTION_CLF)
 
+	ff_log_color = sanitize_hexcolor(ff_log_color, initial(ff_log_color))
+	ffd_log_color = sanitize_hexcolor(ffd_log_color, initial(ffd_log_color))
+
 	key_bindings = sanitize_keybindings(key_bindings)
 	hotkeys = sanitize_integer(hotkeys, FALSE, TRUE, TRUE)
 	custom_cursors = sanitize_integer(custom_cursors, FALSE, TRUE, TRUE)
@@ -689,6 +695,9 @@
 	S["fax_name_cmb"] << fax_name_cmb
 	S["fax_name_press"] << fax_name_press
 	S["fax_name_clf"] << fax_name_clf
+
+	S["ff_log_color"] << ff_log_color
+	S["ffd_log_color"] << ffd_log_color
 
 	S["lang_chat_disabled"] << lang_chat_disabled
 	S["show_permission_errors"] << show_permission_errors

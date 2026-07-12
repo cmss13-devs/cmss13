@@ -115,6 +115,7 @@ would spawn and follow the beaker, even if it is carried or thrown.
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	var/move_count = 0
 	var/time_waiting = 0
+	var/spark_speed = 0.2
 
 /obj/effect/particle_effect/sparks/Initialize(mapload, ...)
 	. = ..()
@@ -122,17 +123,23 @@ would spawn and follow the beaker, even if it is carried or thrown.
 	START_PROCESSING(SSfasteffects, src)
 	QDEL_IN(src, 10 SECONDS)
 
+/obj/effect/particle_effect/sparks/Destroy(force)
+	. = ..()
+	STOP_PROCESSING(SSfasteffects, src)
+
 /obj/effect/particle_effect/sparks/process(delta_time)
 	if (move_count == 0)
 		STOP_PROCESSING(SSfasteffects, src)
+		return PROCESS_KILL
 
 	time_waiting += delta_time
-	for (var/iter = 0, iter < floor(time_waiting/0.5), iter++)
+	for (var/iter = 0, iter < floor(time_waiting/spark_speed), iter++)
 		step(src, dir)
 		move_count--
 		if (move_count == 0)
 			STOP_PROCESSING(SSfasteffects, src)
-		time_waiting -= 0.5
+			return PROCESS_KILL
+		time_waiting -= spark_speed
 
 /datum/effect_system/spark_spread/set_up(particle_count = 3, cardinal_dirs_only = FALSE, target)
 	if(particle_count > 10)

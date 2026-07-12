@@ -1,0 +1,4 @@
+author: "JackieEstegado"
+delete-after: True
+changes:
+  - bugfix: "Defenders dying while having their crest down or fortified no longer stops them from being buckled to a rollerbed."

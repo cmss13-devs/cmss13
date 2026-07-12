@@ -733,7 +733,8 @@
 	. = ..()
 	pass_forward = !pass_forward
 	if(pass_forward)
-		deployment_system.update_health(damage, pass_forward)
+		if(deployment_system)
+			deployment_system.update_health(damage, pass_forward)
 
 /obj/structure/machinery/defenses/sentry/premade/dropship/Destroy()
 	if(deployment_system)

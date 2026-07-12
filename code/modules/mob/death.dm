@@ -89,7 +89,7 @@
 	GLOB.dead_mob_list += src
 
 	// Larva pool: We use the larger of their existing time or the new timeofdeath except for facehuggers or lesser drone
-	var/exempt_tod = isfacehugger(src) || islesserdrone(src) || should_block_game_interaction(src, include_hunting_grounds=TRUE)
+	var/exempt_tod = isfacehugger(src) || islesserdrone(src) || ispopper(src) || should_block_game_interaction(src, include_hunting_grounds=TRUE)
 	var/new_tod = exempt_tod ? 1 : timeofdeath
 	if(client)
 		client.player_details.larva_pool_time = max(client.player_details.larva_pool_time, new_tod)

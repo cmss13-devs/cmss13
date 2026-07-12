@@ -82,40 +82,45 @@
 	var/point_delay = 1 SECONDS
 
 
-/mob/hologram/queen/Initialize(mapload, mob/living/carbon/xenomorph/queen/Q)
-	if(!Q)
+/mob/hologram/queen/Initialize(mapload, mob/living/carbon/xenomorph/viewing_xeno)
+	if(!viewing_xeno)
 		return INITIALIZE_HINT_QDEL
 
-	if(!istype(Q))
-		stack_trace("Tried to initialize a /mob/hologram/queen on type ([Q.type])")
+	var/datum/hive_status/hive = viewing_xeno.hive
+	if(!hive)
 		return INITIALIZE_HINT_QDEL
 
-	if(!Q.ovipositor)
+	if(!isqueen(viewing_xeno) && !(hive.living_xeno_queen == viewing_xeno))
 		return INITIALIZE_HINT_QDEL
+
+	var/mob/living/carbon/xenomorph/queen/viewing_queen = viewing_xeno
+	if(istype(viewing_queen))
+		if(!hive.allow_no_queen_actions && !viewing_queen.ovipositor)
+			return INITIALIZE_HINT_QDEL
 
 	// Make sure to turn off any previous overwatches
-	Q.overwatch(stop_overwatch = TRUE)
+	viewing_xeno.overwatch(stop_overwatch = TRUE)
 
 	. = ..()
-	RegisterSignal(Q, COMSIG_MOB_PRE_CLICK, PROC_REF(handle_overwatch))
-	RegisterSignal(Q, COMSIG_QUEEN_DISMOUNT_OVIPOSITOR, PROC_REF(exit_hologram))
-	RegisterSignal(Q, COMSIG_XENO_OVERWATCH_XENO, PROC_REF(start_watching))
-	RegisterSignal(Q, list(
+	RegisterSignal(viewing_xeno, COMSIG_MOB_PRE_CLICK, PROC_REF(handle_overwatch))
+	RegisterSignal(viewing_xeno, COMSIG_QUEEN_DISMOUNT_OVIPOSITOR, PROC_REF(exit_hologram))
+	RegisterSignal(viewing_xeno, COMSIG_XENO_OVERWATCH_XENO, PROC_REF(start_watching))
+	RegisterSignal(viewing_xeno, list(
 		COMSIG_XENO_STOP_OVERWATCH,
 		COMSIG_XENO_STOP_OVERWATCH_XENO
 	), PROC_REF(stop_watching))
-	RegisterSignal(Q, COMSIG_MOB_REAL_NAME_CHANGED, PROC_REF(on_name_changed))
+	RegisterSignal(viewing_xeno, COMSIG_MOB_REAL_NAME_CHANGED, PROC_REF(on_name_changed))
 	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTER, PROC_REF(turf_weed_only))
 
 	// Default color
-	if(Q.hive.color)
-		color = Q.hive.color
+	if(viewing_xeno.hive.color)
+		color = viewing_xeno.hive.color
 
-	hivenumber = Q.hivenumber
+	hivenumber = viewing_xeno.hivenumber
 	med_hud_set_status()
 	add_to_all_mob_huds()
 
-	Q.sight |= SEE_TURFS|SEE_OBJS
+	viewing_xeno.sight |= SEE_TURFS|SEE_OBJS
 
 /mob/hologram/queen/proc/exit_hologram()
 	SIGNAL_HANDLER
@@ -190,7 +195,7 @@
 	var/obj/effect/alien/weeds/nearby_weeds = locate() in turf_area
 	if(nearby_weeds && HIVE_ALLIED_TO_HIVE(nearby_weeds.hivenumber, hivenumber))
 		var/obj/effect/alien/crossing_turf_weeds = locate() in crossing_turf
-		if(crossing_turf_weeds)
+		if(crossing_turf_weeds && !(crossing_turf_weeds.hivenumber == XENO_HIVE_PATHOGEN))
 			crossing_turf_weeds.update_icon() //randomizes the icon of the turf when crossed over*/
 		return COMPONENT_TURF_ALLOW_MOVEMENT
 
@@ -254,7 +259,7 @@
 /mob/hologram/queen/Destroy()
 	if(linked_mob)
 		var/mob/living/carbon/xenomorph/queen/Q = linked_mob
-		if(Q.ovipositor)
+		if((Q.hive.living_xeno_queen == Q) || (istype(Q) && Q.ovipositor))
 			give_action(linked_mob, /datum/action/xeno_action/onclick/eye)
 
 		linked_mob.sight &= ~(SEE_TURFS|SEE_OBJS)
@@ -296,6 +301,7 @@
 	acid_overlay = icon('icons/mob/xenos/castes/tier_4/queen.dmi', "Queen-Spit")
 
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
+	mycelium_food_icon = 'icons/mob/pathogen/pathogen_weeds_64x64.dmi'
 	weed_food_states = list("Queen_1","Queen_2","Queen_3")
 	weed_food_states_flipped = list("Queen_1","Queen_2","Queen_3")
 
@@ -498,7 +504,7 @@
 			if(XENO_ELDER)
 				name = "[name_prefix]Elder Empress"  //Elite
 			if(XENO_ANCIENT)
-				name = "[name_prefix]Ancient Empress" //Ancient
+				name = "[name_prefix]Ancient Empress"  //Ancient
 			if(XENO_PRIME)
 				name = "[name_prefix]Prime Empress" //Prime
 	else
@@ -683,64 +689,6 @@
 	for(var/Z in actions)
 		var/datum/action/A = Z
 		A.update_button_icon()
-
-/mob/living/carbon/xenomorph/queen/proc/queen_gut(atom/target)
-	if(!iscarbon(target))
-		return FALSE
-	if(HAS_TRAIT(target, TRAIT_HAULED))
-		to_chat(src, SPAN_XENOWARNING("[target] needs to be released first."))
-		return FALSE
-	var/mob/living/carbon/victim = target
-
-	if(get_dist(src, victim) > 1)
-		return FALSE
-
-	if(!check_state())
-		return FALSE
-
-	if(issynth(victim))
-		var/obj/limb/head/synthhead = victim.get_limb("head")
-		if(synthhead.status & LIMB_DESTROYED)
-			return FALSE
-
-	if(isxeno(victim))
-		var/mob/living/carbon/xenomorph/xeno = victim
-		if(hivenumber == xeno.hivenumber)
-			to_chat(src, SPAN_WARNING("You can't bring yourself to harm a fellow sister to this magnitude."))
-			return FALSE
-
-	var/turf/cur_loc = victim.loc
-	if(!istype(cur_loc))
-		return FALSE
-
-	if(action_busy)
-		return FALSE
-
-	if(!check_plasma(200))
-		return FALSE
-
-	visible_message(SPAN_XENOWARNING("[src] begins slowly lifting [victim] into the air."),
-	SPAN_XENOWARNING("You begin focusing your anger as you slowly lift [victim] into the air."))
-	if(do_after(src, 80, INTERRUPT_ALL, BUSY_ICON_HOSTILE, victim))
-		if(!victim)
-			return FALSE
-		if(victim.loc != cur_loc)
-			return FALSE
-		if(!check_plasma(200))
-			return FALSE
-
-		use_plasma(200)
-
-		visible_message(SPAN_XENODANGER("[src] viciously smashes and wrenches [victim] apart!"),
-		SPAN_XENODANGER("You suddenly unleash pure anger on [victim], instantly wrenching \him apart!"))
-		emote("roar")
-
-		attack_log += text("\[[time_stamp()]\] <font color='red'>gibbed [key_name(victim)]</font>")
-		victim.attack_log += text("\[[time_stamp()]\] <font color='orange'>was gibbed by [key_name(src)]</font>")
-		victim.gib(create_cause_data("Queen gutting", src)) //Splut
-
-		stop_pulling()
-		return TRUE
 
 /mob/living/carbon/xenomorph/queen/death(cause, gibbed)
 	if(src == hive?.living_xeno_queen)

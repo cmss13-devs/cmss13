@@ -50,7 +50,6 @@
 	)
 
 	var/burrowable = TRUE //Can it be safely burrowed if it has no player?
-	var/state_override
 	/// Whether we're bloody, normal, or mature
 	var/larva_state = LARVA_STATE_BLOODY
 	var/last_roar_time = 0
@@ -132,7 +131,6 @@
 	icon_state = "Predalien Larva"
 	caste_type = XENO_CASTE_PREDALIEN_LARVA
 	burrowable = FALSE //Not interchangeable with regular larvas in the hive core.
-	state_override = "Predalien "
 
 /mob/living/carbon/xenomorph/larva/predalien/Initialize(mapload, mob/living/carbon/xenomorph/oldxeno, h_number)
 	. = ..()
@@ -140,6 +138,25 @@
 	hunter_data.dishonored_reason = "An abomination upon the honor of us all!"
 	hunter_data.dishonored_set = src
 	hud_set_hunter()
+
+/mob/living/carbon/xenomorph/larva/predalien/update_icons()
+	var/state = "" //Icon convention, two different sprite sets
+
+	if(larva_state == LARVA_STATE_BLOODY)
+		state = "Bloody "
+
+	if(stat == DEAD)
+		icon_state = "[state]Predalien Larva Dead"
+	else if(handcuffed || legcuffed)
+		icon_state = "[state]Predalien Larva Cuff"
+
+	else if(body_position == LYING_DOWN)
+		if(!HAS_TRAIT(src, TRAIT_INCAPACITATED) && !HAS_TRAIT(src, TRAIT_FLOORED))
+			icon_state = "[state]Predalien Larva Sleeping"
+		else
+			icon_state = "[state]Predalien Larva Stunned"
+	else
+		icon_state = "[state]Predalien Larva"
 
 /mob/living/carbon/xenomorph/larva/evolve_message()
 	to_chat(src, SPAN_XENODANGER("Strength ripples through your small form. You are ready to be shaped to the Queen's will. <a href='byond://?src=\ref[src];evolve=1;'>Evolve</a>"))
@@ -156,17 +173,17 @@
 		state = "Bloody "
 
 	if(stat == DEAD)
-		icon_state = "[state_override || state]Larva Dead"
+		icon_state = "[state]Larva Dead"
 	else if(handcuffed || legcuffed)
-		icon_state = "[state_override || state]Larva Cuff"
+		icon_state = "[state]Larva Cuff"
 
 	else if(body_position == LYING_DOWN)
 		if(!HAS_TRAIT(src, TRAIT_INCAPACITATED) && !HAS_TRAIT(src, TRAIT_FLOORED))
-			icon_state = "[state_override || state]Larva Sleeping"
+			icon_state = "[state]Larva Sleeping"
 		else
-			icon_state = "[state_override || state]Larva Stunned"
+			icon_state = "[state]Larva Stunned"
 	else
-		icon_state = "[state_override || state]Larva"
+		icon_state = "[state]Larva"
 
 /mob/living/carbon/xenomorph/larva/alter_ghost(mob/dead/observer/ghost)
 	ghost.icon_state = "[caste.caste_type]"
@@ -192,10 +209,13 @@
 	if(!GLOB.hive_datum[hivenumber] || isnull(atom))
 		return
 
-	var/mob/living/carbon/xenomorph/larva/larva = new /mob/living/carbon/xenomorph/larva(atom)
+	if(hivenumber == XENO_HIVE_PATHOGEN)
+		var/mob/living/carbon/xenomorph/bloodburster/bloodburster = new(atom)
+		bloodburster.set_hive_and_update(hivenumber)
+		return bloodburster
 
+	var/mob/living/carbon/xenomorph/larva/larva = new(atom)
 	larva.set_hive_and_update(hivenumber)
-
 	return larva
 
 /mob/living/carbon/xenomorph/larva/emote(act, m_type, message, intentional, force_silence)

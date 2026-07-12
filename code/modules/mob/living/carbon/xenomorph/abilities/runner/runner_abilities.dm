@@ -15,10 +15,18 @@
 	freeze_time = 5 // 5 for runners
 	can_be_shield_blocked = TRUE // Some legacy stuff, self explanatory
 
+/datum/action/xeno_action/activable/pounce/runner/pathogen
+	button_icon_state = "template_pathogen"
+	icon_file = 'icons/mob/hud/actions_pathogen.dmi'
+
 /datum/action/xeno_action/onclick/toggle_long_range/runner
 	handles_movement = FALSE
 	should_delay = FALSE
 	ability_primacy = XENO_PRIMARY_ACTION_3
+
+/datum/action/xeno_action/onclick/toggle_long_range/runner/sprinter
+	button_icon_state = "template_pathogen"
+	icon_file = 'icons/mob/hud/actions_pathogen.dmi'
 
 /datum/action/xeno_action/activable/runner_skillshot
 	name = "Bone Spur"
@@ -30,6 +38,10 @@
 	plasma_cost = 0
 
 	var/ammo_type = /datum/ammo/xeno/bone_chips/spread/runner_skillshot
+
+/datum/action/xeno_action/activable/runner_skillshot/sprinter
+	button_icon_state = "template_pathogen"
+	icon_file = 'icons/mob/hud/actions_pathogen.dmi'
 
 /datum/action/xeno_action/activable/acider_acid
 	name = "Corrosive Acid"

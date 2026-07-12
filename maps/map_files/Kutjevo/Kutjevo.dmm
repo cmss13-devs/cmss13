@@ -1840,6 +1840,14 @@
 /obj/effect/landmark/late_join/working_joe/colony,
 /turf/open/floor/kutjevo/multi_tiles/southeast,
 /area/kutjevo/interior/power)
+"agZ" = (
+/obj/effect/landmark/structure_spawner/spore_sac_rng/ten,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/spring)
+"aha" = (
+/obj/effect/landmark/structure_spawner/spore_sac_rng/ten,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/spring)
 "ahp" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -45597,7 +45605,7 @@ dxF
 skx
 uzJ
 skx
-skx
+aha
 iNI
 iNI
 fdH
@@ -46272,7 +46280,7 @@ eVR
 mct
 hET
 ewl
-iNI
+agZ
 skx
 oQb
 kgx
@@ -46930,8 +46938,8 @@ dxF
 dxF
 vhC
 uzJ
-skx
-iNI
+aha
+agZ
 xuN
 ebv
 mNv
@@ -47271,7 +47279,7 @@ iNI
 iNI
 iNI
 iNI
-iNI
+agZ
 iNI
 skx
 uzJ

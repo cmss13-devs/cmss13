@@ -1087,7 +1087,13 @@ Additional game mode variables.
 	if(hive.living_xeno_queen || !original || !original.client)
 		return
 
-	var/mob/living/carbon/xenomorph/new_queen = new /mob/living/carbon/xenomorph/queen(xeno_turf, null, hivenumber)
+	var/mob/living/carbon/xenomorph/new_queen
+	if(hivenumber == XENO_HIVE_PATHOGEN)
+		new_queen = new /mob/living/carbon/xenomorph/archon(xeno_turf, null, XENO_HIVE_PATHOGEN)
+		var/datum/hive_status/pathogen/confluence = hive
+		confluence.last_overmind = ghost_mind.ckey
+	else
+		new_queen = new /mob/living/carbon/xenomorph/queen(xeno_turf, null, hivenumber)
 	ghost_mind.transfer_to(new_queen) //The mind is fine, since we already labeled them as a xeno. Away they go.
 	ghost_mind.name = ghost_mind.current.name
 
@@ -1098,6 +1104,11 @@ Additional game mode variables.
 		to_chat(new_queen, "<B>You are now the alien queen!</B>")
 		to_chat(new_queen, "<B>Your job is to assist the hive in assaulting the human outpost!</B>")
 		to_chat(new_queen, "<B>You should start by planting weeds and growing an ovipositor, your children will appear around round time 0:20. You will be able to leave your cave after the round time reaches 1:00.</B>")
+		to_chat(new_queen, "Talk in Hivemind using <strong>;</strong> (e.g. ';Hello my children!')")
+	else if(hivenumber == XENO_HIVE_PATHOGEN)
+		to_chat(new_queen, "<B>You are now the Pathogen Archon!</B>")
+		to_chat(new_queen, "<B>Your job is to spread the confluence.</B>")
+		to_chat(new_queen, "<B>You should start by building a blight core. Once built, interact with it on help intent.</B>")
 		to_chat(new_queen, "Talk in Hivemind using <strong>;</strong> (e.g. ';Hello my children!')")
 	else
 		to_chat(new_queen, "<B>You are now the alien queen!</B>")

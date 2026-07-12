@@ -23,7 +23,10 @@
 	. = ..()
 	var/mob/living/carbon/human/H = .
 
-	transform_to_xeno(H, XENO_HIVE_NORMAL)
+	if(GLOB.pathogen_round)
+		transform_to_xeno(H, XENO_HIVE_PATHOGEN)
+	else
+		transform_to_xeno(H, XENO_HIVE_NORMAL)
 
 /datum/job/antag/xenos/proc/transform_to_xeno(mob/living/carbon/human/human_to_transform, hive_index)
 	var/datum/mind/new_xeno = human_to_transform.mind
@@ -53,6 +56,9 @@
 	if(!istype(xeno_spawn) || !xeno_spawn.species)
 		var/count = 0
 		var/obj/structure/bed/nest/start_nest
+		var/start_nest_type = /obj/structure/bed/nest
+		if(hive_index == XENO_HIVE_PATHOGEN)
+			start_nest_type = /obj/structure/bed/nest/pathogen
 		var/list/turf/list_to_search = list(get_turf(human_to_transform))
 		while(isnull(start_nest))
 			count++
@@ -77,14 +83,14 @@
 							break
 					if(finish_proc)
 						human_to_transform.forceMove(ground_in_range)
-						start_nest = new /obj/structure/bed/nest(human_to_transform.loc) //Create a new nest for the host
+						start_nest = new start_nest_type(human_to_transform.loc) //Create a new nest for the host
 						start_nest.dir = get_dir(human_to_transform,wall_in_range)
 						break
 				bad_entries |= wall_in_range //no viable turfs found for this wall; we remove it
 			new_entries -= bad_entries
 			list_to_search = new_entries
 			if(count > 20) // we don't got all day, we got a game to play baby!
-				start_nest = new /obj/structure/bed/nest(human_to_transform.loc)
+				start_nest = new start_nest_type(human_to_transform.loc)
 				start_nest.dir = NORTH
 				break
 
@@ -94,9 +100,16 @@
 		start_nest.buckled_mob = human_to_transform
 		start_nest.afterbuckle(human_to_transform)
 
-	var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(human_to_transform) //Put the initial larva in a host
+	var/obj/item/alien_embryo/embryo
+	var/mob_path = /mob/living/carbon/xenomorph/larva
+	if(hive_index == XENO_HIVE_PATHOGEN)
+		embryo = new /obj/item/alien_embryo/bloodburster(human_to_transform) //Put the initial larva in a host
+		mob_path = /mob/living/carbon/xenomorph/bloodburster
+	else
+		embryo = new /obj/item/alien_embryo(human_to_transform) //Put the initial larva in a host
+	embryo.stage = 5 //Give the embryo a head-start (make the larva burst instantly)
 	embryo.hivenumber = hive.hivenumber
-	embryo.start_bursting(new/mob/living/carbon/xenomorph/larva(human_to_transform), human_to_transform)
+	embryo.start_bursting(new mob_path(human_to_transform), human_to_transform)
 
 /datum/job/antag/xenos/equip_job(mob/living/M)
 	return

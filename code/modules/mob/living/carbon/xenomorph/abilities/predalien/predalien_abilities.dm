@@ -64,7 +64,7 @@
 	var/range = 2
 
 /datum/action/xeno_action/onclick/toggle_gut_targeting
-	name = "Toggle Gutting Type"
+	name = "Toggle Frenzy Type"
 	action_icon_state = "rav_shard_shed" // starting targetting is SINGLETARGETGUT
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_gut_targeting
 	action_type = XENO_ACTION_ACTIVATE

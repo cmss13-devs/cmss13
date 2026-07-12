@@ -29,6 +29,7 @@
 		/mob/living/simple_animal/small/lizard,
 		/mob/living/carbon/xenomorph/facehugger,
 		/mob/living/carbon/xenomorph/larva,
+		/mob/living/carbon/xenomorph/bloodburster,
 	)
 	/// The cat will 'play' with dead hunted targets near it until this counter reaches a certain value.
 	var/play_counter = 0

@@ -30,6 +30,7 @@
 #define NEW_PLAYER_HUD "30" //Makes it easy to see new players.
 #define SPYCAM_HUD "31" //Remote control spy cameras.
 #define XENO_HOSTILE_TAG_SPREAD "32" // dancer prae yellow 'tag'
+#define STATUS_HUD_MYCO "33"
 
 //data HUD (medhud, sechud) defines
 #define MOB_HUD_SECURITY_BASIC 1
@@ -73,6 +74,8 @@
 #define MOB_HUD_XENO_HIVE_RENEGADE 39
 #define MOB_HUD_XENO_HIVE_TUTORIAL 40
 #define MOB_HUD_XENO_HIVE_K_SERIES 41
+#define MOB_HUD_XENO_HIVE_PATHOGEN 42
+#define MOB_HUD_MYCOTOXIN 43
 
 //for SL/FTL/LZ targeting on locator huds
 #define TRACKER_SL "track_sl"

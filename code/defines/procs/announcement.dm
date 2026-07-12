@@ -8,6 +8,7 @@
 #define QUEEN_MOTHER_ANNOUNCE "Queen Mother Psychic Directive"
 #define XENO_GENERAL_ANNOUNCE "You sense something unusual..." //general xeno announcement that don't involve Queen, for nuke for example
 #define HIGHER_FORCE_ANNOUNCE SPAN_ANNOUNCEMENT_HEADER_BLUE("Unknown Higher Force")
+#define PATHOGEN_ANNOUNCE SPAN_ANNOUNCEMENT_HEADER_BEIGE("Higher Mycelial Entity")
 
 //civilian white antre announcement
 /proc/venir_announcement(message, title = VENIR_ANNOUNCE, sound_to_play = sound('sound/misc/notice2.ogg'), faction_to_display = FACTION_SURVIVOR)
@@ -53,6 +54,9 @@
 
 		announcement_helper(message, title, targets, sound(get_sfx("queen"),wait = 0,volume = 50))
 	else
+		var/sound_to_use = sound(get_sfx("queen"), wait = 0, volume = 50)
+		if(hivenumber == XENO_HIVE_PATHOGEN)
+			sound_to_use = sound('sound/pathogen_creatures/announce_screech.ogg', wait = 0, volume = 50)
 		for(var/mob/M in targets)
 			if(isobserver(M))
 				continue
@@ -60,7 +64,7 @@
 			if(!istype(X) || !X.ally_of_hivenumber(hivenumber)) //additionally filter out those of wrong hive
 				targets.Remove(X)
 
-		announcement_helper(message, title, targets, sound(get_sfx("queen"),wait = 0,volume = 50))
+		announcement_helper(message, title, targets, sound_to_use)
 
 //xenomorph lore announcement
 /proc/xeno_lore_announcement(message, hivenumber, title = QUEEN_LORE_ANNOUNCE, sound_to_play = sound('sound/ambience/containment_breach1.ogg'))

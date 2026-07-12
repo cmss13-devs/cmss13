@@ -59,6 +59,7 @@
 	acid_overlay = icon('icons/mob/xenos/castes/tier_3/boiler.dmi', "Boiler-Spit")
 
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
+	mycelium_food_icon = 'icons/mob/pathogen/pathogen_weeds_64x64.dmi'
 	weed_food_states = list("Boiler_1","Boiler_2","Boiler_3")
 	weed_food_states_flipped = list("Boiler_1","Boiler_2","Boiler_3")
 

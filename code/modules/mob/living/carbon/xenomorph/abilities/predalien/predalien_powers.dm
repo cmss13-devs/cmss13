@@ -42,7 +42,7 @@
 		return
 
 	var/datum/behavior_delegate/predalien_base/predalienbehavior = xeno.behavior_delegate
-	if(!istype(predalienbehavior))
+	if(!istype(predalienbehavior) && !istype(predalienbehavior, /datum/behavior_delegate/pathogen_base/aberration))
 		return
 	if(targeting == AOETARGETGUT)
 		xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] begins digging in for a massive strike!"), SPAN_XENOHIGHDANGER("We begin digging in for a massive strike!"))

@@ -135,6 +135,10 @@
 	var/shard_cost = 75
 	var/ammo_type = /datum/ammo/xeno/bone_chips
 
+/datum/action/xeno_action/activable/rav_spikes/matriarch
+	button_icon_state = "template_pathogen"
+	icon_file = 'icons/mob/hud/actions_pathogen.dmi'
+
 /datum/action/xeno_action/onclick/spike_shed
 	name = "Spike Shed (50 shards)"
 	action_icon_state = "rav_shard_shed"
@@ -149,4 +153,6 @@
 	var/ammo_type = /datum/ammo/xeno/bone_chips/spread
 	var/shrapnel_amount = 40
 
-
+/datum/action/xeno_action/onclick/spike_shed/matriarch
+	button_icon_state = "template_pathogen"
+	icon_file = 'icons/mob/hud/actions_pathogen.dmi'

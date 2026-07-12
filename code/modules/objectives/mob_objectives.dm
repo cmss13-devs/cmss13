@@ -108,7 +108,7 @@
 		var/mob/living/carbon/xenomorph/X = target
 		switch(X.tier)
 			if(1)
-				if(ispredalien(X))
+				if(ispredalien(X) || isaberration(X))
 					value = OBJECTIVE_ABSOLUTE_VALUE
 				else
 					value = OBJECTIVE_LOW_VALUE

@@ -860,6 +860,9 @@
 /obj/effect/alien/resin/trap/get_projectile_hit_boolean(obj/projectile/bullet)
 	return src == bullet.original
 
+/obj/effect/pathogen/spore_sac/get_projectile_hit_boolean(obj/projectile/bullet)
+	return src == bullet.original
+
 /obj/item/clothing/mask/facehugger/get_projectile_hit_boolean(obj/projectile/bullet)
 	return src == bullet.original
 

@@ -29,8 +29,18 @@
 		if(iscarbon(affected_mob))
 			var/mob/living/carbon/affected_carbon = affected_mob
 			affected_carbon.med_hud_set_status()
+		update_icon()
 	else
 		return INITIALIZE_HINT_QDEL
+
+/obj/item/alien_embryo/update_icon()
+	if(flags_embryo & FLAG_EMBRYO_PATHOGEN)
+		if(isyautja(affected_mob) || (flags_embryo & FLAG_EMBRYO_PREDATOR))
+			icon = 'icons/mob/pathogen/aberration_bloodburster.dmi'
+		else
+			icon = 'icons/mob/pathogen/bloodburster.dmi'
+	else if(isyautja(affected_mob) || flags_embryo & FLAG_EMBRYO_PREDATOR)
+		icon = 'icons/mob/xenos/castes/tier_0/predalien_larva.dmi'
 
 /obj/item/alien_embryo/Destroy()
 	if(affected_mob)
@@ -62,15 +72,15 @@
 		if(ishuman(affected_mob))
 			var/mob/living/carbon/human/affected_human = affected_mob
 			if(world.time > affected_human.timeofdeath + affected_human.revive_grace_period) //Can't be defibbed.
-				var/mob/living/carbon/xenomorph/larva/larva_embryo = locate() in affected_mob
-				if(larva_embryo)
-					larva_embryo.chest_burst(affected_mob)
+				var/mob/living/carbon/xenomorph/embryo = locate() in affected_mob
+				if(embryo)
+					embryo.chest_burst(affected_mob)
 				qdel(src)
 				return FALSE
 		else
-			var/mob/living/carbon/xenomorph/larva/larva_embryo = locate() in affected_mob
-			if(larva_embryo)
-				larva_embryo.chest_burst(affected_mob)
+			var/mob/living/carbon/xenomorph/embryo = locate() in affected_mob
+			if(embryo)
+				embryo.chest_burst(affected_mob)
 			STOP_PROCESSING(SSobj, src)
 			return FALSE
 
@@ -164,9 +174,9 @@
 		if(7) // Stage 6 is while we are trying to find a candidate in become_larva
 			larva_autoburst_countdown--
 			if(!larva_autoburst_countdown)
-				var/mob/living/carbon/xenomorph/larva/larva_embryo = locate() in affected_mob
-				if(larva_embryo)
-					larva_embryo.chest_burst(affected_mob)
+				var/mob/living/carbon/xenomorph/embryo = locate() in affected_mob
+				if(embryo)
+					embryo.chest_burst(affected_mob)
 
 ///We look for a candidate. If found, we spawn the candidate as a larva
 ///Order of priority is bursted individual (if xeno is enabled), then player hugger, then random candidate, and then it's up for grabs and spawns braindead
@@ -249,12 +259,17 @@
 							break
 
 	// Spawn the larva
-	var/mob/living/carbon/xenomorph/larva/new_xeno
+	var/mob/living/carbon/xenomorph/new_xeno
 
 	if(isyautja(affected_mob) || (flags_embryo & FLAG_EMBRYO_PREDATOR))
-		new_xeno = new /mob/living/carbon/xenomorph/larva/predalien(affected_mob)
+		if(flags_embryo & FLAG_EMBRYO_PATHOGEN)
+			new_xeno = new /mob/living/carbon/xenomorph/bloodburster/aberrant(affected_mob)
+		else
+			new_xeno = new /mob/living/carbon/xenomorph/larva/predalien(affected_mob)
+	else if(flags_embryo & FLAG_EMBRYO_PATHOGEN)
+		new_xeno = new /mob/living/carbon/xenomorph/bloodburster(affected_mob)
 	else
-		new_xeno = new(affected_mob)
+		new_xeno = new /mob/living/carbon/xenomorph/larva(affected_mob)
 
 	if(hive)
 		new_xeno.set_hive_and_update(hive.hivenumber)

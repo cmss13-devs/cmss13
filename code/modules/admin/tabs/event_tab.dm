@@ -639,6 +639,8 @@
 
 	if(hivenumber == "everything")
 		xeno_announcement(input, hivenumber, HIGHER_FORCE_ANNOUNCE)
+	else if(hivenumber == XENO_HIVE_PATHOGEN)
+		xeno_announcement(input, hivenumber, PATHOGEN_ANNOUNCE)
 	else
 		xeno_announcement(input, hivenumber, SPAN_ANNOUNCEMENT_HEADER_BLUE("[hive_prefix][QUEEN_MOTHER_ANNOUNCE]"))
 

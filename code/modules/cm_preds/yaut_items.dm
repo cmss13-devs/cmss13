@@ -1618,7 +1618,6 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	desc = "Skull of a decrepit wretch, the surface still stinging your hands."
 	icon_state = "despoiler_skull"
 
-
 /obj/item/skull/lurker
 	name = "Lurker skull"
 	desc = "Skull of a stealthy xenomorph, a nocturnal entity."
@@ -1713,6 +1712,11 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	. = ..()
 	if(isyautja(user))
 		. += SPAN_RED("Not even this relic can be tolerated. Destroy it.")
+
+/obj/item/skull/abomination/aberration
+	name = "Aberration skull"
+	desc = "The skull of a mysterious hybrid creature, a nightmare on the field."
+	icon_state = "aberration_skull"
 
 // PELTS
 
@@ -1840,6 +1844,97 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	. = ..()
 	if(isyautja(user))
 		. += SPAN_RED("Not even this relic can be tolerated. Destroy it.")
+
+/obj/item/pelt/abomination/aberration
+	name = "Aberration pelt"
+	desc = "The mycelial pelt of a mysterious hybrid creature, a nightmare on the field."
+	icon_state = "aberration_pelt"
+
+/obj/item/pelt/pathogen_archon
+	name = "Archon pelt"
+	desc = "The mycelial pelt of a terrifying creature, a walking apocalypse."
+	icon_state = "archon_pelt"
+
+/obj/item/pelt/pathogen_matriarch
+	name = "Matriarch pelt"
+	desc = "The mycelial pelt of a huge creature, bringer of doom and death."
+	icon_state = "matriarch_pelt"
+
+/obj/item/pelt/pathogen_harbinger
+	name = "Harbinger pelt"
+	desc = "The mycelial pelt of a terrifying creature, an unnatural perversion of life."
+	icon_state = "harbinger_pelt"
+
+/obj/item/pelt/pathogen_venator
+	name = "Venator pelt"
+	desc = "The mycelial pelt of a strange creature, a deadly ambushing predator."
+	icon_state = "venator_pelt"
+
+/obj/item/pelt/pathogen_brute
+	name = "Brute pelt"
+	desc = "The mycelial pelt of a strange creature, a lumbering tank."
+	icon_state = "brute_pelt"
+
+/obj/item/pelt/pathogen_conditor
+	name = "Conditor pelt"
+	desc = "The mycelial pelt of a strange creature, an acidic architect."
+	icon_state = "conditor_pelt"
+
+/obj/item/pelt/pathogen_neomorph
+	name = "Neomorph pelt"
+	desc = "The mycelial pelt of a strange creature, a worker and hunter."
+	icon_state = "neomorph_pelt"
+
+/obj/item/pelt/pathogen_neophyte
+	name = "Neophyte pelt"
+	desc = "The mycelial pelt of a strange creature, a juvenile worker and hunter."
+	icon_state = "neophyte_pelt"
+
+/obj/item/pelt/pathogen_blight
+	name = "Blight pelt"
+	desc = "The mycelial pelt of a strange creature, a stealthy killer."
+	icon_state = "blight_pelt"
+
+/obj/item/pelt/pathogen_sprinter
+	name = "Sprinter pelt"
+	desc = "The mycelial pelt of a strange creature, a terror on the prowl."
+	icon_state = "sprinter_pelt"
+
+/obj/item/skull/pathogen_archon
+	name = "Archon skull"
+	desc = "The skull of a terrifying creature, a walking apocalypse."
+	icon_state = "archon_skull"
+
+/obj/item/skull/pathogen_matriarch
+	name = "Matriarch skull"
+	desc = "The skull of a huge creature, bringer of doom and death."
+	icon_state = "matriarch_skull"
+
+/obj/item/skull/pathogen_brute
+	name = "Brute skull"
+	desc = "The skull of a strange creature, a lumbering tank."
+	icon_state = "brute_skull"
+
+/obj/item/skull/pathogen_conditor
+	name = "Conditor skull"
+	desc = "The skull of a strange creature, an acidic architect."
+	icon_state = "conditor_skull"
+
+/obj/item/skull/pathogen_neomorph
+	name = "Neomorph skull"
+	desc = "The skull of a strange creature, a worker and hunter."
+	icon_state = "neomorph_skull"
+
+/obj/item/skull/pathogen_neophyte
+	name = "Neophyte skull"
+	desc = "The skull of a strange creature, a juvenile worker and hunter."
+	icon_state = "neophyte_skull"
+
+/obj/item/skull/pathogen_sprinter
+	name = "Sprinter skull"
+	desc = "The skull of a strange creature, a terror on the prowl."
+	icon_state = "sprinter_skull"
+
 
 /// TOOLS
 
@@ -2031,7 +2126,7 @@ GLOBAL_LIST_INIT(hivebreaker_banned_castes, list(
 		to_chat(user, SPAN_WARNING("This serpent seems defective. It is unresponsive."))
 		return FALSE
 
-	if((thrall_target.caste_type in XENO_T0_CASTES) || (thrall_target.caste_type in GLOB.hivebreaker_banned_castes))
+	if((thrall_target.caste_type in XENO_T0_CASTES) || is_pathogen_creature(thrall_target) || (thrall_target.caste_type in GLOB.hivebreaker_banned_castes))
 		to_chat(user, SPAN_WARNING("You cannot enthrall this serpent!"))
 		return FALSE
 

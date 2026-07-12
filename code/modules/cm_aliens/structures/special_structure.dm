@@ -15,13 +15,16 @@
 	anchored = TRUE
 	block_range = 1
 	var/boosted_structure = FALSE
-	var/datum/hive_status/linked_hive
 	var/protection_level = TURF_PROTECTION_NONE
 
 	plane = FLOOR_PLANE
 
 	/// Tells the structure if they are being deleted because of hijack
 	var/hijack_delete = FALSE
+	/// Whether or not this has a forced hive
+	var/forced_hive = FALSE
+	var/failed_build = FALSE
+	var/broadcast_destroy = TRUE
 
 /obj/effect/alien/resin/special/get_examine_text(mob/user)
 	. = ..()
@@ -44,14 +47,15 @@
 	. = ..()
 	maxhealth = health
 
-	if(hive_ref)
+	if(!forced_hive && hive_ref)
 		linked_hive = hive_ref
 	else
-		linked_hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
+		linked_hive = GLOB.hive_datum[hivenumber]
 
-	set_hive_data(src, linked_hive.hivenumber)
+	set_hive_data(src, hivenumber)
 
 	if(!linked_hive.add_special_structure(src))
+		failed_build = TRUE
 		return INITIALIZE_HINT_QDEL
 
 	START_PROCESSING(SSfastobj, src)
@@ -60,7 +64,7 @@
 /obj/effect/alien/resin/special/Destroy()
 	if(linked_hive)
 		linked_hive.remove_special_structure(src)
-		if(linked_hive.living_xeno_queen)
+		if(linked_hive.living_xeno_queen && !failed_build && broadcast_destroy)
 			xeno_message("Hive: \A [name] has been destroyed at [sanitize_area(get_area_name(src))]!", 3, linked_hive.hivenumber)
 	linked_hive = null
 	STOP_PROCESSING(SSfastobj, src)

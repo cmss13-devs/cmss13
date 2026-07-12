@@ -130,6 +130,7 @@ GLOBAL_LIST_INIT(admin_verbs_minor_event, list(
 	/client/proc/enable_event_mob_verbs,
 	/client/proc/force_hijack,
 	/datum/admins/proc/force_predator_round, //Force spawns a predator round.
+	/datum/admins/proc/force_pathogen_round, //Forces the round to be pathogen
 	/datum/admins/proc/force_colony_joe_round, //same as above but for colony working joes
 	/client/proc/adjust_predator_round,
 	/client/proc/cmd_admin_world_narrate, /*sends text to all players with no padding*/
@@ -175,7 +176,8 @@ GLOBAL_LIST_INIT(admin_verbs_spawn, list(
 	/datum/admins/proc/spawn_atom,
 	/client/proc/game_panel,
 	/client/proc/create_humans,
-	/client/proc/create_xenos
+	/client/proc/create_xenos,
+	/client/proc/create_pathogen_creatures,
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_server, list(

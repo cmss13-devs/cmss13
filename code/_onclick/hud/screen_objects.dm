@@ -113,6 +113,8 @@
 /atom/movable/screen/action_button/hide_toggle/proc/update_button_icon(mob/user)
 	if(isyautja(user))
 		base_icon = "pred"
+	else if(is_pathogen_creature(user))
+		base_icon = "pathogen"
 	else if(isxeno(user))
 		base_icon = "xeno"
 	else
@@ -510,7 +512,7 @@
 	if(!user.hive)
 		to_chat(user, SPAN_WARNING("We don't belong to a hive!"))
 		return FALSE
-	if(!user.hive.living_xeno_queen)
+	if(!user.hive.living_xeno_queen && !user.hive.allow_no_queen_actions)
 		to_chat(user, SPAN_WARNING("Without a queen our psychic link is broken!"))
 		return FALSE
 	if(HAS_TRAIT(user, TRAIT_ABILITY_BURROWED) || user.is_mob_incapacitated() || user.buckled)

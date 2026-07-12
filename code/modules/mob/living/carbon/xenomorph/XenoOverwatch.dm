@@ -6,6 +6,11 @@
 	plasma_cost = 0
 	macro_path = /datum/action/xeno_action/verb/verb_watch_xeno
 
+/datum/action/xeno_action/watch_xeno/pathogen
+	name = "Watch Pathogen Creature"
+	button_icon_state = "template_pathogen"
+	icon_file = 'icons/mob/hud/actions_pathogen.dmi'
+
 /datum/action/xeno_action/watch_xeno/can_use_action()
 	if(!owner)
 		return FALSE

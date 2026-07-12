@@ -99,3 +99,8 @@
 
 /// From /mob/living/carbon/xenomorph/larva/proc/chest_burst
 #define COMSIG_XENO_BURSTED "xeno_burst"
+
+
+#define COMSIG_XENOMORPH_CORE_RETURN "xenomorph_core_return"
+#define COMSIG_XENOMORPH_HIVEMIND_CHANGE_FORM "xenomorph_hivemind_change_form"
+#define COMSIG_XENOMORPH_HIVEMIND_TELEPORT "xeno_hivemind_teleport"

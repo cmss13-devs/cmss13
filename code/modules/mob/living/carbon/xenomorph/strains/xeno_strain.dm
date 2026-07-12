@@ -132,7 +132,10 @@
 	if(evolution_stored == evolution_threshold)
 		if(new_xeno.caste_type == XENO_CASTE_FACEHUGGER)
 			return
-		give_action(new_xeno, /datum/action/xeno_action/onclick/evolve)
+		if(hivenumber == XENO_HIVE_PATHOGEN)
+			give_action(new_xeno, /datum/action/xeno_action/onclick/evolve/pathogen)
+		else
+			give_action(new_xeno, /datum/action/xeno_action/onclick/evolve)
 
 	// If it applied successfully, add it to the logs.
 	log_strain("[new_xeno.name] reset their strain.")

@@ -99,11 +99,18 @@
 		if(S.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[S.id])
 			if(last_used)
 				last_used.count_niche_stat(STATISTICS_NICHE_CHEMS)
-			var/datum/chem_property/P = S.get_property(PROPERTY_DNA_DISINTEGRATING)
-			if(P)
+			var/datum/chem_property/prop_dna = S.get_property(PROPERTY_DNA_DISINTEGRATING)
+			var/datum/chem_property/prop_myco = S.get_property(PROPERTY_MYCOTAINTED)
+			if(prop_dna)
 				if(!GLOB.chemical_data.ddi_discovered && GLOB.chemical_data.reached_x_access)
-					P.trigger()
+					prop_dna.trigger()
 					GLOB.chemical_data.ddi_discovered = TRUE
+				else
+					return
+			if(prop_myco)
+				if(!GLOB.chemical_data.myco_discovered && GLOB.chemical_data.reached_x_access)
+					prop_myco.trigger()
+					GLOB.chemical_data.myco_discovered = TRUE
 				else
 					return
 

@@ -57,6 +57,11 @@
 	START_PROCESSING(SSfastobj, src)
 	update_icon()
 
+/obj/effect/alien/resin/special/initialize_pass_flags(datum/pass_flags_container/PF)
+	..()
+	if (PF)
+		PF.flags_can_pass_all = PASS_HIGH_OVER
+
 /obj/effect/alien/resin/special/Destroy()
 	if(linked_hive)
 		linked_hive.remove_special_structure(src)

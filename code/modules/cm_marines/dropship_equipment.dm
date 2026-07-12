@@ -231,18 +231,11 @@
 		deployed_turret = new(src)
 		deployed_turret.deployment_system = src
 
-/obj/structure/dropship_equipment/sentry_holder/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
-	if(unslashable)
-		return XENO_NO_DELAY_ACTION
-	current_xenomorph.animation_attack_on(src)
-	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
-	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-	var/damage = rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper)
-	if(deployed_turret)
-		deployed_turret.update_health(damage)
-	update_health(damage)
-	return XENO_ATTACK_ACTION
+/obj/structure/dropship_equipment/sentry_holder/update_health(damage, pass_forward = FALSE)
+	pass_forward = !pass_forward
+	if(pass_forward)
+		deployed_turret.update_health(damage, pass_forward)
+	. = ..()
 
 /obj/structure/dropship_equipment/sentry_holder/try_repair(obj/item/tool/weldingtool/welder, mob/user, amount)
 	. = ..()
@@ -415,18 +408,11 @@
 		deployed_mg = new(src)
 		deployed_mg.deployment_system = src
 
-/obj/structure/dropship_equipment/mg_holder/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
-	if(unslashable)
-		return XENO_NO_DELAY_ACTION
-	current_xenomorph.animation_attack_on(src)
-	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
-	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-	var/damage = rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper)
-	if(deployed_mg)
-		deployed_mg.update_health(damage)
-	update_health(damage)
-	return XENO_ATTACK_ACTION
+/obj/structure/dropship_equipment/mg_holder/update_health(damage, pass_forward = FALSE)
+	pass_forward = !pass_forward
+	if(pass_forward)
+		deployed_mg.update_health(damage, pass_forward)
+	. = ..()
 
 /obj/structure/dropship_equipment/mg_holder/try_repair(obj/item/tool/weldingtool/welder, mob/user, amount)
 	. = ..()

@@ -1,5 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Added backend landmark code for pathogen spore sacs to randomly spawn. Will not actually spawn the spore sacs."
-  - imageadd: "Added the landmark icon for above."

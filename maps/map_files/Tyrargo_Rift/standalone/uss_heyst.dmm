@@ -4466,7 +4466,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "Jl" = (
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt,
 /turf/open/floor/almayer,
 /area/tyrargo/indoors/heyst)
 "Jo" = (

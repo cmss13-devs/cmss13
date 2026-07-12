@@ -102,6 +102,7 @@
 		. += "It seems to be lacking an ammo drum."
 
 /obj/item/device/m56d_gun/update_icon() //Lets generate the icon based on how much ammo it has.
+	icon_state = initial(icon_state)
 	if(has_mount)
 		icon_state += "_tri"
 	if(rounds)

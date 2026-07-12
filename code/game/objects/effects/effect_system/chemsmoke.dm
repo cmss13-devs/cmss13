@@ -93,14 +93,14 @@
 	last_reaction_signature = reaction_signature
 
 	var/where = "[A.name]|[location.x], [location.y]"
-	var/whereLink = "<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>[where]</a>"
+	var/whereLink = "[ADMIN_JUMP_COORDS(location.x, location.y, location.z)] at [where]"
 
 	if(carry.my_atom.fingerprintslast)
-		msg_admin_niche("A chemical smoke reaction has taken place in ([whereLink])[contained]. Last associated key is [carry.my_atom.fingerprintslast].")
-		log_game("A chemical smoke reaction has taken place in ([where])[contained]. Last associated key is [carry.my_atom.fingerprintslast].")
+		msg_admin_niche("A chemical smoke reaction has taken place in ([whereLink])[contained]. Last associated ckey is [carry.my_atom.fingerprintslast].")
+		log_game("A chemical smoke reaction has taken place in ([where])[contained]. Last associated ckey is [carry.my_atom.fingerprintslast].")
 	else
-		msg_admin_niche("A chemical smoke reaction has taken place in ([whereLink])[contained]. No associated key.")
-		log_game("A chemical smoke reaction has taken place in ([where])[contained]. No associated key.")
+		msg_admin_niche("A chemical smoke reaction has taken place in ([whereLink])[contained]. No associated ckey.")
+		log_game("A chemical smoke reaction has taken place in ([where])[contained]. No associated ckey.")
 
 
 //------------------------------------------

@@ -86073,10 +86073,6 @@
 	},
 /turf/open/floor/almayer/black2/west,
 /area/tyrargo/indoors/bunker/central_south)
-"fdB" = (
-/obj/structure/blocker,
-/turf/closed/wall/strata_ice/forest/rock,
-/area/tyrargo/oob)
 "fdC" = (
 /obj/structure/flora/tree/tyrargo_small/tree_stump{
 	layer = 3
@@ -106447,7 +106443,7 @@ bsw
 bsw
 bsw
 bsw
-fdB
+bsw
 bsw
 bsw
 bsw

@@ -10110,16 +10110,16 @@
 	dir = 4;
 	icon_state = "pipe-y"
 	},
-/obj/structure/machinery/computer/card{
-	dir = 8;
-	pixel_y = 5
-	},
 /obj/structure/surface/table/reinforced/black,
 /obj/structure/disposalpipe/segment{
 	dir = 4;
 	icon_state = "pipe-c"
 	},
 /obj/structure/pipes/standard/manifold/fourway/hidden/supply,
+/obj/structure/machinery/computer/crew/alt{
+	dir = 8;
+	pixel_y = 5
+	},
 /turf/open/floor/almayer,
 /area/almayer/command/cic)
 "aAe" = (
@@ -10394,21 +10394,29 @@
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/computer/secure_data{
-	dir = 8
-	},
 /obj/structure/machinery/door_control{
 	id = "cic_exterior";
 	name = "CIC Door Control";
 	normaldoorcontrol = 1;
-	pixel_y = -14;
+	pixel_y = -18;
 	req_one_access_txt = "19"
 	},
 /obj/structure/surface/table/reinforced/black,
-/obj/structure/machinery/computer/squad_changer{
+/obj/structure/machinery/computer/cameras/almayer{
 	dir = 8;
-	layer = 2.99;
-	pixel_y = 24
+	pixel_y = 24;
+	layer = 2.99
+	},
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast{
+	dir = 8;
+	pixel_x = 4;
+	pixel_y = 10;
+	layer = 3
+	},
+/obj/structure/machinery/computer/secure_data{
+	dir = 8;
+	layer = 3.01;
+	pixel_y = -6
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/cic)

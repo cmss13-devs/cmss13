@@ -385,7 +385,7 @@ Class Procs:
 	icon = 'icons/obj/structures/machinery/fuelpump.dmi'
 	icon_state = "fuelpump_off"
 	bound_width = 128
-	health = 2000
+	health = 2500
 	density = TRUE
 	anchored = TRUE
 	wrenchable = FALSE
@@ -430,6 +430,13 @@ Class Procs:
 		return -1
 	return ..()
 	// Corrosive is/was 3 ticks * (20,40,100 level) = (60,120,300) after 15s
+
+/obj/structure/machinery/fuelpump/bullet_act(obj/projectile/bullet)
+	bullet_ping(bullet, pixel_x_offset=48)
+	if(CHECK_MULTIPLE_BITFIELDS(bullet.ammo.flags_ammo_behavior, AMMO_ACIDIC|AMMO_XENO))
+		// Is/was 20-30 dmg
+		update_health(bullet.damage)
+	return TRUE
 
 // Charger is/was (1-8 momentum) * 22 = (22-176)
 // Crusher is/was melee_damage_upper (40)

@@ -385,6 +385,8 @@ Class Procs:
 	icon = 'icons/obj/structures/machinery/fuelpump.dmi'
 	icon_state = "fuelpump_off"
 	bound_width = 128
+	pixel_x = -64
+	bound_x = -64
 	health = 2500
 	density = TRUE
 	anchored = TRUE
@@ -392,7 +394,6 @@ Class Procs:
 	explo_proof = TRUE
 	unslashable = FALSE
 	unacidable = FALSE
-
 
 /obj/structure/machinery/fuelpump/Initialize(mapload, ...)
 	. = ..()

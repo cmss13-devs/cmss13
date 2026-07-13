@@ -4396,6 +4396,10 @@
 "akw" = (
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/medical/upper_medical)
+"akx" = (
+/obj/structure/machinery/fuelpump,
+/turf/open/floor/almayer/mono,
+/area/almayer/lifeboat_pumps/south2)
 "aky" = (
 /obj/structure/sign/safety/ladder{
 	pixel_x = 32;
@@ -4558,6 +4562,10 @@
 "ala" = (
 /turf/open/floor/almayer/flooredgesmooth2/east,
 /area/almayer/squads/charlie_delta_shared)
+"alb" = (
+/obj/structure/machinery/fuelpump,
+/turf/open/floor/almayer/mono,
+/area/almayer/lifeboat_pumps/north1)
 "alc" = (
 /obj/structure/window/reinforced/toughened{
 	dir = 8;
@@ -4571,6 +4579,10 @@
 "ald" = (
 /turf/open/floor/almayer/red,
 /area/almayer/shipboard/weapon_room)
+"ale" = (
+/obj/structure/machinery/fuelpump,
+/turf/open/floor/almayer/mono,
+/area/almayer/lifeboat_pumps/north2)
 "alf" = (
 /turf/open_space,
 /area/almayer/stair_clone/upper/port_fore)
@@ -44111,10 +44123,6 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/maint/upper/u_m_s)
-"cea" = (
-/obj/structure/machinery/fuelpump,
-/turf/open/floor/almayer,
-/area/almayer/lifeboat_pumps/south2)
 "ceb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/door_control{
@@ -68665,10 +68673,6 @@
 /obj/structure/closet/firecloset,
 /turf/open/floor/almayer/cargo,
 /area/almayer/engineering/upper_engineering/starboard)
-"lMy" = (
-/obj/structure/machinery/fuelpump,
-/turf/open/floor/almayer,
-/area/almayer/lifeboat_pumps/north2)
 "lMF" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -97124,10 +97128,6 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/living/starboard_emb)
-"xxB" = (
-/obj/structure/machinery/fuelpump,
-/turf/open/floor/almayer,
-/area/almayer/lifeboat_pumps/north1)
 "xxG" = (
 /obj/structure/prop/holidays/string_lights{
 	pixel_y = 27
@@ -203828,7 +203828,7 @@ add
 fsU
 ieH
 aTm
-xxB
+awW
 aTm
 oZX
 fsU
@@ -203874,7 +203874,7 @@ aJU
 gBW
 ixL
 iun
-sfA
+baw
 vPm
 iwm
 gBW
@@ -204034,7 +204034,7 @@ awW
 tYQ
 eBj
 aTm
-add
+alb
 cbM
 xKs
 lqM
@@ -204080,7 +204080,7 @@ baw
 wQh
 bVx
 vbB
-baw
+sfA
 vbB
 tyo
 vGz
@@ -212582,7 +212582,7 @@ aeC
 wXh
 hYo
 atr
-lMy
+aeA
 aex
 wkZ
 wXh
@@ -212630,7 +212630,7 @@ vcE
 kpo
 mDR
 tGi
-cea
+lJY
 bXe
 leU
 kpo
@@ -212788,7 +212788,7 @@ aeA
 dtE
 akX
 atr
-aeC
+ale
 atr
 taI
 qMo
@@ -212836,7 +212836,7 @@ lJY
 tRh
 sij
 bXe
-vcE
+akx
 tGi
 gkg
 qxn

@@ -132,3 +132,5 @@ GLOBAL_VAR(obfs_z)
 
 /// List of giant lizards that are alive.
 GLOBAL_LIST_EMPTY(giant_lizards_alive)
+/// List of FCT Field Camera Tripods
+GLOBAL_LIST_EMPTY_TYPED(deployed_tripod_cameras, /obj/structure/overwatch_camera_tripod)

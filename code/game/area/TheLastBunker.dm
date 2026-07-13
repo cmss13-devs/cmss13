@@ -231,6 +231,7 @@
 	minimap_color = MINIMAP_AREA_CAVES
 	icon_state = "cave"
 	ceiling = CEILING_SANDSTONE_ALLOW_CAS
+	temperature = ICE_COLONY_TEMPERATURE
 
 /area/last_bunker/indoors/cavern/south_entrance
 	name = "Bunker Cavern - Tram/Bunker Cavern - South"

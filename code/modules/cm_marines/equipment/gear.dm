@@ -544,7 +544,7 @@
 	QDEL_NULL(camera)
 	return ..()
 
-obj/structure/overwatch_camera_tripod/get_examine_text(mob/user)
+/obj/structure/overwatch_camera_tripod/get_examine_text(mob/user)
 	. = ..()
 	. += "The label reads: [label]"
 	if(squad)

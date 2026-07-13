@@ -85,6 +85,9 @@
 	attack_hand(M)
 	return XENO_NONCOMBAT_ACTION
 
+/obj/structure/blocker/door/alt
+	icon_state = "shutter_2"
+
 /obj/structure/blocker/preserve_edge
 	name = "dense fog"
 	desc = "You think you can see a way through."

@@ -1,7 +1,8 @@
-//job options for doctors surgeon pharmacy technician(preparation of medecine and distribution)
+//Job options for doctors based on their specialty. They can all manufacture chemicals, administer medication, and operate on patients, but the variants have specialities that they prioritize in.
 
-#define DOCTOR_VARIANT "Doctor"
-#define SURGEON_VARIANT "Surgeon"
+#define DOCTOR_VARIANT "Doctor" // "I do not have a specialty; I go where I am needed most."
+#define PHARMACIST_VARIANT "Pharmaceutical Physician" // "I specialize in chemistry and medicine."
+#define SURGEON_VARIANT "Surgeon" // "I specialize in surgery and triage."
 
 // Doctor
 /datum/job/civilian/doctor
@@ -16,25 +17,30 @@
 	gear_preset = /datum/equipment_preset/uscm_ship/uscm_medical/doctor
 
 	// job option
-	job_options = list(DOCTOR_VARIANT = "Doc", SURGEON_VARIANT = "Sur")
-	/// If this job is a doctor variant of the doctor role
-	var/doctor = TRUE
+	job_options = list(DOCTOR_VARIANT = "Doc", PHARMACIST_VARIANT = "Pharm", SURGEON_VARIANT = "Surg")
+	/// The doctor variant of the doctor role that was selected in handle_job_options
+	var/doctor_variant
 
 //check the job option. and change the gear preset
 /datum/job/civilian/doctor/handle_job_options(option)
-	if(option != SURGEON_VARIANT)
-		doctor = TRUE
-		gear_preset = /datum/equipment_preset/uscm_ship/uscm_medical/doctor
-	else
-		doctor = FALSE
-		gear_preset = /datum/equipment_preset/uscm_ship/uscm_medical/doctor/surgeon
+	doctor_variant = option
+	switch(option)
+		if(SURGEON_VARIANT)
+			gear_preset = /datum/equipment_preset/uscm_ship/uscm_medical/doctor/surgeon
+		if(PHARMACIST_VARIANT)
+			gear_preset = /datum/equipment_preset/uscm_ship/uscm_medical/doctor/pharmacist
+		else
+			gear_preset = /datum/equipment_preset/uscm_ship/uscm_medical/doctor
 
 //check what job option you took and generate the corresponding the good texte.
-/datum/job/civilian/doctor/generate_entry_message(mob/living/carbon/human/H)
-	if(doctor)
-		. = {"You're a commissioned officer of the USCM. <a href='[generate_wiki_link()]'>You are a doctor and tasked with keeping the marines healthy and strong, usually in the form of surgery.</a> You are a jack of all trades in medicine: you can medicate, perform surgery and produce pharmaceuticals. If you do not know what you are doing, mentorhelp so a mentor can assist you."}
-	else
-		. = {"You're a commissioned officer of the USCM. <a href='[generate_wiki_link()]'>You are a surgeon and tasked with keeping the marines healthy and strong, usually in the form of surgery.</a> You are a doctor that specializes in surgery, but you are also very capable in pharmacy and triage. If you do not know what you are doing, mentorhelp so a mentor can assist you."}
+/datum/job/civilian/doctor/generate_entry_message(mob/living/carbon/human/target)
+	switch(doctor_variant)
+		if(SURGEON_VARIANT)
+			. = {"As a surgeon, your job inclines much more to <a href='[generate_wiki_link()]'>surgically operating patients</a> than any other task inside your workspace. Fix broken bones, blood vessels, organs and perform all kinds of extractions based on case severity. Remember to coordinate with your peers inside and outside of surgery, nothing is more helpful than a well coordinated extra pair of hands. You still, though, have the same skills as a doctor, and you should be using that to fill the gaps within your team where needed. If you need help regarding what you should be doing, be sure to ask the Chief Medical Officer."}
+		if(PHARMACIST_VARIANT)
+			. = {"You are a pharmacist, and your job is to <a href='[generate_wiki_link()]'>provide to medical personnel the drugs they need to do their work proper</a>. Coordinate with the research team and make sure their newly developed chemicals are not being wasted. You still, though, have the same skills as a doctor, and you should be using that to fill the gaps within your team where needed. If you need help regarding what you should be doing, be sure to ask the Chief Medical Officer."}
+		else
+			. = {"As a doctor, you should consider yourself a <a href='[generate_wiki_link()]'>jack of all trades within the medical department, with knowledge in medicine, triage, surgery and pharmacology</a>. Your responsabilities are vast and you should be making sure that you are coordinating well with your peers. If you need help regarding what you should be doing, be sure to ask the Chief Medical Officer."}
 
 /datum/job/civilian/doctor/set_spawn_positions(count)
 	spawn_positions = doc_slot_formula(count)
@@ -54,6 +60,17 @@
 AddTimelock(/datum/job/civilian/doctor, list(
 	JOB_MEDIC_ROLES = 1 HOURS
 ))
+
+/datum/job/civilian/doctor/generate_entry_conditions(mob/living/M, whitelist_status)
+	. = ..()
+	if(!islist(GLOB.marine_officers[JOB_DOCTOR]))
+		GLOB.marine_officers[JOB_DOCTOR] = list()
+	GLOB.marine_officers[JOB_DOCTOR] += M
+	RegisterSignal(M, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_leader_candidate))
+
+/datum/job/civilian/doctor/proc/cleanup_leader_candidate(mob/M)
+	SIGNAL_HANDLER
+	GLOB.marine_officers[JOB_DOCTOR] -= M
 
 /obj/effect/landmark/start/doctor
 	name = JOB_DOCTOR

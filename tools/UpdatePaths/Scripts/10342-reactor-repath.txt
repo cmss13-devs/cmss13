@@ -1,0 +1,2 @@
+/obj/structure/machinery/power/port_gen/pacman/@SUBTYPES : /obj/structure/machinery/power/power_generator/port_gen/pacman/@SUBTYPES{@OLD}
+/obj/structure/machinery/power/reactor/@SUBTYPES : /obj/structure/machinery/power/power_generator/reactor/@SUBTYPES{@OLD}

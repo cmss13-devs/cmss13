@@ -28,3 +28,7 @@
 	if (str_var && str_var[length(str_var)] != "/")
 		str_var += "/"
 	return ..(str_var)
+
+/datum/config_entry/string/storage_cdn_iframe
+	config_entry_value = "https://cmss13-devs.github.io/cmss13/assets/iframe.html"
+	protection = CONFIG_ENTRY_LOCKED

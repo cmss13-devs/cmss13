@@ -14,13 +14,31 @@
 	unacidable = TRUE
 	anchored = TRUE
 	block_range = 1
-
+	var/boosted_structure = FALSE
 	var/datum/hive_status/linked_hive
+	var/protection_level = TURF_PROTECTION_NONE
 
 	plane = FLOOR_PLANE
 
 	/// Tells the structure if they are being deleted because of hijack
 	var/hijack_delete = FALSE
+
+/obj/effect/alien/resin/special/get_examine_text(mob/user)
+	. = ..()
+	if(isxeno(user) || isobserver(user))
+		var/health_portion = health/maxhealth
+		switch(health_portion)
+			if(0 to 0.25)
+				. += SPAN_WARNING("[src] is about to fall apart!")
+				return
+			if(0.25 to 0.5)
+				. += SPAN_WARNING("[src] looks severely damaged!")
+				return
+			if(0.5 to 0.75)
+				. += ("[src] is slightly damaged.")
+				return
+			else
+				. += ("[src] is healthy.")
 
 /obj/effect/alien/resin/special/Initialize(mapload, hive_ref)
 	. = ..()
@@ -58,3 +76,18 @@
 		return TRUE
 
 	return FALSE
+
+/obj/effect/alien/resin/special/proc/enable_boost(source, hive_purchaser)
+	SIGNAL_HANDLER
+	if(hive_purchaser != src.linked_hive.hivenumber)
+		return
+	else
+		boosted_structure = TRUE
+/obj/effect/alien/resin/special/proc/disable_boost(source, hive_purchaser)
+	SIGNAL_HANDLER
+	if(hive_purchaser != src.linked_hive.hivenumber)
+		return
+	else
+		boosted_structure = FALSE
+
+

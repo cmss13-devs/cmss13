@@ -15,18 +15,18 @@ jobs:
     steps:
     - name: Generate App Token
       id: app-token-generation
-      uses: actions/create-github-app-token@v1
+      uses: actions/create-github-app-token@v3.1.1
       with:
-        app-id: ${{ secrets.APP_ID }}
+        client-id: ${{ secrets.APP_ID }}
         private-key: ${{ secrets.APP_PRIVATE_KEY }}
 
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v6
       with:
         token: ${{ steps.app-token-generation.outputs.token }}
 
     - name: Run auto changelog
-      uses: actions/github-script@v6
+      uses: actions/github-script@v9
       with:
         script: |
           const { processAutoChangelog } = await import('${{ github.workspace }}/tools/pull_request_hooks/autoChangelog.js')

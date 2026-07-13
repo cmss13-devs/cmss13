@@ -91,7 +91,7 @@
 	var/obj/item/clothing/under/marine/reconnaissance/uniform = new()
 	var/obj/item/clothing/accessory/storage/droppouch/pouch = new()
 	var/obj/item/clothing/accessory/ranks/marine/e5/pin = new()
-	var/obj/item/clothing/accessory/patch/patch_uscm = new()
+	var/obj/item/clothing/accessory/patch/uscmpatch/patch_uscm = new()
 	var/obj/item/clothing/accessory/patch/forecon/patch_forecon = new()
 	uniform.attach_accessory(new_human, pouch)
 	uniform.attach_accessory(new_human, patch_uscm)
@@ -119,7 +119,7 @@
 /datum/equipment_preset/uscm/forecon/tech
 	name = "USCM Reconnaissance Support Technician"
 	assignment = JOB_FORECON_SUPPORT
-	job_title = JOB_SQUAD_TECH
+	job_title = JOB_FORECON_SUPPORT
 	role_comm_title = "SuppTech"
 	minimap_icon = "engi"
 	skills = /datum/skills/military/survivor/forecon_techician
@@ -128,7 +128,7 @@
 	var/obj/item/clothing/under/marine/reconnaissance/uniform = new()
 	var/obj/item/clothing/accessory/storage/droppouch/pouch = new()
 	var/obj/item/clothing/accessory/ranks/marine/e5/pin = new()
-	var/obj/item/clothing/accessory/patch/patch_uscm = new()
+	var/obj/item/clothing/accessory/patch/uscmpatch/patch_uscm = new()
 	var/obj/item/clothing/accessory/patch/forecon/patch_forecon = new()
 	uniform.attach_accessory(new_human,pouch)
 	uniform.attach_accessory(new_human,patch_uscm)
@@ -170,7 +170,7 @@
 	var/obj/item/clothing/under/marine/reconnaissance/uniform = new()
 	var/obj/item/clothing/accessory/storage/droppouch/pouch = new()
 	var/obj/item/clothing/accessory/ranks/marine/e5/pin = new()
-	var/obj/item/clothing/accessory/patch/patch_uscm = new()
+	var/obj/item/clothing/accessory/patch/uscmpatch/patch_uscm = new()
 	var/obj/item/clothing/accessory/patch/forecon/patch_forecon = new()
 	uniform.attach_accessory(new_human,pouch)
 	uniform.attach_accessory(new_human,patch_uscm)
@@ -214,7 +214,7 @@
 	var/obj/item/clothing/under/marine/reconnaissance/uniform = new()
 	var/obj/item/clothing/accessory/storage/droppouch/pouch = new()
 	var/obj/item/clothing/accessory/ranks/marine/e5/pin = new()
-	var/obj/item/clothing/accessory/patch/patch_uscm = new()
+	var/obj/item/clothing/accessory/patch/uscmpatch/patch_uscm = new()
 	var/obj/item/clothing/accessory/patch/forecon/patch_forecon = new()
 	uniform.attach_accessory(new_human,pouch)
 	uniform.attach_accessory(new_human,patch_uscm)
@@ -260,7 +260,7 @@
 	var/obj/item/clothing/under/marine/reconnaissance/uniform = new()
 	var/obj/item/clothing/accessory/storage/droppouch/pouch = new()
 	var/obj/item/clothing/accessory/ranks/marine/o1/pin = new()
-	var/obj/item/clothing/accessory/patch/patch_uscm = new()
+	var/obj/item/clothing/accessory/patch/uscmpatch/patch_uscm = new()
 	var/obj/item/clothing/accessory/patch/forecon/patch_forecon = new()
 	uniform.attach_accessory(new_human,pouch)
 	uniform.attach_accessory(new_human,patch_uscm)
@@ -269,7 +269,7 @@
 
 	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate(new_human), WEAR_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41aMK1/tactical(new_human), WEAR_R_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41aMK1/tactical(new_human), WEAR_L_HAND)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1(new_human), WEAR_IN_BACK)

@@ -56,6 +56,15 @@
 	var/mob/dead/observer/activator = owner
 	activator.join_as_yautja()
 
+/datum/action/join_colony_joe
+	name = "Join as a Colony Working Joe"
+	action_icon_state = "join_joe"
+
+/datum/action/join_colony_joe/action_activate()
+	. = ..()
+	var/mob/dead/observer/activator = owner
+	activator.join_as_colony_joe()
+
 /datum/action/observer_action/view_crew_manifest
 	name = "View Crew Manifest"
 	action_icon_state = "view_crew_manifest"
@@ -84,6 +93,7 @@
 		return
 
 	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
+		to_chat(owner, SPAN_BOLDNOTICE("The game hasn't started yet!"))
 		owner.balloon_alert(owner, "game must start!")
 		return
 
@@ -101,6 +111,7 @@
 		return
 
 	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
+		to_chat(owner, SPAN_BOLDNOTICE("The game hasn't started yet!"))
 		owner.balloon_alert(owner, "game must start!")
 		return
 

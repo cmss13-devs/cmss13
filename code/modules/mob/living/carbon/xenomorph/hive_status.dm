@@ -1,5 +1,5 @@
 /datum/hive_status
-	var/name = "Normal Hive"
+	var/name = FACTION_XENOMORPH
 
 	// Used for the faction of the xenomorph. Not recommended to modify.
 	var/internal_faction
@@ -10,17 +10,20 @@
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/mob/living/carbon/xenomorph/queen/living_xeno_queen
 	var/egg_planting_range = 15
-	var/slashing_allowed = XENO_SLASH_ALLOWED //This initial var allows the queen to turn on or off slashing. Slashing off means harm intent does much less damage.
-	var/construction_allowed = NORMAL_XENO //Who can place construction nodes for special structures
-	var/destruction_allowed = NORMAL_XENO //Who can destroy special structures
-	var/unnesting_allowed = TRUE
+
+	/// Toggles for the hive that are reset on queen death unless hive_flags_locked
+	var/hive_flags = XENO_SLASH_ALLOW_ALL|XENO_CONSTRUCTION_ALLOW_ALL|XENO_DECONSTRUCTION_ALLOW_ALL
+
+	/// Whether hive_flags are locked (as in cannot be changed by a queen)
+	var/hive_flags_locked = FALSE
+
 	var/hive_orders = "" //What orders should the hive have
 	var/color = null
 	var/ui_color = null // Color for hive status collapsible buttons and xeno count list
 	var/prefix = ""
-	var/queen_leader_limit = 2
-	var/list/open_xeno_leader_positions = list(1, 2) // Ordered list of xeno leader positions (indexes in xeno_leader_list) that are not occupied
-	var/list/xeno_leader_list[2] // Ordered list (i.e. index n holds the nth xeno leader)
+	var/queen_leader_limit = 4
+	var/list/open_xeno_leader_positions = list(1, 2, 3, 4) // Ordered list of xeno leader positions (indexes in xeno_leader_list) that are not occupied
+	var/list/xeno_leader_list[4] // Ordered list (i.e. index n holds the nth xeno leader)
 	var/stored_larva = 0
 
 	///used by /datum/hive_status/proc/increase_larva_after_burst() to support non-integer increases to larva
@@ -46,7 +49,8 @@
 	var/allowed_nest_distance = 15 //How far away do we allow nests from an ovied Queen. Default 15 tiles.
 	var/obj/effect/alien/resin/special/pylon/core/hive_location = null //Set to ref every time a core is built, for defining the hive location
 
-	var/tier_slot_multiplier = 1
+	/// Slots are divided by this value to reach final value.
+	var/tier_slot_divisor = 1
 	var/larva_gestation_multiplier = 1
 	var/bonus_larva_spawn_chance = 1
 	var/hijack_burrowed_surge = FALSE //at hijack, start spawning lots of burrowed
@@ -56,6 +60,7 @@
 	var/dynamic_evolution = TRUE
 	var/evolution_rate = 3 // Only has use if dynamic_evolution is false
 	var/evolution_bonus = 0
+	var/evolution_locked = FALSE
 
 	var/allow_no_queen_actions = FALSE
 	var/allow_no_queen_evo = FALSE
@@ -69,9 +74,7 @@
 	/// If hit limit of larva from pylons
 	var/hit_larva_pylon_limit = FALSE
 
-	var/see_humans_on_tacmap = FALSE
-
-	var/list/hive_inherant_traits
+	var/list/hive_inherited_traits
 
 	// Cultist Info
 	var/mob/living/carbon/leading_cult_sl
@@ -82,18 +85,25 @@
 		XENO_STRUCTURE_CLUSTER = 8,
 		XENO_STRUCTURE_EGGMORPH = 6,
 		XENO_STRUCTURE_RECOVERY = 6,
+		XENO_STRUCTURE_PLASMA_TREE = 3,
 		XENO_STRUCTURE_PYLON = 2,
 	)
 
-	var/global/list/hive_structure_types = list(
+	var/list/hive_structure_types = list(
 		XENO_STRUCTURE_CORE = /datum/construction_template/xenomorph/core,
 		XENO_STRUCTURE_CLUSTER = /datum/construction_template/xenomorph/cluster,
 		XENO_STRUCTURE_EGGMORPH = /datum/construction_template/xenomorph/eggmorph,
-		XENO_STRUCTURE_RECOVERY = /datum/construction_template/xenomorph/recovery
+		XENO_STRUCTURE_RECOVERY = /datum/construction_template/xenomorph/recovery,
+		XENO_STRUCTURE_PLASMA_TREE = /datum/construction_template/xenomorph/plasma_tree
 	)
 
 	var/list/list/hive_structures = list() //Stringref list of structures that have been built
 	var/list/list/hive_constructions = list() //Stringref list of structures that are being built
+
+	/// Lazylist of possible caste defines the hive disallows evolution to
+	var/list/blacklisted_castes = null
+	/// List of caste defines associated with a maximum capacity number.
+	var/list/restricted_castes = null
 
 	var/datum/hive_status_ui/hive_ui
 	var/datum/mark_menu_ui/mark_ui
@@ -102,8 +112,14 @@
 	var/list/tunnels = list()
 
 	var/list/allies = list()
+	/// The list of factions this hive is forbidden to ally with.
+	var/list/banned_allies
+	/// Admin override var.
+	var/allow_banned_allies = FALSE
 
 	var/list/resin_marks = list()
+
+	var/list/designer_marks = list()
 
 	var/list/banished_ckeys = list()
 
@@ -128,8 +144,12 @@
 	/// This number divides the total xenos counted for slots to give the max number of lesser drones
 	var/playable_lesser_drones_max_divisor = 3
 
-	var/datum/tacmap/drawing/xeno/tacmap
 	var/minimap_type = MINIMAP_FLAG_XENO
+
+	/// Can this hive see humans on the tacmap
+	var/see_humans_on_tacmap = FALSE
+	/// Does the queen need to be on ovi for xenos to see
+	var/tacmap_requires_queen_ovi = TRUE
 
 	var/list/available_nicknumbers = list()
 
@@ -158,12 +178,35 @@
 	/// Has a King hatchery
 	var/has_hatchery = FALSE
 
+	// Hive Stat Modifiers
+	// Makes sweeping increases/decreases to certain stats of Xenos in the Hive
+	// Flat decreases obviously just need - added before the value (except for speed cause speed is special and needs the opposite)
+	var/list/hive_stat_modifier_multiplier = list(
+		"damage" = XENO_HIVE_STATMOD_MULT_NONE,
+		"health" = XENO_HIVE_STATMOD_MULT_NONE,
+		"armor" = XENO_HIVE_STATMOD_MULT_NONE,
+		"explosivearmor" = XENO_HIVE_STATMOD_MULT_NONE,
+		"plasmapool" = XENO_HIVE_STATMOD_MULT_NONE,
+		"plasmagain" = XENO_HIVE_STATMOD_MULT_NONE,
+		"speed" = XENO_HIVE_STATMOD_MULT_NONE,
+		"evasion" = XENO_HIVE_STATMOD_MULT_NONE,
+	)
+	var/list/hive_stat_modifier_flat = list(
+		"damage" = XENO_HIVE_STATMOD_FLAT_NONE,
+		"health" = XENO_HIVE_STATMOD_FLAT_NONE,
+		"armor" = XENO_HIVE_STATMOD_FLAT_NONE,
+		"explosivearmor" = XENO_HIVE_STATMOD_FLAT_NONE,
+		"plasmapool" = XENO_HIVE_STATMOD_FLAT_NONE,
+		"plasmagain" = XENO_HIVE_STATMOD_FLAT_NONE,
+		"speed" = XENO_HIVE_STATMOD_FLAT_NONE,
+		"evasion" = XENO_HIVE_STATMOD_FLAT_NONE,
+	)
+
 /datum/hive_status/New()
 	hive_ui = new(src)
 	mark_ui = new(src)
 	faction_ui = new(src)
 	minimap_type = get_minimap_flag_for_faction(hivenumber)
-	tacmap = new(src, minimap_type)
 	if(!internal_faction)
 		internal_faction = name
 	for(var/number in 1 to 999)
@@ -181,7 +224,9 @@
 
 	RegisterSignal(SSdcs, COMSIG_GLOB_POST_SETUP, PROC_REF(post_setup))
 
-///Generate the image()'s requried for the evolution radial menu.
+	setup_banned_allies()
+
+///Generate the image()'s required for the evolution radial menu.
 /datum/hive_status/proc/generate_evo_menu_images()
 	for(var/datum/caste_datum/caste as anything in subtypesof(/datum/caste_datum))
 		evolution_menu_images[initial(caste.caste_type)] = image('icons/mob/xenos/radial_xenos.dmi', initial(caste.caste_type))
@@ -209,6 +254,10 @@
 	for(var/datum/caste_datum/current_caste as anything in available_castes)
 		castes_available += initial(current_caste.caste_type)
 
+	castes_available -= blacklisted_castes
+	if(!length(castes_available))
+		return
+
 	var/castes = castes_available.Join(", ")
 	xeno_message(SPAN_XENOANNOUNCE("The Hive is now strong enough to support: [castes]"))
 	xeno_maptext("The Hive can now support: [castes]", "Hive Strengthening")
@@ -224,11 +273,15 @@
 
 		playsound_client(current_mob.client, get_sfx("evo_screech"), current_mob.loc, 70, "minor")
 
-		if(ishuman(current_mob))
-			to_chat(current_mob, SPAN_HIGHDANGER("You hear a distant screech and feel your insides freeze up...  something new is with you in this colony."))
+		if(ishuman_strict(current_mob))
+			to_chat(current_mob, SPAN_HIGHDANGER("You hear a distant screech and feel your insides freeze up... something new is with you in this colony."))
 
 		if(issynth(current_mob))
 			to_chat(current_mob, SPAN_HIGHDANGER("You hear the distant call of an unknown bioform, it sounds like they're informing others to change form. You begin to analyze and decrypt the strange vocalization."))
+
+/datum/hive_status/proc/setup_banned_allies()
+	banned_allies = DEFAULT_ALLY_BAN_LIST
+	banned_allies -= name
 
 /// Adds a xeno to this hive
 /datum/hive_status/proc/add_xeno(mob/living/carbon/xenomorph/X)
@@ -328,7 +381,7 @@
 
 /datum/hive_status/proc/recalculate_hive()
 	//No leaders for a Hive without a Queen!
-	queen_leader_limit = living_xeno_queen ? 4 : 0
+	queen_leader_limit = living_xeno_queen ? initial(queen_leader_limit) : 0
 
 	if (length(xeno_leader_list) > queen_leader_limit)
 		var/diff = 0
@@ -453,7 +506,7 @@
 		list(XENO_CASTE_LARVA = 0, XENO_CASTE_QUEEN = 0),
 		list(XENO_CASTE_DRONE = 0, XENO_CASTE_RUNNER = 0, XENO_CASTE_SENTINEL = 0, XENO_CASTE_DEFENDER = 0),
 		list(XENO_CASTE_HIVELORD = 0, XENO_CASTE_BURROWER = 0, XENO_CASTE_CARRIER = 0, XENO_CASTE_LURKER = 0, XENO_CASTE_SPITTER = 0, XENO_CASTE_WARRIOR = 0),
-		list(XENO_CASTE_BOILER = 0, XENO_CASTE_CRUSHER = 0, XENO_CASTE_PRAETORIAN = 0, XENO_CASTE_RAVAGER = 0)
+		list(XENO_CASTE_BOILER = 0, XENO_CASTE_CRUSHER = 0, XENO_CASTE_PRAETORIAN = 0, XENO_CASTE_RAVAGER = 0, XENO_CASTE_DESPOILER = 0)
 	)
 
 	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
@@ -468,6 +521,23 @@
 
 	return xeno_counts
 
+/// Returns number of xenos in the given hive that are the searched caste.
+/datum/hive_status/proc/get_caste_count(caste_to_check)
+	if(!caste_to_check)
+		return
+	var/caste_count = 0
+	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
+		//don't show xenos in the thunderdome when admins test stuff.
+		if(should_block_game_interaction(xeno))
+			var/area/cur_area = get_area(xeno)
+			if(!(cur_area.flags_atom & AREA_ALLOW_XENO_JOIN))
+				continue
+
+		if(xeno.caste && xeno.counts_for_slots && (xeno.caste.caste_type == caste_to_check))
+			caste_count++
+
+	return caste_count
+
 /// Returns the full minimap icon as base64 string.
 /datum/hive_status/proc/get_xeno_icons()
 	// Must match hardcoded xeno counts order.
@@ -475,7 +545,7 @@
 		list(XENO_CASTE_LARVA = "", XENO_CASTE_QUEEN = "", XENO_CASTE_PREDALIEN_LARVA = "", XENO_CASTE_HELLHOUND = ""),
 		list(XENO_CASTE_DRONE = "", XENO_CASTE_RUNNER = "", XENO_CASTE_SENTINEL = "", XENO_CASTE_DEFENDER = "", XENO_CASTE_PREDALIEN = ""),
 		list(XENO_CASTE_HIVELORD = "", XENO_CASTE_BURROWER = "", XENO_CASTE_CARRIER = "", XENO_CASTE_LURKER = "", XENO_CASTE_SPITTER = "", XENO_CASTE_WARRIOR = ""),
-		list(XENO_CASTE_BOILER = "", XENO_CASTE_CRUSHER = "", XENO_CASTE_PRAETORIAN = "", XENO_CASTE_RAVAGER = "")
+		list(XENO_CASTE_BOILER = "", XENO_CASTE_CRUSHER = "", XENO_CASTE_PRAETORIAN = "", XENO_CASTE_RAVAGER = "", XENO_CASTE_DESPOILER = "")
 	)
 
 	for(var/caste in GLOB.xeno_datum_list)
@@ -694,10 +764,10 @@
 			effective_total++
 
 	// Tier 3 slots are always 20% of the total xenos in the hive
-	slots[TIER_3][OPEN_SLOTS] = max(0, ceil(0.20*effective_total/tier_slot_multiplier) - used_tier_3_slots)
+	slots[TIER_3][OPEN_SLOTS] = max(0, ceil(0.20*effective_total/tier_slot_divisor) - used_tier_3_slots)
 	// Tier 2 slots are between 30% and 50% of the hive, depending
 	// on how many T3s there are.
-	slots[TIER_2][OPEN_SLOTS] = max(0, ceil(0.5*effective_total/tier_slot_multiplier) - used_tier_2_slots - used_tier_3_slots)
+	slots[TIER_2][OPEN_SLOTS] = max(0, ceil(0.5*effective_total/tier_slot_divisor) - used_tier_2_slots - used_tier_3_slots)
 
 	return slots
 
@@ -766,6 +836,8 @@
 
 /datum/hive_status/proc/abandon_on_hijack()
 	var/area/hijacked_dropship = get_area(living_xeno_queen)
+	if(!hijacked_dropship)
+		return FALSE
 	var/shipside_humans_weighted_count = 0
 	var/xenos_count = 0
 	for(var/name_ref in hive_structures)
@@ -782,7 +854,7 @@
 				qdel(xeno)
 				continue
 			if(xeno.hunter_data.hunted && !isqueen(xeno))
-				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, seperating you from her hive! You must defend yourself from the headhunter before you can enter hibernation..."))
+				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, separating you from her hive! You must defend yourself from the headhunter before you can enter hibernation..."))
 				xeno.set_hive_and_update(XENO_HIVE_FORSAKEN)
 			else
 				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, you quickly find a hiding place to enter hibernation as you lose touch with the hive mind."))
@@ -793,16 +865,17 @@
 			continue
 		if(xeno.tier >= 1)
 			xenos_count++
-	for(var/i in GLOB.alive_mob_list)
-		var/mob/living/potential_host = i
-		if(!(potential_host.status_flags & XENO_HOST))
-			continue
+	for(var/mob/living/potential_host as anything in GLOB.alive_mob_list)
 		if(!is_ground_level(potential_host.z) || get_area(potential_host) == hijacked_dropship)
 			continue
-		var/obj/item/alien_embryo/A = locate() in potential_host
-		if(A && A.hivenumber != hivenumber)
+		var/obj/item/clothing/mask/facehugger/hugger = locate() in potential_host
+		if(hugger && hugger.hivenumber == hivenumber)
+			hugger.hivenumber = XENO_HIVE_FORSAKEN
+		if(!(potential_host.status_flags & XENO_HOST))
 			continue
 		for(var/obj/item/alien_embryo/embryo in potential_host)
+			if(embryo.hivenumber != hivenumber)
+				continue
 			embryo.hivenumber = XENO_HIVE_FORSAKEN
 		potential_host.update_med_icon()
 	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
@@ -823,6 +896,22 @@
 	for(var/datum/hivebuff/buff in active_hivebuffs)
 		buff._on_cease()
 
+/datum/hive_status/proc/bless_on_hijack()
+	xeno_maptext("My Children, the time has come to assault the Metal Hive. Evolve now into castes best suited for the task!", "Queen Mother") // NOTE: sends a maptext to all xenos globally, hence not in below loop
+	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
+		if(xeno.caste.tier > 3)
+			return
+
+		if(get_action(xeno, /datum/action/xeno_action/onclick/transmute))
+			return
+
+
+		if(xeno.caste.tier > 0)
+			add_verb(xeno, /mob/living/carbon/xenomorph/proc/transmute_verb)
+			var/datum/action/xeno_action/onclick/transmute/transmute_action = new()
+			transmute_action.give_to(xeno)
+
+
 /datum/hive_status/proc/free_respawn(client/C)
 	stored_larva++
 	if(!hive_location || !hive_location.spawn_burrowed_larva(C.mob))
@@ -842,6 +931,7 @@
 	new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly emerges from a dead husk!"),
 	SPAN_XENOANNOUNCE("The hive has no core! You manage to emerge from your old husk as a larva!"))
 	msg_admin_niche("[key_name(new_xeno)] respawned at \a [spawning_turf]. [ADMIN_JMP(spawning_turf)]")
+	to_chat(new_xeno, SPAN_XENOANNOUNCE("Remember you should not be leaving the safety of the hive unless under threat, and should be keeping yourself safe until you evolve!"))
 	playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 50, 1)
 	if(new_xeno.client?.prefs?.toggles_flashing & FLASH_POOLSPAWN)
 		window_flash(new_xeno.client)
@@ -882,6 +972,7 @@
 	msg_admin_niche("[key_name(new_xeno)] burrowed out from \a [spawning_turf]. [ADMIN_JMP(spawning_turf)]")
 	playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 50, 1)
 	to_chat(new_xeno, SPAN_XENOANNOUNCE("You are a xenomorph larva awakened from slumber!"))
+	to_chat(new_xeno, SPAN_XENOANNOUNCE("Remember you should not be leaving the safety of the hive unless under threat, and should be keeping yourself safe until you evolve!"))
 	if(new_xeno.client)
 		if(new_xeno.client?.prefs?.toggles_flashing & FLASH_POOLSPAWN)
 			window_flash(new_xeno.client)
@@ -946,8 +1037,8 @@
 			to_chat(user, SPAN_WARNING("You cannot become a facehugger until you are no longer alive in a nest."))
 			return FALSE
 
-		if(world.time - user.client?.player_details.larva_queue_time < XENO_JOIN_DEAD_TIME)
-			var/time_left = floor((user.client.player_details.larva_queue_time + XENO_JOIN_DEAD_TIME - world.time) / 10)
+		if(world.time - user.client?.player_details.larva_pool_time < XENO_JOIN_DEAD_TIME)
+			var/time_left = floor((user.client.player_details.larva_pool_time + XENO_JOIN_DEAD_TIME - world.time) / 10)
 			to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a facehugger until [XENO_JOIN_DEAD_TIME / 600] minutes have passed ([time_left] seconds remaining)."))
 			return FALSE
 
@@ -1026,8 +1117,8 @@
 		to_chat(user, SPAN_WARNING("You cannot become a lesser drone until you are no longer alive in a nest."))
 		return FALSE
 
-	if(world.time - user.client?.player_details.larva_queue_time < XENO_JOIN_DEAD_TIME)
-		var/time_left = floor((user.client.player_details.larva_queue_time + XENO_JOIN_DEAD_TIME - world.time) / 10)
+	if(world.time - user.client?.player_details.larva_pool_time < XENO_JOIN_DEAD_TIME)
+		var/time_left = floor((user.client.player_details.larva_pool_time + XENO_JOIN_DEAD_TIME - world.time) / 10)
 		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a lesser drone until [XENO_JOIN_DEAD_TIME / 600] minutes have passed ([time_left] seconds remaining)."))
 		return FALSE
 
@@ -1104,7 +1195,7 @@
 		stored_larva++
 
 /datum/hive_status/corrupted
-	name = "Corrupted Hive"
+	name = FACTION_XENOMORPH_CORRUPTED
 	reporting_id = "corrupted"
 	hivenumber = XENO_HIVE_CORRUPTED
 	prefix = "Corrupted "
@@ -1120,18 +1211,23 @@
 /datum/hive_status/corrupted/add_xeno(mob/living/carbon/xenomorph/xeno)
 	. = ..()
 	xeno.add_language(LANGUAGE_ENGLISH)
+	LAZYORASSOC(xeno.language_flags, LANGUAGE_ENGLISH, LANGUAGE_HEAR_ONLY)
 
 /datum/hive_status/corrupted/remove_xeno(mob/living/carbon/xenomorph/xeno, hard)
 	. = ..()
 	xeno.remove_language(LANGUAGE_ENGLISH)
+	LAZYBITREMOVEASSOC(xeno.language_flags, LANGUAGE_ENGLISH, LANGUAGE_HEAR_ONLY)
 
 /datum/hive_status/corrupted/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
 	if(!faction_is_ally(FACTION_MARINE, TRUE))
 		return TRUE
 	return FALSE
 
+/datum/hive_status/corrupted/setup_banned_allies()
+	banned_allies = list(FACTION_XENOMORPH_TUTORIAL, FACTION_XENOMORPH_HELLHOUNDS)
+
 /datum/hive_status/alpha
-	name = "Alpha Hive"
+	name = FACTION_XENOMORPH_ALPHA
 	reporting_id = "alpha"
 	hivenumber = XENO_HIVE_ALPHA
 	prefix = "Alpha "
@@ -1142,7 +1238,7 @@
 	dynamic_evolution = FALSE
 
 /datum/hive_status/bravo
-	name = "Bravo Hive"
+	name = FACTION_XENOMORPH_BRAVO
 	reporting_id = "bravo"
 	hivenumber = XENO_HIVE_BRAVO
 	prefix = "Bravo "
@@ -1153,7 +1249,7 @@
 	dynamic_evolution = FALSE
 
 /datum/hive_status/charlie
-	name = "Charlie Hive"
+	name = FACTION_XENOMORPH_CHARLIE
 	reporting_id = "charlie"
 	hivenumber = XENO_HIVE_CHARLIE
 	prefix = "Charlie "
@@ -1164,7 +1260,7 @@
 	dynamic_evolution = FALSE
 
 /datum/hive_status/delta
-	name = "Delta Hive"
+	name = FACTION_XENOMORPH_DELTA
 	reporting_id = "delta"
 	hivenumber = XENO_HIVE_DELTA
 	prefix = "Delta "
@@ -1174,24 +1270,35 @@
 
 	dynamic_evolution = FALSE
 
+/datum/hive_status/kseries
+	name = "K-Series Hive"
+	reporting_id = "k-series"
+	hivenumber = XENO_HIVE_K_SERIES
+	prefix = "K-Series "
+	color = "#ffff80"
+	ui_color = "#99994d"
+	latejoin_burrowed = FALSE
+
+	dynamic_evolution = FALSE
+
 /datum/hive_status/feral
-	name = "Feral Hive"
+	name = FACTION_XENOMORPH_FERAL
 	reporting_id = "feral"
 	hivenumber = XENO_HIVE_FERAL
 	prefix = "Feral "
 	color = "#828296"
 	ui_color = "#828296"
 
-	construction_allowed = XENO_NOBODY
-	destruction_allowed = XENO_NOBODY
+	hive_flags = parent_type::hive_flags & ~(XENO_CONSTRUCTION_ALLOW_ALL|XENO_DECONSTRUCTION_ALLOW_ALL)
 	dynamic_evolution = FALSE
 	allow_no_queen_actions = TRUE
 	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
 	latejoin_burrowed = FALSE
+	tacmap_requires_queen_ovi = FALSE
 
 /datum/hive_status/forsaken
-	name = "Forsaken Hive"
+	name = FACTION_XENOMORPH_FORSAKEN
 	reporting_id = "forsaken"
 	hivenumber = XENO_HIVE_FORSAKEN
 	prefix = "Forsaken "
@@ -1203,14 +1310,38 @@
 	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
 	latejoin_burrowed = FALSE
+	see_humans_on_tacmap = TRUE
+	tacmap_requires_queen_ovi = FALSE
+	evolution_locked = TRUE
 
 	need_round_end_check = TRUE
+
+	hive_stat_modifier_multiplier = list(
+		"damage" = XENO_HIVE_STATMOD_MULT_NONE,
+		"health" = XENO_HIVE_STATMOD_MULT_MED,
+		"armor" = XENO_HIVE_STATMOD_MULT_NONE,
+		"explosivearmor" = XENO_HIVE_STATMOD_MULT_NONE,
+		"plasmapool" = XENO_HIVE_STATMOD_MULT_NONE,
+		"plasmagain" = XENO_HIVE_STATMOD_MULT_LOW,
+		"speed" = XENO_HIVE_STATMOD_MULT_NONE,
+		"evasion" = XENO_HIVE_STATMOD_MULT_NONE,
+	)
+	hive_stat_modifier_flat = list(
+		"damage" = XENO_HIVE_STATMOD_FLAT_10,
+		"health" = XENO_HIVE_STATMOD_FLAT_NONE,
+		"armor" = XENO_HIVE_STATMOD_FLAT_15,
+		"explosivearmor" = XENO_HIVE_STATMOD_FLAT_30,
+		"plasmapool" = XENO_HIVE_STATMOD_FLAT_NONE,
+		"plasmagain" = XENO_HIVE_STATMOD_FLAT_NONE,
+		"speed" = -XENO_HIVE_STATMOD_FLAT_LOWMED_SPEED,
+		"evasion" = XENO_HIVE_STATMOD_FLAT_NONE,
+	)
 
 /datum/hive_status/forsaken/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
 	return FALSE
 
 /datum/hive_status/tutorial
-	name = "Tutorial Hive"
+	name = FACTION_XENOMORPH_TUTORIAL
 	reporting_id = "tutorial"
 	hivenumber = XENO_HIVE_TUTORIAL
 	prefix = "Inquisitive "
@@ -1229,11 +1360,14 @@
 		XENO_STRUCTURE_RECOVERY = 999,
 	)
 
+/datum/hive_status/tutorial/setup_banned_allies()
+	banned_allies = list("All")
+
 /datum/hive_status/tutorial/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
 	return FALSE
 
 /datum/hive_status/yautja
-	name = "Hellhound Pack"
+	name = FACTION_XENOMORPH_HELLHOUNDS
 	reporting_id = "hellhounds"
 	hivenumber = XENO_HIVE_YAUTJA
 	internal_faction = FACTION_YAUTJA
@@ -1244,25 +1378,112 @@
 	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
 	latejoin_burrowed = FALSE
+	tacmap_requires_queen_ovi = FALSE
 
 	need_round_end_check = TRUE
 
 /datum/hive_status/yautja/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
 	return FALSE
 
+/datum/hive_status/yautja_bad
+	name = FACTION_XENOMORPH_BADBLOOD
+	reporting_id = "enthralled"
+	hivenumber = XENO_HIVE_YAUTJA_BADBLOOD
+	internal_faction = FACTION_YAUTJA_BADBLOOD
+
+	prefix = "Enthralled "
+
+	color = "#cccc00"
+	ui_color = "#135029"
+	dynamic_evolution = FALSE
+	allow_no_queen_actions = TRUE
+	allow_no_queen_evo = FALSE
+	evolution_rate = 0
+	allow_queen_evolve = FALSE
+	latejoin_burrowed = FALSE
+
+	need_round_end_check = TRUE
+
+	blacklisted_castes = list(
+		XENO_CASTE_DRONE,
+		XENO_CASTE_QUEEN,
+		XENO_CASTE_BURROWER,
+		XENO_CASTE_CARRIER,
+		XENO_CASTE_HIVELORD,
+	)
+
+	hive_stat_modifier_multiplier = list(
+		"damage" = XENO_HIVE_STATMOD_MULT_NONE,
+		"health" = XENO_HIVE_STATMOD_MULT_MED,
+		"armor" = XENO_HIVE_STATMOD_MULT_NONE,
+		"explosivearmor" = XENO_HIVE_STATMOD_MULT_NONE,
+		"plasmapool" = XENO_HIVE_STATMOD_MULT_NONE,
+		"plasmagain" = XENO_HIVE_STATMOD_MULT_LOW,
+		"speed" = XENO_HIVE_STATMOD_MULT_NONE,
+		"evasion" = XENO_HIVE_STATMOD_MULT_NONE,
+	)
+	hive_stat_modifier_flat = list(
+		"damage" = XENO_HIVE_STATMOD_FLAT_10,
+		"health" = XENO_HIVE_STATMOD_FLAT_NONE,
+		"armor" = XENO_HIVE_STATMOD_FLAT_15,
+		"explosivearmor" = XENO_HIVE_STATMOD_FLAT_30,
+		"plasmapool" = XENO_HIVE_STATMOD_FLAT_NONE,
+		"plasmagain" = XENO_HIVE_STATMOD_FLAT_NONE,
+		"speed" = -XENO_HIVE_STATMOD_FLAT_LOWMED_SPEED,
+		"evasion" = XENO_HIVE_STATMOD_FLAT_NONE,
+	)
+
+/datum/hive_status/yautja_bad/add_xeno(mob/living/carbon/xenomorph/xeno)
+	. = ..()
+	xeno.handle_enthrall()
+
+/datum/hive_status/yautja_bad/remove_xeno(mob/living/carbon/xenomorph/xeno, hard)
+	. = ..()
+	xeno.handle_dethrall()
+
+/datum/hive_status/yautja_bad/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
+	return FALSE
+
+/datum/hive_status/hunted
+	name = FACTION_XENOMORPH_HUNTED
+	reporting_id = "hunted"
+	hivenumber = XENO_HIVE_HUNTED
+	prefix = "Hunted "
+
+	ui_color = "#135029"
+	dynamic_evolution = FALSE
+	allow_no_queen_actions = TRUE
+	allow_no_queen_evo = TRUE
+	allow_queen_evolve = FALSE
+	latejoin_burrowed = FALSE
+	tacmap_requires_queen_ovi = TRUE // No tacmap
+
+	need_round_end_check = TRUE
+
+	blacklisted_castes = list(
+		XENO_CASTE_DRONE,
+		XENO_CASTE_QUEEN,
+		XENO_CASTE_BURROWER,
+		XENO_CASTE_CARRIER,
+		XENO_CASTE_HIVELORD,
+	)
+
+/datum/hive_status/hunted/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
+	return FALSE
+
 /datum/hive_status/mutated
-	name = "Mutated Hive"
+	name = FACTION_XENOMORPH_MUTATED
 	reporting_id = "mutated"
 	hivenumber = XENO_HIVE_MUTATED
 	prefix = "Mutated "
 	color = "#6abd99"
 	ui_color = "#6abd99"
 
-	hive_inherant_traits = list(TRAIT_XENONID, TRAIT_NO_COLOR)
+	hive_inherited_traits = list(TRAIT_XENONID, TRAIT_NO_COLOR)
 	latejoin_burrowed = FALSE
 
 /datum/hive_status/corrupted/tamed
-	name = "Tamed Hive"
+	name = FACTION_XENOMORPH_TAMED
 	reporting_id = "tamed"
 	hivenumber = XENO_HIVE_TAMED
 	prefix = "Tamed "
@@ -1273,9 +1494,14 @@
 	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
 	latejoin_burrowed = FALSE
+	tacmap_requires_queen_ovi = FALSE
 
 	var/mob/living/carbon/human/leader
 	var/list/allied_factions
+
+// Tamed allies are handled differently.
+/datum/hive_status/corrupted/tamed/setup_banned_allies()
+	banned_allies = list("All")
 
 /datum/hive_status/corrupted/tamed/New()
 	. = ..()
@@ -1325,7 +1551,7 @@
 	return ..()
 
 /datum/hive_status/corrupted/renegade
-	name = "Renegade Hive"
+	name = FACTION_XENOMORPH_RENEGADE
 	reporting_id = "renegade"
 	hivenumber = XENO_HIVE_RENEGADE
 	prefix = "Renegade "
@@ -1342,6 +1568,9 @@
 	hive_structures_limit[XENO_STRUCTURE_EGGMORPH] = 0
 	for(var/faction in FACTION_LIST_HUMANOID) //renegades allied to all humanoids, but it mostly affects structures. Their ability to attack humanoids and other xenos (including of the same hive) depends on iff settings
 		allies[faction] = TRUE
+
+/datum/hive_status/corrupted/renegade/setup_banned_allies()
+	banned_allies = FACTION_LIST_XENOMORPH
 
 /datum/hive_status/corrupted/renegade/can_spawn_as_hugger(mob/dead/observer/user)
 	to_chat(user, SPAN_WARNING("The [name] cannot support facehuggers."))
@@ -1368,22 +1597,26 @@
 /datum/hive_status/corrupted/renegade/faction_is_ally(faction, ignore_queen_check = TRUE)
 	return ..()
 
-/datum/hive_status/proc/on_queen_death() //break alliances on queen's death
-	if(allow_no_queen_actions || living_xeno_queen)
-		return
+/datum/hive_status/proc/break_all_alliances()
 	var/broken_alliances = FALSE
 	for(var/faction in allies)
 		if(!allies[faction])
 			continue
 		change_stance(faction, FALSE)
 		broken_alliances = TRUE
+	return broken_alliances
 
+/datum/hive_status/proc/on_queen_death() //on queen's death
+	if(allow_no_queen_actions || living_xeno_queen)
+		return
 
-	if(broken_alliances)
+	if(break_all_alliances())
 		xeno_message(SPAN_XENOANNOUNCE("With the death of the Queen, all alliances have been broken."), 3, hivenumber)
 
 /datum/hive_status/proc/change_stance(faction, should_ally)
 	if(faction == name)
+		return
+	if(!allow_banned_allies && should_ally && (("All" in banned_allies) || (faction in banned_allies)))
 		return
 	if(allies[faction] == should_ally)
 		return
@@ -1429,7 +1662,7 @@
 	addtimer(CALLBACK(src, PROC_REF(handle_defectors), faction), 11 SECONDS)
 
 /datum/hive_status/corrupted/proc/give_defection_choice(mob/living/carbon/xenomorph/xeno, faction)
-	if(tgui_alert(xeno, "Our Queen has broken the alliance with the [faction]. The device inside our carapace begins to suppress our connection with the Hive. Do we remove it and stay loyal to her?", "Alliance broken!", list("Stay loyal", "Obey the talls"), 10 SECONDS) == "Obey the talls")
+	if(tgui_alert(xeno, "Our Queen has broken the alliance with the [faction]. The device inside our carapace begins to suppress our connection with the Hive. Do we remove it and follow the Queen?", "Alliance broken!", list("Obey the Queen", "Obey the talls"), 10 SECONDS) == "Obey the talls")
 		if(!xeno.iff_tag)
 			to_chat(xeno, SPAN_XENOWARNING("It's too late now. The device is gone and our service to the Queen continues."))
 			return
@@ -1459,6 +1692,8 @@
 		return
 
 	xeno_message(SPAN_XENOANNOUNCE("We sense that [english_list(defectors)] turned their backs against their sisters and the Queen in favor of their slavemasters!"), 3, hivenumber)
+	if(faction == FACTION_MARINE && ares_can_interface())
+		marine_announcement("The advanced IFF Xenomorph tagging technology has detected hostile intentions and successfully suppressed the psychic link of [length(defectors)] lifeform\s. The collaborative lifeforms are given designation Renegades. Full cooperation is to be expected.", MAIN_AI_SYSTEM)
 	defectors.Cut()
 
 /datum/hive_status/corrupted/proc/add_personal_ally(mob/living/ally)
@@ -1567,7 +1802,7 @@
 /datum/xeno_mark_define
 	var/name = "xeno_declare"
 	var/icon_state = "empty"
-	var/desc = "Xenos make psychic markers with this meaning as positional lasting communication to eachother"
+	var/desc = "Xenos make psychic markers with this meaning as positional lasting communication to eachother."
 
 /datum/xeno_mark_define/fortify
 	name = "Fortify"

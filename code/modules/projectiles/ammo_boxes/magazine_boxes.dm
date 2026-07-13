@@ -270,36 +270,69 @@
 //-----------------------M10 Pistol Mag Boxes-----------------------
 
 /obj/item/ammo_box/magazine/m10
-	name = "magazine box (M10 x 22)"
+	name = "magazine box (M10 x 16)"
 	icon_state = "base_m10"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_reg"
 	overlay_gun_type = "_m10"
-	overlay_content = "_hv"
-	num_of_magazines = 22
+	overlay_content = "_apc"
+	num_of_magazines = 16
 	magazine_type = /obj/item/ammo_magazine/pistol/m10
 
 /obj/item/ammo_box/magazine/m10/empty
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/m10/extended
-	name = "magazine box (Ext m10 x 14)"
+	name = "magazine box (Ext m10 x 10)"
 	overlay_ammo_type = "_ext"
-	overlay_content = "_hv"
-	num_of_magazines = 14
+	overlay_content = "_apc"
+	num_of_magazines = 10
 	magazine_type = /obj/item/ammo_magazine/pistol/m10/extended
 
 /obj/item/ammo_box/magazine/m10/extended/empty
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/m10/drum
-	name = "magazine box (Drum m10 x 12)"
+	name = "magazine box (Drum m10 x 8)"
 	overlay_ammo_type = "_drum"
-	overlay_content = "_hv"
-	num_of_magazines = 12
+	overlay_content = "_apc"
+	num_of_magazines = 8
 	magazine_type = /obj/item/ammo_magazine/pistol/m10/drum
 
 /obj/item/ammo_box/magazine/m10/drum/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/m10/ap
+	name = "magazine box (M10 AP x 16)"
+	icon_state = "base_m10"
+	flags_equip_slot = SLOT_BACK
+	overlay_ammo_type = "_ap"
+	overlay_gun_type = "_m10"
+	overlay_content = "_ap"
+	num_of_magazines = 16
+	magazine_type = /obj/item/ammo_magazine/pistol/m10/ap
+
+/obj/item/ammo_box/magazine/m10/ap/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/m10/ap/extended
+	name = "magazine box (Ext AP m10 x 10)"
+	overlay_ammo_type = "_ext_ap"
+	overlay_content = "_ap"
+	num_of_magazines = 10
+	magazine_type = /obj/item/ammo_magazine/pistol/m10/ap/extended
+
+/obj/item/ammo_box/magazine/m10/ap/extended/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/m10/ap/drum
+	name = "magazine box (Drum AP m10 x 8)"
+	overlay_ammo_type = "_drum_ap"
+	overlay_content = "_ap"
+	num_of_magazines = 8
+	magazine_type = /obj/item/ammo_magazine/pistol/m10/ap/drum
+
+/obj/item/ammo_box/magazine/m10/ap/drum/empty
 	empty = TRUE
 
 //-----------------------M4A3 Pistol Mag Box-----------------------
@@ -510,10 +543,10 @@
 /obj/item/ammo_box/magazine/nailgun/empty
 	empty = TRUE
 
-//-----------------------M56B Drum Box-----------------------
+//-----------------------M56A2 Drum Box-----------------------
 
-/obj/item/ammo_box/magazine/m56b
-	name = "drum box (M56B x 8)"
+/obj/item/ammo_box/magazine/m56a2
+	name = "drum box (M56A2 x 8)"
 	icon_state = "base_m56b"
 	overlay_ammo_type = "_reg_heavy"
 	overlay_gun_type = "_sg"
@@ -521,16 +554,16 @@
 	magazine_type = /obj/item/ammo_magazine/smartgun
 	num_of_magazines = 8
 
-/obj/item/ammo_box/magazine/m56b/empty
+/obj/item/ammo_box/magazine/m56a2/empty
 	empty = TRUE
 
-/obj/item/ammo_box/magazine/m56b/dirty
-	name = "drum box (M56B 'Dirty' x 8)"
+/obj/item/ammo_box/magazine/m56a2/dirty
+	name = "drum box (M56A2 'Dirty' x 8)"
 	overlay_ammo_type = "_red_heavy"
 	overlay_content = "_sgdirty"
 	magazine_type = /obj/item/ammo_magazine/smartgun/dirty
 
-/obj/item/ammo_box/magazine/m56b/dirty/empty
+/obj/item/ammo_box/magazine/m56a2/dirty/empty
 	empty = TRUE
 
 //-----------------------M56D Drum Box-----------------------
@@ -1000,7 +1033,7 @@
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = ""
 	overlay_gun_type = "_mp27"
-	overlay_content = "_fn"
+	overlay_content = "_fn_reg"
 	num_of_magazines = 12
 	magazine_type = /obj/item/ammo_magazine/smg/mp27
 
@@ -1105,17 +1138,11 @@
 	name = "magazine box (FN FP9000 x 12)"
 	icon_state = "base_fn"
 	flags_equip_slot = SLOT_BACK
-	overlay_ammo_type = ""
+	overlay_ammo_type = "_fn_reg"
 	overlay_gun_type = "_fnfp9000"
-	overlay_content = "_fn"
+	overlay_content = "_fn_reg"
 	num_of_magazines = 12
 	magazine_type = /obj/item/ammo_magazine/smg/fp9000
-
-/obj/item/ammo_box/magazine/fp9000/update_icon()
-	if(overlays)
-		overlays.Cut()
-	overlays += image(icon, icon_state = "[icon_state]_lid") //adding lid
-	overlays += image(text_markings_icon, icon_state = "text[overlay_gun_type]") //adding text
 
 /obj/item/ammo_box/magazine/fp9000/empty
 	empty = TRUE
@@ -1126,19 +1153,26 @@
 	name = "magazine box (FN P90 x 12)"
 	icon_state = "base_fn"
 	flags_equip_slot = SLOT_BACK
-	overlay_ammo_type = ""
+	overlay_ammo_type = "_fn_reg"
 	overlay_gun_type = "_fnfp9000"
-	overlay_content = "_fn"
+	overlay_content = "_fn_reg"
 	num_of_magazines = 12
 	magazine_type = /obj/item/ammo_magazine/smg/p90
 
-/obj/item/ammo_box/magazine/p90/update_icon()
-	if(overlays)
-		overlays.Cut()
-	overlays += image(icon, icon_state = "[icon_state]_lid") //adding lid
-	overlays += image(text_markings_icon, icon_state = "text[overlay_gun_type]") //adding text
-
 /obj/item/ammo_box/magazine/p90/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/p90/ap
+	name = "magazine box (AP FN P90 x 12)"
+	icon_state = "base_fn"
+	flags_equip_slot = SLOT_BACK
+	overlay_ammo_type = "_fn_ap"
+	overlay_gun_type = "_fnfp9000"
+	overlay_content = "_fn_ap"
+	num_of_magazines = 12
+	magazine_type = /obj/item/ammo_magazine/smg/p90/ap
+
+/obj/item/ammo_box/magazine/p90/ap/empty
 	empty = TRUE
 
 //-----------------------MAR30/40 Mag Box-----------------------
@@ -1190,4 +1224,45 @@
 	overlays += image(text_markings_icon, icon_state = "text[overlay_gun_type]") //adding text
 
 /obj/item/ammo_box/magazine/mar50/empty
+	empty = TRUE
+
+//-----------------------l54 Pistol Mag Box-----------------------
+
+/obj/item/ammo_box/magazine/l54
+	name = "magazine box (L54 x 16)"
+	icon_state = "base_l54"
+	flags_equip_slot = SLOT_BACK
+	overlay_ammo_type = "_reg"
+	overlay_gun_type = "_l54"
+	num_of_magazines = 16
+	magazine_type = /obj/item/ammo_magazine/pistol/l54
+
+/obj/item/ammo_box/magazine/l54/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/l54/ap
+	name = "magazine box (AP L54 x 16)"
+	overlay_ammo_type = "_ap"
+	overlay_content = "_ap"
+	magazine_type = /obj/item/ammo_magazine/pistol/l54/ap
+
+/obj/item/ammo_box/magazine/l54/ap/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/l54/hp
+	name = "magazine box (HP L54 x 16)"
+	overlay_ammo_type = "_hp"
+	overlay_content = "_hp"
+	magazine_type = /obj/item/ammo_magazine/pistol/l54/hp
+
+/obj/item/ammo_box/magazine/l54/hp/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/l54/incen
+	name = "magazine box (Incen L54 x 16)"
+	overlay_ammo_type = "_incen"
+	overlay_content = "_incen"
+	magazine_type = /obj/item/ammo_magazine/pistol/l54/incendiary
+
+/obj/item/ammo_box/magazine/l54/incen/empty
 	empty = TRUE

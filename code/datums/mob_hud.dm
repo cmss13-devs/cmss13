@@ -1,7 +1,8 @@
 /* HUD DATUMS */
 
-//GLOBAL HUD LIST: This must be indexed in order (or the defines stringified so its an asslist)
-GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
+//GLOBAL HUD LIST: (note no assertion ensures all huds are unique so be sure you never reuse the same index)
+// flatten_numeric_alist(alist) is used to ensure the define matches the index and they're sequential defines
+GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 	MOB_HUD_SECURITY_BASIC = new /datum/mob_hud/security/basic(),
 	MOB_HUD_SECURITY_ADVANCED = new /datum/mob_hud/security/advanced(),
 	MOB_HUD_MEDICAL_BASIC = new /datum/mob_hud/medical/basic(),
@@ -9,6 +10,21 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	MOB_HUD_MEDICAL_OBSERVER = new /datum/mob_hud/medical/observer(),
 	MOB_HUD_XENO_INFECTION = new /datum/mob_hud/xeno_infection(),
 	MOB_HUD_XENO_STATUS = new /datum/mob_hud/xeno(),
+	MOB_HUD_XENO_HIVE_NORMAL = new /datum/mob_hud/xeno/xeno_hive_normal(),
+	MOB_HUD_XENO_HIVE_CORRUPTED = new /datum/mob_hud/xeno/xeno_hive_corrupted(),
+	MOB_HUD_XENO_HIVE_ALPHA = new /datum/mob_hud/xeno/xeno_hive_alpha(),
+	MOB_HUD_XENO_HIVE_BRAVO = new /datum/mob_hud/xeno/xeno_hive_bravo(),
+	MOB_HUD_XENO_HIVE_CHARLIE = new /datum/mob_hud/xeno/xeno_hive_charlie(),
+	MOB_HUD_XENO_HIVE_DELTA = new /datum/mob_hud/xeno/xeno_hive_delta(),
+	MOB_HUD_XENO_HIVE_K_SERIES = new /datum/mob_hud/xeno/xeno_hive_k_series(),
+	MOB_HUD_XENO_HIVE_FERAL = new /datum/mob_hud/xeno/xeno_hive_feral(),
+	MOB_HUD_XENO_HIVE_TAMED = new /datum/mob_hud/xeno/xeno_hive_tamed(),
+	MOB_HUD_XENO_HIVE_MUTATED = new /datum/mob_hud/xeno/xeno_hive_mutated(),
+	MOB_HUD_XENO_HIVE_FORSAKEN = new /datum/mob_hud/xeno/xeno_hive_forsaken(),
+	MOB_HUD_XENO_HIVE_YAUTJA = new /datum/mob_hud/xeno/xeno_hive_yautja(),
+	MOB_HUD_XENO_HIVE_HUNTED = new /datum/mob_hud/xeno/xeno_hive_hunted(),
+	MOB_HUD_XENO_HIVE_RENEGADE = new /datum/mob_hud/xeno/xeno_hive_renegade(),
+	MOB_HUD_XENO_HIVE_TUTORIAL = new /datum/mob_hud/xeno/xeno_hive_tutorial(),
 	MOB_HUD_XENO_HOSTILE = new /datum/mob_hud/xeno_hostile(),
 	MOB_HUD_FACTION_MARINE = new /datum/mob_hud/faction(),
 	MOB_HUD_FACTION_OBSERVER = new /datum/mob_hud/faction/observer(),
@@ -16,6 +32,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	MOB_HUD_FACTION_WY = new /datum/mob_hud/faction/wy(),
 	MOB_HUD_FACTION_HC = new /datum/mob_hud/faction/hyperdyne(),
 	MOB_HUD_FACTION_TWE = new /datum/mob_hud/faction/twe(),
+	MOB_HUD_FACTION_IASF = new /datum/mob_hud/faction/iasf(),
 	MOB_HUD_FACTION_CLF = new /datum/mob_hud/faction/clf(),
 	MOB_HUD_FACTION_PMC = new /datum/mob_hud/faction/pmc(),
 	MOB_HUD_FACTION_CMB = new /datum/mob_hud/faction/cmb(),
@@ -27,7 +44,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	MOB_HUD_EXECUTE = new /datum/mob_hud/execute_hud(),
 	MOB_HUD_NEW_PLAYER = new /datum/mob_hud/new_player(),
 	MOB_HUD_SPYCAMS = new /datum/mob_hud/spy_cams(),
-	))
+	)))
 
 /datum/mob_hud
 	var/list/mob/hudmobs = list() //list of all mobs which display this hud
@@ -170,10 +187,26 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 
 //Xeno status hud, for xenos
 /datum/mob_hud/xeno
-	hud_icons = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, HUNTER_HUD)
+	hud_icons = list(HEALTH_HUD_XENO, PLASMA_HUD, SPECIAL_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, HUNTER_HUD)
+
+/datum/mob_hud/xeno/xeno_hive_normal
+/datum/mob_hud/xeno/xeno_hive_corrupted
+/datum/mob_hud/xeno/xeno_hive_alpha
+/datum/mob_hud/xeno/xeno_hive_bravo
+/datum/mob_hud/xeno/xeno_hive_charlie
+/datum/mob_hud/xeno/xeno_hive_delta
+/datum/mob_hud/xeno/xeno_hive_feral
+/datum/mob_hud/xeno/xeno_hive_tamed
+/datum/mob_hud/xeno/xeno_hive_mutated
+/datum/mob_hud/xeno/xeno_hive_forsaken
+/datum/mob_hud/xeno/xeno_hive_yautja
+/datum/mob_hud/xeno/xeno_hive_hunted
+/datum/mob_hud/xeno/xeno_hive_k_series
+/datum/mob_hud/xeno/xeno_hive_renegade
+/datum/mob_hud/xeno/xeno_hive_tutorial
 
 /datum/mob_hud/xeno_hostile
-	hud_icons = list(XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE)
+	hud_icons = list(XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_TAG_SPREAD, XENO_HOSTILE_FREEZE)
 
 /datum/mob_hud/execute_hud
 	hud_icons = list(XENO_EXECUTE)
@@ -216,6 +249,9 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 /datum/mob_hud/faction/twe
 	faction_to_check = FACTION_TWE
 
+/datum/mob_hud/faction/iasf
+	faction_to_check = FACTION_IASF
+
 /datum/mob_hud/faction/clf
 	faction_to_check = FACTION_CLF
 
@@ -247,6 +283,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	return
 
 /mob/hologram/queen/add_to_all_mob_huds()
+	handle_xeno_hive_hud(hivenumber)
 	var/datum/mob_hud/hud = GLOB.huds[MOB_HUD_XENO_STATUS]
 	hud.add_to_hud(src)
 
@@ -263,16 +300,18 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	hud_set_new_player()
 
 /mob/living/carbon/xenomorph/add_to_all_mob_huds()
+	handle_xeno_hive_hud(hivenumber)
 	var/datum/mob_hud/hud = GLOB.huds[MOB_HUD_XENO_STATUS]
 	hud.add_to_hud(src)
-
 
 /mob/proc/remove_from_all_mob_huds()
 	return
 
 /mob/hologram/queen/remove_from_all_mob_huds()
-	var/datum/mob_hud/hud = GLOB.huds[MOB_HUD_XENO_STATUS]
-	hud.remove_from_hud(src)
+	for(var/datum/mob_hud/hud in GLOB.huds)
+		if(istype(hud, /datum/mob_hud/xeno))
+			continue
+		hud.remove_from_hud(src)
 
 /mob/living/carbon/human/remove_from_all_mob_huds()
 	for(var/datum/mob_hud/hud in GLOB.huds)
@@ -285,25 +324,63 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 		if(istype(hud, /datum/mob_hud/xeno))
 			hud.remove_from_hud(src)
 			hud.remove_hud_from(src, src)
-		else if (istype(hud, /datum/mob_hud/xeno_infection))
+		else if(istype(hud, /datum/mob_hud/xeno_infection))
 			hud.remove_hud_from(src, src)
-	if (xeno_hostile_hud)
+	if(xeno_hostile_hud)
 		xeno_hostile_hud = FALSE
 		var/datum/mob_hud/hostile_hud = GLOB.huds[MOB_HUD_XENO_HOSTILE]
 		hostile_hud.remove_hud_from(src, src)
 
-	if (execute_hud)
+	if(execute_hud)
 		execute_hud = FALSE
 		var/datum/mob_hud/execute = GLOB.huds[MOB_HUD_EXECUTE]
 		execute.remove_hud_from(src, src)
-
-
 
 /mob/proc/refresh_huds(mob/source_mob)
 	var/mob/M = source_mob ? source_mob : src
 	for(var/datum/mob_hud/hud in GLOB.huds)
 		if(M in hud.hudusers)
 			hud.refresh_hud(src, hud.hudusers[M])
+
+
+/mob/proc/handle_xeno_hive_hud(hive_choice, choose_verb = FALSE)
+	var/datum/mob_hud/hud
+	switch(hive_choice)
+		if(XENO_HIVE_NORMAL)
+			hud = GLOB.huds[MOB_HUD_XENO_HIVE_NORMAL]
+		if(XENO_HIVE_CORRUPTED)
+			hud = GLOB.huds[MOB_HUD_XENO_HIVE_CORRUPTED]
+		if(XENO_HIVE_ALPHA)
+			hud = GLOB.huds[MOB_HUD_XENO_HIVE_ALPHA]
+		if(XENO_HIVE_BRAVO)
+			hud = GLOB.huds[MOB_HUD_XENO_HIVE_BRAVO]
+		if(XENO_HIVE_CHARLIE)
+			hud = GLOB.huds[MOB_HUD_XENO_HIVE_CHARLIE]
+		if(XENO_HIVE_DELTA)
+			hud = GLOB.huds[MOB_HUD_XENO_HIVE_DELTA]
+		if(XENO_HIVE_K_SERIES)
+			hud = GLOB.huds[MOB_HUD_XENO_HIVE_K_SERIES]
+		if(XENO_HIVE_FERAL)
+			hud = GLOB.huds[MOB_HUD_XENO_HIVE_FERAL]
+		if(XENO_HIVE_TAMED)
+			hud = GLOB.huds[MOB_HUD_XENO_HIVE_TAMED]
+		if(XENO_HIVE_MUTATED)
+			hud = GLOB.huds[MOB_HUD_XENO_HIVE_MUTATED]
+		if(XENO_HIVE_FORSAKEN)
+			hud = GLOB.huds[MOB_HUD_XENO_HIVE_FORSAKEN]
+		if(XENO_HIVE_YAUTJA)
+			hud = GLOB.huds[MOB_HUD_XENO_HIVE_YAUTJA]
+		if(XENO_HIVE_HUNTED)
+			hud = GLOB.huds[MOB_HUD_XENO_HIVE_HUNTED]
+		if(XENO_HIVE_RENEGADE)
+			hud = GLOB.huds[MOB_HUD_XENO_HIVE_RENEGADE]
+		if(XENO_HIVE_TUTORIAL)
+			hud = GLOB.huds[MOB_HUD_XENO_HIVE_TUTORIAL]
+	if(!hive_choice)
+		CRASH("The hive_choice '[hive_choice]' is not defined. Please define a new hive HUD.")
+	hud.add_hud_to(src, src)
+	if(!choose_verb)
+		hud.add_to_hud(src)
 
 //Medical HUDs
 
@@ -333,8 +410,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	else
 		var/amount = health > 0 ? round(health * 100 / maxHealth, 10) : CEILING(health, 10)
 		if(health < 0)
-			var/warding_health = crit_health != 0 ? warding_aura * 20 : 0
-			amount = round((health / (crit_health - warding_health)) * -100, 10)
+			var/warding_health = health_threshold_dead != 0 ? warding_aura * 20 : 0
+			amount = round((health / (health_threshold_dead - warding_health)) * -100, 10)
 		else
 			amount = CEILING((health / maxHealth) * 100, 10)
 		if(!amount)
@@ -462,6 +539,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 
 				if(hive && hive.color)
 					holder3.color = hive.color
+					holder2.color = hive.color
 
 				if(stat == DEAD || status_flags & FAKEDEATH)
 					holder2.alpha = 100
@@ -540,6 +618,13 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 		return
 	for(var/obj/effect/alien/resin/marker/i in hive.resin_marks)
 		client.images |= i.seenMeaning
+
+/mob/living/carbon/xenomorph/proc/hud_set_design_marks()
+	if(!client)
+		return
+	for(var/obj/effect/alien/resin/design/des in hive.designer_marks)
+		if(des.chosenMark)
+			client.images |= des.chosenMark
 
 /mob/living/carbon/xenomorph/proc/hud_set_plasma()
 	var/image/holder = hud_list[PLASMA_HUD]
@@ -695,11 +780,11 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	holder.overlays.Cut()
 
 	if(mob_flags & MUTINY_MUTINEER)
-		holder.overlays += image('icons/mob/hud/marine_hud.dmi', src, "hudmutineer", pixel_y = 12)
+		holder.overlays += image('icons/mob/hud/human_status.dmi', src, "hudmutineer", pixel_y = 12)
 	else if(mob_flags & MUTINY_LOYALIST)
-		holder.overlays += image('icons/mob/hud/marine_hud.dmi', src, "hudloyalist", pixel_y = 12)
+		holder.overlays += image('icons/mob/hud/human_status.dmi', src, "hudloyalist", pixel_y = 12)
 	else if(mob_flags & MUTINY_NONCOMBAT)
-		holder.overlays += image('icons/mob/hud/marine_hud.dmi', src, "hudnoncombat", pixel_y = 9)
+		holder.overlays += image('icons/mob/hud/human_status.dmi', src, "hudnoncombat", pixel_y = 9)
 
 	hud_set_new_player()
 	F.modify_hud_holder(holder, src)
@@ -709,7 +794,21 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 
 	var/image/holder = hud_list[HUNTER_CLAN]
 	var/new_icon_state = "predhud"
-	if(client?.check_whitelist_status(WHITELIST_YAUTJA_LEADER))
+	if(faction == FACTION_YAUTJA_BADBLOOD)
+		new_icon_state = "badbloodhud"
+	else if(faction == FACTION_MILITARY_CASTE)
+		if(client?.check_whitelist_status(WHITELIST_YAUTJA))
+			new_icon_state = "soldierhud_wl"
+		else
+			new_icon_state = "soldierhud"
+		if(job == JOB_MCASTE_ENFORCER)
+			if(client?.check_whitelist_status(WHITELIST_YAUTJA))
+				new_icon_state = "enforcerhud_wl"
+			else
+				new_icon_state = "enforcerhud"
+		holder.icon_state = new_icon_state
+		return // we don't mess with colors or whitelist status checks
+	else if(client?.check_whitelist_status(WHITELIST_YAUTJA_LEADER))
 		new_icon_state = "leaderhud"
 	else if(client?.check_whitelist_status(WHITELIST_YAUTJA_COUNCIL))
 		new_icon_state = "councilhud"
@@ -720,7 +819,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 		var/datum/entity/clan/player_clan = GET_CLAN(client.clan_info.clan_id)
 		player_clan.sync()
 
-		holder.color = player_clan.color
+		if(faction != FACTION_YAUTJA_BADBLOOD)
+			holder.color = player_clan.color
 
 	hud_list[HUNTER_CLAN] = holder
 
@@ -735,7 +835,8 @@ GLOBAL_DATUM_INIT(hud_icon_hunter_hunted, /image, image('icons/mob/hud/hud_yautj
 GLOBAL_DATUM_INIT(hud_icon_hunter_dishonored, /image, image('icons/mob/hud/hud_yautja.dmi', src, "hunter_dishonored"))
 GLOBAL_DATUM_INIT(hud_icon_hunter_honored, /image, image('icons/mob/hud/hud_yautja.dmi', src, "hunter_honored"))
 GLOBAL_DATUM_INIT(hud_icon_hunter_thralled, /image, image('icons/mob/hud/hud_yautja.dmi', src, "hunter_thralled"))
-
+GLOBAL_DATUM_INIT(hud_icon_hunter_blooded, /image, image('icons/mob/hud/hud_yautja.dmi', src, "hunter_thrall_blooded"))
+GLOBAL_DATUM_INIT(hud_icon_hunter_youngblood, /image, image('icons/mob/hud/hud_yautja.dmi', src, "predhud"))
 
 /mob/living/carbon/hud_set_hunter()
 	var/image/holder = hud_list[HUNTER_HUD]
@@ -753,6 +854,12 @@ GLOBAL_DATUM_INIT(hud_icon_hunter_thralled, /image, image('icons/mob/hud/hud_yau
 		holder.overlays += GLOB.hud_icon_hunter_thralled
 	else if(hunter_data.gear)
 		holder.overlays += GLOB.hud_icon_hunter_gear
+
+	if(hunter_data.blooded)
+		holder.overlays += GLOB.hud_icon_hunter_blooded
+
+	if(hunter_data.youngblood_marked)
+		holder.overlays += GLOB.hud_icon_hunter_youngblood
 
 	hud_list[HUNTER_HUD] = holder
 
@@ -775,9 +882,9 @@ GLOBAL_DATUM_INIT(hud_icon_hunter_thralled, /image, image('icons/mob/hud/hud_yau
 /mob/proc/hud_set_order()
 	return
 
-GLOBAL_DATUM_INIT(hud_icon_hudmove, /image, image('icons/mob/hud/marine_hud.dmi', src, "hudmove"))
-GLOBAL_DATUM_INIT(hud_icon_hudhold, /image, image('icons/mob/hud/marine_hud.dmi', src, "hudhold"))
-GLOBAL_DATUM_INIT(hud_icon_hudfocus, /image, image('icons/mob/hud/marine_hud.dmi', src, "hudfocus"))
+GLOBAL_DATUM_INIT(hud_icon_hudmove, /image, image('icons/mob/hud/human_status.dmi', src, "hudmove"))
+GLOBAL_DATUM_INIT(hud_icon_hudhold, /image, image('icons/mob/hud/human_status.dmi', src, "hudhold"))
+GLOBAL_DATUM_INIT(hud_icon_hudfocus, /image, image('icons/mob/hud/human_status.dmi', src, "hudfocus"))
 // ORDER HUD
 /mob/living/carbon/human/hud_set_order()
 	var/image/holder = hud_list[ORDER_HUD]
@@ -798,6 +905,7 @@ GLOBAL_DATUM_INIT(hud_icon_hudfocus, /image, image('icons/mob/hud/marine_hud.dmi
 /mob/living/carbon/human/hud_set_holocard()
 	var/image/holder = hud_list[HOLOCARD_HUD]
 	holder.icon_state = holo_card_color ? "holo_card_[holo_card_color]" : "hudblank"
+	SEND_SIGNAL(src, COMSIG_HUMAN_TRIAGE_CARD_UPDATED)
 
 // Vampire Execute HUD
 /mob/living/carbon/human/proc/update_execute_hud()
@@ -814,16 +922,19 @@ GLOBAL_DATUM_INIT(hud_icon_hudfocus, /image, image('icons/mob/hud/marine_hud.dmi
 	var/image/acid_holder = hud_list[XENO_HOSTILE_ACID]
 	var/image/slow_holder = hud_list[XENO_HOSTILE_SLOW]
 	var/image/tag_holder = hud_list[XENO_HOSTILE_TAG]
+	var/image/tag_spread_holder = hud_list[XENO_HOSTILE_TAG_SPREAD]
 	var/image/freeze_holder = hud_list[XENO_HOSTILE_FREEZE]
 
 	acid_holder.icon_state = "hudblank"
 	slow_holder.icon_state = "hudblank"
 	tag_holder.icon_state = "hudblank"
+	tag_spread_holder.icon_state = "hudblank"
 	freeze_holder.icon_state = "hudblank"
 
 	acid_holder.overlays.Cut()
 	slow_holder.overlays.Cut()
 	tag_holder.overlays.Cut()
+	tag_spread_holder.overlays.Cut()
 	freeze_holder.overlays.Cut()
 
 	var/acid_found = FALSE
@@ -847,13 +958,22 @@ GLOBAL_DATUM_INIT(hud_icon_hudfocus, /image, image('icons/mob/hud/marine_hud.dmi
 		slow_holder.overlays += image('icons/mob/hud/hud.dmi', "xeno_slow")
 
 	var/tag_found = FALSE
-	for (var/datum/effects/dancer_tag/DT in effects_list)
-		if (!QDELETED(DT))
+	for(var/datum/effects/dancer_tag/normal/normal_tag in effects_list)
+		if(!QDELETED(normal_tag))
 			tag_found = TRUE
 			break
 
-	if (tag_found)
+	if(tag_found)
 		tag_holder.overlays += image('icons/mob/hud/hud.dmi', src, "prae_tag")
+
+	var/spread_tag_found = FALSE
+	for(var/datum/effects/dancer_tag/spread/spread_tag in effects_list)
+		if(!QDELETED(spread_tag))
+			spread_tag_found = TRUE
+			break
+
+	if(spread_tag_found)
+		tag_spread_holder.overlays += image('icons/mob/hud/hud.dmi', src, "prae_tag_yellow")
 
 	var/freeze_found = HAS_TRAIT(src, TRAIT_IMMOBILIZED) && body_position == STANDING_UP && !buckled // Eligible targets are unable to move but can stand and aren't buckled (eg nested) - This is to convey that they are temporarily unable to move
 	if (freeze_found)

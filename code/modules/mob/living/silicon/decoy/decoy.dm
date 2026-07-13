@@ -23,6 +23,7 @@
 	GLOB.ai_mob_list += src
 	real_name = MAIN_AI_SYSTEM
 	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_INHERENT)
+	AddElement(/datum/element/corp_label/wy)
 
 /mob/living/silicon/decoy/ship_ai/Destroy()
 	QDEL_NULL(ai_headset)
@@ -35,7 +36,7 @@
 	..()
 	if(stat == DEAD)
 		return FALSE
-	if(health <= HEALTH_THRESHOLD_DEAD && stat != DEAD)
+	if(health <= health_threshold_dead && stat != DEAD)
 		death()
 
 /mob/living/silicon/decoy/updatehealth()
@@ -82,7 +83,7 @@
 		return "headset"
 
 	if(length(message) >= 2)
-		var/channel_prefix = copytext(message, 1 ,3)
+		var/channel_prefix = lowertext(copytext(message, 1, 3))
 		channel_prefix = GLOB.department_radio_keys[channel_prefix]
 		if(channel_prefix)
 			return channel_prefix

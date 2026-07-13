@@ -36,22 +36,6 @@
 		xeno.ability_speed_modifier -= 3
 		xeno.damage_modifier += XENO_DAMAGE_MOD_SMALL
 
-/datum/action/xeno_action/activable/fortify/proc/check_directional_armor(mob/living/carbon/xenomorph/defendy, list/damagedata)
-	SIGNAL_HANDLER
-	var/projectile_direction = damagedata["direction"]
-	// If the defender is facing the projectile.
-	if(defendy.dir & REVERSE_DIR(projectile_direction))
-		damagedata["armor"] += frontal_armor
-
-/datum/action/xeno_action/activable/fortify/proc/unconscious_check()
-	SIGNAL_HANDLER
-
-	if(QDELETED(owner))
-		return
-
-	UnregisterSignal(owner, COMSIG_XENO_ENTER_CRIT)
-	UnregisterSignal(owner, COMSIG_MOB_DEATH)
-	fortify_switch(owner, FALSE)
 
 /datum/action/xeno_action/onclick/soak/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/steelcrest = owner
@@ -65,7 +49,7 @@
 	if(!check_and_use_plasma_owner())
 		return
 
-	RegisterSignal(steelcrest, COMSIG_XENO_TAKE_DAMAGE, PROC_REF(damage_accumulate))
+	RegisterSignal(steelcrest, COMSIG_MOB_TAKE_DAMAGE, PROC_REF(damage_accumulate))
 	addtimer(CALLBACK(src, PROC_REF(stop_accumulating)), 6 SECONDS)
 
 	steelcrest.balloon_alert(steelcrest, "begins to tank incoming damage!")
@@ -85,10 +69,10 @@
 
 	if(damage_accumulated >= damage_threshold)
 		addtimer(CALLBACK(src, PROC_REF(enraged), owner))
-		UnregisterSignal(owner, COMSIG_XENO_TAKE_DAMAGE) // Two Unregistersignal because if the enrage proc doesnt happen, then it needs to stop counting
+		UnregisterSignal(owner, COMSIG_MOB_TAKE_DAMAGE) // Two Unregistersignal because if the enrage proc doesnt happen, then it needs to stop counting
 
 /datum/action/xeno_action/onclick/soak/proc/stop_accumulating()
-	UnregisterSignal(owner, COMSIG_XENO_TAKE_DAMAGE)
+	UnregisterSignal(owner, COMSIG_MOB_TAKE_DAMAGE)
 
 	damage_accumulated = 0
 	to_chat(owner, SPAN_XENONOTICE("We stop taking incoming damage."))

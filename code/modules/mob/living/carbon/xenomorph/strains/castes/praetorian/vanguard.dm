@@ -8,6 +8,7 @@
 		/datum/action/xeno_action/activable/xeno_spit,
 		/datum/action/xeno_action/activable/pounce/base_prae_dash,
 		/datum/action/xeno_action/activable/prae_acid_ball,
+		/datum/action/xeno_action/activable/xeno_spit/praetorian,
 		/datum/action/xeno_action/activable/spray_acid/base_prae_spray_acid,
 		/datum/action/xeno_action/activable/corrosive_acid,
 	)
@@ -204,7 +205,7 @@
 		return
 
 	activated_once = FALSE
-	button.icon_state = dash_user.selected_ability == src ? "template_on" : "template"
+	button.icon_state = dash_user.selected_ability == src ? "template_on" : "template_xeno"
 
 	var/list/target_mobs = list()
 	var/list/list_of_targets = orange(1, dash_user)

@@ -77,6 +77,10 @@
 	)
 	product_type = VENDOR_PRODUCT_TYPE_FOOD
 
+/obj/structure/machinery/vending/snack/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/structure/machinery/vending/snack/packaged
 	product_slogans = ""
 	product_ads = ""
@@ -85,6 +89,44 @@
 		/obj/item/reagent_container/food/snacks/packaged_burrito = 40,
 		/obj/item/reagent_container/food/snacks/packaged_hdogs = 40,
 	)
+
+/obj/structure/machinery/vending/snack/alt
+	icon_state = "snack_alt"
+
+/obj/structure/machinery/vending/snack_generic
+	name = "\improper Snack Machine"
+	desc = "A vending machine full of unhealthy snacks."
+	product_slogans = "Kepler Crisps! Try a snack that's out of this world!;Eat an EAT!"
+	product_ads = "Kepler Crisps! Try a snack that's out of this world!;Eat an EAT!"
+	icon_state = "snackvend"
+	products = list(
+		/obj/item/reagent_container/food/snacks/chips = 12,
+		/obj/item/reagent_container/food/snacks/cheesiehonkers = 12,
+		/obj/item/reagent_container/food/snacks/no_raisin = 12,
+		/obj/item/reagent_container/food/snacks/sosjerky =12,
+		/obj/item/reagent_container/food/snacks/kepler_crisps = 12,
+		/obj/item/reagent_container/food/snacks/kepler_crisps/flamehot = 12,
+		/obj/item/reagent_container/food/snacks/wy_chips/pepper = 12,
+		/obj/item/reagent_container/food/snacks/eat_bar = 12,
+		/obj/item/reagent_container/food/snacks/wrapped/booniebars = 6,
+		/obj/item/reagent_container/food/snacks/wrapped/chunk = 6,
+		/obj/item/reagent_container/food/snacks/wrapped/barcardine = 6,
+	)
+
+	prices = list(
+		/obj/item/reagent_container/food/snacks/chips = 3,
+		/obj/item/reagent_container/food/snacks/cheesiehonkers = 4,
+		/obj/item/reagent_container/food/snacks/no_raisin = 5,
+		/obj/item/reagent_container/food/snacks/sosjerky = 6,
+		/obj/item/reagent_container/food/snacks/kepler_crisps = 3,
+		/obj/item/reagent_container/food/snacks/kepler_crisps/flamehot = 5,
+		/obj/item/reagent_container/food/snacks/wy_chips/pepper = 3,
+		/obj/item/reagent_container/food/snacks/eat_bar = 4,
+		/obj/item/reagent_container/food/snacks/wrapped/booniebars = 4,
+		/obj/item/reagent_container/food/snacks/wrapped/chunk = 4,
+		/obj/item/reagent_container/food/snacks/wrapped/barcardine = 4,
+	)
+	product_type = VENDOR_PRODUCT_TYPE_FOOD
 
 /obj/structure/machinery/vending/cola
 	name = "\improper Souto Softdrinks"
@@ -138,8 +180,15 @@
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 	product_type = VENDOR_PRODUCT_TYPE_SOUTO
 
+/obj/structure/machinery/vending/cola/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/souta)
+
+/obj/structure/machinery/vending/cola/alt
+	icon_state = "Cola_Machine_alt"
+
 /obj/structure/machinery/vending/cola/research
-	desc = "A softdrink vendor provided by Souto Soda Company, Havana. This one is bound to the Research Budget card and doesn't require swiping"
+	desc = "A softdrink vendor provided by Souto Soda Company, Havana. This one is bound to the Research Budget card and doesn't require swiping."
 	products = list(
 		/obj/item/reagent_container/food/drinks/cans/souto/classic = 10,
 		/obj/item/reagent_container/food/drinks/cans/souto/cherry = 10,
@@ -284,6 +333,10 @@
 		/obj/item/tool/lighter/zippo/blue = 30,
 	)
 
+/obj/structure/machinery/vending/cigarette/koorlander/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/koorlander)
+
 /obj/structure/machinery/vending/cigarette/koorlander/free
 		prices = list(
 		/obj/item/storage/fancy/cigarettes/kpack = 0,
@@ -390,6 +443,7 @@
 /obj/structure/machinery/vending/cigarette/wy/Initialize(mapload, ...)
 	var/exec_number = rand(0, 2)
 	products[/obj/item/storage/fancy/cigarettes/blackpack] = exec_number
+	AddElement(/datum/element/corp_label/wy)
 	return ..()
 
 /obj/structure/machinery/vending/cigarette/wy/free
@@ -412,8 +466,8 @@
 /obj/structure/machinery/vending/security
 	name = "\improper SecTech"
 	desc = "A security equipment vendor."
-	product_ads = "Crack capitalist skulls!;Beat some heads in!;Don't forget - harm is good!;Your weapons are right here.;Handcuffs!;Freeze, scumbag!;Don't tase me bro!;Tase them, bro.;Why not have a donut?"
-	product_slogans = "Crack capitalist skulls!;Beat some heads in!;Don't forget - harm is good!;Your weapons are right here.;Handcuffs!;Freeze, scumbag!;Don't tase me bro!;Tase them, bro.;Why not have a donut?"
+	// product_ads = "Beat some heads in!;Don't forget - harm is good!;Your weapons are right here.;Handcuffs!;Freeze, scumbag!;Don't tase me bro!;Tase them, bro.;Why not have a donut?"
+	// product_slogans = "Beat some heads in!;Don't forget - harm is good!;Your weapons are right here.;Handcuffs!;Freeze, scumbag!;Don't tase me bro!;Tase them, bro.;Why not have a donut?"
 	icon_state = "sec"
 	icon_deny = "sec-deny"
 	req_access = list(ACCESS_MARINE_BRIG)
@@ -462,6 +516,7 @@
 		/obj/item/ammo_magazine/rifle/m4ra/rubber = 40,
 		/obj/item/clothing/head/helmet/marine/MP = 8,
 		/obj/item/explosive/plastic/breaching_charge/rubber = 6,
+		/obj/item/clothing/glasses/mgoggles/mp_riot_shield = 15,
 	)
 
 /obj/structure/machinery/vending/sea
@@ -521,13 +576,12 @@
 					/obj/item/seeds/sunflowerseed = 2,/obj/item/seeds/tomatoseed = 3,/obj/item/seeds/wheatseed = 3,/obj/item/seeds/appleseed = 3,
 					/obj/item/seeds/poppyseed = 3,/obj/item/seeds/sugarcaneseed = 3,/obj/item/seeds/peanutseed = 3,/obj/item/seeds/whitebeetseed = 3,/obj/item/seeds/watermelonseed = 3,/obj/item/seeds/limeseed = 3,
 					/obj/item/seeds/lemonseed = 3,/obj/item/seeds/orangeseed = 3,/obj/item/seeds/grassseed = 3,/obj/item/seeds/cocoapodseed = 3,/obj/item/seeds/plumpmycelium = 2,
-					/obj/item/seeds/cabbageseed = 3,/obj/item/seeds/grapeseed = 3,/obj/item/seeds/pumpkinseed = 3,/obj/item/seeds/cherryseed = 3,/obj/item/seeds/riceseed = 3)
+					/obj/item/seeds/cabbageseed = 3,/obj/item/seeds/grapeseed = 3,/obj/item/seeds/pumpkinseed = 3,/obj/item/seeds/cherryseed = 3,/obj/item/seeds/riceseed = 3,/obj/item/seeds/reishimycelium = 3,)
 	contraband = list(
 		/obj/item/seeds/libertymycelium = 1,
 		/obj/item/seeds/mtearseed = 1,
 		/obj/item/seeds/ambrosiavulgarisseed = 1,
 		/obj/item/seeds/nettleseed = 1,
-		/obj/item/seeds/reishimycelium = 1,
 	)
 	premium = list(/obj/item/toy/waterflower = 1)
 
@@ -545,6 +599,19 @@
 	icon_state = "dinnerware"
 	products = list(/obj/item/tool/kitchen/tray = 8,/obj/item/tool/kitchen/utensil/fork = 6,/obj/item/tool/kitchen/knife = 3,/obj/item/reagent_container/food/drinks/drinkingglass = 8,/obj/item/clothing/suit/chef/classic = 2,/obj/item/reagent_container/food/condiment/saltshaker = 4,/obj/item/reagent_container/food/condiment/peppermill = 4,/obj/item/reagent_container/food/condiment/enzyme = 1,/obj/item/reagent_container/food/condiment = 8)
 	contraband = list(/obj/item/tool/kitchen/utensil/spoon = 2,/obj/item/tool/kitchen/utensil/knife = 2,/obj/item/tool/kitchen/rollingpin = 2, /obj/item/tool/kitchen/knife/butcher = 2)
+
+/obj/structure/machinery/vending/dinnerware/prison
+	products = list(
+		/obj/item/tool/kitchen/tray = 8,
+		/obj/item/tool/kitchen/utensil/fork/plastic = 6,
+		/obj/item/tool/kitchen/utensil/knife/plastic = 3,
+		/obj/item/reagent_container/food/drinks/sillycup = 8,
+		/obj/item/clothing/suit/chef/classic = 2,
+		/obj/item/reagent_container/food/condiment/saltshaker = 4,
+		/obj/item/reagent_container/food/condiment/peppermill = 4,
+		/obj/item/reagent_container/food/condiment/enzyme = 1,
+		/obj/item/reagent_container/food/condiment = 8,
+	)
 
 /obj/structure/machinery/vending/dinnerware/yautja
 	name = "dinnerplate dispenser"
@@ -643,6 +710,7 @@
 		/obj/item/device/cassette_tape/hairmetal = 10,
 		/obj/item/device/cassette_tape/indie = 10,
 		/obj/item/device/walkman = 50,
+		/obj/item/device/walkman/white_band = 50,
 		/obj/item/storage/pouch/cassette = 15,
 		/obj/item/toy/deck = 5,
 		/obj/item/toy/deck/uno = 5,
@@ -676,6 +744,7 @@
 		/obj/item/device/cassette_tape/hairmetal = 5,
 		/obj/item/device/cassette_tape/indie = 5,
 		/obj/item/device/walkman = 15,
+		/obj/item/device/walkman/white_band = 15,
 		/obj/item/storage/pouch/cassette = 10,
 		/obj/item/toy/deck = 20,
 		/obj/item/toy/deck/uno = 15,
@@ -694,12 +763,26 @@
 	)
 	product_type = VENDOR_PRODUCT_TYPE_RECREATIONAL
 
+/obj/structure/machinery/vending/walkman/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
+/obj/structure/machinery/vending/walkman/update_icon()
+	overlays.Cut()
+
+	if(stat & NOPOWER)
+		overlays += image(icon, "[icon_state]_off")
+	if(stat & BROKEN)
+		overlays += image(icon, "[initial(icon_state)]_broken")
+		if(stat & IN_REPAIR)
+			overlays += image(icon, "[icon_state]_panel")
+
 //vendor of ingredients for kitchen
 /obj/structure/machinery/vending/ingredients
 	name = "\improper Galley Auxiliary Storage Requisition System"
 	desc = "A vending machine meant to be use for cooks."
-	product_ads = "If your out of ingredients i am here for you;all my organic produce are fresh;don't let my potatoes go stale time for you to cook some fries"
-	icon_state = "snack"
+	product_ads = "If you're out of ingredients I am here for you!All my organic produce is fresh!;Don't let my potatoes go stale, time for you to cook some fries!"
+	icon_state = "snack" //TODO: placeholder, make a proper unique sprite
 	hacking_safety = TRUE
 	products = list(
 		/obj/item/storage/fancy/egg_box = 12,

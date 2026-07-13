@@ -74,6 +74,11 @@ SUBSYSTEM_DEF(ticker)
 			to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, margin_top = 0, html = SPAN_ROUNDBODY("Please, setup your character and select ready. Game will start in [floor(time_left / 10) || CONFIG_GET(number/lobby_countdown)] seconds."))
 			SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MODE_PREGAME_LOBBY)
 			current_state = GAME_STATE_PREGAME
+
+			#ifdef QUICK_START
+			request_start()
+			#endif
+
 			fire()
 
 		if(GAME_STATE_PREGAME)
@@ -110,7 +115,7 @@ SUBSYSTEM_DEF(ticker)
 				current_state = GAME_STATE_FINISHED
 				GLOB.ooc_allowed = TRUE
 				mode.declare_completion(force_ending)
-				REDIS_PUBLISH("byond.round", "type" = "round-complete", "round_name" = GLOB.round_statistics.round_name)
+				REDIS_PUBLISH("byond.round", "type" = "round-complete", "round_name" = GLOB.round_statistics.round_name, "round_finished" = mode.round_finished)
 				flash_clients()
 				addtimer(CALLBACK(
 					SSvote,
@@ -191,7 +196,7 @@ SUBSYSTEM_DEF(ticker)
 					break
 			if(active_admins)
 				to_chat(world, SPAN_CENTERBOLD("The game start has been delayed."))
-				message_admins(SPAN_ADMINNOTICE("Alert: Insufficent players ready to start [GLOB.master_mode].\nEither change mode and map or start round and bypass checks."))
+				message_admins(SPAN_ADMINNOTICE("Alert: Insufficient players ready to start [GLOB.master_mode].\nEither change mode and map or start round and bypass checks."))
 			else
 				var/fallback_mode = CONFIG_GET(string/gamemode_default)
 				SSticker.save_mode(fallback_mode)
@@ -405,7 +410,8 @@ SUBSYSTEM_DEF(ticker)
 	if(!GLOB.RoleAuthority)
 		return
 
-	for(var/mob/new_player/player in GLOB.player_list)
+	var/list/random_players = shuffle(GLOB.player_list)
+	for(var/mob/new_player/player in random_players)
 		if(!player || !player.ready || !player.mind || !player.job)
 			continue
 
@@ -431,7 +437,8 @@ SUBSYSTEM_DEF(ticker)
 				var/client/C = M.client
 				if(C.player_data && C.player_data.playtime_loaded && length(C.player_data.playtimes) == 0)
 					msg_admin_niche("NEW PLAYER: <b>[key_name(player, 1, 1, 0)]</b>. IP: [player.lastKnownIP], CID: [player.computer_id]")
-	QDEL_IN(player, 5)
+	if(!QDELETED(player))
+		QDEL_IN(player, 5 SECONDS)
 
 /datum/controller/subsystem/ticker/proc/old_create_characters()
 	for(var/mob/new_player/player in GLOB.player_list)
@@ -449,7 +456,8 @@ SUBSYSTEM_DEF(ticker)
 	if(mode && istype(mode,/datum/game_mode/huntergames)) // || istype(mode,/datum/game_mode/whiskey_outpost)
 		return
 
-	for(var/mob/living/carbon/human/player in GLOB.human_mob_list)
+	var/list/random_players = shuffle(GLOB.human_mob_list)
+	for(var/mob/living/carbon/human/player in random_players)
 		if(player.mind)
 			if(player.job == JOB_CO)
 				captainless = FALSE
@@ -511,6 +519,6 @@ SUBSYSTEM_DEF(ticker)
 	winset(C, null, "mainwindow.icon=[SSticker.mode.taskbar_icon]")
 
 /datum/controller/subsystem/ticker/proc/hijack_ocurred()
-	if(mode)
+	if(mode && !mode.is_in_endgame)
 		mode.is_in_endgame = TRUE
 		mode.force_end_at = (world.time + 25 MINUTES)

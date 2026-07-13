@@ -31,7 +31,7 @@
 //This is the proc for turning a mob into ash. Mostly a copy of gib code (above).
 //Originally created for wizard disintegrate. I've removed the virus code since it's irrelevant here.
 //Dusting robots does not eject the MMI, so it's a bit more powerful than gib() /N
-/mob/proc/dust(cause = "dusting")
+/mob/proc/dust(datum/cause_data/cause = create_cause_data("dusting", src))
 	death(cause, 1)
 	dust_animation()
 	spawn_dust_remains()
@@ -88,15 +88,15 @@
 	GLOB.alive_mob_list -= src
 	GLOB.dead_mob_list += src
 
-	// Larva queue: We use the larger of their existing queue time or the new timeofdeath except for facehuggers or lesser drone
+	// Larva pool: We use the larger of their existing time or the new timeofdeath except for facehuggers or lesser drone
 	var/exempt_tod = isfacehugger(src) || islesserdrone(src) || should_block_game_interaction(src, include_hunting_grounds=TRUE)
 	var/new_tod = exempt_tod ? 1 : timeofdeath
 	if(client)
-		client.player_details.larva_queue_time = max(client.player_details.larva_queue_time, new_tod)
+		client.player_details.larva_pool_time = max(client.player_details.larva_pool_time, new_tod)
 	else if(persistent_ckey)
 		var/datum/player_details/details = GLOB.player_details[persistent_ckey]
 		if(details)
-			details.larva_queue_time = max(details.larva_queue_time, new_tod)
+			details.larva_pool_time = max(details.larva_pool_time, new_tod)
 
 	if(client && client.player_data)
 		record_playtime(client.player_data, job, type)

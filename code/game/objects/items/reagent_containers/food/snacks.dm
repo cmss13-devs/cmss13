@@ -6,7 +6,7 @@
 
 /obj/item/reagent_container/food/snacks
 	name = "snack"
-	desc = "yummy"
+	desc = "Yummy."
 	icon = 'icons/obj/items/food/junkfood.dmi'
 	icon_state = null
 	item_icons = list(
@@ -88,13 +88,13 @@
 
 		if(M == user)//If you're eating it yourself
 			if (fullness <= NUTRITION_VERYLOW)
-				to_chat(M, SPAN_WARNING("You hungrily chew out a piece of [src] and gobble it!"))
+				to_chat(M, SPAN_WARNING("You ravenously shovel down a hunk of [src] and gobble it whole!"))
 			if (fullness > NUTRITION_VERYLOW && fullness <= NUTRITION_LOW)
-				to_chat(M, SPAN_NOTICE(" You hungrily begin to eat [src]."))
+				to_chat(M, SPAN_NOTICE("You hungrily chomp down on a chunk of [src]."))
 			if (fullness > NUTRITION_LOW && fullness <= NUTRITION_NORMAL)
-				to_chat(M, SPAN_NOTICE(" You take a bite of [src]."))
+				to_chat(M, SPAN_NOTICE("You take a bite of [src]."))
 			if (fullness > NUTRITION_NORMAL && fullness <= NUTRITION_HIGH)
-				to_chat(M, SPAN_NOTICE(" You unwillingly chew a bit of [src]."))
+				to_chat(M, SPAN_NOTICE("You unwillingly chew a bit of [src]."))
 			if (fullness > NUTRITION_HIGH)
 				to_chat(M, SPAN_WARNING("You reluctantly force more of [src] to go down your throat."))
 		else
@@ -163,7 +163,8 @@
 	if(istype(W,/obj/item/storage))
 		..() // -> item/attackby()
 
-	if(istype(W,/obj/item/tool/kitchen/utensil))
+	// No longer scoop up food with knife utensils, instead try to actually cut with them
+	if(istype(W,/obj/item/tool/kitchen/utensil) && !istype(W,/obj/item/tool/kitchen/utensil/knife))
 
 		var/obj/item/tool/kitchen/utensil/U = W
 
@@ -196,7 +197,7 @@
 		return 0
 
 	var/inaccurate = 0
-	if(W.sharp == IS_SHARP_ITEM_BIG)
+	if(W.sharp == IS_SHARP_ITEM_BIG || W.sharp == IS_SHARP_ITEM_SIMPLE)
 		inaccurate = 1
 	else if(W.sharp != IS_SHARP_ITEM_ACCURATE)
 		return 1
@@ -236,10 +237,10 @@
 			if(bitecount >= 5)
 				var/sattisfaction_text = pick("burps from enjoyment", "yaps for more", "woofs twice", "looks at the area where [src] was")
 				if(sattisfaction_text)
-					M.emote("[sattisfaction_text]")
+					M.emote("[sattisfaction_text].")
 				qdel(src)
 		if(ismouse(M))
-			var/mob/living/simple_animal/mouse/N = M
+			var/mob/living/simple_animal/small/mouse/N = M
 			to_chat(N, text(SPAN_NOTICE("You nibble away at [src].")))
 			if(prob(50))
 				N.visible_message("[N] nibbles away at [src].", "")
@@ -339,7 +340,7 @@
 
 /obj/item/reagent_container/food/snacks/chips
 	name = "chips"
-	desc = "Commander Riker's What-The-Crisps"
+	desc = "Commander Riker's What-The-Crisps."
 	icon_state = "chips"
 	trash = /obj/item/trash/chips
 	filling_color = "#E8C31E"
@@ -361,6 +362,7 @@
 	. = ..()
 	reagents.add_reagent("bread", 3)
 	reagents.add_reagent("blackpepper", 1)
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/reagent_container/food/snacks/cookie
 	name = "cookie"
@@ -646,7 +648,7 @@
 
 /obj/item/reagent_container/food/snacks/carpmeat
 	name = "carp fillet"
-	desc = "A fillet of spess carp meat"
+	desc = "A fillet of spess carp meat."
 	icon_state = "fishfillet"
 	icon = 'icons/obj/items/food/fish.dmi'
 	filling_color = "#FFDEFE"
@@ -692,7 +694,7 @@
 
 /obj/item/reagent_container/food/snacks/tomatomeat
 	name = "tomato slice"
-	desc = "A slice from a huge tomato"
+	desc = "A slice from a huge tomato."
 	icon_state = "tomatomeat"
 	icon = 'icons/obj/items/food/slices.dmi'
 	filling_color = "#DB0000"
@@ -1186,6 +1188,7 @@
 	. = ..()
 	unpopped = rand(1,10)
 	reagents.add_reagent("plantmatter", 2)
+	AddElement(/datum/element/corp_label/wy)
 	bitesize = 0.1 //this snack is supposed to be eating during looooong time. And this it not dinner food! --rastaf0
 
 /obj/item/reagent_container/food/snacks/popcorn/On_Consume()
@@ -1349,7 +1352,7 @@
 
 /obj/item/reagent_container/food/snacks/spacylibertyduff
 	name = "Spacy Liberty Duff"
-	desc = "Jello gelatin, from Alfred Hubbard's cookbook"
+	desc = "Jello gelatin, from Alfred Hubbard's cookbook."
 	icon_state = "spacylibertyduff"
 	icon = 'icons/obj/items/food/dishes.dmi'
 	trash = /obj/item/trash/snack_bowl
@@ -1363,7 +1366,7 @@
 
 /obj/item/reagent_container/food/snacks/amanitajelly
 	name = "Amanita Jelly"
-	desc = "Looks curiously toxic"
+	desc = "Looks curiously toxic."
 	icon_state = "amanitajelly"
 	icon = 'icons/obj/items/food/dishes.dmi'
 	trash = /obj/item/trash/snack_bowl
@@ -1406,7 +1409,7 @@
 
 /obj/item/reagent_container/food/snacks/bloodsoup
 	name = "Tomato soup"
-	desc = "Smells like copper"
+	desc = "Smells like copper."
 	icon_state = "tomatosoup"
 	icon = 'icons/obj/items/food/soups_salads.dmi'
 	filling_color = COLOR_RED
@@ -1586,7 +1589,7 @@
 		package = 0
 
 /obj/item/reagent_container/food/snacks/monkeycube/On_Consume(mob/M)
-	to_chat(M, SPAN_WARNING("Something inside of you suddently expands!"))
+	to_chat(M, SPAN_WARNING("Something inside of you suddenly expands!"))
 
 	if (istype(M, /mob/living/carbon/human))
 		//Do not try to understand.
@@ -1959,7 +1962,7 @@
 
 /obj/item/reagent_container/food/snacks/spesslaw
 	name = "Spesslaw"
-	desc = "A lawyer's favourite"
+	desc = "A lawyer's favourite."
 	icon_state = "spesslaw"
 	icon = 'icons/obj/items/food/dishes.dmi'
 	filling_color = "#DE4545"
@@ -2078,7 +2081,7 @@
 
 /obj/item/reagent_container/food/snacks/mint
 	name = "mint"
-	desc = "it is only wafer thin."
+	desc = "It is only wafer thin."
 	icon_state = "mint"
 	icon = 'icons/obj/items/food/dishes.dmi'
 	filling_color = "#F2F2F2"
@@ -2377,7 +2380,7 @@
 
 /obj/item/reagent_container/food/snacks/cheesecakeslice
 	name = "Cheese Cake slice"
-	desc = "Slice of pure cheestisfaction"
+	desc = "Slice of pure cheestisfaction."
 	icon_state = "cheesecake_slice"
 	icon = 'icons/obj/items/food/cakes.dmi'
 	trash = /obj/item/trash/plate
@@ -2481,7 +2484,7 @@
 
 /obj/item/reagent_container/food/snacks/sliceable/chocolatecake
 	name = "Chocolate Cake"
-	desc = "A cake with added chocolate"
+	desc = "A cake with added chocolate."
 	icon_state = "chocolatecake"
 	icon = 'icons/obj/items/food/cakes.dmi'
 	slice_path = /obj/item/reagent_container/food/snacks/chocolatecakeslice
@@ -2605,7 +2608,7 @@
 
 /obj/item/reagent_container/food/snacks/birthdaycakeslice
 	name = "Birthday Cake slice"
-	desc = "A slice of your birthday"
+	desc = "A slice of your birthday."
 	icon_state = "birthdaycakeslice"
 	icon = 'icons/obj/items/food/cakes.dmi'
 	trash = /obj/item/trash/plate
@@ -2667,7 +2670,7 @@
 
 /obj/item/reagent_container/food/snacks/sliceable/applecake
 	name = "Apple Cake"
-	desc = "A cake centred with Apple"
+	desc = "A cake centred with Apple."
 	icon_state = "applecake"
 	icon = 'icons/obj/items/food/cakes.dmi'
 	slice_path = /obj/item/reagent_container/food/snacks/applecakeslice
@@ -2807,7 +2810,7 @@
 
 /obj/item/reagent_container/food/snacks/sliceable/pizza/mushroompizza
 	name = "Mushroompizza"
-	desc = "Very special pizza"
+	desc = "Very special pizza."
 	icon_state = "mushroompizza"
 	slice_path = /obj/item/reagent_container/food/snacks/mushroompizzaslice
 
@@ -2827,7 +2830,7 @@
 
 /obj/item/reagent_container/food/snacks/sliceable/pizza/vegetablepizza
 	name = "Vegetable pizza"
-	desc = "No one of Tomato Sapiens were harmed during making this pizza"
+	desc = "No one of Tomato Sapiens were harmed during making this pizza."
 	icon_state = "vegetablepizza"
 	slice_path = /obj/item/reagent_container/food/snacks/vegetablepizzaslice
 
@@ -2840,7 +2843,7 @@
 
 /obj/item/reagent_container/food/snacks/vegetablepizzaslice
 	name = "Vegetable pizza slice"
-	desc = "A slice of the most green pizza of all pizzas not containing green ingredients "
+	desc = "A slice of the most green pizza of all pizzas not containing green ingredients."
 	icon = 'icons/obj/items/food/pizza.dmi'
 	icon_state = "vegetablepizzaslice"
 	item_state_slots = list(WEAR_AS_GARB = "pizza")
@@ -3022,7 +3025,7 @@
 /obj/item/pizzabox/vegetable/Initialize()
 	. = ..()
 	pizza = new /obj/item/reagent_container/food/snacks/sliceable/pizza/vegetablepizza(src)
-	boxtag = "Gourmet Vegatable"
+	boxtag = "Gourmet Vegetable"
 
 /obj/item/pizzabox/mushroom/Initialize()
 	. = ..()
@@ -3061,7 +3064,7 @@
 /obj/item/pizzabox/pizza_galaxy/vegetable/Initialize()
 	. = ..()
 	pizza = new /obj/item/reagent_container/food/snacks/sliceable/pizza/vegetablepizza(src)
-	boxtag = "Gourmet Vegatable"
+	boxtag = "Gourmet Vegetable"
 
 /obj/item/pizzabox/pizza_galaxy/mushroom/Initialize()
 	. = ..()
@@ -3328,17 +3331,19 @@
 	. = ..()
 	reagents.add_reagent("bread", 5)
 	reagents.add_reagent("meatprotein", 5)
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/reagent_container/food/snacks/packaged_burrito/attack_self(mob/user)
-	..()
-
 	if(package)
 		playsound(src.loc,'sound/effects/pageturn2.ogg', 15, 1)
 		to_chat(user, SPAN_NOTICE("You pull off the wrapping from the squishy burrito!"))
+		RemoveElement(/datum/element/corp_label/wy)
 		package = 0
-		new /obj/item/trash/buritto (user.loc)
+		user.put_in_hands(new /obj/item/trash/buritto)
 		icon_state = "open-burrito"
 		item_state = "burrito"
+		return
+	..()
 
 /obj/item/reagent_container/food/snacks/packaged_burger
 	name = "Packaged Cheeseburger"
@@ -3354,18 +3359,19 @@
 	reagents.add_reagent("bread", 5)
 	reagents.add_reagent("meatprotein", 5)
 	reagents.add_reagent("sodiumchloride", 2)
-
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/reagent_container/food/snacks/packaged_burger/attack_self(mob/user)
-	..()
-
 	if(package)
 		playsound(src.loc,'sound/effects/pageturn2.ogg', 15, 1)
 		to_chat(user, SPAN_NOTICE("You pull off the wrapping from the squishy hamburger!"))
+		RemoveElement(/datum/element/corp_label/wy)
 		package = 0
-		new /obj/item/trash/burger (user.loc)
+		user.put_in_hands(new /obj/item/trash/burger)
 		icon_state = "hburger"
 		item_state = "burger"
+		return
+	..()
 
 /obj/item/reagent_container/food/snacks/packaged_hdogs
 	name = "Packaged Hotdog"
@@ -3381,17 +3387,19 @@
 	reagents.add_reagent("bread", 2)
 	reagents.add_reagent("meatprotein", 1)
 	reagents.add_reagent("sodiumchloride", 2)
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/reagent_container/food/snacks/packaged_hdogs/attack_self(mob/user)
-	..()
-
 	if(package)
 		playsound(src.loc,'sound/effects/pageturn2.ogg', 15, 1)
 		to_chat(user, SPAN_NOTICE("You pull off the wrapping from the squishy hotdog!"))
+		RemoveElement(/datum/element/corp_label/wy)
 		package = 0
-		new /obj/item/trash/hotdog (user.loc)
+		user.put_in_hands(new /obj/item/trash/hotdog)
 		icon_state = "open-hotdog"
 		item_state = "hotdog"
+		return
+	..()
 
 /obj/item/reagent_container/food/snacks/eat_bar
 	name = "MEAT Bar"
@@ -3406,7 +3414,7 @@
 	. = ..()
 	reagents.add_reagent("nutriment", 4)
 	reagents.add_reagent("meatprotein", 4)
-
+	AddElement(/datum/element/corp_label/wy) //Had WY logo (wings) in Alien Isolation
 
 /obj/item/reagent_container/food/snacks/kepler_crisps
 	name = "Kepler Crisps"
@@ -3420,6 +3428,7 @@
 	. = ..()
 	reagents.add_reagent("bread", 4)
 	reagents.add_reagent("sodiumchloride", 12)
+	AddElement(/datum/element/corp_label/wy) //Had WY logo (wings) in Alien Isolation
 
 /obj/item/reagent_container/food/snacks/kepler_crisps/flamehot
 	name = "Kepler Flamehot"
@@ -3444,17 +3453,17 @@
 	var/obj/item/trash/wrapper = null //Why this and not trash? Because it pulls the wrapper off when you unwrap it as a trash item.
 
 /obj/item/reagent_container/food/snacks/wrapped/attack_self(mob/user)
-	..()
-
 	if(package)
 		to_chat(user, SPAN_NOTICE("You pull open the package of [src]!"))
 		playsound(loc,'sound/effects/pageturn2.ogg', 15, 1)
 
 		if(wrapper)
-			new wrapper(user.loc)
+			user.put_in_hands(new wrapper)
 		icon_state = "[initial(icon_state)]-o"
 		item_state = "[initial(item_state)]-o"
 		package = 0
+		return
+	..()
 
 //CM SNACKS
 /obj/item/reagent_container/food/snacks/wrapped/booniebars

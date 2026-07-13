@@ -210,7 +210,7 @@ directive is properly returned.
 /atom/proc/HasProximity(atom/movable/AM as mob|obj)
 	return
 
-/atom/proc/emp_act(severity)
+/atom/proc/emp_act(severity, datum/cause_data/cause_data)
 	SHOULD_CALL_PARENT(TRUE)
 
 	if(emp_proof)
@@ -269,14 +269,24 @@ directive is properly returned.
 
 // called by mobs when e.g. having the atom as their machine, pulledby, loc (AKA mob being inside the atom) or buckled var set.
 // see code/modules/mob/mob_movement.dm for more.
-/atom/proc/relaymove()
+/atom/proc/relaymove(mob/living/user, direction)
 	return
+
+/**
+ * A special case of relaymove() in which the person relaying the move may be "driving" this atom
+ *
+ * This is a special case for vehicles and ridden animals where the relayed movement may be handled
+ * by the riding component attached to this atom. Returns TRUE as long as there's nothing blocking
+ * the movement, or FALSE if the signal gets a reply that specifically blocks the movement
+ */
+/atom/proc/relaydrive(mob/living/user, direction)
+	return !(SEND_SIGNAL(src, COMSIG_RIDDEN_DRIVER_MOVE, user, direction) & COMPONENT_DRIVER_BLOCK_MOVE)
 
 /atom/proc/contents_explosion(severity)
 	for(var/atom/A in contents)
 		A.ex_act(severity)
 
-/atom/proc/ex_act(severity)
+/atom/proc/ex_act(severity, direction, datum/cause_data/cause_data, pierce=0, enviro=FALSE)
 	if(explo_proof)
 		return
 
@@ -290,25 +300,25 @@ directive is properly returned.
 	return
 
 /atom/proc/add_hiddenprint(mob/living/M)
-	if(!M || QDELETED(M) || !M.key || !(flags_atom  & FPRINT) || fingerprintslast == M.key)
+	if(!M || QDELETED(M) || !M.ckey || !(flags_atom  & FPRINT) || fingerprintslast == M.ckey)
 		return
 	if (ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if (H.gloves)
-			fingerprintshidden += "\[[time_stamp()]\] (Wearing gloves). Real name: [H.real_name], Key: [H.key]"
+			fingerprintshidden += "\[[time_stamp()]\] (Wearing gloves). Real name: [H.real_name], CKEY: [H.ckey]"
 		else
-			fingerprintshidden += "\[[time_stamp()]\] Real name: [H.real_name], Key: [H.key]"
+			fingerprintshidden += "\[[time_stamp()]\] Real name: [H.real_name], CKEY: [H.ckey]"
 	else
-		fingerprintshidden += "\[[time_stamp()]\] Real name: [M.real_name], Key: [M.key]"
-	fingerprintslast = M.key
+		fingerprintshidden += "\[[time_stamp()]\] Real name: [M.real_name], CKEY: [M.ckey]"
+	fingerprintslast = M.ckey
 
 
 /atom/proc/add_fingerprint(mob/living/M)
-	if(!M || QDELETED(M) || !M.key || !(flags_atom & FPRINT) || fingerprintslast == M.key)
+	if(!M || QDELETED(M) || !M.ckey || !(flags_atom & FPRINT) || fingerprintslast == M.ckey)
 		return
 	if(!fingerprintshidden)
 		fingerprintshidden = list()
-	fingerprintslast = M.key
+	fingerprintslast = M.ckey
 
 	if (ishuman(M))
 		var/mob/living/carbon/human/H = M
@@ -316,15 +326,15 @@ directive is properly returned.
 		//Fibers~
 		blood_touch(H)
 
-		fingerprintslast = M.key
+		fingerprintslast = M.ckey
 
 		//Now, deal with gloves.
 		if (H.gloves && H.gloves != src)
-			fingerprintshidden += "\[[time_stamp()]\](Wearing gloves). Real name: [H.real_name], Key: [H.key]"
+			fingerprintshidden += "\[[time_stamp()]\](Wearing gloves). Real name: [H.real_name], CKEY: [H.ckey]"
 		else
-			fingerprintshidden += "\[[time_stamp()]\]Real name: [H.real_name], Key: [H.key]"
+			fingerprintshidden += "\[[time_stamp()]\]Real name: [H.real_name], CKEY: [H.ckey]"
 	else
-		fingerprintshidden +=  "\[[time_stamp()]\]Real name: [M.real_name], Key: [M.key]"
+		fingerprintshidden +=  "\[[time_stamp()]\]Real name: [M.real_name], CKEY: [M.ckey]"
 
 
 
@@ -422,16 +432,16 @@ Parameters are passed from New.
 /atom/clone
 	var/proj_x = 0
 	var/proj_y = 0
+	var/proj_z = 0
 
-/atom/proc/create_clone(shift_x, shift_y) //NOTE: Use only for turfs, otherwise use create_clone_movable
-	var/turf/T = null
-	T = locate(src.x + shift_x, src.y + shift_y, src.z)
+/atom/proc/create_clone(shift_x, shift_y, shift_z) //NOTE: Use only for turfs, otherwise use create_clone_movable
+	var/turf/target_turf = locate(x + shift_x, y + shift_y, z + shift_z)
 
-	T.appearance = src.appearance
-	T.setDir(src.dir)
+	target_turf.appearance = appearance
+	target_turf.setDir(dir)
 
 	GLOB.clones_t.Add(src)
-	src.clone = T
+	clone = target_turf
 
 // EFFECTS
 /atom/proc/extinguish_acid()
@@ -638,7 +648,7 @@ Parameters are passed from New.
 
 // returns a modifier for how much the tail stab should be cooldowned by
 // returning a 0 makes it do nothing
-/atom/proc/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/atom/proc/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	return TAILSTAB_COOLDOWN_NONE
 
 /atom/proc/handle_flamer_fire(obj/flamer_fire/fire, damage, delta_time)
@@ -675,7 +685,7 @@ Parameters are passed from New.
 		var/datum/effect_system/spark_spread/spark_system = new
 		spark_system.set_up(5, 0, src)
 		spark_system.attach(src)
-		spark_system.start(src)
+		spark_system.start()
 	return CHECKS_PASSED
 
 ///Turn on the light, should be called by a timer
@@ -813,3 +823,6 @@ Parameters are passed from New.
 	var/refid = REF(src)
 	. += "[VV_HREF_TARGETREF(refid, VV_HK_AUTO_RENAME, "<b id='name'>[src]</b>")]"
 	. += "<br><font size='1'><a href='byond://?_src_=vars;[HrefToken()];rotatedatum=[refid];rotatedir=left'><<</a> <a href='byond://?_src_=vars;[HrefToken()];datumedit=[refid];varnameedit=dir' id='dir'>[dir2text(dir) || dir]</a> <a href='byond://?_src_=vars;[HrefToken()];rotatedatum=[refid];rotatedir=right'>>></a></font>"
+
+/atom/Exited(atom/movable/AM, direction)
+	SEND_SIGNAL(src, COMSIG_ATOM_EXITED, AM, direction)

@@ -9,7 +9,7 @@
 	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROT
 
 /obj/item/clothing/gloves/cyborg
-	desc = "beep boop borp"
+	desc = "Beep boop borp."
 	name = "cyborg gloves"
 	icon_state = "black"
 	item_state = "r_hands"
@@ -18,7 +18,7 @@
 /obj/item/clothing/gloves/swat
 	desc = "These tactical gloves are somewhat fire and impact-resistant."
 	name = "\improper SWAT Gloves"
-	icon_state = "black"
+	icon_state = "veteran"
 	item_state = "black"
 	siemens_coefficient = 0.6
 
@@ -42,11 +42,11 @@
 
 /obj/item/clothing/gloves/latex
 	name = "latex gloves"
-	desc = "Sterile latex gloves."
+	desc = "Sterile latex gloves. Offers some biological protection."
 	icon_state = "latex"
 	item_state = "latex"
 	siemens_coefficient = 0.30
-	armor_bio = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 
 /obj/item/clothing/gloves/botanic_leather
 	desc = "These leather gloves protect against thorns, barbs, prickles, spikes and other harmful objects of floral origin."

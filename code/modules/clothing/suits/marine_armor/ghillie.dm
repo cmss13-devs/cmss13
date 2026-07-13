@@ -19,7 +19,7 @@
 	var/camouflage_enter_delay = 4 SECONDS
 	var/can_camo = TRUE
 
-	actions_types = list(/datum/action/item_action/toggle, /datum/action/item_action/specialist/prepare_position)
+	actions_types = list(/datum/action/item_action/toggle/lamp, /datum/action/item_action/specialist/prepare_position)
 
 /obj/item/clothing/suit/storage/marine/ghillie/dropped(mob/user)
 	if(ishuman(user) && !issynth(user))
@@ -29,10 +29,9 @@
 
 /obj/item/clothing/suit/storage/marine/ghillie/select_gamemode_skin()
 	. = ..()
-	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
-		if("urban")
-			name = "\improper M3-LS pattern sniper armor"
-			desc = "A lightweight version of M3 pattern armor, with an integrated thermal signature dampering device, used by USCM snipers on urban recon missions. Very lightweight, but doesn't protect much."
+	if(SSmapping.configs[GROUND_MAP].camouflage_type == "urban" || "classic")
+		name = "\improper M3-LS pattern sniper armor"
+		desc = "A lightweight version of M3 pattern armor, with an integrated thermal signature dampering device, used by USCM snipers on urban recon missions. Very lightweight, but doesn't protect much."
 
 /obj/item/clothing/suit/storage/marine/ghillie/verb/camouflage()
 	set name = "Prepare Position"
@@ -163,7 +162,7 @@
 
 /obj/item/clothing/suit/storage/marine/ghillie/forecon
 	name = "UDEP Thermal Poncho"
-	desc = "UDEP or the Ultra Diffusive Environmental Poncho is a camouflaged rain-cover worn to protect against the elements and chemical spills. It's commonly treated with an infrared absorbing coating, making a marine almost invisible in the rain. Favoured by USCM specialists for it's comfort and practicality."
+	desc = "UDEP or the Ultra Diffusive Environmental Poncho is a camouflaged rain-cover worn to protect against the elements and chemical spills. It's commonly treated with an infrared absorbing coating, making a marine almost invisible in the rain. Favoured by USCM specialists for its comfort and practicality."
 	icon_state = "mercenary_miner_armor"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/CLF.dmi'
 	item_icons = list(

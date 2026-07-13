@@ -18,7 +18,7 @@
 		return FALSE
 
 /obj/proc/check_yautja_access(mob/living/carbon/human/yautja)
-	if(!istype(yautja))
+	if(!ishuman(yautja) || !HAS_TRAIT(yautja, TRAIT_YAUTJA_TECH))
 		return FALSE
 	var/obj/item/clothing/gloves/yautja/hunter/bracer = yautja.gloves
 	if(!istype(bracer) || !bracer.embedded_id || !check_access(bracer.embedded_id))
@@ -110,7 +110,7 @@
 		if(ACCESS_LIST_MARINE_MAIN)
 			return list(
 				ACCESS_MARINE_SENIOR,
-				ACCESS_MARINE_DATABASE,
+				ACCESS_MARINE_GENERAL,
 				ACCESS_MARINE_COMMAND,
 				ACCESS_MARINE_CMP,
 				ACCESS_MARINE_BRIG,
@@ -146,11 +146,13 @@
 				ACCESS_MARINE_CHAPLAIN,
 				ACCESS_MARINE_FIELD_DOC,
 				ACCESS_PRESS,
+				ACCESS_MARINE_DATABASE,
 			)
 
 		if(ACCESS_LIST_MARINE_ALL)
 			return list(
 				ACCESS_MARINE_CO,
+				ACCESS_MARINE_DATABASE_ADMIN,
 				ACCESS_MARINE_AI,
 				ACCESS_MARINE_AI_TEMP,
 			) + get_access(ACCESS_LIST_MARINE_MAIN)
@@ -262,6 +264,9 @@
 				ACCESS_WY_ARMORY,
 			) + get_access(ACCESS_LIST_COLONIAL_ALL) + get_access(ACCESS_LIST_EMERGENCY_RESPONSE)
 
+		if(ACCESS_LIST_WY_PPO)
+			return list(ACCESS_WY_SECURITY) + get_access(ACCESS_LIST_MARINE_LIAISON)
+
 		if(ACCESS_LIST_WY_PMC)
 			return list(
 				ACCESS_WY_PMC,
@@ -313,8 +318,9 @@
 		if(5)//Command
 			return list(
 				ACCESS_MARINE_SENIOR,
-				ACCESS_MARINE_DATABASE,
 				ACCESS_MARINE_COMMAND,
+				ACCESS_MARINE_GENERAL,
+				ACCESS_MARINE_DATABASE,
 				ACCESS_MARINE_RO,
 				ACCESS_MARINE_CARGO,
 				ACCESS_MARINE_SEA,
@@ -393,6 +399,10 @@
 			return "[MAIN_SHIP_NAME] Engineering"
 		if(ACCESS_MARINE_OT)
 			return "[MAIN_SHIP_NAME] Ordnance Workshop"
+		if(ACCESS_MARINE_GENERAL)
+			return "[MAIN_SHIP_NAME] General Access"
+		if(ACCESS_MARINE_DATABASE)
+			return "[MAIN_SHIP_NAME] Database Access"
 		if(ACCESS_MARINE_SENIOR)
 			return "[MAIN_SHIP_NAME] Senior Command"
 		if(ACCESS_MARINE_CO)

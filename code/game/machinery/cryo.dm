@@ -99,7 +99,7 @@
 				data["occupant"]["statstate"] = "bad"
 		data["occupant"]["health"] = round(mob_occupant.health, 1)
 		data["occupant"]["maxHealth"] = mob_occupant.maxHealth
-		data["occupant"]["minHealth"] = HEALTH_THRESHOLD_DEAD
+		data["occupant"]["minHealth"] = mob_occupant.health_threshold_dead
 		data["occupant"]["bruteLoss"] = round(mob_occupant.getBruteLoss(), 1)
 		data["occupant"]["oxyLoss"] = round(mob_occupant.getOxyLoss(), 1)
 		data["occupant"]["toxLoss"] = round(mob_occupant.getToxLoss(), 1)
@@ -169,7 +169,7 @@
 		for(var/datum/reagent/cur_reagent in beaker.reagents.reagent_list)
 			reagentnames += ";[cur_reagent.name]"
 
-		msg_admin_niche("[key_name(user)] put \a [beaker] into [src], containing [reagentnames] at ([src.loc.x],[src.loc.y],[src.loc.z]) [ADMIN_JMP(src.loc)].", 1)
+		msg_admin_niche("[key_name(user)] put \a [beaker] into [src], containing [reagentnames] at [ADMIN_VERBOSEJMP(src)].")
 
 		if(user.drop_inv_item_to_loc(W, src))
 			user.visible_message("[user] adds \a [W] to [src]!", "You add \a [W] to [src]!")
@@ -256,8 +256,8 @@
 			beaker.reagents.reaction(occupant, permeable_in_mobs = FALSE)
 
 	if(autoeject)
-		//release the patient automatically when brute and burn are handled on non-robotic limbs
-		if(!occupant.getBruteLoss(TRUE) && !occupant.getFireLoss(TRUE) && !occupant.getCloneLoss())
+		//release the patient automatically when brute and burn are handled on non-robotic limbs and tox damage handled
+		if(!occupant.getBruteLoss(TRUE) && !occupant.getFireLoss(TRUE) && !occupant.getToxLoss() && !occupant.getCloneLoss())
 			display_message("Patient's external wounds are healed.")
 			go_out(TRUE)
 			return
@@ -270,7 +270,7 @@
 	if(!(occupant))
 		return
 	if(occupant.client)
-		occupant.client.eye = occupant.client.mob
+		occupant.client.set_eye(occupant.client.mob)
 		occupant.client.perspective = MOB_PERSPECTIVE
 	switch(dir)
 		if(NORTH)
@@ -312,7 +312,7 @@
 	if(do_after(usr, 2 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		visible_message(SPAN_NOTICE("[usr] moves [usr == cur_mob ? "" : "[cur_mob] "]inside the cryo cell."))
 		cur_mob.forceMove(src)
-		if(cur_mob.health >= HEALTH_THRESHOLD_DEAD && (cur_mob.health <= 0 || cur_mob.sleeping))
+		if(cur_mob.health >= cur_mob.health_threshold_dead && (cur_mob.health <= 0 || cur_mob.sleeping))
 			to_chat(cur_mob, SPAN_NOTICE("You feel cold liquid surround you. Your skin starts to freeze up."))
 		occupant = cur_mob
 		occupant_death_stage = DEATH_STAGE_NONE

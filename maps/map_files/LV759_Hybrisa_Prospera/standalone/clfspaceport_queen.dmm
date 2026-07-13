@@ -1,0 +1,31 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/open/floor/almayer/tcomms,
+/area/template_noop)
+"i" = (
+/turf/open/floor/almayer/w_y0/north,
+/area/template_noop)
+"E" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/strata/orange_cover,
+/area/template_noop)
+"I" = (
+/turf/open/floor/almayer/w_y2/north,
+/area/template_noop)
+"O" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/almayer/w_y1/north,
+/area/template_noop)
+
+(1,1,1) = {"
+i
+a
+"}
+(2,1,1) = {"
+O
+E
+"}
+(3,1,1) = {"
+I
+a
+"}

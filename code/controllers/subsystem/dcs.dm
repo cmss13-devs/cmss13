@@ -40,7 +40,7 @@ PROCESSING_SUBSYSTEM_DEF(dcs)
 			value = arguments[key]
 		if(!(istext(key) || isnum(key)))
 			key = REF(key)
-		key = "[key]" // Key is stringified so numbers dont break things
+		key = "[key]" // Key is stringified so numbers don't break things
 		if(!isnull(value))
 			if(!(istext(value) || isnum(value)))
 				value = REF(value)

@@ -29,12 +29,14 @@
 	pixel_y = -6
 	old_x = -8
 	old_y = -6
+	xenonid_pixel_x = -1
+	xenonid_pixel_y = 0
 	layer = MOB_LAYER
 	mob_flags = NOBIOSCAN
 	see_in_dark = 8
 	tier = 0  //Facehuggers don't count towards Pop limits
 	acid_blood_damage = 5
-	crit_health = 0
+	health_threshold_dead = 0
 	crit_grace_time = 0
 	gib_chance = 75
 	mob_size = MOB_SIZE_SMALL
@@ -48,11 +50,11 @@
 	can_hivemind_speak = FALSE
 
 	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/onclick/xenohide,
 		/datum/action/xeno_action/activable/pounce/facehugger,
-		/datum/action/xeno_action/onclick/tacmap,
 	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
@@ -71,6 +73,7 @@
 	var/next_facehug_goal = FACEHUG_TIER_1
 	/// Whether a hug was performed successfully
 	var/hug_successful = FALSE
+	var/last_roar_time = 0
 
 /mob/living/carbon/xenomorph/facehugger/Login()
 	var/last_ckey_inhabited = persistent_ckey
@@ -86,16 +89,22 @@
 		3 MINUTES,\
 	)
 
+/mob/living/carbon/xenomorph/facehugger/warn_away_timer()
+	return // Ghostizing will just convert to regular hugger
+
 /mob/living/carbon/xenomorph/facehugger/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_MOB_THRU|PASS_FLAGS_CRAWLER
-		PF.flags_can_pass_all = PASS_ALL^PASS_OVER_THROW_ITEM
+		PF.flags_can_pass_all = PASS_ALL|PASS_OVER_THROW_ITEM
 
 /mob/living/carbon/xenomorph/facehugger/Logout()
 	. = ..()
 
 	if(stat == DEAD)
+		return
+
+	if(QDELETED(src))
 		return
 
 	if(!aghosted)
@@ -137,8 +146,8 @@
 
 	if(ishuman(A))
 		var/mob/living/carbon/human/human = A
-		if(human.body_position != LYING_DOWN)
-			to_chat(src, SPAN_WARNING("You can't reach \the [human], they need to be lying down."))
+		if((human.body_position != LYING_DOWN) && (!HAS_TRAIT(human, TRAIT_NESTED)))
+			to_chat(src, SPAN_WARNING("You can't reach \the [human], they need to be lying down or nested."))
 			return
 		if(!can_hug(human, hivenumber))
 			to_chat(src, SPAN_WARNING("You can't infect \the [human]..."))
@@ -146,8 +155,8 @@
 		visible_message(SPAN_WARNING("\The [src] starts climbing onto \the [human]'s face..."), SPAN_XENONOTICE("You start climbing onto \the [human]'s face..."))
 		if(!do_after(src, FACEHUGGER_CLIMB_DURATION, INTERRUPT_ALL, BUSY_ICON_HOSTILE, human, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 			return
-		if(human.body_position != LYING_DOWN)
-			to_chat(src, SPAN_WARNING("You can't reach \the [human], they need to be lying down."))
+		if((human.body_position != LYING_DOWN) && (!HAS_TRAIT(human, TRAIT_NESTED)))
+			to_chat(src, SPAN_WARNING("You can't reach \the [human], they need to be lying down or nested."))
 			return
 		if(!can_hug(human, hivenumber))
 			to_chat(src, SPAN_WARNING("You can't infect \the [human]..."))
@@ -171,7 +180,7 @@
 	qdel(src)
 	return did_hug
 
-/mob/living/carbon/xenomorph/facehugger/ghostize(can_reenter_corpse, aghosted)
+/mob/living/carbon/xenomorph/facehugger/ghostize(can_reenter_corpse = FALSE, aghosted = FALSE, transfer = FALSE)
 	if(!aghosted && !can_reenter_corpse && !QDELETED(src) && stat != DEAD)
 		// Become a npc once again
 		new /obj/item/clothing/mask/facehugger(loc, hivenumber)
@@ -255,6 +264,12 @@
 			return FALSE
 
 	// Otherwise, ""roar""!
+	var/current_time = world.time
+	if(current_time - last_roar_time < 1 SECONDS)
+		to_chat(src, SPAN_WARNING("You must wait before roaring again."))
+		return FALSE
+
+	last_roar_time = current_time
 	playsound(loc, "alien_roar_larva", 15)
 	return TRUE
 

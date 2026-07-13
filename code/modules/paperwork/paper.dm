@@ -3,8 +3,6 @@
  * also scraps of paper
  */
 
-#define MAX_FIELDS 51
-
 /obj/item/paper
 	name = "paper"
 	gender = PLURAL
@@ -29,18 +27,24 @@
 	ground_offset_x = 9
 	ground_offset_y = 8
 
-	var/info //What's actually written on the paper.
-	var/info_links //A different version of the paper which includes html links at fields and EOF
-	var/stamps //The (text for the) stamps on the paper.
-	var/fields //Amount of user created fields
+	///What's actually written on the paper.
+	var/info
+	///A different version of the paper which includes html links at fields and EOF
+	var/info_links
+	///Optional additional stylesheets in the form name=filename
+	var/list/extra_stylesheets
+	///Optional additional header content
+	var/list/extra_headers
+	///The (text for the) stamps on the paper.
+	var/stamps
+	///Amount of user created fields
+	var/fields
 	var/list/stamped
 	var/ico[0] //Icons and
 	var/offset_x[0] //offsets stored for later
 	var/offset_y[0] //usage by the photocopier
-	var/rigged = 0
-	var/spam_flag = 0
 
-	// any photos that might be attached to the paper
+	/// any photos that might be attached to the paper
 	var/list/photo_list
 
 	var/deffont = "Verdana"
@@ -54,6 +58,8 @@
 	/// Name of the document.
 	var/document_title
 	var/datum/prefab_document/doc_datum_type
+
+	COOLDOWN_DECLARE(show_paper_cooldown)
 
 //lipstick wiping is in code/game/obj/items/weapons/cosmetics.dm!
 
@@ -116,7 +122,7 @@
 	var/paper_info = info
 	if(scramble)
 		paper_info = stars_decode_html(info)
-	show_browser(user, "<BODY class='paper'>[paper_info][stamps]</BODY>", name, name, width = 650, height = 700)
+	show_browser(user, "<BODY class='paper'>[paper_info][stamps]</BODY>", name, name, width=DEFAULT_PAPER_WIDTH, height=DEFAULT_PAPER_HEIGHT, extra_stylesheets=extra_stylesheets, extra_headers=extra_headers)
 	onclose(user, name)
 
 /obj/item/paper/verb/rename()
@@ -135,30 +141,35 @@
 	..()
 	read_paper(user)
 
-/obj/item/paper/attack_remote(mob/living/silicon/ai/user as mob)
-	var/dist
-	dist = get_dist(src, user)
+/obj/item/paper/attack_remote(mob/living/silicon/ai/user)
+	var/dist = get_dist(src, user)
 	if(dist < 2)
 		read_paper(user)
 	else
-		//Show scrambled paper
-		show_browser(user, "<BODY class='paper'>[stars(info)][stamps]</BODY>", name, name)
-		onclose(user, name)
-	return
+		read_paper(user, scramble=TRUE)
 
-/obj/item/paper/attack(mob/living/carbon/human/M, mob/living/carbon/user)
+/obj/item/paper/attack(mob/living/carbon/human/human_target, mob/living/carbon/user)
 
 	if(user.zone_selected == "eyes")
-		if(!ishumansynth_strict(M))
+		if(!ishumansynth_strict(human_target))
+			return
+		if(!COOLDOWN_FINISHED(src, show_paper_cooldown))
+			to_chat(user, SPAN_WARNING("You can not do that again for a while."))
+			return
+		if(human_target.a_intent != INTENT_HELP)
+			user.visible_message(SPAN_WARNING("[human_target] stops [user] from showing them [src]"),
+			SPAN_WARNING("[human_target] stops you from showing them the [src]."))
+			COOLDOWN_START(src, show_paper_cooldown, 3 SECONDS)
 			return
 
-		user.visible_message(SPAN_NOTICE("You show the paper to [M]."),
-		SPAN_NOTICE("[user] holds up a paper and shows it to [M]."))
-		examine(M)
+		user.visible_message(SPAN_NOTICE("[user] holds up a paper and shows it to [human_target]."),
+		SPAN_NOTICE("You show the paper to [human_target]."))
+		COOLDOWN_START(src, show_paper_cooldown, 3 SECONDS)
+		examine(human_target)
 
 	else if(user.zone_selected == "mouth") // lipstick wiping
-		if(ishuman(M))
-			var/mob/living/carbon/human/H = M
+		if(ishuman(human_target))
+			var/mob/living/carbon/human/H = human_target
 			if(H == user)
 				to_chat(user, SPAN_NOTICE("You wipe off the face paint with [src]."))
 				H.lip_style = null
@@ -221,8 +232,8 @@
 
 /obj/item/paper/proc/updateinfolinks()
 	info_links = info
-	for(var/i=1,  i<=min(fields, MAX_FIELDS), i++)
-		addtofield(i, "<font face=\"[deffont]\"><A href='byond://?src=\ref[src];write=[i]'>write</A></font>", 1)
+	for(var/i=1, i<=min(fields, PAPER_MAX_FIELDS), i++)
+		addtofield(i, "<font face=\"[deffont]\"><A href='byond://?src=\ref[src];write=[i]'>write</A></font>", links=TRUE)
 	info_links = info_links + "<font face=\"[deffont]\"><A href='byond://?src=\ref[src];write=end'>write</A></font>"
 
 
@@ -247,6 +258,8 @@
 	paper_text = replacetext(paper_text, "\[/i\]", "</I>")
 	paper_text = replacetext(paper_text, "\[u\]", "<U>")
 	paper_text = replacetext(paper_text, "\[/u\]", "</U>")
+	paper_text = replacetext(paper_text, "\[s\]", "<S>")
+	paper_text = replacetext(paper_text, "\[/s\]", "</S>")
 	paper_text = replacetext(paper_text, "\[large\]", "<font size=\"4\">")
 	paper_text = replacetext(paper_text, "\[/large\]", "</font>")
 	paper_text = replacetext(paper_text, "\[sign\]", "<font face=\"[signfont]\"><i>[user ? user.real_name : "Anonymous"]</i></font>")
@@ -255,6 +268,13 @@
 	paper_text = replacetext(paper_text, "\[time\]", "<font face=\"[signfont]\"><i>[worldtime2text("hh:mm")]</i></font>")
 	paper_text = replacetext(paper_text, "\[date+time\]", "<font face=\"[signfont]\"><i>[worldtime2text("hh:mm")], [time2text(REALTIMEOFDAY, "Day DD Month [GLOB.game_year]")]</i></font>")
 	paper_text = replacetext(paper_text, "\[field\]", "<span class=\"paper_field\"></span>")
+	paper_text = replacetext(paper_text, "\[name\]", "[user ? user.name : "Anonymous"]")
+	paper_text = replacetext(paper_text, "\[rank\]", "[user ? user.get_paygrade(0) : "None"]")
+	paper_text = replacetext(paper_text, "\[job\]", "[user ? user.job : "None"]")
+	paper_text = replacetext(paper_text, "\[op\]", "[GLOB.round_statistics ? GLOB.round_statistics.round_name : "None"]")
+	paper_text = replacetext(paper_text, "\[colony\]", "[SSmapping.configs[GROUND_MAP].map_name]")
+	paper_text = replacetext(paper_text, "\[ship\]", "[MAIN_SHIP_NAME]")
+
 
 	paper_text = replacetext(paper_text, "\[h1\]", "<H1>")
 	paper_text = replacetext(paper_text, "\[/h1\]", "</H1>")
@@ -280,6 +300,7 @@
 		paper_text = replacetext(paper_text, "\[wy_inv\]", "<img src = [asset.get_url_mappings()["logo_wy_inv.png"]]>")
 		paper_text = replacetext(paper_text, "\[uscm\]", "<img src = [asset.get_url_mappings()["logo_uscm.png"]]>")
 		paper_text = replacetext(paper_text, "\[upp\]", "<img src = [asset.get_url_mappings()["logo_upp.png"]]>")
+		paper_text = replacetext(paper_text, "\[twe\]", "<img src = [asset.get_url_mappings()["logo_twe.png"]]>")
 		paper_text = replacetext(paper_text, "\[cmb\]", "<img src = [asset.get_url_mappings()["logo_cmb.png"]]>")
 
 		paper_text = "<font face=\"[deffont]\" color=[P ? P.pen_color : "black"]>[paper_text]</font>"
@@ -315,7 +336,7 @@
 		if(i==0)
 			break
 		laststart = i+1
-		fields = min(fields+1, MAX_FIELDS)
+		fields = min(fields+1, PAPER_MAX_FIELDS)
 		//NOTE: The max here will include the auto-created field when hitting a paper with a pen. So it should be [your_desired_number]+1.
 
 /obj/item/paper/proc/openhelp(mob/user as mob)
@@ -335,6 +356,13 @@
 		\[sign\] : Inserts a signature of your name in a foolproof way.<br>
 		\[field\] : Inserts an invisible field which lets you start type from there. Useful for forms.<br>
 		<br>
+		\[name\] : Your name, but not in signature font!<br>
+		\[s\] - \[/s\] | strikethrough!<br>
+		\[job\] : Your job noted on your ID.<br>
+		\[rank\] : Your rank/paygrade.<br>
+		\[op\] : The name of the Operation.<br>
+		\[colony\] : The name of the Map.<br>
+		\[ship\] : The name of the main Ship.<br>
 		<b><center>Pen exclusive commands</center></b><br>
 		\[small\] - \[/small\] : Decreases the <font size = \"1\">size</font> of the text.<br>
 		\[list\] - \[/list\] : A list.<br>
@@ -430,7 +458,7 @@
 			info += t // Oh, he wants to edit to the end of the file, let him.
 			updateinfolinks()
 
-		show_browser(usr, "<BODY class='paper'>[info_links][stamps]</BODY>", name, name) // Update the window
+		show_browser(usr, "<BODY class='paper'>[info_links][stamps]</BODY>", name, name, extra_stylesheets=extra_stylesheets, extra_headers=extra_headers) // Update the window
 
 		update_icon()
 		playsound(src, "paper_writing", 15, TRUE)
@@ -465,7 +493,7 @@
 			if(!p.on)
 				to_chat(user, SPAN_NOTICE("Your pen is not on!"))
 				return
-		show_browser(user, "<BODY class='paper'>[info_links][stamps]</BODY>", name, name) // Update the window
+		show_browser(user, "<BODY class='paper'>[info_links][stamps]</BODY>", name, name, width=DEFAULT_PAPER_WIDTH, height=DEFAULT_PAPER_HEIGHT, extra_stylesheets=extra_stylesheets, extra_headers=extra_headers) // Update the window
 		//openhelp(user)
 		return
 
@@ -537,9 +565,10 @@
 /obj/item/paper/almayer_storage
 	name = "Almayer Emergency Storage Note"
 	info = "<i>Hey Garry, I got the boys to move most of the emergency supplies down into the ASRS hold just like ya' asked. <BR>Next time you're around Chinook I'll buy you a beer ok?</i>"
+
 /obj/item/paper/Toxin
 	name = "Chemical Information"
-	info = "Known Onboard Toxins:<BR>\n\tGrade A Semi-Liquid Phoron:<BR>\n\t\tHighly poisonous. You cannot sustain concentrations above 15 units.<BR>\n\t\tA gas mask fails to filter phoron after 50 units.<BR>\n\t\tWill attempt to diffuse like a gas.<BR>\n\t\tFiltered by scrubbers.<BR>\n\t\tThere is a bottled version which is very different<BR>\n\t\t\tfrom the version found in canisters!<BR>\n<BR>\n\t\tWARNING: Highly Flammable. Keep away from heat sources<BR>\n\t\texcept in a enclosed fire area!<BR>\n\t\tWARNING: It is a crime to use this without authorization.<BR>\nKnown Onboard Anti-Toxin:<BR>\n\tAnti-Toxin Type 01P: Works against Grade A Phoron.<BR>\n\t\tBest if injected directly into bloodstream.<BR>\n\t\tA full injection is in every regular Med-Kit.<BR>\n\t\tSpecial toxin Kits hold around 7.<BR>\n<BR>\nKnown Onboard Chemicals (other):<BR>\n\tRejuvenation T#001:<BR>\n\t\tEven 1 unit injected directly into the bloodstream<BR>\n\t\t\twill cure paralysis and sleep phoron.<BR>\n\t\tIf administered to a dying patient it will prevent<BR>\n\t\t\tfurther damage for about units*3 seconds.<BR>\n\t\t\tit will not cure them or allow them to be cured.<BR>\n\t\tIt can be administeredd to a non-dying patient<BR>\n\t\t\tbut the chemicals disappear just as fast.<BR>\n\tSoporific T#054:<BR>\n\t\t5 units wilkl induce precisely 1 minute of sleep.<BR>\n\t\t\tThe effect are cumulative.<BR>\n\t\tWARNING: It is a crime to use this without authorization"
+	info = "Known Onboard Toxins:<BR>\n\tGrade A Semi-Liquid Phoron:<BR>\n\t\tHighly poisonous. You cannot sustain concentrations above 15 units.<BR>\n\t\tA gas mask fails to filter phoron after 50 units.<BR>\n\t\tWill attempt to diffuse like a gas.<BR>\n\t\tFiltered by scrubbers.<BR>\n\t\tThere is a bottled version which is very different<BR>\n\t\t\tfrom the version found in canisters!<BR>\n<BR>\n\t\tWARNING: Highly Flammable. Keep away from heat sources<BR>\n\t\texcept in a enclosed fire area!<BR>\n\t\tWARNING: It is a crime to use this without authorization.<BR>\nKnown Onboard Anti-Toxin:<BR>\n\tAnti-Toxin Type 01P: Works against Grade A Phoron.<BR>\n\t\tBest if injected directly into bloodstream.<BR>\n\t\tA full injection is in every regular Med-Kit.<BR>\n\t\tSpecial toxin Kits hold around 7.<BR>\n<BR>\nKnown Onboard Chemicals (other):<BR>\n\tRejuvenation T#001:<BR>\n\t\tEven 1 unit injected directly into the bloodstream<BR>\n\t\t\twill cure paralysis and sleep phoron.<BR>\n\t\tIf administered to a dying patient it will prevent<BR>\n\t\t\tfurther damage for about units*3 seconds.<BR>\n\t\t\tit will not cure them or allow them to be cured.<BR>\n\t\tIt can be administered to a non-dying patient<BR>\n\t\t\tbut the chemicals disappear just as fast.<BR>\n\tSoporific T#054:<BR>\n\t\t5 units will induce precisely 1 minute of sleep.<BR>\n\t\t\tThe effect are cumulative.<BR>\n\t\tWARNING: It is a crime to use this without authorization!"
 
 /obj/item/paper/courtroom
 	name = "A Crash Course in Legal SOP on SS13"
@@ -547,11 +576,11 @@
 
 /obj/item/paper/hydroponics
 	name = "Greetings from Billy Bob"
-	info = "<B>Hey fellow botanist!</B><BR>\n<BR>\nI didn't trust the station folk so I left<BR>\na couple of weeks ago. But here's some<BR>\ninstructions on how to operate things here.<BR>\nYou can grow plants and each iteration they become<BR>\nstronger, more potent and have better yield, if you<BR>\nknow which ones to pick. Use your botanist's analyzer<BR>\nfor that. You can turn harvested plants into seeds<BR>\nat the seed extractor, and replant them for better stuff!<BR>\nSometimes if the weed level gets high in the tray<BR>\nmutations into different mushroom or weed species have<BR>\nbeen witnessed. On the rare occassion even weeds mutate!<BR>\n<BR>\nEither way, have fun!<BR>\n<BR>\nBest regards,<BR>\nBilly Bob Johnson.<BR>\n<BR>\nPS.<BR>\nHere's a few tips:<BR>\nIn nettles, potency = damage<BR>\nIn amanitas, potency = deadliness + side effect<BR>\nIn Liberty caps, potency = drug power + effect<BR>\nIn chilis, potency = heat<BR>\n<B>Nutrients keep mushrooms alive!</B><BR>\n<B>Water keeps weeds such as nettles alive!</B><BR>\n<B>All other plants need both.</B>"
+	info = "<B>Hey fellow botanist!</B><BR>\n<BR>\nI didn't trust the station folk so I left<BR>\na couple of weeks ago. But here's some<BR>\ninstructions on how to operate things here.<BR>\nYou can grow plants and each iteration they become<BR>\nstronger, more potent and have better yield, if you<BR>\nknow which ones to pick. Use your botanist's analyzer<BR>\nfor that. You can turn harvested plants into seeds<BR>\nat the seed extractor, and replant them for better stuff!<BR>\nSometimes if the weed level gets high in the tray<BR>\nmutations into different mushroom or weed species have<BR>\nbeen witnessed. On the rare occasion even weeds mutate!<BR>\n<BR>\nEither way, have fun!<BR>\n<BR>\nBest regards,<BR>\nBilly Bob Johnson.<BR>\n<BR>\nPS.<BR>\nHere's a few tips:<BR>\nIn nettles, potency = damage<BR>\nIn amanitas, potency = deadliness + side effect<BR>\nIn Liberty caps, potency = drug power + effect<BR>\nIn chilis, potency = heat<BR>\n<B>Nutrients keep mushrooms alive!</B><BR>\n<B>Water keeps weeds such as nettles alive!</B><BR>\n<B>All other plants need both.</B>"
 
 /obj/item/paper/djstation
 	name = "DJ Listening Outpost"
-	info = "<B>Welcome new owner!</B><BR><BR>You have purchased the latest in listening equipment. The telecommunication setup we created is the best in listening to common and private radio fequencies. Here is a step by step guide to start listening in on those saucy radio channels:<br><ol><li>Equip yourself with a multi-tool</li><li>Use the multitool on each machine, that is the broadcaster, receiver and the relay.</li><li>Turn all the machines on, it has already been configured for you to listen on.</li></ol> Simple as that. Now to listen to the private channels, you'll have to configure the intercoms, located on the front desk. Here is a list of frequencies for you to listen on.<br><ul><li>145.7 - Common Channel</li><li>144.7 - Private AI Channel</li><li>135.9 - Security Channel</li><li>135.7 - Engineering Channel</li><li>135.5 - Medical Channel</li><li>135.3 - Command Channel</li><li>135.1 - Science Channel</li><li>134.9 - Mining Channel</li><li>134.7 - Cargo Channel</li>"
+	info = "<B>Welcome new owner!</B><BR><BR>You have purchased the latest in listening equipment. The telecommunication setup we created is the best in listening to common and private radio frequencies. Here is a step by step guide to start listening in on those saucy radio channels:<br><ol><li>Equip yourself with a multi-tool</li><li>Use the multitool on each machine, that is the broadcaster, receiver and the relay.</li><li>Turn all the machines on, it has already been configured for you to listen on.</li></ol> Simple as that. Now to listen to the private channels, you'll have to configure the intercoms, located on the front desk. Here is a list of frequencies for you to listen on.<br><ul><li>145.7 - Common Channel</li><li>144.7 - Private AI Channel</li><li>135.9 - Security Channel</li><li>135.7 - Engineering Channel</li><li>135.5 - Medical Channel</li><li>135.3 - Command Channel</li><li>135.1 - Science Channel</li><li>134.9 - Mining Channel</li><li>134.7 - Cargo Channel</li>"
 
 /obj/item/paper/flag
 	name = "paper flag"
@@ -563,7 +592,7 @@
 
 /obj/item/paper/jobs
 	name = "Job Information"
-	info = "Information on all formal jobs that can be assigned on Space Station 13 can be found on this document.<BR>\nThe data will be in the following form.<BR>\nGenerally lower ranking positions come first in this list.<BR>\n<BR>\n<B>Job Name</B>   general access>lab access-engine access-systems access (atmosphere control)<BR>\n\tJob Description<BR>\nJob Duties (in no particular order)<BR>\nTips (where applicable)<BR>\n<BR>\n<B>Research Assistant</B> 1>1-0-0<BR>\n\tThis is probably the lowest level position. Anyone who enters the space station after the initial job\nassignment will automatically receive this position. Access with this is restricted. Head of Personnel should\nappropriate the correct level of assistance.<BR>\n1. Assist the researchers.<BR>\n2. Clean up the labs.<BR>\n3. Prepare materials.<BR>\n<BR>\n<B>Staff Assistant</B> 2>0-0-0<BR>\n\tThis position assists the security officer in his duties. The staff assisstants should primarily br\npatrolling the ship waiting until they are needed to maintain ship safety.\n(Addendum: Updated/Elevated Security Protocols admit issuing of low level weapons to security personnel)<BR>\n1. Patrol ship/Guard key areas<BR>\n2. Assist security officer<BR>\n3. Perform other security duties.<BR>\n<BR>\n<B>Technical Assistant</B> 1>0-0-1<BR>\n\tThis is yet another low level position. The technical assistant helps the engineer and the statian\ntechnician with the upkeep and maintenance of the station. This job is very important because it usually\ngets to be a heavy workload on station technician and these helpers will alleviate that.<BR>\n1. Assist Station technician and Engineers.<BR>\n2. Perform general maintenance of station.<BR>\n3. Prepare materials.<BR>\n<BR>\n<B>Medical Assistant</B> 1>1-0-0<BR>\n\tThis is the fourth position yet it is slightly less common. This position doesn't have much power\noutside of the med bay. Consider this position like a nurse who helps to upkeep medical records and the\nmaterials (filling syringes and checking vitals)<BR>\n1. Assist the medical personnel.<BR>\n2. Update medical files.<BR>\n3. Prepare materials for medical operations.<BR>\n<BR>\n<B>Research Technician</B> 2>3-0-0<BR>\n\tThis job is primarily a step up from research assistant. These people generally do not get their own lab\nbut are more hands on in the experimentation process. At this level they are permitted to work as consultants to\nthe others formally.<BR>\n1. Inform superiors of research.<BR>\n2. Perform research alongside of official researchers.<BR>\n<BR>\n<B>Detective</B> 3>2-0-0<BR>\n\tThis job is in most cases slightly boring at best. Their sole duty is to\nperform investigations of crine scenes and analysis of the crime scene. This\nalleviates SOME of the burden from the security officer. This person's duty\nis to draw conclusions as to what happened and testify in court. Said person\nalso should stroe the evidence ly.<BR>\n1. Perform crime-scene investigations/draw conclusions.<BR>\n2. Store and catalogue evidence properly.<BR>\n3. Testify to superiors/inquieries on findings.<BR>\n<BR>\n<B>Station Technician</B> 2>0-2-3<BR>\n\tPeople assigned to this position must work to make sure all the systems aboard Space Station 13 are operable.\nThey should primarily work in the computer lab and repairing faulty equipment. They should work with the\natmospheric technician.<BR>\n1. Maintain SS13 systems.<BR>\n2. Repair equipment.<BR>\n<BR>\n<B>Atmospheric Technician</B> 3>0-0-4<BR>\n\tThese people should primarily work in the atmospheric control center and lab. They have the very important\njob of maintaining the delicate atmosphere on SS13.<BR>\n1. Maintain atmosphere on SS13<BR>\n2. Research atmospheres on the space station. (safely please!)<BR>\n<BR>\n<B>Engineer</B> 2>1-3-0<BR>\n\tPeople working as this should generally have detailed knowledge as to how the propulsion systems on SS13\nwork. They are one of the few classes that have unrestricted access to the engine area.<BR>\n1. Upkeep the engine.<BR>\n2. Prevent fires in the engine.<BR>\n3. Maintain a safe orbit.<BR>\n<BR>\n<B>Medical Researcher</B> 2>5-0-0<BR>\n\tThis position may need a little clarification. Their duty is to make sure that all experiments are safe and\nto conduct experiments that may help to improve the station. They will be generally idle until a new laboratory\nis constructed.<BR>\n1. Make sure the station is kept safe.<BR>\n2. Research medical properties of materials studied of Space Station 13.<BR>\n<BR>\n<B>Scientist</B> 2>5-0-0<BR>\n\tThese people study the properties, particularly the toxic properties, of materials handled on SS13.\nTechnically they can also be called Phoron Technicians as phoron is the material they routinly handle.<BR>\n1. Research phoron<BR>\n2. Make sure all phoron is properly handled.<BR>\n<BR>\n<B>Medical Doctor (Officer)</B> 2>0-0-0<BR>\n\tPeople working this job should primarily stay in the medical area. They should make sure everyone goes to\nthe medical bay for treatment and examination. Also they should make sure that medical supplies are kept in\norder.<BR>\n1. Heal wounded people.<BR>\n2. Perform examinations of all personnel.<BR>\n3. Moniter usage of medical equipment.<BR>\n<BR>\n<B>Security Officer</B> 3>0-0-0<BR>\n\tThese people should attempt to keep the peace inside the station and make sure the station is kept safe. One\nside duty is to assist in repairing the station. They also work like general maintenance personnel. They are not\ngiven a weapon and must use their own resources.<BR>\n(Addendum: Updated/Elevated Security Protocols admit issuing of weapons to security personnel)<BR>\n1. Maintain order.<BR>\n2. Assist others.<BR>\n3. Repair structural problems.<BR>\n<BR>\n<B>Head of Security</B> 4>5-2-2<BR>\n\tPeople assigned as Head of Security should issue orders to the security staff. They should\nalso carefully moderate the usage of all security equipment. All security matters should be reported to this person.<BR>\n1. Oversee security.<BR>\n2. Assign patrol duties.<BR>\n3. Protect the station and staff.<BR>\n<BR>\n<B>Head of Personnel</B> 4>4-2-2<BR>\n\tPeople assigned as head of personnel will find themselves moderating all actions done by personnel. \nAlso they have the ability to assign jobs and access levels.<BR>\n1. Assign duties.<BR>\n2. Moderate personnel.<BR>\n3. Moderate research. <BR>\n<BR>\n<B>Captain</B> 5>5-5-5 (unrestricted station wide access)<BR>\n\tThis is the highest position youi can aquire on Space Station 13. They are allowed anywhere inside the\nspace station and therefore should protect their ID card. They also have the ability to assign positions\nand access levels. They should not abuse their power.<BR>\n1. Assign all positions on SS13<BR>\n2. Inspect the station for any problems.<BR>\n3. Perform administrative duties.<BR>\n"
+	info = "Information on all formal jobs that can be assigned on Space Station 13 can be found on this document.<BR>\nThe data will be in the following form.<BR>\nGenerally lower ranking positions come first in this list.<BR>\n<BR>\n<B>Job Name</B>   general access>lab access-engine access-systems access (atmosphere control)<BR>\n\tJob Description<BR>\nJob Duties (in no particular order)<BR>\nTips (where applicable)<BR>\n<BR>\n<B>Research Assistant</B> 1>1-0-0<BR>\n\tThis is probably the lowest level position. Anyone who enters the space station after the initial job\nassignment will automatically receive this position. Access with this is restricted. Head of Personnel should\nappropriate the correct level of assistance.<BR>\n1. Assist the researchers.<BR>\n2. Clean up the labs.<BR>\n3. Prepare materials.<BR>\n<BR>\n<B>Staff Assistant</B> 2>0-0-0<BR>\n\tThis position assists the security officer in his duties. The staff assistants should primarily br\npatrolling the ship waiting until they are needed to maintain ship safety.\n(Addendum: Updated/Elevated Security Protocols admit issuing of low level weapons to security personnel)<BR>\n1. Patrol ship/Guard key areas<BR>\n2. Assist security officer<BR>\n3. Perform other security duties.<BR>\n<BR>\n<B>Technical Assistant</B> 1>0-0-1<BR>\n\tThis is yet another low level position. The technical assistant helps the engineer and the station\ntechnician with the upkeep and maintenance of the station. This job is very important because it usually\ngets to be a heavy workload on station technician and these helpers will alleviate that.<BR>\n1. Assist Station technician and Engineers.<BR>\n2. Perform general maintenance of station.<BR>\n3. Prepare materials.<BR>\n<BR>\n<B>Medical Assistant</B> 1>1-0-0<BR>\n\tThis is the fourth position yet it is slightly less common. This position doesn't have much power\noutside of the med bay. Consider this position like a nurse who helps to upkeep medical records and the\nmaterials (filling syringes and checking vitals)<BR>\n1. Assist the medical personnel.<BR>\n2. Update medical files.<BR>\n3. Prepare materials for medical operations.<BR>\n<BR>\n<B>Research Technician</B> 2>3-0-0<BR>\n\tThis job is primarily a step up from research assistant. These people generally do not get their own lab\nbut are more hands on in the experimentation process. At this level they are permitted to work as consultants to\nthe others formally.<BR>\n1. Inform superiors of research.<BR>\n2. Perform research alongside of official researchers.<BR>\n<BR>\n<B>Detective</B> 3>2-0-0<BR>\n\tThis job is in most cases slightly boring at best. Their sole duty is to\nperform investigations of crine scenes and analysis of the crime scene. This\nalleviates SOME of the burden from the security officer. This person's duty\nis to draw conclusions as to what happened and testify in court. Said person\nalso should store the evidence ly.<BR>\n1. Perform crime-scene investigations/draw conclusions.<BR>\n2. Store and catalogue evidence properly.<BR>\n3. Testify to superiors/inquiries on findings.<BR>\n<BR>\n<B>Station Technician</B> 2>0-2-3<BR>\n\tPeople assigned to this position must work to make sure all the systems aboard Space Station 13 are operable.\nThey should primarily work in the computer lab and repairing faulty equipment. They should work with the\natmospheric technician.<BR>\n1. Maintain SS13 systems.<BR>\n2. Repair equipment.<BR>\n<BR>\n<B>Atmospheric Technician</B> 3>0-0-4<BR>\n\tThese people should primarily work in the atmospheric control center and lab. They have the very important\njob of maintaining the delicate atmosphere on SS13.<BR>\n1. Maintain atmosphere on SS13<BR>\n2. Research atmospheres on the space station. (safely please!)<BR>\n<BR>\n<B>Engineer</B> 2>1-3-0<BR>\n\tPeople working as this should generally have detailed knowledge as to how the propulsion systems on SS13\nwork. They are one of the few classes that have unrestricted access to the engine area.<BR>\n1. Upkeep the engine.<BR>\n2. Prevent fires in the engine.<BR>\n3. Maintain a safe orbit.<BR>\n<BR>\n<B>Medical Researcher</B> 2>5-0-0<BR>\n\tThis position may need a little clarification. Their duty is to make sure that all experiments are safe and\nto conduct experiments that may help to improve the station. They will be generally idle until a new laboratory\nis constructed.<BR>\n1. Make sure the station is kept safe.<BR>\n2. Research medical properties of materials studied of Space Station 13.<BR>\n<BR>\n<B>Scientist</B> 2>5-0-0<BR>\n\tThese people study the properties, particularly the toxic properties, of materials handled on SS13.\nTechnically they can also be called Phoron Technicians as phoron is the material they routinely handle.<BR>\n1. Research phoron<BR>\n2. Make sure all phoron is properly handled.<BR>\n<BR>\n<B>Medical Doctor (Officer)</B> 2>0-0-0<BR>\n\tPeople working this job should primarily stay in the medical area. They should make sure everyone goes to\nthe medical bay for treatment and examination. Also they should make sure that medical supplies are kept in\norder.<BR>\n1. Heal wounded people.<BR>\n2. Perform examinations of all personnel.<BR>\n3. Monitor usage of medical equipment.<BR>\n<BR>\n<B>Security Officer</B> 3>0-0-0<BR>\n\tThese people should attempt to keep the peace inside the station and make sure the station is kept safe. One\nside duty is to assist in repairing the station. They also work like general maintenance personnel. They are not\ngiven a weapon and must use their own resources.<BR>\n(Addendum: Updated/Elevated Security Protocols admit issuing of weapons to security personnel)<BR>\n1. Maintain order.<BR>\n2. Assist others.<BR>\n3. Repair structural problems.<BR>\n<BR>\n<B>Head of Security</B> 4>5-2-2<BR>\n\tPeople assigned as Head of Security should issue orders to the security staff. They should\nalso carefully moderate the usage of all security equipment. All security matters should be reported to this person.<BR>\n1. Oversee security.<BR>\n2. Assign patrol duties.<BR>\n3. Protect the station and staff.<BR>\n<BR>\n<B>Head of Personnel</B> 4>4-2-2<BR>\n\tPeople assigned as head of personnel will find themselves moderating all actions done by personnel. \nAlso they have the ability to assign jobs and access levels.<BR>\n1. Assign duties.<BR>\n2. Moderate personnel.<BR>\n3. Moderate research. <BR>\n<BR>\n<B>Captain</B> 5>5-5-5 (unrestricted station wide access)<BR>\n\tThis is the highest position you can acquire on Space Station 13. They are allowed anywhere inside the\nspace station and therefore should protect their ID card. They also have the ability to assign positions\nand access levels. They should not abuse their power.<BR>\n1. Assign all positions on SS13<BR>\n2. Inspect the station for any problems.<BR>\n3. Perform administrative duties.<BR>\n"
 
 /obj/item/paper/photograph
 	name = "photo"
@@ -573,7 +602,7 @@
 
 /obj/item/paper/sop
 	name = "paper- 'Standard Operating Procedure'"
-	info = "Alert Levels:<BR>\nBlue- Emergency<BR>\n\t1. Caused by fire<BR>\n\t2. Caused by manual interaction<BR>\n\tAction:<BR>\n\t\tClose all fire doors. These can only be opened by reseting the alarm<BR>\nRed- Ejection/Self-Destruct<BR>\n\t1. Caused by module operating computer.<BR>\n\tAction:<BR>\n\t\tAfter the specified time the module will eject completely.<BR>\n<BR>\nEngine Maintenance Instructions:<BR>\n\tShut off ignition systems:<BR>\n\tActivate internal power<BR>\n\tActivate orbital balance matrix<BR>\n\tRemove volatile liquids from area<BR>\n\tWear a fire suit<BR>\n<BR>\n\tAfter<BR>\n\t\tDecontaminate<BR>\n\t\tVisit medical examiner<BR>\n<BR>\nToxin Laboratory Procedure:<BR>\n\tWear a gas mask regardless<BR>\n\tGet an oxygen tank.<BR>\n\tActivate internal atmosphere<BR>\n<BR>\n\tAfter<BR>\n\t\tDecontaminate<BR>\n\t\tVisit medical examiner<BR>\n<BR>\nDisaster Procedure:<BR>\n\tFire:<BR>\n\t\tActivate sector fire alarm.<BR>\n\t\tMove to a safe area.<BR>\n\t\tGet a fire suit<BR>\n\t\tAfter:<BR>\n\t\t\tAssess Damage<BR>\n\t\t\tRepair damages<BR>\n\t\t\tIf needed, Evacuate<BR>\n\tMeteor Shower:<BR>\n\t\tActivate fire alarm<BR>\n\t\tMove to the back of ship<BR>\n\t\tAfter<BR>\n\t\t\tRepair damage<BR>\n\t\t\tIf needed, Evacuate<BR>\n\tAccidental Reentry:<BR>\n\t\tActivate fire alarms in front of ship.<BR>\n\t\tMove volatile matter to a fire proof area!<BR>\n\t\tGet a fire suit.<BR>\n\t\tStay secure until an emergency ship arrives.<BR>\n<BR>\n\t\tIf ship does not arrive-<BR>\n\t\t\tEvacuate to a nearby safe area!"
+	info = "Alert Levels:<BR>\nBlue- Emergency<BR>\n\t1. Caused by fire<BR>\n\t2. Caused by manual interaction<BR>\n\tAction:<BR>\n\t\tClose all fire doors. These can only be opened by resetting the alarm<BR>\nRed- Ejection/Self-Destruct<BR>\n\t1. Caused by module operating computer.<BR>\n\tAction:<BR>\n\t\tAfter the specified time the module will eject completely.<BR>\n<BR>\nEngine Maintenance Instructions:<BR>\n\tShut off ignition systems:<BR>\n\tActivate internal power<BR>\n\tActivate orbital balance matrix<BR>\n\tRemove volatile liquids from area<BR>\n\tWear a fire suit<BR>\n<BR>\n\tAfter<BR>\n\t\tDecontaminate<BR>\n\t\tVisit medical examiner<BR>\n<BR>\nToxin Laboratory Procedure:<BR>\n\tWear a gas mask regardless<BR>\n\tGet an oxygen tank.<BR>\n\tActivate internal atmosphere<BR>\n<BR>\n\tAfter<BR>\n\t\tDecontaminate<BR>\n\t\tVisit medical examiner<BR>\n<BR>\nDisaster Procedure:<BR>\n\tFire:<BR>\n\t\tActivate sector fire alarm.<BR>\n\t\tMove to a safe area.<BR>\n\t\tGet a fire suit<BR>\n\t\tAfter:<BR>\n\t\t\tAssess Damage<BR>\n\t\t\tRepair damages<BR>\n\t\t\tIf needed, Evacuate<BR>\n\tMeteor Shower:<BR>\n\t\tActivate fire alarm<BR>\n\t\tMove to the back of ship<BR>\n\t\tAfter<BR>\n\t\t\tRepair damage<BR>\n\t\t\tIf needed, Evacuate<BR>\n\tAccidental Reentry:<BR>\n\t\tActivate fire alarms in front of ship.<BR>\n\t\tMove volatile matter to a fire proof area!<BR>\n\t\tGet a fire suit.<BR>\n\t\tStay secure until an emergency ship arrives.<BR>\n<BR>\n\t\tIf ship does not arrive-<BR>\n\t\t\tEvacuate to a nearby safe area!"
 
 /obj/item/paper/prison_station/test_log
 	name = "paper- 'Test Log'"
@@ -598,7 +627,7 @@
 
 /obj/item/paper/prison_station/inmate_handbook
 	name = "paper= 'Inmate Rights, Privileges and Responsibilities'"
-	info = "<p style=\"text-align: center;\"><sub>FIORINA ORBITAL PENITENTIARY</sub></p><p style=\"text-align: center;\"><sub>INMATE RIGHTS, PRIVILEGES AND RESPONSIBILITIES</sub></p><p>RIGHTS</p><p>As per the Corrections Act 2087, you have the right to the following:</p><p>1. You have the right to be treated impartially and fairly by all personnel.<BR>\n2. You have the right to be informed of the rules, procedures, and schedules.<BR>\n3. You have the right to freedom of religious affiliation and voluntary religious worship.<BR>\n4. You have the right to health care which includes meals, proper bedding and clothing and a laundry schedule for cleanliness of the same, an opportunity to shower regularly, proper ventilation for warmth and fresh air, a regular exercise period, toilet articles, medical, and dental treatment.</p><p>PRIVILEGES</p><p>You do NOT have the right to the following; these are privileges granted by the institution, and may be revoked at ANY time for ANY reason:</p><p>1. You may be granted the privilege to visitation and correspondence with family members and friends.<BR>\n2. You may be granted the privilege to reading materials for educational purposes and for your own enjoyment.<BR>\n3. You may be granted the privilege to limited personal money to purchase items from the prison store.</p><p>RESPONSIBILITIES</p><p>Inmates must fufill the following responsibilities:</p><p>1. You have the responsibility to know and abide by all rules, procedures, and schedules.<BR>\n2. You have the responsibility to obey any and all commands from personnel.<BR>\n3. You have the responsibility to recognize and respect the rights of other inmates.<BR>\n4. You have the responsibility to not waste food, to follow the laundry and shower schedule, maintain neat and clean living quarters, keep your area free of contraband, and seek medical and dental care as you may need it.<BR>\n5. You have the responsibility to conduct yourself properly during visits, not accept or pass contraband, and not violate the law or institution rules or institution guidelines through your correspondence.<BR>\n6. You have the responsibility to meet your financial obligations including, but not limited to, court imposed assessments, fines, and restitution.<BR>\n<B>7. You have the responsibility to coorporate with the Fiorina Orbital Penitentiary's Medical Research Department in any and all research studies.</B></p>"
+	info = "<p style=\"text-align: center;\"><sub>FIORINA ORBITAL PENITENTIARY</sub></p><p style=\"text-align: center;\"><sub>INMATE RIGHTS, PRIVILEGES AND RESPONSIBILITIES</sub></p><p>RIGHTS</p><p>As per the Corrections Act 2087, you have the right to the following:</p><p>1. You have the right to be treated impartially and fairly by all personnel.<BR>\n2. You have the right to be informed of the rules, procedures, and schedules.<BR>\n3. You have the right to freedom of religious affiliation and voluntary religious worship.<BR>\n4. You have the right to health care which includes meals, proper bedding and clothing and a laundry schedule for cleanliness of the same, an opportunity to shower regularly, proper ventilation for warmth and fresh air, a regular exercise period, toilet articles, medical, and dental treatment.</p><p>PRIVILEGES</p><p>You do NOT have the right to the following; these are privileges granted by the institution, and may be revoked at ANY time for ANY reason:</p><p>1. You may be granted the privilege to visitation and correspondence with family members and friends.<BR>\n2. You may be granted the privilege to reading materials for educational purposes and for your own enjoyment.<BR>\n3. You may be granted the privilege to limited personal money to purchase items from the prison store.</p><p>RESPONSIBILITIES</p><p>Inmates must fulfill the following responsibilities:</p><p>1. You have the responsibility to know and abide by all rules, procedures, and schedules.<BR>\n2. You have the responsibility to obey any and all commands from personnel.<BR>\n3. You have the responsibility to recognize and respect the rights of other inmates.<BR>\n4. You have the responsibility to not waste food, to follow the laundry and shower schedule, maintain neat and clean living quarters, keep your area free of contraband, and seek medical and dental care as you may need it.<BR>\n5. You have the responsibility to conduct yourself properly during visits, not accept or pass contraband, and not violate the law or institution rules or institution guidelines through your correspondence.<BR>\n6. You have the responsibility to meet your financial obligations including, but not limited to, court imposed assessments, fines, and restitution.<BR>\n<B>7. You have the responsibility to corporate with the Fiorina Orbital Penitentiary's Medical Research Department in any and all research studies.</B></p>"
 
 /obj/item/paper/prison_station/pirate_note
 	name = "paper= 'Captain's log'"
@@ -616,7 +645,7 @@
 
 /obj/item/paper/bigred/walls
 	name = "crumpled note"
-	info = "<b>there is cotten candy in the walls</b>"
+	info = "<b>there is cotton candy in the walls</b>"
 
 /obj/item/paper/bigred/lambda
 	name = "ripped diary entry"
@@ -632,7 +661,7 @@
 
 /obj/item/paper/bigred/smuggling
 	name = "Folded note"
-	info = "Alright Jeff, I know you still owe me after standing up for you when you got caught with a whole pill bottle of mindbreaker. Remember how I got you out of 15 years in the slammer? \n Anyways, I have a special task for you that you can do to repay me. \n <p> Whenever you unload a cargo container look for any crate with a blue hexagon on it. </p>  <p>Upon finding one, DO NOT OPEN it under ANY circumstances, and keep it away from anyone else. You then bring it to virology, specifically the back of the lobby where there is a hole into the caves. </p> \n <p> Then, leave it at the nearest crevice to the right and my men will take it. Should there be any backup, just stack it on top.</p> \n<p> Easy, right? Just moving cargo. If anyone asks what’s in it, it’s just power tools. </p> \n <p> Good luck, I'll slide you a few blunts of space weed that we have as a tip if you work well. </p>"
+	info = "Alright Jeff, I know you still owe me after standing up for you when you got caught with a whole pill bottle of mindbreaker. Remember how I got you out of 15 years in the slammer? \n Anyways, I have a special task for you that you can do to repay me. \n <p> Whenever you unload a cargo container look for any crate with a blue hexagon on it. </p>  <p>Upon finding one, DO NOT OPEN it under ANY circumstances, and keep it away from anyone else. You then bring it to virology, specifically the back of the lobby where there is a hole into the caves. </p> \n <p> Then, leave it at the nearest crevice to the right and my men will take it. Should there be any backup, just stack it on top.</p> \n<p> Easy, right? Just moving cargo. If anyone asks what’s in it, it’s just power tools. </p> \n <p> Good luck, I'll slide you a few blunts of space weed that we have as a tip if you work well.</p>"
 	color = "grey"
 
 /obj/item/paper/bigred/witness
@@ -646,7 +675,7 @@
 
 /obj/item/paper/bigred/crazy
 	name = "THEY ARE COMING FOR ME"
-	info = "Fuck man, I have tried and tried to tell people, from my co-workers and friends to anyone who would listen to me. Each and every single time I have been called crazy. <p> Then recently THEY took notice, and started sending their minions against me, almost everywhere i go outside of the caves, there is constantly a marshal on my ass, stalking me at least 30 feet away. They KNOW and they want me silenced or dead. </p> \n Then one day the head of security himself, Jim FUCKING Hamilton instructed me to stop \" spreading rumors \" or face consequences. <p> <b> No, I will not follow what a mere puppet wants me to do, a lap dog being controlled by THEM!</b>  </p> \n \n There is some hope, however. There is word going around of a mutiny at my workplace. The miners will rise up and forcibly take control of the administration, and their leader has agreed with me to investigate lambda and expose it once and for all!. <p> However, I can’t just leave them exposed with their twisted secrets uncovered. They’re too dangerous to be left alive and they are going to find some way to escape justice. When the mutiny happens, I will shoot my way through the security to find the thermobaric explosives that were mistakenly sent here, transport them amidst the chaos to the secret lab, and save the colony and ALL of humanity by obliterating it.  </p>"
+	info = "Fuck man, I have tried and tried to tell people, from my co-workers and friends to anyone who would listen to me. Each and every single time I have been called crazy. <p> Then recently THEY took notice, and started sending their minions against me, almost everywhere i go outside of the caves, there is constantly a marshal on my ass, stalking me at least 30 feet away. They KNOW and they want me silenced or dead. </p> \n Then one day the head of security himself, Jim FUCKING Hamilton instructed me to stop \" spreading rumors \" or face consequences. <p> <b> No, I will not follow what a mere puppet wants me to do, a lap dog being controlled by THEM!</b>  </p> \n \n There is some hope, however. There is word going around of a mutiny at my workplace. The miners will rise up and forcibly take control of the administration, and their leader has agreed with me to investigate lambda and expose it once and for all!. <p> However, I can’t just leave them exposed with their twisted secrets uncovered. They’re too dangerous to be left alive and they are going to find some way to escape justice. When the mutiny happens, I will shoot my way through the security to find the thermobaric explosives that were mistakenly sent here, transport them amidst the chaos to the secret lab, and save the colony and ALL of humanity by obliterating it.</p>"
 	color = "green"
 
 /obj/item/paper/bigred/final
@@ -671,13 +700,17 @@
 
 /obj/item/paper/soro/clf
 	name = "TOP SECRET: FOR CELL LEAD ONLY"
-	info = "Your request for extraction has been recieved. We have no assets in the region available. Await further instruction."
+	info = "Your request for extraction has been received. We have no assets in the region available. Await further instruction."
+
+/obj/item/paper/hybrisa/firefighternote
+	name = "Fannin' Fuego: Choke Like A Pro!"
+	info = "<h2>Okay-</h2> Okay. I know I fucked up, Tova. I got the thing on sale- though! I swear! I fitted it with a case full of stabilized foam, the kind they use to plug atmospheric breaches- don't ask where I got it from- it's so much cheaper than water... We won't have to have that Company bastard help take our business apart! They <b>need</b> us in this city, you know? Another fucking fire we can't fix and it's wraps for this casino town. I swear to God I can hear Jones whining about the bullshit they get up to in the caves. Just a few more months, and we're out, okay? Out! \n\n I know I'm gone for the week, you guys can handle shop while I'm out. <h2>Instructions're easy.</h2>  You see a flame, in a window, room or whatever, you aim <i>far</i>, it'll seal the whole room in foam, hardens <b>real</b> fast. It'll choke any flame in any enclosed space near-instantly, and honestly? It keeps all the valuables safe, too. You remember how Maizer was heckling us about his dog? Guy was so damn angry about his oven shorting he forgot all about his mother's jewelry box, and shit- if I treated that fire with the regular stuff, and the 'water' they give us? We'd probably be homeless right now. \n\n I'm serious, girl. This shit works. You could seal a whale's asshole with this thing. \n Swear to god, that dumb fuck'll never find out. We'll be in Sol in no time. Just hang in there."
 
 /obj/item/paper/bigred/upp/Initialize(mapload, photo_list)
 	. = ..()
 
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
-	info = "<center> <img src = [asset.get_url_mappings()["logo_upp.png"]]> <br> <b><small>Union Of Progressive People's Fourth Fleet</b></small> <br> <b><large>Orders For 173rd Airborne Reconnaissance: 2nd Platoon</large></b> <br> <small>No.52</small></center> <hr> <b>Order of Military Officer of the UPP</b><br><b>Kolonel <redacted> Ganbaatar </b><br><b>Commander of MV-35</b> <br> Date: 2182 <br> <b><large>On Special Mission<large></b>  <hr>  The actions of the hostile Weyland-Yutani corporation on the fringes of the Neroid sector have grown increasingly intolerable. However, evidence suggesting they are researching into the creation and deployment of some form of biological weapons program represent an unacceptable risk to the security of UPP interests in this sector. The risk of these items falling into UA/USCM hands is unacceptable. <br><br> Orders for the Boris squad of the 173rd Airborne Recon are as follows. Initiate airborne reconnaissance of WY colony Oxley's Buttle, Trijent Dam, location on planet Raijin  (UA Code: LV-670). Ascertain veracity of onsight biological weapons program. If positive confirmation of the weapons program is identified, authorization for rapid assault and recovery is granted. Avoid all contact with UA/USCM military forces, abort missions if UA/USCM forces are encountered. <hr><center><b>Authorizing Officer: Gaanbatar</b><br>Name and Rank: Kolonel </center>  <hr><small><i>FOR SANCTIONED USE ONLY</i></small>"
+	info = "<center> <img src = [asset.get_url_mappings()["logo_upp.png"]]> <br> <b><small>Union Of Progressive People's Fourth Fleet</b></small> <br> <b><large>Orders For 173rd Airborne Reconnaissance: 2nd Platoon</large></b> <br> <small>No.52</small></center> <hr> <b>Order of Military Officer of the UPP</b><br><b>Kolonel <redacted> Ganbaatar </b><br><b>Commander of MV-35</b> <br> Date: 2182 <br> <b><large>On Special Mission<large></b>  <hr>  The actions of the hostile Weyland-Yutani corporation on the fringes of the Neroid sector have grown increasingly intolerable. However, evidence suggesting they are researching into the creation and deployment of some form of biological weapons program represent an unacceptable risk to the security of UPP interests in this sector. The risk of these items falling into UA/USCM hands is unacceptable. <br><br> Orders for the Boris squad of the 173rd Airborne Recon are as follows. Initiate airborne reconnaissance of WY colony Oxley's Buttle, Trijent Dam, location on planet Raijin  (UA Code: LV-670). Ascertain veracity of on site biological weapons program. If positive confirmation of the weapons program is identified, authorization for rapid assault and recovery is granted. Avoid all contact with UA/USCM military forces, abort missions if UA/USCM forces are encountered. <hr><center><b>Authorizing Officer: Gaanbatar</b><br>Name and Rank: Kolonel </center>  <hr><small><i>FOR SANCTIONED USE ONLY</i></small>"
 
 /obj/item/paper/crumpled
 	name = "paper scrap"
@@ -700,6 +733,7 @@
 
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
 	info = "<center><img src = [asset.get_url_mappings()["logo_wy.png"]]></center><BR>\n<span class=\"paper_field\"></span>"
+	icon_state = initial(icon_state)
 
 /obj/item/paper/uscm
 	icon_state = "paper_uscm"
@@ -709,73 +743,105 @@
 
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
 	info = "<center><img src = [asset.get_url_mappings()["logo_uscm.png"]]></center><BR>\n<span class=\"paper_field\"></span>"
+	icon_state = initial(icon_state)
 
 /obj/item/paper/research_notes
 	icon_state = "paper_wy_words"
 	unacidable = TRUE
 	var/datum/reagent/data
+	var/list/hint = list()
+	var/picked_property
 	var/tier
 	var/note_type
 	var/full_report
 	var/grant
+	var/contract
+	is_objective = TRUE
 
-/obj/item/paper/research_notes/Initialize()
+/obj/item/paper/research_notes/Initialize(mapload, data, note_type, contract)
 	. = ..()
+	if(data)
+		src.data = data
+	if(note_type)
+		src.note_type = note_type
+	if(contract)
+		src.contract = contract
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/item/paper/research_notes/LateInitialize()
 	. = ..()
 	generate()
 
+/obj/item/paper/research_notes/Destroy()
+	data = null
+	hint = null
+	. = ..()
+
 /obj/item/paper/research_notes/proc/generate()
 	is_objective = TRUE
 	if(!note_type)
-		note_type = pick(prob(50);"synthesis",prob(35);"grant",prob(15);"test")
-	var/datum/reagent/generated/C = data
-	if(!C)
-		var/random_chem
-		if(tier)
-			random_chem = pick(GLOB.chemical_gen_classes_list[tier])
-		else
-			if(note_type == "test")
-				random_chem = pick(GLOB.chemical_gen_classes_list["T4"])
-			else
-				random_chem = pick( prob(55);pick(GLOB.chemical_gen_classes_list["T2"]),
-									prob(30);pick(GLOB.chemical_gen_classes_list["T3"]),
-									prob(15);pick(GLOB.chemical_gen_classes_list["T4"]))
-		if(!random_chem)
-			random_chem = pick(GLOB.chemical_gen_classes_list["T1"])
-		C = GLOB.chemical_reagents_list["[random_chem]"]
+		note_type = pick_weight(list("synthesis" = 7, "grant" = 3))
+	var/datum/reagent/generated/chemical_to_generate
+	if(note_type == "synthesis")
+		chemical_to_generate = data
+		if(!chemical_to_generate)
+			chemical_to_generate = new /datum/reagent/generated
+			chemical_to_generate.id = "tau-[length(GLOB.chemical_gen_classes_list["tau"])]"
+			chemical_to_generate.generate_name()
+			chemical_to_generate.chemclass = CHEM_CLASS_ULTRA
+			chemical_to_generate.gen_tier = rand(1, 2)
+			chemical_to_generate.generate_stats()
+			GLOB.chemical_gen_classes_list["tau"] += chemical_to_generate.id //Because each unique_vended should be unique, we do not save the chemclass anywhere but in the tau list
+			GLOB.chemical_reagents_list[chemical_to_generate.id] = chemical_to_generate
+			chemical_to_generate.generate_assoc_recipe()
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
 	var/txt = "<center><img src = [asset.get_url_mappings()["logo_wy.png"]]><HR><I><B>Official Weyland-Yutani Document</B><BR>Experiment Notes</I><HR><H2>"
 	switch(note_type)
 		if("synthesis")
-			var/datum/chemical_reaction/G = GLOB.chemical_reactions_list[C.id]
-			name = "Synthesis of [C.name]"
+			var/datum/chemical_reaction/reaction_generated = GLOB.chemical_reactions_list[chemical_to_generate.id]
 			icon_state = "paper_wy_partial_report"
+			if(!contract)
+				name = "Synthesis of [chemical_to_generate.name]"
+			else
+				name = "Contract for [chemical_to_generate.name]"
+				icon_state = "paper_wy_contract"
 			txt += "[name] </H2></center>"
-			txt += "During experiment <I>[pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]</I> the theorized compound identified as [C.name], was successfully synthesized using the following formula:<BR>\n<BR>\n"
-			for(var/I in G.required_reagents)
+			txt += "During experiment <I>[pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]</I> the theorized compound identified as [chemical_to_generate.name], was successfully synthesized using the following formula:<BR>\n<BR>\n"
+			for(var/I in reaction_generated.required_reagents)
 				var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
-				var/U = G.required_reagents[I]
+				var/U = reaction_generated.required_reagents[I]
 				txt += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
-			if(LAZYLEN(G.required_catalysts))
+			if(LAZYLEN(reaction_generated.required_catalysts))
 				txt += "<BR>\nWhile using the following catalysts: <BR>\n<BR>\n"
-				for(var/I in G.required_catalysts)
+				for(var/I in reaction_generated.required_catalysts)
 					var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
-					var/U = G.required_catalysts[I]
+					var/U = reaction_generated.required_catalysts[I]
 					txt += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
 			if(full_report)
-				txt += "<BR>The following properties have been discovered during tests:<BR><font size = \"2.5\">[C.description]\n"
-				txt += "<BR>Overdoses at: [C.overdose] units</font><BR>\n"
+				txt += "<BR>Chemical has following reaction indicators:"
+				if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_BUBBLING))
+					txt += "\n<BR><B>Aggressive foaming</B><BR>\n	- The reaction causes bubbling and foam to build up rapidly and shoot out of the beaker. Biological Suit gives complete protection.<BR>"
+				else if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_GLOWING))
+					txt += "\n<BR><B>Luminescence</B>.<BR>\n	- The reaction produces light, power of the light is dictated by the amount mixed.<BR>"
+				else if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_SMOKING))
+					txt += "\n<BR><B>Fuming</B><BR>\n	- The reaction produces heavy fumes from contents of the beaker. Work under a fume hood, wear a gas mask, or simply put an airtight seal over the beaker.<BR>"
+				else if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_FIRE))
+					txt += "\n<BR><B>Exothermic</B><BR>\n	- The reaction produces heat and will cause a small scale combustion. This will not compromise the contents of the beaker.<BR>"
+				else if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_ENDOTHERMIC))
+					txt += "\n<BR><B>Endothermic</B><BR>\n	- The reaction is endothermic. This slows down the mixing process significantly and stops all other reactions from happening.<BR>"
+				else
+					txt += "<BR><B>Inert</B><BR> -  The reaction has no indicators.<BR>"
+				txt += "<BR>The following properties have been discovered during tests:<BR><font size = \"2.5\">[chemical_to_generate.description]\n"
+				txt += "<BR>Overdoses at: [chemical_to_generate.overdose] units</font><BR>\n"
+				txt += "<BR>Critically Overdoses at: [chemical_to_generate.overdose_critical] units</font><BR>\n"
 				icon_state = "paper_wy_full_report"
 			else
 				txt += "<BR>\nTesting for chemical properties is currently pending.<BR>\n"
 			var/is_volatile = FALSE
-			if(C.chemfiresupp)
+			if(chemical_to_generate.chemfiresupp)
 				is_volatile = TRUE
 			else
-				for(var/datum/chem_property/P in C.properties)
+				for(var/datum/chem_property/P in chemical_to_generate.properties)
 					if(P.volatile)
 						is_volatile = TRUE
 						break
@@ -786,7 +852,7 @@
 			name = "Experiment [pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]"
 			icon_state = "paper_wy_synthesis"
 			txt += "Note for [name]</H2></center>"
-			txt += "Subject <I>[rand(10000,99999)]</I> experienced [pick(C.properties)] effects during testing of [C.name]. <BR>\nTesting for additional chemical properties is currently pending. <BR>\n"
+			txt += "Subject <I>[rand(10000,99999)]</I> experienced [pick(chemical_to_generate.properties)] effects during testing of [chemical_to_generate.name]. <BR>\nTesting for additional chemical properties is currently pending. <BR>\n"
 			txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
 		if("grant")
 			if(!grant)
@@ -796,25 +862,27 @@
 			txt += "Weyland-Yutani Research Grant</H2></center>"
 			txt += "Dear valued researcher. Weyland-Yutani has taken high interest of your recent scientific progress. To further support your work we have sent you this research grant of [grant] credits. Please scan at your local Weyland-Yutani research data terminal to receive the benefits.<BR>\n"
 			txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
+		if("ciph_hint")
+			icon_state = "paper_wy_words"
+			name = "Transmission Intercepted"
+			txt += "[MAIN_SHIP_NAME] intelligence Relay</H2></center>"
+			txt += "Progress report<BR>\n\n"
+			txt += "During testing, the theorized component <b>[PROPERTY_CIPHERING]</b> was found to be made of <b>[hint[1]]</b>. Recent discoveries have made us believe that one of the missing pieces has <b>[isNeutralProperty(hint[3]) ? "neutral" : "negative"]</b> effects.<BR>\n"
+			txt += "This will be the last transmission before the scheduled communications blackout, testing has been successful so far.<BR>\n"
+			txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
+		if("ciph_hint_complete")
+			icon_state = "paper_wy_words"
+			name = "Research Ciphering Breakthrough"
+			txt += "Weyland-Yutani Biological Weapons Division</H2></center>"
+			txt += "During testing, the theorized component <b>[PROPERTY_CIPHERING]</b> was found to be made of <b>[hint[1]]</b> and <b>[hint[2]]</b>. Recent discovery made us believe last piece is <b>[hint[3]]</b>.<BR>\n"
+			txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
+		if("leg_hint")
+			icon_state = "paper_wy_words"
+			name = "Property Breakthrough"
+			txt += "Weyland-Yutani Pharmaceuticals Division(TM).</H2></center>"
+			txt += "During XRF process on substance <I>[rand(10000,99999)]</I>, the theorized component <b>[picked_property]</b> was found to be made of <b>[hint[1]]</b>, and <b>[hint[2]]</b>. Final discovery made us believe the final missing piece was <b>[hint[3]]</b>.<BR>\n"
+			txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
 	info = txt
-
-/obj/item/paper/research_notes/bad
-	note_type = "synthesis"
-	tier = "T1"
-
-/obj/item/paper/research_notes/decent
-	note_type = "synthesis"
-	tier = "T2"
-	full_report = TRUE
-
-/obj/item/paper/research_notes/good
-	note_type = "synthesis"
-	full_report = TRUE
-
-/obj/item/paper/research_notes/good/Initialize()
-	var/list/L = list("T3", "T4")
-	tier = pick(L)
-	. = ..()
 
 /obj/item/paper/research_notes/unique
 	note_type = "synthesis"
@@ -851,8 +919,30 @@
 	GLOB.chemical_reagents_list[C.id] = C
 	C.generate_assoc_recipe()
 	data = C
-	msg_admin_niche("New reagent with id [C.id], name [C.name], level [C.gen_tier], generated and printed at [loc] [ADMIN_JMP(loc)].")
 	. = ..()
+
+/obj/item/paper/research_notes/ciph_hint
+	note_type = "ciph_hint"
+
+/obj/item/paper/research_notes/ciph_hint/Initialize()
+	. = ..()
+	hint = GLOB.combining_properties[PROPERTY_CIPHERING]
+	if(length(hint) < CIPHERING_COMBINE_PROPERTIES)
+		return INITIALIZE_HINT_QDEL
+
+/obj/item/paper/research_notes/ciph_hint/complete
+	note_type = "ciph_hint_complete"
+
+/obj/item/paper/research_notes/leg_hint
+	note_type = "leg_hint"
+
+/obj/item/paper/research_notes/leg_hint/Initialize()
+	. = ..()
+	picked_property = pick(PROPERTY_LEGENDARY_LIST)
+	hint = GLOB.combining_properties[picked_property]
+	if(length(hint) < LEGENDARY_COMBINE_PROPERTIES)
+		return INITIALIZE_HINT_QDEL //shouldn't happen, will happen.
+
 
 /obj/item/paper/research_notes/grant
 	note_type = "grant"
@@ -865,35 +955,71 @@
 	icon_state = "paper_wy_words"
 	var/datum/reagent/data
 	var/completed = FALSE
+	///does the document has the information needed but .
+	var/valid_report = TRUE
 
 /obj/item/paper/research_report/proc/generate(datum/reagent/S, info_only = FALSE)
 	if(!S)
 		return
 	info += "<B>ID:</B> <I>[S.name]</I><BR><BR>\n"
+	var/datum/chemical_reaction/reaction_generated = GLOB.chemical_reactions_list[S.id]
 	info += "<B>Database Details:</B><BR>\n"
 	if(S.chemclass >= CHEM_CLASS_ULTRA)
 		if(GLOB.chemical_data.clearance_level >= S.gen_tier || info_only)
+			for(var/datum/chem_property/scanned_property in S.properties)
+				name += " "+scanned_property.code+"[scanned_property.level]"
 			info += "<I>The following information relating to [S.name] is restricted with a level [S.gen_tier] clearance classification.</I><BR>"
+			info += "<BR>Chemical has following reaction indicators:"
+			if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_BUBBLING))
+				info += "\n<BR><B>Aggressive foaming</B><BR>\n	- The reaction causes bubbling and foam to build up rapidly and shoot out of the beaker. Biological Suit gives complete protection.<BR>"
+			else if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_GLOWING))
+				info += "\n<BR><B>Luminescence</B>.<BR>\n	- The reaction produces light, power of the light is dictated by the amount mixed.<BR>"
+			else if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_SMOKING))
+				info += "\n<BR><B>Fuming</B><BR>\n	- The reaction produces heavy fumes from contents of the beaker. Work under a fume hood, wear a gas mask, or simply put an airtight seal over the beaker.<BR>"
+			else if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_FIRE))
+				info += "\n<BR><B>Exothermic</B><BR>\n	- The reaction produces heat and will cause a small scale combustion. This will not compromise the contents of the beaker.<BR>"
+			else if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_ENDOTHERMIC))
+				info += "\n<BR><B>Endothermic</B><BR>\n	- The reaction is endothermic. This slows down the mixing process significantly and stops all other reactions from happening.<BR>"
+			else
+				info += "<BR><B>Inert</B><BR> -  The reaction has no indicators.<BR>"
 			info += "<font size = \"2.5\">[S.description]\n"
 			info += "<BR>Overdoses at: [S.overdose] units\n"
+			info += "<BR>Critically Overdoses at: [S.overdose_critical] units\n"
 			info += "<BR>Standard duration multiplier of [REAGENTS_METABOLISM/S.custom_metabolism]x</font><BR>\n"
 			completed = TRUE
 			icon_state = "paper_wy_full_report"
 		else
 			info += "CLASSIFIED:<I> Clearance level [S.gen_tier] required to read the database entry.</I><BR>\n"
 			icon_state = "paper_wy_partial_report"
+			valid_report = FALSE
 	else if(S.chemclass == CHEM_CLASS_SPECIAL && !GLOB.chemical_data.clearance_x_access && !info_only)
 		info += "CLASSIFIED:<I> Clearance level <B>X</B> required to read the database entry.</I><BR>\n"
 		icon_state = "paper_wy_partial_report"
+		valid_report = FALSE
 	else if(S.description)
+		info += "<BR>Chemical has following reaction indicators:"
+		if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_BUBBLING))
+			info += "\n<BR><B>Aggressive foaming</B><BR>\n	- The reaction causes bubbling and foam to build up rapidly and shoot out of the beaker. Biological Suit gives complete protection.<BR>"
+		else if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_GLOWING))
+			info += "\n<BR><B>Luminescence</B>.<BR>\n	- The reaction produces light, power of the light is dictated by the amount mixed.<BR>"
+		else if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_SMOKING))
+			info += "\n<BR><B>Fuming</B><BR>\n	- The reaction produces heavy fumes from contents of the beaker. Work under a fume hood, wear a gas mask, or simply put an airtight seal over the beaker.<BR>"
+		else if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_FIRE))
+			info += "\n<BR><B>Exothermic</B><BR>\n	- The reaction produces heat and will cause a small scale combustion. This will not compromise the contents of the beaker.<BR>"
+		else if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_ENDOTHERMIC))
+			info += "\n<BR><B>Endothermic</B><BR>\n	- The reaction is endothermic. This slows down the mixing process significantly and stops all other reactions from happening.<BR>"
+		else
+			info += "<BR><B>Inert</B><BR> -  The reaction has no indicators.<BR>"
 		info += "<font size = \"2.5\">[S.description]\n"
 		info += "<BR>Overdoses at: [S.overdose] units\n"
+		info += "<BR>Critically Overdoses at: [S.overdose_critical] units\n"
 		info += "<BR>Standard duration multiplier: [REAGENTS_METABOLISM/S.custom_metabolism]x</font><BR>\n"
 		completed = TRUE
 		icon_state = "paper_wy_full_report"
 	else
 		info += "<I>No details on this reagent could be found in the database.</I><BR>\n"
 		icon_state = "paper_wy_synthesis"
+		valid_report = FALSE
 	if(S.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[S.id] && !info_only)
 		info += "<BR><I>Saved emission spectrum of [S.name] to the database.</I><BR>\n"
 	info += "<BR><B>Composition Details:</B><BR>\n"
@@ -901,9 +1027,10 @@
 		var/datum/chemical_reaction/C = GLOB.chemical_reactions_list[S.id]
 		for(var/I in C.required_reagents)
 			var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
-			if(R.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[R.id] && !info_only)
+			if(R.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[R.id] && !info_only && R.chemclass != CHEM_CLASS_HYDRO)
 				info += "<font size = \"2\"><I> - Unknown emission spectrum</I></font><BR>\n"
 				completed = FALSE
+				valid_report = FALSE
 			else
 				var/U = C.required_reagents[I]
 				info += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
@@ -922,12 +1049,14 @@
 	else
 		info += "<I>ERROR: Unable to analyze emission spectrum of sample.</I>" //A reaction to make this doesn't exist, so this is our IC excuse
 		completed = FALSE
+		valid_report = FALSE
 
 	if(info_only)
 		completed = TRUE
 	else
 		if(!S.properties) //Safety for empty reagents
 			completed = FALSE
+			valid_report = FALSE
 		if(S.chemclass == CHEM_CLASS_SPECIAL && GLOB.chemical_data.clearance_x_access)
 			completed = TRUE
 
@@ -1028,13 +1157,59 @@
 	info = parsepencode(template, null, null, FALSE)
 	update_icon()
 
-#undef MAX_FIELDS
+/obj/item/paper/medical_record
+	name = "Medical record"
+	icon_state = "paper_uscm_words"
+
+/obj/item/paper/medical_record/Initialize(mapload, datum/data/record/general_record, datum/data/record/medical_record)
+	. = ..(mapload)
+	var/template = {"\[center\]\[uscm\]\[/center\]"}
+
+	template += {"\[center\]\[b\]Personal Record\[/b\]\[/center\]"}
+
+	if(general_record)
+		template += {"
+		Name: [general_record.fields["name"]]\[br\]
+		ID: [general_record.fields["id"]]\[br\]
+		Sex: [general_record.fields["sex"]]\[br\]
+		Age: [general_record.fields["age"]]\[br\]
+		Assignment: [general_record.fields["rank"]]\[br\]
+		Physical Status: [general_record.fields["p_stat"]]\[br\]
+		Mental Status: [general_record.fields["m_stat"]]\[br\]
+		"}
+
+		if (medical_record)
+			template += {"\[center\]\[b\]Medical Record\[/b\]\[/center\]"}
+			template += {"Diseases: [medical_record.fields["diseases"]]\[br\]"}
+			template += {"Allergies: [medical_record.fields["allergies"]]\[br\]"}
+			template += {"Major Disabilities: [medical_record.fields["major_disability"]]\[br\]"}
+			template += {"Minor Disabilities: [medical_record.fields["minor_disability"]]\[br\]"}
+			template += {"\[center\]\[b\]Comments and Logs\[/b\]\[/center\]"}
+
+			if(islist(medical_record.fields["comments"]) || length(medical_record.fields["comments"]) > 0)
+				for(var/com_i in medical_record.fields["comments"])
+					var/comment = medical_record.fields["comments"][com_i]
+					// What a wacky and jolly creation
+					// its derived from //? text("<b>[] / [] ([])</b><br />", comment["created_at"], comment["created_by"]["name"], comment["created_by"]["rank"])
+					var/comment_markup = "\[b\][comment["created_at"]] / [comment["created_by"]["name"]] \[/b\] ([comment["created_by"]["rank"]])\[br\]"
+					if (isnull(comment["deleted_by"]))
+						comment_markup += "[comment["entry"]]"
+					else
+						comment_markup += "\[i\]Comment deleted by [comment["deleted_by"]] at [comment["deleted_at"]]\[/i\]"
+					template += {"[comment_markup]\[br\]\[br\]"}
+			else
+				template += {"\[b\]No comments\[/b\]\[br\]"}
+		else
+			template += {"\[b\]Medical record not found!\[/b\]\[br\]"}
+
+	info = parsepencode(template, null, null, FALSE)
+	update_icon()
 
 /obj/item/paper/colonial_grunts
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "paper_stack_words"
 	name = "Colonial Space Grunts"
-	desc = "A tabletop game based around the USCM, easy to get into, simple to play, and most inportantly fun for the whole squad."
+	desc = "A tabletop game based around the USCM, easy to get into, simple to play, and most importantly fun for the whole squad."
 
 /obj/item/paper/colonial_grunts/Initialize(mapload, photo_list)
 	..()
@@ -1063,3 +1238,13 @@
 
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
 	info = replacetext(info, "%%WYLOGO%%", asset.get_url_mappings()["logo_wy.png"])
+
+/obj/item/paper/captain_brief
+	name = "Classified Operations Briefing"
+	desc = "A classified document from USCM high-command about the colony the ship is responding to."
+	icon_state = "paper_uscm_words"
+
+	// important documents should not be turned into hats
+	flags_equip_slot = FALSE
+	flags_armor_protection = FALSE
+

@@ -1,424 +1,1435 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"a" = (
-/turf/closed/wall/r_wall/bunker,
+"bk" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/closet/secure_closet/surgical{
+	pixel_x = 30;
+	req_access = null
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/event/dynamic)
+"br" = (
+/turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/event)
-"b" = (
-/turf/open/floor/almayer/plating,
-/area/event)
-"c" = (
-/obj/effect/landmark/start/engineering,
-/turf/open/floor/almayer/plating,
-/area/event)
-"d" = (
-/obj/effect/landmark/start/working_joe,
-/turf/open/floor/almayer/plating,
-/area/event)
-"e" = (
-/obj/effect/landmark/start/requisition,
-/turf/open/floor/almayer/plating,
-/area/event)
-"h" = (
-/obj/effect/landmark/start/police,
-/turf/open/floor/almayer/plating,
-/area/event)
-"k" = (
-/obj/effect/landmark/start/liaison,
-/turf/open/floor/almayer/plating,
-/area/event)
-"l" = (
-/obj/effect/landmark/start/marine/medic,
-/turf/open/floor/almayer/plating,
-/area/event)
-"n" = (
-/obj/effect/landmark/start/professor,
-/turf/open/floor/almayer/plating,
-/area/event)
-"q" = (
-/obj/effect/landmark/start/warden,
-/turf/open/floor/almayer/plating,
-/area/event)
-"r" = (
-/obj/effect/landmark/start/maint,
-/turf/open/floor/almayer/plating,
-/area/event)
-"s" = (
-/obj/effect/landmark/late_join,
-/turf/open/floor/almayer/plating,
-/area/event)
-"t" = (
-/obj/effect/landmark/start/marine/engineer,
-/turf/open/floor/almayer/plating,
-/area/event)
-"u" = (
-/obj/effect/landmark/start/otech,
-/turf/open/floor/almayer/plating,
-/area/event)
-"v" = (
-/obj/effect/landmark/start/marine,
-/turf/open/floor/almayer/plating,
-/area/event)
-"x" = (
-/obj/effect/landmark/start/captain,
-/turf/open/floor/almayer/plating,
-/area/event)
-"z" = (
-/obj/effect/landmark/start/pilot/dropship_pilot,
-/turf/open/floor/almayer/plating,
-/area/event)
-"A" = (
-/obj/effect/landmark/start/cargo,
-/turf/open/floor/almayer/plating,
-/area/event)
-"C" = (
-/obj/effect/landmark/start/bridge,
-/turf/open/floor/almayer/plating,
-/area/event)
-"D" = (
-/obj/effect/landmark/start/warrant,
-/turf/open/floor/almayer/plating,
-/area/event)
-"F" = (
-/obj/effect/landmark/start/marine/tl,
-/turf/open/floor/almayer/plating,
-/area/event)
-"G" = (
-/obj/effect/landmark/start/marine/spec,
-/turf/open/floor/almayer/plating,
-/area/event)
-"I" = (
-/obj/effect/landmark/start/synthetic,
-/turf/open/floor/almayer/plating,
-/area/event)
-"J" = (
-/obj/effect/landmark/start/executive,
-/turf/open/floor/almayer/plating,
-/area/event)
-"L" = (
-/obj/effect/landmark/start/researcher,
-/turf/open/floor/almayer/plating,
-/area/event)
-"M" = (
+"cD" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/reagentgrinder{
+	pixel_y = 9;
+	pixel_x = 2
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/event/dynamic)
+"cI" = (
 /obj/effect/landmark/start/pilot/cas_pilot,
 /turf/open/floor/almayer/plating,
 /area/event)
-"N" = (
-/obj/effect/landmark/start/nurse,
-/turf/open/floor/almayer/plating,
-/area/event)
-"P" = (
-/obj/effect/landmark/start/doctor,
-/turf/open/floor/almayer/plating,
-/area/event)
-"Q" = (
-/obj/effect/landmark/start/senior,
-/turf/open/floor/almayer/plating,
-/area/event)
-"R" = (
-/obj/effect/landmark/start/marine/smartgunner,
-/turf/open/floor/almayer/plating,
-/area/event)
-"T" = (
-/obj/effect/landmark/start/marine/leader,
-/turf/open/floor/almayer/plating,
-/area/event)
-"U" = (
-/obj/effect/landmark/start/intel,
-/turf/open/floor/almayer/plating,
-/area/event)
-"V" = (
-/obj/effect/landmark/start/crew_chief,
-/turf/open/floor/almayer/plating,
-/area/event)
-"W" = (
+"cV" = (
+/obj/structure/machinery/cm_vending/sorted/medical{
+	req_access = null;
+	req_one_access = null
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/event/dynamic)
+"ev" = (
 /obj/effect/landmark/start/chef,
 /turf/open/floor/almayer/plating,
 /area/event)
+"gO" = (
+/obj/structure/machinery/optable,
+/turf/open/floor/almayer/dark_sterile,
+/area/event/dynamic)
+"he" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/reagent_analyzer{
+	pixel_x = 2;
+	pixel_y = 3
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/event/dynamic)
+"hx" = (
+/obj/effect/landmark/start/synthetic,
+/turf/open/floor/almayer/plating,
+/area/event)
+"hG" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plating/bare_catwalk,
+/area/event/dynamic)
+"hU" = (
+/obj/effect/landmark/start/nurse,
+/turf/open/floor/almayer/plating,
+/area/event)
+"ir" = (
+/obj/structure/machinery/body_scanconsole{
+	pixel_y = 3
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/event/dynamic)
+"iz" = (
+/obj/structure/stairs/multiz/down{
+	dir = 1
+	},
+/turf/open/floor/plating/bare_catwalk,
+/area/event/dynamic)
+"iD" = (
+/obj/structure/barricade/handrail/no_vault,
+/turf/open/floor/plating/bare_catwalk,
+/area/event/dynamic)
+"ju" = (
+/obj/effect/landmark/start/senior,
+/turf/open/floor/almayer/plating,
+/area/event)
+"jz" = (
+/obj/structure/machinery/cm_vending/sorted/attachments/squad{
+	req_access = null;
+	req_one_access = null;
+	vend_y_offset = 0
+	},
+/turf/open/floor/almayer/plating,
+/area/event)
+"kr" = (
+/obj/structure/machinery/light{
+	unacidable = 1;
+	unslashable = 1
+	},
+/turf/open/floor/plating/bare_catwalk,
+/area/event/dynamic)
+"kC" = (
+/obj/effect/landmark/start/pilot/dropship_pilot,
+/turf/open/floor/almayer/plating,
+/area/event)
+"lo" = (
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep{
+	req_access = null;
+	req_one_access = null
+	},
+/turf/open/floor/almayer/plating,
+/area/event)
+"lQ" = (
+/obj/effect/landmark/start/warden,
+/turf/open/floor/almayer/plating,
+/area/event)
+"mc" = (
+/obj/structure/machinery/cm_vending/clothing/marine{
+	req_access = null;
+	req_one_access = null;
+	vendor_role = null
+	},
+/turf/open/floor/almayer/plating,
+/area/event)
+"mf" = (
+/obj/effect/landmark/start/marine/spec,
+/turf/open/floor/almayer/plating,
+/area/event)
+"mD" = (
+/obj/structure/machinery/medical_pod/bodyscanner{
+	pixel_y = 2
+	},
+/turf/open/floor/almayer/sterile_green_side/west,
+/area/event/dynamic)
+"na" = (
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad{
+	req_access = null;
+	req_one_access = null;
+	vend_x_offset = 0
+	},
+/turf/open/floor/almayer/plating,
+/area/event)
+"nf" = (
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad{
+	req_access = null;
+	req_one_access = null;
+	vend_x_offset = 0;
+	vend_y_offset = 0
+	},
+/turf/open/floor/almayer/plating,
+/area/event)
+"oS" = (
+/obj/effect/landmark/start/bridge,
+/turf/open/floor/almayer/plating,
+/area/event)
+"pO" = (
+/obj/effect/landmark/start/otech,
+/turf/open/floor/almayer/plating,
+/area/event)
+"pX" = (
+/turf/closed/wall/r_wall/biodome/biodome_unmeltable,
+/area/event/dynamic)
+"qh" = (
+/obj/structure/machinery/cm_vending/sorted/attachments/blend{
+	req_access = null;
+	req_one_access = null
+	},
+/turf/closed/wall/almayer{
+	opacity = 0
+	},
+/area/event)
+"rG" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/plating/bare_catwalk,
+/area/event/dynamic)
+"sH" = (
+/obj/effect/landmark/start/doctor,
+/turf/open/floor/almayer/plating,
+/area/event)
+"ta" = (
+/obj/structure/machinery/chem_simulator{
+	density = 0;
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/sterile_green_side/west,
+/area/event/dynamic)
+"vm" = (
+/obj/structure/barricade/handrail/no_vault{
+	dir = 8
+	},
+/obj/structure/barricade/handrail/no_vault{
+	dir = 1
+	},
+/turf/open/floor/plating/bare_catwalk,
+/area/event/dynamic)
+"vp" = (
+/obj/structure/machinery/chem_dispenser/research,
+/obj/item/reagent_container/glass/beaker/bluespace{
+	pixel_y = 12
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/event/dynamic)
+"vB" = (
+/obj/effect/landmark/start/intel,
+/turf/open/floor/almayer/plating,
+/area/event)
+"vQ" = (
+/obj/structure/machinery/medical_pod/sleeper{
+	pixel_y = 2
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/event/dynamic)
+"wk" = (
+/obj/structure/barricade/handrail/no_vault{
+	dir = 8
+	},
+/turf/open/floor/plating/bare_catwalk,
+/area/event/dynamic)
+"xA" = (
+/obj/effect/landmark/late_join,
+/turf/open/floor/almayer/plating,
+/area/event)
+"yP" = (
+/obj/effect/landmark/start/working_joe,
+/turf/open/floor/almayer/plating,
+/area/event)
+"zK" = (
+/obj/effect/landmark/start/maint,
+/turf/open/floor/almayer/plating,
+/area/event)
+"Ad" = (
+/turf/open_space,
+/area/event/dynamic)
+"Ak" = (
+/obj/effect/landmark/start/cargo,
+/turf/open/floor/almayer/plating,
+/area/event)
+"AN" = (
+/turf/open/floor/almayer/plating,
+/area/event)
+"BF" = (
+/obj/structure/machinery/chem_storage/research{
+	dir = 1;
+	layer = 3;
+	pixel_y = 8
+	},
+/turf/closed/wall/r_wall/biodome/biodome_unmeltable,
+/area/event/dynamic)
+"BL" = (
+/turf/open/floor/almayer/sterile_green_side/west,
+/area/event/dynamic)
+"BS" = (
+/obj/structure/barricade/handrail/no_vault{
+	dir = 4
+	},
+/turf/open/floor/plating/bare_catwalk,
+/area/event/dynamic)
+"Ce" = (
+/obj/effect/landmark/start/executive,
+/turf/open/floor/almayer/plating,
+/area/event)
+"Ci" = (
+/obj/effect/landmark/start/police,
+/turf/open/floor/almayer/plating,
+/area/event)
+"CU" = (
+/obj/effect/landmark/start/marine/smartgunner,
+/turf/open/floor/almayer/plating,
+/area/event)
+"Ev" = (
+/obj/effect/landmark/start/marine/medic,
+/turf/open/floor/almayer/plating,
+/area/event)
+"EF" = (
+/obj/effect/landmark/start/marine,
+/turf/open/floor/almayer/plating,
+/area/event)
+"EI" = (
+/obj/effect/landmark/start/requisition,
+/turf/open/floor/almayer/plating,
+/area/event)
+"Fw" = (
+/obj/structure/ladder/multiz,
+/turf/open/floor/almayer/plating,
+/area/event)
+"FA" = (
+/obj/structure/stairs/multiz/down{
+	dir = 1
+	},
+/obj/structure/machinery/light{
+	dir = 4;
+	invisibility = 101
+	},
+/turf/open/floor/plating/bare_catwalk,
+/area/event/dynamic)
+"FW" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/almayer/plating,
+/area/event)
+"GS" = (
+/turf/open/floor/almayer/dark_sterile,
+/area/event/dynamic)
+"Hj" = (
+/obj/effect/landmark/start/captain,
+/turf/open/floor/almayer/plating,
+/area/event)
+"Iu" = (
+/obj/structure/ladder/multiz,
+/turf/open/floor/plating/bare_catwalk,
+/area/event/dynamic)
+"IB" = (
+/obj/structure/machinery/cm_vending/sorted/uniform_supply{
+	req_one_access = null;
+	req_access = null
+	},
+/turf/open/floor/almayer/plating,
+/area/event)
+"KA" = (
+/obj/structure/target,
+/turf/open/floor/almayer/plating,
+/area/event)
+"KO" = (
+/obj/effect/landmark/start/researcher,
+/turf/open/floor/almayer/plating,
+/area/event)
+"Lc" = (
+/obj/effect/landmark/start/marine/tl,
+/turf/open/floor/almayer/plating,
+/area/event)
+"Lf" = (
+/obj/structure/window/framed/colony/reinforced/hull,
+/turf/open/floor/almayer/plating,
+/area/event)
+"LK" = (
+/obj/effect/landmark/start/marine/leader,
+/turf/open/floor/almayer/plating,
+/area/event)
+"Ml" = (
+/obj/structure/stairs/multiz/up{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating,
+/area/event)
+"MM" = (
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo/blend{
+	req_access = null;
+	req_one_access = null
+	},
+/turf/open/floor/almayer/green/southwest,
+/area/event)
+"OY" = (
+/turf/open/space/basic,
+/area/space)
+"PB" = (
+/obj/effect/landmark/start/engineering,
+/turf/open/floor/almayer/plating,
+/area/event)
+"PM" = (
+/obj/docking_port/stationary/emergency_response/port2,
+/turf/open/floor/almayer/plating,
+/area/event)
+"Qs" = (
+/obj/structure/machinery/sleep_console{
+	dir = 8;
+	pixel_y = 3
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/event/dynamic)
+"Qt" = (
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep{
+	req_access = null;
+	req_one_access = null
+	},
+/turf/open/floor/almayer/plating,
+/area/event)
+"Rb" = (
+/obj/effect/landmark/start/liaison,
+/turf/open/floor/almayer/plating,
+/area/event)
+"Sr" = (
+/obj/effect/landmark/start/marine/engineer,
+/turf/open/floor/almayer/plating,
+/area/event)
+"SA" = (
+/obj/effect/landmark/start/crew_chief,
+/turf/open/floor/almayer/plating,
+/area/event)
+"SK" = (
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/cargo/blend{
+	req_access = null;
+	req_one_access = null
+	},
+/turf/open/floor/almayer/green,
+/area/event)
+"SR" = (
+/obj/structure/barricade/handrail/no_vault{
+	dir = 1
+	},
+/turf/open/floor/plating/bare_catwalk,
+/area/event/dynamic)
+"Ty" = (
+/turf/closed/wall/r_wall/unmeltable,
+/area/event)
+"UL" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/almayer/plating,
+/area/event)
+"UW" = (
+/turf/closed/wall/r_wall,
+/area/event)
+"Vp" = (
+/obj/effect/landmark/start/professor,
+/turf/open/floor/almayer/plating,
+/area/event)
+"Wd" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/research{
+	pixel_y = 4;
+	req_access = null
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/event/dynamic)
+"WS" = (
+/turf/open/floor/plating/bare_catwalk,
+/area/event/dynamic)
+"Ze" = (
+/obj/effect/landmark/start/warrant,
+/turf/open/floor/almayer/plating,
+/area/event)
+"Zj" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plating/bare_catwalk,
+/area/event/dynamic)
+"Zv" = (
+/turf/closed/wall,
+/area/event)
+"ZE" = (
+/obj/structure/machinery/chem_master/vial,
+/turf/open/floor/almayer/dark_sterile,
+/area/event/dynamic)
 
 (1,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+OY
+br
+br
+br
+br
+br
+br
+br
+br
+br
+br
+br
+br
+br
+br
+br
+br
 "}
 (2,1,1) = {"
-a
-s
-k
-z
-q
-b
-b
-b
-b
-b
-b
-b
-b
-b
-b
-a
+OY
+br
+xA
+Rb
+kC
+lQ
+AN
+AN
+Lf
+UL
+FW
+Ty
+UW
+Zv
+AN
+Fw
+br
 "}
 (3,1,1) = {"
-a
-x
-v
-h
-D
-b
-b
-b
-b
-b
-b
-b
-b
-b
-b
-a
+OY
+br
+Hj
+EF
+Ci
+Ze
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+br
 "}
 (4,1,1) = {"
-a
-J
-t
-n
-d
-b
-b
-b
-b
-b
-b
-b
-b
-b
-b
-a
+OY
+br
+Ce
+Sr
+Vp
+yP
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+br
 "}
 (5,1,1) = {"
-a
-C
-T
-e
-V
-b
-b
-b
-b
-b
-b
-b
-b
-b
-b
-a
+OY
+br
+oS
+LK
+EI
+SA
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+br
 "}
 (6,1,1) = {"
-a
-A
-l
-L
-M
-b
-b
-b
-b
-b
-b
-b
-b
-b
-b
-a
+OY
+br
+Ak
+Ev
+KO
+cI
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+br
 "}
 (7,1,1) = {"
-a
-W
-F
-Q
-b
-b
-b
-b
-b
-b
-b
-b
-b
-b
-b
-a
+OY
+br
+ev
+Lc
+ju
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+br
 "}
 (8,1,1) = {"
-a
-P
-R
-I
-b
-b
-b
-b
-b
-b
-b
-b
-b
-b
-b
-a
+OY
+br
+sH
+CU
+hx
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+br
 "}
 (9,1,1) = {"
-a
-c
-G
-U
-b
-b
-b
-b
-b
-b
-b
-b
-b
-b
-b
-a
+OY
+br
+PB
+mf
+vB
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+br
 "}
 (10,1,1) = {"
-a
-r
-N
-u
-b
-b
-b
-b
-b
-b
-b
-b
-b
-b
-b
-a
+OY
+br
+zK
+hU
+pO
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+br
 "}
 (11,1,1) = {"
-a
-b
-b
-b
-b
-b
-b
-b
-b
-b
-b
-b
-b
-b
-b
-a
+OY
+br
+mc
+AN
+AN
+AN
+AN
+AN
+AN
+Qt
+br
+AN
+AN
+AN
+AN
+AN
+br
 "}
 (12,1,1) = {"
-a
-b
-b
-b
-b
-b
-b
-b
-b
-b
-b
-b
-b
-b
-b
-a
+OY
+br
+IB
+AN
+AN
+AN
+AN
+AN
+AN
+lo
+br
+AN
+AN
+AN
+AN
+AN
+br
 "}
 (13,1,1) = {"
-a
-b
-b
-b
-b
-b
-b
-b
-b
-b
-b
-b
-b
-b
-b
-a
+OY
+br
+qh
+AN
+AN
+AN
+AN
+AN
+AN
+jz
+br
+br
+br
+AN
+AN
+AN
+br
 "}
 (14,1,1) = {"
-a
-b
-b
-b
-b
-b
-b
-b
-b
-b
-b
-b
-b
-b
-b
-a
+OY
+br
+MM
+AN
+AN
+AN
+AN
+AN
+AN
+nf
+br
+br
+Ml
+AN
+AN
+AN
+br
 "}
 (15,1,1) = {"
-a
-b
-b
-b
-b
-b
-b
-b
-b
-b
-b
-b
-b
-b
-b
-a
+OY
+br
+SK
+AN
+KA
+KA
+KA
+KA
+AN
+na
+br
+br
+Ml
+AN
+AN
+AN
+br
 "}
 (16,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+br
+br
+br
+br
+br
+br
+br
+br
+br
+br
+br
+br
+br
+br
+AN
+AN
+br
+"}
+(17,1,1) = {"
+br
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+br
+"}
+(18,1,1) = {"
+br
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+PM
+AN
+br
+"}
+(19,1,1) = {"
+br
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+br
+"}
+(20,1,1) = {"
+br
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+br
+"}
+(21,1,1) = {"
+br
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+br
+"}
+(22,1,1) = {"
+br
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+br
+"}
+(23,1,1) = {"
+br
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+br
+"}
+(24,1,1) = {"
+br
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+br
+"}
+(25,1,1) = {"
+br
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+AN
+br
+"}
+(26,1,1) = {"
+br
+br
+br
+br
+br
+br
+br
+br
+br
+br
+br
+br
+br
+br
+br
+br
+br
+"}
+
+(1,1,2) = {"
+OY
+pX
+pX
+pX
+pX
+pX
+pX
+pX
+pX
+pX
+pX
+pX
+pX
+pX
+pX
+pX
+pX
+"}
+(2,1,2) = {"
+OY
+pX
+WS
+WS
+WS
+WS
+rG
+WS
+WS
+WS
+WS
+rG
+WS
+WS
+WS
+Iu
+pX
+"}
+(3,1,2) = {"
+OY
+pX
+WS
+WS
+BS
+BS
+BS
+WS
+WS
+WS
+WS
+BS
+BS
+BS
+WS
+WS
+pX
+"}
+(4,1,2) = {"
+OY
+pX
+WS
+iD
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+SR
+WS
+pX
+"}
+(5,1,2) = {"
+OY
+pX
+WS
+iD
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+SR
+WS
+pX
+"}
+(6,1,2) = {"
+OY
+pX
+Zj
+iD
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+SR
+kr
+pX
+"}
+(7,1,2) = {"
+OY
+pX
+WS
+iD
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+SR
+WS
+pX
+"}
+(8,1,2) = {"
+OY
+pX
+WS
+iD
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+SR
+WS
+pX
+"}
+(9,1,2) = {"
+OY
+pX
+WS
+iD
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+SR
+WS
+pX
+"}
+(10,1,2) = {"
+OY
+pX
+WS
+iD
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+SR
+WS
+pX
+"}
+(11,1,2) = {"
+OY
+pX
+Zj
+iD
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+SR
+kr
+pX
+"}
+(12,1,2) = {"
+OY
+pX
+WS
+iD
+Ad
+Ad
+Ad
+Ad
+Ad
+vm
+wk
+wk
+wk
+wk
+WS
+WS
+pX
+"}
+(13,1,2) = {"
+OY
+pX
+WS
+iD
+Ad
+Ad
+Ad
+Ad
+Ad
+SR
+WS
+BS
+BS
+BS
+WS
+WS
+pX
+"}
+(14,1,2) = {"
+OY
+pX
+WS
+WS
+wk
+wk
+wk
+wk
+wk
+WS
+WS
+iz
+Ad
+Ad
+SR
+WS
+pX
+"}
+(15,1,2) = {"
+OY
+pX
+Zj
+WS
+WS
+WS
+WS
+WS
+WS
+hG
+WS
+FA
+Ad
+Ad
+SR
+WS
+pX
+"}
+(16,1,2) = {"
+OY
+BF
+ta
+BL
+BL
+BL
+BL
+BL
+mD
+pX
+pX
+pX
+pX
+pX
+WS
+WS
+pX
+"}
+(17,1,2) = {"
+OY
+pX
+GS
+GS
+GS
+GS
+GS
+GS
+ir
+pX
+Ad
+Ad
+Ad
+Ad
+SR
+iD
+pX
+"}
+(18,1,2) = {"
+OY
+pX
+Wd
+GS
+GS
+GS
+GS
+GS
+GS
+pX
+Ad
+Ad
+Ad
+Ad
+SR
+iD
+pX
+"}
+(19,1,2) = {"
+OY
+pX
+he
+GS
+GS
+GS
+GS
+GS
+GS
+pX
+Ad
+Ad
+Ad
+Ad
+SR
+iD
+pX
+"}
+(20,1,2) = {"
+OY
+pX
+vp
+GS
+GS
+GS
+GS
+GS
+Qs
+pX
+Ad
+Ad
+Ad
+Ad
+SR
+iD
+pX
+"}
+(21,1,2) = {"
+OY
+pX
+ZE
+cD
+gO
+bk
+GS
+cV
+vQ
+pX
+Ad
+Ad
+Ad
+Ad
+SR
+iD
+pX
+"}
+(22,1,2) = {"
+OY
+pX
+pX
+pX
+pX
+pX
+pX
+pX
+pX
+pX
+pX
+pX
+pX
+pX
+pX
+pX
+pX
+"}
+(23,1,2) = {"
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+"}
+(24,1,2) = {"
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+"}
+(25,1,2) = {"
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+"}
+(26,1,2) = {"
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+OY
+OY
 "}

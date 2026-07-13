@@ -131,7 +131,7 @@
 		for(var/datum/reagent/R in carry.reagent_list)
 			carried_reagents += R.id
 
-/datum/effect_system/foam_spread/start()
+/datum/effect_system/foam_spread/start(do_NOT_delete = FALSE)
 	set waitfor = 0
 	var/obj/effect/particle_effect/foam/F = locate() in location
 	if(F)
@@ -149,6 +149,9 @@
 				F.reagents.add_reagent(id, 1, null, 1) //makes a safety call because all reagents should have already reacted anyway
 		else
 			F.reagents.add_reagent("water", 1, safety = 1)
+
+	if(!do_NOT_delete)
+		qdel(src)
 
 
 
@@ -226,6 +229,13 @@
 	take_damage(damage * FOAMED_METAL_XENO_SLASH)
 
 	return XENO_ATTACK_ACTION
+
+/obj/structure/foamed_metal/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
+	take_damage(xeno.melee_damage_upper * FOAMED_METAL_XENO_SLASH)
+	xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+	SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
+	return TAILSTAB_COOLDOWN_NORMAL
 
 #undef FOAMED_METAL_FIRE_ACT_DMG
 #undef FOAMED_METAL_XENO_SLASH

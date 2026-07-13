@@ -38,7 +38,7 @@
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/attached_gun/extinguisher,
-		/obj/item/attachable/attached_gun/flamer_nozzle
+		/obj/item/attachable/attached_gun/flamer_nozzle,
 	)
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY|GUN_TRIGGER_SAFETY
 	gun_category = GUN_CATEGORY_HEAVY
@@ -104,13 +104,6 @@
 		var/image/I = image(icon, src, "+lit")
 		I.pixel_x += nozzle && nozzle == active_attachable ? 6 : 1
 		overlays += I
-
-/obj/item/weapon/gun/flamer/able_to_fire(mob/user)
-	. = ..()
-	if(.)
-		if(!current_mag || !current_mag.current_rounds)
-			click_empty(user)
-			return NONE
 
 /obj/item/weapon/gun/flamer/proc/get_fire_sound()
 	var/list/fire_sounds = list(
@@ -308,7 +301,7 @@
 		return
 
 	var/source_turf = get_turf(user)
-	var/smoke_range = 5 // the max range the smoke will travel
+	var/smoke_range = 4 // the max range the smoke will travel
 	var/distance = 0 // the distance traveled
 	var/use_multiplier = 3 // if you want to increase the ammount of units drained from the tank
 	var/units_in_smoke = 35 // the smoke overlaps a little so this much is probably already good
@@ -335,6 +328,7 @@
 		else
 			var/obj/effect/particle_effect/smoke/chem/checker = new()
 			var/atom/blocked = LinkBlocked(checker, source_turf, turf)
+			qdel(checker)
 			if(blocked)
 				break
 
@@ -422,6 +416,10 @@
 /obj/item/weapon/gun/flamer/m240
 	name = "\improper M240A1 incinerator unit"
 	desc = "M240A1 incinerator unit has proven to be one of the most effective weapons at clearing out soft-targets. This is a weapon to be feared and respected as it is quite deadly."
+
+/obj/item/weapon/gun/flamer/m240/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/weapon/gun/flamer/m240/underextinguisher
 	starting_attachment_types = list(/obj/item/attachable/attached_gun/extinguisher)
@@ -548,6 +546,29 @@
 	. = ..()
 	set_fire_delay(FIRE_DELAY_TIER_7)
 
+GLOBAL_LIST_EMPTY(flamer_particles)
+/particles/flamer_fire
+	icon = 'icons/effects/particles/fire.dmi'
+	icon_state = "bonfire"
+	width = 100
+	height = 100
+	count = 200
+	spawning = 5
+	lifespan = 0.6 SECONDS
+	fade = 0.8 SECONDS
+	grow = -0.01
+	velocity = list(0, 0)
+	position = generator("box", list(-16, -16), list(16, 16), NORMAL_RAND)
+	drift = generator("vector", list(0, -0.2), list(0, 0.2))
+	gravity = list(0, 0.95)
+	scale = generator("vector", list(0.3, 0.3), list(1,1), NORMAL_RAND)
+	rotation = 30
+	spin = generator("num", -20, 20)
+
+/particles/flamer_fire/New(set_color)
+	..()
+	color = set_color
+
 /obj/flamer_fire
 	name = "fire"
 	desc = "Ouch!"
@@ -603,7 +624,11 @@
 		flame_icon = R.burn_sprite
 
 	set_light(l_color = R.burncolor)
-
+	if(R.fire_penetrating)
+		var/new_burncolor = color_matrix_multiply(color_matrix_rotate_x(5), color_hex2color_matrix(R.burncolor))
+		if(!GLOB.flamer_particles[new_burncolor])
+			GLOB.flamer_particles[new_burncolor] = new /particles/flamer_fire(new_burncolor)
+		particles = GLOB.flamer_particles[new_burncolor]
 	tied_reagent = new R.type() // Can't get deleted this way
 	tied_reagent.make_alike(R)
 
@@ -656,6 +681,9 @@
 		var/turf/open/scorch_turf_target = loc
 		if(scorch_turf_target.scorchable)
 			scorch_turf_target.scorch(burnlevel)
+		var/obj/effect/decal/cleanable/liquid_fuel/liquid = LAZYACCESS(scorch_turf_target.cleanables, CLEANABLE_IGNITABLE)
+		if(liquid && istype(liquid))
+			INVOKE_NEXT_TICK(liquid, TYPE_PROC_REF(/obj/effect/decal/cleanable/liquid_fuel, ignite))
 
 	if (istype(loc, /turf/open/auto_turf/snow))
 		var/turf/open/auto_turf/snow/S = loc
@@ -675,20 +703,20 @@
 				if(user)
 					var/area/thearea = get_area(user)
 					if(user.faction == target_human.faction && !thearea?.statistic_exempt)
-						target_human.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]."
-						user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]."
+						target_human.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]. <b>Shooter:</b> [ADMIN_VERBOSEJMP(user)], <b>Victim:</b> [ADMIN_VERBOSEJMP(target_human)]"
+						user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]. <b>Shooter:</b> [ADMIN_VERBOSEJMP(user)], <b>Victim:</b> [ADMIN_VERBOSEJMP(target_human)]"
 						if(weapon_cause_data.cause_name)
 							target_human.track_friendly_fire(weapon_cause_data.cause_name)
-						var/ff_msg = "[key_name(user)] shot [key_name(target_human)] with \a [name] in [get_area(user)] [ADMIN_JMP(user)] [ADMIN_PM(user)]"
+						var/ff_msg = "[key_name(user)] shot [key_name(target_human)] with \a [name]. [SPAN_BOLD("Shooter:")] [ADMIN_VERBOSEJMP(user)] [ADMIN_PM(user)], [SPAN_BOLD("Victim:")] [ADMIN_VERBOSEJMP(target_human)]."
 						var/ff_living = TRUE
 						if(target_human.stat == DEAD)
 							ff_living = FALSE
-						if(!((user.mob_flags & MUTINY_MUTINEER) && (target_human.mob_flags & MUTINY_LOYALIST)) && ((user.mob_flags & MUTINY_LOYALIST) && (target_human.mob_flags & MUTINY_MUTINEER)))
-							msg_admin_ff(ff_msg, ff_living)
+						if(!(((user.mob_flags & MUTINY_MUTINEER) && (target_human.mob_flags & MUTINY_LOYALIST)) || ((user.mob_flags & MUTINY_LOYALIST) && (target_human.mob_flags & MUTINY_MUTINEER))))
+							msg_admin_ff(ff_msg, ff_living, user.loc.z)
 					else
-						target_human.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]."
-						user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]."
-						msg_admin_attack("[key_name(user)] shot [key_name(target_human)] with \a [name] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+						target_human.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]. <b>Shooter:</b> [ADMIN_VERBOSEJMP(user)], <b>Victim:</b> [ADMIN_VERBOSEJMP(target_human)]"
+						user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]. <b>Shooter:</b> [ADMIN_VERBOSEJMP(user)], <b>Victim:</b> [ADMIN_VERBOSEJMP(target_human)]"
+						msg_admin_attack("[key_name(user)] shot [key_name(target_human)] with \a [name]. Shooter: [AREACOORD(user)] Victim: [AREACOORD(target_human)]", user.loc.x, user.loc.y, user.loc.z)
 				if(weapon_cause_data.cause_name)
 					target_human.track_shot_hit(weapon_cause_data.cause_name, target_human)
 
@@ -760,55 +788,61 @@
 	if(X.armor_deflection_debuff)
 		X.armor_deflection_debuff = 0
 
-/obj/flamer_fire/proc/set_on_fire(mob/living/M)
-	if(!istype(M))
+/obj/flamer_fire/proc/set_on_fire(mob/living/target)
+	if(!istype(target))
 		return
 
-	var/sig_result = SEND_SIGNAL(M, COMSIG_LIVING_FLAMER_CROSSED, tied_reagent)
+	var/sig_result = SEND_SIGNAL(target, COMSIG_LIVING_FLAMER_CROSSED, tied_reagent)
 	var/burn_damage = floor(burnlevel * 0.5)
 	switch(fire_variant)
 		if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire, 2x tile damage (Equiavlent to UT)
 			burn_damage = burnlevel
-	var/fire_intensity_resistance = M.check_fire_intensity_resistance()
+	var/fire_intensity_resistance = target.check_fire_intensity_resistance()
+	var/penetrating = tied_reagent.fire_penetrating
+	if(penetrating && isxeno(target))
+		var/mob/living/carbon/xenomorph/xeno_target = target
+		if(xeno_target.fire_immunity & FIRE_IMMUNITY_IGNORE_PEN)
+			penetrating = FALSE
 
-	if(!tied_reagent.fire_penetrating)
+	if(!penetrating)
 		burn_damage = max(burn_damage - fire_intensity_resistance * 0.5, 0)
 
 	if(sig_result & COMPONENT_XENO_FRENZY)
-		var/mob/living/carbon/xenomorph/X = M
-		if(X.plasma_stored != X.plasma_max) //limit num of noise
-			to_chat(X, SPAN_DANGER("The heat of the fire roars in your veins! KILL! CHARGE! DESTROY!"))
-			X.emote("roar")
-		X.plasma_stored = X.plasma_max
+		var/mob/living/carbon/xenomorph/xeno_target = target
+		if(xeno_target.plasma_stored != xeno_target.plasma_max) //limit num of noise
+			to_chat(xeno_target, SPAN_DANGER("The heat of the fire roars in your veins! KILL! CHARGE! DESTROY!"))
+			xeno_target.emote("roar")
+		xeno_target.plasma_stored = xeno_target.plasma_max
 
 	if(!(sig_result & COMPONENT_NO_IGNITE) && burn_damage)
 		switch(fire_variant)
 			if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire, super easy to pat out. 50 duration -> 10 stacks (1 pat/resist)
-				M.TryIgniteMob(floor(tied_reagent.durationfire / 5), tied_reagent)
+				target.TryIgniteMob(floor(tied_reagent.durationfire / 5), tied_reagent)
 			else
-				M.TryIgniteMob(tied_reagent.durationfire, tied_reagent)
+				target.TryIgniteMob(tied_reagent.durationfire, tied_reagent)
 
-	if(sig_result & COMPONENT_NO_BURN && !tied_reagent.fire_penetrating)
+	if(sig_result & COMPONENT_NO_BURN && !penetrating)
 		burn_damage = 0
 
 	if(!burn_damage)
-		if(HAS_TRAIT(M, TRAIT_HAULED))
-			M.visible_message(SPAN_WARNING("[M] is shielded from the flames!"), SPAN_WARNING("You are shielded from the flames!"))
-		else
-			to_chat(M, SPAN_DANGER("[isxeno(M) ? "We" : "You"] step over the flames."))
+		if(!HAS_TRAIT(target, TRAIT_ABILITY_BURROWED))
+			if(HAS_TRAIT(target, TRAIT_HAULED))
+				target.visible_message(SPAN_WARNING("[target] is shielded from the flames!"), SPAN_WARNING("You are shielded from the flames!"))
+			else
+				to_chat(target, SPAN_DANGER("[isxeno(target) ? "We" : "You"] step over the flames."))
 		return
 
-	M.last_damage_data = weapon_cause_data
-	M.apply_damage(burn_damage, BURN) //This makes fire stronk.
+	target.last_damage_data = weapon_cause_data
+	target.apply_damage(burn_damage, BURN) //This makes fire stronk.
 
 	var/variant_burn_msg = null
 	switch(fire_variant) //Fire variant special message appends.
 		if(FIRE_VARIANT_TYPE_B)
-			if(isxeno(M))
-				var/mob/living/carbon/xenomorph/X = M
-				X.armor_deflection?(variant_burn_msg=" We feel the flames weakening our exoskeleton!"):(variant_burn_msg=" You feel the flaming chemicals eating into your body!")
-	to_chat(M, SPAN_DANGER("You are burned![variant_burn_msg?"[variant_burn_msg]":""]"))
-	M.updatehealth()
+			if(isxeno(target))
+				var/mob/living/carbon/xenomorph/xeno_target = target
+				xeno_target.armor_deflection?(variant_burn_msg=" We feel the flames weakening our exoskeleton!"):(variant_burn_msg=" You feel the flaming chemicals eating into your body!")
+	to_chat(target, SPAN_DANGER("You are burned![variant_burn_msg?"[variant_burn_msg]":""]"))
+	target.updatehealth()
 
 /obj/flamer_fire/proc/update_flame()
 	if(burnlevel < 15 && flame_icon != "dynamic")
@@ -958,6 +992,7 @@
 
 	attachable_allowed = list(
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/attached_gun/flamer_nozzle,
 	)
 
 /obj/item/weapon/gun/flamer/survivor/get_fire_sound()
@@ -971,7 +1006,7 @@
 /obj/item/weapon/gun/flamer/flammenwerfer3
 	name = "\improper Flammenwerfer 3 Heavy Incineration Unit"
 	desc = "A heavy industrial incineration unit produced by Weyland Corporation and later by Weyland-Yutani Corporation. Often found among foliage cleaning missions on frontier colonies, usually aren't seen in combat, but devastating when actually used."
-	desc_lore = "This century-old flamethrower is seeing a comeback on Frontier colonies. Heavy Incinerator Units are often used for clearing out dead foliage and burning disease ridden corpses. Current market price of is 2000$."
+	desc_lore = "This century-old flamethrower is seeing a comeback on Frontier colonies. Heavy Incinerator Units are often used for clearing out dead foliage, demolishing buildings, and removing evidence of colonial disease. After a century, it remains available to the public sector, at a market price of 2000$."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/flamers.dmi'
 	icon_state = "fl3"
 	item_state = "fl3"
@@ -985,10 +1020,15 @@
 	accepted_ammo = list(
 		/obj/item/ammo_magazine/flamer_tank/flammenwerfer,
 		/obj/item/ammo_magazine/flamer_tank/flammenwerfer/whiteout,
+		/obj/item/ammo_magazine/flamer_tank/flammenwerfer/survivor,
 	)
 	current_mag = /obj/item/ammo_magazine/flamer_tank/flammenwerfer
 
 	attachable_allowed = null
+
+/obj/item/weapon/gun/flamer/flammenwerfer3/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/weapon/gun/flamer/flammenwerfer3/get_fire_sound()
 	var/list/fire_sounds = list(
@@ -1016,3 +1056,17 @@
 
 /obj/item/weapon/gun/flamer/flammenwerfer3/deathsquad/standard
 	current_mag = /obj/item/ammo_magazine/flamer_tank/flammenwerfer
+
+/obj/item/weapon/gun/flamer/flammenwerfer3/survivor
+	name = "\improper Flammenwerfer 3 Heavy DE-cineration Unit"
+	desc = "A civilian modification of the heavy incineration unit produced by Weyland Corporation and later by Weyland-Yutani Corporation. Normally, these would be found on frontier colonies, for burning down forests and foliage. In this case, this seems to be a reclaimed model used by the local firefighters. \nIt even has a note attached, which hopefully explains *why* anyone would use an incinerator to fight fire...\n"
+	desc_lore = "This century-old flamethrower is seeing a comeback on Frontier colonies. Heavy Incinerator Units are often used for clearing out dead foliage, demolishing buildings, and removing evidence of colonial disease. Current market price of this device is 2000$- or, it would be, if this particular one hasn't had its warranty voided. Apparently a diligent professional has swapped out the propellant gas for... stabilized metallic foam."
+	icon_state = "fl3_survivor"
+	item_state = "fl3"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/flamers.dmi'
+
+	current_mag = /obj/item/ammo_magazine/flamer_tank/flammenwerfer/survivor
+
+/obj/item/weapon/gun/flamer/flammenwerfer3/survivor/Initialize()
+	. = ..()
+	RemoveElement(/datum/element/corp_label/wy)

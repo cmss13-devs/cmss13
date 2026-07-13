@@ -54,6 +54,11 @@
 	name = "marine black combat gloves"
 	adopts_squad_color = FALSE
 
+/obj/item/clothing/gloves/marine/army
+	name = "army combat gloves"
+	desc = "Standard issue army tactical gloves. It reads: 'knit by Army Widows Association'."
+	adopts_squad_color = FALSE
+
 /obj/item/clothing/gloves/marine/brown
 	name = "marine brown combat gloves"
 	desc = "Standard issue marine tactical gloves. It reads: 'knit by Marine Widows Association'. These are brown instead of the classic black."
@@ -66,6 +71,13 @@
 	desc = "Standard issue marine tactical gloves. It reads: 'knit by Marine Widows Association'. These are a shade of grey instead of the classic black."
 	icon_state = "marine_grey"
 	item_state = "marine_grey"
+	adopts_squad_color = FALSE
+
+/obj/item/clothing/gloves/marine/fingerless
+	name = "marine fingerless combat gloves"
+	desc = "Standard issue marine tactical gloves. It reads: 'knit by Marine Widows Association'. These ones have have been modified by having the fingertips removed."
+	icon_state = "marine_fingerless"
+	item_state = "marine_fingerless"
 	adopts_squad_color = FALSE
 
 /obj/item/clothing/gloves/marine/medical
@@ -155,11 +167,21 @@
 	icon_state = "insulated"
 	item_state = "insulated"
 
+/obj/item/clothing/gloves/marine/veteran/ppo
+	name = "\improper WY PPO gloves"
+	desc = "Standard issue kevlon fiber gloves manufactured for and by Weyland-Yutani Personal Protection division. They are insulated against electrical shock."
+	icon_state = "ppo"
+	item_state = "ppo"
+
 /obj/item/clothing/gloves/marine/veteran/pmc
 	name = "\improper WY PMC gloves"
 	desc = "Standard issue kevlon fiber gloves manufactured for and by Weyland-Yutani PMC dispatch division. They are insulated against electrical shock."
 	icon_state = "pmc"
 	item_state = "pmc"
+
+/obj/item/clothing/gloves/marine/veteran/pmc/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/clothing/gloves/marine/veteran/pmc/commando
 	name = "\improper W-Y Commando gloves"
@@ -228,6 +250,10 @@
 	unacidable = TRUE
 	adopts_squad_color = FALSE
 
+/obj/item/clothing/gloves/marine/veteran/souto/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/souta)
+
 /obj/item/clothing/gloves/marine/veteran/insulated/van_bandolier
 	name = "custom shooting gloves"
 	desc = "Highly protective against injury, temperature, and electric shock. Cool in the summer, warm in the winter, and a secure grip on any surface. You could buy a lot for the price of these, and they're worth every penny."
@@ -246,6 +272,10 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	unacidable = TRUE
 	adopts_squad_color = FALSE
+
+/obj/item/clothing/gloves/marine/joe/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/seegson)
 
 //=ROYAL MARINES=\\
 

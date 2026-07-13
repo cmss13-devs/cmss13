@@ -1,9 +1,9 @@
 
 // Called when the item is in the active hand, and clicked; alternately, there is an 'activate held object' verb or you can hit pagedown.
 /obj/item/proc/attack_self(mob/user)
+	SHOULD_CALL_PARENT(TRUE)
 	if(HAS_TRAIT(user, TRAIT_HAULED))
 		return
-	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user)
 	SEND_SIGNAL(user, COMSIG_MOB_ITEM_ATTACK_SELF, src)
 
@@ -105,6 +105,10 @@
 		if(isxeno(M))
 			var/mob/living/carbon/xenomorph/X = M
 			power = armor_damage_reduction(GLOB.xeno_melee, power, X.armor_deflection + X.armor_deflection_buff - X.armor_deflection_debuff, 20, 0, 0, X.armor_integrity)
+
+			if(X.melee_vulnerability_mult != 0)
+				power *= X.melee_vulnerability_mult
+
 			var/armor_punch = armor_break_calculation(GLOB.xeno_melee, power, X.armor_deflection + X.armor_deflection_buff - X.armor_deflection_debuff, 20, 0, 0, X.armor_integrity)
 			X.apply_armorbreak(armor_punch)
 		if(hitsound)

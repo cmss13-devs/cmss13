@@ -33,6 +33,7 @@
 	layer = ABOVE_FLY_LAYER
 	stat = DEAD
 	mob_flags = KNOWS_TECHNOLOGY
+	flags_atom = FPRINT|NO_ZFALL
 
 	/// If the observer is an admin, are they excluded from the xeno queue?
 	var/admin_larva_protection = TRUE // Enabled by default
@@ -46,7 +47,8 @@
 							"Medical HUD" = FALSE,
 							"Security HUD" = FALSE,
 							"Squad HUD" = FALSE,
-							"Xeno Status HUD" = FALSE
+							"Xeno Status HUD" = FALSE,
+							"Hunter HUD" = FALSE
 							)
 	universal_speak = TRUE
 	var/updatedir = TRUE //Do we have to update our dir as the ghost moves around?
@@ -61,8 +63,8 @@
 	var/own_orbit_size = 0
 	var/observer_actions = list(/datum/action/observer_action/join_xeno, /datum/action/observer_action/join_lesser_drone)
 	var/datum/action/minimap/observer/minimap
-	///The last message for this player with their larva queue information
-	var/larva_queue_cached_message
+	///The last message for this player with their larva pool information
+	var/larva_pool_cached_message
 	///Used to bypass time of death checks such as when being selected for larva
 	var/bypass_time_of_death_checks = FALSE
 	///Used to bypass time of death checks for a successful hug
@@ -72,7 +74,7 @@
 
 /mob/dead/observer/verb/toggle_ghostsee()
 	set name = "Toggle Ghost Vision"
-	set desc = "Toggles your ability to see things only ghosts can see, like other ghosts"
+	set desc = "Toggles your ability to see things only ghosts can see, like other ghosts."
 	set category = "Ghost.Settings"
 	ghostvision = !ghostvision
 	if(ghostvision)
@@ -91,31 +93,16 @@
 
 	var/turf/spawn_turf
 	if(ismob(body))
+		ghostize_appearance(body)
 		spawn_turf = get_turf(body) //Where is the body located?
 		attack_log = body.attack_log //preserve our attack logs by copying them to our ghost
 		life_kills_total = body.life_kills_total //kills also copy over
-
-		appearance = body.appearance
-		underlays.Cut()
-		base_transform = matrix(body.base_transform)
-		body.alter_ghost(src)
-		apply_transform(matrix())
-
-		own_orbit_size = body.get_orbit_size()
-
-		desc = initial(desc)
-
-		alpha = 127
-		invisibility = INVISIBILITY_OBSERVER
-		plane = GHOST_PLANE
-		layer = ABOVE_FLY_LAYER
-		mouse_opacity = MOUSE_OPACITY_ICON // In case we were weed_food
-
-		sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS|SEE_SELF
-		see_invisible = INVISIBILITY_OBSERVER
-		see_in_dark = 100
-
 		mind = body.mind //we don't transfer the mind but we keep a reference to it.
+	else if(client?.prefs)
+		restore_ghost_appearance()
+	else
+		sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS|SEE_SELF
+		see_in_dark = 100
 
 	if(!own_orbit_size)
 		own_orbit_size = 32
@@ -144,11 +131,32 @@
 		var/datum/action/observer_action/new_action = new path()
 		new_action.give_to(src)
 
-	if(SSticker.mode && SSticker.mode.flags_round_type & MODE_PREDATOR)
-		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), src, "<span style='color: red;'>This is a <B>PREDATOR ROUND</B>! If you are whitelisted, you may Join the Hunt!</span>"), 2 SECONDS)
+	if(SSticker.mode)
+		if(SSticker.mode.flags_round_type & MODE_PREDATOR)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), src, SPAN_RED("This is a <B>PREDATOR ROUND</B>! If you are whitelisted, you may Join the Hunt!")), 2 SECONDS)
+		if(SSticker.mode.flags_round_type & MODE_COLONY_JOE)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), src, SPAN_RED("Colony Working Joes are enabled this round! If you are whitelisted, you may join!")), 2 SECONDS)
 
 	verbs -= /mob/verb/pickup_item
 	verbs -= /mob/verb/pull_item
+
+
+/mob/dead/observer/proc/ghostize_appearance(mob/body)
+	appearance = body.appearance
+	underlays.Cut()
+	base_transform = matrix(body.base_transform)
+	body.alter_ghost(src)
+	apply_transform(matrix())
+	own_orbit_size = body.get_orbit_size()
+	desc = initial(desc)
+	alpha = 127
+	invisibility = INVISIBILITY_OBSERVER
+	plane = GHOST_PLANE
+	layer = ABOVE_FLY_LAYER
+	mouse_opacity = MOUSE_OPACITY_ICON // In case we were weed_food
+	sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS|SEE_SELF
+	see_invisible = INVISIBILITY_OBSERVER
+	see_in_dark = 100
 
 /mob/dead/observer/proc/set_lighting_alpha_from_pref(client/ghost_client)
 	var/vision_level = ghost_client?.prefs?.ghost_vision_pref
@@ -183,7 +191,7 @@
 	observe_target_mob = null
 	observe_target_client = null
 
-	client.eye = src
+	client.set_eye(src)
 	hud_used.show_hud(hud_used.hud_version, src)
 	UnregisterSignal(src, COMSIG_MOVABLE_MOVED)
 
@@ -205,6 +213,11 @@
 		/atom/movable/screen/escape_menu,
 		/atom/movable/screen/buildmode,
 		/obj/effect/detector_blip,
+		/atom/movable/screen/minimap_tool,
+		/atom/movable/screen/exit_map,
+		/atom/movable/screen/minimap,
+		/atom/movable/screen/exit_map,
+		/atom/movable/screen/minimap_locator,
 	))
 
 	if(!client)
@@ -274,7 +287,7 @@
 		return
 
 	client.clear_screen()
-	client.eye = carbon_target
+	client.set_eye(carbon_target)
 	observe_target_mob = carbon_target
 
 	carbon_target.auto_observed(src)
@@ -313,6 +326,10 @@
 	if(client.check_whitelist_status(WHITELIST_PREDATOR))
 		RegisterSignal(SSdcs, COMSIG_GLOB_PREDATOR_ROUND_TOGGLED, PROC_REF(toggle_predator_action))
 		toggle_predator_action()
+
+	if(client.check_whitelist_status(WHITELIST_SYNTHETIC) || client.check_whitelist_status(WHITELIST_JOE))
+		RegisterSignal(SSdcs, COMSIG_GLOB_COLONY_JOE_ROUND_TOGGLED, PROC_REF(toggle_colony_joe_action))
+		toggle_colony_joe_action()
 
 	client.move_delay = MINIMAL_MOVEMENT_INTERVAL
 
@@ -374,9 +391,7 @@
 	if(href_list["join_xeno"])
 		join_as_alien()
 	if(href_list[NOTIFY_USCM_TACMAP])
-		GLOB.uscm_tacmap_status.tgui_interact(src)
-	if(href_list[NOTIFY_XENO_TACMAP])
-		GLOB.xeno_tacmap_status.tgui_interact(src)
+		view_tacmaps()
 
 /mob/dead/observer/proc/set_huds_from_prefs()
 	if(!client || !client.prefs)
@@ -398,6 +413,12 @@
 					the_hud.add_hud_to(src, src)
 				if("Xeno Status HUD")
 					the_hud = GLOB.huds[MOB_HUD_XENO_STATUS]
+					the_hud.add_hud_to(src, src)
+				if("Xeno Effects HUD")
+					the_hud = GLOB.huds[MOB_HUD_XENO_HOSTILE]
+					the_hud.add_hud_to(src, src)
+				if("Hunter HUD")
+					the_hud = GLOB.huds[MOB_HUD_HUNTER]
 					the_hud.add_hud_to(src, src)
 				if("Faction UPP HUD")
 					the_hud = GLOB.huds[MOB_HUD_FACTION_UPP]
@@ -490,7 +511,7 @@ Works together with spawning an observer, noted above.
 
 	mind = null
 
-	// Larva queue: We use the larger of their existing queue time or the new timeofdeath except for facehuggers or lesser drone
+	// Larva pool: We use the larger of their existing time or the new timeofdeath except for facehuggers or lesser drone
 	var/exempt_tod = isfacehugger(src) || islesserdrone(src) || should_block_game_interaction(src, include_hunting_grounds=TRUE)
 	var/new_tod = exempt_tod ? 1 : ghost.timeofdeath
 
@@ -500,8 +521,8 @@ Works together with spawning an observer, noted above.
 	if(ghost.client)
 		ghost.client.init_verbs()
 		ghost.client.change_view(GLOB.world_view_size) //reset view range to default
-		ghost.client.pixel_x = 0 //recenters our view
-		ghost.client.pixel_y = 0
+		ghost.client.set_pixel_x(0) //recenters our view
+		ghost.client.set_pixel_y(0)
 		ghost.set_lighting_alpha_from_pref(ghost.client)
 		if(ghost.client.soundOutput)
 			ghost.client.soundOutput.update_ambience()
@@ -512,11 +533,11 @@ Works together with spawning an observer, noted above.
 			ghost.client.player_data.load_timestat_data()
 
 	if(ghost.client?.player_details)
-		ghost.client.player_details.larva_queue_time = max(ghost.client.player_details.larva_queue_time, new_tod)
+		ghost.client.player_details.larva_pool_time = max(ghost.client.player_details.larva_pool_time, new_tod)
 	else if(persistent_ckey)
 		var/datum/player_details/details = GLOB.player_details[persistent_ckey]
 		if(details)
-			details.larva_queue_time = max(details.larva_queue_time, new_tod)
+			details.larva_pool_time = max(details.larva_pool_time, new_tod)
 
 	ghost.set_huds_from_prefs()
 
@@ -563,18 +584,18 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		if(ghost && !should_block_game_interaction(src, include_hunting_grounds=TRUE))
 			ghost.timeofdeath = world.time
 
-			// Larva queue: We use the larger of their existing queue time or the new timeofdeath except for facehuggers or lesser drone
+			// Larva pool: We use the larger of their existing time or the new timeofdeath except for facehuggers or lesser drone
 			var/new_tod = (isfacehugger(src) || islesserdrone(src)) ? 1 : ghost.timeofdeath
 
 			// if they died as facehugger or lesser drone, bypass typical TOD checks
 			ghost.bypass_time_of_death_checks = (isfacehugger(src) || islesserdrone(src))
 
 			if(ghost.client)
-				ghost.client.player_details.larva_queue_time = max(ghost.client.player_details.larva_queue_time, new_tod)
+				ghost.client.player_details.larva_pool_time = max(ghost.client.player_details.larva_pool_time, new_tod)
 			else if(persistent_ckey)
 				var/datum/player_details/details = GLOB.player_details[persistent_ckey]
 				if(details)
-					details.larva_queue_time = max(details.larva_queue_time, new_tod)
+					details.larva_pool_time = max(details.larva_pool_time, new_tod)
 
 		if(is_nested && nest && !QDELETED(nest))
 			ghost.can_reenter_corpse = FALSE
@@ -666,7 +687,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/dead/observer/verb/teleport_z_up()
 	set category = "Ghost.Movement"
 	set name = "Move Up"
-	set desc = "Move up a z level"
+	set desc = "Move up a z level."
 
 	var/turf/above = SSmapping.get_turf_above(get_turf(src))
 
@@ -676,7 +697,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/dead/observer/verb/teleport_z_down()
 	set category = "Ghost.Movement"
 	set name = "Move Down"
-	set desc = "Move down a z level"
+	set desc = "Move down a z level."
 
 	var/turf/below = SSmapping.get_turf_below(get_turf(src))
 
@@ -740,10 +761,30 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		last_health_display.target_mob = target
 	last_health_display.look_at(src, DETAIL_LEVEL_FULL, bypass_checks = TRUE)
 
+/mob/dead/observer/verb/restore_ghost_appearance()
+	set category = "Ghost.Body"
+	set name = "Restore Ghost Character"
+	set desc = "Restore your ghost character's name and appearance from your preferences."
+
+	if(!client?.prefs)
+		to_chat(src, SPAN_NOTICE("Somehow, you have no preferences."))
+		return
+
+	if(!client.prefs.preview_dummy)
+		client.prefs.update_preview_icon()
+	ghostize_appearance(client.prefs.preview_dummy)
+	QDEL_NULL(client.prefs.preview_dummy)
+
+	var/preferences_real_name = client.prefs.real_name
+	name = preferences_real_name
+	real_name = preferences_real_name
+
+	to_chat(client, SPAN_NOTICE("Appearance reset."))
+
 /mob/dead/observer/verb/follow_local(mob/target in GLOB.mob_list)
 	set category = "Ghost.Follow"
 	set name = "Follow Local Mob"
-	set desc = "Follow on-screen mob"
+	set desc = "Follow on-screen mob."
 
 	do_observe(target)
 
@@ -801,7 +842,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/dead/observer/verb/dead_teleport_mob() //Moves the ghost instead of just changing the ghosts's eye -Nodrak
 	set category = "Ghost"
 	set name = "Teleport to Mob"
-	set desc = "Teleport to a mob"
+	set desc = "Teleport to a mob."
 
 	if(istype(usr, /mob/dead/observer)) //Make sure they're an observer!
 
@@ -914,6 +955,11 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set category = "Ghost.View"
 	GLOB.crew_manifest.open_ui(src)
 
+/mob/dead/observer/verb/view_tacmaps()
+	set name = "View Tacmaps"
+	set category = "Ghost.View"
+	GLOB.tacmap_viewer.tgui_interact(src)
+
 /mob/dead/verb/hive_status()
 	set name = "Hive Status"
 	set desc = "Check the status of the hive."
@@ -930,7 +976,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			last_hive_checked = hive
 
 	if(!length(hives))
-		to_chat(src, SPAN_ALERT("There seem to be no living hives at the moment"))
+		to_chat(src, SPAN_ALERT("There seem to be no living hives at the moment."))
 		return
 	else if(length(hives) == 1) // Only one hive, don't need an input menu for that
 		last_hive_checked.hive_ui.open_hive_status(src)
@@ -942,26 +988,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 		GLOB.hive_datum[hives[faction]].hive_ui.open_hive_status(src)
 
-/mob/dead/observer/verb/view_uscm_tacmap()
-	set name = "View USCM Tacmap"
-	set category = "Ghost.View"
-
-	GLOB.uscm_tacmap_status.tgui_interact(src)
-
-/mob/dead/observer/verb/view_xeno_tacmap()
-	set name = "View Xeno Tacmap"
-	set category = "Ghost.View"
-
-	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
-	if(!hive || !length(hive.totalXenos))
-		to_chat(src, SPAN_ALERT("There seems to be no living normal hive at the moment"))
-		return
-
-	GLOB.xeno_tacmap_status.tgui_interact(src)
-
 /mob/dead/observer/verb/view_faxes()
 	set name = "View Sent Faxes"
-	set desc = "View faxes from this round"
+	set desc = "View faxes from this round."
 	set category = "Ghost.View"
 
 	var/list/options = list(
@@ -1280,6 +1309,21 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(SSticker.mode.check_joe_late_join(src))
 		SSticker.mode.attempt_to_join_as_joe(src)
 
+/mob/dead/verb/join_as_colony_joe()
+	set category = "Ghost.Join"
+	set name = "Join as a Colony Working Joe"
+	set desc = "If you are whitelisted, and it is the right type of round, join in."
+
+	if (!client)
+		return
+
+	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
+		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
+		return
+
+	if(SSticker.mode.check_colony_joe_late_join(src))
+		SSticker.mode.attempt_to_join_as_colony_joe(src)
+
 /mob/dead/verb/join_as_responder()
 	set category = "Ghost.Join"
 	set name = "Join as a Fax Responder"
@@ -1347,7 +1391,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		var/mob/living/carbon/human/H = mind.original
 		if(istype(H))
 			ref = WEAKREF(H)
-		GLOB.data_core.manifest_modify(name, ref, null, null, "*Deceased*")
+		GLOB.data_core.manifest_modify(name, ref, null, null, "Deceased")
 
 
 /mob/dead/observer/verb/view_kill_feed()
@@ -1393,9 +1437,12 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		if(SShijack.sd_unlocked)
 			. += "Self Destruct Goal: [SShijack.get_sd_eta()]"
 
-	if(client.prefs?.be_special & BE_ALIEN_AFTER_DEATH)
-		if(larva_queue_cached_message)
-			. += larva_queue_cached_message
+	if(client.prefs?.be_special & BE_ALIEN)
+		if(!larva_pool_cached_message)
+			// Try to refresh now
+			message_alien_candidate_observer(src, cache_only=TRUE)
+		if(larva_pool_cached_message)
+			. += larva_pool_cached_message
 			. += ""
 
 	if(timeofdeath)
@@ -1464,5 +1511,29 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	var/datum/action/join_predator/old_action = locate() in actions
+	if(old_action)
+		qdel(old_action)
+
+/mob/dead/observer/proc/toggle_colony_joe_action()
+	SIGNAL_HANDLER
+
+	var/key_to_use = ckey || persistent_ckey
+
+	if(!key_to_use)
+		return
+
+	if(!SSticker.mode)
+		SSticker.OnRoundstart(CALLBACK(src, PROC_REF(toggle_colony_joe_action)))
+		return
+
+	if(SSticker.mode.flags_round_type & MODE_COLONY_JOE)
+		if(locate(/datum/action/join_colony_joe) in actions)
+			return
+
+		var/datum/action/join_colony_joe/new_action = new()
+		new_action.give_to(src)
+		return
+
+	var/datum/action/join_colony_joe/old_action = locate() in actions
 	if(old_action)
 		qdel(old_action)

@@ -40,11 +40,11 @@ unless the surgical tool is completely unsuited to what it's being used for.*/
 
 ///The (no) chance of failure for surgery because the correct tools/conditions are used or skill compensates
 #define SURGERY_FAILURE_IMPOSSIBLE 0
-///The chance of failure for surgery because the the tool/ground is SURGERY_TOOL_MULT_BAD_SUBSTITUTE/SURGERY_SURFACE_MULT_UNSUITED and skill can't compensate enough
+///The chance of failure for surgery because the tool/ground is SURGERY_TOOL_MULT_BAD_SUBSTITUTE/SURGERY_SURFACE_MULT_UNSUITED and skill can't compensate enough
 #define SURGERY_FAILURE_UNLIKELY 5
-///The chance of failure for surgery because the the tool/ground is SURGERY_TOOL_MULT_AWFUL/SURGERY_SURFACE_MULT_AWFUL and skill can't compensate enough
+///The chance of failure for surgery because the tool/ground is SURGERY_TOOL_MULT_AWFUL/SURGERY_SURFACE_MULT_AWFUL and skill can't compensate enough
 #define SURGERY_FAILURE_POSSIBLE 25
-///The chance of failure for surgery because the the tool and ground is some combination worse than awful and skill can't compensate enough
+///The chance of failure for surgery because the tool and ground is some combination worse than awful and skill can't compensate enough
 #define SURGERY_FAILURE_LIKELY 50
 
 //When initiating surgeries, these define their order when listed in initiation selector or 'you can't use this tool for anything, but could x, y, or z' messages.
@@ -104,6 +104,7 @@ See also /datum/surgery_step/cut_larval_pseudoroots, /datum/surgery_step/retract
 	/obj/item/tool/surgery/cautery = SURGERY_TOOL_MULT_IDEAL,\
 	/obj/item/tool/surgery/wound_clamp = SURGERY_TOOL_MULT_IDEAL,\
 	/obj/item/tool/surgery/scalpel/laser = SURGERY_TOOL_MULT_IDEAL,\
+	/obj/item/tool/surgery/scalpel/pict_system = SURGERY_TOOL_MULT_SUBOPTIMAL,\
 	/obj/item/clothing/mask/cigarette = SURGERY_TOOL_MULT_SUBOPTIMAL,\
 	/obj/item/tool/lighter = SURGERY_TOOL_MULT_SUBSTITUTE,\
 	/obj/item/tool/weldingtool = SURGERY_TOOL_MULT_BAD_SUBSTITUTE\

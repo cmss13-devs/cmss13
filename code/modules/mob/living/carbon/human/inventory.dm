@@ -92,15 +92,15 @@
 		if(WEAR_IN_R_STORE)
 			return 1
 
-/mob/living/carbon/human/put_in_l_hand(obj/item/W)
-	var/obj/limb/O = get_limb("l_hand")
-	if(!O || !O.is_usable())
+/mob/living/carbon/human/put_in_l_hand(obj/item/moved_item)
+	var/obj/limb/check_hand = get_limb("l_hand")
+	if(!check_hand || !check_hand.is_usable())
 		return FALSE
 	. = ..()
 
-/mob/living/carbon/human/put_in_r_hand(obj/item/W)
-	var/obj/limb/O = get_limb("r_hand")
-	if(!O || !O.is_usable())
+/mob/living/carbon/human/put_in_r_hand(obj/item/moved_item)
+	var/obj/limb/check_hand = get_limb("r_hand")
+	if(!check_hand || !check_hand.is_usable())
 		return FALSE
 	. = ..()
 
@@ -418,7 +418,7 @@
 			r_store.update_icon()
 
 		else
-			to_chat(src, SPAN_DANGER("You are trying to eqip this item to an unsupported inventory slot. How the heck did you manage that? Stop it..."))
+			to_chat(src, SPAN_DANGER("You are trying to equip this item to an unsupported inventory slot. How the heck did you manage that? Stop it..."))
 			return
 
 	SEND_SIGNAL(src, COMSIG_HUMAN_EQUIPPED_ITEM, equipping_item, slot)

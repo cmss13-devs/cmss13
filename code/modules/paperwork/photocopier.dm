@@ -22,6 +22,12 @@
 	///the flick state to use when inserting paper into the machine
 	var/animate_state = "bigscanner1"
 
+/obj/structure/machinery/photocopier/Initialize()
+	. = ..()
+	if(istype(src, /obj/structure/machinery/photocopier/wyphotocopier))
+		AddElement(/datum/element/corp_label/wy)
+	else
+		AddElement(/datum/element/corp_label/seegson)
 
 /obj/structure/machinery/photocopier/attack_remote(mob/user as mob)
 	return attack_hand(user)
@@ -83,7 +89,6 @@
 					W.forceMove(p)
 					p.amount++
 					j++
-				p.amount--
 				p.forceMove(src.loc)
 				p.update_icon()
 				p.icon_state = "paper_words"
@@ -178,7 +183,7 @@
 	return
 
 /obj/structure/machinery/photocopier/proc/copy(obj/item/paper/original)
-	var/obj/item/paper/copy = new /obj/item/paper (loc)
+	var/obj/item/paper/copy = new /obj/item/paper(loc)
 	if(toner > 10) //lots of toner, make it dark
 		copy.info = "<font color = #101010>"
 	else //no toner? shitty copies for you!
@@ -188,10 +193,15 @@
 	copied = replacetext(copied, "<font face=\"[copy.crayonfont]\" color=", "<font face=\"[copy.crayonfont]\" nocolor=") //This basically just breaks the existing color tag, which we need to do because the innermost tag takes priority.
 	copy.info += copied
 	copy.info += "</font>"
-	copy.name = original.name // -- Doohl
+	copy.name = original.name + " (Copy)"
 	copy.fields = original.fields
 	copy.stamps = original.stamps
 	copy.stamped = original.stamped
+	if(original.extra_headers)
+		LAZYOR(copy.extra_headers, original.extra_headers)
+	LAZYADD(copy.extra_headers, "<style>body {--bg-color: white;}</style>")
+	if(original.extra_stylesheets)
+		LAZYOR(copy.extra_stylesheets, original.extra_stylesheets)
 	copy.ico = original.ico
 	copy.offset_x = original.offset_x
 	copy.offset_y = original.offset_y
@@ -259,7 +269,6 @@
 	toner = 180
 	maxcopies = 30
 	animate_state = "bigscannerpro1"
-
 
 /// The actual toner cartridge used in photcopiers
 /obj/item/device/toner

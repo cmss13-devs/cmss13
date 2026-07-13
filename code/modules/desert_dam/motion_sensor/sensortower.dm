@@ -1,9 +1,9 @@
 //sensor tower for deser dam. It is there to add the xeno's to the tactical map for marines.
 
 #define SENSORTOWER_BUILDSTATE_WORKING 0
-#define SENSORTOWER_BUILDSTATE_BLOWTORCH 1
+#define SENSORTOWER_BUILDSTATE_WRENCH 1
 #define SENSORTOWER_BUILDSTATE_WIRECUTTERS 2
-#define SENSORTOWER_BUILDSTATE_WRENCH 3
+#define SENSORTOWER_BUILDSTATE_BLOWTORCH 3
 
 /obj/structure/machinery/sensortower
 	name = "\improper experimental sensor tower"
@@ -19,7 +19,7 @@
 	is_on = FALSE  //Is this damn thing on or what?
 	var/buildstate = SENSORTOWER_BUILDSTATE_BLOWTORCH //What state of building it are we on, 0-3, 1 is "broken", the default
 	var/fail_rate = 15 //% chance of failure each fail_tick check
-	var/fail_check_ticks = 50 //Check for failure every this many ticks
+	var/fail_check_ticks = 3 //Check for failure every this many ticks
 	//The sensor tower fails more often since it is experimental.
 	var/cur_tick = 0 //Tick updater
 
@@ -28,8 +28,7 @@
 
 /obj/structure/machinery/sensortower/Initialize(mapload, ...)
 	. = ..()
-	SSminimaps.add_marker(src, z, MINIMAP_FLAG_ALL, "sensor_tower")
-
+	SSminimaps.add_marker(src, MINIMAP_FLAG_ALL, image('icons/UI_icons/map_blips.dmi', null, "sensor_tower"))
 
 /obj/structure/machinery/sensortower/update_icon()
 	..()
@@ -58,6 +57,10 @@
 		return FALSE
 	checkfailure()
 	add_xenos_to_minimap()
+
+/obj/structure/machinery/sensortower/stop_processing()
+	. = ..()
+	remove_xenos_from_minimap()
 
 /obj/structure/machinery/sensortower/proc/remove_xenos_from_minimap()
 	for(var/mob/living/carbon/xenomorph/current_xeno as anything in GLOB.living_xeno_list)
@@ -132,6 +135,7 @@
 	is_on = TRUE
 	cur_tick = 0
 	update_icon()
+	add_xenos_to_minimap()
 	START_PROCESSING(SSslowobj, src)
 	return TRUE
 
@@ -236,17 +240,20 @@
 		SPAN_DANGER("You stop destroying \the [src]'s internal machinery!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_NO_DELAY_ACTION
 
+/obj/structure/machinery/sensortower/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
+	return TAILSTAB_COOLDOWN_NONE
+
 /* Decreases the buildstate of the sensor tower and switches it off if affected by any explosion.
 Higher severity explosion will damage the sensor tower more
 */
 /obj/structure/machinery/sensortower/ex_act(severity)
-	if(buildstate == SENSORTOWER_BUILDSTATE_WRENCH)
+	if(buildstate >= SENSORTOWER_BUILDSTATE_BLOWTORCH)
 		return
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			buildstate += 1
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
-			buildstate = clamp(buildstate + 2, SENSORTOWER_BUILDSTATE_WORKING, SENSORTOWER_BUILDSTATE_WRENCH)
+			buildstate = clamp(buildstate + 2, SENSORTOWER_BUILDSTATE_WORKING, SENSORTOWER_BUILDSTATE_BLOWTORCH)
 		if(EXPLOSION_THRESHOLD_HIGH to INFINITY)
 			buildstate = 3
 	if(is_on)
@@ -256,6 +263,6 @@ Higher severity explosion will damage the sensor tower more
 	update_icon()
 
 #undef SENSORTOWER_BUILDSTATE_WORKING
-#undef SENSORTOWER_BUILDSTATE_BLOWTORCH
-#undef SENSORTOWER_BUILDSTATE_WIRECUTTERS
 #undef SENSORTOWER_BUILDSTATE_WRENCH
+#undef SENSORTOWER_BUILDSTATE_WIRECUTTERS
+#undef SENSORTOWER_BUILDSTATE_BLOWTORCH

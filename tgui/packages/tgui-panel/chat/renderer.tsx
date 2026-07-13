@@ -133,6 +133,7 @@ class ChatRenderer {
   page: Page | null;
   events: EventEmitter;
   scrollNode: HTMLElement | null;
+  alwaysStayAtBottom: boolean;
   scrollTracking: boolean;
   handleScroll: (type: any) => void;
   ensureScrollTracking: () => void;
@@ -159,6 +160,7 @@ class ChatRenderer {
     // Scroll handler
     /** @type {HTMLElement} */
     this.scrollNode = null;
+    this.alwaysStayAtBottom = false;
     this.scrollTracking = true;
     this.lastScrollHeight = 0;
     this.handleScroll = (type) => {
@@ -170,6 +172,9 @@ class ChatRenderer {
           Math.abs(height - bottom) < SCROLL_TRACKING_TOLERANCE ||
           this.lastScrollHeight === 0;
         if (scrollTracking !== this.scrollTracking) {
+          if (this.alwaysStayAtBottom) {
+            return this.scrollToBottom();
+          }
           this.scrollTracking = scrollTracking;
           this.events.emit('scrollTrackingChanged', scrollTracking);
           logger.debug('tracking', this.scrollTracking);
@@ -227,7 +232,7 @@ class ChatRenderer {
     }
   }
 
-  setHighlight(highlightSettings, highlightSettingById) {
+  setHighlight(highlightSettings, highlightSettingById, highlightKeywords) {
     this.highlightParsers = null;
     if (!highlightSettings) {
       return;
@@ -263,6 +268,17 @@ class ChatRenderer {
       let regexExpressions: string[] = [];
       // Organize each highlight entry into regex expressions and words
       for (let line of lines) {
+        // This comes before all the existing processing.
+        for (const [trigger, replacement] of Object.entries(
+          highlightKeywords,
+        )) {
+          // Skip if line cannot possibly fit the trigger and accompanying $$.
+          if (!trigger || !replacement || line.length < trigger.length + 2) {
+            continue;
+          }
+          line = line.replaceAll('$' + trigger + '$', replacement as string);
+        }
+
         // Regex expression syntax is /[exp]/
         if (line.charAt(0) === '/' && line.charAt(line.length - 1) === '/') {
           const expr = line.substring(1, line.length - 1);
@@ -518,7 +534,7 @@ class ChatRenderer {
           }
         }
       }
-      this.storeQueue.push({ ...message });
+      this.storeQueue.push({ ...message, stored: true });
       // Store the node in the message
       message.node = node;
       // Query all possible selectors to find out the message type
@@ -547,7 +563,7 @@ class ChatRenderer {
       } else {
         this.rootNode.appendChild(fragment);
       }
-      if (this.scrollTracking) {
+      if (this.scrollTracking || this.alwaysStayAtBottom) {
         setTimeout(() => this.scrollToBottom());
       }
     }

@@ -59,11 +59,15 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/fun/clown/load_gear(mob/living/carbon/human/new_human)
+	new_human.h_style = "Bald"
+	new_human.f_style = "Shaved"
+
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/clown(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/clown(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/clown_shoes(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/clown_hat(new_human), WEAR_FACE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/white(new_human), WEAR_HANDS)
 
 	new_human.equip_to_slot(new /obj/item/toy/bikehorn(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot(new /obj/item/device/flashlight(new_human), WEAR_R_STORE)
@@ -302,7 +306,7 @@
 	new_human.change_real_name(new_human, "Ivan")
 	new_human.f_style = "Shaved"
 	new_human.h_style = "Shaved Head"
-	new_human.skin_color = "pale3"
+	new_human.skin_color = "Pale 3"
 	new_human.r_hair = 165
 	new_human.g_hair = 42
 	new_human.b_hair = 42
@@ -341,7 +345,7 @@
 
 /datum/equipment_preset/fun/van_bandolier
 	name = "Fun - Big Game Hunter"
-	paygrades = list(PAY_SHORT_CCMO = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_CCMOC = JOB_PLAYTIME_TIER_0)
 	uses_special_name = TRUE
 	flags = EQUIPMENT_PRESET_EXTRA
 	skills = /datum/skills/everything
@@ -365,7 +369,7 @@
 	new_human.b_facial = 51
 	new_human.h_style = "Mullet"
 	new_human.f_style = "Full English"
-	new_human.skin_color = "pale2"
+	new_human.skin_color = SKIN_COLOR_PALE2
 	new_human.r_eyes = 102 //Brown eyes.
 	new_human.g_eyes = 51
 	new_human.b_eyes = 0
@@ -430,13 +434,13 @@
 	new_human.set_species(SPECIES_MONKEY)
 
 /datum/equipment_preset/fun/monkey/load_name(mob/living/carbon/human/new_human, randomise, client/mob_client)
-	new_human.gender = pick(60;MALE,40;FEMALE)
+	new_human.gender = pick(MALE, FEMALE)
 	var/random_name = get_random_name(new_human)
 	new_human.change_real_name(new_human, random_name)
 	new_human.age = rand(1, 40)
 
 /datum/equipment_preset/fun/monkey/proc/get_random_name(mob/living/carbon/human/new_human)
-	return pick(GLOB.monkey_names)
+	return capitalize(pick(GLOB.monkey_names))
 
 /datum/equipment_preset/fun/monkey/marine
 	name = "Fun - Monkey Marine"

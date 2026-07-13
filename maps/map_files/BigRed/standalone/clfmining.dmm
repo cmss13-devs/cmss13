@@ -242,6 +242,18 @@
 /obj/item/ammo_magazine/smg/fp9000,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
+"aN" = (
+/obj/structure/largecrate/random,
+/obj/item/reagent_container/food/drinks/bottle/goldschlager{
+	pixel_y = 15
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"aO" = (
+/obj/structure/machinery/iv_drip,
+/obj/item/reagent_container/blood/OMinus,
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves/mining)
 "aP" = (
 /obj/structure/disposalpipe/broken{
 	dir = 4
@@ -266,7 +278,7 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "bi" = (
-/obj/structure/reagent_dispensers/fueltank/gas,
+/obj/structure/reagent_dispensers/tank/fuel/gas,
 /turf/open/mars_cave/mars_cave_15,
 /area/bigredv2/caves/mining)
 "bq" = (
@@ -362,16 +374,14 @@
 /obj/structure/disposalpipe/segment,
 /obj/item/frame/rack,
 /obj/effect/spawner/random/toolbox,
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1
 	},
 /obj/structure/pipes/valve/open,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "dw" = (
-/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	faction_group = list("CLF")
-	},
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "dy" = (
@@ -589,7 +599,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "iv" = (
-/obj/structure/reagent_dispensers/fueltank/gas,
+/obj/structure/reagent_dispensers/tank/fuel/gas,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "iy" = (
@@ -648,7 +658,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/reagent_dispensers/fueltank/gas,
+/obj/structure/reagent_dispensers/tank/fuel/gas,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "ki" = (
@@ -926,8 +936,12 @@
 /area/bigredv2/caves/mining)
 "nB" = (
 /obj/structure/surface/rack,
-/obj/item/reagent_container/food/drinks/bottle/goldschlager,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/storage/backpack/general_belt{
+	pixel_y = 7
+	},
+/obj/item/storage/backpack/general_belt,
+/obj/item/defenses/handheld/planted_flag/clf,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "nI" = (
@@ -941,8 +955,7 @@
 "nW" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	dir = 8;
-	faction_group = list("CLF")
+	dir = 8
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
@@ -1084,9 +1097,11 @@
 /area/bigredv2/caves/mining)
 "qR" = (
 /obj/structure/surface/rack,
-/obj/item/storage/backpack/general_belt,
-/obj/item/storage/backpack/general_belt,
-/obj/item/storage/backpack/general_belt,
+/obj/item/roller,
+/obj/item/roller{
+	pixel_x = 3;
+	pixel_y = 2
+	},
 /turf/open/mars_cave/mars_cave_13,
 /area/bigredv2/caves/mining)
 "qU" = (
@@ -1225,7 +1240,7 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "sK" = (
-/obj/structure/machinery/power/port_gen/pacman/super,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "sS" = (
@@ -1310,7 +1325,7 @@
 /area/bigredv2/caves/mining)
 "vl" = (
 /obj/structure/sign/safety/manualopenclose{
-	desc = "The now broken door access console for these podlocks. Seems like some poor bastard was frantically trying to slide their card due to the the card reader being scraped up. Poor bastards.";
+	desc = "The now broken door access console for these podlocks. Seems like some poor bastard was frantically trying to slide their card due to the card reader being scraped up. Poor bastards.";
 	icon = 'icons/obj/structures/machinery/monitors.dmi';
 	icon_state = "auth_off";
 	name = "Access console";
@@ -1518,7 +1533,7 @@
 "yF" = (
 /obj/effect/landmark/corpsespawner/security/marshal,
 /obj/effect/decal/cleanable/blood/oil,
-/obj/item/weapon/gun/launcher/grenade/m81/m79{
+/obj/item/weapon/gun/launcher/grenade/m81/m85a1{
 	pixel_x = -3;
 	pixel_y = -9
 	},
@@ -1876,8 +1891,7 @@
 /area/bigredv2/caves/mining)
 "DI" = (
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	dir = 4;
-	faction_group = list("CLF")
+	dir = 4
 	},
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
@@ -1889,8 +1903,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/burger,
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	dir = 8;
-	faction_group = list("CLF")
+	dir = 8
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
@@ -1995,12 +2008,7 @@
 /area/bigredv2/caves/mining)
 "Fl" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/twohanded/lungemine{
-	pixel_y = 8
-	},
-/obj/item/weapon/twohanded/lungemine{
-	pixel_y = -7
-	},
+/obj/item/weapon/twohanded/lungemine,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "Fo" = (
@@ -2251,6 +2259,7 @@
 "Jw" = (
 /obj/structure/machinery/optable,
 /obj/item/tank/anesthetic,
+/obj/item/clothing/mask/breath/medical,
 /turf/open/mars_cave/mars_cave_13,
 /area/bigredv2/caves/mining)
 "JA" = (
@@ -2344,8 +2353,7 @@
 	pixel_x = 6
 	},
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	dir = 4;
-	faction_group = list("CLF")
+	dir = 4
 	},
 /turf/open/mars_cave/mars_dirt_7,
 /area/bigredv2/caves/mining)
@@ -2712,7 +2720,7 @@
 /turf/open/mars_cave/mars_dirt_7,
 /area/bigredv2/caves/mining)
 "Qb" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1
 	},
 /obj/structure/pipes/valve/open,
@@ -2907,7 +2915,7 @@
 	icon_state = "1-2-4";
 	name = "heavy duty power cable"
 	},
-/obj/structure/machinery/power/port_gen/pacman/super,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "SU" = (
@@ -2951,8 +2959,7 @@
 /area/bigredv2/caves/mining)
 "Tw" = (
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	dir = 8;
-	faction_group = list("CLF")
+	dir = 8
 	},
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
@@ -3062,6 +3069,7 @@
 /obj/item/explosive/grenade/high_explosive/frag{
 	desc = "High-Explosive Fragmenting-Antipersonnel. A small, but deceptively strong fragmentation grenade that has been phasing out the M15 fragmentation grenades alongside the M40 HEDP. Capable of being loaded in the M92 Launcher, or thrown by hand. This one seems to have weird insciptions all over it. You can barely make out 'PrAIs3 thE H3f@ G0d'"
 	},
+/obj/item/flag/plantable/clf,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "Wp" = (
@@ -3159,7 +3167,10 @@
 "XQ" = (
 /obj/structure/surface/rack,
 /obj/item/storage/belt/medical/full,
-/obj/item/storage/belt/medical/full,
+/obj/item/storage/belt/medical/full{
+	pixel_x = 2;
+	pixel_y = 4
+	},
 /obj/item/storage/firstaid/regular,
 /turf/open/mars_cave/mars_cave_13,
 /area/bigredv2/caves/mining)
@@ -3196,7 +3207,7 @@
 /turf/open/mars_cave/mars_dirt_7,
 /area/bigredv2/caves/mining)
 "YI" = (
-/obj/structure/machinery/filtration/console{
+/obj/structure/machinery/filtration_console{
 	pixel_y = 13
 	},
 /turf/open/mars_cave/mars_dirt_4,
@@ -3631,7 +3642,7 @@ zj
 QF
 EE
 mV
-CO
+aN
 ZM
 Rn
 bc
@@ -4243,7 +4254,7 @@ kH
 LW
 zb
 uy
-FO
+aO
 DV
 FO
 FO

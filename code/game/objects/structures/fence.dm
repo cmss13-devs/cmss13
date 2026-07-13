@@ -15,6 +15,14 @@
 	var/junction = 0 //Because everything is terrible, I'm making this a fence-level var
 	var/basestate = "fence"
 	var/forms_junctions = TRUE
+	var/form_junctions_to = TRUE
+
+	var/door = FALSE
+	var/open = FALSE
+	var/operating = FALSE
+	var/opening_time = 1 SECONDS
+
+
 
 /obj/structure/fence/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -31,10 +39,10 @@
 	if(health <= 0)
 		if(user)
 			user.visible_message(SPAN_DANGER("[user] smashes through [src][AM ? " with [AM]":""]!"))
-		playsound(loc, 'sound/effects/grillehit.ogg', 25, 1)
+		playsound(loc, 'sound/effects/fencehit.ogg', 25, 1)
 		cut_grille()
 	if(make_hit_sound)
-		playsound(loc, 'sound/effects/grillehit.ogg', 25, 1)
+		playsound(loc, 'sound/effects/fencehit.ogg', 25, 1)
 
 /obj/structure/fence/bullet_act(obj/projectile/Proj)
 	//Tasers and the like should not damage windows.
@@ -73,6 +81,21 @@
 		if(human.species.can_shred(human))
 			attack_generic(human, 25)
 
+	if(!door || operating || cut)
+		return
+	operating = TRUE
+	playsound(loc, 'sound/effects/fenceopen.ogg', 25, 1)
+	update_icon()
+	addtimer(CALLBACK(src, PROC_REF(open)), opening_time)
+
+/obj/structure/fence/proc/open()
+	operating = FALSE
+	if(cut)
+		return
+	open = !open
+	density = !density
+	update_icon()
+
 //Used by attack_animal
 /obj/structure/fence/proc/attack_generic(mob/living/user, damage = 0)
 	health -= damage
@@ -88,13 +111,13 @@
 		return
 	attack_generic(simple, simple.melee_damage_upper)
 
-/obj/structure/fence/attackby(obj/item/W, mob/user)
+/obj/structure/fence/attackby(obj/item/weapontool, mob/user)
 
-	if(istype(W, /obj/item/stack/barbed_wire) && health < health_max)
+	if(istype(weapontool, /obj/item/stack/barbed_wire) && health < health_max)
 		if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_ENGI))
 			to_chat(user, SPAN_WARNING("You don't have the skill needed to fix [src]'s wiring."))
 			return
-		var/obj/item/stack/barbed_wire/wire = W
+		var/obj/item/stack/barbed_wire/wire = weapontool
 		var/amount_needed = 2
 		if(health)
 			amount_needed = 1
@@ -119,22 +142,22 @@
 			to_chat(user, SPAN_WARNING("You need more barbed wire to repair [src]."))
 			return
 
-	if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS) && cut)
-		user.visible_message(SPAN_NOTICE("[user] starts cutting away the remains of [src] with [W]."),
-		SPAN_NOTICE("You start cutting away the remains of [src] with [W]."))
+	if(HAS_TRAIT(weapontool, TRAIT_TOOL_WIRECUTTERS) && cut)
+		user.visible_message(SPAN_NOTICE("[user] starts cutting away the remains of [src] with [weapontool]."),
+		SPAN_NOTICE("You start cutting away the remains of [src] with [weapontool]."))
 		playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
-		if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
-			user.visible_message(SPAN_NOTICE("[user] cuts away the remains of [src] with [W]."),
-			SPAN_NOTICE("You cut away the remains of [src] with [W]."))
+			user.visible_message(SPAN_NOTICE("[user] cuts away the remains of [src] with [weapontool]."),
+			SPAN_NOTICE("You cut away the remains of [src] with [weapontool]."))
 			deconstruct()
 			return
 
 	if(cut) //Cut/brokn grilles can't be messed with further than this
 		return
 
-	if(istype(W, /obj/item/grab) && get_dist(src, user) < 2)
-		var/obj/item/grab/grabby = W
+	if(istype(weapontool, /obj/item/grab) && get_dist(src, user) < 2)
+		var/obj/item/grab/grabby = weapontool
 		if(istype(grabby.grabbed_thing, /mob/living))
 			var/mob/living/grabbed_mob = grabby.grabbed_thing
 			var/state = user.grab_level
@@ -163,32 +186,52 @@
 			healthcheck(1, 1, grabbed_mob) //The person thrown into the window literally shattered it
 		return
 
-	if(W.flags_item & NOBLUDGEON)
+	if(weapontool.flags_item & NOBLUDGEON)
 		return
 
-	if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS) || istype(W, /obj/item/attachable/bayonet) || istype(W, /obj/item/weapon/bracer_attachment))
-		user.visible_message(SPAN_NOTICE("[user] starts cutting through [src] with [W]."),
-		SPAN_NOTICE("You start cutting through [src] with [W]."))
-		playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
+	if(HAS_TRAIT(weapontool, TRAIT_TOOL_WIRECUTTERS) || istype(weapontool, /obj/item/attachable/bayonet) || istype(weapontool, /obj/item/weapon))
+
+		var duration = 10 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION)
+		if(istype(weapontool, /obj/item/weapon))
+			switch(weapontool.sharp)
+				if(0)
+					user.visible_message(SPAN_NOTICE("[user] starts smashing through [src] with [weapontool], with slow, annoying effort."),
+					SPAN_DANGER("You smash [src] with [weapontool], slowly undoing the chain-links with great difficulty."))
+					playsound(src.loc, 'sound/weapons/slash.ogg', 25, 1)
+					duration *=12 //likely a blunt tool, least viable, you're gonna be there for a while
+				if(1)
+					user.visible_message(SPAN_NOTICE("[user] messily hacks through the [src] with [weapontool]!"),
+					SPAN_NOTICE("You start trying to cut through [src] with [weapontool], but it's not the right tool for the job."))
+					playsound(src.loc, 'sound/weapons/slash.ogg', 25, 1)
+					duration *= 2
+				if(2)
+					user.visible_message(SPAN_NOTICE("[user] starts cutting through [src] with [weapontool]."),
+					SPAN_NOTICE("You start cutting through [src] with [weapontool]."))
+					playsound(src.loc, 'sound/items/wirecutter.ogg', 25, 1)
+				if(3)
+					user.visible_message(SPAN_NOTICE("[user] pulverizes [src]  with [weapontool]!"),
+					SPAN_NOTICE("You gruesomely cut through [src] with [weapontool], maybe try something smaller and more accurate?"))
+					playsound(src.loc, 'sound/weapons/slash.ogg', 25, 1)
+					duration *= 1.5
 
 		//Bayonets and Wristblades are 3/4th as effective at cutting fences
-		var duration = 10 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION)
-		if(istype(W, /obj/item/attachable/bayonet) || istype(W, /obj/item/weapon/bracer_attachment))
+		if(istype(weapontool, /obj/item/attachable/bayonet) || istype(weapontool, /obj/item/weapon/bracer_attachment))
 			duration *= 1.5
 
 		if(do_after(user, duration, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
-			user.visible_message(SPAN_NOTICE("[user] cuts through [src] with [W]."),
-			SPAN_NOTICE("You cut through [src] with [W]."))
+			user.visible_message(SPAN_NOTICE("[user] cuts through [src] with [weapontool]."),
+			SPAN_NOTICE("You cut through [src] with [weapontool]."))
 			cut_grille()
 		return
+
 	else
-		switch(W.damtype)
+		switch(weapontool.damtype)
 			if("fire")
-				health -= W.force * W.demolition_mod
+				health -= weapontool.force * weapontool.demolition_mod
 			if("brute")
-				health -= W.force * W.demolition_mod * 0.1
-		healthcheck(1, 1, user, W)
+				health -= weapontool.force * weapontool.demolition_mod * 0.1
+		healthcheck(1, 1, user, weapontool)
 		. = ..()
 
 /obj/structure/fence/deconstruct(disassembled = TRUE)
@@ -204,6 +247,8 @@
 
 /obj/structure/fence/Initialize(mapload, start_dir = null, constructed = 0)
 	. = ..()
+	if(door)
+		basestate = "door"
 
 	if(start_dir)
 		setDir(start_dir)
@@ -238,14 +283,32 @@
 		if(!src)
 			return
 		for(var/obj/structure/fence/fence in orange(src, 1))
-			if(!fence.forms_junctions)
+			if(!fence.form_junctions_to)
 				continue
 			if(abs(x - fence.x) - abs(y - fence.y)) //Doesn't count grilles, placed diagonally to src
 				junction |= get_dir(src, fence)
 		if(cut)
 			icon_state = "broken[basestate][junction]"
+			if (!forms_junctions)
+				icon_state = "broken[basestate]"
 		else
 			icon_state = "[basestate][junction]"
+
+		if(cut || !door)
+			return
+
+		if(!operating)
+			if(open)
+				icon_state = "[basestate]_open"
+			else
+				icon_state = "[basestate]_closed"
+			return
+
+		if(open)
+			icon_state = "[basestate]_closing"
+
+		else
+			icon_state = "[basestate]_opening"
 
 /obj/structure/fence/fire_act(exposed_temperature, exposed_volume)
 	if(exposed_temperature > T0C + 800)
@@ -256,6 +319,7 @@
 GLOBAL_LIST_INIT(all_electric_fences, list())
 
 // Hybrisa Electric Fence
+
 /obj/structure/fence/electrified
 	name = "electrified grille"
 	desc = "A dark reinforced mesh grille with warning stripes, equipped with Tesla-like coils to regulate high voltage current. It is highly electrified and dangerous when powered."
@@ -264,7 +328,10 @@ GLOBAL_LIST_INIT(all_electric_fences, list())
 	basestate = "highvoltagegrille"
 	throwpass = TRUE
 	unacidable = TRUE
+	health = 150
+	health_max = 200
 	forms_junctions = FALSE
+	form_junctions_to = FALSE
 	var/electrified = FALSE
 	var/obj/structure/machinery/colony_floodlight_switch/electrified_fence_switch/breaker_switch = null
 
@@ -273,7 +340,7 @@ GLOBAL_LIST_INIT(all_electric_fences, list())
 	var/tforce = 0
 	if(ismob(AM))
 		if(electrified && !cut)
-			electrocute_mob(AM, get_area(breaker_switch), src, 0.75)
+			electrocute_mob(AM, get_area(breaker_switch), src, 2.25)
 		else
 			tforce = 40
 	else if(isobj(AM))
@@ -294,8 +361,8 @@ GLOBAL_LIST_INIT(all_electric_fences, list())
 		else
 			icon_state = "[basestate]_off"
 
-/obj/structure/fence/electrified/proc/toggle_power()
-	electrified = !electrified
+/obj/structure/fence/electrified/proc/set_is_on(is_on)
+	electrified = is_on
 	update_icon()
 
 /obj/structure/fence/electrified/Initialize()
@@ -306,21 +373,92 @@ GLOBAL_LIST_INIT(all_electric_fences, list())
 	GLOB.all_electric_fences -= src
 	return ..()
 
-/obj/structure/fence/electrified/attackby(obj/item/W, mob/user)
+/obj/structure/fence/electrified/attackby(obj/item/weapontool, mob/user)
 	if(electrified && !cut)
-		electrocute_mob(user, get_area(breaker_switch), src, 0.75)
+		electrocute_mob(user, get_area(breaker_switch), src, 2.25)
 	return ..()
 
 /obj/structure/fence/electrified/ex_act(severity)
 	health -= severity/2
 	healthcheck(make_hit_sound = FALSE, create_debris = TRUE)
 
+// Classic Style Fences
+
+/obj/structure/fence/overgrown
+	name = "overgrown fence"
+	desc = "A large metal mesh strewn between two poles, tangled with vines and creeping growth. Still separates areas, but nature is reclaiming it."
+	icon = 'icons/obj/structures/props/fences/overgrown_fence.dmi'
+
 /obj/structure/fence/dark
 	name = "fence"
 	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
 	icon = 'icons/obj/structures/props/fences/dark_fence.dmi'
 
+/obj/structure/fence/dark/overgrown
+	name = "overgrown fence"
+	desc = "A large metal mesh strewn between two poles, tangled with vines and creeping growth. Still separates areas, but nature is reclaiming it."
+	icon = 'icons/obj/structures/props/fences/overgrown_dark_fence.dmi'
+
 /obj/structure/fence/dark/warning
 	name = "fence"
 	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
 	icon = 'icons/obj/structures/props/fences/electric_fence.dmi'
+
+/obj/structure/fence/dark/warning/overgrown
+	name = "overgrown fence"
+	desc = "A large metal mesh strewn between two poles, tangled with vines and creeping growth. Still separates areas, but nature is reclaiming it."
+	icon = 'icons/obj/structures/props/fences/overgrown_electric_fence.dmi'
+
+// Alternative Fences - New Design
+
+/obj/structure/fence/slim
+	name = "fence"
+	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
+	icon = 'icons/obj/structures/props/fences/fence_alt.dmi'
+
+/obj/structure/fence/slim/door
+	name = "fence door"
+	desc = "A sturdy chainlink door set between two metal poles. A cheap way to section off areas while still allowing visibility through it."
+	icon_state = "door_closed"
+	door = TRUE
+	forms_junctions = FALSE
+	icon = 'icons/obj/structures/props/fences/fence_alt_door.dmi'
+
+/obj/structure/fence/slim/dark
+	name = "fence"
+	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
+	icon = 'icons/obj/structures/props/fences/dark_fence_alt.dmi'
+
+/obj/structure/fence/slim/dark/door
+	name = "fence door"
+	desc = "A sturdy chainlink door set between two metal poles. A cheap way to section off areas while still allowing visibility through it."
+	icon_state = "door_closed"
+	door = TRUE
+	forms_junctions = FALSE
+	icon = 'icons/obj/structures/props/fences/dark_fence_alt_door.dmi'
+
+/obj/structure/fence/slim/warning
+	name = "fence"
+	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
+	icon = 'icons/obj/structures/props/fences/electric_fence_alt.dmi'
+
+/obj/structure/fence/slim/warning/door
+	name = "fence door"
+	desc = "A sturdy chainlink door set between two metal poles. A cheap way to section off areas while still allowing visibility through it."
+	icon_state = "door_closed"
+	door = TRUE
+	forms_junctions = FALSE
+	icon = 'icons/obj/structures/props/fences/electric_fence_alt_door.dmi'
+
+/obj/structure/fence/slim/upp
+	name = "fence"
+	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
+	icon = 'icons/obj/structures/props/fences/upp_fence.dmi'
+
+/obj/structure/fence/slim/upp/door
+	name = "fence door"
+	desc = "A sturdy chainlink door set between two metal poles. A cheap way to section off areas while still allowing visibility through it."
+	icon_state = "door_closed"
+	door = TRUE
+	forms_junctions = FALSE
+	icon = 'icons/obj/structures/props/fences/upp_fence_door.dmi'

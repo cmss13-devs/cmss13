@@ -55,6 +55,8 @@
 	var/keybind = TRUE
 	/// Does this emote have a custom keybind category?
 	var/keybind_category = CATEGORY_EMOTE
+	/// Should this emote replace pronouns?
+	var/replace_pronouns = TRUE
 
 /datum/emote/New()
 	switch(mob_type_allowed_typecache)
@@ -87,7 +89,10 @@
 	if(params && message_param)
 		msg = select_param(user, params)
 
-	msg = replace_pronoun(user, msg)
+
+
+	if(replace_pronouns)
+		msg = replace_pronoun(user, msg)
 
 	if(say_message)
 		user.say(say_message)
@@ -104,7 +109,7 @@
 			S_TIMER_COOLDOWN_START(user, COOLDOWN_MOB_AUDIO, 20 SECONDS) // We won't ever want to stop this except during qdel
 		playsound(user, tmp_sound, volume, vary)
 
-	log_emote("[user.name]/[user.key] : [msg ? msg : key]")
+	log_emote("[user.name]/[user.ckey] : [msg ? msg : key]")
 
 	if(!msg)
 		return
@@ -166,7 +171,10 @@
  * * group - The list of people that will see this emote being
  */
 /datum/emote/proc/run_langchat(mob/user, list/group)
-	user.langchat_speech(message, group, GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("emote", "langchat_small"))
+	var/adjusted_message = message
+	if(replace_pronouns)
+		adjusted_message = replace_pronoun(user, message)
+	user.langchat_speech(adjusted_message, group, GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("emote", "langchat_small"))
 
 /**
  * For handling emote cooldown, return true to allow the emote to happen.
@@ -321,7 +329,7 @@
 	if(!text)
 		CRASH("Someone passed nothing to manual_emote(), fix it")
 
-	log_emote(text)
+	log_emote("[name]/[ckey] : [text]")
 
 	var/paygrade = get_paygrade()
 

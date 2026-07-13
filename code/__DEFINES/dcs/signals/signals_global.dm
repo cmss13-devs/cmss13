@@ -60,8 +60,16 @@
 /// From /datum/admins/proc/force_predator_round()
 #define COMSIG_GLOB_PREDATOR_ROUND_TOGGLED "!predator_round_toggled"
 
+/// From /datum/admins/proc/force_colony_joe_round()
+#define COMSIG_GLOB_COLONY_JOE_ROUND_TOGGLED "!colony_joe_round_toggled"
+
 /// From /datum/game_mode/colonialmarines/proc/check_ground_humans()
 #define COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING "!groundside_forsaken_handling"
+
+#define COMSIG_GLOB_BOOST_XENOMORPH_WALLS "!boost_xenomorph_walls"
+
+#define COMSIG_GLOB_STOP_BOOST_XENOMORPH_WALLS "!stop_boost_xenomorph_walls"
+
 
 /// From
 #define COMSIG_GLOB_YAUTJA_ARMORY_OPENED "!yautja_armory_opened"
@@ -79,7 +87,7 @@
 #define COMSIG_GLOB_AICORE_LOCKDOWN "!aicore_lockdown_closed"
 #define COMSIG_GLOB_AICORE_LIFT "!aicore_lockdown_opened"
 
-/// From /obj/structure/machinery/power/reactor/proc/set_overloading() : (set_overloading)
+/// From /obj/structure/machinery/power/power_generator/reactor/proc/set_overloading() : (set_overloading)
 #define COMSIG_GLOB_GENERATOR_SET_OVERLOADING "!generator_set_overloading"
 
 #define COMSIG_GLOB_HIJACK_IMPACTED "!hijack_impacted"
@@ -87,3 +95,7 @@
 
 /// From /datum/controller/subsystem/hijack/fire()
 #define COMSIG_GLOB_FUEL_PUMP_UPDATE "!fuel_pump_update"
+
+/// From /datum/controller/subsystem/hijack/proc/call_shuttle()
+#define COMSIG_GLOB_HIJACK_INBOUND "!hijack_inbound"
+

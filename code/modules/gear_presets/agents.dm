@@ -111,12 +111,12 @@
 
 /datum/equipment_preset/twe/representative/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = MALE
+
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
-	var/random_name
-	if(new_human.gender == MALE)
-		random_name = "[pick(GLOB.first_names_male_dutch)] [pick(GLOB.last_names_clf)]"
-		new_human.f_style = "Shaved"
+
+	var/random_name = "[capitalize(pick(GLOB.first_names_male_dutch))] [capitalize(pick(GLOB.last_names_clf))]"
+	new_human.f_style = "Shaved"
 
 	new_human.change_real_name(new_human, random_name)
 	new_human.age = rand(17,35)

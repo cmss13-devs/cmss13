@@ -6,6 +6,7 @@
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'
 	)
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
@@ -13,31 +14,15 @@
 	storage_slots = 2
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
-	allowed = list(
-		/obj/item/weapon/gun,
-		/obj/item/tank/emergency_oxygen,
-		/obj/item/device/flashlight,
-		/obj/item/ammo_magazine/,
-		/obj/item/weapon/baton,
-		/obj/item/restraint/handcuffs,
-		/obj/item/storage/fancy/cigarettes,
-		/obj/item/tool/lighter,
-		/obj/item/explosive/grenade,
-		/obj/item/storage/bible,
-		/obj/item/tool/crowbar,
-		/obj/item/storage/large_holster/katana,
-		/obj/item/storage/large_holster/machete,
-		/obj/item/weapon/sword/machete,
-		/obj/item/attachable/bayonet,
-		/obj/item/device/motiondetector,
-		/obj/item/tool/crew_monitor,
-		/obj/item/device/walkman,
-	)
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/pmc)
 	item_state_slots = list(WEAR_JACKET = "pmc_armor")
 	lamp_icon = "pmc_lamp"
 	light_color = LIGHT_COLOR_FLARE
 	lamp_light_color = LIGHT_COLOR_FLARE
+
+/obj/item/clothing/suit/storage/marine/veteran/pmc/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/clothing/suit/storage/marine/veteran/pmc/no_lamp
 	flags_marine_armor = null
@@ -53,6 +38,7 @@
 	name = "\improper M4 pattern PMC riot guard armor"
 	icon_state = "guard_armor_spec"
 	item_state_slots = list(WEAR_JACKET = "guard_armor_spec")
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS|BODY_FLAG_ARMS
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
@@ -62,6 +48,7 @@
 	name = "\improper M4 pattern PMC guard bulletproof armor"
 	icon_state = "guard_vest"
 	item_state_slots = list(WEAR_JACKET = "guard_vest")
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
@@ -79,6 +66,7 @@
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROT
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS|BODY_FLAG_ARMS
 	flags_marine_armor = null
 	actions_types = null
 
@@ -155,6 +143,7 @@
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'
 	)
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS|BODY_FLAG_ARMS
 	flags_inventory = BLOCKSHARPOBJ|BLOCK_KNOCKDOWN|SMARTGUN_HARNESS
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
@@ -165,3 +154,7 @@
 	item_state_slots = list(WEAR_JACKET = "heavy_armor")
 	flags_marine_armor = null
 	actions_types = null
+
+/obj/item/clothing/suit/storage/marine/smartgunner/veteran/pmc/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)

@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////
-//Mounted MG, Replacment for the current jury rig code.
+//Mounted MG, Replacement for the current jury rig code.
 
 // First thing we need is the ammo drum for this thing.
 /obj/item/ammo_magazine/m56d
@@ -41,13 +41,16 @@
 	unacidable = TRUE
 	w_class = SIZE_HUGE
 	flags_equip_slot = SLOT_BACK
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi'
+	icon_state = "m56d"
+	item_state = "m56d"
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/machineguns.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_righthand.dmi'
 	)
-	icon_state = "M56D_gun_e"
+	pixel_x = -8
+	hud_offset = -8
 	///How many rounds are in the weapon. This is useful if we break down our guns.
 	var/rounds = 0
 	///Indicates whether the M56D will come with its folding mount already attached
@@ -58,21 +61,52 @@
 /obj/item/device/m56d_gun/Initialize(mapload, ...)
 	. = ..()
 	update_icon()
+	select_gamemode_skin()
+
+/obj/item/device/m56d_gun/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	if(flags_atom & MAP_COLOR_INDEX)
+		return
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/guns_obj.dmi'
+			item_icons[WEAR_L_HAND] = 'icons/obj/items/weapons/guns/guns_by_map/jungle/guns_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/obj/items/weapons/guns/guns_by_map/jungle/guns_righthand.dmi'
+			item_icons[WEAR_BACK] = 'icons/obj/items/weapons/guns/guns_by_map/jungle/back.dmi'
+		if("classic")
+			icon = 'icons/obj/items/weapons/guns/guns_by_map/classic/guns_obj.dmi'
+			item_icons[WEAR_L_HAND] = 'icons/obj/items/weapons/guns/guns_by_map/classic/guns_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/obj/items/weapons/guns/guns_by_map/classic/guns_righthand.dmi'
+			item_icons[WEAR_BACK] = 'icons/obj/items/weapons/guns/guns_by_map/classic/back.dmi'
+		if("desert")
+			icon = 'icons/obj/items/weapons/guns/guns_by_map/desert/guns_obj.dmi'
+			item_icons[WEAR_L_HAND] = 'icons/obj/items/weapons/guns/guns_by_map/desert/guns_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/obj/items/weapons/guns/guns_by_map/desert/guns_righthand.dmi'
+			item_icons[WEAR_BACK] = 'icons/obj/items/weapons/guns/guns_by_map/desert/back.dmi'
+		if("snow")
+			icon = 'icons/obj/items/weapons/guns/guns_by_map/snow/guns_obj.dmi'
+			item_icons[WEAR_L_HAND] = 'icons/obj/items/weapons/guns/guns_by_map/snow/guns_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/obj/items/weapons/guns/guns_by_map/snow/guns_righthand.dmi'
+			item_icons[WEAR_BACK] = 'icons/obj/items/weapons/guns/guns_by_map/snow/back.dmi'
+		if("urban")
+			icon = 'icons/obj/items/weapons/guns/guns_by_map/urban/guns_obj.dmi'
+			item_icons[WEAR_L_HAND] = 'icons/obj/items/weapons/guns/guns_by_map/urban/guns_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/obj/items/weapons/guns/guns_by_map/urban/guns_righthand.dmi'
+			item_icons[WEAR_BACK] = 'icons/obj/items/weapons/guns/guns_by_map/urban/back.dmi'
 
 /obj/item/device/m56d_gun/get_examine_text(mob/user) //Let us see how much ammo we got in this thing.
 	. = ..()
 	if(rounds)
 		. += "It has [rounds] out of 700 rounds."
 	else
-		. += "It seems to be lacking a ammo drum."
+		. += "It seems to be lacking an ammo drum."
 
 /obj/item/device/m56d_gun/update_icon() //Lets generate the icon based on how much ammo it has.
-	var/icon_name = "M56D_gun"
+	icon_state = initial(icon_state)
 	if(has_mount)
-		icon_name += "_mount"
-	if(!rounds)
-		icon_name += "_e"
-	icon_state = icon_name
+		icon_state += "_tri"
+	if(rounds)
+		overlays += mutable_appearance('icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi', "m56d_mag")
 	return
 
 /obj/item/device/m56d_gun/attackby(obj/item/O as obj, mob/user as mob)
@@ -89,7 +123,7 @@
 			update_icon()
 			return
 		else
-			to_chat(usr, "The M56D already has a ammo drum mounted on it!")
+			to_chat(usr, "The M56D already has an ammo drum mounted on it!")
 		return
 
 /obj/item/device/m56d_gun/attack_self(mob/user)
@@ -188,11 +222,17 @@
 
 /obj/item/device/m56d_post //Adding this because I was fucken stupid and put a obj/structure/machinery in a box. Realized I couldn't take it out
 	name = "\improper M56D folded mount"
-	desc = "The folded, foldable tripod mount for the M56D.  (Place on ground and drag to you to unfold)."
+	desc = "The folded, foldable tripod mount for the M56D. (Place on ground and drag to you to unfold)."
 	unacidable = TRUE
 	w_class = SIZE_MEDIUM
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi'
 	icon_state = "folded_mount"
+	item_state = "folded_mount"
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/machineguns.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_righthand.dmi'
+	)
 
 /// Causes the tripod to unfold
 /obj/item/device/m56d_post/attack_self(mob/user)
@@ -266,6 +306,11 @@
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
 
+/obj/structure/machinery/m56d_post/Initialize(mapload, ...)
+	. = ..()
+	update_icon()
+
+
 //Making so rockets don't hit M56D
 /obj/structure/machinery/m56d_post/calculate_cover_hit_boolean(obj/projectile/P, distance = 0, cade_direction_correct = FALSE)
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
@@ -282,11 +327,26 @@
 /obj/structure/machinery/m56d_post/update_icon()
 	var/icon_name = "M56D"
 	if(gun_mounted)
+		select_gamemode_skin()
 		if(!gun_rounds)
 			icon_name += "_e"
 	else
 		icon_name += "_mount"
+		icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi'
 	icon_state = icon_name
+
+/obj/structure/machinery/m56d_post/proc/select_gamemode_skin()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi'
+		if("classic")
+			icon = 'icons/obj/items/weapons/guns/guns_by_map/classic/hmg.dmi'
+		if("desert")
+			icon = 'icons/obj/items/weapons/guns/guns_by_map/desert/hmg.dmi'
+		if("snow")
+			icon = 'icons/obj/items/weapons/guns/guns_by_map/snow/hmg.dmi'
+		if("urban")
+			icon = 'icons/obj/items/weapons/guns/guns_by_map/urban/hmg.dmi'
 
 /obj/structure/machinery/m56d_post/get_examine_text(mob/user)
 	. = ..()
@@ -296,6 +356,9 @@
 		. += "The <b>M56D heavy machine gun</b> is not yet mounted."
 	else
 		. += "The M56D isn't screwed into the mount. Use a <b>screwdriver</b> to finish the job."
+	if(gun_rounds && (ishuman(user) || HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS)))
+		if(gun_rounds)
+			. += SPAN_NOTICE("It has [gun_rounds] round\s out of 700 rounds.")
 
 /obj/structure/machinery/m56d_post/attack_alien(mob/living/carbon/xenomorph/M)
 	if(islarva(M))
@@ -338,6 +401,12 @@
 
 	if(istype(O,/obj/item/device/m56d_gun)) //lets mount the MG onto the mount.
 		var/obj/item/device/m56d_gun/MG = O
+		if(gun_mounted)
+			to_chat(user, SPAN_WARNING("There is already a gun mounted to this tripod!"))
+			return
+		if(MG.has_mount)
+			to_chat(user, SPAN_WARNING("The gun you're trying to attach already has a mount!"))
+			return
 		for(var/obj/structure/machinery/machine in long_orange(MG.defense_check_range, loc))
 			if(istype(machine, /obj/structure/machinery/m56d_hmg) || istype(machine, /obj/structure/machinery/m56d_post))
 				to_chat(user, SPAN_WARNING("This is too close to [machine]!"))
@@ -453,11 +522,11 @@
 
 
 
-// The actual Machinegun itself, going to borrow some stuff from current sentry code to make sure it functions. Also because they're similiar.
+// The actual Machinegun itself, going to borrow some stuff from current sentry code to make sure it functions. Also because they're similar.
 /obj/structure/machinery/m56d_hmg
 	name = "\improper M56D heavy machine gun"
 	desc = "A deployable, heavy machine gun. While it is capable of taking the same rounds as the M56, it fires specialized tungsten rounds for increased armor penetration.<br>Drag its sprite onto yourself to man it. Ctrl-click it to cycle through firemodes."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/desert/hmg.dmi'
 	icon_state = "M56D"
 	anchored = TRUE
 	unslashable = TRUE
@@ -526,6 +595,8 @@
 	COOLDOWN_DECLARE(semiauto_fire_cooldown)
 	/// How long between semi-auto shots this should wait, to reduce possible spam
 	var/semiauto_cooldown_time = 0.2 SECONDS
+	/// If the gun has a map specific skin or not
+	var/gun_has_gamemode_skin = TRUE
 
 /obj/structure/machinery/m56d_hmg/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -561,8 +632,23 @@
 
 	ammo = GLOB.ammo_list[ammo] //dunno how this works but just sliding this in from sentry-code.
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_7
+	if(gun_has_gamemode_skin)
+		select_gamemode_skin()
 	update_icon()
 	AddComponent(/datum/component/automatedfire/autofire, fire_delay, burst_fire_delay, burst_amount, gun_firemode, autofire_slow_mult, CALLBACK(src, PROC_REF(set_burst_firing)), CALLBACK(src, PROC_REF(reset_fire)), CALLBACK(src, PROC_REF(try_fire)), CALLBACK(src, PROC_REF(display_ammo)))
+
+/obj/structure/machinery/m56d_hmg/proc/select_gamemode_skin()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi'
+		if("classic")
+			icon = 'icons/obj/items/weapons/guns/guns_by_map/classic/hmg.dmi'
+		if("desert")
+			icon = 'icons/obj/items/weapons/guns/guns_by_map/desert/hmg.dmi'
+		if("snow")
+			icon = 'icons/obj/items/weapons/guns/guns_by_map/snow/hmg.dmi'
+		if("urban")
+			icon = 'icons/obj/items/weapons/guns/guns_by_map/urban/hmg.dmi'
 
 /obj/structure/machinery/m56d_hmg/Destroy(force) //Make sure we pick up our trash.
 	operator?.unset_interaction()
@@ -995,30 +1081,30 @@
 			if(NORTH)
 				diff_y = -16 + user_old_y
 				if(user.client)
-					user.client.pixel_x = 0
-					user.client.pixel_y = viewoffset
+					user.client.set_pixel_x(0)
+					user.client.set_pixel_y(viewoffset)
 			if(SOUTH)
 				diff_y = 16 + user_old_y
 				if(user.client)
-					user.client.pixel_x = 0
-					user.client.pixel_y = -viewoffset
+					user.client.set_pixel_x(0)
+					user.client.set_pixel_y(-viewoffset)
 			if(EAST)
 				diff_x = -16 + user_old_x
 				if(user.client)
-					user.client.pixel_x = viewoffset
-					user.client.pixel_y = 0
+					user.client.set_pixel_x(viewoffset)
+					user.client.set_pixel_y(0)
 			if(WEST)
 				diff_x = 16 + user_old_x
 				if(user.client)
-					user.client.pixel_x = -viewoffset
-					user.client.pixel_y = 0
+					user.client.set_pixel_x(-viewoffset)
+					user.client.set_pixel_y(0)
 
 		animate(user, pixel_x=diff_x, pixel_y=diff_y, 0.4 SECONDS)
 	else
 		if(user.client)
 			user.client.change_view(GLOB.world_view_size)
-			user.client.pixel_x = 0
-			user.client.pixel_y = 0
+			user.client.set_pixel_x(0)
+			user.client.set_pixel_y(0)
 		animate(user, pixel_x=user_old_x, pixel_y=user_old_y, 4, 1)
 
 /obj/structure/machinery/m56d_hmg/check_eye(mob/living/user)
@@ -1075,7 +1161,7 @@
 
 	if(display_ammo)
 		var/chambered = in_chamber ? TRUE : FALSE
-		to_chat(operator, SPAN_DANGER("[rounds][chambered ? "+1" : ""] / [rounds_max] ROUNDS REMAINING"))
+		to_chat(operator, SPAN_DANGER("[rounds][chambered ? "+1" : ""] / [rounds_max] ROUNDS REMAINING."))
 
 /// Toggles the gun's firemode one down the list
 /obj/structure/machinery/m56d_hmg/proc/do_toggle_firemode(mob/user, new_firemode)
@@ -1120,7 +1206,7 @@
 		display_ammo()
 	SEND_SIGNAL(src, COMSIG_GUN_STOP_FIRE)
 
-///Update the target if you draged your mouse
+///Update the target if you dragged your mouse
 /obj/structure/machinery/m56d_hmg/proc/change_target(datum/source, atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)
 	SIGNAL_HANDLER
 	set_target(get_turf_on_clickcatcher(over_object, operator, params))
@@ -1184,8 +1270,9 @@
 	SEND_SIGNAL(src, COMSIG_GUN_BURST_SHOT_DELAY_MODIFIED, burst_fire_delay)
 
 /obj/structure/machinery/m56d_hmg/mg_turret //Our mapbound version with stupid amounts of ammo.
-	name = "\improper scoped M56D heavy machine gun nest"
-	desc = "A scoped M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. Drag its sprite onto yourself to man it. Ctrl-click it to toggle burst fire."
+	name = "\improper scoped M38D heavy machine gun nest"
+	desc = "A scoped M38D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. Drag its sprite onto yourself to man it. Ctrl-click it to toggle burst fire."
+	icon_state = "M38D"
 	fire_delay = 2
 	rounds = 1500
 	rounds_max = 1500
@@ -1207,12 +1294,16 @@
 	update_damage_state()
 	update_icon()
 
+/obj/structure/machinery/m56d_hmg/mg_turret/whiskey
+	ammo = /datum/ammo/bullet/machinegun/whiskey
+
 /obj/structure/machinery/m56d_hmg/mg_turret/dropship
 	name = "\improper scoped M56D heavy machine gun"
 	desc = "A scoped M56D heavy machine gun mounted behind a metal shield. Drag its sprite onto yourself to man it. Ctrl-click it to toggle burst fire."
 	icon_full = "towergun_folding"
 	icon_empty = "towergun_folding"
 	var/obj/structure/dropship_equipment/mg_holder/deployment_system
+	gun_has_gamemode_skin = FALSE
 
 /obj/structure/machinery/m56d_hmg/mg_turret/dropship/Destroy()
 	if(deployment_system)

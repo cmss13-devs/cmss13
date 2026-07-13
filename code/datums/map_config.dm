@@ -17,6 +17,14 @@
 	var/map_path = "map_files/LV624"
 	var/map_file = "LV624.dmm"
 
+	// Crash site configs for shipmaps
+	/// Shipmap: The name of the template to load in the event of a FTL ground crash
+	var/ground_crash_template_name = null // "USS_Almayer_crash.dmm"
+	/// Shipmap: A list of x positions can be the start of a crack in the event of a FTL crash
+	var/list/crack_open_horizontal_positions = null // list(174)
+	/// Shipmap: A list of bounds in the form of minx, maxx, miny, maxy of space that will convert to open space in the event of a FTL crash
+	var/list/open_space_bounds = null // list(22, 311, -13, 113)
+
 	var/webmap_url
 	var/short_name
 
@@ -33,6 +41,7 @@
 	var/announce_text = ""
 	var/infection_announce_text = ""
 	var/liaison_briefing = ""
+	var/list/co_briefing_files = list()
 
 	var/squads_max_num = 4
 
@@ -45,6 +54,12 @@
 	var/list/synth_survivor_types_by_variant
 
 	var/list/CO_survivor_types
+	var/list/CO_survivor_types_by_variant
+
+	var/list/CO_insert_survivor_types
+	var/list/CO_insert_survivor_types_by_variant
+
+	var/list/colony_joe_types
 
 	var/list/defcon_triggers = list(5150, 4225, 2800, 1000, 0.0)
 
@@ -145,6 +160,16 @@
 
 #define CHECK_EXISTS(X) if(!istext(json[X])) { log_world("[##X] missing from json!"); return; }
 /datum/map_config/proc/LoadConfig(filename, error_if_missing, maptype)
+	#ifdef FORCE_GROUND_MAP
+	if(maptype == GROUND_MAP)
+		filename = FORCE_GROUND_MAP
+	#endif
+
+	#ifdef FORCE_SHIP_MAP
+	if(maptype == SHIP_MAP)
+		filename = FORCE_SHIP_MAP
+	#endif
+
 	if(!fexists(filename))
 		if(error_if_missing)
 			log_world("map_config not found: [filename]")
@@ -176,6 +201,14 @@
 	short_name = json["short_name"]
 
 	map_file = json["map_file"]
+
+	ground_crash_template_name = json["ground_crash_template_name"]
+	if(islist(json["crack_open_horizontal_positions"]))
+		crack_open_horizontal_positions = json["crack_open_horizontal_positions"]
+	if(islist(json["open_space_bounds"]))
+		open_space_bounds = json["open_space_bounds"]
+		if(length(open_space_bounds) != 4 || open_space_bounds[OPEN_SPACE_BOUNDS_MINX] > open_space_bounds[OPEN_SPACE_BOUNDS_MAXX] || open_space_bounds[OPEN_SPACE_BOUNDS_MINY] > open_space_bounds[OPEN_SPACE_BOUNDS_MAXY])
+			log_world("map_config open_space_bounds is invalid!")
 
 	var/dirpath = "maps/"
 	if(override_map)
@@ -278,6 +311,40 @@
 		pathed_CO_survivor_types += CO_survivor_typepath
 	CO_survivor_types = pathed_CO_survivor_types.Copy()
 
+	if(islist(json["CO_insert_survivor_types"]))
+		CO_insert_survivor_types = json["CO_insert_survivor_types"]
+	else if ("CO_insert_survivor_types" in json)
+		log_world("map_config CO_insert_survivor_types is not a list!")
+		return
+
+	var/list/pathed_CO_insert_survivor_types = list()
+	for(var/CO_insert_surv_type in CO_insert_survivor_types)
+		var/CO_insert_survivor_typepath = CO_insert_surv_type
+		if(!ispath(CO_insert_survivor_typepath))
+			CO_insert_survivor_typepath = text2path(CO_insert_surv_type)
+			if(!ispath(CO_insert_survivor_typepath))
+				log_world("[CO_insert_surv_type] isn't a proper typepath, removing from CO_insert_survivor_types list")
+				continue
+		pathed_CO_insert_survivor_types += CO_insert_survivor_typepath
+	CO_insert_survivor_types = pathed_CO_insert_survivor_types.Copy()
+
+	if(islist(json["colony_joe_types"]))
+		colony_joe_types = json["colony_joe_types"]
+	else if ("colony_joe_types" in json)
+		log_world("map_config colony_joe_types is not a list!")
+		return
+
+	var/list/pathed_colony_joe_types = list()
+	for(var/joe_type in colony_joe_types)
+		var/colony_joe_typepath = joe_type
+		if(!ispath(colony_joe_typepath))
+			colony_joe_typepath = text2path(joe_type)
+			if(!ispath(colony_joe_typepath))
+				log_world("[joe_type] isn't a proper typepath, removing from colony_joe_typepath list")
+				continue
+		pathed_colony_joe_types += colony_joe_typepath
+	colony_joe_types = pathed_colony_joe_types.Copy()
+
 	if (islist(json["monkey_types"]))
 		monkey_types = list()
 		for(var/monkey in json["monkey_types"])
@@ -314,7 +381,7 @@
 	traits = json["traits"]
 	if(islist(traits))
 		for(var/list/ztraits in traits) // Defaults to ground map if not specified
-			if(!ztraits[ZTRAIT_GROUND] && !ztraits[ZTRAIT_MARINE_MAIN_SHIP])
+			if(!ztraits[ZTRAIT_GROUND] && !ztraits[ZTRAIT_MARINE_MAIN_SHIP] && !ztraits[ZTRAIT_BACKGROUND_MAP])
 				ztraits[ZTRAIT_GROUND] = TRUE
 	else if(traits)
 		log_world("map_config traits is not a list!")
@@ -362,6 +429,9 @@
 
 	if(json["liaison_briefing"])
 		liaison_briefing = json["liaison_briefing"]
+
+	if(islist(json["co_briefing"]))
+		co_briefing_files = json["co_briefing"]
 
 	if(json["weather_holder"])
 		weather_holder = text2path(json["weather_holder"])

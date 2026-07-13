@@ -40,7 +40,7 @@
 	if(new_human.client && new_human.client.prefs)
 		var/new_name = get_fax_responder_name(new_human.client)
 		if(new_name)
-			final_name = new_name
+			final_name = capitalize_first_letters(new_name)
 
 	new_human.change_real_name(new_human, final_name)
 
@@ -77,16 +77,14 @@
 
 	paygrades = list(PAY_SHORT_MO2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_MO3 = JOB_PLAYTIME_TIER_1, PAY_SHORT_MO4 = JOB_PLAYTIME_TIER_3)
 	idtype = /obj/item/card/id/gold
-	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_DATABASE, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_BRIG, ACCESS_MARINE_AI)
+	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_DATABASE_ADMIN, ACCESS_MARINE_GENERAL, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_BRIG, ACCESS_MARINE_AI)
 	headset_type = /obj/item/device/radio/headset/almayer/highcom
 	idtype = /obj/item/card/id/gold
 
 /datum/equipment_preset/fax_responder/uscm/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/marine/dress_cover/officer(new_human), WEAR_HEAD)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/dress/blues/senior(new_human), WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer(new_human), WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/dress(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/dress(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/dress(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(new_human), WEAR_FEET)
 
 	new_human.equip_to_slot_or_del(new /obj/item/notepad/blue(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)

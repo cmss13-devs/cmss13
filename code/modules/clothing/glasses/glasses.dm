@@ -21,7 +21,7 @@
 	flags_inventory = COVEREYES
 	flags_equip_slot = SLOT_EYES
 	flags_armor_protection = BODY_FLAG_EYES
-	var/deactive_state
+	var/deactivated_state
 	var/has_tint = FALSE //whether it blocks vision like a welding helmet
 	var/fullscreen_vision
 	var/req_skill
@@ -40,10 +40,10 @@
 		M.update_inv_glasses()
 
 /obj/item/clothing/glasses/update_icon()
-	if(!deactive_state || active)
+	if(!deactivated_state || active)
 		icon_state = initial(icon_state)
 	else
-		icon_state = deactive_state
+		icon_state = deactivated_state
 	..()
 
 /obj/item/clothing/glasses/proc/can_use_active_effect(mob/living/carbon/human/user)
@@ -134,6 +134,7 @@
 			H.remove_hud_from(user, src)
 		user.glasses = null
 		user.update_inv_glasses()
+		user.update_glass_vision(src)
 	user.update_sight()
 	return ..()
 
@@ -166,13 +167,15 @@
 	)
 	icon_state = "purple"
 	item_state = "glasses"
-	deactive_state = "purple_off"
-	actions_types = list(/datum/action/item_action/toggle)
+	deactivated_state = "purple_off"
+	actions_types = list(/datum/action/item_action/toggle/hudgoggles)
 	toggleable = TRUE
 	flags_inventory = COVEREYES
+	armor_bio = CLOTHING_ARMOR_MEDIUM
 	req_skill = SKILL_RESEARCH
 	req_skill_level = SKILL_RESEARCH_TRAINED
 	clothing_traits = list(TRAIT_REAGENT_SCANNER)
+	matter = list("glass" = 500,"plastic" = 500)
 
 /obj/item/clothing/glasses/science/prescription
 	name = "prescription reagent scanner HUD goggles"
@@ -344,7 +347,7 @@
 
 /obj/item/clothing/glasses/jensen
 	name = "Augmented sunglasses"
-	desc = "Augmented sunglasses with the HUD removed"
+	desc = "Augmented sunglasses with the HUD removed."
 	icon = 'icons/obj/items/clothing/glasses/misc.dmi'
 	item_icons = list(
 		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/misc.dmi',
@@ -375,7 +378,7 @@
 	)
 	icon_state = "m56_goggles"
 	gender = NEUTER
-	deactive_state = "m56_goggles_0"
+	deactivated_state = "m56_goggles_0"
 	vision_flags = SEE_TURFS
 	toggleable = 1
 	actions_types = list(/datum/action/item_action/toggle)
@@ -785,6 +788,22 @@
 	message_down = "You lower the visor down."
 	flags_equip_slot = null
 
+/obj/item/clothing/glasses/mgoggles/mp_riot_shield
+	name = "\improper Z9 integrated riotplate"
+	desc = "An improved variant of the M7 integrated faceplate."
+	desc_lore = "These were originally produced by a group of marines stationed on LV-920, a snow planet. Conditions were terrible, so to raise morale, the marines hatched a prank. They would spray-paint a faceplate black and meticulously repaint the logos and warning text around the inner seams, not that anyone reads those anyway. Any MP brave or foolish enough to don the brand new faceplate would have the entirety of their cheeks and chin painted black because of residual paint, much to the delight of the bored marines. Unfortunately, due to the prank's roaring success and its spread across the Marine Corps, production of genuine models began, diluting the pool of fake plates with real ones. You're pretty sure this is a real one. Pretty sure."
+	icon_state = "mp_shield"
+	icon = 'icons/obj/items/clothing/helmet_garb.dmi'
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/visors.dmi',
+	)
+	active_icon_state = "mp_shield"
+	inactive_icon_state = "mp_shield_up"
+	activated = TRUE
+	message_up = "You lift the visor up."
+	message_down = "You lower the visor down."
+	flags_equip_slot = null
+
 //welding goggles
 
 /obj/item/clothing/glasses/welding
@@ -793,7 +812,7 @@
 	icon = 'icons/obj/items/clothing/glasses/goggles.dmi'
 	icon_state = "welding-g"
 	item_state = "welding-g"
-	deactive_state = "welding-gup"
+	deactivated_state = "welding-gup"
 	item_state_slots = list(WEAR_AS_GARB = "welding-h")
 	item_icons = list(
 		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/goggles.dmi',
@@ -883,6 +902,7 @@
 	darkness_view = -1
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 	flags_obj = OBJ_IS_HELMET_GARB
+	flags_inv_hide = HIDEEYES
 	eye_protection = EYE_PROTECTION_FLAVOR
 
 /obj/item/clothing/glasses/sunglasses/blindfold
@@ -1025,6 +1045,11 @@
 	name = "Security HUD-Glasses"
 	desc = "Sunglasses wired up with the best nano-tech the USCM can muster out on the frontier. Displays information about any person you decree worthy of your gaze."
 	icon_state = "sunhud_blue"
+
+/obj/item/clothing/glasses/sunglasses/sechud/blue/prescription
+	name = "Prescription Security HUD-Glasses"
+	desc = "Sunglasses wired up with the best nano-tech the USCM can muster out on the frontier. Displays information about any person you decree worthy of your gaze. Contains prescription lenses."
+	prescription = TRUE
 
 /obj/item/clothing/glasses/sunglasses/sechud/prescription
 	name = "Prescription Security HUD-Glasses"

@@ -1,8 +1,8 @@
 /datum/equipment_preset/uscm_ship/uscm_police
 	name = "USCM (police roles)"
 	faction = FACTION_MARINE
-	minimap_background = "background_mp"
 	minimum_age = 21
+	minimap_background = "background_mp"
 
 //*****************************************************************************************************/
 
@@ -14,6 +14,7 @@
 		ACCESS_MARINE_BRIG,
 		ACCESS_MARINE_COMMAND,
 		ACCESS_MARINE_DROPSHIP,
+		ACCESS_MARINE_GENERAL,
 		ACCESS_MARINE_DATABASE,
 		ACCESS_MARINE_PREP,
 		ACCESS_MARINE_MEDBAY,
@@ -37,15 +38,16 @@
 	utility_under = list(/obj/item/clothing/under/marine/mp)
 	utility_hat = list(/obj/item/clothing/head/beret/marine/mp)
 	utility_extra = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
-
 	service_over = list(/obj/item/clothing/suit/storage/jacket/marine/service/mp)
+
+	var/headset_item = /obj/item/device/radio/headset/almayer/mmpo
 
 /datum/equipment_preset/uscm_ship/uscm_police/mp/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel/sec
 	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/security
 
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mmpo(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new headset_item(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/mp(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(new_human), WEAR_HANDS)
@@ -60,6 +62,21 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/taperecorder(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(new_human), WEAR_R_STORE)
 
+/datum/equipment_preset/uscm_ship/uscm_police/mp/honorguard
+	name = "USCM Military Police Honor Guard (MPHG)"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	assignment = JOB_POLICE_HG
+	job_title = JOB_POLICE_HG
+	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME6 = JOB_PLAYTIME_TIER_1)
+	role_comm_title = "MPHG"
+
+	minimap_icon = "honorguard"
+	headset_item = /obj/item/device/radio/headset/almayer/marine/mp_honor/com
+
+/datum/equipment_preset/uscm_ship/uscm_police/mp/honorguard/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_MARINE_ALL)
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/uscm_police/warden
@@ -71,6 +88,7 @@
 		ACCESS_MARINE_BRIG,
 		ACCESS_MARINE_COMMAND,
 		ACCESS_MARINE_DROPSHIP,
+		ACCESS_MARINE_GENERAL,
 		ACCESS_MARINE_DATABASE,
 		ACCESS_MARINE_PREP,
 		ACCESS_MARINE_ARMORY,
@@ -104,7 +122,7 @@
 	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/security
 
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mwcom(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/mw(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/warden(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(new_human), WEAR_HANDS)
@@ -130,7 +148,9 @@
 		ACCESS_MARINE_BRIG,
 		ACCESS_MARINE_COMMAND,
 		ACCESS_MARINE_DROPSHIP,
+		ACCESS_MARINE_GENERAL,
 		ACCESS_MARINE_DATABASE,
+		ACCESS_MARINE_DATABASE_ADMIN,
 		ACCESS_MARINE_PREP,
 		ACCESS_MARINE_CMP,
 		ACCESS_MARINE_ARMORY,
@@ -153,7 +173,7 @@
 	role_comm_title = "CMP"
 	skills = /datum/skills/CMP
 
-	minimap_icon = list("cmp")
+	minimap_icon = "cmp"
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/warrant)
 	utility_hat = list(/obj/item/clothing/head/beret/marine/mp/cmp)
@@ -166,7 +186,7 @@
 	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/security
 
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/cmpcom(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cmp(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/warrant(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(new_human), WEAR_HANDS)
@@ -196,7 +216,7 @@
 	role_comm_title = "RMP"
 	skills = /datum/skills/CMP
 
-	minimap_icon = list("rmp")
+	minimap_icon = "rmp"
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/warrant)
 	utility_hat = list(/obj/item/clothing/head/beret/marine/mp/cmp)
@@ -209,7 +229,7 @@
 /datum/equipment_preset/uscm_ship/uscm_police/riot_mp/load_gear(mob/living/carbon/human/new_human)
 	//TODO: add backpacks and satchels
 
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/cmpcom(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cmp(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/warrant(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/riot/marine(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/riot(new_human), WEAR_HEAD)
@@ -240,7 +260,7 @@
 	name = "USCM Riot Chief MP (RCMP)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	minimap_icon = list("crmp")
+	minimap_icon = "crmp"
 
 	assignment = JOB_RIOT_CHIEF
 	job_title = JOB_RIOT_CHIEF

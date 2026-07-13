@@ -2,7 +2,7 @@
 
 /area/lv759
 	name = "LV-759 Hybrisa Prospera"
-	icon = 'icons/turf/hybrisareas.dmi'
+	icon = 'icons/turf/area_hybrisa.dmi'
 	icon_state = "hybrisa"
 	can_build_special = TRUE
 	powernet_name = "ground"
@@ -30,7 +30,7 @@
 	icon_state = "oob"
 	ceiling = CEILING_MAX
 	is_resin_allowed = FALSE
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW
 	minimap_color = MINIMAP_AREA_OOB
 	requires_power = FALSE
 
@@ -39,7 +39,7 @@
 	icon_state = "oob"
 	ceiling = CEILING_MAX
 	is_resin_allowed = FALSE
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW
 	minimap_color = MINIMAP_AREA_OOB
 
 /area/lv759/bunker/gonzo
@@ -47,7 +47,7 @@
 	icon_state = "cliff_blocked"
 	ceiling = CEILING_MAX
 	is_resin_allowed = FALSE
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW
 	minimap_color = MINIMAP_AREA_OOB
 	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 	ambience_exterior = AMBIENCE_HYBRISA_INTERIOR
@@ -58,7 +58,7 @@
 	icon_state = "cliff_blocked"
 	ceiling = CEILING_MAX
 	is_resin_allowed = FALSE
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW
 	minimap_color = MINIMAP_AREA_OOB
 	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 	ambience_exterior = AMBIENCE_HYBRISA_INTERIOR
@@ -182,7 +182,7 @@
 	name = "Derelict Ship"
 	icon_state = "derelictship"
 	ceiling = CEILING_REINFORCED_METAL
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW
 	ambience_exterior = AMBIENCE_DERELICT
 	soundscape_playlist = SCAPE_PL_LV759_DERELICTSHIP
 	ceiling_muffle = FALSE
@@ -219,7 +219,7 @@
 	soundscape_playlist = SCAPE_PL_LV759_CAVES
 	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
-	unoviable_timer = FALSE
+	unoviable_timer = 25 MINUTES
 	always_unpowered = TRUE
 
 /area/lv759/indoors/caves/electric_fence1
@@ -323,7 +323,7 @@
 	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
 	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
-	unoviable_timer = FALSE
+	unoviable_timer = 25 MINUTES
 
 /area/lv759/outdoors/caves/north_west_caves_outdoors
 	name = "Caverns - Northwest"
@@ -333,7 +333,7 @@
 	soundscape_playlist = SCAPE_PL_LV759_CAVES
 	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
-	unoviable_timer = FALSE
+	unoviable_timer = 25 MINUTES
 
 /area/lv759/indoors/caves/north_east_caves
 	name = "Caverns - Northeast"
@@ -568,6 +568,12 @@
 	requires_power = FALSE
 	minimap_color = MINIMAP_AREA_COLONY
 
+/area/lv759/indoors/spaceport/clf_dropship
+	name = "UD-9M 'Dogbite'"
+	icon_state = "wydropship"
+	requires_power = FALSE
+	minimap_color = MINIMAP_AREA_COLONY
+
 // Garage
 
 /area/lv759/indoors/garage_reception
@@ -589,6 +595,12 @@
 /area/lv759/indoors/garage_restroom
 	name = "Garage - Restroom"
 	icon_state = "garage"
+
+// Administrative Records Bureau Complex
+
+/area/lv759/indoors/admin_records
+	name = "Weyland-Yutani - Administrative Records Bureau Complex"
+	icon_state = "wyoffice"
 
 // Meridian Offices & Factory Floor
 
@@ -1015,7 +1027,7 @@
 /area/lv759/indoors/power_plant/equipment_west
 	name = "Weyland-Yutani DynaGrid Nexus - Equipment Storage Room - West"
 
-// Marshalls (NSPA)
+// Marshals (NSPA)
 
 /area/lv759/indoors/colonial_marshals
 	name = "NSPA - Ironbridge Precinct"
@@ -1146,6 +1158,14 @@
 	icon_state = "recycling"
 	linked_lz = DROPSHIP_LZ1
 
+// Fire Station
+
+/area/lv759/indoors/fire_station
+	name = "Fire Station"
+	icon_state = "fire_station"
+	minimap_color = MINIMAP_AREA_SEC
+	linked_lz = DROPSHIP_LZ1
+
 // Restrooms
 
 /area/lv759/indoors/south_public_restroom
@@ -1244,7 +1264,7 @@
 	icon_state = "hobo"
 	ceiling = CEILING_REINFORCED_METAL
 	is_resin_allowed = FALSE
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW
 	linked_lz = DROPSHIP_LZ2
 
 // Weyland-Yutani Advanced Bio-Genomic Research Complex

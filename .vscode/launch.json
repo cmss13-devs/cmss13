@@ -11,8 +11,114 @@
         {
             "type": "byond",
             "request": "launch",
+            "name": "Launch DreamSeeker (runtime map)",
+            "preLaunchTask": "Build All (runtime map)",
+            "dmb": "${workspaceFolder}/${command:CurrentDMB}"
+        },
+        {
+            "type": "byond",
+            "request": "launch",
+            "name": "Launch DreamSeeker (quickstart)",
+            "preLaunchTask": "Build All (quickstart)",
+            "dmb": "${workspaceFolder}/${command:CurrentDMB}"
+        },
+        {
+            "type": "byond",
+            "request": "launch",
+            "name": "Launch DreamSeeker (testing)",
+            "preLaunchTask": "Build All (testing)",
+            "dmb": "${workspaceFolder}/${command:CurrentDMB}"
+        },
+        {
+            "type": "byond",
+            "request": "launch",
+            "name": "Launch DreamSeeker (runtime map + quickstart)",
+            "preLaunchTask": "Build All (runtime map + quickstart)",
+            "dmb": "${workspaceFolder}/${command:CurrentDMB}"
+        },
+        {
+            "type": "byond",
+            "request": "launch",
+            "name": "Launch DreamSeeker (runtime map + testing)",
+            "preLaunchTask": "Build All (runtime map + testing)",
+            "dmb": "${workspaceFolder}/${command:CurrentDMB}"
+        },
+        {
+            "type": "byond",
+            "request": "launch",
+            "name": "Launch DreamSeeker (quickstart + testing)",
+            "preLaunchTask": "Build All (quickstart + testing)",
+            "dmb": "${workspaceFolder}/${command:CurrentDMB}"
+        },
+        {
+            "type": "byond",
+            "request": "launch",
+            "name": "Launch DreamSeeker (runtime map + quickstart + testing)",
+            "preLaunchTask": "Build All (runtime map + quickstart + testing)",
+            "dmb": "${workspaceFolder}/${command:CurrentDMB}"
+        },
+        {
+            "type": "byond",
+            "request": "launch",
             "name": "Launch DreamDaemon",
             "preLaunchTask": "Build All",
+            "dmb": "${workspaceFolder}/${command:CurrentDMB}",
+            "dreamDaemon": true
+        },
+        {
+            "type": "byond",
+            "request": "launch",
+            "name": "Launch DreamDaemon (runtime map)",
+            "preLaunchTask": "Build All (runtime map)",
+            "dmb": "${workspaceFolder}/${command:CurrentDMB}",
+            "dreamDaemon": true
+        },
+        {
+            "type": "byond",
+            "request": "launch",
+            "name": "Launch DreamDaemon (quickstart)",
+            "preLaunchTask": "Build All (quickstart)",
+            "dmb": "${workspaceFolder}/${command:CurrentDMB}",
+            "dreamDaemon": true
+
+        },
+        {
+            "type": "byond",
+            "request": "launch",
+            "name": "Launch DreamDaemon (testing)",
+            "preLaunchTask": "Build All (testing)",
+            "dmb": "${workspaceFolder}/${command:CurrentDMB}",
+            "dreamDaemon": true
+        },
+        {
+            "type": "byond",
+            "request": "launch",
+            "name": "Launch DreamDaemon (runtime map + quickstart)",
+            "preLaunchTask": "Build All (runtime map + quickstart)",
+            "dmb": "${workspaceFolder}/${command:CurrentDMB}",
+            "dreamDaemon": true
+        },
+        {
+            "type": "byond",
+            "request": "launch",
+            "name": "Launch DreamDaemon (runtime map + testing)",
+            "preLaunchTask": "Build All (runtime map + testing)",
+            "dmb": "${workspaceFolder}/${command:CurrentDMB}",
+            "dreamDaemon": true
+        },
+        {
+            "type": "byond",
+            "request": "launch",
+            "name": "Launch DreamDaemon (quickstart + testing)",
+            "preLaunchTask": "Build All (quickstart + testing)",
+            "dmb": "${workspaceFolder}/${command:CurrentDMB}",
+            "dreamDaemon": true
+        },
+        {
+            "type": "byond",
+            "request": "launch",
+            "name": "Launch DreamDaemon (runtime map + quickstart + testing)",
+            "preLaunchTask": "Build All (runtime map + quickstart + testing)",
             "dmb": "${workspaceFolder}/${command:CurrentDMB}",
             "dreamDaemon": true
         }

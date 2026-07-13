@@ -1,6 +1,6 @@
 /client/proc/force_teleporter()
 	set name = "Force Teleporter"
-	set desc = "Force a teleporter to teleport"
+	set desc = "Force a teleporter to teleport."
 	set category = "Admin.Game"
 
 	var/list/datum/teleporter/available_teleporters = GLOB.teleporters

@@ -240,7 +240,7 @@
 	Phone.pixel_x = pixel_x
 	Phone.pixel_y = pixel_y
 	Phone.phone_category = "Vehicles"
-	Phone.phone_id = replacetext(Phone.phone_id, "\improper", "") // this has to be done because phone IDs need to be the same as their display name (\improper doesn't display, obviously)
+	Phone.phone_id = I.map_template.name
 
 	qdel(src)
 

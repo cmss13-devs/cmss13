@@ -20,6 +20,11 @@ GLOBAL_LIST_INIT(cm_vending_clothing_combat_correspondent, list(
 		list("Black Vest", 0, /obj/item/clothing/suit/storage/hazardvest/black, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 		list("Black Coat", 0, /obj/item/clothing/suit/storage/jacket/marine/reporter/black, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 		list("Green Coat", 0, /obj/item/clothing/suit/storage/jacket/marine/reporter/green, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
+		list("Green Jacket", 0, /obj/item/clothing/suit/storage/jacket/marine/correspondent, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
+		list("Blue Jacket", 0, /obj/item/clothing/suit/storage/jacket/marine/correspondent/blue, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
+		list("Tan Jacket", 0, /obj/item/clothing/suit/storage/jacket/marine/correspondent/tan, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
+		list("Brown Jacket", 0, /obj/item/clothing/suit/storage/jacket/marine/correspondent/brown, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
+
 
 		list("HELMET (CHOOSE 1)", 0, null, null, null),
 		list("Combat Correspondent's Helmet", 0, /obj/item/clothing/head/helmet/marine/reporter, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_RECOMMENDED),

@@ -1,12 +1,14 @@
 ///*****************************LV-522 Force Recon Survivors*******************************************************/
-//Nanu told me to put them here so they dont clutter up survivors.dm
+//Nanu told me to put them here so they don't clutter up survivors.dm
 /datum/equipment_preset/survivor/forecon
 	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag
 	role_comm_title = "FORECON"
 	minimap_background = "background_forecon"
 	job_title = JOB_SURVIVOR
+	faction = FACTION_MARINE
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
+	origin_override = ORIGIN_USCM
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
@@ -24,7 +26,7 @@
 	var/obj/item/clothing/under/marine/reconnaissance/uniform = new()
 	var/obj/item/clothing/accessory/storage/droppouch/pouch = new()
 	var/obj/item/clothing/accessory/ranks/marine/e5/pin = new()
-	var/obj/item/clothing/accessory/patch/patch_uscm = new()
+	var/obj/item/clothing/accessory/patch/uscmpatch/patch_uscm = new()
 	var/obj/item/clothing/accessory/patch/forecon/patch_forecon = new()
 	uniform.attach_accessory(new_human,pouch)
 	uniform.attach_accessory(new_human,patch_uscm)
@@ -188,7 +190,7 @@
 	var/obj/item/clothing/under/marine/reconnaissance/uniform = new()
 	var/obj/item/clothing/accessory/storage/droppouch/pouch = new()
 	var/obj/item/clothing/accessory/ranks/marine/e5/pin = new()
-	var/obj/item/clothing/accessory/patch/patch_uscm = new()
+	var/obj/item/clothing/accessory/patch/uscmpatch/patch_uscm = new()
 	var/obj/item/clothing/accessory/patch/forecon/patch_forecon = new()
 	uniform.attach_accessory(new_human,pouch)
 	uniform.attach_accessory(new_human,patch_uscm)
@@ -228,7 +230,7 @@
 	var/obj/item/clothing/under/marine/reconnaissance/uniform = new()
 	var/obj/item/clothing/accessory/storage/droppouch/pouch = new()
 	var/obj/item/clothing/accessory/ranks/marine/o1/pin = new()
-	var/obj/item/clothing/accessory/patch/patch_uscm = new()
+	var/obj/item/clothing/accessory/patch/uscmpatch/patch_uscm = new()
 	var/obj/item/clothing/accessory/patch/forecon/patch_forecon = new()
 	uniform.attach_accessory(new_human,pouch)
 	uniform.attach_accessory(new_human,patch_uscm)
@@ -252,7 +254,9 @@
 	idtype = /obj/item/card/id/gold
 	role_comm_title = "FORECON CO"
 	minimap_icon = "co"
-	minimap_background = "background_command"
+	minimap_background = "background_forecon"
+	faction = FACTION_MARINE
+	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)
@@ -274,23 +278,52 @@
 				sidearm = /obj/item/weapon/gun/revolver/mateba/cmateba
 				sidearmbelt = /obj/item/storage/belt/gun/mateba/cmateba
 				sidearmammo = /obj/item/ammo_magazine/revolver/mateba
-			if(CO_GUN_MATEBA_COUNCIL)
-				sidearm = /obj/item/weapon/gun/revolver/mateba/cmateba
-				sidearmbelt = /obj/item/storage/belt/gun/mateba/cmateba
+			if(CO_GUN_MATEBA_CLASSIC)
+				sidearm = /obj/item/weapon/gun/revolver/mateba/impact
+				sidearmbelt = /obj/item/storage/belt/gun/mateba
+				sidearmammo = /obj/item/ammo_magazine/revolver/mateba
+			if(CO_GUN_2006M)
+				sidearm = /obj/item/weapon/gun/revolver/mateba/mtr6m
+				sidearmbelt = /obj/item/storage/belt/gun/mateba/mtr6m
 				sidearmammo = /obj/item/ammo_magazine/revolver/mateba
 			if(CO_GUN_DEAGLE)
 				sidearm = /obj/item/weapon/gun/pistol/heavy/co
 				sidearmbelt = /obj/item/storage/belt/gun/m4a3
 				sidearmammo = /obj/item/ammo_magazine/pistol/heavy/super
-			if(CO_GUN_DEAGLE_COUNCIL)
-				sidearm = /obj/item/weapon/gun/pistol/heavy/co
+			if(CO_GUN_M1911C)
+				sidearm = /obj/item/weapon/gun/pistol/m1911/custom
 				sidearmbelt = /obj/item/storage/belt/gun/m4a3
+				sidearmammo = /obj/item/ammo_magazine/pistol/m1911
+			//Council variants
+			if(CO_GUN_MATEBA_COUNCIL)
+				sidearm = /obj/item/weapon/gun/revolver/mateba/silver
+				sidearmbelt = /obj/item/storage/belt/gun/mateba/council
+				sidearmammo = /obj/item/ammo_magazine/revolver/mateba
+			if(CO_GUN_MATEBA_COUNCIL_GOLDEN)
+				sidearm = /obj/item/weapon/gun/revolver/mateba/golden
+				sidearmbelt = /obj/item/storage/belt/gun/mateba/council
+				sidearmammo = /obj/item/ammo_magazine/revolver/mateba
+			if(CO_GUN_2006M_COUNCIL)
+				sidearm = /obj/item/weapon/gun/revolver/mateba/mtr6m/golden
+				sidearmbelt = /obj/item/storage/belt/gun/mateba/council
+				sidearmammo = /obj/item/ammo_magazine/revolver/mateba
+			if(CO_GUN_2006MB_COUNCIL)
+				sidearm = /obj/item/weapon/gun/revolver/mateba/mtr6m/golden/black_handle
+				sidearmbelt = /obj/item/storage/belt/gun/mateba/council
+				sidearmammo = /obj/item/ammo_magazine/revolver/mateba
+			if(CO_GUN_2006MS_COUNCIL)
+				sidearm = /obj/item/weapon/gun/revolver/mateba/mtr6m/silver
+				sidearmbelt = /obj/item/storage/belt/gun/mateba/council
+				sidearmammo = /obj/item/ammo_magazine/revolver/mateba
+			if(CO_GUN_DEAGLE_COUNCIL)
+				sidearm = /obj/item/weapon/gun/pistol/heavy/co/gold
+				sidearmbelt = /obj/item/storage/belt/gun/m4a3/black
 				sidearmammo = /obj/item/ammo_magazine/pistol/heavy/super
 
 	var/obj/item/clothing/under/marine/reconnaissance/uniform = new()
 	var/obj/item/clothing/accessory/storage/droppouch/pouch = new()
 	var/obj/item/clothing/accessory/ranks/marine/o4/pin = new()
-	var/obj/item/clothing/accessory/patch/patch_uscm = new()
+	var/obj/item/clothing/accessory/patch/uscmpatch/patch_uscm = new()
 	var/obj/item/clothing/accessory/patch/forecon/patch_forecon = new()
 	uniform.attach_accessory(new_human,pouch)
 	uniform.attach_accessory(new_human,patch_uscm)
@@ -304,7 +337,6 @@
 	new_human.equip_to_slot_or_del(new sidearmammo(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new sidearmammo(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new sidearm(new_human), WEAR_R_HAND)
-	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/cigarette/cigar(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/lighter/zippo/gold(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/bottle/davenport(new_human), WEAR_IN_BACK)
@@ -314,15 +346,17 @@
 /datum/equipment_preset/synth/survivor/forecon
 	name = "Survivor - Synthetic - FORECON Synth"
 	assignment = JOB_FORECON_SYN
+	faction = FACTION_MARINE
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	idtype = /obj/item/card/id/gold
+	origin_override = ORIGIN_USCM
 
 /datum/equipment_preset/synth/survivor/forecon/load_gear(mob/living/carbon/human/preset_human) //Bishop from Aliens
 	preset_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/engi, WEAR_BODY)
 	preset_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(preset_human), WEAR_BACK)
 	preset_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/synthetic, WEAR_IN_BACK)
 	preset_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/red/knife(preset_human), WEAR_FEET)
-	preset_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch(preset_human), WEAR_ACCESSORY)
+	preset_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/uscmpatch(preset_human), WEAR_ACCESSORY)
 	preset_human.equip_to_slot_or_del(new /obj/item/device/motiondetector(preset_human), WEAR_L_HAND)
 	preset_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular(preset_human), WEAR_R_HAND)
 	preset_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(preset_human), WEAR_R_STORE)

@@ -115,6 +115,8 @@ Administrative related.
 
 /datum/config_entry/flag/log_overwatch
 
+/datum/config_entry/flag/log_garble
+
 /datum/config_entry/flag/log_interact
 
 /datum/config_entry/flag/log_idmod
@@ -158,6 +160,9 @@ Administrative related.
 
 /datum/config_entry/string/ooc_color_maint
 	config_entry_value = "#00ffff"
+
+/datum/config_entry/string/ooc_color_subs
+	config_entry_value = "#8956FB"
 
 /datum/config_entry/string/ooc_color_default
 	config_entry_value = "#b82e00"
@@ -235,7 +240,7 @@ Administrative related.
 	protection = CONFIG_ENTRY_LOCKED
 
 /datum/config_entry/string/tgs3_commandline_path
-	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
+	protection = CONFIG_ENTRY_LOCKED|CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_SENSITIVE
 	config_entry_value = "C:\\Program Files (x86)\\TG Station Server\\TGCommandLine.exe"
 
 /datum/config_entry/number/minute_topic_limit
@@ -370,14 +375,14 @@ or your package manager
 The default value assumes youtube-dl is in your system PATH
 */
 /datum/config_entry/string/invoke_youtubedl
-	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
+	protection = CONFIG_ENTRY_LOCKED|CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_SENSITIVE
 
 /datum/config_entry/string/cobalt_base_api
-	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
+	protection = CONFIG_ENTRY_LOCKED|CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_SENSITIVE
 
 
 /datum/config_entry/string/cobalt_api_key
-	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
+	protection = CONFIG_ENTRY_LOCKED|CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_SENSITIVE
 
 /datum/config_entry/number/error_cooldown // The "cooldown" time for each occurrence of a unique error
 	config_entry_value = 600
@@ -575,15 +580,6 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 	default = 0
 	min_val = 0
 
-/datum/config_entry/string/bot_prefix
-	protection = CONFIG_ENTRY_LOCKED
-
-/datum/config_entry/string/bot_command
-	protection = CONFIG_ENTRY_LOCKED
-
-/datum/config_entry/number/certification_minutes
-	protection = CONFIG_ENTRY_LOCKED
-
 /datum/config_entry/number/topic_max_size
 	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
 
@@ -593,7 +589,7 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 /datum/config_entry/keyed_list/topic_tokens
 	key_mode = KEY_MODE_TEXT
 	value_mode = VALUE_MODE_TEXT
-	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED|CONFIG_ENTRY_SENSITIVE_KEY
 
 /datum/config_entry/keyed_list/topic_tokens/ValidateListEntry(key_name, key_value)
 	return key_value != "topic_token" && ..()
@@ -631,7 +627,7 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 
 /datum/config_entry/string/redis_connection
 	config_entry_value = "redis://127.0.0.1/"
-	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED|CONFIG_ENTRY_SENSITIVE
 
 /datum/config_entry/string/instance_name
 	config_entry_value = "game"
@@ -684,5 +680,75 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 
 /datum/config_entry/string/org
 
+/datum/config_entry/string/ipcheck_base
+	config_entry_value = "api.ipapi.is"
+
+/datum/config_entry/string/ipcheck_apikey
+
+/datum/config_entry/number/ipcheck_rating_bad
+	config_entry_value = 1
+	min_val = 0
+	max_val = 1
+
+/datum/config_entry/flag/ipcheck_reject_bad
+	config_entry_value = FALSE
+
+/datum/config_entry/flag/ipcheck_reject_rate_limited
+	config_entry_value = FALSE
+
+/datum/config_entry/flag/ipcheck_reject_unknown
+	config_entry_value = FALSE
+
+/datum/config_entry/number/ipcheck_rate_day
+	config_entry_value = 1000
+	min_val = 0
+
+/datum/config_entry/number/ipcheck_cache_length
+	config_entry_value = 7
+	min_val = 0
+
+/datum/config_entry/number/ipcheck_exempt_playtime_living
+	config_entry_value = 5
+	min_val = 0
+
+/datum/config_entry/string/ipcheck_fail_message
+	config_entry_value = "Please contact an Admin to whitelist you."
+
+/datum/config_entry/keyed_list/auth_urls
+	splitter = "|"
+	key_mode = KEY_MODE_TEXT_UNALTERED
+	value_mode = VALUE_MODE_TEXT
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+
 /datum/config_entry/string/twofactor_admins_url
 	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
+
+/datum/config_entry/string/sentry_endpoint
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED|CONFIG_ENTRY_SENSITIVE
+
+/datum/config_entry/string/sentry_dsn
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED|CONFIG_ENTRY_SENSITIVE
+
+/datum/config_entry/str_list/ignored_cids
+	protection = CONFIG_ENTRY_LOCKED
+
+/// Appended to CLIENT_VERB(showrevinfo)
+/datum/config_entry/string/code_modifications_message
+
+/datum/config_entry/string/banned_ckey_pattern
+	protection = CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/keyed_list/oidc_endpoint_to_type
+	protection = CONFIG_ENTRY_LOCKED
+	key_mode = KEY_MODE_TEXT_UNALTERED
+	value_mode = VALUE_MODE_TEXT
+
+/datum/config_entry/keyed_list/oidc_type_to_username
+	protection = CONFIG_ENTRY_LOCKED
+	key_mode = KEY_MODE_TEXT_UNALTERED
+	value_mode = VALUE_MODE_TEXT
+
+/datum/config_entry/keyed_list/oidc_type_to_ckey
+	protection = CONFIG_ENTRY_LOCKED
+	key_mode = KEY_MODE_TEXT_UNALTERED
+	value_mode = VALUE_MODE_TEXT

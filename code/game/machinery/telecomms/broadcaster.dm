@@ -132,6 +132,8 @@
 			if(!R)
 				continue
 			var/atom/loc = R.loc
+			if (!loc)
+				continue
 			if(R.receive_range(display_freq, level) > -1 && OBJECTS_CAN_REACH(loc, radio_loc))
 				radios += R
 
@@ -152,9 +154,9 @@
 	if(M)
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
-			if(skillcheck(H, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT))
+			if(skillcheck(H, SKILL_LEADERSHIP, SKILL_LEAD_SKILLED))
 				volume = max(volume, RADIO_VOLUME_CRITICAL)
-			else if(HAS_TRAIT(M, TRAIT_LEADERSHIP))
+			else if(HAS_TRAIT(M, TRAIT_LEADERSHIP) || HAS_TRAIT(M, TRAIT_ACTING_LEAD))
 				volume = max(volume, RADIO_VOLUME_IMPORTANT)
 
 			comm_title = H.comm_title //Set up [CO] and stuff after frequency

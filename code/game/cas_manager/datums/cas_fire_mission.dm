@@ -132,12 +132,12 @@
 	if(code_id == FIRE_MISSION_CODE_ERROR)
 		return "System error. Call Tech Support or create Fire Mission from scratch."
 	if(!istype(error_weapon))
-		return "Error or Fire Mission is outdated. Create Fire Mission from scratch if Error persists."
-	var/weapon_string = "[error_weapon.name] "
+		return "Error or Fire Mission is outdated. Create Fire Mission from scratch if error persists."
+	var/weapon_string = "[error_weapon.name]"
 	if(error_weapon.ammo_equipped)
-		weapon_string += "([error_weapon.ammo_equipped.ammo_count]/[error_weapon.ammo_equipped.max_ammo_count]) "
+		weapon_string += " ([error_weapon.ammo_equipped.ammo_count]/[error_weapon.ammo_equipped.max_ammo_count])"
 	if(error_weapon.ship_base)
-		weapon_string += "mounted on [error_weapon.ship_base.name] "
+		weapon_string += " mounted on [error_weapon.ship_base.name]"
 
 	if(code_id == FIRE_MISSION_BAD_COOLDOWN)
 		return "Weapon [weapon_string] requires interval of [error_weapon.ammo_equipped.fire_mission_delay] time units per shot."
@@ -145,19 +145,19 @@
 		// Change this to using weapon's when it is implemented
 		var/obj/effect/attach_point/weapon/AW = error_weapon.ship_base
 		if(!istype(AW))
-			. = "Internal error: [weapon_string] hardpoint invalid"
+			. = "Internal error: [weapon_string] hardpoint invalid."
 			CRASH("CASFM-CHECK-01: Weapon attached to invalid hardpoint")
 		var/list/allowed_offsets = AW.get_offsets()
 		if(!allowed_offsets)
-			. = "Internal error: [weapon_string] offsets invalid"
+			. = "Internal error: [weapon_string] offsets invalid."
 			CRASH("CASFM-CHECK-02: Weapon reported offsets invalid")
 		return "Weapon hardpoint of [weapon_string] only allows gimbal offset between [allowed_offsets["min"]] and [allowed_offsets["max"]]."
 	if(code_id == FIRE_MISSION_WEAPON_REMOVED)
-		return "Weapon [weapon_string] is no longer located on this dropship"
+		return "Weapon [weapon_string] is no longer located on this dropship."
 	if(code_id == FIRE_MISSION_WEAPON_UNUSABLE)
-		return "Weapon [weapon_string] is loaded with ammunition too dangerous to be used in Fire Mission"
+		return "Weapon [weapon_string] is loaded with ammunition too dangerous to be used in Fire Mission."
 	if(code_id == FIRE_MISSION_WEAPON_OUT_OF_AMMO)
-		return "Weapon [weapon_string] has not enough ammunition to complete this Fire Mission"
+		return "Weapon [weapon_string] has not enough ammunition to complete this Fire Mission."
 	return "Unknown Error"
 
 /datum/cas_fire_mission/proc/execute_firemission(obj/structure/machinery/computer/dropship_weapons/linked_console, turf/initial_turf, direction = NORTH, steps = 12, step_delay = 3, datum/cas_fire_envelope/envelope = null)

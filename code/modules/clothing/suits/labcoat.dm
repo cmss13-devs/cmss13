@@ -1,6 +1,6 @@
 /obj/item/clothing/suit/storage/labcoat
-	name = "labcoat"
-	desc = "A suit that protects against minor chemical spills."
+	name = "lab coat"
+	desc = "A suit that protects against minor chemical spills and biological hazards."
 	icon_state = "labcoat"
 	item_state = "labcoat" //Is this even used for anything?
 	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
@@ -52,13 +52,13 @@
 		/obj/item/device/motiondetector,
 
 	)
-	armor_melee = CLOTHING_ARMOR_NONE
-	armor_bullet = CLOTHING_ARMOR_NONE
-	armor_laser = CLOTHING_ARMOR_NONE
-	armor_energy = CLOTHING_ARMOR_NONE
-	armor_bomb = CLOTHING_ARMOR_NONE
-	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
-	armor_rad = CLOTHING_ARMOR_NONE
+	armor_melee = CLOTHING_ARMOR_VERYLOW //better than nekked
+	armor_bullet = CLOTHING_ARMOR_VERYLOW //better than nekked
+	armor_laser = CLOTHING_ARMOR_VERYLOW //better than nekked
+	armor_energy = CLOTHING_ARMOR_VERYLOW
+	armor_bomb = CLOTHING_ARMOR_VERYLOW
+	armor_bio =  CLOTHING_ARMOR_ULTRAHIGH
+	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	var/buttoned = TRUE
 	item_icons = list(
@@ -69,7 +69,7 @@
 
 
 /obj/item/clothing/suit/storage/labcoat/verb/toggle()
-	set name = "Toggle Labcoat Buttons"
+	set name = "Toggle Lab Coat Buttons"
 	set category = "Object"
 	set src in usr
 
@@ -85,97 +85,114 @@
 	update_clothing_icon()
 
 /obj/item/clothing/suit/storage/labcoat/red
-	name = "red labcoat"
-	desc = "A suit that protects against minor chemical spills. This one is red."
+	name = "red lab coat"
+	desc = "A suit that protects against minor chemical spills and biological hazards. This one is red."
 	icon_state = "red_labcoat"
 	item_state = "red_labcoat"
 
 /obj/item/clothing/suit/storage/labcoat/blue
-	name = "blue labcoat"
-	desc = "A suit that protects against minor chemical spills. This one is blue."
+	name = "blue lab coat"
+	desc = "A suit that protects against minor chemical spills and biological hazards. This one is blue."
 	icon_state = "blue_labcoat"
 	item_state = "blue_labcoat"
 
 /obj/item/clothing/suit/storage/labcoat/purple
-	name = "purple labcoat"
-	desc = "A suit that protects against minor chemical spills. This one is purple."
+	name = "purple lab coat"
+	desc = "A suit that protects against minor chemical spills and biological hazards. This one is purple."
 	icon_state = "purple_labcoat"
 	item_state = "purple_labcoat"
 
 /obj/item/clothing/suit/storage/labcoat/orange
-	name = "orange labcoat"
-	desc = "A suit that protects against minor chemical spills. This one is orange."
+	name = "orange lab coat"
+	desc = "A suit that protects against minor chemical spills and biological hazards. This one is orange."
 	icon_state = "orange_labcoat"
 	item_state = "orange_labcoat"
 
 /obj/item/clothing/suit/storage/labcoat/green
-	name = "green labcoat"
-	desc = "A suit that protects against minor chemical spills. This one is green."
+	name = "green lab coat"
+	desc = "A suit that protects against minor chemical spills and biological hazards. This one is green."
 	icon_state = "green_labcoat"
 	item_state = "green_labcoat"
 
 /obj/item/clothing/suit/storage/labcoat/mad
-	name = "The Mad's labcoat"
-	desc = "It makes you look capable of konking someone on the noggin and shooting them into space."
+	name = "The Mad's lab coat"
+	desc = "It makes you look capable of conking someone on the noggin and shooting them into space."
 	icon_state = "labgreen"
 	item_state = "labgreen"
 
-/obj/item/clothing/suit/storage/labcoat/genetics
-	name = "Geneticist labcoat"
-	desc = "A suit that protects against minor chemical spills. Has a blue stripe on the shoulder."
-	icon_state = "labcoat_gen"
-
 /obj/item/clothing/suit/storage/labcoat/chemist
-	name = "Chemist labcoat"
-	desc = "A suit that protects against minor chemical spills. Has an orange stripe on the shoulder."
+	name = "chemist's lab coat"
+	desc = "A suit that protects against minor chemical spills and biological hazards. Its shoulders are colored a fiery orange."
 	icon_state = "labcoat_chem"
 
-/obj/item/clothing/suit/storage/labcoat/virologist
-	name = "Virologist labcoat"
-	desc = "A suit that protects against minor chemical spills. Offers slightly more protection against biohazards than the standard model. Has a green stripe on the shoulder."
-	icon_state = "labcoat_vir"
-	armor_melee = CLOTHING_ARMOR_NONE
-	armor_bullet = CLOTHING_ARMOR_NONE
-	armor_laser = CLOTHING_ARMOR_NONE
-	armor_energy = CLOTHING_ARMOR_NONE
-	armor_bomb = CLOTHING_ARMOR_NONE
-	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
-	armor_rad = CLOTHING_ARMOR_NONE
-	armor_internaldamage = CLOTHING_ARMOR_LOW
-
 /obj/item/clothing/suit/storage/labcoat/science
-	name = "Scientist labcoat"
-	desc = "A suit that protects against minor chemical spills. Has a purple stripe on the shoulder."
-	icon_state = "labcoat_tox"
+	name = "scientist's lab coat"
+	desc = "A suit that protects against minor chemical spills and biological hazards. Its shoulders are colored electric purple."
+	icon_state = "labcoat_sci"
 
-/obj/item/clothing/suit/storage/labcoat/officer
-	name = "Chief Medical Officer's labcoat"
-	desc = "A green sleek long labcoat, designed to distinguish a higher ranking medical personnel. Fabric has a better protection against chemical hazards."
-	icon_state = "labcoatg"
-	item_state = "labcoatg"
-	armor_bio = CLOTHING_ARMOR_MEDIUM
+/obj/item/clothing/suit/storage/labcoat/virologist
+	name = "virologist's lab coat"
+	desc = "A suit that protects against minor chemical spills and biological hazards. Its shoulders are colored lime green."
+	icon_state = "labcoat_vir"
+
+/obj/item/clothing/suit/storage/labcoat/genetics
+	name = "geneticist's lab coat"
+	desc = "A suit that protects against minor chemical spills and biological hazards. Its shoulders are colored a cool, sky blue."
+	icon_state = "labcoat_gen"
 
 /obj/item/clothing/suit/storage/labcoat/researcher
-	name = "researcher's labcoat"
-	desc = "A high-quality labcoat, seemingly worn by scholars and researchers alike. It has a distinct leathery feel to it, and goads you towards adventure."
+	name = "researcher's lab coat"
+	desc = "A high-quality lab coat, seemingly worn by scholars and researchers alike. It has a distinct leathery feel to it, and goads you towards adventure."
+	icon_state = "sciencecoat_medium"
+	item_state = "sciencecoat_medium"
+
+/obj/item/clothing/suit/storage/labcoat/researcher/short
+	name = "short, brown researcher's lab coat"
+	desc = "A high-quality lab coat, seemingly worn by scholars and researchers alike. It has a distinct leathery feel to it, and goads you towards adventure. It is a little short."
 	icon_state = "sciencecoat"
 	item_state = "sciencecoat"
 
+/obj/item/clothing/suit/storage/labcoat/cmo
+	name = "chief medical officer's lab coat"
+	desc = "A long, green, sleek, and sturdy lab coat designed to distinguish a higher ranking medical personnel. The fabric provides extra protection against chemical and biological hazards."
+	icon_state = "labcoatg"
+	item_state = "labcoatg"
+	blood_overlay_type = "suit"
+
+	//I mean, it says it is sturdy.
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+
 /obj/item/clothing/suit/storage/labcoat/wy
-	name = "W-Y researcher's labcoat"
-	desc = "A high-quality corporate labcoat, seemingly worn by science consultants and researchers alike. Built using robust materials for engaging dangerous experiments."
+	name = "W-Y researcher's lab coat"
+	desc = "A high-quality corporate lab coat, seemingly worn by science consultants and researchers alike. Built using robust materials for engaging dangerous experiments."
 	icon_state = "wy_rc_labcoat"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/WY.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'
 	)
-	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_laser = CLOTHING_ARMOR_LOW
-	armor_energy = CLOTHING_ARMOR_LOW
+
+//No way will I allow official W-Y coats to be less durable than a snowsuit. - Puckaboo2
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+
+/obj/item/clothing/suit/storage/labcoat/wy/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/clothing/suit/chef/classic/medical
-	name = "medical's apron"
-	desc = "A basic and sterile white apron, good for surgical and, of course, other medical practices."
+	name = "medical apron"
+	desc = "A basic and sterile white apron, good for surgical and, of course, other medical practices. This one has a jade green cross on the front to match the medical bay's color scheme."
+	icon_state = "apron_medical"
+	armor_bio = CLOTHING_ARMOR_VERYLOW //not as much as a lab coat, but still better than nothing.
 
 /obj/item/clothing/suit/storage/snow_suit
 	name = "snow suit"
@@ -189,16 +206,17 @@
 	icon_state = "snowsuit"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
 	armor_laser = CLOTHING_ARMOR_LOW
 	armor_energy = CLOTHING_ARMOR_LOW
-	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_LOW
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
-	blood_overlay_type = "armor"
+	blood_overlay_type = "jacket"
 	siemens_coefficient = 0.7
 
 /obj/item/clothing/suit/storage/snow_suit/doctor
@@ -245,11 +263,12 @@
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
 	armor_laser = CLOTHING_ARMOR_LOW
 	armor_energy = CLOTHING_ARMOR_LOW
-	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_LOW
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	slowdown = SLOWDOWN_ARMOR_VERY_LIGHT
 	allowed = list(
 		/obj/item/weapon/gun,
 		/obj/item/tank/emergency_oxygen,
@@ -277,31 +296,36 @@
 
 /obj/item/clothing/suit/storage/snow_suit/survivor/parka
 	name = "Parent Parka"
-	desc = "A winter coat made to withstand the frigged cold weather of the arctic deserts. W-Y branded Parka"
+	desc = "A winter coat made to withstand the frigid cold weather of the arctic deserts. W-Y branded Parka."
 
 /obj/item/clothing/suit/storage/snow_suit/survivor/parka/red
 	name = "Security Parka"
 	icon_state = "redpark"
+	desc = "A winter coat made to withstand the frigid cold weather of the arctic deserts. These are 'security' red."
 
 /obj/item/clothing/suit/storage/snow_suit/survivor/parka/navy
 	name = "Navy Parka"
 	icon_state = "navypark"
+	desc = "A winter coat made to withstand the frigid cold weather of the arctic deserts. These are a dark, navy blue."
 
 /obj/item/clothing/suit/storage/snow_suit/survivor/parka/yellow
-	name = "yellow Parka"
+	name = "Yellow Parka"
 	icon_state = "yellowpark"
+	desc = "A winter coat made to withstand the frigid cold weather of the arctic deserts. These are dull yellow."
 
 /obj/item/clothing/suit/storage/snow_suit/survivor/parka/green
 	name = "Green Parka"
 	icon_state = "greenpark"
+	desc = "A winter coat made to withstand the frigid cold weather of the arctic deserts. These are a deep green."
 
 /obj/item/clothing/suit/storage/snow_suit/survivor/parka/purple
 	name = "Purple Parka"
 	icon_state = "purplepark"
+	desc = "A winter coat made to withstand the frigid cold weather of the arctic deserts. These are a rich purple."
 
 /obj/item/clothing/suit/storage/snow_suit/soviet
-	name = "soviet snowcoat"
-	desc = "A winter coat made in some desolate snowplanet. This wintercoat was made from the fur of local wildlife which donated their fur for the greater good of UPP!"
+	name = "soviet snow coat"
+	desc = "A winter coat made in some desolate snow planet. This winter coat was made from the fur of local wildlife which donated their fur for the greater good of UPP!"
 	icon_state = "sovietcoat"
 	item_state = "sovietcoat"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UPP.dmi'
@@ -311,7 +335,7 @@
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
 	armor_laser = CLOTHING_ARMOR_LOW
 	armor_energy = CLOTHING_ARMOR_LOW
-	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_LOW
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
@@ -346,6 +370,10 @@
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'
 	)
 
+/obj/item/clothing/suit/storage/snow_suit/liaison/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/clothing/suit/storage/snow_suit/liaison/modified
 	name = "modified liaison's winter coat"
 	desc = "A Weyland-Yutani winter coat. This one has been modified to holster guns and other objects. Only the best comfort and utility for the liaison surviving in a cold, hostile environment."
@@ -365,13 +393,20 @@
 	)
 
 /obj/item/clothing/suit/storage/labcoat/brown
-	icon_state = "labcoat_brown"
+	name = "brown lab coat"
+	desc = "A suit that protects against minor chemical spills and biological hazards. This one is brown."
+	icon_state = "sciencecoat"
 	item_state = "labcoat_brown"
 
 /obj/item/clothing/suit/storage/labcoat/short
+	name = "short lab coat"
+	desc = "A suit that protects against minor chemical spills and biological hazards. This one exposes the legs a little more."
 	icon_state = "labcoat_short"
 	item_state = "labcoat_short"
 
 /obj/item/clothing/suit/storage/labcoat/long
+	name = "long lab coat"
+	desc = "A suit that protects against minor chemical spills and biological hazards. This one drapes down quite low."
 	icon_state = "labcoat_long"
 	item_state = "labcoat_long"
+	blood_overlay_type = "suit"

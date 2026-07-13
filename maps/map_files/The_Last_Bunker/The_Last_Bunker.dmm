@@ -452,6 +452,19 @@
 /obj/structure/flora/wood/stick2,
 /turf/open/auto_turf/snow/layer2,
 /area/last_bunker/outdoors/eastern_cavern)
+"abF" = (
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 60
+	},
+/turf/open/floor/strata,
+/area/last_bunker/indoors/entry_zone/train)
+"abG" = (
+/obj/structure/machinery/colony_floodlight{
+	pixel_y = -16;
+	density = 0
+	},
+/turf/open/floor/shiva/radiator_tile,
+/area/last_bunker/indoors/entry_zone)
 "acY" = (
 /obj/structure/flora/bush/snow{
 	icon_state = "snowgrassgb_2"
@@ -5773,7 +5786,7 @@
 	pixel_x = -30
 	},
 /turf/open/floor/shiva/radiator_tile,
-/area/last_bunker/outdoors/eastern_cavern/no_light)
+/area/last_bunker/indoors/entry_zone)
 "hyH" = (
 /obj/structure/flora/bush/snow{
 	icon_state = "snowgrassgb_3"
@@ -71159,7 +71172,7 @@ ipT
 jvU
 jxn
 sQV
-qSG
+abF
 qSG
 lfS
 boN
@@ -75187,7 +75200,7 @@ yhL
 yhL
 yhL
 yhL
-esE
+abG
 hgi
 ybf
 epo

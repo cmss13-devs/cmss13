@@ -109,6 +109,11 @@
 #define LIMB_PRINTING_TIME 550
 #define LIMB_METAL_AMOUNT 125
 
+// Holocard defines
+#define HOLOCARD_ACCURACY_HANDHELD 0
+#define HOLOCARD_ACCURACY_MANUAL 1
+#define HOLOCARD_ACCURACY_BODYSCANNER 2 //! Bodyscanners will always be able to set the correct holotag
+
 // ORDERS
 #define COMMAND_ORDER_RANGE 7
 #define COMMAND_ORDER_COOLDOWN 800 // 1 minute 20 seconds

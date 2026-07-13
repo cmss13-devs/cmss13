@@ -265,7 +265,7 @@
 	. = ..()
 	if(istype(target_object, /obj/structure/barricade))
 		var/obj/structure/barricade/barricade = target_object
-		var/datum/effects/acid/acid_effect = locate() in barricade
+		var/datum/effects/acid/acid_effect = locate() in barricade.effects_list
 		if(!acid_effect)
 			barricade.acid_spray_act()
 

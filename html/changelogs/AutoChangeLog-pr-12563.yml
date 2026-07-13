@@ -1,0 +1,5 @@
+author: "NHC"
+delete-after: True
+changes:
+  - code_imp: "added a var to set if clothing removes undergarments overlays or not."
+  - bugfix: "Fixes Yautja Meshsuits removing undergarments"

@@ -35,7 +35,7 @@
 	unlimited_power = TRUE
 
 /area/last_bunker/oob/surface_light
-	base_lighting_alpha = 50
+	base_lighting_alpha = 35
 	soundscape_playlist = AMBIENCE_LASTBUNKER
 
 //Landing Zones
@@ -46,7 +46,7 @@
 	is_landing_zone = TRUE
 	minimap_color = MINIMAP_ICE
 	linked_lz = DROPSHIP_LZ1
-	base_lighting_alpha = 50
+	base_lighting_alpha = 35
 
 /area/last_bunker/landing_zone_2
 	name = "Surface Exterior - South - Landing Zone Two"
@@ -54,7 +54,7 @@
 	is_landing_zone = TRUE
 	minimap_color = MINIMAP_ICE
 	linked_lz = DROPSHIP_LZ2
-	base_lighting_alpha = 50
+	base_lighting_alpha = 35
 
 //Exterior Areas
 
@@ -64,7 +64,7 @@
 	name = "Surface Exterior"
 	icon_state = "green"
 	minimap_color = MINIMAP_SNOW
-	base_lighting_alpha = 50
+	base_lighting_alpha = 35
 
 /area/last_bunker/outdoors/surface_exterior/center
 	icon_state = "central"
@@ -101,13 +101,13 @@
 	name = "Eastern Cavern - Bunker Eastern Exterior"
 	icon_state = "central"
 	minimap_color = MINIMAP_SNOW
-	base_lighting_alpha = 40
+	base_lighting_alpha = 30
 
 /area/last_bunker/outdoors/eastern_cavern/mid_light
 	name = "Eastern Cavern - Bunker Eastern Exterior"
 	icon_state = "central"
 	minimap_color = MINIMAP_SNOW
-	base_lighting_alpha = 30
+	base_lighting_alpha = 25
 
 /area/last_bunker/outdoors/eastern_cavern/low_light
 	name = "Eastern Cavern - Bunker Eastern Exterior"
@@ -127,7 +127,7 @@
 	name = "Bunker Cavern - Roof"
 	icon_state = "central"
 	minimap_color = MINIMAP_SNOW
-	base_lighting_alpha = 50
+	base_lighting_alpha = 35
 
 /area/last_bunker/outdoors/cavern_external_access/central
 	name = "Bunker Cavern - Exposed Roof - Central"
@@ -234,7 +234,7 @@
 
 /area/last_bunker/indoors/cavern/south_entrance
 	name = "Bunker Cavern - Tram/Bunker Cavern - South"
-	base_lighting_alpha = 50
+	base_lighting_alpha = 35
 
 /area/last_bunker/indoors/cavern/south_entrance/low_light
 	base_lighting_alpha = 20
@@ -244,7 +244,7 @@
 
 /area/last_bunker/indoors/cavern/north_entrance
 	name = "Bunker Cavern - Tram/Bunker Cavern - North"
-	base_lighting_alpha = 50
+	base_lighting_alpha = 35
 
 /area/last_bunker/indoors/cavern/north_entrance/low_light
 	base_lighting_alpha = 20

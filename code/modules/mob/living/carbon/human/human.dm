@@ -1973,13 +1973,6 @@
 		new_player.mind.transfer_to(target, TRUE)
 		new_player.mind.setup_human_stats()
 
-	if(SSticker.intro_sequence)
-		if(is_late_join && !target.client.prefs.latejoin_cryo_intro && ROUND_TIME > 1 MINUTES)
-			return
-		else
-			addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living/carbon/human, play_opening_sequence)), 2)
-			target.Root(1) // prevents the player from moving/exiting pod before opening sequence starts
-
 	target.sec_hud_set_ID()
 	target.hud_set_squad()
 
@@ -1989,6 +1982,13 @@
 
 	qdel(new_player)
 
+	if(SSticker.intro_sequence)
+		if(is_late_join && !target.client.prefs.latejoin_cryo_intro && ROUND_TIME > 1 MINUTES)
+			return
+		else
+			addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living/carbon/human, play_opening_sequence)), 2)
+			target.Root(1) // prevents the player from moving/exiting pod before opening sequence starts
+
 /mob/living/carbon/human/proc/play_opening_sequence()
 	if(loc && (istype(loc, /obj/structure/machinery/cryopod)))
 		if(ishuman_strict(src))
@@ -1997,7 +1997,7 @@
 			addtimer(CALLBACK(src, PROC_REF(play_manifest)), 13 SECONDS)
 			overlay_fullscreen_timer(13 SECONDS, 10, "roundstart1", /atom/movable/screen/fullscreen/black)
 			overlay_fullscreen_timer(13 SECONDS, 10, "roundstartcrt1", /atom/movable/screen/fullscreen/crt)
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), src.client, 'sound/effects/cryo_intro.ogg', src, 90), 12 SECONDS)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), client, 'sound/effects/cryo_intro.ogg', src, 90), 12 SECONDS)
 
 /mob/living/carbon/human/proc/play_manifest()
 	var/human_manifest
@@ -2047,8 +2047,8 @@
 	overlay_fullscreen_timer(time_to_remove, 10, "roundstart2", /atom/movable/screen/fullscreen/black)
 	overlay_fullscreen_timer(time_to_remove, 10, "roundstartcrt2", /atom/movable/screen/fullscreen/crt)
 	overlay_fullscreen_timer(time_to_remove + 2 SECONDS, 20, "roundstart_fade", /atom/movable/screen/fullscreen/spawning_in)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), src.client, 'sound/effects/cryo_beep.ogg', src, 80), time_to_remove - 1 SECONDS)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), src.client, 'sound/effects/cryo_opening.ogg', src, 80), time_to_remove)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), client, 'sound/effects/cryo_beep.ogg', src, 80), time_to_remove - 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), client, 'sound/effects/cryo_opening.ogg', src, 80), time_to_remove)
 	Sleeping((time_to_remove - 4 SECONDS)/10)
 
 	play_screen_text("<u>[SSmapping.configs[SHIP_MAP].map_name]<br></u>" + "[platoon_name]<br>" + "[squad_name] <br><br>" + human_manifest, alert_type)

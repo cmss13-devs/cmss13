@@ -78,6 +78,11 @@
 "aal" = (
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/south_west)
+"aam" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/device/binoculars/range/designator,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/indoors/engineering/ground)
 "aan" = (
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
@@ -65037,7 +65042,6 @@
 /area/tyrargo/underground/mall)
 "dJE" = (
 /obj/effect/decal/cleanable/blood/drip,
-/obj/item/storage/backpack/marine/satchel/rto,
 /turf/open/floor/corsat,
 /area/tyrargo/underground/mall)
 "dJF" = (
@@ -67842,6 +67846,7 @@
 "dZR" = (
 /obj/structure/surface/table/almayer,
 /obj/item/trash/uscm_mre,
+/obj/item/weapon/gun/flamer/m240,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/colony_streets/west)
 "dZS" = (
@@ -88725,10 +88730,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts_road/east)
-"fkB" = (
-/obj/item/weapon/gun/flamer/m240,
-/turf/open/asphalt/cement/cement12,
-/area/tyrargo/outdoors/colony_streets/north_east)
 "fkC" = (
 /obj/item/prop/colony/used_flare,
 /obj/effect/decal/grass_overlay/grass1/dark{
@@ -93192,7 +93193,7 @@
 	color = "#EBD9B7"
 	},
 /obj/effect/decal/hybrisa/road/roadmiddle,
-/obj/item/storage/backpack/molle/backpack/army,
+/obj/item/storage/backpack/marine/satchel/rto,
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "odK" = (
@@ -95413,6 +95414,7 @@
 	pixel_x = 35
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/gun/flamer/m240,
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/tyrargo/indoors/comms/ground)
 "sNt" = (
@@ -168680,7 +168682,7 @@ cnH
 cnj
 abR
 ayb
-cnH
+aam
 abF
 abw
 aby
@@ -179698,7 +179700,7 @@ csS
 ctm
 azA
 dpr
-fkB
+cse
 dpK
 dmJ
 dmI

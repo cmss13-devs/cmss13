@@ -3002,10 +3002,6 @@
 /obj/effect/sentry_landmark/lz_1/bottom_right,
 /turf/open/auto_turf/snow/layer0,
 /area/last_bunker/landing_zone_1)
-"dKV" = (
-/turf/open/floor/dark,
-/turf/closed/wall/hybrisa/spaceport/unmeltable,
-/area/last_bunker/oob)
 "dLb" = (
 /obj/structure/flora/wood/stick1,
 /turf/open/auto_turf/snow/layer2,
@@ -60190,7 +60186,7 @@ sao
 sao
 sao
 sao
-dKV
+nWl
 mUi
 ixm
 nXi
@@ -60392,7 +60388,7 @@ sao
 sao
 sao
 sao
-dKV
+nWl
 xab
 kVl
 oOa
@@ -60594,7 +60590,7 @@ sao
 sao
 qgw
 owX
-dKV
+nWl
 esH
 uJc
 ldp

@@ -727,7 +727,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 
 		var/sig_result = SEND_SIGNAL(ignited_morb, COMSIG_LIVING_FLAMER_FLAMED, tied_reagent)
 
-		if(!(sig_result & COMPONENT_NO_IGNITE))
+		if(!(sig_result & COMPONENT_NO_IGNITE) && !HAS_TRAIT(ignited_morb, TRAIT_ABILITY_POUNCE))
 			switch(fire_variant)
 				if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire, super easy to pat out. 50 duration -> 10 stacks (1 pat/resist)
 					ignited_morb.TryIgniteMob(floor(tied_reagent.durationfire / 5), tied_reagent)
@@ -814,7 +814,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 			xeno_target.emote("roar")
 		xeno_target.plasma_stored = xeno_target.plasma_max
 
-	if(!(sig_result & COMPONENT_NO_IGNITE) && burn_damage)
+	if(!(sig_result & COMPONENT_NO_IGNITE) && !HAS_TRAIT(target, TRAIT_ABILITY_POUNCE) && burn_damage)
 		switch(fire_variant)
 			if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire, super easy to pat out. 50 duration -> 10 stacks (1 pat/resist)
 				target.TryIgniteMob(floor(tied_reagent.durationfire / 5), tied_reagent)
@@ -840,8 +840,13 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 		if(FIRE_VARIANT_TYPE_B)
 			if(isxeno(target))
 				var/mob/living/carbon/xenomorph/xeno_target = target
-				xeno_target.armor_deflection?(variant_burn_msg=" We feel the flames weakening our exoskeleton!"):(variant_burn_msg=" You feel the flaming chemicals eating into your body!")
-	to_chat(target, SPAN_DANGER("You are burned![variant_burn_msg?"[variant_burn_msg]":""]"))
+				if(!HAS_TRAIT(target, TRAIT_ABILITY_POUNCE))
+					xeno_target.armor_deflection?(variant_burn_msg=" We feel the flames weakening our exoskeleton!"):(variant_burn_msg=" You feel the flaming chemicals eating into your body!")
+	if(!HAS_TRAIT(target, TRAIT_ABILITY_POUNCE))
+		to_chat(target, SPAN_DANGER("You are burned![variant_burn_msg?"[variant_burn_msg]":""]"))
+	else
+		if(!prob(75)) // It spam like crazy, it even can lag client.
+			to_chat(target, SPAN_DANGER("We got burned from flames below!"))
 	target.updatehealth()
 
 /obj/flamer_fire/proc/update_flame()

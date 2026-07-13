@@ -14496,7 +14496,7 @@
 /obj/structure/surface/table/almayer{
 	color = "#848484"
 	},
-/obj/item/tool/kitchen/utensil/pspoon,
+/obj/item/tool/kitchen/utensil/spoon/plastic,
 /obj/item/reagent_container/food/condiment/saltshaker{
 	pixel_x = -11;
 	pixel_y = 12
@@ -14550,7 +14550,7 @@
 	color = "#848484"
 	},
 /obj/item/trash/plate,
-/obj/item/tool/kitchen/utensil/pknife,
+/obj/item/tool/kitchen/utensil/knife/plastic,
 /turf/open/floor/strata/floor3,
 /area/last_bunker/indoors/sustainment_zone)
 "sTj" = (

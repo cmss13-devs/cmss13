@@ -21,8 +21,9 @@
 		if (obj_in_area.anchored)
 			continue
 
-		var/obj/structure/window/framed/decompressible/window = obj_in_area
-		// TODO: Handle decompression shutters
+		if (istype(obj_in_area, /obj/structure/machinery/door/poddoor/shutters/decompression))
+			var/obj/structure/machinery/door/poddoor/shutters/decompression/pressure_shutters = obj_in_area
+			pressure_shutters.handle_decompression()
 
 		// Throw everything not bolted down towards the breach location
 		obj_in_area.throw_atom(breach_location, range = 8, speed = SPEED_VERY_FAST, thrower = src, launch_type = HIGH_LAUNCH)

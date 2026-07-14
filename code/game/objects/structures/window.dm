@@ -576,25 +576,27 @@
 
 // Decompression windows
 /obj/structure/window/framed/decompressible
-	var/obj/structure/machinery/door/linked_shutter = null
+	desc = "A glass window that has a view out into the great beyond."
+	not_deconstructable = TRUE // Why do we still have "not_" booleans?
 
 /obj/structure/window/framed/decompressible/Initialize()
 	. = ..()
 
-	var/turf/src_turf = get_turf(src)
-	for (var/obj/structure/machinery/door/shutter in src_turf)
-		linked_shutter = shutter
-		if (shutter != null)
-			log_mapping("A decompression window had multiple potential targets for its associated shutter!")
-	if (linked_shutter == null)
-		log_mapping("A decompression window was created without any associated shutter. Did you mean to use a regular window?")
+	// Update the description if a shutter has been placed on top of it in mapping
+	for (var/obj/structure/machinery/door/shutter in get_turf(src))
+		desc += " It has an emergency shutter that should close in the event of an atmospheric breach."
 
-/// Handles what the window does when the area is decompressed.
-/obj/structure/window/framed/decompressible/handle_decompression()
-	if (!linked_shutter)
-		return
+	var/area/decompressible/area_decompressible = get_area(src)
+	if (!area_decompressible)
+		log_mapping("A decompression shutter ([src]) is placed in an area that is not a subtype of area/decompressible. Did you mean to use a regular window?")
 
-	linked_shutter.close()
+/obj/structure/window/framed/decompressible/deconstruct(disassembled = TRUE)
+	. = ..()
+
+	// If this window is destroyed for whatever reason, trigger decompression procs
+	var/area/decompressible/area_decompressible = get_area(src)
+	if (area_decompressible != null)
+		area_decompressible.decompress()
 
 //Almayer windows
 

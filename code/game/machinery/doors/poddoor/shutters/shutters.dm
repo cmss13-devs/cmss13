@@ -257,4 +257,9 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer/cl/quarter/window
 	id = "cl_quarter_windows"
 
-/obj/structure/machinery/door/poddoor/shutters/atmos_shutter
+/obj/structure/machinery/door/poddoor/shutters/decompression
+	name = "pressure shutters"
+	desc = "A set of shutters designed to automatically close when an atmospheric breach is detected."
+
+/obj/structure/machinery/door/poddoor/shutters/decompression/proc/handle_decompression()
+	addtimer(CALLBACK(src, PROC_REF(close)), 1 SECONDS)

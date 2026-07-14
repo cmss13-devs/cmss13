@@ -405,18 +405,18 @@
 		include_link = FALSE
 
 	if(show_username && username && username != key)
-		. += "[username] ([key])"
+		. += "[username] ([logging ? ckey : key])"
 	else if(ckey && logging)
 		. += ckey
 	else if(key)
 		. += key
+	else
+		. += "*no_key*" // No spaces here to be loosely format-compatible with ckeys
 
 	if(include_link)
-		if(C) . += "</a>"
-		else . += "</a> (DC)" // This could be displayed even without a link, here for backwards compat
-
-	else
-		. += "*nokey*" // No spaces here to be format-compatible with ckeys
+		. += "</a>"
+	if(!C)
+		. += " (DC)"
 
 	if(include_name && M)
 		var/name

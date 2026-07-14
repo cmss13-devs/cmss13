@@ -91,7 +91,7 @@
 	// AGAIN BECAUSE SOMETHING COULD'VE ACIDED THE PLACE
 	for(var/obj/effect/xenomorph/acid/acid in turf)
 		if(acid_type == acid.type && acid.acid_t == affected_atom)
-			to_chat(src, SPAN_WARNING("[acid] is already drenched in acid."))
+			to_chat(src, SPAN_WARNING("[affected_atom] is already drenched in acid."))
 			return
 
 	if(!check_state())

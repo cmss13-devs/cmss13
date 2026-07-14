@@ -360,6 +360,40 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				leader_count++
 				marine_count--
 
+	for(var/obj/structure/overwatch_camera_tripod/tripod_camera as anything in GLOB.deployed_tripod_cameras) // add cameras to list o' marines
+		if(current_squad && current_squad.name != "Root")
+			if(!tripod_camera.squad || tripod_camera.squad != current_squad) // tldr: show cameras in root squad if placed by non-squad marines
+				continue
+		if(!tripod_camera.camera || !tripod_camera.camera.can_use()) // skip broken (code) or damaged (in-game) cameras
+			continue // ToDO: There should be an error log if camera is missing camera comp.
+		if(!tripod_camera.loc) // skip null location cameras
+			continue // ToDO: Error Log if camera has no LOC
+		var/turf/camera_turf = get_turf(tripod_camera)
+		if(!camera_turf)
+			continue // ToDO: Error Log if camera has no turf.
+		switch(z_hidden)
+			if(HIDE_ALMAYER)
+				if(is_mainship_level(camera_turf.z))
+					continue
+			if(HIDE_GROUND)
+				if(is_ground_level(camera_turf.z))
+					continue
+		var/area/camera_area = get_area(tripod_camera)
+		var/camera_area_name = camera_area ? sanitize_area(camera_area.name) : "Unknown"
+		var/list/camera_data = list(
+			"name" = tripod_camera.label,
+			"state" = "Active",
+			"has_helmet" = TRUE, // can't click the button in OW if set to false
+			"role" = "Tripod Camera",
+			"acting_sl" = "", // not sure if i need to null these or not
+			"fteam" = "",
+			"distance" = "N/A",
+			"area_name" = camera_area_name,
+			"ref" = REF(tripod_camera),
+			"rank" = "",
+		)
+		data["marines"] += list(camera_data)
+
 	data["total_deployed"] = leader_count + ftl_count + spec_count + medic_count + engi_count + smart_count + marine_count
 	data["living_count"] = leaders_alive + ftl_alive + spec_alive + medic_alive + engi_alive + smart_alive + marines_alive
 
@@ -479,6 +513,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 /obj/structure/machinery/computer/overwatch/ui_data(mob/user)
 	var/list/data = list()
 
+	data = pack_radio_data()
 	data["theme"] = ui_theme
 
 	if(!current_squad)
@@ -526,6 +561,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	var/list/data = list()
 
 	data["theme"] = ui_theme
+
+	data = pack_radio_data()
 
 	if(!current_squad)
 		data["squad_list"] = list()
@@ -785,47 +822,62 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				return
 			if(!params["target_ref"])
 				return
-			if(current_squad)
-				var/mob/living/carbon/human/cam_target = locate(params["target_ref"])
+			if(!current_squad)
+				return
 
-				if(!istype(cam_target))
-					return
+			var/atom/target_ref = locate(params["target_ref"])
+			var/obj/structure/machinery/camera/new_cam = null
+			var/obj/item/new_holder = null
+			var/atom/cam_target = null
 
-				var/obj/item/new_holder = cam_target.get_camera_holder()
-				var/obj/structure/machinery/camera/new_cam
+			if(ishuman(target_ref)) // not strict since synths can be placed in OW squads
+				var/mob/living/carbon/human/Human = target_ref
+				cam_target = Human
+				new_holder = Human.get_camera_holder()
 				if(new_holder)
 					new_cam = new_holder.get_camera()
-				if(user.interactee != src) //if we multitasking
-					user.set_interaction(src)
-					if(cam == new_cam) //if we switch to a console that is already watching this cam
-						return
-				if(!new_cam || !new_cam.can_use())
-					to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Searching for camera. No camera found for this marine! Tell your squad to put their cameras on!")]")
-				else if(cam && cam == new_cam)//click the camera you're watching a second time to stop watching.
-					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Stopping camera view of [cam_target].")]")
-					for(var/datum/weakref/user_ref in concurrent_users)
-						var/mob/concurrent = user_ref.resolve()
-						if(!concurrent)
-							continue
-						stop_watching_camera(concurrent)
+			else if(istype(target_ref, /obj/structure/overwatch_camera_tripod))
+				var/obj/structure/overwatch_camera_tripod/tripod_camera = target_ref
+				if(tripod_camera.camera)
+					new_cam = tripod_camera.camera
+					cam_target = tripod_camera
+			else
+				to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Invalid target.")]")
+				return
+
+			if(user.interactee != src) //if we multitasking
+				user.set_interaction(src)
+				if(cam == new_cam) //if we switch to a console that is already watching this cam
+					return
+			if(!new_cam || !new_cam.can_use())
+				to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Searching for camera. No camera found for this target!")]")
+			else if(cam && cam == new_cam)//click the camera you're watching a second time to stop watching.
+				visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Stopping camera view.")]")
+				for(var/datum/weakref/user_ref in concurrent_users)
+					var/mob/concurrent = user_ref.resolve()
+					if(!concurrent)
+						continue
+					stop_watching_camera(concurrent)
+					concurrent.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
+				disconnect_holder()
+				cam = null
+			else if(user.client.view != GLOB.world_view_size)
+				to_chat(user, SPAN_WARNING("You're too busy peering through binoculars."))
+			else
+				for(var/datum/weakref/user_ref in concurrent_users)
+					var/mob/concurrent = user_ref.resolve()
+					if(!concurrent)
+						continue
+					if(cam)
 						concurrent.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
-					disconnect_holder()
-					cam = null
-				else if(user.client.view != GLOB.world_view_size)
-					to_chat(user, SPAN_WARNING("You're too busy peering through binoculars."))
-				else
-					for(var/datum/weakref/user_ref in concurrent_users)
-						var/mob/concurrent = user_ref.resolve()
-						if(!concurrent)
-							continue
-						if(cam)
-							concurrent.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
-						start_watching_camera(concurrent, new_cam)
+					start_watching_camera(concurrent, new_cam)
+					if(cam_target)
 						set_onscreen_text(concurrent, cam_target)
-						concurrent.RegisterSignal(new_cam, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/mob, reset_observer_view_on_deletion))
-					if(camera_holder)
-						disconnect_holder()
-					cam = new_cam
+					concurrent.RegisterSignal(new_cam, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/mob, reset_observer_view_on_deletion))
+				if(camera_holder)
+					disconnect_holder()
+				cam = new_cam
+				if(new_holder)
 					connect_holder(new_holder)
 
 		if("change_operator")
@@ -1513,10 +1565,17 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	plane_controller.add_filter("overwatch_overlay5", 7, layering_filter(x = 480, y = 0, color=overlay_color, icon = overlay_icon, blend_mode = BLEND_INSET_OVERLAY))
 	plane_controller.add_filter("overwatch_overlay6", 8, layering_filter(x = 480, y = 480, color=overlay_color, icon = overlay_icon, blend_mode = BLEND_INSET_OVERLAY))
 
+	RegisterSignal(watcher.client, COMSIG_CLIENT_RESET_VIEW, PROC_REF(clear_overwatch_overlay), TRUE)
+
 /obj/structure/machinery/computer/overwatch/proc/stop_watching_camera(mob/watcher, atom/target)
-	watcher.reset_view(null)
-	set_onscreen_text(watcher, null)
-	var/atom/movable/plane_master_controller/non_master/plane_controller = watcher.hud_used.plane_master_controllers[PLANE_MASTERS_NON_MASTER]
+	watcher.reset_view(null) // This will call the below proc via the above registered signal
+	//Why so complicated? Many things may reset our view (resisting being the most common one)
+
+/obj/structure/machinery/computer/overwatch/proc/clear_overwatch_overlay(client/watcher)
+	SIGNAL_HANDLER
+	UnregisterSignal(watcher, COMSIG_CLIENT_RESET_VIEW)
+	set_onscreen_text(watcher.mob, null)
+	var/atom/movable/plane_master_controller/non_master/plane_controller = watcher.mob.hud_used.plane_master_controllers[PLANE_MASTERS_NON_MASTER]
 	if(!plane_controller)
 		return
 
@@ -1528,6 +1587,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	plane_controller.remove_filter("overwatch_overlay4")
 	plane_controller.remove_filter("overwatch_overlay5")
 	plane_controller.remove_filter("overwatch_overlay6")
+
 
 /obj/structure/machinery/computer/overwatch/proc/set_onscreen_text(mob/watcher, atom/target)
 	if(target == null)
@@ -1568,6 +1628,15 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		var/living_part = "<span class='langchat' style='color: [health_color]'>[health_status]</span>"
 
 		watcher.hud_used.overwatch_text.maptext = name_part + location_part + job_part + living_part
+
+	else if(istype(target, /obj/structure/overwatch_camera_tripod)) // on-screen text - in theory you can't click on a downed camera
+		var/obj/structure/overwatch_camera_tripod/tripod = target
+		var/area/current_area = get_area(tripod)
+		var/area_name = current_area ? sanitize_area(current_area.name) : "Unknown"
+		var/name_part = "<span class='langchat langchat_yell'>[tripod.label]</span><br>"
+		var/location_part = "<span class='langchat' style='font-size: 7px;'>[area_name]</span><br>"
+		var/job_part = "<span class='langchat' style='font-size: 6px;'>Tripod Camera</span>"
+		watcher.hud_used.overwatch_text.maptext = name_part + location_part + job_part
 
 /obj/structure/machinery/computer/overwatch/almayer
 	density = FALSE
@@ -1675,6 +1744,32 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 /obj/structure/supply_drop/upp4
 	icon_state = "deltadrop"
 	squad = SQUAD_UPP_4
+
+/obj/structure/machinery/computer/overwatch/proc/get_radio_clarity()
+	var/ground_z = length(SSmapping.levels_by_trait(ZTRAIT_GROUND)) ? SSmapping.levels_by_trait(ZTRAIT_GROUND)[1] : null
+	var/current_clarity
+	if(ground_z && (ground_z in SSradio.get_available_tcomm_zs(COMM_FREQ)))
+		return 100
+	if(SSradio.faction_coms_clarity && SSradio.faction_coms_clarity[faction])
+		current_clarity = SSradio.faction_coms_clarity[faction]
+		if(SSradio.faction_coms_codes && length(SSradio.faction_coms_codes[faction]))
+			return current_clarity
+	return 15
+
+/obj/structure/machinery/computer/overwatch/proc/pack_radio_data()
+	var/list/clarity_data = list ()
+	var/clarity = get_radio_clarity()
+	clarity_data["radio_clarity"] = clarity
+	if(clarity >= 80)
+		clarity_data["clarity_color"] = "good"
+		clarity_data["clarity_status"] = "STABLE"
+	else if(clarity >= 45)
+		clarity_data["clarity_color"] = "average"
+		clarity_data["clarity_status"] = "DEGRADED"
+	else
+		clarity_data["clarity_color"] = "bad"
+		clarity_data["clarity_status"] = "CRITICAL BLACKOUT"
+	return clarity_data
 
 #undef HIDE_ALMAYER
 #undef HIDE_GROUND

@@ -67,5 +67,8 @@ map tyrargo_rift
 	minplayers 100
 endmap
 
+map white_antre_research_facility
+endmap
+
 map whiskey_outpost_v2
 endmap

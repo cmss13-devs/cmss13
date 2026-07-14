@@ -1083,6 +1083,9 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 60
+	},
 /turf/open/floor/plating,
 /area/last_bunker/indoors/entry_zone)
 "adp" = (
@@ -1179,6 +1182,12 @@
 	},
 /turf/open/floor/prison/darkbrown2/north,
 /area/last_bunker/indoors/entry_zone)
+"adA" = (
+/turf/open/auto_turf/sand_white/layer0,
+/area/last_bunker/indoors/entry_zone/power)
+"adB" = (
+/turf/open/auto_turf/shale/layer2/weedable,
+/area/last_bunker/indoors/entry_zone/power)
 "adC" = (
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3,
 /turf/closed/wall/hybrisa/colony,
@@ -1411,103 +1420,11 @@
 /obj/structure/machinery/floodlight/landing,
 /turf/open/auto_turf/snow/layer1,
 /area/last_bunker/landing_zone_1)
-"aed" = (
-/obj/structure/bed/chair/comfy/hybrisa/brown{
-	pixel_y = 10
-	},
-/turf/open/floor/hybrisa/metal/bluemetal1/north,
-/area/last_bunker/oob)
-"aee" = (
-/obj/structure/bed/chair/comfy/hybrisa/brown{
-	pixel_y = 10
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/hybrisa/metal/bluemetal1/north,
-/area/last_bunker/oob)
-"aef" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/hybrisa/metal/bluemetalcorner/east,
-/area/last_bunker/oob)
 "aeg" = (
 /obj/structure/pipes/vents/pump,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/floor_plate,
 /area/last_bunker/indoors/residential_zone)
-"aeh" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison,
-/area/last_bunker/oob)
-"aei" = (
-/obj/effect/decal/cleanable/generic{
-	color = "#5d524b";
-	alpha = 155
-	},
-/turf/open/floor/prison/floor_plate,
-/area/last_bunker/oob)
-"aej" = (
-/turf/open/floor/prison/floor_plate,
-/area/last_bunker/oob)
-"aek" = (
-/turf/open/floor/prison,
-/area/last_bunker/oob)
-"ael" = (
-/turf/open/floor/hybrisa/metal/bluemetalcorner/north,
-/area/last_bunker/oob)
-"aem" = (
-/obj/structure/sign/poster/corporate{
-	pixel_y = 32
-	},
-/turf/open/floor/hybrisa/metal/bluemetal1/north,
-/area/last_bunker/oob)
-"aen" = (
-/obj/structure/prop/hybrisa/misc/redmeter{
-	pixel_y = 32
-	},
-/turf/open/floor/hybrisa/metal/bluemetal1/north,
-/area/last_bunker/oob)
-"aeo" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/hybrisa/metal/bluemetal1/north,
-/area/last_bunker/oob)
-"aep" = (
-/turf/open/floor/hybrisa/metal/bluemetalcorner/east,
-/area/last_bunker/oob)
-"aeq" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/tool/warning_cone{
-	pixel_x = 4;
-	pixel_y = 18
-	},
-/turf/open/floor/prison,
-/area/last_bunker/oob)
-"aer" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/tool/warning_cone{
-	pixel_x = 5;
-	pixel_y = 19
-	},
-/turf/open/floor/prison,
-/area/last_bunker/oob)
-"aes" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/hybrisa/metal/bluemetal1/northwest,
-/area/last_bunker/oob)
-"aet" = (
-/obj/structure/flora/pottedplant{
-	desc = "It is made of Fiberbush(tm). It contains asbestos. Studies say that greenery calms the mind due to some sort evolved mechanism in the brain. This plant is not calming.";
-	icon_state = "pottedplant_21";
-	layer = 3.1;
-	name = "synthethic potted plant";
-	pixel_x = 7;
-	pixel_y = 19
-	},
-/turf/open/floor/hybrisa/metal/bluemetal1/northeast,
-/area/last_bunker/oob)
 "aeu" = (
 /obj/structure/prop/structure_lattice{
 	dir = 1;
@@ -1520,247 +1437,18 @@
 	},
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/last_bunker/indoors/cavern/south_entrance)
-"aev" = (
-/turf/open/floor/hybrisa/metal/bluemetal1/northwest,
-/area/last_bunker/oob)
-"aew" = (
-/turf/open/floor/hybrisa/metal/bluemetal1/north,
-/area/last_bunker/oob)
-"aex" = (
-/obj/item/tool/wet_sign{
-	pixel_x = -8;
-	pixel_y = 6
-	},
-/obj/item/tool/mop{
-	pixel_y = 24;
-	pixel_x = 8
-	},
-/turf/open/floor/hybrisa/metal/bluemetal1/north,
-/area/last_bunker/oob)
-"aey" = (
-/obj/structure/sign/poster/corporate{
-	pixel_y = 32
-	},
-/obj/structure/largecrate/random/case/small,
-/obj/structure/largecrate/random/mini/small_case{
-	pixel_x = -9;
-	pixel_y = 10
-	},
-/turf/open/floor/hybrisa/metal/bluemetal1/north,
-/area/last_bunker/oob)
-"aez" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/hybrisa/metal/bluemetal1/northwest,
-/area/last_bunker/oob)
-"aeA" = (
-/obj/structure/extinguisher_cabinet{
-	pixel_y = 30
-	},
-/turf/open/floor/hybrisa/metal/bluemetal1/northeast,
-/area/last_bunker/oob)
-"aeB" = (
-/obj/structure/closet/emcloset,
-/turf/open/floor/corsat/squares,
-/area/last_bunker/oob)
-"aeC" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "door_warning2"
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/floor_plate,
-/area/last_bunker/oob)
-"aeD" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "door_warning2"
-	},
-/turf/open/floor/prison/floor_plate,
-/area/last_bunker/oob)
-"aeE" = (
-/obj/structure/largecrate/random/case/double,
-/obj/structure/extinguisher_cabinet{
-	pixel_y = 30
-	},
-/turf/open/floor/prison/floor_marked,
-/area/last_bunker/oob)
-"aeF" = (
-/turf/open/floor/prison/floor_marked,
-/area/last_bunker/oob)
-"aeG" = (
-/obj/structure/largecrate/random/case/small,
-/obj/item/tool/weldpack{
-	pixel_y = 5
-	},
-/turf/open/floor/prison/floor_marked,
-/area/last_bunker/oob)
-"aeH" = (
-/obj/structure/machinery/door_control{
-	id = "s_e_ent";
-	name = "Bunker Checkpoint Lockdown - shutters"
-	},
-/turf/closed/wall/hybrisa/colony,
-/area/last_bunker/oob)
-"aeI" = (
-/obj/structure/machinery/door/poddoor/hybrisa/shutters{
-	dir = 2;
-	id = "s_e_ent"
-	},
-/turf/open/floor/hybrisa/metal/yellow_warning_floor,
-/area/last_bunker/oob)
-"aeJ" = (
-/obj/effect/decal/hybrisa/dirt,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/last_bunker/oob)
-"aeK" = (
-/obj/structure/largecrate/empty/case/double,
-/turf/open/floor/plating,
-/area/last_bunker/oob)
 "aeL" = (
 /turf/open/floor/dark,
 /area/last_bunker/indoors/command_zone)
-"aeM" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/antre/plating,
-/area/last_bunker/oob)
-"aeN" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/antre/plating,
-/area/last_bunker/oob)
-"aeO" = (
-/turf/open/antre/plating,
-/area/last_bunker/oob)
-"aeP" = (
-/obj/structure/largecrate/random/barrel/red,
-/turf/open/antre/plating,
-/area/last_bunker/oob)
 "aeQ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall_reinforced,
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/last_bunker/indoors/command_zone)
-"aeR" = (
-/turf/open/floor/strata/cyan3,
-/area/last_bunker/oob)
-"aeS" = (
-/obj/structure/machinery/light,
-/turf/open/floor/strata/cyan3,
-/area/last_bunker/oob)
-"aeT" = (
-/turf/open/floor/strata/cyan3/southwest,
-/area/last_bunker/oob)
-"aeU" = (
-/turf/open/floor/strata,
-/area/last_bunker/oob)
-"aeV" = (
-/turf/open/floor/strata/cyan3/east,
-/area/last_bunker/oob)
-"aeW" = (
-/obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/plating,
-/area/last_bunker/oob)
-"aeX" = (
-/obj/structure/machinery/power/power_generator/port_gen,
-/turf/open/floor/corsat/squares,
-/area/last_bunker/oob)
-"aeY" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/floor_plate,
-/area/last_bunker/oob)
-"aeZ" = (
-/obj/structure/largecrate/random,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/floor_marked,
-/area/last_bunker/oob)
-"afa" = (
-/obj/structure/largecrate/random/case/small,
-/turf/open/floor/prison/floor_marked,
-/area/last_bunker/oob)
 "afb" = (
 /turf/open/floor/hybrisa/metal/bluemetal1/northwest,
 /area/last_bunker/indoors/entry_zone)
-"afc" = (
-/obj/structure/largecrate/random/barrel/black{
-	layer = 3.2
-	},
-/turf/open/floor/prison/floor_plate,
-/area/last_bunker/oob)
-"afd" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	layer = 3.33;
-	pixel_y = 1
-	},
-/turf/open/floor/strata,
-/area/last_bunker/oob)
-"afe" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	layer = 2.5;
-	pixel_y = 1
-	},
-/turf/open/floor/strata,
-/area/last_bunker/oob)
-"aff" = (
-/obj/effect/decal/hybrisa/dirt,
-/obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/plating,
-/area/last_bunker/oob)
-"afg" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname,
-/turf/open/floor/hybrisa/metal/yellow_warning_floor,
-/area/last_bunker/oob)
-"afh" = (
-/turf/open/floor/prison/darkbrown2/southwest,
-/area/last_bunker/oob)
-"afi" = (
-/turf/open/floor/prison/darkbrown2,
-/area/last_bunker/oob)
-"afj" = (
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice3";
-	pixel_x = 6;
-	pixel_y = 19
-	},
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice1";
-	pixel_y = -13;
-	layer = 4.1;
-	pixel_x = 6
-	},
-/turf/open/floor/prison/darkbrown2,
-/area/last_bunker/oob)
-"afk" = (
-/obj/effect/decal/hybrisa/trash{
-	icon_state = "trash_4";
-	pixel_y = 14
-	},
-/obj/effect/decal/cleanable/blood/oil/streak,
-/turf/open/floor/prison/darkbrown2,
-/area/last_bunker/oob)
-"afl" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/darkbrown2,
-/area/last_bunker/oob)
-"afm" = (
-/turf/open/floor/prison/darkbrown2/southeast,
-/area/last_bunker/oob)
-"afn" = (
-/obj/structure/monorail{
-	dir = 4
-	},
-/turf/open/floor/plating/kutjevo,
-/area/last_bunker/oob)
-"afo" = (
-/obj/structure/monorail{
-	dir = 9
-	},
-/turf/open/floor/plating/kutjevo,
-/area/last_bunker/oob)
 "afp" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_7";
@@ -1769,66 +1457,6 @@
 	},
 /turf/open/floor/prison/darkbrowncorners2/north,
 /area/last_bunker/indoors/entry_zone)
-"afq" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	layer = 2.5
-	},
-/turf/open/floor/strata,
-/area/last_bunker/oob)
-"afr" = (
-/obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/corsat/squares,
-/area/last_bunker/oob)
-"afs" = (
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_x = 1;
-	pixel_y = 3
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_x = 2;
-	pixel_y = 6
-	},
-/obj/effect/decal/hybrisa/dirt,
-/obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/corsat/squares,
-/area/last_bunker/oob)
-"aft" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/prison/darkbrown2/northwest,
-/area/last_bunker/oob)
-"afu" = (
-/turf/open/floor/prison/darkbrowncorners2/east,
-/area/last_bunker/oob)
-"afv" = (
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice3";
-	pixel_x = 6;
-	pixel_y = 19
-	},
-/turf/open/floor/prison/floor_plate,
-/area/last_bunker/oob)
-"afw" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/darkbrown2/east,
-/area/last_bunker/oob)
-"afx" = (
-/obj/docking_port/mobile/crashable/lifeboat/port,
-/obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "0,0"
-	},
-/turf/template_noop,
-/area/last_bunker/oob)
 "afy" = (
 /obj/effect/hybrisa/misc/fake/wire/red{
 	pixel_x = 4
@@ -1838,22 +1466,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/last_bunker/indoors/hanger_zone)
-"afz" = (
-/obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "1,0"
-	},
-/turf/template_noop,
-/area/last_bunker/oob)
-"afA" = (
-/turf/closed/shuttle/lifeboat{
-	name = "Train"
-	},
-/area/last_bunker/oob)
-"afB" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "3,0"
-	},
-/area/last_bunker/oob)
 "afC" = (
 /obj/structure/machinery/door/airlock/hybrisa/medical/autoname{
 	name = "\improper Medical";
@@ -1861,296 +1473,10 @@
 	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/last_bunker/indoors/sustainment_zone)
-"afD" = (
-/turf/closed/shuttle/lifeboat/transparent,
-/area/last_bunker/oob)
-"afE" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "6,0"
-	},
-/area/last_bunker/oob)
-"afF" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "7,0"
-	},
-/area/last_bunker/oob)
-"afG" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat{
-	id = "Boat1-D3";
-	throw_dir = 2
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/last_bunker/oob)
-"afH" = (
-/turf/open/floor/almayer/test_floor4,
-/area/last_bunker/oob)
-"afI" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "11,0"
-	},
-/area/last_bunker/oob)
-"afJ" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "12,0"
-	},
-/area/last_bunker/oob)
-"afK" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat{
-	id = "Boat1-D4";
-	throw_dir = 2
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/last_bunker/oob)
-"afL" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "16,0"
-	},
-/area/last_bunker/oob)
-"afM" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "17,0";
-	name = "Train"
-	},
-/area/last_bunker/oob)
-"afN" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "18,0";
-	name = "Train"
-	},
-/area/last_bunker/oob)
-"afO" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "22,0"
-	},
-/area/last_bunker/oob)
-"afP" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "23,0"
-	},
-/area/last_bunker/oob)
-"afQ" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "24,0"
-	},
-/area/last_bunker/oob)
-"afR" = (
-/obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "25,0";
-	name = "Train"
-	},
-/turf/template_noop,
-/area/last_bunker/oob)
-"afS" = (
-/turf/template_noop,
-/area/last_bunker/oob)
-"afT" = (
-/turf/open/floor/plating/kutjevo,
-/area/last_bunker/oob)
-"afU" = (
-/obj/structure/monorail,
-/turf/open/floor/plating/kutjevo,
-/area/last_bunker/oob)
-"afV" = (
-/turf/open/floor/corsat/squares,
-/area/last_bunker/oob)
-"afW" = (
-/obj/effect/decal/cleanable/generic{
-	color = "#5d524b";
-	alpha = 155
-	},
-/obj/structure/sign/poster/blacklight{
-	layer = 3.1;
-	pixel_y = 32
-	},
-/obj/structure/closet/emcloset,
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/prison/darkbrown2/northwest,
-/area/last_bunker/oob)
-"afX" = (
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice3";
-	pixel_x = 6;
-	pixel_y = 19
-	},
-/turf/open/floor/prison/darkbrowncorners2/east,
-/area/last_bunker/oob)
-"afY" = (
-/obj/effect/decal/strata_decals/catwalk/prison,
-/turf/open/floor/shiva/radiator_tile2,
-/area/last_bunker/oob)
-"afZ" = (
-/obj/item/trash/cigbutt,
-/turf/open/floor/prison,
-/area/last_bunker/oob)
-"aga" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/darkbrowncorners2,
-/area/last_bunker/oob)
-"agb" = (
-/obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "0,1"
-	},
-/turf/template_noop,
-/area/last_bunker/oob)
-"agc" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "1,1";
-	name = "Train"
-	},
-/area/last_bunker/oob)
-"agd" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "2,1"
-	},
-/area/last_bunker/oob)
-"age" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "3,1";
-	name = "Train"
-	},
-/area/last_bunker/oob)
-"agf" = (
-/turf/open/shuttle/lifeboat/plating_striped,
-/area/last_bunker/oob)
-"agg" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "6,1";
-	name = "Train"
-	},
-/area/last_bunker/oob)
 "agh" = (
 /obj/structure/surface/rack,
 /turf/open/auto_turf/snow/layer0,
 /area/last_bunker/outdoors/surface_exterior/south_west)
-"agi" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "17,1"
-	},
-/area/last_bunker/oob)
-"agj" = (
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
-	dir = 1
-	},
-/turf/open/floor/almayer/plating,
-/area/last_bunker/oob)
-"agk" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "23,1"
-	},
-/area/last_bunker/oob)
-"agl" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "24,1"
-	},
-/area/last_bunker/oob)
-"agm" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "25,1"
-	},
-/area/last_bunker/oob)
-"agn" = (
-/obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "26,1";
-	name = "Train"
-	},
-/turf/template_noop,
-/area/last_bunker/oob)
-"ago" = (
-/obj/structure/monorail{
-	dir = 9
-	},
-/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
-/turf/open/floor/plating/kutjevo,
-/area/last_bunker/oob)
-"agp" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/last_bunker/oob)
-"agq" = (
-/turf/open/floor/plating,
-/area/last_bunker/oob)
-"agr" = (
-/obj/structure/closet,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor/plating,
-/area/last_bunker/oob)
-"ags" = (
-/obj/structure/prop/structure_lattice{
-	dir = 4
-	},
-/obj/structure/prop/structure_lattice{
-	dir = 4;
-	layer = 3.1;
-	level = 3;
-	pixel_y = 10
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice2";
-	pixel_x = 6;
-	pixel_y = 19
-	},
-/turf/open/floor/prison/darkbrown2/northwest,
-/area/last_bunker/oob)
-"agt" = (
-/obj/structure/largecrate/random/barrel/medical,
-/turf/open/floor/prison/darkbrown2/north,
-/area/last_bunker/oob)
-"agu" = (
-/obj/structure/largecrate/random/barrel/green,
-/obj/structure/extinguisher_cabinet{
-	pixel_y = 30
-	},
-/turf/open/floor/prison/darkbrown2/north,
-/area/last_bunker/oob)
-"agv" = (
-/obj/structure/largecrate/empty/case/double,
-/turf/open/floor/prison/darkbrown2/north,
-/area/last_bunker/oob)
-"agw" = (
-/turf/open/floor/prison/darkbrown2/north,
-/area/last_bunker/oob)
-"agx" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/prison/darkbrown2/north,
-/area/last_bunker/oob)
-"agy" = (
-/obj/effect/decal/hybrisa/trash{
-	icon_state = "trash_6";
-	pixel_x = -3
-	},
-/turf/open/floor/prison,
-/area/last_bunker/oob)
-"agz" = (
-/obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "0,2"
-	},
-/turf/template_noop,
-/area/last_bunker/oob)
-"agA" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "1,2"
-	},
-/area/last_bunker/oob)
-"agB" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "2,2";
-	name = "Train"
-	},
-/area/last_bunker/oob)
-"agC" = (
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
-	dir = 4
-	},
-/turf/open/floor/almayer/plating,
-/area/last_bunker/oob)
-"agD" = (
-/turf/open/floor/almayer/plating,
-/area/last_bunker/oob)
 "agE" = (
 /obj/structure/prop/hybrisa/misc/cabinet{
 	pixel_x = -7;
@@ -2158,61 +1484,6 @@
 	},
 /turf/open/floor/hybrisa/wood/darkerwood,
 /area/last_bunker/indoors/sustainment_zone)
-"agF" = (
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
-	dir = 4;
-	name = "pilot seat"
-	},
-/turf/open/floor/almayer/plating,
-/area/last_bunker/oob)
-"agG" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/communications{
-	dir = 8
-	},
-/turf/open/floor/almayer/plating,
-/area/last_bunker/oob)
-"agH" = (
-/turf/closed/shuttle/lifeboat/transparent{
-	icon_state = "24,2";
-	name = "Train"
-	},
-/area/last_bunker/oob)
-"agI" = (
-/turf/closed/shuttle/lifeboat/transparent{
-	icon_state = "25,2"
-	},
-/area/last_bunker/oob)
-"agJ" = (
-/turf/closed/shuttle/lifeboat/transparent{
-	icon_state = "26,2";
-	name = "Train"
-	},
-/area/last_bunker/oob)
-"agK" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/effect/decal/cleanable/liquid_fuel,
-/turf/open/floor/strata,
-/area/last_bunker/oob)
-"agL" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/turf/open/floor/strata,
-/area/last_bunker/oob)
-"agM" = (
-/obj/structure/reagent_dispensers/tank/fuel,
-/turf/open/floor/plating,
-/area/last_bunker/oob)
-"agN" = (
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall{
-	pixel_x = -2;
-	pixel_y = 20
-	},
-/turf/open/floor/plating,
-/area/last_bunker/oob)
 "agO" = (
 /obj/structure/stairs/perspective{
 	dir = 5;
@@ -2223,458 +1494,12 @@
 	},
 /turf/open/floor/shiva/red/southeast,
 /area/last_bunker/indoors/entry_zone/power)
-"agP" = (
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3,
-/turf/closed/wall/hybrisa/colony,
-/area/last_bunker/oob)
-"agQ" = (
-/obj/structure/prop/hybrisa/misc/machinery/screens/redalertblank{
-	light_color = "#FF0000";
-	light_on = 1;
-	light_power = 3;
-	light_range = 5;
-	pixel_y = 32
-	},
-/turf/open/floor/prison/darkbrown2/northwest,
-/area/last_bunker/oob)
-"agR" = (
-/obj/structure/sign/poster/corporate{
-	layer = 2.9;
-	pixel_y = 32
-	},
-/turf/open/floor/prison/darkbrown2/north,
-/area/last_bunker/oob)
-"agS" = (
-/obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "0,3"
-	},
-/turf/template_noop,
-/area/last_bunker/oob)
-"agT" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "1,3"
-	},
-/area/last_bunker/oob)
-"agU" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "2,3"
-	},
-/area/last_bunker/oob)
-"agV" = (
-/turf/open/shuttle/lifeboat/catwalk,
-/area/last_bunker/oob)
-"agW" = (
-/turf/open/shuttle/lifeboat/plate,
-/area/last_bunker/oob)
-"agX" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/shuttle/lifeboat{
-	dir = 8
-	},
-/turf/open/floor/almayer/plating,
-/area/last_bunker/oob)
-"agY" = (
-/turf/closed/shuttle/lifeboat/transparent{
-	icon_state = "24,3";
-	name = "Train"
-	},
-/area/last_bunker/oob)
-"agZ" = (
-/turf/closed/shuttle/lifeboat/transparent{
-	icon_state = "25,3"
-	},
-/area/last_bunker/oob)
-"aha" = (
-/turf/closed/shuttle/lifeboat/transparent{
-	icon_state = "26,3"
-	},
-/area/last_bunker/oob)
-"ahb" = (
-/turf/open/floor/strata/blue3/north,
-/area/last_bunker/oob)
-"ahc" = (
-/turf/open/floor/strata/blue3/northwest,
-/area/last_bunker/oob)
-"ahd" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
-	dir = 1
-	},
-/turf/open/floor/hybrisa/metal/yellow_warning_floor,
-/area/last_bunker/oob)
-"ahe" = (
-/turf/open/floor/strata/cyan4/east,
-/area/last_bunker/oob)
 "ahf" = (
 /turf/open/floor/shiva/yellow/north,
 /area/last_bunker/indoors/entry_zone/power)
-"ahg" = (
-/turf/open/floor/strata/cyan4/west,
-/area/last_bunker/oob)
-"ahh" = (
-/obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "0,4"
-	},
-/turf/template_noop,
-/area/last_bunker/oob)
-"ahi" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "1,4"
-	},
-/area/last_bunker/oob)
-"ahj" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "2,4";
-	name = "Train"
-	},
-/area/last_bunker/oob)
-"ahk" = (
-/obj/structure/extinguisher_cabinet/lifeboat{
-	pixel_x = 15;
-	pixel_y = 27
-	},
-/turf/open/floor/almayer/plating,
-/area/last_bunker/oob)
-"ahl" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med/lifeboat{
-	pixel_x = -5;
-	pixel_y = 27
-	},
-/obj/structure/machinery/cm_vending/sorted/supplies/lifeboat{
-	pixel_x = 10;
-	pixel_y = 27
-	},
-/turf/open/floor/almayer/plating,
-/area/last_bunker/oob)
-"ahm" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/cameras/almayer/vehicle{
-	dir = 8
-	},
-/turf/open/floor/almayer/plating,
-/area/last_bunker/oob)
-"ahn" = (
-/turf/closed/shuttle/lifeboat/transparent{
-	icon_state = "24,4";
-	name = "Train"
-	},
-/area/last_bunker/oob)
-"aho" = (
-/turf/closed/shuttle/lifeboat/transparent{
-	icon_state = "25,4"
-	},
-/area/last_bunker/oob)
-"ahp" = (
-/turf/closed/shuttle/lifeboat/transparent{
-	icon_state = "26,4"
-	},
-/area/last_bunker/oob)
-"ahq" = (
-/turf/open/floor/strata/blue4,
-/area/last_bunker/oob)
-"ahr" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	layer = 3.33
-	},
-/turf/open/floor/strata,
-/area/last_bunker/oob)
-"ahs" = (
-/turf/open/floor/strata/cyan3/southeast,
-/area/last_bunker/oob)
-"aht" = (
-/obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "0,5"
-	},
-/turf/template_noop,
-/area/last_bunker/oob)
-"ahu" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "1,5"
-	},
-/area/last_bunker/oob)
-"ahv" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "2,5";
-	name = "Train"
-	},
-/area/last_bunker/oob)
-"ahw" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "3,5";
-	name = "Train"
-	},
-/area/last_bunker/oob)
-"ahx" = (
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair,
-/turf/open/floor/almayer/plating,
-/area/last_bunker/oob)
-"ahy" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "6,5";
-	name = "Train"
-	},
-/area/last_bunker/oob)
-"ahz" = (
-/turf/open/shuttle/lifeboat/plating_striped/north,
-/area/last_bunker/oob)
-"ahA" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "17,5"
-	},
-/area/last_bunker/oob)
-"ahB" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "23,5"
-	},
-/area/last_bunker/oob)
-"ahC" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "24,5"
-	},
-/area/last_bunker/oob)
-"ahD" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "25,5"
-	},
-/area/last_bunker/oob)
-"ahE" = (
-/obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "26,5";
-	name = "Train"
-	},
-/turf/template_noop,
-/area/last_bunker/oob)
-"ahF" = (
-/turf/closed/shuttle/escapepod{
-	icon_state = "wall13";
-	dir = 4;
-	name = "Train"
-	},
-/area/last_bunker/oob)
-"ahG" = (
-/obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "25,0";
-	name = "Train"
-	},
-/turf/open/floor/plating/kutjevo,
-/area/last_bunker/oob)
-"ahH" = (
-/obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "0,6"
-	},
-/turf/template_noop,
-/area/last_bunker/oob)
-"ahI" = (
-/obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "1,6"
-	},
-/turf/template_noop,
-/area/last_bunker/oob)
-"ahJ" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "2,6"
-	},
-/area/last_bunker/oob)
-"ahK" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "3,6"
-	},
-/area/last_bunker/oob)
-"ahL" = (
-/turf/closed/shuttle/lifeboat/transparent{
-	icon_state = "window2"
-	},
-/area/last_bunker/oob)
-"ahM" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "6,6";
-	name = "Train"
-	},
-/area/last_bunker/oob)
-"ahN" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "7,6";
-	name = "Train"
-	},
-/area/last_bunker/oob)
-"ahO" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat{
-	id = "Boat1-D1";
-	throw_dir = 1
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/last_bunker/oob)
-"ahP" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat{
-	id = "Boat1-D2";
-	throw_dir = 1
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/last_bunker/oob)
-"ahQ" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "17,6"
-	},
-/area/last_bunker/oob)
-"ahR" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "23,6";
-	name = "Train"
-	},
-/area/last_bunker/oob)
-"ahS" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "24,6"
-	},
-/area/last_bunker/oob)
-"ahT" = (
-/obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "25,6";
-	name = "Train"
-	},
-/turf/template_noop,
-/area/last_bunker/oob)
-"ahU" = (
-/turf/open/floor/strata/blue3/west,
-/area/last_bunker/oob)
-"ahV" = (
-/obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "26,1";
-	name = "Train"
-	},
-/turf/open/floor/plating/kutjevo,
-/area/last_bunker/oob)
-"ahW" = (
-/turf/open/floor/strata/cyan3/northeast,
-/area/last_bunker/oob)
-"ahX" = (
-/turf/open/floor/strata/cyan4/north,
-/area/last_bunker/oob)
-"ahY" = (
-/turf/open/space/basic,
-/area/last_bunker/oob)
-"ahZ" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/turf/open/floor/almayer/plating,
-/area/last_bunker/oob)
-"aia" = (
-/obj/structure/machinery/door_control{
-	id = "north_east_ent";
-	name = "Bunker Checkpoint Lockdown - shutters";
-	pixel_x = 32
-	},
-/turf/open/floor/strata/cyan3/southeast,
-/area/last_bunker/oob)
 "aib" = (
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/last_bunker/indoors/residential_zone)
-"aic" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/communications/simple{
-	dir = 8;
-	pixel_y = -1;
-	name = "train console"
-	},
-/turf/open/floor/almayer/plating,
-/area/last_bunker/oob)
-"aid" = (
-/turf/open/floor/strata/blue3/southwest,
-/area/last_bunker/oob)
-"aie" = (
-/obj/structure/monorail{
-	dir = 6
-	},
-/turf/open/floor/plating/kutjevo,
-/area/last_bunker/oob)
-"aif" = (
-/obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "26,5";
-	name = "Train"
-	},
-/turf/open/floor/plating/kutjevo,
-/area/last_bunker/oob)
-"aig" = (
-/obj/structure/prop/hybrisa/fakeplatforms/platform3{
-	dir = 4
-	},
-/turf/open/auto_turf/shale/layer1/weedable,
-/area/last_bunker/oob)
-"aih" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	layer = 2.5;
-	pixel_y = 1
-	},
-/turf/open/floor/strata,
-/area/last_bunker/oob)
-"aii" = (
-/turf/closed/shuttle/escapepod{
-	icon_state = "wall13";
-	dir = 2;
-	name = "Train"
-	},
-/area/last_bunker/oob)
-"aij" = (
-/obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "25,6";
-	name = "Train"
-	},
-/turf/open/floor/plating/kutjevo,
-/area/last_bunker/oob)
-"aik" = (
-/obj/effect/decal/hybrisa/grate,
-/obj/effect/decal/hybrisa/warningstripes_angled{
-	pixel_x = -4
-	},
-/turf/open/auto_turf/shale/layer1/weedable,
-/area/last_bunker/oob)
-"ail" = (
-/obj/effect/decal/hybrisa/warningstripes_angled_corner{
-	dir = 8;
-	pixel_x = -4
-	},
-/obj/item/device/flashlight/lamp/tripod,
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/last_bunker/oob)
-"aim" = (
-/obj/effect/decal/hybrisa/grate{
-	dir = 1
-	},
-/obj/effect/decal/hybrisa/warningstripes_angled{
-	dir = 1;
-	pixel_y = -2;
-	pixel_x = 2
-	},
-/turf/open/floor/strata,
-/area/last_bunker/oob)
-"ain" = (
-/turf/open/floor/strata/blue3/northeast,
-/area/last_bunker/oob)
-"aio" = (
-/obj/structure/machinery/door_control{
-	id = "s_west_ent";
-	name = "Bunker Checkpoint Lockdown - shutters";
-	pixel_x = 32
-	},
-/turf/open/floor/strata/cyan3/northeast,
-/area/last_bunker/oob)
-"aip" = (
-/obj/item/stack/snow,
-/turf/open/auto_turf/shale/layer1/weedable,
-/area/last_bunker/oob)
-"aiq" = (
-/obj/effect/decal/hybrisa/warningstripes_angled_corner{
-	dir = 8;
-	pixel_x = -4
-	},
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/last_bunker/oob)
-"air" = (
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/last_bunker/oob)
 "ais" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_9";
@@ -3260,7 +2085,7 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/computer/communications/simple{
 	dir = 8;
-	pixel_y = -1;
+	pixel_y = -16;
 	name = "train console"
 	},
 /turf/open/floor/almayer/plating,
@@ -3353,6 +2178,7 @@
 	icon_state = "25,6";
 	name = "Train"
 	},
+/obj/structure/monorail,
 /turf/open/floor/plating/kutjevo,
 /area/last_bunker/indoors/entry_zone/train)
 "akt" = (
@@ -9998,7 +8824,7 @@
 /turf/open/floor/prison/green/east,
 /area/last_bunker/indoors/sustainment_zone)
 "jjM" = (
-/turf/open/auto_turf/snow/layer0,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/last_bunker/indoors/entry_zone/power)
 "jjT" = (
 /turf/open/floor/prison/darkyellow2/southwest,
@@ -68660,13 +67486,13 @@ ybf
 ybf
 ybf
 ybf
-ahH
-aht
-ahh
-agS
-agz
-agb
-afx
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -68862,13 +67688,13 @@ ybf
 ybf
 ybf
 ybf
-ahI
-ahu
-ahi
-agT
-agA
-agc
-afz
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -69064,13 +67890,13 @@ ybf
 ybf
 ybf
 ybf
-ahJ
-ahv
-ahj
-agU
-agB
-agd
-afA
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -69266,13 +68092,13 @@ ybf
 ybf
 ybf
 ybf
-ahK
-ahw
-agC
-agC
-agC
-age
-afB
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -69468,13 +68294,13 @@ ybf
 ybf
 ybf
 ybf
-ahL
-ahx
-agD
-agV
 ybf
 ybf
-afD
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -69670,13 +68496,13 @@ ybf
 ybf
 ybf
 ybf
-ahL
-ahx
 ybf
 ybf
 ybf
 ybf
-afD
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -69872,13 +68698,13 @@ ybf
 ybf
 ybf
 ybf
-ahM
-ahy
 ybf
 ybf
 ybf
 ybf
-afE
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -70074,13 +68900,13 @@ ybf
 ybf
 ybf
 ybf
-ahN
-ahw
 ybf
 ybf
 ybf
 ybf
-afF
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -70276,13 +69102,13 @@ ybf
 ybf
 ybf
 ybf
-ahO
-ahz
 ybf
 ybf
-agD
-agf
-afG
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -70478,13 +69304,13 @@ ybf
 ybf
 ybf
 ybf
-afH
-ahz
-agD
-agV
-agD
-agf
-afH
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -70673,20 +69499,20 @@ ybf
 ybf
 ybf
 ybf
-aii
-ahv
-ahj
-agB
-agc
-ahF
 ybf
-afH
-ahz
-agD
-agV
-agD
-agf
-afH
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -70875,20 +69701,20 @@ ybf
 ybf
 ybf
 ybf
-ahR
-ahw
-agC
-agC
-age
-afA
 ybf
-ahM
-ahy
-agD
-agW
-agD
-agg
-afI
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -71077,20 +69903,20 @@ ybf
 ybf
 ybf
 ybf
-ahL
-ahx
-agD
-agD
-agj
-afD
 ybf
-ahN
-ahw
-agD
-agW
-agD
-age
-afJ
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -71279,20 +70105,20 @@ ybf
 ybf
 ybf
 ybf
-ahM
-ahy
-agD
-agD
-agg
-afM
 ybf
-ahP
-ahz
-agD
-agV
-agD
-agf
-afK
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -71481,20 +70307,20 @@ ybf
 ybf
 ybf
 ybf
-ahN
-ahw
-agD
-agD
-age
-afN
 ybf
-afH
-ahz
-agD
-agV
-agD
-agf
-afH
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -71683,20 +70509,20 @@ ybf
 ybf
 ybf
 ybf
-afH
-agD
-agD
-agD
-agD
-afH
 ybf
-afH
-ahz
-agD
-agV
-agD
-agf
-afH
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -71885,20 +70711,20 @@ ybf
 ybf
 ybf
 ybf
-afH
-agD
-agD
-agD
-agD
-afH
 ybf
-ahM
-ahy
-ahk
-agW
-agD
-agg
-afL
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -72087,20 +70913,20 @@ ybf
 ybf
 ybf
 ybf
-afH
-agD
-agD
-agD
-agD
-afH
 ybf
-ahQ
-ahA
-ahl
-agW
-agD
-agi
-afM
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -72289,20 +71115,20 @@ ybf
 ybf
 ybf
 ybf
-ahM
-ahy
-agD
-agD
-agg
-afM
 ybf
-ahN
-ahw
-agD
-agW
-agD
-age
-afN
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -72491,20 +71317,20 @@ ybf
 ybf
 ybf
 ybf
-ahN
-ahw
-agD
-agD
-age
-afN
 ybf
-ahL
-ahx
-agD
-agV
-agD
-agj
-afD
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -72693,20 +71519,20 @@ ybf
 ybf
 ybf
 ybf
-ahL
-ahx
-agD
-agD
-agj
-afD
 ybf
-ahL
-ahx
-agD
-agV
-agD
-agj
-afD
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -72895,20 +71721,20 @@ ybf
 ybf
 ybf
 ybf
-ahN
-ahy
-aic
-ahZ
-agg
-afN
 ybf
-ahL
-ahx
-agD
-agV
-agD
-agj
-afD
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -73097,20 +71923,20 @@ ybf
 ybf
 ybf
 ybf
-aij
-ahn
-agY
-agY
-agH
-ahG
 ybf
-ahM
-ahy
-agF
-agF
-agF
-agg
-afO
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -73299,20 +72125,20 @@ ybf
 ybf
 ybf
 ybf
-afT
-aif
-ahp
-agJ
-ahV
-afT
 ybf
-ahR
-ahB
-ahm
-agX
-agG
-agk
-afP
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -73502,19 +72328,19 @@ ybf
 ybf
 ybf
 ybf
-afT
-afT
-afT
-afT
 ybf
 ybf
-ahS
-ahC
-ahn
-agY
-agH
-agl
-afQ
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -73704,19 +72530,19 @@ ybf
 ybf
 ybf
 ybf
-afT
-afT
-afT
-afT
 ybf
 ybf
-ahT
-ahD
-aho
-agZ
-agI
-agm
-afR
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -73906,19 +72732,19 @@ ybf
 ybf
 ybf
 ybf
-afT
-afT
-afT
 ybf
 ybf
-ahY
-afS
-ahE
-ahp
-aha
-agJ
-agn
-afS
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -74107,13 +72933,13 @@ ybf
 ybf
 ybf
 ybf
-ahY
-ahY
-ahY
-ahY
-ahY
-ahY
-ahY
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -74309,13 +73135,13 @@ ybf
 ybf
 ybf
 ybf
-ahY
-ahY
-ahY
-ahY
-ahY
-ahY
-ahY
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -76936,26 +75762,26 @@ ybf
 ybf
 ybf
 ybf
-aip
-fvX
-dYc
-dYc
 ybf
 ybf
 ybf
-qli
-qli
-ahb
-agK
-afn
-afT
-afn
-afd
-aeR
-qli
-hgi
-qli
-aed
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -77138,26 +75964,26 @@ ybf
 ybf
 ybf
 ybf
-aik
-dYc
-dYc
 ybf
 ybf
 ybf
-qli
-qli
-ahq
-ahc
-agL
-afn
-afT
-afn
-afd
-aeR
-qli
-hgi
-qli
-aed
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -77340,26 +76166,26 @@ ybf
 ybf
 ybf
 ybf
-aiq
-aik
-aig
 ybf
 ybf
 ybf
-qli
-ahq
-ahc
-aeU
-agL
-afn
-afT
-afn
-afd
-aeR
-qli
-hgi
-qli
-aed
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -77542,26 +76368,26 @@ ybf
 ybf
 ybf
 ybf
-air
-ail
-afd
-aid
-ahU
-ahU
-ahU
-ahc
-aeU
-aeU
-pdk
-afn
-afT
-afn
-afd
-aeR
-qli
-hgi
-qli
-aee
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -77744,26 +76570,26 @@ ybf
 ybf
 ybf
 ybf
-air
-aim
-aih
-ahr
-ahr
-ahr
-ahr
-ahr
-ahr
-ikc
-nwc
-afn
-afT
-afn
-afd
-aeS
-qli
-qli
-aes
-aef
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -77946,26 +76772,26 @@ ybf
 ybf
 ybf
 ybf
-afq
-afe
-agL
-aie
-afU
-afU
-afU
-afU
-afU
-afU
-afU
-ago
-afT
-afn
-afd
-aeT
-aeH
-aez
-aef
-aeh
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -78148,26 +76974,26 @@ ybf
 ybf
 ybf
 ybf
-aeU
-aeU
-aii
-ahv
-ahj
-agB
-agc
-ahF
-afT
-afT
-afT
-afT
-afT
-afn
-afd
-aeU
-aeI
-aef
-aek
-aei
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -78351,25 +77177,25 @@ ybf
 ybf
 ybf
 ybf
-ain
-ahR
-ahw
-agC
-agC
-age
-afA
-afU
-afU
-afU
-afU
-afU
-afo
-afd
-aeU
-aeI
-aek
-aej
-wcY
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -78553,25 +77379,25 @@ ybf
 ybf
 ybf
 ybf
-ahb
-ahL
-ahx
-agD
-agD
-agj
-afD
-afq
-afq
-afq
-afq
-afq
-afq
-afe
-aeU
-aeI
-ael
-aek
-aej
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -78755,25 +77581,25 @@ ybf
 ybf
 ybf
 ybf
-ahb
-ahM
-ahy
-agD
-agD
-agg
-afM
-ahs
-aeV
-aeV
-aeV
-aeV
-aeV
-aeV
-aeV
-qli
-aeA
-ael
-aek
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -78957,25 +77783,25 @@ ybf
 ybf
 ybf
 ybf
-ahb
-ahN
-ahw
-agD
-agD
-age
-afN
-aeR
-wcY
-wcY
-wcY
-adj
-wcY
-wcY
-wcY
-wcY
-wcY
-aet
-ael
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -79158,26 +77984,26 @@ ybf
 ybf
 ybf
 ybf
-qli
-ahb
-afH
-agD
-agD
-agD
-agD
-afH
-aeR
-hgi
-agM
-agp
-afV
-afr
-aff
-aeW
-aeJ
-wcY
-wcY
-aem
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -79360,26 +78186,26 @@ ybf
 ybf
 ybf
 ybf
-qli
-ahb
-afH
-agD
-agD
-agD
-agD
-afH
-aeT
-hgi
-agN
-agq
-adj
-afs
-aeW
-aeX
-aeK
-aeB
-wcY
-aen
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -79562,26 +78388,26 @@ ybf
 ybf
 ybf
 ybf
-qli
-ahb
-afH
-agD
-agD
-agD
-agD
-afH
-aeU
-ahd
-afV
-agr
-wcY
-wcY
-afg
-wcY
-wcY
-wcY
-wcY
-aeo
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -79764,26 +78590,26 @@ ybf
 ybf
 ybf
 ybf
-ahq
-ahc
-ahM
-ahy
-agD
-agD
-agg
-afM
-ahs
-wcY
-wcY
-wcY
-wcY
-aft
-afh
-aej
-aeM
-aeC
-aev
-aep
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -79952,8 +78778,8 @@ bNz
 ybf
 ybf
 jjM
+adB
 jjM
-jjM
 ybf
 ybf
 ybf
@@ -79966,26 +78792,26 @@ ybf
 ybf
 ybf
 ybf
-ahc
-aeU
-ahN
-ahw
-agD
-agD
-age
-afN
-aeT
-ahe
-qli
-qli
-afW
-afu
-afi
-aeY
-aeM
-aeD
-aew
-aek
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -80155,8 +78981,8 @@ ybf
 ybf
 jjM
 jjM
+adB
 jjM
-jjM
 ybf
 ybf
 ybf
@@ -80168,26 +78994,26 @@ ybf
 ybf
 ybf
 ybf
-aeU
-aeU
-ahL
-ahx
-agD
-agD
-agj
-afD
-aeU
-aeR
-qli
-ags
-afX
-afv
-afj
-hgi
-hgi
-hgi
-aex
-aeq
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -80354,11 +79180,11 @@ kWI
 kWI
 bNz
 ybf
+adB
 jjM
 jjM
 jjM
-jjM
-jjM
+adA
 ybf
 ybf
 ybf
@@ -80370,26 +79196,26 @@ ybf
 ybf
 ybf
 ybf
-ahr
-ikc
-ahN
-ahy
-aic
-ahZ
-agg
-afN
-aeU
-aeR
-qli
-agt
-aek
-aek
-afk
-aeF
-hgi
-aeE
-aew
-aer
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -80558,8 +79384,8 @@ kWI
 jjM
 jjM
 jjM
-jjM
-jjM
+adA
+adA
 ybf
 ybf
 ybf
@@ -80572,26 +79398,26 @@ ybf
 ybf
 ybf
 ybf
-afU
-afU
-aij
-ahn
-agY
-agY
-agH
-ahG
-aeU
-aeR
-qli
-agu
-afY
-aek
-afl
-aeZ
-hgi
-aeF
-aew
-aek
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -80756,11 +79582,11 @@ hgi
 nfl
 kWI
 kWI
+adB
 jjM
-jjM
-jjM
-jjM
-jjM
+adB
+adA
+adA
 ybf
 ybf
 ybf
@@ -80774,26 +79600,26 @@ ybf
 ybf
 ybf
 ybf
-afT
-afT
-afT
-aif
-ahp
-agJ
-ahV
-afT
-aeU
-aeR
-qli
-agv
-aek
-aek
-afl
-afa
-acH
-aeG
-aew
-aek
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -80961,7 +79787,7 @@ kWI
 jjM
 jjM
 jjM
-jjM
+adA
 ybf
 ybf
 ybf
@@ -80976,26 +79802,26 @@ ybf
 ybf
 ybf
 ybf
-afU
-afU
-afU
-afU
-afU
-ago
-afd
-aeU
-ahs
-ahg
-agP
-agw
-afZ
-aek
-afl
-acS
-hgi
-hgi
-aey
-aek
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -81162,8 +79988,8 @@ bNz
 bNz
 jjM
 jjM
-jjM
-jjM
+adA
+adA
 ybf
 ybf
 ybf
@@ -81178,26 +80004,26 @@ ybf
 ybf
 ybf
 ybf
-afq
-afq
-afq
-afq
-afq
-afq
-afe
-aeU
-aeR
-qli
-qli
-agx
-aek
-aek
-afl
-aeY
-aeN
-aeD
-aew
-aek
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -81363,8 +80189,8 @@ bNz
 bNz
 ybf
 ybf
-jjM
-jjM
+adB
+adA
 ybf
 ybf
 ybf
@@ -81380,26 +80206,26 @@ ybf
 ybf
 ybf
 ybf
-ahs
-aio
-aeU
-aeU
-aeU
-aia
-ahW
-ahs
-ahg
-qli
-agQ
-afu
-aek
-aeY
-afl
-aej
-aeO
-aeD
-aew
-aek
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -81582,26 +80408,26 @@ ybf
 ybf
 ybf
 ybf
-ahg
-hgi
-aeU
-aeU
-aeU
-hgi
-ahX
-ahg
-qli
-qli
-agR
-agy
-aga
-afw
-afm
-afc
-aeP
-aeD
-aew
-aek
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf

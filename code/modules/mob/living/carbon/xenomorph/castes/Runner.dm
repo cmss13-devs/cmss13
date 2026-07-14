@@ -122,7 +122,7 @@
 
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] fires a burst of bone chips at [affected_atom]!"), SPAN_XENOWARNING("We fire a burst of bone chips at [affected_atom]!"))
 
-	var/turf/target = locate(affected_atom.x, affected_atom.y, affected_atom.z)
+	var/turf/target = get_turf(affected_atom)
 	var/obj/projectile/projectile = new /obj/projectile(xeno.loc, create_cause_data(initial(xeno.caste_type), xeno))
 
 	var/datum/ammo/ammo_datum = GLOB.ammo_list[ammo_type]

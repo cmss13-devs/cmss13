@@ -217,12 +217,15 @@
 		reagents.add_reagent("fuel", max_fuel)
 
 	base_icon_state = initial(icon_state)
-	return
+	ADD_TRAIT(src, TRAIT_IGNITER, TRAIT_SOURCE_INHERENT)
 
 /obj/item/tool/weldingtool/Destroy()
 	if(welding)
 		STOP_PROCESSING(SSobj, src)
 	. = ..()
+
+/obj/item/tool/weldingtool/check_can_ignite()
+	return isOn()
 
 /obj/item/tool/weldingtool/get_examine_text(mob/user)
 	. = ..()
@@ -298,6 +301,7 @@
 		if(isliving(target))
 			var/mob/living/L = target
 			L.IgniteMob()
+	..()
 
 
 /obj/item/tool/weldingtool/attack_self(mob/user)
@@ -746,7 +750,6 @@ Welding backpack
 	if(istype(W, /obj/item/ammo_magazine/flamer_tank))
 		return
 	to_chat(user, SPAN_NOTICE("You cannot figure out how to use \the [W] with [src]."))
-	return
 
 /obj/item/tool/weldpack/afterattack(obj/target as obj, mob/user as mob, proximity)
 	if(!proximity) // this replaces and improves the get_dist(src,target) <= 1 checks used previously

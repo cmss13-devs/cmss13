@@ -61,9 +61,14 @@
 	var/base_sword_icon = "sword"
 	var/sword_color
 
-/obj/item/weapon/energy/sword/New()
+/obj/item/weapon/energy/sword/Initialize(mapload, ...)
+	. = ..()
 	if(!sword_color)
 		sword_color = pick("red","blue","green","purple")
+	ADD_TRAIT(src, TRAIT_IGNITER, TRAIT_SOURCE_INHERENT)
+
+/obj/item/weapon/energy/sword/check_can_ignite()
+	return active
 
 /obj/item/weapon/energy/sword/attack_self(mob/living/user)
 	..()

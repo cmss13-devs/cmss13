@@ -66,3 +66,6 @@
 //from /datum/component/overwatch_console_control
 #define COMSIG_OW_CONSOLE_OBSERVE_START "ow_console_observe_start"
 #define COMSIG_OW_CONSOLE_OBSERVE_END "ow_console_observe_end"
+
+/// When igniting an object, igniter can be overridden (e.g. by underbarrel flamer attachment)
+#define COMSIG_IGNITER_OVERRIDE "igniter_override"

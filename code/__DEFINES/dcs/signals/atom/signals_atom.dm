@@ -55,3 +55,6 @@
 
 //from base of atom/Exited(): (atom/movable/exiting, direction)
 #define COMSIG_ATOM_EXITED "atom_exited"
+
+/// Called when an ignitable atom is ignited
+#define COMSIG_ATOM_IGNITE "atom_ignite"

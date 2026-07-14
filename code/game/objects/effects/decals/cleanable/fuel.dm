@@ -34,11 +34,11 @@
 /obj/effect/decal/cleanable/liquid_fuel/LateInitialize()
 	// Ignition because fire already exists
 	if(locate(/obj/flamer_fire) in cleanable_turf)
-		INVOKE_NEXT_TICK(src, PROC_REF(ignite))
+		INVOKE_NEXT_TICK(src, PROC_REF(ignite_fuel))
 		return
 	for(var/obj/item/thing in cleanable_turf)
 		if(thing.heat_source)
-			INVOKE_NEXT_TICK(src, PROC_REF(ignite))
+			INVOKE_NEXT_TICK(src, PROC_REF(ignite_fuel))
 			return
 	RegisterSignal(cleanable_turf, COMSIG_TURF_ENTERED, PROC_REF(on_turf_entered))
 
@@ -62,7 +62,7 @@
 
 	var/obj/item/entered_thing = enterer
 	if(entered_thing.heat_source)
-		INVOKE_NEXT_TICK(src, PROC_REF(ignite))
+		INVOKE_NEXT_TICK(src, PROC_REF(ignite_fuel))
 		UnregisterSignal(source, COMSIG_MOVABLE_MOVED)
 
 /obj/effect/decal/cleanable/liquid_fuel/proc/spread()
@@ -86,7 +86,12 @@
 			new /obj/effect/decal/cleanable/liquid_fuel(target, amount * 0.25)
 			amount *= 0.75
 
-/obj/effect/decal/cleanable/liquid_fuel/proc/ignite()
+/obj/effect/decal/cleanable/liquid_fuel/ignite(obj/item/igniter, mob/user, flavor_text)
+	var/turf/fuel_turf = get_turf(src)
+	fuel_turf.visible_message(flavor_text)
+	ignite_fuel()
+
+/obj/effect/decal/cleanable/liquid_fuel/proc/ignite_fuel()
 	if(QDELETED(src))
 		return
 

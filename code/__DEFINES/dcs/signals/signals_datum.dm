@@ -11,10 +11,12 @@
 #define COMSIG_TOPIC "handle_topic"
 /// from datum ui_act (usr, action)
 #define COMSIG_UI_ACT "COMSIG_UI_ACT"
-///from base of atom/attackby(): (/obj/item, /mob/living, params)
+/// Called whenever an atom is being attacked with an item, from base of atom/attackby(): (/obj/item, /mob/living, params)
 #define COMSIG_PARENT_ATTACKBY "atom_attackby"
-///Return this in response if you don't want afterattack to be called
+	///Return this in response if you don't want afterattack to be called
 	#define COMPONENT_NO_AFTERATTACK (1<<0)
+/// Called in base of obj/item/afterattack():(atom/target, obj/item/attackedby, mob/living/user, params)
+#define COMSIG_PARENT_AFTERATTACK "atom_afterattack"
 ///from base of atom/examine(): (/mob, list/examine_text)
 #define COMSIG_PARENT_EXAMINE "atom_examine"
 /// handler for vv_do_topic (usr, href_list)

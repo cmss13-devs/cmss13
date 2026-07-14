@@ -80,11 +80,11 @@
 
 /obj/structure/machinery/sparker/attack_remote()
 	if (src.anchored)
-		return src.ignite()
+		return src.turn_on()
 	else
 		return
 
-/obj/structure/machinery/sparker/proc/ignite()
+/obj/structure/machinery/sparker/proc/turn_on()
 	if (!(powered()))
 		return
 
@@ -107,7 +107,7 @@
 	. = ..()
 	if(inoperable())
 		return
-	ignite()
+	turn_on()
 
 /obj/structure/machinery/ignition_switch/attack_remote(mob/user as mob)
 	return attack_hand(user)
@@ -125,7 +125,7 @@
 
 	for(var/obj/structure/machinery/sparker/M in GLOB.machines)
 		if (M.id == src.id)
-			INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/sparker, ignite))
+			INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/sparker, turn_on))
 
 	for(var/obj/structure/machinery/igniter/M in GLOB.machines)
 		if(M.id == src.id)

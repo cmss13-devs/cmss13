@@ -142,6 +142,10 @@
 /// Example trait
 // #define TRAIT_X "t_x"
 
+//-- atom traits --
+/// This item can be ignited by items that can ignite (have the trait TRAIT_IGNITES)
+#define TRAIT_IGNITABLE "ignitable"
+
 //-- mob traits --
 /// Apply this to make a mob not dense, and remove it when you want it to no longer make them undense, other sources of undensity will still apply. Always define a unique source when adding a new instance of this!
 #define TRAIT_UNDENSE "undense"
@@ -333,6 +337,9 @@
 
 //This item is being dissolved. Used by yautja_cleaner.
 #define TRAIT_ITEM_DISSOLVING "item_dissolving"
+
+/// This item can ignite other atoms
+#define TRAIT_IGNITER "t_item_igniter"
 
 //-- structure traits --
 // TABLE TRAITS

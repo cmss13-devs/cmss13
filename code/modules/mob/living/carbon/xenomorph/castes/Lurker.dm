@@ -75,13 +75,13 @@
 	if(!isxeno_human(target_carbon))
 		return original_damage
 
-	if(HAS_TRAIT(bound_xeno, TRAIT_ABILITY_ASSASINATE))
+	if(HAS_TRAIT(bound_xeno, TRAIT_ABILITY_ASSASSINATE))
 		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We significantly strengthen our attack, slowing [target_carbon]!"))
 		to_chat(target_carbon, SPAN_XENOHIGHDANGER("You feel a sharp pain as [bound_xeno] slashes you, slowing you down!"))
 		var/datum/action/xeno_action/onclick/lurker_assassinate/ability = get_action(bound_xeno, /datum/action/xeno_action/onclick/lurker_assassinate)
 		original_damage *= ability.buffed_slash_damage_ratio
 		target_carbon.set_effect(get_xeno_stun_duration(target_carbon, 3), SUPERSLOW)
-		REMOVE_TRAIT(bound_xeno, TRAIT_ABILITY_ASSASINATE, TRAIT_SOURCE_ABILITY("assasinate"))
+		REMOVE_TRAIT(bound_xeno, TRAIT_ABILITY_ASSASSINATE, TRAIT_SOURCE_ABILITY("assassinate"))
 		if(ability)
 			ability.button.icon_state = "template_xeno"
 
@@ -93,7 +93,7 @@
 	if(!isxeno_human(target_carbon))
 		return
 
-	if(HAS_TRAIT(bound_xeno, TRAIT_ABILITY_ASSASINATE) && target_carbon)
+	if(HAS_TRAIT(bound_xeno, TRAIT_ABILITY_ASSASSINATE) && target_carbon)
 		return INTENT_HARM
 
 /datum/behavior_delegate/lurker_base/melee_attack_additional_effects_target(mob/living/carbon/target_carbon)
@@ -277,7 +277,7 @@
 
 	XENO_ACTION_CHECK_USE_PLASMA(xeno)
 
-	ADD_TRAIT(xeno, TRAIT_ABILITY_ASSASINATE, TRAIT_SOURCE_ABILITY("assasinate"))
+	ADD_TRAIT(xeno, TRAIT_ABILITY_ASSASSINATE, TRAIT_SOURCE_ABILITY("assassinate"))
 
 	to_chat(xeno, SPAN_XENOHIGHDANGER("Our next slash will deal increased damage!"))
 
@@ -292,8 +292,8 @@
 	if(!istype(xeno))
 		return
 
-	if(!HAS_TRAIT(xeno, TRAIT_ABILITY_ASSASINATE))
+	if(!HAS_TRAIT(xeno, TRAIT_ABILITY_ASSASSINATE))
 		return
-	REMOVE_TRAIT(xeno, TRAIT_ABILITY_ASSASINATE, TRAIT_SOURCE_ABILITY("assasinate"))
+	REMOVE_TRAIT(xeno, TRAIT_ABILITY_ASSASSINATE, TRAIT_SOURCE_ABILITY("assassinate"))
 
 	to_chat(xeno, SPAN_XENODANGER("We have waited too long, our slash will no longer deal increased damage!"))

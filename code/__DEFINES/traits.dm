@@ -271,7 +271,7 @@
 
 // -- specific ability traits --
 #define TRAIT_ABILITY_POUNCE "t_ability_pounce"
-#define TRAIT_ABILITY_ASSASINATE "t_ability_assasinate"
+#define TRAIT_ABILITY_ASSASSINATE "t_ability_assassinate"
 #define TRAIT_ABILITY_INVIS "t_ability_invis"
 #define TRAIT_ABILITY_ENCLOSED_PLATES "t_ability_enclosed_plates"
 #define TRAIT_ABILITY_REFLECTIVE_PLATES "t_ability_reflective_plates"

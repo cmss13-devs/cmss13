@@ -256,3 +256,5 @@
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/cl/quarter/window
 	id = "cl_quarter_windows"
+
+/obj/structure/machinery/door/poddoor/shutters/atmos_shutter

@@ -574,6 +574,28 @@
 		new_window_frame.setDir(dir)
 	return ..()
 
+// Decompression windows
+/obj/structure/window/framed/decompressible
+	var/obj/structure/machinery/door/linked_shutter = null
+
+/obj/structure/window/framed/decompressible/Initialize()
+	. = ..()
+
+	var/turf/src_turf = get_turf(src)
+	for (var/obj/structure/machinery/door/shutter in src_turf)
+		linked_shutter = shutter
+		if (shutter != null)
+			log_mapping("A decompression window had multiple potential targets for its associated shutter!")
+	if (linked_shutter == null)
+		log_mapping("A decompression window was created without any associated shutter. Did you mean to use a regular window?")
+
+/// Handles what the window does when the area is decompressed.
+/obj/structure/window/framed/decompressible/handle_decompression()
+	if (!linked_shutter)
+		return
+
+	linked_shutter.close()
+
 //Almayer windows
 
 /obj/structure/window/framed/almayer

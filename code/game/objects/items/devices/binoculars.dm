@@ -61,13 +61,13 @@
 	. = ..()
 	disable_nvgs(user)
 
-/obj/item/device/binoculars/proc/update_nvgs(mob/morb)
+/obj/item/device/binoculars/proc/update_nvgs(mob/mob)
 	SIGNAL_HANDLER
 
 	if(lighting_alpha < 255)
-		morb.see_in_dark = viewsize
-	morb.lighting_alpha = lighting_alpha
-	morb.sync_lighting_plane_alpha()
+		mob.see_in_dark = viewsize
+	mob.lighting_alpha = lighting_alpha
+	mob.sync_lighting_plane_alpha()
 
 /obj/item/device/binoculars/proc/enable_nvgs(mob/living/carbon/human/user)
 	RegisterSignal(user, COMSIG_HUMAN_POST_UPDATE_SIGHT, PROC_REF(update_nvgs))

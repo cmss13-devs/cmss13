@@ -158,3 +158,56 @@
 /obj/item/clothing/suit/storage/marine/smartgunner/veteran/pmc/Initialize()
 	. = ..()
 	AddElement(/datum/element/corp_label/wy)
+
+// Lasalle Bionational - Mercs - (Bionational Hazard Intervention Group)
+
+/obj/item/clothing/suit/storage/marine/veteran/lb_merc
+	name = "\improper M3-LB combat armor"
+	desc = "A heavily modified, proprietary Lasalle Bionational variant of the Armat Systems M3 armor platform. Issued exclusively to Bionational Hazard Intervention Group operatives. Designed for hazardous intervention and high-threat operations."
+	icon_state = "lb_merc"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/LASALLE.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/LASALLE.dmi'
+	)
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	storage_slots = 2
+	slowdown = SLOWDOWN_ARMOR_LIGHT
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/lb_merc)
+	item_state_slots = list(WEAR_JACKET = "lb_merc")
+	lamp_icon = "lamp_neon"
+	lamp_light_color = LIGHT_COLOR_XENON
+	light_color = LIGHT_COLOR_XENON
+
+/obj/item/clothing/suit/storage/marine/veteran/lb_merc/Initialize()
+	. = ..()
+	RemoveElement(/datum/element/corp_label/wy)
+	AddElement(/datum/element/corp_label/bionational)
+
+/obj/item/clothing/suit/storage/marine/veteran/lb_merc/synth
+	name = "\improper M3-LB Synthetic combat armor"
+	desc = "A heavily modified Lasalle Bionational variant of the Armat Systems M3 armor platform. Designed exclusively for Bionational Hazard Intervention Group synthetic support units, its armor inserts have been removed in favor of reduced weight and unrestricted mobility."
+	icon_state = "lb_merc"
+	item_state_slots = list(WEAR_JACKET = "lb_merc")
+	time_to_unequip = 0.5 SECONDS
+	time_to_equip = 1 SECONDS
+	armor_melee = CLOTHING_ARMOR_NONE
+	armor_bullet = CLOTHING_ARMOR_NONE
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_NONE
+	storage_slots = 3
+	slowdown = SLOWDOWN_ARMOR_SUPER_LIGHT
+
+/obj/item/clothing/suit/storage/marine/veteran/lb_merc/synth/Initialize()
+	flags_atom |= NO_NAME_OVERRIDE
+	flags_marine_armor |= SYNTH_ALLOWED
+	return ..()
+

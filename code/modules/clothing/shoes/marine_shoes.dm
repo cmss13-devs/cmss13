@@ -351,6 +351,20 @@
 	item_state = "lasalle_brown_boots"
 	desc = "These synth-leather boots seem high quality when first worn, but quickly detoriate, especially in the environments the corporate security members these are issued to operate in. Still, better than nothing."
 
+/obj/item/clothing/shoes/veteran/pmc/lb_merc
+	name = "BHIG combat boots"
+	desc = "A pair of reinforced black combat boots with distinctive blue accents, standard issued to Bionational Hazard Intervention Group operators."
+	icon_state = "lb_merc"
+	item_state = "lb_merc"
+
+/obj/item/clothing/shoes/veteran/pmc/lb_merc/knife
+	spawn_item_type = /obj/item/attachable/bayonet
+
+/obj/item/clothing/shoes/veteran/pmc/lb_merc/Initialize()
+	. = ..()
+	RemoveElement(/datum/element/corp_label/wy)
+	AddElement(/datum/element/corp_label/bionational)
+
 /obj/item/clothing/shoes/silver_white
 	name = "sterile work shoes"
 	desc = "A pair of silver-white industrial work shoes designed for laboratory and cleanroom use."

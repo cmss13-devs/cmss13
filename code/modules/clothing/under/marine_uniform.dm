@@ -2223,8 +2223,8 @@
 	worn_state = "science_outfit_green"
 
 /obj/item/clothing/under/lasalle
-	name = "lasalle bionational jumpsuit"
-	desc = "A heavy-duty jumpsuit commonly worn by Lasalle Bionational workers & civilians."
+	name = "lasalle bionational uniform"
+	desc = "A heavy-duty uniform commonly worn by Lasalle Bionational workers & civilians."
 	icon_state = "civilian_base"
 	item_state = "civilian_base"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/LASALLE.dmi'
@@ -2256,3 +2256,22 @@
 /obj/item/clothing/under/lasalle/yellow/drysuit
 	icon_state = "civilian_base_yellow_alt"
 	item_state = "civilian_base_yellow_alt"
+
+// Lasalle Bionational - Mercs - (Bionational Hazard Intervention Group)
+
+/obj/item/clothing/under/marine/veteran/lb_merc
+	name = "\improper BHIG combat jumpsuit"
+	desc = "A fitted black combat jumpsuit designed for Bionational Hazard Intervention Group operators. It bears the insignia of Lasalle Bionational."
+
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/LASALLE.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/LASALLE.dmi',
+	)
+	icon_state = "lb_merc"
+	worn_state = "lb_merc"
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+
+/obj/item/clothing/under/marine/veteran/lb_merc/Initialize()
+	. = ..()
+	RemoveElement(/datum/element/corp_label/wy)
+	AddElement(/datum/element/corp_label/bionational)

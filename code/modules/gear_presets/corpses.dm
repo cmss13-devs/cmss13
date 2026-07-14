@@ -2044,3 +2044,25 @@
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/fireproof_boots(new_human), WEAR_FEET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/fireproof_gloves(new_human), WEAR_HANDS)
 			new_human.equip_to_slot_or_del(new /obj/item/tool/extinguisher/mini(new_human), WEAR_WAIST)
+
+// Dead UPP Spy
+
+/datum/equipment_preset/corpse/upp_spy
+	name = "Corpse - Suspicious Colonist"
+	faction = FACTION_UPP
+
+/datum/equipment_preset/corpse/upp_spy/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/lasalle(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/black(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/document/small(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/black/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/np92/suppressed(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/black_market_hacking_device(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/np92/suppressed(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/np92/suppressed(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/black_vest/waistcoat(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/big/chrome(new_human), WEAR_EYES)

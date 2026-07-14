@@ -4,7 +4,7 @@
 
 /obj/vehicle/multitile/rt01
 	name = "RT-01 Transport"
-	desc = "A rather old hunk of metal with eight wheels, you know what to do. Entrance on the back and sides."
+	desc = "An aging eight-wheeled heavy transport built to haul personnel and equipment across a variety of terrain. Entrance on the back and sides."
 	layer = ABOVE_XENO_LAYER
 
 	icon = 'icons/obj/vehicles/rt01.dmi'
@@ -38,8 +38,8 @@
 		"cooldown" = 1
 	)
 
-	movement_sound = 'sound/vehicles/tank_driving.ogg'
-	honk_sound = 'sound/vehicles/honk_2_truck.ogg'
+	movement_sound = 'sound/vehicles/rt_01_driving.ogg'
+	honk_sound = 'sound/vehicles/rt_01_horn.ogg'
 
 	vehicle_light_range = 8
 
@@ -207,7 +207,7 @@
 
 		overdrive_next = world.time + overdrive_cooldown
 		to_chat(user, SPAN_NOTICE("You activate overdrive."))
-		playsound(src, 'sound/vehicles/overdrive_activate.ogg', 75, FALSE)
+		playsound(src, 'sound/vehicles/rt_01_overdrive_activate.ogg', 75, FALSE)
 		return
 
 	return ..()

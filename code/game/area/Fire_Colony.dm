@@ -344,6 +344,10 @@
 	name = "\improper Old Seegson - Aerodrome - Hangar - 'Beta'"
 	icon_state = "hangar_beta"
 
+/area/fire_colony/interior/hangar/broken_dropship
+	name = "\improper Old Seegson - Aerodrome - Hangar - 'Beta' - Broken Dropship"
+	icon_state = "green"
+
 /area/fire_colony/interior/hangar/checkpoint
 	name = "\improper Old Seegson - Aerodrome - Hangar - Seegson Security Facility - Checkpoint"
 	icon_state = "security"

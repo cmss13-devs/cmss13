@@ -1171,6 +1171,11 @@
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_LB
 
+/obj/item/device/radio/headset/distress/lasalle_bionational/lb_merc
+	name = "BHIG tactical headset"
+	desc = "A secure tactical headset issued to Bionational Hazard Intervention Group operatives."
+	icon_state = "mcom_headset"
+
 /obj/item/device/radio/headset/distress/dutch
 	name = "Dutch's Dozen headset"
 	desc = "A special headset used by small groups of trained operatives. Or terrorists. To access the colony channel, use :h."

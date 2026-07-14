@@ -413,6 +413,21 @@
 	new /obj/item/storage/pill_bottle/tramadol(src)
 	new /obj/item/device/healthanalyzer(src)
 
+/obj/item/storage/belt/medical/lifesaver/wy/lb_merc
+	name = "\improper LB-TM624 pattern medical bag"
+	desc = "The LB-TM624 is the standard load-bearing equipment of the L-B security forces. This configuration mounts a duffel bag filled with a range of injectors and light medical supplies, and is common among medics. \nRight click its sprite and click \"toggle belt mode\" to take pills out of bottles by simply clicking them."
+
+/obj/item/storage/belt/medical/lifesaver/wy/lb_merc/partial/fill_preset_inventory()
+	new /obj/item/stack/medical/advanced/bruise_pack/upgraded(src)
+	new /obj/item/stack/medical/advanced/ointment/upgraded(src)
+	new /obj/item/stack/medical/splint/nano(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone(src)
+	new /obj/item/storage/pill_bottle/bicaridine(src)
+	new /obj/item/storage/pill_bottle/kelotane(src)
+	new /obj/item/storage/pill_bottle/inaprovaline(src)
+	new /obj/item/storage/pill_bottle/tramadol(src)
+	new /obj/item/device/healthanalyzer(src)
+
 /obj/item/storage/belt/medical/lifesaver/upp
 	name = "\improper Type 41 pattern lifesaver bag"
 	desc = "The Type 41 load rig is the standard load-bearing equipment of the UPP military. This configuration mounts a duffel bag filled with a range of injectors and light medical supplies, and is common among medics."
@@ -1719,6 +1734,20 @@
 	new /obj/item/ammo_magazine/pistol/m1911/highimpact(src)
 	new /obj/item/ammo_magazine/pistol/m1911/highimpact/ap(src)
 	new /obj/item/ammo_magazine/pistol/m1911/highimpact/ap(src)
+
+/obj/item/storage/belt/gun/m4a3/wy/lb_merc
+	name = "\improper LB-TM891 pattern general pistol holster rig"
+	desc = "The LB-TM891 is the standard load-bearing equipment of the L-B security forces. It consists of a modular belt with various clips. This version has a holster assembly that allows one to carry the most common pistols. It also contains side pouches that can store most pistol magazines."
+
+/obj/item/storage/belt/gun/m4a3/wy/lb_merc/b92fs_suppressed_near_empty/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/b92fs/suppressed())
+	for(var/i = 1 to 3)
+		new /obj/item/ammo_magazine/pistol/b92fs(src)
+
+/obj/item/storage/belt/gun/m4a3/wy/lb_merc/b92fs_suppressed/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/b92fs/suppressed())
+	for(var/i = 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/pistol/b92fs(src)
 
 /obj/item/storage/belt/gun/m4a3/m1911/socom/black
 	icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'

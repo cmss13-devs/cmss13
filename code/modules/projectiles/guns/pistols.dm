@@ -220,15 +220,16 @@
 		return ..()
 
 //-------------------------------------------------------
-//Beretta 92FS, the gun McClane carries around in Die Hard. Very similar to the service pistol, all around.
+//Beretta M92X, a 22nd century reimagining of the Beretta 92 series.
 
 /obj/item/weapon/gun/pistol/b92fs
-	name = "\improper Beretta 92FS pistol"
-	desc = "A popular police firearm in the 20th century, often employed by hardboiled cops while confronting terrorists. A classic of its time, chambered in 9mm."
+	name = "\improper Beretta M92X pistol"
+	desc = "A modern reimagining of the Beretta 92 series pistol, retaining its iconic profile well into the 22nd century. Updated with an ammunition counter and automatic magazine ejection system. Chambered in 9mm."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/pistols.dmi'
 	icon_state = "b92fs"
 	item_state = "b92fs"
 	current_mag = /obj/item/ammo_magazine/pistol/b92fs
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
 
 /obj/item/weapon/gun/pistol/b92fs/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -254,6 +255,8 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_7
 	damage_mult = BASE_BULLET_DAMAGE_MULT - BULLET_DAMAGE_MULT_TIER_2
 
+/obj/item/weapon/gun/pistol/b92fs/suppressed
+	starting_attachment_types = list(/obj/item/attachable/suppressor/sleek, /obj/item/attachable/lasersight/micro)
 
 //-------------------------------------------------------
 //DEAGLE //This one is obvious.

@@ -300,6 +300,8 @@
 /datum/equipment_preset/survivor/lasalle_bionational
 	name = "Survivor - Fire Colony - Corporate Liaison"
 	assignment = "Lasalle-Bionational - Corporate Liaison"
+	minimap_icon = "ls_cl"
+	minimap_background = "background_lasalle_management"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	paygrades = list(PAY_SHORT_WYC2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_WYC3 = JOB_PLAYTIME_TIER_2, PAY_SHORT_WYC4 = JOB_PLAYTIME_TIER_3, PAY_SHORT_WYC5 = JOB_PLAYTIME_TIER_4)

@@ -6,7 +6,7 @@
 /area/fire_colony/exterior/underground/excavation/south)
 "aag" = (
 /turf/closed/shuttle/ert,
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "aal" = (
 /obj/structure/machinery/light/blue,
 /obj/effect/lava/edges/basalt/l_piece,
@@ -27,7 +27,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "rightengine_2"
 	},
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "aaD" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/floor/prison/ramptop,
@@ -301,16 +301,16 @@
 /area/fire_colony/interior/seegson/engineering/electric_storage)
 "acC" = (
 /turf/closed/shuttle/ert{
-	icon_state = "stan5"
+	icon_state = "stan2"
 	},
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "acE" = (
 /obj/structure/computerframe{
 	layer = 2.9
 	},
 /obj/structure/surface/table/reinforced/almayer_B,
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_left_to_right,
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "acF" = (
 /turf/closed/wall/engineer_ruins,
 /area/fire_colony/exterior/underground/excavation/north)
@@ -1587,6 +1587,13 @@
 /obj/structure/platform_decoration/stone/lava/east,
 /turf/open/lava/brock,
 /area/fire_colony/exterior/valley/west)
+"ahD" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -12;
+	pixel_y = 17
+	},
+/turf/open/shuttle/escapepod/floor4,
+/area/fire_colony/interior/hangar/broken_dropship)
 "ahE" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/lava/asteroid/directions/northwest,
@@ -1767,6 +1774,10 @@
 	},
 /obj/item/tool/wrench,
 /obj/effect/landmark/objective_landmark/close,
+/obj/item/ammo_magazine/smg/nailgun{
+	pixel_x = 12;
+	pixel_y = 4
+	},
 /obj/item/weapon/gun/smg/nailgun,
 /turf/open/floor/strata/seeg4/east,
 /area/fire_colony/interior/seegson/engineering/generator_room)
@@ -2371,7 +2382,7 @@
 /area/fire_colony/interior/hydroponics/north)
 "alR" = (
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_left_to_right,
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "alS" = (
 /obj/structure/bed/chair/comfy/ares{
 	dir = 4;
@@ -3417,8 +3428,13 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8
 	},
+/obj/structure/machinery/light{
+	dir = 4;
+	pixel_x = 9;
+	pixel_y = 10
+	},
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "atc" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#818793"
@@ -5465,7 +5481,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "rightengine_3"
 	},
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "aDS" = (
 /obj/effect/decal/warning_stripes/worn/corner{
 	dir = 1
@@ -6349,7 +6365,7 @@
 /obj/structure/shuttle/part/ert/front_left_stan,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/lava/metal/plating,
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "aKB" = (
 /obj/structure/window/framed/lava,
 /obj/structure/curtain/colorable_transparent{
@@ -6479,7 +6495,7 @@
 	pixel_y = 5
 	},
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_left_to_right,
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "aKY" = (
 /obj/structure/flora/alien/sparsegrass/sparsegrass_3{
 	pixel_x = 1;
@@ -6497,7 +6513,7 @@
 "aLa" = (
 /obj/structure/machinery/door/airlock/almayer/secure/colony,
 /turf/open/floor/corsat,
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "aLb" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/lava/asteroid/directions/north,
@@ -6695,8 +6711,9 @@
 /turf/open/lava/metal/warnplate/north,
 /area/fire_colony/exterior/container_yard)
 "aMe" = (
+/obj/structure/machinery/power/apc/power/south,
 /turf/open/floor/almayer/plate,
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "aMf" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out"
@@ -7103,9 +7120,10 @@
 /area/fire_colony/interior/dorms/north)
 "aNZ" = (
 /turf/closed/shuttle/ert{
-	icon_state = "stan27"
+	icon_state = "stan27";
+	opacity = 0
 	},
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "aOa" = (
 /obj/effect/decal/warning_stripes/worn/corner{
 	dir = 1
@@ -7183,8 +7201,12 @@
 /area/fire_colony/interior/dorms/north)
 "aOy" = (
 /obj/item/tool/wrench,
+/obj/effect/decal/cleanable/blood{
+	pixel_x = -10;
+	pixel_y = 15
+	},
 /turf/open/shuttle/escapepod/floor4,
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "aOz" = (
 /obj/effect/lava/edges/basalt/side_rock{
 	dir = 8
@@ -7504,8 +7526,7 @@
 /area/fire_colony/interior/omicron_facility/passthrough)
 "aQi" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
-	id = "lb_hangar_2";
-	name = "Excavation Lockdown"
+	id = "lb_hangar_2"
 	},
 /turf/open/floor/corsat,
 /area/fire_colony/interior/hangar/garage)
@@ -7580,7 +7601,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "stan_leftengine_clean"
 	},
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "aQF" = (
 /obj/structure/fence/slim/blue/door{
 	dir = 4
@@ -8330,7 +8351,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "stan1"
 	},
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "aVw" = (
 /obj/structure/fence/slim/blue,
 /turf/open/lava/metal/warnplate/north,
@@ -8447,14 +8468,15 @@
 /turf/open/floor/strata/floor3,
 /area/fire_colony/interior/omicron_facility/lobby)
 "aVU" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 4
 	},
+/obj/structure/extinguisher_cabinet/lifeboat{
+	pixel_x = -5;
+	pixel_y = 28
+	},
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "aVV" = (
 /obj/effect/lava/edges/basalt/side_rock{
 	dir = 4
@@ -8619,12 +8641,12 @@
 	dir = 4
 	},
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "aWF" = (
 /turf/closed/shuttle/ert/transparent{
 	icon_state = "leftengine_3_clean"
 	},
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "aWG" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -8857,9 +8879,9 @@
 /area/fire_colony/interior/hangar/hallway)
 "aXT" = (
 /turf/closed/shuttle/ert{
-	icon_state = "stan_inner_dark"
+	icon_state = "stan5"
 	},
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "aXU" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -8875,7 +8897,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "stan8"
 	},
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "aXY" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/lava/edges/basalt/side_rock,
@@ -9156,7 +9178,7 @@
 	layer = 2.9
 	},
 /turf/open/lava/metal/plating,
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "aZv" = (
 /obj/structure/fence/slim/blue/door,
 /turf/open/floor/corsat/spiralplate,
@@ -9240,7 +9262,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "stan9"
 	},
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "aZV" = (
 /obj/structure/platform/stone/lava/east,
 /obj/structure/platform/stone/lava,
@@ -9340,9 +9362,9 @@
 /area/fire_colony/exterior/clearing/north_east)
 "bam" = (
 /turf/closed/shuttle/ert{
-	icon_state = "stan2"
+	icon_state = "stan_inner_w_1"
 	},
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "ban" = (
 /obj/structure/largecrate/random/mini/chest{
 	pixel_x = -7;
@@ -10883,7 +10905,7 @@
 "biO" = (
 /obj/structure/shuttle/part/dropship_clf/transparent/right_engine,
 /turf/open/lava/metal/plating,
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "biS" = (
 /obj/effect/lava/edges/basalt/l_piece,
 /turf/open/lava/basalt/basalt0,
@@ -11895,6 +11917,18 @@
 	},
 /turf/open/lava/dirt,
 /area/fire_colony/exterior/clearing/north_east)
+"bud" = (
+/obj/item/stack/sheet/cardboard/small_stack{
+	pixel_x = -2;
+	pixel_y = 5;
+	layer = 2.9
+	},
+/obj/item/reagent_container/glass/bucket/mopbucket{
+	pixel_x = 3;
+	pixel_y = -9
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/north)
 "buk" = (
 /obj/structure/surface/table/almayer{
 	color = "#848484"
@@ -14820,7 +14854,6 @@
 "ccB" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	id = "lb_hangar_3";
-	name = "Excavation Lockdown";
 	dir = 4
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -17386,6 +17419,17 @@
 	},
 /turf/open/lava/brock,
 /area/fire_colony/exterior/underground/excavation/north)
+"cLh" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
+	},
+/obj/structure/machinery/light{
+	dir = 8;
+	pixel_x = -10;
+	pixel_y = -8
+	},
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/area/fire_colony/interior/hangar/broken_dropship)
 "cLn" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/cleanable/blood,
@@ -18007,7 +18051,7 @@
 /area/fire_colony/exterior/underground/excavation/south)
 "cUq" = (
 /turf/open/shuttle/escapepod/floor4,
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "cUs" = (
 /obj/effect/lava/edges/basalt/l_piece{
 	dir = 1
@@ -18778,26 +18822,10 @@
 /turf/open/lava/engineer_ruins/engineer_ruins/damaged/damage_6,
 /area/fire_colony/exterior/underground/excavation/north)
 "ddv" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
-	pixel_x = 5;
-	pixel_y = -4
-	},
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
-	pixel_x = 5;
-	pixel_y = -4
-	},
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
-	pixel_x = 5;
-	pixel_y = -4
-	},
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
-	pixel_x = 5;
-	pixel_y = -4
-	},
 /turf/closed/shuttle/ert{
 	icon_state = "stan23"
 	},
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "ddx" = (
 /obj/effect/lava/edges/basalt/side_rock,
 /obj/effect/lava/edges/basalt/side_rock{
@@ -19200,7 +19228,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "stan_rightengine"
 	},
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "djf" = (
 /obj/structure/closet/crate{
 	color = "#5e5e5e"
@@ -22244,7 +22272,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/lava/metal/plating,
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "dVJ" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -24840,6 +24868,21 @@
 "eBl" = (
 /turf/open/lava/metal/warnplate/corner,
 /area/fire_colony/interior/hangar/garage)
+"eBm" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/obj/item/stack/sheet/wood{
+	pixel_x = -1;
+	pixel_y = 6;
+	layer = 2.9
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_5";
+	pixel_x = -5
+	},
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/valley/north)
 "eBo" = (
 /obj/structure/roof/hybrisa/lattice_prop/lattice_6{
 	layer = 2;
@@ -25500,10 +25543,6 @@
 /obj/item/trash/tray{
 	pixel_x = -1;
 	pixel_y = 6
-	},
-/obj/item/reagent_container/food/drinks/drinkingglass/soda{
-	pixel_x = 4;
-	pixel_y = -10
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/southeast,
@@ -27440,6 +27479,14 @@
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/floor/strata/seeg4/west,
 /area/fire_colony/interior/disposals)
+"feJ" = (
+/obj/structure/platform/stone/lava/north,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 11;
+	pixel_y = -8
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/north)
 "feM" = (
 /obj/effect/decal/warning_stripes/worn,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -27472,8 +27519,12 @@
 /area/fire_colony/exterior/clearing/north)
 "ffi" = (
 /obj/effect/landmark/survivor_spawner,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 8;
+	pixel_y = 12
+	},
 /turf/open/shuttle/escapepod/floor4,
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "ffs" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/warning_stripes/worn/stripes_double{
@@ -27694,6 +27745,10 @@
 /obj/effect/blocker/lava,
 /turf/open/lava/hot_lava,
 /area/fire_colony/exterior/valley/southeast)
+"fht" = (
+/obj/structure/prop/brazier/frame/full/campfire,
+/turf/open/lava/basalt/basalt_dug,
+/area/fire_colony/exterior/valley/north)
 "fhu" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -28071,6 +28126,10 @@
 	},
 /turf/open/lava/dirt,
 /area/fire_colony/exterior/clearing/south_west)
+"fnm" = (
+/obj/item/prop/alien/hugger,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_left_to_right,
+/area/fire_colony/interior/hangar/broken_dropship)
 "fnp" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -29298,6 +29357,22 @@
 	},
 /turf/open/floor/strata/lightblue3/north,
 /area/fire_colony/interior/hydroponics/science)
+"fCQ" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/obj/structure/bed/bedroll{
+	dir = 9;
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/stack/sheet/wood{
+	pixel_x = -1;
+	pixel_y = 6;
+	layer = 2.9
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/colonist/random/burst,
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/north)
 "fCR" = (
 /obj/effect/decal/warning_stripes/worn/stripes_double{
 	dir = 1
@@ -29578,7 +29653,6 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	id = "lb_hangar_3";
-	name = "Excavation Lockdown";
 	dir = 4
 	},
 /turf/open/floor/corsat,
@@ -29937,6 +30011,7 @@
 /turf/open/floor/strata/altgreen3,
 /area/fire_colony/interior/hydroponics/north)
 "fJR" = (
+/obj/item/tool/weldpack,
 /turf/open/lava/metal/warnplate/west,
 /area/fire_colony/interior/omicron_facility/passthrough)
 "fJT" = (
@@ -30101,6 +30176,13 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/floor/strata/blue3/north,
 /area/fire_colony/interior/dorms/offices)
+"fLK" = (
+/obj/structure/platform/stone/lava/north,
+/obj/structure/ore_box/alt{
+	dir = 8
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/north)
 "fLL" = (
 /obj/structure/platform/stone/lava/north,
 /obj/structure/platform/stone/lava/east,
@@ -30350,6 +30432,18 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/lava/metal/plating,
 /area/fire_colony/exterior/clearing/south_west)
+"fPk" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/item/stack/sheet/wood{
+	pixel_x = -1;
+	pixel_y = -8;
+	layer = 2.9
+	},
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/valley/north)
 "fPl" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#818793"
@@ -31092,6 +31186,10 @@
 /obj/item/tool/kitchen/utensil/fork{
 	pixel_x = 13;
 	pixel_y = 21
+	},
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	pixel_x = 1;
+	pixel_y = 14
 	},
 /turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/southeast,
 /area/fire_colony/interior/bar/canteen)
@@ -32490,7 +32588,7 @@
 "goS" = (
 /obj/item/weapon/gun/pistol/holdout/custom,
 /turf/open/shuttle/escapepod/floor4,
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "goW" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/landmark/survivor_spawner,
@@ -34248,7 +34346,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "stan22"
 	},
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "gLq" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8;
@@ -34271,6 +34369,11 @@
 	},
 /turf/open/lava/brock,
 /area/fire_colony/exterior/valley/southwest)
+"gLu" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/clothing/glasses/welding/superior,
+/turf/open/lava/metal/warnplate/north,
+/area/fire_colony/interior/mining_garage)
 "gLz" = (
 /obj/effect/lava/edges/basalt/side_rock{
 	dir = 4
@@ -42013,8 +42116,7 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/machinery/door/poddoor/almayer/closed{
-	id = "lb_hangar_2";
-	name = "Excavation Lockdown"
+	id = "lb_hangar_2"
 	},
 /turf/open/floor/corsat,
 /area/fire_colony/interior/hangar/garage)
@@ -44714,15 +44816,17 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/lava/metal/warnplate/southwest,
 /area/fire_colony/interior/hangar/garage)
+"jri" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/obj/effect/decal/cleanable/blood,
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/north)
 "jrm" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8
 	},
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "jrn" = (
 /obj/structure/flora/alien/bluegrass/bluegrass_4,
 /turf/open/lava/brock,
@@ -46311,6 +46415,7 @@
 	pixel_x = 11;
 	pixel_y = -4
 	},
+/obj/effect/decal/cleanable/blood,
 /turf/open/lava/brock,
 /area/fire_colony/exterior/valley/north)
 "jNw" = (
@@ -46361,7 +46466,6 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	id = "lb_hangar_4";
-	name = "Excavation Lockdown";
 	dir = 4
 	},
 /turf/open/floor/corsat,
@@ -46767,9 +46871,21 @@
 /turf/open/lava/engineer_ruins/engineer_ruins/damaged/damage_2,
 /area/fire_colony/exterior/underground/excavation/south)
 "jWp" = (
-/obj/effect/landmark/survivor_spawner,
+/obj/effect/decal/cleanable/blood{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/obj/effect/decal/cleanable/blood{
+	pixel_x = 4;
+	pixel_y = 15
+	},
+/obj/structure/prop/hybrisa/misc/blood{
+	pixel_x = -24;
+	pixel_y = 10
+	},
+/obj/effect/landmark/corpsespawner/upp_spy,
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_left_to_right,
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "jWs" = (
 /obj/effect/lava/edges/basalt/l_piece{
 	dir = 1
@@ -49815,6 +49931,10 @@
 	},
 /turf/open/lava/metal/plating_grille,
 /area/fire_colony/interior/epsilon_facility)
+"kKI" = (
+/obj/effect/spawner/random/gun/shotgun/lowchance,
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/north)
 "kKO" = (
 /obj/effect/lava/edges/basalt/side_rock{
 	dir = 8
@@ -50010,6 +50130,13 @@
 	},
 /turf/open/lava/brock,
 /area/fire_colony/exterior/clearing/south_west)
+"kMt" = (
+/obj/item/trash/burger,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3"
+	},
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/valley/north)
 "kMu" = (
 /obj/structure/flora/alien/sparsegrass/sparsegrass_2{
 	pixel_x = -10;
@@ -56517,9 +56644,9 @@
 /area/fire_colony/interior/omicron_facility/passthrough)
 "msl" = (
 /turf/closed/shuttle/ert{
-	icon_state = "stan_black_t_up"
+	icon_state = "stan_inner_t_right"
 	},
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "msn" = (
 /obj/structure/flora/alien/fullgrass/fullgrass_1,
 /obj/structure/flora/alien/bluegrass/bluegrass_2{
@@ -58371,6 +58498,23 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/floor/strata/deco,
 /area/fire_colony/interior/hydroponics/science)
+"mOG" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -17;
+	pixel_y = 23
+	},
+/obj/structure/cargo_container/hybrisa/containersextended/colorable_small{
+	color = "#5e5e5e";
+	pixel_y = 2
+	},
+/obj/structure/barricade/wooden{
+	layer = 4.11
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/north)
 "mOK" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/machinery/chem_dispenser/corpsman{
@@ -59995,6 +60139,12 @@
 	},
 /turf/open/floor/strata/floor3,
 /area/fire_colony/interior/dorms/north)
+"nia" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = 19
+	},
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_left_to_right,
+/area/fire_colony/interior/hangar/broken_dropship)
 "nib" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/lava/metal/filtrationside_lava/north,
@@ -61205,6 +61355,22 @@
 "nxF" = (
 /turf/open/lava/basalt/basalt12,
 /area/fire_colony/exterior/valley/northeast)
+"nxK" = (
+/obj/item/stack/sheet/wood{
+	pixel_x = -1;
+	pixel_y = 6;
+	layer = 2.9
+	},
+/obj/item/stack/sheet/wood{
+	pixel_y = -1;
+	layer = 2.9
+	},
+/obj/item/device/binoculars/civ{
+	pixel_x = -1;
+	pixel_y = 9
+	},
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/valley/north)
 "nxM" = (
 /obj/effect/lava/edges/basalt/l_piece{
 	dir = 4
@@ -62316,8 +62482,9 @@
 	pixel_x = 6;
 	pixel_y = -4
 	},
+/obj/effect/decal/cleanable/blood,
 /turf/open/shuttle/escapepod/floor4,
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "nKH" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -62465,6 +62632,14 @@
 /obj/effect/blocker/lava,
 /turf/open/lava/hot_lava,
 /area/fire_colony/exterior/underground/caves/south_west)
+"nNn" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/obj/item/trash/hotdog/alt,
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/valley/north)
 "nNs" = (
 /obj/structure/machinery/light/blue{
 	dir = 4
@@ -64291,10 +64466,15 @@
 /area/fire_colony/interior/hydroponics/science)
 "omh" = (
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
-	dir = 2
+	dir = 2;
+	locked = 1
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 4;
+	pixel_y = 24
 	},
 /turf/open/shuttle/escapepod/floor4,
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "omq" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/hybrisa/tile/tilegrey,
@@ -66836,6 +67016,11 @@
 /obj/effect/blocker/lava,
 /turf/open/lava/hot_lava/L_piece/west,
 /area/fire_colony/exterior/valley/north)
+"oWH" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/obj/effect/decal/cleanable/blood,
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/valley/north)
 "oWV" = (
 /obj/effect/lava/edges/basalt/side_rock{
 	dir = 1
@@ -67217,6 +67402,11 @@
 	},
 /turf/open/lava/basalt/glowing/basalt5,
 /area/fire_colony/exterior/underground/caves/north_west)
+"pbX" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan_inner_t_left"
+	},
+/area/fire_colony/interior/hangar/broken_dropship)
 "pbY" = (
 /obj/structure/fence/slim/blue/door,
 /turf/open/lava/brock,
@@ -68224,6 +68414,16 @@
 /obj/structure/platform/stone/lava,
 /turf/open/lava/basalt/cave/west,
 /area/fire_colony/exterior/valley/southwest)
+"poZ" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/obj/structure/ore_box/alt/metal_container_colorable{
+	color = "#718075";
+	pixel_y = 4
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/north)
 "ppb" = (
 /obj/structure/platform/metal/lava_metal/east,
 /turf/open/lava/basalt/basalt12,
@@ -68552,6 +68752,7 @@
 /area/fire_colony/exterior/underground/excavation/south)
 "psN" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/tool/wirecutters/tactical,
 /turf/open/floor/prison/cell_stripe/west,
 /area/fire_colony/exterior/container_yard)
 "psS" = (
@@ -68796,11 +68997,15 @@
 /area/fire_colony/exterior/clearing/south)
 "pvD" = (
 /obj/item/ammo_magazine/pistol/holdout{
-	pixel_x = 6;
-	pixel_y = -4
+	pixel_x = 11;
+	pixel_y = -14
+	},
+/obj/item/circuitboard{
+	pixel_x = 7;
+	pixel_y = 6
 	},
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_left_to_right,
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "pvF" = (
 /obj/effect/lava/edges/basalt/l_piece,
 /turf/open/lava/basalt/glowing/basalt1,
@@ -69356,13 +69561,13 @@
 /area/fire_colony/exterior/clearing/pass)
 "pBU" = (
 /obj/structure/surface/table/reinforced/black,
-/obj/item/reagent_container/food/drinks/drinkingglass/soda{
-	pixel_x = 9;
-	pixel_y = -6
-	},
 /obj/item/paper{
 	pixel_x = -5;
 	pixel_y = 2
+	},
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	pixel_x = 7;
+	pixel_y = -10
 	},
 /turf/open/lava/metal/plating,
 /area/fire_colony/interior/bar/canteen)
@@ -71106,8 +71311,13 @@
 	pixel_x = -7;
 	pixel_y = 12
 	},
+/obj/item/device/radio/marine{
+	pixel_x = 3;
+	pixel_y = 10
+	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_left_to_right,
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "pYQ" = (
 /obj/structure/platform_decoration/metal/lava_metal/north,
 /obj/effect/blocker/lava,
@@ -71350,6 +71560,16 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/floor/strata/floor3,
 /area/fire_colony/interior/seegson/smelting)
+"qbX" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1
+	},
+/obj/structure/surface/rack/long{
+	color = "#818793"
+	},
+/obj/structure/barricade/wooden,
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/valley/north)
 "qcd" = (
 /obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	dir = 8;
@@ -74653,7 +74873,6 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	id = "lb_hangar_3";
-	name = "Excavation Lockdown";
 	dir = 4
 	},
 /turf/open/floor/corsat,
@@ -76202,6 +76421,7 @@
 /area/fire_colony/exterior/valley/west)
 "rgI" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/tool/weldingtool/simple,
 /turf/open/lava/metal/warnplate/west,
 /area/fire_colony/interior/mining_garage)
 "rgJ" = (
@@ -76543,7 +76763,6 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	id = "lb_hangar_4";
-	name = "Excavation Lockdown";
 	dir = 4
 	},
 /turf/open/floor/corsat,
@@ -81144,11 +81363,8 @@
 /area/fire_colony/exterior/underground/excavation/south)
 "soj" = (
 /obj/effect/landmark/objective_landmark/close,
-/obj/structure/machinery/light{
-	dir = 4
-	},
 /turf/open/shuttle/escapepod/floor4,
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "soq" = (
 /obj/effect/hunter/ancient_temple/colorable_rubble/rubble_3{
 	color = "#726f7a";
@@ -81301,7 +81517,7 @@
 "sqH" = (
 /obj/structure/girder/reinforced,
 /turf/open/floor/corsat,
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "sqK" = (
 /obj/structure/flora/alien/sparsegrass/sparsegrass_2,
 /obj/structure/machinery/weather_siren{
@@ -81536,8 +81752,7 @@
 /obj/effect/decal/hybrisa/tiretrack,
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/poddoor/almayer/closed{
-	id = "lb_hangar_2";
-	name = "Excavation Lockdown"
+	id = "lb_hangar_2"
 	},
 /turf/open/floor/corsat,
 /area/fire_colony/interior/hangar/garage)
@@ -81799,6 +82014,16 @@
 	},
 /turf/open/lava/engineer_ruins/engineer_ruins/damaged/damage_7,
 /area/fire_colony/exterior/underground/excavation/south)
+"sxC" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/obj/structure/barricade/wooden,
+/obj/item/stack/sheet/wood{
+	pixel_x = -1;
+	pixel_y = 6;
+	layer = 2.9
+	},
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/valley/north)
 "sxE" = (
 /obj/effect/lava/edges/basalt/l_piece{
 	dir = 8
@@ -82129,11 +82354,16 @@
 /turf/open/lava/basalt/basalt0,
 /area/fire_colony/exterior/landing_pad_external)
 "sCN" = (
-/obj/structure/machinery/light{
-	dir = 8
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
 	},
-/turf/open/shuttle/escapepod/floor4,
-/area/fire_colony/interior/hangar/beta)
+/obj/structure/machinery/light{
+	dir = 8;
+	pixel_x = -10;
+	pixel_y = 10
+	},
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/area/fire_colony/interior/hangar/broken_dropship)
 "sCR" = (
 /obj/structure/platform/metal/lava_metal/north,
 /obj/structure/platform/metal/lava_metal/west,
@@ -82731,8 +82961,7 @@
 "sLp" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/machinery/door/poddoor/almayer/closed{
-	id = "lb_hangar_2";
-	name = "Excavation Lockdown"
+	id = "lb_hangar_2"
 	},
 /turf/open/floor/corsat,
 /area/fire_colony/interior/hangar/garage)
@@ -85707,6 +85936,11 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/floor/strata/orange_cover,
 /area/fire_colony/interior/epsilon_facility)
+"tyE" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/prop/alien/hugger,
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/beta)
 "tyF" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/item/tool/warning_cone/blue{
@@ -85993,6 +86227,9 @@
 /obj/structure/tunnel{
 	id = "construction_tunnel"
 	},
+/obj/item/tool/shovel{
+	pixel_y = 9
+	},
 /turf/open/lava/basalt/basalt0,
 /area/fire_colony/exterior/valley/north)
 "tBD" = (
@@ -86184,6 +86421,7 @@
 /area/fire_colony/exterior/underground/caves/south_west)
 "tEb" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/spawner/random/toolbox,
 /turf/open/floor/strata/sand3/southwest,
 /area/fire_colony/interior/mining_garage)
 "tEe" = (
@@ -90073,9 +90311,12 @@
 /area/fire_colony/interior/omicron_facility/hospital)
 "uBW" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot{
+	pixel_y = 6
+	},
+/obj/effect/decal/cleanable/blood,
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_left_to_right,
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "uCb" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/warning_stripes/worn,
@@ -92017,6 +92258,25 @@
 /obj/effect/blocker/lava,
 /turf/open/lava/hot_lava,
 /area/fire_colony/exterior/valley/southeast)
+"vcD" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood{
+	pixel_x = -9;
+	pixel_y = -7
+	},
+/obj/structure/machinery/light{
+	dir = 4;
+	pixel_x = 10;
+	pixel_y = -8
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/lifeboat{
+	pixel_x = 6;
+	pixel_y = 28
+	},
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/area/fire_colony/interior/hangar/broken_dropship)
 "vcI" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -92815,6 +93075,9 @@
 	pixel_x = 1
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/prop/hybrisa/signs/high_voltage/small{
+	pixel_y = 33
+	},
 /turf/open/floor/strata/sand1,
 /area/fire_colony/interior/mining)
 "vmx" = (
@@ -95062,6 +95325,25 @@
 /obj/item/trash/cigbutt,
 /turf/open/floor/strata/seeg3/north,
 /area/fire_colony/interior/dorms/south)
+"vOC" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/obj/item/device/flashlight/lantern/alt{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_9";
+	pixel_x = -1;
+	pixel_y = 12
+	},
+/obj/item/reagent_container/glass/bucket{
+	pixel_x = -12;
+	pixel_y = 7
+	},
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/valley/north)
 "vOI" = (
 /turf/open/lava/basalt/basalt10,
 /area/fire_colony/exterior/valley/northeast)
@@ -96738,6 +97020,13 @@
 	},
 /obj/effect/blocker/lava,
 /turf/open/lava/hot_lava/L_piece/east,
+/area/fire_colony/exterior/valley/north)
+"wkx" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/turf/open/lava/basalt/basalt_dug,
 /area/fire_colony/exterior/valley/north)
 "wkz" = (
 /obj/effect/lava/edges/basalt/corner_rock{
@@ -100338,7 +100627,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "stan3"
 	},
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "xfQ" = (
 /obj/item/tool/shovel/spade,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -101367,6 +101656,19 @@
 /obj/effect/blocker/lava,
 /turf/open/lava/hot_lava/side/south,
 /area/fire_colony/exterior/underground/caves/south_west)
+"xuR" = (
+/obj/item/stack/sheet/wood{
+	pixel_x = -1;
+	pixel_y = 6;
+	layer = 2.9
+	},
+/obj/item/stack/sheet/wood{
+	pixel_y = -1;
+	layer = 2.9
+	},
+/obj/item/mre_food_packet/clf,
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/valley/north)
 "xuV" = (
 /obj/effect/decal/warning_stripes/worn/stripes_double{
 	dir = 1;
@@ -102162,7 +102464,7 @@
 	icon_state = "leftengine_2";
 	opacity = 0
 	},
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "xGh" = (
 /obj/effect/decal/hybrisa/colorable_rug{
 	color = "#3d3d3d";
@@ -102699,7 +103001,6 @@
 "xMx" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	id = "lb_hangar_4";
-	name = "Excavation Lockdown";
 	dir = 4
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -104333,7 +104634,7 @@
 "yhp" = (
 /obj/structure/shuttle/part/ert/front_right_stan,
 /turf/open/lava/metal/plating,
-/area/fire_colony/interior/hangar/beta)
+/area/fire_colony/interior/hangar/broken_dropship)
 "yhr" = (
 /obj/structure/flora/alien/fullgrass/fullgrass_1,
 /obj/structure/flora/alien/bluegrass/bluegrass_3{
@@ -106292,7 +106593,7 @@ lSc
 ruO
 jMJ
 rKA
-xrk
+gLu
 iRM
 iRM
 jCX
@@ -127594,8 +127895,8 @@ aaQ
 aaQ
 aaQ
 aaQ
-aBj
-tCE
+sxC
+fLK
 aaE
 qev
 dav
@@ -127794,10 +128095,10 @@ ykw
 ykw
 aaQ
 aaQ
-aaE
-aaE
-qev
-tCE
+nxK
+kMt
+fPk
+feJ
 gSI
 aKW
 osF
@@ -127995,12 +128296,12 @@ ykw
 (116,1,1) = {"
 ykw
 aaQ
-lQI
-uzb
-lQI
-xRB
+fCQ
+fht
+jri
+mOG
 mUq
-aBj
+oWH
 oAr
 abO
 iNi
@@ -128197,12 +128498,12 @@ ykw
 (117,1,1) = {"
 ykw
 aaQ
-aaE
-abO
-abO
-qev
+xuR
+kKI
+bud
+qbX
 aaQ
-peB
+nNn
 jNu
 dop
 vov
@@ -128399,9 +128700,9 @@ ykw
 (118,1,1) = {"
 ykw
 aaQ
-peB
-sdo
-uzb
+vOC
+eBm
+wkx
 aaQ
 aaQ
 aaQ
@@ -128602,7 +128903,7 @@ ykw
 ykw
 aaQ
 aaQ
-fPH
+poZ
 tBA
 aaQ
 aaQ
@@ -139229,14 +139530,14 @@ weL
 qJa
 aKz
 gLj
-aWE
+cLh
 aWE
 msl
-aXT
-aXT
-aXT
+aag
+aag
+aag
 aLa
-aXT
+aag
 aQA
 aZu
 ifX
@@ -139435,10 +139736,10 @@ pvD
 goS
 bam
 aVU
-aWE
-aVU
-alR
 sCN
+aWE
+nia
+cUq
 aXX
 aVv
 ifX
@@ -139636,13 +139937,13 @@ acE
 aKX
 nKD
 omh
-cUq
+ahD
 ffi
 cUq
 alR
 cUq
 aMe
-bam
+acC
 ifX
 bKp
 rWZ
@@ -139841,7 +140142,7 @@ bam
 jrm
 atb
 jrm
-alR
+fnm
 soj
 aZS
 xfO
@@ -140037,9 +140338,9 @@ weL
 bKp
 yhp
 ddv
-atb
-atb
-msl
+vcD
+jrm
+pbX
 aXT
 aXT
 aXT
@@ -140239,8 +140540,8 @@ weL
 bKp
 bKp
 yhp
-acC
-acC
+aXT
+aXT
 dje
 aDQ
 aaB
@@ -140439,7 +140740,7 @@ vbG
 sCX
 aOZ
 rlZ
-ifX
+tyE
 ifX
 bKp
 ifX

@@ -186,17 +186,16 @@
 	ammo_band_color = AMMO_BAND_COLOR_RUBBER
 
 //-------------------------------------------------------
-//Beretta 92FS, the gun McClane carries around in Die Hard. Very similar to the service pistol, all around.
+//Beretta M92X, a 22nd century reimagining of the Beretta 92 series.
 
 /obj/item/ammo_magazine/pistol/b92fs
-	name = "\improper Beretta 92FS magazine (9mm)"
-	desc = "A 9mm pistol magazine for the Beretta 92FS."
+	name = "\improper Beretta M92X magazine (9mm)"
+	desc = "A 15-round 9mm magazine for the Beretta M92X, fitted with an electronic interface for ammunition tracking and automatic ejection."
 	caliber = "9mm"
 	icon_state = "m4a3" //PLACEHOLDER
 	max_rounds = 15
 	default_ammo = /datum/ammo/bullet/pistol
 	gun_type = /obj/item/weapon/gun/pistol/b92fs
-
 
 //-------------------------------------------------------
 //DEAGLE //This one is obvious.

@@ -331,6 +331,17 @@
 	item_state = "lasalle_brown_gloves"
 	adopts_squad_color = FALSE
 
+/obj/item/clothing/gloves/marine/veteran/lb_merc
+	name = "BHIG combat gloves"
+	desc = "A pair of reinforced black combat gloves with distinctive blue accents, standard issued to Bionational Hazard Intervention Group operators."
+	icon_state = "lb_merc"
+	item_state = "lb_merc"
+
+/obj/item/clothing/gloves/marine/veteran/lb_merc/Initialize()
+	. = ..()
+	RemoveElement(/datum/element/corp_label/wy)
+	AddElement(/datum/element/corp_label/bionational)
+
 /obj/item/clothing/gloves/marine/science_gloves
 	name = "chemical handling gloves"
 	desc = "A pair of thick protective gloves intended for handling hazardous materials, volatile compounds, and biological contaminants."

@@ -12,6 +12,22 @@
 		if(id_card)
 			_role = id_card.rank
 	switch(_role)
+		if(JOB_LB_MERC)
+			hud_icon_state = "merc"
+		if(JOB_LB_MERC_MEDIC)
+			hud_icon_state = "medic"
+		if(JOB_LB_MERC_ENGI)
+			hud_icon_state = "engi"
+		if(JOB_LB_MERC_SP)
+			hud_icon_state = "spec"
+		if(JOB_LB_MERC_TL)
+			hud_icon_state = "leader"
+		if(JOB_LB_MERC_SYN)
+			hud_icon_state = "synth"
+		if(JOB_LB_MERC_SG)
+			hud_icon_state = "sg"
+		if(JOB_LB_MERC_COMMANDER)
+			hud_icon_state = "com"
 		if(JOB_LB_SEC)
 			hud_icon_state = "security"
 		if(JOB_LB_SEC_SYNTH)

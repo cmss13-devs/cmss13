@@ -417,3 +417,9 @@
 /obj/effect/landmark/corpsespawner/working_joe/fireproof
 	name = "Deactivated Working Joe"
 	equip_path = /datum/equipment_preset/corpse/working_joe/fireproof
+
+// Dead UPP Spy
+
+/obj/effect/landmark/corpsespawner/upp_spy
+	name = "Corpse - Suspicious Colonist"
+	equip_path = /datum/equipment_preset/corpse/upp_spy

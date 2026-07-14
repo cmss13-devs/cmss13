@@ -895,6 +895,33 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot(new_human), WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot(new_human), WEAR_IN_BACK)
 
+/datum/equipment_preset/proc/add_lb_merc_survivor_weapon(mob/living/carbon/human/new_human)
+	var/random_weapon = rand(0,19)
+	switch(random_weapon)
+		if(0 to 4)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/a_m36(new_human), WEAR_L_HAND)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/a_m36(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/a_m36(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/a_m36(new_human), WEAR_IN_BACK)
+		if(5 to 9)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/a_m36(new_human), WEAR_L_HAND)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/a_m36(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/a_m36(new_human), WEAR_IN_BACK)
+		if(10 to 13)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/a_m36(new_human), WEAR_L_HAND)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/a_m36(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/a_m36(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/a_m36(new_human), WEAR_IN_BACK)
+		if(14 to 17)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/a_m36(new_human), WEAR_L_HAND)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/a_m36(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/a_m36(new_human), WEAR_IN_BACK)
+		if(18,19)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/combat(new_human), WEAR_L_HAND)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot(new_human), WEAR_IN_BACK)
+
 /**
  * Randomizes the primary weapon a survivor might find at the start of the outbreak in a gun cabinet.
  * For the most part you will stil get a shotgun but there is an off chance you get something unique.

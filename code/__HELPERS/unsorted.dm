@@ -365,46 +365,58 @@
 		moblist += friend
 	return moblist
 
-/proc/key_name(whom, include_link = null, include_name = 1, highlight_special_characters = 1, show_username = FALSE)
+/proc/key_name(whom, include_link = null, include_name = 1, highlight_special_characters = 1, show_username = FALSE, logging = TRUE)
 	var/mob/M
 	var/client/C
-	var/key
+	var/ckey // If it's going to go anywhere programatic like logs, we want consistent formatting, so the ckey rather than the key
+	var/key // Otherwise, we can use the key for friendly display
 	var/username
 
 	if(!whom)
 		return "*null*"
+
 	if(istype(whom, /client))
 		C = whom
 		M = C.mob
+		ckey = C.ckey
 		key = C.key
 		username = C.username()
+
 	else if(ismob(whom))
 		M = whom
 		C = M.client
+		ckey = M.persistent_ckey
 		key = M.key
 		username = M.username()
-	else if(istype(whom, /datum))
+
+	else if(istype(whom, /datum) && !logging)
 		var/datum/D = whom
 		return "*invalid:[D.type]*"
+
 	else
 		return "*invalid*"
 
 	. = ""
 
-	if(key)
-		if(include_link && C)
-			. += "<a href='byond://?priv_msg=[C.ckey]'>"
-
-		if(show_username && username && username != key)
-			. += "[username] ([key])"
-		else
-			. += key
-
-		if(include_link)
-			if(C) . += "</a>"
-			else . += " (DC)"
+	 // We still output the links in logging mode because message_admins is everywhere. They'll be stripped by logging backend later.
+	if(ckey && include_link)
+		. += "<a href='byond://?priv_msg=[ckey]'>"
 	else
-		. += "*no key*"
+		include_link = FALSE
+
+	if(show_username && username && username != key)
+		. += "[username] ([key])"
+	else if(ckey && logging)
+		. += ckey
+	else if(key)
+		. += key
+
+	if(include_link)
+		if(C) . += "</a>"
+		else . += "</a> (DC)" // This could be displayed even without a link, here for backwards compat
+
+	else
+		. += "*nokey*" // No spaces here to be format-compatible with ckeys
 
 	if(include_name && M)
 		var/name
@@ -423,7 +435,7 @@
 
 /// Returns key_name with username shown when it differs from key - for admin contexts
 /proc/key_name_with_username(whom, include_name = 1)
-	return key_name(whom, TRUE, include_name, TRUE, TRUE)
+	return key_name(whom, TRUE, include_name, TRUE, TRUE, logging = FALSE)
 
 
 // returns the turf located at the map edge in the specified direction relative to A

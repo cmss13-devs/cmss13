@@ -170,7 +170,6 @@ GLOBAL_LIST_INIT(misc_flags, list(
 			player.add_note("Whitelists updated by [user.key]. Reason: '[reason]'.", FALSE, NOTE_WHITELIST)
 			to_chat(user, SPAN_HELPFUL("Whitelists for [player_key] updated."))
 			message_admins("Whitelists for [player_key] updated by [key_name(user)]. Reason: '[reason]'.")
-			log_admin("WHITELISTS: Flags for [player_key] changed from [target_rights] to [new_rights]. Reason: '[reason]'.")
 			go_back()
 			update_static_data(user, ui)
 			return

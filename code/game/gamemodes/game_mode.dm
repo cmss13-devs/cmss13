@@ -301,19 +301,19 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 					found = 1
 					break
 			if(!found)
-				msg += "<b>[key_name(L)]</b>, the [L.job] (<font color='#ffcc00'><b>Disconnected</b></font>)\n"
+				msg += "<b>[key_name(L, logging = FALSE)]</b>, the [L.job] (<font color='#ffcc00'><b>Disconnected</b></font>)\n"
 
 
 		if(L.ckey && L.client)
 			if(L.client.inactivity >= (ROUNDSTART_LOGOUT_REPORT_TIME * 0.5)) //Connected, but inactive (alt+tabbed or something)
-				msg += "<b>[key_name(L)]</b>, the [L.job] (<font color='#ffcc00'><b>Connected, Inactive</b></font>)\n"
+				msg += "<b>[key_name(L, logging = FALSE)]</b>, the [L.job] (<font color='#ffcc00'><b>Connected, Inactive</b></font>)\n"
 				continue //AFK client
 			if(L.stat)
 				if(L.stat == UNCONSCIOUS)
-					msg += "<b>[key_name(L)]</b>, the [L.job] (Dying)\n"
+					msg += "<b>[key_name(L, logging = FALSE)]</b>, the [L.job] (Dying)\n"
 					continue //Unconscious
 				if(L.stat == DEAD)
-					msg += "<b>[key_name(L)]</b>, the [L.job] (Dead)\n"
+					msg += "<b>[key_name(L, logging = FALSE)]</b>, the [L.job] (Dead)\n"
 					continue //Dead
 
 			continue //Happy connected client

@@ -415,8 +415,6 @@
 
 	if(include_link)
 		. += "</a>"
-	if(!C)
-		. += " (DC)"
 
 	if(include_name && M)
 		var/name
@@ -427,6 +425,9 @@
 			name = M.name
 
 		. += "/([name])"
+
+	if(!C)
+		. += " (DC)"
 
 	return .
 

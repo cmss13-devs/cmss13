@@ -1,0 +1,4 @@
+author: "JHINgle4ce"
+delete-after: True
+changes:
+  - rscadd: "Adds MP synth to security"

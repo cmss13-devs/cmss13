@@ -404,7 +404,7 @@
 	else
 		include_link = FALSE
 
-	if(show_username && username && username != key)
+	if(key && show_username && username && username != key)
 		. += "[username] ([logging ? ckey : key])"
 	else if(ckey && logging)
 		. += ckey

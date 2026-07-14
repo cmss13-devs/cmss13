@@ -98,6 +98,14 @@
 #include "..\modules\unit_tests\timer_sanity.dm"
 #include "..\modules\unit_tests\tutorials.dm"
 #include "..\modules\unit_tests\xeno_strains.dm"
+#include "..\modules\unit_tests\movement\collisions_can_pass_flags.dm"
+#include "..\modules\unit_tests\movement\collisions_cardinal.dm"
+#include "..\modules\unit_tests\movement\collisions_collision_pass_through.dm"
+#include "..\modules\unit_tests\movement\collisions_diagonal.dm"
+#include "..\modules\unit_tests\movement\link_blocked_can_pass_flags.dm"
+#include "..\modules\unit_tests\movement\link_blocked_cardinal.dm"
+#include "..\modules\unit_tests\movement\link_blocked_diagonal.dm"
+#include "..\modules\unit_tests\movement\movement_helpers.dm"
 
 // Unit tests backend
 #include "..\modules\unit_tests\focus_only_tests.dm"

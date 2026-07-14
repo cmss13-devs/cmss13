@@ -149,10 +149,10 @@
 	var/list/list/query_terms = list()
 
 	if(target.persistent_ckey)
-	query_terms = list(
-		list(target.persistent_ckey, "ckey", 3),
-		list(target.persistent_ckey, null, 2),
-	)
+		query_terms = list(
+			list(target.persistent_ckey, "ckey", 3),
+			list(target.persistent_ckey, null, 2),
+		)
 
 	// To be really foolproof we tack key on top of it, because these logs just can't be consistent I SWEAR. Also we don't have a persistent_key..
 	var/target_key = target.key

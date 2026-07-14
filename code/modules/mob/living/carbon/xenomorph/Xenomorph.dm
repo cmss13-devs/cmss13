@@ -1298,6 +1298,3 @@
 	. = ..()
 	if(isxeno(user))
 		return
-	if(!can_mount(user, TRUE))
-		return
-	INVOKE_ASYNC(src, PROC_REF(carry_target), dropping, TRUE) // target_mounting is always true, the runner should never be buckling someone to itself (unless someone wants to make it happen)

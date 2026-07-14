@@ -398,7 +398,7 @@
 
 	. = ""
 
-	 // We still output the links in logging mode because message_admins is everywhere. They'll be stripped by logging backend later.
+	// We still output the links in logging mode because message_admins is everywhere. They'll be stripped by logging backend later.
 	if(ckey && include_link)
 		. += "<a href='byond://?priv_msg=[ckey]'>"
 	else

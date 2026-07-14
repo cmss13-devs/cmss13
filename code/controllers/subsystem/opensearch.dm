@@ -41,11 +41,13 @@ SUBSYSTEM_DEF(opensearch)
 			return
 
 /// Create a new query and register it
-/// [bootstrap] : Important text to seed the query with
-/datum/controller/subsystem/opensearch/proc/new_query(bootstrap, boostfield, boostfactor)
+/// [boostrap]: list of bootstrap terms, each in the form of list(term text, term field, term boost factor)
+///             all parameters but first are optional - the boost factor should really be a number
+///             right now, this does not escape backslashes or quotes
+/datum/controller/subsystem/opensearch/proc/new_query(list/list/bootstrap)
 	RETURN_TYPE(/datum/opensearch_query)
 	var/id = query_counter++
-	var/datum/opensearch_query/query = new(id, bootstrap, boostfield, boostfactor)
+	var/datum/opensearch_query/query = new(id, bootstrap)
 	queries[id] = query
 	return query
 

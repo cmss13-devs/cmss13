@@ -145,7 +145,26 @@
 	if(!target || !user.mob)
 		return
 
-	var/datum/opensearch_query/query = SSopensearch.new_query(target.persistent_ckey, "ckey", 3)
+	// We search ckey as a whole, but also boost it if it's present specifically in ckey field
+	var/list/list/query_terms = list()
+
+	if(target.persistent_ckey)
+	query_terms = list(
+		list(target.persistent_ckey, "ckey", 3),
+		list(target.persistent_ckey, null, 2),
+	)
+
+	// To be really foolproof we tack key on top of it, because these logs just can't be consistent I SWEAR. Also we don't have a persistent_key..
+	var/target_key = target.key
+	if(target_key && lowertext(target_key) != lowertext(target.persistent_ckey))
+		query_terms.Add(list(list(target_key))) // Have to doublewrap otherwise DM thinks we're trying to merge lists. I hate this language
+
+	// At this point i'm desperate enough we'll also add the mob name
+	// But only if it's different from the key to avoid new_player-s and such
+	if(lowertext(target_key) != lowertext(target.name))
+		query_terms.Add(list(list(target.name)))
+
+	var/datum/opensearch_query/query = SSopensearch.new_query(query_terms)
 	query.tgui_interact(user.mob)
 	return TRUE
 

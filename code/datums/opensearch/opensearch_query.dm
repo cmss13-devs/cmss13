@@ -32,21 +32,22 @@
 	/// If true, we sort by query score instead of by time
 	var/ranking_mode = TRUE
 
-/datum/opensearch_query/New(id, bootstrap, boostfield, boostfactor = 3)
+/// Create a query with bootstrap query text
+/datum/opensearch_query/New(id, list/list/bootstrap)
 	. = ..()
 	src.id = id // To be attributed by SSopensearch, don't instantiate this directly
 	name = "Query ~[id]"
 
-	if(bootstrap)
-		// First we allow searching all fields by the user's query
-		user_query = "\"[bootstrap]\""
-		// Then we add a second boosted search term for the query if applicable
-		// This is because we routinely want to do ckey searches, and a direct match
-		// to the ckey field is more important than in the other fields.
-		// Note that we could also do this via injecting boosted parameters in the DSL,
-		// but then that needs a whole new UI for user interaction
-		if(boostfield && boostfactor)
-			user_query = "([boostfield]:\"[bootstrap]\"^[boostfactor]) [user_query]"
+	if(bootstrap) // List of list("value", "field", boosting factor)
+		var/list/query_terms = list()
+		for(var/list/term in bootstrap)
+			var/render = "\"[term[1]]\""
+			if(length(term) >= 2 && term[2])
+				render = "[term[2]]:[render]"
+			if(length(term) >= 3 && term[3])
+				render = "[render]^[term[3]]"
+			query_terms += render
+		user_query = "([query_terms.Join(" ")]) [user_query]"
 
 	roundid = GLOB.round_id
 	query_status = OPENSEARCH_QUERY_STATUS_READY
@@ -339,5 +340,5 @@
 	set desc = "Create an OpenSearch query quickly"
 	set category = null
 
-	var/datum/opensearch_query/query = SSopensearch.new_query(bootstrap)
+	var/datum/opensearch_query/query = SSopensearch.new_query(list(bootstrap))
 	query.tgui_interact(usr)

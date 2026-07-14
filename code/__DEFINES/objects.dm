@@ -234,3 +234,11 @@ GLOBAL_LIST_INIT(RESTRICTED_CAMERA_NETWORKS, list( //Those networks can only be 
 
 /// How many fields maximum are allowed on papers
 #define PAPER_MAX_FIELDS 51
+
+// Filing cabinet defines
+#define FILING_CABINET_NORMAL "filingcabinet"
+#define FILING_CABINET_CHEST "chestdrawer"
+#define FILING_CABINET_TALL "tallcabinet"
+#define FILING_CABINET_NORMAL_DOUBLE "filingcabinet_double"
+#define FILING_CABINET_CHEST_DOUBLE "chestdrawer_double"
+#define FILING_CABINET_TALL_DOUBLE "tallcabinet_double"

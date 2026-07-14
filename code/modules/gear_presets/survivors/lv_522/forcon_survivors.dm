@@ -337,7 +337,6 @@
 	new_human.equip_to_slot_or_del(new sidearmammo(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new sidearmammo(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new sidearm(new_human), WEAR_R_HAND)
-	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/cigarette/cigar(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/lighter/zippo/gold(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/bottle/davenport(new_human), WEAR_IN_BACK)

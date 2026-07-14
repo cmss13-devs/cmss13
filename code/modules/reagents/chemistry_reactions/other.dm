@@ -200,11 +200,11 @@
 	var/data = " [created_volume] volume -> fuel: [light.fuel] range: [light.light_range] power: [light.light_power]"
 
 	if(holder.my_atom.fingerprintslast)
-		msg_admin_niche("[src] reaction has taken place in ([whereLink])[data]. Last associated key is [holder.my_atom.fingerprintslast].")
-		log_game("[src] reaction has taken place in ([where])[data]. Last associated key is [holder.my_atom.fingerprintslast].")
+		msg_admin_niche("[src] reaction has taken place in ([whereLink])[data]. Last associated ckey is [holder.my_atom.fingerprintslast].")
+		log_game("[src] reaction has taken place in ([where])[data]. Last associated ckey is [holder.my_atom.fingerprintslast].")
 	else
-		msg_admin_niche("[src] reaction has taken place in ([whereLink])[data]. No associated key.")
-		log_game("[src] reaction has taken place in ([where])[data]. No associated key.")
+		msg_admin_niche("[src] reaction has taken place in ([whereLink])[data]. No associated ckey.")
+		log_game("[src] reaction has taken place in ([where])[data]. No associated ckey.")
 
 /datum/chemical_reaction/chemfire
 	name = "Napalm"

@@ -151,6 +151,7 @@
 		list("Fire Extinguisher (Portable)", floor(scale * 3), /obj/item/tool/extinguisher/mini, VENDOR_ITEM_REGULAR),
 		list("High-Capacity Power Cell", floor(scale * 1), /obj/item/cell/high, VENDOR_ITEM_REGULAR),
 		list("Nailgun Magazine (7x45mm)", floor(scale * 4), /obj/item/ammo_magazine/smg/nailgun, VENDOR_ITEM_REGULAR),
+		list("FCT - Field Camera Tripod", floor(scale * 1), /obj/item/device/overwatch_camera_tripod, VENDOR_ITEM_REGULAR),
 
 		list("SKILL PAMPHLETS", -1, null, null),
 		list("JTAC Pamphlet", floor(scale * 1), /obj/item/pamphlet/upgradeable/jtac, VENDOR_ITEM_REGULAR),

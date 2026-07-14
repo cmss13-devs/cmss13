@@ -17,6 +17,9 @@
 	density = TRUE
 	anchored = TRUE
 	wrenchable = TRUE
+
+	// Initial cabinet type variable added, because initial(icon_state) does not work as intended for objects changed in map prefabs
+	var/list/cabinet_type = FILING_CABINET_NORMAL
 	var/list/allowed_types = list(/obj/item/paper, /obj/item/folder, /obj/item/clipboard, /obj/item/photo, /obj/item/paper_bundle, /obj/item/pamphlet)
 
 /obj/structure/filingcabinet/proc/dump_contents()
@@ -33,21 +36,26 @@
 /obj/structure/filingcabinet/double
 	name = "filing cabinets"
 	desc = "Two large cabinets with drawers."
-	icon_state = "filingcabinet_double"
+	icon_state = FILING_CABINET_NORMAL_DOUBLE
+	cabinet_type = FILING_CABINET_NORMAL_DOUBLE
 
 /obj/structure/filingcabinet/chestdrawer
 	name = "chest drawer"
-	icon_state = "chestdrawer"
+	icon_state = FILING_CABINET_CHEST
+	cabinet_type = FILING_CABINET_CHEST
 
 /obj/structure/filingcabinet/chestdrawer/double
 	name = "chest drawers"
-	icon_state = "chestdrawer_double"
+	icon_state = FILING_CABINET_CHEST_DOUBLE
+	cabinet_type = FILING_CABINET_CHEST_DOUBLE
 
 /obj/structure/filingcabinet/filingcabinet //not changing the path to avoid unecessary map issues, but please don't name stuff like this in the future -Pete
-	icon_state = "tallcabinet"
+	icon_state = FILING_CABINET_TALL
+	cabinet_type = FILING_CABINET_TALL
 
 /obj/structure/filingcabinet/filingcabinet/double
-	icon_state = "tallcabinet_double"
+	icon_state = FILING_CABINET_TALL_DOUBLE
+	cabinet_type = FILING_CABINET_TALL_DOUBLE
 
 /obj/structure/filingcabinet/Initialize()
 	. = ..()
@@ -99,7 +107,7 @@
 		icon_state = "[initial(icon_state)]-open"
 		addtimer(CALLBACK(src, "reset_icon"),0.5 SECONDS)
 /obj/structure/filingcabinet/proc/reset_icon()
-	icon_state = initial(icon_state)
+	icon_state = cabinet_type
 
 /* Automated Research Sorting Cabinet*/
 

@@ -1294,6 +1294,11 @@
 /obj/structure/machinery/computer/objective,
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
+"aey" = (
+/obj/item/device/binoculars/range/designator,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/asphalt/cement/cement3,
+/area/lv522/outdoors/nw_rockies)
 "aeD" = (
 /obj/structure/largecrate/random,
 /obj/effect/decal/cleanable/dirt,
@@ -46695,7 +46700,7 @@
 /turf/open/asphalt/cement/cement3,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "xTJ" = (
-/obj/item/tool/kitchen/utensil/pknife{
+/obj/item/tool/kitchen/utensil/knife/plastic{
 	pixel_x = -9
 	},
 /obj/structure/pipes/standard/manifold/hidden/green,
@@ -62183,7 +62188,7 @@ frZ
 gXR
 gXR
 hvE
-bHA
+aey
 bHA
 uSo
 xyL

@@ -1,3 +1,6 @@
+/// For lists of typepaths where you want to be able to match any other type
+#define ANY_TYPE_MATCHER "NOT A PATH"
+
 #define isdatum(X)   (istype(X, /datum))
 #define istypestrict(D, typepath)   D.type == typepath
 #define ismind(X)    (istype(X, /datum/mind))
@@ -16,6 +19,8 @@
 #define isgenerator(A) (istype(A, /generator))
 #define istransparentturf(A) (HAS_TRAIT(A, TURF_Z_TRANSPARENT_TRAIT))
 
+/// istype() but properly validates if [ANY_TYPE_MATCHER] is passed to `path`
+#define istype_or_any(to_check, path) (path == ANY_TYPE_MATCHER || istype(to_check, path))
 
 //Byond type ids
 #define TYPEID_NULL "0"

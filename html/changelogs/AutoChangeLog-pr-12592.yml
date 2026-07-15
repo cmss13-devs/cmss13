@@ -1,7 +1,0 @@
-author: "NHC"
-delete-after: True
-changes:
-  - qol: "SOCOM and grenade packs can now be collapsed"
-  - qol: "Grenade belt and satchel can now be filed by being slapped by themself, each other, and via grenade packs n boxes"
-  - qol: "M56D and M2C mags can be used to refil other mags of their own kind"
-  - qol: "M56D mags can be manually loaded/unloaded"

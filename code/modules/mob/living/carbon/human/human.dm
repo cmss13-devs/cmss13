@@ -42,7 +42,6 @@
 	hud_set_squad()
 	//and display them
 	add_to_all_mob_huds()
-	init_dropship_hud_tracking()
 
 /mob/living/carbon/human/initialize_pain()
 	if(species)
@@ -1899,4 +1898,3 @@
 		if(PULSE_THREADY)
 			return method ? ">250" : "extremely weak and fast, patient's artery feels like a thread"
 // output for machines^ ^^^^^^^output for people^^^^^^^^^
-

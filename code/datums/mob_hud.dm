@@ -279,6 +279,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 
 /datum/mob_hud/dropship
 	hud_icons = list(CAS_PROFILING_HUD)
+	var/list/registered_dropship_areas
 
 /datum/mob_hud/dropship/proc/can_see_reticles(mob/user)
 	if(!user?.client || !length(hudusers[user]))
@@ -287,6 +288,27 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 		return FALSE
 	var/mob/living/living_user = user
 	return living_user.is_in_dropship_hud_area()
+
+/datum/mob_hud/dropship/add_hud_to(mob/user, source)
+	register_dropship_area_signals()
+	return ..()
+
+/datum/mob_hud/dropship/proc/register_dropship_area_signals()
+	if(length(registered_dropship_areas))
+		return
+	registered_dropship_areas = list()
+	var/static/list/dropship_area_typecache = typecacheof(list(/area/shuttle/drop1, /area/shuttle/drop2))
+	for(var/area/checked_area as anything in GLOB.all_areas)
+		if(!is_type_in_typecache(checked_area, dropship_area_typecache))
+			continue
+		registered_dropship_areas += checked_area
+		RegisterSignal(checked_area, list(COMSIG_AREA_MOB_ENTERED, COMSIG_AREA_MOB_EXITED), PROC_REF(on_dropship_area_changed))
+
+/datum/mob_hud/dropship/proc/on_dropship_area_changed(datum/source, mob/living/changed_mob)
+	SIGNAL_HANDLER
+	if(!istype(changed_mob))
+		return
+	changed_mob.refresh_dropship_hud()
 
 /datum/mob_hud/dropship/add_to_single_hud(mob/user, mob/living/carbon/xenomorph/target)
 	var/client/user_client = user.client
@@ -378,15 +400,6 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 		GLOB.huds[MOB_HUD_DROPSHIP].add_to_hud(src)
 	init_dropship_hud_overlays()
 
-/mob/living
-	var/tmp/was_in_dropship_hud_area = FALSE
-
-/// Handle dropship hud update
-/mob/living/proc/init_dropship_hud_tracking()
-	UnregisterSignal(src, COMSIG_MOVABLE_TURF_ENTERED)
-	was_in_dropship_hud_area = is_in_dropship_hud_area()
-	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTERED, PROC_REF(on_dropship_area_entered))
-
 
 /mob/proc/remove_from_all_mob_huds()
 	return
@@ -402,7 +415,6 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 		if(istype(hud, /datum/mob_hud/xeno))
 			continue
 		hud.remove_from_hud(src)
-	UnregisterSignal(src, COMSIG_MOVABLE_TURF_ENTERED)
 
 /mob/living/carbon/xenomorph/remove_from_all_mob_huds()
 	for(var/datum/mob_hud/hud in GLOB.huds)
@@ -414,7 +426,6 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 		else if (istype(hud, /datum/mob_hud/dropship))
 			hud.remove_from_hud(src)
 			hud.remove_hud_from(src, src)
-	UnregisterSignal(src, COMSIG_MOVABLE_TURF_ENTERED)
 	if(xeno_hostile_hud)
 		xeno_hostile_hud = FALSE
 		var/datum/mob_hud/hostile_hud = GLOB.huds[MOB_HUD_XENO_HOSTILE]
@@ -1141,15 +1152,6 @@ GLOBAL_DATUM_INIT(hud_icon_new_player_3, /image, image('icons/mob/hud/hud.dmi', 
 			icon_state = DROPSHIP_OVERLAY_ENEMY_LIGHT
 		if(icon_state)
 			hud_list[icon_state].icon_state = icon_state
-
-/// Updates dropship HUD when changing areas
-/mob/living/proc/on_dropship_area_entered(datum/source, turf/entered_turf)
-	SIGNAL_HANDLER
-	var/currently_in_dropship_hud_area = is_in_dropship_hud_area(entered_turf)
-	if(currently_in_dropship_hud_area == was_in_dropship_hud_area)
-		return
-	was_in_dropship_hud_area = currently_in_dropship_hud_area
-	refresh_dropship_hud()
 
 /mob/living/proc/is_in_dropship_hud_area(atom/location = src)
 	var/static/list/allowed_areas = list(/area/shuttle/drop1, /area/shuttle/drop2)

@@ -150,10 +150,11 @@
 "aaC" = (
 /obj/effect/decal/hybrisa/warning/redandwhite_N,
 /obj/item/tool/weldingtool/simple,
-/turf/open/floor/strata,
+/turf/open/floor/hybrisa/metal/red_warning_floor,
 /area/atlan/lz/near_lz2)
 "aaD" = (
 /obj/item/stack/tile/plasteel,
+/obj/effect/sentry_landmark/lz_2/bottom_left,
 /turf/open/floor/plating,
 /area/atlan/lz/near_lz2)
 "aaE" = (
@@ -3401,7 +3402,7 @@
 	icon_state = "lattice3";
 	pixel_x = 16
 	},
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/orange_cover,
 /area/atlan/station/repairs_lift)
 "aku" = (
 /obj/effect/decal/cleanable/dirt,
@@ -4039,6 +4040,13 @@
 	},
 /turf/open/floor/strata/cyan1,
 /area/atlan/station/medical)
+"amf" = (
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 8
+	},
+/obj/effect/sentry_landmark/lz_2/top_right,
+/turf/open/floor/strata/green1,
+/area/atlan/lz/near_lz2)
 "amg" = (
 /obj/structure/platform_decoration/metal/strata/east,
 /obj/structure/prop/invuln/lattice_prop{
@@ -4076,6 +4084,11 @@
 /obj/structure/machinery/alarm,
 /turf/closed/wall/upp_ship/grey/orange,
 /area/atlan/asteroid/processing_handling/cas)
+"aml" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/sentry_landmark/lz_2/top_right,
+/turf/open/floor/strata,
+/area/atlan/lz/near_lz2)
 "amm" = (
 /obj/structure/bed/chair/vehicle{
 	pixel_x = -8
@@ -4250,6 +4263,10 @@
 	},
 /turf/open/floor/strata,
 /area/atlan/station/hab_sec)
+"amP" = (
+/obj/effect/sentry_landmark/lz_2/top_left,
+/turf/open/floor/strata,
+/area/atlan/lz/near_lz2)
 "amQ" = (
 /obj/structure/platform/metal/strata/north,
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -4459,6 +4476,10 @@
 	},
 /turf/open/floor/strata,
 /area/atlan/station/promenade)
+"anC" = (
+/obj/effect/sentry_landmark/lz_2/top_left,
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/atlan/lz/near_lz2)
 "anD" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 10
@@ -5879,6 +5900,10 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_se_train)
+"arY" = (
+/obj/effect/decal/hybrisa/warning/redandwhite_N,
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_seperation/cas)
 "arZ" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
@@ -6664,6 +6689,10 @@
 "auw" = (
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/single_dorms)
+"aux" = (
+/obj/effect/decal/hybrisa/warning/redandwhite_N,
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_seperation)
 "auy" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/strata/floor2,
@@ -7770,7 +7799,7 @@
 /obj/structure/pipes/vents/scrubber{
 	dir = 4
 	},
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/orange_cover,
 /area/atlan/station/repairs_lift)
 "ayb" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -7865,7 +7894,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 5
 	},
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/orange_cover,
 /area/atlan/station/repairs_lift)
 "ayr" = (
 /obj/structure/pipes/vents/pump,
@@ -9931,7 +9960,7 @@
 "aFg" = (
 /obj/effect/decal/hybrisa/warning/redandwhite_E,
 /obj/structure/machinery/light,
-/turf/open/floor/strata,
+/turf/open/floor/hybrisa/metal/red_warning_floor,
 /area/atlan/station/hab_docks)
 "aFh" = (
 /obj/structure/platform_decoration/metal/strata/west,
@@ -9941,7 +9970,7 @@
 /obj/effect/decal/hybrisa/warning/redandwhite_W,
 /obj/effect/decal/hybrisa/warning/redandwhite_N,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/strata,
+/turf/open/floor/hybrisa/metal/red_warning_floor,
 /area/atlan/station/hab_docks)
 "aFj" = (
 /obj/structure/powerloader_wreckage/ft,
@@ -10343,12 +10372,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/exports_east)
-"aGH" = (
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/effect/sentry_landmark/lz_2/bottom_right,
-/obj/effect/decal/strata_decals/catwalk/prison,
-/turf/open/floor/strata,
-/area/atlan/lz/near_lz2)
 "aGI" = (
 /obj/item/storage/briefcase,
 /turf/open/floor/strata,
@@ -11399,7 +11422,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/orange_cover,
 /area/atlan/station/repairs_lift)
 "aKi" = (
 /obj/structure/pipes/vents/pump,
@@ -12331,6 +12354,10 @@
 	},
 /turf/open/floor/strata/blue1,
 /area/atlan/asteroid/processing_train_control)
+"aMW" = (
+/obj/effect/decal/hybrisa/warning/redandwhite_S,
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_seperation)
 "aMX" = (
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/asteroid/processing_seperation/cas)
@@ -13229,10 +13256,7 @@
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_seperation/cas)
 "aPH" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	pixel_y = -1
-	},
+/obj/effect/decal/hybrisa/warning/redandwhite_S,
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_seperation/cas)
 "aPI" = (
@@ -13921,10 +13945,6 @@
 /obj/effect/hunter/ancient_temple/rubble/rubble_2,
 /turf/open/gm/dirt/brown,
 /area/atlan/asteroid/processing_caves)
-"aSh" = (
-/obj/effect/sentry_landmark/lz_2/bottom_left,
-/turf/open/floor/strata,
-/area/atlan/lz/near_lz2)
 "aSi" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -15548,7 +15568,7 @@
 /area/atlan/station/repairs_lift)
 "aXt" = (
 /obj/structure/machinery/disposal,
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/orange_cover,
 /area/atlan/station/repairs_lift)
 "aXu" = (
 /obj/structure/largecrate/random/secure,
@@ -15693,7 +15713,7 @@
 /area/atlan/station/repairoffice)
 "aXO" = (
 /obj/structure/machinery/power/apc/power/north,
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/orange_cover,
 /area/atlan/station/repairs_lift)
 "aXP" = (
 /obj/effect/decal/warning_stripes{
@@ -15911,7 +15931,7 @@
 /area/atlan/station/airlock_east)
 "aYu" = (
 /obj/structure/closet/secure_closet/engineering_personal,
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/orange_cover,
 /area/atlan/station/repairs_lift)
 "aYv" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -15951,6 +15971,25 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/squares,
 /area/atlan/station/airlock_east)
+"aYC" = (
+/obj/effect/decal/strata_decals/grime/grime4,
+/turf/open/floor/strata/floor2,
+/area/atlan/lz/near_lz1)
+"aYD" = (
+/obj/structure/machinery/light,
+/turf/open/floor/strata/orange_cover,
+/area/atlan/station/repairs_lift)
+"aYE" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/turf/open/floor/strata/orange_cover,
+/area/atlan/station/repairs_lift)
+"aYF" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/strata/orange_cover,
+/area/atlan/station/repairs_lift)
 "aYG" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/redcorner/east,
@@ -15958,6 +15997,31 @@
 "aYH" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/red/north,
+/area/atlan/station/airlock_east)
+"aYI" = (
+/obj/item/tank/emergency_oxygen/double{
+	pixel_y = 10;
+	pixel_x = 6
+	},
+/obj/item/tank/emergency_oxygen/double{
+	pixel_y = -6;
+	pixel_x = -10
+	},
+/obj/item/tank/emergency_oxygen/double{
+	pixel_y = 10;
+	pixel_x = -10
+	},
+/obj/item/tank/emergency_oxygen/double{
+	pixel_y = -6;
+	pixel_x = 6
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/corsat,
 /area/atlan/station/airlock_east)
 "aYJ" = (
 /obj/effect/decal/cleanable/dirt,
@@ -17352,11 +17416,6 @@
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/floor/greengrid,
 /area/atlan/station/storage)
-"bTd" = (
-/obj/structure/machinery/landinglight,
-/obj/effect/sentry_landmark/lz_2/top_left,
-/turf/open/floor/strata/green1,
-/area/atlan/lz/near_lz2)
 "bTt" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -17702,7 +17761,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/orange_cover,
 /area/atlan/station/repairs_lift)
 "cij" = (
 /obj/structure/largecrate/random/barrel/true_random,
@@ -18192,9 +18251,6 @@
 "cAM" = (
 /turf/closed/wall/upp_ship/grey/orange,
 /area/atlan/station/cargooffice)
-"cAZ" = (
-/turf/open/floor/plating/plating_catwalk/strata,
-/area/atlan/station/hab_docks)
 "cCf" = (
 /obj/item/tool/wet_sign{
 	pixel_x = 6;
@@ -19037,7 +19093,7 @@
 /area/atlan/asteroid/exports_west)
 "dhV" = (
 /obj/structure/bed/sofa/south/grey/left,
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/orange_cover,
 /area/atlan/station/repairs_lift)
 "dii" = (
 /obj/effect/decal/cleanable/dirt,
@@ -19314,7 +19370,7 @@
 	icon_state = "lattice3";
 	pixel_x = 16
 	},
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/orange_cover,
 /area/atlan/station/repairs_lift)
 "drH" = (
 /obj/effect/landmark/monkey_spawn,
@@ -19529,7 +19585,7 @@
 /area/atlan/station/promenade)
 "dAW" = (
 /obj/effect/decal/hybrisa/warning/redandwhite_E,
-/turf/open/floor/strata,
+/turf/open/floor/hybrisa/metal/red_warning_floor,
 /area/atlan/station/hab_docks)
 "dAY" = (
 /obj/structure/sign/poster/upp{
@@ -20478,7 +20534,7 @@
 "emL" = (
 /obj/effect/decal/hybrisa/warning/redandwhite_E,
 /obj/effect/decal/hybrisa/warning/redandwhite_N,
-/turf/open/floor/strata,
+/turf/open/floor/hybrisa/metal/red_warning_floor,
 /area/atlan/station/hab_docks)
 "enf" = (
 /obj/structure/platform_decoration/metal/strata,
@@ -21412,7 +21468,7 @@
 /area/atlan/asteroid/caves)
 "eXt" = (
 /obj/effect/decal/hybrisa/warning/redandwhite_N,
-/turf/open/floor/strata,
+/turf/open/floor/hybrisa/metal/red_warning_floor,
 /area/atlan/station/hab_docks)
 "eXx" = (
 /obj/structure/machinery/light/small{
@@ -24989,7 +25045,7 @@
 "hHY" = (
 /obj/effect/decal/hybrisa/warning/redandwhite_N,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/strata,
+/turf/open/floor/hybrisa/metal/red_warning_floor,
 /area/atlan/station/hab_docks)
 "hIx" = (
 /obj/structure/flora/pottedplant{
@@ -25833,7 +25889,7 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 4
 	},
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/orange_cover,
 /area/atlan/station/repairs_lift)
 "ipB" = (
 /obj/structure/machinery/conveyor{
@@ -26032,7 +26088,7 @@
 "ivV" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/hybrisa/warning/redandwhite_N,
-/turf/open/floor/strata,
+/turf/open/floor/hybrisa/metal/red_warning_floor,
 /area/atlan/station/hab_docks)
 "ixe" = (
 /obj/structure/machinery/power/power_generator/port_gen/pacman,
@@ -26371,7 +26427,6 @@
 /turf/closed/wall/upp_ship/grey,
 /area/atlan/station/water_tanks)
 "iGl" = (
-/obj/effect/sentry_landmark/lz_2/top_left,
 /turf/open/floor/strata/yellow3/north,
 /area/atlan/lz/near_lz2)
 "iGu" = (
@@ -27124,7 +27179,7 @@
 	pixel_y = 33;
 	layer = 2.9
 	},
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/orange_cover,
 /area/atlan/station/repairs_lift)
 "jen" = (
 /obj/structure/bedsheetbin{
@@ -27311,7 +27366,7 @@
 /area/atlan/asteroid/processing_offices)
 "jlD" = (
 /obj/structure/closet/emcloset,
-/turf/open/floor/strata/orange_icorner/north,
+/turf/open/floor/strata/orange_cover,
 /area/atlan/station/repairs_lift)
 "jlR" = (
 /obj/item/tool/warning_cone{
@@ -28152,7 +28207,7 @@
 "jPp" = (
 /obj/effect/decal/hybrisa/warning/redandwhite_E,
 /obj/effect/decal/hybrisa/warning/redandwhite_S,
-/turf/open/floor/strata/floor2,
+/turf/open/floor/hybrisa/metal/red_warning_floor,
 /area/atlan/lz/near_lz1)
 "jPr" = (
 /obj/effect/decal/cleanable/dirt,
@@ -28218,7 +28273,7 @@
 	pixel_x = -6;
 	pixel_y = 14
 	},
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/orange_cover,
 /area/atlan/station/repairs_lift)
 "jSB" = (
 /obj/item/shard,
@@ -28443,7 +28498,7 @@
 "kem" = (
 /obj/structure/machinery/light,
 /obj/effect/decal/hybrisa/warning/redandwhite_W,
-/turf/open/floor/strata,
+/turf/open/floor/hybrisa/metal/red_warning_floor,
 /area/atlan/station/hab_docks)
 "keD" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -28623,7 +28678,7 @@
 "klu" = (
 /obj/effect/decal/hybrisa/warning/redandwhite_W,
 /obj/effect/decal/hybrisa/warning/redandwhite_N,
-/turf/open/floor/strata,
+/turf/open/floor/hybrisa/metal/red_warning_floor,
 /area/atlan/lz/near_lz2)
 "kmc" = (
 /obj/structure/bookcase{
@@ -28658,12 +28713,12 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/orange_cover,
 /area/atlan/station/repairs_lift)
 "knf" = (
 /obj/effect/decal/hybrisa/warning/redandwhite_W,
 /obj/effect/decal/hybrisa/warning/redandwhite_S,
-/turf/open/floor/strata/floor2,
+/turf/open/floor/hybrisa/metal/red_warning_floor,
 /area/atlan/lz/near_lz1)
 "kng" = (
 /obj/item/tool/weldpack,
@@ -31365,7 +31420,7 @@
 	dir = 8;
 	pixel_y = 16
 	},
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/orange_cover,
 /area/atlan/station/repairs_lift)
 "mwG" = (
 /obj/structure/bed/chair/dropship/pilot{
@@ -32178,12 +32233,12 @@
 	pixel_x = 1;
 	pixel_y = 6
 	},
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/orange_cover,
 /area/atlan/station/repairs_lift)
 "ncw" = (
 /obj/effect/decal/hybrisa/warning/redandwhite_N,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/strata/floor3/east,
+/turf/open/floor/hybrisa/metal/red_warning_floor,
 /area/atlan/lz/near_lz2)
 "ncx" = (
 /obj/item/tool/warning_cone{
@@ -34992,7 +35047,7 @@
 /area/atlan/station/walkway)
 "pfG" = (
 /obj/effect/decal/hybrisa/warning/redandwhite_W,
-/turf/open/floor/strata,
+/turf/open/floor/hybrisa/metal/red_warning_floor,
 /area/atlan/lz/near_lz2)
 "pgn" = (
 /obj/structure/cargo_container/upp_small/container_9/left,
@@ -35307,10 +35362,6 @@
 	},
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/repairs_lift)
-"prc" = (
-/obj/effect/decal/hybrisa/warning/redandwhite_N,
-/turf/open/floor/strata/floor3/east,
-/area/atlan/station/hab_docks)
 "prL" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
@@ -36497,10 +36548,6 @@
 /obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/strata/cyan1/east,
 /area/atlan/station/medical)
-"qgF" = (
-/obj/effect/decal/hybrisa/warning/redandwhite_N,
-/turf/open/floor/plating/plating_catwalk/strata,
-/area/atlan/station/hab_docks)
 "qgH" = (
 /obj/structure/largecrate/empty/case,
 /turf/open/floor/prison/darkyellowfull2,
@@ -37500,7 +37547,8 @@
 /area/atlan/lz/near_lz1)
 "qVz" = (
 /obj/effect/decal/hybrisa/warning/redandwhite_S,
-/turf/open/floor/strata/floor3/east,
+/obj/effect/sentry_landmark/lz_1/top_left,
+/turf/open/floor/hybrisa/metal/red_warning_floor,
 /area/atlan/lz/near_lz1)
 "qVB" = (
 /obj/structure/flora/pottedplant{
@@ -37692,7 +37740,7 @@
 /area/atlan/station/repairoffice)
 "rbL" = (
 /obj/effect/decal/hybrisa/warning/redandwhite_W,
-/turf/open/floor/strata/floor2,
+/turf/open/floor/hybrisa/metal/red_warning_floor,
 /area/atlan/lz/near_lz1)
 "rcC" = (
 /obj/structure/sign/banners/upp_flag{
@@ -38293,7 +38341,7 @@
 /area/atlan/station/drydock)
 "rBk" = (
 /obj/effect/decal/hybrisa/warning/redandwhite_S,
-/turf/open/floor/strata/floor2,
+/turf/open/floor/hybrisa/metal/red_warning_floor,
 /area/atlan/lz/near_lz1)
 "rBZ" = (
 /obj/structure/machinery/door/airlock/prison_hatch/alt/autoname,
@@ -39055,7 +39103,7 @@
 /area/atlan/station/security)
 "sbf" = (
 /obj/structure/machinery/vending/coffee,
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/orange_cover,
 /area/atlan/station/repairs_lift)
 "sbs" = (
 /obj/structure/machinery/door/airlock/prison_hatch/alt/autoname,
@@ -39245,7 +39293,7 @@
 /obj/effect/decal/hybrisa/warning/redandwhite_E,
 /obj/effect/decal/hybrisa/warning/redandwhite_N,
 /obj/item/tool/wet_sign,
-/turf/open/floor/strata,
+/turf/open/floor/hybrisa/metal/red_warning_floor,
 /area/atlan/lz/near_lz2)
 "siq" = (
 /obj/structure/cargo_container/upp_small/container_10/left{
@@ -39260,7 +39308,7 @@
 /area/atlan/asteroid/processing_offices)
 "sju" = (
 /obj/effect/decal/hybrisa/warning/redandwhite_E,
-/turf/open/floor/strata/floor2,
+/turf/open/floor/hybrisa/metal/red_warning_floor,
 /area/atlan/lz/near_lz1)
 "skd" = (
 /obj/structure/stairs/perspective{
@@ -39888,7 +39936,7 @@
 /area/atlan/station/medical)
 "sLm" = (
 /obj/effect/decal/hybrisa/warning/redandwhite_N,
-/turf/open/floor/strata,
+/turf/open/floor/hybrisa/metal/red_warning_floor,
 /area/atlan/lz/near_lz2)
 "sLH" = (
 /obj/structure/platform/metal/kutjevo_smooth/north,
@@ -40620,7 +40668,7 @@
 "tjF" = (
 /obj/effect/decal/hybrisa/warning/redandwhite_S,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/strata/floor2,
+/turf/open/floor/hybrisa/metal/red_warning_floor,
 /area/atlan/lz/near_lz1)
 "tjI" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics{
@@ -40848,7 +40896,7 @@
 "trI" = (
 /obj/effect/decal/hybrisa/warning/redandwhite_W,
 /obj/effect/decal/hybrisa/warning/redandwhite_N,
-/turf/open/floor/strata,
+/turf/open/floor/hybrisa/metal/red_warning_floor,
 /area/atlan/station/hab_docks)
 "trM" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt,
@@ -43874,11 +43922,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrownfull2,
 /area/atlan/asteroid/processing_seperation)
-"vFk" = (
-/obj/effect/decal/hybrisa/warning/redandwhite_S,
-/obj/effect/sentry_landmark/lz_1/top_left,
-/turf/open/floor/strata/floor2,
-/area/atlan/lz/near_lz1)
 "vFI" = (
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/storage)
@@ -44894,7 +44937,7 @@
 /obj/structure/sign/poster/upp{
 	pixel_y = 33
 	},
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/orange_cover,
 /area/atlan/station/repairs_lift)
 "wGV" = (
 /obj/structure/closet/secure_closet/cargotech,
@@ -45512,7 +45555,7 @@
 /obj/structure/closet/firecloset/full,
 /obj/item/clothing/head/helmet/marine/veteran/UPP/firefighter,
 /obj/item/clothing/suit/storage/marine/light/vest/fire_light/upp,
-/turf/open/floor/strata/orange_edge/east,
+/turf/open/floor/strata/orange_cover,
 /area/atlan/station/repairs_lift)
 "xhv" = (
 /obj/effect/decal/warning_stripes{
@@ -46097,13 +46140,6 @@
 "xGR" = (
 /turf/open/floor/corsat/redcorner/north,
 /area/atlan/station/airlock_west)
-"xHl" = (
-/obj/structure/machinery/landinglight/delaythree{
-	dir = 8
-	},
-/obj/effect/sentry_landmark/lz_2/top_right,
-/turf/open/floor/strata/green1,
-/area/atlan/lz/near_lz2)
 "xHq" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 8;
@@ -101492,7 +101528,7 @@ eOT
 eOT
 eOT
 vUh
-eOT
+aYC
 eOT
 hrV
 blN
@@ -102426,8 +102462,8 @@ hrk
 jja
 aZK
 qZX
-abl
-qqL
+fRe
+amP
 qqL
 qWZ
 eJw
@@ -102641,7 +102677,7 @@ qcJ
 qqL
 qqL
 qqL
-bTd
+wzQ
 eJw
 eJw
 eJw
@@ -102852,7 +102888,7 @@ aZK
 kBT
 qqL
 qqL
-fRe
+abl
 xos
 eJw
 eJw
@@ -103275,7 +103311,7 @@ jet
 rGC
 qqL
 qqL
-lFn
+anC
 qqL
 qWZ
 eJw
@@ -103797,7 +103833,7 @@ mOT
 eAC
 mOT
 vUh
-vFk
+rBk
 eOT
 eOT
 mRB
@@ -103911,7 +103947,7 @@ eii
 aZK
 cOp
 ane
-egc
+qqL
 qqL
 tXD
 eJw
@@ -104011,7 +104047,7 @@ mOT
 eOT
 tjF
 vUh
-ofY
+eOT
 xaB
 qoP
 qoP
@@ -104550,9 +104586,9 @@ ane
 qqL
 qqL
 mlW
-xHl
+lfb
 sgq
-bIY
+amf
 lfb
 bIY
 aaY
@@ -104574,7 +104610,7 @@ bIY
 sgq
 mlW
 qqL
-aSh
+qqL
 pbj
 gLV
 mOT
@@ -104762,12 +104798,12 @@ anD
 nfn
 ana
 ana
-ana
+aml
 ana
 and
 qqL
 qqL
-egc
+qqL
 oUD
 qqL
 qqL
@@ -104858,8 +104894,8 @@ aAk
 aAk
 dXk
 nBg
-ofY
 eOT
+ofY
 oHv
 loE
 qSW
@@ -104978,7 +105014,7 @@ qqL
 qqL
 ane
 qqL
-qqL
+egc
 qqL
 jOq
 jOq
@@ -104990,8 +105026,8 @@ qqL
 qqL
 qqL
 qqL
-qqL
 hGI
+qqL
 fRe
 qqL
 qqL
@@ -105196,7 +105232,7 @@ anx
 qqL
 jOq
 qqL
-qqL
+hGI
 qqL
 qqL
 qqL
@@ -105209,7 +105245,7 @@ fRe
 qqL
 qqL
 qqL
-aSh
+qqL
 qqL
 uLT
 azx
@@ -105408,7 +105444,7 @@ any
 ayW
 ayW
 ayW
-aGH
+ayW
 ani
 and
 qqL
@@ -105512,7 +105548,7 @@ eOT
 eOT
 eOT
 eOT
-eOT
+aYC
 eOT
 eOT
 eOT
@@ -108196,7 +108232,7 @@ tiE
 fMm
 wEE
 ohy
-prc
+eXt
 ohy
 bfw
 eAC
@@ -111165,7 +111201,7 @@ npq
 wEE
 aFk
 eXt
-cAZ
+ohy
 bfw
 eAC
 bfw
@@ -112012,7 +112048,7 @@ pvh
 fMm
 vQH
 agg
-qgF
+eXt
 pKE
 bfw
 eAC
@@ -112436,7 +112472,7 @@ pvh
 fMm
 wEE
 agg
-prc
+eXt
 ohy
 bfw
 eAC
@@ -113333,7 +113369,7 @@ alE
 alE
 alE
 agj
-lXz
+qrH
 aYG
 bae
 xiE
@@ -113545,7 +113581,7 @@ alD
 alD
 alE
 agj
-arl
+aYI
 aYH
 baf
 vXg
@@ -113562,7 +113598,7 @@ gdC
 agj
 agj
 sbf
-pjT
+oiD
 nbF
 dJq
 wrW
@@ -113757,7 +113793,7 @@ alD
 alD
 alD
 agj
-lXz
+qrH
 bap
 aYB
 aZZ
@@ -113775,7 +113811,7 @@ oqe
 aXT
 dhV
 wgp
-pjT
+oiD
 dJq
 aXC
 aXp
@@ -113987,7 +114023,7 @@ qrH
 aXT
 wGu
 dIP
-xMk
+aYD
 dJq
 aXD
 aXp
@@ -114398,7 +114434,7 @@ voO
 sZi
 pjT
 gwg
-pjT
+oiD
 agj
 agj
 aAh
@@ -114610,10 +114646,10 @@ niL
 qnx
 ayr
 aYv
-ayb
-ayb
+aYF
+aYF
 ayq
-pjT
+oiD
 jlD
 xht
 aDc
@@ -114623,11 +114659,11 @@ qrH
 aXT
 jej
 ayh
-pjT
+oiD
 dJq
 knd
-wgp
-pjT
+pMV
+oiD
 aXt
 xAJ
 xAJ
@@ -114827,7 +114863,7 @@ gwg
 akx
 ayn
 ayo
-gwg
+oiD
 agj
 gdC
 aXY
@@ -114835,12 +114871,12 @@ aXT
 aXT
 aKh
 ayh
-pjT
-pjT
-wgp
+oiD
+oiD
+pMV
 fMq
 fMq
-gwg
+oiD
 chU
 dJq
 mSt
@@ -115039,13 +115075,13 @@ qGP
 akw
 wgp
 aYb
-pjT
+oiD
 chU
-giE
-gwg
+aYE
+oiD
 ipm
 jSw
-pjT
+oiD
 eYA
 ayb
 aYY
@@ -128886,7 +128922,7 @@ aOq
 aNY
 aNY
 aNM
-aNE
+arY
 nQZ
 nQZ
 lGF
@@ -129085,7 +129121,7 @@ lGF
 lGF
 aNr
 nQZ
-gmV
+aMW
 aNM
 ake
 aNZ
@@ -129098,7 +129134,7 @@ aOr
 aOf
 aNZ
 aNM
-dLS
+aux
 nQZ
 nQZ
 lGF

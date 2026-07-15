@@ -41,7 +41,7 @@
 	var/obj/item/device/cotablet/tablet = locate(/obj/item/device/cotablet) in owner.contents
 
 	if(!human_owner.assigned_squad && !comp && !tablet)
-		to_chat(owner, SPAN_WARNING("You need to have access to an overwatch console or device!"))
+		to_chat(owner, SPAN_WARNING("You need to have access to an overwatch console or tablet device!"))
 		return FALSE
 
 /datum/action/innate/message_squad/New(Target, override_icon_state)
@@ -195,13 +195,16 @@ GLOBAL_LIST_INIT(ROLES_GLOBAL_FACTION_MESSAGE_EXCEPTION, list(JOB_WO_CO, JOB_WO_
 	enter_cooldown(COOLDOWN_HUD_LENGTH)
 	alert_receivers += GLOB.observer_list
 
-	//if(GLOB.radio_communication_clarity < 100)
-	//	text = stars(text, GLOB.radio_communication_clarity)
+
 	for(var/mob/mob_receiver in alert_receivers)
 		if((isobserver(mob_receiver) && mob_receiver.client?.prefs?.toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS) || isliving(mob_receiver))
 			playsound_client(mob_receiver.client, sound_alert, 35, channel = CHANNEL_ANNOUNCEMENTS)
 		if(!isobserver(mob_receiver))
-			mob_receiver.play_screen_text("<span class='langchat' style=font-size:24pt;text-align:left valign='top'><u>[uppertext(announcement_title)]:</u></span><br>" + text, new /atom/movable/screen/text/screen_text/picture/potrait_custom_mugshot(null, null, owner), override_color)
+			var/mob_text = text
+			if(!is_mainship_level(mob_receiver.z))
+				if(SSradio.faction_coms_clarity[human_owner] < 100)
+					text = stars(text, SSradio.faction_coms_clarity[human_owner])
+			mob_receiver.play_screen_text("<span class='langchat' style=font-size:24pt;text-align:left valign='top'><u>[uppertext(announcement_title)]:</u></span><br>" + mob_text, new /atom/movable/screen/text/screen_text/picture/potrait_custom_mugshot(null, null, owner), override_color)
 	notify_ghosts(header = "HUD Message", message = "[human_owner] has given a HUD announcement", source = human_owner, action = NOTIFY_HUMAN_HUD_ORDER, announcement_title = text, portrait_owner = human_owner, override_color_portrait = override_color)
 /atom/movable/screen/text/screen_text/command_order/tutorial
 	letters_per_update = 4 // overall, pretty fast while not immediately popping in

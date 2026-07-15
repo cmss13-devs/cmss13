@@ -494,6 +494,8 @@ GLOBAL_LIST(trait_name_map)
 #define TRAIT_SOURCE_XENO_ACTION_CHARGE "t_s_xeno_action_charge"
 ///Status trait coming from hivemind interference
 #define TRAIT_SOURCE_HIVEMIND_INTERFERENCE "t_s_hivemind_interference"
+///Status trait coming from rapid decompression
+#define TRAIT_SOURCE_DECOMPRESSION "t_s_decompression"
 ///Status trait coming from a xeno nest
 #define XENO_NEST_TRAIT "xeno_nest"
 ///Status trait from a generic throw by xeno abilities

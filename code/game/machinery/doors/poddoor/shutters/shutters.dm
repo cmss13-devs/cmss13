@@ -259,7 +259,13 @@
 
 /obj/structure/machinery/door/poddoor/shutters/decompression
 	name = "pressure shutters"
-	desc = "A set of shutters designed to automatically close when an atmospheric breach is detected."
+	desc = "A set of shutters designed to automatically close during an atmospheric decompression."
+	icon_state = "shutter0"
+	density = FALSE
+	opacity = FALSE
+	unacidable = TRUE
+
+	var/reaction_time = 0.5 SECONDS
 
 /obj/structure/machinery/door/poddoor/shutters/decompression/proc/handle_decompression()
-	addtimer(CALLBACK(src, PROC_REF(close)), 1 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(close)), reaction_time)

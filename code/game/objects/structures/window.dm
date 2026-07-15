@@ -591,12 +591,24 @@
 		log_mapping("A decompression shutter ([src]) is placed in an area that is not a subtype of area/decompressible. Did you mean to use a regular window?")
 
 /obj/structure/window/framed/decompressible/deconstruct(disassembled = TRUE)
-	. = ..()
-
 	// If this window is destroyed for whatever reason, trigger decompression procs
 	var/area/decompressible/area_decompressible = get_area(src)
+	var/turf/breach_location = get_turf(src)
+
+	. = ..()
+
 	if (area_decompressible != null)
-		area_decompressible.decompress()
+		area_decompressible.decompress(breach_location)
+
+/obj/structure/window/framed/decompressible/almayer
+	name = "reinforced window"
+	desc = "A glass window with a special rod matrix inside a wall frame. It looks rather strong. Might take a few good hits to shatter it."
+	icon_state = "alm_rwindow0"
+	basestate = "alm_rwindow"
+	health = 100 //Was 600
+	reinf = 1
+	dir = NORTHEAST
+	window_frame = /obj/structure/window_frame/almayer
 
 //Almayer windows
 

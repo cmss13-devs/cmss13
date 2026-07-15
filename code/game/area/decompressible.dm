@@ -1,6 +1,5 @@
 /area/decompressible
 	weather_enabled = FALSE
-	var/obj/effect/decompressed/decompression_overlay = null
 
 	/// How long it takes for this room to repressurize and become habitable.
 	/// Set to -1 for rooms that are permanently decompressed.
@@ -12,8 +11,16 @@
 	/// When in gametime this room was decompressed.
 	var/time_decompressed = null
 
+	var/obj/effect/decompressed/decompression_overlay = null
+	var/list/datum/looping_sound/recompression_loop = list()
+
 /area/decompressible/Initialize(mapload, ...)
 	decompression_overlay = new /obj/effect/decompressed/()
+
+	for (var/obj/structure/pipes/vents/vent in src)
+		var/datum/looping_sound/vent_loop = new /datum/looping_sound/recompression(vent)
+		recompression_loop += vent_loop
+
 	. = ..()
 
 /area/decompressible/proc/decompress(breach_location, alarm = TRUE)
@@ -27,6 +34,7 @@
 
 	// Handle decompression vfx
 	overlays += decompression_overlay
+	playsound_area(src, 'sound/effects/decompression/explosive_decompression.ogg', 50)
 
 	// Close firedoors
 	addtimer(CALLBACK(src, PROC_REF(air_doors_close)), 1 SECONDS)
@@ -40,7 +48,7 @@
 
 		// Calculate how violently to throw it
 		var/distance = get_dist(get_turf(obj_in_area), breach_location)
-		var/throw_range = (distance - 1) > 0 ? 16 / (distance - 1) : 16
+		var/throw_range = (distance - 1) > 0 ? 32 / (distance - 1) : 32
 		var/throw_speed
 		switch (distance)
 			if (-1 to 3)
@@ -64,7 +72,7 @@
 
 		// Calculate how violently to throw the victim, and apply screenshake accordingly
 		var/distance = get_dist(get_turf(victim), breach_location)
-		var/throw_range = (distance - 1) > 0 ? 16 / (distance - 1) : 16
+		var/throw_range = (distance - 1) > 0 ? 32 / (distance - 1) : 32
 		var/throw_speed
 		switch (distance)
 			if (-1 to 3)
@@ -100,6 +108,9 @@
 			lungs.take_damage(20)
 
 	if (recompression_time != -1)
+		for (var/datum/looping_sound/vent_sound in recompression_loop)
+			vent_sound.start()
+
 		addtimer(CALLBACK(src, PROC_REF(recompress)), recompression_time)
 
 /// Wrapper proc for flinging things during decompression asynchronously.
@@ -147,15 +158,18 @@
 	decompressed = FALSE
 	time_decompressed = null
 
-	// Remove overlays
-	overlays -= decompression_overlay
-
 	// Re-open firelocks (NOT ATMOS SHUTTERS)
 	air_doors_open()
 
 	temperature = initial(temperature)
 	pressure = initial(pressure)
 
+	// Update FX
+	overlays -= decompression_overlay
+	for (var/datum/looping_sound/vent_sound in recompression_loop)
+		vent_sound.stop()
+
+// FX OBJECTS
 /obj/effect/decompressed
 	name = "decompression vfx holder"
 	icon = 'icons/effects/weather.dmi'
@@ -164,21 +178,36 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	layer = WEATHER_LAYER
 
+/datum/looping_sound/recompression
+	volume = 16
+	start_sound = 'sound/effects/decompression/recompress_start.ogg'
+	start_length = 0.9 SECONDS
+
+	mid_sounds = 'sound/effects/decompression/recompress_loop.ogg'
+	mid_length = 1.4 SECONDS
+
+	end_sound = 'sound/effects/decompression/recompress_end.ogg'
+
 // Areas for decompression_test.dmm
 /area/decompressible/test/
 	icon = 'icons/turf/area_almayer.dmi'
 
 /area/decompressible/test/bridge
+	name = "Bridge"
 	icon_state = "cic"
 
 /area/decompressible/test/south_observation
+	name = "Port Observation Room"
 	icon_state = "port"
 
 /area/decompressible/test/north_observation
+	name = "Starboard Observation Room"
 	icon_state = "starboard"
 
 /area/decompressible/test/cargo
+	name = "Requisitions"
 	icon_state = "req"
 
 /area/decompressible/test/maints
+	name = "Maintenance"
 	icon_state = "lowerhull"

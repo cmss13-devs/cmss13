@@ -138,3 +138,17 @@
   NHC:
   - code_imp: added a var to set if clothing removes undergarments overlays or not.
   - bugfix: Fixes Yautja Meshsuits removing undergarments
+2026-07-15:
+  DangerRevolution:
+  - bugfix: Fixes the Field Cameras' label reading "this label label reads"...
+  - bugfix: Moves the Field Cameras' labels to the examine box rather than outputting
+      it to the chatbox.
+  NHC:
+  - qol: SOCOM and grenade packs can now be collapsed
+  - qol: Grenade belt and satchel can now be filed by being slapped by themself, each
+      other, and via grenade packs n boxes
+  - qol: M56D and M2C mags can be used to refil other mags of their own kind
+  - qol: M56D mags can be manually loaded/unloaded
+  ori-disillusion-mirnov:
+  - code_imp: all living mobs now have procs for riding
+  - code_imp: adding the riding element is easier

@@ -34,7 +34,7 @@
 
 	// Handle decompression vfx
 	overlays += decompression_overlay
-	playsound_area(src, 'sound/effects/decompression/explosive_decompression.ogg', 50)
+	playsound(breach_location, 'sound/effects/decompression/explosive_decompression.ogg', 100)
 
 	// Close firedoors
 	addtimer(CALLBACK(src, PROC_REF(air_doors_close)), 1 SECONDS)
@@ -48,7 +48,7 @@
 
 		// Calculate how violently to throw it
 		var/distance = get_dist(get_turf(obj_in_area), breach_location)
-		var/throw_range = (distance - 1) > 0 ? 32 / (distance - 1) : 32
+		var/throw_range = floor(8 - distance * 0.25)
 		var/throw_speed
 		switch (distance)
 			if (-1 to 3)
@@ -72,7 +72,7 @@
 
 		// Calculate how violently to throw the victim, and apply screenshake accordingly
 		var/distance = get_dist(get_turf(victim), breach_location)
-		var/throw_range = (distance - 1) > 0 ? 32 / (distance - 1) : 32
+		var/throw_range = floor(8 - distance * 0.25)
 		var/throw_speed
 		switch (distance)
 			if (-1 to 3)

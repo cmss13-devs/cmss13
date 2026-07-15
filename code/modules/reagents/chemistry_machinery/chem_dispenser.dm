@@ -284,7 +284,7 @@
 	accept_beaker_only = FALSE
 	whitelisted_containers = list(
 		/obj/item/reagent_container/glass/pressurized_canister,
-		/obj/item/reagent_container/glass/minitank,
+		/obj/item/reagent_container/glass/minitank, //MS-11 Smart Refill Tank
 	)
 	dispensable_reagents = list(
 		"bicaridine",

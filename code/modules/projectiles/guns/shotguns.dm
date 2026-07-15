@@ -519,7 +519,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/flashlight/grip,
 		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/burstfire_assembly,
-		/obj/item/attachable/stock/type23,
+		/obj/item/attachable/stock/type23, // Stock
 		)
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_INTERNAL_MAG
 	flags_equip_slot = SLOT_BACK
@@ -612,7 +612,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/verticalgrip, //Underbarrel
 		/obj/item/attachable/flashlight/under_barrel,
-		/obj/item/attachable/stock/type23,
+		/obj/item/attachable/stock/type23, // Stock
 	)
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_INTERNAL_MAG
 	flags_equip_slot = SLOT_BACK

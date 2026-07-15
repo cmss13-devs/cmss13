@@ -344,7 +344,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/magnetic_harness/lever_sling,
-		/obj/item/attachable/stock/r4t,
+		/obj/item/attachable/stock/r4t, // Stock
 		)
 	map_specific_decoration = TRUE
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_AMMO_COUNTER
@@ -406,7 +406,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 		/obj/item/attachable/gyro, // Under
 		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/lasersight,
-		/obj/item/attachable/stock/xm88,
+		/obj/item/attachable/stock/xm88, // Stock
 		)
 
 /obj/item/weapon/gun/lever_action/xm88/Initialize()

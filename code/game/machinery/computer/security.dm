@@ -432,7 +432,7 @@
 			"type" = "string",
 			"max_length" = 49,
 			"required" = TRUE,
-			"regex" = regex(@"^[a-zA-Z' ]+$"),
+			"regex" = regex(@"^[a-zA-Z' ]+$"), // Allow letters, spaces, and single quotes
 		),
 		"general_rank" = list(
 			"type" = "string",

@@ -70,8 +70,8 @@
 		/datum/action/xeno_action/onclick/plant_weeds, //first macro
 		/datum/action/xeno_action/onclick/choose_resin, //second macro
 		/datum/action/xeno_action/activable/secrete_resin, //third macro
-		/datum/action/xeno_action/activable/transfer_plasma,
-		) //fourth macro
+		/datum/action/xeno_action/activable/transfer_plasma, //fourth macro
+		)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 		/mob/living/carbon/xenomorph/proc/rename_tunnel,

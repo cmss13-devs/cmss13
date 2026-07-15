@@ -222,8 +222,8 @@
 		"lung_ruptured" = H.is_lung_ruptured(),
 		"external_organs" = H.limbs.Copy(),
 		"internal_organs" = H.internal_organs.Copy(),
-		"species_organs" = H.species.has_organ,
-		) // Hopefully no one touches the has_organ outside the datum
+		"species_organs" = H.species.has_organ, //Just pass a reference for this, it shouldn't ever be modified outside of the datum.
+		)
 	return occupant_data
 
 

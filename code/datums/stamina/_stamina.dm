@@ -15,8 +15,8 @@
 		STAMINA_LEVEL_2 = 70, // 70 - 99
 		STAMINA_LEVEL_3 = 30, // 30 - 69
 		STAMINA_LEVEL_4 = 10, // 10 - 29
-		STAMINA_LEVEL_5 = 0,
-	) // 0 - 9
+		STAMINA_LEVEL_5 = 0, // 0 - 9
+	)
 
 /datum/stamina/New(mob/owner)
 	. = ..()

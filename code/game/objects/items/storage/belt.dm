@@ -1386,8 +1386,8 @@
 		/obj/item/weapon/gun/pistol/kt42, // HONKed currently
 		/obj/item/weapon/gun/pistol/auto9, // HONKed currently
 		/obj/item/weapon/gun/pistol/chimp, // HONKed currently
-		/obj/item/weapon/gun/pistol/skorpion,
-	) // HONKed currently
+		/obj/item/weapon/gun/pistol/skorpion, // HONKed currently
+	)
 
 	///Where update_gun_icon should look for their holstered gun icon
 	var/gun_slot_icon = 'icons/obj/items/clothing/belts/holstered_guns.dmi'
@@ -1606,8 +1606,8 @@
 		/obj/item/weapon/gun/pistol/kt42, // HONKed currently
 		/obj/item/weapon/gun/pistol/auto9, // HONKed currently
 		/obj/item/weapon/gun/pistol/chimp, // HONKed currently
-		/obj/item/weapon/gun/pistol/skorpion,
-	) // HONKed currently
+		/obj/item/weapon/gun/pistol/skorpion, // HONKed currently
+	)
 	flags_atom = FPRINT // has gamemode skin
 
 /obj/item/storage/belt/gun/m4a3/full/fill_preset_inventory()
@@ -2424,8 +2424,8 @@
 		/obj/item/weapon/gun/pistol/kt42, // HONKed currently
 		/obj/item/weapon/gun/pistol/auto9, // HONKed currently
 		/obj/item/weapon/gun/pistol/chimp, // HONKed currently
-		/obj/item/weapon/gun/pistol/skorpion,
-	) // HONKed currently
+		/obj/item/weapon/gun/pistol/skorpion, // HONKed currently
+	)
 
 	var/list/picklist = subtypesof(/obj/item/ammo_magazine) - (internal_mags + bad_mags + sentry_mags + training_mags)
 	var/random_mag = pick(picklist)

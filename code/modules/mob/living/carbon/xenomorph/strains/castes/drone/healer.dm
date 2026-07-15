@@ -9,16 +9,16 @@
 		/datum/action/xeno_action/onclick/choose_resin,
 		/datum/action/xeno_action/activable/transfer_plasma,
 		/datum/action/xeno_action/activable/place_construction, // so it doesn't use fifth macro
-		/datum/action/xeno_action/onclick/plant_weeds,
-		) // so it doesn't break order
+		/datum/action/xeno_action/onclick/plant_weeds, // so it doesn't break order
+		)
 	actions_to_add = list(
 		/datum/action/xeno_action/activable/place_construction/not_primary, // so it doesn't use fifth macro
 		/datum/action/xeno_action/onclick/plant_weeds, // so it doesn't break order
 		/datum/action/xeno_action/onclick/plant_resin_fruit, // Second macro. Resin fruits belong to Gardener, but Healer has a minor variant.
 		/datum/action/xeno_action/activable/apply_salve, //Third macro, heal over time ability.
 		/datum/action/xeno_action/activable/transfer_plasma/healer, //Fourth macro, an improved plasma transfer.
-		/datum/action/xeno_action/activable/healer_sacrifice,
-		) //Fifth macro, the ultimate ability to sacrifice yourself
+		/datum/action/xeno_action/activable/healer_sacrifice, //Fifth macro, the ultimate ability to sacrifice yourself
+		)
 
 	behavior_delegate_type = /datum/behavior_delegate/drone_healer
 

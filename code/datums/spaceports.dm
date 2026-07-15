@@ -42,7 +42,7 @@
 /datum/spaceport/vanguard/lancer
 	name = "Geldmann Outpost"
 	allies = list(
-		/datum/emergency_call/mercs/friendly,
+		/datum/emergency_call/mercs/friendly, //left out elite since they're way too OP.
 	)
 
 /datum/spaceport/royal_commandos

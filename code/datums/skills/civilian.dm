@@ -33,8 +33,8 @@ CIVILIAN
 		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED,
 		SKILL_ENGINEER = SKILL_ENGINEER_TRAINED, //The ASRS consoles
 		SKILL_FIREARMS = SKILL_FIREARMS_CIVILIAN,
-		SKILL_POLICE = SKILL_POLICE_SKILLED,
-	) //SKILL_POLICE for the CMB Tradeband Compliance Device
+		SKILL_POLICE = SKILL_POLICE_SKILLED, //SKILL_POLICE for the CMB Tradeband Compliance Device
+	)
 
 /datum/skills/civilian/manager/director
 	name = "Weyland-Yutani Director"

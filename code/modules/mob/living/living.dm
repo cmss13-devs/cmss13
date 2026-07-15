@@ -720,3 +720,53 @@
 /mob/living/onZImpact(turf/impact_turf, height)
 	. = ..()
 	impact_turf.z_impact(src, height)
+
+/**
+ * Checks if user can mount src
+ *
+ * Arguments:
+ * * user - The mob trying to mount
+ * * target_mounting - Is the target initiating the mounting process?
+ */
+/mob/living/proc/can_mount(mob/living/user, target_mounting = FALSE)
+	if(!target_mounting)
+		user = pulling
+	if(!ishuman(user))
+		return FALSE
+	var/mob/living/carbon/human/human_pulled = user
+	if(human_pulled.stat == DEAD)
+		return FALSE
+	if(!CHECK_BITFIELD(buckle_flags, CAN_BUCKLE))
+		return FALSE
+	return TRUE
+
+/**
+ * Handles the target trying to ride src
+ *
+ * Arguments:
+ * * target - The mob being put on the back
+ * * target_mounting - Is the target initiating the mounting process?
+ */
+/mob/living/proc/carry_target(mob/living/carbon/target, target_mounting = FALSE)
+	if(!ismob(target))
+		return
+	if(target.is_mob_incapacitated())
+		if(target_mounting)
+			to_chat(target, SPAN_WARNING("You cannot mount [src]!"))
+			return
+		return
+	visible_message(SPAN_NOTICE("[target_mounting ? "[target] starts to mount [src]" : "[src] starts hoisting [target] onto [p_their()] back..."]"),
+	SPAN_NOTICE("[target_mounting ? "[target] starts to mount on your back" : "You start to lift [target] onto your back..."]"))
+	if(!do_after(target_mounting ? target : src, 5 SECONDS, NONE, BUSY_ICON_HOSTILE, target_mounting ? src : target))
+		visible_message(SPAN_WARNING("[target_mounting ? "[target] fails to mount on [src]" : "[src] fails to carry [target]!"]"))
+		return
+	//Second check to make sure they're still valid to be carried
+	if(target.is_mob_incapacitated())
+		return
+	buckle_mob(target, src, target_hands_needed = 1)
+
+/mob/living/MouseDrop_T(atom/dropping, mob/user)
+	. = ..()
+	if(!can_mount(user, TRUE))
+		return
+	INVOKE_ASYNC(src, PROC_REF(carry_target), dropping, TRUE)

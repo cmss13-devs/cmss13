@@ -1,0 +1,5 @@
+author: "ori-disillusion-mirnov"
+delete-after: True
+changes:
+  - code_imp: "all living mobs now have procs for riding"
+  - code_imp: "adding the riding element is easier"

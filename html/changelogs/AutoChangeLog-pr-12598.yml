@@ -1,4 +1,0 @@
-author: "Rain7x"
-delete-after: True
-changes:
-  - bugfix: "Fixed Despoiler acid barrage direct hits applying a new acid effect on every hit instead of refreshing the existing one"

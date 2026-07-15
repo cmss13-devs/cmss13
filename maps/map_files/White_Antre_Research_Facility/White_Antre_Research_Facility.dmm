@@ -1771,8 +1771,8 @@
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/white_antre/indoors/upper_level/canteen)
 "aex" = (
-/obj/item/tool/kitchen/utensil/pknife,
-/obj/item/tool/kitchen/utensil/pspoon,
+/obj/item/tool/kitchen/utensil/knife/plastic,
+/obj/item/tool/kitchen/utensil/spoon/plastic,
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
 	},
@@ -1884,7 +1884,7 @@
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/white_antre/indoors/upper_level/canteen)
 "aeJ" = (
-/obj/item/tool/kitchen/utensil/pfork,
+/obj/item/tool/kitchen/utensil/fork/plastic,
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/white_antre/indoors/upper_level/canteen)
 "aeK" = (
@@ -1915,7 +1915,7 @@
 	name = "\improper UA Prepared Meal (cornbread)";
 	pixel_y = 9
 	},
-/obj/item/tool/kitchen/utensil/pknife,
+/obj/item/tool/kitchen/utensil/knife/plastic,
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
 	},
@@ -1992,10 +1992,10 @@
 	dir = 1;
 	layer = 2
 	},
-/obj/item/tool/kitchen/utensil/pspoon{
+/obj/item/tool/kitchen/utensil/spoon/plastic{
 	pixel_y = 1
 	},
-/obj/item/tool/kitchen/utensil/pknife{
+/obj/item/tool/kitchen/utensil/knife/plastic{
 	pixel_x = 8;
 	pixel_y = -1
 	},
@@ -32962,7 +32962,7 @@
 	color = "#EBD9B7"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/tool/kitchen/utensil/pspoon,
+/obj/item/tool/kitchen/utensil/spoon/plastic,
 /obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
 	light_color = "#FF0000";
 	light_on = 1;

@@ -157,6 +157,7 @@
 		/obj/item/stack/rods,
 		/obj/item/stack/tile,
 		/obj/item/device/defibrillator/synthetic,
+		/obj/item/device/overwatch_camera_tripod,
 	)
 
 	bypass_w_limit = list(
@@ -166,6 +167,7 @@
 		/obj/item/stack/sandbags_empty,
 		/obj/item/stack/sandbags,
 		/obj/item/defenses/handheld,
+		/obj/item/device/overwatch_camera_tripod,
 	)
 
 /obj/item/storage/belt/medical
@@ -1259,7 +1261,6 @@
 	max_storage_space = 24
 	can_hold = list(/obj/item/explosive/grenade)
 
-
 /obj/item/storage/belt/grenade/full/fill_preset_inventory()
 	new /obj/item/explosive/grenade/incendiary(src)
 	new /obj/item/explosive/grenade/incendiary(src)
@@ -1271,7 +1272,7 @@
 	new /obj/item/explosive/grenade/high_explosive/airburst(src)
 
 /obj/item/storage/belt/grenade/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/storage/box/nade_box) || istype(W, /obj/item/storage/backpack/marine/grenadepack))
+	if(istype(W, /obj/item/storage/box/nade_box) || istype(W, /obj/item/storage/backpack/marine/grenadepack) || istype(W, /obj/item/storage/box/packet) || istype(W, /obj/item/storage/belt/grenade))
 		dump_into(W,user)
 	else
 		return ..()
@@ -1336,12 +1337,6 @@
 	new /obj/item/explosive/grenade/high_explosive/upp(src)
 	new /obj/item/explosive/grenade/high_explosive/upp(src)
 	new /obj/item/explosive/grenade/high_explosive/upp(src)
-
-/obj/item/storage/belt/grenade/upp/attackby(obj/item/attacked_item, mob/user)
-	if(istype(attacked_item, /obj/item/storage/box/nade_box) || istype(attacked_item, /obj/item/storage/backpack/marine/grenadepack))
-		dump_into(attacked_item, user)
-	else
-		return ..()
 
 ////////////////////////////// GUN BELTS /////////////////////////////////////
 

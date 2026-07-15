@@ -920,7 +920,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	xeno_types = null
 
 /obj/item/storage/backpack/marine/grenadepack/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/storage/box/nade_box) || istype(W, /obj/item/storage/backpack/marine/grenadepack) || istype(W, /obj/item/storage/belt/grenade))
+	if(istype(W, /obj/item/storage/box/nade_box) || istype(W, /obj/item/storage/backpack/marine/grenadepack) || istype(W, /obj/item/storage/box/packet) || istype(W, /obj/item/storage/belt/grenade))
 		dump_into(W,user)
 	else
 		return ..()

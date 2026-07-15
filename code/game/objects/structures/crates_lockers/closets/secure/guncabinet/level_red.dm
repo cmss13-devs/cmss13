@@ -37,6 +37,17 @@
 	new /obj/item/weapon/gun/rifle/m4ra(src)
 	new /obj/item/ammo_box/magazine/m4ra(src)
 
+// 2 m42a cabinet are in brig armory (m41a guns and 12 mags)
+/obj/structure/closet/secure_closet/guncabinet/red/mp_armory_mk2_rifle
+
+/obj/structure/closet/secure_closet/guncabinet/red/mp_armory_mk2_rifle/Initialize()
+	. = ..()
+	new /obj/item/weapon/gun/rifle/m41a(src)
+	new /obj/item/weapon/gun/rifle/m41a(src)
+	new /obj/item/weapon/gun/rifle/m41a(src)
+	new /obj/item/weapon/gun/rifle/m41a(src)
+	new /obj/item/ammo_box/magazine(src)
+
 // EXECUTION CHAMBER might add that here need to ask first... will reskin if asked.
 
 

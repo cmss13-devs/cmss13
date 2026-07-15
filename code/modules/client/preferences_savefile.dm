@@ -439,6 +439,8 @@
 
 	S["chem_presets"] >> chem_presets
 
+	S["latejoin_cryo_intro"] >> latejoin_cryo_intro
+
 	//Sanitize
 	load_preferences_sanitize()
 
@@ -572,7 +574,10 @@
 
 	show_cooldown_messages = sanitize_integer(show_cooldown_messages, FALSE, TRUE, FALSE)
 
+
 	chem_presets = sanitize_islist(chem_presets, list())
+
+	latejoin_cryo_intro = sanitize_integer(latejoin_cryo_intro, FALSE, TRUE, TRUE)
 
 	if(!observer_huds)
 		observer_huds = list("Medical HUD" = FALSE, "Security HUD" = FALSE, "Squad HUD" = FALSE, "Xeno Status HUD" = FALSE, "Hunter HUD"= FALSE, HUD_MENTOR_SIGHT = FALSE)
@@ -721,6 +726,8 @@
 	S["chem_presets"] << chem_presets
 
 	S["custom_keybinds"] << custom_keybinds
+
+	S["latejoin_cryo_intro"] << latejoin_cryo_intro
 
 	return TRUE
 

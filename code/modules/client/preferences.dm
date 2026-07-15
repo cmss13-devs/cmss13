@@ -337,6 +337,8 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	/// The same keybinds, but in an array of {"keybinding": /datum/keybinding/custom}
 	var/list/key_to_custom_keybind = list()
 
+	/// Toggles whether the marine gets the cryo intro if they latejoin 1 minute after roundstart
+	var/latejoin_cryo_intro = TRUE
 /datum/preferences/New(client/C)
 	key_bindings = deep_copy_list(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
 	macros = new(C, src)
@@ -650,6 +652,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			dat += "<b>Button To Activate Xenomorph Abilities:</b> <a href='byond://?_src_=prefs;preference=mouse_button_activation;task=input'><b>[xeno_ability_mouse_pref_to_string(xeno_ability_click_mode)]</b></a><br>"
 			dat += "<b>Xeno Cooldown Messages:</b> <a href='byond://?_src_=prefs;preference=show_cooldown_messages'><b>[(show_cooldown_messages) ? "Show" : "Hide"]</b></a><br>"
 			dat += "<b>Toggle CMTV Opt-Out:</b> <a href='byond://?_src_=prefs;preference=CMTV_toggle_optout'><b>[CMTV_toggle_optout? "Enabled" : "Disabled"]</b></a><br>"
+			dat += "<b>Latejoin Cryo Intro:</b> <a href='byond://?_src_=prefs;preference=latejoin_cryo_intro'><b>[(latejoin_cryo_intro) ? "Always play" : "Stop playing 1 minute post roundstart"]</b></a><br>"
 			dat += "<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/receive_random_tip'>Read Random Tip of the Round</a><br>"
 			if(CONFIG_GET(flag/allow_Metadata))
 				dat += "<b>OOC Notes:</b> <a href='byond://?_src_=prefs;preference=metadata;task=input'> Edit </a>"
@@ -1191,6 +1194,9 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 		if("show_cooldown_messages")
 			show_cooldown_messages = !show_cooldown_messages
+
+		if("latejoin_cryo_intro")
+			latejoin_cryo_intro = !latejoin_cryo_intro
 
 	switch (href_list["task"])
 		if ("random")

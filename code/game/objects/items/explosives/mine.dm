@@ -448,7 +448,7 @@
 					return
 			user.visible_message(SPAN_NOTICE("[user] starts rearming [src]."), \
 			SPAN_NOTICE("You start rearming [src]."))
-			if(!do_after(user, 3 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
+			if(!do_after(user, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
 				user.visible_message(SPAN_WARNING("[user] stops rearming [src]."), \
 				SPAN_WARNING("You stop rearming [src]."))
 				return

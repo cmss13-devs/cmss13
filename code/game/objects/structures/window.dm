@@ -597,8 +597,17 @@
 
 	. = ..()
 
-	if (area_decompressible != null)
-		area_decompressible.decompress(breach_location)
+	if (!area_decompressible)
+		return
+
+	for (var/obj/structure/machinery/door/poddoor/shutters/decompression/pressure_shutters in breach_location)
+		// Shutters are already closed, this isn't an actual breach
+		if (pressure_shutters.density)
+			return
+
+	for (var/obj/structure/machinery/door/poddoor/shutters/decompression/pressure_shutters in breach_location)
+		pressure_shutters.handle_decompression()
+	area_decompressible.decompress(breach_location)
 
 /obj/structure/window/framed/decompressible/almayer
 	name = "reinforced window"

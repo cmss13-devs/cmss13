@@ -10,7 +10,7 @@
 	paygrades = list(PAY_SHORT_PMC_OP = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/silver/cl/lasalle_bionational
 	skills = /datum/skills/civilian/survivor/pmc
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_FRENCH)
 	minimap_icon = "ls_merc"
 	minimap_background = "background_lasalle"
 	origin_override = ORIGIN_LB_MERC
@@ -75,8 +75,6 @@
 	add_lb_merc_survivor_weapon(new_human)
 	add_random_survivor_equipment(new_human)
 
-// /obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_medic
-
 /datum/equipment_preset/survivor/lasalle_merc/medic
 	name = "Survivor - Lasalle-Bionational - BHIG - Medical Specialist"
 	assignment = JOB_LB_MERC_MEDIC
@@ -121,8 +119,6 @@
 	add_lb_merc_survivor_weapon(new_human)
 	add_random_survivor_equipment(new_human)
 
-// /obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_engineer
-
 /datum/equipment_preset/survivor/lasalle_merc/engineer
 	name = "Survivor - Lasalle-Bionational - BHIG - Technical Specialist"
 	assignment = JOB_LB_MERC_ENGI
@@ -161,9 +157,7 @@
 	add_lb_merc_survivor_weapon(new_human)
 	add_random_survivor_equipment(new_human)
 
-// /obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_leader
-
-/datum/equipment_preset/survivor/lasalle_merc/lasalle_merc_leader
+/datum/equipment_preset/survivor/lasalle_merc/leader
 	name = "Survivor - Lasalle-Bionational - BHIG - Team Leader"
 	assignment = JOB_LB_MERC_TL
 	job_title = JOB_LB_MERC_TL
@@ -172,7 +166,7 @@
 	skills = /datum/skills/civilian/survivor/pmc/lead
 	minimap_icon = "ls_leader"
 
-/datum/equipment_preset/survivor/lasalle_merc/lasalle_merc_leader/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/survivor/lasalle_merc/leader/load_gear(mob/living/carbon/human/new_human)
 	//uniform
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/lb_merc(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/lasalle(new_human), WEAR_ACCESSORY)

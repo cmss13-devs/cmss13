@@ -218,6 +218,9 @@
 	gender = PLURAL
 	vehicle_resistant = FALSE
 
+/obj/structure/machinery/door/poddoor/hybrisa/shutters/open
+	density = FALSE
+
 /obj/structure/machinery/door/poddoor/hybrisa/white
 	name = null
 	desc = "That looks like it doesn't open easily."

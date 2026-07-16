@@ -325,6 +325,13 @@
 /obj/item/storage/pouch/firstaid/ert/wy
 	icon_state = "wy_firstaid"
 
+/obj/item/storage/pouch/firstaid/ert/wy/near_empty
+	icon_state = "wy_firstaid"
+
+/obj/item/storage/pouch/firstaid/ert/wy/near_empty/fill_preset_inventory()
+	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless(src)
+
 ///Pistol pouch.
 /obj/item/storage/pouch/pistol
 	name = "sidearm pouch"

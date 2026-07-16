@@ -1,0 +1,9 @@
+[
+    {
+        "type": "pick", "name": "event",
+        "choices": [
+            { "weight": 1, "type": "def", "values": { "lvevent": "none" } },
+            { "weight": 10, "type": "def", "values": { "lvevent": "lasalle_merc", "hostile_survivors": true } }
+        ]
+    }
+]

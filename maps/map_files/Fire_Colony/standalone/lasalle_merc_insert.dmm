@@ -1,0 +1,2462 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/decal/warning_stripes/worn,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/trash/cigbutt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/strata/sand3,
+/area/fire_colony/interior/hangar/alpha)
+"ac" = (
+/obj/structure/window/framed/lava/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	color = "#84929f"
+	},
+/obj/structure/machinery/door/poddoor/almayer/dark/closed{
+	id = "aero_shutters"
+	},
+/turf/open/floor/corsat,
+/area/fire_colony/interior/hangar/alpha)
+"aC" = (
+/turf/open/floor/strata/sand3/southwest,
+/area/fire_colony/interior/hangar/alpha)
+"aT" = (
+/obj/structure/fence/slim/blue,
+/turf/open/lava/basalt/basalt8,
+/area/fire_colony/exterior/clearing/south)
+"bc" = (
+/obj/effect/broken_tile,
+/obj/effect/broken_tile/angle{
+	pixel_x = 11;
+	pixel_y = 10
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/corsat,
+/area/fire_colony/interior/hangar/alpha)
+"bi" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/device/flashlight/lamp/tripod/grey,
+/turf/open/floor/corsat/spiralplate,
+/area/fire_colony/exterior/landing_pad)
+"bn" = (
+/turf/closed/shuttle/dropship_lb{
+	icon_state = "7,3"
+	},
+/area/fire_colony/interior/hangar/lb_dropship)
+"bx" = (
+/turf/open/lava/metal/warnplate/corner/east,
+/area/fire_colony/exterior/landing_pad)
+"bK" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3";
+	pixel_x = -7;
+	pixel_y = 12
+	},
+/turf/open/floor/strata/altred3/west,
+/area/fire_colony/interior/hangar/checkpoint)
+"cn" = (
+/obj/structure/flora/alien/sparsegrass/sparsegrass_2,
+/turf/open/lava/brock,
+/area/fire_colony/exterior/clearing/south)
+"co" = (
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = -8;
+	pixel_y = -2
+	},
+/turf/open/floor/dark2,
+/area/fire_colony/interior/hangar/checkpoint)
+"cW" = (
+/obj/effect/decal/warning_stripes/worn{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/landmark/survivor_spawner/fire_colony_lb_merc,
+/turf/open/floor/strata/sand3/east,
+/area/fire_colony/interior/hangar/alpha)
+"dt" = (
+/obj/effect/landmark/survivor_spawner/fire_colony_lb_merc,
+/turf/open/floor/strata/grey_multi_tiles,
+/area/fire_colony/interior/hangar/lb_dropship)
+"dJ" = (
+/obj/structure/machinery/door_control{
+	id = "hangar_ice_1";
+	name = "hangar shutter control";
+	pixel_y = 32
+	},
+/turf/open/lava/metal/warnplate/north,
+/area/fire_colony/exterior/landing_pad)
+"dZ" = (
+/obj/structure/pipes/vents/pump_hybrisa,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/floor2,
+/area/fire_colony/interior/hangar/alpha)
+"ek" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/asteroid/directions/north,
+/area/fire_colony/exterior/clearing/south)
+"ez" = (
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = 7;
+	pixel_y = 10
+	},
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = 7;
+	pixel_y = 1
+	},
+/turf/open/floor/strata/sand3/east,
+/area/fire_colony/interior/hangar/alpha)
+"eA" = (
+/obj/structure/shuttle/part/dropship_lb/transparent{
+	icon_state = "7,0"
+	},
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/lb_dropship)
+"eV" = (
+/obj/structure/bed/chair/vehicle/white{
+	dir = 8;
+	buckle_offset_x = 6;
+	buckle_offset_y = 1;
+	pixel_x = 6;
+	pixel_y = 1
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/fire_colony/interior/hangar/lb_dropship)
+"eW" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/alpha)
+"eX" = (
+/obj/structure/extinguisher_cabinet/alt{
+	pixel_y = 30
+	},
+/turf/open/floor/strata/sand3/north,
+/area/fire_colony/interior/hangar/alpha)
+"fj" = (
+/turf/open/floor/vault2/west,
+/area/fire_colony/interior/hangar/checkpoint)
+"fo" = (
+/obj/structure/shuttle/part/dropship_lb/transparent{
+	icon_state = "4,15"
+	},
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/lb_dropship)
+"fv" = (
+/obj/structure/closet/crate/trashcart/alt{
+	pixel_y = 8
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/sand4,
+/area/fire_colony/interior/hangar/alpha)
+"fF" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/strata/sand3/east,
+/area/fire_colony/interior/hangar/alpha)
+"fK" = (
+/obj/structure/prop/hybrisa/misc/cabinet{
+	pixel_x = -6;
+	pixel_y = 7;
+	layer = 3.6
+	},
+/obj/effect/decal/hybrisa/trash{
+	pixel_y = -7;
+	pixel_x = 3
+	},
+/turf/open/floor/strata/altred3/west,
+/area/fire_colony/interior/hangar/checkpoint)
+"fO" = (
+/obj/structure/machinery/door_control{
+	id = "hangar_ice_1";
+	name = "hangar shutter control";
+	pixel_y = -19
+	},
+/obj/effect/decal/warning_stripes/worn{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/device/flashlight/lamp/tripod/grey,
+/turf/open/floor/strata/sand4/west,
+/area/fire_colony/interior/hangar/alpha)
+"fX" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/shuttle/part/dropship_lb/transparent{
+	icon_state = "8,0";
+	density = 0
+	},
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/alpha)
+"gj" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/asteroid/directions/south,
+/area/fire_colony/exterior/clearing/south)
+"gk" = (
+/turf/closed/shuttle/dropship_lb{
+	icon_state = "7,4"
+	},
+/area/fire_colony/interior/hangar/lb_dropship)
+"gs" = (
+/obj/structure/surface/rack{
+	color = "#818793"
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/sign/nosmoking_1{
+	pixel_y = 32;
+	layer = 2.8
+	},
+/obj/item/tool/screwdriver/tactical{
+	pixel_x = 4;
+	pixel_y = -2
+	},
+/obj/item/tool/screwdriver{
+	pixel_x = -1;
+	pixel_y = 3
+	},
+/turf/open/floor/strata/sand3/north,
+/area/fire_colony/interior/hangar/alpha)
+"gI" = (
+/obj/structure/surface/table/almayer{
+	color = "#848484"
+	},
+/obj/structure/machinery/door/window/brigdoor/westleft{
+	name = "Security Desk";
+	color = "#ff6548"
+	},
+/obj/structure/machinery/door/window/eastright{
+	name = "Security Desk";
+	color = "#ff6548"
+	},
+/obj/item/paper{
+	pixel_y = 1
+	},
+/obj/item/weapon/classic_baton/alt,
+/turf/open/floor/dark2,
+/area/fire_colony/interior/hangar/checkpoint)
+"gT" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/metal/warnplate/corner/east,
+/area/fire_colony/exterior/landing_pad)
+"hl" = (
+/turf/closed/shuttle/dropship_lb/transparent{
+	icon_state = "5,14"
+	},
+/area/fire_colony/interior/hangar/lb_dropship)
+"hv" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/bed/chair/comfy/black{
+	pixel_y = 14;
+	buckling_y = 14;
+	layer = 3.4
+	},
+/turf/open/floor/dark2,
+/area/fire_colony/interior/hangar/checkpoint)
+"hB" = (
+/turf/open/floor/strata/sand3/north,
+/area/fire_colony/interior/hangar/alpha)
+"hP" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8;
+	pixel_y = 6;
+	buckling_y = 6
+	},
+/turf/open/floor/strata/altred3/west,
+/area/fire_colony/interior/hangar/checkpoint)
+"if" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 6
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/fire_colony/interior/hangar/checkpoint)
+"is" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -13;
+	pixel_y = 12
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/trash/cigbutt,
+/turf/open/floor/strata/sand3/north,
+/area/fire_colony/interior/hangar/alpha)
+"ix" = (
+/obj/structure/shuttle/part/dropship_lb/transparent{
+	icon_state = "5,15"
+	},
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/lb_dropship)
+"iA" = (
+/obj/structure/shuttle/part/dropship_lb{
+	icon_state = "2,11"
+	},
+/turf/closed/shuttle/dropship_lb{
+	icon_state = "2,2"
+	},
+/area/fire_colony/interior/hangar/lb_dropship)
+"iG" = (
+/turf/closed/shuttle/dropship_lb/transparent{
+	icon_state = "3,14"
+	},
+/area/fire_colony/interior/hangar/lb_dropship)
+"iJ" = (
+/obj/structure/machinery/door/airlock/almayer/lavaland/glass/autoname,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/machinery/door/poddoor/almayer/dark/open{
+	dir = 4;
+	id = "aero_shutters"
+	},
+/turf/open/floor/strata/floor3,
+/area/fire_colony/interior/hangar/alpha)
+"iN" = (
+/obj/structure/surface/table/almayer{
+	color = "#848484"
+	},
+/obj/item/storage/belt/utility,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/strata/sand3/east,
+/area/fire_colony/interior/hangar/alpha)
+"jg" = (
+/obj/structure/bed/chair/vehicle/white{
+	dir = 8;
+	buckle_offset_x = 6;
+	buckle_offset_y = 1;
+	pixel_x = 6;
+	pixel_y = 1
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/lifeboat{
+	pixel_x = -3;
+	pixel_y = 26;
+	layer = 2.8;
+	name = "emergency medical cabinet"
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/fire_colony/interior/hangar/lb_dropship)
+"ji" = (
+/obj/effect/lava/edges/basalt/side_rock,
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/clearing/south)
+"jm" = (
+/obj/structure/shuttle/part/dropship_lb/transparent{
+	icon_state = "0,8"
+	},
+/obj/structure/machinery/light/dropship/red{
+	dir = 4;
+	pixel_y = 1;
+	pixel_x = 7;
+	needs_power = 0
+	},
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/lb_dropship)
+"jp" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/alpha)
+"kl" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/largecrate/random/barrel/brown,
+/turf/open/floor/strata/sand4/east,
+/area/fire_colony/interior/hangar/alpha)
+"kt" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/sand3/north,
+/area/fire_colony/interior/hangar/alpha)
+"kR" = (
+/obj/structure/bed/chair/vehicle/white{
+	dir = 4;
+	pixel_x = -5;
+	pixel_y = 1;
+	buckle_offset_x = -5;
+	buckle_offset_y = 1
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/fire_colony/interior/hangar/lb_dropship)
+"kS" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/alpha)
+"kV" = (
+/turf/open/floor/strata/grey_multi_tiles,
+/area/fire_colony/interior/hangar/lb_dropship)
+"kZ" = (
+/turf/open/lava/metal/plating,
+/area/fire_colony/exterior/landing_pad)
+"li" = (
+/obj/effect/lava/edges/basalt/side_rock,
+/turf/open/lava/sand,
+/area/fire_colony/exterior/clearing/south)
+"lC" = (
+/obj/effect/decal/large_stain{
+	dir = 8;
+	color = "#342a31";
+	pixel_x = -16
+	},
+/turf/open/lava/asteroid/directions/north,
+/area/fire_colony/exterior/clearing/south)
+"lH" = (
+/turf/closed/shuttle/dropship_lb{
+	icon_state = "4,7"
+	},
+/area/fire_colony/interior/hangar/lb_dropship)
+"lL" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/floor2,
+/area/fire_colony/interior/hangar/alpha)
+"lN" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/floor2,
+/area/fire_colony/interior/hangar/alpha)
+"mk" = (
+/obj/effect/decal/warning_stripes/worn{
+	dir = 4
+	},
+/obj/item/trash/cigbutt,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/strata/sand3/east,
+/area/fire_colony/interior/hangar/alpha)
+"mS" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/asteroid,
+/area/fire_colony/exterior/clearing/south)
+"mT" = (
+/obj/structure/shuttle/part/dropship_lb/transparent{
+	icon_state = "5,15";
+	pixel_x = -10;
+	pixel_y = -3;
+	layer = 1.9;
+	density = 0
+	},
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/alpha)
+"ng" = (
+/obj/effect/decal/warning_stripes/worn/stripes_double{
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/fire_colony/interior/hangar/alpha)
+"nH" = (
+/turf/closed/shuttle/dropship_lb/transparent{
+	icon_state = "2,12"
+	},
+/area/fire_colony/interior/hangar/lb_dropship)
+"nL" = (
+/obj/effect/decal/warning_stripes/worn/stripes_double{
+	dir = 1;
+	pixel_x = 24
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/strata/floor2,
+/area/fire_colony/interior/hangar/alpha)
+"nN" = (
+/turf/closed/shuttle/dropship_lb{
+	icon_state = "1,11"
+	},
+/area/fire_colony/interior/hangar/lb_dropship)
+"nR" = (
+/turf/closed/shuttle/dropship_lb/transparent{
+	icon_state = "3,13"
+	},
+/area/fire_colony/interior/hangar/lb_dropship)
+"on" = (
+/obj/effect/decal/large_stain{
+	dir = 4;
+	color = "#342a31";
+	pixel_x = -11;
+	pixel_y = 6
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/asteroid/directions/north,
+/area/fire_colony/exterior/clearing/south)
+"ot" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/machinery/door/poddoor/almayer/dark/open{
+	dir = 4;
+	id = "aero_shutters"
+	},
+/turf/open/floor/strata/floor3,
+/area/fire_colony/interior/hangar/checkpoint)
+"ou" = (
+/obj/structure/shuttle/part/dropship_lb/transparent{
+	icon_state = "1,12"
+	},
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/lb_dropship)
+"oA" = (
+/obj/effect/decal/warning_stripes/worn{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 5
+	},
+/turf/open/floor/strata/sand3/west,
+/area/fire_colony/interior/hangar/alpha)
+"oH" = (
+/turf/open/floor/strata/sand3/east,
+/area/fire_colony/interior/hangar/alpha)
+"oI" = (
+/obj/structure/machinery/light/dropship/blue{
+	dir = 8;
+	pixel_x = -7;
+	pixel_y = 5;
+	needs_power = 0
+	},
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/alpha)
+"oS" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/corsat/spiralplate,
+/area/fire_colony/exterior/landing_pad)
+"pd" = (
+/turf/closed/shuttle/dropship_lb{
+	icon_state = "5,13";
+	opacity = 0
+	},
+/area/fire_colony/interior/hangar/lb_dropship)
+"pf" = (
+/obj/structure/surface/rack{
+	color = "#818793"
+	},
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/sand3/north,
+/area/fire_colony/interior/hangar/alpha)
+"pG" = (
+/obj/structure/machinery/light/dropship/blue{
+	dir = 4;
+	pixel_x = 8
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/fire_colony/interior/hangar/lb_dropship)
+"pK" = (
+/obj/structure/surface/table/almayer{
+	color = "#848484"
+	},
+/obj/structure/machinery/door/window/brigdoor/westright{
+	name = "Security Desk";
+	color = "#ff6548"
+	},
+/obj/structure/machinery/door/window/eastleft{
+	name = "Security Desk";
+	color = "#ff6548"
+	},
+/obj/item/clipboard{
+	pixel_x = 1;
+	pixel_y = -7
+	},
+/obj/item/tool/pen/blue{
+	pixel_x = 1;
+	pixel_y = -9
+	},
+/obj/item/tool/stamp{
+	pixel_x = -4;
+	pixel_y = 7
+	},
+/turf/open/floor/dark2,
+/area/fire_colony/interior/hangar/checkpoint)
+"pP" = (
+/obj/item/form_printer{
+	pixel_x = -15;
+	pixel_y = 8
+	},
+/obj/item/paper{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/item/folder/red{
+	pixel_x = 1;
+	pixel_y = 6
+	},
+/obj/structure/surface/table/almayer{
+	color = "#848484"
+	},
+/obj/structure/machinery/door_control{
+	pixel_y = -1;
+	id = "aero_shutters"
+	},
+/turf/open/floor/strata/altred3,
+/area/fire_colony/interior/hangar/checkpoint)
+"qi" = (
+/obj/structure/ore_box/alt/metal_container_colorable{
+	color = "#718075"
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/sand3/west,
+/area/fire_colony/interior/hangar/alpha)
+"qr" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/floor2,
+/area/fire_colony/interior/hangar/checkpoint)
+"qs" = (
+/obj/structure/fence/slim/blue,
+/turf/open/lava/metal/warnplate/west,
+/area/fire_colony/exterior/landing_pad)
+"qG" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/bed/stool{
+	pixel_x = -7;
+	pixel_y = 19
+	},
+/obj/item/ammo_magazine/pistol/b92fs{
+	pixel_x = -3;
+	pixel_y = -3
+	},
+/obj/item/ammo_box/magazine/b92fs/empty{
+	pixel_x = 12;
+	pixel_y = 10
+	},
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/alpha)
+"qH" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/machinery/door/poddoor/almayer/dark/open{
+	id = "aero_shutters"
+	},
+/turf/open/floor/strata/floor3,
+/area/fire_colony/interior/hangar/alpha)
+"qJ" = (
+/obj/item/device/flashlight/lamp/tripod/grey,
+/turf/open/lava/metal/warnplate/north,
+/area/fire_colony/exterior/landing_pad)
+"rb" = (
+/turf/open/lava/metal/warnplate/corner/west,
+/area/fire_colony/exterior/landing_pad)
+"rz" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/turf/open/lava/sand,
+/area/fire_colony/exterior/clearing/south)
+"rK" = (
+/obj/structure/surface/table/almayer{
+	color = "#848484"
+	},
+/obj/item/device/flashlight,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/strata/sand3/west,
+/area/fire_colony/interior/hangar/alpha)
+"rM" = (
+/obj/structure/cargo_container/hybrisa/containersextended/colorable_small{
+	color = "#5e5e5e"
+	},
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/alpha)
+"rN" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/turf/open/lava/brock,
+/area/fire_colony/exterior/clearing/south)
+"sK" = (
+/obj/structure/machinery/colony_floodlight/alt,
+/turf/open/lava/brock,
+/area/fire_colony/exterior/clearing/south)
+"tg" = (
+/obj/effect/decal/warning_stripes/worn{
+	dir = 4
+	},
+/turf/open/floor/strata/sand3/east,
+/area/fire_colony/interior/hangar/alpha)
+"tv" = (
+/turf/closed/shuttle/dropship_lb{
+	icon_state = "1,4"
+	},
+/area/fire_colony/interior/hangar/lb_dropship)
+"tz" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/asteroid,
+/area/fire_colony/exterior/clearing/south)
+"tD" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/asteroid/directions/northwest,
+/area/fire_colony/exterior/clearing/south)
+"tK" = (
+/obj/effect/decal/warning_stripes/worn{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/survivor_spawner/fire_colony_lb_merc,
+/turf/open/floor/strata/sand3/east,
+/area/fire_colony/interior/hangar/alpha)
+"tQ" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/strata/multi_tiles,
+/area/fire_colony/interior/hangar/checkpoint)
+"tT" = (
+/obj/structure/closet/toolcloset,
+/turf/open/floor/strata/sand3/west,
+/area/fire_colony/interior/hangar/alpha)
+"uj" = (
+/obj/structure/surface/table/almayer{
+	color = "#848484"
+	},
+/obj/item/device/flashlight,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/strata/sand3/east,
+/area/fire_colony/interior/hangar/alpha)
+"uF" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/asteroid/corner/south,
+/area/fire_colony/exterior/clearing/south)
+"uT" = (
+/obj/structure/machinery/cm_vending/sorted/tech,
+/turf/open/floor/strata/sand4/north,
+/area/fire_colony/interior/hangar/alpha)
+"uY" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/surface/rack{
+	color = "#818793"
+	},
+/obj/item/prop/colony/canister/alt_2{
+	pixel_y = 11
+	},
+/obj/item/prop/colony/canister/alt_1{
+	pixel_y = 1;
+	dir = 8
+	},
+/turf/open/floor/strata/sand3/north,
+/area/fire_colony/interior/hangar/alpha)
+"va" = (
+/obj/structure/cargo_container/hybrisa/containersextended/colorable_small{
+	color = "#818793";
+	pixel_y = -3
+	},
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/alpha)
+"vz" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 1
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/clearing/south)
+"vS" = (
+/obj/structure/machinery/door/airlock/multi_tile/lavaland/black_double/autoname{
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/machinery/door/poddoor/almayer/dark/open{
+	dir = 4;
+	id = "aero_shutters"
+	},
+/turf/open/floor/strata/floor3,
+/area/fire_colony/interior/hangar/alpha)
+"we" = (
+/obj/effect/decal/warning_stripes/worn,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/strata/sand3,
+/area/fire_colony/interior/hangar/alpha)
+"wk" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/device/flashlight/lamp/tripod/grey,
+/turf/open/floor/strata/sand3/northwest,
+/area/fire_colony/interior/hangar/alpha)
+"wl" = (
+/obj/structure/machinery/light/dropship/blue{
+	dir = 8;
+	pixel_x = -7;
+	pixel_y = 5;
+	needs_power = 0
+	},
+/obj/structure/machinery/light/dropship/blue{
+	dir = 4;
+	pixel_x = 7;
+	pixel_y = 5;
+	needs_power = 0
+	},
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/alpha)
+"wr" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/strata/floor3,
+/area/fire_colony/interior/hangar/checkpoint)
+"wB" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/largecrate/random/case/double,
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/alpha)
+"wF" = (
+/turf/open/lava/brock,
+/area/fire_colony/exterior/clearing/south)
+"wH" = (
+/turf/closed/shuttle/dropship_lb{
+	icon_state = "4,8"
+	},
+/area/fire_colony/interior/hangar/lb_dropship)
+"wP" = (
+/obj/structure/fence/slim/blue,
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/clearing/south)
+"wR" = (
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 8
+	},
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/clearing/south)
+"xa" = (
+/obj/structure/shuttle/part/dropship_lb/transparent{
+	icon_state = "8,3";
+	pixel_y = 14;
+	density = 0
+	},
+/obj/item/tool/warning_cone/red,
+/obj/item/tool/warning_cone/red{
+	pixel_x = 16;
+	pixel_y = 10
+	},
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/alpha)
+"xu" = (
+/obj/effect/broken_tile{
+	dir = 4
+	},
+/obj/effect/broken_tile/angle{
+	dir = 1;
+	pixel_x = -16;
+	pixel_y = -15
+	},
+/turf/open/floor/corsat,
+/area/fire_colony/interior/hangar/alpha)
+"xQ" = (
+/obj/effect/decal/warning_stripes/worn,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/strata/sand3,
+/area/fire_colony/interior/hangar/alpha)
+"yd" = (
+/obj/structure/machinery/door/airlock/multi_tile/lavaland/black_double/red/autoname,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/machinery/door/poddoor/almayer/dark/open{
+	id = "aero_shutters"
+	},
+/turf/open/floor/strata/floor3,
+/area/fire_colony/interior/hangar/alpha)
+"yg" = (
+/obj/effect/decal/warning_stripes/worn/stripes_double{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/multi_tiles/west,
+/area/fire_colony/interior/hangar/alpha)
+"yo" = (
+/obj/structure/surface/table/almayer{
+	color = "#848484"
+	},
+/obj/item/clipboard,
+/obj/structure/machinery/door/window/brigdoor/westright{
+	name = "Security Desk";
+	color = "#ff6548"
+	},
+/obj/structure/machinery/door/window/eastleft{
+	name = "Security Desk";
+	color = "#ff6548"
+	},
+/obj/item/paper{
+	pixel_y = 1
+	},
+/obj/item/tool/pen/blue,
+/turf/open/floor/corsat,
+/area/fire_colony/interior/hangar/checkpoint)
+"yq" = (
+/turf/closed/wall/lava/solaris_dark,
+/area/fire_colony/interior/hangar/checkpoint)
+"ys" = (
+/obj/structure/machinery/computer/cameras{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/surface/table/almayer{
+	color = "#848484"
+	},
+/turf/open/floor/strata/altred4/east,
+/area/fire_colony/interior/hangar/checkpoint)
+"yy" = (
+/obj/structure/window/framed/lava/orange,
+/obj/structure/machinery/door/poddoor/almayer/dark/open{
+	id = "aero_shutters"
+	},
+/turf/open/floor/corsat,
+/area/fire_colony/interior/hangar/alpha)
+"yB" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = -7;
+	pixel_y = 10
+	},
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = -7
+	},
+/turf/open/floor/strata/sand3/west,
+/area/fire_colony/interior/hangar/alpha)
+"yC" = (
+/turf/closed/shuttle/dropship_lb/transparent{
+	icon_state = "4,14"
+	},
+/area/fire_colony/interior/hangar/lb_dropship)
+"yD" = (
+/obj/structure/machinery/colony_floodlight/alt{
+	pixel_x = -3
+	},
+/turf/open/lava/metal/warnplate/northeast,
+/area/fire_colony/exterior/landing_pad)
+"yK" = (
+/obj/effect/decal/hybrisa/checkpoint_decal/only_security{
+	pixel_y = -1;
+	color = "#e8b867"
+	},
+/obj/effect/decal/warning_stripes/worn/stripes_double{
+	dir = 8;
+	pixel_y = 25
+	},
+/turf/open/floor/strata/smooth_u,
+/area/fire_colony/interior/hangar/alpha)
+"yU" = (
+/obj/effect/decal/warning_stripes/worn{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 9
+	},
+/turf/open/floor/strata/sand3/east,
+/area/fire_colony/interior/hangar/alpha)
+"yY" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/asteroid/directions/south,
+/area/fire_colony/exterior/clearing/south)
+"za" = (
+/turf/closed/shuttle/dropship_lb{
+	icon_state = "0,4"
+	},
+/area/fire_colony/interior/hangar/lb_dropship)
+"zb" = (
+/obj/effect/decal/warning_stripes/worn{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/strata/sand3/east,
+/area/fire_colony/interior/hangar/alpha)
+"zt" = (
+/obj/structure/surface/rack{
+	color = "#818793"
+	},
+/obj/item/fuel_cell,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/sand3/north,
+/area/fire_colony/interior/hangar/alpha)
+"zI" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/strata/floor2,
+/area/fire_colony/interior/hangar/alpha)
+"zP" = (
+/obj/structure/machinery/door/airlock/almayer/lavaland/glass/red/autoname,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/strata/floor3,
+/area/fire_colony/interior/hangar/checkpoint)
+"Ae" = (
+/turf/closed/shuttle/dropship_lb{
+	icon_state = "8,4"
+	},
+/area/fire_colony/interior/hangar/lb_dropship)
+"AD" = (
+/obj/effect/decal/warning_stripes/worn{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/sand3/west,
+/area/fire_colony/interior/hangar/alpha)
+"AI" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_x = 7;
+	pixel_y = 5
+	},
+/obj/item/clothing/head/helmet/marine/veteran/lb_merc{
+	pixel_x = 8;
+	pixel_y = 10
+	},
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/alpha)
+"AR" = (
+/obj/structure/surface/rack{
+	color = "#818793"
+	},
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/turf/open/floor/strata/sand3/west,
+/area/fire_colony/interior/hangar/alpha)
+"Bf" = (
+/turf/closed/wall/lava/solaris_dark,
+/area/fire_colony/exterior/clearing/south)
+"Bn" = (
+/obj/structure/shuttle/part/dropship_lb/transparent{
+	icon_state = "3,15"
+	},
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/lb_dropship)
+"Bq" = (
+/obj/structure/bed/chair/comfy/black{
+	pixel_y = 14;
+	buckling_y = 14;
+	layer = 3.4
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/dark2,
+/area/fire_colony/interior/hangar/checkpoint)
+"Br" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/effect/decal/warning_stripes/worn{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/sand3/west,
+/area/fire_colony/interior/hangar/alpha)
+"Bs" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/vault2/west,
+/area/fire_colony/interior/hangar/checkpoint)
+"Bw" = (
+/obj/effect/decal/warning_stripes/worn{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/sand3/east,
+/area/fire_colony/interior/hangar/alpha)
+"BK" = (
+/obj/structure/machinery/door/airlock/hatch/cockpit/two{
+	req_access = null;
+	req_one_access = null;
+	color = "#9dacc0";
+	name = "\improper UD2-LB 'Remedy'";
+	dir = 1;
+	pixel_y = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_warning_white";
+	color = "#b48f51";
+	layer = 2.00
+	},
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/fire_colony/interior/hangar/lb_dropship)
+"Cb" = (
+/obj/structure/window/framed/lava/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	color = "#84929f";
+	dir = 8
+	},
+/obj/structure/machinery/door/poddoor/almayer/dark/closed{
+	dir = 4;
+	id = "aero_shutters"
+	},
+/turf/open/floor/corsat,
+/area/fire_colony/interior/hangar/alpha)
+"Cc" = (
+/obj/structure/shuttle/part/dropship_lb{
+	icon_state = "2,11"
+	},
+/turf/closed/shuttle/dropship_lb{
+	icon_state = "6,2"
+	},
+/area/fire_colony/interior/hangar/lb_dropship)
+"Cd" = (
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = -8;
+	pixel_y = 7
+	},
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = -8;
+	pixel_y = -2
+	},
+/obj/structure/machinery/light/dropship/blue{
+	dir = 4;
+	pixel_x = 7;
+	pixel_y = 5;
+	needs_power = 0
+	},
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/alpha)
+"Cs" = (
+/turf/open/floor/strata/floor2,
+/area/fire_colony/interior/hangar/checkpoint)
+"Cw" = (
+/obj/structure/fence/slim/blue,
+/turf/open/lava/brock,
+/area/fire_colony/exterior/clearing/south)
+"CK" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/altred3/east,
+/area/fire_colony/interior/hangar/checkpoint)
+"CW" = (
+/obj/structure/machinery/door/airlock/multi_tile/lavaland/black_double/red/autoname{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/machinery/door/poddoor/almayer/dark/open{
+	dir = 4;
+	id = "aero_shutters"
+	},
+/turf/open/floor/strata/floor3,
+/area/fire_colony/interior/hangar/checkpoint)
+"Dm" = (
+/obj/structure/bed/chair/dropship/pilot{
+	dir = 1;
+	pixel_x = 1;
+	pixel_y = 3;
+	buckling_x = 1;
+	buckling_y = 3
+	},
+/obj/structure/machinery/big_computers/computerblack/computer3{
+	pixel_y = 19;
+	layer = 2;
+	density = 0;
+	icon_state = "blacksensor_comp3_off"
+	},
+/turf/open/floor/strata/grey_multi_tiles,
+/area/fire_colony/interior/hangar/lb_dropship)
+"Dr" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/bed/chair/comfy/black{
+	pixel_y = 14;
+	buckling_y = 14;
+	layer = 3.4
+	},
+/turf/open/floor/dark2,
+/area/fire_colony/interior/hangar/checkpoint)
+"DQ" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/sand3/east,
+/area/fire_colony/interior/hangar/alpha)
+"Ea" = (
+/turf/open/lava/basalt/basalt8,
+/area/fire_colony/exterior/clearing/south)
+"Ei" = (
+/obj/effect/spawner/random/toolbox,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/closet,
+/turf/open/floor/strata/sand3/north,
+/area/fire_colony/interior/hangar/alpha)
+"Ep" = (
+/turf/open/lava/metal/plating_grille,
+/area/fire_colony/exterior/landing_pad)
+"Ev" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/reagent_dispensers/tank/fuel/spacecraft,
+/turf/open/floor/strata/sand3/east,
+/area/fire_colony/interior/hangar/alpha)
+"ED" = (
+/obj/structure/shuttle/part/dropship_lb/transparent{
+	icon_state = "3,15";
+	pixel_x = 10;
+	pixel_y = -3;
+	layer = 1.9;
+	density = 0
+	},
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/alpha)
+"EJ" = (
+/obj/item/device/flashlight/lamp/tripod/grey,
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/alpha)
+"EU" = (
+/obj/effect/decal/warning_stripes/worn{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/strata/sand3/east,
+/area/fire_colony/interior/hangar/alpha)
+"Fh" = (
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = -8;
+	pixel_y = 10
+	},
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/alpha)
+"Fi" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/clearing/south)
+"Fl" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/metal/plating_grille,
+/area/fire_colony/exterior/landing_pad)
+"Fu" = (
+/obj/structure/window/framed/lava/orange,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	color = "#84929f";
+	dir = 8
+	},
+/turf/open/floor/corsat,
+/area/fire_colony/interior/hangar/checkpoint)
+"Fw" = (
+/obj/structure/surface/table/almayer{
+	color = "#848484"
+	},
+/obj/structure/machinery/door/window/brigdoor/westright{
+	name = "Security Desk";
+	color = "#ff6548"
+	},
+/obj/structure/machinery/door/window/eastleft{
+	name = "Security Desk";
+	color = "#ff6548"
+	},
+/obj/item/paper{
+	pixel_y = 1
+	},
+/obj/item/tool/stamp,
+/turf/open/floor/corsat,
+/area/fire_colony/interior/hangar/checkpoint)
+"Fy" = (
+/obj/effect/decal/warning_stripes/worn{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/sand3/west,
+/area/fire_colony/interior/hangar/alpha)
+"FS" = (
+/obj/effect/decal/warning_stripes/worn/stripes_double{
+	dir = 1
+	},
+/turf/open/floor/strata/floor2,
+/area/fire_colony/interior/hangar/checkpoint)
+"FU" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/device/flashlight/lamp/tripod/grey/off,
+/turf/open/lava/asteroid/directions/north,
+/area/fire_colony/exterior/clearing/south)
+"Gb" = (
+/turf/open/lava/metal/warnplate/northwest,
+/area/fire_colony/exterior/landing_pad)
+"Gk" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/closet/secure_closet/seegson/security{
+	pixel_x = -4
+	},
+/turf/open/floor/strata/altred3/west,
+/area/fire_colony/interior/hangar/checkpoint)
+"Gz" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/storage/backpack/marine/satchel/rto{
+	pixel_y = 23;
+	desc = "A heavy-duty pack, used for telecommunications between central command. Commonly carried by RTOs. This one is set up to serve the Lasalle Bionational Hazard Intervention Group (BHIG) operative team.";
+	name = "\improper L-BHIG Radio Telephone Pack";
+	networks_receive = list("Colonist");
+	networks_transmit = list("Colonist");
+	phone_category = "L-B Net"
+	},
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/alpha)
+"GN" = (
+/obj/structure/shuttle/part/dropship_lb/transparent{
+	icon_state = "8,8"
+	},
+/obj/structure/machinery/light/dropship/green{
+	dir = 8;
+	pixel_y = 1;
+	pixel_x = -7;
+	needs_power = 0
+	},
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/lb_dropship)
+"GP" = (
+/obj/effect/decal/warning_stripes/worn/stripes_double{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/floor2,
+/area/fire_colony/interior/hangar/checkpoint)
+"GY" = (
+/obj/structure/machinery/door_control{
+	id = "hangar_ice_1";
+	name = "hangar shutter control";
+	pixel_y = -19
+	},
+/obj/effect/decal/warning_stripes/worn{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/ammo_magazine/smg/a_m36{
+	current_rounds = 0
+	},
+/turf/open/floor/strata/sand3/west,
+/area/fire_colony/interior/hangar/alpha)
+"Ha" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/warning_stripes/worn/stripes_double{
+	dir = 8;
+	pixel_y = 25
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/smooth_u/north,
+/area/fire_colony/interior/hangar/alpha)
+"Hd" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/closet/firecloset/alt/full,
+/turf/open/floor/strata/sand3/west,
+/area/fire_colony/interior/hangar/alpha)
+"Hi" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/alpha)
+"Hr" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/alpha)
+"HE" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/clearing/south)
+"HI" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/shuttle/part/dropship_lb/transparent{
+	density = 0
+	},
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/alpha)
+"HN" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/strata/multi_tiles,
+/area/fire_colony/interior/hangar/checkpoint)
+"HS" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/warning_stripes/worn,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/strata/sand3,
+/area/fire_colony/interior/hangar/alpha)
+"Ij" = (
+/obj/structure/machinery/light/dropship/blue{
+	dir = 8;
+	pixel_x = -8
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/fire_colony/interior/hangar/lb_dropship)
+"Ir" = (
+/obj/structure/shuttle/part/dropship_lb/transparent{
+	icon_state = "8,3";
+	pixel_y = 13;
+	density = 0
+	},
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/alpha)
+"Iz" = (
+/obj/effect/decal/warning_stripes/worn{
+	dir = 8
+	},
+/turf/open/floor/strata/sand3/west,
+/area/fire_colony/interior/hangar/alpha)
+"Ju" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/metal/plating_grille,
+/area/fire_colony/exterior/landing_pad)
+"JH" = (
+/obj/structure/shuttle/part/dropship_lb/transparent{
+	icon_state = "2,1"
+	},
+/turf/open/floor/plating,
+/area/fire_colony/interior/hangar/lb_dropship)
+"JI" = (
+/obj/effect/spawner/random/tool,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/alpha)
+"JR" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/machinery/photocopier,
+/turf/open/floor/strata/altred4/west,
+/area/fire_colony/interior/hangar/checkpoint)
+"Kp" = (
+/obj/structure/surface/table/almayer{
+	color = "#848484"
+	},
+/obj/effect/spawner/random/toolbox,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/sand3/east,
+/area/fire_colony/interior/hangar/alpha)
+"KI" = (
+/obj/item/device/flashlight/lamp/tripod/grey,
+/turf/open/floor/strata/sand3/east,
+/area/fire_colony/interior/hangar/alpha)
+"KS" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/dark2,
+/area/fire_colony/interior/hangar/checkpoint)
+"KV" = (
+/obj/item/clothing/accessory/patch/lasalle{
+	pixel_x = 9;
+	pixel_y = -1;
+	layer = 3
+	},
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/item/ammo_magazine/pistol/b92fs{
+	pixel_x = 6;
+	pixel_y = -2
+	},
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/strata/grey_multi_tiles,
+/area/fire_colony/interior/hangar/lb_dropship)
+"Ln" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/tool/warning_cone/red,
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/alpha)
+"Lp" = (
+/obj/structure/surface/rack{
+	color = "#818793"
+	},
+/obj/item/device/flashlight/lantern/alt,
+/turf/open/floor/strata/sand3/west,
+/area/fire_colony/interior/hangar/alpha)
+"Lv" = (
+/obj/structure/shuttle/part/dropship_lb/transparent{
+	icon_state = "1,0"
+	},
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/lb_dropship)
+"LF" = (
+/obj/structure/surface/table/almayer{
+	color = "#848484"
+	},
+/obj/item/storage/belt/utility{
+	pixel_y = 8
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/sand3/west,
+/area/fire_colony/interior/hangar/alpha)
+"LN" = (
+/obj/structure/shuttle/part/dropship_lb/transparent{
+	icon_state = "6,0"
+	},
+/turf/open/floor/plating,
+/area/fire_colony/interior/hangar/lb_dropship)
+"LW" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/device/flashlight/lamp/tripod/grey,
+/turf/open/floor/strata/sand3/west,
+/area/fire_colony/interior/hangar/alpha)
+"Me" = (
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/alpha)
+"Mg" = (
+/obj/structure/pipes/vents/pump_hybrisa,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/multi_tiles,
+/area/fire_colony/interior/hangar/checkpoint)
+"Mq" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/asteroid/corner/east,
+/area/fire_colony/exterior/clearing/south)
+"MF" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/storage/box/mre/fsr,
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/alpha)
+"MG" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/machinery/door/poddoor/almayer/dark/open{
+	dir = 4;
+	id = "aero_shutters"
+	},
+/turf/open/floor/strata/floor3,
+/area/fire_colony/interior/hangar/alpha)
+"MX" = (
+/obj/structure/shuttle/part/dropship_lb/transparent{
+	icon_state = "4,10"
+	},
+/turf/open/floor/strata/grey_multi_tiles,
+/area/fire_colony/interior/hangar/lb_dropship)
+"MY" = (
+/obj/item/tool/warning_cone/blue,
+/obj/item/tool/warning_cone/blue{
+	pixel_y = 4
+	},
+/turf/open/floor/strata/sand3/east,
+/area/fire_colony/interior/hangar/alpha)
+"Nv" = (
+/obj/effect/broken_tile{
+	dir = 1
+	},
+/obj/effect/broken_tile/single{
+	pixel_x = -3;
+	pixel_y = 19
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/corsat,
+/area/fire_colony/interior/hangar/alpha)
+"NG" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/lava/metal/plating_grille,
+/area/fire_colony/exterior/landing_pad)
+"NI" = (
+/obj/structure/shuttle/part/dropship_lb/transparent{
+	icon_state = "1,2"
+	},
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/lb_dropship)
+"NP" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/machinery/space_heater/radiator/red{
+	pixel_y = 26
+	},
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = 7;
+	pixel_y = 4
+	},
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = 7;
+	pixel_y = -4
+	},
+/turf/open/floor/dark2,
+/area/fire_colony/interior/hangar/checkpoint)
+"NV" = (
+/obj/effect/decal/warning_stripes/worn{
+	dir = 8
+	},
+/obj/item/device/flashlight/lamp/tripod/grey,
+/turf/open/floor/strata/sand3/west,
+/area/fire_colony/interior/hangar/alpha)
+"OL" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/asteroid/directions/north,
+/area/fire_colony/exterior/clearing/south)
+"Pg" = (
+/turf/open/lava/metal/grate/west,
+/area/fire_colony/exterior/landing_pad)
+"Pi" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/sand3/west,
+/area/fire_colony/interior/hangar/alpha)
+"Qc" = (
+/obj/effect/broken_tile{
+	dir = 8
+	},
+/obj/effect/broken_tile/single{
+	pixel_y = -4
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/corsat,
+/area/fire_colony/interior/hangar/checkpoint)
+"Qi" = (
+/turf/open/floor/strata/floor2,
+/area/fire_colony/interior/hangar/alpha)
+"QM" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/warning_stripes/worn/stripes_double{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/floor2,
+/area/fire_colony/interior/hangar/checkpoint)
+"QS" = (
+/obj/structure/surface/table/almayer{
+	color = "#848484"
+	},
+/obj/effect/spawner/random/powercell,
+/obj/effect/spawner/random/tool,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/strata/sand3/west,
+/area/fire_colony/interior/hangar/alpha)
+"Rk" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/shuttle/part/dropship_lb/transparent{
+	icon_state = "8,3";
+	pixel_y = 14;
+	density = 0
+	},
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/alpha)
+"Rv" = (
+/obj/effect/broken_tile/double,
+/obj/effect/broken_tile/single{
+	pixel_x = 16;
+	pixel_y = 19
+	},
+/obj/effect/broken_tile/angle{
+	dir = 1;
+	pixel_x = -14;
+	pixel_y = 8
+	},
+/turf/open/floor/corsat,
+/area/fire_colony/interior/hangar/checkpoint)
+"Rx" = (
+/obj/structure/shuttle/part/dropship_lb/transparent{
+	icon_state = "7,12"
+	},
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/lb_dropship)
+"RH" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters/open{
+	id = "hangar_ice_1"
+	},
+/turf/open/floor/corsat,
+/area/fire_colony/interior/hangar/alpha)
+"RK" = (
+/obj/structure/machinery/door/airlock/hatch/cockpit/two{
+	req_access = null;
+	req_one_access = null;
+	color = "#9dacc0";
+	name = "\improper UD2-LB 'Remedy'"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_warning_white";
+	color = "#b48f51";
+	layer = 2.00
+	},
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/fire_colony/interior/hangar/lb_dropship)
+"RY" = (
+/obj/structure/closet/toolcloset,
+/obj/effect/landmark/objective_landmark/close,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/sand4/east,
+/area/fire_colony/interior/hangar/alpha)
+"Sh" = (
+/obj/structure/shuttle/part/dropship_lb/transparent{
+	icon_state = "7,2"
+	},
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/lb_dropship)
+"So" = (
+/obj/structure/bed/chair/vehicle/white{
+	dir = 4;
+	pixel_x = -5;
+	pixel_y = 1;
+	buckle_offset_x = -5;
+	buckle_offset_y = 1
+	},
+/obj/structure/extinguisher_cabinet/lifeboat{
+	pixel_y = 26;
+	layer = 2.8;
+	pixel_x = 7
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/fire_colony/interior/hangar/lb_dropship)
+"Ss" = (
+/obj/structure/machinery/door/airlock/almayer/lavaland/glass/autoname,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/machinery/door/poddoor/almayer/dark/open{
+	dir = 4;
+	id = "aero_shutters"
+	},
+/turf/open/floor/strata/floor3,
+/area/fire_colony/interior/hangar/alpha)
+"St" = (
+/obj/item/attachable/bayonet/lb,
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/alpha)
+"Sv" = (
+/obj/structure/bed/chair/office/light{
+	dir = 4
+	},
+/turf/open/floor/strata/altred3/east,
+/area/fire_colony/interior/hangar/checkpoint)
+"Sx" = (
+/obj/structure/shuttle/part/dropship_lb{
+	icon_state = "4,1";
+	density = 0;
+	opacity = 0
+	},
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/alpha)
+"SI" = (
+/obj/structure/shuttle/part/dropship_lb/transparent{
+	icon_state = "2,0"
+	},
+/turf/open/floor/plating,
+/area/fire_colony/interior/hangar/lb_dropship)
+"SW" = (
+/obj/structure/sign/safety/landingzone{
+	pixel_x = 7;
+	pixel_y = 30
+	},
+/turf/open/lava/metal/warnplate/north,
+/area/fire_colony/exterior/landing_pad)
+"Tc" = (
+/obj/effect/decal/warning_stripes/worn/corner,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 6
+	},
+/turf/open/floor/strata/sand3/southeast,
+/area/fire_colony/interior/hangar/alpha)
+"Tj" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/machinery/light/small/blue{
+	dir = 4
+	},
+/turf/open/lava/asteroid/directions/south,
+/area/fire_colony/exterior/clearing/south)
+"TC" = (
+/obj/item/trash/cigbutt,
+/turf/open/lava/metal/plating,
+/area/fire_colony/exterior/landing_pad)
+"TH" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/obj/effect/landmark/survivor_spawner/fire_colony_lb_merc,
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/alpha)
+"Ud" = (
+/obj/effect/decal/warning_stripes/worn{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/item/ammo_magazine/smg/a_m36{
+	current_rounds = 0
+	},
+/turf/open/floor/strata/sand3/east,
+/area/fire_colony/interior/hangar/alpha)
+"Uk" = (
+/turf/closed/shuttle/dropship_lb{
+	icon_state = "3,13";
+	opacity = 0
+	},
+/area/fire_colony/interior/hangar/lb_dropship)
+"UU" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/sand3/east,
+/area/fire_colony/interior/hangar/alpha)
+"UZ" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/metal/warnplate/corner/east,
+/area/fire_colony/exterior/landing_pad)
+"Vf" = (
+/obj/structure/shuttle/part/dropship_lb/transparent{
+	icon_state = "1,1"
+	},
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/alpha)
+"Vv" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/metal/plating,
+/area/fire_colony/exterior/landing_pad)
+"Vx" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/alpha)
+"Vz" = (
+/obj/structure/shuttle/part/dropship_lb/transparent{
+	icon_state = "8,3";
+	pixel_y = 13;
+	density = 0
+	},
+/obj/structure/closet/crate/ammo/alt,
+/obj/item/storage/box/mre/fsr,
+/obj/item/storage/box/mre/fsr,
+/obj/item/storage/box/mre/fsr,
+/obj/item/storage/box/mre/fsr,
+/obj/item/storage/box/packet/smoke,
+/obj/item/storage/box/packet/smoke,
+/obj/item/storage/box/m94,
+/obj/item/storage/box/m94,
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/alpha)
+"VC" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/trash/cigbutt,
+/obj/effect/landmark/survivor_spawner/fire_colony_lb_merc_leader,
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/alpha)
+"VJ" = (
+/obj/structure/ore_box/alt/metal_container_colorable{
+	color = "#6d7b84"
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/strata/sand4,
+/area/fire_colony/interior/hangar/alpha)
+"VM" = (
+/obj/effect/decal/warning_stripes/worn/stripes_double{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/floor2,
+/area/fire_colony/interior/hangar/checkpoint)
+"Wg" = (
+/obj/structure/fence/slim/blue,
+/turf/open/lava/metal/warnplate/northwest,
+/area/fire_colony/exterior/landing_pad)
+"Wl" = (
+/turf/closed/wall/lava/solaris_dark,
+/area/fire_colony/interior/hangar/alpha)
+"Wn" = (
+/obj/structure/machinery/door/poddoor/hybrisa/shutters/open{
+	id = "hangar_ice_1"
+	},
+/turf/open/floor/corsat,
+/area/fire_colony/interior/hangar/alpha)
+"WW" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/trash/cigbutt,
+/obj/item/storage/box/packet/smoke{
+	pixel_x = 8;
+	pixel_y = 28
+	},
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/alpha)
+"Xn" = (
+/obj/structure/shuttle/part/dropship_lb/transparent{
+	icon_state = "7,1"
+	},
+/turf/open/lava/metal/plating,
+/area/fire_colony/interior/hangar/alpha)
+"Xp" = (
+/obj/structure/largecrate/random/mini/small_case,
+/obj/item/tool/weldpack/minitank{
+	pixel_x = 9;
+	pixel_y = 14
+	},
+/turf/open/floor/strata/sand3/east,
+/area/fire_colony/interior/hangar/alpha)
+"XL" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/warning_stripes/worn/stripes_double{
+	dir = 1;
+	pixel_x = 24
+	},
+/turf/open/floor/strata/floor2,
+/area/fire_colony/interior/hangar/alpha)
+"XO" = (
+/obj/structure/shuttle/part/dropship_lb/transparent{
+	icon_state = "6,1"
+	},
+/turf/open/floor/plating,
+/area/fire_colony/interior/hangar/lb_dropship)
+"XU" = (
+/turf/open/floor/strata/altred3/east,
+/area/fire_colony/interior/hangar/checkpoint)
+"Yc" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/corsat/spiralplate,
+/area/fire_colony/exterior/landing_pad)
+"Yt" = (
+/obj/structure/machinery/door/airlock/hatch/cockpit/two{
+	req_access = null;
+	req_one_access = null;
+	dir = 1;
+	color = "#9dacc0";
+	name = "\improper UD2-LB 'Remedy' cockpit"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_warning_white";
+	color = "#b48f51";
+	layer = 2.00
+	},
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/fire_colony/interior/hangar/lb_dropship)
+"Yu" = (
+/obj/effect/decal/warning_stripes/worn/corner{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
+/turf/open/floor/strata/sand3/southwest,
+/area/fire_colony/interior/hangar/alpha)
+"Yz" = (
+/turf/closed/shuttle/dropship_lb/transparent{
+	icon_state = "5,13"
+	},
+/area/fire_colony/interior/hangar/lb_dropship)
+"YX" = (
+/turf/open/floor/corsat/spiralplate,
+/area/fire_colony/exterior/landing_pad)
+"Zh" = (
+/obj/effect/decal/warning_stripes/worn{
+	dir = 4
+	},
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/strata/sand3/east,
+/area/fire_colony/interior/hangar/alpha)
+"Zi" = (
+/obj/structure/window/framed/lava/reinforced,
+/obj/structure/machinery/door/poddoor/almayer/dark/open{
+	dir = 4;
+	id = "aero_shutters"
+	},
+/turf/open/floor/corsat,
+/area/fire_colony/interior/hangar/alpha)
+"Zx" = (
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 4
+	},
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 1
+	},
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 8
+	},
+/obj/effect/decal/large_stain{
+	dir = 8;
+	color = "#342a31";
+	pixel_x = -4;
+	pixel_y = -4
+	},
+/turf/open/lava/sand,
+/area/fire_colony/exterior/clearing/south)
+"ZT" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/asteroid/directions/southwest,
+/area/fire_colony/exterior/clearing/south)
+
+(1,1,1) = {"
+Bf
+rz
+on
+gj
+Zx
+rN
+Wl
+Cb
+Cb
+Cb
+Cb
+Wl
+Wl
+Wl
+Wl
+MG
+vS
+Wl
+Cb
+Cb
+Wl
+Wl
+sK
+cn
+vz
+Ea
+OL
+"}
+(2,1,1) = {"
+wP
+ji
+ek
+yY
+wF
+Wl
+Wl
+VJ
+Lp
+AR
+rK
+QS
+LF
+yB
+LW
+yg
+ng
+qi
+Hd
+tT
+RY
+Wl
+Wl
+Wl
+Wg
+qs
+UZ
+"}
+(3,1,1) = {"
+aT
+li
+ek
+yY
+wR
+ac
+fv
+wk
+Nv
+Qi
+lN
+Qi
+xu
+lN
+lL
+lN
+zI
+Qi
+dZ
+bc
+aC
+Pi
+kl
+Wl
+qJ
+Yc
+YX
+"}
+(4,1,1) = {"
+wP
+Fi
+lC
+gj
+HE
+ac
+pf
+Tc
+EU
+EU
+EU
+tK
+Ud
+mk
+zb
+EU
+Zh
+EU
+yU
+tg
+cW
+Bw
+fO
+Wl
+dJ
+Pg
+Fl
+"}
+(5,1,1) = {"
+Cw
+tD
+uF
+Mq
+ZT
+ac
+zt
+xQ
+Hi
+Ln
+AI
+WW
+Me
+Hi
+Me
+Me
+Me
+eW
+Vx
+Vx
+Me
+Me
+Me
+Wn
+bx
+Pg
+NG
+"}
+(6,1,1) = {"
+yq
+FU
+tz
+mS
+Tj
+ac
+is
+we
+Vx
+Me
+va
+Me
+Me
+jm
+za
+Ir
+Me
+jm
+za
+Vz
+Fh
+HI
+Hr
+RH
+kZ
+Yc
+YX
+"}
+(7,1,1) = {"
+yq
+yq
+ot
+CW
+yq
+Wl
+eX
+aa
+kS
+Me
+Cd
+ED
+ou
+nN
+tv
+RK
+Uk
+nN
+tv
+NI
+Vf
+Lv
+Hi
+RH
+kZ
+Pg
+Fl
+"}
+(8,1,1) = {"
+yq
+Bq
+GP
+FS
+co
+yy
+kt
+xQ
+Me
+Bn
+iG
+nR
+nH
+So
+kR
+pG
+kR
+kR
+kR
+iA
+JH
+SI
+Me
+Wn
+kZ
+Pg
+Ju
+"}
+(9,1,1) = {"
+yq
+hv
+Rv
+Qc
+QM
+yd
+yK
+HS
+Me
+fo
+yC
+Dm
+Yt
+kV
+MX
+wH
+lH
+KV
+dt
+BK
+Sx
+wl
+Me
+Wn
+Vv
+Yc
+Yc
+"}
+(10,1,1) = {"
+yq
+Dr
+Cs
+qr
+VM
+qH
+Ha
+we
+Me
+ix
+hl
+Yz
+nH
+jg
+eV
+Ij
+eV
+eV
+eV
+Cc
+XO
+LN
+Hi
+Wn
+Vv
+Pg
+Fl
+"}
+(11,1,1) = {"
+yq
+NP
+Bs
+fj
+KS
+yy
+hB
+xQ
+Me
+MF
+oI
+mT
+Rx
+bn
+gk
+RK
+pd
+bn
+gk
+Sh
+Xn
+eA
+Hi
+Wn
+TC
+Pg
+Ep
+"}
+(12,1,1) = {"
+yq
+Fu
+yo
+Fw
+yq
+yq
+Ei
+xQ
+rM
+qG
+JI
+Me
+EJ
+GN
+Ae
+Rk
+Hi
+GN
+Ae
+xa
+jp
+fX
+Hi
+Wn
+kZ
+bi
+Yc
+"}
+(13,1,1) = {"
+Gk
+fK
+bK
+hP
+ys
+yq
+gs
+xQ
+wB
+Gz
+VC
+Me
+Hi
+Me
+Me
+Hi
+Me
+Hi
+Me
+St
+Me
+TH
+kS
+Wn
+rb
+Pg
+Ep
+"}
+(14,1,1) = {"
+if
+tQ
+HN
+Mg
+pP
+yq
+uY
+Yu
+oA
+Iz
+Fy
+Fy
+AD
+AD
+Fy
+Fy
+NV
+Fy
+Fy
+Iz
+Fy
+Br
+GY
+Wl
+dJ
+Pg
+Ep
+"}
+(15,1,1) = {"
+wr
+XU
+Sv
+CK
+JR
+yq
+uT
+KI
+nL
+UU
+oH
+ez
+Xp
+DQ
+fF
+XL
+MY
+iN
+uj
+Kp
+Ev
+Wl
+Wl
+Wl
+SW
+Yc
+oS
+"}
+(16,1,1) = {"
+zP
+yq
+pK
+gI
+yq
+yq
+yq
+Wl
+Ss
+Wl
+Zi
+Zi
+Zi
+Zi
+Wl
+iJ
+Wl
+Zi
+Zi
+Zi
+Wl
+Wl
+yD
+Gb
+gT
+Pg
+Fl
+"}

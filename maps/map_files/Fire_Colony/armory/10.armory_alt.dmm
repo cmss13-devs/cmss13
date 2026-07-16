@@ -1,0 +1,241 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/closed/wall/lava/solaris_dark/reinforced,
+/area/fire_colony/interior/hangar/security/armory)
+"c" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/closet/secure_closet/guncabinet,
+/obj/item/storage/pouch/flamertank,
+/obj/item/ammo_magazine/flamer_tank/survivor,
+/obj/item/ammo_magazine/flamer_tank/survivor,
+/obj/item/weapon/gun/flamer/survivor,
+/turf/open/floor/strata/altred4,
+/area/fire_colony/interior/hangar/security/armory)
+"e" = (
+/obj/structure/surface/rack/long{
+	color = "#818793"
+	},
+/obj/item/clothing/accessory/storage/black_vest,
+/obj/item/clothing/accessory/storage/black_vest,
+/obj/item/clothing/accessory/storage/black_vest,
+/obj/item/clothing/accessory/storage/black_vest,
+/turf/open/floor/strata/altred4/north,
+/area/fire_colony/interior/hangar/security/armory)
+"g" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/weapon/classic_baton/alt{
+	pixel_x = -4;
+	pixel_y = 3
+	},
+/turf/open/floor/strata/altred3/southeast,
+/area/fire_colony/interior/hangar/security/armory)
+"j" = (
+/obj/structure/machinery/deployable/barrier,
+/turf/open/floor/strata/altred4/west,
+/area/fire_colony/interior/hangar/security/armory)
+"k" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#818793"
+	},
+/obj/item/weapon/shield/riot{
+	pixel_x = -6;
+	pixel_y = 2
+	},
+/obj/item/weapon/shield/riot{
+	pixel_x = 2;
+	pixel_y = 4
+	},
+/turf/open/floor/strata/altred4/west,
+/area/fire_colony/interior/hangar/security/armory)
+"p" = (
+/obj/structure/machinery/door_control{
+	pixel_x = -22;
+	pixel_y = 4;
+	id = "seeg_armory"
+	},
+/turf/open/floor/strata/altred4,
+/area/fire_colony/interior/hangar/security/armory)
+"v" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#818793"
+	},
+/obj/item/clothing/accessory/patch/seegson{
+	pixel_x = 3;
+	pixel_y = 4
+	},
+/obj/item/ammo_magazine/shotgun/beanbag{
+	pixel_x = -5;
+	pixel_y = 1
+	},
+/turf/open/floor/strata/altred4/east,
+/area/fire_colony/interior/hangar/security/armory)
+"w" = (
+/obj/structure/closet/secure_closet/guncabinet,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/weapon/gun/shotgun/combat,
+/turf/open/floor/strata/altred4,
+/area/fire_colony/interior/hangar/security/armory)
+"z" = (
+/turf/open/floor/strata/altred4/north,
+/area/fire_colony/interior/hangar/security/armory)
+"A" = (
+/turf/open/floor/strata/altred3/west,
+/area/fire_colony/interior/hangar/security/armory)
+"B" = (
+/obj/structure/surface/rack{
+	color = "#818793"
+	},
+/obj/item/ammo_magazine/rifle/w_ek_17,
+/obj/item/ammo_magazine/rifle/w_ek_17,
+/obj/item/weapon/gun/rifle/w_ek_17,
+/turf/open/floor/strata/altred3/east,
+/area/fire_colony/interior/hangar/security/armory)
+"C" = (
+/obj/structure/surface/rack{
+	color = "#818793"
+	},
+/obj/item/ammo_magazine/rifle/w_ek_17,
+/obj/item/ammo_magazine/rifle/w_ek_17,
+/turf/open/floor/strata/altred3/east,
+/area/fire_colony/interior/hangar/security/armory)
+"G" = (
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door/open{
+	dir = 4;
+	name = "\improper Armory Lockdown";
+	id = "seeg_armory"
+	},
+/turf/open/floor/corsat,
+/area/fire_colony/interior/hangar/security/armory)
+"H" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/surface/rack{
+	color = "#818793"
+	},
+/obj/item/ammo_magazine/rifle/w_ek_17,
+/obj/item/ammo_magazine/rifle/w_ek_17,
+/obj/item/weapon/gun/rifle/w_ek_17,
+/turf/open/floor/strata/altred4/north,
+/area/fire_colony/interior/hangar/security/armory)
+"J" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#818793"
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/storage/box/emps{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/obj/item/explosive/grenade/empgrenade{
+	pixel_x = 7;
+	pixel_y = 5
+	},
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/strata/altred4/north,
+/area/fire_colony/interior/hangar/security/armory)
+"L" = (
+/obj/structure/machinery/deployable/barrier,
+/turf/open/floor/strata/altred4/east,
+/area/fire_colony/interior/hangar/security/armory)
+"N" = (
+/turf/open/floor/strata/altred4/east,
+/area/fire_colony/interior/hangar/security/armory)
+"O" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/altred4,
+/area/fire_colony/interior/hangar/security/armory)
+"P" = (
+/obj/structure/surface/rack{
+	color = "#818793"
+	},
+/obj/item/ammo_magazine/rifle/w_ek_17,
+/obj/item/ammo_magazine/rifle/w_ek_17,
+/obj/item/weapon/gun/rifle/w_ek_17,
+/turf/open/floor/strata/altred4/west,
+/area/fire_colony/interior/hangar/security/armory)
+"S" = (
+/turf/open/floor/strata/altred3/northwest,
+/area/fire_colony/interior/hangar/security/armory)
+"U" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/altred3/west,
+/area/fire_colony/interior/hangar/security/armory)
+"W" = (
+/obj/item/clothing/accessory/patch/seegson{
+	pixel_x = -4;
+	pixel_y = 5
+	},
+/turf/open/floor/strata/altred3/southwest,
+/area/fire_colony/interior/hangar/security/armory)
+"Y" = (
+/turf/open/floor/strata/altred3/northeast,
+/area/fire_colony/interior/hangar/security/armory)
+"Z" = (
+/obj/structure/bed/stool{
+	pixel_x = 6;
+	pixel_y = 3
+	},
+/turf/open/floor/strata/altred4/west,
+/area/fire_colony/interior/hangar/security/armory)
+
+(1,1,1) = {"
+a
+a
+a
+G
+G
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+c
+p
+N
+O
+N
+v
+a
+"}
+(3,1,1) = {"
+a
+w
+S
+U
+A
+W
+L
+a
+"}
+(4,1,1) = {"
+a
+e
+Y
+B
+C
+g
+j
+a
+"}
+(5,1,1) = {"
+a
+J
+z
+P
+H
+Z
+k
+a
+"}
+(6,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+"}

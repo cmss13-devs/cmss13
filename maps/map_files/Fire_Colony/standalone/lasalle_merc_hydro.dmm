@@ -1,0 +1,1650 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"an" = (
+/turf/open/floor/strata/altgreen3/northwest,
+/area/fire_colony/interior/hydroponics/lobby)
+"br" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/warning_stripes/worn/stripes_double{
+	dir = 8
+	},
+/turf/open/floor/strata/floor2,
+/area/fire_colony/interior/hydroponics/lobby)
+"bw" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/strata/altgreen3/southwest,
+/area/fire_colony/interior/hydroponics/lobby)
+"bK" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/altgreen3/north,
+/area/fire_colony/interior/hydroponics/lobby)
+"ca" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/warning_stripes/worn/stripes_double{
+	dir = 8;
+	pixel_y = 24
+	},
+/turf/open/floor/strata/floor2,
+/area/fire_colony/interior/hydroponics/lobby)
+"cd" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
+	color = "#6b6b6b"
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/altgreen3,
+/area/fire_colony/interior/hydroponics/lobby)
+"ce" = (
+/turf/open/floor/strata/floor2,
+/area/fire_colony/interior/hydroponics/lobby)
+"cj" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
+	color = "#6b6b6b"
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/strata/floor2,
+/area/fire_colony/interior/hydroponics/lobby)
+"db" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/landmark/survivor_spawner/fire_colony_lb_merc,
+/turf/open/floor/strata/altgreen3/southwest,
+/area/fire_colony/interior/hydroponics/lobby)
+"dc" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
+	color = "#6b6b6b"
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/strata/floor2,
+/area/fire_colony/interior/hydroponics/lobby)
+"dC" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
+	dir = 4;
+	color = "#6b6b6b"
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_4";
+	layer = 2.9
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/altgreen3/east,
+/area/fire_colony/interior/hydroponics/lobby)
+"dJ" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
+	color = "#6b6b6b";
+	dir = 8
+	},
+/turf/open/floor/strata/floor2,
+/area/fire_colony/interior/hydroponics/lobby)
+"dM" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/floor2,
+/area/fire_colony/interior/hydroponics/lobby)
+"ea" = (
+/obj/structure/window/framed/lava/reinforced,
+/turf/open/floor/corsat,
+/area/fire_colony/interior/hydroponics/lobby)
+"en" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/floor/grass,
+/area/fire_colony/interior/hydroponics/lobby)
+"eo" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_y = 6
+	},
+/turf/open/floor/grass,
+/area/fire_colony/interior/hydroponics/lobby)
+"eP" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
+	color = "#6b6b6b";
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/strata/floor2,
+/area/fire_colony/interior/hydroponics/lobby)
+"eU" = (
+/obj/effect/broken_tile,
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
+	dir = 4;
+	color = "#6b6b6b"
+	},
+/obj/effect/broken_tile/single{
+	pixel_x = 9;
+	pixel_y = 19
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/corsat,
+/area/fire_colony/interior/hydroponics/lobby)
+"eV" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
+	color = "#6b6b6b"
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/strata/altgreen4/north,
+/area/fire_colony/interior/hydroponics/lobby)
+"fm" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
+	color = "#6b6b6b";
+	dir = 1
+	},
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
+	color = "#6b6b6b";
+	dir = 8
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_12";
+	pixel_x = -3;
+	pixel_y = 2
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_17";
+	pixel_x = 10;
+	pixel_y = 11
+	},
+/turf/open/floor/strata/floor2,
+/area/fire_colony/interior/hydroponics/lobby)
+"fG" = (
+/obj/structure/bed/chair/comfy/beige{
+	pixel_y = 14;
+	buckling_y = 14
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/turf/open/floor/strata/altgreen3/north,
+/area/fire_colony/interior/hydroponics/lobby)
+"fV" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	icon_state = "bush2";
+	color = "#578c3a";
+	pixel_x = -14;
+	pixel_y = -5
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/turf/open/floor/grass,
+/area/fire_colony/interior/hydroponics/lobby)
+"gx" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
+	dir = 4;
+	color = "#6b6b6b"
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/stack/medical/bruise_pack,
+/obj/item/prop/colony/usedbandage{
+	name = "bandages";
+	layer = 4;
+	pixel_x = -3;
+	pixel_y = -6;
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood{
+	pixel_x = 17;
+	pixel_y = -19
+	},
+/turf/open/floor/strata/altgreen3/west,
+/area/fire_colony/interior/hydroponics/lobby)
+"gE" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#578c3a";
+	pixel_x = -15;
+	pixel_y = -3
+	},
+/turf/open/floor/grass,
+/area/fire_colony/interior/hydroponics/lobby)
+"gI" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
+	dir = 8;
+	color = "#6b6b6b"
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/strata/altgreen3/north,
+/area/fire_colony/interior/hydroponics/lobby)
+"ho" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
+	dir = 4;
+	color = "#6b6b6b"
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/altgreen3/east,
+/area/fire_colony/interior/hydroponics/lobby)
+"hK" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -1;
+	pixel_y = 2
+	},
+/turf/open/floor/grass,
+/area/fire_colony/interior/hydroponics/lobby)
+"hL" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
+	color = "#6b6b6b";
+	dir = 8
+	},
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
+	color = "#6b6b6b"
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_2";
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/altgreen3/northeast,
+/area/fire_colony/interior/hydroponics/lobby)
+"hV" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/strata/floor2,
+/area/fire_colony/interior/hydroponics/lobby)
+"hX" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 4;
+	pixel_x = -10;
+	pixel_y = 5
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/trash/eat,
+/turf/open/floor/strata/altgreen3/west,
+/area/fire_colony/interior/hydroponics/lobby)
+"ig" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
+	dir = 4;
+	color = "#6b6b6b"
+	},
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
+	color = "#6b6b6b"
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_8";
+	pixel_x = 2;
+	pixel_y = 8
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/altgreen3/northwest,
+/area/fire_colony/interior/hydroponics/lobby)
+"ih" = (
+/obj/structure/machinery/colony_floodlight/alt,
+/obj/structure/platform_decoration/metal/almayer/east,
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/clearing/north)
+"iE" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
+	color = "#6b6b6b"
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_25";
+	pixel_x = 15;
+	pixel_y = 6
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/altgreen3,
+/area/fire_colony/interior/hydroponics/lobby)
+"iK" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
+	color = "#6b6b6b"
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/altgreen3,
+/area/fire_colony/interior/hydroponics/lobby)
+"jd" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
+	color = "#6b6b6b"
+	},
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#578c3a";
+	pixel_x = -20;
+	pixel_y = -5
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/floor/grass,
+/area/fire_colony/interior/hydroponics/lobby)
+"jk" = (
+/obj/structure/pipes/vents/pump_hybrisa,
+/turf/open/floor/strata/deco,
+/area/fire_colony/interior/hydroponics/lobby)
+"jn" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/trash/cigbutt,
+/obj/item/prop/colony/usedbandage{
+	name = "bandages";
+	layer = 4;
+	pixel_x = -10;
+	pixel_y = 8;
+	dir = 10
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -1;
+	pixel_y = 23
+	},
+/turf/open/floor/strata/altgreen3/southeast,
+/area/fire_colony/interior/hydroponics/lobby)
+"jG" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/ammo_magazine/smg/a_m36{
+	current_rounds = 0
+	},
+/turf/open/floor/strata/altgreen3/northwest,
+/area/fire_colony/interior/hydroponics/lobby)
+"kb" = (
+/obj/structure/flora/pottedplant{
+	pixel_x = -6;
+	pixel_y = 1
+	},
+/obj/structure/machinery/light,
+/turf/open/floor/strata/altgreen4/east,
+/area/fire_colony/interior/hydroponics/lobby)
+"kv" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
+	dir = 8;
+	color = "#6b6b6b"
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/trash/cigbutt,
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 8
+	},
+/turf/open/floor/strata/deco,
+/area/fire_colony/interior/hydroponics/lobby)
+"kD" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = 16
+	},
+/obj/item/weapon/gun/smg/a_m36{
+	current_mag = null;
+	pixel_x = 1;
+	pixel_y = 6
+	},
+/turf/open/floor/strata/altgreen3/southeast,
+/area/fire_colony/interior/hydroponics/lobby)
+"kK" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
+	dir = 4;
+	color = "#6b6b6b"
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 5;
+	pixel_y = 23
+	},
+/obj/item/roller,
+/turf/open/floor/strata/altgreen3/north,
+/area/fire_colony/interior/hydroponics/lobby)
+"lk" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
+	dir = 8;
+	color = "#6b6b6b"
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 5;
+	pixel_y = -4
+	},
+/turf/open/floor/strata/altgreen3/east,
+/area/fire_colony/interior/hydroponics/lobby)
+"ly" = (
+/turf/open/floor/strata/altgreen3/southwest,
+/area/fire_colony/interior/hydroponics/lobby)
+"mg" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
+	dir = 1;
+	color = "#6b6b6b"
+	},
+/turf/open/floor/strata/altgreen3,
+/area/fire_colony/interior/hydroponics/lobby)
+"ms" = (
+/obj/item/attachable/bayonet/lb,
+/obj/effect/decal/cleanable/blood{
+	pixel_x = 8;
+	pixel_y = 7
+	},
+/turf/open/floor/strata/altgreen4,
+/area/fire_colony/interior/hydroponics/lobby)
+"mG" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
+	dir = 8;
+	color = "#6b6b6b"
+	},
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/strata/altgreen4/west,
+/area/fire_colony/interior/hydroponics/lobby)
+"nq" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
+	color = "#6b6b6b"
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/strata/altgreen3/east,
+/area/fire_colony/interior/hydroponics/lobby)
+"nE" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/flora/pottedplant{
+	pixel_x = 6;
+	pixel_y = 18
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/altgreen4/north,
+/area/fire_colony/interior/hydroponics/lobby)
+"od" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/altgreen3/east,
+/area/fire_colony/interior/hydroponics/lobby)
+"oe" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 4;
+	pixel_x = -10;
+	pixel_y = 5
+	},
+/turf/open/floor/strata/altgreen3/west,
+/area/fire_colony/interior/hydroponics/lobby)
+"oH" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
+	color = "#6b6b6b";
+	dir = 8
+	},
+/turf/open/floor/strata/altgreen3/west,
+/area/fire_colony/interior/hydroponics/lobby)
+"oN" = (
+/obj/structure/platform/metal/lava_metal/west,
+/obj/effect/lava/edges/basalt/l_piece,
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/clearing/pass)
+"pe" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/pipes/vents/pump_hybrisa,
+/turf/open/floor/strata/deco,
+/area/fire_colony/interior/hydroponics/lobby)
+"pL" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/trash/cigbutt,
+/turf/open/floor/strata/altgreen3/southeast,
+/area/fire_colony/interior/hydroponics/lobby)
+"pY" = (
+/obj/effect/broken_tile{
+	dir = 8
+	},
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
+	color = "#6b6b6b";
+	dir = 1
+	},
+/obj/effect/broken_tile/single{
+	pixel_x = -2;
+	pixel_y = -1
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/corsat,
+/area/fire_colony/interior/hydroponics/lobby)
+"qa" = (
+/obj/structure/flora/pottedplant{
+	pixel_x = -6;
+	pixel_y = 18
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/altgreen4,
+/area/fire_colony/interior/hydroponics/lobby)
+"qz" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/warning_stripes/worn/stripes_double{
+	dir = 1;
+	pixel_x = 24
+	},
+/turf/open/floor/strata/altgreen3/southeast,
+/area/fire_colony/interior/hydroponics/lobby)
+"qA" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
+	dir = 4;
+	color = "#6b6b6b"
+	},
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
+	color = "#6b6b6b"
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_14";
+	pixel_x = -11;
+	pixel_y = 6
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_6";
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/floor2,
+/area/fire_colony/interior/hydroponics/lobby)
+"qN" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
+	color = "#6b6b6b";
+	dir = 8
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_3";
+	pixel_y = -1;
+	layer = 2.9
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_30";
+	pixel_x = -2;
+	pixel_y = 14
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/altgreen3/west,
+/area/fire_colony/interior/hydroponics/lobby)
+"qU" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
+	dir = 4;
+	color = "#6b6b6b"
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/strata/floor2,
+/area/fire_colony/interior/hydroponics/lobby)
+"qW" = (
+/obj/structure/transmitter/save_station/colony_net{
+	pixel_y = 34
+	},
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/altgreen3/north,
+/area/fire_colony/interior/hydroponics/lobby)
+"rn" = (
+/obj/structure/platform/metal/lava_metal/west,
+/obj/structure/flora/alien/sparsegrass/sparsegrass_2,
+/turf/open/lava/brock,
+/area/fire_colony/exterior/clearing/north)
+"rw" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
+	color = "#6b6b6b"
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_y = 3
+	},
+/turf/open/floor/grass,
+/area/fire_colony/interior/hydroponics/lobby)
+"rG" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 4;
+	pixel_x = -10;
+	pixel_y = 5
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/altgreen3/west,
+/area/fire_colony/interior/hydroponics/lobby)
+"rM" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
+	dir = 1;
+	color = "#6b6b6b"
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/altgreen3/west,
+/area/fire_colony/interior/hydroponics/lobby)
+"rR" = (
+/obj/structure/machinery/colony_floodlight/alt,
+/obj/structure/platform_decoration/metal/almayer/north,
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/clearing/pass)
+"sk" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 4;
+	pixel_y = 29
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 12;
+	pixel_y = 5
+	},
+/turf/open/floor/strata/altgreen3/northwest,
+/area/fire_colony/interior/hydroponics/lobby)
+"sC" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	icon_state = "bush2";
+	color = "#578c3a";
+	pixel_x = -14;
+	pixel_y = -5
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -2;
+	pixel_y = 2
+	},
+/turf/open/floor/grass,
+/area/fire_colony/interior/hydroponics/lobby)
+"tc" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
+	dir = 4;
+	color = "#6b6b6b"
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/deco,
+/area/fire_colony/interior/hydroponics/lobby)
+"to" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
+	dir = 1;
+	color = "#6b6b6b"
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/strata/deco,
+/area/fire_colony/interior/hydroponics/lobby)
+"uC" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
+	color = "#6b6b6b";
+	dir = 1
+	},
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
+	dir = 4;
+	color = "#6b6b6b"
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_9";
+	pixel_x = -3;
+	pixel_y = 11
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
+/turf/open/floor/strata/floor2,
+/area/fire_colony/interior/hydroponics/lobby)
+"uO" = (
+/obj/structure/machinery/colony_floodlight/alt,
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/west)
+"vr" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_14";
+	pixel_x = 6;
+	pixel_y = 18
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/machinery/newscaster/seegson{
+	pixel_y = 32
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/altgreen3/north,
+/area/fire_colony/interior/hydroponics/lobby)
+"vA" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 4;
+	pixel_x = -10;
+	pixel_y = 5
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/storage/briefcase/flap{
+	pixel_x = -2;
+	pixel_y = 19
+	},
+/turf/open/floor/strata/altgreen3/west,
+/area/fire_colony/interior/hydroponics/lobby)
+"vW" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 2;
+	pixel_y = 4
+	},
+/turf/open/floor/grass,
+/area/fire_colony/interior/hydroponics/lobby)
+"vZ" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
+	dir = 4;
+	color = "#6b6b6b"
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/strata/floor2,
+/area/fire_colony/interior/hydroponics/lobby)
+"wj" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/item/prop/alien/hugger,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/strata/floor2,
+/area/fire_colony/interior/hydroponics/lobby)
+"wk" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/floor/grass,
+/area/fire_colony/interior/hydroponics/lobby)
+"wB" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/prop/alien/hugger,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/strata/altgreen3/west,
+/area/fire_colony/interior/hydroponics/lobby)
+"wJ" = (
+/obj/structure/flora/pottedplant{
+	pixel_x = 5;
+	pixel_y = 2
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/altgreen4/west,
+/area/fire_colony/interior/hydroponics/lobby)
+"wT" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
+	color = "#6b6b6b";
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/floor2,
+/area/fire_colony/interior/hydroponics/lobby)
+"wW" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/prop/alien/hugger,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/strata/altgreen3/northeast,
+/area/fire_colony/interior/hydroponics/lobby)
+"wX" = (
+/obj/structure/bed/chair/comfy/beige{
+	pixel_y = 14;
+	buckling_y = 14
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/trash/cigbutt,
+/turf/open/floor/strata/altgreen3/north,
+/area/fire_colony/interior/hydroponics/lobby)
+"wY" = (
+/obj/structure/flora/pottedplant{
+	pixel_x = 4;
+	pixel_y = 1
+	},
+/obj/structure/machinery/light,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/altgreen4/west,
+/area/fire_colony/interior/hydroponics/lobby)
+"xp" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
+	dir = 8;
+	color = "#6b6b6b"
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 5
+	},
+/turf/open/floor/strata/deco,
+/area/fire_colony/interior/hydroponics/lobby)
+"xB" = (
+/obj/effect/broken_tile,
+/obj/effect/broken_tile/angle{
+	dir = 1;
+	pixel_x = 8;
+	pixel_y = 8
+	},
+/turf/open/floor/corsat,
+/area/fire_colony/interior/hydroponics/lobby)
+"yj" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/altgreen3,
+/area/fire_colony/interior/hydroponics/lobby)
+"yu" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
+	dir = 4;
+	color = "#6b6b6b"
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
+/turf/open/floor/strata/altgreen4/north,
+/area/fire_colony/interior/hydroponics/lobby)
+"yx" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/altgreen3/northeast,
+/area/fire_colony/interior/hydroponics/lobby)
+"yR" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
+	color = "#6b6b6b";
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/altgreen3/north,
+/area/fire_colony/interior/hydroponics/lobby)
+"zt" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/strata/floor2,
+/area/fire_colony/interior/hydroponics/lobby)
+"zB" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 3;
+	pixel_y = 1
+	},
+/turf/open/floor/grass,
+/area/fire_colony/interior/hydroponics/lobby)
+"zC" = (
+/obj/effect/landmark/survivor_spawner/fire_colony_lb_merc_medic,
+/turf/open/floor/strata/altgreen4/west,
+/area/fire_colony/interior/hydroponics/lobby)
+"zW" = (
+/obj/structure/platform/metal/lava_metal/west,
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/turf/open/lava/basalt/basalt6,
+/area/fire_colony/exterior/clearing/pass)
+"AT" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
+	dir = 4;
+	color = "#6b6b6b"
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/altgreen4/east,
+/area/fire_colony/interior/hydroponics/lobby)
+"BQ" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 8;
+	pixel_x = 10;
+	pixel_y = 5;
+	buckling_x = 10;
+	buckling_y = 5
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = 28
+	},
+/turf/open/floor/strata/altgreen3/east,
+/area/fire_colony/interior/hydroponics/lobby)
+"BU" = (
+/obj/structure/machinery/colony_floodlight/alt,
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/valley/west)
+"Ca" = (
+/obj/item/ammo_magazine/smg/a_m36{
+	current_rounds = 24
+	},
+/turf/open/floor/strata/altgreen4/north,
+/area/fire_colony/interior/hydroponics/lobby)
+"ES" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
+	dir = 4;
+	color = "#6b6b6b"
+	},
+/obj/item/ammo_magazine/smg/a_m36{
+	current_rounds = 0
+	},
+/turf/open/floor/strata/deco,
+/area/fire_colony/interior/hydroponics/lobby)
+"ET" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
+	color = "#6b6b6b"
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/altgreen3,
+/area/fire_colony/interior/hydroponics/lobby)
+"FG" = (
+/obj/effect/broken_tile{
+	dir = 4
+	},
+/obj/effect/broken_tile/angle{
+	pixel_x = 4;
+	pixel_y = -12;
+	layer = 2.01
+	},
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
+	color = "#6b6b6b";
+	dir = 8
+	},
+/turf/open/floor/corsat,
+/area/fire_colony/interior/hydroponics/lobby)
+"FV" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
+	dir = 1;
+	color = "#6b6b6b"
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/pipes/standard/manifold/hidden/green,
+/turf/open/floor/strata/altgreen4/west,
+/area/fire_colony/interior/hydroponics/lobby)
+"Gm" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/machinery/power/apc/no_power/south,
+/turf/open/floor/strata/altgreen3,
+/area/fire_colony/interior/hydroponics/lobby)
+"HB" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
+	color = "#6b6b6b"
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/strata/deco,
+/area/fire_colony/interior/hydroponics/lobby)
+"HC" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
+	color = "#6b6b6b";
+	dir = 8
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_11";
+	pixel_x = -2;
+	pixel_y = 23
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/altgreen3/west,
+/area/fire_colony/interior/hydroponics/lobby)
+"HD" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -1;
+	pixel_y = 3
+	},
+/obj/structure/flora/bush/ausbushes/var3{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/turf/open/floor/grass,
+/area/fire_colony/interior/hydroponics/lobby)
+"Ir" = (
+/obj/structure/machinery/door/airlock/multi_tile/lavaland/black_double/autoname{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/altgreen3,
+/area/fire_colony/interior/hydroponics/lobby)
+"IY" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/warning_stripes/worn/stripes_double{
+	dir = 1;
+	pixel_x = 24
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/strata/altgreen3/northeast,
+/area/fire_colony/interior/hydroponics/lobby)
+"Jb" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 6
+	},
+/turf/open/floor/strata/deco,
+/area/fire_colony/interior/hydroponics/lobby)
+"JA" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/strata/altgreen3/northwest,
+/area/fire_colony/interior/hydroponics/lobby)
+"JH" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	icon_state = "bush2";
+	color = "#578c3a";
+	pixel_x = -16;
+	pixel_y = -2
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/floor/grass,
+/area/fire_colony/interior/hydroponics/lobby)
+"JX" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
+	color = "#6b6b6b";
+	dir = 1
+	},
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
+	color = "#6b6b6b";
+	dir = 8
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_10";
+	pixel_x = -3;
+	pixel_y = 14
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_5";
+	pixel_x = 16;
+	pixel_y = 8
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/altgreen3/southeast,
+/area/fire_colony/interior/hydroponics/lobby)
+"Ka" = (
+/turf/open/lava/basalt/basalt6,
+/area/fire_colony/exterior/clearing/pass)
+"KM" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
+	color = "#6b6b6b";
+	dir = 1
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_14";
+	pixel_x = 12;
+	pixel_y = 12
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/altgreen3/north,
+/area/fire_colony/interior/hydroponics/lobby)
+"KU" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 8;
+	pixel_x = 10;
+	pixel_y = 5;
+	buckling_x = 10;
+	buckling_y = 5
+	},
+/turf/open/floor/strata/altgreen3/east,
+/area/fire_colony/interior/hydroponics/lobby)
+"LB" = (
+/obj/structure/flora/pottedplant{
+	pixel_x = -5;
+	pixel_y = 2
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/strata/altgreen4/east,
+/area/fire_colony/interior/hydroponics/lobby)
+"LE" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
+	color = "#6b6b6b";
+	dir = 1
+	},
+/turf/open/floor/strata/floor2,
+/area/fire_colony/interior/hydroponics/lobby)
+"Mi" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/strata/altgreen3/southwest,
+/area/fire_colony/interior/hydroponics/lobby)
+"MV" = (
+/obj/structure/bed/chair/comfy/beige{
+	pixel_y = 14;
+	buckling_y = 14
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/altgreen3/north,
+/area/fire_colony/interior/hydroponics/lobby)
+"MX" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
+	dir = 1;
+	color = "#6b6b6b"
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/altgreen4,
+/area/fire_colony/interior/hydroponics/lobby)
+"Nk" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	dir = 1
+	},
+/turf/open/floor/corsat,
+/area/fire_colony/interior/hydroponics/lobby)
+"Nv" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
+	color = "#6b6b6b";
+	dir = 8
+	},
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
+	color = "#6b6b6b"
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_8";
+	pixel_x = -1;
+	pixel_y = 7
+	},
+/turf/open/floor/strata/floor2,
+/area/fire_colony/interior/hydroponics/lobby)
+"NA" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
+	color = "#6b6b6b"
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/strata/deco,
+/area/fire_colony/interior/hydroponics/lobby)
+"OS" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/cleanable/blood{
+	pixel_x = -11;
+	pixel_y = -2
+	},
+/turf/open/floor/strata/altgreen3/northeast,
+/area/fire_colony/interior/hydroponics/lobby)
+"Qa" = (
+/turf/open/floor/strata/deco,
+/area/fire_colony/interior/hydroponics/lobby)
+"Qg" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
+	color = "#6b6b6b"
+	},
+/turf/open/floor/strata/altgreen3,
+/area/fire_colony/interior/hydroponics/lobby)
+"Ql" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
+	color = "#6b6b6b";
+	dir = 1
+	},
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
+	dir = 4;
+	color = "#6b6b6b"
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_24";
+	pixel_y = 9
+	},
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/turf/open/floor/strata/altgreen3/southwest,
+/area/fire_colony/interior/hydroponics/lobby)
+"QI" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_3";
+	pixel_x = -7;
+	pixel_y = 4
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_6";
+	pixel_x = 9;
+	pixel_y = 1
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/altgreen3,
+/area/fire_colony/interior/hydroponics/lobby)
+"Ry" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
+	dir = 4;
+	color = "#6b6b6b"
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_17";
+	pixel_x = 6;
+	pixel_y = 24;
+	layer = 3.1
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/altgreen3/east,
+/area/fire_colony/interior/hydroponics/lobby)
+"St" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -11;
+	pixel_y = 21
+	},
+/obj/item/clothing/head/helmet/marine/veteran/lb_merc{
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/turf/open/floor/strata/altgreen4/north,
+/area/fire_colony/interior/hydroponics/lobby)
+"SF" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/altgreen3/southeast,
+/area/fire_colony/interior/hydroponics/lobby)
+"Uq" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood{
+	pixel_x = -1;
+	pixel_y = -10
+	},
+/obj/effect/landmark/corpsespawner/lb_merc/burst,
+/turf/open/floor/strata/altgreen4,
+/area/fire_colony/interior/hydroponics/lobby)
+"Uy" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 8;
+	pixel_x = 10;
+	pixel_y = 5;
+	buckling_x = 10;
+	buckling_y = 5
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/altgreen3/east,
+/area/fire_colony/interior/hydroponics/lobby)
+"UE" = (
+/obj/effect/broken_tile,
+/obj/effect/broken_tile/single{
+	pixel_x = 18;
+	pixel_y = 18
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/corsat,
+/area/fire_colony/interior/hydroponics/lobby)
+"UP" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/altgreen3/northeast,
+/area/fire_colony/interior/hydroponics/lobby)
+"UZ" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/reagent_container/hypospray/autoinjector/emergency,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/strata/altgreen3/northwest,
+/area/fire_colony/interior/hydroponics/lobby)
+"Vk" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
+	dir = 1;
+	color = "#6b6b6b"
+	},
+/turf/open/floor/strata/deco,
+/area/fire_colony/interior/hydroponics/lobby)
+"Vo" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 1
+	},
+/turf/open/floor/strata/altgreen3,
+/area/fire_colony/interior/hydroponics/lobby)
+"VE" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#578c3a";
+	pixel_x = -16;
+	pixel_y = -4
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/floor/grass,
+/area/fire_colony/interior/hydroponics/lobby)
+"VM" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging{
+	color = "#6b6b6b";
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/trash/hotdog/alt,
+/turf/open/floor/strata/floor2,
+/area/fire_colony/interior/hydroponics/lobby)
+"VS" = (
+/obj/item/reagent_container/glass/bucket{
+	pixel_x = 9;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/glass/bucket{
+	pixel_x = 19;
+	pixel_y = 11
+	},
+/turf/open/floor/strata/altgreen3/northeast,
+/area/fire_colony/interior/hydroponics/lobby)
+"VV" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/cleanable/blood{
+	pixel_x = -7;
+	pixel_y = 7
+	},
+/turf/open/floor/strata/altgreen3/southwest,
+/area/fire_colony/interior/hydroponics/lobby)
+"Wp" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
+	dir = 8;
+	color = "#6b6b6b"
+	},
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/altgreen4,
+/area/fire_colony/interior/hydroponics/lobby)
+"WI" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/strata/altgreen3/northwest,
+/area/fire_colony/interior/hydroponics/lobby)
+"WV" = (
+/obj/structure/flora/pottedplant{
+	pixel_x = 4;
+	pixel_y = 19
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/altgreen4/north,
+/area/fire_colony/interior/hydroponics/lobby)
+"XW" = (
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/clearing/north)
+"Yj" = (
+/turf/closed/wall/lava/solaris_dark,
+/area/fire_colony/interior/hydroponics/lobby)
+"YJ" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
+	dir = 1;
+	color = "#6b6b6b"
+	},
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#578c3a";
+	pixel_x = -12;
+	pixel_y = -4
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 3;
+	pixel_y = 2
+	},
+/turf/open/floor/grass,
+/area/fire_colony/interior/hydroponics/lobby)
+"YR" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
+	color = "#6b6b6b"
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/strata/altgreen4/east,
+/area/fire_colony/interior/hydroponics/lobby)
+"Zp" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/prop/colony/usedbandage{
+	dir = 4
+	},
+/obj/item/prop/colony/usedbandage{
+	name = "bandages";
+	layer = 4;
+	pixel_x = -10;
+	pixel_y = -3;
+	dir = 10
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/strata/altgreen4/east,
+/area/fire_colony/interior/hydroponics/lobby)
+"Zr" = (
+/obj/structure/platform/metal/lava_metal/west,
+/obj/structure/flora/alien/sparsegrass/sparsegrass_3,
+/turf/open/lava/brock,
+/area/fire_colony/exterior/clearing/north)
+"ZB" = (
+/turf/open/floor/strata/altgreen3/southeast,
+/area/fire_colony/interior/hydroponics/lobby)
+"ZQ" = (
+/obj/structure/flora/pottedplant{
+	pixel_x = -5;
+	pixel_y = 19
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/strata/altgreen4,
+/area/fire_colony/interior/hydroponics/lobby)
+"ZZ" = (
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
+	dir = 1;
+	color = "#6b6b6b"
+	},
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	icon_state = "bush2";
+	color = "#578c3a";
+	pixel_x = -15;
+	pixel_y = -2
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/turf/open/floor/grass,
+/area/fire_colony/interior/hydroponics/lobby)
+
+(1,1,1) = {"
+BU
+Yj
+ea
+ea
+Yj
+ZQ
+JA
+ly
+LB
+Yj
+ea
+ea
+Yj
+uO
+"}
+(2,1,1) = {"
+Yj
+Yj
+vA
+rG
+rG
+jG
+wj
+ce
+ly
+rG
+oe
+hX
+Yj
+Yj
+"}
+(3,1,1) = {"
+ea
+wX
+Jb
+NA
+qU
+eU
+mG
+eV
+vZ
+vZ
+kv
+jk
+yj
+ea
+"}
+(4,1,1) = {"
+ea
+fG
+HB
+qA
+wk
+HD
+yR
+Qg
+VE
+rw
+uC
+xp
+yj
+ea
+"}
+(5,1,1) = {"
+Yj
+MV
+dc
+YJ
+JX
+HC
+kK
+mg
+qN
+hL
+fV
+eP
+Vo
+Yj
+"}
+(6,1,1) = {"
+qa
+an
+dc
+sC
+yR
+UZ
+Zp
+ms
+db
+iK
+hK
+pY
+Mi
+kb
+"}
+(7,1,1) = {"
+WI
+UE
+FV
+oH
+gx
+St
+kD
+yx
+od
+rM
+oH
+yu
+hV
+bw
+"}
+(8,1,1) = {"
+UP
+ce
+YR
+ho
+lk
+Uq
+VV
+sk
+wB
+nq
+ho
+Wp
+xB
+SF
+"}
+(9,1,1) = {"
+nE
+wW
+cj
+zB
+KM
+OS
+zC
+Ca
+jn
+iE
+vW
+wT
+ZB
+wY
+"}
+(10,1,1) = {"
+Yj
+qW
+cj
+jd
+Ql
+Ry
+gI
+ET
+dC
+ig
+gE
+LE
+Gm
+Yj
+"}
+(11,1,1) = {"
+Nk
+ca
+to
+Nv
+JH
+eo
+yR
+cd
+en
+ZZ
+fm
+ES
+br
+Nk
+"}
+(12,1,1) = {"
+Yj
+vr
+pe
+Vk
+VM
+FG
+AT
+MX
+dJ
+dJ
+tc
+Qa
+QI
+Yj
+"}
+(13,1,1) = {"
+Yj
+Yj
+BQ
+Uy
+Uy
+VS
+dM
+zt
+pL
+Uy
+KU
+Uy
+Yj
+Yj
+"}
+(14,1,1) = {"
+ih
+Yj
+ea
+ea
+Yj
+WV
+IY
+qz
+wJ
+Yj
+ea
+ea
+Yj
+rR
+"}
+(15,1,1) = {"
+XW
+Yj
+rn
+Zr
+Yj
+Yj
+bK
+Ir
+Yj
+Yj
+oN
+zW
+Yj
+Ka
+"}

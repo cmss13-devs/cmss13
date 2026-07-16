@@ -22,11 +22,11 @@
         "/datum/equipment_preset/synth/survivor/fire_colony/security",
         "/datum/equipment_preset/synth/survivor/fire_colony/scientist"
     ],
-    "CO_survivor_types": [
-        "/datum/equipment_preset/survivor/solaris_ridge/co_survivor"
-    ],
     "CO_insert_survivor_types": [
-        "/datum/equipment_preset/survivor/clf/coordinator"
+        "/datum/equipment_preset/survivor/lasalle_merc/lasalle_commander"
+    ],
+    "colony_joe_types": [
+        "/datum/job/civilian/working_joe/colony"
     ],
     "defcon_triggers": [
         4750,
@@ -36,7 +36,7 @@
         0.0
     ],
     "map_item_type": "/obj/item/map/fire_colony",
-    "announce_text": "An automated distress signal has been received from Lasalle Bionational's LV-376 Ecological Research Site on the volcanic world known as 'Charon's Crucible'. All communications with the colony have since been lost. The ###SHIPNAME### has been dispatched to investigate.",
+    "announce_text": "An automated distress signal has been received from Lasalle Bionational's Ecological Research Site on the volcanic world of LV-376 also known as 'Charon's Crucible'. All communications with the colony have since been lost. The ###SHIPNAME### has been dispatched to investigate.",
     "co_briefing": {
         "Hawks": "maps/map_briefings/commanding_officer/big_red/SOLARISRIDGEcpo.html",
         "Doves": "maps/map_briefings/commanding_officer/big_red/SOLARISRIDGEhmm.html",

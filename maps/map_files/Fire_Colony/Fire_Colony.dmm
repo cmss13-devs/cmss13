@@ -278,6 +278,10 @@
 /turf/open/lava/metal/warnplate/north,
 /area/fire_colony/exterior/landing_pad)
 "acy" = (
+/obj/item/clothing/accessory/patch/seegson{
+	pixel_x = 3;
+	pixel_y = 4
+	},
 /turf/open/floor/strata/altred3/southwest,
 /area/fire_colony/interior/hangar/security/armory)
 "acz" = (
@@ -8760,7 +8764,7 @@
 /area/fire_colony/interior/hangar/alpha)
 "aXo" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/reagent_dispensers/tank/fuel,
+/obj/structure/reagent_dispensers/tank/fuel/spacecraft,
 /turf/open/floor/strata/sand3/east,
 /area/fire_colony/interior/hangar/alpha)
 "aXp" = (
@@ -16537,6 +16541,13 @@
 /area/fire_colony/interior/hangar/hallway)
 "czp" = (
 /obj/structure/flora/alien/fullgrass/fullgrass_2,
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/west)
+"czz" = (
+/obj/structure/machinery/colony_floodlight/alt,
+/obj/effect/landmark/nightmare{
+	insert_tag = "lasalle_merc_hydro"
+	},
 /turf/open/lava/brock,
 /area/fire_colony/exterior/valley/west)
 "czI" = (
@@ -28144,6 +28155,10 @@
 	},
 /turf/open/lava/dirt,
 /area/fire_colony/exterior/valley/northeast)
+"fnx" = (
+/obj/item/trash/c_tube,
+/turf/open/lava/basalt/basalt8,
+/area/fire_colony/exterior/valley/north)
 "fny" = (
 /obj/effect/lava/edges/basalt/l_piece{
 	dir = 8
@@ -37501,12 +37516,17 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#818793"
 	},
+/obj/item/weapon/shield/riot{
+	pixel_x = -6;
+	pixel_y = 2
+	},
+/obj/item/weapon/shield/riot{
+	pixel_x = 2;
+	pixel_y = 4
+	},
 /obj/item/weapon/classic_baton/alt{
 	pixel_x = -4;
 	pixel_y = 3
-	},
-/obj/item/ammo_magazine/shotgun/beanbag{
-	pixel_x = 6
 	},
 /turf/open/floor/strata/altred4/west,
 /area/fire_colony/interior/hangar/security/armory)
@@ -40871,6 +40891,15 @@
 	},
 /turf/open/lava/asteroid/directions/northwest,
 /area/fire_colony/exterior/valley/northwest)
+"iqy" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "lasalle_merc_armory"
+	},
+/obj/effect/landmark/nightmare{
+	insert_tag = "armory"
+	},
+/turf/closed/wall/lava/solaris_dark/reinforced,
+/area/fire_colony/interior/hangar/security/armory)
 "iqD" = (
 /obj/structure/machinery/colony_floodlight/alt{
 	pixel_x = 3
@@ -43495,21 +43524,7 @@
 /turf/open/lava/basalt/basalt_dug,
 /area/fire_colony/exterior/underground/caves/north_west)
 "iXK" = (
-/obj/structure/surface/rack/long{
-	color = "#818793"
-	},
-/obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/seegson{
-	pixel_x = -5;
-	pixel_y = 10
-	},
-/obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/seegson{
-	pixel_x = 5;
-	pixel_y = 1
-	},
-/obj/item/clothing/suit/armor/vest/seegson_security{
-	pixel_x = -6;
-	pixel_y = -5
-	},
+/obj/structure/machinery/deployable/barrier,
 /turf/open/floor/strata/altred4/east,
 /area/fire_colony/interior/hangar/security/armory)
 "iXM" = (
@@ -43723,6 +43738,13 @@
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/fire_colony/interior/bar)
+"jah" = (
+/obj/structure/fence/slim/blue,
+/obj/effect/landmark/nightmare{
+	insert_tag = "lasalle_merc_omicron"
+	},
+/turf/open/lava/metal/plating,
+/area/fire_colony/exterior/clearing/south_west)
 "jam" = (
 /turf/open/lava/basalt/glowing/basalt9,
 /area/fire_colony/exterior/clearing/south_west)
@@ -49494,6 +49516,9 @@
 "kEV" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/landmark/nightmare{
+	insert_tag = "lasalle_merc_insert"
+	},
 /turf/open/lava/asteroid/directions/north,
 /area/fire_colony/exterior/clearing/south)
 "kEY" = (
@@ -50131,10 +50156,10 @@
 /turf/open/lava/brock,
 /area/fire_colony/exterior/clearing/south_west)
 "kMt" = (
-/obj/item/trash/burger,
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_3"
 	},
+/obj/item/trash/burger/alt,
 /turf/open/lava/basalt/basalt0,
 /area/fire_colony/exterior/valley/north)
 "kMu" = (
@@ -54198,15 +54223,7 @@
 /turf/open/lava/metal/plating,
 /area/fire_colony/interior/mining_garage)
 "lLU" = (
-/obj/structure/surface/rack/long{
-	color = "#818793"
-	},
-/obj/item/weapon/shield/riot{
-	pixel_x = -1
-	},
-/obj/item/weapon/shield/riot{
-	pixel_x = -6
-	},
+/obj/structure/machinery/deployable/barrier,
 /turf/open/floor/strata/altred4/west,
 /area/fire_colony/interior/hangar/security/armory)
 "lLW" = (
@@ -54537,6 +54554,14 @@
 /obj/structure/platform/stone/lava,
 /turf/open/lava/brock,
 /area/fire_colony/exterior/valley/west)
+"lQL" = (
+/obj/structure/platform/stone/lava/north,
+/obj/item/trash/eat{
+	pixel_x = 8;
+	pixel_y = -5
+	},
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/valley/north)
 "lQO" = (
 /obj/effect/lava/edges/basalt/side_rock{
 	dir = 8;
@@ -67141,7 +67166,7 @@
 	dir = 8
 	},
 /obj/structure/sign/goldenplaque{
-	desc = "Thanks to everyone who helped out with the map. Special thanks to BOBAMA, Nemesis, Cuberound and the legend Dimdimich1996.";
+	desc = "Thanks to everyone who helped out with the map. Special thanks to BOBAMA, Nemesis, Cuberound and the legend Dimdimich1996. Thanks to everyone else who helped contribute as well, you know who you are...";
 	name = "wall scribbles";
 	pixel_y = 31;
 	icon = 'icons/obj/items/paper.dmi';
@@ -80372,6 +80397,10 @@
 /area/fire_colony/interior/hangar/beta)
 "sbv" = (
 /obj/structure/largecrate/random/mini/small_case,
+/obj/item/tool/weldpack/minitank{
+	pixel_x = 9;
+	pixel_y = 14
+	},
 /turf/open/floor/strata/sand3/east,
 /area/fire_colony/interior/hangar/alpha)
 "sbC" = (
@@ -92273,7 +92302,8 @@
 	},
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/lifeboat{
 	pixel_x = 6;
-	pixel_y = 28
+	pixel_y = 28;
+	name = "emergency medical cabinet"
 	},
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/fire_colony/interior/hangar/broken_dropship)
@@ -98295,7 +98325,7 @@
 /area/fire_colony/exterior/underground/excavation/north)
 "wCb" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/reagent_dispensers/tank/fuel,
+/obj/structure/reagent_dispensers/tank/fuel/spacecraft,
 /turf/open/floor/corsat/spiralplate,
 /area/fire_colony/exterior/hangar)
 "wCg" = (
@@ -100560,10 +100590,13 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#818793"
 	},
-/obj/item/clothing/accessory/patch/seegson,
 /obj/item/clothing/accessory/patch/seegson{
-	pixel_x = -4;
-	pixel_y = 5
+	pixel_x = 3;
+	pixel_y = 4
+	},
+/obj/item/ammo_magazine/shotgun/beanbag{
+	pixel_x = -5;
+	pixel_y = 1
 	},
 /turf/open/floor/strata/altred4/east,
 /area/fire_colony/interior/hangar/security/armory)
@@ -116312,7 +116345,7 @@ lwP
 aSB
 wxY
 rSQ
-eNA
+jah
 aTS
 aUe
 dtD
@@ -117670,7 +117703,7 @@ asn
 atL
 atL
 asn
-gav
+czz
 xoY
 hIH
 ayp
@@ -128101,7 +128134,7 @@ fPk
 feJ
 gSI
 aKW
-osF
+fnx
 nrN
 aaE
 sdo
@@ -128300,7 +128333,7 @@ fCQ
 fht
 jri
 mOG
-mUq
+lQL
 oWH
 oAr
 abO
@@ -140332,7 +140365,7 @@ fyS
 fyS
 vbG
 vbG
-vbG
+iqy
 qpR
 weL
 bKp

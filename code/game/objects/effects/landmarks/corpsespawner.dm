@@ -423,3 +423,13 @@
 /obj/effect/landmark/corpsespawner/upp_spy
 	name = "Corpse - Suspicious Colonist"
 	equip_path = /datum/equipment_preset/corpse/upp_spy
+
+// Dead BHIG Operative
+
+/obj/effect/landmark/corpsespawner/lb_merc
+	name = "Corpse - BHIG - Operative"
+	equip_path = /datum/equipment_preset/corpse/lb_merc
+
+/obj/effect/landmark/corpsespawner/lb_merc/burst
+
+	equip_path = /datum/equipment_preset/corpse/lb_merc/burst

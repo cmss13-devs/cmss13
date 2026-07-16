@@ -348,6 +348,14 @@
 	name = "\improper Old Seegson - Aerodrome - Hangar - 'Beta' - Broken Dropship"
 	icon_state = "green"
 
+/area/fire_colony/interior/hangar/lb_dropship
+	name = "\improper Old Seegson - Aerodrome - Hangar - 'Alpha' - UD2-LB 'Remedy'"
+	icon_state = "green"
+	ceiling = CEILING_METAL
+	requires_power = 0
+	ambience_exterior = AMBIENCE_ALMAYER
+	ceiling_muffle = FALSE
+
 /area/fire_colony/interior/hangar/checkpoint
 	name = "\improper Old Seegson - Aerodrome - Hangar - Seegson Security Facility - Checkpoint"
 	icon_state = "security"

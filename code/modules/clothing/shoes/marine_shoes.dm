@@ -358,7 +358,7 @@
 	item_state = "lb_merc"
 
 /obj/item/clothing/shoes/veteran/pmc/lb_merc/knife
-	spawn_item_type = /obj/item/attachable/bayonet
+	spawn_item_type = /obj/item/attachable/bayonet/lb
 
 /obj/item/clothing/shoes/veteran/pmc/lb_merc/Initialize()
 	. = ..()

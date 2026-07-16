@@ -580,6 +580,20 @@
 /obj/structure/shuttle/part/dropship_twe/transparent
 	opacity = FALSE
 
+// LB-BHIG Ship
+
+/obj/structure/shuttle/part/dropship_lb
+	name = "\improper UD2-LB 'Remedy'"
+	icon = 'icons/turf/dropship_lb.dmi'
+	icon_state = "0,0"
+	opacity = TRUE
+
+/obj/structure/shuttle/part/dropship_lb/ex_act(severity, direction)
+	return FALSE
+
+/obj/structure/shuttle/part/dropship_lb/transparent
+	opacity = FALSE
+
 // WY Ship
 
 /obj/structure/shuttle/part/dropship_wy

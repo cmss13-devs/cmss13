@@ -99,7 +99,7 @@
 			if(!radio_device)
 				continue
 			var/atom/loc = radio_device.loc
-			if(!loc || !loc.z)
+			if(!loc)
 				continue
 			if(radio_device.receive_range(display_freq, level) > -1 && OBJECTS_CAN_REACH(loc, radio_loc))
 				radios += radio_device
@@ -113,7 +113,7 @@
 			if(istype(radio_device, /obj/item/device/radio/headset))
 				continue
 			var/atom/loc = radio_device.loc
-			if(!loc || !loc.z)
+			if(!loc)
 				continue
 			if(radio_device.receive_range(display_freq, level) > -1 && OBJECTS_CAN_REACH(loc, radio_loc))
 				radios += radio_device
@@ -136,7 +136,7 @@
 			if(!radio_device)
 				continue
 			var/atom/loc = radio_device.loc
-			if(!loc || !loc.z)
+			if(!loc)
 				continue
 			if(radio_device.receive_range(display_freq, level) > -1 && OBJECTS_CAN_REACH(loc, radio_loc))
 				radios += radio_device

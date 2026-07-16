@@ -249,7 +249,7 @@ SET_PROTECTED_PROC(/client/proc/cmd_admin_pm)
 			var/already_logged = FALSE
 			if(!recipient.current_ticket)
 				var/datum/admin_help/new_ticket = new(msg, recipient, TRUE)
-				new_ticket.marked_admin = ckey
+				new_ticket.marked_admin = key_name_admin(src, FALSE)
 				already_logged = TRUE
 				if(recipient.current_ticket)
 					log_ahelp(recipient.current_ticket.id, "Ticket Opened", msg, recipient.ckey, src.ckey)
@@ -272,7 +272,7 @@ SET_PROTECTED_PROC(/client/proc/cmd_admin_pm)
 				html = SPAN_NOTICE("Admin PM to-<b>[key_name(recipient, src, 1, show_username = TRUE)]</b>: <span class='linkify'>[msg]</span>"),
 				confidential = TRUE)
 
-			admin_ticket_log(recipient, SPAN_GREEN("PM From [key_name_with_username(src)]: [msg]"), log_in_blackbox = FALSE,
+			admin_ticket_log(recipient, SPAN_GREEN("PM From [key_name_admin(src, FALSE)]: [msg]"), log_in_blackbox = FALSE,
 				player_message = SPAN_GREEN("PM From [key_name_with_username(src, include_name = FALSE)]: [msg]"),
 				raw_message = "PM from-[src.username()] to-[recipient.username()]: [msg]",
 				raw_player_message = "[msg]")

@@ -208,8 +208,10 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 	var/list/player_interactions
 	/// List of admin ckeys that are involved, like through responding
 	var/list/admins_involved = list()
-	/// Which admin has marked this ahelp?
+	/// The ckey of the admin that marked this ahelp?
 	var/marked_admin
+	/// The key name of the admin
+	var/marked_admin_key_name
 	/// Has the player replied to this ticket yet?
 	var/player_replied = FALSE
 	/// What was the first message sent by the player?
@@ -257,8 +259,9 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 	player_interactions = list()
 
 	if(is_bwoink)
-		AddInteraction(SPAN_BLUE("[key_name_admin(usr)] PM'd [LinkedReplyName()]"),
-		plain_message = "[initiator.ckey] PM'd [initiator_key_name]")
+		var/admin_initiating = key_name_admin(usr, FALSE)
+		AddInteraction(SPAN_BLUE("[admin_initiating] PM'd [LinkedReplyName()]"),
+		plain_message = "[admin_initiating] PM'd [initiator_key_name]")
 		message_admins(SPAN_BLUE("Ticket [TicketHref("#[id]")] created"))
 	else
 		MessageNoRecipient(msg_raw, urgent)
@@ -506,7 +509,7 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 	if(initiator)
 		initiator.current_ticket = src
 
-	AddInteraction(SPAN_PURPLE("Reopened by [key_name_admin(usr)]"),
+	AddInteraction(SPAN_PURPLE("Reopened by [key_name_admin(usr, FALSE)]"),
 	plain_message = "Reopened by [usr.username()]", message_type = "system")
 	var/msg = SPAN_ADMINHELP("Ticket [TicketHref("#[id]")] reopened by [key_name_admin(usr)].")
 	message_admins(msg)
@@ -524,15 +527,16 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 		initiator.current_ticket = null
 
 //Mark open ticket as closed/meme
-/datum/admin_help/proc/Close(key_name = key_name_admin(usr), silent = FALSE)
+/datum/admin_help/proc/Close(key_name = key_name_admin(usr, FALSE), silent = FALSE)
 	if(state != AHELP_ACTIVE)
 		return
 
 	if(marked_admin && marked_admin != usr.ckey)
-		to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin]. Please override their mark to interact with this ticket!"))
+		to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin_key_name]. Please override their mark to interact with this ticket!"))
 		return
 
 	marked_admin = null
+	marked_admin_key_name = null
 	RemoveActive()
 	state = AHELP_CLOSED
 	GLOB.ahelp_tickets.ListInsert(src)
@@ -543,15 +547,16 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 		log_ahelp(id, "Closed", "Closed by [usr.username()]", null, usr.ckey)
 
 //Mark open ticket as resolved/legitimate, returns ahelp verb
-/datum/admin_help/proc/Resolve(key_name = key_name_admin(usr), silent = FALSE)
+/datum/admin_help/proc/Resolve(key_name = key_name_admin(usr, FALSE), silent = FALSE)
 	if(state != AHELP_ACTIVE)
 		return
 
 	if(marked_admin && marked_admin != usr.ckey)
-		to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin]. Please override their mark to interact with this ticket!"))
+		to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin_key_name]. Please override their mark to interact with this ticket!"))
 		return
 
 	marked_admin = null
+	marked_admin_key_name = null
 	RemoveActive()
 	state = AHELP_RESOLVED
 	GLOB.ahelp_tickets.ListInsert(src)
@@ -571,7 +576,7 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 		return
 
 	if(marked_admin && marked_admin != usr.ckey)
-		to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin]. Please override their mark to interact with this ticket!"))
+		to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin_key_name]. Please override their mark to interact with this ticket!"))
 		return
 
 	if(GLOB.mentorhelp_manager.get_active_ticket_by_ckey(initiator_ckey))
@@ -599,7 +604,7 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 	MH.subject = subject
 	MH.broadcast_unhandled(message, initiator)
 
-	AddInteraction("Deferred to Mentors by [key_name_admin(usr)].", plain_message = "Deferred to Mentors by [usr.username()]", message_type = "system")
+	AddInteraction("Deferred to Mentors by [key_name_admin(usr, FALSE)].", plain_message = "Deferred to Mentors by [usr.username()]", message_type = "system")
 	to_chat(initiator, SPAN_ADMINHELP("[usr.username()] has deferred your ticket to Mentors."))
 	log_admin_private("Ticket [TicketHref("#[id]")] deferred to mentors by [usr.username()].")
 	for(var/client/admin in GLOB.admins)
@@ -617,15 +622,15 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 		if(marked_admin == user.ckey)
 			unmark_ticket()
 			return
-		to_chat(user, SPAN_WARNING("This ticket has already been marked by [marked_admin]."))
-		var/unmark_option = tgui_alert(user, "This message has been marked by [marked_admin]. Do you want to override?", "Marked Ticket", list("Overwrite Mark", "Unmark", "Cancel"))
+		to_chat(user, SPAN_WARNING("This ticket has already been marked by [marked_admin_key_name]."))
+		var/unmark_option = tgui_alert(user, "This message has been marked by [marked_admin_key_name]. Do you want to override?", "Marked Ticket", list("Overwrite Mark", "Unmark", "Cancel"))
 		if(unmark_option == "Unmark")
 			unmark_ticket()
 			return
 		if(unmark_option != "Overwrite Mark")
 			return
 
-	var/key_name = key_name_admin(user)
+	var/key_name = key_name_admin(user, FALSE)
 	AddInteraction("Marked by [key_name].",
 		plain_message = "Marked by [user.username()]", message_type = "system")
 	to_chat(initiator, SPAN_ADMINHELP("An admin is preparing to respond to your ticket."))
@@ -633,23 +638,25 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 	message_admins(msg)
 	log_ahelp(id, "Marked", "Marked by [user.username()]", sender = user.ckey)
 	marked_admin = user.ckey
+	marked_admin_key_name = key_name
 
 /datum/admin_help/proc/unmark_ticket()
-	var/key_name = key_name_admin(usr)
-	AddInteraction("Unmarked by [key_name] (previously [marked_admin]).",
-		plain_message = "Unmarked by [usr.username()] (previously [marked_admin])", message_type = "system")
+	var/key_name = key_name_admin(usr, FALSE)
+	AddInteraction("Unmarked by [key_name] (previously [marked_admin_key_name]).",
+		plain_message = "Unmarked by [usr.username()] (previously [marked_admin_key_name])", message_type = "system")
 	var/msg = "Ticket [TicketHref("#[id]")] unmarked by [key_name]."
 	message_admins(msg)
-	log_ahelp(id, "Unmarked", "Unmarked by [usr.username()] (previously [marked_admin])", sender = usr.ckey)
+	log_ahelp(id, "Unmarked", "Unmarked by [usr.username()] (previously [marked_admin_key_name])", sender = usr.ckey)
 	marked_admin = null
+	marked_admin_key_name = null
 
 //Close and return ahelp verb, use if ticket is incoherent
-/datum/admin_help/proc/Reject(key_name = key_name_admin(usr))
+/datum/admin_help/proc/Reject(key_name = key_name_admin(usr, FALSE))
 	if(state != AHELP_ACTIVE)
 		return
 
 	if(marked_admin && ckey(marked_admin) != usr.ckey)
-		to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin]. Please override their mark to interact with this ticket!"))
+		to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin_key_name]. Please override their mark to interact with this ticket!"))
 		return
 
 	if(initiator)
@@ -670,14 +677,14 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 
 /// Resolve ticket with a premade message
 /datum/admin_help/proc/AutoReply()
-	var/key_name = key_name_admin(usr)
+	var/key_name = key_name_admin(usr, FALSE)
 	if(state != AHELP_ACTIVE)
 		to_chat(usr, SPAN_WARNING("This ticket is already closed!"))
 		return
 
 	if(marked_admin != usr.ckey)
 		if(marked_admin)
-			to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin]. Please override their mark to interact with this ticket!"))
+			to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin_key_name]. Please override their mark to interact with this ticket!"))
 			return
 		else
 			mark_ticket(usr)

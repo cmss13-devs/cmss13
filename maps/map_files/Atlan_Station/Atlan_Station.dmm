@@ -1564,6 +1564,13 @@
 /obj/structure/machinery/portable_atmospherics/canister,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/asteroid/exports_west)
+"afd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/poster/upp{
+	pixel_y = -26
+	},
+/turf/open/floor/strata/green1,
+/area/atlan/station/canteen)
 "afe" = (
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3,
 /turf/closed/wall/upp_ship/grey/reinforced,
@@ -26536,6 +26543,10 @@
 /obj/item/reagent_container/food/drinks/bottle/vodka{
 	pixel_x = 9;
 	pixel_y = -16
+	},
+/obj/structure/sign/poster/upp{
+	pixel_y = 32;
+	pixel_x = -3
 	},
 /turf/open/floor/strata/blue1,
 /area/atlan/station/hab_flight)
@@ -111260,7 +111271,7 @@ kvr
 ayX
 kvr
 anr
-uPm
+afd
 mqJ
 krr
 jxO

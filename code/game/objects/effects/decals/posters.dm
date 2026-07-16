@@ -253,7 +253,32 @@
 
 /obj/structure/sign/poster/upp
 	icon_state = "poster88"
+	var/description_text = "" // blank string
 
 /obj/structure/sign/poster/upp/Initialize()
 	serial_number = pick(88,89,90,91,92,93,94,95,96,97,98,99,100,102)
+	var/description = rand(1,3)
+	switch(description)
+		if(1)
+			description_text = "Higher than us, only stars!"
+		if(2)
+			description_text = "We stand on the shoulders of Socialist giants!"
+		if(3)
+			description_text = "Glory to our Cosmonauts!"
 	.=..()
+
+/obj/structure/sign/poster/upp/get_examine_text(mob/user)
+	. = ..()
+	if(serial_number == 102 && description_text)
+		var/can_read = FALSE
+		for(var/language_name in list(LANGUAGE_RUSSIAN, LANGUAGE_CHINESE, LANGUAGE_GERMAN))
+			var/datum/language/lang = GLOB.all_languages[language_name]
+			if(lang in user.languages)
+				can_read = TRUE
+				break
+		if(can_read)
+			. += SPAN_GREEN("The text at the bottom reads: \"[description_text]\"")
+		else if(isyautja(user))
+			. += SPAN_GREEN("Your translator deciphers the text at the bottom, it reads: \"[description_text]\"")
+		else
+			. += SPAN_GREEN("There's text at the bottom, but you don't understand it.")

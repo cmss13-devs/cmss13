@@ -520,4 +520,4 @@ Template
 /datum/poster/poster_102
 	icon_state="poster102"
 	name = "Upon the Shoulders of Giants"
-	desc = "The heads of 3 men in UPPAC EVA suits look to the right of the poster; the men being faintly recognizable as famous cosmonauts. At the bottom of the poster is a recruitment message for the Cosmos Exploration Corps. "
+	desc = "The heads of 3 men in UPPAC EVA suits look to the right of the poster; the men being faintly recognizable as famous cosmonauts. At the bottom of the poster is some sort of message for the Cosmos Exploration Corps."

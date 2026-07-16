@@ -297,10 +297,10 @@
 			var/obj/structure/reagent_dispensers/tank/fuel/tank = target
 			tank.explode()
 		return
-	if (welding)
-		if(isliving(target))
-			var/mob/living/L = target
-			L.IgniteMob()
+	if (welding && isliving(target))
+		var/mob/living/living_target = target
+		living_target.IgniteMob()
+		return
 	..()
 
 

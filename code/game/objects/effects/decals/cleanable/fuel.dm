@@ -86,11 +86,6 @@
 			new /obj/effect/decal/cleanable/liquid_fuel(target, amount * 0.25)
 			amount *= 0.75
 
-/obj/effect/decal/cleanable/liquid_fuel/ignite(obj/item/igniter, mob/user, flavor_text)
-	var/turf/fuel_turf = get_turf(src)
-	fuel_turf.visible_message(flavor_text)
-	ignite_fuel()
-
 /obj/effect/decal/cleanable/liquid_fuel/proc/ignite_fuel()
 	if(QDELETED(src))
 		return

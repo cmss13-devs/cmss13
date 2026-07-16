@@ -1424,9 +1424,16 @@
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/last_bunker/indoors/entry_zone/train)
 "aee" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
 /turf/open/floor/prison/darkyellow2/southwest,
 /area/last_bunker/indoors/entry_zone/train)
 "aef" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkyellow2/southeast,
 /area/last_bunker/indoors/entry_zone/train)
 "aeg" = (
@@ -1435,9 +1442,18 @@
 /turf/open/floor/prison/floor_plate,
 /area/last_bunker/indoors/residential_zone)
 "aeh" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkyellow2/west,
 /area/last_bunker/indoors/entry_zone/train)
 "aei" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_2";
+	pixel_y = 12
+	},
+/obj/item/paper/crumpled{
+	pixel_x = 9
+	},
 /turf/open/floor/prison/darkyellowcorners2,
 /area/last_bunker/indoors/entry_zone/train)
 "aej" = (
@@ -1445,6 +1461,16 @@
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/last_bunker/indoors/entry_zone/train)
 "aek" = (
+/obj/structure/sign/poster/safety{
+	pixel_x = -4;
+	pixel_y = 34;
+	layer = 2.9
+	},
+/obj/structure/machinery/power/monitor{
+	density = 0;
+	pixel_y = 16
+	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkyellow2/northwest,
 /area/last_bunker/indoors/entry_zone/train)
 "ael" = (
@@ -1454,11 +1480,50 @@
 /turf/open/floor/prison/darkyellow2/north,
 /area/last_bunker/indoors/entry_zone/train)
 "aem" = (
+/obj/structure/prop/hybrisa/misc/redmeter{
+	pixel_y = 32
+	},
+/obj/structure/largecrate/random/barrel/yellow,
 /turf/open/floor/prison/darkyellow2/northeast,
 /area/last_bunker/indoors/entry_zone/train)
-"aen" = (
-/turf/open/floor/prison/darkyellow2/southeast,
-/area/last_bunker/indoors/residential_zone)
+"aeo" = (
+/turf/open/floor/almayer/mono,
+/area/last_bunker/indoors/entry_zone/train)
+"aep" = (
+/turf/open/shuttle/escapepod/west,
+/area/last_bunker/indoors/entry_zone/train)
+"aeq" = (
+/turf/open/shuttle/escapepod/east,
+/area/last_bunker/indoors/entry_zone/train)
+"aer" = (
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
+	pixel_y = 17
+	},
+/obj/effect/landmark/survivor_spawner,
+/obj/structure/extinguisher_cabinet/lifeboat{
+	pixel_x = 11;
+	pixel_y = 27
+	},
+/turf/open/floor/almayer/plating,
+/area/last_bunker/indoors/entry_zone/train)
+"aes" = (
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair,
+/obj/effect/landmark/survivor_spawner,
+/obj/structure/machinery/cm_vending/sorted/supplies/lifeboat{
+	pixel_x = 4;
+	pixel_y = 27
+	},
+/turf/open/floor/almayer/plating,
+/area/last_bunker/indoors/entry_zone/train)
+"aet" = (
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair,
+/obj/effect/landmark/survivor_spawner,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/lifeboat{
+	pixel_x = -5;
+	pixel_y = 27
+	},
+/turf/open/floor/almayer/plating,
+/area/last_bunker/indoors/entry_zone/train)
 "aeu" = (
 /obj/structure/prop/structure_lattice{
 	dir = 1;
@@ -1471,6 +1536,10 @@
 	},
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/last_bunker/indoors/cavern/south_entrance)
+"aev" = (
+/obj/structure/machinery/light,
+/turf/open/floor/prison/darkyellow2/southeast,
+/area/last_bunker/indoors/entry_zone/train)
 "aeL" = (
 /turf/open/floor/dark,
 /area/last_bunker/indoors/command_zone)
@@ -2012,13 +2081,6 @@
 "ajL" = (
 /turf/open/floor/almayer/plating_striped,
 /area/last_bunker/indoors/entry_zone/train)
-"ajM" = (
-/obj/structure/machinery/light/blue{
-	invisibility = 101;
-	dir = 2
-	},
-/turf/open/floor/almayer/plating_striped,
-/area/last_bunker/indoors/entry_zone/train)
 "ajN" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "6,1";
@@ -2059,21 +2121,19 @@
 "ajS" = (
 /turf/open/floor/almayer/plating,
 /area/last_bunker/indoors/entry_zone/train)
-"ajT" = (
-/turf/open/floor/almayer/w_y0,
-/area/last_bunker/indoors/entry_zone/train)
 "ajU" = (
-/turf/open/floor/almayer/w_y1,
-/area/last_bunker/indoors/entry_zone/train)
-"ajV" = (
-/turf/open/floor/almayer/w_y2,
+/obj/effect/decal/hybrisa/wy_huge_logo{
+	pixel_x = -46;
+	pixel_y = -2
+	},
+/turf/open/floor/almayer/plating,
 /area/last_bunker/indoors/entry_zone/train)
 "ajW" = (
 /obj/structure/machinery/light/blue{
 	invisibility = 101;
 	dir = 4
 	},
-/turf/open/floor/almayer/plating,
+/turf/open/floor/almayer/mono,
 /area/last_bunker/indoors/entry_zone/train)
 "ajX" = (
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -2113,6 +2173,10 @@
 	pixel_y = 17
 	},
 /obj/effect/landmark/survivor_spawner,
+/obj/structure/extinguisher_cabinet/lifeboat{
+	pixel_x = -10;
+	pixel_y = 27
+	},
 /turf/open/floor/almayer/plating,
 /area/last_bunker/indoors/entry_zone/train)
 "akd" = (
@@ -2148,13 +2212,6 @@
 /turf/open/floor/almayer/plating,
 /area/last_bunker/indoors/entry_zone/train)
 "aki" = (
-/turf/open/floor/almayer/plating_striped/north,
-/area/last_bunker/indoors/entry_zone/train)
-"akj" = (
-/obj/structure/machinery/light/blue{
-	invisibility = 101;
-	dir = 1
-	},
 /turf/open/floor/almayer/plating_striped/north,
 /area/last_bunker/indoors/entry_zone/train)
 "akk" = (
@@ -7160,7 +7217,6 @@
 "gXL" = (
 /obj/structure/surface/rack,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_box/magazine/nailgun,
 /obj/item/stack/sheet/metal/med_large_stack{
 	pixel_x = 4;
 	pixel_y = 5
@@ -69673,7 +69729,7 @@ ybf
 hgi
 hgi
 gQL
-aen
+pgH
 eNc
 hBs
 aGp
@@ -70911,8 +70967,8 @@ iQs
 qSG
 akp
 akh
-ajS
-ajS
+aeo
+aeo
 ajK
 ajC
 usF
@@ -71112,9 +71168,9 @@ ybf
 iQs
 qSG
 akp
-akh
-ajS
-ajS
+aes
+aeq
+aep
 ajK
 ajE
 qSG
@@ -71518,7 +71574,7 @@ qSG
 ajG
 aki
 ajS
-ajT
+ajS
 ajL
 ajG
 qSG
@@ -71718,10 +71774,10 @@ qxD
 iQs
 qSG
 ajH
-akj
+aki
 ajS
 ajU
-ajM
+ajL
 ajH
 qSG
 lfS
@@ -71922,7 +71978,7 @@ qSG
 ajH
 aki
 ajS
-ajV
+ajS
 ajL
 ajH
 qSG
@@ -72116,14 +72172,14 @@ ybf
 ybf
 hgi
 aem
-aef
+aev
 qxD
 qxD
 iQs
 qSG
 akr
 akk
-akc
+aer
 ajS
 ajN
 ajE
@@ -72324,9 +72380,9 @@ pWi
 lgZ
 qSG
 akp
-akh
-ajS
-ajS
+aet
+aeq
+aep
 ajK
 ajF
 qSG
@@ -72527,7 +72583,7 @@ qSG
 qSG
 akp
 akh
-ajS
+aeo
 ajW
 ajK
 ajC

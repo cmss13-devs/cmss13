@@ -90,3 +90,65 @@
   - rscdel: Removed the yard hydroponics area (groceries are available in the kitchenette)
   Puckaboo2:
   - rscadd: Adds HUD icons for all NSPA members.
+2026-07-13:
+  AnCopper:
+  - qol: Expanded SEA, XO, ASO, and Staff Officer vendor equipment options.
+  - qol: Added Operations Uniforms, External Webbing, Insulated Combat Gloves, Security
+      HUD Glasses, and additional storage accessories to applicable vendors.
+  - qol: Added additional cosmetic patch options to SEA and ASO vendors.
+  - qol: Made command-role patch items unlimited stock.
+  - balance: Removed HEFA Grenade Packs from the XO vendor.
+  DangerRevolution, Thwompa, Axon Man:
+  - rscadd: Added the FCT - Field Camera Tripod for use by Combat Technicians in the
+      Field, allowing Overwatch to see static positions.
+  - balance: Added the FCT to Maintenance Technician, Requisition and Combat Technician
+      vendors.
+  Drathek, Puckaboo2:
+  - rscadd: You can close unprepared incisions without having to skip to using the
+      retractor, now.
+  - rscadd: Multiple skippable surgery steps are now possible.
+  - rscadd: Adds two Abort Surgery surgeries, one with surgical line and one with
+      the cautery.
+  - qol: If you can't complete a surgical step with a tool, the game will tell you
+      so and it will also tell you what surgeries are available at the current step
+      to give you a clue on what tools you CAN use.
+  - bugfix: Fixes being able to execute certain surgery steps out of order.
+  - bugfix: Prevents the ability to cauterize/sew a patient early during an incomplete
+      surface or deep surgery.
+  GoodWheatley:
+  - rscdel: Removed rangefinders that spawn with survivors on Chance's Claim and Tyrargo
+      Rift
+  - maptweak: Added rangefinders on Chance's Claim and Tyrargo Rift. The rangefinder
+      spawns north of Fitness on CC, and in the northwest corner of upper Apartments
+      on Tyrargo.
+  JackieEstegado:
+  - bugfix: Defenders dying while having their crest down or fortified no longer stops
+      them from being buckled to a rollerbed.
+  MistChristmas:
+  - bugfix: APC terminals no longer overlay over catwalks and the like
+  Rain7x:
+  - bugfix: Fixed Despoiler acid barrage direct hits applying a new acid effect on
+      every hit instead of refreshing the existing one
+  fira:
+  - admin: Most logging (and fingerprints) should now properly use ckey, instead of
+      key
+2026-07-14:
+  JHINgle4ce:
+  - rscadd: Adds MP synth to security
+  NHC:
+  - code_imp: added a var to set if clothing removes undergarments overlays or not.
+  - bugfix: Fixes Yautja Meshsuits removing undergarments
+2026-07-15:
+  DangerRevolution:
+  - bugfix: Fixes the Field Cameras' label reading "this label label reads"...
+  - bugfix: Moves the Field Cameras' labels to the examine box rather than outputting
+      it to the chatbox.
+  NHC:
+  - qol: SOCOM and grenade packs can now be collapsed
+  - qol: Grenade belt and satchel can now be filed by being slapped by themself, each
+      other, and via grenade packs n boxes
+  - qol: M56D and M2C mags can be used to refil other mags of their own kind
+  - qol: M56D mags can be manually loaded/unloaded
+  ori-disillusion-mirnov:
+  - code_imp: all living mobs now have procs for riding
+  - code_imp: adding the riding element is easier

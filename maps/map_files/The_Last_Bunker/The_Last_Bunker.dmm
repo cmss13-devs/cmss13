@@ -1083,9 +1083,6 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/obj/structure/machinery/power/apc/power/north{
-	start_charge = 60
-	},
 /turf/open/floor/plating,
 /area/last_bunker/indoors/entry_zone)
 "adp" = (
@@ -1420,10 +1417,47 @@
 /obj/structure/machinery/floodlight/landing,
 /turf/open/auto_turf/snow/layer1,
 /area/last_bunker/landing_zone_1)
+"aed" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	dir = 2
+	},
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/last_bunker/indoors/entry_zone/train)
+"aee" = (
+/turf/open/floor/prison/darkyellow2/southwest,
+/area/last_bunker/indoors/entry_zone/train)
+"aef" = (
+/turf/open/floor/prison/darkyellow2/southeast,
+/area/last_bunker/indoors/entry_zone/train)
 "aeg" = (
 /obj/structure/pipes/vents/pump,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/floor_plate,
+/area/last_bunker/indoors/residential_zone)
+"aeh" = (
+/turf/open/floor/prison/darkyellow2/west,
+/area/last_bunker/indoors/entry_zone/train)
+"aei" = (
+/turf/open/floor/prison/darkyellowcorners2,
+/area/last_bunker/indoors/entry_zone/train)
+"aej" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony,
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/last_bunker/indoors/entry_zone/train)
+"aek" = (
+/turf/open/floor/prison/darkyellow2/northwest,
+/area/last_bunker/indoors/entry_zone/train)
+"ael" = (
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 60
+	},
+/turf/open/floor/prison/darkyellow2/north,
+/area/last_bunker/indoors/entry_zone/train)
+"aem" = (
+/turf/open/floor/prison/darkyellow2/northeast,
+/area/last_bunker/indoors/entry_zone/train)
+"aen" = (
+/turf/open/floor/prison/darkyellow2/southeast,
 /area/last_bunker/indoors/residential_zone)
 "aeu" = (
 /obj/structure/prop/structure_lattice{
@@ -69639,7 +69673,7 @@ ybf
 hgi
 hgi
 gQL
-pgH
+aen
 eNc
 hBs
 aGp
@@ -71272,7 +71306,7 @@ hJL
 ixU
 vya
 vkb
-vya
+ybf
 ybf
 ybf
 ybf
@@ -71473,11 +71507,11 @@ hJL
 ixU
 vya
 vya
-aeu
 ybf
-ybf
-ybf
-ybf
+hgi
+hgi
+hgi
+hgi
 qxD
 iQs
 qSG
@@ -71674,12 +71708,12 @@ vya
 vkb
 vya
 maX
-vya
+aeu
 ybf
-ybf
-ybf
-ybf
-ybf
+hgi
+aek
+aeh
+aee
 qxD
 iQs
 qSG
@@ -71878,11 +71912,11 @@ gAK
 vMC
 ybf
 ybf
-ybf
-ybf
-ybf
-ybf
-qxD
+hgi
+ael
+aei
+aef
+aed
 iQs
 qSG
 ajH
@@ -72080,9 +72114,9 @@ ybf
 ybf
 ybf
 ybf
-ybf
-ybf
-ybf
+hgi
+aem
+aef
 qxD
 qxD
 iQs
@@ -72282,9 +72316,9 @@ ybf
 ybf
 ybf
 ybf
-ybf
+hgi
 qxD
-qxD
+aej
 qxD
 pWi
 lgZ

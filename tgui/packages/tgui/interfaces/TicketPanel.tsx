@@ -677,11 +677,10 @@ export const TicketPanel = (props) => {
                                       const link = response.islink;
                                       return (
                                         <Box key={index} mb={2}>
-                                          <Stack align="flex-start">
+                                          <Stack align="start">
                                             <Stack.Item
-                                              mr="3%"
+                                              mr="25px"
                                               style={{
-                                                width: '10%',
                                                 fontSize: '1em',
                                                 color: 'gray',
                                               }}

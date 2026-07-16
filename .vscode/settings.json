@@ -121,5 +121,26 @@
 	"chat.mcp.gallery.enabled": false,
 	"mermaid-chat.enabled": false,
 	"githubPullRequests.experimental.useQuickChat": false,
-	"chat.useAgentSkills": false
+	"chat.useAgentSkills": false,
+	"workbench.browser.sendElementsToChat.attachImages": false,
+	"workbench.commandPalette.showAskInChat": false,
+	"workbench.browser.enableChatTools": false,
+	"chat.agent.sandbox.allowAutoApprove": false,
+	"chat.agent.sandbox.allowUnsandboxedCommands": false,
+	"chat.agent.sandbox.retryWithAllowNetworkRequests": false,
+	"chat.agent.thinking.terminalTools": false,
+	"chat.tools.riskAssessment.enabled": false,
+	"chat.tools.terminal.autoApproveWorkspaceNpmScripts": false,
+	"chat.mcp.apps.enabled": false,
+	"chat.mcp.autostart": "never",
+	"chat.includeApplyingInstructions": false,
+	"chat.useClaudeMdFile": false,
+	"inlineChat.fixDiagnostics": false,
+	"chat.plugins.enabled": false,
+	"chat.checkpoints.enabled": false,
+	"git.addAICoAuthor": "all",
+	"dotnetAcquisitionExtension.enableLanguageModelTools": false,
+	"chat.tools.edits.autoApprove": {
+		"**/*": false
+	}
 }

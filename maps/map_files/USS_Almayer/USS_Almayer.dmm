@@ -7107,7 +7107,6 @@
 /obj/structure/machinery/status_display{
 	pixel_y = 30
 	},
-/obj/structure/machinery/computer/almayer_encryption/encoder,
 /turf/open/floor/almayer/silver/northeast,
 /area/almayer/command/cic)
 "arS" = (
@@ -8673,7 +8672,6 @@
 	pixel_x = 8;
 	pixel_y = 25
 	},
-/obj/structure/machinery/computer/almayer_encryption/decoder,
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "awB" = (
@@ -9355,10 +9353,6 @@
 	pixel_x = 17;
 	pixel_y = -6
 	},
-/obj/item/paper/punch_card/instructional,
-/obj/item/paper/punch_card,
-/obj/item/paper/punch_card,
-/obj/item/paper/punch_card,
 /obj/item/device/megaphone{
 	pixel_x = -2
 	},
@@ -86160,7 +86154,6 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/machinery/computer/almayer_encryption,
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "teZ" = (

@@ -302,12 +302,6 @@ SUBSYSTEM_DEF(radio)
 	var/list/tcomm_machines_ground = list()
 	var/list/tcomm_machines_almayer = list()
 
-	/// The last cached result for get_available_tcomm_zs(COMM_FREQ)
-	var/list/last_command_zs = list()
-	/// The current coms clarity per faction for Zs without coms (otherwise announcement_max_clarity config value)
-	var/list/faction_coms_clarity = list(FACTION_MARINE = 100)
-	/// The currently unsolved encryption_sequences for a faction (only the ones listed here decay)
-	var/list/faction_coms_codes = list(FACTION_MARINE = list())
 
 	var/static/list/freq_to_span = list(
 		"[COMM_FREQ]" = "comradio",
@@ -357,24 +351,6 @@ SUBSYSTEM_DEF(radio)
 		"[FAX_USCM_PVST_FREQ]" = "aiprivradio",
 		"[HDC_FREQ]" = "hdcradio",
 	)
-
-/datum/controller/subsystem/radio/fire(resumed)
-	var/decay_rate = CONFIG_GET(number/announcement_clarity_decay)
-	var/clarity_min = CONFIG_GET(number/announcement_min_clarity)
-	var/oldest_time = world.time - ((100 - clarity_min) / decay_rate * wait)
-
-	for(var/faction in faction_coms_codes)
-		// Clean out any old codes (Assumption: They're ordered)
-		var/list/codes = faction_coms_codes[faction]
-		var/index
-		for(index in 1 to length(codes))
-			var/datum/encryption_sequence/current = codes[index]
-			if(current.time >= oldest_time)
-				break
-		codes.Cut(1, index)
-
-		// Decay current clarity
-		faction_coms_clarity[faction] = max(faction_coms_clarity[faction] - decay_rate, clarity_min)
 
 /datum/controller/subsystem/radio/proc/add_object(obj/device as obj, new_frequency as num, filter = null as text|null)
 	var/f_text = num2text(new_frequency)
@@ -427,8 +403,6 @@ SUBSYSTEM_DEF(radio)
 			target_zs += SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
 			target_zs += SSmapping.levels_by_trait(ZTRAIT_RESERVED)
 			break
-	if(frequency == COMM_FREQ)
-		last_command_zs = target_zs
 	return target_zs
 
 /// Call this when a cached frequency changed (e.g. tcoms going down/up)

@@ -162,20 +162,6 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 
 	return output_message
 
-/**
- * Gets a stars_decode_html result with a variable clarity based the faction's current comms clarity
- *
- * Arguments:
- * * message - The message to garble (its length is used for clarity calculation)
- * * faction - An optional faction define to check (otherwise announcement_max_clarity config value)
- */
-/proc/get_garbled_announcement(message, faction)
-	var/clarity = SSradio.faction_coms_clarity[faction]
-	if(!clarity)
-		clarity = CONFIG_GET(number/announcement_max_clarity)
-
-	return stars_decode_html(message, clarity)
-
 /proc/slur(phrase)
 	phrase = html_decode(phrase)
 	var/leng=length(phrase)

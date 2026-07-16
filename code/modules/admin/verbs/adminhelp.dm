@@ -210,7 +210,7 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 	var/list/admins_involved = list()
 	/// The ckey of the admin that marked this ahelp?
 	var/marked_admin
-	/// The key name of the admin
+	/// The key name of that admin
 	var/marked_admin_key_name
 	/// Has the player replied to this ticket yet?
 	var/player_replied = FALSE
@@ -638,7 +638,7 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 	message_admins(msg)
 	log_ahelp(id, "Marked", "Marked by [user.username()]", sender = user.ckey)
 	marked_admin = user.ckey
-	marked_admin_key_name = key_name
+	marked_admin_key_name = user.username()
 
 /datum/admin_help/proc/unmark_ticket()
 	var/key_name = key_name_admin(usr, FALSE)

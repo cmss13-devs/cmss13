@@ -371,13 +371,13 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 	return ..()
 
 /datum/admin_help/proc/AddInteraction(formatted_message, plain_message = null, message_type = "admin", link_data = null)
-	var/ckey_to_use = null
+	var/key_name_to_use = null
 
 	// Safely get the user's ckey
-	if(usr && !isnull(usr.ckey))
-		ckey_to_use = usr.ckey
-		if(ckey_to_use != initiator_ckey)
-			admins_involved |= ckey_to_use
+	if(usr && !isnull(usr.client))
+		key_name_to_use = key_name(usr.client, FALSE, FALSE)
+		if(key_name_to_use != initiator_ckey)
+			admins_involved |= key_name_to_use
 			if(heard_by_no_admins)
 				heard_by_no_admins = FALSE
 
@@ -391,7 +391,7 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 	var/plain_text = plain_message || strip_html(formatted_message)
 	var/html_message = "[worldtime2text(timestamp)]: [formatted_message]"
 
-	var/author = ckey_to_use || "System"
+	var/author = key_name_to_use || "System"
 
 	if(message_type == "system")
 		author = "System"

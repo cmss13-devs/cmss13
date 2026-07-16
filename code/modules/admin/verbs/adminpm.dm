@@ -249,7 +249,8 @@ SET_PROTECTED_PROC(/client/proc/cmd_admin_pm)
 			var/already_logged = FALSE
 			if(!recipient.current_ticket)
 				var/datum/admin_help/new_ticket = new(msg, recipient, TRUE)
-				new_ticket.marked_admin = key_name_admin(src, FALSE)
+				new_ticket.marked_admin = ckey
+				new_ticket.marked_admin_key_name = username()
 				already_logged = TRUE
 				if(recipient.current_ticket)
 					log_ahelp(recipient.current_ticket.id, "Ticket Opened", msg, recipient.ckey, src.ckey)

@@ -723,9 +723,9 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 	dat += "[FOURSPACES][TicketHref("Refresh", ref_src)][FOURSPACES][TicketHref("Re-Title", ref_src, "retitle")]"
 	if(state != AHELP_ACTIVE)
 		dat += "[FOURSPACES][TicketHref("Reopen", ref_src, "reopen")]"
-	dat += "<br><br>Opened at: [time2text(time = opened_at)] (Approx [DisplayTimeText(REALTIMEOFDAY - opened_at)] ago)"
+	dat += "<br><br>Opened at: [time2text(opened_at, "hh:mm:ss")] (Approx [DisplayTimeText(REALTIMEOFDAY - opened_at)] ago)"
 	if(closed_at)
-		dat += "<br>Closed at: [time2text(time = closed_at)] (Approx [DisplayTimeText(REALTIMEOFDAY - closed_at)] ago)"
+		dat += "<br>Closed at: [time2text(closed_at, "hh:mm:ss")] (Approx [DisplayTimeText(REALTIMEOFDAY - closed_at)] ago)"
 	dat += "<br>"
 	if(initiator)
 		dat += "[FullMonty(ref_src)]<br>" //All the action buttons for tickets/ahelps
@@ -830,9 +830,9 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 		else
 			dat += "UNKNOWN</b>"
 	dat += "\n[FOURSPACES]<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];player_ticket_panel=1'>Refresh</A>"
-	dat += "<br><br>Opened at: [time2text("hh:mm:ss", opened_at)] (Approx [DisplayTimeText(REALTIMEOFDAY - opened_at)] ago)"
+	dat += "<br><br>Opened at: [time2text(opened_at, "hh:mm:ss")] (Approx [DisplayTimeText(REALTIMEOFDAY - opened_at)] ago)"
 	if(closed_at)
-		dat += "<br>Closed at: [time2text("hh:mm:ss", closed_at)] (Approx [DisplayTimeText(REALTIMEOFDAY - closed_at)] ago)"
+		dat += "<br>Closed at: [time2text(closed_at, "hh:mm:ss")] (Approx [DisplayTimeText(REALTIMEOFDAY - closed_at)] ago)"
 	dat += "<br><br>"
 	dat += "<br><b>Log:</b><br><br>"
 	for (var/interaction in player_interactions)

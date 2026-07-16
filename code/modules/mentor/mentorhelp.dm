@@ -69,8 +69,8 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 		qdel(src)
 		return
 
-	opened_at = world.time
-	time_activity["opened_at"] = "[worldtime2text(opened_at)]"
+	opened_at = REALTIMEOFDAY
+	time_activity["opened_at"] = "[time2text(opened_at, "YYYY-MM-DD hh:mm:ss")]"
 
 	author = thread_author
 	author_key = thread_author.key
@@ -223,9 +223,10 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 	log_mhelp(log_msg)
 
 	if(include_in_ticket)
-		var/html_message = "[time_stamp()]: [html_msg]"
+		var/time_stamp = time_stamp()
+		var/html_message = "[time_stamp]: [html_msg]"
 		var/list/structured_data = list(
-			"timestamp" = worldtime2text(world.time),
+			"timestamp" = time_stamp,
 			"author" = from_key || "System",
 			"message" = plain_text,
 			"html_message" = html_msg,
@@ -545,8 +546,8 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 		if(GLOB.mentorhelp_manager.active_tickets["[id]"] == src)
 			GLOB.mentorhelp_manager.active_tickets -= "[id]"
 			GLOB.mentorhelp_manager.archived_tickets["[id]"] = src
-		closed_at = world.time
-		time_activity["closed_at"] = "[worldtime2text(closed_at)]"
+		closed_at = REALTIMEOFDAY
+		time_activity["closed_at"] = "[time2text(closed_at, "YYYY-MM-DD hh:mm:ss")]"
 		return
 
 	// Make sure it's being closed by staff or the mentor handling the thread
@@ -579,8 +580,8 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 	to_chat(author, SPAN_NOTICE("Your mentorhelp thread has been closed."))
 	notify("[SPAN_RED(author_key)]'s mentorhelp thread has been closed.",
 			unformatted_text = "[author_key]'s mentorhelp thread has been closed.")
-	closed_at = world.time
-	time_activity["closed_at"] = "[worldtime2text(closed_at)]"
+	closed_at = REALTIMEOFDAY
+	time_activity["closed_at"] = "[time2text(closed_at, "YYYY-MM-DD hh:mm:ss")]"
 
 	// Clear the client reference if they're still connected
 	if(author && author.current_mhelp == src)

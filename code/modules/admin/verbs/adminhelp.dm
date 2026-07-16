@@ -236,8 +236,8 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 		return
 
 	id = ++ticket_counter
-	opened_at = world.time
-	time_activity["opened_at"] = "[worldtime2text(opened_at)]"
+	opened_at = REALTIMEOFDAY
+	time_activity["opened_at"] = "[time2text(opened_at, "YYYY-MM-DD hh:mm:ss")]"
 
 	name = copytext_char(msg, 1, 100)
 	initial_message = msg
@@ -390,9 +390,9 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 	if(!plain_message && link_data && length(link_data))
 		plain_message = link_data[1]
 
-	var/timestamp = world.time
+	var/time_stamp = time_stamp()
 	var/plain_text = plain_message || strip_html(formatted_message)
-	var/html_message = "[worldtime2text(timestamp)]: [formatted_message]"
+	var/html_message = "[time_stamp]: [formatted_message]"
 
 	var/author = username_to_use || "System"
 
@@ -400,7 +400,7 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 		author = "System"
 
 	var/list/structured_data = list(
-		"timestamp" = worldtime2text(timestamp),
+		"timestamp" = time_stamp,
 		"author" = author,
 		"message" = html_encode(plain_text),
 		"html_message" = formatted_message,
@@ -522,8 +522,8 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 /datum/admin_help/proc/RemoveActive()
 	if(state != AHELP_ACTIVE)
 		return
-	closed_at = world.time
-	time_activity["closed_at"] = "[worldtime2text(closed_at)]"
+	closed_at = REALTIMEOFDAY
+	time_activity["closed_at"] = "[time2text(closed_at, "YYYY-MM-DD hh:mm:ss")]"
 	QDEL_NULL(statclick)
 	GLOB.ahelp_tickets.active_tickets -= src
 	if(initiator && initiator.current_ticket == src)
@@ -723,9 +723,9 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 	dat += "[FOURSPACES][TicketHref("Refresh", ref_src)][FOURSPACES][TicketHref("Re-Title", ref_src, "retitle")]"
 	if(state != AHELP_ACTIVE)
 		dat += "[FOURSPACES][TicketHref("Reopen", ref_src, "reopen")]"
-	dat += "<br><br>Opened at: [worldtime2text(time = opened_at)] (Approx [DisplayTimeText(world.time - opened_at)] ago)"
+	dat += "<br><br>Opened at: [time2text(time = opened_at)] (Approx [DisplayTimeText(REALTIMEOFDAY - opened_at)] ago)"
 	if(closed_at)
-		dat += "<br>Closed at: [worldtime2text(time = closed_at)] (Approx [DisplayTimeText(world.time - closed_at)] ago)"
+		dat += "<br>Closed at: [time2text(time = closed_at)] (Approx [DisplayTimeText(REALTIMEOFDAY - closed_at)] ago)"
 	dat += "<br>"
 	if(initiator)
 		dat += "[FullMonty(ref_src)]<br>" //All the action buttons for tickets/ahelps
@@ -830,9 +830,9 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 		else
 			dat += "UNKNOWN</b>"
 	dat += "\n[FOURSPACES]<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];player_ticket_panel=1'>Refresh</A>"
-	dat += "<br><br>Opened at: [worldtime2text("hh:mm:ss", opened_at)] (Approx [DisplayTimeText(world.time - opened_at)] ago)"
+	dat += "<br><br>Opened at: [time2text("hh:mm:ss", opened_at)] (Approx [DisplayTimeText(REALTIMEOFDAY - opened_at)] ago)"
 	if(closed_at)
-		dat += "<br>Closed at: [worldtime2text("hh:mm:ss", closed_at)] (Approx [DisplayTimeText(world.time - closed_at)] ago)"
+		dat += "<br>Closed at: [time2text("hh:mm:ss", closed_at)] (Approx [DisplayTimeText(REALTIMEOFDAY - closed_at)] ago)"
 	dat += "<br><br>"
 	dat += "<br><b>Log:</b><br><br>"
 	for (var/interaction in player_interactions)

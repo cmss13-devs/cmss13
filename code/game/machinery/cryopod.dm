@@ -447,40 +447,42 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 			return TRUE
 
 /obj/structure/machinery/cryopod/relaymove(mob/user)
-	if(user.is_mob_incapacitated(TRUE))
-		return
-	eject()
+	eject(user, override_confirmation = TRUE)
 
-/obj/structure/machinery/cryopod/verb/eject()
+/obj/structure/machinery/cryopod/verb/eject_verb()
 	set name = "Eject Pod"
 	set category = "Object"
 	set src in oview(1)
-	if(usr.stat != 0)
+
+	eject(usr)
+
+/obj/structure/machinery/cryopod/proc/eject(mob/initiator, override_confirmation = FALSE)
+	if(initiator.is_mob_incapacitated(TRUE))
 		return
 
-	if(occupant != usr)
-		to_chat(usr, SPAN_WARNING("You can't drag people out of hypersleep!"))
+	if(occupant != initiator)
+		to_chat(initiator, SPAN_WARNING("You can't drag people out of hypersleep!"))
 		return
 
-	if(!silent_exit && alert(usr, "Would you like eject out of the hypersleep chamber?", "Confirm", "Yes", "No") != "Yes")
+	var/mob/user = occupant // This alert below sleeps, so we have to doublecheck
+	if(!override_confirmation && !silent_exit && tgui_alert(occupant, "Would you like eject out of the hypersleep chamber?", "Eject from Hypersleep", list("Yes", "No")) != "Yes")
+		return
+	if(user != occupant) // Someone tried to game the system - Bail out
 		return
 
 	go_out() //Not adding a delay for this because for some reason it refuses to work. Not a big deal imo
-	add_fingerprint(usr)
+	add_fingerprint(user) // Now we use user not occupant as the occupant has been ejected
 
-	to_chat(usr, SPAN_NOTICE("You get out of \the [src]."))
+	to_chat(occupant, SPAN_NOTICE("You get out of \the [src]."))
 	if(!silent_exit)
 		visible_message(SPAN_WARNING("\The [src]'s casket starts moving!"))
-		var/mob/living/M = usr
-		var/area/location = get_area(src) //Logs the exit
-		message_admins("[key_name_admin(M)], [M.job], has left [src] at [location].")
+		var/area/location = get_area(user) //Logs the exit
+		message_admins("[key_name_admin(user)], [user.job], has left [src] at [location].")
 
-	var/list/items = src.contents //-Removes items from the chamber
-	if(occupant)
-		items -= occupant
+	// Removes items from the chamber, in case someone drops something
+	var/list/items = contents.Copy()
 	if(announce)
-		items -= announce
-
+		items -= announce // Keep the intercom inside the cryopod
 	for(var/obj/item/W in items)
 		W.forceMove(get_turf(src))
 

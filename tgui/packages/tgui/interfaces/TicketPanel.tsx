@@ -540,7 +540,7 @@ export const TicketPanel = (props) => {
                         }
                       >
                         <Stack fill vertical>
-                          <Stack.Item>
+                          <Stack.Item pb="3px">
                             <LabeledList>
                               {selectedTicketData.subject ? (
                                 <LabeledList.Item label="Subject">
@@ -603,6 +603,7 @@ export const TicketPanel = (props) => {
                               </LabeledList.Item>
                               <LabeledList.Item label="Initial Message">
                                 <Box
+                                  mb="2px"
                                   style={{
                                     whiteSpace: 'pre-wrap',
                                     wordBreak: 'break-all',
@@ -678,8 +679,9 @@ export const TicketPanel = (props) => {
                                         <Box key={index} mb={2}>
                                           <Stack align="flex-start">
                                             <Stack.Item
+                                              mr="3%"
                                               style={{
-                                                width: '120px',
+                                                width: '10%',
                                                 fontSize: '1em',
                                                 color: 'gray',
                                               }}

@@ -25395,8 +25395,8 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
-/turf/closed/wall/mineral/bone_resin,
-/area/atlan/oob)
+/turf/open/floor/corsat,
+/area/atlan/asteroid/processing_seperation/cas)
 "hTG" = (
 /obj/structure/largecrate/random/mini,
 /turf/open/floor/prison/darkbrownfull2,
@@ -30807,6 +30807,10 @@
 	},
 /obj/structure/surface/rack{
 	color = "#98a3ab"
+	},
+/obj/structure/sign/poster/upp{
+	pixel_y = 33;
+	layer = 3.1
 	},
 /turf/open/floor/prison/darkyellowfull2,
 /area/atlan/station/medical_maint)
@@ -45297,6 +45301,9 @@
 "wRl" = (
 /obj/structure/bed/sofa/south/grey/right,
 /obj/item/book/manual/upphistory,
+/obj/structure/sign/poster/upp{
+	pixel_y = 33
+	},
 /turf/open/floor/strata/blue1,
 /area/atlan/station/admin)
 "wRT" = (

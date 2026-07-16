@@ -370,7 +370,7 @@
 	var/human_adapted = FALSE
 
 	shield_type = SHIELD_DIRECTIONAL
-	shield_chance = SHIELD_CHANCE_LOW
+	shield_chance = SHIELD_CHANCE_NONE
 	shield_sound = 'sound/items/parry.ogg'
 	shield_flags = CAN_SHIELD_BASH
 
@@ -393,7 +393,6 @@
 	hitsound = 'sound/weapons/chain_whip.ogg'
 
 	shield_type = SHIELD_NONE
-	shield_chance = SHIELD_CHANCE_NONE
 
 /obj/item/weapon/yautja/chain/attack(mob/target, mob/living/user)
 	. = ..()
@@ -417,8 +416,6 @@
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	attack_speed = 1 SECONDS
 	unacidable = TRUE
-
-	shield_chance = SHIELD_CHANCE_MED
 
 /obj/item/weapon/yautja/sword/alt_1
 	name = "rending sword"
@@ -508,11 +505,10 @@
 	attack_verb = list("speared", "stabbed", "impaled")
 
 	shield_type = SHIELD_DIRECTIONAL_TWOHANDS
-	shield_chance = SHIELD_CHANCE_HIGH
 	shield_projectile_mult = PROJECTILE_BLOCK_PERC_40
 	shield_flags = CAN_BLOCK_POUNCE|CAN_SHIELD_BASH
 	///The stored chance for when unfolded.
-	var/active_shield_chance = SHIELD_CHANCE_HIGH
+	var/active_shield_chance = SHIELD_CHANCE_NONE
 
 	var/force_wielded = MELEE_FORCE_TIER_6
 	var/force_unwielded = MELEE_FORCE_TIER_2
@@ -755,8 +751,6 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("slashed", "chopped", "diced")
 
-	shield_chance = SHIELD_CHANCE_VLOW
-
 /obj/item/weapon/yautja/knife
 	name = "ceremonial dagger"
 	desc = "A viciously sharp dagger inscribed with ancient Yautja markings. Smells thickly of blood. Carried by some hunters."
@@ -776,7 +770,6 @@
 	actions_types = list(/datum/action/item_action/toggle/use)
 	unacidable = TRUE
 
-	shield_chance = SHIELD_CHANCE_NONE
 	shield_type = SHIELD_NONE
 
 /obj/item/weapon/yautja/knife/attack(mob/living/target, mob/living/carbon/human/user)
@@ -1076,6 +1069,7 @@
 	edge = TRUE
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	shield_flags = CAN_SHIELD_BASH
+	shield_chance = SHIELD_CHANCE_NONE
 	var/human_adapted = FALSE
 
 /obj/item/weapon/twohanded/yautja/spear
@@ -1232,8 +1226,6 @@
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	attack_speed = 9
 
-	shield_chance = SHIELD_CHANCE_VLOW
-
 /obj/item/weapon/yautja/duelclub
 	name = "duelling club"
 	desc = "A crude metal club adorned with a skull. Used as a non-lethal training weapon for young yautja honing their combat skills."
@@ -1250,7 +1242,6 @@
 	attack_verb = list("smashed", "beaten", "slammed", "struck", "smashed", "battered", "cracked")
 	hitsound = 'sound/weapons/genhit3.ogg'
 
-	shield_chance = SHIELD_CHANCE_VLOW
 	shield_sound = 'sound/items/block_shield.ogg'
 
 /obj/item/weapon/yautja/duelaxe
@@ -1270,8 +1261,6 @@
 	attack_verb = list("chopped", "torn", "cut")
 	hitsound = 'sound/weapons/bladeslice.ogg'
 
-	shield_chance = SHIELD_CHANCE_VLOW
-
 /obj/item/weapon/yautja/duelknife
 	name = "duelling knife"
 	desc = "A length of leather-bound wood studded with razor-sharp teeth. How crude."
@@ -1286,7 +1275,6 @@
 	edge = 1
 	attack_speed = 12
 
-	shield_chance = SHIELD_CHANCE_NONE
 	shield_type = SHIELD_NONE
 
 /*#########################################

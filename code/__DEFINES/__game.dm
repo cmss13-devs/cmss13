@@ -134,7 +134,7 @@
 #define CHAT_GHOSTHIVEMIND (1<<12)
 #define CHAT_NICHELOGS (1<<13)
 #define CHAT_LISTENINGBUG (1<<14)
-// (1<<15) is reserved: CHAT_GHOSTANNOUNCECLARITY was saved in player preference flags.
+// (1<<15) was previously used: CHAT_GHOSTANNOUNCECLARITY was saved in player preference flags.
 //toggles_ghost
 #define GHOST_HEALTH_SCAN  (1<<0)
 

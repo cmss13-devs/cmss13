@@ -251,6 +251,11 @@
 	serial_number = pick(85,86,87)
 	.=..()
 
+
+/////////////////
+// UPP Posters //
+/////////////////
+
 /obj/structure/sign/poster/upp
 	icon_state = "poster88"
 	var/description_text = "" // blank string

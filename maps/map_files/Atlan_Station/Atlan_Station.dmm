@@ -44,7 +44,6 @@
 	color = "#98a3ab"
 	},
 /obj/item/weapon/gun/rifle/type71,
-/obj/item/weapon/gun/rifle/type71,
 /turf/open/floor/strata/red1,
 /area/atlan/station/security)
 "aaj" = (
@@ -8619,10 +8618,6 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/sign/poster/corporate{
-	layer = 2.9;
-	pixel_y = 32
-	},
 /obj/item/reagent_container/food/drinks/bottle/vodka{
 	pixel_y = 13;
 	pixel_x = 4
@@ -8630,6 +8625,10 @@
 /obj/item/mre_food_packet/upp/dessert,
 /obj/structure/surface/table,
 /obj/item/tool/kitchen/can_opener,
+/obj/structure/sign/poster/upp{
+	pixel_y = 32;
+	pixel_x = -3
+	},
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/cargo)
 "aAJ" = (
@@ -10072,10 +10071,6 @@
 /obj/structure/sign/banners/upp_flag,
 /turf/closed/wall/upp_ship/grey/reinforced,
 /area/atlan/station/hab_sec)
-"aFx" = (
-/obj/structure/sign/safety/hazard,
-/turf/closed/wall/upp_ship/grey/reinforced,
-/area/atlan/station/hab_sec)
 "aFy" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/decal/cleanable/dirt/alt_dirt,
@@ -10803,6 +10798,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/stairs1)
+"aIe" = (
+/obj/structure/sign/safety/hazard,
+/turf/closed/wall/upp_ship/grey,
+/area/atlan/station/hab_sec)
 "aIf" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/hunter/ancient_temple/rubble/rubble_1,
@@ -16214,6 +16213,14 @@
 /obj/structure/machinery/door/airlock/upp_grey/security/autoname,
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/hab_sec)
+"aZl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/extinguisher_cabinet{
+	pixel_x = -27;
+	pixel_y = 32
+	},
+/turf/open/floor/strata/fake_wood,
+/area/atlan/station/promenade)
 "aZm" = (
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3,
 /turf/closed/wall/upp_ship/grey,
@@ -19599,13 +19606,6 @@
 /turf/open/floor/plating,
 /area/atlan/asteroid/processing_dock)
 "dtP" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/structure/extinguisher_cabinet{
-	pixel_x = -27;
-	pixel_y = 32
-	},
 /obj/effect/decal/cleanable/dirt/alt_dirt,
 /turf/open/floor/strata/fake_wood,
 /area/atlan/station/promenade)
@@ -20151,6 +20151,7 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
+/obj/item/weapon/gun/rifle/type71,
 /turf/open/floor/strata/red1,
 /area/atlan/station/hab_flight)
 "dOm" = (
@@ -23049,10 +23050,6 @@
 	},
 /turf/open/floor/strata,
 /area/atlan/station/promenade)
-"gep" = (
-/obj/item/stack/rods,
-/turf/closed/wall/mineral/bone_resin,
-/area/atlan/oob)
 "geK" = (
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison/darkbrownfull2,
@@ -33805,9 +33802,6 @@
 /turf/open/floor/prison/darkyellowfull2,
 /area/atlan/station/substation)
 "odm" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
@@ -41023,6 +41017,9 @@
 /obj/structure/closet/firecloset/full,
 /obj/item/clothing/head/helmet/marine/veteran/UPP/firefighter,
 /obj/item/clothing/suit/storage/marine/light/vest/fire_light/upp,
+/obj/structure/machinery/light{
+	dir = 8
+	},
 /turf/open/floor/strata/orange_edge,
 /area/atlan/station/hab_docks)
 "tsA" = (
@@ -42497,9 +42494,6 @@
 /area/atlan/station/promenade)
 "uuT" = (
 /obj/structure/machinery/autolathe,
-/obj/structure/machinery/light{
-	dir = 1
-	},
 /turf/open/floor/prison/darkyellowfull2,
 /area/atlan/comms/lz1_engineering)
 "uvB" = (
@@ -44705,6 +44699,9 @@
 	pixel_y = 2
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/strata/cyan2/east,
 /area/atlan/station/promenade)
 "wob" = (
@@ -108315,7 +108312,7 @@ aFV
 gfU
 svE
 aFz
-aFz
+aIe
 ohy
 agg
 ohy
@@ -110860,7 +110857,7 @@ azE
 aFN
 eeZ
 mqJ
-aFx
+mqJ
 lmm
 ohy
 amo
@@ -111495,7 +111492,7 @@ aAk
 aAk
 aAk
 aAk
-aAk
+kre
 tty
 pKE
 ohy
@@ -111708,7 +111705,7 @@ pgu
 azC
 aAk
 tsj
-xtM
+ohy
 ohy
 aFu
 agg
@@ -116146,7 +116143,7 @@ ceC
 bEH
 lhj
 bEH
-bEH
+aZl
 lhj
 bEH
 lhj
@@ -116575,7 +116572,7 @@ bEH
 aui
 aui
 aui
-lhj
+uQP
 sFJ
 jSK
 lhj
@@ -126242,7 +126239,7 @@ aTJ
 isk
 aSY
 lGF
-gep
+lGF
 lGF
 lGF
 lGF

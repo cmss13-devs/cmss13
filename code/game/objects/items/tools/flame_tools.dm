@@ -43,7 +43,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	ADD_TRAIT(src, TRAIT_IGNITABLE, TRAIT_SOURCE_INHERENT)
 
 /obj/item/tool/candle/get_ignitable_flavor_text()
-	return list(
+	. = alist(
 		/obj/item/tool/weldingtool = SPAN_NOTICE("{user} casually lights {ignitable} with {igniter}."),
 		ANY_TYPE_MATCHER = SPAN_NOTICE("{user} lights {ignitable} with {igniter}."),
 	)
@@ -129,7 +129,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	. = ..()
 	ADD_TRAIT(src, TRAIT_IGNITER, TRAIT_SOURCE_INHERENT)
 
-/obj/item/tool/lighter/check_can_ignite()
+/obj/item/tool/match/check_can_ignite()
 	return heat_source
 
 /obj/item/tool/match/afterattack(atom/target, mob/living/carbon/human/user, proximity_flag, click_parameters)
@@ -250,7 +250,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	ADD_TRAIT(src, TRAIT_IGNITER, TRAIT_SOURCE_INHERENT)
 
 /obj/item/clothing/mask/cigarette/get_ignitable_flavor_text()
-	return list(
+	return alist(
 		/obj/item/tool/weldingtool = SPAN_NOTICE("{user} casually lights the {ignitable} with {igniter}."),
 		/obj/item/tool/lighter/zippo = SPAN_ROSE("With a flick of their wrist, {user} lights their {ignitable} with {igniter}."),
 		/obj/item/device/flashlight/flare = SPAN_NOTICE("{user} lights their {ignitable} with {igniter}."),
@@ -262,17 +262,12 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		/obj/item/weapon/gun/flamer = SPAN_NOTICE("{user} lights their {ignitable} with the pilot light of {igniter}."),
 		/obj/item/weapon/gun = SPAN_NOTICE("{user} lights their {ignitable} with {igniter}."),
 		/obj/item/tool/surgery/cautery = SPAN_NOTICE("{user} lights their {ignitable} with {igniter}."),
-		/obj/item/clothing/mask/cigarette = SPAN_NOTICE("{user} lights their {ignitable} with {igniter} after a few attempts."),SPAN_NOTICE("{user} lights their {ignitable} with {igniter} after a few attempts."),
+		/obj/item/clothing/mask/cigarette = SPAN_NOTICE("{user} lights their {ignitable} with {igniter} after a few attempts."),
 		/obj/item/tool/candle = SPAN_NOTICE("{user} lights their {ignitable} with {igniter} after a few attempts."),
 	)
 
 /obj/item/clothing/mask/cigarette/check_can_ignite()
 	return item_state == icon_on
-
-// TODO: Refactor this to use signals holy shit
-/obj/item/clothing/mask/cigarette/proc/try_light(obj/item/W, mob/user)
-	return
-
 
 /obj/item/clothing/mask/cigarette/afterattack(atom/target, mob/living/user, proximity)
 	..()
@@ -515,16 +510,16 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	chem_volume = 30
 
 /obj/item/clothing/mask/cigarette/cigar/havana/get_ignitable_flavor_text()
-	. = ..()
-	. += list(
-		/obj/item/tool/weldingtool = SPAN_NOTICE("{user} insults {ignitable} by lighting it with {igniter}."),
-		/obj/item/tool/lighter = SPAN_NOTICE("{user} manages to offend their {ignitable} by lighting it with {igniter}."),
-		/obj/item/device/assembly/igniter = SPAN_NOTICE("{user} fiddles with {igniter}, and manages to light their {ignitable} with the power of science."),
-		/obj/item/attachable/attached_gun/flamer = SPAN_NOTICE("{user} lights their {ignitable} with {igniter}, bet that would have looked cooler if it was attached to something first!"),
-		/obj/item/weapon/gun/flamer = SPAN_NOTICE("{user} lights their {ignitable} with the pilot light of {igniter}, the glint of pyromania in their eye."),
-		/obj/item/weapon/gun = SPAN_NOTICE("{user} lights their {ignitable} with {igniter} like a complete badass."),
-		/obj/item/tool/surgery/cautery = SPAN_NOTICE("{user} lights their {ignitable} with {igniter}, that can't be sterile!"),
+	. = alist(
+		/obj/item/tool/weldingtool = SPAN_NOTICE("{user} insults \the {ignitable} by lighting it with \the {igniter}."),
+		/obj/item/tool/lighter = SPAN_NOTICE("{user} manages to offend their {ignitable} by lighting it with \the {igniter}."),
+		/obj/item/device/assembly/igniter = SPAN_NOTICE("{user} fiddles with \the {igniter}, and manages to light their {ignitable} with the power of science."),
+		/obj/item/attachable/attached_gun/flamer = SPAN_NOTICE("{user} lights their {ignitable} with \the {igniter}, bet that would have looked cooler if it was attached to something first!"),
+		/obj/item/weapon/gun/flamer = SPAN_NOTICE("{user} lights their {ignitable} with the pilot light of \the {igniter}, the glint of pyromania in their eye."),
+		/obj/item/weapon/gun = SPAN_NOTICE("{user} lights their {ignitable} with \the {igniter} like a complete badass."),
+		/obj/item/tool/surgery/cautery = SPAN_NOTICE("{user} lights their {ignitable} with \the {igniter}, that can't be sterile!"),
 	)
+	. += ..()
 
 /////////////////
 //SMOKING PIPES//
@@ -567,8 +562,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	..()
 
 /obj/item/clothing/mask/cigarette/pipe/get_ignitable_flavor_text()
-	. = ..()
-	. += list(
+	. = list(
 		/obj/item/tool/weldingtool = SPAN_NOTICE("{user} recklessly lights {ignitable} with {igniter}."),
 		/obj/item/tool/lighter/zippo = SPAN_ROSE("With much care, {user} lights their {ignitable} with their {igniter}."),
 		/obj/item/device/flashlight/flare = SPAN_NOTICE("{user} lights their {ignitable} with {igniter}."),
@@ -576,6 +570,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		/obj/item/tool/match = SPAN_NOTICE("{user} lights their {ignitable} with their {igniter}."),
 		/obj/item/device/assembly/igniter = SPAN_NOTICE("{user} fiddles with the {igniter}, and manages to light their {ignitable} with the power of science."),
 	)
+	. += ..()
 
 /obj/item/clothing/mask/cigarette/pipe/light()
 	if(smoketime > 0)
@@ -662,7 +657,11 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	attack_verb = list("poked", "jabbed", "pricked", "prodded")
 	damtype = "brute"
 
-/obj/item/tool/lighter/proc/check_ignite()
+/obj/item/tool/lighter/Initialize(mapload, ...)
+	. = ..()
+	ADD_TRAIT(src, TRAIT_IGNITER, TRAIT_SOURCE_INHERENT)
+
+/obj/item/tool/lighter/check_can_ignite()
 	return heat_source
 
 /obj/item/tool/lighter/zippo
@@ -746,7 +745,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	LAZYSET(item_state_slots, WEAR_AS_GARB, "lighter_[clr]")
 
 /obj/item/tool/lighter/attack_self(mob/living/user)
-	if(user.r_hand != src && user.l_hand == src)
+	if(user.r_hand != src && user.l_hand != src)
 		return ..()
 	if(heat_source)
 		turn_off(user, 0)

@@ -257,14 +257,15 @@
 
 /obj/structure/sign/poster/upp/Initialize()
 	serial_number = pick(88,89,90,91,92,93,94,95,96,97,98,99,100,102)
-	var/description = rand(1,3)
-	switch(description)
-		if(1)
-			description_text = "Higher than us, only stars!"
-		if(2)
-			description_text = "We stand on the shoulders of Socialist giants!"
-		if(3)
-			description_text = "Glory to our Cosmonauts!"
+	if(serial_number) == 102
+		var/description = rand(1,3)
+		switch(description)
+			if(1)
+				description_text = "Higher than us, only stars!"
+			if(2)
+				description_text = "We stand on the shoulders of Socialist giants!"
+			if(3)
+				description_text = "Glory to our Cosmonauts!"
 	.=..()
 
 /obj/structure/sign/poster/upp/get_examine_text(mob/user)

@@ -257,7 +257,7 @@
 
 /obj/structure/sign/poster/upp/Initialize()
 	serial_number = pick(88,89,90,91,92,93,94,95,96,97,98,99,100,102)
-	if(serial_number) == 102
+	if(serial_number == 102)
 		var/description = rand(1,3)
 		switch(description)
 			if(1)

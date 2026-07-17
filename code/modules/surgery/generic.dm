@@ -61,7 +61,7 @@
 			SPAN_NOTICE("[user] has constructed a prepared incision in your [surgery.affected_limb.display_name]."),
 			SPAN_NOTICE("[user] has constructed a prepared incision in [target]'s [surgery.affected_limb.display_name]."))
 
-		surgery.status += 2 //IMS completes all steps.
+		surgery.status += 6 //IMS completes all steps.
 
 		switch(target_zone) //forces application of overlays
 			if("chest")
@@ -75,7 +75,7 @@
 			SPAN_NOTICE("[user] finishes making a bloodless incision on your [surgery.affected_limb.display_name] with \the [tool]."),
 			SPAN_NOTICE("[user] finishes making a bloodless incision on [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
 
-		surgery.status++ //A laser scalpel may cauterise as it cuts.
+		surgery.status += 3 //A laser scalpel may cauterise as it cuts.
 	else
 		user.affected_message(target,
 			SPAN_NOTICE("You finish the incision on [target]'s [surgery.affected_limb.display_name]."),
@@ -87,7 +87,7 @@
 			incision_bleed.duration = 10 MINUTES //A weak bleed, but it doesn't stop on its own.
 			surgery.affected_limb.bleeding_effects_list += incision_bleed
 		else
-			surgery.status++ // synth skin doesn't cause bleeders
+			surgery.status += 3 // synth skin doesn't cause bleeders
 
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SHALLOW //Descriptionwise this is done by the retractor, but putting it here means people can examine to see if an unfinished surgery has been done.
 	user.add_blood(target.get_blood_color(), BLOOD_HANDS)

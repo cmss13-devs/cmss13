@@ -1486,6 +1486,14 @@
 /obj/structure/largecrate/random/barrel/yellow,
 /turf/open/floor/prison/darkyellow2/northeast,
 /area/last_bunker/indoors/entry_zone/train)
+"aen" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	layer = 2.5;
+	pixel_y = 1
+	},
+/turf/open/floor/strata/blue4/east,
+/area/last_bunker/indoors/entry_zone/train)
 "aeo" = (
 /turf/open/floor/almayer/mono,
 /area/last_bunker/indoors/entry_zone/train)
@@ -1540,15 +1548,210 @@
 /obj/structure/machinery/light,
 /turf/open/floor/prison/darkyellow2/southeast,
 /area/last_bunker/indoors/entry_zone/train)
+"aew" = (
+/obj/structure/machinery/light,
+/turf/open/floor/strata/cyan4/west,
+/area/last_bunker/indoors/entry_zone/train)
+"aex" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/turf/open/floor/strata/blue3/west,
+/area/last_bunker/indoors/entry_zone/train)
+"aey" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out"
+	},
+/turf/open/floor/strata/blue3/west,
+/area/last_bunker/indoors/entry_zone/train)
+"aez" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/strata/blue3/west,
+/area/last_bunker/indoors/entry_zone/train)
+"aeA" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/strata/cyan3/east,
+/area/last_bunker/indoors/entry_zone/train)
+"aeB" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/strata/blue3/north,
+/area/last_bunker/indoors/entry_zone/train)
+"aeC" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/strata/cyan4/west,
+/area/last_bunker/indoors/entry_zone/train)
+"aeD" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/strata/cyan4/north,
+/area/last_bunker/indoors/entry_zone/train)
+"aeE" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	layer = 2.5;
+	pixel_y = 1
+	},
+/turf/open/floor/strata/blue3/west,
+/area/last_bunker/indoors/entry_zone/train)
+"aeF" = (
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/plasteel/med_small_stack{
+	pixel_y = -3;
+	pixel_x = -3
+	},
+/obj/item/stack/sheet/plasteel/small_stack{
+	pixel_y = 3;
+	pixel_x = 3
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkyellow2/southwest,
+/area/last_bunker/indoors/hanger_zone)
+"aeG" = (
+/obj/structure/surface/rack,
+/obj/item/engi_upgrade_kit,
+/obj/item/clothing/gloves/marine/veteran/insulated{
+	pixel_y = 4
+	},
+/obj/item/clothing/glasses/welding{
+	layer = 3.6;
+	pixel_x = -7;
+	pixel_y = -1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkyellow2,
+/area/last_bunker/indoors/hanger_zone)
+"aeH" = (
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/floor/prison/darkyellow2/southeast,
+/area/last_bunker/indoors/hanger_zone)
+"aeI" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkyellow2/west,
+/area/last_bunker/indoors/hanger_zone)
+"aeJ" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/floor_plate,
+/area/last_bunker/indoors/hanger_zone)
+"aeK" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_8";
+	pixel_y = -7;
+	pixel_x = -6
+	},
+/turf/open/floor/prison/darkyellow2/east,
+/area/last_bunker/indoors/hanger_zone)
 "aeL" = (
 /turf/open/floor/dark,
 /area/last_bunker/indoors/command_zone)
+"aeM" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	name = "\improper Material Storage"
+	},
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/last_bunker/indoors/hanger_zone)
+"aeN" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 1;
+	pixel_x = 1
+	},
+/turf/open/floor/strata/blue3/north,
+/area/last_bunker/indoors/entry_zone/train)
+"aeO" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 1
+	},
+/turf/open/floor/strata/blue3/north,
+/area/last_bunker/indoors/entry_zone/train)
+"aeP" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	layer = 2.5;
+	pixel_y = 1
+	},
+/turf/open/floor/strata/blue4/north,
+/area/last_bunker/indoors/entry_zone/train)
 "aeQ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall_reinforced,
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/last_bunker/indoors/command_zone)
+"aeR" = (
+/obj/structure/surface/rack,
+/obj/structure/sign/poster/corporate{
+	pixel_y = 32
+	},
+/obj/item/stack/sheet/metal/med_large_stack{
+	pixel_y = -3;
+	pixel_x = -3
+	},
+/obj/item/stack/sheet/metal/med_large_stack{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/turf/open/floor/prison/darkyellow2/northwest,
+/area/last_bunker/indoors/hanger_zone)
+"aeS" = (
+/obj/structure/surface/rack,
+/obj/structure/sign/poster/pinup{
+	pixel_x = -8;
+	pixel_y = 35
+	},
+/obj/item/storage/toolbox/electrical{
+	pixel_y = 1;
+	pixel_x = -1
+	},
+/obj/item/storage/toolbox/mechanical{
+	pixel_y = 10
+	},
+/obj/structure/prop/hybrisa/misc/redmeter{
+	pixel_y = 32;
+	pixel_x = 7
+	},
+/turf/open/floor/prison/darkyellow2/north,
+/area/last_bunker/indoors/hanger_zone)
+"aeT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 20
+	},
+/obj/structure/filingcabinet/chestdrawer{
+	pixel_x = 8;
+	pixel_y = 19;
+	density = 0
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/prison/darkyellow2/northeast,
+/area/last_bunker/indoors/hanger_zone)
+"aeU" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/turf/closed/wall/wood,
+/area/last_bunker/indoors/cavern/central)
+"aeV" = (
+/obj/structure/machinery/colony_floodlight,
+/turf/open/auto_turf/shale/layer1/weedable,
+/area/last_bunker/indoors/cavern/north)
 "afb" = (
 /turf/open/floor/hybrisa/metal/bluemetal1/northwest,
 /area/last_bunker/indoors/entry_zone)
@@ -2568,9 +2771,9 @@
 	dir = 4;
 	pixel_x = -2
 	},
-/obj/structure/machinery/colony_floodlight/industrial{
-	density = 0;
-	pixel_y = 19
+/obj/structure/machinery/colony_floodlight{
+	pixel_y = 12;
+	density = 0
 	},
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/last_bunker/indoors/cavern/west)
@@ -3689,7 +3892,7 @@
 "cbp" = (
 /obj/structure/surface/rack,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/stack/sheet/plasteel/med_small_stack,
+/obj/item/stack/sheet/plasteel/small_stack,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/last_bunker/indoors/sustainment_zone)
 "cbB" = (
@@ -4815,9 +5018,9 @@
 	icon_state = "SW-out";
 	pixel_x = -1
 	},
-/obj/structure/machinery/colony_floodlight/industrial{
-	density = 0;
-	pixel_y = -11
+/obj/structure/machinery/colony_floodlight{
+	pixel_y = -16;
+	density = 0
 	},
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/last_bunker/indoors/cavern/north)
@@ -4955,16 +5158,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkpurple2/west,
 /area/last_bunker/indoors/residential_zone)
-"dSy" = (
-/obj/effect/decal/hybrisa/colorable_rug{
-	color = "#6d6558";
-	layer = 2.01;
-	dir = 8;
-	pixel_y = -36;
-	pixel_x = 10
-	},
-/turf/open/floor/hybrisa/metal/zbrownfloor1/north,
-/area/last_bunker/indoors/hanger_zone)
 "dSY" = (
 /turf/open/floor/prison/darkred2/northwest,
 /area/last_bunker/indoors/entry_zone)
@@ -7217,11 +7410,11 @@
 "gXL" = (
 /obj/structure/surface/rack,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/stack/sheet/metal/med_large_stack{
-	pixel_x = 4;
-	pixel_y = 5
-	},
 /obj/item/weapon/gun/smg/nailgun,
+/obj/item/stack/sheet/metal/small_stack{
+	pixel_x = 2;
+	pixel_y = 2
+	},
 /turf/open/floor/prison/darkyellow2/southwest,
 /area/last_bunker/indoors/sustainment_zone)
 "gYx" = (
@@ -8822,9 +9015,9 @@
 	layer = 3.33;
 	pixel_x = 1
 	},
-/obj/structure/machinery/colony_floodlight/industrial{
-	density = 0;
-	pixel_y = 19
+/obj/structure/machinery/colony_floodlight{
+	pixel_y = 12;
+	density = 0
 	},
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/last_bunker/indoors/cavern/west)
@@ -9063,9 +9256,9 @@
 /turf/open/floor/prison/darkbrown2/west,
 /area/last_bunker/indoors/entry_zone)
 "jtS" = (
-/obj/structure/machinery/colony_floodlight/industrial{
-	density = 0;
-	pixel_y = -11
+/obj/structure/machinery/colony_floodlight{
+	pixel_y = -16;
+	density = 0
 	},
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/last_bunker/indoors/cavern/north)
@@ -9327,9 +9520,9 @@
 	dir = 4;
 	layer = 2
 	},
-/obj/structure/machinery/colony_floodlight/industrial{
-	density = 0;
-	pixel_y = 19
+/obj/structure/machinery/colony_floodlight{
+	pixel_y = 12;
+	density = 0
 	},
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/last_bunker/indoors/cavern/central)
@@ -11440,12 +11633,12 @@
 "myC" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/rack,
-/obj/item/stack/sheet/plasteel/med_small_stack,
 /obj/structure/sign/poster/safety{
 	pixel_x = -4;
 	pixel_y = 34;
 	layer = 2.9
 	},
+/obj/item/stack/sheet/plasteel/small_stack,
 /turf/open/floor/prison/darkyellow2/northwest,
 /area/last_bunker/indoors/residential_zone)
 "mzn" = (
@@ -12282,6 +12475,9 @@
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 1
 	},
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 4
+	},
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/last_bunker/indoors/cavern/central)
 "nzt" = (
@@ -12916,9 +13112,9 @@
 	icon_state = "W";
 	layer = 2.5
 	},
-/obj/structure/machinery/colony_floodlight/industrial{
-	density = 0;
-	pixel_y = 19
+/obj/structure/machinery/colony_floodlight{
+	pixel_y = 12;
+	density = 0
 	},
 /turf/open/auto_turf/sand_white/layer0,
 /area/last_bunker/indoors/cavern/central)
@@ -13190,10 +13386,10 @@
 	layer = 3.33;
 	pixel_y = 1
 	},
-/obj/structure/machinery/colony_floodlight/industrial{
-	density = 0;
+/obj/structure/machinery/colony_floodlight{
 	pixel_y = 0;
-	pixel_x = 18
+	density = 0;
+	pixel_x = 12
 	},
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/last_bunker/indoors/cavern/west)
@@ -13413,12 +13609,6 @@
 /obj/structure/barricade/handrail/no_vault,
 /turf/open/floor/prison/greenblue,
 /area/last_bunker/indoors/sustainment_zone)
-"oYg" = (
-/obj/structure/machinery/colony_floodlight_switch/antre{
-	pixel_y = 30
-	},
-/turf/open/floor/strata/multi_tiles,
-/area/last_bunker/indoors/entry_zone/power)
 "oYn" = (
 /obj/structure/largecrate/random/barrel/brown,
 /turf/open/floor/prison/darkbrowncorners2/west,
@@ -13781,9 +13971,9 @@
 /turf/open/floor/strata,
 /area/last_bunker/oob/train)
 "pzZ" = (
-/obj/structure/machinery/colony_floodlight/industrial{
-	density = 0;
-	pixel_y = 19
+/obj/structure/machinery/colony_floodlight{
+	pixel_y = 12;
+	density = 0
 	},
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/last_bunker/indoors/cavern/central)
@@ -15670,10 +15860,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/last_bunker/indoors/comms/tcomms_2_a)
 "rOm" = (
-/obj/structure/machinery/colony_floodlight/industrial{
-	density = 0;
-	pixel_y = 19
-	},
+/obj/structure/machinery/colony_floodlight,
 /turf/open/auto_turf/sand_white/layer0,
 /area/last_bunker/indoors/cavern/central)
 "rON" = (
@@ -16182,10 +16369,6 @@
 	},
 /turf/open/floor/prison,
 /area/last_bunker/indoors/sustainment_zone)
-"syA" = (
-/obj/structure/machinery/recharge_station/alt,
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/last_bunker/indoors/comms/tcomms_1)
 "syM" = (
 /obj/structure/flora/tree/dead/tree_3,
 /turf/open/auto_turf/snow/layer2,
@@ -19617,9 +19800,9 @@
 /turf/open/auto_turf/snow/layer2,
 /area/last_bunker/outdoors/surface_exterior/south_west)
 "xzN" = (
-/obj/structure/machinery/colony_floodlight/industrial{
-	density = 0;
+/obj/structure/machinery/colony_floodlight{
 	pixel_y = 0;
+	density = 0;
 	pixel_x = -12
 	},
 /turf/open/auto_turf/shale/layer1/weedable,
@@ -44510,7 +44693,7 @@ ybf
 ybf
 ybf
 ybf
-bhb
+nGj
 lLp
 cAh
 dck
@@ -44712,10 +44895,10 @@ ybf
 ybf
 ybf
 ybf
-bhb
+nGj
 lLp
 kaZ
-bhb
+nGj
 vKF
 uVT
 nGj
@@ -44914,7 +45097,7 @@ ybf
 ybf
 ybf
 ybf
-bhb
+nGj
 lLp
 cAh
 dck
@@ -64267,7 +64450,7 @@ nWl
 utM
 pOd
 pOd
-ybf
+pOd
 ybf
 hDr
 odh
@@ -65925,7 +66108,7 @@ wjR
 kfZ
 wJT
 ybf
-ybf
+qxD
 ybf
 rDo
 rDo
@@ -66127,11 +66310,11 @@ wjR
 piA
 wGA
 wRi
-nMG
-nMG
-nMG
-nMG
-gmi
+aez
+aey
+aex
+aex
+aen
 hgi
 hgi
 hgi
@@ -67286,7 +67469,7 @@ sTj
 sTj
 sTj
 wRr
-sTj
+aeU
 odh
 ybf
 ybf
@@ -67488,8 +67671,8 @@ fIE
 ybf
 ybf
 ybf
-odh
-odh
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -67660,7 +67843,7 @@ ybf
 ybf
 sQS
 sQS
-ybf
+sQS
 ybf
 ybf
 ybf
@@ -67690,12 +67873,12 @@ ybf
 ybf
 ybf
 ybf
+aBp
+aBp
+aBp
+aBp
+aBp
 ybf
-ybf
-ybf
-ybf
-ybf
-tLY
 nyT
 nyT
 pOd
@@ -67747,7 +67930,7 @@ jvU
 jxn
 gCm
 iFZ
-kxO
+aew
 boN
 hgi
 hgi
@@ -67892,11 +68075,11 @@ ybf
 ybf
 ybf
 ybf
-ybf
-ybf
-ybf
-ybf
-ybf
+aBp
+aeR
+aeI
+aeF
+aBp
 ybf
 nyT
 pOd
@@ -68094,11 +68277,11 @@ aIF
 aIF
 aIF
 aIF
-aIF
-ybf
-ybf
-ybf
-ybf
+aBp
+aeS
+aeJ
+aeG
+aBp
 ybf
 ybf
 pOd
@@ -68143,8 +68326,8 @@ vya
 lrz
 lrz
 ybf
-ybf
-iQs
+qxD
+aeB
 cwX
 jxn
 jvU
@@ -68296,11 +68479,11 @@ dHA
 qBP
 rhQ
 lHi
-aIF
-ybf
-ybf
-ybf
-ybf
+aBp
+aeT
+aeK
+aeH
+aBp
 ybf
 ybf
 hqm
@@ -68498,11 +68681,11 @@ uYM
 tlP
 tlP
 vrq
-aIF
-aIF
-aIF
-aIF
-aIF
+aBp
+dYX
+aeM
+aBp
+aBp
 ybf
 ybf
 vMR
@@ -69356,7 +69539,7 @@ ybf
 ybf
 qli
 qli
-iQs
+aeB
 snz
 jxn
 jvU
@@ -69518,7 +69701,7 @@ dBn
 dBn
 dBn
 aVZ
-fvX
+utM
 ybf
 ybf
 ybf
@@ -69683,7 +69866,7 @@ oui
 sQS
 sQS
 sQS
-jtS
+aeV
 ybf
 jmt
 jmt
@@ -69959,7 +70142,7 @@ gCm
 bdh
 nMG
 nMG
-nMG
+aez
 lgZ
 qSG
 qSG
@@ -70297,8 +70480,8 @@ sQS
 vWZ
 sQS
 sQS
-pqe
-kTh
+sQS
+sQS
 ybf
 aBp
 kGq
@@ -70499,11 +70682,11 @@ sQS
 vWZ
 sQS
 sQS
-aHH
-seo
-seo
-njW
-dSy
+sQS
+sQS
+dwA
+dYX
+lYo
 wbM
 njW
 iuc
@@ -70701,10 +70884,10 @@ sQS
 vWZ
 fqc
 dwA
-aHH
-seo
-seo
-wyr
+sQS
+sQS
+dwA
+dYX
 yhh
 hgl
 wyr
@@ -70760,7 +70943,7 @@ hJL
 ixU
 onT
 gAK
-vMC
+her
 iqr
 qSG
 ako
@@ -70903,9 +71086,9 @@ sQS
 rsW
 rsW
 sQS
-irI
-pwA
-pwA
+sQS
+sQS
+sQS
 aBp
 aBp
 aBp
@@ -71177,7 +71360,7 @@ qSG
 iFZ
 quJ
 quJ
-quJ
+aeA
 quJ
 quJ
 quJ
@@ -71569,7 +71752,7 @@ hgi
 hgi
 hgi
 qxD
-iQs
+aeB
 qSG
 ajG
 aki
@@ -72386,7 +72569,7 @@ aep
 ajK
 ajF
 qSG
-lfS
+ajz
 boN
 boN
 adk
@@ -72550,31 +72733,31 @@ qSG
 qSG
 bdh
 nMG
+aez
+aey
+aex
+aex
+aex
+aex
+aex
+aeE
+nMG
+nMG
+nMG
+aez
 nMG
 nMG
 nMG
 nMG
+aey
+aex
+aex
+aex
+aeE
 nMG
 nMG
 nMG
-nMG
-nMG
-nMG
-nMG
-nMG
-nMG
-nMG
-nMG
-nMG
-nMG
-nMG
-nMG
-nMG
-nMG
-nMG
-nMG
-nMG
-nMG
+aez
 nMG
 nMG
 nMG
@@ -72935,7 +73118,7 @@ gvJ
 gvJ
 gvJ
 gvJ
-ybf
+vMC
 vMC
 vMC
 hvc
@@ -72944,7 +73127,7 @@ hvc
 hvc
 oQl
 qxD
-iQs
+aeN
 qSG
 cwX
 uPc
@@ -73146,7 +73329,7 @@ hvc
 kWW
 hvc
 cap
-iQs
+aeO
 qSG
 cwX
 jxn
@@ -73348,7 +73531,7 @@ hvc
 twV
 vdt
 cap
-iQs
+aeO
 qSG
 cwX
 jxn
@@ -73550,7 +73733,7 @@ hvc
 fJt
 vdt
 hgi
-tzV
+aeP
 iqr
 cwX
 jxn
@@ -73769,7 +73952,7 @@ quJ
 quJ
 quJ
 quJ
-quJ
+aeA
 nym
 qSG
 qSG
@@ -73778,7 +73961,7 @@ qSG
 qSG
 qSG
 iFZ
-kxO
+aeC
 hgi
 hgi
 kds
@@ -73789,7 +73972,7 @@ kds
 bvt
 hgi
 hgi
-iug
+aeD
 nym
 iFZ
 kXF
@@ -73799,7 +73982,7 @@ qSG
 bHt
 nym
 iFZ
-kxO
+aeC
 boN
 adD
 gzU
@@ -78045,7 +78228,7 @@ sRI
 ybf
 ybf
 ogU
-oYg
+xtq
 xtq
 xtq
 xtq
@@ -113804,7 +113987,7 @@ ybf
 ybf
 ybf
 hgi
-syA
+dJa
 gwv
 xJZ
 osf

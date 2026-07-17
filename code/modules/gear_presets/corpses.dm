@@ -2076,6 +2076,7 @@
 	job_title = JOB_LB_MERC
 	faction = FACTION_LASALLE_BIONATIONAL
 	faction_group = FACTION_LIST_SURVIVOR_LASALLE_BIONATIONAL
+	idtype = /obj/item/card/id/silver/cl/lasalle_bionational
 
 /datum/equipment_preset/corpse/lb_merc/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/lb_merc(new_human), WEAR_BODY)

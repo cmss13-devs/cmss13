@@ -136,7 +136,7 @@
 	survivor_variant = SCIENTIST_SURVIVOR
 
 /datum/equipment_preset/survivor/fire_colony/scientist_xenoarchaeologist/load_gear(mob/living/carbon/human/new_human)
-	var/random_gear = rand(1, 10)
+	var/random_gear = rand(1, 11)
 	switch(random_gear)
 		if(1, 6)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/scientist/lasalle/purple(new_human), WEAR_BODY)
@@ -147,7 +147,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/science_gloves(new_human), WEAR_HANDS)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/lasalle/purple(new_human), WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/science_coif/purple(new_human), WEAR_HEAD)
-		if(7, 9)
+		if(7, 8)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/scientist/lasalle/purple(new_human), WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/lasalle(new_human), WEAR_L_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/black/five_slot(new_human), WEAR_BACK)
@@ -157,7 +157,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/bio_hood/lasalle(new_human), WEAR_HEAD)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/bio_suit/lasalle(new_human), WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc/lasalle(new_human), WEAR_FACE)
-		if(9, 10)
+		if(9, 11)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/scientist/lasalle/purple(new_human), WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/lasalle(new_human), WEAR_L_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/black/five_slot(new_human), WEAR_BACK)
@@ -321,6 +321,7 @@
 	survivor_variant = CORPORATE_SURVIVOR
 	minimap_icon = "ls_cl"
 	minimap_background = "background_lasalle_management"
+	origin_override = ORIGIN_LB
 
 /datum/equipment_preset/survivor/lasalle_bionational/load_rank(mob/living/carbon/human/new_human, client/mob_client)
 	if(paygrades.len == 1)
@@ -425,6 +426,8 @@
 	skills = /datum/skills/civilian/survivor/goon
 	idtype = /obj/item/card/id/silver/cl/lasalle_bionational
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_RESEARCH,ACCESS_CIVILIAN_ENGINEERING,ACCESS_CIVILIAN_LOGISTICS,ACCESS_CIVILIAN_BRIG,ACCESS_CIVILIAN_MEDBAY,ACCESS_CIVILIAN_COMMAND,ACCESS_WY_EXEC,ACCESS_WY_GENERAL,ACCESS_WY_COLONIAL)
+
+	origin_override = ORIGIN_LB_SEC
 
 	survivor_variant = SECURITY_SURVIVOR
 

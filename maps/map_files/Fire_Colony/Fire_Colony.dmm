@@ -45374,11 +45374,13 @@
 	},
 /obj/structure/filingcabinet/chestdrawer{
 	pixel_x = -7;
-	pixel_y = 17
+	pixel_y = 17;
+	density = 0
 	},
 /obj/structure/filingcabinet/chestdrawer{
 	pixel_x = 8;
-	pixel_y = 17
+	pixel_y = 17;
+	density = 0
 	},
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/objective_landmark/close,
@@ -58983,11 +58985,13 @@
 "mTx" = (
 /obj/structure/filingcabinet/chestdrawer{
 	pixel_x = 7;
-	pixel_y = 17
+	pixel_y = 17;
+	density = 0
 	},
 /obj/structure/filingcabinet/chestdrawer{
 	pixel_x = -8;
-	pixel_y = 17
+	pixel_y = 17;
+	density = 0
 	},
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/objective_landmark/close,

@@ -1076,6 +1076,16 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrowncorners2/north,
 /area/last_bunker/indoors/entry_zone)
+"adj" = (
+/obj/structure/machinery/power/smes/buildable{
+	capacity = 100000;
+	dir = 1;
+	input_level_max = 4000;
+	output_level_max = 2400;
+	output_level = 1200
+	},
+/turf/closed/wall/strata_ice,
+/area/last_bunker/outdoors/eastern_cavern/mid_light)
 "adk" = (
 /obj/effect/decal/cleanable/generic{
 	color = "#5d524b";
@@ -2169,9 +2179,9 @@
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
 	},
-/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
-	pixel_x = -10;
-	pixel_y = 8
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_x = -9;
+	pixel_y = 5
 	},
 /turf/open/floor/strata/multi_tiles,
 /area/last_bunker/indoors/entry_zone/power)
@@ -6633,7 +6643,10 @@
 /turf/open/auto_turf/snow/layer4,
 /area/last_bunker/landing_zone_2)
 "dAs" = (
-/obj/structure/machinery/power/smes/buildable,
+/obj/structure/machinery/power/smes/buildable{
+	capacity = 40000;
+	dir = 1
+	},
 /turf/open/floor/corsat,
 /area/last_bunker/indoors/entry_zone/power)
 "dAu" = (
@@ -12120,7 +12133,10 @@
 /turf/open/floor/prison/green/north,
 /area/last_bunker/indoors/sustainment_zone)
 "kJC" = (
-/obj/structure/machinery/power/smes/buildable,
+/obj/structure/machinery/power/smes/buildable{
+	capacity = 40000;
+	dir = 1
+	},
 /turf/open/floor/prison/darkyellowfull2,
 /area/last_bunker/indoors/sustainment_zone)
 "kJL" = (
@@ -12945,7 +12961,9 @@
 /turf/open/floor/prison/green/west,
 /area/last_bunker/indoors/sustainment_zone)
 "lLp" = (
-/obj/structure/machinery/power/power_generator/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony{
+	power_gen = 4000
+	},
 /turf/open/floor/corsat,
 /area/last_bunker/indoors/entry_zone/power)
 "lLY" = (
@@ -22258,7 +22276,7 @@
 /obj/structure/stairs/perspective{
 	dir = 1;
 	icon_state = "p_stair_full";
-	pixel_y = -2
+	pixel_y = 1
 	},
 /turf/open/floor/shiva/yellow,
 /area/last_bunker/indoors/entry_zone/power)
@@ -80972,7 +80990,7 @@ lxh
 lxh
 aae
 opI
-opI
+adj
 ybf
 hgi
 hgi

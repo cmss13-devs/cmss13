@@ -179,8 +179,9 @@
 	damage_type = BURN
 	shrapnel_chance = 0
 	flags_ammo_behavior = AMMO_LASER
+	hit_effect_color = "#ff0000"
 	///chance of the bullet burning the mob
-	var/ignition_probability = 5
+	var/ignition_probability = 10
 
 /datum/ammo/bullet/smg/a_m36/on_hit_mob(mob/target, obj/projectile/bullet)
 	..()

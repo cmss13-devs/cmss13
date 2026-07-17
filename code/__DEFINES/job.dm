@@ -337,14 +337,14 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_LB_DEPUTY_DIRECTOR "L-B Deputy Director"
 #define JOB_LB_DIRECTOR "L-B Director"
 
-#define JOB_LB_MERC "BHIG (Operator)"
-#define JOB_LB_MERC_MEDIC "BHIG (Medical Specialist)"
-#define JOB_LB_MERC_ENGI "BHIG (Technical Specialist)"
-#define JOB_LB_MERC_SP "BHIG (Senior Operator)"
-#define JOB_LB_MERC_TL "BHIG (Team Leader)"
-#define JOB_LB_MERC_COMMANDER "BHIG (Operations Commander)"
-#define JOB_LB_MERC_SG "BHIG (Smartgunner)"
-#define JOB_LB_MERC_SYN "BHIG (Support Synthetic)"
+#define JOB_LB_MERC "HIG (Operator)"
+#define JOB_LB_MERC_MEDIC "HIG (Medical Specialist)"
+#define JOB_LB_MERC_ENGI "HIG (Technical Specialist)"
+#define JOB_LB_MERC_SP "HIG (Senior Operator)"
+#define JOB_LB_MERC_TL "HIG (Team Leader)"
+#define JOB_LB_MERC_COMMANDER "HIG (Operations Commander)"
+#define JOB_LB_MERC_SG "HIG (Smartgunner)"
+#define JOB_LB_MERC_SYN "HIG (Support Synthetic)"
 
 //---- Contractors ----//
 #define JOB_CONTRACTOR "VAIPO Mercenary"

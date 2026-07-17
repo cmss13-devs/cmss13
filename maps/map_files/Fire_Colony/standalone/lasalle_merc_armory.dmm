@@ -22,6 +22,7 @@
 /obj/structure/surface/rack{
 	color = "#818793"
 	},
+/obj/effect/spawner/random/gun/shotgun/midchance,
 /turf/open/floor/strata/altred4/west,
 /area/fire_colony/interior/hangar/security/armory)
 "i" = (

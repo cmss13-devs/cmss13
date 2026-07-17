@@ -363,7 +363,7 @@ GLOBAL_LIST_INIT_TYPED(cardboard_recipes, /datum/stack_recipe, list ( \
 		null, \
 		new/datum/stack_recipe("empty magazine box (KT-42)", /obj/item/ammo_box/magazine/kt42/empty), \
 		null, \
-		new/datum/stack_recipe("empty magazine box (Beretta 92FS)", /obj/item/ammo_box/magazine/b92fs/empty), \
+		new/datum/stack_recipe("empty magazine box (Beretta M92X)", /obj/item/ammo_box/magazine/b92fs/empty), \
 		null, \
 		new/datum/stack_recipe("empty magazine box (FN FP9000)", /obj/item/ammo_box/magazine/fp9000/empty), \
 		null, \

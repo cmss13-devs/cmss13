@@ -580,7 +580,7 @@
 /obj/structure/shuttle/part/dropship_twe/transparent
 	opacity = FALSE
 
-// LB-BHIG Ship
+// Lasalle Bionational - HIG Dropship
 
 /obj/structure/shuttle/part/dropship_lb
 	name = "\improper UD2-LB 'Remedy'"

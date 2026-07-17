@@ -163,7 +163,7 @@
 
 /obj/item/clothing/suit/storage/marine/veteran/lb_merc
 	name = "\improper M3-LB combat armor"
-	desc = "A heavily modified, proprietary Lasalle Bionational variant of the Armat Systems M3 armor platform. Issued exclusively to Bionational Hazard Intervention Group operatives. Designed for hazardous intervention and high-threat operations."
+	desc = "A heavily modified, proprietary Lasalle Bionational variant of the Armat Systems M3 armor platform. Issued exclusively to Lasalle Bionational - Hazard Intervention Group operatives. Designed for hazardous intervention and high-threat operations."
 	icon_state = "lb_merc"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/LASALLE.dmi'
 	item_icons = list(
@@ -190,7 +190,7 @@
 
 /obj/item/clothing/suit/storage/marine/veteran/lb_merc/synth
 	name = "\improper M3-LB Synthetic combat armor"
-	desc = "A heavily modified Lasalle Bionational variant of the Armat Systems M3 armor platform. Designed exclusively for Bionational Hazard Intervention Group synthetic support units, its armor inserts have been removed in favor of reduced weight and unrestricted mobility."
+	desc = "A heavily modified Lasalle Bionational variant of the Armat Systems M3 armor platform. Designed exclusively for Lasalle Bionational - Hazard Intervention Group synthetic support units, its armor inserts have been removed in favor of reduced weight and unrestricted mobility."
 	icon_state = "lb_merc"
 	item_state_slots = list(WEAR_JACKET = "lb_merc")
 	time_to_unequip = 0.5 SECONDS

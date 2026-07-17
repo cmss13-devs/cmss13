@@ -1172,8 +1172,8 @@
 	hud_type = MOB_HUD_FACTION_LB
 
 /obj/item/device/radio/headset/distress/lasalle_bionational/lb_merc
-	name = "BHIG tactical headset"
-	desc = "A secure tactical headset issued to Bionational Hazard Intervention Group operatives."
+	name = "HIG tactical headset"
+	desc = "A secure tactical headset issued to Lasalle Bionational - Hazard Intervention Group operatives."
 	icon_state = "mcom_headset"
 
 /obj/item/device/radio/headset/distress/dutch

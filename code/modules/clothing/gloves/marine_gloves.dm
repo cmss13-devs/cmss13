@@ -333,7 +333,7 @@
 
 /obj/item/clothing/gloves/marine/veteran/lb_merc
 	name = "BHIG combat gloves"
-	desc = "A pair of reinforced black combat gloves with distinctive blue accents, standard issued to Bionational Hazard Intervention Group operators."
+	desc = "A pair of reinforced black combat gloves with distinctive blue accents, standard issued to Lasalle Bionational - Hazard Intervention Group operators."
 	icon_state = "lb_merc"
 	item_state = "lb_merc"
 

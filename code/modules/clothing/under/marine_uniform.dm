@@ -2260,8 +2260,8 @@
 // Lasalle Bionational - Mercs - (Bionational Hazard Intervention Group)
 
 /obj/item/clothing/under/marine/veteran/lb_merc
-	name = "\improper BHIG combat jumpsuit"
-	desc = "A fitted black combat jumpsuit designed for Bionational Hazard Intervention Group operators. It bears the insignia of Lasalle Bionational."
+	name = "\improper HIG combat jumpsuit"
+	desc = "A fitted black combat jumpsuit designed for Lasalle Bionational - Hazard Intervention Group operators. It bears the insignia of Lasalle Bionational."
 
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/LASALLE.dmi'
 	item_icons = list(

@@ -384,7 +384,7 @@ Defined in conflicts.dm of the #defines folder.
 	AUTOWIKI_SKIP(TRUE)
 
 	name = "\improper SA120 L7-B bayonet"
-	desc = "A modified SA120-pattern bayonet issued to Lasalle Bionational Hazard Intervention Group operatives. It features a redesigned composite grip and a gold-tinted, high corrosion-resistant blade intended for use in extreme environments."
+	desc = "A modified SA120-pattern bayonet issued to Lasalle Bionational - Hazard Intervention Group operatives. It features a redesigned composite grip and a gold-tinted, high corrosion-resistant blade intended for use in extreme environments."
 	icon_state = "lb_bayonet"
 	item_state = "lb_bayonet"
 	attach_icon = "lb_bayonet_a"

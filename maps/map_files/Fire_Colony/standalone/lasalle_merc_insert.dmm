@@ -1289,8 +1289,8 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/item/storage/backpack/marine/satchel/rto{
 	pixel_y = 23;
-	desc = "A heavy-duty pack, used for telecommunications between central command. Commonly carried by RTOs. This one is set up to serve the Lasalle Bionational Hazard Intervention Group (BHIG) operative team.";
-	name = "\improper L-BHIG Radio Telephone Pack";
+	desc = "A heavy-duty pack, used for telecommunications between central command. Commonly carried by RTOs. This one is set up to serve the Lasalle Bionational - Hazard Intervention Group (HIG) operative team.";
+	name = "\improper HIG Radio Telephone Pack";
 	networks_receive = list("Colonist");
 	networks_transmit = list("Colonist");
 	phone_category = "L-B Net"

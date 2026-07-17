@@ -2240,8 +2240,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 // Lasalle Bionational - Mercs - (Bionational Hazard Intervention Group)
 
 /obj/item/clothing/head/helmet/marine/veteran/lb_merc
-	name = "\improper BHIG combat helmet"
-	desc = "A fully enclosed combat helmet issued to Bionational Hazard Intervention Group operators. It is reinforced and has an integrated visor. Designed for high-risk operations in hostile environments."
+	name = "\improper HIG combat helmet"
+	desc = "A fully enclosed combat helmet issued to Lasalle Bionational - Hazard Intervention Group operators. It is reinforced and has an integrated visor. Designed for high-risk operations in hostile environments."
 	icon_state = "lb_merc"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/LASALLE.dmi'
 	item_icons = list(
@@ -2270,19 +2270,19 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	AddElement(/datum/element/corp_label/bionational)
 
 /obj/item/clothing/head/helmet/marine/veteran/lb_merc/leader
-	name = "\improper BHIG team leader combat helmet"
-	desc = "A fully enclosed combat helmet issued to Bionational Hazard Intervention Group team leaders. It's single blue command markings and intergrated telemetry beacon clearly distinguish the wearer from the other members of an intervention team."
+	name = "\improper HIG team leader combat helmet"
+	desc = "A fully enclosed combat helmet issued to Lasalle Bionational - Hazard Intervention Group team leaders. It's single blue command markings and intergrated telemetry beacon clearly distinguish the wearer from the other members of an intervention team."
 	icon_state = "lb_merc_lead"
 
 /obj/item/clothing/head/helmet/marine/veteran/lb_merc/engi
-	name = "\improper BHIG technical specialist combat helmet"
-	desc = "A fully enclosed combat helmet issued to Bionational Hazard Intervention Group technical specialists. It's enlarged visor provides improved visibility, it also has an integrated deployable welding visor."
+	name = "\improper HIG technical specialist combat helmet"
+	desc = "A fully enclosed combat helmet issued to Lasalle Bionational - Hazard Intervention Group technical specialists. It's enlarged visor provides improved visibility, it also has an integrated deployable welding visor."
 	icon_state = "lb_merc_engi"
 	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/welding_visor)
 
 /obj/item/clothing/head/helmet/marine/veteran/lb_merc/commander
-	name = "\improper BHIG operations commander combat helmet"
-	desc = "A fully enclosed combat helmet issued to Bionational Hazard Intervention Group operations commanders. It's double blue command markings and intergrated telemetry beacon clearly distinguish the wearer from the other members of an intervention team."
+	name = "\improper HIG operations commander combat helmet"
+	desc = "A fully enclosed combat helmet issued to Lasalle Bionational - Hazard Intervention Group operations commanders. It's double blue command markings and intergrated telemetry beacon clearly distinguish the wearer from the other members of an intervention team."
 	icon_state = "lb_merc_co"
 	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH

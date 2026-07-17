@@ -1,7 +1,7 @@
 // Lasalle Bionational Merc Insert
 
 /datum/equipment_preset/survivor/lasalle_merc
-	name = "Survivor - Lasalle-Bionational - BHIG"
+	name = "Survivor - Lasalle-Bionational - HIG"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = JOB_LB_MERC
 	job_title = JOB_LB_MERC
@@ -35,7 +35,7 @@
 	return
 
 /datum/equipment_preset/survivor/lasalle_merc/standard
-	name = "Survivor - Lasalle-Bionational - BHIG - Operator"
+	name = "Survivor - Lasalle-Bionational - HIG - Operator"
 
 /datum/equipment_preset/survivor/lasalle_merc/standard/load_gear(mob/living/carbon/human/new_human)
 	//uniform
@@ -76,7 +76,7 @@
 	add_random_survivor_equipment(new_human)
 
 /datum/equipment_preset/survivor/lasalle_merc/medic
-	name = "Survivor - Lasalle-Bionational - BHIG - Medical Specialist"
+	name = "Survivor - Lasalle-Bionational - HIG - Medical Specialist"
 	assignment = JOB_LB_MERC_MEDIC
 	job_title = JOB_LB_MERC_MEDIC
 	paygrades = list(PAY_SHORT_PMC_MS = JOB_PLAYTIME_TIER_0)
@@ -120,7 +120,7 @@
 	add_random_survivor_equipment(new_human)
 
 /datum/equipment_preset/survivor/lasalle_merc/engineer
-	name = "Survivor - Lasalle-Bionational - BHIG - Technical Specialist"
+	name = "Survivor - Lasalle-Bionational - HIG - Technical Specialist"
 	assignment = JOB_LB_MERC_ENGI
 	job_title = JOB_LB_MERC_ENGI
 	paygrades = list(PAY_SHORT_PMC_TEC = JOB_PLAYTIME_TIER_0)
@@ -158,7 +158,7 @@
 	add_random_survivor_equipment(new_human)
 
 /datum/equipment_preset/survivor/lasalle_merc/leader
-	name = "Survivor - Lasalle-Bionational - BHIG - Team Leader"
+	name = "Survivor - Lasalle-Bionational - HIG - Team Leader"
 	assignment = JOB_LB_MERC_TL
 	job_title = JOB_LB_MERC_TL
 	paygrades = list(PAY_SHORT_PMC_TL = JOB_PLAYTIME_TIER_0)
@@ -197,7 +197,7 @@
 
 // only used on the spawner of all of those above...
 /datum/equipment_preset/synth/survivor/lasalle_merc
-	name = "Survivor - Synthetic - Lasalle-Bionational - BHIG - Support Synthetic"
+	name = "Survivor - Synthetic - Lasalle-Bionational - HIG - Support Synthetic"
 	faction = FACTION_LASALLE_BIONATIONAL
 	faction_group = FACTION_LIST_SURVIVOR_LASALLE_BIONATIONAL
 	access = list(
@@ -269,11 +269,11 @@
 
 // only used on the spawner of all of those above...
 /datum/equipment_preset/survivor/lasalle_merc/lasalle_commander
-	name = "Survivor - Lasalle-Bionational - BHIG - Operations Commander"
+	name = "Survivor - Lasalle-Bionational - HIG - Operations Commander"
 	assignment = JOB_LB_MERC_COMMANDER
 	job_title = JOB_LB_MERC_COMMANDER
 	paygrades = list(PAY_SHORT_PMC_FOL = JOB_PLAYTIME_TIER_0)
-	role_comm_title = "OCO"
+	role_comm_title = "OC"
 	skills = /datum/skills/civilian/survivor/pmc/co_survivor
 	minimap_icon = "ls_com"
 

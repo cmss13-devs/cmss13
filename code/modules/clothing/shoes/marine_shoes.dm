@@ -352,8 +352,8 @@
 	desc = "These synth-leather boots seem high quality when first worn, but quickly detoriate, especially in the environments the corporate security members these are issued to operate in. Still, better than nothing."
 
 /obj/item/clothing/shoes/veteran/pmc/lb_merc
-	name = "BHIG combat boots"
-	desc = "A pair of reinforced black combat boots with distinctive blue accents, standard issued to Bionational Hazard Intervention Group operators."
+	name = "HIG combat boots"
+	desc = "A pair of reinforced black combat boots with distinctive blue accents, standard issued to Lasalle Bionational - Hazard Intervention Group operators."
 	icon_state = "lb_merc"
 	item_state = "lb_merc"
 

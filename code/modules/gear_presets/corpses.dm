@@ -2067,10 +2067,10 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/black_vest/waistcoat(new_human), WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/big/chrome(new_human), WEAR_EYES)
 
-// Dead BHIG Operative
+// Dead Lasalle Bionational - HIG Operative
 
 /datum/equipment_preset/corpse/lb_merc
-	name = "Corpse - Lasalle-Bionational - BHIG - Operator"
+	name = "Corpse - Lasalle-Bionational - HIG - Operator"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = JOB_LB_MERC
 	job_title = JOB_LB_MERC
@@ -2080,7 +2080,7 @@
 /datum/equipment_preset/corpse/lb_merc/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/lb_merc(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/lasalle(new_human), WEAR_ACCESSORY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/lb_merc/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/lb_merc(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/lb_merc(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc/lasalle(new_human), WEAR_FACE)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/lasalle_bionational/lb_merc(new_human), WEAR_L_EAR)

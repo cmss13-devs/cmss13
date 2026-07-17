@@ -1,0 +1,1720 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ad" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/strata/west,
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/clearing/pass)
+"ae" = (
+/obj/structure/platform_decoration/metal/strata,
+/obj/effect/blocker/lava,
+/turf/open/lava/hot_lava,
+/area/fire_colony/exterior/clearing/north)
+"ar" = (
+/obj/effect/lava/edges/basalt/side_rock,
+/obj/effect/lava/edges/basalt/l_piece,
+/obj/effect/blocker/lava,
+/turf/open/lava/hot_lava/corner/south,
+/area/fire_colony/exterior/clearing/north)
+"aH" = (
+/obj/structure/platform_decoration/metal/strata,
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/turf/open/lava/basalt/glowing/basalt9,
+/area/fire_colony/exterior/clearing/north)
+"aL" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/working_joe/corpse/upper,
+/obj/effect/decal/cleanable/blood/synth,
+/turf/open/lava/metal/filtrationside_lava_straight/east,
+/area/fire_colony/exterior/lava_bridge)
+"be" = (
+/obj/structure/platform_decoration/metal/strata/north,
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/turf/open/lava/basalt/glowing/basalt2,
+/area/fire_colony/exterior/clearing/north)
+"bl" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/landmark/corpsespawner/working_joe,
+/obj/effect/decal/cleanable/blood/synth,
+/obj/effect/decal/cleanable/blood/synth{
+	pixel_x = -4;
+	pixel_y = -15
+	},
+/turf/open/floor/prison/ramptop/north,
+/area/fire_colony/exterior/clearing/north)
+"bM" = (
+/obj/structure/platform_decoration/metal/strata/west,
+/obj/effect/blocker/lava,
+/turf/open/lava/hot_lava,
+/area/fire_colony/exterior/clearing/pass)
+"cb" = (
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 8;
+	pixel_y = 12
+	},
+/obj/item/stack/sheet/metal/medium_stack{
+	pixel_x = 5;
+	pixel_y = 4
+	},
+/turf/open/lava/metal/warning_grate/east,
+/area/fire_colony/exterior/lava_bridge)
+"cB" = (
+/obj/structure/machinery/light/blue{
+	dir = 8
+	},
+/turf/open/lava/metal/warning_grate/east,
+/area/fire_colony/exterior/lava_bridge)
+"cL" = (
+/obj/structure/platform/metal,
+/obj/structure/platform/metal/strata/west,
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/clearing/north)
+"db" = (
+/obj/structure/platform/metal/strata/north,
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
+	layer = 3.1;
+	pixel_y = -5;
+	explo_proof = 1;
+	unslashable = 1;
+	unacidable = 1
+	},
+/obj/structure/platform/metal/strata/west{
+	layer = 3.11
+	},
+/obj/effect/blocker/lava,
+/turf/open/lava/hot_lava,
+/area/fire_colony/exterior/clearing/pass)
+"dc" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/ramptop/west,
+/area/fire_colony/exterior/lava_bridge)
+"dH" = (
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
+	layer = 2;
+	pixel_y = 6;
+	unacidable = 1;
+	unslashable = 1;
+	explo_proof = 1
+	},
+/obj/structure/platform/metal/strata,
+/obj/structure/platform/metal/strata/west,
+/obj/effect/blocker/lava,
+/turf/open/lava/hot_lava,
+/area/fire_colony/exterior/clearing/north)
+"dQ" = (
+/obj/structure/platform/metal/strata,
+/obj/structure/platform/metal/strata/west,
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
+	layer = 2;
+	pixel_y = 6;
+	unacidable = 1;
+	unslashable = 1;
+	explo_proof = 1
+	},
+/obj/effect/blocker/lava,
+/turf/open/lava/hot_lava,
+/area/fire_colony/exterior/clearing/north)
+"dT" = (
+/obj/item/stack/sandbags{
+	color = "#a98c7c"
+	},
+/turf/open/lava/catwalk/alt,
+/area/fire_colony/exterior/lava_bridge)
+"dX" = (
+/obj/effect/spawner/random/gun/shotgun/midchance,
+/turf/open/lava/catwalk/alt,
+/area/fire_colony/exterior/lava_bridge)
+"el" = (
+/turf/open/lava/metal/warning_grate/east,
+/area/fire_colony/exterior/lava_bridge)
+"eq" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/cleanable/blood/synth{
+	pixel_x = -11;
+	pixel_y = 6
+	},
+/turf/open/floor/prison/floor_plate,
+/area/fire_colony/exterior/lava_bridge)
+"et" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/turf/open/lava/metal/warning_grate/east,
+/area/fire_colony/exterior/lava_bridge)
+"fh" = (
+/obj/structure/platform/metal/strata/north,
+/obj/effect/blocker/lava,
+/turf/open/lava/hot_lava,
+/area/fire_colony/exterior/clearing/pass)
+"fk" = (
+/obj/structure/machinery/light/blue{
+	dir = 4;
+	pixel_y = -16
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fire_colony/exterior/lava_bridge)
+"fs" = (
+/obj/structure/platform_decoration/metal/strata/east,
+/obj/effect/blocker/lava,
+/turf/open/lava/hot_lava,
+/area/fire_colony/exterior/clearing/pass)
+"gb" = (
+/turf/open/floor/prison/ramptop/north,
+/area/fire_colony/exterior/lava_bridge)
+"gc" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_full";
+	dir = 1;
+	color = "#8c8c84"
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/cleanable/blood{
+	pixel_x = 5;
+	pixel_y = 2
+	},
+/turf/open/lava/basalt/basalt4,
+/area/fire_colony/exterior/clearing/north)
+"gl" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -17;
+	pixel_y = 13
+	},
+/turf/open/lava/metal/warning_grate/east,
+/area/fire_colony/exterior/lava_bridge)
+"gz" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/lava/basalt/basalt12,
+/area/fire_colony/exterior/clearing/pass)
+"gR" = (
+/obj/structure/platform/metal/strata/west,
+/turf/open/lava/catwalk/alt,
+/area/fire_colony/exterior/lava_bridge)
+"ha" = (
+/obj/item/stack/sandbags{
+	color = "#a98c7c"
+	},
+/obj/structure/prop/tyrargo/boards/boards_1{
+	dir = 8;
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/effect/decal/cleanable/blood{
+	pixel_x = 3;
+	pixel_y = -9
+	},
+/obj/effect/decal/cleanable/blood{
+	pixel_x = -12;
+	pixel_y = 14
+	},
+/turf/open/lava/catwalk/alt,
+/area/fire_colony/exterior/lava_bridge)
+"he" = (
+/obj/structure/platform_decoration/metal/strata/west,
+/obj/effect/blocker/lava,
+/turf/open/lava/hot_lava/L_piece/north,
+/area/fire_colony/exterior/clearing/pass)
+"hE" = (
+/obj/structure/barricade/wooden{
+	dir = 8;
+	pixel_y = 4
+	},
+/obj/item/stack/sheet/metal{
+	pixel_x = 8;
+	pixel_y = 3
+	},
+/turf/open/lava/metal/filtrationside_lava,
+/area/fire_colony/exterior/lava_bridge)
+"hF" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/lava/basalt/cave/east,
+/area/fire_colony/exterior/clearing/north)
+"hK" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 58;
+	pixel_y = 11
+	},
+/turf/open/lava/metal/warnplate/east,
+/area/fire_colony/exterior/lava_bridge)
+"hM" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/obj/structure/ore_box/alt/alt_1{
+	pixel_x = 4
+	},
+/turf/open/lava/metal/warning_grate/east,
+/area/fire_colony/exterior/lava_bridge)
+"hO" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/structure/barricade/sandbags{
+	dir = 4;
+	color = "#a98c7c"
+	},
+/turf/open/lava/metal/warning_grate/east,
+/area/fire_colony/exterior/lava_bridge)
+"jm" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/lava/basalt/cave/west,
+/area/fire_colony/exterior/clearing/pass)
+"jo" = (
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 8
+	},
+/obj/effect/blocker/lava,
+/turf/open/lava/hot_lava,
+/area/fire_colony/exterior/clearing/north)
+"kb" = (
+/obj/structure/platform/metal/strata,
+/obj/effect/blocker/lava,
+/turf/open/lava/hot_lava,
+/area/fire_colony/exterior/clearing/north)
+"kd" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fire_colony/exterior/lava_bridge)
+"kn" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_full";
+	dir = 1;
+	color = "#8c8c84"
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 12;
+	pixel_y = -4
+	},
+/turf/open/lava/basalt/basalt10,
+/area/fire_colony/exterior/clearing/north)
+"ku" = (
+/obj/structure/machinery/colony_floodlight/alt,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/metal/filtrationside_lava/southwest,
+/area/fire_colony/exterior/lava_bridge)
+"ky" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fire_colony/exterior/clearing/north)
+"kz" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 8;
+	pixel_y = 12
+	},
+/obj/item/prop/helmetgarb/spent_buckshot,
+/turf/open/lava/metal/warning_grate/east,
+/area/fire_colony/exterior/lava_bridge)
+"kF" = (
+/obj/structure/platform/metal/strata/west,
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/turf/open/lava/basalt/glowing/basalt2,
+/area/fire_colony/exterior/clearing/pass)
+"kI" = (
+/obj/structure/machinery/light/blue{
+	dir = 8
+	},
+/obj/item/prop/helmetgarb/spent_buckshot,
+/turf/open/lava/metal/warning_grate/east,
+/area/fire_colony/exterior/lava_bridge)
+"kK" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/stack/sheet/wood,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -12;
+	pixel_y = 17
+	},
+/turf/open/lava/metal/warning_grate/east,
+/area/fire_colony/exterior/lava_bridge)
+"kO" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 10;
+	pixel_y = -1
+	},
+/obj/item/stack/sheet/wood,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fire_colony/exterior/lava_bridge)
+"lg" = (
+/obj/item/ammo_casing/shell,
+/obj/item/ammo_casing/shell,
+/obj/item/ammo_casing/shell,
+/obj/item/ammo_casing/shell,
+/obj/item/ammo_casing/shell,
+/turf/open/lava/basalt/basalt11,
+/area/fire_colony/exterior/clearing/pass)
+"lu" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood{
+	pixel_x = -7;
+	pixel_y = 12
+	},
+/turf/open/lava/basalt/cave/west,
+/area/fire_colony/exterior/clearing/pass)
+"lE" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/stack/sheet/metal,
+/turf/open/lava/metal/filtrationside_lava/west,
+/area/fire_colony/exterior/lava_bridge)
+"mc" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fire_colony/exterior/lava_bridge)
+"mJ" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/barricade/deployable{
+	dir = 4
+	},
+/turf/open/floor/prison/ramptop/west,
+/area/fire_colony/exterior/lava_bridge)
+"mN" = (
+/obj/structure/machinery/light/blue{
+	dir = 4;
+	pixel_y = -16
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fire_colony/exterior/clearing/north)
+"nq" = (
+/obj/effect/decal/cleanable/blood{
+	pixel_x = 4;
+	pixel_y = 9
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 7;
+	pixel_y = 25
+	},
+/turf/open/lava/metal/warnplate/west,
+/area/fire_colony/exterior/lava_bridge)
+"nv" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/prop/tyrargo/boards/boards_1{
+	pixel_x = 15;
+	pixel_y = -10;
+	dir = 4
+	},
+/turf/open/floor/prison/ramptop/west,
+/area/fire_colony/exterior/lava_bridge)
+"nA" = (
+/obj/effect/lava/edges/basalt/corner_rock{
+	dir = 8
+	},
+/obj/effect/blocker/lava,
+/turf/open/lava/hot_lava,
+/area/fire_colony/exterior/clearing/pass)
+"nM" = (
+/obj/structure/platform/metal/strata/west,
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/turf/open/lava/basalt/basalt7,
+/area/fire_colony/exterior/clearing/north)
+"nN" = (
+/obj/item/stack/sheet/wood,
+/obj/effect/decal/cleanable/blood{
+	pixel_x = -5;
+	pixel_y = -8
+	},
+/turf/open/lava/catwalk/alt,
+/area/fire_colony/exterior/lava_bridge)
+"nS" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/barricade/sandbags{
+	dir = 4;
+	color = "#a98c7c"
+	},
+/turf/open/lava/metal/filtrationside_lava/southwest,
+/area/fire_colony/exterior/lava_bridge)
+"oK" = (
+/turf/open/lava/metal/filtrationside_lava_straight/west,
+/area/fire_colony/exterior/lava_bridge)
+"pg" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_full";
+	color = "#8c8c84"
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/cleanable/blood/synth,
+/turf/open/floor/prison/ramptop,
+/area/fire_colony/exterior/clearing/pass)
+"pE" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/cleanable/blood{
+	pixel_x = 6;
+	pixel_y = 12
+	},
+/turf/open/floor/prison/ramptop/north,
+/area/fire_colony/exterior/lava_bridge)
+"qb" = (
+/turf/open/floor/prison/ramptop/west,
+/area/fire_colony/exterior/lava_bridge)
+"qk" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -8;
+	pixel_y = 13
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/clearing/north)
+"qr" = (
+/obj/structure/platform/metal/strata,
+/obj/structure/platform/metal/strata/west,
+/obj/structure/platform/metal/strata/east,
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
+	layer = 2;
+	pixel_y = 6;
+	unacidable = 1;
+	unslashable = 1;
+	explo_proof = 1
+	},
+/obj/effect/blocker/lava,
+/turf/open/lava/hot_lava,
+/area/fire_colony/exterior/clearing/north)
+"qs" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/obj/structure/sign/safety/biolab/alt{
+	pixel_x = -17;
+	pixel_y = 7
+	},
+/obj/structure/sign/safety/restrictedarea/dark{
+	pixel_x = -17;
+	pixel_y = -5
+	},
+/obj/structure/platform/metal,
+/turf/open/lava/brock,
+/area/fire_colony/exterior/clearing/north)
+"qv" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/barricade/sandbags{
+	dir = 4;
+	color = "#a98c7c"
+	},
+/obj/structure/ore_box/alt/metal_container_colorable{
+	color = "#718075";
+	pixel_x = -5;
+	pixel_y = 2
+	},
+/turf/open/lava/metal/filtrationside_lava/northwest,
+/area/fire_colony/exterior/lava_bridge)
+"qy" = (
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fire_colony/exterior/clearing/north)
+"qJ" = (
+/turf/open/lava/basalt/basalt11,
+/area/fire_colony/exterior/clearing/north)
+"rd" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fire_colony/exterior/lava_bridge)
+"ri" = (
+/obj/effect/blocker/lava,
+/turf/open/lava/hot_lava,
+/area/fire_colony/exterior/clearing/pass)
+"rk" = (
+/turf/open/lava/basalt/basalt6,
+/area/fire_colony/exterior/clearing/pass)
+"rw" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/metal/filtrationside_lava_straight/east,
+/area/fire_colony/exterior/lava_bridge)
+"rC" = (
+/obj/structure/platform/metal/strata/north,
+/obj/structure/platform/metal/strata/west{
+	layer = 3.11
+	},
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
+	layer = 3.1;
+	pixel_y = -5;
+	explo_proof = 1;
+	unslashable = 1;
+	unacidable = 1
+	},
+/obj/effect/blocker/lava,
+/turf/open/lava/hot_lava,
+/area/fire_colony/exterior/clearing/pass)
+"rP" = (
+/turf/open/lava/brock,
+/area/fire_colony/exterior/clearing/pass)
+"so" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1
+	},
+/obj/effect/lava/edges/basalt/l_piece,
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/clearing/pass)
+"tM" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/metal/warnplate/east,
+/area/fire_colony/exterior/lava_bridge)
+"uu" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/clearing/north)
+"uz" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_sn_full_cap";
+	dir = 4;
+	color = "#8c8c84"
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/prison/ramptop,
+/area/fire_colony/exterior/clearing/pass)
+"uS" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/metal/filtrationside_lava/east,
+/area/fire_colony/exterior/lava_bridge)
+"uX" = (
+/obj/effect/decal/warning_stripes/worn/stripes_double{
+	dir = 1;
+	pixel_x = 24
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/floor_plate,
+/area/fire_colony/exterior/lava_bridge)
+"vn" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_sn_full_cap";
+	color = "#8c8c84"
+	},
+/turf/open/floor/prison/ramptop,
+/area/fire_colony/exterior/clearing/pass)
+"vJ" = (
+/obj/structure/barricade/sandbags{
+	dir = 4;
+	color = "#a98c7c"
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/lava/catwalk/alt,
+/area/fire_colony/exterior/lava_bridge)
+"vM" = (
+/obj/structure/platform/metal/strata,
+/obj/structure/platform/metal/strata/east,
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
+	layer = 2;
+	pixel_y = 6;
+	unacidable = 1;
+	unslashable = 1;
+	explo_proof = 1
+	},
+/obj/effect/blocker/lava,
+/turf/open/lava/hot_lava,
+/area/fire_colony/exterior/clearing/north)
+"wk" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/obj/effect/lava/edges/basalt/corner_rock,
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/clearing/pass)
+"wz" = (
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 1
+	},
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 8
+	},
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 4
+	},
+/obj/effect/landmark/corpsespawner/working_joe,
+/obj/effect/decal/cleanable/blood/synth,
+/obj/effect/decal/cleanable/blood/synth{
+	pixel_x = 13;
+	pixel_y = 18
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/clearing/pass)
+"wM" = (
+/obj/structure/platform/metal,
+/obj/structure/platform/metal/strata/east,
+/turf/open/lava/brock,
+/area/fire_colony/exterior/clearing/north)
+"wO" = (
+/obj/structure/platform/metal/strata,
+/obj/effect/blocker/lava,
+/turf/open/lava/hot_lava/L_piece/east,
+/area/fire_colony/exterior/clearing/north)
+"xa" = (
+/obj/structure/platform/metal/strata/east,
+/obj/item/stack/sheet/wood,
+/turf/open/lava/catwalk/alt,
+/area/fire_colony/exterior/lava_bridge)
+"xn" = (
+/obj/structure/platform_decoration/metal/strata,
+/obj/effect/lava/edges/basalt/corner_rock{
+	dir = 4
+	},
+/obj/effect/blocker/lava,
+/turf/open/lava/hot_lava,
+/area/fire_colony/exterior/clearing/north)
+"xZ" = (
+/turf/open/lava/basalt/glowing/basalt1,
+/area/fire_colony/exterior/clearing/pass)
+"ye" = (
+/obj/structure/platform/metal/almayer/east,
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/obj/structure/flora/alien/sparsegrass/sparsegrass_1,
+/obj/structure/platform/metal,
+/turf/open/lava/brock,
+/area/fire_colony/exterior/clearing/north)
+"yp" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1
+	},
+/turf/open/lava/basalt/glowing/basalt1,
+/area/fire_colony/exterior/clearing/north)
+"yr" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1
+	},
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/strata/east,
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/clearing/pass)
+"yG" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/lava/basalt/cave/west,
+/area/fire_colony/exterior/clearing/pass)
+"yS" = (
+/obj/structure/platform_decoration/metal/strata/north,
+/obj/structure/platform_decoration/metal/strata,
+/obj/effect/blocker/lava,
+/turf/open/lava/hot_lava,
+/area/fire_colony/exterior/clearing/north)
+"AJ" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_sn_full_cap";
+	color = "#8c8c84"
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/clearing/pass)
+"Ba" = (
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fire_colony/exterior/lava_bridge)
+"Bk" = (
+/turf/open/lava/basalt/glowing/basalt5,
+/area/fire_colony/exterior/clearing/pass)
+"Bl" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/weapon/twohanded/fireaxe,
+/turf/open/lava/metal/warnplate/east,
+/area/fire_colony/exterior/lava_bridge)
+"Bo" = (
+/obj/effect/decal/cleanable/blood/synth,
+/obj/effect/decal/cleanable/blood/synth{
+	pixel_x = 10;
+	pixel_y = 16
+	},
+/obj/effect/landmark/corpsespawner/working_joe/fireproof,
+/turf/open/lava/metal/warning_grate/east,
+/area/fire_colony/exterior/lava_bridge)
+"BE" = (
+/obj/effect/lava/edges/basalt/corner_rock{
+	dir = 1
+	},
+/obj/effect/blocker/lava,
+/turf/open/lava/hot_lava,
+/area/fire_colony/exterior/clearing/north)
+"BH" = (
+/obj/effect/blocker/lava,
+/turf/open/lava/hot_lava,
+/area/fire_colony/exterior/clearing/north)
+"BN" = (
+/obj/structure/platform/metal/almayer/east,
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/turf/open/lava/basalt/basalt7,
+/area/fire_colony/exterior/clearing/north)
+"Cc" = (
+/obj/effect/decal/cleanable/blood/synth,
+/turf/open/lava/basalt/basalt8,
+/area/fire_colony/exterior/clearing/pass)
+"Co" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/lava/metal/warning_grate/east,
+/area/fire_colony/exterior/lava_bridge)
+"Cs" = (
+/obj/effect/landmark/corpsespawner/colonist/random,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood{
+	pixel_x = -6;
+	pixel_y = 15
+	},
+/turf/open/lava/catwalk/alt,
+/area/fire_colony/exterior/lava_bridge)
+"CA" = (
+/obj/effect/landmark/corpsespawner/colonist/random,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fire_colony/exterior/lava_bridge)
+"DT" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/lava/basalt/basalt4,
+/area/fire_colony/exterior/clearing/pass)
+"Eb" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/ammo_casing/shell,
+/obj/item/ammo_casing/shell,
+/obj/item/ammo_casing/shell,
+/obj/item/weapon/classic_baton/alt,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/gibs/down{
+	pixel_x = 5
+	},
+/turf/open/lava/metal/warnplate/west,
+/area/fire_colony/exterior/lava_bridge)
+"Ek" = (
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 8
+	},
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/clearing/pass)
+"EE" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/ramptop/north,
+/area/fire_colony/exterior/clearing/north)
+"ES" = (
+/obj/effect/decal/cleanable/blood{
+	pixel_x = 7;
+	pixel_y = -15
+	},
+/obj/item/ammo_magazine/rifle/w_ek_17{
+	current_rounds = 0
+	},
+/turf/open/lava/metal/warning_grate/east,
+/area/fire_colony/exterior/lava_bridge)
+"Fu" = (
+/obj/structure/machinery/colony_floodlight/alt,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/metal/filtrationside_lava/southeast,
+/area/fire_colony/exterior/lava_bridge)
+"Fx" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/cleanable/blood/synth{
+	pixel_x = -2;
+	pixel_y = 8
+	},
+/turf/open/lava/metal/warning_grate/east,
+/area/fire_colony/exterior/lava_bridge)
+"FE" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/cleanable/blood/synth{
+	pixel_x = 4;
+	pixel_y = 2
+	},
+/turf/open/floor/prison/ramptop/north,
+/area/fire_colony/exterior/clearing/north)
+"FF" = (
+/obj/effect/working_joe/corpse/full/flipped{
+	pixel_y = 17
+	},
+/obj/effect/decal/cleanable/blood/synth{
+	pixel_x = 2;
+	pixel_y = 4
+	},
+/turf/open/floor/prison/ramptop/west,
+/area/fire_colony/exterior/lava_bridge)
+"FO" = (
+/obj/item/stack/sheet/wood,
+/turf/open/lava/catwalk/alt,
+/area/fire_colony/exterior/lava_bridge)
+"FP" = (
+/obj/structure/platform/metal/strata/north,
+/obj/structure/platform/metal/strata/west{
+	layer = 3.11
+	},
+/obj/structure/platform/metal/strata/east{
+	layer = 3.11
+	},
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
+	layer = 3.1;
+	pixel_y = -5;
+	explo_proof = 1;
+	unslashable = 1;
+	unacidable = 1
+	},
+/obj/effect/blocker/lava,
+/turf/open/lava/hot_lava,
+/area/fire_colony/exterior/clearing/pass)
+"FY" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/lava/basalt/basalt10,
+/area/fire_colony/exterior/clearing/north)
+"Gb" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/lava/basalt/cave/west,
+/area/fire_colony/exterior/clearing/north)
+"GM" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/metal/filtrationside_lava/southeast,
+/area/fire_colony/exterior/lava_bridge)
+"Hu" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/lava/brock,
+/area/fire_colony/exterior/clearing/pass)
+"HC" = (
+/obj/structure/platform/metal/strata/north,
+/obj/structure/platform/metal/strata/east{
+	layer = 3.11
+	},
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
+	layer = 3.1;
+	pixel_y = -5;
+	explo_proof = 1;
+	unslashable = 1;
+	unacidable = 1
+	},
+/obj/effect/blocker/lava,
+/turf/open/lava/hot_lava,
+/area/fire_colony/exterior/clearing/pass)
+"HJ" = (
+/obj/structure/platform/metal/strata/east,
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/clearing/north)
+"HL" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/west,
+/turf/open/lava/basalt/basalt10,
+/area/fire_colony/exterior/clearing/pass)
+"HP" = (
+/turf/open/lava/basalt/basalt12,
+/area/fire_colony/exterior/clearing/pass)
+"HY" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_magazine/handful/shotgun/buckshot,
+/turf/open/lava/catwalk/alt,
+/area/fire_colony/exterior/lava_bridge)
+"Ih" = (
+/turf/open/lava/catwalk/alt,
+/area/fire_colony/exterior/lava_bridge)
+"Il" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/obj/structure/largecrate/random/barrel/blue{
+	pixel_x = 4;
+	pixel_y = 10
+	},
+/turf/open/lava/metal/warning_grate/east,
+/area/fire_colony/exterior/lava_bridge)
+"IM" = (
+/obj/structure/machinery/colony_floodlight/alt,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/metal/filtrationside_lava/northeast,
+/area/fire_colony/exterior/lava_bridge)
+"IP" = (
+/obj/structure/platform_decoration/metal/strata/north,
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 4
+	},
+/obj/effect/blocker/lava,
+/turf/open/lava/hot_lava,
+/area/fire_colony/exterior/clearing/north)
+"Jc" = (
+/obj/structure/platform/metal/strata/east,
+/turf/open/lava/catwalk/alt,
+/area/fire_colony/exterior/lava_bridge)
+"Ji" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/lava/catwalk/alt,
+/area/fire_colony/exterior/lava_bridge)
+"Jj" = (
+/obj/effect/decal/warning_stripes/worn/stripes_double{
+	dir = 1;
+	pixel_x = 24
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/prison/floor_plate,
+/area/fire_colony/exterior/lava_bridge)
+"Ju" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/cleanable/blood/synth{
+	pixel_x = -6;
+	pixel_y = -9
+	},
+/turf/open/floor/prison/ramptop/north,
+/area/fire_colony/exterior/clearing/north)
+"KE" = (
+/obj/structure/platform_decoration/metal/strata/north,
+/obj/effect/blocker/lava,
+/turf/open/lava/hot_lava,
+/area/fire_colony/exterior/clearing/north)
+"KF" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/cleanable/blood{
+	pixel_x = -3
+	},
+/turf/open/floor/prison/ramptop/north,
+/area/fire_colony/exterior/lava_bridge)
+"KH" = (
+/turf/open/lava/basalt/basalt11,
+/area/fire_colony/exterior/clearing/pass)
+"KJ" = (
+/obj/structure/platform/metal/strata,
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/obj/effect/blocker/lava,
+/turf/open/lava/hot_lava/L_piece/west,
+/area/fire_colony/exterior/clearing/north)
+"KQ" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1
+	},
+/turf/open/lava/basalt/basalt10,
+/area/fire_colony/exterior/clearing/pass)
+"La" = (
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 1
+	},
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 8
+	},
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 4
+	},
+/obj/effect/lava/edges/basalt/side_rock,
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_magazine/rifle/w_ek_17{
+	current_rounds = 0
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/clearing/pass)
+"Lp" = (
+/obj/structure/platform/metal/strata/east,
+/obj/effect/lava/edges/basalt/l_piece,
+/turf/open/lava/basalt/glowing/basalt3,
+/area/fire_colony/exterior/clearing/pass)
+"LL" = (
+/obj/structure/platform/metal/almayer/east,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/lava/brock,
+/area/fire_colony/exterior/clearing/north)
+"LS" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/clearing/pass)
+"Mn" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/working_joe/corpse/body_parts/synth_heads{
+	pixel_x = -3;
+	pixel_y = 4
+	},
+/obj/effect/decal/cleanable/blood/synth{
+	pixel_x = -2;
+	pixel_y = -4
+	},
+/obj/effect/decal/cleanable/blood/synth{
+	pixel_x = 11;
+	pixel_y = 23
+	},
+/turf/open/lava/metal/filtrationside_lava/east,
+/area/fire_colony/exterior/lava_bridge)
+"Mr" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/turf/open/lava/catwalk/alt,
+/area/fire_colony/exterior/lava_bridge)
+"Mt" = (
+/turf/open/lava/basalt/glowing/basalt2,
+/area/fire_colony/exterior/clearing/north)
+"MD" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/ammo_casing/shell,
+/obj/item/ammo_casing/shell,
+/obj/item/ammo_casing/shell,
+/obj/item/ammo_casing/shell,
+/obj/item/ammo_casing/shell,
+/obj/structure/barricade/deployable{
+	damage_state = 2;
+	dir = 4;
+	health = 140;
+	icon_state = "folding_2"
+	},
+/turf/open/floor/prison/ramptop/west,
+/area/fire_colony/exterior/lava_bridge)
+"ME" = (
+/obj/structure/prop/tyrargo/boards/boards_1{
+	pixel_x = -6;
+	pixel_y = 7
+	},
+/turf/open/lava/catwalk/alt,
+/area/fire_colony/exterior/lava_bridge)
+"NE" = (
+/obj/effect/blocker/lava,
+/turf/open/lava/hot_lava/L_piece/south,
+/area/fire_colony/exterior/clearing/pass)
+"NS" = (
+/obj/effect/decal/cleanable/blood{
+	pixel_x = 12;
+	pixel_y = -3
+	},
+/turf/open/lava/basalt/basalt4,
+/area/fire_colony/exterior/clearing/north)
+"NZ" = (
+/obj/effect/blocker/lava,
+/turf/open/lava/hot_lava/corner/north,
+/area/fire_colony/exterior/clearing/pass)
+"OU" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/metal/filtrationside_lava/northeast,
+/area/fire_colony/exterior/lava_bridge)
+"Pe" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/cleanable/blood/synth{
+	pixel_y = -3
+	},
+/obj/item/tool/pickaxe,
+/obj/effect/working_joe/corpse/lower,
+/obj/effect/working_joe/corpse/body_parts/tubes{
+	pixel_y = 14
+	},
+/turf/open/lava/metal/warning_grate/east,
+/area/fire_colony/exterior/lava_bridge)
+"Pq" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/stack/sheet/wood,
+/obj/structure/barricade/sandbags{
+	dir = 4;
+	color = "#a98c7c"
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -7;
+	pixel_y = 1
+	},
+/turf/open/floor/prison/ramptop/west,
+/area/fire_colony/exterior/lava_bridge)
+"PA" = (
+/turf/open/lava/basalt/basalt8,
+/area/fire_colony/exterior/clearing/north)
+"Qf" = (
+/obj/effect/landmark/corpsespawner/colonist/random,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood{
+	pixel_x = -13;
+	pixel_y = -16
+	},
+/turf/open/lava/basalt/basalt10,
+/area/fire_colony/exterior/clearing/north)
+"QQ" = (
+/obj/item/ammo_magazine/rifle/w_ek_17{
+	current_rounds = 0
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fire_colony/exterior/clearing/north)
+"QY" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/lava/metal/warning_grate/east,
+/area/fire_colony/exterior/lava_bridge)
+"Ry" = (
+/turf/open/lava/basalt/basalt8,
+/area/fire_colony/exterior/clearing/pass)
+"RM" = (
+/obj/effect/landmark/corpsespawner/working_joe,
+/obj/effect/decal/cleanable/blood/synth,
+/obj/effect/decal/cleanable/blood/synth{
+	pixel_x = 11;
+	pixel_y = 17
+	},
+/turf/open/lava/catwalk/alt,
+/area/fire_colony/exterior/lava_bridge)
+"RW" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/structure/barricade/sandbags{
+	dir = 4;
+	color = "#a98c7c"
+	},
+/turf/open/lava/metal/warning_grate/east,
+/area/fire_colony/exterior/lava_bridge)
+"RY" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/barricade/deployable{
+	damage_state = 2;
+	dir = 4;
+	health = 140;
+	icon_state = "folding_2"
+	},
+/obj/structure/ore_box/alt/metal_container_colorable{
+	color = "#847f6d";
+	pixel_x = -4
+	},
+/turf/open/lava/metal/filtrationside_lava_straight/west,
+/area/fire_colony/exterior/lava_bridge)
+"Sh" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/cargo_container/hybrisa/containersextended/colorable_small{
+	color = "#818793";
+	pixel_y = -3
+	},
+/turf/open/lava/metal/filtrationside_lava/north,
+/area/fire_colony/exterior/lava_bridge)
+"Sz" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/cleanable/blood{
+	pixel_x = 6;
+	pixel_y = -4
+	},
+/obj/item/ammo_box/magazine/shotgun/buckshot/empty,
+/turf/open/lava/metal/warning_grate/east,
+/area/fire_colony/exterior/lava_bridge)
+"SW" = (
+/obj/structure/machinery/colony_floodlight/alt,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/metal/filtrationside_lava/northwest,
+/area/fire_colony/exterior/lava_bridge)
+"SZ" = (
+/obj/item/ammo_casing/shell,
+/obj/item/ammo_casing/shell,
+/obj/item/ammo_casing/shell,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fire_colony/exterior/lava_bridge)
+"Tb" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/stack/sheet/wood,
+/turf/open/lava/catwalk/alt,
+/area/fire_colony/exterior/lava_bridge)
+"Tf" = (
+/obj/effect/decal/cleanable/blood/synth{
+	pixel_x = -2;
+	pixel_y = -4
+	},
+/turf/open/lava/metal/warning_grate/east,
+/area/fire_colony/exterior/lava_bridge)
+"Tg" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/obj/effect/blocker/lava,
+/turf/open/lava/hot_lava/side/west,
+/area/fire_colony/exterior/clearing/pass)
+"Tt" = (
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 8
+	},
+/turf/open/lava/basalt/glowing/basalt5,
+/area/fire_colony/exterior/clearing/pass)
+"TJ" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/clearing/north)
+"TW" = (
+/obj/item/ammo_magazine/rifle/w_ek_17{
+	current_rounds = 0
+	},
+/turf/open/lava/catwalk/alt,
+/area/fire_colony/exterior/lava_bridge)
+"Ur" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 7;
+	pixel_y = 22
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -15;
+	pixel_y = 10
+	},
+/turf/open/floor/prison/floor_plate,
+/area/fire_colony/exterior/lava_bridge)
+"UO" = (
+/turf/open/lava/basalt/glowing/basalt2,
+/area/fire_colony/exterior/clearing/pass)
+"UQ" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/barricade/deployable{
+	dir = 4
+	},
+/turf/open/lava/metal/filtrationside_lava/west,
+/area/fire_colony/exterior/lava_bridge)
+"VA" = (
+/obj/structure/platform_decoration/metal/strata/west,
+/obj/structure/platform_decoration/metal/strata/east,
+/obj/effect/blocker/lava,
+/turf/open/lava/hot_lava,
+/area/fire_colony/exterior/clearing/pass)
+"VE" = (
+/obj/item/weapon/gun/rifle/w_ek_17{
+	current_mag = null
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fire_colony/exterior/lava_bridge)
+"VQ" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/ammo_casing/shell,
+/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -12;
+	pixel_y = 17
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 10;
+	pixel_y = -1
+	},
+/turf/open/lava/metal/warnplate/east,
+/area/fire_colony/exterior/lava_bridge)
+"WM" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_sn_full_cap";
+	dir = 4;
+	color = "#8c8c84"
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/cleanable/blood,
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/clearing/pass)
+"WW" = (
+/obj/structure/platform_decoration/metal/strata/east,
+/obj/effect/blocker/lava,
+/turf/open/lava/hot_lava/L_piece/east,
+/area/fire_colony/exterior/clearing/pass)
+"XI" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/cleanable/blood/synth{
+	pixel_x = -5;
+	pixel_y = -2
+	},
+/turf/open/lava/metal/warning_grate/east,
+/area/fire_colony/exterior/lava_bridge)
+"XU" = (
+/obj/structure/platform/metal/almayer/east,
+/turf/open/lava/brock,
+/area/fire_colony/exterior/clearing/north)
+"XX" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/blood{
+	pixel_x = -3
+	},
+/turf/open/lava/metal/warning_grate/east,
+/area/fire_colony/exterior/lava_bridge)
+"Yj" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 8
+	},
+/obj/effect/blocker/lava,
+/turf/open/lava/hot_lava/L_piece/north,
+/area/fire_colony/exterior/clearing/north)
+"Yl" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/cleanable/blood/synth,
+/turf/open/floor/prison/ramptop/west,
+/area/fire_colony/exterior/lava_bridge)
+"Ys" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/east,
+/obj/effect/decal/cleanable/blood/synth,
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/clearing/pass)
+"YJ" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/obj/item/stack/sheet/metal/medium_stack{
+	pixel_x = 5;
+	pixel_y = 4
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/clearing/north)
+"Zn" = (
+/obj/structure/platform/metal,
+/turf/open/lava/basalt/basalt10,
+/area/fire_colony/exterior/clearing/north)
+"Zq" = (
+/obj/structure/sign/safety/biolab/alt{
+	pixel_x = -17;
+	pixel_y = -2
+	},
+/obj/structure/sign/safety/restrictedarea/dark{
+	pixel_x = -17;
+	pixel_y = 10
+	},
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/east,
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/clearing/pass)
+"ZX" = (
+/obj/item/ammo_magazine/rifle/w_ek_17{
+	current_rounds = 0
+	},
+/turf/open/lava/basalt/basalt4,
+/area/fire_colony/exterior/clearing/north)
+
+(1,1,1) = {"
+YJ
+TJ
+uu
+qs
+kI
+VQ
+tM
+cB
+Zq
+LS
+HP
+yG
+"}
+(2,1,1) = {"
+ZX
+PA
+hF
+kn
+SZ
+mc
+kd
+Ba
+AJ
+gz
+La
+rk
+"}
+(3,1,1) = {"
+qJ
+Gb
+NS
+gc
+rd
+VE
+kO
+CA
+WM
+lu
+lg
+jm
+"}
+(4,1,1) = {"
+FY
+Qf
+qk
+Zn
+ES
+Eb
+nq
+gl
+HL
+Hu
+UO
+Tt
+"}
+(5,1,1) = {"
+Mt
+aH
+HJ
+wM
+mJ
+Pq
+nv
+MD
+yr
+Lp
+he
+Tg
+"}
+(6,1,1) = {"
+Yj
+KJ
+SW
+oK
+cb
+Mr
+Tb
+et
+lE
+ku
+fh
+nA
+"}
+(7,1,1) = {"
+ar
+IP
+dH
+gR
+Sz
+HY
+dT
+kK
+gR
+db
+fs
+ri
+"}
+(8,1,1) = {"
+BE
+ae
+vM
+Jc
+XX
+Cs
+dX
+kz
+xa
+HC
+bM
+ri
+"}
+(9,1,1) = {"
+BH
+kb
+qv
+RY
+hO
+ha
+vJ
+RW
+UQ
+nS
+fh
+ri
+"}
+(10,1,1) = {"
+BH
+yS
+qr
+hE
+Il
+nN
+ME
+hM
+Sh
+FP
+VA
+ri
+"}
+(11,1,1) = {"
+BH
+kb
+OU
+aL
+Pe
+RM
+FO
+Co
+Mn
+GM
+fh
+ri
+"}
+(12,1,1) = {"
+BH
+KE
+dQ
+gR
+Tf
+TW
+Ji
+Fx
+gR
+rC
+fs
+ri
+"}
+(13,1,1) = {"
+jo
+xn
+vM
+Jc
+el
+Ih
+Ih
+XI
+Jc
+HC
+bM
+ri
+"}
+(14,1,1) = {"
+Yj
+wO
+IM
+rw
+QY
+Ih
+Ih
+el
+uS
+Fu
+fh
+NZ
+"}
+(15,1,1) = {"
+yp
+be
+nM
+cL
+FF
+Yl
+qb
+dc
+ad
+kF
+WW
+NE
+"}
+(16,1,1) = {"
+XU
+LL
+BN
+ye
+el
+hK
+Bl
+Bo
+Ys
+Ek
+xZ
+Bk
+"}
+(17,1,1) = {"
+qy
+qy
+QQ
+qy
+Ba
+Ur
+eq
+Ba
+vn
+Cc
+DT
+KH
+"}
+(18,1,1) = {"
+Ju
+bl
+FE
+EE
+KF
+pE
+gb
+Ba
+pg
+wk
+wz
+KQ
+"}
+(19,1,1) = {"
+qy
+ky
+qy
+mN
+Ba
+Jj
+uX
+fk
+uz
+so
+Ry
+rP
+"}

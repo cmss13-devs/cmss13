@@ -244,6 +244,8 @@
 /obj/structure/closet/crate/ammo/alt{
 	pixel_y = 3
 	},
+/obj/item/ammo_magazine/smg/a_m36,
+/obj/item/ammo_magazine/smg/a_m36,
 /turf/open/floor/strata/sand4/east,
 /area/fire_colony/interior/omicron_facility/passthrough)
 "fm" = (

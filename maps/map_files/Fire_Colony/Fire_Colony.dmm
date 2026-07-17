@@ -5423,6 +5423,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/sand3/east,
 /area/fire_colony/interior/hangar/beta)
 "aDk" = (
@@ -6565,6 +6566,7 @@
 /obj/structure/closet/secure_closet/seegson/security{
 	pixel_x = -4
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/altred3/west,
 /area/fire_colony/interior/hangar/checkpoint)
 "aLn" = (
@@ -8662,6 +8664,7 @@
 /area/fire_colony/exterior/valley/west)
 "aWI" = (
 /obj/structure/closet/toolcloset,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/sand3/west,
 /area/fire_colony/interior/hangar/alpha)
 "aWK" = (
@@ -8684,6 +8687,7 @@
 /area/fire_colony/interior/hangar/beta)
 "aWO" = (
 /obj/structure/closet/toolcloset,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/sand3/east,
 /area/fire_colony/interior/hangar/beta)
 "aWP" = (
@@ -9798,10 +9802,23 @@
 /obj/structure/surface/table/almayer{
 	color = "#848484"
 	},
-/obj/item/tool/pickaxe/plasmacutter,
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/structure/filingcabinet/chestdrawer{
+	pixel_x = 7;
+	pixel_y = 17;
+	density = 0;
+	layer = 3.2
+	},
+/obj/structure/filingcabinet/chestdrawer{
+	pixel_x = -8;
+	pixel_y = 17;
+	density = 0;
+	layer = 3.2
+	},
+/obj/effect/landmark/objective_landmark/science,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/lightblue4,
 /area/fire_colony/interior/excavation)
 "bcG" = (
@@ -10551,6 +10568,7 @@
 	},
 /obj/item/device/flashlight,
 /obj/item/tool/hand_labeler,
+/obj/effect/spawner/random/pills/lowchance,
 /turf/open/floor/strata/sand4/west,
 /area/fire_colony/interior/excavation)
 "bfR" = (
@@ -14534,6 +14552,7 @@
 	pixel_y = 9
 	},
 /obj/structure/platform/stone/engineer/north,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/lava/engineer_ruins/engineer_ruins/floor_2,
 /area/fire_colony/exterior/underground/excavation/south)
 "bYs" = (
@@ -20935,7 +20954,7 @@
 	id = "seeg_garage_1"
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/lava/metal/plating,
+/turf/open/floor/corsat,
 /area/fire_colony/interior/mining_garage)
 "dEW" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
@@ -22022,6 +22041,7 @@
 /area/fire_colony/exterior/valley/southwest)
 "dRG" = (
 /obj/structure/closet/secure_closet/seegson/security,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/altred4/east,
 /area/fire_colony/interior/hangar/checkpoint/excavation)
 "dRI" = (
@@ -22093,11 +22113,13 @@
 "dSI" = (
 /obj/structure/filingcabinet/chestdrawer{
 	pixel_x = 7;
-	pixel_y = 17
+	pixel_y = 17;
+	density = 0
 	},
 /obj/structure/filingcabinet/chestdrawer{
 	pixel_x = -8;
-	pixel_y = 17
+	pixel_y = 17;
+	density = 0
 	},
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/objective_landmark/science,
@@ -24506,6 +24528,7 @@
 /obj/effect/lava/edges/basalt/corner_rock{
 	dir = 8
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/lava/engineer_ruins/engineer_ruins/damaged/damage_3,
 /area/fire_colony/exterior/underground/excavation/south)
 "ewr" = (
@@ -30174,7 +30197,8 @@
 "fLI" = (
 /obj/structure/filingcabinet/chestdrawer{
 	pixel_x = -8;
-	pixel_y = 18
+	pixel_y = 18;
+	density = 0
 	},
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/objective_landmark/close,
@@ -32554,6 +32578,13 @@
 /obj/item/ammo_magazine/rifle/w_ek_17,
 /turf/open/lava/metal/plating_grille,
 /area/fire_colony/interior/epsilon_facility)
+"goo" = (
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 8
+	},
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/lava/engineer_ruins/plating/platingdmg1,
+/area/fire_colony/exterior/underground/excavation/south)
 "goz" = (
 /obj/effect/lava/edges/basalt/l_piece{
 	dir = 1
@@ -34386,7 +34417,7 @@
 /area/fire_colony/exterior/valley/southwest)
 "gLu" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/item/clothing/glasses/welding/superior,
+/obj/item/clothing/glasses/welding,
 /turf/open/lava/metal/warnplate/north,
 /area/fire_colony/interior/mining_garage)
 "gLz" = (
@@ -34660,6 +34691,7 @@
 	pixel_x = -4
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/dark2,
 /area/fire_colony/interior/hangar/security)
 "gON" = (
@@ -38171,11 +38203,13 @@
 "hEY" = (
 /obj/structure/filingcabinet/chestdrawer{
 	pixel_x = -8;
-	pixel_y = 17
+	pixel_y = 17;
+	density = 0
 	},
 /obj/structure/filingcabinet/chestdrawer{
 	pixel_x = 7;
-	pixel_y = 17
+	pixel_y = 17;
+	density = 0
 	},
 /obj/effect/landmark/objective_landmark/far,
 /obj/effect/landmark/objective_landmark/far,
@@ -41247,6 +41281,7 @@
 	pixel_y = 7
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/floor2,
 /area/fire_colony/interior/hangar/security)
 "ivx" = (
@@ -42566,6 +42601,7 @@
 /area/fire_colony/exterior/valley/northwest)
 "iLS" = (
 /obj/structure/platform/stone/engineer/north,
+/obj/effect/spawner/random/goggles/lowchance,
 /turf/open/lava/engineer_ruins/engineer_ruins/floor_2,
 /area/fire_colony/exterior/underground/excavation/south)
 "iLT" = (
@@ -46412,6 +46448,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/deco,
 /area/fire_colony/interior/hangar/security)
 "jNq" = (
@@ -46462,6 +46499,7 @@
 	pixel_y = 4
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/spawner/random/goggles/lowchance,
 /turf/open/floor/dark2,
 /area/fire_colony/interior/mining_north_west)
 "jOb" = (
@@ -50084,7 +50122,7 @@
 /obj/structure/machinery/door/poddoor/hybrisa/shutters{
 	id = "seeg_garage_1"
 	},
-/turf/open/lava/metal/plating,
+/turf/open/floor/corsat,
 /area/fire_colony/interior/mining_garage)
 "kLX" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -51460,11 +51498,13 @@
 "lcT" = (
 /obj/structure/filingcabinet/chestdrawer{
 	pixel_x = 7;
-	pixel_y = 17
+	pixel_y = 17;
+	density = 0
 	},
 /obj/structure/filingcabinet/chestdrawer{
 	pixel_x = -8;
-	pixel_y = 17
+	pixel_y = 17;
+	density = 0
 	},
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/objective_landmark/close,
@@ -57912,6 +57952,12 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/floor/strata/seeg3/west,
 /area/fire_colony/interior/dorms/north)
+"mGy" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/lava/engineer_ruins/engineer_ruins/smooth/floor_2,
+/area/fire_colony/exterior/underground/excavation/south)
 "mGE" = (
 /obj/effect/lava/edges/basalt/l_piece{
 	dir = 4
@@ -62290,6 +62336,7 @@
 	pixel_y = 29
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/lava/engineer_ruins/engineer_ruins/smooth/floor_3,
 /area/fire_colony/exterior/underground/excavation/south)
 "nIy" = (
@@ -63655,6 +63702,7 @@
 	pixel_y = -10
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/spawner/random/goggles/lowchance,
 /turf/open/floor/vault2/west,
 /area/fire_colony/interior/storage_unit/n_caves)
 "oaN" = (
@@ -64971,7 +65019,7 @@
 /obj/structure/machinery/door/poddoor/hybrisa/shutters{
 	id = "seeg_garage_1"
 	},
-/turf/open/lava/metal/plating,
+/turf/open/floor/corsat,
 /area/fire_colony/interior/mining_garage)
 "otQ" = (
 /obj/effect/lava/edges/basalt/corner_rock{
@@ -76171,6 +76219,7 @@
 	pixel_x = -6;
 	pixel_y = 15
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/lava/engineer_ruins/plating/platingdmg1,
 /area/fire_colony/exterior/underground/excavation/south)
 "rcR" = (
@@ -77394,6 +77443,18 @@
 /obj/effect/lava/edges/basalt/l_piece,
 /turf/open/lava/basalt/basalt12,
 /area/fire_colony/exterior/valley/southwest)
+"rsk" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/obj/effect/landmark/nightmare{
+	insert_tag = "lava_bridge_battle"
+	},
+/turf/open/lava/basalt/cave/west,
+/area/fire_colony/exterior/clearing/pass)
 "rsl" = (
 /turf/open/lava/basalt/basalt_dug,
 /area/fire_colony/exterior/valley/southwest)
@@ -78997,7 +79058,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/blood,
-/obj/item/attachable/bayonet/tanto/blue,
+/obj/item/attachable/bayonet/lb,
 /turf/open/lava/basalt/basalt0,
 /area/fire_colony/exterior/valley/west)
 "rKZ" = (
@@ -80243,6 +80304,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/dark2,
 /area/fire_colony/interior/hangar/security)
 "rZP" = (
@@ -83059,6 +83121,7 @@
 "sMg" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/closet/firecloset/alt/full,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/sand3/east,
 /area/fire_colony/interior/hangar/beta)
 "sMl" = (
@@ -91525,7 +91588,8 @@
 "uSI" = (
 /obj/structure/machinery/vending/cola/generic{
 	pixel_x = -10;
-	pixel_y = 16
+	pixel_y = 16;
+	density = 0
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/floor/dark2,
@@ -103495,6 +103559,7 @@
 "xSB" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/closet/firecloset/alt/full,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/sand3/west,
 /area/fire_colony/interior/hangar/alpha)
 "xSJ" = (
@@ -120736,7 +120801,7 @@ hUW
 kri
 bpn
 dvs
-aba
+rsk
 nLD
 maa
 aoF
@@ -133135,7 +133200,7 @@ hgD
 hgD
 nJl
 ebe
-jBW
+goo
 hij
 xKX
 ipS
@@ -139623,7 +139688,7 @@ bcp
 wcr
 hgD
 wTT
-bDz
+mGy
 aAZ
 sHr
 sHr

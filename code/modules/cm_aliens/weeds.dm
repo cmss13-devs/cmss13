@@ -232,6 +232,9 @@
 			continue
 		if(!spread_on_semiweedable && T.is_weedable < FULLY_WEEDABLE)
 			continue
+		if(!weed_expand_objects(T, dirn))
+			continue
+
 		T.clean_cleanables()
 
 		var/obj/effect/alien/resin/fruit/old_fruit
@@ -265,9 +268,6 @@
 			else if( istype(T, /turf/closed))
 				weeds.Add(new /obj/effect/alien/weeds(T, node, TRUE, FALSE))
 				continue
-
-		if(!weed_expand_objects(T, dirn))
-			continue
 
 		var/obj/effect/alien/weeds/new_weed = new(T, node)
 		weeds += new_weed

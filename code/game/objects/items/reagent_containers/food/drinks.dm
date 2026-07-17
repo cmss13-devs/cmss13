@@ -250,7 +250,7 @@
 	icon_state = "water_cup_e"
 	item_state = "water_cup_e"
 	possible_transfer_amounts = null
-	volume = 10
+	volume = 30
 	center_of_mass = "x=16;y=12"
 
 /obj/item/reagent_container/food/drinks/sillycup/Initialize()

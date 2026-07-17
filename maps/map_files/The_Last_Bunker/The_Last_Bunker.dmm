@@ -1076,16 +1076,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrowncorners2/north,
 /area/last_bunker/indoors/entry_zone)
-"adj" = (
-/obj/structure/machinery/power/smes/buildable{
-	capacity = 100000;
-	dir = 1;
-	input_level_max = 4000;
-	output_level_max = 2400;
-	output_level = 1200
-	},
-/turf/closed/wall/strata_ice,
-/area/last_bunker/outdoors/eastern_cavern/mid_light)
 "adk" = (
 /obj/effect/decal/cleanable/generic{
 	color = "#5d524b";
@@ -80990,7 +80980,7 @@ lxh
 lxh
 aae
 opI
-adj
+opI
 ybf
 hgi
 hgi

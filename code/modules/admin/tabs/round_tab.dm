@@ -67,6 +67,31 @@
 	message_admins("[key_name_admin(usr)] has [(predator_round.flags_round_type & MODE_PREDATOR) ? "allowed predators to spawn" : "prevented predators from spawning"].")
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_PREDATOR_ROUND_TOGGLED)
 
+/datum/admins/proc/force_colony_joe_round()
+	set name = "Toggle Colony Working Joe Spawning"
+	set desc = "Force-toggle a colony joe round for the round type. Only works on maps that support colony joe spawns."
+	set category = "Server.Round"
+
+	if(!SSticker || SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
+		to_chat(usr, SPAN_WARNING("Wait for the round to start!"))
+		return
+
+	if(length(SSmapping.configs[GROUND_MAP].colony_joe_types) == 0)
+		to_chat(usr, SPAN_WARNING("This map doesn't support colony joes!"))
+		return
+
+	var/datum/game_mode/joe_round = SSticker.mode
+	if(tgui_alert(usr, "Are you sure you want to force-toggle Colony Joe spawning? Colony Joes are currently [(joe_round.flags_round_type & MODE_COLONY_JOE) ? "ENABLED" : "DISABLED"].", "Toggle Colony Joe Spawning", list("Yes", "No")) != "Yes")
+		return
+
+	if(!(joe_round.flags_round_type & MODE_COLONY_JOE))
+		joe_round.flags_round_type |= MODE_COLONY_JOE
+	else
+		joe_round.flags_round_type &= ~MODE_COLONY_JOE
+
+	message_admins("[key_name_admin(usr)] has [(joe_round.flags_round_type & MODE_COLONY_JOE) ? "allowed colony joes to spawn" : "prevented colony joes from spawning"].")
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_COLONY_JOE_ROUND_TOGGLED)
+
 /client/proc/free_slot()
 	set name = "Free Job Slots"
 	set category = "Server.Round"
@@ -177,7 +202,6 @@
 	SSticker.force_ending = TRUE
 	SSticker.mode.round_finished = winstate
 
-	log_admin("[key_name(usr)] has made the round end early - [winstate].")
 	message_admins("[key_name(usr)] has made the round end early - [winstate].")
 	for(var/client/C in GLOB.admins)
 		to_chat(C, {"
@@ -247,14 +271,12 @@
 			admin_disabled_cdn_transport = null
 			SSassets.OnConfigLoad()
 			message_admins("[key_name_admin(usr)] re-enabled the CDN asset transport")
-			log_admin("[key_name(usr)] re-enabled the CDN asset transport")
 			return
 
 		to_chat(usr, SPAN_ADMINNOTICE("The CDN is not enabled!"))
 		if(alert(usr, "CDN asset transport is not enabled! If you're having issues with assets, you can also try disabling filename mutations.", "CDN asset transport is not enabled!", "Try disabling filename mutations", "Nevermind") == "Try disabling filename mutations")
 			SSassets.transport.dont_mutate_filenames = !SSassets.transport.dont_mutate_filenames
 			message_admins("[key_name_admin(usr)] [(SSassets.transport.dont_mutate_filenames ? "disabled" : "re-enabled")] asset filename transforms.")
-			log_admin("[key_name(usr)] [(SSassets.transport.dont_mutate_filenames ? "disabled" : "re-enabled")] asset filename transforms.")
 		return
 
 	admin_disabled_cdn_transport = current_transport
@@ -262,4 +284,3 @@
 	SSassets.OnConfigLoad()
 	SSassets.transport.dont_mutate_filenames = TRUE
 	message_admins("[key_name_admin(usr)] disabled CDN asset transport")
-	log_admin("[key_name(usr)] disabled CDN asset transport")

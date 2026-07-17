@@ -8,8 +8,8 @@
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/machineguns.dmi'
 	w_class = SIZE_MEDIUM
 	icon_state = "m56d_drum"
-	flags_magazine = NO_FLAGS //can't be refilled or emptied by hand
 	caliber = "10x28mm"
+	flags_magazine = AMMUNITION_REFILLABLE|AMMUNITION_SLAP_TRANSFER
 	max_rounds = 700
 	default_ammo = /datum/ammo/bullet/machinegun
 	gun_type = null
@@ -102,6 +102,7 @@
 		. += "It seems to be lacking an ammo drum."
 
 /obj/item/device/m56d_gun/update_icon() //Lets generate the icon based on how much ammo it has.
+	icon_state = initial(icon_state)
 	if(has_mount)
 		icon_state += "_tri"
 	if(rounds)

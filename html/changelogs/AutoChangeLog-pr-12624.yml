@@ -1,0 +1,5 @@
+author: "TheDonkified"
+delete-after: True
+changes:
+  - refactor: "Updates spark_spread effect system to use subsystem processing and timers instead of sleeps"
+  - refactor: "Sparks move a bit faster/smoother"

@@ -1,5 +1,0 @@
-author: "kitchenenthusiast"
-delete-after: True
-changes:
-  - bugfix: "Filing cabinets no longer give 6 messages when you try to put an unfilable item in them"
-  - bugfix: "Half-sized document cabinets no longer shrink when you put a paper into them"

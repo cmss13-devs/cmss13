@@ -120,6 +120,16 @@
 			continue
 		cur_area.is_resin_allowed = enabled ? TRUE : initial(cur_area.is_resin_allowed)
 
+/datum/gamemode_modifier/continue_on_ground_crash
+	modifier_name = "Continue on Hijack Ground Crash"
+	modifier_desc = "Enable this modifier to not trigger Xeno Major on ground crash"
+
+/datum/gamemode_modifier/continue_on_ground_crash/set_active(enabled)
+	if(SShijack?.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)
+		to_chat(usr, SPAN_WARNING("Its too late to toggle this!"))
+		return ..(active)
+	return ..()
+
 /datum/gamemode_modifier/mortar_laser_warning
 	modifier_name = "Mortar Telegraphing"
 	modifier_desc = "Shows a visual warning of where a mortar will hit."

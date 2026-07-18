@@ -669,6 +669,10 @@
 	if(SShijack?.sd_detonated)
 		round_finished = MODE_INFESTATION_DRAW_DEATH // Self destruction.
 		return
+	if(SShijack?.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH && !MODE_HAS_MODIFIER(/datum/gamemode_modifier/continue_on_ground_crash))
+		if(SShijack.crashed)
+			round_finished = MODE_INFESTATION_X_MAJOR // Ship crashed into ground and modifier doesn't disable this
+		return
 
 	var/list/living_player_list = count_humans_and_xenos(get_affected_zlevels())
 	var/num_humans = living_player_list[1]

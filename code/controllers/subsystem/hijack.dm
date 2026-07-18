@@ -802,7 +802,7 @@ SUBSYSTEM_DEF(hijack)
 	log_debug("crack_open_ship took [(world.timeofday - time) / 10]s")
 	explode_apcs(50)
 
-	if(!admin_sd_blocked)
+	if(!admin_sd_blocked && MODE_HAS_MODIFIER(/datum/gamemode_modifier/continue_on_ground_crash))
 		addtimer(CALLBACK(src, PROC_REF(unlock_self_destruct), FALSE), 15 SECONDS)
 
 /// Called to explode the apcs with probability (so more shipwide damage)

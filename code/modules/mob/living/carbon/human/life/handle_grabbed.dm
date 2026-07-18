@@ -3,7 +3,7 @@
 /mob/living/carbon/proc/handle_grabbed()
 	if(!pulledby)
 		return
-	if(pulledby.grab_level >= GRAB_AGGRESSIVE)
+	if(pulledby.grab_level >= GRAB_AGGRESSIVE && !isxeno(pulledby))
 		drop_held_items()
 
 	if(pulledby.grab_level >= GRAB_CHOKE)

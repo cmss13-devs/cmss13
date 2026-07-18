@@ -4989,13 +4989,6 @@
 /obj/item/tool/shovel/snow,
 /turf/open/floor/prison,
 /area/last_bunker/indoors/hanger_zone)
-"aol" = (
-/obj/structure/tunnel{
-	pixel_x = 2;
-	pixel_y = -6
-	},
-/turf/open/auto_turf/sand_white/layer0,
-/area/last_bunker/indoors/cavern/north)
 "aom" = (
 /obj/structure/platform_decoration/metal/shiva/east,
 /turf/open/auto_turf/snow/layer1,
@@ -73836,7 +73829,7 @@ ybf
 ybf
 ybf
 ybf
-aol
+oui
 oui
 sQS
 sQS

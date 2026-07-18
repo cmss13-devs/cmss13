@@ -10,3 +10,145 @@
   - code_imp: Removes SensorMate hud from SG vendor
   ori-disillusion-mirnov:
   - bugfix: colony dzho not spawning properly
+2026-07-04:
+  Antlers:
+  - qol: Health scanners will now automatically apply the appropriate triage holocard.
+  MistChristmas:
+  - rscadd: Cooldown to the dropship alarm.
+  - rscadd: Harm intent forces Auto-Fire instead of PB. Ground/Restrained Executes
+      now need the head targeted.
+  MoondancerPony:
+  - code_imp: made the spawn_humans unit test wait 5 seconds instead of 60
+2026-07-05:
+  DangerRevolution:
+  - balance: Silenced the Scrapeaway Timed Effect for the Marines during the LV-624
+      CLF Crashed Ship insert.
+  - code_imp: Added two variables for the scrapeaway timed effect to silence the announcement
+      for Marines, or Xenos, about the walls being deleted.
+  Orchidfox:
+  - spellcheck: Improved grammar in a bunch of tips
+  - bugfix: Astronav APC is once again hardened as intended
+  Rug-Dealer:
+  - spellcheck: corrected facehugger tip ("one-second windup" -> "two-second windup")
+  antlersss:
+  - bugfix: Reagents without overdose thresholds will no longer trigger red holocards
+  - bugfix: Brusied livers/kidneys no longer immediately trigger red holocards
+  ori-disillusion-mirnov:
+  - code_imp: fix dusting runtime
+  realforest2001:
+  - rscadd: Split the icons for xeno building into their own icon file.
+  - imageadd: Added build icons for pathogen building, from DimDim.
+2026-07-08:
+  GeneriedJenelle:
+  - rscadd: Adds Ticket Panel
+  Git-Nivrak:
+  - bugfix: Fixes acid barrage stacking acid spray dots on barricades
+2026-07-09:
+  ori-disillusion-mirnov:
+  - bugfix: colony dzho spawn as colony dzho
+2026-07-10:
+  fira:
+  - admin: Removed some doubled up logging.
+2026-07-12:
+  AnCopper:
+  - imagetweak: Fixed a 1 pixel alignment issue with the west-facing onmob sprites
+      for the Jungle and Classic CO M11C helmets.
+  Antlers:
+  - maptweak: Completely remodeled the brig
+  - maptweak: Moved interrogation to be accessible by brigged prisoners without pausing
+      their timers
+  - maptweak: Moved the armory and execution rooms to a new lower level of the brig
+  - maptweak: Expanded the CMP's office
+  - maptweak: Expanded brig holding
+  - maptweak: Expanded the yard
+  - maptweak: Expanded the execution room
+  - maptweak: Added an attachment vendor to the MP prep area (rejoice! I don't have
+      to steal from your preps anymore)
+  - mapadd: Added a basketball court to the yard
+  - mapadd: Added a kitchenette to the yard
+  - mapadd: Added a visitation area to the brig
+  - mapadd: Added a new brig lobby area
+  - mapadd: Added an MP cryo storage to the lower level evidence locker
+  - rscadd: Plastic knives now have the basic sharpness trait and can cut food crudely
+  - rscadd: Added a new mobile TV stand in brig storage
+  - rscadd: Added a guaranteed black market tuner in brig evidence storage
+  - rscadd: Added a new wall cryopod subtype
+  - rscadd: Added a new "brig" subtype of the wall cryopod, which automatically informs
+      MP's when a prisoner has cryo'd and ejects their incident report.
+  - mapadd: Added these new brig cryopods to brig perma cells
+  - bugfix: CMP's office now requires CMP's credentials to access
+  - bugfix: Document chest drawers now no longer grow into regular ones when items
+      are placed inside
+  - bugfix: Knife utensils will no longer scoop up food onto themselves, and instead
+      will try to cut
+  - code_imp: Added new brig areas
+  - code_imp: Repathed plastic utensils to be subtypes of their respective normal
+      utensils
+  - code_imp: Fixed a runtime where radios attempted to send messages to atoms with
+      null locations
+  - rscdel: Removed the MP bunk areas
+  - rscdel: Removed the yard hydroponics area (groceries are available in the kitchenette)
+  Puckaboo2:
+  - rscadd: Adds HUD icons for all NSPA members.
+2026-07-13:
+  AnCopper:
+  - qol: Expanded SEA, XO, ASO, and Staff Officer vendor equipment options.
+  - qol: Added Operations Uniforms, External Webbing, Insulated Combat Gloves, Security
+      HUD Glasses, and additional storage accessories to applicable vendors.
+  - qol: Added additional cosmetic patch options to SEA and ASO vendors.
+  - qol: Made command-role patch items unlimited stock.
+  - balance: Removed HEFA Grenade Packs from the XO vendor.
+  DangerRevolution, Thwompa, Axon Man:
+  - rscadd: Added the FCT - Field Camera Tripod for use by Combat Technicians in the
+      Field, allowing Overwatch to see static positions.
+  - balance: Added the FCT to Maintenance Technician, Requisition and Combat Technician
+      vendors.
+  Drathek, Puckaboo2:
+  - rscadd: You can close unprepared incisions without having to skip to using the
+      retractor, now.
+  - rscadd: Multiple skippable surgery steps are now possible.
+  - rscadd: Adds two Abort Surgery surgeries, one with surgical line and one with
+      the cautery.
+  - qol: If you can't complete a surgical step with a tool, the game will tell you
+      so and it will also tell you what surgeries are available at the current step
+      to give you a clue on what tools you CAN use.
+  - bugfix: Fixes being able to execute certain surgery steps out of order.
+  - bugfix: Prevents the ability to cauterize/sew a patient early during an incomplete
+      surface or deep surgery.
+  GoodWheatley:
+  - rscdel: Removed rangefinders that spawn with survivors on Chance's Claim and Tyrargo
+      Rift
+  - maptweak: Added rangefinders on Chance's Claim and Tyrargo Rift. The rangefinder
+      spawns north of Fitness on CC, and in the northwest corner of upper Apartments
+      on Tyrargo.
+  JackieEstegado:
+  - bugfix: Defenders dying while having their crest down or fortified no longer stops
+      them from being buckled to a rollerbed.
+  MistChristmas:
+  - bugfix: APC terminals no longer overlay over catwalks and the like
+  Rain7x:
+  - bugfix: Fixed Despoiler acid barrage direct hits applying a new acid effect on
+      every hit instead of refreshing the existing one
+  fira:
+  - admin: Most logging (and fingerprints) should now properly use ckey, instead of
+      key
+2026-07-14:
+  JHINgle4ce:
+  - rscadd: Adds MP synth to security
+  NHC:
+  - code_imp: added a var to set if clothing removes undergarments overlays or not.
+  - bugfix: Fixes Yautja Meshsuits removing undergarments
+2026-07-15:
+  DangerRevolution:
+  - bugfix: Fixes the Field Cameras' label reading "this label label reads"...
+  - bugfix: Moves the Field Cameras' labels to the examine box rather than outputting
+      it to the chatbox.
+  NHC:
+  - qol: SOCOM and grenade packs can now be collapsed
+  - qol: Grenade belt and satchel can now be filed by being slapped by themself, each
+      other, and via grenade packs n boxes
+  - qol: M56D and M2C mags can be used to refil other mags of their own kind
+  - qol: M56D mags can be manually loaded/unloaded
+  ori-disillusion-mirnov:
+  - code_imp: all living mobs now have procs for riding
+  - code_imp: adding the riding element is easier

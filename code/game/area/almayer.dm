@@ -707,6 +707,10 @@
 	icon_state = "operating"
 	fake_zlevel = 1 // upperdeck
 
+/area/almayer/medical/cmo_office
+	name = "\improper Chief Medical Officer's Office"
+	icon_state = "medical"
+
 /area/almayer/medical/operating_room_one
 	name = "\improper Medical Operating Room 1"
 	icon_state = "operating"

@@ -612,6 +612,7 @@
 	else
 		icon_state = "classic_deployed"
 
+/// This is used to update the squad coloured overlay on the Field Camera Tripod
 /obj/structure/overwatch_camera_tripod/proc/update_squad_overlay()
 	if(squad_overlay)
 		overlays -= squad_overlay
@@ -622,6 +623,7 @@
 		squad_overlay.color = squad.equipment_color
 		overlays += squad_overlay
 
+/// This is used to append squad names to the Field Camera Tripods' user-made label.
 /obj/structure/overwatch_camera_tripod/proc/update_full_label()
 	if(squad)
 		label = "[squad.name] - [base_label]"

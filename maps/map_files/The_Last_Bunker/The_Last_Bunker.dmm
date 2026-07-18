@@ -5126,9 +5126,8 @@
 /turf/open/auto_turf/snow/layer1,
 /area/last_bunker/outdoors/cavern_external_access/central)
 "anO" = (
-/obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /turf/open/auto_turf/shale/layer1/weedable,
-/area/last_bunker/outdoors/cavern_external_access/central/adj)
+/area/last_bunker/outdoors/cavern_external_access/central)
 "anP" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/radio{
@@ -5337,6 +5336,87 @@
 	},
 /turf/open/auto_turf/sand_white/layer0,
 /area/last_bunker/indoors/cavern/north)
+"aom" = (
+/obj/structure/platform_decoration/metal/shiva/east,
+/turf/open/auto_turf/snow/layer1,
+/area/last_bunker/landing_zone_2)
+"aon" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/obj/structure/prop/hybrisa/vehicles/Small_Truck/White_Cargo{
+	pixel_y = -6
+	},
+/turf/open/floor/prison/floor_plate,
+/area/last_bunker/landing_zone_2)
+"aoo" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/turf/open/floor/prison/floor_plate,
+/area/last_bunker/landing_zone_2)
+"aop" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/redcorner,
+/area/last_bunker/landing_zone_2)
+"aoq" = (
+/obj/structure/largecrate/empty/secure,
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/turf/open/floor/prison/floor_plate,
+/area/last_bunker/landing_zone_2)
+"aor" = (
+/obj/structure/cargo_container/hybrisa/containersextended/bluewywingsleft,
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/turf/open/floor/prison/floor_plate,
+/area/last_bunker/landing_zone_2)
+"aos" = (
+/obj/structure/cargo_container/hybrisa/containersextended/bluewywingsright,
+/turf/open/floor/shiva/radiator_tile,
+/area/last_bunker/landing_zone_2)
+"aot" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/obj/structure/largecrate/empty/secure,
+/turf/open/floor/prison/floor_plate,
+/area/last_bunker/landing_zone_2)
+"aou" = (
+/obj/structure/cargo_container/wy/left,
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/turf/open/floor/prison/floor_plate,
+/area/last_bunker/landing_zone_2)
+"aov" = (
+/obj/structure/cargo_container/wy/mid,
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/turf/open/floor/prison/floor_plate,
+/area/last_bunker/landing_zone_2)
+"aow" = (
+/obj/structure/cargo_container/wy/right,
+/turf/open/floor/prison,
+/area/last_bunker/landing_zone_2)
+"aox" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/floor/prison/floor_plate,
+/area/last_bunker/landing_zone_2)
+"aoy" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/obj/structure/largecrate/random/barrel/medical,
+/turf/open/floor/prison/floor_plate,
+/area/last_bunker/landing_zone_2)
 "aoO" = (
 /obj/structure/machinery/door/airlock/almayer/marine/shared{
 	name = "\improper Hydroponics";
@@ -13801,10 +13881,6 @@
 "lCQ" = (
 /turf/open/floor/corsat/darkgreen/east,
 /area/last_bunker/oob/hydro)
-"lDe" = (
-/obj/item/bodybag/tarp/snow,
-/turf/open/floor/plating/prison,
-/area/last_bunker/landing_zone_2)
 "lDr" = (
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 1
@@ -17337,6 +17413,7 @@
 /turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/last_bunker/indoors/cavern/south_entrance)
 "qfM" = (
+/obj/item/bodybag/tarp/snow,
 /turf/open/floor/prison,
 /area/last_bunker/outdoors/surface_exterior/center)
 "qgc" = (
@@ -18125,6 +18202,7 @@
 /obj/item/clothing/suit/storage/snow_suit/hybrisa/parka_green,
 /obj/item/clothing/suit/storage/snow_suit/survivor/parka/yellow,
 /obj/item/clothing/suit/storage/snow_suit/hybrisa/parka_brown,
+/obj/item/bodybag/tarp/snow,
 /turf/open/floor/prison/darkyellow2/southeast,
 /area/last_bunker/indoors/comms/tcomms_1)
 "qZG" = (
@@ -18650,6 +18728,7 @@
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
+/obj/item/bodybag/tarp/snow,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/last_bunker/indoors/entry_zone)
 "rFc" = (
@@ -78571,12 +78650,12 @@ aNA
 hgi
 ybf
 hgi
-hgi
-hgi
+urg
+urg
 akO
 akO
 akO
-hgi
+urg
 urg
 urg
 urg
@@ -78774,11 +78853,11 @@ hgi
 ybf
 ybf
 ybf
-hgi
+urg
 lfU
 oRg
 eja
-hgi
+urg
 ybf
 ybf
 ybf
@@ -78976,11 +79055,11 @@ hgi
 ybf
 ybf
 ybf
-hgi
+urg
 ctx
 ctx
 ctx
-hgi
+urg
 ybf
 ybf
 sNh
@@ -80003,14 +80082,14 @@ aaa
 ybf
 ybf
 hgi
-hgi
+boN
 boN
 fgv
 fgv
 fgv
 fgv
 boN
-hgi
+boN
 ybf
 ybf
 ybf
@@ -80205,14 +80284,14 @@ aav
 aaa
 ybf
 ybf
-hgi
+boN
 hyB
 yhL
 yhL
 yhL
 yhL
 abG
-hgi
+boN
 ybf
 epo
 aab
@@ -111425,7 +111504,7 @@ dLs
 dLs
 dLs
 mVx
-wUJ
+mVx
 wUJ
 wUJ
 ybf
@@ -111627,8 +111706,8 @@ bBj
 fHy
 dLs
 dLs
-wUJ
-wUJ
+dLs
+mVx
 wUJ
 wUJ
 ybf
@@ -111813,16 +111892,16 @@ uDE
 wAv
 qBg
 jKn
-jKn
+aoy
 jKn
 kWN
 rFL
 vUQ
 yaa
 kWN
+aot
 jKn
-jKn
-jKn
+aon
 jwg
 wAv
 cOR
@@ -111830,7 +111909,7 @@ bPA
 bBj
 gZu
 dLs
-wUJ
+dLs
 wUJ
 wUJ
 ybf
@@ -112016,7 +112095,7 @@ kWN
 kWN
 jKn
 jKn
-jKn
+aox
 kWN
 kWN
 gSW
@@ -112032,7 +112111,7 @@ wAv
 cOR
 bPA
 fHy
-wUJ
+dLs
 wUJ
 wUJ
 wUJ
@@ -113632,7 +113711,7 @@ rhh
 rhh
 rhh
 rhh
-lDe
+rhh
 rhh
 rhh
 rhh
@@ -114457,7 +114536,7 @@ gAS
 lLY
 jhS
 eRn
-wUJ
+mVx
 wUJ
 wUJ
 ybf
@@ -114658,7 +114737,7 @@ xFU
 ryy
 jhS
 aBU
-gRF
+aom
 wUJ
 wUJ
 wUJ
@@ -114850,8 +114929,8 @@ kWN
 gSW
 kWN
 kWN
-jKn
-jKn
+aou
+aoq
 jKn
 kWN
 kWN
@@ -115052,9 +115131,9 @@ kWN
 kWN
 kWN
 kWN
-jKn
-jKn
-jKn
+aov
+aor
+aoo
 juh
 pLH
 jhS
@@ -115062,7 +115141,7 @@ aBU
 ylm
 xFh
 mxB
-wUJ
+dLs
 wUJ
 wUJ
 wUJ
@@ -115254,9 +115333,9 @@ kWN
 gSW
 kWN
 kWN
-kWN
-lOx
-juh
+aow
+aos
+aop
 jhS
 aBU
 ylm

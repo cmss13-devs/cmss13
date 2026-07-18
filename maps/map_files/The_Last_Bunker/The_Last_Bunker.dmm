@@ -6,18 +6,6 @@
 /obj/item/stack/snow,
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/last_bunker/outdoors/eastern_cavern/no_light)
-"aac" = (
-/obj/structure/prop/structure_lattice{
-	dir = 1;
-	health = 300
-	},
-/obj/structure/prop/structure_lattice{
-	dir = 1;
-	layer = 3.1;
-	pixel_y = 10
-	},
-/turf/open/auto_turf/snow/layer1,
-/area/last_bunker/outdoors/eastern_cavern/no_light)
 "aad" = (
 /turf/closed/wall/wood,
 /area/last_bunker/outdoors/eastern_cavern/low_light)
@@ -3682,12 +3670,6 @@
 	name = "Train"
 	},
 /area/last_bunker/indoors/entry_zone/train)
-"akr" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "6,6";
-	name = "Train"
-	},
-/area/last_bunker/indoors/entry_zone/train)
 "aks" = (
 /obj/structure/prop/invuln/dropship_parts/lifeboat{
 	icon_state = "25,6";
@@ -4484,6 +4466,17 @@
 /obj/effect/landmark/lv624/train_door/entrance,
 /obj/effect/stairs/up,
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/last_bunker/indoors/entry_zone)
+"amN" = (
+/turf/closed/wall/hybrisa/colony,
+/area/last_bunker/oob)
+"amO" = (
+/obj/structure/machinery/camera/autoname/lz_camera,
+/obj/structure/machinery/floodlight/landing/floor,
+/turf/open/floor/plating/prison,
+/area/last_bunker/landing_zone_2)
+"amP" = (
+/turf/open/floor/prison/darkred2/southeast,
 /area/last_bunker/indoors/entry_zone)
 "amY" = (
 /turf/open/auto_turf/snow/layer4,
@@ -5340,12 +5333,6 @@
 /obj/structure/platform/stone/strata/north,
 /turf/open/auto_turf/snow/layer1,
 /area/last_bunker/outdoors/surface_exterior/south_east)
-"aDs" = (
-/obj/structure/flora/bush/snow{
-	icon_state = "snowbush_6"
-	},
-/turf/open/auto_turf/snow/layer1,
-/area/last_bunker/outdoors/surface_exterior/center)
 "aDJ" = (
 /obj/structure/flora/bush/snow{
 	icon_state = "snowgrassgb_2"
@@ -11130,12 +11117,6 @@
 "iuB" = (
 /turf/open/auto_turf/snow/layer0,
 /area/last_bunker/outdoors/surface_exterior/south)
-"iuJ" = (
-/obj/structure/machinery/big_computers/messaging_server/brown{
-	dir = 1
-	},
-/turf/open/floor/prison/darkred2/southeast,
-/area/last_bunker/indoors/entry_zone)
 "ivb" = (
 /obj/structure/flora/tree/dead/tree_5,
 /turf/open/auto_turf/snow/layer2,
@@ -74311,11 +74292,11 @@ ybf
 ybf
 iQs
 qSG
-akq
-akg
+akp
+ajS
 akc
 ajS
-ajJ
+ajS
 ajF
 qSG
 ajz
@@ -75119,11 +75100,11 @@ qxD
 qxD
 ahv
 qSG
-akr
-akk
+akp
+ajS
 aer
 ajS
-ajN
+ajS
 ajE
 qSG
 lfS
@@ -78965,7 +78946,7 @@ cln
 ybf
 ybf
 ybf
-hgi
+amN
 adw
 nEl
 nEl
@@ -79164,10 +79145,10 @@ uhu
 aaa
 aaa
 sNh
-ybf
-ybf
-ybf
-hgi
+cln
+epo
+epo
+amN
 adx
 nEl
 nEl
@@ -79365,11 +79346,11 @@ iOR
 aaa
 aag
 aaa
+epo
 cln
 cln
-ybf
-ybf
-hgi
+epo
+amN
 ady
 giQ
 nEl
@@ -79568,10 +79549,10 @@ aaa
 aag
 aag
 aaa
+epo
 cln
-sNh
-ybf
-hgi
+cln
+amN
 adz
 vxN
 nEl
@@ -79770,10 +79751,10 @@ aaa
 uhu
 aag
 aab
+epo
 cln
-cln
-ybf
-hgi
+sNh
+amN
 orC
 eFM
 adh
@@ -79972,10 +79953,10 @@ aaa
 aaa
 aaa
 cln
+epo
 cln
 ybf
-ybf
-hgi
+amN
 hgi
 adn
 adi
@@ -80173,8 +80154,8 @@ aaa
 aaa
 aaa
 epo
-aac
-ybf
+epo
+cln
 ybf
 ybf
 ybf
@@ -111723,7 +111704,7 @@ pup
 pup
 pup
 pup
-diL
+pup
 diL
 uKa
 diL
@@ -111926,7 +111907,7 @@ pup
 pup
 pup
 pup
-aDs
+jUS
 diL
 diL
 pup
@@ -112126,7 +112107,7 @@ jUS
 pup
 pup
 wUJ
-pup
+diL
 pup
 jUS
 jUS
@@ -112171,8 +112152,8 @@ rhh
 rhh
 rhh
 rhh
-gAS
-bdm
+rhh
+amO
 rhh
 rhh
 rhh
@@ -112326,10 +112307,10 @@ jUS
 jUS
 jUS
 jUS
-pup
+diL
 wUJ
 wUJ
-pup
+diL
 pup
 jUS
 cLI
@@ -112529,9 +112510,9 @@ jUS
 cLI
 jUS
 pup
-pup
+diL
 wUJ
-pup
+diL
 pup
 pup
 jUS
@@ -112731,11 +112712,11 @@ pup
 cLI
 pup
 pup
-pup
+diL
 wUJ
 pup
 pup
-diL
+pup
 diL
 diL
 diL
@@ -112936,7 +112917,7 @@ pup
 pup
 pup
 pup
-diL
+pup
 diL
 diL
 diL
@@ -113137,7 +113118,7 @@ adS
 adS
 pup
 pup
-diL
+pup
 diL
 tLr
 uKa
@@ -114191,8 +114172,8 @@ rhh
 rhh
 rhh
 rhh
-gAS
-bdm
+rhh
+amO
 rhh
 rhh
 rhh
@@ -115553,7 +115534,7 @@ lKl
 boN
 amc
 nyA
-iuJ
+amb
 dZd
 qSW
 diL
@@ -115754,7 +115735,7 @@ bnJ
 trR
 boN
 fxW
-amb
+amP
 wcY
 wcY
 qSW

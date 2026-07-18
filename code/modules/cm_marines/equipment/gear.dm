@@ -361,7 +361,7 @@
 /obj/item/device/overwatch_camera_tripod
 	name = "FTC Tripod Camera"
 	desc = "A Motoca-430-T deployable tripod camera that connects to the overwatch network. It can be renamed and deployed."
-	icon = 'icons/obj/structures/machinery/defenses/overwatch.dmi'  // ToDO: Get real sprites
+	icon = 'icons/obj/structures/machinery/defenses/overwatch.dmi'
 	icon_state = "undeployed"
 	item_icons = null
 	item_state_slots = null
@@ -373,6 +373,7 @@
 
 /obj/item/device/overwatch_camera_tripod/Initialize(mapload, ...)
 	. = ..()
+	select_gamemode_skin()   // set correct undeployed icon based on map
 	label = "FTC - Field Tripod Camera"
 	camera = new /obj/structure/machinery/camera/overwatch(src)
 	AddComponent(/datum/component/overwatch_console_control)
@@ -381,6 +382,23 @@
 	squad = null
 	QDEL_NULL(camera)
 	return ..()
+
+/obj/item/device/overwatch_camera_tripod/proc/select_gamemode_skin()
+	if(flags_atom & MAP_COLOR_INDEX)
+		return
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			icon_state = "undeployed_jungle"
+		if("classic")
+			icon_state = "undeployed_classic"
+		if("desert")
+			icon_state = "undeployed_desert"
+		if("snow")
+			icon_state = "undeployed_snow"
+		if("urban")
+			icon_state = "undeployed_urban"
+		else
+			icon_state = "undeployed"
 
 /obj/item/device/overwatch_camera_tripod/attack_self(mob/user)
 	..()
@@ -488,7 +506,6 @@
 	deployed_structure.squad = user_squad
 	deployed_structure.update_full_label()
 	deployed_structure.setDir(user.dir)
-	deployed_structure.icon_state = "deployed"
 
 	if(camera)
 		camera.forceMove(deployed_structure)
@@ -505,7 +522,7 @@
 /obj/structure/overwatch_camera_tripod
 	name = "FTC Tripod Camera"
 	desc = "A Motoca-430-T deployed tripod camera connected to the overwatch network."
-	icon = 'icons/obj/structures/machinery/defenses/overwatch.dmi'  // ToDO: Get real sprites
+	icon = 'icons/obj/structures/machinery/defenses/overwatch.dmi'
 	icon_state = "deployed"
 	density = FALSE
 	anchored = TRUE
@@ -520,6 +537,7 @@
 
 /obj/structure/overwatch_camera_tripod/Initialize(mapload)
 	. = ..()
+	select_gamemode_skin()
 	base_label = "FTC - Field Tripod Camera"
 	update_full_label()
 	camera = new /obj/structure/machinery/camera/overwatch(src)
@@ -527,6 +545,23 @@
 	camera.status = TRUE
 	AddComponent(/datum/component/overwatch_console_control)
 	GLOB.deployed_tripod_cameras += src
+
+/obj/structure/overwatch_camera_tripod/proc/select_gamemode_skin()
+	if(flags_atom & MAP_COLOR_INDEX)
+		return
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			icon_state = "deployed_jungle"
+		if("classic")
+			icon_state = "deployed_classic"
+		if("desert")
+			icon_state = "deployed_desert"
+		if("snow")
+			icon_state = "deployed_snow"
+		if("urban")
+			icon_state = "deployed_urban"
+		else
+			icon_state = "deployed"
 
 /// This is used to append squad names to the Field Camera Tripods' user-made label.
 /obj/structure/overwatch_camera_tripod/proc/update_full_label()

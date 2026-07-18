@@ -5596,7 +5596,8 @@
 /area/last_bunker/indoors/cavern/central)
 "aWs" = (
 /obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
-	dir = 4
+	dir = 4;
+	unacidable = 1
 	},
 /obj/structure/monorail{
 	dir = 4
@@ -5811,7 +5812,8 @@
 /area/last_bunker/indoors/sustainment_zone)
 "bmp" = (
 /obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
-	dir = 4
+	dir = 4;
+	unacidable = 1
 	},
 /turf/open/floor/plating/kutjevo,
 /area/last_bunker/oob/train)
@@ -8439,7 +8441,8 @@
 /area/last_bunker/indoors/comms/tcomms_2_b)
 "fcR" = (
 /obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
-	dir = 4
+	dir = 4;
+	unacidable = 1
 	},
 /turf/closed/wall/strata_outpost/reinforced/hull,
 /area/last_bunker/oob)
@@ -9360,7 +9363,8 @@
 /area/last_bunker/indoors/comms/tcomms_1)
 "gnw" = (
 /obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
-	dir = 4
+	dir = 4;
+	unacidable = 1
 	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/last_bunker/oob/electrical_tunnel)
@@ -11386,7 +11390,8 @@
 /area/last_bunker/indoors/entry_zone/train)
 "iRD" = (
 /obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
-	dir = 4
+	dir = 4;
+	unacidable = 1
 	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/last_bunker/oob/hydro)
@@ -14548,7 +14553,8 @@
 /area/last_bunker/indoors/cavern/north)
 "mSz" = (
 /obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
-	dir = 4
+	dir = 4;
+	unacidable = 1
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -15226,7 +15232,7 @@
 /turf/open/floor/prison/darkpurple2/west,
 /area/last_bunker/indoors/residential_zone)
 "nGZ" = (
-/obj/structure/prop/static_tank/water,
+/obj/structure/reagent_dispensers/tank,
 /turf/open/floor/corsat/squares,
 /area/last_bunker/indoors/entry_zone)
 "nHP" = (
@@ -19104,7 +19110,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/last_bunker/outdoors/surface_exterior/south_west)
 "sFT" = (
-/obj/structure/prop/static_tank/fuel,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/corsat/squares,
 /area/last_bunker/indoors/entry_zone)
 "sFY" = (
@@ -22874,7 +22880,8 @@
 /area/last_bunker/indoors/sustainment_zone)
 "xYN" = (
 /obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
-	dir = 4
+	dir = 4;
+	unacidable = 1
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -112115,7 +112122,7 @@ jUS
 jUS
 pup
 pup
-piz
+wUJ
 pup
 pup
 jUS
@@ -112317,8 +112324,8 @@ jUS
 jUS
 jUS
 pup
-piz
-piz
+wUJ
+wUJ
 pup
 pup
 jUS
@@ -112520,7 +112527,7 @@ cLI
 jUS
 pup
 pup
-piz
+wUJ
 pup
 pup
 pup
@@ -112722,7 +112729,7 @@ cLI
 pup
 pup
 pup
-piz
+wUJ
 pup
 pup
 diL
@@ -113935,7 +113942,7 @@ pup
 pup
 pup
 pup
-diL
+wUJ
 sEA
 qSW
 sQu
@@ -114137,8 +114144,8 @@ adS
 pup
 pup
 pup
-diL
-qSW
+wUJ
+wUJ
 xfd
 sQu
 hNd
@@ -114340,7 +114347,7 @@ pup
 pup
 pup
 alI
-diL
+wUJ
 pjs
 qSW
 qQi
@@ -114538,7 +114545,7 @@ aAW
 pup
 jUS
 lDz
-diL
+wUJ
 pup
 pup
 pup
@@ -114739,8 +114746,8 @@ jUS
 jUS
 cLI
 jUS
-diL
-diL
+wUJ
+wUJ
 pup
 pup
 pup
@@ -114942,7 +114949,7 @@ wcY
 jUS
 diL
 diL
-diL
+wUJ
 pup
 pup
 pup

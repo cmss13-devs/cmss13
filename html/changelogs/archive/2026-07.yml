@@ -152,3 +152,8 @@
   ori-disillusion-mirnov:
   - code_imp: all living mobs now have procs for riding
   - code_imp: adding the riding element is easier
+2026-07-18:
+  TheDonkified:
+  - refactor: Updates spark_spread effect system to use subsystem processing and timers
+      instead of sleeps
+  - refactor: Sparks move a bit faster/smoother

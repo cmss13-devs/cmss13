@@ -362,9 +362,16 @@
 	name = "FTC Tripod Camera"
 	desc = "A Motoca-430-T deployable tripod camera that connects to the overwatch network. It can be renamed and deployed."
 	icon = 'icons/obj/structures/machinery/defenses/overwatch.dmi'
-	icon_state = "undeployed"
-	item_icons = null
-	item_state_slots = null
+	icon_state = "classic_undeployed"
+	item_state = "classic_undeployed"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/obj/structures/machinery/defenses/overwatch.dmi',
+		WEAR_R_HAND = 'icons/obj/structures/machinery/defenses/overwatch.dmi',
+	)
+	item_state_slots = list(
+		WEAR_L_HAND = "classic_left_undeployed",
+		WEAR_R_HAND = "classic_right_undeployed",
+	)
 	flags_equip_slot = null
 	desc_lore = "Following modernisation efforts in the Marine'70 program, USCM Platoons were shrunk and squads re-organised to emphasise individual firepower and mobility. The Motoca-430-T, the precursor to the Motoca-500 Helmet Camera, was commissioned by the Department of Defense to be utilised by Colonial Marine squads in establishing secure perimeters and watching rear areas remotely through the Overwatch system."
 	var/label
@@ -373,7 +380,7 @@
 
 /obj/item/device/overwatch_camera_tripod/Initialize(mapload, ...)
 	. = ..()
-	select_gamemode_skin()   // set correct undeployed icon based on map
+	apply_gamemode_skin()
 	label = "FTC - Field Tripod Camera"
 	camera = new /obj/structure/machinery/camera/overwatch(src)
 	AddComponent(/datum/component/overwatch_console_control)
@@ -383,22 +390,43 @@
 	QDEL_NULL(camera)
 	return ..()
 
-/obj/item/device/overwatch_camera_tripod/proc/select_gamemode_skin()
+/obj/item/device/overwatch_camera_tripod/proc/apply_gamemode_skin()
 	if(flags_atom & MAP_COLOR_INDEX)
 		return
+	var/list/states = icon_states(icon)
+	var/map_prefix
 	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 		if("jungle")
-			icon_state = "undeployed_jungle"
+			map_prefix = "jungle"
 		if("classic")
-			icon_state = "undeployed_classic"
+			map_prefix = "classic"
 		if("desert")
-			icon_state = "undeployed_desert"
+			map_prefix = "desert"
 		if("snow")
-			icon_state = "undeployed_snow"
+			map_prefix = "snow"
 		if("urban")
-			icon_state = "undeployed_urban"
+			map_prefix = "urban"
 		else
-			icon_state = "undeployed"
+			map_prefix = "classic"
+
+	var/ground_state = "[map_prefix]_undeployed"
+	if(ground_state in states)
+		icon_state = ground_state
+		item_state = ground_state
+	else
+		icon_state = "classic_undeployed"
+		item_state = "classic_undeployed"
+
+	var/left_state = "[map_prefix]_left_undeployed"
+	var/right_state = "[map_prefix]_right_undeployed"
+	if(left_state in states)
+		item_state_slots[WEAR_L_HAND] = left_state
+	else
+		item_state_slots[WEAR_L_HAND] = "classic_left_undeployed"
+	if(right_state in states)
+		item_state_slots[WEAR_R_HAND] = right_state
+	else
+		item_state_slots[WEAR_R_HAND] = "classic_right_undeployed"
 
 /obj/item/device/overwatch_camera_tripod/attack_self(mob/user)
 	..()
@@ -464,7 +492,7 @@
 		to_chat(user, SPAN_WARNING("You cannot deploy [src] here!"))
 		return
 	if(istype(deploy_area, /area/shuttle))
-		to_chat(user, SPAN_WARNING("You cannot deploy [src] in a shuttle area.")) // i copied this from M2C so idk if this is necessary?
+		to_chat(user, SPAN_WARNING("You cannot deploy [src] in a shuttle area."))
 		return
 	if(!istype(deploy_turf, /turf/open))
 		to_chat(user, SPAN_WARNING("[src] must be placed on a solid surface!"))
@@ -523,7 +551,7 @@
 	name = "FTC Tripod Camera"
 	desc = "A Motoca-430-T deployed tripod camera connected to the overwatch network."
 	icon = 'icons/obj/structures/machinery/defenses/overwatch.dmi'
-	icon_state = "deployed"
+	icon_state = "classic_deployed"
 	density = FALSE
 	anchored = TRUE
 	layer = OBJ_LAYER
@@ -534,10 +562,11 @@
 	var/datum/squad/squad
 	var/slash_count = 0 // tracks xeno slashes 4 breaking
 	var/broken = FALSE // prevents duplicate undeploys
+	var/image/squad_overlay
 
 /obj/structure/overwatch_camera_tripod/Initialize(mapload)
 	. = ..()
-	select_gamemode_skin()
+	apply_gamemode_skin_deployed()
 	base_label = "FTC - Field Tripod Camera"
 	update_full_label()
 	camera = new /obj/structure/machinery/camera/overwatch(src)
@@ -546,24 +575,41 @@
 	AddComponent(/datum/component/overwatch_console_control)
 	GLOB.deployed_tripod_cameras += src
 
-/obj/structure/overwatch_camera_tripod/proc/select_gamemode_skin()
+/obj/structure/overwatch_camera_tripod/proc/apply_gamemode_skin_deployed()
 	if(flags_atom & MAP_COLOR_INDEX)
 		return
+	var/list/states = icon_states(icon)
+	var/map_prefix
 	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 		if("jungle")
-			icon_state = "deployed_jungle"
+			map_prefix = "jungle"
 		if("classic")
-			icon_state = "deployed_classic"
+			map_prefix = "classic"
 		if("desert")
-			icon_state = "deployed_desert"
+			map_prefix = "desert"
 		if("snow")
-			icon_state = "deployed_snow"
+			map_prefix = "snow"
 		if("urban")
-			icon_state = "deployed_urban"
+			map_prefix = "urban"
 		else
-			icon_state = "deployed"
+			map_prefix = "classic"
 
-/// This is used to append squad names to the Field Camera Tripods' user-made label.
+	var/deployed_state = "[map_prefix]_deployed"
+	if(deployed_state in states)
+		icon_state = deployed_state
+	else
+		icon_state = "classic_deployed"
+
+/obj/structure/overwatch_camera_tripod/proc/update_squad_overlay()
+	if(squad_overlay)
+		overlays -= squad_overlay
+		squad_overlay = null
+	if(squad && squad.equipment_color)
+		squad_overlay = image(icon, "squad-stripe", dir = dir)
+		squad_overlay.appearance_flags = RESET_COLOR
+		squad_overlay.color = squad.equipment_color
+		overlays += squad_overlay
+
 /obj/structure/overwatch_camera_tripod/proc/update_full_label()
 	if(squad)
 		label = "[squad.name] - [base_label]"
@@ -572,11 +618,19 @@
 	name = label
 	if(camera)
 		camera.c_tag = label
+	update_squad_overlay()
+
+/obj/structure/overwatch_camera_tripod/setDir(new_dir)
+	. = ..()
+	update_squad_overlay()
 
 /obj/structure/overwatch_camera_tripod/Destroy()
 	GLOB.deployed_tripod_cameras -= src
 	squad = null
 	QDEL_NULL(camera)
+	if(squad_overlay)
+		overlays -= squad_overlay
+		squad_overlay = null
 	return ..()
 
 /obj/structure/overwatch_camera_tripod/get_examine_text(mob/user)
@@ -586,6 +640,9 @@
 		. += "It is currently assigned to squad: [squad.name]"
 
 /obj/structure/overwatch_camera_tripod/attack_hand(mob/user)
+	if(isyautja(user))
+		to_chat(user, SPAN_WARNING("You can't think of a reason to interact with [src] and decide to leave it alone."))
+		return
 	if(user.a_intent != INTENT_HELP) // I've left this in just in case maints want me to change the tgui menu to intent handling or smth.
 		return ..()
 	var/choice = tgui_alert(user, "What would you like to do with [src]?", "Tripod Camera", list("Rename", "Pick Up", "Cancel"))
@@ -625,7 +682,6 @@
 			if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 				to_chat(user, SPAN_WARNING("You were interrupted while picking up the [src]."))
 				return
-			// Create a new tripod item from the structure
 			undeploy(user)
 			return // not sure if i need this here
 

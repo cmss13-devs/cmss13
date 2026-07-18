@@ -5133,9 +5133,6 @@
 "app" = (
 /turf/open/floor/hybrisa/metal/bluemetalcorner/north,
 /area/last_bunker/indoors/entry_zone)
-"apS" = (
-/turf/closed/wall/hybrisa/colony/reinforced,
-/area/last_bunker/indoors/sustainment_zone)
 "aqj" = (
 /obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/prison,
@@ -59974,7 +59971,7 @@ vPG
 jAw
 vPG
 vPG
-apS
+klO
 lOO
 vny
 qqS
@@ -60176,7 +60173,7 @@ opQ
 lqI
 vPG
 hoB
-apS
+klO
 rbn
 anH
 anG
@@ -60984,7 +60981,7 @@ hsZ
 ngO
 ngO
 eFP
-apS
+klO
 pDF
 anI
 far
@@ -61186,7 +61183,7 @@ pPt
 ngO
 ngO
 tUv
-apS
+klO
 jav
 jav
 nKR
@@ -61388,7 +61385,7 @@ ngO
 ngO
 ngO
 oLt
-apS
+klO
 jav
 jav
 lXa

@@ -692,7 +692,7 @@
 				to_chat(user, SPAN_WARNING("You were interrupted while picking up the [src]."))
 				return
 			undeploy(user)
-			return // not sure if i need this here
+			return
 
 /obj/structure/overwatch_camera_tripod/attack_alien(mob/living/carbon/xenomorph/Xeno)
 	if(islarva(Xeno))

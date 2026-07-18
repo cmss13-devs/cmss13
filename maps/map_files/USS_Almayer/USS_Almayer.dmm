@@ -53227,6 +53227,22 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/auxiliary_officer_office)
+"dGR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 4
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/medical)
 "dGT" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "\improper Cryogenics Bay"
@@ -177140,7 +177156,7 @@ bWm
 bmU
 cbk
 cbk
-bmU
+dGR
 cbk
 bWm
 bmV
@@ -178469,22 +178485,22 @@ aJM
 aWK
 cbq
 aWK
-aRQ
-aRQ
-aRQ
-aRQ
-aRQ
-aRQ
-aRQ
-aRQ
-aRQ
-aRQ
-aRQ
-aRQ
-aRQ
-aRQ
-aRQ
-aRQ
+rkL
+rkL
+rkL
+rkL
+rkL
+rkL
+rkL
+rkL
+rkL
+rkL
+rkL
+rkL
+rkL
+rkL
+rkL
+rkL
 aRQ
 aRQ
 aRQ

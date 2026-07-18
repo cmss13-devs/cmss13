@@ -25,6 +25,39 @@ If ever any of these procs are useful for non-shuttles, rename it to proc/rotate
 			pixel_x = oldPY
 			pixel_y = (oldPX*(-1))
 
+/atom/movable/proc/shuttleRotateMovable(rotation, params=ROTATE_DIR|ROTATE_SMOOTH|ROTATE_OFFSET)
+	if(params & ROTATE_DIR)
+		var/final_dir = angle2dir(rotation+dir2angle(dir))
+		//rotate our direction
+		setDir(final_dir)
+		if(final_dir == SOUTH || final_dir == NORTH)
+			if(istype(src, /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear))
+				var/obj/structure/machinery/door/airlock/hatch = src
+				if(hatch.width == 2)
+					hatch.Move(get_step(hatch.loc, SOUTH))
+				if(hatch.width == 3)
+					hatch.Move(get_step(get_step(hatch.loc, WEST), WEST))
+		if(final_dir == WEST || final_dir == EAST)
+			if(istype(src, /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear))
+				var/obj/structure/machinery/door/airlock/hatch = src
+				if(hatch.width == 2)
+					hatch.Move(get_step(hatch.loc, SOUTH))
+				if(hatch.width == 3)
+					hatch.Move(get_step(get_step(hatch.loc, WEST), WEST))
+
+	//resmooth if need be.
+// if(smooth && (params & ROTATE_SMOOTH))
+// queue_smooth(src)
+
+	//rotate the pixel offsets too.
+	if((pixel_x || pixel_y) && (params & ROTATE_OFFSET))
+		if(rotation < 0)
+			rotation += 360
+		for(var/turntimes=rotation/90;turntimes>0;turntimes--)
+			var/oldPX = pixel_x
+			var/oldPY = pixel_y
+			pixel_x = oldPY
+			pixel_y = (oldPX*(-1))
 
 /* ***********************************Object rotate procs*********************************** */
 

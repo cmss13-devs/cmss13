@@ -1315,15 +1315,15 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, flatten_numeric_alist(alist(
 			if(prob(25))
 				set_broken()
 				if(cell && prob(25))
-					cell.ex_act(severity)
+					QDEL_NULL(cell)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
 				set_broken()
 				if(cell && prob(50))
-					cell.ex_act(severity)
+					QDEL_NULL(cell)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			if(cell)
-				cell.ex_act(severity) //More lags woohoo
+				QDEL_NULL(cell)
 			deconstruct(FALSE)
 			return
 
@@ -1395,6 +1395,11 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, flatten_numeric_alist(alist(
 	. = ..()
 	if(is_mainship_level(z))
 		SShijack.apcs += src
+
+/obj/structure/machinery/power/apc/almayer/connect_to_network()
+	. = ..()
+	if(is_mainship_level(z) && powernet)
+		SShijack.powernets |= powernet
 
 /obj/structure/machinery/power/apc/almayer/Destroy()
 	SShijack.apcs -= src

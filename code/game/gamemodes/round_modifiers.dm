@@ -122,7 +122,7 @@
 
 /datum/gamemode_modifier/continue_on_ground_crash
 	modifier_name = "Continue on Hijack Ground Crash"
-	modifier_desc = "Enable this modifier to not trigger Xeno Major on ground crash"
+	modifier_desc = "Enable this modifier to not trigger Xeno Major on ground crash."
 
 /datum/gamemode_modifier/continue_on_ground_crash/set_active(enabled)
 	if(SShijack?.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)

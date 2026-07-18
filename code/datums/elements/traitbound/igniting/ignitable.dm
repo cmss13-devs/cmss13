@@ -1,3 +1,9 @@
+/datum/ignitable_constants
+	// Update /proc/replace_ignitable_flavor_text(...) to handle any more constants here
+	VAR_FINAL/const/APPLY_THE = 1
+
+GLOBAL_REAL(ignitable_constants, /datum/ignitable_constants)
+
 /// Element for atoms that can ignite
 /datum/element/traitbound/ignitable
 	compatible_types = list(/atom)
@@ -26,22 +32,54 @@
 	if (metadata.igniter_override)
 		ignition_source = metadata.igniter_override
 	if (flavor_text_by_type)
-		for (var/path in flavor_text_by_type)
-			if (!istype_or_any(ignition_source, path))
-				continue
+		var/highest_matching_path = get_matching_paths(igniter, flavor_text_by_type).highest_matching
+		if (highest_matching_path)
+			var/datum/ignitable_flavor_text_data/flavor_text_data = flavor_text_by_type[highest_matching_path]
+			var/replacement_text = flavor_text_data.replacement_text
+			var/index_params = flavor_text_data.index_params
 			flavor_text = text_dynamic_insertion_custom(
-				flavor_text_by_type[path],
+				replacement_text,
 				list("ignitable", "igniter", "user"),
-				"[ignitable.name]", "\the [ignition_source]", user
+				replace_ignitable_flavor_text(
+					ignitable,
+					LAZYACCESS(index_params, "ignitable"),
+				),
+				replace_ignitable_flavor_text(
+					igniter,
+					LAZYACCESS(index_params, "igniter"),
+				),
+				replace_ignitable_flavor_text(
+					user,
+					LAZYACCESS(index_params, "user"),
+				),
 			)
-			break
 	if (!flavor_text)
-		flavor_text = "[user] ignites [ignitable] with [ignition_source]."
+		flavor_text = "[user] ignites \the [ignitable] with \the [ignition_source]."
 	ignitable.ignite(ignition_source, user, flavor_text)
 
 /// Data class for setting igniter_override
 /datum/igniter_override_metadata
+	/// Atom to track as source of ignition
 	var/atom/igniter_override
+
+// TODO: generalize this to be usable in other contexts
+/datum/ignitable_flavor_text_data
+	/// Text template for replacement text
+	var/replacement_text
+	/// Optional mapping of index keys to a text modifiers
+	var/alist/index_params
+
+/datum/ignitable_flavor_text_data/New(replacement_text, alist/index_params)
+	src.replacement_text = replacement_text
+	src.index_params = index_params
+
+/proc/replace_ignitable_flavor_text(atom/atom_to_reference, text_param)
+	if (!text_param)
+		return "[atom_to_reference.name]"
+	else if (text_param == ignitable_constants::APPLY_THE)
+		return "\the [atom_to_reference]"
+	else
+		CRASH("Invalid text_param passed: '[text_param]'")
 
 /**
  * Proc to overwrite for any ignitables with custom flavor text

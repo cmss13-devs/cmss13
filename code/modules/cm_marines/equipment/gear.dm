@@ -652,7 +652,7 @@
 		. += "It is currently assigned to squad: [squad.name]"
 
 /obj/structure/overwatch_camera_tripod/attack_hand(mob/user)
-	if(user.a_intent != INTENT_HELP) // I've left this in just in case maints want me to change the tgui menu to intent handling or smth.
+	if(user.a_intent != INTENT_HELP)
 		return ..()
 	var/choice = tgui_alert(user, "What would you like to do with [src]?", "Tripod Camera", list("Rename", "Pick Up", "Cancel"))
 	switch(choice)

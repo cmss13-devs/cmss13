@@ -4441,6 +4441,46 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/last_bunker/indoors/comms/tcomms_1)
+"amC" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/auto_turf/snow/layer2,
+/area/last_bunker/indoors/cavern/south_entrance)
+"amD" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/auto_turf/snow/layer1,
+/area/last_bunker/indoors/cavern/south_entrance)
+"amE" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/auto_turf/shale/layer1/weedable,
+/area/last_bunker/indoors/cavern/central)
+"amF" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/auto_turf/shale/layer2/weedable,
+/area/last_bunker/indoors/cavern/central)
+"amG" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/auto_turf/snow/layer2,
+/area/last_bunker/indoors/cavern/north_entrance)
+"amH" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/auto_turf/snow/layer2,
+/area/last_bunker/outdoors/cavern_external_access/central)
+"amI" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/auto_turf/shale/layer1/weedable,
+/area/last_bunker/indoors/cavern/west)
+"amJ" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/auto_turf/snow/layer1,
+/area/last_bunker/indoors/cavern/north_entrance)
+"amK" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/auto_turf/sand_white/layer0,
+/area/last_bunker/indoors/cavern/north_entrance/zero_light)
+"amL" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/auto_turf/shale/layer1/weedable,
+/area/last_bunker/outdoors/cavern_external_access/north/adj)
 "amY" = (
 /turf/open/auto_turf/snow/layer4,
 /area/last_bunker/outdoors/cavern_external_access/north)
@@ -16072,6 +16112,7 @@
 /obj/effect/decal/hybrisa/warningstripes_angled_corner{
 	dir = 8
 	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/auto_turf/sand_white/layer0,
 /area/last_bunker/indoors/cavern/central)
 "oOZ" = (
@@ -60319,7 +60360,7 @@ asg
 oqZ
 qPK
 lqI
-vPG
+amI
 vPG
 vPG
 vTT
@@ -65383,7 +65424,7 @@ nWl
 bhU
 bhU
 pOd
-utM
+amF
 pOd
 ybf
 ybf
@@ -68050,7 +68091,7 @@ lrz
 lrz
 dno
 cLr
-hJL
+amC
 pDo
 acY
 hgs
@@ -68824,7 +68865,7 @@ ybf
 bhU
 bhU
 pOd
-pOd
+amE
 pOd
 bhU
 odh
@@ -70024,7 +70065,7 @@ ybf
 anQ
 wBl
 nfu
-nfu
+amH
 nAX
 pOd
 pOd
@@ -70990,7 +71031,7 @@ ybf
 ybf
 ybf
 gLw
-vIw
+amL
 gga
 sQS
 sQS
@@ -71071,7 +71112,7 @@ lrz
 vkb
 ixU
 pDo
-ixU
+amD
 vya
 lrz
 lrz
@@ -73664,7 +73705,7 @@ rKb
 hvc
 fAs
 ppF
-rLh
+amG
 rLh
 wgK
 wgK
@@ -74088,7 +74129,7 @@ hJL
 hJL
 hJL
 pDo
-hJL
+amC
 hJL
 ixU
 ixU
@@ -75671,7 +75712,7 @@ ybf
 vMC
 hvc
 hvc
-ggg
+amJ
 ggg
 hvc
 qxD
@@ -77485,7 +77526,7 @@ ybf
 gvJ
 gvJ
 jSr
-jSr
+amK
 jSr
 jSr
 ybf

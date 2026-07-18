@@ -1083,9 +1083,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrowncorners2/north,
 /area/last_bunker/indoors/entry_zone)
-"adj" = (
-/turf/closed/wall/hybrisa/colony/engineering/reinforced,
-/area/last_bunker/oob)
 "adk" = (
 /obj/effect/decal/cleanable/generic{
 	color = "#5d524b";
@@ -1126,25 +1123,6 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating,
 /area/last_bunker/indoors/entry_zone)
-"adp" = (
-/obj/structure/sign/safety/rad_haz{
-	desc = "Semiotic Standard denoting the nearby presence of a mining processing area.";
-	name = "engineering semiotic";
-	pixel_x = -31;
-	pixel_y = 7
-	},
-/obj/structure/sign/safety/west{
-	pixel_x = -18
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10"
-	},
-/obj/effect/antre/border/corner{
-	dir = 1
-	},
-/turf/open/floor/antre/metal/black/northeast,
-/area/last_bunker/oob)
 "adq" = (
 /obj/structure/largecrate/random/barrel/medical,
 /turf/open/floor/prison/darkbrown2/north,
@@ -1240,9 +1218,6 @@
 "adB" = (
 /turf/open/auto_turf/shale/layer2/weedable,
 /area/last_bunker/indoors/entry_zone/power)
-"adC" = (
-/turf/open/antre/plating/direction_north/west_edge,
-/area/last_bunker/oob)
 "adD" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/redalertblank{
 	light_color = "#FF0000";
@@ -3452,13 +3427,6 @@
 	name = "Train"
 	},
 /area/last_bunker/indoors/entry_zone/train)
-"ajG" = (
-/obj/effect/decal/hybrisa/bloodtrail/clawtrail,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/antre/plating/direction_north,
-/area/last_bunker/oob)
 "ajH" = (
 /obj/effect/landmark/lv624/train_door,
 /turf/open/floor/almayer/test_floor4,
@@ -4455,335 +4423,9 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/last_bunker/indoors/comms/tcomms_1)
-"amC" = (
-/turf/open/antre/plating/direction_north/east_edge,
-/area/last_bunker/oob)
-"amD" = (
-/obj/structure/reagent_dispensers/tank/fuel,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/antre/border/corner,
-/turf/open/floor/antre/metal/black/northwest,
-/area/last_bunker/oob)
-"amE" = (
-/turf/closed/wall/hybrisa/research/reinforced,
-/area/last_bunker/oob)
-"amF" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/antre/plating/corner_dir,
-/area/last_bunker/oob)
-"amG" = (
-/obj/effect/decal/cleanable/blood{
-	icon_state = "mgibbl2"
-	},
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/antre/plating/direction_north/south_edge,
-/area/last_bunker/oob)
-"amH" = (
-/obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa{
-	pixel_x = -5;
-	pixel_y = 10
-	},
-/obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/obj/effect/antre/border/edge,
-/turf/open/antre/plating/direction_north,
-/area/last_bunker/oob)
-"amI" = (
-/obj/item/weapon/gun/smg/p90{
-	current_mag = null;
-	pixel_x = -2;
-	pixel_y = -3
-	},
-/obj/effect/decal/cleanable/blood,
-/obj/item/ammo_magazine/smg/p90{
-	pixel_x = -4;
-	pixel_y = 11;
-	current_rounds = 39
-	},
-/obj/item/ammo_casing/bullet,
-/obj/structure/pipes/standard/manifold/hidden/cyan{
-	dir = 4
-	},
-/turf/open/antre/plating/direction_north,
-/area/last_bunker/oob)
-"amJ" = (
-/obj/effect/antre/border/edge{
-	dir = 8
-	},
-/turf/open/antre/plating/direction_north,
-/area/last_bunker/oob)
-"amK" = (
-/obj/effect/decal/cleanable/blood/gibs/down,
-/obj/effect/decal/hybrisa/bloodtrail{
-	pixel_y = 9
-	},
-/turf/open/antre/plating/direction_north/south_edge,
-/area/last_bunker/oob)
-"amL" = (
-/obj/effect/decal/strata_decals/grime/grime3{
-	pixel_x = -10
-	},
-/obj/effect/decal/hybrisa/trash{
-	icon_state = "trash_2";
-	pixel_x = -8;
-	pixel_y = 12
-	},
-/turf/open/antre/plating/corner_dir/south_east,
-/area/last_bunker/oob)
-"amM" = (
-/obj/item/shard{
-	icon_state = "medium";
-	pixel_x = 5;
-	pixel_y = -11
-	},
-/obj/effect/decal/cleanable/dirt{
-	icon_state = "thermite";
-	name = "impact"
-	},
-/turf/open/antre/plating/direction_north/west_edge,
-/area/last_bunker/oob)
-"amN" = (
-/obj/effect/decal/hybrisa/bloodtrail/clawtrail{
-	dir = 8;
-	pixel_x = 7
-	},
-/obj/item/ammo_casing/bullet,
-/turf/open/antre/plating/direction_north,
-/area/last_bunker/oob)
-"amO" = (
-/obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/blood/drip{
-	pixel_x = -15;
-	pixel_y = 2
-	},
-/obj/effect/decal/cleanable/blood/drip{
-	pixel_x = -13;
-	pixel_y = 33
-	},
-/obj/item/shard/shrapnel/bone_chips/human{
-	pixel_x = -6;
-	pixel_y = -6
-	},
-/obj/effect/decal/cleanable/blood/gibs/core,
-/obj/structure/prop/hybrisa/misc/blood/blood3{
-	pixel_y = -29;
-	pixel_x = -8
-	},
-/obj/item/shard/shrapnel,
-/obj/effect/spawner/gibspawner/human,
-/obj/item/shard/shrapnel,
-/obj/effect/decal/hybrisa/bloodtrail{
-	pixel_y = 9
-	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/turf/open/antre/plating/direction_north,
-/area/last_bunker/oob)
-"amP" = (
-/obj/effect/decal/hybrisa/WY/WY1{
-	pixel_x = -17;
-	pixel_y = 8
-	},
-/obj/structure/prop/hybrisa/misc/blood/blood2{
-	pixel_x = -11;
-	pixel_y = -24
-	},
-/obj/item/ammo_casing/bullet,
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/antre/plating/direction_north,
-/area/last_bunker/oob)
-"amQ" = (
-/obj/effect/decal{
-	icon = 'icons/mob/xenos/effects.dmi';
-	icon_state = "acid_weak";
-	name = "weak acid"
-	},
-/turf/open/antre/plating/direction_north,
-/area/last_bunker/oob)
-"amR" = (
-/obj/effect/decal/hybrisa/bloodtrail{
-	pixel_y = 9
-	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/turf/open/antre/plating/direction_north,
-/area/last_bunker/oob)
-"amS" = (
-/obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "xsplatter4";
-	pixel_x = -11
-	},
-/turf/open/antre/plating/corner_dir/north_west,
-/area/last_bunker/oob)
-"amT" = (
-/obj/effect/decal/cleanable/blood/xeno,
-/obj/item/ammo_magazine/flamer_tank{
-	pixel_x = 7;
-	pixel_y = 8
-	},
-/turf/open/antre/plating/direction_north/north_edge,
-/area/last_bunker/oob)
-"amU" = (
-/obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/effect/antre/border/edge{
-	dir = 1
-	},
-/turf/open/antre/plating/direction_north,
-/area/last_bunker/oob)
-"amV" = (
-/obj/effect/decal/cleanable/blood/xeno{
-	pixel_y = -7
-	},
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/antre/plating/direction_north,
-/area/last_bunker/oob)
-"amW" = (
-/obj/item/ammo_magazine/smg/p90{
-	pixel_x = -4;
-	pixel_y = 11;
-	current_rounds = 24
-	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/effect/antre/border/edge{
-	dir = 4
-	},
-/turf/open/antre/plating/direction_north,
-/area/last_bunker/oob)
-"amX" = (
-/obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/blood/drip{
-	pixel_x = -15;
-	pixel_y = 2
-	},
-/obj/item/shard/shrapnel/bone_chips/human{
-	pixel_x = -6;
-	pixel_y = -6
-	},
-/obj/effect/decal/cleanable/blood/gibs/core,
-/obj/structure/prop/hybrisa/misc/blood/blood3{
-	pixel_y = -29;
-	pixel_x = -8
-	},
-/obj/item/shard/shrapnel,
-/obj/effect/spawner/gibspawner/human,
-/obj/item/shard/shrapnel,
-/obj/item/ammo_casing/bullet,
-/turf/open/antre/plating/direction_north/north_edge,
-/area/last_bunker/oob)
 "amY" = (
 /turf/open/auto_turf/snow/layer4,
 /area/last_bunker/outdoors/cavern_external_access/north)
-"amZ" = (
-/turf/open/antre/plating/corner_dir/north_east,
-/area/last_bunker/oob)
-"ana" = (
-/obj/structure/machinery/disposal/delivery,
-/obj/structure/closet/hydrant{
-	pixel_y = 32
-	},
-/obj/structure/prop/hybrisa/misc/blood/blood1{
-	layer = 3.1;
-	pixel_y = 5;
-	pixel_x = 10
-	},
-/obj/effect/antre/border{
-	dir = 8
-	},
-/turf/open/floor/antre/metal/black,
-/area/last_bunker/oob)
-"anb" = (
-/obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/blood/drip{
-	pixel_x = -15;
-	pixel_y = 2
-	},
-/obj/effect/decal/cleanable/blood/drip{
-	pixel_x = -13;
-	pixel_y = 33
-	},
-/obj/item/shard/shrapnel/bone_chips/human{
-	pixel_x = -6;
-	pixel_y = -6
-	},
-/obj/effect/decal/cleanable/blood/gibs/core,
-/obj/structure/prop/hybrisa/misc/blood/blood3{
-	pixel_y = -29;
-	pixel_x = -8
-	},
-/obj/item/shard/shrapnel,
-/obj/effect/spawner/gibspawner/human,
-/obj/item/shard/shrapnel,
-/obj/effect/decal/hybrisa/bloodtrail{
-	pixel_y = 9
-	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/effect/antre/border/corner{
-	dir = 4
-	},
-/turf/open/floor/antre/metal/black/southeast,
-/area/last_bunker/oob)
-"anc" = (
-/obj/item/weapon/gun/flamer/m240{
-	current_mag = null;
-	layer = 3.1;
-	pixel_y = 4
-	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/turf/open/antre/plating/corner_dir/north_west,
-/area/last_bunker/oob)
-"and" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/antre/plating/direction_north/north_edge,
-/area/last_bunker/oob)
-"ane" = (
-/obj/item/weapon/gun/smg/p90{
-	current_mag = null;
-	pixel_x = -2;
-	pixel_y = -3
-	},
-/turf/open/antre/plating/corner_dir/north_east,
-/area/last_bunker/oob)
-"anf" = (
-/obj/effect/decal/cleanable/generic{
-	color = "#5d524b";
-	alpha = 155
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/effect/antre/border/corner{
-	dir = 8
-	},
-/turf/open/floor/antre/metal/black/southwest,
-/area/last_bunker/oob)
-"ang" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/bed/chair{
-	layer = 4;
-	pixel_y = 13
-	},
-/obj/effect/antre/border{
-	dir = 8
-	},
-/turf/open/floor/antre/metal/black,
-/area/last_bunker/oob)
 "anh" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/ammo_casing/bullet,
@@ -60513,11 +60155,11 @@ ybf
 ybf
 ybf
 ybf
-ana
-amS
-amM
-amF
-adj
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -60715,11 +60357,11 @@ ybf
 ybf
 ybf
 ybf
-anb
-amT
-amN
-amG
-adp
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -60917,11 +60559,11 @@ ybf
 ybf
 ybf
 ybf
-anc
-amU
-amO
-amH
-adC
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -61119,11 +60761,11 @@ hgi
 ybf
 ybf
 ybf
-and
-amV
-amP
-amI
-ajG
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -61321,11 +60963,11 @@ hgi
 ybf
 ybf
 ybf
-ane
-amW
-amQ
-amJ
-amC
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -61523,11 +61165,11 @@ hgi
 hgi
 ybf
 ybf
-anf
-amX
-amR
-amK
-amD
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf
@@ -61725,11 +61367,11 @@ jSN
 hgi
 ybf
 ybf
-ang
-amZ
-amC
-amL
-amE
+ybf
+ybf
+ybf
+ybf
+ybf
 ybf
 ybf
 ybf

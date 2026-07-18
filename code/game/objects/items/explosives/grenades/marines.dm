@@ -33,6 +33,8 @@
 	if(shrapnel_count)
 		create_shrapnel(loc, shrapnel_count, , ,shrapnel_type, cause_data)
 	apply_explosion_overlay()
+	if(type in list(/obj/item/explosive/grenade/high_explosive, /obj/item/explosive/grenade/high_explosive/super))
+		cause_data.body_throw = TRUE
 	cell_explosion(loc, explosion_power, explosion_falloff, falloff_mode, null, cause_data)
 	qdel(src)
 

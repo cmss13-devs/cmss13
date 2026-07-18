@@ -16,6 +16,7 @@ GLOBAL_LIST_INIT(exempted_cause_areas, typecacheof(list(
 	var/faction
 	var/cause_name
 	var/datum/weakref/weak_cause
+	var/body_throw = FALSE
 
 	var/time_created
 

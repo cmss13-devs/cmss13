@@ -119,7 +119,7 @@
 	time_to_dispel = 2.5 MINUTES
 
 /obj/effect/landmark/lv624/train_door/entrance
-	time_to_dispel = 10 MINUTES
+	time_to_dispel = 5 MINUTES
 
 /obj/effect/landmark/lv624/train_door_alt
 	name = "train blocker"
@@ -556,9 +556,9 @@
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(venir_announcement), "Attention: Arriving at Bunker K12. Please stand clear of the door.", "Train Automated Announcement", 'sound/AI/commandreport.ogg'), 1 SECONDS)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(venir_announcement), "Hey, HEY! You guys, on the train. You're in some serious shit, you gotta get outta here, now! That train's already locked down and you've only got two minutes till the xenomorphs breach the command bunker, you heard me, xenomorphs! Find supplies, pick a hole, and wait for rescue.\n\nThe armoury in the west bunker is untouched, and there's a lot of metal in the north hanger bunker.\n\nI'm working to override the exterior lockdown but that'll take me another ten minutes. I can't do anything else for you, good luck.", "Unknown Source", 'sound/AI/commandreport.ogg'), 10 SECONDS)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(xeno_announcement), "Victory! The occupants of this metal bunker have been slain, however, we suffered greatly from the slaughter and must recover. I sense the arrival of a new group of hosts, they, will replenish our ranks.\n\nIt appears the bunker has entered a lockdown, no matter, I have dispatched a lesser drone to sacrifice itself to lift the lockdown, however, it will take two minutes for it to do so. Use this time to prepare.", "everything", QUEEN_MOTHER_ANNOUNCE), 20 SECONDS)
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(xeno_announcement), "The lockdown is lifted.", "everything", QUEEN_MOTHER_ANNOUNCE), 2.5 MINUTES)
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(venir_announcement), "Alert: Command Lockdown Failure Detected", "Automated Facility Transmission", 'sound/AI/commandreport.ogg'), 2.5 MINUTES)
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(venir_announcement), "If anyone is still alive, I've lifted the exterior lockdown. I've setup a fortified position directly west of the main entrance, find me, I've setup sentry guns, make sure you are wearing IFF-ID tags....wait, where's mine, oh fu---", "Unknown Source", 'sound/AI/commandreport.ogg'), 10 MINUTES)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(xeno_announcement), "The lockdown is lifted.", "everything", QUEEN_MOTHER_ANNOUNCE), 2 MINUTES)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(venir_announcement), "Alert: Command Lockdown Failure Detected", "Automated Facility Transmission", 'sound/AI/commandreport.ogg'), 2 MINUTES)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(venir_announcement), "If anyone is still alive, I'm lifting the exterior lockdown. I've setup a fortified position directly west of the main entrance, find me, I've setup sentry guns, make sure you are wearing IFF-ID tags....wait, where's mine, oh fu---", "Unknown Source", 'sound/AI/commandreport.ogg'), 5 MINUTES)
 
 
 //This is processed each tick, but check_win is only checked 5 ticks, so we don't go crazy with scanning for mobs.

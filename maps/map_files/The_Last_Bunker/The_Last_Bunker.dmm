@@ -535,18 +535,6 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/antre/plating/direction_north/east_edge,
 /area/last_bunker/indoors/entry_zone)
-"abM" = (
-/obj/structure/stairs/perspective{
-	dir = 1;
-	icon_state = "p_stair_full";
-	pixel_y = -21
-	},
-/obj/effect/decal/hybrisa/tiretrack{
-	dir = 1;
-	pixel_x = -7
-	},
-/turf/open/floor/prison,
-/area/last_bunker/indoors/entry_zone)
 "abN" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/shoes/snow,
@@ -559,7 +547,7 @@
 /obj/structure/machinery/light{
 	pixel_x = 16
 	},
-/turf/open/antre/plating/direction_north/east_edge,
+/turf/open/antre/plating/direction_north/west_edge,
 /area/last_bunker/indoors/entry_zone)
 "abO" = (
 /obj/structure/barricade/handrail{
@@ -4481,6 +4469,19 @@
 /obj/effect/landmark/monkey_spawn,
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/last_bunker/outdoors/cavern_external_access/north/adj)
+"amM" = (
+/obj/structure/stairs/multiz/up{
+	layer = 1
+	},
+/obj/structure/stairs/perspective{
+	dir = 1;
+	icon_state = "p_stair_full";
+	pixel_y = -1
+	},
+/obj/effect/landmark/lv624/train_door/entrance,
+/obj/effect/stairs/up,
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/last_bunker/indoors/entry_zone)
 "amY" = (
 /turf/open/auto_turf/snow/layer4,
 /area/last_bunker/outdoors/cavern_external_access/north)
@@ -7154,14 +7155,6 @@
 /obj/effect/hybrisa/misc/fake/pipes/pipe3,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/last_bunker/indoors/sustainment_zone)
-"dkI" = (
-/obj/structure/stairs/perspective{
-	dir = 1;
-	icon_state = "p_stair_full";
-	pixel_y = -21
-	},
-/turf/open/floor/prison/green/west,
-/area/last_bunker/indoors/entry_zone)
 "dle" = (
 /turf/open_space,
 /area/last_bunker/indoors/comms/tcomms_2_a)
@@ -8281,14 +8274,6 @@
 /obj/structure/platform/metal/shiva/north,
 /turf/open/auto_turf/snow/layer1,
 /area/last_bunker/landing_zone_2)
-"eRv" = (
-/obj/structure/stairs/perspective{
-	dir = 1;
-	icon_state = "p_stair_full";
-	pixel_y = -21
-	},
-/turf/open/floor/prison/blue/east,
-/area/last_bunker/indoors/entry_zone)
 "eRC" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -8802,14 +8787,6 @@
 	},
 /turf/open/floor/prison/green,
 /area/last_bunker/indoors/sustainment_zone)
-"fAn" = (
-/obj/structure/stairs/perspective{
-	dir = 1;
-	icon_state = "p_stair_full";
-	pixel_y = -21
-	},
-/turf/open/floor/prison/blue/west,
-/area/last_bunker/indoors/entry_zone)
 "fAp" = (
 /obj/structure/flora/wood/stick4,
 /turf/open/auto_turf/snow/layer1,
@@ -11124,14 +11101,6 @@
 /obj/structure/platform/stone/strata,
 /turf/open_space,
 /area/last_bunker/oob)
-"isp" = (
-/obj/structure/stairs/perspective{
-	dir = 1;
-	icon_state = "p_stair_full";
-	pixel_y = -21
-	},
-/turf/open/floor/prison,
-/area/last_bunker/indoors/entry_zone)
 "itf" = (
 /obj/item/stack/snow,
 /turf/open/auto_turf/shale/layer1/weedable,
@@ -22155,14 +22124,6 @@
 /obj/structure/fence/slim/dark,
 /turf/open/auto_turf/snow/layer0,
 /area/last_bunker/landing_zone_2)
-"wTT" = (
-/obj/structure/stairs/perspective{
-	dir = 1;
-	icon_state = "p_stair_full";
-	pixel_y = -21
-	},
-/turf/open/floor/prison/green/east,
-/area/last_bunker/indoors/entry_zone)
 "wUi" = (
 /obj/structure/platform/stone/strata/west,
 /turf/open/auto_turf/snow/layer1,
@@ -75577,7 +75538,7 @@ fMD
 fMD
 fMD
 fMD
-fAn
+fMD
 lqm
 hgi
 ybf
@@ -75779,7 +75740,7 @@ vxN
 nEl
 nEl
 aiu
-isp
+vxN
 lqm
 hgi
 ybf
@@ -75981,7 +75942,7 @@ nEl
 vxN
 vxN
 vIP
-isp
+vxN
 lqm
 hgi
 ybf
@@ -76183,7 +76144,7 @@ dQM
 dQM
 dQM
 dQM
-eRv
+dQM
 lqm
 hgi
 ybf
@@ -76789,7 +76750,7 @@ fMD
 fMD
 fMD
 fMD
-fAn
+fMD
 lqm
 hgi
 ybf
@@ -76991,8 +76952,8 @@ vxN
 vxN
 vxN
 abS
-isp
-mQd
+vxN
+amM
 hgi
 ybf
 ybf
@@ -77193,7 +77154,7 @@ vxN
 nEl
 nEl
 vIP
-isp
+vxN
 lqm
 hgi
 ybf
@@ -77395,7 +77356,7 @@ dQM
 aiv
 aiv
 aiv
-eRv
+dQM
 lqm
 hgi
 ybf
@@ -78001,7 +77962,7 @@ udt
 aiz
 aiz
 udt
-dkI
+udt
 lqm
 hgi
 ybf
@@ -78203,7 +78164,7 @@ nEl
 nEl
 vxN
 abS
-isp
+vxN
 lqm
 hgi
 ybf
@@ -78405,7 +78366,7 @@ vxN
 vxN
 abY
 abT
-abM
+abY
 mQd
 hgi
 ybf
@@ -78607,7 +78568,7 @@ kXH
 kXH
 kXH
 kXH
-wTT
+kXH
 lqm
 hgi
 ybf
@@ -79213,7 +79174,7 @@ udt
 udt
 udt
 udt
-dkI
+udt
 lqm
 hgi
 ybf
@@ -79415,7 +79376,7 @@ vxN
 vxN
 vxN
 aiu
-isp
+vxN
 lqm
 hgi
 ybf
@@ -79617,7 +79578,7 @@ nEl
 acb
 aiA
 aiw
-isp
+vxN
 lqm
 hgi
 ybf
@@ -79819,7 +79780,7 @@ aiG
 kXH
 kXH
 kXH
-wTT
+kXH
 lqm
 hgi
 ybf

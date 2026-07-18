@@ -288,7 +288,7 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 	QDEL_LIST(GLOB.comm_tower_landmarks_net_two)
 
 /datum/game_mode/proc/spawn_sensors()
-	if(GLOB.sensor_tower_landmarks)
+	if(length(GLOB.sensor_tower_landmarks))
 		var/obj/effect/landmark/sensors/picked = pick(GLOB.sensor_tower_landmarks)
 		picked.spawn_tower()
 

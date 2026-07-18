@@ -50877,7 +50877,10 @@
 /area/almayer/command/cic)
 "crF" = (
 /obj/structure/platform/metal/almayer_smooth,
-/obj/structure/machinery/camera/autoname/almayer,
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
+	name = "ship-grade camera"
+	},
 /turf/open/floor/almayer/plating,
 /area/almayer/command/cic)
 "crG" = (

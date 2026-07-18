@@ -640,9 +640,6 @@
 		. += "It is currently assigned to squad: [squad.name]"
 
 /obj/structure/overwatch_camera_tripod/attack_hand(mob/user)
-	if(isyautja(user))
-		to_chat(user, SPAN_WARNING("You can't think of a reason to interact with [src] and decide to leave it alone."))
-		return
 	if(user.a_intent != INTENT_HELP) // I've left this in just in case maints want me to change the tgui menu to intent handling or smth.
 		return ..()
 	var/choice = tgui_alert(user, "What would you like to do with [src]?", "Tripod Camera", list("Rename", "Pick Up", "Cancel"))

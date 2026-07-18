@@ -753,6 +753,11 @@
 	},
 /turf/open/floor/shiva/multi_tiles,
 /area/shiva/interior/colony/research_hab)
+"acH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/cryopod/joe/weyland/alt,
+/turf/open/floor/shiva/yellow/southeast,
+/area/shiva/interior/garage)
 "acI" = (
 /obj/structure/fence,
 /turf/open/auto_turf/snow/layer3,
@@ -887,6 +892,11 @@
 /obj/structure/fence,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_colony_grounds)
+"adf" = (
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/garage)
 "adg" = (
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8
@@ -4753,6 +4763,8 @@
 	icon_state = "gib6"
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
 /turf/open/floor/shiva/yellow,
 /area/shiva/interior/garage)
 "aCy" = (
@@ -8575,7 +8587,7 @@
 /area/shiva/interior/colony/research_hab)
 "dBK" = (
 /obj/structure/surface/table,
-/obj/item/tool/kitchen/utensil/pfork{
+/obj/item/tool/kitchen/utensil/fork/plastic{
 	pixel_x = -4;
 	pixel_y = 10
 	},
@@ -12985,7 +12997,7 @@
 /area/shiva/interior/colony/n_admin)
 "jhR" = (
 /obj/structure/surface/table/woodentable,
-/obj/item/tool/kitchen/utensil/pknife{
+/obj/item/tool/kitchen/utensil/knife/plastic{
 	pixel_x = 12;
 	pixel_y = 7
 	},
@@ -15264,9 +15276,11 @@
 /area/shiva/interior/colony/medseceng)
 "lPh" = (
 /obj/structure/surface/rack,
-/obj/item/explosive/grenade/custom/metal_foam,
-/obj/item/explosive/grenade/custom/metal_foam,
 /obj/item/device/flashlight,
+/obj/item/explosive/grenade/metal_foam,
+/obj/item/explosive/grenade/metal_foam,
+/obj/item/explosive/grenade/metal_foam,
+/obj/item/explosive/grenade/metal_foam,
 /turf/open/floor/shiva/yellow/west,
 /area/shiva/interior/colony/medseceng)
 "lPC" = (
@@ -23450,6 +23464,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard/fortbiceps)
 "vUL" = (
+/obj/structure/machinery/cryopod/joe/weyland/alt,
 /turf/open/floor/shiva/yellow/east,
 /area/shiva/interior/garage)
 "vVq" = (
@@ -49709,7 +49724,7 @@ azK
 ver
 pKb
 azK
-ver
+adf
 ver
 aCx
 ktd
@@ -49875,7 +49890,7 @@ ohb
 afa
 vUL
 aeS
-aCA
+acH
 ktd
 cZk
 bIV
@@ -50202,7 +50217,7 @@ ohb
 ohb
 afa
 aeY
-aBV
+kAT
 aCz
 ktd
 cZk

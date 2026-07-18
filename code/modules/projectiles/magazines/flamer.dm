@@ -309,3 +309,13 @@
 	caliber = "Napalm EX"
 	flamer_chem = "napalmex"
 	stripe_icon = TRUE
+
+/obj/item/ammo_magazine/flamer_tank/flammenwerfer/survivor
+	name = "Modified FW3 heavy incinerator tank"
+	desc = "A heavy, high capacity tank utilized by the Flammenwerfer 3 Heavy Incineration Unit. Someone has done the due diligence of somehow scrubbing out the heat-resistant WY logo, and removing the complement propellant gas tank- massively reducing its internal capacity for most use-cases. \n\nNo telling what's inside now...\n"
+	flamer_chem = "stablefoam"
+	icon_state = "fl3_survivor"
+	item_state = "fl3_survivor"
+
+	max_rounds = 150
+	current_rounds = 80

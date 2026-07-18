@@ -257,6 +257,7 @@
 
 	cmd_admin_say(msg)
 
+SET_PROTECTED_PROC(/client/proc/cmd_admin_say)
 /client/proc/cmd_admin_say(msg as text)
 	set name = "Asay" //Gave this shit a shorter name so you only have to time out "asay" rather than "admin say" to use it --NeoFite
 	set category = "Admin"
@@ -315,7 +316,6 @@
 
 	for(var/mob/living/mob in view(usr.client))
 		show_blurb(mob, 15, message, null, "center", "center", color, null, null, 1)
-	log_admin("[key_name(src)] sent an In View admin alert with custom message [message].")
 	message_admins("[key_name(src)] sent an In View admin alert with custom message [message].")
 
 /datum/admins/proc/directnarrateall()
@@ -332,7 +332,6 @@
 
 	for(var/mob/living/mob in view(usr.client))
 		to_chat(mob, SPAN_ANNOUNCEMENT_HEADER_BLUE(message))
-	log_admin("[key_name(usr)] sent a Direct Narrate in View with custom message \"[message]\".")
 	message_admins("[key_name(usr)] sent a Direct Narrate in View with custom message \"[message]\".")
 
 #define SUBTLE_MESSAGE_IN_HEAD "Voice in Head"
@@ -385,6 +384,7 @@
 	var/msg = input(src, null, "asay \"text\"") as text|null
 	cmd_admin_say(msg)
 
+SET_PROTECTED_PROC(/client/proc/cmd_mentor_say)
 /client/proc/cmd_mentor_say(msg as text)
 	set name = "MentorSay"
 	set category = "Admin.Mentor"
@@ -668,7 +668,6 @@
 	friend.aghosted_original_mob = user.mind?.original
 	user.mind.transfer_to(friend)
 
-	log_admin("[key_name(friend)] started being imaginary friend of [key_name(befriended_mob)].")
 	message_admins("[key_name_admin(friend)] started being imaginary friend of [key_name_admin(befriended_mob)].")
 
 /client/proc/in_view_panel()

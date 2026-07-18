@@ -614,7 +614,7 @@
 		to_chat(src, SPAN_WARNING("Ew, [pulled] is already starting to rot."))
 		return
 	if(hauled_mob?.resolve()) // We can't carry more than one mob
-		to_chat(src, SPAN_WARNING("You already are carrying something, there's no way that will work."))
+		to_chat(src, SPAN_WARNING("We already are carrying something, there's no way that will work."))
 		return
 	if(HAS_TRAIT(pulled, TRAIT_HAULED))
 		to_chat(src, SPAN_WARNING("They are already being hauled by someone else."))
@@ -622,9 +622,13 @@
 	if(action_busy)
 		to_chat(src, SPAN_WARNING("We are already busy with something."))
 		return
-	if(grab_level < GRAB_AGGRESSIVE)
+
+	var/threshold = client?.prefs?.xeno_defensive_grab_pref[caste_type]
+	threshold = clamp(threshold, 0.25, 1)
+	if(grab_level < GRAB_AGGRESSIVE && threshold < 1)
 		grab_obj.progress_defensive_xeno(src, pulled)
 		return
+
 	SEND_SIGNAL(src, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
 	visible_message(SPAN_DANGER("[src] starts to restrain [pulled]!"),
 	SPAN_DANGER("We start restraining [pulled]!"), null, 5)
@@ -632,7 +636,7 @@
 		to_chat(pulled, FONT_SIZE_HUGE(SPAN_DANGER("[src] is trying to restrain you!")))
 	if(do_after(src, 5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 		if((isxeno(pulled.loc) && !hauled_mob) || HAS_TRAIT(pulled, TRAIT_HAULED))
-			to_chat(src, SPAN_WARNING("Someone already took \the [pulled]."))
+			to_chat(src, SPAN_WARNING("Someone already took [pulled]."))
 			return
 		if(pulling == pulled && !pulled.buckled && (pulled.stat != DEAD || pulled.chestburst) && !hauled_mob?.resolve()) //make sure you've still got them in your claws, and alive
 			if(SEND_SIGNAL(pulled, COMSIG_MOB_HAULED, src) & COMPONENT_CANCEL_HAUL)

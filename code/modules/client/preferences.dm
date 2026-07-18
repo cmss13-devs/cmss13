@@ -257,8 +257,10 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/xeno_prefix = "XX"
 	var/xeno_postfix = ""
 	var/xeno_name_ban = FALSE
-	var/xeno_vision_level_pref = XENO_VISION_LEVEL_MID_NVG
 	var/show_queen_name = FALSE
+
+	var/xeno_vision_level_pref = XENO_VISION_LEVEL_MID_NVG
+	var/alist/xeno_defensive_grab_pref = alist()
 
 	var/stylesheet = "Modern"
 

@@ -514,7 +514,9 @@
 	var/is_target_xeno = isxeno(target_living)
 	if(!is_target_xeno && isxeno(target_living.pulledby) && target_living.pulledby.grab_level >= GRAB_AGGRESSIVE && !(ammo.flags_ammo_behavior & AMMO_XENO))
 		var/mob/living/carbon/xenomorph/puller = target_living.pulledby
-		if(puller.health / puller.maxHealth > 0.25 && puller.stat == CONSCIOUS)
+		var/threshold = puller.client?.prefs?.xeno_defensive_grab_pref[puller.caste_type]
+		threshold = clamp(threshold, 0.25, 1)
+		if(puller.health / puller.maxHealth > threshold && puller.stat == CONSCIOUS)
 			// Protect the target
 			original_intended_target = target_living
 			is_target_xeno = TRUE

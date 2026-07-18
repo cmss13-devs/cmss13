@@ -1,0 +1,5 @@
+author: "GoodWheatley"
+delete-after: True
+changes:
+  - rscdel: "Removed rangefinders that spawn with survivors on Chance's Claim and Tyrargo Rift"
+  - maptweak: "Added rangefinders on Chance's Claim and Tyrargo Rift. The rangefinder spawns north of Fitness on CC, and in the northwest corner of upper Apartments on Tyrargo."

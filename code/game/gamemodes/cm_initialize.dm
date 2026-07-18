@@ -481,7 +481,7 @@ Additional game mode variables.
 		if(/datum/job/civilian/working_joe/daniel)
 			joe_job = GLOB.RoleAuthority.roles_by_name[JOB_DANIEL]
 		if(/datum/job/antag/upp/dzho_automaton/colony)
-			joe_job = GLOB.RoleAuthority.roles_by_name[JOB_UPP_JOE]
+			joe_job = GLOB.RoleAuthority.roles_by_name[JOB_UPP_COLONY_JOE]
 
 	if(!joe_job)
 		qdel(new_joe)

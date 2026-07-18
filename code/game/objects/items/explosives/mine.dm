@@ -397,6 +397,7 @@
 	layer = ABOVE_OBJ_LAYER
 	shrapnel_spread = 360
 	health = 50
+	ignore_small_xeno = TRUE
 	var/disarmed = FALSE
 	var/explosion_strength = 100
 	var/explosion_falloff = 30
@@ -544,8 +545,6 @@
 	mine_state = icon_state
 	upgrade_timer = addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/item/explosive/mine/sharp, upgrade_mine)), 30 SECONDS, TIMER_DELETE_ME | TIMER_STOPPABLE)
 	anchored = TRUE
-	for(var/mob/living/carbon/mob in range(1, src))
-		try_to_prime(mob)
 
 /obj/item/explosive/mine/sharp/attack_alien()
 	if(disarmed)

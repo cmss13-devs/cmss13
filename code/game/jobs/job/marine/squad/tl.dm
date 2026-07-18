@@ -13,7 +13,7 @@
 
 	// job option
 	job_options = list(FTL_VARIANT = "FTL", RTO_VARIANT = "RTO", JTAC_VARIANT = "JTAC")
-	/// The doctor variant of the doctor role that was selected in handle_job_options
+	/// The team lead variant of the team lead role that was selected in handle_job_options
 	var/teamlead_variant
 
 /datum/job/marine/tl/handle_job_options(option)

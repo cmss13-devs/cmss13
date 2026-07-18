@@ -22209,7 +22209,7 @@
 /area/navalis/indoors/command/server_room)
 "ghN" = (
 /obj/structure/surface/table/reinforced/cloth,
-/obj/item/tool/kitchen/utensil/pknife,
+/obj/item/tool/kitchen/utensil/knife/plastic,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/navalis/indoors/residential/cafeteria)
 "gib" = (

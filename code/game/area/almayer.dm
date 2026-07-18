@@ -709,6 +709,7 @@
 
 /area/almayer/medical/cmo_office
 	name = "\improper Chief Medical Officer's Office"
+	allow_construction = FALSE
 	icon_state = "medical"
 
 /area/almayer/medical/operating_room_one

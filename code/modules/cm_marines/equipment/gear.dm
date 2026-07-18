@@ -375,6 +375,7 @@
 	flags_equip_slot = null
 	desc_lore = "Following modernisation efforts in the Marine'70 program, USCM Platoons were shrunk and squads re-organised to emphasise individual firepower and mobility. The Motoca-430-T, the precursor to the Motoca-500 Helmet Camera, was commissioned by the Department of Defense to be utilised by Colonial Marine squads in establishing secure perimeters and watching rear areas remotely through the Overwatch system."
 	var/label
+	/// this keeps track of the users' squad so it can be appended later to the label
 	var/datum/squad/squad
 	var/obj/structure/machinery/camera/camera
 
@@ -394,6 +395,7 @@
 	if(flags_atom & MAP_COLOR_INDEX)
 		return
 	var/list/states = icon_states(icon)
+	/// this keeps track of what map it is so we can look for map_prefix + whichever sprite we need at that time
 	var/map_prefix
 	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 		if("jungle")
@@ -467,7 +469,10 @@
 			deploy_tripod(user)
 
 /obj/item/device/overwatch_camera_tripod/proc/deploy_tripod(mob/user)
-	if(!user || user.stat != CONSCIOUS) // pre-do-after
+
+	// first checks before do-after
+
+	if(!user || user.stat != CONSCIOUS)
 		to_chat(user, SPAN_WARNING("You can't do that right now."))
 		return
 
@@ -507,11 +512,13 @@
 		to_chat(user, SPAN_WARNING("You were interrupted while deploying [src]"))
 		return
 
-	if(!deploy_area.allow_construction) //re-check turf etc.
+	// second checks
+
+	if(!deploy_area.allow_construction)
 		to_chat(user, SPAN_WARNING("You cannot deploy [src] here!"))
 		return
 	if(istype(deploy_area, /area/shuttle))
-		to_chat(user, SPAN_WARNING("You cannot deploy [src] in a shuttle area.")) // i copied this from M2C so idk if this is necessary?
+		to_chat(user, SPAN_WARNING("You cannot deploy [src] in a shuttle area."))
 		return
 	if(!istype(deploy_turf, /turf/open))
 		to_chat(user, SPAN_WARNING("[src] must be placed on a solid surface!"))
@@ -522,14 +529,14 @@
 			to_chat(user, SPAN_WARNING("[blocking_object] is blocking the deployment spot!"))
 			return
 
-	var/datum/squad/user_squad = null // deployment & labelling
-	if(ishuman(user)) // second human check just in case
+	var/datum/squad/user_squad = null
+	if(ishuman(user))
 		var/mob/living/carbon/human/human_user = user
 		user_squad = human_user.assigned_squad
 
 	var/base_label = label ? label : "FTC - Field Tripod Camera"
 
-	var/obj/structure/overwatch_camera_tripod/deployed_structure = new(deploy_turf) // transform to new struc
+	var/obj/structure/overwatch_camera_tripod/deployed_structure = new(deploy_turf)
 	deployed_structure.base_label = base_label
 	deployed_structure.squad = user_squad
 	deployed_structure.update_full_label()
@@ -553,15 +560,20 @@
 	icon = 'icons/obj/structures/machinery/defenses/overwatch.dmi'
 	icon_state = "classic_deployed"
 	density = FALSE
+	unacidable = TRUE // I haven't tested this but Xenos should topple this thing over first.
 	anchored = TRUE
 	layer = OBJ_LAYER
 	desc_lore = "Following modernisation efforts in the Marine'70 program, USCM Platoons were shrunk and squads re-organised to emphasise individual firepower and mobility. The Motoca-430-T, the precursor to the Motoca-500 Helmet Camera, was commissioned by the Department of Defense to be utilised by Colonial Marine squads in establishing secure perimeters and watching rear areas remotely through the Overwatch system."
 	var/label = "FTC - Field Tripod Camera"
+	/// This contains a base label which is always present in the Overwatch menu
 	var/base_label = "FTC"
 	var/obj/structure/machinery/camera/camera
+	/// This tracks the users' squad so it can be appended to the cameras' name when renamed
 	var/datum/squad/squad
-	var/slash_count = 0 // tracks xeno slashes 4 breaking
-	var/broken = FALSE // prevents duplicate undeploys
+	/// This tracks the current slash counter on the static camera to undeploy it at 4 slashes
+	var/slash_count = 0
+	/// This is tracked to prevent duplicate undeploys
+	var/broken = FALSE
 	var/image/squad_overlay
 
 /obj/structure/overwatch_camera_tripod/Initialize(mapload)

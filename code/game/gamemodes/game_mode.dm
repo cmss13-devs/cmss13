@@ -292,7 +292,8 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 		var/obj/effect/landmark/sensors/picked = pick(GLOB.sensor_tower_landmarks)
 		picked.spawn_tower()
 
-	for(var/i in SSmapping.configs[GROUND_MAP].short_sensor_cunt)
+	var/count = SSmapping.configs[GROUND_MAP].short_sensor_count
+	for(var/i in 1 to count)
 		if(!GLOB.small_sensor_tower_landmarks)
 			break
 		var/obj/effect/landmark/short_range_sensors/picked = pick(GLOB.small_sensor_tower_landmarks)

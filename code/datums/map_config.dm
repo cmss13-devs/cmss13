@@ -84,7 +84,7 @@
 	/// If truthy this is config for a round overridden map: search for override maps in data/, instead of using a path in maps/
 	var/override_map
 
-	var/short_sensor_cunt = 0
+	var/short_sensor_count = 0
 
 /datum/map_config/New()
 	survivor_types = list(
@@ -447,11 +447,13 @@
 			log_world("map_config map_item_type is not a proper typepath!")
 			return
 
-	if(json["short_sensor_cunt"])
-		short_sensor_cunt = text2num(json["short_sensor_cunt"])
+	if(json["short_sensor_count"])
+		short_sensor_count = text2num(json["short_sensor_count"])
+		world.log << short_sensor_count
 
 	if(json["nightmare_path"])
 		nightmare_path = json["nightmare_path"]
+
 
 	if(islist(json["environment_traits"]))
 		environment_traits = json["environment_traits"]

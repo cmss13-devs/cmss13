@@ -174,8 +174,8 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/xenomorph/xeno = user.mob
-	xeno.xeno_queen_announce_action()
+	var/mob/living/carbon/xenomorph/queen/xeno = user.mob
+	xeno.hive_message()
 	return TRUE
 
 /datum/keybinding/xenomorph/tail_stab

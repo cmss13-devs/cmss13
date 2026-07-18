@@ -1083,6 +1083,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrowncorners2/north,
 /area/last_bunker/indoors/entry_zone)
+"adj" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/auto_turf/shale/layer1/weedable,
+/area/last_bunker/indoors/cavern/north_entrance/zero_light)
 "adk" = (
 /obj/effect/decal/cleanable/generic{
 	color = "#5d524b";
@@ -1123,6 +1127,10 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating,
 /area/last_bunker/indoors/entry_zone)
+"adp" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/auto_turf/snow/layer0,
+/area/last_bunker/outdoors/surface_exterior/south_west)
 "adq" = (
 /obj/structure/largecrate/random/barrel/medical,
 /turf/open/floor/prison/darkbrown2/north,
@@ -1218,6 +1226,10 @@
 "adB" = (
 /turf/open/auto_turf/shale/layer2/weedable,
 /area/last_bunker/indoors/entry_zone/power)
+"adC" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/auto_turf/snow/layer2,
+/area/last_bunker/outdoors/surface_exterior/south_east)
 "adD" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/redalertblank{
 	light_color = "#FF0000";
@@ -1527,6 +1539,7 @@
 	pixel_y = 1
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/yautja_teleport,
 /turf/open/floor/strata/blue4/east,
 /area/last_bunker/indoors/entry_zone/train)
 "aeo" = (
@@ -3427,6 +3440,11 @@
 	name = "Train"
 	},
 /area/last_bunker/indoors/entry_zone/train)
+"ajG" = (
+/obj/structure/flora/wood/stick2,
+/obj/effect/landmark/yautja_teleport,
+/turf/open/auto_turf/snow/layer2,
+/area/last_bunker/outdoors/surface_exterior/north_east)
 "ajH" = (
 /obj/effect/landmark/lv624/train_door,
 /turf/open/floor/almayer/test_floor4,
@@ -4898,10 +4916,6 @@
 	},
 /turf/open/floor/prison,
 /area/last_bunker/indoors/synthetic_zone)
-"anZ" = (
-/obj/effect/landmark/static_comms/net_one,
-/turf/open/auto_turf/snow/layer1,
-/area/last_bunker/outdoors/surface_exterior/center)
 "aoa" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/supply_kit,
@@ -77272,7 +77286,7 @@ ybf
 ybf
 ybf
 cFv
-gvJ
+adj
 cFv
 cFv
 gvJ
@@ -102445,7 +102459,7 @@ tUO
 tUO
 tUO
 tUO
-tUO
+adp
 tUO
 iGO
 cPr
@@ -118564,7 +118578,7 @@ pup
 pup
 diL
 diL
-anZ
+diL
 qSW
 qSW
 diL
@@ -120816,7 +120830,7 @@ wUJ
 vAE
 msN
 aMD
-aMD
+adC
 aMD
 wUJ
 qJH
@@ -121323,7 +121337,7 @@ wUJ
 wUJ
 wUJ
 xmm
-uYB
+ajG
 xmm
 xmm
 fwt

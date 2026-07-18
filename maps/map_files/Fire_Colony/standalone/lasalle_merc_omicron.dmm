@@ -2,7 +2,6 @@
 "ab" = (
 /obj/structure/machinery/door_control{
 	id = "pass_2";
-	name = "Research Garage Lock";
 	pixel_y = 30
 	},
 /turf/open/floor/corsat/spiralplate,
@@ -138,7 +137,6 @@
 "cs" = (
 /obj/structure/machinery/door_control{
 	id = "pass_1";
-	name = "Research Garage Lock";
 	pixel_x = 24
 	},
 /obj/item/tool/warning_cone{
@@ -888,6 +886,13 @@
 /obj/effect/decal/warning_stripes/worn/corner,
 /turf/open/floor/strata/lightblue4,
 /area/fire_colony/interior/omicron_facility/lobby)
+"rO" = (
+/obj/effect/decal/cleanable/blood/xeno{
+	pixel_x = 11;
+	pixel_y = 12
+	},
+/turf/open/lava/metal/plating,
+/area/fire_colony/exterior/clearing/south_west)
 "rQ" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -927,7 +932,6 @@
 "sH" = (
 /obj/structure/machinery/door_control{
 	id = "pass_3";
-	name = "Research Garage Lock";
 	pixel_y = 30
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -1065,6 +1069,14 @@
 /obj/item/trash/cigbutt,
 /turf/open/floor/strata/lightblue3,
 /area/fire_colony/interior/omicron_facility/lobby)
+"vU" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/cleanable/blood/xeno{
+	pixel_x = -1;
+	pixel_y = -8
+	},
+/turf/open/lava/metal/warning_grate/west,
+/area/fire_colony/exterior/clearing/south_west)
 "vV" = (
 /obj/effect/decal/large_stain{
 	dir = 8;
@@ -1096,7 +1108,6 @@
 "wO" = (
 /obj/structure/machinery/door_control{
 	id = "pass_1";
-	name = "Research Garage Lock";
 	pixel_x = -24
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -1182,7 +1193,6 @@
 "yU" = (
 /obj/structure/machinery/door_control{
 	id = "pass_3";
-	name = "Research Garage Lock";
 	pixel_y = -19
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
@@ -1202,7 +1212,6 @@
 "zb" = (
 /obj/structure/machinery/door_control{
 	id = "pass_2";
-	name = "Research Garage Lock";
 	pixel_y = -19
 	},
 /obj/structure/largecrate/random/mini/small_case{
@@ -2090,6 +2099,11 @@
 /turf/open/floor/corsat,
 /area/fire_colony/interior/omicron_facility/lobby)
 "TX" = (
+/obj/item/ammo_magazine/pistol/b92fs{
+	pixel_x = -3;
+	pixel_y = -3;
+	current_rounds = 0
+	},
 /turf/open/floor/strata/smooth_dir/east,
 /area/fire_colony/interior/omicron_facility/lobby)
 "Ua" = (
@@ -2771,7 +2785,7 @@ nq
 ZQ
 wO
 iG
-rg
+rO
 rg
 pn
 vd
@@ -2795,7 +2809,7 @@ RA
 RA
 jB
 gt
-iG
+vU
 Kz
 Al
 OW

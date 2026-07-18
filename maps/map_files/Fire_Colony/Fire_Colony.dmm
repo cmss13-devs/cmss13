@@ -773,7 +773,8 @@
 /obj/structure/machinery/door_control/brbutton{
 	pixel_x = -6;
 	pixel_y = 31;
-	id = "seeg_engi_1"
+	id = "seeg_engi_1";
+	name = "engineering - lockdown - remote door-control"
 	},
 /turf/open/floor/strata/seeg4,
 /area/fire_colony/interior/seegson/engineering/generator_room)
@@ -3231,11 +3232,7 @@
 "arL" = (
 /obj/structure/machinery/door_control{
 	id = "storage_5";
-	name = "Storage Unit Lock";
-	normaldoorcontrol = 1;
-	pixel_y = 24;
-	req_access_txt = "100";
-	specialfunctions = 4
+	pixel_y = 24
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -4016,7 +4013,6 @@
 "avU" = (
 /obj/structure/machinery/door_control{
 	id = "pass_1";
-	name = "Research Garage Lock";
 	pixel_x = -24
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -4222,11 +4218,7 @@
 "awS" = (
 /obj/structure/machinery/door_control{
 	id = "storage_4";
-	name = "Storage Unit Lock";
-	normaldoorcontrol = 1;
-	pixel_x = -24;
-	req_access_txt = "100";
-	specialfunctions = 4
+	pixel_x = -24
 	},
 /obj/effect/lava/edges/basalt/l_piece{
 	dir = 1
@@ -5799,11 +5791,7 @@
 /obj/item/tool/shovel,
 /obj/structure/machinery/door_control{
 	id = "storage_4";
-	name = "Storage Unit Lock";
-	normaldoorcontrol = 1;
-	pixel_x = 24;
-	req_access_txt = "100";
-	specialfunctions = 4
+	pixel_x = 24
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/floor/dark2,
@@ -7938,7 +7926,6 @@
 "aSM" = (
 /obj/structure/machinery/door_control{
 	id = "pass_1";
-	name = "Research Garage Lock";
 	pixel_x = 24
 	},
 /obj/item/tool/warning_cone{
@@ -9286,10 +9273,6 @@
 /obj/effect/blocker/lava,
 /turf/open/lava/hot_lava/L_piece/east,
 /area/fire_colony/exterior/clearing/north)
-"aZX" = (
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/floor/prison/ramptop,
-/area/fire_colony/exterior/tcomms/container_one)
 "aZZ" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -9555,7 +9538,6 @@
 "bbj" = (
 /obj/structure/machinery/door_control{
 	id = "hydro_bio_dome_1";
-	name = "Research Garage Lock";
 	pixel_y = 30
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -17098,9 +17080,6 @@
 	},
 /turf/open/lava/catwalk/glass_lattice_alt,
 /area/fire_colony/interior/epsilon_facility)
-"cHl" = (
-/turf/open/floor/prison/ramptop,
-/area/fire_colony/exterior/tcomms/container_one)
 "cHr" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/colorable_rug{
@@ -18223,6 +18202,7 @@
 /obj/structure/machinery/light/small,
 /obj/effect/spawner/random/technology_scanner,
 /obj/item/clothing/accessory/patch/seegson,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/hybrisa/carpet/pink,
 /area/fire_colony/interior/dorms/dorms_f)
 "cVR" = (
@@ -27165,7 +27145,6 @@
 "fbn" = (
 /obj/structure/machinery/door_control{
 	id = "hydro_bio_dome";
-	name = "Research Garage Lock";
 	pixel_y = -19
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -31779,7 +31758,8 @@
 /obj/structure/machinery/big_computers/computerblack/computer5,
 /obj/structure/machinery/door_control{
 	pixel_y = -4;
-	id = "ex_1"
+	id = "ex_1";
+	name = "excavation south - primary - remote door-control"
 	},
 /turf/open/floor/strata/altred3/north,
 /area/fire_colony/interior/hangar/checkpoint/excavation)
@@ -33048,6 +33028,7 @@
 /obj/item/prop/magazine/dirty,
 /obj/item/storage/backpack/lightpack/black/five_slot,
 /obj/item/clothing/under/lasalle,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/hybrisa/carpet/carpetbluedeco,
 /area/fire_colony/interior/dorms/dorms_m)
 "guJ" = (
@@ -33758,6 +33739,7 @@
 /obj/structure/machinery/light,
 /obj/structure/closet,
 /obj/effect/landmark/objective_landmark/close,
+/obj/item/clothing/suit/storage/CMB/trenchcoat/white,
 /turf/open/floor/strata/lightblue3,
 /area/fire_colony/interior/hangar/flight_control)
 "gDK" = (
@@ -36246,6 +36228,7 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/landmark/objective_landmark/close,
+/obj/item/clothing/suit/storage/CMB/trenchcoat/white,
 /turf/open/floor/strata/seeg4/west,
 /area/fire_colony/interior/dorms/south)
 "hhi" = (
@@ -37045,6 +37028,7 @@
 	pixel_y = 2;
 	pixel_x = -3
 	},
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat,
 /area/fire_colony/interior/dorms/dorms_m)
 "hrl" = (
@@ -38140,7 +38124,6 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/machinery/door_control{
 	id = "lb_hangar_1";
-	name = "garage shutter control";
 	pixel_y = 32;
 	pixel_x = 1
 	},
@@ -41079,6 +41062,8 @@
 	color = "#818793"
 	},
 /obj/effect/spawner/random/attachment,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/m3717,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/fire_colony/interior/dorms/dorms_p)
 "isI" = (
@@ -50406,7 +50391,6 @@
 "kOR" = (
 /obj/structure/machinery/door_control{
 	id = "pass_3";
-	name = "Research Garage Lock";
 	pixel_y = 30
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -50814,6 +50798,7 @@
 	color = "#818793"
 	},
 /obj/item/device/flashlight/lantern/alt,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/fire_colony/interior/dorms/dorms_p)
 "kTQ" = (
@@ -51653,7 +51638,6 @@
 /obj/structure/platform/metal/hybrisa/metalplatform1/east,
 /obj/structure/machinery/door_control{
 	id = "hydro_bio_dome_1";
-	name = "Research Garage Lock";
 	pixel_y = -19
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -51884,7 +51868,6 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "lb_hangar_2";
-	name = "garage shutter control";
 	pixel_y = -18;
 	pixel_x = 1
 	},
@@ -55340,17 +55323,20 @@
 /obj/structure/machinery/door_control{
 	pixel_x = -9;
 	pixel_y = -4;
-	id = "ex_4"
+	id = "ex_4";
+	name = "excavation south - west - remote door-control"
 	},
 /obj/structure/machinery/door_control{
 	pixel_x = 1;
 	pixel_y = -4;
-	id = "ex_5"
+	id = "ex_5";
+	name = "excavation north - remote door-control"
 	},
 /obj/structure/machinery/door_control{
 	pixel_x = 10;
 	pixel_y = -4;
-	id = "ex_6"
+	id = "ex_6";
+	name = "south western caves - LZ1 - remote door-control"
 	},
 /obj/structure/machinery/big_computers/computerblack/computer5{
 	name = "excavation lockdown control computer";
@@ -56948,10 +56934,6 @@
 "muR" = (
 /obj/structure/machinery/door_control{
 	id = "storage_2";
-	name = "Storage Unit Lock";
-	normaldoorcontrol = 1;
-	req_access_txt = "100";
-	specialfunctions = 4;
 	pixel_y = 29
 	},
 /turf/open/floor/dark2,
@@ -57018,7 +57000,6 @@
 "mvJ" = (
 /obj/structure/machinery/door_control{
 	id = "lb_hangar_1";
-	name = "garage shutter control";
 	pixel_y = -18;
 	pixel_x = 1
 	},
@@ -57772,6 +57753,7 @@
 	pixel_y = 5
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/fire_colony/interior/dorms/north)
 "mEo" = (
@@ -58045,7 +58027,6 @@
 "mHB" = (
 /obj/structure/machinery/door_control{
 	id = "pass_3";
-	name = "Research Garage Lock";
 	pixel_y = -19
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
@@ -59128,9 +59109,6 @@
 	},
 /turf/open/floor/dark2,
 /area/fire_colony/interior/disposals)
-"mUi" = (
-/turf/open/floor/prison/ramptop,
-/area/fire_colony/exterior/tcomms/container_two)
 "mUj" = (
 /obj/effect/lava/edges/basalt/l_piece{
 	dir = 4
@@ -60495,11 +60473,7 @@
 "nlR" = (
 /obj/structure/machinery/door_control{
 	id = "storage_5";
-	name = "Storage Unit Lock";
-	normaldoorcontrol = 1;
-	pixel_y = -24;
-	req_access_txt = "100";
-	specialfunctions = 4
+	pixel_y = -24
 	},
 /turf/open/lava/basalt/basalt8,
 /area/fire_colony/interior/storage_unit/e_valley)
@@ -63048,7 +63022,6 @@
 "nRI" = (
 /obj/structure/machinery/door_control{
 	id = "seeg_garage_1";
-	name = "ore storage room remote door-control";
 	pixel_y = 32
 	},
 /turf/open/lava/metal/plating,
@@ -67936,7 +67909,6 @@
 	layer = 3.2;
 	pixel_x = -9;
 	pixel_y = 28;
-	name = "remote lockdown-control";
 	id = "lz2_flight_control"
 	},
 /turf/open/floor/strata/deco2,
@@ -72857,10 +72829,6 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "storage_2";
-	name = "Storage Unit Lock";
-	normaldoorcontrol = 1;
-	req_access_txt = "100";
-	specialfunctions = 4;
 	pixel_y = -19
 	},
 /turf/open/lava/basalt/basalt0,
@@ -74258,7 +74226,6 @@
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
 /obj/structure/machinery/door_control{
 	id = "hydro_bio_dome";
-	name = "Research Garage Lock";
 	pixel_y = 30
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -75048,6 +75015,17 @@
 "qPy" = (
 /obj/structure/surface/table/almayer{
 	color = "#848484"
+	},
+/obj/item/paper_bin{
+	pixel_x = 7;
+	pixel_y = 5
+	},
+/obj/item/tool/pen{
+	pixel_x = -9
+	},
+/obj/item/tool/pen{
+	pixel_x = -7;
+	pixel_y = -3
 	},
 /turf/open/floor/strata/lightblue3,
 /area/fire_colony/interior/hangar/flight_control)
@@ -79324,7 +79302,6 @@
 "rNX" = (
 /obj/structure/machinery/door_control{
 	id = "pass_2";
-	name = "Research Garage Lock";
 	pixel_y = -19
 	},
 /obj/structure/largecrate/random/mini/small_case{
@@ -83665,22 +83642,26 @@
 /obj/structure/machinery/door_control{
 	pixel_x = -9;
 	pixel_y = -4;
-	id = "ex_1"
+	id = "ex_1";
+	name = "excavation south - primary - remote door-control"
 	},
 /obj/structure/machinery/door_control{
 	pixel_x = 10;
 	pixel_y = -4;
-	id = "ex_3"
+	id = "ex_3";
+	name = "excavation south - south east - remote door-control"
 	},
 /obj/structure/machinery/door_control{
 	pixel_x = 1;
 	pixel_y = -4;
-	id = "ex_2"
+	id = "ex_2";
+	name = "excavation south - east - remote door-control"
 	},
 /obj/structure/machinery/door_control/brbutton/alt{
 	pixel_x = -9;
 	pixel_y = 16;
-	id = "excavation_outpost"
+	id = "excavation_outpost";
+	name = "excavation outpost - lockdown - remote door-control"
 	},
 /obj/structure/machinery/big_computers/computerblack/computer5{
 	name = "excavation lockdown control computer";
@@ -84103,7 +84084,6 @@
 /obj/item/tool/shovel,
 /obj/structure/machinery/door_control{
 	id = "seeg_garage_1";
-	name = "ore storage room remote door-control";
 	pixel_y = -19
 	},
 /turf/open/floor/strata/sand3,
@@ -86807,7 +86787,6 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "lb_hangar_3";
-	name = "garage shutter control";
 	pixel_y = 5;
 	pixel_x = 24
 	},
@@ -87012,6 +86991,7 @@
 	},
 /obj/item/clothing/gloves/black_leather,
 /obj/item/weapon/butterfly,
+/obj/item/clothing/suit/storage/CMB/trenchcoat/blue,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/fire_colony/interior/dorms/dorms_p)
 "tLb" = (
@@ -87251,6 +87231,7 @@
 /obj/effect/decal/cleanable/dirt/alt_dirt,
 /obj/item/clothing/accessory/storage/black_vest/waistcoat,
 /obj/item/clothing/under/lasalle/grey,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/hybrisa/carpet/pink,
 /area/fire_colony/interior/dorms/dorms_f)
 "tNL" = (
@@ -91090,7 +91071,6 @@
 "uKV" = (
 /obj/structure/machinery/door_control{
 	id = "pass_2";
-	name = "Research Garage Lock";
 	pixel_y = 30
 	},
 /turf/open/floor/corsat/spiralplate,
@@ -100936,7 +100916,6 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "lb_hangar_2";
-	name = "garage shutter control";
 	pixel_y = 32;
 	pixel_x = 1
 	},
@@ -101114,7 +101093,6 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "lb_hangar_4";
-	name = "garage shutter control";
 	pixel_y = 5;
 	pixel_x = 24
 	},
@@ -101983,6 +101961,9 @@
 "xwV" = (
 /obj/structure/surface/table/almayer{
 	color = "#848484"
+	},
+/obj/item/reagent_container/food/drinks/coffeecup/alt{
+	pixel_x = -8
 	},
 /turf/open/floor/strata/lightblue4/east,
 /area/fire_colony/interior/hangar/flight_control)
@@ -130533,11 +130514,11 @@ jCh
 bbu
 sNQ
 aLX
-cHl
+aPz
 aaD
 aaD
 aaD
-mUi
+aPz
 btH
 aRt
 twb
@@ -130735,11 +130716,11 @@ aMi
 bbu
 iXz
 sNQ
-aZX
+aaD
 lwx
 aaD
 aPz
-mUi
+aPz
 aLY
 cCy
 twb

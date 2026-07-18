@@ -54,7 +54,6 @@
 /area/fire_colony/exterior/container_yard
 	name = "\improper Old Seegson - Aerodrome - Container Yard"
 	icon_state = "green"
-	minimap_color = MINIMAP_AREA_LZ
 
 // Lava River - Bridge
 

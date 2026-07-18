@@ -171,6 +171,18 @@
 	icon_state = "trench_grey"
 	item_state = "trench_grey"
 
+/obj/item/clothing/suit/storage/CMB/trenchcoat/white
+	name = "\improper white trench-coat"
+	desc = "A worn, white, old style trench-coat. When a bum sees a dick coming, he don't stick around."
+	icon_state = "trench_white"
+	item_state = "trench_white"
+
+/obj/item/clothing/suit/storage/CMB/trenchcoat/blue
+	name = "\improper blue trench-coat"
+	desc = "A worn, blue, old style trench-coat. When a bum sees a dick coming, he don't stick around."
+	icon_state = "trench_blue"
+	item_state = "trench_blue"
+
 /obj/item/clothing/suit/storage/CMB/trenchcoat/police
 	name = "\improper tan police trench-coat"
 	desc = "A light tan coat with a badge. Often worn by government officiated crime scene investigators rather than private sleuths, this suit strikes authority into those who see it."

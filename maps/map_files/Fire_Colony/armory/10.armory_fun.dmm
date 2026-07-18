@@ -13,7 +13,7 @@
 /turf/open/floor/strata/altred4/east,
 /area/fire_colony/interior/hangar/security/armory)
 "h" = (
-/obj/structure/surface/rack{
+/obj/item/frame/rack{
 	color = "#818793"
 	},
 /turf/open/floor/strata/altred4/west,

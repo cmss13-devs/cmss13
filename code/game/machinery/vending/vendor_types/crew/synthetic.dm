@@ -833,6 +833,12 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 /datum/gear/synthetic/suit/grey_trenchcoat
 	path = /obj/item/clothing/suit/storage/CMB/trenchcoat/grey
 
+/datum/gear/synthetic/suit/white_trenchcoat
+	path = /obj/item/clothing/suit/storage/CMB/trenchcoat/white
+
+/datum/gear/synthetic/suit/blue_trenchcoat
+	path = /obj/item/clothing/suit/storage/CMB/trenchcoat/blue
+
 /datum/gear/synthetic/suit/blue_overalls
 	path = /obj/item/clothing/suit/storage/apron/overalls
 

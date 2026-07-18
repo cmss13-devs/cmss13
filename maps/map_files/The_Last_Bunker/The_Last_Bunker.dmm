@@ -860,6 +860,7 @@
 	pixel_y = 1;
 	pixel_x = 2
 	},
+/obj/item/cell/high,
 /turf/open/floor/prison/darkredfull2,
 /area/last_bunker/indoors/entry_zone)
 "acB" = (
@@ -1700,6 +1701,7 @@
 	pixel_y = -1
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/head/welding,
 /turf/open/floor/prison/darkyellow2,
 /area/last_bunker/indoors/hanger_zone)
 "aeH" = (
@@ -3430,7 +3432,8 @@
 "ajC" = (
 /turf/closed/shuttle/lifeboat/transparent{
 	icon_state = "12,0";
-	name = "Train"
+	name = "Train";
+	opacity = 1
 	},
 /area/last_bunker/indoors/entry_zone/train)
 "ajD" = (
@@ -3692,7 +3695,8 @@
 "akp" = (
 /turf/closed/shuttle/lifeboat/transparent{
 	icon_state = "17,5";
-	name = "Train"
+	name = "Train";
+	opacity = 1
 	},
 /area/last_bunker/indoors/entry_zone/train)
 "akq" = (
@@ -4998,7 +5002,7 @@
 /obj/effect/antre/border{
 	dir = 8
 	},
-/obj/effect/landmark/corpsespawner/wygoon,
+/obj/effect/landmark/corpsespawner/wysec,
 /turf/open/floor/prison/green/north,
 /area/last_bunker/indoors/sustainment_zone)
 "any" = (
@@ -5417,6 +5421,10 @@
 /obj/structure/largecrate/random/barrel/medical,
 /turf/open/floor/prison/floor_plate,
 /area/last_bunker/landing_zone_2)
+"aoz" = (
+/obj/effect/landmark/lv624/train_door_alt,
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/last_bunker/indoors/comms/tcomms_2_b)
 "aoO" = (
 /obj/structure/machinery/door/airlock/almayer/marine/shared{
 	name = "\improper Hydroponics";
@@ -6718,6 +6726,7 @@
 	autoname = 1;
 	dir = 1
 	},
+/obj/effect/landmark/lv624/train_door_alt,
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/last_bunker/indoors/comms/tcomms_2_b)
 "cdq" = (
@@ -9367,10 +9376,10 @@
 /turf/open/floor/prison/ramptop/east,
 /area/last_bunker/indoors/hanger_zone)
 "fQH" = (
-/obj/structure/prop/hybrisa/misc/redmeter{
-	pixel_y = 32
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/last_bunker/indoors/residential_zone)
 "fSh" = (
@@ -12757,6 +12766,7 @@
 	pixel_y = 16
 	},
 /obj/item/clothing/gloves/yellow,
+/obj/item/storage/belt/utility/full,
 /turf/open/floor/prison/darkyellow2/northwest,
 /area/last_bunker/indoors/sustainment_zone)
 "kfZ" = (
@@ -17149,6 +17159,7 @@
 /obj/structure/prop/hybrisa/misc/redmeter{
 	pixel_y = 32
 	},
+/obj/effect/landmark/lv624/train_door_alt,
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/last_bunker/indoors/comms/tcomms_2_b)
 "pNY" = (
@@ -20658,6 +20669,8 @@
 /area/last_bunker/indoors/cavern/north)
 "uzr" = (
 /obj/structure/largecrate/random/case,
+/obj/item/storage/belt/utility/full,
+/obj/item/clothing/head/welding,
 /turf/open/floor/hybrisa/metal/zbrownfloor_corner,
 /area/last_bunker/indoors/hanger_zone)
 "uAC" = (
@@ -23356,7 +23369,6 @@
 /turf/open/floor/hybrisa/wood/darkerwood,
 /area/last_bunker/indoors/sustainment_zone)
 "yge" = (
-/obj/item/weapon/throwing_knife,
 /obj/structure/bed/hybrisa/dingy,
 /obj/item/bedsheet/colorable{
 	color = "#798675"
@@ -114025,7 +114037,7 @@ hgi
 jaR
 jaR
 hgi
-ydV
+aoz
 cdd
 hgi
 hgi

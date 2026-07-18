@@ -4,19 +4,12 @@
     "map_file": "The_Last_Bunker.dmm",
     "webmap_url": "LV624",
     "survivor_types": [
-        "/datum/equipment_preset/survivor/goon",
-        "/datum/equipment_preset/survivor/hybrisa/kelland_miner",
-        "/datum/equipment_preset/survivor/civilian",
-        "/datum/equipment_preset/survivor/civilian_unique",
-        "/datum/equipment_preset/survivor/scientist",
-        "/datum/equipment_preset/survivor/doctor",
-        "/datum/equipment_preset/survivor/chef",
-        "/datum/equipment_preset/survivor/engineer",
-        "/datum/equipment_preset/survivor/corporate",
-        "/datum/equipment_preset/survivor/trucker"
-    ],
-    "CO_insert_survivor_types": [
-        "/datum/equipment_preset/survivor/clf/coordinator"
+        "/datum/equipment_preset/survivor_lastbunker/bodyguard",
+        "/datum/equipment_preset/survivor_lastbunker/civilian",
+        "/datum/equipment_preset/survivor_lastbunker/corporate",
+        "/datum/equipment_preset/survivor_lastbunker/doctor",
+        "/datum/equipment_preset/survivor_lastbunker/maint_engineer",
+        "/datum/equipment_preset/survivor_lastbunker/scientist_rich"
     ],
     "announce_text": "###SHIPNAME###, this is Third Fleet Command. For this operation, you will be working alongside other elements of the Third Regiment on a search and recovery operation. The ongoing anti-corporate riots on Hybrisa Prospera have pushed several VIPs to ground, most of who withdrew to several off-world bunkers, furthermore, intelligence suggests one or more of the VIPs have stolen an artefact from the planet whilst in flight.\n\nYour objective is to locate the VIPs, ascertain their current status. and if foul play is suspected, you are to take the VIP in to custody and secure any notable assets.\n\nThere are four know bunkers on four different planets, your vessel is closest to Bunker K31 on LV-843. The other three bunkers are already being secured by the other Battalions, yours is the Last Bunker. Good luck Falling Falcons.",
     "map_item_type": "/obj/item/map/the_last_bunker_map",

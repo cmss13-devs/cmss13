@@ -535,6 +535,9 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/antre/plating/direction_north/east_edge,
 /area/last_bunker/indoors/entry_zone)
+"abM" = (
+/turf/closed/wall/strata_outpost/reinforced,
+/area/last_bunker/oob)
 "abN" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/shoes/snow,
@@ -960,7 +963,7 @@
 /area/last_bunker/indoors/entry_zone)
 "acS" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/closed/wall/strata_outpost/reinforced/hull,
+/turf/closed/wall/strata_outpost/reinforced,
 /area/last_bunker/oob)
 "acT" = (
 /obj/structure/largecrate/random/barrel/black{
@@ -75533,9 +75536,9 @@ vHg
 eGy
 cXj
 rNf
+abM
 hgi
-hgi
-hgi
+abM
 ajl
 ajf
 mOE
@@ -76343,7 +76346,7 @@ vxN
 ada
 acS
 hgi
-hgi
+abM
 ajm
 afP
 mOE
@@ -78967,9 +78970,9 @@ adw
 nEl
 nEl
 gKc
+abM
 hgi
-hgi
-hgi
+abM
 xcB
 acp
 mOE
@@ -79775,9 +79778,9 @@ orC
 eFM
 adh
 fFd
+abM
 hgi
-hgi
-hgi
+abM
 agb
 afT
 mOE

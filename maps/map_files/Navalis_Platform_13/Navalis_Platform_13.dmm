@@ -4496,11 +4496,6 @@
 	},
 /turf/open/floor/prison/greenfull/east,
 /area/navalis/indoors/charon/surface_deck/main_deck)
-"ama" = (
-/obj/effect/decal/hybrisa/road/road_edge,
-/obj/structure/machinery/power/apc/power/east,
-/turf/open/floor/prison/greenfull/east,
-/area/navalis/indoors/charon/surface_deck/main_deck)
 "amb" = (
 /turf/open/floor/plating/plating_catwalk/aicore/white,
 /area/navalis/indoors/charon/surface_deck/main_deck)
@@ -15892,10 +15887,6 @@
 "aYV" = (
 /turf/closed/wall/hybrisa/colony/reinforced/hull,
 /area/navalis/indoors/residential/cafeteria)
-"aYX" = (
-/obj/structure/machinery/power/apc/power/east,
-/turf/open/floor/prison/greenfull/east,
-/area/navalis/indoors/charon/surface_deck/main_deck)
 "aYY" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -141977,7 +141968,7 @@ qWS
 alF
 alF
 alF
-aYX
+alF
 alF
 lGk
 alS
@@ -143592,7 +143583,7 @@ alF
 fmC
 aVU
 iLC
-ama
+aVT
 xFU
 alF
 fmC

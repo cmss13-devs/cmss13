@@ -683,6 +683,8 @@
 
 /obj/effect/landmark/sensors
 	name = "sensors spawn"
+	icon = 'icons/obj/structures/machinery/motion_sensor_v2.dmi'
+	icon_state = "sensor_sdmm"
 
 /obj/effect/landmark/sensors/Initialize(mapload, ...)
 	GLOB.sensor_tower_landmarks += src
@@ -699,6 +701,8 @@
 
 /obj/effect/landmark/short_range_sensors
 	name = "short range sensors spawn"
+	icon = 'icons/obj/structures/machinery/motion_sensor_v2.dmi'
+	icon_state = "sensors_tower_small_sdmm"
 
 /obj/effect/landmark/short_range_sensors/Initialize(mapload, ...)
 	GLOB.small_sensor_tower_landmarks += src

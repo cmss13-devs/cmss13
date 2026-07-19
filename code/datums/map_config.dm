@@ -449,7 +449,6 @@
 
 	if(json["short_sensor_count"])
 		short_sensor_count = text2num(json["short_sensor_count"])
-		world.log << short_sensor_count
 
 	if(json["nightmare_path"])
 		nightmare_path = json["nightmare_path"]

@@ -696,7 +696,6 @@
 
 /obj/effect/landmark/sensors/proc/spawn_tower()
 	new/obj/structure/machinery/sensortower(loc)
-	qdel(src)
 
 
 /obj/effect/landmark/short_range_sensors

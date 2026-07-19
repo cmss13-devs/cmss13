@@ -31,6 +31,12 @@
 	QDEL_NULL(deployed_turret)
 	. = ..()
 
+/obj/structure/machinery/sentry_holder/update_health(damage, pass_forward = FALSE)
+	pass_forward = !pass_forward
+	if(pass_forward)
+		deployed_turret.update_health(damage, pass_forward)
+	. = ..()
+
 /obj/structure/machinery/sentry_holder/get_examine_text(mob/user)
 	. = ..()
 	if(!deployed_turret)

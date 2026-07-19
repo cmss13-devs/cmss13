@@ -6,6 +6,10 @@
 /obj/item/stack/snow,
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/last_bunker/outdoors/eastern_cavern/no_light)
+"aac" = (
+/obj/effect/landmark/lv624/train_door_alt,
+/turf/closed/wall/hybrisa/colony/engineering,
+/area/last_bunker/indoors/entry_zone/power)
 "aad" = (
 /turf/closed/wall/wood,
 /area/last_bunker/outdoors/eastern_cavern/low_light)
@@ -441,14 +445,6 @@
 /obj/structure/flora/wood/stick2,
 /turf/open/auto_turf/snow/layer2,
 /area/last_bunker/outdoors/eastern_cavern)
-"abF" = (
-/obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "25,0";
-	name = "Train";
-	density = 0
-	},
-/turf/open/floor/strata,
-/area/last_bunker/indoors/entry_zone/train)
 "abG" = (
 /obj/structure/machinery/colony_floodlight{
 	pixel_y = -16;
@@ -525,7 +521,7 @@
 /area/last_bunker/indoors/entry_zone)
 "abM" = (
 /turf/closed/wall/strata_outpost/reinforced,
-/area/last_bunker/oob)
+/area/last_bunker/indoors/entry_zone)
 "abN" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/shoes/snow,
@@ -882,8 +878,8 @@
 /area/last_bunker/indoors/entry_zone)
 "acH" = (
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3,
-/turf/closed/wall/strata_outpost/reinforced/hull,
-/area/last_bunker/oob)
+/turf/closed/wall/strata_outpost/reinforced,
+/area/last_bunker/indoors/entry_zone)
 "acI" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -952,7 +948,7 @@
 "acS" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/closed/wall/strata_outpost/reinforced,
-/area/last_bunker/oob)
+/area/last_bunker/indoors/entry_zone)
 "acT" = (
 /obj/structure/largecrate/random/barrel/black{
 	layer = 3.2
@@ -1522,13 +1518,11 @@
 /turf/open/floor/strata/blue4/east,
 /area/last_bunker/indoors/entry_zone/train)
 "aeo" = (
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
+	pixel_y = 17
+	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/almayer/mono,
-/area/last_bunker/indoors/entry_zone/train)
-"aep" = (
-/turf/open/shuttle/escapepod/west,
-/area/last_bunker/indoors/entry_zone/train)
-"aeq" = (
-/turf/open/shuttle/escapepod/east,
 /area/last_bunker/indoors/entry_zone/train)
 "aer" = (
 /obj/structure/bed/chair/dropship/passenger/shuttle_chair{
@@ -1537,24 +1531,6 @@
 /obj/effect/landmark/survivor_spawner,
 /obj/structure/extinguisher_cabinet/lifeboat{
 	pixel_x = 11;
-	pixel_y = 27
-	},
-/turf/open/floor/almayer/plating,
-/area/last_bunker/indoors/entry_zone/train)
-"aes" = (
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair,
-/obj/effect/landmark/survivor_spawner,
-/obj/structure/machinery/cm_vending/sorted/supplies/lifeboat{
-	pixel_x = 4;
-	pixel_y = 27
-	},
-/turf/open/floor/almayer/plating,
-/area/last_bunker/indoors/entry_zone/train)
-"aet" = (
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair,
-/obj/effect/landmark/survivor_spawner,
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med/lifeboat{
-	pixel_x = -5;
 	pixel_y = 27
 	},
 /turf/open/floor/almayer/plating,
@@ -1634,14 +1610,6 @@
 	},
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/strata/cyan4/north,
-/area/last_bunker/indoors/entry_zone/train)
-"aeE" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	layer = 2.5;
-	pixel_y = 1
-	},
-/turf/open/floor/strata/blue3/west,
 /area/last_bunker/indoors/entry_zone/train)
 "aeF" = (
 /obj/structure/surface/rack,
@@ -1808,6 +1776,7 @@
 "aeW" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/closet,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating,
 /area/last_bunker/indoors/entry_zone/power)
 "aeX" = (
@@ -1937,6 +1906,7 @@
 /obj/structure/machinery/light/small,
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/closet,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/corsat/squares,
 /area/last_bunker/indoors/entry_zone/power)
 "aft" = (
@@ -2165,7 +2135,6 @@
 /turf/open/floor/prison/floor_plate,
 /area/last_bunker/indoors/entry_zone)
 "age" = (
-/obj/effect/landmark/lv624/train_door_alt,
 /turf/open/floor/shiva/yellow/southwest,
 /area/last_bunker/indoors/entry_zone/power)
 "agf" = (
@@ -2181,6 +2150,7 @@
 	pixel_x = -9;
 	pixel_y = 5
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/multi_tiles,
 /area/last_bunker/indoors/entry_zone/power)
 "agg" = (
@@ -2193,6 +2163,7 @@
 /area/last_bunker/indoors/entry_zone/train)
 "agh" = (
 /obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/auto_turf/snow/layer0,
 /area/last_bunker/outdoors/surface_exterior/south_west)
 "agi" = (
@@ -2208,11 +2179,6 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/antre/plating,
 /area/last_bunker/indoors/entry_zone)
-"agl" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/lv624/train_door_alt,
-/turf/open/floor/shiva/yellow/west,
-/area/last_bunker/indoors/entry_zone/power)
 "agm" = (
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/shiva/yellow/southeast,
@@ -2658,6 +2624,11 @@
 /area/last_bunker/indoors/entry_zone/train)
 "ahE" = (
 /obj/structure/largecrate/random/case/small,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	layer = 2.5;
+	pixel_y = 1
+	},
 /turf/open/floor/strata/blue3/west,
 /area/last_bunker/indoors/entry_zone/train)
 "ahF" = (
@@ -3428,28 +3399,6 @@
 /obj/effect/landmark/lv624/train_door,
 /turf/open/floor/almayer/test_floor4,
 /area/last_bunker/indoors/entry_zone/train)
-"ajI" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "1,1";
-	name = "Train"
-	},
-/area/last_bunker/indoors/entry_zone/train)
-"ajJ" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "3,1";
-	name = "Train"
-	},
-/area/last_bunker/indoors/entry_zone/train)
-"ajK" = (
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
-	dir = 1
-	},
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/almayer/plating,
-/area/last_bunker/indoors/entry_zone/train)
-"ajL" = (
-/turf/open/floor/almayer/plating_striped,
-/area/last_bunker/indoors/entry_zone/train)
 "ajM" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -3464,41 +3413,25 @@
 /area/last_bunker/indoors/entry_zone/train)
 "ajN" = (
 /turf/closed/shuttle/lifeboat{
-	icon_state = "6,1";
-	name = "Train"
+	icon_state = "24,0"
 	},
 /area/last_bunker/indoors/entry_zone/train)
 "ajO" = (
-/turf/closed/shuttle/lifeboat/transparent{
-	icon_state = "24,2";
-	name = "Train"
-	},
-/area/last_bunker/indoors/entry_zone/train)
-"ajP" = (
 /obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "26,1";
+	icon_state = "25,0";
 	name = "Train";
 	density = 0
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	layer = 3.33;
-	pixel_y = 1
+/obj/structure/monorail{
+	dir = 4
 	},
-/turf/open/floor/strata,
+/turf/open/floor/plating/kutjevo,
 /area/last_bunker/indoors/entry_zone/train)
 "ajQ" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "2,2";
 	name = "Train"
 	},
-/area/last_bunker/indoors/entry_zone/train)
-"ajR" = (
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
-	dir = 4
-	},
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/almayer/plating,
 /area/last_bunker/indoors/entry_zone/train)
 "ajS" = (
 /turf/open/floor/almayer/plating,
@@ -3536,6 +3469,7 @@
 	invisibility = 101;
 	dir = 4
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/almayer/mono,
 /area/last_bunker/indoors/entry_zone/train)
 "ajX" = (
@@ -3548,28 +3482,11 @@
 	name = "Train"
 	},
 /area/last_bunker/indoors/entry_zone/train)
-"ajZ" = (
-/turf/closed/shuttle/lifeboat/transparent{
-	icon_state = "26,2";
-	name = "Train"
-	},
-/area/last_bunker/indoors/entry_zone/train)
 "aka" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "2,4";
 	name = "Train"
 	},
-/area/last_bunker/indoors/entry_zone/train)
-"akb" = (
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
-	dir = 4
-	},
-/obj/effect/landmark/survivor_spawner,
-/obj/structure/machinery/light/blue{
-	invisibility = 101;
-	dir = 8
-	},
-/turf/open/floor/almayer/plating,
 /area/last_bunker/indoors/entry_zone/train)
 "akc" = (
 /obj/structure/bed/chair/dropship/passenger/shuttle_chair{
@@ -3591,32 +3508,6 @@
 	},
 /turf/open/floor/almayer/plating,
 /area/last_bunker/indoors/entry_zone/train)
-"ake" = (
-/turf/closed/shuttle/lifeboat/transparent{
-	icon_state = "26,4";
-	name = "Train"
-	},
-/area/last_bunker/indoors/entry_zone/train)
-"akf" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "2,5";
-	name = "Train"
-	},
-/area/last_bunker/indoors/entry_zone/train)
-"akg" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "3,5";
-	name = "Train"
-	},
-/area/last_bunker/indoors/entry_zone/train)
-"akh" = (
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair,
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/almayer/plating,
-/area/last_bunker/indoors/entry_zone/train)
-"aki" = (
-/turf/open/floor/almayer/plating_striped/north,
-/area/last_bunker/indoors/entry_zone/train)
 "akj" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
@@ -3624,23 +3515,14 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/last_bunker/indoors/residential_zone)
-"akk" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "6,5";
-	name = "Train"
-	},
-/area/last_bunker/indoors/entry_zone/train)
 "akl" = (
-/turf/closed/shuttle/lifeboat/transparent{
-	icon_state = "24,4";
-	name = "Train"
-	},
-/area/last_bunker/indoors/entry_zone/train)
-"akm" = (
 /obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "26,5";
+	icon_state = "25,6";
 	name = "Train";
 	density = 0
+	},
+/obj/structure/monorail{
+	dir = 9
 	},
 /turf/open/floor/plating/kutjevo,
 /area/last_bunker/indoors/entry_zone/train)
@@ -3648,12 +3530,6 @@
 /turf/closed/shuttle/escapepod{
 	icon_state = "wall13";
 	dir = 2;
-	name = "Train"
-	},
-/area/last_bunker/indoors/entry_zone/train)
-"ako" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "23,6";
 	name = "Train"
 	},
 /area/last_bunker/indoors/entry_zone/train)
@@ -3670,15 +3546,13 @@
 	name = "Train"
 	},
 /area/last_bunker/indoors/entry_zone/train)
-"aks" = (
-/obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "25,6";
-	name = "Train";
-	density = 0
+"akr" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/holder/cat{
+	name = "Hunk"
 	},
-/obj/structure/monorail,
-/turf/open/floor/plating/kutjevo,
-/area/last_bunker/indoors/entry_zone/train)
+/turf/open/floor/prison,
+/area/last_bunker/indoors/entry_zone)
 "akt" = (
 /obj/effect/landmark/lv624/train_door/xeno,
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
@@ -4125,9 +3999,6 @@
 /obj/structure/barricade/metal/wired,
 /turf/open/auto_turf/snow/layer0,
 /area/last_bunker/outdoors/surface_exterior/center)
-"alM" = (
-/turf/open/auto_turf/snow/layer1,
-/area/last_bunker/oob/surface_light)
 "alN" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/auto_turf/snow/layer0,
@@ -4220,6 +4091,7 @@
 /area/last_bunker/indoors/entry_zone)
 "amb" = (
 /obj/item/frame/rack,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison/darkred2/southeast,
 /area/last_bunker/indoors/entry_zone)
 "amc" = (
@@ -4332,6 +4204,7 @@
 /area/last_bunker/outdoors/cavern_external_access/central)
 "amo" = (
 /obj/structure/surface/table/almayer,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison/darkyellowfull2,
 /area/last_bunker/indoors/comms/tcomms_1)
 "amp" = (
@@ -4467,9 +4340,6 @@
 /obj/effect/stairs/up,
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/last_bunker/indoors/entry_zone)
-"amN" = (
-/turf/closed/wall/hybrisa/colony,
-/area/last_bunker/oob)
 "amO" = (
 /obj/structure/machinery/camera/autoname/lz_camera,
 /obj/structure/machinery/floodlight/landing/floor,
@@ -4478,9 +4348,99 @@
 "amP" = (
 /turf/open/floor/prison/darkred2/southeast,
 /area/last_bunker/indoors/entry_zone)
+"amQ" = (
+/obj/effect/landmark/lv624/train_door/entrance,
+/turf/open/auto_turf/snow/layer1,
+/area/last_bunker/outdoors/eastern_cavern/no_light)
+"amR" = (
+/obj/effect/landmark/lv624/train_door/entrance,
+/turf/open/auto_turf/snow/layer2,
+/area/last_bunker/outdoors/eastern_cavern/no_light)
+"amS" = (
+/obj/effect/landmark/lv624/train_door/entrance,
+/turf/open/auto_turf/snow/layer4,
+/area/last_bunker/outdoors/eastern_cavern/no_light)
+"amT" = (
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/obj/structure/monorail{
+	dir = 9
+	},
+/turf/open/floor/plating/kutjevo,
+/area/last_bunker/indoors/entry_zone/train)
+"amU" = (
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/almayer/mono,
+/area/last_bunker/indoors/entry_zone/train)
+"amV" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/almayer/plating,
+/area/last_bunker/indoors/entry_zone/train)
+"amW" = (
+/obj/structure/machinery/light/blue{
+	invisibility = 101;
+	dir = 8
+	},
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
+	pixel_y = 17
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/almayer/mono,
+/area/last_bunker/indoors/entry_zone/train)
+"amX" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33
+	},
+/turf/open/floor/strata,
+/area/last_bunker/indoors/entry_zone/train)
 "amY" = (
 /turf/open/auto_turf/snow/layer4,
 /area/last_bunker/outdoors/cavern_external_access/north)
+"amZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/turf/open/floor/strata/blue3/west,
+/area/last_bunker/indoors/entry_zone/train)
+"ana" = (
+/obj/effect/landmark/lv624/train_door/xeno,
+/turf/closed/wall/hybrisa/colony,
+/area/last_bunker/indoors/sustainment_zone)
+"anb" = (
+/obj/effect/landmark/lv624/train_door_alt,
+/turf/closed/wall/hybrisa/colony,
+/area/last_bunker/indoors/entry_zone)
+"anc" = (
+/obj/structure/flora/bush/snow{
+	icon_state = "snowbush_6"
+	},
+/turf/open/auto_turf/snow/layer1,
+/area/last_bunker/indoors/cavern/north_entrance)
+"and" = (
+/obj/effect/landmark/ert_spawns/groundside_xeno,
+/turf/open/floor/darkblue2/northwest,
+/area/last_bunker/indoors/command_zone)
+"ane" = (
+/obj/effect/landmark/lv624/train_door/xeno,
+/turf/closed/wall/hybrisa/colony/engineering,
+/area/last_bunker/indoors/hanger_zone)
+"anf" = (
+/obj/effect/landmark/lv624/train_door/xeno,
+/turf/closed/wall/hybrisa/colony/office,
+/area/last_bunker/indoors/synthetic_zone)
+"ang" = (
+/obj/structure/surface/table/almayer,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/auto_turf/snow/layer0,
+/area/last_bunker/outdoors/surface_exterior/south_west)
 "anh" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/ammo_casing/bullet,
@@ -4953,6 +4913,16 @@
 	},
 /turf/open/floor/prison,
 /area/last_bunker/indoors/synthetic_zone)
+"anZ" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/recharger,
+/obj/effect/landmark/objective_landmark/medium,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/metal/greenmetal1/southwest,
+/area/last_bunker/indoors/entry_zone)
 "aoa" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/supply_kit,
@@ -5026,6 +4996,12 @@
 /obj/item/tool/shovel/snow,
 /turf/open/floor/prison,
 /area/last_bunker/indoors/hanger_zone)
+"aol" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/firstaid/adv,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/hybrisa/metal/greenmetalfull,
+/area/last_bunker/indoors/entry_zone)
 "aom" = (
 /obj/structure/platform_decoration/metal/shiva/east,
 /turf/open/auto_turf/snow/layer1,
@@ -5111,6 +5087,74 @@
 /obj/effect/landmark/lv624/train_door_alt,
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/last_bunker/indoors/comms/tcomms_2_b)
+"aoA" = (
+/obj/structure/surface/table/almayer,
+/obj/effect/landmark/objective_landmark/close,
+/obj/item/storage/firstaid/regular,
+/turf/open/floor/hybrisa/metal/greenmetal1/southeast,
+/area/last_bunker/indoors/entry_zone)
+"aoB" = (
+/obj/structure/bed/portable_surgery,
+/obj/structure/sign/poster/safety{
+	pixel_y = 32
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/metal/greenmetalfull,
+/area/last_bunker/indoors/entry_zone)
+"aoC" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/metal/greenmetal1/west,
+/area/last_bunker/indoors/entry_zone)
+"aoD" = (
+/turf/open/floor/hybrisa/metal/metalwhitefull,
+/area/last_bunker/indoors/entry_zone)
+"aoE" = (
+/turf/open/floor/hybrisa/metal/greenmetal1/east,
+/area/last_bunker/indoors/entry_zone)
+"aoF" = (
+/obj/structure/machinery/door/airlock/almayer/medical/colony,
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/last_bunker/indoors/entry_zone)
+"aoG" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_21";
+	pixel_y = 3
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/metal/greenmetal1/northwest,
+/area/last_bunker/indoors/entry_zone)
+"aoH" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/metal/greenmetal1/north,
+/area/last_bunker/indoors/entry_zone)
+"aoI" = (
+/obj/structure/sign/poster/wylogo{
+	pixel_y = 32
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/metal/greenmetal1/northeast,
+/area/last_bunker/indoors/entry_zone)
+"aoJ" = (
+/obj/structure/medical_supply_link/green{
+	pixel_x = 1;
+	pixel_y = -1
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/no_access,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/metal/greenmetalfull,
+/area/last_bunker/indoors/entry_zone)
+"aoK" = (
+/obj/effect/landmark/objective_landmark/close,
+/obj/structure/surface/rack,
+/turf/open/floor/prison/darkyellowfull2,
+/area/last_bunker/indoors/comms/tcomms_1)
+"aoL" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/plating,
+/area/last_bunker/landing_zone_1)
 "aoO" = (
 /obj/structure/machinery/door/airlock/almayer/marine/shared{
 	name = "\improper Hydroponics";
@@ -5587,7 +5631,8 @@
 "aWs" = (
 /obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
 	dir = 4;
-	unacidable = 1
+	unacidable = 1;
+	explo_proof = 1
 	},
 /obj/structure/monorail{
 	dir = 4
@@ -5803,7 +5848,8 @@
 "bmp" = (
 /obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
 	dir = 4;
-	unacidable = 1
+	unacidable = 1;
+	explo_proof = 1
 	},
 /turf/open/floor/plating/kutjevo,
 /area/last_bunker/oob/train)
@@ -6511,12 +6557,6 @@
 	},
 /turf/open/floor/hybrisa/carpet/carpetblue,
 /area/last_bunker/indoors/residential_zone)
-"coI" = (
-/obj/structure/flora/grass/tallgrass/ice/corner{
-	dir = 6
-	},
-/turf/open/auto_turf/snow/layer2,
-/area/last_bunker/landing_zone_1)
 "coT" = (
 /obj/structure/flora/grass/tallgrass/ice/corner{
 	dir = 5
@@ -7372,7 +7412,6 @@
 	autoname = 1;
 	name = "\improper Emergency Bunker Generator"
 	},
-/obj/effect/landmark/lv624/train_door_alt,
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/last_bunker/indoors/entry_zone/power)
 "dBV" = (
@@ -8432,7 +8471,8 @@
 "fcR" = (
 /obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
 	dir = 4;
-	unacidable = 1
+	unacidable = 1;
+	explo_proof = 1
 	},
 /turf/closed/wall/strata_outpost/reinforced/hull,
 /area/last_bunker/oob)
@@ -9354,7 +9394,8 @@
 "gnw" = (
 /obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
 	dir = 4;
-	unacidable = 1
+	unacidable = 1;
+	explo_proof = 1
 	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/last_bunker/oob/electrical_tunnel)
@@ -9391,7 +9432,7 @@
 /obj/structure/machinery/power/apc/power/north{
 	start_charge = 60
 	},
-/turf/open/floor/plating/plating_catwalk/prison,
+/turf/open/floor/prison/darkyellowfull2,
 /area/last_bunker/indoors/comms/tcomms_1)
 "gru" = (
 /obj/item/stack/rods,
@@ -10340,12 +10381,6 @@
 	},
 /turf/open/floor/shiva/radiator_tile,
 /area/last_bunker/indoors/entry_zone)
-"hyH" = (
-/obj/structure/flora/bush/snow{
-	icon_state = "snowgrassgb_3"
-	},
-/turf/open/auto_turf/snow/layer1,
-/area/last_bunker/landing_zone_1)
 "hyR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/prop/alien/hugger,
@@ -10908,8 +10943,8 @@
 	icon_state = "E";
 	layer = 3.33
 	},
-/turf/closed/wall/strata_outpost/reinforced/hull,
-/area/last_bunker/oob)
+/turf/closed/wall/hybrisa/colony/reinforced,
+/area/last_bunker/indoors/entry_zone/train)
 "ikO" = (
 /obj/structure/flora/tree/dead/tree_6,
 /turf/open/auto_turf/snow/layer4,
@@ -11375,7 +11410,8 @@
 "iRD" = (
 /obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
 	dir = 4;
-	unacidable = 1
+	unacidable = 1;
+	explo_proof = 1
 	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/last_bunker/oob/hydro)
@@ -12309,10 +12345,6 @@
 /obj/structure/platform/stone/strata,
 /turf/open_space,
 /area/last_bunker/oob)
-"jXS" = (
-/obj/structure/flora/tree/dead/tree_2,
-/turf/open/auto_turf/snow/layer1,
-/area/last_bunker/landing_zone_1)
 "jZh" = (
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/auto_turf/snow/layer1,
@@ -12584,12 +12616,6 @@
 /obj/structure/largecrate/random/barrel/yellow,
 /turf/open/floor/darkred2/southwest,
 /area/last_bunker/indoors/command_zone)
-"ksu" = (
-/obj/structure/flora/grass/tallgrass/ice/corner{
-	dir = 8
-	},
-/turf/open/auto_turf/snow/layer2,
-/area/last_bunker/landing_zone_1)
 "kte" = (
 /obj/structure/flora/grass/tallgrass/ice/corner{
 	dir = 4
@@ -13169,6 +13195,7 @@
 /area/last_bunker/indoors/comms/tcomms_1)
 "lcU" = (
 /obj/structure/surface/table/almayer,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/auto_turf/snow/layer0,
 /area/last_bunker/outdoors/surface_exterior/south_west)
 "lcV" = (
@@ -14247,9 +14274,6 @@
 	},
 /turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/last_bunker/indoors/cavern/central)
-"mzO" = (
-/turf/closed/wall/strata_ice,
-/area/last_bunker/indoors/cavern/south_entrance)
 "mAa" = (
 /turf/open/floor/darkbluecorners2,
 /area/last_bunker/indoors/command_zone)
@@ -14538,7 +14562,8 @@
 "mSz" = (
 /obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
 	dir = 4;
-	unacidable = 1
+	unacidable = 1;
+	explo_proof = 1
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -14752,8 +14777,8 @@
 	icon_state = "W";
 	layer = 2.5
 	},
-/turf/closed/wall/strata_outpost/reinforced/hull,
-/area/last_bunker/oob)
+/turf/closed/wall/hybrisa/colony/reinforced,
+/area/last_bunker/indoors/entry_zone/train)
 "neU" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
@@ -15000,8 +15025,8 @@
 	icon_state = "E";
 	layer = 3.33
 	},
-/turf/closed/wall/strata_outpost/reinforced/hull,
-/area/last_bunker/oob)
+/turf/closed/wall/hybrisa/colony/reinforced,
+/area/last_bunker/indoors/entry_zone/train)
 "nwk" = (
 /turf/open/floor/darkblue2/southeast,
 /area/last_bunker/indoors/command_zone)
@@ -16098,6 +16123,7 @@
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = -34
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/last_bunker/indoors/entry_zone)
 "oQl" = (
@@ -16282,8 +16308,8 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/turf/closed/wall/strata_outpost/reinforced/hull,
-/area/last_bunker/oob)
+/turf/closed/wall/hybrisa/colony/reinforced,
+/area/last_bunker/indoors/entry_zone/train)
 "pdu" = (
 /obj/structure/flora/grass/tallgrass/ice/corner,
 /turf/open/auto_turf/snow/layer4,
@@ -16937,8 +16963,8 @@
 	layer = 3.33;
 	pixel_y = 1
 	},
-/turf/closed/wall/strata_outpost/reinforced/hull,
-/area/last_bunker/oob)
+/turf/closed/wall/hybrisa/colony/reinforced,
+/area/last_bunker/indoors/entry_zone/train)
 "pXj" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -17071,6 +17097,7 @@
 /area/last_bunker/indoors/cavern/south_entrance)
 "qfM" = (
 /obj/item/bodybag/tarp/snow,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison,
 /area/last_bunker/outdoors/surface_exterior/center)
 "qgc" = (
@@ -17308,6 +17335,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
 	},
+/obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
 	layer = 2.5;
@@ -17485,6 +17513,7 @@
 	color = "#EBD9B7"
 	},
 /obj/item/stack/cable_coil/random,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison/cell_stripe/east,
 /area/last_bunker/indoors/entry_zone/power)
 "qFT" = (
@@ -19209,8 +19238,8 @@
 	layer = 3.33;
 	pixel_y = 1
 	},
-/turf/closed/wall/strata_outpost/reinforced/hull,
-/area/last_bunker/oob)
+/turf/closed/wall/hybrisa/colony/reinforced,
+/area/last_bunker/indoors/entry_zone/train)
 "sRA" = (
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/last_bunker/outdoors/surface_exterior/center)
@@ -19528,6 +19557,23 @@
 	},
 /obj/item/storage/firstaid/regular{
 	pixel_y = 9
+	},
+/obj/item/clothing/suit/storage/snow_suit/survivor/parka/purple,
+/obj/item/clothing/suit/storage/snow_suit/survivor/parka/navy{
+	pixel_y = -4;
+	pixel_x = -3
+	},
+/obj/item/clothing/suit/storage/snow_suit/survivor/parka/red{
+	pixel_y = -4;
+	pixel_x = 5
+	},
+/obj/item/clothing/suit/storage/snow_suit/survivor/parka/red{
+	pixel_y = -4;
+	pixel_x = 5
+	},
+/obj/item/clothing/suit/storage/snow_suit/survivor/parka/navy{
+	pixel_y = -4;
+	pixel_x = -3
 	},
 /turf/open/floor/prison/blue/north,
 /area/last_bunker/outdoors/surface_exterior/center)
@@ -22865,7 +22911,8 @@
 "xYN" = (
 /obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
 	dir = 4;
-	unacidable = 1
+	unacidable = 1;
+	explo_proof = 1
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -28236,7 +28283,7 @@ eWN
 bhb
 rnc
 oTE
-yjk
+rnc
 yjk
 yjk
 yjk
@@ -29448,7 +29495,7 @@ eWN
 bhb
 rnc
 oTE
-kBa
+rnc
 kBa
 kBa
 kBa
@@ -59923,7 +59970,7 @@ vPG
 jAw
 vPG
 vPG
-klO
+ana
 lOO
 vny
 qqS
@@ -60125,7 +60172,7 @@ opQ
 lqI
 vPG
 hoB
-klO
+ana
 rbn
 anH
 anG
@@ -60933,7 +60980,7 @@ hsZ
 ngO
 ngO
 eFP
-klO
+ana
 pDF
 anI
 far
@@ -61135,7 +61182,7 @@ pPt
 ngO
 ngO
 tUv
-klO
+ana
 jav
 jav
 nKR
@@ -61337,7 +61384,7 @@ ngO
 ngO
 ngO
 oLt
-klO
+ana
 jav
 jav
 lXa
@@ -66161,7 +66208,7 @@ xlP
 tkq
 huf
 huf
-rck
+and
 wPq
 ldp
 bPl
@@ -66995,7 +67042,7 @@ ybf
 ybf
 ybf
 ybf
-klO
+ana
 fja
 tYy
 fCb
@@ -67197,7 +67244,7 @@ odh
 odh
 ybf
 klO
-klO
+ana
 akt
 fja
 uQw
@@ -68009,7 +68056,7 @@ dBn
 dBn
 dBn
 aVZ
-klO
+ana
 hgi
 jtW
 nIN
@@ -69231,7 +69278,7 @@ ugN
 aIg
 pgH
 pgH
-hgi
+pgH
 ybf
 pxl
 pxl
@@ -69584,7 +69631,7 @@ tXl
 tXl
 mVd
 mVd
-mVd
+anf
 ybf
 ybf
 ybf
@@ -70044,7 +70091,7 @@ pgH
 ugN
 kdT
 dOY
-hgi
+pgH
 ybf
 ybf
 ybf
@@ -70246,7 +70293,7 @@ vjb
 cna
 tXh
 mvD
-hgi
+pgH
 ybf
 ybf
 vya
@@ -70258,7 +70305,7 @@ tHg
 hJL
 maX
 vya
-ybf
+her
 aha
 cwX
 jxn
@@ -70392,7 +70439,7 @@ qDy
 alu
 mwi
 mVd
-mVd
+anf
 onp
 mhg
 dBn
@@ -70448,19 +70495,19 @@ wab
 tTz
 tTz
 phm
-hgi
+pgH
 ybf
 ybf
 vya
 vya
 ixU
-mzO
-mzO
+ixU
+ixU
 ixU
 vya
 vya
 vya
-ybf
+her
 aha
 cwX
 jxn
@@ -70594,7 +70641,7 @@ dpB
 alu
 rMV
 kor
-mVd
+anf
 pOd
 pOd
 onp
@@ -70650,14 +70697,14 @@ pDB
 cna
 hBs
 kjq
-hgi
+pgH
 ybf
 ybf
 ybf
 vya
 ixU
 ixU
-mzO
+ixU
 ixU
 vya
 lrz
@@ -70796,7 +70843,7 @@ gzQ
 jMU
 rMV
 eDs
-mVd
+anf
 pOd
 utM
 pOd
@@ -70852,15 +70899,15 @@ pgH
 ugN
 kdT
 dOY
-hgi
+pgH
 ybf
 ybf
 lrz
 vya
 vya
 pTB
-mzO
-mzO
+ixU
+ixU
 ixU
 lrz
 ybf
@@ -70998,7 +71045,7 @@ nTe
 alv
 okG
 eDs
-mVd
+anf
 gkz
 gkz
 ybf
@@ -71036,7 +71083,7 @@ ybf
 jmt
 rUh
 aog
-jmt
+joT
 ray
 hQh
 nGC
@@ -71200,7 +71247,7 @@ jeq
 alu
 ejQ
 bFR
-mVd
+anf
 pOd
 pOd
 utM
@@ -71237,8 +71284,8 @@ tVa
 ybf
 joT
 joT
-jmt
-jmt
+joT
+joT
 mTw
 nRP
 anz
@@ -71402,7 +71449,7 @@ oSg
 alu
 lhE
 mVd
-mVd
+anf
 jak
 jak
 pOd
@@ -71811,7 +71858,7 @@ akQ
 alp
 piJ
 wpW
-aIF
+ane
 xHi
 pBP
 qhu
@@ -72057,8 +72104,8 @@ vmJ
 xSu
 pgH
 dOY
-hgi
-hgi
+pgH
+pgH
 pgH
 jdl
 fhw
@@ -72210,7 +72257,7 @@ kSk
 kSk
 mVd
 mVd
-mVd
+anf
 jQM
 mhg
 dBn
@@ -72259,10 +72306,10 @@ aIz
 lGD
 qgc
 vOI
-hgi
+pgH
 ybf
 ybf
-ybf
+lrz
 mWs
 mcF
 mZp
@@ -72273,7 +72320,7 @@ hWs
 vkb
 maX
 vya
-vya
+vMC
 ybf
 ybf
 ybf
@@ -72461,9 +72508,9 @@ jPh
 enx
 prF
 nEk
-hgi
+pgH
 ybf
-ybf
+lrz
 sMN
 sMN
 maX
@@ -72475,7 +72522,7 @@ kfZ
 hWs
 vya
 vMC
-ybf
+vMC
 ybf
 ybf
 qxD
@@ -72663,7 +72710,7 @@ qIL
 tPV
 tPV
 wpy
-hgi
+pgH
 ybf
 lrz
 lrz
@@ -72677,8 +72724,8 @@ wjR
 kfZ
 wJT
 oLw
-ybf
-ybf
+oLw
+oLw
 ybf
 qxD
 ahj
@@ -72861,11 +72908,11 @@ xkt
 xkt
 xkt
 pgH
-hgi
-hgi
-hgi
-hgi
-hgi
+pgH
+pgH
+pgH
+pgH
+pgH
 ybf
 vya
 maX
@@ -73081,7 +73128,7 @@ sYw
 piA
 lRZ
 qtu
-hWW
+agg
 hWW
 hWW
 hWW
@@ -73454,9 +73501,9 @@ hvc
 hvc
 hvc
 ggg
-vzH
-rLh
-rLh
+anc
+hvc
+hvc
 hvc
 hvc
 ppF
@@ -73484,12 +73531,12 @@ gAK
 her
 ago
 ago
-akn
-akf
-aka
-ajQ
-ajI
-ajA
+agZ
+jxn
+jvU
+jvU
+jvU
+jvU
 jvU
 jvU
 jvU
@@ -73658,7 +73705,7 @@ amG
 rLh
 wgK
 wgK
-rLh
+ggg
 ggg
 ggg
 rLh
@@ -73675,23 +73722,23 @@ vya
 vya
 vya
 vya
-hJL
+ixU
 hJL
 pDo
-hJL
-hJL
 ixU
+ixU
+vya
 onT
 gAK
 her
 iqr
 ago
-ako
-akg
-akb
-ajR
-ajJ
-ajB
+agZ
+jxn
+jvU
+jvU
+uPc
+mIH
 mIH
 mIH
 mIH
@@ -73865,10 +73912,10 @@ ppF
 ppF
 ggg
 wgK
-ybf
-ybf
-ybf
-ybf
+ggg
+ggg
+ggg
+ggg
 hJL
 hJL
 ixU
@@ -73879,8 +73926,8 @@ ixU
 hJL
 hJL
 pTB
-hJL
-hJL
+ixU
+vya
 vkb
 vya
 pCU
@@ -73888,12 +73935,12 @@ cqW
 ybf
 aha
 ago
-akp
-akh
-aeo
-aeo
-ajK
-ajC
+cwX
+jxn
+jvU
+jvU
+jxn
+rZx
 usF
 usF
 usF
@@ -74055,7 +74102,7 @@ cLE
 kOU
 fAs
 ppF
-rLh
+ggg
 oeG
 hvc
 fAs
@@ -74070,7 +74117,7 @@ ggg
 rLh
 wgK
 rLh
-hJL
+rLh
 hJL
 paa
 pDo
@@ -74090,12 +74137,12 @@ ybf
 ybf
 aha
 qSG
-akp
-aes
-aeq
-aep
-ajK
-ajE
+cwX
+akn
+aka
+ajQ
+ajA
+gCm
 qSG
 iFZ
 quJ
@@ -74265,7 +74312,7 @@ ybf
 ybf
 ybf
 ybf
-ybf
+hvc
 hvc
 ggg
 rLh
@@ -74273,14 +74320,14 @@ ggg
 ppF
 hvc
 vya
-hJL
+ixU
 ixU
 hJL
 hJL
 hJL
 hJL
-hJL
-hJL
+ixU
+ixU
 hJL
 ixU
 vya
@@ -74292,12 +74339,12 @@ ybf
 ybf
 iQs
 qSG
+cwX
 akp
-ajS
-akc
-ajS
-ajS
-ajF
+amW
+amU
+ajB
+gCm
 qSG
 ajz
 urg
@@ -74466,11 +74513,11 @@ ybf
 ybf
 ybf
 ybf
-ybf
-ybf
+vMC
+hvc
 hvc
 vzH
-rLh
+ggg
 xuC
 tBD
 tBD
@@ -74478,11 +74525,11 @@ lrz
 vya
 vya
 wBc
-hJL
+ixU
 pTB
-hJL
-hJL
-hJL
+ixU
+vya
+vya
 ixU
 vya
 vya
@@ -74494,12 +74541,12 @@ hgi
 qxD
 aeB
 qSG
-ajH
-aki
-ajS
-ajS
-ajL
-ajH
+cwX
+akp
+akc
+amV
+ajF
+gCm
 qSG
 lfS
 urg
@@ -74668,7 +74715,7 @@ qxD
 ybf
 ybf
 ybf
-ybf
+vMC
 hvc
 ggg
 ggg
@@ -74696,12 +74743,12 @@ aee
 qxD
 iQs
 qSG
+cwX
 ajH
-aki
+amV
 ajS
-ajU
-ajL
 ajH
+gCm
 qSG
 lfS
 urg
@@ -74869,11 +74916,11 @@ gmi
 qxD
 ybf
 ybf
-ybf
+gvJ
 vMC
 vMC
-hvc
-hvc
+vMC
+vMC
 tBD
 tBD
 ybf
@@ -74898,12 +74945,12 @@ aef
 aed
 iQs
 qSG
+cwX
 ajH
-aki
 ajS
-ajS
-ajL
+ajU
 ajH
+gCm
 qSG
 lfS
 uhQ
@@ -75076,8 +75123,8 @@ bAF
 bAF
 bAF
 vMC
-ybf
-ybf
+vMC
+vMC
 ybf
 ybf
 ybf
@@ -75089,8 +75136,8 @@ vMC
 oyH
 kHJ
 oyH
-ybf
-ybf
+vdt
+vdt
 ybf
 ybf
 hgi
@@ -75100,12 +75147,12 @@ qxD
 qxD
 ahv
 qSG
-akp
+cwX
+ajH
 ajS
-aer
-ajS
-ajS
-ajE
+amV
+ajH
+gCm
 qSG
 lfS
 urg
@@ -75275,7 +75322,7 @@ qxD
 qxD
 rDo
 rDo
-oLw
+rDo
 oLw
 oLw
 ybf
@@ -75291,9 +75338,9 @@ ybf
 iEL
 iEL
 iEL
-ybf
-ybf
-ybf
+iEL
+iEL
+iEL
 ybf
 hgi
 qxD
@@ -75302,12 +75349,12 @@ qxD
 ahw
 lgZ
 qSG
+cwX
 akp
-aet
-aeq
-aep
-ajK
-ajF
+aer
+amV
+ajE
+gCm
 ago
 ajz
 urg
@@ -75460,7 +75507,7 @@ vMC
 hvc
 ggg
 tjA
-rLh
+ggg
 ppF
 qxD
 qxD
@@ -75493,9 +75540,9 @@ ahS
 aex
 aex
 aex
-aeE
-ahz
-ahz
+aex
+amZ
+amZ
 ahE
 ahB
 ahz
@@ -75504,12 +75551,12 @@ nMG
 lgZ
 qSG
 qSG
+cwX
 akp
-akh
 aeo
 ajW
-ajK
 ajC
+gCm
 ago
 lfS
 urg
@@ -75518,7 +75565,7 @@ eGy
 cXj
 rNf
 abM
-hgi
+abM
 abM
 ajl
 ajf
@@ -75706,12 +75753,12 @@ hWW
 hWW
 hWW
 hWW
+amX
 akq
-akk
 akd
 ajX
 ajN
-ajF
+gCm
 ago
 ahc
 urg
@@ -75720,7 +75767,7 @@ vxN
 vxN
 acZ
 eVZ
-hgi
+abM
 acy
 xcB
 ajg
@@ -75908,12 +75955,12 @@ mIH
 mIH
 mIH
 mIH
-aks
+mIH
 akl
 ajY
 ajY
 ajO
-abF
+gCm
 ago
 ahc
 urg
@@ -75922,7 +75969,7 @@ mOE
 vxN
 ada
 acQ
-hgi
+abM
 eVZ
 xcB
 afP
@@ -76111,11 +76158,11 @@ jvU
 jvU
 jvU
 jvU
-akm
-ake
-ajZ
-ajP
-qSG
+jvU
+jvU
+jvU
+jxn
+gCm
 qSG
 ahc
 urg
@@ -76315,9 +76362,9 @@ mIH
 mIH
 mIH
 mIH
-ecQ
+mIH
+amT
 gCm
-qSG
 iFZ
 ahd
 acj
@@ -76326,7 +76373,7 @@ adl
 vxN
 ada
 acS
-hgi
+abM
 abM
 ajm
 afP
@@ -76518,8 +76565,8 @@ ahq
 usF
 usF
 usF
+usF
 hTA
-qSG
 ahg
 urg
 urg
@@ -76888,11 +76935,11 @@ hgi
 hgi
 boN
 boN
-hgi
+boN
 qTA
 qTA
 qTA
-hgi
+urg
 ahh
 urg
 air
@@ -76917,11 +76964,11 @@ hgi
 boN
 iug
 kxO
-hgi
+boN
 qSG
 qSG
 qSG
-hgi
+boN
 ahm
 ahk
 urg
@@ -77090,11 +77137,11 @@ hgi
 hgi
 riB
 qLq
-hgi
+boN
 kNi
 jnE
 ggi
-hgi
+urg
 uex
 urg
 urg
@@ -77119,11 +77166,11 @@ tjG
 boN
 boN
 riB
-hgi
+boN
 ybp
 ybp
 ybp
-hgi
+urg
 acj
 urg
 ahh
@@ -77321,11 +77368,11 @@ oYn
 wLc
 pdJ
 jhF
-hgi
+boN
 xlL
 xlL
 xlL
-hgi
+boN
 kBA
 tej
 cYb
@@ -77537,7 +77584,7 @@ vxN
 agT
 aCN
 aob
-nEl
+akr
 acL
 uZr
 aCN
@@ -78301,21 +78348,21 @@ aNA
 hgi
 ybf
 hgi
-urg
-urg
+boN
+anb
 akO
 akO
 akO
-urg
-urg
-urg
-urg
-urg
-urg
-urg
-urg
-urg
-urg
+anb
+boN
+boN
+boN
+boN
+boN
+boN
+boN
+boN
+boN
 ybf
 boN
 mle
@@ -78338,8 +78385,8 @@ rRU
 aod
 boN
 ybf
-hgi
-hgi
+boN
+boN
 adF
 vxN
 tmY
@@ -78504,11 +78551,11 @@ hgi
 ybf
 ybf
 ybf
-urg
+boN
 lfU
 oRg
 eja
-urg
+boN
 ybf
 ybf
 ybf
@@ -78532,16 +78579,16 @@ gQl
 boN
 boN
 ybf
-urg
-urg
-urg
-urg
-urg
-urg
-urg
+boN
+boN
+boN
+boN
+boN
+boN
+boN
 ybf
-hgi
-hgi
+boN
+boN
 adG
 adu
 vxN
@@ -78706,11 +78753,11 @@ hgi
 ybf
 ybf
 ybf
-urg
+boN
 ctx
 ctx
 ctx
-urg
+boN
 ybf
 ybf
 sNh
@@ -78743,8 +78790,8 @@ ahn
 ybf
 ybf
 ybf
-hgi
-hgi
+boN
+boN
 adv
 nEl
 adg
@@ -78946,13 +78993,13 @@ cln
 ybf
 ybf
 ybf
-amN
+boN
 adw
 nEl
 nEl
 gKc
 abM
-hgi
+abM
 abM
 xcB
 acp
@@ -79147,8 +79194,8 @@ aaa
 sNh
 cln
 epo
-epo
-amN
+amQ
+boN
 adx
 nEl
 nEl
@@ -79349,14 +79396,14 @@ aaa
 epo
 cln
 cln
-epo
-amN
+amQ
+boN
 ady
 giQ
 nEl
 adc
 acW
-hgi
+abM
 acD
 xcB
 afP
@@ -79551,14 +79598,14 @@ aag
 aaa
 epo
 cln
-cln
-amN
+amR
+boN
 adz
 vxN
 nEl
 add
 acX
-hgi
+abM
 acE
 xcB
 afP
@@ -79753,14 +79800,14 @@ aag
 aab
 epo
 cln
-sNh
-amN
+amS
+boN
 orC
 eFM
 adh
 fFd
 abM
-hgi
+abM
 abM
 agb
 afT
@@ -79956,7 +80003,7 @@ cln
 epo
 cln
 ybf
-amN
+boN
 hgi
 adn
 adi
@@ -80366,9 +80413,9 @@ hgi
 coY
 coY
 coY
-ogU
-ogU
-ogU
+aac
+aac
+aac
 afU
 ajc
 afr
@@ -80568,7 +80615,7 @@ hgi
 mmX
 afr
 afr
-agl
+afr
 age
 dBT
 fCY
@@ -102236,7 +102283,7 @@ hlc
 hlc
 hlc
 tUO
-lcU
+ang
 tUO
 tUO
 tUO
@@ -108267,7 +108314,7 @@ sqG
 alO
 diL
 diL
-alM
+diL
 qSW
 syM
 qSW
@@ -108864,7 +108911,7 @@ hgi
 hgi
 hgi
 hgi
-ybf
+hgi
 wUJ
 wUJ
 sXD
@@ -109064,10 +109111,10 @@ ybf
 ybf
 ybf
 hgi
-ybf
-ybf
-ybf
-wUJ
+hgi
+aoB
+hgi
+adW
 wUJ
 jed
 aQk
@@ -109264,12 +109311,12 @@ ybf
 ybf
 ybf
 ybf
-ybf
 hgi
-ybf
-ybf
-ybf
-wUJ
+hgi
+aoG
+aoC
+anZ
+adW
 wUJ
 rjv
 cuC
@@ -109466,11 +109513,11 @@ ybf
 ybf
 ybf
 ybf
-ybf
 hgi
-ybf
-ybf
-ybf
+aoJ
+aoH
+aoD
+aol
 hgi
 adW
 adW
@@ -109668,11 +109715,11 @@ ybf
 ybf
 ybf
 ybf
-ybf
 hgi
-ybf
-ybf
-ybf
+hgi
+aoI
+aoE
+aoA
 hgi
 hgi
 adW
@@ -109872,9 +109919,9 @@ hgi
 hgi
 hgi
 hgi
-hgi
-hgi
-hgi
+trR
+aoF
+trR
 hgi
 hgi
 lDz
@@ -110074,8 +110121,8 @@ iSk
 iSk
 iSk
 hgi
-trR
-xlQ
+uQx
+uQx
 dJd
 hgi
 hgi
@@ -112708,7 +112755,7 @@ iGs
 dIy
 akE
 aAW
-pup
+jUS
 cLI
 pup
 pup
@@ -112910,7 +112957,7 @@ iGs
 akD
 akD
 aAW
-pup
+jUS
 pup
 pup
 pup
@@ -114720,7 +114767,7 @@ iSk
 iSk
 iSk
 hgi
-trR
+eTW
 eTW
 adX
 hgi
@@ -114922,7 +114969,7 @@ hgi
 hgi
 hgi
 hgi
-hgi
+trR
 bnJ
 trR
 hgi
@@ -115921,7 +115968,7 @@ hgi
 hgi
 hgi
 grp
-hgi
+aoK
 gUJ
 gmU
 gUJ
@@ -117938,7 +117985,7 @@ ybf
 ybf
 wUJ
 wUJ
-wUJ
+diL
 qSW
 gCO
 sqG
@@ -118139,9 +118186,9 @@ ybf
 ybf
 wUJ
 wUJ
-wUJ
-wUJ
 qSW
+sYC
+diL
 diL
 pup
 pup
@@ -118340,10 +118387,10 @@ ybf
 ybf
 ybf
 wUJ
-wUJ
-wUJ
-wUJ
-wUJ
+cPz
+cPz
+cPz
+qSW
 diL
 diL
 pup
@@ -118542,12 +118589,12 @@ ybf
 ybf
 ybf
 wUJ
-wUJ
-wUJ
-wUJ
-wUJ
-wUJ
-wUJ
+vkQ
+pqg
+cPz
+cPz
+qSW
+qSW
 diL
 diL
 pup
@@ -118744,11 +118791,11 @@ wUJ
 wUJ
 wUJ
 wUJ
-wUJ
-wUJ
-wUJ
+hvf
+vkQ
+vkQ
 cPz
-wUJ
+cPz
 wUJ
 wUJ
 diL
@@ -118947,8 +118994,8 @@ wUJ
 hMS
 wUJ
 wUJ
-wUJ
-wUJ
+cPz
+cPz
 pqg
 dti
 vkQ
@@ -119150,8 +119197,8 @@ qmO
 wUJ
 wUJ
 wUJ
-wUJ
-wUJ
+vkQ
+cPz
 vkQ
 vkQ
 vkQ
@@ -119352,7 +119399,7 @@ tQb
 cPz
 cPz
 wUJ
-hvf
+vkQ
 vkQ
 vkQ
 aFe
@@ -122365,7 +122412,7 @@ pkm
 wUJ
 wUJ
 kaN
-lNL
+aoL
 lNL
 fox
 pkm
@@ -124776,7 +124823,7 @@ ybf
 wUJ
 wUJ
 wUJ
-wiM
+wUJ
 pkm
 jCZ
 jCZ
@@ -124979,11 +125026,11 @@ ybf
 wUJ
 wUJ
 wUJ
-pkm
-pkm
-jCZ
-hgA
 wUJ
+wUJ
+jCZ
+jCZ
+pkm
 wUJ
 wUJ
 wUJ
@@ -125182,11 +125229,11 @@ wUJ
 wUJ
 wUJ
 wUJ
-pkm
-jCZ
-jRh
-jCZ
-pkm
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
 wUJ
 wUJ
 wUJ
@@ -125384,15 +125431,15 @@ ybf
 wUJ
 wUJ
 wUJ
-pkm
-pkm
-jCZ
-jCZ
-pkm
-pkm
 wUJ
-oGm
-ksu
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
 gxy
 pkm
 pkm
@@ -125587,16 +125634,16 @@ ybf
 wUJ
 wUJ
 wUJ
-pkm
-jCZ
-jCZ
-jRh
-pkm
 wUJ
-gxy
-pkm
-pkm
-hgA
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
 pkm
 pkm
 kIg
@@ -125790,18 +125837,18 @@ ybf
 ybf
 wUJ
 wUJ
-pkm
-jCZ
-jCZ
-jCZ
-pkm
-pkm
-pkm
-pkm
-pkm
-ybf
-ybf
-ybf
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
 eOp
 yii
 aec
@@ -125993,25 +126040,25 @@ ybf
 wUJ
 wUJ
 wUJ
-pkm
-pkm
-vhw
-jCZ
-pkm
-jCZ
-jCZ
-pkm
-pkm
-ybf
-ybf
-ybf
-ybf
-ybf
-ybf
-pkm
-jCZ
-jCZ
-jCZ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
 jCZ
 xwv
 wUJ
@@ -126196,24 +126243,24 @@ ybf
 ybf
 wUJ
 wUJ
-jXS
-hyH
-jRh
-jCZ
-jCZ
-jCZ
-jRh
-jCZ
-jCZ
-pkm
-ybf
-ybf
-ybf
-pkm
-jCZ
-jRh
-jCZ
-jCZ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
 wUJ
 wUJ
 wUJ
@@ -126400,21 +126447,21 @@ ybf
 wUJ
 wUJ
 wUJ
-pkm
-pkm
-pkm
-pkm
-jCZ
-jCZ
-jCZ
-jCZ
-jCZ
-jCZ
-pkm
-jCZ
-jCZ
-jCZ
-cVZ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
 wUJ
 wUJ
 wUJ
@@ -126605,18 +126652,18 @@ wUJ
 wUJ
 wUJ
 wUJ
-pkm
-pkm
-pkm
-pkm
-pkm
-jCZ
-jRh
-jCZ
-pkm
-pkm
-cVZ
-wLD
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
 wUJ
 wUJ
 wUJ
@@ -126810,14 +126857,14 @@ wUJ
 wUJ
 wUJ
 wUJ
-pkm
-pkm
-pkm
-pkm
-pkm
-coI
-egq
-oGm
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
+wUJ
 wUJ
 wUJ
 wUJ

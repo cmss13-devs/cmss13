@@ -19,7 +19,7 @@
 	action_type = XENO_ACTION_CLICK
 	plasma_cost = 20
 
-	var/duration = 30 SECONDS
+	var/duration = 30 SECONDS // 30 seconds base
 	var/invis_timer_id = TIMER_ID_NULL
 	var/alpha_amount = 25
 	var/speed_buff = 0.20

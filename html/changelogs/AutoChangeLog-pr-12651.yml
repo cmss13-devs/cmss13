@@ -1,0 +1,4 @@
+author: "fira"
+delete-after: True
+changes:
+  - bugfix: "Fixed 'Set Operations Commander' admin verb breaking under certain circumstances."

@@ -235,7 +235,10 @@
 	pass_forward = !pass_forward
 	if(pass_forward)
 		deployed_turret.update_health(damage, pass_forward)
-	. = ..()
+	health = min(initial(deployed_turret.health), health-damage)
+	if(health <= 0)
+		visible_message(SPAN_DANGER("[src] is destroyed!"))
+		qdel(src)
 
 /obj/structure/dropship_equipment/sentry_holder/try_repair(obj/item/tool/weldingtool/welder, mob/user, amount)
 	. = ..()
@@ -412,7 +415,10 @@
 	pass_forward = !pass_forward
 	if(pass_forward)
 		deployed_mg.update_health(damage, pass_forward)
-	. = ..()
+	health = min(initial(deployed_mg.health), health-damage)
+	if(health <= 0)
+		visible_message(SPAN_DANGER("[src] is destroyed!"))
+		qdel(src)
 
 /obj/structure/dropship_equipment/mg_holder/try_repair(obj/item/tool/weldingtool/welder, mob/user, amount)
 	. = ..()

@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - balance: "Almayer ground crash now breaks the powernet and APCs will randomly short out over time"

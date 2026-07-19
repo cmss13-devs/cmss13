@@ -10071,6 +10071,9 @@
 /obj/structure/sign/banners/upp_flag,
 /turf/closed/wall/upp_ship/grey/reinforced,
 /area/atlan/station/hab_sec)
+"aFx" = (
+/turf/open/gm/dirt/dark_brown,
+/area/atlan/asteroid/processing_seperation/cas)
 "aFy" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/decal/cleanable/dirt/alt_dirt,
@@ -13677,7 +13680,7 @@
 /turf/open/floor/strata/white_cyan3/south,
 /area/atlan/station/medical/morgue)
 "aRi" = (
-/obj/structure/machinery/door/airlock/multi_tile/upp_grey/medical/glass/autoname{
+/obj/structure/machinery/door/airlock/multi_tile/upp_grey/generic/glass/autoname{
 	dir = 2
 	},
 /turf/open/floor/strata/multi_tiles/west,
@@ -33028,7 +33031,7 @@
 /turf/open/floor/corsat,
 /area/atlan/station/single_dorms)
 "nAw" = (
-/obj/structure/window/framed/upp_ship/grey,
+/obj/structure/window/framed/upp_ship/grey/orange,
 /turf/open/floor/plating,
 /area/atlan/station/water_maintenance)
 "nAx" = (
@@ -36034,7 +36037,7 @@
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/repairs_lift)
 "pNc" = (
-/turf/closed/wall/upp_ship/grey,
+/turf/closed/wall/upp_ship/grey/orange,
 /area/atlan/station/water_maintenance)
 "pNE" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -118399,7 +118402,7 @@ ahu
 aRT
 aSo
 aSo
-bzE
+oCj
 oCj
 oCj
 oCj
@@ -126529,7 +126532,7 @@ pyh
 aGm
 eFT
 aGm
-lGF
+aGm
 aGm
 aGQ
 aGM
@@ -127327,7 +127330,7 @@ aNr
 aNW
 aNr
 aNr
-aNr
+aFx
 aNr
 mEy
 aBx

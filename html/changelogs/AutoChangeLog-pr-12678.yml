@@ -1,0 +1,4 @@
+author: "Red-byte3D"
+delete-after: True
+changes:
+  - balance: "HEDP no longer pushes bodies around when they're dead for humans."

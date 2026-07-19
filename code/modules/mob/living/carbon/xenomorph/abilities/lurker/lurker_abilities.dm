@@ -19,12 +19,10 @@
 	action_type = XENO_ACTION_CLICK
 	plasma_cost = 20
 
+	var/duration = 30 SECONDS
 	var/invis_timer_id = TIMER_ID_NULL
 	var/alpha_amount = 25
 	var/speed_buff = 0.20
-	var/invis_recharge_time = 20 SECONDS
-	var/invis_start_time = -1 // Special value for when we're not invisible
-	var/invis_duration = 30 SECONDS
 
 // tightly coupled 'buff next slash' action
 /datum/action/xeno_action/onclick/lurker_assassinate
@@ -37,8 +35,6 @@
 	plasma_cost = 20
 
 	var/buff_duration = 50
-	var/buffed_slash_damage_ratio = 1.2
-	var/slash_slow_duration = 35
 
 // VAMP LURKER ABILITIES
 

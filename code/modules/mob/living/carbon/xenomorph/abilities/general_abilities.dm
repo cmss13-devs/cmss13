@@ -615,6 +615,8 @@
 	var/datum/action/xeno_action/onclick/queen_word/word_ability = locate() in actions
 	if(!word_ability?.action_cooldown_check())
 		return FALSE
+	if(word_ability.hidden)
+		return FALSE
 
 	var/input = tgui_input_text(src, "This message will be broadcast throughout the hive.", "Word of the Queen", multiline=TRUE)
 	if(!input)

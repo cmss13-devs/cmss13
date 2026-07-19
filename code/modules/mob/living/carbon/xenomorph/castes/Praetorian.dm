@@ -107,8 +107,3 @@
 	bound_xeno.add_xeno_shield(reward_shield, XENO_SHIELD_SOURCE_BASE_PRAE, add_shield_on = TRUE, max_shield = 45)
 	to_chat(bound_xeno, SPAN_NOTICE("Your exoskeleton shimmers for a fraction of a second as the acid coats your target."))
 	return
-
-/datum/action/xeno_action/activable/pounce/base_prae_dash/start_airbone()
-	var/mob/living/carbon/xenomorph/xeno = owner
-
-	ADD_TRAIT(xeno, TRAIT_ABILITY_POUNCE, TRAIT_SOURCE_ABILITY("pounce"))

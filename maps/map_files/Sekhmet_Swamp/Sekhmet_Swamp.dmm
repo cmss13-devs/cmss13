@@ -42613,10 +42613,6 @@
 /obj/structure/cargo_container/upp/left,
 /turf/open/floor/strata/floor3,
 /area/sekhmet/int_reg/military_hangar)
-"vNI" = (
-/obj/structure/machinery/cryopod/joe/seegson,
-/turf/open/floor/strata/fake_wood,
-/area/sekhmet/outside/southroad)
 "vNK" = (
 /obj/structure/platform/metal/strata,
 /obj/structure/prop/swamp_plants/algae/full/algae_full_1,
@@ -96983,7 +96979,7 @@ oxw
 oxw
 oxw
 hva
-vNI
+oxw
 oxw
 oxw
 yks

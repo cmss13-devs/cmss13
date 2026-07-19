@@ -201,7 +201,7 @@
 		var/knockout_minus_armor = min(knockout_value * bomb_armor_mult * 0.5, 0.5 SECONDS) // the KO time is halved from the knockdown timer. basically same stun time, you just spend less time KO'd.
 		apply_effect(floor(knockout_minus_armor), PARALYZE)
 		apply_effect(floor(knockout_minus_armor) * 2, DAZE)
-	if(!(stat == DEAD && severity <= EXPLOSION_THRESHOLD_LOW))
+	if(stat != DEAD || severity > EXPLOSION_THRESHOLD_LOW)
 		explosion_throw(severity, direction)
 
 	if(item1 && isturf(item1.loc))

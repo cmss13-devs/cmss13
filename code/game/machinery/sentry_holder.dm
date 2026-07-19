@@ -25,6 +25,7 @@
 		deployed_turret.deployment_system = src
 		ox = pixel_x
 		oy = pixel_y
+	health = deployed_turret.health
 
 /obj/structure/machinery/sentry_holder/Destroy()
 	QDEL_NULL(deployed_turret)

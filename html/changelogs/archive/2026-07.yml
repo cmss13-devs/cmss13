@@ -152,3 +152,18 @@
   ori-disillusion-mirnov:
   - code_imp: all living mobs now have procs for riding
   - code_imp: adding the riding element is easier
+2026-07-18:
+  TheDonkified:
+  - refactor: Updates spark_spread effect system to use subsystem processing and timers
+      instead of sleeps
+  - refactor: Sparks move a bit faster/smoother
+2026-07-20:
+  Red-byte3D:
+  - balance: HEDP no longer pushes bodies around when they're dead for humans.
+  fira:
+  - bugfix: Fixed 'Set Operations Commander' admin verb breaking under certain circumstances.
+  - bugfix: The IMS and Laser Scalpel will now once again skip their associated steps.
+  - bugfix: Fixed Cryopod internal intercoms being sent to the void upon ejecting.
+  - bugfix: Fixed some exploitable race conditions with Cryopods.
+  matttheficus:
+  - rscadd: Added WotQ Keybind option.

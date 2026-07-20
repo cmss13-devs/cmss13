@@ -408,13 +408,13 @@
 	for(var/job_by_chain in CHAIN_OF_COMMAND_ROLES)
 		role_in_charge = job_by_chain
 
-		if(job_by_chain == JOB_SO && GLOB.marine_leaders[JOB_SO])
+		if(job_by_chain == JOB_SO && length(GLOB.marine_leaders[JOB_SO]))
 			person_in_charge = pick(GLOB.marine_leaders[JOB_SO])
 			break
-		if(job_by_chain == JOB_INTEL && GLOB.marine_officers[JOB_INTEL])
+		if(job_by_chain == JOB_INTEL && length(GLOB.marine_officers[JOB_INTEL]))
 			person_in_charge = pick(GLOB.marine_officers[JOB_INTEL])
 			break
-		if(job_by_chain == JOB_DOCTOR && GLOB.marine_officers[JOB_DOCTOR])
+		if(job_by_chain == JOB_DOCTOR && length(GLOB.marine_officers[JOB_DOCTOR]))
 			person_in_charge = pick(GLOB.marine_officers[JOB_DOCTOR])
 			break
 

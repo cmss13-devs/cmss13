@@ -7607,9 +7607,15 @@
 /area/almayer/living/offices/cryo)
 "asR" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/cameras/almayer_network/vehicle,
+/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
+	name = "Dropship Remote Control Console";
+	pixel_y = 0
+	},
 /obj/structure/machinery/computer/crew/alt{
 	pixel_x = -17
+	},
+/obj/structure/machinery/computer/cameras/almayer_network/vehicle{
+	pixel_x = -34
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
@@ -9516,10 +9522,6 @@
 /area/almayer/living/bridgebunks)
 "ayz" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
-	name = "Dropship Remote Control Console";
-	pixel_x = -2
-	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "ayA" = (

@@ -99,3 +99,5 @@
 /// From /datum/controller/subsystem/hijack/proc/call_shuttle()
 #define COMSIG_GLOB_HIJACK_INBOUND "!hijack_inbound"
 
+/// From /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/signal_cic()
+#define COMSIG_GLOB_DELAYED_COMMS_FAILURE "!comms_delayed_failure"

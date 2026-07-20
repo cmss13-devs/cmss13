@@ -211,12 +211,14 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	/// Tower has been taken before, this gives xenos an extra resin point on capture for the first time.
 	var/captured_before = FALSE
 
-
 	/// Held image for the current overlay on the tower from xeno corruption
 	var/image/corruption_image
 
 	/// Holds the delay for when a cluster can recorrupt the comms tower after a pylon has been destroyed
 	COOLDOWN_DECLARE(corruption_delay)
+
+	/// Whether this tower has already triggered a garble event
+	var/garble_event_triggered = FALSE
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/Initialize()
 	. = ..()
@@ -252,6 +254,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	var/turf/commloc = get_turf(src)
 	var/area/commarea = get_area(src)
 	if(on) //now, if it went on it now uses power
+		garble_event_triggered = FALSE
 		use_power = USE_POWER_IDLE
 		message_admins("[key_name(user)] turned \the [src] in [commarea] ON. [ADMIN_JMP(commloc.loc)]")
 	else
@@ -314,6 +317,14 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	..()
 	if(inoperable())
 		handle_xeno_acquisition(get_turf(src))
+		if(!garble_event_triggered && (COMM_FREQ in freq_listening))
+			garble_event_triggered = TRUE
+			SSradio.update_cache()
+			addtimer(CALLBACK(src, PROC_REF(delayed_marine_failure)), 10 SECONDS)
+
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/delayed_marine_failure()
+	SSradio.faction_coms_clarity[FACTION_MARINE] = CONFIG_GET(number/announcement_min_clarity)
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_DELAYED_COMMS_FAILURE)
 
 /// Handles xenos corrupting the tower when weeds touch the turf it is located on
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/handle_xeno_acquisition(turf/weeded_turf)

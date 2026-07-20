@@ -1,0 +1,4 @@
+author: "MistChristmas"
+delete-after: True
+changes:
+  - bugfix: "Shotguns now respect your preference regarding hurting yourself"

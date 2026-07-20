@@ -145,8 +145,11 @@
 			. += "Self Destruct Status: [SShijack.get_sd_eta()]"
 
 /mob/living/carbon/human/ex_act(severity, direction, datum/cause_data/cause_data, pierce=0, enviro=FALSE)
-	if(body_position == LYING_DOWN && direction)
-		severity *= EXPLOSION_PRONE_MULTIPLIER
+	if(body_position == LYING_DOWN)
+		if(stat == DEAD)
+			severity *= EXPLOSION_DEAD_MULTIPLIER
+		else if(direction)
+			severity *= EXPLOSION_PRONE_MULTIPLIER
 
 	var/b_loss = 0
 	var/f_loss = 0
@@ -201,8 +204,7 @@
 		var/knockout_minus_armor = min(knockout_value * bomb_armor_mult * 0.5, 0.5 SECONDS) // the KO time is halved from the knockdown timer. basically same stun time, you just spend less time KO'd.
 		apply_effect(floor(knockout_minus_armor), PARALYZE)
 		apply_effect(floor(knockout_minus_armor) * 2, DAZE)
-	if(stat != DEAD || severity > EXPLOSION_THRESHOLD_LOW)
-		explosion_throw(severity, direction)
+	explosion_throw(severity, direction)
 
 	if(item1 && isturf(item1.loc))
 		item1.explosion_throw(severity, direction)

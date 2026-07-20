@@ -165,6 +165,8 @@
 #define EXPLOSION_THRESHOLD_GIB 200
 /// prone mobs receive less damage from explosions
 #define EXPLOSION_PRONE_MULTIPLIER 0.5
+/// dead prone mobs recieve less damage from explosions, but more than alive humans
+#define EXPLOSION_DEAD_MULTIPLIER 0.75
 
 //Explosion damage multipliers for different objects
 #define EXPLOSION_DAMAGE_MULTIPLIER_DOOR 15

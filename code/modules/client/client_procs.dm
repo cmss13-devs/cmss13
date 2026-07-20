@@ -48,6 +48,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/toggle_ability_deactivation,
 	/client/proc/toggle_clickdrag_override,
 	/client/proc/toggle_dualwield,
+	/client/proc/toggle_auto_holotag,
 	/client/proc/toggle_middle_mouse_swap_hands,
 	/client/proc/toggle_vend_item_to_hand,
 	/client/proc/switch_item_animations,
@@ -308,6 +309,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(IsGuestKey(key) && length(CONFIG_GET(keyed_list/auth_urls)) && !check_localhost_status())
 		mob = new /mob/unauthenticated(locate(1, 1, 1))
 		return mob
+
+	ticket_panel = new /datum/ticket_panel()
 
 	PreLogin()
 
@@ -574,7 +577,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		gc_destroyed = world.time
 		if (!QDELING(src))
 			stack_trace("Client does not purport to be QDELING, this is going to cause bugs in other places!")
-
+		QDEL_NULL(ticket_panel)
 		SEND_SIGNAL(src, COMSIG_PARENT_QDELETING, TRUE)
 		Destroy()
 	return ..()

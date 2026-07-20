@@ -4,6 +4,8 @@
 #define PODLOCKS_OPEN_WAIT (45 MINUTES) // CORSAT pod doors drop at 12:45
 /// How many pipes explode at a time during hijack?
 #define HIJACK_EXPLOSION_COUNT 5
+/// How many pipes explode at a time after a ship ground crash?
+#define HIJACK_CRASHED_EXPLOSION_COUNT 10
 /// What percent do we consider a 'majority?' to win
 #define MAJORITY 0.5
 /// How long to delay the round completion (command is immediately notified)
@@ -399,39 +401,36 @@
 	if(SSticker.mode.acting_commander && !force) // If there's already an aCO; don't set a new one, unless forced.
 		return
 
-	if((GLOB.marine_leaders[JOB_CO] || GLOB.marine_leaders[JOB_XO]) && !force)
+	if((GLOB.marine_leaders[JOB_CO] || GLOB.marine_leaders[JOB_XO]) && !commander)
 		return
 	//If we have a CO or XO, we're good no need to announce anything.
 
-	for(var/job_by_chain in CHAIN_OF_COMMAND_ROLES)
-		role_in_charge = job_by_chain
-
-		if(job_by_chain == JOB_SO && GLOB.marine_leaders[JOB_SO])
-			person_in_charge = pick(GLOB.marine_leaders[JOB_SO])
-			break
-		if(job_by_chain == JOB_INTEL && GLOB.marine_officers[JOB_INTEL])
-			person_in_charge = pick(GLOB.marine_officers[JOB_INTEL])
-			break
-		if(job_by_chain == JOB_DOCTOR && GLOB.marine_officers[JOB_DOCTOR])
-			person_in_charge = pick(GLOB.marine_officers[JOB_DOCTOR])
-			break
-
-		//If the job is a list we have to stop here
-		if(person_in_charge)
-			break
-
-		var/datum/job/job_datum = GLOB.RoleAuthority.roles_for_mode[job_by_chain]
-		person_in_charge = job_datum?.get_active_player_on_job()
-		if(!isnull(person_in_charge))
-			break
-
 	if(commander) // pre-provided commander overrides the automatic selection.
 		person_in_charge = commander
-		role_in_charge = person_in_charge.job
+	else
+		var/list/all_leaders = deep_copy_list(GLOB.marine_leaders + GLOB.marine_officers)
+		for(var/job_by_chain in CHAIN_OF_COMMAND_ROLES)
+			//Checks for non-unique roles
+			if(job_by_chain in list(JOB_SO, JOB_INTEL, JOB_DOCTOR))
+				var/list/mob/living/candidates = list()
+				for(var/mob/living/candidate as anything in all_leaders[job_by_chain])
+					if(!is_mob_cryoing(candidate))
+						candidates += candidate
+				if(length(candidates))
+					person_in_charge = pick(candidates)
+					break
+			else
+				//Checks for unique roles
+				var/datum/job/job_datum = GLOB.RoleAuthority.roles_for_mode[job_by_chain]
+				person_in_charge = job_datum?.get_active_player_on_job()
+				if(person_in_charge)
+					if(!is_mob_cryoing(person_in_charge))
+						break
 
 	if(!person_in_charge)
 		return log_admin("No valid commander found for automatic promotion.")
 
+	role_in_charge = person_in_charge.job
 	SSticker.mode.acting_commander = person_in_charge // Prevents double-dipping.
 
 	var/obj/item/card/id/card = person_in_charge.get_idcard()
@@ -589,7 +588,8 @@
 		return
 
 	var/list/shortly_exploding_pipes = list()
-	for(var/i = 1 to HIJACK_EXPLOSION_COUNT)
+	var/explode_count = SShijack?.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH ? HIJACK_CRASHED_EXPLOSION_COUNT : HIJACK_EXPLOSION_COUNT
+	for(var/i = 1 to explode_count)
 		shortly_exploding_pipes += pick(GLOB.mainship_pipes)
 
 	for(var/obj/structure/pipes/exploding_pipe as anything in shortly_exploding_pipes)

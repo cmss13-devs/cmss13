@@ -1,5 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - bugfix: "Hotfixed an issue causing the Synthetic Reset Keys to be unusable"
-  - bugfix: "The Synth Reset Keys now makes no sparks, as intended"

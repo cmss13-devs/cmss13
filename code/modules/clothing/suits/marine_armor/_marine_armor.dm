@@ -668,7 +668,7 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	storage_slots = 2
 	slowdown = SLOWDOWN_ARMOR_LOWHEAVY
-	movement_compensation = 0.65 //inbetween medium and lowheavy
+	movement_compensation = SLOWDOWN_ARMOR_MEDIUM
 	light_power = 4
 	light_range = 5
 

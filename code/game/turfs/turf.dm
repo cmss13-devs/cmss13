@@ -944,3 +944,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	xeno_victim.Slow(1.5)
 	xeno_victim.Daze(1)
 
+
+/turf/proc/is_signal_obstructed()
+	var/area/laser_area = get_area(src)
+	return !istype(laser_area) || CEILING_IS_PROTECTED(laser_area.ceiling, CEILING_PROTECTION_TIER_2)

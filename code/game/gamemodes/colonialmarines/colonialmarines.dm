@@ -469,7 +469,7 @@
 		for(var/obj/structure/machinery/medical_pod/autodoc/target in GLOB.machines)
 			if(is_mainship_level(target.z))
 				target.skilllock = SKILL_SURGERY_DEFAULT // lowers skill-lock to 0
-		ai_silent_announcement("WARNING: Cryopod release cycle DELAYED for MEDICAL PERSONNEL. Releasing Emergency Override Disks for AUTODOC Systems.", ".G", TRUE)
+		ai_silent_announcement("WARNING: Cryopod release cycle DELAYED for MEDICAL PERSONNEL. Releasing Emergency Override Disks for AUTODOC Systems.", ".G")
 		return log_admin("No Shipside Doctor found = Autodoc Upgrade Supplies ordered and AutoDoc skill locks released.")
 
 /datum/game_mode/colonialmarines/proc/ares_conclude()

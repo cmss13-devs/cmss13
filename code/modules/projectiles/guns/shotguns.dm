@@ -222,6 +222,9 @@ can cause issues with ammo types getting mixed up during the burst.
 	if(gun_user.a_intent != INTENT_HARM)
 		return FALSE
 
+	if(gun_user == object) //Throw back to click logic here to handle self harm prefrence
+		return FALSE
+
 	if(QDELETED(object))
 		return FALSE
 

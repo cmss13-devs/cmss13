@@ -1305,8 +1305,15 @@
 	var/obj/structure/dropship_equipment/mg_holder/deployment_system
 	gun_has_gamemode_skin = FALSE
 
+
+/obj/structure/machinery/m56d_hmg/mg_turret/dropship/update_health(damage, pass_forward = FALSE)
+	pass_forward = !pass_forward
+	if(pass_forward)
+		deployment_system.update_health(damage, pass_forward)
+	. = ..()
+
 /obj/structure/machinery/m56d_hmg/mg_turret/dropship/Destroy()
 	if(deployment_system)
 		deployment_system.deployed_mg = null
 		deployment_system = null
-	return ..()
+	. = ..()

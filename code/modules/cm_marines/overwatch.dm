@@ -513,7 +513,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 /obj/structure/machinery/computer/overwatch/ui_data(mob/user)
 	var/list/data = list()
 
-	data = pack_radio_data()
+	pack_radio_data(data)
 	data["theme"] = ui_theme
 
 	if(!current_squad)
@@ -560,9 +560,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 /obj/structure/machinery/computer/overwatch/groundside_operations/ui_data(mob/user)
 	var/list/data = list()
 
+	pack_radio_data(data)
 	data["theme"] = ui_theme
-
-	data = pack_radio_data()
 
 	if(!current_squad)
 		data["squad_list"] = list()
@@ -1747,29 +1746,25 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 /obj/structure/machinery/computer/overwatch/proc/get_radio_clarity()
 	var/ground_z = length(SSmapping.levels_by_trait(ZTRAIT_GROUND)) ? SSmapping.levels_by_trait(ZTRAIT_GROUND)[1] : null
-	var/current_clarity
-	if(ground_z && (ground_z in SSradio.get_available_tcomm_zs(COMM_FREQ)))
+	if(ground_z in SSradio.last_command_zs)
 		return 100
-	if(SSradio.faction_coms_clarity && SSradio.faction_coms_clarity[faction])
-		current_clarity = SSradio.faction_coms_clarity[faction]
-		if(SSradio.faction_coms_codes && length(SSradio.faction_coms_codes[faction]))
-			return current_clarity
-	return 15
+	var/current_clarity = SSradio.faction_coms_clarity[faction]
+	if(!current_clarity)
+		current_clarity = CONFIG_GET(number/announcement_max_clarity)
+	return current_clarity
 
-/obj/structure/machinery/computer/overwatch/proc/pack_radio_data()
-	var/list/clarity_data = list ()
+/obj/structure/machinery/computer/overwatch/proc/pack_radio_data(list/data)
 	var/clarity = get_radio_clarity()
-	clarity_data["radio_clarity"] = clarity
+	data["radio_clarity"] = clarity
 	if(clarity >= 80)
-		clarity_data["clarity_color"] = "good"
-		clarity_data["clarity_status"] = "STABLE"
+		data["clarity_color"] = "good"
+		data["clarity_status"] = "STABLE"
 	else if(clarity >= 45)
-		clarity_data["clarity_color"] = "average"
-		clarity_data["clarity_status"] = "DEGRADED"
+		data["clarity_color"] = "average"
+		data["clarity_status"] = "DEGRADED"
 	else
-		clarity_data["clarity_color"] = "bad"
-		clarity_data["clarity_status"] = "CRITICAL BLACKOUT"
-	return clarity_data
+		data["clarity_color"] = "bad"
+		data["clarity_status"] = "CRITICAL BLACKOUT"
 
 #undef HIDE_ALMAYER
 #undef HIDE_GROUND

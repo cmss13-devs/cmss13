@@ -16,7 +16,6 @@
 #define isgenerator(A) (istype(A, /generator))
 #define istransparentturf(A) (HAS_TRAIT(A, TURF_Z_TRANSPARENT_TRAIT))
 
-
 //Byond type ids
 #define TYPEID_NULL "0"
 #define TYPEID_NORMAL_LIST "f"

@@ -1826,3 +1826,27 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 	var/x = (text2num(x_dirty[1])-1)*32 + text2num(x_dirty[2])
 	var/y = (text2num(y_dirty[1])-1)*32 + text2num(y_dirty[2])
 	return list(x, y)
+
+/datum/matching_paths
+	var/datum/highest_matching
+	var/list/datum/matching
+
+/datum/matching_paths/New()
+	. = ..()
+	highest_matching = null
+	matching = list()
+
+/proc/get_matching_paths(datum/to_check, list/typepaths)
+	RETURN_TYPE(/datum/matching_paths)
+	var/datum/matching_paths/matching_paths = new /datum/matching_paths
+	ASSERT(matching_paths.highest_matching == null, "matching_paths.highest_matching should be null on creation")
+	ASSERT(!isnull(matching_paths.matching), "matching_paths.matching should be a list on creation")
+	ASSERT(length(matching_paths.matching) == 0, "matching_paths.matching should be empty on creation")
+	for (var/path in typepaths)
+		if (ispath(path) && istype(to_check, path))
+			// to_check is going to be of type `path` and `highest_matching`, so check whether
+			// `highest_matching` is a parent of `path` (lower in the type tree)
+			if (isnull(matching_paths.highest_matching) || !ispath(matching_paths.highest_matching, path))
+				matching_paths.highest_matching = path
+			matching_paths.matching += path
+	return matching_paths

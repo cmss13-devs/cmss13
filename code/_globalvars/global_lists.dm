@@ -282,6 +282,9 @@ GLOBAL_LIST_EMPTY(paramslist_cache)
 //Turf Edge info uberlist -- a list whos states contain GLOB.edgeinfo_X keyed as different icon_states
 GLOBAL_LIST_EMPTY(turf_edgeinfo_cache)
 
+// Cache for text insertion data
+GLOBAL_LIST_EMPTY(text_insertion_data_cache)
+
 #define FULL_EDGE 1
 #define HALF_EDGE_RIGHT 2
 #define HALF_EDGE_LEFT 3

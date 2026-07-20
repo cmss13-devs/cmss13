@@ -28,19 +28,12 @@
 
 
 /datum/launch_metadata/proc/get_collision_callbacks(atom/A)
-	var/highest_matching = null
-	var/list/matching = list()
-
 	if (isnull(collision_callbacks))
 		return null
 
-	for (var/path in collision_callbacks)
-		if (ispath(path) && istype(A, path))
-			// A is going to be of type `path` and `highest_matching`, so check whether
-			// `highest_matching` is a parent of `path` (lower in the type tree)
-			if (isnull(highest_matching) || !ispath(highest_matching, path))
-				highest_matching = path
-			matching += path
+	var/datum/matching_paths/matching_paths = get_matching_paths(A, collision_callbacks)
+	var/datum/highest_matching = matching_paths.highest_matching
+	var/list/datum/matching = matching_paths.matching
 
 	if (!call_all)
 		if (isnull(highest_matching))

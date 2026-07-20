@@ -110,7 +110,12 @@
 	if(hide)
 		hide.post_attack()
 
-/datum/action/xeno_action/activable/pounce/runner/start_airbone()
+/datum/action/xeno_action/activable/pounce/runner/pre_pounce_effects()
 	var/mob/living/carbon/xenomorph/xeno = owner
 
 	ADD_TRAIT(xeno, TRAIT_ABILITY_POUNCE, TRAIT_SOURCE_ABILITY("pounce"))
+
+/datum/action/xeno_action/activable/pounce/runner/additional_effects_always()
+	var/mob/living/carbon/xenomorph/xeno = owner
+
+	REMOVE_TRAIT(xeno, TRAIT_ABILITY_POUNCE, TRAIT_SOURCE_ABILITY("pounce"))

@@ -325,10 +325,11 @@
 				reset_xeno_armor_debuff_after_time(src, 20)
 			var/resist_modifier = fire.type_b_debuff_xeno_armor(src)
 			fire.set_on_fire(src) //Deals an extra proc of fire when you're crossing it. 30 damage per tile crossed, plus 15 per Process().
-			next_move_slowdown = next_move_slowdown + (SLOWDOWN_AMT_GREENFIRE * resist_modifier)
+			if(!HAS_TRAIT(src, TRAIT_ABILITY_POUNCE)) //We don't want to get slowed mid-flight, it "staggers".
+				next_move_slowdown = next_move_slowdown + (SLOWDOWN_AMT_GREENFIRE * resist_modifier)
 			if(resist_modifier > 0)
 				if(!HAS_TRAIT(src, TRAIT_ABILITY_POUNCE))
 					to_chat(src, SPAN_DANGER("We feel pieces of our exoskeleton fusing with the viscous fluid below and tearing off as we struggle to move through the flames!"))
 				else
-					if(!prob(75))
+					if(prob(25))
 						to_chat(src, SPAN_DANGER("We feel searing heat full of chemicals from below us, melting our exoskeleton as we pass above the flames!"))

@@ -473,8 +473,6 @@
 	if(!istype(xeno))
 		return
 
-	XENO_ACTION_CHECK(xeno)
-
 	if(!target_atom)
 		return
 
@@ -558,9 +556,7 @@
 	xeno.pounce_distance = get_dist(xeno, target_atom)
 	if(xeno.z != target_atom.z)
 		xeno.pounce_distance += 2
-	start_airbone()
 	xeno.throw_atom(target_atom, distance, throw_speed, xeno, launch_type = LOW_LAUNCH, pass_flags = pounce_pass_flags, collision_callbacks = pounce_callbacks, tracking=TRUE)
-	end_airbone()
 	xeno.update_icons()
 
 	additional_effects_always()

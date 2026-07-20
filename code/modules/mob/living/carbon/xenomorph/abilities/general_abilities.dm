@@ -261,21 +261,6 @@
 /datum/action/xeno_action/activable/pounce/proc/pre_pounce_effects()
 	return
 
-/**
- * Effects to apply before "thrown" xeno to choosen tile.
- */
-/datum/action/xeno_action/activable/pounce/proc/start_airbone()
-	return
-
-/**
- * Effects to apply after xeno is "thrown" to choosen tile.
- */
-/datum/action/xeno_action/activable/pounce/proc/end_airbone()
-	var/mob/living/carbon/xenomorph/xeno = owner
-
-	if(HAS_TRAIT(xeno, TRAIT_ABILITY_POUNCE))
-		REMOVE_TRAIT(xeno, TRAIT_ABILITY_POUNCE, TRAIT_SOURCE_ABILITY("pounce"))
-
 /datum/action/xeno_action/activable/pounce/proc/end_pounce_freeze()
 	if(freeze_timer_id == TIMER_ID_NULL)
 		return

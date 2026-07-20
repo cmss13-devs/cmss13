@@ -271,7 +271,9 @@
 
 // -- specific ability traits --
 #define TRAIT_ABILITY_POUNCE "t_ability_pounce"
+/// Used by shielder to check stance.
 #define TRAIT_ABILITY_ENCLOSED_PLATES "t_ability_enclosed_plates"
+/// Used by shielder for reflective plates.
 #define TRAIT_ABILITY_REFLECTIVE_PLATES "t_ability_reflective_plates"
 
 

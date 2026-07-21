@@ -878,7 +878,7 @@
 		for (var/datum/reagent/reagent as anything in reagents.reagent_list)
 			if (reagent.volume > reagent.overdose && reagent.overdose != 0)
 				// Regulating chems can't harmfully overdose
-				if (PROPERTY_REGULATING in reagent.properties)
+				if (reagent.get_property(PROPERTY_REGULATING))
 					continue
 
 				tag_severity = 2

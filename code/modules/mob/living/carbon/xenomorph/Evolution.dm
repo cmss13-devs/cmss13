@@ -66,6 +66,12 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		to_chat(src, SPAN_WARNING("The Hive cannot support this caste yet! ([floor((caste_datum.minimum_evolve_time - ROUND_TIME) / 10)] seconds remaining)"))
 		return
 
+	if(hive.restricted_castes && (castepick in hive.restricted_castes))
+		var/max_num = hive.restricted_castes[castepick]
+		if(hive.get_caste_count(castepick) >= max_num)
+			to_chat(src, SPAN_WARNING("The Hive has reached capacity for this caste!"))
+			return
+
 	if(!evolve_checks())
 		return
 
@@ -256,7 +262,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		to_chat(src, SPAN_WARNING("Our link to the hive is being suppressed...we should wait a bit."))
 		return FALSE
 
-	if(lock_evolve)
+	if(lock_evolve || (hive.evolution_locked && !islarva(src)))
 		if(banished)
 			to_chat(src, SPAN_WARNING("We are banished and cannot reach the hivemind."))
 		else
@@ -279,12 +285,16 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		to_chat(src, SPAN_WARNING("We must be at full health to evolve."))
 		return FALSE
 
-	if(agility || fortify || crest_defense || stealth)
+	if(agility || fortify || crest_defense || stealth || HAS_TRAIT(src, TRAIT_ABILITY_ENCLOSED_PLATES) || HAS_TRAIT(src, TRAIT_ABILITY_REFLECTIVE_PLATES))
 		to_chat(src, SPAN_WARNING("We cannot evolve while in this stance."))
 		return FALSE
 
 	if(ROUND_TIME < XENO_ROUNDSTART_BOOSTED_EVO_TIME)
 		if(caste_type == XENO_CASTE_LARVA || caste_type == XENO_CASTE_PREDALIEN_LARVA)
+			var/area/area = get_area(src)
+			if(area.unoviable_timer)
+				to_chat(src, SPAN_WARNING("The hive hasn't developed enough yet for you to evolve this far from safe areas!"))
+				return FALSE
 			var/turf/evoturf = get_turf(src)
 			if(!locate(/obj/effect/alien/weeds) in evoturf)
 				to_chat(src, SPAN_WARNING("The hive hasn't developed enough yet for you to evolve off weeds!"))
@@ -371,7 +381,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(length(caste.deevolves_to) < 1)
 		to_chat(src, SPAN_XENOWARNING("We can't deevolve any further."))
 		return
-	if(lock_evolve)
+	if(lock_evolve || hive.evolution_locked)
 		if(banished)
 			to_chat(src, SPAN_WARNING("We are banished and cannot reach the hivemind."))
 		else
@@ -449,6 +459,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 	new_xeno.built_structures = built_structures.Copy()
 	built_structures = null
+	new_xeno.lock_evolve = lock_evolve
 
 	if(mind)
 		mind.transfer_to(new_xeno)
@@ -488,36 +499,11 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	return new_xeno
 
 /mob/living/carbon/xenomorph/proc/can_evolve(castepick, potential_queens)
-	var/selected_caste = GLOB.xeno_datum_list[castepick]?.type
-	var/free_slot = LAZYACCESS(hive.free_slots, selected_caste)
-	var/used_slot = LAZYACCESS(hive.used_slots, selected_caste)
-	if(free_slot > used_slot)
-		return TRUE
-
-	var/used_tier_2_slots = length(hive.tier_2_xenos)
-	var/used_tier_3_slots = length(hive.tier_3_xenos)
-	for(var/caste_path in hive.free_slots)
-		var/slots_free = hive.free_slots[caste_path]
-		var/slots_used = hive.used_slots[caste_path]
-		if(!slots_used)
-			continue
-		var/datum/caste_datum/current_caste = caste_path
-		switch(initial(current_caste.tier))
-			if(2)
-				used_tier_2_slots -= min(slots_used, slots_free)
-			if(3)
-				used_tier_3_slots -= min(slots_used, slots_free)
-
-	var/burrowed_factor = min(hive.stored_larva, sqrt(4*hive.stored_larva))
-	var/totalXenos = floor(burrowed_factor)
-	for(var/mob/living/carbon/xenomorph/xeno as anything in hive.totalXenos)
-		if(xeno.counts_for_slots)
-			totalXenos++
-
-	if(tier == 1 && (((used_tier_2_slots + used_tier_3_slots) / totalXenos) * hive.tier_slot_multiplier) >= 0.5 && castepick != XENO_CASTE_QUEEN)
+	var/slots = hive.get_tier_slots()
+	if(tier == 1 && !slots[TIER_2][OPEN_SLOTS] && !slots[TIER_2][GUARANTEED_SLOTS][castepick] && castepick != XENO_CASTE_QUEEN)
 		to_chat(src, SPAN_WARNING("The hive cannot support another Tier 2, wait for either more aliens to be born or someone to die."))
 		return FALSE
-	else if(tier == 2 && ((used_tier_3_slots / totalXenos) * hive.tier_slot_multiplier) >= 0.20 && castepick != XENO_CASTE_QUEEN)
+	else if(tier == 2 && !slots[TIER_3][OPEN_SLOTS] && !slots[TIER_3][GUARANTEED_SLOTS][castepick] && castepick != XENO_CASTE_QUEEN)
 		to_chat(src, SPAN_WARNING("The hive cannot support another Tier 3, wait for either more aliens to be born or someone to die."))
 		return FALSE
 

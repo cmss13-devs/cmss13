@@ -390,6 +390,82 @@
 /obj/effect/landmark/mainship_crashsite,
 /turf/closed/wall/mineral/bone_resin,
 /area/fiorina/oob)
+"abs" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 8;
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/corsat/plate,
+/area/fiorina/station/telecomm/lz1_cargo)
+"abt" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/item/reagent_container/food/snacks/xenoburger,
+/turf/open/floor/corsat/plate,
+/area/fiorina/station/telecomm/lz1_cargo)
+"abu" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/corsat/plate,
+/area/fiorina/station/telecomm/lz1_cargo)
+"abv" = (
+/obj/item/weapon/gun/flamer/survivor,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/corsat/squares,
+/area/fiorina/station/telecomm/lz1_cargo)
+"abw" = (
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/corsat/squares,
+/area/fiorina/station/telecomm/lz1_cargo)
+"abx" = (
+/obj/effect/landmark/corpsespawner/chef,
+/obj/effect/decal/cleanable/blood/oil/streak,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/corsat/squares,
+/area/fiorina/station/telecomm/lz1_cargo)
+"aby" = (
+/obj/effect/decal/cleanable/ash,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/corsat/squares,
+/area/fiorina/station/telecomm/lz1_cargo)
+"abz" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/floor/corsat/plate,
+/area/fiorina/station/telecomm/lz1_cargo)
+"abA" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/corsat/squares,
+/area/fiorina/station/telecomm/lz1_cargo)
+"abB" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 8;
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/plating/prison,
+/area/fiorina/maintenance)
+"abC" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 4;
+	pixel_x = 10;
+	pixel_y = 13
+	},
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/plating/prison,
+/area/fiorina/maintenance)
+"abD" = (
+/obj/structure/machinery/cryopod/joe/weyland{
+	pixel_y = 25;
+	density = 0
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/maintenance)
 "abG" = (
 /obj/item/trash/chunk,
 /turf/open/floor/prison/whitegreen/north,
@@ -4555,7 +4631,7 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/fiorina/station/research_cells/east)
 "doe" = (
-/obj/item/tool/kitchen/utensil/pspoon,
+/obj/item/tool/kitchen/utensil/spoon/plastic,
 /turf/open/space/basic,
 /area/fiorina/oob)
 "doq" = (
@@ -16890,6 +16966,10 @@
 /area/fiorina/station/civres_blue)
 "mTM" = (
 /obj/item/tool/warning_cone,
+/obj/structure/machinery/cryopod/joe/weyland{
+	pixel_y = 25;
+	density = 0
+	},
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
 "mUd" = (
@@ -25065,7 +25145,7 @@
 /turf/open/floor/prison/blue/west,
 /area/fiorina/station/civres_blue)
 "thV" = (
-/obj/item/tool/kitchen/utensil/pfork,
+/obj/item/tool/kitchen/utensil/fork/plastic,
 /turf/open/floor/prison/blue/east,
 /area/fiorina/station/power_ring)
 "tii" = (
@@ -27198,7 +27278,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/lz/near_lzII)
 "uSX" = (
-/obj/item/tool/kitchen/utensil/pknife,
+/obj/item/tool/kitchen/utensil/knife/plastic,
 /turf/open/floor/prison,
 /area/fiorina/station/power_ring)
 "uTb" = (
@@ -30820,7 +30900,7 @@
 /turf/open/floor/prison/whitegreen/north,
 /area/fiorina/station/central_ring)
 "xTf" = (
-/obj/item/tool/kitchen/utensil/pspoon,
+/obj/item/tool/kitchen/utensil/spoon/plastic,
 /turf/open/floor/prison/blue/east,
 /area/fiorina/station/power_ring)
 "xTD" = (
@@ -54186,7 +54266,7 @@ qhk
 oPU
 eLu
 mTM
-gyJ
+abB
 cME
 cME
 rJh
@@ -54609,8 +54689,8 @@ oPU
 oMu
 oPU
 eLu
-cME
-cPq
+abD
+abC
 cME
 cME
 cME
@@ -75068,9 +75148,9 @@ jii
 mPW
 cpP
 aFK
-qGn
-qGn
-aFK
+abu
+abu
+abs
 fnD
 oUg
 oUg
@@ -75279,10 +75359,10 @@ pUG
 jii
 puE
 hTf
-qGn
-eqQ
-eqQ
-qGn
+abz
+abx
+abv
+abt
 pbp
 qGn
 pbp
@@ -75491,9 +75571,9 @@ jii
 wHV
 puE
 cJv
-eqQ
-eqQ
-eqQ
+abA
+aby
+abw
 eqQ
 eqQ
 eqQ

@@ -26,9 +26,9 @@
 	var/g_eyes = 0
 	var/b_eyes = 0
 
-	var/skin_color = "Pale 2" // Skin color
-	var/body_size = "Average" // Body Size
-	var/body_type = "Lean" // Body Buffness
+	var/skin_color = SKIN_COLOR_PALE2 // Skin color
+	var/body_size = BODY_SIZE_AVERAGE // Body Size
+	var/body_type = BODY_TYPE_LEAN // Body Buffness
 	var/body_presentation
 
 	//Skin color
@@ -89,6 +89,7 @@
 	var/undefibbable = FALSE //whether the human is dead and past the defibbrillation period.
 
 	var/holo_card_color = "" //which color type of holocard is printed on us
+	var/holo_card_accuracy = HOLOCARD_ACCURACY_HANDHELD // What placed this holocard on the human
 
 	var/list/obj/limb/limbs = list()
 	var/list/internal_organs_by_name = list() // so internal organs have less ickiness too
@@ -117,6 +118,8 @@
 	var/datum/equipment_preset/assigned_equipment_preset
 	var/rank_override
 	var/rank_fallback
+	///Used for specialists for their chosen preference on roundstart
+	var/role_title_override
 
 	var/datum/squad/assigned_squad //the squad this human is assigned to
 	var/assigned_fireteam = 0 //the fireteam this human is assigned to

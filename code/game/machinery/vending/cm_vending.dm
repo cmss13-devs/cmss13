@@ -1183,18 +1183,22 @@ GLOBAL_LIST_EMPTY(vending_products)
 /obj/effect/essentials_set
 	var/list/spawned_gear_list
 
-/obj/effect/essentials_set/New(loc)
-	..()
+/obj/effect/essentials_set/Initialize(mapload, ...)
+	. = ..()
+	if(loc) // Don't spawn stuff in nullspace please
+		spawn_stuff()
+	return INITIALIZE_HINT_QDEL
+
+/obj/effect/essentials_set/proc/spawn_stuff()
 	for(var/typepath in spawned_gear_list)
 		if(spawned_gear_list[typepath])
 			new typepath(loc, spawned_gear_list[typepath])
 		else
 			new typepath(loc)
-	qdel(src)
 
 //same thing, but spawns only 1 item from the list
-/obj/effect/essentials_set/random/New(loc)
-	if(!spawned_gear_list)
+/obj/effect/essentials_set/random/spawn_stuff()
+	if(!length(spawned_gear_list))
 		return
 
 	var/typepath = pick(spawned_gear_list)
@@ -1202,7 +1206,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 		new typepath(loc, TRUE)
 	else
 		new typepath(loc)
-	qdel(src)
 
 
 //---helper glob data
@@ -1460,11 +1463,11 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 	if(vend_flags & VEND_UNIFORM_AUTOEQUIP)
 		// autoequip
 		if(istype(new_item, /obj/item) && new_item.flags_equip_slot != NO_FLAGS) //auto-equipping feature here
-			if(new_item.flags_equip_slot == SLOT_ACCESSORY)
-				if(user.w_uniform)
-					var/obj/item/clothing/clothing = user.w_uniform
-					if(clothing.can_attach_accessory(new_item))
-						clothing.attach_accessory(user, new_item)
+			if(new_item.flags_equip_slot & SLOT_ACCESSORY)
+				for(var/obj/item/clothing/attaching in list(user.w_uniform, user.head)) // probably better to use a global here, but accessories are currently only concerned about these two for now
+					if(attaching.can_attach_accessory(new_item))
+						attaching.attach_accessory(user, new_item)
+						break
 			else
 				user.equip_to_appropriate_slot(new_item)
 				new_item.update_icon()

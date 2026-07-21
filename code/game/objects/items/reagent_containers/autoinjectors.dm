@@ -483,6 +483,7 @@
 	volume = 5
 	uses_left = 1
 	injectSFX = 'sound/items/air_release.ogg'
+	no_refill_valve = TRUE
 	display_maptext = TRUE
 	maptext_label = "!!!"
 	skilllock = SKILL_MEDICAL_DEFAULT

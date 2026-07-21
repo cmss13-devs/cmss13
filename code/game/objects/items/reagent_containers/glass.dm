@@ -355,7 +355,6 @@
 		/obj/item/reagent_container/hypospray/autoinjector/ez, //remember, all ez autoinjectors are skillless
 		/obj/item/reagent_container/hypospray/autoinjector/skillless
 		/obj/item/reagent_container/hypospray/autoinjector/tutorial
-		/obj/item/reagent_container/hypospray/autoinjector/black_goo_cure //it's medicine, so it counts
 
 	)
 /obj/item/reagent_container/glass/minitank/on_reagent_change()

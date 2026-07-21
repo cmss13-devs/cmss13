@@ -48,7 +48,6 @@
 
 /// Scales the energy capacity and charge rates for chemical dispensers using the dynamic_storage var
 /obj/structure/machinery/chem_storage/proc/calculate_dynamic_storage(scale, round_start=FALSE)
-	scale = 12
 	if(!dynamic_storage)
 		return
 	if(scale < DYNAMIC_SCALING_CHEM_ENERGY_MINIMUM_SCALE)

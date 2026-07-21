@@ -84,6 +84,7 @@
 /datum/job/command/commander/generate_entry_conditions(mob/living/player, whitelist_status, late_join = FALSE)
 	. = ..()
 	GLOB.marine_leaders[JOB_CO] = player
+	SSticker.mode.acting_commander = player
 	RegisterSignal(player, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_leader_candidate))
 	if(!late_join)
 		addtimer(CALLBACK(src, PROC_REF(handle_entry_fax), player, whitelist_status), 15 SECONDS)

@@ -156,6 +156,12 @@
 	var/dynamic_scaling = TRUE
 	/// At which amount of clients does this squad become playable
 	var/pop_lock = 0
+	/// Roles whose roles_cap exists only to allow manual CIC transfers in. They don't gett filled from roundstart roles.
+	var/list/transfer_only_roles = list()
+	/// Maps role -> the max this squad's roles_in may reach when added to the same role's roles_in on shared_cap_squads, before both are treated as full for automatic assignment
+	var/list/shared_role_caps = list()
+	/// Names of other squads whose roles_in for a shared_role_caps role count toward this squad's combined limit (and vice versa)
+	var/list/shared_cap_squads = list()
 	/// Squad roles actual number of players list
 	var/list/roles_in = list()
 	/// Squad headsets default radio frequency
@@ -256,6 +262,8 @@
 		JOB_SQUAD_TEAM_LEADER = 2,
 		JOB_SQUAD_LEADER = 1,
 	)
+	shared_role_caps = list(JOB_SQUAD_SPECIALIST = 3, JOB_SQUAD_SMARTGUN = 3)
+	shared_cap_squads = list(SQUAD_MARINE_4)
 SQUAD_LANDMARKS(alpha, Alpha)
 SQUAD_CRYOSTORAGE(alpha, Alpha)
 SQUAD_VENDORS(alpha, ACCESS_MARINE_ALPHA, Alpha)
@@ -277,12 +285,13 @@ SQUAD_DROPPAD(alpha, Alpha)
 		JOB_SQUAD_MARINE = 8,
 		JOB_SQUAD_ENGI = 2,
 		JOB_SQUAD_MEDIC = 2,
-		JOB_SQUAD_SMARTGUN = 0,
-		JOB_SQUAD_SPECIALIST = 0,
+		JOB_SQUAD_SMARTGUN = 1,
+		JOB_SQUAD_SPECIALIST = 1,
 		JOB_SQUAD_TEAM_LEADER = 1,
 		JOB_SQUAD_LEADER = 1,
 	)
 	dynamic_scaling = FALSE
+	transfer_only_roles = list(JOB_SQUAD_SPECIALIST, JOB_SQUAD_SMARTGUN)
 
 	squad_role = SQUAD_ROLE_SECURITY
 
@@ -305,11 +314,11 @@ SQUAD_DROPPAD(bravo, Bravo)
 	beret_flavortext = "Still has some morning toast crumbs on it."
 
 	roles_cap = list(
-		JOB_SQUAD_MARINE = 4,
+		JOB_SQUAD_MARINE = 8,
 		JOB_SQUAD_ENGI = 1,
 		JOB_SQUAD_MEDIC = 1,
-		JOB_SQUAD_SMARTGUN = 0,
-		JOB_SQUAD_SPECIALIST = 0,
+		JOB_SQUAD_SMARTGUN = 1,
+		JOB_SQUAD_SPECIALIST = 1,
 		JOB_SQUAD_TEAM_LEADER = 1,
 		JOB_SQUAD_LEADER = 1,
 	)
@@ -341,6 +350,8 @@ SQUAD_DROPPAD(charlie, Charlie)
 		JOB_SQUAD_TEAM_LEADER = 2,
 		JOB_SQUAD_LEADER = 1,
 	)
+	shared_role_caps = list(JOB_SQUAD_SPECIALIST = 3, JOB_SQUAD_SMARTGUN = 3)
+	shared_cap_squads = list(SQUAD_MARINE_1)
 
 SQUAD_LANDMARKS(delta, Delta)
 SQUAD_CRYOSTORAGE(delta, Delta)

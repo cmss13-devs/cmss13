@@ -5361,21 +5361,6 @@
 	},
 /turf/open/floor/grass,
 /area/almayer/medical/upper_medical)
-"anq" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	layer = 3.3
-	},
-/turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/medical)
 "anr" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -50640,6 +50625,21 @@
 "cro" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/medical)
+"crp" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
 	pixel_y = 1;
 	pixel_x = 1
 	},
@@ -50655,33 +50655,33 @@
 	},
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/upper_medical)
-"crp" = (
+"crq" = (
 /obj/structure/stairs/multiz/down,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/upper_medical)
-"crq" = (
+"crr" = (
 /obj/structure/foamed_metal/iron,
 /turf/open/floor/plating,
 /area/almayer/medical/upper_medical)
-"crr" = (
+"crs" = (
 /turf/open_space,
 /area/almayer/medical/upper_medical)
-"crs" = (
+"crt" = (
 /obj/structure/stairs/multiz/down{
 	dir = 4
 	},
 /turf/closed/wall/almayer/white,
 /area/almayer/medical/upper_medical)
-"crt" = (
+"cru" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/flooredge/west,
 /area/almayer/medical/morgue)
-"cru" = (
+"crv" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light/small/blue,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/morgue)
-"crv" = (
+"crw" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_square_smooth"
 	},
@@ -50690,7 +50690,7 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/medical/morgue)
-"crw" = (
+"crx" = (
 /obj/structure/morgue{
 	dir = 2
 	},
@@ -50702,7 +50702,7 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/medical/morgue)
-"crx" = (
+"cry" = (
 /obj/structure/morgue{
 	dir = 2
 	},
@@ -50714,14 +50714,14 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/medical/morgue)
-"cry" = (
+"crz" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_square_smooth"
 	},
 /obj/structure/morgue,
 /turf/open/floor/almayer/plate,
 /area/almayer/medical/morgue)
-"crz" = (
+"crA" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass{
 	desc = "Just like a real plant, but fake!";
 	name = "fake fullgrass"
@@ -50732,7 +50732,7 @@
 	},
 /turf/open/floor/grass,
 /area/almayer/medical/upper_medical)
-"crA" = (
+"crB" = (
 /obj/structure/platform/metal/almayer/north{
 	dir = 2
 	},
@@ -50748,7 +50748,7 @@
 	},
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/upper_medical)
-"crB" = (
+"crC" = (
 /obj/structure/platform/metal/almayer/north{
 	dir = 2
 	},
@@ -50763,14 +50763,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/upper_medical)
-"crC" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer/dark_sterile,
-/area/almayer/medical/upper_medical)
 "crD" = (
 /turf/open/floor/almayer/greencorner/north,
 /area/almayer/squads/req)
 "crE" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/dark_sterile,
+/area/almayer/medical/upper_medical)
+"crF" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
 /obj/structure/sign/safety/hazard{
@@ -50783,38 +50783,38 @@
 	},
 /turf/open/floor/almayer/sterile_green_side/east,
 /area/almayer/medical/upper_medical)
-"crF" = (
+"crG" = (
 /obj/structure/closet/secure_closet/guncabinet/red/armory_m39_submachinegun,
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
 /turf/open/floor/almayer/redfull,
 /area/almayer/medical/upper_medical)
-"crG" = (
+"crH" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/sterile_green_corner/north,
 /area/almayer/medical/upper_medical)
-"crH" = (
+"crI" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	name = "ship-grade camera"
 	},
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/medical/upper_medical)
-"crI" = (
+"crJ" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Psychiatric Care Unit";
 	req_access = list()
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/upper_medical)
-"crJ" = (
+"crK" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/upper_medical)
-"crK" = (
+"crL" = (
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/upper_medical)
-"crL" = (
+"crM" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/flooredge/south,
 /area/almayer/hallways/upper/midship_hallway)
@@ -178292,7 +178292,7 @@ bjq
 bjl
 boE
 aYN
-anq
+cro
 baC
 bhz
 crm
@@ -207764,7 +207764,7 @@ ceQ
 ajn
 ajp
 ajn
-crt
+cru
 ajg
 ccX
 akA
@@ -207863,11 +207863,11 @@ chH
 chj
 aEN
 ajt
-crv
+crw
 ajr
-crv
+crw
 arb
-cru
+crv
 aoe
 aoe
 ajl
@@ -208071,13 +208071,13 @@ cgR
 ajt
 cfS
 aoe
-crw
+crx
 arb
 arb
 aEN
 cfy
 aoe
-crq
+crr
 ajl
 onQ
 cct
@@ -208174,13 +208174,13 @@ wUd
 ajy
 cfU
 aoe
-crx
+cry
 aEO
 cfG
 ceA
 cfS
 aoe
-crq
+crr
 ajl
 fOL
 aRS
@@ -208283,7 +208283,7 @@ ceS
 aEO
 cfy
 aoe
-crq
+crr
 ajl
 tEi
 vtx
@@ -208380,7 +208380,7 @@ cgS
 cgD
 cfS
 aoe
-crw
+crx
 arb
 arb
 aoe
@@ -208487,10 +208487,10 @@ skl
 aEO
 ceS
 aCo
-crr
-crr
-crr
-crp
+crs
+crs
+crs
+crq
 ccH
 alD
 ccj
@@ -208584,16 +208584,16 @@ aoe
 aoe
 jTj
 cgG
-cry
+crz
 isN
-cry
+crz
 arb
-cru
+crv
 aoe
-crr
-crr
-crr
-crp
+crs
+crs
+crs
+crq
 rrD
 vQN
 ccl
@@ -208693,11 +208693,11 @@ cfW
 ePX
 jZY
 aoe
-crr
-crr
+crs
+crs
 ajl
 ajl
-cro
+crp
 vQN
 ccm
 gWG
@@ -208796,8 +208796,8 @@ chr
 ceS
 ceA
 aoe
-crr
-crr
+crs
+crs
 ajl
 fEC
 uRt
@@ -209002,8 +209002,8 @@ aoe
 aoe
 aoe
 aoe
-crs
-crs
+crt
+crt
 ajl
 ccW
 uRt
@@ -209197,7 +209197,7 @@ ciE
 ciA
 ciw
 ccn
-crE
+crF
 chV
 cht
 cgW
@@ -209403,7 +209403,7 @@ rSW
 dNv
 rSW
 sqf
-crF
+crG
 aSn
 lYL
 pNP
@@ -209816,7 +209816,7 @@ lGh
 qmW
 ajl
 xyt
-crB
+crC
 tpa
 cek
 vOy
@@ -209917,10 +209917,10 @@ abE
 tkF
 qdJ
 bMW
-crI
+crJ
 akw
 bIM
-crA
+crB
 mzq
 sqf
 vOy
@@ -210019,9 +210019,9 @@ afs
 agA
 lXl
 iCT
-crL
-crJ
-crG
+crM
+crK
+crH
 wiW
 chu
 lFn
@@ -210124,10 +210124,10 @@ lXl
 yiu
 cih
 ajl
-crH
-crC
+crI
+crE
 ydE
-crz
+crA
 sqf
 cgb
 vdO
@@ -210226,7 +210226,7 @@ agA
 lXl
 yiu
 bMW
-crI
+crJ
 aAr
 pGK
 chw
@@ -210329,8 +210329,8 @@ abE
 tkF
 yiu
 bMW
-crK
-crC
+crL
+crE
 gLc
 wub
 mzq

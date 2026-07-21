@@ -43,6 +43,7 @@
 #define MAP_TYRARGO_RIFT "Tyrargo Rift"
 #define MAP_WHITE_ANTRE_RESEARCH_FACILITY "White Antre Research Facility"
 #define MAP_FORT_MCNEIL "Fort McNeil"
+#define MAP_CONAM_81_ABYSSAL "Con-Am 81 'Abyssal'"
 #define MAP_CHINOOK "Chinook 91 GSO" //admin level
 #define MAP_ROSTOCK "SSV Rostock" //UPP Warship
 #define MAP_HUNTERSHIP "Hunter Ship"
@@ -227,7 +228,6 @@
 #define ERT_SHUTTLE_TRANSIT_DURATION 30 SECONDS
 
 #define SHUTTLE_RECHARGE  2 MINUTES
-#define ELEVATOR_RECHARGE 15 SECONDS
 
 //Shuttle moving status
 //#define SHUTTLE_IDLE 0

@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - bugfix: "US Army Tank Crew are now considered on the reserve list."

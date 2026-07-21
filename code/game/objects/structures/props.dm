@@ -1287,6 +1287,9 @@
 	desc = "Windsocks, Air-Con units, solarpanels, oh my!"
 	density = FALSE
 
+/obj/structure/prop/invuln/ice_prefab/roof_greeble/turf_layer
+	layer = ABOVE_TURF_LAYER
+	name = "roof installation"
 
 /obj/structure/prop/invuln/ice_prefab/standalone
 	density = TRUE
@@ -1622,3 +1625,16 @@
 	layer = TURF_LAYER
 	plane = FLOOR_PLANE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/obj/structure/prop/misc/lit_cable
+	name = "power cable surface connector"
+	desc = "Manual connection point to the station's powernet, emits a low level of light."
+	icon = 'icons/obj/pipes/power_cond_heavy.dmi'
+	icon_state = "node"
+	layer = ABOVE_WEED_LAYER
+	plane = FLOOR_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	light_on = TRUE
+	light_color = "#BB3F3F"
+	light_range = 2
+	light_power = 1

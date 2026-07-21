@@ -132,7 +132,14 @@
 	icon_state = "poster6"
 
 /obj/structure/sign/poster/art/Initialize()
-	serial_number = pick(6,23,24,57,58)
+	serial_number = pick(6,23,24,57,58,101)
+	.=..()
+
+/obj/structure/sign/poster/art2
+	icon_state = "poster101"
+
+/obj/structure/sign/poster/art2/Initialize()
+	serial_number = 101
 	.=..()
 
 /obj/structure/sign/poster/blacklight
@@ -249,4 +256,15 @@
 
 /obj/structure/sign/poster/upp/Initialize()
 	serial_number = pick(88,89,90,91,92,93,94,95,96,97,98,99,100)
+	.=..()
+
+////////////////
+//Abyssal Poster//
+////////////////
+
+/obj/structure/sign/poster/conam
+	icon_state = "poster101"
+
+/obj/structure/sign/poster/conam/Initialize()
+	serial_number = 101
 	.=..()

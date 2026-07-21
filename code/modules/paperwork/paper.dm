@@ -701,11 +701,32 @@
 	name = "TOP SECRET: FOR CELL LEAD ONLY"
 	info = "Your request for extraction has been received. We have no assets in the region available. Await further instruction."
 
+/obj/item/paper/hybrisa/firefighternote
+	name = "Fannin' Fuego: Choke Like A Pro!"
+	info = "<h2>Okay-</h2> Okay. I know I fucked up, Tova. I got the thing on sale- though! I swear! I fitted it with a case full of stabilized foam, the kind they use to plug atmospheric breaches- don't ask where I got it from- it's so much cheaper than water... We won't have to have that Company bastard help take our business apart! They <b>need</b> us in this city, you know? Another fucking fire we can't fix and it's wraps for this casino town. I swear to God I can hear Jones whining about the bullshit they get up to in the caves. Just a few more months, and we're out, okay? Out! \n\n I know I'm gone for the week, you guys can handle shop while I'm out. <h2>Instructions're easy.</h2>  You see a flame, in a window, room or whatever, you aim <i>far</i>, it'll seal the whole room in foam, hardens <b>real</b> fast. It'll choke any flame in any enclosed space near-instantly, and honestly? It keeps all the valuables safe, too. You remember how Maizer was heckling us about his dog? Guy was so damn angry about his oven shorting he forgot all about his mother's jewelry box, and shit- if I treated that fire with the regular stuff, and the 'water' they give us? We'd probably be homeless right now. \n\n I'm serious, girl. This shit works. You could seal a whale's asshole with this thing. \n Swear to god, that dumb fuck'll never find out. We'll be in Sol in no time. Just hang in there."
+
 /obj/item/paper/bigred/upp/Initialize(mapload, photo_list)
 	. = ..()
 
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
 	info = "<center> <img src = [asset.get_url_mappings()["logo_upp.png"]]> <br> <b><small>Union Of Progressive People's Fourth Fleet</b></small> <br> <b><large>Orders For 173rd Airborne Reconnaissance: 2nd Platoon</large></b> <br> <small>No.52</small></center> <hr> <b>Order of Military Officer of the UPP</b><br><b>Kolonel <redacted> Ganbaatar </b><br><b>Commander of MV-35</b> <br> Date: 2182 <br> <b><large>On Special Mission<large></b>  <hr>  The actions of the hostile Weyland-Yutani corporation on the fringes of the Neroid sector have grown increasingly intolerable. However, evidence suggesting they are researching into the creation and deployment of some form of biological weapons program represent an unacceptable risk to the security of UPP interests in this sector. The risk of these items falling into UA/USCM hands is unacceptable. <br><br> Orders for the Boris squad of the 173rd Airborne Recon are as follows. Initiate airborne reconnaissance of WY colony Oxley's Buttle, Trijent Dam, location on planet Raijin  (UA Code: LV-670). Ascertain veracity of on site biological weapons program. If positive confirmation of the weapons program is identified, authorization for rapid assault and recovery is granted. Avoid all contact with UA/USCM military forces, abort missions if UA/USCM forces are encountered. <hr><center><b>Authorizing Officer: Gaanbatar</b><br>Name and Rank: Kolonel </center>  <hr><small><i>FOR SANCTIONED USE ONLY</i></small>"
+
+/obj/item/paper/abyssal/captain
+	name = "Captains Directive"
+
+/obj/item/paper/abyssal/captain/Initialize(mapload, photo_list)
+	. = ..()
+
+	info = "<center> <br> <b><small>Con-Amalagated Corporation</b></small> <br> <b><large>Orders For Captain: Con-AM 81 'Abyssal'</large></b> <br> <small>No.02</small></center> <hr> <br> Date: 2182 <br> <b><large>On Recovery Of Unidentified Craft<large></b>  <hr> We have recieved your communique regarding the recovery of the possible xenocraft. Its transfer into Con-Am secure custody is considered priority 1. We are dispatching a Con-Am Security Service force to your station to transfer it off-station.<br><br> Your directive is to ensure its safe harbour until the recovery team arrives. You must render every effort to ensure the safety of the craft. You and your crew will be well rewarded for your efforts.  <hr><small><i>FOR SANCTIONED USE ONLY</i></small>"
+
+/obj/item/paper/abyssal/liaison
+	name = "Liaison Directive"
+
+/obj/item/paper/abyssal/liaison/Initialize(mapload, photo_list)
+	. = ..()
+
+	info = "<center> <br> <b><small>Con-Amalagated Corporation</b></small> <br> <b><large>Orders For Liaison: Con-AM 81 'Abyssal'</large></b> <br> <small>No.02</small></center> <hr> <br> Date: 2182 <br> <b><large>On Recovery Of Unidentified Craft<large></b>  <hr> We have recieved your Captains communique regarding the recovery of a possible xenocraft. Its transfer into Con-Am secure custody is considered priority 1. We are dispatching a Con-Am Security Service force to your station to transfer it off-station.<br><br> Your directive is to ensure its safe harbour until the recovery team arrives. You must render every effort to ensure the safety of the craft. You and your crew will be well rewarded for your efforts.  <hr><small><i>FOR SANCTIONED USE ONLY</i></small>"
+
 
 /obj/item/paper/crumpled
 	name = "paper scrap"

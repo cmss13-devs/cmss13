@@ -768,6 +768,11 @@
 	desc = "A sleek corporate patch bearing the logo of the Hyperdyne Corporation—one of the most powerful conglomerates. Known for synthetic production, AI research, and deep-space logistics. Wearing this patch implies loyalty to profit over people."
 	icon_state = "hyperdynepatch"
 
+/obj/item/clothing/accessory/patch/conam_patch
+	name = "Con-Amalagated Corporation patch"
+	desc = "A colorful corporate patch bearing the logo of the Con-Amalagated Corporation. Once a powerful conglomerate within the Sol System, now relegated to a middle-power on the verge of financial collapse. This patch is popular amongst collectors due to its color scheme."
+	icon_state = "conampatch"
+
 // Misc
 
 /obj/item/clothing/accessory/dogtags
@@ -1524,7 +1529,7 @@ Wrist Accessories
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
 	)
-	flags_obj = OBJ_IS_STYLISH
+	flags_obj = OBJ_IS_STYLISH|OBJ_IS_HELMET_GARB
 	worn_accessory_slot = ACCESSORY_SLOT_DECOR
 	worn_accessory_limit = 2
 	style_postfix = list("neck", "left_wrist", "right_wrist")

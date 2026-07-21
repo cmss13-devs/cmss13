@@ -72,6 +72,9 @@ endmap
 
 map fort_mcneil
 	maxplayers 100
+
+map conam_81_abyssal
+	maxplayers 85
 endmap
 
 map whiskey_outpost_v2

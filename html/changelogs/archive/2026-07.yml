@@ -167,3 +167,23 @@
   - bugfix: Fixed some exploitable race conditions with Cryopods.
   matttheficus:
   - rscadd: Added WotQ Keybind option.
+2026-07-21:
+  JackieEstegado:
+  - rscadd: Dropship modules can now be repaired with a welder.
+  - rscadd: Deployable (DS and non-DS) sentries and MGs now continuously sync their
+      health between the module and the weapon.
+  - balance: Acid applied to an installed dropship module now deals damage overtime
+      instead of simply deleting it.
+  - balance: Acided dropship modules can no longer be picked up with a powerloader.
+  - qol: Cryoing now only takes 1 minute upon entering the cryobed, except for players
+      who were forced inside while SSD unless they are the aCO.
+  - qol: If the current aCO cryoes ARES will automatically pick a new aCO.
+  - qol: Players in the process of cryoing will get skipped during autopromotion by
+      ARES.
+  MistChristmas:
+  - bugfix: SEAs with no preference on their rank spawn as Gunnery Sergeants rather
+      than Civs.
+  - ui: RMC get sorted properly, IASF get a colour correctly assigned in the Orbit
+      menu
+  - bugfix: Shotguns now respect your preference regarding hurting yourself
+  - bugfix: Ship Intercomms & Shortwaves work again

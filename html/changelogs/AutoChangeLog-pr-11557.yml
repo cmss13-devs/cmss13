@@ -1,6 +1,0 @@
-author: "JackieEstegado"
-delete-after: True
-changes:
-  - qol: "Cryoing now only takes 1 minute upon entering the cryobed, except for players who were forced inside while SSD unless they are the aCO."
-  - qol: "If the current aCO cryoes ARES will automatically pick a new aCO."
-  - qol: "Players in the process of cryoing will get skipped during autopromotion by ARES."

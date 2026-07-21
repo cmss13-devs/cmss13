@@ -132,3 +132,58 @@
   fira:
   - admin: Most logging (and fingerprints) should now properly use ckey, instead of
       key
+2026-07-14:
+  JHINgle4ce:
+  - rscadd: Adds MP synth to security
+  NHC:
+  - code_imp: added a var to set if clothing removes undergarments overlays or not.
+  - bugfix: Fixes Yautja Meshsuits removing undergarments
+2026-07-15:
+  DangerRevolution:
+  - bugfix: Fixes the Field Cameras' label reading "this label label reads"...
+  - bugfix: Moves the Field Cameras' labels to the examine box rather than outputting
+      it to the chatbox.
+  NHC:
+  - qol: SOCOM and grenade packs can now be collapsed
+  - qol: Grenade belt and satchel can now be filed by being slapped by themself, each
+      other, and via grenade packs n boxes
+  - qol: M56D and M2C mags can be used to refil other mags of their own kind
+  - qol: M56D mags can be manually loaded/unloaded
+  ori-disillusion-mirnov:
+  - code_imp: all living mobs now have procs for riding
+  - code_imp: adding the riding element is easier
+2026-07-18:
+  TheDonkified:
+  - refactor: Updates spark_spread effect system to use subsystem processing and timers
+      instead of sleeps
+  - refactor: Sparks move a bit faster/smoother
+2026-07-20:
+  Red-byte3D:
+  - balance: HEDP no longer pushes bodies around when they're dead for humans.
+  fira:
+  - bugfix: Fixed 'Set Operations Commander' admin verb breaking under certain circumstances.
+  - bugfix: The IMS and Laser Scalpel will now once again skip their associated steps.
+  - bugfix: Fixed Cryopod internal intercoms being sent to the void upon ejecting.
+  - bugfix: Fixed some exploitable race conditions with Cryopods.
+  matttheficus:
+  - rscadd: Added WotQ Keybind option.
+2026-07-21:
+  JackieEstegado:
+  - rscadd: Dropship modules can now be repaired with a welder.
+  - rscadd: Deployable (DS and non-DS) sentries and MGs now continuously sync their
+      health between the module and the weapon.
+  - balance: Acid applied to an installed dropship module now deals damage overtime
+      instead of simply deleting it.
+  - balance: Acided dropship modules can no longer be picked up with a powerloader.
+  - qol: Cryoing now only takes 1 minute upon entering the cryobed, except for players
+      who were forced inside while SSD unless they are the aCO.
+  - qol: If the current aCO cryoes ARES will automatically pick a new aCO.
+  - qol: Players in the process of cryoing will get skipped during autopromotion by
+      ARES.
+  MistChristmas:
+  - bugfix: SEAs with no preference on their rank spawn as Gunnery Sergeants rather
+      than Civs.
+  - ui: RMC get sorted properly, IASF get a colour correctly assigned in the Orbit
+      menu
+  - bugfix: Shotguns now respect your preference regarding hurting yourself
+  - bugfix: Ship Intercomms & Shortwaves work again

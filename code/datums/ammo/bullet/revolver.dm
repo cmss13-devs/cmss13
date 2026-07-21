@@ -74,6 +74,7 @@
 	shrapnel_chance = 0
 
 	penetration = ARMOR_PENETRATION_TIER_10
+	handful_type = /obj/item/ammo_magazine/handful/revolver/penetrating
 
 /datum/ammo/bullet/revolver/penetrating/set_bullet_traits()
 	. = ..()

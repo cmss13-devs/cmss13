@@ -414,4 +414,3 @@ GLOBAL_LIST_INIT(shotgun_handfuls_12g, list(
 	gun_type = /obj/item/weapon/gun/shotgun/double/twobore
 	handful_state = "twobore"
 	transfer_handful_amount = 3
-

@@ -375,31 +375,31 @@
 			autoinjector.update_icon()
 			playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
 
-		else if(autoinjector.mixed_chem) //Mixed chem autoinjectors like emergency and sleep are too complicated for the tank.
-			if(istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/empty)) //Autoinjector says, "Where's my pouch?"
-				to_chat(user, SPAN_WARNING("A small LED on [src] blinks. Refill failed. The [autoinjector] can only be refilled with a pressurized reagent canister pouch."))
-				return FALSE
-			else //some autoinjectors truly are one-use... Example: That big ass 79u emergency first aid syringe. 
-				to_chat(user, SPAN_WARNING("A small LED on [src] blinks. Refill failed. The [autoinjector] does not have a refill valve. It must be disposed of."))
+		else if(!(chem_refill) || !(autoinjector.type in chem_refill)) //noo, you can't fill this! It's not the right autoinjector!
+			if(autoinjector.mixed_chem) //Mixed chem autoinjectors like emergency and sleep are too complicated for the tank.
+				if(istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/empty)) //Autoinjector says, "Where's my pouch?"
+					to_chat(user, SPAN_WARNING("A small LED on [src] blinks red. Refill failed. [autoinjector] can only be refilled with a pressurized reagent canister pouch."))
+					return FALSE
+				else //some autoinjectors truly are one-use... Example: That big ass 79u emergency first aid syringe.
+					to_chat(user, SPAN_WARNING("A small LED on [src] blinks red. Refill failed. [autoinjector] does not have a refill valve. It must be disposed of."))
+					return FALSE
+			else //Meralyne and Dermaline autoinjectors, stuff you can't refill with Wey-Med vends.
+				to_chat(user, SPAN_WARNING("A small LED on [src] blinks red. Refill failed. [autoinjector]'s refill valve is not compatible with [src]'s dispense valve."))
 				return FALSE
 
-		else if(!(chem_refill) || !(autoinjector.type in chem_refill)) //noo, you can't fill this! It's not the right autoinjector!
-			to_chat(user, SPAN_WARNING("A small LED on [src] blinks. Refill failed. The [autoinjector]'s valves are not compatible with [src]'s tank."))
+		else if(autoinjector.reagents.total_volume >= autoinjector.reagents.maximum_volume) //Autoinjector is full!
+			to_chat(user, SPAN_WARNING("A small LED on [src] blinks red. Refill failed. [autoinjector] is full."))
 			return FALSE
 
 		else if(src.reagents.total_volume <= 0) //The tank is empty!
-			to_chat(user, SPAN_WARNING("A small LED on [src] blinks. Refill failed. [src] is empty."))
+			to_chat(user, SPAN_WARNING("A small LED on [src] blinks red. Refill failed. [src] is empty."))
 			return FALSE
 
-		else if(autoinjector.reagents.total_volume >= autoinjector.reagents.maximum_volume) //Autoinjector is full!
-			to_chat(user, SPAN_WARNING("A small LED on [src] blinks. Refill failed. The [autoinjector] is full."))
+		else //Autoinjector says, "Where's the chemical I want?" Or "Not enough chemicals to completely refill me."
+			to_chat(user, SPAN_WARNING("A small LED on [src] blinks red. Refill failed. [autoinjector] could not find enough [autoinjector.chemname] in the tank for a complete refill. Fill the tank with at least [amount]u of [autoinjector.chemname] and try again."))
 			return FALSE
 
-		else //Autoinjector says, "Where's the chemical I want?"
-			to_chat(user, SPAN_WARNING("A small LED on [src] blinks. Refill failed. The [autoinjector] could not find enough [autoinjector.chemname] in the tank for a complete refill. Fill the tank with at least [amount]u of [autoinjector.chemname] and try again."))
-			return FALSE
-
-		to_chat(user, SPAN_INFO("You successfully refill the [autoinjector] with [src]!"))
+		to_chat(user, SPAN_INFO("You successfully refill [autoinjector] with [src]!"))
 		return
 
 /obj/item/reagent_container/glass/minitank/verb/flush_tank()
@@ -698,15 +698,16 @@
 
 /obj/item/reagent_container/glass/pressurized_canister // See the Pressurized Reagent Canister Pouch
 	name = "pressurized reagent canister"
-	desc = "The meat of the reagent canister pouch, it is to be filled with chemicals. Only compatible with its pouch, machinery, or a storage tank."
+	desc = "The star of the reagent canister pouch, it is to be filled with chemicals. Only compatible with its pouch, machinery, or a storage tank."
 	icon = 'icons/obj/items/tank.dmi'
 	icon_state = "pressurized_reagent_container"
+	item_state = "pressurized_reagent_container"
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tanks_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tanks_righthand.dmi',
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/misc.dmi'
 	)
-	item_state = "reagent"
+	flags_equip_slot = SLOT_BACK
 	amount_per_transfer_from_this = 0
 	possible_transfer_amounts = null
 	volume = 480

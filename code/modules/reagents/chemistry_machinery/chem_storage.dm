@@ -16,9 +16,9 @@
 
 	var/network = "Ground"
 	var/recharge_cooldown = 15
-	var/recharge_rate = 50
-	var/energy = 200
-	var/max_energy = 200
+	var/recharge_rate = BASE_CHEM_STORAGE_RECHARGE_RATE
+	var/energy = BASE_CHEM_STORAGE_MAX_ENERGY
+	var/max_energy = BASE_CHEM_STORAGE_MAX_ENERGY
 	var/dynamic_storage = FALSE
 
 	unslashable = TRUE
@@ -48,6 +48,7 @@
 
 /// Scales the energy capacity and charge rates for chemical dispensers using the dynamic_storage var
 /obj/structure/machinery/chem_storage/proc/calculate_dynamic_storage(scale, round_start=FALSE)
+	scale = 12
 	if(!dynamic_storage)
 		return
 	if(scale < DYNAMIC_SCALING_CHEM_ENERGY_MINIMUM_SCALE)

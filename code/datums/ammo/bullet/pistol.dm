@@ -222,6 +222,7 @@
 	damage = 36
 	penetration = ARMOR_PENETRATION_TIER_5
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
+	handful_type = /obj/item/ammo_magazine/handful/pistol/highpower
 
 // Used by VP78 and Auto 9
 /datum/ammo/bullet/pistol/squash
@@ -235,11 +236,13 @@
 	penetration= ARMOR_PENETRATION_TIER_6
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 	damage_falloff = DAMAGE_FALLOFF_TIER_6
+	handful_type = /obj/item/ammo_magazine/handful/pistol/squash
 
 /datum/ammo/bullet/pistol/squash/toxin
 	name = "toxic squash-head pistol bullet"
 	var/acid_per_hit = 10
 	var/organic_damage_mult = 3
+	handful_type = /obj/item/ammo_magazine/handful/pistol/squash/toxin
 
 /datum/ammo/bullet/pistol/squash/toxin/on_hit_mob(mob/M, obj/projectile/P)
 	. = ..()
@@ -259,6 +262,7 @@
 	name = "wall-penetrating squash-head pistol bullet"
 	shrapnel_chance = 0
 	penetration = ARMOR_PENETRATION_TIER_10
+	handful_type = /obj/item/ammo_magazine/handful/pistol/squash/penetrating
 
 /datum/ammo/bullet/pistol/squash/penetrating/set_bullet_traits()
 	. = ..()
@@ -273,6 +277,7 @@
 	flags_ammo_behavior = AMMO_BALLISTIC
 	accuracy = HIT_ACCURACY_TIER_3
 	damage = 35
+	handful_type = /obj/item/ammo_magazine/handful/pistol/squash/incendiary
 
 /datum/ammo/bullet/pistol/squash/incendiary/set_bullet_traits()
 	..()
@@ -286,6 +291,7 @@
 	headshot_state = HEADSHOT_OVERLAY_HEAVY
 	damage = 50
 	penetration = ARMOR_PENETRATION_TIER_10
+	handful_type = /obj/item/ammo_magazine/handful/pistol/squash/heap
 
 /datum/ammo/bullet/pistol/squash/rubber
 	name = "rubber squash-head pistol bullet"
@@ -294,6 +300,7 @@
 	sound_override = 'sound/weapons/gun_c99.ogg'
 	damage = 2
 	stamina_damage = 40
+	handful_type = /obj/item/ammo_magazine/handful/pistol/squash/rubber
 
 /datum/ammo/bullet/pistol/mankey
 	name = "live monkey"
@@ -306,6 +313,7 @@
 	damage = 15
 	damage_var_high = PROJECTILE_VARIANCE_TIER_5
 	shell_speed = AMMO_SPEED_TIER_2
+	handful_type = /obj/item/ammo_magazine/handful/pistol/chimp
 
 /datum/ammo/bullet/pistol/mankey/set_bullet_traits()
 	. = ..()

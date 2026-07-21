@@ -650,3 +650,53 @@ L54 service pistol
 /obj/item/ammo_magazine/handful/pistol/deagle/super/highimpact/ap
 	name = "handful of high-impact armor-piercing pistol bullets (.50)"
 	default_ammo = /datum/ammo/bullet/pistol/deagle/super/highimpact/ap
+
+//-------------------------------------------------------
+//.45 MK-45
+/obj/item/ammo_magazine/handful/pistol/highpower
+	name = "handful of high-power pistol bullets (.45)"
+	default_ammo = /datum/ammo/bullet/pistol/highpower
+	caliber = ".45"
+	max_rounds = 6
+	current_rounds = 6
+	transfer_handful_amount = 6
+
+//-------------------------------------------------------
+//9mm squash VP78/Auto 9
+
+/obj/item/ammo_magazine/handful/pistol/squash
+	name = "handful of squash-head pistol bullets (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/squash
+	caliber = "9mm"
+	max_rounds = 6
+	current_rounds = 6
+	transfer_handful_amount = 6
+
+/obj/item/ammo_magazine/handful/pistol/squash/toxin
+	name = "handful of toxic squash-head pistol bullets (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/squash/toxin
+
+/obj/item/ammo_magazine/handful/pistol/squash/penetrating
+	name = "handful of wall-penetrating squash-head pistol bullets (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/squash/penetrating
+
+/obj/item/ammo_magazine/handful/pistol/squash/incendiary
+	name = "handful of incendiary squash-head pistol bullets (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/squash/incendiary
+
+/obj/item/ammo_magazine/handful/pistol/squash/heap
+	name = "handful of high-explosive armor-piercing squash-head pistol bullets (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/squash/heap
+
+/obj/item/ammo_magazine/handful/pistol/squash/rubber
+	name = "handful of rubber squash-head pistol bullets (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/squash/rubber
+
+//-------------------------------------------------------
+//.70M CHIMP70 monkey...
+
+/obj/item/ammo_magazine/handful/pistol/chimp
+	name = "handful of pistol bullets (.70M)"
+	default_ammo = /datum/ammo/bullet/pistol/mankey
+	caliber = ".70M"
+

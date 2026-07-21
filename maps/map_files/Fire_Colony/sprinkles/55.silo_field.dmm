@@ -1,0 +1,2094 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"af" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/asteroid/directions/south,
+/area/fire_colony/exterior/valley/north)
+"al" = (
+/turf/open/lava/basalt/basalt6,
+/area/fire_colony/exterior/valley/northeast)
+"az" = (
+/turf/open/lava/basalt/basalt6,
+/area/fire_colony/exterior/valley/north)
+"aM" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/reagent_container/glass/bucket{
+	pixel_x = -8;
+	pixel_y = 7
+	},
+/turf/open/lava/asteroid/directions/northwest,
+/area/fire_colony/exterior/valley/north)
+"aO" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/clearing/north)
+"aT" = (
+/turf/open/lava/basalt/basalt10,
+/area/fire_colony/exterior/valley/northeast)
+"bJ" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/asteroid/directions/northwest,
+/area/fire_colony/exterior/valley/north)
+"cg" = (
+/obj/effect/lava/edges/basalt/side_rock,
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/valley/northeast)
+"ck" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/asteroid/directions/west,
+/area/fire_colony/exterior/valley/north)
+"cm" = (
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 1
+	},
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 8
+	},
+/obj/effect/lava/edges/basalt/corner_rock{
+	dir = 1
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/north)
+"cE" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/turf/open/lava/basalt/cave/west,
+/area/fire_colony/exterior/valley/northeast)
+"cK" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1
+	},
+/obj/effect/lava/edges/basalt/l_piece,
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/north)
+"cO" = (
+/obj/structure/fence/slim/blue/door,
+/turf/open/lava/metal/warning_grate/east,
+/area/fire_colony/exterior/valley/north)
+"cW" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/turf/open/lava/basalt/basalt11,
+/area/fire_colony/exterior/valley/north)
+"dt" = (
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 4
+	},
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/north)
+"dv" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/obj/effect/lava/edges/basalt/corner_rock{
+	dir = 8
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/north)
+"dO" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1;
+	layer = 2.01
+	},
+/turf/open/lava/basalt/basalt8,
+/area/fire_colony/exterior/valley/north)
+"en" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/north)
+"ep" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1
+	},
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/valley/northeast)
+"eq" = (
+/obj/structure/fence/slim/blue/door,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/metal/warning_grate/east,
+/area/fire_colony/exterior/valley/north)
+"es" = (
+/turf/open/floor/corsat,
+/area/fire_colony/exterior/valley/north)
+"eE" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/obj/item/device/flashlight/lamp/tripod/grey/off,
+/turf/open/lava/basalt/basalt10,
+/area/fire_colony/exterior/valley/north)
+"eH" = (
+/obj/structure/flora/alien/sparsegrass/sparsegrass_1,
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/north)
+"eU" = (
+/turf/open/lava/basalt/basalt8,
+/area/fire_colony/exterior/valley/northeast)
+"eV" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1
+	},
+/obj/effect/lava/edges/basalt/corner_rock{
+	dir = 1
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/northeast)
+"eX" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 1
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/north)
+"fa" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/north)
+"fA" = (
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 8
+	},
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 4
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/north)
+"fI" = (
+/obj/effect/lava/edges/basalt/side_rock,
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/north)
+"fJ" = (
+/turf/open/lava/brock,
+/area/fire_colony/exterior/clearing/north)
+"fX" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/asteroid/directions/north,
+/area/fire_colony/exterior/valley/north)
+"gs" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/fence/slim/blue{
+	icon_state = "brokenfence0";
+	density = 0;
+	cut = 1
+	},
+/obj/item/stack/rods{
+	color = "#8d93a1ff"
+	},
+/turf/open/lava/metal/warning_grate/north,
+/area/fire_colony/exterior/valley/north)
+"gx" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/obj/effect/lava/edges/basalt/corner_rock{
+	dir = 8
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/northeast)
+"gy" = (
+/obj/structure/flora/alien/sparsegrass/sparsegrass_2,
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/north)
+"gH" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/turf/open/lava/basalt/cave/west,
+/area/fire_colony/exterior/valley/north)
+"hl" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/tool/warning_cone/blue{
+	pixel_x = 2;
+	pixel_y = 8
+	},
+/obj/item/tool/warning_cone/blue{
+	pixel_x = -14;
+	pixel_y = 3
+	},
+/turf/open/lava/asteroid/directions/northeast,
+/area/fire_colony/exterior/valley/north)
+"hE" = (
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 4
+	},
+/obj/effect/lava/edges/basalt/side_rock,
+/obj/effect/lava/edges/basalt/corner_rock,
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/northeast)
+"hT" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/north)
+"ic" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/landmark/monkey_spawn,
+/turf/open/lava/asteroid/directions/southeast,
+/area/fire_colony/exterior/valley/north)
+"iA" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/clearing/north)
+"iY" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/obj/effect/lava/edges/basalt/corner_rock,
+/turf/open/lava/sand,
+/area/fire_colony/exterior/valley/northeast)
+"ja" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 8
+	},
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/north)
+"jx" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/obj/effect/lava/edges/basalt/side_rock,
+/turf/open/lava/sand,
+/area/fire_colony/exterior/valley/north)
+"jy" = (
+/obj/structure/flora/alien/chilli_bush_no_light{
+	pixel_x = 1;
+	pixel_y = 11
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/north)
+"jP" = (
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 1
+	},
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 8
+	},
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 4
+	},
+/obj/effect/lava/edges/basalt/side_rock,
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/north)
+"kc" = (
+/turf/open/lava/basalt/basalt11,
+/area/fire_colony/exterior/clearing/north)
+"kr" = (
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 8
+	},
+/obj/effect/lava/edges/basalt/corner_rock{
+	dir = 1
+	},
+/obj/effect/lava/edges/basalt/corner_rock{
+	dir = 8
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/northeast)
+"kK" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 8
+	},
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 1
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/north)
+"ld" = (
+/obj/structure/flora/tree/alien/tree_8{
+	pixel_x = -18;
+	pixel_y = 7
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/north)
+"lf" = (
+/turf/closed/wall/lava/solaris_dark,
+/area/fire_colony/exterior/valley/north)
+"lq" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/turf/open/lava/basalt/basalt8,
+/area/fire_colony/exterior/clearing/north)
+"lz" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/turf/open/lava/basalt/basalt8,
+/area/fire_colony/exterior/clearing/north)
+"lA" = (
+/obj/structure/flora/alien/chilli_bush_no_light{
+	pixel_x = -8;
+	pixel_y = 17
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/north)
+"lE" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1
+	},
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 4
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/north)
+"lL" = (
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 1
+	},
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 8
+	},
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 4
+	},
+/obj/effect/lava/edges/basalt/side_rock,
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/northeast)
+"mf" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1
+	},
+/obj/effect/lava/edges/basalt/side_rock,
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/north)
+"mm" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1
+	},
+/turf/open/lava/basalt/basalt4,
+/area/fire_colony/exterior/valley/north)
+"mn" = (
+/obj/item/device/flashlight/lamp/tripod/grey/off,
+/turf/open/lava/basalt/basalt8,
+/area/fire_colony/exterior/valley/north)
+"mo" = (
+/obj/structure/flora/alien/sparsegrass/sparsegrass_1,
+/turf/open/lava/brock,
+/area/fire_colony/exterior/clearing/north)
+"mN" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/valley/north)
+"mQ" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/asteroid/directions/southwest,
+/area/fire_colony/exterior/valley/north)
+"nr" = (
+/obj/effect/lava/edges/basalt/side_rock,
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 1
+	},
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/northeast)
+"nu" = (
+/obj/effect/lava/edges/basalt/side_rock,
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/northeast)
+"nU" = (
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/valley/north)
+"ol" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/turf/open/lava/basalt/basalt12,
+/area/fire_colony/exterior/valley/north)
+"op" = (
+/obj/structure/flora/tree/alien/tree_4,
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/north)
+"ow" = (
+/obj/structure/flora/tree/alien/tree_8{
+	pixel_x = -18;
+	pixel_y = -2
+	},
+/obj/structure/flora/alien/chilli_bush_no_light{
+	pixel_x = -7;
+	pixel_y = 14
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/north)
+"oF" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/north)
+"oI" = (
+/obj/structure/flora/alien/sparsegrass/sparsegrass_1,
+/obj/structure/flora/alien/bluegrass/bluegrass_3{
+	pixel_x = 12;
+	pixel_y = 1
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/northeast)
+"oT" = (
+/obj/structure/flora/alien/chilli_bush_no_light{
+	pixel_x = 2;
+	pixel_y = 10
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/northeast)
+"oX" = (
+/turf/open/lava/basalt/basalt12,
+/area/fire_colony/exterior/valley/northeast)
+"pf" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/turf/open/lava/basalt/basalt11,
+/area/fire_colony/exterior/valley/north)
+"pg" = (
+/obj/structure/flora/alien/sparsegrass/sparsegrass_2,
+/turf/open/lava/brock,
+/area/fire_colony/exterior/clearing/north)
+"pw" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/turf/open/lava/basalt/basalt8,
+/area/fire_colony/exterior/valley/northeast)
+"pG" = (
+/obj/structure/flora/alien/sparsegrass/sparsegrass_1{
+	pixel_x = -2;
+	pixel_y = 2
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/north)
+"pI" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 4
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/northeast)
+"pQ" = (
+/obj/effect/lava/edges/basalt/corner_rock{
+	dir = 1
+	},
+/obj/effect/lava/edges/basalt/corner_rock,
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 4
+	},
+/obj/effect/lava/edges/basalt/corner_rock{
+	dir = 4
+	},
+/turf/open/lava/sand,
+/area/fire_colony/exterior/valley/northeast)
+"qf" = (
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 4
+	},
+/obj/effect/lava/edges/basalt/corner_rock{
+	dir = 4
+	},
+/obj/effect/lava/edges/basalt/corner_rock,
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/north)
+"qh" = (
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 8
+	},
+/obj/effect/lava/edges/basalt/corner_rock{
+	dir = 1
+	},
+/obj/effect/lava/edges/basalt/corner_rock{
+	dir = 8
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/clearing/north)
+"qu" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/valley/northeast)
+"qB" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/north)
+"qL" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/valley/northeast)
+"rf" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 8
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/northeast)
+"rn" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/asteroid/directions/west,
+/area/fire_colony/exterior/valley/north)
+"rp" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1
+	},
+/obj/effect/lava/edges/basalt/corner_rock{
+	dir = 1
+	},
+/turf/open/lava/sand,
+/area/fire_colony/exterior/valley/north)
+"rq" = (
+/obj/structure/fence/slim/blue,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/metal/warning_grate/north,
+/area/fire_colony/exterior/valley/north)
+"rJ" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	layer = 2.01;
+	dir = 4
+	},
+/obj/item/tool/warning_cone/blue{
+	pixel_x = 14;
+	pixel_y = 11
+	},
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/valley/north)
+"rP" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/north)
+"sj" = (
+/obj/structure/flora/tree/alien/tree_7,
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/northeast)
+"sm" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1
+	},
+/turf/open/lava/sand,
+/area/fire_colony/exterior/valley/north)
+"sr" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1
+	},
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/valley/north)
+"sC" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/obj/effect/lava/edges/basalt/corner_rock{
+	dir = 8
+	},
+/turf/open/lava/sand,
+/area/fire_colony/exterior/valley/northeast)
+"sE" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1
+	},
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/clearing/north)
+"tb" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	layer = 2.01;
+	dir = 8
+	},
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/valley/north)
+"tk" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/turf/open/lava/basalt/basalt12,
+/area/fire_colony/exterior/valley/northeast)
+"tt" = (
+/turf/open/lava/basalt/basalt8,
+/area/fire_colony/exterior/valley/north)
+"ub" = (
+/obj/structure/flora/tree/alien/tree_8{
+	pixel_x = -18;
+	pixel_y = -2
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/north)
+"uB" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/valley/northeast)
+"uY" = (
+/obj/item/device/flashlight/lamp/tripod/grey/off,
+/turf/open/lava/asteroid/directions/northeast,
+/area/fire_colony/exterior/valley/north)
+"vb" = (
+/obj/effect/lava/edges/basalt/side_rock,
+/obj/effect/lava/edges/basalt/corner_rock{
+	dir = 8
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/northeast)
+"vp" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1
+	},
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/north)
+"vD" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/asteroid/directions/east,
+/area/fire_colony/exterior/valley/north)
+"vU" = (
+/turf/open/lava/basalt/basalt12,
+/area/fire_colony/exterior/clearing/north)
+"wd" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/northeast)
+"ww" = (
+/turf/open/lava/basalt/basalt4,
+/area/fire_colony/exterior/valley/northeast)
+"wU" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/obj/effect/lava/edges/basalt/l_piece,
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/north)
+"xj" = (
+/obj/effect/lava/edges/basalt/side_rock,
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 1
+	},
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/clearing/north)
+"xm" = (
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 1
+	},
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 8
+	},
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 4
+	},
+/obj/effect/lava/edges/basalt/side_rock,
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/clearing/north)
+"xr" = (
+/turf/open/lava/basalt/basalt4,
+/area/fire_colony/exterior/clearing/north)
+"xH" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 1
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/northeast)
+"xR" = (
+/obj/structure/flora/alien/chilli_bush/chilli_bush_1{
+	pixel_y = 2;
+	pixel_x = 2
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/north)
+"yw" = (
+/obj/structure/flora/tree/alien/tree_3,
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/northeast)
+"yy" = (
+/obj/structure/sign/safety/water{
+	pixel_x = 8;
+	pixel_y = 30;
+	color = "#967743"
+	},
+/obj/structure/flora/alien/sparsegrass/sparsegrass_1,
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/north)
+"yz" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/turf/open/lava/basalt/basalt6,
+/area/fire_colony/exterior/clearing/north)
+"yN" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/obj/structure/flora/tree/alien/tree_6,
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/northeast)
+"yP" = (
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 1
+	},
+/obj/effect/lava/edges/basalt/corner_rock{
+	dir = 1
+	},
+/obj/effect/lava/edges/basalt/corner_rock{
+	dir = 4
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/northeast)
+"yX" = (
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 1
+	},
+/obj/effect/lava/edges/basalt/corner_rock{
+	dir = 1
+	},
+/obj/effect/lava/edges/basalt/l_piece,
+/turf/open/lava/sand,
+/area/fire_colony/exterior/valley/northeast)
+"yZ" = (
+/turf/open/lava/basalt/basalt11,
+/area/fire_colony/exterior/valley/northeast)
+"zm" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/obj/structure/machinery/weather_siren{
+	dir = 4;
+	pixel_x = -8;
+	pixel_y = -8
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/clearing/north)
+"zH" = (
+/obj/structure/flora/alien/sparsegrass/sparsegrass_1,
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/northeast)
+"zK" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/obj/effect/lava/edges/basalt/corner_rock{
+	dir = 4
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/north)
+"zN" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/asteroid/directions/southeast,
+/area/fire_colony/exterior/valley/north)
+"Ac" = (
+/obj/structure/flora/alien/sparsegrass/sparsegrass_3,
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/north)
+"AM" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1
+	},
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 4
+	},
+/obj/effect/lava/edges/basalt/side_rock,
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/north)
+"AQ" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/fence/slim/blue{
+	icon_state = "brokenfence0";
+	density = 0;
+	cut = 1
+	},
+/obj/item/stack/rods{
+	color = "#8d93a1ff"
+	},
+/turf/open/lava/metal/warning_grate/north,
+/area/fire_colony/exterior/valley/north)
+"AS" = (
+/obj/structure/flora/alien/fullgrass/fullgrass_1,
+/obj/structure/flora/alien/bluegrass/bluegrass_3{
+	pixel_x = -12;
+	pixel_y = -6
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/northeast)
+"Bd" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1
+	},
+/turf/open/lava/basalt/basalt8,
+/area/fire_colony/exterior/valley/north)
+"Bp" = (
+/obj/effect/lava/edges/basalt/side_rock,
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 4
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/north)
+"BC" = (
+/obj/structure/flora/tree/alien/tree_2,
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/north)
+"BQ" = (
+/obj/structure/fence/slim/blue,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/metal/warning_grate/north,
+/area/fire_colony/exterior/valley/north)
+"BZ" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/asteroid/directions/east,
+/area/fire_colony/exterior/valley/north)
+"Ca" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 1
+	},
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 4
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/north)
+"Ct" = (
+/obj/structure/filtration/machine_32x64/destructible,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/corsat,
+/area/fire_colony/exterior/valley/north)
+"CR" = (
+/obj/structure/filtration/machine_32x64/destructible,
+/turf/open/floor/corsat,
+/area/fire_colony/exterior/valley/north)
+"Dt" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1
+	},
+/obj/effect/lava/edges/basalt/corner_rock{
+	dir = 1
+	},
+/turf/open/lava/sand,
+/area/fire_colony/exterior/valley/northeast)
+"DJ" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/obj/effect/lava/edges/basalt/corner_rock,
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/north)
+"DL" = (
+/obj/structure/flora/alien/sparsegrass/sparsegrass_3{
+	pixel_x = 4;
+	pixel_y = 2
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/north)
+"DU" = (
+/obj/structure/fence/slim/blue,
+/turf/open/lava/metal/warning_grate/east,
+/area/fire_colony/exterior/valley/north)
+"Ej" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/turf/open/lava/basalt/basalt4,
+/area/fire_colony/exterior/valley/north)
+"EJ" = (
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 4
+	},
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 1
+	},
+/obj/effect/lava/edges/basalt/corner_rock{
+	dir = 4
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/northeast)
+"Fa" = (
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/valley/northeast)
+"FD" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1
+	},
+/obj/effect/lava/edges/basalt/corner_rock{
+	dir = 1
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/north)
+"Gn" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 8
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/clearing/north)
+"GF" = (
+/obj/structure/fence/slim/blue/door,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/metal/warning_grate/east,
+/area/fire_colony/exterior/valley/north)
+"Hd" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 1
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/northeast)
+"Hh" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	layer = 2.01;
+	dir = 4
+	},
+/turf/open/lava/basalt/basalt12,
+/area/fire_colony/exterior/valley/north)
+"HH" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/valley/north)
+"HK" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/clearing/north)
+"HS" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 1
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/north)
+"If" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 8
+	},
+/turf/open/lava/sand,
+/area/fire_colony/exterior/valley/northeast)
+"Ig" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 8
+	},
+/obj/effect/lava/edges/basalt/side_rock,
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/north)
+"ID" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/north)
+"IM" = (
+/turf/open/lava/basalt/basalt10,
+/area/fire_colony/exterior/clearing/north)
+"IU" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 8
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/northeast)
+"Je" = (
+/obj/effect/lava/edges/basalt/corner_rock{
+	dir = 1
+	},
+/obj/effect/lava/edges/basalt/corner_rock,
+/obj/effect/lava/edges/basalt/corner_rock{
+	dir = 8
+	},
+/turf/open/lava/sand,
+/area/fire_colony/exterior/valley/north)
+"Jf" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/turf/open/lava/basalt/basalt4,
+/area/fire_colony/exterior/valley/northeast)
+"Jk" = (
+/turf/open/lava/basalt/basalt12,
+/area/fire_colony/exterior/valley/north)
+"Jw" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1
+	},
+/turf/open/lava/basalt/basalt12,
+/area/fire_colony/exterior/valley/north)
+"JE" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1;
+	layer = 2.01
+	},
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/valley/north)
+"JI" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/obj/structure/flora/tree/alien/tree_7{
+	pixel_x = -15;
+	pixel_y = 10
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/northeast)
+"JM" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/valley/north)
+"JN" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/reagent_container/glass/bucket{
+	pixel_x = 10;
+	pixel_y = 6
+	},
+/obj/item/reagent_container/glass/bucket{
+	pixel_x = 9;
+	pixel_y = -5
+	},
+/turf/open/lava/asteroid/directions/west,
+/area/fire_colony/exterior/valley/north)
+"JO" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1
+	},
+/obj/effect/lava/edges/basalt/side_rock,
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/northeast)
+"JY" = (
+/turf/open/lava/basalt/basalt11,
+/area/fire_colony/exterior/valley/north)
+"Kd" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/clearing/north)
+"Kk" = (
+/obj/structure/flora/alien/chilli_bush/chilli_bush_1{
+	pixel_x = 2;
+	pixel_y = 15
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/northeast)
+"Km" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1
+	},
+/turf/open/lava/basalt/basalt12,
+/area/fire_colony/exterior/valley/northeast)
+"Kr" = (
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 8
+	},
+/obj/effect/lava/edges/basalt/corner_rock{
+	dir = 1
+	},
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 1
+	},
+/turf/open/lava/sand,
+/area/fire_colony/exterior/valley/northeast)
+"KX" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/clearing/north)
+"Lo" = (
+/obj/structure/fence/slim/blue,
+/turf/open/lava/metal/warning_grate/north,
+/area/fire_colony/exterior/valley/north)
+"LZ" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/north)
+"Ml" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/asteroid/directions/north,
+/area/fire_colony/exterior/valley/north)
+"Mp" = (
+/obj/structure/fence/slim/blue,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/metal/warning_grate/east,
+/area/fire_colony/exterior/valley/north)
+"MA" = (
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 1
+	},
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 8
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/north)
+"ML" = (
+/turf/open/lava/basalt/basalt4,
+/area/fire_colony/exterior/valley/north)
+"MP" = (
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 8
+	},
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 4
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/northeast)
+"MQ" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/turf/open/lava/basalt/basalt10,
+/area/fire_colony/exterior/valley/north)
+"MX" = (
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 8
+	},
+/obj/effect/lava/edges/basalt/corner_rock{
+	dir = 8
+	},
+/obj/effect/lava/edges/basalt/l_piece,
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/north)
+"Nb" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/turf/open/lava/basalt/basalt4,
+/area/fire_colony/exterior/clearing/north)
+"Nd" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/corsat,
+/area/fire_colony/exterior/valley/north)
+"Nt" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	layer = 2.01;
+	dir = 8
+	},
+/turf/open/lava/basalt/basalt8,
+/area/fire_colony/exterior/valley/north)
+"NE" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1
+	},
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 4
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/northeast)
+"NM" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/obj/effect/lava/edges/basalt/l_piece,
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/north)
+"Oj" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/turf/open/lava/brock,
+/area/fire_colony/exterior/clearing/north)
+"Oq" = (
+/turf/open/lava/basalt/basalt8,
+/area/fire_colony/exterior/clearing/north)
+"OH" = (
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 4
+	},
+/obj/effect/lava/edges/basalt/side_rock,
+/obj/effect/lava/edges/basalt/corner_rock,
+/turf/open/lava/sand,
+/area/fire_colony/exterior/valley/north)
+"OQ" = (
+/obj/structure/flora/tree/alien/tree_8{
+	pixel_x = -18;
+	pixel_y = -2
+	},
+/obj/effect/lava/edges/basalt/l_piece,
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/northeast)
+"Pd" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/turf/open/lava/basalt/basalt7,
+/area/fire_colony/exterior/valley/northeast)
+"PA" = (
+/obj/structure/flora/alien/sparsegrass/sparsegrass_1{
+	pixel_x = 4;
+	pixel_y = -2
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/north)
+"PB" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/obj/effect/lava/edges/basalt/corner_rock,
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/northeast)
+"PI" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/asteroid/directions/south,
+/area/fire_colony/exterior/valley/north)
+"PP" = (
+/obj/structure/filtration/machine_32x64/destructible,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/corsat,
+/area/fire_colony/exterior/valley/north)
+"Qc" = (
+/obj/structure/fence/slim/blue,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/metal/warning_grate/east,
+/area/fire_colony/exterior/valley/north)
+"Qm" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/turf/open/lava/basalt/basalt10,
+/area/fire_colony/exterior/valley/north)
+"QS" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/turf/open/lava/basalt/basalt4,
+/area/fire_colony/exterior/valley/north)
+"QT" = (
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 1
+	},
+/obj/effect/lava/edges/basalt/side_rock,
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/north)
+"QU" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/turf/open/lava/basalt/basalt8,
+/area/fire_colony/exterior/valley/northeast)
+"Ra" = (
+/obj/effect/lava/edges/basalt/corner_rock{
+	dir = 8
+	},
+/obj/effect/lava/edges/basalt/corner_rock{
+	dir = 4
+	},
+/obj/effect/lava/edges/basalt/corner_rock{
+	dir = 1
+	},
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/north)
+"Rt" = (
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/north)
+"Rx" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/turf/open/lava/basalt/basalt8,
+/area/fire_colony/exterior/valley/north)
+"RP" = (
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 1
+	},
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 8
+	},
+/obj/effect/lava/edges/basalt/side_rock,
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/northeast)
+"RQ" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/clearing/north)
+"RU" = (
+/obj/effect/lava/edges/basalt/side_rock,
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1;
+	layer = 2.01
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/north)
+"RX" = (
+/obj/item/tool/warning_cone/blue{
+	pixel_x = 5;
+	pixel_y = 4
+	},
+/obj/effect/lava/edges/basalt/l_piece,
+/obj/structure/sign/safety/water{
+	pixel_x = 8;
+	pixel_y = 30;
+	color = "#967743"
+	},
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/valley/north)
+"Sc" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 8
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/north)
+"Sp" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/turf/open/lava/basalt/basalt6,
+/area/fire_colony/exterior/valley/northeast)
+"SA" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1
+	},
+/turf/open/lava/sand,
+/area/fire_colony/exterior/valley/northeast)
+"SU" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/north)
+"SX" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/turf/open/lava/basalt/basalt8,
+/area/fire_colony/exterior/valley/north)
+"Tj" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/north)
+"Tm" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/northeast)
+"Tn" = (
+/obj/effect/lava/edges/basalt/side_rock,
+/obj/effect/lava/edges/basalt/corner_rock,
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/northeast)
+"TE" = (
+/obj/structure/flora/alien/sparsegrass/sparsegrass_1{
+	pixel_x = -5;
+	pixel_y = -1
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/north)
+"TU" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/north)
+"Ud" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/northeast)
+"Uh" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/northeast)
+"Uk" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/asteroid/directions/east,
+/area/fire_colony/exterior/valley/north)
+"Uz" = (
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 1
+	},
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 8
+	},
+/obj/effect/lava/edges/basalt/side_rock,
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/north)
+"UA" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/turf/open/lava/basalt/basalt11,
+/area/fire_colony/exterior/valley/northeast)
+"UW" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/turf/open/lava/basalt/basalt8,
+/area/fire_colony/exterior/valley/north)
+"Vb" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/turf/open/lava/basalt/basalt_dug,
+/area/fire_colony/exterior/clearing/north)
+"Ve" = (
+/turf/closed/wall/lava/rock,
+/area/fire_colony/exterior/cliff)
+"Vl" = (
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/northeast)
+"VA" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/turf/open/lava/basalt/basalt8,
+/area/fire_colony/exterior/clearing/north)
+"VJ" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 4
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/north)
+"WJ" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/valley/north)
+"XH" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/turf/open/lava/basalt/basalt6,
+/area/fire_colony/exterior/valley/north)
+"XR" = (
+/obj/structure/flora/alien/chilli_bush_no_light{
+	pixel_x = 3;
+	pixel_y = 9
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/north)
+"XZ" = (
+/obj/structure/tunnel{
+	id = "engineering_tunnel"
+	},
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/turf/open/lava/basalt/basalt_dug,
+/area/fire_colony/exterior/valley/northeast)
+"Yx" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/turf/open/lava/basalt/basalt6,
+/area/fire_colony/exterior/valley/north)
+"YB" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/asteroid/directions/west,
+/area/fire_colony/exterior/valley/north)
+"Zb" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/northeast)
+"ZC" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/obj/effect/lava/edges/basalt/l_piece,
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/valley/northeast)
+"ZL" = (
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/clearing/north)
+"ZR" = (
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 8
+	},
+/obj/effect/lava/edges/basalt/side_rock,
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 4
+	},
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 1
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/north)
+"ZX" = (
+/obj/structure/flora/alien/sparsegrass/sparsegrass_3{
+	pixel_x = 6;
+	pixel_y = 9
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/northeast)
+"ZZ" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/obj/effect/lava/edges/basalt/side_rock,
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/north)
+
+(1,1,1) = {"
+Bp
+Je
+cm
+XH
+Jk
+cW
+tt
+JY
+az
+ja
+HS
+Rx
+nU
+ol
+mN
+nU
+eH
+eH
+zm
+Kd
+"}
+(2,1,1) = {"
+qB
+hT
+Bp
+TU
+QS
+ub
+JM
+rP
+Sc
+lE
+dv
+MA
+ML
+cK
+JY
+NM
+az
+Rt
+Oq
+mo
+"}
+(3,1,1) = {"
+ML
+ZR
+qB
+sm
+jx
+Rt
+eH
+jP
+MQ
+ol
+Bd
+eH
+XR
+pf
+wU
+Ra
+dt
+fa
+xj
+xr
+"}
+(4,1,1) = {"
+Ig
+tt
+rP
+HH
+QT
+UW
+az
+nU
+Tj
+nU
+eH
+SX
+PA
+mN
+SX
+ML
+ID
+MX
+qh
+Gn
+"}
+(5,1,1) = {"
+nU
+AM
+JY
+VJ
+rp
+OH
+lE
+en
+DL
+XH
+Jw
+eH
+xR
+eH
+jy
+XH
+jP
+tt
+lz
+yz
+"}
+(6,1,1) = {"
+jP
+ML
+Rt
+Ac
+az
+mf
+SU
+TE
+lf
+BQ
+AQ
+Lo
+BQ
+BQ
+BQ
+lf
+RX
+LZ
+ZL
+xr
+"}
+(7,1,1) = {"
+tt
+JM
+sr
+ow
+Ej
+tt
+ID
+eE
+Qc
+aM
+ck
+YB
+ck
+rn
+mQ
+Qc
+Nt
+Uz
+xr
+KX
+"}
+(8,1,1) = {"
+Ca
+oF
+eH
+Rt
+SU
+ID
+DJ
+fA
+eq
+Ml
+Nd
+PP
+Nd
+Ct
+PI
+eq
+rP
+dO
+lq
+ZL
+"}
+(9,1,1) = {"
+nU
+eH
+ZZ
+sr
+Sc
+zK
+vp
+Bd
+DU
+hl
+BZ
+vD
+Uk
+vD
+zN
+Mp
+JM
+BC
+RQ
+aO
+"}
+(10,1,1) = {"
+sr
+Sc
+FD
+eH
+XH
+eX
+WJ
+eH
+lf
+rq
+rq
+rq
+rq
+rq
+rq
+lf
+rJ
+Rt
+Vb
+KX
+"}
+(11,1,1) = {"
+kK
+UW
+JM
+gy
+tb
+ML
+ID
+Qm
+DU
+bJ
+rn
+JN
+rn
+rn
+mQ
+DU
+mn
+Hh
+RQ
+aO
+"}
+(12,1,1) = {"
+tt
+JE
+op
+WJ
+lA
+fI
+Sc
+qf
+cO
+fX
+es
+CR
+Nd
+CR
+af
+GF
+jP
+ML
+VA
+ZL
+"}
+(13,1,1) = {"
+ML
+WJ
+Rt
+pG
+eH
+SX
+WJ
+RU
+DU
+uY
+BZ
+vD
+vD
+Uk
+ic
+Qc
+SX
+ID
+iA
+IM
+"}
+(14,1,1) = {"
+gH
+Jk
+WJ
+JM
+nU
+Ac
+JE
+eH
+lf
+Lo
+Lo
+Lo
+rq
+gs
+BQ
+lf
+yy
+JM
+fJ
+RQ
+"}
+(15,1,1) = {"
+sr
+ID
+JM
+eH
+mN
+eH
+SX
+Yx
+VJ
+fA
+lE
+mm
+ld
+dt
+qf
+fa
+mN
+rP
+Oq
+Oj
+"}
+(16,1,1) = {"
+Kk
+UA
+ww
+uB
+Vl
+ww
+JI
+xH
+ww
+oX
+pI
+EJ
+Vl
+pw
+RP
+zH
+al
+oX
+xr
+fJ
+"}
+(17,1,1) = {"
+zH
+Zb
+lL
+eU
+cE
+yZ
+Vl
+JO
+QU
+zH
+Sp
+vb
+Tm
+ww
+qL
+eU
+wd
+Pd
+xm
+Nb
+"}
+(18,1,1) = {"
+AS
+zH
+oT
+aT
+tk
+Km
+eU
+Vl
+nr
+uB
+ww
+Tn
+SA
+hE
+rf
+cE
+xH
+xH
+KX
+mo
+"}
+(19,1,1) = {"
+Ve
+Ve
+Ve
+Ve
+uB
+sj
+lL
+al
+Hd
+cE
+PB
+kr
+MP
+yP
+iY
+rf
+gx
+Kr
+vU
+xm
+"}
+(20,1,1) = {"
+Ve
+Ve
+qL
+ep
+cg
+ZX
+qu
+ww
+IU
+pI
+Dt
+yN
+QU
+sC
+eV
+If
+NE
+Jf
+Oq
+KX
+"}
+(21,1,1) = {"
+Ve
+Ve
+XZ
+Ve
+qL
+uB
+ep
+wd
+yX
+ww
+Fa
+Zb
+Fa
+oX
+Ud
+yw
+qL
+Fa
+ZL
+kc
+"}
+(22,1,1) = {"
+Ve
+Ve
+Ve
+Ve
+zH
+ep
+PB
+pQ
+eV
+OQ
+Uh
+zH
+qL
+zH
+Zb
+Vl
+zH
+Zb
+sE
+HK
+"}
+(23,1,1) = {"
+Ve
+Ve
+Ve
+Ve
+qu
+al
+nu
+JO
+aT
+Zb
+qu
+uB
+Vl
+ep
+zH
+oI
+ZC
+uB
+HK
+pg
+"}

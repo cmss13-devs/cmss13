@@ -18,7 +18,7 @@
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		add_ice_colony_survivor_equipment(new_human)
 
-	var/random_gear = rand(1, 7)
+	var/random_gear = rand(1,7)
 
 	switch(random_gear)
 		if(1) //
@@ -111,9 +111,9 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/surgical(new_human), WEAR_FACE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/science_coif(new_human), WEAR_HEAD)
 
-	var/random_gear = rand(1, 10)
+	var/random_gear = rand(1,10)
 	switch(random_gear)
-		if(5, 9)
+		if(5 to 9)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/autoinjector/full(new_human), WEAR_R_STORE)
 		if(10)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/full/with_defib_and_analyzer(new_human), WEAR_WAIST)
@@ -136,9 +136,9 @@
 	survivor_variant = SCIENTIST_SURVIVOR
 
 /datum/equipment_preset/survivor/fire_colony/scientist_xenoarchaeologist/load_gear(mob/living/carbon/human/new_human)
-	var/random_gear = rand(1, 11)
+	var/random_gear = rand(1,11)
 	switch(random_gear)
-		if(1, 6)
+		if(1 to 6)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/scientist/lasalle/purple(new_human), WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/lasalle(new_human), WEAR_L_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/black/five_slot(new_human), WEAR_BACK)
@@ -147,7 +147,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/science_gloves(new_human), WEAR_HANDS)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/lasalle/purple(new_human), WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/science_coif/purple(new_human), WEAR_HEAD)
-		if(7, 8)
+		if(7 to 8)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/scientist/lasalle/purple(new_human), WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/lasalle(new_human), WEAR_L_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/black/five_slot(new_human), WEAR_BACK)
@@ -157,7 +157,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/bio_hood/lasalle(new_human), WEAR_HEAD)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/bio_suit/lasalle(new_human), WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc/lasalle(new_human), WEAR_FACE)
-		if(9, 11)
+		if(9 to 11)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/scientist/lasalle/purple(new_human), WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/lasalle(new_human), WEAR_L_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/black/five_slot(new_human), WEAR_BACK)
@@ -191,9 +191,9 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/lasalle(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/science_gloves(new_human), WEAR_HANDS)
 
-	var/random_gear = rand(1, 10)
+	var/random_gear = rand(1,10)
 	switch(random_gear)
-		if(1, 7)
+		if(1 to 7)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/science_coif/blue(new_human), WEAR_HEAD)
 
 	add_survivor_weapon_civilian(new_human)
@@ -366,7 +366,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/hybrisa/wy_exec_suit_uniform/jacket(new_human), WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/lasalle(new_human), WEAR_L_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/black/lockable(new_human), WEAR_BACK)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup/brown(new_human), WEAR_FEET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/leather/fancy(new_human), WEAR_FEET)
 			new_human.equip_to_slot_or_del(new /obj/item/tool/pen/clicky(new_human.back), WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/clipboard(new_human.back), WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/spacecash/c1000(new_human.back), WEAR_IN_BACK)
@@ -622,9 +622,9 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/science_coif(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/synth/black/full(new_human), WEAR_L_STORE)
 
-	var/random_gear = rand(1, 10)
+	var/random_gear = rand(1,10)
 	switch(random_gear)
-		if(5, 9)
+		if(5 to 9)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/autoinjector/full(new_human), WEAR_R_STORE)
 		if(10)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/full/with_defib_and_analyzer(new_human), WEAR_WAIST)

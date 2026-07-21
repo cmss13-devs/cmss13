@@ -29,6 +29,14 @@
 /obj/structure/machinery/deployable/barrier,
 /turf/open/floor/strata/altred4/east,
 /area/fire_colony/interior/hangar/security/armory)
+"l" = (
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door/open{
+	dir = 4;
+	name = "\improper Armory Lockdown";
+	id = "seeg_armory"
+	},
+/turf/open/floor/corsat,
+/area/fire_colony/interior/hangar/security/armory)
 "m" = (
 /obj/item/clothing/accessory/storage/black_vest,
 /turf/open/floor/strata/altred3/southwest,
@@ -65,10 +73,13 @@
 /turf/open/floor/strata/altred4/west,
 /area/fire_colony/interior/hangar/security/armory)
 "z" = (
-/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
-	name = "\improper Armory Lockdown";
-	needs_power = 0;
+/obj/structure/machinery/door/airlock/multi_tile/lavaland/black_double/solid/autoname{
+	dir = 1;
+	locked = 1
+	},
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door/open{
 	dir = 4;
+	name = "\improper Armory Lockdown";
 	id = "seeg_armory"
 	},
 /turf/open/floor/corsat,
@@ -156,7 +167,6 @@
 	color = "#818793"
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/machinery/power/apc/no_power/north,
 /obj/item/weapon/classic_baton/alt{
 	pixel_x = 2;
 	pixel_y = 3
@@ -165,6 +175,7 @@
 	pixel_x = -5;
 	pixel_y = 10
 	},
+/obj/structure/machinery/power/apc/fully_broken/no_cell/north,
 /turf/open/floor/strata/altred4/north,
 /area/fire_colony/interior/hangar/security/armory)
 "U" = (
@@ -180,7 +191,7 @@
 a
 a
 a
-z
+l
 z
 a
 a

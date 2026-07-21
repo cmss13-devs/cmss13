@@ -131,7 +131,7 @@
 	pixel_x = 7;
 	pixel_y = 5
 	},
-/obj/structure/machinery/power/apc/no_power/north,
+/obj/structure/machinery/power/apc/fully_broken/no_cell/north,
 /turf/open/floor/strata/altred4/north,
 /area/fire_colony/interior/hangar/security/armory)
 "L" = (
@@ -153,6 +153,18 @@
 /obj/item/ammo_magazine/rifle/w_ek_17,
 /obj/item/weapon/gun/rifle/w_ek_17,
 /turf/open/floor/strata/altred4/west,
+/area/fire_colony/interior/hangar/security/armory)
+"R" = (
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door/open{
+	dir = 4;
+	name = "\improper Armory Lockdown";
+	id = "seeg_armory"
+	},
+/obj/structure/machinery/door/airlock/multi_tile/lavaland/black_double/solid/autoname{
+	dir = 1;
+	locked = 1
+	},
+/turf/open/floor/corsat,
 /area/fire_colony/interior/hangar/security/armory)
 "S" = (
 /turf/open/floor/strata/altred3/northwest,
@@ -184,7 +196,7 @@ a
 a
 a
 G
-G
+R
 a
 a
 a

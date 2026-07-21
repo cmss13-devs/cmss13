@@ -12929,6 +12929,10 @@
 /obj/structure/machinery/door/airlock/almayer/generic/autoname/rusted,
 /turf/open/floor/corsat,
 /area/fire_colony/interior/storage_unit/e_valley)
+"bER" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/asteroid/directions/northwest,
+/area/fire_colony/exterior/valley/west)
 "bES" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/machinery/door/poddoor/hybrisa/shutters{
@@ -13556,15 +13560,11 @@
 /turf/open/floor/strata/lightblue4/west,
 /area/fire_colony/interior/excavation)
 "bMg" = (
-/obj/effect/lava/edges/basalt/l_piece{
-	dir = 4
+/obj/item/tool/warning_cone/blue{
+	pixel_x = 2;
+	pixel_y = 11
 	},
-/obj/effect/lava/edges/basalt/l_piece{
-	dir = 1
-	},
-/obj/effect/lava/edges/basalt/side_rock,
-/obj/structure/platform_decoration/stone/lava,
-/turf/open/lava/dirt,
+/turf/open/lava/asteroid/directions/northeast,
 /area/fire_colony/exterior/valley/west)
 "bMs" = (
 /obj/effect/lava/edges/basalt/l_piece{
@@ -14689,6 +14689,13 @@
 	},
 /turf/open/floor/strata/seeg3,
 /area/fire_colony/interior/dorms/north)
+"cad" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1;
+	layer = 2.01
+	},
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/valley/west)
 "cae" = (
 /obj/structure/flora/alien/chilli_bush_no_light{
 	pixel_x = 13;
@@ -15850,6 +15857,17 @@
 	},
 /turf/open/floor/hybrisa/tile/tilegrey/broken,
 /area/fire_colony/interior/dorms/dorms_f)
+"cqT" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1;
+	layer = 2.01
+	},
+/obj/effect/lava/edges/basalt/l_piece{
+	layer = 2.01;
+	dir = 8
+	},
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/valley/west)
 "cqU" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_3";
@@ -15950,11 +15968,7 @@
 /turf/open/lava/metal/warnplate/northeast,
 /area/fire_colony/exterior/tcomms/lz2)
 "crW" = (
-/obj/structure/flora/alien/sparsegrass/sparsegrass_3{
-	pixel_x = -9;
-	pixel_y = 1
-	},
-/turf/open/lava/brock,
+/turf/closed/wall/lava/solaris_dark,
 /area/fire_colony/exterior/valley/west)
 "csj" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -16541,8 +16555,9 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/fire_colony/interior/hangar/hallway)
 "czp" = (
-/obj/structure/flora/alien/fullgrass/fullgrass_2,
-/turf/open/lava/brock,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/asteroid/directions/south,
 /area/fire_colony/exterior/valley/west)
 "czz" = (
 /obj/structure/machinery/colony_floodlight/alt,
@@ -17708,6 +17723,13 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/floor/strata/altred3/west,
 /area/fire_colony/interior/hangar/security/armory)
+"cPR" = (
+/obj/structure/platform/metal/lava_metal/east,
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/turf/open/lava/basalt/basalt6,
+/area/fire_colony/exterior/valley/west)
 "cPS" = (
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/fire_colony/interior/mining)
@@ -17820,6 +17842,12 @@
 /obj/item/weapon/gun/rifle/w_ek_17,
 /turf/open/lava/metal/plating_grille,
 /area/fire_colony/interior/epsilon_facility)
+"cRv" = (
+/obj/structure/filtration/machine_32x64/destructible,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/corsat,
+/area/fire_colony/exterior/valley/west)
 "cRz" = (
 /obj/effect/lava/edges/basalt/side_rock,
 /obj/effect/lava/edges/basalt/corner_rock,
@@ -20427,6 +20455,18 @@
 /obj/effect/blocker/lava,
 /turf/open/lava/hot_lava/side/south,
 /area/fire_colony/exterior/valley/north)
+"dxq" = (
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 1
+	},
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 4
+	},
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 8
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/west)
 "dxs" = (
 /obj/structure/platform/metal/strata/east,
 /obj/effect/lava/edges/basalt/side_rock{
@@ -24384,6 +24424,16 @@
 	},
 /turf/open/floor/strata/lightblue4/west,
 /area/fire_colony/interior/epsilon_facility)
+"euy" = (
+/obj/effect/lava/edges/basalt/side_rock,
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 8
+	},
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 4
+	},
+/turf/open/lava/sand,
+/area/fire_colony/exterior/valley/west)
 "euG" = (
 /obj/effect/lava/edges/basalt/l_piece{
 	dir = 8
@@ -27151,6 +27201,13 @@
 /obj/item/clothing/glasses/science/blue,
 /turf/open/floor/strata/lightblue3,
 /area/fire_colony/interior/hydroponics/science)
+"fbs" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1
+	},
+/obj/effect/lava/edges/basalt/l_piece,
+/turf/open/lava/basalt/basalt11,
+/area/fire_colony/exterior/valley/west)
 "fbx" = (
 /obj/effect/lava/edges/basalt/side_rock{
 	dir = 1
@@ -31673,6 +31730,10 @@
 	},
 /turf/open/lava/sand,
 /area/fire_colony/exterior/underground/excavation/south)
+"gcj" = (
+/obj/structure/filtration/machine_32x64/destructible,
+/turf/open/floor/corsat,
+/area/fire_colony/exterior/valley/west)
 "gcz" = (
 /obj/structure/surface/table/almayer{
 	color = "#848484"
@@ -32281,6 +32342,10 @@
 /obj/effect/decal/cleanable/dirt/alt_dirt,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/clothing/shoes/silver_white{
+	pixel_x = 4;
+	pixel_y = 9
+	},
 /turf/open/floor/strata/lightblue4/north,
 /area/fire_colony/interior/hydroponics/science)
 "gkr" = (
@@ -32300,6 +32365,11 @@
 	},
 /turf/open/lava/engineer_ruins/engineer_ruins/floor_2,
 /area/fire_colony/exterior/underground/excavation/south)
+"gkP" = (
+/obj/structure/fence/slim/blue,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/metal/warning_grate/east,
+/area/fire_colony/exterior/valley/west)
 "gkX" = (
 /obj/effect/lava/edges/basalt/l_piece{
 	dir = 8
@@ -32812,6 +32882,14 @@
 /obj/structure/bed/chair,
 /turf/open/floor/strata/lightblue3/north,
 /area/fire_colony/interior/excavation)
+"gsf" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/reagent_container/glass/bucket{
+	pixel_x = 12;
+	pixel_y = 3
+	},
+/turf/open/lava/asteroid/directions/west,
+/area/fire_colony/exterior/valley/west)
 "gsg" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#818793"
@@ -34158,9 +34236,8 @@
 /turf/open/floor/corsat,
 /area/fire_colony/interior/omicron_facility/passthrough)
 "gIQ" = (
-/obj/structure/platform/stone/lava/east,
-/obj/structure/platform/stone/lava,
-/turf/open/lava/basalt/basalt0,
+/obj/structure/fence/slim/blue/door,
+/turf/open/lava/metal/warning_grate/east,
 /area/fire_colony/exterior/valley/west)
 "gIT" = (
 /obj/effect/lava/edges/basalt/l_piece{
@@ -35530,11 +35607,14 @@
 /turf/open/lava/metal/plating,
 /area/fire_colony/interior/bar/canteen)
 "gYN" = (
-/obj/structure/flora/alien/chilli_bush_no_light{
-	pixel_x = -5;
-	pixel_y = -3
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
 	},
-/turf/open/lava/brock,
+/obj/item/tool/warning_cone{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/turf/open/lava/basalt/basalt8,
 /area/fire_colony/exterior/valley/west)
 "gYS" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -37692,7 +37772,7 @@
 	pixel_x = 7;
 	pixel_y = 5
 	},
-/obj/structure/machinery/power/apc/no_power/north,
+/obj/structure/machinery/power/apc/fully_broken/no_cell/north,
 /turf/open/floor/strata/altred4/north,
 /area/fire_colony/interior/hangar/security/armory)
 "hzo" = (
@@ -44411,6 +44491,14 @@
 /obj/effect/lava/edges/basalt/l_piece,
 /turf/open/lava/basalt/glowing/basalt9,
 /area/fire_colony/exterior/clearing/south)
+"jks" = (
+/obj/structure/sign/safety/water{
+	pixel_x = 8;
+	pixel_y = 30;
+	color = "#967743"
+	},
+/turf/open/lava/basalt/basalt4,
+/area/fire_colony/exterior/valley/west)
 "jkA" = (
 /obj/structure/flora/alien/sparsegrass/sparsegrass_2{
 	pixel_x = -3;
@@ -45776,6 +45864,11 @@
 	},
 /turf/open/lava/basalt/basalt0,
 /area/fire_colony/exterior/clearing/pass)
+"jDU" = (
+/obj/structure/filtration/machine_32x64/destructible,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/corsat,
+/area/fire_colony/exterior/valley/west)
 "jDW" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -47858,6 +47951,13 @@
 /obj/structure/platform_decoration/stone/lava/west,
 /turf/open/lava/basalt/basalt0,
 /area/fire_colony/exterior/underground/caves/north_west)
+"kjg" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1;
+	layer = 2.01
+	},
+/turf/open/lava/basalt/basalt8,
+/area/fire_colony/exterior/valley/west)
 "kjh" = (
 /obj/effect/lava/edges/basalt/corner_rock{
 	dir = 1
@@ -52300,6 +52400,11 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/floor/corsat/spiralplate,
 /area/fire_colony/exterior/hangar)
+"lnT" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/asteroid/directions/northeast,
+/area/fire_colony/exterior/valley/west)
 "lnV" = (
 /obj/structure/platform/metal/lava_metal/east,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -52371,13 +52476,8 @@
 /turf/open/floor/strata/fake_catwalk,
 /area/fire_colony/interior/hydroponics/north)
 "lpb" = (
-/obj/structure/machinery/colony_floodlight/alt{
-	pixel_x = 7;
-	pixel_y = -11
-	},
-/obj/structure/platform/stone/lava/north,
-/obj/structure/platform/stone/lava/west,
-/turf/open/lava/basalt/basalt0,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/floor/corsat,
 /area/fire_colony/exterior/valley/west)
 "lpe" = (
 /turf/closed/wall/lava/solaris_dark/reinforced,
@@ -54345,6 +54445,16 @@
 /obj/effect/lava/edges/basalt/corner_rock{
 	dir = 4
 	},
+/obj/item/tool/warning_cone/blue{
+	pixel_x = 9;
+	pixel_y = 7
+	},
+/obj/item/device/flashlight/lamp/tripod/grey/off,
+/obj/structure/sign/safety/water{
+	pixel_x = 8;
+	pixel_y = 30;
+	color = "#967743"
+	},
 /turf/open/lava/dirt,
 /area/fire_colony/exterior/valley/west)
 "lNf" = (
@@ -55047,6 +55157,12 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/strata/floor3,
 /area/fire_colony/interior/dorms/dorms_f)
+"lVN" = (
+/obj/structure/fence/slim/blue/door,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/metal/warning_grate/east,
+/area/fire_colony/exterior/valley/west)
 "lVS" = (
 /obj/structure/flora/alien/sparsegrass/sparsegrass_3{
 	pixel_x = 1;
@@ -55350,10 +55466,8 @@
 /turf/open/lava/asteroid/directions/southeast,
 /area/fire_colony/exterior/underground/caves/north_west)
 "lZo" = (
-/obj/structure/platform/stone/lava/east,
-/obj/structure/platform/stone/lava/west,
-/obj/structure/platform/stone/lava,
-/turf/open/lava/basalt/basalt0,
+/obj/structure/cargo_container/lasalle/left,
+/turf/open/lava/basalt/basalt4,
 /area/fire_colony/exterior/valley/west)
 "lZp" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -57286,8 +57400,9 @@
 /turf/open/lava/asteroid/directions/east,
 /area/fire_colony/exterior/clearing/south)
 "myz" = (
-/obj/structure/platform/stone/lava,
-/turf/open/lava/basalt/basalt4,
+/obj/structure/fence/slim/blue,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/metal/warning_grate/north,
 /area/fire_colony/exterior/valley/west)
 "myB" = (
 /obj/effect/lava/edges/basalt/l_piece{
@@ -58057,6 +58172,13 @@
 /obj/effect/blocker/lava,
 /turf/open/lava/hot_lava,
 /area/fire_colony/exterior/valley/north)
+"mHZ" = (
+/obj/structure/flora/alien/sparsegrass/sparsegrass_1{
+	pixel_x = -10;
+	pixel_y = 5
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/west)
 "mIa" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -58525,12 +58647,10 @@
 /turf/open/lava/dirt,
 /area/fire_colony/exterior/clearing/south_west)
 "mOt" = (
-/obj/structure/platform_decoration/stone/lava,
-/obj/structure/platform_decoration/stone/lava/north,
-/obj/effect/lava/edges/basalt/l_piece{
-	dir = 8
-	},
-/turf/open/lava/basalt/basalt12,
+/obj/structure/fence/slim/blue,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/metal/warning_grate/north,
 /area/fire_colony/exterior/valley/west)
 "mOA" = (
 /obj/effect/lava/edges/basalt/side_rock{
@@ -60711,13 +60831,9 @@
 /turf/open/floor/strata/sand3/west,
 /area/fire_colony/interior/seegson/smelting)
 "noQ" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_2{
-	pixel_x = -1
-	},
-/obj/structure/flora/alien/bluegrass/bluegrass_4{
-	pixel_x = -24
-	},
-/turf/open/lava/brock,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/asteroid/directions/east,
 /area/fire_colony/exterior/valley/west)
 "noY" = (
 /obj/effect/lava/edges/basalt/l_piece{
@@ -65198,14 +65314,10 @@
 /turf/open/lava/basalt/basalt10,
 /area/fire_colony/exterior/clearing/pass)
 "owz" = (
-/obj/effect/lava/edges/basalt/l_piece{
-	dir = 8
-	},
-/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
-	pixel_x = -5;
-	pixel_y = 1
-	},
-/turf/open/lava/brock,
+/obj/structure/fence/slim/blue,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/metal/warning_grate/east,
 /area/fire_colony/exterior/valley/west)
 "owB" = (
 /turf/open/slippery/hull/colorable/connection_alt/northwest{
@@ -67094,6 +67206,12 @@
 /obj/structure/platform/metal/lava_metal/north,
 /turf/open/lava/basalt/basalt4,
 /area/fire_colony/exterior/clearing/south_west)
+"oXr" = (
+/obj/structure/cargo_container/hybrisa/containersextended/colorable_small{
+	color = "#969285"
+	},
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/valley/west)
 "oXw" = (
 /obj/structure/platform/metal/strata/west,
 /obj/effect/blocker/lava,
@@ -70762,6 +70880,13 @@
 	},
 /turf/open/lava/brock,
 /area/fire_colony/exterior/valley/north)
+"pQE" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	layer = 2.01;
+	dir = 8
+	},
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/valley/west)
 "pQJ" = (
 /obj/structure/blackgoocontainer{
 	pixel_x = 6;
@@ -74523,9 +74648,9 @@
 /turf/open/floor/strata/altgreen4,
 /area/fire_colony/interior/hydroponics/north)
 "qKm" = (
-/obj/structure/platform_decoration/stone/lava/east,
-/obj/structure/platform_decoration/stone/lava/north,
-/turf/open/lava/brock,
+/obj/structure/fence/slim/blue/door,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/metal/warning_grate/east,
 /area/fire_colony/exterior/valley/west)
 "qKs" = (
 /obj/effect/lava/edges/basalt/l_piece{
@@ -75911,6 +76036,18 @@
 	},
 /turf/open/floor/prison/yellow/west,
 /area/fire_colony/exterior/tcomms/lz2)
+"rai" = (
+/obj/structure/machinery/door/airlock/multi_tile/lavaland/black_double/solid/autoname{
+	dir = 1;
+	locked = 1
+	},
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door/open{
+	dir = 4;
+	name = "\improper Armory Lockdown";
+	id = "seeg_armory"
+	},
+/turf/open/floor/corsat,
+/area/fire_colony/interior/hangar/security/armory)
 "ray" = (
 /obj/structure/fence/slim/blue,
 /turf/open/lava/basalt/basalt8,
@@ -78265,6 +78402,12 @@
 	},
 /turf/open/floor/strata/lightblue3,
 /area/fire_colony/interior/omicron_facility/lobby)
+"rBD" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	layer = 2.01
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/west)
 "rBG" = (
 /obj/effect/lava/edges/basalt/side_rock{
 	dir = 1
@@ -79000,6 +79143,13 @@
 /obj/item/fire_colony/pyrotrinium_crystal/crystal_5,
 /turf/open/floor/corsat/spiralplate,
 /area/fire_colony/interior/mining_garage)
+"rKH" = (
+/obj/item/tool/warning_cone{
+	pixel_x = 3;
+	pixel_y = 4
+	},
+/turf/open/lava/basalt/basalt8,
+/area/fire_colony/exterior/valley/west)
 "rKJ" = (
 /obj/structure/surface/table/almayer{
 	color = "#848484"
@@ -79904,11 +80054,8 @@
 /turf/open/floor/strata/altgreen4/east,
 /area/fire_colony/interior/hydroponics/north)
 "rUo" = (
-/obj/structure/flora/alien/chilli_bush/chilli_bush_4{
-	pixel_x = 4;
-	pixel_y = -3
-	},
-/turf/open/lava/brock,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/asteroid/directions/southwest,
 /area/fire_colony/exterior/valley/west)
 "rUt" = (
 /turf/open/lava/basalt/glowing/basalt2,
@@ -80513,6 +80660,13 @@
 	},
 /obj/effect/lava/edges/basalt/side_rock,
 /turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/west)
+"sco" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1;
+	layer = 2.01
+	},
+/turf/open/lava/basalt/basalt4,
 /area/fire_colony/exterior/valley/west)
 "scs" = (
 /obj/effect/lava/edges/basalt/side_rock{
@@ -82639,12 +82793,12 @@
 /turf/open/lava/brock,
 /area/fire_colony/exterior/landing_pad_external)
 "sEE" = (
-/obj/structure/platform_decoration/stone/lava,
-/obj/structure/flora/alien/sparsegrass/sparsegrass_2{
-	pixel_x = -11;
-	pixel_y = 5
-	},
-/turf/open/lava/brock,
+/obj/item/device/flashlight/lamp/tripod/grey/off,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/asteroid/directions/northwest,
 /area/fire_colony/exterior/valley/west)
 "sEG" = (
 /obj/effect/lava/edges/basalt/l_piece{
@@ -83715,6 +83869,10 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/medbay4/east,
 /area/fire_colony/interior/omicron_facility/hospital)
+"sTn" = (
+/obj/structure/cargo_container/lasalle/right,
+/turf/open/lava/basalt/basalt10,
+/area/fire_colony/exterior/valley/west)
 "sTu" = (
 /obj/structure/flora/alien/fullgrass/fullgrass_3{
 	pixel_x = -5
@@ -84089,10 +84247,10 @@
 /turf/open/floor/strata/sand3,
 /area/fire_colony/interior/mining_garage)
 "sYO" = (
-/obj/structure/flora/alien/sparsegrass/sparsegrass_2{
-	pixel_x = -8;
-	pixel_y = -11
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
 	},
+/obj/item/device/flashlight/lamp/tripod/grey/off,
 /turf/open/lava/brock,
 /area/fire_colony/exterior/valley/west)
 "sYW" = (
@@ -90804,6 +90962,15 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/floor/strata/seeg4/west,
 /area/fire_colony/interior/dorms/north)
+"uHX" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 4
+	},
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/west)
 "uIb" = (
 /obj/effect/lava/edges/basalt/l_piece{
 	dir = 4
@@ -92668,11 +92835,10 @@
 /turf/open/lava/hot_lava,
 /area/fire_colony/exterior/valley/north)
 "vgO" = (
-/obj/structure/platform/stone/lava/east,
-/obj/effect/lava/edges/basalt/l_piece{
-	dir = 4
-	},
-/turf/open/lava/brock,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/asteroid/directions/west,
 /area/fire_colony/exterior/valley/west)
 "vgR" = (
 /obj/structure/flora/tree/alien/tree_6{
@@ -94780,6 +94946,10 @@
 /obj/effect/blocker/lava,
 /turf/open/lava/hot_lava/side/north,
 /area/fire_colony/exterior/valley/southeast)
+"vGA" = (
+/obj/structure/platform/metal/lava_metal/east,
+/turf/open/lava/basalt/basalt12,
+/area/fire_colony/exterior/valley/west)
 "vGD" = (
 /obj/structure/platform/metal/almayer/north,
 /obj/effect/decal/warning_stripes/worn/worn_stripes_large{
@@ -95259,13 +95429,8 @@
 /turf/open/floor/prison/yellow/southwest,
 /area/fire_colony/exterior/tcomms/lz2)
 "vMf" = (
-/obj/structure/machinery/colony_floodlight/alt{
-	pixel_x = -5;
-	pixel_y = 5
-	},
-/obj/structure/platform/stone/lava/east,
-/obj/structure/platform/stone/lava,
-/turf/open/lava/basalt/basalt0,
+/obj/structure/fence/slim/blue,
+/turf/open/lava/metal/warning_grate/east,
 /area/fire_colony/exterior/valley/west)
 "vMk" = (
 /obj/effect/lava/edges/basalt/l_piece{
@@ -98167,6 +98332,17 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/lava/asteroid/directions/west,
 /area/fire_colony/exterior/valley/southeast)
+"wyp" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1
+	},
+/obj/effect/lava/edges/basalt/side_rock,
+/obj/structure/cargo_container/lasalle/mid,
+/turf/open/lava/dirt,
+/area/fire_colony/exterior/valley/west)
 "wyr" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/warning_stripes/worn{
@@ -99692,6 +99868,15 @@
 	},
 /turf/open/floor/strata/blue3/northeast,
 /area/fire_colony/interior/dorms/south)
+"wSB" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/obj/effect/landmark/nightmare{
+	insert_tag = "silo_field"
+	},
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/clearing/north)
 "wSC" = (
 /obj/item/trash/cigbutt,
 /turf/open/floor/hybrisa/tile/tilegrey,
@@ -99875,13 +100060,17 @@
 /turf/open/floor/strata/sand3/east,
 /area/fire_colony/interior/omicron_facility/passthrough)
 "wVb" = (
-/obj/structure/machinery/colony_floodlight/alt{
-	pixel_x = -7;
-	pixel_y = -11
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/reagent_container/glass/bucket{
+	pixel_x = -11;
+	pixel_y = 7
 	},
-/obj/structure/platform/stone/lava/north,
-/obj/structure/platform/stone/lava/east,
-/turf/open/lava/basalt/basalt0,
+/obj/item/reagent_container/glass/bucket{
+	pixel_x = -10;
+	pixel_y = -8
+	},
+/turf/open/lava/asteroid/directions/east,
 /area/fire_colony/exterior/valley/west)
 "wVf" = (
 /obj/structure/platform_decoration/stone/lava,
@@ -100557,12 +100746,8 @@
 /turf/open/lava/brock,
 /area/fire_colony/exterior/landing_pad_external)
 "xeH" = (
-/obj/structure/flora/alien/fullgrass/fullgrass_3,
-/obj/structure/flora/alien/bluegrass/bluegrass_2{
-	pixel_x = 7;
-	pixel_y = -14
-	},
-/turf/open/lava/brock,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/asteroid/directions/west,
 /area/fire_colony/exterior/valley/west)
 "xeI" = (
 /obj/effect/lava/edges/basalt/l_piece,
@@ -101291,6 +101476,13 @@
 	},
 /turf/open/floor/corsat/spiralplate,
 /area/fire_colony/exterior/landing_pad)
+"xni" = (
+/obj/structure/platform/metal/lava_metal/east,
+/obj/effect/lava/edges/basalt/l_piece{
+	layer = 2.01
+	},
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/valley/west)
 "xnj" = (
 /obj/structure/flora/alien/chilli_bush/chilli_bush_4{
 	pixel_x = 6;
@@ -102698,13 +102890,8 @@
 /turf/open/lava/metal/filtrationside_lava/east,
 /area/fire_colony/interior/seegson/synthetic_storage)
 "xHz" = (
-/obj/effect/lava/edges/basalt/side_rock{
-	dir = 4
-	},
-/obj/effect/lava/edges/basalt/corner_rock{
-	dir = 4
-	},
-/turf/open/lava/dirt,
+/obj/structure/fence/slim/blue,
+/turf/open/lava/metal/warning_grate/north,
 /area/fire_colony/exterior/valley/west)
 "xHB" = (
 /obj/structure/platform/stone/lava/west,
@@ -104092,6 +104279,9 @@
 /obj/structure/platform/stone/lava/north,
 /obj/structure/platform/stone/lava/east,
 /turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/valley/west)
+"xZy" = (
+/turf/open/floor/corsat,
 /area/fire_colony/exterior/valley/west)
 "xZK" = (
 /obj/effect/decal/hybrisa/colorable_rug{
@@ -111700,15 +111890,15 @@ obJ
 fkI
 ksQ
 xps
-knD
+lha
 asf
 xkJ
-ozl
+aGL
 hEa
 ksQ
 ege
-ozl
-rtp
+xtQ
+qkH
 hwq
 tZS
 asf
@@ -111903,15 +112093,15 @@ mXx
 gWy
 ozl
 sEh
-xtQ
-tZS
-xhv
-uvT
-knT
-asf
-pqj
-tZS
-ozl
+crW
+myz
+myz
+xHz
+myz
+myz
+myz
+crW
+jks
 fkI
 pqj
 xkJ
@@ -112103,20 +112293,20 @@ hEI
 qDh
 euS
 hwq
-eLV
-pqj
-xkJ
+tZS
+wQt
+gkP
 sEE
 vgO
-uKs
-pqj
+oOn
+vgO
 xeH
 rUo
-ahA
+gkP
 rtp
 cdO
 jJU
-ozl
+wQt
 ozl
 sKe
 wnt
@@ -112305,25 +112495,25 @@ rrH
 xps
 tPZ
 fkI
-hEa
-xhv
-xkI
-gIQ
-aaQ
-tNN
-owz
-vdh
+iwT
+cNq
+qKm
+iKH
+lpb
+cRv
+lpb
+jDU
 czp
-pqj
-rtp
+qKm
+sck
 ksL
 jId
-eLV
+pqj
 kOm
 eLV
 xkJ
 xAJ
-asf
+knD
 uQL
 pHY
 aLw
@@ -112507,24 +112697,24 @@ fkI
 quL
 jOh
 wYQ
-bMg
-sbC
+sUh
+rKH
 vMf
-aaQ
-aaQ
+lnT
+ivD
 wVb
-lzR
+mRb
 noQ
-pqj
-ahA
+vPB
+owz
 hFx
 rfs
 erI
-aMC
+knT
 jOh
 oLl
 hEa
-asf
+rBD
 asf
 kZv
 mKH
@@ -112709,24 +112899,24 @@ vbR
 myv
 kLj
 kUf
-myz
-aaQ
-aaQ
-aaQ
-aaQ
-aaQ
-xZp
-uKs
-osi
 ozl
-sck
-sck
-imf
+oXr
+crW
+mOt
+mOt
+mOt
+mOt
+mOt
+mOt
+crW
+pqj
+fbs
+aVB
 ljt
 sNG
 kqb
 xps
-asf
+hOA
 wfp
 xXY
 bCd
@@ -112911,17 +113101,17 @@ pQR
 tZS
 ljt
 jZt
-mOt
+hEa
 lZo
-aaQ
-aaQ
-aaQ
-aaQ
-aaQ
-ygD
-pqj
-xAJ
-aVB
+vMf
+bER
+xeH
+oOn
+xeH
+gsf
+rUo
+vMf
+xtQ
 hEa
 jId
 ias
@@ -113113,17 +113303,17 @@ bXw
 xtQ
 eLV
 sUh
-lQK
-aaQ
-aaQ
-aaQ
-fuZ
-aaQ
+myv
+wyp
+gIQ
+jES
+xZy
+gcj
 lpb
-ahC
-xkJ
-jId
-adJ
+gcj
+gEC
+lVN
+cNq
 jOh
 vLA
 sNG
@@ -113315,16 +113505,16 @@ ahA
 wAY
 vUG
 tZS
-bMS
-eCc
-chN
-xHB
-qKm
-chN
-ahC
-wnt
-xqT
-bll
+xAJ
+sTn
+vMf
+bMg
+ivD
+noQ
+noQ
+mRb
+vPB
+gkP
 fCj
 goD
 mZR
@@ -113515,24 +113705,24 @@ avC
 mct
 asf
 pNM
-asf
-asf
+imf
+oCQ
 gYN
 xtQ
 crW
-ljt
 xHz
-oLl
-xtQ
-tZS
-jnz
-ikg
+xHz
+xHz
+mOt
+mOt
+myz
+crW
 lMW
 uci
 jER
 aGL
 xtQ
-asf
+rnC
 asf
 cgi
 hrJ
@@ -113719,9 +113909,9 @@ asf
 fYv
 bdP
 knD
+quL
+xDu
 sYO
-xkJ
-knD
 hEa
 qpz
 gke
@@ -113733,7 +113923,7 @@ kLj
 jER
 tZS
 qkH
-hEa
+cNq
 xhv
 hOA
 imf
@@ -113921,8 +114111,8 @@ asf
 dLu
 oMl
 imf
-eLV
-iIG
+euy
+uxZ
 eLV
 asf
 ozl
@@ -114137,9 +114327,9 @@ coV
 ege
 jao
 hwq
-tPZ
+adJ
 fkI
-rtp
+lOK
 ozl
 tZS
 kZv
@@ -114338,11 +114528,11 @@ qDU
 jXH
 eLV
 xhv
-bbI
+imy
 jOh
 wYQ
-tZS
-eLV
+hEa
+fZV
 bpI
 eao
 mKH
@@ -114533,7 +114723,7 @@ lqV
 ozl
 cbx
 tZS
-jOh
+jnz
 tsu
 ozl
 hwq
@@ -114544,8 +114734,8 @@ sck
 kLj
 eKI
 hEI
-ozl
-knD
+uHX
+dxq
 ozl
 keB
 uBE
@@ -114745,8 +114935,8 @@ asf
 eLV
 lOK
 bbI
-asf
-rtp
+pDQ
+cNq
 xqT
 xps
 pnT
@@ -114935,7 +115125,7 @@ eLV
 xhv
 qVo
 tZS
-jOh
+jnz
 tsu
 pqj
 rrH
@@ -115147,10 +115337,10 @@ oPP
 ecN
 wGX
 uxZ
-asf
+tZS
 ahA
 pQR
-qEL
+mHZ
 rnC
 yiR
 pHY
@@ -115352,8 +115542,8 @@ bXw
 hoe
 asf
 cgi
-asf
-asf
+qEL
+xtQ
 uQL
 aLw
 uBE
@@ -115544,17 +115734,17 @@ knT
 obk
 osi
 ahA
-tZS
-ozl
+hEa
+sco
+pqj
+cqT
+xtQ
+xkJ
+qkH
+ahA
+cad
+nMh
 asf
-ahA
-ahA
-ahA
-asf
-ahA
-ahA
-ahA
-knD
 xDu
 uQL
 mKH
@@ -115746,18 +115936,18 @@ osi
 asf
 amW
 ayp
+xni
 gXP
-gXP
-gXP
+pYh
 ayp
-ahA
-tZS
-ahA
-ahA
+asf
+kjg
+pQE
+cad
 ayp
 bDH
-gXP
-gXP
+cPR
+vGA
 ayp
 mIu
 anF
@@ -115953,8 +116143,8 @@ ayW
 ayW
 ayp
 ayp
-gXP
-gXP
+nvM
+nvM
 ayp
 ayp
 ayW
@@ -129837,7 +130027,7 @@ aaE
 jgf
 jgf
 fwa
-tif
+wSB
 bvn
 xEP
 xEP
@@ -140412,7 +140602,7 @@ vbG
 vbG
 vbG
 fyS
-fyS
+rai
 vbG
 vbG
 iqy
@@ -175080,8 +175270,8 @@ rKz
 rKz
 rKz
 rKz
-usT
-usT
+rKz
+rKz
 rKz
 rKz
 rKz
@@ -175278,13 +175468,13 @@ rKz
 rKz
 rKz
 rKz
-usT
-usT
 rKz
-usT
-usT
-usT
-usT
+rKz
+rKz
+rKz
+rKz
+rKz
+rKz
 rKz
 rKz
 rKz
@@ -175479,14 +175669,14 @@ rKz
 rKz
 rKz
 rKz
-usT
-usT
-usT
-usT
-usT
-usT
-usT
-usT
+rKz
+rKz
+rKz
+rKz
+rKz
+rKz
+rKz
+rKz
 rKz
 rKz
 rKz
@@ -175680,15 +175870,15 @@ rKz
 rKz
 rKz
 rKz
-usT
-usT
-usT
-usT
-usT
-usT
-usT
-usT
-usT
+rKz
+rKz
+rKz
+rKz
+rKz
+rKz
+rKz
+rKz
+rKz
 rKz
 rKz
 rKz
@@ -175877,21 +176067,21 @@ rKz
 rKz
 rKz
 rKz
-usT
 rKz
 rKz
 rKz
 rKz
 rKz
-usT
 rKz
 rKz
 rKz
-usT
-usT
-usT
-usT
-usT
+rKz
+rKz
+rKz
+rKz
+rKz
+rKz
+rKz
 rKz
 rKz
 rKz
@@ -176079,7 +176269,6 @@ rKz
 rKz
 rKz
 rKz
-usT
 rKz
 rKz
 rKz
@@ -176091,10 +176280,11 @@ rKz
 rKz
 rKz
 rKz
-usT
-usT
-usT
-usT
+rKz
+rKz
+rKz
+rKz
+rKz
 rKz
 rKz
 rKz
@@ -176280,8 +176470,8 @@ rKz
 rKz
 rKz
 rKz
-usT
-usT
+rKz
+rKz
 rKz
 rKz
 rKz
@@ -176482,9 +176672,9 @@ rKz
 rKz
 rKz
 rKz
-usT
-usT
-usT
+rKz
+rKz
+rKz
 rKz
 rKz
 rKz
@@ -176685,8 +176875,8 @@ rKz
 rKz
 rKz
 rKz
-usT
-usT
+rKz
+rKz
 rKz
 rKz
 rKz
@@ -176888,7 +177078,7 @@ rKz
 rKz
 rKz
 rKz
-usT
+rKz
 rKz
 rKz
 rKz

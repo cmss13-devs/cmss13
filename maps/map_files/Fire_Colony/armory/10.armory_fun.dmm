@@ -94,6 +94,18 @@
 "N" = (
 /turf/open/floor/strata/altred3/northeast,
 /area/fire_colony/interior/hangar/security/armory)
+"O" = (
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door/open{
+	dir = 4;
+	name = "\improper Armory Lockdown";
+	id = "seeg_armory"
+	},
+/obj/structure/machinery/door/airlock/multi_tile/lavaland/black_double/solid/autoname{
+	dir = 1;
+	locked = 1
+	},
+/turf/open/floor/corsat,
+/area/fire_colony/interior/hangar/security/armory)
 "P" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/closet/secure_closet/guncabinet,
@@ -120,7 +132,7 @@
 	pixel_x = -5;
 	pixel_y = 10
 	},
-/obj/structure/machinery/power/apc/no_power/north,
+/obj/structure/machinery/power/apc/fully_broken/no_cell/north,
 /turf/open/floor/strata/altred4/north,
 /area/fire_colony/interior/hangar/security/armory)
 "U" = (
@@ -137,7 +149,7 @@ a
 a
 a
 z
-z
+O
 a
 a
 a

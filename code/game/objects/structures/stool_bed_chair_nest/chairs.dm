@@ -311,6 +311,16 @@
 	name = "Delta squad chair"
 	desc = "A simple chair permanently attached to the floor. Covered with a squeaky and way too hard faux-leather, unevenly painted in Delta squad blue. This chair is most likely to be the first to fight and first to die."
 
+/obj/structure/bed/chair/comfy/kilo
+	icon_state = "comfychair_teal"
+	name = "Kilo squad chair"
+	desc = "A simple chair permanently attached to the floor. Covered with a squeaky and way too hard faux-leather, unevenly painted in Delta squad blue. This chair is most likely to be the first to fight and first to die."
+
+/obj/structure/bed/chair/comfy/oscar
+	icon_state = "comfychair_lime"
+	name = "Oscar squad chair"
+	desc = "A simple chair permanently attached to the floor. Covered with a squeaky and way too hard faux-leather, unevenly painted in Delta squad blue. This chair is most likely to be the first to fight and first to die."
+
 /obj/structure/bed/chair/comfy/ares
 	icon_state = "comfychair_ares"
 	name = "AI core chair"

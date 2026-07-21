@@ -15,6 +15,24 @@
 	if(!Check_WO())
 		current_human.nutrition = rand(NUTRITION_VERYLOW, NUTRITION_LOW) //Start hungry for the default marine.
 
+/datum/job/marine/proc/calculate_extra_slots(latejoin, slots)
+	var/extra_slots = 0
+
+	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
+		if(!target_squad)
+			continue
+
+		if(target_squad.pop_lock && target_squad.pop_lock < length(GLOB.clients))
+			target_squad.roles_cap = target_squad.initial_roles_cap
+
+		if(target_squad.dynamic_scaling)
+			if(latejoin)
+				target_squad.roles_cap[title] = slots
+		else
+			extra_slots += target_squad.roles_cap[title]
+
+	return extra_slots
+
 /datum/timelock/squad
 	name = "Squad Roles"
 

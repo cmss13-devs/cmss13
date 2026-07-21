@@ -72,6 +72,7 @@ endmap
 
 map fort_mcneil
 	maxplayers 100
+endmap
 
 map conam_81_abyssal
 	maxplayers 85

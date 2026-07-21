@@ -1,4 +1,0 @@
-author: "MistChristmas"
-delete-after: True
-changes:
-  - bugfix: "SEAs with no preference on their rank spawn as Gunnery Sergeants rather than Civs."

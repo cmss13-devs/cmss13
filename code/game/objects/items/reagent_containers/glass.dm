@@ -350,13 +350,12 @@
 		/obj/item/reagent_container/hypospray/autoinjector/peridaxon,
 		/obj/item/reagent_container/hypospray/autoinjector/tramadol,
 		/obj/item/reagent_container/hypospray/autoinjector/tricord,
-
-		//Yep, these, too!
-		/obj/item/reagent_container/hypospray/autoinjector/black_goo_cure,
-		/obj/item/reagent_container/hypospray/autoinjector/ultrazine,
-
+		/obj/item/reagent_container/hypospray/autoinjector/meralyne,
+		/obj/item/reagent_container/hypospray/autoinjector/dermaline,
 		/obj/item/reagent_container/hypospray/autoinjector/ez, //remember, all ez autoinjectors are skillless
-		/obj/item/reagent_container/hypospray/autoinjector/skillless, //remember, this includes marine/tramadol
+		/obj/item/reagent_container/hypospray/autoinjector/skillless
+		/obj/item/reagent_container/hypospray/autoinjector/tutorial
+		/obj/item/reagent_container/hypospray/autoinjector/black_goo_cure //it's medicine, so it counts
 
 	)
 /obj/item/reagent_container/glass/minitank/on_reagent_change()
@@ -376,15 +375,15 @@
 			playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
 
 		else if(!(chem_refill) || !(autoinjector.type in chem_refill)) //noo, you can't fill this! It's not the right autoinjector!
-			if(autoinjector.mixed_chem) //Mixed chem autoinjectors like emergency and sleep are too complicated for the tank.
+			if(autoinjector.no_refill_valve) //Mixed chem autoinjectors like emergency and sleep are too complicated for the tank. It can only fill autoinjectors with one chemical inside.
 				if(istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/empty)) //Autoinjector says, "Where's my pouch?"
 					to_chat(user, SPAN_WARNING("A small LED on [src] blinks red. Refill failed. [autoinjector] can only be refilled with a pressurized reagent canister pouch."))
 					return FALSE
 				else //some autoinjectors truly are one-use... Example: That big ass 79u emergency first aid syringe.
 					to_chat(user, SPAN_WARNING("A small LED on [src] blinks red. Refill failed. [autoinjector] does not have a refill valve. It must be disposed of."))
 					return FALSE
-			else //Meralyne and Dermaline autoinjectors, stuff you can't refill with Wey-Med vends.
-				to_chat(user, SPAN_WARNING("A small LED on [src] blinks red. Refill failed. [autoinjector]'s refill valve is not compatible with [src]'s dispense valve."))
+			else //Ultrazine and any other autoinjector in the future that holds chemicals that is not considered medicine.
+				to_chat(user, SPAN_WARNING("A small LED on [src] blinks red. Refill failed. [src] does not recognize the chemicals in [autoinjector]."))
 				return FALSE
 
 		else if(autoinjector.reagents.total_volume >= autoinjector.reagents.maximum_volume) //Autoinjector is full!

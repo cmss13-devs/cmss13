@@ -279,6 +279,7 @@
 
 		/obj/item/reagent_container/hypospray/autoinjector/ez, //all ez autoinjectors
 		/obj/item/reagent_container/hypospray/autoinjector/skillless, //pain-stop and first-aid
+		/obj/item/reagent_container/hypospray/autoinjector/tutorial,
 
 		/obj/item/reagent_container/hypospray/epinephrine, //so UPPs can refill their epinephrine hyposprays
 		/obj/item/reagent_container/hypospray/tricordrazine,
@@ -362,7 +363,7 @@
 	if(!LAZYLEN(chem_refill) || !(container.type in chem_refill))
 		if(istype(container, /obj/item/reagent_container/hypospray/autoinjector))
 			var/obj/item/reagent_container/hypospray/autoinjector/autoinjector = container
-			if(autoinjector.mixed_chem)
+			if(autoinjector.no_refill_valve)
 				if(istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/empty)) //Autoinjector says, "Where's my pouch?""
 					to_chat(user, SPAN_WARNING("[autoinjector] can only be refilled with a pressurized reagent canister pouch."))
 					return

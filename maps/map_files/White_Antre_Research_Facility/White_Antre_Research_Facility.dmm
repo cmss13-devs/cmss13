@@ -1771,8 +1771,8 @@
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/white_antre/indoors/upper_level/canteen)
 "aex" = (
-/obj/item/tool/kitchen/utensil/pknife,
-/obj/item/tool/kitchen/utensil/pspoon,
+/obj/item/tool/kitchen/utensil/knife/plastic,
+/obj/item/tool/kitchen/utensil/spoon/plastic,
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
 	},
@@ -1884,7 +1884,7 @@
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/white_antre/indoors/upper_level/canteen)
 "aeJ" = (
-/obj/item/tool/kitchen/utensil/pfork,
+/obj/item/tool/kitchen/utensil/fork/plastic,
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/white_antre/indoors/upper_level/canteen)
 "aeK" = (
@@ -1915,7 +1915,7 @@
 	name = "\improper UA Prepared Meal (cornbread)";
 	pixel_y = 9
 	},
-/obj/item/tool/kitchen/utensil/pknife,
+/obj/item/tool/kitchen/utensil/knife/plastic,
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
 	},
@@ -1992,10 +1992,10 @@
 	dir = 1;
 	layer = 2
 	},
-/obj/item/tool/kitchen/utensil/pspoon{
+/obj/item/tool/kitchen/utensil/spoon/plastic{
 	pixel_y = 1
 	},
-/obj/item/tool/kitchen/utensil/pknife{
+/obj/item/tool/kitchen/utensil/knife/plastic{
 	pixel_x = 8;
 	pixel_y = -1
 	},
@@ -13273,7 +13273,9 @@
 /turf/open/floor/almayer/silver/west,
 /area/white_antre/indoors/main_level/research)
 "aEC" = (
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt{
+	dir = 4
+	},
 /turf/open/floor/almayer/emeraldfull2,
 /area/white_antre/indoors/main_level/research)
 "aED" = (
@@ -24369,7 +24371,9 @@
 	color = "#5d524b";
 	alpha = 155
 	},
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt{
+	dir = 1
+	},
 /turf/open/floor/prison/darkyellowfull2,
 /area/white_antre/indoors/exterior/prefab_3)
 "bjC" = (
@@ -32632,8 +32636,8 @@
 /turf/open/floor/corsat/squares,
 /area/white_antre/indoors/upper_level/south_overwatch)
 "bEx" = (
-/obj/structure/machinery/recharge_station,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/recharge_station/alt,
 /turf/open/floor/corsat/plate,
 /area/white_antre/indoors/upper_level/south_overwatch)
 "bEy" = (
@@ -32958,7 +32962,7 @@
 	color = "#EBD9B7"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/tool/kitchen/utensil/pspoon,
+/obj/item/tool/kitchen/utensil/spoon/plastic,
 /obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
 	light_color = "#FF0000";
 	light_on = 1;
@@ -34999,8 +35003,10 @@
 /turf/open/floor/corsat/squares,
 /area/white_antre/indoors/upper_level/north_overwatch)
 "bJy" = (
-/obj/structure/machinery/recharge_station,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/recharge_station/alt{
+	dir = 1
+	},
 /turf/open/floor/corsat/plate,
 /area/white_antre/indoors/upper_level/north_overwatch)
 "bJz" = (
@@ -55809,7 +55815,9 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/white_antre/indoors/main_level/east_containment_hive)
 "wPy" = (
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt{
+	dir = 1
+	},
 /turf/open/floor/prison/darkyellow2/east,
 /area/white_antre/indoors/main_level/engineering)
 "wQD" = (

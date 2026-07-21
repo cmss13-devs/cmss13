@@ -6,9 +6,9 @@
 	if(jump_x && jump_y && jump_z)
 		jump_click = ADMIN_JUMP_COORDS(jump_x, jump_y, jump_z)
 	var/rendered = "[SPAN_PREFIX("ADMIN LOG:")] [SPAN_MESSAGE("[text]")] [jump_click]"
-	for(var/client/C as anything in GLOB.admins)
-		if(C && C.admin_holder && (R_MOD & C.admin_holder.rights))
-			to_chat(C, SPAN_ADMIN(rendered))
+	for(var/client/admin_client as anything in GLOB.admins)
+		if(CLIENT_IS_STAFF(admin_client))
+			to_chat(admin_client, SPAN_ADMIN(rendered))
 
 /proc/msg_admin_attack(text, jump_x, jump_y, jump_z) //Toggleable Attack Messages; server logs don't include the JMP part
 	if(GLOB.perf_flags & PERF_TOGGLE_ATTACKLOGS)
@@ -19,10 +19,10 @@
 	if(jump_x && jump_y && jump_z)
 		jump_click = ADMIN_JUMP_COORDS(jump_x, jump_y, jump_z)
 	var/rendered = SPAN_COMBAT("[SPAN_PREFIX("ATTACK:")] [SPAN_MESSAGE("[text]")] [jump_click]")
-	for(var/client/C as anything in GLOB.admins)
-		if(C && C.admin_holder && (R_MOD & C.admin_holder.rights))
-			if(C.prefs.toggles_chat & CHAT_ATTACKLOGS)
-				to_chat(C, rendered)
+	for(var/client/admin_client as anything in GLOB.admins)
+		if(CLIENT_IS_STAFF(admin_client))
+			if(admin_client.prefs.toggles_chat & CHAT_ATTACKLOGS)
+				to_chat(admin_client, rendered)
 
 /proc/msg_admin_niche(text, atom/jump_location) //Toggleable Niche Messages - At somepoint refactor all of the msg_admin stuff to point to atoms instead of feeding them coords like the other procs do
 	log_admin(text)
@@ -31,10 +31,10 @@
 	if(jump_location)
 		jump_click = ADMIN_COORDJMP(jump_location)
 	var/rendered = SPAN_NICHE("[SPAN_PREFIX("ADMIN NICHE LOG:")] [SPAN_MESSAGE("[text]")] [jump_click]")
-	for(var/client/C as anything in GLOB.admins)
-		if(C && C.admin_holder && (R_MOD & C.admin_holder.rights))
-			if(C.prefs.toggles_chat & CHAT_NICHELOGS)
-				to_chat(C, rendered)
+	for(var/client/admin_client as anything in GLOB.admins)
+		if(CLIENT_IS_STAFF(admin_client))
+			if(admin_client.prefs.toggles_chat & CHAT_NICHELOGS)
+				to_chat(admin_client, rendered)
 
 /proc/msg_sea(text, nosound = FALSE) //Only used for newplayer ticker message, hence no logging
 	var/rendered = FONT_SIZE_LARGE("[SPAN_ADMIN("[SPAN_PREFIX("MENTOR ALERT:")]")] [SPAN_MESSAGE("[text]")]")
@@ -47,17 +47,26 @@
 			sound_to(possible_sea, 'sound/effects/mhelp.ogg')
 
 
-/proc/msg_admin_ff(text, alive = TRUE)
+/proc/msg_admin_ff(text, alive = TRUE, location_z)
 	log_attack(text)
-	var/rendered = SPAN_COMBAT("[SPAN_PREFIX("ATTACK:")] ")
+	var/location_suffix
+	if(is_mainship_level(location_z))
+		location_suffix = SPAN_PREFIX(" [SPAN_DEBUG_ORANGE("(SHIPSIDE)")]")
+	else if(is_ground_level(location_z))
+		location_suffix = SPAN_PREFIX(" [SPAN_ADMIN_BLUE("(GROUNDSIDE)")]")
+
+	var/prefix = SPAN_COMBAT("[SPAN_PREFIX("ATTACK:")] ")
+	var/text_holder
 	if(alive)
-		rendered += SPAN_FF_ALIVE("[SPAN_MESSAGE("[text]")]")
+		text_holder = "[SPAN_MESSAGE("[text]")]"
 	else
-		rendered += SPAN_FF_DEAD("///DEAD/// - [SPAN_MESSAGE("[text]")]")
-	for(var/client/C as anything in GLOB.admins)
-		if(C && C.admin_holder && (R_MOD & C.admin_holder.rights))
-			if(C.prefs.toggles_chat & CHAT_FFATTACKLOGS)
-				to_chat(C, rendered)
+		text_holder = "///DEAD/// - [SPAN_MESSAGE("[text]")]"
+	for(var/client/admin_client as anything in GLOB.admins)
+		if(CLIENT_IS_STAFF(admin_client))
+			var/datum/preferences/admin_prefs = admin_client.prefs
+			if(admin_prefs.toggles_chat & CHAT_FFATTACKLOGS)
+				var/final_text = "[prefix]<font color=[alive ? admin_prefs.ff_log_color : admin_prefs.ffd_log_color]><b>[text_holder]</b></font>[location_suffix]"
+				to_chat(admin_client, final_text)
 
 ///////////////////////////////////////////////////////////////////////////////////////////////Panels
 

@@ -173,7 +173,7 @@ There are several things that need to be remembered:
 /mob/living/carbon/human/proc/update_underwear()
 	remove_overlay(UNDERWEAR_LAYER)
 
-	if(w_uniform)
+	if(w_uniform && !w_uniform.is_seethrough)
 		return
 
 	var/datum/sprite_accessory/underwear/underwear_datum = gender == MALE ? GLOB.underwear_m[underwear] : GLOB.underwear_f[underwear]
@@ -188,7 +188,7 @@ There are several things that need to be remembered:
 	remove_overlay(UNDERSHIRT_LAYER)
 
 	var/datum/sprite_accessory/undershirt/undershirt_datum = gender == MALE ? GLOB.undershirt_m[undershirt] : GLOB.undershirt_f[undershirt]
-	if((w_uniform && !(w_uniform.flags_jumpsuit & UNIFORM_JACKET_REMOVED)) && !undershirt_datum.shown_under_uniform)
+	if((w_uniform && !(w_uniform.flags_jumpsuit & UNIFORM_JACKET_REMOVED)) && !undershirt_datum.shown_under_uniform && !w_uniform.is_seethrough)
 		return
 
 	var/image/undershirt_icon = undershirt_datum.get_image(gender)

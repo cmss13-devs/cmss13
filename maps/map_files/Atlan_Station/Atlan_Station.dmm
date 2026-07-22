@@ -26223,10 +26223,6 @@
 "iuE" = (
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/exports_west)
-"iuF" = (
-/obj/structure/window/framed/upp_ship/grey,
-/turf/open/floor/strata/floor2,
-/area/atlan/station/cent_maintenace)
 "iuG" = (
 /obj/structure/sign/safety/coffee,
 /turf/closed/wall/upp_ship/grey/blue,
@@ -104899,10 +104895,10 @@ hiM
 jFY
 anD
 nfn
-ana
+ani
 ana
 aml
-ana
+ani
 and
 qqL
 qqL
@@ -105116,7 +105112,7 @@ qqL
 qqL
 qqL
 ane
-qqL
+fRe
 egc
 qqL
 jOq
@@ -105128,7 +105124,7 @@ qqL
 qqL
 qqL
 qqL
-qqL
+fRe
 hGI
 qqL
 fRe
@@ -105329,12 +105325,12 @@ aHI
 qqL
 anD
 ana
-ani
+ana
 ana
 anx
 qqL
-jOq
-qqL
+oUD
+fRe
 hGI
 qqL
 qqL
@@ -105750,11 +105746,11 @@ eQY
 aAa
 abi
 qqL
-qqL
+fRe
 qqL
 aHn
 qqL
-qqL
+fRe
 qqL
 wvj
 qqL
@@ -105762,7 +105758,7 @@ qqL
 qqL
 wvj
 ane
-qqL
+fRe
 qqL
 qqL
 qAo
@@ -105965,8 +105961,8 @@ qqL
 qqL
 qqL
 iUP
-qqL
-qqL
+fRe
+fRe
 qqL
 aGV
 qqL
@@ -106182,11 +106178,11 @@ jOq
 qqL
 ubv
 qqL
-qqL
+fRe
 aGI
 aGF
 ane
-qqL
+fRe
 qqL
 fRe
 idD
@@ -107240,7 +107236,7 @@ qqL
 api
 idD
 idD
-qqL
+fRe
 qqL
 qqL
 idD
@@ -124168,7 +124164,7 @@ sMV
 kiX
 mkk
 arc
-iuF
+aKL
 aJr
 rlO
 aJU

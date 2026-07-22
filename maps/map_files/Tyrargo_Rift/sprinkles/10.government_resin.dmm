@@ -565,7 +565,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
 "tj" = (
-/obj/item/reagent_container/hypospray/autoinjector/standard/tricord/random_amount,
+/obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine/random_amount,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
 "tm" = (

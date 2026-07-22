@@ -148,3 +148,9 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 
 /obj/structure/machinery/cm_vending/clothing/marine/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_marine
+
+// Preserved for the sake of Whiskey Outpost -- BWSB
+/obj/structure/machinery/cm_vending/clothing/marine/charlie
+	squad_tag = SQUAD_MARINE_3
+	req_access = list(ACCESS_MARINE_SUPPORT)
+	headset_type = /obj/item/device/radio/headset/almayer/marine/charlie

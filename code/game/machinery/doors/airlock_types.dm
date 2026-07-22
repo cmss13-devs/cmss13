@@ -738,6 +738,15 @@
 	opacity = FALSE
 	glass = TRUE
 
+// preserved for the sake of Whiskey Outpost -- BWSB
+/obj/structure/machinery/door/airlock/almayer/marine/charlie
+	name = "\improper Charlie Squad Preparations"
+	icon = 'icons/obj/structures/doors/prepdoor_charlie.dmi'
+	req_access = list(ACCESS_MARINE_PREP)
+	req_one_access = list(ACCESS_MARINE_GENERAL, ACCESS_MARINE_CARGO, ACCESS_MARINE_SUPPORT)
+	opacity = FALSE
+	glass = TRUE
+
 /obj/structure/machinery/door/airlock/almayer/marine/support
 	name = "\improper Support Squad Preparations"
 	icon = 'icons/obj/structures/doors/prepdoor.dmi'

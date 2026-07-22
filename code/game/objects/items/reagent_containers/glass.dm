@@ -375,7 +375,7 @@
 		else if(reagents.has_reagent(autoinjector.chemname, amount)) ////The good stuff. Actually handles the filling of chemicals.
 			reagents.trans_id_to(autoinjector, autoinjector.chemname, amount) //fill this bih
 			if(istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/ez/one_use) || istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/tutorial)) //Added for differentiation between autoinjectors that have 1 vs 3 uses since it did not have this function before.
-				autoinjector.uses_left = 1 //one_use and marine are EZs.
+				autoinjector.uses_left = 1 //marine autoinjectors and tutorial autoinjectors.
 			else
 				autoinjector.uses_left = 3 //other autoinjectors.
 			autoinjector.update_icon()

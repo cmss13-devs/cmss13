@@ -361,15 +361,9 @@
 		return TRUE
 
 	if(!LAZYLEN(chem_refill) || !(container.type in chem_refill))
-		if(istype(container, /obj/item/reagent_container/hypospray/autoinjector))
-			var/obj/item/reagent_container/hypospray/autoinjector/autoinjector = container
-			if(autoinjector.no_refill_valve)
-				if(istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/empty)) //Autoinjector says, "Where's my pouch?""
-					to_chat(user, SPAN_WARNING("[autoinjector] can only be refilled with a pressurized reagent canister pouch."))
-					return
-				else //some autoinjectors truly are one-use...
-					to_chat(user, SPAN_WARNING("[autoinjector] cannot be refilled by any means. It must be disposed of."))
-					return
+		to_chat(user, SPAN_WARNING("[src] cannot refill [container]."))
+		return FALSE
+
 	if(chem_refill_volume < missing_reagents)
 		var/auto_refill = allow_supply_link_restock && get_supply_link()
 		to_chat(user, SPAN_WARNING("[src] blinks red and makes a buzzing noise as it rejects [container]. Looks like it doesn't have enough reagents [auto_refill ? "yet" : "left"]."))
@@ -566,7 +560,7 @@
 		list("MEDICAL UTILITIES", -1, null, null),
 		list("Emergency Defibrillator", floor(scale * 3), /obj/item/device/defibrillator, VENDOR_ITEM_REGULAR),
 		list("Health Analyzer", floor(scale * 5), /obj/item/device/healthanalyzer, VENDOR_ITEM_REGULAR),
-		list("Hypospray (Empty Vial)", floor(scale * 3), /obj/item/reagent_container/hypospray, VENDOR_ITEM_REGULAR),
+		list("Hypospray (Empty Vial)", floor(scale * 3), /obj/item/reagent_container/hypospray/empty, VENDOR_ITEM_REGULAR),
 		list("Hypospray (Epinephrine)", floor(scale * 3), /obj/item/reagent_container/hypospray/epinephrine, VENDOR_ITEM_REGULAR),
 		list("Hypospray (Tricordrazine)", floor(scale * 3), /obj/item/reagent_container/hypospray/tricordrazine, VENDOR_ITEM_REGULAR),
 		list("M276 Pattern Medical Storage Rig", floor(scale * 2), /obj/item/storage/belt/medical, VENDOR_ITEM_REGULAR),

@@ -363,16 +363,8 @@
 	if(istype(item, /obj/item/reagent_container/hypospray/autoinjector))
 		var/obj/item/reagent_container/hypospray/autoinjector/autoinjector = item
 		var/amount = (autoinjector.reagents.maximum_volume - autoinjector.reagents.total_volume)
-		if(reagents.has_reagent(autoinjector.chemname, amount)) ////The good stuff. Actually handles the filling of chemicals.
-			reagents.trans_id_to(autoinjector, autoinjector.chemname, amount) //fill this bih
-			if(istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/ez) || istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/skillless)) //Added for differentiation between autoinjectors that have 1 vs 3 uses since it did not have this function before.
-				autoinjector.uses_left = 1 //one_use and marine are EZs.
-			else
-				autoinjector.uses_left = 3 //other autoinjectors.
-			autoinjector.update_icon()
-			playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
 
-		else if(!(chem_refill) || !(autoinjector.type in chem_refill)) //noo, you can't fill this! It's not the right autoinjector!
+		if(!(chem_refill) || !(autoinjector.type in chem_refill)) //noo, you can't fill this! It's not the right autoinjector!
 			if(autoinjector.no_refill_valve) //Mixed chem autoinjectors like emergency and sleep are too complicated for the tank. It can only fill autoinjectors with one chemical inside.
 				if(istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/empty)) //Autoinjector says, "Where's my pouch?"
 					to_chat(user, SPAN_WARNING("A small LED on [src] blinks red. Refill failed. [autoinjector] can only be refilled with a pressurized reagent canister pouch."))
@@ -384,20 +376,28 @@
 				to_chat(user, SPAN_WARNING("A small LED on [src] blinks red. Refill failed. [src] does not recognize the chemicals in [autoinjector]."))
 				return FALSE
 
-		else if(autoinjector.reagents.total_volume >= autoinjector.reagents.maximum_volume) //Autoinjector is full!
-			to_chat(user, SPAN_WARNING("A small LED on [src] blinks red. Refill failed. [autoinjector] is full."))
-			return FALSE
-
 		else if(src.reagents.total_volume <= 0) //The tank is empty!
 			to_chat(user, SPAN_WARNING("A small LED on [src] blinks red. Refill failed. [src] is empty."))
 			return FALSE
 
+		else if(autoinjector.reagents.total_volume >= autoinjector.reagents.maximum_volume) //Autoinjector is full!
+			to_chat(user, SPAN_WARNING("A small LED on [src] blinks red. Refill failed. [autoinjector] is full."))
+			return FALSE
+
+		else if(reagents.has_reagent(autoinjector.chemname, amount)) ////The good stuff. Actually handles the filling of chemicals.
+			reagents.trans_id_to(autoinjector, autoinjector.chemname, amount) //fill this bih
+			if(istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/ez) || istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/skillless)) //Added for differentiation between autoinjectors that have 1 vs 3 uses since it did not have this function before.
+				autoinjector.uses_left = 1 //one_use and marine are EZs.
+			else
+				autoinjector.uses_left = 3 //other autoinjectors.
+			autoinjector.update_icon()
+			playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
+			to_chat(user, SPAN_INFO("You successfully refill [autoinjector] with [src]!"))
+			return
+
 		else //Autoinjector says, "Where's the chemical I want?" Or "Not enough chemicals to completely refill me."
 			to_chat(user, SPAN_WARNING("A small LED on [src] blinks red. Refill failed. [autoinjector] could not find enough [autoinjector.chemname] in the tank for a complete refill. Fill the tank with at least [amount]u of [autoinjector.chemname] and try again."))
 			return FALSE
-
-		to_chat(user, SPAN_INFO("You successfully refill [autoinjector] with [src]!"))
-		return
 
 /obj/item/reagent_container/glass/minitank/verb/flush_tank()
 	set category = "Object"

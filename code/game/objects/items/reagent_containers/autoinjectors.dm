@@ -447,9 +447,8 @@
 	amount_per_transfer_from_this = 5
 	volume = 25
 	uses_left = 5
-	autoinjector_type = "+stimpack_custom"
 	icon_state = "stimpack"
-	autoinjector_type = null
+	autoinjector_type = "+stimpack_custom"
 	skilllock = SKILL_MEDICAL_DEFAULT
 	display_maptext = FALSE //corporate secret
 	maptext_label = "Uz"

@@ -248,6 +248,11 @@
 	starting_vial = /obj/item/reagent_container/glass/beaker/vial/tricordrazine
 	desc = "The DeForest Medical Corporation hypospray is a sterile, air-needle autoinjector for rapid administration of drugs to patients. This one's vial came pre-filled with tricordrazine and is refillable at Wey-Med vends."
 
+/obj/item/reagent_container/hypospray/empty
+	name = "hypospray"
+	starting_vial = /obj/item/reagent_container/glass/beaker/vial/
+	desc = "The DeForest Medical Corporation hypospray is a sterile, air-needle autoinjector for rapid administration of drugs to patients. This one's vial came empty, to be filled with the chemical cocktail of your choice."
+
 /obj/item/reagent_container/hypospray/epinephrine
 	starting_vial = /obj/item/reagent_container/glass/beaker/vial/epinephrine
 	name = "epinephrine hypospray"

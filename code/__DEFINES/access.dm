@@ -43,8 +43,7 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 
 #define ACCESS_MARINE_SYNTH 36
 #define ACCESS_MARINE_ASO 37
-#define ACCESS_MARINE_CHAPLAIN 38
-#define ACCESS_MARINE_FIELD_DOC 39
+#define ACCESS_MARINE_FIELD_DOC 38
 
 /// Grants access to Marine record databases
 #define ACCESS_MARINE_DATABASE 40

@@ -323,6 +323,8 @@
 
 /obj/structure/barricade/deconstruct(disassembled = TRUE, debris = TRUE)
 	if(disassembled)
+		if(!debris)
+			return ..()
 		if(is_wired)
 			new /obj/item/stack/barbed_wire(loc)
 		if(stack_type)
@@ -330,9 +332,11 @@
 			stack_amt = floor(stack_amount * (health/starting_maxhealth)) //Get an amount of sheets back equivalent to remaining health. Obviously, fully destroyed means 0
 			if(upgraded)
 				stack_amt += floor(2 * (health/starting_maxhealth))
-			if(stack_amt && debris)
+			if(stack_amt)
 				new stack_type(loc, stack_amt)
 	else
+		if(!debris)
+			return ..()
 		if(destroyed_stack_amount)
 			new stack_type(loc, destroyed_stack_amount)
 	return ..()

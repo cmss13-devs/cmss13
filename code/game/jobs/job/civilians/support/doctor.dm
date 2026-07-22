@@ -61,16 +61,18 @@ AddTimelock(/datum/job/civilian/doctor, list(
 	JOB_MEDIC_ROLES = 1 HOURS
 ))
 
-/datum/job/civilian/doctor/generate_entry_conditions(mob/living/M, whitelist_status)
+/datum/job/civilian/doctor/generate_entry_conditions(mob/living/candidate, whitelist_status)
 	. = ..()
 	if(!islist(GLOB.marine_officers[JOB_DOCTOR]))
 		GLOB.marine_officers[JOB_DOCTOR] = list()
-	GLOB.marine_officers[JOB_DOCTOR] += M
-	RegisterSignal(M, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_leader_candidate))
+	GLOB.marine_officers[JOB_DOCTOR] += candidate
+	RegisterSignal(candidate, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_leader_candidate))
 
-/datum/job/civilian/doctor/proc/cleanup_leader_candidate(mob/M)
+/datum/job/civilian/doctor/proc/cleanup_leader_candidate(mob/candidate)
 	SIGNAL_HANDLER
-	GLOB.marine_officers[JOB_DOCTOR] -= M
+	GLOB.marine_officers[JOB_DOCTOR] -= candidate
+	if(!length(GLOB.marine_leaders[JOB_DOCTOR]))
+		qdel(GLOB.marine_leaders[JOB_DOCTOR])
 
 /obj/effect/landmark/start/doctor
 	name = JOB_DOCTOR

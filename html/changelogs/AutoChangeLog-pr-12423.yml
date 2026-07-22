@@ -1,0 +1,5 @@
+author: "LC4492"
+delete-after: True
+changes:
+  - imageadd: "Adds Minimap/Orbit icons for all US Army survivors in Tyrargo; adds a HUD icon for the US Army Tankcrew."
+  - imagetweak: "Changes the minimap icon for the Vehicle Crewman so it actually fits it's background."

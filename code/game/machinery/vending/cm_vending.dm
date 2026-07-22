@@ -1197,18 +1197,22 @@ GLOBAL_LIST_EMPTY(vending_products)
 /obj/effect/essentials_set
 	var/list/spawned_gear_list
 
-/obj/effect/essentials_set/New(loc)
-	..()
+/obj/effect/essentials_set/Initialize(mapload, ...)
+	. = ..()
+	if(loc) // Don't spawn stuff in nullspace please
+		spawn_stuff()
+	return INITIALIZE_HINT_QDEL
+
+/obj/effect/essentials_set/proc/spawn_stuff()
 	for(var/typepath in spawned_gear_list)
 		if(spawned_gear_list[typepath])
 			new typepath(loc, spawned_gear_list[typepath])
 		else
 			new typepath(loc)
-	qdel(src)
 
 //same thing, but spawns only 1 item from the list
-/obj/effect/essentials_set/random/New(loc)
-	if(!spawned_gear_list)
+/obj/effect/essentials_set/random/spawn_stuff()
+	if(!length(spawned_gear_list))
 		return
 
 	var/typepath = pick(spawned_gear_list)
@@ -1216,7 +1220,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 		new typepath(loc, TRUE)
 	else
 		new typepath(loc)
-	qdel(src)
 
 
 //---helper glob data

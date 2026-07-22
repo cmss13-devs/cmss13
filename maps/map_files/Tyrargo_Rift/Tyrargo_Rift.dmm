@@ -104226,6 +104226,7 @@
 /obj/item/shard{
 	icon_state = "medium"
 	},
+/obj/item/device/binoculars/range/designator,
 /turf/open/floor/hybrisa/carpet/carpetpatternblue,
 /area/tyrargo/indoors/apartment/north_upper)
 "fsJ" = (

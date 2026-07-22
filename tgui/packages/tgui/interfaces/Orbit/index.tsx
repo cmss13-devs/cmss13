@@ -282,6 +282,7 @@ const marineSplitter = (members: Array<Observable>) => {
   const other: Array<Observable> = [];
   const provost: Array<Observable> = [];
   const ArmySquad: Array<Observable> = [];
+  const USASFSquad: Array<Observable> = [];
 
   members.forEach((x) => {
     if (x.mutiny_status?.includes('Mutineer')) {
@@ -314,6 +315,8 @@ const marineSplitter = (members: Array<Observable>) => {
       provost.push(x);
     } else if (x.job?.includes('Army')) {
       ArmySquad.push(x);
+    } else if (x.job?.includes('USASF')) {
+      USASFSquad.push(x);
     } else {
       other.push(x);
     }
@@ -335,6 +338,7 @@ const marineSplitter = (members: Array<Observable>) => {
     buildSquadObservable('Other', 'grey', other),
     buildSquadObservable('Provost', 'red', provost),
     buildSquadObservable('Army', 'green', ArmySquad),
+    buildSquadObservable('USASF', 'dark-blue', USASFSquad),
   ];
   return squads;
 };

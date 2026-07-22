@@ -81,10 +81,16 @@
 	if(istype(B) && B.amount > amount)
 		return FALSE
 
+/obj/effect/decal/cleanable/blood/yautja
+	color = BLOOD_COLOR_YAUTJA
+
 /obj/effect/decal/cleanable/blood/splatter
 	random_icon_states = list("mgibbl1", "mgibbl2", "mgibbl3", "mgibbl4", "mgibbl5")
 	amount = 1
 	cleanable_type = CLEANABLE_BLOOD_SPLATTER
+
+/obj/effect/decal/cleanable/blood/splatter/yautja
+	color = BLOOD_COLOR_YAUTJA
 
 /obj/effect/decal/cleanable/blood/drip
 	name = "drips of blood"
@@ -96,6 +102,9 @@
 	amount = 0
 	cleanable_type = CLEANABLE_BLOOD_DRIP
 	var/drips
+
+/obj/effect/decal/cleanable/blood/drip/yautja
+	color = BLOOD_COLOR_YAUTJA
 
 /obj/effect/decal/cleanable/blood/writing
 	icon_state = "tracks"
@@ -139,25 +148,43 @@
 
 	overlays += giblets
 
+/obj/effect/decal/cleanable/blood/gibs/yautja
+	color = BLOOD_COLOR_YAUTJA
+
 /obj/effect/decal/cleanable/blood/gibs/up
 	icon_state = "gibup1"
 	random_icon_states = list("gib1", "gib2", "gib3", "gib4", "gib5", "gib6", "gibup1", "gibup1", "gibup1")
+
+/obj/effect/decal/cleanable/blood/gibs/up/yautja
+	color = BLOOD_COLOR_YAUTJA
 
 /obj/effect/decal/cleanable/blood/gibs/down
 	icon_state = "gibdown1"
 	random_icon_states = list("gib1", "gib2", "gib3", "gib4", "gib5", "gib6", "gibdown1", "gibdown1", "gibdown1")
 
+/obj/effect/decal/cleanable/blood/gibs/down/yautja
+	color = BLOOD_COLOR_YAUTJA
+
 /obj/effect/decal/cleanable/blood/gibs/body
 	icon_state = "gibhead"
 	random_icon_states = list("gibhead", "gibtorso")
+
+/obj/effect/decal/cleanable/blood/gibs/body/yautja
+	color = BLOOD_COLOR_YAUTJA
 
 /obj/effect/decal/cleanable/blood/gibs/limb
 	icon_state = "gibleg"
 	random_icon_states = list("gibleg", "gibarm")
 
+/obj/effect/decal/cleanable/blood/gibs/limb/yautja
+	color = BLOOD_COLOR_YAUTJA
+
 /obj/effect/decal/cleanable/blood/gibs/core
 	icon_state = "gibmid1"
 	random_icon_states = list("gibmid1", "gibmid2", "gibmid3")
+
+/obj/effect/decal/cleanable/blood/gibs/core/yautja
+	color = BLOOD_COLOR_YAUTJA
 
 
 /obj/effect/decal/cleanable/blood/gibs/proc/streak(list/directions)

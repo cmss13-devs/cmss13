@@ -679,6 +679,44 @@
 	GLOB.comm_tower_landmarks_net_two -= src
 	return ..()
 
+//****************************************** SENSORS ************************************************//
+
+/obj/effect/landmark/sensors
+	name = "sensors spawn"
+	icon = 'icons/obj/structures/machinery/motion_sensor_v2.dmi'
+	icon_state = "sensor_sdmm"
+
+/obj/effect/landmark/sensors/Initialize(mapload, ...)
+	GLOB.sensor_tower_landmarks += src
+	. = ..()
+
+/obj/effect/landmark/sensors/Destroy()
+	GLOB.sensor_tower_landmarks -= src
+	return ..()
+
+/obj/effect/landmark/sensors/proc/spawn_tower()
+	new/obj/structure/machinery/sensortower(loc)
+	qdel(src)
+
+
+/obj/effect/landmark/short_range_sensors
+	name = "short range sensors spawn"
+	icon = 'icons/obj/structures/machinery/motion_sensor_v2.dmi'
+	icon_state = "sensors_tower_small_sdmm"
+
+/obj/effect/landmark/short_range_sensors/Initialize(mapload, ...)
+	GLOB.small_sensor_tower_landmarks += src
+	. = ..()
+
+/obj/effect/landmark/short_range_sensors/Destroy()
+	GLOB.small_sensor_tower_landmarks -= src
+	return ..()
+
+/obj/effect/landmark/short_range_sensors/proc/spawn_tower()
+	new/obj/structure/machinery/sensortower/short_range(loc)
+	qdel(src)
+
+
 // AMMO SPAWN (tyrargo)
 
 // m41a ammo

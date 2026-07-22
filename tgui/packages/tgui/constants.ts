@@ -268,6 +268,11 @@ export const RADIO_CHANNELS = [
     color: '#318779',
   },
   {
+    name: 'USASF',
+    freq: 1477,
+    color: '#000080',
+  },
+  {
     name: 'Sentry',
     freq: 1480,
     color: '#844300',

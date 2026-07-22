@@ -31,6 +31,8 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 
 	":1" = RADIO_CHANNEL_WY_PUB, ".1" = RADIO_CHANNEL_WY_PUB, "#1" = RADIO_CHANNEL_WY_PUB,
 	":2" = RADIO_CHANNEL_CIA, ".2" = RADIO_CHANNEL_CIA, "#2" = RADIO_CHANNEL_CIA,
+
+	":3" = SQUAD_USASF, ".3" = SQUAD_USASF, "#3" = SQUAD_USASF,
 	//1-9 available
 ))
 

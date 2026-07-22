@@ -260,6 +260,7 @@ DEFINE_BITFIELD(whitelist_status, list(
 #define FACTION_IASF "Imperial Armed Space Force"
 #define FACTION_PAP "People's Armed Police"
 #define FACTION_HYPERDYNE "Hyperdyne Corporation"
+#define FACTION_ALPHATECH "Alpha-Tech Hardware Corporation"
 #define FACTION_WY_DEATHSQUAD "WY Death Squad"
 #define FACTION_MERCENARY "Mercenary"
 #define FACTION_FREELANCER "Freelancer"
@@ -296,6 +297,7 @@ DEFINE_BITFIELD(whitelist_status, list(
 #define FACTION_LIST_UPP list(FACTION_UPP)
 #define FACTION_LIST_CLF list(FACTION_CLF)
 #define FACTION_LIST_TWE list(FACTION_TWE, FACTION_IASF)
+#define FACTION_LIST_ALPHATECH list(FACTION_ALPHATECH)
 #define FACTION_LIST_FREELANCER list(FACTION_FREELANCER)
 #define FACTION_LIST_CONTRACTOR list(FACTION_CONTRACTOR)
 #define FACTION_LIST_MERCENARY list(FACTION_MERCENARY)

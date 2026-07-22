@@ -575,3 +575,28 @@
 	basestate = "prison_rwindow"
 	reinforced = TRUE
 	window_type = /obj/structure/window/framed/hybrisa/spaceport/reinforced
+
+// NEW VARADERO frame
+/obj/structure/window_frame/point_loma/foundation
+	icon = 'icons/turf/walls/point_loma/point_loma_windows.dmi'
+	icon_state = "new_varadero_window0_frame"
+	basestate = "new_varadero_window"
+
+/obj/structure/window_frame/point_loma/foundation/reinforced
+	reinforced = TRUE
+
+/obj/structure/window_frame/point_loma/foundation/reinforced/hull
+	unslashable = TRUE
+	unacidable = TRUE
+
+/obj/structure/window_frame/point_loma/concrete
+	icon = 'icons/turf/walls/point_loma/concrete_windows.dmi'
+	icon_state = "concrete_window0_frame"
+	basestate = "concrete_window"
+
+/obj/structure/window_frame/point_loma/concrete/reinforced
+	reinforced = TRUE
+
+/obj/structure/window_frame/point_loma/concrete/reinforced/hull
+	unslashable = TRUE
+	unacidable = TRUE

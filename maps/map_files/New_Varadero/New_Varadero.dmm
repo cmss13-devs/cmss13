@@ -2184,7 +2184,7 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/administration)
 "brT" = (
-/turf/closed/wall/huntership/destructible,
+/turf/closed/wall/huntership/dark/destructible,
 /area/varadero/interior_protected/vessel)
 "brX" = (
 /obj/structure/pipes/standard/simple/hidden/green{

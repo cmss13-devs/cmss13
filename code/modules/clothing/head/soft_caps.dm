@@ -176,3 +176,8 @@
 	name = "marine police sergeant cap"
 	icon_state = "greensoft"
 	cap_color = "green"
+
+/obj/item/clothing/head/soft/marine/navy
+	name = "navy soft cap"
+	desc = "Soft cap used by navy."
+	icon_state = "navy_cap"

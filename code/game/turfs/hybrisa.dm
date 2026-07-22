@@ -66,6 +66,10 @@
 /turf/open/hybrisa/street/asphalt
 	icon_state = "asphalt_old"
 
+
+/turf/open/hybrisa/street/asphalt/runway
+	color = "#808080"
+
 // Side-walk
 
 

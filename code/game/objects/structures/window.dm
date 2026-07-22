@@ -1383,3 +1383,56 @@
 	icon_state = "prison_cellwindow0"
 	basestate = "prison_cellwindow"
 	health = 100
+
+// New Varadero windows
+
+/obj/structure/window/framed/point_loma/foundation
+	name = "window"
+	icon = 'icons/turf/walls/point_loma/point_loma_windows.dmi'
+	icon_state = "new_varadero_window"
+	basestate = "new_varadero_window"
+	window_frame = /obj/structure/window_frame/point_loma/foundation
+	health = 15
+
+/obj/structure/window/framed/point_loma/foundation/reinforced
+	name = "reinforced window"
+	desc = "A glass window that's harder to see through; it's undoubtedly reinforced with something."
+	health = 100
+	reinf = TRUE
+	icon_state = "new_varadero_r_window"
+	basestate = "new_varadero_r_window"
+	window_frame = /obj/structure/window_frame/point_loma/foundation/reinforced
+
+/obj/structure/window/framed/point_loma/foundation/reinforced/hull
+	icon_state = "new_varadero_r_window"
+	basestate = "new_varadero_r_window"
+	desc = "A glass window. Something tells you this one is somehow indestructible."
+	not_damageable = TRUE
+	not_deconstructable = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	health = 1000000
+
+/obj/structure/window/framed/point_loma/foundation/concrete
+	icon = 'icons/turf/walls/point_loma/concrete_windows.dmi'
+	icon_state = "concrete_window"
+	basestate = "concrete_window"
+	window_frame = /obj/structure/window_frame/point_loma/concrete
+
+
+/obj/structure/window/framed/point_loma/foundation/concrete/reinforced
+
+	name = "reinforced window"
+	desc = "A glass window that's harder to see through; it's undoubtedly reinforced with something."
+	health = 100
+	reinf = TRUE
+	window_frame = /obj/structure/window_frame/point_loma/concrete/reinforced
+
+/obj/structure/window/framed/point_loma/foundation/concrete/reinforced/hull
+	desc = "A glass window. Something tells you this one is somehow indestructible."
+	not_damageable = TRUE
+	not_deconstructable = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	health = 1000000
+	window_frame = /obj/structure/window_frame/point_loma/concrete/reinforced/hull

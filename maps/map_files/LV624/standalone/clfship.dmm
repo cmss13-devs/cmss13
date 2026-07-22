@@ -548,11 +548,11 @@
 "hZ" = (
 /obj/structure/bed,
 /obj/item/bedsheet/blue,
-/obj/item/weapon/gun/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/weapon/gun/pistol/deagle,
+/obj/item/ammo_magazine/pistol/deagle,
+/obj/item/ammo_magazine/pistol/deagle,
+/obj/item/ammo_magazine/pistol/deagle,
+/obj/item/ammo_magazine/pistol/deagle,
 /obj/item/clothing/accessory/storage/webbing,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/almayer/green/northeast,
@@ -1085,11 +1085,11 @@
 "AD" = (
 /obj/structure/bed,
 /obj/item/bedsheet/purple,
-/obj/item/weapon/gun/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/weapon/gun/pistol/deagle,
+/obj/item/ammo_magazine/pistol/deagle,
+/obj/item/ammo_magazine/pistol/deagle,
+/obj/item/ammo_magazine/pistol/deagle,
+/obj/item/ammo_magazine/pistol/deagle,
 /turf/open/floor/almayer/green/northeast,
 /area/lv624/lazarus/crashed_ship)
 "AP" = (

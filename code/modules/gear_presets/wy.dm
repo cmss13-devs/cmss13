@@ -171,7 +171,7 @@
 	job_title = JOB_DEPUTY_DIRECTOR
 	minimap_icon = "dep_director"
 	paygrades = list(PAY_SHORT_WYC10 = JOB_PLAYTIME_TIER_0)
-	gun_type = /obj/item/storage/belt/gun/m4a3/heavy/co_golden
+	gun_type = /obj/item/storage/belt/gun/m4a3/deagle/co_golden
 
 /datum/equipment_preset/wy/manager/director
 	name = "Corporate - K - Director"

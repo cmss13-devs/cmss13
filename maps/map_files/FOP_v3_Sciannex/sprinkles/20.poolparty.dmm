@@ -1089,7 +1089,7 @@
 	pixel_x = -8;
 	pixel_y = -2
 	},
-/obj/item/weapon/gun/pistol/heavy,
+/obj/item/weapon/gun/pistol/deagle,
 /obj/item/weapon/gun/revolver/cmb,
 /turf/open/floor/wood,
 /area/template_noop)

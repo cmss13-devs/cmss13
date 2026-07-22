@@ -330,7 +330,7 @@
 		/obj/item/weapon/gun/pistol/highpower = /obj/item/ammo_magazine/pistol/highpower,
 		/obj/item/weapon/gun/pistol/m1911 = /obj/item/ammo_magazine/pistol/m1911,
 		/obj/item/weapon/gun/revolver/small = /obj/item/ammo_magazine/revolver/small,
-		/obj/item/weapon/gun/pistol/heavy = /obj/item/ammo_magazine/pistol/heavy
+		/obj/item/weapon/gun/pistol/deagle = /obj/item/ammo_magazine/pistol/deagle
 		)
 
 
@@ -397,7 +397,7 @@
 		/obj/item/weapon/gun/pistol/kt42 = /obj/item/ammo_magazine/pistol/kt42,
 		/obj/item/weapon/gun/pistol/m1911 = /obj/item/ammo_magazine/pistol/m1911,
 		/obj/item/weapon/gun/revolver/small = /obj/item/ammo_magazine/revolver/small,
-		/obj/item/weapon/gun/pistol/heavy = /obj/item/ammo_magazine/pistol/heavy,
+		/obj/item/weapon/gun/pistol/deagle = /obj/item/ammo_magazine/pistol/deagle,
 		/obj/item/weapon/gun/pistol/skorpion = /obj/item/ammo_magazine/pistol/skorpion,
 		)
 

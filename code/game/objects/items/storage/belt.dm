@@ -1591,9 +1591,9 @@
 	can_hold = list(
 		/obj/item/weapon/gun/pistol,
 		/obj/item/ammo_magazine/pistol,
-		/obj/item/ammo_magazine/pistol/heavy,
-		/obj/item/ammo_magazine/pistol/heavy/super,
-		/obj/item/ammo_magazine/pistol/heavy/super/highimpact,
+		/obj/item/ammo_magazine/pistol/deagle,
+		/obj/item/ammo_magazine/pistol/deagle/super,
+		/obj/item/ammo_magazine/pistol/deagle/super/highimpact,
 	)
 	cant_hold = list(
 		/obj/item/weapon/gun/pistol/smart,
@@ -1722,25 +1722,25 @@
 	)
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
-/obj/item/storage/belt/gun/m4a3/heavy/fill_preset_inventory()
-	handle_item_insertion(new /obj/item/weapon/gun/pistol/heavy())
-	new /obj/item/ammo_magazine/pistol/heavy(src)
-	new /obj/item/ammo_magazine/pistol/heavy(src)
-	new /obj/item/ammo_magazine/pistol/heavy(src)
-	new /obj/item/ammo_magazine/pistol/heavy(src)
-	new /obj/item/ammo_magazine/pistol/heavy(src)
-	new /obj/item/ammo_magazine/pistol/heavy(src)
+/obj/item/storage/belt/gun/m4a3/deagle/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/deagle())
+	new /obj/item/ammo_magazine/pistol/deagle(src)
+	new /obj/item/ammo_magazine/pistol/deagle(src)
+	new /obj/item/ammo_magazine/pistol/deagle(src)
+	new /obj/item/ammo_magazine/pistol/deagle(src)
+	new /obj/item/ammo_magazine/pistol/deagle(src)
+	new /obj/item/ammo_magazine/pistol/deagle(src)
 
-/obj/item/storage/belt/gun/m4a3/heavy/co/fill_preset_inventory()
-	handle_item_insertion(new /obj/item/weapon/gun/pistol/heavy/co())
-	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact(src)
-	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact(src)
-	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact(src)
-	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact(src)
-	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact/ap(src)
-	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact/ap(src)
+/obj/item/storage/belt/gun/m4a3/deagle/co/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/deagle/co())
+	new /obj/item/ammo_magazine/pistol/deagle/super/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/deagle/super/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/deagle/super/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/deagle/super/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/deagle/super/highimpact/ap(src)
+	new /obj/item/ammo_magazine/pistol/deagle/super/highimpact/ap(src)
 
-/obj/item/storage/belt/gun/m4a3/heavy/co_golden
+/obj/item/storage/belt/gun/m4a3/deagle/co_golden
 	icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi',
@@ -1749,14 +1749,14 @@
 	)
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
-/obj/item/storage/belt/gun/m4a3/heavy/co_golden/fill_preset_inventory()
-	handle_item_insertion(new /obj/item/weapon/gun/pistol/heavy/co/gold())
-	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact(src)
-	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact(src)
-	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact(src)
-	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact(src)
-	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact/ap(src)
-	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact/ap(src)
+/obj/item/storage/belt/gun/m4a3/deagle/co_golden/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/deagle/co/gold())
+	new /obj/item/ammo_magazine/pistol/deagle/super/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/deagle/super/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/deagle/super/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/deagle/super/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/deagle/super/highimpact/ap(src)
+	new /obj/item/ammo_magazine/pistol/deagle/super/highimpact/ap(src)
 
 /obj/item/storage/belt/gun/m4a3/highpower/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/highpower())
@@ -2722,9 +2722,9 @@
 			new /obj/item/ammo_magazine/pistol/t73(src)
 			new /obj/item/ammo_magazine/pistol/t73(src)
 		if(5)
-			handle_item_insertion(new /obj/item/weapon/gun/pistol/heavy())
-			new /obj/item/ammo_magazine/pistol/heavy(src)
-			new /obj/item/ammo_magazine/pistol/heavy(src)
+			handle_item_insertion(new /obj/item/weapon/gun/pistol/deagle())
+			new /obj/item/ammo_magazine/pistol/deagle(src)
+			new /obj/item/ammo_magazine/pistol/deagle(src)
 	new /obj/item/ammo_magazine/smartgun/rusty(src)
 	new /obj/item/ammo_magazine/smartgun/rusty(src)
 

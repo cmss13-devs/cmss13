@@ -126,7 +126,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/dexalinp
 	name = "dexalin plus autoinjector"
 	chemname = "dexalinp"
-	desc = "An autoinjector loaded with three 1u doses of Dexalin+, designed to immediately oxygenate the entire body. Only those trained in medicine can use it. You can refill it at Wey-Med vending machines or with a smart tank."
+	desc = "An autoinjector loaded with three 1u doses of Dexalin+, a medication designed to immediately oxygenate the entire body. Only those trained in medicine can use it. You can refill it at Wey-Med vending machines or with a smart tank."
 	amount_per_transfer_from_this = 1
 	volume = 3
 	display_maptext = TRUE
@@ -398,7 +398,7 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/emergency
 	name = "emergency EZ autoinjector (HIGH DOSE CAUTION)"
-	desc = "An autoinjector loaded with a single 78u dose of a special cocktail of chemicals, to be used in life-threatening situations. You cannot refill it, but it doesn't require any training to use. WARNING: DO NOT USE IF THE PATIENT HAS BICARIDINE, KELOTANE, OR OXYCODONE IN THEIR SYSTEM AS THE PATIENT *WILL* OVERDOSE!"
+	desc = "An autoinjector loaded with a single 78u dose of a special cocktail of chemicals to be used in life-threatening situations. You cannot refill it, but it doesn't require any training to use. WARNING: DO NOT USE IF THE PATIENT HAS BICARIDINE, KELOTANE, OR OXYCODONE IN THEIR SYSTEM AS THE PATIENT *WILL* OVERDOSE!"
 	icon_state = "empty_emergency"
 	chemname = "emergency"
 	autoinjector_type = "autoinjector_oneuse"
@@ -422,7 +422,7 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/black_goo_cure
 	name = "\"Pathogen\" cure EZ autoinjector (SINGLE-USE)"
-	desc = "An autoinjector loaded with a single dose for a cure for Agent A0-3959X.91–15, also known as the 'black-goo'. You can refill it with a smart tank and it doesn't require any training to administer."
+	desc = "An autoinjector loaded with a single 5u dose for a cure for Agent A0-3959X.91–15, also known as the 'black-goo'. You cannot refill it, but it doesn't require any training to administer."
 	icon_state = "empty_research_oneuse"
 	chemname = "antiZed"
 	autoinjector_type = "autoinjector_oneuse"
@@ -443,7 +443,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/ultrazine
 	name = "ultrazine autoinjector"
 	chemname = "ultrazine"
-	desc = "An autoinjector loaded with 5 doses of 5u Ultrazine, a special and illegal muscle stimulant. You cannot refill it, but doesn't require any training to administer. Do not administer more than twice at a time. Highly addictive."
+	desc = "An autoinjector loaded with five 5u doses of Ultrazine, a special and illegal muscle stimulant. You cannot refill it, but doesn't require any training to administer. Do not administer more than twice at a time. Highly addictive."
 	amount_per_transfer_from_this = 5
 	volume = 25
 	uses_left = 5

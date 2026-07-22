@@ -14,7 +14,9 @@
 	hackable = FALSE
 
 	chem_refill = list(
-		/obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricordrazine, //pain-stop and first-aid
+		/obj/item/reagent_container/hypospray/autoinjector/standard,
+		/obj/item/reagent_container/hypospray/autoinjector/ez,
+		/obj/item/reagent_container/hypospray/autoinjector/tutorial,
 	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/vehicle/wy
@@ -38,19 +40,9 @@
 
 	healthscan = TRUE
 	chem_refill = list(
-		/obj/item/reagent_container/hypospray/autoinjector/standard/bicaridine,
-		/obj/item/reagent_container/hypospray/autoinjector/standard/dexalinp,
-		/obj/item/reagent_container/hypospray/autoinjector/standard/antitoxin,
-		/obj/item/reagent_container/hypospray/autoinjector/standard/adrenaline,
-		/obj/item/reagent_container/hypospray/autoinjector/standard/inaprovaline,
-		/obj/item/reagent_container/hypospray/autoinjector/standard/kelotane,
-		/obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone,
-		/obj/item/reagent_container/hypospray/autoinjector/standard/peridaxon,
-		/obj/item/reagent_container/hypospray/autoinjector/standard/tramadol,
-		/obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine,
-
-		/obj/item/reagent_container/hypospray/autoinjector/ez, //all ez autoinjectors
-		/obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricordrazine, //pain-stop and first-aid
+		/obj/item/reagent_container/hypospray/autoinjector/standard,
+		/obj/item/reagent_container/hypospray/autoinjector/ez,
+		/obj/item/reagent_container/hypospray/autoinjector/tutorial,
 		)
 
 /obj/structure/machinery/cm_vending/sorted/medical/vehicle/populate_product_list(scale)

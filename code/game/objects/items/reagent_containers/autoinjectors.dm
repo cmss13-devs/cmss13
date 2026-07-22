@@ -327,8 +327,9 @@
 	maptext_label = "EzDy"
 
 
+//MARINE AUTOINJECTORS
 
-/obj/item/reagent_container/hypospray/autoinjector/ez/one_use //Marine autoinjectors
+/obj/item/reagent_container/hypospray/autoinjector/ez/one_use
 	name = "crit-save EZ autoinjector"
 	chemname = "inaprovaline"
 	desc = "An EZ autoinjector loaded with a single `15u dose of Inaprovaline to self administer for oxygen-stabilizing in anticipation of passing out. You can refill it at Wey-Med vending machines or with a smart tank. Thankfully, there's no lock on it, so anyone can use it!"

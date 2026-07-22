@@ -54740,7 +54740,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical{
 	name = "\improper Field Medical Equipment Storage";
 	req_one_access = null;
-	req_one_access_txt = "5;19;39"
+	req_one_access_txt = "5;19;38"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	layer = 1.9

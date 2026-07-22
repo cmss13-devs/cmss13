@@ -83,7 +83,7 @@
 		standard = FALSE
 		gear_preset = /datum/equipment_preset/synth/working_joe/engi/colony
 
-/datum/job/civilian/working_joe/colony/generate_entry_message(mob/living/carbon/human/H)
+/datum/job/civilian/working_joe/colony/generate_entry_message(mob/living/carbon/human/new_human)
 	. = {"You are a <a href='[generate_wiki_link()]'>Colony Working Joe.</a> You are held to a higher standard and are required to obey not only the Server Rules but Roleplay Expectations and Synthetic Rules. Your primary task is to maintain the cleanliness of the colony, putting things in their proper place. Alternatively, your primary task may be to assist with manual labor in limited capacity, or clerical duties. Your capacities are limited, but you have all the equipment you need, and the central AI has a plan! Stay in character at all times. Use the ARTEMIS link to communicate with your uplink!"}
 
 /datum/job/civilian/working_joe/colony/generate_entry_conditions(mob/living/joe, whitelist_status)
@@ -92,23 +92,23 @@
 	if(SSticker.mode)
 		SSticker.mode.initialize_colony_joe(joe)
 
-/datum/job/civilian/working_joe/colony/announce_entry_message(mob/living/carbon/human/H, datum/money_account/M, whitelist_status)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(ares_artemis_talk), "[H.real_name] has been activated."), 1.5 SECONDS)
-	addtimer(CALLBACK(src, PROC_REF(send_entry_message), H, M, whitelist_status), 1.4 SECONDS)
+/datum/job/civilian/working_joe/colony/announce_entry_message(mob/living/carbon/human/new_human, datum/money_account/money, whitelist_status)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(ares_artemis_talk), "[new_human.real_name] has been activated."), 1.5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(send_entry_message), new_human, money, whitelist_status), 1.4 SECONDS)
 	return
 
-/datum/job/civilian/working_joe/colony/proc/send_entry_message(mob/living/carbon/human/H, datum/money_account/M, whitelist_status)
-	if(H && H.loc && H.client)
+/datum/job/civilian/working_joe/colony/proc/send_entry_message(mob/living/carbon/human/new_human, datum/money_account/money, whitelist_status)
+	if(new_human && new_human.loc && new_human.client)
 		var/title_given
 		title_given = lowertext(disp_title)
 
 		var/entrydisplay = boxed_message("\
 			[SPAN_ROLE_BODY("|______________________|")] \n\
 			[SPAN_ROLE_HEADER("You are \a [title_given]")] \n\
-			[SPAN_ROLE_BODY("[generate_entry_message(H)]<br>[M ? "Your account number is: <b>[M.account_number]</b>. Your account pin is: <b>[M.remote_access_pin]</b>." : "You do not have a bank account."]")] \n\
+			[SPAN_ROLE_BODY("[generate_entry_message(new_human)]<br>[money ? "Your account number is: <b>[money.account_number]</b>. Your account pin is: <b>[money.remote_access_pin]</b>." : "You do not have a bank account."]")] \n\
 			[SPAN_ROLE_BODY("|______________________|")] \
 		")
-		to_chat_spaced(H, html = entrydisplay)
+		to_chat_spaced(new_human, html = entrydisplay)
 
 /obj/effect/landmark/start/working_joe/colony
 	name = JOB_COLONY_JOE
@@ -133,7 +133,7 @@
 
 	return ..()
 
-/datum/job/antag/upp/dzho_automaton/generate_entry_message(mob/living/carbon/human/H)
+/datum/job/antag/upp/dzho_automaton/generate_entry_message(mob/living/carbon/human/new_human)
 	. = {"You are a <a>Dzho Automaton.</a> You are held to a higher standard and are required to obey not only the Server Rules but UPP Law, Roleplay Expectations and Synthetic Rules. Your primary task is to maintain the ship, patrol and other tasks given to you by UPP officer staff. Alternatively, your primary task may be to assist with manual labor in limited capacity, or clerical duties. You can perform brig duties and security duties if needed. You have a firearm permit and can use lethal force where applicable. Your capacities are limited, but you have all the equipment you need, and the central AI has a plan! Stay in character at all times.!"}
 
 /datum/job/antag/upp/dzho_automaton/colony
@@ -143,8 +143,32 @@
 	scaled = FALSE
 	gear_preset = /datum/equipment_preset/synth/working_joe/upp/colony
 
-/datum/job/antag/upp/dzho_automaton/colony/generate_entry_message(mob/living/carbon/human/H)
+/datum/job/antag/upp/dzho_automaton/colony/generate_entry_message(mob/living/carbon/human/new_human)
 	. = {"You are a <a>Colony Dzho Automaton.</a> You are held to a higher standard and are required to obey not only the Server Rules but Roleplay Expectations and Synthetic Rules. Your primary task is to maintain the colony, patrol and other tasks given to you by UPP colony administration. Alternatively, your primary task may be to assist with manual labor in limited capacity, or clerical duties. As you are a civillian model, all firearm capabilities have been removed. Your capacities are limited, but you have all the equipment you need, and the central AI has a plan! Stay in character at all times.!"}
+
+/datum/job/antag/upp/dzho_automaton/colony/generate_entry_conditions(mob/living/joe, whitelist_status)
+	. = ..()
+
+	if(SSticker.mode)
+		SSticker.mode.initialize_colony_joe(joe)
+
+/datum/job/antag/upp/dzho_automaton/colony/announce_entry_message(mob/living/carbon/human/new_human, datum/money_account/money, whitelist_status)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(ares_artemis_talk), "[new_human.real_name] has been activated."), 1.5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(send_entry_message), new_human, money, whitelist_status), 1.4 SECONDS)
+	return
+
+/datum/job/antag/upp/dzho_automaton/colony/proc/send_entry_message(mob/living/carbon/human/new_human, datum/money_account/money, whitelist_status)
+	if(new_human && new_human.loc && new_human.client)
+		var/title_given
+		title_given = lowertext(disp_title)
+
+		var/entrydisplay = boxed_message("\
+			[SPAN_ROLE_BODY("|______________________|")] \n\
+			[SPAN_ROLE_HEADER("You are \a [title_given]")] \n\
+			[SPAN_ROLE_BODY("[generate_entry_message(new_human)]<br>[money ? "Your account number is: <b>[money.account_number]</b>. Your account pin is: <b>[money.remote_access_pin]</b>." : "You do not have a bank account."]")] \n\
+			[SPAN_ROLE_BODY("|______________________|")] \
+		")
+		to_chat_spaced(new_human, html = entrydisplay)
 
 /datum/job/civilian/working_joe/daniel
 	title = JOB_DANIEL
@@ -153,3 +177,30 @@
 	scaled = FALSE
 	supervisors = "ARES and ARTEMIS"
 	gear_preset = /datum/equipment_preset/synth/working_joe/daniel
+
+/datum/job/civilian/working_joe/daniel/generate_entry_message(mob/living/carbon/human/new_human)
+	. = {"You are a <a>Daniel Synthetic.</a> You are held to a higher standard and are required to obey not only the Server Rules but Roleplay Expectations and Synthetic Rules. Your primary task is to maintain the colony, patrol and other tasks given to you by colony administration. Alternatively, your primary task may be to assist with manual labor in limited capacity, or clerical duties. Your capacities are limited, but you have all the equipment you need, and the central AI has a plan! Stay in character at all times.!"}
+
+/datum/job/civilian/working_joe/daniel/generate_entry_conditions(mob/living/joe, whitelist_status)
+	. = ..()
+
+	if(SSticker.mode)
+		SSticker.mode.initialize_colony_joe(joe)
+
+/datum/job/civilian/working_joe/daniel/announce_entry_message(mob/living/carbon/human/new_human, datum/money_account/money, whitelist_status)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(ares_artemis_talk), "[new_human.real_name] has been activated."), 1.5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(send_entry_message), new_human, money, whitelist_status), 1.4 SECONDS)
+	return
+
+/datum/job/civilian/working_joe/daniel/proc/send_entry_message(mob/living/carbon/human/new_human, datum/money_account/money, whitelist_status)
+	if(new_human && new_human.loc && new_human.client)
+		var/title_given
+		title_given = lowertext(disp_title)
+
+		var/entrydisplay = boxed_message("\
+			[SPAN_ROLE_BODY("|______________________|")] \n\
+			[SPAN_ROLE_HEADER("You are \a [title_given]")] \n\
+			[SPAN_ROLE_BODY("[generate_entry_message(new_human)]<br>[money ? "Your account number is: <b>[money.account_number]</b>. Your account pin is: <b>[money.remote_access_pin]</b>." : "You do not have a bank account."]")] \n\
+			[SPAN_ROLE_BODY("|______________________|")] \
+		")
+		to_chat_spaced(new_human, html = entrydisplay)

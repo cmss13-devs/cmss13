@@ -109,6 +109,11 @@
 #define LIMB_PRINTING_TIME 550
 #define LIMB_METAL_AMOUNT 125
 
+// Holocard defines
+#define HOLOCARD_ACCURACY_HANDHELD 0
+#define HOLOCARD_ACCURACY_MANUAL 1
+#define HOLOCARD_ACCURACY_BODYSCANNER 2 //! Bodyscanners will always be able to set the correct holotag
+
 // ORDERS
 #define COMMAND_ORDER_RANGE 7
 #define COMMAND_ORDER_COOLDOWN 800 // 1 minute 20 seconds
@@ -223,3 +228,20 @@
 #define RELIGION_AGNOSTICISM "Agnostic"
 
 #define MAXIMUM_DROPPED_OBJECTS_REMEMBERED 5
+
+//--- body 'cosmetic' stuff ---//
+
+#define BODY_TYPE_NOMUSCLE "No Muscles"
+/// default body type
+#define BODY_TYPE_LEAN "Lean"
+#define BODY_TYPE_RIPPED "Ripped"
+
+#define BODY_SIZE_THIN "Thin"
+/// default body size
+#define BODY_SIZE_AVERAGE "Average"
+#define BODY_SIZE_LARGE "Large"
+
+/// default skin color
+#define SKIN_COLOR_PALE2 "Pale 2"
+
+//--- end ---//

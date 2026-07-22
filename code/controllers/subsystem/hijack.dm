@@ -128,6 +128,9 @@ SUBSYSTEM_DEF(hijack)
 	/// A list of all APCs on the main ship
 	var/list/obj/structure/machinery/power/apc/almayer/apcs = list()
 
+	/// A list of all powernets on the main ship
+	var/list/datum/powernet/powernets = list()
+
 /datum/controller/subsystem/hijack/Initialize(timeofday)
 	RegisterSignal(SSdcs, COMSIG_GLOB_GENERATOR_SET_OVERLOADING, PROC_REF(on_generator_overload))
 
@@ -192,6 +195,16 @@ SUBSYSTEM_DEF(hijack)
 
 			if((sd_time_remaining <= 0) && !sd_detonated)
 				detonate_sd()
+
+		// Handle power shortage by ship being cracked in half
+		if(crashed && hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)
+			for(var/obj/structure/machinery/power/apc/almayer/apc as anything in apcs)
+				if(prob(5))
+					apc.shorted = TRUE
+					playsound(apc.loc, 'sound/effects/sparks2.ogg', 25, 1)
+					var/datum/effect_system/spark_spread/spark = new /datum/effect_system/spark_spread
+					spark.set_up(2, 1, apc)
+					spark.start()
 		return
 
 	if(!SSticker.mode.count_marines(SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)))
@@ -723,7 +736,7 @@ SUBSYSTEM_DEF(hijack)
 	if(!ground_origin)
 		CRASH("Unable to determine origin location on groundmap for hijack ground crash! Origin can be manually specified with a /obj/effect/landmark/mainship_crashsite")
 
-	msg_admin_niche("Crashing mainship to[ADMIN_COORDJMP(ground_origin)]")
+	msg_admin_niche("Crashing mainship to [ADMIN_COORDJMP(ground_origin)]")
 
 	shakeship(
 		sstrength = 1,

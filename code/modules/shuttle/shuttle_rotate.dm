@@ -29,39 +29,38 @@ If ever any of these procs are useful for non-shuttles, rename it to proc/rotate
 	return
 
 /obj/effect/attach_point/fuel/adjust_rotatables()
-	var/obj/effect/attach_point/fuel/naked_slot = src
-	switch(naked_slot.dir)
-		if(1)
-			if(naked_slot.adjusted_pixel)
-				naked_slot.pixel_x = -32
+	switch(dir)
+		if(NORTH)
+			if(adjusted_pixel)
+				pixel_x = -32
 			else
-				naked_slot.pixel_x = 0
-			naked_slot.pixel_y = 0
-		if(2)
-			if(naked_slot.adjusted_pixel)
-				naked_slot.pixel_x = 0
+				pixel_x = 0
+			pixel_y = 0
+		if(SOUTH)
+			if(adjusted_pixel)
+				pixel_x = 0
 			else
-				naked_slot.pixel_x = -32
-			naked_slot.pixel_y = -8
-		if(4)
-			if(naked_slot.adjusted_pixel)
-				naked_slot.pixel_y = 8
+				pixel_x = -32
+			pixel_y = -8
+		if(EAST)
+			if(adjusted_pixel)
+				pixel_y = 8
 			else
-				naked_slot.pixel_y = -24
-			naked_slot.pixel_x = -6
-		if(8)
-			if(naked_slot.adjusted_pixel)
-				naked_slot.pixel_y = -24
+				pixel_y = -24
+			pixel_x = -6
+		if(WEST)
+			if(adjusted_pixel)
+				pixel_y = -24
 			else
-				naked_slot.pixel_y = 8
-			naked_slot.pixel_x = -26
-	if(naked_slot.installed_equipment)
-		naked_slot.installed_equipment.setDir(naked_slot)
-		naked_slot.installed_equipment.pixel_y = naked_slot.pixel_y
-		naked_slot.installed_equipment.pixel_x = naked_slot.pixel_x
+				pixel_y = 8
+			pixel_x = -26
+	if(installed_equipment)
+		installed_equipment.setDir(dir)
+		installed_equipment.pixel_y = pixel_y
+		installed_equipment.pixel_x = pixel_x
 
 /obj/structure/bed/chair/vehicle/adjust_rotatables()
-	if(dir == 4 || dir == 8) //8
+	if(dir == EAST || dir == WEST) //8
 		pixel_x = 0
 		pixel_y = init_pixel_x + 8
 		buckle_offset_y = pixel_y
@@ -85,7 +84,7 @@ If ever any of these procs are useful for non-shuttles, rename it to proc/rotate
 	var/list/old_locs = src.locs
 	switch(src.id)
 		if("aft_door")
-			if(src.dir == 4 || src.dir == 8)
+			if(src.dir == EAST || src.dir == WEST)
 				air = get_step(get_step(src.loc, WEST), WEST)
 				if(air && istype(air, /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down/airlock))
 					src.Move(air)
@@ -93,7 +92,7 @@ If ever any of these procs are useful for non-shuttles, rename it to proc/rotate
 					air = get_step(get_step(src.loc, EAST), EAST)
 					if(air && istype(air, /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down/airlock))
 						src.Move(air)
-			if(src.dir == 1 || src.dir == 2)
+			if(src.dir == NORTH || src.dir == SOUTH)
 				air = get_step(get_step(src.loc, SOUTH), SOUTH)
 				if(air && istype(air, /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down/airlock))
 					src.Move(air)
@@ -103,7 +102,7 @@ If ever any of these procs are useful for non-shuttles, rename it to proc/rotate
 						src.Move(air)
 
 		if("port_door")
-			if(src.dir == 1 || src.dir == 2)
+			if(src.dir == NORTH || src.dir == SOUTH)
 				air = get_step(src.loc, NORTH)
 				if(air && istype(air, /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down/airlock))
 					src.Move(air)
@@ -111,7 +110,7 @@ If ever any of these procs are useful for non-shuttles, rename it to proc/rotate
 					air = get_step(src.loc, SOUTH)
 					if(air && istype(air, /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down/airlock))
 						src.Move(air)
-			if(src.dir == 4 || src.dir == 8)
+			if(src.dir == EAST || src.dir == WEST)
 				air = get_step(src.loc, WEST)
 				if(air && istype(air, /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down/airlock))
 					src.Move(air)
@@ -121,7 +120,7 @@ If ever any of these procs are useful for non-shuttles, rename it to proc/rotate
 						src.Move(air)
 
 		if("starboard_door")
-			if(src.dir == 1 || src.dir == 2)
+			if(src.dir == NORTH || src.dir == SOUTH)
 				air = get_step(src.loc, NORTH)
 				if(air && istype(air, /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down/airlock))
 					src.Move(air)
@@ -129,7 +128,7 @@ If ever any of these procs are useful for non-shuttles, rename it to proc/rotate
 					air = get_step(src.loc, SOUTH)
 					if(air && istype(air, /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down/airlock))
 						src.Move(air)
-			if(src.dir == 4 || src.dir == 8)
+			if(src.dir == EAST || src.dir == WEST)
 				air = get_step(src.loc, WEST)
 				if(air && istype(air, /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down/airlock))
 					src.Move(air)
@@ -140,8 +139,7 @@ If ever any of these procs are useful for non-shuttles, rename it to proc/rotate
 
 	src.setDir(old_dir)
 	for(var/turf/closed/shuttle/tr_walls in old_locs)
-		update_icon()
-		tr_walls.set_opacity(TRUE)
+		tr_walls.set_opacity(1)
 	src.handle_multidoor()
 
 /* ***********************************Object rotate procs*********************************** */

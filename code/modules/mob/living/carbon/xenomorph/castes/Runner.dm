@@ -100,12 +100,6 @@
 		return FALSE
 	return TRUE
 
-/mob/living/carbon/xenomorph/runner/death()
-	if(HAS_TRAIT(src, TRAIT_ABILITY_POUNCE))
-		REMOVE_TRAIT(src, TRAIT_ABILITY_POUNCE, TRAIT_SOURCE_ABILITY("pounce"))
-
-	return ..()
-
 /datum/behavior_delegate/runner_base
 	name = "Base Runner Behavior Delegate"
 

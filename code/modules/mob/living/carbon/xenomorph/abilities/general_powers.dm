@@ -559,9 +559,6 @@
 	xeno.throw_atom(target_atom, distance, throw_speed, xeno, launch_type = LOW_LAUNCH, pass_flags = pounce_pass_flags, collision_callbacks = pounce_callbacks, tracking=TRUE)
 	xeno.update_icons()
 
-	if(xeno.stat == DEAD)
-		return
-
 	additional_effects_always()
 	..()
 

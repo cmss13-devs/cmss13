@@ -287,7 +287,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 					freq_listening |= UPP_FREQS
 				if(FACTION_WY,FACTION_PMC)
 					freq_listening |= PMC_FREQS
-				if(FACTION_TWE)
+				if(FACTION_TWE, FACTION_IASF)
 					freq_listening |= RMC_FREQ
 				if(FACTION_MARSHAL)
 					freq_listening |= CMB_FREQ

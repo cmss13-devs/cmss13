@@ -1022,7 +1022,7 @@
 
 /obj/item/storage/pouch/medkit/full/fill_preset_inventory()
 	new /obj/item/device/healthanalyzer(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricordrazine(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricord(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tramadol(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/standard/inaprovaline(src)
 	new /obj/item/stack/medical/bruise_pack(src)

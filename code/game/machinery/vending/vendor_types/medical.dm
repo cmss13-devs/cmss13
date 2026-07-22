@@ -744,7 +744,7 @@
 /obj/structure/machinery/cm_vending/sorted/medical/marinemed/populate_product_list(scale)
 	listed_products = list(
 		list("AUTOINJECTORS", -1, null, null),
-		list("First-Aid Autoinjector", floor(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricordrazine, VENDOR_ITEM_REGULAR),
+		list("First-Aid Autoinjector", floor(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricord, VENDOR_ITEM_REGULAR),
 		list("Pain-Stop Autoinjector", floor(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tramadol, VENDOR_ITEM_REGULAR),
 
 		list("DEVICES", -1, null, null),
@@ -827,7 +827,7 @@
 
 	listed_products = list(
 		list("AUTOINJECTORS", -1, null, null),
-		list("First-Aid Autoinjector", 2, /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricordrazine, VENDOR_ITEM_REGULAR),
+		list("First-Aid Autoinjector", 2, /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricord, VENDOR_ITEM_REGULAR),
 		list("Pain-Stop Autoinjector", 2, /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tramadol, VENDOR_ITEM_REGULAR),
 
 		list("DEVICES", -1, null, null),
@@ -866,7 +866,7 @@
 
 	listed_products = list(
 		list("AUTOINJECTORS", -1, null, null),
-		list("First-Aid Autoinjector", 8, /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricordrazine, VENDOR_ITEM_REGULAR),
+		list("First-Aid Autoinjector", 8, /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricord, VENDOR_ITEM_REGULAR),
 		list("Pain-Stop Autoinjector", 8, /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tramadol, VENDOR_ITEM_REGULAR),
 
 		list("DEVICES", -1, null, null),
@@ -894,7 +894,7 @@
 
 	listed_products = list(
 		list("AUTOINJECTORS", -1, null, null),
-		list("First-Aid Autoinjector", 2, /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricordrazine, VENDOR_ITEM_REGULAR),
+		list("First-Aid Autoinjector", 2, /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricord, VENDOR_ITEM_REGULAR),
 		list("Pain-Stop Autoinjector", 2, /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tramadol, VENDOR_ITEM_REGULAR),
 
 		list("DEVICES", -1, null, null),

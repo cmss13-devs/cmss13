@@ -14,7 +14,7 @@
 	hackable = FALSE
 
 	chem_refill = list(
-		/obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricordrazine, //pain-stop and first-aid
+		/obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricord, //pain-stop and first-aid
 	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/vehicle/wy
@@ -50,7 +50,7 @@
 		/obj/item/reagent_container/hypospray/autoinjector/standard/tricord,
 
 		/obj/item/reagent_container/hypospray/autoinjector/ez, //all ez autoinjectors
-		/obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricordrazine, //pain-stop and first-aid
+		/obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricord, //pain-stop and first-aid
 		)
 
 /obj/structure/machinery/cm_vending/sorted/medical/vehicle/populate_product_list(scale)

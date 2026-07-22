@@ -78,7 +78,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_leader, list(
 		list("Autoinjector (Oxycodone)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone, null, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Peridaxon)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/peridaxon, null, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Tramadol)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tramadol, null, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Tricordrazine)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tricord, null, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Tricordrazine)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine, null, VENDOR_ITEM_REGULAR),
 
 		list("Health Analyzer", 4, /obj/item/device/healthanalyzer, null, VENDOR_ITEM_REGULAR),
 		list("Roller Bed", 2, /obj/item/roller, null, VENDOR_ITEM_REGULAR),

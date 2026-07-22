@@ -1856,7 +1856,7 @@
 		if (2)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid(new_human), WEAR_L_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/stack/medical/splint/random_amount(new_human), WEAR_IN_L_STORE)
-			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/standard/tricord/random_amount(new_human), WEAR_IN_L_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine/random_amount(new_human), WEAR_IN_L_STORE)
 		if (3)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid(new_human), WEAR_L_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/standard/bicaridine/random_amount(new_human), WEAR_IN_L_STORE)

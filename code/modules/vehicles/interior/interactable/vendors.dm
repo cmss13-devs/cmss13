@@ -14,7 +14,7 @@
 	hackable = FALSE
 
 	chem_refill = list(
-		/obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricord, //pain-stop and first-aid
+		/obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricordrazine, //pain-stop and first-aid
 	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/vehicle/wy
@@ -47,10 +47,10 @@
 		/obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone,
 		/obj/item/reagent_container/hypospray/autoinjector/standard/peridaxon,
 		/obj/item/reagent_container/hypospray/autoinjector/standard/tramadol,
-		/obj/item/reagent_container/hypospray/autoinjector/standard/tricord,
+		/obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine,
 
 		/obj/item/reagent_container/hypospray/autoinjector/ez, //all ez autoinjectors
-		/obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricord, //pain-stop and first-aid
+		/obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricordrazine, //pain-stop and first-aid
 		)
 
 /obj/structure/machinery/cm_vending/sorted/medical/vehicle/populate_product_list(scale)
@@ -72,7 +72,7 @@
 		list("Autoinjector (Oxycodone)", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Peridaxon)", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/standard/peridaxon, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Tramadol)", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/standard/tramadol, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Tricordrazine)", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/standard/tricord, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Tricordrazine)", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine, VENDOR_ITEM_REGULAR),
 
 		list("MEDICAL UTILITIES", -1, null, null),
 		list("Surgical Line", floor(scale * 2), /obj/item/tool/surgery/surgical_line, VENDOR_ITEM_REGULAR),

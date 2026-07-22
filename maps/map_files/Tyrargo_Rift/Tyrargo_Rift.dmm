@@ -48448,7 +48448,7 @@
 	},
 /obj/structure/barricade/deployable,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/reagent_container/hypospray/autoinjector/standard/tricord/random_amount,
+/obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine/random_amount,
 /turf/open/asphalt/cement/cement1,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "ckl" = (
@@ -66402,7 +66402,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
 "dkR" = (
-/obj/item/reagent_container/hypospray/autoinjector/standard/tricord/random_amount,
+/obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine/random_amount,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
 "dkS" = (
@@ -113074,7 +113074,7 @@
 	name = "Medical Cabinet";
 	pixel_y = -32
 	},
-/obj/item/reagent_container/hypospray/autoinjector/standard/tricord/random_amount,
+/obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine/random_amount,
 /turf/open/floor/almayer/black2/west,
 /area/tyrargo/indoors/bunker/central)
 "wic" = (

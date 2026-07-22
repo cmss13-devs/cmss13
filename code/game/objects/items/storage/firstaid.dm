@@ -46,7 +46,7 @@
 	var/possible_icons_full
 	/// List of types and their corresponding overlay icon state for appearing inside the item.
 	var/list/types_and_overlays = list(
-		/obj/item/reagent_container/hypospray/autoinjector/standard/tricord = "tricord_injector_overlay",
+		/obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine = "tricord_injector_overlay",
 		/obj/item/stack/medical/advanced/bruise_pack = "brute_kit_overlay",
 		/obj/item/stack/medical/advanced/ointment = "burn_kit_overlay",
 		/obj/item/stack/medical/splint = "splints_overlay",
@@ -120,7 +120,7 @@
 
 /obj/item/storage/firstaid/regular/fill_preset_inventory()
 	new /obj/item/device/healthanalyzer(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricord(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricordrazine(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tramadol(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/standard/inaprovaline(src)
 	new /obj/item/stack/medical/bruise_pack(src)
@@ -193,7 +193,7 @@
 	item_state = "firstaid-advanced"
 
 /obj/item/storage/firstaid/adv/fill_preset_inventory()
-	new /obj/item/reagent_container/hypospray/autoinjector/standard/tricord(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine(src)
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
 	new /obj/item/stack/medical/advanced/bruise_pack(src)

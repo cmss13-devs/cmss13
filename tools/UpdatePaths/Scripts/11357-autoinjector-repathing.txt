@@ -1,4 +1,4 @@
-/obj/item/reagent_container/hypospray/autoinjector/tricord/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/standard/tricord/@SUBTYPES{@OLD}
+/obj/item/reagent_container/hypospray/autoinjector/tricord/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine/@SUBTYPES{@OLD}
 /obj/item/reagent_container/hypospray/autoinjector/adrenaline/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/standard/adrenaline/@SUBTYPES{@OLD}
 /obj/item/reagent_container/hypospray/autoinjector/dexalinp/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/standard/dexalinp/@SUBTYPES{@OLD}
 /obj/item/reagent_container/hypospray/autoinjector/tramadol/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/standard/tramadol/@SUBTYPES{@OLD}
@@ -9,5 +9,5 @@
 /obj/item/reagent_container/hypospray/autoinjector/meralyne/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/standard/meralyne/@SUBTYPES{@OLD}
 /obj/item/reagent_container/hypospray/autoinjector/dermaline/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/standard/dermaline/@SUBTYPES{@OLD}
 /obj/item/reagent_container/hypospray/autoinjector/inaprovaline/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/standard/inaprovaline/@SUBTYPES{@OLD}
-/obj/item/reagent_container/hypospray/autoinjector/skillless/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricord/@SUBTYPES{@OLD}
+/obj/item/reagent_container/hypospray/autoinjector/skillless/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricordrazine/@SUBTYPES{@OLD}
 

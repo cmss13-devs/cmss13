@@ -57,9 +57,9 @@
 /area/lv624/lazarus/armory)
 "l" = (
 /obj/effect/decal/cleanable/cobweb2,
-/obj/item/reagent_container/hypospray/autoinjector/standard/tricord,
+/obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine,
 /obj/structure/surface/rack,
-/obj/item/reagent_container/hypospray/autoinjector/standard/tricord,
+/obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine,
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/crap_item,
 /turf/open/floor/cult,

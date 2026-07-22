@@ -86,7 +86,7 @@
 
 
 //REGULAR AUTOINJECTORS
-/obj/item/reagent_container/hypospray/autoinjector/standard/tricord
+/obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine
 	name = "tricordrazine autoinjector"
 	chemname = "tricordrazine"
 	desc = "An autoinjector loaded with three 15u doses of Tricordrazine, a general-use medicine for slowly treating the four types of damage. Only those trained in medicine can use it. You can refill it at Wey-Med vending machines or with a smart tank."
@@ -95,9 +95,9 @@
 	display_maptext = TRUE
 	maptext_label = "Tc"
 
-/obj/item/reagent_container/hypospray/autoinjector/standard/tricord/random_amount
+/obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine/random_amount
 
-/obj/item/reagent_container/hypospray/autoinjector/standard/tricord/random_amount/Initialize()
+/obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine/random_amount/Initialize()
 	. = ..()
 	var/amount = rand(1, 6)
 	switch(amount)
@@ -296,7 +296,7 @@
 	skilllock = SKILL_MEDICAL_DEFAULT
 	maptext_label = "EzIn"
 
-/obj/item/reagent_container/hypospray/autoinjector/ez/tricord
+/obj/item/reagent_container/hypospray/autoinjector/ez/tricordrazine
 	name = "tricordrazine EZ autoinjector"
 	chemname = "tricordrazine"
 	desc = "An EZ autoinjector loaded with three 15u doses of Tricordrazine, a common-spectrum damage healer. You can refill it at Wey-Med vending machines or with a smart tank and it does not require any training to use."
@@ -341,7 +341,7 @@
 	uses_left = 1
 	display_maptext = TRUE
 
-/obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricord
+/obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricordrazine
 	name = "first-aid EZ autoinjector"
 	chemname = "tricordrazine"
 	desc = "An autoinjector loaded with a single 15u dose of Tricordrazine to self-administer for basic wound care. You can refill it at Wey-Med vending machines, at wall-meds, or with a smart tank. Thankfully, there's no lock on it, so anyone can use it!"

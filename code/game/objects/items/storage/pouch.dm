@@ -265,7 +265,7 @@
 	icon_state = "wy_firstaid"
 
 /obj/item/storage/pouch/firstaid/full/alternate/fill_preset_inventory()
-	new /obj/item/reagent_container/hypospray/autoinjector/standard/tricord(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine(src)
 	new /obj/item/stack/medical/splint(src)
 	new /obj/item/stack/medical/ointment(src)
 	new /obj/item/stack/medical/bruise_pack(src)
@@ -826,7 +826,7 @@
 	new /obj/item/reagent_container/hypospray/autoinjector/standard/kelotane(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/standard/dermaline(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/standard/tricord(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/standard/dexalinp(src)
 
 /obj/item/storage/pouch/medical/socmed/commando/deathsquad/fill_preset_inventory()
@@ -839,7 +839,7 @@
 	new /obj/item/reagent_container/hypospray/autoinjector/standard/meralyne(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/standard/dermaline(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/standard/tricord(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/stimulant/speed_stimulant(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/stimulant/brain_stimulant(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/stimulant/redemption_stimulant(src)
@@ -1022,7 +1022,7 @@
 
 /obj/item/storage/pouch/medkit/full/fill_preset_inventory()
 	new /obj/item/device/healthanalyzer(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricord(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricordrazine(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tramadol(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/standard/inaprovaline(src)
 	new /obj/item/stack/medical/bruise_pack(src)
@@ -1030,7 +1030,7 @@
 	new /obj/item/stack/medical/splint(src)
 
 /obj/item/storage/pouch/medkit/full_advanced/fill_preset_inventory()
-	new /obj/item/reagent_container/hypospray/autoinjector/standard/tricord(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine(src)
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
@@ -1089,7 +1089,7 @@
 	icon_state = "wy_medkit"
 
 /obj/item/storage/pouch/medkit/wy/full_advanced/fill_preset_inventory()
-	new /obj/item/reagent_container/hypospray/autoinjector/standard/tricord(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine(src)
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
 	new /obj/item/stack/medical/advanced/bruise_pack(src)

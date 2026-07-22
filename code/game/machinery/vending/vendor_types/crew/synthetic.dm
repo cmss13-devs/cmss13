@@ -59,7 +59,7 @@
 		list("Autoinjector (Oxycodone)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone, null, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Peridaxon)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/peridaxon, null, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Tramadol)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tramadol, null, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Tricordrazine)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tricord, null, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Tricordrazine)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine, null, VENDOR_ITEM_REGULAR),
 
 		list("15u Custom Autoinjector (EMPTY)", 1, /obj/item/reagent_container/hypospray/autoinjector/empty/small, null, VENDOR_ITEM_REGULAR),
 		list("30u Custom Autoinjector (EMPTY)", 2, /obj/item/reagent_container/hypospray/autoinjector/empty/medium, null, VENDOR_ITEM_REGULAR),

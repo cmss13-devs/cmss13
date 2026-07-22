@@ -38,7 +38,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_medic, list(
 		list("Autoinjector (Oxycodone)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone, null, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Peridaxon)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/peridaxon, null, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Tramadol)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tramadol, null, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Tricordrazine)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tricord, null, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Tricordrazine)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine, null, VENDOR_ITEM_REGULAR),
 
 		list("MEDICAL UTILITIES", 0, null, null, null),
 		list("MS-11 Smart Refill Tank", 6, /obj/item/reagent_container/glass/minitank, null, VENDOR_ITEM_REGULAR),

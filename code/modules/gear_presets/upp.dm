@@ -485,7 +485,7 @@
 		list("Autoinjector (Oxycodone)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone, null, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Peridaxon)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/peridaxon, null, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Tramadol)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tramadol, null, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Tricordrazine)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tricord, null, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Tricordrazine)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine, null, VENDOR_ITEM_REGULAR),
 
 		list("PILL BOTTLES", 0, null, null, null),
 		list("Pill Bottle (Bicaridine)", 5, /obj/item/storage/pill_bottle/bicaridine, null, VENDOR_ITEM_RECOMMENDED),
@@ -1161,7 +1161,7 @@
 		list("Autoinjector (Oxycodone)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone, null, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Peridaxon)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/peridaxon, null, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Tramadol)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tramadol, null, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Tricordrazine)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tricord, null, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Tricordrazine)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine, null, VENDOR_ITEM_REGULAR),
 
 		list("Health Analyzer", 4, /obj/item/device/healthanalyzer, null, VENDOR_ITEM_REGULAR),
 		list("Roller Bed", 2, /obj/item/roller, null, VENDOR_ITEM_REGULAR),
@@ -1345,7 +1345,7 @@
 		list("Autoinjector (Oxycodone)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone, null, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Peridaxon)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/peridaxon, null, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Tramadol)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tramadol, null, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Tricordrazine)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tricord, null, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Tricordrazine)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine, null, VENDOR_ITEM_REGULAR),
 
 		list("Health Analyzer", 4, /obj/item/device/healthanalyzer, null, VENDOR_ITEM_REGULAR),
 		list("Medical HUD Glasses", 4, /obj/item/clothing/glasses/hud/health, null, VENDOR_ITEM_MANDATORY),
@@ -1530,7 +1530,7 @@
 		list("Autoinjector (Oxycodone)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone, null, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Peridaxon)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/peridaxon, null, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Tramadol)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tramadol, null, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Tricordrazine)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tricord, null, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Tricordrazine)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine, null, VENDOR_ITEM_REGULAR),
 
 		list("PILL BOTTLES", 0, null, null, null),
 		list("Pill Bottle (Bicaridine)", 5, /obj/item/storage/pill_bottle/bicaridine, null, VENDOR_ITEM_RECOMMENDED),
@@ -1838,7 +1838,7 @@
 		list("Autoinjector (Oxycodone)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone, null, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Peridaxon)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/peridaxon, null, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Tramadol)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tramadol, null, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Tricordrazine)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tricord, null, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Tricordrazine)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine, null, VENDOR_ITEM_REGULAR),
 
 		list("Health Analyzer", 4, /obj/item/device/healthanalyzer, null, VENDOR_ITEM_REGULAR),
 		list("Medical HUD Glasses", 4, /obj/item/clothing/glasses/hud/health, null, VENDOR_ITEM_MANDATORY),
@@ -2020,7 +2020,7 @@
 		list("Autoinjector (Oxycodone)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone, null, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Peridaxon)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/peridaxon, null, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Tramadol)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tramadol, null, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Tricordrazine)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tricord, null, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Tricordrazine)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine, null, VENDOR_ITEM_REGULAR),
 
 		list("Health Analyzer", 4, /obj/item/device/healthanalyzer, null, VENDOR_ITEM_REGULAR),
 		list("Medical HUD Glasses", 4, /obj/item/clothing/glasses/hud/health, null, VENDOR_ITEM_MANDATORY),
@@ -2187,7 +2187,7 @@
 		list("Autoinjector (Oxycodone)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone, null, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Peridaxon)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/peridaxon, null, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Tramadol)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tramadol, null, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Tricordrazine)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tricord, null, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Tricordrazine)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine, null, VENDOR_ITEM_REGULAR),
 
 		list("Health Analyzer", 4, /obj/item/device/healthanalyzer, null, VENDOR_ITEM_REGULAR),
 		list("Medical HUD Glasses", 4, /obj/item/clothing/glasses/hud/health, null, VENDOR_ITEM_MANDATORY),
@@ -2386,7 +2386,7 @@
 		list("Autoinjector (Oxycodone)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone, null, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Peridaxon)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/peridaxon, null, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Tramadol)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tramadol, null, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Tricordrazine)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tricord, null, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Tricordrazine)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine, null, VENDOR_ITEM_REGULAR),
 
 		list("Health Analyzer", 4, /obj/item/device/healthanalyzer, null, VENDOR_ITEM_REGULAR),
 		list("Medical HUD Glasses", 4, /obj/item/clothing/glasses/hud/health, null, VENDOR_ITEM_MANDATORY),
@@ -2583,7 +2583,7 @@
 		list("Autoinjector (Oxycodone)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone, null, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Peridaxon)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/peridaxon, null, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Tramadol)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tramadol, null, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Tricordrazine)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tricord, null, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Tricordrazine)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine, null, VENDOR_ITEM_REGULAR),
 
 		list("Health Analyzer", 4, /obj/item/device/healthanalyzer, null, VENDOR_ITEM_REGULAR),
 		list("Medical HUD Glasses", 4, /obj/item/clothing/glasses/hud/health, null, VENDOR_ITEM_MANDATORY),
@@ -2999,7 +2999,7 @@
 		list("Autoinjector (Oxycodone)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone, null, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Peridaxon)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/peridaxon, null, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Tramadol)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tramadol, null, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Tricordrazine)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tricord, null, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Tricordrazine)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine, null, VENDOR_ITEM_REGULAR),
 
 		list("Emergency Defibrillator", 4, /obj/item/device/defibrillator, null, VENDOR_ITEM_MANDATORY),
 		list("Health Analyzer", 4, /obj/item/device/healthanalyzer, null, VENDOR_ITEM_REGULAR),
@@ -3343,7 +3343,7 @@
 		list("Autoinjector (Oxycodone)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone, null, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Peridaxon)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/peridaxon, null, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Tramadol)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tramadol, null, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Tricordrazine)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tricord, null, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Tricordrazine)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine, null, VENDOR_ITEM_REGULAR),
 
 		list("PILL BOTTLES", 0, null, null, null),
 		list("Pill Bottle (Bicaridine)", 5, /obj/item/storage/pill_bottle/bicaridine, null, VENDOR_ITEM_RECOMMENDED),
@@ -3514,7 +3514,7 @@
 		list("Autoinjector (Oxycodone)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone, null, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Peridaxon)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/peridaxon, null, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Tramadol)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tramadol, null, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Tricordrazine)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tricord, null, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Tricordrazine)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine, null, VENDOR_ITEM_REGULAR),
 
 		list("Health Analyzer", 4, /obj/item/device/healthanalyzer, null, VENDOR_ITEM_REGULAR),
 		list("Medical HUD Glasses", 4, /obj/item/clothing/glasses/hud/health, null, VENDOR_ITEM_MANDATORY),
@@ -3965,7 +3965,7 @@
 		list("Autoinjector (Oxycodone)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone, null, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Peridaxon)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/peridaxon, null, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Tramadol)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tramadol, null, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Tricordrazine)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tricord, null, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Tricordrazine)", 1, /obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine, null, VENDOR_ITEM_REGULAR),
 
 		list("Health Analyzer", 4, /obj/item/device/healthanalyzer, null, VENDOR_ITEM_REGULAR),
 		list("Medical HUD Glasses", 4, /obj/item/clothing/glasses/hud/health, null, VENDOR_ITEM_MANDATORY),

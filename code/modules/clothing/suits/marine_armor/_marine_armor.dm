@@ -650,15 +650,13 @@
 // M3-EOD pattern heavy armor
 /obj/item/clothing/suit/storage/marine/heavy
 	name = "\improper M3-EOD pattern heavy armor"
-	desc = "A heavier version of the standard M3 pattern armor, the armor is primarily designed to withstand ballistic, explosive, and internal damage and proper coverage for hands and feet compared to earlier M3 iterations. This, however, came with the drawback of increased bulk, reduced movement speed, alongside little additional protection from standard blunt force impacts and biological threats."
+	desc = "A heavier version of the standard M3 pattern armor, the armor is primarily designed to withstand ballistic, explosive, and internal damage, alongside coverage for hands and feet compared to earlier M3 iterations. This, however, came with the drawback of increased bulk, reduced movement speed, alongside little additional protection from standard blunt force impacts and biological threats."
 	desc_lore = "This configuration of the iconic armor was developed during the Canton War in 2160 between the UPP and USCM - Designed in response to a need for higher protection for ComTechs assigned as EODs during the conflict, this is the pinnacle of protection for your average marine. The shoulders and kneepads have both been expanded upon heavily, covering up the arteries on each limb. A special spall liner was developed for this suit, with the same technology being used in the M70 Flak Jacket being developed at the same time."
 	specialty = "\improper M3-EOD pattern"
 	icon_state = "H1"
 	armor_variation = 6
-	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_LEGS
 	flags_armor_protection = BODY_FLAG_ALL_BUT_HEAD
-	flags_cold_protection = BODY_FLAG_ALL_BUT_HEAD
-	flags_heat_protection = BODY_FLAG_ALL_BUT_HEAD
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_LEGS
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
 	armor_bomb = CLOTHING_ARMOR_HIGHPLUS
@@ -671,6 +669,18 @@
 	movement_compensation = SLOWDOWN_ARMOR_MEDIUM
 	light_power = 4
 	light_range = 5
+
+/obj/item/clothing/suit/storage/marine/heavy/equipped(mob/living/carbon/human/user, slot)
+	if(slot == WEAR_JACKET)
+		user.adjustarmor_organ(BODY_FLAG_HAND_LEFT, /obj/item/clothing/suit/storage/marine/heavy, armor_melee, -CLOTHING_ARMOR_LOW)
+		user.adjustarmor_organ(BODY_FLAG_HAND_RIGHT, /obj/item/clothing/suit/storage/marine/heavy, armor_melee, -CLOTHING_ARMOR_LOW)
+		user.adjustarmor_organ(BODY_FLAG_FOOT_LEFT, /obj/item/clothing/suit/storage/marine/heavy, armor_melee, -CLOTHING_ARMOR_LOW)
+		user.adjustarmor_organ(BODY_FLAG_FOOT_RIGHT, /obj/item/clothing/suit/storage/marine/heavy, armor_melee, -CLOTHING_ARMOR_LOW)
+	..()
+
+/obj/item/clothing/storage/marine/heavyunequipped(mob/living/carbon/human/user, slot)
+
+	..()
 
 /obj/item/clothing/suit/storage/marine/heavy/padded
 	icon_state = "H1"

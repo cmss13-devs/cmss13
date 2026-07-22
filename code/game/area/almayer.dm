@@ -567,6 +567,9 @@
 	icon_state = "briefing"
 	fake_zlevel = 2 // lowerdeck
 
+/area/almayer/living/briefing/support
+	name = "\improper Support Squad Briefing Area"
+
 /area/almayer/living/port_emb
 	name = "\improper Lower Deck Port Extended Mission Bunks"
 	icon_state = "portemb"

@@ -69,7 +69,10 @@ If ever any of these procs are useful for non-shuttles, rename it to proc/rotate
 			higher_layer = TRUE
 	else
 		pixel_y = 0
-		pixel_x = init_pixel_x
+		if(dir == NORTH)
+			pixel_x = init_pixel_x
+		else
+			pixel_x = init_pixel_x * -1
 		buckle_offset_x = pixel_x
 		buckle_offset_y = pixel_y
 		higher_layer = FALSE
@@ -148,6 +151,9 @@ If ever any of these procs are useful for non-shuttles, rename it to proc/rotate
 	params &= ~ROTATE_OFFSET
 	return ..()
 
+/obj/vehicle/powerloader/shuttleRotate(rotation, params=ROTATE_DIR|ROTATE_SMOOTH|ROTATE_OFFSET)
+	setDir(angle2dir(rotation+dir2angle(dir)))
+	return
 
 /* ***********************************Turf rotate procs*********************************** */
 

@@ -336,7 +336,6 @@
 		/mob/living/carbon/xenomorph/proc/destruction_toggle,
 		/mob/living/carbon/xenomorph/proc/unnesting_toggle,
 		/mob/living/carbon/xenomorph/proc/set_orders,
-		/mob/living/carbon/xenomorph/proc/hive_message,
 		/mob/living/carbon/xenomorph/proc/rename_tunnel,
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
 	)

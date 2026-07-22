@@ -33595,7 +33595,7 @@
 	pixel_x = -3;
 	pixel_y = 9
 	},
-/obj/item/reagent_container/hypospray/autoinjector/kelotane{
+/obj/item/reagent_container/hypospray/autoinjector/standard/kelotane{
 	pixel_y = -3
 	},
 /obj/effect/landmark/objective_landmark/close,

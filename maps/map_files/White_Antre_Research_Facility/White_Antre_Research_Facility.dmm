@@ -3791,7 +3791,7 @@
 /obj/item/stack/medical/bruise_pack,
 /obj/item/stack/medical/ointment,
 /obj/item/stack/medical/splint,
-/obj/item/reagent_container/hypospray/autoinjector/tricord,
+/obj/item/reagent_container/hypospray/autoinjector/standard/tricord,
 /obj/structure/machinery/light/double{
 	dir = 8;
 	pixel_y = -5
@@ -8006,7 +8006,7 @@
 /obj/item/stack/medical/bruise_pack,
 /obj/item/stack/medical/ointment,
 /obj/item/stack/medical/splint,
-/obj/item/reagent_container/hypospray/autoinjector/tricord,
+/obj/item/reagent_container/hypospray/autoinjector/standard/tricord,
 /obj/effect/antre/border{
 	dir = 8
 	},
@@ -14347,7 +14347,7 @@
 /obj/item/stack/medical/bruise_pack,
 /obj/item/stack/medical/ointment,
 /obj/item/stack/medical/splint,
-/obj/item/reagent_container/hypospray/autoinjector/tricord,
+/obj/item/reagent_container/hypospray/autoinjector/standard/tricord,
 /obj/effect/antre/border{
 	dir = 8
 	},
@@ -14864,7 +14864,7 @@
 /obj/item/stack/medical/bruise_pack,
 /obj/item/stack/medical/ointment,
 /obj/item/stack/medical/splint,
-/obj/item/reagent_container/hypospray/autoinjector/tricord,
+/obj/item/reagent_container/hypospray/autoinjector/standard/tricord,
 /obj/effect/antre/border{
 	dir = 8
 	},
@@ -29170,7 +29170,7 @@
 /obj/item/stack/medical/bruise_pack,
 /obj/item/stack/medical/ointment,
 /obj/item/stack/medical/splint,
-/obj/item/reagent_container/hypospray/autoinjector/tricord,
+/obj/item/reagent_container/hypospray/autoinjector/standard/tricord,
 /obj/effect/antre/border{
 	dir = 8
 	},
@@ -48309,12 +48309,12 @@
 /obj/item/stack/medical/bruise_pack,
 /obj/item/stack/medical/ointment,
 /obj/item/stack/medical/splint,
-/obj/item/reagent_container/hypospray/autoinjector/tricord,
+/obj/item/reagent_container/hypospray/autoinjector/standard/tricord,
 /obj/item/storage/pouch/survival/full/black,
 /turf/open/floor/prison/green/north,
 /area/white_antre/indoors/upper_level/east_corridor)
 "cod" = (
-/obj/item/reagent_container/hypospray/autoinjector/tricord,
+/obj/item/reagent_container/hypospray/autoinjector/standard/tricord,
 /turf/open_space,
 /area/white_antre/indoors/upper_level/central_corridor)
 "coe" = (
@@ -48889,7 +48889,7 @@
 /obj/item/stack/medical/bruise_pack,
 /obj/item/stack/medical/ointment,
 /obj/item/stack/medical/splint,
-/obj/item/reagent_container/hypospray/autoinjector/tricord,
+/obj/item/reagent_container/hypospray/autoinjector/standard/tricord,
 /obj/effect/antre/border{
 	dir = 8
 	},

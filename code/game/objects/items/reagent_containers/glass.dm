@@ -340,20 +340,8 @@
 	)
 	/// A list of item types that allow reagent refilling.
 	var/list/chem_refill = list(
-		/obj/item/reagent_container/hypospray/autoinjector/bicaridine,
-		/obj/item/reagent_container/hypospray/autoinjector/dexalinp,
-		/obj/item/reagent_container/hypospray/autoinjector/antitoxin,
-		/obj/item/reagent_container/hypospray/autoinjector/adrenaline,
-		/obj/item/reagent_container/hypospray/autoinjector/inaprovaline,
-		/obj/item/reagent_container/hypospray/autoinjector/kelotane,
-		/obj/item/reagent_container/hypospray/autoinjector/oxycodone,
-		/obj/item/reagent_container/hypospray/autoinjector/peridaxon,
-		/obj/item/reagent_container/hypospray/autoinjector/tramadol,
-		/obj/item/reagent_container/hypospray/autoinjector/tricord,
-		/obj/item/reagent_container/hypospray/autoinjector/meralyne,
-		/obj/item/reagent_container/hypospray/autoinjector/dermaline,
-		/obj/item/reagent_container/hypospray/autoinjector/ez, //remember, all ez autoinjectors are skillless
-		/obj/item/reagent_container/hypospray/autoinjector/skillless,
+		/obj/item/reagent_container/hypospray/autoinjector/standard,
+		/obj/item/reagent_container/hypospray/autoinjector/ez,
 		/obj/item/reagent_container/hypospray/autoinjector/tutorial,
 	)
 /obj/item/reagent_container/glass/minitank/on_reagent_change()
@@ -386,7 +374,7 @@
 
 		else if(reagents.has_reagent(autoinjector.chemname, amount)) ////The good stuff. Actually handles the filling of chemicals.
 			reagents.trans_id_to(autoinjector, autoinjector.chemname, amount) //fill this bih
-			if(istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/ez) || istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/skillless)) //Added for differentiation between autoinjectors that have 1 vs 3 uses since it did not have this function before.
+			if(istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/ez/one_use) || istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/tutorial)) //Added for differentiation between autoinjectors that have 1 vs 3 uses since it did not have this function before.
 				autoinjector.uses_left = 1 //one_use and marine are EZs.
 			else
 				autoinjector.uses_left = 3 //other autoinjectors.

@@ -46,7 +46,7 @@
 	var/possible_icons_full
 	/// List of types and their corresponding overlay icon state for appearing inside the item.
 	var/list/types_and_overlays = list(
-		/obj/item/reagent_container/hypospray/autoinjector/tricord = "tricord_injector_overlay",
+		/obj/item/reagent_container/hypospray/autoinjector/standard/tricord = "tricord_injector_overlay",
 		/obj/item/stack/medical/advanced/bruise_pack = "brute_kit_overlay",
 		/obj/item/stack/medical/advanced/ointment = "burn_kit_overlay",
 		/obj/item/stack/medical/splint = "splints_overlay",
@@ -105,10 +105,10 @@
 	new /obj/item/device/healthanalyzer(src)
 	new /obj/item/stack/medical/ointment(src)
 	new /obj/item/stack/medical/ointment(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/kelotane(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/kelotane(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/kelotane(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/kelotane(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/kelotane(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/kelotane(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tramadol(src)
 
 /obj/item/storage/firstaid/fire/empty/fill_preset_inventory()
 	return
@@ -120,9 +120,9 @@
 
 /obj/item/storage/firstaid/regular/fill_preset_inventory()
 	new /obj/item/device/healthanalyzer(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/skillless(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/inaprovaline(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricordrazine(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tramadol(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/inaprovaline(src)
 	new /obj/item/stack/medical/bruise_pack(src)
 	new /obj/item/stack/medical/ointment(src)
 	new /obj/item/stack/medical/splint(src)
@@ -160,10 +160,10 @@
 	new /obj/item/device/healthanalyzer(src)
 	new /obj/item/storage/pill_bottle/antitox(src)
 	new /obj/item/storage/pill_bottle/antitox(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/antitoxin(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/antitoxin(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/antitoxin(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/inaprovaline(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/antitoxin(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/antitoxin(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/antitoxin(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/inaprovaline(src)
 
 /obj/item/storage/firstaid/toxin/empty/fill_preset_inventory()
 	return
@@ -178,10 +178,10 @@
 	new /obj/item/device/healthanalyzer(src)
 	new /obj/item/reagent_container/pill/dexalin(src)
 	new /obj/item/reagent_container/pill/dexalin(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/dexalinp(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/dexalinp(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/dexalinp(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/inaprovaline(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/dexalinp(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/dexalinp(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/dexalinp(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/inaprovaline(src)
 
 /obj/item/storage/firstaid/o2/empty/fill_preset_inventory()
 	return
@@ -193,7 +193,7 @@
 	item_state = "firstaid-advanced"
 
 /obj/item/storage/firstaid/adv/fill_preset_inventory()
-	new /obj/item/reagent_container/hypospray/autoinjector/tricord(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/tricord(src)
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
@@ -343,8 +343,8 @@
 	new /obj/item/reagent_container/pill/russianRed(src)
 	new /obj/item/reagent_container/pill/russianRed(src)
 	new /obj/item/reagent_container/pill/russianRed(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/bicaridine(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/bicaridine(src)
 
 /obj/item/storage/firstaid/rad/empty/fill_preset_inventory()
 	return
@@ -372,8 +372,8 @@
 	new /obj/item/tool/surgery/scalpel(src)
 	new /obj/item/tool/surgery/hemostat(src)
 	new /obj/item/tool/surgery/retractor(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone(src)
 
 /obj/item/storage/firstaid/surgical/empty/fill_preset_inventory()
 	return
@@ -433,30 +433,30 @@
 /obj/item/storage/syringe_case/rmc
 
 /obj/item/storage/syringe_case/rmc/fill_preset_inventory()
-	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone( src )
-	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone( src )
-	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone( src )
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone( src )
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone( src )
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone( src )
 
 /obj/item/storage/syringe_case/whiteout
 
 /obj/item/storage/syringe_case/whiteout/fill_preset_inventory()
 	new /obj/item/reagent_container/hypospray/autoinjector/stimulant/redemption_stimulant( src )
 	new /obj/item/reagent_container/hypospray/autoinjector/emergency( src )
-	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone( src )
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone( src )
 
 /obj/item/storage/syringe_case/commando
 
 /obj/item/storage/syringe_case/commando/fill_preset_inventory()
 	new /obj/item/reagent_container/hypospray/autoinjector/emergency( src )
-	new /obj/item/reagent_container/hypospray/autoinjector/inaprovaline( src )
-	new /obj/item/reagent_container/hypospray/autoinjector/adrenaline( src )
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/inaprovaline( src )
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/adrenaline( src )
 
 /obj/item/storage/syringe_case/commando/looted //for surv insert
 
 /obj/item/storage/syringe_case/commando/looted/fill_preset_inventory()
 	new /obj/item/reagent_container/hypospray/autoinjector/ultrazine/empty( src )
-	new /obj/item/reagent_container/hypospray/autoinjector/inaprovaline( src )
-	new /obj/item/reagent_container/hypospray/autoinjector/adrenaline( src )
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/inaprovaline( src )
+	new /obj/item/reagent_container/hypospray/autoinjector/standard/adrenaline( src )
 
 /obj/item/storage/box/czsp/first_aid
 	name = "first-aid combat support kit"

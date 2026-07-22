@@ -61,7 +61,7 @@
 			SPAN_NOTICE("[user] has constructed a prepared incision in your [surgery.affected_limb.display_name] that is now bleeding."),
 			SPAN_NOTICE("[user] has constructed a prepared incision in [target]'s [surgery.affected_limb.display_name] that is now bleeding."))
 
-		surgery.status += 2 //int_organMS completes all steps.
+		surgery.status += 6 //IMS completes all steps.
 
 		switch(target_zone) //forces application of overlays
 			if("chest")
@@ -75,7 +75,7 @@
 			SPAN_NOTICE("[user] finishes making a bloodless incision on your [surgery.affected_limb.display_name] with [tool]."),
 			SPAN_NOTICE("[user] finishes making a bloodless incision on [target]'s [surgery.affected_limb.display_name] with [tool]."))
 
-		surgery.status++ //A laser scalpel may cauterise as it cuts.
+		surgery.status += 3 //A laser scalpel may cauterise as it cuts.
 	else
 		user.affected_message(target,
 			SPAN_NOTICE("You finish the incision on [target]'s [surgery.affected_limb.display_name]."),
@@ -87,7 +87,7 @@
 			incision_bleed.duration = 10 MINUTES //A weak bleed, but it doesn't stop on its own.
 			surgery.affected_limb.bleeding_effects_list += incision_bleed
 		else
-			surgery.status++ // synth skin doesn't cause bleeders
+			surgery.status += 3 // synth skin doesn't cause bleeders
 
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SHALLOW //Descriptionwise this is done by the retractor, but putting it here means people can examine to see if an unfinished surgery has been done.
 	user.add_blood(target.get_blood_color(), BLOOD_HANDS)
@@ -453,8 +453,8 @@
 	required_surgery_skill = SKILL_SURGERY_TRAINED
 	steps = list(
 		/datum/surgery_step/saw_encased,
-		/datum/surgery_step/clamp_bleeders_step, //oop i forgor, also cuz you can't clamp bleeders here, normally, for some reason
 		/datum/surgery_step/open_encased_step,
+		/datum/surgery_step/clamp_bleeders_step,
 		/datum/surgery_step/mend_encased,
 	)
 	pain_reduction_required = PAIN_REDUCTION_FULL

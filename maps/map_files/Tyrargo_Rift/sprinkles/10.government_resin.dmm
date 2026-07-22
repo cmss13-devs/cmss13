@@ -395,7 +395,7 @@
 /turf/open/floor/prison/darkred2/northwest,
 /area/tyrargo/indoors/admin/ground)
 "mJ" = (
-/obj/item/reagent_container/hypospray/autoinjector/tramadol/random_amount,
+/obj/item/reagent_container/hypospray/autoinjector/standard/tramadol/random_amount,
 /obj/structure/bed/hybrisa/hospital/hospitaldivider{
 	dir = 1;
 	layer = 3;
@@ -565,7 +565,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
 "tj" = (
-/obj/item/reagent_container/hypospray/autoinjector/tricord/random_amount,
+/obj/item/reagent_container/hypospray/autoinjector/standard/tricord/random_amount,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
 "tm" = (
@@ -1104,7 +1104,7 @@
 /area/tyrargo/indoors/admin/ground)
 "KX" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/reagent_container/hypospray/autoinjector/bicaridine/random_amount,
+/obj/item/reagent_container/hypospray/autoinjector/standard/bicaridine/random_amount,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
 "Lh" = (
@@ -1446,7 +1446,7 @@
 "Xm" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/almayer,
-/obj/item/reagent_container/hypospray/autoinjector/kelotane/random_amount,
+/obj/item/reagent_container/hypospray/autoinjector/standard/kelotane/random_amount,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
 "Xu" = (

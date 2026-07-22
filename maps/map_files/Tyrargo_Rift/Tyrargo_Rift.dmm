@@ -16434,7 +16434,7 @@
 	color = "#140400";
 	name = "dirt"
 	},
-/obj/item/reagent_container/hypospray/autoinjector/tramadol/random_amount,
+/obj/item/reagent_container/hypospray/autoinjector/standard/tramadol/random_amount,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aOh" = (
@@ -42962,7 +42962,7 @@
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/tyrargo/outdoors/outskirts/no_mans_land)
 "bTA" = (
-/obj/item/reagent_container/hypospray/autoinjector/bicaridine/random_amount,
+/obj/item/reagent_container/hypospray/autoinjector/standard/bicaridine/random_amount,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/central)
 "bTC" = (
@@ -48448,7 +48448,7 @@
 	},
 /obj/structure/barricade/deployable,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/reagent_container/hypospray/autoinjector/tricord/random_amount,
+/obj/item/reagent_container/hypospray/autoinjector/standard/tricord/random_amount,
 /turf/open/asphalt/cement/cement1,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "ckl" = (
@@ -50356,7 +50356,7 @@
 /area/tyrargo/oob/outdoors)
 "cqu" = (
 /obj/item/ammo_casing/bullet,
-/obj/item/reagent_container/hypospray/autoinjector/tramadol/random_amount,
+/obj/item/reagent_container/hypospray/autoinjector/standard/tramadol/random_amount,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "cqv" = (
@@ -59066,7 +59066,7 @@
 /area/tyrargo/outdoors/outskirts_road/central)
 "cSf" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/reagent_container/hypospray/autoinjector/kelotane/random_amount,
+/obj/item/reagent_container/hypospray/autoinjector/standard/kelotane/random_amount,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_south)
@@ -66375,7 +66375,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts_road/east)
 "dkN" = (
-/obj/item/reagent_container/hypospray/autoinjector/tramadol/random_amount,
+/obj/item/reagent_container/hypospray/autoinjector/standard/tramadol/random_amount,
 /obj/structure/bed/hybrisa/hospital/hospitaldivider{
 	dir = 1;
 	layer = 3;
@@ -66392,7 +66392,7 @@
 "dkP" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/almayer,
-/obj/item/reagent_container/hypospray/autoinjector/kelotane/random_amount,
+/obj/item/reagent_container/hypospray/autoinjector/standard/kelotane/random_amount,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
 "dkQ" = (
@@ -66402,12 +66402,12 @@
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
 "dkR" = (
-/obj/item/reagent_container/hypospray/autoinjector/tricord/random_amount,
+/obj/item/reagent_container/hypospray/autoinjector/standard/tricord/random_amount,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
 "dkS" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/reagent_container/hypospray/autoinjector/bicaridine/random_amount,
+/obj/item/reagent_container/hypospray/autoinjector/standard/bicaridine/random_amount,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
 "dkT" = (
@@ -66434,7 +66434,7 @@
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/indoors/apartment/north_upper)
 "dkW" = (
-/obj/item/reagent_container/hypospray/autoinjector/bicaridine/random_amount{
+/obj/item/reagent_container/hypospray/autoinjector/standard/bicaridine/random_amount{
 	pixel_y = 6;
 	pixel_x = 1
 	},
@@ -83126,7 +83126,7 @@
 /obj/item/ammo_box/magazine/misc/mre/empty,
 /obj/effect/decal/grass_overlay/grass1/dark,
 /obj/item/stack/sheet/metal/med_small_stack,
-/obj/item/reagent_container/hypospray/autoinjector/bicaridine/random_amount,
+/obj/item/reagent_container/hypospray/autoinjector/standard/bicaridine/random_amount,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/central)
 "dZZ" = (
@@ -108840,7 +108840,7 @@
 	pixel_y = -9
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/reagent_container/hypospray/autoinjector/bicaridine/random_amount{
+/obj/item/reagent_container/hypospray/autoinjector/standard/bicaridine/random_amount{
 	pixel_y = 6;
 	pixel_x = 1
 	},
@@ -110018,7 +110018,7 @@
 /area/tyrargo/outdoors/colony_streets/west)
 "qVq" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/reagent_container/hypospray/autoinjector/bicaridine/random_amount,
+/obj/item/reagent_container/hypospray/autoinjector/standard/bicaridine/random_amount,
 /turf/open/floor/plating/plating_catwalk/aicore/white,
 /area/tyrargo/indoors/apartment/north_ground)
 "qVt" = (
@@ -112684,7 +112684,7 @@
 /area/tyrargo/outdoors/colony_exterior/west)
 "vDv" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/reagent_container/hypospray/autoinjector/tramadol/random_amount,
+/obj/item/reagent_container/hypospray/autoinjector/standard/tramadol/random_amount,
 /turf/open/floor/hybrisa/wood/greywood,
 /area/tyrargo/indoors/apartment/north_ground)
 "vDS" = (
@@ -113074,7 +113074,7 @@
 	name = "Medical Cabinet";
 	pixel_y = -32
 	},
-/obj/item/reagent_container/hypospray/autoinjector/tricord/random_amount,
+/obj/item/reagent_container/hypospray/autoinjector/standard/tricord/random_amount,
 /turf/open/floor/almayer/black2/west,
 /area/tyrargo/indoors/bunker/central)
 "wic" = (

@@ -341,7 +341,7 @@
 	uses_left = 1
 	display_maptext = TRUE
 
-/obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricordrazine
+/obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricord
 	name = "first-aid EZ autoinjector"
 	chemname = "tricordrazine"
 	desc = "An autoinjector loaded with a single 15u dose of Tricordrazine to self-administer for basic wound care. You can refill it at Wey-Med vending machines, at wall-meds, or with a smart tank. Thankfully, there's no lock on it, so anyone can use it!"

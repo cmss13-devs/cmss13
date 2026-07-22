@@ -59720,7 +59720,7 @@
 /obj/structure/closet/hydrant{
 	pixel_x = 30
 	},
-/obj/item/reagent_container/hypospray/autoinjector/skillless,
+/obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricord,
 /turf/open/floor/almayer,
 /area/almayer/command/lifeboat)
 "gzM" = (

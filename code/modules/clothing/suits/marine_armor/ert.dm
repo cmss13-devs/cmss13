@@ -166,7 +166,12 @@
 	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
 	storage_slots = 1
-	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/UPP, /obj/item/clothing/under/marine/veteran/UPP/medic, /obj/item/clothing/under/marine/veteran/UPP/engi, /obj/item/clothing/under/marine/veteran/UPP/SOF_uniform)
+	uniform_restricted = list(
+		/obj/item/clothing/under/marine/veteran/UPP,
+		/obj/item/clothing/under/marine/veteran/UPP/medic,
+		/obj/item/clothing/under/marine/veteran/UPP/engi,
+		/obj/item/clothing/under/marine/veteran/UPP/SOF_uniform,
+		)
 
 /obj/item/clothing/suit/storage/marine/faction/UPP/Initialize()
 	. = ..()

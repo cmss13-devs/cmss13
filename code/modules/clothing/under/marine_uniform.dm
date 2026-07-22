@@ -639,7 +639,12 @@
 	flags_cold_protection = ICE_PLANET_MIN_COLD_PROT
 	specialty = "pilot officer"
 	snow_name = " snow bodysuit"
-	suit_restricted = list(/obj/item/clothing/suit/storage/jacket/marine/pilot/armor, /obj/item/clothing/suit/storage/marine/light/vest/dcc, /obj/item/clothing/suit/storage/jacket/marine/pilot, /obj/item/clothing/suit/storage/marine/light/vest)
+	suit_restricted = list(
+		/obj/item/clothing/suit/storage/jacket/marine/pilot/armor,
+		/obj/item/clothing/suit/storage/marine/light/vest/dcc,
+		/obj/item/clothing/suit/storage/jacket/marine/pilot,
+		/obj/item/clothing/suit/storage/marine/light/vest,
+		)
 	flags_atom = FPRINT
 
 /obj/item/clothing/under/marine/officer/pilot/jungle
@@ -1218,7 +1223,15 @@
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UPP.dmi'
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	has_sensor = UNIFORM_HAS_SENSORS
-	suit_restricted = list(/obj/item/clothing/suit/storage/marine/faction/UPP, /obj/item/clothing/suit/gimmick/jason, /obj/item/clothing/suit/storage/snow_suit/soviet, /obj/item/clothing/suit/storage/snow_suit/survivor, /obj/item/clothing/suit/storage/webbing, /obj/item/clothing/suit/storage/webbing/brown, /obj/item/clothing/suit/storage/webbing/black)
+	suit_restricted = list(
+		/obj/item/clothing/suit/storage/marine/faction/UPP,
+		/obj/item/clothing/suit/gimmick/jason,
+		/obj/item/clothing/suit/storage/snow_suit/soviet,
+		/obj/item/clothing/suit/storage/snow_suit/survivor,
+		/obj/item/clothing/suit/storage/webbing,
+		/obj/item/clothing/suit/storage/webbing/brown,
+		/obj/item/clothing/suit/storage/webbing/black,
+		)
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	undershirt = TRUE
 

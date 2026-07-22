@@ -254,6 +254,10 @@ if [ "$pcre2_support" -eq 1 ]; then
 		echo -e "${RED}ERROR: First item in a long list should be on the next line.${NC}"
 		st=1
 	fi;
+	if $grep -PU '^(\t+)[\w_\/]+ ?= ?list\(.{200,}' $code_files; then
+		echo -e "${RED}ERROR: Long lists should be in long list form where the first item is on the next line.${NC}"
+		st=1
+	fi;
 	if $grep -PU '^(\t+)[\w_\/]+ ?= ?list\((\n\1\t(\(.*\)|[^\n\t()])+)*(\n(?!\1\t)(\(.*\)|[^\n\t()])+|\n(?!\1\t\S)\t*(\(.*\)|[^\n\t()])+)+(\n\t*(\(.*\)|[^\n\t()])+)*\s*\)\s*$' $code_files; then
 		echo -e "${RED}ERROR: All items in a long list should be indented one more than the opening list line.${NC}"
 		st=1

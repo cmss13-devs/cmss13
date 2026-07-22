@@ -452,7 +452,16 @@
 	var/mob/shooter = P.firer
 	if(shooter && ismob(shooter) && HAS_TRAIT(shooter, TRAIT_TWOBORE_TRAINING) && M.stat != DEAD && prob(40)) //Death is handled by periodic life() checks so this should have a chance to fire on a killshot.
 		if(!length(hit_messages)) //Pick and remove lines, refill on exhaustion.
-			hit_messages = list("Got you!", "Aha!", "Bullseye!", "It's curtains for you, Sonny Jim!", "Your head will look fantastic on my wall!", "I have you now!", "You miserable coward! Come and fight me like a man!", "Tally ho!")
+			hit_messages = list(
+				"Got you!",
+				"Aha!",
+				"Bullseye!",
+				"It's curtains for you, Sonny Jim!",
+				"Your head will look fantastic on my wall!",
+				"I have you now!",
+				"You miserable coward! Come and fight me like a man!",
+				"Tally ho!",
+				)
 		var/message = pick_n_take(hit_messages)
 		shooter.say(message)
 

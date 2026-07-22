@@ -352,7 +352,18 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				if(mob_state != "Dead")
 					marines_alive++
 
-		var/marine_data = list(list("name" = mob_name, "state" = mob_state, "has_helmet" = has_helmet, "role" = role, "acting_sl" = acting_sl, "fteam" = fteam, "distance" = distance, "area_name" = area_name,"ref" = REF(marine), "rank" = rank))
+		var/marine_data = list(list(
+			"name" = mob_name,
+			"state" = mob_state,
+			"has_helmet" = has_helmet,
+			"role" = role,
+			"acting_sl" = acting_sl,
+			"fteam" = fteam,
+			"distance" = distance,
+			"area_name" = area_name,
+			"ref" = REF(marine),
+			"rank" = rank,
+			))
 		data["marines"] += marine_data
 		if(is_squad_leader)
 			if(!data["squad_leader"])
@@ -575,7 +586,13 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 	for(var/datum/squad/index_squad in GLOB.RoleAuthority.squads)
 		if(index_squad.active && index_squad.faction == faction && index_squad.name != "Root")
-			var/list/squad_data = list(list("name" = index_squad.name, "primary_objective" = index_squad.primary_objective, "secondary_objective" = index_squad.secondary_objective, "overwatch_officer" = index_squad.overwatch_officer, "ref" = REF(index_squad)))
+			var/list/squad_data = list(list(
+				"name" = index_squad.name,
+			"primary_objective" = index_squad.primary_objective,
+			"secondary_objective" = index_squad.secondary_objective,
+			"overwatch_officer" = index_squad.overwatch_officer,
+			"ref" = REF(index_squad),
+			))
 			data["squad_data"] += squad_data
 
 	data["z_hidden"] = z_hidden

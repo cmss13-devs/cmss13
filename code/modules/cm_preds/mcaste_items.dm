@@ -5,7 +5,13 @@
 	caster_enabled = FALSE // no fancy-pants tools for you!
 	cloak_enabled = FALSE
 	smartdisc_enabled = FALSE
-	bracer_actions = list(/datum/action/predator_action/bracer/wristblade, /datum/action/predator_action/bracer/thwei, /datum/action/predator_action/bracer/capsule, /datum/action/predator_action/bracer/translator, /datum/action/predator_action/bracer/self_destruct)
+	bracer_actions = list(
+		/datum/action/predator_action/bracer/wristblade,
+		/datum/action/predator_action/bracer/thwei,
+		/datum/action/predator_action/bracer/capsule,
+		/datum/action/predator_action/bracer/translator,
+		/datum/action/predator_action/bracer/self_destruct,
+		)
 
 /obj/item/clothing/gloves/yautja/hunter/soldier/process()
 	. = ..()

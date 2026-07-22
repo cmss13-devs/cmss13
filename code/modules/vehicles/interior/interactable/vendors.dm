@@ -43,7 +43,7 @@
 		/obj/item/reagent_container/hypospray/autoinjector/standard,
 		/obj/item/reagent_container/hypospray/autoinjector/ez,
 		/obj/item/reagent_container/hypospray/autoinjector/tutorial,
-		)
+	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/vehicle/populate_product_list(scale)
 	listed_products = list(

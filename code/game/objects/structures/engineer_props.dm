@@ -58,7 +58,7 @@
 
 /obj/structure/prop/engineer_ruins/large_pit
 	name = "pit"
-	desc = "A circular stone structure with a seemingly endless dark pit in the center."
+	desc = "A circular stone structure with a seemingly endless dark pit in the center. Gaze long enough into the abyss, the abyss will gaze back into you..."
 	icon = 'icons/obj/structures/props/engineers/engineerpit.dmi'
 	icon_state = "pit"
 	explo_proof = TRUE

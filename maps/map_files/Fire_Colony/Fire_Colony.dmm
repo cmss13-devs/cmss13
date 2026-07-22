@@ -8702,6 +8702,11 @@
 	},
 /turf/open/lava/metal/warnplate,
 /area/fire_colony/exterior/hangar)
+"aWT" = (
+/obj/structure/fence/slim/blue,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/metal/warnplate/north,
+/area/fire_colony/exterior/valley/west)
 "aWU" = (
 /obj/effect/lava/edges/basalt/l_piece{
 	dir = 1
@@ -29380,7 +29385,7 @@
 /obj/effect/lava/edges/basalt/side_rock{
 	dir = 4
 	},
-/turf/open/lava/sand,
+/turf/open/lava/dirt,
 /area/fire_colony/exterior/valley/west)
 "fCz" = (
 /obj/structure/sign/safety/four{
@@ -32368,7 +32373,7 @@
 "gkP" = (
 /obj/structure/fence/slim/blue,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/lava/metal/warning_grate/east,
+/turf/open/lava/metal/warnplate,
 /area/fire_colony/exterior/valley/west)
 "gkX" = (
 /obj/effect/lava/edges/basalt/l_piece{
@@ -34237,7 +34242,7 @@
 /area/fire_colony/interior/omicron_facility/passthrough)
 "gIQ" = (
 /obj/structure/fence/slim/blue/door,
-/turf/open/lava/metal/warning_grate/east,
+/turf/open/lava/metal/warnplate/north,
 /area/fire_colony/exterior/valley/west)
 "gIT" = (
 /obj/effect/lava/edges/basalt/l_piece{
@@ -40254,6 +40259,11 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/lava/asteroid/directions/southwest,
 /area/fire_colony/exterior/valley/southeast)
+"ifO" = (
+/obj/structure/fence/slim/blue/door,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/metal/warnplate/north,
+/area/fire_colony/exterior/valley/west)
 "ifQ" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/trash{
@@ -42807,6 +42817,10 @@
 	},
 /turf/open/floor/grass,
 /area/fire_colony/interior/hydroponics/lobby)
+"iNK" = (
+/obj/structure/fence/slim/blue,
+/turf/open/lava/metal/warnplate,
+/area/fire_colony/exterior/valley/west)
 "iNQ" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/disposalpipe/segment{
@@ -50783,6 +50797,11 @@
 	},
 /turf/open/lava/brock,
 /area/fire_colony/exterior/valley/southeast)
+"kSv" = (
+/obj/structure/fence/slim/blue,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/metal/warnplate/east,
+/area/fire_colony/exterior/valley/west)
 "kSw" = (
 /obj/structure/bed/sofa/hybrisa/sofa/black{
 	icon_state = "couch_vet3_black";
@@ -55161,7 +55180,7 @@
 /obj/structure/fence/slim/blue/door,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/lava/metal/warning_grate/east,
+/turf/open/lava/metal/warnplate,
 /area/fire_colony/exterior/valley/west)
 "lVS" = (
 /obj/structure/flora/alien/sparsegrass/sparsegrass_3{
@@ -57402,7 +57421,7 @@
 "myz" = (
 /obj/structure/fence/slim/blue,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/lava/metal/warning_grate/north,
+/turf/open/lava/metal/warnplate/west,
 /area/fire_colony/exterior/valley/west)
 "myB" = (
 /obj/effect/lava/edges/basalt/l_piece{
@@ -58650,7 +58669,7 @@
 /obj/structure/fence/slim/blue,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/lava/metal/warning_grate/north,
+/turf/open/lava/metal/plating,
 /area/fire_colony/exterior/valley/west)
 "mOA" = (
 /obj/effect/lava/edges/basalt/side_rock{
@@ -62105,6 +62124,12 @@
 /obj/effect/landmark/xeno_spawn,
 /turf/open/lava/engineer_ruins/plating/platingdmg1,
 /area/fire_colony/exterior/underground/excavation/north)
+"nEK" = (
+/obj/effect/lava/edges/basalt/corner_rock{
+	dir = 1
+	},
+/turf/open/lava/sand,
+/area/fire_colony/exterior/valley/west)
 "nEL" = (
 /obj/structure/prop/ice_colony/surveying_device,
 /turf/open/lava/brock,
@@ -65317,7 +65342,7 @@
 /obj/structure/fence/slim/blue,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/lava/metal/warning_grate/east,
+/turf/open/lava/metal/warnplate,
 /area/fire_colony/exterior/valley/west)
 "owB" = (
 /turf/open/slippery/hull/colorable/connection_alt/northwest{
@@ -65926,6 +65951,12 @@
 /obj/structure/flora/alien/fullgrass/fullgrass_1,
 /turf/open/lava/brock,
 /area/fire_colony/exterior/valley/southeast)
+"oEW" = (
+/obj/structure/fence/slim/blue,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/turf/open/lava/metal/warnplate/east,
+/area/fire_colony/exterior/valley/west)
 "oEY" = (
 /obj/effect/lava/edges/basalt/corner_rock,
 /obj/effect/lava/edges/basalt/corner_rock{
@@ -74650,7 +74681,7 @@
 "qKm" = (
 /obj/structure/fence/slim/blue/door,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/lava/metal/warning_grate/east,
+/turf/open/lava/metal/warnplate,
 /area/fire_colony/exterior/valley/west)
 "qKs" = (
 /obj/effect/lava/edges/basalt/l_piece{
@@ -95430,7 +95461,7 @@
 /area/fire_colony/exterior/tcomms/lz2)
 "vMf" = (
 /obj/structure/fence/slim/blue,
-/turf/open/lava/metal/warning_grate/east,
+/turf/open/lava/metal/warnplate/north,
 /area/fire_colony/exterior/valley/west)
 "vMk" = (
 /obj/effect/lava/edges/basalt/l_piece{
@@ -102540,6 +102571,10 @@
 /obj/item/tool/shovel,
 /turf/open/lava/engineer_ruins/plating/platingdmg1,
 /area/fire_colony/exterior/underground/excavation/north)
+"xDi" = (
+/obj/structure/fence/slim/blue,
+/turf/open/lava/metal/warnplate/west,
+/area/fire_colony/exterior/valley/west)
 "xDl" = (
 /obj/structure/machinery/light/blue{
 	dir = 4;
@@ -102891,7 +102926,7 @@
 /area/fire_colony/interior/seegson/synthetic_storage)
 "xHz" = (
 /obj/structure/fence/slim/blue,
-/turf/open/lava/metal/warning_grate/north,
+/turf/open/lava/metal/warnplate/east,
 /area/fire_colony/exterior/valley/west)
 "xHB" = (
 /obj/structure/platform/stone/lava/west,
@@ -112096,7 +112131,7 @@ sEh
 crW
 myz
 myz
-xHz
+xDi
 myz
 myz
 myz
@@ -112295,7 +112330,7 @@ euS
 hwq
 tZS
 wQt
-gkP
+aWT
 sEE
 vgO
 oOn
@@ -112497,7 +112532,7 @@ tPZ
 fkI
 iwT
 cNq
-qKm
+ifO
 iKH
 lpb
 cRv
@@ -113110,7 +113145,7 @@ oOn
 xeH
 gsf
 rUo
-vMf
+iNK
 xtQ
 hEa
 jId
@@ -113516,7 +113551,7 @@ mRb
 vPB
 gkP
 fCj
-goD
+nEK
 mZR
 kLj
 hTQ
@@ -113713,9 +113748,9 @@ crW
 xHz
 xHz
 xHz
-mOt
-mOt
-myz
+oEW
+oEW
+kSv
 crW
 lMW
 uci

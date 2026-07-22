@@ -399,6 +399,9 @@
 	S["fax_name_press"] >> fax_name_press
 	S["fax_name_clf"] >> fax_name_clf
 
+	S["ff_log_color"] >> ff_log_color
+	S["ffd_log_color"] >> ffd_log_color
+
 	S["lang_chat_disabled"] >> lang_chat_disabled
 	S["show_permission_errors"] >> show_permission_errors
 	S["hear_vox"] >> hear_vox
@@ -514,7 +517,7 @@
 
 	synthetic_name = synthetic_name ? sanitize_text(synthetic_name, initial(synthetic_name)) : initial(synthetic_name)
 	synthetic_type = sanitize_inlist(synthetic_type, PLAYER_SYNTHS, initial(synthetic_type))
-	synth_specialisation = sanitize_inlist(synth_specialisation, list("Generalised", "Engineering", "Medical", "Intel", "Military Police", "Command"), initial(synth_specialisation))
+	synth_specialisation = sanitize_inlist(synth_specialisation, list("Generalised", "Engineering", "Medical", "Intel", "Military Police", "Command", "Research"), initial(synth_specialisation))
 	predator_name = predator_name ? sanitize_text(predator_name, initial(predator_name)) : initial(predator_name)
 	predator_gender = sanitize_text(predator_gender, initial(predator_gender))
 	predator_age = sanitize_integer(predator_age, 100, 10000, initial(predator_age))
@@ -554,6 +557,9 @@
 	fax_name_cmb = fax_name_cmb ? sanitize_text(fax_name_cmb, initial(fax_name_cmb)) : generate_name(FACTION_MARSHAL)
 	fax_name_press = fax_name_press ? sanitize_text(fax_name_press, initial(fax_name_press)) : generate_name(FACTION_COLONIST)
 	fax_name_clf = fax_name_clf ? sanitize_text(fax_name_clf, initial(fax_name_clf)) : generate_name(FACTION_CLF)
+
+	ff_log_color = sanitize_hexcolor(ff_log_color, initial(ff_log_color))
+	ffd_log_color = sanitize_hexcolor(ffd_log_color, initial(ffd_log_color))
 
 	key_bindings = sanitize_keybindings(key_bindings)
 	hotkeys = sanitize_integer(hotkeys, FALSE, TRUE, TRUE)
@@ -680,6 +686,9 @@
 	S["fax_name_cmb"] << fax_name_cmb
 	S["fax_name_press"] << fax_name_press
 	S["fax_name_clf"] << fax_name_clf
+
+	S["ff_log_color"] << ff_log_color
+	S["ffd_log_color"] << ffd_log_color
 
 	S["lang_chat_disabled"] << lang_chat_disabled
 	S["show_permission_errors"] << show_permission_errors
@@ -1048,6 +1057,8 @@
 		custom_key.contents = keybind["contents"]
 		custom_key.when_human = keybind["when_human"]
 		custom_key.when_xeno = keybind["when_xeno"]
+		custom_key.when_yautja = keybind["when_yautja"]
+		custom_key.when_synth = keybind["when_synth"]
 
 		key_to_custom_keybind[keybind["keybinding"]] = custom_key
 

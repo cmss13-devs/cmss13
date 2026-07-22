@@ -61,6 +61,7 @@
 	organ_value = 1000
 
 	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
@@ -218,7 +219,7 @@
 		if(child.stat != DEAD && !child.sterile)
 			huggers_cur++
 			to_chat(src, SPAN_NOTICE("We take a facehugger and carry it for safekeeping. Now sheltering: [huggers_cur] / [huggers_max]."))
-			update_icons()
+			behavior_delegate?.on_update_icons()
 			qdel(child)
 		else
 			to_chat(src, SPAN_WARNING("This [child.name] looks too unhealthy."))
@@ -242,7 +243,7 @@
 			to_chat(src, SPAN_NOTICE("We take one facehugger and carry it for safekeeping. Now sheltering: [huggers_cur] / [huggers_max]."))
 		else
 			to_chat(src, SPAN_NOTICE("We take [huggers_to_transfer] facehuggers and carry them for safekeeping. Now sheltering: [huggers_cur] / [huggers_max]."))
-		update_icons()
+		behavior_delegate?.on_update_icons()
 	else
 		to_chat(src, SPAN_WARNING("We can't carry more facehuggers on you."))
 
@@ -300,7 +301,7 @@
 		huggers_cur--
 		put_in_active_hand(child)
 		to_chat(src, SPAN_XENONOTICE("We grab one of the facehugger in our storage. Now sheltering: [huggers_cur] / [huggers_max]."))
-		update_icons()
+		behavior_delegate?.on_update_icons()
 		hugger_retrieve_timer = world.time + 1 SECONDS
 		return
 
@@ -324,7 +325,7 @@
 	if(eggs_cur < eggs_max)
 		if(stat == CONSCIOUS)
 			eggs_cur++
-			update_icons()
+			behavior_delegate?.on_update_icons()
 			to_chat(src, SPAN_NOTICE("We store the egg and carry it for safekeeping. Now sheltering: [eggs_cur] / [eggs_max]."))
 			qdel(E)
 		else
@@ -364,7 +365,7 @@
 			return
 		E = new(src, hivenumber)
 		eggs_cur--
-		update_icons()
+		behavior_delegate?.on_update_icons()
 		put_in_active_hand(E)
 		to_chat(src, SPAN_XENONOTICE("We grab one of the eggs in our storage. Now sheltering: [eggs_cur] / [eggs_max]."))
 		return

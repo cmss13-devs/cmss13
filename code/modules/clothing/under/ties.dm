@@ -1232,7 +1232,6 @@
 	max_storage_space = 5
 	can_hold = list(
 		/obj/item/tool/kitchen/utensil/knife,
-		/obj/item/tool/kitchen/utensil/pknife,
 		/obj/item/tool/kitchen/knife,
 		/obj/item/attachable/bayonet,
 		/obj/item/weapon/throwing_knife,
@@ -1524,7 +1523,7 @@ Wrist Accessories
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
 	)
-	flags_obj = OBJ_IS_STYLISH
+	flags_obj = OBJ_IS_STYLISH|OBJ_IS_HELMET_GARB
 	worn_accessory_slot = ACCESSORY_SLOT_DECOR
 	worn_accessory_limit = 2
 	style_postfix = list("neck", "left_wrist", "right_wrist")

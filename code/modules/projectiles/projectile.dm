@@ -81,8 +81,8 @@
 	/// How much to make the bullet fall off by accuracy-wise when closer than the ideal range
 	var/accuracy_range_falloff = 10
 
-	/// Is this a lone (0), original (1), or bonus (2) projectile. Used in gun.dm and fire_bonus_projectiles() currently.
-	var/bonus_projectile_check = 0
+	/// For tracking if this a lone, original, or bonus projectile. Where lone has no additional projectiles associated with it, but original does. And bonus is the additional projectiles from original.
+	var/bonus_projectile_check = PROJECTILE_LONE
 
 	/// What atom did this last receive a registered signal from? Used by damage_boost.dm
 	var/datum/weakref/last_atom_signaled = null
@@ -192,16 +192,16 @@
 	return damage
 
 // Target, firer, shot from (i.e. the gun), projectile range, projectile speed, original target (who was aimed at, not where projectile is going towards)
-/obj/projectile/proc/fire_at(atom/target, atom/first, atom/sec, range = 30, speed = 1, atom/original_override, randomize_speed = TRUE, gun_damage_mult = 1, projectile_max_range_add = 0, gun_bonus_proj_scatter = 0)
+/obj/projectile/proc/fire_at(atom/target, atom/firer, atom/shot_from, range = 30, speed = 1, atom/original_override, randomize_speed = TRUE, gun_damage_mult = 1, projectile_max_range_add = 0, gun_bonus_proj_scatter = 0)
 	SHOULD_NOT_SLEEP(TRUE)
 	original = original || original_override || target
 	if(!loc)
 		if(!(projectile_flags & PROJECTILE_SHRAPNEL))
-			var/move_turf = get_turf(first)
+			var/move_turf = get_turf(firer)
 			if(move_turf)
 				forceMove(move_turf)
 		else
-			var/move_turf = get_turf(sec)
+			var/move_turf = get_turf(shot_from)
 			if(move_turf)
 				forceMove(move_turf)
 	starting = get_turf(src)
@@ -212,15 +212,15 @@
 	if(!target_turf || !starting || target_turf == starting) //This shouldn't happen, but it can.
 		qdel(src)
 		return
-	firer = first
+	src.firer = firer
 
-	if(first && !(projectile_flags & PROJECTILE_SHRAPNEL))
-		permutated |= first //Don't hit the shooter (firer)
-	if(sec)
-		permutated |= get_atom_on_turf(sec) //Don't hit the originating object
+	if(firer && !(projectile_flags & PROJECTILE_SHRAPNEL))
+		permutated |= firer //Don't hit the shooter (firer)
+	if(shot_from)
+		permutated |= get_atom_on_turf(shot_from) //Don't hit the originating object
 
 	permutated |= src //Don't try to hit self.
-	shot_from = sec
+	src.shot_from = shot_from
 
 	setDir(get_dir(loc, target_turf))
 
@@ -237,7 +237,7 @@
 	if(ammo.bonus_projectiles_amount && ammo.bonus_projectiles_type)
 		randomize_speed = FALSE
 		ammo.fire_bonus_projectiles(src, gun_damage_mult, projectile_max_range_add, gun_bonus_proj_scatter)
-		bonus_projectile_check = 1 //Mark this projectile as having spawned a set of bonus projectiles.
+		bonus_projectile_check = PROJECTILE_ORIGINAL //Mark this projectile as having spawned a set of bonus projectiles.
 
 	path = get_line(starting, target_turf)
 	p_x += clamp((rand()-0.5)*scatter*3, -8, 8)
@@ -364,7 +364,7 @@
 	var/turf/current_turf = get_turf(src)
 	var/turf/next_turf = popleft(path)
 
-	// Terminal projectiles (about to hit) are handled first for retarget logic
+	// Terminal projectiles (about to hit) are handled firer for retarget logic
 	if((speed * world.tick_lag) >= get_dist(current_turf, target_turf))
 		SEND_SIGNAL(src, COMSIG_BULLET_TERMINAL)
 
@@ -437,6 +437,8 @@
 		return FALSE
 
 	if(turf.density) // Handle wall hit
+		if(turf in permutated)
+			return FALSE
 		var/ammo_flags = ammo.flags_ammo_behavior | projectile_override_flags
 
 		if(SEND_SIGNAL(src, COMSIG_BULLET_PRE_HANDLE_TURF, turf) & COMPONENT_BULLET_PASS_THROUGH)
@@ -523,19 +525,33 @@
 	if(SEND_SIGNAL(src, COMSIG_BULLET_POST_HANDLE_OBJ, obj, .) & COMPONENT_BULLET_PASS_THROUGH)
 		return FALSE
 
-/obj/projectile/proc/handle_mob(mob/living/living)
+/obj/projectile/proc/handle_mob(mob/living/target_living)
 	// If we've already handled this atom, don't do it again
 
-	if(SEND_SIGNAL(src, COMSIG_BULLET_PRE_HANDLE_MOB, living, .) & COMPONENT_BULLET_PASS_THROUGH)
+	if(SEND_SIGNAL(src, COMSIG_BULLET_PRE_HANDLE_MOB, target_living, .) & COMPONENT_BULLET_PASS_THROUGH)
 		return FALSE
 
-	if((MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_attacking_corpses) && living.stat == DEAD) || (living in permutated))
-		return FALSE
-	permutated |= living
-	if((ammo.flags_ammo_behavior & AMMO_XENO) && (isfacehugger(living) || living.stat == DEAD)) //xeno ammo is NEVER meant to hit or damage dead people. If you want to add a xeno ammo that DOES then make a new flag that makes it ignore this check.
+	if((MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_attacking_corpses) && target_living.stat == DEAD) || (target_living in permutated))
 		return FALSE
 
-	var/hit_chance = living.get_projectile_hit_chance(src)
+	if(isxeno(target_living))
+		var/mob/living/carbon/xenomorph/xeno = target_living
+		var/directional_chance = xeno.get_reflection_chance(src)
+		if(directional_chance > 0 && prob(directional_chance))
+			src.reflect_projectile_at_firer(
+			reflector = xeno,
+			new_firer = xeno,
+			damage_multiplier = BULWARK_REFLECTED_BULLET_DAMAGE,
+			accuracy_override = BULWARK_REFLECTED_BULLET_ACCURACY,
+			angle_variance = 25
+			)
+			return TRUE
+
+	permutated |= target_living
+	if((ammo.flags_ammo_behavior & AMMO_XENO) && (isfacehugger(target_living) || target_living.stat == DEAD)) //xeno ammo is NEVER meant to hit or damage dead people. If you want to add a xeno ammo that DOES then make a new flag that makes it ignore this check.
+		return FALSE
+
+	var/hit_chance = target_living.get_projectile_hit_chance(src)
 
 	if(hit_chance) // Calculated from combination of both ammo accuracy and gun accuracy
 
@@ -543,86 +559,86 @@
 		var/direct_hit = FALSE
 
 		// Wasn't the clicked target
-		if(original != living)
+		if(original != target_living)
 			def_zone = rand_zone()
 
 		// Xenos get a RNG limb miss chance regardless of being clicked target or not, see below
-		else if(isxeno(living) && hit_roll > hit_chance - 20)
+		else if(isxeno(target_living) && hit_roll > hit_chance - 20)
 			def_zone = rand_zone()
 
 		// Other targets do the same roll with penalty - a near hit will hit but redirected to another limb
-		else if(!isxeno(living) && hit_roll > hit_chance - 20 - GLOB.base_miss_chance[def_zone])
+		else if(!isxeno(target_living) && hit_roll > hit_chance - 20 - GLOB.base_miss_chance[def_zone])
 			def_zone = rand_zone()
 
 		else
 			direct_hit = TRUE
-			if(firer)
-				SEND_SIGNAL(firer, COMSIG_BULLET_DIRECT_HIT, living)
+			if(firer && projectile_flags & PROJECTILE_BULLSEYE)
+				SEND_SIGNAL(firer, COMSIG_BULLET_DIRECT_HIT, target_living, shot_from)
 
 		// At present, Xenos have no inherent effects or localized damage stemming from limb targeting
 		// Therefore we exempt the shooter from direct hit accuracy penalties as well,
 		// simply to avoid them from resetting target to chest every time they want to shoot a xeno
 
-		if(!direct_hit || !isxeno(living)) // For normal people or direct hits we apply the limb accuracy penalty
+		if(!direct_hit || !isxeno(target_living)) // For normal people or direct hits we apply the limb accuracy penalty
 			hit_chance -= GLOB.base_miss_chance[def_zone]
 		// else for direct hits on xenos, we skip it, pretending it's a chest shot with zero penalty
 
 		#if DEBUG_HIT_CHANCE
-		to_world(SPAN_DEBUG("([living]) Hit chance: [hit_chance] | Roll: [hit_roll]"))
+		to_world(SPAN_DEBUG("([target_living]) Hit chance: [hit_chance] | Roll: [hit_roll]"))
 		#endif
 
-		if(hit_chance > hit_roll && !(living.status_flags & RECENTSPAWN))
+		if(hit_chance > hit_roll && !(target_living.status_flags & RECENTSPAWN))
 			#if DEBUG_HIT_CHANCE
-			to_world(SPAN_DEBUG("([living]) Hit."))
+			to_world(SPAN_DEBUG("([target_living]) Hit."))
 			#endif
 			var/ammo_flags = ammo.flags_ammo_behavior | projectile_override_flags
 
 			// If the ammo should hit the surface of the target and there is a mob blocking
 			// The current turf is the "surface" of the target
 			if(ammo_flags & AMMO_STRIKES_SURFACE)
-				var/turf/turf = get_turf(living)
+				var/turf/turf = get_turf(target_living)
 
 				// We "hit" the current turf but strike the actual blockage
 				ammo.on_hit_turf(get_turf(src),src)
 				turf.bullet_act(src)
-			else if(living && living.loc && (living.bullet_act(src) != -1))
-				ammo.on_hit_mob(living,src, firer)
+			else if(target_living && target_living.loc && (target_living.bullet_act(src) != -1))
+				ammo.on_hit_mob(target_living,src, firer)
 
 				// If we are a xeno shooting something
-				if(istype(ammo, /datum/ammo/xeno) && isxeno(firer) && living.stat != DEAD && ammo.apply_delegate)
+				if(istype(ammo, /datum/ammo/xeno) && isxeno(firer) && target_living.stat != DEAD && ammo.apply_delegate)
 					var/mob/living/carbon/xenomorph/xeno = firer
 					if(xeno.behavior_delegate)
 						var/datum/behavior_delegate/MD = xeno.behavior_delegate
-						MD.ranged_attack_additional_effects_target(living)
-						MD.ranged_attack_additional_effects_self(living)
+						MD.ranged_attack_additional_effects_target(target_living)
+						MD.ranged_attack_additional_effects_self(target_living)
 
 				// If the thing we're hitting is a Xeno
-				if(istype(living, /mob/living/carbon/xenomorph))
-					var/mob/living/carbon/xenomorph/xeno = living
+				if(istype(target_living, /mob/living/carbon/xenomorph))
+					var/mob/living/carbon/xenomorph/xeno = target_living
 					if(xeno.behavior_delegate)
 						xeno.behavior_delegate.on_hitby_projectile(ammo)
 
 			. = TRUE
-		else if(living.body_position != LYING_DOWN)
-			animatation_displace_reset(living)
+		else if(target_living.body_position != LYING_DOWN)
+			animatation_displace_reset(target_living)
 			if(ammo.sound_miss)
-				playsound_client(living.client, ammo.sound_miss, get_turf(living), 75, TRUE)
-			living.visible_message(SPAN_AVOIDHARM("[src] misses [living]!"),
+				playsound_client(target_living.client, ammo.sound_miss, get_turf(target_living), 75, TRUE)
+			target_living.visible_message(SPAN_AVOIDHARM("[src] misses [target_living]!"),
 				SPAN_AVOIDHARM("[src] narrowly misses you!"), null, 4, CHAT_TYPE_TAKING_HIT)
-			var/log_message = "[src] narrowly missed [key_name(living)]"
+			var/log_message = "[src] narrowly missed [key_name(target_living)]"
 
 			var/mob/living/carbon/shotby = firer
 			if(istype(shotby))
-				living.attack_log += "\[[time_stamp()]\] [src], fired by [key_name(firer)], narrowly missed [key_name(living)]"
-				shotby.attack_log += "\[[time_stamp()]\] [src], fired by [key_name(shotby)], narrowly missed [key_name(living)]"
-				log_message = "[src], fired by [key_name(firer)], narrowly missed [key_name(living)]"
+				target_living.attack_log += "\[[time_stamp()]\] [src], fired by [key_name(firer)], narrowly missed [key_name(target_living)]"
+				shotby.attack_log += "\[[time_stamp()]\] [src], fired by [key_name(shotby)], narrowly missed [key_name(target_living)]"
+				log_message = "[src], fired by [key_name(firer)], narrowly missed [key_name(target_living)]"
 			log_attack(log_message)
 
 		#if DEBUG_HIT_CHANCE
-		to_world(SPAN_DEBUG("([living]) Missed."))
+		to_world(SPAN_DEBUG("([target_living]) Missed."))
 		#endif
 
-	if(SEND_SIGNAL(src, COMSIG_BULLET_POST_HANDLE_MOB, living, .) & COMPONENT_BULLET_PASS_THROUGH)
+	if(SEND_SIGNAL(src, COMSIG_BULLET_POST_HANDLE_MOB, target_living, .) & COMPONENT_BULLET_PASS_THROUGH)
 		return FALSE
 
 /obj/projectile/proc/check_canhit(turf/current_turf, turf/next_turf, list/ignore_list)
@@ -659,7 +675,7 @@
 	else
 		effective_accuracy -= (distance_travelled - ammo.accurate_range) * ((ammo_flags & AMMO_SNIPER) ? 1.5 : 10) // Snipers have a smaller falloff constant due to longer max range
 
-	if(distance_travelled <= ammo.accurate_range_min_strict)
+	if(ammo.accurate_range_min_strict > 0 && distance_travelled <= ammo.accurate_range_min_strict)
 		return 0
 
 	effective_accuracy = max(5, effective_accuracy) //default hit chance is at least 5%.
@@ -1326,25 +1342,25 @@
 		if(ishuman(firingMob) && ishuman(src) && faction == firingMob.faction && !A?.statistic_exempt) //One human shot another, be worried about it but do everything basically the same //special_role should be null or an empty string if done correctly
 			if(!istype(bullet.ammo, /datum/ammo/energy/taser))
 				GLOB.round_statistics.total_friendly_fire_instances++
-				var/ff_msg = "[key_name(firingMob)] shot [key_name(src)] with \a [bullet][shot_from] in [get_area(firingMob)] [ADMIN_JMP(firingMob)] [ADMIN_PM(firingMob)]"
+				var/ff_msg = "[key_name(firingMob)] shot [key_name(src)] with \a [bullet][shot_from]. [SPAN_BOLD("Shooter:")] [ADMIN_VERBOSEJMP(firingMob)] [ADMIN_PM(firingMob)], [SPAN_BOLD("Victim:")] [ADMIN_VERBOSEJMP(src)]"
 				var/ff_living = TRUE
 				if(src.stat == DEAD)
 					ff_living = FALSE
 				if(!(((mob_flags & MUTINY_MUTINEER) && (firingMob.mob_flags & MUTINY_LOYALIST)) || ((mob_flags & MUTINY_LOYALIST) && (firingMob.mob_flags & MUTINY_MUTINEER))))
-					msg_admin_ff(ff_msg, ff_living)
+					msg_admin_ff(ff_msg, ff_living, loc.z)
 				if(ishuman(firingMob) && bullet.weapon_cause_data)
 					var/mob/living/carbon/human/H = firingMob
 					H.track_friendly_fire(bullet.weapon_cause_data.cause_name)
 			else
-				msg_admin_attack("[key_name(firingMob)] tased [key_name(src)][shot_from] in [get_area(firingMob)] ([firingMob.x],[firingMob.y],[firingMob.z]).", firingMob.x, firingMob.y, firingMob.z)
+				msg_admin_attack("[key_name(firingMob)] tased [key_name(src)][shot_from]. Shooter: [AREACOORD(firingMob)] Victim: [AREACOORD(src)]", firingMob.x, firingMob.y, firingMob.z)
 		else
-			msg_admin_attack("[key_name(firingMob)] shot [key_name(src)] with \a [bullet][shot_from] in [get_area(firingMob)] ([firingMob.x],[firingMob.y],[firingMob.z]).", firingMob.x, firingMob.y, firingMob.z)
-		attack_log += "\[[time_stamp()]\] <b>[key_name(firingMob)]</b> shot <b>[key_name(src)]</b> with \a <b>[bullet]</b>[shot_from] in [get_area(firingMob)]."
-		firingMob.attack_log += "\[[time_stamp()]\] <b>[key_name(firingMob)]</b> shot <b>[key_name(src)]</b> with \a <b>[bullet]</b>[shot_from] in [get_area(firingMob)]."
+			msg_admin_attack("[key_name(firingMob)] shot [key_name(src)] with \a [bullet][shot_from]. Shooter: [AREACOORD(firingMob)] Victim: [AREACOORD(src)]", firingMob.x, firingMob.y, firingMob.z)
+		attack_log += "\[[time_stamp()]\] <b>[key_name(firingMob)]</b> shot <b>[key_name(src)]</b> with \a <b>[bullet]</b>[shot_from]. <b>Shooter:</b> [ADMIN_VERBOSEJMP(firingMob)], <b>Victim:</b> [ADMIN_VERBOSEJMP(src)]."
+		firingMob.attack_log += "\[[time_stamp()]\] <b>[key_name(firingMob)]</b> shot <b>[key_name(src)]</b> with \a <b>[bullet]</b>[shot_from]. <b>Shooter:</b> [ADMIN_VERBOSEJMP(firingMob)], <b>Victim:</b> [ADMIN_VERBOSEJMP(src)]."
 		return
 
 	attack_log += "\[[time_stamp()]\] <b>[bullet.firer ? bullet.firer : "SOMETHING??"]</b> shot <b>[key_name(src)]</b> with a <b>[bullet]</b>[shot_from]"
-	msg_admin_attack("[bullet.firer ? bullet.firer : "SOMETHING??"] shot [key_name(src)] with \a [bullet][shot_from] in [get_area(src)] ([loc.x],[loc.y],[loc.z]).", loc.x, loc.y, loc.z)
+	msg_admin_attack("[bullet.firer ? bullet.firer : "SOMETHING??"] shot [key_name(src)] with \a [bullet][shot_from] in [AREACOORD(src)].", loc.x, loc.y, loc.z)
 
 //Abby -- Just check if they're 1 tile horizontal or vertical, no diagonals
 /proc/get_adj_simple(atom/Loc1,atom/Loc2)
@@ -1389,6 +1405,60 @@
 /obj/projectile/pill/Destroy()
 	. = ..()
 	source_pill = null
+
+/**
+ * explained:
+ * * reflector - what shoots projectiles back.
+ * * new_firer - who shoots projectiles back.
+ * * damage_multiplier - how much bullet damage get reflected, default is 0.5 (50%).
+ * * accuracy_override - used to override shoot bullet accuracy.
+ * * angle_variance - how big reflection cone should be, default is 25, final cone will be 50 degrees (-25 and 25)
+ * * range_override - how far reflected bullet will travel, overridies original projectile value with new one.
+ * * projectile_flag_override - should only be used if you want to change bullet to other type than shrapnel.
+ * * ignore_safety - if set to TRUE, allows "target" to reflect reflected bullets.
+ */
+/obj/projectile/proc/reflect_projectile_at_firer(atom/reflector, atom/new_firer, damage_multiplier = 0.5, accuracy_override, angle_variance = 25, range_override, projectile_flag_override = NONE, ignore_safety = FALSE)
+	if(!ammo)
+		return
+
+	if(!firer)
+		return
+
+	if(!ignore_safety)
+		if(projectile_flags & PROJECTILE_REFLECTED) // So we cannot reflect reflected, could create infinite* loop.
+			return
+
+	var/turf/source_turf = get_turf(reflector)
+	if(!source_turf)
+		return
+
+	var/obj/projectile/new_proj = new(source_turf,create_cause_data("[reflector]"))
+	new_proj.generate_bullet(ammo)
+	new_proj.damage = damage * damage_multiplier
+
+	if(!isnull(accuracy_override))
+		new_proj.accuracy = accuracy_override
+	else
+		new_proj.accuracy = accuracy
+
+	if(projectile_flag_override)
+		new_proj.projectile_flags |= projectile_flag_override
+	else
+		new_proj.projectile_flags |= PROJECTILE_SHRAPNEL //we make it shrapnel unless overrided.
+
+	new_proj.projectile_flags |= PROJECTILE_REFLECTED
+	new_proj.permutated |= src
+	new_proj.permutated |= reflector
+
+	var/angle = Get_Angle(source_turf, firer)
+	angle += rand(-angle_variance, angle_variance)
+	var/atom/target = get_angle_target_turf(source_turf,angle,get_dist_sqrd(source_turf, firer))
+
+	if(!range_override)
+		range_override = max(ammo.max_range, 1)
+
+	new_proj.fire_at(target,new_firer ? new_firer : firer,reflector,range_override,speed = ammo.shell_speed)
+	return new_proj
 
 #undef DEBUG_HIT_CHANCE
 #undef DEBUG_HUMAN_DEFENSE

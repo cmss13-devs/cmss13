@@ -6,6 +6,7 @@
 	role_comm_title = "ARMY"
 	minimap_background = "background_ua"
 	job_title  = JOB_ARMY_TROOPER
+	faction = FACTION_MARINE
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	flags = EQUIPMENT_PRESET_EXTRA
 	access = list(
@@ -311,7 +312,6 @@
 
 /datum/equipment_preset/survivor/army/sl/load_gear(mob/living/carbon/human/new_human)
 	..()
-	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/army/e7, WEAR_ACCESSORY)
 	spawn_random_headgear(new_human)
 	add_army_weapon_pistol(new_human)
@@ -329,6 +329,8 @@
 	job_title  = JOB_ARMY_CO
 	idtype = /obj/item/card/id/gold
 	skills = /datum/skills/commander
+	faction = FACTION_MARINE
+	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	minimap_icon = "hudsquad_co_army"
 
 /datum/equipment_preset/survivor/army/co/load_gear(mob/living/carbon/human/new_human)
@@ -360,7 +362,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/mateba(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/mateba(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/mateba(new_human), WEAR_IN_BELT)
-	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/cigarette/cigar/classic(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/lighter/zippo/gold(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/neckerchief/yellow(new_human), WEAR_FACE)
@@ -376,9 +377,9 @@
 /datum/equipment_preset/synth/survivor/army
 	name = "Survivor - US Army Synthetic"
 	paygrades = list(PAY_SHORT_AE8E = JOB_PLAYTIME_TIER_0)
+	faction = FACTION_MARINE
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	assignment = JOB_ARMY_SYN
-	job_title  = "Synthetic"
 	idtype = /obj/item/card/id/gold
 
 /datum/equipment_preset/synth/survivor/army/load_gear(mob/living/carbon/human/preset_human)

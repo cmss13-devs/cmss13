@@ -38,6 +38,7 @@
 		thrall_gloves.owner = thrall
 		thrall.client?.init_verbs()
 		thrall.set_species("Thrall")
+		thrall.vendor_buyable_categories = YAUTJA_CAN_BUY_ALL
 		thrall.allow_gun_usage = FALSE
 		to_chat(user, SPAN_YAUTJABOLD("[icon2html(src)] \The <b>[src]</b> beeps: Your bracer is now linked to your thrall."))
 		if(notification_sound)
@@ -161,7 +162,7 @@
 	var/turf/turf = get_turf(thrall)
 	message_admins(FONT_SIZE_HUGE("ALERT: [master] ([master.key]) triggered their thrall's self-destruct sequence [area ? "in [area.name]":""] [ADMIN_JMP(turf)]"))
 	log_attack("[key_name(master)] triggered their thrall's self-destruct sequence in [area ? "in [area.name]":""]")
-	message_all_yautja("[master.real_name] has triggered their thrall's self-destruction sequence.")
+	message_all_yautja("[master.real_name] has triggered their thrall's self-destruction sequence.", broadcast_networks = received_networks)
 	to_chat(master, SPAN_DANGER("You set the timer. They have failed you."))
 	explode(thrall)
 	exploding = FALSE

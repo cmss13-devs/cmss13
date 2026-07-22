@@ -266,19 +266,8 @@
 	var/chem_refill_volume_max = 600
 	/// A list of item types that allow reagent refilling
 	var/list/chem_refill = list(
-		/obj/item/reagent_container/hypospray/autoinjector/standard/adrenaline,
-		/obj/item/reagent_container/hypospray/autoinjector/standard/antitoxin,
-		/obj/item/reagent_container/hypospray/autoinjector/standard/bicaridine,
-		/obj/item/reagent_container/hypospray/autoinjector/standard/dexalinp,
-		/obj/item/reagent_container/hypospray/autoinjector/standard/inaprovaline,
-		/obj/item/reagent_container/hypospray/autoinjector/standard/kelotane,
-		/obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone,
-		/obj/item/reagent_container/hypospray/autoinjector/standard/peridaxon,
-		/obj/item/reagent_container/hypospray/autoinjector/standard/tramadol,
-		/obj/item/reagent_container/hypospray/autoinjector/standard/tricord,
-
-		/obj/item/reagent_container/hypospray/autoinjector/ez, //all ez autoinjectors
-		/obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricordrazine, //pain-stop and first-aid
+		/obj/item/reagent_container/hypospray/autoinjector/standard,
+		/obj/item/reagent_container/hypospray/autoinjector/ez,
 		/obj/item/reagent_container/hypospray/autoinjector/tutorial,
 
 		/obj/item/reagent_container/hypospray/epinephrine, //so UPPs can refill their epinephrine hyposprays
@@ -691,6 +680,8 @@
 		/obj/item/reagent_container/glass/bottle/oxycodone,
 		/obj/item/reagent_container/glass/bottle/peridaxon,
 		/obj/item/reagent_container/glass/bottle/tramadol,
+		/obj/item/reagent_container/glass/bottle/epinephrine,
+		/obj/item/reagent_container/glass/bottle/tricordrazine,
 	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/chemistry/populate_product_list(scale)

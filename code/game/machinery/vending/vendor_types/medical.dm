@@ -560,7 +560,7 @@
 		list("MEDICAL UTILITIES", -1, null, null),
 		list("Emergency Defibrillator", floor(scale * 3), /obj/item/device/defibrillator, VENDOR_ITEM_REGULAR),
 		list("Health Analyzer", floor(scale * 5), /obj/item/device/healthanalyzer, VENDOR_ITEM_REGULAR),
-		list("Hypospray (Empty Vial)", floor(scale * 3), /obj/item/reagent_container/hypospray/empty, VENDOR_ITEM_REGULAR),
+		list("Hypospray (Empty Vial)", floor(scale * 3), /obj/item/reagent_container/hypospray, VENDOR_ITEM_REGULAR),
 		list("Hypospray (Epinephrine)", floor(scale * 3), /obj/item/reagent_container/hypospray/epinephrine, VENDOR_ITEM_REGULAR),
 		list("Hypospray (Tricordrazine)", floor(scale * 3), /obj/item/reagent_container/hypospray/tricordrazine, VENDOR_ITEM_REGULAR),
 		list("M276 Pattern Medical Storage Rig", floor(scale * 2), /obj/item/storage/belt/medical, VENDOR_ITEM_REGULAR),

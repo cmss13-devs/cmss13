@@ -263,6 +263,7 @@
 	icon = 'icons/obj/structures/props/dropship/dropship_equipment64.dmi'
 	icon_state = "fuel_base"
 	base_category = DROPSHIP_FUEL_EQP
+	var/adjusted_pixel
 
 /obj/effect/attach_point/fuel/dropship1
 	ship_tag = DROPSHIP_ALAMO

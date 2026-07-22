@@ -1403,6 +1403,9 @@
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down
 	icon_state = "rasputin15"
 
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down/airlock
+	icon_state = "rasputin15"
+
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right
 	icon_state = "floor8"
 

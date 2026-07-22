@@ -120,10 +120,7 @@ All ShuttleMove procs go here
 	if(light)
 		update_light()
 	if(rotation)
-		if(istype(src, /obj/structure/machinery/door/airlock/multi_tile))
-			shuttleRotateMovable(rotation)
-		else
-			shuttleRotate(rotation)
+		shuttleRotate(rotation)
 
 // update_parallax_contents()
 

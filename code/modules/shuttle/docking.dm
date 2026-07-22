@@ -215,4 +215,27 @@
 			continue
 		var/turf/oldT = moved_atoms[moved_object]
 		moved_object.lateShuttleMove(oldT, movement_force, movement_direction)
+	if(rotation)
+		if(src.linked_rotatables.len)
+			for(var/atom/i in linked_rotatables)
+				i.adjust_rotatables()
+		else
+			src.link_rotatables(moved_atoms, new_turfs)
+			for(var/atom/i in linked_rotatables)
+				i.adjust_rotatables()
 
+/obj/docking_port/mobile/proc/link_rotatables(list/moved_atoms, list/moved_turfs)
+	for(var/i in 1 to length(moved_atoms))
+		CHECK_TICK
+		var/atom/movable/moved_object = moved_atoms[i]
+		if(QDELETED(moved_object))
+			continue
+
+		if(istype(moved_object, /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear))
+			src.linked_rotatables += moved_object
+		if(istype(moved_object, /obj/effect/attach_point/fuel))
+			src.linked_rotatables += moved_object
+		if(istype(moved_object, /obj/structure/bed/chair/vehicle))
+			src.linked_rotatables += moved_object
+		if(istype(moved_object, /obj/structure/dropship_equipment))
+			src.linked_rotatables += moved_object

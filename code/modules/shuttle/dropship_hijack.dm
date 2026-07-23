@@ -72,9 +72,8 @@
 	if(!shuttle || !crash_site)
 		return FALSE
 	shuttle.callTime = DROPSHIP_CRASH_TRANSIT_DURATION * GLOB.ship_alt
+	GLOB.alt_ctrl_disabled = TRUE
 	SSshuttle.moveShuttle(shuttle.id, crash_site.id, TRUE)
-	if(GLOB.round_statistics)
-		GLOB.round_statistics.track_hijack()
 	return TRUE
 
 /datum/dropship_hijack/almayer/proc/target_crash_site(ship_section)
@@ -135,7 +134,7 @@
 	if(shuttle.mode != SHUTTLE_CALL)
 		return
 
-	if(shuttle.timeLeft(1) > 10 SECONDS)
+	if(shuttle.timeLeft(1) > 10 SECONDS) // This time must be less than /obj/docking_port/mobile/marine_dropship/proc/stealth_hijack_check()
 		return
 
 	if(final_announcement)

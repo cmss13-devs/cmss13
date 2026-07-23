@@ -259,7 +259,7 @@
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/maint/reinforced/colony/autoname
 	autoname = TRUE
- 
+
 //------Containment 3-tile Doors -----//
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/containment
@@ -374,7 +374,7 @@
 		return
 
 	to_chat(xeno, SPAN_WARNING("You try and force the doors open!"))
-	if(do_after(xeno, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+	if(do_after(xeno, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		if(control)
 			control.status = SHUTTLE_DOOR_BROKEN
 		unlock(TRUE)

@@ -257,6 +257,8 @@
 #define TRAIT_SPEC(spec_type) "t_spec_[spec_type]"
 /// If the mob won't drop items held in face slot when downed
 #define TRAIT_IRON_TEETH "t_iron_teeth"
+/// If the mob is deliberately not blocking with weapons that can have a lowered guard.
+#define TRAIT_LOWERED_GUARD "t_lowered_guard"
 
 // -- ability traits --
 /// Xenos with this trait cannot have plasma transferred to them

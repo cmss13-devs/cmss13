@@ -263,10 +263,10 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 		if(author_key)
 			latest_msg_unformatted = replacetext(latest_msg_unformatted, author_key, get_author_ic_name())
 		latest_message = latest_msg_unformatted
-
-	var/html_message = "[time_stamp()]: [text]"
+	var/time_stamp = time_stamp()
+	var/html_message = "[time_stamp]: [text]"
 	var/list/structured_data = list(
-		"timestamp" = worldtime2text(world.time),
+		"timestamp" = time_stamp,
 		"author" = "System",
 		"message" = unformatted,
 		"type" = "system"

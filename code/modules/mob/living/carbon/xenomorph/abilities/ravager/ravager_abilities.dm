@@ -17,6 +17,9 @@
 	freeze_self = FALSE // Should we freeze ourselves after the lunge?
 	should_destroy_objects = TRUE   // Only used for ravager charge
 
+	var/knockdown_amount = 1.6
+	var/fling_distance = 3
+
 // Base ravager shield ability
 /datum/action/xeno_action/onclick/empower
 	name = "Empower"
@@ -34,9 +37,8 @@
 	var/initial_activation_shield = 50
 	var/shield_per_human = 50
 	var/time_until_timeout = 6 SECONDS
-
-	// State
-	var/activated_once = FALSE
+	var/empower_targets = 0
+	var/super_empower_threshold = 3
 
 // Rav "Scissor Cut"
 /datum/action/xeno_action/activable/scissor_cut
@@ -149,4 +151,6 @@
 	var/ammo_type = /datum/ammo/xeno/bone_chips/spread
 	var/shrapnel_amount = 40
 
+	var/shard_lock_duration = 15 SECONDS
+	var/shard_lock_speed_mod = 0.45
 

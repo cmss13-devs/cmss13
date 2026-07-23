@@ -5,12 +5,6 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
 
-/datum/action/xeno_action/activable/throw_hugger/action_cooldown_check()
-	if(owner)
-		var/mob/living/carbon/xenomorph/carrier/alien = owner
-		return world.time >= alien.hugger_throw_cooldown // i think
-	return TRUE //When we first add the ability we still do this check, but owner is null, so a workaround
-
 /datum/action/xeno_action/activable/retrieve_egg
 	name = "Retrieve Egg"
 	action_icon_state = "retrieve_egg"

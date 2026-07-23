@@ -56,31 +56,31 @@
 	. += "Insight Amount: [trap_ability.empowering_charge_counter]/[trap_ability.empower_charge_max]"
 
 /datum/behavior_delegate/boiler_trapper/on_hitby_projectile(ammo)
-	if (temp_movespeed_usable)
+	if(temp_movespeed_usable)
 		temp_movespeed_time_used = world.time
 		temp_movespeed_usable = FALSE
 
-		if (isxeno(bound_xeno))
+		if(isxeno(bound_xeno))
 			var/mob/living/carbon/xenomorph/xeno = bound_xeno
 			xeno.speed_modifier -= temp_movespeed_amount
 			xeno.recalculate_speed()
 			addtimer(CALLBACK(src, PROC_REF(remove_speed_buff)), temp_movespeed_duration)
 
 /datum/behavior_delegate/boiler_trapper/ranged_attack_additional_effects_target(atom/target_atom)
-	if (!ishuman(target_atom))
+	if(!ishuman(target_atom))
 		return
-	if (!istype(bound_xeno))
+	if(!istype(bound_xeno))
 		return
 
 	var/mob/living/carbon/human/target_human = target_atom
 	var/datum/effects/boiler_trap/found = null
-	for (var/datum/effects/boiler_trap/trap in target_human.effects_list)
-		if (trap.cause_data?.resolve_mob() == bound_xeno)
+	for(var/datum/effects/boiler_trap/trap in target_human.effects_list)
+		if(trap.cause_data?.resolve_mob() == bound_xeno)
 			found = trap
 			break
 
 	var/datum/action/xeno_action/activable/boiler_trap/trap_ability = get_action(bound_xeno, /datum/action/xeno_action/activable/boiler_trap)
-	if (found)
+	if(found)
 		target_human.apply_armoured_damage(bonus_damage_shotgun_trapped, ARMOR_BIO, BURN)
 		trap_ability.empowering_charge_counter = trap_ability.empower_charge_max
 	else
@@ -96,15 +96,15 @@
 		trap_ability.empowering_charge_counter = trap_ability.empower_charge_max
 
 /datum/behavior_delegate/boiler_trapper/on_life()
-	if ((temp_movespeed_time_used + temp_movespeed_cooldown) < world.time)
-		if (!temp_movespeed_messaged)
+	if((temp_movespeed_time_used + temp_movespeed_cooldown) < world.time)
+		if(!temp_movespeed_messaged)
 			to_chat(bound_xeno, SPAN_XENODANGER("You feel your adrenaline glands refill! Your speedboost will activate again."))
 			temp_movespeed_messaged = TRUE
 		temp_movespeed_usable = TRUE
 		return
 
 /datum/behavior_delegate/boiler_trapper/proc/remove_speed_buff()
-	if (isxeno(bound_xeno))
+	if(isxeno(bound_xeno))
 		var/mob/living/carbon/xenomorph/xeno = bound_xeno
 		xeno.speed_modifier += temp_movespeed_amount
 		xeno.recalculate_speed()
@@ -113,21 +113,14 @@
 /datum/action/xeno_action/activable/boiler_trap/use_ability(atom/affected_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
 
-	if (!istype(xeno))
+	if(!istype(xeno))
 		return
 
-	if (!action_cooldown_check())
-		return
-
-	if (!xeno.check_state())
-		return
-
-	if (!can_see(xeno, affected_atom, TRAPPER_VIEWRANGE))
+	if(!can_see(xeno, affected_atom, TRAPPER_VIEWRANGE))
 		to_chat(xeno, SPAN_XENODANGER("We cannot see that location!"))
 		return
 
-	if (!check_and_use_plasma_owner())
-		return
+	XENO_ACTION_CHECK_USE_PLASMA(xeno)
 
 	// 5-long line of turfs orthogonal to the line between us and our target as precisely as we can figure it
 	var/dir_between = Get_Compass_Dir(xeno, affected_atom)
@@ -141,16 +134,16 @@
 	target_turfs += get_step(left_turf, turn(dir_between, -90))
 	target_turfs += get_step(right_turf, turn(dir_between, 90))
 
-	for (var/turf/turf in target_turfs)
-		if (!istype(turf) || turf.density)
+	for(var/turf/turf in target_turfs)
+		if(!istype(turf) || turf.density)
 			continue
 
 		var/trap_found = FALSE
-		for (var/obj/effect/alien/resin/boilertrap/boiler_trap in turf)
+		for(var/obj/effect/alien/resin/boilertrap/boiler_trap in turf)
 			trap_found = TRUE
 			break
 
-		if (trap_found)
+		if(trap_found)
 			continue
 
 		var/obj/effect/alien/resin/boilertrap/boiler_trap
@@ -176,13 +169,7 @@
 /datum/action/xeno_action/activable/acid_mine/use_ability(atom/affected_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
 
-	if (!istype(xeno))
-		return
-
-	if (!xeno.check_state())
-		return
-
-	if (!action_cooldown_check())
+	if(!istype(xeno))
 		return
 
 	if(!affected_atom || affected_atom.layer >= FLY_LAYER || !isturf(xeno.loc))
@@ -192,8 +179,7 @@
 		to_chat(xeno, SPAN_XENOWARNING("Something is in the way!"))
 		return
 
-	if (!check_and_use_plasma_owner())
-		return
+	XENO_ACTION_CHECK_USE_PLASMA(xeno)
 
 	var/turf/turf = get_turf(affected_atom)
 	var/acid_bolt_message = "a bolt of acid"
@@ -203,7 +189,7 @@
 	xeno.visible_message(SPAN_XENODANGER("[xeno] fires " + acid_bolt_message + " at [affected_atom]!"), SPAN_XENODANGER("We fire " + acid_bolt_message + " at [affected_atom]!"))
 	new /obj/effect/xenomorph/acid_damage_delay/boiler_landmine(turf, damage, delay, empowered, "You are blasted with " + acid_bolt_message + "!", xeno)
 
-	for (var/turf/target_turf in orange(1, turf))
+	for(var/turf/target_turf in orange(1, turf))
 		new /obj/effect/xenomorph/acid_damage_delay/boiler_landmine(target_turf, damage, delay, empowered, "You are blasted with a " + acid_bolt_message + "!", xeno)
 
 	if(empowered)
@@ -215,13 +201,12 @@
 
 /datum/action/xeno_action/activable/acid_shotgun/use_ability(atom/affected_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
-	if (!istype(xeno))
+	if(!istype(xeno))
 		return
 
-	if (!action_cooldown_check())
-		return
+	XENO_ACTION_CHECK(xeno)
 
-	if(!affected_atom || affected_atom.layer >= FLY_LAYER || !isturf(xeno.loc) || !xeno.check_state())
+	if(!affected_atom || affected_atom.layer >= FLY_LAYER || !isturf(xeno.loc))
 		return
 
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] fires a blast of acid at [affected_atom]!"), SPAN_XENOWARNING("We fire a blast of acid at [affected_atom]!"))

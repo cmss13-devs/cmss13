@@ -89,6 +89,7 @@
 	if(!new_maptext)
 		return
 	maptext_overlay = image(null, null, null, layer + 0.1)
+	maptext_overlay.appearance_flags |= RESET_COLOR
 	maptext_overlay.maptext = new_maptext
 	if(new_maptext_x)
 		maptext_overlay.maptext_x = new_maptext_x

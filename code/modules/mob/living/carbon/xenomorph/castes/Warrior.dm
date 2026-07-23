@@ -78,7 +78,6 @@
 	var/lifesteal_lock_duration = 20 // This will remove the glow effect on warrior after 2 seconds
 	var/color = "#6c6f24"
 	var/emote_cooldown = 0
-	var/lunging = FALSE // whether or not the warrior is currently lunging (holding) a target
 
 /mob/living/carbon/xenomorph/warrior/handle_special_state()
 	return HAS_TRAIT(src, TRAIT_ABILITY_ENCLOSED_PLATES)
@@ -87,20 +86,19 @@
 	if(HAS_TRAIT(src, TRAIT_ABILITY_ENCLOSED_PLATES))
 		return "Warrior_plates_[severity]"
 
-/mob/living/carbon/xenomorph/warrior/throw_item(atom/target)
+/mob/living/carbon/xenomorph/warrior/throw_item(atom/target_atom)
 	toggle_throw_mode(THROW_MODE_OFF)
 
 /mob/living/carbon/xenomorph/warrior/stop_pulling()
 	var/datum/behavior_delegate/warrior_base/warrior_delegate = behavior_delegate
-	if(isliving(pulling) && istype(warrior_delegate) && warrior_delegate.lunging)
-		warrior_delegate.lunging = FALSE // To avoid extreme cases of stopping a lunge then quickly pulling and stopping to pull someone else
+	if(isliving(pulling) && istype(warrior_delegate) && HAS_TRAIT(src, TRAIT_ABILITY_LUNGE))
+		REMOVE_TRAIT(src, TRAIT_ABILITY_LUNGE, TRAIT_SOURCE_ABILITY("lunge"))
 		var/mob/living/lunged = pulling
 		lunged.set_effect(0, STUN)
 		lunged.set_effect(0, WEAKEN)
 	return ..()
 
 /mob/living/carbon/xenomorph/warrior/start_pulling(atom/movable/movable_atom, lunge)
-	var/datum/behavior_delegate/warrior_base/warrior_delegate = behavior_delegate
 	if(!check_state())
 		return FALSE
 
@@ -117,8 +115,8 @@
 
 	if(.) //successful pull
 		if(isxeno(living_mob))
-			var/mob/living/carbon/xenomorph/xeno = living_mob
-			if(xeno.tier >= 2) // Tier 2 castes or higher immune to warrior grab stuns
+			var/mob/living/carbon/xenomorph/target_xeno = living_mob
+			if(target_xeno.tier >= 2) // Tier 2 castes or higher immune to warrior grab stuns
 				return
 
 		if(should_neckgrab && living_mob.mob_size < MOB_SIZE_BIG)
@@ -130,12 +128,11 @@
 				return // Grab was broken, probably as Stun side effect (eg. target getting knocked away from a manned M56D)
 			visible_message(SPAN_XENOWARNING("[src] grabs [living_mob] by the throat!"),
 			SPAN_XENOWARNING("We grab [living_mob] by the throat!"))
-			warrior_delegate.lunging = TRUE
+			ADD_TRAIT(src, TRAIT_ABILITY_LUNGE, TRAIT_SOURCE_ABILITY("lunge"))
 			addtimer(CALLBACK(src, PROC_REF(stop_lunging)), get_xeno_stun_duration(living_mob, 2) SECONDS + 1 SECONDS)
 
 /mob/living/carbon/xenomorph/warrior/proc/stop_lunging(world_time)
-	var/datum/behavior_delegate/warrior_base/warrior_delegate = behavior_delegate
-	warrior_delegate.lunging = FALSE
+	REMOVE_TRAIT(src, TRAIT_ABILITY_LUNGE, TRAIT_SOURCE_ABILITY("lunge"))
 
 /mob/living/carbon/xenomorph/warrior/hitby(atom/movable/movable_atom)
 	if(ishuman(movable_atom))
@@ -143,7 +140,7 @@
 	..()
 
 
-/datum/behavior_delegate/warrior_base/melee_attack_additional_effects_target(mob/living/carbon/carbon)
+/datum/behavior_delegate/warrior_base/melee_attack_additional_effects_target(mob/living/carbon/target_carbon)
 	..()
 
 	if(SEND_SIGNAL(bound_xeno, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
@@ -152,14 +149,14 @@
 	var/final_lifesteal = lifesteal_percent
 	var/list/mobs_in_range = oviewers(lifesteal_range, bound_xeno)
 
-	for(var/mob/mob as anything in mobs_in_range)
+	for(var/mob/target_mob as anything in mobs_in_range)
 		if(final_lifesteal >= max_lifesteal)
 			break
 
-		if(mob.stat == DEAD || HAS_TRAIT(mob, TRAIT_NESTED))
+		if(target_mob.stat == DEAD || HAS_TRAIT(target_mob, TRAIT_NESTED))
 			continue
 
-		if(bound_xeno.can_not_harm(mob))
+		if(bound_xeno.can_not_harm(target_mob))
 			continue
 
 		final_lifesteal++
@@ -182,8 +179,7 @@
 	if(!isxeno_human(target_carbon))
 		return
 
-
-	if(lunging && target_carbon)
+	if(HAS_TRAIT(bound_xeno, TRAIT_ABILITY_LUNGE) && target_carbon)
 		return INTENT_HARM
 
 
@@ -192,175 +188,161 @@
 
 
 /datum/action/xeno_action/activable/lunge/use_ability(atom/affected_atom)
-	var/mob/living/carbon/xenomorph/lunge_user = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if(!action_cooldown_check())
-		if(twitch_message_cooldown < world.time )
-			lunge_user.visible_message(SPAN_XENOWARNING("[lunge_user]'s claws twitch."), SPAN_XENOWARNING("Our claws twitch as we try to lunge but lack the strength. Wait a moment to try again."))
+		if(twitch_message_cooldown < world.time)
+			xeno.visible_message(SPAN_XENOWARNING("[xeno]'s claws twitch."), SPAN_XENOWARNING("Our claws twitch as we try to lunge but lack the strength. Wait a moment to try again."))
 			twitch_message_cooldown = world.time + 5 SECONDS
 		return //this gives a little feedback on why your lunge didn't hit other than the lunge button going grey. Plus, it might spook marines that almost got lunged if they know why the message appeared, and extra spookiness is always good.
 
 	if(!affected_atom)
 		return
 
-	if(!isturf(lunge_user.loc))
-		to_chat(lunge_user, SPAN_XENOWARNING("We can't lunge from here!"))
+	if(!isturf(xeno.loc))
+		to_chat(xeno, SPAN_XENOWARNING("We can't lunge from here!"))
 		return
 
-	if(!lunge_user.check_state() || lunge_user.agility)
-		return
-
-	if(lunge_user.can_not_harm(affected_atom) || !ismob(affected_atom))
+	if(xeno.can_not_harm(affected_atom) || !ismob(affected_atom))
 		apply_cooldown_override(click_miss_cooldown)
 		return
 
-	var/mob/living/carbon/carbon = affected_atom
-	if(carbon.stat == DEAD)
+	var/mob/living/carbon/target_carbon = affected_atom
+	if(target_carbon.stat == DEAD)
 		return
 
-	if(!check_and_use_plasma_owner())
-		return
+	XENO_ACTION_CHECK_USE_PLASMA(xeno)
 
 	apply_cooldown()
 	..()
 
-	lunge_user.visible_message(SPAN_XENOWARNING("[lunge_user] lunges towards [carbon]!"), SPAN_XENOWARNING("We lunge at [carbon]!"))
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] lunges towards [target_carbon]!"), SPAN_XENOWARNING("We lunge at [target_carbon]!"))
 
-	lunge_user.throw_atom(get_step_towards(affected_atom, lunge_user), grab_range, SPEED_FAST, lunge_user, tracking=TRUE)
+	xeno.throw_atom(get_step_towards(affected_atom, xeno), grab_range, SPEED_FAST, xeno, tracking=TRUE)
 
-	if(lunge_user.Adjacent(carbon))
-		lunge_user.start_pulling(carbon,1)
-		if(ishuman(carbon))
-			INVOKE_ASYNC(carbon, TYPE_PROC_REF(/mob, emote), "scream")
+	if(xeno.Adjacent(target_carbon))
+		xeno.start_pulling(target_carbon,1)
+		if(ishuman(target_carbon))
+			INVOKE_ASYNC(target_carbon, TYPE_PROC_REF(/mob, emote), "scream")
 	else
-		lunge_user.visible_message(SPAN_XENOWARNING("[lunge_user]'s claws twitch."), SPAN_XENOWARNING("Our claws twitch as we lunge but are unable to grab onto our target. Wait a moment to try again."))
+		xeno.visible_message(SPAN_XENOWARNING("[xeno]'s claws twitch."), SPAN_XENOWARNING("Our claws twitch as we lunge but are unable to grab onto our target. Wait a moment to try again."))
 
 	return TRUE
 
 /datum/action/xeno_action/activable/fling/use_ability(atom/affected_atom)
-	var/mob/living/carbon/xenomorph/fling_user = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 
-	if(!action_cooldown_check())
+	if(!isxeno_human(affected_atom) || xeno.can_not_harm(affected_atom))
 		return
 
-	if(!isxeno_human(affected_atom) || fling_user.can_not_harm(affected_atom))
+	XENO_ACTION_CHECK(xeno)
+
+	if(!xeno.Adjacent(affected_atom))
 		return
 
-	if(!fling_user.check_state() || fling_user.agility)
+	var/mob/living/carbon/target_carbon = affected_atom
+	if(target_carbon.stat == DEAD)
 		return
 
-	if(!fling_user.Adjacent(affected_atom))
+	if(HAS_TRAIT(target_carbon, TRAIT_NESTED))
 		return
 
-	var/mob/living/carbon/carbon = affected_atom
-	if(carbon.stat == DEAD)
+	if(target_carbon == xeno.pulling)
+		xeno.stop_pulling()
+
+	if(target_carbon.mob_size >= MOB_SIZE_BIG)
+		to_chat(xeno, SPAN_XENOWARNING("[target_carbon] is too big for us to fling!"))
 		return
 
-	if(HAS_TRAIT(carbon, TRAIT_NESTED))
-		return
+	XENO_ACTION_CHECK_USE_PLASMA(xeno)
 
-	if(carbon == fling_user.pulling)
-		fling_user.stop_pulling()
-
-	if(carbon.mob_size >= MOB_SIZE_BIG)
-		to_chat(fling_user, SPAN_XENOWARNING("[carbon] is too big for us to fling!"))
-		return
-
-	if(!check_and_use_plasma_owner())
-		return
-
-	fling_user.visible_message(SPAN_XENOWARNING("[fling_user] effortlessly flings [carbon] to the side!"), SPAN_XENOWARNING("We effortlessly fling [carbon] to the side!"))
-	playsound(carbon,'sound/weapons/alien_claw_block.ogg', 75, 1)
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] effortlessly flings [target_carbon] to the side!"), SPAN_XENOWARNING("We effortlessly fling [target_carbon] to the side!"))
+	playsound(target_carbon,'sound/weapons/alien_claw_block.ogg', 75, 1)
 	if(stun_power)
-		carbon.Stun(get_xeno_stun_duration(carbon, stun_power))
+		target_carbon.Stun(get_xeno_stun_duration(target_carbon, stun_power))
 	if(weaken_power)
-		carbon.KnockDown(get_xeno_stun_duration(carbon, weaken_power))
+		target_carbon.KnockDown(get_xeno_stun_duration(target_carbon, weaken_power))
 	if(slowdown)
-		if(carbon.slowed < slowdown)
-			carbon.apply_effect(slowdown, SLOW)
-	carbon.last_damage_data = create_cause_data(initial(fling_user.caste_type), fling_user)
+		if(target_carbon.slowed < slowdown)
+			target_carbon.apply_effect(slowdown, SLOW)
+	target_carbon.last_damage_data = create_cause_data(initial(xeno.caste_type), xeno)
 
-	var/facing = get_dir(fling_user, carbon)
+	var/facing = get_dir(xeno, target_carbon)
 
 	// Hmm today I will kill a marine while looking away from them
-	fling_user.face_atom(carbon)
-	fling_user.animation_attack_on(carbon)
-	fling_user.flick_attack_overlay(carbon, "disarm")
-	fling_user.throw_carbon(carbon, facing, fling_distance, SPEED_VERY_FAST, shake_camera = TRUE, immobilize = TRUE)
+	xeno.face_atom(target_carbon)
+	xeno.animation_attack_on(target_carbon)
+	xeno.flick_attack_overlay(target_carbon, "disarm")
+	xeno.throw_carbon(target_carbon, facing, fling_distance, SPEED_VERY_FAST, shake_camera = TRUE, immobilize = TRUE)
 
 	apply_cooldown()
 	return ..()
 
 /datum/action/xeno_action/activable/warrior_punch/use_ability(atom/affected_atom)
-	var/mob/living/carbon/xenomorph/punch_user = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 
-	if(!action_cooldown_check())
+	XENO_ACTION_CHECK(xeno)
+
+	if(!isxeno_human(affected_atom) || xeno.can_not_harm(affected_atom))
 		return
 
-	if(!isxeno_human(affected_atom) || punch_user.can_not_harm(affected_atom))
-		return
-
-	if(!punch_user.check_state() || punch_user.agility)
-		return
-
-	var/distance = get_dist(punch_user, affected_atom)
+	var/distance = get_dist(xeno, affected_atom)
 
 	if(distance > 2)
 		return
 
-	var/mob/living/carbon/carbon = affected_atom
+	var/mob/living/carbon/target_carbon = affected_atom
 
-	if(!punch_user.Adjacent(carbon))
+	if(!xeno.Adjacent(target_carbon))
 		return
 
-	if(carbon.stat == DEAD)
+	if(target_carbon.stat == DEAD)
 		return
-	if(HAS_TRAIT(carbon, TRAIT_NESTED))
-		return
-
-	var/obj/limb/target_limb = carbon.get_limb(check_zone(punch_user.zone_selected))
-
-	if(ishuman(carbon) && (!target_limb || (target_limb.status & LIMB_DESTROYED)))
-		target_limb = carbon.get_limb("chest")
-
-	if(!check_and_use_plasma_owner())
+	if(HAS_TRAIT(target_carbon, TRAIT_NESTED))
 		return
 
-	carbon.last_damage_data = create_cause_data(initial(punch_user.caste_type), punch_user)
+	var/obj/limb/target_limb = target_carbon.get_limb(check_zone(xeno.zone_selected))
 
-	punch_user.visible_message(SPAN_XENOWARNING("[punch_user] hits [carbon] in the [target_limb ? target_limb.display_name : "chest"] with a devastatingly powerful punch!"),
-	SPAN_XENOWARNING("We hit [carbon] in the [target_limb ? target_limb.display_name : "chest"] with a devastatingly powerful punch!"))
+	if(ishuman(target_carbon) && (!target_limb || (target_limb.status & LIMB_DESTROYED)))
+		target_limb = target_carbon.get_limb("chest")
+
+	XENO_ACTION_CHECK_USE_PLASMA(xeno)
+
+	target_carbon.last_damage_data = create_cause_data(initial(xeno.caste_type), xeno)
+
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] hits [target_carbon] in the [target_limb ? target_limb.display_name : "chest"] with a devastatingly powerful punch!"),
+	SPAN_XENOWARNING("We hit [target_carbon] in the [target_limb ? target_limb.display_name : "chest"] with a devastatingly powerful punch!"))
 	var/sound = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg',)
-	playsound(carbon, sound, 50, 1)
-	do_base_warrior_punch(carbon, target_limb)
+	playsound(target_carbon, sound, 50, 1)
+	do_base_warrior_punch(target_carbon, target_limb)
 	apply_cooldown()
 	return ..()
 
-/datum/action/xeno_action/activable/warrior_punch/proc/do_base_warrior_punch(mob/living/carbon/carbon, obj/limb/target_limb)
-	var/mob/living/carbon/xenomorph/warrior = owner
+/datum/action/xeno_action/activable/warrior_punch/proc/do_base_warrior_punch(mob/living/carbon/target_carbon, obj/limb/target_limb)
+	var/mob/living/carbon/xenomorph/xeno = owner
 	var/damage = rand(base_damage, base_damage + damage_variance)
 
-	if(ishuman(carbon))
+	if(ishuman(target_carbon))
 		if((target_limb.status & LIMB_SPLINTED) && !(target_limb.status & LIMB_SPLINTED_INDESTRUCTIBLE)) //If they have it splinted, the splint won't hold.
 			target_limb.status &= ~LIMB_SPLINTED
-			playsound(get_turf(carbon), 'sound/items/splintbreaks.ogg', 20)
-			to_chat(carbon, SPAN_DANGER("The splint on your [target_limb.display_name] comes apart!"))
-			carbon.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
+			playsound(get_turf(target_carbon), 'sound/items/splintbreaks.ogg', 20)
+			to_chat(target_carbon, SPAN_DANGER("The splint on your [target_limb.display_name] comes apart!"))
+			target_carbon.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
 
-		if(ishuman_strict(carbon))
-			carbon.apply_effect(3, SLOW)
+		if(ishuman_strict(target_carbon))
+			target_carbon.apply_effect(3, SLOW)
 
-		if(isyautja(carbon))
+		if(isyautja(target_carbon))
 			damage = rand(base_punch_damage_pred, base_punch_damage_pred + damage_variance)
 		else if(target_limb.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 			damage = rand(base_punch_damage_synth, base_punch_damage_synth + damage_variance)
 
 
-	carbon.apply_armoured_damage(get_xeno_damage_slash(carbon, damage), ARMOR_MELEE, BRUTE, target_limb ? target_limb.name : "chest")
+	target_carbon.apply_armoured_damage(get_xeno_damage_slash(target_carbon, damage), ARMOR_MELEE, BRUTE, target_limb ? target_limb.name : "chest")
 
 	// Hmm today I will kill a marine while looking away from them
-	warrior.face_atom(carbon)
-	warrior.animation_attack_on(carbon)
-	warrior.flick_attack_overlay(carbon, "punch")
-	shake_camera(carbon, 2, 1)
-	step_away(carbon, warrior, 2)
+	xeno.face_atom(target_carbon)
+	xeno.animation_attack_on(target_carbon)
+	xeno.flick_attack_overlay(target_carbon, "punch")
+	shake_camera(target_carbon, 2, 1)
+	step_away(target_carbon, xeno, 2)

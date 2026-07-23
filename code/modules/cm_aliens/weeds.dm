@@ -496,6 +496,7 @@
 	plane = FLOOR_PLANE
 	var/static/staticnode
 	var/overlay_node = TRUE
+	var/destroy_node = FALSE
 
 	// Which weeds are being kept alive by this node?
 	var/list/obj/effect/alien/weeds/children = list()
@@ -529,6 +530,8 @@
 	overlays += staticnode
 
 /obj/effect/alien/weeds/node/Initialize(mapload, obj/effect/alien/weeds/node/node, mob/living/carbon/xenomorph/xeno, datum/hive_status/hive)
+	if(destroy_node)
+		return INITIALIZE_HINT_QDEL
 	if (istype(hive))
 		linked_hive = hive
 	else if (istype(xeno) && xeno.hive)
@@ -681,5 +684,33 @@
 
 /obj/effect/resin_construct/transparent/weak
 	icon_state = "WeakTransparentConstruct"
+
+/obj/effect/resin_construct/fastweak
+	icon_state = "WeakReflectiveFast"
+
+/obj/effect/resin_construct/speed_node
+	icon_state = "speednode"
+
+/obj/effect/resin_construct/cost_node
+	icon_state = "costnode"
+
+/obj/effect/resin_construct/construct_node
+	icon_state = "constructnode"
+
+/obj/effect/resin_construct/construct_doorslow
+	icon_state = "BoundDoorSlow"
+
+/obj/effect/resin_construct/construct_wallslow
+	icon_state = "BoundWallSlow"
+
+/obj/effect/resin_construct/thickfast
+	icon_state = "ThickConstructFast"
+
+/obj/effect/resin_construct/thickdoorfast
+	icon_state = "ThickDoorConstructFast"
+	layer = FIREDOOR_CLOSED_LAYER
+
+/obj/effect/resin_construct/transparent/thickfast
+	icon_state = "WeakTransparentConstructFast"
 
 #undef WEED_BASE_GROW_SPEED

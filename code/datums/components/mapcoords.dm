@@ -48,7 +48,7 @@
 	var/list/atom/movable/new_containers = list()
 
 	var/atom/movable/current_movable = new_target
-	while(current_movable.loc && !isturf(current_movable.loc))
+	while(current_movable?.loc && !isturf(current_movable.loc))
 		current_movable = current_movable.loc
 		new_containers += current_movable
 	master_container = current_movable

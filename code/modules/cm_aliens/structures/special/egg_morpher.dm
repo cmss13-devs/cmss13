@@ -128,7 +128,7 @@
 	if(!range_bounds)
 		range_bounds = SQUARE(x, y, EGGMORPG_RANGE)
 
-	var/list/targets = SSquadtree.players_in_range(range_bounds, z, QTREE_SCAN_MOBS | QTREE_FILTER_LIVING)
+	var/list/targets = SSmapgrids.players_in_range_legacy(range_bounds, z, QTREE_SCAN_MOBS | QTREE_FILTER_LIVING)
 	if(isnull(targets) || !length(targets))
 		return
 

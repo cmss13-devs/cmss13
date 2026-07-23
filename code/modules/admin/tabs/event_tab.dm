@@ -951,6 +951,18 @@
 	set desc = "Fire an OB warhead at your current location."
 	set name = "Fire OB"
 
+	var/datum/mapgrid/mg = SSmapgrids.manager.mapgrids_by_z[2]
+
+	var/counter = 1
+	for(var/x in 1 to mg.dim)
+		for(var/y in 1 to mg.dim)
+			var/datum/mapcell/mc = mg.cells[x][y]
+			to_world("#[counter] ([x],[y]) : x=([mc.start_x],[mc.end_x]) ; y=([mc.start_y],[mc.end_y]) ; contents=[length(mc.contents)]")
+			counter++
+	return
+
+
+
 	if(!check_rights(R_ADMIN))
 		return
 

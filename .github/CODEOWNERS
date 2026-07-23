@@ -11,8 +11,10 @@
 /code/controllers/subsystem/mapping.dm @Fira
 /code/controllers/subsystem/sound.dm @Fira
 /code/controllers/subsystem/predships.dm @Fira
-/code/controllers/subsystem/quadtrees.dm @Fira
-/code/datums/quadtree.dm @Fira
+/code/controllers/subsystem/mapgrids.dm @Fira
+/code/datums/components/mapcoords.dm @Fira
+/code/datums/mapgrid.dm @Fira
+/code/datums/mapgrid_manager.dm @Fira
 /code/datums/soundOutput.dm @Fira
 /code/game/cas_manager/ @Fira
 /code/game/machinery/computer/dropship_weapons.dm @Fira

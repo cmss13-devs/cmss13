@@ -117,6 +117,8 @@
 
 	Q.sight |= SEE_TURFS|SEE_OBJS
 
+	SSmapgrids.track_movable(src) // This is neccessary for Queen Eye to be detectable by Motion Detector
+
 /mob/hologram/queen/proc/exit_hologram()
 	SIGNAL_HANDLER
 

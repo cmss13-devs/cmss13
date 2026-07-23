@@ -22,6 +22,8 @@
 	initialize_stamina()
 	GLOB.living_mob_list += src
 
+	SSmapgrids.track_movable(src)
+
 /mob/living/Destroy()
 	GLOB.living_player_list -= src
 	GLOB.living_mob_list -= src

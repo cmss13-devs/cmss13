@@ -354,8 +354,8 @@
 
 /obj/item/tool/surgery/synthgraft
 	name = "synth-graft"
-	desc = "An applicator for synthetic skin field grafts. The stuff reeks like processed space carp skin, itches like the dickens and stings like hell when applied, and the color is \
-		a perfectly averaged multi-ethnic tone that doesn't blend with <i>anyone's</i> complexion. But at least you don't have to stay in sickbay for skin graft surgery."
+	desc = "An applicator for synthetic skin field grafts. The stuff reeks like processed space carp skin, itches like the dickens, stings like hell when applied, and the color is \
+		a perfectly averaged multi-ethnic tone that doesn't blend with <i>anyone's</i> complexion. But at least you don't have to take a trip to the medbay for skin graft surgery."
 	icon_state = "line_burn"
 	item_state = "line_burn"
 	force = 0

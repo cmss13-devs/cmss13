@@ -555,3 +555,50 @@
 
 /obj/structure/cargo_container/upp_small/container_20/right
 	icon_state = "upp_20_r"
+
+
+// UPP 1x1 containers
+
+/obj/structure/cargo_container/upp_single
+	name = "UPP Cargo Container"
+	desc = "A small industrial shipping container.\nThis one is from the Union of Progressive Peoples, as indicated by the red star symbol on the side."
+	icon = 'icons/obj/structures/props/containers/uppcontainers1x1.dmi'
+	bound_height = 32
+	layer = ABOVE_XENO_LAYER
+
+
+/obj/structure/cargo_container/upp_single/container_1
+	icon_state = "upp_single_1"
+
+/obj/structure/cargo_container/upp_single/container_1/alt
+	icon_state = "upp_single_1_alt"
+
+/obj/structure/cargo_container/upp_single/container_2
+	icon_state = "upp_single_2"
+
+/obj/structure/cargo_container/upp_single/container_2/alt
+	icon_state = "upp_single_2_alt"
+
+/obj/structure/cargo_container/upp_single/container_3
+	icon_state = "upp_single_3"
+
+/obj/structure/cargo_container/upp_single/container_3/alt
+	icon_state = "upp_single_3_alt"
+
+/obj/structure/cargo_container/upp_single/container_4
+	icon_state = "upp_single_4"
+
+/obj/structure/cargo_container/upp_single/container_4/alt
+	icon_state = "upp_single_4_alt"
+
+/obj/structure/cargo_container/upp_single/container_5
+	icon_state = "upp_single_5"
+
+/obj/structure/cargo_container/upp_single/container_5/alt
+	icon_state = "upp_single_5_alt"
+
+/obj/structure/cargo_container/upp_single/container_6
+	icon_state = "upp_single_6"
+
+/obj/structure/cargo_container/upp_single/container_6/alt
+	icon_state = "upp_single_6_alt"

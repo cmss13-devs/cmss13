@@ -58,6 +58,7 @@
 	installed_equipment = ds_equipment
 	ds_equipment.ship_base = src
 	ds_equipment.plane = plane
+	ds_equipment.setDir(src.dir)
 
 	for(var/obj/docking_port/mobile/marine_dropship/shuttle in SSshuttle.mobile)
 		if(shuttle.id == ship_tag)

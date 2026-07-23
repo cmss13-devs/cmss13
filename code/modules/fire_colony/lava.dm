@@ -13,7 +13,7 @@
 	var/dam_type = BURN
 	var/target_temp = T120C
 	var/temp_delta = 10
-	var/warning_message = "The molten surface scorches beneath you, it's unbearable heat immediately setting you ablaze."
+	var/warning_message = "The molten surface scorches beneath you, it's unbearable heat consuming you."
 	var/burn_reagent = /datum/reagent/napalm/ut
 	var/burn_stacks = 30
 

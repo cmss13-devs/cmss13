@@ -524,6 +524,12 @@
 	},
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/decal/cleanable/dirt/alt_dirt,
+/obj/structure/transmitter/save_station/colony_net{
+	pixel_y = 34;
+	phone_category = "Colony-Net Emergency Line";
+	phone_color = "yellow";
+	phone_id = "Synthetic Operations"
+	},
 /turf/open/floor/prison/floor_plate,
 /area/fire_colony/interior/seegson/operations)
 "adv" = (
@@ -2516,10 +2522,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/strata/seeg4/east,
 /area/fire_colony/interior/seegson/ai_core/lobby)
-"amA" = (
-/obj/structure/transmitter/save_station/colony_net,
-/turf/closed/wall/lava/solaris_dark,
-/area/fire_colony/interior/seegson/operations)
 "amB" = (
 /obj/structure/prop/ice_colony/surveying_device/measuring_device{
 	dir = 1
@@ -5840,9 +5842,6 @@
 "aHl" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/extinguisher_cabinet/alt{
-	pixel_y = 30
-	},
 /obj/structure/flora/pottedplant{
 	pixel_x = 4;
 	pixel_y = 18
@@ -6420,14 +6419,17 @@
 /turf/open/floor/strata/altred4,
 /area/fire_colony/interior/hangar/checkpoint)
 "aKL" = (
-/obj/structure/transmitter/save_station/colony_net{
-	pixel_y = 34
-	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_3";
 	pixel_x = -8;
 	pixel_y = 6
+	},
+/obj/structure/transmitter/save_station/colony_net{
+	pixel_y = 34;
+	phone_category = "Colony-Net Emergency Line";
+	phone_color = "red";
+	phone_id = "Security Facility - Checkpoint"
 	},
 /turf/open/floor/strata/altred3/north,
 /area/fire_colony/interior/hangar/checkpoint)
@@ -9820,6 +9822,12 @@
 /obj/item/stool{
 	pixel_x = -7;
 	pixel_y = 16
+	},
+/obj/structure/transmitter/save_station/colony_net{
+	pixel_y = 34;
+	phone_category = "Colony-Net Emergency Line";
+	phone_color = "blue";
+	phone_id = "Excavation Outpost"
 	},
 /turf/open/floor/strata/lightblue3/north,
 /area/fire_colony/interior/excavation)
@@ -15166,6 +15174,13 @@
 	color = "#848484"
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/map/fire_colony{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/obj/item/tool/pen/blue{
+	pixel_x = -6
+	},
 /turf/open/floor/strata/seeg4/west,
 /area/fire_colony/interior/dorms/north)
 "cgY" = (
@@ -16641,6 +16656,10 @@
 	pixel_x = -13;
 	pixel_y = -6
 	},
+/obj/structure/flora/alien/chilli_bush_no_light{
+	pixel_x = 4;
+	pixel_y = 6
+	},
 /turf/open/lava/brock,
 /area/fire_colony/exterior/valley/west)
 "cAY" = (
@@ -17642,11 +17661,14 @@
 /turf/open/lava/basalt/basalt0,
 /area/fire_colony/exterior/valley/northwest)
 "cOL" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/transmitter/save_station/colony_net{
-	pixel_y = 34
+	pixel_y = 34;
+	phone_category = "Colony-Net Emergency Line";
+	phone_color = "yellow";
+	phone_id = "Power Management Center"
 	},
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/fire_colony/interior/seegson/engineering)
 "cOR" = (
@@ -17807,8 +17829,11 @@
 /obj/effect/decal/warning_stripes/worn{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2{
-	pixel_y = 27
+/obj/structure/transmitter/save_station/colony_net{
+	pixel_y = 34;
+	phone_category = "Colony-Net Emergency Line";
+	phone_color = "blue";
+	phone_id = "Epsilon Facility"
 	},
 /turf/open/lava/metal/plating_grille,
 /area/fire_colony/interior/epsilon_facility)
@@ -24384,7 +24409,10 @@
 "etV" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/transmitter/save_station/colony_net{
-	pixel_y = 34
+	pixel_y = 34;
+	phone_category = "Colony-Net Emergency Line";
+	phone_color = "yellow";
+	phone_id = "Habitation Complex - South"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/fire_colony/interior/dorms/south)
@@ -26421,6 +26449,10 @@
 /obj/structure/flora/alien/sparsegrass/sparsegrass_1{
 	pixel_x = 9;
 	pixel_y = -2
+	},
+/obj/structure/flora/alien/bluegrass/bluegrass_3{
+	pixel_x = 24;
+	pixel_y = 15
 	},
 /turf/open/lava/basalt/basalt0,
 /area/fire_colony/exterior/valley/west)
@@ -30421,6 +30453,13 @@
 	},
 /turf/open/lava/engineer_ruins/plating/platingdmg1,
 /area/fire_colony/exterior/underground/excavation/north)
+"fNR" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/extinguisher_cabinet/alt{
+	pixel_y = 30
+	},
+/turf/open/floor/strata/altgreen4/west,
+/area/fire_colony/interior/hydroponics/south)
 "fNW" = (
 /turf/open/lava/metal/filtrationside_lava_straight/north,
 /area/fire_colony/interior/seegson/ai_core/lobby)
@@ -32341,15 +32380,18 @@
 /turf/open/lava/asteroid/directions/southwest,
 /area/fire_colony/exterior/clearing/south)
 "gkm" = (
-/obj/structure/extinguisher_cabinet/alt{
-	pixel_y = 30
-	},
 /obj/effect/decal/cleanable/dirt/alt_dirt,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/item/clothing/shoes/silver_white{
 	pixel_x = 4;
 	pixel_y = 9
+	},
+/obj/structure/transmitter/save_station/colony_net{
+	pixel_y = 34;
+	phone_category = "Colony-Net Emergency Line";
+	phone_color = "green";
+	phone_id = "Xenoflora Research Complex - Science Module"
 	},
 /turf/open/floor/strata/lightblue4/north,
 /area/fire_colony/interior/hydroponics/science)
@@ -35152,7 +35194,10 @@
 /area/fire_colony/exterior/valley/north)
 "gSK" = (
 /obj/structure/transmitter/save_station/colony_net{
-	pixel_y = 34
+	pixel_y = 34;
+	phone_category = "Colony-Net Emergency Line";
+	phone_color = "blue";
+	phone_id = "Flight Control Office"
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -36377,6 +36422,11 @@
 /obj/structure/flora/alien/sparsegrass/sparsegrass_2,
 /turf/open/lava/brock,
 /area/fire_colony/exterior/clearing/north_east)
+"hhL" = (
+/obj/structure/flora/alien/purple_mushroom/purple_mushroom_4,
+/obj/effect/landmark/yautja_teleport,
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/underground/caves/south_west)
 "hhO" = (
 /obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	dir = 1;
@@ -38306,7 +38356,10 @@
 "hFl" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/transmitter/save_station/colony_net{
-	pixel_y = 34
+	pixel_y = 34;
+	phone_category = "Colony-Net Emergency Line";
+	phone_color = "yellow";
+	phone_id = "Habitation Complex - North"
 	},
 /turf/open/floor/strata/seeg3/north,
 /area/fire_colony/interior/dorms/north)
@@ -40723,6 +40776,10 @@
 /obj/structure/flora/alien/sparsegrass/sparsegrass_1,
 /turf/open/lava/brock,
 /area/fire_colony/exterior/valley/west)
+"ilu" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/lava/basalt/basalt_dug,
+/area/fire_colony/exterior/valley/southeast)
 "ilv" = (
 /obj/structure/platform_decoration/stone/lava/east,
 /obj/effect/lava/edges/basalt/l_piece{
@@ -41744,6 +41801,10 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/lava/metal/warnplate,
 /area/fire_colony/exterior/container_yard)
+"iAu" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/underground/excavation/south)
 "iAv" = (
 /obj/structure/stairs/rock/engineer_temple{
 	icon_state = "rock_stairs_vertical_middle";
@@ -51375,6 +51436,13 @@
 	},
 /turf/open/lava/basalt/glowing/basalt3,
 /area/fire_colony/exterior/underground/caves/south_west)
+"kZV" = (
+/obj/structure/flora/alien/chilli_bush_no_light{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/west)
 "lab" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/disposalpipe/segment{
@@ -57968,14 +58036,16 @@
 /turf/open/lava/hot_lava/single_end/north,
 /area/fire_colony/exterior/clearing/pass)
 "mEU" = (
-/obj/structure/transmitter/save_station/colony_net{
-	pixel_x = 1;
-	pixel_y = 33
-	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/bed/stool{
 	pixel_x = 6;
 	pixel_y = 17
+	},
+/obj/structure/transmitter/save_station/colony_net{
+	pixel_y = 34;
+	phone_category = "Colony-Net Emergency Line";
+	phone_color = "yellow";
+	phone_id = "Aerodrome - Hangar - Hallway"
 	},
 /turf/open/floor/strata/floor2,
 /area/fire_colony/interior/hangar/hallway_north)
@@ -60279,10 +60349,6 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/floor/strata/seeg3/east,
 /area/fire_colony/exterior/landing_pad)
-"nhm" = (
-/obj/structure/transmitter/save_station/colony_net,
-/turf/closed/wall/lava/solaris_dark,
-/area/fire_colony/interior/bar/canteen)
 "nho" = (
 /obj/effect/lava/edges/basalt/side_rock,
 /obj/effect/lava/edges/basalt/side_rock{
@@ -62109,7 +62175,11 @@
 /turf/open/lava/hot_lava,
 /area/fire_colony/exterior/underground/excavation/south)
 "nEz" = (
-/obj/structure/transmitter/save_station/colony_net,
+/obj/structure/transmitter/save_station/colony_net{
+	phone_category = "Colony-Net Emergency Line";
+	phone_color = "blue";
+	phone_id = "Omicron Facility"
+	},
 /turf/closed/wall/lava/solaris_dark,
 /area/fire_colony/interior/omicron_facility/passthrough)
 "nEA" = (
@@ -64205,11 +64275,14 @@
 /turf/open/floor/strata/seeg3,
 /area/fire_colony/interior/dorms/relaxation)
 "ogg" = (
-/obj/structure/transmitter/save_station/colony_net{
-	pixel_y = 34
-	},
 /obj/effect/decal/cleanable/dirt/alt_dirt,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/transmitter/save_station/colony_net{
+	pixel_y = 34;
+	phone_category = "Colony-Net Emergency Line";
+	phone_color = "green";
+	phone_id = "Xenoflora Research Complex - Relaxation Module"
+	},
 /turf/open/floor/strata/altgreen3/north,
 /area/fire_colony/interior/hydroponics/lobby)
 "ogk" = (
@@ -69498,6 +69571,9 @@
 	pixel_x = 5;
 	pixel_y = 10
 	},
+/obj/structure/extinguisher_cabinet/alt{
+	pixel_y = 30
+	},
 /turf/open/floor/strata/lightblue3/north,
 /area/fire_colony/interior/hydroponics/science)
 "pyL" = (
@@ -72277,6 +72353,10 @@
 	dir = 8;
 	pixel_y = -1
 	},
+/obj/item/paper/crumpled{
+	pixel_x = 13;
+	pixel_y = -8
+	},
 /turf/open/floor/strata/seeg3/east,
 /area/fire_colony/interior/dorms/north)
 "qhs" = (
@@ -74330,6 +74410,10 @@
 	},
 /turf/open/lava/sand,
 /area/fire_colony/exterior/valley/northeast)
+"qFr" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/lava/basalt/glowing/basalt5,
+/area/fire_colony/exterior/valley/northwest)
 "qFw" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/item/reagent_container/food/drinks/bottle/beer/craft/mono{
@@ -79128,7 +79212,10 @@
 /obj/structure/transmitter/save_station/colony_net{
 	dir = 4;
 	pixel_x = -15;
-	pixel_y = 5
+	pixel_y = 5;
+	phone_category = "Colony-Net Emergency Line";
+	phone_color = "red";
+	phone_id = "Excavation Checkpoint"
 	},
 /turf/open/floor/strata/altred4,
 /area/fire_colony/interior/hangar/checkpoint/excavation)
@@ -81552,6 +81639,7 @@
 	pixel_x = -12;
 	pixel_y = -2
 	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/lava/brock,
 /area/fire_colony/exterior/underground/caves/south_west)
 "smY" = (
@@ -82157,6 +82245,18 @@
 	},
 /turf/open/lava/brock,
 /area/fire_colony/exterior/valley/southeast)
+"svO" = (
+/obj/structure/platform_decoration/stone/lava/east,
+/obj/structure/flora/alien/chilli_bush/chilli_bush_4{
+	pixel_x = 9;
+	pixel_y = 21
+	},
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
+	pixel_x = 1;
+	pixel_y = 4
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/west)
 "swe" = (
 /obj/structure/platform/metal/lava_metal/west,
 /turf/open/lava/basalt/basalt0,
@@ -84290,6 +84390,11 @@
 	},
 /turf/open/lava/basalt/glowing/basalt2,
 /area/fire_colony/exterior/underground/caves/south_west)
+"sYX" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/obj/effect/landmark/yautja_teleport,
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/valley/north)
 "sYY" = (
 /obj/effect/lava/edges/basalt/l_piece{
 	dir = 1;
@@ -85485,6 +85590,9 @@
 	dir = 1;
 	pixel_y = 16
 	},
+/obj/structure/extinguisher_cabinet/alt{
+	pixel_y = 30
+	},
 /turf/open/floor/strata/sand4/north,
 /area/fire_colony/interior/mining_garage)
 "tox" = (
@@ -86463,6 +86571,12 @@
 	name = "rubber mat";
 	pixel_y = -34;
 	pixel_x = 7
+	},
+/obj/structure/transmitter/save_station/colony_net{
+	pixel_y = 34;
+	phone_category = "Colony-Net Emergency Line";
+	phone_color = "blue";
+	phone_id = "The Lava Lamp - Canteen"
 	},
 /turf/open/lava/metal/plating,
 /area/fire_colony/interior/bar/canteen)
@@ -91729,10 +91843,6 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/floor/prison/yellow,
 /area/fire_colony/exterior/tcomms/lz2)
-"uRI" = (
-/obj/structure/transmitter/save_station/colony_net,
-/turf/closed/wall/lava/solaris_dark/reinforced,
-/area/fire_colony/interior/excavation)
 "uSd" = (
 /obj/structure/cargo_container/lasalle/alt_1/left,
 /turf/open/lava/metal/plating_grille,
@@ -95592,11 +95702,11 @@
 /turf/closed/wall/lava/rock,
 /area/fire_colony/exterior/cliff)
 "vOB" = (
-/obj/structure/transmitter/save_station/colony_net{
-	pixel_y = 34
-	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/item/trash/cigbutt,
+/obj/structure/extinguisher_cabinet/alt{
+	pixel_y = 30
+	},
 /turf/open/floor/strata/seeg3/north,
 /area/fire_colony/interior/dorms/south)
 "vOC" = (
@@ -100260,8 +100370,11 @@
 /area/fire_colony/exterior/underground/excavation/north)
 "wXc" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/extinguisher_cabinet/alt{
-	pixel_y = 30
+/obj/structure/transmitter/save_station/colony_net{
+	pixel_y = 34;
+	phone_category = "Colony-Net Emergency Line";
+	phone_color = "yellow";
+	phone_id = "Mining Outpost - Garage"
 	},
 /turf/open/floor/strata/sand3/north,
 /area/fire_colony/interior/mining_garage)
@@ -106429,7 +106542,7 @@ uEH
 gZc
 ulz
 aaQ
-rDG
+qFr
 aaQ
 aaQ
 deo
@@ -111120,7 +111233,7 @@ asf
 knT
 bIj
 xHB
-ahC
+svO
 bpe
 asf
 mpD
@@ -113557,7 +113670,7 @@ kLj
 hTQ
 qVo
 knD
-asf
+kZV
 tjK
 uyV
 aaQ
@@ -118790,7 +118903,7 @@ asn
 asn
 ayp
 ayp
-brK
+fNR
 jIq
 aFI
 ayp
@@ -121122,7 +121235,7 @@ ufk
 sYF
 sNn
 qGz
-wBH
+hhL
 aaQ
 aaQ
 ykw
@@ -122677,7 +122790,7 @@ hxU
 lYF
 csk
 sUc
-okW
+hMn
 ayC
 hpL
 vkD
@@ -126537,7 +126650,7 @@ iQl
 xyd
 gmg
 mZx
-uRI
+bci
 bcJ
 bcL
 bIr
@@ -126592,7 +126705,7 @@ lXf
 ebG
 aaQ
 aaQ
-aBj
+sYX
 aaQ
 aBj
 sdo
@@ -130953,7 +131066,7 @@ aui
 diI
 gfl
 sBS
-nhm
+aKw
 tBn
 aXd
 khp
@@ -132318,7 +132431,7 @@ mXt
 auh
 azV
 fzl
-amA
+fzl
 adt
 wDy
 mVP
@@ -140717,7 +140830,7 @@ veN
 dce
 xdU
 aAT
-bvO
+iAu
 aaQ
 ykw
 "}
@@ -147297,7 +147410,7 @@ tYS
 aky
 awf
 apN
-aJG
+ilu
 aaQ
 aaQ
 aaQ

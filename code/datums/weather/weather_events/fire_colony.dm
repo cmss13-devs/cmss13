@@ -7,7 +7,7 @@
 
 	length = 4 MINUTES
 
-	lightning_chance = 4
+	lightning_chance = 2
 
 	turf_overlay_icon_state = "ash_dust_slow"
 
@@ -21,7 +21,7 @@
 
 	length = 4 MINUTES
 
-	lightning_chance = 4
+	lightning_chance = 2
 
 	turf_overlay_icon_state = "ash_dust_fast"
 
@@ -40,12 +40,10 @@
 	damage_per_tick = 0
 
 	has_process = TRUE
-	lightning_chance = 4
-
-	ambience = 'sound/ambience/lava/ash_storm_light.ogg' // Need better sounds.
+	lightning_chance = 2
 
 /datum/weather_event/fire_colony/ash_storm_light
-	name = "Light Ash Storm"
+	name = "Light Fire Storm"
 	display_name = "Ash Storm Warning"
 
 	should_sound_weather_alarm = TRUE
@@ -59,12 +57,12 @@
 	damage_per_tick = 0
 
 	has_process = TRUE
-	lightning_chance = 1
+	lightning_chance = 4
 
-	ambience = 'sound/ambience/lava/ash_storm_medium.ogg' // Need better sounds.
+	ambience = 'sound/ambience/lava/ash_storm_medium.ogg'
 
 /datum/weather_event/fire_colony/ash_storm_heavy
-	name = "Heavy Ash Storm"
+	name = "Heavy Fire Storm"
 	display_name = "Ash Storm Warning"
 
 	should_sound_weather_alarm = TRUE
@@ -79,7 +77,7 @@
 	damage_per_tick = 1
 	damage_type = BURN
 
-	ambience = 'sound/ambience/lava/ash_storm_heavy.ogg' // Need better sounds.
+	ambience = 'sound/ambience/lava/ash_storm_heavy.ogg'
 
 	has_process = TRUE
 	lightning_chance = 6

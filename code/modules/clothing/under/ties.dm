@@ -769,7 +769,7 @@
 	icon_state = "hyperdynepatch"
 
 /obj/item/clothing/accessory/patch/seegson
-	name = "old Seegson Corporation patch"
+	name = "Seegson Corporation patch"
 	desc = "An old corporate patch bearing the logo of Seegson Corporation, once known for its cheap, unreliable technology. Wearing it implies loyalty to profit over people."
 	icon_state = "seegson"
 	item_state_slots = list(WEAR_AS_GARB = "seegson")

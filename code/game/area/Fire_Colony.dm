@@ -26,6 +26,7 @@
 	power_equip = FALSE
 	power_environ = FALSE
 	temperature = T20C
+	ambience_exterior = AMBIENCE_VOLCANIC
 	soundscape_playlist = SCAPE_PL_LV522_OUTDOORS
 
 //Equivalent of space. None of this area should be accessible.
@@ -45,15 +46,18 @@
 	name = "\improper Old Seegson - Aerodrome - Landing Pad"
 	icon_state = "landing_pad"
 	minimap_color = MINIMAP_AREA_LZ
+	linked_lz = DROPSHIP_LZ1
 
 /area/fire_colony/exterior/landing_pad_external
 	name = "\improper Old Seegson - Aerodrome - Landing Valley"
 	icon_state = "clear_pass"
 	minimap_color = MINIMAP_AREA_LZ
+	linked_lz = DROPSHIP_LZ1
 
 /area/fire_colony/exterior/container_yard
 	name = "\improper Old Seegson - Aerodrome - Container Yard"
 	icon_state = "green"
+	linked_lz = DROPSHIP_LZ1
 
 // Lava River - Bridge
 
@@ -96,6 +100,7 @@
 /area/fire_colony/exterior/valley/southwest
 	name = "\improper South Western Valleys"
 	icon_state = "clear_pass"
+	linked_lz = DROPSHIP_LZ2
 
 //
 // Clearing
@@ -113,10 +118,12 @@
 /area/fire_colony/exterior/clearing/south
 	name = "\improper Colony Southern Clearing"
 	icon_state = "clear_pass"
+	linked_lz = DROPSHIP_LZ1
 
 /area/fire_colony/exterior/clearing/south_west
 	name = "\improper Colony South Western Clearing"
 	icon_state = "clear_pass"
+	linked_lz = DROPSHIP_LZ2
 
 /area/fire_colony/exterior/clearing/north
 	name = "\improper Colony Northern Clearing"
@@ -135,11 +142,14 @@
 	icon_state = "alarm_down"
 	sound_environment = SOUND_ENVIRONMENT_AUDITORIUM
 	soundscape_playlist = SCAPE_PL_CAVE
-	soundscape_interval = 25
+	soundscape_interval = 30
 	ambience_exterior = AMBIENCE_CAVE
 	minimap_color = MINIMAP_AREA_CAVES
 	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
 	ceiling_muffle = FALSE
+
+/area/fire_colony/exterior/underground/excavation
+	ambience_exterior = AMBIENCE_ANCIENT_TEMPLE
 
 /area/fire_colony/exterior/underground/excavation/south
 	name = "\improper Southern Valleys - Excavation Site"
@@ -198,6 +208,7 @@
 /area/fire_colony/interior/bar
 	name = "\improper The Lava Lamp - Bar"
 	icon_state = "bar"
+	linked_lz = DROPSHIP_LZ1
 
 /area/fire_colony/interior/bar/canteen
 	name = "\improper The Lava Lamp - Canteen"
@@ -327,6 +338,7 @@
 /area/fire_colony/interior/hangar
 	name = "\improper Old Seegson - Aerodrome - Hangar"
 	icon_state = "hangar"
+	linked_lz = DROPSHIP_LZ1
 
 /area/fire_colony/interior/hangar/hallway
 	name = "\improper Old Seegson - Aerodrome - Hangar - Hallway"
@@ -405,11 +417,13 @@
 	name = "\improper Old Seegson - South Western Valleys - Old Mining Outpost - Power"
 	icon_state = "mining_production"
 	minimap_color = MINIMAP_AREA_ENGI
+	linked_lz = DROPSHIP_LZ2
 
 /area/fire_colony/interior/mining_garage
 	name = "\improper Old Seegson - South Western Valleys - Old Mining Outpost - Garage"
 	icon_state = "mining_production"
 	minimap_color = MINIMAP_AREA_ENGI
+	linked_lz = DROPSHIP_LZ2
 
 /area/fire_colony/interior/mining_north_west
 	name = "\improper Old Seegson - North Eastern Clearing - Old Mining Outpost"
@@ -437,6 +451,7 @@
 	name = "\improper Lasalle Bionational - Omicron Facility"
 	icon_state = "green"
 	minimap_color = MINIMAP_AREA_ENGI
+	linked_lz = DROPSHIP_LZ2
 
 /area/fire_colony/interior/omicron_facility/hospital
 	name = "\improper Lasalle Bionational - Omicron Facility - Hospital"
@@ -475,6 +490,7 @@
 /area/fire_colony/interior/storage_unit/sw_valley
 	name = "\improper Storage Unit - South Western Valley"
 	icon_state = "storage"
+	linked_lz = DROPSHIP_LZ2
 
 /area/fire_colony/interior/storage_unit/e_valley
 	name = "\improper Storage Unit - Eastern Valley"
@@ -487,6 +503,7 @@
 /area/fire_colony/interior/storage_unit/t_comms_storage
 	name = "\improper Telecommunications - Storage Unit - Southern Clearing"
 	icon_state = "storage"
+	linked_lz = DROPSHIP_LZ1
 
 /*
  * Surface - Telecommunications
@@ -496,22 +513,25 @@
 	name = "\improper Old Seegson - Aerodrome - Container Yard - Colony Telecommunications"
 	icon_state = "blueold"
 	ceiling = CEILING_NONE
+	linked_lz = DROPSHIP_LZ1
 
 /area/fire_colony/exterior/tcomms/container_two
 	name = "\improper Old Seegson - Aerodrome - Container Yard - Colony Telecommunications"
 	icon_state = "blueold"
 	ceiling = CEILING_NONE
+	linked_lz = DROPSHIP_LZ1
 
 /area/fire_colony/exterior/tcomms/lz2
 	name = "\improper Lasalle Bionational - Omicron Facility - Colony Telecommunications"
 	icon_state = "blueold"
 	ceiling = CEILING_NONE
+	linked_lz = DROPSHIP_LZ1
 
 /area/fire_colony/exterior/tcomms/lz1
 	name = "\improper Old Seegson - South Bar - Colony Telecommunications"
 	icon_state = "blueold"
 	ceiling = CEILING_NONE
-
+	linked_lz = DROPSHIP_LZ1
 
 /*
  * Surface - Lasalle Bionational - Hangar
@@ -521,6 +541,7 @@
 	name = "\improper Lasalle Bionational - Hangar"
 	icon_state = "landing_pad_ext"
 	ceiling = CEILING_NONE
+	linked_lz = DROPSHIP_LZ2
 
 /area/fire_colony/interior/hangar/flight_control
 	name = "\improper Lasalle Bionational - Hangar - Flight Control Office"

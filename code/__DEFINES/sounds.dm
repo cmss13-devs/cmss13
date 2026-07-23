@@ -94,6 +94,8 @@
 #define AMBIENCE_MALL 'sound/ambience/medbay1.ogg'
 #define AMBIENCE_CAVE 'sound/ambience/desert.ogg'
 #define AMBIENCE_YAUTJA 'sound/ambience/yautja_ship.ogg'
+#define AMBIENCE_VOLCANIC 'sound/ambience/lava/fire_colony_ambience.ogg'
+#define AMBIENCE_ANCIENT_TEMPLE 'sound/ambience/lava/engineer_temple.ogg'
 
 #define SOUND_MARINE_DRUMS 'sound/effects/drums.ogg'
 

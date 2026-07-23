@@ -113,6 +113,18 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 			new /obj/item/clothing/suit/storage/marine/light/vest(src)
 			new /obj/item/clothing/under/tshirt/gray_blu(src)
 
+/datum/supply_packs/contraband/seized/advanced_fire_saftey_equipment
+	name = "advanced fire-safety equipment crate"
+	contains = list(
+		/obj/item/clothing/suit/storage/marine/cbrn/lava,
+		/obj/item/clothing/gloves/marine/fireproof_gloves,
+		/obj/item/clothing/shoes/marine/fireproof_boots,
+		/obj/item/reagent_container/glass/canister/oxygen,
+		/obj/item/tool/extinguisher/mini,
+	)
+	dollar_cost = 40
+	containertype = /obj/structure/largecrate/empty/secure
+
 /datum/supply_packs/contraband/seized/confiscated_weaponry
 	name = "seized foreign weaponry crate"
 	contains = list()
@@ -189,6 +201,19 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 		/obj/item/ammo_magazine/rifle/ak4047,
 		/obj/item/ammo_magazine/rifle/ak4047,
 		/obj/item/ammo_magazine/rifle/ak4047,
+	)
+	dollar_cost = 20
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/seized/w_ek_17
+	name = "W/EK 17 Carbine crate (x5 magazines included)"
+	contains = list(
+		/obj/item/weapon/gun/rifle/w_ek_17,
+		/obj/item/ammo_magazine/rifle/w_ek_17,
+		/obj/item/ammo_magazine/rifle/w_ek_17,
+		/obj/item/ammo_magazine/rifle/w_ek_17,
+		/obj/item/ammo_magazine/rifle/w_ek_17,
+		/obj/item/ammo_magazine/rifle/w_ek_17,
 	)
 	dollar_cost = 20
 	containertype = /obj/structure/largecrate/black_market

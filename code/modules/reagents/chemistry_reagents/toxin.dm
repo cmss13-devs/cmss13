@@ -326,6 +326,15 @@
 	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_CORROSIVE = 5)
 
+//Gives 1st point of directed mutation capacity but also allows hydrochem mutation on chem mutation
+/datum/reagent/toxin/copper_sulfate/reaction_hydro_tray_reagent(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	if (processing_tray.seed.directed_mutation["Max Value"] < 1 && processing_tray.seed.directed_mutation["Current Value"] < 1)
+		processing_tray.seed.directed_mutation["Max Value"] = 1
+		RegisterSignal(processing_tray, COMSIG_DIRECTED_MUTATION, TYPE_PROC_REF(/obj/structure/machinery/portable_atmospherics/hydroponics, handle_directed_mutation_sig))
+
 /datum/reagent/toxin/acid/polyacid
 	name = "Polytrinic acid"
 	id = "pacid"

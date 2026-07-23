@@ -72,7 +72,9 @@
 		"New Chems" = 0,
 		"New Chems2" = 0,
 		"New Chems3" = 0,
+		//Non Rolled Mutations If adding more need to adjust mutation code in seed_datums
 		"Mutate Species" = 0,
+		"Mutate Hydro Chem" = 0,
 		)
 
 
@@ -285,8 +287,7 @@
 		metabolism_adjust = 0
 		for(var/i in 1 to length(mutation_controller))
 			var/mut_name = mutation_controller[i]
-			if(mutation_controller[mut_name] > -3)
-				mutation_controller[mut_name] = 0
+			mutation_controller[mut_name] = 0
 
 	check_level_sanity()
 	update_icon()
@@ -311,8 +312,7 @@
 	metabolism_adjust = 0
 	for(var/i in 1 to length(mutation_controller))
 		var/mut_name = mutation_controller[i]
-		if(mutation_controller[mut_name] > -3)
-			mutation_controller[mut_name] = 0
+		mutation_controller[mut_name] = 0
 
 
 	to_chat(user, SPAN_NOTICE("You remove the dead plant from [src]."))
@@ -731,3 +731,19 @@
 
 /obj/structure/machinery/portable_atmospherics/hydroponics/yautja
 	icon_state = "yautja_tray"
+
+//If conditions satisfied add 1 or 2u of a hydro chem to the plant, then increases directed mutation value
+/obj/structure/machinery/portable_atmospherics/hydroponics/proc/handle_directed_mutation_sig(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray)
+	SIGNAL_HANDLER
+	if(!processing_tray.seed)
+		return
+	var/turf/source_turf = get_turf(processing_tray)
+	if ((processing_tray.seed.directed_mutation["Current Value"] < processing_tray.seed.directed_mutation["Max Value"]) && !processing_tray.seed.chems_special)
+		var/list/new_chem = list(pick( GLOB.chemical_gen_classes_list["H1"]) = list(rand(1,2)))
+		processing_tray.seed.directed_mutation["Current Value"] = processing_tray.seed.directed_mutation["Current Value"] + 1
+		if (processing_tray.seed.directed_mutation["Current Value"] == processing_tray.seed.directed_mutation["Max Value"])
+			source_turf.visible_message(SPAN_NOTICE("\The [processing_tray.seed.display_name] makes a crackling noise and looks brittle!"))
+		else
+			source_turf.visible_message(SPAN_NOTICE("\The [processing_tray.seed.display_name] makes a soft crackling noise."))
+		processing_tray.seed.chems += new_chem
+	UnregisterSignal(processing_tray, COMSIG_DIRECTED_MUTATION)

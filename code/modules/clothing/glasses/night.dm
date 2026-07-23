@@ -61,6 +61,27 @@
 /obj/item/clothing/glasses/night/m42_night_goggles/spotter
 	name = "\improper M42 spotter sight"
 	desc = "A companion headset and night vision goggles system for USCM spotters. Allows highlighted imaging of surroundings. Click it to toggle."
+	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
+	/// Only for first lock is trait required
+	var/require_training = TRUE
+
+/obj/item/clothing/glasses/night/m42_night_goggles/spotter/mob_can_equip(mob/equipping_mob, slot, disable_warning)
+	if(slot != WEAR_EYES)
+		return ..()
+	if(!require_training)
+		return ..()
+	if(!ishuman(equipping_mob))
+		return ..()
+	var/mob/living/carbon/human/equipping_human = equipping_mob
+	if(!(GLOB.character_traits[/datum/character_trait/skills/spotter] in equipping_human.traits))
+		to_chat(equipping_mob, SPAN_NOTICE("You don't know how to use [src]."))
+		return FALSE
+	return ..()
+
+/obj/item/clothing/glasses/night/m42_night_goggles/spotter/equipped(mob/user, slot)
+	if(slot == WEAR_EYES)
+		require_training = FALSE
+	..()
 
 /obj/item/clothing/glasses/night/m42_night_goggles/m42c
 	name = "\improper M42C special operations sight"

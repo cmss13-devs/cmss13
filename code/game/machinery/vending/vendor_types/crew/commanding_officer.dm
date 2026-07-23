@@ -15,8 +15,8 @@ GLOBAL_LIST_INIT(cm_vending_gear_commanding_officer, list(
 		list("SIDEARM AMMUNITION", 0, null, null, null),
 		list("High Impact Unica Speedloader (.454)", 15, /obj/item/ammo_magazine/revolver/mateba/highimpact, null, VENDOR_ITEM_RECOMMENDED),
 		list("High Impact AP Unica Speedloader (.454)", 20, /obj/item/ammo_magazine/revolver/mateba/highimpact/ap, null, VENDOR_ITEM_REGULAR),
-		list("High Impact Desert Eagle Magazine (.50)", 15, /obj/item/ammo_magazine/pistol/heavy/super/highimpact, null, VENDOR_ITEM_RECOMMENDED),
-		list("High Impact AP Desert Eagle Magazine (.50)", 20, /obj/item/ammo_magazine/pistol/heavy/super/highimpact/ap, null, VENDOR_ITEM_REGULAR),
+		list("High Impact Desert Eagle Magazine (.50)", 15, /obj/item/ammo_magazine/pistol/deagle/super/highimpact, null, VENDOR_ITEM_RECOMMENDED),
+		list("High Impact AP Desert Eagle Magazine (.50)", 20, /obj/item/ammo_magazine/pistol/deagle/super/highimpact/ap, null, VENDOR_ITEM_REGULAR),
 		list("High Impact M1911C Magazine (.45)", 15, /obj/item/ammo_magazine/pistol/m1911/highimpact, null, VENDOR_ITEM_RECOMMENDED),
 		list("High Impact AP M1911C Magazine (.45)", 20, /obj/item/ammo_magazine/pistol/m1911/highimpact/ap, null, VENDOR_ITEM_REGULAR),
 

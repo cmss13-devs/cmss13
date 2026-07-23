@@ -1980,11 +1980,11 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/weapon/gun/pistol/deagle,
+/obj/item/ammo_magazine/pistol/deagle,
+/obj/item/ammo_magazine/pistol/deagle,
+/obj/item/ammo_magazine/pistol/deagle,
+/obj/item/ammo_magazine/pistol/deagle,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "Sv" = (

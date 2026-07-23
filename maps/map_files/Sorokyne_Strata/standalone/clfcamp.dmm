@@ -2464,11 +2464,11 @@
 /area/strata/exterior/far_north_outpost)
 "Yz" = (
 /obj/structure/closet,
-/obj/item/weapon/gun/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/weapon/gun/pistol/deagle,
+/obj/item/ammo_magazine/pistol/deagle,
+/obj/item/ammo_magazine/pistol/deagle,
+/obj/item/ammo_magazine/pistol/deagle,
+/obj/item/ammo_magazine/pistol/deagle,
 /turf/open/floor/wood,
 /area/strata/interior/outpost/clf_office)
 "YD" = (

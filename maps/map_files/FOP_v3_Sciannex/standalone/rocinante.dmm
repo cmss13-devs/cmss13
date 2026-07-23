@@ -1542,11 +1542,11 @@
 /turf/open/floor/almayer/orange/east,
 /area/fiorina/station/clf_ship)
 "Pr" = (
-/obj/item/weapon/gun/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/weapon/gun/pistol/deagle,
+/obj/item/ammo_magazine/pistol/deagle,
+/obj/item/ammo_magazine/pistol/deagle,
+/obj/item/ammo_magazine/pistol/deagle,
+/obj/item/ammo_magazine/pistol/deagle,
 /obj/structure/surface/rack,
 /turf/open/floor/almayer/blue/west,
 /area/fiorina/station/clf_ship)

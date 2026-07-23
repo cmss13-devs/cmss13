@@ -569,11 +569,11 @@
 /area/varadero/interior/research)
 "nj" = (
 /obj/structure/surface/table/almayer,
-/obj/item/weapon/gun/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/weapon/gun/pistol/deagle,
+/obj/item/ammo_magazine/pistol/deagle,
+/obj/item/ammo_magazine/pistol/deagle,
+/obj/item/ammo_magazine/pistol/deagle,
+/obj/item/ammo_magazine/pistol/deagle,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/almayer,
 /area/varadero/interior/research/clfship)

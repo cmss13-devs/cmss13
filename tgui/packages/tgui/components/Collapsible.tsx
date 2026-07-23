@@ -23,7 +23,7 @@ export function Collapsible(props: Props) {
 
   return (
     <Box mb={1}>
-      <div className="Table">
+      <div className="Table__Collapsible">
         <div className="Table__cell">
           <Button
             fluid

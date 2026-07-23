@@ -249,7 +249,7 @@
 	if(!checker)
 		return
 
-	if((checker != src && (checker.sdisabilities & DISABILITY_BLIND || checker.blinded)) || checker.stat == UNCONSCIOUS)
+	if((checker != src && (checker.sdisabilities & DISABILITY_BLIND || checker.blinded)) || checker.stat >= UNCONSCIOUS)
 		to_chat(checker, boxed_message(SPAN_NOTICE("You can't exactly tell what the problem is currently.")))
 		return
 

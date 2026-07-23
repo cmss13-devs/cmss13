@@ -667,6 +667,12 @@
 #define XENO_SHIELD_SOURCE_CUMULATIVE_GENERIC 10
 #define XENO_SHIELD_SOURCE_KING_BULWARKSPELL 11
 
+//Xeno tier slots
+#define TIER_3 "3"
+#define TIER_2 "2"
+#define OPEN_SLOTS "open_slots"
+#define GUARANTEED_SLOTS "guaranteed_slots"
+
 //XENO CASTES
 #define XENO_CASTE_LARVA  "Larva"
 #define XENO_CASTE_PREDALIEN_LARVA   "Predalien Larva"

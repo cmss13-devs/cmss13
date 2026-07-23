@@ -794,5 +794,5 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		"admin" = DB_CASE(DB_COMP("is_permabanned", DB_EQUALS, 1), "permabanning_admin.ckey", "banning_admin.ckey"),
 		"last_known_ip",
 		"last_known_cid",
-		"whitelist_status"
+		"whitelist_status",
 		)

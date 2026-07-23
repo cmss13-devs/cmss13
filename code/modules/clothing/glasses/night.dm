@@ -237,7 +237,7 @@
 	icon_state = "visor_nvg"
 	item_state = "visor_nvg"
 	item_icons = list(
-		WEAR_EYES = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+		WEAR_EYES = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
 	)
 	flags_inventory = COVEREYES
 	flags_item = NODROP|DELONDROP

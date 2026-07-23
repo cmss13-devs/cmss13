@@ -18,7 +18,7 @@
 	icon = 'icons/obj/items/toy.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/toys_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/toys_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/toys_righthand.dmi',
 	)
 	throwforce = 0
 	throw_speed = SPEED_VERY_FAST
@@ -334,7 +334,7 @@
 	item_state = "inflatable"
 	icon = 'icons/obj/items/clothing/belts/misc.dmi'
 	item_icons = list(
-		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/misc.dmi'
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/misc.dmi',
 	)
 	flags_equip_slot = SLOT_WAIST
 	black_market_value = 20

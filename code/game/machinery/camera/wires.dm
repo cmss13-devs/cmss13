@@ -111,7 +111,7 @@
 		"White" = 3,
 		"Yellow" = 4,
 		"Blue" = 5,
-		"Pink" = 6
+		"Pink" = 6,
 	)
 	for(var/wiredesc in wires)
 		var/is_uncut = src.wires & WireColorToFlag[wires[wiredesc]]

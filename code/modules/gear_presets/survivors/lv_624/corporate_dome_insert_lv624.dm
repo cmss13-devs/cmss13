@@ -176,7 +176,7 @@
 		WEAR_IN_JACKET = /obj/item/weapon/telebaton,
 		WEAR_HANDS = /obj/item/clothing/gloves/black,
 		WEAR_R_STORE = /obj/item/storage/pouch/tools/full,
-		WEAR_FEET = /obj/item/clothing/shoes/marine/corporate/knife
+		WEAR_FEET = /obj/item/clothing/shoes/marine/corporate/knife,
 	)
 
 	survivor_variant = SECURITY_SURVIVOR

@@ -229,7 +229,7 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 			"author" = from_key || "System",
 			"message" = plain_text,
 			"html_message" = html_msg,
-			"type" = message_type
+			"type" = message_type,
 		)
 
 		ticket_interactions[html_message] = structured_data
@@ -268,7 +268,7 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 		"timestamp" = worldtime2text(world.time),
 		"author" = "System",
 		"message" = unformatted,
-		"type" = "system"
+		"type" = "system",
 	)
 	ticket_interactions[html_message] = structured_data
 

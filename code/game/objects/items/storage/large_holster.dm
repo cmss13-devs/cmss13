@@ -19,7 +19,7 @@
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
 		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/belts.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi',
 	)
 
 /obj/item/storage/large_holster/post_skin_selection()
@@ -68,7 +68,7 @@
 	icon_state = "m37_holster"
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_map/jungle.dmi'
 	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_map/jungle.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_map/jungle.dmi',
 	)
 	max_w_class = SIZE_HUGE
 	can_hold = list(
@@ -112,7 +112,7 @@
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/scabbards.dmi',
 		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/belts.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi',
 	)
 
 /obj/item/storage/large_holster/machete/full/fill_preset_inventory()
@@ -158,7 +158,7 @@
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/holster.dmi',
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/scabbards.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi',
 	)
 	force = 12
 	attack_verb = list("bludgeoned", "struck", "cracked")
@@ -175,7 +175,7 @@
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/scabbards.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi',
 	)
 	force = 12
 	flags_equip_slot = SLOT_WAIST
@@ -192,7 +192,7 @@
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/holster.dmi',
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/scabbards.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi',
 	)
 	force = 12
 	attack_verb = list("bludgeoned", "struck", "cracked")
@@ -496,7 +496,7 @@
 	icon_state = "bruterig"
 	map_specific_decoration = FALSE
 	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi',
 	)
 	flags_equip_slot = SLOT_BACK //yes we are belt subtype that is worn on back
 	storage_slots = 7

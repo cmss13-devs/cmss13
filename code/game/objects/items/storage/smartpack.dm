@@ -7,7 +7,7 @@
 	icon_state = "smartpack"
 	icon = 'icons/obj/items/clothing/backpack/smartpack.dmi'
 	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/smartpack.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/smartpack.dmi',
 	)
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	max_storage_space = 15

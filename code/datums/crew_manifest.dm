@@ -12,7 +12,7 @@ GLOBAL_DATUM_INIT(crew_manifest, /datum/crew_manifest, new)
 		"Engineering" = GLOB.ROLES_ENGINEERING,
 		"Requisitions" = GLOB.ROLES_REQUISITION,
 		"Medical" = GLOB.ROLES_MEDICAL,
-		"Miscellaneous" = GLOB.ROLES_MISC
+		"Miscellaneous" = GLOB.ROLES_MISC,
 	)
 
 /datum/crew_manifest/ui_static_data(mob/user)
@@ -53,7 +53,7 @@ GLOBAL_DATUM_INIT(crew_manifest, /datum/crew_manifest, new)
 			"name" = name,
 			"rank" = rank,
 			"squad" = squad,
-			"is_active" = record_entry.fields["p_stat"]
+			"is_active" = record_entry.fields["p_stat"],
 		)
 
 		for(var/iterated_dept in departments)

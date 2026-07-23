@@ -92,7 +92,7 @@ SUBSYSTEM_DEF(sentry)
 				"pre_context" = pre_context,
 				"context_line" = context,
 				"post_context" = post_context,
-				"source_link" = "https://github.com/cmss13-devs/cmss13/blob/[git_revision]/[called.file]#L[called.line]"
+				"source_link" = "https://github.com/cmss13-devs/cmss13/blob/[git_revision]/[called.file]#L[called.line]",
 			)
 
 			if(!censor_args)
@@ -109,11 +109,13 @@ SUBSYSTEM_DEF(sentry)
 				"round_id" = GLOB.round_id,
 			),
 			"exception" = list(
-				"values" = list(list(
-					"type" = error.error,
-					"value" = "Runtime Error",
-					"stacktrace" = list("frames" = stacktrace),
-				))
+				"values" = list(
+					list(
+						"type" = error.error,
+						"value" = "Runtime Error",
+						"stacktrace" = list("frames" = stacktrace),
+					),
+				),
 			),
 		)
 

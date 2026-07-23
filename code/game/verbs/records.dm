@@ -200,7 +200,7 @@ GLOBAL_DATUM_INIT(medals_view_tgui, /datum/medals_view_tgui, new)
 			"recipient_name" = medal.recipient_name,
 			"recipient_role" = medal.recipient_role,
 			"giver_name" = medal.giver_name,
-			"citation" = medal.citation
+			"citation" = medal.citation,
 		)
 
 		.["medals"] += list(current_medal)

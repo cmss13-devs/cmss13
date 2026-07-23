@@ -9,5 +9,5 @@
 	type_multipliers = list(
 		"bullet" = 0.67,
 		"slash" = 0.67,
-		"all" = 0.9
+		"all" = 0.9,
 	)

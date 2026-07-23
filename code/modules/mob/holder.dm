@@ -8,7 +8,7 @@
 		WEAR_L_EAR = 'icons/mob/humans/onmob/clothing/critters_shoulder.dmi',
 		WEAR_R_EAR = 'icons/mob/humans/onmob/clothing/critters_shoulder.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/critters_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/critters_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/critters_righthand.dmi',
 	)
 	flags_equip_slot = SLOT_HEAD
 

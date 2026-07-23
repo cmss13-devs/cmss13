@@ -76,15 +76,15 @@
 	//vvv Do not set these in squad defines
 	var/mob/living/carbon/human/squad_leader = null //Who currently leads it.
 	var/list/fireteam_leaders = list(
-									"FT1" = null,
-									"FT2" = null,
-									"FT3" = null
-									) //FT leaders stored here
+		"FT1" = null,
+		"FT2" = null,
+		"FT3" = null,
+	) //FT leaders stored here
 	var/list/list/fireteams = list(
-							"FT1" = list(),
-							"FT2" = list(),
-							"FT3" = list()
-							) //3 FTs where references to marines stored.
+		"FT1" = list(),
+		"FT2" = list(),
+		"FT3" = list(),
+	) //3 FTs where references to marines stored.
 	var/list/squad_info_data = list()
 
 	var/count = 0 //Current # in the squad

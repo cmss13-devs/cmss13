@@ -10,7 +10,7 @@
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/marksman_rifles.dmi',
 		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/marksman_rifles.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/marksman_rifles_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/marksman_rifles_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/marksman_rifles_righthand.dmi',
 	)
 	mouse_pointer = 'icons/effects/mouse_pointer/sniper_mouse.dmi'
 
@@ -37,7 +37,6 @@
 		/obj/item/ammo_magazine/rifle/m4ra/custom,
 		/obj/item/ammo_magazine/rifle/m4ra/custom/incendiary,
 		/obj/item/ammo_magazine/rifle/m4ra/custom/impact,
-
 	)
 	current_mag = /obj/item/ammo_magazine/rifle/m4ra/custom
 	attachable_allowed = list(

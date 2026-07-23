@@ -22,7 +22,7 @@ GLOBAL_LIST_INIT(shotgun_boxes_12g, list(
 	item_state = "slugs"
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/ammo_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/ammo_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/ammo_righthand.dmi',
 		)
 	default_ammo = /datum/ammo/bullet/shotgun/slug
 	caliber = "12g"
@@ -134,7 +134,7 @@ GLOBAL_LIST_INIT(shotgun_boxes_8g, list(
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/shotguns.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/ammo_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/ammo_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/ammo_righthand.dmi',
 		)
 	default_ammo = /datum/ammo/bullet/shotgun/heavy/slug
 	caliber = "8g"

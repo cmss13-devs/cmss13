@@ -1513,7 +1513,7 @@
 		/datum/emote/living/carbon/human/synthetic/working_joe/greeting/how_can_i_help,
 		/datum/emote/living/carbon/human/synthetic/working_joe/farewell/day_never_done,
 		/datum/emote/living/carbon/human/synthetic/working_joe/farewell/required_by_apollo,
-		/datum/emote/living/carbon/human/synthetic/working_joe/warning/safety_breach
+		/datum/emote/living/carbon/human/synthetic/working_joe/warning/safety_breach,
 	)
 	/// list of voicelines to use when damaged
 	var/static/list/damaged = list(
@@ -1522,7 +1522,7 @@
 		/datum/emote/living/carbon/human/synthetic/working_joe/damage/irresponsible,
 		/datum/emote/living/carbon/human/synthetic/working_joe/damage/this_is_futile,
 		/datum/emote/living/carbon/human/synthetic/working_joe/warning/hysterical,
-		/datum/emote/living/carbon/human/synthetic/working_joe/warning/patience
+		/datum/emote/living/carbon/human/synthetic/working_joe/warning/patience,
 	)
 
 /obj/structure/prop/invuln/joey/Initialize()

@@ -238,7 +238,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 			"ethylredoxrazine",
 			"cyanide",
 			"mindbreaker",
-			"stoxin"
+			"stoxin",
 			)
 
 		for(var/x=1;x<=additional_chems;x++)

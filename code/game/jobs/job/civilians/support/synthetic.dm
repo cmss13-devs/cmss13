@@ -16,45 +16,45 @@
 	switch(player.prefs.synth_specialisation)
 		if("Generalised")
 			gear_preset_whitelist = list(
-			"[JOB_SYNTH][WHITELIST_NORMAL]" = /datum/equipment_preset/synth/uscm,
-			"[JOB_SYNTH][WHITELIST_COUNCIL]" = /datum/equipment_preset/synth/uscm/councillor,
-			"[JOB_SYNTH][WHITELIST_LEADER]" = /datum/equipment_preset/synth/uscm/councillor
+				"[JOB_SYNTH][WHITELIST_NORMAL]" = /datum/equipment_preset/synth/uscm,
+				"[JOB_SYNTH][WHITELIST_COUNCIL]" = /datum/equipment_preset/synth/uscm/councillor,
+				"[JOB_SYNTH][WHITELIST_LEADER]" = /datum/equipment_preset/synth/uscm/councillor,
 			)
 		if("Engineering")
 			gear_preset_whitelist = list(
-			"[JOB_SYNTH][WHITELIST_NORMAL]" = /datum/equipment_preset/synth/uscm/engineering,
-			"[JOB_SYNTH][WHITELIST_COUNCIL]" = /datum/equipment_preset/synth/uscm/engineering/council,
-			"[JOB_SYNTH][WHITELIST_LEADER]" = /datum/equipment_preset/synth/uscm/engineering/council
+				"[JOB_SYNTH][WHITELIST_NORMAL]" = /datum/equipment_preset/synth/uscm/engineering,
+				"[JOB_SYNTH][WHITELIST_COUNCIL]" = /datum/equipment_preset/synth/uscm/engineering/council,
+				"[JOB_SYNTH][WHITELIST_LEADER]" = /datum/equipment_preset/synth/uscm/engineering/council,
 			)
 		if("Medical")
 			gear_preset_whitelist = list(
-			"[JOB_SYNTH][WHITELIST_NORMAL]" = /datum/equipment_preset/synth/uscm/medical,
-			"[JOB_SYNTH][WHITELIST_COUNCIL]" = /datum/equipment_preset/synth/uscm/medical/council,
-			"[JOB_SYNTH][WHITELIST_LEADER]" = /datum/equipment_preset/synth/uscm/medical/council
+				"[JOB_SYNTH][WHITELIST_NORMAL]" = /datum/equipment_preset/synth/uscm/medical,
+				"[JOB_SYNTH][WHITELIST_COUNCIL]" = /datum/equipment_preset/synth/uscm/medical/council,
+				"[JOB_SYNTH][WHITELIST_LEADER]" = /datum/equipment_preset/synth/uscm/medical/council,
 			)
 		if("Intel")
 			gear_preset_whitelist = list(
-			"[JOB_SYNTH][WHITELIST_NORMAL]" = /datum/equipment_preset/synth/uscm/intel,
-			"[JOB_SYNTH][WHITELIST_COUNCIL]" = /datum/equipment_preset/synth/uscm/intel/council,
-			"[JOB_SYNTH][WHITELIST_LEADER]" = /datum/equipment_preset/synth/uscm/intel/council
+				"[JOB_SYNTH][WHITELIST_NORMAL]" = /datum/equipment_preset/synth/uscm/intel,
+				"[JOB_SYNTH][WHITELIST_COUNCIL]" = /datum/equipment_preset/synth/uscm/intel/council,
+				"[JOB_SYNTH][WHITELIST_LEADER]" = /datum/equipment_preset/synth/uscm/intel/council,
 			)
 		if("Military Police")
 			gear_preset_whitelist = list(
-			"[JOB_SYNTH][WHITELIST_NORMAL]" = /datum/equipment_preset/synth/uscm/mp,
-			"[JOB_SYNTH][WHITELIST_COUNCIL]" = /datum/equipment_preset/synth/uscm/mp/council,
-			"[JOB_SYNTH][WHITELIST_LEADER]" = /datum/equipment_preset/synth/uscm/mp/council
+				"[JOB_SYNTH][WHITELIST_NORMAL]" = /datum/equipment_preset/synth/uscm/mp,
+				"[JOB_SYNTH][WHITELIST_COUNCIL]" = /datum/equipment_preset/synth/uscm/mp/council,
+				"[JOB_SYNTH][WHITELIST_LEADER]" = /datum/equipment_preset/synth/uscm/mp/council,
 			)
 		if("Command")
 			gear_preset_whitelist = list(
-			"[JOB_SYNTH][WHITELIST_NORMAL]" = /datum/equipment_preset/synth/uscm/command,
-			"[JOB_SYNTH][WHITELIST_COUNCIL]" = /datum/equipment_preset/synth/uscm/command/council,
-			"[JOB_SYNTH][WHITELIST_LEADER]" = /datum/equipment_preset/synth/uscm/command/council
+				"[JOB_SYNTH][WHITELIST_NORMAL]" = /datum/equipment_preset/synth/uscm/command,
+				"[JOB_SYNTH][WHITELIST_COUNCIL]" = /datum/equipment_preset/synth/uscm/command/council,
+				"[JOB_SYNTH][WHITELIST_LEADER]" = /datum/equipment_preset/synth/uscm/command/council,
 			)
 		if("Research")
 			gear_preset_whitelist = list(
-			"[JOB_SYNTH][WHITELIST_NORMAL]" = /datum/equipment_preset/synth/uscm/research,
-			"[JOB_SYNTH][WHITELIST_COUNCIL]" = /datum/equipment_preset/synth/uscm/research/council,
-			"[JOB_SYNTH][WHITELIST_LEADER]" = /datum/equipment_preset/synth/uscm/research/council
+				"[JOB_SYNTH][WHITELIST_NORMAL]" = /datum/equipment_preset/synth/uscm/research,
+				"[JOB_SYNTH][WHITELIST_COUNCIL]" = /datum/equipment_preset/synth/uscm/research/council,
+				"[JOB_SYNTH][WHITELIST_LEADER]" = /datum/equipment_preset/synth/uscm/research/council,
 			)
 
 /datum/job/civilian/synthetic/New()
@@ -62,7 +62,7 @@
 	gear_preset_whitelist = list(
 		"[JOB_SYNTH][WHITELIST_NORMAL]" = /datum/equipment_preset/synth/uscm,
 		"[JOB_SYNTH][WHITELIST_COUNCIL]" = /datum/equipment_preset/synth/uscm/councillor,
-		"[JOB_SYNTH][WHITELIST_LEADER]" = /datum/equipment_preset/synth/uscm/councillor
+		"[JOB_SYNTH][WHITELIST_LEADER]" = /datum/equipment_preset/synth/uscm/councillor,
 	)
 
 /datum/job/civilian/synthetic/get_whitelist_status(client/player)

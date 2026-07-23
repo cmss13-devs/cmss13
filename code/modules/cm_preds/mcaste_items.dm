@@ -5,7 +5,13 @@
 	caster_enabled = FALSE // no fancy-pants tools for you!
 	cloak_enabled = FALSE
 	smartdisc_enabled = FALSE
-	bracer_actions = list(/datum/action/predator_action/bracer/wristblade, /datum/action/predator_action/bracer/thwei, /datum/action/predator_action/bracer/capsule, /datum/action/predator_action/bracer/translator, /datum/action/predator_action/bracer/self_destruct)
+	bracer_actions = list(
+		/datum/action/predator_action/bracer/wristblade,
+		/datum/action/predator_action/bracer/thwei,
+		/datum/action/predator_action/bracer/capsule,
+		/datum/action/predator_action/bracer/translator,
+		/datum/action/predator_action/bracer/self_destruct,
+		)
 
 /obj/item/clothing/gloves/yautja/hunter/soldier/process()
 	. = ..()
@@ -43,7 +49,7 @@
 	icon = 'icons/obj/items/hunter/mcaste_gear.dmi'
 	icon_state = "fullarmor_soldier"
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/hunter/mcaste_gear.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/hunter/mcaste_gear.dmi',
 	)
 	slowdown = SLOWDOWN_ARMOR_LOWHEAVY
 	movement_compensation = SLOWDOWN_ARMOR_VERY_HEAVY
@@ -84,7 +90,7 @@
 	icon_state = "y-boots_powered"
 	item_state = "y-boots_powered"
 	item_icons = list(
-		WEAR_FEET = 'icons/mob/humans/onmob/hunter/mcaste_gear.dmi'
+		WEAR_FEET = 'icons/mob/humans/onmob/hunter/mcaste_gear.dmi',
 	)
 	armor_melee = CLOTHING_ARMOR_HIGHPLUS
 	armor_bullet = CLOTHING_ARMOR_ULTRAHIGH
@@ -115,7 +121,7 @@
 	item_state = "helmet_powered"
 	icon = 'icons/obj/items/hunter/mcaste_gear.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/hunter/mcaste_gear.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/hunter/mcaste_gear.dmi',
 	)
 	var/current_goggles = VISION_MODE_OFF
 	armor_melee = CLOTHING_ARMOR_HIGHPLUS
@@ -313,7 +319,7 @@
 	icon_state = "cannonpack"
 	item_state = "cannonpack_w"
 	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/hunter/mcaste_gear.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/hunter/mcaste_gear.dmi',
 	)
 	flags_equip_slot = SLOT_BACK
 	time_to_unequip = 10

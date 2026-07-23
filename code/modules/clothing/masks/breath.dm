@@ -68,7 +68,7 @@
 	item_state = "blue_skull_balaclava"
 	icon = 'icons/obj/items/clothing/masks/balaclava.dmi'
 	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/balaclava.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/balaclava.dmi',
 	)
 	flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
 	flags_inv_hide = HIDEALLHAIR|HIDEEARS|HIDEFACE
@@ -88,7 +88,7 @@
 	item_state = "coif"
 	icon = 'icons/obj/items/clothing/masks/balaclava.dmi'
 	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/balaclava.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/balaclava.dmi',
 	)
 	flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
 	flags_inv_hide = HIDEALLHAIR|HIDEEARS|HIDEFACE
@@ -145,7 +145,7 @@
 	item_state = "scarf_gray"
 	icon = 'icons/obj/items/clothing/masks/scarves.dmi'
 	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/scarves.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/scarves.dmi',
 	)
 	original_state = "scarf_gray"
 	flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
@@ -225,7 +225,7 @@
 	item_state = "torn_scarf_classic"
 	icon = 'icons/obj/items/clothing/masks/scarves.dmi'
 	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/scarves.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/scarves.dmi',
 	)
 	w_class = SIZE_SMALL
 	flags_inventory = ALLOWCPR
@@ -359,7 +359,7 @@
 	item_state = "neckerchief"
 	icon = 'icons/obj/items/clothing/masks/scarves.dmi'
 	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/scarves.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/scarves.dmi',
 	)
 	flags_inventory = ALLOWREBREATH|ALLOWCPR
 	var/adjust = FALSE
@@ -463,7 +463,7 @@
 	item_state = "owlf_mask"
 	icon = 'icons/obj/items/clothing/masks/gasmasks.dmi'
 	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/gasmasks.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/gasmasks.dmi',
 	)
 	flags_inventory = COVERMOUTH|ALLOWINTERNALS
 	flags_armor_protection = 0

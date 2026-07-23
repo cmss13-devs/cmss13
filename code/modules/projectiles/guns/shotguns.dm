@@ -11,7 +11,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/shotguns.dmi',
 		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/shotguns.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/shotguns_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/shotguns_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/shotguns_righthand.dmi',
 	)
 	mouse_pointer = 'icons/effects/mouse_pointer/shotgun_mouse.dmi'
 
@@ -615,7 +615,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/verticalgrip, //Underbarrel
 		/obj/item/attachable/flashlight/under_barrel,
-		/obj/item/attachable/stock/type23, //Stock
+		/obj/item/attachable/stock/type23, // Stock
 	)
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_INTERNAL_MAG
 	flags_equip_slot = SLOT_BACK
@@ -962,7 +962,15 @@ can cause issues with ammo types getting mixed up during the burst.
 	COOLDOWN_DECLARE(breach_action_cooldown)
 
 /obj/item/weapon/gun/shotgun/double/mou53/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 11, "rail_y" = 21, "under_x" = 17, "under_y" = 15, "stock_x" = 10, "stock_y" = 9) //Weird stock values, make sure any new stock matches the old sprite placement in the .dmi
+	attachable_offset = list(
+		"muzzle_x" = 33,
+		"muzzle_y" = 18,"rail_x" = 11,
+		"rail_y" = 21,
+		"under_x" = 17,
+		"under_y" = 15,
+		"stock_x" = 10,
+		"stock_y" = 9,
+		) //Weird stock values, make sure any new stock matches the old sprite placement in the .dmi
 
 /obj/item/weapon/gun/shotgun/double/mou53/set_gun_config_values()
 	..()
@@ -1192,7 +1200,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	var/list/throw_turfs = list(
 		get_step(behind_turf, behind_angle),
 		get_step(behind_turf, turn(behind_angle, 45)),
-		get_step(behind_turf, turn(behind_angle, -45))
+		get_step(behind_turf, turn(behind_angle, -45)),
 		)
 
 	//Sift through the turfs to remove ones that don't exist, and move ones that we can't throw the whole way into to a last-resort list.

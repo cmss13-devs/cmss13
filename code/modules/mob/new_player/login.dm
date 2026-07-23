@@ -32,9 +32,9 @@
 	lobby_window = new(client, "lobby_browser")
 	lobby_window.initialize(
 		assets = list(
-				get_asset_datum(/datum/asset/simple/tgui),
-				get_asset_datum(/datum/asset/simple/namespaced/chakrapetch)
-			)
+			get_asset_datum(/datum/asset/simple/tgui),
+			get_asset_datum(/datum/asset/simple/namespaced/chakrapetch),
+		)
 	)
 
 	tgui_interact(src)
@@ -176,7 +176,8 @@
 					lobby_confirmation_message = list(
 						"Are you sure you wish to observe to be a xeno candidate?",
 						"When you observe, you will not be able to join as marine.",
-						"It might also take some time to become a xeno or responder!")
+						"It might also take some time to become a xeno or responder!",
+						)
 					execute_on_confirm = CALLBACK(src, PROC_REF(observe_for_xeno))
 				return TRUE
 

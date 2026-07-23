@@ -388,7 +388,7 @@
 		"l_leg",
 		"l_foot",
 		"r_leg",
-		"r_foot"
+		"r_foot",
 	)
 
 /obj/effect/lingering_acid/Initialize(mapload, hive)

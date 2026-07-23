@@ -152,13 +152,13 @@
 		"name" = round_name,
 		"gamemode" = gamemode,
 		"map" = map,
-		"outcome" = outcome
+		"outcome" = outcome,
 	)
 	var/meta_json = json_encode(meta_data)
 
 	var/list/game_data = list(
 		"player_infos" = player_info,
-		"player_history" = player_history
+		"player_history" = player_history,
 	)
 	var/data_json = json_encode(game_data)
 

@@ -8,5 +8,5 @@
 
 	type_multipliers = list(
 		"blunt" = 0.67,
-		"all" = 0.9
+		"all" = 0.9,
 	)

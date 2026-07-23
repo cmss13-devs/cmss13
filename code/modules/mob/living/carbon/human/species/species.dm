@@ -100,7 +100,7 @@
 		"liver" = /datum/internal_organ/liver,
 		"kidneys" =  /datum/internal_organ/kidneys,
 		"brain" = /datum/internal_organ/brain,
-		"eyes" =  /datum/internal_organ/eyes
+		"eyes" =  /datum/internal_organ/eyes,
 		)
 
 	/// Factor of reduction of  KnockDown duration.
@@ -265,12 +265,12 @@
 			"[INTENT_HELP]" = "random",
 			"[INTENT_DISARM]" = "scissors",
 			"[INTENT_GRAB]" = "paper",
-			"[INTENT_HARM]" = "rock"
+			"[INTENT_HARM]" = "rock",
 		)
 		var/static/list/play_to_emote = list(
 			"rock" = EMOTE_ICON_ROCK,
 			"paper" = EMOTE_ICON_PAPER,
-			"scissors" = EMOTE_ICON_SCISSORS
+			"scissors" = EMOTE_ICON_SCISSORS,
 		)
 		var/protagonist_plays = intent_to_play["[H.a_intent]"] == "random" ? pick("rock", "paper", "scissors") : intent_to_play["[H.a_intent]"]
 		var/antagonist_plays = intent_to_play["[target.a_intent]"] == "random" ? pick("rock", "paper", "scissors") : intent_to_play["[target.a_intent]"]

@@ -83,8 +83,10 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 			title = "Resolved Tickets"
 	if(!l2b)
 		return
-	var/list/dat = list("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><link rel='stylesheet' type='text/css' href='[SSassets.transport.get_asset_url("common.css")]'><title>[title]</title></head>")
-	dat += "<A href='byond://?_src_=admin_holder;[HrefToken()];ahelp_tickets=[state]'>Refresh</A><br><br>"
+	var/list/dat = list(
+		"<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><link rel='stylesheet' type='text/css' href='[SSassets.transport.get_asset_url("common.css")]'><title>[title]</title></head>",
+		"<A href='byond://?_src_=admin_holder;[HrefToken()];ahelp_tickets=[state]'>Refresh</A><br><br>",
+		)
 	for(var/I in l2b)
 		var/datum/admin_help/AH = I
 		dat += "[SPAN_ADMINNOTICE("[SPAN_ADMINHELP("Ticket #[AH.id]")]: <A href='byond://?_src_=admin_holder;[HrefToken()];ahelp=[REF(AH)];ahelp_action=ticket' style='word-break: break-all;'>[AH.initiator_key_name]: [AH.name]</A>")]<br>"
@@ -399,7 +401,7 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 		"message" = html_encode(plain_text),
 		"html_message" = formatted_message,
 		"type" = message_type,
-		"islink" = link_data
+		"islink" = link_data,
 	)
 
 	ticket_interactions[html_message] = structured_data
@@ -704,9 +706,11 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 
 //Show the ticket panel
 /datum/admin_help/proc/TicketPanel()
-	var/list/dat = list("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><link rel='stylesheet' type='text/css' href='[SSassets.transport.get_asset_url("common.css")]'><title>Ticket #[id]</title></head>")
 	var/ref_src = "[REF(src)]"
-	dat += "<h4 style='word-break: break-all;'>Admin Help Ticket #[id]: [LinkedReplyName(ref_src)]</h4>"
+	var/list/dat = list(
+		"<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><link rel='stylesheet' type='text/css' href='[SSassets.transport.get_asset_url("common.css")]'><title>Ticket #[id]</title></head>",
+		"<h4 style='word-break: break-all;'>Admin Help Ticket #[id]: [LinkedReplyName(ref_src)]</h4>",
+		)
 	if(initiator_username && initiator_username != initiator_ckey)
 		dat += "<b>Username:</b> <span style='word-break: break-all;'>[initiator_username]</span> <b>| Ckey:</b> <span style='word-break: break-all;'>[initiator_ckey]</span><br>"
 	dat += "<b>State: [ticket_status()]</b>"

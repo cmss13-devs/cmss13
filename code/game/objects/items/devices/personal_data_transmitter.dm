@@ -150,7 +150,7 @@
 	worn_accessory_limit = 1
 	accessory_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/watches.dmi',
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/watches.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/watches.dmi',
 	)
 	var/dummy_icon_state = "pdt_watch"
 	var/copied_serial_number = null

@@ -82,9 +82,7 @@
 	var/vehicle_flags = VEHICLE_CLASS_WEAK
 
 	// References to the active/chosen hardpoint for each seat
-	var/active_hp = list(
-		VEHICLE_DRIVER = null
-	)
+	var/active_hp = list(VEHICLE_DRIVER = null)
 
 	// Map file name of the vehicle interior
 	var/interior_map = null
@@ -147,7 +145,7 @@
 	var/list/misc_multipliers = list(
 		"move" = 1.0,
 		"accuracy" = 1.0,
-		"cooldown" = 1
+		"cooldown" = 1,
 	)
 
 	//Changes how much damage the vehicle takes

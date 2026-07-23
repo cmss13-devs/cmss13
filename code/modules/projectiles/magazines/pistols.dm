@@ -204,7 +204,6 @@
 /obj/item/ammo_magazine/pistol/deagle
 	name = "\improper Desert Eagle magazine (.50)"
 	desc = "Seven rounds of powerful 50-caliber destruction."
-	default_ammo = /datum/ammo/bullet/pistol/deagle
 	caliber = ".50"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/pistols.dmi'
 	icon_state = "deagle"

@@ -20,6 +20,7 @@
 	var/list/cam_plane_masters
 	var/isXRay = FALSE
 	var/render_mode = RENDER_MODE_TARGET
+	var/plane_alpha = LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE
 
 /datum/component/camera_manager/Initialize()
 	. = ..()
@@ -147,12 +148,16 @@
 	target_height = current_area.bounds_y
 	update_area_camera()
 
-/datum/component/camera_manager/proc/enable_nvg(source, power, matrixcol)
+/datum/component/camera_manager/proc/enable_nvg(source, power = 1, matrixcol)
 	SIGNAL_HANDLER
 	for(var/plane_id in cam_plane_masters)
 		var/atom/movable/screen/plane_master/plane = cam_plane_masters["[plane_id]"]
 		plane.add_filter("nvg", 1, color_matrix_filter(color_matrix_from_string(matrixcol)))
-	sync_lighting_plane_alpha(LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE)
+	if(power > 3 && power < 7)
+		plane_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+	if(power >= 7)
+		plane_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
+	sync_lighting_plane_alpha(plane_alpha)
 
 /datum/component/camera_manager/proc/disable_nvg()
 	SIGNAL_HANDLER

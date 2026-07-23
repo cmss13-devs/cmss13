@@ -173,6 +173,9 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_TAIL_STAB
 
+	var/blunt_damage = 8 // How much damage Harpoon Tail on DISARM mode do. (pierces armor)
+	var/tail_mode = null // Harpoon Tail mode, used only to display in status.
+
 /datum/action/xeno_action/activable/prae_impale
 	name = "Impale"
 	action_icon_state = "prae_impale"
@@ -197,6 +200,11 @@
 	var/dodge_timer = TIMER_ID_NULL
 	var/speed_buff_amount = 0.5
 	var/afterimage_interval = 1 DECISECONDS
+
+	var/dodge_start_time = -1 // Used to countdown DANCER_DODGE_TIME.
+	var/refund_multiplier = 2.0 // How much refund we want to get back? 1.0 is 1s used to 1s cooldown, 2.0 is 1s used 2s cooldown.
+	var/recharge_time = null // Used in calculation, finalized number will be displayed as cooldown.
+	var/safe_click_cooldown = 0 // Cooldown after activation to prevent accidental double click.
 
 /datum/action/xeno_action/activable/prae_tail_trip
 	name = "Tail Trip"

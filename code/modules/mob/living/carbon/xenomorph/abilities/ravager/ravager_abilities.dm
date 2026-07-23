@@ -149,4 +149,7 @@
 	var/ammo_type = /datum/ammo/xeno/bone_chips/spread
 	var/shrapnel_amount = 40
 
+	var/shard_lock_duration = 15 SECONDS
+	var/shard_lock_speed_mod = 0.45
+
 

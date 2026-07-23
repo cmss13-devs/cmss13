@@ -24,6 +24,9 @@
 	if(..())
 		return TRUE
 
+	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
+		return
+
 	switch(M.a_intent)
 
 		if(INTENT_HELP)

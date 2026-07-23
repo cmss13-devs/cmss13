@@ -1299,6 +1299,15 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/asphalt/cement/cement3,
 /area/lv522/outdoors/nw_rockies)
+"aez" = (
+/obj/effect/landmark/survivor_spawner/lv522_forecon_major,
+/turf/open/floor/prison,
+/area/lv522/indoors/a_block/admin)
+"aeA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner/lv522_forecon_synth,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv522/indoors/a_block/admin)
 "aeD" = (
 /obj/structure/largecrate/random,
 /obj/effect/decal/cleanable/dirt,
@@ -78494,7 +78503,7 @@ fRk
 ibk
 qcd
 mEx
-sWr
+aez
 lxZ
 lHV
 wGY
@@ -79317,7 +79326,7 @@ lsa
 svf
 ydV
 sWT
-oGF
+aeA
 dkq
 iBr
 wGY

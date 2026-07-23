@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN 8
-#define SAVEFILE_VERSION_MAX 35
+#define SAVEFILE_VERSION_MAX 36
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -238,6 +238,12 @@
 	if(savefile_version < 35) // we have removed Tab from the default binds, allow users to bind it back if they want. needs to be async after logging in
 		updated_from = savefile_version
 
+	if(savefile_version < 36)
+		var/toggles_insert
+		S["toggles_insert"] >> toggles_insert
+		toggles_insert |= (PLAY_INSERT_STANDARD|PLAY_INSERT_CORPORATE|PLAY_INSERT_LEADER|PLAY_INSERT_MEDIC|PLAY_INSERT_ENGINEER|PLAY_INSERT_SPECIALIST|PLAY_INSERT_SMARTGUNNER|PLAY_INSERT_SYNTH|PLAY_INSERT_CO) // enabled by default for new saves
+		S["toggles_insert"] << toggles_insert
+
 	if(updated_from)
 		RegisterSignal(owner, COMSIG_CLIENT_LOGGED_IN, PROC_REF(handle_logged_in))
 
@@ -325,6 +331,7 @@
 	S["toggles_flashing"] >> toggles_flashing
 	S["toggles_ert"] >> toggles_ert
 	S["toggles_survivor"] >> toggles_survivor
+	S["toggles_insert"] >> toggles_insert
 	S["toggles_ert_pred"] >> toggles_ert_pred
 	S["toggles_admin"] >> toggles_admin
 	S["UI_style"] >> UI_style
@@ -488,6 +495,7 @@
 	toggles_flashing= sanitize_integer(toggles_flashing, 0, SHORT_REAL_LIMIT, initial(toggles_flashing))
 	toggles_ert = sanitize_integer(toggles_ert, 0, SHORT_REAL_LIMIT, initial(toggles_ert))
 	toggles_survivor = sanitize_integer(toggles_survivor, 0, SHORT_REAL_LIMIT, initial(toggles_survivor))
+	toggles_insert = sanitize_integer(toggles_insert, 0, SHORT_REAL_LIMIT, initial(toggles_insert))
 	toggles_ert_pred = sanitize_integer(toggles_ert_pred, 0, SHORT_REAL_LIMIT, initial(toggles_ert_pred))
 	toggles_admin = sanitize_integer(toggles_admin, 0, SHORT_REAL_LIMIT, initial(toggles_admin))
 	UI_style_color = sanitize_hexcolor(UI_style_color, initial(UI_style_color))
@@ -622,6 +630,7 @@
 	S["toggles_flashing"] << toggles_flashing
 	S["toggles_ert"] << toggles_ert
 	S["toggles_survivor"] << toggles_survivor
+	S["toggles_insert"] << toggles_insert
 	S["toggles_ert_pred"] << toggles_ert_pred
 	S["toggles_admin"] << toggles_admin
 	S["window_skin"] << window_skin

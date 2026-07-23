@@ -17003,7 +17003,7 @@
 	pixel_y = -6;
 	throw_range = 15;
 	pixel_x = 25;
-	req_one_access_txt = "5;19;39"
+	req_one_access_txt = "5;19;38"
 	},
 /obj/structure/sign/safety/storage{
 	pixel_x = 32;

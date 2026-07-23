@@ -3976,13 +3976,11 @@
 /area/adminlevel/ert_station/fax_response_station/exterior)
 "Pw" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/faxmachine/cmb{
-	pixel_y = 0
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/structure/machinery/faxmachine/cmb/highcomm,
 /turf/open/floor/shiva/blue/west,
 /area/adminlevel/ert_station/fax_response_station)
 "PM" = (

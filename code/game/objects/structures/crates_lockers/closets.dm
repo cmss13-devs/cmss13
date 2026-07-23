@@ -36,6 +36,12 @@
 	GLOB.closet_list += src
 	flags_atom |= USES_HEARING
 
+	// Make us uninteractable if hidden by a door
+	for(var/obj/structure/machinery/door/door in loc)
+		RegisterSignal(door, list(COMSIG_DOOR_OPEN, COMSIG_DOOR_CLOSE), PROC_REF(check_doors))
+		if(door.density)
+			mouse_opacity = 0
+
 /obj/structure/closet/Destroy()
 	GLOB.closet_list -= src
 	return ..()
@@ -54,19 +60,27 @@
 
 	return ..()
 
+/// This will update the mouse_opacity depending on if any of the doors in our loc have density
+/obj/structure/closet/proc/check_doors()
+	for(var/obj/structure/machinery/door/door in loc)
+		if(door.density)
+			mouse_opacity = 0
+			return
+	mouse_opacity = initial(mouse_opacity)
+
 /obj/structure/closet/proc/select_gamemode_equipment(gamemode)
 	return
 
-/obj/structure/closet/proc/can_open()
-	if(src.welded)
-		return 0
-	return 1
+/obj/structure/closet/proc/can_open(mob/user)
+	if(welded)
+		return FALSE
+	return TRUE
 
 /obj/structure/closet/proc/can_close(mob/user)
 	for(var/obj/structure/closet/closet in get_turf(src))
 		if(closet != src && !closet.wall_mounted)
 			return FALSE
-	for(var/mob/living/carbon/xenomorph/xeno in get_turf(src))
+	if(locate(/mob/living/carbon/xenomorph) in get_turf(src))
 		return FALSE
 	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy))
 		for(var/mob/living/carbon/human/closed_mob in get_turf(src))
@@ -94,7 +108,7 @@
 	if(opened)
 		return FALSE
 
-	if(!force && !can_open())
+	if(!force && !can_open(user))
 		return FALSE
 
 	dump_contents()

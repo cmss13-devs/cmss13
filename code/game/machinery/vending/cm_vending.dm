@@ -74,6 +74,20 @@ IN_USE used for vending/denying
 	. = ..()
 	cm_build_inventory(get_listed_products(), 1, 3)
 
+	// Make us uninteractable if hidden by a door
+	for(var/obj/structure/machinery/door/door in loc)
+		RegisterSignal(door, list(COMSIG_DOOR_OPEN, COMSIG_DOOR_CLOSE), PROC_REF(check_doors))
+		if(door.density)
+			mouse_opacity = 0
+
+/// This will update the mouse_opacity depending on if any of the doors in our loc have density
+/obj/structure/machinery/cm_vending/proc/check_doors()
+	for(var/obj/structure/machinery/door/door in loc)
+		if(door.density)
+			mouse_opacity = 0
+			return
+	mouse_opacity = initial(mouse_opacity)
+
 /obj/structure/machinery/cm_vending/update_icon()
 	//restoring sprite to initial
 	overlays.Cut()

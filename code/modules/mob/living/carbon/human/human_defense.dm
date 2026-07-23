@@ -79,6 +79,48 @@ Contains most of the procs that are called when a mob is attacked by something
 		protection = acid_effect.adjust_armor(protection, type)
 	return protection
 
+//For adjusting armor values of specific limbs, where type is the armor type, damagetype is the damage type, and value is the amount it changes (positive or negative)
+/mob/living/carbon/human/proc/adjustarmor_organ(obj/limb/def_zone, type, damagetype, value)
+
+	if(!type || !value || !damagetype)
+		return
+
+	var/list/protective_gear = list(head, wear_mask, wear_suit, w_uniform, gloves, shoes, glasses)
+	var/list/damage_types = list(ARMOR_MELEE, ARMOR_BIO, ARMOR_BULLET, ARMOR_LASER, ARMOR_BOMB, ARMOR_ENERGY, ARMOR_INTERNALDAMAGE, XENO_VS_HUMAN_ARMOR_TYPES, HUMAN_VS_HUMAN_ARMOR_TYPES, ALL_ARMOR_TYPES)
+	for(type in protective_gear)
+		if(istype(type, /obj/item/clothing))
+			var/obj/item/clothing/worngear = type
+			if(worngear.flags_armor_protection)
+				for(damagetype in damage_types)
+					switch(damagetype)
+						if(ARMOR_MELEE)
+							worngear.armor_melee += value
+						if(ARMOR_BIO)
+							worngear.armor_bio += value
+						if(ARMOR_BULLET)
+							worngear.armor_bullet += value
+						if(ARMOR_BOMB)
+							worngear.armor_bomb += value
+						if(ARMOR_ENERGY)
+							worngear.armor_energy += value
+						if(ARMOR_INTERNALDAMAGE)
+							worngear.armor_internaldamage += value
+						if(XENO_VS_HUMAN_ARMOR_TYPES)
+							worngear.armor_melee += value
+							worngear.armor_bio += value
+							worngear.armor_internaldamage += value
+						if(HUMAN_VS_HUMAN_ARMOR_TYPES)
+							worngear.armor_internaldamage += value
+							worngear.armor_bullet += value
+							worngear.armor_bomb += value
+						if(ALL_ARMOR_TYPES)
+							worngear.armor_internaldamage += value
+							worngear.armor_bullet += value
+							worngear.armor_bomb += value
+							worngear.armor_melee += value
+							worngear.armor_energy += value
+							worngear.armor_bio += value
+
 /mob/living/carbon/human/get_sharp_obj_blocker(obj/limb/limb)
 	for(var/obj/item/gear in list(head, wear_mask, wear_suit, w_uniform, gloves, shoes, glasses))
 		if(HAS_FLAG(gear.flags_armor_protection, limb.body_part) && HAS_FLAG(gear.flags_inventory, BLOCKSHARPOBJ))

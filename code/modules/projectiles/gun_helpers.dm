@@ -763,7 +763,7 @@ DEFINES in setup.dm, referenced here.
 	playsound(source, 'sound/weapons/handling/gun_burst_toggle.ogg', 15, 1)
 
 	if(ishuman(source))
-		to_chat(source, SPAN_NOTICE("[icon2html(src, source)] You switch to <b>[gun_firemode]</b>."))
+		to_chat(source, SPAN_NOTICE("[icon2html(src, source)] You switch to [SPAN_BOLD(gun_firemode)]."))
 	SEND_SIGNAL(src, COMSIG_GUN_FIRE_MODE_TOGGLE, gun_firemode)
 
 /obj/item/weapon/gun/proc/add_firemode(added_firemode, mob/user)

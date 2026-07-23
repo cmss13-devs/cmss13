@@ -111,6 +111,8 @@
 #define SPAN_MAROON(X) "<span class='maroon'>[X]</span>"
 #define SPAN_ORANGE(X) "<span class='orange'>[X]</span>"
 #define SPAN_PURPLE(X) "<span class='purple'>[X]</span>"
+
+#define SPAN_CYAN(X) "<span class='cyan'>[X]</span>"
 #define SPAN_RED(X) "<span class='red'>[X]</span>"
 #define SPAN_DARKER_RED(X) "<span class='darker_red'>[X]</span>"
 

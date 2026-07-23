@@ -788,3 +788,72 @@
 <span style='color:#607c4c; font-size:95%;'>Intel suggests CANC separatists or a UA/3WE incursion, but as you touch down in the hangar, something feels wrong. No welcome party. No usual hustle of a working colony. Nothing to suggest an incursion of any kind.</span><br><br>\
 <span style='color:#607c4c; font-size:95%;'>Your mission is clear—find out what happened to your supply ship and comrades, retrieve your equipment, and uncover the truth of what really happened to the colony.</span>"
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
+
+
+
+// Atlan UPP ERT-Responders Survs
+
+/obj/effect/landmark/survivor_spawner/atlan_responder_UPP/soldier
+	icon_state = "surv_upp"
+	equipment = /datum/equipment_preset/survivor/atlan_responder_UPP/soldier
+	CO_equipment = /datum/equipment_preset/survivor/atlan_responder_UPP/soldier
+	synth_equipment = /datum/equipment_preset/synth/survivor/atlan_responder_UPP
+	intro_text = list("You are a member of a UPP response team!",\
+	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to survive. This station's armoury and cargo should hold additional supplies./span>")
+	story_text = "<span style='color:#607c4c; font-size:95%;'>You are part of an response team of the Union of Progressive Peoples, deployed alongside the CEC to build garrisons on distant worlds. While garrisoned on a nearby post you received a distress signal from the Atlan Station mining platform in orbit of the gas giant KG-256. Vital to the region's fuel economy, your team was sent to investigate.</span><br><br>\
+<span style='color:#607c4c; font-size:95%;'>The distress signal was automated and gave no information, your best guesses wwere pirates or a systems failure. When your team landed however, the station was eerily empty.</span><br><br>\
+<span style='color:#607c4c; font-size:95%;'>While trying to locate the station's administrator and workers your squad was ambushed by xenomorphs. Fortifying your position you managed to stave off the initial assault but with moderate casualties. With your pilot not responding over your headets you fear your only hope of getting out of this rock is by someone else answering the ongoing distress signal.</span>"
+	spawn_priority = SPAWN_PRIORITY_LOW
+
+/obj/effect/landmark/survivor_spawner/atlan_responder_UPP/sapper
+	icon_state = "surv_upp"
+	equipment = /datum/equipment_preset/survivor/atlan_responder_UPP/sapper
+	CO_equipment = /datum/equipment_preset/survivor/atlan_responder_UPP/sapper
+	synth_equipment = /datum/equipment_preset/synth/survivor/atlan_responder_UPP
+	intro_text = list("You are a member of a UPP response team!",\
+	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to survive. This station's armoury and cargo should hold additional supplies./span>")
+	story_text = "<span style='color:#607c4c; font-size:95%;'>You are part of an response team of the Union of Progressive Peoples, deployed alongside the CEC to build garrisons on distant worlds. While garrisoned on a nearby post you received a distress signal from the Atlan Station mining platform in orbit of the gas giant KG-256. Vital to the region's fuel economy, your team was sent to investigate.</span><br><br>\
+<span style='color:#607c4c; font-size:95%;'>The distress signal was automated and gave no information, your best guesses wwere pirates or a systems failure. When your team landed however, the station was eerily empty.</span><br><br>\
+<span style='color:#607c4c; font-size:95%;'>While trying to locate the station's administrator and workers your squad was ambushed by xenomorphs. Fortifying your position you managed to stave off the initial assault but with moderate casualties. With your pilot not responding over your headets you fear your only hope of getting out of this rock is by someone else answering the ongoing distress signal.</span>"
+
+/obj/effect/landmark/survivor_spawner/atlan_responder_UPP/medic
+	icon_state = "surv_upp"
+	equipment = /datum/equipment_preset/survivor/atlan_responder_UPP/medic
+	CO_equipment = /datum/equipment_preset/survivor/atlan_responder_UPP/medic
+	synth_equipment = /datum/equipment_preset/synth/survivor/atlan_responder_UPP
+	intro_text = list("You are a member of a UPP response team!",\
+	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to survive. This station's armoury and cargo should hold additional supplies./span>")
+	story_text = "<span style='color:#607c4c; font-size:95%;'>You are part of an response team of the Union of Progressive Peoples, deployed alongside the CEC to build garrisons on distant worlds. While garrisoned on a nearby post you received a distress signal from the Atlan Station mining platform in orbit of the gas giant KG-256. Vital to the region's fuel economy, your team was sent to investigate.</span><br><br>\
+<span style='color:#607c4c; font-size:95%;'>The distress signal was automated and gave no information, your best guesses wwere pirates or a systems failure. When your team landed however, the station was eerily empty.</span><br><br>\
+<span style='color:#607c4c; font-size:95%;'>While trying to locate the station's administrator and workers your squad was ambushed by xenomorphs. Fortifying your position you managed to stave off the initial assault but with moderate casualties. With your pilot not responding over your headets you fear your only hope of getting out of this rock is by someone else answering the ongoing distress signal.</span>"
+	spawn_priority = SPAWN_PRIORITY_MEDIUM
+
+/obj/effect/landmark/survivor_spawner/atlan_responder_UPP/specialist
+	icon_state = "surv_upp"
+	equipment = /datum/equipment_preset/survivor/atlan_responder_UPP/specialist
+	CO_equipment = /datum/equipment_preset/survivor/atlan_responder_UPP/specialist
+	synth_equipment = /datum/equipment_preset/synth/survivor/atlan_responder_UPP
+	intro_text = list("You are a member of a UPP response team!",\
+	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to survive. This station's armoury and cargo should hold additional supplies./span>")
+	story_text = "<span style='color:#607c4c; font-size:95%;'>You are part of an response team of the Union of Progressive Peoples, deployed alongside the CEC to build garrisons on distant worlds. While garrisoned on a nearby post you received a distress signal from the Atlan Station mining platform in orbit of the gas giant KG-256. Vital to the region's fuel economy, your team was sent to investigate.</span><br><br>\
+<span style='color:#607c4c; font-size:95%;'>The distress signal was automated and gave no information, your best guesses wwere pirates or a systems failure. When your team landed however, the station was eerily empty.</span><br><br>\
+<span style='color:#607c4c; font-size:95%;'>While trying to locate the station's administrator and workers your squad was ambushed by xenomorphs. Fortifying your position you managed to stave off the initial assault but with moderate casualties. With your pilot not responding over your headets you fear your only hope of getting out of this rock is by someone else answering the ongoing distress signal.</span>"
+	spawn_priority = SPAWN_PRIORITY_HIGH
+
+/obj/effect/landmark/survivor_spawner/atlan_responder_UPP/squad_leader
+	icon_state = "surv_upp"
+	equipment = /datum/equipment_preset/survivor/atlan_responder_UPP/squad_leader
+	CO_equipment = /datum/equipment_preset/survivor/atlan_responder_UPP/squad_leader
+	synth_equipment = /datum/equipment_preset/synth/survivor/atlan_responder_UPP
+	intro_text = list("You are a member of a UPP response team!",\
+	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to survive. This station's armoury and cargo should hold additional supplies./span>")
+	story_text = "<span style='color:#607c4c; font-size:95%;'>You are part of an response team of the Union of Progressive Peoples, deployed alongside the CEC to build garrisons on distant worlds. While garrisoned on a nearby post you received a distress signal from the Atlan Station mining platform in orbit of the gas giant KG-256. Vital to the region's fuel economy, your team was sent to investigate.</span><br><br>\
+<span style='color:#607c4c; font-size:95%;'>The distress signal was automated and gave no information, your best guesses wwere pirates or a systems failure. When your team landed however, the station was eerily empty.</span><br><br>\
+<span style='color:#607c4c; font-size:95%;'>While trying to locate the station's administrator and workers your squad was ambushed by xenomorphs. Fortifying your position you managed to stave off the initial assault but with moderate casualties. With your pilot not responding over your headets you fear your only hope of getting out of this rock is by someone else answering the ongoing distress signal.</span>"
+	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
+

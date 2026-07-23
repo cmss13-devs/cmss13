@@ -734,17 +734,17 @@
 
 /obj/item/ammo_magazine/rifle/sharp/explosive
 	name = "\improper 9X-E sticky explosive dart magazine"
-	desc = "A specialized explosive sticky dart magazine for the SHARP rifle."
+	desc = "A specialized explosive dart magazine for the P9 SHARP rifle. Darts either embed into targets and detonate after a short delay, or stay behind as proximity-triggered explosive mines."
 
 /obj/item/ammo_magazine/rifle/sharp/incendiary
 	name = "\improper 9X-T sticky incendiary dart magazine"
-	desc = "A specialized incendiary dart magazine for the SHARP rifle."
+	desc = "A specialized incendiary dart magazine for the P9 SHARP rifle. Darts either embed into targets and release an incendiary concoction after a short delay, or stay behind as proximity-triggered incendiary mines."
 	icon_state = "sharp_incendiary_mag"
 	default_ammo = /datum/ammo/rifle/sharp/incendiary
 
 /obj/item/ammo_magazine/rifle/sharp/flechette
 	name = "\improper 9X-F flechette dart magazine"
-	desc = "A specialized flechette dart magazine for the SHARP rifle."
+	desc = "A specialized flechette dart magazine for the P9 SHARP rifle. Unlike their explosive and incendiary counterparts, the darts detonate on contact without delay, dispersing a concentrated cone of metal shards that shred anything in their path."
 	icon_state = "sharp_flechette_mag"
 	default_ammo = /datum/ammo/rifle/sharp/flechette
 

@@ -30,6 +30,8 @@ SUBSYSTEM_DEF(mapgrids)
 /// and the filter flags. Remember, on mapgrids, all levels of multi-z are handled together.
 /// TODO remove this later, this is a stand-in replacement for testing
 /datum/controller/subsystem/mapgrids/proc/players_in_range_legacy(datum/shape/rectangle/range, z_level, flags = NO_FLAGS)
+	if(!z_level)
+		return
 	var/datum/mapgrid/grid = manager.mapgrids_by_z[z_level]
 	if(!grid)
 		return

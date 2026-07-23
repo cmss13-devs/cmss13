@@ -210,7 +210,7 @@
 	icon_state = "deagle"
 	max_rounds = 7
 	gun_type = /obj/item/weapon/gun/pistol/heavy
-	default_ammo = /datum/ammo/bullet/pistol/heavy
+	default_ammo = /datum/ammo/bullet/pistol/deagle
 	ammo_band_icon = "+deagle_band"
 	ammo_band_icon_empty = "+deagle_band_e"
 
@@ -218,7 +218,7 @@
 	name = "heavy Desert Eagle magazine (.50)"
 	desc = "Seven rounds of devastatingly powerful 50-caliber destruction."
 	gun_type = /obj/item/weapon/gun/pistol/heavy/co
-	default_ammo = /datum/ammo/bullet/pistol/deagle
+	default_ammo = /datum/ammo/bullet/pistol/deagle/super
 	ammo_band_color = AMMO_BAND_COLOR_SUPER
 
 /obj/item/ammo_magazine/pistol/heavy/super/highimpact
@@ -230,7 +230,7 @@
 /obj/item/ammo_magazine/pistol/heavy/super/highimpact/ap
 	name = "\improper High Impact Armor-Piercing Desert Eagle magazine (.50)"
 	desc = "Seven rounds of devastatingly powerful 50-caliber destruction. Packs a devastating punch. The bullets are tipped with an osmium-tungsten carbide alloy to not only stagger but also shred through any target's armor. Issued in few numbers due to the massive production cost and worries about hull breaches. Point away from anything you value."
-	default_ammo = /datum/ammo/bullet/pistol/deagle/highimpact/ap
+	default_ammo = /datum/ammo/bullet/pistol/deagle/super/highimpact/ap
 	ammo_band_color = AMMO_BAND_COLOR_AP
 
 //-------------------------------------------------------
@@ -555,3 +555,98 @@ L54 service pistol
 	name = "\improper L54 toxin magazine (9mm)"
 	default_ammo = /datum/ammo/bullet/pistol/ap/toxin
 	ammo_band_color = AMMO_BAND_COLOR_TOXIN
+
+
+//-------------------------------------------------------
+
+/**
+ * Handfuls
+*/
+
+//-------------------------------------------------------
+//9mm
+
+/obj/item/ammo_magazine/handful/pistol
+	name = "handful of pistol bullets (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol
+	caliber = "9mm"
+	max_rounds = 6
+	current_rounds = 6
+	transfer_handful_amount = 6
+
+/obj/item/ammo_magazine/handful/pistol/hp
+	name = "handful of hollowpoint pistol bullets (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/hollow
+
+/obj/item/ammo_magazine/handful/pistol/incendiary
+	name = "handful of hollowpoint pistol bullets (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/incendiary
+
+/obj/item/ammo_magazine/handful/pistol/ap
+	name = "handful of armor-piercing pistol bullets (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/ap
+
+/obj/item/ammo_magazine/handful/pistol/ap/penetrating
+	name = "handful of wall-penetrating pistol bullets (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/ap/penetrating
+
+/obj/item/ammo_magazine/handful/pistol/ap/toxin
+	name = "handful of toxic pistol bullets (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/ap/toxin
+
+/obj/item/ammo_magazine/handful/pistol/le
+	name = "handful of armor-shredding pistol bullets (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/le
+
+/obj/item/ammo_magazine/handful/pistol/rubber
+	name = "handful of rubber pistol bullets (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/rubber
+
+//-------------------------------------------------------
+//9mm ES-4
+
+/obj/item/ammo_magazine/handful/pistol/rubber/es4
+	name = "handful of stun pistol bullets (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/rubber/es4
+
+//-------------------------------------------------------
+//.45
+
+/obj/item/ammo_magazine/handful/pistol/heavy
+	name = "handful of heavy pistol bullets (.45)"
+	default_ammo = /datum/ammo/bullet/pistol/heavy
+	caliber = ".45"
+	max_rounds = 6
+	current_rounds = 6
+	transfer_handful_amount = 6
+
+/obj/item/ammo_magazine/handful/pistol/heavy/highimpact
+	name = "handful of high-impact pistol bullets (.45)"
+	default_ammo = /datum/ammo/bullet/pistol/heavy/highimpact
+
+/obj/item/ammo_magazine/handful/pistol/heavy/highimpact/ap
+	name = "handful of high-impact armor-piercing pistol bullets (.45)"
+	default_ammo = /datum/ammo/bullet/pistol/heavy/highimpact/ap
+
+//-------------------------------------------------------
+//.50
+
+/obj/item/ammo_magazine/handful/pistol/deagle
+	name = "handful of heavy pistol bullets (.50)"
+	default_ammo = /datum/ammo/bullet/pistol/deagle
+	caliber = ".50"
+	max_rounds = 7
+	current_rounds = 7
+	transfer_handful_amount = 7
+
+/obj/item/ammo_magazine/handful/pistol/deagle/super
+	name = "handful of high-power pistol bullets (.50)"
+	default_ammo = /datum/ammo/bullet/pistol/deagle/super
+
+/obj/item/ammo_magazine/handful/pistol/deagle/super/highimpact
+	name = "handful of high-impact pistol bullets (.50)"
+	default_ammo = /datum/ammo/bullet/pistol/deagle/super/highimpact
+
+/obj/item/ammo_magazine/handful/pistol/deagle/super/highimpact/ap
+	name = "handful of high-impact armor-piercing pistol bullets (.50)"
+	default_ammo = /datum/ammo/bullet/pistol/deagle/super/highimpact/ap

@@ -249,6 +249,10 @@
 	if(!checker)
 		return
 
+	if((checker != src && (checker.sdisabilities & DISABILITY_BLIND || checker.blinded)) || checker.stat == UNCONSCIOUS)
+		to_chat(checker, boxed_message(SPAN_NOTICE("You can't exactly tell what the problem is currently.")))
+		return
+
 	if(checker == src) // this probably would be better off in a separate, universal proc so itll be easier for everyone involved i think
 		var/pronoun = "itself"
 		switch(gender)
@@ -325,30 +329,19 @@
 		var/postscript
 		if(checker == src) // obviously it wont come off as obvious to other people, unless its dislocated or w/e
 			if(org.status & LIMB_UNCALIBRATED_PROSTHETIC)
-				postscript += " <b>(NONFUNCTIONAL)</b>"
+				postscript += " [SPAN_BOLD("(NONFUNCTIONAL)")]"
 			if(org.status & LIMB_BROKEN)
-				postscript += " <b>(BROKEN)</b>"
+				postscript += " [SPAN_BOLD("(BROKEN)")]"
 
 		if(org.status & LIMB_SPLINTED_INDESTRUCTIBLE)
-			postscript += " <b>(<a href='byond://?src=\ref[src];remove_splint=[org.name]'><span class='corp_label_red'>NANOSPLINTED</a>)</b>"
+			postscript += " [SPAN_BOLD("(<a href='byond://?src=\ref[src];remove_splint=[org.name]'><span class='corp_label_red'>NANOSPLINTED</a>)")]"
 		else if(org.status & LIMB_SPLINTED)
-			postscript += " <b>(<a href='byond://?src=\ref[src];remove_splint=[org.name]'><span class='corp_label_red'>SPLINTED</a>)</b>"
+			postscript += " [SPAN_BOLD("(<a href='byond://?src=\ref[src];remove_splint=[org.name]'><span class='corp_label_red'>SPLINTED</a>)")]"
 
-		//for(var/datum/effects/bleeding/arterial/art_bleed in org.bleeding_effects_list)
-		//	postscript += " <b>It is bleeding profusely.</b>"
-		for(var/datum/effects/bleeding/internal/int_bleed in org.bleeding_effects_list)
-			postscript += " <b>The skin looks to be discolored.</b>"
-
-		//if(org.status & LIMB_DISLOCATED)
-		//	postscript += " <b>(DISLOCATED)</b>" //href this to undislocate obviously with tarkovmed integrity
-		//if(org.status & LIMB_CONSTRICTED)
-		//	postscript += " <b>(<a href='byond://?src=\ref[src];remove_tourniquet=[org.name]'><span class='corp_label_red'>CONSTRICTED</a>)</b>"
-			postscript = replacetext(postscript, " <b>The skin looks to be discolored.</b>", "")
-			postscript = replacetext(postscript, " <b>It is bleeding profusely.</b>", "")
 		if(org.status & LIMB_THIRD_DEGREE_BURNS)
-			postscript += "<b>(SEVERE BURN)</b>"
+			postscript += SPAN_BOLD("(SEVERE BURN)")
 		if(org.status & LIMB_ESCHAR)
-			postscript += " <b>(ESCHAR)</b>"
+			postscript += " [SPAN_BOLD("(ESCHAR)")]"
 
 
 		if(postscript)

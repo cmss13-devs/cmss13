@@ -449,7 +449,7 @@
 		.["is_disabled"] = TRUE
 	.["locked_down"] = FALSE
 	.["can_fly_by"] = !is_remote
-	if(SSticker.mode.active_lz == null) {.["can_set_automated"] = FALSE} //Disables auto mode if default LZ not set
+	if(SSticker.mode.active_lz == null) .["can_set_automated"] = FALSE //Disables auto mode if default LZ not set
 	else {	.["can_set_automated"] = is_remote }
 	.["automated_control"] = list(
 		"is_automated" = shuttle?.automated_hangar_id != null || shuttle?.automated_lz_id != null,

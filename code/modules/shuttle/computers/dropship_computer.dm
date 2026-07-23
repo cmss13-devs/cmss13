@@ -621,10 +621,10 @@
 			shuttle.automated_lz_id = ground_lz
 			shuttle.automated_delay = delay
 			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
-			if(SSticker.mode.active_lz == null){
+			if(SSticker.mode.active_lz == null)
 				to_chat(user, SPAN_WARNING("A primary landing zone must be designated prior to launch."))
 				playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
-				return FALSE }
+				return FALSE
 			if(shuttle.faction == FACTION_MARINE)
 				log_ares_flight(user.name, "Enabled autopilot for Dropship [shuttle.name].")
 			var/log = "[key_name(user)] has enabled auto pilot on '[shuttle.name]'"

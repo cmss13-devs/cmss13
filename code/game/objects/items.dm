@@ -341,7 +341,7 @@
 	else if(isturf(loc) && HAS_TRAIT(user, TRAIT_HAULED))
 		return
 
-	throwing = 0
+	REMOVE_TRAIT(src, TRAIT_LAUNCHED, LAUNCHED_TRAIT)
 
 	if(loc == user)
 		if(!user.drop_inv_item_on_ground(src))

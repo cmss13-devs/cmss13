@@ -87,36 +87,36 @@
 		if (T.density)
 			turf_launch_collision(T)
 
-	throwing = FALSE
-	rebounding = FALSE
+	REMOVE_TRAIT(src, TRAIT_LAUNCHED, LAUNCHED_TRAIT)
+	REMOVE_TRAIT(src, TRAIT_REBOUNDING, REBOUNDING_TRAIT)
 
 /atom/movable/proc/mob_launch_collision(mob/living/L)
-	if (!rebounding)
+	if (!HAS_TRAIT(src, TRAIT_REBOUNDING))
 		L.hitby(src)
 
 /atom/movable/proc/obj_launch_collision(obj/O)
-	if (!O.anchored && !rebounding && !isxeno(src))
+	if (!O.anchored && !HAS_TRAIT(src, TRAIT_REBOUNDING) && !isxeno(src))
 		O.Move(get_step(O, dir))
-	else if (!rebounding && rebounds)
+	else if (!HAS_TRAIT(src, TRAIT_REBOUNDING) && rebounds)
 		var/oldloc = loc
 		var/launched_speed = cur_speed
 		addtimer(CALLBACK(src, PROC_REF(rebound), oldloc, launched_speed), 0.5)
 
-	if (!rebounding)
+	if (!HAS_TRAIT(src, TRAIT_REBOUNDING))
 		O.hitby(src)
 
 /atom/movable/proc/turf_launch_collision(turf/T)
-	if (!rebounding && rebounds)
+	if (!HAS_TRAIT(src, TRAIT_REBOUNDING) && rebounds)
 		var/oldloc = loc
 		var/launched_speed = cur_speed
 		addtimer(CALLBACK(src, PROC_REF(rebound), oldloc, launched_speed), 0.5)
 
-	if (!rebounding)
+	if (!HAS_TRAIT(src, TRAIT_REBOUNDING))
 		T.hitby(src)
 
 /atom/movable/proc/rebound(oldloc, launched_speed)
 	if (loc == oldloc)
-		rebounding = TRUE
+		ADD_TRAIT(src, TRAIT_REBOUNDING, REBOUNDING_TRAIT)
 		var/datum/launch_metadata/LM = new()
 		LM.target = get_step(src, turn(dir, 180))
 		LM.range = 1
@@ -186,7 +186,7 @@
 	var/delay = 10/cur_speed - 0.5 // scales delay back to deciseconds for when sleep is called
 	var/pass_flags = LM.pass_flags
 
-	throwing = TRUE
+	ADD_TRAIT(src, TRAIT_LAUNCHED, LAUNCHED_TRAIT)
 
 	add_temp_pass_flags(pass_flags)
 	var/turf/start_turf
@@ -204,7 +204,7 @@
 	var/early_exit = FALSE
 	LM.dist = 0
 	for (var/turf/T in path)
-		if (!src || !throwing || loc != last_loc || !isturf(src.loc))
+		if (!src || !HAS_TRAIT(src, TRAIT_LAUNCHED) || loc != last_loc || !isturf(src.loc))
 			break
 		if (!LM || QDELETED(LM))
 			early_exit = TRUE
@@ -219,7 +219,7 @@
 		sleep(delay)
 
 	//done throwing, either because it hit something or it finished moving
-	if ((isobj(src) || ismob(src)) && throwing && !early_exit)
+	if ((isobj(src) || ismob(src)) && HAS_TRAIT(src, TRAIT_LAUNCHED) && !early_exit)
 		var/turf/T = get_turf(src)
 		if(!istype(T))
 			return
@@ -233,8 +233,8 @@
 				hit_atom = LM.target
 		launch_impact(hit_atom)
 	if (loc)
-		throwing = FALSE
-		rebounding = FALSE
+		REMOVE_TRAIT(src, TRAIT_LAUNCHED, LAUNCHED_TRAIT)
+		REMOVE_TRAIT(src, TRAIT_REBOUNDING, REBOUNDING_TRAIT)
 		cur_speed = old_speed
 		remove_temp_pass_flags(pass_flags)
 		LM.invoke_end_throw_callbacks(src)

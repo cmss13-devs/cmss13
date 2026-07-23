@@ -305,12 +305,12 @@
 	var/datum/action/xeno_action/activable/pounce/pounceAction = get_action(src, /datum/action/xeno_action/activable/pounce)
 
 	// Unconscious or dead, or not throwing but used pounce.
-	if(!check_state() || (!throwing && !pounceAction.action_cooldown_check()))
+	if(!check_state() || (!HAS_TRAIT(src, TRAIT_LAUNCHED) && !pounceAction.action_cooldown_check()))
 		return
 
 	var/mob/living/carbon/carbon_mob = pounced_mob
 	if(carbon_mob.stat == DEAD || carbon_mob.mob_size >= MOB_SIZE_BIG || can_not_harm(pounced_mob) || carbon_mob == src)
-		throwing = FALSE
+		REMOVE_TRAIT(src, TRAIT_LAUNCHED, LAUNCHED_TRAIT)
 		return
 
 	if(pounceAction.can_be_shield_blocked)
@@ -321,7 +321,7 @@
 					SPAN_XENODANGER("We slam into [human_mob]!"), null, 5)
 				KnockDown(1)
 				Stun(1)
-				throwing = FALSE //Reset throwing manually.
+				REMOVE_TRAIT(src, TRAIT_LAUNCHED, LAUNCHED_TRAIT) //Reset throwing manually.
 				playsound(human_mob, "bonk", 75, FALSE) //bonk
 				return
 
@@ -330,14 +330,14 @@
 					SPAN_XENODANGER("[human_mob] body slams us!"), null, 5)
 				KnockDown(3)
 				Stun(3)
-				throwing = FALSE
+				REMOVE_TRAIT(src, TRAIT_LAUNCHED, LAUNCHED_TRAIT)
 				return
 			if(HAS_TRAIT(human_mob, TRAIT_POUNCE_RESISTANT) && prob(60))
 				visible_message(SPAN_DANGER("[human_mob] withstands being pounced and slams down [src]!"),
 					SPAN_XENODANGER("[human_mob] throws us down after withstanding the pounce!"), null, 5)
 				KnockDown(1.5)
 				Stun(1.5)
-				throwing = FALSE
+				REMOVE_TRAIT(src, TRAIT_LAUNCHED, LAUNCHED_TRAIT)
 				return
 
 
@@ -358,7 +358,7 @@
 	if(pounceAction.slash)
 		carbon_mob.attack_alien(src, pounceAction.slash_bonus_damage)
 
-	throwing = FALSE //Reset throwing since something was hit.
+	REMOVE_TRAIT(src, TRAIT_LAUNCHED, LAUNCHED_TRAIT) //Reset throwing since something was hit.
 
 /mob/living/carbon/xenomorph/proc/unfreeze_pounce()
 	REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
@@ -370,7 +370,7 @@
 	var/datum/action/xeno_action/activable/pounce/pounceAction = get_action(src, /datum/action/xeno_action/activable/pounce)
 
 	// Unconscious or dead, or not throwing but used pounce
-	if(!check_state() || (!throwing && !pounceAction.action_cooldown_check()))
+	if(!check_state() || (!HAS_TRAIT(src, TRAIT_LAUNCHED) && !pounceAction.action_cooldown_check()))
 		obj_launch_collision(O)
 		return
 

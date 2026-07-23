@@ -227,7 +227,7 @@ Contains most of the procs that are called when a mob is attacked by something
 	if (!zone)
 		visible_message(SPAN_NOTICE("\The [O] misses [src] narrowly!"), null, null, 5)
 		return
-	O.throwing = FALSE //it hit, so stop moving
+	REMOVE_TRAIT(O, TRAIT_LAUNCHED, LAUNCHED_TRAIT)  //it hit, so stop moving
 
 	if ((!launch_meta_valid || LM.thrower != src) && check_shields("[O]", get_dir(src, LM.thrower), attack_type = SHIELD_ATTACK_PROJECTILE))
 		return

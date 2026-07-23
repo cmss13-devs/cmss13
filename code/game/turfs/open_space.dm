@@ -31,7 +31,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 
 /turf/open_space/Enter(atom/movable/mover, atom/forget)
 	. = ..()
-	if(. && !mover.throwing && isliving(mover) && check_blocked())
+	if(. && !HAS_TRAIT(mover, TRAIT_LAUNCHED) && isliving(mover) && check_blocked())
 		to_chat(mover, SPAN_WARNING("It would be too dangerous to go that way."))
 		return FALSE
 

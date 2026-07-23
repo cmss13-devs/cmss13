@@ -29,7 +29,6 @@ SET_PROTECTED_DATUM(/datum/controller/configuration)
 	if(IsAdminAdvancedProcCall())
 		alert_proccall("configuration admin_reload")
 		return PROC_BLOCKED
-	log_admin("[key_name(usr)] has forcefully reloaded the configuration from disk.")
 	message_admins("[key_name_admin(usr)] has forcefully reloaded the configuration from disk.")
 	full_wipe()
 	Load(world.params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])

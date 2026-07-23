@@ -20,6 +20,7 @@
 	invisibility = 101
 
 /obj/effect/blocker/sorokyne_hot_water/Crossed(mob/living/affected_mob)
+	..()
 	if(!ismob(affected_mob))
 		return
 	if(affected_mob.stat == DEAD)

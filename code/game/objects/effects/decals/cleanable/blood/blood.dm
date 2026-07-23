@@ -17,6 +17,7 @@
 	var/amount = 3
 	var/drying_time = 30 SECONDS
 	var/dry_start_time // If this dries, track the dry start time for footstep drying
+	var/apply_bloody_feet = TRUE
 	garbage = FALSE // Keep for atmosphere
 
 /obj/effect/decal/cleanable/blood/Destroy()
@@ -43,7 +44,11 @@
 		addtimer(CALLBACK(src, PROC_REF(dry)), drying_time * (amount+1))
 
 /obj/effect/decal/cleanable/blood/Crossed(atom/movable/AM)
-	. = ..()
+	..()
+
+	if (!apply_bloody_feet)
+		return
+
 	// Check if the blood is dry and only humans
 	// can make footprints
 	if(!amount || !ishuman(AM) || QDELETED(AM))

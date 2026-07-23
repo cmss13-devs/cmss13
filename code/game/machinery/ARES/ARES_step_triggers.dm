@@ -16,29 +16,35 @@
 	var/list/pass_jobs = list(JOB_WORKING_JOE, JOB_CHIEF_ENGINEER, JOB_CO)
 	/// The accesses on an ID card to enter
 	var/pass_accesses = list(ACCESS_MARINE_AI, ACCESS_ARES_DEBUG)
+	/// Look at can_trigger for conditions to trigger on Crossed call
+	can_trigger_proc_ref = TYPE_PROC_REF(/obj/effect/step_trigger/ares_alert, can_trigger_wrapper)
 
-/obj/effect/step_trigger/ares_alert/Crossed(mob/living/passer)
+/// Wrapper function to allow overriding can_trigger in child types
+/obj/effect/step_trigger/ares_alert/proc/can_trigger_wrapper(atom/movable/passer)
+	return can_trigger(passer)
+
+/obj/effect/step_trigger/ares_alert/proc/can_trigger(atom/movable/passer)
 	if(!COOLDOWN_FINISHED(src, sensor_cooldown))//Don't want alerts spammed.
 		return FALSE
 	if(!passer)
 		return FALSE
 	if(!(ishuman(passer) || isxeno(passer)))
 		return FALSE
-	if(HAS_TRAIT(passer, TRAIT_CLOAKED))
+	var/mob/living/passer_mob = passer
+	if(HAS_TRAIT(passer_mob, TRAIT_CLOAKED))
 		return FALSE
 	if(pass_jobs)
-		if(passer.job in pass_jobs)
+		if(passer_mob.job in pass_jobs)
 			return FALSE
-		if(isxeno(passer) && (JOB_XENOMORPH in pass_jobs))
+		if(isxeno(passer_mob) && (JOB_XENOMORPH in pass_jobs))
 			return FALSE
-	if(ishuman(passer))
+	if(ishuman(passer_mob))
 		var/mob/living/carbon/human/trespasser = passer
 		var/obj/item/card/id/card = trespasser.get_idcard()
 		if(pass_accesses && card)
 			for(var/tag in pass_accesses)
 				if(tag in card.access)
 					return FALSE
-	Trigger(passer)
 	return TRUE
 
 
@@ -110,47 +116,43 @@
 	alert_id = "ARES Access"
 	cooldown_duration = COOLDOWN_ARES_ACCESS_CONTROL
 
+/obj/effect/step_trigger/ares_alert/access_control/proc/get_id_card(atom/movable/passer)
+	if(ishuman(passer))
+		var/mob/living/carbon/human/human_passer = passer
+		var/obj/item/card/id/idcard = human_passer.get_idcard()
+		return idcard
 
-/obj/effect/step_trigger/ares_alert/access_control/Crossed(atom/passer as mob|obj)
-	if(isobserver(passer) || isxeno(passer) || ishologram(passer))
-		return FALSE
-	if(!passer)
+	if(istype(passer, /obj/item/card/id))
+		return passer
+
+	var/obj/item/card/id/idcard = locate(/obj/item/card/id) in passer
+	if(!idcard)
+		for(var/obj/item/holder in passer.contents)
+			idcard = locate(/obj/item/card/id) in holder.contents
+			if(idcard)
+				break
+	return idcard
+
+/obj/effect/step_trigger/ares_alert/access_control/can_trigger(atom/movable/passer)
+	if(!passer || isobserver(passer) || isxeno(passer) || ishologram(passer))
 		return FALSE
 	if(HAS_TRAIT(passer, TRAIT_CLOAKED))//Can't be seen/detected to trigger alert.
 		return FALSE
 	var/area/pass_area = get_area(get_step(passer, passer.dir))
 	if(istype(pass_area, /area/almayer/command/airoom))//Don't want it to freak out over someone /entering/ the area. Only leaving.
 		return FALSE
-	var/obj/item/card/id/idcard
-	var/check_contents = TRUE
-	if(ishuman(passer))
-		var/mob/living/carbon/human/human_passer = passer
-		idcard = human_passer.get_idcard()
-		if(idcard)
-			check_contents = FALSE
-
-	if(istype(passer, /obj/item/card/id))
-		idcard = passer
-		check_contents = FALSE
-
-	if(check_contents)
-		idcard = locate(/obj/item/card/id) in passer
-		if(!idcard)
-			for(var/obj/item/holder in passer.contents)
-				idcard = locate(/obj/item/card/id) in holder.contents
-				if(idcard)
-					break
+	var/obj/item/card/id/idcard = get_id_card(passer)
 	if(!istype(idcard) && ismob(passer))
-		Trigger(passer, failure = TRUE)
-		return FALSE
+		return TRUE
 	if(!(ACCESS_MARINE_AI_TEMP in idcard.access))//No temp access, don't care
 		return FALSE
 	if((ACCESS_MARINE_AI in idcard.access) || (ACCESS_ARES_DEBUG in idcard.access))//Permanent access prevents loss of temporary
 		return FALSE
-	Trigger(passer, idcard)
 	return TRUE
 
-/obj/effect/step_trigger/ares_alert/access_control/Trigger(atom/passer, obj/item/card/id/idcard, failure = FALSE)
+/obj/effect/step_trigger/ares_alert/access_control/Trigger(atom/passer)
+	var/obj/item/card/id/idcard = get_id_card(passer)
+	var/failure = (!istype(idcard) && ismob(passer))
 	var/broadcast_message = get_broadcast(passer, idcard, failure)
 
 	var/datum/ares_link/link = GLOB.ares_link

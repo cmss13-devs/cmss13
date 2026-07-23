@@ -179,6 +179,7 @@
 
 
 /obj/effect/alien/weeds/Crossed(atom/movable/atom_movable)
+	..()
 	if(!isliving(atom_movable))
 		return
 

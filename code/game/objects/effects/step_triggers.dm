@@ -4,21 +4,25 @@
 	var/affect_ghosts = 0
 	var/stopper = 1 // stops throwers
 	invisibility = 101 // nope can't see this shit
+	/// Proc ref for any method to check a trigger
+	var/can_trigger_proc_ref
 	anchored = TRUE
 	icon = 'icons/landmarks.dmi'
 	icon_state = "trigger"
 
 /obj/effect/step_trigger/proc/Trigger(atom/movable/A)
-	return 0
+	return
 
-/obj/effect/step_trigger/Crossed(H as mob|obj)
+/obj/effect/step_trigger/Crossed(atom/movable/crossed_by)
 	..()
-	if(!H)
+	if(!crossed_by)
 		return
-	if(istype(H, /mob/dead/observer) && !affect_ghosts)
+	if(istype(crossed_by, /mob/dead/observer) && !affect_ghosts)
 		return
-	Trigger(H)
-
+	/// If we have a proc to validate trigger, call it to see whether trigger can occur
+	if(can_trigger_proc_ref && !call(src, can_trigger_proc_ref)(crossed_by))
+		return
+	Trigger(crossed_by)
 
 
 /* Tosses things in a certain direction */

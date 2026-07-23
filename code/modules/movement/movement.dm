@@ -56,6 +56,7 @@
 
 	return NO_BLOCKED_MOVEMENT
 
+// TODO: Remove any and all overrides of this proc
 /atom/movable/Move(NewLoc, direct)
 	// If Move is not valid, exit
 	if (SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_MOVE, NewLoc) & COMPONENT_CANCEL_MOVE)
@@ -78,7 +79,14 @@
 		Moved(oldloc, direct)
 
 	handle_rotation()
-	
+
+/// Called when `crossed_by` enters the atom's turf (via native Move() or doMove() if allowed).
+/// Does not return anything, only handles side effects from Crossed.
+/atom/Crossed(atom/movable/crossed_by)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_ATOM_CROSSED, crossed_by)
+
+	..()
 
 /// Called when a movable atom has hit an atom via movement
 /atom/movable/proc/Collide(atom/A)

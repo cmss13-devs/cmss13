@@ -147,7 +147,7 @@
 	max_val = 100
 	integer = TRUE
 
-/// The rate of comms clarity percent decay per fire of SSradio (30 SECONDS)
+/// The rate of comms clarity percent decay for challenges per fire of SSradio (30 SECONDS)
 /datum/config_entry/number/announcement_clarity_decay
 	min_val = 0
 	config_entry_value = 2.5

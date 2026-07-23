@@ -196,7 +196,7 @@
 		if(ARES_LOG_SECURITY)
 			log_ares_security("Security Update", message, MAIN_AI_SYSTEM)
 
-/proc/ai_silent_announcement(message, channel_prefix, bypass_cooldown = FALSE)
+/proc/ai_silent_announcement(message, channel_prefix)
 	if(!message)
 		return
 

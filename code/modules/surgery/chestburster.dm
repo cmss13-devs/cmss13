@@ -97,7 +97,7 @@
 		/*10-30 dam across 1-3 organs. This may shred one organ, but will most likely scatter a decent amount of damage across several.
 		Xeno acid can melt steel beams, and y'all just spilled it in his thoracic cavity.
 		You're also right there with the ribs cracked to fix it, so you can use the 3-9 seconds you spend on that to think about using the PICT next time.*/
-		for(var/internal in 1 to rand(2,6))
+		for(var/i in 1 to rand(2,6))
 			var/datum/internal_organ/organ = pick(surgery.affected_limb.internal_organs)
 			organ.take_damage(5, organ == 1)
 
@@ -200,9 +200,10 @@
 				SPAN_HIGHDANGER("[user] removed the larva just in time, but it is fully grown and alive!"),
 				SPAN_HIGHDANGER("[user] removed the larva just in time, but it is fully grown and alive!"))
 		else
-			larba.forceMove(target.loc)
+			embryo.forceMove(target.loc)
 			target.status_flags &= ~XENO_HOST
 
+		SEND_SIGNAL(user, COMSIG_HUMAN_REMOVED_A_LARVA)
 		log_interact(user, target, "[key_name(user)] removed an embryo from [key_name(target)]'s ribcage with [tool ? "[tool]" : "their hands"], ending [surgery].")
 
 /datum/surgery_step/remove_larva/failure(mob/living/carbon/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

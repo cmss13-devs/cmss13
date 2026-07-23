@@ -457,7 +457,7 @@
 		/datum/surgery_step/clamp_bleeders_step,
 		/datum/surgery_step/mend_encased,
 	)
-	pain_reduction_required = PAIN_REDUCTION_FULL
+	pain_reduction_required = PAIN_REDUCTION_HEAVY
 
 //------------------------------------
 
@@ -626,7 +626,7 @@
 		/datum/surgery_step/clamp_bleeders_step, //oop i forgor, also cuz you can't clamp bleeders here, normally, for some reason
 		/datum/surgery_step/mend_encased,
 	)
-	pain_reduction_required = PAIN_REDUCTION_FULL
+	pain_reduction_required = PAIN_REDUCTION_HEAVY
 
 //------------------------------------
 

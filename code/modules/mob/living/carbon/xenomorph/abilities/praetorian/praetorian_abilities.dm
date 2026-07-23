@@ -250,7 +250,7 @@
 	plasma_cost = 80
 
 	var/activation_delay = 1 SECONDS
-	var/prime_delay = 1 SECONDS
+	var/prime_delay = 1.25 SECONDS
 
 /datum/action/xeno_action/activable/prae_acid_ball/use_ability(atom/target)
 	if (!target)
@@ -281,7 +281,7 @@
 	var/obj/item/explosive/grenade/xeno_acid_grenade/grenade = new /obj/item/explosive/grenade/xeno_acid_grenade
 	grenade.cause_data = create_cause_data(initial(acidball_user.caste_type), acidball_user)
 	grenade.forceMove(get_turf(acidball_user))
-	grenade.throw_atom(target, 5, SPEED_SLOW, acidball_user, TRUE)
+	grenade.throw_atom(target, 5, SPEED_AVERAGE, acidball_user, TRUE, launch_type = HIGH_LAUNCH)
 	addtimer(CALLBACK(grenade, TYPE_PROC_REF(/obj/item/explosive, prime)), prime_delay)
 
 	return ..()

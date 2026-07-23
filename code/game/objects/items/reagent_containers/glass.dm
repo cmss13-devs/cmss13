@@ -340,9 +340,7 @@
 	)
 	/// A list of item types that allow reagent refilling.
 	var/list/chem_refill = list(
-		/obj/item/reagent_container/hypospray/autoinjector/standard,
-		/obj/item/reagent_container/hypospray/autoinjector/ez,
-		/obj/item/reagent_container/hypospray/autoinjector/tutorial,
+		/obj/item/reagent_container/hypospray/autoinjector/
 	)
 /obj/item/reagent_container/glass/minitank/on_reagent_change()
 	update_icon()

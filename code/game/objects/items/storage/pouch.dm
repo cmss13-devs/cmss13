@@ -1138,13 +1138,13 @@
 	//Only add an autoinjector if the canister is empty
 	//Important for the snowflake /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone
 	if(length(contents) == 0)
-		new /obj/item/reagent_container/hypospray/autoinjector/empty/medic(src)
+		new /obj/item/reagent_container/hypospray/autoinjector/empty/medic/medium(src)
 	update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/proc/fill_with(ragent)
 	inner.reagents.add_reagent(ragent, inner.volume)
 	if(length(contents) > 0)
-		var/obj/item/reagent_container/hypospray/autoinjector/empty/autoinjector = contents[1]
+		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/medium/autoinjector = contents[1]
 		autoinjector.reagents.add_reagent(ragent, autoinjector.volume)
 		autoinjector.update_uses_left()
 		autoinjector.update_icon()
@@ -1158,7 +1158,7 @@
 	inner.reagents.add_reagent("kelotane", inner.volume/3)
 	inner.reagents.add_reagent("tricordrazine", inner.volume/3)
 	if(length(contents) > 0)
-		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/autoinjector = contents[1]
+		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/medium/autoinjector = contents[1]
 		autoinjector.reagents.add_reagent("bicaridine", autoinjector.volume/3)
 		autoinjector.reagents.add_reagent("kelotane", autoinjector.volume/3)
 		autoinjector.reagents.add_reagent("tricordrazine", autoinjector.volume/3)
@@ -1169,7 +1169,7 @@
 /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone/Initialize()
 	. = ..()
 	if(length(contents))
-		for(var/obj/item/reagent_container/hypospray/autoinjector/empty/autoinjector in contents)
+		for(var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/autoinjector in contents)
 			qdel(autoinjector) //delete current autoinjector because parent spawned a 15u one and we want a 5u one here. If there's a better way of doing this, let me know, please.
 			new /obj/item/reagent_container/hypospray/autoinjector/empty/medic/extrasmall(src)
 	fill_with("oxycodone")
@@ -1182,7 +1182,7 @@
 	inner.reagents.add_reagent("inaprovaline", inner.volume/3)
 	inner.reagents.add_reagent("oxycodone", inner.volume/3)
 	if(length(contents) > 0)
-		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/autoinjector = contents[1]
+		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/medium/autoinjector = contents[1]
 		autoinjector.reagents.add_reagent("adrenaline", autoinjector.volume/3)
 		autoinjector.reagents.add_reagent("inaprovaline", autoinjector.volume/3)
 		autoinjector.reagents.add_reagent("oxycodone", autoinjector.volume/3)
@@ -1197,7 +1197,7 @@
 	inner.reagents.add_reagent("inaprovaline", inner.volume/3)
 	inner.reagents.add_reagent("tricordrazine", inner.volume/3)
 	if(length(contents) > 0)
-		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/autoinjector = contents[1]
+		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/medium/autoinjector = contents[1]
 		autoinjector.reagents.add_reagent("adrenaline", autoinjector.volume/3)
 		autoinjector.reagents.add_reagent("inaprovaline", autoinjector.volume/3)
 		autoinjector.reagents.add_reagent("tricordrazine", autoinjector.volume/3)
@@ -1212,7 +1212,7 @@
 	inner.reagents.add_reagent("inaprovaline", inner.volume/3)
 	inner.reagents.add_reagent("peridaxon", inner.volume/3)
 	if(length(contents) > 0)
-		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/autoinjector = contents[1]
+		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/medium/autoinjector = contents[1]
 		autoinjector.reagents.add_reagent("adrenaline", autoinjector.volume/3)
 		autoinjector.reagents.add_reagent("inaprovaline", autoinjector.volume/3)
 		autoinjector.reagents.add_reagent("peridaxon", autoinjector.volume/3)
@@ -1228,7 +1228,7 @@
 	inner.reagents.add_reagent("dexalinp", inner.volume/3) //160u
 	inner.reagents.add_reagent("peridaxon", inner.volume/12) //40u. Peri and Dexalin only need to last long enough to give more blood/fix IB/complete organ repair surgery.
 	if(length(contents) > 0)
-		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/autoinjector = contents[1]
+		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/medium/autoinjector = contents[1]
 		autoinjector.reagents.add_reagent("oxycodone", autoinjector.volume*(7/12))
 		autoinjector.reagents.add_reagent("dexalinp", autoinjector.volume/3)
 		autoinjector.reagents.add_reagent("peridaxon", autoinjector.volume/12)

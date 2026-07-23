@@ -252,36 +252,33 @@
 	var/activation_delay = 1 SECONDS
 	var/prime_delay = 1 SECONDS
 
-/datum/action/xeno_action/activable/prae_acid_ball/use_ability(atom/target)
-	if (!target)
+/datum/action/xeno_action/activable/prae_acid_ball/use_ability(atom/target_atom)
+	var/mob/living/carbon/xenomorph/xeno = owner
+
+	if(xeno.action_busy)
 		return
 
-	var/mob/living/carbon/xenomorph/acidball_user = owner
-	if (!acidball_user.check_state() || acidball_user.action_busy)
+	XENO_ACTION_CHECK(xeno)
+
+	var/turf/current_turf = get_turf(xeno)
+
+	if(!current_turf)
 		return
 
-	if (!action_cooldown_check())
-		return
-	var/turf/current_turf = get_turf(acidball_user)
-
-	if (!current_turf)
+	if(!do_after(xeno, activation_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+		to_chat(xeno, SPAN_XENODANGER("We cancel our acid ball."))
 		return
 
-	if (!do_after(acidball_user, activation_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
-		to_chat(acidball_user, SPAN_XENODANGER("We cancel our acid ball."))
-		return
-
-	if (!check_and_use_plasma_owner())
-		return
+	XENO_ACTION_CHECK_USE_PLASMA(xeno)
 
 	apply_cooldown()
 
-	to_chat(acidball_user, SPAN_XENOWARNING("We lob a compressed ball of acid into the air!"))
+	to_chat(xeno, SPAN_XENOWARNING("We lob a compressed ball of acid into the air!"))
 
 	var/obj/item/explosive/grenade/xeno_acid_grenade/grenade = new /obj/item/explosive/grenade/xeno_acid_grenade
-	grenade.cause_data = create_cause_data(initial(acidball_user.caste_type), acidball_user)
-	grenade.forceMove(get_turf(acidball_user))
-	grenade.throw_atom(target, 5, SPEED_SLOW, acidball_user, TRUE)
+	grenade.cause_data = create_cause_data(initial(xeno.caste_type), xeno)
+	grenade.forceMove(get_turf(xeno))
+	grenade.throw_atom(target_atom, 5, SPEED_SLOW, xeno, TRUE)
 	addtimer(CALLBACK(grenade, TYPE_PROC_REF(/obj/item/explosive, prime)), prime_delay)
 
 	return ..()

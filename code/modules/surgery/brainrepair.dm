@@ -17,7 +17,7 @@
 	var/datum/internal_organ/brain/patient_brain = patient.internal_organs_by_name["brain"]
 	if(!patient_brain || patient_brain.robotic == ORGAN_ROBOT)
 		return FALSE
-	if(patient.disabilities & NERVOUS || patient.sdisabilities & DISABILITY_MUTE || patient.sdisabilities & DISABILITY_DEAF) //if people want to start out with disabilities and change their mind later they don't need brain damage to remove them.
+	if(patient.disabilities & (NERVOUS|DISABILITY_MUTE|DISABILITY_DEAF)) //if people want to start out with disabilities and change their mind later they don't need brain damage to remove them.
 		return TRUE
 	if(patient_brain.damage <= dmg_min)
 		return FALSE

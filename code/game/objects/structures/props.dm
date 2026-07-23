@@ -1168,6 +1168,27 @@
 /obj/structure/prop/turret/missile
 	icon_state = "missile_platform"
 
+// WY/Colonial RT-01
+
+/obj/structure/prop/vehicles/tank/rt01
+	name = "\improper RT-01 Transport"
+	desc = "An eight-wheeled, armored, heavy exploration and transport vehicle."
+	icon = 'icons/obj/vehicles/rt01.dmi'
+	icon_state = "rt01_base"
+	density = FALSE
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+
+/obj/structure/prop/vehicles/tank/rt01/wheels
+	icon_state = "wheels_0"
+
+/obj/structure/prop/vehicles/tank/rt01/wheels/destroyed
+	icon_state = "wheels_1"
+
+/obj/structure/prop/vehicles/tank/rt01/damaged_frame
+	icon_state = "damaged_frame"
+
 //overhead prop sets
 
 /obj/structure/prop/invuln/overhead
@@ -1604,3 +1625,16 @@
 	layer = TURF_LAYER
 	plane = FLOOR_PLANE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/obj/structure/prop/misc/lit_cable
+	name = "power cable surface connector"
+	desc = "Manual connection point to the station's powernet, emits a low level of light."
+	icon = 'icons/obj/pipes/power_cond_heavy.dmi'
+	icon_state = "node"
+	layer = ABOVE_WEED_LAYER
+	plane = FLOOR_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	light_on = TRUE
+	light_color = "#BB3F3F"
+	light_range = 2
+	light_power = 1

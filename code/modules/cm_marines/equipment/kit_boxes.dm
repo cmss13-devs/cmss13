@@ -156,7 +156,7 @@
 	new /obj/item/bodybag/tarp/reactive/scout(src)
 	new /obj/item/explosive/plastic(src)
 	new /obj/item/explosive/plastic(src)
-	new /obj/item/device/encryptionkey/jtac(src)
+	new /obj/item/device/encryptionkey/scout(src)
 	if(SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST)
 		new /obj/item/device/binoculars/designator(src)
 	else

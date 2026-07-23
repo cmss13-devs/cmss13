@@ -2046,7 +2046,6 @@
 /area/fiorina/station/lowsec/showers_laundry)
 "blA" = (
 /obj/item/shard{
-	icon_state = "medium";
 	name = "ice shard"
 	},
 /turf/open/floor/prison/whitegreen,
@@ -2216,7 +2215,6 @@
 /area/fiorina/station/security)
 "bsm" = (
 /obj/item/shard{
-	icon_state = "medium";
 	name = "ice shard"
 	},
 /turf/open/organic/grass/astroturf,
@@ -4261,9 +4259,7 @@
 /turf/open/floor/prison/whitegreen/west,
 /area/fiorina/station/medbay)
 "cZq" = (
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /turf/open/space,
 /area/fiorina/oob)
 "cZr" = (
@@ -5473,7 +5469,7 @@
 /area/fiorina/station/disco)
 "dYp" = (
 /obj/docking_port/stationary/marine_dropship/lz1{
-	name = "LZ1: Hangar Landing Zone"
+	name = "LZ1: NE: Hangar Landing Zone"
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzI)
@@ -7127,9 +7123,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/chapel)
 "fmg" = (
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/aux_engi)
 "fmE" = (
@@ -13563,7 +13557,6 @@
 /area/fiorina/tumor/ice_lab)
 "knY" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
-	explo_proof = 1;
 	name = "launch bay door"
 	},
 /turf/open/floor/prison/cell_stripe/east,
@@ -14769,9 +14762,7 @@
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/fiorina/tumor/servers)
 "lkP" = (
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
 "lkQ" = (
@@ -16369,7 +16360,6 @@
 	name = "launch track"
 	},
 /obj/structure/machinery/door/poddoor/almayer/locked{
-	explo_proof = 1;
 	name = "launch bay door"
 	},
 /turf/open/floor/plating/prison,
@@ -19674,9 +19664,7 @@
 /turf/open/floor/prison/yellow/northeast,
 /area/fiorina/station/lowsec/showers_laundry)
 "oSz" = (
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /turf/open/floor/prison/yellow/northwest,
 /area/fiorina/station/disco)
 "oTa" = (
@@ -21530,7 +21518,6 @@
 /area/fiorina/station/security)
 "qrN" = (
 /obj/item/shard{
-	icon_state = "medium";
 	name = "ice shard"
 	},
 /obj/structure/platform/metal/almayer/west,
@@ -21701,9 +21688,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/telecomm/lz1_cargo)
 "qAk" = (
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /turf/open/floor/prison/darkpurplefull2,
 /area/fiorina/tumor/servers)
 "qAl" = (
@@ -23063,7 +23048,6 @@
 "rGB" = (
 /obj/structure/platform/metal/almayer/east,
 /obj/item/shard{
-	icon_state = "medium";
 	name = "ice shard"
 	},
 /turf/open/floor/prison/whitegreen/east,
@@ -23342,9 +23326,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/lz/near_lzI)
 "rPZ" = (
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/servers)
 "rQd" = (
@@ -25284,9 +25266,7 @@
 /turf/open/floor/almayer,
 /area/fiorina/tumor/ship)
 "tlJ" = (
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /turf/open/floor/prison/whitegreen/east,
 /area/fiorina/station/medbay)
 "tlQ" = (
@@ -25348,7 +25328,6 @@
 "tnx" = (
 /obj/structure/platform_decoration/metal/almayer,
 /obj/item/shard{
-	icon_state = "medium";
 	name = "ice shard"
 	},
 /turf/open/floor/prison/whitegreen,
@@ -25486,7 +25465,6 @@
 /area/fiorina/station/chapel)
 "tsc" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
-	explo_proof = 1;
 	name = "launch bay door"
 	},
 /obj/structure/monorail{
@@ -26017,9 +25995,7 @@
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzI)
 "tQk" = (
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/servers)
 "tQm" = (
@@ -28081,7 +28057,6 @@
 /area/fiorina/station/park)
 "vxz" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
-	explo_proof = 1;
 	name = "launch bay door"
 	},
 /turf/open/floor/prison/cell_stripe/west,
@@ -28137,7 +28112,6 @@
 /area/fiorina/station/power_ring)
 "vzB" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
-	explo_proof = 1;
 	name = "launch bay door"
 	},
 /turf/open/floor/plating/prison,
@@ -29621,9 +29595,7 @@
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/power_ring)
 "wMv" = (
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/chapel)
 "wMz" = (
@@ -31038,7 +31010,9 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/civres_blue)
 "xYg" = (
-/obj/docking_port/stationary/marine_dropship/lz2,
+/obj/docking_port/stationary/marine_dropship/lz2{
+	name = "LZ2: South: Landing Zone"
+	},
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzII)
 "xYo" = (

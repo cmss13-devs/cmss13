@@ -2419,7 +2419,7 @@
 /area/kutjevo/exterior/complex_border/med_park)
 "bbc" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/shuttle/dropship/flight/lz1,
+/obj/structure/machinery/computer/shuttle/dropship/flight/lz2,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/lz_dunes)
 "bbL" = (
@@ -5698,7 +5698,7 @@
 /area/kutjevo/exterior/spring)
 "fYE" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/shuttle/dropship/flight/lz2,
+/obj/structure/machinery/computer/shuttle/dropship/flight/lz1,
 /turf/open/floor/kutjevo/tan/alt_edge/northeast,
 /area/kutjevo/exterior/lz_pad)
 "fYF" = (
@@ -5833,8 +5833,8 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/oob)
 "gnj" = (
-/obj/docking_port/stationary/marine_dropship/lz1{
-	name = "LZ1: Dunes Landing Zone"
+/obj/docking_port/stationary/marine_dropship/lz2{
+	name = "LZ2: SW: Dunes Landing Zone"
 	},
 /turf/open/floor/plating/kutjevo,
 /area/shuttle/drop1/kutjevo)
@@ -8852,8 +8852,8 @@
 /turf/open/gm/river/desert/deep/covered,
 /area/kutjevo/interior/power/comms)
 "lkY" = (
-/obj/docking_port/stationary/marine_dropship/lz2{
-	name = "LZ2: NW Colony Landing Zone"
+/obj/docking_port/stationary/marine_dropship/lz1{
+	name = "LZ1: NW: Colony Landing Zone"
 	},
 /turf/open/floor/plating/kutjevo,
 /area/shuttle/drop2/kutjevo)

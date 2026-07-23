@@ -58,7 +58,7 @@
 	dat += "Status: <A href='byond://?src=\ref[src];operation=start'>[src.on ? "On" : "Off"]</A><BR>"
 	dat += "Maintenance panel is [src.open ? "opened" : "closed"]<BR>"
 	dat += "Tiles left: [src.amount]<BR>"
-	dat += "Behvaiour controls are [src.locked ? "locked" : "unlocked"]<BR>"
+	dat += "Behaviour controls are [src.locked ? "locked" : "unlocked"]<BR>"
 	if(!src.locked || isRemoteControlling(user))
 		dat += "Improves floors: <A href='byond://?src=\ref[src];operation=improve'>[src.improvefloors ? "Yes" : "No"]</A><BR>"
 		dat += "Finds tiles: <A href='byond://?src=\ref[src];operation=tiles'>[src.eattiles ? "Yes" : "No"]</A><BR>"
@@ -74,20 +74,20 @@
 	return
 
 
-/obj/structure/machinery/bot/floorbot/attackby(obj/item/W , mob/user as mob)
-	if(istype(W, /obj/item/stack/tile/plasteel))
-		var/obj/item/stack/tile/plasteel/T = W
+/obj/structure/machinery/bot/floorbot/attackby(obj/item/object, mob/user as mob)
+	if(istype(object, /obj/item/stack/tile/plasteel))
+		var/obj/item/stack/tile/plasteel/steel = object
 		if(src.amount >= 50)
 			return
-		var/loaded = min(50-src.amount, T.get_amount())
-		T.use(loaded)
+		var/loaded = min(50-src.amount, steel.get_amount())
+		steel.use(loaded)
 		src.amount += loaded
 		to_chat(user, SPAN_NOTICE("You load [loaded] tiles into the floorbot. He now contains [src.amount] tiles."))
 		src.updateicon()
-	else if(istype(W, /obj/item/card/id))
+	else if(istype(object, /obj/item/card/id))
 		if(src.allowed(usr) && !open)
 			src.locked = !src.locked
-			to_chat(user, SPAN_NOTICE("You [src.locked ? "lock" : "unlock"] the [src] behaviour controls."))
+			to_chat(user, SPAN_NOTICE("You [src.locked ? "lock" : "unlock"] \the [src] behaviour controls."))
 		else
 			if(open)
 				to_chat(user, SPAN_WARNING("Please close the access panel before locking it."))

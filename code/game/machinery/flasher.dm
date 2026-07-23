@@ -32,14 +32,14 @@
 // src.sd_set_light(0)
 
 //Don't want to render prison breaks impossible
-/obj/structure/machinery/flasher/attackby(obj/item/W as obj, mob/user as mob)
-	if (HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
+/obj/structure/machinery/flasher/attackby(obj/item/tool as obj, mob/user as mob)
+	if (HAS_TRAIT(tool, TRAIT_TOOL_WIRECUTTERS))
 		add_fingerprint(user)
 		src.disable = !src.disable
 		if (src.disable)
-			user.visible_message(SPAN_DANGER("[user] has disconnected the [src]'s flashbulb!"), SPAN_DANGER("You disconnect the [src]'s flashbulb!"))
+			user.visible_message(SPAN_DANGER("[user] has disconnected \the [src]'s flashbulb!"), SPAN_DANGER("You disconnect \the [src]'s flashbulb!"))
 		if (!src.disable)
-			user.visible_message(SPAN_DANGER("[user] has connected the [src]'s flashbulb!"), SPAN_DANGER("You connect the [src]'s flashbulb!"))
+			user.visible_message(SPAN_DANGER("[user] has connected \the [src]'s flashbulb!"), SPAN_DANGER("You connect \the [src]'s flashbulb!"))
 
 //Let the AI trigger them directly.
 /obj/structure/machinery/flasher/attack_remote()

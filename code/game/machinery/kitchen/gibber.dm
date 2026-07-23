@@ -128,15 +128,15 @@
 /obj/structure/machinery/gibber/proc/go_out(launch = FALSE)
 	if (!occupant)
 		return FALSE
-	for(var/obj/O in src)
-		O.forceMove(loc)
+	for(var/obj/object in src)
+		object.forceMove(loc)
 	if (occupant.client)
 		occupant.client.set_eye(occupant.client.mob)
 		occupant.client.perspective = MOB_PERSPECTIVE
 	occupant.forceMove(loc)
 	if(launch)
 		// yeet them out of the gibber
-		visible_message(SPAN_DANGER("[occupant] suddenly is launched out of the [src]!"))
+		visible_message(SPAN_DANGER("[occupant] suddenly is launched out of \the [src]!"))
 		var/turf/Tx = locate(x - 3, y, z)
 		occupant.throw_atom(Tx, 3, SPEED_FAST, src, TRUE)
 	occupant = null

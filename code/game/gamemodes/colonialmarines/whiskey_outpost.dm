@@ -289,7 +289,7 @@
 		log_game("Round end result - marines won")
 		to_world(SPAN_ROUND_HEADER("Against the onslaught, the marines have survived."))
 		to_world(SPAN_ROUNDBODY("The signal rings out to the USS Alistoun, and Dust Raiders stationed elsewhere in the Neroid Sector begin to converge on LV-624."))
-		to_world(SPAN_ROUNDBODY("Eventually, the Dust Raiders secure LV-624 and the entire Neroid Sector in 2182, pacifiying it and establishing peace in the sector for decades to come."))
+		to_world(SPAN_ROUNDBODY("Eventually, the Dust Raiders secure LV-624 and the entire Neroid Sector in 2182, pacifying it and establishing peace in the sector for decades to come."))
 		to_world(SPAN_ROUNDBODY("The USS Almayer and the 2nd 'Falling Falcons' Battalion are never sent to the sector and are spared their fate in 2186."))
 		world << sound('sound/misc/hell_march.ogg')
 		if(GLOB.round_statistics)
@@ -678,15 +678,15 @@
 	w_class = 10
 	icon_state = "[icon_activated]"
 	playsound(src, 'sound/machines/twobeep.ogg', 15, 1)
-	to_chat(user, "You activate the [src]. Now toss it, the supplies will arrive in a moment!")
+	to_chat(user, "You activate \the [src]. Now toss it, the supplies will arrive in a moment!")
 
-	var/mob/living/carbon/C = user
-	if(istype(C) && !C.throw_mode)
-		C.toggle_throw_mode(THROW_MODE_NORMAL)
+	var/mob/living/carbon/humanoid = user
+	if(istype(humanoid) && !humanoid.throw_mode)
+		humanoid.toggle_throw_mode(THROW_MODE_NORMAL)
 
 	sleep(100) //10 seconds should be enough.
-	var/turf/T = get_turf(src) //Make sure we get the turf we're tossing this on.
-	drop_supplies(T, supply_drop)
+	var/turf/ground = get_turf(src) //Make sure we get the turf we're tossing this on.
+	drop_supplies(ground, supply_drop)
 	playsound(src,'sound/effects/bamf.ogg', 50, 1)
 	qdel(src)
 	return

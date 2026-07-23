@@ -1,7 +1,7 @@
 /turf/open/blank
 	name = "Blank"
 	icon = 'icons/effects/effects.dmi'
-	icon_state = "white"
+	icon_state = "1" // solid black
 	mouse_opacity = FALSE
 	can_bloody = FALSE
 

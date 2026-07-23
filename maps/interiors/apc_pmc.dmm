@@ -4,7 +4,7 @@
 	icon_state = "rear_2"
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/apc)
 "b" = (
 /obj/structure/bed/chair/vehicle/white{
 	dir = 1;
@@ -48,7 +48,7 @@
 	icon_state = "rear_1"
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/apc)
 "f" = (
 /obj/effect/landmark/interior/spawn/vehicle_support_gunner_seat/second/wy,
 /obj/structure/prop/vehicle/firing_port_weapon{
@@ -66,14 +66,14 @@
 	icon_state = "front_5"
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/apc)
 "h" = (
 /obj/structure/interior_wall/apc_pmc{
 	icon_state = "rear_wheel_R";
 	opacity = 0
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/apc)
 "i" = (
 /turf/open/shuttle/vehicle/floor_0_1_15,
 /area/interior/vehicle/apc)
@@ -85,7 +85,7 @@
 	icon_state = "rear_wheel_L"
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/apc)
 "l" = (
 /obj/structure/interior_wall/apc_pmc{
 	alpha = 100;
@@ -106,33 +106,33 @@
 	icon_state = "front_2"
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/apc)
 "o" = (
 /obj/structure/interior_wall/apc_pmc{
 	icon_state = "front_wheel_L";
 	opacity = 0
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/apc)
 "p" = (
 /obj/structure/interior_wall/apc_pmc{
 	icon_state = "front_4"
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/apc)
 "q" = (
 /obj/structure/interior_wall/apc_pmc{
 	icon_state = "front_3"
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/apc)
 "r" = (
 /obj/structure/interior_wall/apc_pmc{
 	icon_state = "corner_inverse_L";
 	opacity = 0
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/apc)
 "s" = (
 /obj/effect/landmark/interior/spawn/entrance{
 	dir = 8;
@@ -147,7 +147,7 @@
 	icon_state = "rear_3"
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/apc)
 "u" = (
 /obj/effect/landmark/interior/spawn/weapons_loader/wy,
 /turf/open/shuttle/vehicle/floor_3_6,
@@ -187,7 +187,7 @@
 	icon_state = "front_6"
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/apc)
 "z" = (
 /turf/open/shuttle/vehicle/floor_1_5,
 /area/interior/vehicle/apc)
@@ -200,7 +200,7 @@
 	opacity = 0
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/apc)
 "C" = (
 /obj/structure/machinery/cm_vending/sorted/vehicle_supply/wy{
 	pixel_y = 20
@@ -217,7 +217,7 @@
 	opacity = 0
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/apc)
 "E" = (
 /obj/structure/interior_wall/apc_pmc{
 	icon_state = "corner_small_R";
@@ -229,7 +229,7 @@
 	pixel_y = -4
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/apc)
 "F" = (
 /obj/effect/landmark/interior/spawn/entrance{
 	dir = 8;
@@ -287,7 +287,7 @@
 	pixel_y = -4
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/apc)
 "K" = (
 /turf/open/shuttle/vehicle/floor_1_14,
 /area/interior/vehicle/apc)
@@ -299,13 +299,13 @@
 	icon_state = "rear_5"
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/apc)
 "M" = (
 /obj/structure/interior_wall/apc_pmc{
 	icon_state = "front_1"
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/apc)
 "N" = (
 /obj/structure/interior_wall/apc_pmc{
 	icon_state = "wheel_front_top_1";
@@ -313,19 +313,19 @@
 	pixel_y = -4
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/apc)
 "O" = (
 /obj/structure/interior_wall/apc_pmc{
 	icon_state = "door_back"
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/apc)
 "P" = (
 /obj/structure/interior_wall/apc_pmc{
 	icon_state = "rear_6"
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/apc)
 "R" = (
 /turf/open/shuttle/vehicle/floor_1_1_3,
 /area/interior/vehicle/apc)
@@ -345,7 +345,7 @@
 	pixel_y = -4
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/apc)
 "U" = (
 /obj/effect/landmark/interior/spawn/entrance{
 	dir = 8;
@@ -370,7 +370,7 @@
 	icon_state = "wall"
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/apc)
 "W" = (
 /obj/effect/landmark/interior/spawn/vehicle_gunner_seat/armor/wy{
 	dir = 4
@@ -386,7 +386,7 @@
 	icon_state = "front_wheel_R"
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/apc)
 "Y" = (
 /obj/effect/landmark/interior/spawn/entrance{
 	alpha = 50;
@@ -406,7 +406,7 @@
 	icon_state = "rear_4"
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/apc)
 
 (1,1,1) = {"
 P

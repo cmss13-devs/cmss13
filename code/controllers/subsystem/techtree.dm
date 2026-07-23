@@ -23,6 +23,7 @@ SUBSYSTEM_DEF(techtree)
 	if(!length(tech_nodes))
 		log_admin(SPAN_DANGER("Error setting up tech nodes, no datums found."))
 
+	// todo: could the tech trees just use the normal reservation system and not hog a z-level to themselves?
 	for(var/T in tech_trees)
 		var/datum/techtree/tree = T
 		if(initial(tree.flags) == NO_FLAGS)
@@ -30,9 +31,6 @@ SUBSYSTEM_DEF(techtree)
 		tree = new T()
 
 		trees += list("[tree.name]" = tree)
-
-		var/datum/space_level/zpos = SSmapping.add_new_zlevel(tree.name, list(ZTRAIT_TECHTREE))
-		tree.zlevel = zpos
 
 		for(var/tier in tree.tree_tiers)
 			tree.unlocked_techs += tier

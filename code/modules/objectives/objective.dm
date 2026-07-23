@@ -23,6 +23,7 @@
 		LAZYREMOVE(E.required_objectives, src)
 	required_objectives = null
 	enables_objectives = null
+	state = OBJECTIVE_DELETED
 	return ..()
 
 // initial setup after the map has loaded

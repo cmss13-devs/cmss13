@@ -1803,6 +1803,9 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 /// Returns TRUE if the target is somewhere that the game should not interact with if possible
 /// In this case, admin Zs and tutorial areas
 /proc/should_block_game_interaction(atom/target, include_hunting_grounds = FALSE)
+	if (!target)
+		return TRUE
+
 	if(is_admin_level(target.z))
 		return TRUE
 
@@ -1823,3 +1826,10 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 	var/x = (text2num(x_dirty[1])-1)*32 + text2num(x_dirty[2])
 	var/y = (text2num(y_dirty[1])-1)*32 + text2num(y_dirty[2])
 	return list(x, y)
+
+/// Checks if a player mob is in a cryopod
+/proc/is_mob_cryoing(mob/person)
+	if(istype(person.loc, /obj/structure/machinery/cryopod))
+		return TRUE
+	else
+		return FALSE

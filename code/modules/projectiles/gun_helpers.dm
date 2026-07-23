@@ -157,29 +157,13 @@ DEFINES in setup.dm, referenced here.
 	if(CONFIG_GET(flag/remove_gun_restrictions))
 		return TRUE //Not if the config removed it.
 
-	if(user.mind)
-		switch(user.job)
-			if(
-				"PMC",
-				"WY Agent",
-				"Corporate Liaison",
-				"Event",
-				"UPP Armsmaster", //this rank is for the Fun - Ivan preset, it allows him to use the PMC guns randomly generated from his backpack
-			) return TRUE
-		switch(user.faction)
-			if(
-				FACTION_WY_DEATHSQUAD,
-				FACTION_PMC,
-				FACTION_MERCENARY,
-				FACTION_FREELANCER,
-			) return TRUE
-
-		for(var/faction in user.faction_group)
-			if(faction in FACTION_LIST_WY)
-				return TRUE
-
-		if(user.faction in FACTION_LIST_WY)
+	for(var/faction in user.faction_group)
+		if(faction in FACTION_LIST_WY)
 			return TRUE
+	if(user.faction in (FACTION_LIST_WY|FACTION_HUNTED_PMC))
+		return TRUE
+	if(user.job == "UPP Armsmaster") //this rank is for the Fun - Ivan preset, it allows him to use the PMC guns randomly generated from his backpack
+		return TRUE
 
 	to_chat(user, SPAN_WARNING("[src] flashes a warning sign indicating unauthorized use!"))
 

@@ -273,7 +273,7 @@ Quick adjacency (to turf):
 		var/list/cur_dense_blockers = list()
 		for(var/atom/blocker in blockers["fd1"])
 			if(blocker.flags_barrier & HANDLE_BARRIER_CHANCE)
-				if(blocker.handle_barrier_chance())
+				if(blocker.handle_barrier_chance(attacker))
 					return blocker
 			else
 				guaranteed_hit = 1
@@ -282,7 +282,7 @@ Quick adjacency (to turf):
 
 		for(var/atom/blocker in blockers["fd2"])
 			if(blocker.flags_barrier & HANDLE_BARRIER_CHANCE)
-				if(blocker.handle_barrier_chance())
+				if(blocker.handle_barrier_chance(attacker))
 					return blocker
 			else
 				guaranteed_hit++

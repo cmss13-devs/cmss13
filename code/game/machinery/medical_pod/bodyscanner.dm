@@ -181,6 +181,10 @@
 	else
 		last_health_display.target_mob = H
 
+	// Handle automatic holotags
+	if (user.client?.prefs.auto_holotag >= BODYSCAN_TAG_PATIENTS)
+		H.auto_assign_holotag(user, HOLOCARD_ACCURACY_BODYSCANNER)
+
 	N.fields["last_tgui_scan_result"] = last_health_display.ui_data(user, DETAIL_LEVEL_BODYSCAN)
 	N.fields["autodoc_data"] = generate_autodoc_surgery_list(H)
 	visible_message(SPAN_NOTICE("\The [src] pings as it stores the scan report of [H.real_name]"))

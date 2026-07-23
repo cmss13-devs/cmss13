@@ -392,7 +392,7 @@
 	jump_timer = null
 	// Reset the jumps left to their original count
 	jumps_left = initial(jumps_left)
-	addtimer(CALLBACK(src, PROC_REF(go_active)), rand(HUGGER_MIN_ACTIVE_TIME, HUGGER_MAX_ACTIVE_TIME))
+	addtimer(CALLBACK(src, PROC_REF(go_active)), HUGGER_ACTIVE_TIME)
 
 /obj/item/clothing/mask/facehugger/proc/try_jump()
 	jump_timer = addtimer(CALLBACK(src, PROC_REF(try_jump)), time_between_jumps, TIMER_OVERRIDE|TIMER_STOPPABLE|TIMER_UNIQUE)

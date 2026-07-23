@@ -329,7 +329,7 @@
 	AddElement(/datum/element/corp_label/norcomm)
 
 /obj/item/storage/box/mre/upp/choose_utencil()
-	new /obj/item/tool/kitchen/utensil/pspoon(src)
+	new /obj/item/tool/kitchen/utensil/spoon/plastic(src)
 
 /obj/item/storage/box/mre/upp/choose_drink()
 	new /obj/item/reagent_container/food/drinks/cans/waterbottle/upp(src)

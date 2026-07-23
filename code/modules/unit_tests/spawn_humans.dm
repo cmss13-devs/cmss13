@@ -4,4 +4,4 @@
 	for(var/I in 1 to 5)
 		new /mob/living/carbon/human(pick(locs))
 
-	sleep(60 SECONDS)
+	sleep(5 SECONDS)

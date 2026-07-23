@@ -31,7 +31,7 @@
 	flags_equip_slot = NO_FLAGS
 	w_class = SIZE_HUGE
 	force = 20
-	wield_delay = WIELD_DELAY_FAST
+	wield_delay = WEAPON_DELAY_FAST
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
 	unacidable = TRUE
 	explo_proof = TRUE

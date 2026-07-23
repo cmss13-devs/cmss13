@@ -23,6 +23,7 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 	var/list/chemical_objective_list = list() //List of all objective reagents indexed by ID associated with the objective value
 	var/list/chemical_not_completed_objective_list = list() //List of not completed objective reagents indexed by ID associated with the objective value
 	var/list/chemical_identified_list = list() //List of all identified objective reagents indexed by ID associated with the objective value
+	COOLDOWN_DECLARE(announcement_cooldown)
 	var/list/research_computers = list()
 
 /datum/chemical_data/proc/update_credits(change)

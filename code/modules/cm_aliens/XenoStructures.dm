@@ -502,6 +502,10 @@
 	if(upper_wall)
 		upper_wall.dismantle_wall()
 		upper_wall = null
+	var/turf/above = SSmapping.get_turf_above(src)
+	while(above && istransparentturf(above))
+		above.update_vis_contents()
+		above = SSmapping.get_turf_above(above)
 	relativewall_neighbours()
 	var/area/area = get_area(src)
 	area?.current_resin_count--

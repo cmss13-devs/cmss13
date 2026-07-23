@@ -709,7 +709,7 @@
 /turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station/uscm_station)
 "if" = (
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/uscm_station)
 "im" = (
@@ -1034,7 +1034,7 @@
 /turf/open/floor/almayer_hull/outerhull_dir/east,
 /area/space)
 "md" = (
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt,
 /obj/structure/sign/safety/synth_storage{
 	pixel_x = 32
 	},

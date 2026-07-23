@@ -44,7 +44,7 @@
 		if(!already_in_crit)
 			new /datum/effects/crit/human(src)
 
-	if(IsKnockOut())
+	if(IsKnockOut() || is_admin_slept())
 		blinded = TRUE
 		if(regular_update && halloss > 0)
 			apply_damage(-3, HALLOSS)

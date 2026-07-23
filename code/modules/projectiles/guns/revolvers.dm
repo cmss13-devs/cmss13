@@ -15,7 +15,7 @@
 	matter = list("metal" = 2000)
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_ONE_HAND_WIELDED
 	gun_category = GUN_CATEGORY_HANDGUN
-	wield_delay = WIELD_DELAY_VERY_FAST //If you modify your revolver to be two-handed, it will still be fast to aim
+	wield_delay = WEAPON_DELAY_VERY_FAST //If you modify your revolver to be two-handed, it will still be fast to aim
 	movement_onehanded_acc_penalty_mult = 3
 	has_empty_icon = FALSE
 	has_open_icon = TRUE
@@ -35,6 +35,7 @@
 	var/recent_trick //So they're not spamming tricks.
 	var/russian_roulette = 0 //God help you if you do this.
 	var/trickster_gun = FALSE //If true, allows gun spinning.
+	var/threat_gun = FALSE //If true, will give a hint about warning shot ability
 
 /obj/item/weapon/gun/revolver/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -61,6 +62,10 @@
 
 	if(trickster_gun)
 		. += SPAN_NOTICE("You feel like tricks with it can be done easily.")
+		. += SPAN_INFO ("To perform tricks, swap on <span class='corp_label_blue'>disarm</span> intent.")
+
+	if(threat_gun)
+		. += SPAN_INFO ("To perform a warning shot, swap on <span class='corp_label_yellow'>grab</span> intent.")
 
 /obj/item/weapon/gun/revolver/display_ammo(mob/user) // revolvers don't *really* have a chamber, at least in a way that matters for ammo displaying
 	if(flags_gun_features & GUN_AMMO_COUNTER && !(flags_gun_features & GUN_BURST_FIRING) && current_mag)
@@ -667,6 +672,7 @@
 	unacidable = TRUE
 	explo_proof = TRUE
 	black_market_value = 100
+	threat_gun = TRUE
 	var/is_locked = TRUE
 	var/can_change_barrel = TRUE
 

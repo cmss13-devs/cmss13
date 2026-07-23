@@ -12,14 +12,17 @@
 /area/template_noop)
 "c" = (
 /obj/structure/platform/metal/hunter/east,
+/obj/structure/machinery/landinglight/yautja,
 /turf/open/predship/tile/red4/glow/lz_rim,
 /area/template_noop)
 "d" = (
 /obj/structure/platform/metal/hunter/west,
+/obj/structure/machinery/landinglight/yautja,
 /turf/open/predship/tile/red4/glow/lz_rim,
 /area/template_noop)
 "e" = (
 /obj/structure/platform_decoration/metal/hunter,
+/obj/structure/machinery/landinglight/yautja,
 /turf/open/predship/tile/red4/glow/lz_rim,
 /area/template_noop)
 "f" = (
@@ -36,10 +39,13 @@
 /area/template_noop)
 "h" = (
 /obj/structure/platform/metal/hunter,
+/obj/structure/machinery/landinglight/yautja,
 /turf/open/predship/tile/red4/glow/lz_rim,
 /area/template_noop)
 "i" = (
-/obj/structure/platform_decoration/metal/hunter/north,
+/obj/structure/platform_decoration/metal/hunter/north{
+	layer = 3.01
+	},
 /obj/structure/platform/metal/hunter/west,
 /turf/open/predship/tile/red3/lz_rim,
 /area/template_noop)
@@ -49,6 +55,7 @@
 /area/template_noop)
 "o" = (
 /obj/structure/platform_decoration/metal/hunter/west,
+/obj/structure/machinery/landinglight/yautja,
 /turf/open/predship/tile/red4/glow/lz_rim,
 /area/template_noop)
 "p" = (
@@ -67,10 +74,13 @@
 /area/template_noop)
 "z" = (
 /obj/structure/platform_decoration/metal/hunter/east,
+/obj/structure/machinery/landinglight/yautja,
 /turf/open/predship/tile/red4/glow/lz_rim,
 /area/template_noop)
 "B" = (
-/obj/structure/platform_decoration/metal/hunter,
+/obj/structure/platform_decoration/metal/hunter{
+	layer = 3.01
+	},
 /obj/structure/platform/metal/hunter/east,
 /turf/open/predship/tile/red3/lz_rim,
 /area/template_noop)
@@ -92,6 +102,7 @@
 /area/template_noop)
 "U" = (
 /obj/structure/platform_decoration/metal/hunter/north,
+/obj/structure/machinery/landinglight/yautja,
 /turf/open/predship/tile/red4/glow/lz_rim,
 /area/template_noop)
 "W" = (
@@ -100,8 +111,10 @@
 /area/template_noop)
 "X" = (
 /obj/effect/hunter/bridge_border/brown/small_stair{
-	dir = 4
+	dir = 4;
+	layer = 2.02
 	},
+/obj/structure/machinery/landinglight/yautja,
 /turf/open/predship/tile/red4/glow/lz_rim,
 /area/template_noop)
 

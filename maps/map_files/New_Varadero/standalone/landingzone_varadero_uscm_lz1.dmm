@@ -4496,7 +4496,7 @@
 "Mp" = (
 /obj/structure/surface/table,
 /obj/item/storage/pill_bottle/packet/bicaridine,
-/obj/item/tool/kitchen/utensil/pknife{
+/obj/item/tool/kitchen/utensil/knife/plastic{
 	pixel_x = 9;
 	pixel_y = 2
 	},

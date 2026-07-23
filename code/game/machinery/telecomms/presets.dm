@@ -67,7 +67,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	. = ..()
 	if(on)
 		playsound(src, 'sound/machines/tcomms_on.ogg', vol = 80, vary = FALSE, sound_range = 16, falloff = 0.5)
-		msg_admin_niche("Portable communication relay started for Z-Level [src.z] [ADMIN_JMP(src)]")
+		msg_admin_niche("Portable communication relay started for Z-Level [src.z]", src)
 
 		if(SSobjectives && SSobjectives.comms)
 			// This is the first time colony comms have been established.
@@ -77,7 +77,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 /obj/structure/machinery/telecomms/relay/preset/tower/tcomms_shutdown()
 	. = ..()
 	if(!on)
-		msg_admin_niche("Portable communication relay shut down for Z-Level [src.z] [ADMIN_JMP(src)]")
+		msg_admin_niche("Portable communication relay shut down for Z-Level [src.z]", src)
 
 /obj/structure/machinery/telecomms/relay/preset/tower/bullet_act(obj/projectile/P)
 	..()
@@ -274,19 +274,23 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 		else if(choice == "Add your faction's frequencies")
 			if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				return
+			if(FACTION_SURVIVOR in user.faction_group)
+				freq_listening |= COLONY_FREQ
+				if(user.faction == FACTION_MARINE)
+					freq_listening |= SURVIVOR_FREQS
 			switch(user.faction)
 				if(FACTION_SURVIVOR)
 					freq_listening |= COLONY_FREQ
-					if(FACTION_MARINE in user.faction_group) //FORECON/Army survivors
-						freq_listening |= SURVIVOR_FREQS
 				if(FACTION_CLF)
 					freq_listening |= CLF_FREQS
 				if(FACTION_UPP)
 					freq_listening |= UPP_FREQS
 				if(FACTION_WY,FACTION_PMC)
 					freq_listening |= PMC_FREQS
-				if(FACTION_TWE)
+				if(FACTION_TWE, FACTION_IASF)
 					freq_listening |= RMC_FREQ
+				if(FACTION_MARSHAL)
+					freq_listening |= CMB_FREQ
 				if(FACTION_YAUTJA, FACTION_YAUTJA_YOUNG, FACTION_YAUTJA_BADBLOOD, FACTION_YAUTJA_STRANDED)
 					to_chat(user, SPAN_WARNING("You decide to leave the human machine alone."))
 					return

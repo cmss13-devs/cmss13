@@ -34,7 +34,7 @@
 	desc = "An ammo drum of 50 12g buckshot drums for the UA 12-G Shotgun Sentry. Just feed it into the sentry gun's ammo port when its ammo is depleted."
 	caliber = "12g"
 	max_rounds = 50
-	default_ammo = /datum/ammo/bullet/shotgun/buckshot
+	default_ammo = /datum/ammo/bullet/shotgun/buckshot/turret
 
 /obj/item/ammo_magazine/sentry/wy
 	name = "H20 ammo drum (10x42mm Caseless)"

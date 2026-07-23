@@ -69,6 +69,8 @@
 				marine_rk = "sl_army"
 			if(JOB_ARMY_CO)
 				marine_rk = "co_army"
+			if(JOB_ARMY_TANK)
+				marine_rk = "tc_army"
 			if(JOB_ARMY_SYN)
 				marine_rk = "syn_army"
 		if(squad.squad_leader == current_human)
@@ -257,7 +259,7 @@
 				marine_rk = "hgsl"
 			if(JOB_WO_SO)
 				marine_rk = "vhg"
-			if(JOB_WO_CREWMAN)
+			if(JOB_WO_WARDEN)
 				marine_rk = "hgspec"
 			if(JOB_WO_POLICE)
 				marine_rk = "hg"

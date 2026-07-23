@@ -148,7 +148,7 @@
 			move_mob_inside(grabbed_mob)
 			injector_name = user.real_name
 
-/obj/structure/machinery/cryopod/evacuation/eject()
+/obj/structure/machinery/cryopod/evacuation/eject_verb()
 	set name = "Eject Pod"
 	set category = "Object"
 	set src in oview(1)

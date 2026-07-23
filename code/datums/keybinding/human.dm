@@ -135,3 +135,47 @@
 	cycle_action?.set_action_overlay(cycled_hud)
 
 	return TRUE
+
+/datum/keybinding/human/pushup
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "pushup"
+	full_name = "Pushup"
+	description = "Perform a single pushup."
+	keybind_signal = COMSIG_KB_HUMAN_SINGLE_NORMAL_PUSHUP
+	var/on_knees = FALSE
+
+/datum/keybinding/human/pushup/weak
+	name = "weak_pushup"
+	full_name = "Weak Pushup"
+	description = "Perform a single weak pushup on your knees. Wimp."
+	keybind_signal = COMSIG_KB_HUMAN_SINGLE_WEAK_PUSHUP
+	on_knees = TRUE
+
+/datum/keybinding/human/pushup/down(client/user)
+	. = ..()
+	if(.)
+		return
+
+	var/mob/living/carbon/human/human_user = user.mob
+	human_user.do_single_pushup(on_knees)
+
+	return TRUE
+
+/datum/keybinding/human/pushup_routine
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "pushup_routine"
+	full_name = "Pushup Routine"
+	description = "Select a pushup routine to perform until exhausted."
+	keybind_signal = COMSIG_KB_HUMAN_PUSHUP_ROUTINE
+
+/datum/keybinding/human/pushup_routine/down(client/user)
+	. = ..()
+	if(.)
+		return
+
+	var/mob/living/carbon/human/human_user = user.mob
+	human_user.do_pushups()
+
+	return TRUE

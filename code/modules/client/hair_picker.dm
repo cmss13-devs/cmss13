@@ -80,9 +80,10 @@
 			if(!param_color)
 				return
 
-			var/r = hex2num(copytext(param_color, 2, 4))
-			var/g = hex2num(copytext(param_color, 4, 6))
-			var/b = hex2num(copytext(param_color, 6, 8))
+			var/list/color_list = rgb2num(param_color)
+			var/r = color_list[1]
+			var/g = color_list[2]
+			var/b = color_list[3]
 
 			if(!isnum(r) || !isnum(g) || !isnum(b))
 				return
@@ -112,9 +113,10 @@
 			if(!param_color)
 				return
 
-			var/r = hex2num(copytext(param_color, 2, 4))
-			var/g = hex2num(copytext(param_color, 4, 6))
-			var/b = hex2num(copytext(param_color, 6, 8))
+			var/list/color_list = rgb2num(param_color)
+			var/r = color_list[1]
+			var/g = color_list[2]
+			var/b = color_list[3]
 
 			if(!isnum(r) || !isnum(g) || !isnum(b))
 				return
@@ -141,9 +143,10 @@
 			if(!param_color)
 				return
 
-			var/r = hex2num(copytext(param_color, 2, 4))
-			var/g = hex2num(copytext(param_color, 4, 6))
-			var/b = hex2num(copytext(param_color, 6, 8))
+			var/list/color_list = rgb2num(param_color)
+			var/r = color_list[1]
+			var/g = color_list[2]
+			var/b = color_list[3]
 
 			if(!isnum(r) || !isnum(g) || !isnum(b))
 				return

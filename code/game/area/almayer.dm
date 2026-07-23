@@ -32,28 +32,6 @@
 	if(hijack_evacuation_area)
 		SShijack.progress_areas[src] = power_equip
 
-/obj/structure/machinery/computer/shuttle_control/almayer/hangar
-	name = "Elevator Console"
-	icon = 'icons/obj/structures/machinery/computer.dmi'
-	icon_state = "supply"
-	unslashable = TRUE
-	unacidable = TRUE
-	explo_proof = TRUE
-	density = TRUE
-	req_access = null
-	shuttle_tag = "Hangar"
-
-/obj/structure/machinery/computer/shuttle_control/almayer/maintenance
-	name = "Elevator Console"
-	icon = 'icons/obj/structures/machinery/computer.dmi'
-	icon_state = "shuttle"
-	unslashable = TRUE
-	unacidable = TRUE
-	explo_proof = TRUE
-	density = TRUE
-	req_access = null
-	shuttle_tag = "Maintenance"
-
 /area/almayer/command
 	minimap_color = MINIMAP_AREA_COMMAND
 
@@ -250,9 +228,6 @@
 /area/almayer/shipboard/brig/armory
 	name = "\improper Brig Armory"
 
-/area/almayer/shipboard/brig/mp_bunks
-	name = "\improper Brig MP Bunks"
-
 /area/almayer/shipboard/brig/starboard_hallway
 	name = "\improper Brig Starboard Hallway"
 
@@ -268,11 +243,23 @@
 /area/almayer/shipboard/brig/interrogation
 	name = "\improper Brig Interrogation Room"
 
+/area/almayer/shipboard/brig/visitation
+	name = "\improper Brig Visitation"
+
+/area/almayer/shipboard/brig/visitation_waiting
+	name = "\improper Brig Visitation Waiting Room"
+
+/area/almayer/shipboard/brig/yard
+	name = "\improper Brig Yard"
+
 /area/almayer/shipboard/brig/general_equipment
 	name = "\improper Brig General Equipment"
 
 /area/almayer/shipboard/brig/evidence_storage
 	name = "\improper Brig Evidence Storage"
+
+/area/almayer/shipboard/brig/lower
+	name = "\improper Brig Lower Level"
 
 /area/almayer/shipboard/brig/execution
 	name = "\improper Brig Execution Room"
@@ -761,12 +748,10 @@
 /area/almayer/medical/containment
 	name = "\improper Medical Research containment"
 	icon_state = "science"
-	fake_zlevel = 1 // upperdeck
 
 /area/almayer/medical/containment/cell
 	name = "\improper Medical Research containment cells"
 	icon_state = "science"
-	fake_zlevel = 1 // upperdeck
 	flags_area = AREA_AVOID_BIOSCAN|AREA_NOBURROW|AREA_CONTAINMENT|AREA_NOSECURECADES
 
 /area/almayer/medical/containment/cell/cl

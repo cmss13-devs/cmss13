@@ -764,7 +764,7 @@
 	pixel_x = -1;
 	pixel_y = 5
 	},
-/obj/item/storage/box/clf{
+/obj/item/storage/box/fluff_gun/clf{
 	pixel_x = 8;
 	pixel_y = 1
 	},

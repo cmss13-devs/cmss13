@@ -328,6 +328,7 @@
 		else
 			var/obj/effect/particle_effect/smoke/chem/checker = new()
 			var/atom/blocked = LinkBlocked(checker, source_turf, turf)
+			qdel(checker)
 			if(blocked)
 				break
 
@@ -702,20 +703,20 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 				if(user)
 					var/area/thearea = get_area(user)
 					if(user.faction == target_human.faction && !thearea?.statistic_exempt)
-						target_human.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]."
-						user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]."
+						target_human.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]. <b>Shooter:</b> [ADMIN_VERBOSEJMP(user)], <b>Victim:</b> [ADMIN_VERBOSEJMP(target_human)]"
+						user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]. <b>Shooter:</b> [ADMIN_VERBOSEJMP(user)], <b>Victim:</b> [ADMIN_VERBOSEJMP(target_human)]"
 						if(weapon_cause_data.cause_name)
 							target_human.track_friendly_fire(weapon_cause_data.cause_name)
-						var/ff_msg = "[key_name(user)] shot [key_name(target_human)] with \a [name] in [get_area(user)] [ADMIN_JMP(user)] [ADMIN_PM(user)]"
+						var/ff_msg = "[key_name(user)] shot [key_name(target_human)] with \a [name]. [SPAN_BOLD("Shooter:")] [ADMIN_VERBOSEJMP(user)] [ADMIN_PM(user)], [SPAN_BOLD("Victim:")] [ADMIN_VERBOSEJMP(target_human)]."
 						var/ff_living = TRUE
 						if(target_human.stat == DEAD)
 							ff_living = FALSE
-						if(!((user.mob_flags & MUTINY_MUTINEER) && (target_human.mob_flags & MUTINY_LOYALIST)) && ((user.mob_flags & MUTINY_LOYALIST) && (target_human.mob_flags & MUTINY_MUTINEER)))
-							msg_admin_ff(ff_msg, ff_living)
+						if(!(((user.mob_flags & MUTINY_MUTINEER) && (target_human.mob_flags & MUTINY_LOYALIST)) || ((user.mob_flags & MUTINY_LOYALIST) && (target_human.mob_flags & MUTINY_MUTINEER))))
+							msg_admin_ff(ff_msg, ff_living, user.loc.z)
 					else
-						target_human.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]."
-						user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]."
-						msg_admin_attack("[key_name(user)] shot [key_name(target_human)] with \a [name] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+						target_human.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]. <b>Shooter:</b> [ADMIN_VERBOSEJMP(user)], <b>Victim:</b> [ADMIN_VERBOSEJMP(target_human)]"
+						user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]. <b>Shooter:</b> [ADMIN_VERBOSEJMP(user)], <b>Victim:</b> [ADMIN_VERBOSEJMP(target_human)]"
+						msg_admin_attack("[key_name(user)] shot [key_name(target_human)] with \a [name]. Shooter: [AREACOORD(user)] Victim: [AREACOORD(target_human)]", user.loc.x, user.loc.y, user.loc.z)
 				if(weapon_cause_data.cause_name)
 					target_human.track_shot_hit(weapon_cause_data.cause_name, target_human)
 
@@ -1005,7 +1006,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 /obj/item/weapon/gun/flamer/flammenwerfer3
 	name = "\improper Flammenwerfer 3 Heavy Incineration Unit"
 	desc = "A heavy industrial incineration unit produced by Weyland Corporation and later by Weyland-Yutani Corporation. Often found among foliage cleaning missions on frontier colonies, usually aren't seen in combat, but devastating when actually used."
-	desc_lore = "This century-old flamethrower is seeing a comeback on Frontier colonies. Heavy Incinerator Units are often used for clearing out dead foliage and burning disease ridden corpses. Current market price of is 2000$."
+	desc_lore = "This century-old flamethrower is seeing a comeback on Frontier colonies. Heavy Incinerator Units are often used for clearing out dead foliage, demolishing buildings, and removing evidence of colonial disease. After a century, it remains available to the public sector, at a market price of 2000$."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/flamers.dmi'
 	icon_state = "fl3"
 	item_state = "fl3"
@@ -1019,6 +1020,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	accepted_ammo = list(
 		/obj/item/ammo_magazine/flamer_tank/flammenwerfer,
 		/obj/item/ammo_magazine/flamer_tank/flammenwerfer/whiteout,
+		/obj/item/ammo_magazine/flamer_tank/flammenwerfer/survivor,
 	)
 	current_mag = /obj/item/ammo_magazine/flamer_tank/flammenwerfer
 
@@ -1054,3 +1056,17 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 
 /obj/item/weapon/gun/flamer/flammenwerfer3/deathsquad/standard
 	current_mag = /obj/item/ammo_magazine/flamer_tank/flammenwerfer
+
+/obj/item/weapon/gun/flamer/flammenwerfer3/survivor
+	name = "\improper Flammenwerfer 3 Heavy DE-cineration Unit"
+	desc = "A civilian modification of the heavy incineration unit produced by Weyland Corporation and later by Weyland-Yutani Corporation. Normally, these would be found on frontier colonies, for burning down forests and foliage. In this case, this seems to be a reclaimed model used by the local firefighters. \nIt even has a note attached, which hopefully explains *why* anyone would use an incinerator to fight fire...\n"
+	desc_lore = "This century-old flamethrower is seeing a comeback on Frontier colonies. Heavy Incinerator Units are often used for clearing out dead foliage, demolishing buildings, and removing evidence of colonial disease. Current market price of this device is 2000$- or, it would be, if this particular one hasn't had its warranty voided. Apparently a diligent professional has swapped out the propellant gas for... stabilized metallic foam."
+	icon_state = "fl3_survivor"
+	item_state = "fl3"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/flamers.dmi'
+
+	current_mag = /obj/item/ammo_magazine/flamer_tank/flammenwerfer/survivor
+
+/obj/item/weapon/gun/flamer/flammenwerfer3/survivor/Initialize()
+	. = ..()
+	RemoveElement(/datum/element/corp_label/wy)

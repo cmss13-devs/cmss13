@@ -8,7 +8,7 @@
 	id = "yaut_shut_lock";
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/yautja/secure/turf_plane{
+/obj/structure/machinery/door/airlock/yautja/secure{
 	id = "hunter_external"
 	},
 /turf/open/floor/corsat/squares,
@@ -67,7 +67,7 @@
 	},
 /area/shuttle/hunter)
 "pE" = (
-/obj/structure/machinery/door/airlock/yautja/secure/turf_plane{
+/obj/structure/machinery/door/airlock/yautja/secure{
 	dir = 1
 	},
 /turf/open/floor/corsat/squares,
@@ -80,7 +80,7 @@
 /obj/structure/machinery/door/poddoor/yautja/open/turf_plane{
 	id = "yaut_shut_lock"
 	},
-/obj/structure/machinery/door/airlock/yautja/secure/turf_plane{
+/obj/structure/machinery/door/airlock/yautja/secure{
 	dir = 1;
 	id = "hunter_external"
 	},

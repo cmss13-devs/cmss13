@@ -1,7 +1,7 @@
 Acid pillars can be sneakily placed next to a door in order to surprise marines.
 Acid pillars are amazing at extinguishing fellow sisters- Place them near the frontline for maximum effect.
 Alien structures like clusters, walls, or pillars are vital to your victory, be it as cover or to delay and funnel marines.
-Always thank your drones and Hivelords for supporting the hive!
+Always thank your Drones and Hivelords for supporting the hive!
 Don't underestimate survivors. They have no armor but that makes them very fast, they're inherently hardier than marines and have various tricks up their sleeves.
 While the Queen is de-ovied, the hive does not gain evolution points.
 Try out new castes or strains that you might have passed up initially. You might find them to be surprisingly fun.
@@ -28,8 +28,8 @@ You can dodge pounces that aren't aimed directly at you by laying down.
 You may rest immediately during a pounce to pounce straight through mobs. It's not very practical or useful though.
 Pouncing someone who is buckled to a chair will still stun them, but you won't jump into their tile and they will not be knocked to the ground.
 Star shell dust from said grenades is just as meltable as normal flares.
-You can join the hive as a living Facehugger by clicking on the hive's Eggmorpher. This works on other hives too..
-Playable Facehuggers can leap onto targets with a one-second windup, but this will only infect them if they are adjacent to it. Otherwise, it will simply knock them down for a small duration.
+You can join the hive as a living Facehugger by clicking on the hive's Eggmorpher. This works on other hives too.
+Playable Facehuggers can leap onto targets with a two-second windup, but this will only infect them if they are adjacent to it. Otherwise, it will simply knock them down for a small duration.
 As a Facehugger, you cannot talk in hivemind, but you can still open Hive Status and overwatch your sisters. This can be useful if you're locating other Facehuggers, flanker castes, or trying to learn from experienced Facehugger players.
 Shift-clicking the Queen indicator will tell you what area you are in, on the map.
 As a Ravager your abilities become greatly enhanced when you empower with three or more people around you.
@@ -44,8 +44,8 @@ Applying acid to flares makes them burn faster.
 Melting weapons, ammo or other valuables owned by marines is a good way to debilitate them.
 The secrete acid shortcut is (by default) Shift + C.
 Placing acid traps under map debris such as metal sheets, wooden planks or other semi-large to large items is good for catching marines by surprise.
-Burrower can place tunnels underneath tables or lockers.
-Lesser drones and facehuggers cannot speak or use the Hivemind for three minutes after spawning.
+Burrowers can place tunnels underneath tables or lockers.
+Lesser Drones and Facehuggers cannot speak or use the Hivemind for three minutes after spawning.
 Alt-clicking on the Queen tracker allows you to set it to also track the Hive Core, any living leaders or any existing tunnels. Tunnels are ordered by closest to furthest; top to bottom.
 Be mindful of not blocking the escape of injured sisters.
 As a Xenomorph, you are able to melt advanced body scanners, sleepers, MarineMeds and limb printers.

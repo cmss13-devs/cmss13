@@ -159,12 +159,12 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 								listening_obj |= interior_object
 
 
-			for(var/mob/M as anything in GLOB.player_list)
-				if((M.stat == DEAD || isobserver(M)) && M.client && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_GHOSTEARS))
-					listening |= M
+			for(var/mob/possible_listening_mob as anything in GLOB.player_list)
+				if((possible_listening_mob.stat == DEAD || isobserver(possible_listening_mob)) && (possible_listening_mob.client?.prefs?.toggles_chat & CHAT_GHOSTEARS))
+					listening |= possible_listening_mob
 					continue
-				if(M.loc && (M.locs[1] in hearturfs))
-					listening |= M
+				if(possible_listening_mob.loc && (possible_listening_mob.locs[1] in hearturfs))
+					listening |= possible_listening_mob
 
 		var/speech_bubble_test = say_test(message)
 		show_speech_bubble(listening, speech_bubble_test, bubble_prefix = TRUE)
@@ -172,8 +172,8 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		var/not_dead_speaker = (stat != DEAD)
 		if(not_dead_speaker)
 			langchat_speech(message, listening, speaking, additional_styles = langchat_override ? list(langchat_override) : list("langchat"))
-		for(var/mob/M as anything in listening)
-			M.hear_say(message, verb, speaking, alt_name, italics, src, speech_sound, sound_vol, message_mode)
+		for(var/mob/possible_listening_mob as anything in listening)
+			possible_listening_mob.hear_say(message, verb, speaking, alt_name, italics, src, speech_sound, sound_vol, message_mode)
 
 		for(var/obj/hearing_obj as anything in listening_obj)
 			if(hearing_obj) //It's possible that it could be deleted in the meantime.
@@ -188,11 +188,11 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		if(message_mode) // we are talking into a radio
 			if(message_mode == "headset") // default value, means general
 				message_mode = "General"
-			log_say("[name != "Unknown" ? name : "([real_name])"] \[[message_mode]\]: [message] (CKEY: [key]) (JOB: [job]) (AREA: [get_area_name(loc)])")
+			log_say("[name != "Unknown" ? name : "([real_name])"] \[[message_mode]\]: [message] (CKEY: [ckey]) (JOB: [job]) (AREA: [get_area_name(loc)])")
 		else // we talk normally
-			log_say("[name != "Unknown" ? name : "([real_name])"]: [message] (CKEY: [key]) (JOB: [job]) (AREA: [get_area_name(loc)])")
+			log_say("[name != "Unknown" ? name : "([real_name])"]: [message] (CKEY: [ckey]) (JOB: [job]) (AREA: [get_area_name(loc)])")
 	else
-		log_say("[name != "Unknown" ? name : "([real_name])"]: [message] (CKEY: [key]) (AREA: [get_area_name(loc)])")
+		log_say("[name != "Unknown" ? name : "([real_name])"]: [message] (CKEY: [ckey]) (AREA: [get_area_name(loc)])")
 
 	return 1
 

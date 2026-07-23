@@ -110,6 +110,7 @@
 
 // rebuild all power networks from scratch
 /proc/makepowernets()
+	SShijack?.powernets.Cut()
 	for(var/datum/powernet/PN in GLOB.powernets)
 		del(PN) //not qdel on purpose, powernet is still using del.
 	GLOB.powernets.Cut()

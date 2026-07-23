@@ -2,8 +2,8 @@
 //Standard biosuit, orange stripe
 
 /obj/item/clothing/head/bio_hood
-	name = "bio hood"
-	desc = "A hood that protects the head and face from biological contaminants."
+	name = "BSL-3 PPE hood"
+	desc = "A level-3 biosafety hood designed to protect the head and face against biological hazardous contamination."
 	icon_state = "bio_general"
 	icon = 'icons/obj/items/clothing/hats/hazard.dmi'
 	item_icons = list(
@@ -15,36 +15,37 @@
 	armor_energy = CLOTHING_ARMOR_NONE
 	armor_bomb = CLOTHING_ARMOR_NONE
 	armor_bio = CLOTHING_ARMOR_HARDCORE
-	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_VERYHIGH
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	flags_inventory = COVEREYES|COVERMOUTH|BLOCKGASEFFECT
+	flags_inventory = COVEREYES|COVERMOUTH|BLOCKGASEFFECT|ALLOWINTERNALS|ALLOWREBREATH
 	flags_inv_hide = HIDEFACE|HIDEMASK|HIDEEARS|HIDEALLHAIR
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	siemens_coefficient = 0.9
+	vision_impair = VISION_IMPAIR_WEAK
 
 /obj/item/clothing/head/bio_hood/synth
-	desc = "A hood that protects the head and face from biological contaminants, synthetic compliant. Offers no real protection."
+	desc = "A hood that protects the head and face from biological contaminants, synthetic compliant."
 	armor_bio = CLOTHING_ARMOR_NONE
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_NONE
 
 /obj/item/clothing/suit/bio_suit
-	name = "bio suit"
-	desc = "A suit that protects against biological contamination."
+	name = "BSL-3 PPE suit"
+	desc = "A level-3 biosafety suit designed to protect against biological hazardous contamination."
 	icon_state = "bio_general"
 	item_state = "bio_suit"
 	icon = 'icons/obj/items/clothing/suits/hazard.dmi'
 	w_class = SIZE_LARGE//bulky item
 	gas_transfer_coefficient = 0.01
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
-	slowdown = SLOWDOWN_ARMOR_LIGHT
+	slowdown = SLOWDOWN_ARMOR_MEDIUM
 	armor_melee = CLOTHING_ARMOR_NONE
 	armor_bullet = CLOTHING_ARMOR_NONE
 	armor_laser = CLOTHING_ARMOR_NONE
 	armor_energy = CLOTHING_ARMOR_NONE
 	armor_bomb = CLOTHING_ARMOR_NONE
 	armor_bio = CLOTHING_ARMOR_HARDCORE
-	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_VERYHIGH
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	flags_inv_hide = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL
 	siemens_coefficient = 0.9

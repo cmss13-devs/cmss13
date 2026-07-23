@@ -26,7 +26,7 @@
 
 /turf
 	icon = 'icons/turf/floors/floors.dmi'
-	plane = TURF_PLANE
+	plane = GAME_PLANE
 
 	///Used by floors to indicate the floor is a tile (otherwise its plating)
 	var/intact_tile = TRUE
@@ -132,10 +132,11 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	anchored = TRUE
 
-/obj/vis_contents_holder/Initialize(mapload, vis, offset, backdrop = TRUE)
+/obj/vis_contents_holder/Initialize(mapload, vis, offset, backdrop=TRUE)
 	. = ..()
 	plane -= offset
-	vis_contents += GLOB.openspace_backdrop_one_for_all
+	if(backdrop)
+		vis_contents += GLOB.openspace_backdrop_one_for_all
 	vis_contents += vis
 	name = null // Makes it invisible on right click
 
@@ -780,18 +781,12 @@
 
 /turf/proc/get_pylon_protection_level()
 	var/protection_level = TURF_PROTECTION_NONE
-	for (var/atom/pylon in linked_pylons)
-		if (pylon.loc != null)
-			var/obj/effect/alien/resin/special/pylon/P = pylon
-
-			if(!istype(P))
-				continue
-
-			if(P.protection_level > protection_level)
-				protection_level = P.protection_level
-		else
-			LAZYREMOVE(linked_pylons, pylon)
-
+	for(var/obj/effect/alien/resin/special/resin_structure in linked_pylons)
+		if(QDELETED(resin_structure))
+			LAZYREMOVE(linked_pylons, resin_structure)
+			continue
+		if(resin_structure.protection_level > protection_level)
+			protection_level = resin_structure.protection_level
 	return protection_level
 
 GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(

@@ -76,6 +76,10 @@
 	var/base_color   //Used when setting species.
 	var/hair_color   //If the species only has one hair color
 	var/no_grad_style //Hair gradients or no
+	var/list/eyes_help = list() //red, green, blue
+	var/list/eyes_disarm = list()
+	var/list/eyes_grab = list()
+	var/list/eyes_harm = list()
 
 	//Currently, this is only used for flavor in surgery messages. Can be changed for individual species (i.e. synths)
 	var/flesh_type = "flesh"

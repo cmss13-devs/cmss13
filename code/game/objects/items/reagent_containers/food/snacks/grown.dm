@@ -639,22 +639,17 @@
 		return
 	switch(rand(1,2))//Decides randomly to teleport the thrower or the throwee.
 		if(1) // Teleports the person who threw the tomato.
-			s.set_up(3, 1, M)
-			s.start()
+			s.setup_and_start(3, 1, M)
 			new/obj/effect/decal/cleanable/molten_item(M.loc) //Leaves a pile of goo behind for dramatic effect.
-			M.forceMove(picked )//
-			sleep(1)
-			s.set_up(3, 1, M)
-			s.start() //Two set of sparks, one before the teleport and one after.
+			M.forceMove(picked)//
+			//Two set of sparks, one before the teleport and one after.
+			s.setup_and_start_with_delay(3, 1, M, 0.1 SECONDS)
 		if(2) //Teleports mob the tomato hit instead.
 			for(var/mob/A in get_turf(hit_atom))//For the mobs in the tile that was hit...
-				s.set_up(3, 1, A)
-				s.start()
+				s.setup_and_start(3, 1, A)
 				new/obj/effect/decal/cleanable/molten_item(A.loc) //Leave a pile of goo behind for dramatic effect...
 				A.forceMove(picked)//And teleport them to the chosen location.
-				sleep(1)
-				s.set_up(3, 1, A)
-				s.start()
+				s.setup_and_start_with_delay(3, 1, A, 0.1 SECONDS)
 	new/obj/effect/decal/cleanable/blood/oil(src.loc)
 	src.visible_message(SPAN_NOTICE("The [src.name] has been squashed, causing a distortion in space-time."),SPAN_MODERATE("You hear a splat and a crackle."))
 	qdel(src)

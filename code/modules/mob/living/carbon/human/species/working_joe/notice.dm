@@ -259,3 +259,45 @@
 	say_message = "Energy surge detected."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/notice/alert_sus
+	key = "alertsus"
+	sound = 'sound/voice/joe/daniel/alert_sus.ogg'
+	say_message = "Alert. Suspicious noise."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = DANIEL_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/notice/contact
+	key = "contact"
+	sound = 'sound/voice/joe/daniel/contact.ogg'
+	say_message = "Contact."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = DANIEL_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/notice/engaging
+	key = "engaging"
+	sound = 'sound/voice/joe/daniel/engaging.ogg'
+	say_message = "Engaging."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = DANIEL_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/notice/may_be_synthetic
+	key = "maybesynthetic"
+	sound = 'sound/voice/joe/daniel/i_may_be_synthetic.ogg'
+	say_message = "I may be synthetic, but I'm not blind."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = DANIEL_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/notice/noise_variation
+	key = "noisevariation"
+	sound = 'sound/voice/joe/daniel/noise_variation.ogg'
+	say_message = "Noise variation detected."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = DANIEL_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/notice/troubled
+	key = "troubled"
+	sound = 'sound/voice/joe/daniel/you_look_troubled.ogg'
+	say_message = "You look troubled."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = DANIEL_EMOTE

@@ -1,0 +1,6 @@
+author: "MistChristmas"
+delete-after: True
+changes:
+  - rscadd: "IOs get marine engineering access instead of civilian."
+  - bugfix: "Airlock Electronics + Some other things like Fire doors now accept Marine Engineering access to access."
+  - rscdel: "Removes some civilian engineering access from shipside roles."

@@ -108,6 +108,9 @@
 	default_ammo = /datum/ammo/bullet/rifle/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
 
+/obj/item/ammo_magazine/rifle/m41aMK1/heap/empty
+	current_rounds = 0
+
 /obj/item/ammo_magazine/rifle/m41aMK1/incendiary
 	name = "\improper M41A MK1 incendiary magazine (10x24mm)"
 	desc = "A long rectangular box of rounds that is only compatible with the older M41A MK1. Holds up to 95 rounds. This one contains incendiary bullets."
@@ -444,6 +447,9 @@
 	desc = "A high-explosive armor-piercing 10x24mm battle rifle magazine."
 	default_ammo = /datum/ammo/bullet/rifle/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
+
+/obj/item/ammo_magazine/rifle/l42a/heap/empty
+	current_rounds = 0
 
 /obj/item/ammo_magazine/rifle/l42a/penetrating
 	name = "\improper L42A wall-penetrating magazine (10x24mm)"

@@ -1189,6 +1189,7 @@
 #include "code\game\objects\effects\decals\cleanable\blood\robots.dm"
 #include "code\game\objects\effects\decals\cleanable\blood\tracks.dm"
 #include "code\game\objects\effects\decals\cleanable\blood\xeno.dm"
+#include "code\game\objects\effects\decals\cleanable\blood\yautja.dm"
 #include "code\game\objects\effects\decals\posters\poster_list.dm"
 #include "code\game\objects\effects\effect_system\chemsmoke.dm"
 #include "code\game\objects\effects\effect_system\effect_system.dm"

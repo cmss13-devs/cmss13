@@ -30,3 +30,21 @@
 
 /datum/job/special/uscm/cmt
 	title = JOB_ARMY_MEDIC
+
+// LACN
+/datum/job/special/lacn/marine
+	title = JOB_LACN_MARINE
+
+/datum/job/special/lacn/medic
+	title = JOB_LACN_MEDIC
+
+/datum/job/special/lacn/pilot
+	title = JOB_LACN_PILOT
+
+
+/datum/job/special/lacn/police
+	title = JOB_LACN_POLICE
+
+
+/datum/job/special/lacn/ground
+	title = JOB_LACN_GROUND

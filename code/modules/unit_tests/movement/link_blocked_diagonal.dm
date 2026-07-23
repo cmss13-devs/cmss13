@@ -1,0 +1,264 @@
+/datum/unit_test/diagonal_not_link_blocked/Run()
+	movement_test(
+		target_direction = SOUTHWEST,
+		blocker_positions = list(SOUTH, WEST, movement_helper_constants::TARGET_TURF, movement_helper_constants::MOVER_TURF),
+		blocker_parameters_entries = list(
+			// Non-directional turfs in the mover's turf will not block any movement
+			list(
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.none_directional_blocker_configuration,
+			),
+			// Should be able to navigate by going south then west
+			list(
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.east_directional_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+			),
+			list(
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.south_directional_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+			),
+			list(
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.none_directional_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+			),
+			list(
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.north_directional_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+			),
+			list(
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.west_directional_blocker_configuration,
+			),
+			list(
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.north_directional_blocker_configuration,
+				GLOB.west_directional_blocker_configuration,
+			),
+			// Should be able to navigate by going west then south
+			list(
+				GLOB.north_directional_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+			),
+			list(
+				GLOB.west_directional_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+			),
+			list(
+				GLOB.none_directional_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+			),
+			list(
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.east_directional_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+			),
+			list(
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.south_directional_blocker_configuration,
+			),
+			// Testing directional blockers in orthogonal turfs facing away from the mover
+			list(
+				GLOB.east_directional_blocker_configuration,
+				GLOB.north_directional_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+			),
+			list(
+				GLOB.south_directional_blocker_configuration,
+				GLOB.west_directional_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+			),
+			list(
+				GLOB.east_directional_blocker_configuration,
+				GLOB.west_directional_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+			),
+			list(
+				GLOB.south_directional_blocker_configuration,
+				GLOB.north_directional_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+			),
+		),
+		test_callback = CALLBACK(src, PROC_REF(link_blocked_validation), FALSE),
+	)
+
+/datum/unit_test/diagonal_link_blocked/Run()
+	movement_test(
+		target_direction = SOUTHWEST,
+		// Latitudinal blocker, longitudinal blocker, and blocker on target turf
+		blocker_positions = list(SOUTH, WEST, movement_helper_constants::TARGET_TURF, movement_helper_constants::MOVER_TURF),
+		blocker_parameters_entries = list(
+			// Any non-directional blocker in target turf will block the mover
+			list(
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.none_directional_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+			),
+			// Non-directional blockers to both orthogonal directions will block the mover
+			list(
+				GLOB.none_directional_blocker_configuration,
+				GLOB.none_directional_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+			),
+			// Testing with directional blockers only
+			list(
+				GLOB.north_directional_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.north_directional_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+			),
+			list(
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.east_directional_blocker_configuration,
+				GLOB.east_directional_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+			),
+			list(
+				GLOB.north_directional_blocker_configuration,
+				GLOB.east_directional_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+			),
+			list(
+				GLOB.north_directional_blocker_configuration,
+				GLOB.south_directional_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+			),
+			list(
+				GLOB.west_directional_blocker_configuration,
+				GLOB.east_directional_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+			),
+			list(
+				GLOB.west_directional_blocker_configuration,
+				GLOB.south_directional_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+			),
+			list(
+				GLOB.west_directional_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.north_directional_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+			),
+			list(
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.south_directional_blocker_configuration,
+				GLOB.east_directional_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+			),
+			list(
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.east_directional_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.south_directional_blocker_configuration,
+			),
+			list(
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.south_directional_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.south_directional_blocker_configuration,
+			),
+			list(
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.north_directional_blocker_configuration,
+				GLOB.south_directional_blocker_configuration,
+			),
+			list(
+				GLOB.north_directional_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.west_directional_blocker_configuration,
+			),
+			list(
+				GLOB.west_directional_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.west_directional_blocker_configuration,
+			),
+			list(
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.east_directional_blocker_configuration,
+				GLOB.west_directional_blocker_configuration,
+			),
+			// Testing a combination of directional blockers with non-directional blockers
+			list(
+				GLOB.none_directional_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.north_directional_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+			),
+			list(
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.none_directional_blocker_configuration,
+				GLOB.east_directional_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+			),
+			list(
+				GLOB.none_directional_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.west_directional_blocker_configuration,
+			),
+			list(
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.none_directional_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.south_directional_blocker_configuration,
+			),
+		),
+		test_callback = CALLBACK(src, PROC_REF(link_blocked_validation), TRUE),
+	)
+
+/datum/unit_test/diagonal_link_blocked__target_and_mover_turf_only/Run()
+	movement_test(
+		target_direction = SOUTHWEST,
+		blocker_positions = list(movement_helper_constants::TARGET_TURF, movement_helper_constants::TARGET_TURF, movement_helper_constants::MOVER_TURF, movement_helper_constants::MOVER_TURF),
+		blocker_parameters_entries = list(
+			// Two direction blockers on the target turf blocking south-west (go south first, then west) and west-south diagonal movement
+			list(
+				GLOB.north_directional_blocker_configuration,
+				GLOB.east_directional_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+			),
+			list(
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.not_blocking_blocker_configuration,
+				GLOB.south_directional_blocker_configuration,
+				GLOB.west_directional_blocker_configuration,
+			),
+		),
+		test_callback = CALLBACK(src, PROC_REF(link_blocked_validation), TRUE),
+	)

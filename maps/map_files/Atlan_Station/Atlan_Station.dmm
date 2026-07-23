@@ -20018,10 +20018,8 @@
 /turf/open/shuttle/escapepod/west,
 /area/atlan/station/substation)
 "cWE" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#98a3ab"
-	},
 /obj/item/toy/deck,
+/obj/structure/surface/table/almayer,
 /turf/open/floor/strata,
 /area/atlan/comms/lz2_hab_relay)
 "cXd" = (
@@ -42084,12 +42082,10 @@
 /turf/open/floor/prison/blue_plate/north,
 /area/atlan/station/water_tanks)
 "tve" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#98a3ab"
-	},
 /obj/item/paper/colonial_grunts,
 /obj/item/toy/dice,
 /obj/item/tool/pen/red,
+/obj/structure/surface/table/almayer,
 /turf/open/floor/strata/green1,
 /area/atlan/station/double_dorms)
 "tvh" = (
@@ -103995,7 +103991,7 @@ iFu
 imV
 alc
 bSj
-eaP
+pvS
 apr
 aoz
 tzP

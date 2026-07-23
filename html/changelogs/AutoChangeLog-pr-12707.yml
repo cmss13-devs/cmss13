@@ -1,0 +1,4 @@
+author: "george"
+delete-after: True
+changes:
+  - balance: "Humans can be moved by explosions again."

@@ -1,0 +1,6 @@
+author: "fira"
+delete-after: True
+changes:
+  - admin: "Many logs, admin messages, and attack logs now are normalized to use the ckey rather than full key - this is important in regard to consistency for searching in logs for example"
+  - admin: "Users in admin messages will now be marked as disconnected even if there is no PM link for them"
+  - admin: "Ghosted or otherwise out-of-body users will now show their previous ckey in admin messages rather than no key"

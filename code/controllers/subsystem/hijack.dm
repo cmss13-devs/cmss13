@@ -259,9 +259,16 @@ SUBSYSTEM_DEF(hijack)
 		for(var/area/almayer/cycled_area as anything in current_run)
 			current_run -= cycled_area
 
-			if(progress_areas[cycled_area] != cycled_area.power_equip)
-				progress_areas[cycled_area] = !progress_areas[cycled_area]
-				announce_area_power_change(cycled_area)
+			var/new_area_state = cycled_area.power_equip
+			for(var/obj/structure/machinery/fuelpump/pump in fuelpumps)
+				// Pumps don't care about area power but health
+				if(get_area(pump) == cycled_area)
+					new_area_state = pump.operable()
+					break // Assumption: One pump per area
+
+			if(progress_areas[cycled_area] != new_area_state)
+				progress_areas[cycled_area] = new_area_state
+				announce_area_state_change(cycled_area, new_area_state)
 
 			if(progress_areas[cycled_area])
 				switch(cycled_area.hijack_evacuation_type)
@@ -307,16 +314,22 @@ SUBSYSTEM_DEF(hijack)
 	var/message = ""
 
 	for(var/area/cycled_area as anything in progress_areas)
-		message += "[cycled_area] - [cycled_area.power_equip ? "Online" : "Offline"]\n"
-		progress_areas[cycled_area] = cycled_area.power_equip
+		var/new_area_state = cycled_area.power_equip
+		for(var/obj/structure/machinery/fuelpump/pump in fuelpumps)
+			// Pumps don't care about area power but health
+			if(get_area(pump) == cycled_area)
+				new_area_state = pump.operable()
+				break // Assumption: One pump per area
+		message += "[cycled_area] - [new_area_state ? "Online" : "Offline"]\n"
+		progress_areas[cycled_area] = new_area_state
 
 	message += "\nCritical damage sustained to ship systems. Altitude rapidly decreasing. Initiating sublight burn to exit AO.\nMaintain fueling functionality to initiate quantum jump to [spaceport.name]."
 
 	marine_announcement(message, HIJACK_ANNOUNCE)
 
-///Called when an area power status is changed to announce that it has been changed
-/datum/controller/subsystem/hijack/proc/announce_area_power_change(area/changed_area)
-	var/message = "[changed_area] - [changed_area.power_equip ? "Online" : "Offline"]"
+///Called when an area's operable status is changed to announce that it has been changed
+/datum/controller/subsystem/hijack/proc/announce_area_state_change(area/changed_area, new_state)
+	var/message = "[changed_area] - [new_state ? "Online" : "Offline"]"
 
 	shipwide_ai_announcement(message, HIJACK_ANNOUNCE, sound('sound/misc/notice2.ogg'))
 
@@ -328,14 +341,21 @@ SUBSYSTEM_DEF(hijack)
 	var/xeno_warning_areas = ""
 
 	for(var/area/cycled_area as anything in progress_areas)
-		if(cycled_area.power_equip)
+		var/new_area_state = cycled_area.power_equip
+		for(var/obj/structure/machinery/fuelpump/pump in fuelpumps)
+			// Pumps don't care about area power but health
+			if(get_area(pump) == cycled_area)
+				new_area_state = pump.operable()
+				break // Assumption: One pump per area
+		progress_areas[cycled_area] = new_area_state
+		if(new_area_state)
 			xeno_warning_areas += "[cycled_area], "
 			continue
 		marine_warning_areas += "[cycled_area], "
 
+	// Remove ending commas and whitespace
 	if(xeno_warning_areas)
 		xeno_warning_areas = copytext(xeno_warning_areas, 1, -2)
-
 	if(marine_warning_areas)
 		marine_warning_areas = copytext(marine_warning_areas, 1, -2)
 

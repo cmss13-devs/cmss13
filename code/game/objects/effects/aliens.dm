@@ -435,6 +435,11 @@
 	module.update_health(module_damage)
 	return (5 SECONDS) * acid_delay
 
+/obj/effect/xenomorph/acid/proc/handle_fuelpump()
+	var/obj/structure/machinery/fuelpump/pump = acid_t
+	pump.update_health(barricade_damage)
+	return (5 SECONDS)
+
 /obj/effect/xenomorph/acid/process(delta_time)
 	remaining -= delta_time * (1 SECONDS)
 	if(remaining > 0)
@@ -450,6 +455,8 @@
 		var/obj/structure/dropship_equipment/module = acid_t
 		if(module.ship_base) //If its not installed then we dont give it any special handling
 			return_delay = handle_dropship_module()
+	else if(istype(acid_t, /obj/structure/machinery/fuelpump))
+		return_delay = handle_fuelpump()
 
 	if(!ticks_left)
 		finish_melting()
@@ -483,7 +490,7 @@
 			qdel(src)
 			return
 
-	if(istype(acid_t, /turf))
+	else if(istype(acid_t, /turf))
 		visible_message(SPAN_XENODANGER("[acid_t] is terribly damaged by the acid covering it!"))
 		if(istype(acid_t, /turf/closed/wall))
 			var/turf/closed/wall/wall = acid_t
@@ -492,7 +499,7 @@
 			var/turf/turf = acid_t
 			turf.ScrapeAway()
 
-	else if (istype(acid_t, /obj/structure/girder))
+	else if(istype(acid_t, /obj/structure/girder))
 		var/obj/structure/girder/girder = acid_t
 		visible_message(SPAN_XENODANGER("[acid_t] collapses and falls in on itself as the acid melts its frame!"))
 		girder.dismantle()
@@ -504,7 +511,10 @@
 
 	else if(istype(acid_t, /obj/structure/barricade))
 		visible_message(SPAN_XENODANGER("[acid_t] cracks and fragments as the acid sizzles against it!"))
-		pass() // Don't delete it, just damaj
+		// Don't delete it, just damaj
+
+	else if(istype(acid_t, /obj/structure/machinery/fuelpump))
+		visible_message(SPAN_XENODANGER("[acid_t] cracks and fragments as the acid sizzles against it!"))
 
 	else if(istype(acid_t, /obj/structure/dropship_equipment))
 		var/obj/structure/dropship_equipment/module = acid_t

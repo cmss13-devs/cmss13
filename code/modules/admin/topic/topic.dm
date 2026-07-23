@@ -2078,6 +2078,10 @@
 			if((R_ADMIN|R_MOD) & staff.admin_holder.rights)
 				to_chat(staff, SPAN_STAFF_IC("<b>ADMINS/MODS: [SPAN_RED("[src.owner] marked [key_name(speaker)]'s ARES message for response.")]</b>"))
 
+	if(href_list["osquery"])
+		var/datum/opensearch_query/query = SSopensearch.queries[text2num(href_list["osquery"])]
+		query?.tgui_interact(usr)
+
 	return
 
 /datum/admins/proc/accept_ert(mob/approver, mob/ref_person)

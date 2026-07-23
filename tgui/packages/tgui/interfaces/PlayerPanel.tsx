@@ -267,6 +267,15 @@ export const PlayerPanel = (props) => {
                   <Stack.Item align="right">
                     <Button
                       ml={1}
+                      icon="window-restore"
+                      onClick={() => act('opensearch_query')}
+                    >
+                      OpenSearch
+                    </Button>
+                  </Stack.Item>
+                  <Stack.Item align="right">
+                    <Button
+                      ml={1}
                       icon="exclamation-triangle"
                       disabled={!hasPermission(data, 'alert_message')}
                       onClick={() => act('alert_message')}

@@ -518,13 +518,15 @@ GLOBAL_LIST_INIT(cm_vending_equipment_badblood, list(
 		user.update_inv_wear_suit()
 		return
 
+	/*
 	if(mob_client.can_use_pred_specials(higher_lock = TRUE) && (unique_type != "None") && (unique_type in PRED_UNIQUES_LEAD))
 		switch(mob_client.prefs.predator_use_unique)
-			//if("Praetorian")
-			//	icon_state = "halfarmor_lead_xenobone_p"
-			//	LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_lead_xenobone_p")
+			if("Praetorian")
+				icon_state = "halfarmor_lead_xenobone_p"
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_lead_xenobone_p")
 		user.update_inv_wear_suit()
 		return
+	*/
 
 	icon_state = "halfarmor[mob_client.prefs.predator_armor_type]_[mob_client.prefs.predator_armor_material]"
 	LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor[mob_client.prefs.predator_armor_type]_[mob_client.prefs.predator_armor_material]")

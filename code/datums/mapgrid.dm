@@ -131,8 +131,6 @@
 	&&  (current_cell.end_y   >= map_location.y))
 		return
 
-	to_world("Moving [target.name] to a new cell")
-
 	// Otherwise move it
 	insert(target)
 
@@ -146,7 +144,7 @@
 /datum/mapgrid/proc/query_range(start_x, end_x, start_y, end_y, alist/z_list)
 	. = list()
 
-	to_world("=== Range query")
+	//to_world("=== Range query")
 
 	// Scan X, start then end, clamping grid coordinates
 	var/start_grid_x
@@ -176,7 +174,7 @@
 		for(var/grid_y in start_grid_y to end_grid_y)
 			var/datum/mapcell/searching = cells[grid_x][grid_y]
 
-			to_world("Visiting: ([grid_x],[grid_y]) : x=([searching.start_x],[searching.end_x]) ; y=([searching.start_y],[searching.end_y]) ; contents=[length(searching.contents)]")
+			//to_world("Visiting: ([grid_x],[grid_y]) : x=([searching.start_x],[searching.end_x]) ; y=([searching.start_y],[searching.end_y]) ; contents=[length(searching.contents)]")
 
 			for(var/atom/movable/possible_target as anything in searching.contents)
 				var/turf/target_turf = get_turf(possible_target)

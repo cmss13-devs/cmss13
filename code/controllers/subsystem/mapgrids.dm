@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(mapgrids)
 	name = "MapGrids"
 	wait = 0.5 SECONDS
-	priority = SS_PRIORITY_QUADTREE
+	flags = SS_NO_FIRE
 	// Before SSatoms so things can register to them, but after SSmapping so grids don't have to be expanded at every world expansion
 	init_order = SS_INIT_MAPGRIDS
 

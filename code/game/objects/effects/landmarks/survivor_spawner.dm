@@ -321,6 +321,33 @@
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
 	story_text = "You are a doctor fighting for the Colonial Liberation Front. Taking advantage of the chaos after most security forces present in the city were diverted to the lab, your cell launched an assault on the offices nearby, knowing that a company big shot would be present. The raid was a success with minimal losses, but the expected security response never arrived. In fact, the whole city seems to have gone quiet..."
 
+//Cape River CLF survivors//
+
+/obj/effect/landmark/survivor_spawner/clf/caperiver
+	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
+	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
+	story_text = "You are a soldier fighting for the Colonial Liberation Front. Your cell is part of a larger operation intended to conduct a large scale raid of this Corporate held colony. You were to land at a nearby hidden base in preperation for the assault, however some form of electromagnetic pulse knocked your ships engines offline mid flight. Most of your cell survived the hard landing, however your radios indicate the hidden base has gone dark. In fact, the colony seems to be too quiet..."
+
+/obj/effect/landmark/survivor_spawner/clf_lead/caperiver
+	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
+	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
+	story_text = "You are the leader of a squad fighting for the Colonial Liberation Front. . Your cell is part of a larger operation intended to conduct a large scale raid of this Corporate held colony. You were to land at a nearby hidden base in preperation for the assault, however some form of electromagnetic pulse knocked your ships engines offline mid flight. Most of your cell survived the hard landing, however your radios indicate the hidden base has gone dark. In fact, the colony seems to be too quiet..."
+
+/obj/effect/landmark/survivor_spawner/clf_engi/caperiver
+	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
+	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
+	story_text = "You are an engineer fighting for the Colonial Liberation Front. . Your cell is part of a larger operation intended to conduct a large scale raid of this Corporate held colony. You were to land at a nearby hidden base in preperation for the assault, however some form of electromagnetic pulse knocked your ships engines offline mid flight. Most of your cell survived the hard landing, however your radios indicate the hidden base has gone dark. In fact, the colony seems to be too quiet..."
+
+/obj/effect/landmark/survivor_spawner/clf_medic/caperiver
+	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
+	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
+	story_text = "You are a doctor fighting for the Colonial Liberation Front. . Your cell is part of a larger operation intended to conduct a large scale raid of this Corporate held colony. You were to land at a nearby hidden base in preperation for the assault, however some form of electromagnetic pulse knocked your ships engines offline mid flight. Most of your cell survived the hard landing, however your radios indicate the hidden base has gone dark. In fact, the colony seems to be too quiet..."
+
+
 //Weyland-Yutani Survivors//
 
 /obj/effect/landmark/survivor_spawner/lv624_corporate_dome_cl

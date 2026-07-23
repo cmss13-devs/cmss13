@@ -3645,6 +3645,10 @@
 	},
 /turf/open/floor/plating/kutjevo,
 /area/last_bunker/indoors/entry_zone/train)
+"akm" = (
+/obj/effect/stairs/down,
+/turf/open_space,
+/area/last_bunker/indoors/sustainment_zone)
 "akn" = (
 /turf/closed/shuttle/escapepod{
 	icon_state = "wall13";
@@ -6955,7 +6959,6 @@
 	icon_state = "p_stair_full";
 	pixel_y = -6
 	},
-/obj/effect/stairs/down,
 /turf/open/floor/prison/greenblue/southeast,
 /area/last_bunker/indoors/sustainment_zone)
 "cJz" = (
@@ -101016,7 +101019,7 @@ vWj
 sJw
 aNj
 gYx
-jtY
+akm
 jtY
 jtY
 jtY

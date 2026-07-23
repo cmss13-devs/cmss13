@@ -269,7 +269,7 @@
 /obj/item/ammo_magazine/pistol/t73
 	name = "\improper Type 73 magazine (7.62x25mm Tokarev)"
 	desc = "A 7.62x25mm pistol magazine."
-	default_ammo = /datum/ammo/bullet/pistol/deagle
+	default_ammo = /datum/ammo/bullet/pistol/heavy
 	caliber = "7.62x25mm Tokarev"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/pistols.dmi'
 	icon_state = "ttmag"

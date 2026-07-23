@@ -322,9 +322,9 @@
 	return TRUE
 
 /obj/structure/barricade/deconstruct(disassembled = TRUE, debris = TRUE)
+	if(!debris)
+		return ..()
 	if(disassembled)
-		if(!debris)
-			return ..()
 		if(is_wired)
 			new /obj/item/stack/barbed_wire(loc)
 		if(stack_type)
@@ -335,8 +335,6 @@
 			if(stack_amt)
 				new stack_type(loc, stack_amt)
 	else
-		if(!debris)
-			return ..()
 		if(destroyed_stack_amount)
 			new stack_type(loc, destroyed_stack_amount)
 	return ..()

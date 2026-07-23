@@ -7,6 +7,7 @@
 	anchored = TRUE
 	unslashable = FALSE
 	health = 100
+	plane = -7
 	layer = 2.4
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 

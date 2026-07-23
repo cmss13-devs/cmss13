@@ -112,6 +112,9 @@
 	color = "#343a3d"
 	},
 /area/atlan/oob)
+"az" = (
+/turf/closed/wall/upp_ship/grey/blue,
+/area/atlan/station/walkway)
 "aL" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
@@ -1281,8 +1284,8 @@
 /area/atlan/station/walkway)
 "vN" = (
 /obj/structure/sign/poster/upp,
-/turf/closed/wall/upp_ship/grey/blue/reinforced/outer,
-/area/atlan/oob)
+/turf/closed/wall/upp_ship/grey/blue,
+/area/atlan/station/walkway)
 "vP" = (
 /obj/structure/flora/wood/stick2,
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -1689,8 +1692,8 @@
 /turf/open/floor/strata,
 /area/atlan/station/walkway)
 "Ch" = (
-/turf/closed/wall/upp_ship/grey/teal/reinforced/outer,
-/area/atlan/oob)
+/turf/closed/wall/upp_ship/grey/teal,
+/area/atlan/station/walkway)
 "Cz" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
@@ -6496,7 +6499,7 @@ kv
 kv
 kv
 kv
-cb
+Mv
 Sx
 kN
 aN
@@ -7824,7 +7827,7 @@ bx
 QX
 Ja
 Gr
-wk
+az
 YX
 OY
 Qi

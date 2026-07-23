@@ -888,11 +888,16 @@
 	dir = 1;
 	pixel_y = 21
 	},
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/obj/structure/barricade/handrail/strata{
+	layer = 3.1
+	},
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
-	pixel_y = 8;
-	pixel_x = 2;
-	layer = 3.6
+	pixel_x = 5;
+	pixel_y = 6
 	},
 /turf/open/floor/strata/cyan1,
 /area/atlan/station/medical)
@@ -1066,8 +1071,8 @@
 /area/atlan/station/walkway)
 "adx" = (
 /obj/structure/sign/poster/upp,
-/turf/closed/wall/upp_ship/grey/blue/reinforced/outer,
-/area/atlan/oob)
+/turf/closed/wall/upp_ship/grey/blue,
+/area/atlan/station/walkway)
 "ady" = (
 /obj/effect/decal/strata_decals/grasses,
 /obj/structure/sign/flag/upp{
@@ -1316,11 +1321,11 @@
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_nw_train)
 "aep" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22";
-	pixel_x = -8;
-	pixel_y = 8
+/obj/structure/barricade/handrail/strata{
+	dir = 4;
+	layer = 4
 	},
+/obj/structure/barricade/handrail/strata,
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_nw_train)
 "aeq" = (
@@ -1428,6 +1433,9 @@
 	},
 /turf/open/floor/strata,
 /area/atlan/station/promenade)
+"aeJ" = (
+/turf/closed/wall/upp_ship/grey/red/reinforced,
+/area/atlan/station/walkway)
 "aeK" = (
 /obj/structure/stairs{
 	dir = 4
@@ -1442,6 +1450,39 @@
 	layer = 2.9
 	},
 /turf/open/floor/strata/multi_tiles/west,
+/area/atlan/station/single_dorms)
+"aeL" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 8
+	},
+/obj/structure/barricade/handrail/strata,
+/obj/structure/barricade/handrail/strata{
+	dir = 4;
+	layer = 4.12
+	},
+/turf/open/floor/strata/red1,
+/area/atlan/station/security)
+"aeM" = (
+/obj/structure/barricade/handrail/strata,
+/obj/structure/barricade/handrail/strata{
+	dir = 8;
+	layer = 3
+	},
+/turf/open/floor/strata/red1,
+/area/atlan/station/security)
+"aeN" = (
+/obj/structure/barricade/handrail/strata{
+	layer = 3.1
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/exports_east)
+"aeO" = (
+/obj/structure/platform/metal/strata/north,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata,
 /area/atlan/station/single_dorms)
 "aeP" = (
 /obj/structure/stairs{
@@ -1497,6 +1538,17 @@
 	layer = 3
 	},
 /turf/open/floor/strata/green1,
+/area/atlan/station/single_dorms)
+"aeT" = (
+/obj/structure/barricade/handrail/strata{
+	layer = 3.1
+	},
+/turf/open/floor/strata/green1,
+/area/atlan/station/single_dorms)
+"aeU" = (
+/obj/structure/platform/metal/strata/north,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/strata,
 /area/atlan/station/single_dorms)
 "aeV" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1913,6 +1965,17 @@
 "agj" = (
 /turf/closed/wall/upp_ship/grey/orange/reinforced/outer,
 /area/atlan/oob)
+"agk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/strata{
+	layer = 3.1
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 8;
+	layer = 3
+	},
+/turf/open/floor/strata,
+/area/atlan/station/single_dorms)
 "agl" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/vents/pump,
@@ -1971,11 +2034,6 @@
 "agt" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/floor3/east,
-/area/atlan/station/single_dorms)
-"agu" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/strata,
 /area/atlan/station/single_dorms)
 "agv" = (
 /obj/effect/decal/hybrisa/trash{
@@ -2382,6 +2440,7 @@
 /obj/item/clothing/gloves/botanic_leather,
 /obj/item/clothing/gloves/botanic_leather,
 /obj/item/clothing/gloves/botanic_leather,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/whitegreenfull,
 /area/atlan/station/botany)
 "ahD" = (
@@ -3977,6 +4036,13 @@
 /obj/structure/machinery/alarm,
 /turf/closed/wall/upp_ship/grey/orange,
 /area/atlan/asteroid/processing_offices)
+"alY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/strata{
+	layer = 3.1
+	},
+/turf/open/floor/strata,
+/area/atlan/station/single_dorms)
 "alZ" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice2";
@@ -5006,6 +5072,13 @@
 "aps" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 9
+	},
+/obj/structure/barricade/handrail/strata{
+	layer = 3.1
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 8;
+	layer = 3
 	},
 /turf/open/floor/strata,
 /area/atlan/station/hab_flight)
@@ -8044,6 +8117,10 @@
 /obj/structure/pipes/standard/manifold/hidden/cyan,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/single_dorms)
+"ayT" = (
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3,
+/turf/closed/wall/upp_ship/grey,
+/area/atlan/station/walkway)
 "ayU" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt,
 /turf/open/floor/strata/floor3/east,
@@ -8437,6 +8514,12 @@
 "aAm" = (
 /turf/closed/wall/upp_ship/grey/red/reinforced,
 /area/atlan/station/hab_flight)
+"aAn" = (
+/obj/structure/barricade/handrail/strata{
+	layer = 3.1
+	},
+/turf/open/floor/strata,
+/area/atlan/station/single_dorms)
 "aAo" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/barricade/wooden{
@@ -8528,6 +8611,12 @@
 	},
 /turf/open/floor/strata,
 /area/atlan/station/single_dorms)
+"aAD" = (
+/obj/structure/barricade/handrail/strata{
+	layer = 3.1
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_offices)
 "aAE" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
@@ -8580,6 +8669,16 @@
 "aAJ" = (
 /turf/open/floor/strata/white_cyan1,
 /area/atlan/oob/space)
+"aAK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/obj/structure/barricade/handrail/strata{
+	layer = 3.1
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_se_train)
 "aAL" = (
 /turf/closed/wall/upp_ship/grey/reinforced,
 /area/atlan/asteroid/servers)
@@ -11072,6 +11171,12 @@
 /obj/structure/closet/emcloset,
 /turf/open/floor/strata/green1,
 /area/atlan/station/double_dorms)
+"aJi" = (
+/obj/structure/barricade/handrail/strata{
+	layer = 3.1
+	},
+/turf/open/floor/plating,
+/area/atlan/asteroid/processing_se_train)
 "aJj" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/strata/orange_edge/east,
@@ -11088,6 +11193,12 @@
 /obj/effect/hunter/ancient_temple/rubble/rubble_3,
 /turf/open/gm/dirt/dark_brown,
 /area/atlan/asteroid/exports_cave)
+"aJn" = (
+/obj/structure/barricade/handrail/strata{
+	layer = 3.1
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_se_train)
 "aJo" = (
 /obj/structure/surface/rack{
 	color = "#98a3ab"
@@ -11998,6 +12109,9 @@
 	pixel_y = 5
 	},
 /obj/effect/spawner/random/tool,
+/obj/structure/barricade/handrail/strata{
+	layer = 3.1
+	},
 /turf/open/floor/prison/darkyellowfull2,
 /area/atlan/station/substation)
 "aLW" = (
@@ -12074,6 +12188,7 @@
 /obj/item/weapon/gun/flamer/survivor{
 	pixel_y = 4
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/whitegreen/north,
 /area/atlan/station/botany)
 "aMi" = (
@@ -12813,6 +12928,10 @@
 	icon_state = "pottedplant_22";
 	pixel_x = -2;
 	pixel_y = 13
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 4;
+	layer = 3
 	},
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/atlan/asteroid/processing_nw_train)
@@ -13818,12 +13937,6 @@
 /obj/structure/platform/metal/strata/east,
 /turf/open/floor/strata/cyan1,
 /area/atlan/station/medical/morgue)
-"aRT" = (
-/obj/structure/closet/emcloset{
-	dir = 4
-	},
-/turf/open/floor/strata/floor2,
-/area/atlan/station/medical/morgue)
 "aRU" = (
 /obj/structure/cargo_container/upp_single/container_4,
 /turf/open/floor/strata/orange_edge/west,
@@ -13968,12 +14081,12 @@
 /turf/open/floor/strata/cyan1,
 /area/atlan/station/medical/morgue)
 "aSu" = (
-/obj/structure/largecrate/random/mini/med{
-	pixel_y = 9;
-	pixel_x = 5
+/obj/structure/barricade/handrail/strata{
+	dir = 8;
+	layer = 3.3
 	},
-/obj/structure/largecrate/random/mini/small_case/c{
-	pixel_x = 7
+/obj/structure/closet/emcloset{
+	dir = 4
 	},
 /turf/open/floor/strata/floor2,
 /area/atlan/station/medical/morgue)
@@ -16621,11 +16734,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/cyan1/east,
 /area/atlan/station/medical)
-"bbb" = (
-/obj/structure/disposalpipe/segment,
-/obj/effect/decal/strata_decals/catwalk/prison,
-/turf/closed/wall/mineral/bone_resin,
-/area/atlan/oob)
 "bbc" = (
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
@@ -16809,20 +16917,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/strata,
 /area/atlan/oob)
-"bbN" = (
-/obj/item/stack/sheet/metal,
-/turf/open/floor/strata,
-/area/atlan/oob)
-"bbO" = (
-/obj/structure/prop/invuln/lattice_prop{
-	dir = 1;
-	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 32;
-	layer = 5.4
-	},
-/turf/open/floor/strata/green1,
-/area/atlan/oob)
 "bbP" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -16840,31 +16934,8 @@
 /obj/item/storage/briefcase/inflatable,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/atlan/station/medical)
-"bbR" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/strata/floor3/east,
-/area/atlan/oob)
 "bbS" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/strata,
-/area/atlan/oob)
-"bbT" = (
-/obj/effect/decal/cleanable/blood,
-/obj/structure/barricade/wooden{
-	dir = 4
-	},
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/plating/plating_catwalk/strata,
-/area/atlan/oob)
-"bbU" = (
-/obj/structure/largecrate/random/secure,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
@@ -16881,36 +16952,6 @@
 	},
 /turf/open/floor/strata/red1,
 /area/atlan/asteroid/processing_dock/cas)
-"bbW" = (
-/obj/item/stack/sheet/wood,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/strata,
-/area/atlan/oob)
-"bbX" = (
-/obj/structure/prop/invuln/lattice_prop{
-	dir = 1;
-	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 32;
-	layer = 5.4
-	},
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/strata,
-/area/atlan/oob)
-"bbY" = (
-/obj/structure/prop/invuln/lattice_prop{
-	dir = 1;
-	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 32;
-	layer = 5.4
-	},
-/turf/open/floor/strata,
-/area/atlan/oob)
 "bbZ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/wooden{
@@ -17022,39 +17063,12 @@
 	},
 /turf/open/floor/strata/floor3/east,
 /area/atlan/oob)
-"bcs" = (
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice12"
-	},
-/obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "xgib5"
-	},
-/obj/effect/decal/cleanable/blood/xeno{
-	pixel_x = -2;
-	pixel_y = -4
-	},
-/turf/open/floor/strata,
-/area/atlan/oob)
 "bct" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood/xeno{
-	pixel_x = -2;
-	pixel_y = -4
-	},
 /turf/open/floor/strata/floor3/east,
-/area/atlan/oob)
-"bcu" = (
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice12"
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "xgib5"
-	},
-/turf/open/floor/strata,
 /area/atlan/oob)
 "bcv" = (
 /obj/structure/prop/invuln/lattice_prop{
@@ -17111,10 +17125,6 @@
 "bcE" = (
 /obj/effect/decal/cleanable/blood/gibs/down,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood/xeno{
-	pixel_x = -2;
-	pixel_y = -4
-	},
 /turf/open/floor/strata/floor3/east,
 /area/atlan/oob)
 "bcF" = (
@@ -17122,6 +17132,10 @@
 	layer = 2.9
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/tool/wet_sign{
+	pixel_y = 8;
+	pixel_x = -1
+	},
 /turf/open/floor/prison/sterile_white/south,
 /area/atlan/oob)
 "bcG" = (
@@ -17171,6 +17185,10 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/drinks/cans/waterbottle/upp{
+	pixel_y = 7;
+	pixel_x = 4
+	},
 /turf/open/floor/strata,
 /area/atlan/oob)
 "bcP" = (
@@ -17265,12 +17283,6 @@
 "bde" = (
 /obj/structure/platform_decoration/metal/strata,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "xgib5"
-	},
-/obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "xgib1"
-	},
 /turf/open/floor/prison/sterile_white/south,
 /area/atlan/oob)
 "bdf" = (
@@ -17281,12 +17293,6 @@
 "bdg" = (
 /turf/open/shuttle/escapepod/north,
 /area/atlan/station/substation)
-"bdh" = (
-/obj/structure/platform/metal/strata,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor/prison/sterile_white/south,
-/area/atlan/oob)
 "bdi" = (
 /obj/structure/platform_decoration/metal/strata/north,
 /obj/effect/decal/cleanable/dirt,
@@ -17328,18 +17334,6 @@
 /area/atlan/oob)
 "bdn" = (
 /obj/structure/barricade/wooden,
-/turf/open/floor/strata,
-/area/atlan/oob)
-"bdo" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood/xeno,
-/obj/effect/decal/cleanable/blood/xeno{
-	pixel_x = -2;
-	pixel_y = -4
-	},
-/obj/effect/decal/cleanable/blood/xeno{
-	icon_state = "xgib5"
-	},
 /turf/open/floor/strata,
 /area/atlan/oob)
 "bdp" = (
@@ -17794,6 +17788,9 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
+/obj/structure/barricade/handrail/strata{
+	layer = 3.1
+	},
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/single_dorms)
 "beO" = (
@@ -17889,6 +17886,10 @@
 /obj/structure/sign/poster/upp{
 	pixel_y = -26
 	},
+/obj/structure/barricade/handrail/strata{
+	dir = 8;
+	layer = 3
+	},
 /turf/open/floor/strata/green1,
 /area/atlan/station/double_dorms)
 "bfc" = (
@@ -17944,6 +17945,82 @@
 "bfk" = (
 /turf/closed/wall/upp_ship/grey/reinforced,
 /area/atlan/lz/near_lz1)
+"bfl" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 4;
+	layer = 4.12
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_se_train)
+"bfm" = (
+/turf/closed/wall/upp_ship/grey/teal,
+/area/atlan/station/walkway)
+"bfn" = (
+/obj/structure/machinery/light/double/blue,
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/turf/open/floor/prison/darkyellowfull2,
+/area/atlan/station/substation)
+"bfo" = (
+/turf/closed/wall/upp_ship/grey/blue,
+/area/atlan/station/walkway)
+"bfp" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/whitegreen/north,
+/area/atlan/station/botany)
+"bfq" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 4;
+	layer = 3
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_nw_train)
+"bfr" = (
+/obj/structure/cargo_container/upp_single/container_5/alt,
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_seperation/cas)
+"bfs" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 4;
+	layer = 4
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_nw_train)
+"bft" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8;
+	layer = 3.3
+	},
+/obj/structure/barricade/handrail/strata{
+	layer = 3.1
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/station/medical/morgue)
+"bfu" = (
+/obj/structure/platform/metal/strata/east,
+/obj/structure/largecrate/random/mini/med{
+	pixel_y = 9;
+	pixel_x = 5;
+	layer = 2.98
+	},
+/turf/open/floor/strata/cyan1,
+/area/atlan/station/medical/morgue)
+"bfv" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8;
+	layer = 3.3
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/station/cargooffice)
 "bfw" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	name = "launch bay door"
@@ -18326,7 +18403,7 @@
 	pixel_y = 11;
 	pixel_x = -1
 	},
-/turf/open/floor/plating,
+/turf/open/floor/strata/green1,
 /area/atlan/comms/lz2_hab_relay)
 "bwF" = (
 /obj/effect/decal/cleanable/dirt,
@@ -18871,8 +18948,10 @@
 /turf/open/floor/strata,
 /area/atlan/station/security)
 "bYK" = (
-/obj/structure/flora/tree/tyrargo/tree_2,
 /obj/effect/landmark/objective_landmark/close,
+/obj/structure/flora/tree/tyrargo/tree_2{
+	layer = 5
+	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/atlan/station/walkway)
 "bYU" = (
@@ -19622,6 +19701,9 @@
 	pixel_x = -4
 	},
 /obj/effect/landmark/monkey_spawn,
+/obj/structure/barricade/handrail/strata{
+	layer = 3.1
+	},
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/exports_east)
 "cEq" = (
@@ -19968,6 +20050,9 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
+/obj/structure/barricade/handrail/strata{
+	layer = 3.1
+	},
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_offices)
 "cQi" = (
@@ -20152,6 +20237,7 @@
 	dir = 1;
 	pixel_y = 21
 	},
+/obj/structure/barricade/handrail/strata,
 /turf/open/floor/strata/red1,
 /area/atlan/station/security)
 "cZl" = (
@@ -21211,6 +21297,7 @@
 	},
 /obj/item/seeds/cabbageseed,
 /obj/item/seeds/cabbageseed,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/whitegreenfull,
 /area/atlan/station/botany)
 "dNt" = (
@@ -22101,11 +22188,10 @@
 	},
 /obj/item/reagent_container/glass/bucket{
 	pixel_x = 4;
-	pixel_y = -3
+	pixel_y = 12
 	},
 /obj/item/reagent_container/glass/bucket{
-	pixel_x = 4;
-	pixel_y = 12
+	pixel_x = -10
 	},
 /turf/open/floor/prison/whitegreenfull,
 /area/atlan/station/botany)
@@ -22282,6 +22368,13 @@
 	pixel_y = 3;
 	pixel_x = 1
 	},
+/obj/structure/barricade/handrail/strata{
+	dir = 4;
+	layer = 4
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
 /turf/open/floor/strata,
 /area/atlan/asteroid/processing_nw_train)
 "eDU" = (
@@ -22379,6 +22472,13 @@
 	icon_state = "pottedplant_22";
 	pixel_x = 7;
 	pixel_y = 12
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 4;
+	layer = 3
+	},
+/obj/structure/barricade/handrail/strata{
+	layer = 3.1
 	},
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_nw_train)
@@ -23044,6 +23144,7 @@
 /obj/item/seeds/carrotseed,
 /obj/item/seeds/carrotseed,
 /obj/item/seeds/carrotseed,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/whitegreenfull,
 /area/atlan/station/botany)
 "fjZ" = (
@@ -23639,10 +23740,16 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/canteen)
 "fGl" = (
+/obj/structure/barricade/handrail/strata,
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
 	pixel_y = 3;
-	pixel_x = 1
+	pixel_x = 1;
+	layer = 2.97
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 8;
+	layer = 3
 	},
 /turf/open/floor/strata/red1,
 /area/atlan/station/security)
@@ -26269,6 +26376,17 @@
 	icon_state = "pottedplant_22";
 	pixel_x = -5
 	},
+/obj/structure/barricade/handrail/strata{
+	dir = 8;
+	layer = 3.3
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 4;
+	layer = 3
+	},
 /turf/open/floor/strata/floor2,
 /area/atlan/station/cargooffice)
 "hHP" = (
@@ -26671,7 +26789,9 @@
 /turf/open/floor/strata/yellow3/east,
 /area/atlan/station/cargo)
 "iaj" = (
-/obj/structure/closet/toolcloset,
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
 /obj/structure/closet/toolcloset,
 /turf/open/floor/prison/darkyellowfull2,
 /area/atlan/station/substation)
@@ -28482,15 +28602,15 @@
 /area/atlan/asteroid/processing_sw_train)
 "jja" = (
 /obj/structure/barricade/handrail/strata{
-	dir = 8
-	},
-/obj/structure/barricade/handrail/strata{
 	pixel_y = 16
 	},
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
 	pixel_x = 5;
 	pixel_y = 6
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 8
 	},
 /turf/open/floor/strata/blue1,
 /area/atlan/station/hab_flight)
@@ -29637,7 +29757,7 @@
 "kbk" = (
 /obj/structure/largecrate/random/barrel/true_random,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/strata,
+/turf/open/floor/strata/green1,
 /area/atlan/comms/lz2_hab_relay)
 "kbG" = (
 /obj/structure/reagent_dispensers/tank/fuel/spacecraft,
@@ -32513,6 +32633,16 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_10"
 	},
+/obj/structure/barricade/handrail/strata{
+	layer = 3.1
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 4;
+	layer = 3
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_nw_train)
 "mrn" = (
@@ -32646,6 +32776,10 @@
 	icon_state = "pottedplant_22";
 	pixel_x = -2;
 	pixel_y = 13
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 8;
+	layer = 3.3
 	},
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/cargooffice)
@@ -32814,6 +32948,9 @@
 /obj/item/trash/cigbutt{
 	pixel_x = -10;
 	pixel_y = 13
+	},
+/obj/structure/barricade/handrail/strata{
+	layer = 3.1
 	},
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/exports_east)
@@ -33242,7 +33379,7 @@
 /area/atlan/station/promenade)
 "mUO" = (
 /obj/item/tool/screwdriver,
-/turf/open/floor/strata,
+/turf/open/floor/strata/green1,
 /area/atlan/comms/lz2_hab_relay)
 "mUP" = (
 /obj/structure/prop/static_tank/fuel{
@@ -33786,7 +33923,13 @@
 /turf/open/floor/strata/multi_tiles,
 /area/atlan/station/hab_flight)
 "nqB" = (
-/obj/structure/sign/safety/tram,
+/obj/structure/barricade/handrail/strata{
+	dir = 4;
+	layer = 4.12
+	},
+/obj/structure/barricade/handrail/strata{
+	layer = 3.1
+	},
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_se_train)
 "nqY" = (
@@ -36497,6 +36640,9 @@
 	pixel_y = 21
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/strata{
+	layer = 3.1
+	},
 /turf/open/floor/prison/darkyellowfull2,
 /area/atlan/station/substation)
 "pqK" = (
@@ -36719,12 +36865,18 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
 	pixel_y = 12;
-	pixel_x = -5
+	pixel_x = -5;
+	layer = 2.98
 	},
 /obj/structure/machinery/light/double/blue{
 	dir = 8;
 	pixel_x = -10;
 	pixel_y = -3
+	},
+/obj/structure/barricade/handrail/strata,
+/obj/structure/barricade/handrail/strata{
+	dir = 4;
+	layer = 4.12
 	},
 /turf/open/floor/strata/red1,
 /area/atlan/station/security)
@@ -37279,6 +37431,9 @@
 /area/atlan/oob)
 "pUr" = (
 /obj/item/tool/extinguisher,
+/obj/structure/barricade/handrail/strata{
+	layer = 3.1
+	},
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_se_train)
 "pUs" = (
@@ -37799,6 +37954,13 @@
 /area/atlan/oob)
 "qld" = (
 /obj/structure/flora/pottedplant,
+/obj/structure/barricade/handrail/strata{
+	dir = 4;
+	layer = 3
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_nw_train)
 "qlI" = (
@@ -37816,6 +37978,13 @@
 /obj/effect/decal/cleanable/ash{
 	pixel_y = 6;
 	pixel_x = 3
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 8;
+	layer = 3.3
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 1
 	},
 /turf/open/floor/strata/floor2,
 /area/atlan/station/cargooffice)
@@ -39331,6 +39500,11 @@
 /obj/structure/machinery/light/double/blue{
 	dir = 8
 	},
+/obj/structure/barricade/handrail/strata{
+	dir = 4;
+	layer = 4
+	},
+/obj/structure/barricade/handrail/strata,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/asteroid/processing_nw_train)
 "rvI" = (
@@ -39450,6 +39624,12 @@
 "rAy" = (
 /obj/structure/sign/poster/upp{
 	pixel_y = 33
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/obj/structure/barricade/handrail/strata{
+	layer = 3.1
 	},
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/exports_east)
@@ -42534,6 +42714,7 @@
 	pixel_x = -10;
 	pixel_y = -3
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/whitegreenfull,
 /area/atlan/station/botany)
 "tLa" = (
@@ -44011,6 +44192,12 @@
 	layer = 3.1;
 	pixel_x = -2
 	},
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
 /turf/open/floor/strata/cyan1,
 /area/atlan/station/medical)
 "uPS" = (
@@ -44764,6 +44951,13 @@
 	pixel_y = 8;
 	pixel_x = 2;
 	layer = 3.6
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 8;
+	layer = 3.3
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 1
 	},
 /turf/open/floor/strata/floor2,
 /area/atlan/station/medical/morgue)
@@ -59433,8 +59627,8 @@ bdw
 alD
 aAk
 bdd
-bcP
-bbH
+bbJ
+bcm
 aAk
 bbH
 alD
@@ -59643,7 +59837,7 @@ bdK
 bdF
 bdx
 alD
-bdo
+bbJ
 bde
 bcQ
 bcF
@@ -59855,12 +60049,12 @@ bdL
 bdF
 bdy
 alD
-bcP
+bbJ
 bdf
 bcR
 bcH
 bbJ
-bcm
+bbH
 alD
 alD
 alD
@@ -60068,7 +60262,7 @@ bdG
 bdw
 alD
 bbJ
-bdh
+bdf
 bcT
 bcH
 bbJ
@@ -66224,9 +66418,9 @@ bco
 bce
 bca
 bbJ
-bbH
-bbR
-bbH
+alD
+alD
+alD
 alD
 alD
 alD
@@ -66436,9 +66630,9 @@ bcp
 bbJ
 bbJ
 bbJ
-bbH
-bbS
-bbJ
+alD
+alD
+alD
 alD
 alD
 alD
@@ -66648,9 +66842,9 @@ bcq
 bbH
 bbH
 bbH
-bbJ
-bbH
-bbJ
+alD
+alD
+alD
 alD
 alD
 alD
@@ -66860,9 +67054,9 @@ bcp
 bbH
 bbH
 bbH
-bbH
-bbL
-bbH
+alD
+alD
+alD
 alD
 alD
 alD
@@ -67072,9 +67266,9 @@ bcr
 bcf
 aAk
 bbH
-bbL
-bbL
-bbH
+alD
+alD
+alD
 alD
 alD
 alD
@@ -67284,9 +67478,9 @@ bcr
 bcg
 bcb
 bbH
-bbH
-bbH
-bbK
+alD
+alD
+alD
 alD
 alD
 alD
@@ -67492,13 +67686,13 @@ bbH
 bda
 bbJ
 bcD
-bcs
+bcq
 bch
 bcc
 bbH
-bbH
-bbH
-bbH
+alD
+alD
+alD
 alD
 alD
 alD
@@ -67708,9 +67902,9 @@ bct
 bci
 bbH
 bbH
-bbH
-bbT
-bbL
+alD
+alD
+alD
 alD
 alD
 alD
@@ -67916,13 +68110,13 @@ bdn
 bdc
 bbJ
 bbJ
-bcu
+bcw
 bcj
 bcd
 bbZ
-bbH
-bbU
-bbH
+alD
+alD
+alD
 alD
 alD
 alD
@@ -68132,9 +68326,9 @@ bcv
 bcl
 aAk
 bbH
-bbL
-bbW
-bbM
+alD
+alD
+alD
 alD
 alD
 alD
@@ -68344,9 +68538,9 @@ bcw
 bbJ
 aAk
 bbH
-bbH
-bbR
-bbN
+alD
+alD
+alD
 alD
 alD
 alD
@@ -68556,9 +68750,9 @@ bbH
 bbH
 bbH
 bbH
-bbY
-bbX
-bbO
+alD
+alD
+alD
 alD
 alD
 alD
@@ -106068,7 +106262,7 @@ alE
 alE
 oVk
 bwD
-adV
+xZh
 dQD
 cFA
 jYP
@@ -106484,7 +106678,7 @@ arg
 xwx
 aBb
 kbk
-adV
+xZh
 aBe
 adV
 mSw
@@ -106695,7 +106889,7 @@ tXw
 arg
 vym
 aBb
-adV
+xZh
 adV
 idi
 adV
@@ -106907,7 +107101,7 @@ bIR
 arg
 gnc
 kXN
-adV
+xZh
 sEv
 mSw
 adV
@@ -107737,7 +107931,7 @@ kPG
 qYE
 kPG
 rYX
-xzx
+wgo
 xOF
 ary
 iEU
@@ -111328,7 +111522,7 @@ xYA
 xYA
 xYA
 auq
-mSQ
+qfT
 aPB
 aBn
 hYV
@@ -112840,7 +113034,7 @@ agj
 pqu
 aig
 aid
-sTg
+bfn
 aBm
 evD
 ntq
@@ -113070,8 +113264,8 @@ aoG
 via
 dMD
 rJN
-dMD
-dMD
+aeT
+bYX
 qZc
 blM
 tPr
@@ -113283,7 +113477,7 @@ via
 xob
 via
 via
-xob
+aWg
 tPr
 tPr
 tPr
@@ -113495,7 +113689,7 @@ via
 via
 vJS
 via
-via
+aeH
 tPr
 tPr
 tPr
@@ -113663,7 +113857,7 @@ avz
 avp
 avg
 aZw
-veM
+qDn
 ajD
 nQl
 abY
@@ -113706,8 +113900,8 @@ aoE
 dMD
 dMD
 via
-dMD
-dMD
+aeT
+aeO
 dMD
 via
 dMD
@@ -114301,7 +114495,7 @@ atp
 aBn
 auS
 veM
-veM
+qDn
 rQm
 nvr
 jDB
@@ -114979,7 +115173,7 @@ pZb
 pZb
 aJH
 pZb
-dMD
+aeT
 bYX
 via
 dMD
@@ -115581,7 +115775,7 @@ xlz
 cwd
 aco
 iMe
-aUq
+ahM
 aUq
 aUq
 vVm
@@ -115598,7 +115792,7 @@ dHA
 mBo
 lUp
 tKL
-vVm
+ahS
 ahC
 mBo
 aLt
@@ -115801,7 +115995,7 @@ qxh
 mBo
 wmU
 aUq
-aUq
+ahM
 aUq
 aUq
 nUC
@@ -115810,7 +116004,7 @@ aUq
 aUq
 aUq
 aUq
-aUq
+ahM
 fjO
 mBo
 aLu
@@ -116022,7 +116216,7 @@ ahV
 fNr
 aMt
 lJQ
-aUq
+ahM
 dNi
 mBo
 aLv
@@ -116235,7 +116429,7 @@ ahZ
 ahU
 cVJ
 aUq
-vVm
+ahS
 mBo
 aLw
 gbD
@@ -116447,7 +116641,7 @@ maQ
 gdu
 kak
 aUq
-vVm
+ahS
 mBo
 aLx
 kwm
@@ -116652,7 +116846,7 @@ aiU
 ljj
 dMY
 chf
-cVJ
+bfp
 dtS
 mRI
 maQ
@@ -116870,7 +117064,7 @@ mRI
 maQ
 gdu
 aMh
-aUq
+ahM
 ahE
 mBo
 aLy
@@ -117732,7 +117926,7 @@ xob
 via
 vJS
 aoF
-via
+aAn
 beU
 via
 via
@@ -118304,7 +118498,7 @@ ddq
 ddq
 jHn
 hHN
-vQC
+bfv
 ptz
 wYs
 qlI
@@ -118352,7 +118546,7 @@ vVm
 asy
 aMG
 rHi
-fNr
+ahV
 rHi
 lJQ
 aUq
@@ -118369,7 +118563,7 @@ agR
 agM
 vJS
 vJS
-vJS
+agk
 beR
 via
 via
@@ -118581,9 +118775,9 @@ via
 xob
 nFQ
 vJS
+alY
+aeU
 vJS
-bYX
-agu
 via
 dMD
 uya
@@ -118792,8 +118986,8 @@ uya
 aAt
 beH
 uya
-nUH
 beH
+nUH
 uya
 pRt
 agt
@@ -118952,7 +119146,7 @@ aSd
 lOL
 aCw
 aSG
-aRS
+bfu
 aRS
 aRv
 acE
@@ -119165,7 +119359,7 @@ aSd
 aSd
 aSd
 aSu
-aSo
+bft
 aRw
 fsN
 vuq
@@ -119377,7 +119571,7 @@ aSd
 aSd
 aSd
 ahu
-aRT
+aSo
 aSo
 aSo
 oCj
@@ -119647,13 +119841,13 @@ tmn
 tmn
 tmn
 hyP
-aAk
+aHG
 jCT
 lPb
 seo
 oVV
 dSQ
-aAk
+aHG
 snO
 kmL
 lwX
@@ -119847,13 +120041,13 @@ tmn
 tmn
 ofa
 ehB
-aAk
+aHG
 adw
 fSC
 bYK
 agw
 nvH
-aAk
+aHG
 qTo
 qcT
 tmn
@@ -120047,12 +120241,12 @@ hzE
 adz
 jTp
 pwg
-jaK
+bfm
 aBp
 rGV
 rWc
 aBj
-jaK
+bfm
 snO
 tmn
 tmn
@@ -120213,8 +120407,8 @@ aSd
 aSd
 iGi
 keD
-qBc
-qBc
+jOD
+jOD
 aUN
 bbG
 aYP
@@ -122191,12 +122385,12 @@ vcm
 chC
 kkg
 tiu
-azb
+aeJ
 ioQ
 suD
 nrh
 rDO
-azb
+aeJ
 aAe
 aAe
 ygA
@@ -122391,13 +122585,13 @@ tmn
 uNj
 xOC
 caY
-aAk
+aHG
 fgZ
 uKO
 rWc
 agD
 oTG
-ioV
+ayT
 iFm
 hDW
 iDq
@@ -122591,7 +122785,7 @@ qVB
 oCj
 wPU
 nBS
-aAf
+bfo
 nvH
 qwF
 peZ
@@ -123891,7 +124085,7 @@ vvZ
 iYb
 tXH
 uni
-eeP
+aeL
 acl
 trf
 trf
@@ -124254,7 +124448,7 @@ aSd
 vae
 aSd
 aSd
-mkk
+bfs
 aep
 adf
 ade
@@ -124273,7 +124467,7 @@ qtZ
 mrj
 fma
 jaz
-mkk
+bfq
 aOv
 aSd
 aSd
@@ -124527,7 +124721,7 @@ anQ
 bVa
 trf
 aIM
-trf
+aeM
 acl
 bck
 bck
@@ -128295,7 +128489,7 @@ aPy
 aPy
 aPy
 hTB
-bbb
+aPy
 aPy
 jKz
 aNg
@@ -128507,7 +128701,7 @@ amh
 aNf
 fIe
 aPx
-aNr
+bfr
 aNr
 aOQ
 aNr
@@ -128519,7 +128713,7 @@ aNr
 aNr
 aNX
 aNr
-lGF
+aNr
 aNg
 aNr
 mEy
@@ -133206,7 +133400,7 @@ pOz
 aha
 iOz
 pOz
-pOz
+aAD
 qXd
 skd
 aSd
@@ -136399,7 +136593,7 @@ iHr
 iHr
 iHr
 pTI
-vGR
+aeN
 nLX
 vGR
 vGR
@@ -136808,7 +137002,7 @@ xEp
 iKb
 cLg
 kWP
-tjc
+aAK
 ffJ
 gKn
 oQH
@@ -137020,7 +137214,7 @@ iHr
 aqD
 foz
 jNH
-foz
+aJi
 ffJ
 gKn
 kxE
@@ -137444,7 +137638,7 @@ iHr
 lGF
 iHr
 qra
-iHr
+aJn
 ffJ
 gfS
 kxE
@@ -137656,7 +137850,7 @@ lGF
 lGF
 lGF
 xEp
-iHr
+aJn
 ffJ
 gKn
 kxE
@@ -137867,7 +138061,7 @@ ahn
 foz
 lGF
 lGF
-iHr
+bfl
 nqB
 gpc
 cIg

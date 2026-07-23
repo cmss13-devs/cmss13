@@ -70,5 +70,8 @@ endmap
 map white_antre_research_facility
 endmap
 
+map lv1021_falcons_fury
+endmap
+
 map whiskey_outpost_v2
 endmap

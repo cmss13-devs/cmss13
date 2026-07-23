@@ -191,6 +191,14 @@
 	defense_type = /obj/structure/machinery/defenses/sentry/upp/light
 	deployment_time = 2 SECONDS
 
+/obj/item/defenses/handheld/sentry/clf
+	name = "handheld hacked 571-C sentry gun"
+	desc = "A compact version of the USCM defenses. This one has been hacked and recolored. Designed for field deployment."
+	icon = 'icons/obj/structures/machinery/defenses/clf_defenses.dmi'
+	icon_state = "Normal uac_sentry_handheld"
+	defense_type = /obj/structure/machinery/defenses/sentry/clf
+	deployment_time = 5 SECONDS
+
 // FLAMER BASE AND UPGRADES
 /obj/item/defenses/handheld/sentry/flamer
 	name = "handheld UA 42-F sentry flamer"

@@ -531,6 +531,117 @@
 	desc = "A rare privilege within the disorganized partisans, a set of somewhat full armor, created from boiled leather and more modern armor places, this one includes full set of armor for all limbs and full torso protection. This one is even further modified with parts of M56 smartgunner harness, allowing the use of smartgun system electronics."
 	flags_inventory = BLOCKSHARPOBJ|SMARTGUN_HARNESS
 
+// -- CLF Spec Ops -- //
+
+/obj/item/clothing/suit/storage/marine/veteran/ua_riot/clf
+	name = "\improper UA-M1 repainted body armor"
+	desc = "A stolen set of UA-M1 body armor that is typically used by UA security forces. This set of armor has been repainted with dark brown colours and has had additional kneepads and armpads added to it. It is used by the more professional forces of the Colonial Liberation Front"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/CLF.dmi'
+	icon_state = "clf_ua"
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/CLF.dmi'
+	)
+	storage_slots = 3
+	flags_armor_protection = BODY_FLAG_ALL_BUT_HEAD
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
+	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_energy = CLOTHING_ARMOR_MEDIUM
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	slowdown = SLOWDOWN_ARMOR_LIGHT
+	uniform_restricted = list(/obj/item/clothing/under/colonist/clf)
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+
+/obj/item/clothing/suit/storage/marine/veteran/ua_riot/clf/jacket
+	name = "\improper camouflaged hunter gear rig"
+	desc = "A camouflaged hunter gear rig that has an armor plate on the Body while it sports custom made kneepads, this armor is sometimes seen in the hands of the more professional forces of the Colonial Liberation Front."
+	icon_state = "clf_hunter"
+	storage_slots = 4
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_energy = CLOTHING_ARMOR_MEDIUM
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	slowdown = SLOWDOWN_ARMOR_VERY_LIGHT  // it is lighter
+
+
+/obj/item/clothing/suit/storage/marine/veteran/ua_riot/clf/heavy
+	name = "\improper heavy plated combat armor"
+	desc = "An extremely heavy-duty set of body armor made out of customised armor plates and repurposed surplus ballistic vests, heavy and highly resistant, used by the professional members of the Colonial Liberation Front, for when subterfuge is not the answer."
+	icon_state = "clf_heavy"
+	storage_slots = 2
+	slowdown = SLOWDOWN_ARMOR_MEDIUM
+	flags_inventory = BLOCKSHARPOBJ|BLOCK_KNOCKDOWN
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
+	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_MEDIUM
+	armor_bomb = CLOTHING_ARMOR_HIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
+	armor_internaldamage = CLOTHING_ARMOR_HIGHPLUS // it is heavier
+
+/obj/item/clothing/suit/storage/marine/veteran/ua_riot/clf/canc
+	name = "\improper Type 12 CANC armor"
+	desc = "Vintage CANC armor system. Provides basic ballistic/shrapnel protection."
+	icon_state = "canc"
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
+	slowdown = SLOWDOWN_ARMOR_LIGHT
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_rad = CLOTHING_ARMOR_LOW
+
+// CLF Synth Armor
+
+/obj/item/clothing/suit/storage/marine/light/militia_synth
+	name = "colonial militia synth hauberk"
+	desc = "The hauberk of a colonist militia member, retrofitted for a synthetic with addition loss of interal plating in exchange for enhanced movement. While not the most powerful form of armor, and primitive compared to most modern suits of armor, it gives the wearer almost perfect mobility, which suits the needs of the local colonists. It is also quick to don, easy to hide, and cheap to produce in large workshops."
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/CLF.dmi'
+	icon_state = "rebel_armor"
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/CLF.dmi'
+	)
+	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_1.dmi')
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
+	flags_marine_armor = ARMOR_LAMP_OVERLAY|SYNTH_ALLOWED //No squad colors + can be worn by synths.
+	armor_melee = CLOTHING_ARMOR_NONE
+	armor_bullet = CLOTHING_ARMOR_NONE
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_NONE
+	storage_slots = 3
+	slowdown = SLOWDOWN_ARMOR_SUPER_LIGHT
+	time_to_unequip = 0.5 SECONDS
+	time_to_equip = 1 SECONDS
+	uniform_restricted = null
+	uniform_restricted = list(/obj/item/clothing/under/colonist)
+	allowed = list(
+		/obj/item/weapon/gun,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/device/flashlight,
+		/obj/item/ammo_magazine,
+		/obj/item/explosive/grenade,
+		/obj/item/device/binoculars,
+		/obj/item/attachable/bayonet,
+		/obj/item/storage/backpack/general_belt,
+		/obj/item/storage/large_holster/machete,
+		/obj/item/weapon/baseballbat,
+		/obj/item/weapon/baseballbat/metal,
+		/obj/item/device/motiondetector,
+		/obj/item/device/walkman,
+	)
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+
 //===========================//CMB\\================================\\
 //=====================================================================\\
 

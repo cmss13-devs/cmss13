@@ -79,20 +79,16 @@
 	return SPAN_NOTICE("\A [name] is flipped down.")
 
 /obj/item/device/helmet_visor/medical
-	name = "basic medical optic"
-	icon_state = "med_sight"
-	hud_type = MOB_HUD_MEDICAL_ADVANCED
-	action_icon_string = "med_sight_down"
-	helmet_overlay = "med_sight_right"
-
-/obj/item/device/helmet_visor/medical/sensor
 	name = "sensormate optic"
 	icon_state = "sensor_sight"
+	hud_type = MOB_HUD_MEDICAL_ADVANCED
 	action_icon_string = "sensor_sight_down"
 	helmet_overlay = "sensor_sight_right"
 
 /obj/item/device/helmet_visor/medical/advanced
 	name = "advanced medical optic"
+	icon_state = "med_sight"
+	action_icon_string = "med_sight_down"
 	helmet_overlay = "med_sight_right"
 	var/datum/weakref/equipped_user
 

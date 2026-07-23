@@ -91,7 +91,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_engi, list(
 		list("Laser Designator", 15, /obj/item/device/binoculars/range/designator, null, VENDOR_ITEM_REGULAR),
 
 		list("HELMET OPTICS", 0, null, null, null),
-		list("SensorMate Medical Optic", 12, /obj/item/device/helmet_visor/medical/sensor, null, VENDOR_ITEM_REGULAR),
+		list("SensorMate Medical Optic", 12, /obj/item/device/helmet_visor/medical, null, VENDOR_ITEM_REGULAR),
 		list("Welding Visor", 5, /obj/item/device/helmet_visor/welding_visor, null, VENDOR_ITEM_REGULAR),
 
 		list("PAMPHLETS", 0, null, null, null),

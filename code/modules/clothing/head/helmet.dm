@@ -1495,7 +1495,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical/advanced)
 
 /obj/item/clothing/head/helmet/marine/MP/SO/basic
-	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical/sensor)
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical)
 
 /obj/item/clothing/head/helmet/marine/MP/provost/marshal
 	name = "\improper M10 pattern MP riot helmet"
@@ -2114,8 +2114,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_inv_hide = NO_FLAGS
 	flags_marine_helmet = NO_FLAGS
 	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
-	built_in_visors = list(new /obj/item/device/helmet_visor/medical/sensor)
-	start_down_visor_type = /obj/item/device/helmet_visor/medical/sensor
+	built_in_visors = list(new /obj/item/device/helmet_visor/medical)
+	start_down_visor_type = /obj/item/device/helmet_visor/medical
 	camera_factions = FACTION_LIST_TWE
 
 /obj/item/clothing/head/helmet/marine/veteran/royal_marine/generic

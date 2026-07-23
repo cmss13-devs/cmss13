@@ -110,8 +110,6 @@
 
 	if(HAS_TRAIT(src, TRAIT_LOWERED_GUARD))
 		. += "Melee Guard: Lowered, not blocking."
-	else
-		. += "Melee Guard: Raised, blocking when able."
 
 	if(faction == FACTION_MARINE & !isnull(SSticker) && !isnull(SSticker.mode) && !isnull(SSticker.mode.active_lz) && !isnull(SSticker.mode.active_lz.loc) && !isnull(SSticker.mode.active_lz.loc.loc))
 		. += "Primary LZ: [SSticker.mode.active_lz.loc.loc.name]"

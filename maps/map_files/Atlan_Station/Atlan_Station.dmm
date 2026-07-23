@@ -11929,6 +11929,13 @@
 /obj/item/clothing/mask/gas/upp_pfb,
 /turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/single_dorms)
+"aLv" = (
+/obj/effect/landmark/monkey_spawn,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_5"
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_offices)
 "aLw" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 8;
@@ -16931,6 +16938,16 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/strata,
 /area/atlan/oob)
+"bbN" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkbrownfull2,
+/area/atlan/asteroid/processing_offices)
+"bbO" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_6"
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_offices)
 "bbP" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -16948,6 +16965,13 @@
 /obj/item/storage/briefcase/inflatable,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/atlan/station/medical)
+"bbR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_2"
+	},
+/turf/open/floor/strata/red1,
+/area/atlan/asteroid/processing_offices)
 "bbS" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -16955,6 +16979,15 @@
 	},
 /turf/open/floor/strata,
 /area/atlan/oob)
+"bbT" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/red1,
+/area/atlan/asteroid/processing_offices)
+"bbU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash,
+/turf/open/floor/strata/floor3/east,
+/area/atlan/asteroid/processing_offices)
 "bbV" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
@@ -17386,28 +17419,6 @@
 	},
 /turf/open/floor/strata,
 /area/atlan/oob)
-"bdv" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/strata/green1,
-/area/atlan/oob/space)
-"bdw" = (
-/turf/open/floor/strata/green1,
-/area/atlan/oob/space)
-"bdx" = (
-/obj/structure/closet/firecloset/full,
-/turf/open/floor/strata/green1,
-/area/atlan/oob/space)
-"bdy" = (
-/obj/structure/closet/emcloset,
-/turf/open/floor/strata/green1,
-/area/atlan/oob/space)
-"bdz" = (
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/strata/green1,
-/area/atlan/oob/space)
-"bdA" = (
-/turf/open/floor/strata,
-/area/atlan/oob/space)
 "bdB" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -17425,128 +17436,6 @@
 "bdD" = (
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/atlan/oob)
-"bdE" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 4
-	},
-/turf/open/floor/strata/green1,
-/area/atlan/oob/space)
-"bdF" = (
-/turf/closed/wall/upp_ship/grey,
-/area/atlan/oob/space)
-"bdG" = (
-/obj/structure/sign/banners/upp_flag,
-/turf/closed/wall/upp_ship/grey,
-/area/atlan/oob/space)
-"bdH" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
-/turf/closed/wall/upp_ship/grey,
-/area/atlan/oob/space)
-"bdI" = (
-/obj/structure/sign/poster/upp,
-/turf/closed/wall/upp_ship/grey,
-/area/atlan/oob/space)
-"bdJ" = (
-/obj/structure/machinery/door/airlock/upp_grey/generic/window/autoname,
-/turf/open/floor/strata/multi_tiles/west,
-/area/atlan/oob/space)
-"bdK" = (
-/turf/open/floor/strata/green4/east,
-/area/atlan/oob/space)
-"bdL" = (
-/obj/structure/bed/chair/office/light{
-	dir = 4;
-	pixel_x = 4;
-	pixel_y = 6
-	},
-/turf/open/floor/strata/green3,
-/area/atlan/oob/space)
-"bdM" = (
-/obj/effect/decal/cleanable/blood,
-/obj/structure/surface/table,
-/obj/item/tool/pen,
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/strata/green4/west,
-/area/atlan/oob/space)
-"bdN" = (
-/obj/structure/bed/hybrisa/bunkbed1{
-	dir = 1
-	},
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor/strata/green4/east,
-/area/atlan/oob/space)
-"bdO" = (
-/turf/open/floor/strata/green3,
-/area/atlan/oob/space)
-"bdP" = (
-/obj/structure/closet,
-/obj/item/clothing/under/marine/veteran/UPP/civi5,
-/turf/open/floor/strata/green4/west,
-/area/atlan/oob/space)
-"bdQ" = (
-/obj/structure/window/framed/upp_ship/grey,
-/obj/structure/curtain/red,
-/turf/open/floor/plating,
-/area/atlan/oob/space)
-"bdR" = (
-/obj/structure/window/framed/upp_ship/grey,
-/obj/structure/curtain/open/red,
-/turf/open/floor/plating,
-/area/atlan/oob/space)
-"bdS" = (
-/turf/open/floor/strata/green3/west,
-/area/atlan/oob/space)
-"bdT" = (
-/turf/open/floor/strata/green3/east,
-/area/atlan/oob/space)
-"bdU" = (
-/obj/structure/sign/poster/corporate,
-/turf/closed/wall/upp_ship/grey,
-/area/atlan/oob/space)
-"bdV" = (
-/obj/item/reagent_container/food/drinks/cans/waterbottle/upp{
-	pixel_y = 7;
-	pixel_x = 4
-	},
-/turf/open/floor/strata/green3/east,
-/area/atlan/oob/space)
-"bdW" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/strata,
-/area/atlan/oob/space)
-"bdX" = (
-/obj/structure/closet,
-/obj/item/clothing/under/colonist/workwear/green,
-/obj/item/clothing/under/colonist/workwear/khaki,
-/turf/open/floor/strata/green4,
-/area/atlan/oob/space)
-"bdY" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 1
-	},
-/turf/open/floor/strata/green3/north,
-/area/atlan/oob/space)
-"bdZ" = (
-/obj/structure/bed/hybrisa/bunkbed1,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor/strata/green4/north,
-/area/atlan/oob/space)
-"bea" = (
-/turf/open/floor/strata/green4,
-/area/atlan/oob/space)
-"beb" = (
-/obj/structure/bed/chair/office/light{
-	dir = 4;
-	pixel_x = 4;
-	pixel_y = 6
-	},
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
-	pixel_y = 21
-	},
-/obj/effect/decal/hybrisa/trash,
-/turf/open/floor/strata/green3/north,
-/area/atlan/oob/space)
 "bec" = (
 /obj/item/tool/warning_cone{
 	pixel_y = 18;
@@ -17554,68 +17443,6 @@
 	},
 /turf/open/floor/strata/floor3/east,
 /area/atlan/asteroid/processing_se_train)
-"bed" = (
-/obj/item/clothing/head/uppcap/ushanka/civi,
-/obj/item/device/flashlight/lamp,
-/obj/structure/surface/table/woodentable/poor,
-/turf/open/floor/strata/green4/north,
-/area/atlan/oob/space)
-"bee" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/double/blue{
-	dir = 8;
-	pixel_x = -10;
-	pixel_y = -3
-	},
-/turf/open/floor/strata,
-/area/atlan/oob/space)
-"bef" = (
-/obj/structure/platform_decoration/metal/strata/west,
-/turf/open/floor/strata,
-/area/atlan/oob/space)
-"beg" = (
-/obj/structure/sign/poster/safety,
-/turf/closed/wall/upp_ship/grey,
-/area/atlan/oob/space)
-"beh" = (
-/obj/structure/stairs/perspective{
-	color = "#6e6e6e";
-	icon_state = "p_stair_sn_full_cap"
-	},
-/obj/structure/platform/metal/strata/west,
-/turf/open/floor/strata,
-/area/atlan/oob/space)
-"bei" = (
-/obj/structure/platform/metal/strata/east,
-/obj/structure/stairs/perspective{
-	color = "#6e6e6e";
-	dir = 4;
-	icon_state = "p_stair_sn_full_cap"
-	},
-/turf/open/floor/strata,
-/area/atlan/oob/space)
-"bej" = (
-/obj/structure/machinery/light/double/blue,
-/turf/open/floor/strata/green1,
-/area/atlan/oob/space)
-"bek" = (
-/obj/structure/bed/chair{
-	dir = 8;
-	pixel_y = 3;
-	pixel_x = -5
-	},
-/turf/open/floor/strata/green1,
-/area/atlan/oob/space)
-"bel" = (
-/obj/structure/surface/rack{
-	color = "#98a3ab"
-	},
-/obj/item/storage/firstaid,
-/turf/open/floor/strata/green1,
-/area/atlan/oob/space)
-"bem" = (
-/turf/open/floor/strata/floor3/east,
-/area/atlan/oob/space)
 "ben" = (
 /obj/structure/surface/rack{
 	color = "#98a3ab"
@@ -24846,6 +24673,7 @@
 	color = "#98a3ab"
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/red1,
 /area/atlan/asteroid/processing_offices)
 "gzS" = (
@@ -29453,6 +29281,9 @@
 	icon_state = "pottedplant_22";
 	pixel_y = 3;
 	pixel_x = 1
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_2"
 	},
 /turf/open/floor/prison/darkbrownfull2,
 /area/atlan/asteroid/processing_offices)
@@ -47723,6 +47554,7 @@
 	pixel_x = -8;
 	pixel_y = -3
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrownfull2,
 /area/atlan/asteroid/processing_offices)
 "xQz" = (
@@ -59419,13 +59251,13 @@ alD
 alD
 alD
 alD
-bei
-bef
-bdW
-bdA
-bdA
-bdE
-bdv
+alD
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 bbJ
 bbJ
@@ -59631,13 +59463,13 @@ alD
 alD
 alD
 alD
-bdw
-bdF
-bdF
-bdR
-bdJ
-bdF
-bdw
+alD
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 aAk
 bdd
@@ -59843,13 +59675,13 @@ alD
 alD
 alD
 alD
-bej
-bdF
-bdX
-bdS
-bdK
-bdF
-bdx
+alD
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 bbJ
 bde
@@ -60055,13 +59887,13 @@ alD
 alD
 alD
 alD
-bdv
-bdF
-bdY
-bdA
-bdL
-bdF
-bdy
+alD
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 bbJ
 bdf
@@ -60267,13 +60099,13 @@ alD
 alD
 alD
 alD
-bdw
-bdF
-bdZ
-bdT
-bdM
-bdG
-bdw
+alD
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 bbJ
 bdf
@@ -60479,13 +60311,13 @@ alD
 alD
 alD
 alD
-bek
-bdF
-bdF
-bdU
-bdF
-bdF
-bdw
+alD
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 bbJ
 bdf
@@ -60691,13 +60523,13 @@ alD
 alD
 alD
 alD
-bel
-beg
-bea
-bdS
-bdN
-bdH
-bdw
+alD
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 bbJ
 bdf
@@ -60903,13 +60735,13 @@ alD
 alD
 alD
 alD
-bej
-bdF
-beb
-bdA
-bdO
-bdF
-bdz
+alD
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 bcP
 bdf
@@ -61115,13 +60947,13 @@ alD
 alD
 alD
 alD
-bdw
-bdF
-bed
-bdV
-bdP
-bdI
-bdw
+alD
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 bdp
 bdi
@@ -61327,13 +61159,13 @@ alD
 alD
 alD
 alD
-bdw
-bdF
-bdF
-bdJ
-bdQ
-bdF
-bdv
+alD
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 aAk
 bdj
@@ -61539,13 +61371,13 @@ alD
 alD
 alD
 alD
-bem
-beh
-bee
-bdW
-bdA
-bdA
-bdA
+alD
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 bbH
 bbH
@@ -132766,9 +132598,9 @@ apL
 aUE
 tUA
 oah
-pOz
-pOz
-pYC
+lJg
+lJg
+bbR
 aSd
 aSd
 aSd
@@ -132980,7 +132812,7 @@ xom
 pOz
 lID
 pOz
-pYC
+bbT
 aSd
 wWR
 aqM
@@ -133189,7 +133021,7 @@ pOz
 apL
 aUE
 pVi
-obu
+bbU
 pOz
 hzu
 uZF
@@ -135329,7 +135161,7 @@ lGF
 mVj
 aAs
 wJb
-pOz
+bbO
 lID
 pOz
 pOz
@@ -135544,7 +135376,7 @@ iXb
 pOz
 pOz
 obu
-vkN
+aLv
 dKV
 add
 tha
@@ -135756,7 +135588,7 @@ oFc
 dKV
 pOz
 pOz
-dKV
+bbN
 rjM
 aAs
 afU

@@ -256,3 +256,26 @@
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/cl/quarter/window
 	id = "cl_quarter_windows"
+
+/obj/structure/machinery/door/poddoor/shutters/decompression
+	name = "pressure shutters"
+	desc = "A set of shutters designed to automatically close during an atmospheric decompression."
+	icon_state = "shutter0"
+	density = FALSE
+	opacity = FALSE
+	unacidable = TRUE
+
+	var/reaction_time = 0.5 SECONDS
+
+/// Proc for handling how this shutter reacts to the area being decompressed.
+/// Only needs to be called once for every "line" of shutters; typically only called on the shutter at the origin of the breach.
+/obj/structure/machinery/door/poddoor/shutters/decompression/proc/handle_decompression(from_dir = 0)
+	// Handle decompression for all shutters in a row along this window
+	for (var/dir in GLOB.cardinals)
+		// Don't go backwards
+		if (dir == from_dir)
+			continue
+		for(var/obj/structure/machinery/door/poddoor/shutters/decompression/neighbor in get_step(src, dir))
+			neighbor.handle_decompression(turn(dir,180))
+
+	addtimer(CALLBACK(src, PROC_REF(close)), reaction_time)

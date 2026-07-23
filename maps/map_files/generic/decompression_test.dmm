@@ -1,0 +1,2522 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"an" = (
+/obj/structure/machinery/computer/card{
+	dir = 8;
+	pixel_x = 17
+	},
+/obj/structure/machinery/computer/squad_changer{
+	dir = 8;
+	pixel_x = 17;
+	pixel_y = -14
+	},
+/turf/open/floor/almayer/silver/east,
+/area/decompressible/test/bridge)
+"ap" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/engineering/lower)
+"av" = (
+/obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/turf/open/floor/plating,
+/area/decompressible/test/north_observation)
+"bb" = (
+/obj/effect/landmark/start/maint,
+/turf/open/floor/almayer/orange/south,
+/area/almayer/engineering/lower)
+"bh" = (
+/obj/effect/landmark/start/executive,
+/turf/open/floor/almayer/floor,
+/area/decompressible/test/bridge)
+"bB" = (
+/obj/structure/machinery/cm_vending/clothing/marine/alpha{
+	density = 0;
+	layer = 4.1;
+	pixel_x = 29
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/squads/alpha)
+"bP" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/orange/northeast,
+/area/almayer/engineering/lower)
+"bR" = (
+/turf/open/floor/almayer_hull/outerhull_dir/east,
+/area/space)
+"bY" = (
+/turf/open/floor/almayer_hull/outerhull_dir/southeast,
+/area/space)
+"cl" = (
+/obj/effect/landmark/start/marine,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/squads/alpha)
+"cH" = (
+/obj/structure/machinery/power/apc/almayer/north,
+/obj/structure/machinery/autolathe,
+/turf/open/floor/almayer/orange/north,
+/area/almayer/engineering/lower)
+"cP" = (
+/obj/structure/machinery/door/poddoor/railing{
+	dir = 8;
+	id = "supply_elevator_railing"
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer/plating,
+/area/decompressible/test/cargo)
+"dn" = (
+/turf/open/floor/almayer/plate,
+/area/decompressible/test/maints)
+"dz" = (
+/obj/structure/bed/chair/comfy,
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/almayer/floor,
+/area/decompressible/test/south_observation)
+"ej" = (
+/turf/closed/wall/almayer,
+/area/almayer/squads/alpha)
+"eq" = (
+/obj/structure/machinery/power/apc/almayer/north,
+/obj/structure/largecrate/random/case/small,
+/turf/open/floor/almayer/plate,
+/area/decompressible/test/maints)
+"ez" = (
+/obj/structure/platform/metal/almayer,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer/plating_striped/south,
+/area/decompressible/test/cargo)
+"eI" = (
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/almayer/floor,
+/area/decompressible/test/south_observation)
+"eQ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/almayer/cargo_arrow{
+	dir = 1
+	},
+/area/almayer/squads/alpha)
+"eZ" = (
+/obj/structure/window/framed/decompressible/almayer,
+/obj/structure/machinery/door/poddoor/shutters/decompression{
+	dir = 2
+	},
+/turf/open/floor/plating,
+/area/decompressible/test/maints)
+"fw" = (
+/turf/open/floor/almayer/floor,
+/area/almayer/squads/alpha)
+"fx" = (
+/obj/structure/platform/metal/almayer/north,
+/turf/open/floor/almayer/plating_striped/north,
+/area/decompressible/test/cargo)
+"fK" = (
+/obj/structure/machinery/disposal,
+/obj/structure/machinery/power/apc/almayer/east,
+/obj/structure/disposalpipe/trunk{
+	dir = 2
+	},
+/turf/open/floor/almayer/silver/northeast,
+/area/decompressible/test/bridge)
+"gm" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 8
+	},
+/obj/structure/disposalpipe/junction{
+	dir = 4;
+	icon_state = "pipe-y"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/lower/port_aft_hallway)
+"gL" = (
+/turf/closed/wall/almayer/outer,
+/area/almayer/engineering/lower)
+"hb" = (
+/turf/open/floor/almayer/orange/southwest,
+/area/almayer/engineering/lower)
+"hm" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/command/cichallway)
+"hS" = (
+/obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/turf/open/floor/plating,
+/area/almayer/engineering/lower)
+"hU" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/item/clothing/glasses/welding,
+/turf/open/floor/almayer/orange/west,
+/area/almayer/engineering/lower)
+"hX" = (
+/turf/open/floor/almayer_hull/outerhull_dir/west,
+/area/space)
+"ie" = (
+/obj/structure/machinery/cm_vending/sorted/attachments/squad{
+	req_access = null;
+	req_one_access = null;
+	req_one_access_txt = "15;16;21";
+	vend_y_offset = 0
+	},
+/turf/open/floor/almayer/floor,
+/area/almayer/squads/alpha)
+"iB" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 6
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/decompressible/test/south_observation)
+"iI" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/almayer/cargo_arrow{
+	dir = 8
+	},
+/area/almayer/squads/alpha)
+"iK" = (
+/obj/structure/machinery/light,
+/turf/open/floor/almayer/floor,
+/area/decompressible/test/cargo)
+"iZ" = (
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 2
+	},
+/turf/open/floor/almayer/dark_sterile2,
+/area/almayer/medical/operating_room_one)
+"jt" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer/cargo_arrow,
+/area/almayer/squads/alpha)
+"jH" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/decompressible/test/cargo)
+"kg" = (
+/turf/open/floor/plating/plating_catwalk,
+/area/decompressible/test/cargo)
+"kv" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/almayer/dark_sterile2,
+/area/almayer/medical/operating_room_one)
+"kP" = (
+/turf/open/floor/almayer_hull/outerhull_dir/northeast,
+/area/space)
+"kZ" = (
+/turf/open/floor/almayer_hull/outerhull_dir/north,
+/area/space)
+"la" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/decompressible/test/cargo)
+"mz" = (
+/obj/structure/machinery/cryopod/right,
+/turf/open/floor/almayer/cargo,
+/area/decompressible/test/north_observation)
+"mD" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/almayer/floor,
+/area/decompressible/test/cargo)
+"mG" = (
+/obj/structure/machinery/door/poddoor/railing{
+	dir = 8;
+	id = "supply_elevator_railing"
+	},
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 2
+	},
+/turf/open/floor/almayer/plating,
+/area/decompressible/test/cargo)
+"mM" = (
+/obj/structure/machinery/cm_vending/sorted/medical{
+	req_access = null;
+	req_one_access = null
+	},
+/obj/structure/machinery/light,
+/turf/open/floor/almayer/sterile_green_corner/west,
+/area/almayer/medical/lower_medical_medbay)
+"mQ" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/command/cichallway)
+"mX" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/orange,
+/area/almayer/engineering/lower)
+"nf" = (
+/obj/structure/machinery/power/apc/almayer/west,
+/turf/open/floor/almayer/cargo_arrow,
+/area/almayer/squads/alpha)
+"np" = (
+/turf/open/floor/almayer/floor,
+/area/almayer/engineering/lower)
+"nV" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/closed/wall/almayer,
+/area/almayer/squads/alpha)
+"nY" = (
+/obj/effect/landmark/start/engineering,
+/turf/open/floor/almayer/floor,
+/area/almayer/engineering/lower)
+"ol" = (
+/obj/structure/flora/pottedplant/random,
+/turf/open/floor/almayer/orange/west,
+/area/almayer/engineering/lower)
+"oP" = (
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/squads/alpha)
+"pD" = (
+/obj/structure/machinery/vending/cola,
+/turf/open/floor/almayer/floor,
+/area/decompressible/test/south_observation)
+"pV" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out"
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/almayer/floor,
+/area/almayer/squads/alpha)
+"qp" = (
+/turf/closed/wall/almayer/outer,
+/area/space)
+"qH" = (
+/obj/structure/machinery/door/poddoor/railing{
+	dir = 2;
+	id = "supply_elevator_railing"
+	},
+/obj/structure/platform_decoration/metal/almayer/west,
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating,
+/area/decompressible/test/cargo)
+"qO" = (
+/obj/structure/machinery/cryopod/right{
+	pixel_y = 6
+	},
+/turf/open/floor/almayer/cargo,
+/area/almayer/squads/alpha)
+"re" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer/floor,
+/area/almayer/hallways/lower/port_aft_hallway)
+"ri" = (
+/obj/effect/landmark/start/marine/medic,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/squads/alpha)
+"rz" = (
+/turf/open/floor/almayer_hull/outerhull_dir/northwest,
+/area/space)
+"rA" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/prop/almayer/CICmap{
+	layer = 2.97
+	},
+/turf/open/floor/almayer/silver/west,
+/area/decompressible/test/bridge)
+"rN" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/lower/port_aft_hallway)
+"rP" = (
+/obj/effect/landmark/start/marine/leader,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/squads/alpha)
+"sh" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/overwatch/groundside_operations{
+	dir = 4;
+	pixel_y = 2
+	},
+/turf/open/floor/almayer/silver/west,
+/area/decompressible/test/bridge)
+"sk" = (
+/obj/structure/machinery/computer/crew/alt{
+	dir = 8;
+	pixel_x = 18
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer/silver/east,
+/area/decompressible/test/bridge)
+"sq" = (
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/floor/almayer/plate,
+/area/decompressible/test/maints)
+"tp" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer/cargo_arrow/west,
+/area/decompressible/test/cargo)
+"tB" = (
+/obj/structure/pipes/standard/manifold/hidden/supply,
+/obj/structure/disposalpipe/junction{
+	dir = 8
+	},
+/turf/open/floor/almayer/floor,
+/area/decompressible/test/cargo)
+"tF" = (
+/turf/closed/wall/almayer/outer,
+/area/almayer/squads/alpha)
+"tO" = (
+/obj/structure/machinery/power/apc/almayer/south,
+/turf/open/floor/almayer/sterile_green_corner/east,
+/area/almayer/medical/lower_medical_medbay)
+"tQ" = (
+/obj/structure/machinery/power/apc/almayer/north,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/command/cichallway)
+"ue" = (
+/turf/open/floor/almayer_hull/outerhull_dir/southwest,
+/area/space)
+"uI" = (
+/turf/open/floor/plating/plating_catwalk,
+/area/decompressible/test/maints)
+"uV" = (
+/obj/structure/machinery/door/poddoor/railing{
+	dir = 2;
+	id = "supply_elevator_railing"
+	},
+/turf/open/floor/almayer/plating,
+/area/decompressible/test/cargo)
+"uW" = (
+/turf/closed/wall/almayer/outer,
+/area/decompressible/test/cargo)
+"uX" = (
+/obj/effect/landmark/supply_elevator,
+/turf/open/floor/almayer/empty/requisitions,
+/area/supply/station/uscm)
+"uY" = (
+/turf/open/floor/almayer_hull/outerhull_dir,
+/area/space)
+"vC" = (
+/turf/open/floor/almayer/silver/east,
+/area/decompressible/test/bridge)
+"vH" = (
+/obj/effect/landmark/late_join,
+/obj/effect/landmark/ert_spawns/distress_cryo,
+/turf/open/floor/almayer/cargo_arrow{
+	dir = 8
+	},
+/area/decompressible/test/north_observation)
+"vK" = (
+/obj/effect/landmark/start/bridge,
+/obj/structure/bed/chair/office/dark{
+	dir = 8
+	},
+/turf/open/floor/almayer/silvercorner/north,
+/area/decompressible/test/bridge)
+"vT" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/almayer/plate,
+/area/decompressible/test/maints)
+"vX" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plating/plating_catwalk,
+/area/decompressible/test/cargo)
+"vY" = (
+/turf/open/floor/almayer/silver/southeast,
+/area/decompressible/test/bridge)
+"wb" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/engineering/lower)
+"wo" = (
+/turf/open/floor/almayer/floor,
+/area/decompressible/test/bridge)
+"wE" = (
+/obj/effect/landmark/start/doctor,
+/turf/open/floor/almayer/sterile_green_side/north,
+/area/almayer/medical/lower_medical_medbay)
+"wI" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/belt,
+/turf/open/floor/almayer/orange/north,
+/area/almayer/engineering/lower)
+"wM" = (
+/obj/structure/machinery/cryopod/right{
+	layer = 3.1;
+	pixel_y = 13
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer/cargo,
+/area/almayer/squads/alpha)
+"wO" = (
+/turf/open/floor/almayer/silver/west,
+/area/decompressible/test/bridge)
+"xF" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/command/cichallway)
+"xV" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 9
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/decompressible/test/south_observation)
+"xX" = (
+/turf/open/floor/almayer/floor,
+/area/almayer/command/cichallway)
+"yd" = (
+/turf/closed/wall/almayer/outer,
+/area/decompressible/test/bridge)
+"yy" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/almayer/floor,
+/area/decompressible/test/bridge)
+"yN" = (
+/obj/structure/platform/metal/almayer/west,
+/turf/open/floor/almayer/plating_striped/west,
+/area/decompressible/test/cargo)
+"yU" = (
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform_decoration/metal/almayer/southwest,
+/turf/open/floor/almayer/plating_stripedcorner/west,
+/area/decompressible/test/cargo)
+"zd" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 8
+	},
+/turf/open/floor/almayer/floor,
+/area/decompressible/test/bridge)
+"zl" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/command/cichallway)
+"zA" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/decompressible/test/cargo)
+"zQ" = (
+/obj/structure/machinery/door/poddoor/railing{
+	dir = 2;
+	id = "supply_elevator_railing"
+	},
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating,
+/area/decompressible/test/cargo)
+"Al" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/hallways/lower/port_aft_hallway)
+"AI" = (
+/turf/open/floor/almayer/green/west,
+/area/decompressible/test/cargo)
+"AP" = (
+/turf/open/floor/almayer/orange/east,
+/area/almayer/engineering/lower)
+"AT" = (
+/obj/structure/machinery/medical_pod/sleeper{
+	pixel_y = 2
+	},
+/turf/open/floor/almayer/sterile_green_corner/west,
+/area/almayer/medical/lower_medical_medbay)
+"Ba" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 6
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/decompressible/test/bridge)
+"Bv" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer/plate,
+/area/decompressible/test/cargo)
+"BR" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/turf/open/floor/almayer/test_floor4,
+/area/decompressible/test/north_observation)
+"BS" = (
+/obj/structure/window/framed/decompressible/almayer,
+/obj/structure/machinery/door/poddoor/shutters/decompression{
+	dir = 2
+	},
+/turf/open/floor/plating,
+/area/decompressible/test/north_observation)
+"BX" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/command/cichallway)
+"Cf" = (
+/obj/structure/machinery/optable,
+/turf/open/floor/almayer/dark_sterile2,
+/area/almayer/medical/operating_room_one)
+"Cr" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out"
+	},
+/turf/closed/wall/almayer,
+/area/almayer/squads/alpha)
+"Cs" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/almayer/floor,
+/area/almayer/engineering/lower)
+"Cv" = (
+/turf/open/floor/almayer/dark_sterile2,
+/area/almayer/medical/operating_room_one)
+"CJ" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/almayer/floor,
+/area/decompressible/test/north_observation)
+"CR" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/decompressible/test/north_observation)
+"CS" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 6
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/decompressible/test/north_observation)
+"Dk" = (
+/obj/structure/machinery/cryopod/right{
+	layer = 3.1;
+	pixel_y = 13
+	},
+/turf/open/floor/almayer/cargo,
+/area/almayer/squads/alpha)
+"DE" = (
+/turf/open/floor/almayer/fake_outerhull,
+/area/space)
+"DR" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/device/binoculars/range,
+/obj/effect/landmark/map_item,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer/silver/northwest,
+/area/decompressible/test/bridge)
+"Ef" = (
+/obj/structure/window/framed/decompressible/almayer,
+/obj/structure/machinery/door/poddoor/shutters/decompression{
+	dir = 2
+	},
+/turf/open/floor/plating,
+/area/decompressible/test/bridge)
+"Ei" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 5
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer/orange/east,
+/area/almayer/engineering/lower)
+"Ej" = (
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad{
+	req_access = null;
+	req_one_access = null;
+	req_one_access_txt = "15;16;21";
+	vend_x_offset = 0;
+	vend_y_offset = 0;
+	pixel_x = -29;
+	density = 0
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer/plate,
+/area/almayer/squads/alpha)
+"Es" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/almayer/floor,
+/area/decompressible/test/south_observation)
+"Eu" = (
+/obj/structure/machinery/power/power_generator/reactor,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/orangefull,
+/area/almayer/engineering/lower)
+"EH" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer/floor,
+/area/almayer/squads/alpha)
+"EN" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/almayer/floor,
+/area/almayer/hallways/lower/port_aft_hallway)
+"ER" = (
+/obj/structure/disposalpipe/segment,
+/turf/closed/wall/almayer/outer,
+/area/almayer/engineering/lower)
+"EU" = (
+/obj/structure/machinery/light,
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/almayer/floor,
+/area/almayer/command/cichallway)
+"Ff" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer/floor,
+/area/almayer/squads/alpha)
+"Fg" = (
+/obj/structure/surface/table/almayer,
+/turf/open/floor/almayer/dark_sterile2,
+/area/almayer/medical/operating_room_one)
+"Fh" = (
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep{
+	req_access = null;
+	req_one_access = null;
+	pixel_y = 29;
+	density = 0
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/squads/alpha)
+"Fx" = (
+/obj/structure/disposaloutlet,
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/turf/open/floor/almayer/fake_outerhull,
+/area/space)
+"FE" = (
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep{
+	req_access = null;
+	req_one_access = null;
+	pixel_y = 29;
+	density = 0
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/squads/alpha)
+"FF" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/almayer/floor,
+/area/almayer/engineering/lower)
+"FN" = (
+/obj/effect/landmark/start/nurse,
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/almayer/medical/lower_medical_medbay)
+"FQ" = (
+/obj/structure/window/framed/decompressible/almayer,
+/obj/structure/machinery/door/poddoor/shutters/decompression{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/decompressible/test/cargo)
+"Gc" = (
+/obj/structure/machinery/light{
+	dir = 8;
+	invisibility = 101
+	},
+/turf/open/floor/almayer/green/west,
+/area/decompressible/test/cargo)
+"Gy" = (
+/obj/structure/machinery/cryopod/right,
+/turf/open/floor/almayer/cargo,
+/area/almayer/squads/alpha)
+"Gz" = (
+/obj/structure/window/framed/decompressible/almayer,
+/obj/structure/machinery/door/poddoor/shutters/decompression{
+	dir = 2
+	},
+/turf/open/floor/plating,
+/area/decompressible/test/south_observation)
+"GA" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/autoname{
+	dir = 2
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/engineering/lower)
+"Hg" = (
+/obj/structure/machinery/body_scanconsole{
+	pixel_y = 3
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/almayer/medical/lower_medical_medbay)
+"Ht" = (
+/obj/structure/machinery/door/poddoor/railing{
+	dir = 2;
+	id = "supply_elevator_railing"
+	},
+/obj/structure/platform/metal/almayer/north,
+/turf/open/floor/almayer/plating,
+/area/decompressible/test/cargo)
+"HG" = (
+/turf/open/floor/almayer/sterile_green_corner,
+/area/almayer/medical/lower_medical_medbay)
+"Ij" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/almayer/floor,
+/area/almayer/command/cichallway)
+"In" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/squads/alpha)
+"II" = (
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/machinery/door/poddoor/railing{
+	dir = 4;
+	id = "supply_elevator_railing"
+	},
+/turf/open/floor/almayer/plating_striped/west,
+/area/decompressible/test/cargo)
+"IJ" = (
+/obj/structure/machinery/iv_drip,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer/dark_sterile2,
+/area/almayer/medical/operating_room_one)
+"IM" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer/floor,
+/area/decompressible/test/cargo)
+"IO" = (
+/turf/open/space/basic,
+/area/space)
+"IW" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/engineering/lower)
+"Je" = (
+/obj/structure/machinery/sleep_console,
+/turf/open/floor/almayer/sterile_green_side/southwest,
+/area/almayer/medical/lower_medical_medbay)
+"Ji" = (
+/turf/open/floor/almayer/plate,
+/area/almayer/squads/alpha)
+"Jj" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/hallways/lower/port_aft_hallway)
+"Js" = (
+/obj/structure/machinery/medical_pod/bodyscanner,
+/turf/open/floor/almayer/sterile_green_corner/north,
+/area/almayer/medical/lower_medical_medbay)
+"Ju" = (
+/obj/effect/landmark/start/captain,
+/turf/open/floor/almayer/floor,
+/area/decompressible/test/bridge)
+"JC" = (
+/obj/structure/machinery/door/airlock/almayer/maint/reinforced,
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/turf/open/floor/almayer/test_floor4,
+/area/decompressible/test/maints)
+"JL" = (
+/obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/turf/open/floor/plating,
+/area/almayer/engineering/lower)
+"JX" = (
+/turf/closed/wall/almayer,
+/area/decompressible/test/maints)
+"Kb" = (
+/obj/structure/machinery/door/poddoor/railing{
+	dir = 8;
+	id = "supply_elevator_railing"
+	},
+/obj/effect/landmark/start/cargo,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer/plating,
+/area/decompressible/test/cargo)
+"Kl" = (
+/obj/effect/landmark/start/bridge,
+/obj/structure/bed/chair/office/dark{
+	dir = 8
+	},
+/turf/open/floor/almayer/silvercorner/west,
+/area/decompressible/test/bridge)
+"Kt" = (
+/obj/structure/platform/metal/stair_cut,
+/obj/structure/stairs/perspective{
+	dir = 4
+	},
+/obj/structure/barricade/handrail,
+/turf/open/floor/almayer/plating_striped/north,
+/area/decompressible/test/cargo)
+"KV" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/almayer/floor,
+/area/decompressible/test/cargo)
+"Lm" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform_decoration/metal/almayer/northwest,
+/turf/open/floor/almayer/plating_striped/north,
+/area/decompressible/test/cargo)
+"LU" = (
+/obj/structure/machinery/power/apc/almayer/east,
+/turf/open/floor/almayer/floor,
+/area/almayer/hallways/lower/port_aft_hallway)
+"Mk" = (
+/obj/structure/machinery/power/smes,
+/obj/structure/machinery/power/smes,
+/turf/open/floor/almayer/orange/southeast,
+/area/almayer/engineering/lower)
+"Mn" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/toolbox/electrical,
+/turf/open/floor/almayer/orange/northwest,
+/area/almayer/engineering/lower)
+"Ms" = (
+/obj/structure/pipes/standard/manifold/hidden/supply,
+/obj/structure/disposalpipe/junction{
+	dir = 4;
+	icon_state = "pipe-j2"
+	},
+/turf/open/floor/almayer/floor,
+/area/almayer/command/cichallway)
+"Mu" = (
+/obj/structure/window/framed/almayer/white,
+/turf/open/floor/plating,
+/area/almayer/medical/operating_room_one)
+"Mx" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/hallways/lower/port_aft_hallway)
+"MS" = (
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep{
+	req_access = null;
+	req_one_access = null;
+	pixel_y = 29;
+	density = 0
+	},
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad{
+	req_access = null;
+	req_one_access = null;
+	vend_x_offset = 0;
+	pixel_x = -29;
+	density = 0
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 6
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/squads/alpha)
+"Nj" = (
+/obj/structure/machinery/power/monitor,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/universal{
+	dir = 4
+	},
+/turf/open/floor/almayer/orangefull2,
+/area/almayer/engineering/lower)
+"Nq" = (
+/turf/open/floor/almayer/floor,
+/area/almayer/hallways/lower/port_aft_hallway)
+"NI" = (
+/turf/closed/wall/almayer,
+/area/almayer/engineering/lower)
+"Od" = (
+/obj/structure/machinery/cm_vending/sorted/medical/blood,
+/turf/open/floor/almayer/sterile_green_side,
+/area/almayer/medical/lower_medical_medbay)
+"Ot" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/power/apc/almayer/east,
+/turf/open/floor/almayer/floor,
+/area/decompressible/test/south_observation)
+"OA" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/cameras/almayer_network/vehicle{
+	dir = 4;
+	pixel_y = 11
+	},
+/obj/structure/machinery/computer/overwatch/almayer{
+	dir = 8;
+	pixel_y = -7
+	},
+/turf/open/floor/almayer/silver/southwest,
+/area/decompressible/test/bridge)
+"OG" = (
+/obj/structure/closet/secure_closet/engineering_welding,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer/orange/southeast,
+/area/almayer/engineering/lower)
+"ON" = (
+/obj/structure/machinery/power/smes,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer/orange/east,
+/area/almayer/engineering/lower)
+"PD" = (
+/obj/structure/closet/secure_closet/engineering_electrical,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light,
+/turf/open/floor/almayer/orange,
+/area/almayer/engineering/lower)
+"PI" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/reinforced{
+	dir = 1;
+	name = "\improper Combat Information Center"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/command/cichallway)
+"PP" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer/silver/southwest,
+/area/decompressible/test/bridge)
+"Qh" = (
+/obj/structure/platform/metal/almayer,
+/obj/structure/filingcabinet{
+	layer = 2.99
+	},
+/obj/structure/machinery/power/apc/almayer/east,
+/turf/open/floor/almayer/plate,
+/area/decompressible/test/cargo)
+"Qs" = (
+/obj/effect/landmark/late_join,
+/obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/structure/machinery/power/apc/almayer/south,
+/turf/open/floor/almayer/cargo_arrow/east,
+/area/decompressible/test/north_observation)
+"QB" = (
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
+	dir = 2
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/medical/operating_room_one)
+"QG" = (
+/obj/structure/machinery/power/apc/almayer/east,
+/turf/open/floor/almayer/dark_sterile2,
+/area/almayer/medical/operating_room_one)
+"QI" = (
+/obj/structure/platform/metal/almayer,
+/obj/structure/machinery/door/poddoor/railing{
+	id = "supply_elevator_railing"
+	},
+/turf/open/floor/almayer/plating_striped/south,
+/area/decompressible/test/cargo)
+"QJ" = (
+/obj/structure/surface/rack,
+/turf/open/floor/almayer/plate,
+/area/decompressible/test/cargo)
+"QT" = (
+/turf/open/floor/almayer/sterile_green_side/east,
+/area/almayer/medical/lower_medical_medbay)
+"Rr" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer/floor,
+/area/decompressible/test/north_observation)
+"Rt" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/squads/alpha)
+"Ru" = (
+/obj/structure/machinery/bioprinter,
+/turf/open/floor/almayer/dark_sterile2,
+/area/almayer/medical/operating_room_one)
+"Rw" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer/floor,
+/area/almayer/hallways/lower/port_aft_hallway)
+"RV" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer/green,
+/area/decompressible/test/cargo)
+"Sa" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/decompressible/test/cargo)
+"Sn" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/engineering/lower)
+"Sq" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/almayer/floor,
+/area/decompressible/test/cargo)
+"SK" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
+	},
+/obj/structure/disposalpipe/junction{
+	dir = 2;
+	icon_state = "pipe-y"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/decompressible/test/cargo)
+"SN" = (
+/obj/structure/bed/chair/comfy,
+/turf/open/floor/almayer/floor,
+/area/decompressible/test/south_observation)
+"SU" = (
+/turf/open/floor/almayer/floor,
+/area/decompressible/test/cargo)
+"To" = (
+/obj/structure/machinery/light/red{
+	dir = 4;
+	light_color = "#BB3F3F"
+	},
+/turf/open/floor/almayer/plate,
+/area/decompressible/test/maints)
+"TD" = (
+/turf/closed/wall/almayer/outer,
+/area/decompressible/test/maints)
+"TK" = (
+/obj/structure/machinery/cm_vending/clothing/marine/alpha{
+	density = 0;
+	layer = 4.1;
+	pixel_x = 29
+	},
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/squads/alpha)
+"TL" = (
+/turf/closed/wall/almayer/white,
+/area/almayer/medical/lower_medical_medbay)
+"TM" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/engineering/lower)
+"TU" = (
+/obj/structure/window/framed/almayer,
+/turf/open/floor/plating,
+/area/almayer/squads/alpha)
+"UH" = (
+/obj/structure/machinery/gear{
+	id = "supply_elevator_gear"
+	},
+/obj/structure/machinery/door/poddoor/railing{
+	dir = 8;
+	id = "supply_elevator_railing"
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer/plating,
+/area/decompressible/test/cargo)
+"UP" = (
+/obj/structure/machinery/cryopod,
+/turf/open/floor/almayer/cargo,
+/area/decompressible/test/north_observation)
+"UW" = (
+/turf/open/floor/almayer/green/southwest,
+/area/decompressible/test/cargo)
+"Vf" = (
+/turf/closed/wall/almayer/white,
+/area/almayer/medical/operating_room_one)
+"Vh" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer/test_floor4,
+/area/decompressible/test/north_observation)
+"Vm" = (
+/turf/closed/wall/almayer/white/hull,
+/area/almayer/medical/lower_medical_medbay)
+"VD" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/lower/port_aft_hallway)
+"VS" = (
+/obj/effect/landmark/start/marine/engineer,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/squads/alpha)
+"VV" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/decompressible/test/north_observation)
+"Ws" = (
+/obj/structure/machinery/cm_vending/sorted/marine_food,
+/turf/open/floor/almayer/floor,
+/area/almayer/squads/alpha)
+"Ww" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer/floor,
+/area/almayer/squads/alpha)
+"WF" = (
+/turf/closed/wall/almayer/outer,
+/area/decompressible/test/south_observation)
+"WJ" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer/floor,
+/area/almayer/hallways/lower/port_aft_hallway)
+"Xn" = (
+/obj/structure/machinery/door/airlock/almayer/maint/reinforced{
+	dir = 1
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/decompressible/test/maints)
+"Xx" = (
+/turf/open/floor/almayer/empty/requisitions,
+/area/supply/station/uscm)
+"Xy" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/closet/secure_closet/surgical{
+	pixel_x = -30;
+	req_access = null
+	},
+/turf/open/floor/almayer/dark_sterile2,
+/area/almayer/medical/operating_room_one)
+"XD" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/autoname,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/engineering/lower)
+"XT" = (
+/obj/structure/machinery/computer/supply/asrs,
+/obj/structure/machinery/light{
+	dir = 4;
+	invisibility = 101
+	},
+/turf/open/floor/almayer/plate,
+/area/decompressible/test/cargo)
+"YF" = (
+/obj/structure/window/framed/decompressible/almayer,
+/obj/structure/machinery/door/poddoor/shutters/decompression{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/decompressible/test/bridge)
+"YN" = (
+/obj/structure/machinery/status_display{
+	pixel_x = 32
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer/silver/east,
+/area/decompressible/test/bridge)
+"YR" = (
+/obj/effect/landmark/start/marine/smartgunner,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/squads/alpha)
+"Zk" = (
+/turf/closed/wall/almayer/outer,
+/area/decompressible/test/north_observation)
+"Zx" = (
+/turf/open/floor/almayer/floor,
+/area/decompressible/test/south_observation)
+"ZA" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/overwatch/almayer{
+	dir = 8;
+	pixel_y = 6
+	},
+/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
+	dir = 4;
+	name = "Dropship Remote Control Console";
+	pixel_y = -9
+	},
+/turf/open/floor/almayer/silver/northwest,
+/area/decompressible/test/bridge)
+"ZP" = (
+/obj/structure/surface/table/almayer,
+/turf/open/floor/almayer/floor,
+/area/decompressible/test/south_observation)
+"ZW" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer/floor,
+/area/decompressible/test/north_observation)
+
+(1,1,1) = {"
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+"}
+(2,1,1) = {"
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+"}
+(3,1,1) = {"
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+rz
+yd
+YF
+YF
+YF
+YF
+YF
+YF
+yd
+ue
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+"}
+(4,1,1) = {"
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+rz
+yd
+yd
+ZA
+sh
+wO
+wO
+rA
+OA
+yd
+yd
+ue
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+"}
+(5,1,1) = {"
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+kZ
+Ef
+DR
+vK
+zd
+Ju
+bh
+wo
+Kl
+PP
+Ef
+uY
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+"}
+(6,1,1) = {"
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+kZ
+Ef
+fK
+YN
+sk
+Ba
+yy
+an
+vC
+vY
+Ef
+uY
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+"}
+(7,1,1) = {"
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+rz
+hX
+hX
+DE
+tF
+tF
+tF
+tF
+xF
+PI
+TD
+TD
+JC
+TD
+DE
+hX
+hX
+ue
+IO
+IO
+IO
+IO
+IO
+IO
+"}
+(8,1,1) = {"
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+kZ
+DE
+tF
+tF
+tF
+EH
+nf
+Rt
+Ij
+xX
+JX
+vT
+uI
+TD
+eZ
+TD
+DE
+uY
+IO
+IO
+IO
+IO
+IO
+IO
+"}
+(9,1,1) = {"
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+kZ
+tF
+tF
+MS
+Ej
+Ww
+jt
+In
+Ms
+xX
+JX
+eq
+uI
+dn
+uI
+TD
+TD
+uY
+IO
+IO
+IO
+IO
+IO
+IO
+"}
+(10,1,1) = {"
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+tF
+tF
+ej
+Fh
+Ji
+fw
+ie
+ej
+zl
+xX
+Xn
+dn
+uI
+To
+uI
+sq
+TD
+TD
+IO
+IO
+IO
+IO
+IO
+IO
+"}
+(11,1,1) = {"
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+tF
+oP
+ej
+FE
+TK
+bB
+bB
+TU
+BX
+EU
+Vf
+Vf
+Vf
+Vf
+Vf
+TL
+TL
+Vm
+hX
+ue
+IO
+IO
+IO
+IO
+"}
+(12,1,1) = {"
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+qp
+tF
+pV
+Ff
+iI
+nV
+nV
+nV
+ej
+zl
+xX
+Mu
+Xy
+Fg
+Ru
+Mu
+Js
+AT
+Vm
+Vm
+uY
+IO
+IO
+IO
+IO
+"}
+(13,1,1) = {"
+IO
+IO
+IO
+IO
+IO
+Zk
+BS
+Zk
+Ws
+eQ
+rP
+ri
+YR
+VS
+cl
+ej
+tQ
+xX
+Mu
+Cf
+Cv
+kv
+Mu
+Hg
+Je
+mM
+TL
+Gz
+WF
+ue
+IO
+IO
+"}
+(14,1,1) = {"
+IO
+IO
+IO
+IO
+Zk
+Zk
+UP
+Zk
+Ws
+eQ
+qO
+Gy
+wM
+Gy
+Dk
+ej
+Ij
+xX
+Mu
+iZ
+IJ
+QG
+QB
+wE
+FN
+Od
+TL
+pD
+WF
+WF
+IO
+IO
+"}
+(15,1,1) = {"
+IO
+IO
+IO
+IO
+BS
+Rr
+Qs
+Zk
+ej
+Cr
+ej
+ej
+ej
+ej
+ej
+ej
+hm
+mQ
+Vf
+Vf
+Vf
+Vf
+Vf
+HG
+QT
+tO
+TL
+iB
+dz
+Gz
+IO
+IO
+"}
+(16,1,1) = {"
+IO
+IO
+IO
+IO
+BS
+CS
+CJ
+BR
+AI
+Gc
+AI
+AI
+AI
+AI
+Gc
+UW
+SK
+IM
+Al
+VD
+VD
+Rw
+gm
+rN
+WJ
+WJ
+Jj
+xV
+SN
+Gz
+IO
+IO
+"}
+(17,1,1) = {"
+IO
+IO
+IO
+IO
+BS
+VV
+ZW
+Vh
+tp
+Bv
+vX
+vX
+Bv
+Bv
+Bv
+RV
+tB
+SU
+Mx
+Nq
+re
+Nq
+EN
+LU
+Nq
+Nq
+Mx
+Zx
+ZP
+Gz
+IO
+IO
+"}
+(18,1,1) = {"
+IO
+IO
+IO
+IO
+BS
+CR
+vH
+av
+Kt
+yN
+II
+II
+II
+II
+II
+yU
+mD
+iK
+NI
+JL
+NI
+TM
+GA
+NI
+JL
+NI
+gL
+Es
+Ot
+Gz
+IO
+IO
+"}
+(19,1,1) = {"
+IO
+IO
+IO
+IO
+Zk
+Zk
+mz
+av
+fx
+uV
+Xx
+Xx
+Xx
+Xx
+Xx
+QI
+jH
+SU
+hS
+Mn
+hU
+np
+Cs
+ol
+hb
+Eu
+gL
+eI
+WF
+WF
+IO
+IO
+"}
+(20,1,1) = {"
+IO
+IO
+IO
+IO
+IO
+Zk
+BS
+Zk
+Lm
+qH
+Xx
+Xx
+Xx
+Xx
+Xx
+QI
+zA
+KV
+hS
+wI
+np
+np
+Sn
+np
+mX
+Eu
+gL
+Gz
+WF
+bY
+IO
+IO
+"}
+(21,1,1) = {"
+IO
+IO
+IO
+IO
+IO
+IO
+kZ
+uW
+uW
+zQ
+Xx
+Xx
+uX
+Xx
+Xx
+QI
+la
+SU
+NI
+cH
+np
+np
+ap
+FF
+PD
+gL
+gL
+uY
+IO
+IO
+IO
+IO
+"}
+(22,1,1) = {"
+IO
+IO
+IO
+IO
+IO
+IO
+kZ
+DE
+uW
+Ht
+Xx
+Xx
+Xx
+Xx
+Xx
+QI
+la
+SU
+XD
+np
+np
+np
+wb
+Ei
+OG
+ER
+Fx
+uY
+IO
+IO
+IO
+IO
+"}
+(23,1,1) = {"
+IO
+IO
+IO
+IO
+IO
+IO
+kP
+bR
+uW
+uW
+Xx
+Xx
+Xx
+Xx
+Xx
+QI
+Sq
+SU
+IW
+np
+np
+nY
+bb
+Nj
+gL
+gL
+bR
+bY
+IO
+IO
+IO
+IO
+"}
+(24,1,1) = {"
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+kZ
+uW
+uW
+mG
+UH
+cP
+Kb
+ez
+Sa
+iK
+NI
+bP
+AP
+ON
+Mk
+gL
+gL
+uY
+IO
+IO
+IO
+IO
+IO
+IO
+"}
+(25,1,1) = {"
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+kP
+bR
+uW
+uW
+uW
+QJ
+XT
+Qh
+kg
+SU
+NI
+Eu
+Eu
+gL
+gL
+gL
+bR
+bY
+IO
+IO
+IO
+IO
+IO
+IO
+"}
+(26,1,1) = {"
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+kP
+bR
+uW
+uW
+uW
+uW
+FQ
+FQ
+gL
+gL
+gL
+gL
+bR
+bY
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+"}
+(27,1,1) = {"
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+"}
+(28,1,1) = {"
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+"}
+(29,1,1) = {"
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+"}
+(30,1,1) = {"
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+"}
+(31,1,1) = {"
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+"}
+(32,1,1) = {"
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+IO
+"}

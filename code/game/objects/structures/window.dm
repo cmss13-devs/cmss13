@@ -574,6 +574,51 @@
 		new_window_frame.setDir(dir)
 	return ..()
 
+// Decompression windows
+/obj/structure/window/framed/decompressible
+	desc = "A glass window that has a view out into the great beyond."
+	not_deconstructable = TRUE // Why do we still have "not_" booleans?
+
+/obj/structure/window/framed/decompressible/Initialize()
+	. = ..()
+
+	// Update the description if a shutter has been placed on top of it in mapping
+	for (var/obj/structure/machinery/door/shutter in get_turf(src))
+		desc += " It has an emergency shutter that should close in the event of an atmospheric breach."
+
+	var/area/decompressible/area_decompressible = get_area(src)
+	if (!area_decompressible)
+		log_mapping("A decompression shutter ([src]) is placed in an area that is not a subtype of area/decompressible. Did you mean to use a regular window?")
+
+/obj/structure/window/framed/decompressible/deconstruct(disassembled = TRUE)
+	// If this window is destroyed for whatever reason, trigger decompression procs
+	var/area/decompressible/area_decompressible = get_area(src)
+	var/turf/breach_location = get_turf(src)
+
+	. = ..()
+
+	if (!area_decompressible)
+		return
+
+	for (var/obj/structure/machinery/door/poddoor/shutters/decompression/pressure_shutters in breach_location)
+		// Shutters are already closed, this isn't an actual breach
+		if (pressure_shutters.density)
+			return
+
+	for (var/obj/structure/machinery/door/poddoor/shutters/decompression/pressure_shutters in breach_location)
+		pressure_shutters.handle_decompression()
+	area_decompressible.decompress(breach_location)
+
+/obj/structure/window/framed/decompressible/almayer
+	name = "reinforced window"
+	desc = "A glass window with a special rod matrix inside a wall frame. It looks rather strong. Might take a few good hits to shatter it."
+	icon_state = "alm_rwindow0"
+	basestate = "alm_rwindow"
+	health = 100 //Was 600
+	reinf = 1
+	dir = NORTHEAST
+	window_frame = /obj/structure/window_frame/almayer
+
 //Almayer windows
 
 /obj/structure/window/framed/almayer

@@ -54,8 +54,16 @@
 		translator_type = mob_client.prefs.predator_translator_type
 		invisibility_sound = mob_client.prefs.predator_invisibility_sound
 
-		if(mob_client.can_use_pred_legacies() && mob_client.prefs.predator_use_legacy != "None")
+		var/list/xenobone_list = list("Defender", "Warrior", "Praetorian")
+		var/list/seeker_list = list("Seeker Initiate", "Seeker Adept")
+		var/legacy_type = mob_client.prefs.predator_use_legacy
+		if(mob_client.can_use_pred_legacies() && (legacy_type != "None") && (legacy_type in PRED_LEGACIES))
 			bracer_material = lowertext(mob_client.prefs.predator_use_legacy)
+		else if(mob_client.can_use_pred_specials())
+			if(mob_client.prefs.predator_use_unique in xenobone_list)
+				bracer_material = "xenobone"
+			if(mob_client.prefs.predator_use_unique in seeker_list)
+				bracer_material = "seeker"
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja/hunter(new_human, translator_type, invisibility_sound, caster_material, clan_rank, bracer_material), WEAR_HANDS)
 

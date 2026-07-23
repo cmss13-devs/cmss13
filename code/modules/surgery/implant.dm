@@ -4,7 +4,7 @@
 // ITEM PLACEMENT SURGERY //
 //////////////////////////////////////////////////////////////////
 
-//int_organmplant and removal surgeries allow either removing the implant just inserted or replacing a removed one with a new item.
+//Implant and removal surgeries allow either removing the implant just inserted or replacing a removed one with a new item.
 /datum/surgery/implant
 	name = "Implant Surgery"
 	priority = SURGERY_PRIORITY_LOW

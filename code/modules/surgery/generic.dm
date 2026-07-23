@@ -539,7 +539,7 @@
 //------------------------------------
 
 //This step can be skipped, and ends the surgery when completed. In rib-opening surgery, it can be skipped to abort the operation.
-//int_organn rib-closing surgery, it can be skipped to finish closing the ribcage, or completed to abort the operation.
+//In rib-closing surgery, it can be skipped to finish closing the ribcage, or completed to abort the operation.
 /datum/surgery_step/open_encased_step
 	name = "Pry Bones Open"
 	desc = "pry the sawed bones open"
@@ -699,7 +699,7 @@
 //Use materials to mend bones, same as /datum/surgery_step/mend_bones
 /datum/surgery_step/mend_encased/extra_checks(mob/living/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, repeating, skipped)
 	. = ..()
-	if(istype(tool, /obj/item/tool/surgery/bonegel)) //int_organf bone gel, use some of the gel
+	if(istype(tool, /obj/item/tool/surgery/bonegel)) //If bone gel, use some of the gel
 		var/obj/item/tool/surgery/bonegel/gel = tool
 		if(!gel.use_gel(gel.mend_bones_fix_cost))
 			to_chat(user, SPAN_BOLDWARNING("[gel] is empty!"))

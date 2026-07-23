@@ -134,14 +134,14 @@
 			victim.take_limb_damage(min(6, volume))
 	if(isxeno(victim))
 		var/mob/living/carbon/xenomorph/xeno = victim
-		if(potency > POTENCY_MAX_TIER_1) //Needs level 7+ to have any effect
+		if(potency > 2) //Needs level 5+ to have any effect, remember that potency = level * 0.5
 			xeno.AddComponent(/datum/component/status_effect/toxic_buildup, potency * volume * 0.25)
 
 /datum/chem_property/negative/corrosive/reaction_obj(obj/reacting_object, volume, potency)
 	if((istype(reacting_object,/obj/item) || istype(reacting_object,/obj/effect/glowshroom)) && prob(potency * 10))
 		if(reacting_object.unacidable)
 			return
-		var/obj/effect/decal/cleanable/molten_item/int_bleeding =new/obj/effect/decal/cleanable/molten_item(reacting_object.loc)
+		var/obj/effect/decal/cleanable/molten_item/int_bleeding = new/obj/effect/decal/cleanable/molten_item(reacting_object.loc)
 		int_bleeding.desc = "Looks like this was \an [reacting_object] some time ago."
 		for(var/mob/viewer as anything in viewers(5, reacting_object))
 			to_chat(viewer, SPAN_WARNING("\The [reacting_object] melts."))
@@ -258,13 +258,13 @@
 		return
 	..()
 	if(prob(POTENCY_MULTIPLIER_VHIGH * potency))
-		var/datum/wound/internal_bleeding/int_bleeding =new (0)
+		var/datum/wound/internal_bleeding/int_bleeding = new (0)
 		limb.add_bleeding(int_bleeding, TRUE)
 		limb.wounds += int_bleeding
 		limb.owner.custom_pain("You feel something rip in your [limb.display_name]!", 1)
 
 	if(prob(POTENCY_MULTIPLIER_VHIGH * potency))
-		spawn limb.owner.emote("me", 1, "coughs up blood!")
+		limb.owner.emote("me", 1, "coughs up blood!")
 		limb.owner.drip(10)
 
 /datum/chem_property/negative/hemorrhaging/process_overdose(mob/living/victim, potency = 1, delta_time)
@@ -280,7 +280,7 @@
 	if(prob(10 * potency * delta_time) && ishuman(victim))
 		var/mob/living/carbon/human/human = victim
 		var/obj/limb/limb = pick(human.limbs)
-		var/datum/wound/internal_bleeding/int_bleeding =new (0)
+		var/datum/wound/internal_bleeding/int_bleeding = new (0)
 		limb.owner.custom_pain("You feel something burst in your [limb.display_name]!", 1)
 		limb.add_bleeding(int_bleeding, TRUE)
 		limb.wounds += int_bleeding

@@ -878,10 +878,8 @@
 		for (var/datum/reagent/reagent as anything in reagents.reagent_list)
 			if (reagent.volume > reagent.overdose && reagent.overdose != 0)
 				// Regulating chems can't harmfully overdose
-				if (reagent.get_property(PROPERTY_REGULATING))
-					continue
-
-				tag_severity = 2
+				if (!reagent.get_property(PROPERTY_REGULATING))
+					tag_severity = 2
 
 		// The highest holotag you can get from limbs is red, so we can safely break out of the limb loop if we find a red-worthy injury
 		for (var/obj/limb/limb as anything in limbs)

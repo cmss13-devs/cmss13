@@ -10,4 +10,6 @@
 /obj/item/reagent_container/hypospray/autoinjector/dermaline/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/standard/dermaline/@SUBTYPES{@OLD}
 /obj/item/reagent_container/hypospray/autoinjector/inaprovaline/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/standard/inaprovaline/@SUBTYPES{@OLD}
 /obj/item/reagent_container/hypospray/autoinjector/skillless/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricordrazine/@SUBTYPES{@OLD}
+/obj/item/reagent_container/hypospray/autoinjector/empty/skillless/@SUBTYPES: /obj/item/reagent_container/hypospray/autoinjector/ez/@SUBTYPES{@OLD}
+
 

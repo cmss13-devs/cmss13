@@ -220,9 +220,9 @@ SUBSYSTEM_DEF(hijack)
 			current_run_mobs = GLOB.alive_human_list.Copy()
 
 	if(in_ftl)
-		// Scalar between 30s and 5min for ~0-25% chance of a hallucination when in FTL outside a pod
+		// Scalar between 30s and 15min for ~0-12.5% chance of a hallucination when in FTL outside a pod
 		var/duration_clamped = clamp(world.time - in_ftl_time, 30 SECONDS, 5 MINUTES)
-		var/chance_haullucinate = SCALE(duration_clamped, 30 SECONDS, 20 MINUTES) * 100 // max actually seems to be like ~23% because byond floats
+		var/chance_haullucinate = SCALE(duration_clamped, 30 SECONDS, 40 MINUTES) * 100 // max actually seems to be a little less because byond floats
 		for(var/mob/living/carbon/human/current_mob as anything in current_run_mobs)
 			current_run_mobs -= current_mob
 

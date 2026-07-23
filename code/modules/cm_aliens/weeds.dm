@@ -232,6 +232,9 @@
 			continue
 		if(!spread_on_semiweedable && T.is_weedable < FULLY_WEEDABLE)
 			continue
+		if(!weed_expand_objects(T, dirn))
+			continue
+
 		T.clean_cleanables()
 
 		var/obj/effect/alien/resin/fruit/old_fruit
@@ -266,9 +269,6 @@
 				weeds.Add(new /obj/effect/alien/weeds(T, node, TRUE, FALSE))
 				continue
 
-		if(!weed_expand_objects(T, dirn))
-			continue
-
 		var/obj/effect/alien/weeds/new_weed = new(T, node)
 		weeds += new_weed
 
@@ -286,7 +286,7 @@
 
 /obj/effect/alien/weeds/proc/weed_expand_objects(turf/T, direction)
 	for(var/obj/structure/platform/P in src.loc)
-		if(P.dir == reverse_direction(direction))
+		if(!(P.stat & BROKEN) && P.dir == direction)
 			return FALSE
 	for(var/obj/structure/barricade/from_blocking_cade in loc) //cades on tile we're coming from
 		if(from_blocking_cade.density && from_blocking_cade.dir == direction && from_blocking_cade.health >= (from_blocking_cade.maxhealth / 4))
@@ -294,7 +294,8 @@
 
 	for(var/obj/O in T)
 		if(istype(O, /obj/structure/platform))
-			if(O.dir == direction)
+			var/obj/structure/platform/P = O
+			if(!(P.stat & BROKEN) && P.dir == GLOB.reverse_dir[direction])
 				return FALSE
 
 		if(istype(O, /obj/structure/barricade)) //cades on tile we're trying to expand to

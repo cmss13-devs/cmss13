@@ -353,57 +353,69 @@
 	path = /obj/item/reagent_container/spray
 
 /datum/autolathe/recipe/medilathe/autoinjector
-	name = "autoinjector (C-T) (5x3)"
-	path = /obj/item/reagent_container/hypospray/autoinjector/empty
+	name = "custom EZ autoinjector (3x5u)"
+	path = /obj/item/reagent_container/hypospray/autoinjector/empty/small
 	category = AUTOLATHE_CATEGORY_INJECTORS
 
 /datum/autolathe/recipe/medilathe/autoinjector/s15x3
-	name = "autoinjector (C-S) (15x3)"
-	path = /obj/item/reagent_container/hypospray/autoinjector/empty/small
-
-/datum/autolathe/recipe/medilathe/autoinjector/s30x3
-	name = "autoinjector (C-M) (30x3)"
+	name = "custom EZ autoinjector (3x15u)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/medium
 
-/datum/autolathe/recipe/medilathe/autoinjector/s60x3
-	name = "autoinjector (C-L) (60x3)"
+/datum/autolathe/recipe/medilathe/autoinjector/s30x3
+	name = "custom EZ autoinjector (3x30u)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/large
 
+/datum/autolathe/recipe/medilathe/autoinjector/s60x3
+	name = "custom EZ autoinjector (3x60u)"
+	path = /obj/item/reagent_container/hypospray/autoinjector/empty/huge
+
 /datum/autolathe/recipe/medilathe/autoinjector/s1x1
-	name = "EZ autoinjector (E-U) (1x1)"
-	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/unit
+	name = "custom EZ one-use autoinjector (1u)"
+	path = /obj/item/reagent_container/hypospray/autoinjector/empty/ez/unit
 
 /datum/autolathe/recipe/medilathe/autoinjector/s5x1
-	name = "EZ autoinjector (E-VS) (5x1)"
-	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/verysmall
+	name = "custom EZ one-use autoinjector (5u)"
+	path = /obj/item/reagent_container/hypospray/autoinjector/empty/ez/verysmall
 
 /datum/autolathe/recipe/medilathe/autoinjector/s10x1
-	name = "EZ autoinjector (E-S) (10x1)"
-	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/small
+	name = "custom EZ one-use autoinjector (10u)"
+	path = /obj/item/reagent_container/hypospray/autoinjector/empty/ez/small
 
 /datum/autolathe/recipe/medilathe/autoinjector/s15x1
-	name = "EZ autoinjector (E-T) (15x1)"
-	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless
+	name = "custom EZ one-use autoinjector (15u)"
+	path = /obj/item/reagent_container/hypospray/autoinjector/empty/ez/medium
 
 /datum/autolathe/recipe/medilathe/autoinjector/s30x1
-	name = "EZ autoinjector (E-M) (30x1)"
-	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/medium
+	name = "custom EZ one-use autoinjector (30u)"
+	path = /obj/item/reagent_container/hypospray/autoinjector/empty/ez/large
 
 /datum/autolathe/recipe/medilathe/autoinjector/s45x1
-	name = "EZ autoinjector (E-L) (45x1)"
-	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/large
+	name = "custom EZ one-use autoinjector (45u)"
+	path = /obj/item/reagent_container/hypospray/autoinjector/empty/ez/extralarge
 
 /datum/autolathe/recipe/medilathe/autoinjector/s60x1
-	name = "EZ autoinjector (E-XL) (60x1)"
-	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/extralarge
+	name = "custom EZ one-use autoinjector (60u)"
+	path = /obj/item/reagent_container/hypospray/autoinjector/empty/ez/huge
+
+/datum/autolathe/recipe/medilathe/autoinjector/s5x6
+	name = "reagent pouch autoinjector (6x5u)"
+	path = /obj/item/reagent_container/hypospray/autoinjector/empty/medic/extrasmall
+
+/datum/autolathe/recipe/medilathe/autoinjector/s10x6
+	name = "reagent pouch autoinjector (6x10u)"
+	path = /obj/item/reagent_container/hypospray/autoinjector/empty/medic/small
 
 /datum/autolathe/recipe/medilathe/autoinjector/s15x6
-	name = "Medic autoinjector (M-M) (15x6)"
-	path = /obj/item/reagent_container/hypospray/autoinjector/empty/medic
+	name = "reagent pouch autoinjector (6x15u)"
+	path = /obj/item/reagent_container/hypospray/autoinjector/empty/medium
+
+/datum/autolathe/recipe/medilathe/autoinjector/s20x6
+	name = "reagent pouch autoinjector (6x20u)"
+	path = /obj/item/reagent_container/hypospray/autoinjector/empty/medic/large
 
 /datum/autolathe/recipe/medilathe/autoinjector/s30x6
-	name = "Medic Autoinjector (M-L) (30x6)"
-	path = /obj/item/reagent_container/hypospray/autoinjector/empty/medic/large
+	name = "reagent pouch autoinjector (6x30u)"
+	path = /obj/item/reagent_container/hypospray/autoinjector/empty/medic/extralarge
 
 /datum/autolathe/recipe/medilathe/hypospray
 	name = "hypospray"
@@ -494,7 +506,7 @@
 	category = AUTOLATHE_CATEGORY_MEDICAL_CONTAINERS
 
 /datum/autolathe/recipe/medilathe/pressurized_canister
-	name = "Pressurized Canister"
+	name = "Pressurized Reagent Canister"
 	path = /obj/item/reagent_container/glass/pressurized_canister
 	category = AUTOLATHE_CATEGORY_MEDICAL_CONTAINERS
 

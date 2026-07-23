@@ -8,7 +8,7 @@
 	activation_sounds = list('sound/weapons/gun_m92_attachable.ogg')
 
 	health = 500
-	firing_arc = 90
+	traverse_arc = 120
 
 	ammo = new /obj/item/ammo_magazine/hardpoint/tank_glauncher
 	max_clips = 3
@@ -20,6 +20,20 @@
 		"2" = list(0, 0),
 		"4" = list(6, 0),
 		"8" = list(-6, 17)
+	)
+
+	rotation_pivot = list(
+		"1" = list(0, -17),
+		"2" = list(0, 0),
+		"4" = list(-6, 0),
+		"8" = list(6, -17)
+	)
+
+	gimbal_pivot = list(
+		"1" = list(6, -6),
+		"2" = list(-6, 6),
+		"4" = list(-6, 6),
+		"8" = list(6, 6)
 	)
 
 	scatter = 10

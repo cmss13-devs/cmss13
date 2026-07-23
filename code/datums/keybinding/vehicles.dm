@@ -84,3 +84,25 @@
 	var/obj/vehicle/multitile/vehicle_user = user.mob.interactee
 	vehicle_user.reload_firing_port_weapon()
 	return TRUE
+
+/**
+ * Toggles the fire mode of hardpoints with more than one fire mode. currently only used for the primary and secondary
+ * flamers
+ */
+/datum/keybinding/vehicles/toggle_hardpoint_fire_mode
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "Toggle hardpoint fire mode"
+	full_name = "Toggle Hardpoint Fire Mode"
+	keybind_signal = COMSIG_KB_VEHICLE_TOGGLE_HARDPOINT_FIRE_MODE
+
+/datum/keybinding/vehicles/toggle_hardpoint_fire_mode/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/obj/vehicle/multitile/vehicle_user = user.mob.interactee
+	var/obj/item/hardpoint/HP = vehicle_user.get_mob_hp(user.mob)
+	if(!HP)
+		return
+	HP.toggle_fire_mode(user.mob)
+	return TRUE

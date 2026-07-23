@@ -33,6 +33,11 @@
 	/// List of pixel offsets for each direction.
 	var/list/px_offsets
 
+	// pivots used to calculate the correctt rotation both for secondary hardpoints and for primary hardpoints.
+	// because the secondary hardpoints are rotating WITH the turret, but also AROUND themselves, they need two pivots.
+	var/list/rotation_pivot
+	var/list/gimbal_pivot
+
 	/// Visual layer of hardpoint when on vehicle.
 	var/hdpt_layer = HDPT_LAYER_WHEELS
 
@@ -68,8 +73,35 @@
 	/// Used to prevent welder click spam.
 	var/being_repaired = FALSE
 
-	/// The firing arc of this hardpoint.
-	var/firing_arc = 0 //in degrees. 0 skips whole arc of fire check
+	/// How fast this weapon can traverse. On a turret-mounted weapon, contributes to the shared turret's turn speed (see recalculate_turn_rate()). On a fixed-mount weapon, this is a static firing cone instead (see in_firing_arc()).
+	var/traverse_arc = 0 //in degrees. 0 skips whole arc of fire check on fixed mounts
+
+	/// If TRUE, this hardpoint runs its own independent mouse-aim rotation (current_angle/rotation_loop below) instead of following its holder's rotate() cascade - see /obj/item/hardpoint/secondary/proc/toggle_slaved_to_driver().
+	var/self_gimballed = FALSE
+	/// The hardpoint's live, continuously-simulated facing (0-360, north-clockwise). Distinct from dir, which stays snapped to a cardinal for sprite selection. Only meaningful for the turret itself, or a self_gimballed hardpoint.
+	var/current_angle = 0
+	/// Where the mouse currently wants this hardpoint to face (0-360, north-clockwise). current_angle chases this.
+	var/desired_angle = 0
+	/// Current turn speed, in degrees per tick, ramped toward max_angular_velocity.
+	var/angular_velocity = 0
+	/// Turn speed cap. For the turret, derived from the median traverse_arc of mounted weapons (see recalculate_turn_rate()). For a self_gimballed weapon, derived from its own traverse_arc.
+	var/max_angular_velocity = TURRET_DEFAULT_ANGULAR_VELOCITY
+	/// How fast angular_velocity ramps up/down, in degrees per tick^2.
+	var/angular_accel = TURRET_ANGULAR_ACCEL
+	/// Guards against spawning more than one concurrent rotation_loop().
+	var/rotation_active = FALSE
+	/// world.time of the last processed mouse-move, used to rate-limit update_desired_angle().
+	var/last_desired_update_time = 0
+	/// While TRUE, update_desired_angle() no-ops - set on whichever object get_rotation_owner() resolves
+	/// to while a track_and_charge() lock-on is in progress, so live mouse input can't fight it.
+	var/aim_locked = FALSE
+	/// Guards against spawning more than one concurrent track_and_charge() on this hardpoint.
+	var/charging = FALSE
+	/// Set by cancel_charge() (COMSIG_GUN_STOP_FIRE/COMSIG_GUN_INTERRUPT_FIRE) to abort an in-progress
+	/// track_and_charge() loop. Distinct from fire_wait_cancelled, which guards a different wait
+	/// (arc-entry, not an active charge) and could otherwise interfere if both were active at once.
+	var/charge_cancelled = FALSE
+	var/trigger_held = FALSE
 
 	// Muzzleflash
 	var/use_muzzle_flash = FALSE
@@ -81,6 +113,11 @@
 
 	/// Currently loaded ammo that we shoot from.
 	var/obj/item/ammo_magazine/hardpoint/ammo
+	/// The type of magazine this hardpoint accepts, cached from ammo's class-default in Initialize()
+	/// unlike ammo itself, this stays set even while ammo is temporary null, so
+	/// get_hardpoints_with_ammo()/try_add_clip()/the weapons loader can still recognize this
+	/// hardpoint as reloadable and know whatt magazine type to accept
+	var/ammo_type
 	/// Spare magazines that we can reload from.
 	var/list/backup_clips
 	/// Maximum amount of spare mags.
@@ -96,6 +133,8 @@
 	var/shots_fired = 0
 	/// Delay before a new firing sequence can start.
 	COOLDOWN_DECLARE(fire_cooldown)
+	/// Set by cancel_firing_arc_wait() to break out of wait_for_firing_arc() early.
+	var/fire_wait_cancelled = FALSE
 
 	// Firemodes.
 	/// Current selected firemode of the gun.
@@ -127,6 +166,8 @@
 	var/atom/target
 	/// The type of projectile to fire
 	var/projectile_type = /obj/projectile
+	/// How many ammo.current_rounds a single base handle_fire() shot costs. The flamer hardpoints (primary/flamer.dm, secondary/flamer.dm) set this to 0 and do their own reagent-based fuel deduction instead, since their ammo tracks real chemical volume rather than plain integer rounds.
+	var/ammo_cost_per_shot = 1
 
 //-----------------------------
 //------GENERAL PROCS----------
@@ -141,6 +182,8 @@
 /obj/item/hardpoint/Initialize()
 	. = ..()
 	set_bullet_traits()
+	if(ammo)
+		ammo_type = ammo.type
 	AddComponent(/datum/component/automatedfire/autofire, fire_delay, burst_delay, burst_amount, gun_firemode, autofire_slow_mult, CALLBACK(src, PROC_REF(set_burst_firing)), CALLBACK(src, PROC_REF(reset_fire)), CALLBACK(src, PROC_REF(fire_wrapper)), callback_set_firing = CALLBACK(src, PROC_REF(set_auto_firing)))
 
 /obj/item/hardpoint/Destroy()
@@ -169,6 +212,8 @@
 /obj/item/hardpoint/proc/generate_bullet(mob/user, turf/origin_turf)
 	var/obj/projectile/P = new projectile_type(origin_turf, create_cause_data(initial(name), user))
 	P.generate_bullet(new ammo.default_ammo)
+	P.effective_range_max = P.ammo.effective_range_max
+	P.effective_range_min = P.ammo.effective_range_min
 	// Apply bullet traits from gun
 	for(var/entry in traits_to_give)
 		var/list/L
@@ -354,17 +399,23 @@
 
 	sleep(20)
 
-	forceMove(ammo, get_turf(src))
-	ammo.update_icon()
+	if(ammo)
+		forceMove(ammo, get_turf(src))
+		ammo.update_icon()
 	ammo = A
 	LAZYREMOVE(backup_clips, A)
+	owner?.update_icon()
 
 	to_chat(user, SPAN_NOTICE("You reload \the [name]."))
 
+/// Whether this hardpoint will accept a given magazine for reloading. Eg, m56d cupola accepts m56d drums.
+/obj/item/hardpoint/proc/accepts_magazine(obj/item/ammo_magazine/magazine)
+	return istype(magazine, ammo_type)
+
 //try adding magazine to hardpoint's backup clips. Called via weapons loader
 /obj/item/hardpoint/proc/try_add_clip(obj/item/ammo_magazine/A, mob/user)
-	if(!ammo)
-		to_chat(user, SPAN_WARNING("\The [name] doesn't use ammunition."))
+	if(!ammo_type)
+		to_chat(user, SPAN_WARNING("\The [name] doesn't use ammunition.")) // UA flag
 		return FALSE
 	if(max_clips == 0)
 		to_chat(user, SPAN_WARNING("\The [name] does not have room for additional ammo."))
@@ -387,7 +438,7 @@
 
 	playsound(loc, 'sound/machines/hydraulics_2.ogg', 50)
 	LAZYADD(backup_clips, A)
-	to_chat(user, SPAN_NOTICE("You load \the [A] into \the [name]. Ammo: <b>[SPAN_HELPFUL(ammo.current_rounds)]/[SPAN_HELPFUL(ammo.max_rounds)]</b> | Mags: <b>[SPAN_HELPFUL(LAZYLEN(backup_clips))]/[SPAN_HELPFUL(max_clips)]</b>"))
+	to_chat(user, SPAN_NOTICE("You load \the [A] into \the [name]. Ammo: <b>[SPAN_HELPFUL(ammo ? ammo.current_rounds : 0)]/[SPAN_HELPFUL(ammo ? ammo.max_rounds : 0)]</b> | Mags: <b>[SPAN_HELPFUL(LAZYLEN(backup_clips))]/[SPAN_HELPFUL(max_clips)]</b>"))
 	return TRUE
 
 /obj/item/hardpoint/attackby(obj/item/O, mob/user)
@@ -523,6 +574,7 @@
 
 /// Reset variables used in firing and remove the gun from the autofire system.
 /obj/item/hardpoint/proc/stop_fire(datum/source, atom/object, turf/location, control, params)
+	trigger_held = FALSE
 	SEND_SIGNAL(src, COMSIG_GUN_STOP_FIRE)
 	if(auto_firing)
 		reset_fire() //automatic fire doesn't reset itself from COMSIG_GUN_STOP_FIRE
@@ -545,15 +597,19 @@
 		return
 
 	set_target(get_turf_on_clickcatcher(object, source, params))
+	trigger_held = TRUE
 
 	if(gun_firemode == GUN_FIREMODE_SEMIAUTO)
-		var/fire_return = try_fire(object, source, params)
-		//end-of-fire, show ammo (if changed)
-		if(fire_return == AUTOFIRE_CONTINUE)
-			reset_fire()
-			display_ammo(source)
+		INVOKE_ASYNC(src, PROC_REF(fire_semiauto), object, source, params)
 	else
 		SEND_SIGNAL(src, COMSIG_GUN_FIRE)
+
+// Fires a single semi-auto shot and handles its result so it can be invoked asynchronous for linters
+/obj/item/hardpoint/proc/fire_semiauto(atom/target, mob/living/user, params)
+	var/fire_return = try_fire(target, user, params)
+	if(fire_return == AUTOFIRE_CONTINUE)
+		reset_fire()
+		display_ammo(user)
 
 /// Wrapper proc for the autofire system to ensure the important args aren't null.
 /obj/item/hardpoint/proc/fire_wrapper(atom/target, mob/living/user, params)
@@ -572,23 +628,198 @@
 		to_chat(user, SPAN_WARNING("<b>\The [name] is broken!</b>"))
 		return NONE
 
-	if(ammo && ammo.current_rounds <= 0)
+	// A hardpoint can legitimately have no magazine installed at all. This is needed especifically so the
+	// DRGN flamer and the secondary version can 'eject' their magazines to be refueled from a fuel source..
+	// so, other guns can now eject their full magazines and have nothing loaded.
+	if(!ammo)
 		click_empty(user)
 		return NONE
 
-	if(!in_firing_arc(target))
-		to_chat(user, SPAN_WARNING("<b>The target is not within your firing arc!</b>"))
+	if(ammo.current_rounds <= 0)
+		click_empty(user)
 		return NONE
 
-	return handle_fire(target, user, params)
+	// stops you from firing at your own hull. prevents a bug found in testing where guns shoot straight up.
+	if(owner && (get_turf(target) in owner.locs))
+		to_chat(user, SPAN_WARNING("Invalid target!"))
+		return NONE
+
+	var/atom/original_target = target
+	var/obj/item/hardpoint/holder/tank_turret/turret = loc
+	var/turret_mounted = istype(turret)
+	if((self_gimballed || turret_mounted) && gun_firemode != GUN_FIREMODE_SEMIAUTO)
+		// Held-trigger fire modes (burst/automatic) don't wait for the turret to finish swinging onto target
+		var/obj/item/hardpoint/facing_source = self_gimballed ? src : turret
+		target = facing_source.redirect_to_current_facing(get_origin_turf(), target)
+	else if(!in_firing_arc(target))
+		// Turret-mounted weapons wait for the turret (or their own gimbal) to finish swinging onto the target before firing
+		if(!turret_mounted || !wait_for_firing_arc(target, user))
+			to_chat(user, SPAN_WARNING("<b>The target is not within your firing arc!</b>"))
+			return NONE
+
+	return handle_fire(target, user, params, original_target)
+
+/**
+ * Waits for in_firing_arc(target) to become true, instead of instantly rejecting the shot.
+ *
+ * Returns TRUE once in arc and ready to fire, FALSE if the wait was cancelled or the shot became
+ * impossible for some other reason while waiting (weapon/target gone, broke, ran dry, trigger let go).
+ */
+/obj/item/hardpoint/proc/wait_for_firing_arc(atom/target, mob/user)
+	fire_wait_cancelled = FALSE
+	RegisterSignal(src, list(COMSIG_GUN_STOP_FIRE, COMSIG_GUN_INTERRUPT_FIRE), PROC_REF(cancel_firing_arc_wait))
+
+	. = TRUE
+	while(!in_firing_arc(target))
+		sleep(1)
+		if(fire_wait_cancelled || !trigger_held || QDELETED(src) || QDELETED(target) || health <= 0 || (ammo && ammo.current_rounds <= 0))
+			. = FALSE
+			break
+
+	UnregisterSignal(src, list(COMSIG_GUN_STOP_FIRE, COMSIG_GUN_INTERRUPT_FIRE))
+
+/obj/item/hardpoint/proc/cancel_firing_arc_wait()
+	SIGNAL_HANDLER
+	fire_wait_cancelled = TRUE
+
+/**
+ * Resolves which object actually owns continuous rotation (current_angle/desired_angle/rotation_loop)
+ * for this hardpoint - itself if self_gimballed, or the shared turret holder if turret-mounted.
+ * Mirrors the same dispatch already used implicitly by in_firing_arc()/check_gimbal_firing_arc()/
+ * in_turret_firing_arc() above.
+ */
+/obj/item/hardpoint/proc/get_rotation_owner()
+	RETURN_TYPE(/obj/item/hardpoint)
+	if(self_gimballed)
+		return src
+	var/obj/item/hardpoint/holder/tank_turret/turret = loc
+	if(istype(turret))
+		return turret
+	return src
+
+/// Single choke point for locking/unlocking mouse-driven aim on whichever object get_rotation_owner()
+/// resolves to, so ttrack_and_charge() below can lock/unlock symmetrically.
+/obj/item/hardpoint/proc/lock_rotation(lock)
+	get_rotation_owner().aim_locked = lock
+
+/**
+ * Locks onto target and keeps re-aiming at its live position for aim_time, cancellable if the target
+ * drifts further behind the current facing than this hardpoint's own traverse_arc allows, giving the
+ * mount a litttle bit of allowance to catch up before the shot is considered lost
+ *
+ * Recomputes the true world-space angle to the target fresh every tick from this hardpoint's current
+ * position, so it needs no special-casing for the vehicle itself moving/turning mid-charge
+ *
+ *
+ * Returns TRUE if the charge completed with the target still valid and in arc, FALSE if cancelled.
+ */
+/obj/item/hardpoint/proc/track_and_charge(atom/target, mob/living/user, aim_time)
+	if(charging)
+		return FALSE
+	charging = TRUE
+
+	set_target(target)
+	lock_rotation(TRUE)
+	charge_cancelled = FALSE
+	RegisterSignal(src, list(COMSIG_GUN_STOP_FIRE, COMSIG_GUN_INTERRUPT_FIRE), PROC_REF(cancel_charge))
+	start_aim_visuals(target, user)
+
+	. = TRUE
+	var/elapsed = 0
+	while(elapsed < aim_time)
+		sleep(1)
+		elapsed += 1
+
+		if(charge_cancelled || !trigger_held || QDELETED(src) || QDELETED(target) || health <= 0 || (ammo && ammo.current_rounds <= 0))
+			. = FALSE
+			break
+
+		if(isliving(target))
+			var/mob/living/living_target = target
+			if(living_target.is_dead())
+				. = FALSE
+				break
+
+		var/turf/origin_turf = get_origin_turf()
+		var/turf/target_turf = get_turf(target)
+		if(origin_turf == target_turf)
+			. = FALSE
+			break
+
+		try
+			// Angle uses the target atom itself, not target_turf
+			var/angle_to_target = Get_Angle_Grounded(origin_turf, target)
+			var/obj/item/hardpoint/rotation_owner = get_rotation_owner()
+			var/obj/item/hardpoint/holder/tank_turret/mount = self_gimballed ? loc : null
+
+			if(istype(mount)) // self-gimballed, mounted on a turret
+				var/turret_facing = mount.current_angle
+				var/raw_delta = angle_delta(angle_to_target, turret_facing)
+				if(abs(raw_delta) > SLAVED_GIMBAL_ARC_HALF_WIDTH)
+					to_chat(user, SPAN_WARNING("Target moved out of the firing arc!"))
+					. = FALSE
+				else
+					var/swing = clamp(raw_delta, -SLAVED_GIMBAL_ARC_HALF_WIDTH, SLAVED_GIMBAL_ARC_HALF_WIDTH)
+					rotation_owner.desired_angle = ((turret_facing + swing) % 360 + 360) % 360
+			else
+				rotation_owner.desired_angle = angle_to_target
+				if(traverse_arc && abs(angle_delta(angle_to_target, rotation_owner.current_angle)) > traverse_arc * 0.5)
+					to_chat(user, SPAN_WARNING("Target moved out of the firing arc!"))
+					. = FALSE
+			if(. != FALSE)
+				rotation_owner.start_rotation_if_needed()
+				on_track_tick(target)
+		catch(var/exception/tick_error)
+			log_runtime(tick_error)
+			. = FALSE
+
+		if(. == FALSE)
+			break
+
+	UnregisterSignal(src, list(COMSIG_GUN_STOP_FIRE, COMSIG_GUN_INTERRUPT_FIRE))
+	end_aim_visuals(target, user, .)
+	lock_rotation(FALSE)
+	charging = FALSE
+
+/obj/item/hardpoint/proc/cancel_charge()
+	SIGNAL_HANDLER
+	charge_cancelled = TRUE
+
+/// No-op hook - override to spawn lock-on visuals (overlays/beams) when a track_and_charge() begins.
+// currently overriden by LTB and mounted BRUTE launcher only. Same goes for the other hooks below. - BWSB
+/obj/item/hardpoint/proc/start_aim_visuals(atom/target, mob/living/user)
+	return
+
+/// No-op hook - override to tear down whatever start_aim_visuals() spawned. Always called, success or not.
+/obj/item/hardpoint/proc/end_aim_visuals(atom/target, mob/living/user, success)
+	return
+
+/// No-op hook - called once per tick during track_and_charge(), after desired_angle has been updated.
+/// Override to keep any tick-dependent visuals (e.g. a beam anchor) following the live muzzle position.
+/obj/item/hardpoint/proc/on_track_tick(atom/target)
+	return
 
 /// Actually fires the gun, sets up the projectile and fires it.
-/obj/item/hardpoint/proc/handle_fire(atom/target, mob/living/user, params)
+/obj/item/hardpoint/proc/handle_fire(atom/target, mob/living/user, params, atom/original_target)
+	if(isnull(original_target))
+		original_target = target
 	var/turf/origin_turf = get_origin_turf()
 
-	var/obj/projectile/projectile_to_fire = generate_bullet(user, origin_turf)
-	ammo.current_rounds--
+	// Spawn projectile outside the vehicle hull so riders aren't hit.
+	var/turf/spawn_turf = origin_turf
+	if(owner && length(owner.locs) > 1)
+		var/turf/target_turf = get_turf(target)
+		var/list/path = get_line(origin_turf, target_turf)
+		for(var/turf/T as anything in path)
+			// preventts a bug where the projectile disappears if it occupies the same tile the projectile spawns in
+			if(!(T in owner.locs) && T != target_turf)
+				spawn_turf = T
+				break
+
+	var/obj/projectile/projectile_to_fire = generate_bullet(user, spawn_turf)
+	ammo.current_rounds -= ammo_cost_per_shot
 	SEND_SIGNAL(projectile_to_fire, COMSIG_BULLET_USER_EFFECTS, user)
+	projectile_to_fire.original = original_target
 
 	// turf-targeted projectiles are fired without scatter, because proc would raytrace them further away
 	var/ammo_flags = projectile_to_fire.ammo.flags_ammo_behavior | projectile_to_fire.projectile_override_flags
@@ -608,6 +839,51 @@
 
 	return AUTOFIRE_CONTINUE
 
+/**
+ * No-op by default - only the flamer hardpoints (primary/flamer.dm, secondary/flamer.dm) override
+ * this to flip between FLAME_MODE_STTREAM and FLAME_MODE_GLOB
+ */
+/obj/item/hardpoint/proc/toggle_fire_mode(mob/user)
+	return
+
+/**
+ * Proc that makes the flamer stream work more closely to how the M240 Incinerator is implemented in game
+ * instead of drawing from an arbitrary ammo pool, it now draws from the chem reagents inside a tank, just like the m240.
+ */
+/obj/item/hardpoint/proc/fire_flame_stream(atom/target, mob/living/user, max_range, flameshape = FLAMESHAPE_LINE)
+	//step forward along path so flame starts outside hull
+	var/list/turfs = get_line(get_origin_turf(), get_turf(target))
+	var/turf/origin_turf
+	for(var/turf/turf as anything in turfs)
+		if(turf in owner.locs)
+			continue
+		origin_turf = turf
+		break
+
+	var/distance = get_dist(origin_turf, get_turf(target))
+	var/fire_amount = min(distance+1, max_range)
+
+	var/datum/reagent/chem = LAZYACCESS(ammo.reagents?.reagent_list, 1)
+	new /obj/flamer_fire(origin_turf, create_cause_data(initial(name), user), chem, fire_amount, ammo.reagents, flameshape, target, CALLBACK(src, PROC_REF(sync_ammo_from_reagents)))
+	sync_ammo_from_reagents()
+
+	play_firing_sounds()
+
+	COOLDOWN_START(src, fire_cooldown, fire_delay)
+
+	return AUTOFIRE_CONTINUE
+
+/**
+ * Re-syncs ammo.current_rounds to match ammo.reagents.total_volume.sync_ammo_from_reagents()
+ * Called both right after firing and again once a since reagent consumption happens asynchronously tile by tile
+ * as the flame propagates, not all at once at the moment of firing. Also refreshes the mounted sprite
+ * immediately.
+ */
+/obj/item/hardpoint/proc/sync_ammo_from_reagents()
+	if(ammo && ammo.reagents)
+		ammo.current_rounds = round(ammo.reagents.total_volume)
+	owner?.update_icon()
+
 /// Start cooldown to respect delay of firemode.
 /obj/item/hardpoint/proc/set_fire_cooldown(firemode)
 	var/cooldown_time = 0
@@ -622,6 +898,10 @@
 
 /// Adjust target based on random scatter angle.
 /obj/item/hardpoint/proc/simulate_scatter(obj/projectile/projectile_to_fire, atom/target, turf/curloc, turf/targloc)
+	// without this, clicking a point-blank target that resolves to the same turf as the muzzle
+	if(curloc == targloc)
+		return target
+
 	var/fire_angle = Get_Angle(curloc, targloc)
 	var/total_scatter_angle = projectile_to_fire.scatter
 
@@ -629,6 +909,9 @@
 	if(total_scatter_angle > 0)
 		fire_angle += rand(-total_scatter_angle, total_scatter_angle)
 		target = get_angle_target_turf(curloc, fire_angle, 30)
+
+	if(curloc.z != targloc.z)
+		target = locate(target.x, target.y, targloc.z)
 
 	return target
 
@@ -649,7 +932,14 @@
 
 /// Determines whether something is in firing arc of a hardpoint.
 /obj/item/hardpoint/proc/in_firing_arc(atom/target)
-	if(!firing_arc || !ISINRANGE_EX(firing_arc, 0, 360))
+	if(self_gimballed)
+		return check_gimbal_firing_arc(target)
+
+	var/obj/item/hardpoint/holder/tank_turret/turret = loc
+	if(istype(turret))
+		return turret.in_turret_firing_arc(src, target)
+
+	if(!traverse_arc || !ISINRANGE_EX(traverse_arc, 0, 360))
 		return TRUE
 
 	var/turf/muzzle_turf = get_origin_turf()
@@ -665,7 +955,247 @@
 	else if(angle_diff > 180)
 		angle_diff -= 360
 
-	return abs(angle_diff) <= (firing_arc * 0.5)
+	return abs(angle_diff) <= (traverse_arc * 0.5)
+
+/**
+ * Firing-arc gate for a self-gimballed hardpoint (see toggle_slaved_to_driver()): current_angle
+ * must have caught up to within FIRING_GATE_TOLERANCE of the angle from the weapon's own muzzle to
+ * target. Same shape as /obj/item/hardpoint/holder/tank_turret/proc/in_turret_firing_arc(), but
+ * measured against this hardpoint's own current_angle instead of a parent turret's.
+ */
+/obj/item/hardpoint/proc/check_gimbal_firing_arc(atom/target)
+	var/turf/muzzle_turf = get_origin_turf()
+	var/turf/target_turf = get_turf(target)
+
+	//same tile angle is undefined for Gett_Angle, returning FALSE to match the legacy static-arc check
+	if(muzzle_turf == target_turf)
+		return FALSE
+
+	var/target_angle = Get_Angle(muzzle_turf, target_turf)
+	return abs(angle_delta(target_angle, current_angle)) <= FIRING_GATE_TOLERANCE
+
+/**
+ * records where the mouse currently wants this hardpoint to face. Called on every processed
+ * mouse-move while a relevant crew member is seated.
+ *
+ * A self_gimballed weapon's desired_angle gets clamped to within SLAVED_GIMBAL_ARC_HALF_WIDTH
+ * degrees of the turret's own current continuous facing. the turret can sit anywhere within its own lean, e.g. 168
+ * degrees, and the allowed swing needs to follow that actual angle, not snap to whichever cardinal it's nearest to.
+ */
+/obj/item/hardpoint/proc/update_desired_angle(atom/object, mob/user, params)
+	if(health <= 0)
+		return
+	if(aim_locked) // a track_and_charge() lock-on is in progress - mouse input can't fight it
+		return
+	if(world.time == last_desired_update_time) // collapses same-tick MouseMove spam into one update
+		return
+	last_desired_update_time = world.time
+
+	// Aim at the hovered mob/object itself, not its bare turf
+	var/atom/aim_target
+	if(ismob(object) || isobj(object))
+		aim_target = object
+	else
+		aim_target = get_turf_on_clickcatcher(object, user, params)
+	if(!aim_target)
+		return
+	var/turf/target_turf = get_turf(aim_target)
+	var/turf/origin_turf = get_origin_turf()
+	if(!origin_turf || target_turf == origin_turf)
+		return
+
+	// Using the raw pixel-precise angle here aims at a tall sprite's visual midpoint instead of the tile it's
+	// actually standing on, which is what actually needs to be hit. very shittty bug to fix during testing
+	// which made the autocannon and minigun DPS plummet.
+	desired_angle = Get_Angle_Grounded(origin_turf, aim_target)
+	desired_angle = Get_Angle_Grounded(origin_turf, target_turf)
+
+	if(self_gimballed)
+		var/obj/item/hardpoint/holder/tank_turret/turret = loc
+		if(istype(turret))
+			var/turret_facing = turret.current_angle
+			var/swing = clamp(angle_delta(desired_angle, turret_facing), -SLAVED_GIMBAL_ARC_HALF_WIDTH, SLAVED_GIMBAL_ARC_HALF_WIDTH)
+			desired_angle = ((turret_facing + swing) % 360 + 360) % 360
+
+	start_rotation_if_needed()
+
+/obj/item/hardpoint/proc/start_rotation_if_needed()
+	if(rotation_active)
+		return
+	rotation_active = TRUE
+	spawn(0)
+		rotation_loop()
+
+/**
+ * Ticks current_angle toward desired_angle with inertia (accelerating up to max_angular_velocity,
+ * decelerating on approach). Self-terminates once current_angle settles within ROTATION_SETTLE_TOLERANCE of
+ * desired_angle, and restarts on demand from update_desired_angle().
+ */
+/obj/item/hardpoint/proc/rotation_loop()
+	while(TRUE)
+		sleep(1)
+
+		if(QDELETED(src) || health <= 0)
+			angular_velocity = 0
+			rotation_active = FALSE
+			return
+
+		var/delta = angle_delta(desired_angle, current_angle)
+		if(abs(delta) < ROTATION_SETTLE_TOLERANCE)
+			current_angle = desired_angle
+			angular_velocity = 0
+			drag_self_gimballed_weapons(delta)
+			apply_current_angle()
+			rotation_active = FALSE
+			return
+
+		// Accelerate toward max_angular_velocity, decelerate once we're close enough to stop in time.
+		var/stopping_distance = (angular_velocity ** 2) / (2 * angular_accel)
+		if(abs(delta) <= stopping_distance)
+			angular_velocity = max(angular_velocity - angular_accel, 0)
+		else
+			angular_velocity = min(angular_velocity + angular_accel, max_angular_velocity)
+
+		var/turn_sign = (delta > 0) - (delta < 0)
+		var/step = min(angular_velocity, abs(delta)) * turn_sign
+		current_angle = ((current_angle + step) % 360 + 360) % 360
+		drag_self_gimballed_weapons(step)
+		apply_current_angle()
+
+/**
+ * No-op by default. /obj/item/hardpoint/holder/tank_turret overrides this to drag every
+ * self_gimballed mounted weapon's own current_angle/desired_angle along by the same delta this
+ * hardpoint's current_angle just moved by.
+ *
+ * Without this, a slaved weapon's current_angle stays a fixed absolute world angle.
+ * This would be fine, but, since we can slave the secondaries to the driver, then they also need to drag by themselves.
+ */
+/obj/item/hardpoint/proc/drag_self_gimballed_weapons(delta)
+	return
+
+/// Snaps a continuous angle down to the nearest 90-degree cardinal quadrant
+/obj/item/hardpoint/proc/angle_to_cardinal(angle)
+	angle = ((angle % 360) + 360) % 360
+	if(angle >= 315 || angle < 45)
+		return NORTH
+	if(angle < 135)
+		return EAST
+	if(angle < 225)
+		return SOUTH
+	return WEST
+
+/**
+ * Keeps dir/origins in sync with current_angle's quadrant, then refreshes the vehicle's sprite.
+ */
+/obj/item/hardpoint/proc/apply_current_angle()
+	if(owner)
+		owner.update_icon()
+
+/**
+ * Builds a matrix that rotates by tilt degrees around pivot (a local x,y point relative to the
+ * icon's own center) instead of the icon's default center. pivot defaults to (0,0) if null/unset.
+ *
+ * (Translate(pivot), called last, applied last) - Translate(-pivot) -> Turn(tilt) -> Translate(pivot).
+ */
+/obj/item/hardpoint/proc/build_tilt_matrix(tilt, list/pivot)
+	var/matrix/tilt_matrix = matrix()
+	if(pivot && (pivot[1] || pivot[2]))
+		tilt_matrix.Translate(-pivot[1], -pivot[2])
+		tilt_matrix.Turn(tilt)
+		tilt_matrix.Translate(pivot[1], pivot[2])
+	else
+		tilt_matrix.Turn(tilt)
+	return tilt_matrix
+
+/**
+ * Like build_tilt_matrix(), but composes two nested rotations onto one matrix instead of one:
+ * inner_tilt around inner_pivot is applied first (closest to the raw icon), then outter_tilt around
+ * outer_pivot is applied on top of that, carrying the already-tilted icon along with it. Used to
+ * render a self_gimballed weapon, its own idependent swivel (inner, pivoting around its own local
+ * mount joint, gimbal_pivot) rides along with the turret's own lean (outer, pivoting around the
+ * turret's own rotation center, rotation_pivot) instead of replacing it - two separate pivots of
+ * rotation, one nested inside the other, same as a real two-stage gimbal mountted on a turret.
+ */
+/obj/item/hardpoint/proc/build_nested_tilt_matrix(inner_tilt, list/inner_pivot, outer_tilt, list/outer_pivot)
+	var/matrix/tilt_matrix = build_tilt_matrix(inner_tilt, inner_pivot)
+	if(outer_tilt)
+		if(outer_pivot && (outer_pivot[1] || outer_pivot[2]))
+			tilt_matrix.Translate(-outer_pivot[1], -outer_pivot[2])
+			tilt_matrix.Turn(outer_tilt)
+			tilt_matrix.Translate(outer_pivot[1], outer_pivot[2])
+		else
+			tilt_matrix.Turn(outer_tilt)
+	return tilt_matrix
+
+/**
+ * Looks up the pivot for a given angle out of up to 8 keyed keyframes (dir constants, same
+ * convention as dir2angle()), blending between a cardinal and an adjacent diagonal if that
+ * diagonal has a tuned entry - otherwise hard-snaps to the cardinal (old angle_to_cardinal()
+ * behavior), so untuned weapons render unchanged. Returns null if pivot_data is empty.
+ *
+ * Uses a direct equality switch rather than angle_to_dir() that proc rounds to the NEARESTT dir
+ * and misresolves exact cardinal angles (0/90/180/270) to an adjacent diagonal, which a multiple of 45 avoids
+ */
+/obj/item/hardpoint/proc/interpolate_pivot(list/pivot_data, angle)
+	if(!pivot_data)
+		return null
+
+	angle = ((angle % 360) + 360) % 360
+	var/lower_anchor = FLOOR(angle, 45)
+	var/upper_anchor = (lower_anchor + 45) % 360
+
+	var/list/lower_pivot = LAZYACCESS(pivot_data, "[anchor_angle_to_dir(lower_anchor)]")
+	var/list/upper_pivot = LAZYACCESS(pivot_data, "[anchor_angle_to_dir(upper_anchor)]")
+
+	if(!lower_pivot)
+		return upper_pivot
+	if(!upper_pivot)
+		return lower_pivot
+
+	var/frac = (angle - lower_anchor) / 45
+	return list(
+		lower_pivot[1] + (upper_pivot[1] - lower_pivot[1]) * frac,
+		lower_pivot[2] + (upper_pivot[2] - lower_pivot[2]) * frac,
+	)
+
+/// Exact reverse of dir2angle() for one of the 8 cardinal/diagonal 45-degree-multiple angles - see interpolate_pivot()'s doc comment for why this can't just reuse the global angle_to_dir() nearest-neighbor helper.
+/obj/item/hardpoint/proc/anchor_angle_to_dir(angle)
+	switch(angle)
+		if(0)
+			return NORTH
+		if(45)
+			return NORTHEAST
+		if(90)
+			return EAST
+		if(135)
+			return SOUTHEAST
+		if(180)
+			return SOUTH
+		if(225)
+			return SOUTHWEST
+		if(270)
+			return WEST
+		if(315)
+			return NORTHWEST
+	return NORTH
+
+/**
+ * Redirects a target to preserve its range from origin_turf but along this hardpoint's actual
+ * current facing (current_angle) instead of the originally-aimed direction. Used by held-ttrigger
+ * fire modes (see try_fire()), which don't wait for the turret (or a self-gimballed weapon's own gimbal) to finish swinging onto target.
+ */
+/obj/item/hardpoint/proc/redirect_to_current_facing(turf/origin_turf, atom/target)
+	var/turf/target_turf = get_turf(target)
+	if(!origin_turf || !target_turf || origin_turf == target_turf)
+		return target
+
+	// Once the barrel has fully caught up to its own tracked aim point, there's no
+	// rotational lag left to simulate. fire directly at the target.
+	if(abs(angle_delta(desired_angle, current_angle)) <= FIRING_GATE_TOLERANCE)
+		return target
+
+	var/range = get_dist_euclidian(origin_turf, target_turf)
+	return get_angle_target_turf(origin_turf, current_angle, range)
 
 //-----------------------------
 //------ICON PROCS----------

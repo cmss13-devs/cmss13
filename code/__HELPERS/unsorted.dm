@@ -63,10 +63,13 @@
 // GLOBAL PROCS //
 
 /// Gives X position on pixel grid of an object, accounting for offsets
-/proc/get_pixel_position_x(atom/subject, relative = FALSE)
+/proc/get_pixel_position_x(atom/subject, relative = FALSE, include_size_adjustment = TRUE)
 	. = subject.pixel_x + subject.base_pixel_x
 	if(!relative)
 		. += world.icon_size * subject.x
+
+	if(!include_size_adjustment)
+		return
 
 	if(ismob(subject)) // Mobs use baked in icon_size due to eg. Xenos only using a visual size
 		var/mob/mob_subject = subject
@@ -77,10 +80,13 @@
 		. += (big_subject.bound_width  - world.icon_size) / 2
 
 /// Gives Y position on pixel grid of an object, accounting for offsets
-/proc/get_pixel_position_y(atom/subject, relative = FALSE)
+/proc/get_pixel_position_y(atom/subject, relative = FALSE, include_size_adjustment = TRUE)
 	. = subject.pixel_y + subject.base_pixel_y
 	if(!relative)
 		. += world.icon_size * subject.y
+
+	if(!include_size_adjustment)
+		return
 
 	if(ismob(subject)) // Mobs use baked in icon_size due to eg. Xenos only using a visual size
 		var/mob/mob_subject = subject
@@ -106,11 +112,41 @@
 	var/dx = get_pixel_position_x(end) - get_pixel_position_x(start)
 	return delta_to_angle(dx, dy)
 
+/**
+ * Same as Get_Angle(), but skips the automatic "sprite is bigger than a tile, so nudge the position
+ * by half the extra size" compensation baked into get_pixel_position_x/y()
+ *
+ * only used for actual tturret aiming/hit-resolution math (update_desired_angle(), track_and_charge()), not for purely
+ * cosmetic uses (LTB reticle placement, muzzle flashes, beams).
+ *
+ * That automatic guess assumes a sprite bigger than world.icon_size is centered on its tile, which
+ * is wrong for a mob like the Queen (icon_size 64) whose sprite is anchored at the feet and simply
+ * extends upward...
+*/
+/proc/Get_Angle_Grounded(atom/start, atom/end)
+	if(!start || !end)
+		return 0
+	if(!start.z)
+		start = get_turf(start)
+		if(!start)
+			return 0
+	if(!end.z)
+		end = get_turf(end)
+		if(!end)
+			return 0
+	var/dy = get_pixel_position_y(end, include_size_adjustment = FALSE) - get_pixel_position_y(start, include_size_adjustment = FALSE)
+	var/dx = get_pixel_position_x(end, include_size_adjustment = FALSE) - get_pixel_position_x(start, include_size_adjustment = FALSE)
+	return delta_to_angle(dx, dy)
+
 /// Calculate the angle produced by a pair of x and y deltas. Uses north-clockwise convention: NORTH = 0, EAST = 90, etc.
 /proc/delta_to_angle(dx, dy)
 	. = arctan(dy, dx) //y-then-x results in north-clockwise convention: https://en.wikipedia.org/wiki/Atan2#East-counterclockwise,_north-clockwise_and_south-clockwise_conventions,_etc.
 	if(. < 0)
 		. += 360
+
+/// Shortest signed angle difference from b to a, in the range -180..180. Positive means a is clockwise of b.
+/proc/angle_delta(a, b)
+	return ((a - b + 540) % 360) - 180
 
 /proc/angle_to_dir(angle)
 	angle = ((angle % 360) + 382.5) % 360

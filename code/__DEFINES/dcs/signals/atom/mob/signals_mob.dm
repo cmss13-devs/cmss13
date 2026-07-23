@@ -143,6 +143,7 @@
 #define COMSIG_MOB_MOUSEDOWN "mob_mousedown"					//from /client/MouseDown(): (atom/object, turf/location, control, params)
 #define COMSIG_MOB_MOUSEUP "mob_mouseup"						//from /client/MouseUp(): (atom/object, turf/location, control, params)
 #define COMSIG_MOB_MOUSEDRAG "mob_mousedrag"				//from /client/MouseDrag(): (atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)
+#define COMSIG_MOB_MOUSEMOVE "mob_mousemove"				//from /client/MouseMove(): (atom/object, turf/location, control, params)
 	#define COMSIG_MOB_CLICK_CANCELED (1<<0)
 	#define COMSIG_MOB_CLICK_HANDLED (1<<1)
 

@@ -53,7 +53,13 @@
 	// Determines how much slower the vehicle is when it lacks its full momentum
 	// When the vehicle has 0 momentum, it's movement delay will be move_delay * momentum_build_factor
 	// The movement delay gradually reduces up to move_delay when momentum increases
+	//// This is mostly vestigial and it looks like it cancels itself out when calculating movement delay??? -bwsb
 	var/move_momentum_build_factor = 1.3
+	// How fast momentum decays when you stop moving.
+	var/move_momentum_loss_factor = 1
+	// How long do you have to go without moving for momentum decay to start
+	// Slower moving vehicles like the tank require more time, or else they won't get past minimum speed.
+	var/idle_time_required = 10 // 10 seconds. Tested to be OK on APC and Van.
 
 	//Sound to play when moving
 	var/movement_sound
@@ -89,6 +95,7 @@
 	// Map file name of the vehicle interior
 	var/interior_map = null
 	var/datum/interior/interior = null
+	var/obj/structure/vehicle_intercom/intercom = null
 
 	//common passenger slots
 	var/passengers_slots = 2
@@ -174,12 +181,23 @@
 	///Minimap iconstate to use for this vehicle
 	var/minimap_icon_state
 
+	// Structures that we should collide with, but that aren't being collided with when we call T.Enter in multitile_movement
+	// associative list should guarantee an O(1) lookup in case this needs to be expanded.
+	var/static/list/blocking_structures = list(
+	/obj/structure/shuttle/part = TRUE,
+	/obj/structure/mineral_door/resin = TRUE,
+	)
+
+	var/momentum_decay_active = FALSE  // Track if momentum decay loop is running
+	var/last_input_time = 0  // Track when last movement input was received
+
 /obj/vehicle/multitile/Initialize()
 	. = ..()
 
 	var/angle_to_turn = turning_angle(SOUTH, dir)
 	rotate_entrances(angle_to_turn)
 	rotate_bounds(angle_to_turn)
+	update_langchat_height()
 
 	if(bound_width > world.icon_size || bound_height > world.icon_size)
 		lighting_holder = new(src)
@@ -224,6 +242,24 @@
 	GLOB.all_multi_vehicles -= src
 
 	return ..()
+
+// No-op unless an intercom landmark spawned one into this vehicle's interior.
+/obj/vehicle/multitile/hear_talk(mob/living/speaker, msg, verb = "says", datum/language/speaking, italics = 0)
+	if(intercom)
+		intercom.relay_exterior_speech(speaker, msg, verb, speaking, italics)
+		if(!intercom.speaker_muted)
+			for(var/seat_key in seats)
+				var/mob/seated = seats[seat_key]
+				if(seated?.client?.prefs && !seated.client.prefs.lang_chat_disabled && !seated.ear_deaf && seated.say_understands(speaker, speaking))
+					speaker.langchat_display_image(seated)
+	..()
+
+// offsets langchat height to show, properly, above and around the middle of the vehicle.
+/obj/vehicle/multitile/proc/update_langchat_height()
+	langchat_height = bound_height - bound_y - 8
+
+/obj/vehicle/multitile/get_maxptext_x_offset(image/maptext_image)
+	return ..() - bound_x - 16
 
 /obj/vehicle/multitile/proc/initialize_cameras()
 	return
@@ -467,6 +503,12 @@
 	SIGNAL_HANDLER
 
 	forceMove(get_turf(mover))
+
+/obj/vehicle/multitile/proc/is_blocking_structure(atom/A)
+	for(var/blocked_type in blocking_structures)
+		if(ispath(A.type, blocked_type))
+			return TRUE
+	return FALSE
 
 ///Updates the vehicles minimap icon
 /obj/vehicle/multitile/proc/update_minimap_icon(modules_broken)

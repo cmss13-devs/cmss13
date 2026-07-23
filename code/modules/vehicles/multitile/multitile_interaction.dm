@@ -373,9 +373,10 @@
 	RegisterSignal(user, COMSIG_MOB_MOUSEDOWN, PROC_REF(crew_mousedown))
 	RegisterSignal(user, COMSIG_MOB_MOUSEDRAG, PROC_REF(crew_mousedrag))
 	RegisterSignal(user, COMSIG_MOB_MOUSEUP, PROC_REF(crew_mouseup))
+	RegisterSignal(user, COMSIG_MOB_MOUSEMOVE, PROC_REF(crew_mousemove))
 
 /obj/vehicle/multitile/on_unset_interaction(mob/user)
-	UnregisterSignal(user, list(COMSIG_MOB_MOUSEUP, COMSIG_MOB_MOUSEDOWN, COMSIG_MOB_MOUSEDRAG))
+	UnregisterSignal(user, list(COMSIG_MOB_MOUSEUP, COMSIG_MOB_MOUSEDOWN, COMSIG_MOB_MOUSEDRAG, COMSIG_MOB_MOUSEMOVE))
 
 	var/obj/item/hardpoint/hardpoint = get_mob_hp(user)
 	if(hardpoint)
@@ -398,6 +399,43 @@
 		return
 
 	hardpoint.change_target(source, src_object, over_object, src_location, over_location, src_control, over_control, params)
+
+	// BYOND doesn't send MouseMove while a button is held - MouseDrag takes over. Feed it into
+	// the same tracking patths so aiming doesn't freeze while the crew is firing/holding M1
+	track_gunner_mouse(source, over_object, params)
+	track_driver_mouse(source, over_object, params)
+
+/// Relays live cursor position to the gunner's turret / driver's slaved secondary, if any, so they can track the mouse.
+/obj/vehicle/multitile/proc/crew_mousemove(datum/source, atom/object, turf/location, control, params)
+	SIGNAL_HANDLER
+	track_gunner_mouse(source, object, params)
+	track_driver_mouse(source, object, params)
+
+/// Updates the gunner's turret (if any) to aim toward the given screen position.
+/obj/vehicle/multitile/proc/track_gunner_mouse(mob/source, atom/object, params)
+	if(get_mob_seat(source) != VEHICLE_GUNNER)
+		return
+
+	var/obj/item/hardpoint/holder/tank_turret/turret = locate() in hardpoints
+	if(!turret)
+		return
+
+	turret.update_desired_angle(object, source, params)
+
+/// Updates the driver's slaved secondary (if any) to aim toward the given screen position.
+/obj/vehicle/multitile/proc/track_driver_mouse(mob/source, atom/object, params)
+	if(get_mob_seat(source) != VEHICLE_DRIVER)
+		return
+
+	var/obj/item/hardpoint/holder/tank_turret/turret = locate() in hardpoints
+	if(!turret)
+		return
+
+	for(var/obj/item/hardpoint/secondary/secondary_weapon in turret.hardpoints)
+		if(!secondary_weapon.self_gimballed)
+			continue
+		secondary_weapon.update_desired_angle(object, source, params)
+		return
 
 /// Checks for special control keybinds, else relays crew mouse press to active hardpoint.
 /obj/vehicle/multitile/proc/crew_mousedown(datum/source, atom/object, turf/location, control, params)

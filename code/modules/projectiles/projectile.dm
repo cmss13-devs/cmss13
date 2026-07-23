@@ -91,6 +91,9 @@
 	var/damage_boosted = 0
 	var/last_damage_mult = 1
 
+	/// Tracks if the projectile is inside obj/vehicle/multitile/tank
+	var/obj/vehicle/multitile/tank/inside_tank = null
+
 /obj/projectile/Initialize(mapload, datum/cause_data/cause_data)
 	. = ..()
 	path = list()
@@ -358,6 +361,11 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	PRIVATE_PROC(TRUE)
 	var/turf/current_turf = get_turf(src)
+
+	// Lets homing-style components continuously re-aim toward their live ttarget
+	// keeps the shot actually curving to follow a moving target over the whole flight.
+	SEND_SIGNAL(src, COMSIG_BULLET_STEP)
+
 	var/turf/next_turf = popleft(path)
 
 	// Terminal projectiles (about to hit) are handled firer for retarget logic
@@ -408,6 +416,7 @@
 	path.Cut(1, 2) // remove the turf we're already on
 	var/atom/source = keep_angle ? original : current_turf
 	update_angle(source, new_target)
+	target_turf = get_turf(new_target)
 
 /obj/projectile/proc/scan_a_turf(turf/turf, proj_dir)
 	. = TRUE // Sleep safeguard: stop the bullet
@@ -418,6 +427,26 @@
 	// Not a turf, keep moving
 	if(!istype(turf))
 		return FALSE
+
+	// Checkc if we're inside a tank and trying to exit
+	if(inside_tank)
+		var/tank_found = FALSE
+		for(var/obj/obj in turf)
+			var/obj/vehicle/multitile/tank/M = _owning_tank_of(obj)
+			if(M == inside_tank || obj == inside_tank)
+				tank_found = TRUE
+				break
+
+		// hits the tank if there are no tank parts inside the turf
+		if(!tank_found)
+			// unless it was shot by a mob atop the tank.
+			if(isliving(firer))
+				var/mob/living/M = firer
+				if(M.is_on_tank_hull())
+					return FALSE
+			ammo.on_hit_obj(inside_tank, src)
+			inside_tank.bullet_act(src)
+			return TRUE
 
 	if(turf.density) // Handle wall hit
 		if(turf in permutated)
@@ -477,6 +506,21 @@
 	if(obj in permutated)
 		return FALSE
 	permutated |= obj
+
+	var/obj/vehicle/multitile/tank/M = _owning_tank_of(obj)
+	if(!M)
+		if(istype(obj, /obj/vehicle/multitile/tank))
+			M = obj
+
+	// this block allows projectiles fired from outside the tank to travel inside it.
+	if(M)
+		if(!inside_tank)
+			inside_tank = M
+			return FALSE
+		else if(inside_tank == M)
+			return FALSE
+		else // if inside_tank exists but is not M, it means we're firing on another tank, so, we return true.
+			return TRUE
 
 	var/hit_chance = obj.get_projectile_hit_boolean(src)
 	if(hit_chance) // Calculated from combination of both ammo accuracy and gun accuracy
@@ -1348,6 +1392,12 @@
 	if(dy == 0) //above or below you
 		if(dx == -1 || dx == 1)
 			return TRUE
+
+// helper proc to see if we are about to hit a tank
+/obj/projectile/proc/_owning_tank_of(atom/A)
+	if(istype(A, /obj/vehicle/multitile/tank))
+		return A
+	return null
 
 /obj/projectile/vulture
 	accuracy_range_falloff = 10

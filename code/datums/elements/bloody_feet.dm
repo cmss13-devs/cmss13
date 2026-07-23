@@ -11,6 +11,7 @@
 	/// Whether the human has moved into the turf giving them bloody feet
 	/// Necessary because of how Crossed is called before Moved
 	var/list/entered_bloody_turf
+	var/dry_timer_id
 
 /datum/element/bloody_feet/Attach(datum/target, dry_time, obj/item/clothing/shoes, steps, bcolor)
 	. = ..()
@@ -32,9 +33,11 @@
 		RegisterSignal(shoes, COMSIG_ITEM_DROPPED, PROC_REF(on_shoes_removed), override = TRUE)
 
 	if(dry_time)
-		addtimer(CALLBACK(src, PROC_REF(clear_blood), target), dry_time)
+		dry_timer_id = addtimer(CALLBACK(src, PROC_REF(clear_blood), target), dry_time, TIMER_STOPPABLE)
 
 /datum/element/bloody_feet/Detach(datum/target, force)
+	deltimer(dry_timer_id)
+	dry_timer_id = null
 	UnregisterSignal(target, list(
 		COMSIG_MOVABLE_MOVED,
 		COMSIG_HUMAN_BLOOD_CROSSED,

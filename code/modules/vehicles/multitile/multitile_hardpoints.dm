@@ -29,7 +29,7 @@
 			var/obj/item/hardpoint/holder/HP = H
 			if(HP.hardpoints)
 				hps += HP.get_hardpoints_with_ammo(seat)
-		if(!H.ammo || seat && seat != H.allowed_seat)
+		if(!H.ammo_type || seat && seat != H.allowed_seat)
 			continue
 		hps += H
 	return hps

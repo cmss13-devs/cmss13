@@ -29,6 +29,8 @@
 #define COMSIG_BULLET_PRE_HANDLE_TURF "bullet_pre_handle_turf"
 	#define COMPONENT_BULLET_PASS_THROUGH (1<<0)
 #define COMSIG_BULLET_TERMINAL "bullet_terminal"
+/// From /obj/projectile/fly(), every tick of flight (unlike COMSIG_BULLET_TERMINAL, which only fires once, right before impact): ()
+#define COMSIG_BULLET_STEP "bullet_step"
 
 /// Called when a bullet hits a living mob on a sprite click (original target is final target)
 #define COMSIG_BULLET_DIRECT_HIT "bullet_direct_hit"

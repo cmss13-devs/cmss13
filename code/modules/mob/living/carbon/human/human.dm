@@ -2053,9 +2053,9 @@
 
 	if(HAS_TRAIT(src, TRAIT_LOWERED_GUARD))
 		REMOVE_TRAIT(src, TRAIT_LOWERED_GUARD, TRAIT_SOURCE_INHERENT)
-		to_chat(usr, SPAN_WARNING("You will no longer block with melee weapons!"))
+		to_chat(usr, SPAN_WARNING("You will now block with melee weapons when able!"))
 		return
 
 	ADD_TRAIT(src, TRAIT_LOWERED_GUARD, TRAIT_SOURCE_INHERENT)
-	to_chat(usr, SPAN_WARNING("You will now block with melee weapons when able!"))
+	to_chat(usr, SPAN_WARNING("You will no longer block with melee weapons!"))
 	return

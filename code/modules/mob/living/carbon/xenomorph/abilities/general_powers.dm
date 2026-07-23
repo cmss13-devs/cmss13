@@ -723,8 +723,8 @@
 			to_chat(xeno, SPAN_XENOWARNING("We cannot make a hole on a light!"))
 			return FALSE
 
-		if(locate(/obj/structure/flora/jungle/vines) in src)
-			to_chat(xeno, SPAN_XENOWARNING("We cannot make a hole under the vines!"))
+		if(locate(/obj/structure/flora/jungle) in src)
+			to_chat(xeno, SPAN_XENOWARNING("We cannot make a hole under the flora here!"))
 			return FALSE
 
 	if(!xeno.check_alien_construction(src, check_doors = TRUE))

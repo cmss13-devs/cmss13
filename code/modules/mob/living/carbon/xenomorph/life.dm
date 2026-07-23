@@ -510,7 +510,7 @@ Make sure their actual health updates immediately.*/
 	if(stat != DEAD && !gibbing)
 		var/warding_health = health_threshold_dead != 0 ? warding_aura * 20 : 0
 		if(health <= health_threshold_dead - warding_health) //dead
-			if(prob(gib_chance + 0.5*(health_threshold_dead - health)))
+			if(!HAS_TRAIT(src, TRAIT_ABILITY_POUNCE) || prob(gib_chance + 0.5*(health_threshold_dead - health)))
 				async_gib(last_damage_data)
 			else
 				death(last_damage_data)

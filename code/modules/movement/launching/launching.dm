@@ -131,6 +131,9 @@
 
 // Proc for throwing items (should only really be used for throw)
 /atom/movable/proc/throw_atom(atom/target, range, speed = 0, atom/thrower, spin, launch_type = NORMAL_LAUNCH, pass_flags = NO_FLAGS, list/end_throw_callbacks, list/collision_callbacks, tracking = FALSE)
+	if(QDELETED(src))
+		return // Why throw something deleting?
+
 	var/temp_pass_flags = pass_flags
 	switch (launch_type)
 		if (NORMAL_LAUNCH)

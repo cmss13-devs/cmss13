@@ -79,20 +79,31 @@
 /datum/automata_cell/explosion/death()
 	if(shockwave)
 		qdel(shockwave)
+	exploded_atoms.Cut()
 
-// Compare directions. If the other explosion is traveling in the same direction,
-// the explosion is amplified. If not, it's weakened
-/datum/automata_cell/explosion/merge(datum/automata_cell/explosion/E)
+/datum/automata_cell/explosion/propagate(dir)
+	var/datum/automata_cell/explosion/new_cell = ..()
+	new_cell?.exploded_atoms += exploded_atoms
+	return new_cell
+
+// Attempts to merge explosions. Will compare directions to determine effects on power.
+// If the other explosion is traveling in the same direction, the explosion is amplified.
+// If not, it's weakened
+// Returns TRUE if this explosion survived.
+/datum/automata_cell/explosion/merge(datum/automata_cell/explosion/other)
+	if(QDELETED(other))
+		return TRUE
+
 	// Non-merging explosions take priority
-	if(!should_merge)
+	if(!should_merge || !other.should_merge)
 		return TRUE
 
 	// The strongest of the two explosions should survive the merge
 	// This prevents a weaker explosion merging with a strong one,
 	// the strong one removing all the weaker one's power and just killing the explosion
-	var/is_stronger = (power >= E.power)
-	var/datum/automata_cell/explosion/survivor = is_stronger ? src : E
-	var/datum/automata_cell/explosion/dying = is_stronger ? E : src
+	var/is_stronger = (power >= other.power)
+	var/datum/automata_cell/explosion/survivor = is_stronger ? src : other
+	var/datum/automata_cell/explosion/dying = is_stronger ? other : src
 
 	// Two epicenters merging, or a new epicenter merging with a traveling wave
 	if((!survivor.direction && !dying.direction) || (survivor.direction && !dying.direction))
@@ -109,10 +120,13 @@
 	// Two waves traveling the same direction amplifies the explosion
 	if(survivor.direction == dying.direction)
 		survivor.power += dying.power
+		survivor.exploded_atoms |= dying.exploded_atoms
 
 	// Two waves travling towards each other weakens the explosion
 	if(survivor.direction == GLOB.reverse_dir[dying.direction])
 		survivor.power -= dying.power
+
+	qdel(dying)
 
 	return is_stronger
 
@@ -145,19 +159,19 @@
 		return
 	// The resistance here will affect the damage taken and the falloff in the propagated explosion
 	var/resistance = max(0, in_turf.get_explosion_resistance(direction))
-	for(var/atom/A in in_turf)
-		resistance += max(0, A.get_explosion_resistance())
+	for(var/atom/thing in in_turf)
+		resistance += max(0, thing.get_explosion_resistance())
 
 	// Blow stuff up
 	INVOKE_ASYNC(in_turf, TYPE_PROC_REF(/atom, ex_act), power, direction, explosion_cause_data, 0, enviro)
-	for(var/atom/A in in_turf)
-		if(A in exploded_atoms)
+	for(var/atom/thing in in_turf)
+		if(thing.gc_destroyed)
 			continue
-		if(A.gc_destroyed)
+		if(thing in exploded_atoms)
 			continue
-		INVOKE_ASYNC(A, TYPE_PROC_REF(/atom, ex_act), power, direction, explosion_cause_data, 0, enviro)
-		exploded_atoms += A
-		log_explosion(A, src)
+		exploded_atoms += thing
+		INVOKE_ASYNC(thing, TYPE_PROC_REF(/atom, ex_act), power, direction, explosion_cause_data, 0, enviro)
+		log_explosion(thing, src)
 
 	var/reflected = FALSE
 
@@ -237,20 +251,20 @@ When the cell processes, we simply don't blow up atoms that were tracked
 as having entered the turf.
 */
 
-/datum/automata_cell/explosion/proc/on_turf_entered(atom/movable/A)
+/datum/automata_cell/explosion/proc/on_turf_entered(atom/movable/thing)
 	// Once is enough
-	if(A in exploded_atoms)
+	if(thing.gc_destroyed)
+		return
+	if(thing in exploded_atoms)
 		return
 
-	exploded_atoms += A
+	exploded_atoms += thing
 
 	// Note that we don't want to make it a directed ex_act because
 	// it could toss them back and make them get hit by the explosion again
-	if(A.gc_destroyed)
-		return
-
-	INVOKE_ASYNC(A, TYPE_PROC_REF(/atom, ex_act), power, null, explosion_cause_data, 0, enviro)
-	log_explosion(A, src)
+	// so we indicate this with a direction < 0
+	INVOKE_ASYNC(thing, TYPE_PROC_REF(/atom, ex_act), power, -1, explosion_cause_data, 0, enviro)
+	log_explosion(thing, src)
 
 // I'll admit most of the code from here on out is basically just copypasta from DOREC
 

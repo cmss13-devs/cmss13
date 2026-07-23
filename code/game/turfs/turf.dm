@@ -247,8 +247,8 @@
 	return
 
 // Handles whether an atom is able to enter the src turf
-/turf/Enter(atom/movable/mover, atom/forget)
-	if (!mover || !isturf(mover.loc))
+/turf/Enter(atom/movable/mover, atom/old_loc)
+	if(QDELETED(mover) || !isturf(mover.loc))
 		return FALSE
 
 	var/override = SEND_SIGNAL(mover, COMSIG_MOVABLE_TURF_ENTER, src)
@@ -278,7 +278,7 @@
 		mover.Collide(T)
 		return FALSE
 	for (obstacle in T) //First, check objects to block exit
-		if (mover == obstacle || forget == obstacle)
+		if (mover == obstacle || old_loc == obstacle)
 			continue
 		A = obstacle
 		if (!istype(A) || !A.can_block_movement)
@@ -299,7 +299,7 @@
 					mover.Collide(T)
 					return FALSE
 			for(obstacle in T)
-				if(forget == obstacle)
+				if(old_loc == obstacle)
 					continue
 				A = obstacle
 				if (!istype(A) || !A.can_block_movement)
@@ -319,7 +319,7 @@
 					mover.Collide(T)
 					return FALSE
 			for(obstacle in T)
-				if(forget == obstacle)
+				if(old_loc == obstacle)
 					continue
 				A = obstacle
 				if (!istype(A) || !A.can_block_movement)
@@ -337,7 +337,7 @@
 		mover.Collide(src)
 		return FALSE
 	for(obstacle in src) //Then, check atoms in the target turf
-		if(forget == obstacle)
+		if(old_loc == obstacle)
 			continue
 		A = obstacle
 		if (!istype(A) || !A.can_block_movement)
@@ -358,16 +358,17 @@
 
 	return TRUE //Nothing found to block so return success!
 
-/turf/Entered(atom/movable/A)
-	if(!istype(A))
+/turf/Entered(atom/movable/entered_movable, atom/old_loc)
+	if(QDELETED(entered_movable))
 		return
 
-	SEND_SIGNAL(src, COMSIG_TURF_ENTERED, A)
-	SEND_SIGNAL(A, COMSIG_MOVABLE_TURF_ENTERED, src)
+	SEND_SIGNAL(src, COMSIG_TURF_ENTERED, entered_movable)
+	SEND_SIGNAL(entered_movable, COMSIG_MOVABLE_TURF_ENTERED, src)
 
 	// Let explosions know that the atom entered
-	for(var/datum/automata_cell/explosion/E in autocells)
-		E.on_turf_entered(A)
+	if(old_loc != src)
+		for(var/datum/automata_cell/explosion/cell in autocells)
+			cell.on_turf_entered(entered_movable)
 
 /turf/proc/is_plating()
 	return 0
@@ -500,17 +501,30 @@
 	changing_turf = TRUE
 	qdel(src) //Just get the side effects and call Destroy
 	// Get signal registrations post-Destroy so stuff that's unregistered on Destroy won't be readded
-	var/list/old_comp_lookup = comp_lookup?.Copy()
-	var/list/old_signal_procs = signal_procs?.Copy()
+	var/list/old_comp_lookup = comp_lookup
+	var/list/old_signal_procs = signal_procs
 	var/turf/W = new path(src)
 
 	// WARNING WARNING
 	// Turfs DO NOT lose their signals when they get replaced, REMEMBER THIS
 	// It's possible because turfs are fucked, and if you have one in a list and it's replaced with another one, the list ref points to the new turf
+	// Enjoy some dumb code to copy signals that you hope didn't change from then to the new turf being New'd
 	if(old_comp_lookup)
-		LAZYOR(W.comp_lookup, old_comp_lookup)
+		for(var/key in old_comp_lookup)
+			var/old_lookup = old_comp_lookup[key]
+			var/list/old_items = islist(old_lookup) ? old_lookup : list(old_lookup)
+			var/new_lookup = LAZYACCESS(W.comp_lookup, key)
+			var/list/new_items = islist(new_lookup) ? new_lookup : !isnull(new_lookup) ? list(new_lookup) : list()
+			var/list/combined_list = old_items + new_items
+			LAZYSET(W.comp_lookup, key, length(combined_list) == 1 ? combined_list[1] : combined_list)
 	if(old_signal_procs)
-		LAZYOR(W.signal_procs, old_signal_procs)
+		for(var/key in old_signal_procs)
+			var/old_lookup = old_signal_procs[key]
+			var/list/old_items = islist(old_lookup) ? old_lookup : list()
+			var/new_lookup = LAZYACCESS(W.signal_procs, key)
+			var/list/new_items = islist(new_lookup) ? new_lookup : list()
+			var/list/combined_list = old_items + new_items
+			LAZYSET(W.signal_procs, key, combined_list)
 
 	W.weak_reference = old_ref
 

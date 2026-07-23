@@ -93,6 +93,7 @@
 	RegisterSignal(parent_mob, COMSIG_LIVING_PREIGNITION, PROC_REF(on_preignition))
 	RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(on_forsaken))
 	if(parent_turf)
+		message_admins("[\ref(src)] at [COORD(parent_mob)] RegisterWithParent: Registered [parent_turf] [\ref(parent_turf)] at [COORD(parent_turf)]")
 		RegisterSignal(parent_turf, COMSIG_WEEDNODE_GROWTH, PROC_REF(on_update))
 
 /datum/component/weed_food/UnregisterFromParent()
@@ -108,6 +109,7 @@
 	if(absorbing_weeds)
 		UnregisterSignal(absorbing_weeds, COMSIG_PARENT_QDELETING)
 	if(parent_turf)
+		message_admins("[\ref(src)] at [COORD(parent_mob)] UnregisterFromParent: Unregistered [parent_turf] [\ref(parent_turf)] at [COORD(parent_turf)]")
 		UnregisterSignal(parent_turf, COMSIG_WEEDNODE_GROWTH)
 	if(parent_buckle)
 		UnregisterSignal(parent_buckle, COMSIG_OBJ_AFTER_BUCKLE)
@@ -124,11 +126,13 @@
 		absorbing_weeds = null
 
 	if(parent_turf)
+		message_admins("[\ref(src)] at [COORD(parent_mob)] on_move: Unregistered [parent_turf] [\ref(parent_turf)] at [COORD(parent_turf)]")
 		UnregisterSignal(parent_turf, COMSIG_WEEDNODE_GROWTH)
 	parent_turf = get_turf(parent_mob)
 	if(parent_turf != parent_mob.loc)
 		parent_turf = null // if our location is actually a container, we want to be safe from weeds
 	else
+		message_admins("[\ref(src)] at [COORD(parent_mob)] on_move: Registered [parent_turf] [\ref(parent_turf)] at [COORD(parent_turf)]")
 		RegisterSignal(parent_turf, COMSIG_WEEDNODE_GROWTH, PROC_REF(on_update))
 
 	// We moved, restart or start the proccess

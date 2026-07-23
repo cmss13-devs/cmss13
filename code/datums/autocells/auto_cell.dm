@@ -21,20 +21,19 @@
 	// This affects what neighbors you'll get passed in update_state()
 	var/neighbor_type = NEIGHBORS_CARDINAL
 
-/datum/automata_cell/New(turf/T)
+/datum/automata_cell/New(turf/location)
 	..()
 
-	if(!istype(T))
+	if(!isturf(location))
 		qdel(src)
 		return
 
-	// Attempt to merge the two cells if they end up in the same turf
-	var/datum/automata_cell/C = T.get_cell(type)
-	if(C && merge(C))
-		qdel(src)
-		return
+	// Attempt to merge two cells if they end up in the same turf
+	var/datum/automata_cell/existing_cell = location.get_cell(type)
+	if(!merge(existing_cell))
+		return // We didn't survive
 
-	in_turf = T
+	in_turf = location
 	LAZYADD(in_turf.autocells, src)
 
 	GLOB.cellauto_cells += src
@@ -44,9 +43,8 @@
 /datum/automata_cell/Destroy()
 	. = ..()
 
-	if(!QDELETED(in_turf))
-		LAZYREMOVE(in_turf.autocells, src)
-		in_turf = null
+	LAZYREMOVE(in_turf?.autocells, src)
+	in_turf = null
 
 	GLOB.cellauto_cells -= src
 
@@ -65,17 +63,15 @@
 	if(QDELETED(new_turf))
 		return
 
-	if(!QDELETED(in_turf))
-		LAZYREMOVE(in_turf.autocells, src)
-		in_turf = null
+	LAZYREMOVE(in_turf?.autocells, src)
 
 	in_turf = new_turf
 	LAZYADD(in_turf.autocells, src)
 
-// Use this proc to merge this cell with another one if the other cell enters the same turf
-// Return TRUE if this cell should survive the merge (the other one will die/be qdeleted)
-// Return FALSE if this cell should die and be replaced by the other cell
-/datum/automata_cell/proc/merge(datum/automata_cell/other_cell)
+/// Use this proc to merge this cell with another one if the other cell enters the same turf
+/// Returns TRUE if this cell should survive the merge (the other one will die/be qdeleted)
+/// Returns FALSE if this cell died and is replaced by the other cell
+/datum/automata_cell/proc/merge(datum/automata_cell/other)
 	return TRUE
 
 // Returns a list of neighboring cells

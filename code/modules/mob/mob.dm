@@ -471,11 +471,11 @@
 /mob/proc/start_pulling(atom/movable/AM, lunge, no_msg)
 	return
 
-/mob/living/start_pulling(atom/movable/clone/AM, lunge, no_msg)
+/mob/living/start_pulling(atom/movable/clone/AM, lunge, no_msg, simple_mob = FALSE)
 	if(istype(AM, /atom/movable/clone))
 		AM = AM.mstr //If AM is a clone, refer to the real target
 
-	if ( QDELETED(AM) || !usr || src==AM || !isturf(loc) || !isturf(AM.loc) ) //if there's no person pulling OR the person is pulling themself OR the object being pulled is inside something: abort!
+	if ( QDELETED(AM) || (!usr && !simple_mob) || src==AM || !isturf(loc) || !isturf(AM.loc) ) //if there's no person pulling OR the person is pulling themself OR the object being pulled is inside something: abort!
 		return
 
 	if (AM.anchored || AM.throwing)

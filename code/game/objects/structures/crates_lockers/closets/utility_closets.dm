@@ -112,6 +112,17 @@
 		icon_state = icon_opened
 
 
+/obj/structure/closet/firecloset/upp_full/Initialize()
+	. = ..()
+	contents = list()
+
+	new /obj/item/clothing/suit/storage/marine/light/vest/fire_light/upp(src)
+	new /obj/item/clothing/mask/gas/upp_pfb(src)
+	new /obj/item/reagent_container/glass/canister/oxygen(src)
+	new /obj/item/tool/extinguisher(src)
+	new /obj/item/clothing/head/helmet/marine/veteran/UPP/firefighter(src)
+	new /obj/item/storage/box/m94(src)
+
 /*
  * Tool Closet
  */

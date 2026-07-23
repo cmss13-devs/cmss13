@@ -819,6 +819,9 @@
 	if(istype(M))
 		M.apply_damage(55,TOX)
 
+/turf/open/gm/river/no_slowdown
+	base_river_slowdown = 1
+
 /turf/open/gm/river/darkred_pool
 	color = "#990000"
 	name = "pool"

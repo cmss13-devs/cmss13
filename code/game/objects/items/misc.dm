@@ -303,3 +303,19 @@
 /obj/item/clock/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_NOTICE("The [name] reads: [GLOB.current_date_string] - [worldtime2text()]")
+
+/obj/item/lifesaver
+	name = "lifesaver"
+	desc = "A buoyant flotation device designed to keep those in water afloat."
+	icon = 'icons/obj/items/misc.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/toys_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/toys_righthand.dmi',
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/misc.dmi'
+	)
+	icon_state = "lifesaver"
+	throwforce = 0
+	throw_speed = SPEED_VERY_FAST
+	throw_range = 20
+	force = 0
+	flags_equip_slot = SLOT_WAIST

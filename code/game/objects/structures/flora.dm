@@ -244,6 +244,8 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 	icon = 'icons/obj/structures/props/natural/vegetation/ausflora.dmi'
 	density = FALSE
 	fire_flag = FLORA_BURN_NO_SPREAD
+	layer = UNDERFLOOR_OBJ_LAYER
+	plane = FLOOR_PLANE
 /*
 
 ICE GRASS
@@ -408,6 +410,8 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	unslashable = TRUE
 	unacidable = TRUE
 	cut_level = PLANT_CUT_MACHETE
+	layer = OBJ_LAYER
+	plane = GAME_PLANE
 	var/overlay_type = "tallgrass_overlay"
 
 /obj/structure/flora/grass/tallgrass/Initialize()
@@ -452,6 +456,17 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	desc = "A thick carpet of bristling junglegrass, vibrant and untamed."
 
 /obj/structure/flora/grass/tallgrass/jungle_alt/corner
+	icon_state = "tallgrass_corner"
+	overlay_type = "tallgrass_overlay_corner"
+	center = FALSE
+
+// SEKHMET SWAMP
+/obj/structure/flora/grass/tallgrass/swamp
+	color = "#a8a800"
+	icon_state = "tallgrass"
+	desc = "A thick carpet of bristling junglegrass, vibrant and untamed."
+
+/obj/structure/flora/grass/tallgrass/swamp/corner
 	icon_state = "tallgrass_corner"
 	overlay_type = "tallgrass_overlay_corner"
 	center = FALSE
@@ -542,7 +557,8 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 /obj/structure/flora/bush/ausbushes/reedbush
 	icon_state = "reedbush_1"
 	icon_tag = "reedbush"
-	layer = BELOW_MOB_LAYER
+	plane = FLOOR_PLANE
+	layer = TURF_LAYER
 
 /obj/structure/flora/bush/ausbushes/palebush
 	icon_state = "palebush_1"
@@ -563,12 +579,14 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 /obj/structure/flora/bush/ausbushes/lavendergrass
 	icon_state = "lavendergrass_1"
 	icon_tag = "lavendergrass"
-	layer = BELOW_MOB_LAYER
+	plane = FLOOR_PLANE
+	layer = TURF_LAYER
 
 /obj/structure/flora/bush/ausbushes/ywflowers
 	icon_state = "ywflowers_1"
 	icon_tag = "ywflowers"
-	layer = BELOW_MOB_LAYER
+	plane = FLOOR_PLANE
+	layer = TURF_LAYER
 
 /*
 
@@ -585,7 +603,8 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 /obj/structure/flora/bush/ausbushes/var3/leafybush
 	icon_state = "leafybush_1"
 	icon_tag = "leafybush"
-	layer = BELOW_MOB_LAYER
+	plane = FLOOR_PLANE
+	layer = TURF_LAYER
 
 /obj/structure/flora/bush/ausbushes/var3/stalkybush
 	icon_state = "stalkybush_1"
@@ -602,22 +621,26 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 /obj/structure/flora/bush/ausbushes/var3/brflowers
 	icon_state = "brflowers_1"
 	icon_tag = "brflowers"
-	layer = BELOW_MOB_LAYER
+	plane = FLOOR_PLANE
+	layer = TURF_LAYER
 
 /obj/structure/flora/bush/ausbushes/var3/ppflowers
 	icon_state = "ppflowers_1"
 	icon_tag = "ppflowers"
-	layer = BELOW_MOB_LAYER
+	plane = FLOOR_PLANE
+	layer = TURF_LAYER
 
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass
 	icon_state = "sparsegrass_1"
 	icon_tag = "sparsegrass"
-	layer = BELOW_MOB_LAYER
+	plane = FLOOR_PLANE
+	layer = TURF_LAYER
 
 /obj/structure/flora/bush/ausbushes/var3/fullgrass
 	icon_state =  "fullgrass_1"
 	icon_tag = "fullgrass"
-	layer = BELOW_MOB_LAYER
+	plane = FLOOR_PLANE
+	layer = TURF_LAYER
 
 /*
 
@@ -636,11 +659,14 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	name = "cactus"
 	desc = "It's a small, spiky cactus."
 	icon_state = "cactus_3"
-	layer = BELOW_MOB_LAYER
+	plane = FLOOR_PLANE
+	layer = TURF_LAYER
 
 /obj/structure/flora/bush/desert/cactus/multiple
 	name = "cacti"
 	icon_state = "cacti_1"
+	plane = FLOOR_PLANE
+	layer = TURF_LAYER
 
 /*
 
@@ -922,3 +948,116 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	update_health(xeno.melee_damage_upper)
 	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
+
+/obj/structure/prop/swamp_plants
+	name = "swamp plant"
+	desc = "you shouldn't be seeing this."
+	icon = 'icons/obj/structures/props/natural/vegetation/swamp_plants.dmi'
+	icon_state = "lillypads1"
+	layer = TURF_LAYER
+	plane = FLOOR_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/obj/structure/prop/swamp_plants/lily_pads
+	icon_state = "lillypads1"
+	layer = ABOVE_TURF_LAYER
+
+/obj/structure/prop/swamp_plants/lily_pads/lily_pads_1
+	icon_state = "lillypads1"
+
+/obj/structure/prop/swamp_plants/lily_pads/lily_pads_2
+	icon_state = "lillypads2"
+
+/obj/structure/prop/swamp_plants/lily_pads/lily_pads_3
+	icon_state = "lillypads3"
+
+/obj/structure/prop/swamp_plants/lily_pads/lily_pads_4
+	icon_state = "lillypads4"
+
+/obj/structure/prop/swamp_plants/lily_pads/lily_pads_5
+	icon_state = "lillypads5"
+
+/obj/structure/prop/swamp_plants/lily_pads/lily_pads_6
+	icon_state = "lillypads6"
+
+/obj/structure/prop/swamp_plants/lily_pads/lily_pads_7
+	icon_state = "lillypads7"
+
+/obj/structure/prop/swamp_plants/algae
+	icon_state = "algae1"
+	alpha = 215
+
+/obj/structure/prop/swamp_plants/algae/small
+	icon_state = "algae1"
+
+/obj/structure/prop/swamp_plants/algae/small/algae_1
+	icon_state = "algae2"
+
+/obj/structure/prop/swamp_plants/algae/small/algae_2
+	icon_state = "algae3"
+
+/obj/structure/prop/swamp_plants/algae/small/algae_3
+	icon_state = "algae4"
+
+/obj/structure/prop/swamp_plants/algae/small/algae_4
+	icon_state = "algae5"
+
+/obj/structure/prop/swamp_plants/algae/small/algae_5
+	icon_state = "algae6"
+
+/obj/structure/prop/swamp_plants/algae/full
+	icon_state = "algae_full"
+
+/obj/structure/prop/swamp_plants/algae/full/algae_full_1
+	icon_state = "algae_full_1"
+
+/obj/structure/prop/swamp_plants/algae/full/algae_full_2
+	icon_state = "algae_full_2"
+
+/obj/structure/prop/swamp_plants/algae/full/algae_full_3
+	icon_state = "algae_full_3"
+
+/obj/structure/prop/swamp_plants/algae/full/algae_full_4
+	icon_state = "algae_full_4"
+
+// Algae edges & corners
+
+/obj/structure/prop/swamp_plants/algae/straight
+	icon_state = "algae_edge"
+
+/obj/structure/prop/swamp_plants/algae/straight/south
+	dir = 1
+
+/obj/structure/prop/swamp_plants/algae/straight/west
+	dir = 4
+
+/obj/structure/prop/swamp_plants/algae/straight/east
+	dir = 8
+
+/obj/structure/prop/swamp_plants/algae/corner
+	icon_state = "algae_edge_2"
+
+/obj/structure/prop/swamp_plants/algae/corner/north_west
+
+/obj/structure/prop/swamp_plants/algae/corner/north_east
+	dir = 1
+
+/obj/structure/prop/swamp_plants/algae/corner/south_east
+	dir = 4
+
+/obj/structure/prop/swamp_plants/algae/corner/south_west
+	dir = 8
+
+/obj/structure/prop/swamp_plants/algae/corner2
+	icon_state = "algae_corner"
+
+/obj/structure/prop/swamp_plants/algae/corner2/north_west
+
+/obj/structure/prop/swamp_plants/algae/corner2/north_east
+	dir = 1
+
+/obj/structure/prop/swamp_plants/algae/corner2/south_west
+	dir = 4
+
+/obj/structure/prop/swamp_plants/algae/corner2/south_east
+	dir = 8

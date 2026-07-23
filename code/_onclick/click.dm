@@ -242,10 +242,14 @@
 			examine(user)
 		return TRUE
 
-	if (mods[ALT_CLICK])
-		var/turf/T = get_turf(src)
-		if(T && user.TurfAdjacent(T) && length(T.contents))
-			user.set_listed_turf(T)
+	if(mods[ALT_CLICK])
+
+		if(iscarbon(src))
+			return
+
+		var/turf/selected_tile = get_turf(src)
+		if(selected_tile && user.TurfAdjacent(selected_tile) && length(selected_tile.contents))
+			user.set_listed_turf(selected_tile)
 
 		return TRUE
 	return FALSE

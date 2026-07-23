@@ -446,24 +446,30 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 
 	return ..()
 
-/obj/item/stack/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/stack))
-		var/obj/item/stack/other_stack = W
+/obj/item/stack/attackby(obj/item/used_stack as obj, mob/user as mob)
+	if(istype(used_stack, /obj/item/stack))
+		var/obj/item/stack/other_stack = used_stack
 		if(other_stack.stack_id == stack_id) //same stack type
 			if(other_stack.amount >= max_amount)
-				to_chat(user, SPAN_WARNING("The stack is full!"))
+				to_chat(user, SPAN_WARNING("The [src.name] is full!"))
 				return TRUE
 			var/to_transfer = min(amount, other_stack.max_amount - other_stack.amount)
+
 			if(to_transfer <= 0)
 				return
+
 			to_chat(user, SPAN_INFO("You transfer [to_transfer] between the stacks."))
 			other_stack.add(to_transfer)
+
 			if(other_stack && user.interactee == other_stack)
 				INVOKE_ASYNC(other_stack, TYPE_PROC_REF(/obj/item/stack, interact), user)
+
 			use(to_transfer)
+
 			if(!QDELETED(src) && user.interactee == src)
 				INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/item/stack, interact), user)
 			user.next_move = world.time + 0.3 SECONDS
+
 			return TRUE
 
 	return ..()

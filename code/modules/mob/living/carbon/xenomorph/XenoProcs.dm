@@ -275,9 +275,6 @@
 	if(frenzy_aura)
 		. -= (frenzy_aura * 0.05)
 
-	if(agility)
-		. += caste.agility_speed_increase
-
 	var/obj/effect/alien/weeds/W = locate(/obj/effect/alien/weeds) in loc
 	if (W)
 		if (W.linked_hive.hivenumber == hivenumber)

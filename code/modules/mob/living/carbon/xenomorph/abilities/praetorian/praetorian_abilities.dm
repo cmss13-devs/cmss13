@@ -15,7 +15,6 @@
 	// Config
 	var/damage = 45
 	var/shield_regen_threshold = 2
-	var/should_spin_instead = FALSE
 
 /datum/action/xeno_action/activable/pounce/prae_dash
 	name = "Dash"

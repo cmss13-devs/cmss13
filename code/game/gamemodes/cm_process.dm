@@ -180,10 +180,6 @@ GLOBAL_VAR_INIT(next_admin_bioscan, 30 MINUTES)
 			select_lz(lz2)
 		return
 
-	if(lz1 || lz2)
-		select_lz(lz1 || lz2)
-		return
-
 	CRASH("No /obj/structure/machinery/computer/shuttle/dropship/flight/lz1 or lz2 found!")
 
 /datum/game_mode/proc/select_lz(obj/structure/machinery/computer/shuttle/dropship/flight/console)

@@ -449,7 +449,8 @@
 		.["is_disabled"] = TRUE
 	.["locked_down"] = FALSE
 	.["can_fly_by"] = !is_remote
-	.["can_set_automated"] = is_remote
+	if(SSticker.mode.active_lz == null) {.["can_set_automated"] = FALSE} //Disables auto mode if default LZ not set
+	else {	.["can_set_automated"] = is_remote }
 	.["automated_control"] = list(
 		"is_automated" = shuttle?.automated_hangar_id != null || shuttle?.automated_lz_id != null,
 		"hangar_lz" = shuttle?.automated_hangar_id,
@@ -531,6 +532,10 @@
 				if(!skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))
 					to_chat(user, SPAN_WARNING("You don't have the skill to perform a flyby."))
 					return FALSE
+				if(SSticker.mode.active_lz == null)
+					to_chat(user, SPAN_WARNING("A primary landing zone must be designated prior to launch."))
+					playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
+					return FALSE
 				update_equipment(is_optimised, TRUE)
 				to_chat(user, SPAN_NOTICE("You begin the launch sequence for a flyby."))
 				if(shuttle.faction == FACTION_MARINE)
@@ -563,6 +568,10 @@
 			if(dock_reserved)
 				to_chat(user, SPAN_WARNING("\The [dock] is currently in use."))
 				return TRUE
+			if(SSticker.mode.active_lz == null)
+				to_chat(user, SPAN_WARNING("A primary landing zone must be designated prior to launch."))
+				playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
+				return FALSE
 			SSshuttle.moveShuttle(shuttle.id, dock.id, TRUE)
 			to_chat(user, SPAN_NOTICE("You begin the launch sequence to [dock]."))
 			if(shuttle.faction == FACTION_MARINE)
@@ -612,6 +621,10 @@
 			shuttle.automated_lz_id = ground_lz
 			shuttle.automated_delay = delay
 			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
+			if(SSticker.mode.active_lz == null){
+				to_chat(user, SPAN_WARNING("A primary landing zone must be designated prior to launch."))
+				playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
+				return FALSE }
 			if(shuttle.faction == FACTION_MARINE)
 				log_ares_flight(user.name, "Enabled autopilot for Dropship [shuttle.name].")
 			var/log = "[key_name(user)] has enabled auto pilot on '[shuttle.name]'"

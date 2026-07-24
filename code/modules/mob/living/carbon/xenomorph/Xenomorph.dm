@@ -1149,7 +1149,7 @@
 	if(layer == XENO_HIDING_LAYER)
 		var/datum/action/xeno_action/onclick/xenohide/hide = get_action(src, /datum/action/xeno_action/onclick/xenohide)
 		if (hide)
-			INVOKE_ASYNC(hide.use_ability())
+			INVOKE_ASYNC(hide, TYPE_PROC_REF(/datum/action/xeno_action/onclick/xenohide, use_ability))
 			visible_message(SPAN_DANGER("[src] is forced out of hiding by the flames!"), SPAN_DANGER("You are forced out of hiding by the flames!"))
 
 	var/penetrating = fire_reagent?.fire_penetrating && !(fire_immunity & FIRE_IMMUNITY_IGNORE_PEN)

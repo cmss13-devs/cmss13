@@ -321,7 +321,9 @@
 
 	return TRUE
 
-/obj/structure/barricade/deconstruct(disassembled = TRUE)
+/obj/structure/barricade/deconstruct(disassembled = TRUE, debris = TRUE)
+	if(!debris)
+		return ..()
 	if(disassembled)
 		if(is_wired)
 			new /obj/item/stack/barbed_wire(loc)
@@ -394,7 +396,7 @@
 
 	update_health(damage)
 
-/obj/structure/barricade/proc/take_acid_damage(damage)
+/obj/structure/barricade/corrosive_acid_act(damage)
 	take_damage(damage * burn_multiplier)
 
 /obj/structure/barricade/update_health(damage, nomessage)

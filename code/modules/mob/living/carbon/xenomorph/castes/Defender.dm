@@ -179,7 +179,7 @@
 
 	var/distance = get_dist(fendy, carbone)
 
-	var/max_distance = 3 - (fendy.crest_defense * 2)
+	var/max_distance = 2
 
 	if(distance > max_distance)
 		return
@@ -241,7 +241,7 @@
 	xeno.spin_circle()
 	xeno.emote("tail")
 
-	var/sweep_range = 1
+	var/sweep_range = 2
 	for(var/mob/living/carbon/human in orange(sweep_range, get_turf(xeno)))
 		if (!isxeno_human(human) || xeno.can_not_harm(human))
 			continue

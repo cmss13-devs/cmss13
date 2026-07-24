@@ -139,6 +139,21 @@
 */
 // M74 are the launcher-only variant. Flag with hand_throwable = FALSE.
 /obj/item/explosive/grenade/high_explosive/airburst
+	name = "\improper M74 AGM-HE 40mm Grenade"
+	desc = "M74 - Airburst Grenade Munition - Fragmentation. This grenade must be launched with a grenade launcher, and detonates once it reaches its destination. It disperses jagged shrapnel in a cone in front of itself, tearing through sinews and armor alike. Dispersion pattern is optimized against large target. Suffers from overpenetration on a direct hit."
+	icon_state = "grenade_m74_airburst_f"
+	item_state = "grenade_m74_airburst_f_active"
+	explosion_power = 50
+	explosion_falloff = 25
+	shrapnel_count = 0
+	det_time = 0 // Unused, because we don't use prime.
+	hand_throwable = FALSE
+	falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
+	shrapnel_type = /datum/ammo/bullet/shrapnel/jagged
+	var/direct_hit_shrapnel = 0
+	var/dispersion_angle = 360
+
+/obj/item/explosive/grenade/high_explosive/airburst/shrap
 	name = "\improper M74 AGM-F 40mm Grenade"
 	desc = "M74 - Airburst Grenade Munition - Fragmentation. This grenade must be launched with a grenade launcher, and detonates once it reaches its destination. It disperses jagged shrapnel in a cone in front of itself, tearing through sinews and armor alike. Dispersion pattern is optimized against large target. Suffers from overpenetration on a direct hit."
 	icon_state = "grenade_m74_airburst_f"
@@ -150,8 +165,8 @@
 	hand_throwable = FALSE
 	falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
 	shrapnel_type = /datum/ammo/bullet/shrapnel/jagged
-	var/direct_hit_shrapnel = 5
-	var/dispersion_angle = 40
+	direct_hit_shrapnel = 5
+	dispersion_angle = 40
 
 /obj/item/explosive/grenade/high_explosive/airburst/prime()
 // We don't prime, we use launch_impact.
@@ -166,15 +181,18 @@
 	if(active && detonate) // Active, and we reached our destination.
 		if(ismob(hit_atom))
 			var/mob/M = hit_atom
-			create_shrapnel(loc, min(direct_hit_shrapnel, shrapnel_count), last_move_dir , dispersion_angle ,shrapnel_type, cause_data, FALSE, 100)
+			var/direct_shrapnel_count = min(direct_hit_shrapnel, shrapnel_count)
+			if(direct_shrapnel_count > 0)
+				create_shrapnel(loc, direct_shrapnel_count, last_move_dir , dispersion_angle ,shrapnel_type, cause_data, FALSE, 100)
 			M.apply_effect(3.0, SUPERSLOW)
-			shrapnel_count -= direct_hit_shrapnel
+			shrapnel_count -= direct_shrapnel_count
 		if(shrapnel_count)
 			create_shrapnel(loc, shrapnel_count, last_move_dir , dispersion_angle ,shrapnel_type, cause_data, FALSE, 0)
 			sleep(2) //so that mobs are not knocked down before being hit by shrapnel. shrapnel might also be getting deleted by explosions?
 		apply_explosion_overlay()
 		if(explosion_power)
-			cell_explosion(loc, explosion_power, explosion_falloff, falloff_mode, last_move_dir, cause_data)
+			//cell_explosion(loc, explosion_power, explosion_falloff, falloff_mode, last_move_dir, cause_data)
+			cell_explosion(loc, explosion_power, explosion_falloff, falloff_mode, null, cause_data)
 		qdel(src)
 
 /obj/item/explosive/grenade/high_explosive/airburst/hornet_shell

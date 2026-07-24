@@ -845,12 +845,20 @@
 	grenade_type = /obj/item/explosive/grenade/incendiary
 
 /obj/item/storage/box/nade_box/airburst
-	name = "\improper M74 AGM-F grenade box"
-	desc = "A secure box holding 25 M74 AGM Fragmentation grenades. Explosive, don't store near the flamer fuel."
+	name = "\improper M74 AGM-HE grenade box"
+	desc = "A secure box holding 25 M74 AGM HE grenades. Explosive, don't store near the flamer fuel."
 	model_icon = "model_m74"
 	type_icon = "agmf"
 	can_hold = list(/obj/item/explosive/grenade/high_explosive/airburst)
 	grenade_type = /obj/item/explosive/grenade/high_explosive/airburst
+
+/obj/item/storage/box/nade_box/airburst/shrap
+	name = "\improper M74 AGM-F grenade box"
+	desc = "A secure box holding 25 M74 AGM Fragmentation grenades. Explosive, don't store near the flamer fuel."
+	model_icon = "model_m74"
+	type_icon = "agmf"
+	can_hold = list(/obj/item/explosive/grenade/high_explosive/airburst/shrap)
+	grenade_type = /obj/item/explosive/grenade/high_explosive/airburst/shrap
 
 /obj/item/storage/box/nade_box/airburstincen
 	name = "\improper M74 AGM-I grenade box"

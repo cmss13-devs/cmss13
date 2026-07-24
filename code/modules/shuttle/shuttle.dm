@@ -419,7 +419,6 @@
 	var/shuttle_flags = NONE
 	var/dock_failures = 0
 
-
 #define WORLDMAXX_CUTOFF (world.maxx + 1)
 #define WORLDMAXY_CUTOFF (world.maxx + 1)
 /**

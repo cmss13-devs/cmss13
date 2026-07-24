@@ -161,7 +161,6 @@ GLOBAL_VAR_INIT(next_predator_bioscan, 5 MINUTES)
 GLOBAL_VAR_INIT(next_admin_bioscan, 30 MINUTES)
 
 /// Asks the user (optional) to pick the primary LZ if both LZ1 and LZ2 exist and it hasn't been set yet
-/// If only one, or no user, it will pick the first available
 /datum/game_mode/proc/pick_a_lz(mob/user)
 	if(active_lz)
 		return

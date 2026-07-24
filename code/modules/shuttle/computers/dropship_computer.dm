@@ -17,7 +17,7 @@
 	var/door_control_cooldown
 
 	// Allows admins to var edit the time lock away.
-	var/skip_time_lock = TRUE
+	var/skip_time_lock = FALSE
 
 	// Landing zones which can be used
 	var/compatible_landing_zones = list()

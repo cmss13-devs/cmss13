@@ -665,6 +665,8 @@
 
 
 /obj/projectile/proc/get_effective_accuracy(obj/target)
+	if(QDELETED(target))
+		return 0
 	#if DEBUG_HIT_CHANCE
 	to_world(SPAN_DEBUG("Base accuracy is <b>[accuracy]</b>; scatter: <b>[scatter]</b>;accurate_range: <b>[ammo.accurate_range]<b>; distance: <b>[distance_travelled]</b>"))
 	#endif

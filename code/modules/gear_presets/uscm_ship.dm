@@ -478,7 +478,7 @@
 	skills = /datum/skills/SEA
 
 	minimap_icon = "sea"
-	minimap_background = "background_command"
+	minimap_background = "background_shipside"
 
 	service_hat = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/drillhat)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/nco)
@@ -589,7 +589,7 @@
 	skills = /datum/skills/pilot
 
 	minimap_icon = "gp"
-	minimap_background = "background_command"
+	minimap_background = "background_officer"
 
 /datum/equipment_preset/uscm_ship/gp/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
@@ -641,7 +641,7 @@
 	skills = /datum/skills/pilot
 
 	minimap_icon = "pilot"
-	minimap_background = "background_command"
+	minimap_background = "background_officer"
 
 /datum/equipment_preset/uscm_ship/dp/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel

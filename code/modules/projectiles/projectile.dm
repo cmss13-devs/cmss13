@@ -691,7 +691,7 @@
 			effective_accuracy += shooter_human.marksman_aura * 1.5 //Flat buff of 3 % accuracy per aura level
 			effective_accuracy += distance_travelled * 0.35 * shooter_human.marksman_aura //Flat buff to accuracy per tile travelled
 
-	if(target && target.z != starting.z)
+	if(target && starting && target.z != starting.z)
 		if(traveled_in_open < traveled_in_closed)
 			effective_accuracy = 0
 		else if(traveled_in_open == traveled_in_closed)

@@ -459,7 +459,7 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 
 //This proc return 1 if the item can be picked up and 0 if it can't.
 //Set the stop_messages to stop it from printing messages
-/obj/item/storage/proc/can_be_inserted(obj/item/object, mob/user, stop_messages = FAlabelerSE)
+/obj/item/storage/proc/can_be_inserted(obj/item/object, mob/user, stop_messages = FALSE)
 	if(!istype(object) || (object.flags_item & NODROP))
 		return //Not an item
 

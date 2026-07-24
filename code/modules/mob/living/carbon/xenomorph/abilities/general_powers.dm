@@ -635,7 +635,9 @@
 		button.icon_state = "template_xeno"
 		UnregisterSignal(xeno, COMSIG_MOB_STATCHANGE)
 	xeno.update_wounds()
-	apply_cooldown()
+	// Only apply the cooldown if they weren't forced out of hiding by fire
+	if (!xeno.on_fire)
+		apply_cooldown()
 	return ..()
 
 /datum/action/xeno_action/onclick/xenohide/proc/unhide_on_stat(mob/living/carbon/xenomorph/source, new_stat, old_stat)

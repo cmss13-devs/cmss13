@@ -162,14 +162,14 @@
 	if(embryo)
 		if(tool)
 			user.affected_message(target,
-				SPAN_WARNING("You pull a wriggling parasite out of [target]'s ribcage! It's a girl!"),
-				SPAN_WARNING("[user] pulls a wriggling parasite out of your ribcage! It's a girl!"),
-				SPAN_WARNING("[user] pulls a wriggling parasite out of [target]'s ribcage! It's a girl!"))
+				SPAN_WARNING("You pull a wriggling parasite out of [target]'s ribcage!"),
+				SPAN_WARNING("[user] pulls a wriggling parasite out of your ribcage!"),
+				SPAN_WARNING("[user] pulls a wriggling parasite out of [target]'s ribcage!"))
 		else
 			user.affected_message(target,
-				SPAN_WARNING("Your hands and your patient's insides are burned by acid as you forcefully rip a wriggling parasite out of [target]'s ribcage! It's a girl!"),
-				SPAN_WARNING("Your insides and [user]'s hands are burned by acid as \he rips a wriggling parasite out of your ribcage! It's a girl!"),
-				SPAN_WARNING("[user]'s hands and [target]'s insices are burned by acid as \he rips a wriggling parasite out of [target]'s ribcage! It's a girl!"))
+				SPAN_WARNING("Your hands and your patient's insides are burned by acid as you forcefully rip a wriggling parasite out of [target]'s ribcage!"),
+				SPAN_WARNING("Your insides and [user]'s hands are burned by acid as \he rips a wriggling parasite out of your ribcage!"),
+				SPAN_WARNING("[user]'s hands and [target]'s insices are burned by acid as \he rips a wriggling parasite out of [target]'s ribcage!"))
 
 			var/datum/internal_organ/impacted_organ = pick(surgery.affected_limb.internal_organs)
 			impacted_organ.take_damage(5, FALSE)

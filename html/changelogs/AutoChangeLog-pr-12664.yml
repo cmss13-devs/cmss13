@@ -1,4 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - rscdel: "The Agents item tracker is now disabled, since agents are gone."

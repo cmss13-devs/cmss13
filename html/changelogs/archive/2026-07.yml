@@ -202,3 +202,17 @@
   - bugfix: Airlock Electronics + Some other things like Fire doors now accept Marine
       Engineering access to access.
   - rscdel: Removes some civilian engineering access from shipside roles.
+2026-07-24:
+  MistChristmas:
+  - bugfix: Field Doc can access their room again
+  fira:
+  - rscdel: The Agents item tracker is now disabled, since agents are gone.
+  - admin: Many logs, admin messages, and attack logs now are normalized to use the
+      ckey rather than full key - this is important in regard to consistency for searching
+      in logs for example
+  - admin: Users in admin messages will now be marked as disconnected even if there
+      is no PM link for them
+  - admin: Ghosted or otherwise out-of-body users will now show their previous ckey
+      in admin messages rather than no key
+  george:
+  - balance: Humans can be moved by explosions again.

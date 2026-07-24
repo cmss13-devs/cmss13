@@ -427,6 +427,7 @@
 	icon_state = "orebox0"
 	density = TRUE
 	anchored = FALSE
+	health = 400
 
 /obj/structure/ore_box/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -457,6 +458,10 @@
 	SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
+
+/obj/structure/ore_box/bullet_act(obj/projectile/projectile)
+	. = ..()
+	update_health(projectile.damage)
 
 /obj/structure/ore_box/alt
 	name = "metal ore box"

@@ -41,7 +41,7 @@ Defined in conflicts.dm of the #defines folder.
 	var/slot = null //"muzzle", "rail", "under", "stock", "special", "cosmetic"
 
 	/*
-	Anything that isn't used as the gun fires should be a flat number, never a percentange. It screws with the calculations,
+	Anything that isn't used as the gun fires should be a flat number, never a percentage. It screws with the calculations,
 	and can mean that the order you attach something/detach something will matter in the final number. It's also completely
 	inaccurate. Don't worry if force is ever negative, it won't runtime.
 	*/
@@ -50,7 +50,7 @@ Defined in conflicts.dm of the #defines folder.
 	//These are flat bonuses applied and are passive, though they may be applied at different points.
 	var/accuracy_mod = 0 //Modifier to firing accuracy, works off a multiplier.
 	var/accuracy_unwielded_mod = 0 //same as above but for onehanded.
-	var/damage_mod = 0 //Modifer to the damage mult, works off a multiplier.
+	var/damage_mod = 0 //Modifier to the damage mult, works off a multiplier.
 	var/damage_falloff_mod = 0 //Modifier to damage falloff, works off a multiplier.
 	var/damage_buildup_mod = 0 //Modifier to damage buildup, works off a multiplier.
 	var/range_min_mod = 0 //Modifier to minimum effective range, tile value.
@@ -59,7 +59,7 @@ Defined in conflicts.dm of the #defines folder.
 	var/melee_mod = 0 //Changing to a flat number so this actually doesn't screw up the calculations.
 	var/scatter_mod = 0 //Increases or decreases scatter chance.
 	var/scatter_unwielded_mod = 0 //same as above but for onehanded firing.
-	var/bonus_proj_scatter_mod = 0 //Increses or decrease scatter for bonus projectiles. Mainly used for shotguns.
+	var/bonus_proj_scatter_mod = 0 //Increases or decrease scatter for bonus projectiles. Mainly used for shotguns.
 	var/recoil_mod = 0 //If positive, adds recoil, if negative, lowers it. Recoil can't go below 0.
 	var/recoil_unwielded_mod = 0 //same as above but for onehanded firing.
 	var/burst_scatter_mod = 0 //Modifier to scatter from wielded burst fire, works off a multiplier.
@@ -1295,7 +1295,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/scope/variable_zoom/proc/toggle_zoom_level()
 	if(using_scope)
-		to_chat(usr, SPAN_WARNING("You can't change the zoom setting on the [src] while you're looking through it!"))
+		to_chat(usr, SPAN_WARNING("You can't change the zoom setting on [src] while you're looking through it!"))
 		return
 	if(zoom_level == ZOOM_LEVEL_2X)
 		zoom_level = ZOOM_LEVEL_4X

@@ -175,10 +175,10 @@
 /obj/structure/xenoautopsy/jar_shelf
 	name = "jar shelf"
 	icon_state = "jarshelf_0"
-	var/randomise = 1 //Random icon
+	var/randomize = 1 //Random icon
 
 /obj/structure/xenoautopsy/jar_shelf/New()
-	if(randomise)
+	if(randomize)
 		icon_state = "jarshelf_[rand(0,9)]"
 
 /obj/structure/xenoautopsy/tank
@@ -424,7 +424,7 @@
 		xeno.animation_attack_on(src)
 		xeno.visible_message(SPAN_DANGER("[xeno] slices [src] apart!"))
 		playsound(src, 'sound/effects/woodhit.ogg')
-		to_chat(xeno, SPAN_WARNING("We slice the [src] apart!"))
+		to_chat(xeno, SPAN_WARNING("We slice [src] apart!"))
 		deconstruct(FALSE)
 		return XENO_ATTACK_ACTION
 	else

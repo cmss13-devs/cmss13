@@ -236,7 +236,7 @@
 			// Check if we're looking at a mob that's lying down
 			if(istype(cur_atom, /mob/living))
 				var/mob/living/cur_mob = cur_atom
-				if(!isxeno(cur_mob) && cur_mob.body_position == LYING_DOWN) //xenos don't use icon rotatin for lying.
+				if(!isxeno(cur_mob) && cur_mob.body_position == LYING_DOWN) //xenos don't use icon g for lying.
 					cur_icon.BecomeLying()
 
 			// Calculate where we are relative to the center of the photo
@@ -262,8 +262,8 @@
 			CHECK_TICK
 	return res
 
-/obj/item/device/camera/proc/get_mob_descriptions(turf/the_turf, existing_descripion)
-	var/mob_detail = existing_descripion
+/obj/item/device/camera/proc/get_mob_descriptions(turf/the_turf, existing_description)
+	var/mob_detail = existing_description
 	for(var/mob/living/carbon/cur_carbon in the_turf)
 		if(cur_carbon.invisibility)
 			continue
@@ -293,7 +293,7 @@
 		to_chat(user, SPAN_WARNING("[src] is still processing the last photo, hold your horses!"))
 		return
 	if(pictures_left <= 0)
-		to_chat(user, SPAN_WARNING("There isn't enough film in the [src] to take a photo."))
+		to_chat(user, SPAN_WARNING("There isn't enough film in [src] to take a photo."))
 		return
 	if(ismob(target.loc) || isstorage(target.loc) || user.contains(target) || istype(target, /atom/movable/screen))
 		return
@@ -301,7 +301,7 @@
 	playsound(loc, pick('sound/items/polaroid1.ogg', 'sound/items/polaroid2.ogg'), 15, 1)
 	pictures_left--
 	to_chat(user, SPAN_NOTICE("[pictures_left] photos left."))
-	cooldown = world.time + 3 SECONDS // an addtimer for a cooldown is kinda overkill dont you think
+	cooldown = world.time + 3 SECONDS // an addtimer for a cooldown is kinda overkill don't you think
 
 	addtimer(CALLBACK(src, PROC_REF(captureimage), target, user, flag), 1 SECONDS)
 
@@ -365,7 +365,7 @@
 
 /obj/item/device/camera/oldcamera/attackby(obj/item/film, mob/user)
 	if(istype(film, /obj/item/device/camera_film))
-		to_chat(user, SPAN_NOTICE("Try as you might, but you can't seem to open up the [src] to insert some film, oh well."))
+		to_chat(user, SPAN_NOTICE("Try as you might, but you can't seem to open up [src] to insert some film. Oh well."))
 		return
 
 /obj/item/device/broadcasting
@@ -382,7 +382,7 @@
 	explo_proof = TRUE
 	w_class = SIZE_HUGE
 	flags_item = NO_FLAGS
-	flags_equip_slot = NO_FLAGS //cannot be equiped
+	flags_equip_slot = NO_FLAGS //cannot be equipped
 	var/active = FALSE
 	var/obj/structure/machinery/camera/correspondent/linked_cam
 

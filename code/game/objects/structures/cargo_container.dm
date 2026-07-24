@@ -55,7 +55,7 @@
 //Note, for Watatsumi, Grant, and Arious, "left" and "leftmid" are both the left end of the container, but "left" is generic and "leftmid" has the Sat Mover mark on it
 /obj/structure/cargo_container/watatsumi
 	name = "Watatsumi Cargo Container"
-	desc = "A huge industrial shipping container.\nThis one is from Watatsumi, a manufacturer of a variety of electronical and mechanical products.\nAt least, that is what is says on the container. You have literally never heard of this company before."
+	desc = "A huge industrial shipping container.\nThis one is from Watatsumi, a manufacturer of a variety of electronic and mechanical products.\nAt least, that is what is says on the container. You have literally never heard of this company before."
 
 /obj/structure/cargo_container/watatsumi/left
 	icon_state = "watatsumi_l"
@@ -275,16 +275,16 @@
 
 	var/damage_dealt
 	if(istype(user,/mob/living/carbon/human))
-		var/mob/living/carbon/human/H = user
-		if(H.species.can_shred(H))
+		var/mob/living/carbon/human/person = user
+		if(person.species.can_shred(person))
 
 			user.visible_message(SPAN_WARNING("[user] smashes [src] to no avail."),
 					SPAN_WARNING("You beat against [src] to no effect."),
 					"You hear twisting metal.")
 
 	if(!damage_dealt)
-		user.visible_message(SPAN_WARNING("[user] beats against the [src] to no avail."),
-					SPAN_WARNING("[user] beats against the [src]."),
+		user.visible_message(SPAN_WARNING("[user] beats against [src] to no avail."),
+					SPAN_WARNING("[user] beats against [src]."),
 					"You hear twisting metal.")
 
 /obj/structure/cargo_container/horizontal

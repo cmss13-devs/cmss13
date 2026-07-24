@@ -74,20 +74,20 @@
 	return
 
 
-/obj/structure/machinery/bot/floorbot/attackby(obj/item/W , mob/user as mob)
-	if(istype(W, /obj/item/stack/tile/plasteel))
-		var/obj/item/stack/tile/plasteel/T = W
+/obj/structure/machinery/bot/floorbot/attackby(obj/item/thing , mob/user as mob)
+	if(istype(thing, /obj/item/stack/tile/plasteel))
+		var/obj/item/stack/tile/plasteel/sheet = thing
 		if(src.amount >= 50)
 			return
-		var/loaded = min(50-src.amount, T.get_amount())
-		T.use(loaded)
+		var/loaded = min(50-src.amount, sheet.get_amount())
+		sheet.use(loaded)
 		src.amount += loaded
 		to_chat(user, SPAN_NOTICE("You load [loaded] tiles into the floorbot. He now contains [src.amount] tiles."))
 		src.updateicon()
-	else if(istype(W, /obj/item/card/id))
+	else if(istype(thing, /obj/item/card/id))
 		if(src.allowed(usr) && !open)
 			src.locked = !src.locked
-			to_chat(user, SPAN_NOTICE("You [src.locked ? "lock" : "unlock"] the [src] behaviour controls."))
+			to_chat(user, SPAN_NOTICE("You [src.locked ? "lock" : "unlock"] [src]'s behaviour controls."))
 		else
 			if(open)
 				to_chat(user, SPAN_WARNING("Please close the access panel before locking it."))

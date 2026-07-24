@@ -1352,6 +1352,7 @@
 /turf/open/shuttle/dropship
 	name = "floor"
 	icon_state = "rasputin1"
+	var/linked_door
 
 /turf/open/shuttle/dropship/light_grey_single_wide_left_to_right
 	icon_state = "floor8"
@@ -1401,9 +1402,6 @@
 	icon_state = "rasputin13"
 
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down
-	icon_state = "rasputin15"
-
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down/airlock
 	icon_state = "rasputin15"
 
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right

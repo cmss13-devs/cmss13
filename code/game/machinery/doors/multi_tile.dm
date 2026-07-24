@@ -259,7 +259,7 @@
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/maint/reinforced/colony/autoname
 	autoname = TRUE
- 
+
 //------Containment 3-tile Doors -----//
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/containment
@@ -302,6 +302,8 @@
 	not_weldable = 1
 	queen_pryable = TRUE
 	var/obj/docking_port/mobile/marine_dropship/linked_dropship
+	var/linked_to_turf
+	var/obj/structure/machinery/computer/shuttle/dropship/flight/linked_console
 
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ex_act(severity)

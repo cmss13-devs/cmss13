@@ -138,7 +138,6 @@
 	xeno.add_traits(list(TRAIT_ABILITY_BURROWED, TRAIT_UNDENSE, TRAIT_IMMOBILIZED), TRAIT_SOURCE_ABILITY("Burrow"))
 	playsound(xeno.loc, 'sound/effects/burrowing_b.ogg', 25)
 	xeno.update_icons()
-	start_duration_display(10 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(do_burrow_cooldown)), burrow_cooldown)
 	burrow_timer = world.time + 90 // How long we can be burrowed
 	process_burrow()
@@ -163,7 +162,6 @@
 	xeno.invisibility = FALSE
 	xeno.alpha = initial(xeno.alpha)
 	xeno.anchored = FALSE
-	end_duration_display()
 
 	var/mob/living/carbon/human/hauled = xeno.hauled_mob?.resolve()
 	if(hauled)
@@ -184,8 +182,6 @@
 	if(HAS_TRAIT(xeno, TRAIT_ABILITY_BURROWED))
 		to_chat(xeno, SPAN_NOTICE("We can now surface."))
 	update_button_icon()
-
-
 
 /datum/action/xeno_action/activable/burrow/proc/digging(turf/target_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -261,7 +257,6 @@
 	to_chat(xeno, SPAN_NOTICE("We tunnel to the destination."))
 	xeno.anchored = FALSE
 	xeno.forceMove(target_atom)
-	end_duration_display()
 	burrow_off()
 
 /datum/action/xeno_action/activable/burrow/proc/do_digging_cooldown()

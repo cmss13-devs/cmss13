@@ -3939,7 +3939,7 @@ ServerTick,prof.c,2949,58074116775,97.508362,601,96629146,8346,4399023551,239342
 /datum/controller/subsystem/nightmare/proc/load_map_config,code/controllers/subsystem/nightmare.dm,79,935035,0.001570,2,467517,112991,822044,501376.184521
 /datum/action/item_action/toggle/rail_flashlight/New,code/datums/action.dm,447,436153,0.000732,9,48461,41707,67115,7401.785899
 /obj/structure/machinery/ares/proc/link_systems,code/game/machinery/ARES/ARES.dm,38,24586,0.000041,11,2235,1623,2855,417.180417
-/obj/effect/essentials_set/agmf_6_pack/proc/(init),<?.dm>,4294967295,1733,0.000003,1,1733,1733,1733,0.000000
+/obj/effect/essentials_set/agm_6_pack/proc/(init),<?.dm>,4294967295,1733,0.000003,1,1733,1733,1733,0.000000
 /obj/item/clothing/suit/storage/labcoat/proc/(init),<?.dm>,4294967295,87963,0.000148,14,6283,4488,9618,1504.660273
 /datum/equipment_preset/synth/uscm/engineering/council/proc/(init),<?.dm>,4294967295,16231,0.000027,8,2028,1774,2555,236.346900
 /datum/element/traitbound/gun_silenced/Attach,code/datums/elements/traitbound/gun_silenced.dm,6,516353,0.000867,73,7073,5750,11011,1353.855359

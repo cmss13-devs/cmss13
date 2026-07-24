@@ -245,6 +245,10 @@
 		to_chat(user, SPAN_WARNING("There's already someone in [src]."))
 		return
 
+	if(!loc) //In case the nest's wall no longer exists
+		to_chat(user, SPAN_WARNING("We require a wall to secure [mob] to!"))
+		return
+
 	if(human) //Improperly stunned Marines won't be nested
 		if(human.body_position != LYING_DOWN) //Don't ask me why is has to be
 			to_chat(user, SPAN_WARNING("[mob] is resisting, ground them."))

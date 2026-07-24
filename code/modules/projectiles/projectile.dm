@@ -635,7 +635,9 @@
 			log_attack(log_message)
 
 		#if DEBUG_HIT_CHANCE
-		to_world(SPAN_DEBUG("([target_living]) Missed."))
+			to_world(SPAN_DEBUG("([target_living]) Missed."))
+		else
+			to_world(SPAN_DEBUG("([target_living]) Missed."))
 		#endif
 
 	if(SEND_SIGNAL(src, COMSIG_BULLET_POST_HANDLE_MOB, target_living, .) & COMPONENT_BULLET_PASS_THROUGH)

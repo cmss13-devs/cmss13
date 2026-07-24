@@ -47,7 +47,7 @@
 		SPAN_NOTICE("You replace [target]'s severed [parse_zone(target_zone)] with [tool]."),
 		SPAN_NOTICE("[user] replaces your severed [parse_zone(target_zone)] with [tool]."),
 		SPAN_NOTICE("[user] replaces [target]'s severed [parse_zone(target_zone)] with [tool]."))
-		
+
 	surgery.affected_limb.robotize(surgery_in_progress = TRUE, uncalibrated = TRUE, synth_skin = issynth(target))
 	target.update_body()
 	target.pain.recalculate_pain()
@@ -122,9 +122,9 @@
 /datum/surgery_step/calibrate_prosthesis/preop(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	var/nerves_type = target.get_nerves_type()
 	user.affected_message(target,
-		SPAN_NOTICE("You start calibrating [target]'s prosthesis to the [nerves_type] on \his [surgery.affected_limb.display_name]'s stump."),
-		SPAN_NOTICE("[user] starts calibrating your prosthesis to the [nerves_type] on your [surgery.affected_limb.display_name]'s stump."),
-		SPAN_NOTICE("[user] starts calibrating [target]'s prosthesis to the [nerves_type] on \his [surgery.affected_limb.display_name]'s stump."))
+		SPAN_NOTICE("You start calibrating [target]'s prosthesis to \the [nerves_type] on \his [surgery.affected_limb.display_name]'s stump."),
+		SPAN_NOTICE("[user] starts calibrating your prosthesis to \the [nerves_type] on your [surgery.affected_limb.display_name]'s stump."),
+		SPAN_NOTICE("[user] starts calibrating [target]'s prosthesis to \the [nerves_type] on \his [surgery.affected_limb.display_name]'s stump."))
 
 	log_interact(user, target, "[key_name(user)] began calibrating a prosthesis on [key_name(target)]'s [surgery.affected_limb.display_name]'s stump.")
 

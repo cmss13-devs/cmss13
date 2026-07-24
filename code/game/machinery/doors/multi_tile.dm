@@ -259,7 +259,6 @@
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/maint/reinforced/colony/autoname
 	autoname = TRUE
-
 //------Containment 3-tile Doors -----//
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/containment

@@ -17,7 +17,7 @@
 	var/door_control_cooldown
 
 	// Allows admins to var edit the time lock away.
-	var/skip_time_lock = FALSE
+	var/skip_time_lock = TRUE
 
 	// Landing zones which can be used
 	var/compatible_landing_zones = list()
@@ -449,8 +449,10 @@
 		.["is_disabled"] = TRUE
 	.["locked_down"] = FALSE
 	.["can_fly_by"] = !is_remote
-	if(SSticker.mode.active_lz == null) .["can_set_automated"] = FALSE //Disables auto mode if default LZ not set
-	else {	.["can_set_automated"] = is_remote }
+	if(SSticker.mode.active_lz == null)
+		.["can_set_automated"] = FALSE //Disables auto mode if default LZ not set
+	else
+		.["can_set_automated"] = is_remote
 	.["automated_control"] = list(
 		"is_automated" = shuttle?.automated_hangar_id != null || shuttle?.automated_lz_id != null,
 		"hangar_lz" = shuttle?.automated_hangar_id,
@@ -599,6 +601,10 @@
 		if("set-automate")
 			if(!shuttle)
 				return FALSE
+			if(SSticker.mode.active_lz == null)
+				to_chat(user, SPAN_WARNING("A primary landing zone must be designated prior to launch."))
+				playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
+				return FALSE
 			var/almayer_lz = params["hangar_id"]
 			var/ground_lz = params["ground_id"]
 			var/delay = clamp(params["delay"] SECONDS, DROPSHIP_MIN_AUTO_DELAY, DROPSHIP_MAX_AUTO_DELAY)
@@ -621,10 +627,6 @@
 			shuttle.automated_lz_id = ground_lz
 			shuttle.automated_delay = delay
 			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
-			if(SSticker.mode.active_lz == null)
-				to_chat(user, SPAN_WARNING("A primary landing zone must be designated prior to launch."))
-				playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
-				return FALSE
 			if(shuttle.faction == FACTION_MARINE)
 				log_ares_flight(user.name, "Enabled autopilot for Dropship [shuttle.name].")
 			var/log = "[key_name(user)] has enabled auto pilot on '[shuttle.name]'"

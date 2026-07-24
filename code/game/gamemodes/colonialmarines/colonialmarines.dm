@@ -535,7 +535,8 @@
 					xeno_message("The Hive is ready for a new Queen to evolve. The Hive can only survive for a limited time without a Queen!", 3, hive.hivenumber)
 
 
-		if(!active_lz && ROUND_TIME > lz_selection_timer)
+		if(!active_lz && ROUND_TIME > 1 MINUTES)
+		//> lz_selection_timer)
 			pick_a_lz()
 
 		// Automated bioscan / Queen Mother message

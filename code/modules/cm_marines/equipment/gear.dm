@@ -574,7 +574,7 @@
 	var/slash_count = 0
 	/// This is tracked to prevent duplicate undeploys
 	var/broken = FALSE
-	var/image/squad_overlay
+	var/squad_overlay
 
 /obj/structure/overwatch_camera_tripod/Initialize(mapload)
 	. = ..()

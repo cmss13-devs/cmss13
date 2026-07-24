@@ -171,7 +171,7 @@
 /obj/item/tool/surgery/scalpel/manager
 	name = "incision management system"
 	desc = "A true extension of the surgeon's body, this marvel instantly and completely prepares and widens incisions simultaneously and bloodlessly, allowing for the immediate commencement of therapeutic steps. It can only be used to begin surgeries, however."
-	desc_lore = "Known as the 'IMS', housands of surgeons across the galaxy can only dream of holding one of these in their hands. With the technology of an advanced laser scalpel and a mechanical retractor all in one tool, a surgeon can incise, seal blood vessels, and widen incisions all in one step. Unfortunately, the IMS cannot function as a retractor, hemostat, or cautery in any circumstances other than making an incision. In addition, due to high demand, it sports an unconscionable price tag if not supplied by a local Research and Development team with the proper fabrication materials."
+	desc_lore = "Known as the 'IMS', thousands of surgeons across the galaxy can only dream of holding one of these in their hands. With the technology of an advanced laser scalpel and a mechanical retractor all in one tool, a surgeon can incise, seal blood vessels, and widen incisions all in one step. Unfortunately, the IMS cannot function as a retractor, hemostat, or cautery in any circumstances other than making an incision. In addition, due to high demand, it sports an unconscionable price tag if not supplied by a local Research and Development team with the proper fabrication materials."
 	force = 15
 	attack_speed = 6
 	icon_state = "scalpel_manager"

@@ -187,7 +187,7 @@
 /datum/surgery_step/saw_off_limb/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_NOTICE("You cut [target]'s [surgery.affected_limb.display_name] off!"),
-		SPAN_WARNING("[user] cuts your [surgery.affected_limb.display_name] off!."),
+		SPAN_WARNING("[user] cuts your [surgery.affected_limb.display_name] off!"),
 		SPAN_NOTICE("[user] cuts [target]'s [surgery.affected_limb.display_name] off!"))
 
 	user.count_niche_stat(STATISTICS_NICHE_SURGERY_AMPUTATE)

@@ -143,6 +143,7 @@
 	user.visible_message(SPAN_WARNING("\The [user] hits \the [src] with \the [W]!"),
 	SPAN_WARNING("You hit \the [src] with \the [W]!"))
 	healthcheck()
+	return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 
 /obj/structure/bed/nest/manual_unbuckle(mob/living/user)
 	if(!(buckled_mob && buckled_mob.buckled == src && buckled_mob != user))

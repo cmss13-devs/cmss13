@@ -272,13 +272,13 @@
 // -- specific ability traits --
 #define TRAIT_ABILITY_ASSASINATE "t_ability_assasinate"
 #define TRAIT_ABILITY_INVIS "t_ability_invis"
-#define TRAIT_ABILITY_BURROW_DIGGING "t_ability_burrow_digging"
-#define TRAIT_ABILITY_BURROW_UNDERGROUND "t_ability_burrow_underground"
 #define TRAIT_ABILITY_DODGE "t_ability_dodge"
 #define TRAIT_ABILITY_RED_TAG "t_ability_red_tag"
 #define TRAIT_ABILITY_YELLOW_TAG "t_ability_yellow_tag"
 #define TRAIT_ABILITY_SHED_SPIKES "t_ability_shed_spikes"
+/// Used by shielder to check stance.
 #define TRAIT_ABILITY_ENCLOSED_PLATES "t_ability_enclosed_plates"
+/// Used by shielder for reflective plates.
 #define TRAIT_ABILITY_REFLECTIVE_PLATES "t_ability_reflective_plates"
 
 

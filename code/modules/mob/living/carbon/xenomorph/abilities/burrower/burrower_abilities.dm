@@ -8,22 +8,16 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
 
-	var/used_digging = FALSE
-	var/digging_timer = 2 SECONDS
-	var/burrow_timer = 20 SECONDS
+/datum/action/xeno_action/activable/burrow/use_ability(atom/A)
+	var/mob/living/carbon/xenomorph/xenomorph = owner
 
-	var/burrow_cooldown = 2 SECONDS
-	var/digging_cooldown = 7 SECONDS
+	if(!action_cooldown_check())
+		return
 
-/datum/action/xeno_action/activable/burrow/use_ability(atom/target_atom)
-	var/mob/living/carbon/xenomorph/xeno = owner
-
-	XENO_ACTION_CHECK(xeno)
-
-	if(HAS_TRAIT(xeno, TRAIT_ABILITY_BURROWED))
-		digging(get_turf(target_atom))
+	if(HAS_TRAIT(xenomorph, TRAIT_ABILITY_BURROWED))
+		xenomorph.tunnel(get_turf(A))
 	else
-		burrow()
+		xenomorph.burrow()
 	return ..()
 
 /datum/action/xeno_action/onclick/tremor

@@ -365,7 +365,7 @@
 	if(body_position == LYING_DOWN || stat == UNCONSCIOUS)
 		return //we don't want to reflect bullets when we are laying down/unconscious.
 
-	if(bullet.ammo.flags_ammo_behavior & (AMMO_SNIPER|AMMO_ROCKET|AMMO_XENO|AMMO_NO_DEFLECT|AMMO_SKIPS_ALIENS))
+	if(bullet.ammo.flags_ammo_behavior & (AMMO_SNIPER|AMMO_ROCKET|AMMO_XENO|AMMO_NO_DEFLECT|AMMO_SKIPS_ALIENS|ARMOR_PENETRATION_TIER_8|ARMOR_PENETRATION_TIER_6))
 		return //we don't want to reflect sniper bullets, rockets, anti-reflection bullets, xeno bullets and friendly bullets.
 
 	var/projectile_dir = 0

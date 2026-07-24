@@ -103,6 +103,7 @@
 #define AMBIENCE_NV 'sound/ambience/ambienceNV.ogg'
 #define AMBIENCE_PRISON 'sound/ambience/shipambience.ogg'
 #define AMBIENCE_TRIJENT 'sound/ambience/desert.ogg'
+#define AMBIENCE_LASTBUNKER 'sound/ambience/strata/strata_snowstorm.ogg'
 
 #define SCAPE_PL_WIND list('sound/soundscape/wind1.ogg','sound/soundscape/wind2.ogg')
 #define SCAPE_PL_LV522_OUTDOORS list('sound/soundscape/lv522/outdoors/wind1.ogg','sound/soundscape/lv522/outdoors/wind2.ogg','sound/soundscape/lv522/outdoors/wind3.ogg',)

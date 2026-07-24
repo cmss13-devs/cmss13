@@ -421,7 +421,9 @@
 		button.icon_state = "template_xeno"
 		xeno.update_wounds()
 		xeno.update_layer()
-	apply_cooldown(4) //2 second cooldown after attacking
+	// If forced out of hiding by fire, don't enforce a cooldown
+	if (!xeno.on_fire)
+		apply_cooldown(4) //2 second cooldown after attacking
 
 /datum/action/xeno_action/onclick/xenohide/give_to(mob/living/living_mob)
 	. = ..()

@@ -538,7 +538,7 @@ t. optimisticdude
 	var CHECK = user.loc
 	playsound(loc, 'sound/weapons/pierce.ogg', 25)
 	to_chat(usr, "You begin to cut into [body]'s carapace. This might take some time...")
-	if(body.health >-100)
+	if(body.health >=100)
 		to_chat(usr, "HOLY SHIT! SHE'S STILL ALIVE! She springs to life and uses her body weight to knock you down!")
 		usr.apply_effect(20, WEAKEN)
 		to_chat(body, "Though you feel a monumental amount of pain, you jump back up to use the last of your strength to kill [usr] with your final moments of life.") ///~10 seconds

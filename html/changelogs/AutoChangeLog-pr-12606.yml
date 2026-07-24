@@ -1,0 +1,4 @@
+author: "halgmor"
+delete-after: True
+changes:
+  - bugfix: "static red headband now appears on helmets when added"

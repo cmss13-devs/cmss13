@@ -83,6 +83,7 @@
 		/obj/item/storage/box/guncase/m2c = list("M2C"),
 		/obj/item/storage/box/guncase/flamer = list("Flamer", "Flamer kit", "Incinerator"),
 		/obj/item/storage/box/guncase/m85a1 = list("GL", "Grenade launcher", "M85A1", "M85A1 Grenade launcher"),
+		/obj/item/storage/box/guncase/xm51 = list("XM51", "Breaching Shotty", "Breaching Shotgun", "Breaching Scattergun"),
 		/obj/item/clothing/accessory/storage/black_vest = list("Black webbing", "Black webbing vest"),
 		/obj/item/clothing/accessory/storage/black_vest/brown_vest = list("Brown webbing", "Brown webbing vest"),
 		/obj/item/clothing/accessory/storage/webbing = list("Webbing", "Normal webbing", "Web"),

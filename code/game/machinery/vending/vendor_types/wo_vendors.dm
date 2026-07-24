@@ -212,7 +212,7 @@
 		list("EXTRA GRENADES", -1, null, null, null),
 		list("M40 HEDP Grenade Pack (x6)", floor(scale * 1.5), /obj/effect/essentials_set/hedp_6_pack, VENDOR_ITEM_REGULAR),
 		list("M40 HIDP Grenade Pack (x6)", floor(scale * 1.5), /obj/effect/essentials_set/hidp_6_pack, VENDOR_ITEM_REGULAR),
-		list("M74 AGM-F Grenade Pack (x6)", floor(scale * 1.5), /obj/effect/essentials_set/agmf_6_pack, VENDOR_ITEM_REGULAR),
+		list("M74 AGM-F Grenade Pack (x6)", floor(scale * 1.5), /obj/effect/essentials_set/agm_6_pack, VENDOR_ITEM_REGULAR),
 		list("M74 AGM-I Grenade Pack (x6)", floor(scale * 1.5), /obj/effect/essentials_set/agmi_6_pack, VENDOR_ITEM_REGULAR),
 
 		list("EXTRA FLAMETHROWER TANKS", -1, null, null, null),

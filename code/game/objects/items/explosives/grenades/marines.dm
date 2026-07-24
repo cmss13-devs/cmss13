@@ -141,8 +141,8 @@
 /obj/item/explosive/grenade/high_explosive/airburst
 	name = "\improper M74 AGM-HE 40mm Grenade"
 	desc = "M74 - Airburst Grenade Munition - Fragmentation. This grenade must be launched with a grenade launcher, and detonates once it reaches its destination. It disperses jagged shrapnel in a cone in front of itself, tearing through sinews and armor alike. Dispersion pattern is optimized against large target. Suffers from overpenetration on a direct hit."
-	icon_state = "grenade_m74_airburst_f"
-	item_state = "grenade_m74_airburst_f_active"
+	icon_state = "grenade_m74_airburst_he"
+	item_state = "grenade_m74_airburst_he_active"
 	explosion_power = 50
 	explosion_falloff = 25
 	shrapnel_count = 0

@@ -40,5 +40,5 @@ SUBSYSTEM_DEF(sound)
 			if(VI?.ready)
 				var/list/bounds = VI.get_middle_coords()
 				if(length(bounds) >= 2)
-					hearers |= SSquadtree.players_in_range(RECT(bounds[1], bounds[2], VI.map_template.width, VI.map_template.height), bounds[3])
+					hearers |= SSmapgrids.players_in_range_legacy(RECT(bounds[1], bounds[2], VI.map_template.width, VI.map_template.height), bounds[3])
 	template_queue[template] = hearers

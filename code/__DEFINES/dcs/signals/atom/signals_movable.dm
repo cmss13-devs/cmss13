@@ -46,3 +46,6 @@
 	#define COMPONENT_MOVABLE_BUCKLE_STOPPED (1<<0)
 
 #define COMSIG_MOVABLE_UNBUCKLE "unbuckle"
+
+/// Fired by the [/datum/mapcoords] component when its attached movable moved on the map irrespective of its exact location
+#define COMSIG_MOVABLE_MAPCOORDS_UPDATED "movable_mapcoords_updated"

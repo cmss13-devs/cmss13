@@ -513,15 +513,6 @@
 /// Window skin types
 #define TOGGLE_WINDOW_SKIN 1
 
-// Quadtree values
-
-/// Max amount of player coordinates in a quadtree cell
-#define QUADTREE_CAPACITY 12
-/// Minimum X width up to which we keep dividing the tree (meaning cells can be half that)
-#define QUADTREE_BOUNDARY_MINIMUM_WIDTH 12
-/// Minimum Y height up to which we keep dividing the tree (meaning cells can be half that)
-#define QUADTREE_BOUNDARY_MINIMUM_HEIGHT 12
-
 /// Whether to filter to only living mobs
 #define QTREE_FILTER_LIVING 1
 

@@ -11,6 +11,16 @@
 	var/shrapnel_count = 14
 	var/shrapnel_type = /datum/ammo/xeno/acid/prae_nade
 
+/obj/item/explosive/grenade/xeno_acid_grenade/Move(NewLoc, direct)
+	if(throwing)
+		for(var/obj/structure/barricade/target_barricade in NewLoc)
+			if(!target_barricade.density)
+				continue
+			playsound(target_barricade, 'sound/effects/slam1.ogg', 15, 1)
+			return FALSE
+
+	return ..()
+
 /obj/item/explosive/grenade/xeno_acid_grenade/prime()
 	create_shrapnel(loc, shrapnel_count, , ,shrapnel_type, cause_data)
 	qdel(src)

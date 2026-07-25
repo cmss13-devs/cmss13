@@ -670,6 +670,13 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	if(dat)
 		. += dat
 
+	if(flags_gun_features & GUN_TRICKSTER)
+		. += SPAN_NOTICE("You feel like tricks with it can be done easily.")
+		. += SPAN_INFO ("To perform tricks, swap on <span class='corp_label_blue'>disarm</span> intent.")
+
+	if(flags_gun_features & GUN_CAN_WARNING_SHOT)
+		. += SPAN_INFO ("To perform a warning shot, swap on <span class='corp_label_yellow'>grab</span> intent.")
+
 /obj/item/weapon/gun/Topic(href, href_list)
 	. = ..()
 	if(.)
@@ -2482,10 +2489,19 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 	playsound(user, fire_sound, 120, FALSE)
 
+	var/datum/component/gun_hush/hush_comp = GetComponent(/datum/component/gun_hush)
 	FOR_DVIEW(var/mob/mob, world.view, user, HIDE_INVISIBLE_OBSERVER)
-		if(mob && mob.client)
-			if(ishuman(mob))
-				shake_camera(mob, 3, 4)
+		if(hush_comp?.hush_enabled && isliving(mob))
+			var/mob/living/audience = mob
+			if(!HAS_TRAIT(audience, TRAIT_LEADERSHIP) && !skillcheck(audience, SKILL_LEADERSHIP, SKILL_LEAD_TRAINED))
+				if(user.faction == audience.faction && !(audience.mob_flags & MUTINY_MUTINEER))
+					audience.set_hushed(10 DECISECONDS)
+					to_chat(audience, SPAN_WARNING("You hush yourself as [user] fires their [name] authoritatively!"))
+				else
+					to_chat(audience, SPAN_WARNING("You hear [user] firing their [name] authoritatively... but you don't particularly care for it."))
+
+		if(mob.client && ishuman(mob))
+			shake_camera(mob, 3, 4)
 	FOR_DVIEW_END
 
 	last_fired = world.time
@@ -2583,5 +2599,60 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if(!active_attachable)
 		in_chamber = null
 	reload_into_chamber(user)
+
+/datum/component/gun_hush // yes im lazy to make another file in the components folder
+	var/hush_enabled = TRUE
+
+/datum/component/gun_hush/Initialize()
+	. = ..()
+	hush_enabled = TRUE
+	var/datum/action/item_action/gun_hush/hush_action = new(parent)
+	hush_action.update_button_icon()
+
+/datum/component/gun_hush/proc/toggle_hush(mob/user)
+	if(!skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_TRAINED))
+		to_chat(user, SPAN_WARNING("You do not have the authority required to hush your peers."))
+		return
+
+	hush_enabled = !hush_enabled
+	to_chat(user, SPAN_NOTICE("You toggle the hush function [hush_enabled ? "on" : "off"]."))
+	playsound(parent, 'sound/weapons/handling/safety_toggle.ogg', 25, 1, 6)
+
+	var/datum/action/item_action/gun_hush/action = locate() in parent:actions
+	if(action)
+		action.update_button_icon()
+
+/datum/action/item_action/gun_hush
+	action_icon_state = "hush_on"
+
+/datum/action/item_action/gun_hush/New(Target, obj/item/holder)
+	..()
+	name = "Toggle Gun Hushing"
+	button.name = name
+
+/datum/action/item_action/gun_hush/action_activate()
+	. = ..()
+	var/obj/item/weapon/gun/authoritative_gun = holder_item
+	if(!istype(authoritative_gun))
+		return
+
+	var/datum/component/gun_hush/hush_comp = authoritative_gun.GetComponent(/datum/component/gun_hush)
+	if(hush_comp)
+		hush_comp.toggle_hush(owner)
+
+/datum/action/item_action/gun_hush/update_button_icon()
+	var/obj/item/weapon/gun/authoritative_gun = holder_item
+	var/datum/component/gun_hush/hush_comp = authoritative_gun.GetComponent(/datum/component/gun_hush)
+
+	if(hush_comp)
+		if(hush_comp?.hush_enabled)
+			action_icon_state = "hush_on"
+		else
+			action_icon_state = "hush_off"
+	else // component shenanigans
+		action_icon_state = "hush_on"
+
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
 // CO GUN STUFF END

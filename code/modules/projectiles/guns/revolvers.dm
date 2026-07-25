@@ -34,8 +34,6 @@
 	var/trick_delay = 4 SECONDS
 	var/recent_trick //So they're not spamming tricks.
 	var/russian_roulette = FALSE //God help you if you do this.
-	var/trickster_gun = FALSE //If true, allows gun spinning.
-	var/threat_gun = FALSE //If true, will give a hint about warning shot ability
 
 /obj/item/weapon/gun/revolver/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -142,13 +140,6 @@
 
 /obj/item/weapon/gun/revolver/get_examine_text(mob/user)
 	. = ..()
-
-	if(trickster_gun)
-		. += SPAN_NOTICE("You feel like tricks with it can be done easily.")
-		. += SPAN_INFO ("To perform tricks, swap on <span class='corp_label_blue'>disarm</span> intent.")
-
-	if(threat_gun)
-		. += SPAN_INFO ("To perform a warning shot, swap on <span class='corp_label_yellow'>grab</span> intent.")
 
 	if(russian_roulette)
 		. += SPAN_RED("You are now playing Russian Roulette with [src]!")
@@ -362,11 +353,11 @@
 		close_chamber(user)
 		return TRUE
 
-/obj/item/weapon/gun/revolver/unique_action(mob/user)
+/obj/item/weapon/gun/revolver/unique_action(mob/user) // even though its a flag now, im not inclined to moving this to the parent + the code needs updating, and im not touching this thing
 	if(toggle_cylinder(user))
 		return
 
-	if(trickster_gun && user.a_intent == INTENT_DISARM)
+	if((flags_gun_features & GUN_TRICKSTER) && user.a_intent == INTENT_DISARM)
 		perform_tricks(user)
 		return
 	else
@@ -734,8 +725,7 @@
 	fire_sound = 'sound/weapons/gun_44mag2.ogg'
 	current_mag = /obj/item/ammo_magazine/internal/revolver/small
 	force = 6
-	flags_gun_features = GUN_ANTIQUE|GUN_ONE_HAND_WIELDED|GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
-	trickster_gun = TRUE
+	flags_gun_features = GUN_ANTIQUE|GUN_ONE_HAND_WIELDED|GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_TRICKSTER
 
 /obj/item/weapon/gun/revolver/small/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 19, "rail_x" = 12, "rail_y" = 21, "under_x" = 20, "under_y" = 15, "stock_x" = 20, "stock_y" = 15)
@@ -803,14 +793,14 @@
 	unacidable = TRUE
 	explo_proof = TRUE
 	black_market_value = 100
-	threat_gun = TRUE
 	var/is_locked = TRUE
 	var/can_change_barrel = TRUE
-	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_ONE_HAND_WIELDED|GUN_BATTLEFIELD_EXECUTION
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_ONE_HAND_WIELDED|GUN_BATTLEFIELD_EXECUTION|GUN_CAN_WARNING_SHOT
 
 /obj/item/weapon/gun/revolver/mateba/Initialize()
 	. = ..()
 	AddElement(/datum/element/corp_label/spearhead)
+	AddComponent(/datum/component/gun_hush)
 
 /obj/item/weapon/gun/revolver/mateba/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/weapon/mateba_key) && can_change_barrel)
@@ -1015,7 +1005,7 @@
 	)
 	starting_attachment_types = list()
 	can_change_barrel = FALSE
-	trickster_gun = TRUE
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_ONE_HAND_WIELDED|GUN_BATTLEFIELD_EXECUTION||GUN_CAN_WARNING_SHOT|GUN_TRICKSTER
 
 /obj/item/weapon/gun/revolver/mateba/mtr6m/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 23, "rail_x" = 19, "rail_y" = 23, "under_x" = 19, "under_y" = 17, "stock_x" = 19, "stock_y" = 17, "special_x" = 23, "special_y" = 22)
@@ -1108,7 +1098,7 @@
 	icon_state = "black_spearhead"
 	item_state = "black_spearhead"
 	current_mag = /obj/item/ammo_magazine/internal/revolver/cmb
-	trickster_gun = TRUE
+	flags_gun_features = GUN_ANTIQUE|GUN_ONE_HAND_WIELDED|GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_TRICKSTER
 
 /obj/item/weapon/gun/revolver/cmb/custom/tactical
 	starting_attachment_types = list(/obj/item/attachable/extended_barrel, /obj/item/attachable/lasersight, /obj/item/attachable/reflex)

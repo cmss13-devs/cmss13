@@ -298,12 +298,12 @@ All ShuttleMove procs go here
 	var/turf/open/shuttle/dropship/init_loc
 	var/real_dir
 
-	if(!linked_console)
+	if(linked_console)
+		real_dir = linked_console.dir
+	else
 		if(linked_dropship)
 			linked_console = linked_dropship.getControlConsole()
 			real_dir = linked_console.dir
-	else
-		real_dir = linked_console.dir
 	if(!linked_to_turf)
 		if(move_dir == NORTH)
 			if(istype(src.loc, /turf/open/shuttle/dropship))
@@ -311,7 +311,6 @@ All ShuttleMove procs go here
 				init_loc.linked_door = src
 				linked_to_turf = TRUE
 	if(id == "starboard_door" || "port_door")
-		for(var/turf/closed/shuttle/wallsie in old_locs)
 		if(real_dir == NORTH)
 			for(step_turf in range(1, loc))
 				if(step_turf.linked_door)
@@ -422,3 +421,6 @@ All ShuttleMove procs go here
 		installed_equipment.setDir(dir)
 		installed_equipment.pixel_y = pixel_y
 		installed_equipment.pixel_x = pixel_x
+
+//obj/effect/attach_point/weapon/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
+

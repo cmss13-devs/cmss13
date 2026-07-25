@@ -18596,65 +18596,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/plating/prison,
 /area/atlan/asteroid/processing_caves)
-"bhg" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/invuln/overhead_pipe{
-	dir = 4;
-	pixel_y = 13
-	},
-/obj/structure/reagent_dispensers/tank/water,
-/turf/open/floor/plating/plating_catwalk,
-/area/atlan/oob/space)
-"bhh" = (
-/obj/structure/prop/invuln/overhead_pipe{
-	dir = 4;
-	pixel_y = 13
-	},
-/turf/open/floor/almayer/plate,
-/area/atlan/oob/space)
-"bhi" = (
-/obj/effect/decal/cleanable/blood/oil/streak,
-/obj/structure/prop/invuln/overhead_pipe{
-	dir = 4;
-	pixel_y = 13
-	},
-/turf/open/floor/almayer/plate,
-/area/atlan/oob/space)
-"bhj" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/invuln/overhead_pipe{
-	dir = 4;
-	pixel_y = 13
-	},
-/obj/structure/prop/invuln/pipe_water,
-/obj/item/reagent_container/glass/bucket{
-	pixel_y = -14
-	},
-/turf/open/floor/almayer/plate,
-/area/atlan/oob/space)
-"bhk" = (
-/obj/structure/prop/invuln/overhead_pipe{
-	dir = 4;
-	pixel_y = 13
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/atlan/oob/space)
-"bhl" = (
-/obj/item/storage/toolbox/mechanical,
-/obj/structure/largecrate/random/case,
-/turf/open/floor/almayer/plate,
-/area/atlan/oob/space)
-"bhm" = (
-/turf/open/floor/plating/plating_catwalk,
-/area/atlan/oob/space)
-"bhn" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/apc/almayer/north,
-/turf/open/floor/plating/plating_catwalk,
-/area/atlan/oob/space)
-"bho" = (
-/turf/closed/wall/almayer/reinforced/temphull,
-/area/atlan/oob/space)
 "bhK" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	name = "launch bay door"
@@ -125202,8 +125143,8 @@ alD
 alD
 alD
 alD
-bhl
-bhg
+alD
+alD
 alD
 alD
 alD
@@ -125414,8 +125355,8 @@ alD
 alD
 alD
 alD
-bhm
-bhh
+alD
+alD
 alD
 alD
 alD
@@ -125626,8 +125567,8 @@ alD
 alD
 alD
 alD
-bhn
-bhi
+alD
+alD
 alD
 alD
 alD
@@ -125838,8 +125779,8 @@ alD
 alD
 alD
 alD
-bho
-bhj
+alD
+alD
 alD
 alD
 alD
@@ -126050,8 +125991,8 @@ alD
 alD
 alD
 alD
-bho
-bhk
+alD
+alD
 alD
 alD
 alD

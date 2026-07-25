@@ -422,5 +422,5 @@ All ShuttleMove procs go here
 		installed_equipment.pixel_y = pixel_y
 		installed_equipment.pixel_x = pixel_x
 
-//obj/effect/attach_point/weapon/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
+
 

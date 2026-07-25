@@ -800,7 +800,6 @@
 /obj/item/weapon/gun/revolver/mateba/Initialize()
 	. = ..()
 	AddElement(/datum/element/corp_label/spearhead)
-	AddComponent(/datum/component/gun_hush)
 
 /obj/item/weapon/gun/revolver/mateba/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/weapon/mateba_key) && can_change_barrel)

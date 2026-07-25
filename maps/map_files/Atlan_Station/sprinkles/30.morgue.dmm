@@ -65,7 +65,7 @@
 	pixel_x = -4;
 	pixel_y = 32
 	},
-/obj/structure/platform_decoration/metal/strata/west,
+/obj/structure/platform_decoration/metal/atlan/west,
 /turf/open/floor/strata/cyan1,
 /area/atlan/station/medical/morgue)
 "s" = (
@@ -209,7 +209,7 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
-/obj/structure/platform/metal/stair_cut/strata_right,
+/obj/structure/platform/metal/stair_cut/atlan/atlan_right,
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/medical/morgue)
 "X" = (

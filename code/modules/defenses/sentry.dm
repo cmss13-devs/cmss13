@@ -93,6 +93,8 @@
 	targets = SSmapgrids.players_in_range_legacy(range_bounds, z, QTREE_SCAN_MOBS | QTREE_FILTER_LIVING)
 
 	for(var/mob/target as anything in targets)
+		if(target.z != z)
+			targets -= target // It's not on our Z-level or not even on map at all
 		if(target.mob_flags & MOB_ABSTRACT)
 			targets -= target
 

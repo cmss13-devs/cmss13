@@ -152,3 +152,88 @@
   ori-disillusion-mirnov:
   - code_imp: all living mobs now have procs for riding
   - code_imp: adding the riding element is easier
+2026-07-18:
+  TheDonkified:
+  - refactor: Updates spark_spread effect system to use subsystem processing and timers
+      instead of sleeps
+  - refactor: Sparks move a bit faster/smoother
+2026-07-20:
+  Red-byte3D:
+  - balance: HEDP no longer pushes bodies around when they're dead for humans.
+  fira:
+  - bugfix: Fixed 'Set Operations Commander' admin verb breaking under certain circumstances.
+  - bugfix: The IMS and Laser Scalpel will now once again skip their associated steps.
+  - bugfix: Fixed Cryopod internal intercoms being sent to the void upon ejecting.
+  - bugfix: Fixed some exploitable race conditions with Cryopods.
+  matttheficus:
+  - rscadd: Added WotQ Keybind option.
+2026-07-21:
+  JackieEstegado:
+  - rscadd: Dropship modules can now be repaired with a welder.
+  - rscadd: Deployable (DS and non-DS) sentries and MGs now continuously sync their
+      health between the module and the weapon.
+  - balance: Acid applied to an installed dropship module now deals damage overtime
+      instead of simply deleting it.
+  - balance: Acided dropship modules can no longer be picked up with a powerloader.
+  - qol: Cryoing now only takes 1 minute upon entering the cryobed, except for players
+      who were forced inside while SSD unless they are the aCO.
+  - qol: If the current aCO cryoes ARES will automatically pick a new aCO.
+  - qol: Players in the process of cryoing will get skipped during autopromotion by
+      ARES.
+  MistChristmas:
+  - bugfix: SEAs with no preference on their rank spawn as Gunnery Sergeants rather
+      than Civs.
+  - ui: RMC get sorted properly, IASF get a colour correctly assigned in the Orbit
+      menu
+  - bugfix: Shotguns now respect your preference regarding hurting yourself
+  - bugfix: Ship Intercomms & Shortwaves work again
+2026-07-23:
+  ComboTombo:
+  - rscadd: Added K92 Maintenance Jacks to Requisitions
+  LC4492:
+  - imageadd: Adds Minimap/Orbit icons for all US Army survivors in Tyrargo; adds
+      a HUD icon for the US Army Tankcrew.
+  - imagetweak: Changes the minimap icon for the Vehicle Crewman so it actually fits
+      it's background.
+  MistChristmas:
+  - bugfix: Surgery to the chest/head no longer requires you to clamp bleeders up
+      to twice before you can open it.
+  - rscadd: IOs get marine engineering access instead of civilian.
+  - bugfix: Airlock Electronics + Some other things like Fire doors now accept Marine
+      Engineering access to access.
+  - rscdel: Removes some civilian engineering access from shipside roles.
+2026-07-24:
+  MistChristmas:
+  - bugfix: Field Doc can access their room again
+  fira:
+  - rscdel: The Agents item tracker is now disabled, since agents are gone.
+  - admin: Many logs, admin messages, and attack logs now are normalized to use the
+      ckey rather than full key - this is important in regard to consistency for searching
+      in logs for example
+  - admin: Users in admin messages will now be marked as disconnected even if there
+      is no PM link for them
+  - admin: Ghosted or otherwise out-of-body users will now show their previous ckey
+      in admin messages rather than no key
+  george:
+  - balance: Humans can be moved by explosions again.
+2026-07-25:
+  Puckaboo2:
+  - rscadd: 'Adds role comms for Surgeon and Pharmaceutical Physician: Surg and Phm.
+      Phys. No more screaming at the Surgeon to make medicine when there are two other
+      Pharmacists available, okay, Chief?'
+  - imageadd: Adds HUD and minimap icons for the CMC, ACMC, General, event staff,
+      dress blues, and several of the Provost staff; adds an HUD icon for the Combat
+      Correspondent; adds HUD and minimap icons for Surgeon and Pharmaceutical Physician.
+  - imagetweak: Fixes HUD borders and baubles, differentiates between heads of staff
+      and officers.
+  - imagetweak: SEA's border is now grey; they are not officers, so should not have
+      brown borders. They do have a colored 'A', though.
+  - imagetweak: Synthetic K9 units' HUD icons are now represented by a puppy.
+  - imagetweak: A minimap border has been renamed and reshaded.
+  - rscdel: Removes invisible borders on most of the command staff and officers.
+  antlersss:
+  - spellcheck: Large wooden walls now say they're made of wood
+  - bugfix: Regulating chemicals will no longer trigger red holotags
+  - bugfix: Xenos can no longer hide under flames with the fire resistance boon.
+  halgmor:
+  - bugfix: static red headband now appears on helmets when added

@@ -78,7 +78,7 @@
 	//getting out of hypersleep
 	if(loc && (istype(loc, /obj/structure/machinery/cryopod)))
 		var/obj/structure/machinery/cryopod/BB = loc
-		BB.eject()
+		BB.eject(src)
 
 	//getting out of bodyscanner
 	if(loc && (istype(loc, /obj/structure/machinery/medical_pod/bodyscanner)))

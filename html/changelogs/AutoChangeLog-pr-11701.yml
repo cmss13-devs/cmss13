@@ -1,0 +1,10 @@
+author: "Puckaboo2"
+delete-after: True
+changes:
+  - rscadd: "Adds role comms for Surgeon and Pharmaceutical Physician: Surg and Phm. Phys. No more screaming at the Surgeon to make medicine when there are two other Pharmacists available, okay, Chief?"
+  - imageadd: "Adds HUD and minimap icons for the CMC, ACMC, General, event staff, dress blues, and several of the Provost staff; adds an HUD icon for the Combat Correspondent; adds HUD and minimap icons for Surgeon and Pharmaceutical Physician."
+  - imagetweak: "Fixes HUD borders and baubles, differentiates between heads of staff and officers."
+  - imagetweak: "SEA's border is now grey; they are not officers, so should not have brown borders. They do have a colored 'A', though."
+  - imagetweak: "Synthetic K9 units' HUD icons are now represented by a puppy."
+  - imagetweak: "A minimap border has been renamed and reshaded."
+  - rscdel: "Removes invisible borders on most of the command staff and officers."

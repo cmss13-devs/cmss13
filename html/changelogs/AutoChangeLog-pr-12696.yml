@@ -1,0 +1,4 @@
+author: "antlersss"
+delete-after: True
+changes:
+  - bugfix: "Regulating chemicals will no longer trigger red holotags"

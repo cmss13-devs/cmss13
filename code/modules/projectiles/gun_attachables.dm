@@ -3990,6 +3990,7 @@ Defined in conflicts.dm of the #defines folder.
 	recoil_mod = RECOIL_AMOUNT_TIER_5
 	burst_scatter_mod = 0
 	delay_mod = FIRE_DELAY_TIER_11
+	user.status_flags &= ~IMMOBILE_ACTION
 	//if we are no longer on full auto, don't bother switching back to the old firemode
 	if(full_auto_switch && gun.gun_firemode == GUN_FIREMODE_AUTOMATIC && gun.gun_firemode != old_firemode)
 		gun.do_toggle_firemode(user, null, old_firemode)
@@ -4023,6 +4024,7 @@ Defined in conflicts.dm of the #defines folder.
 		bipod_deployed = !bipod_deployed
 		if(user)
 			if(bipod_deployed)
+				user.status_flags |= IMMOBILE_ACTION
 				ADD_TRAIT(gun, TRAIT_GUN_BIPODDED, "attached_bipod")
 				to_chat(user, SPAN_NOTICE("You deploy [src] [support ? "on [support]" : "on the ground"]."))
 				SEND_SIGNAL(user, COMSIG_MOB_DEPLOYED_BIPOD)
@@ -4062,7 +4064,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/bipod/proc/handle_mob_move_or_look(mob/living/mover, actually_moving, direction, specific_direction)
 	SIGNAL_HANDLER
 
-	if(!actually_moving && (specific_direction & initial_mob_dir)) // if you're facing north, but you're shooting north-east and end up facing east, you won't lose your bipod
+	if(!actually_moving && !(specific_direction in reverse_nearby_direction(initial_mob_dir))) // if you're facing north, but you're shooting north-east and end up facing east, you won't lose your bipod
 		return
 	undeploy_bipod(loc, mover)
 	mover.apply_effect(1, SUPERSLOW)

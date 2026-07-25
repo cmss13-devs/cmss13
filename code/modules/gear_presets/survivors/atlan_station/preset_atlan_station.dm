@@ -206,14 +206,20 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/construction(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
 
-/datum/equipment_preset/synth/survivor/atlan_doctor
-	name = "Survivor - Sorokyne Strata - Synthetic - Doctor"
-	flags = EQUIPMENT_PRESET_START_OF_ROUND
+/datum/equipment_preset/survivor/atlan_doctor
+	name = "Survivor - UPP - Ministry of Health - Doctor"
+	assignment = "Doktor Ministerstva Zdravookhraneniya"
+	minimap_icon = "upp_doc"
+	minimap_background = "background_upp_medical"
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_CHINESE)
 	faction = FACTION_UPP
 	faction_group = FACTION_LIST_SURVIVOR_UPP
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	origin_override = ORIGIN_UPP
 
 	survivor_variant = MEDICAL_SURVIVOR
+
+/datum/equipment_preset/survivor/atlan_doctor/load_gear(mob/living/carbon/human/new_human)
 
 /datum/equipment_preset/synth/survivor/atlan_doctor/load_gear(mob/living/carbon/human/new_human)
 	var/random_civilian_satchel= rand(1,3)
@@ -262,10 +268,6 @@
 	// gun //
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/np92/suppressed(new_human), WEAR_L_HAND)
 	..()
-
-
-
-
 
 /datum/equipment_preset/survivor/engineer/atlan_processing_engineer
 	name = "Survivor - UPP - Ministry of Industry - Atlan Refinery Engineer"

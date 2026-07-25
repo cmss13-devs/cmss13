@@ -134,7 +134,6 @@
 	// Otherwise move it
 	insert(target)
 
-
 /// Where most of the magic happens - scans a range over several mapcells in the mapgrid
 /// to perform a ranging query. Watch out, for compatibility reasons with external code,
 /// the range is inclusive both directions here.
@@ -185,6 +184,102 @@
 				&& (!z_list || (target_turf.z in z_list)))
 					. += possible_target
 
+/// Moves the boundaries and rebalances the mapcells to optimize them
+/datum/mapgrid/proc/balance()
+	// We'll achieve this the dumb and simple way, it's not perfect, but the balancing operation also takes time!
+	// We want to reduce proccall overhead as much as possible too so this might get beefy
+
+	// Step 1x: We sort everything by X. It's pre-sorted (cell 1 is before cell 2) so we gain time by segmenting it.
+	var/list/list/atom/movable/row_contents = new /list(dim)
+	for(var/y in 1 to dim)        // for each row
+		row_contents[y] = list()
+		for(var/x in 1 to dim)    // for each column of that row
+			var/datum/mapcell/cell = cells[x][y]
+			for(var/atom/movable/thing as anything in cell.contents)
+				var/turf/turf = get_turf(thing)
+				if(!turf)
+					continue // This is not supposed to be possible and would be really bad, but beats crashing
+				row_contents[y][thing] = turf.x
+		row_contents[y] = sortAssocValNumeric(row_contents[y]) // Sort them
+
+	// Step 2x: Stitch it all into a single list. Because cells were already sorted, the result is still sorted!
+	var/list/atom/movable/all_row_contents = list()
+	for(var/y in 1 to dim)
+		all_row_contents += row_contents[y]
+	if(!length(all_row_contents))
+		return // Noone's here, don't bother
+
+	// Step 3x: Now we can start doing more intelligent stuff. We're going to find out how we'll balance this.
+	// We split our x-sorted megarow to find out what each boundary should be.
+	var/new_bounds_x = new /list(dim)
+	for(var/x in 1 to dim-1)
+		var/atom/movable/chosen_one = all_row_contents[floor(x / dim * length(all_row_contents) + 1)] // Pick our 'median' object
+		new_bounds_x[x] = all_row_contents[chosen_one] // The boundary will be their X position
+		// We don't want zero width cells so we're forcibly bumping this if needed
+		if(x > 1 && new_bounds_x[x-1] >= new_bounds_x[x])
+			new_bounds_x[x] = new_bounds_x[x-1] + 1
+			// Note that this can mean a cell goes past world.maxx but this shouldn't be a problem
+	// Last cell always fills the rest of the space (or "more" if the previous comment happens)
+	new_bounds_x[dim] = max(new_bounds_x[dim-1] + 1, world.maxx)
+
+	// =============================
+	// GREAT! We have our new boundaries, and we can start balancing our grid for it!
+	// .... Hold up, didn't you forget something? Yeah, we need to do all the above for columns/Y too.
+	// This is basically copypaste so feel free to jump ahead.
+	// =============================
+
+	// Step 1y: We sort everything by Y. It's pre-sorted (cell 1 is before cell 2) so we gain time by segmenting it.
+	var/list/list/atom/movable/col_contents = new /list(dim)
+	for(var/x in 1 to dim)        // for each column
+		col_contents[x] = list()
+		for(var/y in 1 to dim)    // for each row of that column
+			var/datum/mapcell/cell = cells[x][y]
+			for(var/atom/movable/thing as anything in cell.contents)
+				var/turf/turf = get_turf(thing)
+				if(!turf)
+					continue // This is not supposed to be possible and would be really bad, but beats crashing
+				col_contents[x][thing] = turf.y
+		col_contents[x] = sortAssocValNumeric(col_contents[x]) // Sort them
+
+	// Step 2x: Stitch it all into a single list. Because cells were already sorted, the result is still sorted!
+	var/list/atom/movable/all_col_contents = list()
+	for(var/x in 1 to dim)
+		all_col_contents += col_contents[x]
+	if(!length(all_col_contents))
+		return // Noone's here, don't bother
+
+	// Step 3x: Now we can start doing more intelligent stuff. We're going to find out how we'll balance this.
+	// We split our y-sorted megacolumn to find out what each boundary should be.
+	var/new_bounds_y = new /list(dim)
+	for(var/y in 1 to dim-1)
+		var/atom/movable/chosen_one_y = all_col_contents[floor(y / dim * length(all_col_contents) + 1)] // Pick our 'median' object
+		new_bounds_y[y] = all_col_contents[chosen_one_y] // The boundary will be their X position
+		// We don't want zero width cells so we're forcibly bumping this if needed
+		if(y > 1 && new_bounds_y[y-1] >= new_bounds_y[y])
+			new_bounds_y[y] = new_bounds_y[y-1] + 1
+			// Note that this can mean a cell goes past world.maxy but this shouldn't be a problem
+	// Last cell always fills the rest of the space (or "more" if the previous comment happens)
+	new_bounds_y[dim] = max(new_bounds_y[dim-1] + 1, world.maxy)
+
+	// ====================
+	// Finally it's time to start balancing.
+	// You're probably expecting some kind of crazy tech for that, but sorry
+	// we'll do this one very dirty.
+	// ====================
+
+	// Swap the boundaries. If we crash below this, everything is doomed, which is additional
+	// incentive to delegate to other procs.
+	bounds_x = new_bounds_x
+	bounds_y = new_bounds_y
+	for(var/x in 0 to dim-1) // Stolen from instanciation code. Can't go wrong
+		for(var/y in 0 to dim-1)
+			var/datum/mapcell/cell = cells[x+1][y+1]
+			cell.set_boundaries(x ? bounds_x[x] : 0, bounds_x[x+1], y ? bounds_y[y] : 0, bounds_y[y+1])
+
+	// Now just recheck everyone. Yup.
+	for(var/atom/movable/thing as anything in tracked_atoms)
+		check_atom_loc(thing, get_turf(thing))
+
 
 /// A single cell of a mapgrid
 /// Unfortunately this has to be a dedicated datum, because having the
@@ -203,6 +298,31 @@
 	src.start_y = start_y
 	src.end_y = end_y
 
+/datum/mapcell/proc/set_boundaries(start_x, end_x, start_y, end_y)
+	src.start_x = start_x
+	src.end_x = end_x
+	src.start_y = start_y
+	src.end_y = end_y
+
 /datum/mapcell/Destroy()
 	. = ..()
 	contents.Cut()
+
+
+
+/client/proc/debug_mapgrids()
+	var/datum/mapgrid/mg = SSmapgrids.manager.mapgrids_by_z[2]
+
+	var/counter = 1
+	for(var/x in 1 to mg.dim)
+		for(var/y in 1 to mg.dim)
+			var/datum/mapcell/mc = mg.cells[x][y]
+			to_chat(src, "#[counter] ([x],[y]) : x=([mc.start_x],[mc.end_x]) ; y=([mc.start_y],[mc.end_y]) ; contents=[length(mc.contents)]")
+			counter++
+
+/client/proc/rebalance_mapgrid()
+	var/turf/turf = get_turf(usr)
+	var/datum/mapgrid/mg = SSmapgrids.manager.mapgrids_by_z[turf.z]
+	log_debug("MapGrid for z=[turf.z] : Boundaries before rebalance: x=([mg.bounds_x.Join(",")]) ; y=([mg.bounds_y.Join(",")])")
+	mg.balance()
+	log_debug("MapGrid for z=[turf.z] : Boundaries after rebalance: x=([mg.bounds_x.Join(",")]) ; y=([mg.bounds_y.Join(",")])")

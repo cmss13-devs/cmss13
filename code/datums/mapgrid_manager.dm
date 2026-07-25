@@ -14,6 +14,9 @@
 	/// The discrimination is done by the using code afterwards
 	var/list/datum/mapgrid/mapgrids_by_z = list()
 
+	/// Individual mapgrid instances
+	var/list/datum/mapgrid/all_grids = list()
+
 	/// All tracked atoms, that we monitor for changes in Z-level
 	var/list/atom/movable/tracked_movables = list()
 
@@ -34,7 +37,9 @@
 		if(z_down < space_level.z_value) // This level links with an instanciated one
 			mapgrids_by_z += mapgrids_by_z[z_down]
 	else
-		mapgrids_by_z += new /datum/mapgrid(dim)
+		var/datum/mapgrid/grid = new /datum/mapgrid(dim)
+		mapgrids_by_z += grid
+		all_grids += grid
 
 /datum/mapgrid_manager/proc/track_movable(atom/movable/target)
 	if(target in tracked_movables)

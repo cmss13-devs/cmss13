@@ -126,6 +126,11 @@
 		return
 	..()
 
+/obj/item/storage/backpack/can_storage_interact(mob/user)
+	if(locking_id && !compare_id(user))
+		return FALSE
+	. = ..()
+
 /obj/item/storage/backpack/storage_close(mob/user)
 	UnregisterSignal(user, COMSIG_MOVABLE_PRE_MOVE)
 	..()

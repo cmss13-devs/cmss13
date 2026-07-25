@@ -455,9 +455,9 @@
 	if(pockets.handle_mousedrop(usr, over_object))
 		..()
 
-/obj/item/clothing/head/headset/attackby(obj/item/W, mob/user)
+/obj/item/clothing/head/headset/attackby(obj/item/headpiece, mob/user)
 	..()
-	return pockets.attackby(W, user)
+	return pockets.attackby(headpiece, user)
 
 /obj/item/clothing/head/headset/on_pocket_insertion()
 	update_icon()
@@ -467,15 +467,15 @@
 
 /obj/item/clothing/head/headset/update_icon()
 	helmet_overlays = list() // Rebuild our list every time
-	if(length(pockets?.contents) && (flags_marine_headset & HAT_GARB_OVERLAY))
+	if(pockets?.contents && (flags_marine_headset & HAT_GARB_OVERLAY))
 		for(var/obj/item/garb_object in pockets.contents)
 			if(garb_object.type in GLOB.allowed_headset_items)
 				var/image/new_overlay = garb_object.get_garb_overlay(GLOB.allowed_headset_items[garb_object.type])
 				helmet_overlays += new_overlay
 
 	if(ismob(loc))
-		var/mob/moob = loc
-		moob.update_inv_head()
+		var/mob/wearer = loc
+		wearer.update_inv_head()
 
 /obj/item/clothing/head/headset/has_garb_overlay()
 	return flags_marine_headset & HAT_GARB_OVERLAY

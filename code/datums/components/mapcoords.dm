@@ -80,6 +80,8 @@
 
 	// Case 1: We're moving on the map. Nothing fancy to do.
 	if(parent_movable.z)
+		if(master_container) // If we were into any sort of container, clear that
+			detach_chain()
 		SEND_SIGNAL(parent, COMSIG_MOVABLE_MAPCOORDS_UPDATED, parent_movable.loc)
 
 	// Case 2: We moved into a (different) container

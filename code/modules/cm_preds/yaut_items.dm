@@ -449,6 +449,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	siemens_coefficient = 0.9
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	valid_accessory_slots = list(ACCESSORY_SLOT_DEFAULT, ACCESSORY_SLOT_TIE, ACCESSORY_SLOT_PATCH, ACCESSORY_SLOT_STORAGE, ACCESSORY_SLOT_UTILITY, ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_ARMOR_C, ACCESSORY_SLOT_WRIST_L, ACCESSORY_SLOT_WRIST_R, ACCESSORY_SLOT_MASK, ACCESSORY_SLOT_TROPHY)
+	is_seethrough = TRUE
 
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
@@ -1598,6 +1599,11 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	icon = 'icons/obj/items/hunter/prey_items.dmi'
 	unacidable = TRUE
 
+/obj/item/skull/Initialize(mapload, ...)
+	. = ..()
+	if(!icon_state)
+		return INITIALIZE_HINT_QDEL
+
 /obj/item/skull/queen
 	name = "Queen skull"
 	desc = "Skull of a prime hive ruler, mother to many."
@@ -1699,12 +1705,27 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	desc = "Skull of a highly acidic xenomorph, a venomous ranged attacker."
 	icon_state = "spitter_skull"
 
+/obj/item/skull/abomination
+	name = "Abomination skull"
+	desc = "Skull of a mysterious hybrid xenomorph, a horror on the field."
+	icon_state = "predalien_skull"
+
+/obj/item/skull/abomination/get_examine_text(mob/user)
+	. = ..()
+	if(isyautja(user))
+		. += SPAN_RED("Not even this relic can be tolerated. Destroy it.")
+
 // PELTS
 
 /obj/item/pelt
 	name = "pelt"
 	icon = 'icons/obj/items/hunter/prey_items.dmi'
 	unacidable = TRUE
+
+/obj/item/pelt/Initialize(mapload, ...)
+	. = ..()
+	if(!icon_state)
+		return INITIALIZE_HINT_QDEL
 
 /obj/item/pelt/queen
 	name = "Queen pelt"
@@ -1810,6 +1831,16 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	name = "Larva pelt"
 	desc = "The hide of a juvenile Xenomorph, a grim trophy from a fledgling that never reached its full potential."
 	icon_state = "larva_pelt"
+
+/obj/item/pelt/abomination
+	name = "Abomination pelt"
+	desc = "The pelt of a mysterious hybrid xenomorph, a horror on the field."
+	icon_state = "predalien_pelt"
+
+/obj/item/pelt/abomination/get_examine_text(mob/user)
+	. = ..()
+	if(isyautja(user))
+		. += SPAN_RED("Not even this relic can be tolerated. Destroy it.")
 
 /// TOOLS
 

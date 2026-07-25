@@ -117,7 +117,7 @@
 				continue
 			// Don't skip transparent turfs here; vis_contents_holder has VIS_HIDE and will not be copied
 			// So we'll just get the turf itself (for catwalks, etc) and anything on it, like lights or flying objects
-			destination_turf_images[target_turf] = create_vis_contents_screen(SSmapping.get_turf_below(target_turf), target_turf)
+			destination_turf_images[target_turf] = create_vis_contents_screen(stair.loc, target_turf)
 			destination_vectors[target_turf] = vector(target_turf.x, target_turf.y)
 
 	for(var/from_turf, from_vector in source_vectors)
@@ -185,11 +185,14 @@
 
 	in_range_mob -= updater
 
-/proc/create_vis_contents_screen(turf/appear_where, turf/clone_what)
+/proc/create_vis_contents_screen(atom/appear_where, turf/clone_what)
 	var/image/clone = image('icons/turf/floors/floors.dmi', appear_where, "transparent")
+	// Trick byond into thinking we're rendering something on the stairs but they're actually over there
+	clone.pixel_x = (clone_what.x - appear_where.x) * world.icon_size
+	clone.pixel_y = (clone_what.y - appear_where.y) * world.icon_size
 	clone.vis_contents += clone_what
 	clone.vis_contents += GLOB.above_blackness_backdrop
-	clone.override = TRUE
+	//clone.override must be false
 
 	// Make sure we aren't blocked by the blackness plane, we're drawing over obscured turfs after all
 	clone.plane = ABOVE_BLACKNESS_PLANE

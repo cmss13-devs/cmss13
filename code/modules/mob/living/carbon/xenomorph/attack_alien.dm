@@ -9,7 +9,7 @@
 
 // this proc could use refactoring at some point
 /mob/living/carbon/human/attack_alien(mob/living/carbon/xenomorph/attacking_xeno, dam_bonus, unblockable = FALSE)
-	if(attacking_xeno.fortify || HAS_TRAIT(attacking_xeno, TRAIT_ABILITY_BURROWED))
+	if(attacking_xeno.fortify || HAS_TRAIT(attacking_xeno, TRAIT_ABILITY_BURROWED) || HAS_TRAIT(attacking_xeno, TRAIT_ABILITY_REFLECTIVE_PLATES))
 		return XENO_NO_DELAY_ACTION
 
 	if(HAS_TRAIT(src, TRAIT_HAULED))
@@ -403,7 +403,10 @@
 	if(is_wired)
 		xeno.visible_message(SPAN_DANGER("The barbed wire slices into [xeno]!"),
 		SPAN_DANGER("The barbed wire slices into us!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-		xeno.apply_damage(10, enviro=TRUE)
+		if(istype(xeno.strain, /datum/xeno_strain/bulwark))
+			xeno.apply_damage(5, enviro=TRUE)
+		else
+			xeno.apply_damage(10, enviro=TRUE)
 	return XENO_ATTACK_ACTION
 
 /obj/structure/barricade/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
@@ -1141,8 +1144,7 @@
 		to_chat(xeno, SPAN_WARNING("It's already damaged."))
 		return XENO_NO_DELAY_ACTION
 	xeno.animation_attack_on(src)
-	xeno.visible_message(SPAN_DANGER("[xeno] slashes away at [src]!"),
-	SPAN_DANGER("We slash and claw at the bright light!"), max_distance = 5, message_flags = CHAT_TYPE_XENO_COMBAT)
+	xeno.visible_message("[xeno] slashes away at [src]!","We slash and claw at the bright light!", max_distance = 5, message_flags = CHAT_TYPE_XENO_COMBAT)
 	health = max(health - rand(xeno.melee_damage_lower, xeno.melee_damage_upper), 0)
 	if(!health)
 		set_damaged()

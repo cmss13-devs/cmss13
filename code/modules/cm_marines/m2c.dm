@@ -21,6 +21,7 @@
 	icon_state = "m2c"
 	item_state = "m2c"
 	max_rounds = 125
+	flags_magazine = AMMUNITION_REFILLABLE|AMMUNITION_SLAP_TRANSFER
 	default_ammo = /datum/ammo/bullet/machinegun/auto
 	gun_type = null
 

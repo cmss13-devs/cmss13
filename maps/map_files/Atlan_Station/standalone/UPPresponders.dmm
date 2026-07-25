@@ -1755,7 +1755,7 @@
 	pixel_y = 33;
 	layer = 3.1
 	},
-/turf/open/floor/strata/orange_edge/east,
+/turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/promenade)
 "Dy" = (
 /obj/effect/decal/cleanable/blood,
@@ -7083,7 +7083,7 @@ hE
 hE
 vr
 qM
-TG
+aB
 kv
 kv
 kv

@@ -11,11 +11,8 @@
 /turf/open/floor/whitebluefull,
 /area/atlan/station/hab_rec)
 "am" = (
-/obj/structure/bedsheetbin{
-	icon_state = "linenbin-empty"
-	},
-/turf/open/floor/whiteblue,
-/area/atlan/station/hab_rec)
+/turf/template_noop,
+/area/template_noop)
 "aC" = (
 /turf/closed/wall/upp_ship/grey,
 /area/atlan/station/hab_rec)
@@ -72,6 +69,11 @@
 	},
 /turf/open/floor/whiteblue/east,
 /area/atlan/station/hab_rec)
+"ql" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/athletic_mixed,
+/turf/open/floor/whiteblue,
+/area/atlan/station/hab_rec)
 "qT" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -98,6 +100,13 @@
 	dir = 4
 	},
 /obj/structure/bed/chair,
+/turf/open/floor/whiteblue/west,
+/area/atlan/station/hab_rec)
+"vu" = (
+/obj/structure/bedsheetbin{
+	pixel_x = 1;
+	pixel_y = 3
+	},
 /turf/open/floor/whiteblue/west,
 /area/atlan/station/hab_rec)
 "wC" = (
@@ -156,6 +165,18 @@
 "EY" = (
 /turf/open/floor/whiteblue,
 /area/atlan/station/hab_rec)
+"FC" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/storage/large_holster/machete/full,
+/turf/open/floor/whiteblue/southeast,
+/area/atlan/station/hab_rec)
+"FY" = (
+/obj/structure/machinery/light/double/blue,
+/obj/structure/largecrate/random,
+/turf/open/floor/whiteblue,
+/area/atlan/station/hab_rec)
 "HL" = (
 /obj/item/toy/beach_ball,
 /turf/open/gm/river/pool,
@@ -180,10 +201,8 @@
 /turf/open/floor/whiteblue/east,
 /area/atlan/station/hab_rec)
 "Kg" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/double/blue,
-/turf/open/floor/whiteblue,
-/area/atlan/station/hab_rec)
+/turf/closed/wall/upp_ship/grey/reinforced/outer,
+/area/atlan/oob)
 "Ku" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_rook,
@@ -196,8 +215,15 @@
 	},
 /turf/open/floor/whiteblue/north,
 /area/atlan/station/hab_rec)
+"Mb" = (
+/obj/structure/bedsheetbin{
+	icon_state = "linenbin-empty"
+	},
+/turf/open/floor/whiteblue/west,
+/area/atlan/station/hab_rec)
 "Ob" = (
-/turf/open/floor/whiteblue/southeast,
+/obj/item/tool/wet_sign,
+/turf/open/floor/white,
 /area/atlan/station/hab_rec)
 "Qt" = (
 /turf/open/floor/strata/multi_tiles/west,
@@ -267,6 +293,9 @@ aC
 rj
 aC
 aC
+am
+am
+am
 "}
 (2,1,1) = {"
 aa
@@ -280,6 +309,9 @@ Sv
 IZ
 Vu
 aC
+am
+am
+am
 "}
 (3,1,1) = {"
 rs
@@ -292,7 +324,10 @@ Yg
 Yg
 nk
 wC
+vu
+Mb
 yD
+am
 "}
 (4,1,1) = {"
 zZ
@@ -305,6 +340,9 @@ Cw
 Cw
 Cw
 Yg
+Yg
+TV
+EY
 am
 "}
 (5,1,1) = {"
@@ -318,7 +356,10 @@ Ty
 Ty
 Cw
 Yg
-EY
+Yg
+Yg
+Yg
+am
 "}
 (6,1,1) = {"
 aC
@@ -330,8 +371,11 @@ Ty
 Ty
 Ty
 Cw
+Ob
 Yg
-Kg
+Yg
+ql
+am
 "}
 (7,1,1) = {"
 Ye
@@ -342,9 +386,12 @@ Ty
 Ty
 Ty
 Ty
-yk
+Cw
 Yg
-EY
+Yg
+Yg
+FY
+am
 "}
 (8,1,1) = {"
 Ye
@@ -356,8 +403,11 @@ Ty
 ab
 Ty
 Cw
-Yg
-EY
+WZ
+Kc
+Kc
+FC
+am
 "}
 (9,1,1) = {"
 Ye
@@ -369,8 +419,11 @@ mb
 Ty
 Ty
 EB
-WZ
-Ob
+EY
+Kg
+Kg
+Kg
+am
 "}
 (10,1,1) = {"
 Ye
@@ -383,7 +436,10 @@ Ty
 Ty
 Cw
 bo
-aC
+Kg
+am
+am
+am
 "}
 (11,1,1) = {"
 Ye
@@ -396,7 +452,10 @@ Ty
 Ty
 Cw
 rR
-aC
+Kg
+am
+am
+am
 "}
 (12,1,1) = {"
 Ye
@@ -409,7 +468,10 @@ Ty
 Ty
 Cw
 Cb
-aC
+Kg
+am
+am
+am
 "}
 (13,1,1) = {"
 aC
@@ -422,7 +484,10 @@ Ty
 Ty
 Cw
 EY
-aC
+Kg
+am
+am
+am
 "}
 (14,1,1) = {"
 zZ
@@ -436,6 +501,9 @@ Ty
 Cw
 EY
 Rf
+am
+am
+am
 "}
 (15,1,1) = {"
 dw
@@ -449,6 +517,9 @@ Ty
 Cw
 Az
 aa
+am
+am
+am
 "}
 (16,1,1) = {"
 rs
@@ -462,6 +533,9 @@ Ty
 Cw
 zM
 aC
+am
+am
+am
 "}
 (17,1,1) = {"
 Ye
@@ -475,6 +549,9 @@ Ty
 Cw
 qT
 aC
+am
+am
+am
 "}
 (18,1,1) = {"
 Ye
@@ -488,6 +565,9 @@ Cw
 Cw
 IB
 aC
+am
+am
+am
 "}
 (19,1,1) = {"
 aC
@@ -501,6 +581,9 @@ qc
 Kc
 VF
 aC
+am
+am
+am
 "}
 (20,1,1) = {"
 aC
@@ -514,4 +597,7 @@ aC
 aC
 aC
 aC
+am
+am
+am
 "}

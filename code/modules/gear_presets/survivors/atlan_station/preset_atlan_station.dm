@@ -1,5 +1,274 @@
+/datum/equipment_preset/survivor/atlan_cec_scientist
+	name = "Survivor - UPP - Atlan Cosmos Exploration Corps Researcher"
+	assignment = "Issledovatel' Korpusa Kosmicheskoy Eksploratsii"
+	minimap_icon = "upp_sci"
+	minimap_background = "background_upp_charlie"
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_CHINESE)
+	faction = FACTION_UPP
+	faction_group = FACTION_LIST_SURVIVOR_UPP
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	origin_override = ORIGIN_UPP
+
+	survivor_variant = SCIENTIST_SURVIVOR
+
+/datum/equipment_preset/survivor/atlan_cec_scientist/load_gear(mob/living/carbon/human/new_human)
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/cec_patch(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/upp(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/upp_pfb(new_human.back), WEAR_IN_BACK)
+
+	var/random_labcoat = rand(1,3)
+	switch(random_labcoat)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/long(new_human), WEAR_JACKET)
+		if(2)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat(new_human), WEAR_JACKET)
+		if(3)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/brown(new_human), WEAR_JACKET)
+
+	var/random_scientist_satchel= rand(1,3)
+	switch(random_scientist_satchel)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
+		if(2)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/black(new_human), WEAR_BACK)
+		if(3)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/blue(new_human), WEAR_BACK)
+
+	var/random_scientist_glasses= rand(1,3)
+	switch(random_scientist_glasses)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/regular(new_human), WEAR_FACE)
+		if(2)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/regular/hippie(new_human), WEAR_FACE)
+		if(3)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/regular/hipster(new_human), WEAR_FACE)
+
+	var/random_professional_shoe = rand(1,3)
+	switch(random_professional_shoe)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
+		if(2)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup/brown(new_human), WEAR_FEET)
+		if(3)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp(new_human), WEAR_FEET)
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/scientist/hybrisa(new_human), WEAR_BODY)
+
+	..()
+
+/datum/equipment_preset/survivor/upp_colonist_atlan
+	name = "UPP - Atlan Civilian"
+	assignment = "Grazhdanin"
+	flags = EQUIPMENT_PRESET_EXTRA
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_CHINESE)
+	faction = FACTION_UPP
+	minimap_background = "background_upp_civilian"
+	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
+	skills = /datum/skills/civilian
+	access = list(ACCESS_CIVILIAN_PUBLIC)
+	idtype = /obj/item/card/id
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	origin_override = ORIGIN_UPP
+
+	survivor_variant = CIVILIAN_SURVIVOR
+
+/datum/equipment_preset/survivor/upp_colonist_atlan/load_gear(mob/living/carbon/human/new_human)
+
+	var/random_civilian_backpack= rand(1,8)
+	switch(random_civilian_backpack)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
+		if(2)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/black(new_human), WEAR_BACK)
+		if(3)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/blue(new_human), WEAR_BACK)
+		if(4)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/eng(new_human), WEAR_BACK)
+		if(5)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack(new_human), WEAR_BACK)
+		if(6)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/industrial(new_human), WEAR_BACK)
+		if(7)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
+		if(8)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/black/five_slot(new_human), WEAR_BACK)
+
+	var/random_civilian_jacket= rand(1,8)
+	switch(random_civilian_jacket)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/webbing(new_human), WEAR_JACKET)
+		if(2)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/webbing/black(new_human), WEAR_JACKET)
+		if(3)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/webbing/brown(new_human), WEAR_JACKET)
+		if(4)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/vest/tan(new_human), WEAR_JACKET)
+		if(5)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/bomber/red(new_human), WEAR_JACKET)
+		if(6)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/bomber/grey(new_human), WEAR_JACKET)
+		if(7)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/bomber(new_human), WEAR_JACKET)
+		if(8)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/snow_suit/hybrisa/polyester_jacket_brown(new_human), WEAR_JACKET)
+
+	var/random_civilian_uniform = rand(1,18)
+	switch(random_civilian_uniform)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/color/blue(new_human), WEAR_BODY)
+		if(2)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/color/brown(new_human), WEAR_BODY)
+		if(3)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/color/lightbrown(new_human), WEAR_BODY)
+		if(4)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/color/grey(new_human), WEAR_BODY)
+		if(5)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/color/yellow(new_human), WEAR_BODY)
+		if(6)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/blue(new_human), WEAR_BODY)
+		if(7)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/brown(new_human), WEAR_BODY)
+		if(8)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/orange(new_human), WEAR_BODY)
+		if(9)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/civi1(new_human), WEAR_BODY)
+		if(10)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/civi2(new_human), WEAR_BODY)
+		if(11)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/civi3(new_human), WEAR_BODY)
+		if(12)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/civi4(new_human), WEAR_BODY)
+		if(13)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility(new_human), WEAR_BODY)
+		if(14)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/blue(new_human), WEAR_BODY)
+		if(15)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/brown(new_human), WEAR_BODY)
+		if(16)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/gray(new_human), WEAR_BODY)
+		if(17)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/red(new_human), WEAR_BODY)
+		if(18)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/yellow(new_human), WEAR_BODY)
+
+	var/random_civilian_shoe = rand(1,9)
+	switch(random_civilian_shoe)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup/brown(new_human), WEAR_FEET)
+		if(2)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
+		if(3)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/brown(new_human), WEAR_FEET)
+		if(4)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/green(new_human), WEAR_FEET)
+		if(5)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/red(new_human), WEAR_FEET)
+		if(6)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/blue(new_human), WEAR_FEET)
+		if(7)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(new_human), WEAR_FEET)
+		if(8)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/black/knife(new_human), WEAR_FEET)
+		if(9)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife(new_human), WEAR_FEET)
+	..()
+
+/datum/equipment_preset/survivor/atlan_cargo
+	name = "Survivor - UPP - Atlan Logistics Technician"
+	assignment = "Logisticheskiy Tekhnik"
+	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_CHINESE)
+	faction = FACTION_UPP
+	faction_group = FACTION_LIST_SURVIVOR_UPP
+	role_comm_title = "Log."
+	minimap_background = "background_upp_civilian"
+	minimap_icon = "upp_cargo"
+	skills = /datum/skills/civilian/survivor/miner
+	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_LOGISTICS)
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	origin_override = ORIGIN_UPP
+
+	survivor_variant = CIVILIAN_SURVIVOR
+
+/datum/equipment_preset/survivor/atlan_cargo/load_gear(mob/living/carbon/human/new_human)
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap(new_human), WEAR_HEAD)
+	var/obj/item/clothing/under/marine/veteran/UPP/UPP = new()
+	new_human.equip_to_slot_or_del(UPP, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp, WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/webbing/brown(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/insulated(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife, WEAR_FEET)
+	//  back  //
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/chestrig(new_human), WEAR_BACK)
+	// pockets //
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/construction(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
+
+/datum/equipment_preset/synth/survivor/atlan_doctor
+	name = "Survivor - Sorokyne Strata - Synthetic - Doctor"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	faction = FACTION_UPP
+	faction_group = FACTION_LIST_SURVIVOR_UPP
+	origin_override = ORIGIN_UPP
+
+	survivor_variant = MEDICAL_SURVIVOR
+
+/datum/equipment_preset/synth/survivor/atlan_doctor/load_gear(mob/living/carbon/human/new_human)
+	var/random_civilian_satchel= rand(1,3)
+	switch(random_civilian_satchel)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
+		if(2)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/black(new_human), WEAR_BACK)
+		if(3)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/blue(new_human), WEAR_BACK)
+
+	var/random_professional_shoe = rand(1,2)
+	switch(random_professional_shoe)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
+		if(2)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup/brown(new_human), WEAR_FEET)
+
+	var/random_labcoat = rand(1,2)
+	switch(random_labcoat)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/long(new_human), WEAR_JACKET)
+		if(2)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat(new_human), WEAR_JACKET)
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp/alt(new_human), WEAR_ACCESSORY)
+
+	var/random_professional_uniform= rand(1,6)
+	switch(random_professional_uniform)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/medic(new_human), WEAR_BODY)
+		if(2)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical/blue(new_human), WEAR_BODY)
+		if(3)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical/green(new_human), WEAR_BODY)
+		if(4)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical/white(new_human), WEAR_BODY)
+		if(5)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical/lightblue(new_human), WEAR_BODY)
+		if(6)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical/morgue(new_human), WEAR_BODY)
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/upp_pfb(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/civi/plant_worker(new_human), WEAR_HEAD)
+
+	// gun //
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/np92/suppressed(new_human), WEAR_L_HAND)
+	..()
+
+
+
+
+
 /datum/equipment_preset/survivor/engineer/atlan_processing_engineer
-	name = "Survivor - UPP - Ministry of Industry - Refinery Engineer"
+	name = "Survivor - UPP - Ministry of Industry - Atlan Refinery Engineer"
 	assignment = "Inzhener Neftepererabatyvayushchiy Zavod"
 	minimap_icon = "upp_cont"
 	minimap_background = "background_upp_bravo"
@@ -29,25 +298,31 @@
 		if(2)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/brown/upp(new_human), WEAR_BODY)
 
-	add_survivor_weapon_civilian(new_human)
 	..()
 
 
-/datum/equipment_preset/survivor/upp_atlan_miner
-	name = "Survivor - UPP - Jutou Combine - Atmospheric Miner"
-	assignment = "Jùtóu Combine - Atmosfernyy Shakhtyor"
+/datum/equipment_preset/survivor/upp_atlan_pilot
+	name = "Survivor - UPP - Jutou Combine - Atlan Atmospheric Mining Pilot"
+	assignment = "Jùtóu Combine - Pilot Atmosfernyy Mayninga"
 	minimap_background = "background_upp_civilian"
-	skills = /datum/skills/civilian/survivor/miner
+	skills = /datum/skills/civilian/survivor/trucker
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_CHINESE)
 	faction = FACTION_UPP
 	faction_group = FACTION_LIST_SURVIVOR_UPP
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	origin_override = ORIGIN_UPP
+	access = list(ACCESS_UPP_GENERAL, ACCESS_UPP_ENGINEERING, ACCESS_UPP_FLIGHT)
 
 	survivor_variant = CIVILIAN_SURVIVOR
 
-/datum/equipment_preset/survivor/upp_atlan_miner/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/survivor/upp_atlan_pilot/load_gear(mob/living/carbon/human/new_human)
 
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/civi5(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp/alt, WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp/naval, WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/webbing/brown(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(new_human), WEAR_FACE)
 	var/random_hat = rand(1,2)
 	switch(random_hat)
 		if(1)
@@ -55,20 +330,17 @@
 		if(2)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/civi/plant_worker(new_human), WEAR_HEAD)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather(new_human), WEAR_FACE)
-
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/civi5(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/eng(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/webbing/brown(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/upp(new_human), WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp/alt, WEAR_ACCESSORY)
-	add_survivor_rare_item(new_human)
-	add_survivor_weapon_civilian(new_human)
+
 	..()
 
+
+
 /datum/equipment_preset/survivor/cec_liaison/atlan
-	name = "Survivor - UPP - Cosmos Exploration Corps Liaison" //CEC Representative/Liaison, in exchange for no WY/Hyperdyne connections they get scientist skills
+	name = "Survivor - UPP - Atlan Cosmos Exploration Corps Liaison" //CEC Representative/Liaison, in exchange for no WY/Hyperdyne connections they get scientist skills
 	assignment = "Svyaz' Korpusa Kosmicheskoy Eksploratsii"
 	minimap_icon = "upp_sci"
 	minimap_background = "background_hc_management"
@@ -125,6 +397,86 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/scientist/hybrisa(new_human), WEAR_BODY)
 	..()
 
+/datum/equipment_preset/survivor/atlan_security
+	name = "Survivor - UPP - Atlan Station Security Officer"
+	assignment = "Sotrudnik Sluzhby Bezopasnosti"
+	faction_group = FACTION_LIST_SURVIVOR_PAP
+	minimap_icon = "upp_sec"
+	minimap_background = "background_upp_alpha"
+	paygrades = list(PAY_SHORT_PAP_MLTS = JOB_PLAYTIME_TIER_0, PAY_SHORT_PAP_SMLTS = JOB_PLAYTIME_TIER_3, PAY_SHORT_PAP_STRSH = JOB_PLAYTIME_TIER_4)
+	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_CHINESE, LANGUAGE_GERMAN)
+	faction = FACTION_PAP
+	skills = /datum/skills/civilian/survivor/marshal
+	access = list(ACCESS_UPP_GENERAL, ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_LOGISTICS, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_COMMAND)
+	idtype = /obj/item/card/id/PaP
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	origin_override = ORIGIN_UPP
+
+	survivor_variant = SECURITY_SURVIVOR
+
+/datum/equipment_preset/survivor/atlan_security/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(new_human), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/PaP(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/peaked/police(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/black(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/pap(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/SOF_belt/t73(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/black/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/upp_pfb(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp/alt(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/pap(new_human), WEAR_BODY)
+
+	..()
+
+
+
+/datum/equipment_preset/survivor/engineer/atlan_tech
+	name = "Survivor - UPP - Atlan Station Maintenance Technician"
+	assignment = "Tekhnik Po Obsluzhivaniyu"
+	minimap_icon = "upp_cont"
+	minimap_background = "background_upp_bravo"
+	faction_group = FACTION_LIST_SURVIVOR_UPP
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_CHINESE)
+	faction = FACTION_UPP
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	origin_override = ORIGIN_UPP
+
+	survivor_variant = ENGINEERING_SURVIVOR
+
+/datum/equipment_preset/survivor/engineer/atlan_tech/load_gear(mob/living/carbon/human/new_human)
+
+	var/choice = rand(1,25)
+	switch(choice)
+		if(1 to 12)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/civi/plant_worker(new_human), WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/short(new_human), WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(new_human), WEAR_FEET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp/alt, WEAR_ACCESSORY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/upp_pfb(new_human.back), WEAR_IN_BACK)
+		if(12 to 24)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/short(new_human), WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup/brown(new_human), WEAR_FEET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp/alt(new_human), WEAR_ACCESSORY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/upp_pfb(new_human.back), WEAR_IN_BACK)
+		if(25)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/radiation(new_human), WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/radiation(new_human), WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup/brown(new_human), WEAR_FEET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp/alt(new_human), WEAR_ACCESSORY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/upp_pfb(new_human.back), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/phosphorus/upp(new_human.back), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/phosphorus/upp(new_human.back), WEAR_IN_BACK)
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp/alt(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/color/white/alt(new_human), WEAR_BODY)
+
+	..()
+
+
 
 
 
@@ -150,16 +502,23 @@
 /datum/equipment_preset/synth/survivor/atlan/civilian/load_gear(mob/living/carbon/human/new_human)
 	var/choice = rand(1,6)
 	switch(choice)
-		if(1) // Atmoshperic Miner
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/civi/plant_worker(new_human), WEAR_HEAD)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather(new_human), WEAR_FACE)
+		if(1) // Amospheric Mining Pilot
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/civi5(new_human), WEAR_BODY)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/eng(new_human), WEAR_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp/alt, WEAR_ACCESSORY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp/naval, WEAR_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/webbing/brown(new_human), WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(new_human), WEAR_FACE)
+			var/random_hat = rand(1,2)
+			switch(random_hat)
+				if(1)
+					new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hardhat/white/alt(new_human), WEAR_HEAD)
+				if(2)
+					new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/civi/plant_worker(new_human), WEAR_HEAD)
+					new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather(new_human), WEAR_FACE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/eng(new_human), WEAR_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp(new_human), WEAR_FEET)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(new_human), WEAR_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/upp(new_human), WEAR_HANDS)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp/alt(new_human), WEAR_ACCESSORY)
 		if(2) // Sanitation
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/upp(new_human), WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/eng(new_human), WEAR_BACK)
@@ -343,7 +702,7 @@
 // Security
 
 /datum/equipment_preset/synth/survivor/atlan/security
-	name = "Survivor - Atlan Station - Synthetic - Army or PaP" // Either Army Reservist or PaP (COP)
+	name = "Survivor - Atlan Station - Synthetic - Security" // SECURITY WIP
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	faction = FACTION_UPP
 	faction_group = FACTION_LIST_SURVIVOR_UPP

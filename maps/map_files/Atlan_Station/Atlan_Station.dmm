@@ -3703,6 +3703,13 @@
 	},
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_offices)
+"alc" = (
+/turf/open/floor/strata,
+/area/template_noop)
+"ald" = (
+/obj/item/weapon/gun/pistol/np92/suppressed,
+/turf/open/floor/strata/cyan1,
+/area/atlan/station/medical/morgue)
 "ale" = (
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
@@ -7231,6 +7238,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/item/clothing/under/marine/veteran/UPP/medic,
 /turf/open/floor/strata/white_cyan3/west,
 /area/atlan/station/medical/morgue)
 "awe" = (
@@ -18028,13 +18036,6 @@
 	},
 /turf/open/floor/prison/whitegreenfull,
 /area/atlan/station/botany)
-"bfy" = (
-/obj/structure/prop/invuln/pipe_water{
-	pixel_x = 2;
-	pixel_y = 1
-	},
-/turf/open/floor/prison/whitegreen/east,
-/area/atlan/station/botany)
 "bfz" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/effect/decal/cleanable/dirt,
@@ -22608,7 +22609,7 @@
 "etz" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/blue_plate/north,
+/turf/open/floor/strata/floor2,
 /area/atlan/station/water_tanks)
 "eur" = (
 /obj/effect/decal/cleanable/dirt,
@@ -26505,13 +26506,14 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
-/obj/structure/machinery/door/window/eastright{
-	color = "#969696"
-	},
 /obj/structure/machinery/computer/secure_data{
 	dir = 4;
 	pixel_y = 4;
 	pixel_x = 2
+	},
+/obj/structure/window/reinforced/tinted{
+	color = "#969696";
+	dir = 8
 	},
 /turf/open/floor/strata/floor2,
 /area/atlan/station/medical)
@@ -29623,7 +29625,6 @@
 	icon_state = "trash_7";
 	pixel_y = 12
 	},
-/obj/item/storage/belt/medical/lifesaver/upp/black/partial,
 /turf/open/floor/strata/white_cyan2,
 /area/atlan/station/medical)
 "jDK" = (
@@ -113162,7 +113163,7 @@ adR
 iFT
 rAD
 aoB
-tPr
+alc
 lLk
 eaH
 qQG
@@ -114884,7 +114885,7 @@ xtf
 mtP
 mtP
 mtP
-gfA
+mtP
 pRS
 nEq
 pwN
@@ -116081,7 +116082,7 @@ aSQ
 aSp
 aSm
 aRI
-aQK
+ald
 aRa
 wwY
 avQ
@@ -116533,7 +116534,7 @@ ubh
 vVm
 afl
 fNr
-bfy
+fNr
 fNr
 lJQ
 aio
@@ -124399,7 +124400,7 @@ tYK
 xpt
 tYK
 jNR
-aJr
+rlO
 xpt
 aJy
 tYK
@@ -124551,7 +124552,7 @@ aSd
 aUr
 aVc
 etz
-jOD
+qBc
 jOD
 vPr
 aSd

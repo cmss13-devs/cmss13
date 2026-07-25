@@ -1,14 +1,18 @@
 SUBSYSTEM_DEF(mapgrids)
 	name = "MapGrids"
-	wait = 20 SECONDS // Rebalancing does not need to be done often
 
 	// Before SSatoms so things can register to them, but after SSmapping so grids don't have to be expanded at every world expansion
 	init_order = SS_INIT_MAPGRIDS
+
+	// Rebalancing once in a while helps improve performance, but is not needed for the system to function
+	// It is still an expensive task however, and we absolutely do not want it to cause overtime
+	// We set very loose scheduling so that it's only ran when the game state allows it
+	wait = 20 SECONDS
 	priority = SS_PRIORITY_MAPGRIDS
-	flags = SS_POST_FIRE_TIMING // This slows down the SS even more if it cannot complete its work within intended timeframe
+	flags = SS_POST_FIRE_TIMING | SS_BACKGROUND
 
 	/// Mapgrid managers for our different contexts
-	/// - for now there's only one, but we could split observers and living mobs like old QuadTree did for example
+	/// for now there's only one, but we could split them for different uses
 	var/datum/mapgrid_manager/manager
 
 	/// Internal state holder: the mapgrids left to balance this run

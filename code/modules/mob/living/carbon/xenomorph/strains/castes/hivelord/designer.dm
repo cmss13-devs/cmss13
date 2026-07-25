@@ -61,13 +61,6 @@
 	. = list()
 	. += "Nodes sustained: [length(bound_xeno.current_design)] / [bound_xeno.max_design_nodes]"
 
-// Far-sight
-/datum/action/xeno_action/onclick/toggle_long_range/designer
-	handles_movement = FALSE
-	should_delay = FALSE
-	ability_primacy = XENO_NOT_PRIMARY_ACTION
-	delay = 0
-
 //Marks
 /datum/design_mark
 	var/name = "xeno_declare"
@@ -83,6 +76,13 @@
 	name = "Resin Door"
 	desc = "Place resin door here!"
 	icon_state = "mark_door"
+
+// Far-sight
+/datum/action/xeno_action/onclick/toggle_long_range/designer
+	handles_movement = FALSE
+	should_delay = FALSE
+	ability_primacy = XENO_NOT_PRIMARY_ACTION
+	delay = 0
 
 /datum/action/xeno_action/proc/update_mouse_pointer()
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -555,7 +555,7 @@
 
 	var/choice
 	if(owner.client.prefs.no_radials_preference)
-		choice = tgui_input_list(owner, "Choose Desing Option", "Pick", options, theme="hive_status")
+		choice = tgui_input_list(owner, "Choose Design Option", "Pick", options, theme="hive_status")
 	else
 		choice = show_radial_menu(owner, owner?.client.get_eye(), options, radius = 50)
 

@@ -21,6 +21,13 @@
 	fullscreen_vision = null
 	eye_protection = EYE_PROTECTION_NEGATIVE
 
+/obj/item/clothing/glasses/night/toggle_glasses_effect()
+	..()
+	if(active) //Being turned on
+		eye_protection = initial(eye_protection)
+	else
+		eye_protection = EYE_PROTECTION_NONE
+
 /obj/item/clothing/glasses/night/M4RA
 	name = "\improper M4RA Battle sight"
 	gender = NEUTER

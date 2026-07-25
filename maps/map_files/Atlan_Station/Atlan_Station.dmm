@@ -477,6 +477,9 @@
 /obj/item/clothing/head/hardhat/orange,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/hab_docks)
+"abA" = (
+/turf/open/floor/prison/sterile_white/south,
+/area/atlan/station/hab_flight)
 "abB" = (
 /obj/structure/machinery/disposal,
 /turf/open/floor/strata/fake_wood,
@@ -989,6 +992,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/asteroid/processing_caves)
+"adm" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 4
+	},
+/turf/open/floor/prison/sterile_white/south,
+/area/atlan/station/cent_maintenace)
 "adn" = (
 /obj/structure/surface/rack{
 	color = "#98a3ab"
@@ -1098,6 +1107,12 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/strata,
 /area/atlan/station/atmospherics)
+"adD" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/prison/sterile_white/south,
+/area/atlan/station/stairs1)
 "adE" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "promenade"
@@ -3611,7 +3626,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12"
 	},
-/turf/open/floor/strata,
+/turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/hab_flight)
 "akU" = (
 /obj/structure/prop/invuln/lattice_prop{
@@ -5043,7 +5058,7 @@
 	dir = 8;
 	layer = 3
 	},
-/turf/open/floor/strata,
+/turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/hab_flight)
 "apt" = (
 /obj/effect/decal/cleanable/dirt,
@@ -11564,17 +11579,9 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/floor2,
 /area/atlan/station/single_dorms)
-"aKI" = (
-/obj/structure/largecrate/random/case/double,
-/turf/open/floor/strata,
-/area/atlan/station/cent_maintenace)
-"aKJ" = (
-/obj/structure/largecrate/random/case/small,
-/turf/open/floor/strata,
-/area/atlan/station/cent_maintenace)
 "aKK" = (
 /obj/structure/largecrate/random/secure,
-/turf/open/floor/strata/floor2,
+/turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/cent_maintenace)
 "aKL" = (
 /obj/structure/window/framed/upp_ship/grey,
@@ -20216,6 +20223,10 @@
 	pixel_x = 6;
 	pixel_y = 10
 	},
+/obj/structure/machinery/light/small{
+	dir = 4;
+	pixel_y = 6
+	},
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/atlan/station/medical)
 "cCk" = (
@@ -21266,7 +21277,7 @@
 	dir = 5
 	},
 /obj/structure/cargo_container/upp_single/container_1/alt,
-/turf/open/floor/corsat,
+/turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/stairs1)
 "dqD" = (
 /turf/open/floor/strata/yellow3/northeast,
@@ -23492,7 +23503,7 @@
 /area/atlan/comms/lz1_control)
 "eZN" = (
 /obj/structure/machinery/light/double/blue,
-/turf/open/floor/strata,
+/turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/cent_maintenace)
 "fag" = (
 /obj/effect/decal/warning_stripes{
@@ -25789,7 +25800,7 @@
 	can_buckle = 0;
 	dir = 4
 	},
-/turf/open/floor/strata/floor2,
+/turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/stairs1)
 "gRU" = (
 /obj/structure/stairs/perspective{
@@ -28517,7 +28528,7 @@
 /area/atlan/asteroid/processing_offices)
 "iOR" = (
 /obj/structure/largecrate/random/secure,
-/turf/open/floor/strata,
+/turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/hab_flight)
 "iPh" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
@@ -39204,7 +39215,7 @@
 "qTo" = (
 /obj/structure/machinery/power/apc/power/north,
 /obj/structure/platform/metal/atlan/north,
-/turf/open/floor/strata,
+/turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/walkway)
 "qTQ" = (
 /obj/item/clothing/head/uppcap/civi/plant_worker,
@@ -39596,7 +39607,7 @@
 /obj/structure/machinery/light/double/blue{
 	dir = 1
 	},
-/turf/open/floor/strata/floor3/east,
+/turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/hab_flight)
 "rgT" = (
 /turf/open/floor/strata/floor3/east,
@@ -39651,7 +39662,7 @@
 	pixel_x = 5;
 	pixel_y = 14
 	},
-/turf/open/floor/strata,
+/turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/hab_flight)
 "rjz" = (
 /obj/structure/surface/rack{
@@ -42775,7 +42786,7 @@
 	pixel_y = 3;
 	pixel_x = 5
 	},
-/turf/open/floor/strata,
+/turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/hab_flight)
 "txY" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -43522,7 +43533,7 @@
 	dir = 8;
 	pixel_y = 3
 	},
-/turf/open/floor/strata,
+/turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/hab_flight)
 "uaP" = (
 /obj/effect/decal/cleanable/blood/drip{
@@ -48163,7 +48174,7 @@
 	layer = 4;
 	pixel_x = -1
 	},
-/turf/open/floor/strata,
+/turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/hab_flight)
 "xUE" = (
 /obj/effect/decal/warning_stripes{
@@ -104732,7 +104743,7 @@ oVk
 oVk
 aAk
 rjp
-jet
+abA
 phz
 uab
 aZP
@@ -105576,7 +105587,7 @@ bIR
 mNm
 jet
 akT
-jcT
+abA
 txG
 cFA
 cFA
@@ -106394,7 +106405,7 @@ aCg
 pvu
 rDa
 cSy
-atz
+adD
 azz
 rDa
 rDa
@@ -106606,8 +106617,8 @@ aCh
 aCa
 rDa
 rDa
-atz
-rDa
+adD
+aOa
 cSy
 qNK
 xHq
@@ -115591,7 +115602,7 @@ loF
 aqh
 ayF
 ayB
-loF
+bdh
 alq
 loF
 udV
@@ -123384,7 +123395,7 @@ lUS
 lUS
 vGC
 apm
-tYK
+aJr
 qvG
 rpq
 uFw
@@ -123808,8 +123819,8 @@ ahw
 ahr
 ahg
 aLf
-tYK
-aKI
+aJr
+aJu
 aAM
 fqn
 fSh
@@ -124021,7 +124032,7 @@ aqQ
 ahi
 aqG
 tYK
-aKJ
+aZQ
 aAM
 axt
 tYK
@@ -124233,7 +124244,7 @@ aht
 ahj
 tGl
 tYK
-tYK
+aJr
 qMv
 aZp
 tYK
@@ -124655,8 +124666,8 @@ lYr
 aKU
 ahq
 rlO
-rlO
-aKU
+aJr
+adm
 aKK
 aAM
 jkh

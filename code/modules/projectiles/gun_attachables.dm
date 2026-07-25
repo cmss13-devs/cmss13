@@ -4064,7 +4064,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/bipod/proc/handle_mob_move_or_look(mob/living/mover, actually_moving, direction, specific_direction)
 	SIGNAL_HANDLER
 
-	if(!actually_moving && !(specific_direction in reverse_nearby_direction(initial_mob_dir))) // if you're facing north, but you're shooting north-east and end up facing east, you won't lose your bipod
+	if(!actually_moving && (specific_direction & initial_mob_dir)) // if you're facing north, but you're shooting north-east and end up facing east, you won't lose your bipod
 		return
 	undeploy_bipod(loc, mover)
 	mover.apply_effect(1, SUPERSLOW)

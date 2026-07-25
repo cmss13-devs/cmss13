@@ -15,9 +15,16 @@ SUBSYSTEM_DEF(sound)
 		template_queue = list()
 		run_hearers = null // null explicitely indicates we need to do ranging!
 
-	for(var/datum/sound_template/run_template in run_queue)
+	for(var/datum/sound_template/run_template, base_run_hearers in run_queue)
 		if(!run_hearers) // Initialize for handling next template
-			run_hearers = run_queue[run_template] // get base hearers
+			run_hearers = base_run_hearers // get base hearers
+			if(run_template.atom) // Resolve exact location now. We could do that in process_sound to be like REAL SURE there's as little delay as possible, but this would be much more expensive.
+				var/turf/turf = get_turf(run_template.atom)
+				if(turf)
+					run_template.x = turf.x
+					run_template.y = turf.y
+					run_template.z = turf.z
+				run_template.atom = null // Or it won't GC!
 			if(run_template.range) // ranging
 				if(!run_hearers)
 					run_hearers = run_template.get_hearers() // I hate |=
@@ -29,8 +36,7 @@ SUBSYSTEM_DEF(sound)
 		while(length(run_hearers)) // Output sound to hearers
 			var/client/C = run_hearers[length(run_hearers)]
 			run_hearers.len--
-			if(C && C.soundOutput)
-				C.soundOutput.process_sound(run_template)
+			C?.soundOutput?.process_sound(run_template)
 			if(MC_TICK_CHECK)
 				return
 		run_queue.Remove(run_template) // Everyone that had to get this sound got it. Bye, template

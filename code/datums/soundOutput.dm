@@ -65,10 +65,8 @@
 
 		S.echo = SOUND_ECHO_REVERB_ON //enable environment reverb for positional sounds
 
-	for(var/pos = 1 to length(T.echo))
-		if(isnull(T.echo[pos]))
-			continue
-		S.echo[pos] = T.echo[pos]
+	if(T.echo)
+		S.echo = T.echo
 
 	if(owner.mob.ear_deaf > 0)
 		S.status |= SOUND_MUTE

@@ -410,7 +410,7 @@
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!xeno)
 		return FALSE
-  if(xeno.get_tank_on_top_of()) // Prevents cheesy layering underneath the tank.
+	if(xeno.get_tank_on_top_of()) // Prevents cheesy layering underneath the tank.
 		return FALSE
 	if(xeno.on_fire)
 		return FALSE

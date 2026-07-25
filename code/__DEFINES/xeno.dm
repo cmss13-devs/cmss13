@@ -412,9 +412,6 @@
 // Carrier strain flags
 #define CARRIER_EGGSAC "Eggsac"
 
-// Boiler strain flags
-#define BOILER_TRAPPER "Trapper"
-
 // Runner strain flags
 #define RUNNER_ACIDER "Acider"
 

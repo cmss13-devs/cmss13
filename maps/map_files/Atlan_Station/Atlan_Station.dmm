@@ -359,6 +359,7 @@
 "abi" = (
 /obj/effect/decal/strata_decals/grime/grime1,
 /obj/structure/largecrate/random/barrel/true_random,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/red1,
 /area/atlan/lz/near_lz2)
 "abj" = (
@@ -2011,6 +2012,11 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/atlan/station/walkway)
+"agq" = (
+/obj/structure/bed/sofa/south/grey/right,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/red1,
+/area/atlan/lz/near_lz2)
 "agr" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12"
@@ -10865,6 +10871,7 @@
 	pixel_x = 13;
 	pixel_y = 32
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/green1,
 /area/atlan/station/double_dorms)
 "aIv" = (
@@ -17461,10 +17468,6 @@
 	},
 /turf/open/floor/strata/blue1,
 /area/atlan/station/hab_flight)
-"bdR" = (
-/obj/structure/lattice,
-/turf/closed/wall/upp_ship/grey/blue/reinforced/outer,
-/area/atlan/oob)
 "bdS" = (
 /obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
@@ -18198,14 +18201,6 @@
 "bfX" = (
 /turf/closed/shuttle/dropship_upp/transparent{
 	icon_state = "96"
-	},
-/area/atlan/oob)
-"bfY" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/closed/wall/rock{
-	color = "#343a3d"
 	},
 /area/atlan/oob)
 "bfZ" = (
@@ -19036,6 +19031,7 @@
 /obj/structure/machinery/light/double/blue{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/lz/near_lz2)
 "byJ" = (
@@ -103899,7 +103895,7 @@ alE
 alE
 alE
 alE
-bdR
+aAf
 aAf
 bdN
 qjl
@@ -107096,8 +107092,8 @@ cEM
 qqL
 wfr
 aAa
-idD
-qqL
+nzF
+jOq
 qqL
 qqL
 ayY
@@ -107738,7 +107734,7 @@ qqL
 qqL
 ruL
 fRe
-jOq
+qqL
 qqL
 ubv
 qqL
@@ -107948,7 +107944,7 @@ azd
 qqL
 qqL
 qqL
-dSv
+agq
 dvD
 qqL
 qqL
@@ -127167,7 +127163,7 @@ isk
 mkk
 vae
 aSd
-bfY
+aSd
 aPW
 aSd
 aSd

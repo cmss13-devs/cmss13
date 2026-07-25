@@ -1,0 +1,4 @@
+author: "antlersss"
+delete-after: True
+changes:
+  - bugfix: "Xenos can no longer hide under flames with the fire resistance boon."

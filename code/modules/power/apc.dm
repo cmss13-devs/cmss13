@@ -1396,6 +1396,11 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, flatten_numeric_alist(alist(
 	if(is_mainship_level(z))
 		SShijack.apcs += src
 
+/obj/structure/machinery/power/apc/almayer/connect_to_network()
+	. = ..()
+	if(is_mainship_level(z) && powernet)
+		SShijack.powernets |= powernet
+
 /obj/structure/machinery/power/apc/almayer/Destroy()
 	SShijack.apcs -= src
 	return ..()

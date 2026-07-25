@@ -92,7 +92,7 @@
 
 	if(antigrief_protection && user.faction == FACTION_MARINE && explosive_antigrief_check(src, user))
 		to_chat(user, SPAN_WARNING("\The [name]'s safe-area accident inhibitor prevents you from planting!"))
-		msg_admin_niche("[key_name(user)] attempted to plant \a [name] in [get_area(src)] [ADMIN_JMP(src.loc)]")
+		msg_admin_niche("[key_name(user)] attempted to plant \a [name] in [ADMIN_VERBOSEJMP(src)]")
 		return
 
 	user.visible_message(SPAN_NOTICE("[user] starts deploying [src]."),

@@ -336,6 +336,7 @@
 	/// How much fuel the acid drains from the flare every acid tick
 	var/flare_damage = 600
 	var/barricade_damage = 40
+	var/module_damage = 20
 	var/in_weather = FALSE
 
 	/// Set when attempting to clear acid off of an item with extinguish_acid() to prevent an item being extinguished multiple times in a tick.
@@ -347,6 +348,7 @@
 	acid_delay = 2.5 //250% delay (40% speed)
 	barricade_damage = 20
 	flare_damage = 180
+	module_damage = 10
 	icon_state = "acid_weak"
 
 //Superacid
@@ -355,6 +357,7 @@
 	acid_delay = 0.4 //40% delay (250% speed)
 	barricade_damage = 100
 	flare_damage = 2250
+	module_damage = 40
 	icon_state = "acid_strong"
 
 /obj/effect/xenomorph/acid/Initialize(mapload, atom/target)
@@ -364,6 +367,10 @@
 		ticks_left = 7 // Turf take twice as long to take down.
 	else if(istype(acid_t, /obj/structure/barricade))
 		ticks_left = 9
+	else if(istype(acid_t, /obj/structure/dropship_equipment))
+		var/obj/structure/dropship_equipment/module = acid_t
+		if(module.ship_base)
+			ticks_left = 10
 	handle_weather()
 	RegisterSignal(SSdcs, COMSIG_GLOB_WEATHER_CHANGE, PROC_REF(handle_weather))
 	RegisterSignal(acid_t, COMSIG_ITEM_PICKUP, PROC_REF(attempt_pickup))
@@ -423,19 +430,26 @@
 	flare.fuel -= flare_damage
 	return (rand(15, 25) SECONDS) * acid_delay
 
+/obj/effect/xenomorph/acid/proc/handle_dropship_module()
+	var/obj/structure/dropship_equipment/module = acid_t
+	module.update_health(module_damage)
+	return (5 SECONDS) * acid_delay
+
 /obj/effect/xenomorph/acid/process(delta_time)
 	remaining -= delta_time * (1 SECONDS)
 	if(remaining > 0)
 		return
 	ticks_left -= 1
 
-	var/return_delay = NONE
+	var/return_delay = (rand(20, 30) SECONDS) * acid_delay
 	if(istype(acid_t, /obj/structure/barricade))
 		return_delay = handle_barricade()
 	else if(istype(acid_t, /obj/item/device/flashlight/flare))
 		return_delay = handle_flashlight()
-	else
-		return_delay = (rand(20, 30) SECONDS) * acid_delay
+	else if(istype(acid_t, /obj/structure/dropship_equipment))
+		var/obj/structure/dropship_equipment/module = acid_t
+		if(module.ship_base) //If its not installed then we dont give it any special handling
+			return_delay = handle_dropship_module()
 
 	if(!ticks_left)
 		finish_melting()
@@ -492,6 +506,11 @@
 		visible_message(SPAN_XENODANGER("[acid_t] cracks and fragments as the acid sizzles against it!"))
 		pass() // Don't delete it, just damaj
 
+	else if(istype(acid_t, /obj/structure/dropship_equipment))
+		var/obj/structure/dropship_equipment/module = acid_t
+		visible_message(SPAN_XENODANGER("[acid_t] is ravaged by the acid that covered it!"))
+		if(!module.ship_base)
+			qdel(acid_t)
 	else
 		for(var/mob/mob in acid_t)
 			mob.forceMove(loc)

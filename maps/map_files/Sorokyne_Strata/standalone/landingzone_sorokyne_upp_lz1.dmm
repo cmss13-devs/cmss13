@@ -875,7 +875,7 @@
 	pixel_x = 8;
 	pixel_y = 6
 	},
-/obj/item/tool/kitchen/utensil/pfork,
+/obj/item/tool/kitchen/utensil/fork/plastic,
 /obj/item/device/flashlight/lamp,
 /turf/open/floor/strata/red1,
 /area/strata/interior/research)

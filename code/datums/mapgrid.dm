@@ -182,7 +182,7 @@
 	// We'll achieve this the dumb and simple way, it's not perfect, but the balancing operation also takes time!
 	// We want to reduce proccall overhead as much as possible too so this might get beefy
 
-	// Step 1x: We sort everything by X. It's pre-sorted (cell 1 is before cell 2) so we gain time by segmenting it.
+	// Step 1x: We sort everything by Y. It's pre-sorted (cell 1 is before cell 2) so we gain time by segmenting it.
 	var/list/list/atom/movable/row_contents = new /list(dim)
 	for(var/y in 1 to dim)        // for each row
 		row_contents[y] = list()
@@ -192,36 +192,10 @@
 				var/turf/turf = get_turf(thing)
 				if(!turf)
 					continue // This is not supposed to be possible and would be really bad, but beats crashing
-				row_contents[y][thing] = turf.x
+				row_contents[y][thing] = turf.y
 		row_contents[y] = sortAssocValNumeric(row_contents[y]) // Sort them
 
-	// Step 2x: Stitch it all into a single list. Because cells were already sorted, the result is still sorted!
-	var/list/atom/movable/all_row_contents = list()
-	for(var/y in 1 to dim)
-		all_row_contents += row_contents[y]
-	if(!length(all_row_contents))
-		return // Noone's here, don't bother
-
-	// Step 3x: Now we can start doing more intelligent stuff. We're going to find out how we'll balance this.
-	// We split our x-sorted megarow to find out what each boundary should be.
-	var/new_bounds_x = new /list(dim)
-	for(var/x in 1 to dim-1)
-		var/atom/movable/chosen_one = all_row_contents[floor(x / dim * length(all_row_contents) + 1)] // Pick our 'median' object
-		new_bounds_x[x] = all_row_contents[chosen_one] // The boundary will be their X position
-		// We don't want zero width cells so we're forcibly bumping this if needed
-		if(x > 1 && new_bounds_x[x-1] >= new_bounds_x[x])
-			new_bounds_x[x] = new_bounds_x[x-1] + 1
-			// Note that this can mean a cell goes past world.maxx but this shouldn't be a problem
-	// Last cell always fills the rest of the space (or "more" if the previous comment happens)
-	new_bounds_x[dim] = max(new_bounds_x[dim-1] + 1, world.maxx)
-
-	// =============================
-	// GREAT! We have our new boundaries, and we can start balancing our grid for it!
-	// .... Hold up, didn't you forget something? Yeah, we need to do all the above for columns/Y too.
-	// This is basically copypaste so feel free to jump ahead.
-	// =============================
-
-	// Step 1y: We sort everything by Y. It's pre-sorted (cell 1 is before cell 2) so we gain time by segmenting it.
+	// Now do it for X
 	var/list/list/atom/movable/col_contents = new /list(dim)
 	for(var/x in 1 to dim)        // for each column
 		col_contents[x] = list()
@@ -230,28 +204,43 @@
 			for(var/atom/movable/thing as anything in cell.contents)
 				var/turf/turf = get_turf(thing)
 				if(!turf)
-					continue // This is not supposed to be possible and would be really bad, but beats crashing
-				col_contents[x][thing] = turf.y
-		col_contents[x] = sortAssocValNumeric(col_contents[x]) // Sort them
+					continue
+				col_contents[x][thing] = turf.x
+		col_contents[x] = sortAssocValNumeric(col_contents[x])
 
 	// Step 2x: Stitch it all into a single list. Because cells were already sorted, the result is still sorted!
+	var/list/atom/movable/all_row_contents = list()
+	for(var/y in 1 to dim)
+		all_row_contents += row_contents[y]
+	if(!length(all_row_contents))
+		return // Noone's here, don't bother
 	var/list/atom/movable/all_col_contents = list()
 	for(var/x in 1 to dim)
 		all_col_contents += col_contents[x]
 	if(!length(all_col_contents))
-		return // Noone's here, don't bother
+		return
 
-	// Step 3x: Now we can start doing more intelligent stuff. We're going to find out how we'll balance this.
-	// We split our y-sorted megacolumn to find out what each boundary should be.
+
+	// Step 3: Now we can start doing more intelligent stuff. We're going to find out how we'll balance this.
+	// We split our x-sorted mega row/columns to find out what each boundary should be.
+	var/new_bounds_x = new /list(dim)
+	for(var/x in 1 to dim-1)
+		var/atom/movable/chosen_one = all_col_contents[floor(x / dim * length(all_col_contents) + 1)] // Pick boundaries by percentile
+		new_bounds_x[x] = all_col_contents[chosen_one] // The boundary will be their X position
+		// We don't want zero width cells so we're forcibly bumping this if needed
+		if(x > 1 && new_bounds_x[x-1] >= new_bounds_x[x])
+			new_bounds_x[x] = new_bounds_x[x-1] + 1
+			// Note that this can mean a cell goes past world.maxx but this shouldn't be a problem
+	// Last cell always fills the rest of the space (or "more" if the previous comment happens)
+	new_bounds_x[dim] = max(new_bounds_x[dim-1] + 1, world.maxx)
+
+	// Now for Y
 	var/new_bounds_y = new /list(dim)
 	for(var/y in 1 to dim-1)
-		var/atom/movable/chosen_one_y = all_col_contents[floor(y / dim * length(all_col_contents) + 1)] // Pick our 'median' object
-		new_bounds_y[y] = all_col_contents[chosen_one_y] // The boundary will be their X position
-		// We don't want zero width cells so we're forcibly bumping this if needed
+		var/atom/movable/chosen_one_y = all_row_contents[floor(y / dim * length(all_row_contents) + 1)]
+		new_bounds_y[y] = all_row_contents[chosen_one_y]
 		if(y > 1 && new_bounds_y[y-1] >= new_bounds_y[y])
 			new_bounds_y[y] = new_bounds_y[y-1] + 1
-			// Note that this can mean a cell goes past world.maxy but this shouldn't be a problem
-	// Last cell always fills the rest of the space (or "more" if the previous comment happens)
 	new_bounds_y[dim] = max(new_bounds_y[dim-1] + 1, world.maxy)
 
 	// ====================

@@ -266,6 +266,8 @@
 	var/list/ping_candidates = SSmapgrids.players_in_range_legacy(range_bounds, cur_turf.z, QTREE_FILTER_LIVING | QTREE_SCAN_MOBS)
 
 	for(var/mob/living/current_mob as anything in ping_candidates)
+		if(current_mob.mob_flags & MOB_ABSTRACT)
+			continue
 		if(current_mob == loc)
 			continue //device user isn't detected
 		if(world.time > current_mob.l_move_time + 20)

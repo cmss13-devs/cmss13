@@ -73,6 +73,8 @@
 			continue
 		if(!viewer.client)
 			continue
+		if(viewer.mob_flags & MOB_ABSTRACT)
+			continue
 		if(viewer.stat != CONSCIOUS)
 			continue
 		if(!shooter || viewer.faction != shooter.faction)

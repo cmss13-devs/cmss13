@@ -129,7 +129,10 @@
 		range_bounds = SQUARE(x, y, EGGMORPG_RANGE)
 
 	var/list/targets = SSmapgrids.players_in_range_legacy(range_bounds, z, QTREE_SCAN_MOBS | QTREE_FILTER_LIVING)
-	if(isnull(targets) || !length(targets))
+	for(var/mob/target as anything in targets)
+		if(target.mob_flags & MOB_ABSTRACT)
+			targets -= target
+	if(!length(targets))
 		return
 
 	for(var/mob/living/carbon/xenomorph/xeno in targets)

@@ -532,10 +532,10 @@
 					xeno_message("The Hive is ready for a new Queen to evolve. The Hive can only survive for a limited time without a Queen!", 3, hive.hivenumber)
 
 
-		if(active_lz == null && ROUND_TIME > lz_selection_timer)
+		if(!active_lz && ROUND_TIME > lz_selection_timer)
 			pick_a_lz()
 		//Since forced LZ selection is no longer required, marines failing to select an LZ prior to the 30 minute mark will generate a warning, and end the game at the 35 minute mark, with leeways for server ticks.
-		if(active_lz == null && ROUND_TIME > 1800 SECONDS && ROUND_TIME < 1803 SECONDS)
+		if(!active_lz && ROUND_TIME > 1800 SECONDS && ROUND_TIME < 1803 SECONDS)
 			var/name = "OPERATION WARNING"
 			var/input = "Operation will be terminated unless Primary Landing Zone is designated."
 			marine_announcement(input, name, 'sound/AI/commandreport.ogg')

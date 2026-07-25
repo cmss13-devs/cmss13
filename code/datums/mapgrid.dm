@@ -12,7 +12,7 @@
 
 	/// X boundaries of the map cells
 	/// mapgrid x coordinate -> game x coordinate
-	/// example: { 0 => 0, 1 => 40, 2 => 80, 3 => 110, 4 => world.maxx+1 }
+	/// example: 1 => 40, 2 => 80, 3 => 110, 4 => world.maxx+1
 	var/list/bounds_x
 
 	/// Y boundaries of the map cells
@@ -25,7 +25,7 @@
 
 	init_partition()
 
-	// TOOD: ensure mapgrids are created after SSmapping but before SSatoms for optimization so it doesnt continuously run this
+	// Warning - ensure mapgrids are created after SSmapping but before SSatoms for optimization so it doesnt continuously run this
 	RegisterSignal(SSdcs, COMSIG_GLOB_EXPANDED_WORLD_BOUNDS, PROC_REF(handle_expansion))
 
 /datum/mapgrid/Destroy(force, ...)
@@ -143,8 +143,6 @@
 /datum/mapgrid/proc/query_range(start_x, end_x, start_y, end_y, alist/z_list)
 	. = list()
 
-	//to_world("=== Range query")
-
 	// Scan X, start then end, clamping grid coordinates
 	var/start_grid_x
 	for(start_grid_x = 1 to dim)
@@ -165,15 +163,10 @@
 		if(bounds_y[end_grid_y] >= end_y)
 			break
 
-	// TODO possibly clamp the values of grid coords to avoid issues
-	// But there should be no issue to begin with so fix that instead?
-
 	// Now resolve that to cells and search for things matching our range
 	for(var/grid_x in start_grid_x to end_grid_x)
 		for(var/grid_y in start_grid_y to end_grid_y)
 			var/datum/mapcell/searching = cells[grid_x][grid_y]
-
-			//to_world("Visiting: ([grid_x],[grid_y]) : x=([searching.start_x],[searching.end_x]) ; y=([searching.start_y],[searching.end_y]) ; contents=[length(searching.contents)]")
 
 			for(var/atom/movable/possible_target as anything in searching.contents)
 				var/turf/target_turf = get_turf(possible_target)

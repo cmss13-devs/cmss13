@@ -675,10 +675,6 @@
 				else
 					new /datum/effects/acid(H, linked_xeno, initial(linked_xeno.caste_type))
 			var/found = null
-			for (var/datum/effects/boiler_trap/trap in H.effects_list)
-				if (trap.cause_data && trap.cause_data.resolve_mob() == linked_xeno)
-					found = trap
-					break
 			if(found)
 				H.apply_armoured_damage(damage*immobilized_multiplier, ARMOR_BIO, BURN)
 			else

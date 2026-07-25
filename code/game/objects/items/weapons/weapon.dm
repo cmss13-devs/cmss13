@@ -4,6 +4,17 @@
 	hitsound = "swing_hit"
 	flags_atom = FPRINT|QUICK_DRAWABLE
 
+	/// Base percentage chance of blocking something
+	var/shield_chance = SHIELD_CHANCE_NONE
+	/// Multiplier on the base percentage when dealing with projectiles, including thrown weapons.
+	var/shield_projectile_mult = PROJECTILE_BLOCK_PERC_20
+	/// The type of shield, DIRECTIONAL or ABSOLUTE, and whether or not it needs two hands.
+	var/shield_type = SHIELD_NONE
+	/// Sound used when blocking.
+	var/shield_sound = 'sound/items/block_shield.ogg'
+	/// Can bash shields for a sound.
+	var/shield_flags
+
 /obj/item/weapon/get_examine_text(mob/user)
 	. = ..()
 	var/strong_text = "a weak"

@@ -60,7 +60,7 @@
  * Sets only reagent ethanol to CHEM_CLASS_COMMON allowing for Turing machine to dispense it
  *
  * Sets ethanol to CHEM_CLASS_COMMON inheriting everything from /datum/reagent/ethanol.
- * seems wonky to do double naming but cant have turing be super booze disp
+ * seems wonky to do double naming but can't have turing be super booze disp
  */
 /datum/reagent/ethanol/ethanol
 	chemclass = CHEM_CLASS_BASIC
@@ -555,7 +555,7 @@
 /datum/reagent/ethanol/barefoot
 	name = "Barefoot"
 	id = "barefoot"
-	description = "Barefoot and pregnant"
+	description = "Barefoot and pregnant."
 	color = "#664300" // rgb: 102, 67, 0
 	properties = list(PROPERTY_ALCOHOLIC = 1.5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1.5
@@ -563,7 +563,7 @@
 /datum/reagent/ethanol/snowwhite
 	name = "Snow White"
 	id = "snowwhite"
-	description = "A cold refreshment"
+	description = "A cold refreshment."
 	color = COLOR_WHITE
 	properties = list(PROPERTY_ALCOHOLIC = 1.5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1.5

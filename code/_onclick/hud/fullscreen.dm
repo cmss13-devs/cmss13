@@ -69,7 +69,7 @@
 	if(!client)
 		return world.view
 
-	var/offset = max(abs(client.pixel_x), abs(client.pixel_y))
+	var/offset = max(abs(client.get_pixel_x()), abs(client.get_pixel_y()))
 	return client.view + offset / 32
 
 /atom/movable/screen/fullscreen

@@ -1,0 +1,8 @@
+/obj/item/device/radio/headset/almayer/qm/@SUBTYPES : /obj/item/device/radio/headset/almayer/mcom/qm/@SUBTYPES{@OLD}
+/obj/item/device/radio/headset/almayer/cmo/@SUBTYPES : /obj/item/device/radio/headset/almayer/mcom/cmo/@SUBTYPES{@OLD}
+/obj/item/device/radio/headset/almayer/po/@SUBTYPES : /obj/item/device/radio/headset/almayer/mcom/po/@SUBTYPES{@OLD}
+/obj/item/device/radio/headset/almayer/ce/@SUBTYPES : /obj/item/device/radio/headset/almayer/mcom/ce/@SUBTYPES{@OLD}
+/obj/item/device/radio/headset/almayer/intel/@SUBTYPES : /obj/item/device/radio/headset/almayer/mcom/io/@SUBTYPES{@OLD}
+/obj/item/device/radio/headset/almayer/mwcom/@SUBTYPES : /obj/item/device/radio/headset/almayer/mcom/mw/@SUBTYPES{@OLD}
+/obj/item/device/radio/headset/almayer/cmpcom/@SUBTYPES : /obj/item/device/radio/headset/almayer/mcom/cmp/@SUBTYPES{@OLD}
+

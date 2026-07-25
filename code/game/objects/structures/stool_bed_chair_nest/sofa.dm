@@ -1,6 +1,6 @@
 /obj/structure/bed/sofa
 	name = "Sofa"
-	desc = "Just like Space Ikea would have wanted"
+	desc = "Just like Space Ikea would have wanted."
 	icon = 'icons/obj/structures/props/furniture/chairs.dmi'
 	icon_state = "sofa" //use child icons
 	anchored = TRUE //can't rotate sofas
@@ -64,3 +64,15 @@
 /obj/structure/bed/sofa/vert/white/top //top
 	name = "Couch edge"
 	icon_state = "bench_vet3"
+
+/obj/structure/bed/sofa/vert/teal //center
+	name = "Couch"
+	icon_state = "couch_vet2_teal"
+
+/obj/structure/bed/sofa/vert/teal/bot //bottom
+	name = "Couch edge"
+	icon_state = "couch_vet1_teal"
+
+/obj/structure/bed/sofa/vert/teal/top //top
+	name = "Couch edge"
+	icon_state = "couch_vet3_teal"

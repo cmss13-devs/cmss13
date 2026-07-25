@@ -17,12 +17,12 @@
 		if(2)
 /*
 			if(affected_mob.sleeping && prob(20))  //removed until sleeping is fixed --Blaank
-				to_chat(affected_mob, SPAN_NOTICE(" You feel better."))
+				to_chat(affected_mob, SPAN_NOTICE("You feel better."))
 				stage--
 				return
 */
 			if(affected_mob.body_position == LYING_DOWN && prob(20))  //added until sleeping is fixed --Blaank
-				to_chat(affected_mob, SPAN_NOTICE(" You feel better."))
+				to_chat(affected_mob, SPAN_NOTICE("You feel better."))
 				stage--
 				return
 			if(prob(1))
@@ -42,12 +42,12 @@
 		if(3)
 /*
 			if(affected_mob.sleeping && prob(15))  //removed until sleeping is fixed
-				to_chat(affected_mob, SPAN_NOTICE(" You feel better."))
+				to_chat(affected_mob, SPAN_NOTICE("You feel better."))
 				stage--
 				return
 */
 			if(affected_mob.body_position == LYING_DOWN && prob(15))  //added until sleeping is fixed
-				to_chat(affected_mob, SPAN_NOTICE(" You feel better."))
+				to_chat(affected_mob, SPAN_NOTICE("You feel better."))
 				stage--
 				return
 			if(prob(1))

@@ -46,10 +46,18 @@
 
 	var/frontal_armor = 30
 	var/side_armor = 15
+	var/datum/action/xeno_action/onclick/charger_charge/my_action // TODO: Move most behavior logic in this action into this behavior_delegate instead
 
 /datum/behavior_delegate/crusher_charger/add_to_xeno()
 	RegisterSignal(bound_xeno, COMSIG_MOB_SET_FACE_DIR, PROC_REF(cancel_dir_lock))
 	RegisterSignal(bound_xeno, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, PROC_REF(apply_directional_armor))
+
+	my_action = get_action(bound_xeno, /datum/action/xeno_action/onclick/charger_charge)
+	if(my_action == null)
+		CRASH("Could not find charger_charge action button!")
+
+/datum/behavior_delegate/crusher_charger/remove_from_xeno()
+	my_action = null
 
 /datum/behavior_delegate/crusher_charger/proc/cancel_dir_lock()
 	SIGNAL_HANDLER
@@ -71,6 +79,10 @@
 	if(HAS_TRAIT(bound_xeno, TRAIT_CHARGING) && bound_xeno.body_position == STANDING_UP)
 		bound_xeno.icon_state = "[bound_xeno.get_strain_icon()] Crusher Charging"
 		return TRUE
+
+/datum/behavior_delegate/crusher_charger/on_life()
+	if(world.time > my_action.last_charge_move + 0.5 SECONDS)
+		my_action.stop_momentum()
 
 // Fallback proc for shit that doesn't have a collision def
 
@@ -610,7 +622,7 @@
 	charger_ability.stop_momentum()
 
 // Legacy Tank dispenser
-// Todo: Give this and other shitty fucking indestructible legacy items proper destruction mechanics. This includes being vunerable to bullets,explosions, etc and not just the charger.
+// Todo: Give this and other shitty fucking indestructible legacy items proper destruction mechanics. This includes being vulnerable to bullets,explosions, etc and not just the charger.
 // For now this is fine since priority is charger, and I'm not willing to spend all day looking for bumfuck legacy item #382321 thats used a total of three times in the entireity of CM and adding health and everything to it.
 
 /obj/structure/dispenser/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
@@ -631,7 +643,7 @@
 
 // ye olde weldertanke
 
-/obj/structure/reagent_dispensers/fueltank/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+/obj/structure/reagent_dispensers/tank/fuel/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	if(!charger_ability.momentum)
 		charger_ability.stop_momentum()
 		return
@@ -680,7 +692,7 @@
 			COMSIG_XENO_STOP_MOMENTUM,
 			COMSIG_XENO_START_CHARGING,
 		))
-		button.icon_state = "template"
+		button.icon_state = "template_xeno"
 	return ..()
 
 /datum/action/xeno_action/activable/tumble/use_ability(atom/Target)

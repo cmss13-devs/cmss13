@@ -217,7 +217,7 @@ const DrawAirlocks = () => {
 const EquipmentPanel = () => {
   return (
     <Box className="NavigationMenu">
-      <svg height="501" width="501">
+      <svg height="501" width="501" overflow="visible">
         <defs>
           <pattern
             id="diagonalHatch"

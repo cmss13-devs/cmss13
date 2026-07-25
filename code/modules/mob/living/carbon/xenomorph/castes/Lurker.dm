@@ -37,9 +37,11 @@
 	plasma_types = list(PLASMA_CATECHOLAMINE)
 	pixel_x = -12
 	old_x = -12
+	xenonid_pixel_x = -9
 	tier = 2
 	organ_value = 2000
 	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
@@ -47,7 +49,6 @@
 		/datum/action/xeno_action/activable/pounce/lurker,
 		/datum/action/xeno_action/onclick/lurker_invisibility,
 		/datum/action/xeno_action/onclick/lurker_assassinate,
-		/datum/action/xeno_action/onclick/tacmap,
 	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
@@ -92,7 +93,7 @@
 		next_slash_buffed = FALSE
 		var/datum/action/xeno_action/onclick/lurker_assassinate/ability = get_action(bound_xeno, /datum/action/xeno_action/onclick/lurker_assassinate)
 		if (ability)
-			ability.button.icon_state = "template"
+			ability.button.icon_state = "template_xeno"
 
 	return original_damage
 
@@ -245,7 +246,6 @@
 		return ..()
 
 	button.icon_state = "template_active"
-	xeno.update_icons() // callback to make the icon_state indicate invisibility is in lurker/update_icon
 
 	animate(xeno, alpha = alpha_amount, time = 0.1 SECONDS, easing = QUAD_EASING)
 
@@ -278,8 +278,7 @@
 	animate(xeno, alpha = initial(xeno.alpha), time = 0.1 SECONDS, easing = QUAD_EASING)
 	to_chat(xeno, SPAN_XENOHIGHDANGER("We feel our invisibility end!"))
 
-	button.icon_state = "template"
-	xeno.update_icons()
+	button.icon_state = "template_xeno"
 
 	xeno.speed_modifier += speed_buff
 	xeno.recalculate_speed()

@@ -173,6 +173,10 @@
 	target.heal_overall_damage(125,125) //makes sure that all damage is healed
 	target.SetSlow(0 SECONDS)
 	target.SetSuperslow(0 SECONDS)
+	if(ishuman(target))
+		var/mob/living/carbon/human/target_humanoid = target
+		for(var/obj/limb/limb in target_humanoid.limbs)
+			limb.status &= ~(LIMB_THIRD_DEGREE_BURNS|LIMB_ESCHAR)
 
 	if(user == target)
 		user.visible_message(SPAN_NOTICE("[user] finshes closing the treated wounds on their body with [tool]."),

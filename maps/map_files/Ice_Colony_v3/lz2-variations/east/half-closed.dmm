@@ -11,7 +11,7 @@
 /area/shiva/exterior/lz2_fortress)
 "q" = (
 /turf/closed/wall/shiva/prefabricated/reinforced/hull,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/interior/oob)
 "t" = (
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/shiva/north,

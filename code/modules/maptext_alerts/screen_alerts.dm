@@ -10,13 +10,16 @@
  * * alert_type: typepath for screen text type we want to play here
  * * override_color: the color of the text to use
  */
-/mob/proc/play_screen_text(text, alert_type = /atom/movable/screen/text/screen_text, override_color = "#FFFFFF")
+/mob/proc/play_screen_text(text, alert_type = /atom/movable/screen/text/screen_text, override_color = "#FFFFFF", cancel_duplicate = FALSE)
 	var/atom/movable/screen/text/screen_text/text_box = new alert_type()
 	text_box.text_to_play = text
 	text_box.player = client
 	if(override_color)
 		text_box.color = override_color
-
+	if(cancel_duplicate)
+		for(var/atom/i in client.screen_texts)
+			if(i.type == text_box.type)
+				return
 	LAZYADD(client.screen_texts, text_box)
 	if(LAZYLEN(client.screen_texts) == 1) //lets only play one at a time, for thematic effect and prevent overlap
 		INVOKE_ASYNC(text_box, TYPE_PROC_REF(/atom/movable/screen/text/screen_text, play_to_client))
@@ -90,6 +93,19 @@
 	fade_out_delay = 10 SECONDS
 	fade_out_time = 3 SECONDS
 
+
+/atom/movable/screen/text/screen_text/chemical_advisory
+	maptext_height = 64
+	maptext_width = 480
+	maptext_x = 0
+	maptext_y = 0
+	screen_loc = "LEFT,TOP-3"
+
+	letters_per_update = 1
+	fade_out_delay = 6 SECONDS
+	style_open = "<span class='langchat' style=font-size:16pt;text-align:center valign='top'>"
+	style_close = "</span>"
+
 ///proc for actually playing this screen_text on a mob.
 /atom/movable/screen/text/screen_text/proc/play_to_client()
 	player?.add_to_screen(src)
@@ -141,7 +157,7 @@
 		return
 
 	if(LAZYLEN(player.screen_texts))
-		player.screen_texts[1].play_to_client() // Theres more?
+		player.screen_texts[1].play_to_client() // There's more?
 /**
  * Proc to create or update an alert. Returns the alert if the alert is new or updated, 0 if it was thrown already
  * category is a text string. Each mob may only have one alert per category; the previous one will be replaced
@@ -205,6 +221,7 @@
 	if(thealert.timeout)
 		addtimer(CALLBACK(src, PROC_REF(alert_timeout), thealert, category), thealert.timeout)
 		thealert.timeout = world.time + thealert.timeout - world.tick_lag
+	thealert.alert_post_setup(src)
 	return thealert
 
 /mob/proc/alert_timeout(atom/movable/screen/alert/alert, category)
@@ -229,7 +246,7 @@
 	icon = 'icons/mob/screen_alert.dmi'
 	icon_state = "default"
 	name = "Alert"
-	desc = "Something seems to have gone wrong with this alert, so report this bug please"
+	desc = "Something seems to have gone wrong with this alert, so report this bug please."
 	mouse_opacity = MOUSE_OPACITY_ICON
 	/// If set to a number, this alert will clear itself after that many deciseconds
 	var/timeout = 0
@@ -251,6 +268,11 @@
 /atom/movable/screen/alert/MouseExited(location, control, params)
 	. = ..()
 	closeToolTip(usr)
+
+/// Called by throw_alert(), passes the mob throw_alert() is being called on as an arg. Parent proc, does nothing.
+/atom/movable/screen/alert/proc/alert_post_setup(mob/user)
+	SIGNAL_HANDLER
+	return
 
 /atom/movable/screen/alert/notify_action
 	name = "Notification"
@@ -280,9 +302,70 @@
 		if(NOTIFY_JOIN_XENO)
 			ghost_user.join_as_alien()
 		if(NOTIFY_USCM_TACMAP)
-			GLOB.uscm_tacmap_status.tgui_interact(ghost_user)
-		if(NOTIFY_XENO_TACMAP)
-			GLOB.xeno_tacmap_status.tgui_interact(ghost_user)
+			ghost_user.view_tacmaps()
+
+
+/atom/movable/screen/alert/multi_z
+	name = "Look Up"
+	desc = "There's an open space above you, Click the alert to look up."
+	icon_state = "uphint1"
+	click_master = FALSE
+
+
+/atom/movable/screen/alert/multi_z/clicked()
+	. = ..()
+	if(!.)
+		return
+
+	var/mob/living/living_owner = owner
+	living_owner.look_up()
+
+
+/atom/movable/screen/alert/multi_z/alert_post_setup(mob/living/user)
+	. = ..()
+
+	if(!istype(user, /mob/living)) // only /mob/living can look up.
+		return
+
+	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(update_alert))
+	update_alert(user)
+
+
+/atom/movable/screen/alert/multi_z/proc/update_alert(mob/living/user)
+	// No user, no update.
+	if(!user)
+		return
+
+	// If the user's not on a turf we can skip this.
+	if(!isturf(user.loc))
+		return
+
+	// Check if owner's current Z has the "up" ztrait; if not, hide the indicator.
+	if(!user.z || !(user.z in SSmapping.levels_by_trait(ZTRAIT_UP)))
+		icon_state = "blank"
+		return
+
+	// Get the turf on the level above the user.
+	var/turf/above = SSmapping.get_turf_above(user)
+
+	// If the user is a xeno, show the generic version of the indicator.
+	if(istype(user, /mob/living/carbon/xenomorph))
+		if(above && istransparentturf(above))
+			icon_state = "uphint1_xeno"
+			desc = "There's an open space above you, Click the alert to look up."
+		else
+			icon_state = "uphint0_xeno"
+			desc = "There's nothing to look up at right now."
+
+	// Otherwise, use the stylized marine version.
+	else
+		if(above && istransparentturf(above))
+			icon_state = "uphint1"
+			desc = "There's an open space above you, Click the alert to look up."
+		else
+			icon_state = "uphint0"
+			desc = "There's nothing to look up at right now."
+
 
 /atom/movable/screen/alert/buckled
 	name = "Buckled"

@@ -3,6 +3,7 @@
 	config_tag = "Extended"
 	required_players = 0
 	latejoin_larva_drop = 0
+	static_comms_amount = 2
 	votable = FALSE
 	taskbar_icon = 'icons/taskbar/gml_colonyrp.png'
 

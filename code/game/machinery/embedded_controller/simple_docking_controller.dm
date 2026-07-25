@@ -19,7 +19,7 @@
 
 /datum/computer/file/embedded_program/docking/simple/New(obj/structure/machinery/embedded_controller/M)
 	..(M)
-	memory["door_status"] = list(state = "closed", lock = "locked") //assume closed and locked in case the doors dont report in
+	memory["door_status"] = list(state = "closed", lock = "locked") //assume closed and locked in case the doors don't report in
 
 	if (istype(M, /obj/structure/machinery/embedded_controller/radio/simple_docking_controller))
 		var/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/controller = M

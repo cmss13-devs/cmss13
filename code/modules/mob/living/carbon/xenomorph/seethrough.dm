@@ -35,7 +35,7 @@
 
 	render_source_atom.appearance_flags |= ( RESET_COLOR | RESET_TRANSFORM)
 
-	render_source_atom.vis_flags |= (VIS_INHERIT_ID | VIS_INHERIT_PLANE | VIS_INHERIT_LAYER)
+	render_source_atom.vis_flags |= (VIS_INHERIT_ID | VIS_INHERIT_PLANE | VIS_INHERIT_LAYER | VIS_UNDERLAY)
 
 	render_source_atom.render_source = "*transparent_bigmob[personal_uid]"
 
@@ -72,6 +72,7 @@
 	animate(trickery_image, alpha = target_alpha, time = animation_time)
 
 	RegisterSignal(fool, COMSIG_MOB_LOGOUT, PROC_REF(on_client_disconnect))
+	RegisterSignal(fool, COMSIG_MOB_GHOSTIZE, PROC_REF(on_client_ghost))
 
 ///Remove the screen object and make us appear solid to ourselves again
 /datum/component/seethrough_mob/proc/untrick_mob()
@@ -94,7 +95,15 @@
 	SIGNAL_HANDLER
 
 	var/mob/fool = parent
+	UnregisterSignal(fool, COMSIG_MOB_GHOSTIZE)
 	UnregisterSignal(fool, COMSIG_MOB_LOGOUT)
+	clear_image(trickery_image, fool.client)
+
+/datum/component/seethrough_mob/proc/on_client_ghost()
+	SIGNAL_HANDLER
+
+	var/mob/fool = parent
+	UnregisterSignal(fool, COMSIG_MOB_GHOSTIZE)
 	clear_image(trickery_image, fool.client)
 
 /datum/component/seethrough_mob/proc/toggle_active()

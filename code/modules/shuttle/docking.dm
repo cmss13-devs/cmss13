@@ -7,6 +7,9 @@
 	if(!force)
 		if(!check_dock(new_dock))
 			remove_ripples()
+			if(destination && dock_failures++ > 4)
+				destination = null
+				message_admins("Shuttle [src] repeatedly failed to initiate_docking and is being forced to a null destination!")
 			return DOCKING_BLOCKED
 		if(!canMove())
 			remove_ripples()
@@ -38,7 +41,7 @@
 
 	var/rotation = 0
 	if(new_dock.dir != dir) //Even when the dirs are the same rotation is coming out as not 0 for some reason
-		rotation = dir2angle(new_dock.dir)-dir2angle(dir)
+		rotation = dir2angle(new_dock.dir)-dir2angle(dir) + 360
 		if ((rotation % 90) != 0)
 			rotation += (rotation % 90) //diagonal rotations not allowed, round up
 		rotation %%= 360
@@ -75,10 +78,15 @@
 	if(!force)
 		if(!check_dock(new_dock))
 			remove_ripples()
+			if(destination && dock_failures++ > 4)
+				destination = null
+				message_admins("Shuttle [src] repeatedly failed to initiate_docking and is being forced to a null destination!")
 			return DOCKING_BLOCKED
 		if(!canMove())
 			remove_ripples()
 			return DOCKING_IMMOBILIZED
+
+	dock_failures = 0
 
 	// Moving to the new location will trample the ripples there at the exact
 	// same time any mobs there are trampled, to avoid any discrepancy where

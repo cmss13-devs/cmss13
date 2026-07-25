@@ -7,7 +7,7 @@ HOW TO MAKE A TIMER:
 	var/timerid = addtimer(C, time, timertype)
 	var/timerid = addtimer(CALLBACK(object|null, GLOBAL_PROC_REF(type/path|procstring), arg1, arg2, ... argn), time, timertype)
 
-PROC STRINGS ARE BAD, they can only be done for datum proc calls and they dont give compile errors.
+PROC STRINGS ARE BAD, they can only be done for datum proc calls and they don't give compile errors.
 
 INVOKING THE CALLBACK:
 	C being a callback datum ,
@@ -21,7 +21,7 @@ HELP TO PROC TYPEPATH SHORTCUTS (Purely based on the path in the code)
 		Example:
 			CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(some_proc_here))
 
-	Proc defined on current(src) object (when in a /proc/ and NOT AN OVERRIDE) OR overridden at src or any of it's parents:
+	Proc defined on current(src) object (when in a /proc/ and NOT AN OVERRIDE) OR overridden at src or any of its parents:
 		PROC_REF
 		Example:
 			CALLBACK(src, PROC_REF(some_proc_here))

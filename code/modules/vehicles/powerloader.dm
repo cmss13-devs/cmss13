@@ -1,7 +1,7 @@
 /obj/vehicle/powerloader
 	name = "\improper Caterpillar P-5000 Work Loader"
 	icon = 'icons/obj/vehicles/powerloader.dmi'
-	desc = "The Caterpillar P-5000 Work Loader is a commercial mechanized exoskeleton used for lifting heavy materials and objects, first designed in January 29, 2025 by Weyland Corporation. An old but trusted design used in warehouses, constructions and military ships everywhere."
+	desc = "The Caterpillar P-5000 Work Loader is a commercial mechanized exoskeleton used for lifting heavy materials and objects, first released on January 29, 2025 by Weyland Corporation. An old but trusted design used in warehouses, constructions and military ships everywhere."
 	icon_state = "powerloader_open"
 	layer = POWERLOADER_LAYER //so the top appears above windows and wall mounts
 	anchored = TRUE
@@ -362,13 +362,32 @@
 
 	return XENO_NONCOMBAT_ACTION
 
+/obj/structure/powerloader_wreckage/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
+	if(unslashable || health <= 0)
+		return TAILSTAB_COOLDOWN_NONE
+	if(xeno.mob_size < MOB_SIZE_XENO)
+		to_chat(xeno, SPAN_XENOWARNING("You're too small to do any significant damage to this vehicle!"))
+		return XENO_NO_DELAY_ACTION
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	var/damage = (xeno.melee_vehicle_damage + rand(-5,5))
+	health -= damage
+	if(health <= 0)
+		xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+		SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		deconstruct(FALSE)
+	else
+		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
+	return TAILSTAB_COOLDOWN_NORMAL
+
 /obj/structure/powerloader_wreckage/jd
 	name = "\improper John Deere 4300 Power Loader wreckage"
 	icon_state = "wreck_jd"
 
 /obj/vehicle/powerloader/jd
 	name = "\improper John Deere 4300 Power Loader"
-	desc = "The John Deere 4300 Power Loader is a commercial mechanized exoskeleton used for lifting heavy materials and objects based on the Caterpillar P-5000, first designed in January 29, 2025 by the Weyland Corporation. An old but trusted design used in warehouses, constructions and military ships everywhere. This one has a signature green and yellow livery."
+	desc = "The John Deere 4300 Power Loader is a commercial mechanized exoskeleton used for lifting heavy materials and objects based on the Caterpillar P-5000, first released on January 29, 2025 by the Weyland Corporation. An old but trusted design used in warehouses, constructions and military ships everywhere. This one has a signature green and yellow livery."
 	icon_state = "powerloader_open_jd"
 	base_state = "powerloader_jd"
 	open_state = "powerloader_open_jd"
@@ -381,7 +400,7 @@
 
 /obj/vehicle/powerloader/ft
 	name = "\improper Ferret Heavy Industries Mk4 Power Loader"
-	desc = "The Ferret Heavy Industries Mk4 Power Loader is a commercial mechanized exoskeleton used for lifting heavy materials and objects based on the Caterpillar P-5000, first designed in January 29, 2025 by the Weyland Corporation. An old but trusted design used in warehouses, constructions and military ships everywhere. This one has the signature blue and white livery of the now defunct Ferret Heavy Industries that went bankrupt two years ago."
+	desc = "The Ferret Heavy Industries Mk4 Power Loader is a commercial mechanized exoskeleton used for lifting heavy materials and objects based on the Caterpillar P-5000, first released on January 29, 2025 by the Weyland Corporation. An old but trusted design used in warehouses, constructions and military ships everywhere. This one has the signature blue and white livery of the now defunct Ferret Heavy Industries that went bankrupt two years ago."
 	icon_state = "powerloader_open_ft"
 	base_state = "powerloader_ft"
 	open_state = "powerloader_open_ft"

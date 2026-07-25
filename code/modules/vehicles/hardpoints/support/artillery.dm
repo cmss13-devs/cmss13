@@ -20,8 +20,8 @@
 
 	if(is_active)
 		user.client.change_view(8, owner)
-		user.client.pixel_x = 0
-		user.client.pixel_y = 0
+		user.client.set_pixel_x(0)
+		user.client.set_pixel_y(0)
 		is_active = FALSE
 		return
 
@@ -35,17 +35,17 @@
 
 	switch(holder.dir)
 		if(NORTH)
-			user.client.pixel_x = 0
-			user.client.pixel_y = view_tile_offset * 32
+			user.client.set_pixel_x(0)
+			user.client.set_pixel_y(view_tile_offset * 32)
 		if(SOUTH)
-			user.client.pixel_x = 0
-			user.client.pixel_y = -1 * view_tile_offset * 32
+			user.client.set_pixel_x(0)
+			user.client.set_pixel_y(-1 * view_tile_offset * 32)
 		if(EAST)
-			user.client.pixel_x = view_tile_offset * 32
-			user.client.pixel_y = 0
+			user.client.set_pixel_x(view_tile_offset * 32)
+			user.client.set_pixel_y(0)
 		if(WEST)
-			user.client.pixel_x = -1 * view_tile_offset * 32
-			user.client.pixel_y = 0
+			user.client.set_pixel_x(-1 * view_tile_offset * 32)
+			user.client.set_pixel_y(0)
 
 /obj/item/hardpoint/support/artillery_module/deactivate()
 	if(!is_active)
@@ -59,8 +59,8 @@
 		if(!user.client)
 			continue
 		user.client.change_view(GLOB.world_view_size, owner)
-		user.client.pixel_x = 0
-		user.client.pixel_y = 0
+		user.client.set_pixel_x(0)
+		user.client.set_pixel_y(0)
 	is_active = FALSE
 
 /obj/item/hardpoint/support/artillery_module/try_fire(target, user, params)

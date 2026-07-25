@@ -819,7 +819,7 @@
 		stethoscope.attack(src, user)
 	if(href_list["remove_splint"])
 		var/part_to_remove = href_list["remove_splint"]
-		remove_splints(user = usr, part = part_to_remove)
+		remove_splints(usr, part_to_remove)
 	..()
 	return
 

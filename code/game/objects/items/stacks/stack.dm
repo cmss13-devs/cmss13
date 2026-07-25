@@ -446,12 +446,12 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 
 	return ..()
 
-/obj/item/stack/attackby(obj/item/used_stack as obj, mob/user as mob)
+/obj/item/stack/attackby(obj/item/used_stack, mob/user)
 	if(istype(used_stack, /obj/item/stack))
 		var/obj/item/stack/other_stack = used_stack
 		if(other_stack.stack_id == stack_id) //same stack type
 			if(other_stack.amount >= max_amount)
-				to_chat(user, SPAN_WARNING("The [src.name] is full!"))
+				to_chat(user, SPAN_WARNING("The [name] is full!"))
 				return TRUE
 			var/to_transfer = min(amount, other_stack.max_amount - other_stack.amount)
 

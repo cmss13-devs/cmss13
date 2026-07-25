@@ -207,7 +207,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
 
 /datum/equipment_preset/survivor/atlan_doctor
-	name = "Survivor - UPP - Ministry of Health - Doctor"
+	name = "Survivor - UPP - Ministry of Health - Atlan Doctor"
 	assignment = "Doktor Ministerstva Zdravookhraneniya"
 	minimap_icon = "upp_doc"
 	minimap_background = "background_upp_medical"
@@ -220,8 +220,6 @@
 	survivor_variant = MEDICAL_SURVIVOR
 
 /datum/equipment_preset/survivor/atlan_doctor/load_gear(mob/living/carbon/human/new_human)
-
-/datum/equipment_preset/synth/survivor/atlan_doctor/load_gear(mob/living/carbon/human/new_human)
 	var/random_civilian_satchel= rand(1,3)
 	switch(random_civilian_satchel)
 		if(1)

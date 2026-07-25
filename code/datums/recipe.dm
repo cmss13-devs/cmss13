@@ -1148,3 +1148,33 @@
 /datum/recipe/chocolate_soy
 	reagents = list("soymilk" = 2, "coco" = 2, "sugar" = 2)
 	result = /obj/item/reagent_container/food/snacks/chocolatebar
+
+/datum/recipe/pasta_salad
+	reagents = list("sodiumchloride" = 5, "blackpepper" = 5)
+	items = list(
+		/obj/item/reagent_container/food/snacks/boiledspagetti,
+		/obj/item/reagent_container/food/snacks/grown/tomato,
+	)
+	result = /obj/item/reagent_container/food/snacks/pasta_salad
+
+/datum/recipe/potato_salad
+	items = list(
+		/obj/item/reagent_container/food/snacks/grown/potato,
+		/obj/item/reagent_container/food/snacks/boiledegg,
+	)
+	result = /obj/item/reagent_container/food/snacks/potato_salad
+
+/datum/recipe/rouladen
+	reagents = list("wine" = 5)
+	items = list(
+		/obj/item/reagent_container/food/snacks/boiledegg,
+		/obj/item/reagent_container/food/snacks/meat,
+	)
+	result = /obj/item/reagent_container/food/snacks/rouladen
+
+/datum/recipe/kipferl
+	items = list(
+		/obj/item/reagent_container/food/snacks/doughslice,
+	)
+	result = /obj/item/reagent_container/food/snacks/kipferl
+

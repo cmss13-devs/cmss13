@@ -3958,6 +3958,15 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
+/obj/item/reagent_container/food/snacks/kipferl,
+/obj/item/reagent_container/food/snacks/kipferl{
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/snacks/kipferl{
+	pixel_y = 2;
+	pixel_x = 6
+	},
+/obj/item/reagent_container/food/snacks/kipferl,
 /turf/open/floor/strata/cyan2/east,
 /area/atlan/station/promenade)
 "alM" = (
@@ -19295,6 +19304,7 @@
 /obj/structure/surface/table/almayer,
 /obj/item/trash/chips,
 /obj/item/trash/chunk,
+/obj/item/reagent_container/food/snacks/kipferl,
 /turf/open/floor/strata/floor2,
 /area/atlan/comms/lz1_engineering)
 "bQA" = (
@@ -33003,6 +33013,7 @@
 	pixel_x = -10;
 	pixel_y = 13
 	},
+/obj/item/reagent_container/food/snacks/kipferl,
 /turf/open/floor/strata/blue1,
 /area/atlan/station/admin)
 "moQ" = (
@@ -35657,10 +35668,7 @@
 	pixel_x = 6;
 	pixel_y = 10
 	},
-/obj/item/reagent_container/food/snacks/beetsoup{
-	pixel_y = 1;
-	pixel_x = -1
-	},
+/obj/item/reagent_container/food/snacks/potato_salad,
 /turf/open/floor/strata/cyan2/east,
 /area/atlan/station/promenade)
 "oov" = (
@@ -36888,13 +36896,14 @@
 /area/atlan/station/botany)
 "plU" = (
 /obj/structure/surface/table/almayer,
-/obj/item/trash/plate{
-	pixel_x = 8;
-	pixel_y = 11
-	},
 /obj/item/reagent_container/food/drinks/cans/waterbottle/upp{
 	pixel_x = -5;
 	pixel_y = 7
+	},
+/obj/item/reagent_container/food/snacks/kipferl,
+/obj/item/reagent_container/food/snacks/kipferl{
+	pixel_y = 5;
+	pixel_x = 9
 	},
 /turf/open/floor/strata,
 /area/atlan/station/canteen)
@@ -38013,6 +38022,10 @@
 /obj/structure/sign/calendar/upp{
 	pixel_y = 29;
 	layer = 2
+	},
+/obj/item/reagent_container/food/snacks/kipferl{
+	pixel_y = 5;
+	pixel_x = 9
 	},
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/cargo)
@@ -41528,7 +41541,9 @@
 	pixel_x = 17;
 	pixel_y = 15
 	},
-/obj/item/reagent_container/food/snacks/fishfingers,
+/obj/item/reagent_container/food/snacks/pasta_salad{
+	pixel_y = 4
+	},
 /turf/open/floor/strata/fake_wood,
 /area/atlan/station/promenade)
 "sGj" = (
@@ -43009,6 +43024,7 @@
 	color = "#8B7B5B"
 	},
 /obj/effect/landmark/objective_landmark/medium,
+/obj/item/reagent_container/food/snacks/kipferl,
 /turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/promenade)
 "tHS" = (
@@ -43963,6 +43979,9 @@
 	},
 /obj/structure/machinery/light/double/blue{
 	dir = 1
+	},
+/obj/item/reagent_container/food/snacks/pasta_salad{
+	pixel_y = 4
 	},
 /turf/open/floor/strata/cyan1,
 /area/atlan/station/medical)
@@ -46308,8 +46327,10 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/atlan/station/repairs_lift)
 "wsk" = (
-/obj/item/reagent_container/food/snacks/milosoup,
 /obj/structure/surface/table/woodentable/poor,
+/obj/item/reagent_container/food/snacks/rouladen{
+	pixel_y = 9
+	},
 /turf/open/floor/strata/fake_wood,
 /area/atlan/station/promenade)
 "wsn" = (

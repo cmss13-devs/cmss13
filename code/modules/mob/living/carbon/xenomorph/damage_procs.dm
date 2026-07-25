@@ -330,6 +330,5 @@
 			if(resist_modifier > 0)
 				if(!HAS_TRAIT(src, TRAIT_ABILITY_POUNCE))
 					to_chat(src, SPAN_DANGER("We feel pieces of our exoskeleton fusing with the viscous fluid below and tearing off as we struggle to move through the flames!"))
-				else
-					if(prob(25))
-						to_chat(src, SPAN_DANGER("We feel searing heat full of chemicals from below us, melting our exoskeleton as we pass above the flames!"))
+				else if(prob(25))
+					to_chat(src, SPAN_DANGER("We feel searing heat full of chemicals from below us, melting our exoskeleton as we pass above the flames!"))

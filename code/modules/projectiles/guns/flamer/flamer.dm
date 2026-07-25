@@ -843,9 +843,8 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 				xeno_target.armor_deflection?(variant_burn_msg=" We feel the flames weakening our exoskeleton!"):(variant_burn_msg=" You feel the flaming chemicals eating into your body!")
 	if(!HAS_TRAIT(target, TRAIT_ABILITY_POUNCE))
 		to_chat(target, SPAN_DANGER("You are burned![variant_burn_msg?"[variant_burn_msg]":""]"))
-	else
-		if(prob(25)) // It spam like crazy, it lags client.
-			to_chat(target, SPAN_DANGER("We got burned from flames below!"))
+	else if(prob(25)) // It spam like crazy, it lags client.
+		to_chat(target, SPAN_DANGER("We got burned from flames below!"))
 	target.updatehealth()
 
 /obj/flamer_fire/proc/update_flame()

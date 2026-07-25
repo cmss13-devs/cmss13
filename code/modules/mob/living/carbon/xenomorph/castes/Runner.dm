@@ -117,5 +117,7 @@
 
 /datum/action/xeno_action/activable/pounce/runner/additional_effects_always()
 	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!xeno)
+		return
 
 	REMOVE_TRAIT(xeno, TRAIT_ABILITY_POUNCE, TRAIT_SOURCE_ABILITY("pounce"))

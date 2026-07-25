@@ -10,6 +10,39 @@
 /obj/item/clothing/accessory/device/whistle,
 /turf/open/floor/whitebluefull,
 /area/atlan/station/hab_rec)
+"ad" = (
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3,
+/turf/closed/wall/upp_ship/grey/reinforced,
+/area/atlan/station/hab_rec)
+"ae" = (
+/turf/closed/wall/upp_ship/grey/reinforced,
+/area/atlan/station/hab_rec)
+"af" = (
+/obj/structure/sign/safety/water,
+/turf/closed/wall/upp_ship/grey/reinforced,
+/area/atlan/station/hab_rec)
+"ag" = (
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 32;
+	layer = 5.4
+	},
+/turf/closed/wall/upp_ship/grey,
+/area/atlan/station/hab_rec)
+"ah" = (
+/obj/structure/window/framed/upp_ship/grey,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 32;
+	layer = 5.4
+	},
+/turf/open/floor/plating,
+/area/atlan/station/hab_rec)
 "am" = (
 /turf/template_noop,
 /area/template_noop)
@@ -106,6 +139,9 @@
 /obj/structure/bedsheetbin{
 	pixel_x = 1;
 	pixel_y = 3
+	},
+/obj/structure/machinery/light/double/blue{
+	dir = 8
 	},
 /turf/open/floor/whiteblue/west,
 /area/atlan/station/hab_rec)
@@ -230,7 +266,7 @@
 /area/atlan/station/hab_rec)
 "Rf" = (
 /obj/structure/sign/safety/maint,
-/turf/closed/wall/upp_ship/grey,
+/turf/closed/wall/upp_ship/grey/reinforced,
 /area/atlan/station/hab_rec)
 "Sf" = (
 /obj/structure/closet/secure_closet/personal,
@@ -298,7 +334,7 @@ am
 am
 "}
 (2,1,1) = {"
-aa
+ag
 xH
 TV
 Sv
@@ -378,7 +414,7 @@ ql
 am
 "}
 (7,1,1) = {"
-Ye
+aC
 Yw
 Cw
 Ty
@@ -458,7 +494,7 @@ am
 am
 "}
 (12,1,1) = {"
-Ye
+aC
 oU
 Cw
 Ty
@@ -516,7 +552,7 @@ Ty
 Ty
 Cw
 Az
-aa
+ad
 am
 am
 am
@@ -532,7 +568,7 @@ Ty
 Ty
 Cw
 zM
-aC
+ae
 am
 am
 am
@@ -548,13 +584,13 @@ Ty
 Ty
 Cw
 qT
-aC
+ae
 am
 am
 am
 "}
 (18,1,1) = {"
-Ye
+ah
 Yw
 Cw
 Cw
@@ -564,13 +600,13 @@ Cw
 Cw
 Cw
 IB
-aC
+ae
 am
 am
 am
 "}
 (19,1,1) = {"
-aC
+aa
 Sf
 Kc
 qc
@@ -580,7 +616,7 @@ Kc
 qc
 Kc
 VF
-aC
+ae
 am
 am
 am
@@ -592,11 +628,11 @@ aC
 cS
 Qt
 Cv
-rs
-aC
-aC
-aC
-aC
+af
+ae
+ae
+ae
+ae
 am
 am
 am

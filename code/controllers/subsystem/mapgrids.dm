@@ -48,10 +48,10 @@ SUBSYSTEM_DEF(mapgrids)
 	if(!grid)
 		return
 
-	var/start_x = abs(range.center_x - range.width * 0.5)
-	var/end_x   = abs(range.center_x + range.width * 0.5)
-	var/start_y = abs(range.center_y - range.height * 0.5)
-	var/end_y   = abs(range.center_y + range.height * 0.5)
+	var/start_x = round(range.center_x - range.width * 0.5, 1)
+	var/end_x   = round(range.center_x + range.width * 0.5, 1)
+	var/start_y = round(range.center_y - range.height * 0.5, 1)
+	var/end_y   = round(range.center_y + range.height * 0.5, 1)
 
 	var/list/atom/movable/results = grid.query_range(start_x, end_x, start_y, end_y)
 

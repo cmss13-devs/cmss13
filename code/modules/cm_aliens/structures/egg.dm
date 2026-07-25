@@ -310,15 +310,15 @@
 	if(health <= 0)
 		Burst(TRUE)
 
-/obj/effect/alien/egg/Crossed(atom/movable/moving_thing)
-	HasProximity(moving_thing)
+/obj/effect/alien/egg/Crossed(atom/movable/victim)
+	HasProximity(victim)
 
-/obj/effect/alien/egg/HasProximity(atom/movable/moving_thing)
+/obj/effect/alien/egg/HasProximity(atom/movable/victim)
 	if(status == EGG_GROWN)
-		if(!can_hug(moving_thing, hivenumber) || isyautja(moving_thing) || issynth(moving_thing)) //Predators are too stealthy to trigger eggs to burst. Maybe the huggers are afraid of them.
+		if(!can_hug(victim, hivenumber) || isyautja(victim) || issynth(victim)) //Predators are too stealthy to trigger eggs to burst. Maybe the huggers are afraid of them.
 			return
-		var/list/list/nearbies in hearers(1, src)
-		if(nearbies.Find(moving_thing))
+		var/list/list/possible_victims = hearers(1, src)
+		if(possible_victims.Find(victim))
 			Burst(FALSE, TRUE, null)
 
 /obj/effect/alien/egg/flamer_fire_act() // gotta kill the egg + hugger

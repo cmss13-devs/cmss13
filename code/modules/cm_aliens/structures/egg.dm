@@ -317,7 +317,7 @@
 	if(status == EGG_GROWN)
 		if(!can_hug(victim, hivenumber) || isyautja(victim) || issynth(victim)) //Predators are too stealthy to trigger eggs to burst. Maybe the huggers are afraid of them.
 			return
-		var/list/list/possible_victims = hearers(1, src)
+		var/list/possible_victims = hearers(1, src)
 		if(possible_victims.Find(victim))
 			Burst(FALSE, TRUE, null)
 

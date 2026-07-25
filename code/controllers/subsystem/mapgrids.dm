@@ -19,6 +19,10 @@ SUBSYSTEM_DEF(mapgrids)
 	manager = new
 	return SS_INIT_SUCCESS
 
+/datum/controller/subsystem/mapgrids/stat_entry(msg)
+	msg = "Tracking: [length(manager?.tracked_movables)]"
+	return ..()
+
 /datum/controller/subsystem/mapgrids/fire(resumed = FALSE)
 	if(!resumed)
 		currentrun = manager.all_grids.Copy()

@@ -177,8 +177,9 @@
 				&& (!z_list || (target_turf.z in z_list)))
 					. += possible_target
 
-/// Moves the boundaries and rebalances the mapcells to optimize them
-/datum/mapgrid/proc/balance()
+/// Scans new boundaries to use when we'll rebalance the grid later
+/// new_bounds_x and new_bounds_y are output not input, they should be a list of length [dim]
+/datum/mapgrid/proc/scan_new_bounds(list/new_bounds_x, list/new_bounds_y)
 	// We'll achieve this the dumb and simple way, it's not perfect, but the balancing operation also takes time!
 	// We want to reduce proccall overhead as much as possible too so this might get beefy
 
@@ -220,10 +221,8 @@
 	if(!length(all_col_contents))
 		return
 
-
 	// Step 3: Now we can start doing more intelligent stuff. We're going to find out how we'll balance this.
 	// We split our x-sorted mega row/columns to find out what each boundary should be.
-	var/new_bounds_x = new /list(dim)
 	for(var/x in 1 to dim-1)
 		var/atom/movable/chosen_one = all_col_contents[floor(x / dim * length(all_col_contents) + 1)] // Pick boundaries by percentile
 		new_bounds_x[x] = all_col_contents[chosen_one] // The boundary will be their X position
@@ -235,7 +234,6 @@
 	new_bounds_x[dim] = max(new_bounds_x[dim-1] + 1, world.maxx)
 
 	// Now for Y
-	var/new_bounds_y = new /list(dim)
 	for(var/y in 1 to dim-1)
 		var/atom/movable/chosen_one_y = all_row_contents[floor(y / dim * length(all_row_contents) + 1)]
 		new_bounds_y[y] = all_row_contents[chosen_one_y]
@@ -243,12 +241,10 @@
 			new_bounds_y[y] = new_bounds_y[y-1] + 1
 	new_bounds_y[dim] = max(new_bounds_y[dim-1] + 1, world.maxy)
 
-	// ====================
-	// Finally it's time to start balancing.
-	// You're probably expecting some kind of crazy tech for that, but sorry
-	// we'll do this one very dirty.
-	// ====================
+	return TRUE
 
+
+/datum/mapgrid/proc/rebalance(list/new_bounds_x, list/new_bounds_y)
 	// Swap the boundaries. If we crash below this, everything is doomed, which is additional
 	// incentive to delegate to other procs.
 	bounds_x = new_bounds_x

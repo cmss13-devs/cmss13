@@ -182,7 +182,7 @@
 
 
 /// Play sound for all on-map clients on a given Z-level. Good for ambient sounds.
-/proc/playsound_z(z, soundin, volume = 100, vol_cat = VOLUME_SFX, echo, z_s_offset, x_s_offset)
+/proc/playsound_z(z, soundin, volume = 100, vol_cat = VOLUME_SFX, list/echo, z_s_offset, x_s_offset)
 	var/datum/sound_template/template = new()
 	template.file = soundin
 	template.volume = volume

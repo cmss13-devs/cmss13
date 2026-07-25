@@ -317,9 +317,9 @@
 	if(status == EGG_GROWN)
 		if(!can_hug(moving_thing, hivenumber) || isyautja(moving_thing) || issynth(moving_thing)) //Predators are too stealthy to trigger eggs to burst. Maybe the huggers are afraid of them.
 			return
-		for(var/mob/living/nearbies in hearers(1, src))
-			if(nearbies == moving_thing)
-				Burst(FALSE, TRUE, null)
+		var/list/list/nearbies in hearers(1, src)
+		if(nearbies.Find(moving_thing))
+			Burst(FALSE, TRUE, null)
 
 /obj/effect/alien/egg/flamer_fire_act() // gotta kill the egg + hugger
 	Burst(TRUE)

@@ -13,7 +13,7 @@
 	var/falloff = 1
 	var/volume_cat = VOLUME_SFX
 	var/range = 0
-	var/list/echo = new /list(18)
+	var/list/echo
 	var/atom/atom //! Tracked atom so we get the exact position even after delay in SSsound firing - replaces x/y/z if applicable
 	var/x //Map coordinates, not sound coordinates
 	var/y
@@ -65,10 +65,8 @@
 	template.falloff = falloff
 	template.volume = vol
 	template.volume_cat = vol_cat
-	for(var/pos = 1 to length(echo))
-		if(!echo[pos])
-			continue
-		template.echo[pos] = echo[pos]
+	if(echo)
+		template.echo = echo.Copy()
 	template.z_s_offset = z_s_offset
 	template.x_s_offset = x_s_offset
 	if(vary != FALSE)
@@ -149,10 +147,8 @@
 	template.volume_cat = vol_cat
 	template.channel = channel
 	template.status = status
-	for(var/pos = 1 to length(echo))
-		if(!echo[pos])
-			continue
-		template.echo[pos] = echo[pos]
+	if(echo)
+		template.echo = echo.Copy()
 	template.z_s_offset = z_s_offset
 	template.x_s_offset = x_s_offset
 	SSsound.queue(template, list(client))
@@ -168,10 +164,8 @@
 	template.channel = channel
 	template.status = status
 	template.volume_cat = vol_cat
-	for(var/pos = 1 to length(echo))
-		if(!echo[pos])
-			continue
-		template.echo[pos] = echo[pos]
+	if(echo)
+		template.echo = echo.Copy()
 
 	var/list/hearers = list()
 	for(var/mob/living/M in A.contents)
@@ -194,10 +188,8 @@
 	template.volume = volume
 	template.channel = SOUND_CHANNEL_Z
 	template.volume_cat = vol_cat
-	for(var/pos = 1 to length(echo))
-		if(!echo[pos])
-			continue
-		template.echo[pos] = echo[pos]
+	if(echo)
+		template.echo = echo.Copy()
 	template.z_s_offset = z_s_offset
 	template.x_s_offset = x_s_offset
 	var/list/hearers = list()

@@ -112,6 +112,8 @@
 
 /datum/action/xeno_action/activable/pounce/runner/pre_pounce_effects()
 	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!xeno)
+		return
 
 	ADD_TRAIT(xeno, TRAIT_ABILITY_POUNCE, TRAIT_SOURCE_ABILITY("pounce"))
 

@@ -311,7 +311,13 @@
 
 
 /client/proc/debug_mapgrids()
-	var/datum/mapgrid/mg = SSmapgrids.manager.mapgrids_by_z[2]
+	set category = "Debug"
+	set name = "Debug MapGrids"
+
+	var/turf/turf = get_turf(usr)
+	var/datum/mapgrid/mg = SSmapgrids.manager.mapgrids_by_z[turf.z]
+
+	to_chat(src, "====== Cells for z=[turf.z]")
 
 	var/counter = 1
 	for(var/x in 1 to mg.dim)
@@ -320,9 +326,24 @@
 			to_chat(src, "#[counter] ([x],[y]) : x=([mc.start_x],[mc.end_x]) ; y=([mc.start_y],[mc.end_y]) ; contents=[length(mc.contents)]")
 			counter++
 
-/client/proc/rebalance_mapgrid()
-	var/turf/turf = get_turf(usr)
-	var/datum/mapgrid/mg = SSmapgrids.manager.mapgrids_by_z[turf.z]
-	log_debug("MapGrid for z=[turf.z] : Boundaries before rebalance: x=([mg.bounds_x.Join(",")]) ; y=([mg.bounds_y.Join(",")])")
-	mg.balance()
-	log_debug("MapGrid for z=[turf.z] : Boundaries after rebalance: x=([mg.bounds_x.Join(",")]) ; y=([mg.bounds_y.Join(",")])")
+	to_chat(src, "====== Boundaries for z=[turf.z]")
+	to_chat(src, "X: [mg.bounds_x.Join(", ")]")
+	to_chat(src, "Y: [mg.bounds_y.Join(", ")]")
+
+	to_chat(src, "====== Object distribution per boundaries for z=[turf.z]")
+
+	var/list/counts = list()
+	for(var/x in 1 to mg.dim)
+		counts += 0
+		for(var/y in 1 to mg.dim)
+			var/datum/mapcell/cell = mg.cells[x][y]
+			counts[x] += length(cell.contents)
+	to_chat(src, "X: [counts.Join(", ")]")
+
+	counts = list()
+	for(var/y in 1 to mg.dim)
+		counts += 0
+		for(var/x in 1 to mg.dim)
+			var/datum/mapcell/cell = mg.cells[x][y]
+			counts[y] += length(cell.contents)
+	to_chat(src, "Y: [counts.Join(", ")]")

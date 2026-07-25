@@ -223,7 +223,6 @@ GLOBAL_LIST_INIT(admin_verbs_debug, list(
 	/datum/admins/proc/open_shuttlepanel,
 	/client/proc/allow_browser_inspect,
 	/client/proc/debug_mapgrids,
-	/client/proc/rebalance_mapgrid,
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_debug_advanced, list(

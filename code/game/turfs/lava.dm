@@ -696,10 +696,6 @@ engineer_floor_deco
 	walltype = WALL_ENGINEER_RUIN
 	turf_flags = TURF_HULL
 
-/turf/closed/wall/engineer_ruins/reinforced
-	icon_state = "reinforced"
-	walltype = WALL_REINFORCED
-
 /turf/closed/wall/engineer_ruins/smooth_1
 	icon = 'icons/turf/walls/engineer/engineerruin_smooth.dmi'
 	icon_state = "engineer_stone"
@@ -708,10 +704,6 @@ engineer_floor_deco
 	icon_state = "hull"
 	walltype = WALL_ENGINEER_RUIN
 	turf_flags = TURF_HULL
-
-/turf/closed/wall/engineer_ruins/smooth_1/reinforced
-	icon_state = "reinforced"
-	walltype = WALL_REINFORCED
 
 /turf/closed/wall/engineer_ruins/smooth_2
 	icon = 'icons/turf/walls/engineer/engineerruin_smooth_1.dmi'
@@ -722,10 +714,6 @@ engineer_floor_deco
 	walltype = WALL_ENGINEER_RUIN
 	turf_flags = TURF_HULL
 
-/turf/closed/wall/engineer_ruins/smooth_2/reinforced
-	icon_state = "reinforced"
-	walltype = WALL_REINFORCED
-
 /turf/closed/wall/engineer_ruins/smooth_3
 	icon = 'icons/turf/walls/engineer/engineerruin_smooth_2.dmi'
 	icon_state = "engineer_stone"
@@ -734,10 +722,6 @@ engineer_floor_deco
 	icon_state = "hull"
 	walltype = WALL_ENGINEER_RUIN
 	turf_flags = TURF_HULL
-
-/turf/closed/wall/engineer_ruins/smooth_3/reinforced
-	icon_state = "reinforced"
-	walltype = WALL_REINFORCED
 
 // Engineer Ruins Floors
 

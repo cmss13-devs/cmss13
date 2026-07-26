@@ -16,6 +16,7 @@ GLOBAL_DATUM_INIT(sun_status, /datum/sun, new)
 /datum/sun/proc/start_sun_behavior(behavior = SPECIAL_LIGHTING_SUNSET)
 	if(behavior == SPECIAL_LIGHTING_PREROUND)
 		return
+	stage = 1
 	sun_behavior_change_time = ROUND_TIME
 	is_cold = (SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 	if(behavior == SPECIAL_LIGHTING_SUNSET)
@@ -59,11 +60,6 @@ GLOBAL_DATUM_INIT(sun_status, /datum/sun, new)
 /datum/sun/proc/time_till_next_call()
 	return max(((stage * stage_time) + startup_delay + sun_behavior_change_time - ROUND_TIME), 0.5 SECONDS) /// how long until the next sunstage occurs (minimum of 0.5 seconds)
 
-//not rly needed as we keep the current stage here
-/datum/sun/proc/compute_stage()
-	var/lighting_stage = clamp((floor((ROUND_TIME - sun_behavior_change_time + stage_time - startup_delay)/stage_time)), 0, max_stages) /// the current stage of the lighting, ticks up by 1 every stagetime after startup_delay + start_time
-	return lighting_stage
-
 /datum/sun/proc/should_animate(mob/living/mob_in_light)
 	var/area/lighting_mob_area = get_area(mob_in_light)
 	if(CEILING_IS_PROTECTED(lighting_mob_area?.ceiling, CEILING_PROTECTION_TIER_2)) //if underground, don't animate, this is needed in combo with the special area check
@@ -83,10 +79,14 @@ GLOBAL_DATUM_INIT(sun_status, /datum/sun, new)
 		screen.color = used_color_progression[stage]
 
 /datum/sun/proc/enter_roof(mob/living/mob_inside)
+	if(sun_behavior == SPECIAL_LIGHTING_PREROUND)
+		return
 	var/atom/movable/screen/fullscreen/screen = mob_inside.fullscreens["lighting_backdrop"]
 	animate(screen, color = "#000", time = 1.5 SECONDS, easing = QUAD_EASING | EASE_OUT)
 
 /datum/sun/proc/exit_roof(mob/living/mob_inside)
+	if(sun_behavior == SPECIAL_LIGHTING_PREROUND)
+		return
 	var/atom/movable/screen/fullscreen/screen = mob_inside.fullscreens["lighting_backdrop"]
 	animate(screen, color = used_color_progression[stage], time = 1.5 SECONDS, easing = QUAD_EASING | EASE_IN)
 

@@ -220,6 +220,9 @@
 	UnregisterSignal(src, COMSIG_MOVABLE_ENTERED_AREA, PROC_REF(special_lighting_area_change))
 
 /mob/proc/special_lighting_z_change(atom/source, old_z, new_z)
+	var/area/mob_area = get_area(src)
+	if(CEILING_IS_PROTECTED(mob_area?.ceiling, CEILING_PROTECTION_TIER_2))
+		return
 	if(is_ground_level(old_z) && !is_ground_level(new_z))
 		GLOB.sun_status.enter_roof(src)
 		return

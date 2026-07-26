@@ -80,4 +80,13 @@ GLOBAL_DATUM_INIT(sun_status, /datum/sun, new)
 
 	if(should_animate(mob_in_light))
 		var/atom/movable/screen/fullscreen/screen = mob_in_light.fullscreens["lighting_backdrop"]
-		screen.color = used_color_progression[compute_stage()]
+		screen.color = used_color_progression[stage]
+
+/datum/sun/proc/enter_roof(mob/living/mob_inside)
+	var/atom/movable/screen/fullscreen/screen = mob_inside.fullscreens["lighting_backdrop"]
+	animate(screen, color = "#000", time = 1.5 SECONDS, easing = QUAD_EASING | EASE_OUT)
+
+/datum/sun/proc/exit_roof(mob/living/mob_inside)
+	var/atom/movable/screen/fullscreen/screen = mob_inside.fullscreens["lighting_backdrop"]
+	animate(screen, color = used_color_progression[stage], time = 1.5 SECONDS, easing = QUAD_EASING | EASE_IN)
+

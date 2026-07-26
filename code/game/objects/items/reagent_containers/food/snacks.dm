@@ -3609,20 +3609,22 @@
 
 /obj/item/reagent_container/food/snacks/potato_salad/Initialize()
 	. = ..()
-	reagents.add_reagent("potato", 8)
+	reagents.add_reagent("potato", 5)
 	reagents.add_reagent("vegetable", 2)
+	reagents.add_reagent("egg", 3)
 	bitesize = 4
 
-/obj/item/reagent_container/food/snacks/rouladen
-	name = "Rouladen"
-	desc = "A thin slice of beef wrapped around an interior mixture of eggs, bacon and pickles. Get a mouthful."
-	icon_state = "rouladen"
+/obj/item/reagent_container/food/snacks/goulash
+	name = "goulash"
+	desc = "Contains some sort of meat, assorted vegetables and an overwhelming amount of paprika. Best served hot!"
+	icon_state = "goulash"
 	icon = 'icons/obj/items/food/upp_dishes.dmi'
-	trash = /obj/item/trash/plate
-	filling_color = "#d4c89f"
+	trash = /obj/item/trash/snack_bowl
+	filling_color = "#350f0f"
 
-/obj/item/reagent_container/food/snacks/rouladen/Initialize()
+/obj/item/reagent_container/food/snacks/goulash/Initialize()
 	. = ..()
-	reagents.add_reagent("egg", 2)
-	reagents.add_reagent("meatprotein", 8)
-	bitesize = 4
+	reagents.add_reagent("vegetable", 2)
+	reagents.add_reagent("meatprotein", 6)
+	reagents.add_reagent("hotsauce", 2)
+	bitesize = 6

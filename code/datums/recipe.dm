@@ -1164,13 +1164,14 @@
 	)
 	result = /obj/item/reagent_container/food/snacks/potato_salad
 
-/datum/recipe/rouladen
-	reagents = list("wine" = 5)
+/datum/recipe/goulash
+	reagents = list("water" = 5)
 	items = list(
-		/obj/item/reagent_container/food/snacks/boiledegg,
+		/obj/item/reagent_container/food/snacks/grown/potato,
 		/obj/item/reagent_container/food/snacks/meat,
+		/obj/item/reagent_container/food/snacks/grown/carrot
 	)
-	result = /obj/item/reagent_container/food/snacks/rouladen
+	result = /obj/item/reagent_container/food/snacks/goulash
 
 /datum/recipe/kipferl
 	items = list(

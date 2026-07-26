@@ -4251,6 +4251,13 @@
 	},
 /turf/open/floor/prison/blue_plate/north,
 /area/atlan/station/water_tanks)
+"amE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/exports_west/cas)
 "amF" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/multi_tiles/southeast,
@@ -4464,6 +4471,13 @@
 	},
 /turf/open/floor/strata,
 /area/atlan/station/canteen)
+"ant" = (
+/obj/structure/platform/metal/atlan/north,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/exports_west/cas)
 "anu" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -4871,6 +4885,16 @@
 /obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison/darkbrownfull2,
 /area/atlan/asteroid/processing_handling)
+"aoL" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_y = 1
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/atlan/asteroid/exports_west/cas)
 "aoM" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 6
@@ -6392,6 +6416,16 @@
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/asteroid/processing_nw_train)
+"atr" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_y = 1
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/atlan/asteroid/exports_east)
 "ats" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 6
@@ -7364,6 +7398,22 @@
 	},
 /turf/open/floor/strata/floor2,
 /area/atlan/station/water_tanks)
+"aww" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_y = 1
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/atlan/asteroid/exports_east)
+"awx" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/exports_west/cas)
 "awy" = (
 /obj/structure/sign/safety/maint{
 	pixel_y = 7;
@@ -7393,6 +7443,11 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/floor2,
 /area/atlan/station/water_tanks)
+"awD" = (
+/obj/structure/platform/metal/atlan/north,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/floor2,
+/area/atlan/asteroid/processing_offices)
 "awE" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/floor3/east,
@@ -7515,6 +7570,10 @@
 "awY" = (
 /turf/closed/wall/upp_ship/grey/reinforced,
 /area/atlan/lz/near_lz2)
+"awZ" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/atlan/asteroid/processing_offices)
 "axa" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 6
@@ -13157,7 +13216,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname{
+/obj/structure/machinery/door/airlock/multi_tile/upp_grey/generic/glass/autoname{
 	dir = 2
 	},
 /turf/open/floor/strata/multi_tiles/west,
@@ -23905,9 +23964,6 @@
 /area/atlan/station/airlock_maints)
 "fsR" = (
 /obj/structure/sign/safety/storage,
-/obj/structure/machinery/light{
-	dir = 1
-	},
 /turf/closed/wall/upp_ship/grey/red,
 /area/atlan/station/security)
 "fsT" = (
@@ -27771,6 +27827,8 @@
 /obj/structure/machinery/light/double/blue{
 	dir = 1
 	},
+/obj/item/trash/semki,
+/obj/effect/decal/cleanable/dirt/alt_dirt,
 /turf/open/floor/prison/darkbrownfull2,
 /area/atlan/asteroid/processing_offices)
 "irF" = (
@@ -29379,9 +29437,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_y = 1
-	},
-/obj/structure/machinery/light{
-	dir = 1
 	},
 /obj/structure/sign/nosmoking_1,
 /turf/closed/wall/upp_ship/grey,
@@ -40591,6 +40646,9 @@
 	},
 /obj/effect/decal/strata_decals/grime/grime3,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/structure/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/asteroid/exports_west/cas)
 "rUj" = (
@@ -42278,7 +42336,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
-/obj/item/trash/semki,
+/obj/item/reagent_container/food/snacks/kipferl,
 /turf/open/floor/prison/darkbrownfull2,
 /area/atlan/asteroid/processing_offices)
 "tiu" = (
@@ -46328,8 +46386,8 @@
 /area/atlan/station/repairs_lift)
 "wsk" = (
 /obj/structure/surface/table/woodentable/poor,
-/obj/item/reagent_container/food/snacks/rouladen{
-	pixel_y = 9
+/obj/item/reagent_container/food/snacks/goulash{
+	pixel_y = 6
 	},
 /turf/open/floor/strata/fake_wood,
 /area/atlan/station/promenade)
@@ -46402,12 +46460,6 @@
 	},
 /turf/open/floor/strata/cyan1,
 /area/atlan/station/medical/morgue)
-"wxw" = (
-/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic{
-	dir = 1
-	},
-/turf/open/floor/strata/multi_tiles/west,
-/area/atlan/asteroid/processing_offices)
 "wxC" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
@@ -48531,6 +48583,9 @@
 "yid" = (
 /obj/structure/closet,
 /obj/item/tool/crowbar,
+/obj/structure/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/exports_west/cas)
 "yih" = (
@@ -126988,7 +127043,7 @@ afG
 afG
 azX
 fsR
-aHc
+amE
 aFU
 aHc
 afu
@@ -127406,7 +127461,7 @@ aSd
 aSd
 aSd
 aSd
-aGz
+aHb
 aHO
 aHc
 aHc
@@ -127826,7 +127881,7 @@ aIj
 aGz
 aGz
 sOe
-aIw
+ant
 aGz
 uku
 aGz
@@ -129520,7 +129575,7 @@ jRi
 tBp
 aIO
 aGz
-aGz
+awx
 bdJ
 bdI
 aGz
@@ -130582,7 +130637,7 @@ aAk
 aAk
 aAk
 cke
-kJN
+aoL
 kJN
 vSv
 kJN
@@ -131199,7 +131254,7 @@ aSd
 aSd
 aAs
 xOc
-wxw
+ajn
 aAF
 aAs
 aSd
@@ -131411,7 +131466,7 @@ uax
 pOz
 gXX
 pOz
-pOz
+lJg
 pOz
 dro
 xRM
@@ -131837,8 +131892,8 @@ lID
 pOz
 lJg
 pOz
-qqj
-pOz
+awZ
+lJg
 qTQ
 lID
 agv
@@ -131846,8 +131901,8 @@ fBE
 aSd
 aAF
 xOc
-wxw
-aSd
+ajn
+aAF
 aSd
 aSd
 aSd
@@ -132050,8 +132105,8 @@ azB
 azu
 jMn
 nSo
-dKV
-pOz
+bbN
+lJg
 pOz
 vDY
 dfu
@@ -132263,7 +132318,7 @@ azu
 lQh
 aAs
 kJK
-dKV
+bbN
 pOz
 pOz
 tis
@@ -132691,7 +132746,7 @@ dro
 xOc
 ajn
 aAs
-wOu
+awD
 pOz
 pOz
 lJg
@@ -133113,7 +133168,7 @@ pOz
 pOz
 iOz
 pOz
-obu
+tMV
 hdS
 pOz
 lID
@@ -137154,7 +137209,7 @@ aAk
 aAk
 gyU
 cke
-eoF
+atr
 eoF
 eoF
 oDr
@@ -138002,7 +138057,7 @@ aAk
 aAk
 aAk
 cke
-dNt
+aww
 dNt
 dNt
 dNt

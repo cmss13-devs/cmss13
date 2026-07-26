@@ -455,6 +455,18 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 
 #define PAP_GRUNT_LIST list(JOB_PAP_MILITSIONER, JOB_PAP_STARSHIY_MILITSIONER, JOB_PAP_STARSHINA)
 
+//-------- Cosmos Exploration Corps --------//
+// Polytechinal inspiration, ranks are academic standings rather than proper ranks, future people may change this if they see fit. If the CEC is ever expanded on in the future again :)
+
+#define JOB_CEC_SEC "CEC Security Guard"
+#define JOB_CEC_SEC_SYNTH "CEC Security Guard Synthetic"
+#define JOB_CEC_TRAINEE "Assisstant Professor"
+#define JOB_CEC_DOCENT "Docent"
+#define JOB_CEC_PROFESSOR "Professor"
+#define JOB_CEC_VICE_RECTOR "Vice-Rector"
+#define JOB_CEC_RECTOR "Rector"
+
+
 //-------- CLF --------//
 #define JOB_CLF "CLF Guerilla"
 #define JOB_CLF_ENGI "CLF Field Technician"

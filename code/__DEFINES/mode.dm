@@ -260,6 +260,7 @@ DEFINE_BITFIELD(whitelist_status, list(
 #define FACTION_IASF "Imperial Armed Space Force"
 #define FACTION_PAP "People's Armed Police"
 #define FACTION_HYPERDYNE "Hyperdyne Corporation"
+#define FACTION_CEC "Cosmos Exploration Corps"
 #define FACTION_WY_DEATHSQUAD "WY Death Squad"
 #define FACTION_MERCENARY "Mercenary"
 #define FACTION_FREELANCER "Freelancer"

@@ -15,10 +15,18 @@
 /datum/equipment_preset/survivor/atlan_cec_scientist/load_gear(mob/living/carbon/human/new_human)
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/cec_patch(new_human), WEAR_ACCESSORY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/upp(new_human), WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/upp_pfb(new_human.back), WEAR_IN_BACK)
 
-	var/random_labcoat = rand(1,3)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/upp_pfb(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(new_human), WEAR_L_STORE)
+
+	var/random_gloves = rand(1,2)
+	switch(random_gloves)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(new_human), WEAR_HANDS)
+		if(2)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/botanic_leather(new_human), WEAR_HANDS)
+
+	var/random_labcoat = rand(1,5)
 	switch(random_labcoat)
 		if(1)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/long(new_human), WEAR_JACKET)
@@ -26,6 +34,10 @@
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat(new_human), WEAR_JACKET)
 		if(3)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/brown(new_human), WEAR_JACKET)
+		if(4)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/blue(new_human), WEAR_JACKET)
+		if(5)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/green(new_human), WEAR_JACKET)
 
 	var/random_scientist_satchel= rand(1,3)
 	switch(random_scientist_satchel)
@@ -55,8 +67,20 @@
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp(new_human), WEAR_FEET)
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/scientist/hybrisa(new_human), WEAR_BODY)
-
-	..()
+	//eyewear//
+	var/random_goggles = rand(1,2)
+	switch(random_goggles)
+		if(1)
+			if(new_human.disabilities & NEARSIGHTED)
+				new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health/prescription(new_human), WEAR_EYES)
+			else
+				new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(new_human), WEAR_EYES)
+		if(2)
+			if(new_human.disabilities & NEARSIGHTED)
+				new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/science/prescription(new_human), WEAR_EYES)
+			else
+				new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/science(new_human), WEAR_EYES)
+			..()
 
 /datum/equipment_preset/survivor/upp_colonist_atlan
 	name = "UPP - Atlan Civilian"
@@ -370,6 +394,7 @@
 	minimap_background = "background_hc_management"
 	skills = /datum/skills/civilian/survivor/scientist
 	languages = list(LANGUAGE_GERMAN, LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_CHINESE)
+	paygrades = list(PAY_SHORT_CEC2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_CEC3 = JOB_PLAYTIME_TIER_2, PAY_SHORT_CEC4 = JOB_PLAYTIME_TIER_3)
 	faction = FACTION_UPP
 	faction_group = FACTION_LIST_SURVIVOR_UPP
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -419,7 +444,9 @@
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp(new_human), WEAR_FEET)
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/scientist/hybrisa(new_human), WEAR_BODY)
+	add_random_cl_survivor_loot(new_human)
 	..()
+
 
 /datum/equipment_preset/survivor/atlan_security
 	name = "Survivor - UPP - Atlan Station Security Officer"
@@ -429,7 +456,7 @@
 	minimap_background = "background_upp_alpha"
 	paygrades = list(PAY_SHORT_PAP_MLTS = JOB_PLAYTIME_TIER_0, PAY_SHORT_PAP_SMLTS = JOB_PLAYTIME_TIER_3, PAY_SHORT_PAP_STRSH = JOB_PLAYTIME_TIER_4)
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_CHINESE, LANGUAGE_GERMAN)
-	faction = FACTION_PAP
+	faction = FACTION_UPP
 	skills = /datum/skills/civilian/survivor/marshal
 	access = list(ACCESS_UPP_GENERAL, ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_LOGISTICS, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_COMMAND)
 	idtype = /obj/item/card/id/dogtag/upp
@@ -852,7 +879,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/brown(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/shovel(new_human.back), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern(new_human.back), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap(new_human), WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap(new_human), WEAR_HEAD)
 
 	..()

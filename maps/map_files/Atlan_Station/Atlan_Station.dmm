@@ -4231,6 +4231,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 9
 	},
+/obj/item/storage/backpack/marine/engineerpack/welder_chestrig,
 /turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/promenade)
 "amB" = (
@@ -7592,6 +7593,13 @@
 	},
 /turf/open/floor/strata,
 /area/atlan/station/water_tanks)
+"axd" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/item/storage/backpack/marine/engineerpack/welder_chestrig,
+/turf/open/floor/strata,
+/area/atlan/station/promenade)
 "axe" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/strata/floor2,
@@ -8008,6 +8016,10 @@
 /obj/structure/closet/emcloset,
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/cargooffice)
+"ayw" = (
+/obj/item/storage/pouch/general/large,
+/turf/open/floor/strata,
+/area/atlan/station/promenade)
 "ayx" = (
 /obj/item/weapon/gun/rifle/type71,
 /obj/effect/decal/cleanable/blood/gibs/down,
@@ -11055,6 +11067,10 @@
 /obj/structure/machinery/door/airlock/upp_grey/generic/autoname,
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/repairoffice)
+"aIK" = (
+/obj/item/storage/backpack/marine/engineerpack/upp,
+/turf/open/floor/strata/floor2,
+/area/atlan/station/cargo)
 "aIL" = (
 /obj/structure/sign/safety/maint{
 	pixel_y = 7;
@@ -17616,10 +17632,6 @@
 	},
 /turf/open/floor/strata/floor3/east,
 /area/atlan/asteroid/processing_se_train)
-"bed" = (
-/obj/structure/reagent_dispensers/tank/water/yautja,
-/turf/open/floor/plating/prison,
-/area/atlan/station/substation)
 "bee" = (
 /obj/structure/platform/metal/atlan/north,
 /turf/open/floor/prison/whitegreen,
@@ -27799,6 +27811,7 @@
 /obj/item/clothing/shoes/marine/upp/black/knife,
 /obj/item/clothing/shoes/marine/upp/black/knife,
 /obj/item/clothing/shoes/marine/upp/black/knife,
+/obj/item/storage/backpack/marine/engineerpack/welder_chestrig,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/cargo)
 "iqK" = (
@@ -112338,7 +112351,7 @@ awR
 awP
 awL
 nUR
-nUR
+aIK
 nUR
 wXK
 sfU
@@ -115556,7 +115569,7 @@ gND
 aBd
 jxZ
 evD
-bed
+ntq
 evD
 bJU
 bdX
@@ -116885,7 +116898,7 @@ orU
 loF
 kcA
 ayA
-loF
+ayw
 amy
 loF
 qUB
@@ -117522,7 +117535,7 @@ hyo
 xba
 bdh
 fWD
-amw
+axd
 umD
 aAk
 aAk

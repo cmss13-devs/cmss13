@@ -62,7 +62,7 @@
 	name = "UPP - Atlan Civilian"
 	assignment = "Grazhdanin"
 	flags = EQUIPMENT_PRESET_EXTRA
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_CHINESE)
+	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_CHINESE)
 	faction = FACTION_UPP
 	minimap_background = "background_upp_civilian"
 	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
@@ -235,7 +235,7 @@
 	assignment = "Doktor Ministerstva Zdravookhraneniya"
 	minimap_icon = "upp_doc"
 	minimap_background = "background_upp_medical"
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_CHINESE)
+	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_CHINESE)
 	faction = FACTION_UPP
 	faction_group = FACTION_LIST_SURVIVOR_UPP
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -297,7 +297,7 @@
 	minimap_icon = "upp_cont"
 	minimap_background = "background_upp_bravo"
 	faction_group = FACTION_LIST_SURVIVOR_UPP
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_CHINESE)
+	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_CHINESE)
 	faction = FACTION_UPP
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	origin_override = ORIGIN_UPP
@@ -329,7 +329,7 @@
 	name = "Survivor - UPP - Jutou Combine - Atlan Atmospheric Mining Pilot"
 	assignment = "Jùtóu Combine - Pilot Atmosfernyy Mayninga"
 	minimap_background = "background_upp_civilian"
-	skills = /datum/skills/civilian/survivor/trucker
+	skills = /datum/skills/civilian/survivor/atlan_pilot
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_CHINESE)
 	faction = FACTION_UPP
 	faction_group = FACTION_LIST_SURVIVOR_UPP
@@ -345,7 +345,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/civi5(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp/alt, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp/naval, WEAR_ACCESSORY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/webbing/brown(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/bomber(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(new_human), WEAR_FACE)
 	var/random_hat = rand(1,2)
 	switch(random_hat)
@@ -472,21 +472,26 @@
 
 /datum/equipment_preset/survivor/engineer/atlan_tech/load_gear(mob/living/carbon/human/new_human)
 	// uniform and clothing //
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/blue(new_human), WEAR_JACKET)
 	var/uniform = rand(1,7)
 	switch(uniform)
 		if(1)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/blue(new_human), WEAR_JACKET)
 		if(2)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/blue(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/blue(new_human), WEAR_JACKET)
 		if(3)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/brown(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/blue(new_human), WEAR_JACKET)
 		if(4)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/gray(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/blue(new_human), WEAR_JACKET)
 		if(5)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/red(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/blue(new_human), WEAR_JACKET)
 		if(6)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/yellow(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/blue(new_human), WEAR_JACKET)
 		if(7)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/engi(new_human), WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/webbing/brown(new_human), WEAR_JACKET)
@@ -542,7 +547,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/civi5(new_human), WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp/alt, WEAR_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp/naval, WEAR_ACCESSORY)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/webbing/brown(new_human), WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/bomber(new_human), WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(new_human), WEAR_FACE)
 			var/random_hat = rand(1,2)
 			switch(random_hat)

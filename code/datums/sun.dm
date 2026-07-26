@@ -39,7 +39,6 @@ GLOBAL_DATUM_INIT(sun_status, /datum/sun, new)
 	handle_player_light()
 
 	addtimer(CALLBACK(src, PROC_REF(progress_light)), time_till_next_call())
-	to_chat(world, SPAN_BOLDNOTICE(time_till_next_call()))
 
 /datum/sun/proc/handle_player_light()
 	var/time = 0

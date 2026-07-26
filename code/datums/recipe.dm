@@ -1169,7 +1169,7 @@
 	items = list(
 		/obj/item/reagent_container/food/snacks/grown/potato,
 		/obj/item/reagent_container/food/snacks/meat,
-		/obj/item/reagent_container/food/snacks/grown/carrot
+		/obj/item/reagent_container/food/snacks/grown/carrot,
 	)
 	result = /obj/item/reagent_container/food/snacks/goulash
 

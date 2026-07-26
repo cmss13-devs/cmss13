@@ -147,6 +147,7 @@
 #define SS_INIT_ASSETS 1
 #define SS_INIT_TIMER   100
 #define SS_INIT_UNSPECIFIED 0
+#define SS_INIT_SOUND -5 // Just to ignore all sounds above notably during SSatoms init
 #define SS_INIT_TICKER -21
 #define SS_INIT_VOTE   -23
 #define SS_INIT_DATABASE   -27

@@ -446,6 +446,37 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 
 	return ..()
 
+/obj/item/stack/unique_action(mob/user)
+	if(amount <= 1) // like really
+		return ..()
+
+	var/obj/item/stack/other_stack = user.get_inactive_hand()
+
+	// other hand
+	if(istype(other_stack) && other_stack.stack_id == src.stack_id)
+		if(other_stack.amount < other_stack.max_amount)
+			if(use(1))
+				other_stack.add(1)
+				to_chat(user, SPAN_NOTICE("You add one [singular_name] to the stack in your other hand."))
+				if(user.interactee == src)
+					INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/item/stack, interact), user)
+				if(user.interactee == other_stack)
+					INVOKE_ASYNC(other_stack, TYPE_PROC_REF(/obj/item/stack, interact), user)
+			return TRUE
+
+	// empty
+	if(!other_stack)
+		if(use(1))
+			var/obj/item/stack/new_stack = new type(user, 1)
+			transfer_fingerprints_to(new_stack)
+			user.put_in_inactive_hand(new_stack)
+			add_fingerprint(user)
+			new_stack.add_fingerprint(user)
+			to_chat(user, SPAN_NOTICE("You split one [singular_name] into your other hand."))
+			return TRUE
+
+	return ..()
+
 /obj/item/stack/attackby(obj/item/stack/used_stack, mob/user)
 	if(used_stack.stack_id != stack_id) //not the same stack type :)
 		return ..()

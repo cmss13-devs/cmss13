@@ -147,18 +147,19 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 
 /// Checks that the thread author is still around. Closes the thread if they're not
 /datum/mentorhelp/proc/check_author()
-	if(author)
-		return author
-	close()
-	return
+	if(!author)
+		close()
+		return FALSE
+	return TRUE
 
 /// Checks that the thread is still open
 /datum/mentorhelp/proc/check_open(client/mentor_client)
 	if(!open)
 		to_chat(mentor_client, SPAN_NOTICE("This mentorhelp thread is closed!"))
-	return open
+		return FALSE
+	return TRUE
 
-//datum/mentorhelp/proc/get_author_ic_name()
+/datum/mentorhelp/proc/get_author_ic_name()
 	if(author && author.mob)
 		author_ic_name = author.mob.real_name || author.mob.name || "Unknown"
 	return author_ic_name || "Unknown"
@@ -247,7 +248,6 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 		log_msg = "[from_key]/([from_ic]) -> [to_key]/([to_ic]): [plain_text]"
 	log_mhelp(log_msg)
 
-/// Broadcasts mentorhelp thread actions to staff members and mentors
 	if(include_in_ticket)
 		var/html_message = "[time_stamp()]: [html_msg]"
 		var/list/structured_data = list(
@@ -334,18 +334,14 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 		msg_type = "system"
 
 	if(recipient?.username())
-		log_message(msg, sender.username(), recipient.username())
+		log_message(msg, sender.username(), recipient.username(), message_type=msg_type)
 	else
-		log_message(msg, sender.username(), "All mentors")
+		log_message(msg, sender.username(), "All mentors", message_type=msg_type)
 
 	// Sender feedback
-	var/feedback_recipient_text
-	if(recipient)
-		var/display_text = get_display_name(sender, recipient)
-		feedback_recipient_text = "<a href='byond://?src=\ref[src];action=message'>[display_text]</a>"
-	else
-		feedback_recipient_text = "mentors"
-		to_chat(sender, "[SPAN_MENTORHELP("<span class='prefix'>MentorHelp:</span> Message to [(get_client_name(recipient, sender)) ? "<a href='byond://?src=\ref[src];action=message'>[get_client_name(recipient, sender)]</a>" : "mentors"]:")] [SPAN_MENTORBODY(msg)]")
+	var/display_text = get_display_name(sender, recipient)
+	var/feedback_recipient_text = recipient ? "<a href='byond://?src=\ref[src];action=message'>[display_text]</a>" : "mentors"
+	to_chat(sender, "[SPAN_MENTORHELP("<span class='prefix'>MentorHelp:</span> Message to [feedback_recipient_text]:")] [SPAN_MENTORBODY(msg)]")
 
 	// Recipient direct message
 	if(recipient)
@@ -408,23 +404,10 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 		message_handlers(message, sender, target)
 	return
 
-/// Returns the name of a client based on who's asking for it, and how much information they're allowed.
-/datum/mentorhelp/proc/get_client_name(client/target, client/reader)
-	if(CLIENT_IS_STAFF(reader))
-		return key_name(target)
-	if(target == author)
-		if(target.mob)
-			return target.mob.name
-		return "*Private Key*"
-	if(!mentor)
-		return FALSE
-	if(target == mentor)
-		return target.username()
-
 // Sanitizes and wraps the message with some info and links, depending on the sender...?
 /datum/mentorhelp/proc/wrap_message(message, client/sender, client/recipient = null)
 	var/message_title = "MentorPM"
-	var/message_sender_name = "<a href='byond://?src=\ref[src];action=message'>[get_client_name(sender, recipient)]</a>"
+	var/message_sender_key = ""
 	var/message_sender_options = ""
 
 	// The message is being sent to the mentor and should be formatted as a mentorhelp message
@@ -443,7 +426,7 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 		var/display_text = get_display_name(recipient, sender)
 		message_sender_key = "<a href='byond://?src=\ref[src];action=message'>[display_text]</a>"
 
-	var/message_header = SPAN_MENTORHELP("<span class='prefix'>[message_title] from [message_sender_name]:</span> <span class='message'>[message_sender_options]</span><br>")
+	var/message_header = SPAN_MENTORHELP("<span class='prefix'>[message_title] from [message_sender_key]:</span> <span class='message'>[message_sender_options]</span><br>")
 	var/message_body = "&emsp;[SPAN_MENTORBODY("<span class='message'>[message]</span>")]<br>"
 	// Et voila! Beautiful wrapped mentorhelp messages
 	return (message_header + message_body)
@@ -515,8 +498,8 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 	if(!mentor)
 		mentor = thread_mentor
 		log_mhelp("[mentor.username()] has marked [author_key]'s mentorhelp")
-		notify("<font style='color:red;'>[mentor.username()]</font> has marked <font style='color:red;'>[get_client_name(author)]</font>'s mentorhelp.")
-		to_chat(author, SPAN_NOTICE("<b>NOTICE:</b> <font style='color:red;'>[mentor.username()]</font> has marked your thread and is preparing to respond."))
+		notify("[SPAN_GREEN(mentor.username())] has marked [SPAN_RED(author_key)]'s mentorhelp.", unformatted_text = "[mentor.username()] has marked [author_key]'s mentorhelp.")
+		to_chat(author, SPAN_MENTORHELP("NOTICE: [get_display_name(author, mentor)] has marked your thread and is preparing to respond."))
 		return
 
 	// Already marked
@@ -525,9 +508,9 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 		return
 
 	// the mentor exists, and is us, and we no longer want that to be the case
-	log_mhelp("[mentor.username()] has unmarked [author_key]'s mentorhelp")
-	notify("<font style='color:red;'>[mentor.username()]</font> has unmarked <font style='color:red;'>[get_client_name(author)]</font>'s mentorhelp.")
-	to_chat(author, SPAN_NOTICE("<b>NOTICE:</b> <font style='color:red;'>[mentor.username()]</font> has unmarked your thread and is no longer responding to it."))
+	log_mhelp("[mentor.key] has unmarked [author_key]'s mentorhelp")
+	notify("[SPAN_GREEN(mentor.username())] has unmarked [SPAN_RED(author_key)]'s mentorhelp.", unformatted_text = "[mentor.username()] has unmarked [author_key]'s mentorhelp.")
+	to_chat(author, SPAN_MENTORHELP("NOTICE: [get_display_name(author, mentor)] has unmarked your thread and is no longer responding to it."))
 	mentor = null
 	mentor_key = ""
 	mentor_ic_name = ""
@@ -644,7 +627,7 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 		return
 
 	if(!src.mentor)
-		mark(mentor)
+		toggle_mark(mentor)
 
 	msg = strip_html(html_decode(msg))
 	if(!msg)
@@ -674,7 +657,7 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 		return
 
 	log_mhelp("[mentor_client.username()] has begun orbiting [author_key] as a ghost")
-	notify("<font style='color:red;'>[mentor_client.username()]</font> is following <font style='color:red;'>[get_client_name(author)]</font> as a ghost.")
+	notify("<font style='color:red;'>[mentor_client.username()]</font> is following <font style='color:red;'>[get_display_name(author, author)]</font> as a ghost.")
 
 	var/mob/dead/observer/mentor_ghost = mentor_client.mob
 	if(!isobserver(mentor_client.mob))

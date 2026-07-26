@@ -72,53 +72,53 @@
 		"role" = player_info ? player_info["role"] : null
 	)
 
-/datum/ticket_panel/proc/format_mentorhelp_ticket(datum/mentorhelp/MH, client/viewer = null)
+/datum/ticket_panel/proc/format_mentorhelp_ticket(datum/mentorhelp/mentor_help_thread, client/viewer = null)
 	if(!viewer)
 		viewer = usr.client
 
-	var/status = MH.open ? (MH.mentor ? "claimed" : "open") : "closed"
+	var/status = mentor_help_thread.open ? (mentor_help_thread.mentor ? "claimed" : "open") : "closed"
 
-	var/list/player_info = get_player_info(MH.author)
+	var/list/player_info = get_player_info(mentor_help_thread.author)
 
-	var/ic_name = (player_info ? player_info["ic_name"] : null) || MH.get_author_ic_name()
-	var/faction = (player_info ? player_info["faction"] : null) || MH.get_author_faction()
-	var/role = (player_info ? player_info["role"] : null) || MH.get_author_role()
+	var/ic_name = (player_info ? player_info["ic_name"] : null) || mentor_help_thread.get_author_ic_name()
+	var/faction = (player_info ? player_info["faction"] : null) || mentor_help_thread.get_author_faction()
+	var/role = (player_info ? player_info["role"] : null) || mentor_help_thread.get_author_role()
 
 	var/list/formatted_responses = list()
-	for(var/key in MH.ticket_interactions)
-		var/list/interaction = MH.ticket_interactions[key]
+	for(var/key in mentor_help_thread.ticket_interactions)
+		var/list/interaction = mentor_help_thread.ticket_interactions[key]
 		var/list/filtered_interaction = interaction.Copy()
 
-		filtered_interaction["author"] = MH.get_display_name(viewer, interaction["author"])
+		filtered_interaction["author"] = mentor_help_thread.get_display_name(viewer, interaction["author"])
 
 		if(viewer && !CLIENT_IS_STAFF(viewer))
-			if(MH.author_key && filtered_interaction["message"])
-				filtered_interaction["message"] = replacetext(filtered_interaction["message"], MH.author_key, ic_name)
+			if(mentor_help_thread.author_key && filtered_interaction["message"])
+				filtered_interaction["message"] = replacetext(filtered_interaction["message"], mentor_help_thread.author_key, ic_name)
 
 		formatted_responses += list(filtered_interaction)
 
-	var/display_author = MH.get_display_name(viewer, MH.author)
+	var/display_author = mentor_help_thread.get_display_name(viewer, mentor_help_thread.author)
 
-	var/display_msg = MH.initial_message
-	var/display_latest = MH.latest_message
+	var/display_msg = mentor_help_thread.initial_message
+	var/display_latest = mentor_help_thread.latest_message
 	if(viewer && !CLIENT_IS_STAFF(viewer))
-		if(MH.author_key)
-			display_msg = replacetext(display_msg, MH.author_key, ic_name)
-			display_latest = replacetext(display_latest, MH.author_key, ic_name)
+		if(mentor_help_thread.author_key)
+			display_msg = replacetext(display_msg, mentor_help_thread.author_key, ic_name)
+			display_latest = replacetext(display_latest, mentor_help_thread.author_key, ic_name)
 
 	return list(
-		"id" = MH.id,
-		"subject" = MH.subject,
+		"id" = mentor_help_thread.id,
+		"subject" = mentor_help_thread.subject,
 		"author" = display_author || "Unknown",
 		"message" = display_msg || "No message",
 		"latest_message" = display_latest,
 		"status" = status,
-		"timestamp" = MH.time_activity["opened_at"],
-		"closed_at" = MH.time_activity["closed_at"],
-		"claimed_by" = MH.mentor ? MH.mentor.ckey : null,
+		"timestamp" = mentor_help_thread.time_activity["opened_at"],
+		"closed_at" = mentor_help_thread.time_activity["closed_at"],
+		"claimed_by" = mentor_help_thread.mentor ? mentor_help_thread.mentor.ckey : null,
 		"all_responses" = formatted_responses,
-		"viewer_is_claiming" = (MH.mentor && (MH.mentor.ckey == viewer?.ckey) ? TRUE : FALSE),
-		"is_archived" = !MH.open,
+		"viewer_is_claiming" = (mentor_help_thread.mentor && (mentor_help_thread.mentor.ckey == viewer?.ckey) ? TRUE : FALSE),
+		"is_archived" = !mentor_help_thread.open,
 		"ic_name" = ic_name,
 		"faction" = faction,
 		"role" = role
@@ -154,14 +154,14 @@
 			data["admin_archived_tickets"] += list(format_adminhelp_ticket(AH, C))
 
 	for(var/id in GLOB.mentorhelp_manager.active_tickets)
-		var/datum/mentorhelp/MH = GLOB.mentorhelp_manager.get_ticket_by_id(id)
-		if(istype(MH))
-			data["mentor_open_tickets"] += list(format_mentorhelp_ticket(MH, C))
+		var/datum/mentorhelp/mentor_help_thread = GLOB.mentorhelp_manager.get_ticket_by_id(id)
+		if(istype(mentor_help_thread))
+			data["mentor_open_tickets"] += list(format_mentorhelp_ticket(mentor_help_thread, C))
 
 	for(var/id in GLOB.mentorhelp_manager.archived_tickets)
-		var/datum/mentorhelp/MH = GLOB.mentorhelp_manager.get_ticket_by_id(id)
-		if(istype(MH))
-			data["mentor_archived_tickets"] += list(format_mentorhelp_ticket(MH, C))
+		var/datum/mentorhelp/mentor_help_thread = GLOB.mentorhelp_manager.get_ticket_by_id(id)
+		if(istype(mentor_help_thread))
+			data["mentor_archived_tickets"] += list(format_mentorhelp_ticket(mentor_help_thread, C))
 
 	return data
 
@@ -262,12 +262,12 @@
 			if(!msg)
 				return FALSE
 
-			var/datum/mentorhelp/MH = GLOB.mentorhelp_manager.create_ticket(target, msg)
-			MH.notify(SPAN_PURPLE("[MH.get_display_name(null, current_client)] started a mentor conversation with [MH.get_display_name(current_client, target)]"),
-				unformatted_text = "[MH.get_display_name(null, parent_client)] started a mentor conversation with [MH.get_display_name(current_client, target)]")
-			MH.initial_message = msg
-			MH.mark(parent_client)
-			MH.Respond(msg, parent_client)
+			var/datum/mentorhelp/mentor_help_thread = GLOB.mentorhelp_manager.create_ticket(target, msg)
+			mentor_help_thread.notify(SPAN_PURPLE("[mentor_help_thread.get_display_name(null, current_client)] started a mentor conversation with [mentor_help_thread.get_display_name(current_client, target)]"),
+				unformatted_text = "[mentor_help_thread.get_display_name(null, parent_client)] started a mentor conversation with [mentor_help_thread.get_display_name(current_client, target)]")
+			mentor_help_thread.initial_message = msg
+			mentor_help_thread.toggle_mark(parent_client)
+			mentor_help_thread.Respond(msg, parent_client)
 
 			return TRUE
 
@@ -288,11 +288,11 @@
 					player = AH.initiator.mob
 
 				if(MENTOR_TAB)
-					var/datum/mentorhelp/MH = mentorhelp_by_id(ticket_id)
-					if(!istype(MH))
+					var/datum/mentorhelp/mentor_help_thread = mentorhelp_by_id(ticket_id)
+					if(!istype(mentor_help_thread))
 						to_chat(current_mob, SPAN_WARNING("Invalid mentor ticket selected."))
 						return FALSE
-					player = MH.author.mob
+					player = mentor_help_thread.author.mob
 
 			if(!player || !player.ckey)
 				to_chat(current_mob, SPAN_WARNING("Could not find player associated with this ticket."))
@@ -309,9 +309,9 @@
 					AH.AutoReply()
 					return TRUE
 			else
-				var/datum/mentorhelp/MH = mentorhelp_by_id(ticket_id)
-				if(MH)
-					MH.autoresponse(current_client)
+				var/datum/mentorhelp/mentor_help_thread = mentorhelp_by_id(ticket_id)
+				if(mentor_help_thread)
+					mentor_help_thread.autoresponse(current_client)
 					return TRUE
 
 		if("reopen_ticket")
@@ -334,16 +334,16 @@
 
 				return TRUE
 			else
-				var/datum/mentorhelp/MH = mentorhelp_by_id(ticket_id)
-				if(!MH)
+				var/datum/mentorhelp/mentor_help_thread = mentorhelp_by_id(ticket_id)
+				if(!mentor_help_thread)
 					to_chat(current_mob, SPAN_WARNING("Invalid mentor ticket selected."))
 					return FALSE
 
-				if(GLOB.mentorhelp_manager.get_active_ticket_by_ckey(MH.author_key))
+				if(GLOB.mentorhelp_manager.get_active_ticket_by_ckey(mentor_help_thread.author_key))
 					to_chat(current_mob, SPAN_WARNING("This user already has an open mentor ticket. Please close it first or use the existing one."), confidential = TRUE)
 					return FALSE
 
-				MH.reopen()
+				mentor_help_thread.reopen()
 
 				return TRUE
 
@@ -363,18 +363,18 @@
 						message_admins("[key_name_admin(current_mob)] closed ticket #[ticket_id]")
 						log_admin("Ticket #[ticket_id] closed by [key_name(current_mob)]")
 				if(MENTOR_TAB)
-					var/datum/mentorhelp/MH = mentorhelp_by_id(ticket_id)
-					if(MH)
-						if(!MH.open)
+					var/datum/mentorhelp/mentor_help_thread = mentorhelp_by_id(ticket_id)
+					if(mentor_help_thread)
+						if(!mentor_help_thread.open)
 							to_chat(current_mob, SPAN_WARNING("This mentor ticket is already closed."))
 							return
 
-						if(MH.mentor && MH.mentor.ckey != current_mob.ckey && !CLIENT_IS_STAFF(current_client))
+						if(mentor_help_thread.mentor && mentor_help_thread.mentor.ckey != current_mob.ckey && !CLIENT_IS_STAFF(current_client))
 							to_chat(current_mob, SPAN_WARNING("You don't have permission to close this ticket."))
 							return
 
-						MH.close(current_client)
-						log_admin_private("Mentor ticket from [MH.author_key] closed by [key_name(current_mob)]")
+						mentor_help_thread.close(current_client)
+						log_admin_private("Mentor ticket from [mentor_help_thread.author_key] closed by [key_name(current_mob)]")
 					else
 						to_chat(current_mob, SPAN_WARNING("This ticket does not exist or has been deleted."))
 			return TRUE
@@ -395,17 +395,17 @@
 							AH.mark_ticket(current_mob)
 							message_admins("[key_name_admin(current_mob)] claimed ticket #[ticket_id]")
 				else
-					var/datum/mentorhelp/MH = mentorhelp_by_id(ticket_id)
-					if(!MH)
+					var/datum/mentorhelp/mentor_help_thread = mentorhelp_by_id(ticket_id)
+					if(!mentor_help_thread)
 						return FALSE
 
-					if(MH.mentor)
-						if(MH.mentor.ckey == current_mob.ckey)
-							MH.unmark(current_client)
+					if(mentor_help_thread.mentor)
+						if(mentor_help_thread.mentor.ckey == current_mob.ckey)
+							mentor_help_thread.unmark(current_client)
 						else
-							MH.mark(current_client)
+							mentor_help_thread.toggle_mark(current_client)
 					else
-						MH.mark(current_client)
+						mentor_help_thread.toggle_mark(current_client)
 
 			return TRUE
 
@@ -417,9 +417,9 @@
 					if(AH)
 						AH.defer_to_mentors()
 				if(MENTOR_TAB)
-					var/datum/mentorhelp/MH = mentorhelp_by_id(ticket_id)
-					if(MH)
-						MH.defer_to_admins(current_client)
+					var/datum/mentorhelp/mentor_help_thread = mentorhelp_by_id(ticket_id)
+					if(mentor_help_thread)
+						mentor_help_thread.defer_to_admins(current_client)
 			return TRUE
 
 		if("reply_ticket")
@@ -438,11 +438,11 @@
 						AH.mark_ticket(current_mob)
 					current_client.cmd_admin_pm(AH.initiator, message)
 			else
-				var/datum/mentorhelp/MH = mentorhelp_by_id(ticket_id)
-				if(MH)
-					if(!MH.mentor)
-						MH.mark(current_client)
-					MH.Respond(message, current_client)
+				var/datum/mentorhelp/mentor_help_thread = mentorhelp_by_id(ticket_id)
+				if(mentor_help_thread)
+					if(!mentor_help_thread.mentor)
+						mentor_help_thread.toggle_mark(current_client)
+					mentor_help_thread.Respond(message, current_client)
 
 			return TRUE
 
@@ -459,14 +459,14 @@
 						return
 					AH.set_subject(new_subject, current_client)
 			else
-				var/datum/mentorhelp/MH = mentorhelp_by_id(ticket_id)
-				if(!MH)
+				var/datum/mentorhelp/mentor_help_thread = mentorhelp_by_id(ticket_id)
+				if(!mentor_help_thread)
 					to_chat(current_mob, SPAN_WARNING("This ticket does not exist."))
 					return
-				var/new_subject = tgui_input_text(current_mob, "Enter a subject for this ticket:", "Set Ticket Subject", MH.subject, 100)
+				var/new_subject = tgui_input_text(current_mob, "Enter a subject for this ticket:", "Set Ticket Subject", mentor_help_thread.subject, 100)
 				if(!new_subject)
 					return
-				MH.set_subject(new_subject, current_mob.client)
+				mentor_help_thread.set_subject(new_subject, current_mob.client)
 			return TRUE
 
 		if("get_author_notes")

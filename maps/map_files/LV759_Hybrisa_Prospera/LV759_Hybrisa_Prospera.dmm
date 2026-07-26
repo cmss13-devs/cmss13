@@ -5461,6 +5461,9 @@
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/lv759/indoors/wy_research_complex/reception)
+"anP" = (
+/turf/closed/wall/hybrisa/colony/engineering/ribbed,
+/area/lv759/indoors/recycling_plant/synthetic_storage)
 "anQ" = (
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 4
@@ -158846,9 +158849,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/indoors/mining_outpost/vehicledeployment)
-"wId" = (
-/turf/closed/wall/hybrisa/colony/engineering/ribbed,
-/area/lv759/indoors/recycling_plant/synthetic_storage)
 "wIe" = (
 /obj/structure/fence/dark,
 /turf/open/floor/plating/platingdmg3/west,
@@ -222264,7 +222264,7 @@ nrx
 nrx
 nrx
 nrx
-wId
+anP
 pQv
 wen
 lkH
@@ -222516,7 +222516,7 @@ aFe
 xfr
 aFe
 xfr
-wId
+anP
 uLE
 sZS
 gCc
@@ -222768,7 +222768,7 @@ cnV
 cnV
 cnV
 cnV
-wId
+anP
 krP
 mQP
 sUa
@@ -223021,7 +223021,7 @@ eUd
 eUd
 jkQ
 iZv
-wId
+anP
 auL
 auL
 naS

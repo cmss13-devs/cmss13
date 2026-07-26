@@ -101765,7 +101765,7 @@
 /turf/open/floor/corsat/officetiles,
 /area/lv759/indoors/mining_outpost/northeast)
 "oiA" = (
-/obj/structure/machinery/m56d_hmg/mg_turret/dropship,
+/obj/structure/machinery/m56d_hmg/mg_turret,
 /obj/structure/barricade/sandbags,
 /obj/item/ammo_casing/bullet,
 /obj/structure/pipes/standard/simple/hidden/dark,

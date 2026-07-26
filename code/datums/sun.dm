@@ -6,11 +6,10 @@ GLOBAL_DATUM_INIT(sun_status, /datum/sun, new)
 	var/static/list/sunrise_color_progression = list("#000", "#040712", "#111322", "#291642", "#3f2239", "#632c3d", "#d89d6d")
 	var/list/used_color_progression
 	var/is_cold = FALSE ///are we on snowy planet
-	var/p_special_lighting_type = SPECIAL_LIGHTING_PREROUND
+	var/sun_behavior = SPECIAL_LIGHTING_PREROUND
 	var/stage_time = 0/// how long each stage lasts, don't edit this if you want smooth movement, use special_stage_time instead
-	var/lighting_stage = 0
 	var/max_stages = 0 /// how many stages of special lighting there are, starts at 0
-	var/stage = 0 ///current stage of the sun
+	var/stage = 1 ///current stage of the sun
 	var/startup_delay = 0 /// how long the initial stage lasts for, doesn't factor in round start stuff
 	var/sun_behavior_change_time = 0 ///when did we set this sun behavior
 
@@ -21,7 +20,7 @@ GLOBAL_DATUM_INIT(sun_status, /datum/sun, new)
 	is_cold = (SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 	if(behavior == SPECIAL_LIGHTING_SUNSET)
 		stage_time = 30 SECONDS
-		max_stages = 9
+		max_stages = 8
 		startup_delay = 10 SECONDS
 		if(is_cold)
 			used_color_progression = cold_color_progression
@@ -34,27 +33,31 @@ GLOBAL_DATUM_INIT(sun_status, /datum/sun, new)
 		startup_delay = 10 SECONDS
 		used_color_progression = sunrise_color_progression
 
+	sun_behavior = SPECIAL_LIGHTING_SUNSET
+
 	handle_player_light()
 
 	addtimer(CALLBACK(src, PROC_REF(progress_light)), time_till_next_call())
+	to_chat(world, SPAN_BOLDNOTICE(time_till_next_call()))
 
 /datum/sun/proc/handle_player_light()
 	var/time = 0
-	if(stage != 0)
+	if(stage != 1)
 		time = time_till_next_call()
-	for(var/mob/living/mob in GLOB.clients)
-		if(should_animate(mob))
-			animate(Object = mob.fullscreens["lighting_backdrop"], time = time, color = used_color_progression[stage])
+	for(var/mob/living/lighting_mob as anything in GLOB.player_list)
+		if(should_animate(lighting_mob))
+			animate(lighting_mob.fullscreens["lighting_backdrop"], color = used_color_progression[stage], time = time)
 
 /datum/sun/proc/progress_light()
 	if(stage == max_stages)
 		return
 	stage ++
+	to_chat(world, SPAN_BOLDNOTICE(time_till_next_call()))
 	handle_player_light()
 	addtimer(CALLBACK(src, PROC_REF(progress_light)), time_till_next_call())
 
 /datum/sun/proc/time_till_next_call()
-	return max(((lighting_stage * stage_time) + startup_delay + sun_behavior_change_time - ROUND_TIME), 0.5 SECONDS) /// how long until the next sunstage occurs (minimum of 0.5 seconds)
+	return max(((stage * stage_time) + startup_delay + sun_behavior_change_time - ROUND_TIME), 0.5 SECONDS) /// how long until the next sunstage occurs (minimum of 0.5 seconds)
 
 //not rly needed as we keep the current stage here
 /datum/sun/proc/compute_stage()
@@ -72,6 +75,9 @@ GLOBAL_DATUM_INIT(sun_status, /datum/sun, new)
 
 /datum/sun/proc/initialize_current_stage(mob/living/mob_in_light)
 	//add start of tracking progression
+	if(sun_behavior == SPECIAL_LIGHTING_PREROUND)
+		return
+
 	if(should_animate(mob_in_light))
 		var/atom/movable/screen/fullscreen/screen = mob_in_light.fullscreens["lighting_backdrop"]
 		screen.color = used_color_progression[compute_stage()]

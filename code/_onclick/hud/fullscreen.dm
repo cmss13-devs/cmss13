@@ -72,33 +72,7 @@
 				client.remove_from_screen(screen)
 
 /mob/proc/initialize_special_lighting() //initialized on hud.dm when a new mob is spawned so you can't dodge this unless you dont have a client somehow
-	if(!SSticker.mode)
-		if(special_lighting)
-			return
-		SSticker.OnRoundstart(CALLBACK(src, PROC_REF(initialize_special_lighting)))
-		special_lighting = SPECIAL_LIGHTING_PREROUND	// do not let a special_lighting get called before roundstart
-		return
-	if(SSticker.mode.flags_round_type & MODE_SUNSET)
-		if(!fullscreens["lighting_backdrop"] || special_lighting == SPECIAL_LIGHTING_SUNSET || special_lighting_active_timer)
-			return
-		special_lighting = SPECIAL_LIGHTING_SUNSET
-		special_lighting_active_timer = TRUE
-		if(ROUND_TIME < 4 SECONDS) //if you're in before full setup, dont let special lightings get called prior, it gets messy
-			addtimer(CALLBACK(src, PROC_REF(special_lighting_animate), SPECIAL_LIGHTING_SUNSET, 30 SECONDS, 9, 10 SECONDS, 0, null, 1, FALSE, TRUE, TRUE), 3 SECONDS)
-			addtimer(CALLBACK(src, PROC_REF(special_lighting_register_signals)), 3 SECONDS)
-		else if(ROUND_TIME < 120 SECONDS)
-			special_lighting = SPECIAL_LIGHTING_SUNSET
-			special_lighting_active_timer = TRUE
-			special_lighting_animate(SPECIAL_LIGHTING_SUNSET, 30 SECONDS, 9, 10 SECONDS, 0, 0.1 SECONDS, 1, TRUE, TRUE, TRUE)
-			special_lighting_register_signals()
-		return
-	if(GLOB.sunrise_starting_time)
-		if(!fullscreens["lighting_backdrop"] || special_lighting == SPECIAL_LIGHTING_SUNRISE || special_lighting == SPECIAL_LIGHTING_SUNSET || special_lighting_active_timer)
-			return
-		special_lighting = SPECIAL_LIGHTING_SUNRISE
-		special_lighting_active_timer = TRUE
-		special_lighting_animate(SPECIAL_LIGHTING_SUNRISE, 30 SECONDS, 6, 1 SECONDS, 0.1 SECONDS, -1, TRUE, TRUE, FALSE)
-		special_lighting_register_signals() //sunrise is permanent, you wont need to unregister
+	GLOB.sun_status.initialize_current_stage(src)
 
 //Get the distance to the farthest edge of the screen
 /mob/proc/get_maximum_view_range()

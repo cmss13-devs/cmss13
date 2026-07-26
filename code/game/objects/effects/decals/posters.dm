@@ -266,5 +266,5 @@
 	icon_state = "poster101"
 
 /obj/structure/sign/poster/conam/Initialize()
-	serial_number = 101
+	serial_number = 102
 	.=..()

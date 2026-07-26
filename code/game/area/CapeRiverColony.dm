@@ -316,7 +316,7 @@
 	unoviable_timer = FALSE
 
 /area/caperiver/indoors/conambase/unknown
-	name = "c^n-Am S 'Co)es#ne B@se' A - V Un&ble To Dis@ern E S^ruct&re Func&%*# E. U.S -- &#AAA#.."
+	name = "Un&ble To Dis@ern S^ruct&re"
 	icon_state = "research_dock"
 	minimap_color = MINIMAP_DRAWING_YELLOW
 	ceiling_muffle = FALSE

@@ -24,7 +24,7 @@
 	if(!istype(parent_human))
 		return COMPONENT_INCOMPATIBLE
 
-	var/chosen_leg = forced_limb ? forced_limb : "l_leg" // always left leg by default first because i'm lazy and dont know how to add options to quirks
+	var/chosen_leg = forced_limb ? forced_limb : "l_leg" // always left leg by default first because i'm lazy and don't know how to add options to quirks
 	affected_limb = parent_human.get_limb(chosen_leg)
 	if(!affected_limb || affected_limb.status & LIMB_ROBOT)
 		chosen_leg = "r_leg"

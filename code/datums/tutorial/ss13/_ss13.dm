@@ -33,7 +33,12 @@
 	INVOKE_ASYNC(new_character, TYPE_PROC_REF(/mob/living/carbon/human, update_body), 1, 0)
 	INVOKE_ASYNC(new_character, TYPE_PROC_REF(/mob/living/carbon/human, update_hair))
 
+	if(isnewplayer(tutorial_mob))
+		var/mob/new_player/new_player_mob = tutorial_mob
+		new_player_mob.spawning = TRUE
+		qdel(new_player_mob)
 	tutorial_mob = new_character
+
 	RegisterSignal(tutorial_mob, COMSIG_LIVING_GHOSTED, PROC_REF(on_ghost))
 	RegisterSignal(tutorial_mob, list(COMSIG_PARENT_QDELETING, COMSIG_MOB_DEATH, COMSIG_MOB_END_TUTORIAL), PROC_REF(signal_end_tutorial))
 	RegisterSignal(tutorial_mob, COMSIG_MOB_LOGOUT, PROC_REF(on_logout))

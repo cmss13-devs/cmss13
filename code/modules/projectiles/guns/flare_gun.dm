@@ -13,7 +13,7 @@
 	fire_sound = 'sound/weapons/gun_flare.ogg'
 	aim_slowdown = 0
 	flags_equip_slot = SLOT_WAIST
-	wield_delay = WIELD_DELAY_VERY_FAST
+	wield_delay = WEAPON_DELAY_VERY_FAST
 	movement_onehanded_acc_penalty_mult = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_4
 	flags_gun_features = GUN_INTERNAL_MAG|GUN_CAN_POINTBLANK
 	gun_category = GUN_CATEGORY_HANDGUN
@@ -59,10 +59,6 @@
 	update_icon()
 
 /obj/item/weapon/gun/flare/attackby(obj/item/attacking_item, mob/user)
-	if(istype(attacking_item, /obj/item/stack/repairable))
-		attempt_repair(user, attacking_item)
-		return
-
 	if(istype(attacking_item, /obj/item/device/flashlight/flare))
 		var/obj/item/device/flashlight/flare/attacking_flare = attacking_item
 		if(attacking_flare.on)

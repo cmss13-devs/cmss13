@@ -134,7 +134,7 @@
 
 /**
  * Handler for when a linked sentry has no ammo.
- * @param sentrygun: sentry gun which has ran out of ammo.
+ * @param sentrygun: sentry gun which has run out of ammo.
  */
 /obj/item/device/sentry_computer/proc/handle_empty_ammo(obj/structure/machinery/defenses/sentry/sentrygun)
 	var/displayname = sentrygun.name
@@ -150,6 +150,7 @@
  */
 /obj/item/device/sentry_computer/proc/send_message(message)
 	if(!silent && transceiver)
+		message = strip_improper(message)
 		transceiver.talk_into(voice, "[message]", RADIO_CHANNEL_SENTRY)
 		voice.say(message)
 

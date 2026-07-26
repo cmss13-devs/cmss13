@@ -131,7 +131,7 @@
 /obj/vehicle/multitile/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "VehicleStatus", "[name]")
+		ui = new(user, src, "VehicleStatus", "[capitalize(name)]")
 		ui.open()
 
 /obj/vehicle/multitile/ui_data(mob/user)

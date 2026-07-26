@@ -23,45 +23,12 @@ function testHubStorage() {
 	}
 }
 
-function loadFontSize() {
-	current_fontsize = parseInt(window.hubStorage.getItem("fontsize"));
-	if (isNaN(current_fontsize) || current_fontsize <= 0) {
-		current_fontsize = 14;
-	}
-	statcontentdiv.style.fontSize = current_fontsize + "px";
-	tab_change(current_tab, true); // Redraw the current tab
-}
-
-function onByondStorageLoad(event) {
-	document.removeEventListener('byondstorageupdated', onByondStorageLoad);
-	setTimeout(loadFontSize, 0); // Unfortunately its STILL not ready yet
-}
 
 // Status panel implementation ------------------------------------------------
 var status_tab_parts = ["Loading..."];
 var current_tab = null;
 var current_fontsize = 14; // in px, also determines line height and category header sizes for the verb menus
-// Per `storage.js` for tgui:
-// Localstorage can sometimes throw an error, even if DOM storage is not
-// disabled in IE11 settings.
-// See: https://superuser.com/questions/1080011
-try {
-	if (!Byond.TRIDENT) {
-		// Unfortunately byond storage isn't available immediately
-		if (!testHubStorage()) {
-			document.addEventListener('byondstorageupdated', onByondStorageLoad);
-		} else {
-			current_fontsize = parseInt(window.hubStorage.getItem("fontsize"));
-		}
-	} else { // TODO: Remove with 516
-		current_fontsize = parseInt(window.localStorage.getItem("fontsize"));
-	}
-} catch (error) {
-	current_fontsize = 14;
-}
-if (isNaN(current_fontsize) || current_fontsize <= 0) {
-	current_fontsize = 14;
-}
+
 var mc_tab_parts = [["Loading...", ""]];
 var href_token = null;
 var spells = [];
@@ -208,9 +175,6 @@ let clientButtons = {
 		{name: "Effects", command: "Adjust-Volume-SFX"},
 		{name: "Ambience", command: "Adjust-Volume-Ambience"},
 		{name: "Admin Music", command: "Adjust-Volume-Admin-Music"}
-	],
-	"Statbrowser": [
-		{name: "Change Fontsize", function: openOptionsMenu}
 	]
 }
 
@@ -1158,6 +1122,12 @@ window.onload = function () {
 	Byond.sendMessage("Update-Verbs");
 };
 
+function set_font_size(size) {
+	current_fontsize = parseInt(size);
+	statcontentdiv.style.fontSize = current_fontsize + "px";
+	tab_change(current_tab, true);
+}
+
 Byond.subscribeTo("update_spells", function (payload) {
 	spell_tabs = payload.spell_tabs;
 	var do_update = false;
@@ -1373,18 +1343,3 @@ Byond.subscribeTo("changelog_read", function(read) {
 function createOptionsButton() {
 	addPermanentTab("Options", true);
 }
-
-function openOptionsMenu() {
-	Byond.command("Open-Statbrowser-Options " + current_fontsize);
-}
-
-Byond.subscribeTo("change_fontsize", function (new_fontsize) {
-	current_fontsize = parseInt(new_fontsize);
-	if (!Byond.TRIDENT) {
-		window.hubStorage.setItem("fontsize", current_fontsize.toString());
-	} else { // TODO: Remove with 516
-		window.localStorage.setItem("fontsize", current_fontsize.toString());
-	}
-	statcontentdiv.style.fontSize = current_fontsize + "px";
-	tab_change(current_tab, true); // Redraw the current tab
-});

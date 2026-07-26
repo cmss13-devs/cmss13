@@ -66,10 +66,10 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 /datum/supply_packs/contraband/seized/black_market_scanner
 	name = "black market scanner crate"
 	contains = list(/obj/item/device/black_market_scanner)
-	containername = "trash cart"
+	containername = "interesting wooden crate"
 	dollar_cost = 5
 	crate_heat = 0
-	containertype = /obj/structure/closet/crate/trashcart
+	containertype = /obj/structure/closet/coffin/woodencrate
 
 /datum/supply_packs/contraband/seized/confiscated_equipment
 	name = "seized foreign equipment crate"
@@ -179,6 +179,19 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 */
 
 // Rifles
+
+/datum/supply_packs/contraband/seized/ak4047
+	name = "AK-4047 pulse assault rifle crate (x5 magazines included)"
+	contains = list(
+		/obj/item/weapon/gun/rifle/ak4047,
+		/obj/item/ammo_magazine/rifle/ak4047,
+		/obj/item/ammo_magazine/rifle/ak4047,
+		/obj/item/ammo_magazine/rifle/ak4047,
+		/obj/item/ammo_magazine/rifle/ak4047,
+		/obj/item/ammo_magazine/rifle/ak4047,
+	)
+	dollar_cost = 20
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/m16
 	name = "M16 rifle crate (x4 magazines included)"
@@ -618,12 +631,14 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/reagent_container/food/snacks/grown/ambrosiavulgaris,
 		/obj/item/clothing/accessory/tie/horrible,
 		/obj/item/toy/inflatable_duck,
-		/obj/item/pamphlet/skill/powerloader,
+		/obj/item/pamphlet/upgradeable/powerloader,
 		/obj/item/pamphlet/language/russian,
 		/obj/item/pamphlet/language/japanese,
 		/obj/item/pamphlet/language/chinese,
 		/obj/item/pamphlet/language/german,
 		/obj/item/pamphlet/language/spanish,
+		/obj/item/pamphlet/language/scandinavian,
+		/obj/item/pamphlet/language/french,
 	)
 	dollar_cost = 30
 	crate_heat = -2
@@ -680,7 +695,7 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 		/obj/item/weapon/baton/cattleprod,
 		/obj/item/ammo_magazine/shotgun/beanbag,
 		/obj/item/storage/box/packet/m15/rubber,
-		/obj/item/storage/box/guncase/m79,
+		/obj/item/storage/box/guncase/m85a1,
 		/obj/item/clothing/head/helmet/marine/MP,
 		/obj/item/prop/helmetgarb/riot_shield,
 	)
@@ -766,6 +781,18 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 	name = "shotgun shell box crate (Type 23, x100 8g flechette shells)"
 	dollar_cost = 115
 	contains = list(/obj/item/ammo_box/magazine/shotgun/upp/flechette)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/ak4047
+	name = "Magazine box (AK-4047, 12x regular mags)"
+	dollar_cost = 40
+	contains = list(/obj/item/ammo_box/magazine/ak4047)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/ak4047/ap
+	name = "Magazine box (AK-4047, 12x AP mags)"
+	dollar_cost = 80
+	contains = list(/obj/item/ammo_box/magazine/ak4047/ap)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/ammo/m16
@@ -947,7 +974,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 
 /datum/supply_packs/contraband/deep_storage/rosary
 	name = "Rosary"
-	contains = list(/obj/item/prop/helmetgarb/rosary)
+	contains = list(/obj/item/clothing/accessory/rosary)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
@@ -1104,7 +1131,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 
 /datum/supply_packs/contraband/deep_storage/clf_holdout
 	name = "D18 Holdout Pistol"
-	contains = list(/obj/item/storage/box/clf)
+	contains = list(/obj/item/storage/box/fluff_gun/clf)
 	dollar_cost = 10
 	crate_heat = 2
 	containertype = /obj/structure/largecrate/black_market
@@ -1278,7 +1305,6 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 				/obj/item/explosive/grenade/phosphorus/clf,
 				/obj/item/explosive/grenade/smokebomb,
 				/obj/item/explosive/grenade/smokebomb/airburst,
-				/obj/item/explosive/grenade/custom/antiweed
 			)
 			for(var/i in 1 to 4)
 				var/picked_type = pick(nades_to_pick)
@@ -1355,7 +1381,7 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			var/obj/item/mortar_shell/frag/fragshell = new(loc)
 			var/obj/item/explosive/grenade/incendiary/molotov/molotov = new(loc)
 			molotov.prime()
-			fragshell.balloon_alert_to_viewers("the mortar shell makes an awful hissing noise!")
+			fragshell.balloon_alert_to_viewers("the shell starts hissing!")
 			addtimer(CALLBACK(fragshell, TYPE_PROC_REF(/obj/item/mortar_shell/frag, detonate), loc), 5 SECONDS)
 			QDEL_IN(fragshell, 5.5 SECONDS)
 			loot_message = SPAN_HIGHDANGER("RUN!!!")

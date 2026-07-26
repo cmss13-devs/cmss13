@@ -89,9 +89,9 @@
 /obj/structure/closet/secure_closet/security/soro/Initialize()
 	. = ..()
 	if(prob(50))
-		new /obj/item/storage/backpack/security(src)
+		new /obj/item/storage/backpack/lightpack/black/five_slot(src)
 	else
-		new /obj/item/storage/backpack/satchel/sec(src)
+		new /obj/item/storage/backpack/lightpack/black/five_slot(src)
 	new /obj/item/storage/belt/security(src)
 	new /obj/item/device/flash(src)
 	new /obj/item/reagent_container/spray/pepper(src)
@@ -101,11 +101,9 @@
 	new /obj/item/clothing/glasses/sunglasses/sechud(src)
 	new /obj/item/device/hailer(src)
 	new /obj/item/clothing/accessory/storage/black_vest(src)
-	new /obj/item/clothing/suit/storage/snow_suit/soviet(src)
-	new /obj/item/clothing/head/ushanka(src)
-	new /obj/item/clothing/mask/rebreather/scarf(src)
-	new /obj/item/clothing/under/rank/veteran/soviet_uniform_01(src)
-	new /obj/item/storage/belt/gun/type47/t73(src)
+	new /obj/item/clothing/mask/gas/upp_pfb(src)
+	new /obj/item/clothing/under/marine/veteran/UPP/pap(src)
+	new /obj/item/storage/belt/gun/type47/SOF_belt/t73(src)
 
 
 

@@ -164,8 +164,6 @@
 	else
 		if(HAS_TRAIT(moving_human, TRAIT_BIMEX))
 			visible_message(SPAN_NOTICE("[moving_human]'s BiMex© personal shades shine as \the [src] passes over them."), SPAN_NOTICE("Your BiMex© personal shades as \the [src] passes over them."))
-			//drip = bonus balloonchat
-			moving_human.balloon_alert_to_viewers("the laser bounces off [moving_human.gender == MALE ? "his" : "her"] BiMex© personal shades!", "the laser bounces off your BiMex© personal shades!")
 		else
 			visible_message(SPAN_NOTICE("[moving_human]'s headgear protects them from \the [src]."), SPAN_NOTICE("Your headgear protects you from  \the [src]."))
 
@@ -180,6 +178,12 @@
 	alpha = 150
 	strength = EYE_PROTECTION_FLAVOR
 	probability = 5
+
+/obj/effect/ebeam/laser/plasma_lance
+	name = "blinding plasma beam"
+	alpha = 255
+	strength = EYE_PROTECTION_WELDING
+	probability = 80
 
 /obj/effect/ebeam/Destroy()
 	owner = null

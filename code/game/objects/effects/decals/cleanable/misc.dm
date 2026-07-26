@@ -37,6 +37,19 @@
 	icon_state = "greenglow"
 	light_range = 1
 	light_color = COLOR_LIGHT_GREEN
+
+/obj/effect/decal/cleanable/dirt/alt_dirt
+	icon_state = "stain"
+
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain
+	icon_state = "stain_alt"
+
+/obj/effect/decal/cleanable/dirt/alt_dirt/goo
+	icon_state = "goo"
+
+/obj/effect/decal/cleanable/dirt/alt_dirt/goo/goo_alt
+	icon_state = "goo_alt"
+
 /obj/effect/decal/cleanable/flour
 	name = "flour"
 	desc = "It's still good. Four second rule!"
@@ -142,7 +155,7 @@
 	anchored = TRUE
 	layer = TURF_LAYER
 	icon = 'icons/effects/effects.dmi'
-	random_icon_states = list("smashed_egg1", "smashed_egg2", "smashed_egg3")
+	random_icon_states = list("smashed_egg1", "smashed_egg2", "smashed_egg3", "smashed_egg4")
 
 /obj/effect/decal/cleanable/pie_smudge //honk
 	name = "smashed pie"

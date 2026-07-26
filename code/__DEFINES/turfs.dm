@@ -32,3 +32,5 @@
 	CORNER_BLOCK_OFFSET(corner, 1, height, width, 0))
 
 #define TURF_FROM_COORDS_LIST(List) (locate(List[1], List[2], List[3]))
+
+#define IS_OPAQUE_TURF(turf) (turf.directional_opacity == ALL_CARDINALS)

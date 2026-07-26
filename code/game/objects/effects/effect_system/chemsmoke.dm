@@ -24,8 +24,8 @@
 	smoke_type = /obj/effect/particle_effect/smoke/chem
 	var/obj/chemholder
 	var/range
-	var/list/targetTurfs
-	var/list/wallList
+	var/list/turf/targetTurfs
+	var/list/turf/wallList
 	var/density
 	var/static/last_reaction_signature
 
@@ -33,6 +33,12 @@
 	..()
 	chemholder = new/obj()
 	chemholder.create_reagents(500)
+
+/datum/effect_system/smoke_spread/chem/Destroy(force)
+	. = ..()
+	QDEL_NULL(chemholder)
+	targetTurfs = null
+	wallList = null
 
 //------------------------------------------
 //Sets up the chem smoke effect
@@ -64,14 +70,14 @@
 	FOR_DVIEW_END
 
 	//make secondary list for reagents that affect walls
-	if(chemholder.reagents.has_reagent("thermite") || chemholder.reagents.has_reagent("plantbgone"))
+	if(chemholder.reagents.has_reagent("thermite"))
 		wallList = new()
 
 	//pathing check
 	smokeFlow(location, targetTurfs, wallList)
 
 	//set the density of the cloud - for diluting reagents
-	density = max(1, length(targetTurfs) / 4) //clamp the cloud density minimum to 1 so it cant multiply the reagents
+	density = max(1, length(targetTurfs)) //clamp the cloud density minimum to 1 so it can't multiply the reagents
 
 	//Admin messaging
 	var/contained = ""
@@ -87,28 +93,34 @@
 	last_reaction_signature = reaction_signature
 
 	var/where = "[A.name]|[location.x], [location.y]"
-	var/whereLink = "<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>[where]</a>"
+	var/whereLink = "[ADMIN_JUMP_COORDS(location.x, location.y, location.z)] at [where]"
 
 	if(carry.my_atom.fingerprintslast)
-		msg_admin_niche("A chemical smoke reaction has taken place in ([whereLink])[contained]. Last associated key is [carry.my_atom.fingerprintslast].")
-		log_game("A chemical smoke reaction has taken place in ([where])[contained]. Last associated key is [carry.my_atom.fingerprintslast].")
+		msg_admin_niche("A chemical smoke reaction has taken place in ([whereLink])[contained]. Last associated ckey is [carry.my_atom.fingerprintslast].")
+		log_game("A chemical smoke reaction has taken place in ([where])[contained]. Last associated ckey is [carry.my_atom.fingerprintslast].")
 	else
-		msg_admin_niche("A chemical smoke reaction has taken place in ([whereLink])[contained]. No associated key.")
-		log_game("A chemical smoke reaction has taken place in ([where])[contained]. No associated key.")
+		msg_admin_niche("A chemical smoke reaction has taken place in ([whereLink])[contained]. No associated ckey.")
+		log_game("A chemical smoke reaction has taken place in ([where])[contained]. No associated ckey.")
 
 
 //------------------------------------------
-//Runs the chem smoke effect
-//
-// Spawns damage over time loop for each reagent held in the cloud.
-// Applies reagents to walls that affect walls (only thermite and plant-b-gone at the moment).
-// Also calculates target locations to spawn the visual smoke effect on, so the whole area
-// is covered fairly evenly.
-//------------------------------------------
-/datum/effect_system/smoke_spread/chem/start()
+/** Runs the chem smoke effect
+ *
+ * Spawns damage over time loop for each reagent held in the cloud.
+ * Applies reagents to walls that affect walls (only thermite and plant-b-gone at the moment).
+ * Also calculates target locations to spawn the visual smoke effect on, so the whole area
+ * is covered fairly evenly.
+ */
+/datum/effect_system/smoke_spread/chem/start(do_NOT_delete = FALSE)
 
 	if(!location) //kill grenade if it somehow ends up in nullspace
+		if(!do_NOT_delete)
+			qdel(src)
 		return
+
+	// Hardcoded 5 "runs" below times "3 SECONDS" sleep plus extra wiggle room
+	if(!do_NOT_delete)
+		QDEL_IN(src, (5 + 1) * (3 SECONDS))
 
 	//reagent application - only run if there are extra reagents in the smoke
 	if(length(chemholder.reagents.reagent_list))
@@ -121,7 +133,7 @@
 			chemholder.reagents.update_total()
 
 			//apply wall affecting reagents to walls
-			if(R.id in list("thermite", "plantbgone"))
+			if(R.id in list("thermite"))
 				for(var/turf/T in wallList)
 					R.reaction_turf(T, R.volume)
 
@@ -145,6 +157,14 @@
 								var/dist = cheap_pythag(T.x - location.x, T.y - location.y)
 								if(!dist)
 									dist = 1
+								var/mob/living/carbon/human/human_in_smoke = A
+								if(istype(human_in_smoke))
+									if(human_in_smoke?.wear_mask?.flags_inventory & BLOCKGASEFFECT)
+										continue
+									if(human_in_smoke?.glasses?.flags_inventory & BLOCKGASEFFECT)
+										continue
+									if(human_in_smoke?.head?.flags_inventory & BLOCKGASEFFECT)
+										continue
 								R.reaction_mob(A, volume = R.volume * POTENCY_MULTIPLIER_VLOW / dist, permeable = FALSE)
 							else if(istype(A, /obj))
 								R.reaction_obj(A, R.volume)
@@ -271,6 +291,14 @@
 	if(!length(reagents?.reagent_list))
 		return FALSE
 
+	var/mob/living/carbon/human/human_in_smoke = affected_mob
+	if(istype(human_in_smoke))
+		if(human_in_smoke?.wear_mask?.flags_inventory & BLOCKGASEFFECT)
+			return FALSE
+		if(human_in_smoke?.glasses?.flags_inventory & BLOCKGASEFFECT)
+			return FALSE
+		if(human_in_smoke?.head?.flags_inventory & BLOCKGASEFFECT)
+			return FALSE
 	for(var/datum/reagent/reagent in reagents.reagent_list)
 		reagent.reaction_mob(affected_mob, volume = reagent.volume * POTENCY_MULTIPLIER_LOW, permeable = FALSE)
 	return TRUE

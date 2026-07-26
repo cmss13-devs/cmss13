@@ -169,13 +169,13 @@
 /turf/open/desert/desert_shore/update_icon()
 	..()
 	switch(toxic)
-		if(1)
+		if(/obj/effect/blocker/water/toxic::WATER_TOXIC_YES)
 			set_light(2)
 			icon = 'icons/turf/floors/desert_water_toxic.dmi'
-		if(0)
+		if(/obj/effect/blocker/water/toxic::WATER_TOXIC_NO)
 			set_light(0)
 			icon = 'icons/turf/floors/desert_water.dmi'
-		if(-1)
+		if(/obj/effect/blocker/water/toxic::WATER_TOXIC_DISPERSING)
 			set_light(1)
 			icon = 'icons/turf/floors/desert_water_transition.dmi'
 
@@ -291,13 +291,13 @@
 /turf/open/desert/cave/cave_shore/update_icon()
 	..()
 	switch(toxic)
-		if(1)
+		if(/obj/effect/blocker/water/toxic::WATER_TOXIC_YES)
 			set_light(2)
 			icon = 'icons/turf/floors/desert_water_toxic.dmi'
-		if(0)
+		if(/obj/effect/blocker/water/toxic::WATER_TOXIC_NO)
 			set_light(0)
 			icon = 'icons/turf/floors/desert_water.dmi'
-		if(-1)
+		if(/obj/effect/blocker/water/toxic::WATER_TOXIC_DISPERSING)
 			set_light(1)
 			icon = 'icons/turf/floors/desert_water_transition.dmi'
 
@@ -323,13 +323,13 @@
 /turf/open/gm/river/desert/update_icon()
 	..()
 	switch(toxic)
-		if(1)
+		if(/obj/effect/blocker/water/toxic::WATER_TOXIC_YES)
 			set_light(2)
 			icon = 'icons/turf/floors/desert_water_toxic.dmi'
-		if(0)
+		if(/obj/effect/blocker/water/toxic::WATER_TOXIC_NO)
 			set_light(0)
 			icon = 'icons/turf/floors/desert_water.dmi'
-		if(-1)
+		if(/obj/effect/blocker/water/toxic::WATER_TOXIC_DISPERSING)
 			set_light(1)
 			icon = 'icons/turf/floors/desert_water_transition.dmi'
 	update_overlays()
@@ -620,3 +620,28 @@
 
 /turf/open/desert/excavation/component9/west
 	dir = WEST
+
+// Tyrargo
+
+//shallow water
+/turf/open/gm/river/desert/tyrargo
+	icon_state = "seashallow"
+	icon_overlay = "_seashallow"
+
+/turf/open/gm/river/desert/tyrargo/no_slowdown
+	base_river_slowdown = 1
+
+/turf/open/gm/river/desert/tyrargo/covered
+	covered = TRUE
+	icon = 'icons/turf/floors/desert_water_covered.dmi'
+
+/turf/open/gm/river/desert/tyrargo/deep
+	icon_state = "seadeep"
+	icon_overlay = "_seadeep"
+
+/turf/open/gm/river/desert/tyrargo/deep/no_slowdown
+	base_river_slowdown = 1
+
+/turf/open/gm/river/desert/tyrargo/deep/covered
+	covered = TRUE
+	icon = 'icons/turf/floors/desert_water_covered.dmi'

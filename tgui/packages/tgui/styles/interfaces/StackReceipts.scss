@@ -1,0 +1,44 @@
+@use '../base.scss';
+@use '../colors.scss';
+
+$button-bg-opacity: 0.25;
+$recommended-color: hsl(135, 46%, 42%);
+$mandatory-color: hsl(39, 100%, 25%);
+
+.StackReceipts {
+  .StackButton {
+    background-color: rgba(colors.$primary, $button-bg-opacity);
+    border: 2px solid colors.$primary;
+    white-space: nowrap;
+    white-space-collapse: nowrap;
+    left: 6px;
+    vertical-align: top;
+    margin-top: 6px;
+    &:hover,
+    &:focus {
+      transition:
+        colors.$primary 0ms,
+        background-color 0ms;
+      background-color: colors.$primary;
+      color: white;
+    }
+  }
+
+  .StackNumberInput {
+    vertical-align: top;
+    margin-top: 6px;
+  }
+
+  .HrLine {
+    position: relative;
+    color: colors.$primary;
+    background-color: colors.$primary;
+  }
+
+  .Icon {
+    min-width: 32px;
+    max-width: 32px;
+    max-height: 32px;
+    min-height: 32px;
+  }
+}

@@ -54,13 +54,19 @@
 #define RADIO_CHANNEL_UPP_KDO "UPP Kdo"
 
 //WY Comms
-#define RADIO_CHANNEL_WY "WY"
+#define RADIO_CHANNEL_WY "WY Corporate"
+#define RADIO_CHANNEL_WY_PUB "WY Public"
+#define RADIO_CHANNEL_WY_SEC "WY Sec"
 #define RADIO_CHANNEL_PMC_GEN "WY PMC"
 #define RADIO_CHANNEL_PMC_CMD "PMC Command"
 #define RADIO_CHANNEL_PMC_MED "PMC Med"
 #define RADIO_CHANNEL_PMC_ENGI "PMC Engi"
 #define RADIO_CHANNEL_PMC_CCT "PMC CCT"
 #define RADIO_CHANNEL_WY_WO "SpecOps"
+
+//Hyperdyne Comms
+
+#define RADIO_CHANNEL_HYPERDYNE "Hyperdyne"
 
 //Listening Devices
 #define RADIO_CHANNEL_BUG_A "Listening Device A"
@@ -80,6 +86,9 @@
 
 #define RADIO_CHANNEL_YAUTJA "Yautja"
 #define RADIO_CHANNEL_YAUTJA_OVERSEER "Overseer"
+#define RADIO_CHANNEL_YAUTJA_SPECOPS "Military"
+#define RADIO_CHANNEL_YAUTJA_STRANDED "Stranded"
+#define RADIO_CHANNEL_YAUTJA_BADBLOOD "Bad Blood"
 
 
 // Listening bug broadcast setting. Whether or not it plays only to ghosts with preferences, or doesn't show to ghosts at all.

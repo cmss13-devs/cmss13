@@ -1,6 +1,6 @@
 /obj/item/device/working_joe_pda
 	name = "KN5500 PDA"
-	desc = "A portable interface used by Working-Joes, capable of connecting to the local command AI to relay tasking information. Built to withstand a nuclear bomb."
+	desc = "A Karnak Electronics portable interface used by Working-Joes, capable of connecting to the local command AI to relay tasking information. Built to withstand a nuclear bomb."
 	icon_state = "karnak_off"
 	item_state = "wj_pda"
 	icon = 'icons/obj/items/synth/wj_pda.dmi'
@@ -43,6 +43,7 @@
 /obj/item/device/working_joe_pda/Initialize(mapload, ...)
 	link_systems(override = FALSE)
 	. = ..()
+	AddElement(/datum/element/corp_label/karnak)
 
 /obj/item/device/working_joe_pda/proc/notify()
 	if(notify_sounds)
@@ -390,7 +391,7 @@
 
 		if("trigger_vent")
 			playsound = FALSE
-			var/obj/structure/pipes/vents/pump/no_boom/gas/sec_vent = locate(params["vent"])
+			var/obj/structure/pipes/vents/pump/no_boom/gas/ares/sec_vent = locate(params["vent"])
 			if(!istype(sec_vent) || sec_vent.welded)
 				to_chat(user, SPAN_WARNING("ERROR: Gas release failure."))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
@@ -432,6 +433,6 @@
 
 /obj/item/device/working_joe_pda/uscm
 	name = "KN5500/2 PDA"
-	desc = "A portable interface used by AI technicians, capable of connecting to the local command AI to relay tasking information. Built to withstand a nuclear bomb."
+	desc = "A Karnak Electronics portable interface used by AI technicians, capable of connecting to the local command AI to relay tasking information. Built to withstand a nuclear bomb."
 	icon_state = "karnak_uscm_off"
 	base_icon_state = "karnak_uscm"

@@ -1,5 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Simple mobs and decoys now update away_timer"
-  - refactor: "Calling parent for Life() is now required as well as other minor Life() refactoring"

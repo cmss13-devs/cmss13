@@ -46,6 +46,13 @@
 	full_name = "Toggle mark for hunt"
 	keybind_signal = COMSIG_KB_YAUTJA_TOGGLE_MARK_FOR_HUNT
 
+/datum/keybinding/yautja/leap
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "leap"
+	full_name = "Leap"
+	keybind_signal = COMSIG_KB_YAUTJA_LEAP
+
 // BRACER SPECIFIC \\
 
 // parent bracer \\
@@ -414,4 +421,21 @@
 	var/obj/item/weapon/yautja/chained/combistick/held_item = human.get_held_item()
 	if(istype(held_item))
 		held_item.fold_combistick()
+	return TRUE
+
+/datum/keybinding/yautja/guard_gloves
+	hotkey_keys = list("Space")
+	classic_keys = list("Unbound")
+	name = "gauntlet_guard"
+	full_name = "Guard-Yourself"
+	keybind_signal = COMSIG_KB_YAUTJA_GAUNTLET_GUARD
+
+/datum/keybinding/yautja/guard_gloves/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/human/human = user.mob
+	var/obj/item/weapon/bracer_attachment/chain_gauntlets/held_item = human.get_held_item()
+	if(istype(held_item))
+		held_item.gauntlet_guard()
 	return TRUE

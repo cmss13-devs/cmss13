@@ -78,7 +78,7 @@
 	icon_state = "fork"
 	item_state = "fork"
 
-/obj/item/tool/kitchen/utensil/pfork
+/obj/item/tool/kitchen/utensil/fork/plastic
 	name = "plastic fork"
 	desc = "Yay, no washing up to do."
 	icon_state = "pfork"
@@ -91,7 +91,7 @@
 	item_state = "spoon"
 	attack_verb = list("attacked", "poked")
 
-/obj/item/tool/kitchen/utensil/pspoon
+/obj/item/tool/kitchen/utensil/spoon/plastic
 	name = "plastic spoon"
 	desc = "It's a plastic spoon. How dull."
 	icon_state = "pspoon"
@@ -130,7 +130,7 @@
 	if(.)
 		playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1, 5)
 
-/obj/item/tool/kitchen/utensil/pknife
+/obj/item/tool/kitchen/utensil/knife/plastic
 	name = "plastic knife"
 	desc = "The bluntest of blades."
 	icon_state = "pknife"
@@ -139,13 +139,8 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_righthand.dmi'
 	)
 	item_state = "pknife"
-	force = 10
-	throwforce = 10
-
-/obj/item/tool/kitchen/utensil/pknife/attack(target as mob, mob/living/user as mob)
-	. = ..()
-	if(.)
-		playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1, 5)
+	sharp = IS_SHARP_ITEM_SIMPLE
+	edge = FALSE
 
 /*
  * Kitchen knives
@@ -265,9 +260,9 @@
 			M.apply_effect(min(drowsy_threshold, 10) , DROWSY)
 
 		M.apply_damage(force, BRUTE, affecting, sharp=0) //log and damage the custom hit
-		user.attack_log += "\[[time_stamp()]\]<font color='red'> Attacked [key_name(M)] with [name] (INTENT: [uppertext(intent_text(user.a_intent))]) (DAMTYE: [uppertext(damtype)])</font>"
-		M.attack_log += "\[[time_stamp()]\]<font color='orange'> Attacked by  [key_name(user)] with [name] (INTENT: [uppertext(intent_text(user.a_intent))]) (DAMTYE: [uppertext(damtype)])</font>"
-		msg_admin_attack("[key_name(user)] attacked [key_name(M)] with [name] (INTENT: [uppertext(intent_text(user.a_intent))]) (DAMTYE: [uppertext(damtype)]) in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
+		user.attack_log += "\[[time_stamp()]\]<font color='red'> Attacked [key_name(M)] with [name] (INTENT: [uppertext(intent_text(user.a_intent))]) (DAMTYPE: [uppertext(damtype)])</font>"
+		M.attack_log += "\[[time_stamp()]\]<font color='orange'> Attacked by  [key_name(user)] with [name] (INTENT: [uppertext(intent_text(user.a_intent))]) (DAMTYPE: [uppertext(damtype)])</font>"
+		msg_admin_attack("[key_name(user)] attacked [key_name(M)] with [name] (INTENT: [uppertext(intent_text(user.a_intent))]) (DAMTYPE: [uppertext(damtype)]) in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 
 	else //Regular attack text
 		. = ..()

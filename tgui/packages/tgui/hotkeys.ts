@@ -192,6 +192,9 @@ export const setupHotKeys = () => {
   globalEvents.on('window-blur', () => {
     releaseHeldKeys();
   });
+  globalEvents.on('input-focus', () => {
+    releaseHeldKeys();
+  });
   startKeyPassthrough();
 };
 

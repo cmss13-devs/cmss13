@@ -16,20 +16,20 @@
 /datum/powernet/process()
 	load = newload
 	newload = 0
-	avail = newavail
+	if(!SShijack || !SShijack.crashed || SShijack.hijack_status != HIJACK_OBJECTIVES_GROUND_CRASH || !(src in SShijack.powernets))
+		avail = newavail
+	else // Powernets for a ground crashed ship no longer are powered
+		avail = 0
 	newavail = 0
 
-
 	viewload = 0.8*viewload + 0.2*load
-
 	viewload = floor(viewload)
 
 	var/numapc = 0
 
 	if(LAZYLEN(nodes)) // Added to fix a bad list bug -- TLE
-		for(var/obj/structure/machinery/power/terminal/term in nodes)
-			if( istype( term.master, /obj/structure/machinery/power/apc ) )
-				numapc++
+		for(var/obj/structure/machinery/power/apc/apc in nodes)
+			numapc++
 
 	netexcess = avail - load
 

@@ -22,20 +22,26 @@ GLOBAL_LIST_INIT(master_filter_info, list(
 			"size" = 1
 		)
 	),
-	/* Not supported because making a proper matrix editor on the frontend would be a huge dick pain.
-		Uncomment if you ever implement it
+	// Needs either a proper matrix editor, or just a hook to our existing one
+	// Issue is filterrific assumes variables will have the same value type if they share the same name, which this violates
+	// Gotta refactor this sometime
 	"color" = list(
 		"defaults" = list(
 			"color" = matrix(),
 			"space" = FILTER_COLOR_RGB
+		),
+		"enums" = list(
+			"FILTER_COLOR_RGB" = FILTER_COLOR_RGB,
+			"FILTER_COLOR_HSV" = FILTER_COLOR_HSV,
+			"FILTER_COLOR_HSL" = FILTER_COLOR_HSL,
+			"FILTER_COLOR_HCY" = FILTER_COLOR_HCY
 		)
 	),
-	*/
 	"displace" = list(
 		"defaults" = list(
 			"x" = 0,
 			"y" = 0,
-			"size" = null,
+			"size" = 1,
 			"icon" = ICON_NOT_SET,
 			"render_source" = ""
 		)
@@ -62,8 +68,20 @@ GLOBAL_LIST_INIT(master_filter_info, list(
 			"render_source" = "",
 			"flags" = FILTER_OVERLAY,
 			"color" = "",
-			"transform" = null,
+			"transform" = TRANSFORM_MATRIX_IDENTITY,
 			"blend_mode" = BLEND_DEFAULT
+		),
+		"flags" = list(
+			"FILTER_OVERLAY" = FILTER_OVERLAY,
+			"FILTER_UNDERLAY" = FILTER_UNDERLAY
+		),
+		"enums" = list(
+			"BLEND_DEFAULT" = BLEND_DEFAULT,
+			"BLEND_OVERLAY" = BLEND_OVERLAY,
+			"BLEND_ADD" = BLEND_ADD,
+			"BLEND_SUBTRACT" = BLEND_SUBTRACT,
+			"BLEND_MULTIPLY" = BLEND_MULTIPLY,
+			"BLEND_INSET_OVERLAY" = BLEND_INSET_OVERLAY
 		)
 	),
 	"motion_blur" = list(
@@ -137,7 +155,6 @@ GLOBAL_LIST_INIT(master_filter_info, list(
 ))
 
 #undef ICON_NOT_SET
-
 
 //Helpers to generate lists for filter helpers
 //This is the only practical way of writing these that actually produces sane lists
@@ -313,6 +330,8 @@ GLOBAL_LIST_INIT(master_filter_info, list(
 		animate(offset = random_roll - 1, time = rand() * 20 + 10)
 
 /proc/remove_wibbly_filters(atom/in_atom)
+	if(QDELETED(in_atom))
+		return
 	var/filter
 	for(var/i in 1 to 7)
 		filter = in_atom.get_filter("wibbly-[i]")

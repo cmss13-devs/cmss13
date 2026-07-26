@@ -25,6 +25,9 @@ export const removeHighlightSetting = createAction(
 export const updateHighlightSetting = createAction(
   'settings/updateHighlightSetting',
 );
+export const updateHighlightKeywords = createAction(
+  'settings/updateHighlightKeywords',
+);
 export const exportSettings = createAction('settings/export');
 export const importSettings = createAction(
   'settings/import',

@@ -14,28 +14,43 @@
 	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	layer = ABOVE_MOB_LAYER + 0.1 //above mobs and barricades
+	flags_atom = NO_ZFALL
 	var/amount = 2
 	var/spread_speed = 1 //time in decisecond for a smoke to spread one tile.
 	var/time_to_live = 8
 	var/smokeranking = SMOKE_RANK_HARMLESS //Override priority. A higher ranked smoke cloud will displace lower and equal ones on spreading.
 	var/datum/cause_data/cause_data = null
+	//does it obscure aim
+	var/obscuring = TRUE
 
 	//Remove this bit to use the old smoke
 	icon = 'icons/effects/96x96.dmi'
 	pixel_x = -32
 	pixel_y = -32
 
-/obj/effect/particle_effect/smoke/Initialize(mapload, oldamount, datum/cause_data/new_cause_data)
+/obj/effect/particle_effect/smoke/Initialize(mapload, oldamount, datum/cause_data/new_cause_data, time_to_live)
 	. = ..()
+
 	if(oldamount)
 		amount = oldamount - 1
+
 	if(!istype(new_cause_data))
 		if(new_cause_data)
 			new_cause_data = create_cause_data(new_cause_data)
 		else
 			new_cause_data = create_cause_data(name)
 	cause_data = new_cause_data
-	time_to_live += rand(-1,1)
+
+	if(time_to_live)
+		src.time_to_live = time_to_live
+	else
+		src.time_to_live += rand(-1,1)
+
+	var/area/my_area = get_area(src)
+	if(my_area?.flags_area & AREA_HEAVILY_VENTILATED)
+		var/new_amount = rand(1,3)
+		src.time_to_live = min(new_amount, src.time_to_live)
+
 	START_PROCESSING(SSeffects, src)
 
 /obj/effect/particle_effect/smoke/Destroy()
@@ -69,7 +84,7 @@
 
 /obj/effect/particle_effect/smoke/Crossed(atom/movable/moveable)
 	..()
-	if(istype(moveable, /obj/projectile/beam))
+	if(istype(moveable, /obj/projectile/beam) && obscuring)
 		var/obj/projectile/beam/beam = moveable
 		beam.damage /= 2
 	if(iscarbon(moveable))
@@ -87,6 +102,7 @@
 		return
 
 	var/turf/start_turf = get_turf(src)
+	var/list/turfs_to_spread = list()
 	if(!start_turf)
 		return
 	for(var/i in GLOB.cardinals)
@@ -101,9 +117,34 @@
 				qdel(foundsmoke)
 			else
 				continue
-		var/obj/effect/particle_effect/smoke/smoke = new type(cur_turf, amount, cause_data)
+		turfs_to_spread += cur_turf
+
+
+
+	var/turf/below = SSmapping.get_turf_below(loc)
+	var/turf/above = SSmapping.get_turf_above(loc)
+	if(below && istype(loc,/turf/open_space))
+		var/obj/effect/particle_effect/smoke/foundsmoke = locate() in below
+		if(foundsmoke)
+			if(foundsmoke.smokeranking <= src.smokeranking)
+				qdel(foundsmoke)
+				turfs_to_spread += below
+		else
+			turfs_to_spread += below
+
+
+	if(above && istype(above,/turf/open_space))
+		var/obj/effect/particle_effect/smoke/foundsmoke = locate() in above
+		if(foundsmoke)
+			if(foundsmoke.smokeranking <= src.smokeranking)
+				qdel(foundsmoke)
+				turfs_to_spread += above
+		else
+			turfs_to_spread += above
+
+	for(var/turf/spread in turfs_to_spread)
+		var/obj/effect/particle_effect/smoke/smoke = new type(spread, amount, cause_data)
 		smoke.setDir(pick(GLOB.cardinals))
-		smoke.time_to_live = time_to_live
 		if(smoke.amount > 0)
 			smoke.spread_smoke()
 
@@ -330,10 +371,9 @@
 	var/xeno_yautja_reduction = 0.75
 	var/reagent = new /datum/reagent/napalm/ut()
 
-/obj/effect/particle_effect/smoke/phosphorus/Initialize(mapload, oldamount, datum/cause_data/new_cause_data, intensity, max_intensity)
+/obj/effect/particle_effect/smoke/phosphorus/Initialize(mapload, oldamount, datum/cause_data/new_cause_data, time_to_live, intensity, max_intensity)
 	burn_damage = min(burn_damage, max_intensity - intensity) // Applies reaction limits
-
-	. = ..()
+	return ..()
 
 /obj/effect/particle_effect/smoke/phosphorus/weak
 	time_to_live = 2
@@ -636,6 +676,10 @@
 	to_chat(moob, SPAN_DANGER(msg))
 	return TRUE
 
+/obj/effect/particle_effect/smoke/xeno_weak/transparent
+	alpha = 100
+	color = "#ad5f3f"
+
 /obj/effect/particle_effect/smoke/xeno_weak_fire
 	time_to_live = 16
 	color = "#b33e1e"
@@ -726,7 +770,6 @@
 				qdel(cur_atom)
 
 		smoke.setDir(pick(GLOB.cardinals))
-		smoke.time_to_live = time_to_live
 		if(smoke.amount > 0)
 			smoke.spread_smoke()
 
@@ -759,14 +802,13 @@
 	amount = radius
 	cause_data = istype(new_cause_data) ? new_cause_data : create_cause_data(new_cause_data)
 
-/datum/effect_system/smoke_spread/start()
+/datum/effect_system/smoke_spread/start(do_NOT_delete = FALSE)
 	if(holder)
 		location = get_turf(holder)
-	var/obj/effect/particle_effect/smoke/smoke = new smoke_type(location, amount+1, cause_data)
-	if(lifetime)
-		smoke.time_to_live = lifetime
+	var/obj/effect/particle_effect/smoke/smoke = new smoke_type(location, amount+1, cause_data, lifetime)
 	if(smoke.amount > 0)
 		smoke.spread_smoke(direction)
+	return ..()
 
 /datum/effect_system/smoke_spread/bad
 	smoke_type = /obj/effect/particle_effect/smoke/bad
@@ -779,15 +821,21 @@
 
 /datum/effect_system/smoke_spread/phosphorus
 	smoke_type = /obj/effect/particle_effect/smoke/phosphorus
+	var/intensity
+	var/max_intensity
 
-/datum/effect_system/smoke_spread/phosphorus/start(intensity, max_intensity)
+/datum/effect_system/smoke_spread/phosphorus/proc/set_intensity(intensity, max_intensity)
+	src.intensity = intensity
+	src.max_intensity = max_intensity
+
+/datum/effect_system/smoke_spread/phosphorus/start(do_NOT_delete = FALSE)
 	if(holder)
 		location = get_turf(holder)
-	var/obj/effect/particle_effect/smoke/phosphorus/smoke = new smoke_type(location, amount+1, cause_data, intensity, max_intensity)
-	if(lifetime)
-		smoke.time_to_live = lifetime
+	var/obj/effect/particle_effect/smoke/phosphorus/smoke = new smoke_type(location, amount+1, cause_data, lifetime, intensity, max_intensity)
 	if(smoke.amount > 0)
 		smoke.spread_smoke(direction)
+	if(!do_NOT_delete)
+		qdel(src)
 
 /datum/effect_system/smoke_spread/phosphorus/weak
 	smoke_type = /obj/effect/particle_effect/smoke/phosphorus/weak
@@ -819,19 +867,47 @@
 /datum/effect_system/smoke_spread/king_doom
 	smoke_type = /obj/effect/particle_effect/smoke/king
 
+/obj/effect/particle_effect/smoke/decomposing_enzymes
+	opacity = FALSE
+	color = "#ddfc6d"
+	anchored = TRUE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	time_to_live = 6
+	spread_speed = 1
+	alpha = 60
+	obscuring = FALSE
+	var/remove_chem = 3
+	var/acid_increment_amount = 10
+
+/obj/effect/particle_effect/smoke/decomposing_enzymes/affect(mob/living/carbon/affected_mob)
+	. = ..()
+	apply_neuro(affected_mob, 0, remove_chem, TRUE, TRUE, TRUE, FALSE)
+	var/datum/effects/acid/acid_effect = locate() in affected_mob.effects_list
+	if(!acid_effect)
+		return
+	acid_effect.enhance_acid(super_acid = FALSE)
+	acid_effect.increment_duration(acid_increment_amount)
+
+
+/datum/effect_system/smoke_spread/decomposing_enzymes
+	smoke_type = /obj/effect/particle_effect/smoke/decomposing_enzymes
+
 /datum/effect_system/smoke_spread/xeno_acid
 	smoke_type = /obj/effect/particle_effect/smoke/xeno_burn
 
 /datum/effect_system/smoke_spread/xeno_weaken
 	smoke_type = /obj/effect/particle_effect/smoke/xeno_weak
 
+/datum/effect_system/smoke_spread/xeno_weaken/transparent
+	smoke_type = /obj/effect/particle_effect/smoke/xeno_weak/transparent
+
 /datum/effect_system/smoke_spread/xeno_extinguish_fire
 	smoke_type = /obj/effect/particle_effect/smoke/xeno_weak_fire
 
-/datum/effect_system/smoke_spread/xeno_extinguish_fire/start()
+/datum/effect_system/smoke_spread/xeno_extinguish_fire/start(do_NOT_delete = FALSE)
 	if(holder)
 		location = get_turf(holder)
-	var/obj/effect/particle_effect/smoke/smoke = new smoke_type(location, amount+1, cause_data)
+	var/obj/effect/particle_effect/smoke/smoke = new smoke_type(location, amount+1, cause_data, lifetime)
 
 	for (var/atom/cur_atom in location)
 		if (istype(cur_atom, /mob/living))
@@ -840,7 +916,7 @@
 		if(istype(cur_atom, /obj/flamer_fire))
 			qdel(cur_atom)
 
-	if(lifetime)
-		smoke.time_to_live = lifetime
 	if(smoke.amount > 0)
 		smoke.spread_smoke(direction)
+	if(!do_NOT_delete)
+		qdel(src)

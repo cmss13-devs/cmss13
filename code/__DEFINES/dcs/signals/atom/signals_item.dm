@@ -28,6 +28,7 @@
 #define COMSIG_SNACK_EATEN "snack_eaten"
 
 #define COMSIG_ITEM_PICKUP "item_pickup"
+	#define COMSIG_ITEM_PICKUP_CANCELLED (1<<0)
 
 ///from /obj/item/device/broadcasting
 #define COMSIG_BROADCAST_GO_LIVE "broadcast_live"
@@ -46,6 +47,9 @@
 
 //from /datum/authority/branch/role/proc/equip_role()
 #define COMSIG_POST_SPAWN_UPDATE "post_spawn_update"
+
+//from /datum/equipment_preset/proc/load_vanity()
+#define COMSIG_POST_VANITY_UPDATE "post_vanity_update"
 
 #define COMSIG_CAMERA_MAPNAME_ASSIGNED "camera_manager_mapname_assigned"
 #define COMSIG_CAMERA_REGISTER_UI "camera_manager_register_ui"

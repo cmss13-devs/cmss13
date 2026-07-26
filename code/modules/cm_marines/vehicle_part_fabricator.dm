@@ -103,7 +103,7 @@
 
 		if((is_omnisentry && get_point_store() < omnisentry_price) || get_point_store() < entry.cost)
 			if(!TIMER_COOLDOWN_CHECK(src, COOLDOWN_PRINTER_ERROR))
-				balloon_alert_to_viewers("out of points - printing paused!")
+				balloon_alert_to_viewers("out of points - printing paused")
 				visible_message(SPAN_WARNING("[src] flashes a warning light."))
 				TIMER_COOLDOWN_START(src, COOLDOWN_PRINTER_ERROR, 20 SECONDS)
 			busy = FALSE
@@ -320,18 +320,18 @@
 
 	var/recycle_points
 	if(istype(powerloader_clamp_used.loaded, /obj/structure/dropship_equipment))
-		var/obj/structure/dropship_equipment/sold_eqipment = powerloader_clamp_used.loaded
-		recycle_points = sold_eqipment.point_cost
+		var/obj/structure/dropship_equipment/sold_equipment = powerloader_clamp_used.loaded
+		recycle_points = sold_equipment.point_cost
 	else if(istype(powerloader_clamp_used.loaded, /obj/structure/ship_ammo))
-		var/obj/structure/ship_ammo/sold_eqipment = powerloader_clamp_used.loaded
-		if(!sold_eqipment.ammo_count)
-			to_chat(user, SPAN_WARNING("\The [sold_eqipment] is empty!"))
+		var/obj/structure/ship_ammo/sold_equipment = powerloader_clamp_used.loaded
+		if(!sold_equipment.ammo_count)
+			to_chat(user, SPAN_WARNING("\The [sold_equipment] is empty!"))
 			return
-		if(sold_eqipment.ammo_count != sold_eqipment.max_ammo_count)
-			recycle_points = (sold_eqipment.point_cost * (sold_eqipment.ammo_count / sold_eqipment.max_ammo_count))
-			to_chat(user, SPAN_WARNING("\The [sold_eqipment] is not fully loaded, and less points will be able to be refunded."))
+		if(sold_equipment.ammo_count != sold_equipment.max_ammo_count)
+			recycle_points = (sold_equipment.point_cost * (sold_equipment.ammo_count / sold_equipment.max_ammo_count))
+			to_chat(user, SPAN_WARNING("\The [sold_equipment] is not fully loaded, and fewer points will be able to be refunded."))
 		else
-			recycle_points = sold_eqipment.point_cost
+			recycle_points = sold_equipment.point_cost
 			if(istype(powerloader_clamp_used.loaded, /obj/structure/ship_ammo/sentry))
 				recycle_points = omnisentry_price - omnisentry_price_scale
 

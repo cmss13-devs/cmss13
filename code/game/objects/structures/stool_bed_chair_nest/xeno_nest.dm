@@ -11,6 +11,7 @@
 	layer = ABOVE_MOB_LAYER
 	plane = GAME_PLANE
 	buckle_lying = 0
+	flags_obj = OBJ_ORGANIC
 	var/on_fire = 0
 	var/resisting = 0
 	var/resisting_ready = 0
@@ -85,6 +86,10 @@
 	color = "#cc8ec4"
 	hivenumber = XENO_HIVE_FORSAKEN
 
+/obj/structure/bed/nest/kseries
+	color = "#ffff80"
+	hivenumber = XENO_HIVE_K_SERIES
+
 /obj/structure/bed/nest/attackby(obj/item/W, mob/living/user)
 	if(istype(W, /obj/item/grab))
 		var/obj/item/grab/G = W
@@ -148,7 +153,7 @@
 
 	if(isxeno(user))
 		var/mob/living/carbon/xenomorph/X = user
-		if(!X.hive.unnesting_allowed && !isxeno_builder(X) && HIVE_ALLIED_TO_HIVE(X.hivenumber, hivenumber))
+		if((X.hive.hive_flags & XENO_UNNESTING_RESTRICTED) && !isxeno_builder(X) && HIVE_ALLIED_TO_HIVE(X.hivenumber, hivenumber))
 			to_chat(X, SPAN_XENOWARNING("We shouldn't interfere with the nest, leave that to the drones."))
 			return
 	else if(iscarbon(user))
@@ -216,7 +221,7 @@
 	if(mob == user)
 		return
 
-	var/mob/living/carbon/human/human = null
+	var/mob/living/carbon/human/human
 	if(ishuman(mob))
 		human = mob
 		if(human.body_position != LYING_DOWN) //Don't ask me why is has to be
@@ -263,6 +268,12 @@
 		human.do_ghost()
 
 	return TRUE
+
+/obj/structure/bed/nest/proc/forced_buckle_mob(mob/mob, mob/user)
+	do_buckle(mob, user)
+	ADD_TRAIT(mob, TRAIT_NESTED, TRAIT_SOURCE_BUCKLE)
+	ADD_TRAIT(mob, TRAIT_NO_STRAY, TRAIT_SOURCE_BUCKLE)
+	SEND_SIGNAL(mob, COMSIG_MOB_NESTED, user)
 
 /obj/structure/bed/nest/send_buckling_message(mob/M, mob/user)
 	M.visible_message(SPAN_XENONOTICE("[user] secretes a thick, vile resin, securing [M] into [src]!"),
@@ -377,7 +388,7 @@
 
 /obj/structure/bed/nest/structure/attack_hand(mob/user)
 	if(!isxeno(user))
-		to_chat(user, SPAN_NOTICE("The sticky resin is too strong for you to do anything to this nest"))
+		to_chat(user, SPAN_NOTICE("The sticky resin is too strong for you to do anything to this nest."))
 		return FALSE
 	. = ..()
 

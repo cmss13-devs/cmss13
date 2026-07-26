@@ -1,5 +1,5 @@
 /obj/item/storage/briefcase
-	name = "briefcase"
+	name = "brown briefcase"
 	desc = "It's made of AUTHENTIC faux-leather and has a price-tag still attached. Its owner must be a real professional."
 	icon = 'icons/obj/items/storage/briefcases.dmi'
 	item_icons = list(
@@ -33,9 +33,9 @@
 			M.apply_effect(min(drowsy_threshold, 10) , DROWSY)
 
 		M.apply_damage(force, BRUTE, affecting, sharp=0) //log and damage the custom hit
-		user.attack_log += "\[[time_stamp()]\]<font color='red'> Attacked [key_name(M)] with [name] (INTENT: [uppertext(intent_text(user.a_intent))]) (DAMTYE: [uppertext(damtype)])</font>"
-		M.attack_log += "\[[time_stamp()]\]<font color='orange'> Attacked by  [key_name(user)] with [name] (INTENT: [uppertext(intent_text(user.a_intent))]) (DAMTYE: [uppertext(damtype)])</font>"
-		msg_admin_attack("[key_name(user)] attacked [key_name(M)] with [name] (INTENT: [uppertext(intent_text(user.a_intent))]) (DAMTYE: [uppertext(damtype)]) in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
+		user.attack_log += "\[[time_stamp()]\]<font color='red'> Attacked [key_name(M)] with [name] (INTENT: [uppertext(intent_text(user.a_intent))]) (DAMTYPE: [uppertext(damtype)])</font>"
+		M.attack_log += "\[[time_stamp()]\]<font color='orange'> Attacked by  [key_name(user)] with [name] (INTENT: [uppertext(intent_text(user.a_intent))]) (DAMTYPE: [uppertext(damtype)])</font>"
+		msg_admin_attack("[key_name(user)] attacked [key_name(M)] with [name] (INTENT: [uppertext(intent_text(user.a_intent))]) (DAMTYPE: [uppertext(damtype)]) in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 
 	else //Regular attack text
 		. = ..()
@@ -43,8 +43,37 @@
 	return
 
 /obj/item/storage/briefcase/stowaway
-	name = "briefcase"
-	desc = "It's made of AUTHENTIC faux-leather and has a price-tag still attached. Its owner must be a real professional."
+	name = "suitcase"
+	desc = "An old suitcase suited for when you want to travel. This one sure has seen better days."
 	icon_state = "suitcase"
 	item_state = "suitcase"
 	force = 8
+
+/obj/item/storage/briefcase/black
+	name = "black briefcase"
+	icon_state = "briefcase_b"
+	item_state = "briefcase_b"
+
+/obj/item/storage/briefcase/maroon
+	name = "maroon briefcase"
+	icon_state = "briefcase_c"
+	item_state = "briefcase_c"
+
+/obj/item/storage/briefcase/flap
+	name = "flap-closure brown briefcase"
+	desc = "It's made of AUTHENTIC faux-leather and has a price-tag still attached. Its owner must be a real professional. This one is less rigid, made with a flap and softer leather."
+	icon_state = "briefcase_d"
+	item_state = "briefcase_d"
+
+/obj/item/storage/briefcase/flap/black
+	name = "flap-closure black briefcase"
+	icon_state = "briefcase_e"
+	item_state = "briefcase_e"
+
+/obj/item/storage/briefcase/flap/maroon
+	name = "flap-closure maroon briefcase"
+	icon_state = "briefcase_f"
+	item_state = "briefcase_f"
+
+
+

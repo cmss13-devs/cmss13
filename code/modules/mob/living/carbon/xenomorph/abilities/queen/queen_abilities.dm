@@ -37,12 +37,6 @@
 	no_cooldown_msg = FALSE // Needed for onclick actions
 	ability_primacy = XENO_SCREECH
 
-/datum/action/xeno_action/onclick/queen_tacmap
-	name = "View Xeno Tacmap"
-	action_icon_state = "toggle_queen_zoom"
-	plasma_cost = 0
-
-
 /datum/action/xeno_action/activable/queen_give_plasma
 	name = "Give Plasma (400)"
 	action_icon_state = "queen_give_plasma"
@@ -57,6 +51,7 @@
 	action_icon_state = "queen_word"
 	plasma_cost = 50
 	xeno_cooldown = 10 SECONDS
+	macro_path = /mob/living/carbon/xenomorph/proc/hive_message
 
 /datum/action/xeno_action/activable/gut
 	name = "Gut (200)"
@@ -129,6 +124,7 @@
 	if(boost_duration > 0)
 		boosted = TRUE
 		xeno_cooldown = 0
+		xeno_cooldown_interrupt_penalty = 3 SECONDS // still punish the queen when interrupted
 		plasma_cost = 0
 		build_speed_mod = 1
 		thick = TRUE // Allow queen to remotely thicken structures.
@@ -137,6 +133,7 @@
 
 /datum/action/xeno_action/activable/secrete_resin/remote/queen/proc/disable_boost()
 	xeno_cooldown = 3 SECONDS
+	xeno_cooldown_interrupt_penalty = 1 SECONDS // lower the penalty as we now have cooldown applied as well
 	plasma_cost = 100
 	boosted = FALSE
 	thick = FALSE
@@ -178,7 +175,7 @@
 	hide_from(Q)
 
 /datum/action/xeno_action/activable/bombard/queen/get_bombard_source()
-	var/mob/hologram/queen/H = owner?.client?.eye
+	var/mob/hologram/queen/H = owner?.client?.get_eye()
 	if(istype(H))
 		return H
 	return owner

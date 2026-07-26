@@ -331,6 +331,11 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		if("keyboard")
 			playsound(src, "keyboard", 15, 1)
 
+/obj/structure/machinery/computer/supply/ui_status(mob/user)
+	. = ..()
+	if(inoperable(MAINT))
+		return UI_CLOSE
+
 /obj/structure/machinery/computer/supply/proc/print_form(datum/supply_order/order)
 	var/list/accesses = list()
 
@@ -347,6 +352,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	reqform.info += "REQUESTED BY: [order.orderedby]<br>"
 	reqform.info += "RANK: [order.orderedby_rank]<br>"
 	reqform.info += "REASON: [order.reason]<br>"
+	reqform.info += "TOTAL COST: [order.total_cost]<br>"
 	reqform.info += "ACCESS RESTRICTION: [english_list(accesses, nothing_text = "None")]<br>"
 	reqform.info += "CONTENTS:<br>"
 	for(var/datum/supply_packs/supply_pack as anything in order.objects)
@@ -373,7 +379,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 /obj/structure/machinery/computer/supply/asrs
 	name = "ASRS console"
-	desc = "A console for the Automated Storage Retrieval System"
+	desc = "A console for the Automated Storage Retrieval System."
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "supply"
 	density = TRUE
@@ -650,6 +656,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 	/// The user submitted reason as to why they want this order
 	var/reason
+	///Pack cost is updated after purchase, so needs to be recorded beforehand to reflect actual cost
+	var/total_cost
 
 /datum/supply_order/proc/get_list_representation()
 	var/type_to_quantity = list()
@@ -673,9 +681,10 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		"ordered_by" = orderedby,
 		"approved_by" = approvedby,
 		"reason" = reason,
+		"total_cost" = total_cost
 	)
 
-/datum/supply_order/proc/buy(obj/structure/machinery/computer/supply/asrs/buyer)
+/datum/supply_order/proc/buy(obj/structure/machinery/computer/supply/asrs/buyer, mob/user)
 	var/ordered = list()
 
 	for(var/datum/supply_packs/pack as anything in objects)
@@ -689,6 +698,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			continue
 
 		buyer.linked_supply_controller.points -= pack.cost
+		total_cost += pack.cost * 100
 		buyer.linked_supply_controller.black_market_points -= pack.dollar_cost
 
 		if(buyer.linked_supply_controller.black_market_heat != -1) // -1 Heat means heat is disabled
@@ -696,9 +706,6 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			buyer.linked_supply_controller.black_market_heat = clamp(buyer.linked_supply_controller.black_market_heat + pack.crate_heat + (pack.crate_heat * rand(rand(-0.25,0),0.25)), 0, 100)
 
 		ordered += pack
-
-	for(var/datum/supply_packs/pack as anything in ordered)
-		pack.cost = floor(pack.cost * SUPPLY_COST_MULTIPLIER)
 
 	if(buyer.linked_supply_controller.black_market_heat == 100)
 		buyer.linked_supply_controller.black_market_investigation()
@@ -710,6 +717,12 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		objects = ordered
 		buyer.linked_supply_controller.requestlist -= src
 		buyer.linked_supply_controller.shoppinglist += src
+		var/counter = 0
+		for(var/datum/supply_packs/pack as anything in ordered)
+			counter++
+			log_ares_requisition("Requisitioned", "[pack.name] purchased for $[pack.cost * 100] requested by: [orderedby] and approved by [approvedby]. Reason: [reason ? reason : "N/A"]. No. [counter] of [length(ordered)]", user.real_name)
+		for(var/datum/supply_packs/pack as anything in ordered)
+			pack.cost = floor(pack.cost * SUPPLY_COST_MULTIPLIER)
 		return TRUE
 
 /datum/controller/supply
@@ -1014,6 +1027,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 				slip.ordernum = order.ordernum
 				slip.orderedby = order.orderedby
 				slip.approvedby = order.approvedby
+				slip.total_cost = order.total_cost
 				slip.packages = content_names
 				slip.generate_contents()
 				slip.update_icon()
@@ -1025,6 +1039,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	var/ordernum
 	var/orderedby
 	var/approvedby
+	var/total_cost
 	var/list/packages
 
 /obj/item/paper/manifest/read_paper(mob/user, scramble = FALSE)
@@ -1171,7 +1186,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 			current_order = list()
 
-			if(supply_order.buy(src))
+			if(supply_order.buy(src, ui.user))
 				return TRUE
 
 			linked_supply_controller.requestlist += supply_order
@@ -1198,7 +1213,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			switch(params["order_status"])
 				if("approve")
 					order.approvedby = id_name
-					if(order.buy(src))
+					if(order.buy(src, ui.user))
 						return TRUE
 
 					system_message = "Unable to approve order, order remains in Requests."
@@ -1243,7 +1258,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	else
 		return_value = movable_atom.black_market_value
 
-	// so they cant sell the same thing over and over and over
+	// so they can't sell the same thing over and over and over
 	return_value = POSITIVE(return_value - GLOB.supply_controller.black_market_sold_items[movable_atom.type] * 0.5)
 	return return_value
 
@@ -1420,6 +1435,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	post_signal("supply_vehicle")
 
 	var/dat = ""
+	var/turf/upper_turf = get_turf(SSshuttle.getDock("almayer vehicle"))
 
 	if(!SSshuttle.vehicle_elevator)
 		return
@@ -1428,7 +1444,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	if (SSshuttle.vehicle_elevator.mode != SHUTTLE_IDLE)
 		dat += "Moving"
 	else
-		if(is_mainship_level(SSshuttle.vehicle_elevator.z))
+		if(SSshuttle.vehicle_elevator.z == upper_turf.z)
 			dat += "Raised"
 			if(!spent)
 				dat += "<br>\[<a href='byond://?src=\ref[src];lower_elevator=1'>Lower</a>\]"
@@ -1453,12 +1469,19 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 /obj/structure/machinery/computer/supply/asrs/vehicle/Topic(href, href_list)
 	. = ..()
+
+	var/turf/upper_turf = get_turf(SSshuttle.getDock("almayer vehicle"))
+	var/turf/lower_turf = get_turf(SSshuttle.getDock("adminlevel vehicle"))
+
 	if(.)
 		return
+
 	if(!is_mainship_level(z))
 		return
+
 	if(spent)
 		return
+
 	if(!linked_supply_controller)
 		world.log << "## ERROR: Eek. The linked_supply_controller controller datum is missing somehow."
 		return
@@ -1471,10 +1494,10 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		usr.set_interaction(src)
 
 	if(href_list["get_vehicle"])
-		if(is_mainship_level(SSshuttle.vehicle_elevator.z) || SSshuttle.vehicle_elevator.mode != SHUTTLE_IDLE)
+		if((SSshuttle.vehicle_elevator.z == upper_turf.z) || SSshuttle.vehicle_elevator.mode != SHUTTLE_IDLE)
 			to_chat(usr, SPAN_WARNING("The elevator needs to be in the cargo bay dock to call a vehicle up!"))
 			return
-		// dunno why the +1 is needed but the vehicles spawn off-center
+
 		var/turf/middle_turf = get_turf(SSshuttle.vehicle_elevator)
 
 		var/obj/vehicle/multitile/ordered_vehicle
@@ -1485,6 +1508,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 		if(VO?.has_vehicle_lock())
 			return
+
 		spent = TRUE
 		ordered_vehicle = new VO.ordered_vehicle(middle_turf)
 		SSshuttle.vehicle_elevator.request(SSshuttle.getDock("almayer vehicle"))
@@ -1495,6 +1519,10 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 	else if(href_list["lower_elevator"])
 		if(!is_mainship_level(SSshuttle.vehicle_elevator.z))
+			return
+
+		if(SSshuttle.vehicle_elevator.z == lower_turf.z)
+			to_chat(usr, SPAN_WARNING("The elevator is already lowered!"))
 			return
 
 		SSshuttle.vehicle_elevator.request(SSshuttle.getDock("adminlevel vehicle"))

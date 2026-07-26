@@ -2,23 +2,24 @@
 	var/datum/language/new_language = GLOB.all_languages[language]
 
 	if(!istype(new_language) || (new_language in languages))
-		return 0
+		return FALSE
 
 	languages.Add(new_language)
-	return 1
+	client?.tgui_say?.load()
+	return TRUE
 
 /mob/proc/set_languages(list/new_languages)
 	languages = list()
 	for(var/language in new_languages)
 		add_language(language)
-
+	client?.tgui_say?.load()
 
 /mob/proc/remove_language(rem_language)
-	languages.Remove(GLOB.all_languages[rem_language])
-	return 0
+	. = languages.Remove(GLOB.all_languages[rem_language])
+	client?.tgui_say?.load()
 
 /mob/proc/get_default_language()
-	if (length(languages) > 0)
+	if(length(languages) > 0)
 		return languages[1]
 	return null
 
@@ -63,11 +64,16 @@
 
 	var/list/languagedata = list()
 
-	for(var/datum/language/L as anything in target_mob.languages)
+	for(var/datum/language/language_in_list as anything in target_mob.languages)
+		var/hear_only_language = FALSE
+		if(LAZYACCESS(target_mob.language_flags, language_in_list.name))
+			hear_only_language = target_mob.language_flags[language_in_list.name] & LANGUAGE_HEAR_ONLY ? TRUE : FALSE
+
 		languagedata += list(list(
-			"name" = L.name,
-			"desc" = L.desc,
-			"key" = L.key
+			"name" = language_in_list.name,
+			"desc" = language_in_list.desc,
+			"key" = language_in_list.key,
+			"hearOnly" = hear_only_language
 		))
 
 	data["languages"] = languagedata
@@ -85,10 +91,10 @@
 	switch(action)
 		if("set_default_language")
 			var/index = 1
-			for(var/datum/language/L as anything in target_mob.languages)
-				if(L.key == params["key"])
+			for(var/datum/language/language_in_list as anything in target_mob.languages)
+				if(language_in_list.key == params["key"] && !(target_mob.language_flags[language_in_list.name] & LANGUAGE_HEAR_ONLY))
 					var/language_holder = target_mob.languages[1]
-					target_mob.languages[1] = L
+					target_mob.languages[1] = language_in_list
 					target_mob.languages[index] = language_holder
 					break
 				index++

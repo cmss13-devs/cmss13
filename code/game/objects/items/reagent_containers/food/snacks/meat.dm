@@ -1,6 +1,6 @@
 /obj/item/reagent_container/food/snacks/meat
 	name = "meat"
-	desc = "A slab of meat"
+	desc = "A slab of meat."
 	icon_state = "meat"
 	icon = 'icons/obj/items/food/meat.dmi'
 	health = 180
@@ -14,7 +14,7 @@
 	name = made_from_player + name
 
 /obj/item/reagent_container/food/snacks/meat/attackby(obj/item/W as obj, mob/user as mob)
-	if(W.sharp == IS_SHARP_ITEM_ACCURATE || W.sharp == IS_SHARP_ITEM_BIG)
+	if(W.sharp)
 		var/turf/T = get_turf(src)
 		var/cutlet_amt = roll(1,4)
 		for(var/i in 1 to cutlet_amt)
@@ -117,5 +117,5 @@
 /obj/item/reagent_container/food/snacks/meat/fish/white_perch
 
 	name = "white perch meat"
-	desc = "meat of an invasive fish, its oily.."
+	desc = "Meat of an invasive fish, its oily.."
 	icon_state = "white_perch_meat"

@@ -18,6 +18,9 @@
 	shell_speed = AMMO_SPEED_TIER_2
 	shrapnel_chance = 5
 
+/datum/ammo/bullet/shrapnel/enviro
+	damage_enviro = TRUE
+
 /datum/ammo/bullet/shrapnel/on_hit_obj(obj/O, obj/projectile/P)
 	if(istype(O, /obj/structure/barricade))
 		var/obj/structure/barricade/B = O
@@ -108,6 +111,9 @@
 	penetration = ARMOR_PENETRATION_TIER_1
 	shell_speed = AMMO_SPEED_TIER_1
 	shrapnel_chance = 0
+
+/datum/ammo/bullet/shrapnel/light/resin
+	name = "resin shrapnel"
 
 /datum/ammo/bullet/shrapnel/light/human
 	name = "human bone fragments"

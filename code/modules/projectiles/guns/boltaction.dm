@@ -25,7 +25,7 @@
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_WIELDED_FIRING_ONLY
 	gun_category = GUN_CATEGORY_RIFLE
 	aim_slowdown = SLOWDOWN_ADS_RIFLE
-	wield_delay = WIELD_DELAY_NORMAL
+	wield_delay = WEAPON_DELAY_NORMAL
 	current_mag = /obj/item/ammo_magazine/rifle/boltaction
 	attachable_allowed = list(
 		/obj/item/attachable/bayonet,
@@ -47,7 +47,7 @@
 	)
 	starting_attachment_types = list(/obj/item/attachable/scope/mini/hunting)
 	aim_slowdown = SLOWDOWN_ADS_RIFLE
-	wield_delay = WIELD_DELAY_NORMAL
+	wield_delay = WEAPON_DELAY_NORMAL
 	civilian_usable_override = TRUE
 	unacidable = TRUE // Like other 1-of-a-kind weapons, it can't be gotten rid of that fast
 	explo_proof = TRUE
@@ -94,16 +94,9 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_8
 	recoil = RECOIL_OFF
 	recoil_unwielded = RECOIL_AMOUNT_TIER_0
-	can_jam = TRUE
-	initial_jam_chance = GUN_JAM_CHANCE_INSUBSTANTIAL
-	unjam_chance = GUN_UNJAM_CHANCE_DEFAULT
-	durability_loss = GUN_DURABILITY_LOSS_INSUBSTANTIAL //why make bolties more useless
-	jam_threshold = GUN_DURABILITY_LOW
 
 /obj/item/weapon/gun/boltaction/unique_action(mob/user)
-	if(jammed)
-		jam_unique_action(user)
-	else if(world.time < (recent_cycle + bolt_delay) )  //Don't spam it.
+	if(world.time < (recent_cycle + bolt_delay) )  //Don't spam it.
 		to_chat(user, SPAN_DANGER("You can't cycle the bolt again right now."))
 		return
 
@@ -173,7 +166,7 @@
 	flags_gun_features = NONE
 	gun_category = GUN_CATEGORY_HEAVY
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST // Consider SUPERWEAPON, but it's not like you can fire this without being bipodded
-	wield_delay = WIELD_DELAY_VERY_SLOW
+	wield_delay = WEAPON_DELAY_VERY_SLOW
 	map_specific_decoration = TRUE
 	current_mag = /obj/item/ammo_magazine/rifle/boltaction/vulture
 	attachable_allowed = list(
@@ -220,11 +213,6 @@
 	recoil = RECOIL_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 	damage_falloff_mult = 0
-	can_jam = TRUE
-	initial_jam_chance = GUN_JAM_CHANCE_INSUBSTANTIAL
-	unjam_chance = GUN_UNJAM_CHANCE_DEFAULT
-	durability_loss = GUN_DURABILITY_LOSS_DESTRUCTIVE //ok this is an exception
-
 
 /obj/item/weapon/gun/boltaction/vulture/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 39, "muzzle_y" = 19, "rail_x" = 17, "rail_y" = 24, "under_x" = 31, "under_y" = 14, "stock_x" = 11, "stock_y" = 15)

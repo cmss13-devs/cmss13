@@ -94,6 +94,12 @@
 			if(amount != 0) //can add negative numbers too!
 				message_admins("[key_name_admin(usr)] added [amount] research credits.")
 				GLOB.chemical_data.update_credits(amount)
+		if("reroll_contracts")
+			var/confirm = tgui_alert(usr, "This will immediately reroll the contract chemicals, Confirm?", "Reroll Contracts", list("Yes", "No"), 30 SECONDS)
+			if(confirm != "Yes")
+				return
+			GLOB.chemical_data.reroll_chemicals()
+			message_admins("[key_name_admin(usr)] rerolled research contracts.")
 
 		if("xenothumbs")
 			var/grant = tgui_alert(owner, "Do you wish to grant or revoke Xenomorph firearms permits?", "Give or Take", list("Grant", "Revoke", "Cancel"))
@@ -136,9 +142,9 @@
 			for(var/datum/hive_status/permit_hive as anything in permit_hives)
 				//Give or remove the trait from newly-born xenos in this hive.
 				if(grant == "Grant")
-					LAZYADD(permit_hive.hive_inherant_traits, TRAIT_OPPOSABLE_THUMBS)
+					LAZYADD(permit_hive.hive_inherited_traits, TRAIT_OPPOSABLE_THUMBS)
 				else
-					LAZYREMOVE(permit_hive.hive_inherant_traits, TRAIT_OPPOSABLE_THUMBS)
+					LAZYREMOVE(permit_hive.hive_inherited_traits, TRAIT_OPPOSABLE_THUMBS)
 
 			if(!length(handled_xenos) && !length(permit_hives))
 				return
@@ -192,9 +198,9 @@
 			for(var/datum/hive_status/permit_hive as anything in permit_hives)
 				//Give or remove the trait from newly-born xenos in this hive.
 				if(grant == "Grant")
-					LAZYADD(permit_hive.hive_inherant_traits, TRAIT_CARDPLAYING_THUMBS)
+					LAZYADD(permit_hive.hive_inherited_traits, TRAIT_CARDPLAYING_THUMBS)
 				else
-					LAZYREMOVE(permit_hive.hive_inherant_traits, TRAIT_CARDPLAYING_THUMBS)
+					LAZYREMOVE(permit_hive.hive_inherited_traits, TRAIT_CARDPLAYING_THUMBS)
 
 			if(!length(handled_xenos) && !length(permit_hives))
 				return
@@ -275,6 +281,13 @@
 
 			arm_equipment(spawned_human, job_name, TRUE, FALSE)
 
+			// Ensure created humans get proper minimap integration
+			var/obj/item/device/radio/headset/headset = spawned_human.wear_l_ear
+			if(!headset || !istype(headset, /obj/item/device/radio/headset))
+				headset = spawned_human.wear_r_ear
+			if(headset && istype(headset, /obj/item/device/radio/headset) && headset.minimap_type)
+				headset.add_minimap(spawned_human)
+
 			humans += spawned_human
 
 			if(strip_the_humans)
@@ -317,6 +330,8 @@
 			spawned_human.ckey = owner.ckey
 
 		if (offer_as_ert)
+			var/time_to_decide = 15 SECONDS
+
 			var/datum/emergency_call/custom/em_call = new()
 			var/name = input(usr, "Please name your ERT", "ERT Name", "Admin spawned humans")
 			em_call.name = name
@@ -325,16 +340,23 @@
 			em_call.owner = owner
 
 			var/quiet_launch = TRUE
-			var/ql_prompt = tgui_alert(usr, "Would you like to broadcast the beacon launch? This will reveal the distress beacon to all players.", "Announce distress beacon?", list("Yes", "No"), 20 SECONDS)
-			if(ql_prompt == "Yes")
-				quiet_launch = FALSE
+			if(!SShijack.in_ftl)
+				var/ql_prompt = tgui_alert(usr, "Would you like to broadcast the beacon launch? This will reveal the distress beacon to all players.", "Announce distress beacon?", list("Yes", "No"), time_to_decide)
+				if(ql_prompt == "Yes")
+					quiet_launch = FALSE
 
 			var/announce_receipt = FALSE
-			var/ar_prompt = tgui_alert(usr, "Would you like to announce the beacon received message? This will reveal the distress beacon to all players.", "Announce beacon received?", list("Yes", "No"), 20 SECONDS)
-			if(ar_prompt == "Yes")
-				announce_receipt = TRUE
+			if(!SShijack.in_ftl)
+				var/ar_prompt = tgui_alert(usr, "Would you like to announce the beacon received message? This will reveal the distress beacon to all players.", "Announce beacon received?", list("Yes", "No"), time_to_decide)
+				if(ar_prompt == "Yes")
+					announce_receipt = TRUE
 
-			em_call.activate(quiet_launch, announce_receipt)
+			var/delete_midless_mobs = FALSE
+			var/del_prompt = tgui_alert(usr, "Would you like to delete mindless mobs? This will remove all mobs that did not get a mind upon spawn. If not, the mobs will be offered to ghosts.", "Delete mindless mobs?", list("Yes", "No"), time_to_decide)
+			if(del_prompt == "Yes")
+				delete_midless_mobs = TRUE
+
+			em_call.activate(quiet_launch, announce_receipt, delete_midless_mobs)
 
 		message_admins("[key_name_admin(usr)] created [humans_to_spawn] humans as [job_name] at [get_area(initial_spot)]")
 
@@ -413,6 +435,8 @@
 			X.ckey = owner.ckey
 
 		if(offer_as_ert)
+			var/time_to_decide = 15 SECONDS
+
 			var/datum/emergency_call/custom/em_call = new()
 			var/name = input(usr, "Please name your ERT", "ERT Name", "Admin spawned xenos")
 			em_call.name = name
@@ -421,15 +445,22 @@
 			em_call.owner = owner
 
 			var/quiet_launch = TRUE
-			var/ql_prompt = tgui_alert(usr, "Would you like to broadcast the beacon launch? This will reveal the distress beacon to all players.", "Announce distress beacon?", list("Yes", "No"), 20 SECONDS)
-			if(ql_prompt == "Yes")
-				quiet_launch = FALSE
+			if(!SShijack.in_ftl)
+				var/ql_prompt = tgui_alert(usr, "Would you like to broadcast the beacon launch? This will reveal the distress beacon to all players.", "Announce distress beacon?", list("Yes", "No"), time_to_decide)
+				if(ql_prompt == "Yes")
+					quiet_launch = FALSE
 
 			var/announce_receipt = FALSE
-			var/ar_prompt = tgui_alert(usr, "Would you like to announce the beacon received message? This will reveal the distress beacon to all players.", "Announce beacon received?", list("Yes", "No"), 20 SECONDS)
-			if(ar_prompt == "Yes")
-				announce_receipt = TRUE
+			if(!SShijack.in_ftl)
+				var/ar_prompt = tgui_alert(usr, "Would you like to announce the beacon received message? This will reveal the distress beacon to all players.", "Announce beacon received?", list("Yes", "No"), time_to_decide)
+				if(ar_prompt == "Yes")
+					announce_receipt = TRUE
 
-			em_call.activate(quiet_launch, announce_receipt)
+			var/delete_midless_mobs = FALSE
+			var/del_prompt = tgui_alert(usr, "Would you like to delete mindless mobs? This will remove all mobs that did not get a mind upon spawn. If not, the mobs will be offered to ghosts.", "Delete mindless mobs?", list("Yes", "No"), time_to_decide)
+			if(del_prompt == "Yes")
+				delete_midless_mobs = TRUE
+
+			em_call.activate(quiet_launch, announce_receipt, delete_midless_mobs)
 
 		message_admins("[key_name_admin(usr)] created [xenos_to_spawn] xenos as [xeno_caste] at [get_area(initial_spot)]")

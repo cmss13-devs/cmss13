@@ -211,7 +211,7 @@ Buttons allow users to take actions, and make choices, with a single click.
   - There is also a special color `transparent` - makes the button
     transparent and slightly dim when inactive.
 - `disabled: boolean` - Disables and greys out the button.
-- `selected: boolean` - Activates the button (gives it a green color).
+- `selected: boolean` - Activates the button (gives it a green color or a certain color dependant on a theme).
 - `tooltip: string` - A fancy, boxy tooltip, which appears when hovering
   over the button.
 - `tooltipPosition?: string` - Position of the tooltip. See [`Popper`](#Popper) for valid options.
@@ -245,7 +245,7 @@ A button with an extra confirmation step, using native button component.
 - See inherited props: [Button](#button)
 - `confirmContent: string` - Text to display after first click; defaults to "Confirm?"
 - `confirmColor: string` - Color to display after first click; defaults to "bad"
-- `onConfirmChange: function` - Called when the clickedOnce state changes: When 
+- `onConfirmChange: function` - Called when the clickedOnce state changes: When
   the element is clicked the first time or unfocused.
 
 ### `Button.Input`
@@ -365,6 +365,7 @@ and displays selected entry.
 - `selected: any` - Currently selected entry
 - `over: boolean` - Dropdown renders over instead of below
 - `color: string` - Color of dropdown button
+- `dropdownTextColor: string` - Color of options in dropdown
 - `noChevron: boolean` - Whether or not the arrow on the right hand side of the dropdown button is visible
 - `displayText: ReactNode` - Text to always display in place of the selected text
 - `onClick: (e) => void` - Called when dropdown button is clicked

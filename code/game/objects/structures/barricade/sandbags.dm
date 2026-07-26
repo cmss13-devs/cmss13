@@ -20,11 +20,6 @@
 	if(direction)
 		setDir(direction)
 
-	if(dir == SOUTH)
-		pixel_y = -7
-	else if(dir == NORTH)
-		pixel_y = 7
-
 	..(loc, user)
 
 	for(var/i = 1 to amount-1)
@@ -32,6 +27,11 @@
 
 /obj/structure/barricade/sandbags/update_icon()
 	..()
+
+	if(dir == SOUTH)
+		pixel_y = -7
+	else if(dir == NORTH)
+		pixel_y = 7
 
 	icon_state = "sandbag[build_stage]"
 	if(dir > 2)
@@ -152,6 +152,25 @@
 	. = ..()
 
 /obj/structure/barricade/sandbags/wired/initialize_pass_flags(datum/pass_flags_container/PF)
+	..()
+	flags_can_pass_front_temp &= ~PASS_OVER_THROW_MOB
+	flags_can_pass_behind_temp &= ~PASS_OVER_THROW_MOB
+
+/obj/structure/barricade/sandbags/weak_wired/New()
+	health = BARRICADE_SANDBAG_TRESHOLD_1
+	maxhealth = BARRICADE_SANDBAG_TRESHOLD_1
+	stack_amount = 0
+	color = "#a98c7c"
+	maxhealth += 50
+	update_health(-50)
+	can_wire = FALSE
+	is_wired = TRUE
+	build_stage = BARRICADE_SANDBAG_5
+	update_icon()
+	climbable = FALSE
+	. = ..()
+
+/obj/structure/barricade/sandbags/weak_wired/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	flags_can_pass_front_temp &= ~PASS_OVER_THROW_MOB
 	flags_can_pass_behind_temp &= ~PASS_OVER_THROW_MOB

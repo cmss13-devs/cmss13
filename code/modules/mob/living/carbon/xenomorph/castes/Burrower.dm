@@ -47,12 +47,14 @@
 	plasma_types = list(PLASMA_PURPLE)
 	pixel_x = -12
 	old_x = -12
+	xenonid_pixel_x = -16
 	base_pixel_x = 0
 	base_pixel_y = -20
 	tier = 2
 	organ_value = 1500
 
 	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
@@ -65,7 +67,6 @@
 		/datum/action/xeno_action/activable/burrow, //third macro
 		/datum/action/xeno_action/onclick/tremor, //fourth macro
 		/datum/action/xeno_action/active_toggle/toggle_meson_vision,
-		/datum/action/xeno_action/onclick/tacmap,
 		)
 
 	inherent_verbs = list(
@@ -84,7 +85,7 @@
 	skull = /obj/item/skull/burrower
 	pelt = /obj/item/pelt/burrower
 
-/mob/living/carbon/xenomorph/burrower/ex_act(severity)
+/mob/living/carbon/xenomorph/burrower/ex_act(severity, direction, datum/cause_data/cause_data, pierce=0, enviro=FALSE)
 	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		return
 	..()
@@ -121,7 +122,7 @@
 		return
 
 	var/area/current_area = get_area(current_turf)
-	if(current_area.flags_area & AREA_NOTUNNEL)
+	if(current_area.flags_area & AREA_NOBURROW)
 		to_chat(src, SPAN_XENOWARNING("There's no way to burrow here."))
 		return
 
@@ -144,6 +145,7 @@
 		return
 	// TODO Make immune to all damage here.
 	to_chat(src, SPAN_XENOWARNING("We burrow ourselves into the ground."))
+	QDEL_NULL(observed_atom)
 	invisibility = 101
 	alpha = 100
 	anchored = TRUE
@@ -153,12 +155,6 @@
 	if(hauled)
 		hauled.forceMove(src)
 
-	if(caste.fire_immunity == FIRE_IMMUNITY_NONE)
-		RegisterSignal(src, COMSIG_LIVING_PREIGNITION, PROC_REF(fire_immune))
-		RegisterSignal(src, list(
-				COMSIG_LIVING_FLAMER_CROSSED,
-				COMSIG_LIVING_FLAMER_FLAMED,
-		), PROC_REF(flamer_crossed_immune))
 	add_traits(list(TRAIT_ABILITY_BURROWED, TRAIT_UNDENSE, TRAIT_IMMOBILIZED), TRAIT_SOURCE_ABILITY("Burrow"))
 	playsound(src.loc, 'sound/effects/burrowing_b.ogg', 25)
 	update_icons()
@@ -180,12 +176,6 @@
 	if(caste_type && GLOB.xeno_datum_list[caste_type])
 		caste = GLOB.xeno_datum_list[caste_type]
 	to_chat(src, SPAN_NOTICE("You resurface."))
-	if(caste.fire_immunity == FIRE_IMMUNITY_NONE)
-		UnregisterSignal(src, list(
-				COMSIG_LIVING_PREIGNITION,
-				COMSIG_LIVING_FLAMER_CROSSED,
-				COMSIG_LIVING_FLAMER_FLAMED,
-		))
 	remove_traits(list(TRAIT_ABILITY_BURROWED, TRAIT_UNDENSE, TRAIT_IMMOBILIZED), TRAIT_SOURCE_ABILITY("Burrow"))
 	invisibility = FALSE
 	alpha = initial(alpha)
@@ -248,7 +238,7 @@
 		return
 
 	var/area/area_to_get = get_area(target)
-	if(area_to_get.flags_area & AREA_NOTUNNEL || get_dist(src, target) > 15)
+	if(area_to_get.flags_area & AREA_NOBURROW || get_dist(src, target) > 15)
 		to_chat(src, SPAN_XENOWARNING("There's no way to tunnel over there."))
 		return
 
@@ -361,7 +351,8 @@
 		to_chat(xenomorph, SPAN_XENOWARNING("We can't do that from there."))
 		return
 
-	if(!turf.can_dig_xeno_tunnel() || !is_ground_level(turf.z))
+	var/area/current_area = get_area(turf)
+	if(!turf.can_dig_xeno_tunnel() || !is_ground_level(turf.z) || current_area.flags_area & AREA_NOTUNNEL)
 		to_chat(xenomorph, SPAN_XENOWARNING("We scrape around, but we can't seem to dig through that kind of floor."))
 		return
 
@@ -434,3 +425,8 @@
 	var/mob/living/carbon/xenomorph/xenomorph = owner
 	to_chat(xenomorph, SPAN_NOTICE("We are ready to dig a tunnel again."))
 	xenomorph.tunnel_delay = 0
+
+/mob/living/carbon/xenomorph/burrower/try_fill_trap(obj/effect/alien/resin/trap/target)
+	. = ..()
+	if(.)
+		target.set_state(RESIN_TRAP_ACID3)

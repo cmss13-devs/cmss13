@@ -35,8 +35,6 @@
 	//Removed accuracy = 0, accuracy_var_high = Variance Tier 6, and scatter = 0. -Kaga
 	damage = 60
 	penetration = ARMOR_PENETRATION_TIER_4
-	bullet_duraloss = BULLET_DURABILITY_LOSS_LOW
-	bullet_duramage = BULLET_DURABILITY_DAMAGE_INSUBSTANTIAL
 
 /datum/ammo/bullet/sniper/incendiary/set_bullet_traits()
 	. = ..()
@@ -66,8 +64,6 @@
 	damage = 55
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8 //Documenting old code: This converts to a variance of 96-109% damage. -Kaga
 	penetration = 0
-	bullet_duraloss = BULLET_DURABILITY_LOSS_LOW
-	bullet_duramage = BULLET_DURABILITY_DAMAGE_INSUBSTANTIAL
 
 /datum/ammo/bullet/sniper/flak/on_hit_mob(mob/M,obj/projectile/P)
 	if((P.projectile_flags & PROJECTILE_BULLSEYE) && M == P.original)
@@ -102,7 +98,6 @@
 	name = "armor-piercing sniper bullet"
 	damage = 80
 	penetration = ARMOR_PENETRATION_TIER_10
-	bullet_duramage = BULLET_DURABILITY_DAMAGE_MEDIUM
 
 /datum/ammo/bullet/sniper/anti_materiel
 	name = "anti-materiel sniper bullet"
@@ -112,8 +107,6 @@
 	damage = 125
 	shell_speed = AMMO_SPEED_TIER_6
 	penetration = ARMOR_PENETRATION_TIER_10 + ARMOR_PENETRATION_TIER_5
-	bullet_duraloss = BULLET_DURABILITY_LOSS_HIGH //while ordinarily i wouldnt add this when theres no subtype of AMR bullets, a .50 cal being fired should have inherent drawbacks
-	bullet_duramage = BULLET_DURABILITY_DAMAGE_SPECIAL
 
 /datum/ammo/bullet/sniper/anti_materiel/proc/stopping_power_knockback(mob/living/living_mob, obj/projectile/fired_projectile)
 	var/stopping_power = min(CEILING((fired_projectile.damage/30), 1), 5) // This is from bullet damage, and does not take Aimed Shot into account.
@@ -282,8 +275,6 @@
 	handful_state = "vulture_bullet"
 	sound_hit = 'sound/bullets/bullet_vulture_impact.ogg'
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SNIPER|AMMO_IGNORE_COVER|AMMO_ANTIVEHICLE
-	bullet_duraloss = BULLET_DURABILITY_LOSS_MEDIUM
-	bullet_duramage = BULLET_DURABILITY_DAMAGE_MEDIUM
 
 /datum/ammo/bullet/sniper/anti_materiel/vulture/on_hit_mob(mob/hit_mob, obj/projectile/bullet)
 	. = ..()
@@ -305,7 +296,6 @@
 	var/bonus_damage_cap_increase = 233
 	/// multiplies the default drain of 5 holo stacks per second by this amount
 	var/stack_loss_multiplier = 2
-	bullet_duramage = BULLET_DURABILITY_DAMAGE_MEDIUM
 
 /datum/ammo/bullet/sniper/anti_materiel/vulture/holo_target/on_hit_mob(mob/hit_mob, obj/projectile/bullet)
 	hit_mob.AddComponent(/datum/component/bonus_damage_stack, holo_stacks, world.time, bonus_damage_cap_increase, stack_loss_multiplier)
@@ -327,8 +317,6 @@
 	damage = 150
 	shell_speed = AMMO_SPEED_TIER_6 + AMMO_SPEED_TIER_2
 	penetration = ARMOR_PENETRATION_TIER_10 + ARMOR_PENETRATION_TIER_5
-	bullet_duraloss = BULLET_DURABILITY_LOSS_SPECIAL // if theres any chance this bullet is getting spawned in, its obviously getting some drawbacks
-	bullet_duramage = BULLET_DURABILITY_DAMAGE_SPECIAL
 
 /datum/ammo/bullet/sniper/elite/set_bullet_traits()
 	. = ..()

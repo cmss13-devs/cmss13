@@ -83,6 +83,7 @@
 	unacidable = TRUE
 	icon = 'icons/turf/overlays.dmi'
 	layer = TURF_LAYER
+	keep_as_object = TRUE
 
 /obj/effect/decal/sand_overlay/sand1
 	icon_state = "sand1_s"
@@ -107,6 +108,10 @@
 /obj/effect/decal/grass_overlay/grass1/inner
 	name = "grass edge"
 	icon_state = "grass_innercorner"
+
+/obj/effect/decal/grass_overlay/grass1/dark
+
+	icon_state = "grass_outercorner_dark"
 
 /obj/effect/decal/siding
 	name = "siding"

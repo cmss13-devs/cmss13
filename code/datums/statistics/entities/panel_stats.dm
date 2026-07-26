@@ -131,11 +131,12 @@
 				damage_list += list(list("name" = "oxy", "value" = S.total_oxy))
 			if(S.total_tox)
 				damage_list += list(list("name" = "tox", "value" = S.total_tox))
+
 			death_list += list(list(
 				"mob_name" = sanitize(S.mob_name),
 				"job_name" = S.role_name,
 				"area_name" = sanitize_area(S.area_name),
-				"cause_name" = sanitize(S.cause_name),
+				"cause_name" = sanitize(strip_improper(S.cause_name)),
 				"total_kills" = S.total_kills,
 				"total_damage" = damage_list,
 				"time_of_death" = duration2text(S.time_of_death),

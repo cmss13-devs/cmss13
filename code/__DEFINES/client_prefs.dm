@@ -1,6 +1,6 @@
 //=================================================
-#define BE_ALIEN_AFTER_DEATH (1<<0)
-#define BE_AGENT (1<<1)
+#define BE_ALIEN (1<<0)
+// 1<<1 was BE_AGENT
 #define BE_KING (1<<2)
 //=================================================
 
@@ -23,11 +23,8 @@
 #define TOGGLE_IGNORE_SELF (1<<0)
 ///Determines whether help intent will be completely harmless
 #define TOGGLE_HELP_INTENT_SAFETY (1<<1)
-// Deprecated. Can't remove this or bitshift values down because it would fuck up the savefiles
-// Feel free to replace this whatever you want, if you can find a useful toggle for it. Alternatively, don't because savefiles using flags
-// Is a complete and utter mistake.
-///UNUSED CURRENTLY
-#define TOGGLE_FREE_PLACE_YOUR_OWN_TOGGLE_HERE (1<<2)
+//Toggles whether cocking a gun should drop its bullet or moves it to your empty hand
+#define TOGGLE_COCKING_TO_HAND (1<<2)
 ///This toggles whether attacks for xeno use directional attacks
 #define TOGGLE_DIRECTIONAL_ATTACK (1<<3)
 ///This toggles whether guns with auto ejectors will not auto eject their magazines
@@ -68,6 +65,10 @@
 #define TOGGLE_AUTO_SHOVE_OFF (1<<20)
 ///Toggles whether activating marine leader orders will be spoken or not
 #define TOGGLE_LEADERSHIP_SPOKEN_ORDERS (1<<21)
+///Toggles the wield assist system for guns
+#define TOGGLE_WIELD_ASSIST (1<<22)
+
+// NOTE: Don't add flags past 1<<23, it'll break things due to BYOND limitations.
 //=================================================
 
 #define JOB_SLOT_RANDOMISED_SLOT -1
@@ -91,6 +92,16 @@
 ///Do nothing when dual wielding
 #define DUAL_WIELD_NONE 2
 //=================================================
+
+//auto_holotag from /datum/preferences
+//=================================================
+/// Do not tag patients automatically
+#define NEVER_TAG_PATIENTS 0
+/// Only tag patients after scanning them in a bodyscanner (not a handheld scanner)
+#define BODYSCAN_TAG_PATIENTS 1
+/// Auto tag patients with triage tags upon scanning
+#define ALWAYS_TAG_PATIENTS 2
+
 
 //=================================================
 ///Do not show any item pickup animations
@@ -125,4 +136,4 @@
 //=================================================
 
 /// How many slots players have access to, both for loadout slots and character slots
-#define MAX_SAVE_SLOTS 10
+#define MAX_SAVE_SLOTS 20

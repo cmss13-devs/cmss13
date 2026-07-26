@@ -8,7 +8,7 @@
 /**
  * tgui panel / chat troubleshooting verb
  */
-/client/verb/fix_tgui_panel()
+CLIENT_VERB(fix_tgui_panel)
 	set name = "Fix chat"
 	set category = "OOC.Fix"
 	var/action
@@ -33,7 +33,7 @@
 	// Force show the panel to see if there are any errors
 	winset(src, "legacy_output_selector", "left=output_browser")
 
-/client/verb/refresh_tgui()
+CLIENT_VERB(refresh_tgui)
 	set name = "Refresh TGUI"
 	set category = "OOC.Fix"
 

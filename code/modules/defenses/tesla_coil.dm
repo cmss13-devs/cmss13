@@ -134,12 +134,12 @@
 	var/list/turf/path = get_line(src, M, include_start_atom = FALSE)
 
 	var/blocked = FALSE
-	for(var/turf/T in path)
-		if(T.density || T.opacity)
+	for(var/turf/turf in path)
+		if(turf.density || turf.opacity)
 			blocked = TRUE
 			break
 
-		for(var/obj/structure/S in T)
+		for(var/obj/structure/S in turf)
 			if(S.opacity)
 				blocked = TRUE
 				break
@@ -148,7 +148,9 @@
 					blocked = TRUE
 					break
 
-		for(var/obj/effect/particle_effect/smoke/S in T)
+		for(var/obj/effect/particle_effect/smoke/smoke in turf)
+			if(!smoke.obscuring)
+				continue
 			blocked = TRUE
 			break
 
@@ -192,12 +194,13 @@
 	M.set_effect(TESLA_COIL_DAZE_EFFECT * 1.5, DAZE) // 1.5x as effective as normal tesla
 
 #undef TESLA_COIL_STUN_FIRE_DELAY
-#define TESLA_COIL_MICRO_FIRE_DELAY 10
+#define TESLA_COIL_MICRO_FIRE_DELAY 1 SECONDS
 /obj/structure/machinery/defenses/tesla_coil/micro
 	name = "\improper 25S micro tesla coil"
 	desc = "A perfected way of producing high-voltage, low-current and high-frequency electricity. Minor modifications allow it to only hit hostile targets with a devastating shock. This one is smaller and more lightweight."
 	handheld_type = /obj/item/defenses/handheld/tesla_coil/micro
 	disassemble_time = 0.5 SECONDS
+	fire_delay = TESLA_COIL_MICRO_FIRE_DELAY
 	density = FALSE
 	defense_type = "Micro"
 

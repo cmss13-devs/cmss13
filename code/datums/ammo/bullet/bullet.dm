@@ -39,15 +39,13 @@
 
 	INVOKE_ASYNC(src, PROC_REF(attempt_battlefield_execution), src, execution_target, firing_projectile, user, fired_from)
 
-	return COMPONENT_CANCEL_AMMO_POINT_BLANK
+	return COMPONENT_CANCEL_BATTLEFIELD_EXECUTION
 
 /datum/ammo/bullet/proc/attempt_battlefield_execution(datum/ammo/firing_ammo, mob/living/carbon/human/execution_target, obj/projectile/firing_projectile, mob/living/user, obj/item/weapon/gun/fired_from)
 	user.affected_message(execution_target,
 		SPAN_HIGHDANGER("You aim \the [fired_from] at [execution_target]'s head!"),
 		SPAN_HIGHDANGER("[user] aims \the [fired_from] directly at your head!"),
 		SPAN_DANGER("[user] aims \the [fired_from] at [execution_target]'s head!"))
-
-	user.next_move += 1.1 SECONDS //PB has no click delay; readding it here to prevent people accidentally queuing up multiple executions.
 
 	if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !user.Adjacent(execution_target))
 		fired_from.delete_bullet(firing_projectile, TRUE)
@@ -72,8 +70,7 @@
 	user.count_niche_stat(STATISTICS_NICHE_EXECUTION, 1, firing_projectile.weapon_cause_data?.cause_name)
 
 	var/area/execution_area = get_area(execution_target)
-
-	msg_admin_attack(FONT_SIZE_HUGE("[key_name(usr)] has battlefield executed [key_name(execution_target)] in [get_area(usr)] ([usr.loc.x],[usr.loc.y],[usr.loc.z])."), usr.loc.x, usr.loc.y, usr.loc.z)
+	msg_admin_ff("[key_name(user)] [ADMIN_JMP_USER(user)] [ADMIN_PM(user)] has <b>battlefield executed</b> [key_name(execution_target)] [ADMIN_JMP(execution_target)] [ADMIN_PM(execution_target)] at [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]) using [fired_from].", FALSE, user.loc.z)
 	log_attack("[key_name(usr)] battlefield executed [key_name(execution_target)] at [execution_area.name].")
 
 	if(flags_ammo_behavior & AMMO_EXPLOSIVE)

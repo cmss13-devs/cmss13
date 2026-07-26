@@ -113,6 +113,7 @@
 		. += 360
 
 /proc/angle_to_dir(angle)
+	angle = ((angle % 360) + 382.5) % 360
 	switch(angle) //diagonal directions get priority over straight directions in edge cases
 		if (22.5 to 67.5)
 			return NORTHEAST
@@ -220,8 +221,6 @@
 			continue
 		A = obstacle
 		blocking_dir |= A.BlockedPassDirs(mover, fdir)
-		if((fd1 && blocking_dir == fd1) || (fd2 && blocking_dir == fd2))
-			return A
 		if((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
 			return A
 
@@ -237,9 +236,12 @@
 
 
 //Returns whether or not a player is a guest using their ckey as an input
-/proc/IsGuestKey(key)
+/proc/IsGuestKey(key, strict = FALSE)
+	if(!strict && (key in GLOB.permitted_guests))
+		return FALSE
+
 	if (findtext(key, "Guest-", 1, 7) != 1) //was findtextEx
-		return 0
+		return FALSE
 
 	var/i = 7, ch, len = length(key)
 
@@ -249,8 +251,8 @@
 	for (, i <= len, ++i)
 		ch = text2ascii(key, i)
 		if (ch < 48 || ch > 57)
-			return 0
-	return 1
+			return FALSE
+	return TRUE
 
 //This will update a mob's name, real_name, mind.name, data_core records, pda and id
 //Calling this proc without an oldname will only update the mob and skip updating the pda, id and records ~Carn
@@ -345,8 +347,6 @@
 	var/list/sortmob = sortAtom(GLOB.mob_list)
 	for(var/mob/living/silicon/ai/M in sortmob)
 		moblist.Add(M)
-	for(var/mob/living/silicon/robot/M in sortmob)
-		moblist.Add(M)
 	for(var/mob/living/carbon/human/M in sortmob)
 		moblist.Add(M)
 	for(var/mob/living/brain/M in sortmob)
@@ -365,40 +365,56 @@
 		moblist += friend
 	return moblist
 
-/proc/key_name(whom, include_link = null, include_name = 1, highlight_special_characters = 1)
+/proc/key_name(whom, include_link = null, include_name = 1, highlight_special_characters = 1, show_username = FALSE, logging = TRUE)
 	var/mob/M
 	var/client/C
-	var/key
+	var/ckey // If it's going to go anywhere programatic like logs, we want consistent formatting, so the ckey rather than the key
+	var/key // Otherwise, we can use the key for friendly display
+	var/username
 
 	if(!whom)
 		return "*null*"
+
 	if(istype(whom, /client))
 		C = whom
 		M = C.mob
+		ckey = C.ckey
 		key = C.key
+		username = C.username()
+
 	else if(ismob(whom))
 		M = whom
 		C = M.client
+		ckey = M.persistent_ckey
 		key = M.key
-	else if(istype(whom, /datum))
+		username = M.username()
+
+	else if(istype(whom, /datum) && !logging)
 		var/datum/D = whom
 		return "*invalid:[D.type]*"
+
 	else
 		return "*invalid*"
 
 	. = ""
 
-	if(key)
-		if(include_link && C)
-			. += "<a href='byond://?priv_msg=[C.ckey]'>"
-
-		. += key
-
-		if(include_link)
-			if(C) . += "</a>"
-			else . += " (DC)"
+	// We still output the links in logging mode because message_admins is everywhere. They'll be stripped by logging backend later.
+	if(ckey && include_link)
+		. += "<a href='byond://?priv_msg=[ckey]'>"
 	else
-		. += "*no key*"
+		include_link = FALSE
+
+	if(key && show_username && username && username != key)
+		. += "[username] ([logging ? ckey : key])"
+	else if(ckey && logging)
+		. += ckey
+	else if(key)
+		. += key
+	else
+		. += "*no_key*" // No spaces here to be loosely format-compatible with ckeys
+
+	if(include_link)
+		. += "</a>"
 
 	if(include_name && M)
 		var/name
@@ -410,10 +426,17 @@
 
 		. += "/([name])"
 
+	if(!C)
+		. += " (DC)"
+
 	return .
 
 /proc/key_name_admin(whom, include_name = 1)
 	return key_name(whom, 1, include_name)
+
+/// Returns key_name with username shown when it differs from key - for admin contexts
+/proc/key_name_with_username(whom, include_name = 1)
+	return key_name(whom, TRUE, include_name, TRUE, TRUE, logging = FALSE)
 
 
 // returns the turf located at the map edge in the specified direction relative to A
@@ -584,7 +607,7 @@
 	return toReturn
 
 //Step-towards method of determining whether one atom can see another. Similar to viewers()
-/proc/can_see(atom/source, atom/target, length=5) // I couldnt be arsed to do actual raycasting :I This is horribly inaccurate.
+/proc/can_see(atom/source, atom/target, length=5) // I couldn't be arsed to do actual raycasting :I This is horribly inaccurate.
 	var/turf/current = get_turf(source)
 	var/turf/target_turf = get_turf(target)
 	var/steps = 0
@@ -622,10 +645,12 @@ GLOBAL_DATUM(busy_indicator_medical, /image)
 GLOBAL_DATUM(busy_indicator_build, /image)
 GLOBAL_DATUM(busy_indicator_friendly, /image)
 GLOBAL_DATUM(busy_indicator_hostile, /image)
+GLOBAL_DATUM(busy_indicator_climbing, /image)
 GLOBAL_DATUM(emote_indicator_highfive, /image)
 GLOBAL_DATUM(emote_indicator_fistbump, /image)
 GLOBAL_DATUM(emote_indicator_headbutt, /image)
 GLOBAL_DATUM(emote_indicator_tailswipe, /image)
+GLOBAL_DATUM(emote_indicator_wallboosting, /image)
 GLOBAL_DATUM(emote_indicator_rock_paper_scissors, /image)
 GLOBAL_DATUM(emote_indicator_rock, /image)
 GLOBAL_DATUM(emote_indicator_paper, /image)
@@ -666,6 +691,12 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 			GLOB.busy_indicator_hostile.layer = FLY_LAYER
 			GLOB.busy_indicator_hostile.plane = ABOVE_GAME_PLANE
 		return GLOB.busy_indicator_hostile
+	else if(busy_type == BUSY_ICON_CLIMBING)
+		if(!GLOB.busy_indicator_climbing)
+			GLOB.busy_indicator_climbing = image('icons/mob/do_afters.dmi', null, "busy_climbing", "pixel_y" = 22)
+			GLOB.busy_indicator_climbing.layer = FLY_LAYER
+			GLOB.busy_indicator_climbing.plane = ABOVE_GAME_PLANE
+		return GLOB.busy_indicator_climbing
 	else if(busy_type == EMOTE_ICON_HIGHFIVE)
 		if(!GLOB.emote_indicator_highfive)
 			GLOB.emote_indicator_highfive = image('icons/mob/do_afters.dmi', null, "emote_highfive", "pixel_y" = 22)
@@ -714,6 +745,12 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 			GLOB.emote_indicator_tailswipe.layer = FLY_LAYER
 			GLOB.emote_indicator_tailswipe.plane = ABOVE_GAME_PLANE
 		return GLOB.emote_indicator_tailswipe
+	else if(busy_type == EMOTE_ICON_WALLBOOSTING)
+		if(!GLOB.emote_indicator_wallboosting)
+			GLOB.emote_indicator_wallboosting = image('icons/mob/do_afters.dmi', null, "emote_wallboosting", "pixel_y" = 22)
+			GLOB.emote_indicator_wallboosting.layer = FLY_LAYER
+			GLOB.emote_indicator_wallboosting.plane = ABOVE_GAME_PLANE
+		return GLOB.emote_indicator_wallboosting
 	else if(busy_type == ACTION_RED_POWER_UP)
 		if(!GLOB.action_red_power_up)
 			GLOB.action_red_power_up = image('icons/effects/effects.dmi', null, "anger", "pixel_x" = 16)
@@ -740,6 +777,7 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 		return GLOB.action_purple_power_up
 
 
+
 /*
  * do_after handles timed actions
  * The flags indicate which actions from the user and a target (if there is a target) interrupt a given action.
@@ -749,7 +787,7 @@ GLOBAL_DATUM(action_purple_power_up, /image)
  * numticks: If a value is given, denotes how often the timed action checks for interrupting actions. By default, there are 5 checks every delay/5 deciseconds.
  * Note: 'delay' should be divisible by numticks in order for the timing to work as intended. numticks should also be a whole number.
  */
-/proc/do_after(mob/user, delay, user_flags = INTERRUPT_ALL, show_busy_icon, atom/movable/target, target_flags = INTERRUPT_MOVED, show_target_icon, max_dist = 1, \
+/proc/do_after(mob/user, delay, user_flags = INTERRUPT_ALL, show_busy_icon, atom/movable/target, target_flags = INTERRUPT_MOVED, show_target_icon, max_dist = 1, status_effect = null, \
 		show_remaining_time = FALSE, numticks = DA_DEFAULT_NUM_TICKS) // These args should primarily be named args, since you only modify them in niche situations
 	if(!istype(user) || delay < 0)
 		return FALSE
@@ -788,6 +826,10 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 	if(user_flags & BEHAVIOR_IMMOBILE)
 		busy_user.status_flags |= IMMOBILE_ACTION
 
+	// if we wanna apply a status effect to a user
+	if(status_effect && busy_user)
+		busy_user.adjust_effect(delay, status_effect)
+
 	busy_user.action_busy++ // target is not tethered by action, the action is tethered by target though
 	busy_user.resisting = FALSE
 	busy_user.clicked_something = list()
@@ -821,7 +863,10 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 	for(var/i in 1 to numticks)
 		sleep(delayfraction)
 		time_remaining -= delayfraction
-		if(!istype(busy_user) || has_target && !istype(target)) // Checks if busy_user exists and is not dead and if the target exists and is not destroyed
+		if(QDELETED(busy_user) || !istype(busy_user)) // Checks if busy_user exists
+			. = FALSE
+			break
+		if(has_target && (QDELETED(target) || !istype(target))) // Checks if the target exists and is not destroyed
 			. = FALSE
 			break
 		if(user_flags & INTERRUPT_DIFF_LOC && busy_user.loc != user_orig_loc || \
@@ -935,6 +980,10 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 	if(target_is_mob)
 		T.resisting = FALSE
 	busy_user.status_flags &= ~IMMOBILE_ACTION
+
+	// remove the effect once we finish
+	if(status_effect && busy_user)
+		busy_user.adjust_effect(-delay, status_effect)
 
 	if (show_remaining_time)
 		return (. ? 0 : time_remaining/expected_total_time) // If action was not interrupted, return 0 for no time left, otherwise return ratio of time remaining
@@ -1282,12 +1331,21 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 /proc/get_line(atom/start_atom, atom/end_atom, include_start_atom = TRUE)
 	var/turf/start_turf = get_turf(start_atom)
 	var/turf/end_turf = get_turf(end_atom)
+	var/turf/end_turf_fall = end_turf //in case we are going cross fake z levels we store here the end tile to fall to
 	var/start_z
 
 	if(end_atom.z > start_atom.z)
 		start_z = end_atom.z
 	else
 		start_z = start_atom.z
+
+	var/datum/turf_reservation/reservation = SSmapping.used_turfs[start_turf]
+	if(reservation)
+		if(reservation.is_below(start_turf, end_turf))
+			start_turf = SSmapping.get_turf_above(start_turf)
+		else
+			if(reservation.is_below(end_turf, start_turf))
+				end_turf = SSmapping.get_turf_above(end_turf)
 
 	var/list/line = list()
 	if(include_start_atom)
@@ -1309,7 +1367,7 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 		y += step_y
 		line += locate(x, y, start_z)
 
-	line += end_turf
+	line += end_turf_fall
 
 	return line
 
@@ -1326,6 +1384,12 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 		return 1
 	if (!initial_delay)
 		initial_delay = world.tick_lag
+// Unit tests are not the normal environemnt. The mc can get absolutely thigh crushed, and sleeping procs running for ages is much more common
+// We don't want spurious hard deletes off this, so let's only sleep for the requested period of time here yeah?
+#ifdef UNIT_TESTS
+	sleep(initial_delay)
+	return CEILING(DS2TICKS(initial_delay), 1)
+#else
 	. = 0
 	var/i = DS2TICKS(initial_delay)
 	do
@@ -1333,6 +1397,7 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 		sleep(i*world.tick_lag*DELTA_CALC)
 		i *= 2
 	while (TICK_USAGE > min(TICK_LIMIT_TO_RUN, Master.current_ticklimit))
+#endif
 
 #undef DELTA_CALC
 
@@ -1359,7 +1424,7 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 			switch(CONFIG_GET(number/explosive_antigrief))
 				if(ANTIGRIEF_DISABLED)
 					return FALSE
-				if(ANTIGRIEF_NEW_PLAYERS) //if they have less than 10 hours, dont let them prime nades
+				if(ANTIGRIEF_NEW_PLAYERS) //if they have less than 10 hours, don't let them prime nades
 					if(user.client && user.client.get_total_human_playtime() < JOB_PLAYTIME_TIER_1)
 						return TRUE
 				else //ANTIGRIEF_ENABLED
@@ -1496,7 +1561,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 			var/mob/living/carbon/human/H = user
 			if(H.selected_ability)
 				return FALSE
-	if(user.client.eye == user && !user.is_mob_incapacitated(TRUE))
+	if(user.client.get_eye() == user && !user.is_mob_incapacitated(TRUE))
 		user.face_atom(src)
 	return TRUE
 
@@ -1633,7 +1698,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 //Vars that will not be copied when using /DuplicateObject
 GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
-	"tag", "datum_components", "area", "type", "loc", "locs", "vars", "parent", "parent_type", "verbs", "ckey", "key",
+	"tag", "datum_components", "area", "type", "loc", "pixloc", "locs", "vars", "parent", "parent_type", "verbs", "ckey", "key",
 	"power_supply", "contents", "reagents", "stat", "x", "y", "z", "group", "atmos_adjacent_turfs", "comp_lookup",
 	"client_mobs_in_contents", "bodyparts", "internal_organs", "hand_bodyparts", "overlays_standing", "hud_list",
 	"actions", "AIStatus", "appearance", "managed_overlays", "managed_vis_overlays", "computer_id", "lastKnownIP", "implants",
@@ -1672,24 +1737,29 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 	var/list/mobs = sortmobs()
 	var/list/namecounts = list()
 	var/list/pois = list()
-	for(var/mob/M as anything in mobs)
-		if(skip_mindless && (!M.mind && !M.ckey))
+	for(var/mob/current as anything in mobs)
+		if(skip_mindless && (!current.mind && !current.ckey))
 			continue
-		if(M.client?.admin_holder)
-			if(M.client.admin_holder.fakekey || M.client.admin_holder.invisimined) //stealthmins
+		if(current.client?.admin_holder)
+			if(current.client.admin_holder.fakekey || current.client.admin_holder.invisimined) //stealthmins
 				continue
-		var/name = avoid_assoc_duplicate_keys(M.name, namecounts)
+		var/name = avoid_assoc_duplicate_keys(current.name ? current.name : "Unknown", namecounts)
 
-		if(M.real_name && M.real_name != M.name)
-			name += " \[[M.real_name]\]"
-		if(M.stat == DEAD && specify_dead_role)
-			if(isobserver(M))
-				name += " \[ghost\]"
-			else
-				name += " \[dead\]"
-		pois[name] = M
+		if(current.real_name && current.real_name != current.name)
+			name += " \[[current.real_name]\]"
+		if(current.stat == DEAD)
+			var/isobserver = isobserver(current)
+			if(isobserver && current.mind?.original?.aghosted)
+				continue
+			if(specify_dead_role)
+				if(isobserver)
+					name += " \[ghost\]"
+				else
+					name += " \[dead\]"
+		pois[name] = current
 
-	pois.Add(get_multi_vehicles())
+	if(!mobs_only)
+		pois.Add(get_multi_vehicles())
 
 	return pois
 
@@ -1746,6 +1816,9 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 /// Returns TRUE if the target is somewhere that the game should not interact with if possible
 /// In this case, admin Zs and tutorial areas
 /proc/should_block_game_interaction(atom/target, include_hunting_grounds = FALSE)
+	if (!target)
+		return TRUE
+
 	if(is_admin_level(target.z))
 		return TRUE
 
@@ -1757,3 +1830,19 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 		return TRUE
 
 	return FALSE
+
+///Converts a screen loc param to a x,y coordinate pixel on the screen
+/proc/params2screenpixel(scr_loc)
+	var/list/x_and_y = splittext(scr_loc, ",")
+	var/list/x_dirty = splittext(x_and_y[1], ":")
+	var/list/y_dirty = splittext(x_and_y[2], ":")
+	var/x = (text2num(x_dirty[1])-1)*32 + text2num(x_dirty[2])
+	var/y = (text2num(y_dirty[1])-1)*32 + text2num(y_dirty[2])
+	return list(x, y)
+
+/// Checks if a player mob is in a cryopod
+/proc/is_mob_cryoing(mob/person)
+	if(istype(person.loc, /obj/structure/machinery/cryopod))
+		return TRUE
+	else
+		return FALSE

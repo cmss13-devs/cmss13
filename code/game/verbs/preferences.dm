@@ -1,4 +1,4 @@
-/client/verb/edit_characters()
+CLIENT_VERB(edit_characters)
 	set category = "Preferences"
 	set name = "Edit Characters"
 	set desc = "Edit your characters in your preferences."

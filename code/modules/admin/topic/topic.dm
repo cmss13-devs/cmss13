@@ -34,6 +34,12 @@
 			to_chat(usr, "Ticket [ahelp_ref] has been deleted!", confidential = TRUE)
 		return
 
+	if(href_list["ahelp_tickets"])
+		if(!check_rights(R_ADMIN|R_MOD, TRUE))
+			return
+		GLOB.ahelp_tickets.BrowseTickets(text2num(href_list["ahelp_tickets"]))
+		return
+
 	if(href_list["adminplayeropts"])
 		var/mob/M = locate(href_list["adminplayeropts"])
 		show_player_panel(M)
@@ -160,106 +166,6 @@
 
 		SSticker.delay_end = !SSticker.delay_end
 		message_admins("[key_name(usr)] [SSticker.delay_end ? "delayed the round end" : "has made the round end normally"].")
-
-	else if(href_list["simplemake"])
-
-		if(!check_rights(R_SPAWN))
-			return
-
-		var/mob/M = locate(href_list["mob"])
-		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
-			return
-
-		var/delmob = 0
-		switch(alert("Delete old mob?","Message","Yes","No","Cancel"))
-			if("Cancel")
-				return
-			if("Yes")
-				delmob = 1
-
-		message_admins("[key_name_admin(usr)] has used rudimentary transformation on [key_name_admin(M)]. Transforming to [href_list["simplemake"]]; deletemob=[delmob]")
-
-		var/mob/transformed
-		var/hivenumber = XENO_HIVE_NORMAL
-
-		if(isxeno(M))
-			var/mob/living/carbon/xenomorph/X = M
-			hivenumber = X.hivenumber
-
-		switch(href_list["simplemake"])
-			if("observer")
-				transformed = M.change_mob_type( /mob/dead/observer , null, null, delmob )
-
-			if("larva")
-				transformed = M.change_mob_type( /mob/living/carbon/xenomorph/larva , null, null, delmob )
-			if("facehugger")
-				transformed = M.change_mob_type( /mob/living/carbon/xenomorph/facehugger , null, null, delmob )
-			if("defender")
-				transformed = M.change_mob_type( /mob/living/carbon/xenomorph/defender, null, null, delmob )
-			if("warrior")
-				transformed = M.change_mob_type( /mob/living/carbon/xenomorph/warrior, null, null, delmob )
-			if("runner")
-				transformed = M.change_mob_type( /mob/living/carbon/xenomorph/runner , null, null, delmob )
-			if("drone")
-				transformed = M.change_mob_type( /mob/living/carbon/xenomorph/drone , null, null, delmob )
-			if("sentinel")
-				transformed = M.change_mob_type( /mob/living/carbon/xenomorph/sentinel , null, null, delmob )
-			if("lurker")
-				transformed = M.change_mob_type( /mob/living/carbon/xenomorph/lurker , null, null, delmob )
-			if("carrier")
-				transformed = M.change_mob_type( /mob/living/carbon/xenomorph/carrier , null, null, delmob )
-			if("hivelord")
-				transformed = M.change_mob_type( /mob/living/carbon/xenomorph/hivelord , null, null, delmob )
-			if("praetorian")
-				transformed = M.change_mob_type( /mob/living/carbon/xenomorph/praetorian , null, null, delmob )
-			if("ravager")
-				transformed = M.change_mob_type( /mob/living/carbon/xenomorph/ravager , null, null, delmob )
-			if("spitter")
-				transformed = M.change_mob_type( /mob/living/carbon/xenomorph/spitter , null, null, delmob )
-			if("boiler")
-				transformed = M.change_mob_type( /mob/living/carbon/xenomorph/boiler , null, null, delmob )
-			if("burrower")
-				transformed = M.change_mob_type( /mob/living/carbon/xenomorph/burrower , null, null, delmob )
-			if("crusher")
-				transformed = M.change_mob_type( /mob/living/carbon/xenomorph/crusher , null, null, delmob )
-			if("queen")
-				transformed = M.change_mob_type( /mob/living/carbon/xenomorph/queen , null, null, delmob )
-			if("predalien")
-				transformed = M.change_mob_type( /mob/living/carbon/xenomorph/predalien , null, null, delmob )
-
-			if("human")
-				transformed = M.change_mob_type( /mob/living/carbon/human , null, null, delmob, href_list["species"])
-			if("monkey")
-				transformed = M.change_mob_type( /mob/living/carbon/human/monkey , null, null, delmob )
-			if("farwa")
-				transformed = M.change_mob_type( /mob/living/carbon/human/farwa , null, null, delmob )
-			if("neaera")
-				transformed = M.change_mob_type( /mob/living/carbon/human/neaera , null, null, delmob )
-			if("yiren")
-				transformed = M.change_mob_type( /mob/living/carbon/human/yiren , null, null, delmob )
-			if("robot")
-				transformed = M.change_mob_type( /mob/living/silicon/robot , null, null, delmob )
-			if("cat")
-				transformed = M.change_mob_type( /mob/living/simple_animal/cat , null, null, delmob )
-			if("runtime")
-				transformed = M.change_mob_type( /mob/living/simple_animal/cat/Runtime , null, null, delmob )
-			if("corgi")
-				transformed = M.change_mob_type( /mob/living/simple_animal/corgi , null, null, delmob )
-			if("ian")
-				transformed = M.change_mob_type( /mob/living/simple_animal/corgi/Ian , null, null, delmob )
-			if("crab")
-				transformed = M.change_mob_type( /mob/living/simple_animal/crab , null, null, delmob )
-			if("coffee")
-				transformed = M.change_mob_type( /mob/living/simple_animal/crab/Coffee , null, null, delmob )
-			if("parrot")
-				transformed = M.change_mob_type( /mob/living/simple_animal/parrot , null, null, delmob )
-			if("polyparrot")
-				transformed = M.change_mob_type( /mob/living/simple_animal/parrot/Poly , null, null, delmob )
-
-		if(isxeno(transformed) && hivenumber)
-			var/mob/living/carbon/xenomorph/X = transformed
-			X.set_hive_and_update(hivenumber)
 
 	/////////////////////////////////////new ban stuff
 
@@ -528,7 +434,7 @@
 
 		var/mob/M = locate(href_list["jobban4"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
+			to_chat(usr, "This can only be used on instances of type /mob.")
 			return
 
 		if(M != usr) //we can jobban ourselves
@@ -545,7 +451,7 @@
 		if(!P1)
 			P1 = get_player_from_key(M.ckey)
 
-		//get jobs for department if specified, otherwise just returnt he one job in a list.
+		//get jobs for department if specified, otherwise just return the one job in a list.
 		var/list/joblist = list()
 		switch(href_list["jobban3"])
 			if("CICdept")
@@ -613,7 +519,7 @@
 				return
 			var/reason = input("Please enter reason")
 			if(!reason)
-				to_chat_forced(M, SPAN_WARNING("You have been kicked from the server"))
+				to_chat_forced(M, SPAN_WARNING("You have been kicked from the server."))
 			else
 				to_chat_forced(M, SPAN_WARNING("You have been kicked from the server: [reason]"))
 			message_admins("[key_name_admin(usr)] booted [key_name_admin(M)].")
@@ -691,7 +597,7 @@
 
 		var/mob/living/carbon/xenomorph/X = locate(href_list["xenoresetname"])
 		if(!isxeno(X))
-			to_chat(usr, SPAN_WARNING("Not a xeno"))
+			to_chat(usr, SPAN_WARNING("Not a xeno."))
 			return
 
 		if(alert("Are you sure you want to reset xeno name for [X.ckey]?", , "Yes", "No") != "Yes")
@@ -735,7 +641,7 @@
 
 
 		if(!isxeno(X))
-			to_chat(usr, SPAN_WARNING("Not a xeno"))
+			to_chat(usr, SPAN_WARNING("Not a xeno."))
 			return
 
 		if(alert("Are you sure you want to BAN [X.ckey] from ever using any xeno name?", , "Yes", "No") != "Yes")
@@ -808,7 +714,7 @@
 
 		var/mob/living/carbon/human/H = locate(href_list["monkeyone"])
 		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
+			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
 			return
 
 		message_admins("[key_name_admin(usr)] attempting to monkeyize [key_name_admin(H)]")
@@ -820,7 +726,7 @@
 
 		var/mob/M = locate(href_list["forcespeech"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
+			to_chat(usr, "This can only be used on instances of type /mob.")
 			return
 
 		var/speech = input("What will [key_name(M)] say?.", "Force speech", "")// Don't need to sanitize, since it does that in say(), we also trust our admins.
@@ -835,7 +741,7 @@
 			return
 		var/mob/living/carbon/human/H = locate(href_list["zombieinfect"])
 		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /human")
+			to_chat(usr, "This can only be used on instances of type /human.")
 			return
 
 		if(alert(usr, "Are you sure you want to infect them with a ZOMBIE VIRUS? This can trigger a major event!", "Message", "Yes", "No") != "Yes")
@@ -855,7 +761,7 @@
 			return
 		var/mob/living/carbon/human/H = locate(href_list["larvainfect"])
 		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /human")
+			to_chat(usr, "This can only be used on instances of type /human.")
 			return
 
 		if(alert(usr, "Are you sure you want to infect them with a xeno larva?", "Message", "Yes", "No") != "Yes")
@@ -870,7 +776,7 @@
 		var/newhive = tgui_input_list(usr,"Select a hive.", "Infect Larva", hives)
 
 		if(!H)
-			to_chat(usr, "This mob no longer exists")
+			to_chat(usr, "This mob no longer exists.")
 			return
 
 		var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(H)
@@ -885,7 +791,7 @@
 
 		var/mob/living/carbon/human/H = locate(href_list["makemutineer"])
 		if(!istype(H))
-			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
+			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human.")
 			return
 
 		if(H.faction != FACTION_MARINE)
@@ -903,7 +809,7 @@
 
 		var/mob/living/carbon/human/H = locate(href_list["makecultist"]) || locate(href_list["makecultistleader"])
 		if(!istype(H))
-			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
+			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human.")
 			return
 
 		var/list/hives = list()
@@ -919,13 +825,13 @@
 		var/datum/hive_status/hive = hives[hive_name]
 
 		if(href_list["makecultist"])
-			var/datum/equipment_preset/preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist]
+			var/datum/equipment_preset/preset = GLOB.equipment_presets.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist]
 			preset.load_race(H)
 			preset.load_status(H, hive.hivenumber)
 			message_admins("[key_name_admin(usr)] has made [key_name_admin(H)] into a cultist for [hive.name].")
 
 		else if(href_list["makecultistleader"])
-			var/datum/equipment_preset/preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist/leader]
+			var/datum/equipment_preset/preset = GLOB.equipment_presets.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist/leader]
 			preset.load_race(H)
 			preset.load_status(H, hive.hivenumber)
 			message_admins("[key_name_admin(usr)] has made [key_name_admin(H)] into a cultist leader for [hive.name].")
@@ -938,7 +844,7 @@
 
 		var/mob/M = locate(href_list["forceemote"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
+			to_chat(usr, "This can only be used on instances of type /mob.")
 
 		var/speech = input("What will [key_name(M)] emote?.", "Force emote", "")// Don't need to sanitize, since it does that in say(), we also trust our admins.
 		if(!speech)
@@ -979,7 +885,7 @@
 
 		var/mob/M = locate(href_list["tdome1"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
+			to_chat(usr, "This can only be used on instances of type /mob.")
 			return
 
 		for(var/obj/item/I in M)
@@ -989,7 +895,7 @@
 		sleep(5)
 		M.forceMove(get_turf(pick(GLOB.thunderdome_one)))
 		spawn(50)
-			to_chat(M, SPAN_NOTICE(" You have been sent to the Thunderdome."))
+			to_chat(M, SPAN_NOTICE("You have been sent to the Thunderdome."))
 		message_admins("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Team 1)", 1)
 
 	else if(href_list["tdome2"])
@@ -1001,7 +907,7 @@
 
 		var/mob/M = locate(href_list["tdome2"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
+			to_chat(usr, "This can only be used on instances of type /mob.")
 			return
 
 		for(var/obj/item/I in M)
@@ -1011,7 +917,7 @@
 		sleep(5)
 		M.forceMove(get_turf(pick(GLOB.thunderdome_two)))
 		spawn(50)
-			to_chat(M, SPAN_NOTICE(" You have been sent to the Thunderdome."))
+			to_chat(M, SPAN_NOTICE("You have been sent to the Thunderdome."))
 		message_admins("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Team 2)", 1)
 
 	else if(href_list["tdomeadmin"])
@@ -1023,14 +929,14 @@
 
 		var/mob/M = locate(href_list["tdomeadmin"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
+			to_chat(usr, "This can only be used on instances of type /mob.")
 			return
 
 		M.apply_effect(5, PARALYZE)
 		sleep(5)
 		M.forceMove(get_turf(pick(GLOB.thunderdome_admin)))
 		spawn(50)
-			to_chat(M, SPAN_NOTICE(" You have been sent to the Thunderdome."))
+			to_chat(M, SPAN_NOTICE("You have been sent to the Thunderdome."))
 		message_admins("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Admin.)", 1)
 
 	else if(href_list["tdomeobserve"])
@@ -1042,7 +948,7 @@
 
 		var/mob/M = locate(href_list["tdomeobserve"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
+			to_chat(usr, "This can only be used on instances of type /mob.")
 			return
 
 		for(var/obj/item/I in M)
@@ -1056,7 +962,7 @@
 		sleep(5)
 		M.forceMove(get_turf(pick(GLOB.thunderdome_observer)))
 		spawn(50)
-			to_chat(M, SPAN_NOTICE(" You have been sent to the Thunderdome."))
+			to_chat(M, SPAN_NOTICE("You have been sent to the Thunderdome."))
 		message_admins("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Observer.)", 1)
 
 	else if(href_list["revive"])
@@ -1065,7 +971,7 @@
 
 		var/mob/living/L = locate(href_list["revive"])
 		if(!istype(L))
-			to_chat(usr, "This can only be used on instances of type /mob/living")
+			to_chat(usr, "This can only be used on instances of type /mob/living.")
 			return
 
 		L.revive()
@@ -1077,7 +983,7 @@
 
 		var/mob/living/carbon/human/H = locate(href_list["makealien"])
 		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
+			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
 			return
 
 		usr.client.cmd_admin_alienize(H)
@@ -1151,7 +1057,7 @@
 
 		var/mob/M = locate(href_list["makeanimal"])
 		if(istype(M, /mob/new_player))
-			to_chat(usr, "This cannot be used on instances of type /mob/new_player")
+			to_chat(usr, "This cannot be used on instances of type /mob/new_player.")
 			return
 
 		usr.client.cmd_admin_animalize(M)
@@ -1233,7 +1139,7 @@
 
 		var/mob/living/carbon/human/H = locate(href_list["adminspawncookie"])
 		if(!ishuman(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
+			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
 			return
 
 		var/cookie_type = tgui_input_list(usr, "Choose cookie type:", "Give Cookie", list("cookie", "random fortune cookie", "custom fortune cookie"))
@@ -1270,7 +1176,7 @@
 			error("Give Cookie code crumbled!")
 		H.put_in_hands(snack)
 		message_admins("[key_name(H)] got their [cookie_type], spawned by [key_name(src.owner)]")
-		to_chat(H, SPAN_NOTICE(" Your prayers have been answered!! You received the <b>best cookie</b>!"))
+		to_chat(H, SPAN_NOTICE("Your prayers have been answered!! You received the <b>best cookie</b>!"))
 
 	else if(href_list["adminalert"])
 		if(!check_rights(R_MOD))
@@ -1283,13 +1189,13 @@
 		var/mob/living/carbon/human/H = locate(href_list["CentcommReply"])
 
 		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
+			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
 			return
 
 		//unanswered_distress -= H
 
 		if(!H.get_type_in_ears(/obj/item/device/radio/headset))
-			to_chat(usr, "The person you are trying to contact is not wearing a headset")
+			to_chat(usr, "The person you are trying to contact is not wearing a headset.")
 			return
 
 		var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via their headset.","Outgoing message from USCM", "")
@@ -1306,10 +1212,10 @@
 	else if(href_list["SyndicateReply"])
 		var/mob/living/carbon/human/H = locate(href_list["SyndicateReply"])
 		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
+			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
 			return
 		if(!H.get_type_in_ears(/obj/item/device/radio/headset))
-			to_chat(usr, "The person you are trying to contact is not wearing a headset")
+			to_chat(usr, "The person you are trying to contact is not wearing a headset.")
 			return
 
 		var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via their headset.","Outgoing message from The Syndicate", "")
@@ -1318,7 +1224,7 @@
 
 		to_chat(src.owner, "You sent [input] to [H] via a secure channel.")
 		log_admin("[src.owner] replied to [key_name(H)]'s Syndicate message with the message [input].")
-		to_chat(H, "You hear something crackle in your headset for a moment before a voice speaks.  \"Please stand by for a message from your benefactor.  Message as follows, agent. <b>\"[input]\"</b>  Message ends.\"")
+		to_chat(H, "You hear something crackle in your headset for a moment before a voice speaks. \"Please stand by for a message from your benefactor. Message as follows, agent. <b>\"[input]\"</b>  Message ends.\"")
 
 	else if(href_list["UpdateFax"])
 		var/obj/structure/machinery/faxmachine/origin_fax = locate(href_list["originfax"])
@@ -1369,7 +1275,7 @@
 					return
 
 				fax_message = new(generate_templated_fax(0, organization_type, subject, addressed_to, message_body, sent_by, "Editor in Chief", organization_type))
-		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "pressfaxpreview", width = 500, height = 400)
+		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "pressfaxpreview", width = DEFAULT_PAPER_WIDTH, height = DEFAULT_PAPER_HEIGHT)
 		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Template", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
@@ -1421,7 +1327,7 @@
 					sent_title = "USCM High Command"
 
 				fax_message = new(generate_templated_fax(0, "USCM CENTRAL COMMAND", subject,addressed_to, message_body,sent_by, sent_title, "United States Colonial Marine Corps"))
-		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "uscmfaxpreview", width = 500, height = 400)
+		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "uscmfaxpreview", width = DEFAULT_PAPER_WIDTH, height = DEFAULT_PAPER_HEIGHT)
 		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Template", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
@@ -1469,7 +1375,7 @@
 				if(!sent_by)
 					return
 				fax_message = new(generate_templated_fax(1, "WEYLAND-YUTANI CORPORATE AFFAIRS - [MAIN_SHIP_NAME]", subject, addressed_to, message_body, sent_by, "Corporate Affairs Director", "Weyland-Yutani"))
-		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "clfaxpreview", width = 500, height = 400)
+		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "clfaxpreview", width = DEFAULT_PAPER_WIDTH, height = DEFAULT_PAPER_HEIGHT)
 		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
@@ -1517,7 +1423,7 @@
 				if(!sent_by)
 					return
 				fax_message = new(generate_templated_fax(0, "THREE WORLD EMPIRE - ROYAL MILITARY COMMAND", subject, addressed_to, message_body, sent_by, "Office of Military Communications", "Three World Empire"))
-		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF TWE FAX", width = 500, height = 400)
+		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF TWE FAX", width = DEFAULT_PAPER_WIDTH, height = DEFAULT_PAPER_HEIGHT)
 		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
@@ -1565,7 +1471,7 @@
 				if(!sent_by)
 					return
 				fax_message = new(generate_templated_fax(0, "UNION OF PROGRESSIVE PEOPLES - MILITARY HIGH KOMMAND", subject, addressed_to, message_body, sent_by, "Military High Kommand", "Union of Progressive Peoples"))
-		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF UPP FAX", width = 500, height = 400)
+		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF UPP FAX", width = DEFAULT_PAPER_WIDTH, height = DEFAULT_PAPER_HEIGHT)
 		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
@@ -1613,7 +1519,7 @@
 				if(!sent_by)
 					return
 				fax_message = new(generate_templated_fax(0, "COLONIAL LIBERATION FRONT - COLONIAL COUNCIL OF LIBERATION", subject, addressed_to, message_body, sent_by, "Guerilla Forces Command", "Colonial Liberation Front"))
-		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF CLF FAX", width = 500, height = 400)
+		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF CLF FAX", width = DEFAULT_PAPER_WIDTH, height = DEFAULT_PAPER_HEIGHT)
 		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
@@ -1661,7 +1567,7 @@
 				if(!sent_by)
 					return
 				fax_message = new(generate_templated_fax(0, "COLONIAL MARSHAL BUREAU INCIDENT COMMAND CENTER - ANCHORPOINT STATION", subject, addressed_to, message_body, sent_by, "Supervisory Deputy Marshal", "Colonial Marshal Bureau"))
-		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF CMB FAX", width = 500, height = 400)
+		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF CMB FAX", width = DEFAULT_PAPER_WIDTH, height = DEFAULT_PAPER_HEIGHT)
 		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
@@ -2009,7 +1915,7 @@
 		var/prompt = tgui_alert(usr, "Do you want the nuke to be Encrypted?", "Nuke Type", list("Encrypted", "Decrypted"), 20 SECONDS)
 		if(prompt == "Decrypted")
 			nukename = "Decrypted Operational Blockbuster"
-		prompt = tgui_alert(usr, "Are you sure you want to authorize '[nukename]' to the marines? This will greatly affect the round!", "DEFCON 1", list("No", "Yes"))
+		prompt = tgui_alert(usr, "Are you sure you want to authorize '[nukename]' to the marines? This will greatly affect the round!", "DEFCON 1", list("Yes", "No"))
 		if(prompt != "Yes")
 			return
 
@@ -2137,7 +2043,7 @@
 		var/mob/living/carbon/human/speaker = locate(href_list["AresReply"])
 
 		if(!istype(speaker))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
+			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
 			return FALSE
 
 		if((!GLOB.ares_link.interface) || (GLOB.ares_link.interface.inoperable()))
@@ -2159,7 +2065,7 @@
 		var/mob/living/carbon/human/speaker = locate(href_list["AresMark"])
 
 		if(!istype(speaker))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
+			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
 			return FALSE
 
 		if((!GLOB.ares_link.interface) || (GLOB.ares_link.interface.inoperable()))
@@ -2179,7 +2085,6 @@
 		return
 	GLOB.distress_cancel = TRUE
 	SSticker.mode.activate_distress()
-	log_game("[key_name_admin(approver)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
 	message_admins("[key_name_admin(approver)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
 
 ///Handles calling the ERT sent by handheld distress beacons
@@ -2188,7 +2093,6 @@
 		return
 	GLOB.distress_cancel = TRUE
 	SSticker.mode.get_specific_call("[ert_called]", TRUE, FALSE)
-	log_game("[key_name_admin(approver)] has sent [ert_called], requested by [key_name_admin(ref_person)]")
 	message_admins("[key_name_admin(approver)] has sent [ert_called], requested by [key_name_admin(ref_person)]")
 
 /datum/admins/proc/generate_job_ban_list(mob/M, datum/entity/player/P, list/roles, department, color = "ccccff")
@@ -2211,7 +2115,7 @@
 			dat += "<td width='20%'><a href='byond://?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=[job.title];jobban4=\ref[M]'>[replacetext(job.title, " ", "&nbsp")]</a></td>"
 			counter++
 
-		if(counter >= 5) //So things dont get squiiiiished!
+		if(counter >= 5) //So things don't get squiiiiished!
 			dat += "</tr><tr>"
 			counter = 0
 	dat += "</tr></table>"
@@ -2289,7 +2193,7 @@
 			fax_stamp_print = "<HR><i>This paper has been stamped by the [FAX_NET_PRESS_HC].</i>"
 
 	var/msg_ghost = SPAN_NOTICE(faction_ghost_header)
-	msg_ghost += "Transmitting '[customname]' via secure connection ... "
+	msg_ghost += "Transmitting '[customname]' via secure connection ..."
 	msg_ghost += "<a href='byond://?FaxView=\ref[fax_message]'>view message</a>"
 	announce_fax( ,msg_ghost)
 

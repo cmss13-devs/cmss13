@@ -93,7 +93,8 @@ GLOBAL_VAR_INIT(log_end, world.system_type == UNIX ? ascii2text(13) : "")
 	for(var/client/client in GLOB.admins)
 		if(CLIENT_IS_STAFF(client))
 			if(client.prefs.toggles_chat & CHAT_DEBUGLOGS)
-				to_chat(client, "DEBUG: [text]", type = MESSAGE_TYPE_DEBUG)
+				var/rendered = SPAN_DEBUG_NOTICE("[SPAN_PREFIX("DEBUG:")] [SPAN_MESSAGE("[text]")]")
+				to_chat(client, rendered, type = MESSAGE_TYPE_DEBUG)
 
 
 /proc/log_game(text)
@@ -124,6 +125,14 @@ GLOBAL_VAR_INIT(log_end, world.system_type == UNIX ? ascii2text(13) : "")
 		WRITE_LOG(GLOB.world_game_log, "OVERWATCH: [text]")
 		LOG_REDIS("overwatch", "\[[time]\] [text]")
 	GLOB.STUI.admin.Add("\[[time]]OVERWATCH: [text]")
+	GLOB.STUI.processing |= STUI_LOG_ADMIN
+
+/proc/log_garble(text)
+	var/time = time_stamp()
+	if (CONFIG_GET(flag/log_garble))
+		WRITE_LOG(GLOB.world_game_log, "GARBLE: [text]")
+		LOG_REDIS("garble", "\[[time]\] [text]")
+	GLOB.STUI.admin.Add("\[[time]]GARBLE: [text]")
 	GLOB.STUI.processing |= STUI_LOG_ADMIN
 
 /proc/log_idmod(obj/item/card/id/target_id, msg, changer)
@@ -297,6 +306,8 @@ GLOBAL_PROTECT(config_error_log)
 	WRITE_LOG(GLOB.mapping_log, text)
 	SEND_TEXT(world.log, text)
 
+/// Logs to Admin Log without sending to in-game admins.
+/// Upstream compatibility proc, don't double up with our message_admins that also logs
 /proc/log_admin_private(text)
 	log_admin(text)
 

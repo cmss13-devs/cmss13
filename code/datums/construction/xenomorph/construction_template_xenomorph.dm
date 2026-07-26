@@ -14,7 +14,7 @@
 
 /datum/construction_template/xenomorph/complete() //Override because we need to pass the hive ref
 	if(!owner || !get_turf(owner))
-		log_debug("Constuction template ([name]) completed construction without a build location")
+		log_debug("Construction template ([name]) completed construction without a build location")
 		return
 	if(hive_ref)
 		hive_ref.remove_construction(owner)
@@ -59,6 +59,13 @@
 	build_type = /obj/effect/alien/resin/special/eggmorph
 	build_icon_state = "eggmorph_preview"
 
+/datum/construction_template/xenomorph/plasma_tree
+	name = XENO_STRUCTURE_PLASMA_TREE
+	description = "Gives out small bursts of plasma, replenishing the reserves of the sisters around it."
+	build_type = /obj/effect/alien/resin/special/plasma_tree
+	build_icon_state = "recovery_plasma"
+
+
 /datum/construction_template/xenomorph/recovery
 	name = XENO_STRUCTURE_RECOVERY
 	description = "Hastily recovers the strength of sisters resting around it."
@@ -81,7 +88,7 @@
 
 /datum/construction_template/xenomorph/nest/complete() //overrided for unique build logic
 	if(!owner || !get_turf(owner))
-		log_debug("Constuction template ([name]) completed construction without a build location")
+		log_debug("Construction template ([name]) completed construction without a build location")
 		return
 	if(hive_ref)
 		hive_ref.remove_construction(owner)
@@ -106,7 +113,7 @@
 			if(stepped_turf.density)
 				direction_to_put_nest = get_dir(stepped_turf, owner)
 				return
-	xeno_message(SPAN_XENOWARNING("This structure needs to be built directly next to an vertical surface."), 7, XENO_HIVE_NORMAL)
+	xeno_message(SPAN_XENOWARNING("This structure needs to be built directly next to a vertical surface."), 7, XENO_HIVE_NORMAL)
 	qdel(owner)
 	qdel(src)
 

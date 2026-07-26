@@ -158,7 +158,7 @@
 	idtype = /obj/item/card/id/silver/cl
 	role_comm_title = "WY Syn"
 	assignment = JOB_WY_GOON_SYNTH
-	rank = JOB_WY_GOON_SYNTH
+	job_title = JOB_WY_GOON_SYNTH
 	faction = FACTION_WY
 	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
 	minimap_icon = "goon_synth"
@@ -185,9 +185,9 @@
 	idtype = /obj/item/card/id/deputy
 	role_comm_title = "CMB Syn"
 	assignment = JOB_CMB_SYN
-	rank = JOB_CMB_SYN
+	job_title = JOB_CMB_SYN
 	minimap_background = "background_cmb"
-	minimap_icon = "cmb_syn"
+	minimap_icon = "pmc_syn"
 
 	paygrades = list(PAY_SHORT_CMBS = JOB_PLAYTIME_TIER_0)
 	faction = FACTION_MARSHAL
@@ -225,14 +225,22 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/full(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector(new_human), WEAR_R_HAND)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/twohanded/fireaxe(new_human), WEAR_L_HAND)
-	new_human.equip_to_slot_or_del(new /obj/item/paper/research_notes/good(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/paper/research_notes/unique/tier_three(new_human), WEAR_IN_BACK)
 	..()
 
 /datum/equipment_preset/synth/survivor/kutjevo/corporate
 	name = "Survivor - Kutjevo - Synthetic - Corporate Assistant"
-	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	job_title = JOB_WY_SEC_SYNTH
+	assignment = "W-Y Corporate Assistant Synthetic"
 	idtype = /obj/item/card/id/silver/cl
-	role_comm_title = "WY Syn"
+	role_comm_title = "WY Asst. Syn"
+	survivor_variant = CORPORATE_SURVIVOR
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	faction = FACTION_WY
+	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
+	minimap_icon = "wy_syn"
+	minimap_background = "background_goon"
+	origin_override = ORIGIN_WY
 
 	survivor_variant = CORPORATE_SURVIVOR
 

@@ -45,7 +45,7 @@
 	var/offset_x = 1
 	var/offset_y = -6
 
-	var/image/fire_overlay = image(icon, icon_state = will_explode ? "on_fire_explode_overlay" : "on_fire_overlay", pixel_x = offset_x, pixel_y = offset_y)
+	var/image/fire_overlay = image(flames_icon, icon_state = will_explode ? "on_fire_explode_overlay" : "on_fire_overlay", pixel_x = offset_x, pixel_y = offset_y)
 	overlays.Add(fire_overlay)
 
 /obj/item/ammo_box/magazine/misc/explode(severity, datum/cause_data/flame_cause_data)
@@ -82,6 +82,10 @@
 	magazine_type = /obj/item/storage/box/mre/pmc
 	overlay_content = "_colony_mre"
 
+/obj/item/ammo_box/magazine/misc/mre/pmc/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/ammo_box/magazine/misc/mre/pmc/empty
 	empty = TRUE
 
@@ -91,6 +95,10 @@
 	icon_state = "wy_food_crate"
 	magazine_type = /obj/item/storage/box/mre/wy
 	overlay_content = "_wy_mre"
+
+/obj/item/ammo_box/magazine/misc/mre/wy/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/ammo_box/magazine/misc/mre/wy/empty
 	empty = TRUE
@@ -112,6 +120,10 @@
 	magazine_type = /obj/item/mre_food_packet/wy/cookie_brick
 	num_of_magazines = 20
 	overlay_content = "_colony_mre"
+
+/obj/item/ammo_box/magazine/misc/mre/emergency/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/ammo_box/magazine/misc/mre/emergency/empty
 	empty = TRUE

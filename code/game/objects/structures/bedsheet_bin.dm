@@ -82,6 +82,28 @@ LINEN BINS
 /obj/item/bedsheet/colorable
 	icon_state = "sheetce"
 
+/obj/item/bedsheet/bedroll
+	icon_state = "bedroll_sheet"
+
+/obj/item/bedsheet/bedroll/blue
+	icon_state = "bedroll_sheet"
+	color = "#8cb9e2"
+
+/obj/item/bedsheet/bedroll/red
+	icon_state = "bedroll_sheet"
+	color = "#df4f4f"
+
+/obj/item/bedsheet/bedroll/pink
+	icon_state = "bedroll_sheet"
+	color = "#eaa8b2"
+
+/obj/item/bedsheet/bedroll/green
+	icon_state = "bedroll_sheet"
+	color = "#b3e290"
+
+/obj/item/bedsheet/bedroll/yellow
+	icon_state = "bedroll_sheet"
+	color = "#e2df90"
 
 /obj/structure/bedsheetbin
 	name = "linen bin"
@@ -122,7 +144,7 @@ LINEN BINS
 			sheets.Add(I)
 			amount++
 			to_chat(user, SPAN_NOTICE("You put [I] in [src]."))
-	else if(amount && !hidden && I.w_class < 4) //make sure there's sheets to hide it among, make sure nothing else is hidden in there.
+	else if(amount && !hidden && I.w_class < 4 && !(I.flags_item & ITEM_ABSTRACT)) //make sure there's sheets to hide it among, make sure nothing else is hidden in there.
 		if(user.drop_held_item())
 			I.forceMove(src)
 			hidden = I

@@ -25,7 +25,7 @@
 			var/obj/limb/E = get_limb(organ_name)
 			if(!E || !E.is_usable())
 				. += MOVE_REDUCTION_LIMB_DESTROYED
-			if(E.status & LIMB_SPLINTED)
+			if(E.status & LIMB_SPLINTED || (!(E.status & LIMB_BROKEN) && (E.status & LIMB_ESCHAR)))
 				. += MOVE_REDUCTION_LIMB_SPLINTED
 			else if(E.status & LIMB_BROKEN)
 				. += MOVE_REDUCTION_LIMB_BROKEN
@@ -38,7 +38,7 @@
 			if(!E || !E.is_usable())
 				. += MOVE_REDUCTION_LIMB_DESTROYED
 			// Splinted limbs are not as punishing
-			if(E.status & LIMB_SPLINTED)
+			if(E.status & LIMB_SPLINTED || (!(E.status & LIMB_BROKEN) && (E.status & LIMB_ESCHAR)))
 				. += MOVE_REDUCTION_LIMB_SPLINTED
 			else if(E.status & LIMB_BROKEN)
 				. += MOVE_REDUCTION_LIMB_BROKEN
@@ -57,7 +57,6 @@
 		reducible_tally += wear_suit.slowdown
 		wear_slowdown_reduction += wear_suit.movement_compensation
 
-	reducible_tally += reagent_move_delay_modifier //Muscle-stimulating property
 
 	if(bodytemperature < species.cold_level_1 && !isyautja(src))
 		reducible_tally += 2 //Major slowdown if you're freezing
@@ -68,6 +67,8 @@
 
 	if(shield_slowdown)
 		reducible_tally += shield_slowdown
+
+	reducible_tally = max(-0.1, reducible_tally + reagent_move_delay_modifier) //MST stim speeds up from slowdowns
 
 	//Compile reducible tally and send it to total tally. Cannot go more than 1 units faster from the reducible tally!
 	. += max(-0.7, reducible_tally)

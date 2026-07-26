@@ -101,7 +101,7 @@
 /datum/tgui_modal/Destroy(force, ...)
 	SStgui.close_uis(src)
 	state = null
-	buttons = null // TG QDEL_NULLs this
+	buttons?.Cut()
 	return ..()
 
 /**

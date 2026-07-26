@@ -3,7 +3,7 @@
 	name = JOB_COLONIST
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_COLONIST
-	rank = JOB_COLONIST
+	job_title = JOB_COLONIST
 	faction = FACTION_COLONIST
 
 	access = list(ACCESS_CIVILIAN_PUBLIC)

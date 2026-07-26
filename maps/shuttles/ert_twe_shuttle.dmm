@@ -3,9 +3,8 @@
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/shuttle/ert)
 "b" = (
-/turf/closed/shuttle/ert{
-	icon_state = "twe25"
-	},
+/obj/structure/shuttle/part/ert/front_right_twe,
+/turf/template_noop,
 /area/shuttle/ert)
 "e" = (
 /obj/effect/landmark/ert_spawns/distress_twe,
@@ -34,15 +33,13 @@
 	},
 /area/shuttle/ert)
 "k" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_3";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "rightengine_3"
 	},
 /area/shuttle/ert)
 "l" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_2";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "leftengine_2"
 	},
 /area/shuttle/ert)
 "o" = (
@@ -54,11 +51,9 @@
 /turf/open/shuttle/dropship/light_grey_bottom_right,
 /area/shuttle/ert)
 "q" = (
+/obj/structure/shuttle/part/ert/transparent/left_engine,
 /obj/docking_port/mobile/emergency_response/ert4,
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_1";
-	opacity = 0
-	},
+/turf/template_noop,
 /area/shuttle/ert)
 "r" = (
 /obj/structure/blocker/invisible_wall,
@@ -76,9 +71,8 @@
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/shuttle/ert)
 "v" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_2";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "rightengine_2"
 	},
 /area/shuttle/ert)
 "x" = (
@@ -142,7 +136,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2
 	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship/light_grey_single_wide_left_to_right,
 /area/shuttle/ert)
 "N" = (
 /turf/closed/shuttle/ert{
@@ -158,9 +152,8 @@
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/shuttle/ert)
 "T" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_3";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "leftengine_3"
 	},
 /area/shuttle/ert)
 "U" = (
@@ -169,10 +162,8 @@
 	},
 /area/shuttle/ert)
 "V" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_1";
-	opacity = 0
-	},
+/obj/structure/shuttle/part/ert/transparent/right_engine,
+/turf/template_noop,
 /area/shuttle/ert)
 "W" = (
 /obj/structure/bed/chair/dropship/passenger{
@@ -182,9 +173,8 @@
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/shuttle/ert)
 "X" = (
-/turf/closed/shuttle/ert{
-	icon_state = "twe20"
-	},
+/obj/structure/shuttle/part/ert/front_left_twe,
+/turf/template_noop,
 /area/shuttle/ert)
 "Y" = (
 /obj/structure/surface/rack,

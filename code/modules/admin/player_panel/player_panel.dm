@@ -453,20 +453,20 @@
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
-		ui = new(user, src, "PlayerPanel", "[targetMob.name] Player Panel")
+		ui = new(user, src, "PlayerPanel", "[capitalize(targetMob.name)] Player Panel")
 		ui.open()
 		ui.set_autoupdate(FALSE)
 
 // Player panel
 /datum/player_panel/ui_data(mob/user)
 	. = list()
-	.["mob_name"] = targetMob.name
+	.["mob_name"] = capitalize(targetMob.name)
 
 	if(istype(targetMob, /mob/living))
 		var/mob/living/livingTarget = targetMob
-		.["mob_sleeping"] = livingTarget.sleeping
+		.["mob_sleeping"] = livingTarget.is_admin_slept()
 	else
-		.["mob_sleeping"] = 0
+		.["mob_sleeping"] = FALSE
 
 	.["mob_frozen"] = HAS_TRAIT_FROM(targetMob, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ADMIN)
 
@@ -484,6 +484,7 @@
 
 		.["client_key"] = targetClient.key
 		.["client_ckey"] = targetClient.ckey
+		.["client_username"] = targetClient.username()
 
 		.["client_muted"] = targetClient.prefs.muted
 		.["client_age"] = targetClient.player_data.byond_account_age

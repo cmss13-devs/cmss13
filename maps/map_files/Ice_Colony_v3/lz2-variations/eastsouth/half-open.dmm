@@ -31,7 +31,7 @@
 /area/shiva/exterior/cp_lz2)
 "A" = (
 /turf/closed/wall/shiva/prefabricated/reinforced/hull,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/interior/oob)
 "B" = (
 /obj/structure/largecrate/random/mini/chest/c,
 /turf/open/auto_turf/snow/layer3,

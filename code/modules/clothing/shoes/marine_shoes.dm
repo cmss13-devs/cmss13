@@ -21,7 +21,7 @@
 	allowed_items_typecache = list(
 		/obj/item/attachable/bayonet,
 		/obj/item/weapon/throwing_knife,
-		/obj/item/weapon/gun/pistol/holdout,
+		/obj/item/weapon/gun/pistol/action,
 		/obj/item/weapon/gun/pistol/clfpistol,
 		/obj/item/tool/screwdriver,
 		/obj/item/tool/surgery/scalpel,
@@ -38,12 +38,23 @@
 /obj/item/clothing/shoes/marine/knife
 	spawn_item_type = /obj/item/attachable/bayonet
 
+/obj/item/clothing/shoes/marine/army
+	name = "army combat boots"
+	desc = "Standard issue combat boots for combat scenarios or combat situations. All combat, all the time."
+
+/obj/item/clothing/shoes/marine/army/knife
+	icon_state = "marine_jungle"
+	spawn_item_type = /obj/item/attachable/bayonet
+
 /obj/item/clothing/shoes/marine/jungle
 	icon_state = "marine_jungle"
 	desc = "Don't go walkin' slow, the devil's on the loose."
 
 /obj/item/clothing/shoes/marine/jungle/knife
 	spawn_item_type = /obj/item/attachable/bayonet
+
+/obj/item/clothing/shoes/marine/jungle/pistol
+	spawn_item_type = /obj/item/weapon/gun/pistol/action
 
 /obj/item/clothing/shoes/marine/brown
 	icon_state = "marine_brown"
@@ -82,6 +93,13 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 
 /obj/item/clothing/shoes/marine/upp/knife
+	spawn_item_type = /obj/item/attachable/bayonet/upp
+
+/obj/item/clothing/shoes/marine/upp/black
+	icon_state = "marine"
+	item_state = "marine"
+
+/obj/item/clothing/shoes/marine/upp/black/knife
 	spawn_item_type = /obj/item/attachable/bayonet/upp
 
 /obj/item/clothing/shoes/marine/joe
@@ -141,7 +159,7 @@
 	allowed_items_typecache = list(
 		/obj/item/attachable/bayonet,
 		/obj/item/weapon/throwing_knife,
-		/obj/item/weapon/gun/pistol/holdout,
+		/obj/item/weapon/gun/pistol/action,
 		/obj/item/weapon/gun/pistol/clfpistol,
 		/obj/item/weapon/straight_razor,
 	)
@@ -163,6 +181,10 @@
 	siemens_coefficient = 0.2
 	unacidable = TRUE
 
+/obj/item/clothing/shoes/veteran/pmc/commando/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/clothing/shoes/veteran/pmc/commando/knife
 	spawn_item_type = /obj/item/attachable/bayonet/wy
 
@@ -175,6 +197,10 @@
 	siemens_coefficient = 0.2
 	unacidable = TRUE
 	spawn_item_type = /obj/item/attachable/bayonet/wy
+
+/obj/item/clothing/shoes/veteran/pmc/combat_android/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/clothing/shoes/veteran/pmc/combat_android/dark
 	name = "\improper M7X Mark II greaves"
@@ -196,11 +222,25 @@
 	armor_bio = CLOTHING_ARMOR_GIGAHIGHPLUS
 	spawn_item_type = /obj/item/attachable/bayonet
 
+/obj/item/clothing/shoes/marine/cbrn_non_armored
+	name = "\improper M2 MOPP boots"
+	desc = "M2 MOPP boots are designed to shield the wearer from contact with hazardous substances and potential infection vectors in contaminated environments. These older boots offer basic resistance to punctures and environmental threats, but lack the advanced durability and radiation shielding of later models. Users should inspect these boots regularly for signs of wear or damage."
+	icon_state = "cbrn"
+	item_state = "cbrn"
+	spawn_item_type = /obj/item/attachable/bayonet
+
 /obj/item/clothing/shoes/marine/corporate
 	name = "rugged boots"
 	desc = "These synth-leather boots seem high quality when first worn, but quickly detoriate, especially in the environments the corporate security members these are issued to operate in. Still, better than nothing."
 
 /obj/item/clothing/shoes/marine/corporate/knife
+	spawn_item_type = /obj/item/attachable/bayonet
+
+/obj/item/clothing/shoes/marine/cmb
+	name = "rugged boots"
+	desc = "Generic boots typically used by law enforcement types out on the frontier. Functional and stylish."
+
+/obj/item/clothing/shoes/marine/cmb/knife
 	spawn_item_type = /obj/item/attachable/bayonet
 
 /obj/item/clothing/shoes/marine/ress
@@ -231,7 +271,7 @@
 	allowed_items_typecache = list(
 		/obj/item/attachable/bayonet,
 		/obj/item/weapon/throwing_knife,
-		/obj/item/weapon/gun/pistol/holdout,
+		/obj/item/weapon/gun/pistol/action,
 		/obj/item/weapon/gun/pistol/clfpistol,
 		/obj/item/weapon/straight_razor,
 	)
@@ -254,7 +294,7 @@
 
 //=ROYAL MARINES=\\
 
-/obj/item/clothing/shoes/royal_marine
+/obj/item/clothing/shoes/marine/royal_marine
 	name = "\improper L10 pattern combat boots"
 	desc = "Standard issue combat boots for combat scenarios or combat situations. Used by the three world empires royal marines commando units."
 	icon_state = "rmc_boots"
@@ -276,12 +316,12 @@
 	allowed_items_typecache = list(
 		/obj/item/attachable/bayonet,
 		/obj/item/weapon/throwing_knife,
-		/obj/item/weapon/gun/pistol/holdout,
+		/obj/item/weapon/gun/pistol/action,
 		/obj/item/weapon/gun/pistol/clfpistol,
 	)
 	flags_atom = NO_NAME_OVERRIDE
 
-/obj/item/clothing/shoes/royal_marine/knife
+/obj/item/clothing/shoes/marine/royal_marine/knife
 	spawn_item_type = /obj/item/attachable/bayonet/rmc
 
 /obj/item/clothing/shoes/dress/rmc

@@ -8,8 +8,8 @@
 	desc = "A basic blue apron."
 	icon_state = "apron"
 	item_state = "apron"
+	blood_overlay_type = "apron"
 	icon = 'icons/obj/items/clothing/suits/vests_aprons.dmi'
-	blood_overlay_type = "armor"
 	flags_armor_protection = 0
 	allowed = list (
 		/obj/item/reagent_container/spray/plantbgone,
@@ -34,6 +34,7 @@
 	desc = "Looks eerie and weird, almost as if it belongs to a cult."
 	icon_state = "chaplain_hoodie"
 	item_state = "chaplain_hoodie"
+	blood_overlay_type = "suit"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_GROIN
 
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_GROIN
@@ -75,6 +76,7 @@
 	desc = "Maximum piety in this star system."
 	icon_state = "nun"
 	item_state = "nun"
+	blood_overlay_type = "suit"
 	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
 	flags_inv_hide = HIDESHOES|HIDEJUMPSUIT
@@ -93,6 +95,7 @@
 	desc = "An apron used by a high-class chef."
 	icon_state = "chef"
 	item_state = "chef"
+	blood_overlay_type = "apron"
 	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
 	gas_transfer_coefficient = 0.90
 
@@ -118,6 +121,7 @@
 	desc = "A basic, dull, white chef's apron."
 	icon_state = "apronchef"
 	item_state = "apronchef"
+	blood_overlay_type = "apron"
 	icon = 'icons/obj/items/clothing/suits/vests_aprons.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/vests_aprons.dmi',
@@ -136,6 +140,11 @@
 		/obj/item/tool/pen,
 	)
 
+/obj/item/clothing/suit/chef/classic/stain
+	icon_state = "apronchef_stain"
+	item_state = "apronchef_stain"
+	blood_overlay_type = "apron"
+
 //Detective
 /obj/item/clothing/suit/storage/CMB/trenchcoat
 	name = "\improper tan trench-coat"
@@ -146,6 +155,7 @@
 	)
 	icon_state = "trench_tan"
 	item_state = "trench_tan"
+	blood_overlay_type = "suit"
 	uniform_restricted = null
 
 /obj/item/clothing/suit/storage/CMB/trenchcoat/brown
@@ -166,6 +176,7 @@
 	desc = "A light tan coat with a badge. Often worn by government officiated crime scene investigators rather than private sleuths, this suit strikes authority into those who see it."
 	icon_state = "detective"
 	item_state = "detective"
+	blood_overlay_type = "coat"
 
 /obj/item/clothing/suit/storage/CMB/trenchcoat/police/black
 	name = "\improper black police trench-coat"
@@ -178,6 +189,7 @@
 	name = "jacket"
 	desc = "A forensics technician jacket."
 	item_state = "det_suit"
+	blood_overlay_type = "coat"
 	icon = 'icons/obj/items/clothing/suits/jackets.dmi'
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	allowed = list(
@@ -238,11 +250,19 @@
 	name = "red jacket"
 	desc = "A red forensics technician jacket."
 	icon_state = "forensics_red"
+	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
+	)
 
 /obj/item/clothing/suit/storage/forensics/blue
 	name = "blue jacket"
 	desc = "A blue forensics technician jacket."
 	icon_state = "forensics_blue"
+	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
+	)
 
 //Engineering
 /obj/item/clothing/suit/storage/hazardvest
@@ -251,7 +271,7 @@
 	icon_state = "hazard"
 	item_state = "hazard"
 	icon = 'icons/obj/items/clothing/suits/vests_aprons.dmi'
-	blood_overlay_type = "armor"
+	blood_overlay_type = "vest"
 	allowed = list (
 		/obj/item/device/analyzer,
 		/obj/item/device/multitool,
@@ -289,6 +309,7 @@
 		/obj/item/device/motiondetector,
 	)
 	flags_armor_protection = BODY_FLAG_CHEST
+	flags_bodypart_hidden = BODY_FLAG_CHEST
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/vests_aprons.dmi',
 	)
@@ -312,34 +333,60 @@
 	item_state = "hazard_black"
 
 //Lawyer
-/obj/item/clothing/suit/storage/lawyer
+/obj/item/clothing/suit/storage/jacket/marine/lawyer
+	desc = "A snappy dress jacket."
 	icon = 'icons/obj/items/clothing/suits/jackets.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/jackets.dmi',
 	)
-
-/obj/item/clothing/suit/storage/lawyer/bluejacket
-	name = "Blue Suit Jacket"
-	desc = "A snappy dress jacket."
-	icon_state = "suitjacket_blue_open"
-	item_state = "suitjacket_blue_open"
-	blood_overlay_type = "coat"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 
-/obj/item/clothing/suit/storage/lawyer/purpjacket
-	name = "Purple Suit Jacket"
-	desc = "A snappy dress jacket."
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
+	has_buttons = TRUE
+	blood_overlay_type = "jacket"
+
+/obj/item/clothing/suit/storage/jacket/marine/lawyer/bluejacket
+	name = "blue suit-jacket"
+	icon_state = "suitjacket_blue"
+	initial_icon_state = "suitjacket_blue"
+
+/obj/item/clothing/suit/storage/jacket/marine/lawyer/purpjacket
+	name = "purple suit-jacket"
 	icon_state = "suitjacket_purp"
-	item_state = "suitjacket_purp"
-	blood_overlay_type = "coat"
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
+	initial_icon_state = "suitjacket_purp"
+
+/obj/item/clothing/suit/storage/jacket/marine/lawyer/redjacket
+	name = "red suit-jacket"
+	icon_state = "suitjacket_red"
+	initial_icon_state = "suitjacket_red"
+
+/obj/item/clothing/suit/storage/jacket/marine/lawyer/blackjacket
+	name = "black suit-jacket"
+	icon_state = "suitjacket_black"
+	initial_icon_state = "suitjacket_black"
+
+/obj/item/clothing/suit/storage/jacket/marine/lawyer/comedian
+	name = "bright red suit-jacket"
+	icon_state = "suitjacket_comedian"
+	initial_icon_state = "suitjacket_comedian"
+
+/obj/item/clothing/suit/storage/jacket/marine/lawyer/brown
+	name = "brown suit-jacket"
+	icon_state = "suitjacket_brown"
+	initial_icon_state = "suitjacket_brown"
+
+/obj/item/clothing/suit/storage/jacket/marine/lawyer/light_brown
+	name = "light-brown suit-jacket"
+	icon_state = "suitjacket_lightbrown"
+	initial_icon_state = "suitjacket_lightbrown"
 
 //Windbreakers
 /obj/item/clothing/suit/storage/windbreaker
 	name = "windbreaker parent object"
 	desc = "This shouldn't be here..."
 	icon = 'icons/obj/items/clothing/suits/windbreakers.dmi'
-	blood_overlay_type = "armor"
+	blood_overlay_type = "jacket"
 	allowed = list(
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/tool/lighter,
@@ -352,6 +399,7 @@
 		/obj/item/storage/belt/gun/m44,
 		/obj/item/storage/belt/gun/mateba,
 		/obj/item/storage/belt/gun/smartpistol,
+		/obj/item/storage/backpack/general_belt,
 		/obj/item/weapon/gun,
 
 		/obj/item/device/flashlight,
@@ -366,6 +414,7 @@
 		/obj/item/device/motiondetector,
 	)
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	var/zip_unzip = FALSE
 	actions_types = list(/datum/action/item_action/toggle)
 	item_icons = list(
@@ -430,7 +479,7 @@
 	desc = "They suspend pants."
 	icon = 'icons/obj/items/clothing/belts/misc.dmi'
 	icon_state = "suspenders"
-	blood_overlay_type = "armor"
+	blood_overlay_type = ""
 	flags_armor_protection = 0
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/belts/misc.dmi',

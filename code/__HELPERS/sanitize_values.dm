@@ -30,46 +30,41 @@
 		return default
 	if(LAZYLEN(List))return List[1]
 
-/proc/sanitize_list(list/List, list/filter = list(null), default = list())
+/// Cleans up the provided List by ensuring it has nothing in filter and only items in allow (if allow is non-null)
+/// Default is used if List is not a list. No work is performed if filter and allow are not lists.
+/proc/sanitize_list(list/List, list/filter = list(null), list/allow = null, default = list())
 	if(!islist(List))
 		return default
-	if(!islist(filter))
+	if(!islist(filter) && !islist(allow))
 		return List
 	. = list()
-	for(var/E in List)
-		if(E in filter)
+	for(var/current in List)
+		if(islist(filter) && (current in filter))
 			continue
-		. += E
+		if(islist(allow) && !(current in allow))
+			continue
+		. += current
 
 //more specialised stuff
-/proc/sanitize_gender(gender,neuter=0,plural=0, default="male")
+/proc/sanitize_gender(gender, default = MALE)
 	switch(gender)
-		if(MALE, FEMALE)return gender
-		if(NEUTER)
-			if(neuter)
-				return gender
-			else
-				return default
-		if(PLURAL)
-			if(plural)
-				return gender
-			else
-				return default
+		if(MALE, FEMALE, PLURAL)
+			return gender
 	return default
 
-/proc/sanitize_skin_color(skin_color, default = "Pale 2")
+/proc/sanitize_skin_color(skin_color, default = SKIN_COLOR_PALE2)
 	if(skin_color in GLOB.skin_color_list)
 		return skin_color
 
 	return default
 
-/proc/sanitize_body_type(body_type, default = "Lean")
+/proc/sanitize_body_type(body_type, default = BODY_TYPE_LEAN)
 	if(body_type in GLOB.body_type_list)
 		return body_type
 
 	return default
 
-/proc/sanitize_body_size(body_size, default = "Average")
+/proc/sanitize_body_size(body_size, default = BODY_SIZE_AVERAGE)
 	if(body_size in GLOB.body_size_list)
 		return body_size
 

@@ -25,11 +25,18 @@
 /datum/component/iff_fire_prevention/proc/check_firing_lane(obj/firing_weapon, obj/projectile/projectile_to_fire, atom/target, mob/living/user)
 	SIGNAL_HANDLER
 
+	if(!COOLDOWN_FINISHED(src, iff_halt_cooldown) && user.client)
+		return COMPONENT_CANCEL_GUN_BEFORE_FIRE
+
 	var/angle = Get_Angle(user, target)
 
 	var/range_to_check = user.get_maximum_view_range()
 
-	var/extended_target_turf = get_angle_target_turf(user, angle, range_to_check)
+	var/extended_target_turf
+	if(target.z > user.z)
+		extended_target_turf = get_angle_target_turf(locate(user.x, user.y, target.z), angle, range_to_check)
+	else
+		extended_target_turf = get_angle_target_turf(user, angle, range_to_check)
 
 	var/turf/starting_turf = get_turf(user)
 
@@ -40,16 +47,7 @@
 
 	//Don't shoot yourself, thanks
 	if(target == user)
-		if(COOLDOWN_FINISHED(src, iff_halt_cooldown) && user.client)
-			playsound_client(user.client, 'sound/weapons/smartgun_fail.ogg', src, 25)
-			to_chat(user, SPAN_WARNING("[firing_weapon] halts firing as an IFF marked target crosses your field of fire!"))
-			COOLDOWN_START(src, iff_halt_cooldown, IFF_HALT_COOLDOWN)
-		if(iff_additional_fire_delay)
-			var/obj/item/weapon/gun/gun = firing_weapon
-			if(istype(gun))
-				gun.last_fired = world.time + iff_additional_fire_delay
-				SEND_SIGNAL(gun, COMSIG_GUN_STOP_FIRE) //for autofire
-				SEND_SIGNAL(gun, COMSIG_GUN_NEXT_FIRE_MODIFIED, gun.last_fired) //for autofire
+		apply_fire_delay(firing_weapon, user)
 		return COMPONENT_CANCEL_GUN_BEFORE_FIRE
 
 	//At some angles (scatter or otherwise) the original target is not in checked_turfs so we put it in there in order based on distance from user
@@ -85,16 +83,7 @@
 			if(checked_living.get_target_lock(user.faction_group))
 				if(HAS_TRAIT(checked_living, TRAIT_CLOAKED))
 					continue
-				if(COOLDOWN_FINISHED(src, iff_halt_cooldown) && user.client)
-					playsound_client(user.client, 'sound/weapons/smartgun_fail.ogg', src, 25)
-					to_chat(user, SPAN_WARNING("[firing_weapon] halts firing as an IFF marked target crosses your field of fire!"))
-					COOLDOWN_START(src, iff_halt_cooldown, IFF_HALT_COOLDOWN)
-				if(iff_additional_fire_delay)
-					var/obj/item/weapon/gun/gun = firing_weapon
-					if(istype(gun))
-						gun.last_fired = world.time + iff_additional_fire_delay
-						SEND_SIGNAL(gun, COMSIG_GUN_STOP_FIRE) //for autofire
-						SEND_SIGNAL(gun, COMSIG_GUN_NEXT_FIRE_MODIFIED, gun.last_fired) //for autofire
+				apply_fire_delay(firing_weapon, user)
 				return COMPONENT_CANCEL_GUN_BEFORE_FIRE
 
 			return //if we have a target we *can* hit and find it before any IFF targets we want to fire
@@ -106,5 +95,16 @@
 		RegisterSignal(parent, COMSIG_GUN_BEFORE_FIRE, PROC_REF(check_firing_lane))
 	else
 		UnregisterSignal(parent, COMSIG_GUN_BEFORE_FIRE)
+
+/// Applies IFF prevention firing delay
+/datum/component/iff_fire_prevention/proc/apply_fire_delay(obj/firing_weapon, mob/living/user)
+	playsound_client(user.client, 'sound/weapons/smartgun_fail.ogg', src, 25)
+	to_chat(user, SPAN_WARNING("[firing_weapon] halts firing as an IFF marked target crosses your field of fire!"))
+	COOLDOWN_START(src, iff_halt_cooldown, IFF_HALT_COOLDOWN + iff_additional_fire_delay)
+	if(iff_additional_fire_delay)
+		var/obj/item/weapon/gun/gun = firing_weapon
+		if(istype(gun))
+			gun.last_fired = world.time + iff_additional_fire_delay
+			SEND_SIGNAL(gun, COMSIG_GUN_NEXT_FIRE_MODIFIED, gun.last_fired) //for autofire
 
 #undef IFF_HALT_COOLDOWN

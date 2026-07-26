@@ -192,7 +192,7 @@
 
 /obj/item/mre_food_packet/twe/dessert
 	name = "\improper ORP dessert"
-	desc = "An Operatipn Ration Pack side component. Contains a sweet dessert, to be eaten after the main (or before, if you're rebellious)."
+	desc = "An Operation Ration Pack side component. Contains a sweet dessert, to be eaten after the main (or before, if you're rebellious)."
 	icon_state = "twe_dessert"
 	food_list = list(
 		/obj/item/reagent_container/food/snacks/mre_food/twe/dessert/chocobar,

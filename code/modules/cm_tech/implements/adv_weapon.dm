@@ -1,7 +1,7 @@
 
 /obj/item/techtree_advanced_weapon_kit
 	name = "advanced weapon kit"
-	desc = "It seems to be a kit to choose an advanced weapon"
+	desc = "It seems to be a kit to choose an advanced weapon."
 
 	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "wrench"
@@ -24,7 +24,7 @@
 
 /obj/item/techtree_advanced_weapon_kit/railgun
 	name = "advanced weapon kit"
-	desc = "It seems to be a kit to choose an advanced weapon"
+	desc = "It seems to be a kit to choose an advanced weapon."
 
 	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "wrench"
@@ -36,7 +36,7 @@
 
 /obj/item/weapon/gun/rifle/techweb_railgun
 	name = "\improper Railgun"
-	desc = "A poggers hellbliterator"
+	desc = "A poggers hellbliterator."
 	icon_state = "m42a"
 	item_state = "m42a"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/marksman_rifles.dmi'
@@ -52,7 +52,7 @@
 	fire_sound = 'sound/weapons/gun_sniper.ogg'
 	current_mag = /obj/item/ammo_magazine/techweb_railgun
 	force = 12
-	wield_delay = WIELD_DELAY_HORRIBLE //Ends up being 1.6 seconds due to scope
+	wield_delay = WEAPON_DELAY_HORRIBLE //Ends up being 1.6 seconds due to scope
 	zoomdevicename = "scope"
 	attachable_allowed = list()
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WIELDED_FIRING_ONLY

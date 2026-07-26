@@ -43,7 +43,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	///Sentry faction stuff
 	var/faction_label = "USCM Only"
 	var/list/faction_group = FACTION_LIST_ARES_MARINE
-	var/list/faction_options = list("USCM Only" = FACTION_LIST_ARES_MARINE, "Wey-Yu Only" = FACTION_WY, "USCM & Wey-Yu" = FACTION_LIST_ARES_ALL, "ARES Only" = FACTION_LIST_ARES_ALONE)
+	var/list/faction_options = list("USCM Only" = FACTION_LIST_ARES_MARINE, "Wey-Yu Only" = FACTION_LIST_ARES_WY, "USCM & Wey-Yu" = FACTION_LIST_ARES_ALL, "ARES Only" = FACTION_LIST_ARES_ALONE)
 	var/list/core_sentries = list()
 
 /datum/ares_link/New()
@@ -127,6 +127,16 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 		apollo.broadcast(ai, broadcast_message)
 	for(var/mob/listener in (GLOB.human_mob_list + GLOB.dead_mob_list))
 		if(listener.hear_apollo())//Only plays sound to mobs and not observers, to reduce spam.
+			playsound_client(listener.client, sound('sound/misc/interference.ogg'), listener, vol = 45)
+
+/proc/ares_artemis_talk(broadcast_message)
+	var/datum/language/artemis/artemis = GLOB.all_languages[LANGUAGE_ARTEMIS]
+	for(var/mob/living/silicon/decoy/ship_ai/ai in GLOB.ai_mob_list)
+		if(ai.stat == DEAD)
+			return FALSE
+		artemis.broadcast(ai, broadcast_message)
+	for(var/mob/listener in (GLOB.human_mob_list + GLOB.dead_mob_list))
+		if(listener.hear_artemis())//Only plays sound to mobs and not observers, to reduce spam.
 			playsound_client(listener.client, sound('sound/misc/interference.ogg'), listener, vol = 45)
 
 /proc/ares_can_interface()

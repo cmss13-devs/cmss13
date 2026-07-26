@@ -1,44 +1,53 @@
-/datum/species/synthetic/colonial/working_joe
+/datum/species/synthetic/gen_two/gen_one/working_joe
 	name = SYNTH_WORKING_JOE
 	name_plural = "Working Joes"
-	death_message = "violently gargles fluid and seizes up, the glow in their eyes dimming..."
-	flags = parent_type::flags & ~HAS_SKIN_COLOR
 	burn_mod = 0.65 // made for hazardous environments, withstanding temperatures up to 1210 degrees
-	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES, TRAIT_EMOTE_CD_EXEMPT, TRAIT_CANNOT_EAT, TRAIT_UNSTRIPPABLE, TRAIT_IRON_TEETH)
+	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES, TRAIT_EMOTE_CD_EXEMPT, TRAIT_CANNOT_EAT, TRAIT_UNSTRIPPABLE, TRAIT_IRON_TEETH, TRAIT_POUNCE_RESISTANT)
 
 	slowdown = 0.45
-	hair_color = "#000000"
-	icobase = 'icons/mob/humans/species/r_synthetic.dmi'
-	deform = 'icons/mob/humans/species/r_synthetic.dmi'
 	/// Used to assign which variant of emote_panel to give to user
 	var/emote_panel_type = /datum/joe_emote_panel
 
-/datum/species/synthetic/colonial/working_joe/hazard
+/datum/species/synthetic/gen_two/gen_one/working_joe/hazard
 	name = SYNTH_HAZARD_JOE //TECHNICALLY the proper name would be Hazard Working Joes, but we will stick with Hazard Joe for now
 	name_plural = "Hazard Joes"
 	emote_panel_type = /datum/joe_emote_panel/hazard
 
-/datum/species/synthetic/colonial/working_joe/hazard/handle_death(mob/living/carbon/human/dying_joe, gibbed)
+/datum/species/synthetic/gen_two/gen_one/working_joe/hazard/handle_death(mob/living/carbon/human/dying_joe, gibbed)
 	playsound(get_turf(dying_joe), "hj_death", 25, FALSE)
 
-/datum/species/synthetic/colonial/working_joe/upp
+/datum/species/synthetic/gen_two/gen_one/working_joe/upp
 	name = SYNTH_UPP_JOE
 	name_plural = "Dzho Automaton"
 	emote_panel_type = /datum/joe_emote_panel/upp
 
-/datum/species/synthetic/colonial/working_joe/upp/handle_death(mob/living/carbon/human/dying_joe, gibbed)
+/datum/species/synthetic/gen_two/gen_one/working_joe/upp/handle_death(mob/living/carbon/human/dying_joe, gibbed)
 	playsound(get_turf(dying_joe), "upp_wj_death", 25, FALSE)
 
-/datum/species/synthetic/colonial/working_joe/handle_post_spawn(mob/living/carbon/human/joe)
+/datum/species/synthetic/gen_two/gen_one/working_joe/daniel
+	name = SYNTH_DANIEL
+	name_plural = "Daniels"
+	emote_panel_type = /datum/joe_emote_panel/daniel
+	icobase = 'icons/mob/humans/species/r_daniel.dmi'
+
+	eyes_help = list(15, 237, 237) //red, green, blue
+	eyes_disarm = list(15, 237, 237)
+	eyes_grab = list(15, 237, 237)
+	eyes_harm = list(255, 0, 0)
+
+/datum/species/synthetic/gen_two/gen_one/working_joe/daniel/handle_death(mob/living/carbon/human/dying_joe, gibbed)
+	playsound(get_turf(dying_joe), "daniel_death", 25, FALSE)
+
+/datum/species/synthetic/gen_two/gen_one/working_joe/handle_post_spawn(mob/living/carbon/human/joe)
 	. = ..()
 	give_action(joe, /datum/action/joe_emote_panel)
 
 // Special death noise for Working Joe
-/datum/species/synthetic/colonial/working_joe/handle_death(mob/living/carbon/human/dying_joe, gibbed)
+/datum/species/synthetic/gen_two/gen_one/working_joe/handle_death(mob/living/carbon/human/dying_joe, gibbed)
 	playsound(get_turf(dying_joe), "wj_death", 25, FALSE)
 
 /// Open the WJ's emote panel, which allows them to use voicelines
-/datum/species/synthetic/colonial/working_joe/open_emote_panel()
+/datum/species/synthetic/gen_two/gen_one/working_joe/open_emote_panel()
 	var/datum/joe_emote_panel/ui = new emote_panel_type(usr)
 	ui.ui_interact(usr)
 
@@ -64,7 +73,7 @@
 		return
 
 	var/mob/living/carbon/human/human_owner = owner
-	var/datum/species/synthetic/colonial/working_joe/joe_species = human_owner.species
+	var/datum/species/synthetic/gen_two/gen_one/working_joe/joe_species = human_owner.species
 	joe_species.open_emote_panel()
 
 
@@ -132,6 +141,23 @@
 	data["emotes"] = list()
 
 	for(var/datum/emote/living/carbon/human/synthetic/working_joe/emote as anything in GLOB.uppj_emotes)
+		data["emotes"] += list(list(
+			"id" = initial(emote.key),
+			"text" = (initial(emote.override_say) || initial(emote.say_message)),
+			"category" = initial(emote.category),
+			"path" = "[emote]",
+		))
+
+	return data
+
+/datum/joe_emote_panel/daniel/ui_static_data(mob/user)
+	var/list/data = list()
+
+	data["theme"] = "crtwhite"
+	data["categories"] = GLOB.daniel_categories
+	data["emotes"] = list()
+
+	for(var/datum/emote/living/carbon/human/synthetic/working_joe/emote as anything in GLOB.daniel_emotes)
 		data["emotes"] += list(list(
 			"id" = initial(emote.key),
 			"text" = (initial(emote.override_say) || initial(emote.say_message)),

@@ -60,7 +60,7 @@ GLOBAL_DATUM(almayer_aa_cannon, /obj/structure/anti_air_cannon)
 /obj/structure/machinery/computer/aa_console/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "AntiAirConsole", "[src.name]")
+		ui = new(user, src, "AntiAirConsole", "[capitalize(name)]")
 		ui.open()
 
 

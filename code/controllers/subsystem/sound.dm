@@ -11,7 +11,7 @@ SUBSYSTEM_DEF(sound)
 	var/list/run_hearers = null // Hearers for currently being processed template
 
 /datum/controller/subsystem/sound/Initialize()
- 	// We just defer accepting sounds to play until SS is initialized
+	// We just defer accepting sounds to play until SS is initialized
 	// That lets us ignore all the sounds caused ie. by rustling abstract items... Yep.
 	return SS_INIT_SUCCESS
 

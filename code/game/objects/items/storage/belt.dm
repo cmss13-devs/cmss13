@@ -704,7 +704,7 @@
 
 /obj/item/storage/belt/security/MP/WY
 	name = "\improper M276-C corporate security rig"
-	desc = "A generic corporate adaptation of the M276 load-bearing equipment, designed for corporate security. This modular black rig features multiple pouches for carrying restraints, ammunition, and a mix of lethal and non-lethal equipment for maintaining order."
+	desc = "A Weyland-Yutani adaptation of the M276 load-bearing equipment, designed for corporate security forces. This modular black rig features multiple pouches for carrying restraints, ammunition, and a mix of lethal and non-lethal equipment for maintaining order."
 
 /obj/item/storage/belt/security/MP/WY/full/fill_preset_inventory()
 	new /obj/item/weapon/gun/energy/taser(src)

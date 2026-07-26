@@ -3,6 +3,14 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/lava/asteroid/directions/south,
 /area/fire_colony/exterior/valley/north)
+"ah" = (
+/obj/structure/flora/tree/alien/tree_3,
+/obj/structure/flora/alien/sparsegrass/sparsegrass_3{
+	pixel_x = -5;
+	pixel_y = 4
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/north)
 "al" = (
 /turf/open/lava/basalt/basalt6,
 /area/fire_colony/exterior/valley/northeast)
@@ -199,6 +207,13 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/lava/asteroid/directions/north,
 /area/fire_colony/exterior/valley/north)
+"gg" = (
+/obj/structure/flora/alien/sparsegrass/sparsegrass_1{
+	pixel_x = 5;
+	pixel_y = 7
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/north)
 "gs" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -306,9 +321,10 @@
 /area/fire_colony/exterior/valley/north)
 "jy" = (
 /obj/structure/flora/alien/chilli_bush_no_light{
-	pixel_x = 1;
-	pixel_y = 11
+	pixel_x = 4;
+	pixel_y = 1
 	},
+/obj/effect/lava/edges/basalt/l_piece,
 /turf/open/lava/brock,
 /area/fire_colony/exterior/valley/north)
 "jP" = (
@@ -434,6 +450,13 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/lava/asteroid/directions/southwest,
 /area/fire_colony/exterior/valley/north)
+"mX" = (
+/obj/structure/flora/alien/sparsegrass/sparsegrass_3{
+	pixel_x = 8;
+	pixel_y = 3
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/north)
 "nr" = (
 /obj/effect/lava/edges/basalt/side_rock,
 /obj/effect/lava/edges/basalt/side_rock{
@@ -461,8 +484,16 @@
 /turf/open/lava/basalt/basalt12,
 /area/fire_colony/exterior/valley/north)
 "op" = (
-/obj/structure/flora/tree/alien/tree_4,
-/turf/open/lava/brock,
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1
+	},
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/turf/open/lava/dirt,
 /area/fire_colony/exterior/valley/north)
 "ow" = (
 /obj/structure/flora/tree/alien/tree_8{
@@ -470,8 +501,8 @@
 	pixel_y = -2
 	},
 /obj/structure/flora/alien/chilli_bush_no_light{
-	pixel_x = -7;
-	pixel_y = 14
+	pixel_x = -3;
+	pixel_y = 12
 	},
 /turf/open/lava/brock,
 /area/fire_colony/exterior/valley/north)
@@ -514,9 +545,8 @@
 /turf/open/lava/basalt/basalt8,
 /area/fire_colony/exterior/valley/northeast)
 "pG" = (
-/obj/structure/flora/alien/sparsegrass/sparsegrass_1{
-	pixel_x = -2;
-	pixel_y = 2
+/obj/structure/flora/alien/sparsegrass/sparsegrass_2{
+	pixel_y = 7
 	},
 /turf/open/lava/brock,
 /area/fire_colony/exterior/valley/north)
@@ -594,13 +624,12 @@
 /turf/open/lava/asteroid/directions/west,
 /area/fire_colony/exterior/valley/north)
 "rp" = (
-/obj/effect/lava/edges/basalt/l_piece{
-	dir = 1
+/obj/effect/lava/edges/basalt/l_piece,
+/obj/structure/flora/alien/sparsegrass/sparsegrass_3{
+	pixel_x = 6;
+	pixel_y = -6
 	},
-/obj/effect/lava/edges/basalt/corner_rock{
-	dir = 1
-	},
-/turf/open/lava/sand,
+/turf/open/lava/brock,
 /area/fire_colony/exterior/valley/north)
 "rq" = (
 /obj/structure/fence/slim/blue,
@@ -675,7 +704,7 @@
 "tC" = (
 /obj/structure/flora/alien/sparsegrass/sparsegrass_1{
 	pixel_x = -3;
-	pixel_y = 1
+	pixel_y = -10
 	},
 /turf/open/lava/brock,
 /area/fire_colony/exterior/valley/north)
@@ -780,8 +809,9 @@
 "xR" = (
 /obj/structure/flora/alien/chilli_bush/chilli_bush_1{
 	pixel_y = 2;
-	pixel_x = 3
+	pixel_x = 4
 	},
+/obj/effect/lava/edges/basalt/l_piece,
 /turf/open/lava/brock,
 /area/fire_colony/exterior/valley/north)
 "yw" = (
@@ -861,9 +891,9 @@
 /turf/open/lava/asteroid/directions/southeast,
 /area/fire_colony/exterior/valley/north)
 "zV" = (
-/obj/structure/flora/alien/sparsegrass/sparsegrass_1{
-	pixel_x = -4;
-	pixel_y = 2
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
+	pixel_x = 4;
+	pixel_y = 13
 	},
 /turf/open/lava/brock,
 /area/fire_colony/exterior/valley/north)
@@ -971,6 +1001,10 @@
 /obj/effect/lava/edges/basalt/corner_rock,
 /turf/open/lava/dirt,
 /area/fire_colony/exterior/valley/north)
+"DK" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/northeast)
 "DL" = (
 /obj/structure/flora/alien/sparsegrass/sparsegrass_3{
 	pixel_x = 4;
@@ -1026,6 +1060,10 @@
 	},
 /turf/open/lava/dirt,
 /area/fire_colony/exterior/clearing/north)
+"Gp" = (
+/obj/structure/flora/tree/alien/tree_5,
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/north)
 "GF" = (
 /obj/structure/fence/slim/blue/door,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -1172,6 +1210,13 @@
 /obj/effect/lava/edges/basalt/side_rock,
 /turf/open/lava/dirt,
 /area/fire_colony/exterior/valley/northeast)
+"JT" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/obj/structure/flora/tree/alien/tree_4,
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/valley/north)
 "JY" = (
 /turf/open/lava/basalt/basalt11,
 /area/fire_colony/exterior/valley/north)
@@ -1212,6 +1257,13 @@
 	},
 /turf/open/lava/brock,
 /area/fire_colony/exterior/clearing/north)
+"Lf" = (
+/obj/structure/flora/alien/chilli_bush_no_light/chilli_bush_1{
+	pixel_x = 6;
+	pixel_y = 13
+	},
+/turf/open/lava/brock,
+/area/fire_colony/exterior/valley/north)
 "Lo" = (
 /obj/structure/fence/slim/blue,
 /turf/open/lava/metal/warnplate/east,
@@ -1320,6 +1372,15 @@
 /obj/effect/lava/edges/basalt/corner_rock,
 /turf/open/lava/sand,
 /area/fire_colony/exterior/valley/north)
+"ON" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1
+	},
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/turf/open/lava/basalt/basalt0,
+/area/fire_colony/exterior/valley/north)
 "OQ" = (
 /obj/structure/flora/tree/alien/tree_8{
 	pixel_x = -18;
@@ -1336,8 +1397,8 @@
 /area/fire_colony/exterior/valley/northeast)
 "PA" = (
 /obj/structure/flora/alien/sparsegrass/sparsegrass_1{
-	pixel_x = 4;
-	pixel_y = -2
+	pixel_x = -1;
+	pixel_y = -1
 	},
 /turf/open/lava/brock,
 /area/fire_colony/exterior/valley/north)
@@ -1465,8 +1526,8 @@
 /area/fire_colony/exterior/valley/northeast)
 "SI" = (
 /obj/structure/flora/alien/sparsegrass/sparsegrass_1{
-	pixel_x = -2;
-	pixel_y = 1
+	pixel_x = -8;
+	pixel_y = -3
 	},
 /turf/open/lava/brock,
 /area/fire_colony/exterior/valley/north)
@@ -1590,8 +1651,11 @@
 /area/fire_colony/exterior/valley/north)
 "XR" = (
 /obj/structure/flora/alien/chilli_bush_no_light{
-	pixel_x = 3;
-	pixel_y = 9
+	pixel_x = -5;
+	pixel_y = 2
+	},
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
 	},
 /turf/open/lava/brock,
 /area/fire_colony/exterior/valley/north)
@@ -1687,7 +1751,7 @@ HS
 Rx
 nU
 ol
-mN
+rp
 nU
 eH
 eH
@@ -1707,9 +1771,9 @@ Sc
 lE
 dv
 MA
-ML
+mm
 cK
-JY
+tt
 NM
 az
 Rt
@@ -1741,7 +1805,7 @@ xr
 (4,1,1) = {"
 Ig
 tt
-rP
+op
 HH
 QT
 UW
@@ -1750,10 +1814,10 @@ nU
 Tj
 nU
 tC
-SX
+Gp
 PA
 mN
-SX
+Tj
 ML
 ID
 MX
@@ -1763,9 +1827,9 @@ Gn
 (5,1,1) = {"
 nU
 AM
-JY
+ah
 VJ
-rp
+FD
 OH
 lE
 en
@@ -1784,9 +1848,9 @@ yz
 "}
 (6,1,1) = {"
 jP
-ML
-Rt
-Ac
+QS
+Lf
+mX
 az
 mf
 SU
@@ -1807,7 +1871,7 @@ Cl
 (7,1,1) = {"
 tt
 JM
-sr
+ON
 ow
 Ej
 tt
@@ -1917,8 +1981,8 @@ aO
 (12,1,1) = {"
 tt
 JE
-op
-WJ
+Ac
+JT
 lA
 fI
 Sc
@@ -1939,7 +2003,7 @@ ZL
 (13,1,1) = {"
 ML
 WJ
-Rt
+gg
 pG
 eH
 SX
@@ -2054,7 +2118,7 @@ aT
 tk
 Km
 eU
-Vl
+zH
 nr
 uB
 ww
@@ -2103,7 +2167,7 @@ IU
 pI
 Dt
 yN
-QU
+Uh
 sC
 eV
 If
@@ -2125,7 +2189,7 @@ yX
 ww
 Fa
 Zb
-Fa
+DK
 oX
 Ud
 yw

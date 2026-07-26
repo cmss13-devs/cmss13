@@ -218,6 +218,19 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	dollar_cost = 20
 	containertype = /obj/structure/largecrate/black_market
 
+/datum/supply_packs/contraband/seized/a_m36
+	name = "A-M36 experimental smg crate (x5 magazines included)"
+	contains = list(
+		/obj/item/weapon/gun/smg/a_m36,
+		/obj/item/ammo_magazine/smg/a_m36,
+		/obj/item/ammo_magazine/smg/a_m36,
+		/obj/item/ammo_magazine/smg/a_m36,
+		/obj/item/ammo_magazine/smg/a_m36,
+		/obj/item/ammo_magazine/smg/a_m36,
+	)
+	dollar_cost = 60
+	containertype = /obj/structure/largecrate/black_market
+
 /datum/supply_packs/contraband/seized/m16
 	name = "M16 rifle crate (x4 magazines included)"
 	contains = list(

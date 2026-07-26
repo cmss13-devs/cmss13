@@ -1642,6 +1642,18 @@
 	plane = FLOOR_PLANE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
+/obj/structure/prop/invuln/joey/bag
+	name = "synthetic storage unit"
+	desc = "A vertical storage bay designed to house inactive Working Joe synthetics, keeping them bagged, preserved, and ready for deployment."
+	icon = 'icons/obj/structures/machinery/working_joe_storage.dmi'
+	icon_state = "working_joe_storage_bluebag1_alt"
+	bound_height = 32
+	bound_width = 32
+	light_on = 1
+	light_color = "#dcc687"
+	light_range = 2
+	light_power = 1
+
 // Body Bag Pile
 
 /obj/structure/prop/body_bag_pile
@@ -1781,6 +1793,7 @@
 
 /obj/structure/prop/fire_colony/dense/broken_ai_core
 	name = "sabotaged AI core"
+	desc = "The sabotaged central AI core that once coordinated the colony's 'Working Joe' network. It's screens and casing have been torn apart and it's internals deliberately destroyed, leaving it far beyond any practical repair."
 	icon = 'icons/obj/structures/machinery/ai.dmi'
 	icon_state = "hydra-damaged"
 	anchored = TRUE

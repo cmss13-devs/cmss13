@@ -169,7 +169,7 @@
 /datum/ammo/bullet/smg/a_m36
 	name = "armor-piercing laserbolt"
 	icon_state = "redtrac"
-	damage = 25
+	damage = 30
 	accurate_range = 5
 	effective_range_max = 6
 	penetration = ARMOR_PENETRATION_TIER_2
@@ -181,7 +181,7 @@
 	flags_ammo_behavior = AMMO_LASER
 	hit_effect_color = "#ff0000"
 	///chance of the bullet burning the mob
-	var/ignition_probability = 10
+	var/ignition_probability = 5
 
 /datum/ammo/bullet/smg/a_m36/on_hit_mob(mob/target, obj/projectile/bullet)
 	..()

@@ -154,6 +154,7 @@
 /area/fire_colony/exterior/underground/excavation/south
 	name = "\improper Southern Valleys - Excavation Site"
 	icon_state = "alarm_down"
+	unoviable_timer = 25 MINUTES
 
 /area/fire_colony/exterior/underground/excavation/north
 	name = "\improper North Eastern Valleys - Excavation Site"
@@ -184,6 +185,7 @@
 
 /area/fire_colony/exterior/underground/caves/south_west
 	icon_state = "alarm_down"
+	unoviable_timer = 25 MINUTES
 
 /area/fire_colony/exterior/underground/caves/north_west
 	icon_state = "alarm_down"

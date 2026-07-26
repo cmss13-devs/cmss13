@@ -67,17 +67,18 @@
 	else if(istype(A, /obj/effect/blocker/water/toxic))
 		//multitile vehicles are, well, multitile and will be receiving damage for each tile, so damage is low per tile.
 		take_damage = 10
+		if(!(world.time % 3))
+			playsound(A, 'sound/bullets/acid_impact1.ogg', 10, 1)
 
 	else if(istype(A, /obj/effect/blocker/lava))
-		take_damage = 15
+		take_damage = 10
+		if(!(world.time % 3))
+			playsound(A, 'sound/ambience/lava/lava_burn.ogg', 30, 1)
 
 	//then we check whether this locomotion module is acid-resistant
 	if(acid_resistant)
 		take_damage = take_damage / 2
 	health -= take_damage
-
-	if(!(world.time % 3))
-		playsound(A, 'sound/bullets/acid_impact1.ogg', 10, 1)
 
 	if(owner)
 		owner.healthcheck()

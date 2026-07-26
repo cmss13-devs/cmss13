@@ -462,7 +462,8 @@ GLOBAL_LIST_INIT(rbarrel_color_list, list(COLOR_SILVER,
 					/obj/item/weapon/gun/rifle/ar10 = /obj/item/ammo_magazine/rifle/ar10,
 					/obj/item/weapon/gun/rifle/type71 = /obj/item/ammo_magazine/rifle/type71,
 					/obj/item/weapon/gun/smg/fp9000 = /obj/item/ammo_magazine/smg/fp9000,
-					/obj/item/weapon/gun/rifle/w_ek_17 = /obj/item/ammo_magazine/rifle/w_ek_17
+					/obj/item/weapon/gun/rifle/w_ek_17 = /obj/item/ammo_magazine/rifle/w_ek_17,
+					/obj/item/weapon/gun/smg/a_m36 = /obj/item/ammo_magazine/smg/a_m36
 				)
 
 /obj/structure/largecrate/hunter_games_construction

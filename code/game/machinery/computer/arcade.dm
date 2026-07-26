@@ -207,44 +207,44 @@
 
 /obj/structure/machinery/computer/arcade/back
 
-	icon_state = "arcade_back"
+	icon_state = "arcadeback"
 
 /obj/structure/machinery/computer/arcade/red
 
-	icon_state = "arcade_red"
+	icon_state = "arcadered"
 
 /obj/structure/machinery/computer/arcade/red_back
 
-	icon_state = "arcade_red_back"
+	icon_state = "arcaderedback"
 
 /obj/structure/machinery/computer/arcade/blue
 
-	icon_state = "arcade_blue"
+	icon_state = "arcadeblue"
 
 /obj/structure/machinery/computer/arcade/blue_back
 
-	icon_state = "arcade_blue_back"
+	icon_state = "arcadeblueback"
 
 /obj/structure/machinery/computer/arcade/green
 
-	icon_state = "arcade_green"
+	icon_state = "arcadegreen"
 
 /obj/structure/machinery/computer/arcade/green_back
 
-	icon_state = "arcade_green_back"
+	icon_state = "arcadegreenback"
 
 /obj/structure/machinery/computer/arcade/green_stripe
 
-	icon_state = "arcade_greenstripe"
+	icon_state = "arcadegreenstripe"
 
 /obj/structure/machinery/computer/arcade/green_stripe_back
 
-	icon_state = "arcade_greenstripe_back"
+	icon_state = "arcadegreenstripeback"
 
 /obj/structure/machinery/computer/arcade/blue_stripe
 
-	icon_state = "arcade_bluestripe"
+	icon_state = "arcadebluestripe"
 
 /obj/structure/machinery/computer/arcade/blue_stripe_back
 
-	icon_state = "arcade_bluestripe_back"
+	icon_state = "arcadebluestripeback"

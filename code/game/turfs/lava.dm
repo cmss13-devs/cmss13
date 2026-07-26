@@ -23,7 +23,7 @@
 		var/mob/living/carbon/person = thing
 		var/can_stuck = 1
 		to_chat(person,SPAN_DANGER("The lava burns!"))
-		playsound(person,'sound/bullets/acid_impact1.ogg', 10, 1)
+		playsound(person,'sound/ambience/lava/lava_burn.ogg', 45, 1)
 		if(istype(person, /mob/living/carbon/xenomorph)||isyautja(person))
 			can_stuck = 1
 		var/new_slowdown = person.next_move_slowdown

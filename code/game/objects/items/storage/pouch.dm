@@ -190,8 +190,8 @@
 /obj/item/storage/pouch/survival/full/lasalle/fill_preset_inventory()
 	new /obj/item/device/flashlight/lantern/alt(src)
 	new /obj/item/tool/crowbar/tactical(src)
-	new /obj/item/storage/pill_bottle/packet/kelotane(src)
-	new /obj/item/stack/medical/bruise_pack(src)
+	new /obj/item/storage/pill_bottle/packet/kelo_oxy_mix(src) // fire colony has lot's of map hazards, effective kelo/oxy mix is necessary here, probably not on other maps.
+	new /obj/item/stack/medical/ointment(src)
 	new /obj/item/device/radio(src)
 	new /obj/item/attachable/bayonet/lb(src)
 	new /obj/item/stack/medical/splint(src)

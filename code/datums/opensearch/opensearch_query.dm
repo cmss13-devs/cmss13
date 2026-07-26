@@ -340,5 +340,5 @@
 	set desc = "Create an OpenSearch query quickly"
 	set category = null
 
-	var/datum/opensearch_query/query = SSopensearch.new_query(list(bootstrap))
+	var/datum/opensearch_query/query = SSopensearch.new_query(list(list(bootstrap)))
 	query.tgui_interact(usr)

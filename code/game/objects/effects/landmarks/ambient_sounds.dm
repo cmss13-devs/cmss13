@@ -65,7 +65,7 @@
 		'sound/ambience/lava/lava_river/lava_22.ogg',
 		'sound/ambience/lava/lava_river/lava_23.ogg',
 		'sound/ambience/lava/lava_river/lava_24.ogg',
-		'sound/ambience/lava/lava_river/lava_25.ogg'
+		'sound/ambience/lava/lava_river/lava_25.ogg',
 	)
 
 	min_delay = 6 SECONDS

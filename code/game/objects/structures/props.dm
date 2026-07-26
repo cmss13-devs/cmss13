@@ -1690,7 +1690,7 @@
 
 /obj/structure/prop/fire_colony
 	icon = 'icons/obj/structures/props/ice_colony/props.dmi'
-	icon_state = "pyro_tray"
+	icon_state = "pyro_tray_1"
 	density = TRUE
 
 /obj/structure/prop/fire_colony/dense

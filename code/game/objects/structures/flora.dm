@@ -980,7 +980,7 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 
 /obj/structure/flora/alien
 	icon = 'icons/obj/structures/props/natural/vegetation/alien_flora.dmi'
-	icon_state = "chilli_bush"
+	icon_state = "red_bulb_1"
 	cut_level = PLANT_CUT_KNIFE
 	projectile_coverage = 0
 	layer = UNDERFLOOR_OBJ_LAYER
@@ -988,7 +988,7 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	density = FALSE
 
 /obj/structure/flora/alien/chilli_bush
-	icon_state = "chilli_bush"
+	icon_state = "chilli_bush_1"
 	light_on = 1
 	light_color = "#00f4ff"
 	light_range = 2

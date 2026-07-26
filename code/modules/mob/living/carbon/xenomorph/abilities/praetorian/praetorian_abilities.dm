@@ -226,7 +226,7 @@
 	plasma_cost = 80
 
 	var/activation_delay = 1 SECONDS
-	var/prime_delay = 1 SECONDS
+	var/prime_delay = 1.5 SECONDS
 
 /datum/action/xeno_action/activable/prae_acid_ball/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/acid_ball_user = owner

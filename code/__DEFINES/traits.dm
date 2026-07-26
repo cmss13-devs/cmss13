@@ -258,7 +258,7 @@
 /// If the mob won't drop items held in face slot when downed
 #define TRAIT_IRON_TEETH "t_iron_teeth"
 
-// -- ability traits --
+// -- general ability traits --
 /// Xenos with this trait cannot have plasma transferred to them
 #define TRAIT_ABILITY_NO_PLASMA_TRANSFER "t_ability_no_plasma_transfer"
 /// Shows that the xeno queen is on ovi

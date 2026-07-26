@@ -14,7 +14,7 @@
 /datum/paygrade/cec/docent
 	paygrade = PAY_SHORT_CEC2
 	name = "Docent"
-	prefix = "Docent"
+	prefix = "Doc."
 	pay_multiplier = 0.3
 
 /datum/paygrade/cec/professor

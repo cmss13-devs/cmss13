@@ -460,7 +460,7 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 
 #define JOB_CEC_SEC "CEC Security Guard"
 #define JOB_CEC_SEC_SYNTH "CEC Security Guard Synthetic"
-#define JOB_CEC_TRAINEE "Assisstant Professor"
+#define JOB_CEC_TRAINEE "Assistant Professor"
 #define JOB_CEC_DOCENT "Docent"
 #define JOB_CEC_PROFESSOR "Professor"
 #define JOB_CEC_VICE_RECTOR "Vice-Rector"

@@ -1505,8 +1505,9 @@
 	name = "CEC headset"
 	desc = "A headset commonly worn by Cosmos Exploration Corps personnel."
 	icon_state = "generic_headset"
-	frequency = list(UPP_FREQ, COLONY_FREQ)
+	frequency = UPP_FREQ
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_CEC
+	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/upp)
 	additional_hud_types = list(MOB_HUD_FACTION_UPP)
 	minimap_flag = MINIMAP_FLAG_UPP

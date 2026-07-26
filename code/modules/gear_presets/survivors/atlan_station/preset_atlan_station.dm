@@ -3,12 +3,14 @@
 	assignment = "Issledovatel' Korpusa Kosmicheskoy Eksploratsii"
 	minimap_icon = "upp_sci"
 	minimap_background = "background_upp_charlie"
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_CHINESE)
+	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_CHINESE, LANGUAGE_ENGLISH)
+	paygrades = list(PAY_SHORT_CEC1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_CEC2 = JOB_PLAYTIME_TIER_1, PAY_SHORT_CEC3 = JOB_PLAYTIME_TIER_2, PAY_SHORT_CEC4 = JOB_PLAYTIME_TIER_3)
 	faction = FACTION_UPP
 	faction_group = FACTION_LIST_SURVIVOR_UPP
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	origin_override = ORIGIN_UPP
 	skills = /datum/skills/civilian/survivor/scientist
+	idtype = /obj/item/card/id/cec
 
 	survivor_variant = SCIENTIST_SURVIVOR
 
@@ -81,6 +83,91 @@
 			else
 				new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/science(new_human), WEAR_EYES)
 			..()
+
+/datum/equipment_preset/survivor/cec_liaison
+	name = "Survivor - UPP - Atlan Cosmos Exploration Corps Liaison" //CEC Representative/Liaison, in exchange for no WY/Hyperdyne connections they get scientist skills
+	assignment = "Svyaz' Korpusa Kosmicheskoy Eksploratsii"
+	minimap_icon = "upp_sci"
+	skills = /datum/skills/civilian/survivor/scientist
+	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_ENGLISH, LANGUAGE_CHINESE)
+	paygrades = list(PAY_SHORT_CEC2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_CEC3 = JOB_PLAYTIME_TIER_2, PAY_SHORT_CEC4 = JOB_PLAYTIME_TIER_3)
+	faction = FACTION_CEC
+	job_title = JOB_CEC_PROFESSOR
+	faction_group = list(FACTION_CEC, FACTION_LIST_SURVIVOR_UPP,)
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	origin_override = ORIGIN_UPP
+	idtype = /obj/item/card/id/cec
+
+	survivor_variant = CORPORATE_SURVIVOR
+
+/datum/equipment_preset/survivor/cec_liaison/load_rank(mob/living/carbon/human/new_human, client/mob_client)
+	if(paygrades.len == 1)
+		return paygrades[1]
+	var/playtime
+	if(!mob_client)
+		playtime = JOB_PLAYTIME_TIER_1
+	else
+		playtime = get_job_playtime(mob_client, JOB_CORPORATE_LIAISON)
+		if((playtime >= JOB_PLAYTIME_TIER_1) && !mob_client.prefs.playtime_perks)
+			playtime = JOB_PLAYTIME_TIER_1
+	var/final_paygrade
+	for(var/current_paygrade as anything in paygrades)
+		var/required_time = paygrades[current_paygrade]
+		if(required_time - playtime > 0)
+			break
+		final_paygrade = current_paygrade
+	if(!final_paygrade)
+		. = "???"
+		CRASH("[key_name(new_human)] spawned with no valid paygrade.")
+
+	return final_paygrade
+
+
+/datum/equipment_preset/survivor/cec_liaison/load_gear(mob/living/carbon/human/new_human)
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/upp(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/full(new_human), WEAR_R_STORE)
+
+	var/random_trenchcoat = rand(1,2)
+	switch(random_trenchcoat)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/trenchcoat/brown(new_human), WEAR_JACKET)
+		if(2)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/trenchcoat/grey(new_human), WEAR_JACKET)
+
+	var/random_scientist_satchel= rand(1,3)
+	switch(random_scientist_satchel)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
+		if(2)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/black(new_human), WEAR_BACK)
+		if(3)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/blue(new_human), WEAR_BACK)
+
+	var/random_scientist_glasses= rand(1,3)
+	switch(random_scientist_glasses)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/regular(new_human), WEAR_FACE)
+		if(2)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/regular/hippie(new_human), WEAR_FACE)
+		if(3)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/regular/hipster(new_human), WEAR_FACE)
+
+	var/random_professional_shoe = rand(1,3)
+	switch(random_professional_shoe)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
+		if(2)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup/brown(new_human), WEAR_FEET)
+		if(3)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp(new_human), WEAR_FEET)
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/scientist/hybrisa(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/cec_patch(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/cec(new_human), WEAR_L_EAR)
+	add_random_cl_survivor_loot(new_human)
+	..()
 
 /datum/equipment_preset/survivor/upp_colonist_atlan
 	name = "UPP - Atlan Civilian"
@@ -260,6 +347,7 @@
 	minimap_icon = "upp_doc"
 	minimap_background = "background_upp_medical"
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_CHINESE)
+	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)
 	faction = FACTION_UPP
 	faction_group = FACTION_LIST_SURVIVOR_UPP
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -385,79 +473,13 @@
 
 	..()
 
-
-
-/datum/equipment_preset/survivor/cec_liaison
-	name = "Survivor - UPP - Atlan Cosmos Exploration Corps Liaison" //CEC Representative/Liaison, in exchange for no WY/Hyperdyne connections they get scientist skills
-	assignment = "Svyaz' Korpusa Kosmicheskoy Eksploratsii"
-	minimap_icon = "upp_sci"
-	minimap_background = "background_hc_management"
-	skills = /datum/skills/civilian/survivor/scientist
-	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_ENGLISH, LANGUAGE_CHINESE)
-	paygrades = list(PAY_SHORT_CEC2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_CEC3 = JOB_PLAYTIME_TIER_2, PAY_SHORT_CEC4 = JOB_PLAYTIME_TIER_3)
-	job_title = JOB_CEC_DOCENT
-	faction = FACTION_CEC
-	faction_group = list(FACTION_CEC, FACTION_LIST_SURVIVOR_UPP,)
-	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	origin_override = ORIGIN_UPP
-	idtype = /obj/item/card/id/cec
-
-	survivor_variant = CORPORATE_SURVIVOR
-
-/datum/equipment_preset/survivor/cec_liaison/load_gear(mob/living/carbon/human/new_human)
-
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/cec(new_human), WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/upp(new_human), WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(new_human), WEAR_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/full(new_human), WEAR_R_STORE)
-
-	var/random_trenchcoat = rand(1,2)
-	switch(random_trenchcoat)
-		if(1)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/trenchcoat/brown(new_human), WEAR_JACKET)
-		if(2)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/trenchcoat/grey(new_human), WEAR_JACKET)
-
-	var/random_scientist_satchel= rand(1,3)
-	switch(random_scientist_satchel)
-		if(1)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
-		if(2)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/black(new_human), WEAR_BACK)
-		if(3)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/blue(new_human), WEAR_BACK)
-
-	var/random_scientist_glasses= rand(1,3)
-	switch(random_scientist_glasses)
-		if(1)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/regular(new_human), WEAR_FACE)
-		if(2)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/regular/hippie(new_human), WEAR_FACE)
-		if(3)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/regular/hipster(new_human), WEAR_FACE)
-
-	var/random_professional_shoe = rand(1,3)
-	switch(random_professional_shoe)
-		if(1)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
-		if(2)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup/brown(new_human), WEAR_FEET)
-		if(3)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp(new_human), WEAR_FEET)
-
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/scientist/hybrisa(new_human), WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/cec_patch(new_human), WEAR_ACCESSORY)
-	add_random_cl_survivor_loot(new_human)
-	..()
-
-
 /datum/equipment_preset/survivor/atlan_security
 	name = "Survivor - UPP - Atlan Station Security Officer"
 	assignment = "Sotrudnik Sluzhby Bezopasnosti"
 	faction_group = FACTION_LIST_SURVIVOR_PAP
 	minimap_icon = "upp_sec"
 	minimap_background = "background_upp_alpha"
-	paygrades = list(PAY_SHORT_PAP_MLTS = JOB_PLAYTIME_TIER_0, PAY_SHORT_PAP_SMLTS = JOB_PLAYTIME_TIER_3, PAY_SHORT_PAP_STRSH = JOB_PLAYTIME_TIER_4)
+	paygrades = list(PAY_SHORT_UE3 = JOB_PLAYTIME_TIER_0, PAY_SHORT_UE4 = JOB_PLAYTIME_TIER_1, PAY_SHORT_UE5 = JOB_PLAYTIME_TIER_2)
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_CHINESE, LANGUAGE_GERMAN)
 	faction = FACTION_UPP
 	skills = /datum/skills/civilian/survivor/marshal
@@ -811,18 +833,17 @@
 // Corporate
 
 /datum/equipment_preset/synth/survivor/atlan/corporate
-	name = "Survivor - Atlan Station - Synthetic - Hyperdyne - Executive Bodyguard"
+	name = "Survivor - Atlan Station - Synthetic - CEC - Executive Bodyguard"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	faction_group = FACTION_HYPERDYNE
-	faction = FACTION_HYPERDYNE
-	job_title = JOB_HC_SEC_SYNTH
-	assignment = JOB_HC_SEC_SYNTH
-	role_comm_title = "HC Sec Syn"
-	faction_group = FACTION_LIST_SURVIVOR_HYPERDYNE
+	faction = FACTION_CEC
+	job_title = JOB_CEC_SEC_SYNTH
+	assignment = JOB_CEC_SEC_SYNTH
+	role_comm_title = "CEC Sec Syn"
+	faction_group = list(FACTION_LIST_SURVIVOR_UPP, FACTION_CEC)
 	idtype = /obj/item/card/id/silver/cl/hyperdyne
 	survivor_variant = CORPORATE_SURVIVOR
 	minimap_background = "background_hc_management"
-	minimap_icon = "hc_synth"
+	minimap_icon = "upp_synth"
 
 /datum/equipment_preset/synth/survivor/atlan/corporate/load_gear(mob/living/carbon/human/new_human)
 	var/choice = rand(1,2)
@@ -899,6 +920,7 @@
 	minimap_icon = "upp_plt"
 	minimap_background = "background_upp"
 	faction_group = FACTION_LIST_SURVIVOR_UPP
+	paygrades = list(PAY_SHORT_CADMIN = JOB_PLAYTIME_TIER_0)
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH, LANGUAGE_CHINESE, LANGUAGE_GERMAN)
 	faction = FACTION_UPP
 	skills = /datum/skills/upp/commissar

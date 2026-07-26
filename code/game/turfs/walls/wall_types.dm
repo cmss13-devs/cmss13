@@ -955,9 +955,8 @@
 	if(!(turf_flags & TURF_HULL))
 		var/area/area = get_area(src)
 		area?.current_resin_count--
-	if(upper_wall)
+	if(!QDESTROYING(upper_wall))
 		upper_wall.dismantle_wall()
-		upper_wall = null
 	var/turf/above = SSmapping.get_turf_above(src)
 	while(above && istransparentturf(above))
 		above.update_vis_contents()
@@ -1045,14 +1044,15 @@
 
 /turf/closed/wall/resin/above/Destroy(force)
 	. = ..()
-	if(wall_below)
+	// Keep a local copy in case we accidentally destroy ourselves, or the proc will crash
+	var/turf/closed/wall/resin/wall_below = src.wall_below
+	var/obj/structure/mineral_door/resin/door_below = src.door_below
+	if(!QDESTROYING(wall_below)) // Don't cause a delete loop
 		wall_below.upper_wall = null
 		wall_below.dismantle_wall()
-		wall_below = null
 	if(door_below)
 		door_below.upper_wall = null
 		door_below.Dismantle(TRUE)
-		door_below = null
 	var/turf/above = SSmapping.get_turf_above(src)
 	if(above && istransparentturf(above))
 		above.update_vis_contents()

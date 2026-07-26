@@ -239,6 +239,172 @@
 				SPAN_DANGER("We tackle down [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 				SEND_SIGNAL(src, COMSIG_MOB_TACKLED_DOWN, attacking_xeno)
 				knocked_down = TRUE
+
+			// If the ravager fails RNG, they perform an accidental slash instead!
+			else if((attacking_xeno.caste.tacklefumbler == TRUE) && prob(25)) // 1/4 chance on non-stunning tackle
+				if(attacking_xeno.claw_restrained())
+					attacking_xeno.animation_attack_on(src)
+					attacking_xeno.visible_message(SPAN_NOTICE("[attacking_xeno] almost slashes [src]!"),
+					SPAN_XENONOTICE("We feel the strongest urge to destroy [src], but the Queen holds us back!"))
+					return XENO_ATTACK_ACTION
+
+				if(attacking_xeno.can_not_harm(src, check_hive_flags=FALSE)) // We manually check hive_flags later
+					attacking_xeno.animation_attack_on(src)
+					attacking_xeno.visible_message(SPAN_NOTICE("[attacking_xeno] nibbles [src]"),
+					SPAN_XENONOTICE("We nibble [src]"))
+					return XENO_ATTACK_ACTION
+
+				if(attacking_xeno.behavior_delegate && attacking_xeno.behavior_delegate.handle_slash(src))
+					return XENO_NO_DELAY_ACTION
+
+				if(stat == DEAD)
+					to_chat(attacking_xeno, SPAN_WARNING("We raise our claws to attack [src]!- but... they're already dead."))
+					return XENO_NO_DELAY_ACTION
+
+				if(attacking_xeno.caste && !attacking_xeno.caste.is_intelligent)
+					var/embryo_allied = FALSE
+					if(status_flags & XENO_HOST)
+						for(var/obj/item/alien_embryo/embryo in src)
+							if(HIVE_ALLIED_TO_HIVE(attacking_xeno.hivenumber, embryo.hivenumber))
+								embryo_allied = TRUE
+								break
+
+					if(embryo_allied)
+						if(HAS_TRAIT(src, TRAIT_NESTED))
+							attacking_xeno.animation_attack_on(src)
+							attacking_xeno.visible_message(SPAN_NOTICE("[attacking_xeno] nibbles [src]"),
+							SPAN_XENONOTICE("ATTACK!!!! Oh- [src] has a sister inside..."))
+							return XENO_NO_DELAY_ACTION
+						if(!HAS_FLAG(attacking_xeno.hive.hive_flags, XENO_SLASH_INFECTED))
+							attacking_xeno.animation_attack_on(src)
+							attacking_xeno.visible_message(SPAN_NOTICE("[attacking_xeno] nibbles [src]"),
+							SPAN_XENONOTICE("ATTACK!!!! Oh- [src] has a sister inside..."))
+							return XENO_ATTACK_ACTION
+					if(!HAS_FLAG(attacking_xeno.hive.hive_flags, XENO_SLASH_NORMAL))
+						attacking_xeno.animation_attack_on(src)
+						attacking_xeno.visible_message(SPAN_NOTICE("[attacking_xeno] nibbles [src]"),
+						SPAN_XENONOTICE("ATTACK!!!! Wait- we're not allowed to attack hosts anymore..."))
+						return XENO_ATTACK_ACTION
+
+				if(!unblockable && check_shields(attacking_xeno.name, get_dir(src, attacking_xeno), custom_response = TRUE)) // Blocking check
+					attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno]'s slash is blocked by [src]'s shield!"),
+					SPAN_DANGER("Our fumbling slash is blocked by [src]'s shield!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+					return XENO_ATTACK_ACTION
+
+				//From this point, we are certain a full attack will go out. Calculate damage and modifiers
+				attacking_xeno.track_slashes(attacking_xeno.caste_type) //Adds to slash stat.
+				var/damage = rand(attacking_xeno.melee_damage_lower, attacking_xeno.melee_damage_upper) + dam_bonus
+				var/acid_damage = attacking_xeno.behavior_delegate.melee_attack_modify_burn_damage(0, src)
+
+				//Frenzy auras stack in a way, then the raw value is multiplied by two to get the additive modifier
+				if(attacking_xeno.frenzy_aura > 0)
+					damage += (attacking_xeno.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER)
+					if(acid_damage)
+						acid_damage += (attacking_xeno.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER)
+
+				attacking_xeno.animation_attack_on(src)
+
+				//Somehow we will deal no damage on this attack
+				if(!damage)
+					playsound(attacking_xeno.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
+					attacking_xeno.animation_attack_on(src)
+					attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno] lunges at [src]!"),
+					SPAN_DANGER("We lunge at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+					return XENO_ATTACK_ACTION
+
+				attacking_xeno.flick_attack_overlay(src, "slash")
+				var/obj/limb/affecting
+				affecting = get_limb(rand_zone(attacking_xeno.zone_selected, 70))
+				if(!affecting) //No organ, just get a random one
+					affecting = get_limb(rand_zone(null, 0))
+				if(!affecting) //Still nothing??
+					affecting = get_limb("chest") //Gotta have a torso?!
+
+				var/armor_block = getarmor(affecting, ARMOR_MELEE)
+
+				if(wear_mask && check_zone(attacking_xeno.zone_selected) == "head")
+					if(istype(wear_mask, /obj/item/clothing/mask/gas/yautja))
+						var/knock_chance = 1
+						if(attacking_xeno.frenzy_aura > 0)
+							knock_chance += 2 * attacking_xeno.frenzy_aura
+						if(attacking_xeno.caste && attacking_xeno.caste.is_intelligent)
+							knock_chance += 2
+						knock_chance += min(floor(damage * 0.25), 10)
+						if(stat)
+							knock_chance = 75 // If you're unconscious, how are you keeping it on so well.
+						else if(HAS_TRAIT(src, TRAIT_YAUTJA_TECH))
+							knock_chance = min(knock_chance, 15) //Maximum of 15% chance.
+						else
+							knock_chance = min(knock_chance, 20)//If they don't know how it works (not Yautja) it's less useful.
+
+						if(prob(knock_chance))
+							playsound(loc, "alien_claw_metal", 25, 1)
+							attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno] smashes off [src]'s [wear_mask.name]!"),
+							SPAN_DANGER("We smash off [src]'s [wear_mask.name]!"), null, 5)
+							drop_inv_item_on_ground(wear_mask)
+							if(isspeciesyautja(src))
+								emote("roar")
+							else
+								emote("scream")
+							return XENO_ATTACK_ACTION
+
+				var/n_damage = armor_damage_reduction(GLOB.marine_melee, damage, armor_block)
+
+				if(attacking_xeno.behavior_delegate)
+					n_damage = attacking_xeno.behavior_delegate.melee_attack_modify_damage(n_damage, src)
+					attacking_xeno.behavior_delegate.melee_attack_additional_effects_target(src)
+					attacking_xeno.behavior_delegate.melee_attack_additional_effects_self()
+
+				var/slash_noise = attacking_xeno.slash_sound
+				var/list/slashdata = list("n_damage" = n_damage, "slash_noise" = slash_noise)
+				SEND_SIGNAL(src, COMSIG_HUMAN_XENO_ATTACK, slashdata, attacking_xeno)
+				var/f_damage = slashdata["n_damage"]
+				slash_noise = slashdata["slash_noise"]
+
+				//The normal attack proceeds
+				playsound(loc, slash_noise, 25, TRUE)
+				attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno] fumbles stupidly for a moment, then slashes [src]!"), null, null, CHAT_TYPE_XENO_COMBAT)
+				attacking_xeno.visible_message(SPAN_HIGHDANGER("Your oversized claws and small mind get in the way of restraining, slashing [src]!"), null, null, CHAT_TYPE_XENO_COMBAT)
+
+				handle_blood_splatter(get_dir(attacking_xeno.loc, src.loc))
+
+				last_damage_data = create_cause_data(initial(attacking_xeno.name), attacking_xeno)
+
+				//Logging, including anti-rulebreak logging
+				if(status_flags & XENO_HOST && stat != DEAD)
+					if(HAS_TRAIT(src, TRAIT_NESTED)) //Host was buckled to nest while infected, this is a rule break
+						attack_log += text("\[[time_stamp()]\] <font color='orange'><B>was [attacking_xeno.slash_verb]ed by [key_name(attacking_xeno)] while they were infected and nested</B></font>")
+						attacking_xeno.attack_log += text("\[[time_stamp()]\] <font color='red'><B>[attacking_xeno.slash_verb]ed [key_name(src)] while they were infected and nested</B></font>")
+						message_admins("[key_name(attacking_xeno)] [attacking_xeno.slash_verb]ed [key_name(src)] while they were infected and nested.") //This is a blatant rulebreak, so warn the admins
+					else //Host might be rogue, needs further investigation
+						attack_log += text("\[[time_stamp()]\] <font color='orange'>was [attacking_xeno.slash_verb]ed by [key_name(attacking_xeno)] while they were infected</font>")
+						attacking_xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>[attacking_xeno.slash_verb]ed [key_name(src)] while they were infected</font>")
+				else //Normal xenomorph friendship with benefits
+					attack_log += text("\[[time_stamp()]\] <font color='orange'>was [attacking_xeno.slash_verb]ed by [key_name(attacking_xeno)]</font>")
+					attacking_xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>[attacking_xeno.slash_verb]ed [key_name(src)]</font>")
+				log_attack("[key_name(attacking_xeno)] [attacking_xeno.slash_verb]ed [key_name(src)]")
+
+				//nice messages so people know that armor works
+				if(f_damage <= 0.34*damage)
+					to_chat(src, SPAN_WARNING("Your armor absorbs the blow!"))
+				else if(f_damage <= 0.67*damage)
+					to_chat(src, SPAN_WARNING("Your armor softens the blow!"))
+
+				apply_damage(f_damage, BRUTE, affecting, sharp = 1, edge = 1) //This should slicey dicey
+				if(acid_damage)
+					playsound(loc, "acid_strike", 25, 1)
+					var/armor_block_acid = getarmor(affecting, ARMOR_BIO)
+					var/n_acid_damage = armor_damage_reduction(GLOB.marine_melee, acid_damage, armor_block_acid)
+					//nice messages so people know that armor works
+					if(n_acid_damage <= 0.34*acid_damage)
+						to_chat(src, SPAN_WARNING("Your armor absorbs the acid!"))
+					else if(n_acid_damage <= 0.67*acid_damage)
+						to_chat(src, SPAN_WARNING("Your armor softens the acid!"))
+					apply_damage(n_acid_damage, BURN, affecting) //Burn damage
+
+				SEND_SIGNAL(attacking_xeno, COMSIG_HUMAN_ALIEN_ATTACK, src)
+
+				updatehealth()
 			else
 				playsound(loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
 				attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno] tries to tackle [src]!"),

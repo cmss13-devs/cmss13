@@ -113,7 +113,7 @@
 	var/datum/behavior_delegate/praetorian_valkyrie/behavior = xeno.behavior_delegate
 
 
-	if(!xeno.check_state() || xeno.action_busy)
+	if(xeno.action_busy)
 		return
 
 	if(!isxeno(target_atom))

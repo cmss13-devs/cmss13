@@ -1,13 +1,19 @@
 SUBSYSTEM_DEF(sound)
-	name   = "Sound"
-	flags   = SS_POST_FIRE_TIMING | SS_NO_INIT
-	wait   = 2
+	name       = "Sound"
+	wait       = 2
+	flags      = SS_POST_FIRE_TIMING
 	priority   = SS_PRIORITY_SOUND
-	runlevels   = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
+	init_order = SS_INIT_SOUND
+	runlevels  = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
 
 	var/list/template_queue = list() // Full Template Queue
 	var/list/run_queue = list() // Queue subset being processed during this tick
 	var/list/run_hearers = null // Hearers for currently being processed template
+
+/datum/controller/subsystem/sound/Initialize()
+ 	// We just defer accepting sounds to play until SS is initialized
+	// That lets us ignore all the sounds caused ie. by rustling abstract items... Yep.
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/sound/fire(resumed = FALSE)
 	if(!resumed) // Controller first firing for this tick
@@ -43,7 +49,10 @@ SUBSYSTEM_DEF(sound)
 		run_hearers = null // Reset so we know next one is new
 
 /datum/controller/subsystem/sound/proc/queue(datum/sound_template/template, list/client/hearers, list/datum/interior/extra_interiors)
-
+	if(!initialized)
+		return
+	if(!hearers)
+		hearers = list()
 	if(extra_interiors && SSmapping)
 		if(!hearers)
 			hearers = list()

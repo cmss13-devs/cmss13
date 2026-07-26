@@ -50,17 +50,17 @@
 	if(chameleon_on)
 		user.alpha = 25
 		to_chat(user, SPAN_NOTICE("You activate [src]."))
-		spark_system.start()
+		spark_system.start(do_NOT_delete = TRUE)
 		src.icon_state = "shield1"
 	else
 		user.alpha = initial(user.alpha)
 		to_chat(user, SPAN_NOTICE("You deactivate [src]."))
 		src.icon_state = "shield0"
-		spark_system.start()
+		spark_system.start(do_NOT_delete = TRUE)
 
 /obj/item/device/chameleon/proc/disrupt(mob/user)
 	if(chameleon_on)
-		spark_system.start()
+		spark_system.start(do_NOT_delete = TRUE)
 		user.alpha = initial(user.alpha)
 		chameleon_cooldown = world.time + 50
 		chameleon_on = FALSE

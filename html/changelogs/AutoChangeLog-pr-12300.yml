@@ -1,6 +1,0 @@
-author: "Blundir"
-delete-after: True
-changes:
-  - rscadd: "added clown walk waddling"
-  - imageadd: "clown items and simplemob resprite"
-  - soundadd: "clown boots now make you honk when you walk in them"

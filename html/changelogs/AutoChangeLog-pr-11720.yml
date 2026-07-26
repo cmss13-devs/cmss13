@@ -1,7 +1,0 @@
-author: "Itus"
-delete-after: True
-changes:
-  - code_imp: "Rankpins.Dm got every navy rank shoulder patch renamed appropriately and icon'ed"
-  - refactor: "Paygrades file got some changes to rank names."
-  - imageadd: "adds inventory overlays(which work), Onmob sprites for the patches and item sprites."
-  - spellcheck: "fixed the N36 -> NE6 typo"

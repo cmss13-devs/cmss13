@@ -1,4 +1,0 @@
-author: "MarpleJones"
-delete-after: True
-changes:
-  - balance: "lowers PROPERTY_CORROSIVE potency check on xenomorph from 3 to 2; now it works on property_level > 4."

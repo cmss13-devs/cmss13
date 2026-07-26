@@ -1,5 +1,0 @@
-author: "EmeraldCandy"
-delete-after: True
-changes:
-  - rscadd: "Added optional customizable sound alerts for response teams"
-  - rscadd: "Predator response team calls now produce a bracer noise alert for ghosts."

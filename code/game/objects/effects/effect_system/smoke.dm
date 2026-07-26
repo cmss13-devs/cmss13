@@ -802,12 +802,13 @@
 	amount = radius
 	cause_data = istype(new_cause_data) ? new_cause_data : create_cause_data(new_cause_data)
 
-/datum/effect_system/smoke_spread/start()
+/datum/effect_system/smoke_spread/start(do_NOT_delete = FALSE)
 	if(holder)
 		location = get_turf(holder)
 	var/obj/effect/particle_effect/smoke/smoke = new smoke_type(location, amount+1, cause_data, lifetime)
 	if(smoke.amount > 0)
 		smoke.spread_smoke(direction)
+	return ..()
 
 /datum/effect_system/smoke_spread/bad
 	smoke_type = /obj/effect/particle_effect/smoke/bad
@@ -820,13 +821,21 @@
 
 /datum/effect_system/smoke_spread/phosphorus
 	smoke_type = /obj/effect/particle_effect/smoke/phosphorus
+	var/intensity
+	var/max_intensity
 
-/datum/effect_system/smoke_spread/phosphorus/start(intensity, max_intensity)
+/datum/effect_system/smoke_spread/phosphorus/proc/set_intensity(intensity, max_intensity)
+	src.intensity = intensity
+	src.max_intensity = max_intensity
+
+/datum/effect_system/smoke_spread/phosphorus/start(do_NOT_delete = FALSE)
 	if(holder)
 		location = get_turf(holder)
 	var/obj/effect/particle_effect/smoke/phosphorus/smoke = new smoke_type(location, amount+1, cause_data, lifetime, intensity, max_intensity)
 	if(smoke.amount > 0)
 		smoke.spread_smoke(direction)
+	if(!do_NOT_delete)
+		qdel(src)
 
 /datum/effect_system/smoke_spread/phosphorus/weak
 	smoke_type = /obj/effect/particle_effect/smoke/phosphorus/weak
@@ -895,7 +904,7 @@
 /datum/effect_system/smoke_spread/xeno_extinguish_fire
 	smoke_type = /obj/effect/particle_effect/smoke/xeno_weak_fire
 
-/datum/effect_system/smoke_spread/xeno_extinguish_fire/start()
+/datum/effect_system/smoke_spread/xeno_extinguish_fire/start(do_NOT_delete = FALSE)
 	if(holder)
 		location = get_turf(holder)
 	var/obj/effect/particle_effect/smoke/smoke = new smoke_type(location, amount+1, cause_data, lifetime)
@@ -909,3 +918,5 @@
 
 	if(smoke.amount > 0)
 		smoke.spread_smoke(direction)
+	if(!do_NOT_delete)
+		qdel(src)

@@ -608,9 +608,7 @@
 /turf/open/lava/basalt/basalt4,
 /area/fire_colony/exterior/valley/west)
 "adM" = (
-/turf/open/slippery/hull/colorable/corner/west{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/corner/west,
 /area/sky)
 "adN" = (
 /obj/structure/surface/table/almayer{
@@ -2231,9 +2229,7 @@
 /turf/open/floor/strata/seeg3/east,
 /area/fire_colony/interior/seegson/engineering)
 "aks" = (
-/turf/open/slippery/hull/colorable/corner/west{
-	color = "#697374"
-	},
+/turf/open/slippery/hull/colorable/teal/corner/west,
 /area/sky)
 "akt" = (
 /turf/open/floor/strata/seeg3/southeast,
@@ -6037,9 +6033,7 @@
 /turf/open/lava/brock,
 /area/fire_colony/exterior/clearing/south)
 "aHU" = (
-/turf/open/slippery/hull/colorable/connection_middle/east{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/connection_middle/east,
 /area/sky)
 "aHV" = (
 /obj/structure/platform/stone/lava,
@@ -8859,9 +8853,7 @@
 /turf/open/floor/strata/sand3/east,
 /area/fire_colony/interior/hangar/alpha)
 "aXp" = (
-/turf/open/slippery/hull/colorable/connection_corner/west{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/connection_corner/west,
 /area/sky)
 "aXr" = (
 /obj/structure/surface/table/almayer{
@@ -10955,9 +10947,7 @@
 /turf/open/lava/basalt/glowing/basalt3,
 /area/fire_colony/exterior/clearing/north)
 "bik" = (
-/turf/open/slippery/hull/colorable/corner_alt{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/corner_alt,
 /area/sky)
 "bil" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -11370,9 +11360,7 @@
 /turf/open/lava/basalt/basalt0,
 /area/fire_colony/exterior/clearing/pass)
 "bmv" = (
-/turf/open/slippery/hull/colorable/connection/west{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/connection/west,
 /area/sky)
 "bmw" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -12892,9 +12880,7 @@
 /turf/open/lava/hot_lava,
 /area/fire_colony/exterior/underground/caves/south_west)
 "bCE" = (
-/turf/open/slippery/hull/colorable/connection_alt/east{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/connection_alt/east,
 /area/sky)
 "bCG" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -17522,9 +17508,7 @@
 /turf/open/lava/dirt,
 /area/fire_colony/exterior/clearing/south)
 "cIx" = (
-/turf/open/slippery/hull/colorable/connection_corner/north{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/connection_corner/north,
 /area/sky)
 "cIB" = (
 /obj/effect/lava/edges/basalt/side_rock{
@@ -20307,9 +20291,7 @@
 /turf/open/lava/brock,
 /area/fire_colony/exterior/valley/northwest)
 "dqE" = (
-/turf/open/slippery/hull/colorable/connection_end/north{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/connection_end/north,
 /area/sky)
 "dqN" = (
 /obj/effect/decal/warning_stripes/worn/stripes_double{
@@ -20775,9 +20757,7 @@
 /turf/open/lava/dirt,
 /area/fire_colony/exterior/clearing/south_west)
 "dvR" = (
-/turf/open/slippery/hull/colorable/dir/northwest{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/dir/northwest,
 /area/sky)
 "dvU" = (
 /obj/structure/platform_decoration/stone/lava/east,
@@ -22689,9 +22669,7 @@
 /turf/open/floor/strata/floor3,
 /area/fire_colony/interior/seegson/engineering)
 "dTr" = (
-/turf/open/slippery/hull/colorable/dir/northeast{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/dir/northeast,
 /area/sky)
 "dTv" = (
 /obj/effect/lava/edges/basalt/corner_rock,
@@ -26659,9 +26637,7 @@
 /turf/open/floor/grass,
 /area/fire_colony/interior/hydroponics/lobby)
 "eNS" = (
-/turf/open/slippery/hull/colorable/connection_end{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/connection_end,
 /area/sky)
 "eOd" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -26903,9 +26879,7 @@
 /obj/item/lightstick/red/spoke/planted{
 	icon_state = "lightstick_red_variant1"
 	},
-/turf/open/slippery/hull/colorable/dir/west{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/dir/west,
 /area/sky)
 "eQF" = (
 /obj/structure/flora/alien/purple_mushroom/purple_mushroom_1,
@@ -28067,9 +28041,7 @@
 /turf/open/lava/brock,
 /area/fire_colony/exterior/clearing/north)
 "fdl" = (
-/turf/open/slippery/hull/colorable/corner/east{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/corner/east,
 /area/sky)
 "fds" = (
 /obj/effect/decal/hybrisa/colorable_rug{
@@ -28801,9 +28773,7 @@
 /obj/item/lightstick/red/spoke/planted{
 	icon_state = "lightstick_red_variant1"
 	},
-/turf/open/slippery/hull/colorable/dir/north{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/dir/north,
 /area/sky)
 "fmt" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -29707,9 +29677,7 @@
 /turf/open/floor/strata/altred1,
 /area/fire_colony/interior/seegson/smelting)
 "fyr" = (
-/turf/open/slippery/hull/colorable/corner/north{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/corner/north,
 /area/sky)
 "fyt" = (
 /obj/effect/lava/edges/overlay,
@@ -31976,6 +31944,9 @@
 /obj/structure/platform_decoration/metal/lava_metal/east,
 /turf/open/lava/brock,
 /area/fire_colony/exterior/clearing/south_west)
+"fXs" = (
+/turf/open/slippery/hull/colorable/teal/dir/northeast,
+/area/sky)
 "fXt" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/item/tool/kitchen/utensil/fork{
@@ -35842,9 +35813,7 @@
 /turf/open/lava/asteroid/directions/south,
 /area/fire_colony/exterior/clearing/south_west)
 "gRh" = (
-/turf/open/slippery/hull/colorable{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple,
 /area/sky)
 "gRj" = (
 /turf/open/lava/basalt/glowing/basalt9,
@@ -37926,11 +37895,6 @@
 /obj/effect/blocker/lava,
 /turf/open/lava/hot_lava,
 /area/fire_colony/exterior/clearing/pass)
-"hqy" = (
-/turf/open/slippery/hull/colorable/dir/southwest{
-	color = "#697374"
-	},
-/area/sky)
 "hqF" = (
 /obj/structure/machinery/door/poddoor/almayer/dark/open{
 	id = "seeg_ai_1"
@@ -39679,9 +39643,7 @@
 /obj/structure/prop/roof/glass{
 	icon_state = "glass_3"
 	},
-/turf/open/slippery/hull/colorable/tiles{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/tiles,
 /area/sky)
 "hKG" = (
 /obj/structure/disposalpipe/segment{
@@ -39910,9 +39872,7 @@
 /turf/open/floor/almayer,
 /area/fire_colony/interior/seegson/ai_core)
 "hNq" = (
-/turf/open/slippery/hull/colorable/connection/east{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/connection/east,
 /area/sky)
 "hNs" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -42264,9 +42224,7 @@
 /turf/open/lava/brock,
 /area/fire_colony/exterior/valley/northeast)
 "iua" = (
-/turf/open/slippery/hull/colorable/connection/north{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/connection/north,
 /area/sky)
 "iub" = (
 /obj/structure/prop/roof/glass{
@@ -42593,9 +42551,7 @@
 /turf/open/lava/engineer_ruins/plating,
 /area/fire_colony/exterior/underground/excavation/north)
 "iye" = (
-/turf/open/slippery/hull/colorable/connection_alt/northeast{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/connection_alt/northeast,
 /area/sky)
 "iyg" = (
 /obj/effect/decal/hybrisa/road/lines4{
@@ -46323,9 +46279,7 @@
 /turf/open/lava/dirt,
 /area/fire_colony/exterior/underground/caves/south_west)
 "jup" = (
-/turf/open/slippery/hull/colorable/corner/east{
-	color = "#697374"
-	},
+/turf/open/slippery/hull/colorable/teal/corner/east,
 /area/sky)
 "juq" = (
 /obj/structure/platform_decoration/stone/lava,
@@ -47564,9 +47518,7 @@
 /turf/open/lava/dirt,
 /area/fire_colony/exterior/valley/west)
 "jJW" = (
-/turf/open/slippery/hull/colorable/dir/east{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/dir/east,
 /area/sky)
 "jJY" = (
 /obj/structure/flora/alien/sparsegrass/sparsegrass_3,
@@ -49507,6 +49459,9 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/floor/strata/sand3/east,
 /area/fire_colony/interior/hangar/alpha)
+"kmk" = (
+/turf/open/slippery/hull/colorable/teal/dir/southwest,
+/area/sky)
 "kmp" = (
 /obj/structure/machinery/weather_siren{
 	dir = 4;
@@ -49781,9 +49736,7 @@
 /turf/open/lava/brock,
 /area/fire_colony/exterior/valley/north)
 "kql" = (
-/turf/open/slippery/hull/colorable/corner{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/corner,
 /area/sky)
 "kqo" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -50274,9 +50227,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/fire_colony/interior/mining_garage)
 "kwx" = (
-/turf/open/slippery/hull/colorable/tiles2/north{
-	color = "#697374"
-	},
+/turf/open/slippery/hull/colorable/teal/tiles2,
 /area/sky)
 "kwA" = (
 /obj/effect/decal/strata_decals/grime/grime4,
@@ -54235,9 +54186,7 @@
 /turf/open/lava/engineer_ruins/engineer_ruins,
 /area/fire_colony/exterior/underground/excavation/south)
 "lss" = (
-/turf/open/slippery/hull/colorable/connection_middle{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/connection_middle,
 /area/sky)
 "lsx" = (
 /obj/effect/blocker/lava,
@@ -56559,9 +56508,7 @@
 /turf/open/lava/hot_lava,
 /area/fire_colony/exterior/underground/caves/south_west)
 "lUI" = (
-/turf/open/slippery/hull/colorable/full{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/full,
 /area/sky)
 "lUK" = (
 /obj/effect/lava/edges/basalt/l_piece,
@@ -57050,9 +56997,7 @@
 /turf/open/lava/dirt,
 /area/fire_colony/exterior/underground/excavation/south)
 "mad" = (
-/turf/open/slippery/hull/colorable/connection_alt/west{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/connection_alt/west,
 /area/sky)
 "mag" = (
 /obj/structure/closet/fireaxecabinet{
@@ -59722,9 +59667,7 @@
 /turf/open/lava/sand,
 /area/fire_colony/exterior/valley/west)
 "mGZ" = (
-/turf/open/slippery/hull/colorable/dir/north{
-	color = "#697374"
-	},
+/turf/open/slippery/hull/colorable/teal/dir/north,
 /area/sky)
 "mHc" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -60143,9 +60086,7 @@
 /turf/open/lava/basalt/cave/west,
 /area/fire_colony/exterior/valley/north)
 "mMM" = (
-/turf/open/slippery/hull/colorable/connection_alt{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/connection_alt,
 /area/sky)
 "mMP" = (
 /obj/effect/decal/warning_stripes/worn{
@@ -60743,9 +60684,7 @@
 /turf/open/lava/basalt/basalt0,
 /area/fire_colony/exterior/valley/west)
 "mTj" = (
-/turf/open/slippery/hull/colorable/connection_alt/southeast{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/connection_alt/southeast,
 /area/sky)
 "mTp" = (
 /obj/effect/lava/edges/basalt/l_piece{
@@ -63447,6 +63386,9 @@
 	},
 /turf/open/lava/basalt/glowing/basalt2,
 /area/fire_colony/exterior/clearing/north)
+"nAr" = (
+/turf/open/slippery/hull/colorable/teal/dir/west,
+/area/sky)
 "nAE" = (
 /obj/structure/platform/metal/lava_metal/north,
 /obj/structure/flora/alien/fullgrass/fullgrass_3{
@@ -65647,9 +65589,7 @@
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/fire_colony/interior/dorms/dorms_f)
 "obY" = (
-/turf/open/slippery/hull/colorable/connection{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/connection,
 /area/sky)
 "ocg" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -65823,9 +65763,7 @@
 /turf/open/lava/basalt/basalt10,
 /area/fire_colony/exterior/clearing/north_east)
 "oez" = (
-/turf/open/slippery/hull/colorable/dir{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/dir,
 /area/sky)
 "oeD" = (
 /obj/effect/decal/warning_stripes/worn{
@@ -67159,9 +67097,7 @@
 /turf/open/lava/metal/warnplate,
 /area/fire_colony/exterior/valley/west)
 "owB" = (
-/turf/open/slippery/hull/colorable/connection_alt/northwest{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/connection_alt/northwest,
 /area/sky)
 "owJ" = (
 /obj/structure/flora/tree/alien/tree_3{
@@ -67360,9 +67296,7 @@
 /turf/open/lava/engineer_ruins/engineer_ruins,
 /area/fire_colony/exterior/underground/excavation/north)
 "oyy" = (
-/turf/open/slippery/hull/colorable/corner/north{
-	color = "#697374"
-	},
+/turf/open/slippery/hull/colorable/teal/corner/north,
 /area/sky)
 "oyA" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -68187,9 +68121,7 @@
 /turf/open/lava/hot_lava,
 /area/fire_colony/exterior/underground/excavation/south)
 "oKP" = (
-/turf/open/slippery/hull/colorable/tiles{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/tiles,
 /area/sky)
 "oKS" = (
 /obj/structure/prop/ice_colony/surveying_device{
@@ -69559,9 +69491,7 @@
 /obj/item/lightstick/red/spoke/planted{
 	icon_state = "lightstick_red_variant1"
 	},
-/turf/open/slippery/hull/colorable/corner/north{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/corner/north,
 /area/sky)
 "pcC" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -70348,9 +70278,7 @@
 /turf/open/floor/strata/floor2,
 /area/fire_colony/interior/hydroponics/north)
 "pmo" = (
-/turf/open/slippery/hull/colorable/connection_alt/north{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/connection_alt/north,
 /area/sky)
 "pms" = (
 /obj/structure/machinery/vending/cigarette/koorlander{
@@ -72271,9 +72199,7 @@
 /turf/open/lava/brock,
 /area/fire_colony/exterior/underground/caves/south_west)
 "pHp" = (
-/turf/open/slippery/hull/colorable/dir{
-	color = "#697374"
-	},
+/turf/open/slippery/hull/colorable/teal/dir,
 /area/sky)
 "pHq" = (
 /obj/effect/decal/warning_stripes/worn{
@@ -72618,9 +72544,7 @@
 /obj/item/lightstick/red/spoke/planted{
 	icon_state = "lightstick_red_variant1"
 	},
-/turf/open/slippery/hull/colorable/dir{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/dir,
 /area/sky)
 "pNg" = (
 /obj/effect/lava/edges/basalt/l_piece,
@@ -73404,9 +73328,7 @@
 /turf/open/lava/sand,
 /area/fire_colony/exterior/valley/southeast)
 "pXc" = (
-/turf/open/slippery/hull/colorable/connection_end/west{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/connection_end/west,
 /area/sky)
 "pXj" = (
 /obj/structure/fence/slim/blue/door,
@@ -74853,9 +74775,7 @@
 /obj/item/lightstick/red/spoke/planted{
 	icon_state = "lightstick_red_variant1"
 	},
-/turf/open/slippery/hull/colorable/dir/east{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/dir/east,
 /area/sky)
 "qnt" = (
 /obj/structure/sign/safety/synth_storage{
@@ -86224,9 +86144,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fire_colony/exterior/landing_pad)
 "sTb" = (
-/turf/open/slippery/hull/colorable/dir/west{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/dir/west,
 /area/sky)
 "sTc" = (
 /turf/open/floor/strata/sand3/east,
@@ -86565,6 +86483,9 @@
 	},
 /turf/open/lava/engineer_ruins/plating/platingdmg1,
 /area/fire_colony/exterior/underground/excavation/north)
+"sYd" = (
+/turf/open/slippery/hull/colorable/teal/dir/east,
+/area/sky)
 "sYe" = (
 /obj/effect/lava/edges/basalt/corner_rock{
 	dir = 4
@@ -87122,11 +87043,6 @@
 /obj/effect/landmark/monkey_spawn,
 /turf/open/lava/dirt,
 /area/fire_colony/exterior/underground/caves/south_west)
-"teW" = (
-/turf/open/slippery/hull/colorable/dir/east{
-	color = "#697374"
-	},
-/area/sky)
 "teY" = (
 /obj/structure/surface/table/almayer{
 	color = "#848484"
@@ -87351,9 +87267,7 @@
 /obj/item/lightstick/red/spoke/planted{
 	icon_state = "lightstick_red_variant1"
 	},
-/turf/open/slippery/hull/colorable/corner{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/corner,
 /area/sky)
 "the" = (
 /obj/structure/stairs/perspective{
@@ -87508,9 +87422,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fire_colony/exterior/landing_pad)
 "tiY" = (
-/turf/open/slippery/hull/colorable/dir/north{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/dir/north,
 /area/sky)
 "tjg" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass{
@@ -89237,9 +89149,7 @@
 /turf/open/floor/strata/floor2,
 /area/fire_colony/interior/hydroponics/lobby)
 "tGg" = (
-/turf/open/slippery/hull/colorable/dir/southwest{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/dir/southwest,
 /area/sky)
 "tGo" = (
 /obj/effect/decal/warning_stripes/worn/stripes_double{
@@ -89445,9 +89355,7 @@
 /turf/open/lava/hot_lava,
 /area/fire_colony/exterior/underground/caves/south_west)
 "tJD" = (
-/turf/open/slippery/hull/colorable/dir/northwest{
-	color = "#697374"
-	},
+/turf/open/slippery/hull/colorable/teal/dir/northwest,
 /area/sky)
 "tJL" = (
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2{
@@ -89995,14 +89903,10 @@
 /turf/open/lava/metal/plating,
 /area/fire_colony/interior/bar/canteen)
 "tPe" = (
-/turf/open/slippery/hull/colorable/connection_end/east{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/connection_end/east,
 /area/sky)
 "tPv" = (
-/turf/open/slippery/hull/colorable/dir/southeast{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/dir/southeast,
 /area/sky)
 "tPI" = (
 /obj/effect/lava/edges/basalt/l_piece{
@@ -94513,11 +94417,6 @@
 /obj/structure/flora/alien/purple_mushroom/purple_mushroom_7,
 /turf/open/lava/brock,
 /area/fire_colony/exterior/underground/caves/south_west)
-"uVH" = (
-/turf/open/slippery/hull/colorable/dir/northeast{
-	color = "#697374"
-	},
-/area/sky)
 "uVJ" = (
 /obj/effect/lava/edges/basalt/l_piece{
 	dir = 1
@@ -97113,9 +97012,7 @@
 /turf/open/lava/brock,
 /area/fire_colony/exterior/clearing/south_west)
 "vyQ" = (
-/turf/open/slippery/hull/colorable/connection_alt/southwest{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/connection_alt/southwest,
 /area/sky)
 "vyS" = (
 /obj/effect/decal/warning_stripes/worn,
@@ -98341,9 +98238,7 @@
 /turf/open/lava/brock,
 /area/fire_colony/exterior/landing_pad_external)
 "vOY" = (
-/turf/open/slippery/hull/colorable/corner{
-	color = "#697374"
-	},
+/turf/open/slippery/hull/colorable/teal/corner,
 /area/sky)
 "vPc" = (
 /obj/structure/filingcabinet{
@@ -100756,11 +100651,6 @@
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/fire_colony/interior/hydroponics/science)
-"wtz" = (
-/turf/open/slippery/hull/colorable/dir/west{
-	color = "#697374"
-	},
-/area/sky)
 "wtI" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/strata/seeg3,
@@ -101505,9 +101395,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/fire_colony/exterior/hangar)
 "wCV" = (
-/turf/open/slippery/hull/colorable/connection_corner{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/connection_corner,
 /area/sky)
 "wCZ" = (
 /obj/structure/fence/slim/blue,
@@ -102080,9 +101968,7 @@
 /turf/open/lava/brock,
 /area/fire_colony/exterior/clearing/pass)
 "wJD" = (
-/turf/open/slippery/hull/colorable/connection_corner/east{
-	color = "#716c71"
-	},
+/turf/open/slippery/hull/colorable/purple/connection_corner/east,
 /area/sky)
 "wJM" = (
 /obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
@@ -103045,9 +102931,7 @@
 /turf/open/lava/metal/filtrationside_lava/southeast,
 /area/fire_colony/exterior/hangar)
 "wVW" = (
-/turf/open/slippery/hull/colorable/dir/southeast{
-	color = "#697374"
-	},
+/turf/open/slippery/hull/colorable/teal/dir/southeast,
 /area/sky)
 "wWh" = (
 /obj/effect/lava/edges/basalt/l_piece{
@@ -155940,10 +155824,10 @@ rKz
 rKz
 rKz
 tJD
-wtz
-wtz
-wtz
-hqy
+nAr
+nAr
+nAr
+kmk
 usT
 usT
 usT
@@ -156146,7 +156030,7 @@ kwx
 kwx
 kwx
 oyy
-hqy
+kmk
 usT
 usT
 usT
@@ -157150,7 +157034,7 @@ rKz
 rKz
 rKz
 rKz
-uVH
+fXs
 jup
 kwx
 kwx
@@ -157353,10 +157237,10 @@ rKz
 rKz
 rKz
 rKz
-uVH
-teW
-teW
-teW
+fXs
+sYd
+sYd
+sYd
 wVW
 usT
 usT
@@ -162495,10 +162379,10 @@ usT
 usT
 usT
 tJD
-wtz
-wtz
-wtz
-hqy
+nAr
+nAr
+nAr
+kmk
 usT
 usT
 usT
@@ -162701,7 +162585,7 @@ kwx
 kwx
 kwx
 oyy
-hqy
+kmk
 usT
 usT
 usT
@@ -163705,7 +163589,7 @@ usT
 usT
 usT
 usT
-uVH
+fXs
 jup
 kwx
 kwx
@@ -163908,10 +163792,10 @@ usT
 usT
 usT
 usT
-uVH
-teW
-teW
-teW
+fXs
+sYd
+sYd
+sYd
 wVW
 usT
 usT
@@ -173160,11 +173044,11 @@ usT
 usT
 usT
 tJD
-wtz
-wtz
-wtz
-wtz
-hqy
+nAr
+nAr
+nAr
+nAr
+kmk
 usT
 usT
 usT
@@ -173367,7 +173251,7 @@ kwx
 kwx
 kwx
 oyy
-hqy
+kmk
 usT
 usT
 usT
@@ -174370,7 +174254,7 @@ usT
 usT
 usT
 usT
-uVH
+fXs
 jup
 kwx
 kwx
@@ -174573,11 +174457,11 @@ usT
 usT
 usT
 usT
-uVH
-teW
-teW
-teW
-teW
+fXs
+sYd
+sYd
+sYd
+sYd
 wVW
 usT
 usT
@@ -189238,11 +189122,11 @@ rKz
 rKz
 rKz
 tJD
-wtz
-wtz
-wtz
-wtz
-hqy
+nAr
+nAr
+nAr
+nAr
+kmk
 rKz
 rKz
 rKz
@@ -189445,7 +189329,7 @@ kwx
 kwx
 kwx
 oyy
-hqy
+kmk
 rKz
 rKz
 rKz
@@ -190246,7 +190130,7 @@ rKz
 rKz
 rKz
 rKz
-uVH
+fXs
 jup
 kwx
 kwx
@@ -190449,11 +190333,11 @@ rKz
 rKz
 rKz
 rKz
-uVH
-teW
-teW
-teW
-teW
+fXs
+sYd
+sYd
+sYd
+sYd
 wVW
 rKz
 rKz
@@ -191065,10 +190949,10 @@ rKz
 rKz
 rKz
 tJD
-wtz
-wtz
-wtz
-hqy
+nAr
+nAr
+nAr
+kmk
 rKz
 rKz
 rKz
@@ -191271,7 +191155,7 @@ kwx
 kwx
 kwx
 oyy
-hqy
+kmk
 rKz
 rKz
 rKz
@@ -192275,7 +192159,7 @@ rKz
 rKz
 rKz
 rKz
-uVH
+fXs
 jup
 kwx
 kwx
@@ -192478,10 +192362,10 @@ rKz
 rKz
 rKz
 rKz
-uVH
-teW
-teW
-teW
+fXs
+sYd
+sYd
+sYd
 wVW
 rKz
 rKz
@@ -193233,14 +193117,14 @@ usT
 usT
 rKz
 tJD
-wtz
-wtz
-wtz
-wtz
-wtz
-wtz
-wtz
-hqy
+nAr
+nAr
+nAr
+nAr
+nAr
+nAr
+nAr
+kmk
 rKz
 rKz
 rKz
@@ -193443,7 +193327,7 @@ kwx
 kwx
 kwx
 oyy
-hqy
+kmk
 rKz
 rKz
 rKz
@@ -195057,8 +194941,8 @@ rKz
 rKz
 rKz
 rKz
-teW
-teW
+sYd
+sYd
 wVW
 rKz
 rKz

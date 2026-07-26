@@ -540,7 +540,7 @@
 			var/input = "Operation will be terminated unless Primary Landing Zone is designated."
 			marine_announcement(input, name, 'sound/AI/commandreport.ogg')
 
-		if(active_lz == null && ROUND_TIME > 2100 SECONDS && ROUND_TIME < 2103 SECONDS)
+		if(!active_lz && ROUND_TIME > 2100 SECONDS && ROUND_TIME < 2103 SECONDS)
 			round_finished = MODE_INFESTATION_X_MINOR
 			log_game("Marines failed to deploy!")
 

@@ -168,7 +168,10 @@ GLOBAL_VAR_INIT(next_admin_bioscan, 30 MINUTES)
 	var/lz1 = locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1)
 	var/lz2 = locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz2)
 
-	if(user && lz1 || lz2)
+	if((lz1 && !lz2) || (lz2 && !lz1))
+		select_lz(lz1 || lz2)
+		return
+	else if(user && lz1 && lz2)
 		var/lz_choices = list("LZ 1", "LZ 2")
 		var/new_lz = tgui_input_list(user, "Select primary LZ", "LZ Select", lz_choices)
 		if(!new_lz)
@@ -178,7 +181,6 @@ GLOBAL_VAR_INIT(next_admin_bioscan, 30 MINUTES)
 		else
 			select_lz(lz2)
 		return
-
 	CRASH("No /obj/structure/machinery/computer/shuttle/dropship/flight/lz1 or lz2 found!")
 
 /datum/game_mode/proc/select_lz(obj/structure/machinery/computer/shuttle/dropship/flight/console)

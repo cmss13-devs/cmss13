@@ -201,8 +201,7 @@
 		var/knockout_minus_armor = min(knockout_value * bomb_armor_mult * 0.5, 0.5 SECONDS) // the KO time is halved from the knockdown timer. basically same stun time, you just spend less time KO'd.
 		apply_effect(floor(knockout_minus_armor), PARALYZE)
 		apply_effect(floor(knockout_minus_armor) * 2, DAZE)
-	if(stat != DEAD || severity > EXPLOSION_THRESHOLD_LOW)
-		explosion_throw(severity, direction)
+	explosion_throw(severity, direction)
 
 	if(item1 && isturf(item1.loc))
 		item1.explosion_throw(severity, direction)
@@ -877,7 +876,9 @@
 		// Overdoses are life-threatening
 		for (var/datum/reagent/reagent as anything in reagents.reagent_list)
 			if (reagent.volume > reagent.overdose && reagent.overdose != 0)
-				tag_severity = 2
+				// Regulating chems can't harmfully overdose
+				if (!reagent.get_property(PROPERTY_REGULATING))
+					tag_severity = 2
 
 		// The highest holotag you can get from limbs is red, so we can safely break out of the limb loop if we find a red-worthy injury
 		for (var/obj/limb/limb as anything in limbs)

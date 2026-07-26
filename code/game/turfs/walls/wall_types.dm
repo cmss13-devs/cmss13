@@ -611,6 +611,7 @@
 
 /turf/closed/wall/wood
 	name = "wood wall"
+	desc = "A large wooden wall used to separate rooms. It makes for a very cozy atmosphere."
 	icon = 'icons/turf/walls/wood.dmi'
 	icon_state = "wood"
 	walltype = WALL_WOOD

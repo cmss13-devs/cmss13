@@ -70,36 +70,6 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 	time_activity["opened_at"] = "[worldtime2text(opened_at)]"
 
 	author = thread_author
-	author_key = thread_author.username()
-
-	if(thread_author.mob)
-		author_ic_name = thread_author.mob.real_name || thread_author.mob.name || "Unknown"
-		var/mob/M = thread_author.mob
-		var/datum/faction/F = GLOB.faction_datums[M.faction]
-		if(F)
-			author_faction = F.name
-		else if(M.faction)
-			author_faction = "[M.faction]"
-		else
-			author_faction = FACTION_NEUTRAL
-
-		if(isobserver(M))
-			author_role = "Ghost"
-		else if(isxeno(M))
-			var/mob/living/carbon/xenomorph/X = M
-			author_role = X.caste_type
-		else if(ishuman(M))
-			var/mob/living/carbon/human/HUM = M
-			if(HUM.comm_title)
-				author_role = HUM.comm_title
-			else if(HUM.job)
-				author_role = HUM.job
-		else if(M.job)
-			author_role = M.job
-
-	id = GLOB.mentorhelp_manager.ticket_counter++
-
-	GLOB.mentorhelp_manager.active_tickets["[id]"] = src
 
 	if(thread_author.mob)
 		author_ic_name = thread_author.mob.real_name || thread_author.mob.name || "Unknown"

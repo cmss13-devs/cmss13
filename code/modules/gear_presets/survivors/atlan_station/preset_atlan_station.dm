@@ -393,21 +393,23 @@
 	minimap_icon = "upp_sci"
 	minimap_background = "background_hc_management"
 	skills = /datum/skills/civilian/survivor/scientist
-	languages = list(LANGUAGE_GERMAN, LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_CHINESE)
+	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_ENGLISH, LANGUAGE_CHINESE)
 	paygrades = list(PAY_SHORT_CEC2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_CEC3 = JOB_PLAYTIME_TIER_2, PAY_SHORT_CEC4 = JOB_PLAYTIME_TIER_3)
-	faction = FACTION_UPP
-	faction_group = FACTION_LIST_SURVIVOR_UPP
+	job_title = JOB_CEC_DOCENT
+	faction = FACTION_CEC
+	faction_group = list(FACTION_CEC, FACTION_LIST_SURVIVOR_UPP,)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	origin_override = ORIGIN_UPP
+	idtype = /obj/item/card/id/cec
 
 	survivor_variant = CORPORATE_SURVIVOR
 
 /datum/equipment_preset/survivor/cec_liaison/load_gear(mob/living/carbon/human/new_human)
 
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/cec(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/upp(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/full(new_human), WEAR_R_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/cec_patch(new_human), WEAR_ACCESSORY)
 
 	var/random_trenchcoat = rand(1,2)
 	switch(random_trenchcoat)
@@ -444,6 +446,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp(new_human), WEAR_FEET)
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/scientist/hybrisa(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/cec_patch(new_human), WEAR_ACCESSORY)
 	add_random_cl_survivor_loot(new_human)
 	..()
 

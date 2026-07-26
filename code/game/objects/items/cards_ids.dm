@@ -540,9 +540,9 @@
 // Cosmos Exploration Corps ID
 /obj/item/card/id/cec
 	name = "CEC identification holo-badge"
-	desc = "A standard-issue holo-badge for personnel within the UPP's Cosmos Exploration Corps It displays the individual's standing within the organization and affiliation."
+	desc = "A standard-issue holo-badge for personnel within the UPP's Cosmos Exploration Corps. It displays the individual's standing within the organization and affiliation."
 	icon_state = "cosmos_corps"
 
 /obj/item/card/id/cec/Initialize()
 	. = ..()
-	AddElement(/datum/element/corp_label/hyperdyne)
+	AddElement(/datum/element/corp_label/cec)

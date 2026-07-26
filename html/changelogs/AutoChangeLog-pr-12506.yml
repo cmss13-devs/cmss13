@@ -1,9 +1,0 @@
-author: "ori-disillusion-mirnov"
-delete-after: True
-changes:
-  - bugfix: "daniels and dzhos spawn with mop buckets instead of janibuckets presumably being put inside them"
-  - bugfix: "dzho and daniel join announcements use the right link"
-  - bugfix: "the correct join button appears when forcing a colony joe round"
-  - bugfix: "colony joe storage thingies can no longer be blown up"
-  - bugfix: "working joes can no longer shoot guns, unrelated to colony joe pr"
-  - maptweak: "adds a colony joe spawn to white antre"

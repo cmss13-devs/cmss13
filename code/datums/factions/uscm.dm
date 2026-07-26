@@ -69,6 +69,8 @@
 				marine_rk = "sl_army"
 			if(JOB_ARMY_CO)
 				marine_rk = "co_army"
+			if(JOB_ARMY_TANK)
+				marine_rk = "tc_army"
 			if(JOB_ARMY_SYN)
 				marine_rk = "syn_army"
 		if(squad.squad_leader == current_human)

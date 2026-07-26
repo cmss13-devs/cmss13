@@ -50419,7 +50419,6 @@
 "kyU" = (
 /obj/structure/platform/metal/lava_metal/west,
 /obj/structure/platform/metal/lava_metal,
-/obj/structure/platform/metal/lava_metal/west,
 /obj/effect/lava/edges/basalt/l_piece,
 /turf/open/lava/basalt/basalt6,
 /area/fire_colony/exterior/clearing/pass)

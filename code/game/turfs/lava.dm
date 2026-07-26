@@ -799,12 +799,9 @@ engineer_floor_deco
 
 // Walls
 
-/turf/closed/wall/lava
-	icon = 'icons/turf/walls/lava/lava_walls.dmi'
-	icon_state = "solaris_rock"
-
 /turf/closed/wall/lava/rock
 	name = "basalt wall"
+	icon = 'icons/turf/walls/lava/lava_walls.dmi'
 	icon_state = "solaris_rock"
 	walltype = WALL_SOLARIS_ROCK
 	turf_flags = TURF_HULL

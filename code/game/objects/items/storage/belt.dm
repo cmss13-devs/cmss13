@@ -1852,6 +1852,70 @@
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/smg/m39/ap(src)
 
+/obj/item/storage/belt/gun/marine
+	name = "\improper M276 pattern combat sidearm rig"
+	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version has a holster assembly that allows one to carry the most common pistols. It also contains side pouches that can store most pistol and rifle magazines."
+	icon_state = "mag_holster"
+	storage_slots = 6 // 3 rifle mags + 2 pistol mags + 1 sidearm
+	holster_slots = list(
+		"1" = list(
+			"icon_x" = 5,
+			"icon_y" = -2))
+	can_hold = list(
+		/obj/item/weapon/gun/flare,
+		/obj/item/weapon/gun/pistol,
+		/obj/item/weapon/gun/revolver,
+		/obj/item/ammo_magazine/rifle,
+		/obj/item/ammo_magazine/smg,
+		/obj/item/ammo_magazine/pistol,
+		/obj/item/ammo_magazine/revolver,
+		/obj/item/ammo_magazine/sniper,
+	)
+	flags_atom = FPRINT // has gamemode skin
+
+	var/rifle_mags = 0
+	var/pistol_mags = 0
+
+/obj/item/storage/belt/gun/marine/Destroy()
+	rifle_mags = 0
+	pistol_mags = 0
+	. = ..()
+
+/obj/item/storage/belt/gun/marine/can_be_inserted(obj/item/I, mob/user, stop_messages = FALSE)
+	. = ..()
+	if(!.)
+		return
+
+	if(istype(I, /obj/item/ammo_magazine/pistol) || istype(I, /obj/item/ammo_magazine/revolver))
+		if(pistol_mags >= 2)
+			if(!stop_messages)
+				to_chat(user, SPAN_WARNING("[src] can't hold more pistol magazines."))
+			return FALSE
+		return TRUE
+
+	if(istype(I, /obj/item/ammo_magazine/rifle) || istype(I, /obj/item/ammo_magazine/smg) || istype(I, /obj/item/ammo_magazine/sniper))
+		if(rifle_mags >= 3)
+			if(!stop_messages)
+				to_chat(user, SPAN_WARNING("[src] can't hold more rifle magazines."))
+			return FALSE
+		return TRUE
+
+/obj/item/storage/belt/gun/marine/_item_insertion(obj/item/I, prevent_warning = 0, mob/user)
+	if(istype(I, /obj/item/ammo_magazine/pistol) || istype(I, /obj/item/ammo_magazine/revolver))
+		pistol_mags++
+	else if(istype(I, /obj/item/ammo_magazine/rifle) || istype(I, /obj/item/ammo_magazine/smg) || istype(I, /obj/item/ammo_magazine/sniper))
+		rifle_mags++
+
+	..()
+
+/obj/item/storage/belt/gun/marine/_item_removal(obj/item/I, atom/new_location)
+	if(istype(I, /obj/item/ammo_magazine/pistol) || istype(I, /obj/item/ammo_magazine/revolver))
+		pistol_mags = max(pistol_mags - 1, 0)
+	else if(istype(I, /obj/item/ammo_magazine/rifle) || istype(I, /obj/item/ammo_magazine/smg) || istype(I, /obj/item/ammo_magazine/sniper))
+		rifle_mags = max(rifle_mags - 1, 0)
+
+	..()
+
 /obj/item/storage/belt/gun/m10
 	name = "\improper M276 pattern M10 holster rig"
 	desc = "Special issue variant of the M276 - designed exclusively to securely hold an M10 Auto Pistol and three spare magazines, allowing quick access in close-quarters situations. Ideal for defending against boarding threats, this belt supports rapid deployment of high-rate sidearms while maintaining stability in zero-G environments."

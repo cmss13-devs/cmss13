@@ -408,7 +408,11 @@
 
 /datum/action/xeno_action/onclick/xenohide/can_use_action()
 	var/mob/living/carbon/xenomorph/xeno = owner
-	if(xeno && !xeno.buckled && !xeno.is_mob_incapacitated() && !LAZYLEN(xeno.buckled_mobs))
+	if(!xeno)
+		return FALSE
+	if(xeno.on_fire)
+		return FALSE
+	if(!xeno.buckled && !xeno.is_mob_incapacitated() && !LAZYLEN(xeno.buckled_mobs))
 		if(!(SEND_SIGNAL(xeno, COMSIG_LIVING_SHIMMY_LAYER) & COMSIG_LIVING_SHIMMY_LAYER_CANCEL))
 			return TRUE
 
@@ -612,21 +616,18 @@
 		return FALSE
 
 	// Get a reference to the ability to utilize cooldowns
-	var/datum/action/xeno_action/onclick/queen_word/word_ability
-	for(var/datum/action/xeno_action/action in actions)
-		if(istype(action, /datum/action/xeno_action/onclick/queen_word))
-			word_ability = action
-			if(!word_ability.action_cooldown_check())
-				return FALSE
-			break
+	var/datum/action/xeno_action/onclick/queen_word/word_ability = locate() in actions
+	if(!word_ability?.action_cooldown_check())
+		return FALSE
+	if(word_ability.hidden)
+		return FALSE
 
-	var/input = stripped_multiline_input(src, "This message will be broadcast throughout the hive.", "Word of the Queen", "")
+	var/input = tgui_input_text(src, "This message will be broadcast throughout the hive.", "Word of the Queen", multiline=TRUE)
 	if(!input)
 		return FALSE
 
 	use_plasma(50)
-	if(word_ability)
-		word_ability.apply_cooldown()
+	word_ability.apply_cooldown()
 
 	xeno_announcement(input, hivenumber, "The words of the [name] reverberate in our head...")
 

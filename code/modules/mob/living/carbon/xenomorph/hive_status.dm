@@ -716,10 +716,6 @@
 
 	return xenos
 
-#define TIER_3 "3"
-#define TIER_2 "2"
-#define OPEN_SLOTS "open_slots"
-#define GUARANTEED_SLOTS "guaranteed_slots"
 
 /// Returns an assoc list of open slots and guaranteed slots left
 /datum/hive_status/proc/get_tier_slots()
@@ -771,10 +767,6 @@
 
 	return slots
 
-#undef TIER_3
-#undef TIER_2
-#undef OPEN_SLOTS
-#undef GUARANTEED_SLOTS
 
 /datum/hive_status/proc/can_build_structure(structure_name)
 	if(!structure_name || !hive_structures_limit[structure_name])

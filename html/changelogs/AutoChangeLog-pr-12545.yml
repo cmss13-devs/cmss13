@@ -1,6 +1,0 @@
-author: "Ordosian, DimDim"
-delete-after: True
-changes:
-  - bugfix: "Fixed WJ station invisibility bug"
-  - imageadd: "New synth repair station. WJ station directionals added."
-  - maptweak: "Implemented new repair stations."

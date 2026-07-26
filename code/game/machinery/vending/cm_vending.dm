@@ -1041,7 +1041,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 		return
 
 	// Try to bulk restock using a container
-	if(istype(A, /obj/item/storage))
+	if(istype(A, /obj/item/storage) && !istype(A, /obj/item/storage/pill_bottle))
 		var/obj/item/storage/container = A
 		if(!length(container.contents))
 			return
@@ -1075,7 +1075,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 		stock(A, user)
 
 /obj/structure/machinery/cm_vending/sorted/proc/stock(obj/item/item_to_stock, mob/user)
-	if(istype(item_to_stock, /obj/item/storage))
+	if(istype(item_to_stock, /obj/item/storage) && !istype(item_to_stock, /obj/item/storage/pill_bottle))
 		return FALSE
 
 	var/list/stock_listed_products = get_listed_products(user)
@@ -1101,6 +1101,16 @@ GLOBAL_LIST_EMPTY(vending_products)
 			else if(istype(item_to_stock, /obj/item/stack))
 				var/obj/item/stack/item_stack = item_to_stock
 				partial_stacks = item_stack.amount % item_stack.max_amount
+
+			else if(istype(item_to_stock, /obj/item/storage/pill_bottle))
+				var/obj/item/storage/pill_bottle/pillbottle = item_to_stock
+				var/count = 0
+				for(var/obj/item/reagent_container/pill in pillbottle.contents)
+					if(pill.type == pillbottle.pill_type_to_fill)
+						count++
+				if(count != pillbottle.max_storage_space)
+					to_chat(user, SPAN_WARNING("[pillbottle] needs to be full of it's own kind of pills to restocked!"))
+					return FALSE
 
 			if(!additional_restock_checks(item_to_stock, user, vendspec))
 				// the error message needs to go in the proc

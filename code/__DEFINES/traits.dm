@@ -258,7 +258,7 @@
 /// If the mob won't drop items held in face slot when downed
 #define TRAIT_IRON_TEETH "t_iron_teeth"
 
-// -- general ability traits --
+// -- ability traits --
 /// Xenos with this trait cannot have plasma transferred to them
 #define TRAIT_ABILITY_NO_PLASMA_TRANSFER "t_ability_no_plasma_transfer"
 /// Shows that the xeno queen is on ovi
@@ -267,12 +267,6 @@
 #define TRAIT_ABILITY_BURROWED "t_ability_burrowed"
 /// Xenos with this trait can toggle long sight while resting.
 #define TRAIT_ABILITY_SIGHT_IGNORE_REST "t_ability_sight_ignore_rest"
-
-
-// -- specific ability traits --
-#define TRAIT_ABILITY_DODGE "t_ability_dodge"
-#define TRAIT_ABILITY_RED_TAG "t_ability_red_tag"
-#define TRAIT_ABILITY_YELLOW_TAG "t_ability_yellow_tag"
 /// Used by shielder to check stance.
 #define TRAIT_ABILITY_ENCLOSED_PLATES "t_ability_enclosed_plates"
 /// Used by shielder for reflective plates.

@@ -25273,8 +25273,8 @@
 	dir = 9;
 	pixel_x = -3
 	},
-/turf/open/mars_cave/mars_cave_3,
-/area/caperiver/indoors/caves/se)
+/turf/closed/wall/strata_ice/rock,
+/area/caperiver/oob)
 "bzL" = (
 /obj/effect/decal/hybrisa/lattice/full,
 /turf/open/auto_turf/sand/layer2,
@@ -94104,7 +94104,7 @@ aTH
 aqJ
 atA
 bzm
-bza
+aWQ
 aWQ
 aWQ
 aWQ
@@ -94308,7 +94308,7 @@ aTH
 atA
 atA
 bzm
-atA
+aWQ
 aWQ
 aWQ
 aWQ

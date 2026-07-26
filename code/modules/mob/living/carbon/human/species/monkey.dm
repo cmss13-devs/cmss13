@@ -176,8 +176,8 @@
 	)
 
 /datum/species/monkey/neaera_alt
-	name = "Neaera"
-	name_plural = "Neaera"
+	name = "Pink Neaera"
+	name_plural = "Pink Neaera"
 
 	icobase = 'icons/mob/humans/species/monkeys/r_neaera_alt.dmi'
 	deform = 'icons/mob/humans/species/monkeys/r_neaera_alt.dmi'

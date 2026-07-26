@@ -679,13 +679,7 @@
 		else
 			SSticker.roundend_check_paused = TRUE
 			round_finished = MODE_INFESTATION_M_MAJOR //Humans destroyed the xenomorphs.
-			if(!GLOB.sunrise_starting_time)
-				GLOB.sunrise_starting_time = ROUND_TIME
-				for(var/mob/lighting_mob as anything in GLOB.player_list)
-					if(!lighting_mob.special_lighting && lighting_mob.fullscreens["lighting_backdrop"])
-						lighting_mob.special_lighting = SPECIAL_LIGHTING_SUNRISE
-						lighting_mob.special_lighting_active_timer = TRUE
-						lighting_mob.special_lighting_animate(SPECIAL_LIGHTING_SUNRISE, 30 SECONDS, 7, 10 SECONDS, GLOB.sunrise_starting_time, null, -1, FALSE, TRUE, FALSE)
+			GLOB.sun_status.start_sun_behavior(behavior = SPECIAL_LIGHTING_SUNRISE) //the new sun
 			ares_conclude()
 			end_of_round_ert()
 
@@ -745,14 +739,7 @@
 	else
 		round_finished = MODE_INFESTATION_M_MINOR
 	log_game("Distress Signal Hive collapse!")
-	if(!GLOB.sunrise_starting_time) //marine minors will also feel the warmth of the sun
-		GLOB.sunrise_starting_time = ROUND_TIME
-	for(var/mob/lighting_mob as anything in GLOB.player_list)
-		if(!lighting_mob.special_lighting && lighting_mob.fullscreens["lighting_backdrop"])
-			lighting_mob.special_lighting = SPECIAL_LIGHTING_SUNRISE
-			lighting_mob.special_lighting_active_timer = TRUE
-			lighting_mob.special_lighting_animate(SPECIAL_LIGHTING_SUNRISE, 30 SECONDS, 6, 10 SECONDS, GLOB.sunrise_starting_time, null, -1, FALSE, TRUE, FALSE)
-
+	GLOB.sun_status.start_sun_behavior(behavior = SPECIAL_LIGHTING_SUNRISE)
 
 ///////////////////////////////
 //Checks if the round is over//

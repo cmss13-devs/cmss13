@@ -285,6 +285,8 @@ SUBSYSTEM_DEF(ticker)
 	GLOB.supply_controller.start_processing()
 	GLOB.supply_controller_upp.start_processing()
 
+	GLOB.sun_status.start_sun_behavior(behavior = SPECIAL_LIGHTING_SUNSET)
+
 	for(var/i in GLOB.closet_list) //Set up special equipment for lockers and vendors, depending on gamemode
 		var/obj/structure/closet/C = i
 		INVOKE_ASYNC(C, TYPE_PROC_REF(/obj/structure/closet, select_gamemode_equipment), mode.type)

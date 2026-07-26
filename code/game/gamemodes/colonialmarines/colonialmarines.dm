@@ -746,7 +746,7 @@
 		round_finished = MODE_INFESTATION_M_MINOR
 	log_game("Distress Signal Hive collapse!")
 	if(!GLOB.sunrise_starting_time) //marine minors will also feel the warmth of the sun
-	GLOB.sunrise_starting_time = ROUND_TIME
+		GLOB.sunrise_starting_time = ROUND_TIME
 	for(var/mob/lighting_mob as anything in GLOB.player_list)
 		if(!lighting_mob.special_lighting && lighting_mob.fullscreens["lighting_backdrop"])
 			lighting_mob.special_lighting = SPECIAL_LIGHTING_SUNRISE

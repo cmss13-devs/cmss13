@@ -413,7 +413,7 @@
 #endif
 
 /area/Entered(atom/movable/thing, atom/OldLoc)
-	if(ismob(thing && !isnewplayer(A)))
+	if(ismob(thing && !isnewplayer(thing)))
 		if(!OldLoc)
 			return
 		var/mob/mob_thing = thing

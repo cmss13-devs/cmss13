@@ -2027,6 +2027,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/stack/nanopaste(new_human), WEAR_IN_BACK)
 
 /datum/equipment_preset/corpse/working_joe/fireproof
+	name = "Deactivated - Fireproof - Working Joe"
 
 /datum/equipment_preset/corpse/working_joe/fireproof/load_gear(mob/living/carbon/human/new_human)
 	add_ice_colony_survivor_equipment(new_human)
@@ -2096,4 +2097,5 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert/wy/near_empty(new_human), WEAR_R_STORE)
 
 /datum/equipment_preset/corpse/lb_merc/burst
+	name = "Corpse - Burst - Lasalle-Bionational - HIG - Operator"
 	xenovictim = TRUE

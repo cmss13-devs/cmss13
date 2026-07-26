@@ -1416,6 +1416,11 @@ SUBSYSTEM_DEF(minimaps)
 	live = TRUE
 	drawing = FALSE
 
+/datum/action/minimap/survivor
+	minimap_flags = NONE
+	marker_flags = NONE
+	drawing = FALSE
+
 /datum/action/minimap/observer/action_activate()
 	. = ..()
 	if(!.)

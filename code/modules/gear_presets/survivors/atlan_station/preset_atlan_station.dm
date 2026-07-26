@@ -126,8 +126,6 @@
 /datum/equipment_preset/survivor/cec_liaison/load_gear(mob/living/carbon/human/new_human)
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/upp(new_human), WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(new_human), WEAR_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/full(new_human), WEAR_R_STORE)
 
 	var/random_trenchcoat = rand(1,7)
 	switch(random_trenchcoat)
@@ -176,6 +174,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/scientist/hybrisa(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/cec_patch(new_human), WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/cec(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(new_human), WEAR_L_STORE)
 	add_random_cl_survivor_loot(new_human)
 	..()
 
@@ -848,7 +847,7 @@
 	faction = FACTION_CEC
 	job_title = JOB_CEC_SEC_SYNTH
 	assignment = JOB_CEC_SEC_SYNTH
-	role_comm_title = "CEC Sec Syn"
+	role_comm_title = "CEC Syn"
 	faction_group = list(FACTION_LIST_SURVIVOR_UPP, FACTION_CEC)
 	idtype = /obj/item/card/id/cec
 	survivor_variant = CORPORATE_SURVIVOR

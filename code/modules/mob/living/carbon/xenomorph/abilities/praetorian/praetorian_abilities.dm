@@ -226,7 +226,38 @@
 	plasma_cost = 80
 
 	var/activation_delay = 1 SECONDS
-	var/prime_delay = 1.5 SECONDS
+	var/prime_delay = 1 SECONDS
+
+/datum/action/xeno_action/activable/prae_acid_ball/use_ability(atom/target_atom)
+	var/mob/living/carbon/xenomorph/acid_ball_user = owner
+
+	if(acid_ball_user.action_busy)
+		return
+
+	XENO_ACTION_CHECK(acid_ball_user)
+
+	var/turf/current_turf = get_turf(acid_ball_user)
+
+	if(!current_turf)
+		return
+
+	if(!do_after(acid_ball_user, activation_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+		to_chat(acid_ball_user, SPAN_XENODANGER("We cancel our acid ball."))
+		return
+
+	XENO_ACTION_CHECK_USE_PLASMA(acid_ball_user)
+
+	apply_cooldown()
+
+	to_chat(acid_ball_user, SPAN_XENOWARNING("We lob a compressed ball of acid into the air!"))
+
+	var/obj/item/explosive/grenade/xeno_acid_grenade/grenade = new /obj/item/explosive/grenade/xeno_acid_grenade
+	grenade.cause_data = create_cause_data(initial(acid_ball_user.caste_type), acid_ball_user)
+	grenade.forceMove(get_turf(acid_ball_user))
+	grenade.throw_atom(target_atom, 5, SPEED_SLOW, acid_ball_user, TRUE)
+	addtimer(CALLBACK(grenade, TYPE_PROC_REF(/obj/item/explosive, prime)), prime_delay)
+
+	return ..()
 
 
 /datum/action/xeno_action/activable/spray_acid/base_prae_spray_acid

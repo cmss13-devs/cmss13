@@ -17,7 +17,7 @@
 "aq" = (
 /obj/structure/fence/slim/blue,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/lava/metal/warnplate/north,
+/turf/open/lava/plating/warnplate/north,
 /area/fire_colony/exterior/valley/north)
 "az" = (
 /turf/open/lava/basalt/basalt6,
@@ -51,7 +51,7 @@
 "ci" = (
 /obj/structure/fence/slim/blue,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/lava/metal/warnplate/west,
+/turf/open/lava/plating/warnplate/west,
 /area/fire_colony/exterior/valley/north)
 "ck" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -95,7 +95,7 @@
 /area/fire_colony/exterior/valley/north)
 "cO" = (
 /obj/structure/fence/slim/blue/door,
-/turf/open/lava/metal/warnplate/north,
+/turf/open/lava/plating/warnplate/north,
 /area/fire_colony/exterior/valley/north)
 "cW" = (
 /obj/effect/lava/edges/basalt/l_piece,
@@ -141,7 +141,7 @@
 "eq" = (
 /obj/structure/fence/slim/blue/door,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/lava/metal/warnplate,
+/turf/open/lava/plating/warnplate,
 /area/fire_colony/exterior/valley/north)
 "es" = (
 /turf/open/floor/corsat,
@@ -225,7 +225,7 @@
 /obj/item/stack/rods{
 	color = "#8d93a1ff"
 	},
-/turf/open/lava/metal/warnplate/east,
+/turf/open/lava/plating/warnplate/east,
 /area/fire_colony/exterior/valley/north)
 "gx" = (
 /obj/effect/lava/edges/basalt/l_piece{
@@ -384,7 +384,7 @@
 /area/fire_colony/exterior/clearing/north)
 "lr" = (
 /obj/structure/fence/slim/blue,
-/turf/open/lava/metal/warnplate/west,
+/turf/open/lava/plating/warnplate/west,
 /area/fire_colony/exterior/valley/north)
 "lz" = (
 /obj/effect/lava/edges/basalt/l_piece{
@@ -635,7 +635,7 @@
 /obj/structure/fence/slim/blue,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/lava/metal/plating,
+/turf/open/lava/plating,
 /area/fire_colony/exterior/valley/north)
 "rJ" = (
 /obj/item/tool/warning_cone/blue{
@@ -921,7 +921,7 @@
 /obj/item/stack/rods{
 	color = "#8d93a1ff"
 	},
-/turf/open/lava/metal/warnplate/west,
+/turf/open/lava/plating/warnplate/west,
 /area/fire_colony/exterior/valley/north)
 "AS" = (
 /obj/structure/flora/alien/fullgrass/fullgrass_1,
@@ -952,7 +952,7 @@
 "BQ" = (
 /obj/structure/fence/slim/blue,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/lava/metal/warnplate/east,
+/turf/open/lava/plating/warnplate/east,
 /area/fire_colony/exterior/valley/north)
 "BZ" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -1014,7 +1014,7 @@
 /area/fire_colony/exterior/valley/north)
 "DU" = (
 /obj/structure/fence/slim/blue,
-/turf/open/lava/metal/warnplate/north,
+/turf/open/lava/plating/warnplate/north,
 /area/fire_colony/exterior/valley/north)
 "Ej" = (
 /obj/effect/lava/edges/basalt/l_piece{
@@ -1040,7 +1040,7 @@
 "Fi" = (
 /obj/structure/fence/slim/blue/door,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/lava/metal/warnplate/north,
+/turf/open/lava/plating/warnplate/north,
 /area/fire_colony/exterior/valley/north)
 "FD" = (
 /obj/effect/lava/edges/basalt/l_piece{
@@ -1068,7 +1068,7 @@
 /obj/structure/fence/slim/blue/door,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/lava/metal/warnplate,
+/turf/open/lava/plating/warnplate,
 /area/fire_colony/exterior/valley/north)
 "Hd" = (
 /obj/effect/lava/edges/basalt/l_piece{
@@ -1165,7 +1165,7 @@
 /area/fire_colony/exterior/valley/north)
 "Jx" = (
 /obj/structure/fence/slim/blue,
-/turf/open/lava/metal/warnplate,
+/turf/open/lava/plating/warnplate,
 /area/fire_colony/exterior/valley/north)
 "JE" = (
 /obj/effect/lava/edges/basalt/l_piece{
@@ -1266,7 +1266,7 @@
 /area/fire_colony/exterior/valley/north)
 "Lo" = (
 /obj/structure/fence/slim/blue,
-/turf/open/lava/metal/warnplate/east,
+/turf/open/lava/plating/warnplate/east,
 /area/fire_colony/exterior/valley/north)
 "LZ" = (
 /obj/effect/lava/edges/basalt/l_piece,
@@ -1284,7 +1284,7 @@
 /obj/structure/fence/slim/blue,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/lava/metal/warnplate,
+/turf/open/lava/plating/warnplate,
 /area/fire_colony/exterior/valley/north)
 "MA" = (
 /obj/effect/lava/edges/basalt/side_rock{
@@ -1421,7 +1421,7 @@
 "Qc" = (
 /obj/structure/fence/slim/blue,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/lava/metal/warnplate,
+/turf/open/lava/plating/warnplate,
 /area/fire_colony/exterior/valley/north)
 "Qm" = (
 /obj/effect/lava/edges/basalt/l_piece{
@@ -1683,7 +1683,7 @@
 /obj/structure/fence/slim/blue,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/lava/metal/warnplate/east,
+/turf/open/lava/plating/warnplate/east,
 /area/fire_colony/exterior/valley/north)
 "YX" = (
 /obj/effect/lava/edges/basalt/l_piece{

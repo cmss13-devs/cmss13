@@ -494,7 +494,7 @@
 	icon_state = "storage"
 	linked_lz = DROPSHIP_LZ2
 
-/area/fire_colony/interior/storage_unit/e_valley
+/area/fire_colony/interior/storage_unit/e_valley_1
 	name = "\improper Storage Unit - Eastern Valley"
 	icon_state = "storage"
 

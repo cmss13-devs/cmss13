@@ -465,7 +465,7 @@ engineer_floor_deco
 /turf/open/lava/metal
 	icon_state = "grille"
 	icon = 'icons/turf/floors/lava/lava_turf.dmi'
-	baseturfs = /turf/open/lava/metal/plating
+	baseturfs = /turf/open/lava/plating
 
 /turf/open/lava/metal/grille
 	icon_state = "grille"
@@ -482,33 +482,33 @@ engineer_floor_deco
 /turf/open/lava/metal/grate/west
 	dir = WEST
 
-/turf/open/lava/metal/plating_grille
+/turf/open/lava/plating/grille
 	icon_state = "grille1"
 
-/turf/open/lava/metal/plating
+/turf/open/lava/plating
 	icon_state = "vent"
 
-/turf/open/lava/metal/plating_alt
+/turf/open/lava/plating/alt
 	icon_state = "vent1"
 
 // Plating & Damage
 
-/turf/open/lava/metal/plating
+/turf/open/lava/plating
 	icon_state = "plating"
 
-/turf/open/lava/metal/plating
+/turf/open/lava/plating
 	icon_state = "plating"
 
-/turf/open/lava/metal/plating/platingdmg1
+/turf/open/lava/plating/platingdmg1
 	icon_state = "platingdmg1"
 
-/turf/open/lava/metal/plating/platingdmg2
+/turf/open/lava/plating/platingdmg2
 	icon_state = "platingdmg2"
 
-/turf/open/lava/metal/plating/platingdmg3
+/turf/open/lava/plating/platingdmg3
 	icon_state = "platingdmg3"
 
-/turf/open/lava/metal/plating/panelscorched
+/turf/open/lava/plating/panelscorched
 	icon_state = "panelscorched"
 
 ///
@@ -591,40 +591,40 @@ engineer_floor_deco
 
 // Warnplate
 
-/turf/open/lava/metal/warnplate
+/turf/open/lava/plating/warnplate
 	icon_state = "dark_warnplate"
 
-/turf/open/lava/metal/warnplate/southwest
+/turf/open/lava/plating/warnplate/southwest
 	dir = SOUTHWEST
 
-/turf/open/lava/metal/warnplate/north
+/turf/open/lava/plating/warnplate/north
 	dir = NORTH
 
-/turf/open/lava/metal/warnplate/east
+/turf/open/lava/plating/warnplate/east
 	dir = EAST
 
-/turf/open/lava/metal/warnplate/northeast
+/turf/open/lava/plating/warnplate/northeast
 	dir = NORTHEAST
 
-/turf/open/lava/metal/warnplate/southeast
+/turf/open/lava/plating/warnplate/southeast
 	dir = SOUTHEAST
 
-/turf/open/lava/metal/warnplate/west
+/turf/open/lava/plating/warnplate/west
 	dir = WEST
 
-/turf/open/lava/metal/warnplate/northwest
+/turf/open/lava/plating/warnplate/northwest
 	dir = NORTHWEST
 
-/turf/open/lava/metal/warnplate/corner
+/turf/open/lava/plating/warnplate/corner
 	icon_state = "dark_warnplatecorner"
 
-/turf/open/lava/metal/warnplate/corner/north
+/turf/open/lava/plating/warnplate/corner/north
 	dir = NORTH
 
-/turf/open/lava/metal/warnplate/corner/east
+/turf/open/lava/plating/warnplate/corner/east
 	dir = EAST
 
-/turf/open/lava/metal/warnplate/corner/west
+/turf/open/lava/plating/warnplate/corner/west
 	dir = WEST
 
 // Asteroid new

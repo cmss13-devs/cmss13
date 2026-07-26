@@ -2261,7 +2261,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE|HIDEMASK|HIDEALLHAIR
 	flags_marine_helmet = NO_FLAGS
 
-	built_in_visors = /obj/item/device/helmet_visor
+	built_in_visors = list(new /obj/item/device/helmet_visor)
 
 	camera_factions = FACTION_LIST_LASALLE_BIONATIONAL
 

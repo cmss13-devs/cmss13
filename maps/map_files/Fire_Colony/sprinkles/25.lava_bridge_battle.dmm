@@ -283,7 +283,7 @@
 	pixel_y = 11
 	},
 /obj/item/stack/sheet/wood,
-/turf/open/lava/metal/warnplate/east,
+/turf/open/lava/plating/warnplate/east,
 /area/fire_colony/exterior/lava_bridge)
 "hM" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -464,7 +464,7 @@
 	pixel_x = 7;
 	pixel_y = 25
 	},
-/turf/open/lava/metal/warnplate/west,
+/turf/open/lava/plating/warnplate/west,
 /area/fire_colony/exterior/lava_bridge)
 "nv" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -675,7 +675,7 @@
 "tM" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/lava/metal/warnplate/east,
+/turf/open/lava/plating/warnplate/east,
 /area/fire_colony/exterior/lava_bridge)
 "uu" = (
 /obj/effect/lava/edges/basalt/l_piece,
@@ -864,7 +864,7 @@
 "Bl" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/item/weapon/twohanded/fireaxe,
-/turf/open/lava/metal/warnplate/east,
+/turf/open/lava/plating/warnplate/east,
 /area/fire_colony/exterior/lava_bridge)
 "Bo" = (
 /obj/effect/decal/cleanable/blood/synth,
@@ -956,7 +956,7 @@
 /obj/effect/decal/cleanable/blood/gibs/down{
 	pixel_x = 5
 	},
-/turf/open/lava/metal/warnplate/west,
+/turf/open/lava/plating/warnplate/west,
 /area/fire_colony/exterior/lava_bridge)
 "Ek" = (
 /obj/effect/lava/edges/basalt/side_rock{
@@ -1544,7 +1544,7 @@
 	pixel_x = 10;
 	pixel_y = -1
 	},
-/turf/open/lava/metal/warnplate/east,
+/turf/open/lava/plating/warnplate/east,
 /area/fire_colony/exterior/lava_bridge)
 "WM" = (
 /obj/structure/stairs/perspective{

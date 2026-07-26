@@ -446,33 +446,30 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 
 	return ..()
 
-/obj/item/stack/attackby(obj/item/used_stack, mob/user)
-	if(istype(used_stack, /obj/item/stack))
-		var/obj/item/stack/other_stack = used_stack
-		if(other_stack.stack_id == stack_id) //same stack type
-			if(other_stack.amount >= max_amount)
-				to_chat(user, SPAN_WARNING("The [name] is full!"))
-				return TRUE
-			var/to_transfer = min(amount, other_stack.max_amount - other_stack.amount)
+/obj/item/stack/attackby(obj/item/stack/used_stack, mob/user)
+	if(used_stack.stack_id != stack_id) //not the same stack type :)
+		return ..()
 
-			if(to_transfer <= 0)
-				return
+	if(used_stack.amount >= max_amount)
+		to_chat(user, SPAN_WARNING("The [name] is full!"))
+		return TRUE
+	var/to_transfer = min(amount, used_stack.max_amount - used_stack.amount)
 
-			to_chat(user, SPAN_INFO("You transfer [to_transfer] between the stacks."))
-			other_stack.add(to_transfer)
+	if(to_transfer <= 0)
+		return
 
-			if(other_stack && user.interactee == other_stack)
-				INVOKE_ASYNC(other_stack, TYPE_PROC_REF(/obj/item/stack, interact), user)
+	to_chat(user, SPAN_INFO("You transfer [to_transfer] between the stacks."))
+	used_stack.add(to_transfer)
 
-			use(to_transfer)
+	if(used_stack && user.interactee == used_stack)
+		INVOKE_ASYNC(used_stack, TYPE_PROC_REF(/obj/item/stack, interact), user)
 
-			if(!QDELETED(src) && user.interactee == src)
-				INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/item/stack, interact), user)
-			user.next_move = world.time + 0.3 SECONDS
+	use(to_transfer)
 
-			return TRUE
-
-	return ..()
+	if(!QDELETED(src) && user.interactee == src)
+		INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/item/stack, interact), user)
+	user.next_move = world.time + 0.3 SECONDS
+	return TRUE
 
 /*
  * Recipe datum

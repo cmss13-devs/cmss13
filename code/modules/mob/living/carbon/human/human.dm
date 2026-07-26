@@ -1633,6 +1633,7 @@
 
 // target = person whose splints are being removed
 // user = person removing the splints
+/// part refers to the specific limb that is targetted for interaction (splints, tourniquettes, etc)
 /mob/living/carbon/human/proc/remove_splints(mob/living/carbon/human/user, part)
 	var/mob/living/carbon/human/target = src
 
@@ -1646,14 +1647,14 @@
 		cur_hand = "r_hand"
 
 	if(!user.action_busy)
-		var/list/obj/limb/to_splint = list()
-		var/same_arm_side = FALSE // If you are trying to splint yourself, need opposite hand to splint an arm/hand
 		if(user.get_limb(cur_hand).status & LIMB_DESTROYED)
 			to_chat(user, SPAN_WARNING("You cannot remove splints without a hand."))
 			return
-		var/is_splint = FALSE
+
+		var/list/obj/limb/to_splint = list()
+		var/same_arm_side = FALSE // If you are trying to splint yourself, need opposite hand to splint an arm/hand
 		var/list/parts_to_check = part ? list(part) : list("l_leg","r_leg","l_arm","r_arm","r_hand","l_hand","r_foot","l_foot","chest","head","groin")
-		for(var/bodypart in parts_to_check) //check for any splints before do_after
+		for(var/bodypart in parts_to_check)
 			var/obj/limb/limbus = target.get_limb(bodypart)
 			if(limbus && (limbus.status & LIMB_SPLINTED))
 				if(user == target)
@@ -1663,71 +1664,60 @@
 					if((bodypart in list("r_arm", "r_hand")) && (cur_hand == "r_hand"))
 						same_arm_side = TRUE
 						continue
-				is_splint = TRUE
-				break
+				to_splint += limbus
 
-		var/msg = "" // Have to use this because there are issues with the to_chat macros and text macros and quotation marks
-		if(is_splint)
-			if(user == target)
-				user.visible_message(SPAN_NOTICE("[user] starts to remove the [part ? "splint on their [target.get_limb(part).display_name]" : "splints"]."),
-					SPAN_NOTICE("You start to remove the [part ? "splint on your [target.get_limb(part).display_name]" : "splints"]."))
-			else
-				user.visible_message(SPAN_NOTICE("[user] starts to remove \the [target]'s [part ? "splint on their [target.get_limb(part).display_name]" : "splints"]."),
-					SPAN_NOTICE("You start to remove \the [target]'s [part ? "splint on their [target.get_limb(part).display_name]" : "splints"]."))
-
-			if(do_after(user, HUMAN_STRIP_DELAY * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_ALL, BUSY_ICON_GENERIC, target, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
-				var/amount_removed = 0
-				for(var/bodypart in parts_to_check) // make sure the splints still exist before removing
-					var/obj/limb/target_limb = target.get_limb(bodypart)
-					if(target_limb && (target_limb.status & LIMB_SPLINTED))
-						if(user == target)
-							if((bodypart in list("l_arm", "l_hand")) && (cur_hand == "l_hand"))
-								same_arm_side = TRUE
-								continue
-							if((bodypart in list("r_arm", "r_hand")) && (cur_hand == "r_hand"))
-								same_arm_side = TRUE
-								continue
-						to_splint += target_limb
-
-				if(!length(to_splint))
-					if(same_arm_side)
-						to_chat(user, SPAN_WARNING("You need to use the opposite hand to remove the splints on your arm and hand!"))
-					else
-						to_chat(user, SPAN_WARNING("There are no splints to remove."))
-					return
-
-				var/obj/item/stack/medical/splint/new_splint = new(user.loc)
-				new_splint.amount = 0 //we checked that we have at least one bodypart splinted, so we can create it no prob. Also we need amount to be 0
-				new_splint.add_fingerprint(user)
-
-				for(var/obj/limb/cur_limb in to_splint)
-					amount_removed++
-					cur_limb.status &= ~LIMB_SPLINTED
-					pain.recalculate_pain()
-					if(cur_limb.status & LIMB_SPLINTED_INDESTRUCTIBLE)
-						new /obj/item/stack/medical/splint/nano(user.loc, 1)
-						cur_limb.status &= ~LIMB_SPLINTED_INDESTRUCTIBLE
-					else if(!new_splint.add(1))
-						new_splint = new(user.loc, 1) //old stack is dropped, time for new one
-						new_splint.add_fingerprint(user)
-
-				if(new_splint.amount == 0)
-					qdel(new_splint) //we only removed nano splints
-				msg = "[user == target ? "their own":"\proper [target]'s"]"
-				target.visible_message(SPAN_NOTICE("[user] removes [msg] [part ? "splint on their [target.get_limb(part).display_name]" : (amount_removed > 1 ? "splints" : "splint")]."), SPAN_NOTICE("Your [part ? "splint on your [target.get_limb(part).display_name] is" : (amount_removed > 1 ? "splints are" : "splint is")] removed."))
-				target.update_med_icon()
-				user.put_in_hands(new_splint)
-
-			else if(user == target)
-				to_chat(user, SPAN_NOTICE("You stop trying to remove your [part ? "splint on your [target.get_limb(part).display_name]" : "splints"]."))
-			else
-				to_chat(user, SPAN_NOTICE("You stop trying to remove \the [target]'s [part ? "splint on their [target.get_limb(part).display_name]" : "splints"]."))
-
-		else
+		if(!length(to_splint))
 			if(same_arm_side)
 				to_chat(user, SPAN_WARNING("You need to use the opposite hand to remove the splints on your arm and hand!"))
 			else
 				to_chat(user, SPAN_WARNING("There are no splints to remove."))
+			return
+
+		var/splint_text = part ? "splint on their [target.get_limb(part).display_name]" : "splints"
+		if(user == target)
+			user.visible_message(SPAN_NOTICE("[user] starts to remove the [splint_text]."),
+				SPAN_NOTICE("You start to remove the [splint_text]."))
+		else
+			user.visible_message(SPAN_NOTICE("[user] starts to remove \the [target]'s [splint_text]."),
+				SPAN_NOTICE("You start to remove \the [target]'s [splint_text]."))
+
+		if(do_after(user, HUMAN_STRIP_DELAY * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_ALL, BUSY_ICON_GENERIC, target, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
+			var/obj/item/stack/medical/splint/new_splint = new(user.loc)
+			new_splint.amount = 0 //we checked that we have at least one bodypart splinted, so we can create it no prob. Also we need amount to be 0
+			new_splint.add_fingerprint(user)
+
+			var/amount_removed = 0
+			for(var/obj/limb/cur_limb in to_splint)
+				// Check if the splint still exists after the do_after
+				if(!(cur_limb.status & LIMB_SPLINTED))
+					continue
+
+				amount_removed++
+				cur_limb.status &= ~LIMB_SPLINTED
+				pain.recalculate_pain()
+				if(cur_limb.status & LIMB_SPLINTED_INDESTRUCTIBLE)
+					new /obj/item/stack/medical/splint/nano(user.loc, 1)
+					cur_limb.status &= ~LIMB_SPLINTED_INDESTRUCTIBLE
+				else if(!new_splint.add(1))
+					new_splint = new(user.loc, 1) //old stack is dropped, time for new one
+					new_splint.add_fingerprint(user)
+
+			if(!amount_removed)
+				to_chat(user, SPAN_WARNING("The splints were removed before you could finish."))
+				qdel(new_splint)
+				return
+
+			if(new_splint.amount == 0)
+				qdel(new_splint) //we only removed nano splints
+			var/msg = (user == target ? "their own" : "\proper [target]'s")
+			target.visible_message(SPAN_NOTICE("[user] removes [msg] [part ? "splint on their [target.get_limb(part).display_name]" : (amount_removed > 1 ? "splints" : "splint")]."), SPAN_NOTICE("Your [part ? "[splint_text] is" : (amount_removed > 1 ? "splints are" : "splint is")] removed."))
+			target.update_med_icon()
+			user.put_in_hands(new_splint)
+
+		else if(user == target)
+			to_chat(user, SPAN_NOTICE("You stop trying to remove your [splint_text]."))
+		else
+			to_chat(user, SPAN_NOTICE("You stop trying to remove \the [target]'s [splint_text]."))
 
 /mob/living/carbon/human/yautja/Initialize(mapload)
 	. = ..(mapload, new_species = "Yautja")
@@ -1735,10 +1725,8 @@
 /mob/living/carbon/human/monkey/Initialize(mapload)
 	. = ..(mapload, new_species = "Monkey")
 
-
 /mob/living/carbon/human/farwa/Initialize(mapload)
 	. = ..(mapload, new_species = "Farwa")
-
 
 /mob/living/carbon/human/neaera/Initialize(mapload)
 	. = ..(mapload, new_species = "Neaera")

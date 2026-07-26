@@ -1023,26 +1023,26 @@ GLOBAL_LIST_EMPTY(vending_products)
 	.["vendor_type"] = "sorted"
 	.["displayed_categories"] = vendor_user_inventory_list(user, null, 4)
 
-/obj/structure/machinery/cm_vending/sorted/MouseDrop_T(atom/movable/A, mob/user)
+/obj/structure/machinery/cm_vending/sorted/MouseDrop_T(atom/movable/dropped_thing, mob/user)
 
 	if(inoperable())
 		return
 
-	if(!isturf(A.loc) && !ishuman(A.loc))
+	if(!isturf(dropped_thing.loc) && !ishuman(dropped_thing.loc))
 		return
 
 	if(user.stat || user.is_mob_restrained())
 		return
 
-	if(get_dist(user, src) > 1 || get_dist(src, A) > 1)
+	if(get_dist(user, src) > 1 || get_dist(src, dropped_thing) > 1)
 		return
 
 	if(!ishuman(user))
 		return
 
 	// Try to bulk restock using a container
-	if(istype(A, /obj/item/storage) && !istype(A, /obj/item/storage/pill_bottle))
-		var/obj/item/storage/container = A
+	if(istype(dropped_thing, /obj/item/storage) && !istype(dropped_thing, /obj/item/storage/pill_bottle))
+		var/obj/item/storage/container = dropped_thing
 		if(!length(container.contents))
 			return
 		if(being_restocked)
@@ -1071,8 +1071,8 @@ GLOBAL_LIST_EMPTY(vending_products)
 		SPAN_NOTICE("You finish stocking [src] with supplies."))
 		return
 
-	if(istype(A, /obj/item))
-		stock(A, user)
+	if(istype(dropped_thing, /obj/item))
+		stock(dropped_thing, user)
 
 /obj/structure/machinery/cm_vending/sorted/proc/stock(obj/item/item_to_stock, mob/user)
 	if(istype(item_to_stock, /obj/item/storage) && !istype(item_to_stock, /obj/item/storage/pill_bottle))

@@ -1502,7 +1502,7 @@
 	volume = RADIO_VOLUME_IMPORTANT
 
 /obj/item/device/radio/headset/distress/cec
-	name = "CEC headset"
+	name = "UPP CEC headset"
 	desc = "A headset commonly worn by Cosmos Exploration Corps personnel."
 	icon_state = "generic_headset"
 	frequency = UPP_FREQ

@@ -192,12 +192,13 @@
 	var/target_count = LAZYLEN(targets)
 	var/captured_message
 
-	if(target_count == 1)
-		captured_message = "slowed one target"
-	else if(target_count == 2)
-		captured_message = "rooted two targets"
-	else if(target_count >= 3)
-		captured_message = "stunned [target_count] targets"
+	switch(target_count)
+		if(1)
+			captured_message = "slowed one target"
+		if(2)
+			captured_message = "rooted two targets"
+		if(3 to 99) // It's dumb, but it should work.
+			captured_message = "stunned [target_count] targets"
 
 	if(captured_message)
 		xeno.balloon_alert(xeno, captured_message, text_color = "#51a16c")

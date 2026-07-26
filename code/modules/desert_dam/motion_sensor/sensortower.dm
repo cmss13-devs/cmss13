@@ -273,7 +273,8 @@ Higher severity explosion will damage the sensor tower more
 
 /obj/structure/machinery/sensortower/short_range/add_xenos_to_minimap()
 	for(var/mob/living/carbon/xenomorph/current_xeno as anything in GLOB.living_xeno_list)
-		if(current_xeno.z != z)
+		var/turf/xeno_turf = get_turf(current_xeno)
+		if(!is_ground_level(xeno_turf.z))
 			if(WEAKREF(current_xeno) in minimap_added)
 				SSminimaps.remove_marker(current_xeno)
 				current_xeno.add_minimap_marker()

@@ -8100,9 +8100,6 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
 /turf/open/floor/strata,
 /area/atlan/station/promenade)
 "ayL" = (
@@ -117098,7 +117095,7 @@ dxS
 loF
 loF
 jPr
-kcA
+ayF
 ayC
 loF
 amz

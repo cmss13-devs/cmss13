@@ -185,8 +185,6 @@
 	var/obj/item/attachable/attached_gun/active_attachable = null
 	///What attachments this gun starts with THAT CAN BE REMOVED. Important to avoid nuking the attachments on restocking! Added on New()
 	var/list/starting_attachment_types = null
-	//TODO: Yeah erm don't know man if this is acceptable, probably not
-	var/obj/item/magazine_clip/attached_magazine_clip = null
 
 	var/flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 	///Only guns of the same category can be fired together while dualwielding.
@@ -910,7 +908,7 @@ Reload a gun using a magazine.
 This sets all the initial datum's stuff. The bullet does the rest.
 User can be passed as null, (a gun reloading itself for instance), so we need to watch for that constantly.
 */
-/obj/item/weapon/gun/proc/reload(mob/user, obj/item/ammo_magazine/magazine, obj/item/magazine_clip/magazine_clip = null) //override for guns who use more special mags. //!Fingersscross this works
+/obj/item/weapon/gun/proc/reload(mob/user, obj/item/ammo_magazine/magazine) //override for guns who use more special mags.
 	if(flags_gun_features & (GUN_BURST_FIRING|GUN_UNUSUAL_DESIGN|GUN_INTERNAL_MAG))
 		return
 
@@ -944,7 +942,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 			if(!do_after(user, magazine.reload_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 				to_chat(user, SPAN_WARNING("Your reload was interrupted!"))
 				return
-		replace_magazine(user, magazine, magazine_clip)
+		replace_magazine(user, magazine)
 		SEND_SIGNAL(user, COMSIG_MOB_RELOADED_GUN, src)
 	else
 		current_mag = magazine
@@ -973,7 +971,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 		else
 			to_chat(user, SPAN_WARNING("\The [bullet] doesn't match [src]'s caliber!"))
 
-/obj/item/weapon/gun/proc/replace_magazine(mob/user, obj/item/ammo_magazine/magazine, obj/item/magazine_clip/magazine_clip = null)
+/obj/item/weapon/gun/proc/replace_magazine(mob/user, obj/item/ammo_magazine/magazine)
 	user.drop_inv_item_to_loc(magazine, src) //Click!
 	current_mag = magazine
 	replace_ammo(user,magazine)
@@ -984,10 +982,6 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 		SPAN_NOTICE("You load [magazine] into [src]!"), null, 3, CHAT_TYPE_COMBAT_ACTION)
 	if(reload_sound)
 		playsound(user, reload_sound, 25, 1, 5)
-
-	if(magazine_clip) //? Yeah copied the code from above for magazines
-		user.drop_inv_item_to_loc(magazine_clip, src)
-		attached_magazine_clip = magazine_clip
 
 
 //Drop out the magazine. Keep the ammo type for next time so we don't need to replace it every time.
@@ -1002,14 +996,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 		update_icon()
 		return
 
-	if(attached_magazine_clip) //? Copied the code from below, but with modification so the gun spits the magclip out instead
-		if(drop_override || !user) //If we want to drop it on the ground or there's no user.
-			attached_magazine_clip.forceMove(get_turf(src))//Drop it on the ground.
-		else
-			user.put_in_hands(attached_magazine_clip)
-		current_mag.forceMove(attached_magazine_clip) //!Fingerscross again this works
-
-	else if(drop_override || !user) //If we want to drop it on the ground or there's no user.
+	if(drop_override || !user) //If we want to drop it on the ground or there's no user.
 		current_mag.forceMove(get_turf(src))//Drop it on the ground.
 	else
 		user.put_in_hands(current_mag)

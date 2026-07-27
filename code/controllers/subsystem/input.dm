@@ -32,6 +32,7 @@ SUBSYSTEM_DEF(input)
 CLIENT_VERB(dummy) // idk where else to put it
 	set category = null
 	set name = "dummy"
+	set hidden = TRUE
 
 // Badmins just wanna have fun ♪
 /datum/controller/subsystem/input/proc/refresh_client_macro_sets()

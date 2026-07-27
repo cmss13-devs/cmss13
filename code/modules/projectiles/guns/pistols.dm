@@ -230,6 +230,21 @@
 	item_state = "b92fs"
 	current_mag = /obj/item/ammo_magazine/pistol/b92fs
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+	attachable_allowed = list(
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/suppressor/sleek,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reddot/small,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/lasersight/micro,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/burstfire_assembly,
+	)
 
 /obj/item/weapon/gun/pistol/b92fs/Initialize(mapload, spawn_empty)
 	. = ..()

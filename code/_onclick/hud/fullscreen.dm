@@ -1,6 +1,3 @@
-#define Z_CHANGE_CALL "z_change"
-#define AREA_CHANGE_CALL "area_change"
-
 /mob
 	var/list/fullscreens = list()
 
@@ -251,9 +248,6 @@
 	if((oldloc_incave && !newloc_incave))
 		GLOB.sun_status.exit_roof(src)
 		return
-
-#undef Z_CHANGE_CALL
-#undef AREA_CHANGE_CALL
 
 /atom/movable/screen/fullscreen/weather/low
 	icon_state = "impairedoverlay1"

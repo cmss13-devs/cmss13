@@ -36633,7 +36633,7 @@
 /turf/open/floor/almayer/orange/north,
 /area/almayer/engineering/lower)
 "bLX" = (
-/obj/vehicle/powerloader,
+/obj/vehicle/powerloader/ft/lightweight,
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/req)
 "bLY" = (
@@ -68586,6 +68586,10 @@
 	},
 /turf/open/floor/almayer/green/north,
 /area/almayer/squads/req)
+"ksa" = (
+/obj/vehicle/powerloader/ft/lightweight,
+/turf/open/floor/plating,
+/area/almayer/maint/lower/constr)
 "ksm" = (
 /obj/item/device/radio/listening_bug/radio_linked/fax/uscm_pvst{
 	nametag = "Foyer 2"
@@ -141902,7 +141906,7 @@ bcm
 uTk
 tTC
 tTC
-tTC
+ksa
 cyR
 tTC
 hOV

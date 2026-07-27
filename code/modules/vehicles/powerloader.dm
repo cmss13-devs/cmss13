@@ -17,6 +17,7 @@
 	var/open_state = "powerloader_open"
 	var/overlay_state = "powerloader_overlay"
 	var/wreckage = /obj/structure/powerloader_wreckage
+	var/crate_hauler_only = FALSE //restricts claws to standard and large crates
 	var/obj/item/powerloader_clamp/PC_left
 	var/obj/item/powerloader_clamp/PC_right
 
@@ -124,7 +125,7 @@
 		icon_state = base_state
 		overlays += image(icon_state = overlay_state, layer = MOB_LAYER + 0.1)
 		if(M.mind && M.skills)
-			move_delay = max(4, move_delay - 2 * M.skills.get_skill_level(SKILL_POWERLOADER))
+			move_delay -= 2 * M.skills.get_skill_level(SKILL_POWERLOADER)
 		if(!M.put_in_l_hand(PC_left))
 			PC_left.forceMove(src)
 			unbuckle()
@@ -164,13 +165,17 @@
 
 /obj/item/powerloader_clamp/Destroy()
 	if(loaded)
-		loaded.forceMove(get_turf(src))
+		var/turf/drop_turf = get_turf(src)
+		if(drop_turf)
+			loaded.forceMove(drop_turf)
+		loaded = null
 	linked_powerloader = null
 	return ..()
 
 /obj/item/powerloader_clamp/dropped(mob/user)
-	if(!linked_powerloader)
+	if(!linked_powerloader || QDELETED(linked_powerloader))
 		qdel(src)
+		return
 	..()
 	forceMove(linked_powerloader)
 	if(linked_powerloader.buckled_mob && linked_powerloader.buckled_mob == user)
@@ -314,6 +319,16 @@
 	if(!linked_powerloader)
 		qdel(src)
 		return
+	if(linked_powerloader.crate_hauler_only && !istype(target, /obj/structure/closet/crate) && !istype(target, /obj/structure/largecrate))
+		var/obj/vehicle/powerloader/overloaded_loader = linked_powerloader
+		overloaded_loader.visible_message(SPAN_DANGER("\The [overloaded_loader]'s frame groans and begins to buckle under the strain of lifting \the [target]!"))
+		playsound(overloaded_loader.loc, "alien_doorpry", 25, TRUE)
+		if(!do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, overloaded_loader, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
+			return
+		if(QDELETED(overloaded_loader) || linked_powerloader != overloaded_loader)
+			return
+		overloaded_loader.explode()
+		return
 	loaded = target
 	loaded.forceMove(src)
 	to_chat(user, SPAN_NOTICE("You grab \the [target] with \the [src]."))
@@ -406,3 +421,33 @@
 	open_state = "powerloader_open_ft"
 	overlay_state = "powerloader_overlay_ft"
 	wreckage = /obj/structure/powerloader_wreckage/ft
+
+/obj/vehicle/powerloader/ft/lightweight
+	name = "\improper Ferret Heavy Industries Mk4-L Crate Loader"
+	desc = "A lightweight crate hauler produced shortly before Ferret Heavy Industries collapsed. Its stripped frame is quicker than a standard Mk4, but the cheapened clamps catastrophically buckle under non-crate loads. The USCM bought thousands during Ferret's liquidation; a warning placard reads: 'NOT FLIGHT RATED - FRAME WILL NOT WITHSTAND DROPSHIP TURBULENCE.'"
+	flags_atom = FPRINT|CAN_USE_MULTIZ_STAIRS
+	move_delay = 7
+	crate_hauler_only = TRUE
+	var/dropship_transit = FALSE
+
+/obj/vehicle/powerloader/ft/lightweight/explode()
+	var/turf/drop_turf = get_turf(src)
+	if(drop_turf && PC_left?.loaded)
+		PC_left.loaded.forceMove(drop_turf)
+		PC_left.loaded = null
+	if(drop_turf && PC_right?.loaded)
+		PC_right.loaded.forceMove(drop_turf)
+		PC_right.loaded = null
+	return ..()
+
+/obj/vehicle/powerloader/ft/lightweight/beforeShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)
+	. = ..()
+	dropship_transit = istype(moving_dock, /obj/docking_port/mobile/marine_dropship)
+
+/obj/vehicle/powerloader/ft/lightweight/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
+	. = ..()
+	if(!dropship_transit)
+		return
+	dropship_transit = FALSE
+	visible_message(SPAN_DANGER("Dropship turbulence violently shakes \the [src]'s flimsy frame apart!"))
+	explode()

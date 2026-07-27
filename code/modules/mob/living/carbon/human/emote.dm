@@ -263,7 +263,7 @@
 		return
 
 	var/scream_message = pick("FUCK!!!", "AGH!!!", "ARGH!!!", "AAAA!!!", "HGH!!!", "NGHHH!!!", "NNHH!!!", "SHIT!!!")
-	SEND_SIGNAL(user, COMSIG_ATOM_LANGCHAT_SEND_MESSAGE, scream_message, flags = LANGCHAT_IMAGE_IGNORE_LANG, group, LANGCHAT_PANIC_POP, additional_styles = list("langchat_yell"))
+	SEND_SIGNAL(user, COMSIG_ATOM_LANGCHAT_SEND_MESSAGE, scream_message, LANGCHAT_IMAGE_IGNORE_LANG, group, LANGCHAT_PANIC_POP, additional_styles = list("langchat_yell"))
 	user.show_speech_bubble(group, "scream")
 
 /datum/emote/living/carbon/human/shakehead

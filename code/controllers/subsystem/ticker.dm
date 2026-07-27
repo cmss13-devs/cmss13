@@ -114,8 +114,6 @@ SUBSYSTEM_DEF(ticker)
 				GLOB.ooc_allowed = TRUE
 				if(force_ending && (SSticker.mode.round_finished in list(MODE_INFESTATION_M_MAJOR, MODE_INFESTATION_M_MINOR))) //unforced endings call it themselves
 					GLOB.sun_status.start_sun_behavior(behavior = SPECIAL_LIGHTING_SUNRISE) //the new sun
-				to_chat(world, force_ending)
-				to_chat(world, "test")
 				mode.declare_completion(force_ending)
 				REDIS_PUBLISH("byond.round", "type" = "round-complete", "round_name" = GLOB.round_statistics.round_name, "round_finished" = mode.round_finished)
 				flash_clients()

@@ -121,6 +121,12 @@
 "aat" = (
 /turf/open/fire_colony/brock,
 /area/fire_colony/exterior/valley/northwest)
+"aau" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
+/turf/open/floor/strata/blue3,
+/area/fire_colony/interior/dorms/offices)
 "aav" = (
 /obj/effect/decal/warning_stripes/worn{
 	dir = 4
@@ -132,6 +138,16 @@
 	},
 /turf/open/floor/strata/sand3/east,
 /area/fire_colony/interior/hangar/alpha)
+"aaw" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/strata/blue3/northwest,
+/area/fire_colony/interior/dorms/offices)
+"aax" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/strata/blue3/northeast,
+/area/fire_colony/interior/dorms/offices)
 "aay" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -140,11 +156,21 @@
 "aaz" = (
 /turf/open/fire_colony/brock,
 /area/fire_colony/exterior/clearing/north)
+"aaA" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/strata/deco2,
+/area/fire_colony/interior/epsilon_facility)
 "aaB" = (
 /turf/closed/shuttle/ert{
 	icon_state = "rightengine_2"
 	},
 /area/fire_colony/interior/hangar/broken_dropship)
+"aaC" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/strata/deco,
+/area/fire_colony/interior/epsilon_facility)
 "aaD" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/floor/prison/ramptop,
@@ -152,6 +178,12 @@
 "aaE" = (
 /turf/open/fire_colony/basalt/basalt0,
 /area/fire_colony/exterior/valley/north)
+"aaF" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/strata/orange_cover,
+/area/fire_colony/interior/epsilon_facility)
 "aaG" = (
 /obj/structure/platform/metal,
 /obj/structure/platform/metal/almayer/west{
@@ -171,6 +203,20 @@
 "aaI" = (
 /turf/open/fire_colony/basalt/basalt0,
 /area/fire_colony/exterior/valley/northwest)
+"aaJ" = (
+/obj/effect/decal/warning_stripes/worn/worn_stripes_large{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/strata/floor3,
+/area/fire_colony/interior/epsilon_facility)
+"aaK" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/strata/lightblue3/northwest,
+/area/fire_colony/interior/epsilon_facility)
 "aaP" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#818793"
@@ -6938,6 +6984,7 @@
 /area/fire_colony/interior/hangar/checkpoint)
 "aMp" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/blue3/southeast,
 /area/fire_colony/interior/dorms/offices)
 "aMr" = (
@@ -15139,6 +15186,7 @@
 	buckling_y = 10
 	},
 /obj/effect/decal/hybrisa/trash,
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/blue3/east,
 /area/fire_colony/interior/dorms/offices)
 "cbR" = (
@@ -16218,6 +16266,9 @@
 	icon_state = "trash_3";
 	pixel_x = -8;
 	pixel_y = 12
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 10
 	},
 /turf/open/floor/strata/deco,
 /area/fire_colony/interior/epsilon_facility)
@@ -22393,6 +22444,9 @@
 	pixel_x = 7;
 	pixel_y = 14
 	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
 /turf/open/floor/strata/deco,
 /area/fire_colony/interior/epsilon_facility)
 "dOY" = (
@@ -24799,7 +24853,6 @@
 /area/fire_colony/interior/hangar/garage)
 "esa" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/fire_colony/catwalk/glass_lattice,
 /area/fire_colony/interior/dorms/offices)
 "esl" = (
@@ -28095,6 +28148,7 @@
 	},
 /obj/effect/decal/hybrisa/trash,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/blue3/east,
 /area/fire_colony/interior/dorms/offices)
 "fek" = (
@@ -34488,7 +34542,7 @@
 	pixel_y = -2
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 9
+	dir = 4
 	},
 /turf/open/floor/strata/blue3,
 /area/fire_colony/interior/dorms/offices)
@@ -38130,7 +38184,6 @@
 "huf" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/plating/fire_colony/grille,
 /area/fire_colony/interior/dorms/offices)
 "huh" = (
@@ -38513,8 +38566,6 @@
 /area/fire_colony/exterior/underground/excavation/north)
 "hxT" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/effect/landmark/survivor_spawner,
-/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/gray_multi_tiles,
 /area/fire_colony/interior/dorms/offices)
 "hxU" = (
@@ -40526,6 +40577,9 @@
 /area/fire_colony/exterior/valley/west)
 "hXN" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 10
+	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/fire_colony/interior/dorms/offices)
 "hXQ" = (
@@ -43485,7 +43539,9 @@
 "iKp" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 5
+	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/fire_colony/interior/dorms/offices)
 "iKq" = (
@@ -54236,6 +54292,7 @@
 /obj/effect/decal/cleanable/dirt/alt_dirt,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/blue3/east,
 /area/fire_colony/interior/dorms/offices)
 "lvg" = (
@@ -55175,8 +55232,8 @@
 /area/fire_colony/interior/dorms/offices)
 "lGS" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 8
 	},
 /turf/open/floor/strata/blue3/northeast,
 /area/fire_colony/interior/dorms/offices)
@@ -57814,6 +57871,9 @@
 /obj/item/tool/pen{
 	pixel_x = 2;
 	pixel_y = -13
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
 	},
 /turf/open/floor/strata/deco,
 /area/fire_colony/interior/epsilon_facility)
@@ -69439,6 +69499,7 @@
 	pixel_x = 6;
 	pixel_y = -7
 	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/blue3/east,
 /area/fire_colony/interior/dorms/offices)
 "pfk" = (
@@ -74990,6 +75051,9 @@
 /obj/item/reagent_container/glass/bottle{
 	pixel_x = 6;
 	pixel_y = 18
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
 	},
 /turf/open/floor/strata/deco2,
 /area/fire_colony/interior/epsilon_facility)
@@ -81011,14 +81075,6 @@
 	},
 /turf/open/fire_colony/engineer_ruins/engineer_ruins/damaged/damage_2,
 /area/fire_colony/exterior/underground/excavation/south)
-"rKt" = (
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/pipes/standard/manifold/hidden/cyan{
-	dir = 8
-	},
-/turf/open/floor/plating/fire_colony/grille,
-/area/fire_colony/interior/dorms/offices)
 "rKw" = (
 /obj/structure/largecrate/random/mini/small_case{
 	pixel_x = 10;
@@ -87974,6 +88030,7 @@
 /turf/open/fire_colony/basalt/basalt0,
 /area/fire_colony/exterior/underground/excavation/north)
 "tvs" = (
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/strata/blue3/southwest,
 /area/fire_colony/interior/dorms/offices)
 "tvw" = (
@@ -90438,6 +90495,9 @@
 	dir = 8;
 	pixel_x = -1
 	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
 /turf/open/floor/strata/floor3,
 /area/fire_colony/interior/epsilon_facility)
 "uaY" = (
@@ -91719,8 +91779,8 @@
 /turf/open/fire_colony/hot_lava,
 /area/fire_colony/exterior/underground/excavation/south)
 "urn" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 6
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 8
 	},
 /turf/open/floor/strata/deco,
 /area/fire_colony/interior/epsilon_facility)
@@ -107012,6 +107072,7 @@
 	pixel_y = 32
 	},
 /obj/item/device/flashlight/lamp/tripod/grey/off,
+/obj/structure/pipes/vents/pump,
 /turf/open/floor/strata/lightblue4,
 /area/fire_colony/interior/epsilon_facility)
 "ycv" = (
@@ -107432,6 +107493,9 @@
 	name = "rubber mat";
 	pixel_x = 2;
 	pixel_y = 15
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
 	},
 /turf/open/floor/strata/deco2,
 /area/fire_colony/interior/epsilon_facility)
@@ -112098,8 +112162,8 @@ aaQ
 abD
 abD
 ycu
-xKF
-jxU
+aaK
+hMo
 tNz
 sNC
 aRa
@@ -113109,7 +113173,7 @@ mcC
 scT
 uYB
 odZ
-hmh
+aaC
 jxU
 aRa
 fhF
@@ -113513,7 +113577,7 @@ abD
 abD
 abD
 rRC
-lfS
+aaF
 lfS
 rRC
 abD
@@ -113715,7 +113779,7 @@ mcC
 lds
 clJ
 nre
-gCb
+aaJ
 gCb
 ncD
 fkK
@@ -113918,7 +113982,7 @@ cnf
 cdB
 lMu
 cqU
-jxU
+aaA
 urn
 tGw
 kYN
@@ -128527,7 +128591,7 @@ jRs
 fXc
 iQo
 pIT
-jRs
+aaw
 cKu
 bmd
 kVK
@@ -128725,7 +128789,7 @@ hxT
 huf
 esa
 esa
-rKt
+huf
 esa
 esa
 huf
@@ -128931,8 +128995,8 @@ lGS
 cbQ
 fdW
 lvd
-aKT
-cNl
+aax
+aau
 pky
 kVK
 bFJ

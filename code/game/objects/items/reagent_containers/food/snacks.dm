@@ -3350,6 +3350,18 @@
 	icon_state = "unbranded_packaged-burrito"
 	item_state = "unbranded_pburrito"
 
+/obj/item/reagent_container/food/snacks/packaged_burrito/unbranded/attack_self(mob/user)
+	if(package)
+		playsound(src.loc,'sound/effects/pageturn2.ogg', 15, 1)
+		to_chat(user, SPAN_NOTICE("You pull off the wrapping from the squishy burrito!"))
+		RemoveElement(/datum/element/corp_label/wy)
+		package = 0
+		user.put_in_hands(new /obj/item/trash/buritto/alt)
+		icon_state = "open-burrito"
+		item_state = "unbranded_burrito"
+		return
+	..()
+
 /obj/item/reagent_container/food/snacks/packaged_burrito/unbranded/Initialize()
 	. = ..()
 	reagents.add_reagent("bread", 5)
@@ -3390,6 +3402,18 @@
 	icon_state = "unbranded_packaged-burger"
 	item_state = "unbranded_pburger"
 
+/obj/item/reagent_container/food/snacks/packaged_burger/unbranded/attack_self(mob/user)
+	if(package)
+		playsound(src.loc,'sound/effects/pageturn2.ogg', 15, 1)
+		to_chat(user, SPAN_NOTICE("You pull off the wrapping from the squishy hamburger!"))
+		RemoveElement(/datum/element/corp_label/wy)
+		package = 0
+		user.put_in_hands(new /obj/item/trash/burger/alt)
+		icon_state = "open-burger"
+		item_state = "unbranded_burger"
+		return
+	..()
+
 /obj/item/reagent_container/food/snacks/packaged_burger/unbranded/Initialize()
 	. = ..()
 	reagents.add_reagent("bread", 5)
@@ -3429,6 +3453,18 @@
 	desc = "A singular squishy, room temperature, hot dog. There's no time given for how long to cook it, so you assume its probably good to go."
 	icon_state = "unbranded_packaged-hotdog"
 	item_state = "unbranded_photdog"
+
+/obj/item/reagent_container/food/snacks/packaged_hdogs/unbranded/attack_self(mob/user)
+	if(package)
+		playsound(src.loc,'sound/effects/pageturn2.ogg', 15, 1)
+		to_chat(user, SPAN_NOTICE("You pull off the wrapping from the squishy hotdog!"))
+		RemoveElement(/datum/element/corp_label/wy)
+		package = 0
+		user.put_in_hands(new /obj/item/trash/hotdog/alt)
+		icon_state = "open-hotdog"
+		item_state = "unbranded_hotdog"
+		return
+	..()
 
 /obj/item/reagent_container/food/snacks/packaged_hdogs/unbranded/Initialize()
 	. = ..()

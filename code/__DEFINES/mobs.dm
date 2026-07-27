@@ -181,6 +181,7 @@
 #define SPECIAL_LIGHTING_PREROUND "preround"
 #define SPECIAL_LIGHTING_SUNSET "sunset"
 #define SPECIAL_LIGHTING_SUNRISE "sunrise"
+#define SPECIAL_LIGHTING_SELF_DESTRUCTION "self destruction"
 
 //=================================================
 

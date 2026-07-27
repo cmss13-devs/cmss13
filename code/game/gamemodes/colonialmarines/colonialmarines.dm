@@ -665,6 +665,7 @@
 
 	if(SShijack?.sd_detonated)
 		round_finished = MODE_INFESTATION_DRAW_DEATH // Self destruction.
+		GLOB.sun_status.start_sun_behavior(behavior = SPECIAL_LIGHTING_SELF_DESTRUCTION)
 		return
 
 	var/list/living_player_list = count_humans_and_xenos(get_affected_zlevels())

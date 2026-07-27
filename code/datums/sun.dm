@@ -4,6 +4,7 @@ GLOBAL_DATUM_INIT(sun_status, /datum/sun, new)
 	var/static/list/warm_color_progression = list("#da8b4a", "#a9633c", "#90422d", "#5c2d33", "#42232c", "#231935", "#050c27", "#000")
 	var/static/list/cold_color_progression = list("#6679a8", "#516a8b", "#38486e", "#2c2f4d", "#211b36", "#1f1b33", "#0c0a1b", "#000")
 	var/static/list/sunrise_color_progression = list("#000", "#040712", "#111322", "#291642", "#3f2239", "#632c3d", "#d89d6d")
+	var/static/list/self_destruction_progression = list("#000", "#eba7a2", "#ffffff", "#d99893","#6e2d29", "#000")
 	var/list/used_color_progression
 	/// are we on snowy planet
 	var/is_cold = FALSE
@@ -40,6 +41,12 @@ GLOBAL_DATUM_INIT(sun_status, /datum/sun, new)
 		max_stages = 7
 		startup_delay = 10 SECONDS
 		used_color_progression = sunrise_color_progression
+
+	if(behavior == SPECIAL_LIGHTING_SELF_DESTRUCTION)
+		stage_time = 3 SECONDS
+		max_stages = 6
+		startup_delay = 0 SECONDS
+		used_color_progression = self_destruction_progression
 
 	sun_behavior = behavior
 

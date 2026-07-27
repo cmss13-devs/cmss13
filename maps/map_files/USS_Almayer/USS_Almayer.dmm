@@ -199,6 +199,10 @@
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space)
+"aaD" = (
+/obj/vehicle/powerloader/ft/lightweight,
+/turf/open/floor/plating,
+/area/almayer/maint/lower/constr)
 "aaE" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/almayer/plating_striped/south,
@@ -68586,10 +68590,6 @@
 	},
 /turf/open/floor/almayer/green/north,
 /area/almayer/squads/req)
-"ksa" = (
-/obj/vehicle/powerloader/ft/lightweight,
-/turf/open/floor/plating,
-/area/almayer/maint/lower/constr)
 "ksm" = (
 /obj/item/device/radio/listening_bug/radio_linked/fax/uscm_pvst{
 	nametag = "Foyer 2"
@@ -141906,7 +141906,7 @@ bcm
 uTk
 tTC
 tTC
-ksa
+aaD
 cyR
 tTC
 hOV

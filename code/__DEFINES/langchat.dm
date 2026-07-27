@@ -1,0 +1,37 @@
+#define LANGCHAT_IMAGE_STATE_INIT 0
+#define LANGCHAT_IMAGE_STATE_READY 1
+#define LANGCHAT_IMAGE_STATE_CONFIGURED 2
+#define LANGCHAT_IMAGE_STATE_INSTANTIATED 3
+#define LANGCHAT_IMAGE_STATE_DISPLAYING 4
+
+#define LANGCHAT_IMAGE_IS_EMOTE (1<<0)
+#define LANGCHAT_IMAGE_IS_RADIO (1<<1)
+#define LANGCHAT_IMAGE_IGNORE_LANG (1<<2)
+#define LANGCHAT_IMAGE_NO_SCRAMBLE (1<<3)
+#define LANGCHAT_IMAGE_MULTIPART (1<<4)
+#define LANGCHAT_IMAGE_CONTINUING (1<<5)
+
+#define langchat_client_enabled(M) (M && M.client && M.client.prefs && !M.client.prefs.lang_chat_disabled)
+
+#define LANGCHAT_LONGEST_TEXT 64
+#define LANGCHAT_WIDTH 96
+#define LANGCHAT_MAX_ALPHA 196
+
+//pop defines
+#define LANGCHAT_DEFAULT_POP 0 //normal message
+#define LANGCHAT_PANIC_POP 1 //this causes shaking
+#define LANGCHAT_FAST_POP 2 //this just makes it go away faster
+
+// params for default pop
+#define LANGCHAT_MESSAGE_POP_TIME 2
+#define LANGCHAT_MESSAGE_POP_Y_SINK 8
+
+// params for panic pop
+#define LANGCHAT_MESSAGE_PANIC_POP_TIME 1
+#define LANGCHAT_MESSAGE_PANIC_POP_Y_SINK 8
+#define LANGCHAT_MESSAGE_PANIC_SHAKE_SIZE 6
+#define LANGCHAT_MESSAGE_PANIC_SHAKE_TIMES 6
+#define LANGCHAT_MESSAGE_PANIC_SHAKE_TIME_TAKEN 1
+// params for fast pop
+#define LANGCHAT_MESSAGE_FAST_POP_TIME 1
+#define LANGCHAT_MESSAGE_FAST_POP_Y_SINK 8

@@ -18,6 +18,7 @@
 	. = ..()
 	photocopier = locate(/obj/structure/machinery/photocopier,get_step(src, SOUTHWEST))
 	GLOB.chemical_data.research_computers += src
+	AddComponent(/datum/component/langchat_image)
 
 /obj/structure/machinery/computer/research/Destroy()
 	QDEL_NULL(photocopier)
@@ -207,7 +208,7 @@
 				playsound(loc, 'sound/machines/twobeep.ogg', 5, 1)
 			else
 				playsound(loc, 'sound/machines/buzz-two.ogg', 5, 1)
-				langchat_speech("There are no contracts to reprint available", get_mobs_in_view(7, src), GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("langchat_small"))
+				SEND_SIGNAL(src, COMSIG_ATOM_LANGCHAT_SEND_MESSAGE, "There are no contracts to reprint available", LANGCHAT_IMAGE_IGNORE_LANG, get_mobs_in_view(7, src), additional_styles = list("langchat_small"))
 				visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: There are no contracts to reprint available")
 		if("announce")
 			if(!COOLDOWN_FINISHED(GLOB.chemical_data, announcement_cooldown))

@@ -60,14 +60,14 @@
 
 /datum/action/human_action/cycle_voice_level/update_button_icon()
 	var/mob/living/carbon/human/my_voice = owner
-	switch(my_voice.langchat_styles) // honestly, could probably merge this one with the cycle_voice_level proc
-		if("", null)
+	switch(my_voice.voice_level) // honestly, could probably merge this one with the cycle_voice_level proc
+		if(0)
 			action_icon_state = "leadership_voice_off"
 
-		if("langchat_smaller_bolded")
+		if(1)
 			action_icon_state = "leadership_voice_low"
 
-		if("langchat_bolded")
+		if(2)
 			action_icon_state = "leadership_voice_high"
 
 	button.overlays.Cut()

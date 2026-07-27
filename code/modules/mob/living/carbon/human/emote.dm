@@ -174,7 +174,8 @@
 		return
 
 	var/medic_message = pick("Corpsman!", "Doc!", "Help!")
-	user.langchat_speech(medic_message, group, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_bolded"))
+	SEND_SIGNAL(user, COMSIG_ATOM_LANGCHAT_SEND_MESSAGE, medic_message, LANGCHAT_IMAGE_IGNORE_LANG, group, additional_styles = list("langchat_bolded"))
+
 	user.show_speech_bubble(group, "medic")
 
 /datum/emote/living/carbon/human/moan
@@ -223,7 +224,7 @@
 		return
 
 	var/pain_message = pick("OW!!", "AGH!!", "ARGH!!", "OUCH!!", "ACK!!", "OUF!")
-	user.langchat_speech(pain_message, group, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_yell"))
+	SEND_SIGNAL(user, COMSIG_ATOM_LANGCHAT_SEND_MESSAGE, pain_message, flags = LANGCHAT_IMAGE_IGNORE_LANG, group, LANGCHAT_FAST_POP, additional_styles = list("langchat_yell"))
 	user.show_speech_bubble(group, "pain")
 
 /datum/emote/living/carbon/human/salute
@@ -262,7 +263,7 @@
 		return
 
 	var/scream_message = pick("FUCK!!!", "AGH!!!", "ARGH!!!", "AAAA!!!", "HGH!!!", "NGHHH!!!", "NNHH!!!", "SHIT!!!")
-	user.langchat_speech(scream_message, group, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_PANIC_POP, additional_styles = list("langchat_yell"))
+	SEND_SIGNAL(user, COMSIG_ATOM_LANGCHAT_SEND_MESSAGE, scream_message, flags = LANGCHAT_IMAGE_IGNORE_LANG, group, LANGCHAT_PANIC_POP, additional_styles = list("langchat_yell"))
 	user.show_speech_bubble(group, "scream")
 
 /datum/emote/living/carbon/human/shakehead

@@ -411,6 +411,7 @@
 	vis_contents += wound_icon_holder
 
 	AddComponent(/datum/component/seethrough_mob)
+	AddComponent(/datum/component/langchat_image, langchat_height = langchat_height, default_color = "#b491c8")
 
 	///Handle transferring things from the old Xeno if we have one in the case of evolve, devolve etc.
 	AddComponent(/datum/component/deevolve_cooldown, old_xeno)

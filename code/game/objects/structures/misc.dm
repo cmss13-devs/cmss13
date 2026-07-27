@@ -102,9 +102,11 @@
 	var/list/practice_mode = PRACTICE_LEVEL_LOW
 	///health of the target mode
 	var/practice_health = 230
+
 /obj/structure/target/Initialize(mapload, ...)
 	. = ..()
 	icon_state = pick("target_a", "target_q")
+	AddComponent(/datum/component/langchat_image)
 
 /obj/structure/target/get_examine_text(mob/user)
 	. = ..()
@@ -118,7 +120,7 @@
 	if(practice_health <= 0 || !anchored)
 		return
 	var/damage_dealt = floor(armor_damage_reduction(GLOB.xeno_ranged, bullet.calculate_damage(), practice_mode[2], bullet.ammo.penetration))
-	langchat_speech(damage_dealt, get_mobs_in_view(7, src) , GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small"))
+	SEND_SIGNAL(src, COMSIG_ATOM_LANGCHAT_SEND_MESSAGE, damage_dealt, LANGCHAT_IMAGE_IGNORE_LANG, get_mobs_in_view(7, src), LANGCHAT_FAST_POP, list("langchat_small"))
 	practice_health -= damage_dealt
 	animation_flash_color(src, "#FF0000", 1)
 	playsound(loc, get_sfx("ballistic_hit"), 20, TRUE, 7)
@@ -137,13 +139,13 @@
 /obj/structure/target/proc/start_practice_health_reset()
 	animate(src, transform = matrix(0, MATRIX_ROTATE), time = 1, easing = EASE_IN)
 	animate(transform = matrix(270, MATRIX_ROTATE), time = 1, easing = EASE_OUT)
-	langchat_speech("[src] folds to the ground!", get_mobs_in_view(7, src) , GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("langchat_small"))
+	SEND_SIGNAL(src, COMSIG_ATOM_LANGCHAT_SEND_MESSAGE, "[src] folds to the ground!", LANGCHAT_IMAGE_IGNORE_LANG, get_mobs_in_view(7, src), LANGCHAT_FAST_POP, list("langchat_small"))
 	playsound(loc, 'sound/machines/chime.ogg', 50, TRUE, 7)
 	addtimer(CALLBACK(src, PROC_REF(raise_target)), 5 SECONDS)
 
 /obj/structure/target/proc/raise_target()
 	animate(src, transform = matrix(0, MATRIX_ROTATE), time = 1, easing = EASE_OUT)
-	langchat_speech("[src] raises back into position!", get_mobs_in_view(7, src) , GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("langchat_small"))
+	SEND_SIGNAL(src, COMSIG_ATOM_LANGCHAT_SEND_MESSAGE, "[src] raises back into position!", LANGCHAT_IMAGE_IGNORE_LANG, get_mobs_in_view(7, src), LANGCHAT_FAST_POP, list("langchat_small"))
 	practice_health = practice_mode[1]
 
 /obj/structure/target/attack_alien(mob/living/carbon/xenomorph/xeno)

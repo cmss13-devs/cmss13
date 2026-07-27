@@ -45373,7 +45373,7 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/item/weapon/gun/shotgun/pump/m37a,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/floor/strata/red1,
 /area/atlan/station/hab_sec)

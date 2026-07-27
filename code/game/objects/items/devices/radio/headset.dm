@@ -1511,3 +1511,4 @@
 	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/upp)
 	additional_hud_types = list(MOB_HUD_FACTION_UPP)
 	minimap_flag = MINIMAP_FLAG_UPP
+

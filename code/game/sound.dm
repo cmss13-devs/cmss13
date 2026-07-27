@@ -382,6 +382,8 @@
 				sound = pick('sound/voice/alien_drool1.ogg','sound/voice/alien_drool2.ogg')
 			if("alien_roar")
 				sound = pick('sound/voice/alien_roar1.ogg','sound/voice/alien_roar2.ogg','sound/voice/alien_roar3.ogg','sound/voice/alien_roar4.ogg','sound/voice/alien_roar5.ogg','sound/voice/alien_roar6.ogg')
+			if("alien_roarhiss")
+				sound = pick('sound/voice/alien_roarhiss1.ogg','sound/voice/alien_roarhiss2.ogg')
 			if("alien_roar_larva")
 				sound = pick('sound/voice/alien_roar_larva1.ogg','sound/voice/alien_roar_larva2.ogg')
 			if("queen")

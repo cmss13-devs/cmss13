@@ -177,8 +177,7 @@ CLIENT_VERB(looc, msg as text)
 			to_chat(C, "<font color='#f557b8'><span class='ooc linkify'><span class='prefix'>LOOC:</span> <EM>[display_name]:</EM> <span class='message'>[msg]</span></span></font>")
 
 	if(mob.looc_overhead || GLOB.ooc_allowed)
-		var/transmit_language = isxeno(mob) ? LANGUAGE_XENOMORPH : LANGUAGE_ENGLISH
-		mob.langchat_speech(msg, heard, GLOB.all_languages[transmit_language], "#ff47d7")
+		SEND_SIGNAL(mob, COMSIG_ATOM_LANGCHAT_SEND_MESSAGE, msg, LANGCHAT_IMAGE_IGNORE_LANG, heard, override_color = "#ff47d7")
 
 	// Now handle admins - show username (key) when different, otherwise just key
 	var/username = S.username()

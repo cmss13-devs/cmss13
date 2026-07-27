@@ -35,6 +35,7 @@
 		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, PROC_REF(disable_pmc))
 
 	AddComponent(/datum/component/tacmap, has_drawing_tools = TRUE, minimap_flag = minimap_flag, has_update = TRUE)
+	AddComponent(/datum/component/langchat_image)
 	return ..()
 
 /obj/structure/machinery/computer/groundside_operations/Destroy()
@@ -395,7 +396,7 @@
 	if(!(z == sourcemob.z) && !((z in target_zs) && (sourcemob.z in target_zs)))
 		return
 	if(show_message_above_tv)
-		langchat_speech(message, get_mobs_in_view(7, src), language, sourcemob.langchat_color, FALSE, LANGCHAT_FAST_POP, list(sourcemob.langchat_styles))
+		SEND_SIGNAL(src, COMSIG_ATOM_LANGCHAT_SEND_MESSAGE, message, NO_FLAGS, get_mobs_in_view(7, src), LANGCHAT_FAST_POP, language = language)
 	for(var/datum/weakref/user_ref in concurrent_users)
 		var/mob/user = user_ref.resolve()
 		if(user?.client?.prefs && !user.client.prefs.lang_chat_disabled && !user.ear_deaf && user.say_understands(sourcemob, language))
@@ -409,7 +410,7 @@
 	if(audible && !(z == sourcemob.z) && !((z in target_zs) && (sourcemob.z in target_zs)))
 		return
 	if(show_message_above_tv)
-		langchat_speech(emote, get_mobs_in_view(7, src), skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("emote"))
+		SEND_SIGNAL(src, COMSIG_ATOM_LANGCHAT_SEND_MESSAGE, emote, LANGCHAT_IMAGE_IS_EMOTE | LANGCHAT_IMAGE_IGNORE_LANG, get_mobs_in_view(7, src), LANGCHAT_FAST_POP)
 	for(var/datum/weakref/user_ref in concurrent_users)
 		var/mob/user = user_ref.resolve()
 		if(user?.client?.prefs && (user.client.prefs.toggles_langchat & LANGCHAT_SEE_EMOTES) && (!audible || !user.ear_deaf))

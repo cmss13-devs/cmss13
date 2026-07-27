@@ -47,6 +47,8 @@
 
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
+	AddComponent(/datum/component/langchat_image)
+
 	orbit = new
 	orbit.give_to(src)
 	hide = new
@@ -206,7 +208,7 @@
 		if(!client?.prefs.lang_chat_disabled)
 			send_to += src
 		if(length(send_to))
-			langchat_speech(message, send_to, GLOB.all_languages, skip_language_check = TRUE)
+			SEND_SIGNAL(src, COMSIG_ATOM_LANGCHAT_SEND_MESSAGE, message, LANGCHAT_IMAGE_IGNORE_LANG, send_to)
 
 	//speech bubble
 	var/mutable_appearance/MA = mutable_appearance('icons/mob/effects/talk.dmi', src, "default[say_test(message)]", FLY_LAYER)

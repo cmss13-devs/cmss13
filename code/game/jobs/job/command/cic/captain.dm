@@ -127,7 +127,7 @@
 		return
 	co_briefing.forceMove(receiver.loc)
 	playsound(receiver.loc, "sound/machines/twobeep.ogg", 45)
-	receiver.langchat_speech("beeps with a priority message", get_mobs_in_view(GLOB.world_view_size, receiver), GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small", "emote"))
+	SEND_SIGNAL(receiver, COMSIG_ATOM_LANGCHAT_SEND_MESSAGE, "beeps with a priority message", flags = LANGCHAT_IMAGE_IGNORE_LANG | LANGCHAT_IMAGE_IS_EMOTE, listeners = get_mobs_in_view(GLOB.world_view_size, receiver), additional_styles = list("langchat_small"))
 	receiver.visible_message("[SPAN_BOLD(receiver)] beeps with a priority message.")
 	if(!receiver.radio_alert_tag)
 		return

@@ -96,6 +96,8 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	. = ..()
 	generate_id_tag()
 	update_departments()
+	AddComponent(/datum/component/langchat_image)
+
 	if(!(identity_name in GLOB.fax_network.all_departments[department]))
 		GLOB.fax_network.all_departments[department][identity_name] = src
 
@@ -680,7 +682,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 				P.overlays += stampoverlay
 				if(sending_priority)
 					playsound(receiver.loc, "sound/machines/twobeep.ogg", 45)
-					receiver.langchat_speech("beeps with a priority message", get_mobs_in_view(GLOB.world_view_size, receiver), GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small", "emote"))
+					SEND_SIGNAL(src, COMSIG_ATOM_LANGCHAT_SEND_MESSAGE, "beeps with a priority message", LANGCHAT_IMAGE_IGNORE_LANG | LANGCHAT_IMAGE_IS_EMOTE, get_mobs_in_view(GLOB.world_view_size, receiver), animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small"))
 					receiver.visible_message("[SPAN_BOLD(receiver)] beeps with a priority message.")
 					if((receiver.radio_alert_tag != null) && !sent_radio_alert)
 						ai_silent_announcement("COMMUNICATIONS REPORT: [single_sending ? "Fax Machine [receiver.machine_id_tag], [receiver.sub_name ? "[receiver.sub_name]" : ""]," : "[receiver.department]"] now receiving priority fax.", "[receiver.radio_alert_tag]")

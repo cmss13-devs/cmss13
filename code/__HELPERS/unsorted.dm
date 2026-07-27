@@ -1601,7 +1601,8 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	targetmob.hear_say(message, verb, language, "", italics, sourcemob) // proxies speech itself to the mob
 	if(targetmob && targetmob.client && targetmob.client.prefs && !targetmob.client.prefs.lang_chat_disabled \
 	   && !targetmob.ear_deaf && targetmob.say_understands(sourcemob, language))
-		sourcemob.langchat_display_image(targetmob) // strap langchat display on
+		SEND_SIGNAL(sourcemob, COMSIG_ATOM_LANGCHAT_SEEN_BY_MOB, targetmob)
+
 #endif // ifdef OBJECTS_PROXY_SPEECH
 
 #define UNTIL(X) while(!(X)) stoplag()

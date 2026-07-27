@@ -56,7 +56,8 @@
 	balloon_alert.maptext = MAPTEXT("<span class='center langchat'>[text]</span>")
 	balloon_alert.maptext_height = WXH_TO_HEIGHT(viewer_client?.MeasureText(text, null, BALLOON_TEXT_WIDTH))
 	balloon_alert.maptext_width = BALLOON_TEXT_WIDTH
-	balloon_alert.maptext_x = get_maxptext_x_offset(balloon_alert)
+	balloon_alert.maptext_x = (get_icon_x_size() / 2) - (balloon_alert.maptext_width / 2)
+
 	if(appearance_flags & PIXEL_SCALE)
 		balloon_alert.appearance_flags |= PIXEL_SCALE
 	//"<span style='text-align: center; -dm-text-outline: 1px #0005'>[text]</span>"

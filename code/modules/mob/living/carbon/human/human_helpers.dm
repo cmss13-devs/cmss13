@@ -457,7 +457,7 @@
 	ghost.vis_contents = vis_contents
 
 /mob/living/carbon/human/get_orbit_size()
-	return langchat_height
+	return 32 // Blame geeves if this is incorrect
 
 /mob/living/carbon/human/proc/update_minimap_icon()
 	var/obj/item/device/radio/headset/headset

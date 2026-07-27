@@ -174,7 +174,7 @@
 	var/adjusted_message = message
 	if(replace_pronouns)
 		adjusted_message = replace_pronoun(user, message)
-	user.langchat_speech(adjusted_message, group, GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("emote", "langchat_small"))
+	SEND_SIGNAL(user, COMSIG_ATOM_LANGCHAT_SEND_MESSAGE, adjusted_message, LANGCHAT_IMAGE_IGNORE_LANG | LANGCHAT_IMAGE_IS_EMOTE, group, additional_styles = list("langchat_small"))
 
 /**
  * For handling emote cooldown, return true to allow the emote to happen.
@@ -348,4 +348,4 @@
 	for(var/mob/current_mob in viewers)
 		if(!(current_mob.client?.prefs.toggles_langchat & LANGCHAT_SEE_EMOTES))
 			viewers -= current_mob
-	langchat_speech(text, viewers, GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("emote", "langchat_small"))
+	SEND_SIGNAL(src, COMSIG_ATOM_LANGCHAT_SEND_MESSAGE, text, flags = LANGCHAT_IMAGE_IGNORE_LANG | LANGCHAT_IMAGE_IS_EMOTE, listeners = viewers, additional_styles = list("langchat_small") )

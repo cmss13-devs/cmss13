@@ -1,0 +1,5 @@
+author: "MistChristmas"
+delete-after: True
+changes:
+  - bugfix: "Users no longer see admin's IC Characters from ahelp interactions"
+  - ui: "Ticket Panel scales better. Collapsibles like in the Overwatch Console are no longer bordered."

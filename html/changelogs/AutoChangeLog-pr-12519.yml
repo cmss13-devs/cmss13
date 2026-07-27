@@ -1,0 +1,8 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - rscdel: "Removed logic making turfs persist signals"
+  - bugfix: "open_space now calls Entered for atoms in its contents on Initialize (making them fall automatically if game has started)"
+  - bugfix: "Various props are now set to NO_ZFALL"
+  - bugfix: "Multiloc objects now only fall in open_space if their main loc is in that turf"
+  - code_imp: "open_space now checks placement is valid when testing and doesn't attempt to forcemove anything out of the map"

@@ -262,7 +262,7 @@
 		JOB_SQUAD_TEAM_LEADER = 2,
 		JOB_SQUAD_LEADER = 1,
 	)
-	shared_role_caps = list(JOB_SQUAD_SPECIALIST = 3, JOB_SQUAD_SMARTGUN = 3)
+	shared_role_caps = list(JOB_SQUAD_SPECIALIST = 4, JOB_SQUAD_SMARTGUN = 4)
 	shared_cap_squads = list(SQUAD_MARINE_4)
 SQUAD_LANDMARKS(alpha, Alpha)
 SQUAD_CRYOSTORAGE(alpha, Alpha)
@@ -314,7 +314,7 @@ SQUAD_DROPPAD(bravo, Bravo)
 	beret_flavortext = "Still has some morning toast crumbs on it."
 
 	roles_cap = list(
-		JOB_SQUAD_MARINE = 8,
+		JOB_SQUAD_MARINE = 4,
 		JOB_SQUAD_ENGI = 1,
 		JOB_SQUAD_MEDIC = 1,
 		JOB_SQUAD_SMARTGUN = 1,
@@ -323,6 +323,7 @@ SQUAD_DROPPAD(bravo, Bravo)
 		JOB_SQUAD_LEADER = 1,
 	)
 	dynamic_scaling = FALSE
+	transfer_only_roles = list(JOB_SQUAD_SPECIALIST, JOB_SQUAD_SMARTGUN)
 	squad_role = SQUAD_ROLE_SUPPORT
 
 SQUAD_LANDMARKS(charlie, Charlie)
@@ -350,7 +351,7 @@ SQUAD_DROPPAD(charlie, Charlie)
 		JOB_SQUAD_TEAM_LEADER = 2,
 		JOB_SQUAD_LEADER = 1,
 	)
-	shared_role_caps = list(JOB_SQUAD_SPECIALIST = 3, JOB_SQUAD_SMARTGUN = 3)
+	shared_role_caps = list(JOB_SQUAD_SPECIALIST = 4, JOB_SQUAD_SMARTGUN = 4)
 	shared_cap_squads = list(SQUAD_MARINE_1)
 
 SQUAD_LANDMARKS(delta, Delta)

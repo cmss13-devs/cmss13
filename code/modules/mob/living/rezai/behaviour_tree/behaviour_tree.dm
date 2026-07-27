@@ -14,27 +14,27 @@
 
 /datum/rezai/bt/node/
 	var/datum/rezai/bt/parent
-	var/list/child_nodes
-	var/current_index = 0
+	var/list/datum/rezai/bt/node/child_nodes = list()
+	var/current_index = 1
 	var/node_type
-	var/pre_decorator
+	var/datum/rezai/bt/node/decorator/pre_decorator
 	//var/post_decorator
 	proc/update()
 		if ( !isnull(pre_decorator) )
 			pre_decorator.update()
 		// override
 	proc/reset()
-		current_index = 0
-		if ( child_nodes[0] )
-			child_nodes[0].reset
+		current_index = 1
+		if ( child_nodes[1] )
+			child_nodes[1].reset()
 
 //actual tree - derrives from node
 /datum/rezai/bt/node/behaviour_tree/
-	var/datum/rezai/bt/blackboard/bboard
+	//var/datum/rezai/bt/blackboard/bboard
 	//var/datum/rezai/bt/node/root_node
 	update()
-		if( child_nodes[0] )
-			child_nodes[0].update()
+		if( child_nodes[1] )
+			child_nodes[1].update()
 
 
 
@@ -42,28 +42,34 @@
 	node_type = BT_NODE_SEQUENCE
 	update()
 		..() // parent update for decorator
-		if ( child_nodes.len < 1 || current_index >= child_nodes.len )
+		if ( child_nodes.len < 1 || current_index > child_nodes.len )
 			return BT_NODE_RETURN_SUCCESS
 		var/child_return = child_nodes[current_index].update()
 		if ( child_return == BT_NODE_RETURN_FAIL )
 			return BT_NODE_RETURN_FAIL
 		if ( child_return == BT_NODE_RETURN_SUCCESS )
 			current_index += 1
-			child_nodes[current_index].reset()
+			if (current_index <= child_nodes.len)
+				child_nodes[current_index].reset()
 		return BT_NODE_RETURN_PROCESSING
 
 /datum/rezai/bt/node/selector_node/
 	node_type = BT_NODE_SELECTOR
 	update()
 		..() // parent update for decorator
-		if ( child_nodes.len < 1 || current_index >= child_nodes.len )
+		if ( child_nodes.len < 1 || current_index > child_nodes.len )
 			return BT_NODE_RETURN_SUCCESS
 		var/child_return = child_nodes[current_index].update()
 		if ( child_return == BT_NODE_RETURN_FAIL )
 			current_index += 1
-			child_nodes[current_index].reset()
+			if (current_index <= child_nodes.len)
+				child_nodes[current_index].reset()
 			if ( current_index >= child_nodes.len )
 				return BT_NODE_RETURN_FAIL
 		if ( child_return == BT_NODE_RETURN_SUCCESS )
 			return BT_NODE_RETURN_SUCCESS
 		return BT_NODE_RETURN_PROCESSING
+
+
+/datum/rezai/bt/node/decorator/
+	var/foobar = 1

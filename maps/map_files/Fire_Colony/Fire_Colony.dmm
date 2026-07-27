@@ -121,24 +121,6 @@
 "aat" = (
 /turf/open/fire_colony/brock,
 /area/fire_colony/exterior/valley/northwest)
-"aau" = (
-/obj/structure/machinery/door/airlock/multi_tile/lavaland/black_double/autoname{
-	dir = 1
-	},
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	color = "#858680"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	color = "#858680"
-	},
-/turf/open/floor/strata/floor3,
-/area/fire_colony/interior/bar/canteen)
 "aav" = (
 /obj/effect/decal/warning_stripes/worn{
 	dir = 4
@@ -135854,7 +135836,7 @@ aui
 aKw
 aKw
 aTr
-aau
+rIG
 aKw
 aKw
 aKw

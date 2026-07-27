@@ -15,6 +15,3 @@
 
 /// CEC5, Executive Specialist (Rector)
 #define PAY_SHORT_CEC5 "CEC5"
-
-/// CEC Security
-#define PAY_SHORT_CEC_SEC "CEC-SEC"

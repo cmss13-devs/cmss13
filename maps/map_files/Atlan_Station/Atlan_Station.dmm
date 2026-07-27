@@ -24790,13 +24790,8 @@
 /area/atlan/comms/lz2_hab_relay)
 "gdb" = (
 /obj/structure/surface/table/almayer,
-/obj/item/trash/plate{
-	pixel_x = -5;
+/obj/item/reagent_container/food/snacks/pasta_salad{
 	pixel_y = 4
-	},
-/obj/item/reagent_container/food/drinks/drinkingglass{
-	pixel_x = 4;
-	pixel_y = 11
 	},
 /obj/item/tool/kitchen/utensil/fork{
 	pixel_x = 5
@@ -36260,6 +36255,10 @@
 /obj/item/trash/upp_mre{
 	pixel_y = 1;
 	pixel_x = -6
+	},
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	pixel_x = 4;
+	pixel_y = 11
 	},
 /turf/open/floor/strata,
 /area/atlan/station/canteen)

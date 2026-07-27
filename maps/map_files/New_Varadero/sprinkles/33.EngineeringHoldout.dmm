@@ -201,8 +201,8 @@
 	dir = 4
 	},
 /obj/effect/spawner/random/gun/pistol,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating,
 /area/template_noop)
 "nL" = (

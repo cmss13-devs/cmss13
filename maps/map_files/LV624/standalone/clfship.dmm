@@ -11,9 +11,9 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "ac" = (
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "ad" = (
@@ -24,7 +24,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "ae" = (
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "af" = (
@@ -71,13 +71,13 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "am" = (
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "an" = (
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship)
 "ao" = (
@@ -113,9 +113,9 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "av" = (
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship)
 "aw" = (
@@ -123,14 +123,14 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "ax" = (
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "ay" = (
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "az" = (
@@ -145,10 +145,10 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "aB" = (
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
 	dir = 4
 	},
@@ -168,25 +168,25 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "aE" = (
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "aF" = (
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "aG" = (
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "aH" = (
@@ -194,22 +194,22 @@
 /turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "aI" = (
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "aJ" = (
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "aK" = (
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "aL" = (
@@ -226,13 +226,13 @@
 /turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "aN" = (
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "aO" = (
@@ -246,18 +246,18 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "aQ" = (
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "aR" = (
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/device/flashlight/flare/on,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
@@ -295,8 +295,8 @@
 	dir = 4;
 	icon_state = "sandbag_2"
 	},
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "aY" = (
@@ -316,10 +316,10 @@
 	dir = 4;
 	icon_state = "sandbag_2"
 	},
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "bb" = (
@@ -327,10 +327,10 @@
 	dir = 4;
 	icon_state = "sandbag_3"
 	},
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "bc" = (
@@ -635,10 +635,10 @@
 /obj/structure/barricade/metal/wired{
 	icon_state = "metal_1"
 	},
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "ky" = (
@@ -715,14 +715,14 @@
 /turf/open/floor/almayer,
 /area/lv624/lazarus/crashed_ship)
 "mH" = (
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
 	dir = 4
 	},
@@ -807,14 +807,14 @@
 /turf/open/floor/damaged3/west,
 /area/lv624/ground/caves/south_west_caves)
 "qu" = (
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "qT" = (
@@ -840,11 +840,11 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "rX" = (
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "sH" = (
@@ -969,14 +969,14 @@
 /turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "xk" = (
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
 	dir = 8
 	},
@@ -1104,11 +1104,11 @@
 	pixel_y = 28;
 	range = 20
 	},
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "Bc" = (
@@ -1525,14 +1525,14 @@
 /turf/open/floor/almayer/emeraldcorner/east,
 /area/lv624/lazarus/crashed_ship)
 "OB" = (
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
 	dir = 4
 	},

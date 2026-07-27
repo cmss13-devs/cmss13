@@ -682,8 +682,8 @@
 /turf/open/floor/delivery,
 /area/bigredv2/outside/marshal_office)
 "jn" = (
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/redcorner/east,
 /area/bigredv2/outside/marshal_office)
 "jo" = (
@@ -1216,7 +1216,7 @@
 /area/bigredv2/outside/marshal_office)
 "NQ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/redcorner,
 /area/bigredv2/outside/marshal_office)
 "Ow" = (

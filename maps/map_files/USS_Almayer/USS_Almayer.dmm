@@ -14757,7 +14757,7 @@
 /turf/open_space,
 /area/almayer/middeck/maintenance/bow)
 "aML" = (
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_f_p)
 "aMM" = (

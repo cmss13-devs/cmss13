@@ -56,7 +56,7 @@
 	pixel_y = -3;
 	pixel_x = -1
 	},
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/tyrargo/indoors/admin/upper)
@@ -97,7 +97,7 @@
 	icon_state = "trash_9";
 	pixel_y = 12
 	},
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/tyrargo/indoors/admin/upper)
 "lx" = (
@@ -297,7 +297,7 @@
 /area/tyrargo/indoors/gararge/upper/external)
 "zX" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/tyrargo/indoors/admin/upper)
@@ -413,7 +413,7 @@
 /area/tyrargo/indoors/gararge/upper/external)
 "Iz" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/cell_stripe/east,
 /area/tyrargo/indoors/admin/upper)
 "IZ" = (
@@ -470,7 +470,7 @@
 /obj/structure/barricade/handrail/wire{
 	dir = 8
 	},
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/tyrargo/indoors/admin/upper)
 "Pw" = (
@@ -513,12 +513,12 @@
 "Tu" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/tyrargo/indoors/admin/upper)
 "TA" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/tyrargo/indoors/admin/upper)
 "TB" = (

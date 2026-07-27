@@ -78,7 +78,7 @@
 "w" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/tyrargo/underground/bunker/north)
 "x" = (
@@ -116,7 +116,7 @@
 /area/tyrargo/underground/bunker/north)
 "G" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/tyrargo/underground/bunker/north)
 "H" = (
@@ -126,8 +126,8 @@
 "I" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat/squares,
 /area/tyrargo/underground/bunker/north)
 "J" = (
@@ -137,8 +137,8 @@
 /area/tyrargo/underground/bunker/north)
 "K" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat/redcorner/east,
 /area/tyrargo/underground/bunker/north)
 "L" = (
@@ -239,8 +239,8 @@
 /area/tyrargo/underground/bunker/north)
 "Z" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat/red,
 /area/tyrargo/underground/bunker/north)
 

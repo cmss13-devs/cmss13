@@ -1,7 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat/red,
 /area/tyrargo/underground/bunker/south)
 "c" = (
@@ -54,8 +54,8 @@
 /area/tyrargo/underground/bunker/south)
 "l" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat/plate,
 /area/tyrargo/underground/bunker/south)
 "o" = (
@@ -66,9 +66,9 @@
 /area/tyrargo/underground/bunker/south)
 "s" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat/squares,
 /area/tyrargo/underground/bunker/south)
 "t" = (
@@ -89,7 +89,7 @@
 /area/tyrargo/underground/bunker/south)
 "x" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat/plate,
 /area/tyrargo/underground/bunker/south)
 "y" = (
@@ -104,9 +104,9 @@
 /area/tyrargo/underground/bunker/south)
 "B" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat/plate,
 /area/tyrargo/underground/bunker/south)
 "E" = (
@@ -157,7 +157,7 @@
 /area/tyrargo/underground/bunker/south)
 "Q" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat/redcorner,
 /area/tyrargo/underground/bunker/south)
 "R" = (
@@ -184,9 +184,9 @@
 /area/tyrargo/underground/bunker/south)
 "Y" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat/redcorner/east,
 /area/tyrargo/underground/bunker/south)
 

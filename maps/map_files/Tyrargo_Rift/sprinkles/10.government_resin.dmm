@@ -289,7 +289,7 @@
 /area/tyrargo/indoors/admin/ground)
 "jM" = (
 /obj/effect/decal/cleanable/blood/xeno,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/prop/tyrargo/boards/boards_2{
 	dir = 4;
 	layer = 2.1;
@@ -419,7 +419,7 @@
 "ne" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_magazine/rifle/ar10,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/surface/table/almayer,
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/prison/floor_plate,
@@ -480,7 +480,7 @@
 /area/tyrargo/indoors/admin/ground)
 "qE" = (
 /obj/item/stack/sheet/metal,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/green/north,
 /area/tyrargo/indoors/admin/ground)
 "qI" = (
@@ -779,7 +779,7 @@
 /area/tyrargo/indoors/admin/ground)
 "AR" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
@@ -1109,7 +1109,7 @@
 /area/tyrargo/indoors/admin/ground)
 "Lh" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
 "Lx" = (
@@ -1155,7 +1155,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
 "No" = (
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
 "NV" = (
@@ -1205,11 +1205,11 @@
 /area/tyrargo/indoors/admin/ground)
 "Px" = (
 /obj/item/prop/colony/used_flare,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
 "PE" = (
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/trash/uscm_mre{
 	pixel_y = 14;
 	pixel_x = 9
@@ -1365,7 +1365,7 @@
 	pixel_y = -3;
 	pixel_x = -1
 	},
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/trash/cigbutt{
 	pixel_x = -10;
 	pixel_y = 14

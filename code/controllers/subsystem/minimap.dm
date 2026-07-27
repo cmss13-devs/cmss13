@@ -661,9 +661,10 @@ SUBSYSTEM_DEF(minimaps)
 		return
 	UnregisterSignal(source, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_Z_CHANGED))
 	var/turf/source_turf = get_turf(source)
+	var/datum/hud_displays/minimap = minimaps_by_z["[source_turf.z]"]
 	for(var/flag in GLOB.all_minimap_flags)
-		minimaps_by_z["[source_turf.z]"].images_assoc["[flag]"] -= source
-		minimaps_by_z["[source_turf.z]"].images_assoc["[flag]label"] -= source
+		minimap.images_assoc["[flag]"] -= source
+		minimap.images_assoc["[flag]label"] -= source
 	images_by_source -= source
 	removal_cbs[source].Invoke()
 	removal_cbs -= source

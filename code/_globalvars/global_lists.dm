@@ -192,8 +192,6 @@ GLOBAL_LIST_EMPTY(all_areas)
 
 GLOBAL_LIST_EMPTY(turfs)
 
-GLOBAL_LIST(objects_of_interest) // This is used to track the stealing objective for Agents.
-
 // Areas exempt from explosive antigrief (not Z-levels)
 GLOBAL_LIST_INIT(explosive_antigrief_exempt_areas, list(
 	//non currently

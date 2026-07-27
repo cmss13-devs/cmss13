@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Openspace no longer doubles up the openspace backdrop when viewing an intermediate openspace"

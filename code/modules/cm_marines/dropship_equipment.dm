@@ -39,6 +39,11 @@
 		linked_console = null
 	. = ..()
 
+/obj/structure/dropship_equipment/update_health(damage)
+	health = min(initial(health), health-damage)
+	if(health <= 0)
+		visible_message(SPAN_DANGER("[src] is destroyed!"))
+		qdel(src)
 
 /obj/structure/dropship_equipment/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
 	if(unslashable)
@@ -64,10 +69,15 @@
 	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
-/obj/structure/dropship_equipment/attackby(obj/item/item_equip, mob/user)
-	if(istype(item_equip, /obj/item/powerloader_clamp))
-		var/obj/item/powerloader_clamp/powerloader_item = item_equip
-		if(powerloader_item.loaded)
+/obj/structure/dropship_equipment/attackby(obj/item/item, mob/user)
+	if(istype(item, /obj/item/powerloader_clamp))
+		if((SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)) & COMSIG_ITEM_PICKUP_CANCELLED) //acided
+			to_chat(user, SPAN_WARNING("[src] is covered in acid!"))
+			balloon_alert(user, "its covered in acid!")
+			return
+
+		var/obj/item/powerloader_clamp/powerloader_clamp = item
+		if(powerloader_clamp.loaded)
 			if(ammo_equipped)
 				// Allow stacking if stackable_ammo is TRUE, types match, and not full
 				if(stackable_ammo && istype(powerloader_item.loaded, /obj/structure/ship_ammo) && ammo_equipped.type == powerloader_item.loaded.type && ammo_equipped.ammo_count < ammo_equipped.max_ammo_count)
@@ -98,44 +108,56 @@
 					return TRUE
 				to_chat(user, SPAN_WARNING("You need to unload \the [ammo_equipped] from \the [src] first!"))
 				return TRUE
-			if(uses_ammo) //it handles on it's own whether the ammo fits
-				load_ammo(powerloader_item, user)
-				return TRUE
+			if(uses_ammo)
+				load_ammo(powerloader_clamp, user) //it handles on it's own whether the ammo fits
+				return
+
 		else
 			if(uses_ammo && ammo_equipped)
-				unload_ammo(powerloader_item, user)
+				unload_ammo(powerloader_clamp, user)
 			else
-				grab_equipment(powerloader_item, user)
+				grab_equipment(powerloader_clamp, user)
 		return TRUE
+
+	if(iswelder(item))
+		try_repair(item, user, -50)
+
+/obj/structure/dropship_equipment/proc/try_repair(obj/item/tool/weldingtool/welder, mob/user, amount)
+	if(health == initial(health))
+		to_chat(user, SPAN_WARNING("[src] is in working condition."))
+		return FALSE
+	if(!HAS_TRAIT(welder, TRAIT_TOOL_BLOWTORCH))
+		to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+		return FALSE
+	if(user.action_busy)
+		return FALSE
+	if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
+		to_chat(user, SPAN_WARNING("You are not trained to fix [src]..."))
+		return FALSE
+	if(!(welder.remove_fuel(2, user)))
+		return FALSE
+	playsound(loc, 'sound/items/Welder.ogg', 25, 1)
+	if(!do_after(user, 5 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+		return FALSE
+	update_health(amount)
+	user.visible_message(SPAN_NOTICE("[user] repairs parts of [src]."),
+	SPAN_NOTICE("You repair damaged parts of [src]."))
+
+	return TRUE
 
 /obj/structure/dropship_equipment/proc/load_ammo(obj/item/powerloader_clamp/powerloader_clamp, mob/living/user)
 	if(!ship_base || !uses_ammo || ammo_equipped || !istype(powerloader_clamp.loaded, /obj/structure/ship_ammo))
 		return
 	var/obj/structure/ship_ammo/ship_ammo = powerloader_clamp.loaded
-
-	// Check if equipment_type is a list
-	if(istype(ship_ammo.equipment_type, /list))
-		var/eq_types = ship_ammo.equipment_type
-		var/found = FALSE
-		for(var/eq_type in eq_types)
-			if(istype(src, eq_type))  // Check if THIS object is of the allowed type
-				found = TRUE
-				break
-		if(!found)
-			to_chat(user, SPAN_WARNING("[ship_ammo] doesn't fit in [src]."))
-			return
-	else if(!istype(src, ship_ammo.equipment_type))
+	if(ship_ammo.equipment_type != type)
 		to_chat(user, SPAN_WARNING("[ship_ammo] doesn't fit in [src]."))
 		return
-
 	playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
 	var/point_loc = ship_base.loc
-	if(!do_after(user, 30 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+	if(!do_after(user, 3 SECONDS * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
 	if(!ship_base || ship_base.loc != point_loc)
 		return
-
-	// Default behavior for weapons and other equipment
 	if(!ammo_equipped && powerloader_clamp.loaded == ship_ammo && powerloader_clamp.linked_powerloader && powerloader_clamp.linked_powerloader.buckled_mob == user)
 		ship_ammo.forceMove(src)
 		powerloader_clamp.loaded = null
@@ -148,7 +170,7 @@
 /obj/structure/dropship_equipment/proc/unload_ammo(obj/item/powerloader_clamp/powerloader_clamp, mob/living/user)
 	playsound(src, 'sound/machines/hydraulics_2.ogg', 40, 1)
 	var/point_loc = ship_base ? ship_base.loc : null
-	if(!do_after(user, 30 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+	if(!do_after(user, 3 SECONDS * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
 	if(point_loc && ship_base.loc != point_loc) //dropship flew away
 		return
@@ -221,7 +243,6 @@
 	name = "\improper A/A-32-P Sentry Defense System"
 	desc = "A box that deploys a sentry turret. Fits on both the external weapon and crew compartment attach points of dropships. You need a powerloader to lift it."
 	density = FALSE
-	health = null
 	icon_state = "sentry_system"
 	is_interactable = TRUE
 	point_cost = 200
@@ -238,6 +259,21 @@
 	if(!deployed_turret)
 		deployed_turret = new(src)
 		deployed_turret.deployment_system = src
+	health = deployed_turret.health
+
+/obj/structure/dropship_equipment/sentry_holder/update_health(damage, pass_forward = FALSE)
+	pass_forward = !pass_forward
+	if(pass_forward)
+		deployed_turret.update_health(damage, pass_forward)
+	health = min(initial(deployed_turret.health), health-damage)
+	if(health <= 0)
+		visible_message(SPAN_DANGER("[src] is destroyed!"))
+		qdel(src)
+
+/obj/structure/dropship_equipment/sentry_holder/try_repair(obj/item/tool/weldingtool/welder, mob/user, amount)
+	. = ..()
+	if(.)
+		deployed_turret.update_health(amount)
 
 /obj/structure/dropship_equipment/sentry_holder/get_examine_text(mob/user)
 	. = ..()
@@ -405,6 +441,21 @@
 	if(!deployed_mg)
 		deployed_mg = new(src)
 		deployed_mg.deployment_system = src
+	health = deployed_mg.health
+
+/obj/structure/dropship_equipment/mg_holder/update_health(damage, pass_forward = FALSE)
+	pass_forward = !pass_forward
+	if(pass_forward)
+		deployed_mg.update_health(damage, pass_forward)
+	health = min(initial(deployed_mg.health), health-damage)
+	if(health <= 0)
+		visible_message(SPAN_DANGER("[src] is destroyed!"))
+		qdel(src)
+
+/obj/structure/dropship_equipment/mg_holder/try_repair(obj/item/tool/weldingtool/welder, mob/user, amount)
+	. = ..()
+	if(.)
+		deployed_mg.update_health(amount)
 
 /obj/structure/dropship_equipment/mg_holder/Destroy()
 	QDEL_NULL(deployed_mg)

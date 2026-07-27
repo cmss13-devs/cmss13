@@ -1,4 +1,13 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/decal/warning_stripes/worn/corner{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/strata/lightblue4/east,
+/area/fire_colony/interior/omicron_facility/lobby)
 "ab" = (
 /obj/structure/machinery/door_control{
 	id = "pass_2";
@@ -29,7 +38,7 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/lava/asteroid/directions/east,
+/turf/open/fire_colony/asteroid/directions/east,
 /area/fire_colony/exterior/clearing/south_west)
 "aW" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -50,7 +59,7 @@
 	pixel_y = 25;
 	layer = 2.00
 	},
-/turf/open/lava/metal/warning_grate/north,
+/turf/open/floor/fire_colony/metal/warning_grate/north,
 /area/fire_colony/interior/omicron_facility/passthrough)
 "bk" = (
 /obj/effect/decal/medical_decals{
@@ -132,6 +141,9 @@
 	pixel_y = -16
 	},
 /obj/item/device/flashlight/lamp/tripod/grey/off,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 6
+	},
 /turf/open/floor/strata/lightblue4/east,
 /area/fire_colony/interior/omicron_facility/lobby)
 "cs" = (
@@ -178,7 +190,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/turf/open/lava/plating/warnplate,
+/turf/open/floor/plating/fire_colony/warnplate,
 /area/fire_colony/interior/omicron_facility/passthrough)
 "dr" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -192,7 +204,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/lava/plating/warnplate,
+/turf/open/floor/plating/fire_colony/warnplate,
 /area/fire_colony/interior/omicron_facility/passthrough)
 "eC" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -208,7 +220,7 @@
 /area/fire_colony/interior/omicron_facility/passthrough)
 "eJ" = (
 /obj/effect/lava/edges/basalt/l_piece,
-/turf/open/lava/basalt/basalt0,
+/turf/open/fire_colony/basalt/basalt0,
 /area/fire_colony/exterior/valley/southwest)
 "eM" = (
 /obj/structure/machinery/door/airlock/multi_tile/lavaland/black_double/autoname,
@@ -361,7 +373,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/lava/asteroid/directions/east,
+/turf/open/fire_colony/asteroid/directions/east,
 /area/fire_colony/exterior/clearing/south_west)
 "gD" = (
 /obj/structure/machinery/light{
@@ -381,7 +393,7 @@
 /turf/open/floor/strata/lightblue3/west,
 /area/fire_colony/interior/omicron_facility/lobby)
 "gY" = (
-/turf/open/lava/plating/warnplate/east,
+/turf/open/floor/plating/fire_colony/warnplate/east,
 /area/fire_colony/interior/omicron_facility/passthrough)
 "hb" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -451,6 +463,9 @@
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2{
 	pixel_y = 27
 	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/floor/strata/lightblue3,
 /area/fire_colony/interior/omicron_facility/lobby)
 "iu" = (
@@ -458,12 +473,11 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/strata/floor3,
 /area/fire_colony/interior/omicron_facility/lobby)
 "iG" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/lava/metal/warning_grate/west,
+/turf/open/floor/fire_colony/metal/warning_grate/west,
 /area/fire_colony/exterior/clearing/south_west)
 "iN" = (
 /turf/open/floor/strata/sand3/east,
@@ -485,7 +499,7 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/lava/asteroid/directions/east,
+/turf/open/fire_colony/asteroid/directions/east,
 /area/fire_colony/exterior/clearing/south_west)
 "jF" = (
 /obj/effect/decal/cleanable/blood/xeno,
@@ -528,6 +542,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/structure/pipes/vents/pump_hybrisa,
 /turf/open/floor/strata/lightblue4/west,
 /area/fire_colony/interior/omicron_facility/lobby)
 "kK" = (
@@ -586,7 +601,7 @@
 	pixel_x = -10;
 	pixel_y = 3
 	},
-/turf/open/lava/asteroid/directions/east,
+/turf/open/fire_colony/asteroid/directions/east,
 /area/fire_colony/exterior/clearing/south_west)
 "ly" = (
 /obj/effect/decal/large_stain{
@@ -597,7 +612,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/lava/asteroid/directions/east,
+/turf/open/fire_colony/asteroid/directions/east,
 /area/fire_colony/exterior/clearing/south_west)
 "lG" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -606,7 +621,7 @@
 /area/fire_colony/interior/omicron_facility/passthrough)
 "lM" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/lava/plating/warnplate/east,
+/turf/open/floor/plating/fire_colony/warnplate/east,
 /area/fire_colony/interior/omicron_facility/passthrough)
 "lT" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -633,14 +648,14 @@
 "mk" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/lava/asteroid/directions/northeast,
+/turf/open/fire_colony/asteroid/directions/northeast,
 /area/fire_colony/exterior/clearing/south_west)
 "mF" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/lava/plating/warnplate/southeast,
+/turf/open/floor/plating/fire_colony/warnplate/southeast,
 /area/fire_colony/interior/omicron_facility/passthrough)
 "nc" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -660,7 +675,7 @@
 	pixel_x = -8;
 	pixel_y = 20
 	},
-/turf/open/lava/asteroid/directions/west,
+/turf/open/fire_colony/asteroid/directions/west,
 /area/fire_colony/exterior/clearing/south_west)
 "nz" = (
 /obj/structure/closet/bionational_closet,
@@ -723,6 +738,9 @@
 	pixel_x = -14;
 	pixel_y = 15
 	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/floor/strata/lightblue3,
 /area/fire_colony/interior/omicron_facility/lobby)
 "oS" = (
@@ -758,7 +776,7 @@
 "pf" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/lava/plating/warnplate/north,
+/turf/open/floor/plating/fire_colony/warnplate/north,
 /area/fire_colony/interior/omicron_facility/passthrough)
 "pn" = (
 /obj/effect/decal/large_stain{
@@ -766,12 +784,12 @@
 	color = "#342a31"
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/lava/metal/warning_grate/west,
+/turf/open/floor/fire_colony/metal/warning_grate/west,
 /area/fire_colony/exterior/clearing/south_west)
 "pK" = (
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
-/turf/open/lava/plating/warnplate/northeast,
+/turf/open/floor/plating/fire_colony/warnplate/northeast,
 /area/fire_colony/interior/omicron_facility/passthrough)
 "pU" = (
 /turf/closed/wall/lava/solaris_dark,
@@ -843,7 +861,7 @@
 /turf/open/floor/strata/lightblue3/east,
 /area/fire_colony/interior/omicron_facility/passthrough)
 "rg" = (
-/turf/open/lava/plating,
+/turf/open/floor/plating/fire_colony,
 /area/fire_colony/exterior/clearing/south_west)
 "rj" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -872,7 +890,7 @@
 	pixel_x = 2;
 	pixel_y = 10
 	},
-/turf/open/lava/plating/grille,
+/turf/open/floor/plating/fire_colony/grille,
 /area/fire_colony/exterior/clearing/south_west)
 "rp" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -891,12 +909,12 @@
 	pixel_x = 11;
 	pixel_y = 12
 	},
-/turf/open/lava/plating,
+/turf/open/floor/plating/fire_colony,
 /area/fire_colony/exterior/clearing/south_west)
 "rQ" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/lava/asteroid/directions/west,
+/turf/open/fire_colony/asteroid/directions/west,
 /area/fire_colony/exterior/clearing/south_west)
 "sg" = (
 /obj/effect/decal/warning_stripes/worn/stripes_double{
@@ -967,7 +985,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/lava/metal/warning_grate/north,
+/turf/open/floor/fire_colony/metal/warning_grate/north,
 /area/fire_colony/interior/omicron_facility/passthrough)
 "ts" = (
 /obj/effect/decal/warning_stripes/worn/corner{
@@ -980,7 +998,7 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/lava/plating/grille,
+/turf/open/floor/plating/fire_colony/grille,
 /area/fire_colony/interior/omicron_facility/passthrough)
 "tE" = (
 /obj/effect/decal/warning_stripes/worn,
@@ -1009,7 +1027,7 @@
 "ur" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/east,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/lava/asteroid/directions/west,
+/turf/open/fire_colony/asteroid/directions/west,
 /area/fire_colony/exterior/valley/southwest)
 "ux" = (
 /obj/structure/machinery/door/airlock/multi_tile/lavaland/black_double/autoname,
@@ -1027,7 +1045,7 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/cleanable/dirt/alt_dirt,
-/turf/open/lava/asteroid/directions/west,
+/turf/open/fire_colony/asteroid/directions/west,
 /area/fire_colony/exterior/clearing/south_west)
 "vu" = (
 /obj/effect/decal/warning_stripes/worn/corner{
@@ -1067,6 +1085,9 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/item/trash/cigbutt,
 /obj/item/trash/cigbutt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/floor/strata/lightblue3,
 /area/fire_colony/interior/omicron_facility/lobby)
 "vU" = (
@@ -1075,7 +1096,7 @@
 	pixel_x = -1;
 	pixel_y = -8
 	},
-/turf/open/lava/metal/warning_grate/west,
+/turf/open/floor/fire_colony/metal/warning_grate/west,
 /area/fire_colony/exterior/clearing/south_west)
 "vV" = (
 /obj/effect/decal/large_stain{
@@ -1112,7 +1133,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/lava/asteroid/directions/west,
+/turf/open/fire_colony/asteroid/directions/west,
 /area/fire_colony/exterior/clearing/south_west)
 "xj" = (
 /obj/structure/window/framed/lava,
@@ -1142,7 +1163,7 @@
 	icon_state = "couch_vet1_black";
 	pixel_x = 13
 	},
-/turf/open/lava/catwalk/glass_lattice_alt,
+/turf/open/fire_colony/catwalk/glass_lattice_alt,
 /area/fire_colony/interior/omicron_facility/lobby)
 "yG" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -1188,7 +1209,7 @@
 	pixel_x = -13;
 	dir = 8
 	},
-/turf/open/lava/catwalk/glass_lattice_alt,
+/turf/open/fire_colony/catwalk/glass_lattice_alt,
 /area/fire_colony/interior/omicron_facility/lobby)
 "yU" = (
 /obj/structure/machinery/door_control{
@@ -1197,7 +1218,7 @@
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/lava/asteroid/directions/east,
+/turf/open/fire_colony/asteroid/directions/east,
 /area/fire_colony/exterior/valley/southwest)
 "yW" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -1233,7 +1254,7 @@
 /area/fire_colony/interior/omicron_facility/lobby)
 "zG" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor/strata/lightblue3/north,
 /area/fire_colony/interior/omicron_facility/lobby)
 "zX" = (
@@ -1253,13 +1274,13 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/item/trash/cigbutt,
-/turf/open/lava/plating,
+/turf/open/floor/plating/fire_colony,
 /area/fire_colony/exterior/clearing/south_west)
 "Am" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/lava/asteroid/directions/east,
+/turf/open/fire_colony/asteroid/directions/east,
 /area/fire_colony/exterior/clearing/south_west)
 "Av" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -1283,7 +1304,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/lava/asteroid/directions/west,
+/turf/open/fire_colony/asteroid/directions/west,
 /area/fire_colony/exterior/clearing/south_west)
 "AE" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -1308,7 +1329,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/lava/metal/warning_grate/north,
+/turf/open/floor/fire_colony/metal/warning_grate/north,
 /area/fire_colony/interior/omicron_facility/passthrough)
 "Bd" = (
 /obj/item/ammo_casing,
@@ -1348,7 +1369,7 @@
 	icon_state = "couch_vet3_black";
 	pixel_x = 13
 	},
-/turf/open/lava/catwalk/glass_lattice_alt,
+/turf/open/fire_colony/catwalk/glass_lattice_alt,
 /area/fire_colony/interior/omicron_facility/lobby)
 "BS" = (
 /obj/structure/machinery/cm_vending/sorted/medical/chemistry{
@@ -1422,10 +1443,10 @@
 /obj/structure/fence/slim/blue,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/lava/plating,
+/turf/open/floor/plating/fire_colony,
 /area/fire_colony/exterior/clearing/south_west)
 "DB" = (
-/turf/open/lava/metal/grate/west,
+/turf/open/floor/fire_colony/metal/grate/west,
 /area/fire_colony/exterior/clearing/south_west)
 "Eb" = (
 /obj/structure/machinery/light,
@@ -1474,7 +1495,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/fire_colony/interior/omicron_facility/passthrough)
 "EW" = (
-/turf/open/lava/metal/warning_grate/north,
+/turf/open/floor/fire_colony/metal/warning_grate/north,
 /area/fire_colony/interior/omicron_facility/passthrough)
 "EZ" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -1505,11 +1526,11 @@
 /obj/item/ammo_magazine/smg/a_m36{
 	current_rounds = 0
 	},
-/turf/open/lava/metal/warning_grate/north,
+/turf/open/floor/fire_colony/metal/warning_grate/north,
 /area/fire_colony/interior/omicron_facility/passthrough)
 "Fr" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/lava/plating/grille,
+/turf/open/floor/plating/fire_colony/grille,
 /area/fire_colony/interior/omicron_facility/passthrough)
 "FA" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -1543,7 +1564,7 @@
 /area/fire_colony/interior/omicron_facility/lobby)
 "Gq" = (
 /obj/structure/flora/alien/sparsegrass/sparsegrass_2,
-/turf/open/lava/brock,
+/turf/open/fire_colony/brock,
 /area/fire_colony/exterior/clearing/south_west)
 "Gt" = (
 /obj/structure/closet/firecloset/alt/full,
@@ -1561,11 +1582,11 @@
 	pixel_x = -8;
 	pixel_y = 7
 	},
-/turf/open/lava/asteroid/directions/west,
+/turf/open/fire_colony/asteroid/directions/west,
 /area/fire_colony/exterior/clearing/south_west)
 "GY" = (
 /obj/item/tool/weldpack,
-/turf/open/lava/plating/warnplate/west,
+/turf/open/floor/plating/fire_colony/warnplate/west,
 /area/fire_colony/interior/omicron_facility/passthrough)
 "Hn" = (
 /obj/structure/bed/sofa/hybrisa/sofa/black{
@@ -1573,7 +1594,7 @@
 	dir = 8;
 	pixel_x = -13
 	},
-/turf/open/lava/catwalk/glass_lattice_alt,
+/turf/open/fire_colony/catwalk/glass_lattice_alt,
 /area/fire_colony/interior/omicron_facility/lobby)
 "Hq" = (
 /obj/effect/decal/warning_stripes/worn{
@@ -1597,7 +1618,7 @@
 /obj/structure/machinery/light/blue{
 	dir = 8
 	},
-/turf/open/lava/asteroid/directions/west,
+/turf/open/fire_colony/asteroid/directions/west,
 /area/fire_colony/exterior/clearing/south_west)
 "If" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -1656,14 +1677,14 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/item/device/flashlight/lamp/tripod/grey/off,
-/turf/open/lava/asteroid/directions/west,
+/turf/open/fire_colony/asteroid/directions/west,
 /area/fire_colony/exterior/clearing/south_west)
 "JS" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
-/turf/open/lava/metal/warning_grate/north,
+/turf/open/floor/fire_colony/metal/warning_grate/north,
 /area/fire_colony/interior/omicron_facility/passthrough)
 "JW" = (
 /obj/structure/sign/safety/analysis_lab{
@@ -1706,7 +1727,7 @@
 /area/fire_colony/interior/omicron_facility/passthrough)
 "Kz" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/lava/plating,
+/turf/open/floor/plating/fire_colony,
 /area/fire_colony/exterior/clearing/south_west)
 "KP" = (
 /obj/item/trash/cigbutt,
@@ -1746,7 +1767,7 @@
 /area/fire_colony/interior/omicron_facility/passthrough)
 "LX" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/lava/asteroid/directions/west,
+/turf/open/fire_colony/asteroid/directions/west,
 /area/fire_colony/exterior/clearing/south_west)
 "Ma" = (
 /obj/effect/decal/warning_stripes/worn{
@@ -1756,7 +1777,7 @@
 /turf/open/floor/strata/lightblue3/east,
 /area/fire_colony/interior/omicron_facility/lobby)
 "Mi" = (
-/turf/open/lava/plating/warnplate/northwest,
+/turf/open/floor/plating/fire_colony/warnplate/northwest,
 /area/fire_colony/interior/omicron_facility/passthrough)
 "Mm" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
@@ -1773,7 +1794,7 @@
 /area/fire_colony/interior/omicron_facility/passthrough)
 "ML" = (
 /obj/item/ammo_casing,
-/turf/open/lava/plating/grille,
+/turf/open/floor/plating/fire_colony/grille,
 /area/fire_colony/interior/omicron_facility/passthrough)
 "MS" = (
 /obj/item/ammo_casing,
@@ -1807,7 +1828,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/lava/plating/grille,
+/turf/open/floor/plating/fire_colony/grille,
 /area/fire_colony/exterior/clearing/south_west)
 "Np" = (
 /turf/open/floor/corsat/spiralplate,
@@ -1821,7 +1842,7 @@
 	pixel_y = 9
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/lava/asteroid/directions/east,
+/turf/open/fire_colony/asteroid/directions/east,
 /area/fire_colony/exterior/clearing/south_west)
 "Nz" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -1857,6 +1878,9 @@
 	dir = 4
 	},
 /obj/structure/largecrate/random/case/small,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
 /turf/open/floor/strata/lightblue4/west,
 /area/fire_colony/interior/omicron_facility/lobby)
 "Ol" = (
@@ -1897,7 +1921,7 @@
 /area/fire_colony/interior/omicron_facility/lobby)
 "OJ" = (
 /obj/structure/machinery/colony_floodlight/alt,
-/turf/open/lava/basalt/basalt0,
+/turf/open/fire_colony/basalt/basalt0,
 /area/fire_colony/exterior/valley/southwest)
 "OK" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -1926,10 +1950,10 @@
 	icon_state = "couch_vet3_black";
 	pixel_x = 13
 	},
-/turf/open/lava/catwalk/glass_lattice_alt,
+/turf/open/fire_colony/catwalk/glass_lattice_alt,
 /area/fire_colony/interior/omicron_facility/lobby)
 "OW" = (
-/turf/open/lava/metal/warning_grate/west,
+/turf/open/floor/fire_colony/metal/warning_grate/west,
 /area/fire_colony/exterior/clearing/south_west)
 "Pl" = (
 /obj/structure/surface/table/almayer{
@@ -1952,7 +1976,7 @@
 	pixel_y = -3;
 	current_rounds = 0
 	},
-/turf/open/lava/metal/warning_grate/north,
+/turf/open/floor/fire_colony/metal/warning_grate/north,
 /area/fire_colony/interior/omicron_facility/passthrough)
 "PQ" = (
 /obj/structure/extinguisher_cabinet/alt{
@@ -1996,7 +2020,7 @@
 	color = "#342a31"
 	},
 /obj/effect/decal/cleanable/blood/oil,
-/turf/open/lava/plating/warnplate/southwest,
+/turf/open/floor/plating/fire_colony/warnplate/southwest,
 /area/fire_colony/interior/omicron_facility/passthrough)
 "Qx" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -2011,7 +2035,7 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/item/trash/cigbutt,
-/turf/open/lava/plating/warnplate/west,
+/turf/open/floor/plating/fire_colony/warnplate/west,
 /area/fire_colony/interior/omicron_facility/passthrough)
 "QL" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -2024,7 +2048,7 @@
 "RA" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/lava/asteroid/directions/east,
+/turf/open/fire_colony/asteroid/directions/east,
 /area/fire_colony/exterior/clearing/south_west)
 "RV" = (
 /obj/effect/decal/warning_stripes/worn/corner{
@@ -2046,7 +2070,7 @@
 "Ss" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/lava/plating/grille,
+/turf/open/floor/plating/fire_colony/grille,
 /area/fire_colony/interior/omicron_facility/passthrough)
 "Sv" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -2064,7 +2088,7 @@
 	pixel_x = 9;
 	pixel_y = 7
 	},
-/turf/open/lava/asteroid/directions/west,
+/turf/open/fire_colony/asteroid/directions/west,
 /area/fire_colony/exterior/clearing/south_west)
 "SA" = (
 /obj/effect/decal/lasalle_bio/worn{
@@ -2092,6 +2116,9 @@
 /obj/effect/decal/warning_stripes/worn/corner{
 	dir = 4
 	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/floor/strata/lightblue4/west,
 /area/fire_colony/interior/omicron_facility/lobby)
 "TI" = (
@@ -2115,6 +2142,7 @@
 /obj/effect/decal/warning_stripes/worn/corner{
 	dir = 8
 	},
+/obj/structure/pipes/vents/pump_hybrisa,
 /turf/open/floor/strata/lightblue4/east,
 /area/fire_colony/interior/omicron_facility/lobby)
 "Ut" = (
@@ -2129,7 +2157,6 @@
 /obj/effect/decal/warning_stripes/worn/stripes_double{
 	dir = 8
 	},
-/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/strata/floor3,
 /area/fire_colony/interior/omicron_facility/lobby)
 "UJ" = (
@@ -2180,15 +2207,21 @@
 /turf/open/floor/strata/floor3,
 /area/fire_colony/interior/omicron_facility/hospital)
 "WR" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/floor/strata/lightblue3/north,
 /area/fire_colony/interior/omicron_facility/lobby)
 "Xg" = (
 /obj/item/ammo_casing,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/floor/strata/lightblue3/north,
 /area/fire_colony/interior/omicron_facility/lobby)
 "Xm" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/lava/plating/warnplate/north,
+/turf/open/floor/plating/fire_colony/warnplate/north,
 /area/fire_colony/interior/omicron_facility/passthrough)
 "Xt" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -2222,7 +2255,7 @@
 	pixel_x = -13;
 	dir = 8
 	},
-/turf/open/lava/catwalk/glass_lattice_alt,
+/turf/open/fire_colony/catwalk/glass_lattice_alt,
 /area/fire_colony/interior/omicron_facility/lobby)
 "Yd" = (
 /obj/structure/extinguisher_cabinet/alt{
@@ -2237,7 +2270,7 @@
 /area/fire_colony/interior/omicron_facility/passthrough)
 "YF" = (
 /obj/structure/fence/slim/blue,
-/turf/open/lava/plating,
+/turf/open/floor/plating/fire_colony,
 /area/fire_colony/exterior/clearing/south_west)
 "YH" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -2253,6 +2286,9 @@
 	dir = 1
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/floor/strata/lightblue3,
 /area/fire_colony/interior/omicron_facility/lobby)
 "Zh" = (
@@ -2305,7 +2341,7 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/item/tool/warning_cone,
-/turf/open/lava/asteroid/directions/west,
+/turf/open/fire_colony/asteroid/directions/west,
 /area/fire_colony/exterior/clearing/south_west)
 "ZS" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -2643,7 +2679,7 @@ vG
 hl
 gQ
 XG
-Uo
+aa
 RV
 pU
 "}

@@ -282,7 +282,7 @@
 "ih" = (
 /obj/structure/machinery/colony_floodlight/alt,
 /obj/structure/platform_decoration/metal/almayer/east,
-/turf/open/lava/basalt/basalt0,
+/turf/open/fire_colony/basalt/basalt0,
 /area/fire_colony/exterior/clearing/north)
 "iE" = (
 /obj/structure/prop/hybrisa/misc/prop_deco_edging{
@@ -470,7 +470,7 @@
 "oN" = (
 /obj/structure/platform/metal/lava_metal/west,
 /obj/effect/lava/edges/basalt/l_piece,
-/turf/open/lava/basalt/basalt0,
+/turf/open/fire_colony/basalt/basalt0,
 /area/fire_colony/exterior/clearing/pass)
 "pe" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -579,7 +579,7 @@
 "rn" = (
 /obj/structure/platform/metal/lava_metal/west,
 /obj/structure/flora/alien/sparsegrass/sparsegrass_2,
-/turf/open/lava/brock,
+/turf/open/fire_colony/brock,
 /area/fire_colony/exterior/clearing/north)
 "rw" = (
 /obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
@@ -610,7 +610,7 @@
 "rR" = (
 /obj/structure/machinery/colony_floodlight/alt,
 /obj/structure/platform_decoration/metal/almayer/north,
-/turf/open/lava/basalt/basalt0,
+/turf/open/fire_colony/basalt/basalt0,
 /area/fire_colony/exterior/clearing/pass)
 "sk" = (
 /obj/effect/decal/cleanable/blood/drip{
@@ -677,7 +677,7 @@
 /area/fire_colony/interior/hydroponics/lobby)
 "uO" = (
 /obj/structure/machinery/colony_floodlight/alt,
-/turf/open/lava/brock,
+/turf/open/fire_colony/brock,
 /area/fire_colony/exterior/valley/west)
 "vr" = (
 /obj/structure/flora/pottedplant{
@@ -859,7 +859,7 @@
 /obj/effect/lava/edges/basalt/l_piece{
 	dir = 4
 	},
-/turf/open/lava/basalt/basalt6,
+/turf/open/fire_colony/basalt/basalt6,
 /area/fire_colony/exterior/clearing/pass)
 "AT" = (
 /obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
@@ -886,7 +886,7 @@
 /area/fire_colony/interior/hydroponics/lobby)
 "BU" = (
 /obj/structure/machinery/colony_floodlight/alt,
-/turf/open/lava/basalt/basalt0,
+/turf/open/fire_colony/basalt/basalt0,
 /area/fire_colony/exterior/valley/west)
 "Ca" = (
 /obj/item/ammo_magazine/smg/a_m36{
@@ -1038,7 +1038,7 @@
 /turf/open/floor/strata/altgreen3/southeast,
 /area/fire_colony/interior/hydroponics/lobby)
 "Ka" = (
-/turf/open/lava/basalt/basalt6,
+/turf/open/fire_colony/basalt/basalt6,
 /area/fire_colony/exterior/clearing/pass)
 "KM" = (
 /obj/structure/prop/hybrisa/misc/prop_deco_edging{
@@ -1323,7 +1323,7 @@
 /turf/open/floor/strata/altgreen4/north,
 /area/fire_colony/interior/hydroponics/lobby)
 "XW" = (
-/turf/open/lava/basalt/basalt0,
+/turf/open/fire_colony/basalt/basalt0,
 /area/fire_colony/exterior/clearing/north)
 "Yj" = (
 /turf/closed/wall/lava/solaris_dark,
@@ -1373,7 +1373,7 @@
 "Zr" = (
 /obj/structure/platform/metal/lava_metal/west,
 /obj/structure/flora/alien/sparsegrass/sparsegrass_3,
-/turf/open/lava/brock,
+/turf/open/fire_colony/brock,
 /area/fire_colony/exterior/clearing/north)
 "ZB" = (
 /turf/open/floor/strata/altgreen3/southeast,

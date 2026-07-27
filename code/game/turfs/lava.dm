@@ -1,14 +1,14 @@
 // LAVA FLOORS
 
-/turf/open/lava
+/turf/open/fire_colony
 	name = "floor"
 	icon_state = "full"
 	icon = 'icons/turf/floors/lava/lava_turf.dmi'
 
-/turf/open/lava/hot_lava
+/turf/open/fire_colony/hot_lava
 	name = "lava"
 	icon_state = "full"
-	baseturfs = /turf/open/lava/hot_lava
+	baseturfs = /turf/open/fire_colony/hot_lava
 	light_system = STATIC_LIGHT
 	light_range = 4
 	light_power = 0.75
@@ -18,7 +18,7 @@
 	is_weedable = NOT_WEEDABLE
 	allow_construction = FALSE
 
-/turf/open/lava/hot_lava/Entered(atom/thing)
+/turf/open/fire_colony/hot_lava/Entered(atom/thing)
 	if(iscarbon(thing))
 		var/mob/living/carbon/person = thing
 		var/can_stuck = 1
@@ -35,10 +35,10 @@
 				new_slowdown += 10
 			person.next_move_slowdown = new_slowdown
 
-/turf/open/lava/lava_no_burn
+/turf/open/fire_colony/lava_no_burn
 	name = "lava"
 	icon_state = "full"
-	baseturfs = /turf/open/lava/hot_lava
+	baseturfs = /turf/open/fire_colony/hot_lava
 	light_system = STATIC_LIGHT
 	light_range = 4
 	light_power = 0.75
@@ -50,158 +50,158 @@
 
 // Catwalks
 
-/turf/open/lava/catwalk
+/turf/open/fire_colony/catwalk
 	icon_state = "lavacatwalk"
 	light_system = STATIC_LIGHT
 	light_range = 4
 	light_power = 0.75
 	light_color = LIGHT_COLOR_LAVA
 
-/turf/open/lava/catwalk/alt
+/turf/open/fire_colony/catwalk/alt
 	icon_state = "lavacatwalk_alt"
 
-/turf/open/lava/catwalk/glass_solid
+/turf/open/fire_colony/catwalk/glass_solid
 	icon_state = "lavacatwalk_glass_solid"
 
-/turf/open/lava/catwalk/glass
+/turf/open/fire_colony/catwalk/glass
 	icon_state = "lavacatwalk_glass"
 
-/turf/open/lava/catwalk/glass_lattice
+/turf/open/fire_colony/catwalk/glass_lattice
 	icon_state = "lavacatwalk_glass_lattice"
 
-/turf/open/lava/catwalk/glass_lattice_alt
+/turf/open/fire_colony/catwalk/glass_lattice_alt
 	icon_state = "lavacatwalk_glass_lattice_alt"
 
 // Lava edge
 
-/turf/open/lava/hot_lava/L_piece
+/turf/open/fire_colony/hot_lava/L_piece
 	icon_state = "lpiece"
 
-/turf/open/lava/hot_lava/L_piece/north
+/turf/open/fire_colony/hot_lava/L_piece/north
 
 	dir = 2
 
-/turf/open/lava/hot_lava/L_piece/east
+/turf/open/fire_colony/hot_lava/L_piece/east
 	dir = 8
 
-/turf/open/lava/hot_lava/L_piece/south
+/turf/open/fire_colony/hot_lava/L_piece/south
 	dir = 1
 
-/turf/open/lava/hot_lava/L_piece/west
+/turf/open/fire_colony/hot_lava/L_piece/west
 	dir = 4
 
-/turf/open/lava/hot_lava/side
+/turf/open/fire_colony/hot_lava/side
 	icon_state = "side"
 
-/turf/open/lava/hot_lava/side/north
+/turf/open/fire_colony/hot_lava/side/north
 
 	dir = 2
 
-/turf/open/lava/hot_lava/side/east
+/turf/open/fire_colony/hot_lava/side/east
 	dir = 8
 
-/turf/open/lava/hot_lava/side/south
+/turf/open/fire_colony/hot_lava/side/south
 	dir = 1
 
-/turf/open/lava/hot_lava/side/west
+/turf/open/fire_colony/hot_lava/side/west
 	dir = 4
 
-/turf/open/lava/hot_lava/corner
+/turf/open/fire_colony/hot_lava/corner
 	icon_state = "corner"
 
-/turf/open/lava/hot_lava/corner/north
+/turf/open/fire_colony/hot_lava/corner/north
 
 	dir = 2
 
-/turf/open/lava/hot_lava/corner/east
+/turf/open/fire_colony/hot_lava/corner/east
 	dir = 8
 
-/turf/open/lava/hot_lava/corner/south
+/turf/open/fire_colony/hot_lava/corner/south
 	dir = 1
 
-/turf/open/lava/hot_lava/corner/west
+/turf/open/fire_colony/hot_lava/corner/west
 	dir = 4
 
-/turf/open/lava/hot_lava/single_intersection
+/turf/open/fire_colony/hot_lava/single_intersection
 	icon_state = "single_intersection"
 
-/turf/open/lava/hot_lava/single_intersection_direction
+/turf/open/fire_colony/hot_lava/single_intersection_direction
 	icon_state = "single_intersection_direction"
 
-/turf/open/lava/hot_lava/single_intersection_direction/north
+/turf/open/fire_colony/hot_lava/single_intersection_direction/north
 
 	dir = 2
 
-/turf/open/lava/hot_lava/single_intersection_direction/east
+/turf/open/fire_colony/hot_lava/single_intersection_direction/east
 	dir = 8
 
-/turf/open/lava/hot_lava/single_intersection_direction/south
+/turf/open/fire_colony/hot_lava/single_intersection_direction/south
 	dir = 1
 
-/turf/open/lava/hot_lava/single_intersection_direction/west
+/turf/open/fire_colony/hot_lava/single_intersection_direction/west
 	dir = 4
 
-/turf/open/lava/hot_lava/single_intersection_direction/north_east
+/turf/open/fire_colony/hot_lava/single_intersection_direction/north_east
 	dir = 10
 
-/turf/open/lava/hot_lava/single_intersection_direction/north_west
+/turf/open/fire_colony/hot_lava/single_intersection_direction/north_west
 	dir = 6
 
-/turf/open/lava/hot_lava/single_intersection_direction/south_east
+/turf/open/fire_colony/hot_lava/single_intersection_direction/south_east
 	dir = 9
 
-/turf/open/lava/hot_lava/single_intersection_direction/south_west
+/turf/open/fire_colony/hot_lava/single_intersection_direction/south_west
 	dir = 5
 
-/turf/open/lava/hot_lava/single_middle
+/turf/open/fire_colony/hot_lava/single_middle
 	icon_state = "single_middle"
 
-/turf/open/lava/hot_lava/single_middle/north
+/turf/open/fire_colony/hot_lava/single_middle/north
 
 	dir = 2
 
-/turf/open/lava/hot_lava/single_middle/east
+/turf/open/fire_colony/hot_lava/single_middle/east
 	dir = 8
 
-/turf/open/lava/hot_lava/single_middle/south
+/turf/open/fire_colony/hot_lava/single_middle/south
 	dir = 1
 
-/turf/open/lava/hot_lava/single_middle/west
+/turf/open/fire_colony/hot_lava/single_middle/west
 	dir = 4
 
-/turf/open/lava/hot_lava/single
+/turf/open/fire_colony/hot_lava/single
 	icon_state = "single"
 
-/turf/open/lava/hot_lava/single_end
+/turf/open/fire_colony/hot_lava/single_end
 	icon_state = "single_end"
 
-/turf/open/lava/hot_lava/single_end/north
+/turf/open/fire_colony/hot_lava/single_end/north
 
 	dir = 2
 
-/turf/open/lava/hot_lava/single_end/east
+/turf/open/fire_colony/hot_lava/single_end/east
 	dir = 8
 
-/turf/open/lava/hot_lava/single_end/south
+/turf/open/fire_colony/hot_lava/single_end/south
 	dir = 1
 
-/turf/open/lava/hot_lava/single_end/west
+/turf/open/fire_colony/hot_lava/single_end/west
 	dir = 4
 
-/turf/open/lava/hot_lava/single_corners
+/turf/open/fire_colony/hot_lava/single_corners
 	icon_state = "single_corners"
 
-/turf/open/lava/hot_lava/single_corners/north
+/turf/open/fire_colony/hot_lava/single_corners/north
 
 	dir = 2
 
-/turf/open/lava/hot_lava/single_corners/east
+/turf/open/fire_colony/hot_lava/single_corners/east
 	dir = 8
 
-/turf/open/lava/hot_lava/single_corners/south
+/turf/open/fire_colony/hot_lava/single_corners/south
 	dir = 1
 
-/turf/open/lava/hot_lava/single_corners/west
+/turf/open/fire_colony/hot_lava/single_corners/west
 	dir = 4
 
 // Decals - For edges
@@ -296,273 +296,274 @@ engineer_floor_deco
 
 // Lava Rock & Dirt
 
-/turf/open/lava/basalt/cave
+/turf/open/fire_colony/basalt/cave
 	icon_state = "sand_to_cave"
 
-/turf/open/lava/basalt/cave/north
+/turf/open/fire_colony/basalt/cave/north
 
 	dir = 2
 
-/turf/open/lava/basalt/cave/east
+/turf/open/fire_colony/basalt/cave/east
 	dir = 8
 
-/turf/open/lava/basalt/cave/south
+/turf/open/fire_colony/basalt/cave/south
 	dir = 1
 
-/turf/open/lava/basalt/cave/west
+/turf/open/fire_colony/basalt/cave/west
 	dir = 4
 
-/turf/open/lava/basalt/cave/north_east
+/turf/open/fire_colony/basalt/cave/north_east
 	dir = 10
 
-/turf/open/lava/basalt/cave/north_west
+/turf/open/fire_colony/basalt/cave/north_west
 	dir = 6
 
-/turf/open/lava/basalt/cave/south_east
+/turf/open/fire_colony/basalt/cave/south_east
 	dir = 9
 
-/turf/open/lava/basalt/cave/south_west
+/turf/open/fire_colony/basalt/cave/south_west
 	dir = 5
 
-/turf/open/lava/basalt/cave/corner
+/turf/open/fire_colony/basalt/cave/corner
 	icon_state = "sand_to_cave_corner"
 
-/turf/open/lava/basalt/cave/corner/north
+/turf/open/fire_colony/basalt/cave/corner/north
 
 	dir = 2
 
-/turf/open/lava/basalt/cave/corner/east
+/turf/open/fire_colony/basalt/cave/corner/east
 	dir = 8
 
-/turf/open/lava/basalt/cave/corner/south
+/turf/open/fire_colony/basalt/cave/corner/south
 	dir = 1
 
-/turf/open/lava/basalt/cave/corner/west
+/turf/open/fire_colony/basalt/cave/corner/west
 	dir = 4
 
-/turf/open/lava/basalt/dirt
+/turf/open/fire_colony/basalt/dirt
 	icon_state = "basalt_to_dirt"
 
-/turf/open/lava/basalt/dirt/north
+/turf/open/fire_colony/basalt/dirt/north
 
 	dir = 2
 
-/turf/open/lava/basalt/dirt/east
+/turf/open/fire_colony/basalt/dirt/east
 	dir = 8
 
-/turf/open/lava/basalt/dirt/south
+/turf/open/fire_colony/basalt/dirt/south
 	dir = 1
 
-/turf/open/lava/basalt/dirt/west
+/turf/open/fire_colony/basalt/dirt/west
 	dir = 4
 
-/turf/open/lava/basalt/dirt/north_east
+/turf/open/fire_colony/basalt/dirt/north_east
 	dir = 10
 
-/turf/open/lava/basalt/dirt/north_west
+/turf/open/fire_colony/basalt/dirt/north_west
 	dir = 6
 
-/turf/open/lava/basalt/dirt/south_east
+/turf/open/fire_colony/basalt/dirt/south_east
 	dir = 9
 
-/turf/open/lava/basalt/dirt/south_west
+/turf/open/fire_colony/basalt/dirt/south_west
 	dir = 5
 
-/turf/open/lava/basalt/dirt/corner
+/turf/open/fire_colony/basalt/dirt/corner
 	icon_state = "basalt_to_dirt_corner"
 
-/turf/open/lava/basalt/dirt/corner/north
+/turf/open/fire_colony/basalt/dirt/corner/north
 
 	dir = 2
 
-/turf/open/lava/basalt/dirt/corner/east
+/turf/open/fire_colony/basalt/dirt/corner/east
 	dir = 8
 
-/turf/open/lava/basalt/dirt/corner/south
+/turf/open/fire_colony/basalt/dirt/corner/south
 	dir = 1
 
-/turf/open/lava/basalt/dirt/corner/west
+/turf/open/fire_colony/basalt/dirt/corner/west
 	dir = 4
 
-/turf/open/lava/basalt
+/turf/open/fire_colony/basalt
 	icon_state = "basalt"
 
-/turf/open/lava/basalt/basalt0
+/turf/open/fire_colony/basalt/basalt0
 	icon_state = "basalt0"
 
-/turf/open/lava/basalt/basalt0
+/turf/open/fire_colony/basalt/basalt0
 	icon_state = "basalt0"
 
-/turf/open/lava/basalt/basalt4
+/turf/open/fire_colony/basalt/basalt4
 	icon_state = "basalt4"
 
-/turf/open/lava/basalt/basalt6
+/turf/open/fire_colony/basalt/basalt6
 	icon_state = "basalt6"
 
-/turf/open/lava/basalt/basalt7
+/turf/open/fire_colony/basalt/basalt7
 	icon_state = "basalt7"
 
-/turf/open/lava/basalt/basalt8
+/turf/open/fire_colony/basalt/basalt8
 	icon_state = "basalt8"
 
-/turf/open/lava/basalt/basalt10
+/turf/open/fire_colony/basalt/basalt10
 	icon_state = "basalt10"
 
-/turf/open/lava/basalt/basalt11
+/turf/open/fire_colony/basalt/basalt11
 	icon_state = "basalt11"
 
-/turf/open/lava/basalt/basalt12
+/turf/open/fire_colony/basalt/basalt12
 	icon_state = "basalt12"
 
-/turf/open/lava/basalt/basalt_dug
+/turf/open/fire_colony/basalt/basalt_dug
 	icon_state = "basalt_dug"
 
-/turf/open/lava/basalt/glowing
+/turf/open/fire_colony/basalt/glowing
 	icon_state = "basaltglow"
 	light_system = STATIC_LIGHT
 	light_range = 4
 	light_power = 0.75
 	light_color = LIGHT_COLOR_LAVA
 
-/turf/open/lava/basalt/glowing/basalt1
+/turf/open/fire_colony/basalt/glowing/basalt1
 	icon_state = "basalt1"
 
-/turf/open/lava/basalt/glowing/basalt2
+/turf/open/fire_colony/basalt/glowing/basalt2
 	icon_state = "basalt2"
 
-/turf/open/lava/basalt/glowing/basalt3
+/turf/open/fire_colony/basalt/glowing/basalt3
 	icon_state = "basalt3"
 
-/turf/open/lava/basalt/glowing/basalt5
+/turf/open/fire_colony/basalt/glowing/basalt5
 	icon_state = "basalt5"
 
-/turf/open/lava/basalt/glowing/basalt9
+/turf/open/fire_colony/basalt/glowing/basalt9
 	icon_state = "basalt9"
 
-/turf/open/lava/dirt
+/turf/open/fire_colony/dirt
 	icon_state = "basalt_purple"
 
-/turf/open/lava/dirt/Initialize(mapload)
+/turf/open/fire_colony/dirt/Initialize(mapload)
 	. = ..()
 	setDir(pick(NORTH, SOUTH, EAST, WEST))
 
-/turf/open/lava/sand
+/turf/open/fire_colony/sand
 	icon_state = "sand"
 
-/turf/open/lava/sand/Initialize(mapload)
+/turf/open/fire_colony/sand/Initialize(mapload)
 	. = ..()
 	setDir(pick(NORTH, SOUTH, EAST, WEST))
 
-/turf/open/lava/brock
+/turf/open/fire_colony/brock
 	icon_state = "brock"
 
-/turf/open/lava/brock/Initialize(mapload)
+/turf/open/fire_colony/brock/Initialize(mapload)
 	. = ..()
 	setDir(pick(NORTH, SOUTH, EAST, WEST))
 
 // Metal Floors
 
-/turf/open/lava/metal
+/turf/open/floor/fire_colony/metal
 	icon_state = "grille"
 	icon = 'icons/turf/floors/lava/lava_turf.dmi'
-	baseturfs = /turf/open/lava/plating
+	baseturfs = /turf/open/floor/plating/fire_colony
 
-/turf/open/lava/metal/grille
+/turf/open/floor/fire_colony/metal/grille
 	icon_state = "grille"
 
-/turf/open/lava/metal/grate
+/turf/open/floor/fire_colony/metal/grate
 	icon_state = "grate"
 
-/turf/open/lava/metal/grate/east
+/turf/open/floor/fire_colony/metal/grate/east
 	dir = EAST
 
-/turf/open/lava/metal/grate/north
+/turf/open/floor/fire_colony/metal/grate/north
 	dir = NORTH
 
-/turf/open/lava/metal/grate/west
+/turf/open/floor/fire_colony/metal/grate/west
 	dir = WEST
 
-/turf/open/lava/plating/grille
+/turf/open/floor/plating/fire_colony/grille
 	icon_state = "grille1"
 
-/turf/open/lava/plating
+/turf/open/floor/plating/fire_colony
 	icon_state = "vent"
 
-/turf/open/lava/plating/alt
+/turf/open/floor/plating/fire_colony/alt
 	icon_state = "vent1"
 
 // Plating & Damage
 
-/turf/open/lava/plating
+/turf/open/floor/plating/fire_colony
+	icon_state = "plating"
+	icon = 'icons/turf/floors/lava/lava_turf.dmi'
+
+/turf/open/floor/plating/fire_colony
 	icon_state = "plating"
 
-/turf/open/lava/plating
-	icon_state = "plating"
-
-/turf/open/lava/plating/platingdmg1
+/turf/open/floor/plating/fire_colony/platingdmg1
 	icon_state = "platingdmg1"
 
-/turf/open/lava/plating/platingdmg2
+/turf/open/floor/plating/fire_colony/platingdmg2
 	icon_state = "platingdmg2"
 
-/turf/open/lava/plating/platingdmg3
+/turf/open/floor/plating/fire_colony/platingdmg3
 	icon_state = "platingdmg3"
 
-/turf/open/lava/plating/panelscorched
+/turf/open/floor/plating/fire_colony/panelscorched
 	icon_state = "panelscorched"
 
 ///
 
-/turf/open/lava/metal/warning_grate
+/turf/open/floor/fire_colony/metal/warning_grate
 	icon_state = "warning_grate"
 
-/turf/open/lava/metal/warning_grate/north
+/turf/open/floor/fire_colony/metal/warning_grate/north
 
 	dir = 2
 
-/turf/open/lava/metal/warning_grate/east
+/turf/open/floor/fire_colony/metal/warning_grate/east
 	dir = 8
 
-/turf/open/lava/metal/warning_grate/south
+/turf/open/floor/fire_colony/metal/warning_grate/south
 	dir = 1
 
-/turf/open/lava/metal/warning_grate/west
+/turf/open/floor/fire_colony/metal/warning_grate/west
 	dir = 4
 
-/turf/open/lava/metal/filtrationside_lava
+/turf/open/floor/fire_colony/metal/filtrationside_lava
 	icon_state = "filtrationside_lava"
 
-/turf/open/lava/metal/filtrationside_lava/southwest
+/turf/open/floor/fire_colony/metal/filtrationside_lava/southwest
 	dir = SOUTHWEST
 
-/turf/open/lava/metal/filtrationside_lava/north
+/turf/open/floor/fire_colony/metal/filtrationside_lava/north
 	dir = NORTH
 
-/turf/open/lava/metal/filtrationside_lava/east
+/turf/open/floor/fire_colony/metal/filtrationside_lava/east
 	dir = EAST
 
-/turf/open/lava/metal/filtrationside_lava/northeast
+/turf/open/floor/fire_colony/metal/filtrationside_lava/northeast
 	dir = NORTHEAST
 
-/turf/open/lava/metal/filtrationside_lava/southeast
+/turf/open/floor/fire_colony/metal/filtrationside_lava/southeast
 	dir = SOUTHEAST
 
-/turf/open/lava/metal/filtrationside_lava/west
+/turf/open/floor/fire_colony/metal/filtrationside_lava/west
 	dir = WEST
 
-/turf/open/lava/metal/filtrationside_lava/northwest
+/turf/open/floor/fire_colony/metal/filtrationside_lava/northwest
 	dir = NORTHWEST
 
-/turf/open/lava/metal/filtrationside_lava_straight
+/turf/open/floor/fire_colony/metal/filtrationside_lava_straight
 	icon_state = "filtrationside_lava_straight"
 
-/turf/open/lava/metal/filtrationside_lava_straight/north
+/turf/open/floor/fire_colony/metal/filtrationside_lava_straight/north
 	dir = NORTH
 
-/turf/open/lava/metal/filtrationside_lava_straight/east
+/turf/open/floor/fire_colony/metal/filtrationside_lava_straight/east
 	dir = EAST
 
-/turf/open/lava/metal/filtrationside_lava_straight/west
+/turf/open/floor/fire_colony/metal/filtrationside_lava_straight/west
 	dir = WEST
 
 // Catwalk Alpha
@@ -591,93 +592,93 @@ engineer_floor_deco
 
 // Warnplate
 
-/turf/open/lava/plating/warnplate
+/turf/open/floor/plating/fire_colony/warnplate
 	icon_state = "dark_warnplate"
 
-/turf/open/lava/plating/warnplate/southwest
+/turf/open/floor/plating/fire_colony/warnplate/southwest
 	dir = SOUTHWEST
 
-/turf/open/lava/plating/warnplate/north
+/turf/open/floor/plating/fire_colony/warnplate/north
 	dir = NORTH
 
-/turf/open/lava/plating/warnplate/east
+/turf/open/floor/plating/fire_colony/warnplate/east
 	dir = EAST
 
-/turf/open/lava/plating/warnplate/northeast
+/turf/open/floor/plating/fire_colony/warnplate/northeast
 	dir = NORTHEAST
 
-/turf/open/lava/plating/warnplate/southeast
+/turf/open/floor/plating/fire_colony/warnplate/southeast
 	dir = SOUTHEAST
 
-/turf/open/lava/plating/warnplate/west
+/turf/open/floor/plating/fire_colony/warnplate/west
 	dir = WEST
 
-/turf/open/lava/plating/warnplate/northwest
+/turf/open/floor/plating/fire_colony/warnplate/northwest
 	dir = NORTHWEST
 
-/turf/open/lava/plating/warnplate/corner
+/turf/open/floor/plating/fire_colony/warnplate/corner
 	icon_state = "dark_warnplatecorner"
 
-/turf/open/lava/plating/warnplate/corner/north
+/turf/open/floor/plating/fire_colony/warnplate/corner/north
 	dir = NORTH
 
-/turf/open/lava/plating/warnplate/corner/east
+/turf/open/floor/plating/fire_colony/warnplate/corner/east
 	dir = EAST
 
-/turf/open/lava/plating/warnplate/corner/west
+/turf/open/floor/plating/fire_colony/warnplate/corner/west
 	dir = WEST
 
 // Asteroid new
 
-/turf/open/lava/asteroid
+/turf/open/fire_colony/asteroid
 	icon_state = "dark_asteroidfloor"
 
-/turf/open/lava/asteroid/plating
+/turf/open/fire_colony/asteroid/plating
 	icon_state = "dark_asteroidplating"
 
-/turf/open/lava/asteroid/directions
+/turf/open/fire_colony/asteroid/directions
 	icon_state = "dark_asteroidwarning"
 
-/turf/open/lava/asteroid/directions/north
+/turf/open/fire_colony/asteroid/directions/north
 
 	dir = NORTH
 
-/turf/open/lava/asteroid/directions/east
+/turf/open/fire_colony/asteroid/directions/east
 	dir = EAST
 
-/turf/open/lava/asteroid/directions/south
+/turf/open/fire_colony/asteroid/directions/south
 	dir = SOUTH
 
-/turf/open/lava/asteroid/directions/west
+/turf/open/fire_colony/asteroid/directions/west
 	dir = WEST
 
-/turf/open/lava/asteroid/directions/northeast
+/turf/open/fire_colony/asteroid/directions/northeast
 	dir = NORTHEAST
 
-/turf/open/lava/asteroid/directions/northwest
+/turf/open/fire_colony/asteroid/directions/northwest
 	dir = NORTHWEST
 
-/turf/open/lava/asteroid/directions/southeast
+/turf/open/fire_colony/asteroid/directions/southeast
 	dir = SOUTHEAST
 
-/turf/open/lava/asteroid/directions/southwest
+/turf/open/fire_colony/asteroid/directions/southwest
 	dir = SOUTHWEST
 
 // Asteroid corner
 
-/turf/open/lava/asteroid/corner
+/turf/open/fire_colony/asteroid/corner
 	icon_state = "dark_asteroidfloor_corner"
 
-/turf/open/lava/asteroid/corner/north
+/turf/open/fire_colony/asteroid/corner/north
 	dir = NORTH
 
-/turf/open/lava/asteroid/corner/east
+/turf/open/fire_colony/asteroid/corner/east
 	dir = EAST
 
-/turf/open/lava/asteroid/corner/south
+/turf/open/fire_colony/asteroid/corner/south
 	dir = SOUTH
 
-/turf/open/lava/asteroid/corner/west
+/turf/open/fire_colony/asteroid/corner/west
 	dir = WEST
 
 // Engineer Ruins Walls
@@ -689,7 +690,7 @@ engineer_floor_deco
 	icon_state = "engineer_stone"
 	walltype = WALL_ENGINEER_RUIN
 	blend_objects = list(/obj/structure/prop/engineer_ruins/collapsed_wall)
-	baseturfs = /turf/open/lava/engineer_ruins/plating
+	baseturfs = /turf/open/fire_colony/engineer_ruins/plating
 
 /turf/closed/wall/engineer_ruins/hull
 	icon_state = "hull"
@@ -725,76 +726,76 @@ engineer_floor_deco
 
 // Engineer Ruins Floors
 
-/turf/open/lava/engineer_ruins
+/turf/open/fire_colony/engineer_ruins
 	icon = 'icons/turf/floors/engineer/engineerruin.dmi'
 	icon_state = "floor1"
-	baseturfs = /turf/open/lava/engineer_ruins/plating
+	baseturfs = /turf/open/fire_colony/engineer_ruins/plating
 
-/turf/open/lava/engineer_ruins/plating
+/turf/open/fire_colony/engineer_ruins/plating
 	icon_state = "plating"
 
-/turf/open/lava/engineer_ruins/plating/panelscorched
+/turf/open/fire_colony/engineer_ruins/plating/panelscorched
 	icon_state = "panelscorched"
 
-/turf/open/lava/engineer_ruins/plating/platingdmg1
+/turf/open/fire_colony/engineer_ruins/plating/platingdmg1
 	icon_state = "platingdmg1"
 
-/turf/open/lava/engineer_ruins/plating/platingdmg2
+/turf/open/fire_colony/engineer_ruins/plating/platingdmg2
 	icon_state = "platingdmg2"
 
-/turf/open/lava/engineer_ruins/plating/platingdmg3
+/turf/open/fire_colony/engineer_ruins/plating/platingdmg3
 	icon_state = "platingdmg3"
 
-/turf/open/lava/engineer_ruins/engineer_ruins
+/turf/open/fire_colony/engineer_ruins/engineer_ruins
 	icon_state = "floor1"
 
-/turf/open/lava/engineer_ruins/engineer_ruins/floor_2
+/turf/open/fire_colony/engineer_ruins/engineer_ruins/floor_2
 	icon_state = "floor2"
 
-/turf/open/lava/engineer_ruins/engineer_ruins/floor_3
+/turf/open/fire_colony/engineer_ruins/engineer_ruins/floor_3
 	icon_state = "floor3"
 
 // Smooth
 
-/turf/open/lava/engineer_ruins/engineer_ruins/smooth/floor_1
+/turf/open/fire_colony/engineer_ruins/engineer_ruins/smooth/floor_1
 	icon_state = "floor_smooth"
 
-/turf/open/lava/engineer_ruins/engineer_ruins/smooth/floor_2
+/turf/open/fire_colony/engineer_ruins/engineer_ruins/smooth/floor_2
 	icon_state = "floor_smooth_1"
 
-/turf/open/lava/engineer_ruins/engineer_ruins/smooth/floor_3
+/turf/open/fire_colony/engineer_ruins/engineer_ruins/smooth/floor_3
 	icon_state = "floor_smooth_2"
 
 // Damaged
 
-/turf/open/lava/engineer_ruins/engineer_ruins/damaged
+/turf/open/fire_colony/engineer_ruins/engineer_ruins/damaged
 	icon_state = "damage_1"
 
-/turf/open/lava/engineer_ruins/engineer_ruins/damaged/damage_1
+/turf/open/fire_colony/engineer_ruins/engineer_ruins/damaged/damage_1
 	icon_state = "damage_1"
 
-/turf/open/lava/engineer_ruins/engineer_ruins/damaged/damage_2
+/turf/open/fire_colony/engineer_ruins/engineer_ruins/damaged/damage_2
 	icon_state = "damage_2"
 
-/turf/open/lava/engineer_ruins/engineer_ruins/damaged/damage_3
+/turf/open/fire_colony/engineer_ruins/engineer_ruins/damaged/damage_3
 	icon_state = "damage_3"
 
-/turf/open/lava/engineer_ruins/engineer_ruins/damaged/damage_4
+/turf/open/fire_colony/engineer_ruins/engineer_ruins/damaged/damage_4
 	icon_state = "damage_4"
 
-/turf/open/lava/engineer_ruins/engineer_ruins/damaged/damage_5
+/turf/open/fire_colony/engineer_ruins/engineer_ruins/damaged/damage_5
 	icon_state = "damage_5"
 
-/turf/open/lava/engineer_ruins/engineer_ruins/damaged/damage_6
+/turf/open/fire_colony/engineer_ruins/engineer_ruins/damaged/damage_6
 	icon_state = "damage_6"
 
-/turf/open/lava/engineer_ruins/engineer_ruins/damaged/damage_7
+/turf/open/fire_colony/engineer_ruins/engineer_ruins/damaged/damage_7
 	icon_state = "damage_7"
 
-/turf/open/lava/engineer_ruins/engineer_ruins/damaged/damage_8
+/turf/open/fire_colony/engineer_ruins/engineer_ruins/damaged/damage_8
 	icon_state = "damage_8"
 
-/turf/open/lava/engineer_ruins/engineer_ruins/damaged/damage_9
+/turf/open/fire_colony/engineer_ruins/engineer_ruins/damaged/damage_9
 	icon_state = "damage_9"
 
 // Walls
@@ -806,7 +807,7 @@ engineer_floor_deco
 	walltype = WALL_SOLARIS_ROCK
 	turf_flags = TURF_HULL
 	minimap_color = MINIMAP_BLACK
-	baseturfs = /turf/open/lava/basalt/basalt0
+	baseturfs = /turf/open/fire_colony/basalt/basalt0
 	noblend_turfs = list(/turf/closed/wall/engineer_ruins)
 	noblend_objects = list(/obj/structure/prop/engineer_ruins/collapsed_wall)
 

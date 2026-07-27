@@ -470,13 +470,14 @@
 	if (disarmed)
 		qdel(src)
 		return
-
 	if(!cause_data)
 		cause_data = create_cause_data(initial(name), user, src)
 	else if(user)
 		cause_data.weak_mob = WEAKREF(user)
+
 	if(mine_level == 1)
 		explosion_strength = 100
+		explosion_falloff = 50
 	else if(mine_level == 2)
 		explosion_strength = 100
 		explosion_falloff = 25
@@ -488,7 +489,7 @@
 		explosion_falloff = 25
 
 	if (mine_safety)
-		for(var/mob/living/carbon/human in range(explosion_strength / explosion_falloff, src))
+		for(var/mob/living/carbon/human in range((explosion_strength / explosion_falloff) - 1, src))
 			if (human.get_target_lock(iff_signal))
 				disarm()
 				return
@@ -563,6 +564,8 @@
 /obj/item/explosive/mine/sharp/get_examine_text(mob/user)
 	. = ..()
 	var/extended_description = ""
+	if(!ishuman(user))
+		return
 	if(skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_GRENADIER))
 		extended_description = mine_safety ? "SAFE" : "DANGER"
 		. += SPAN_INFO("Your training allows you to discern what mode this mine was fired in: it appears to be set to <b>[extended_description]</b> mode.")
@@ -576,7 +579,9 @@
 /obj/item/explosive/mine/sharp/incendiary
 	name = "\improper P9 SHARP incendiary dart"
 	icon_state = "sharp_incendiary_mine"
-	var/incendiary_radius = 1
+	var/incendiary_radius
+	var/is_smoke
+	var/datum/incendiary_reagent
 
 /obj/item/explosive/mine/sharp/incendiary/prime(mob/user)
 	set waitfor = FALSE
@@ -590,26 +595,33 @@
 
 	if(mine_level == 1)
 		incendiary_radius = 2
-		var/datum/effect_system/smoke_spread/phosphorus/smoke = new /datum/effect_system/smoke_spread/phosphorus/sharp
-		smoke.set_up(incendiary_radius, 0, loc)
-		smoke.start()
-		playsound(loc, 'sound/weapons/gun_sharp_explode.ogg', 100)
+		is_smoke = TRUE
 	else if(mine_level == 2)
-		var/datum/reagent/napalm/green/reagent = new()
-		new /obj/flamer_fire(loc, cause_data, reagent, incendiary_radius, null, FLAMESHAPE_STAR)
-		playsound(loc, 'sound/weapons/gun_flamethrower3.ogg', 45)
+		incendiary_radius = 1
+		is_smoke = FALSE
+		incendiary_reagent = new /datum/reagent/napalm/green()
 	else if(mine_level == 3)
-		var/datum/reagent/napalm/ut/reagent = new()
-		new /obj/flamer_fire(loc, cause_data, reagent, incendiary_radius, null, FLAMESHAPE_STAR)
-		playsound(loc, 'sound/weapons/gun_flamethrower3.ogg', 45)
+		incendiary_radius = 1
+		is_smoke = FALSE
+		incendiary_reagent = new /datum/reagent/napalm/ut()
 	else
-		var/datum/reagent/napalm/ut/reagent = new()
-		new /obj/flamer_fire(loc, cause_data, reagent, incendiary_radius, null, FLAMESHAPE_STAR)
-		playsound(loc, 'sound/weapons/gun_flamethrower3.ogg', 45)
+		incendiary_radius = 1
+		is_smoke = FALSE
+		incendiary_reagent = new /datum/reagent/napalm/ut()
 
 	if (mine_safety)
 		for(var/mob/living/carbon/human in range(incendiary_radius, src))
 			if (human.get_target_lock(iff_signal))
 				disarm()
 				return
+
+	if(is_smoke)
+		var/datum/effect_system/smoke_spread/phosphorus/smoke = new /datum/effect_system/smoke_spread/phosphorus/sharp
+		smoke.set_up(incendiary_radius, 0, loc)
+		smoke.start()
+		playsound(loc, 'sound/weapons/gun_sharp_explode.ogg', 100)
+	else
+		new /obj/flamer_fire(loc, cause_data, incendiary_reagent, incendiary_radius, null, FLAMESHAPE_STAR)
+		playsound(loc, 'sound/weapons/gun_flamethrower3.ogg', 45)
+
 	qdel(src)

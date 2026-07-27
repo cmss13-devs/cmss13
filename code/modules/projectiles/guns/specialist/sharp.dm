@@ -34,7 +34,7 @@
 
 /obj/item/weapon/gun/rifle/sharp/get_examine_text(mob/user)
 	. = ..()
-	. += SPAN_INFO("Switching firemodes will toggle SAFE operation, with much greater IFF-logic of fired mines.")
+	. += SPAN_INFO("Switching firemodes will toggle SAFE mode operation, with much greater IFF-logic of fired mines when activated.")
 
 /obj/item/weapon/gun/rifle/sharp/set_bullet_traits()
 	LAZYADD(traits_to_give, list(
@@ -215,7 +215,7 @@
 		var/explosion_falloff = 35
 		var/cause_data = create_cause_data("P9 SHARP Rifle", shooter)
 		if (mine_safety)
-			for(var/mob/living/carbon/human in range(explosion_strength / explosion_falloff, target))
+			for(var/mob/living/carbon/human in range((explosion_strength / explosion_falloff) - 1, target))
 				if (human.get_target_lock(shooter.faction_group))
 					playsound(target, 'sound/weapons/smartgun_fail.ogg', target, 25)
 					to_chat(target, SPAN_WARNING("[shot_dart] releases itself from you!"))

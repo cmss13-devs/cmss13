@@ -462,19 +462,23 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 			INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/item/stack, interact), user)
 		if(user.interactee == other_stack)
 			INVOKE_ASYNC(other_stack, TYPE_PROC_REF(/obj/item/stack, interact), user)
+		user.next_move = world.time + 0.3 SECONDS
 		return TRUE
 
 	// empty
 	if(other_stack)
 		return ..()
+
 	if(!use(1))
 		return
+
 	var/obj/item/stack/new_stack = new type(user, 1)
 	transfer_fingerprints_to(new_stack)
 	user.put_in_inactive_hand(new_stack)
 	add_fingerprint(user)
 	new_stack.add_fingerprint(user)
 	to_chat(user, SPAN_NOTICE("You split one [singular_name] into your other hand."))
+	user.next_move = world.time + 0.3 SECONDS
 	return TRUE
 
 /obj/item/stack/attackby(obj/item/stack/used_stack, mob/user)

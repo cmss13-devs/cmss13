@@ -2,7 +2,7 @@
 /datum/mapgrid
 	/// Dimensions of the map grid: 4 -> 4x4 -> 16 cells
 	/// Cannot be changed after instantiation
-	var/dim = 4
+	var/dim = 7
 
 	/// List of the contained atoms and their respective mapcell - maps [/atom/movable] -> [/datum/mapcell]
 	var/alist/tracked_atoms = alist()

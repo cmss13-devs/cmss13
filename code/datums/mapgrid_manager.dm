@@ -6,7 +6,7 @@
 
 /datum/mapgrid_manager
 	/// Dimension of mapgrid cells to be requested - Cannot be updated
-	var/dim = 4
+	var/dim = 7
 
 	/// List of mapgrids handling each Z-level, mirroring [SSmapping.z_list]
 	/// Note that a single mapgrid handles all levels of a multi-Z map, so

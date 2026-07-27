@@ -257,6 +257,38 @@
 	if(F.to_call)
 		F.to_call.Invoke()
 
+/datum/flameshape/square
+	name = "Square"
+	id = FLAMESHAPE_SQUARE
+
+/datum/flameshape/square/handle_fire_spread(obj/flamer_fire/F, fire_spread_amount, burn_dam, fuel_pressure = 1)
+	var/turf/source_turf = get_turf(F.loc)
+	var/radius = fire_spread_amount - 1
+
+	for(var/turf/T in range(radius, source_turf))
+		if(T == source_turf)
+			continue
+		if(istype(T, /turf/open/space))
+			continue
+
+		var/obj/flamer_fire/foundflame = locate() in T
+		if(foundflame && foundflame.tied_reagent == F.tied_reagent)
+			continue
+
+		if(T.density)
+			T.flamer_fire_act(burn_dam, F.weapon_cause_data)
+			continue
+
+		var/obj/flamer_fire/temp = new()
+		var/atom/A = LinkBlocked(temp, source_turf, T)
+
+		if(A)
+			A.flamer_fire_act(burn_dam, F.weapon_cause_data)
+			if(A.flags_atom & ON_BORDER)
+				continue
+
+		var/ring = get_dist(source_turf, T)
+		addtimer(CALLBACK(src, PROC_REF(generate_fire), T, F, 0, FLAMESHAPE_SQUARE, null, FALSE, fuel_pressure), ring)
 
 GLOBAL_LIST_INIT(flameshapes, list(
 	FLAMESHAPE_DEFAULT = new /datum/flameshape/default(),
@@ -265,4 +297,5 @@ GLOBAL_LIST_INIT(flameshapes, list(
 	FLAMESHAPE_MINORSTAR = new /datum/flameshape/star/minor(),
 	FLAMESHAPE_TRIANGLE = new /datum/flameshape/triangle(),
 	FLAMESHAPE_LINE = new /datum/flameshape/line(),
+	FLAMESHAPE_SQUARE = new /datum/flameshape/square()
 ))

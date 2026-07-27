@@ -597,20 +597,20 @@
 		incendiary_radius = 2
 		is_smoke = TRUE
 	else if(mine_level == 2)
-		incendiary_radius = 1
+		incendiary_radius = 2
 		is_smoke = FALSE
 		incendiary_reagent = new /datum/reagent/napalm/green()
 	else if(mine_level == 3)
-		incendiary_radius = 1
+		incendiary_radius = 2
 		is_smoke = FALSE
 		incendiary_reagent = new /datum/reagent/napalm/ut()
 	else
-		incendiary_radius = 1
+		incendiary_radius = 3
 		is_smoke = FALSE
 		incendiary_reagent = new /datum/reagent/napalm/ut()
 
 	if (mine_safety)
-		for(var/mob/living/carbon/human in range(incendiary_radius, src))
+		for(var/mob/living/carbon/human in range(is_smoke ? incendiary_radius : incendiary_radius - 1, src))
 			if (human.get_target_lock(iff_signal))
 				disarm()
 				return
@@ -621,7 +621,7 @@
 		smoke.start()
 		playsound(loc, 'sound/weapons/gun_sharp_explode.ogg', 100)
 	else
-		new /obj/flamer_fire(loc, cause_data, incendiary_reagent, incendiary_radius, null, FLAMESHAPE_STAR)
+		new /obj/flamer_fire(loc, cause_data, incendiary_reagent, incendiary_radius, null, FLAMESHAPE_SQUARE)
 		playsound(loc, 'sound/weapons/gun_flamethrower3.ogg', 45)
 
 	qdel(src)

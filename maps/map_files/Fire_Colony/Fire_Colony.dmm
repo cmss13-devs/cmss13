@@ -4597,7 +4597,9 @@
 /area/fire_colony/exterior/valley/northwest)
 "ayf" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 6
+	},
 /turf/open/floor/prison/floor_plate/smooth_u/north,
 /area/fire_colony/interior/seegson/operations)
 "ayg" = (
@@ -34477,13 +34479,6 @@
 "gBM" = (
 /turf/open/fire_colony/basalt/basalt6,
 /area/fire_colony/exterior/landing_pad_external)
-"gBQ" = (
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/plating/fire_colony/filtrationside_lava,
-/area/fire_colony/interior/seegson/operations)
 "gBR" = (
 /obj/effect/lava/edges/basalt/side_rock,
 /obj/effect/lava/edges/basalt/side_rock{
@@ -47095,14 +47090,6 @@
 /obj/item/trash/cigbutt,
 /turf/open/floor/plating/fire_colony,
 /area/fire_colony/exterior/clearing/south_west)
-"jFI" = (
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/machinery/light,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/plating/fire_colony/filtrationside_lava,
-/area/fire_colony/interior/seegson/operations)
 "jFL" = (
 /obj/effect/lava/edges/basalt/l_piece{
 	dir = 4
@@ -50242,13 +50229,6 @@
 	},
 /turf/open/fire_colony/basalt/glowing/basalt1,
 /area/fire_colony/exterior/valley/northwest)
-"kxq" = (
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 10
-	},
-/turf/open/floor/plating/fire_colony/filtrationside_lava,
-/area/fire_colony/interior/seegson/operations)
 "kxw" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/almayer/research/containment/floor1,
@@ -65680,6 +65660,7 @@
 "ofB" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/pipes/vents/pump_hybrisa,
 /turf/open/floor/prison/floor_plate,
 /area/fire_colony/interior/seegson/operations)
 "ofE" = (
@@ -65929,9 +65910,6 @@
 "oic" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 6
-	},
 /turf/open/floor/plating/fire_colony/filtrationside_lava,
 /area/fire_colony/interior/seegson/operations)
 "oip" = (
@@ -135650,7 +135628,7 @@ bIn
 nib
 aiT
 alz
-gBQ
+thQ
 ofB
 qmO
 bJQ
@@ -135852,7 +135830,7 @@ aqk
 awF
 aUH
 sMH
-jFI
+mvR
 fzl
 fzl
 aAb
@@ -136054,7 +136032,7 @@ beK
 aRc
 mTy
 aRd
-kxq
+thQ
 jjJ
 fzl
 azU

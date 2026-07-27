@@ -8,6 +8,15 @@
 	- The mag clip doesn't goes into the gun, instead the magazine teleports into the gun and leaves the mag clip behind while the mag clip still points to the magazine
 	- Lacks user feedback when the clip is switched
 */
+/*
+TODO:
+	- Further refine the item examine message: include the magazine names as well
+	- Clean up the comments
+	- Check over all the procs, look into initiate() and destroy() [research qdelete]
+	- Work on potential optimization problems
+	- Work out an acceptable sprite
+	- Actually add the item into vendor
+*/
 
 /obj/item/magazine_clip
 	name = "magazine_clip"
@@ -67,13 +76,13 @@
 		. += "Slot 0 is empty."
 	else
 		var/obj/item/ammo_magazine/mag0 = contained_mags[0+1]
-		. += "Slot 0 has [mag0.current_rounds] out of [mag0.max_rounds]."
+		. += "Slot 0 is occupied: [mag0] has [mag0.current_rounds] out of [mag0.max_rounds]."
 
 	if (contained_mags[1+1] == 0)
 		. += "Slot 1 is empty."
 	else
 		var/obj/item/ammo_magazine/mag1 = contained_mags[1+1]
-		. += "Slot 1 has [mag1.current_rounds] out of [mag1.max_rounds]."
+		. += "Slot 1 is occupied: [mag1] has [mag1.current_rounds] out of [mag1.max_rounds]."
 
 	. += "The active slot is slot [active_slot]."
 

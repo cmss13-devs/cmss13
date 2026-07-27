@@ -133,6 +133,7 @@
 
 /mob/living/carbon/human
 	COOLDOWN_DECLARE(hallucination_cooldown)
+	var/datum/rezai/bt/uscm/rifleman/rezai // spaghetti codesz why is this here? cuz... it is. the definition of human that is.
 
 /mob/living/carbon/human/proc/process_hallucination()
 	if(!COOLDOWN_FINISHED(src, hallucination_cooldown))

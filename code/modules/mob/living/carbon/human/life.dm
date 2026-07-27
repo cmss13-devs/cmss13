@@ -60,6 +60,10 @@
 			//In case we want them to do something unique every life cycle, like twitch or moan, or whatever.
 			species.handle_unique_behavior(src)
 
+			//rezai - AI behaviours, BT atm.
+			if (rezai)
+				rezai.update()
+
 		else //Dead
 			if(!undefibbable)
 				handle_necro_chemicals_in_body(delta_time) //Specifically for chemicals that still work while dead.

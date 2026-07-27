@@ -150,6 +150,8 @@
 
 /datum/species/proc/handle_npc(mob/living/carbon/human/H)
 	set waitfor = FALSE
+	if (H.rezai)
+		H.rezai.update()
 	return
 
 /datum/species/proc/create_organs(mob/living/carbon/human/H) //Handles creation of mob organs and limbs.

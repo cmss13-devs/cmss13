@@ -33,6 +33,7 @@
 	//var/datum/rezai/bt/blackboard/bboard
 	//var/datum/rezai/bt/node/root_node
 	update()
+		//message_admins("updating muh ai - rezzer")
 		if( child_nodes[1] )
 			child_nodes[1].update()
 

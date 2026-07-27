@@ -112,7 +112,7 @@ SUBSYSTEM_DEF(ticker)
 			if(!roundend_check_paused && mode.check_finished(force_ending) || force_ending)
 				current_state = GAME_STATE_FINISHED
 				GLOB.ooc_allowed = TRUE
-				if(SSticker.mode.round_finished in list(MODE_INFESTATION_M_MAJOR, MODE_INFESTATION_M_MINOR))
+				if(force_ending && (SSticker.mode.round_finished in list(MODE_INFESTATION_M_MAJOR, MODE_INFESTATION_M_MINOR))) //unforced endings call it themselves
 					GLOB.sun_status.start_sun_behavior(behavior = SPECIAL_LIGHTING_SUNRISE) //the new sun
 				to_chat(world, force_ending)
 				to_chat(world, "test")

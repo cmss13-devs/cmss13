@@ -83,6 +83,8 @@ There are several things that need to be remembered:
 	overlays += images
 
 /mob/living/carbon/human/remove_overlay(cache_index)
+	if(cache_index > length(overlays_standing))
+		return
 	if(overlays_standing[cache_index])
 		var/image/I = overlays_standing[cache_index]
 		SEND_SIGNAL(src, COMSIG_HUMAN_OVERLAY_REMOVED, cache_index, I)
@@ -171,7 +173,7 @@ There are several things that need to be remembered:
 /mob/living/carbon/human/proc/update_underwear()
 	remove_overlay(UNDERWEAR_LAYER)
 
-	if(w_uniform)
+	if(w_uniform && !w_uniform.is_seethrough)
 		return
 
 	var/datum/sprite_accessory/underwear/underwear_datum = gender == MALE ? GLOB.underwear_m[underwear] : GLOB.underwear_f[underwear]
@@ -186,7 +188,7 @@ There are several things that need to be remembered:
 	remove_overlay(UNDERSHIRT_LAYER)
 
 	var/datum/sprite_accessory/undershirt/undershirt_datum = gender == MALE ? GLOB.undershirt_m[undershirt] : GLOB.undershirt_f[undershirt]
-	if((w_uniform && !(w_uniform.flags_jumpsuit & UNIFORM_JACKET_REMOVED)) && !undershirt_datum.shown_under_uniform)
+	if((w_uniform && !(w_uniform.flags_jumpsuit & UNIFORM_JACKET_REMOVED)) && !undershirt_datum.shown_under_uniform && !w_uniform.is_seethrough)
 		return
 
 	var/image/undershirt_icon = undershirt_datum.get_image(gender)
@@ -218,7 +220,7 @@ There are several things that need to be remembered:
 			facial_s.layer = -FACIAL_LAYER
 			if(facial_hair_style.do_coloration)
 				facial_s.color = list(null, null, null, null, rgb(r_facial, g_facial, b_facial))
-			if(blocks_emissive != EMISSIVE_BLOCK_NONE)
+			if(head_organ.blocks_emissive != EMISSIVE_BLOCK_NONE)
 				facial_s.overlays += emissive_blocker(facial_s.icon, facial_s.icon_state, alpha = facial_s.alpha)
 			overlays_standing[FACIAL_LAYER] = facial_s
 			apply_overlay(FACIAL_LAYER)
@@ -244,7 +246,7 @@ There are several things that need to be remembered:
 					overlays_standing[HAIR_GRADIENT_LAYER] = gradient_overlay
 					apply_overlay(HAIR_GRADIENT_LAYER)
 
-			if(blocks_emissive != EMISSIVE_BLOCK_NONE)
+			if(head_organ.blocks_emissive != EMISSIVE_BLOCK_NONE)
 				hair_s.overlays += emissive_blocker(hair_s.icon, hair_s.icon_state, alpha = hair_s.alpha)
 			overlays_standing[HAIR_LAYER] = hair_s
 			apply_overlay(HAIR_LAYER)

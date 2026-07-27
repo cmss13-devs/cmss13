@@ -14,16 +14,6 @@
 	var/target_name = null
 	var/timeofdeath = null
 
-/obj/item/device/autopsy_scanner/Initialize()
-	. = ..()
-
-	LAZYADD(GLOB.objects_of_interest, src)
-
-/obj/item/device/autopsy_scanner/Destroy()
-	. = ..()
-
-	LAZYREMOVE(GLOB.objects_of_interest, src)
-
 /datum/autopsy_data_scanner
 	var/weapon = null // this is the DEFINITE weapon type that was used
 	var/list/organs_scanned = list() // this maps a number of scanned organs to the wounds to those organs with this data's weapon type
@@ -158,7 +148,7 @@
 			scan_data += "<br>"
 
 	for(var/mob/O in viewers(usr))
-		O.show_message(SPAN_DANGER("\the [src] rattles and prints out a sheet of paper."), SHOW_MESSAGE_VISIBLE)
+		O.show_message(SPAN_DANGER("\The [src] rattles and prints out a sheet of paper."), SHOW_MESSAGE_VISIBLE)
 
 	sleep(10)
 

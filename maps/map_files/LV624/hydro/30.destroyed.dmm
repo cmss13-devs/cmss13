@@ -9,6 +9,10 @@
 	},
 /turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/hydroponics)
+"ac" = (
+/obj/structure/girder,
+/turf/open/floor/plating,
+/area/lv624/lazarus/hydroponics)
 "aO" = (
 /obj/effect/landmark/crap_item,
 /obj/item/reagent_container/glass/watertank,
@@ -110,11 +114,7 @@
 /area/lv624/lazarus/hydroponics)
 "kg" = (
 /obj/structure/window/framed/colony/reinforced,
-/turf/open/floor,
-/area/lv624/lazarus/hydroponics)
-"kh" = (
-/obj/structure/girder,
-/turf/open/floor,
+/turf/open/floor/plating,
 /area/lv624/lazarus/hydroponics)
 "km" = (
 /obj/effect/decal/cleanable/blood/tracks/footprints{
@@ -150,7 +150,7 @@
 	name = "shattered synthetic head";
 	pixel_x = 9;
 	pixel_y = 3;
-	icon_state = "scandinavian_head_m"
+	icon_state = "pale0_head"
 	},
 /obj/item/robot_parts/arm/l_arm,
 /turf/open/floor/green/northwest,
@@ -162,7 +162,7 @@
 /area/lv624/lazarus/hydroponics)
 "nJ" = (
 /obj/item/stack/sheet/metal,
-/turf/open/floor,
+/turf/open/floor/plating,
 /area/lv624/lazarus/hydroponics)
 "og" = (
 /turf/open/gm/dirt,
@@ -179,7 +179,7 @@
 /obj/effect/spawner/random/claymore/lowchance{
 	dir = 4
 	},
-/turf/open/floor/platingdmg1,
+/turf/open/floor/plating,
 /area/lv624/lazarus/hydroponics)
 "se" = (
 /obj/structure/fence,
@@ -264,13 +264,13 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/hydroponics)
 "zL" = (
-/obj/structure/girder,
+/obj/structure/window_frame/colony/reinforced,
 /turf/open/floor/platingdmg1,
 /area/lv624/lazarus/hydroponics)
 "zS" = (
-/obj/structure/window_frame/colony,
+/obj/structure/window_frame/colony/reinforced,
 /obj/item/shard,
-/turf/open/floor,
+/turf/open/floor/plating,
 /area/lv624/lazarus/hydroponics)
 "zX" = (
 /obj/effect/decal/cleanable/blood,
@@ -378,8 +378,8 @@
 /turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/hydroponics)
 "Lu" = (
-/obj/structure/window_frame/colony,
-/turf/open/floor/green/northwest,
+/obj/structure/window_frame/colony/reinforced,
+/turf/open/floor/plating,
 /area/lv624/lazarus/hydroponics)
 "LQ" = (
 /obj/item/stack/sheet/metal,
@@ -405,20 +405,9 @@
 /obj/effect/landmark/crap_item,
 /turf/open/floor/platingdmg1,
 /area/lv624/lazarus/hydroponics)
-"MV" = (
-/obj/item/stack/sheet/metal,
-/obj/effect/spawner/random/claymore/midchance{
-	dir = 4
-	},
-/turf/open/floor/green/northwest,
-/area/lv624/lazarus/hydroponics)
 "NO" = (
 /obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
-/area/lv624/lazarus/hydroponics)
-"On" = (
-/obj/structure/window_frame/colony,
-/turf/open/floor/platingdmg1,
 /area/lv624/lazarus/hydroponics)
 "OH" = (
 /obj/structure/surface/rack,
@@ -586,7 +575,7 @@ BL
 XA
 XA
 XA
-kh
+ac
 JE
 JE
 nJ
@@ -602,10 +591,10 @@ XA
 XA
 BL
 YV
-zL
+ac
 Ed
 Wg
-MV
+lP
 Cq
 Km
 Km
@@ -614,7 +603,7 @@ se
 "}
 (4,1,1) = {"
 XJ
-Cq
+ac
 Lu
 TC
 dZ
@@ -622,10 +611,10 @@ aa
 ym
 FJ
 Xv
-zL
+ac
 Wg
 Ed
-Xv
+Wg
 se
 "}
 (5,1,1) = {"
@@ -661,8 +650,8 @@ zL
 og
 "}
 (7,1,1) = {"
-Xv
-Xv
+Wg
+Wg
 Lk
 Wg
 Pk
@@ -673,8 +662,8 @@ jy
 Xv
 Lk
 OH
-Xv
-Xv
+Wg
+Wg
 "}
 (8,1,1) = {"
 YV
@@ -690,7 +679,7 @@ JO
 Wg
 TL
 ZL
-Xv
+Wg
 "}
 (9,1,1) = {"
 Px
@@ -725,7 +714,7 @@ FJ
 Xv
 "}
 (11,1,1) = {"
-Xv
+Wg
 Xv
 cQ
 Xv
@@ -741,7 +730,7 @@ YV
 YV
 "}
 (12,1,1) = {"
-Xv
+Wg
 bd
 aO
 QR
@@ -753,12 +742,12 @@ TC
 TC
 lm
 OI
-Cq
-Cq
+ac
+ac
 "}
 (13,1,1) = {"
 XA
-On
+zL
 IO
 Zm
 Lk
@@ -790,18 +779,18 @@ eU
 "}
 (15,1,1) = {"
 XA
-Xv
-Xv
+Wg
+Wg
 Ed
 YV
 Xv
 Xv
 YV
 LQ
-Xv
-Xv
+Wg
+Wg
 YV
-Cq
+ac
 bM
 "}
 (16,1,1) = {"
@@ -809,12 +798,12 @@ XA
 XA
 XA
 XA
-Xv
-Xv
+Wg
+Wg
 Xv
 Xv
 Lu
-Cq
+ac
 XA
 XA
 XA

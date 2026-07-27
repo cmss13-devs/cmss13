@@ -63,7 +63,7 @@ const ElevatorPanel = (props) => {
 
       {data.mode === 'recharging' && (
         <Stack.Item>
-          <InfoBox title="Curtesy Time" text={data.eta} />
+          <InfoBox title="Courtesy Time" text={data.eta} />
         </Stack.Item>
       )}
       {data.mode === 'igniting' && (

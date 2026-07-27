@@ -1496,7 +1496,7 @@
 /turf/open/gm/coast/beachcorner/south_east,
 /area/adminlevel/ert_station/clf_station)
 "Pr" = (
-/mob/living/simple_animal/cat{
+/mob/living/simple_animal/small/cat{
 	name = "Edwin"
 	},
 /turf/open/floor/wood/wood_broken,
@@ -1816,7 +1816,7 @@
 	pixel_y = 4;
 	pixel_x = 12
 	},
-/obj/item/reagent_container/glass/beaker/silver,
+/obj/item/reagent_container/glass/beaker/catalyst/silver,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
 "ZI" = (

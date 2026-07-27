@@ -732,7 +732,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null
 		if((location == world) && (options & SDQL2_OPTION_OPTIMIZED_SOURCE))
 			search_location = GLOB.all_multi_vehicles
 
-		for(var/obj/item/ammo_magazine/d in search_location)
+		for(var/obj/vehicle/multitile/d in search_location)
 			if(typecache[d.type] && (d.can_vv_get() || superuser))
 				out += d
 			SDQL2_TICK_CHECK
@@ -743,7 +743,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null
 		if((location == world) && (options & SDQL2_OPTION_OPTIMIZED_SOURCE))
 			search_location = GLOB.closet_list
 
-		for(var/obj/item/ammo_magazine/d in search_location)
+		for(var/obj/structure/closet/d in search_location)
 			if(typecache[d.type] && (d.can_vv_get() || superuser))
 				out += d
 			SDQL2_TICK_CHECK
@@ -754,7 +754,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null
 		if((location == world) && (options & SDQL2_OPTION_OPTIMIZED_SOURCE))
 			search_location = GLOB.cable_list
 
-		for(var/obj/item/ammo_magazine/d in search_location)
+		for(var/obj/structure/cable/d in search_location)
 			if(typecache[d.type] && (d.can_vv_get() || superuser))
 				out += d
 			SDQL2_TICK_CHECK
@@ -1161,10 +1161,10 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null
 			return null
 		var/datum/located = locate("\[[expression[start + 1]]]")
 		if(!istype(located))
-			to_chat(usr, SPAN_DANGER("Invalid pointer: [expression[start + 1]] - null or not datum"), confidential = TRUE)
+			to_chat(usr, SPAN_DANGER("Invalid pointer: [expression[start + 1]] - null or not datum."), confidential = TRUE)
 			return null
 		if(!located.can_vv_mark())
-			to_chat(usr, SPAN_DANGER("Pointer [expression[start+1]] cannot be marked"), confidential = TRUE)
+			to_chat(usr, SPAN_DANGER("Pointer [expression[start+1]] cannot be marked."), confidential = TRUE)
 			return null
 		v = located
 		start++

@@ -188,11 +188,12 @@
 	qdel(src)
 	return XENO_ATTACK_ACTION
 
-/obj/structure/janitorialcart/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/janitorialcart/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(unslashable)
 		return TAILSTAB_COOLDOWN_NONE
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
 	SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
 	qdel(src)
 	return TAILSTAB_COOLDOWN_NORMAL

@@ -184,13 +184,16 @@
 	faction = FACTION_UPP
 	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
 	origin_override = ORIGIN_UPP
-	skills = /datum/skills/colonial_synthetic
-	preset_generation_support = FALSE
+
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag/upp
 	role_comm_title = "173/RECON Syn"
+
 	minimap_background = "background_upp"
 	minimap_icon = "upp_synth"
+
+	skills = /datum/skills/synthetic
+	locked_generation = SYNTH_GEN_THREE
 
 /datum/equipment_preset/synth/survivor/upp/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/clothing/under/marine/veteran/UPP/medic/uniform = new()

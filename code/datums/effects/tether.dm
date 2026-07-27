@@ -71,11 +71,11 @@
 	effect_name = "tethered"
 	flags = INF_DURATION
 	var/datum/effects/tethering/tether
-	var/resistable = FALSE
+	var/resistible = FALSE
 	var/resist_time = 15 SECONDS
 
-/datum/effects/tethered/New(atom/A, resistable)
-	src.resistable = resistable
+/datum/effects/tethered/New(atom/A, resistible)
+	src.resistible = resistible
 	..()
 
 /datum/effects/tethered/validate_atom(atom/A)
@@ -86,7 +86,7 @@
 
 /datum/effects/tethered/on_apply_effect()
 	RegisterSignal(affected_atom, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(check_move))
-	if (resistable)
+	if (resistible)
 		RegisterSignal(affected_atom, COMSIG_MOB_RESISTED, PROC_REF(resist_callback))
 
 // affected is always going to be the same as affected_atom
@@ -110,7 +110,7 @@
 		tether = null
 	if (affected_atom)
 		UnregisterSignal(affected_atom, COMSIG_MOVABLE_PRE_MOVE)
-		if (resistable)
+		if (resistible)
 			UnregisterSignal(affected_atom, COMSIG_MOB_RESISTED)
 	. = ..()
 
@@ -131,11 +131,11 @@
 
 // Tethers the tethered atom to the tetherer
 // If you want both atoms to be tethered to each other, pass in TRUE to the two_way arg
-/proc/apply_tether(atom/tetherer, atom/tethered, two_way = FALSE, range = 1, resistable = FALSE, icon = "chain", always_face = TRUE)
+/proc/apply_tether(atom/tetherer, atom/tethered, two_way = FALSE, range = 1, resistible = FALSE, icon = "chain", always_face = TRUE)
 	var/list/ret_list = list()
 
 	var/datum/effects/tethering/TR = new /datum/effects/tethering(tetherer, range, icon, always_face)
-	var/datum/effects/tethered/TD = new /datum/effects/tethered(tethered, resistable)
+	var/datum/effects/tethered/TD = new /datum/effects/tethered(tethered, resistible)
 	TR.set_tethered(TD)
 
 	ret_list["tetherer_tether"] = TR
@@ -143,7 +143,7 @@
 
 	if (two_way)
 		TR = new /datum/effects/tethering(tethered, icon)
-		TD = new /datum/effects/tethered(tetherer, resistable)
+		TD = new /datum/effects/tethered(tetherer, resistible)
 		TR.set_tethered(TD)
 		ret_list["tetherer_tethered"] = TD
 		ret_list["tethered_tether"] = TR

@@ -123,6 +123,7 @@
 	name = "\improper Airlock"
 	icon = 'icons/obj/structures/doors/2x1almayerdoor.dmi' //Tiles with is here FOR SAFETY PURPOSES
 	openspeed = 4 //shorter open animation.
+	var/queen_pryable = TRUE
 	tiles_with = list(
 		/obj/structure/window/framed/almayer,
 		/obj/structure/machinery/door/airlock,
@@ -230,6 +231,66 @@
 	req_access = null
 	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
 
+/obj/structure/machinery/door/airlock/multi_tile/almayer/maint
+	name = "\improper Maintenance Hatch"
+	icon = 'icons/obj/structures/doors/2x1maintdoor.dmi'
+	opacity = TRUE
+	glass = FALSE
+	req_access = list()
+	req_one_access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_MAINT)
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/maint/autoname
+	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/maint/colony
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_PUBLIC)
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/maint/colony/autoname
+	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/maint/reinforced
+	name = "\improper Reinforced Maintenance Hatch"
+	masterkey_resist = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/maint/reinforced/colony
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_PUBLIC)
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/maint/reinforced/colony/autoname
+	autoname = TRUE
+ 
+//------Containment 3-tile Doors -----//
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/containment
+	opacity = TRUE
+	width = 3
+	unslashable = TRUE
+	unacidable = TRUE
+	no_panel = 1
+	not_weldable = 1
+	queen_pryable = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/containment/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(!queen_pryable)
+		return ..()
+
+	if(xeno.hive_pos != XENO_QUEEN)
+		return ..()
+
+	if(xeno.action_busy)
+		return
+
+	to_chat(xeno, SPAN_WARNING("You try and force the doors open!"))
+	if(do_after(xeno, 10 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		unlock(TRUE)
+		open(TRUE)
+		lock(TRUE)
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/containment/contshutter
+	name = "\improper Containment Door"
+	icon = 'icons/obj/structures/doors/medical_shutter.dmi'
+
 //------Dropship Cargo Doors -----//
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear
@@ -239,7 +300,7 @@
 	unacidable = TRUE
 	no_panel = 1
 	not_weldable = 1
-	var/queen_pryable = TRUE
+	queen_pryable = TRUE
 	var/obj/docking_port/mobile/marine_dropship/linked_dropship
 
 
@@ -479,6 +540,8 @@
 /obj/structure/machinery/door/airlock/multi_tile/elevator/freight
 	name = "\improper Freight Elevator Hatch"
 
+/obj/structure/machinery/door/airlock/multi_tile/elevator/brown
+	icon = 'icons/obj/structures/doors/4x1_elevator_brown.dmi'
 
 /obj/structure/machinery/door/airlock/multi_tile/elevator/access
 	icon = 'icons/obj/structures/doors/4x1_elevator_access.dmi'

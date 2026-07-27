@@ -52,12 +52,13 @@
 					  SPAN_DANGER("We smash [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_ATTACK_ACTION
 
-/obj/structure/largecrate/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/largecrate/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(unslashable)
 		return TAILSTAB_COOLDOWN_NONE
 	unpack()
 	xeno.visible_message(SPAN_DANGER("[xeno] smashes [src] apart with its tail!"),
 	SPAN_DANGER("We smash [src] apart with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/largecrate/ex_act(power)
@@ -81,7 +82,7 @@
 
 /obj/structure/largecrate/lisa/attackby(obj/item/W as obj, mob/user as mob) //ugly but oh well
 	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
-		new /mob/living/simple_animal/corgi/Lisa(loc)
+		new /mob/living/simple_animal/big/corgi/Lisa(loc)
 	. = ..()
 
 /obj/structure/largecrate/cow
@@ -90,7 +91,7 @@
 
 /obj/structure/largecrate/cow/attackby(obj/item/W as obj, mob/user as mob)
 	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
-		new /mob/living/simple_animal/cow(loc)
+		new /mob/living/simple_animal/big/cow(loc)
 	. = ..()
 
 /obj/structure/largecrate/goat
@@ -110,7 +111,7 @@
 	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		var/num = rand(4, 6)
 		for(var/i = 0, i < num, i++)
-			new /mob/living/simple_animal/chick(loc)
+			new /mob/living/simple_animal/small/chick(loc)
 	. = ..()
 
 

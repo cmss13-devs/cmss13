@@ -87,6 +87,42 @@
 			handle_player_entrance(user)
 			return
 
+	if(istype(O, /obj/item/explosive/grenade))
+		var/obj/item/explosive/grenade/nade = O
+		if(nade.antigrief_protection && user.faction == FACTION_MARINE && explosive_antigrief_check(nade, user))
+			to_chat(user, SPAN_WARNING("\The [nade.name]'s safe-area accident inhibitor prevents you from priming the grenade!"))
+			// Let staff know, in case someone's actually about to try to grief
+			msg_admin_niche("[key_name(user)] attempted to prime \a [nade.name] in [get_area(src)] [ADMIN_JMP(src.loc)]")
+			return
+		if(door_locked && health > 0 && (!allowed(user) || !get_target_lock(user.faction_group)))
+			to_chat(user, SPAN_WARNING("\The [src] is locked!"))
+			return
+
+		var/mob_x = user.x - x
+		var/mob_y = user.y - y
+		var/entrance_used = null
+		for(var/entrance in entrances)
+			var/entrance_coord = entrances[entrance]
+			if(mob_x == entrance_coord[1] && mob_y == entrance_coord[2])
+				entrance_used = entrance
+				break
+		if(entrance_used) //if we are at a door, throw it in, else do nothing.
+			user.visible_message(SPAN_WARNING("[user] takes position to throw [nade] through the door of the [src]."),
+			SPAN_WARNING("You take position to throw [nade] through the door of the [src]."))
+			if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+				return
+			if(mob_x != user.x - x || mob_y != user.y - y)
+				return
+
+			user.visible_message(SPAN_WARNING("[user] throws [nade] through the door of the [src]!"),
+			SPAN_WARNING("You throw [nade] through the door of the [src]."))
+
+			user.drop_held_item()
+			interior.enter(nade, entrance_used)
+			if(!nade.active)
+				nade.activate(user)
+		return
+
 	if(istype(O, /obj/item/device/motiondetector))
 		if(!interior)
 			to_chat(user, SPAN_WARNING("It appears that [O] cannot establish borders of space inside \the [src]. (PLEASE, TELL A DEV, SOMETHING BROKE)"))
@@ -215,7 +251,7 @@
 	lighting_holder.set_light_range(vehicle_light_range)
 	toggle_cameras_status(TRUE)
 	update_icon()
-	user.visible_message(SPAN_NOTICE("[user] finishes [repair_message] on \the [src]."), SPAN_NOTICE("You finish [repair_message] on \the [src]. Hull integrity is at [SPAN_HELPFUL(100.0*health/max_hp)]%. "))
+	user.visible_message(SPAN_NOTICE("[user] finishes [repair_message] on \the [src]."), SPAN_NOTICE("You finish [repair_message] on \the [src]. Hull integrity is at [SPAN_HELPFUL(100.0*health/max_hp)]%."))
 	return
 
 //Special case for entering the vehicle without using the verb
@@ -262,7 +298,7 @@
 	if(X.caste == XENO_CASTE_RAVAGER || X.caste == XENO_CASTE_QUEEN)
 		damage_mult = 2
 
-	//Frenzy auras stack in a way, then the raw value is multipled by two to get the additive modifier
+	//Frenzy auras stack in a way, then the raw value is multiplied by two to get the additive modifier
 	if(X.frenzy_aura > 0)
 		damage += (X.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER)
 
@@ -506,7 +542,7 @@
 		currently_dragged = G.grabbed_thing
 
 	if(currently_dragged != dragged_atom)
-		to_chat(user, SPAN_WARNING("You stop fiting [dragged_atom] inside \the [src]!"))
+		to_chat(user, SPAN_WARNING("You stop fitting [dragged_atom] inside \the [src]!"))
 		return
 
 	var/success = interior.enter(dragged_atom, entrance_used)

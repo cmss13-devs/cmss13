@@ -84,7 +84,7 @@
 		/obj/item/storage/belt/gun/xm51,
 	)
 
-	light_power = 3
+	light_power = 4
 	light_range = 4
 	light_color = LIGHT_COLOR_TUNGSTEN
 	light_system = MOVABLE_LIGHT
@@ -269,7 +269,7 @@
 		new_look = GLOB.armor_style_list[new_style]
 
 	// Replace the digits in the current icon state with `new_look`. (E.g. "L6" -> "L2")
-	icon_state = digits.Replace(icon_state, new_look)
+	icon_state = digits.Replace(icon_state, "[new_look]")
 
 /obj/item/clothing/suit/storage/marine/medium/rto
 	icon_state = "io"
@@ -280,8 +280,19 @@
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS
 	storage_slots = 4
-	light_range = 5 //slightly higher
 	specialty = "M4 pattern marine"
+
+/obj/item/clothing/suit/storage/marine/medium/rto/army
+	name = "\improper Personal Body Armor System"
+	desc = "The Personnel Body Armor System is the standard issue armor of the US Army, adopted over the M4 series pattern armor during field trials. Surprisingly uncomfortable, but offering far superior protection to the M3 or M4 series armor. At four times the price."
+	icon_state = "army_armor"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+	)
+	specialty = "Personal Body Armor System"
+	storage_slots = 3
+	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/suit/storage/marine/MP
 	name = "\improper M2 pattern MP armor"
@@ -425,7 +436,7 @@
 // M3 pattern marine armor
 /obj/item/clothing/suit/storage/marine/medium
 	armor_variation = 6
-	light_power = 4
+	light_range = 5
 
 /obj/item/clothing/suit/storage/marine/medium/padded
 	name = "M3 pattern padded marine armor"
@@ -606,6 +617,23 @@
 	)
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 
+/obj/item/clothing/suit/storage/marine/light/synvest/army
+	name = "\improper Synthetic Body Armor System"
+	desc = "This is a variant of the Personnel Body Armor System, it has been modified extensively to be used by US Army Synthetics. It offers light protection, maximum mobility and more internal storage than its USCM counterpart. The cost of this item could outfit an entire squad of USCM Marines, but you are worth this cost."
+	icon_state = "VL_syn_army"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+	)
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	armor_melee = CLOTHING_ARMOR_VERYLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_laser = CLOTHING_ARMOR_VERYLOW
+	armor_bomb = CLOTHING_ARMOR_VERYLOW
+	armor_bio = CLOTHING_ARMOR_VERYLOW
+	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
+	storage_slots = 4
+
 /obj/item/clothing/suit/storage/marine/light/recon
 	name = "M3-R pattern light armor"
 	desc = "Special issue light armor for forward reconnaissance Marines. Offers similar protection as M3 armor but none of the slowdown."
@@ -637,7 +665,6 @@
 	storage_slots = 2
 	slowdown = SLOWDOWN_ARMOR_LOWHEAVY
 	movement_compensation = SLOWDOWN_ARMOR_MEDIUM
-	light_power = 4
 	light_range = 5
 
 /obj/item/clothing/suit/storage/marine/heavy/padded

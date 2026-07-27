@@ -218,7 +218,7 @@
 /obj/structure/barricade/handrail/kutjevo{
 	layer = 3.1
 	},
-/turf/open/floor/kutjevo/grey/plate,
+/turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/construction/signal_tower)
 "Ci" = (
 /obj/effect/decal/cleanable/dirt,
@@ -399,7 +399,7 @@
 /obj/structure/barricade/handrail/kutjevo{
 	layer = 3
 	},
-/turf/open/floor/kutjevo/grey/plate,
+/turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/construction/signal_tower)
 
 (1,1,1) = {"

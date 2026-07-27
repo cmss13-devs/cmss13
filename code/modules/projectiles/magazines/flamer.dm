@@ -151,13 +151,13 @@
 		for(var/datum/reagent/R in reagents.reagent_list)
 			. += SPAN_NOTICE(" [R.volume] units of [R.name].")
 	else
-		. += SPAN_NOTICE("Nothing.")
+		. += SPAN_NOTICE(" Nothing.")
 
 // This is gellie fuel. Green Flames.
 /obj/item/ammo_magazine/flamer_tank/gellied
 	name = "M240 incinerator tank (B-Gel)"
 	desc = "A fuel tank full of specialized Ultra Thick Napthal Fuel type B-Gel, a gelled variant of napalm that is easily extinguished, but shoots further and lingers for longer. Handle with exceptional care."
-	desc_lore = "Unlike its liquid contemporaries, this gelled variant of napalm is easily extinguished, but shoots far and lingers on the ground in a viscous mess. The gel reacts violently with inorganic materials to break them down, forming an extremely sticky crytallized goo."
+	desc_lore = "Unlike its liquid contemporaries, this gelled variant of napalm is easily extinguished, but shoots far and lingers on the ground in a viscous mess. The gel reacts violently with inorganic materials to break them down, forming an extremely sticky crystallized goo."
 	caliber = "Napalm Gel"
 	flamer_chem = "napalmgel"
 	max_rounds = 200
@@ -188,12 +188,12 @@
 	if(!set_pressure)
 		to_chat(usr, SPAN_WARNING("You can't find that setting on the regulator!"))
 	else
-		to_chat(usr, SPAN_NOTICE("You set the pressure regulator to [set_pressure] U/t"))
+		to_chat(usr, SPAN_NOTICE("You set the pressure regulator to [set_pressure] U/t."))
 		fuel_pressure = set_pressure
 
 /obj/item/ammo_magazine/flamer_tank/custom/get_examine_text(mob/user)
 	. = ..()
-	. += SPAN_NOTICE("The pressure regulator is set to: [src.fuel_pressure] U/t")
+	. += SPAN_NOTICE("The pressure regulator is set to: [src.fuel_pressure] U/t.")
 
 // Pyro regular flamer tank just bigger than the base flamer tank.
 /obj/item/ammo_magazine/flamer_tank/large
@@ -309,3 +309,13 @@
 	caliber = "Napalm EX"
 	flamer_chem = "napalmex"
 	stripe_icon = TRUE
+
+/obj/item/ammo_magazine/flamer_tank/flammenwerfer/survivor
+	name = "Modified FW3 heavy incinerator tank"
+	desc = "A heavy, high capacity tank utilized by the Flammenwerfer 3 Heavy Incineration Unit. Someone has done the due diligence of somehow scrubbing out the heat-resistant WY logo, and removing the complement propellant gas tank- massively reducing its internal capacity for most use-cases. \n\nNo telling what's inside now...\n"
+	flamer_chem = "stablefoam"
+	icon_state = "fl3_survivor"
+	item_state = "fl3_survivor"
+
+	max_rounds = 150
+	current_rounds = 80

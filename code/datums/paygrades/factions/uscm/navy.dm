@@ -8,78 +8,78 @@
 
 /datum/paygrade/navy/e1
 	paygrade = PAY_SHORT_NE1
-	name = "Seaman Recruit"
-	prefix = "SR."
+	name = "Aeroman Recruit"
+	prefix = "AER."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/e1
 	ranking = 0
 
 /datum/paygrade/navy/e2
 	paygrade = PAY_SHORT_NE2
-	name = "Seaman Apprentice"
-	prefix = "SA."
+	name = "Aeroman"
+	prefix = "AEM."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/e2
 	ranking = 1
 
 /datum/paygrade/navy/e3
 	paygrade = PAY_SHORT_NE3
-	name = "Seaman"
-	prefix = "SN."
+	name = "Aeroman 1st Class"
+	prefix = "1AEM."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/e3
 	ranking = 2
 
 /datum/paygrade/navy/e4
 	paygrade = PAY_SHORT_NE4
-	name = "Petty Officer 3rd Class"
-	prefix = "PO1."
+	name = "Sergeant"
+	prefix = "Sgt."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/e4
 	ranking = 3
 
 /datum/paygrade/navy/e5
 	paygrade = PAY_SHORT_NE5
-	name = "Petty Officer 2nd Class"
-	prefix = "PO2."
+	name = "Staff Sergeant"
+	prefix = "SSgt."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/e5
 	ranking = 4
 
 /datum/paygrade/navy/e6
 	paygrade = PAY_SHORT_NE6
-	name = "Petty Officer 1st Class"
-	prefix = "PO1."
+	name = "Technical Sergeant"
+	prefix = "TSgt."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/e6
 	ranking = 5
 
 /datum/paygrade/navy/e7
 	paygrade = PAY_SHORT_NE7
-	name = "Chief Petty Officer"
-	prefix = "CPO."
+	name = "Master Sergeant"
+	prefix = "MSgt."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/e7
 	ranking = 6
 
 /datum/paygrade/navy/e8
 	paygrade = PAY_SHORT_NE8
-	name = "Senior Chief Petty Officer"
-	prefix = "SCPO."
+	name = "Senior Master Sergeant"
+	prefix = "SMSgt."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/e8
 	ranking = 7
 
 /datum/paygrade/navy/e8c
 	paygrade = PAY_SHORT_NE8C
-	name = "Command Senior Chief Petty Officer"
-	prefix = "CSCPO."
+	name = "Command Senior Master Sergeant"
+	prefix = "CSM."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/e8c
 	ranking = 8
 
 /datum/paygrade/navy/e9
 	paygrade = PAY_SHORT_NE9
-	name = "Master Chief Petty Officer"
-	prefix = "MCPO."
+	name = "Chief Master Sergeant"
+	prefix = "CMSgt."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/e9
 	ranking = 9
 
 /datum/paygrade/navy/e9c
 	paygrade = PAY_SHORT_NE9C
-	name = "Command Master Chief Petty Officer"
-	prefix = "CMCPO."
+	name = "Command Chief Master Sergeant Of The Aerospace Force"
+	prefix = "CCMSAF."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/e9c
 	ranking = 10
 
@@ -87,96 +87,96 @@
 
 /datum/paygrade/navy/o1
 	paygrade = PAY_SHORT_NO1
-	name = "Ensign"
-	prefix = "ENS."
+	name = "Second Lieutenant"
+	prefix = "2LT."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/o1
 	ranking = 11
 	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/navy/o2
 	paygrade = PAY_SHORT_NO2
-	name = "Lieutenant Junior Grade"
-	prefix = "LTJG."
+	name = "First Lieutenant"
+	prefix = "1LT."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/o2
 	ranking = 12
 	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/navy/o3
 	paygrade = PAY_SHORT_NO3
-	name = "Lieutenant"
-	prefix = "LT."
+	name = "Captain"
+	prefix = "Cpt."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/o3
 	ranking = 13
 	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/navy/o4
 	paygrade = PAY_SHORT_NO4
-	name = "Lieutenant Commander"
-	prefix = "LCDR."
+	name = "Major"
+	prefix = "Maj."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/o4
 	ranking = 14
 	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/navy/o5
 	paygrade = PAY_SHORT_NO5
-	name = "Commander"
-	prefix = "CDR."
+	name = "Lieutenant Colonel"
+	prefix = "LtCol."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/o5
 	ranking = 15
 	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/navy/o6
 	paygrade = PAY_SHORT_NO6
-	name = "Captain"
-	prefix = "CAPT."
+	name = "Colonel"
+	prefix = "Col."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/o6
 	ranking = 16
 	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/navy/o6e
 	paygrade = PAY_SHORT_NO6E
-	name = "Commodore"
-	prefix = "CDRE."
+	name = "Wing Commander"
+	prefix = "WCmd."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/o6e
 	ranking = 17
 	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/navy/o6c
 	paygrade = PAY_SHORT_NO6C
-	name = "Senior Commodore"
-	prefix = "Snr CDRE."
+	name = "Group Captain"
+	prefix = "GCpt"
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/o6e
 	ranking = 18
 	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/navy/o7
 	paygrade = PAY_SHORT_NO7
-	name = "Rear Admiral (Lower Half)"
-	prefix = "RDML."
+	name = "Brigadier General"
+	prefix = "BrgGen."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/o7
 	ranking = 19
 	officer_grade = GRADE_FLAG
 
 /datum/paygrade/navy/o8
 	paygrade = PAY_SHORT_NO8
-	name = "Rear Admiral (Upper Half)"
-	prefix = "RADM."
+	name = "Major General"
+	prefix = "MajGen."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/o8
 	ranking = 20
 	officer_grade = GRADE_FLAG
 
 /datum/paygrade/navy/o9
 	paygrade = PAY_SHORT_NO9
-	name = "Vice Admiral"
-	prefix = "VADM."
+	name = "Lieutenant General"
+	prefix = "LtGen."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/o9
 	ranking = 21
 	officer_grade = GRADE_FLAG
 
 /datum/paygrade/navy/o10
 	paygrade = PAY_SHORT_NO10
-	name = "Admiral"
-	prefix = "ADM."
+	name = "General"
+	prefix = "Gen."
 	rank_pin = /obj/item/clothing/accessory/ranks/navy/o10
 	ranking = 22
 	officer_grade = GRADE_FLAG

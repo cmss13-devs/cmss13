@@ -17,7 +17,7 @@
 	path = /obj/item/reagent_container/glass/bucket/mopbucket
 	category = AUTOLATHE_CATEGORY_GENERAL
 
-/datum/autolathe/recipe/mopbucket
+/datum/autolathe/recipe/janibucket
 	name = "janitorial bucket"
 	path = /obj/item/reagent_container/glass/bucket/janibucket
 	category = AUTOLATHE_CATEGORY_GENERAL

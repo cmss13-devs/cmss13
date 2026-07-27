@@ -92,3 +92,10 @@
 	say_message = "Come out of the vent system, please."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/restricted_area/maintenance
+	key = "maintenance"
+	sound = 'sound/voice/joe/daniel/but_im_afraid.ogg'
+	say_message = "But I'm afraid this corridor is closed due to maintenance."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = DANIEL_EMOTE

@@ -123,7 +123,7 @@
 	hackable = FALSE
 	density = FALSE
 
-	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_TO_HAND | VEND_LOAD_AMMO_BOXES
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_TO_HAND | VEND_LOAD_AMMO_BOXES | VEND_UNIFORM_AUTOEQUIP // autoequip i guess since you can pack this thing with armor
 
 /obj/structure/machinery/cm_vending/sorted/vehicle_supply/vend_fail()
 	return

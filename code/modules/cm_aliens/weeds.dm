@@ -57,7 +57,7 @@
 	set_hive_data(src, hivenumber)
 	if(spread_on_semiweedable && weed_strength == WEED_LEVEL_HARDY)
 		if(color)
-			var/list/RGB = ReadRGB(color)
+			var/list/RGB = rgb2num(color)
 			RGB[1] = clamp(RGB[1] + 35, 0, 255)
 			RGB[2] = clamp(RGB[2] + 35, 0, 255)
 			RGB[3] = clamp(RGB[3] + 35, 0, 255)
@@ -79,10 +79,9 @@
 		weeded_turf = turf
 		SEND_SIGNAL(turf, COMSIG_WEEDNODE_GROWTH) // Currently for weed_food wakeup
 
-	RegisterSignal(src, list(
-		COMSIG_ATOM_TURF_CHANGE,
-		COMSIG_MOVABLE_TURF_ENTERED
-	), PROC_REF(set_turf_weeded))
+	// COMSIG_MOVABLE_TURF_ENTERED to handle ChangeTurf
+	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTERED, PROC_REF(set_turf_weeded))
+
 	if(hivenumber == XENO_HIVE_NORMAL)
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
@@ -145,6 +144,9 @@
 		var/obj/effect/alien/weeds/W = i
 		W.name = initial(to_copy.name)
 		W.alpha = initial(to_copy.alpha)
+
+/obj/effect/alien/weeds/kseries
+	hivenumber = XENO_HIVE_K_SERIES
 
 
 /obj/effect/alien/weeds/Destroy()
@@ -593,11 +595,17 @@
 /obj/effect/alien/weeds/node/alpha
 	hivenumber = XENO_HIVE_ALPHA
 
+/obj/effect/alien/weeds/node/kseries
+	hivenumber = XENO_HIVE_K_SERIES
+
 /obj/effect/alien/weeds/node/feral
 	hivenumber = XENO_HIVE_FERAL
 
 /obj/effect/alien/weeds/node/forsaken
 	hivenumber = XENO_HIVE_FORSAKEN
+
+/obj/effect/alien/weeds/node/hunted
+	hivenumber = XENO_HIVE_HUNTED
 
 /obj/effect/alien/weeds/node/pylon
 	health = WEED_HEALTH_HIVE
@@ -635,6 +643,9 @@
 
 /obj/effect/alien/weeds/node/pylon/acid_spray_act()
 	return
+
+/obj/effect/alien/weeds/node/pylon/hunted
+	hivenumber = XENO_HIVE_HUNTED
 
 /obj/effect/alien/weeds/node/pylon/cluster
 	spread_on_semiweedable = TRUE

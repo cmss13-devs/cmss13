@@ -21,7 +21,7 @@ export const DME_NAME = "colonialmarines";
 
 Juke.chdir("../..", import.meta.url);
 
-const dependencies: Record<string, any> = await Bun.file("dependencies.sh")
+const dependencies: Record<string, string> = await Bun.file('dependencies.sh')
   .text()
   .then(formatDeps)
   .catch((err) => {
@@ -61,11 +61,10 @@ export const NoWarningParameter = new Juke.Parameter({
 export const DmMapsIncludeTarget = new Juke.Target({
   executes: async () => {
     const folders = [...Juke.glob("maps/**/*.dmm")];
-    const content =
-      folders
-        .map((file) => file.replace("maps/", ""))
-        .map((file) => `#include "${file}"`)
-        .join("\n") + "\n";
+    const content = `${folders
+      .map((file) => file.replace('maps/', ''))
+      .map((file) => `#include "${file}"`)
+      .join('\n')}\n`;
     fs.writeFileSync("maps/templates.dm", content);
   },
 });
@@ -211,7 +210,9 @@ export const TgFontTarget = new Juke.Target({
     "tgui/packages/tgfont/dist/tgfont.woff2",
   ],
   executes: async () => {
-    await bun("tgfont:build");
+    await Juke.exec('bun', ['run', 'tgfont:build'], {
+      cwd: 'tgui/packages/tgfont',
+    });
     fs.mkdirSync("tgui/packages/tgfont/static", { recursive: true });
     fs.copyFileSync(
       "tgui/packages/tgfont/dist/tgfont.css",
@@ -328,6 +329,7 @@ export const TguiCleanTarget = new Juke.Target({
     Juke.rm("tgui/public/*.{chunk,bundle,hot-update}.*");
     Juke.rm("tgui/packages/tgfont/dist", { recursive: true });
     Juke.rm("tgui/node_modules", { recursive: true });
+    Juke.rm('tgui/packages/*/node_modules', { recursive: true });
   },
 });
 

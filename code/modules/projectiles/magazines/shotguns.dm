@@ -32,6 +32,7 @@ GLOBAL_LIST_INIT(shotgun_boxes_12g, list(
 	flags_magazine = AMMUNITION_REFILLABLE|AMMUNITION_HANDFUL_BOX
 	handful_state = "slug_shell"
 	transfer_handful_amount = 5
+	description_ammo = "shells"
 
 /obj/item/ammo_magazine/shotgun/attack_self(mob/user)
 	if(current_rounds == 0)

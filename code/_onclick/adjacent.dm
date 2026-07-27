@@ -29,15 +29,15 @@
 	if(neighbor.z && (z != neighbor.z))
 		return FALSE
 
-	var/turf/T0 = get_turf(neighbor)
-	if(T0 == src)
+	var/turf/turf_zero = get_turf(neighbor)
+	if(turf_zero == src)
 		return TRUE
-	if(get_dist(src,T0) > 1)
+	if(get_dist(src,turf_zero) > 1)
 		return FALSE
 
-	if(T0.x == x || T0.y == y)
+	if(turf_zero.x == x || turf_zero.y == y)
 		// Check for border blockages
-		return T0.ClickCross(get_dir(T0,src), border_only = 1, ignore_list = ignore_list) && src.ClickCross(get_dir(src,T0), border_only = 1, target_atom = target, ignore_list = ignore_list)
+		return turf_zero.ClickCross(get_dir(turf_zero,src), border_only = 1, ignore_list = ignore_list) && src.ClickCross(get_dir(src,turf_zero), border_only = 1, target_atom = target, ignore_list = ignore_list)
 
 	// Not orthagonal
 	var/in_dir = get_dir(neighbor,src) // eg. northwest (1+8)
@@ -45,14 +45,14 @@
 	var/d2 = in_dir - d1 // eg north (1+8) - 8 = 1
 
 	for(var/d in list(d1,d2))
-		if(!T0.ClickCross(d, border_only = 1, ignore_list = ignore_list))
-			continue // could not leave T0 in that direction
+		if(!turf_zero.ClickCross(d, border_only = 1, ignore_list = ignore_list))
+			continue // could not leave turf_zero in that direction
 
-		var/turf/T1 = get_step(T0,d)
-		if(!T1 || T1.density || !T1.ClickCross(get_dir(T1,T0)|get_dir(T1,src), border_only = 0, ignore_list = ignore_list))
-			continue // couldn't enter or couldn't leave T1
+		var/turf/turf_one = get_step(turf_zero,d)
+		if(!turf_one || turf_one.density || !turf_one.ClickCross(get_dir(turf_one,turf_zero)|get_dir(turf_one,src), border_only = 0, ignore_list = ignore_list))
+			continue // couldn't enter or couldn't leave turf_one
 
-		if(!src.ClickCross(get_dir(src,T1), border_only = 1, target_atom = target, ignore_list = ignore_list))
+		if(!src.ClickCross(get_dir(src,turf_one), border_only = 1, target_atom = target, ignore_list = ignore_list))
 			continue // could not enter src
 
 		return TRUE // we don't care about our own density
@@ -64,11 +64,11 @@ Quick adjacency (to turf):
 * If you are not adjacent, then false
 */
 /turf/proc/AdjacentQuick(atom/neighbor, atom/target = null)
-	var/turf/T0 = get_turf(neighbor)
-	if(T0 == src)
+	var/turf/turf_zero = get_turf(neighbor)
+	if(turf_zero == src)
 		return TRUE
 
-	if(get_dist(src,T0) > 1)
+	if(get_dist(src,turf_zero) > 1)
 		return FALSE
 
 	return TRUE
@@ -86,10 +86,10 @@ Quick adjacency (to turf):
 		return TRUE
 	if(!isturf(loc))
 		return FALSE
-	for(var/turf/T in locs)
-		if(isnull(T))
+	for(var/turf/turf in locs)
+		if(isnull(turf))
 			continue
-		if(T.Adjacent(neighbor,src))
+		if(turf.Adjacent(neighbor,src))
 			return TRUE
 	return FALSE
 
@@ -121,11 +121,11 @@ Quick adjacency (to turf):
 	so they can be interacted with without opening the door.
 */
 /obj/structure/machinery/door/Adjacent(atom/neighbor)
-	var/obj/structure/machinery/door/firedoor/border_only/BOD = locate() in loc
-	if(BOD)
-		BOD.throwpass = 1 // allow click to pass
+	var/obj/structure/machinery/door/firedoor/border_only/door_border = locate() in loc
+	if(door_border)
+		door_border.throwpass = 1 // allow click to pass
 		. = ..()
-		BOD.throwpass = 0
+		door_border.throwpass = 0
 		return .
 	return ..()
 
@@ -135,39 +135,39 @@ Quick adjacency (to turf):
 	The border_only flag allows you to not objects (for source and destination squares)
 */
 /turf/proc/ClickCross(target_dir, border_only, target_atom = null, list/ignore_list)
-	for(var/obj/O in src)
-		if(O in ignore_list)
+	for(var/obj/object in src)
+		if(object in ignore_list)
 			continue
 
-		if(!O.density || O == target_atom || O.throwpass)
+		if(!object.density || object == target_atom || object.throwpass)
 			continue // throwpass is used for anything you can click through
 
-		if(O.flags_atom & ON_BORDER) // windows have throwpass but are on border, check them first
-			if(O.dir & target_dir || O.dir&(O.dir-1)) // full tile windows are just diagonals mechanically
-				var/obj/structure/window/W = target_atom
-				if (!istype(W))
+		if(object.flags_atom & ON_BORDER) // windows have throwpass but are on border, check them first
+			if(object.dir & target_dir || object.dir&(object.dir-1)) // full tile windows are just diagonals mechanically
+				var/obj/structure/window/window = target_atom
+				if(!istype(window))
 					return FALSE
-				else if (!W.is_full_window()) //exception for breaking full tile windows on top of single pane windows
+				else if(!window.is_full_window()) //exception for breaking full tile windows on top of single pane windows
 					return FALSE
 
-		else if( !border_only ) // dense, not on border, cannot pass over
+		else if(!border_only) // dense, not on border, cannot pass over
 			return FALSE
 	return TRUE
 
 /*
- * handle_barriers checks if src is going to be attacked by A, or if A will instead attack a barrier. For now only considers
+ * handle_barriers checks if src is going to be attacked by "attacker", or if "attacker" will instead attack a barrier. For now only considers
  * a single barrier on each direction.
  *
  * I am considering making it so that handle_barriers will loop through ALL blocking objects, though this requires testing
  * for performance impact.
  * Assumes dist <= 1
  */
-/atom/proc/handle_barriers(atom/A, list/atom/ignore = list(), pass_flags)
+/atom/proc/handle_barriers(atom/attacker, list/atom/ignore = list(), pass_flags)
 	ignore |= src // Make sure that you ignore your target
-	A.add_temp_pass_flags(pass_flags)
+	attacker.add_temp_pass_flags(pass_flags)
 
-	var/rdir = get_dir(src, A)
-	var/fdir = get_dir(A, src)
+	var/rdir = get_dir(src, attacker)
+	var/fdir = get_dir(attacker, src)
 
 	var/list/list/blockers = list(
 		"fd1" = list(),
@@ -180,137 +180,137 @@ Quick adjacency (to turf):
 	var/fd1 = fdir&(fdir-1)
 	var/fd2 = fdir - fd1
 
-	if (!isturf(A))
-		for (var/potential_blocker in A.loc) // Check if there are any barricades blocking attacker from their current loc
-			if (potential_blocker in ignore)
+	if(!isturf(attacker))
+		for(var/potential_blocker in attacker.loc) // Check if there are any barricades blocking attacker from their current loc
+			if(potential_blocker in ignore)
 				continue
-			if (!isStructure(potential_blocker) && !ismob(potential_blocker) && !isVehicle(potential_blocker))
+			if(!isStructure(potential_blocker) && !ismob(potential_blocker) && !isVehicle(potential_blocker))
 				continue
-			var/atom/PB = potential_blocker
-			if (!(PB.flags_atom & ON_BORDER) || !PB.BlockedExitDirs(A, fd1) || !PB.BlockedExitDirs(A, fd2))
+			var/atom/potential_block = potential_blocker
+			if(!(potential_block.flags_atom & ON_BORDER) || !potential_block.BlockedExitDirs(attacker, fd1) || !potential_block.BlockedExitDirs(attacker, fd2))
 				continue
-			if (PB.dir & fd1)
-				blockers["fd1"] += PB
-			if (PB.dir & fd2)
-				blockers["fd2"] += PB
+			if(potential_block.dir & fd1)
+				blockers["fd1"] += potential_block
+			if(potential_block.dir & fd2)
+				blockers["fd2"] += potential_block
 
 	dense_blockers = list()
-	if (fd1 && fd1 != fdir) // Check any obstacles blocking from the turf to the EAST/WEST of attacker
-		var/turf/fd1loc = get_step(A, fd1)
-		var/fd1dir_a = get_dir(fd1loc, A) // inverse direction for attacker
+	if(fd1 && fd1 != fdir) // Check any obstacles blocking from the turf to the EAST/WEST of attacker
+		var/turf/fd1loc = get_step(attacker, fd1)
+		var/fd1dir_a = get_dir(fd1loc, attacker) // inverse direction for attacker
 		var/fd1dir_d = get_dir(fd1loc, src) // inverse direction for target
-		if (fd1loc.BlockedPassDirs(A, fd1))
+		if(fd1loc.BlockedPassDirs(attacker, fd1))
 			dense_blockers += fd1loc
-		for (var/potential_blocker in fd1loc)
-			if (potential_blocker in ignore)
+		for(var/potential_blocker in fd1loc)
+			if(potential_blocker in ignore)
 				continue
-			if (!isStructure(potential_blocker) && !ismob(potential_blocker) && !isVehicle(potential_blocker))
+			if(!isStructure(potential_blocker) && !ismob(potential_blocker) && !isVehicle(potential_blocker))
 				continue
-			var/atom/PB = potential_blocker
-			if (!(PB.flags_atom & ON_BORDER))
-				if(PB.BlockedPassDirs(A, fd1)) // If there is a solid object (e.g. a vendor) blocking
-					dense_blockers += PB
+			var/atom/potential_block = potential_blocker
+			if(!(potential_block.flags_atom & ON_BORDER))
+				if(potential_block.BlockedPassDirs(attacker, fd1)) // If there is a solid object (e.g. a vendor) blocking
+					dense_blockers += potential_block
 				continue
-			if (PB.dir & fd1dir_a && PB.BlockedPassDirs(A, fd1))
-				blockers["fd1"] += PB
-			else if (PB.dir & fd1dir_d && PB.BlockedExitDirs(A, fd2))
-				blockers["fd1"] += PB
+			if(potential_block.dir & fd1dir_a && potential_block.BlockedPassDirs(attacker, fd1))
+				blockers["fd1"] += potential_block
+			else if (potential_block.dir & fd1dir_d && potential_block.BlockedExitDirs(attacker, fd2))
+				blockers["fd1"] += potential_block
 		blockers["fd1"] += dense_blockers
 
 	dense_blockers.Cut()
 
-	if (fd2 && fd2 != fdir) // Check any obstacles blocking from the turf to the NORTH/SOUTH of attacker
-		var/turf/fd2loc = get_step(A, fd2)
-		var/fd2dir_a = get_dir(fd2loc, A) // inverse direction for attacker
+	if(fd2 && fd2 != fdir) // Check any obstacles blocking from the turf to the NORTH/SOUTH of attacker
+		var/turf/fd2loc = get_step(attacker, fd2)
+		var/fd2dir_a = get_dir(fd2loc, attacker) // inverse direction for attacker
 		var/fd2dir_d = get_dir(fd2loc, src) // inverse direction for target
-		if (fd2loc.BlockedPassDirs(A, fd2))
+		if(fd2loc.BlockedPassDirs(attacker, fd2))
 			dense_blockers += fd2loc
-		for (var/potential_blocker in fd2loc)
-			if (potential_blocker in ignore)
+		for(var/potential_blocker in fd2loc)
+			if(potential_blocker in ignore)
 				continue
-			if (!isStructure(potential_blocker) && !ismob(potential_blocker) && !isVehicle(potential_blocker))
+			if(!isStructure(potential_blocker) && !ismob(potential_blocker) && !isVehicle(potential_blocker))
 				continue
-			var/atom/PB = potential_blocker
-			if (!(PB.flags_atom & ON_BORDER))
-				if (PB.BlockedPassDirs(A, fd2)) // If there is a solid object (e.g. a vendor) blocking
-					dense_blockers += PB
+			var/atom/potential_block = potential_blocker
+			if(!(potential_block.flags_atom & ON_BORDER))
+				if(potential_block.BlockedPassDirs(attacker, fd2)) // If there is a solid object (e.g. a vendor) blocking
+					dense_blockers += potential_block
 				continue
-			if (PB.dir & fd2dir_a && PB.BlockedPassDirs(A, fd2))
-				blockers["fd2"] += PB
-			else if (PB.dir & fd2dir_d && PB.BlockedExitDirs(A, fd1))
-				blockers["fd2"] += PB
+			if(potential_block.dir & fd2dir_a && potential_block.BlockedPassDirs(attacker, fd2))
+				blockers["fd2"] += potential_block
+			else if(potential_block.dir & fd2dir_d && potential_block.BlockedExitDirs(attacker, fd1))
+				blockers["fd2"] += potential_block
 		blockers["fd2"] += dense_blockers
 
 	dense_blockers = null
 
-	for (var/potential_blocker in get_turf(src)) // Check if there are any barricades blocking attacker from the target's current loc (or target itself if it's a turf)
-		if (potential_blocker in ignore)
+	for(var/potential_blocker in get_turf(src)) // Check if there are any barricades blocking attacker from the target's current loc (or target itself if it's a turf)
+		if(potential_blocker in ignore)
 			continue
-		if (!isStructure(potential_blocker) && !ismob(potential_blocker) && !isVehicle(potential_blocker))
+		if(!isStructure(potential_blocker) && !ismob(potential_blocker) && !isVehicle(potential_blocker))
 			continue
-		var/atom/PB = potential_blocker
-		if (!(PB.flags_atom & ON_BORDER))
+		var/atom/potential_block = potential_blocker
+		if(!(potential_block.flags_atom & ON_BORDER))
 			continue
-		if (PB.dir & rd1 && PB.BlockedPassDirs(A, fd1))
-			if (fd1 && fd2)
-				blockers["fd2"] += PB
+		if(potential_block.dir & rd1 && potential_block.BlockedPassDirs(attacker, fd1))
+			if(fd1 && fd2)
+				blockers["fd2"] += potential_block
 			else
-				blockers["fd1"] += PB
-		if (PB.dir & rd2 && PB.BlockedPassDirs(A, fd2))
-			if (fd1 && fd2)
-				blockers["fd1"] += PB
+				blockers["fd1"] += potential_block
+		if(potential_block.dir & rd2 && potential_block.BlockedPassDirs(attacker, fd2))
+			if(fd1 && fd2)
+				blockers["fd1"] += potential_block
 			else
-				blockers["fd2"] += PB
+				blockers["fd2"] += potential_block
 
 	// Make sure pass flags are removed
-	A.remove_temp_pass_flags(pass_flags)
+	attacker.remove_temp_pass_flags(pass_flags)
 
-	if ((fd1 && !length(blockers["fd1"])) || (fd2 && !length(blockers["fd2"]))) // This means that for a given direction it did not have a blocker
+	if((fd1 && !length(blockers["fd1"])) || (fd2 && !length(blockers["fd2"]))) // This means that for a given direction it did not have a blocker
 		return src
 
-	if (length(blockers["fd1"]) || length(blockers["fd2"]))
+	if(length(blockers["fd1"]) || length(blockers["fd2"]))
 		var/guaranteed_hit = 0 // indicates whether there is a guaranteed hit (aka there is not chance to bypass blocker). 0 = nothing
 		var/list/cur_dense_blockers = list()
-		for (var/atom/blocker in blockers["fd1"])
-			if (blocker.flags_barrier & HANDLE_BARRIER_CHANCE)
-				if(blocker.handle_barrier_chance())
+		for(var/atom/blocker in blockers["fd1"])
+			if(blocker.flags_barrier & HANDLE_BARRIER_CHANCE)
+				if(blocker.handle_barrier_chance(attacker))
 					return blocker
 			else
 				guaranteed_hit = 1
 				cur_dense_blockers += blocker
 				break
 
-		for (var/atom/blocker in blockers["fd2"])
+		for(var/atom/blocker in blockers["fd2"])
 			if(blocker.flags_barrier & HANDLE_BARRIER_CHANCE)
-				if(blocker.handle_barrier_chance())
+				if(blocker.handle_barrier_chance(attacker))
 					return blocker
 			else
 				guaranteed_hit++
 				cur_dense_blockers += blocker
 				break
-		if (guaranteed_hit == 2)
+		if(guaranteed_hit == 2)
 			return pick(cur_dense_blockers) // Picks a random dense object from the list of dense objects
 
 	return src // This should happen if the two barricades checked do not block the slash
 
 
-/atom/proc/clear_path(atom/A, list/atom/ignore = list())
-	if(get_dist(src, A) <= 1)
-		return handle_barriers(A, ignore)
+/atom/proc/clear_path(atom/attacker, list/atom/ignore = list())
+	if(get_dist(src, attacker) <= 1)
+		return handle_barriers(attacker, ignore)
 
-	var/turf/curT = get_turf(A)
-	var/is_turf = isturf(A)
-	for(var/turf/T in get_line(A, src))
-		if(curT == T)
+	var/turf/current_turf = get_turf(attacker)
+	var/is_turf = isturf(attacker)
+	for(var/turf/turf in get_line(attacker, src))
+		if(current_turf == turf)
 			continue
-		if(T.density)
-			return T
-		for(var/atom/potential_dense_object in T)
+		if(turf.density)
+			return turf
+		for(var/atom/potential_dense_object in turf)
 			if(potential_dense_object.density)
 				return potential_dense_object
-		var/atom/result = T.handle_barriers(curT, list(A) + ignore)
-		if(result != T)
+		var/atom/result = turf.handle_barriers(current_turf, list(attacker) + ignore)
+		if(result != turf)
 			return result
-		else if(is_turf && T == A || T == A.loc)
+		else if(is_turf && turf == attacker || turf == attacker.loc)
 			break
 	return src

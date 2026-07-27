@@ -1,15 +1,15 @@
 //Cat
-/mob/living/simple_animal/cat
+/mob/living/simple_animal/small/cat
 	name = "cat"
 	real_name = "cat"
 	desc = "A domesticated, feline pet. Has a tendency to adopt crewmembers."
 	icon_state = "cat2"
 	icon_living = "cat2"
 	icon_dead = "cat2_dead"
-	speak = list("Meow!","Esp!","Purr!","HSSSSS")
+	speak = list("Meow!","Esp!","Purr!","HSSSSS!")
 	speak_emote = list("purrs", "meows")
-	emote_hear = list("meows","mews")
-	emote_see = list("shakes their head", "shivers")
+	emote_hear = list("meows.","mews.", "mrrps.")
+	emote_see = list("shakes their head.", "shivers.", "licks their paw.")
 	speak_chance = 1
 	turns_per_move = 5
 	meat_type = /obj/item/reagent_container/food/snacks/meat
@@ -21,12 +21,12 @@
 	var/mob/living/movement_target
 	/// The mobs that src will track to hunt and kill.
 	var/static/list/hunting_targets = list(
-		/mob/living/simple_animal/mouse,
-		/mob/living/simple_animal/alien_slug,
-		/mob/living/simple_animal/bat,
-		/mob/living/simple_animal/parrot,
-		/mob/living/simple_animal/chick,
-		/mob/living/simple_animal/lizard,
+		/mob/living/simple_animal/small/mouse,
+		/mob/living/simple_animal/small/alien_slug,
+		/mob/living/simple_animal/small/bat,
+		/mob/living/simple_animal/small/parrot,
+		/mob/living/simple_animal/small/chick,
+		/mob/living/simple_animal/small/lizard,
 		/mob/living/carbon/xenomorph/facehugger,
 		/mob/living/carbon/xenomorph/larva,
 	)
@@ -45,16 +45,11 @@
 	var/miaow_counter = 0
 	var/attack_damage = 25
 
-/mob/living/simple_animal/cat/initialize_pass_flags(datum/pass_flags_container/PF)
-	..()
-	if (PF)
-		PF.flags_pass = PASS_FLAGS_CRAWLER
-
-/mob/living/simple_animal/cat/Destroy()
+/mob/living/simple_animal/small/cat/Destroy()
 	movement_target = null
 	. = ..()
 
-/mob/living/simple_animal/cat/Life(delta_time)
+/mob/living/simple_animal/small/cat/Life(delta_time)
 	//MICE!
 	if(stat == DEAD)
 		return ..()
@@ -98,7 +93,7 @@
 	if(stat == CONSCIOUS && !resting && !buckled)
 		handle_movement_target()
 
-/mob/living/simple_animal/cat/death()
+/mob/living/simple_animal/small/cat/death()
 	. = ..()
 	if(!.)
 		return //was already dead
@@ -107,7 +102,7 @@
 		if(user)
 			user.count_niche_stat(STATISTICS_NICHE_CAT)
 
-/mob/living/simple_animal/cat/proc/handle_movement_target()
+/mob/living/simple_animal/small/cat/proc/handle_movement_target()
 	turns_since_scan++
 	if(turns_since_scan > 5)
 		walk_to(src,0)
@@ -130,7 +125,7 @@
 			stop_automated_movement = 1
 			walk_to(src,movement_target,0,3)
 
-/mob/living/simple_animal/cat/MouseDrop(atom/over_object)
+/mob/living/simple_animal/small/cat/MouseDrop(atom/over_object)
 	if(!CAN_PICKUP(usr, src))
 		return ..()
 	var/mob/living/carbon/H = over_object
@@ -143,13 +138,13 @@
 	else
 		return ..()
 
-/mob/living/simple_animal/cat/get_scooped(mob/living/carbon/grabber)
+/mob/living/simple_animal/small/cat/get_scooped(mob/living/carbon/grabber)
 	if (stat >= DEAD)
 		return
 	..()
 
 //RUNTIME IS ALIVE! SQUEEEEEEEE~
-/mob/living/simple_animal/cat/Runtime
+/mob/living/simple_animal/small/cat/Runtime
 	name = "Runtime"
 	desc = "Her fur has the look and feel of velvet, and her tail quivers occasionally."
 	icon_state = "cat"
@@ -157,7 +152,7 @@
 	icon_dead = "cat_dead"
 	holder_type = /obj/item/holder/cat/blackcat/Runtime
 
-/mob/living/simple_animal/cat/blackcat
+/mob/living/simple_animal/small/cat/blackcat
 	name = "black cat"
 	desc = "It's a cat, now in black!"
 	icon_state = "cat"
@@ -165,7 +160,7 @@
 	icon_dead = "cat_dead"
 	holder_type = /obj/item/holder/cat/blackcat
 
-/mob/living/simple_animal/cat/Jones
+/mob/living/simple_animal/small/cat/Jones
 	name = "Jones"
 	real_name = "Jones"
 	desc = "A tough, old stray whose origin no one seems to know."
@@ -176,9 +171,9 @@
 	maxHealth = 50
 	holder_type = /obj/item/holder/cat/Jones
 
-/mob/living/simple_animal/cat/kitten
+/mob/living/simple_animal/small/cat/kitten
 	name = "kitten"
-	desc = "D'aaawwww"
+	desc = "D'aaawwww."
 	icon_state = "kitten"
 	icon_living = "kitten"
 	icon_dead = "kitten_dead"

@@ -39,7 +39,7 @@
 /mob/living/getFireLoss()
 	return fireloss
 
-/mob/living/proc/adjustFireLoss(amount)
+/mob/living/proc/adjustFireLoss(amount, chemical = FALSE)
 	if(status_flags & GODMODE)
 		return 0 //godmode
 	fireloss = min(max(fireloss + amount, 0),(maxHealth*2))
@@ -104,7 +104,7 @@
 	if(S)
 		return S.get_duration_left() / GLOBAL_STATUS_MULTIPLIER
 	return 0
-/mob/living/proc/Stun(amount, resistable = FALSE)
+/mob/living/proc/Stun(amount, resistible = FALSE)
 	if(!(status_flags & CANSTUN))
 		return
 	amount = GetStunDuration(amount)
@@ -113,9 +113,9 @@
 		if(nst_stim.get_property(PROPERTY_NERVESTIMULATING))
 			nst_stim.volume += max(min((-1*amount)/10, 0), -10)
 	if(S)
-		S.update_duration(amount, increment=TRUE, resistable=resistable)
+		S.update_duration(amount, increment=TRUE, resistible=resistible)
 	else if(amount > 0)
-		S = apply_status_effect(/datum/status_effect/incapacitating/stun, amount, resistable)
+		S = apply_status_effect(/datum/status_effect/incapacitating/stun, amount, resistible)
 	return S
 /mob/living/proc/SetStun(amount, ignore_canstun = FALSE) //Sets remaining duration
 	if(!(status_flags & CANSTUN))
@@ -273,6 +273,18 @@
 
 /mob/living/proc/AdjustSuperslow(amount)
 	SetSuperslow(superslowed + amount)
+	return
+
+/mob/living/proc/hushed(amount)
+	hushed = max(max(hushed, amount), 0)
+	return
+
+/mob/living/proc/set_hushed(amount)
+	hushed = max(amount, 0)
+	return
+
+/mob/living/proc/adjust_hushed(amount)
+	hushed = max(hushed + amount, 0)
 	return
 
 /* KnockDown (Flooring) */
@@ -448,6 +460,9 @@
 	stuttering = max(stuttering + amount,0)
 	return
 
+/mob/living/proc/EyeBlind(amount)
+	eye_blind = max(max(eye_blind, amount), 0)
+	return
 
 /mob/living/proc/SetEyeBlind(amount)
 	eye_blind = max(amount, 0)
@@ -471,7 +486,6 @@
 	else if(ear_deaf)
 		on_deafness_gain()
 
-
 /mob/living/proc/SetEarDeafness(amount)
 	var/prev_deaf = ear_deaf
 	ear_deaf = max(amount, 0)
@@ -494,14 +508,40 @@
 		client.soundOutput.status_flags ^= EAR_DEAF_MUTE
 		client.soundOutput.apply_status()
 
+/mob/living/proc/is_admin_slept()
+	return has_status_effect(/datum/status_effect/incapacitating/unconscious/aslept)
+
+/// Sets Admin sleeping, TRUE for applying FALSE for removing, defualts to removing
+/mob/living/proc/set_admin_sleep(apply)
+	if(!apply)
+		var/datum/status_effect/incapacitating/unconscious/aslept/admin_slept = is_admin_slept()
+		if(admin_slept)
+			qdel(admin_slept)
+	else
+		apply_status_effect(/datum/status_effect/incapacitating/unconscious/aslept)
+	return
+
 /mob/living/proc/grant_spawn_protection(duration)
 	status_flags |= RECENTSPAWN|GODMODE
 	RegisterSignal(src, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), PROC_REF(handle_fire_protection))
 	addtimer(CALLBACK(src, PROC_REF(end_spawn_protection)), duration)
 
+/mob/living/carbon/xenomorph/grant_spawn_protection(duration)
+	status_flags |= RECENTSPAWN|GODMODE
+	fire_immunity |= FIRE_IMMUNITY_NO_DAMAGE|FIRE_IMMUNITY_NO_IGNITE
+	addtimer(CALLBACK(src, PROC_REF(end_spawn_protection)), duration)
+
 /mob/living/proc/end_spawn_protection()
 	status_flags &= ~(RECENTSPAWN|GODMODE)
 	UnregisterSignal(src, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED))
+
+/mob/living/carbon/xenomorph/end_spawn_protection()
+	status_flags &= ~(RECENTSPAWN|GODMODE)
+	fire_immunity = initial(fire_immunity)
+	if(hive?.active_hivebuffs)
+		var/datum/hivebuff/fire/fire_buff = locate() in hive.active_hivebuffs
+		if(fire_buff)
+			fire_buff.apply_buff_effects(src)
 
 /mob/living/proc/handle_fire_protection(mob/living/living, datum/reagent/chem)
 	SIGNAL_HANDLER
@@ -509,10 +549,9 @@
 		return COMPONENT_NO_IGNITE
 
 // heal ONE limb, organ gets randomly selected from damaged ones.
-/mob/living/proc/heal_limb_damage(brute, burn)
+/mob/living/proc/heal_limb_damage(brute, burn, chemical = FALSE)
 	apply_damage(-brute, BRUTE)
-	apply_damage(-burn, BURN)
-	src.updatehealth()
+	apply_damage(-burn, BURN, chemical = chemical)
 
 // damage ONE limb, organ gets randomly selected from damaged ones.
 /mob/living/proc/take_limb_damage(brute, burn)
@@ -520,13 +559,11 @@
 		return 0 //godmode
 	apply_damage(brute, BRUTE)
 	apply_damage(burn, BURN)
-	src.updatehealth()
 
 // heal MANY limbs, in random order
 /mob/living/proc/heal_overall_damage(brute, burn)
 	apply_damage(-brute, BRUTE)
 	apply_damage(-burn, BURN)
-	src.updatehealth()
 
 // damage MANY limbs, in random order
 /mob/living/proc/take_overall_damage(brute, burn, used_weapon = null, limb_damage_chance = 80)
@@ -534,16 +571,12 @@
 		return 0 //godmode
 	apply_damage(brute, BRUTE)
 	apply_damage(burn, BURN)
-	src.updatehealth()
 
 /mob/living/proc/restore_all_organs()
 	return
 
-
-
 /mob/living/proc/revive(keep_viruses)
 	rejuvenate()
-
 
 /mob/living/proc/rejuvenate()
 	heal_all_damage()
@@ -555,7 +588,7 @@
 	recalculate_move_delay = TRUE
 	sdisabilities = 0
 	disabilities = 0
-	drowsyness = 0
+	drowsiness = 0
 	hallucination = 0
 	jitteriness = 0
 	dizziness = 0
@@ -586,8 +619,9 @@
 		tod = null
 		timeofdeath = 0
 
-	// restore us to consciousness
-	set_stat(CONSCIOUS)
+	// restore us to consciousness if we're not admin slept
+	if(!(HAS_TRAIT_FROM(src, TRAIT_KNOCKEDOUT, TRAIT_STATUS_EFFECT(TRAIT_SOURCE_ADMIN))))
+		set_stat(CONSCIOUS)
 	regenerate_all_icons()
 
 	SEND_SIGNAL(src, COMSIG_LIVING_REJUVENATED)
@@ -606,6 +640,7 @@
 	set_effect(0, SLOW)
 	set_effect(0, SUPERSLOW)
 	set_effect(0, WEAKEN)
+	set_effect(0, HUSHED)
 	ExtinguishMob()
 	fire_stacks = 0
 

@@ -1,0 +1,1 @@
+/turf/open/shuttle/dropship/predship/@SUBTYPES : /turf/open/predship/@SUBTYPES{@OLD}

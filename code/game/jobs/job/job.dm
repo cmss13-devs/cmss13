@@ -1,30 +1,45 @@
 /datum/job
 	//The name of the job
-	var/title = null //The internal title for the job, used for the job ban system and so forth. Don't change these, change the disp_title instead.
-	var/disp_title //Determined on new(). Usually the same as the title, but doesn't have to be. Set this to override what the player sees in the game as their title.
-	var/role_ban_alternative // If the roleban title needs to be an extra check, like Xenomorphs = Alien.
 
-	var/total_positions = 0 //How many players can be this job
-	var/spawn_positions = 0 //How many players can spawn in as this job
-	var/total_positions_so_far = 0 //How many slots were open in this round. Used to prevent slots locking with decreasing amount of alive players
-	var/allow_additional = 0 //Can admins modify positions to it
+	///The internal title for the job, used for the job ban system and so forth. Don't change these, change the disp_title instead.
+	var/title = null
+	///Determined on new(). Usually the same as the title, but doesn't have to be. Set this to override what the player sees in the game as their title.
+	var/disp_title
+	///If the roleban title needs to be an extra check, like Xenomorphs = Alien.
+	var/role_ban_alternative
+
+	///How many players can be this job
+	var/total_positions = 0
+	///How many players can spawn in as this job
+	var/spawn_positions = 0
+	///How many slots were open in this round. Used to prevent slots locking with decreasing amount of alive players
+	var/total_positions_so_far = 0
+	/// Can admins modify positions to it
+	var/allow_additional = 0
+	///If it can be scaled with playercount
 	var/scaled = 0
-	var/current_positions = 0 //How many players have this job
-	var/supervisors = "" //Supervisors, who this person answers to directly. Should be a string, shown to the player when they enter the game.
-	var/selection_class = "" // Job Selection span class (for background color)
-
+	///How many players have this job
+	var/current_positions = 0
+	///Supervisors, who this person answers to directly. Should be a string, shown to the player when they enter the game.
+	var/supervisors = ""
+	/// Job Selection span class (for background color)
+	var/selection_class = ""
 	var/late_joinable = TRUE
 
-	var/flags_startup_parameters = NO_FLAGS //These flags are used to determine how to load the role, and some other parameters.
-	var/flags_whitelist = NO_FLAGS //Only used by whitelisted roles. Can be a single whitelist flag, or a combination of them.
+	///These flags are used to determine how to load the role, and some other parameters.
+	var/flags_startup_parameters = NO_FLAGS
+	///Only used by whitelisted roles. Can be a single whitelist flag, or a combination of them.
+	var/flags_whitelist = NO_FLAGS
 
-	//If you have use_timelocks config option enabled, this option will add a requirement for players to have the prerequisite roles have at least x minimum playtime before unlocking.
+	///If you have use_timelocks config option enabled, this option will add a requirement for players to have the prerequisite roles have at least x minimum playtime before unlocking.
 	var/list/minimum_playtimes
 
 	var/minimum_playtime_as_job = 3 HOURS
 
-	var/datum/equipment_preset/gear_preset //Gear preset name used for this job
-	var/list/gear_preset_whitelist = list()//Gear preset name used for council snowflakes ;)
+	///Gear preset name used for this job
+	var/datum/equipment_preset/gear_preset
+	///Gear preset name used for council snowflakes ;)
+	var/list/gear_preset_whitelist = list()
 
 	//For generating entry messages
 	var/entry_message_intro

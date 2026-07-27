@@ -21,11 +21,18 @@
 /mob/living/proc/electrocute_act(shock_damage, obj/source, siemens_coeff = 1.0)
 	return 0 //only carbon liveforms have this proc
 
-/mob/living/emp_act(severity)
+/mob/living/emp_act(severity, datum/cause_data/cause_data)
 	. = ..()
-	var/list/L = src.get_contents()
-	for(var/obj/O in L)
-		O.emp_act(severity)
+	var/list/my_stuff = get_contents()
+	for(var/obj/thing in my_stuff)
+		thing.emp_act(severity, cause_data)
+
+/mob/living/carbon/human/emp_act(severity, datum/cause_data/cause_data)
+	. = ..()
+	if(isspeciessynth(src))
+		to_chat(src, SPAN_DANGER("<B>*BZZZT*</B>"))
+		to_chat(src, SPAN_DANGER("Warning: Electromagnetic pulse detected."))
+		log_emp(src, cause_data)
 
 //this proc handles being hit by a thrown atom
 /mob/living/hitby(atom/movable/AM)
@@ -77,7 +84,7 @@
 		if(assailant)
 			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been hit with \a [O], thrown by [key_name(M)]</font>")
 			M.attack_log += text("\[[time_stamp()]\] <font color='red'>Hit [key_name(src)] with a thrown [O]</font>")
-			if(!istype(src,/mob/living/simple_animal/mouse))
+			if(!istype(src,/mob/living/simple_animal/small/mouse))
 				if(src.loc)
 					msg_admin_attack("[key_name(src)] was hit by \a [O], thrown by [key_name(M)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 				else

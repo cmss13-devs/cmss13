@@ -266,7 +266,6 @@
 
 			limb.heal_damage(15, 0, TRUE)
 			human.pain.recalculate_pain()
-			human.UpdateDamageIcon()
 			user.visible_message(SPAN_WARNING("\The [user] patches some dents on \the [human]'s [limb.display_name] with \the [src]."),
 								SPAN_WARNING("You patch some dents on \the [human]'s [limb.display_name] with \the [src]."))
 			return
@@ -592,7 +591,12 @@
 		if(attacked_door.locked) //Bolted
 			to_chat(user, SPAN_DANGER("You can't pry open [attacked_door] while it is bolted shut."))
 			return
-
+		if(!attacked_door.density && !attacked_door.arePowerSystemsOn()) //If its open and unpowered
+			attacked_door.close(TRUE)
+			return
+		if(attacked_door.density && !attacked_door.arePowerSystemsOn()) // if its closed and unpowered
+			attacked_door.open(TRUE)
+			return
 		if(requires_superstrength_pry)
 			if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG)) //basically IS_PRY_CAPABLE_CROWBAR
 				return
@@ -601,15 +605,8 @@
 			return
 		if(user.action_busy)
 			return
-		if(!attacked_door.density && !attacked_door.arePowerSystemsOn()) //If its open and unpowered
-			attacked_door.close(TRUE)
-			return
-		if(attacked_door.density && !attacked_door.arePowerSystemsOn()) // if its closed and unpowered
-			attacked_door.open(TRUE)
-			return
 		if(!attacked_door.density) //If its open
 			return
-
 		user.visible_message(SPAN_DANGER("[user] jams [src] into [attacked_door] and starts to pry it open."),
 		SPAN_DANGER("You jam [src] into [attacked_door] and start to pry it open."))
 		playsound(src, "pry", 15, TRUE)
@@ -738,12 +735,12 @@ Welding backpack
 			return
 		else
 			if(T.reagents.total_volume == T.max_fuel)
-				to_chat(user, SPAN_NOTICE(" \The [src] is already full!"))
+				to_chat(user, SPAN_NOTICE("\The [src] is already full!"))
 				return
 			if(T.welding)
 				to_chat(user, SPAN_DANGER("That was close!"))
 			src.reagents.trans_to(W, T.max_fuel)
-			to_chat(user, SPAN_NOTICE(" Welder refilled!"))
+			to_chat(user, SPAN_NOTICE("Welder refilled!"))
 			playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
 			return
 	if(istype(W, /obj/item/ammo_magazine/flamer_tank))
@@ -796,7 +793,7 @@ Welding backpack
 
 /obj/item/tool/weldpack/minitank
 	name = "ES-11 fuel canister"
-	desc = "A robust little pressurized canister that is small enough to fit in most bags and made for use with welding fuel. Upon closer inspection there is faded text on the red tape wrapped around the tank 'WARNING: Contents under pressure! Do not puncture!' "
+	desc = "A robust little pressurized canister that is small enough to fit in most bags and made for use with welding fuel. Upon closer inspection there is faded text on the red tape wrapped around the tank 'WARNING: Contents under pressure! Do not puncture!'"
 	icon_state = "welderpackmini"
 	/// Just barely enough to be better than the satchel
 	max_fuel = 120

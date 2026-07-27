@@ -13,7 +13,7 @@
 /area/shiva/exterior/lz2_fortress)
 "Y" = (
 /turf/closed/wall/shiva/prefabricated/reinforced/hull,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/interior/oob)
 
 (1,1,1) = {"
 R

@@ -870,11 +870,20 @@
 /area/lv759/outdoors/mining_outpost/south_entrance)
 "cq" = (
 /obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/colorable_line/line1{
+	color = "#65544c"
+	},
+/obj/effect/decal/hybrisa/colorable_line/line4{
+	color = "#65544c"
+	},
 /turf/open/floor/hybrisa/carpet/carpetbeige,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
 "cr" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_3"
+	},
+/obj/effect/decal/hybrisa/colorable_line/line1{
+	color = "#65544c"
 	},
 /turf/open/floor/hybrisa/carpet/carpetbeige,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
@@ -904,6 +913,9 @@
 /obj/structure/prop/hybrisa/misc/blood/blood3{
 	pixel_x = -9;
 	pixel_y = 32
+	},
+/obj/effect/decal/hybrisa/colorable_line/line3{
+	color = "#65544c"
 	},
 /turf/open/floor/hybrisa/carpet/carpetbeige,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
@@ -1176,13 +1188,13 @@
 /area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
 "dm" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/floor/prison/ramptop,
 /area/lv759/outdoors/landing_zone_2)
 "dn" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /obj/effect/decal/hybrisa/dirt,
@@ -1219,7 +1231,7 @@
 /turf/open/hybrisa/street/underground_unweedable,
 /area/lv759/outdoors/landing_zone_2)
 "ds" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /obj/effect/decal/hybrisa/dirt,
@@ -1263,7 +1275,7 @@
 /turf/open/floor/plating,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
 "dx" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /obj/effect/decal/hybrisa/dirt,
@@ -1308,10 +1320,10 @@
 /turf/open/hybrisa/street/sidewalk/west,
 /area/lv759/outdoors/landing_zone_2)
 "dF" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
-/obj/structure/machinery/landinglight/ds2/spoke{
+/obj/structure/machinery/landinglight/spoke{
 	pixel_x = -12
 	},
 /obj/effect/decal/hybrisa/dirt,
@@ -1327,7 +1339,7 @@
 /turf/open/hybrisa/street/underground_unweedable,
 /area/lv759/outdoors/landing_zone_2)
 "dH" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /obj/effect/decal/hybrisa/dirt,
@@ -1386,7 +1398,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv759/outdoors/landing_zone_2)
 "dO" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 8
 	},
 /obj/structure/machinery/fuelcell_recycler,
@@ -1438,7 +1450,8 @@
 /area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room)
 "dU" = (
 /obj/structure/sign/banners/colonial_marines_flag{
-	pixel_x = -15
+	pixel_x = -15;
+	layer = 4
 	},
 /turf/closed/wall/hybrisa/colony/reinforced,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room)
@@ -1494,7 +1507,8 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/sign/prop1{
 	pixel_x = -15;
-	pixel_y = 18
+	pixel_y = 18;
+	layer = 4
 	},
 /turf/open/hybrisa/street/sidewalk/north,
 /area/lv759/outdoors/landing_zone_2)
@@ -1509,7 +1523,7 @@
 /turf/open/hybrisa/street/underground_unweedable,
 /area/lv759/outdoors/landing_zone_2)
 "ef" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/hybrisa/street/sidewalk/northeast,
@@ -1648,12 +1662,12 @@
 /turf/open/floor/hybrisa/metal/grated,
 /area/lv759/outdoors/colony_streets/south_east_street)
 "fs" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/hybrisa/street/sidewalk/south,
 /area/lv759/outdoors/landing_zone_2)
 "fG" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/floor/prison/ramptop,
@@ -1683,7 +1697,7 @@
 /turf/open/floor/hybrisa/tile/cementflat,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_north)
 "gK" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/hybrisa/street/sidewalk/west,
@@ -1777,7 +1791,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/landing_zone_2)
 "hH" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/liquid_fuel,
@@ -1897,10 +1911,10 @@
 /turf/open/floor/corsat/marked,
 /area/lv759/outdoors/landing_zone_2)
 "kd" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
-/obj/structure/machinery/landinglight/ds2/spoke{
+/obj/structure/machinery/landinglight/spoke{
 	pixel_x = 12
 	},
 /turf/open/hybrisa/street/sidewalk/west,
@@ -1958,7 +1972,7 @@
 /turf/closed/wall/hybrisa/colony/reinforced,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
 "kJ" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/hybrisa/street/sidewalk/northwest,
@@ -2043,7 +2057,7 @@
 /turf/open/floor/plating,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room)
 "lS" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/ramptop,
 /area/lv759/outdoors/landing_zone_2)
@@ -2055,7 +2069,13 @@
 /obj/structure/sign/poster/propaganda{
 	pixel_y = 32
 	},
-/turf/open/floor/almayer/plate,
+/obj/effect/decal/hybrisa/colorable_line/line3{
+	color = "#65544c"
+	},
+/obj/effect/decal/hybrisa/colorable_line/line4{
+	color = "#65544c"
+	},
+/turf/open/floor/hybrisa/carpet/carpetbeige,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
 "lV" = (
 /obj/structure/prop/hybrisa/vehicles/Box_Vans/Maintenance_Blue{
@@ -2393,7 +2413,7 @@
 /turf/closed/wall/hybrisa/colony,
 /area/lv759/outdoors/mining_outpost/south_entrance)
 "qI" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /obj/effect/decal/hybrisa/dirt,
@@ -2469,10 +2489,10 @@
 /turf/open/floor/plating,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
 "re" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
-/obj/structure/machinery/landinglight/ds2/spoke{
+/obj/structure/machinery/landinglight/spoke{
 	pixel_x = -6
 	},
 /obj/effect/decal/hybrisa/dirt,
@@ -2757,7 +2777,13 @@
 /obj/effect/decal/hybrisa/trash,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/almayer/plate,
+/obj/effect/decal/hybrisa/colorable_line/line2{
+	color = "#65544c"
+	},
+/obj/effect/decal/hybrisa/colorable_line/line3{
+	color = "#65544c"
+	},
+/turf/open/floor/hybrisa/carpet/carpetbeige,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
 "va" = (
 /obj/structure/pipes/standard/simple/hidden/dark,
@@ -2930,6 +2956,9 @@
 	dir = 8
 	},
 /obj/item/device/radio/headset,
+/obj/effect/decal/hybrisa/colorable_line/line4{
+	color = "#65544c"
+	},
 /turf/open/floor/hybrisa/carpet/carpetbeige,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
 "xk" = (
@@ -3045,7 +3074,7 @@
 /turf/open/floor/hybrisa/tile/cementflat,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
 "yQ" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /obj/structure/machinery/floodlight/landing,
@@ -3136,6 +3165,9 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/pipes/standard/simple/hidden/dark,
+/obj/effect/decal/hybrisa/colorable_line/line3{
+	color = "#65544c"
+	},
 /turf/open/floor/hybrisa/carpet/carpetbeige,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
 "zU" = (
@@ -3443,6 +3475,9 @@
 	pixel_y = 12
 	},
 /obj/structure/pipes/standard/simple/hidden/dark,
+/obj/effect/decal/hybrisa/colorable_line/line1{
+	color = "#65544c"
+	},
 /turf/open/floor/hybrisa/carpet/carpetbeige,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
 "Dw" = (
@@ -3551,7 +3586,6 @@
 /obj/structure/machinery/door_control/brbutton/alt{
 	id = "hybrisaLZ2_2";
 	name = "north - door-control";
-	explo_proof = 1;
 	needs_power = 0
 	},
 /obj/effect/decal/warning_stripes{
@@ -3583,7 +3617,7 @@
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/lv759/outdoors/mining_outpost/south_entrance)
 "Ga" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/hybrisa/street/sidewalk/southwest,
 /area/lv759/outdoors/landing_zone_2)
 "Gb" = (
@@ -3709,10 +3743,10 @@
 /turf/open/floor/corsat/marked,
 /area/lv759/outdoors/landing_zone_2)
 "Hx" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
-/obj/structure/machinery/landinglight/ds2/spoke{
+/obj/structure/machinery/landinglight/spoke{
 	pixel_x = 6
 	},
 /turf/open/hybrisa/street/sidewalk/north,
@@ -3721,8 +3755,8 @@
 /turf/closed/wall/hybrisa/colony/reinforced,
 /area/lv759/outdoors/landing_zone_2)
 "HC" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo,
-/obj/structure/machinery/landinglight/ds2/spoke{
+/obj/structure/machinery/landinglight/delaytwo,
+/obj/structure/machinery/landinglight/spoke{
 	pixel_y = 12;
 	pixel_x = 6
 	},
@@ -3734,6 +3768,9 @@
 	pixel_x = 5;
 	pixel_y = 18;
 	layer = 3.1
+	},
+/obj/effect/decal/hybrisa/colorable_line/line3{
+	color = "#65544c"
 	},
 /turf/open/floor/hybrisa/carpet/carpetbeige,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
@@ -3891,6 +3928,9 @@
 /turf/open/auto_turf/hybrisa_auto_turf/layer3,
 /area/lv759/outdoors/mining_outpost/south_entrance)
 "Ki" = (
+/obj/effect/decal/hybrisa/colorable_line/line1{
+	color = "#65544c"
+	},
 /turf/open/floor/hybrisa/carpet/carpetbeige,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
 "Kl" = (
@@ -3960,7 +4000,7 @@
 /area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance)
 "Lj" = (
 /obj/effect/decal/cleanable/liquid_fuel,
-/obj/structure/machinery/landinglight/ds1/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/hybrisa/street/sidewalk/south,
 /area/lv759/outdoors/landing_zone_2)
 "Lp" = (
@@ -4095,7 +4135,10 @@
 	pixel_x = 1;
 	pixel_y = 5
 	},
-/turf/open/floor/almayer/plate,
+/obj/effect/decal/hybrisa/colorable_line/line2{
+	color = "#65544c"
+	},
+/turf/open/floor/hybrisa/carpet/carpetbeige,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
 "Nu" = (
 /obj/item/fuel_cell,
@@ -4107,7 +4150,7 @@
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/lv759/outdoors/mining_outpost/south_entrance)
 "NH" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /obj/structure/machinery/floodlight/landing,
@@ -4462,7 +4505,7 @@
 /turf/open/floor/prison/cell_stripe/north,
 /area/lv759/outdoors/mining_outpost/south_entrance)
 "TA" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/hybrisa/street/sidewalk/southeast,
 /area/lv759/outdoors/landing_zone_2)
@@ -4518,7 +4561,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv759/outdoors/mining_outpost/south_entrance)
 "Ue" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/hybrisa/street/sidewalk/east,
@@ -4671,7 +4714,13 @@
 	pixel_x = 3;
 	pixel_y = 2
 	},
-/turf/open/floor/almayer/plate,
+/obj/effect/decal/hybrisa/colorable_line/line2{
+	color = "#65544c"
+	},
+/obj/effect/decal/hybrisa/colorable_line/line1{
+	color = "#65544c"
+	},
+/turf/open/floor/hybrisa/carpet/carpetbeige,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
 "Xm" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -4747,8 +4796,8 @@
 /turf/open/hybrisa/street/sidewalk/north,
 /area/lv759/outdoors/landing_zone_2)
 "XJ" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo,
-/obj/structure/machinery/landinglight/ds2/spoke{
+/obj/structure/machinery/landinglight/delaytwo,
+/obj/structure/machinery/landinglight/spoke{
 	pixel_y = 12;
 	pixel_x = -6
 	},
@@ -4771,7 +4820,7 @@
 /turf/open/floor/almayer/plate,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
 "XO" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 4
 	},
 /obj/structure/prop/static_tank/fuel,
@@ -4819,7 +4868,6 @@
 	id = "hybrisaLZ2_4";
 	name = "southwest - door-control";
 	pixel_x = -5;
-	explo_proof = 1;
 	pixel_y = 6;
 	needs_power = 0
 	},
@@ -4850,7 +4898,6 @@
 	id = "hybrisaLZ2_1";
 	pixel_x = -7;
 	pixel_y = -1;
-	explo_proof = 1;
 	name = "west - door-control";
 	needs_power = 0
 	},
@@ -4868,10 +4915,10 @@
 /turf/open/hybrisa/street/sidewalk/east,
 /area/lv759/outdoors/landing_zone_2)
 "YL" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
-/obj/structure/machinery/landinglight/ds2/spoke{
+/obj/structure/machinery/landinglight/spoke{
 	pixel_x = -12
 	},
 /turf/open/hybrisa/street/sidewalk/east,
@@ -4922,7 +4969,7 @@
 /turf/open/floor/hybrisa/metal/grated/north,
 /area/lv759/outdoors/mining_outpost/south_entrance)
 "ZT" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 4
 	},
 /obj/structure/prop/static_tank/fuel,

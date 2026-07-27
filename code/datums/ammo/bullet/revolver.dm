@@ -25,10 +25,15 @@
 	damage = 35
 	penetration = ARMOR_PENETRATION_TIER_4
 	accuracy = HIT_ACCURACY_TIER_3
+	var/add_thing = 1
 
-/datum/ammo/bullet/revolver/heavy/on_hit_mob(mob/entity, obj/projectile/bullet)
-	slowdown(entity, bullet)
-	pushback(entity, bullet, 4)
+/datum/ammo/bullet/revolver/heavy/on_hit_mob(mob/living/M, obj/projectile/bullet)
+	. = ..()
+	if(!M || !isliving(M))
+		return
+	M.AddComponent(/datum/component/heavy_buildup, 1, 3)
+
+
 
 /datum/ammo/bullet/revolver/incendiary
 	name = "incendiary revolver bullet"
@@ -139,7 +144,7 @@
 
 /datum/ammo/bullet/revolver/mateba/New()
 	..()
-	RegisterSignal(src, COMSIG_AMMO_POINT_BLANK, PROC_REF(handle_battlefield_execution))
+	RegisterSignal(src, COMSIG_AMMO_BATTLEFIELD_EXECUTION, PROC_REF(handle_battlefield_execution))
 
 /datum/ammo/bullet/revolver/mateba/highimpact
 	name = ".454 heavy high-impact revolver bullet"

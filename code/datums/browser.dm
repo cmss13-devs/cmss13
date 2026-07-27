@@ -10,8 +10,6 @@
 	var/stylesheet
 	var/scripts[0]
 	var/title_image
-	var/head_elements
-	var/body_elements
 	var/head_content = ""
 	var/content = ""
 	var/title_buttons = ""
@@ -48,8 +46,11 @@
 /datum/browser/proc/set_title(ntitle)
 	title = format_text(ntitle)
 
-/datum/browser/proc/add_head_content(nhead_content)
+/datum/browser/proc/set_head_content(nhead_content)
 	head_content = nhead_content
+
+/datum/browser/proc/add_head_content(nhead_content)
+	head_content += nhead_content
 
 /datum/browser/proc/set_title_buttons(ntitle_buttons)
 	title_buttons = ntitle_buttons
@@ -254,7 +255,7 @@ CLIENT_VERB(windowclose, atomref as text|null, params as text|null)
 		mob.unset_interaction()
 	return
 
-/proc/show_browser(client/target, browser_content, browser_name, id = null, window_options = null, closeref, width, height, existing_container = FALSE)
+/proc/show_browser(client/target, browser_content, browser_name, id = null, window_options = null, closeref, width, height, existing_container = FALSE, list/extra_stylesheets, list/extra_headers)
 	if(!target)
 		return
 	if(!istype(target))
@@ -277,6 +278,11 @@ CLIENT_VERB(windowclose, atomref as text|null, params as text|null)
 	popup.set_content(browser_content)
 	if(window_options)
 		popup.set_window_options(window_options)
+	for(var/key in extra_stylesheets)
+		popup.add_stylesheet(key, extra_stylesheets[key])
+	for(var/header in extra_headers)
+		popup.add_head_content(header)
+
 	popup.open()
 
 /datum/browser/modal

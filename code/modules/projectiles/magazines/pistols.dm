@@ -174,6 +174,11 @@
 	default_ammo = /datum/ammo/bullet/pistol/squash/incendiary
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
 
+/obj/item/ammo_magazine/pistol/vp78/heap
+	name = "\improper VP78 high explosive armor piercing magazine (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/squash/heap
+	ammo_band_color = AMMO_BAND_COLOR_HEAP
+
 /obj/item/ammo_magazine/pistol/vp78/rubber
 	name = "\improper VP78 rubber magazine (9mm)"
 	desc = "A 9mm pistol magazine for the VP78. This one is loaded with rubber bullets."

@@ -45,7 +45,7 @@
 	var/offset_x = 1
 	var/offset_y = -6
 
-	var/image/fire_overlay = image(icon, icon_state = will_explode ? "on_fire_explode_overlay" : "on_fire_overlay", pixel_x = offset_x, pixel_y = offset_y)
+	var/image/fire_overlay = image(flames_icon, icon_state = will_explode ? "on_fire_explode_overlay" : "on_fire_overlay", pixel_x = offset_x, pixel_y = offset_y)
 	overlays.Add(fire_overlay)
 
 /obj/item/ammo_box/magazine/misc/explode(severity, datum/cause_data/flame_cause_data)

@@ -47,7 +47,7 @@
 	if(inoperable())
 		return
 	if(operating)
-		to_chat(user, SPAN_DANGER("It's locked and running"))
+		to_chat(user, SPAN_DANGER("It's locked and running."))
 		return
 	else
 		startgibbing(user)
@@ -131,7 +131,7 @@
 	for(var/obj/O in src)
 		O.forceMove(loc)
 	if (occupant.client)
-		occupant.client.eye = occupant.client.mob
+		occupant.client.set_eye(occupant.client.mob)
 		occupant.client.perspective = MOB_PERSPECTIVE
 	occupant.forceMove(loc)
 	if(launch)

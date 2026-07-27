@@ -243,8 +243,8 @@
 		user.pixel_y = 0
 		if(user.client)
 			user.client.change_view(GLOB.world_view_size, src)
-			user.client.pixel_x = 0
-			user.client.pixel_y = 0
+			user.client.set_pixel_x(0)
+			user.client.set_pixel_y(0)
 			UnregisterSignal(user.client, COMSIG_PARENT_QDELETING)
 
 	var/obj/item/attachable/vulture_scope/scope = get_vulture_scope()
@@ -265,8 +265,8 @@
 	var/y_off = scope.scope_y - user_turf.y
 	var/pixels_per_tile = 32
 
-	user.client.pixel_x = x_off * pixels_per_tile
-	user.client.pixel_y = y_off * pixels_per_tile
+	user.client.set_pixel_x(x_off * pixels_per_tile)
+	user.client.set_pixel_y(y_off * pixels_per_tile)
 
 /// Handler for when the vulture spotter scope moves
 /obj/structure/vulture_spotter_tripod/proc/on_vulture_move(datum/source)

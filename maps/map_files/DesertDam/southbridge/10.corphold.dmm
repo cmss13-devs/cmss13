@@ -84,10 +84,6 @@
 /obj/effect/landmark/crap_item,
 /turf/open/floor/prison,
 /area/desert_dam/exterior/valley/south_valley_dam)
-"an" = (
-/obj/effect/decal/cleanable/ammo_casing/bullet,
-/turf/open/asphalt,
-/area/desert_dam/exterior/valley/valley_medical)
 "ar" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal11"
@@ -186,6 +182,10 @@
 /obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/wygoon/trijent,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"ht" = (
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "hU" = (
@@ -1131,7 +1131,7 @@ uM
 RN
 ih
 Ds
-an
+ht
 FH
 pE
 le
@@ -1264,7 +1264,7 @@ yn
 oI
 Hp
 wj
-an
+ht
 xh
 aw
 "}
@@ -1521,7 +1521,7 @@ uM
 RN
 ih
 ab
-an
+ht
 ic
 xh
 bW

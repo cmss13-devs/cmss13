@@ -34,7 +34,7 @@ GLOBAL_DATUM_INIT(sun_status, /datum/sun, new)
 		startup_delay = 10 SECONDS
 		used_color_progression = sunrise_color_progression
 
-	sun_behavior = SPECIAL_LIGHTING_SUNSET
+	sun_behavior = behavior
 
 	handle_player_light()
 

@@ -3,7 +3,7 @@
 	assignment = "Issledovatel' Korpusa Kosmicheskoy Eksploratsii"
 	minimap_icon = "upp_sci"
 	minimap_background = "background_upp_charlie"
-	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_CHINESE, LANGUAGE_ENGLISH)
+	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_CHINESE)
 	job_title = JOB_CEC_DOCENT
 	paygrades = list(PAY_SHORT_CEC2 = JOB_PLAYTIME_TIER_0)
 	faction = FACTION_CEC

@@ -13,16 +13,16 @@
 			_role = id_card.rank
 	switch(_role)
 		if(JOB_CEC_SYNTH)
-			hud_icon_state = "cec_synth"
+			hud_icon_state = "synth"
 		if(JOB_CEC_TRAINEE)
-			hud_icon_state = "cec_docent"
+			hud_icon_state = "docent"
 		if(JOB_CEC_DOCENT)
-			hud_icon_state = "cec_docent"
+			hud_icon_state = "docent"
 		if(JOB_CEC_PROFESSOR)
-			hud_icon_state = "cec_red_star"
+			hud_icon_state = "red_star"
 		if(JOB_CEC_VICE_RECTOR)
-			hud_icon_state = "cec_red_star"
+			hud_icon_state = "red_star"
 		if(JOB_CEC_RECTOR)
-			hud_icon_state = "cec_red_star"
+			hud_icon_state = "red_star"
 	if(hud_icon_state)
 		holder.overlays += image(override_icon_file ? override_icon_file : base_icon_file, human, "cec_[hud_icon_state]")

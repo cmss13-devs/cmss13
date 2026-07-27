@@ -67,34 +67,16 @@ SUBSYSTEM_DEF(mapgrids)
 		if(MC_TICK_CHECK)
 			return
 
+/// Start tracking an atom into the mapgrid system on the default grid. This will attach implicitely the mapcoords component to them.
 /datum/controller/subsystem/mapgrids/proc/track_movable(atom/movable/target)
 	manager.track_movable(target)
 
-/// Queries the mapgrid for ranging information
-/// This is the legacy interface that makes use of old QuadTree Rectangle,
-/// and the filter flags. Remember, on mapgrids, all levels of multi-z are handled together.
-/// TODO remove this later, this is a stand-in replacement for testing
-/datum/controller/subsystem/mapgrids/proc/players_in_range_legacy(datum/shape/rectangle/range, z_level, flags = NO_FLAGS)
-	if(!z_level)
-		return
+/// Gets all contents in the mapgrid of given z-level
+/// This can include things of unexpected types, any movable, mobs without client, and mobs on other linked z-levels!
+/// You are encouraged to use this and not add extra procs for filtering, that way the code that uses this
+/// can directly perform all the neccessary checks at once which is much faster
+/datum/controller/subsystem/mapgrids/proc/get_movables_in_region(z_level, start_x, end_x, start_y, end_y)
+	RETURN_TYPE(/list/atom/movable)
 	var/datum/mapgrid/grid = manager.mapgrids_by_z[z_level]
-	if(!grid)
-		return
-
-	var/start_x = round(range.center_x - range.width * 0.5, 1)
-	var/end_x   = round(range.center_x + range.width * 0.5, 1)
-	var/start_y = round(range.center_y - range.height * 0.5, 1)
-	var/end_y   = round(range.center_y + range.height * 0.5, 1)
-
-	var/list/atom/movable/results = grid.query_range(start_x, end_x, start_y, end_y)
-
-	. = list()
-	for(var/atom/movable/movable as anything in results)
-		if((flags & QTREE_FILTER_LIVING) && !isliving(movable))
-			continue
-		if(!(flags & QTREE_SCAN_MOBS))
-			var/mob/maybe_mob = movable
-			if(ismob(maybe_mob) && maybe_mob.client)
-				. += maybe_mob.client
-		else
-			. += movable // This can return non-mobs, which breaks legacy expectations
+	if(grid)
+		return grid.query_range(start_x, end_x, start_y, end_y)

@@ -265,10 +265,7 @@
 		STOP_PROCESSING(SSobj, src)
 		return
 
-	var/list/targets = SSmapgrids.players_in_range_legacy(SQUARE(M.x, M.y, area_range), M.z, QTREE_SCAN_MOBS | QTREE_FILTER_LIVING)
-	if(!targets)
-		return
-
+	var/list/atom/movable/targets = SSmapgrids.get_movables_in_region(M.z, M.x - area_range, M.x + area_range, M.y - area_range, M.y + area_range)
 	for(var/mob/living/carbon/xenomorph/X in targets)
 		to_chat(X, SPAN_XENOWARNING("Augh! You are slowed by the incessant ringing!"))
 		X.set_effect(slowdown_amount, SUPERSLOW)

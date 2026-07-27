@@ -21,9 +21,12 @@
 	var/x_s_offset // Horizontal sound offset
 
 /datum/sound_template/proc/get_hearers()
-	var/datum/shape/rectangle/zone = SQUARE(x, y, range * 2)
-	return SSmapgrids.players_in_range_legacy(zone, z)
-
+	RETURN_TYPE(/list/client)
+	. = list()
+	var/list/atom/movable/all_contents = SSmapgrids.get_movables_in_region(z, x - range, x + range, y - range, y + range)
+	for(var/mob/mob in all_contents)
+		if(mob.client)
+			. += mob.client
 
 /proc/get_free_channel()
 	var/static/cur_chan = 1

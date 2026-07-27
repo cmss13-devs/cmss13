@@ -178,10 +178,7 @@
 	if(!(isitem(crosser) || isliving(crosser)))
 		return
 
-	if(old_loc != src)
-		INVOKE_ASYNC(crosser, TYPE_PROC_REF(/atom/movable, throw_atom), (get_step(src, dir)), 50, SPEED_FAST, null, TRUE)
-	else
-		INVOKE_NEXT_TICK(crosser, TYPE_PROC_REF(/atom/movable, throw_atom), (get_step(src, dir)), 50, SPEED_FAST, null, TRUE)
+	INVOKE_ASYNC(crosser, TYPE_PROC_REF(/atom/movable, throw_atom), (get_step(src, dir)), 50, SPEED_FAST, null, TRUE)
 
 /turf/open/slippery/hull
 	name = "sloped roof"

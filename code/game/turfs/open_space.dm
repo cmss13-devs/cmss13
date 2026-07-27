@@ -37,10 +37,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 
 /turf/open_space/Entered(atom/movable/entered_movable, atom/old_loc)
 	. = ..()
-	if(old_loc != src)
-		check_fall(entered_movable)
-	else
-		INVOKE_NEXT_TICK(src, PROC_REF(check_fall), entered_movable)
+	check_fall(entered_movable)
 
 /turf/open_space/on_throw_end(atom/movable/thrown_atom)
 	check_fall(thrown_atom)

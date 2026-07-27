@@ -41,6 +41,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/predship/tile/hunter_tile_6/west,
 /area/varadero/interior_protected/vessel)
+"aag" = (
+/obj/structure/sign/banners/twe_worn{
+	pixel_y = 32;
+	desc = "A very worn flag of the Three World Empire. Inspires patriotism, fear, or revulsion depending on the viewer's political leanings. What on earth is this doing here..."
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/maintenance/south)
 "aah" = (
 /obj/structure/bed/chair/hunter{
 	name = "alien chair";
@@ -137,11 +144,36 @@
 	},
 /turf/closed/wall/r_wall/unmeltable,
 /area/varadero/interior/oob)
+"aas" = (
+/obj/structure/sign/banners/twe_worn{
+	pixel_y = 32;
+	desc = "A very worn flag of the Three World Empire. Inspires patriotism, fear, or revulsion depending on the viewer's political leanings. What on earth is this doing here..."
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior_protected/caves/swcaves)
+"aat" = (
+/obj/structure/sign/calendar/twe,
+/turf/closed/wall/r_wall,
+/area/varadero/interior_protected/maintenance/south)
+"aau" = (
+/obj/structure/sign/banners/twe_worn{
+	pixel_y = 32;
+	desc = "A very worn flag of the Three World Empire. Inspires patriotism, fear, or revulsion depending on the viewer's political leanings. What on earth is this doing here..."
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/varadero/interior_protected/caves)
 "aav" = (
 /obj/item/tool/pickaxe,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/caves/east)
+"aaw" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform4{
+	dir = 1
+	},
+/obj/structure/prop/ice_colony/flamingo,
+/turf/open/gm/dirt/dark_brown,
+/area/varadero/interior_protected/caves)
 "aax" = (
 /obj/structure/shuttle/part/dropship3/transparent/engine_right_exhaust{
 	name = "\improper UD-6D - Las Guasimas"
@@ -196,6 +228,10 @@
 	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/varadero/interior/beach_bar)
+"aaA" = (
+/obj/item/ammo_box/magazine/misc/mre/twe,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior_protected/caves)
 "aaB" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice8";
@@ -213,12 +249,24 @@
 /obj/structure/platform_decoration/metal/kutjevo/east,
 /turf/open/gm/coast/east,
 /area/varadero/exterior/pontoon_beach)
+"aaD" = (
+/obj/item/ammo_magazine/rifle/rmc_f90,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior_protected/caves)
 "aaE" = (
 /turf/open/gm/coast/beachcorner2/north_east,
 /area/varadero/exterior/islands)
 "aaF" = (
 /turf/open/gm/coast/north,
 /area/varadero/exterior/islands)
+"aaG" = (
+/obj/structure/machinery/conveyor{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/supply/supplies/mre/twe,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/cargo)
 "aaH" = (
 /turf/open/gm/coast/beachcorner2/north_west,
 /area/varadero/exterior/islands)
@@ -228,6 +276,11 @@
 "aaJ" = (
 /turf/open/gm/coast/west,
 /area/varadero/exterior/islands)
+"aaK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/storage/box/mre/twe,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/cargo)
 "aaL" = (
 /turf/open/gm/coast/beachcorner2/south_east,
 /area/varadero/exterior/islands)
@@ -257,6 +310,14 @@
 	},
 /turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior/caves/north_research)
+"aaR" = (
+/obj/structure/machinery/conveyor{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_box/magazine/misc/mre/twe/empty,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/cargo)
 "aaS" = (
 /obj/structure/sign/calendar{
 	pixel_y = 29
@@ -11570,20 +11631,8 @@
 /turf/open/gm/dirt/dark_brown/variant_5/south,
 /area/varadero/interior_protected/caves)
 "aHT" = (
-/obj/item/ammo_casing/shell{
-	icon_state = "bshell_";
-	dir = 10
-	},
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "mfloor3"
-	},
-/turf/open/gm/dirt/dark_brown,
-/area/varadero/interior_protected/caves)
-"aHU" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/shell{
-	icon_state = "bshell_";
-	dir = 10
 	},
 /turf/open/gm/dirt/dark_brown,
 /area/varadero/interior_protected/caves)
@@ -11610,8 +11659,8 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
 "aHY" = (
-/obj/item/weapon/gun/shotgun/double/damaged,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/gun/rifle/rmc_f90/scope,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
 "aHZ" = (
@@ -11631,6 +11680,7 @@
 	icon_state = "warning_c";
 	dir = 2
 	},
+/obj/item/ammo_magazine/rifle/rmc_f90,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
 "aIb" = (
@@ -11930,11 +11980,11 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
 "aIK" = (
-/obj/item/weapon/gun/shotgun/merc/damaged,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/warning_stripes/asteroid{
 	icon_state = "warning_s"
 	},
+/obj/item/weapon/gun/rifle/rmc_f90/shotgun,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
 "aIL" = (
@@ -11944,14 +11994,17 @@
 /obj/effect/decal/warning_stripes/asteroid{
 	icon_state = "warning_s"
 	},
-/obj/item/ammo_casing/shell{
-	icon_state = "bshell_";
-	dir = 10
+/obj/item/prop{
+	desc = "Empty and useless now.";
+	icon = 'icons/obj/items/casings.dmi';
+	icon_state = "cartridge_2";
+	name = "spent casings";
+	dir = 5;
+	layer = 2.90
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
 "aIM" = (
-/obj/item/ammo_casing/shell,
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_ew_full_cap";
 	dir = 1;
@@ -11981,11 +12034,6 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior_protected/caves)
-"aIP" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random/gun/special/lowchance,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
 "aIQ" = (
@@ -12405,8 +12453,8 @@
 	icon_state = "warning_s";
 	dir = 1
 	},
-/obj/item/ammo_casing/shell,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/rifle/rmc_f90,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
 "aJP" = (
@@ -12446,10 +12494,6 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
 "aJS" = (
-/obj/item/ammo_casing/shell{
-	icon_state = "bshell_";
-	dir = 10
-	},
 /obj/effect/decal/warning_stripes/asteroid{
 	icon_state = "warning_c";
 	dir = 4
@@ -12487,7 +12531,6 @@
 	pixel_x = 2;
 	pixel_y = 18
 	},
-/obj/item/ammo_casing/shell,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -12667,20 +12710,6 @@
 /obj/item/stack/cable_coil/random,
 /turf/open/floor/asteroidfloor,
 /area/varadero/interior/maintenance/security/south/hangar)
-"aKx" = (
-/obj/item/ammo_casing/shell{
-	icon_state = "bshell_";
-	dir = 10
-	},
-/turf/open/gm/dirt/dark_brown,
-/area/varadero/interior_protected/caves)
-"aKy" = (
-/obj/item/ammo_casing/shell{
-	icon_state = "bshell_";
-	dir = 10
-	},
-/turf/open/auto_turf/hybrisa_auto_turf/layer0,
-/area/varadero/interior_protected/caves)
 "aKz" = (
 /obj/effect/decal/warning_stripes/asteroid{
 	icon_state = "warning_s";
@@ -13638,6 +13667,7 @@
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_8"
 	},
+/obj/item/ammo_magazine/rifle/rmc_f90,
 /turf/open/floor/elevatorshaft,
 /area/varadero/interior_protected/caves)
 "aMV" = (
@@ -13977,12 +14007,12 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/hybrisa/kelland_miner/burst,
+/obj/item/weapon/gun/rifle/rmc_f90,
 /turf/open/floor/elevatorshaft,
 /area/varadero/interior_protected/caves)
 "aNR" = (
 /obj/structure/platform/metal/kutjevo/north,
 /obj/effect/decal/cleanable/blood,
-/obj/effect/spawner/random/gun/civ/midchance,
 /turf/open/floor/elevatorshaft,
 /area/varadero/interior_protected/caves)
 "aNS" = (
@@ -46259,11 +46289,6 @@
 	},
 /turf/open/gm/dirt/desert_dug,
 /area/varadero/exterior/pontoon_beach)
-"csr" = (
-/obj/structure/prop/ice_colony/flamingo,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior_protected/caves)
 "css" = (
 /obj/item/stack/catwalk,
 /obj/structure/machinery/light/dropship/green{
@@ -46494,10 +46519,6 @@
 	name = "mess hall semiotic";
 	desc = "Semiotic Standard denoting the nearby presence of a mess hall."
 	},
-/turf/closed/wall/r_wall,
-/area/varadero/interior/cargo)
-"csQ" = (
-/obj/structure/sign/calendar,
 /turf/closed/wall/r_wall,
 /area/varadero/interior/cargo)
 "csR" = (
@@ -58038,9 +58059,9 @@
 	desc = "It kind of looks like the uniform worn by the IASF... somethings off about it though."
 	},
 /obj/item/clothing/suit/storage/jacket/marine/rmc/service/iasf_combat_jacket,
-/obj/item/weapon/gun/rifle/rmc_f90/a_grip,
 /obj/item/ammo_magazine/rifle/rmc_f90,
 /obj/item/ammo_magazine/rifle/rmc_f90,
+/obj/item/weapon/gun/rifle/rmc_f90/scope,
 /turf/open/predship/hunter_grate,
 /area/varadero/interior_protected/vessel)
 "idr" = (
@@ -67595,12 +67616,12 @@
 /obj/structure/closet/secure_closet/security_empty{
 	name = "\improper Military Policía NCO's Locker"
 	},
-/obj/item/weapon/gun/smg/bizon{
-	desc = "The standard submachinegun of the UPP, sporting an unusual 64 round helical magazine, it has a high fire-rate, but is unusually accurate. This one has a faux-wood grip, denoting it as civilian use or as an export model. It has had an old Latin american nation's flag engraved on the grip"
-	},
-/obj/item/ammo_magazine/smg/bizon,
-/obj/item/ammo_magazine/smg/bizon,
 /obj/item/clothing/mask/gas/swat,
+/obj/item/weapon/gun/rifle/rmc_f90/a_grip{
+	desc = "A non-standard issue rifle of the royal marines the F903A2 is currently being phased into the royal marines as their new mainline rifle but currently only sees use by unit leaders. Uniquely the royal marines are the only modern military to not use a pulse weapon. Uses 10x24mm caseless ammunition.  It has had an old Latin american nation's flag engraved on the grip."
+	},
+/obj/item/ammo_magazine/rifle/rmc_f90,
+/obj/item/ammo_magazine/rifle/rmc_f90,
 /turf/open/floor/wood,
 /area/varadero/interior/security)
 "pJf" = (
@@ -78051,7 +78072,10 @@
 /area/varadero/interior/maintenance/north)
 "xEl" = (
 /obj/structure/closet/secure_closet/miner,
-/obj/item/clothing/suit/storage/militia/vest,
+/obj/item/clothing/suit/storage/militia/vest{
+	desc = "The hauberk of a 'Bug Boys' militia member, created from boiled leather and some modern armored plates. While not the most powerful form of armor, and primitive compared to most modern suits of armor, it gives the wearer almost perfect mobility, which suits the needs of the local colonists. It is also quick to don, easy to hide, and cheap to produce in large workshops. This extremely light variant protects only the chest and abdomen.";
+	name = "Bug Boys militia vest"
+	},
 /obj/effect/decal/warning_stripes/asteroid{
 	icon_state = "warning_s";
 	dir = 4
@@ -84205,7 +84229,7 @@ abE
 avf
 apM
 aLj
-aKx
+aqB
 aJO
 aIK
 lMb
@@ -84480,7 +84504,7 @@ cqs
 huF
 cpb
 cls
-ckK
+aaR
 ykc
 cmg
 cls
@@ -84569,10 +84593,10 @@ huF
 huF
 aLZ
 apM
-aKy
+apM
 aJR
 aIM
-aHU
+arG
 atD
 aFS
 abE
@@ -84666,7 +84690,7 @@ ckK
 ykc
 cmh
 clt
-ckK
+aaG
 ykc
 giu
 ciE
@@ -85299,8 +85323,8 @@ aMb
 uQa
 aKA
 aJT
-aIP
-uQa
+aso
+aaA
 aso
 aFW
 alL
@@ -85481,7 +85505,7 @@ aMc
 aLm
 aKB
 aJU
-uQa
+aaD
 mdL
 aHf
 aFY
@@ -86027,7 +86051,7 @@ aMe
 fRl
 hMC
 iWE
-csr
+aso
 aHZ
 aHi
 aGb
@@ -86043,7 +86067,7 @@ uQa
 aqB
 ask
 abE
-apL
+aau
 arE
 arG
 asj
@@ -86213,7 +86237,7 @@ aIS
 aIa
 aHj
 aFT
-aBu
+aaw
 aqB
 aqB
 avf
@@ -87030,7 +87054,7 @@ clu
 cow
 cnH
 ykc
-clu
+aaK
 clE
 ckS
 huF
@@ -87567,7 +87591,7 @@ cwK
 cga
 cuH
 ctN
-csQ
+adw
 crX
 crk
 cqz
@@ -89316,7 +89340,7 @@ aqB
 azN
 aqB
 avf
-abE
+huF
 ksX
 axv
 ksX
@@ -89498,7 +89522,7 @@ aAs
 jAI
 azs
 abE
-abE
+huF
 cto
 axw
 wff
@@ -91346,7 +91370,7 @@ mCF
 abO
 abO
 aiQ
-rgz
+aas
 qzZ
 abW
 rgz
@@ -92245,7 +92269,7 @@ ksX
 ksX
 ksX
 ksX
-ksX
+aat
 cto
 cto
 cto
@@ -100628,8 +100652,8 @@ abO
 abO
 abO
 mCF
-cba
-xxk
+ksX
+aag
 etv
 cto
 ksX

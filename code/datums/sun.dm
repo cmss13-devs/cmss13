@@ -5,13 +5,20 @@ GLOBAL_DATUM_INIT(sun_status, /datum/sun, new)
 	var/static/list/cold_color_progression = list("#6679a8", "#516a8b", "#38486e", "#2c2f4d", "#211b36", "#1f1b33", "#0c0a1b", "#000")
 	var/static/list/sunrise_color_progression = list("#000", "#040712", "#111322", "#291642", "#3f2239", "#632c3d", "#d89d6d")
 	var/list/used_color_progression
-	var/is_cold = FALSE ///are we on snowy planet
+	/// are we on snowy planet
+	var/is_cold = FALSE 
+	/// the lighting behaviour currently applied
 	var/sun_behavior = SPECIAL_LIGHTING_PREROUND
-	var/stage_time = 0/// how long each stage lasts, don't edit this if you want smooth movement, use special_stage_time instead
-	var/max_stages = 0 /// how many stages of special lighting there are, starts at 0
-	var/stage = 1 ///current stage of the sun
-	var/startup_delay = 0 /// how long the initial stage lasts for, doesn't factor in round start stuff
-	var/sun_behavior_change_time = 0 ///when did we set this sun behavior
+	/// how long each stage lasts, dynamically based on the sun behavior
+	var/stage_time = 0
+	/// how many stages of special lighting there are, starts at 0
+	var/max_stages = 0
+	/// current stage of the sun 
+	var/stage = 1 
+	/// how long the initial stage lasts for, doesn't factor in round start stuff
+	var/startup_delay = 0 
+	/// when did we set this sun behavior
+	var/sun_behavior_change_time = 0 
 
 /datum/sun/proc/start_sun_behavior(behavior = SPECIAL_LIGHTING_SUNSET)
 	if(behavior == SPECIAL_LIGHTING_PREROUND)

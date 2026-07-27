@@ -45,7 +45,7 @@ GLOBAL_DATUM_INIT(sun_status, /datum/sun, new)
 	if(behavior == SPECIAL_LIGHTING_SELF_DESTRUCTION)
 		stage_time = 3 SECONDS
 		max_stages = 6
-		startup_delay = 0 SECONDS
+		startup_delay = -2.5 SECONDS
 		used_color_progression = self_destruction_progression
 
 	sun_behavior = behavior

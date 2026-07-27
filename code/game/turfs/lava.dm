@@ -19,6 +19,7 @@
 	allow_construction = FALSE
 
 /turf/open/fire_colony/hot_lava/Entered(atom/thing)
+	. = ..()
 	if(iscarbon(thing))
 		var/mob/living/carbon/person = thing
 		var/can_stuck = 1

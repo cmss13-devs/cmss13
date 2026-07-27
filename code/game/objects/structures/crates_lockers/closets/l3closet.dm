@@ -81,5 +81,3 @@
 	new /obj/item/clothing/suit/bio_suit/lasalle( src )
 	new /obj/item/clothing/head/bio_hood/lasalle( src )
 	new /obj/item/clothing/mask/gas/pmc/lasalle( src )
-	RemoveElement(/datum/element/corp_label/wy)
-	AddElement(/datum/element/corp_label/bionational)

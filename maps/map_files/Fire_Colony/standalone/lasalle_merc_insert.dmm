@@ -3,10 +3,27 @@
 /obj/effect/decal/warning_stripes/worn,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/item/trash/cigbutt,
-/obj/structure/pipes/standard/simple/hidden/green{
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	color = "#858680"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
 /turf/open/floor/strata/sand3,
+/area/fire_colony/interior/hangar/alpha)
+"ab" = (
+/obj/effect/decal/warning_stripes/worn{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	color = "#858680"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 1
+	},
+/turf/open/floor/strata/sand3/east,
 /area/fire_colony/interior/hangar/alpha)
 "ac" = (
 /obj/structure/window/framed/lava/reinforced,
@@ -271,7 +288,7 @@
 /area/fire_colony/interior/hangar/checkpoint)
 "if" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/pipes/standard/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 6
 	},
 /turf/open/floor/strata/multi_tiles,
@@ -420,7 +437,13 @@
 	dir = 4
 	},
 /obj/item/trash/cigbutt,
-/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	color = "#858680"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 1
+	},
 /turf/open/floor/strata/sand3/east,
 /area/fire_colony/interior/hangar/alpha)
 "mS" = (
@@ -442,7 +465,11 @@
 /obj/effect/decal/warning_stripes/worn/stripes_double{
 	dir = 1
 	},
-/obj/structure/pipes/standard/simple/hidden/green{
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	color = "#858680"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
 /turf/open/floor/strata/multi_tiles/west,
@@ -457,7 +484,11 @@
 	dir = 1;
 	pixel_x = 24
 	},
-/obj/structure/pipes/standard/simple/hidden/green{
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	color = "#858680"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
 /turf/open/floor/strata/floor2,
@@ -502,7 +533,12 @@
 	dir = 8
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/pipes/standard/simple/hidden/green{
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c";
+	color = "#858680"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 5
 	},
 /turf/open/floor/strata/sand3/west,
@@ -689,14 +725,22 @@
 	dir = 4
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/survivor_spawner/fire_colony_lb_merc,
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	color = "#858680"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 1
+	},
 /turf/open/floor/strata/sand3/east,
 /area/fire_colony/interior/hangar/alpha)
 "tQ" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 1
+	},
 /turf/open/floor/strata/multi_tiles,
 /area/fire_colony/interior/hangar/checkpoint)
 "tT" = (
@@ -756,19 +800,27 @@
 /obj/structure/machinery/door/airlock/multi_tile/lavaland/black_double/autoname{
 	dir = 1
 	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
 /obj/structure/machinery/door/poddoor/almayer/dark/open{
 	dir = 4;
 	id = "aero_shutters"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	color = "#858680"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
 	},
 /turf/open/floor/strata/floor3,
 /area/fire_colony/interior/hangar/alpha)
 "we" = (
 /obj/effect/decal/warning_stripes/worn,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/pipes/standard/simple/hidden/green{
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	color = "#858680"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
 /turf/open/floor/strata/sand3,
@@ -795,7 +847,7 @@
 /area/fire_colony/interior/hangar/alpha)
 "wr" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/pipes/standard/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
 /turf/open/floor/strata/floor3,
@@ -853,7 +905,11 @@
 /area/fire_colony/interior/hangar/alpha)
 "xQ" = (
 /obj/effect/decal/warning_stripes/worn,
-/obj/structure/pipes/standard/simple/hidden/green{
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	color = "#858680"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
 /turf/open/floor/strata/sand3,
@@ -950,7 +1006,7 @@
 	dir = 4
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/pipes/standard/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 9
 	},
 /turf/open/floor/strata/sand3/east,
@@ -970,7 +1026,13 @@
 	dir = 4
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	color = "#858680"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 1
+	},
 /turf/open/floor/strata/sand3/east,
 /area/fire_colony/interior/hangar/alpha)
 "zt" = (
@@ -983,17 +1045,21 @@
 /area/fire_colony/interior/hangar/alpha)
 "zI" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/pipes/standard/simple/hidden/green{
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	color = "#858680"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
 /turf/open/floor/strata/floor2,
 /area/fire_colony/interior/hangar/alpha)
 "zP" = (
-/obj/structure/machinery/door/airlock/almayer/lavaland/glass/red/autoname,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/pipes/standard/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/structure/machinery/door/airlock/almayer/lavaland/glass/red/autoname,
 /turf/open/floor/strata/floor3,
 /area/fire_colony/interior/hangar/checkpoint)
 "Ae" = (
@@ -1208,7 +1274,9 @@
 /obj/effect/decal/warning_stripes/worn{
 	dir = 4
 	},
-/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 1
+	},
 /turf/open/floor/strata/sand3/east,
 /area/fire_colony/interior/hangar/alpha)
 "Fh" = (
@@ -1371,13 +1439,19 @@
 /area/fire_colony/interior/hangar/alpha)
 "HN" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 1
+	},
 /turf/open/floor/strata/multi_tiles,
 /area/fire_colony/interior/hangar/checkpoint)
 "HS" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/warning_stripes/worn,
-/obj/structure/pipes/standard/simple/hidden/green{
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	color = "#858680"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
 /turf/open/floor/strata/sand3,
@@ -1713,12 +1787,16 @@
 "Ss" = (
 /obj/structure/machinery/door/airlock/almayer/lavaland/glass/autoname,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
 /obj/structure/machinery/door/poddoor/almayer/dark/open{
 	dir = 4;
 	id = "aero_shutters"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	color = "#858680"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
 	},
 /turf/open/floor/strata/floor3,
 /area/fire_colony/interior/hangar/alpha)
@@ -1756,7 +1834,12 @@
 "Tc" = (
 /obj/effect/decal/warning_stripes/worn/corner,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/pipes/standard/simple/hidden/green{
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c";
+	color = "#858680"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 6
 	},
 /turf/open/floor/strata/sand3/southeast,
@@ -1783,9 +1866,15 @@
 /obj/effect/decal/warning_stripes/worn{
 	dir = 4
 	},
-/obj/structure/pipes/standard/simple/hidden/green,
 /obj/item/ammo_magazine/smg/a_m36{
 	current_rounds = 0
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	color = "#858680"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 1
 	},
 /turf/open/floor/strata/sand3/east,
 /area/fire_colony/interior/hangar/alpha)
@@ -1943,7 +2032,12 @@
 	dir = 1
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/pipes/standard/simple/hidden/green{
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c";
+	color = "#858680"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 10
 	},
 /turf/open/floor/strata/sand3/southwest,
@@ -1960,7 +2054,12 @@
 /obj/effect/decal/warning_stripes/worn{
 	dir = 4
 	},
-/obj/structure/pipes/standard/manifold/hidden/green{
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c";
+	color = "#858680"
+	},
+/obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 4
 	},
 /turf/open/floor/strata/sand3/east,
@@ -2092,14 +2191,14 @@ HE
 ac
 pf
 Tc
-EU
-EU
-EU
+ab
+ab
+ab
 tK
 Ud
 mk
 zb
-EU
+ab
 Zh
 EU
 yU

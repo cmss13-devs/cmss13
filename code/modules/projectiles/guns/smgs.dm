@@ -1063,7 +1063,6 @@
 	recoil_unwielded = RECOIL_AMOUNT_TIER_1
 	fa_max_scatter = SCATTER_AMOUNT_TIER_10 + 0.5
 
-/obj/item/weapon/gun/smg/a_m36/Initialize(mapload, spawn_empty)
+/obj/item/weapon/gun/smg/a_m36/Initialize()
 	. = ..()
-	if(spawn_empty)
-		return
+	AddElement(/datum/element/corp_label/bionational)

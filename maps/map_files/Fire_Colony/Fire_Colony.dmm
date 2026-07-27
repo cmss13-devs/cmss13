@@ -103,9 +103,53 @@
 	},
 /turf/open/floor/strata/floor2,
 /area/fire_colony/interior/omicron_facility/passthrough)
+"aas" = (
+/obj/effect/decal/hybrisa/road/lines4{
+	pixel_x = 1;
+	color = "#718184"
+	},
+/obj/effect/decal/hybrisa/road/lines3{
+	pixel_y = -1;
+	color = "#718184"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	color = "#858680"
+	},
+/turf/open/floor/hybrisa/carpet/blue_grey,
+/area/fire_colony/interior/bar)
 "aat" = (
 /turf/open/fire_colony/brock,
 /area/fire_colony/exterior/valley/northwest)
+"aau" = (
+/obj/structure/machinery/door/airlock/multi_tile/lavaland/black_double/autoname{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	color = "#858680"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	color = "#858680"
+	},
+/turf/open/floor/strata/floor3,
+/area/fire_colony/interior/bar/canteen)
+"aav" = (
+/obj/effect/decal/warning_stripes/worn{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	color = "#858680"
+	},
+/turf/open/floor/strata/sand3/east,
+/area/fire_colony/interior/hangar/alpha)
 "aay" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -4974,13 +5018,6 @@
 /obj/effect/landmark/ambient_sound/lava,
 /turf/open/fire_colony/basalt/glowing/basalt1,
 /area/fire_colony/exterior/clearing/pass)
-"azT" = (
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	color = "#858680"
-	},
-/turf/open/floor/strata/floor2,
-/area/fire_colony/interior/hangar/hallway)
 "azU" = (
 /obj/effect/decal/warning_stripes/worn/stripes_double{
 	dir = 8
@@ -5363,10 +5400,6 @@
 	pixel_y = -13
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	color = "#858680"
-	},
 /turf/open/fire_colony/asteroid/directions/southwest,
 /area/fire_colony/exterior/clearing/south)
 "aBM" = (
@@ -6414,6 +6447,10 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	color = "#858680"
+	},
 /turf/open/floor/strata/floor2,
 /area/fire_colony/interior/hangar/alpha)
 "aJY" = (
@@ -6682,13 +6719,6 @@
 "aLh" = (
 /turf/open/floor/plating/fire_colony/filtrationside_lava_straight/north,
 /area/fire_colony/exterior/container_yard)
-"aLi" = (
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	color = "#858680"
-	},
-/turf/open/fire_colony/basalt/basalt6,
-/area/fire_colony/exterior/clearing/south)
 "aLj" = (
 /obj/effect/lava/edges/basalt/l_piece{
 	dir = 4
@@ -7278,6 +7308,11 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 10
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c";
+	color = "#858680"
+	},
 /turf/open/floor/strata/sand3/southwest,
 /area/fire_colony/interior/hangar/alpha)
 "aOb" = (
@@ -7398,6 +7433,10 @@
 /obj/effect/decal/warning_stripes/worn,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	color = "#858680"
 	},
 /turf/open/floor/strata/sand3,
 /area/fire_colony/interior/hangar/alpha)
@@ -9226,10 +9265,6 @@
 /area/fire_colony/exterior/clearing/pass)
 "aYO" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	color = "#858680"
-	},
 /turf/open/floor/plating/fire_colony/warnplate/east,
 /area/fire_colony/exterior/landing_pad)
 "aYP" = (
@@ -11426,6 +11461,11 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 6
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c";
+	color = "#858680"
+	},
 /turf/open/floor/strata/sand3/southeast,
 /area/fire_colony/interior/hangar/alpha)
 "bmo" = (
@@ -11600,10 +11640,6 @@
 /area/fire_colony/exterior/landing_pad_external)
 "boB" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	color = "#858680"
-	},
 /turf/open/floor/strata/smooth_dir/southwest,
 /area/fire_colony/exterior/landing_pad)
 "boI" = (
@@ -12874,10 +12910,6 @@
 /obj/effect/decal/warning_stripes/worn/stripes_double{
 	dir = 8;
 	pixel_y = 24
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	color = "#858680"
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/floor/strata/floor3,
@@ -15889,6 +15921,10 @@
 	},
 /obj/item/trash/cigbutt,
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	color = "#858680"
+	},
 /turf/open/floor/strata/sand3/east,
 /area/fire_colony/interior/hangar/alpha)
 "cmv" = (
@@ -19414,6 +19450,10 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	color = "#858680"
+	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/fire_colony/interior/hangar/hallway)
 "dfE" = (
@@ -19512,14 +19552,6 @@
 "dgT" = (
 /turf/open/floor/corsat/spiralplate,
 /area/fire_colony/interior/mining_garage)
-"dhe" = (
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	color = "#858680"
-	},
-/turf/open/floor/plating/fire_colony,
-/area/fire_colony/exterior/landing_pad)
 "dhg" = (
 /obj/structure/platform/metal/lava_metal/west,
 /obj/structure/flora/alien/sparsegrass/sparsegrass_1,
@@ -19953,13 +19985,6 @@
 /obj/structure/platform/stone/lava/east,
 /turf/open/fire_colony/basalt/basalt0,
 /area/fire_colony/exterior/valley/west)
-"dmm" = (
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	color = "#858680"
-	},
-/turf/open/fire_colony/basalt/basalt10,
-/area/fire_colony/exterior/clearing/south)
 "dmq" = (
 /obj/effect/blocker/lava,
 /obj/effect/landmark/ambient_sound/lava,
@@ -20440,15 +20465,6 @@
 	},
 /turf/open/floor/corsat,
 /area/fire_colony/interior/storage_unit/e_valley)
-"drX" = (
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	color = "#858680"
-	},
-/turf/open/floor/plating/fire_colony/warnplate,
-/area/fire_colony/exterior/landing_pad)
 "drY" = (
 /obj/structure/bed/hybrisa/dingy{
 	dir = 1;
@@ -21639,6 +21655,11 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 9
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c";
+	color = "#858680"
+	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/fire_colony/interior/bar/canteen)
 "dGX" = (
@@ -21880,7 +21901,8 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/disposalpipe/segment{
-	dir = 8;
+	dir = 1;
+	icon_state = "pipe-c";
 	color = "#858680"
 	},
 /turf/open/floor/fire_colony,
@@ -23729,6 +23751,10 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	color = "#858680"
+	},
 /turf/open/floor/strata/sand3,
 /area/fire_colony/interior/hangar/alpha)
 "egu" = (
@@ -24233,6 +24259,10 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	color = "#858680"
+	},
 /turf/open/floor/fire_colony,
 /area/fire_colony/interior/bar)
 "emA" = (
@@ -24241,6 +24271,10 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	color = "#858680"
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/fire_colony/interior/hangar/alpha)
@@ -25146,6 +25180,10 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	color = "#858680"
+	},
 /turf/open/floor/strata/sand3,
 /area/fire_colony/interior/hangar/alpha)
 "ewM" = (
@@ -25458,10 +25496,6 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/machinery/door/poddoor/almayer/dark/open,
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	color = "#858680"
-	},
 /turf/open/floor/strata/floor3,
 /area/fire_colony/interior/hangar/hallway)
 "eAG" = (
@@ -27612,15 +27646,6 @@
 /obj/item/device/flashlight/lamp/tripod/grey/off,
 /turf/open/floor/plating/fire_colony/grille,
 /area/fire_colony/exterior/clearing/south_west)
-"eZF" = (
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	color = "#858680"
-	},
-/turf/open/fire_colony/asteroid/directions/west,
-/area/fire_colony/exterior/clearing/south)
 "eZH" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -29540,10 +29565,6 @@
 "fwc" = (
 /obj/structure/flora/tree/alien/tree_8,
 /obj/effect/lava/edges/basalt/l_piece,
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	color = "#858680"
-	},
 /turf/open/fire_colony/brock,
 /area/fire_colony/exterior/clearing/south)
 "fws" = (
@@ -29949,16 +29970,6 @@
 	},
 /turf/open/fire_colony/brock,
 /area/fire_colony/exterior/underground/excavation/north)
-"fBD" = (
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	color = "#858680"
-	},
-/turf/open/floor/plating/fire_colony,
-/area/fire_colony/exterior/landing_pad)
 "fBE" = (
 /obj/effect/lava/edges/basalt/l_piece{
 	dir = 4
@@ -31278,6 +31289,10 @@
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 1
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	color = "#858680"
+	},
 /turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/west,
 /area/fire_colony/interior/bar/canteen)
 "fQb" = (
@@ -31784,6 +31799,10 @@
 /obj/effect/landmark/survivor_spawner,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 5
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	color = "#858680"
 	},
 /turf/open/floor/hybrisa/carpet/blue_grey,
 /area/fire_colony/interior/bar)
@@ -32390,10 +32409,6 @@
 	layer = 2.01
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	color = "#858680"
-	},
 /turf/open/floor/corsat,
 /area/fire_colony/interior/hangar/hallway)
 "gbF" = (
@@ -32593,16 +32608,6 @@
 	},
 /turf/open/fire_colony/basalt/basalt4,
 /area/fire_colony/exterior/clearing/north_east)
-"gdZ" = (
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	color = "#858680"
-	},
-/obj/item/lightstick/red/spoke/planted{
-	icon_state = "lightstick_red_variant1"
-	},
-/turf/open/floor/plating/fire_colony/grille,
-/area/fire_colony/exterior/landing_pad)
 "geu" = (
 /obj/effect/lava/edges/basalt/l_piece{
 	dir = 4
@@ -33358,13 +33363,6 @@
 /obj/structure/fence/slim/blue,
 /turf/open/fire_colony/brock,
 /area/fire_colony/exterior/clearing/south_west)
-"gok" = (
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	color = "#858680"
-	},
-/turf/open/floor/strata/deco,
-/area/fire_colony/interior/hangar/hallway)
 "gom" = (
 /obj/effect/decal/warning_stripes/worn{
 	dir = 1
@@ -34930,20 +34928,6 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/floor/strata/lightblue3/east,
 /area/fire_colony/interior/hydroponics/science)
-"gHY" = (
-/obj/effect/lava/edges/basalt/l_piece{
-	dir = 4
-	},
-/obj/effect/lava/edges/basalt/l_piece{
-	dir = 1
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c";
-	color = "#858680"
-	},
-/turf/open/fire_colony/dirt,
-/area/fire_colony/exterior/clearing/south)
 "gId" = (
 /obj/effect/lava/edges/basalt/l_piece{
 	dir = 8
@@ -35746,6 +35730,10 @@
 "gQB" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	color = "#858680"
+	},
 /turf/open/floor/strata/floor3,
 /area/fire_colony/interior/bar)
 "gQF" = (
@@ -36209,6 +36197,10 @@
 /obj/structure/machinery/door/poddoor/almayer/dark/open{
 	dir = 4;
 	id = "aero_shutters"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	color = "#858680"
 	},
 /turf/open/floor/strata/floor3,
 /area/fire_colony/interior/hangar/alpha)
@@ -37178,19 +37170,6 @@
 	},
 /turf/open/fire_colony/basalt/basalt11,
 /area/fire_colony/exterior/clearing/pass)
-"hhu" = (
-/obj/effect/lava/edges/basalt/l_piece{
-	dir = 4
-	},
-/obj/effect/lava/edges/basalt/side_rock{
-	dir = 8
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	color = "#858680"
-	},
-/turf/open/fire_colony/dirt,
-/area/fire_colony/exterior/clearing/south)
 "hhx" = (
 /obj/structure/platform/metal/almayer/east,
 /obj/effect/lava/edges/basalt/l_piece{
@@ -37578,6 +37557,10 @@
 /area/fire_colony/exterior/clearing/south_west)
 "hmK" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	color = "#858680"
+	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/fire_colony/interior/bar/canteen)
 "hmS" = (
@@ -39206,15 +39189,6 @@
 /obj/effect/blocker/lava,
 /turf/open/fire_colony/hot_lava/L_piece/south,
 /area/fire_colony/exterior/valley/southeast)
-"hFK" = (
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	color = "#858680"
-	},
-/turf/open/floor/plating/fire_colony/grille,
-/area/fire_colony/exterior/landing_pad)
 "hFL" = (
 /obj/effect/lava/edges/basalt/l_piece{
 	dir = 1
@@ -39680,16 +39654,6 @@
 /obj/effect/lava/edges/basalt/corner_rock,
 /turf/open/fire_colony/dirt,
 /area/fire_colony/exterior/valley/southeast)
-"hKV" = (
-/obj/effect/lava/edges/basalt/l_piece{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	color = "#858680"
-	},
-/turf/open/fire_colony/dirt,
-/area/fire_colony/exterior/clearing/south)
 "hKY" = (
 /turf/open/floor/hybrisa/carpet/rug_colorable/black/southwest,
 /area/fire_colony/interior/bar)
@@ -40809,17 +40773,6 @@
 	},
 /turf/open/floor/strata/altred3/east,
 /area/fire_colony/interior/epsilon_facility)
-"iaY" = (
-/obj/effect/lava/edges/basalt/l_piece{
-	dir = 4
-	},
-/obj/effect/lava/edges/basalt/side_rock,
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	color = "#858680"
-	},
-/turf/open/fire_colony/sand,
-/area/fire_colony/exterior/clearing/south)
 "ibc" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_14";
@@ -40901,6 +40854,11 @@
 "icJ" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 6
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c";
+	color = "#858680"
 	},
 /turf/open/floor/hybrisa/carpet/rug_colorable/black/west,
 /area/fire_colony/interior/bar)
@@ -44325,15 +44283,6 @@
 	},
 /turf/open/floor/strata/floor2,
 /area/fire_colony/interior/hydroponics/lobby)
-"iUe" = (
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c";
-	color = "#858680"
-	},
-/turf/open/floor/plating/fire_colony/grille,
-/area/fire_colony/exterior/landing_pad)
 "iUh" = (
 /obj/structure/stairs/rock/engineer_temple{
 	icon_state = "rock_stairs_vertical_rail_end";
@@ -44574,13 +44523,6 @@
 	},
 /turf/open/floor/strata/fake_catwalk,
 /area/fire_colony/interior/hydroponics/north)
-"iXf" = (
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	color = "#858680"
-	},
-/turf/open/floor/plating/fire_colony/grate/west,
-/area/fire_colony/exterior/landing_pad)
 "iXj" = (
 /obj/effect/decal/warning_stripes/worn/stripes_double{
 	dir = 1;
@@ -46576,19 +46518,6 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/lightblue3/north,
 /area/fire_colony/interior/hangar/flight_control)
-"jzk" = (
-/obj/effect/lava/edges/basalt/l_piece{
-	dir = 1
-	},
-/obj/effect/lava/edges/basalt/side_rock{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	color = "#858680"
-	},
-/turf/open/fire_colony/sand,
-/area/fire_colony/exterior/clearing/south)
 "jzp" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -46869,6 +46798,11 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 6
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c";
+	color = "#858680"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/fire_colony/interior/bar/canteen)
@@ -47696,17 +47630,6 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/deco,
 /area/fire_colony/interior/hangar/security)
-"jNq" = (
-/obj/item/lightstick/red/spoke/planted{
-	icon_state = "lightstick_red_variant1"
-	},
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	color = "#858680"
-	},
-/turf/open/floor/plating/fire_colony/grille,
-/area/fire_colony/exterior/landing_pad)
 "jNt" = (
 /obj/effect/lava/edges/basalt/l_piece{
 	dir = 1
@@ -50798,6 +50721,10 @@
 "kEg" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	color = "#858680"
 	},
 /turf/open/floor/strata/sand3/west,
 /area/fire_colony/interior/hangar/hallway)
@@ -54319,13 +54246,6 @@
 /obj/effect/lava/edges/basalt/l_piece,
 /turf/open/fire_colony/basalt/basalt11,
 /area/fire_colony/exterior/landing_pad_external)
-"lvc" = (
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	color = "#858680"
-	},
-/turf/open/floor/plating/fire_colony/grille,
-/area/fire_colony/exterior/landing_pad)
 "lvd" = (
 /obj/item/tool/pen/blue{
 	pixel_x = 6;
@@ -55243,17 +55163,6 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/floor/strata/multi_tiles,
 /area/fire_colony/interior/dorms/north)
-"lGE" = (
-/obj/effect/lava/edges/basalt/l_piece,
-/obj/effect/lava/edges/basalt/side_rock{
-	dir = 1
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	color = "#858680"
-	},
-/turf/open/fire_colony/dirt,
-/area/fire_colony/exterior/clearing/south)
 "lGG" = (
 /obj/effect/lava/edges/basalt/side_rock{
 	dir = 8
@@ -55332,6 +55241,10 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	color = "#858680"
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/fire_colony/interior/hangar/hallway)
@@ -55495,19 +55408,6 @@
 	},
 /turf/open/fire_colony/engineer_ruins/engineer_ruins,
 /area/fire_colony/exterior/underground/excavation/north)
-"lJm" = (
-/obj/effect/lava/edges/basalt/l_piece{
-	dir = 8
-	},
-/obj/effect/lava/edges/basalt/corner_rock{
-	dir = 8
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	color = "#858680"
-	},
-/turf/open/fire_colony/dirt,
-/area/fire_colony/exterior/clearing/south)
 "lJr" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/floor/plating/fire_colony/filtrationside_lava_straight/north,
@@ -55805,6 +55705,10 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	color = "#858680"
+	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/fire_colony/interior/bar/canteen)
 "lMO" = (
@@ -55840,17 +55744,6 @@
 	},
 /turf/open/fire_colony/dirt,
 /area/fire_colony/exterior/valley/west)
-"lNf" = (
-/obj/effect/lava/edges/basalt/l_piece,
-/obj/effect/lava/edges/basalt/l_piece{
-	dir = 1
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	color = "#858680"
-	},
-/turf/open/fire_colony/sand,
-/area/fire_colony/exterior/clearing/south)
 "lNn" = (
 /obj/structure/bed/chair/comfy/blue_dark{
 	dir = 4;
@@ -58023,15 +57916,6 @@
 "moW" = (
 /turf/closed/wall/lava/solaris_dark,
 /area/fire_colony/interior/dorms/relaxation)
-"mpm" = (
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c";
-	color = "#858680"
-	},
-/turf/open/floor/fire_colony,
-/area/fire_colony/interior/bar)
 "mps" = (
 /obj/structure/prop/fire_colony/dense/planter_box/plated/dark{
 	dir = 4
@@ -59657,6 +59541,10 @@
 "mIa" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	color = "#858680"
+	},
 /turf/open/floor/fire_colony,
 /area/fire_colony/interior/bar)
 "mIc" = (
@@ -60759,19 +60647,6 @@
 	},
 /turf/open/fire_colony/brock,
 /area/fire_colony/exterior/clearing/pass)
-"mUz" = (
-/obj/effect/lava/edges/basalt/l_piece{
-	dir = 8
-	},
-/obj/effect/lava/edges/basalt/l_piece{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	color = "#858680"
-	},
-/turf/open/fire_colony/dirt,
-/area/fire_colony/exterior/clearing/south)
 "mUB" = (
 /obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b"
@@ -61269,6 +61144,11 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 5
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c";
+	color = "#858680"
 	},
 /turf/open/floor/strata/sand3/west,
 /area/fire_colony/interior/hangar/alpha)
@@ -62559,11 +62439,12 @@
 /turf/open/fire_colony/hot_lava/L_piece/north,
 /area/fire_colony/exterior/underground/caves/north_west)
 "nqX" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan,
 /obj/structure/disposalpipe/segment{
-	dir = 2;
+	dir = 8;
+	icon_state = "pipe-c";
 	color = "#858680"
 	},
-/obj/structure/pipes/standard/manifold/hidden/cyan,
 /turf/open/floor/strata/deco,
 /area/fire_colony/interior/hangar/hallway)
 "nqY" = (
@@ -63389,20 +63270,6 @@
 	},
 /turf/open/fire_colony/brock,
 /area/fire_colony/exterior/underground/caves/south_west)
-"nBo" = (
-/obj/effect/lava/edges/basalt/l_piece{
-	dir = 1
-	},
-/obj/effect/lava/edges/basalt/side_rock{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c";
-	color = "#858680"
-	},
-/turf/open/fire_colony/dirt,
-/area/fire_colony/exterior/clearing/south)
 "nBr" = (
 /obj/effect/lava/edges/basalt/l_piece{
 	dir = 4
@@ -63463,6 +63330,10 @@
 /obj/effect/landmark/survivor_spawner,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	color = "#858680"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/fire_colony/interior/bar/canteen)
@@ -64183,16 +64054,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fire_colony/interior/seegson/synthetic_storage)
-"nKg" = (
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c";
-	color = "#858680"
-	},
-/turf/open/fire_colony/asteroid/corner/east,
-/area/fire_colony/exterior/clearing/south)
 "nKm" = (
 /obj/effect/lava/edges/basalt/l_piece,
 /obj/effect/lava/edges/basalt/side_rock{
@@ -64968,6 +64829,10 @@
 /obj/effect/decal/warning_stripes/worn,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	color = "#858680"
 	},
 /turf/open/floor/strata/sand3,
 /area/fire_colony/interior/hangar/alpha)
@@ -65930,6 +65795,11 @@
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c";
+	color = "#858680"
+	},
 /turf/open/floor/strata/sand3/east,
 /area/fire_colony/interior/hangar/alpha)
 "ohh" = (
@@ -66433,16 +66303,6 @@
 	},
 /turf/open/fire_colony/basalt/basalt0,
 /area/fire_colony/exterior/valley/southwest)
-"oob" = (
-/obj/effect/lava/edges/basalt/l_piece{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	color = "#858680"
-	},
-/turf/open/fire_colony/sand,
-/area/fire_colony/exterior/clearing/south)
 "ooh" = (
 /obj/effect/blocker/lava,
 /obj/effect/landmark/ambient_sound/lava,
@@ -69063,13 +68923,6 @@
 	},
 /turf/open/fire_colony/sand,
 /area/fire_colony/exterior/landing_pad_external)
-"oYs" = (
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	color = "#858680"
-	},
-/turf/open/floor/plating/fire_colony/grille,
-/area/fire_colony/exterior/landing_pad)
 "oYy" = (
 /obj/effect/hunter/ancient_temple/colorable_rubble/rubble_1{
 	color = "#726f7a";
@@ -70256,6 +70109,10 @@
 	dir = 4;
 	id = "aero_shutters"
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	color = "#858680"
+	},
 /turf/open/floor/strata/floor3,
 /area/fire_colony/interior/hangar/alpha)
 "pnD" = (
@@ -70518,6 +70375,10 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	color = "#858680"
 	},
 /turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/west,
 /area/fire_colony/interior/bar/canteen)
@@ -70882,6 +70743,10 @@
 /area/fire_colony/exterior/clearing/north)
 "pun" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	color = "#858680"
+	},
 /turf/open/floor/fire_colony,
 /area/fire_colony/interior/bar)
 "puy" = (
@@ -71484,20 +71349,6 @@
 	},
 /turf/open/fire_colony/brock,
 /area/fire_colony/exterior/underground/caves/south_west)
-"pBq" = (
-/obj/effect/lava/edges/basalt/l_piece{
-	dir = 4
-	},
-/obj/effect/lava/edges/basalt/side_rock,
-/obj/effect/lava/edges/basalt/l_piece{
-	dir = 1
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	color = "#858680"
-	},
-/turf/open/fire_colony/dirt,
-/area/fire_colony/exterior/clearing/south)
 "pBr" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/item/trash/cigbutt,
@@ -71878,10 +71729,6 @@
 	dir = 4
 	},
 /obj/effect/lava/edges/basalt/side_rock,
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	color = "#858680"
-	},
 /turf/open/fire_colony/dirt,
 /area/fire_colony/exterior/clearing/south)
 "pFu" = (
@@ -73242,6 +73089,10 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	color = "#858680"
+	},
 /turf/open/floor/strata/floor2,
 /area/fire_colony/interior/hangar/alpha)
 "pXA" = (
@@ -73639,6 +73490,10 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	color = "#858680"
+	},
 /turf/open/floor/fire_colony,
 /area/fire_colony/interior/bar/canteen)
 "qcm" = (
@@ -73929,6 +73784,10 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	color = "#858680"
 	},
 /turf/open/floor/strata/sand3/east,
 /area/fire_colony/interior/hangar/hallway)
@@ -75996,6 +75855,10 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	color = "#858680"
+	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/fire_colony/interior/bar/canteen)
 "qCF" = (
@@ -77802,6 +77665,10 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	color = "#858680"
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/fire_colony/interior/hangar/hallway)
@@ -81039,6 +80906,10 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	color = "#858680"
+	},
 /turf/open/floor/strata/floor3,
 /area/fire_colony/interior/bar/canteen)
 "rIW" = (
@@ -82035,10 +81906,6 @@
 	pixel_y = 24
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	color = "#858680"
-	},
 /turf/open/floor/strata/smooth_dir/east,
 /area/fire_colony/exterior/landing_pad)
 "rTx" = (
@@ -82921,6 +82788,10 @@
 "sdL" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	color = "#858680"
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/fire_colony/interior/hangar/hallway)
@@ -85685,6 +85556,10 @@
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	color = "#858680"
+	},
 /turf/open/floor/strata/sand3/east,
 /area/fire_colony/interior/hangar/alpha)
 "sPw" = (
@@ -86200,6 +86075,10 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	color = "#858680"
 	},
 /turf/open/floor/strata/floor2,
 /area/fire_colony/interior/hangar/hallway)
@@ -87541,6 +87420,10 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	color = "#858680"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/fire_colony/interior/bar/canteen)
@@ -89753,6 +89636,10 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	color = "#858680"
+	},
 /turf/open/floor/fire_colony,
 /area/fire_colony/interior/bar/canteen)
 "tPe" = (
@@ -89932,6 +89819,10 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	color = "#858680"
+	},
 /turf/open/floor/corsat,
 /area/fire_colony/interior/hangar/hallway)
 "tQZ" = (
@@ -89994,13 +89885,6 @@
 /obj/effect/landmark/ambient_sound/lava,
 /turf/open/fire_colony/hot_lava/L_piece/east,
 /area/fire_colony/exterior/valley/southeast)
-"tRJ" = (
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	color = "#858680"
-	},
-/turf/open/fire_colony/basalt/basalt4,
-/area/fire_colony/exterior/clearing/south)
 "tRM" = (
 /obj/effect/lava/edges/basalt/l_piece,
 /turf/open/fire_colony/basalt/glowing/basalt3,
@@ -92300,16 +92184,6 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/floor/strata/sand3/west,
 /area/fire_colony/interior/hangar/alpha)
-"uwP" = (
-/obj/effect/lava/edges/basalt/l_piece{
-	dir = 1
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	color = "#858680"
-	},
-/turf/open/fire_colony/dirt,
-/area/fire_colony/exterior/clearing/south)
 "uwQ" = (
 /obj/structure/machinery/washing_machine{
 	pixel_x = -5;
@@ -94361,19 +94235,6 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/fire_colony/asteroid/corner/north,
 /area/fire_colony/exterior/clearing/north_east)
-"uXL" = (
-/obj/effect/lava/edges/basalt/l_piece{
-	dir = 1
-	},
-/obj/effect/lava/edges/basalt/corner_rock{
-	dir = 1
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	color = "#858680"
-	},
-/turf/open/fire_colony/sand,
-/area/fire_colony/exterior/clearing/south)
 "uXQ" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -95731,15 +95592,6 @@
 	},
 /turf/open/fire_colony/dirt,
 /area/fire_colony/exterior/landing_pad_external)
-"vmF" = (
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	color = "#858680"
-	},
-/turf/open/fire_colony/asteroid,
-/area/fire_colony/exterior/clearing/south)
 "vmL" = (
 /obj/effect/lava/edges/basalt/side_rock{
 	dir = 1
@@ -96364,14 +96216,6 @@
 	},
 /turf/open/fire_colony/dirt,
 /area/fire_colony/exterior/underground/caves/north_west)
-"vty" = (
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	color = "#858680"
-	},
-/turf/open/floor/plating/fire_colony/grille,
-/area/fire_colony/exterior/landing_pad)
 "vtG" = (
 /obj/structure/machinery/light/small/blue{
 	dir = 4
@@ -100238,19 +100082,6 @@
 	},
 /turf/open/fire_colony/basalt/basalt0,
 /area/fire_colony/exterior/clearing/pass)
-"wqH" = (
-/obj/effect/lava/edges/basalt/l_piece{
-	dir = 8
-	},
-/obj/effect/lava/edges/basalt/corner_rock{
-	dir = 8
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	color = "#858680"
-	},
-/turf/open/fire_colony/sand,
-/area/fire_colony/exterior/clearing/south)
 "wqJ" = (
 /obj/structure/flora/alien/red_bulb/red_bulb2{
 	pixel_x = -3;
@@ -101184,16 +101015,6 @@
 	},
 /turf/open/fire_colony/engineer_ruins/plating/platingdmg1,
 /area/fire_colony/exterior/underground/excavation/north)
-"wCJ" = (
-/obj/effect/lava/edges/basalt/l_piece{
-	dir = 8
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	color = "#858680"
-	},
-/turf/open/fire_colony/brock,
-/area/fire_colony/exterior/clearing/south)
 "wCN" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#818793"
@@ -101408,6 +101229,10 @@
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	color = "#858680"
+	},
 /turf/open/floor/hybrisa/carpet/blue_grey,
 /area/fire_colony/interior/bar)
 "wFg" = (
@@ -102422,14 +102247,6 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/floor/prison/ramptop,
 /area/fire_colony/exterior/clearing/pass)
-"wSg" = (
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	color = "#858680"
-	},
-/turf/open/floor/strata/deco,
-/area/fire_colony/interior/hangar/hallway)
 "wSh" = (
 /obj/effect/blocker/lava,
 /turf/open/fire_colony/hot_lava/L_piece/west,
@@ -105412,6 +105229,10 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	color = "#858680"
+	},
 /turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/east,
 /area/fire_colony/interior/bar/canteen)
 "xGw" = (
@@ -105814,10 +105635,6 @@
 	},
 /obj/effect/lava/edges/basalt/side_rock{
 	dir = 8
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	color = "#858680"
 	},
 /turf/open/fire_colony/sand,
 /area/fire_colony/exterior/clearing/south)
@@ -106852,10 +106669,6 @@
 "xXV" = (
 /obj/effect/decal/warning_stripes/worn/stripes_double{
 	dir = 8
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	color = "#858680"
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/fire_colony/interior/hangar/hallway)
@@ -132820,11 +132633,11 @@ aXK
 dtf
 pns
 xVH
-mpm
+oYX
 bCs
-hKV
-wqH
-nBo
+rXm
+bDg
+rjd
 eOT
 aaQ
 abk
@@ -133021,12 +132834,12 @@ gQB
 mIa
 wEU
 fVY
-rZx
+aas
 dJo
 aKy
 aKy
 dUL
-aLi
+teN
 lXk
 lJx
 mrM
@@ -133632,7 +133445,7 @@ uIQ
 aKw
 aKw
 lXk
-lGE
+sOB
 ofE
 jJB
 eSd
@@ -133834,7 +133647,7 @@ rQy
 rJV
 aui
 jze
-uXL
+iEh
 ygE
 fOv
 cNi
@@ -134036,7 +133849,7 @@ oAJ
 aKw
 trh
 cby
-tRJ
+ylo
 mCS
 dws
 sJf
@@ -134238,7 +134051,7 @@ khp
 iVV
 oPe
 gjs
-jzk
+fKb
 lwE
 vGy
 lXm
@@ -134440,7 +134253,7 @@ ePw
 aKw
 aKw
 diI
-pBq
+nKz
 tro
 pCr
 kQF
@@ -134642,7 +134455,7 @@ aKw
 aKw
 ylo
 fHp
-dmm
+atI
 lXk
 lEh
 iXB
@@ -134844,7 +134657,7 @@ apM
 qgA
 teN
 bDg
-hhu
+hDD
 hRQ
 ola
 wEg
@@ -135046,7 +134859,7 @@ aKw
 aui
 dJZ
 mCS
-oob
+qRh
 aMi
 ola
 whp
@@ -135248,7 +135061,7 @@ rJV
 spa
 fhz
 ikF
-uwP
+aTi
 aui
 aaQ
 aaQ
@@ -135450,7 +135263,7 @@ rJV
 ofE
 cfi
 jJe
-dmm
+atI
 djP
 aaQ
 aaQ
@@ -135652,7 +135465,7 @@ rJV
 ofE
 qbs
 diI
-iaY
+hvb
 ofE
 sBS
 aaQ
@@ -135854,7 +135667,7 @@ aKw
 qgA
 eQq
 eik
-lJm
+pEG
 hDD
 aMi
 npV
@@ -136041,7 +135854,7 @@ aui
 aKw
 aKw
 aTr
-rIG
+aau
 aKw
 aKw
 aKw
@@ -136056,7 +135869,7 @@ hEX
 atI
 lRh
 uiI
-tRJ
+ylo
 atI
 dZd
 ofE
@@ -136258,7 +136071,7 @@ oEl
 eQq
 ejf
 lXk
-lNf
+bZU
 qbs
 bdb
 hlf
@@ -136662,7 +136475,7 @@ aVX
 nhK
 rXm
 ylo
-wCJ
+ygE
 ylo
 ofE
 wcb
@@ -136864,7 +136677,7 @@ cPE
 evK
 vwn
 kQi
-mUz
+iRa
 wqU
 jWD
 aaQ
@@ -137066,7 +136879,7 @@ aMR
 aQt
 rXm
 wNb
-dmm
+atI
 ofE
 lxz
 aaQ
@@ -137265,10 +137078,10 @@ ejf
 tro
 aSQ
 oJe
-nKg
-eZF
+nDf
+kUW
 aBL
-gHY
+rdD
 fhz
 sne
 aaQ
@@ -137467,7 +137280,7 @@ diI
 lXk
 kEV
 ada
-vmF
+aqi
 ada
 aQt
 aMi
@@ -137669,7 +137482,7 @@ rUU
 atz
 uyw
 qKW
-fBD
+qKW
 aWp
 plU
 atz
@@ -138053,14 +137866,14 @@ ygE
 ahQ
 sGk
 bmm
-jJc
-jJc
-jJc
+aav
+aav
+aav
 sPt
-jJc
+aav
 cmu
 sPt
-jJc
+aav
 ohb
 jJc
 kzc
@@ -138073,7 +137886,7 @@ acx
 aZO
 fua
 aZR
-vty
+fua
 aYB
 fua
 aZO
@@ -138275,7 +138088,7 @@ mCL
 aZO
 qBy
 aZR
-gdZ
+gRz
 aYB
 xce
 aZO
@@ -138477,7 +138290,7 @@ aWp
 mNF
 aZn
 wbe
-hFK
+qbJ
 aYB
 mNF
 mNF
@@ -138679,7 +138492,7 @@ aWp
 aZO
 fua
 nyF
-oYs
+xce
 aYB
 xce
 aZO
@@ -138881,7 +138694,7 @@ aWp
 aZO
 qbJ
 aZR
-oYs
+xce
 aYB
 fua
 ndd
@@ -139083,7 +138896,7 @@ rwg
 mNF
 mNF
 aZR
-oYs
+xce
 aYB
 mNF
 mNF
@@ -139285,7 +139098,7 @@ rwg
 aZO
 fua
 wbe
-jNq
+xxk
 aYB
 vZK
 aZO
@@ -139487,7 +139300,7 @@ ltp
 aZO
 xce
 kfS
-vty
+fua
 aYB
 vZK
 aZO
@@ -139689,7 +139502,7 @@ aWp
 mNF
 mNF
 pJY
-vty
+fua
 tEC
 wDQ
 aZn
@@ -139891,7 +139704,7 @@ mls
 aZO
 xce
 wbe
-hFK
+qbJ
 tEC
 ldg
 aZO
@@ -140093,7 +139906,7 @@ acx
 aZO
 xce
 wbe
-hFK
+qbJ
 tEC
 xce
 aZO
@@ -140295,7 +140108,7 @@ hUL
 mNF
 vTo
 nyF
-jNq
+xxk
 aYB
 aZn
 aZn
@@ -140497,7 +140310,7 @@ qSL
 aZO
 fua
 pJY
-vty
+fua
 aYB
 xce
 aZO
@@ -140699,7 +140512,7 @@ aWp
 aZO
 fua
 wbe
-vty
+fua
 aYB
 xce
 aZO
@@ -140901,7 +140714,7 @@ rwg
 mNF
 mNF
 pJY
-vty
+fua
 aYB
 aZn
 aZn
@@ -141084,26 +140897,26 @@ cxi
 lyK
 fqi
 nqX
-azT
-gok
-azT
-gok
+aQI
+lZZ
+aQI
+lZZ
 gbC
-gok
-azT
-gok
-azT
-wSg
-azT
+lZZ
+aQI
+lZZ
+aQI
+msW
+aQI
 xXV
 eAC
 rTu
 boB
-dhe
-iXf
-lvc
-drX
-iUe
+rwg
+aZO
+xce
+wbe
+fua
 aYB
 xce
 aZO

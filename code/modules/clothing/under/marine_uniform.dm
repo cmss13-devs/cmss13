@@ -2234,8 +2234,7 @@
 
 /obj/item/clothing/under/lasalle/Initialize()
 	. = ..()
-	if(istypestrict(src, /obj/item/clothing/under/colonist))
-		AddElement(/datum/element/corp_label/bionational)
+	AddElement(/datum/element/corp_label/bionational)
 
 /obj/item/clothing/under/lasalle/drysuit
 	icon_state = "civilian_base_alt"

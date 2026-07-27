@@ -1,5 +1,0 @@
-author: "Antlers"
-delete-after: True
-changes:
-  - bugfix: "Spiders and lizards will no longer attack burrowed burrowers."
-  - balance: "Spiders and lizards will no longer attack cloaked lurkers or cloaked scouts."

@@ -15,7 +15,7 @@
 	unslashable = TRUE
 	explo_proof = TRUE
 
-	var/list/role_restriction = list(JOB_TANK_CREW, JOB_UPP_CREWMAN, JOB_PMC_CREWMAN)
+	var/list/role_restriction = list(JOB_TANK_CREW, JOB_UPP_CREWMAN, JOB_PMC_CREWMAN, JOB_ARMY_TANK)
 
 	var/obj/item/storage/internal/container
 

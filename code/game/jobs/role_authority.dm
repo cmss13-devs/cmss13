@@ -638,14 +638,6 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		if(slot_check && !isnull(squad.roles_cap[slot_check]) && !skip_limit)
 			if(squad.roles_in[slot_check] >= squad.roles_cap[slot_check])
 				continue
-		if(slot_check && !isnull(squad.shared_role_caps[slot_check]) && !skip_limit)
-			var/shared_count = squad.roles_in[slot_check]
-			for(var/partner_name in squad.shared_cap_squads)
-				var/datum/squad/partner = get_squad_by_name(partner_name)
-				if(partner)
-					shared_count += partner.roles_in[slot_check]
-			if(shared_count >= squad.shared_role_caps[slot_check])
-				continue
 
 		if(has_squad_pref && squad.put_marine_in_squad(human))
 			return

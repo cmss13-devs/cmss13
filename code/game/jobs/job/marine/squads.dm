@@ -159,9 +159,6 @@
 	/// Roles whose roles_cap exists only to allow manual CIC transfers in. They don't gett filled from roundstart roles.
 	var/list/transfer_only_roles = list()
 	/// Maps role -> the max this squad's roles_in may reach when added to the same role's roles_in on shared_cap_squads, before both are treated as full for automatic assignment
-	var/list/shared_role_caps = list()
-	/// Names of other squads whose roles_in for a shared_role_caps role count toward this squad's combined limit (and vice versa)
-	var/list/shared_cap_squads = list()
 	/// Squad roles actual number of players list
 	var/list/roles_in = list()
 	/// Squad headsets default radio frequency
@@ -262,8 +259,6 @@
 		JOB_SQUAD_TEAM_LEADER = 2,
 		JOB_SQUAD_LEADER = 1,
 	)
-	shared_role_caps = list(JOB_SQUAD_SPECIALIST = 4, JOB_SQUAD_SMARTGUN = 4)
-	shared_cap_squads = list(SQUAD_MARINE_4)
 SQUAD_LANDMARKS(alpha, Alpha)
 SQUAD_CRYOSTORAGE(alpha, Alpha)
 SQUAD_VENDORS(alpha, ACCESS_MARINE_ALPHA, Alpha)
@@ -351,9 +346,6 @@ SQUAD_DROPPAD(charlie, Charlie)
 		JOB_SQUAD_TEAM_LEADER = 2,
 		JOB_SQUAD_LEADER = 1,
 	)
-	shared_role_caps = list(JOB_SQUAD_SPECIALIST = 4, JOB_SQUAD_SMARTGUN = 4)
-	shared_cap_squads = list(SQUAD_MARINE_1)
-
 SQUAD_LANDMARKS(delta, Delta)
 SQUAD_CRYOSTORAGE(delta, Delta)
 SQUAD_VENDORS(delta, ACCESS_MARINE_DELTA, Delta)

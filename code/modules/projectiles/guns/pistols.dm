@@ -246,17 +246,6 @@
 		/obj/item/attachable/burstfire_assembly,
 	)
 
-/obj/item/weapon/gun/pistol/b92fs/Initialize(mapload, spawn_empty)
-	. = ..()
-	if(prob(10))
-		name = "\improper Beretta 93FR burst pistol"
-		desc += " This specific pistol is a burst-fire, limited availability, police-issue 93FR type Beretta. Not too accurate, aftermarket modififcations are recommended."
-		var/obj/item/attachable/burstfire_assembly/BFA = new(src)
-		BFA.flags_attach_features &= ~ATTACH_REMOVABLE
-		BFA.Attach(src)
-		update_attachable(BFA.slot)
-		add_firemode(GUN_FIREMODE_BURSTFIRE)
-
 /obj/item/weapon/gun/pistol/b92fs/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 20,"rail_x" = 10, "rail_y" = 22, "under_x" = 21, "under_y" = 17, "stock_x" = 21, "stock_y" = 17)
 

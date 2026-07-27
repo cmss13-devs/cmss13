@@ -41,18 +41,23 @@
 	. = ..()
 	if(!ismovable(parent))
 		return COMPONENT_INCOMPATIBLE
-	InheritComponent(arglist(args))
+	var/list/arguments = args.Copy()
+	arguments.Insert(1, src, TRUE)
+	InheritComponent(arglist(arguments))
 	state = LANGCHAT_IMAGE_STATE_READY
 
 /datum/component/langchat_image/Destroy()
 	. = ..()
+	reset()
 	messages = null
 	langchat_listeners = null
+	langchat_image?.loc = null
 	langchat_image = null
+	langchat_scrambled_image?.loc = null
 	langchat_scrambled_image = null
 	STOP_PROCESSING(SSlangchat, src)
 
-/datum/component/langchat_image/InheritComponent(langchat_height, default_color, list/default_styles)
+/datum/component/langchat_image/InheritComponent(datum/component/C, i_am_original, langchat_height, default_color, list/default_styles)
 	. = ..()
 	if(langchat_height)
 		src.langchat_height = langchat_height
@@ -96,9 +101,8 @@
 				if(next_in <= 0)
 					if(length(messages))
 						state = LANGCHAT_IMAGE_STATE_CONFIGURED // rerun this with next message on next tick!
-						log_debug("Displaying new message! It should be: [messages[1]]")
 						message_flags |= LANGCHAT_IMAGE_CONTINUING
-						next_in = (length(messages[1]) / LANGCHAT_LONGEST_TEXT) * 4 SECONDS
+						next_in = 4 SECONDS
 					else
 						reset()
 				return // Return enough time and reset at start of proc will happen
@@ -144,9 +148,8 @@
 		langchat_image.layer = 20
 		langchat_image.plane = RUNECHAT_PLANE
 		langchat_image.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
-		langchat_image.maptext_y = langchat_height
+		langchat_image.maptext_y = langchat_height - LANGCHAT_MESSAGE_POP_Y_SINK
 		langchat_image.maptext_height = 64
-		langchat_image.maptext_y -= LANGCHAT_MESSAGE_POP_Y_SINK
 		langchat_image.maptext_x = (icon_x_size / 2) - (langchat_image.maptext_width / 2)
 
 	if(!langchat_scrambled_image)
@@ -154,9 +157,8 @@
 		langchat_scrambled_image.layer = 20
 		langchat_scrambled_image.plane = RUNECHAT_PLANE
 		langchat_scrambled_image.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
-		langchat_scrambled_image.maptext_y = langchat_height
+		langchat_scrambled_image.maptext_y = langchat_height - LANGCHAT_MESSAGE_POP_Y_SINK
 		langchat_scrambled_image.maptext_height = 64
-		langchat_scrambled_image.maptext_y -= LANGCHAT_MESSAGE_POP_Y_SINK
 		langchat_scrambled_image.maptext_x = (icon_x_size / 2) - (langchat_scrambled_image.maptext_width / 2)
 
 	langchat_image.pixel_x = 0
@@ -179,9 +181,9 @@
 	var/message = popleft(messages)
 	var/text_to_display = message
 	if(message_flags & LANGCHAT_IMAGE_CONTINUING)
-		text_to_display = "HELLO [text_to_display]"
+		text_to_display = "...[text_to_display]"
 	if((message_flags & LANGCHAT_IMAGE_MULTIPART) && length(messages))
-		text_to_display = "[text_to_display] BYE"
+		text_to_display = "[text_to_display]..."
 
 	var/use_mob_style = TRUE
 	var/image/r_icon
@@ -191,8 +193,8 @@
 	else if(message_flags & LANGCHAT_IMAGE_IS_RADIO)
 		r_icon = image('icons/mob/hud/chat_icons.dmi', icon_state = "radio")
 	if(r_icon)
-		text_to_display = "\icon[r_icon]&zwsp;[message]"
-	text_to_display = "<span class='center [additional_styles ? additional_styles.Join(" ") : ""] [use_mob_style ? default_styles?.Join(" ") : ""] langchat'>[message]</span>"
+		text_to_display = "\icon[r_icon]&zwsp;[text_to_display]"
+	text_to_display = "<span class='center [additional_styles ? additional_styles.Join(" ") : ""] [use_mob_style ? default_styles?.Join(" ") : ""] langchat'>[text_to_display]</span>"
 
 	var/icon_x_size = parent_atom.get_icon_x_size()
 	var/width = (message_flags & LANGCHAT_IMAGE_MULTIPART) ? LANGCHAT_WIDTH * 2 : LANGCHAT_WIDTH
@@ -220,7 +222,7 @@
 	// Display to everyone involved
 	for(var/mob/player as anything in langchat_listeners)
 		if(langchat_client_enabled(player) && ((message_flags & LANGCHAT_IMAGE_IS_EMOTE) || !player.ear_deaf))
-			if((message_flags & LANGCHAT_IMAGE_IGNORE_LANG) || player.say_understands(src, language))
+			if((message_flags & LANGCHAT_IMAGE_IGNORE_LANG) || player.say_understands(parent_atom, language))
 				player.client.images += langchat_image
 			else if(!(message_flags & LANGCHAT_IMAGE_NO_SCRAMBLE) && language && !islist(language))
 				player.client.images += langchat_scrambled_image
@@ -264,6 +266,7 @@
 	// reset_in should already be set so we have nothing more to do!
 
 /datum/component/langchat_image/proc/reset()
+	log_debug("\ref[src] called reset")
 	if(langchat_listeners)
 		for(var/mob/player as anything in langchat_listeners)
 			player.client?.images -= langchat_image
@@ -273,7 +276,7 @@
 	STOP_PROCESSING(SSlangchat, src)
 	state = LANGCHAT_IMAGE_STATE_READY
 
-/datum/component/langchat_image/proc/cut_text(message) // FIXME: This seems to sometimes drop last message
+/datum/component/langchat_image/proc/cut_text(message)
 	var/lifetime = 2 SECONDS
 	if(message_flags & LANGCHAT_IMAGE_MULTIPART)
 		var/chunk_size = LANGCHAT_LONGEST_TEXT - 5

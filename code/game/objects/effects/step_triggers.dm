@@ -7,6 +7,7 @@
 	anchored = TRUE
 	icon = 'icons/landmarks.dmi'
 	icon_state = "trigger"
+	flags_atom = NO_ZFALL
 
 /obj/effect/step_trigger/proc/Trigger(atom/movable/A)
 	return 0

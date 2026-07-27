@@ -387,7 +387,7 @@
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/upp_pfb(new_human.back), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/civi/plant_worker(new_human), WEAR_HEAD)
-
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(new_human), WEAR_HANDS)
 	// gun //
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/np92/suppressed(new_human), WEAR_L_HAND)
 	..()

@@ -8,6 +8,7 @@
 	- The mag clip doesn't goes into the gun, instead the magazine teleports into the gun and leaves the mag clip behind while the mag clip still points to the magazine
 	- Lacks user feedback when the clip is switched
 	- The fucking clip eats everything, make it so it only eats magazines
+	- //TODO: Tactical reload is un-accounted for, after tactical reload into a normal mag and when the mag is set to be unloaded the magazine is disapeared and the magazine clip is teleported over instead
 */
 /*
 TODO:
@@ -17,6 +18,8 @@ TODO:
 	- Work on potential optimization problems
 	- Work out an acceptable sprite
 	- Actually add the item into vendor
+	- Allow people to interact with the magazine clip using context menu when it's on the ground
+	- Add support for tactical reload
 */
 
 /obj/item/magazine_clip
@@ -26,16 +29,16 @@ TODO:
 	icon_state = "c_tube"
 	var/accepted_magazines = list()
 
-	var/contained_mags = list(0, 0) //-!This doesn't work; make it use a placeholder magazine object instead? Relate this to gun.dm
-	var/active_slot = FALSE //?Maybe make it into bitflag at some point?
+	var/contained_mags = list(0, 0)
+	var/active_slot = FALSE //It's two slots, 0 and 1 works
 
 //Custom Processes
 /obj/item/magazine_clip/proc/switch_active_slot(mob/user)
 	active_slot = !active_slot
-	to_chat(user, SPAN_BLUE("You switched the magazine slot to slot [active_slot]"))
+	to_chat(user, SPAN_BLUE("You switched the magazine slot to slot [active_slot+1]"))
 
 /obj/item/magazine_clip/proc/active_magazine()
-	return contained_mags[active_slot+1] //!This part is broken
+	return contained_mags[active_slot+1]
 
 /obj/item/magazine_clip/proc/insert_magazine(mob/user, obj/item/ammo_magazine/M)
 	if (istype(M)) //Checks if incoming item is a magazine
@@ -44,7 +47,7 @@ TODO:
 				user.drop_inv_item_to_loc(M, src)
 			else
 				M.forceMove(get_turf(src))
-			contained_mags[active_slot+1] = M //!This part is broken
+			contained_mags[active_slot+1] = M
 			return TRUE
 		else
 			to_chat(user, SPAN_WARNING("The active slot already has a magazine in it!"))
@@ -72,19 +75,14 @@ TODO:
 /obj/item/magazine_clip/get_examine_text(mob/user)
 	. += ..()
 
-	if (contained_mags[0+1] == 0)
-		. += "Slot 0 is empty."
-	else
-		var/obj/item/ammo_magazine/mag0 = contained_mags[0+1]
-		. += "Slot 0 is occupied: [mag0] has [mag0.current_rounds] out of [mag0.max_rounds]."
+	for(var/i in 1 to length(contained_mags))
+		if (contained_mags[i] == 0)
+			. += "Slot [i] is empty."
+		else
+			var/obj/item/ammo_magazine/target_mag = contained_mags[i]
+			. += "Slot [i] is occupied: [target_mag] has [target_mag.current_rounds] out of [target_mag.max_rounds]."
 
-	if (contained_mags[1+1] == 0)
-		. += "Slot 1 is empty."
-	else
-		var/obj/item/ammo_magazine/mag1 = contained_mags[1+1]
-		. += "Slot 1 is occupied: [mag1] has [mag1.current_rounds] out of [mag1.max_rounds]."
-
-	. += "The active slot is slot [active_slot]."
+	. += "The active slot is slot [active_slot+1]."
 
 /obj/item/magazine_clip/attack_hand(mob/user)
 	if (src == user.get_inactive_hand())
@@ -95,5 +93,16 @@ TODO:
 /obj/item/magazine_clip/attackby(obj/item/I, mob/living/user, bypass_hold_check)
 	src.insert_magazine(user, I)
 
+/obj/item/magazine_clip/attack_self(mob/user) //?I am not sure how it works exactly, mimicing gun_helpers.dm
+	..()
+
+	src.remove_magazine(user)
+
 /obj/item/magazine_clip/unique_action(mob/user)
 	src.switch_active_slot(user)
+
+/obj/item/magazine_clip/clicked(mob/user, list/mods) //? Absolutely clueless as to how this works, mimicing gun_helpers.dm
+	if (mods[ALT_CLICK])
+		src.remove_magazine(user)
+		return TRUE
+	return (..())

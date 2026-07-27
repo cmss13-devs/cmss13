@@ -55,7 +55,6 @@ TODO:
 	else
 		to_chat(user, SPAN_WARNING("[src] only accepts magazines!"))
 		return FALSE
-	//TODO: include other stuffs that would be taken into account when a magazine is inserted
 
 /obj/item/magazine_clip/proc/remove_magazine(mob/user)
 	var/obj/item/ammo_magazine/target_magazine = active_magazine()
@@ -68,7 +67,6 @@ TODO:
 		target_magazine.forceMove(get_turf(src))
 	contained_mags[active_slot+1] = 0
 	return TRUE
-	//TODO: include other stuffs that would be taken into account when a magazine is removed
 
 
 //Overwriting Parent Processes

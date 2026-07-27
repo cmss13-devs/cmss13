@@ -910,7 +910,7 @@ Reload a gun using a magazine.
 This sets all the initial datum's stuff. The bullet does the rest.
 User can be passed as null, (a gun reloading itself for instance), so we need to watch for that constantly.
 */
-/obj/item/weapon/gun/proc/reload(mob/user, obj/item/ammo_magazine/magazine, obj/item/magazine_clip/magazine_clip = null) //override for guns who use more special mags. //!Fingersscross this works
+/obj/item/weapon/gun/proc/reload(mob/user, obj/item/ammo_magazine/magazine, obj/item/magazine_clip/magazine_clip = null) //override for guns who use more special mags.
 	if(flags_gun_features & (GUN_BURST_FIRING|GUN_UNUSUAL_DESIGN|GUN_INTERNAL_MAG))
 		return
 
@@ -1007,7 +1007,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 			attached_magazine_clip.forceMove(get_turf(src))//Drop it on the ground.
 		else
 			user.put_in_hands(attached_magazine_clip)
-		current_mag.forceMove(attached_magazine_clip) //!Fingerscross again this works
+		current_mag.forceMove(attached_magazine_clip)
 
 	else if(drop_override || !user) //If we want to drop it on the ground or there's no user.
 		current_mag.forceMove(get_turf(src))//Drop it on the ground.

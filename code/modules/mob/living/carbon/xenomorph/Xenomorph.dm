@@ -1145,6 +1145,13 @@
 	drop_inv_item_on_ground(legcuffed)
 
 /mob/living/carbon/xenomorph/IgniteMob(force)
+	// Force xenos out of hiding if something tried to ignite it (like walking over fire)
+	if(layer == XENO_HIDING_LAYER)
+		var/datum/action/xeno_action/onclick/xenohide/hide = get_action(src, /datum/action/xeno_action/onclick/xenohide)
+		if (hide)
+			INVOKE_ASYNC(hide, TYPE_PROC_REF(/datum/action/xeno_action/onclick/xenohide, use_ability))
+			visible_message(SPAN_DANGER("[src] is forced out of hiding by the flames!"), SPAN_DANGER("You are forced out of hiding by the flames!"))
+
 	var/penetrating = fire_reagent?.fire_penetrating && !(fire_immunity & FIRE_IMMUNITY_IGNORE_PEN)
 	if(!force && !penetrating)
 		if((fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
@@ -1271,24 +1278,11 @@
 
 /mob/living/carbon/xenomorph/proc/get_throw_range(obj/item/I)
 	return 1
-/**
- * Checks if user can mount src
- *
- * Arguments:
- * * user - The mob trying to mount
- * * target_mounting - Is the target initiating the mounting process?
- */
-/mob/living/carbon/xenomorph/proc/can_mount(mob/living/user, target_mounting = FALSE)
+
+/mob/living/carbon/xenomorph/can_mount(mob/living/user, target_mounting = FALSE)
 	return FALSE
 
-/**
- * Handles the target trying to ride src
- *
- * Arguments:
- * * target - The mob being put on the back
- * * target_mounting - Is the target initiating the mounting process?
- */
-/mob/living/carbon/xenomorph/proc/carry_target(mob/living/carbon/target, target_mounting = FALSE)
+/mob/living/carbon/xenomorph/carry_target(mob/living/carbon/target, target_mounting = FALSE)
 	if(!ismob(target))
 		return
 	if(target.is_mob_incapacitated())
@@ -1311,6 +1305,3 @@
 	. = ..()
 	if(isxeno(user))
 		return
-	if(!can_mount(user, TRUE))
-		return
-	INVOKE_ASYNC(src, PROC_REF(carry_target), dropping, TRUE) // target_mounting is always true, the runner should never be buckling someone to itself (unless someone wants to make it happen)

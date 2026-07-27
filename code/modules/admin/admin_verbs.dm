@@ -33,6 +33,7 @@ GLOBAL_LIST_INIT(admin_verbs_default, list(
 	/client/proc/toggledebuglogs,
 	/client/proc/togglestatpanelsplit,
 	/client/proc/togglenichelogs,
+	/datum/admins/proc/ticket_panel,
 	/datum/admins/proc/display_tags,
 	/datum/admins/proc/player_notes_show,
 	/datum/admins/proc/check_ckey,
@@ -129,6 +130,7 @@ GLOBAL_LIST_INIT(admin_verbs_minor_event, list(
 	/client/proc/enable_event_mob_verbs,
 	/client/proc/force_hijack,
 	/datum/admins/proc/force_predator_round, //Force spawns a predator round.
+	/datum/admins/proc/force_colony_joe_round, //same as above but for colony working joes
 	/client/proc/adjust_predator_round,
 	/client/proc/cmd_admin_world_narrate, /*sends text to all players with no padding*/
 	/client/proc/cmd_admin_object_narrate,
@@ -316,7 +318,8 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 	/client/proc/cmd_mentor_say,
 	/datum/admins/proc/imaginary_friend,
 	/client/proc/toggle_newplayer_ghost_hud,
-	/client/proc/toggle_newplayer_ic_hud
+	/client/proc/toggle_newplayer_ic_hud,
+	/datum/admins/proc/ticket_panel
 ))
 
 /client/proc/add_admin_verbs()

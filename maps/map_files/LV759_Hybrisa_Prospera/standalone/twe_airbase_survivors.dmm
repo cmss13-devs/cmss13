@@ -1732,7 +1732,7 @@
 /turf/open/floor/prison/darkpurple2/north,
 /area/lv759/indoors/twe_souter_outpost/dorm)
 "mu" = (
-/obj/item/tool/kitchen/utensil/pfork,
+/obj/item/tool/kitchen/utensil/fork/plastic,
 /turf/open/floor/almayer,
 /area/lv759/indoors/twe_souter_outpost/hallway)
 "mv" = (

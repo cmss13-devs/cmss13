@@ -61,28 +61,22 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_medical)
 "aj" = (
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mgibbl3"
 	},
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/blood{
-	icon_state = "mgibbl3"
-	},
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "ak" = (
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "al" = (
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "am" = (
@@ -91,7 +85,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "an" = (
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "ar" = (
@@ -104,12 +98,10 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/valley_medical)
 "bb" = (
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/prop/colony/used_flare,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/item/prop/colony/used_flare,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "bB" = (
@@ -139,27 +131,16 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal4"
-	},
-/obj/effect/decal/sand_overlay/sand1{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "dg" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3"
 	},
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal3"
-	},
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "dI" = (
@@ -202,7 +183,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "hr" = (
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/wygoon/trijent,
 /turf/open/asphalt,
@@ -269,16 +250,9 @@
 /obj/structure/barricade/sandbags{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
-	},
-/obj/structure/barricade/sandbags{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "kC" = (
@@ -421,18 +395,11 @@
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3"
 	},
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "2"
 	},
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal3"
-	},
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/blood/drip{
-	icon_state = "2"
-	},
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "qS" = (
@@ -440,11 +407,9 @@
 /area/desert_dam/exterior/valley/valley_medical)
 "rb" = (
 /obj/structure/desertdam/decals/road_edge,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/structure/desertdam/decals/road_edge,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "rS" = (
@@ -457,13 +422,9 @@
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal2"
 	},
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal2"
-	},
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "sj" = (
@@ -504,7 +465,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "uX" = (
@@ -604,10 +565,9 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "yq" = (
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/desert_dam/exterior/valley/valley_medical)
 "zq" = (
@@ -643,10 +603,9 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached20,
 /area/desert_dam/exterior/valley/valley_medical)
 "Ce" = (
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt,
 /area/desert_dam/exterior/river/riverside_east)
 "CC" = (
@@ -680,10 +639,8 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "EW" = (
-/obj/effect/blocker/water/toxic/Group_2,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/template_noop,
 /area/template_noop)
 "Fd" = (
@@ -712,7 +669,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
@@ -797,7 +754,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "Ke" = (
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
@@ -828,24 +785,14 @@
 	icon_state = "S"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "2";
 	pixel_x = -15;
 	pixel_y = -21
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/blood/drip{
-	icon_state = "2";
-	pixel_x = -15;
-	pixel_y = -21
-	},
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "Lm" = (
@@ -944,7 +891,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/valley_medical)
 "Po" = (
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mgibbl3"
 	},
@@ -956,7 +903,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/river/riverside_east)
 "Py" = (
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/largecrate/random/mini/ammo{
 	pixel_y = 12;
 	pixel_x = 5
@@ -1012,7 +959,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "Ua" = (
-/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/spawner/random/gun/corporate,
 /obj/effect/landmark/corpsespawner/wygoon/lead/trijent,

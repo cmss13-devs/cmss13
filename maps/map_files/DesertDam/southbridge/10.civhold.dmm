@@ -119,10 +119,6 @@
 	icon_state = "road_edge_decal2"
 	},
 /obj/effect/decal/cleanable/ammo_casing,
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal2"
-	},
-/obj/effect/decal/cleanable/ammo_casing,
 /obj/effect/decal/cleanable/ammo_casing,
 /obj/effect/decal/cleanable/ammo_casing,
 /obj/effect/decal/cleanable/ammo_casing,
@@ -169,10 +165,6 @@
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_medical)
 "hX" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
-	},
-/obj/effect/decal/cleanable/ammo_casing,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
@@ -314,7 +306,6 @@
 /obj/effect/decal/cleanable/ammo_casing,
 /obj/effect/decal/cleanable/ammo_casing,
 /obj/effect/decal/cleanable/ammo_casing,
-/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "rj" = (
@@ -387,10 +378,6 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "uj" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal3"
-	},
-/obj/effect/decal/cleanable/ammo_casing,
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3"
 	},
@@ -475,11 +462,6 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "BA" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/ammo_casing,
-/obj/item/prop/colony/used_flare,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -920,10 +902,6 @@
 /turf/template_noop,
 /area/template_noop)
 "Zr" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
-	},
-/obj/effect/decal/cleanable/ammo_casing,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},

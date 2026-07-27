@@ -11,7 +11,7 @@
 	keybind_signal = COMSIG_KB_CLIENT_SWITCHINPUT_DOWN
 
 /datum/keybinding/client/admin_help
-	hotkey_keys = list("F1")
+	hotkey_keys = list("")
 	classic_keys = list("F1")
 	name = "admin_help"
 	full_name = "Admin Help"
@@ -71,17 +71,3 @@
 	user.mob.button_pressed_F12()
 	return TRUE
 
-/datum/keybinding/client/switch_to_chatbox
-	hotkey_keys = list("Unbound")
-	classic_keys = list("Tab")
-	name = "switch_to_chatbox"
-	full_name = "Switch to chatbox entry field"
-	description = "Yuh yuh"
-	keybind_signal = COMSIG_KB_CLIENT_SWITCH_TO_CHATBOX
-
-/datum/keybinding/client/switch_to_chatbox/down(client/user)
-	. = ..()
-	if(.)
-		return
-	winset(user, null, "input.focus=true?map.focus=true:input.focus=true")
-	return TRUE

@@ -46,7 +46,6 @@
 #define COMSIG_KB_CLIENT_TOGGLEFULLSCREEN_DOWN "keybinding_client_togglefullscreen_down"
 #define COMSIG_KB_CLIENT_MINIMALHUD_DOWN "keybinding_client_minimalhud_down"
 #define COMSIG_KB_CLIENT_SWITCHINPUT_DOWN "keybinding_client_switchinput_down"
-#define COMSIG_KB_CLIENT_SWITCH_TO_CHATBOX "keybinding_client_switch_to_chatbox"
 
 //Communication
 #define COMSIG_KB_CLIENT_OOC_DOWN "keybinding_client_ooc_down"

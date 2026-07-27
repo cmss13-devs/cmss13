@@ -35,7 +35,6 @@ const KEY_CODE_TO_BYOND = {
   TAB: 'Tab',
   ' ': 'Space',
   UP: 'North',
-  TAB: 'Tab',
 };
 
 const getAllKeybinds = (glob_keybinds) => {

@@ -28,7 +28,6 @@
 	var/current_mine_safety = TRUE
 
 /obj/item/weapon/gun/rifle/sharp/Initialize()
-	. = ..()
 	AddElement(/datum/element/corp_label/armat)
 	LAZYADD(actions_types, list(/datum/action/item_action/specialist/sharp_firemode_ability))
 	return ..()
@@ -113,6 +112,7 @@
 
 /obj/item/weapon/gun/rifle/sharp/do_toggle_firemode(mob/user)
 	. = ..()
+	playsound(user, 'sound/weapons/handling/gun_burst_toggle.ogg', 15, 1)
 	var/mine_mode_notice = ""
 	if(current_mine_safety)
 		current_mine_safety = FALSE
@@ -120,7 +120,7 @@
 		user.balloon_alert(user, "DANGER mode activated.")
 	else
 		current_mine_safety = TRUE
-		mine_mode_notice += "[icon2html(src, user)] You set [src]'s mine mode to SAFE mode. Explosive ammo will not blow up near detected friendly targets."
+		mine_mode_notice += "[icon2html(src, user)] You set [src]'s mine mode to SAFE mode. Explosive ammo will NEVER blow up near detected friendly targets."
 		user.balloon_alert(user, "SAFE mode activated.")
 	to_chat(user, SPAN_NOTICE(mine_mode_notice))
 

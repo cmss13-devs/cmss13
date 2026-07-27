@@ -5,7 +5,13 @@ import type { ServerWebSocket } from 'bun';
 import { createLogger, directLog } from '../logging';
 import { retrace } from './retrace';
 
-let server: Bun.Server;
+interface LinkSocketData {
+  id: string;
+  createdAt: number;
+}
+
+let server: Bun.Server<LinkSocketData>;
+
 const logger = createLogger('link');
 const DEBUG = process.argv.includes('--debug');
 
@@ -62,7 +68,7 @@ function deserializeObject(str: any): any {
 }
 
 function handleLinkMessage(
-  _ws: ServerWebSocket<unknown>,
+  _ws: ServerWebSocket<LinkSocketData>,
   message: string | Buffer<ArrayBufferLike>,
 ): void {
   const deserializedMsg = deserializeObject(message);
@@ -98,7 +104,7 @@ function handleLinkMessage(
   logger.log('unhandled message', JSON.stringify(message));
 }
 
-function upgradeServer(req: Request, srv: Bun.Server) {
+function upgradeServer(req: Request, srv: Bun.Server<LinkSocketData>) {
   const client = crypto.randomUUID();
 
   const upgraded = srv.upgrade(req, {

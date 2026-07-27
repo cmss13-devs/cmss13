@@ -1,5 +1,7 @@
 #define CLUSTER_REPAIR_TIME (4 SECONDS)
 #define CLUSTER_WEEDS_REGROWTH_TIME (15 SECONDS)
+/// This is what decides the # of people that require nesting to put the 'pylon protection' into effect.
+#define MOBS_NESTED_NEAR 2
 
 /obj/effect/alien/resin/special/cluster
 	name = XENO_STRUCTURE_CLUSTER
@@ -21,18 +23,30 @@
 	var/plasma_required_to_repair = 300
 	COOLDOWN_DECLARE(time_for_auto_repair)
 
+	protection_level = TURF_PROTECTION_NONE
+	var/list/weakrefs_of_bursted = list()
+
 /obj/effect/alien/resin/special/cluster/Initialize(mapload, hive_ref)
 	. = ..()
 	node = place_node()
 	update_minimap_icon()
 
+	if(node)
+		for(var/turf/covered_turf in RANGE_TURFS(node.node_range, src))
+			LAZYADD(covered_turf.linked_pylons, src)
+
 	RegisterSignal(SSdcs, COMSIG_GLOB_BOOST_XENOMORPH_WALLS, PROC_REF(start_boost))
 	RegisterSignal(SSdcs, COMSIG_GLOB_STOP_BOOST_XENOMORPH_WALLS, PROC_REF(stop_boost))
+
 /obj/effect/alien/resin/special/cluster/proc/update_minimap_icon()
 	SSminimaps.remove_marker(src)
-	SSminimaps.add_marker(src, z, MINIMAP_FLAG_XENO, "cluster")
+	SSminimaps.add_marker(src, MINIMAP_FLAG_XENO, image('icons/ui_icons/map_blips.dmi', null, "cluster"))
 
 /obj/effect/alien/resin/special/cluster/Destroy()
+	if(node)
+		for(var/turf/covered_turf in RANGE_TURFS(node.node_range, src))
+			LAZYREMOVE(covered_turf.linked_pylons, src)
+	weakrefs_of_bursted = null
 	QDEL_NULL(node)
 	SSminimaps.remove_marker(src)
 	return ..()
@@ -44,21 +58,52 @@
 	else
 		return ..()
 
-
 /obj/effect/alien/resin/special/cluster/process()
 	. = ..()
+	scan_for_nested_roof()
 
-	if(!boosted_structure)
-		STOP_PROCESSING(SSobj, src)
+	if(boosted_structure)
+
+		if(!COOLDOWN_FINISHED(src, time_for_auto_repair))
+			return
+
+		if(health <= maxhealth)
+			automatic_repair()
+
+		COOLDOWN_START(src, time_for_auto_repair, 20 SECONDS) // 20 seconds because it takes 15 seconds for weeds to grow back.
+
+/// Counts nested including any previous bursts up to MOBS_NESTED_NEAR and returns whether that number is met
+/obj/effect/alien/resin/special/cluster/proc/count_nested()
+	var/existing_bursted = length(weakrefs_of_bursted)
+	if(existing_bursted >= MOBS_NESTED_NEAR)
+		return TRUE
+
+	var/num_nested = 0
+	for(var/turf/scanned_turf in RANGE_TURFS(node.node_range, src))
+		for(var/mob/living/carbon/human/nested_mob in scanned_turf)
+			if(!HAS_TRAIT(nested_mob, TRAIT_NESTED))
+				continue
+			if(nested_mob.spawned_corpse)
+				continue
+			var/datum/weakref/nested_weakref = WEAKREF(nested_mob)
+			if(nested_weakref in weakrefs_of_bursted)
+				continue
+			num_nested++
+			if(nested_mob.chestburst)
+				weakrefs_of_bursted += nested_weakref
+
+			if(existing_bursted + num_nested >= MOBS_NESTED_NEAR)
+				return TRUE
+
+	return FALSE
+
+/obj/effect/alien/resin/special/cluster/proc/scan_for_nested_roof()
+	if(!node)
 		return
-
-	if(!COOLDOWN_FINISHED(src, time_for_auto_repair))
-		return
-
-	if(health <= maxhealth)
-		automatic_repair()
-
-	COOLDOWN_START(src, time_for_auto_repair, 20 SECONDS) // 20 seconds because it takes 15 seconds for weeds to grow back.
+	if(count_nested())
+		protection_level = TURF_PROTECTION_CAS
+	else
+		protection_level = TURF_PROTECTION_NONE
 
 /obj/effect/alien/resin/special/cluster/proc/start_boost(source, hive_purchaser)
 	SIGNAL_HANDLER
@@ -66,7 +111,6 @@
 		return
 	else
 		boosted_structure = TRUE
-		START_PROCESSING(SSdcs, src)
 
 /obj/effect/alien/resin/special/cluster/proc/stop_boost(source, hive_purchaser)
 	SIGNAL_HANDLER
@@ -129,5 +173,7 @@
 	W.resin_parent = src
 	return W
 
+
 #undef CLUSTER_REPAIR_TIME
 #undef CLUSTER_WEEDS_REGROWTH_TIME
+#undef MOBS_NESTED_NEAR

@@ -56,16 +56,6 @@
 		new /atom/movable/screen/escape_menu/home_button(
 			null,
 			src,
-			"Tacmaps Panel",
-			/* offset = */ 6,
-			CALLBACK(src, PROC_REF(home_tacmaps)),
-		)
-	)
-
-	page_holder.give_screen_object(
-		new /atom/movable/screen/escape_menu/home_button(
-			null,
-			src,
 			"Teleport Panel",
 			/* offset = */ 7,
 			CALLBACK(src, PROC_REF(home_teleport)),
@@ -126,12 +116,6 @@
 		return
 
 	GLOB.medals_panel.tgui_interact(client?.mob)
-
-/datum/escape_menu/proc/home_tacmaps()
-	if(!client?.admin_holder.check_for_rights(R_ADMIN|R_MOD))
-		return
-
-	GLOB.tacmap_admin_panel.tgui_interact(client?.mob)
 
 /datum/escape_menu/proc/home_teleport()
 	if(!client?.admin_holder.check_for_rights(R_MOD))

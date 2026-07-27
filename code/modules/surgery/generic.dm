@@ -12,7 +12,11 @@
 	required_surgery_skill = SKILL_SURGERY_NOVICE
 	steps = list(
 		/datum/surgery_step/incision,
+		/datum/surgery_step/cauterize/abort,
+		/datum/surgery_step/suture_incision/abort,
 		/datum/surgery_step/clamp_bleeders_step,
+		/datum/surgery_step/cauterize/abort,
+		/datum/surgery_step/suture_incision/abort,
 		/datum/surgery_step/retract_skin,
 	)
 	lying_required = FALSE
@@ -57,14 +61,21 @@
 			SPAN_NOTICE("[user] has constructed a prepared incision in your [surgery.affected_limb.display_name]."),
 			SPAN_NOTICE("[user] has constructed a prepared incision in [target]'s [surgery.affected_limb.display_name]."))
 
-		surgery.status += 2 //IMS completes all steps.
+		surgery.status += 6 //IMS completes all steps.
+
+		switch(target_zone) //forces application of overlays
+			if("chest")
+				target.overlays += image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
+			if("head")
+				target.overlays += image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
+
 	else if(tool_type == /obj/item/tool/surgery/scalpel/laser && prob(las_scalpel.bloodlessprob))
 		user.affected_message(target,
 			SPAN_NOTICE("You finish making a bloodless incision on [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
 			SPAN_NOTICE("[user] finishes making a bloodless incision on your [surgery.affected_limb.display_name] with \the [tool]."),
 			SPAN_NOTICE("[user] finishes making a bloodless incision on [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
 
-		surgery.status++ //A laser scalpel may cauterise as it cuts.
+		surgery.status += 3 //A laser scalpel may cauterise as it cuts.
 	else
 		user.affected_message(target,
 			SPAN_NOTICE("You finish the incision on [target]'s [surgery.affected_limb.display_name]."),
@@ -76,7 +87,7 @@
 			incision_bleed.duration = 10 MINUTES //A weak bleed, but it doesn't stop on its own.
 			surgery.affected_limb.bleeding_effects_list += incision_bleed
 		else
-			surgery.status++ // synth skin doesn't cause bleeders
+			surgery.status += 3 // synth skin doesn't cause bleeders
 
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SHALLOW //Descriptionwise this is done by the retractor, but putting it here means people can examine to see if an unfinished surgery has been done.
 	user.add_blood(target.get_blood_color(), BLOOD_HANDS)
@@ -388,6 +399,31 @@
 	log_interact(user, target, "[key_name(user)] failed to cauterize an incision in [key_name(target)]'s [surgery.affected_limb.display_name], aborting [surgery].")
 	return FALSE
 
+/datum/surgery_step/cauterize/abort
+	name = "Abort Surgery"
+	desc = "close the incision early"
+
+/datum/surgery_step/cauterize/abort/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
+	return TRUE //If you opened the wrong limb or you need to close an autopsy incision; this has you covered. Different from amputation abortion.
+
+/datum/surgery_step/cauterize/abort/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	user.affected_message(target,
+		SPAN_NOTICE("You cauterize the incision on [target]'s [surgery.affected_limb.display_name]."),
+		SPAN_NOTICE("[user] cauterizes the incision on your [surgery.affected_limb.display_name]."),
+		SPAN_NOTICE("[user] cauterizes the incision on [target]'s [surgery.affected_limb.display_name]."))
+	switch(target_zone)
+		if("head")
+			target.overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
+			target.overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_open")
+		if("chest")
+			target.overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
+			target.overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_open")
+	target.incision_depths[target_zone] = SURGERY_DEPTH_SURFACE
+	surgery.affected_limb.remove_all_bleeding(TRUE, FALSE)
+	target.pain.recalculate_pain()
+	complete(target, surgery)
+	log_interact(user, target, "[key_name(user)] cauterized an incision in [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")
+
 //////////////////////////////////////////////////////////////////
 // BONE-OPENING SURGERIES //
 //////////////////////////////////////////////////////////////////
@@ -400,6 +436,7 @@
 	steps = list(
 		/datum/surgery_step/saw_encased,
 		/datum/surgery_step/open_encased_step,
+		/datum/surgery_step/clamp_bleeders_step,
 		/datum/surgery_step/mend_encased,
 	)
 	pain_reduction_required = PAIN_REDUCTION_HEAVY
@@ -545,6 +582,7 @@
 	steps = list(
 		/datum/surgery_step/close_encased_step,
 		/datum/surgery_step/open_encased_step,
+		/datum/surgery_step/clamp_bleeders_step, //oop i forgor, also cuz you can't clamp bleeders here, normally, for some reason
 		/datum/surgery_step/mend_encased,
 	)
 	pain_reduction_required = PAIN_REDUCTION_HEAVY
@@ -704,7 +742,7 @@ If fiddling with, uncomment /mob/living/attackby surgery code also. It's pointle
 	steps = list(/datum/surgery_step/test_incision)
 	pain_reduction_required = NONE //Xenos cannot process painkillers.
 	requires_bodypart = FALSE //Xenos have no limbs.
-	target_mobtypes = list(/mob/living/carbon/xenomorph, /mob/living/simple_animal/cat/Jones)
+	target_mobtypes = list(/mob/living/carbon/xenomorph, /mob/living/simple_animal/small/cat/Jones)
 	lying_required = FALSE
 
 /datum/surgery_step/test_incision
@@ -748,7 +786,7 @@ If fiddling with, uncomment /mob/living/attackby surgery code also. It's pointle
 	priority = SURGERY_PRIORITY_HIGH
 	possible_locs = list("chest")
 	required_surgery_skill = SKILL_SURGERY_TRAINED
-	target_mobtypes = list(/mob/living/simple_animal/cat/Jones)
+	target_mobtypes = list(/mob/living/simple_animal/small/cat/Jones)
 	steps = list(/datum/surgery_step/mend_test_organ_step)
 	pain_reduction_required = NONE //Xenos cannot process painkillers.
 	requires_bodypart = FALSE //Xenos have no limbs.
@@ -808,7 +846,7 @@ If fiddling with, uncomment /mob/living/attackby surgery code also. It's pointle
 	self_operable = TRUE
 	pain_reduction_required = NONE //Xenos cannot process painkillers.
 	requires_bodypart = FALSE //Xenos have no limbs.
-	target_mobtypes = list(/mob/living/carbon/xenomorph, /mob/living/simple_animal/cat/Jones)
+	target_mobtypes = list(/mob/living/carbon/xenomorph, /mob/living/simple_animal/small/cat/Jones)
 	lying_required = FALSE
 
 //------------------------------------

@@ -218,6 +218,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	explo_proof = TRUE
+	is_objective = TRUE
 	var/datum/cm_objective/retrieve_data/terminal/objective
 
 /obj/structure/machinery/computer/objective/Initialize()

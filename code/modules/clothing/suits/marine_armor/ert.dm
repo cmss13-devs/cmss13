@@ -22,7 +22,7 @@
 
 /obj/item/clothing/suit/storage/marine/smartgunner/veteran/sof
 	name = "\improper SOF elite combat harness"
-	desc = "A heavily customized smargunner harness. Used by Marine Raiders."
+	desc = "A heavily customized smartgunner harness. Used by Marine Raiders."
 	icon_state = "marsoc_harness"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
 	item_icons = list(
@@ -46,6 +46,10 @@
 	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
 	flags_marine_armor = ARMOR_LAMP_OVERLAY
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE //Let's make these keep their name and icon.
+
+/obj/item/clothing/suit/storage/marine/veteran/Initialize()
+	. = ..()
+	RemoveElement(/datum/element/corp_label/armat)
 
 //===========================//DISTRESS\\================================\\
 //=======================================================================\\
@@ -144,6 +148,9 @@
 	slowdown = SLOWDOWN_ARMOR_MEDIUM
 	movement_compensation = SLOWDOWN_ARMOR_LIGHT
 
+/obj/item/clothing/suit/storage/marine/faction/Initialize()
+	. = ..()
+	RemoveElement(/datum/element/corp_label/armat)
 
 /obj/item/clothing/suit/storage/marine/faction/UPP
 	name = "\improper UM5 personal armor"
@@ -161,6 +168,10 @@
 	storage_slots = 1
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/UPP, /obj/item/clothing/under/marine/veteran/UPP/medic, /obj/item/clothing/under/marine/veteran/UPP/engi, /obj/item/clothing/under/marine/veteran/UPP/SOF_uniform)
 
+/obj/item/clothing/suit/storage/marine/faction/UPP/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/norcomm)
+
 /obj/item/clothing/suit/storage/marine/faction/UPP/support
 	name = "\improper UL6 personal armor"
 	desc = "Standard body armor of the UPP military, the UL6 (Union Light MK6) is a light body armor, slightly weaker than the M3 pattern body armor in service with the USCM, specialized towards ballistics protection. This set of personal armor lacks the iconic neck piece and some of the armor in favor of user mobility."
@@ -175,7 +186,7 @@
 
 /obj/item/clothing/suit/storage/marine/faction/UPP/support/synth
 	name = "\improper UL6 Synthetic personal armor"
-	desc = "Modified variant of the UL6 personel armor system intended to be useable by Synthetic units. Offers no protection but very little movement impairment."
+	desc = "Modified variant of the UL6 personal armor system intended to be usable by Synthetic units. Offers no protection but very little movement impairment."
 	flags_marine_armor = ARMOR_LAMP_OVERLAY|SYNTH_ALLOWED
 	armor_melee = CLOTHING_ARMOR_NONE
 	armor_bullet = CLOTHING_ARMOR_NONE
@@ -326,6 +337,10 @@
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UPP.dmi'
 	)
+
+/obj/item/clothing/suit/storage/CMB/pap/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/norcomm)
 
 // UPP SOF
 
@@ -507,13 +522,13 @@
 
 /obj/item/clothing/suit/storage/militia/full
 	name = "colonial militia full armor"
-	desc = "A rare privilege within the disorganized partisans, a set of somewhat full armor, created from boiled lether and more modern armor places, this one includes full set of armor for all limbs and full torso protection."
+	desc = "A rare privilege within the disorganized partisans, a set of somewhat full armor, created from boiled leather and more modern armor places, this one includes full set of armor for all limbs and full torso protection."
 	icon_state = "rebel_armor_full"
 	storage_slots = 3
 
 /obj/item/clothing/suit/storage/militia/full/smartgun
 	name = "colonial militia full armor harness"
-	desc = "A rare privilege within the disorganized partisans, a set of somewhat full armor, created from boiled lether and more modern armor places, this one includes full set of armor for all limbs and full torso protection. This one is even further modified with parts of M56 smargunner harness, allowing the use of smargun system electronics."
+	desc = "A rare privilege within the disorganized partisans, a set of somewhat full armor, created from boiled leather and more modern armor places, this one includes full set of armor for all limbs and full torso protection. This one is even further modified with parts of M56 smartgunner harness, allowing the use of smartgun system electronics."
 	flags_inventory = BLOCKSHARPOBJ|SMARTGUN_HARNESS
 
 //===========================//CMB\\================================\\
@@ -521,7 +536,7 @@
 
 /obj/item/clothing/suit/storage/CMB
 	name = "\improper CMB Deputy jacket"
-	desc = "A thick and stylish black leather jacket with a Marshal's Deputy badge pinned to it. The back is enscribed with the powerful letters of 'DEPUTY' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
+	desc = "A thick and stylish black leather jacket with a Marshal's Deputy badge pinned to it. The back is inscribed with the powerful letters of 'DEPUTY' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
 	icon_state = "CMB_jacket"
 	item_state = "CMB_jacket"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/CMB.dmi'
@@ -575,7 +590,7 @@
 
 /obj/item/clothing/suit/storage/CMB/marshal
 	name = "\improper CMB Marshal jacket"
-	desc = "A thick and stylish black leather jacket with a Marshal's badge pinned to it. The back is enscribed with the powerful letters of 'MARSHAL' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
+	desc = "A thick and stylish black leather jacket with a Marshal's badge pinned to it. The back is inscribed with the powerful letters of 'MARSHAL' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
 	icon_state = "CMB_jacket_marshal"
 	item_state = "CMB_jacket_marshal"
 
@@ -626,6 +641,10 @@
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/cmb, /obj/item/clothing/under/CM_uniform)
 	item_state_slots = list(WEAR_JACKET = "cmb_heavy_armor")
 
+/obj/item/clothing/suit/storage/marine/veteran/cmb/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
+
 /obj/item/clothing/suit/storage/marine/veteran/cmb/light
 	name = "\improper M4R pattern CMB light armor"
 	icon_state = "cmb_light_armor"
@@ -648,7 +667,7 @@
 /obj/item/clothing/suit/storage/marine/veteran/cmb/leader
 	name = "\improper M4R pattern CMB Marshal armor"
 	icon_state = "cmb_sheriff_armor"
-	desc = "A custom fit variation of the CMB Riot armor, intended to be worn the Marshals themselves, has a golden lining with rank insignia. Has additional layer of lightweigh protective materials."
+	desc = "A custom fit variation of the CMB Riot armor, intended to be worn the Marshals themselves, has a golden lining with rank insignia. Has an additional layer of lightweight protective materials."
 	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_bomb = CLOTHING_ARMOR_HIGH
 
@@ -825,6 +844,10 @@
 	uniform_restricted = list(/obj/item/clothing/under/marine/ua_riot)
 	flags_atom = NO_GAMEMODE_SKIN
 
+/obj/item/clothing/suit/storage/marine/veteran/ua_riot/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
+
 /obj/item/clothing/suit/storage/marine/veteran/ua_riot/synth
 	name = "\improper UA-M1S Synthetic body armor"
 	desc = "Based on the M-3 pattern employed by the USCM, the UA-M1 body armor is employed by UA security, riot control and union-busting teams. The UA-1MS modification is Synthetic programming compliant, sacrificing protection for speed and carrying capacity."
@@ -846,7 +869,7 @@
 
 /obj/item/clothing/suit/storage/marine/veteran/royal_marine
 	name = "kestrel armoured vest"
-	desc = "A customizable personal armor system used by the Three World Empire's Royal Marines Commandos. Designers from a Weyland Yutani subsidary, Lindenthal-Ehrenfeld Militärindustrie, iterated on the USCMC's M3 pattern personal armor in their Tokonigara lab to create an armor systemed to suit the unique needs of the Three World Empire's smaller but better equipped Royal Marines."
+	desc = "A customizable personal armor system used by the Three World Empire's Royal Marines Commandos. Designers from a Weyland Yutani subsidiary, Lindenthal-Ehrenfeld Militärindustrie, iterated on the USCMC's M3 pattern personal armor in their Tokonigara lab to create an armor system to suit the unique needs of the Three World Empire's smaller but better equipped Royal Marines."
 	icon_state = "rmc_light"
 	item_state = "rmc_light"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/TWE.dmi'
@@ -870,6 +893,10 @@
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman,
 	)
+
+/obj/item/clothing/suit/storage/marine/veteran/royal_marine/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/clothing/suit/storage/marine/veteran/royal_marine/light //RMC Rifleman Armor
 	icon_state = "rmc_light"
@@ -896,7 +923,7 @@
 
 /obj/item/clothing/suit/storage/marine/veteran/royal_marine/pointman //Pointman Spec Armor
 	name = "kestrel pointman armour"
-	desc = "A heavier version of the armor system used by the Three World Empire's Royal Marines Commandos. Designers from a Weyland Yutani subsidary, Lindenthal-Ehrenfeld Militärindustrie, iterated on the USCMC's M3 pattern personal armor in their Tokonigara lab to create an armor systemed to suit the unique needs of the Three World Empire's smaller but better equipped Royal Marines."
+	desc = "A heavier version of the armor system used by the Three World Empire's Royal Marines Commandos. Designers from a Weyland Yutani subsidiary, Lindenthal-Ehrenfeld Militärindustrie, iterated on the USCMC's M3 pattern personal armor in their Tokonigara lab to create an armor system to suit the unique needs of the Three World Empire's smaller but better equipped Royal Marines."
 	icon_state = "rmc_pointman"
 	item_state = "rmc_pointman"
 	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS|BODY_FLAG_ARMS
@@ -936,6 +963,10 @@
 	flags_heat_protection = (BODY_FLAG_CHEST)
 
 	slowdown = SLOWDOWN_ARMOR_SUPER_LIGHT // Gotta go fast
+
+/obj/item/clothing/suit/storage/marine/veteran/royal_marine/light/iasf/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/alphatech)
 
 /obj/item/clothing/suit/storage/marine/veteran/royal_marine/light/iasf/synth
 

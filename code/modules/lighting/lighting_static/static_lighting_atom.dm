@@ -1,6 +1,6 @@
 
 /atom
-	///The light source, datum. Dont fuck with this directly
+	///The light source, datum. don't fuck with this directly
 	var/tmp/datum/static_light_source/static_light
 	///Static light sources currently attached to this atom, this includes ones owned by atoms inside this atom
 	var/tmp/list/static_light_sources

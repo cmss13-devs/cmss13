@@ -7,7 +7,7 @@
 
 
 /*
- * Toy gun: Why isnt this an /obj/item/weapon/gun?
+ * Toy gun: Why isn't this an /obj/item/weapon/gun?
  */
 /obj/item/toy/gun
 	name = "cap gun"
@@ -29,7 +29,7 @@
 /obj/item/toy/gun/attackby(obj/item/toy/gun_ammo/A as obj, mob/user as mob)
 	if (istype(A, /obj/item/toy/gun_ammo))
 		if (src.bullets >= 7)
-			to_chat(user, SPAN_NOTICE(" It's already fully loaded!"))
+			to_chat(user, SPAN_NOTICE("It's already fully loaded!"))
 			return 1
 		if (A.amount_left <= 0)
 			to_chat(user, SPAN_DANGER("There is no more caps!"))
@@ -60,7 +60,7 @@
 	playsound(user, 'sound/weapons/Gunshot.ogg', 15, 1)
 	src.bullets--
 	for(var/mob/O in viewers(user, null))
-		O.show_message(SPAN_DANGER("<B>[user] fires a cap gun at [target]!</B>"), SHOW_MESSAGE_VISIBLE, SPAN_DANGER("You hear a gunshot"), SHOW_MESSAGE_AUDIBLE)
+		O.show_message(SPAN_DANGER("<B>[user] fires a cap gun at [target]!</B>"), SHOW_MESSAGE_VISIBLE, SPAN_DANGER("You hear a gunshot."), SHOW_MESSAGE_AUDIBLE)
 
 /obj/item/toy/gun_ammo
 	name = "ammo-caps"
@@ -95,7 +95,7 @@
 /obj/item/toy/crossbow/examine(mob/user)
 	..()
 	if (bullets)
-		to_chat(user, SPAN_NOTICE(" It is loaded with [bullets] foam darts!"))
+		to_chat(user, SPAN_NOTICE("It is loaded with [bullets] foam darts!"))
 
 /obj/item/toy/crossbow/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I, /obj/item/toy/crossbow_ammo))
@@ -103,7 +103,7 @@
 			if(user.drop_held_item())
 				qdel(I)
 				bullets++
-				to_chat(user, SPAN_NOTICE(" You load the foam dart into the crossbow."))
+				to_chat(user, SPAN_NOTICE("You load the foam dart into the crossbow."))
 		else
 			to_chat(usr, SPAN_DANGER("It's already fully loaded."))
 
@@ -178,7 +178,7 @@
 	else if (M.body_position == LYING_DOWN && src.bullets == 0)
 		for(var/mob/O in viewers(M, null))
 			if (O.client)
-				O.show_message(SPAN_DANGER("<B>[user] casually lines up a shot with [M]'s head, pulls the trigger, then realizes they are out of ammo and drops to the floor in search of some!</B>"), SHOW_MESSAGE_VISIBLE, SPAN_DANGER("You hear someone fall"), SHOW_MESSAGE_AUDIBLE)
+				O.show_message(SPAN_DANGER("<B>[user] casually lines up a shot with [M]'s head, pulls the trigger, then realizes they are out of ammo and drops to the floor in search of some!</B>"), SHOW_MESSAGE_VISIBLE, SPAN_DANGER("You hear someone fall."), SHOW_MESSAGE_AUDIBLE)
 		user.apply_effect(5, WEAKEN)
 	return
 
@@ -214,7 +214,6 @@
 	var/active = 0
 	var/sword_type = "blue"
 	w_class = SIZE_SMALL
-	flags_item = NOSHIELD
 	attack_verb = list("attacked", "struck", "hit")
 
 /obj/item/toy/sword/red
@@ -234,13 +233,13 @@
 
 	active = !active
 	if (active)
-		to_chat(user, SPAN_NOTICE(" You extend the plastic blade with a quick flick of your wrist."))
+		to_chat(user, SPAN_NOTICE("You extend the plastic blade with a quick flick of your wrist."))
 		playsound(user, 'sound/weapons/saberon.ogg', 15, 1)
 		icon_state = "sword[sword_type]"
 		item_state = "sword[sword_type]"
 		w_class = SIZE_LARGE
 	else
-		to_chat(user, SPAN_NOTICE(" You push the plastic blade back down into the handle."))
+		to_chat(user, SPAN_NOTICE("You push the plastic blade back down into the handle."))
 		playsound(user, 'sound/weapons/saberoff.ogg', 15, 1)
 		icon_state = "sword0"
 		item_state = "sword0"
@@ -259,7 +258,6 @@
 	icon = 'icons/obj/items/weapons/melee/swords.dmi'
 	icon_state = "katana"
 	flags_atom = FPRINT|CONDUCT
-	flags_item = NOSHIELD
 	flags_equip_slot = SLOT_WAIST|SLOT_BACK
 	force = 5
 	throwforce = 5

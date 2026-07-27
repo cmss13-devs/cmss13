@@ -14,13 +14,31 @@
 	desc = "A heads-up display that scans the humans in view and provides accurate data about their health status."
 	icon_state = "healthhud"
 	item_state = "healthhud"
-	deactive_state = "degoggles"
+	deactivated_state = "degoggles"
 	flags_armor_protection = 0
 	toggleable = TRUE
 	hud_type = MOB_HUD_MEDICAL_ADVANCED
-	actions_types = list(/datum/action/item_action/toggle, /datum/action/item_action/view_publications)
+	actions_types = list(/datum/action/item_action/toggle/hudgoggles, /datum/action/item_action/view_publications)
 	req_skill = SKILL_MEDICAL
 	req_skill_level = SKILL_MEDICAL_MEDIC
+	var/datum/weakref/equipped_user
+
+/obj/item/clothing/glasses/hud/health/equipped(mob/user, slot)
+	. = ..()
+	if(slot == WEAR_EYES)
+		equipped_user = WEAKREF(user)
+		RegisterSignal(GLOB.chemical_data, COMSIG_CHEMICAL_ANNOUNCEMENT, PROC_REF(announce_to_user))
+
+/obj/item/clothing/glasses/hud/health/unequipped(mob/user, slot)
+	. = ..()
+	if(slot == WEAR_EYES)
+		equipped_user = null
+		UnregisterSignal(GLOB.chemical_data, COMSIG_CHEMICAL_ANNOUNCEMENT)
+
+/obj/item/clothing/glasses/hud/health/proc/announce_to_user(datum/source, text, name)
+	var/mob/player = equipped_user.resolve()
+	playsound_client(player.client, 'sound/effects/radiostatic.ogg', player.loc, 25, FALSE)
+	player.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>Chemical Advisory: [name]</u></span><br>[text]", /atom/movable/screen/text/screen_text/chemical_advisory, "#13d182", TRUE)
 
 /obj/item/clothing/glasses/hud/health/prescription
 	name = "\improper Prescription HealthMate HUD"
@@ -32,9 +50,7 @@
 	name = "View Research Publications"
 	button.name = name
 	button.overlays.Cut()
-	var/image/IMG = image('icons/obj/structures/machinery/computer.dmi', button, "research")
-	IMG.pixel_x = 0
-	IMG.pixel_y = -5
+	var/image/IMG = image('icons/mob/hud/actions.dmi', button, "research")
 	button.overlays += IMG
 
 /datum/action/item_action/view_publications/update_button_icon()
@@ -123,7 +139,7 @@
 
 /obj/item/clothing/glasses/hud/health/science
 	name = "custom HealthMate HUD" // combined HealthMateHUD and Reagent Scanner HUD for CMO
-	desc = "These HealthMate HUD googles are modified with a light-weight titantium-alloy frame that is custom fitted with extra wiring and low profile components from a reagent analyzer, allowing them to combine the functionality of a HealthMate and reagent scanner HUD without compromising on the form of the googles."
+	desc = "These HealthMate HUD googles are modified with a light-weight titanium-alloy frame that is custom fitted with extra wiring and low profile components from a reagent analyzer, allowing them to combine the functionality of a HealthMate and reagent scanner HUD without compromising on the form of the googles."
 	req_skill = SKILL_RESEARCH
 	req_skill_level = SKILL_RESEARCH_TRAINED
 	clothing_traits = list(TRAIT_REAGENT_SCANNER)
@@ -137,11 +153,11 @@
 	name = "\improper SensorMate HUD"
 	desc = "A much older heads-up display that displays the last known biometric data from suit sensors of any given individual."
 	icon_state = "sensorhud"
-	deactive_state = "sensorhud_d"
+	deactivated_state = "sensorhud_d"
 	flags_armor_protection = 0
 	toggleable = TRUE
 	hud_type = MOB_HUD_MEDICAL_ADVANCED
-	actions_types = list(/datum/action/item_action/toggle)
+	actions_types = list(/datum/action/item_action/toggle/hudgoggles)
 	req_skill = SKILL_MEDICAL
 	req_skill_level = SKILL_MEDICAL_DEFAULT
 
@@ -154,11 +170,11 @@
 	name = "\improper PatrolMate HUD"
 	desc = "A heads-up display that scans the humans in view and provides accurate data about their ID status and security records."
 	icon_state = "securityhud"
-	deactive_state = "degoggles"
+	deactivated_state = "degoggles"
 	toggleable = TRUE
 	flags_armor_protection = 0
 	hud_type = MOB_HUD_SECURITY_ADVANCED
-	actions_types = list(/datum/action/item_action/toggle)
+	actions_types = list(/datum/action/item_action/toggle/hudgoggles)
 
 /obj/item/clothing/glasses/hud/security/prescription
 	name = "\improper Prescription PatrolMate HUD"

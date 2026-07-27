@@ -40,10 +40,14 @@
 	var/temperature = T20C
 	var/pressure = ONE_ATMOSPHERE
 	var/can_build_special = FALSE
-	var/is_resin_allowed = TRUE // can xenos weed, place resin holes or dig tunnels at said areas
-	var/allow_construction = TRUE // whether or not you can build things like barricades in this area
-	var/is_landing_zone = FALSE // primarily used to prevent mortars from hitting this location
-	var/resin_construction_allowed = TRUE // Allow construction of resin walls, and other special
+	/// can xenos weed, place resin holes or dig tunnels at said areas
+	var/is_resin_allowed = TRUE
+	/// whether or not you can build things like barricades in this area
+	var/allow_construction = TRUE
+	/// primarily used to prevent mortars from hitting this location
+	var/is_landing_zone = FALSE
+	/// Allow construction of resin walls, and other special
+	var/resin_construction_allowed = TRUE
 
 	// Weather
 	var/weather_enabled = TRUE // Manual override for weather if set to false
@@ -134,6 +138,12 @@
 				if(!(current_wall.turf_flags & TURF_HULL))
 					openable_turf_count++
 					continue
+
+	// If map_holder exists for SSweather, its already done its one-time setup
+	if(weather_enabled && SSweather.map_holder?.should_affect_area(src))
+		SSweather.weather_areas += src
+		if(SSweather.is_weather_event)
+			overlays += SSweather.curr_master_turf_overlay
 
 /area/proc/initialize_power(override_power)
 	if(requires_power)
@@ -375,7 +385,7 @@
 
 	return used
 
-/area/proc/use_power(amount, chan)
+/area/proc/use_power(amount, chan = POWER_CHANNEL_ONEOFF)
 	switch(chan)
 		if(POWER_CHANNEL_EQUIP)
 			used_equip += amount
@@ -386,35 +396,52 @@
 		if(POWER_CHANNEL_ONEOFF)
 			used_oneoff += amount
 
-/area/Entered(A,atom/OldLoc)
-	if(ismob(A))
+#if defined(UNIT_TESTS)
+	switch(chan)
+		if(POWER_CHANNEL_EQUIP)
+			if(used_equip < 0)
+				stack_trace("[src] ([type]) now has [used_equip] used_equip after use_power([amount],...)!")
+		if(POWER_CHANNEL_LIGHT)
+			if(used_light < 0)
+				stack_trace("[src] ([type]) now has [used_light] used_light after use_power([amount],...)!")
+		if(POWER_CHANNEL_ENVIRON)
+			if(used_environ < 0)
+				stack_trace("[src] ([type]) now has [used_environ] used_environ after use_power([amount],...)!")
+		if(POWER_CHANNEL_ONEOFF)
+			if(used_oneoff < 0)
+				stack_trace("[src] ([type]) now has [used_oneoff] used_oneoff after use_power([amount],...)!")
+#endif
+
+/area/Entered(atom/movable/thing, atom/OldLoc)
+	if(ismob(thing))
 		if(!OldLoc)
 			return
-		var/mob/M = A
+		var/mob/mob_thing = thing
 		var/area/old_area = get_area(OldLoc)
 		if(old_area == src)
 			return
-		M?.client?.soundOutput?.update_ambience(src, null, TRUE)
-	else if(istype(A, /obj/structure/machinery))
-		add_machine(A)
+		mob_thing?.client?.soundOutput?.update_ambience(src, null, TRUE)
+	else if(istype(thing, /obj/structure/machinery))
+		add_machine(thing)
 
-/area/Exited(A)
-	if(istype(A, /obj/structure/machinery))
-		remove_machine(A)
-	else if(ismob(A))
-		var/mob/exiting_mob = A
+/area/Exited(atom/movable/thing)
+	if(istype(thing, /obj/structure/machinery))
+		remove_machine(thing)
+	else if(ismob(thing))
+		var/mob/exiting_mob = thing
 		exiting_mob?.client?.soundOutput?.update_ambience(target_area = null, ambience_override = null, force_update = TRUE)
 
-/area/proc/add_machine(obj/structure/machinery/M)
+/area/proc/add_machine(obj/structure/machinery/machine)
 	SHOULD_NOT_SLEEP(TRUE)
-	if(istype(M))
-		use_power(M.calculate_current_power_usage(), M.power_channel)
-		M.power_change()
+	if(!machine.last_power_usage)
+		machine.update_use_power(-1)
+	else
+		use_power(machine.last_power_usage, machine.power_channel)
+	machine.power_change()
 
-/area/proc/remove_machine(obj/structure/machinery/M)
+/area/proc/remove_machine(obj/structure/machinery/machine)
 	SHOULD_NOT_SLEEP(TRUE)
-	if(istype(M))
-		use_power(-M.calculate_current_power_usage(), M.power_channel)
+	use_power(-machine.last_power_usage, machine.power_channel)
 
 //atmos related procs
 
@@ -436,23 +463,9 @@
 	return flags
 
 /area/proc/reg_in_areas_in_z()
-	if(!length(contents))
-		return
-
-	var/list/areas_in_z = SSmapping.areas_in_z
-	var/z
-	for(var/i in contents)
-		var/atom/thing = i
-		if(!thing)
-			continue
-		z = thing.z
-		break
-	if(!z)
-		WARNING("No z found for [src]")
-		return
-	if(!areas_in_z["[z]"])
-		areas_in_z["[z]"] = list()
-	areas_in_z["[z]"] += src
+	if(!SSmapping.areas_in_z["[z]"])
+		SSmapping.areas_in_z["[z]"] = list()
+	SSmapping.areas_in_z["[z]"] += src
 
 /**
  * Purges existing weeds, and prevents future weeds from being placed.
@@ -467,6 +480,13 @@
 	addtimer(VARSET_CALLBACK(src, unoviable_timer, FALSE), unoviable_timer)
 
 /area/sky
-	name = "Sky"
+	name = "Lower Sky"
 	icon_state = "lv-626"
 	flags_area = AREA_UNWEEDABLE
+	is_resin_allowed = FALSE
+
+/area/sky/level4
+	name = "Sky"
+
+/area/sky/level5
+	name = "Upper Sky"

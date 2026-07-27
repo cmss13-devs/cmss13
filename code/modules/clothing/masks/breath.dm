@@ -96,7 +96,7 @@
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	var/pulled = FALSE
 	var/original_state = "coif"
-	actions_types = list(/datum/action/item_action/toggle)
+	actions_types = list(/datum/action/item_action/toggle/adjust_mask)
 
 /obj/item/clothing/mask/rebreather/scarf/ui_action_click()
 	pull_down()
@@ -152,7 +152,7 @@
 	flags_inv_hide = HIDEFACE
 	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
-	can_become_accessory = TRUE
+	flags_obj = OBJ_CAN_ACCESSORIZE
 	worn_accessory_slot = ACCESSORY_SLOT_MASK
 	worn_accessory_limit = 2
 
@@ -231,7 +231,7 @@
 	flags_inventory = ALLOWCPR
 	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
-	can_become_accessory = TRUE
+	flags_obj = OBJ_CAN_ACCESSORIZE
 	worn_accessory_slot = ACCESSORY_SLOT_MASK
 	worn_accessory_limit = 2
 
@@ -328,7 +328,7 @@
 	flags_inventory = ALLOWCPR
 	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
-	can_become_accessory = TRUE
+	flags_obj = OBJ_CAN_ACCESSORIZE
 
 /obj/item/clothing/mask/tornscarf/smock/classic
 	icon_state = "smock_classic"
@@ -364,8 +364,8 @@
 	flags_inventory = ALLOWREBREATH|ALLOWCPR
 	var/adjust = FALSE
 	var/original_state = "neckerchief"
-	actions_types = list(/datum/action/item_action/toggle)
-	can_become_accessory = TRUE
+	actions_types = list(/datum/action/item_action/toggle/neckerchief)
+	flags_obj = OBJ_CAN_ACCESSORIZE
 	worn_accessory_slot = ACCESSORY_SLOT_MASK
 	worn_accessory_limit = 2
 
@@ -450,6 +450,11 @@
 	icon_state = "neckerchief_brown"
 	item_state = "neckerchief_brown"
 	original_state = "neckerchief_brown"
+
+/obj/item/clothing/mask/neckerchief/yellow
+	icon_state = "neckerchief_bravo"
+	item_state = "neckerchief_bravo"
+	original_state = "neckerchief_bravo"
 
 /obj/item/clothing/mask/owlf_mask
 	name = "\improper OWLF gas mask"

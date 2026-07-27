@@ -1,6 +1,6 @@
 /obj/vehicle/train/cargo/engine
 	name = "cargo train tug"
-	desc = "A ridable electric car designed for pulling cargo trolleys."
+	desc = "A rideable electric car designed for pulling cargo trolleys."
 	icon = 'icons/obj/vehicles/vehicles.dmi'
 	icon_state = "cargo_engine"
 	on = 0

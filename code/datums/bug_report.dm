@@ -27,7 +27,7 @@
 	tgui_alert(user, "Unable to create a bug report at this time, please create the issue directly through our GitHub repository instead")
 	var/url = CONFIG_GET(string/githuburl)
 	if(!url)
-		to_chat(user, SPAN_WARNING("The configuration is not properly set, unable to open external link"))
+		to_chat(user, SPAN_WARNING("The configuration is not properly set, unable to open external link."))
 		return
 
 	if(tgui_alert(user, "This will open the GitHub in your browser. Are you sure?", "Confirm", list("Yes", "No")) == "Yes")
@@ -162,7 +162,8 @@
 	GLOB.admin_help_ui_handler.perform_adminhelp(initial_user, general_message, urgent = FALSE)
 
 	var/href_message = ADMIN_VIEW_BUG_REPORT(src)
-	initial_user.current_ticket.AddInteraction(href_message)
+	var/link_data = list("View Report", "byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];view_bug_report=[REF(src)]")
+	initial_user.current_ticket.AddInteraction(href_message, link_data = link_data)
 
 /datum/tgui_bug_report_form/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()

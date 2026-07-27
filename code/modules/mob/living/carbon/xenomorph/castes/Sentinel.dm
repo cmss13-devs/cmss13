@@ -38,9 +38,11 @@
 	plasma_types = list(PLASMA_NEUROTOXIN)
 	pixel_x = -12
 	old_x = -12
+	xenonid_pixel_x = -9
 	tier = 1
 	organ_value = 800
 	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
@@ -49,7 +51,6 @@
 		/datum/action/xeno_action/activable/slowing_spit, //first macro
 		/datum/action/xeno_action/activable/scattered_spit, //second macro
 		/datum/action/xeno_action/onclick/paralyzing_slash, //third macro
-		/datum/action/xeno_action/onclick/tacmap,
 	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
@@ -223,4 +224,4 @@
 		behavior.next_slash_buffed = FALSE
 
 	to_chat(unbuffslash_user, SPAN_XENODANGER("We have waited too long, our slash will no longer apply neurotoxin!"))
-	button.icon_state = "template"
+	button.icon_state = "template_xeno"

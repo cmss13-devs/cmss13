@@ -27,5 +27,5 @@
 	var/falloff = text2num(params["falloff"])
 
 	message_admins("[key_name_admin(user)] dropped a custom cell bomb with power [power], falloff [falloff] on [target.name]!")
-	cell_explosion(get_turf(target), power, falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("divine intervention", user))
+	cell_explosion(get_turf(target), power, falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("divine intervention"))
 	return TRUE

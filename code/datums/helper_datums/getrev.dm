@@ -55,7 +55,7 @@ GLOBAL_DATUM_INIT(revdata, /datum/getrev, new)
 CLIENT_VERB(showrevinfo)
 	set category = "OOC"
 	set name = "Show Server Revision"
-	set desc = "Check the current server code revision"
+	set desc = "Check the current server code revision."
 
 	var/list/msg = list("")
 	// Round ID
@@ -81,6 +81,10 @@ CLIENT_VERB(showrevinfo)
 		msg += "TGS version: [version.raw_parameter]"
 		var/datum/tgs_version/api_version = world.TgsApiVersion()
 		msg += "DMAPI version: [api_version.raw_parameter]"
+
+	var/code_modification = CONFIG_GET(string/code_modifications_message)
+	if(code_modification)
+		msg += code_modification
 
 	// Game mode odds
 	to_chat(src, SPAN_INFO(msg.Join("<br>")))

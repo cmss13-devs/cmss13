@@ -19,7 +19,7 @@
 	auto_retrieval_slot = WEAR_J_STORE
 
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
-	wield_delay = WIELD_DELAY_VERY_SLOW
+	wield_delay = WEAPON_DELAY_VERY_SLOW
 	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 
 	flags_item = TWOHANDED|NO_CRYO_STORE
@@ -27,9 +27,13 @@
 
 	var/explosion_delay_sharp = TRUE
 
+/obj/item/weapon/gun/rifle/sharp/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
+
 /obj/item/weapon/gun/rifle/sharp/get_examine_text(mob/user)
 	. = ..()
-	. += SPAN_INFO("Switching firemodes will toggle the explosion delay timer between 1 second and 5 seconds")
+	. += SPAN_INFO("Switching firemodes will toggle the explosion delay timer between 1 second and 5 seconds.")
 
 /obj/item/weapon/gun/rifle/sharp/set_bullet_traits()
 	LAZYADD(traits_to_give, list(

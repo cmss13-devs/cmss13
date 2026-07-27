@@ -25,7 +25,7 @@
 			var/obj/limb/E = get_limb(organ_name)
 			if(!E || !E.is_usable())
 				. += MOVE_REDUCTION_LIMB_DESTROYED
-			if(E.status & LIMB_SPLINTED)
+			if(E.status & LIMB_SPLINTED || (!(E.status & LIMB_BROKEN) && (E.status & LIMB_ESCHAR)))
 				. += MOVE_REDUCTION_LIMB_SPLINTED
 			else if(E.status & LIMB_BROKEN)
 				. += MOVE_REDUCTION_LIMB_BROKEN
@@ -38,7 +38,7 @@
 			if(!E || !E.is_usable())
 				. += MOVE_REDUCTION_LIMB_DESTROYED
 			// Splinted limbs are not as punishing
-			if(E.status & LIMB_SPLINTED)
+			if(E.status & LIMB_SPLINTED || (!(E.status & LIMB_BROKEN) && (E.status & LIMB_ESCHAR)))
 				. += MOVE_REDUCTION_LIMB_SPLINTED
 			else if(E.status & LIMB_BROKEN)
 				. += MOVE_REDUCTION_LIMB_BROKEN

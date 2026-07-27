@@ -14,7 +14,7 @@
 	mouse_pointer = 'icons/effects/mouse_pointer/sniper_mouse.dmi'
 
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
-	wield_delay = WIELD_DELAY_SLOW
+	wield_delay = WEAPON_DELAY_SLOW
 
 	var/has_aimed_shot = TRUE
 	var/aiming_time = 1.25 SECONDS
@@ -242,12 +242,20 @@
 				blocked = TRUE
 				break
 
-		for(var/obj/effect/particle_effect/smoke/S in T)
+		for(var/obj/effect/particle_effect/smoke/smoke in T)
+			if(!smoke.obscuring)
+				continue
 			blocked = TRUE
 			break
 
 	return blocked
-
+/obj/item/weapon/gun/rifle/sniper/equipped(mob/living/user, slot)
+	. = ..()
+	//Toggle Aimed Shot on equip in hands. Skips back and armour slot equips
+	if(slot == WEAR_R_HAND || slot == WEAR_L_HAND)
+		var /datum/action/toggling_action = locate(/datum/action/item_action/specialist/aimed_shot) in user.actions
+		if(toggling_action)
+			toggling_action.action_activate()
 // Snipers may enable or disable their laser tracker at will.
 /datum/action/item_action/specialist/toggle_laser
 
@@ -325,15 +333,40 @@
 	fire_sound = 'sound/weapons/gun_sniper.ogg'
 	current_mag = /obj/item/ammo_magazine/sniper
 	force = 12
-	wield_delay = WIELD_DELAY_HORRIBLE //Ends up being 1.6 seconds due to scope
+	wield_delay = WEAPON_DELAY_HORRIBLE //Ends up being 1.6 seconds due to scope
 	zoomdevicename = "scope"
 	attachable_allowed = list(/obj/item/attachable/bipod)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
 	map_specific_decoration = TRUE
+	inhand_x_dimension = 64
 
 	flags_item = TWOHANDED|NO_CRYO_STORE
 	pixel_x = -6
 	hud_offset = -6
+
+/obj/item/weapon/gun/rifle/sniper/M42A/Initialize(mapload, spawn_empty)
+	. = ..()
+	select_gamemode_skin()
+	AddElement(/datum/element/corp_label/armat)
+
+/obj/item/weapon/gun/rifle/sniper/M42A/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			item_icons[WEAR_L_HAND] = 'icons/obj/items/weapons/guns/guns_by_map/jungle/guns_lefthand_x64.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/obj/items/weapons/guns/guns_by_map/jungle/guns_righthand_x64.dmi'
+		if("classic")
+			item_icons[WEAR_L_HAND] = 'icons/obj/items/weapons/guns/guns_by_map/classic/guns_lefthand_x64.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/obj/items/weapons/guns/guns_by_map/classic/guns_righthand_x64.dmi'
+		if("desert")
+			item_icons[WEAR_L_HAND] = 'icons/obj/items/weapons/guns/guns_by_map/desert/guns_lefthand_x64.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/obj/items/weapons/guns/guns_by_map/desert/guns_righthand_x64.dmi'
+		if("snow")
+			item_icons[WEAR_L_HAND] = 'icons/obj/items/weapons/guns/guns_by_map/snow/guns_lefthand_x64.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/obj/items/weapons/guns/guns_by_map/snow/guns_righthand_x64.dmi'
+		if("urban")
+			item_icons[WEAR_L_HAND] = 'icons/obj/items/weapons/guns/guns_by_map/urban/guns_lefthand_x64.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/obj/items/weapons/guns/guns_by_map/urban/guns_righthand_x64.dmi'
 
 /obj/item/weapon/gun/rifle/sniper/M42A/verb/toggle_scope_zoom_level()
 	set name = "Toggle Scope Zoom Level"
@@ -384,15 +417,19 @@
 	fire_sound = 'sound/weapons/sniper_heavy.ogg'
 	current_mag = /obj/item/ammo_magazine/sniper/anti_materiel //Renamed from anti-tank to align with new identity/description. Other references have been changed as well. -Kaga
 	force = 12
-	wield_delay = WIELD_DELAY_HORRIBLE //Ends up being 1.6 seconds due to scope
+	wield_delay = WEAPON_DELAY_HORRIBLE //Ends up being 1.6 seconds due to scope
 	zoomdevicename = "scope"
 	attachable_allowed = list(/obj/item/attachable/bipod)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
 	sniper_beam_type = /obj/effect/ebeam/laser
 	sniper_beam_icon = "laser_beam"
 	sniper_lockon_icon = "sniper_lockon"
-	pixel_x = -4
-	hud_offset = -4
+	pixel_x = -5
+	hud_offset = -5
+
+/obj/item/weapon/gun/rifle/sniper/XM43E1/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
 
 /obj/item/weapon/gun/rifle/sniper/XM43E1/handle_starting_attachment()
 	..()
@@ -457,12 +494,20 @@
 	sniper_beam_type = /obj/effect/ebeam/laser/intense
 	sniper_beam_icon = "laser_beam_intense"
 	sniper_lockon_icon = "sniper_lockon_intense"
+	has_aimed_shot = FALSE
+	pixel_x = -2
+	hud_offset = -2
+
+/obj/item/weapon/gun/rifle/sniper/elite/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/weapon/gun/rifle/sniper/elite/handle_starting_attachment()
 	..()
 	var/obj/item/attachable/scope/S = new(src)
 	S.icon_state = "pmcscope"
 	S.attach_icon = "pmcscope"
+	S.hidden = TRUE
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
 	S.Attach(src)
 	update_attachable(S.slot)

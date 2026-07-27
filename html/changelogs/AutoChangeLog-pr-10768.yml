@@ -1,4 +1,0 @@
-author: "PoltavskaPraca"
-delete-after: True
-changes:
-  - qol: "adds a little feedback text when you save your character prefs and it's successful"

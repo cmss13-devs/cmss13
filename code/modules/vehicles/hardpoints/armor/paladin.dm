@@ -1,6 +1,6 @@
 /obj/item/hardpoint/armor/paladin
 	name = "\improper Paladin Armor"
-	desc = "Protects the vehicle from large incoming explosive projectiles"
+	desc = "Protects the vehicle from large incoming explosive projectiles."
 
 	icon_state = "paladin_armor"
 	disp_icon = "tank"

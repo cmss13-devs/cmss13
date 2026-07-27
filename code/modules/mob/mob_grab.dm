@@ -65,7 +65,7 @@
 		return
 
 	if(!ishuman(user)) //only humans can reinforce a grab.
-		if (isxeno(user))
+		if(isxeno(user))
 			var/mob/living/carbon/xenomorph/xeno = user
 			xeno.pull_power(grabbed_thing)
 		return
@@ -92,8 +92,18 @@
 	if(user.grab_level >= GRAB_AGGRESSIVE)
 		ADD_TRAIT(victim, TRAIT_FLOORED, CHOKEHOLD_TRAIT)
 
+/obj/item/grab/use_unique_action()
+	..()
+	if(isxeno(usr))
+		unique_action(usr)
+
+/obj/item/grab/unique_action(mob/user)
+	if(isxeno(user))
+		var/mob/living/carbon/xenomorph/current_xeno = user
+		current_xeno.rip_limb()
+
 /obj/item/grab/proc/progress_passive(mob/living/carbon/human/user, mob/living/victim)
-	if(SEND_SIGNAL(victim, COMSIG_MOB_AGGRESSIVELY_GRABBED, user) & COMSIG_MOB_AGGRESIVE_GRAB_CANCEL)
+	if(SEND_SIGNAL(victim, COMSIG_MOB_AGGRESSIVELY_GRABBED, user) & COMSIG_MOB_AGGRESSIVE_GRAB_CANCEL)
 		to_chat(user, SPAN_WARNING("You can't grab [victim] aggressively!"))
 		return
 

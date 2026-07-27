@@ -30,6 +30,7 @@ export const gameMiddleware = (store) => {
       lastPingedAt && Date.now() >= lastPingedAt + CONNECTION_LOST_AFTER;
     if (!game.connectionLostAt && pingsAreFailing) {
       store.dispatch(withTimestamp(connectionLost()));
+      Byond.command('.output control-server.browser:reconnect');
     }
     if (game.connectionLostAt && !pingsAreFailing) {
       store.dispatch(withTimestamp(connectionRestored()));

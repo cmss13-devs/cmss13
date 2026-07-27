@@ -59,7 +59,7 @@
 /area/template_noop)
 "i" = (
 /turf/open/space,
-/area/template_noop)
+/area/fiorina/oob)
 "j" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/tool/kitchen/utensil/knife{
@@ -155,7 +155,7 @@
 "w" = (
 /obj/structure/window/framed/prison/reinforced/hull,
 /turf/open/floor/plating/prison,
-/area/template_noop)
+/area/fiorina/oob)
 "x" = (
 /obj/structure/machinery/reagentgrinder/industrial{
 	pixel_y = 10
@@ -269,7 +269,7 @@
 "P" = (
 /obj/structure/lattice,
 /turf/open/space,
-/area/template_noop)
+/area/fiorina/oob)
 "Q" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/trash/plate{
@@ -298,7 +298,7 @@
 /area/template_noop)
 "T" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
-/area/template_noop)
+/area/fiorina/oob)
 "U" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/pizzabox/mystery/stack,

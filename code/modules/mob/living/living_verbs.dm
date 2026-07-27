@@ -78,7 +78,7 @@
 	//getting out of hypersleep
 	if(loc && (istype(loc, /obj/structure/machinery/cryopod)))
 		var/obj/structure/machinery/cryopod/BB = loc
-		BB.eject()
+		BB.eject(src)
 
 	//getting out of bodyscanner
 	if(loc && (istype(loc, /obj/structure/machinery/medical_pod/bodyscanner)))
@@ -114,7 +114,7 @@
 
 		var/obj/structure/closet/C = loc
 		if(C.opened)
-			return //Door's open... wait, why are you in it's contents then?
+			return //Door's open... wait, why are you in its contents then?
 		if(istype(loc, /obj/structure/closet/secure_closet))
 			var/obj/structure/closet/secure_closet/SC = loc
 			if(!SC.locked && !SC.welded)

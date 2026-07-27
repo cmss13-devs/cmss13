@@ -77,7 +77,7 @@
 
 	var/obj/effect/alien/weeds/target_weeds = locate(/obj/effect/alien/weeds) in target_turf
 	if(!target_weeds)
-		to_chat(xeno, SPAN_WARNING("The are no weeds to plant a fruit within!"))
+		to_chat(xeno, SPAN_WARNING("There are no weeds to plant a fruit within!"))
 		return
 
 	if(target_weeds.hivenumber != xeno.hivenumber)
@@ -99,7 +99,7 @@
 			xeno.current_fruits.Remove(old_fruit)
 			qdel(old_fruit)
 
-		xeno.visible_message(SPAN_XENONOTICE("\The [xeno] secretes fluids and shape it into a fruit!"),
+		xeno.visible_message(SPAN_XENONOTICE("\The [xeno] secretes fluids and shapes it into a fruit!"),
 		SPAN_XENONOTICE("We secrete a portion of our vital fluids and shape them into a fruit!"), null, 5)
 
 		var/obj/effect/alien/resin/fruit/fruit = new xeno.selected_fruit(target_weeds.loc, target_weeds, xeno)
@@ -110,7 +110,7 @@
 		xeno.updatehealth()
 		playsound(xeno.loc, "alien_resin_build", 25)
 		xeno.current_fruits.Add(fruit)
-		xeno.update_icons()
+		xeno.behavior_delegate?.on_update_icons()
 
 	apply_cooldown()
 	return ..()
@@ -202,7 +202,7 @@
 			var/obj/effect/alien/resin/fruit/fruit = selected_type
 			to_chat(xeno, SPAN_NOTICE("We will now build <b>[initial(fruit.name)]\s</b> when secreting resin."))
 			//update the button's overlay with new choice
-			xeno.update_icons()
+			xeno.behavior_delegate?.on_update_icons()
 			button.overlays.Cut()
 			button.overlays += image(icon_file, button, action_icon_state)
 			button.overlays += image('icons/mob/xenos/fruits.dmi', button, initial(fruit.mature_icon_state))
@@ -294,7 +294,7 @@
 	else if(target_weeds && istype(target_turf, /turf/open) && target_weeds.hivenumber == xeno.hivenumber)
 		xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges the resin, creating an unstable wall!"),
 		SPAN_XENONOTICE("We surge the resin, creating an unstable wall!"), null, 5)
-		target_turf.PlaceOnTop(/turf/closed/wall/resin/weak)
+		target_turf.place_on_top(/turf/closed/wall/resin/weak)
 		var/turf/closed/wall/resin/weak_wall = target_turf
 		weak_wall.hivenumber = xeno.hivenumber
 		set_hive_data(weak_wall, xeno.hivenumber)

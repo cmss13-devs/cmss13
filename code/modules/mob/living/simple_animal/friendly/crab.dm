@@ -1,5 +1,5 @@
 //Look Sir, free crabs!
-/mob/living/simple_animal/crab
+/mob/living/simple_animal/small/crab
 	name = "crab"
 	desc = "A hard-shelled crustacean. Seems quite content to lounge around all the time."
 	icon_state = "crab"
@@ -7,8 +7,8 @@
 	icon_dead = "crab_dead"
 	mob_size = MOB_SIZE_SMALL
 	speak_emote = list("clicks")
-	emote_hear = list("clicks")
-	emote_see = list("clacks")
+	emote_hear = list("clicks.")
+	emote_see = list("clacks.")
 	speak_chance = 1
 	turns_per_move = 5
 	meat_type = /obj/item/reagent_container/food/snacks/meat
@@ -22,7 +22,7 @@
 	var/obj/item/inventory_head
 	var/obj/item/inventory_mask
 
-/mob/living/simple_animal/crab/Life(delta_time)
+/mob/living/simple_animal/small/crab/Life(delta_time)
 	..()
 	//CRAB movement
 	if(!ckey && !stat)
@@ -34,7 +34,7 @@
 	regenerate_icons()
 
 //COFFEE! SQUEEEEEEEEE!
-/mob/living/simple_animal/crab/Coffee
+/mob/living/simple_animal/small/crab/Coffee
 	name = "Coffee"
 	real_name = "Coffee"
 	desc = "It's Coffee, the other pet!"

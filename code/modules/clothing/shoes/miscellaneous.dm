@@ -30,7 +30,7 @@
 
 /obj/item/clothing/shoes/combat //Basically SWAT shoes combined with galoshes.
 	name = "combat boots"
-	desc = "When you REALLY want to turn up the heat"
+	desc = "When you REALLY want to turn up the heat."
 	icon_state = "swat"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
@@ -61,7 +61,7 @@
 	flags_armor_protection = BODY_FLAG_FEET
 
 /obj/item/clothing/shoes/galoshes
-	desc = "Rubber boots"
+	desc = "Rubber boots."
 	name = "galoshes"
 	icon_state = "galoshes"
 
@@ -74,7 +74,19 @@
 	item_state = "clown_shoes"
 	slowdown = SHOES_SLOWDOWN+1
 	black_market_value = 25
-	var/footstep = 1 //used for squeeks whilst walking
+	var/enabled_waddle = TRUE
+
+/obj/item/clothing/shoes/clown_shoes/equipped(mob/user, slot)
+	. = ..()
+	if(slot == WEAR_FEET && enabled_waddle)
+		user.AddElement(/datum/element/waddling)
+		user.AddComponent(/datum/component/footstep, 2, 10, 4, 4, "clown_footstep", vary_ = 0)
+
+/obj/item/clothing/shoes/clown_shoes/unequipped(mob/user)
+	. = ..()
+	if(enabled_waddle)
+		user.RemoveElement(/datum/element/waddling)
+		user.GetExactComponent(/datum/component/footstep).RemoveComponent()
 
 /obj/item/clothing/shoes/jackboots
 	name = "jackboots"
@@ -97,7 +109,7 @@
 
 /obj/item/clothing/shoes/cyborg
 	name = "cyborg boots"
-	desc = "Shoes for a cyborg costume"
+	desc = "Shoes for a cyborg costume."
 	icon_state = "boots"
 
 /obj/item/clothing/shoes/slippers
@@ -133,7 +145,7 @@
 
 /obj/item/clothing/shoes/snow
 	name = "snow boots"
-	desc = "When your feet are as cold as your heart"
+	desc = "When your feet are as cold as your heart."
 	icon_state = "swat"
 	siemens_coefficient = 0.6
 	flags_cold_protection = BODY_FLAG_FEET
@@ -143,7 +155,7 @@
 
 /obj/item/clothing/shoes/souto
 	name = "Souto Man boots"
-	desc = "\improper Souto Man's boots. Harder than the kick of Souto Red"
+	desc = "\improper Souto Man's boots. Harder than the kick of Souto Red."
 	icon_state = "souto_man"
 	item_state = "souto_man"
 	flags_inventory = CANTSTRIP|NOSLIPPING
@@ -157,3 +169,21 @@
 	armor_internaldamage = CLOTHING_ARMOR_HARDCORE
 	flags_inventory = CANTSTRIP|NOSLIPPING
 	unacidable = TRUE
+
+/obj/item/clothing/shoes/footwrap_sandals
+	name = "foot wrapped sandals"
+	desc = "typical soldier footwear worn during old ancient times."
+	icon_state = "footwrap_sandals"
+	item_state = "footwrap_sandals"
+	item_icons = list(
+		WEAR_FEET = 'icons/mob/humans/onmob/clothing/feet.dmi'
+	)
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+	flags_inventory = NOSLIPPING

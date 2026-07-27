@@ -26,11 +26,15 @@ const WeaponPanel = (props: {
   readonly equipment: DropshipEquipment;
 }) => {
   const { data } = useBackend<EquipmentContext>();
+  const ammoReadout =
+    props.equipment.ammo === null || props.equipment.ammo === undefined
+      ? 'DEPLETED'
+      : props.equipment.ammo + ' / ' + props.equipment.max_ammo;
 
   return (
     <Stack>
       <Stack.Item>
-        <svg height="501" width="100">
+        <svg height="501" width="100" overflow="visible">
           <text stroke="#00e94e" x={60} y={230} textAnchor="start">
             ACTIONS
           </text>
@@ -82,15 +86,13 @@ const WeaponPanel = (props: {
               <h3>{props.equipment.ammo_name}</h3>
             </Stack.Item>
             <Stack.Item>
-              <h3>
-                Ammo {props.equipment.ammo} / {props.equipment.max_ammo}
-              </h3>
+              <h3>Ammo {ammoReadout}</h3>
             </Stack.Item>
           </Stack>
         </Box>
       </Stack.Item>
       <Stack.Item>
-        <svg width="50px" height="500px">
+        <svg width="50px" height="500px" overflow="visible">
           <g transform="translate(-10)">
             {data.targets_data.length === 0 && (
               <text

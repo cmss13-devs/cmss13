@@ -61,7 +61,8 @@
 /// From /obj/effect/alien/weeds/Crossed(atom/movable/AM)
 #define COMSIG_MOB_WEED_SLOWDOWN "mob_weeds_slowdown"
 
-#define COMSIG_MOB_TAKE_DAMAGE "mob_take_damage" // TODO: move COMSIG_XENO_TAKE_DAMAGE & COMSIG_HUMAN_TAKE_DAMAGE to this
+#define COMSIG_MOB_TAKE_DAMAGE "mob_take_damage"
+	#define COMPONENT_BLOCK_DAMAGE (1<<0)
 
 ///From /mob/living/carbon/human/attack_alien(): (mob/living/carbon/xenomorph/M, dam_bonus)
 #define COMSIG_MOB_TACKLED_DOWN "mob_tackled_down"
@@ -77,6 +78,10 @@
 
 #define COMSIG_MOB_PRE_CLICK "mob_pre_click"
 	#define COMPONENT_INTERRUPT_CLICK (1<<0)
+
+#define COMSIG_MOB_CLICKON "mob_clickon" //from base of mob/clickon(): (atom/A, params)
+
+#define COMSIG_OBSERVER_CLICKON "observer_clickon" //from mob/dead/observer/ClickOn(): (atom/A, params)
 
 /// From base of /mob/Login(), called when a client logs into this mob: ()
 /// Not to be confused with [COMSIG_MOB_LOGGED_IN]
@@ -180,7 +185,7 @@
 
 /// From /obj/item/grab/proc/progress_passive() : (mob/living/carbon/human/grabber)
 #define COMSIG_MOB_AGGRESSIVELY_GRABBED "mob_aggressively_grabbed"
-	#define COMSIG_MOB_AGGRESIVE_GRAB_CANCEL (1<<0)
+	#define COMSIG_MOB_AGGRESSIVE_GRAB_CANCEL (1<<0)
 
 /// Cancels all running cloaking effects on target
 #define COMSIG_MOB_EFFECT_CLOAK_CANCEL "mob_effect_cloak_cancel"

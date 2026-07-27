@@ -424,7 +424,7 @@
 
 /obj/vehicle/powerloader/ft/lightweight
 	name = "\improper Ferret Heavy Industries Mk4-L Crate Loader"
-	desc = "A lightweight crate hauler produced shortly before Ferret Heavy Industries collapsed. Its stripped frame is quicker than a standard Mk4, but the cheapened clamps catastrophically buckle under non-crate loads. The USCM bought thousands during Ferret's liquidation; a warning placard reads: 'NOT FLIGHT RATED - FRAME WILL NOT WITHSTAND DROPSHIP TURBULENCE.'"
+	desc = "A lightweight crate hauler produced shortly before Ferret Heavy Industries collapsed. Its stripped frame is quicker than a standard Mk4, but the cheap clamps catastrophically break under non-crate loads. A warning label reads: 'NOT FLIGHT RATED - FRAME WILL NOT WITHSTAND DROPSHIP TURBULENCE.'"
 	flags_atom = FPRINT|CAN_USE_MULTIZ_STAIRS
 	move_delay = 7
 	crate_hauler_only = TRUE

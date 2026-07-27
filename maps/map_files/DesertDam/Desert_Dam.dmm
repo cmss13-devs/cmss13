@@ -22490,9 +22490,9 @@
 	pixel_x = -9;
 	pixel_y = 11
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "brY" = (
@@ -22534,8 +22534,8 @@
 	},
 /obj/effect/landmark/corpsespawner/trijent/nspa_constable,
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "bsd" = (
@@ -22562,20 +22562,20 @@
 	pixel_x = 6;
 	pixel_y = 12
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "bsg" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "bsh" = (
@@ -23397,13 +23397,13 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "buD" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "buE" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "buF" = (
@@ -23433,8 +23433,8 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "buI" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "buJ" = (

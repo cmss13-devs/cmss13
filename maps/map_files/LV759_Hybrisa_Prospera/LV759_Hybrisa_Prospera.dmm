@@ -101769,14 +101769,9 @@
 /obj/structure/barricade/sandbags,
 /obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/pipes/standard/simple/hidden/dark,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/machinery/m56d_hmg/mg_turret,
 /obj/structure/barricade/sandbags,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing,
 /obj/structure/pipes/standard/simple/hidden/dark,
 /turf/open/floor/prison/ramptop,
 /area/lv759/indoors/caves/north_west_caves)

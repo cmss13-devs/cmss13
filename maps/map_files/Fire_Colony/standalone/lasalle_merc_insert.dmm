@@ -1594,7 +1594,7 @@
 /turf/open/fire_colony/asteroid/directions/north,
 /area/fire_colony/exterior/clearing/south)
 "Pg" = (
-/turf/open/floor/fire_colony/metal/grate/west,
+/turf/open/floor/plating/fire_colony/grate/west,
 /area/fire_colony/exterior/landing_pad)
 "Pi" = (
 /obj/structure/machinery/light{

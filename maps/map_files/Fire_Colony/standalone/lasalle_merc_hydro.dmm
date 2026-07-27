@@ -11,7 +11,7 @@
 /area/fire_colony/interior/hydroponics/lobby)
 "bw" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/altgreen3/southwest,
 /area/fire_colony/interior/hydroponics/lobby)
 "bK" = (
@@ -43,7 +43,7 @@
 	color = "#6b6b6b"
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/pipes/standard/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
 /turf/open/floor/strata/floor2,
@@ -57,7 +57,7 @@
 /obj/structure/prop/hybrisa/misc/prop_deco_edging{
 	color = "#6b6b6b"
 	},
-/obj/structure/pipes/standard/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
 /turf/open/floor/strata/floor2,
@@ -106,7 +106,7 @@
 	color = "#6b6b6b";
 	dir = 1
 	},
-/obj/structure/pipes/standard/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
 /turf/open/floor/strata/floor2,
@@ -121,7 +121,7 @@
 	pixel_x = 9;
 	pixel_y = 19
 	},
-/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/corsat,
 /area/fire_colony/interior/hydroponics/lobby)
 "eV" = (
@@ -129,7 +129,7 @@
 	color = "#6b6b6b"
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/altgreen4/north,
 /area/fire_colony/interior/hydroponics/lobby)
 "fm" = (
@@ -250,7 +250,7 @@
 /turf/open/floor/strata/altgreen3/northeast,
 /area/fire_colony/interior/hydroponics/lobby)
 "hV" = (
-/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/floor2,
 /area/fire_colony/interior/hydroponics/lobby)
 "hX" = (
@@ -361,7 +361,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/item/trash/cigbutt,
-/obj/structure/pipes/standard/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 8
 	},
 /turf/open/floor/strata/deco,
@@ -423,7 +423,7 @@
 	dir = 8;
 	color = "#6b6b6b"
 	},
-/obj/structure/pipes/standard/manifold/hidden/green{
+/obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 4
 	},
 /turf/open/floor/strata/altgreen4/west,
@@ -494,7 +494,7 @@
 	pixel_x = -2;
 	pixel_y = -1
 	},
-/obj/structure/pipes/standard/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
 /turf/open/floor/corsat,
@@ -565,7 +565,7 @@
 	color = "#6b6b6b"
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/floor2,
 /area/fire_colony/interior/hydroponics/lobby)
 "qW" = (
@@ -650,7 +650,7 @@
 	color = "#6b6b6b"
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/pipes/standard/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
 /turf/open/floor/strata/deco,
@@ -670,7 +670,7 @@
 	pixel_y = 11
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/pipes/standard/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 10
 	},
 /turf/open/floor/strata/floor2,
@@ -718,13 +718,13 @@
 	dir = 4;
 	color = "#6b6b6b"
 	},
-/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/floor2,
 /area/fire_colony/interior/hydroponics/lobby)
 "wj" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/pipes/standard/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
 /obj/item/prop/alien/hugger,
@@ -793,7 +793,7 @@
 	color = "#6b6b6b"
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/pipes/standard/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 5
 	},
 /turf/open/floor/strata/deco,
@@ -820,7 +820,7 @@
 	color = "#6b6b6b"
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/pipes/standard/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 10
 	},
 /turf/open/floor/strata/altgreen4/north,
@@ -932,7 +932,7 @@
 	color = "#6b6b6b"
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/pipes/standard/manifold/hidden/green,
+/obj/structure/pipes/standard/manifold/hidden/cyan,
 /turf/open/floor/strata/altgreen4/west,
 /area/fire_colony/interior/hydroponics/lobby)
 "Gm" = (
@@ -945,7 +945,7 @@
 	color = "#6b6b6b"
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/pipes/standard/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
 /turf/open/floor/strata/deco,
@@ -993,13 +993,13 @@
 /turf/open/floor/strata/altgreen3/northeast,
 /area/fire_colony/interior/hydroponics/lobby)
 "Jb" = (
-/obj/structure/pipes/standard/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 6
 	},
 /turf/open/floor/strata/deco,
 /area/fire_colony/interior/hydroponics/lobby)
 "JA" = (
-/obj/structure/pipes/standard/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
 /turf/open/floor/strata/altgreen3/northwest,
@@ -1128,7 +1128,7 @@
 	color = "#6b6b6b"
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/deco,
 /area/fire_colony/interior/hydroponics/lobby)
 "OS" = (
@@ -1235,7 +1235,7 @@
 	pixel_x = 18;
 	pixel_y = 18
 	},
-/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/corsat,
 /area/fire_colony/interior/hydroponics/lobby)
 "UP" = (
@@ -1308,7 +1308,7 @@
 /turf/open/floor/strata/altgreen4,
 /area/fire_colony/interior/hydroponics/lobby)
 "WI" = (
-/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/altgreen3/northwest,
 /area/fire_colony/interior/hydroponics/lobby)
 "WV" = (
@@ -1349,7 +1349,7 @@
 	color = "#6b6b6b"
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/pipes/standard/simple/hidden/green{
+/obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
 /turf/open/floor/strata/altgreen4/east,

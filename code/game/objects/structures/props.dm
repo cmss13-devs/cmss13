@@ -1625,6 +1625,7 @@
 	light_color = "#dcc687"
 	light_range = 2
 	light_power = 1
+	explo_proof = FALSE
 
 /obj/structure/prop/invuln/working_joe/large_storage/no_shell
 	name = "bagged synthetic"
@@ -1634,6 +1635,7 @@
 	light_color = FALSE
 	light_range = FALSE
 	light_power = FALSE
+	explo_proof = FALSE
 
 /obj/effect/working_joe/corpse
 	icon = 'icons/obj/structures/props/working_joe_corpse.dmi'
@@ -1653,6 +1655,7 @@
 	light_color = "#dcc687"
 	light_range = 2
 	light_power = 1
+	explo_proof = FALSE
 
 // Body Bag Pile
 

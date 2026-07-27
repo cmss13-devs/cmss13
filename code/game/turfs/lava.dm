@@ -462,24 +462,30 @@ engineer_floor_deco
 
 // Metal Floors
 
-/turf/open/floor/fire_colony/metal
-	icon_state = "grille"
+/turf/open/floor/fire_colony
 	icon = 'icons/turf/floors/lava/lava_turf.dmi'
-	baseturfs = /turf/open/floor/plating/fire_colony
+	icon_state = "plating"
+	plating_type = /turf/open/floor/plating/fire_colony
 
-/turf/open/floor/fire_colony/metal/grille
+/turf/open/floor/fire_colony/grille
+	icon_state = "grille1"
+
+/turf/open/floor/fire_colony/warning_grate
+	icon_state = "warning_grate"
+
+/turf/open/floor/plating/fire_colony/grille
 	icon_state = "grille"
 
-/turf/open/floor/fire_colony/metal/grate
+/turf/open/floor/plating/fire_colony/grate
 	icon_state = "grate"
 
-/turf/open/floor/fire_colony/metal/grate/east
+/turf/open/floor/plating/fire_colony/grate/east
 	dir = EAST
 
-/turf/open/floor/fire_colony/metal/grate/north
+/turf/open/floor/plating/fire_colony/grate/north
 	dir = NORTH
 
-/turf/open/floor/fire_colony/metal/grate/west
+/turf/open/floor/plating/fire_colony/grate/west
 	dir = WEST
 
 /turf/open/floor/plating/fire_colony/grille
@@ -514,56 +520,56 @@ engineer_floor_deco
 
 ///
 
-/turf/open/floor/fire_colony/metal/warning_grate
+/turf/open/floor/plating/fire_colony/warning_grate
 	icon_state = "warning_grate"
 
-/turf/open/floor/fire_colony/metal/warning_grate/north
+/turf/open/floor/plating/fire_colony/warning_grate/north
 
 	dir = 2
 
-/turf/open/floor/fire_colony/metal/warning_grate/east
+/turf/open/floor/plating/fire_colony/warning_grate/east
 	dir = 8
 
-/turf/open/floor/fire_colony/metal/warning_grate/south
+/turf/open/floor/plating/fire_colony/warning_grate/south
 	dir = 1
 
-/turf/open/floor/fire_colony/metal/warning_grate/west
+/turf/open/floor/plating/fire_colony/warning_grate/west
 	dir = 4
 
-/turf/open/floor/fire_colony/metal/filtrationside_lava
+/turf/open/floor/plating/fire_colony/filtrationside_lava
 	icon_state = "filtrationside_lava"
 
-/turf/open/floor/fire_colony/metal/filtrationside_lava/southwest
+/turf/open/floor/plating/fire_colony/filtrationside_lava/southwest
 	dir = SOUTHWEST
 
-/turf/open/floor/fire_colony/metal/filtrationside_lava/north
+/turf/open/floor/plating/fire_colony/filtrationside_lava/north
 	dir = NORTH
 
-/turf/open/floor/fire_colony/metal/filtrationside_lava/east
+/turf/open/floor/plating/fire_colony/filtrationside_lava/east
 	dir = EAST
 
-/turf/open/floor/fire_colony/metal/filtrationside_lava/northeast
+/turf/open/floor/plating/fire_colony/filtrationside_lava/northeast
 	dir = NORTHEAST
 
-/turf/open/floor/fire_colony/metal/filtrationside_lava/southeast
+/turf/open/floor/plating/fire_colony/filtrationside_lava/southeast
 	dir = SOUTHEAST
 
-/turf/open/floor/fire_colony/metal/filtrationside_lava/west
+/turf/open/floor/plating/fire_colony/filtrationside_lava/west
 	dir = WEST
 
-/turf/open/floor/fire_colony/metal/filtrationside_lava/northwest
+/turf/open/floor/plating/fire_colony/filtrationside_lava/northwest
 	dir = NORTHWEST
 
-/turf/open/floor/fire_colony/metal/filtrationside_lava_straight
+/turf/open/floor/plating/fire_colony/filtrationside_lava_straight
 	icon_state = "filtrationside_lava_straight"
 
-/turf/open/floor/fire_colony/metal/filtrationside_lava_straight/north
+/turf/open/floor/plating/fire_colony/filtrationside_lava_straight/north
 	dir = NORTH
 
-/turf/open/floor/fire_colony/metal/filtrationside_lava_straight/east
+/turf/open/floor/plating/fire_colony/filtrationside_lava_straight/east
 	dir = EAST
 
-/turf/open/floor/fire_colony/metal/filtrationside_lava_straight/west
+/turf/open/floor/plating/fire_colony/filtrationside_lava_straight/west
 	dir = WEST
 
 // Catwalk Alpha

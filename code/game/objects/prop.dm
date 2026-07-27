@@ -423,6 +423,7 @@
 	unacidable = TRUE
 	unslashable = TRUE
 	breakable = FALSE
+	explo_proof = TRUE
 
 /obj/structure/prop/huge_mining_machine/refinery
 	name = "industrial smelting refinery"
@@ -438,6 +439,7 @@
 	unacidable = TRUE
 	unslashable = TRUE
 	breakable = FALSE
+	explo_proof = TRUE
 
 /obj/structure/prop/huge_mining_machine/conveyor
 	icon = 'icons/obj/structures/props/industrial/conveyor.dmi'

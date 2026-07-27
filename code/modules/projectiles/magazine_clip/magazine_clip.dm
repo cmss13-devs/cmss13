@@ -7,6 +7,7 @@
 	- //TODO: Shit code
 	- The mag clip doesn't goes into the gun, instead the magazine teleports into the gun and leaves the mag clip behind while the mag clip still points to the magazine
 	- Lacks user feedback when the clip is switched
+	- The fucking clip eats everything, make it so it only eats magazines
 */
 /*
 TODO:
@@ -36,21 +37,20 @@ TODO:
 /obj/item/magazine_clip/proc/active_magazine()
 	return contained_mags[active_slot+1] //!This part is broken
 
-/obj/item/magazine_clip/proc/insert_magazine(mob/user, obj/item/magazine_clip/M)
-	// if (ispath(I, /obj/item/magazine_clip))
-	// 	var/obj/item/ammo_magazine/target_magazine = I
-	if (src.active_magazine() == 0)
-		if (user)
-			user.drop_inv_item_to_loc(M, src)
+/obj/item/magazine_clip/proc/insert_magazine(mob/user, obj/item/ammo_magazine/M)
+	if (istype(M)) //Checks if incoming item is a magazine
+		if (src.active_magazine() == 0)
+			if (user)
+				user.drop_inv_item_to_loc(M, src)
+			else
+				M.forceMove(get_turf(src))
+			contained_mags[active_slot+1] = M //!This part is broken
+			return TRUE
 		else
-			M.forceMove(get_turf(src))
-		// else
-		// 	to_chat(user, SPAN_WARNING("[src] only accepts magazines!"))
-		// 	return FALSE
-		contained_mags[active_slot+1] = M //!This part is broken
-		return TRUE
+			to_chat(user, SPAN_WARNING("The active slot already has a magazine in it!"))
+			return FALSE
 	else
-		to_chat(user, SPAN_WARNING("The active slot already has a magazine in it!"))
+		to_chat(user, SPAN_WARNING("[src] only accepts magazines!"))
 		return FALSE
 	//TODO: include other stuffs that would be taken into account when a magazine is inserted
 

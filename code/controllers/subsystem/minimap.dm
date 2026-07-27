@@ -637,7 +637,7 @@ SUBSYSTEM_DEF(minimaps)
 	pixel_y = MINIMAP_PIXEL_FROM_WORLD(movable_loc.y) + minimap.y_offset
 
 ///Used to handle minimap tracking inside other movables
-/atom/movable/proc/override_minimap_tracking() // This could be unrolled into minimap_on_move
+/atom/movable/proc/override_minimap_tracking()
 	var/image/blip = SSminimaps.images_by_source[src]
 	blip.RegisterSignal(loc, COMSIG_MOVABLE_MOVED, TYPE_PROC_REF(/image, minimap_on_move))
 	RegisterSignal(loc, COMSIG_ATOM_EXITED, PROC_REF(cancel_override_minimap_tracking))

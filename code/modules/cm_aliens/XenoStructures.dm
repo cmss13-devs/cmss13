@@ -135,6 +135,7 @@
 	explo_proof = TRUE
 	invisibility = 101
 	alpha = 0
+	flags_atom = NO_ZFALL
 	/// The atom we are blocking for
 	var/atom/linked_structure
 

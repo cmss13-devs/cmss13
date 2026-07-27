@@ -13,7 +13,7 @@
 	if(!ability)
 		selected_ability = null
 		if(client?.prefs.toggle_right_click_menu)
-			client?.set_right_click_menu_mode(shift_only = FALSE)
+			client.set_right_click_menu_mode(shift_only = FALSE)
 		return
 	selected_ability = ability
 	selected_ability.on_select(src)

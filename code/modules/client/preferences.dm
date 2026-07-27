@@ -1184,9 +1184,11 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 		if("toggle_right_click_menu")
 			if(user.client.prefs.toggle_right_click_menu)
 				user.client.prefs.toggle_right_click_menu = FALSE
+				user.client.set_right_click_menu_mode(shift_only = TRUE)
 				to_chat(user, "Right click no longer opens a menu, only with SHIFT + Right Click.")
 			else
 				user.client.prefs.toggle_right_click_menu = TRUE
+				user.client.set_right_click_menu_mode(shift_only = FALSE)
 				to_chat(user, "Right click opens a menu.")
 
 		if("traits")

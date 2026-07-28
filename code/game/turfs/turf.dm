@@ -344,19 +344,19 @@
 
 	return TRUE //Nothing found to block so return success!
 
-/turf/Entered(atom/movable/entered_movable, atom/old_loc)
+/turf/Entered(atom/movable/entered_movable, atom/OldLoc)
 	SHOULD_CALL_PARENT(TRUE)
 
 	..() // Shouldn't do anything but to satisfy lint
 
 	if(QDELETED(entered_movable))
-		return
+		return // Shouldn't be needed, we already fence it in Enter, but just in case
 
 	SEND_SIGNAL(src, COMSIG_TURF_ENTERED, entered_movable)
 	SEND_SIGNAL(entered_movable, COMSIG_MOVABLE_TURF_ENTERED, src)
 
 	// Let explosions know that the atom entered
-	if(old_loc != src)
+	if(OldLoc != src)
 		for(var/datum/automata_cell/explosion/cell as anything in autocells)
 			cell.on_turf_entered(entered_movable)
 

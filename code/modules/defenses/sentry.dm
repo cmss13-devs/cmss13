@@ -124,6 +124,8 @@
 
 /obj/structure/machinery/defenses/sentry/proc/scan_targets()
 	RETURN_TYPE(/list/atom/movable)
+	if(!z)
+		return // Stop it. Get some help.
 	return SSmapgrids.get_movables_in_region(z, range_bounds.center_x - range_bounds.bounds_x / 2, range_bounds.center_x + range_bounds.bounds_x / 2, range_bounds.center_y - range_bounds.bounds_y / 2, range_bounds.center_y + range_bounds.bounds_y / 2  )
 
 /obj/structure/machinery/defenses/sentry/proc/unset_range()

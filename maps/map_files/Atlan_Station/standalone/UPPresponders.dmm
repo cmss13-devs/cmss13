@@ -716,8 +716,10 @@
 /turf/closed/wall/upp_ship/grey/teal,
 /area/atlan/station/botany)
 "lO" = (
-/obj/structure/machinery/power/apc/no_power/east,
-/turf/open/floor/hybrisa/metal/red_warning_floor,
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/turf/open/floor/strata,
 /area/atlan/station/hab_docks)
 "ma" = (
 /obj/effect/decal/warning_stripes{
@@ -3920,7 +3922,7 @@ rF
 XQ
 XQ
 XQ
-lO
+Oq
 Iv
 gS
 hW
@@ -4329,8 +4331,8 @@ kv
 Wi
 DY
 DY
-DY
-DY
+lO
+lO
 DY
 JX
 JX

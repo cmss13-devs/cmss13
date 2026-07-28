@@ -322,6 +322,7 @@
 	pixel_y = 7;
 	pixel_x = -7
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/strata/red1,
 /area/atlan/station/security)
 "abc" = (
@@ -26501,7 +26502,7 @@
 	color = "#98a3ab"
 	},
 /obj/structure/machinery/light/double/blue,
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/cyan1,
 /area/atlan/station/medical)
 "hkm" = (
 /obj/effect/decal/cleanable/dirt,
@@ -33291,7 +33292,7 @@
 /area/atlan/asteroid/processing_sw_train)
 "mrN" = (
 /obj/structure/machinery/disposal,
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/cyan1,
 /area/atlan/station/medical)
 "mrP" = (
 /turf/open/floor/strata/multi_tiles/west,
@@ -33434,6 +33435,10 @@
 "mzw" = (
 /turf/open/floor/prison/floor_plate/southwest,
 /area/atlan/station/repairs_lift)
+"mzO" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/atlan/station/hab_docks)
 "mAc" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 1
@@ -34000,6 +34005,9 @@
 /area/atlan/station/atmospherics)
 "mUw" = (
 /obj/structure/largecrate/random,
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
 /turf/open/floor/strata,
 /area/atlan/station/hab_docks)
 "mUG" = (
@@ -35162,7 +35170,7 @@
 /area/atlan/asteroid/processing_handling/cas)
 "nNM" = (
 /obj/structure/platform/metal/atlan/east,
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/cyan1,
 /area/atlan/station/medical)
 "nNQ" = (
 /obj/structure/surface/rack{
@@ -36445,7 +36453,7 @@
 /area/atlan/station/storage)
 "oJN" = (
 /obj/structure/machinery/vending/snack,
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/cyan1,
 /area/atlan/station/medical)
 "oJX" = (
 /obj/structure/machinery/landinglight/delaytwo{
@@ -43453,7 +43461,7 @@
 	pixel_y = 17;
 	pixel_x = -6
 	},
-/turf/open/floor/strata/floor2,
+/turf/open/floor/strata/cyan1,
 /area/atlan/station/medical)
 "tTW" = (
 /obj/effect/decal/warning_stripes{
@@ -44007,6 +44015,11 @@
 	},
 /turf/open/floor/strata/red1,
 /area/atlan/station/security)
+"unn" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/atlan/station/medical)
 "unx" = (
 /obj/structure/surface/table,
 /obj/item/tool/pen,
@@ -108278,9 +108291,9 @@ ohy
 pKE
 ohy
 ohy
-ohy
-tty
-ohy
+pKE
+aUy
+aPn
 cCk
 rou
 rou
@@ -109549,7 +109562,7 @@ ohy
 ohy
 agg
 rou
-fMm
+mzO
 rou
 fyG
 aNs
@@ -110400,7 +110413,7 @@ ohy
 img
 cJI
 wEE
-wEE
+vQH
 wEE
 eRE
 eRE
@@ -110612,7 +110625,7 @@ ohy
 ohy
 cCk
 mUw
-cCk
+aUy
 ohy
 rou
 rou
@@ -112519,8 +112532,8 @@ ohy
 amo
 ohy
 ohy
-ohy
-ohy
+aPn
+aPn
 pKE
 rou
 rou
@@ -112865,7 +112878,7 @@ aDV
 jFo
 atZ
 abX
-hzY
+bnz
 aBn
 aBn
 aBn
@@ -113713,7 +113726,7 @@ aco
 dsp
 baZ
 abX
-hzY
+bnz
 aBn
 aIb
 aIb
@@ -114851,8 +114864,8 @@ ixE
 agg
 ohy
 ohy
-ohy
-cCk
+aPn
+aUy
 ohy
 rou
 rou
@@ -117729,7 +117742,7 @@ btX
 xTh
 aBn
 adk
-adu
+unn
 adu
 byJ
 oCj

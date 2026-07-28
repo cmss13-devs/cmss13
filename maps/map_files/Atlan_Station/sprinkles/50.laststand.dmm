@@ -57,6 +57,7 @@
 /obj/item/ammo_casing{
 	icon_state = "casing_6_1"
 	},
+/obj/item/clothing/accessory/upp_cape,
 /turf/open/floor/prison/floor_marked,
 /area/atlan/station/repairs_lift)
 "m" = (

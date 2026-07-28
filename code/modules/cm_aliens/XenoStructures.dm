@@ -135,6 +135,7 @@
 	explo_proof = TRUE
 	invisibility = 101
 	alpha = 0
+	flags_atom = NO_ZFALL
 	/// The atom we are blocking for
 	var/atom/linked_structure
 
@@ -499,9 +500,8 @@
 	..()
 
 /obj/structure/mineral_door/resin/Destroy()
-	if(upper_wall)
+	if(!QDESTROYING(upper_wall))
 		upper_wall.dismantle_wall()
-		upper_wall = null
 	var/turf/above = SSmapping.get_turf_above(src)
 	while(above && istransparentturf(above))
 		above.update_vis_contents()
@@ -510,9 +510,11 @@
 	var/area/area = get_area(src)
 	area?.current_resin_count--
 	var/turf/base_turf = loc
-	if(upper_wall)
+
+	if(!QDESTROYING(upper_wall)) // Why is this done twice? Hell if i know.
 		upper_wall.dismantle_wall()
-	spawn(0)
+
+	spawn(0) // <--- Don't do that, src probably won't even be valid anymore when it executes
 		var/turf/adjacent_turf
 		for(var/cardinal in GLOB.cardinals)
 			adjacent_turf = get_step(base_turf, cardinal)

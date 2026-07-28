@@ -1,16 +1,18 @@
-/obj/effect/blocker/water
+/obj/effect/blocker
 	anchored = TRUE
 	density = FALSE
 	opacity = FALSE
 	unacidable = TRUE
 
-	icon = 'icons/turf/floors/desert_water.dmi'
-	icon_state = "seadeep"
-
 	alpha = 0
 	layer = TURF_LAYER
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	flags_atom = NO_ZFALL
 
+	icon = 'icons/turf/floors/desert_water.dmi'
+	icon_state = "seadeep"
+
+/obj/effect/blocker/water
 	var/flooded_alpha = 180
 	var/dispersing = FALSE
 	var/disperse_group = 1

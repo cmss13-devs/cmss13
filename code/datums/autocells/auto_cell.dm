@@ -74,8 +74,8 @@
 /datum/automata_cell/proc/merge(datum/automata_cell/other)
 	return TRUE
 
-// Returns a list of neighboring cells
-// This is called by and results are passed to update_state by the cellauto subsystem
+/// Returns a list of neighboring cells
+/// This is called by and results are passed to update_state by the cellauto subsystem
 /datum/automata_cell/proc/get_neighbors()
 	if(QDELETED(in_turf))
 		return
@@ -85,25 +85,25 @@
 	// Get cardinal neighbors
 	if(neighbor_type & NEIGHBORS_CARDINAL)
 		for(var/dir in GLOB.cardinals)
-			var/turf/T = get_step(in_turf, dir)
-			if(QDELETED(T))
+			var/turf/location = get_step(in_turf, dir)
+			if(QDELETED(location))
 				continue
 
 			// Only add neighboring cells of the same type
-			for(var/datum/automata_cell/C in T.autocells)
-				if(istype(C, type))
-					neighbors += C
+			for(var/datum/automata_cell/existing_cell as anything in location.autocells)
+				if(istype(existing_cell, type))
+					neighbors += existing_cell
 
 	// Get ordinal/diagonal neighbors
 	if(neighbor_type & NEIGHBORS_ORDINAL)
 		for(var/dir in GLOB.diagonals)
-			var/turf/T = get_step(in_turf, dir)
-			if(QDELETED(T))
+			var/turf/location = get_step(in_turf, dir)
+			if(QDELETED(location))
 				continue
 
-			for(var/datum/automata_cell/C in T.autocells)
-				if(istype(C, type))
-					neighbors += C
+			for(var/datum/automata_cell/existing_cell as anything in location.autocells)
+				if(istype(existing_cell, type))
+					neighbors += existing_cell
 
 	return neighbors
 

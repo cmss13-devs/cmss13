@@ -168,6 +168,12 @@
 		update_vis_contents()
 
 /turf/Destroy(force)
+	linked_pylons = null
+	weeds = null
+	autocells = null
+	opacity_sources = null
+	baseturfs = null
+
 	if(hybrid_lights_affecting)
 		for(var/atom/movable/lighting_mask/mask as anything in hybrid_lights_affecting)
 			LAZYREMOVE(mask.affecting_turfs, src)
@@ -373,7 +379,7 @@
 
 	// Let explosions know that the atom entered
 	if(old_loc != src)
-		for(var/datum/automata_cell/explosion/cell in autocells)
+		for(var/datum/automata_cell/explosion/cell as anything in autocells)
 			cell.on_turf_entered(entered_movable)
 
 /turf/proc/is_plating()
@@ -480,7 +486,8 @@
 	//if(src.type == new_turf_path) // Put this back if shit starts breaking
 	// return src
 
-	var/pylons = linked_pylons
+	var/list/pylons = linked_pylons
+	var/list/cells = autocells
 
 	var/list/old_baseturfs = baseturfs
 	var/old_ref = weak_reference
@@ -499,22 +506,24 @@
 
 	changing_turf = TRUE
 	qdel(src) //Just get the side effects and call Destroy
-	var/turf/W = new path(src)
+	var/turf/new_self = new path(src)
 
-	W.weak_reference = old_ref
+	new_self.weak_reference = old_ref
 
 	for(var/datum/callback/callback as anything in post_change_callbacks)
-		callback.InvokeAsync(W)
+		callback.InvokeAsync(new_self)
 
 	if(new_baseturfs)
-		W.baseturfs = new_baseturfs
+		new_self.baseturfs = new_baseturfs
 	else
-		W.baseturfs = old_baseturfs
+		new_self.baseturfs = old_baseturfs
 
-	W.linked_pylons = pylons
+	new_self.linked_pylons = pylons
+	if(length(cells))
+		LAZYOR(new_self.autocells, cells)
 
-	W.hybrid_lights_affecting = old_hybrid_lights_affecting
-	W.dynamic_lumcount = dynamic_lumcount
+	new_self.hybrid_lights_affecting = old_hybrid_lights_affecting
+	new_self.dynamic_lumcount = dynamic_lumcount
 
 	lighting_corner_NE = old_lighting_corner_NE
 	lighting_corner_SE = old_lighting_corner_SE
@@ -525,21 +534,21 @@
 	if(SSlighting.initialized)
 		recalculate_directional_opacity()
 
-		W.static_lighting_object = old_lighting_object
+		new_self.static_lighting_object = old_lighting_object
 
 		if(static_lighting_object && !static_lighting_object.needs_update)
 			static_lighting_object.update()
 
 	//Since the old turf was removed from hybrid_lights_affecting, readd the new turf here
-	if(W.hybrid_lights_affecting)
-		for(var/atom/movable/lighting_mask/mask as anything in W.hybrid_lights_affecting)
-			LAZYADD(mask.affecting_turfs, W)
+	if(new_self.hybrid_lights_affecting)
+		for(var/atom/movable/lighting_mask/mask as anything in new_self.hybrid_lights_affecting)
+			LAZYADD(mask.affecting_turfs, new_self)
 
-	if(W.directional_opacity != old_directional_opacity)
-		W.reconsider_lights()
+	if(new_self.directional_opacity != old_directional_opacity)
+		new_self.reconsider_lights()
 
-	W.levelupdate()
-	return W
+	new_self.levelupdate()
+	return new_self
 
 //If you modify this function, ensure it works correctly with lateloaded map templates.
 /turf/proc/AfterChange(flags, oldType) //called after a turf has been replaced in ChangeTurf()
@@ -693,9 +702,9 @@
 	return
 
 /turf/proc/get_cell(type)
-	for(var/datum/automata_cell/C in autocells)
-		if(istype(C, type))
-			return C
+	for(var/datum/automata_cell/existing_cell as anything in autocells)
+		if(istype(existing_cell, type))
+			return existing_cell
 	return null
 
 //////////////////////////////////////////////////////////

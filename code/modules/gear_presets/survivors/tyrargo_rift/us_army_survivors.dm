@@ -312,7 +312,6 @@
 
 /datum/equipment_preset/survivor/army/sl/load_gear(mob/living/carbon/human/new_human)
 	..()
-	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/army/e7, WEAR_ACCESSORY)
 	spawn_random_headgear(new_human)
 	add_army_weapon_pistol(new_human)
@@ -363,7 +362,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/mateba(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/mateba(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/mateba(new_human), WEAR_IN_BELT)
-	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/cigarette/cigar/classic(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/lighter/zippo/gold(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/neckerchief/yellow(new_human), WEAR_FACE)

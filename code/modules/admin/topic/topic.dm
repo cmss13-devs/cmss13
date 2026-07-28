@@ -34,6 +34,12 @@
 			to_chat(usr, "Ticket [ahelp_ref] has been deleted!", confidential = TRUE)
 		return
 
+	if(href_list["ahelp_tickets"])
+		if(!check_rights(R_ADMIN|R_MOD, TRUE))
+			return
+		GLOB.ahelp_tickets.BrowseTickets(text2num(href_list["ahelp_tickets"]))
+		return
+
 	if(href_list["adminplayeropts"])
 		var/mob/M = locate(href_list["adminplayeropts"])
 		show_player_panel(M)
@@ -2079,7 +2085,6 @@
 		return
 	GLOB.distress_cancel = TRUE
 	SSticker.mode.activate_distress()
-	log_game("[key_name_admin(approver)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
 	message_admins("[key_name_admin(approver)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
 
 ///Handles calling the ERT sent by handheld distress beacons
@@ -2088,7 +2093,6 @@
 		return
 	GLOB.distress_cancel = TRUE
 	SSticker.mode.get_specific_call("[ert_called]", TRUE, FALSE)
-	log_game("[key_name_admin(approver)] has sent [ert_called], requested by [key_name_admin(ref_person)]")
 	message_admins("[key_name_admin(approver)] has sent [ert_called], requested by [key_name_admin(ref_person)]")
 
 /datum/admins/proc/generate_job_ban_list(mob/M, datum/entity/player/P, list/roles, department, color = "ccccff")

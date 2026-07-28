@@ -225,8 +225,6 @@ a.popt {
 .name,
 .debugnotice,
 .prefix,
-.ffalive,
-.ffdead,
 .ooc,
 .looc,
 .adminooc,
@@ -305,14 +303,6 @@ em {
 
 .niche .message {
   color: hsl(227, 56%, 44%);
-}
-
-.ffalive {
-  color: hsl(0, 100%, 60%);
-}
-
-.ffdead {
-  color: hsl(40, 100%, 50%);
 }
 
 .name {
@@ -541,6 +531,18 @@ em {
   font-style: italic;
 }
 
+.admin_blue {
+  color: hsl(225, 100%, 63%);
+}
+
+.blue {
+  color: hsl(224, 100%, 56%);
+}
+
+.debug_orange {
+  color: hsl(30, 100%, 55%);
+}
+
 .green {
   color: hsl(133, 93%, 30%);
 }
@@ -549,12 +551,12 @@ em {
   color: hsl(0, 0%, 51%);
 }
 
-.red {
-  color: hsl(0, 100%, 50%);
+.maroon {
+  color: hsl(0, 100%, 25%);
 }
 
-.blue {
-  color: hsl(224, 100%, 56%);
+.orange {
+  color: hsl(41, 100%, 46%);
 }
 
 .nicegreen {
@@ -564,6 +566,18 @@ em {
 .boldnicegreen {
   color: hsl(133, 93%, 30%);
   font-weight: bold;
+}
+
+.purple {
+  color: hsl(272, 59%, 58%);
+}
+
+.red {
+  color: hsl(0, 100%, 50%);
+}
+
+.darker_red {
+  color: hsl(0, 100%, 29.4%);
 }
 
 .cult {
@@ -619,10 +633,6 @@ em {
 .hierophant_warning {
   color: hsl(280, 83%, 68%);
   font-style: italic;
-}
-
-.purple {
-  color: hsl(272, 59%, 58%);
 }
 
 .holoparasite {
@@ -1161,10 +1171,6 @@ em {
 
 .underline {
   text-decoration: underline;
-}
-
-.orange {
-  color: hsl(41, 100%, 46%);
 }
 
 .normal {

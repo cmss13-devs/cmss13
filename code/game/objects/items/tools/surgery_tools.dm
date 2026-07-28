@@ -128,7 +128,7 @@
 /obj/item/tool/surgery/scalpel/laser
 	name = "prototype laser scalpel"
 	desc = "A scalpel augmented with a directed laser for controlling bleeding as the incision is made and for functioning as a cautery. Sadly, this is only a prototype that looks like a superheated laser crudely slapped on a modified scalpel, so don't expect any miracles."
-	desc_lore = "The prototype laser scalpel was developed during the mid-1900s, a time where scientists had yet to solve their quandary of developing a laser that could cut through flesh and burn the blood vessels closed simultaneously; they settled on a compromise: slapping a superheated directed laser beneath the blade of the scalpel and hoping the laser cauterizes the incision the blade makes. While the prototype ironically functioned perfectly as a cautery, it left something to be desired where bloodless incisions were concerned. Somehow, the big heads in research forgot to calibrate the width of the laser to be equivalent to the width of the incision made by the blade, leaving some blood vessels untouched in the process."
+	desc_lore = "The prototype laser scalpel was developed during the mid-1900s, a time when scientists had yet to solve their quandary of developing a laser that could cut through flesh and burn the blood vessels closed simultaneously; they settled on a compromise: slapping a superheated directed laser beneath the blade of the scalpel and hoping the laser cauterizes the incision the blade makes. While the prototype ironically functioned perfectly as a cautery, it left something to be desired where bloodless incisions were concerned. Somehow, the big heads in research forgot to calibrate the width of the laser to be equivalent to the width of the incision made by the blade, leaving some blood vessels untouched in the process."
 	icon_state = "scalpel_laser"
 	damtype = "fire"
 	flags_item = ANIMATED_SURGICAL_TOOL
@@ -139,7 +139,7 @@
 /obj/item/tool/surgery/scalpel/laser/improved
 	name = "laser scalpel"
 	desc = "A scalpel augmented with a directed laser for controlling bleeding as the incision is made and for functioning as a cautery. This standard model uses a CO2 laser to vaporize tissue and seal blood vessels, but the incisions are not always bloodless."
-	desc_lore = "After figuring out how to make a laser that incises flesh, the prototype and its blade became nothing more than a distant memory and a reminder to not haphazardly slap two independently-functioning tools together and praying to Spess Jesus they will work in tandem with one another. This design, hailing from the early 2000s, uses a CO2 laser to create an incision by using an invisible infrared beam that vaporizes tissue while sealing blood vessels. While pinpoint bleeding occurs on occasion, the laser scalpel is a perfect, if not expensive alternative to replacing the standard scalpel and cautery."
+	desc_lore = "After figuring out how to make a laser that incises flesh, the prototype and its blade became nothing more than a distant memory and a reminder to not haphazardly slap two independently-functioning tools together and praying to Spess Jesus they will work in tandem with one another. This design, hailing from the early 2000s, uses a CO2 laser to create an incision by using an invisible infrared beam that vaporizes tissue while sealing blood vessels. While pinpoint bleeding occurs occasionally, the laser scalpel is a perfect, if not expensive alternative to replacing the standard scalpel and cautery."
 	icon_state = "scalpel_laser_2"
 	damtype = "fire"
 	bloodlessprob = 80
@@ -160,8 +160,8 @@
 
 /obj/item/tool/surgery/scalpel/pict_system
 	name = "\improper PICT system"
-	desc = "The Perivascular Incision and Cauterization Tool uses a high-frequency vibrating blade and suction liquid control system to precisely target and destroy the lymphatic and vascular systems feeding tumors while suctioning fluids that may contain traveling cancerous cells. Due to its specialty in cutting certain tissue, it is much slower than a scalpel in initiating surgeries and it can't create a full-length incision bloodlessly."
-	desc_lore = "The PICT system has humble origins as yet another tool developed for cancer research. Designed to identify, sever and cauterize the lymphatic and vascular systems feeding tumors, it accomplishes its goals with aplomb, making it the standard tool for cutting and burning off nutrient supplies to tumors before extraction. Due to its mechanisms of targeting specific types of cells while incising and suctioning, it struggles to create a full-length incision bloodlessly."
+	desc = "The Perivascular Incision and Cauterization Tool uses a high-frequency vibrating blade and suction liquid control system to precisely target and destroy the lymphatic and vascular systems feeding tumors while suctioning fluids that may contain traveling cancerous cells. Due to its specialty in cutting certain tissue, it is much slower than a scalpel in initiating surgeries, and it can't create a full-length incision bloodlessly."
+	desc_lore = "The PICT system has humble origins as yet another tool developed for cancer research. Designed to identify, sever, and cauterize the lymphatic and vascular systems feeding tumors, it accomplishes its goals with aplomb, making it the standard tool for cutting and burning off nutrient supplies to tumors before extraction. Due to its mechanisms of targeting specific types of cells while incising and suctioning, it struggles to create a full-length incision bloodlessly."
 	icon_state = "pict_system"
 	force = 15
 	attack_speed = 6
@@ -171,7 +171,7 @@
 /obj/item/tool/surgery/scalpel/manager
 	name = "incision management system"
 	desc = "A true extension of the surgeon's body, this marvel instantly and completely prepares and widens incisions simultaneously and bloodlessly, allowing for the immediate commencement of therapeutic steps. It can only be used to begin surgeries, however."
-	desc_lore = "Known as the 'IMS', thousands of surgeons across the galaxy can only dream of holding one of these in their hands. With the technology of an advanced laser scalpel and a mechanical retractor all in one tool, a surgeon can incise, seal blood vessels, and widen incisions all in one step. Unfortunately, the IMS cannot function as a retractor, hemostat, or cautery in any circumstances other than making an incision. In addition, due to high demand, it sports an unconscionable price tag if not supplied by a local Research and Development team with the proper fabrication materials."
+	desc_lore = "Known as the 'IMS,' thousands of surgeons across the galaxy can only dream of holding one of these in their hands. With the technology of an advanced laser scalpel and a mechanical retractor all in one tool, a surgeon can incise, seal blood vessels, and widen incisions all in one step. Unfortunately, the IMS cannot function as a retractor, hemostat, or cautery in any circumstances other than making an incision. In addition, due to high demand, it sports an unconscionable price tag if not supplied by a local Research and Development team with the proper fabrication materials."
 	force = 15
 	attack_speed = 6
 	icon_state = "scalpel_manager"
@@ -185,7 +185,7 @@
 
 /obj/item/tool/surgery/circular_saw
 	name = "circular saw"
-	desc = "A surgical tool used to saw through thick bone in the skull and ribcage prior to prying them apart, amputating diseased limbs, and removing malfunctioning prosthetics."
+	desc = "A surgical tool used to saw through thick bone in the skull and ribcage before prying them apart, amputating diseased limbs, and removing malfunctioning prosthetics."
 	icon_state = "saw"
 	hitsound = 'sound/weapons/circsawhit.ogg'
 	flags_atom = FPRINT|CONDUCT
@@ -214,7 +214,7 @@
 /obj/item/tool/surgery/bonegel
 	name = "bottle of bone gel"
 	desc = "A container for bone gel, a substance capable of fixing fractures using an analogue that mimics bone. It needs to be refilled from a specialized machine."
-	desc_lore = "Bone gel is a biological bone-analogue made of collagen, proteins, and minerals, used by surgeons to repair fractures. The substance has a clay-like consistency and spreads thinly when first applied. It is capable of fixing any fracture by sealing cracks through adhesion to compact bone and solidifying over the crack, after which the body metabolizes the gel for nutrients as the bone remodels itself beneath the gel. Bone gel should never be used as a substitute for missing bones as it requires two ends to form a bond and it does not replace the body's bone marrow or spongy tissue. Overuse in a short period may cause acute hypercalcemia and hyperphosphatemia from the body absorbing too much calcium and phosphorus."
+	desc_lore = "Bone gel is a biological bone-analogue made of collagen, proteins, and minerals, used by surgeons to repair fractures. The substance has a clay-like consistency and spreads thinly when first applied. It is capable of fixing any fracture by sealing cracks through adhesion to compact bone and solidifying over the crack, after which the body metabolizes the gel for nutrients as the bone remodels itself beneath the gel. Bone gel should never be used as a substitute for missing bones, as it requires two ends to form a bond, and it does not replace the body's bone marrow or spongy tissue. Overuse in a short period may cause acute hypercalcemia and hyperphosphatemia from the body absorbing too much calcium and phosphorus."
 	icon_state = "bone-gel"
 	w_class = SIZE_SMALL
 	matter = list("plastic" = 7500)
@@ -256,8 +256,8 @@
 	. = ..()
 	if(unlimited_gel) //Only show how much gel is left if it actually uses bone gel
 		return
-	. += "A volume reader on the side tells you there is still [remaining_gel]% of [src] is remaining."
-	. += "[src] can be refilled from a osteomimetic lattice fabricator."
+	. += "A volume reader on the side tells you there is still [remaining_gel]% of [src] remaining."
+	. += "[src] can be refilled from an osteomimetic lattice fabricator."
 
 	if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_DOCTOR)) //Know how much you will be using if you can use it
 		return
@@ -373,7 +373,7 @@
 
 /obj/item/tool/surgery/bonesetter
 	name = "bone setter"
-	desc = "Known formally as 'bone reduction forceps', it is a surgical tool used for a procedure called 'fracture reduction', during which a surgeon repositions fractured bones into their proper positions so they may heal properly."
+	desc = "Known formally as 'bone reduction forceps,' they are surgical tools used for a procedure called 'fracture reduction,' during which a surgeon repositions fractured bones into their proper positions so they may heal properly."
 	icon_state = "bonesetter"
 	hitsound = 'sound/weapons/genhit3.ogg'
 	force = 15
@@ -409,7 +409,7 @@ t. optimisticdude
 
 /obj/item/tool/surgery/drapes //Does nothing at present. Might be useful for increasing odds of success.
 	name = "surgical drapes"
-	desc = "Used to cover a limb prior to the beginning of a surgical procedure."
+	desc = "Used to cover a limb before the beginning of a surgical procedure."
 	icon_state = "drapes"
 	gender = PLURAL
 	w_class = SIZE_SMALL
@@ -526,13 +526,13 @@ t. optimisticdude
 		to_chat(usr, "What are you, some sort of fucking MONSTER?")
 		return
 	if(body.health > 0)
-		to_chat(usr, "The fuck are you doing!? Kill her!")
+		to_chat(usr, "What the fuck are you doing!? Kill her!")
 		return
 	if(active)
 		to_chat(usr, "You are already performing an autopsy.")
 		return
 	if(istype(body, /mob/living/carbon/xenomorph/larva))
-		to_chat(usr, "The larva has not developed any useful biomass for you to extract.") //It will in a future update, I guess.
+		to_chat(usr, "The larva has not developed any useful biomass for you to extract.") //It will be in a future update, I guess.
 		return
 	active = 1
 	var CHECK = user.loc
@@ -554,7 +554,7 @@ t. optimisticdude
 				if(CHECK != user.loc)
 					to_chat(usr, "This procedure requires uninterrupted focus; you need to remain still.")
 					return
-				to_chat(usr, "You've cut through the outer layers of Chitin.")
+				to_chat(usr, "You've cut through the outer layers of chitin.")
 				new /obj/item/oldresearch/Chitin(body.loc) //This will be 1-3 Chitin eventually (depending on tier)
 				new /obj/item/oldresearch/Chitin(body.loc) //This will be 1-3 Chitin eventually (depending on tier)
 				body.butchery_progress++

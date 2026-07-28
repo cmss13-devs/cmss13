@@ -742,9 +742,9 @@
 	log_game("Distress Signal Hive collapse!")
 	GLOB.sun_status.start_sun_behavior(behavior = SPECIAL_LIGHTING_SUNRISE)
 
-///////////////////////////////
-//Checks if the round is over//
-///////////////////////////////
+/**
+ * Checks if the round is over
+ */
 /datum/game_mode/colonialmarines/check_finished()
 	if(round_finished)
 		return TRUE

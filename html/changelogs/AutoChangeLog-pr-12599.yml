@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - balance: "Spotter sight is now spotter trait locked on first equip, but then is free to equip after ID lock ends (generally permadeath)"

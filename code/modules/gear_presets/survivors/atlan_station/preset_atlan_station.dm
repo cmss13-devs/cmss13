@@ -772,15 +772,20 @@
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat(new_human), WEAR_JACKET)
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp/alt(new_human), WEAR_ACCESSORY)
-
-	var/random_professional_uniform= rand(1,3)
+	var/random_professional_uniform= rand(1,6)
 	switch(random_professional_uniform)
 		if(1)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/brown(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/medic(new_human), WEAR_BODY)
 		if(2)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/blue(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical/blue(new_human), WEAR_BODY)
 		if(3)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/black(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical/green(new_human), WEAR_BODY)
+		if(4)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical/white(new_human), WEAR_BODY)
+		if(5)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical/lightblue(new_human), WEAR_BODY)
+		if(6)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical/morgue(new_human), WEAR_BODY)
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/upp_pfb(new_human.back), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/civi/plant_worker(new_human), WEAR_HEAD)
@@ -909,13 +914,56 @@
 
 /datum/equipment_preset/synth/survivor/atlan/scientist/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/cec(new_human), WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/upp(new_human), WEAR_HANDS)
+
+	var/random_gloves = rand(1,3)
+	switch(random_gloves)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(new_human), WEAR_HANDS)
+		if(2)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/botanic_leather(new_human), WEAR_HANDS)
+		if(3)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/upp(new_human), WEAR_HANDS)
+
+	var/random_labcoat = rand(1,5)
+	switch(random_labcoat)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/long(new_human), WEAR_JACKET)
+		if(2)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat(new_human), WEAR_JACKET)
+		if(3)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/brown(new_human), WEAR_JACKET)
+		if(4)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/blue(new_human), WEAR_JACKET)
+		if(5)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/green(new_human), WEAR_JACKET)
+
+	var/random_professional_shoe = rand(1,3)
+	switch(random_professional_shoe)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
+		if(2)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup/brown(new_human), WEAR_FEET)
+		if(3)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp(new_human), WEAR_FEET)
+
+	var/random_synth_uniform = rand(1,6)
+	switch(random_synth_uniform)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/blue(new_human), WEAR_BODY)
+		if(2)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/brown(new_human), WEAR_BODY)
+		if(3)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/orange(new_human), WEAR_BODY)
+		if(4)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/blue(new_human), WEAR_BODY)
+		if(5)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/brown/upp(new_human), WEAR_BODY)
+		if(6)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/gray(new_human), WEAR_BODY)
+
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/cec_patch(new_human), WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/brown/upp(new_human), WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/brown(new_human), WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/cec_patch, WEAR_ACCESSORY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/brown(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/tool/shovel(new_human.back), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern(new_human.back), WEAR_IN_BACK)
 
 	..()
@@ -925,15 +973,17 @@
 
 // CO SURV STATION ADMINISTRATOR
 
-/datum/equipment_preset/survivor/atlan/co_survivor
-	name = "CO Survivor - UPP - Orbital Station Administrator" // gets UPP UL4 officer jacket and UL8 ushanka, skills of an UPP commisar, cool UPP pistol
-	assignment = "Nachalnik Orbitalnoy Stantsii"
+/datum/equipment_preset/survivor/atlan/co_survivor_commandant
+	name = "CO Survivor - UPP - Atlan Station Commandant" // Basically the station's SOF/Military Commander, Commissar skills, cool revolver, etc...
+	assignment = JOB_UPP_CO_OFFICER
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	role_comm_title = "UPP Nachalnik"
+	job_title = JOB_UPP_CO_OFFICER
+	role_comm_title = "UPP Kommandant"
 	minimap_icon = "upp_plt"
 	minimap_background = "background_upp"
+	idtype = /obj/item/card/id/dogtag/upp
 	faction_group = FACTION_LIST_SURVIVOR_UPP
-	paygrades = list(PAY_SHORT_CADMIN = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_UO4C = JOB_PLAYTIME_TIER_0)
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH, LANGUAGE_CHINESE, LANGUAGE_GERMAN)
 	faction = FACTION_UPP
 	skills = /datum/skills/upp/commissar
@@ -947,15 +997,23 @@
 		ACCESS_CIVILIAN_COMMAND,
 	)
 
-/datum/equipment_preset/survivor/atlan/co_survivor/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/officer(new_human), WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp(new_human), WEAR_ACCESSORY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
+/datum/equipment_preset/survivor/atlan/co_survivor_commandant/load_gear(mob/living/carbon/human/new_human)
+	var/random_jumper = rand(1,2)
+	switch(random_jumper)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/sweater_alt(new_human), WEAR_BODY)
+		if(2)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/sweater(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp/naval, WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp/alt(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/SOF_beret(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/black/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/command(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/revolver(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/ushanka(new_human), WEAR_HEAD)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP/officer(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP/SOF_armor(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/upp(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/black(new_human), WEAR_R_STORE)
 
 	..()

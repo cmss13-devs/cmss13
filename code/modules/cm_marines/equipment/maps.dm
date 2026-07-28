@@ -155,7 +155,7 @@ GLOBAL_LIST_INIT(mapless_maps, list(MAP_RUNTIME, MAP_CHINOOK, MAIN_SHIP_DEFAULT_
 	html_link = "images/d/da/White_Antre_Research_Facility.png"
 	color = "cyan"
 
-/obj/item/map/abyssal_station
+/obj/item/map/abyssal_station_map
 	name = "\improper Abyssal Station 81 map"
 	desc = "An overview of Con-Am 81 'Abyssal' Station."
 	html_link = "images/7/71/Abbysal_station.png"
@@ -187,7 +187,7 @@ GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 		MAP_NEW_VARADERO = new /obj/item/map/new_varadero(),
 		MAP_TYRARGO_RIFT = new /obj/item/map/tyrargo_rift(),
 		MAP_WHITE_ANTRE_RESEARCH_FACILITY = new /obj/item/map/white_antre_map(),
-		MAP_CONAM_81_ABYSSAL = new /obj/item/map/abyssal_station()
+		MAP_CONAM_81_ABYSSAL = new /obj/item/map/abyssal_station_map()
 	)
 
 //used by marine equipment machines to spawn the correct map.

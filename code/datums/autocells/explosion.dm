@@ -209,7 +209,7 @@
 			continue
 
 		var/datum/automata_cell/explosion/new_cell = propagate(dir)
-		if(new_cell)
+		if(!QDELETED(new_cell))
 			var/new_falloff = power_falloff
 			// Handle our falloff function.
 			switch(falloff_shape)

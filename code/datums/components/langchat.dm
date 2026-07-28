@@ -37,13 +37,11 @@
 	var/next_in = 0 //! How long before we display next message
 
 
-/datum/component/langchat_image/Initialize()
+/datum/component/langchat_image/Initialize(langchat_height, default_color, list/default_styles)
 	. = ..()
 	if(!ismovable(parent))
 		return COMPONENT_INCOMPATIBLE
-	var/list/arguments = args.Copy()
-	arguments.Insert(1, src, TRUE)
-	InheritComponent(arglist(arguments))
+	InheritComponent(null, TRUE, langchat_height, default_color, default_styles)
 	state = LANGCHAT_IMAGE_STATE_READY
 
 /datum/component/langchat_image/Destroy()
@@ -132,6 +130,8 @@
 		reset_in = lifetime * 2 // Safety net
 		if(length(messages) > 1)
 			next_in = 6 SECONDS
+		else
+			next_in = lifetime
 
 	langchat_listeners = listeners // We're scheduled now due to changing state, so refs won't stay around
 	START_PROCESSING(SSlangchat, src)
@@ -145,7 +145,7 @@
 
 	if(!langchat_image)
 		langchat_image = image(null, parent_atom)
-		langchat_image.layer = 20
+		langchat_image.layer = ABOVE_HUD_LAYER
 		langchat_image.plane = RUNECHAT_PLANE
 		langchat_image.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
 		langchat_image.maptext_y = langchat_height - LANGCHAT_MESSAGE_POP_Y_SINK
@@ -154,7 +154,7 @@
 
 	if(!langchat_scrambled_image)
 		langchat_scrambled_image = image(null, parent_atom)
-		langchat_scrambled_image.layer = 20
+		langchat_scrambled_image.layer = ABOVE_HUD_LAYER
 		langchat_scrambled_image.plane = RUNECHAT_PLANE
 		langchat_scrambled_image.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
 		langchat_scrambled_image.maptext_y = langchat_height - LANGCHAT_MESSAGE_POP_Y_SINK
@@ -211,14 +211,6 @@
 		langchat_scrambled_image.maptext_width = width
 		langchat_scrambled_image.maptext_x = (icon_x_size / 2) - (langchat_scrambled_image.maptext_width / 2)
 
-	// Put it on the map
-	if(parent_atom.z)
-		langchat_image.loc = parent_atom
-		langchat_scrambled_image.loc = parent_atom
-	else
-		langchat_image.loc = recursive_holder_check(parent_atom)
-		langchat_scrambled_image.loc = langchat_image.loc
-
 	// Display to everyone involved
 	for(var/mob/player as anything in langchat_listeners)
 		if(langchat_client_enabled(player) && ((message_flags & LANGCHAT_IMAGE_IS_EMOTE) || !player.ear_deaf))
@@ -227,9 +219,15 @@
 			else if(!(message_flags & LANGCHAT_IMAGE_NO_SCRAMBLE) && language && !islist(language))
 				player.client.images += langchat_scrambled_image
 
-/datum/component/langchat_image/proc/start()
-	var/atom/parent_atom = parent
+	// Put it on the map
+	if(parent_atom.z)
+		langchat_image.loc = parent_atom
+		langchat_scrambled_image.loc = parent_atom
+	else
+		langchat_image.loc = recursive_holder_check(parent_atom)
+		langchat_scrambled_image.loc = langchat_image.loc
 
+/datum/component/langchat_image/proc/start()
 	// Now ANIMATE
 	switch(animation_style)
 		if(LANGCHAT_DEFAULT_POP)
@@ -266,7 +264,6 @@
 	// reset_in should already be set so we have nothing more to do!
 
 /datum/component/langchat_image/proc/reset()
-	log_debug("\ref[src] called reset")
 	if(langchat_listeners)
 		for(var/mob/player as anything in langchat_listeners)
 			player.client?.images -= langchat_image
@@ -280,7 +277,7 @@
 	var/lifetime = 2 SECONDS
 	if(message_flags & LANGCHAT_IMAGE_MULTIPART)
 		var/chunk_size = LANGCHAT_LONGEST_TEXT - 5
-		var/chunks = round(length(message) / chunk_size, 1)
+		var/chunks = ceil(length(message) / chunk_size)
 		if(chunks <= 1)
 			messages += message
 			lifetime += (length(message) / LANGCHAT_LONGEST_TEXT) * 4 SECONDS
@@ -298,6 +295,8 @@
 This does just that, doesn't check deafness or language! Do what you will in that regard **/
 /datum/component/langchat_image/proc/display_image(datum/self, mob/player)
 	SIGNAL_HANDLER
+	if(state < LANGCHAT_IMAGE_STATE_DISPLAYING)
+		return
 	if(langchat_image)
 		if(!langchat_client_enabled(player))
 			return

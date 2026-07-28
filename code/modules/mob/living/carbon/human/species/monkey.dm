@@ -90,7 +90,7 @@
 				var/list/heard = get_mobs_in_view(GLOB.world_view_size, container)
 				var/message = pick("rocks about.", "creaks.", "chimpers.")
 				monkey.AddComponent(/datum/component/langchat_image)
-				SEND_SIGNAL(monkey, COMSIG_ATOM_LANGCHAT_SEND_MESSAGE, message, LANGCHAT_IMAGE_IGNORE_LANG | LANGCHAT_IMAGE_IS_EMOTE, heard, LANGCHAT_FAST_POP, additional_styles = list("langchat_small"))
+				monkey.langchat_send_message(message, LANGCHAT_IMAGE_IGNORE_LANG | LANGCHAT_IMAGE_IS_EMOTE, heard, LANGCHAT_FAST_POP, additional_styles = list("langchat_small"))
 				container.visible_message("<b>[container]</b> [message]")
 			else
 				container.attack_hand(monkey)

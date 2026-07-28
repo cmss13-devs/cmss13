@@ -208,7 +208,7 @@
 				playsound(loc, 'sound/machines/twobeep.ogg', 5, 1)
 			else
 				playsound(loc, 'sound/machines/buzz-two.ogg', 5, 1)
-				SEND_SIGNAL(src, COMSIG_ATOM_LANGCHAT_SEND_MESSAGE, "There are no contracts to reprint available", LANGCHAT_IMAGE_IGNORE_LANG, get_mobs_in_view(7, src), additional_styles = list("langchat_small"))
+				langchat_send_message("There are no contracts to reprint available", LANGCHAT_IMAGE_IGNORE_LANG, get_mobs_in_view(7, src), additional_styles = list("langchat_small"))
 				visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: There are no contracts to reprint available")
 		if("announce")
 			if(!COOLDOWN_FINISHED(GLOB.chemical_data, announcement_cooldown))

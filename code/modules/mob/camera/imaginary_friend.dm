@@ -208,7 +208,7 @@
 		if(!client?.prefs.lang_chat_disabled)
 			send_to += src
 		if(length(send_to))
-			SEND_SIGNAL(src, COMSIG_ATOM_LANGCHAT_SEND_MESSAGE, message, LANGCHAT_IMAGE_IGNORE_LANG, send_to)
+			langchat_send_message(message, LANGCHAT_IMAGE_IGNORE_LANG, send_to)
 
 	//speech bubble
 	var/mutable_appearance/MA = mutable_appearance('icons/mob/effects/talk.dmi', src, "default[say_test(message)]", FLY_LAYER)

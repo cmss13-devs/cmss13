@@ -1039,7 +1039,6 @@
 /obj/effect/landmark/survivor_spawner/SOF_survivor_atlan/soldier
 	icon_state = "surv_upp"
 	equipment = /datum/equipment_preset/survivor/upp/SOF_survivor_atlan/soldier
-	CO_equipment = /datum/equipment_preset/survivor/upp/SOF_survivor_atlan/soldier
 	synth_equipment = /datum/equipment_preset/synth/survivor/upp/SOF_synth_atlan
 	intro_text = list("You are a member of a UPP response team!",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
@@ -1052,7 +1051,6 @@
 /obj/effect/landmark/survivor_spawner/SOF_survivor_atlan/sapper
 	icon_state = "surv_upp"
 	equipment = /datum/equipment_preset/survivor/upp/SOF_survivor_atlan/sapper
-	CO_equipment = /datum/equipment_preset/survivor/upp/SOF_survivor_atlan/sapper
 	synth_equipment = /datum/equipment_preset/synth/survivor/upp/SOF_synth_atlan
 	intro_text = list("You are a member of a UPP response team!",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
@@ -1064,7 +1062,6 @@
 /obj/effect/landmark/survivor_spawner/SOF_survivor_atlan/medic
 	icon_state = "surv_upp"
 	equipment = /datum/equipment_preset/survivor/upp/SOF_survivor_atlan/medic
-	CO_equipment = /datum/equipment_preset/survivor/upp/SOF_survivor_atlan/medic
 	synth_equipment = /datum/equipment_preset/synth/survivor/upp/SOF_synth_atlan
 	intro_text = list("You are a member of a UPP response team!",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
@@ -1077,7 +1074,6 @@
 /obj/effect/landmark/survivor_spawner/SOF_survivor_atlan/specialist
 	icon_state = "surv_upp"
 	equipment = /datum/equipment_preset/survivor/upp/SOF_survivor_atlan/specialist
-	CO_equipment = /datum/equipment_preset/survivor/upp/SOF_survivor_atlan/specialist
 	synth_equipment = /datum/equipment_preset/synth/survivor/upp/SOF_synth_atlan
 	intro_text = list("You are a member of a UPP response team!",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
@@ -1090,7 +1086,6 @@
 /obj/effect/landmark/survivor_spawner/SOF_survivor_atlan/squad_leader
 	icon_state = "surv_upp"
 	equipment = /datum/equipment_preset/survivor/upp/SOF_survivor_atlan/squad_leader
-	CO_equipment = /datum/equipment_preset/survivor/upp/SOF_survivor_atlan/squad_leader
 	synth_equipment = /datum/equipment_preset/synth/survivor/upp/SOF_synth_atlan
 	intro_text = list("You are a member of a UPP response team!",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
@@ -1099,4 +1094,3 @@
 <span style='color:#607c4c; font-size:95%;'>The distress signal was automated and gave no information, your best guesses wwere pirates or a systems failure. When your team landed however, the station was eerily empty.</span><br><br>\
 <span style='color:#607c4c; font-size:95%;'>While trying to locate the station's administrator and workers your squad was ambushed by xenomorphs. Fortifying your position you managed to stave off the initial assault but with moderate casualties. With your pilot not responding over your headets you fear your only hope of getting out of this rock is by someone else answering the ongoing distress signal.</span>"
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
-  archetype = INSERT_SYNTH

@@ -675,10 +675,6 @@
 				else
 					new /datum/effects/acid(H, linked_xeno, initial(linked_xeno.caste_type))
 			var/found = null
-			for (var/datum/effects/boiler_trap/trap in H.effects_list)
-				if (trap.cause_data && trap.cause_data.resolve_mob() == linked_xeno)
-					found = trap
-					break
 			if(found)
 				H.apply_armoured_damage(damage*immobilized_multiplier, ARMOR_BIO, BURN)
 			else
@@ -692,25 +688,3 @@
 /obj/effect/xenomorph/acid_damage_delay/proc/die()
 	deal_damage()
 	qdel(src)
-
-/obj/effect/xenomorph/acid_damage_delay/boiler_landmine
-
-/obj/effect/xenomorph/acid_damage_delay/boiler_landmine/deal_damage()
-	var/total_hits = 0
-	for (var/obj/structure/barricade/B in loc)
-		B.take_acid_damage(damage*(1.15 + 0.55 * empowered))
-
-	for (var/mob/living/carbon/human in loc)
-		if (human.stat == DEAD)
-			continue
-
-		if(human.ally_of_hivenumber(hivenumber))
-			continue
-
-		total_hits++
-
-	var/datum/action/xeno_action/activable/boiler_trap/trap = get_action(linked_xeno, /datum/action/xeno_action/activable/boiler_trap)
-
-	trap.reduce_cooldown(total_hits*4 SECONDS)
-
-	return ..()

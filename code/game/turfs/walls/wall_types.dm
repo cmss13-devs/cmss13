@@ -955,9 +955,8 @@
 	if(!(turf_flags & TURF_HULL))
 		var/area/area = get_area(src)
 		area?.current_resin_count--
-	if(upper_wall)
+	if(!QDESTROYING(upper_wall))
 		upper_wall.dismantle_wall()
-		upper_wall = null
 	var/turf/above = SSmapping.get_turf_above(src)
 	while(above && istransparentturf(above))
 		above.update_vis_contents()
@@ -1045,14 +1044,15 @@
 
 /turf/closed/wall/resin/above/Destroy(force)
 	. = ..()
-	if(wall_below)
+	// Keep a local copy in case we accidentally destroy ourselves, or the proc will crash
+	var/turf/closed/wall/resin/wall_below = src.wall_below
+	var/obj/structure/mineral_door/resin/door_below = src.door_below
+	if(!QDESTROYING(wall_below)) // Don't cause a delete loop
 		wall_below.upper_wall = null
 		wall_below.dismantle_wall()
-		wall_below = null
 	if(door_below)
 		door_below.upper_wall = null
 		door_below.Dismantle(TRUE)
-		door_below = null
 	var/turf/above = SSmapping.get_turf_above(src)
 	if(above && istransparentturf(above))
 		above.update_vis_contents()
@@ -1287,7 +1287,10 @@
 		hivenumber = hive
 		set_hive_data(src, hive)
 	recalculate_structure()
-	update_tied_turf(loc)
+	if(!mapload)
+		update_tied_turf()
+	// COMSIG_MOVABLE_TURF_ENTERED to handle movement and ChangeTurf
+	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTERED, PROC_REF(update_tied_turf))
 	RegisterSignal(src, COMSIG_MOVABLE_XENO_START_PULLING, PROC_REF(allow_xeno_drag))
 	RegisterSignal(src, COMSIG_MOVABLE_PULLED, PROC_REF(continue_allowing_drag))
 
@@ -1398,20 +1401,17 @@
 
 	return ..()
 
-/obj/structure/alien/movable_wall/proc/update_tied_turf(turf/T)
-	SIGNAL_HANDLER
+/obj/structure/alien/movable_wall/proc/update_tied_turf()
+	SIGNAL_HANDLER // COMSIG_MOVABLE_TURF_ENTERED
 
-	if(!T)
+	if(!loc)
 		return
 
 	if(tied_turf)
-		UnregisterSignal(tied_turf, COMSIG_TURF_ENTER)
-	RegisterSignal(T, COMSIG_TURF_ENTER, PROC_REF(check_for_move))
-	tied_turf = T
+		UnregisterSignal(tied_turf, list(COMSIG_TURF_ENTER))
 
-/obj/structure/alien/movable_wall/forceMove(atom/dest)
-	. = ..()
-	update_tied_turf(loc)
+	tied_turf = loc
+	RegisterSignal(loc, COMSIG_TURF_ENTER, PROC_REF(check_for_move))
 
 /obj/structure/alien/movable_wall/proc/check_for_move(turf/T, atom/movable/mover)
 	if(group.next_push > world.time)

@@ -856,9 +856,9 @@
 /turf/open/gm/river/ocean/Entered(atom/movable/entered_movable, atom/old_loc)
 	. = ..()
 	if(old_loc != src && prob(20)) // fuck you
-		if(!ismob(entered_movable))
+		if(!isliving(entered_movable))
 			return
-		var/mob/unlucky_mob = entered_movable
+		var/mob/living/unlucky_mob = entered_movable
 		var/turf/target_turf = get_random_turf_in_range(entered_movable, 3, 0)
 		var/datum/launch_metadata/launch = new()
 		launch.target = target_turf
@@ -872,11 +872,10 @@
 		INVOKE_ASYNC(unlucky_mob, TYPE_PROC_REF(/atom/movable, launch_towards), launch)
 		return
 
-	if(world.time % 5)
-		if(ismob(entered_movable))
-			var/mob/rivermob = entered_movable
-			if(!HAS_TRAIT(rivermob, TRAIT_HAULED))
-				to_chat(rivermob, SPAN_WARNING("Moving through the incredibly deep ocean slows you down a lot!"))
+	if((world.time % 5) && isliving(entered_movable))
+		var/mob/living/rivermob = entered_movable
+		if(!HAS_TRAIT(rivermob, TRAIT_HAULED))
+			to_chat(rivermob, SPAN_WARNING("Moving through the incredibly deep ocean slows you down a lot!"))
 
 /turf/open/gm/coast
 	name = "coastline"

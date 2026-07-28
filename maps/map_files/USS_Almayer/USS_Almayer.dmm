@@ -52071,7 +52071,6 @@
 "cwP" = (
 /obj/structure/window/framed/almayer,
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating,
 /area/almayer/squads/platoon2_shared)
 "cwS" = (

@@ -122,7 +122,7 @@
 		SPAN_NOTICE("[user] begins to stitch \the [muscle_type] in your [surgery.affected_limb.display_name] back together with [tool]."),
 		SPAN_NOTICE("[user] begins to stitch \the [muscle_type] in [target]'s [surgery.affected_limb.display_name] back together with [tool]."))
 
-	target.custom_pain("The tightening of the stitches feels unbearable, but you are thankful your [surgery.affected_limb.display_name] will not be amputated.", 1)
+	target.custom_pain("The tightening of the stitches feels unbearable!", 1)
 	log_interact(user, target, "[key_name(user)] attempted to abort an amputation on [key_name(target)]'s [surgery.affected_limb.display_name] with [tool].")
 
 /datum/surgery_step/abort_amputation/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -174,10 +174,11 @@
 
 	target.custom_pain("Your [surgery.affected_limb.display_name] is being hacked away!", 1)
 
-	if(target.stat == CONSCIOUS && target.pain.reduction_pain >= surgery.pain_reduction_required) //if patient is under the proper anesthesia
-		target.emote("pain") //Again, we don't have an 'oh fuck my arm is coming off'
-	else
-		target.emote("scream")//MY! ARRRRRRMMMM! - Scout from Team Fortress 2
+	if(target.stat == CONSCIOUS)
+		if (target.pain.reduction_pain >= surgery.pain_reduction_required) //if patient is under the proper anesthesia
+			target.emote("pain") //Again, we don't have an 'oh fuck my arm is coming off'
+		else
+			target.emote("scream") //MY! ARRRRRRMMMM! - Scout from Team Fortress 2
 
 	if(tool.hitsound)
 		playsound(target.loc, tool.hitsound, 25, TRUE)
@@ -371,9 +372,9 @@
 
 /datum/surgery_step/sever_prosthetic_clamps/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_NOTICE("You start carefully cutting through the jammed clamps holding what's left of [target]'s prosthetic [surgery.affected_limb.display_name] on with [tool]."),
-		SPAN_NOTICE("[user] starts carefully cutting through the jammed clamps holding what's left of your prosthetic [surgery.affected_limb.display_name] on with [tool]."),
-		SPAN_NOTICE("[user] starts carefully cutting through the jammed clamps holding what's left of [target]'s prosthetic [surgery.affected_limb.display_name] on with [tool]."))
+		SPAN_NOTICE("You start carefully cutting through the jammed clamps holding what's left of [target]'s prosthetic [surgery.affected_limb.display_name] with [tool]."),
+		SPAN_NOTICE("[user] starts carefully cutting through the jammed clamps holding what's left of your prosthetic [surgery.affected_limb.display_name] with [tool]."),
+		SPAN_NOTICE("[user] starts carefully cutting through the jammed clamps holding what's left of [target]'s prosthetic [surgery.affected_limb.display_name] with [tool]."))
 
 	log_interact(user, target, "[key_name(user)] attempted to begin repairing the stump of [key_name(target)]'s severed prosthetic [surgery.affected_limb.display_name] with [tool].")
 
@@ -427,7 +428,7 @@
 
 /datum/surgery_step/remove_old_prosthetic/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_WARNING("Your hands slip off [target]'s prosthesis a resounding clunk."),
+		SPAN_WARNING("Your hands slip off [target]'s prosthesis with a resounding clunk."),
 		SPAN_WARNING("[user]'s hands slip off your prosthesis with a resounding clunk."),
 		SPAN_WARNING("[user]'s hands slip off [target]'s prosthesis with a resounding clunk."))
 

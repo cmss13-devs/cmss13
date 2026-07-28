@@ -512,10 +512,11 @@
 			SPAN_WARNING("You hack through [target]'s broken [affected_bone]!"),
 			SPAN_WARNING("[user] hacks through your broken [affected_bone]!"),
 			SPAN_WARNING("[user] hacks through [target]'s broken [affected_bone]!"))
-		if(target.stat == CONSCIOUS && target.pain.reduction_pain >= surgery.pain_reduction_required) //if patient is under the proper anesthesia
-			return
-		else
-			target.emote("scream")//FUUUUUUCK!
+		if(target.stat == CONSCIOUS)
+			if (target.pain.reduction_pain >= surgery.pain_reduction_required) //if patient is under the proper anesthesia
+				target.emote("pain") //BRO!?
+			else
+				target.emote("scream") //MY! ARRRRRRMMMM! - Scout from Team Fortress 2
 
 	else
 		user.affected_message(target,
@@ -523,10 +524,11 @@
 			SPAN_WARNING("[user] shatters your [surgery.affected_limb.encased]!"),
 			SPAN_WARNING("[user] shatters [target]'s [surgery.affected_limb.encased]!"))
 
-		if(target.stat == CONSCIOUS && target.pain.reduction_pain >= surgery.pain_reduction_required) //if patient is under the proper anesthesia
-			target.emote("pain") //aw shit, doctor, watch it!
-		else
-			target.emote("scream")//FUUUUUUCK!
+		if(target.stat == CONSCIOUS)
+			if (target.pain.reduction_pain >= surgery.pain_reduction_required) //if patient is under the proper anesthesia
+				target.emote("pain") //HEY!!!
+			else
+				target.emote("scream") //MY! ARRRRRRMMMM! - Scout from Team Fortress 2
 		surgery.affected_limb.fracture(100)
 
 	user.animation_attack_on(target)
@@ -570,10 +572,11 @@
 			SPAN_NOTICE("[target]'s [surgery.affected_limb.encased] cracked after [user]exposed \his [brain ? "brain" : "vital organs"] with [tool]! It wasn't anybody's fault. It happens, rarely."))
 
 		surgery.affected_limb.fracture(100)
-		if(target.stat == CONSCIOUS && target.pain.reduction_pain >= surgery.pain_reduction_required) //if patient is under the proper anesthesia
-			target.emote("pain") //aw shit, doctor, watch it!
-		else
-			target.emote("scream")//FUUUUUUCK!
+		if(target.stat == CONSCIOUS)
+			if (target.pain.reduction_pain >= surgery.pain_reduction_required) //if patient is under the proper anesthesia
+				return // "It's ok doc, I know it was an accident."
+			else
+				target.emote("scream") //AWWW FUCK MY RIBS!
 	else
 		user.affected_message(target,
 			SPAN_NOTICE("You use [tool] to hold [target]'s [surgery.affected_limb.encased] open, exposing \his [brain ? "brain" : "vital organs"]."),
@@ -603,10 +606,11 @@
 			SPAN_WARNING("[user]'s hand slips, cracking your [surgery.affected_limb.encased]!"),
 			SPAN_WARNING("[user]'s hand slips, cracking [target]'s [surgery.affected_limb.encased]!"))
 
-		if(target.stat == CONSCIOUS && target.pain.reduction_pain >= surgery.pain_reduction_required) //if patient is under the proper anesthesia
-			target.emote("pain") //aw shit, doctor, watch it!
-		else
-			target.emote("scream")//FUUUUUUCK!
+		if(target.stat == CONSCIOUS)
+			if (target.pain.reduction_pain >= surgery.pain_reduction_required) //if patient is under the proper anesthesia
+				target.emote("pain") //Shit doc, watch it!
+			else
+				target.emote("scream") //MAN WHAT THE HELL!?
 		surgery.affected_limb.fracture(100)
 
 	target.apply_damage(15, BRUTE, target_zone)
@@ -676,10 +680,11 @@
 			SPAN_WARNING("[user]'s hand slips, cracking your [surgery.affected_limb.encased]!"),
 			SPAN_WARNING("[user]'s hand slips, cracking [target]'s [surgery.affected_limb.encased]!"))
 
-		if(target.stat == CONSCIOUS && target.pain.reduction_pain >= surgery.pain_reduction_required) //if patient is under the proper anesthesia
-			target.emote("pain") //aw shit, doctor, watch it!
-		else
-			target.emote("scream")//FUUUUUUCK!
+		if(target.stat == CONSCIOUS)
+			if (target.pain.reduction_pain >= surgery.pain_reduction_required) //if patient is under the proper anesthesia
+				target.emote("pain") //Shit doc, watch it!
+			else
+				target.emote("scream") //MAN WHAT THE HELL!?
 		surgery.affected_limb.fracture(100)
 
 	target.apply_damage(15, BRUTE, target_zone)
@@ -762,10 +767,11 @@
 			SPAN_WARNING("[user]'s hand slips, cracking your [surgery.affected_limb.encased]!"),
 			SPAN_WARNING("[user]'s hand slips, cracking [target]'s [surgery.affected_limb.encased]!"))
 
-		if(target.stat == CONSCIOUS && target.pain.reduction_pain >= surgery.pain_reduction_required) //if patient is under the proper anesthesia
-			target.emote("pain") //aw shit, doctor, watch it!
-		else
-			target.emote("scream")//FUUUUUUCK!
+		if(target.stat == CONSCIOUS)
+			if (target.pain.reduction_pain >= surgery.pain_reduction_required) //if patient is under the proper anesthesia
+				target.emote("pain") //Shit doc, watch it!
+			else
+				target.emote("scream") //MAN WHAT THE HELL!?
 		surgery.affected_limb.fracture(100)
 
 	target.apply_damage(10, BRUTE, target_zone)

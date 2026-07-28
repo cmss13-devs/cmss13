@@ -141,8 +141,8 @@
 	if((istype(reacting_object,/obj/item) || istype(reacting_object,/obj/effect/glowshroom)) && prob(potency * 10))
 		if(reacting_object.unacidable)
 			return
-		var/obj/effect/decal/cleanable/molten_item/int_bleeding = new/obj/effect/decal/cleanable/molten_item(reacting_object.loc)
-		int_bleeding.desc = "Looks like this was \an [reacting_object] some time ago."
+		var/obj/effect/decal/cleanable/molten_item/melted_object = new/obj/effect/decal/cleanable/molten_item(reacting_object.loc)
+		melted_object.desc = "Looks like this was \an [reacting_object] some time ago."
 		for(var/mob/viewer as anything in viewers(5, reacting_object))
 			to_chat(viewer, SPAN_WARNING("\The [reacting_object] melts."))
 		qdel(reacting_object)

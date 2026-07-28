@@ -128,9 +128,9 @@
 /datum/surgery_step/abort_amputation/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	var/muscle_type = target.get_muscle_type()
 	user.affected_message(target,
-		SPAN_NOTICE("You finish reconnecting \the [muscle_type] in [target]'s [surgery.affected_limb.display_name]."),
-		SPAN_NOTICE("[user] has reconnected \the [muscle_type] in your [surgery.affected_limb.display_name]."),
-		SPAN_NOTICE("[user] has reconnected \the [muscle_type] in [target]'s [surgery.affected_limb.display_name]."))
+		SPAN_NOTICE("You finish reconnecting the [muscle_type] in [target]'s [surgery.affected_limb.display_name]."),
+		SPAN_NOTICE("[user] has reconnected the [muscle_type] in your [surgery.affected_limb.display_name]."),
+		SPAN_NOTICE("[user] has reconnected the [muscle_type] in [target]'s [surgery.affected_limb.display_name]."))
 
 	if(target.stat == CONSCIOUS)
 		to_chat(target, SPAN_NOTICE("You can move your [surgery.affected_limb.display_name] again."))

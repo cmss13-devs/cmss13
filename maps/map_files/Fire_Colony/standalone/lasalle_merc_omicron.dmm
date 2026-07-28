@@ -1410,7 +1410,7 @@
 /area/fire_colony/interior/omicron_facility/passthrough)
 "Ci" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/effect/landmark/survivor_spawner/fire_colony_lb_merc_synth,
+/obj/effect/landmark/survivor_spawner/fire_colony_lb_merc_leader,
 /turf/open/floor/corsat/spiralplate,
 /area/fire_colony/interior/omicron_facility/passthrough)
 "Cl" = (
@@ -2233,6 +2233,7 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
+/obj/effect/landmark/survivor_spawner/fire_colony_lb_merc,
 /turf/open/floor/corsat/spiralplate,
 /area/fire_colony/interior/omicron_facility/passthrough)
 "Xx" = (

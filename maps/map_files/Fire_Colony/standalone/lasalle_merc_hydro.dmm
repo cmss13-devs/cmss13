@@ -50,7 +50,7 @@
 /area/fire_colony/interior/hydroponics/lobby)
 "db" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/effect/landmark/survivor_spawner/fire_colony_lb_merc,
+/obj/effect/landmark/survivor_spawner/fire_colony_lb_merc_synth,
 /turf/open/floor/strata/altgreen3/southwest,
 /area/fire_colony/interior/hydroponics/lobby)
 "dc" = (

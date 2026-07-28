@@ -1,0 +1,6 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - balance: "Hijack hallucinations upper limit on probability is halved (was 5 mins in FTL would have 25% chance per tick, now 12.5%)"
+  - balance: "Some hallucinations have an earlier message to them"
+  - code_imp: "Replaced an unnecessary old way of RNGing old boiler hallucinations with just a 50% probability (in addition to the standard 15s cooldown FTL imposed to hallucinations)"

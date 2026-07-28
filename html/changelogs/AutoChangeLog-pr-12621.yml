@@ -1,0 +1,5 @@
+author: "NHC"
+delete-after: True
+changes:
+  - code_imp: "Renamed and properly sorted Autocannon hitsounds in code"
+  - soundtweak: "made Autocannon hitsounds quiter"

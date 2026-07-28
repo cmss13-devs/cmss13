@@ -1,0 +1,9 @@
+author: "Nihisohel"
+delete-after: True
+changes:
+  - balance: "You can now alt click another human to check their status, being able to check their limb status at a glance without requiring a scanner. Obviously, you wouldn't be able to tell if someone has a broken limb or prosthesis without a scanner, however"
+  - qol: "Additionally, you can remove theirs AND your individual splints rather than having to use the verb that removes all of it at once"
+  - qol: "You can now split stacks (brutekits, burnkits, etc) by increments of 1 via unique action"
+  - code_imp: "Defuncts some legacy code regarding unreachable limbs from wearing a space suit, well, pretty much refactors the remove surgery procedure in its entirety"
+  - code_imp: "As a result of this PR, you can no longer alt-click a carbon to check the contents of a tile, you would have to click on an object or a tile by that point"
+  - spellcheck: "Touches up on some grammar and proper wording regarding status checking"

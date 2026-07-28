@@ -446,27 +446,65 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 
 	return ..()
 
-/obj/item/stack/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/stack))
-		var/obj/item/stack/other_stack = W
-		if(other_stack.stack_id == stack_id) //same stack type
-			if(other_stack.amount >= max_amount)
-				to_chat(user, SPAN_WARNING("The stack is full!"))
-				return TRUE
-			var/to_transfer = min(amount, other_stack.max_amount - other_stack.amount)
-			if(to_transfer <= 0)
-				return
-			to_chat(user, SPAN_INFO("You transfer [to_transfer] between the stacks."))
-			other_stack.add(to_transfer)
-			if(other_stack && user.interactee == other_stack)
-				INVOKE_ASYNC(other_stack, TYPE_PROC_REF(/obj/item/stack, interact), user)
-			use(to_transfer)
-			if(!QDELETED(src) && user.interactee == src)
-				INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/item/stack, interact), user)
-			user.next_move = world.time + 0.3 SECONDS
-			return TRUE
+/obj/item/stack/unique_action(mob/user)
+	if(amount <= 1) // like really
+		return ..()
 
-	return ..()
+	var/obj/item/stack/other_stack = user.get_inactive_hand()
+
+	// other hand
+	if(istype(other_stack) && other_stack.stack_id == stack_id && other_stack.amount < other_stack.max_amount)
+		if(!use(1))
+			return
+		other_stack.add(1)
+		to_chat(user, SPAN_NOTICE("You add one [singular_name] to the stack in your other hand."))
+		if(user.interactee == src)
+			INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/item/stack, interact), user)
+		if(user.interactee == other_stack)
+			INVOKE_ASYNC(other_stack, TYPE_PROC_REF(/obj/item/stack, interact), user)
+		user.next_move = world.time + 0.3 SECONDS
+		return TRUE
+
+	// empty
+	if(other_stack)
+		return ..()
+
+	if(!use(1))
+		return
+
+	var/obj/item/stack/new_stack = new type(user, 1)
+	transfer_fingerprints_to(new_stack)
+	user.put_in_inactive_hand(new_stack)
+	add_fingerprint(user)
+	new_stack.add_fingerprint(user)
+	to_chat(user, SPAN_NOTICE("You split one [singular_name] into your other hand."))
+	user.next_move = world.time + 0.3 SECONDS
+	return TRUE
+
+/obj/item/stack/attackby(obj/item/stack/used_stack, mob/user)
+	if(used_stack.stack_id != stack_id) //not the same stack type :)
+		return ..()
+
+	if(used_stack.amount >= max_amount)
+		to_chat(user, SPAN_WARNING("The [name] is full!"))
+		return TRUE
+	var/to_transfer = min(amount, used_stack.max_amount - used_stack.amount)
+
+	if(to_transfer <= 0)
+		return
+
+	to_chat(user, SPAN_INFO("You transfer [to_transfer] between the stacks."))
+	used_stack.add(to_transfer)
+
+	if(used_stack && user.interactee == used_stack)
+		INVOKE_ASYNC(used_stack, TYPE_PROC_REF(/obj/item/stack, interact), user)
+
+	use(to_transfer)
+
+	if(!QDELETED(src) && user.interactee == src)
+		INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/item/stack, interact), user)
+	user.next_move = world.time + 0.3 SECONDS
+	return TRUE
 
 /*
  * Recipe datum

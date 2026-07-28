@@ -268,6 +268,7 @@ as having entered the turf.
 
 // I'll admit most of the code from here on out is basically just copypasta from DOREC
 
+/*
 // Spawns a cellular automaton of an explosion
 /proc/cell_explosion(turf/epicenter, power, falloff, falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR, direction, datum/cause_data/explosion_cause_data, enviro=FALSE)
 	if(!istype(epicenter))
@@ -319,6 +320,8 @@ as having entered the turf.
 	if(power >= 100) // powerful explosions send out some special effects
 		epicenter = get_turf(epicenter) // the ex_acts might have changed the epicenter
 		new /obj/shrapnel_effect(epicenter)
+
+*/
 
 /// Handle all logging for an automata_cell explosion.
 /proc/log_explosion(mob/living/affected, datum/automata_cell/explosion/explosion)

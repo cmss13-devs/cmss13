@@ -1936,7 +1936,7 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/item/trash/cigbutt,
-/obj/effect/landmark/survivor_spawner/fire_colony_lb_merc_leader,
+/obj/effect/landmark/survivor_spawner/fire_colony_lb_merc_commander,
 /turf/open/floor/plating/fire_colony,
 /area/fire_colony/interior/hangar/alpha)
 "VJ" = (

@@ -37,7 +37,7 @@
 
 /obj/item/storage/pouch/get_examine_text(mob/user)
 	. = ..()
-	. += "Can be worn by attaching it to a pocket."
+	. += "It can be worn by attaching it to a pocket."
 
 
 /obj/item/storage/pouch/equipped(mob/user, slot)
@@ -253,7 +253,7 @@
 
 /obj/item/storage/pouch/firstaid/full/black
 	icon_state = "wy_firstaid"
-	desc = "A four-pocket pouch that contains a variety of autoinjectors for quickly treating injuries. This one came with black leather and it is full of autoinjectors."
+	desc = "A four-pocket pouch that contains a variety of autoinjectors for quickly treating injuries. This one came with black leather, and it is full of autoinjectors."
 
 /obj/item/storage/pouch/firstaid/full/alternate
 
@@ -333,7 +333,7 @@
 	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD|STORAGE_ALLOW_QUICKDRAW
 	flap = FALSE
 
-	///Display code pulled from belt.dm gun belt. Can shave quite a lot off because this pouch can only hold one item at a time.
+	///Display code pulled from belt.dm gun belt. It can shave quite a lot off because this pouch can only hold one item at a time.
 	var/obj/item/weapon/gun/current_gun //The gun it holds, used for referencing later so we can update the icon.
 	var/image/gun_underlay //The underlay we will use.
 	var/sheatheSound = 'sound/weapons/gun_pistol_sheathe.ogg'
@@ -388,7 +388,7 @@
 ///CO pouch. This pouch can hold only 1 of each type of item: 1 sidearm, 1 pair of binoculars, 1 CO tablet
 /obj/item/storage/pouch/pistol/command
 	name = "command pouch"
-	desc = "A specialized, sturdy pouch with three pockets, issued to Commanding Officers. Can hold their sidearm, the command tablet, and a set of binoculars."
+	desc = "A specialized, sturdy pouch with three pockets, issued to Commanding Officers. It can hold their sidearm, the command tablet, and a set of binoculars."
 	storage_slots = 3
 	icon_state = "command_pouch"
 	can_hold = list(
@@ -694,7 +694,7 @@
 
 /obj/item/storage/pouch/shotgun/large
 	name = "large shotgun shell pouch"
-	desc = "It has seven pockets that can contain more handfuls of shells, or bullets if you choose to for some reason."
+	desc = "It has seven pockets that can contain more handfuls of shells... Or bullets, if you choose to, for some reason."
 	icon_state = "large_shotshells"
 	storage_slots = 7
 
@@ -858,7 +858,7 @@
 
 /obj/item/storage/pouch/medical/socmed/dutch
 	name = "\improper Dutch's Medical Pouch"
-	desc = "A pouch bought from a black market trader by Dutch quite a few years ago. Rumoured to be stolen from secret USCM assets. Its contents have been slowly used up and replaced over the years. It has thirteen pockets."
+	desc = "A pouch with thirteen pockets bought from a black market trader by Dutch quite a few years ago. It is rumored to be stolen from secret USCM assets. Its contents have been slowly used up and replaced over the years."
 
 /obj/item/storage/pouch/medical/socmed/dutch/fill_preset_inventory()
 	new /obj/item/device/healthanalyzer(src)
@@ -877,11 +877,11 @@
 
 /obj/item/storage/pouch/medical/socmed/dutch/unmarked
 	name = "tactical medical pouch"
-	desc = "A heavy pouch with thirteen pockets that can contain everything one needs to get themselves back on their feet. It has quite the selection. Somehow, the whole pouch manages to look classified, you feel like you're going to get court-marshalled for even looking at it."
+	desc = "A heavy pouch with thirteen pockets that can contain everything one needs to get themselves back on their feet. It has quite the selection. Somehow, the whole pouch manages to look classified; you feel like you're going to get court-martialed for even looking at it."
 
 /obj/item/storage/pouch/first_responder
 	name = "first responder pouch"
-	desc = "A pouch with four slots, designed for carrying larger supplies to assist medical personnel and quickly respond to injuries on the battlefield without immediately treating them. Can hold supplies such as roller beds, stasis bags, and health analysers."
+	desc = "A pouch with four slots, designed for carrying larger supplies to assist medical personnel and quickly respond to injuries on the battlefield without immediately treating them. It can hold supplies such as roller beds, stasis bags, and health analysers."
 	icon_state = "frt_med"
 	storage_slots = 4
 
@@ -1098,7 +1098,7 @@
 	new /obj/item/stack/medical/splint(src)
 
 /obj/item/storage/pouch/pressurized_reagent_canister
-	name = "\improper Pressurized Reagent Canister Pouch"
+	name = "\improper Pressurized Reagent It canister Pouch"
 	max_w_class = SIZE_SMALL
 	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
 	icon_state = "pressurized_reagent_canister"
@@ -1109,27 +1109,27 @@
 	flags_item = NOBLUDGEON
 
 /obj/item/storage/pouch/pressurized_reagent_canister/damage_mend
-	name = "\improper Pressurized Reagent Canister Pouch (Damage Mending Mix)"
+	name = "\improper Pressurized Reagent It canister Pouch (Damage Mending Mix)"
 	desc = "A pouch that carries a 15u reagent pouch autoinjector and a pressurized reagent canister filled with equal parts Bicaridine, Kelotane, and Tricordrazine to quickly heal brute and burn damage accumulated on the field. You can refill 160 units of each reagent with a reagent tank or chemical dispenser."
 
 /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone
-	name = "\improper Pressurized Reagent Canister Pouch (Field Anesthetic)"
+	name = "\improper Pressurized Reagent It canister Pouch (Field Anesthetic)"
 	desc = "A pouch that carries a 5u reagent pouch autoinjector and a pressurized reagent canister filled with the most robust painkiller, Oxycodone, that you can refill with a reagent tank or chemical dispenser. The dosage is small to gauge the amount of anesthetic needed for minor or complicated surgeries, and to reduce the occurrences of overdoses."
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival_oxy
-	name = "\improper Pressurized Reagent Canister Pouch (Oxycodone Revival Mix)"
+	name = "\improper Pressurized Reagent It canister Pouch (Oxycodone Revival Mix)"
 	desc = "A pouch that carries a 15u reagent pouch autoinjector and a pressurized reagent canister filled with equal-parts Oxycodone, Inaprovaline, and Epinephrine for quickly getting marines in pain crit up and back on their feet. You can refill 160 units of each reagent with a reagent tank or chemical dispenser."
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival_peri
-	name = "\improper Pressurized Reagent Canister Pouch (Peridaxon Revival Mix)"
+	name = "\improper Pressurized Reagent It canister Pouch (Peridaxon Revival Mix)"
 	desc = "A pouch that carries a 15u reagent pouch autoinjector and a pressurized reagent canister filled with equal-parts Epinephrine, Inaprovaline, and Peridaxon for stabilizing defibrillated patients and their damaged organs until they can get to an operating table. You can refill 160 units of each reagent with a reagent tank or chemical dispenser."
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord
-	name = "\improper Pressurized Reagent Canister Pouch (Tricordrazine Revival Mix)"
+	name = "\improper Pressurized Reagent It canister Pouch (Tricordrazine Revival Mix)"
 	desc = "A pouch that carries a 15u reagent pouch autoinjector and a pressurized reagent canister filled with equal-parts Epinephrine, Inaprovaline, and Tricordrazine for stabilizing and minimizing damage to defibrillated patients. You can refill 160 units of each reagent with a reagent tank or chemical dispenser."
 
 /obj/item/storage/pouch/pressurized_reagent_canister/surgery_prep
-	name = "\improper Pressurized Reagent Canister Pouch (Surgery Prep Mix)"
+	name = "\improper Pressurized Reagent It canister Pouch (Surgery Prep Mix)"
 	desc = "A pouch that carries a 15u reagent pouch autoinjector and a pressurized reagent canister filled with 280u Oxycodone, 160u Dexalin+, and 40u Peridaxon to locally anesthetize patients and prevent them from dying on the table due to the effects of organ damage or suffocating from low blood. You can refill the pouch's canister with a reagent tank or chemical dispenser."
 
 /obj/item/storage/pouch/pressurized_reagent_canister/Initialize()
@@ -1253,7 +1253,7 @@
 		fill_autoinjector(autoinjector)
 		return ..()
 	else if(istype(insertable_object, /obj/item/reagent_container/hypospray/autoinjector))
-		to_chat(user, SPAN_WARNING("[insertable_object] is not compatible with this system!"))
+		to_chat(user, SPAN_WARNING("[insertable_object] is incompatible with this system!"))
 	return ..()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/proc/fill_autoinjector(obj/item/reagent_container/hypospray/autoinjector/autoinjector)
@@ -1358,7 +1358,7 @@
 	if(isxeno(user))
 		return
 	if(!inner)
-		return "[src] has no cansiter inside!"
+		return "[src] has no canister inside!"
 	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
 		return "[src] contains: [get_reagent_list_text()]"
 	else
@@ -1385,7 +1385,7 @@
 
 /obj/item/storage/pouch/pressurized_reagent_canister/verb/flush_canister()
 	set category = "Object"
-	set name = "Flush Canister In Pouch"
+	set name = "Flush It canister In Pouch"
 	set desc = "Forces the reagent canister inside the pouch to empty its reagents."
 	set src in usr
 	if(!inner)
@@ -1409,7 +1409,7 @@
 
 /obj/item/storage/pouch/pressurized_reagent_canister/verb/remove_canister()
 	set category = "Objects"
-	set name = "Remove Canister"
+	set name = "Remove It canister"
 	set desc = "Removes the pressurized reagent canister from the pouch."
 	set src in usr
 	if(!inner)

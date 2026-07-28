@@ -166,32 +166,32 @@
 				if(heart)
 					switch(heart.organ_status)
 						if(ORGAN_LITTLE_BRUISED)
-							sound = "hear <font color='yellow'>small murmurs with each heart beat</font>, it is possible that [being.p_their()] heart is <font color='yellow'>subtly damaged</font>"
+							sound = "hear <font color='yellow'>small murmurs with each heart beat</font>; it is possible that [being.p_their()] heart is <font color='yellow'>subtly damaged</font>"
 						if(ORGAN_BRUISED)
-							sound = "hear <font color='orange'>deviant heart beating patterns</font>, result of probable <font color='orange'>heart damage</font>"
+							sound = "hear <font color='orange'>deviant heart beating patterns</font>, a result of probable <font color='orange'>heart damage</font>"
 						if(ORGAN_BROKEN)
-							sound = "hear <font color='red'>irregular and additional heart beating patterns</font>, probably caused by impaired blood pumping, [being.p_their()] heart is certainly <font color='red'>failing</font>"
+							sound = "hear <font color='red'>irregular and additional heart beating patterns</font>, probably caused by impaired blood pumping. [being.p_their()] heart is certainly <font color='red'>failing</font>"
 						else
-							sound = "hear <font color='green'>normal heart beating patterns</font>, [being.p_their()] heart is surely <font color='green'>healthy</font>"
+							sound = "hear <font color='green'>normal heart beating patterns</font>, meaning [being.p_their()] heart is surely <font color='green'>healthy</font>"
 				var/datum/internal_organ/lungs/lungs = being.internal_organs_by_name["lungs"]
 				if(lungs)
 					if(sound)
 						sound += ". You also "
 					switch(lungs.organ_status)
 						if(ORGAN_LITTLE_BRUISED)
-							sound += "hear <font color='yellow'>some crackles when [being.p_they()] breath</font>, [being.p_they()] is possibly suffering from <font color='yellow'>a small damage to the lungs</font>"
+							sound += "hear <font color='yellow'>some crackles and pained respiration sounds</font>, a possible indicator of <font color='yellow'>bruised lungs</font>"
 						if(ORGAN_BRUISED)
-							sound += "hear <font color='orange'>unusual respiration sounds</font> and noticeable difficulty to breath, possibly signalling <font color='orange'>ruptured lungs</font>"
+							sound += "hear <font color='orange'>wheezing, crackling, and occasional, absent respiration sounds</font>, probable signs of <font color='orange'>ruptured lungs</font>"
 						if(ORGAN_BROKEN)
-							sound += "<font color='red'>barely hear any respiration sounds</font> and a lot of difficulty to breath, [being.p_their()] lungs are <font color='red'>heavily failing</font>"
+							sound += "hear <font color='red'>rapid, shallow, and often absent respiration sounds</font>; [being.p_their()] lungs are air hungry <font color='red'>heavily failing</font>"
 						else
-							sound += "hear <font color='green'>normal respiration sounds</font> as well, that means [being.p_their()] lungs are <font color='green'>healthy</font>, probably"
+							sound += "hear <font color='green'>normal respiration sounds</font> as well, that means [being.p_their()] lungs are <font color='green'>healthy</font>"
 				else
-					sound = "can't hear. Really, anything at all, how weird"
+					sound = "cannot hear anything at all. How peculiar and concerning"
 			else
-				sound = "hear a lot of sounds... it's quite hard to distinguish, really"
+				sound = "hear many sounds that are difficult to distinguish from one another"
 		if("eyes","mouth")
-			sound = "can't hear anything. Maybe that isn't the smartest idea"
+			sound = "cannot hear anything. Maybe that wasn't very smart of you"
 		else
 			sound = "hear a sound here and there, but none of them give you any good information"
 	user.visible_message("[user] places [src] against [being]'s [body_part] and listens attentively.", "You place [src] against [being.p_their()] [body_part] and... you [sound].")
@@ -425,7 +425,7 @@
 
 /obj/item/clothing/accessory/medal/legacy/heroism
 	name = MARINE_LEGACY_MEDAL_HEROISM
-	desc = "An extremely rare golden medal awarded only by the USCM. To receive such a medal is the highest honor and as such, very few exist."
+	desc = "An extremely rare golden medal awarded only by the USCM. To receive such a medal is the highest honor, and as such, very few exist."
 	icon_state = "heroism"
 
 //Playtime Service Medals
@@ -436,12 +436,12 @@
 
 /obj/item/clothing/accessory/medal/silver/service
 	name = "silver service medal"
-	desc = "A shiny silver medal awarded for a marine's service within the USCM. It is a somewhat common medal which signifies the amount of time a marine has spent in the line of duty."
+	desc = "A shiny silver medal awarded for a marine's service within the USCM. It is a somewhat common medal that signifies the amount of time a marine has spent in the line of duty."
 	icon_state = "silver_service"
 
 /obj/item/clothing/accessory/medal/gold/service
 	name = "gold service medal"
-	desc = "A prestigious gold medal awarded for a marine's service within the USCM. It is a rare medal which signifies the amount of time a marine has spent in the line of duty."
+	desc = "A prestigious gold medal awarded for a marine's service within the USCM. It is a rare medal that signifies the amount of time a marine has spent in the line of duty."
 	icon_state = "gold_service"
 
 /obj/item/clothing/accessory/medal/platinum/service
@@ -585,7 +585,7 @@
 
 /obj/item/clothing/accessory/patch/devils
 	name = "USCM Solar Devils patch"
-	desc = "A fire-resistant shoulder patch, worn by the men and women of the 3rd Battalion 'Solar Devils', part of the USCM 2nd Division, 1st Regiment."
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the 3rd Battalion 'Solar Devils,' part of the USCM 2nd Division, 1st Regiment."
 	icon_state = "solardevilspatch"
 
 /obj/item/clothing/accessory/patch/forecon
@@ -615,12 +615,12 @@
 
 /obj/item/clothing/accessory/patch/ua
 	name = "United Americas patch"
-	desc = "A fire-resistant shoulder patch, worn by the men and women of the United Americas, An economic and political giant in both the Sol system and throughout the offworld colonies, the military might of the UA is unparalleled.."
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the United Americas, an economic and political giant in both the Sol system and throughout the offworld colonies, the military might of the UA is unparalleled.."
 	icon_state = "uapatch"
 
 /obj/item/clothing/accessory/patch/uasquare
 	name = "United Americas patch"
-	desc = "A fire-resistant shoulder patch, worn by the men and women of the United Americas, An economic and political giant in both the Sol system and throughout the offworld colonies, the military might of the UA is unparalleled.."
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the United Americas, an economic and political giant in both the Sol system and throughout the offworld colonies, the military might of the UA is unparalleled.."
 	icon_state = "uasquare"
 
 /obj/item/clothing/accessory/patch/falconalt
@@ -630,7 +630,7 @@
 
 /obj/item/clothing/accessory/patch/twe
 	name = "Three World Empire patch"
-	desc = "A fire-resistant shoulder patch, worn by the men and women loyal to the Three World Empire, An older style symbol of the TWE."
+	desc = "A fire-resistant shoulder patch, worn by the men and women loyal to the Three World Empire, an older style symbol of the TWE."
 	icon_state = "twepatch"
 
 /obj/item/clothing/accessory/patch/uscmlarge
@@ -664,7 +664,7 @@
 	icon_state = "wysquare"
 
 /obj/item/clothing/accessory/patch/wy_faction
-	name = "Weyland-Yutani patch" // For WY factions like PMC's - on the right shoulder rather then left.
+	name = "Weyland-Yutani patch" // For WY factions like PMC's - on the right shoulder rather than the left.
 	desc = "A fire-resistant black shoulder patch featuring the Weyland-Yutani logo. A symbol of loyalty to the corporation."
 	icon_state = "wypatch_faction"
 
@@ -733,7 +733,7 @@
 
 /obj/item/clothing/accessory/patch/cec_patch
 	name = "CEC patch"
-	desc = "An old, worn and faded fire-resistant circular patch with a gold star on a split orange and red background. Once worn by members of the Cosmos Exploration Corps (CEC), a division of the UPP dedicated to exploration, resource assessment, and establishing colonies on new worlds. The patch serves as a reminder of the CEC's daring missions aboard aging starships, a symbol of perseverance in the face of adversity."
+	desc = "An old, worn, and faded fire-resistant circular patch with a gold star on a split orange and red background. Once worn by members of the Cosmos Exploration Corps (CEC), a division of the UPP dedicated to exploration, resource assessment, and establishing colonies on new worlds. The patch serves as a reminder of the CEC's daring missions aboard aging starships, a symbol of perseverance in the face of adversity."
 	icon_state = "cecpatch"
 	item_state_slots = list(WEAR_AS_GARB = "cecpatch")
 
@@ -745,7 +745,7 @@
 
 /obj/item/clothing/accessory/patch/merc_patch
 	name = "Old Freelancer's Guild patch"
-	desc = "A faded old, worn fire-resistant circular patch featuring a white skull on a vertically split black and red background. Worn by a well-equipped mercenary group for hire across the outer colonies, known for their professionalism and neutrality. The current owner’s connection to the patch is unclear—whether it was once earned as part of service, kept as a memento, or simply found, disconnected from its original wearer."
+	desc = "A faded old, worn, fire-resistant circular patch featuring a white skull on a vertically split black and red background. Worn by a well-equipped mercenary group for hire across the outer colonies, known for their professionalism and neutrality. The current owner’s connection to the patch is unclear—whether it was once earned as part of service, kept as a memento, or simply found, disconnected from its original wearer."
 	icon_state = "mercpatch_red"
 	item_state_slots = list(WEAR_AS_GARB = "mercpatch_red")
 
@@ -773,7 +773,7 @@
 
 /obj/item/clothing/accessory/dogtags
 	name = "Attachable Dogtags"
-	desc = "A robust pair of dogtags to be worn around the neck of the United States Colonial Marines, however due to a combination of budget reallocation, Marines losing their dogtags, and multiple incidents of marines swallowing their tags, they now attach to the uniform or armor."
+	desc = "A robust pair of dogtags to be worn around the neck of the United States Colonial Marines; however, due to a combination of budget reallocation, marines losing their dogtags, and multiple incidents of marines swallowing their tags, they now attach to the uniform or armor."
 	icon_state = "dogtag"
 	icon = 'icons/obj/items/clothing/accessory/misc.dmi'
 	inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/misc.dmi'
@@ -785,7 +785,7 @@
 
 /obj/item/clothing/accessory/poncho
 	name = "USCM Poncho"
-	desc = "The standard USCM poncho has variations for every climate. Custom fitted to be attached to standard USCM armor variants it is comfortable, warming or cooling as needed, and well-fit. A marine couldn't ask for more. Affectionately referred to as a \"woobie\"."
+	desc = "The standard USCM poncho has variations for every climate. Custom-fitted to be attached to standard USCM armor variants, it is comfortable, warming or cooling as needed, and well-fitted. A marine couldn't ask for more. Affectionately referred to as a \"woobie\"."
 	icon_state = "poncho"
 	icon = 'icons/obj/items/clothing/accessory/ponchos.dmi'
 	inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/ponchos.dmi'
@@ -1004,7 +1004,7 @@
 
 /obj/item/clothing/accessory/storage/black_vest/leg_pouch
 	name = "leg pouch"
-	desc = "A camo-conforming leg pouch with five pockets usually worn by hunters, military and people who dream of being military."
+	desc = "A camo-conforming leg pouch with five pockets usually worn by hunters, military, and people who dream of being military."
 	icon = 'icons/obj/items/clothing/accessory/legpouch.dmi'
 	icon_state = "leg_pouch"
 	inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/legpouch.dmi'
@@ -1037,7 +1037,7 @@
 
 /obj/item/clothing/accessory/storage/black_vest/black_leg_pouch
 	name = "black leg pouch"
-	desc = "A black leg pouch usually worn by hunters, military and people who dream of being military."
+	desc = "A black leg pouch usually worn by hunters, military, and people who dream of being military."
 	icon = 'icons/obj/items/clothing/accessory/legpouch.dmi'
 	icon_state = "leg_pouch_black"
 	inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/legpouch.dmi'
@@ -1095,7 +1095,7 @@
 
 /obj/item/clothing/accessory/storage/tool_webbing/small
 	name = "small tool webbing"
-	desc = "A brown synthcotton webbing that is similar in function to civilian tool aprons, but is more durable for field usage. This is the small low-budget version with only six pockets."
+	desc = "A brown synthcotton webbing that is similar in function to civilian tool aprons but is more durable for field usage. This is the small, low-budget version with only six pockets."
 	hold = /obj/item/storage/internal/accessory/tool_webbing/small
 
 /obj/item/clothing/accessory/storage/tool_webbing/small/equipped
@@ -1501,8 +1501,8 @@ Wrist Accessories
 			to_chat(user, SPAN_NOTICE("[src] will be worn on the left wrist."))
 
 /obj/item/clothing/accessory/wrist/watch
-	name = "digital wrist watch"
-	desc = "A cheap 24-hour only digital wrist watch. It has a crappy red display, great for looking at in the dark!"
+	name = "digital wristwatch"
+	desc = "A cheap wristwatch that only displays in military time. It has a crappy red display, great for looking at in the dark!"
 	icon = 'icons/obj/items/clothing/accessory/watches.dmi'
 	icon_state = "cheap_watch"
 	worn_accessory_limit = 1 // though, this means you can wear a watch on each wrist, which should be fine, although you might look stupid for doing this
@@ -1563,7 +1563,7 @@ Wrist Accessories
 
 /obj/item/clothing/accessory/helmet/cover/raincover
 	name = "raincover"
-	desc = "The standard M10 combat helmet is already water-resistant at depths of up to 10 meters. This makes the top potentially water-proof. At least it's something."
+	desc = "The standard M10 combat helmet is already water-resistant at depths of up to 10 meters. This makes the top potentially waterproof. At least it's something."
 	icon_state = "raincover"
 
 /obj/item/clothing/accessory/helmet/cover/raincover/jungle

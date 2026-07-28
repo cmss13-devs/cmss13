@@ -480,7 +480,7 @@
 
 /obj/item/reagent_container/glass/beaker/bluespace
 	name = "high-capacity beaker"
-	desc = "A beaker with an enlarged holding capacity, made with blue-tinted plexiglass in order to withstand greater pressure. Can hold up to 500 units."
+	desc = "A beaker with an enlarged holding capacity, made with blue-tinted plexiglass to withstand greater pressure. Can hold up to 500 units."
 	icon_state = "beakerbluespace"
 	item_state = "beakerbluespace"
 	matter = list("glass" = 30000)
@@ -653,35 +653,35 @@
 
 /obj/item/reagent_container/glass/canister/ammonia
 	name = "ammonia canister"
-	desc = "A canister containing pressurized ammonia. Can be used to refill storage tanks."
+	desc = "A canister containing pressurized ammonia. It can be used to refill storage tanks."
 	icon_state = "canister_ammonia"
 	item_state = "canister_ammonia"
 	reagent = "ammonia"
 
 /obj/item/reagent_container/glass/canister/methane
 	name = "methane canister"
-	desc = "A canister containing pressurized methane. Can be used to refill storage tanks."
+	desc = "A canister containing pressurized methane. It can be used to refill storage tanks."
 	icon_state = "canister_methane"
 	item_state = "canister_methane"
 	reagent = "methane"
 
 /obj/item/reagent_container/glass/canister/pacid
 	name = "polytrinic acid canister"
-	desc = "A canister containing pressurized polytrinic acid. Can be used to refill storage tanks."
+	desc = "A canister containing pressurized polytrinic acid. It can be used to refill storage tanks."
 	icon_state = "canister_pacid"
 	item_state = "canister_pacid"
 	reagent = "pacid"
 
 /obj/item/reagent_container/glass/canister/oxygen
 	name = "oxygen canister"
-	desc = "A canister containing pressurized oxygen. Can be used to refill storage tanks."
+	desc = "A canister containing pressurized oxygen. It can be used to refill storage tanks."
 	icon_state = "canister_oxygen"
 	item_state = "canister_oxygen"
 	reagent = "oxygen"
 
 /obj/item/reagent_container/glass/pressurized_canister // See the Pressurized Reagent Canister Pouch
 	name = "pressurized reagent canister"
-	desc = "The star of the reagent canister pouch, it is to be filled with chemicals. Only compatible with its pouch, machinery, or a storage tank."
+	desc = "The inner portion of the reagent pouch that you filled with chemicals. Only compatible with its pouch, machinery, or a storage tank."
 	icon = 'icons/obj/items/tank.dmi'
 	icon_state = "pressurized_reagent_container"
 	item_state = "pressurized_reagent_container"
@@ -761,7 +761,7 @@
 
 /obj/item/reagent_container/glass/bucket
 	name = "bucket"
-	desc = "This... Is a bucket. It holds 120 units."
+	desc = "This is a bucket. It holds 120 units."
 	icon = 'icons/obj/janitor.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/janitor_lefthand.dmi',

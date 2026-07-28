@@ -239,7 +239,7 @@
 
 /obj/item/storage/belt/medical/lifesaver
 	name = "\improper M276 pattern lifesaver bag"
-	desc = "The M276 is the standard load-bearing equipment of the USCM. This configuration mounts a duffel bag filled with a staggering twenty-one pockets restricted to hold small medical supplies such as autoinjectors, pill bottles, pills, syringes , etc. It truly is a lifesaver. \nRight click its sprite and click \"toggle belt mode\" to take pills out of bottles by simply clicking them."
+	desc = "The M276 is the standard load-bearing equipment of the USCM. This configuration mounts a duffel bag filled with a staggering twenty-one pockets restricted to hold small medical supplies such as autoinjectors, pill bottles, pills, syringes, etc. It truly is a lifesaver. \nRight click its sprite and click \"toggle belt mode\" to take pills out of bottles by simply clicking them."
 	icon_state = "medicbag"
 	item_state = "medicbag"
 	icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
@@ -417,7 +417,7 @@
 
 /obj/item/storage/belt/medical/lifesaver/upp
 	name = "\improper Type 41 pattern lifesaver bag"
-	desc = "The Type 41 load rig is the standard load-bearing equipment of the UPP military. This configuration mounts a duffel bag filled with a staggering twenty-one pockets, each capable of holding range of autoinjectors, pill bottles, and small medical supplies. It truly is a lifesaver. \nRight click its sprite and click \"toggle belt mode\" to take pills out of bottles by simply clicking them."
+	desc = "The Type 41 load rig is the standard load-bearing equipment of the UPP military. This configuration mounts a duffel bag filled with a staggering twenty-one pockets, each capable of holding a range of autoinjectors, pill bottles, and small medical supplies. It truly is a lifesaver. \nRight click its sprite and click \"toggle belt mode\" to take pills out of bottles by simply clicking them."
 	icon_state = "medicbag_u"
 	item_state = "medicbag_u"
 	icon = 'icons/obj/items/clothing/belts/belts_by_faction/UPP.dmi'
@@ -844,7 +844,7 @@
 
 /obj/item/storage/belt/marine/smartgunner
 	name = "\improper M280 pattern smartgunner drum belt"
-	desc = "Despite how drum magazines are incredibly non-ergonomical, the USCM decided to issue a modified marine belt with hooks, six pockets, and dust covers for the M56A2 system's drum munitions. When the carry catch on the drum isn't getting stuck in the oiled-up velcro, the rig actually does a decent job at holding a plentiful amount of drums. But at the end of the day, compared to standard rigs... it sucks, but isn't that what being a Marine is all about?"
+	desc = "Despite how drum magazines are incredibly non-ergonomical, the USCM decided to issue a modified marine belt with hooks, six pockets, and dust covers for the M56A2 system's drum munitions. When the carry catch on the drum isn't getting stuck in the oiled-up Velcro, the rig actually does a decent job at holding a plentiful amount of drums. But at the end of the day, compared to standard rigs... it sucks, but isn't that what being a Marine is all about?"
 	icon_state = "sgbelt_ammo"
 	storage_slots = 6
 	bypass_w_limit = list(
@@ -966,7 +966,7 @@
 // M2C HMG/M56D gunner belt
 /obj/item/storage/belt/marine/m2c
 	name = "\improper M804 heavygunner storage rig"
-	desc = "The M804 heavygunner storage rig is an M276 pattern toolbelt rig modified with seven pockets to carry ammunition for heavy machinegun systems, and engineering tools for the gunner."
+	desc = "The M804 heavygunner storage rig is an M276 pattern toolbelt rig modified with seven pockets to carry ammunition for heavy machine gun systems, and engineering tools for the gunner."
 	icon_state = "m2c_ammo_rig"
 	item_state = "m2c_ammo_rig"
 	icon = 'icons/obj/items/clothing/belts/belts.dmi'
@@ -1088,7 +1088,7 @@
 
 /obj/item/storage/belt/shotgun/van_bandolier
 	name = "two bore bandolier"
-	desc = "A leather bandolier designed to hold extremely heavy shells. Can be attached to armor, worn over the back, or attached to belt loops."
+	desc = "A leather bandolier designed to hold extremely heavy shells. It can be attached to armor, worn over the back, or attached to belt loops."
 	icon_state = "van_bandolier_5"
 	icon = 'icons/obj/items/clothing/belts/misc.dmi'
 	item_icons = list(
@@ -1600,7 +1600,7 @@
 	cant_hold = list(
 		/obj/item/weapon/gun/pistol/smart,
 		/obj/item/ammo_magazine/pistol/smart,
-		/obj/item/weapon/gun/pistol/m10, //Has it's own holster
+		/obj/item/weapon/gun/pistol/m10, //It has it's own holster
 		/obj/item/weapon/gun/pistol/kt42, // HONKed currently
 		/obj/item/weapon/gun/pistol/auto9, // HONKed currently
 		/obj/item/weapon/gun/pistol/chimp, // HONKed currently
@@ -1813,7 +1813,7 @@
 
 /obj/item/storage/belt/gun/m39
 	name = "\improper M276 pattern M39 holster rig"
-	desc = "Special issue variant of the M276 designed to holster a M39 submachine gun and two spare magazines. Uncommonly issued to USCM support and specialist personnel."
+	desc = "Special issue variant of the M276 designed to holster an M39 submachine gun and two spare magazines. Uncommonly issued to USCM support and specialist personnel."
 	icon_state = "m39_armor"
 	item_state = "marinebelt"
 	icon = 'icons/obj/items/clothing/belts/belts.dmi'
@@ -2149,7 +2149,7 @@
 
 /obj/item/storage/belt/gun/mateba/mtr6m
 	name = "\improper M276 pattern 2006M holster rig"
-	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the powerful Unica autorevolver, along with five small pockets for speedloaders. It was included with the mail-order USCM edition of the Spearhead 2006m autorevolver in the early 2170s."
+	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the powerful Unica autorevolver, along with five small pockets for speedloaders. It was included with the mail-order USCM edition of the Spearhead 2006M autorevolver in the early 2170s."
 	icon_state = "cmateba_holster"
 	item_state = "marinebelt"
 	flags_atom = FPRINT // has gamemode skin
@@ -2377,7 +2377,7 @@
 //Crazy Ivan's belt reskin
 /obj/item/storage/belt/gun/type47/ivan
 	name = "The Rack"
-	desc = "From the formless void's gaping maw, there an entity more primordial than the elements themselves. In its wake there will follow a storm, as the appetite of fifty six pockets expands over the world."
+	desc = "From the formless void's gaping maw, there is an entity more primordial than the elements themselves. In its wake, there will follow a storm, as the appetite of fifty-six pockets expands over the world."
 	icon_state = "ivan_belt"
 	storage_slots = 56
 	max_storage_space = 56
@@ -2502,7 +2502,7 @@
 
 /obj/item/storage/belt/gun/webley
 	name = "\improper Webley Mk VI gunbelt"
-	desc = "Finely-tooled British leather, a Webley, and six speedloaders of .455. More than enough to kill anything with legs. Has seven pockets."
+	desc = "Finely-tooled British leather, a Webley, and six speedloaders of .455. More than enough to kill anything with legs. It has seven pockets."
 	icon_state = "m44r_holster"
 	icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
 	item_icons = list(
@@ -2562,7 +2562,7 @@
 
 /obj/item/storage/belt/gun/iasf_para_belt/custom
 	name = "\improper IASF custom paratrooper belt"
-	desc = "A modified IASF paratrooper belt featuring a black leather holster with gold inlay, a large utility pouch and several smaller compartments provide ample space for eight items: extra ammunition and field essentials—standard gear for IASF airborne forces dropping into hostile territory."
+	desc = "A modified IASF paratrooper belt featuring a black leather holster with gold inlay, a large utility pouch, and several smaller compartments provides ample space for eight items: extra ammunition and field essentials—standard gear for IASF airborne forces dropping into hostile territory."
 	icon_state = "iasf_pistol_para_custom"
 	item_state = "iasf_pistol_para_custom"
 
@@ -2573,7 +2573,7 @@
 
 /obj/item/storage/belt/gun/smartgunner
 	name = "\improper M802 pattern smartgunner sidearm rig"
-	desc = "The M802 is a limited-issue mark of USCM load-bearing equipment, designed to carry smartgun ammunition and a sidearm. Has five pockets."
+	desc = "The M802 is a limited-issue mark of USCM load-bearing equipment, designed to carry smartgun ammunition and a sidearm. It has five pockets."
 	icon_state = "sgbelt"
 	holster_slots = list(
 		"1" = list(
@@ -2621,7 +2621,7 @@
 
 /obj/item/storage/belt/gun/smartgunner/pmc
 	name = "\improper WY-TM410 pattern smartgunner sidearm rig"
-	desc = "A special pattern of W-Y made combat belt, designed to carry smartgun ammunition and a sidearm. Has five pockets."
+	desc = "A special pattern of W-Y made combat belt, designed to carry smartgun ammunition and a sidearm. It has five pockets."
 	icon = 'icons/obj/items/clothing/belts/belts_by_faction/WY.dmi'
 	icon_state = "wy_sgbelt"
 	item_icons = list(
@@ -2650,7 +2650,7 @@
 
 /obj/item/storage/belt/gun/smartgunner/commando
 	name = "\improper WY-TM410 pattern 'Terminator' smartgunner sidearm rig"
-	desc = "A special pattern of W-Y made combat belt, designed to carry smartgun ammunition and a sidearm. Has five pockets."
+	desc = "A special pattern of W-Y made combat belt, designed to carry smartgun ammunition and a sidearm. It has five pockets."
 	icon = 'icons/obj/items/clothing/belts/belts_by_faction/WY.dmi'
 	icon_state = "wy_sgbelt"
 	item_icons = list(
@@ -2679,7 +2679,7 @@
 
 /obj/item/storage/belt/gun/smartgunner/clf
 	name = "\improper M802 pattern 'Freedom' smartgunner sidearm rig"
-	desc = "A modification of the standard M802 load-bearing equipment, designed to carry smartgun ammunition and a Unica autorevolver. This one has the CLF logo carved over the manufacturing stamp. Has five pockets."
+	desc = "A modification of the standard M802 load-bearing equipment, designed to carry smartgun ammunition and a Unica autorevolver. This one has the CLF logo carved over the manufacturing stamp. It has five pockets."
 	icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/jungle.dmi',
@@ -2815,7 +2815,7 @@
 
 /obj/item/storage/belt/tank
 	name = "\improper M103 pattern vehicle ammo rig"
-	desc = "The M103 is a limited-issue mark of USCM load-bearing equipment, made specially for crewmen to carry their vehicle's ammunition. Has two pockets."
+	desc = "The M103 is a limited-issue mark of USCM load-bearing equipment, made specially for crewmen to carry their vehicle's ammunition. It has two pockets."
 	icon_state = "tankbelt"
 	item_state = "tankbelt"
 	item_state_slots = list(
@@ -3004,7 +3004,7 @@
 
 /obj/item/storage/belt/gun/l54
 	name = "\improper pistol belt"
-	desc = "A dark brown leather pistol belt commonly issued to NSPA officers. Although designed for the L54 service pistol, its seven pockets accommodates most sidearms along with spare magazines. Standard issue across TWE law enforcement, military, and security forces."
+	desc = "A dark brown leather pistol belt commonly issued to NSPA officers. Although designed for the L54 service pistol, its seven pockets accommodate most sidearms along with spare magazines. Standard issue across TWE law enforcement, military, and security forces."
 	icon_state = "l54_holster"
 	item_state = "l54_holster"
 	icon = 'icons/obj/items/clothing/belts/belts_by_faction/TWE.dmi'

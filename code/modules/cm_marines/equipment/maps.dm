@@ -155,6 +155,12 @@ GLOBAL_LIST_INIT(mapless_maps, list(MAP_RUNTIME, MAP_CHINOOK, MAIN_SHIP_DEFAULT_
 	html_link = "images/d/da/White_Antre_Research_Facility.png"
 	color = "cyan"
 
+/obj/item/map/abyssal_station
+	name = "\improper Abyssal Station-81 map"
+	desc = "An overview of Con-Am 81 'Abyssal' Station."
+	html_link = "images/7/71/Abbysal_station.png"
+	color = "cyan"
+
 /obj/item/map/galaxy
 	name = "\improper Galaxy map"
 	desc = "A diagrammatic map of the milky way, laid out by sector."

@@ -187,7 +187,7 @@ GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 		MAP_NEW_VARADERO = new /obj/item/map/new_varadero(),
 		MAP_TYRARGO_RIFT = new /obj/item/map/tyrargo_rift(),
 		MAP_WHITE_ANTRE_RESEARCH_FACILITY = new /obj/item/map/white_antre_map(),
-		MAP_CONAM_81_ABYSSAL = new /obj/item/map/new_varadero()
+		MAP_CONAM_81_ABYSSAL = new /obj/item/map/abyssal_station()
 	)
 
 //used by marine equipment machines to spawn the correct map.

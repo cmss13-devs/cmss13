@@ -97,7 +97,7 @@
 			continue
 		if(target.mob_flags & MOB_ABSTRACT)
 			continue
-		targets += all_targets
+		targets += target
 
 	if(!targets)
 		return FALSE

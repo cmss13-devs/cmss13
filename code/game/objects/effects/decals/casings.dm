@@ -14,6 +14,7 @@ and that most of the ejection procedures utilize image matrices for randomizatio
 that said, the icon_states in the dmi files aren't culled for use by mappers - nihi
 */
 
+/// FOR MAPPERS, please do refrain from using the parent, use the child casings instead
 /obj/effect/decal/cleanable/ammo_casing
 	name = "spent casing"
 	desc = "Empty and useless now."
@@ -57,8 +58,8 @@ that said, the icon_states in the dmi files aren't culled for use by mappers - n
 	cleanable_turf.overlays += overlayed_image
 	moveToNullspace()
 
-/obj/effect/decal/cleanable/ammo_casing/bullet // literally just the above, pathed to its own object in the off chance the above is edited
-	icon_state = "casing"
+/obj/effect/decal/cleanable/ammo_casing/bullet
+	icon_state = "casing" // literally just the above
 
 /obj/effect/decal/cleanable/ammo_casing/shrapnel
 	icon_state = "shrapnel_casing"
@@ -67,6 +68,7 @@ that said, the icon_states in the dmi files aren't culled for use by mappers - n
 /obj/effect/decal/cleanable/ammo_casing/cartridge
 	name = "spent cartridge"
 	icon_state = "cartridge"
+	ejection_sfx = "gun_casing_rifle"
 
 /obj/effect/decal/cleanable/ammo_casing/cartridge/lever_action
 	icon_state = "lever_action_cartridge"
@@ -75,6 +77,8 @@ that said, the icon_states in the dmi files aren't culled for use by mappers - n
 /obj/effect/decal/cleanable/ammo_casing/cartridge/shrapnel
 	icon_state = "shrapnel_cartridge"
 	number_of_states = 0
+
+//shell casings
 
 /obj/effect/decal/cleanable/ammo_casing/shell
 	name = "spent shell"
@@ -135,7 +139,6 @@ that said, the icon_states in the dmi files aren't culled for use by mappers - n
 	icon_state = "heavy_shell_incen"
 	number_of_states = 0
 
-
 /obj/effect/decal/cleanable/ammo_casing/shell/light
 	icon_state = "breaching_shell"
 	number_of_states = 0
@@ -148,3 +151,5 @@ that said, the icon_states in the dmi files aren't culled for use by mappers - n
 	name = "comedically sized spent shell"
 	icon_state = "twobore_shell"
 	number_of_states = 0
+
+// shell casings end

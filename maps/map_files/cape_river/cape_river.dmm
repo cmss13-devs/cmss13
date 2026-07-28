@@ -448,6 +448,25 @@
 	},
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/central)
+"abz" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = -15;
+	pixel_y = 27
+	},
+/obj/structure/prop/colorable_rock/colorable/alt1{
+	color = "#ccad8f";
+	dir = 1;
+	pixel_x = -1;
+	pixel_y = 7
+	},
+/turf/open/desert/rock,
+/area/caperiver/outdoors/chasm)
 "abA" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/surface/table/almayer{
@@ -919,6 +938,9 @@
 	},
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/caperiver/indoors/conambase/support)
+"acQ" = (
+/turf/open/floor/prison/ramptop/east,
+/area/caperiver/outdoors/mining_base_exterior/south)
 "acR" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/kutjevo/multi_tiles/north,
@@ -934,6 +956,15 @@
 	},
 /turf/open/mars_cave/mars_cave_9,
 /area/caperiver/indoors/caves/sw)
+"acT" = (
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 8
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/floor/prison/cell_stripe/west,
+/area/caperiver/outdoors/con_am_exterior/north)
 "acU" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
@@ -1171,10 +1202,6 @@
 /obj/structure/fence/slim/dark,
 /turf/open/desert/dirt/desert_transition_corner1/north,
 /area/caperiver/outdoors/landing_zone_2)
-"adH" = (
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/caperiver/outdoors/con_am_exterior/south)
 "adI" = (
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/mars_cave/mars_dirt_4,
@@ -1807,6 +1834,13 @@
 /obj/effect/decal/hybrisa/grate,
 /turf/open/mars_cave/mars_cave_13,
 /area/caperiver/indoors/caves/se)
+"afA" = (
+/obj/effect/decal/sand_overlay/sand2/corner2,
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/turf/open/floor/prison/cell_stripe/east,
+/area/caperiver/outdoors/con_am_exterior/north)
 "afB" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 8;
@@ -1915,6 +1949,12 @@
 "afR" = (
 /turf/open/desert/rock/deep/transition/east,
 /area/caperiver/outdoors/scrublands/lz_cave)
+"afS" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/floor/prison/cell_stripe/west,
+/area/caperiver/outdoors/mining_base_exterior/south)
 "afT" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan,
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
@@ -2740,6 +2780,15 @@
 /obj/structure/flora/grass/desert,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/central)
+"aiw" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 1
+	},
+/turf/open/floor/prison/cell_stripe/west,
+/area/caperiver/outdoors/mining_base_exterior/south)
 "aix" = (
 /obj/structure/flora/grass/desert/lightgrass_5,
 /turf/open/desert/rock/deep/transition/southwest,
@@ -2798,6 +2847,15 @@
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/desert/dirt/desert_transition_edge1/west,
 /area/caperiver/outdoors/bushlands)
+"aiI" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 4
+	},
+/turf/open/floor/prison/cell_stripe/east,
+/area/caperiver/outdoors/mining_base_exterior/south)
 "aiJ" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 9
@@ -3438,12 +3496,6 @@
 /obj/effect/landmark/monkey_spawn,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/south)
-"akP" = (
-/obj/structure/barricade/handrail/strata{
-	dir = 8
-	},
-/turf/open/floor/prison/cell_stripe/west,
-/area/caperiver/outdoors/scrublands/central)
 "akQ" = (
 /turf/open/mars_cave/mars_cave_3,
 /area/caperiver/indoors/caves/s)
@@ -4205,8 +4257,8 @@
 /turf/open/auto_turf/sand/layer0,
 /area/caperiver/outdoors/landing_zone_1)
 "anj" = (
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/caperiver/outdoors/scrublands/central)
+/turf/open/floor/prison/ramptop/east,
+/area/caperiver/outdoors/scrublands/north)
 "ank" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#ccad8f";
@@ -4362,9 +4414,6 @@
 /obj/structure/largecrate/random/barrel/brown,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/landing_zone_2)
-"anH" = (
-/turf/open/floor/prison,
-/area/caperiver/outdoors/scrublands/central)
 "anI" = (
 /obj/structure/flora/grass/desert/lightgrass_8,
 /turf/open/desert/rock,
@@ -4577,6 +4626,12 @@
 	},
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/south)
+"aop" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 1
+	},
+/turf/open/floor/prison/ramptop/north,
+/area/caperiver/outdoors/mining_base_exterior/north)
 "aoq" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
@@ -4880,12 +4935,6 @@
 	},
 /turf/open/mars_cave/mars_cave_2,
 /area/caperiver/indoors/caves/n)
-"apq" = (
-/obj/structure/barricade/handrail/strata{
-	dir = 4
-	},
-/turf/open/floor/prison/cell_stripe/east,
-/area/caperiver/outdoors/scrublands/central)
 "apr" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 6
@@ -5619,6 +5668,11 @@
 	},
 /turf/open/mars_cave/mars_cave_3,
 /area/caperiver/indoors/caves/sw)
+"arI" = (
+/obj/structure/flora/grass/tallgrass/desert,
+/obj/structure/flora/grass/tallgrass/desert,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/north)
 "arJ" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 10
@@ -5825,6 +5879,12 @@
 	},
 /turf/open/floor/darkblue2,
 /area/caperiver/indoors/conambase/command)
+"asp" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 1
+	},
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/north)
 "asq" = (
 /obj/structure/flora/grass/desert/lightgrass_1,
 /turf/open/desert/dirt/desert_transition_edge1/north,
@@ -6594,12 +6654,6 @@
 	},
 /turf/open/floor/asteroidwarning/north,
 /area/caperiver/outdoors/mining_base_exterior/south)
-"auR" = (
-/obj/structure/barricade/handrail/strata{
-	dir = 4
-	},
-/turf/open/floor/prison/cell_stripe/east,
-/area/caperiver/outdoors/mining_base_exterior/north)
 "auS" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -7483,10 +7537,6 @@
 	},
 /turf/open/floor/station/metal/floor/alt3,
 /area/caperiver/telecomms/telecomm_3)
-"axw" = (
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/caperiver/outdoors/mining_base_exterior/north)
 "axx" = (
 /obj/structure/sign/safety/galley{
 	pixel_y = 33;
@@ -8116,6 +8166,9 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
 /turf/open/floor/asteroidwarning/east,
 /area/caperiver/outdoors/mining_base_exterior/south)
 "azv" = (
@@ -10570,7 +10623,7 @@
 /area/caperiver/outdoors/road/central/antiweed)
 "aHo" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/plating_catwalk/prison,
+/turf/open/floor/prison/ramptop/east,
 /area/caperiver/outdoors/mining_base_exterior/south)
 "aHp" = (
 /obj/effect/decal/hybrisa/lattice/full,
@@ -10794,13 +10847,6 @@
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/asphalt/cement/cement12,
 /area/caperiver/outdoors/scrublands/south_east)
-"aHZ" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/barricade/handrail/strata{
-	dir = 8
-	},
-/turf/open/floor/prison/cell_stripe/west,
-/area/caperiver/outdoors/mining_base_exterior/north)
 "aIa" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -10854,7 +10900,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/caperiver/outdoors/mining_base_exterior/north)
+/area/caperiver/outdoors/mining_base_exterior/south)
 "aIk" = (
 /obj/structure/prop/hybrisa/signs/high_voltage,
 /turf/closed/wall/kutjevo/colony,
@@ -10923,12 +10969,6 @@
 	},
 /turf/open/floor/engine,
 /area/caperiver/indoors/conambase/delivery)
-"aIv" = (
-/obj/structure/barricade/handrail/strata{
-	dir = 8
-	},
-/turf/open/floor/prison/cell_stripe/west,
-/area/caperiver/outdoors/con_am_exterior/south)
 "aIw" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 9
@@ -12346,15 +12386,6 @@
 "aMO" = (
 /obj/structure/flora/grass/desert/lightgrass_1,
 /obj/structure/flora/grass/desert/heavygrass_10,
-/turf/open/desert/rock,
-/area/caperiver/outdoors/scrublands/central)
-"aMP" = (
-/obj/structure/flora/grass/tallgrass/desert/corner{
-	dir = 10
-	},
-/obj/structure/barricade/handrail/strata{
-	dir = 1
-	},
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/central)
 "aMQ" = (
@@ -16489,6 +16520,9 @@
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 1
 	},
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
 /turf/open/floor/asteroidwarning/west,
 /area/caperiver/outdoors/mining_base_exterior/south)
 "baa" = (
@@ -16587,12 +16621,6 @@
 	},
 /turf/open/floor/kutjevo/tan/grey_edge,
 /area/caperiver/indoors/miningbase/admin)
-"ban" = (
-/obj/structure/barricade/handrail/strata{
-	dir = 4
-	},
-/turf/open/floor/prison/cell_stripe/east,
-/area/caperiver/outdoors/con_am_exterior/south)
 "bao" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/shuttle/escapepod/north,
@@ -20728,22 +20756,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door_reinforced,
 /turf/open/desert/dirt,
 /area/caperiver/outdoors/con_am_exterior/north)
-"bmf" = (
-/obj/effect/decal/sand_overlay/sand2/corner2{
-	dir = 8
-	},
-/obj/structure/barricade/handrail/strata{
-	dir = 8
-	},
-/turf/open/floor/prison/cell_stripe/west,
-/area/caperiver/outdoors/con_am_exterior/south)
-"bmg" = (
-/obj/effect/decal/sand_overlay/sand2/corner2,
-/obj/structure/barricade/handrail/strata{
-	dir = 4
-	},
-/turf/open/floor/prison/cell_stripe/east,
-/area/caperiver/outdoors/con_am_exterior/south)
 "bmh" = (
 /obj/structure/blocker/forcefield/all{
 	alpha = 0
@@ -23338,27 +23350,6 @@
 	},
 /turf/open/mars_cave/mars_dirt_6,
 /area/caperiver/indoors/caves/se)
-"buD" = (
-/obj/item/lightstick/red/spoke/planted{
-	pixel_x = 15;
-	pixel_y = 19;
-	layer = 4.121
-	},
-/obj/structure/prop/colorable_rock/colorable/alt1{
-	color = "#ccad8f";
-	dir = 1;
-	pixel_x = 1;
-	pixel_y = -2
-	},
-/obj/structure/prop/fake/railing/strata{
-	pixel_y = 8;
-	layer = 4.12
-	},
-/obj/structure/blocker/forcefield/all{
-	alpha = 0
-	},
-/turf/open/desert/rock,
-/area/caperiver/outdoors/con_am_exterior/north)
 "buE" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#ccad8f";
@@ -23762,26 +23753,6 @@
 /obj/structure/flora/grass/desert/lightgrass_1,
 /turf/open/desert/dirt/desert_transition_edge1/west,
 /area/caperiver/outdoors/con_am_exterior/north)
-"bvR" = (
-/obj/structure/barricade/handrail/strata{
-	dir = 1
-	},
-/obj/structure/barricade/handrail/strata{
-	dir = 8
-	},
-/obj/item/lightstick/red/spoke/planted{
-	pixel_x = -15;
-	pixel_y = 27
-	},
-/obj/structure/platform/metal/strata/east,
-/obj/structure/prop/colorable_rock/colorable/alt1{
-	color = "#ccad8f";
-	dir = 1;
-	pixel_x = -1;
-	pixel_y = 7
-	},
-/turf/open/desert/rock,
-/area/caperiver/outdoors/scrublands/central)
 "bvS" = (
 /obj/structure/flora/grass/desert/lightgrass_10,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -24149,19 +24120,6 @@
 /obj/item/storage/pouch/machete/full,
 /turf/open/floor/prison,
 /area/caperiver/indoors/processing)
-"bxa" = (
-/turf/closed/wall/solaris/reinforced/hull/lv522,
-/area/caperiver/indoors/conambase/command)
-"bxb" = (
-/obj/structure/flora/bush/ausbushes/var3/stalkybush{
-	pixel_x = 4;
-	pixel_y = -6
-	},
-/obj/structure/blocker/forcefield/all{
-	alpha = 0
-	},
-/turf/open/desert/rock,
-/area/caperiver/oob)
 "bxc" = (
 /obj/structure/flora/grass/tallgrass/desert,
 /turf/open/desert/dirt/desert_transition_edge1/northeast,
@@ -24246,12 +24204,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/caperiver/indoors/caves/ne)
-"bxn" = (
-/turf/closed/wall/solaris/reinforced/hull/lv522,
-/area/caperiver/indoors/miningbase/security)
-"bxo" = (
-/turf/closed/wall/solaris/reinforced/hull/lv522,
-/area/caperiver/indoors/miningbase/admin)
 "bxp" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached,
@@ -24471,36 +24423,6 @@
 /obj/item/stack/sheet/metal,
 /turf/open/desert/dirt/desert_transition_edge1/west,
 /area/caperiver/oob)
-"bya" = (
-/obj/structure/barricade/handrail/strata{
-	dir = 1
-	},
-/obj/structure/platform/metal/strata/west,
-/obj/structure/prop/colorable_rock/colorable/alt1{
-	color = "#ccad8f";
-	dir = 6;
-	pixel_x = -1;
-	pixel_y = 6
-	},
-/turf/open/desert/rock,
-/area/caperiver/outdoors/scrublands/central)
-"byb" = (
-/obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/obj/structure/barricade/handrail/strata{
-	dir = 1
-	},
-/obj/item/lightstick/red/spoke/planted{
-	pixel_x = -15;
-	pixel_y = 27
-	},
-/obj/structure/prop/colorable_rock/colorable/alt1{
-	color = "#ccad8f";
-	dir = 1;
-	pixel_x = -1;
-	pixel_y = 7
-	},
-/turf/open/desert/rock,
-/area/caperiver/outdoors/scrublands/central)
 "byc" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 1
@@ -25185,25 +25107,6 @@
 	},
 /turf/open/gm/river/desert/deep,
 /area/caperiver/outdoors/chasm)
-"bAa" = (
-/obj/structure/flora/bush/ausbushes/var3/stalkybush{
-	pixel_x = -9;
-	pixel_y = 9
-	},
-/obj/structure/prop/colorable_rock/colorable/alt1{
-	color = "#ccad8f";
-	dir = 6;
-	pixel_x = -7;
-	pixel_y = 23
-	},
-/obj/structure/prop/colorable_rock/colorable/alt1{
-	color = "#ccad8f";
-	dir = 6;
-	pixel_x = 4;
-	pixel_y = 13
-	},
-/turf/open/desert/desert_shore/desert_shore1/north,
-/area/caperiver/outdoors/chasm)
 "bAb" = (
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/mars_cave/mars_cave_2,
@@ -25299,22 +25202,6 @@
 /obj/item/lightstick/red/spoke/planted{
 	layer = 4.121;
 	pixel_x = -18
-	},
-/turf/open/desert/desert_shore/desert_shore1/north,
-/area/caperiver/oob)
-"bAr" = (
-/obj/structure/flora/bush/ausbushes/var3/stalkybush{
-	pixel_x = -4;
-	pixel_y = 18
-	},
-/obj/structure/blocker/forcefield/all{
-	alpha = 0
-	},
-/obj/structure/prop/colorable_rock/colorable/alt1{
-	color = "#ccad8f";
-	dir = 6;
-	pixel_x = 17;
-	pixel_y = 6
 	},
 /turf/open/desert/desert_shore/desert_shore1/north,
 /area/caperiver/oob)
@@ -25724,15 +25611,6 @@
 "bBF" = (
 /turf/open/mars_cave/mars_cave_13,
 /area/caperiver/indoors/caves/nw)
-"bBG" = (
-/obj/structure/flora/bush/canyon/grass_yellow/alt1{
-	pixel_y = 13
-	},
-/obj/structure/blocker/forcefield/all{
-	alpha = 0
-	},
-/turf/open/auto_turf/sand/layer0,
-/area/caperiver/oob)
 "bBH" = (
 /obj/structure/flora/grass/desert/heavygrass_4,
 /turf/open/desert/dirt/desert_transition_edge1/east,
@@ -25897,26 +25775,6 @@
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/mars_cave/mars_cave_2,
 /area/caperiver/indoors/caves/w)
-"bCh" = (
-/obj/item/lightstick/red/spoke/planted{
-	pixel_x = -15;
-	pixel_y = 24;
-	layer = 4.121
-	},
-/obj/structure/prop/colorable_rock/colorable/alt1{
-	color = "#ccad8f";
-	dir = 1;
-	pixel_y = -1
-	},
-/obj/structure/prop/fake/railing/strata{
-	pixel_y = 13;
-	layer = 4.12
-	},
-/obj/structure/blocker/forcefield/all{
-	alpha = 0
-	},
-/turf/open/desert/dirt/desert_transition_corner1/west,
-/area/caperiver/outdoors/scrublands/north)
 "bCi" = (
 /turf/open/mars_cave/mars_cave_13,
 /area/caperiver/indoors/caves/w)
@@ -26031,25 +25889,6 @@
 	pixel_y = 7
 	},
 /turf/open/desert/rock,
-/area/caperiver/outdoors/con_am_exterior/south)
-"bCy" = (
-/obj/structure/barricade/handrail/strata{
-	dir = 1
-	},
-/obj/structure/barricade/handrail/strata{
-	dir = 8
-	},
-/obj/item/lightstick/red/spoke/planted{
-	pixel_x = 16;
-	pixel_y = 27
-	},
-/obj/structure/prop/colorable_rock/colorable/alt1{
-	color = "#ccad8f";
-	dir = 1;
-	pixel_x = -1;
-	pixel_y = 7
-	},
-/turf/open/auto_turf/sand/layer0,
 /area/caperiver/outdoors/con_am_exterior/south)
 "bCz" = (
 /obj/structure/platform/metal/kutjevo/west,
@@ -26555,26 +26394,6 @@
 	},
 /turf/open/floor/kutjevo/tan/grey_edge/west,
 /area/caperiver/indoors/miningbase/admin)
-"bDF" = (
-/obj/structure/flora/bush/canyon/grass_orange/alt1{
-	dir = 1;
-	pixel_x = 4;
-	pixel_y = -3
-	},
-/obj/structure/flora/bush/canyon/tree/alt1{
-	pixel_x = -13;
-	pixel_y = 25;
-	dir = 1
-	},
-/turf/open/desert/rock,
-/area/caperiver/oob)
-"bDG" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/caperiver/outdoors/mining_base_exterior/north)
-"bDH" = (
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/caperiver/outdoors/mining_base_exterior/north)
 "bDI" = (
 /obj/structure/flora/bush/canyon/tree/alt1{
 	pixel_x = 3;
@@ -26990,13 +26809,6 @@
 	dir = 1;
 	pixel_x = 10;
 	pixel_y = -13
-	},
-/turf/open/desert/rock,
-/area/caperiver/oob)
-"bEB" = (
-/obj/structure/flora/bush/canyon/tree/alt2{
-	pixel_x = 8;
-	pixel_y = -7
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
@@ -27525,15 +27337,6 @@
 	},
 /turf/open/floor/engine,
 /area/caperiver/telecomms/telecomm_3)
-"bFN" = (
-/obj/structure/barricade/handrail/strata{
-	dir = 4
-	},
-/obj/effect/decal/sand_overlay/sand2/corner2{
-	dir = 4
-	},
-/turf/open/floor/prison/cell_stripe/east,
-/area/caperiver/outdoors/mining_base_exterior/north)
 "bFO" = (
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 1
@@ -27695,7 +27498,8 @@
 /area/caperiver/oob)
 "bGf" = (
 /obj/structure/prop/invuln/dense/cliff_wall{
-	pixel_y = -4
+	pixel_y = -4;
+	pixel_x = -35
 	},
 /obj/structure/flora/bush/canyon/tree/alt2{
 	pixel_x = 2;
@@ -28306,28 +28110,8 @@
 /area/caperiver/indoors/conambase/research_w)
 "bHk" = (
 /obj/effect/decal/sand_overlay/sand2,
-/obj/effect/decal/sand_overlay/sand2/corner2{
-	dir = 4
-	},
-/obj/item/lightstick/red/spoke/planted{
-	pixel_x = 15;
-	pixel_y = 9;
-	layer = 4.121
-	},
-/obj/structure/prop/fake/railing/strata{
-	pixel_x = 1;
-	pixel_y = -2;
-	layer = 4.12
-	},
-/turf/open/asphalt/cement_sunbleached,
-/area/caperiver/outdoors/mining_base_exterior/north)
-"bHl" = (
-/obj/effect/decal/sand_overlay/sand2,
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 6
-	},
-/obj/effect/decal/sand_overlay/sand2{
-	dir = 5
 	},
 /obj/structure/prop/colorable_rock/colorable/alt1{
 	color = "#ccad8f";
@@ -28350,23 +28134,6 @@
 	dir = 9
 	},
 /obj/effect/decal/sand_overlay/sand2,
-/obj/structure/prop/fake/railing/strata{
-	pixel_x = 1;
-	pixel_y = -2;
-	layer = 4.12
-	},
-/turf/open/asphalt/cement_sunbleached,
-/area/caperiver/outdoors/mining_base_exterior/north)
-"bHn" = (
-/obj/effect/decal/sand_overlay/sand2{
-	dir = 1
-	},
-/obj/effect/decal/sand_overlay/sand2,
-/obj/item/lightstick/red/spoke/planted{
-	pixel_x = -16;
-	pixel_y = 9;
-	layer = 4.121
-	},
 /obj/structure/prop/fake/railing/strata{
 	pixel_x = 1;
 	pixel_y = -2;
@@ -28668,17 +28435,6 @@
 	},
 /turf/open/floor/hybrisa/tile/tilebeige,
 /area/caperiver/indoors/conambase/support)
-"bHR" = (
-/obj/structure/flora/bush/canyon/bush/alt2{
-	pixel_x = 7;
-	pixel_y = 11
-	},
-/obj/structure/flora/bush/canyon/grass_yellow{
-	pixel_x = -4;
-	pixel_y = 3
-	},
-/turf/open/auto_turf/sand/layer0,
-/area/caperiver/oob)
 "bHS" = (
 /obj/structure/flora/bush/canyon/tree/alt2{
 	pixel_x = 5;
@@ -28862,23 +28618,6 @@
 	dir = 8;
 	pixel_x = -1;
 	pixel_y = 18
-	},
-/turf/open/desert/desert_shore/desert_shore1/north,
-/area/caperiver/outdoors/chasm)
-"bIl" = (
-/obj/structure/flora/bush/ausbushes/var3/stalkybush{
-	pixel_x = 4;
-	pixel_y = 11
-	},
-/turf/open/desert/desert_shore/desert_shore1/north,
-/area/caperiver/outdoors/chasm)
-"bIm" = (
-/obj/structure/flora/bush/ausbushes/var3/stalkybush{
-	pixel_x = -5;
-	pixel_y = 21
-	},
-/obj/structure/blocker/forcefield/all{
-	alpha = 0
 	},
 /turf/open/desert/desert_shore/desert_shore1/north,
 /area/caperiver/outdoors/chasm)
@@ -29167,21 +28906,6 @@
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
-"bIR" = (
-/obj/structure/flora/bush/canyon/grass_orange/alt1{
-	dir = 1;
-	pixel_x = 18;
-	pixel_y = -6
-	},
-/obj/structure/flora/bush/canyon/grass_orange/alt2{
-	pixel_x = -10;
-	pixel_y = -3
-	},
-/obj/structure/blocker/forcefield/all{
-	alpha = 0
-	},
-/turf/open/desert/rock,
-/area/caperiver/oob)
 "bIS" = (
 /obj/structure/flora/bush/canyon/grass_orange/alt1{
 	dir = 1;
@@ -29195,16 +28919,6 @@
 /obj/item/lightstick/red/spoke/planted{
 	layer = 4.121;
 	pixel_x = -18
-	},
-/turf/open/auto_turf/sand/layer0,
-/area/caperiver/oob)
-"bIT" = (
-/obj/structure/flora/bush/canyon/grass_orange/alt2{
-	pixel_x = -10;
-	pixel_y = -3
-	},
-/obj/structure/blocker/forcefield/all{
-	alpha = 0
 	},
 /turf/open/auto_turf/sand/layer0,
 /area/caperiver/oob)
@@ -29353,7 +29067,8 @@
 "bJk" = (
 /obj/structure/prop/invuln/dense/cliff_wall{
 	pixel_y = -9;
-	layer = 2.9
+	layer = 2.9;
+	pixel_x = -33
 	},
 /obj/structure/flora/bush/canyon/bush/alt2{
 	pixel_x = 3;
@@ -29378,16 +29093,6 @@
 /obj/structure/flora/bush/canyon/tree/alt2{
 	pixel_x = 12;
 	pixel_y = 18
-	},
-/turf/open/desert/rock,
-/area/caperiver/oob)
-"bJn" = (
-/obj/structure/flora/bush/canyon/grass_yellow/alt1{
-	pixel_y = 10;
-	pixel_x = -22
-	},
-/obj/structure/blocker/forcefield/all{
-	alpha = 0
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
@@ -29871,25 +29576,6 @@
 /obj/structure/flora/bush/canyon/bush/alt2{
 	pixel_x = 13;
 	pixel_y = 9
-	},
-/turf/open/desert/rock,
-/area/caperiver/oob)
-"bKn" = (
-/obj/structure/flora/bush/canyon/grass_orange/alt2{
-	pixel_x = -5;
-	pixel_y = -3
-	},
-/turf/open/desert/rock,
-/area/caperiver/oob)
-"bKo" = (
-/obj/structure/blocker/forcefield/all{
-	alpha = 0
-	},
-/obj/structure/blocker/forcefield/vehicles,
-/obj/structure/flora/bush/canyon/grass_orange/alt1{
-	dir = 1;
-	pixel_x = 5;
-	pixel_y = -1
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
@@ -32110,21 +31796,6 @@
 "cPl" = (
 /turf/open/desert/rock/deep/rock4,
 /area/caperiver/outdoors/bushlands)
-"cQm" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/surface/table/almayer,
-/obj/item/reagent_container/food/snacks/mre_pack/meal1{
-	desc = "A tray of standard UA food. Stale cornbread, tomato paste and some green goop fill this tray.";
-	name = "\improper UA Prepared Meal (cornbread)";
-	pixel_y = 5;
-	pixel_x = 3
-	},
-/obj/structure/sign/poster/conam{
-	pixel_y = 32;
-	pixel_x = -4
-	},
-/turf/open/floor/kutjevo/tan/alt_edge/north,
-/area/caperiver/indoors/miningbase/rec)
 "cQn" = (
 /turf/open/floor/kutjevo/tan/multi_tiles/north,
 /area/caperiver/outdoors/bushlands)
@@ -32494,7 +32165,8 @@
 /area/caperiver/outdoors/mining_base_exterior/north)
 "dfv" = (
 /obj/structure/prop/invuln/dense/cliff_wall{
-	pixel_y = 10
+	pixel_y = 10;
+	pixel_x = -34
 	},
 /obj/structure/blocker/forcefield/all{
 	alpha = 0
@@ -35611,12 +35283,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/kutjevo/grey/plate,
 /area/caperiver/indoors/miningbase/rec)
-"fsv" = (
-/obj/structure/barricade/handrail/strata{
-	dir = 8
-	},
-/turf/open/floor/prison/cell_stripe/west,
-/area/caperiver/outdoors/mining_base_exterior/north)
 "fsD" = (
 /obj/structure/window/framed/kutjevo,
 /turf/open/floor/plating/kutjevo,
@@ -38065,9 +37731,6 @@
 	},
 /turf/open/floor/kutjevo/tan/alt_edge,
 /area/caperiver/indoors/miningbase/dorm)
-"hhG" = (
-/turf/open/floor/prison,
-/area/caperiver/outdoors/mining_base_exterior/north)
 "hhJ" = (
 /obj/effect/spawner/gibspawner/human,
 /obj/effect/decal/hefa_cult_decals/d32{
@@ -38467,15 +38130,6 @@
 	},
 /turf/open/floor/dark,
 /area/caperiver/indoors/conambase/engi)
-"hxt" = (
-/obj/structure/barricade/handrail/strata{
-	dir = 8
-	},
-/obj/effect/decal/sand_overlay/sand2/corner2{
-	dir = 1
-	},
-/turf/open/floor/prison/cell_stripe/west,
-/area/caperiver/outdoors/mining_base_exterior/north)
 "hxu" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/sand_overlay/sand2{
@@ -39936,10 +39590,6 @@
 /obj/item/shard,
 /turf/open/floor/prison/bluefull/west,
 /area/caperiver/indoors/processing)
-"iES" = (
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/prison,
-/area/caperiver/outdoors/mining_base_exterior/north)
 "iEY" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/item/shard/shrapnel/bone_chips/human{
@@ -46913,9 +46563,6 @@
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/prison/darkyellow2/north,
 /area/caperiver/telecomms/telecomm_3)
-"nIs" = (
-/turf/open/floor/prison,
-/area/caperiver/outdoors/con_am_exterior/south)
 "nIx" = (
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/caperiver/outdoors/scrublands/west/antiweed)
@@ -48660,10 +48307,6 @@
 	},
 /turf/open/desert/rock,
 /area/caperiver/outdoors/bushlands)
-"pbH" = (
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/prison,
-/area/caperiver/outdoors/con_am_exterior/south)
 "pbO" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 1
@@ -50351,14 +49994,6 @@
 /obj/structure/machinery/colony_floodlight,
 /turf/open/desert/dirt/desert_transition_corner1/north,
 /area/caperiver/outdoors/scrublands/central)
-"qpC" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/sign/poster/safety{
-	pixel_x = -4;
-	pixel_y = 34
-	},
-/turf/open/floor/kutjevo/colors/green,
-/area/caperiver/indoors/miningbase/hydro)
 "qpJ" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/decal/hybrisa/dirt_2,
@@ -54931,7 +54566,7 @@
 /area/caperiver/outdoors/con_am_exterior/north)
 "tFJ" = (
 /obj/structure/flora/grass/desert/heavygrass_4,
-/turf/open/desert/dirt/desert_transition_edge1/northwest,
+/turf/open/desert/dirt/desert_transition_edge1/west,
 /area/caperiver/outdoors/mining_base_exterior/south)
 "tFR" = (
 /obj/structure/prop/colorable_rock/colorable{
@@ -57120,8 +56755,8 @@
 /turf/open/floor/kutjevo/tan,
 /area/caperiver/telecomms/telecomm_4)
 "vxQ" = (
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/caperiver/outdoors/con_am_exterior/south)
+/turf/open/floor/prison/ramptop/east,
+/area/caperiver/outdoors/con_am_exterior/north)
 "vyp" = (
 /obj/item/stack/rods,
 /turf/open/floor/plating/platingdmg3/west,
@@ -57794,28 +57429,6 @@
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/kutjevo/tan,
 /area/caperiver/indoors/miningbase/medical)
-"wdC" = (
-/obj/structure/prop/colorable_rock/colorable/alt1{
-	color = "#ccad8f";
-	dir = 1;
-	pixel_x = -4;
-	pixel_y = -8
-	},
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#ccad8f";
-	dir = 6;
-	pixel_x = -11;
-	pixel_y = 24
-	},
-/obj/structure/prop/fake/railing/strata{
-	pixel_y = 8;
-	layer = 4.12
-	},
-/obj/structure/blocker/forcefield/all{
-	alpha = 0
-	},
-/turf/open/desert/rock,
-/area/caperiver/outdoors/con_am_exterior/north)
 "wdE" = (
 /obj/structure/largecrate/random/barrel/brown,
 /obj/effect/decal/large_stain{
@@ -65971,11 +65584,11 @@ bMf
 atS
 atS
 aLr
-bxn
 oes
 oes
 oes
-bxn
+oes
+oes
 aak
 bxX
 bHf
@@ -66174,13 +65787,13 @@ atS
 bMa
 bMa
 oes
-bxn
-bxn
+oes
+oes
 aVL
 acY
 acd
-bxn
-bxn
+oes
+oes
 oes
 bHg
 aqQ
@@ -67602,13 +67215,13 @@ wRH
 ahf
 agL
 oes
-bxn
-bxn
+oes
+oes
 grZ
 acw
 aNp
-bxn
-bxn
+oes
+oes
 oes
 bHi
 dTs
@@ -67807,11 +67420,11 @@ ahn
 agO
 aHK
 aLr
-bxn
+oes
 nZa
 lMl
 afu
-bxn
+oes
 bJP
 bIF
 bxT
@@ -68019,13 +67632,13 @@ oes
 bJQ
 aLE
 bHk
-aqQ
-bxu
-bDF
-arV
-amv
+xfs
+dAr
+dAr
+qzQ
+bzx
 qnS
-qpC
+aQh
 qnS
 ggD
 vWP
@@ -68222,15 +67835,15 @@ aHK
 aTx
 uxp
 heI
-bHl
-xfs
-dAr
-dAr
-qzQ
-bzx
-qnS
-aQh
-qnS
+ifo
+aiw
+afS
+bzy
+bzy
+bzy
+aGE
+sjH
+aAu
 oju
 abY
 qnS
@@ -68426,20 +68039,20 @@ cwe
 aoh
 apd
 xAO
-ifo
-hxt
-fsv
-aHZ
-aHZ
-bzy
-aGE
-sjH
+aop
+aGc
+aMg
+aMg
+aMg
+aMg
+aMg
+aGc
 aAu
 bxQ
 ajI
 ahv
 bxK
-ahV
+aJL
 aDG
 adW
 aGw
@@ -68631,12 +68244,12 @@ akv
 akv
 akv
 joP
-hhG
-bDH
-bDG
-bDH
-aMg
-aMg
+aGc
+acQ
+aHo
+acQ
+acQ
+acQ
 aGc
 aFz
 aFq
@@ -68835,8 +68448,8 @@ ayc
 ayc
 iaR
 ure
-iES
-axw
+aaT
+arT
 aIj
 aIj
 arT
@@ -69028,8 +68641,8 @@ nIf
 sMy
 aLG
 crR
-bxo
-bxo
+crR
+crR
 bxp
 eWd
 mHL
@@ -69039,12 +68652,12 @@ rkJ
 wRH
 wRH
 rgo
-hhG
-bDH
-bDH
-bDG
+aGc
+acQ
+acQ
 aHo
-aMg
+aHo
+acQ
 aGc
 vzb
 fcw
@@ -69233,7 +68846,7 @@ cUh
 udT
 azN
 tfE
-bxo
+crR
 bxp
 jTT
 aWH
@@ -69242,20 +68855,20 @@ agw
 crR
 rcC
 xYy
-lAD
-bFN
-auR
-auR
-auR
-bzz
-aSn
-aFW
+aop
+aGc
+aMg
+aMg
+aMg
+aMg
+aMg
+aGc
 aAu
 fcw
 aYW
 mZQ
 ayv
-ouS
+ayv
 tFJ
 ayv
 ayv
@@ -69443,18 +69056,18 @@ aTc
 ukZ
 pnH
 aTc
-bxo
+crR
 lfA
 uxp
-bHm
-tnp
-ycg
-bDI
-bAq
-bzA
-aip
-rWS
-aip
+lAD
+aiI
+bzz
+bzz
+bzz
+bzz
+aSn
+aFW
+aAu
 rml
 azl
 aip
@@ -69647,17 +69260,17 @@ sMy
 svx
 whD
 atY
-bxo
-bxo
 crR
-bHn
-aqQ
-bEB
-bxu
-bAr
-amv
+crR
+apd
+bHm
+tnp
+ycg
+bDI
+bAq
+bzA
 aip
-cQm
+rWS
 aip
 wNd
 atU
@@ -70873,7 +70486,7 @@ uUu
 xNJ
 crR
 crR
-crR
+apd
 bHh
 aqQ
 bEF
@@ -80248,9 +79861,9 @@ aDk
 aDk
 avm
 acW
-aWQ
-aWQ
-aXJ
+aCk
+aCk
+akB
 aXJ
 afQ
 cAx
@@ -80453,24 +80066,24 @@ aDk
 avm
 acW
 uXn
-aWQ
-aWQ
-aWQ
+aCk
+akB
+arI
 aqD
 ceX
 ago
 aNw
-bKb
-bIR
-bxu
-bxb
-bCF
-apK
-wmO
-wmO
-xtF
-asz
-aMP
+bKc
+xfs
+bHO
+dAr
+bNG
+but
+bzW
+bmh
+byU
+abz
+aOi
 aZS
 aZS
 tIS
@@ -80657,23 +80270,23 @@ aDk
 avm
 avi
 aQi
-aWQ
-aWQ
-aWQ
-aWQ
+aCk
+akB
+asp
+aCk
 ahi
 aAi
 bmJ
-bKc
-xfs
-bHO
-dAr
-bNG
-but
-bzW
-bmh
-byU
-bvR
+aQG
+bMS
+bMS
+bMS
+bMS
+bMS
+bMS
+bMS
+bMS
+ahp
 aTw
 aOi
 aZS
@@ -80862,21 +80475,21 @@ mTD
 acW
 enZ
 msC
-aWQ
-aWQ
+aXJ
+asp
 bzq
 avS
 afC
 aNw
 aQG
-bMS
-bMS
-bMS
-bMS
-akP
-akP
-akP
-akP
+aGA
+bBw
+bBw
+bBw
+bBw
+bBw
+bBw
+aGA
 ahp
 arK
 aqF
@@ -81067,20 +80680,20 @@ aKM
 afI
 akB
 aXJ
-aWQ
+aqD
 aCk
 cuE
 aNw
 aNw
 aQG
 aGA
-bBw
-bBw
-bBw
 anj
 anj
 anj
-anH
+anj
+anj
+anj
+aGA
 ahp
 qoB
 aQD
@@ -81270,8 +80883,8 @@ bmR
 acW
 mIH
 akB
-aWQ
-aWQ
+asp
+aCk
 nTm
 aLg
 aNw
@@ -81281,10 +80894,10 @@ aGA
 bBw
 bBw
 bBw
-anj
-anj
-anj
-anH
+bBw
+bBw
+bBw
+aGA
 ahp
 aUy
 aUy
@@ -81474,21 +81087,21 @@ avm
 aUh
 weo
 web
-aWQ
-aWQ
+aqD
+aCk
 wTt
 aCm
 afC
 aNw
 aQG
 aGA
-bBw
-bBw
-bBw
 anj
 anj
 anj
-anH
+anj
+anj
+anj
+aGA
 ahp
 aej
 xYf
@@ -81678,21 +81291,21 @@ avm
 acW
 asQ
 aJG
-aWQ
-aWQ
-aWQ
+aCk
+aCk
+aCk
 aCm
 aNw
 aNw
 aQG
-aFN
-aFN
-aFN
-aFN
-apq
-apq
-apq
-apq
+aGA
+bBw
+bBw
+bBw
+bBw
+bBw
+bBw
+aGA
 ahp
 azU
 aEu
@@ -81881,23 +81494,23 @@ aDk
 avm
 afM
 awI
-aWQ
-aWQ
-aWQ
+aCk
+aCk
+aCk
 ahi
 wjn
 aNw
 aNw
-bKd
-bIS
-bHP
-bGh
-bum
-qxF
-drK
-tgP
-bCC
-bya
+aQG
+aFN
+aFN
+aFN
+aFN
+aFN
+aFN
+aFN
+aFN
+ahp
 aEu
 akw
 aEu
@@ -82084,24 +81697,24 @@ aDk
 eNn
 hLf
 bmM
-aWQ
-aWQ
-aWQ
+aCk
+aCk
+aCk
 aCk
 aCm
 aNw
 aNw
 aQc
-bCh
-bIT
-bHR
-bBG
-bAa
-apK
-wmO
-xtF
-ahK
-byb
+bKd
+bIS
+bHP
+bGh
+bum
+qxF
+drK
+tgP
+bCC
+eEE
 kMF
 sUb
 fNW
@@ -84126,7 +83739,7 @@ aWQ
 aWQ
 aWQ
 aWQ
-aWQ
+aCk
 aCk
 hcT
 aNw
@@ -84330,7 +83943,7 @@ aXJ
 aWQ
 aWQ
 aWQ
-aWQ
+aCk
 aCk
 aCm
 afC
@@ -84534,7 +84147,7 @@ avd
 fuY
 aWQ
 aWQ
-aWQ
+aCk
 aKX
 aXS
 aYo
@@ -87788,7 +87401,7 @@ aYo
 ajS
 aiM
 qCw
-aza
+mJN
 ryF
 fzW
 nzx
@@ -87991,8 +87604,8 @@ aWR
 wGq
 aWR
 aWR
-aza
-aza
+mJN
+mJN
 atx
 vuX
 gQU
@@ -88813,9 +88426,9 @@ uAM
 slv
 wqX
 mJN
-aza
-aza
-aza
+mJN
+mJN
+mJN
 mJN
 sSk
 ryF
@@ -90043,8 +89656,8 @@ xjc
 byL
 suK
 xwE
-aza
-aza
+mJN
+mJN
 bLy
 bLq
 aqQ
@@ -90234,8 +89847,8 @@ nnU
 gog
 gog
 tEY
-aza
-aza
+mJN
+mJN
 bXP
 bXP
 mJN
@@ -90247,8 +89860,8 @@ hgq
 ykA
 bzu
 aEq
-aza
-aza
+mJN
+mJN
 aBB
 aVy
 aqQ
@@ -90438,7 +90051,7 @@ ghT
 gog
 gog
 tEY
-aza
+mJN
 hkt
 uUW
 aHD
@@ -90451,8 +90064,8 @@ gBL
 alR
 amQ
 jLh
-aza
-aza
+mJN
+mJN
 bLy
 jQf
 bKT
@@ -91270,18 +90883,18 @@ bva
 buX
 buy
 ada
-buD
-aqQ
-bKn
-bJn
-bIl
-apK
-wmO
-wmO
-wmO
-wmO
-abX
-bCy
+bml
+fbg
+wqs
+xfs
+iTs
+but
+bmh
+bzW
+bzW
+bmh
+byU
+bus
 occ
 bKt
 bKt
@@ -91467,25 +91080,25 @@ tPz
 tPz
 seM
 xoR
-aWQ
+dus
 bmK
 bmF
 bvb
 buy
 buv
 buL
-bml
-fbg
-wqs
-xfs
-iTs
-but
-bmh
-bzW
-bzW
-bmh
-byU
-bus
+iOB
+bmi
+aXj
+aXj
+aXj
+aXj
+aXj
+aXj
+aXj
+aXj
+acT
+rxy
 jNx
 nIV
 sFy
@@ -91657,8 +91270,8 @@ nuH
 nuH
 nuH
 nuH
-bxa
-bxa
+nuH
+nuH
 rhb
 xyO
 gog
@@ -91670,8 +91283,8 @@ ovw
 tPz
 buJ
 bvh
-aWQ
-aWQ
+tPz
+dus
 bmK
 bmF
 bvc
@@ -91679,16 +91292,16 @@ buY
 buV
 jTS
 iOB
-bmi
-aXj
-aXj
-aXj
-aXj
-aIv
-aIv
-aIv
-aIv
-bmf
+iNT
+eaL
+eaL
+eaL
+eaL
+eaL
+eaL
+eaL
+eaL
+iNT
 rxy
 alp
 nIV
@@ -91862,7 +91475,7 @@ boU
 boH
 vbc
 boz
-bxa
+nuH
 lhf
 gog
 gog
@@ -91873,9 +91486,9 @@ bvm
 wnm
 wnm
 wnm
-aWQ
-aWQ
-aWQ
+wnm
+wnm
+jTS
 bmK
 bmG
 bmx
@@ -91884,15 +91497,15 @@ bmx
 ruc
 xUw
 iNT
-eaL
-eaL
-eaL
-eaL
 vxQ
 vxQ
 vxQ
 vxQ
-nIs
+vxQ
+vxQ
+vxQ
+vxQ
+iNT
 rxy
 bif
 aOt
@@ -92092,11 +91705,11 @@ bah
 bah
 bah
 bah
-adH
-adH
-adH
-adH
-pbH
+bah
+bah
+bah
+bah
+wCa
 aVA
 qwL
 qUo
@@ -92292,15 +91905,15 @@ bmy
 bmu
 uVl
 iNT
-eaL
-eaL
-eaL
-eaL
 vxQ
 vxQ
 vxQ
 vxQ
-nIs
+vxQ
+vxQ
+vxQ
+vxQ
+iNT
 rxy
 bfZ
 aOt
@@ -92495,16 +92108,16 @@ irC
 evQ
 teK
 iOB
-bmk
-aHQ
-aHQ
-aHQ
-aHQ
-ban
-ban
-ban
-ban
-bmg
+iNT
+eaL
+eaL
+eaL
+eaL
+eaL
+eaL
+eaL
+eaL
+iNT
 rxy
 xZT
 nIV
@@ -92698,18 +92311,18 @@ bmD
 bmA
 buJ
 buN
-bmq
-bBq
-vlT
-iQK
-bBx
-bDV
-toW
-bzZ
-bzZ
-toW
-bCC
-pRb
+iOB
+bmk
+aHQ
+aHQ
+aHQ
+aHQ
+aHQ
+aHQ
+aHQ
+aHQ
+afA
+rxy
 eoj
 nIV
 cMj
@@ -92902,18 +92515,18 @@ grE
 bmB
 bmv
 buO
-wdC
-aqQ
-bKo
-bxu
-bIm
-apK
-wmO
-wmO
-wmO
-wmO
-abX
-adz
+bmq
+bBq
+vlT
+iQK
+bBx
+bDV
+toW
+bzZ
+bzZ
+toW
+bCC
+pRb
 blS
 bKt
 ucV
@@ -93498,7 +93111,7 @@ dus
 gog
 gog
 tEY
-bwW
+grE
 bom
 aDy
 akg
@@ -93702,8 +93315,8 @@ jTS
 gog
 gog
 tEY
-bwW
-bwW
+grE
+grE
 lIQ
 bwY
 aBX
@@ -93714,8 +93327,8 @@ bwX
 tWf
 tKg
 amr
-bwW
-bwW
+grE
+grE
 unY
 buQ
 jQf
@@ -93906,8 +93519,8 @@ xyO
 gog
 gog
 tEY
-bwW
-bwW
+grE
+grE
 jLz
 shy
 aBX
@@ -93918,8 +93531,8 @@ bwX
 sdh
 tKg
 rcy
-bwW
-bwW
+grE
+grE
 bmr
 buR
 jQf
@@ -94110,7 +93723,7 @@ gog
 oou
 irC
 bvx
-bwW
+grE
 gYD
 ees
 puQ
@@ -94123,7 +93736,7 @@ aXY
 puQ
 qVQ
 wMB
-bwW
+grE
 bmw
 bmv
 tiC
@@ -94512,7 +94125,7 @@ amW
 amW
 bpf
 boT
-bxa
+nuH
 dus
 gog
 gog
@@ -94715,8 +94328,8 @@ aoT
 vbc
 nuH
 bpg
-bxa
-bxa
+nuH
+nuH
 dus
 gog
 ghT
@@ -94918,9 +94531,9 @@ nuH
 boH
 aod
 nuH
-bxa
-bxa
-bxa
+nuH
+nuH
+nuH
 dus
 gog
 gog

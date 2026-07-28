@@ -52,10 +52,10 @@
 /datum/chem_property/negative/toxic/reaction_mob(mob/living/victim, method=TOUCH, volume, potency = 1)
 	if(!iscarbon(victim))
 		return
-	var/mob/living/carbon/humanoid = victim
-	if(humanoid.wear_mask) // Wearing a mask
+	var/mob/living/carbon/carbon = victim
+	if(carbon.wear_mask) // Wearing a mask
 		return
-	humanoid.apply_damage(potency, TOX)  // applies potency toxin damage
+	carbon.apply_damage(potency, TOX)  // applies potency toxin damage
 
 /datum/chem_property/negative/toxic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
 	. = ..()
@@ -223,15 +223,15 @@
 /datum/chem_property/negative/hemolytic/process(mob/living/victim, potency = 1, delta_time)
 	if(!iscarbon(victim))
 		return
-	var/mob/living/carbon/humanoid = victim
+	var/mob/living/carbon/carbon = victim
 	..()
-	humanoid.blood_volume = max(humanoid.blood_volume - POTENCY_MULTIPLIER_VHIGH * potency,0)
+	carbon.blood_volume = max(carbon.blood_volume - POTENCY_MULTIPLIER_VHIGH * potency,0)
 
 /datum/chem_property/negative/hemolytic/process_overdose(mob/living/victim, potency = 1, delta_time)
 	if(!iscarbon(victim))
 		return
-	var/mob/living/carbon/humanoid = victim
-	humanoid.blood_volume = max(humanoid.blood_volume - 4 * potency *  delta_time, 0)
+	var/mob/living/carbon/carbon = victim
+	carbon.blood_volume = max(carbon.blood_volume - 4 * potency *  delta_time, 0)
 	victim.drowsiness = min(victim.drowsiness + 0.5 * potency * delta_time, 15 * potency)
 	victim.reagent_move_delay_modifier += potency
 	victim.recalculate_move_delay = TRUE
@@ -600,19 +600,19 @@
 	if(!iscarbon(victim))
 		return
 	..()
-	var/mob/living/carbon/humanoid = victim
+	var/mob/living/carbon/carbon = victim
 	if(victim.nutrition >= NUTRITION_LOW)
-		humanoid.blood_volume = max(humanoid.blood_volume - POTENCY_MULTIPLIER_HIGH * potency, 0)
+		carbon.blood_volume = max(carbon.blood_volume - POTENCY_MULTIPLIER_HIGH * potency, 0)
 		holder.volume++
 	else
-		humanoid.blood_volume = max(humanoid.blood_volume - POTENCY_MULTIPLIER_LOW * potency, 0)
+		carbon.blood_volume = max(carbon.blood_volume - POTENCY_MULTIPLIER_LOW * potency, 0)
 
 
 /datum/chem_property/negative/hemositic/process_overdose(mob/living/victim, potency = 1, delta_time)
 	if(!iscarbon(victim))
 		return
-	var/mob/living/carbon/humanoid = victim
-	humanoid.blood_volume = max(humanoid.blood_volume-10*potency,0)
+	var/mob/living/carbon/carbon = victim
+	carbon.blood_volume = max(carbon.blood_volume-10*potency,0)
 	holder.volume += potency * POTENCY_MULTIPLIER_MEDIUM
 
 /datum/chem_property/negative/hemositic/process_critical(mob/living/victim, potency = 1, delta_time)

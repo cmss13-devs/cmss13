@@ -18,8 +18,10 @@ TODO:
 	- Work on potential optimization problems
 	- Work out an acceptable sprite
 	- Actually add the item into vendor
-	- Allow people to interact with the magazine clip using context menu when it's on the ground
-	- Add support for tactical reload
+	- Allow people to interact with the magazine clip using context menu when it's on the ground; no clue how to do this one
+	- Add support for tactical reload; Actually erm probably gonna avoid it altogether, took a peak at the code and I don't see a easy non-intrusive way to include it as a feature. Besides people really shouldn't be doing tactical reload all that often, and even more unlikely to do it with mag clips
+	- Make sure all cases inside reload() and unload() are accounted for
+	- Generalize magazine_clip and make more specific objects
 */
 
 /obj/item/magazine_clip
@@ -101,6 +103,6 @@ TODO:
 
 /obj/item/magazine_clip/clicked(mob/user, list/mods) //? Absolutely clueless as to how this works, mimicing gun_helpers.dm
 	if (mods[ALT_CLICK])
-		src.remove_magazine(user)
+		src.switch_active_slot()
 		return TRUE
 	return (..())

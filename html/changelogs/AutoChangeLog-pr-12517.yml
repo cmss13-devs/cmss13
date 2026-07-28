@@ -1,6 +1,0 @@
-author: "Puckaboo2"
-delete-after: True
-changes:
-  - rscadd: "Adds Advanced First Aid Kit and Surgical Mask to Research essentials."
-  - rscdel: "Removes extra webbing from Research essentials in ColMarTechs."
-  - bugfix: "Restores deleted Research headsets from Research Wardrobes."

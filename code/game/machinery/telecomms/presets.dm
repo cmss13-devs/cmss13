@@ -67,7 +67,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	. = ..()
 	if(on)
 		playsound(src, 'sound/machines/tcomms_on.ogg', vol = 80, vary = FALSE, sound_range = 16, falloff = 0.5)
-		msg_admin_niche("Portable communication relay started for Z-Level [src.z] [ADMIN_JMP(src)]")
+		msg_admin_niche("Portable communication relay started for Z-Level [src.z]", src)
 
 		if(SSobjectives && SSobjectives.comms)
 			// This is the first time colony comms have been established.
@@ -77,7 +77,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 /obj/structure/machinery/telecomms/relay/preset/tower/tcomms_shutdown()
 	. = ..()
 	if(!on)
-		msg_admin_niche("Portable communication relay shut down for Z-Level [src.z] [ADMIN_JMP(src)]")
+		msg_admin_niche("Portable communication relay shut down for Z-Level [src.z]", src)
 
 /obj/structure/machinery/telecomms/relay/preset/tower/bullet_act(obj/projectile/P)
 	..()
@@ -211,16 +211,28 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	/// Tower has been taken before, this gives xenos an extra resin point on capture for the first time.
 	var/captured_before = FALSE
 
-
 	/// Held image for the current overlay on the tower from xeno corruption
 	var/image/corruption_image
 
 	/// Holds the delay for when a cluster can recorrupt the comms tower after a pylon has been destroyed
 	COOLDOWN_DECLARE(corruption_delay)
 
-/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/Initialize()
+	/// Whether this tower has already triggered a garble event
+	var/garble_event_triggered = FALSE
+
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/Initialize(mapload, ...)
 	. = ..()
-	RegisterSignal(get_turf(src), COMSIG_WEEDNODE_GROWTH, PROC_REF(handle_xeno_acquisition))
+	// COMSIG_MOVABLE_TURF_ENTERED to handle ChangeTurf
+	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTERED, PROC_REF(register_with_turf))
+	if(!mapload)
+		register_with_turf()
+
+/// Handler for callback of COMSIG_MOVABLE_TURF_ENTERED (turf changed)
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/register_with_turf(atom/movable/source, turf/new_turf)
+	SIGNAL_HANDLER
+	var/turf/location = get_turf(src)
+	if(location && (!new_turf || location == new_turf)) // We only need to monitor our loc not our locs
+		RegisterSignal(location, COMSIG_WEEDNODE_GROWTH, PROC_REF(handle_xeno_acquisition))
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/get_examine_text(mob/user)
 	. = ..()
@@ -252,6 +264,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	var/turf/commloc = get_turf(src)
 	var/area/commarea = get_area(src)
 	if(on) //now, if it went on it now uses power
+		garble_event_triggered = FALSE
 		use_power = USE_POWER_IDLE
 		message_admins("[key_name(user)] turned \the [src] in [commarea] ON. [ADMIN_JMP(commloc.loc)]")
 	else
@@ -287,7 +300,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 					freq_listening |= UPP_FREQS
 				if(FACTION_WY,FACTION_PMC)
 					freq_listening |= PMC_FREQS
-				if(FACTION_TWE)
+				if(FACTION_TWE, FACTION_IASF)
 					freq_listening |= RMC_FREQ
 				if(FACTION_MARSHAL)
 					freq_listening |= CMB_FREQ
@@ -314,6 +327,14 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	..()
 	if(inoperable())
 		handle_xeno_acquisition()
+		if(!garble_event_triggered && (COMM_FREQ in freq_listening))
+			garble_event_triggered = TRUE
+			SSradio.update_cache()
+			addtimer(CALLBACK(src, PROC_REF(delayed_marine_failure)), 10 SECONDS)
+
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/delayed_marine_failure()
+	SSradio.faction_coms_clarity[FACTION_MARINE] = CONFIG_GET(number/announcement_min_clarity)
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_DELAYED_COMMS_FAILURE)
 
 /// Locates a nearby cluster from GLOB.all_xeno_pylon_cluster_nodes otherwise null
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/find_nearby_cluster()

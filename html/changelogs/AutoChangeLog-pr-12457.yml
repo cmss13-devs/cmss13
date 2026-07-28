@@ -1,5 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - bugfix: "Fixed a number of bad cleanup involved in visual effects, notably smoke."
-  - bugfix: "Rockets and Explosive Arrows will now properly cause on-hit smoke as intended."

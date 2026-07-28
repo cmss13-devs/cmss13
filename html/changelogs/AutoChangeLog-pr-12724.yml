@@ -1,0 +1,4 @@
+author: "neeshacark"
+delete-after: True
+changes:
+  - rscadd: "Staff Officers now come fourth in the chain of command, and Field Doctors are after normal Doctors."

@@ -1,0 +1,4 @@
+author: "fira"
+delete-after: True
+changes:
+  - code_imp: "Improved minimap_on_move and remove_marker performance"

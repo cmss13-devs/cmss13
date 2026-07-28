@@ -43,7 +43,7 @@
 #define MAP_TYRARGO_RIFT "Tyrargo Rift"
 #define MAP_WHITE_ANTRE_RESEARCH_FACILITY "White Antre Research Facility"
 #define MAP_FORT_MCNEIL "Fort McNeil"
-#define MAP_CONAM_81_ABYSSAL "Con-Am 81 'Abyssal'"
+#define MAP_CONAM_81_ABYSSAL "Abyssal Station-81"
 #define MAP_CHINOOK "Chinook 91 GSO" //admin level
 #define MAP_ROSTOCK "SSV Rostock" //UPP Warship
 #define MAP_HUNTERSHIP "Hunter Ship"

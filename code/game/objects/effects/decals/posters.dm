@@ -263,7 +263,7 @@
 ////////////////
 
 /obj/structure/sign/poster/conam
-	icon_state = "poster101"
+	icon_state = "poster102"
 
 /obj/structure/sign/poster/conam/Initialize()
 	serial_number = 102

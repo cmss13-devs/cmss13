@@ -25,8 +25,8 @@
 		// override
 	proc/reset()
 		current_index = 1
-		if ( child_nodes[1] )
-			child_nodes[1].reset()
+		for( var/datum/rezai/bt/node/child in child_nodes )
+			child.reset()
 
 //actual tree - derrives from node
 /datum/rezai/bt/node/behaviour_tree/
@@ -35,7 +35,8 @@
 	update()
 		//message_admins("updating muh ai - rezzer")
 		if( child_nodes[1] )
-			child_nodes[1].update()
+			if ( child_nodes[1].update() != BT_NODE_RETURN_PROCESSING )
+				reset()
 
 
 
@@ -65,7 +66,7 @@
 			current_index += 1
 			if (current_index <= child_nodes.len)
 				child_nodes[current_index].reset()
-			if ( current_index >= child_nodes.len )
+			if ( current_index > child_nodes.len )
 				return BT_NODE_RETURN_FAIL
 		if ( child_return == BT_NODE_RETURN_SUCCESS )
 			return BT_NODE_RETURN_SUCCESS
@@ -74,3 +75,13 @@
 
 /datum/rezai/bt/node/decorator/
 	var/foobar = 1
+
+
+/datum/rezai/bt/node/leaf_node/
+	node_type = BT_NODE_LEAF
+	var/datum/callback/behaviour
+	update()
+		..()
+		if (!behaviour)
+			return BT_NODE_RETURN_FAIL
+		return behaviour.Invoke()

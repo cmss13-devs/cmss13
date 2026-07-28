@@ -1530,6 +1530,7 @@
 			hud_used.locate_leader.overlays |= image('icons/mob/hud/human_bronze.dmi', "up")
 		if(tracking_atom.z < z)
 			hud_used.locate_leader.overlays |= image('icons/mob/hud/human_bronze.dmi', "down")
+	return H
 
 /mob/living/carbon/proc/locate_nearest_nuke()
 	if(!GLOB.bomb_set)

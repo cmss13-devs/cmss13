@@ -24,6 +24,7 @@ CLIENT_VERB(rezai_create_rfn)
 
 	message_admins("[key_name_admin(usr)] created BT AI xxx humans as 'USCM Cryo Squad Rifleman (Equipped)' at [get_area(initial_spot)]")
 
+	//create behaviour tree
 	spawned_human.rezai = new(spawned_human)
 
 

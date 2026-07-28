@@ -10,13 +10,19 @@
 	icon_state = "mfloor1"
 	random_icon_states = list("mfloor1", "mfloor2", "mfloor3", "mfloor4", "mfloor5", "mfloor6", "mfloor7")
 	cleanable_type = CLEANABLE_BLOOD
+	appearance_flags = PIXEL_SCALE
 	overlay_on_initialize = FALSE
 	color = "#830303" // Color when wet.
 	var/base_icon = 'icons/effects/blood.dmi'
 	var/list/viruses
-	var/amount = 3
+	/// the amount of blood that is created for footstep tracking, adds to the base amount of rand(1, 4) for footstep tracking, set to 0 to disable
+	var/amount = 1
 	var/drying_time = 30 SECONDS
-	var/dry_start_time // If this dries, track the dry start time for footstep drying
+	/// If this dries, track the dry start time for footstep drying
+	var/dry_start_time
+	/// if the trail can have random offsets to its sprites
+	var/randomized = TRUE
+	allow_this_to_overlap = TRUE
 	garbage = FALSE // Keep for atmosphere
 
 /obj/effect/decal/cleanable/blood/Destroy()
@@ -34,6 +40,9 @@
 	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/blood_optimization))
 		amount = 0
 		return
+	else if(amount != 0) // blood trails galore
+		var/additive = amount
+		amount = rand(1 + additive, 4 + additive)
 
 	if(drying_time)
 		if(mapload) // Don't use timer at all in mapload - as deleting long running timers during MC init causes issues (see /tg/ issue #56292)
@@ -42,17 +51,23 @@
 		dry_start_time = world.time
 		addtimer(CALLBACK(src, PROC_REF(dry)), drying_time * (amount+1))
 
+	if(randomized)
+		pixel_x = rand(-16, 16)
+		pixel_y = rand(-16, 16)
+		var/matrix/rotate = matrix()
+		rotate.Turn(rand(0, 359))
+		apply_transform(rotate)
+
 /obj/effect/decal/cleanable/blood/Crossed(atom/movable/AM)
 	. = ..()
-	// Check if the blood is dry and only humans
-	// can make footprints
-	if(!amount || !ishuman(AM) || QDELETED(AM))
+	// check if the blood is dry and only for carbons
+	if(!amount || !iscarbon(AM) || QDELETED(AM))
 		return
 
 	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/blood_optimization))
 		return
 
-	var/mob/living/carbon/human/H = AM
+	var/mob/living/carbon/H = AM
 	H.add_blood(color, BLOOD_FEET)
 
 	var/dry_time_left = 0
@@ -62,15 +77,15 @@
 	if(GLOB.perf_flags & PERF_TOGGLE_NOBLOODPRINTS)
 		return
 
-	if(!H.bloody_footsteps)
-		H.AddElement(/datum/element/bloody_feet, dry_time_left, H.shoes, amount, color)
-	else
+	if(H.bloody_footsteps)
 		SEND_SIGNAL(H, COMSIG_HUMAN_BLOOD_CROSSED, amount, color, dry_time_left)
+	else
+		H.AddElement(/datum/element/bloody_feet, dry_time_left, amount, color)
 
 /obj/effect/decal/cleanable/blood/proc/dry()
 	amount = 0
 	if(cleanable_turf)
-		create_overlay()
+		create_overlay() // there might be some weird behaviour associated with blood drying and randomized blood, let me know if its actually the case - nihi
 	else
 		cleanup_cleanable()
 
@@ -83,7 +98,6 @@
 
 /obj/effect/decal/cleanable/blood/splatter
 	random_icon_states = list("mgibbl1", "mgibbl2", "mgibbl3", "mgibbl4", "mgibbl5")
-	amount = 1
 	cleanable_type = CLEANABLE_BLOOD_SPLATTER
 
 /obj/effect/decal/cleanable/blood/drip
@@ -92,8 +106,8 @@
 	gender = PLURAL
 	icon = 'icons/effects/drip.dmi'
 	icon_state = "1"
+	amount = 0 //fuckass tiny drops of blood should not be enough to make footprints
 	random_icon_states = list("1","2","3","4","5")
-	amount = 0
 	cleanable_type = CLEANABLE_BLOOD_DRIP
 	var/drips
 
@@ -103,6 +117,7 @@
 	gender = NEUTER
 	random_icon_states = list("writing1","writing2","writing3","writing4","writing5")
 	amount = 0
+	randomized = FALSE
 	var/message
 
 /obj/effect/decal/cleanable/blood/writing/New()
@@ -130,6 +145,7 @@
 	random_icon_states = list("gib1", "gib2", "gib3", "gib4", "gib5", "gib6")
 	cleanable_type = CLEANABLE_BLOOD_GIBS
 	color = "#830303"
+	amount = 2
 
 /obj/effect/decal/cleanable/blood/gibs/update_icon()
 	overlays.Cut()

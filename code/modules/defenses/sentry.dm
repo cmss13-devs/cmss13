@@ -99,12 +99,8 @@
 			continue
 		targets += target
 
-	if(!targets)
-		return FALSE
-
-	if(!target && length(targets))
-		target = pick(targets)
-
+	if(!target)
+		target = SAFEPICK(targets)
 	get_target(target)
 	return TRUE
 

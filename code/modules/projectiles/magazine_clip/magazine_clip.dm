@@ -8,7 +8,8 @@
 	- The mag clip doesn't goes into the gun, instead the magazine teleports into the gun and leaves the mag clip behind while the mag clip still points to the magazine
 	- Lacks user feedback when the clip is switched
 	- The fucking clip eats everything, make it so it only eats magazines
-	- //TODO: Tactical reload is un-accounted for, after tactical reload into a normal mag and when the mag is set to be unloaded the magazine is disapeared and the magazine clip is teleported over instead
+	- Tactical reload is un-accounted for, after tactical reload into a normal mag and when the mag is set to be unloaded the magazine is disapeared and the magazine clip is teleported over instead
+	- //TODO: The fucking color band on ap ammo and such doesn't give a fuck when the thing is thrown: everything else spins while it just stands there
 */
 /*
 TODO:
@@ -27,10 +28,19 @@ TODO:
 /obj/item/magazine_clip
 	name = "\improper magazine clip"
 	desc = "A 3D printed magazine clip, can secure two magazines."
-	icon = 'icons/obj/items/tools.dmi' //PLACEHOLDER FOR TESTING
-	icon_state = "c_tube"
-	var/accepted_magazines = list()
 
+	icon = 'icons/obj/items/weapons/guns/magazine_clips/magazine_clip.dmi' //PLACEHOLDER FOR TESTING
+	icon_state = null
+	var/foreground_icon_state = null //Storing foreground sprite; TODO: clean it up and move to m41a mag clip after finish with testing
+	var/magazine_icon_reference = list(FALSE, FALSE) //Stores x and y offsets for putting magazine onto the overlay
+
+	item_state = "generic_mag"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/ammo_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/ammo_righthand.dmi'
+		)
+
+	var/compatible_magazines = list()
 	var/contained_mags = list(0, 0)
 	var/active_slot = FALSE //It's two slots, 0 and 1 works
 
@@ -50,6 +60,7 @@ TODO:
 			else
 				M.forceMove(get_turf(src))
 			contained_mags[active_slot+1] = M
+			update_icon()
 			return TRUE
 		else
 			to_chat(user, SPAN_WARNING("The active slot already has a magazine in it!"))
@@ -68,6 +79,7 @@ TODO:
 	else
 		target_magazine.forceMove(get_turf(src))
 	contained_mags[active_slot+1] = 0
+	update_icon()
 	return TRUE
 
 
@@ -108,3 +120,23 @@ TODO:
 		src.switch_active_slot(user)
 		return TRUE
 	return (..())
+
+/obj/item/magazine_clip/update_icon()
+	if(overlays)
+		overlays.Cut()
+	else
+		overlays = list()
+
+	for(var/i in 1 to length(contained_mags))
+		var/obj/item/ammo_magazine/target_magazine = contained_mags[i]
+		if(target_magazine)
+			var/image/target_magazine_icon = image(target_magazine.icon, src, target_magazine.icon_state)
+			target_magazine_icon.overlays += target_magazine.overlays
+			target_magazine_icon.layer = FLOAT_LAYER-i
+			if(magazine_icon_reference[i])
+				target_magazine_icon.pixel_w = magazine_icon_reference[i][1]
+				target_magazine_icon.pixel_z = magazine_icon_reference[i][2]
+			overlays += target_magazine_icon
+
+	if(foreground_icon_state)
+		overlays += image(icon, src, foreground_icon_state)

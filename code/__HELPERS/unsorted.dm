@@ -1601,7 +1601,6 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 //gives us the stack trace from CRASH() without ending the current proc.
 /proc/stack_trace(msg)
-	message_admins(msg)
 	CRASH(msg)
 
 // \ref behaviour got changed in 512 so this is necesary to replicate old behaviour.

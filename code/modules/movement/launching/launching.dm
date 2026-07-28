@@ -1,13 +1,22 @@
 /datum/launch_metadata
 	// Parameters
 	var/pass_flags = NO_FLAGS // Pass flags to add temporarily
-	var/call_all = FALSE // Whether to perform all callback calls or none of them
 
+	var/list/turf/path
+	var/atom/movable/thrown
 	var/atom/target
 	var/range
 	var/speed
 	var/atom/thrower
+	var/tracking = FALSE
 	var/spin
+
+	/// How often to have SSlaunch tick us in deciseconds. This will be set based on throw speed.
+	/// SSlaunch itself runs at about 0.1s tick so you won't get any faster, sorry
+	var/delay = 1 DECISECONDS
+
+	/// Speed prior to throwing
+	var/old_speed
 
 	// A list of callbacks to invoke when an atom of a specific type is hit (keys are typepaths and values are proc paths)
 	// These should only be for CUSTOM procs to invoke when an atom of a specific type is collided with, otherwise will default to using
@@ -22,8 +31,12 @@
 	var/dist = 0
 
 /datum/launch_metadata/Destroy(force, ...)
+	thrown?.launch_metadata = null
 	target = null
 	thrower = null
+	thrown = null
+	path = null
+	SSlaunch.cancel_throw(src)
 	return ..()
 
 
@@ -42,17 +55,9 @@
 				highest_matching = path
 			matching += path
 
-	if (!call_all)
-		if (isnull(highest_matching))
-			return null
-		return list(collision_callbacks[highest_matching])
-	else
-		if (length(matching) == 0)
-			return null
-		var/list/matching_procs = list()
-		for(var/path in matching)
-			matching_procs += collision_callbacks[path]
-		return matching_procs
+	if (isnull(highest_matching))
+		return null
+	return list(collision_callbacks[highest_matching])
 
 /// Invoke end_throw_callbacks on this metadata.
 /// Takes argument of type /atom/movable
@@ -118,11 +123,13 @@
 	if (loc == oldloc)
 		rebounding = TRUE
 		var/datum/launch_metadata/LM = new()
+		LM.thrown = src
 		LM.target = get_step(src, turn(dir, 180))
 		LM.range = 1
 		LM.speed = launched_speed
 		LM.pass_flags = PASS_UNDER
 		LM.pass_flags |= (ismob(src) ? PASS_OVER_THROW_MOB : PASS_OVER_THROW_ITEM)
+		LM.old_speed = cur_speed
 
 		launch_towards(LM)
 
@@ -139,56 +146,47 @@
 			temp_pass_flags |= PASS_HIGH_OVER
 
 	var/datum/launch_metadata/LM = new()
+	LM.thrown = src
 	LM.pass_flags = temp_pass_flags
 	LM.target = target
 	LM.range = range
 	LM.speed = speed
 	LM.thrower = thrower
 	LM.spin = spin
+	LM.tracking = tracking
+	LM.old_speed = cur_speed
+
 	if(end_throw_callbacks)
 		LM.end_throw_callbacks = end_throw_callbacks
 	if(collision_callbacks)
 		LM.collision_callbacks = collision_callbacks
 
 	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_LAUNCH, LM) & COMPONENT_LAUNCH_CANCEL)
+		qdel(LM)
 		return
 
-	flags_atom |= NO_ZFALL
+	launch_towards(LM)
 
-	launch_towards(LM, tracking)
-
-	flags_atom &= ~NO_ZFALL
-	var/turf/end_turf = get_turf(src)
-	if(end_turf)
-		end_turf.on_throw_end(src)
-
-
-// Proc for throwing or propelling movable atoms towards a target
-/atom/movable/proc/launch_towards(datum/launch_metadata/LM, tracking = FALSE)
-	if (!istype(LM))
-		CRASH("invalid launch_metadata passed to launch_towards")
-	if (!LM.target || !src)
-		return
-
+/// Proc for throwing or propelling movable atoms towards a target. DON'T use this one, use throw_atom if possible.
+/atom/movable/proc/launch_towards(datum/launch_metadata/LM)
 	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_THROW, LM.thrower) & COMPONENT_CANCEL_THROW)
+		qdel(LM)
 		return
 
-	// If we already have launch_metadata (from a previous throw), reset it and qdel the old launch_metadata datum
-	if (istype(launch_metadata))
-		qdel(launch_metadata)
+	if(launch_metadata) // Override previous throw
+		reset_throw()
 	launch_metadata = LM
 
-	if (LM.spin)
+	if(!SSlaunch.launch(LM))
+		return
+
+	// Finally we prepare the atom state for throwing before SSlaunch kicks in
+	add_temp_pass_flags(LM.pass_flags)
+	if(LM.spin)
 		animation_spin(5, 1 + min(1, LM.range/20))
-
-	var/old_speed = cur_speed
-	cur_speed = clamp(LM.speed, MIN_SPEED, MAX_SPEED) // Sanity check, also ~1 sec delay between each launch move is not very reasonable
-	var/delay = 10/cur_speed - 0.5 // scales delay back to deciseconds for when sleep is called
-	var/pass_flags = LM.pass_flags
-
+	flags_atom |= NO_ZFALL
 	throwing = TRUE
 
-	add_temp_pass_flags(pass_flags)
 	var/turf/start_turf
 	var/turf/above = SSmapping.get_turf_above(loc)
 	var/datum/turf_reservation/reservation = SSmapping.used_turfs[loc]
@@ -198,47 +196,53 @@
 		start_turf = get_step_towards(src, LM.target)
 		if(reservation && reservation.is_below(get_turf(LM.target), loc))
 			start_turf = get_step_towards(src, SSmapping.get_turf_above(LM.target))
-	var/list/turf/path = get_line(start_turf, LM.target)
-	var/last_loc = loc
 
-	var/early_exit = FALSE
+	LM.path = get_line(start_turf, LM.target)
 	LM.dist = 0
-	for (var/turf/T in path)
-		if (!src || !throwing || loc != last_loc || !isturf(src.loc))
-			break
-		if (!LM || QDELETED(LM))
-			early_exit = TRUE
-			break
-		if (LM.dist >= LM.range)
-			break
-		if (!Move(T)) // If this returns FALSE, then a collision happened
-			break
-		last_loc = loc
-		if (++LM.dist >= LM.range)
-			break
-		sleep(delay)
 
-	//done throwing, either because it hit something or it finished moving
-	if ((isobj(src) || ismob(src)) && throwing && !early_exit)
-		var/turf/T = get_turf(src)
-		if(!istype(T))
-			return
-		var/atom/hit_atom = ismob(LM.target) ? null : T // TODO, just check for LM.target, the ismob is to prevent funky behavior with grenades 'n crates
-		if(!hit_atom)
-			for(var/atom/A in T)
-				if(A == LM.target)
-					hit_atom = A
-					break
-			if(!hit_atom && tracking && get_dist(src, LM.target) <= 1 && get_dist(start_turf, LM.target) <= 1) // If we missed, but we are tracking and the target is still next to us and the turf we launched from, then we still count it as a hit
-				hit_atom = LM.target
-		launch_impact(hit_atom)
-	if (loc)
-		throwing = FALSE
-		rebounding = FALSE
-		cur_speed = old_speed
-		remove_temp_pass_flags(pass_flags)
-		LM.invoke_end_throw_callbacks(src)
+
+/// Called by SSlaunch when enough time has elapsed to make us process movement of the throw
+/atom/movable/proc/tick_throw(datum/launch_metadata/LM)
+	var/turf/next_turf = popleft(LM.path)
+	if(!throwing || ++LM.dist >= LM.range || !next_turf)
+		return FALSE // Bail out.
+	var/moved = Move(next_turf)
+
+	if(!moved)
+		var/turf/turf = get_turf(src)
+		var/atom/hit_atom = ismob(LM.target) ? null : turf
+		if(LM.target in turf)
+			hit_atom = LM.target
+		if(!hit_atom && LM.tracking && get_dist(src, LM.target) <= 1) // If we missed, but we are tracking and the target is still next to us then we still count it as a hit
+			hit_atom = LM.target
+		if(hit_atom)
+			launch_impact(hit_atom)
+		reset_throw()
+		return FALSE
+
+	return TRUE
+
+
+/// Call to clear the throwing state completely, the item will stop in place
+/atom/movable/proc/reset_throw()
+	if(!launch_metadata)
+		return
+
+	var/turf/end_turf = get_turf(src)
+	if(end_turf)
+		end_turf.on_throw_end(src)
+
+	remove_temp_pass_flags(launch_metadata?.pass_flags)
+	cur_speed = launch_metadata.old_speed
+
+	SSlaunch?.cancel_throw(launch_metadata)
 	QDEL_NULL(launch_metadata)
+
+	flags_atom &= ~NO_ZFALL
+	throwing = FALSE
+	rebounding = FALSE
+
+
 
 /atom/movable/proc/throw_random_direction(range, speed = 0, atom/thrower, spin, launch_type = NORMAL_LAUNCH, pass_flags = NO_FLAGS)
 	var/throw_direction = pick(CARDINAL_ALL_DIRS)

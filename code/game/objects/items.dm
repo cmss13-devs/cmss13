@@ -853,7 +853,7 @@
 
 /obj/item/proc/showoff(mob/user)
 	var/list/viewers = get_mobs_in_view(GLOB.world_view_size, user)
-	SEND_SIGNAL(user, COMSIG_ATOM_LANGCHAT_SEND_MESSAGE, "holds up [src].", LANGCHAT_IMAGE_IGNORE_LANG | LANGCHAT_IMAGE_IS_EMOTE, viewers, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small"))
+	user.langchat_send_message("holds up [src].", LANGCHAT_IMAGE_IGNORE_LANG | LANGCHAT_IMAGE_IS_EMOTE, viewers, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small"))
 	for (var/mob/M as anything in viewers)
 		M.show_message("[user] holds up [src]. <a HREF=?src=\ref[M];lookitem=\ref[src]>Take a closer look.</a>", SHOW_MESSAGE_VISIBLE)
 

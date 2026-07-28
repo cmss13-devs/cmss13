@@ -2229,7 +2229,7 @@
 				P.stamps += fax_stamp_print
 				if(sending_priority == "Yes")
 					playsound(target_fax.loc, "sound/machines/twobeep.ogg", 45)
-					SEND_SIGNAL(target_fax, COMSIG_ATOM_LANGCHAT_SEND_MESSAGE, "beeps with a priority message", LANGCHAT_IMAGE_IGNORE_LANG | LANGCHAT_IMAGE_IS_EMOTE, get_mobs_in_view(GLOB.world_view_size, target_fax), LANGCHAT_FAST_POP, additional_styles = list("langchat_small"))
+					target_fax.langchat_send_message("beeps with a priority message", LANGCHAT_IMAGE_IGNORE_LANG | LANGCHAT_IMAGE_IS_EMOTE, get_mobs_in_view(GLOB.world_view_size, target_fax), LANGCHAT_FAST_POP, additional_styles = list("langchat_small"))
 					target_fax.visible_message("[SPAN_BOLD(target_fax)] beeps with a priority message.")
 					if(target_fax.radio_alert_tag != null)
 						ai_silent_announcement("COMMUNICATIONS REPORT: Fax Machine [target_fax.machine_id_tag], [target_fax.sub_name ? "[target_fax.sub_name]" : ""], now receiving priority fax.", "[target_fax.radio_alert_tag]")

@@ -181,7 +181,7 @@
 						for(var/mob/mob_in_range in heard)
 							if(mob_in_range.ear_deaf)
 								heard -= mob_in_range
-						SEND_SIGNAL(user, COMSIG_ATOM_LANGCHAT_SEND_MESSAGE, chain_message, LANGCHAT_IMAGE_IGNORE_LANG, heard, override_color = message_color)
+						user.langchat_send_message(chain_message, LANGCHAT_IMAGE_IGNORE_LANG, heard, override_color = message_color)
 					addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living, throw_carbon), target, reverse_facing, 5, SPEED_VERY_FAST), 0.5 SECONDS)
 					user.spin_circle()
 				user.throw_carbon(target, facing, punch_knockback, SPEED_VERY_FAST,)

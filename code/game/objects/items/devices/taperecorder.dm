@@ -263,7 +263,7 @@
 			break
 
 		var/list/heard = get_mobs_in_view(GLOB.world_view_size, src)
-		SEND_SIGNAL(src, COMSIG_ATOM_LANGCHAT_SEND_MESSAGE, mytape.storedinfo[i], LANGCHAT_IMAGE_IGNORE_LANG, heard, additional_styles = list("langchat_small"))
+		langchat_send_message(mytape.storedinfo[i], LANGCHAT_IMAGE_IGNORE_LANG, heard, additional_styles = list("langchat_small"))
 
 		audible_message(SPAN_MAROON("[icon2html(src, usr)] [mytape.storedinfo[i]]"))//We want to display this properly, don't double encode
 		if(length(mytape.storedinfo) < i + 1)
@@ -273,7 +273,7 @@
 			playsleepseconds = mytape.timestamp[i + 1] - mytape.timestamp[i]
 		if(playsleepseconds > 14 SECONDS)
 			sleep(1 SECONDS)
-			SEND_SIGNAL(src, COMSIG_ATOM_LANGCHAT_SEND_MESSAGE, "Skipping [playsleepseconds/10] seconds of silence", LANGCHAT_IMAGE_IGNORE_LANG, heard, additional_styles = list("langchat_small"))
+			langchat_send_message("Skipping [playsleepseconds/10] seconds of silence", LANGCHAT_IMAGE_IGNORE_LANG, heard, additional_styles = list("langchat_small"))
 			audible_message(SPAN_MAROON("[icon2html(src, usr)] Skipping [playsleepseconds/10] seconds of silence."))
 			playsleepseconds = 1 SECONDS
 		i++

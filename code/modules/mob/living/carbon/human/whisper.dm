@@ -104,7 +104,7 @@
 
 	for(var/mob/possible_listening_mob as anything in listening)
 		possible_listening_mob.hear_say(message, verb, speaking, alt_name, italics, src)
-		SEND_SIGNAL(src, COMSIG_ATOM_LANGCHAT_SEND_MESSAGE, message, NO_FLAGS, listening, LANGCHAT_DEFAULT_POP, list("langchat_italic"), speaking)
+		langchat_send_message(message, NO_FLAGS, listening, LANGCHAT_DEFAULT_POP, list("langchat_italic"), speaking)
 
 	if (length(eavesdropping))
 		var/new_message = stars(message) //hopefully passing the message twice through stars() won't hurt... I guess if you already don't understand the language, when they speak it too quietly to hear normally you would be able to catch even less.

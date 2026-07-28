@@ -1569,7 +1569,7 @@
 	for(var/mob/current_mob in viewers)
 		if(!(current_mob.client?.prefs.toggles_langchat & LANGCHAT_SEE_EMOTES))
 			viewers -= current_mob
-	SEND_SIGNAL(src, COMSIG_ATOM_LANGCHAT_SEND_MESSAGE, initial(emote.say_message), LANGCHAT_IMAGE_IGNORE_LANG, viewers)
+	langchat_send_message(initial(emote.say_message), LANGCHAT_IMAGE_IGNORE_LANG, viewers)
 
 	if(initial(emote.sound))
 		playsound(loc, initial(emote.sound), 50, FALSE)

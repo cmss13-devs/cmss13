@@ -278,12 +278,13 @@ their unique feature is that a direct hit will buff your damage and firerate
 		cur_onehand_chance = cur_onehand_chance - 20 //gets steadily worse if you spam it
 	else
 		to_chat(user, SPAN_DANGER("Augh! Your hand catches on the [lever_name]!!"))
+		user.drop_held_item()
 		var/obj/limb/holding_hand = user.get_limb(user.hand ? "l_hand" : "r_hand")
-		if(holding_hand.status & LIMB_BROKEN)
-			holding_hand = user.get_limb(user.hand ? "l_arm" : "r_arm")
-			user.drop_held_item()
-		else
-			holding_hand.fracture()
+		if(holding_hand.status & LIMB_BROKEN) //Hand already broken? Break their arm next
+			var/obj/limb/holding_arm = user.get_limb(user.hand ? "l_arm" : "r_arm")
+			holding_arm.fracture()
+			holding_arm.status &= ~LIMB_SPLINTED
+		holding_hand.fracture()
 		holding_hand.status &= ~LIMB_SPLINTED
 		user.pain.recalculate_pain()
 	addtimer(VARSET_CALLBACK(src, cur_onehand_chance, initial(cur_onehand_chance)), 4 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE)

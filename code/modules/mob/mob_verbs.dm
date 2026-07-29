@@ -251,8 +251,17 @@
 	set name = "Look Up"
 	set category = "IC"
 
+	var/obj/structure/bed/chair/comfy/vehicle/vehicle_seat
+	if(buckled && istype(buckled, /obj/structure/bed/chair/comfy/vehicle))
+		vehicle_seat = buckled
+	// Only the driver/gunner seats get a personal look up/down.
+	var/is_vehicle_crew = vehicle_seat?.vehicle && (vehicle_seat.seat == VEHICLE_DRIVER || vehicle_seat.seat == VEHICLE_GUNNER)
+
 	if(observed_atom)
 		QDEL_NULL(observed_atom)
+		if(is_vehicle_crew && client)
+			client.change_view(VEHICLE_SEAT_VIEW_RADIUS, vehicle_seat.vehicle)
+			vehicle_seat.vehicle.set_seated_mob(vehicle_seat.seat, src)
 		return
 
 	if(!client)
@@ -263,7 +272,12 @@
 		eye.change_level()
 		return
 
-	if(client.view != world.view)
+	// Tank crew get a wider view even at rest, exempt their baseline seat view from the zoom check.
+	if(is_vehicle_crew)
+		if(client.view != VEHICLE_SEAT_VIEW_RADIUS)
+			to_chat(src, SPAN_WARNING("You cannot look up while zoomed!"))
+			return
+	else if(client.view != world.view)
 		to_chat(src, SPAN_WARNING("You cannot look up while zoomed!"))
 		return
 
@@ -271,11 +285,24 @@
 		to_chat(src, SPAN_WARNING("We cannot look up here, we are burrowed!"))
 		return
 
-	if(!isturf(loc))
-		to_chat(src, SPAN_WARNING("You cannot look up here."))
-		return
+	var/turf/vehicle_turf = null
+	if(vehicle_seat)
+		if(is_vehicle_crew)
+			vehicle_turf = get_turf(vehicle_seat.vehicle)
+		else
+			to_chat(src, SPAN_WARNING("You cannot look up from this position."))
+			return
 
-	var/turf/above = SSmapping.get_turf_above(loc)
+	var/turf/above
+	if(vehicle_turf)
+		// A seated crewman's loc sits in the vehicle's own interior, so use its real exterior position instead.
+		above = locate(vehicle_turf.x, vehicle_turf.y, vehicle_turf.z + 1)
+	else
+		if(!isturf(loc))
+			to_chat(src, SPAN_WARNING("You cannot look up here."))
+			return
+		above = SSmapping.get_turf_above(loc)
+
 	if(!isturf(above))
 		to_chat(src, SPAN_WARNING("You cannot look up here."))
 		return
@@ -284,6 +311,6 @@
 		to_chat(src, SPAN_WARNING("You cannot look up here."))
 		return
 
-	var/mob/hologram/look_up/observed_hologram = new(above, src)
+	var/mob/hologram/look_up/observed_hologram = new(above, src, vehicle_seat?.vehicle, vehicle_seat?.seat)
 
 	observed_atom = observed_hologram

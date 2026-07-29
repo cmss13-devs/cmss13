@@ -50,7 +50,7 @@
 		SPAN_NOTICE("[user] begins picking chips of bone out of your skull with [tool]."),
 		SPAN_NOTICE("[user] begins picking chips of bone out of [target]'s skull with [tool]."))
 
-	target.custom_pain("You feel [user] picking around your brain! Ow, ouch, owie!", 1)
+	target.custom_pain("You feel [user] picking around your brain! It does not hurt, butit feels... Strange.", 1)
 	log_interact(user, target, "[key_name(user)] started taking bone chips out of [key_name(target)]'s skull with [tool], possibly beginning [surgery].")
 
 /datum/surgery_step/remove_bone_chips/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -61,12 +61,14 @@
 			SPAN_NOTICE("[user] pulls out some extra, tiny, loose pieces of bone that were rattling around in [target]'s skull."))
 	if(target.sdisabilities & DISABILITY_MUTE) ////My self esteem emphatically dramatically improved since I was dumb!
 		user.affected_message(target,
-			SPAN_NOTICE("You finish extracting fragments of bone that were piercing [target]'s Broca's and Wernicke's area and prevented speech."),
-			SPAN_NOTICE("[user] finishes extracting fragments of bone that were piercing your Broca's and Wernicke's area and prevented speech."))
+			SPAN_NOTICE("You finish extracting fragments of bone that were piercing [target]'s Broca's and Wernicke's area."),
+			SPAN_NOTICE("[user] finishes extracting fragments of bone that were piercing your Broca's and Wernicke's area and prevented you from speaking.")
+			SPAN_NOTICE("[user] finishes extracting fragments of bone that were piercing [target]'s Broca's and Wernicke's area."))
 	if(target.sdisabilities & DISABILITY_DEAF) ///Wait, I can hear, now?
 		user.affected_message(target,
-			SPAN_NOTICE("You finish extracting fragments of bone that were piercing [target]'s auditory cortex and causing severe tinnitus."),
-			SPAN_NOTICE("[user] finishes extracting fragments of bone that were piercing your auditory cortex and causing severe tinnitus."))
+			SPAN_NOTICE("You finish extracting fragments of bone that were piercing [target]'s auditory cortex."),
+			SPAN_NOTICE("[user] finishes extracting fragments of bone that were piercing your auditory cortex and causing your severe tinnitus.")
+			SPAN_NOTICE("[user] finishes extracting fragments of bone that were piercing [target]'s' auditory cortex."))
 	user.affected_message(target,
 		SPAN_NOTICE("You finish extracting sharp pieces of bone that were piercing [target]'s brain."),
 		SPAN_NOTICE("[user] finishes extracting sharp pieces of bone that were piercing your brain."),
@@ -81,9 +83,7 @@
 	if(target.stat == CONSCIOUS)
 		to_chat(target, SPAN_NOTICE("The rattling and piercing feelings in your brain cease. Your mind and ears feel more clear."))
 
-	var/obj/item/shard/shrapnel/bone_chips/human/bone_chips = locate() in target
-	if(bone_chips)
-		bone_chips.forceMove(user.loc)
+	var/obj/item/shard/shrapnel/bone_chips/human/chips = new(user.loc) //sneakily spawn bone chips
 
 	target.disabilities &= ~NERVOUS
 	target.sdisabilities &= ~DISABILITY_DEAF
@@ -95,9 +95,9 @@
 
 /datum/surgery_step/remove_bone_chips/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_WARNING("Your hand slips, tearing a blood vessel in [target]'s [surgery.affected_limb.display_name] with [tool]!"),
+		SPAN_WARNING("Your hand slips, tearing a blood vessel in [target]'s [surgery.affected_limb.display_name] with [tool], causing internal bleeding!"),
 		SPAN_WARNING("[user]'s hand slips, tearing a blood vessel in your [surgery.affected_limb.display_name] with [tool], causing internal bleeding!"),
-		SPAN_WARNING("[user]'s hand slips, tearing a blood vessel in [target]'s [surgery.affected_limb.display_name] with [tool]!"))
+		SPAN_WARNING("[user]'s hand slips, tearing a blood vessel in [target]'s [surgery.affected_limb.display_name] with [tool], causing internal bleeding!"))
 
 	log_interact(user, target, "[key_name(user)] failed to take the bone chips out of [key_name(target)]'s brain with [tool], possibly aborting [surgery].")
 
@@ -147,7 +147,6 @@
 	if(patient_brain && patient_brain.damage >= BONECHIPS_MAX_DAMAGE) // severe brain damage won't be fixed by curing the hematoma
 		patient_brain.damage = BONECHIPS_MAX_DAMAGE
 
-	new /obj/item/shard/shrapnel/bone_chips/human(target) //secretly adds bone chips
 	if(target.stat == CONSCIOUS)
 		to_chat(target, SPAN_NOTICE("The agonizing pressure in your skull releases."))
 

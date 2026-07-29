@@ -139,17 +139,16 @@
 
 	if(tool.w_class >= SIZE_SMALL)
 		user.affected_message(target,
-			SPAN_NOTICE("You tear some blood vessels trying to fit such a bulky object in [target]'s [surgery.affected_limb.cavity]."),
-			SPAN_NOTICE("[user] tears some blood vessels trying to fit such a bulky object in your [surgery.affected_limb.cavity]."),
-			SPAN_NOTICE("[user] tears some blood vessels trying to fit such a bulky object in [target]'s [surgery.affected_limb.cavity]."))
+			SPAN_NOTICE("You tear some blood vessels trying to fit such a bulky object in [target]'s [surgery.affected_limb.cavity], causing internal bleeding!"),
+			SPAN_NOTICE("[user] tears some blood vessels trying to fit such a bulky object in your [surgery.affected_limb.cavity], causing internal bleeding!"),
+			SPAN_NOTICE("[user] tears some blood vessels trying to fit such a bulky object in [target]'s [surgery.affected_limb.cavity], causing internal bleeding!"))
 
 		target.custom_pain("You feel something rip in your [surgery.affected_limb.cavity]!", 1)
 		if(target.stat == CONSCIOUS)
 			to_chat(user, SPAN_WARNING("Blood is gushing out of your [surgery.affected_limb.display_name]! It looks horrifying!"))
 			if(target.pain.reduction_pain < surgery.pain_reduction_required)//if patient is not under the proper anesthesia
 				target.emote("pain")
-			else
-				return
+
 		var/datum/wound/internal_bleeding/int_bleeding = new (0)
 		surgery.affected_limb.add_bleeding(int_bleeding, TRUE)
 		surgery.affected_limb.wounds += int_bleeding

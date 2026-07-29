@@ -474,7 +474,7 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/black_goo_cure
 	name = "\"Pathogen\" cure EZ autoinjector (SINGLE-USE)"
-	desc = "An autoinjector loaded with a single 5u dose for a cure for Agent A0-3959X.91–15, also known as the 'black goo.' You cannot refill it, but it doesn't require any training to administer."
+	desc = "An autoinjector loaded with a single 5u dose of a cure for Agent A0-3959X.91–15, also known as the 'black goo.' You cannot refill it, but it doesn't require any training to administer."
 	icon_state = "empty_research_oneuse"
 	chemname = "antiZed"
 	autoinjector_type = "autoinjector_oneuse"
@@ -503,7 +503,6 @@
 	autoinjector_type = "+stimpack_custom"
 	skilllock = SKILL_MEDICAL_DEFAULT
 	display_maptext = FALSE //corporate secret
-	maptext_label = "Uz"
 
 /obj/item/reagent_container/hypospray/autoinjector/ultrazine/update_icon()
 	. = ..()
@@ -521,7 +520,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/ultrazine/liaison
 	name = "strange autoinjector"
 	desc = "You know what they say, don't jab yourself with suspicious syringes."
-	maptext_label = "??"
+	maptext_label = "???"
 
 /obj/item/reagent_container/hypospray/autoinjector/yautja
 	name = "unusual crystal"

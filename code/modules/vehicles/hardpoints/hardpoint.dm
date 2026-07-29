@@ -5,6 +5,8 @@
 	//------MAIN VARS----------
 	/// Which slot is this hardpoint in. Purely to check for conflicting hardpoints.
 	var/slot
+	/// Overrides which slot this hardpoint's wound families roll under. Null uses its real slot.
+	var/wound_family_slot
 	/// The vehicle this hardpoint is installed on.
 	var/obj/vehicle/multitile/owner
 
@@ -13,6 +15,18 @@
 
 	/// Determines how much of any incoming damage is actually taken.
 	var/damage_multiplier = 1
+
+	/// Cumulative Acid damage taken, capped at max health. Drives acid wound rolls.
+	var/acid_damage_taken = 0
+	/// Cumulative Brute damage taken, capped at max health. Drives brute wound rolls.
+	var/brute_damage_taken = 0
+	/// wound_family_id -> current tier. Missing/0 means no wound of that family yet.
+	var/list/wound_tiers
+	/// wound_family_id -> list("tier", "step") tracking repair progress on the current tier.
+	var/list/wound_repair_progress
+
+	/// Power (units/sec) this hardpoint draws while installed and undamaged. 0 for most hardpoints.
+	var/power_draw = 0
 
 	/// Origin coords of the hardpoint relative to the vehicle.
 	var/list/origins = list(0, 0)
@@ -32,6 +46,11 @@
 
 	/// List of pixel offsets for each direction.
 	var/list/px_offsets
+
+	// pivots used to calculate the correctt rotation both for secondary hardpoints and for primary hardpoints.
+	// because the secondary hardpoints are rotating WITH the turret, but also AROUND themselves, they need two pivots.
+	var/list/rotation_pivot
+	var/list/gimbal_pivot
 
 	/// Visual layer of hardpoint when on vehicle.
 	var/hdpt_layer = HDPT_LAYER_WHEELS
@@ -68,8 +87,52 @@
 	/// Used to prevent welder click spam.
 	var/being_repaired = FALSE
 
-	/// The firing arc of this hardpoint.
-	var/firing_arc = 0 //in degrees. 0 skips whole arc of fire check
+	/// How fast this weapon can traverse.
+	var/traverse_arc = 0 //in degrees. 0 skips whole arc of fire check on fixed mounts
+
+	/// If TRUE, this hardpoint runs its own independent mouse-aim rotation (current_angle/rotation_loop below) instead of following its holder's rotate() cascade - see /obj/item/hardpoint/secondary/proc/toggle_slaved_to_driver().
+	var/self_gimballed = FALSE
+
+	/// If TRUE, this hardpoint is mounted directly on the vehicle and gets live rotation tracking. TRUE on primary/secondary.
+	var/uses_live_rotation_tracking = FALSE
+	/// If TRUE, this hardpoint holds its own facing independent of hull rotation.
+	var/gyro = FALSE
+	/// Safety lock. While TRUE, forces gyro off and locks this hardpoint to hull facing.
+	var/turret_safety_on = FALSE
+	/// Looping rotation sound, active while this hardpoint is rotating.
+	var/datum/looping_sound/tank_turret/rotation_soundloop
+	/// If TRUE, tthis hardpoint loads star shells/star shell packets directly (attackby()) instead of swapping magazines, and fires them at a randomized point ahead of the vehicle. TRUE on the tank's turret and the APC's flare launcher.
+	var/uses_starshell_ammo = FALSE
+	/// Width, in degrees, of the arc in front of the hull a fired star shell can land within.
+	var/flare_spread = 45
+	/// Minimum tiles in front of the hull a fired star shell can land.
+	var/flare_range_min = 5
+	/// Maximum tiles in front of the hull a fired star shell can land.
+	var/flare_range_max = 9
+	/// The hardpoint's live, continuously-simulated facing (0-360, north-clockwise). Distinct from dir, which stays snapped to a cardinal for sprite selection. Only meaningful for the turret itself, or a self_gimballed hardpoint.
+	var/current_angle = 0
+	/// Where the mouse currently wants this hardpoint to face (0-360, north-clockwise). current_angle chases this.
+	var/desired_angle = 0
+	/// Current turn speed, in degrees per tick, ramped toward max_angular_velocity.
+	var/angular_velocity = 0
+	/// Turn speed cap for this hardpoint.
+	var/max_angular_velocity = TURRET_DEFAULT_ANGULAR_VELOCITY
+	/// How fast angular_velocity ramps up/down, in degrees per tick^2.
+	var/angular_accel = TURRET_ANGULAR_ACCEL
+	/// Guards against spawning more than one concurrent rotation_loop().
+	var/rotation_active = FALSE
+	/// world.time of the last processed mouse-move, used to rate-limit update_desired_angle().
+	var/last_desired_update_time = 0
+	/// While TRUE, update_desired_angle() no-ops - set on whichever object get_rotation_owner() resolves
+	/// to while a track_and_charge() lock-on is in progress, so live mouse input can't fight it.
+	var/aim_locked = FALSE
+	/// Guards against spawning more than one concurrent track_and_charge() on this hardpoint.
+	var/charging = FALSE
+	/// Set by cancel_charge() (COMSIG_GUN_STOP_FIRE/COMSIG_GUN_INTERRUPT_FIRE) to abort an in-progress
+	/// track_and_charge() loop. Distinct from fire_wait_cancelled, which guards a different wait
+	/// (arc-entry, not an active charge) and could otherwise interfere if both were active at once.
+	var/charge_cancelled = FALSE
+	var/trigger_held = FALSE
 
 	// Muzzleflash
 	var/use_muzzle_flash = FALSE
@@ -81,6 +144,11 @@
 
 	/// Currently loaded ammo that we shoot from.
 	var/obj/item/ammo_magazine/hardpoint/ammo
+	/// The type of magazine this hardpoint accepts, cached from ammo's class-default in Initialize()
+	/// unlike ammo itself, this stays set even while ammo is temporary null, so
+	/// get_hardpoints_with_ammo()/try_add_clip()/the weapons loader can still recognize this
+	/// hardpoint as reloadable and know whatt magazine type to accept
+	var/ammo_type
 	/// Spare magazines that we can reload from.
 	var/list/backup_clips
 	/// Maximum amount of spare mags.
@@ -96,6 +164,8 @@
 	var/shots_fired = 0
 	/// Delay before a new firing sequence can start.
 	COOLDOWN_DECLARE(fire_cooldown)
+	/// Set by cancel_firing_arc_wait() to break out of wait_for_firing_arc() early.
+	var/fire_wait_cancelled = FALSE
 
 	// Firemodes.
 	/// Current selected firemode of the gun.
@@ -127,6 +197,8 @@
 	var/atom/target
 	/// The type of projectile to fire
 	var/projectile_type = /obj/projectile
+	/// How many ammo.current_rounds a single base handle_fire() shot costs. The flamer hardpoints (primary/flamer.dm, secondary/flamer.dm) set this to 0 and do their own reagent-based fuel deduction instead, since their ammo tracks real chemical volume rather than plain integer rounds.
+	var/ammo_cost_per_shot = 1
 
 //-----------------------------
 //------GENERAL PROCS----------
@@ -141,7 +213,11 @@
 /obj/item/hardpoint/Initialize()
 	. = ..()
 	set_bullet_traits()
+	if(ammo)
+		ammo_type = ammo.type
 	AddComponent(/datum/component/automatedfire/autofire, fire_delay, burst_delay, burst_amount, gun_firemode, autofire_slow_mult, CALLBACK(src, PROC_REF(set_burst_firing)), CALLBACK(src, PROC_REF(reset_fire)), CALLBACK(src, PROC_REF(fire_wrapper)), callback_set_firing = CALLBACK(src, PROC_REF(set_auto_firing)))
+	if(uses_live_rotation_tracking)
+		rotation_soundloop = new(src)
 
 /obj/item/hardpoint/Destroy()
 	if(owner)
@@ -151,13 +227,14 @@
 	QDEL_NULL_LIST(backup_clips)
 	QDEL_NULL(ammo)
 	set_target(null)
+	QDEL_NULL(rotation_soundloop)
 	return ..()
 
 /obj/item/hardpoint/ex_act(severity)
 	if(owner || explo_proof)
 		return
 
-	take_damage(severity / 2)
+	take_damage(severity / 2, "explosive")
 	if(health <= 0)
 		visible_message(SPAN_WARNING("\The [src] disintegrates into useless pile of scrap under the damage it suffered."))
 		deconstruct(TRUE)
@@ -169,6 +246,8 @@
 /obj/item/hardpoint/proc/generate_bullet(mob/user, turf/origin_turf)
 	var/obj/projectile/P = new projectile_type(origin_turf, create_cause_data(initial(name), user))
 	P.generate_bullet(new ammo.default_ammo)
+	P.effective_range_max = P.ammo.effective_range_max
+	P.effective_range_min = P.ammo.effective_range_min
 	// Apply bullet traits from gun
 	for(var/entry in traits_to_give)
 		var/list/L
@@ -181,18 +260,60 @@
 		P.apply_bullet_trait(L)
 	return P
 
-/obj/item/hardpoint/proc/can_take_damage()
-	if(!damage_multiplier)
-		return FALSE
-	if(health > 0)
-		return TRUE
-
-/obj/item/hardpoint/proc/take_damage(damage)
+/**
+ * Applies damage, tracks it into the Acid/Brute sub-pool, and rolls for a wound.
+ *
+ * Arguments:
+ * * damage = Raw incoming damage, pre-damage_multiplier.
+ * * type = Damage type used for wound rolling. Defaults to "abstract", which never rolls a wound.
+ * * attacker = Who dealt the hit, if known. Used to aim wound effects like shrapnel.
+ * * unmitigated = Skips damage_multiplier, but still rolls wounds.
+ * * wound_chance_mult = Multiplies the wound roll chance for this hit.
+ */
+/obj/item/hardpoint/proc/take_damage(damage, type = "abstract", atom/attacker, unmitigated = FALSE, wound_chance_mult = 1)
 	if(health <= 0)
+		return
+	var/applied_damage = unmitigated ? damage : damage * damage_multiplier
+	health = max(0, health - applied_damage)
+
+	var/mapped_type = wound_damage_type_for(type)
+	if(mapped_type == WOUND_DAMTYPE_ACID)
+		acid_damage_taken += applied_damage
+	else if(mapped_type == WOUND_DAMTYPE_BRUTE)
+		brute_damage_taken += applied_damage
+	if(mapped_type)
+		roll_wounds(applied_damage, mapped_type, attacker, wound_chance_mult)
+
+	if(!health)
+		on_destroy()
+		owner?.ensure_active_hardpoint(VEHICLE_DRIVER)
+		owner?.ensure_active_hardpoint(VEHICLE_GUNNER)
+
+/**
+ * Applies raw damage to health only. No wound tracking or rolling.
+ * Used for splash damage bleeding between a parent and its mounted children.
+ *
+ * Arguments:
+ * * damage = Raw incoming damage, pre-damage_multiplier.
+ */
+/obj/item/hardpoint/proc/deal_raw_damage(damage)
+	if(health <= 0 || damage <= 0)
 		return
 	health = max(0, health - damage * damage_multiplier)
 	if(!health)
 		on_destroy()
+		owner?.ensure_active_hardpoint(VEHICLE_DRIVER)
+		owner?.ensure_active_hardpoint(VEHICLE_GUNNER)
+
+/// Same as deal_raw_damage(), but also skips damage_multiplier for a fully unblocked hit.
+/obj/item/hardpoint/proc/deal_unmitigated_damage(damage)
+	if(health <= 0 || damage <= 0)
+		return
+	health = max(0, health - damage)
+	if(!health)
+		on_destroy()
+		owner?.ensure_active_hardpoint(VEHICLE_DRIVER)
+		owner?.ensure_active_hardpoint(VEHICLE_GUNNER)
 
 /obj/item/hardpoint/proc/on_destroy()
 	return
@@ -212,6 +333,12 @@
 		return
 	RegisterSignal(vehicle, COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES, PROC_REF(recalculate_hardpoint_bonuses))
 	apply_buff(vehicle)
+	vehicle.refresh_hardpoint_actions()
+	if(uses_live_rotation_tracking)
+		// Spawns facing dir's default (south) instead of current_angle's own default (north).
+		current_angle = dir2angle(dir)
+		desired_angle = current_angle
+	recalculate_own_turn_rate()
 
 /// Remove hardpoint effects from vehicle and self.
 /obj/item/hardpoint/proc/on_uninstall(obj/vehicle/multitile/vehicle)
@@ -220,6 +347,7 @@
 	UnregisterSignal(vehicle, COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES)
 	remove_buff(vehicle)
 	//resetting values like set_gun_config_values() would be tidy, but unnecessary as it gets recalc'd on install anyway
+	// Not calling refresh_hardpoint_actions() yet, still installed at this point.
 
 /// Applying passive buffs like damage type resistance, speed, accuracy, cooldowns.
 /obj/item/hardpoint/proc/apply_buff(obj/vehicle/multitile/vehicle)
@@ -247,9 +375,13 @@
 	buff_applied = FALSE
 	SEND_SIGNAL(vehicle, COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES)
 
-/// Recalculates hardpoint values based on vehicle modifiers.
+/**
+ * Recalculates hardpoint values based on vehicle modifiers, wound effects, and raw integrity.
+ */
 /obj/item/hardpoint/proc/recalculate_hardpoint_bonuses()
-	scatter = initial(scatter) / owner.misc_multipliers["accuracy"]
+	var/accuracy_mult = get_combined_weapon_mult("accuracy_mult", WEAPON_MIN_ACCURACY_MULT)
+	var/scatter_mult = min(get_wound_effect_multiplier("scatter_mult"), WEAPON_MAX_SCATTER_MULT)
+	scatter = initial(scatter) / (owner.misc_multipliers["accuracy"] * accuracy_mult) * scatter_mult
 	var/cooldown_mult = owner.misc_multipliers["cooldown"]
 	set_fire_delay(initial(fire_delay) * cooldown_mult)
 	set_burst_delay(initial(burst_delay) * cooldown_mult)
@@ -318,6 +450,8 @@
 	else
 		data["uses_ammo"] = FALSE
 
+	data["wounds"] = get_wound_tgui_data()
+
 	return data
 
 //-----------------------------
@@ -335,9 +469,49 @@
 /obj/item/hardpoint/get_examine_text(mob/user)
 	. = ..()
 	if(health <= 0)
-		. += "It's busted!"
+		. += SPAN_BOLDWARNING("It's busted!")
 	else if(isobserver(user) || (ishuman(user) && (skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE) || skillcheck(user, SKILL_VEHICLE, SKILL_VEHICLE_CREWMAN))))
 		. += "It's at [round(get_integrity_percent(), 1)]% integrity!"
+	. += get_wound_examine_lines(user)
+
+/**
+ * Handles clicks from get_wound_examine_lines() and the vehicle's part list: examining this
+ * hardpoint, or showing a wound's repair info. Falls through to ..() for anything else.
+ */
+/obj/item/hardpoint/Topic(href, list/href_list)
+	if(href_list["examine_hardpoint"])
+		examine(usr)
+		return
+	if(href_list["wound_info"])
+		show_wound_repair_info(usr, href_list["wound_info"])
+		return
+	return ..()
+
+/**
+ * Builds the examine feedback lines for every active wound on this hardpoint.
+ *
+ * Arguments:
+ * * user = Whoever is examining this hardpoint.
+ *
+ * Returns:
+ * * A list of examine-text lines, one per active wound. Empty if none.
+ */
+/obj/item/hardpoint/proc/get_wound_examine_lines(mob/user)
+	. = list()
+	var/is_xeno_examiner = isxeno(user)
+	for(var/family_type in wound_tiers)
+		var/list/tier_data = get_wound_tier_data(family_type)
+		if(!tier_data)
+			continue
+		var/blurb = is_xeno_examiner ? tier_data["xeno_feedback"] : tier_data["marine_feedback_red"]
+		if(!blurb)
+			continue
+		if(is_xeno_examiner)
+			. += tier_data["bold_feedback"] ? SPAN_XENOBOLDNOTICE(blurb) : SPAN_XENOWARNING(blurb)
+			continue
+		var/line = tier_data["bold_feedback"] ? SPAN_BOLDWARNING(blurb) : SPAN_WARNING(blurb)
+		line += " <a href='byond://?src=\ref[src];wound_info=[family_type]'>(Repair Info)</a>"
+		. += line
 
 //reloading hardpoint - take mag from backup clips and replace current ammo with it. Will change in future. Called via weapons loader
 /obj/item/hardpoint/proc/reload(mob/user)
@@ -354,17 +528,23 @@
 
 	sleep(20)
 
-	forceMove(ammo, get_turf(src))
-	ammo.update_icon()
+	if(ammo)
+		forceMove(ammo, get_turf(src))
+		ammo.update_icon()
 	ammo = A
 	LAZYREMOVE(backup_clips, A)
+	owner?.update_icon()
 
 	to_chat(user, SPAN_NOTICE("You reload \the [name]."))
 
+/// Whether this hardpoint will accept a given magazine for reloading. Eg, m56d cupola accepts m56d drums.
+/obj/item/hardpoint/proc/accepts_magazine(obj/item/ammo_magazine/magazine)
+	return istype(magazine, ammo_type)
+
 //try adding magazine to hardpoint's backup clips. Called via weapons loader
 /obj/item/hardpoint/proc/try_add_clip(obj/item/ammo_magazine/A, mob/user)
-	if(!ammo)
-		to_chat(user, SPAN_WARNING("\The [name] doesn't use ammunition."))
+	if(!ammo_type)
+		to_chat(user, SPAN_WARNING("\The [name] doesn't use ammunition.")) // UA flag
 		return FALSE
 	if(max_clips == 0)
 		to_chat(user, SPAN_WARNING("\The [name] does not have room for additional ammo."))
@@ -387,10 +567,16 @@
 
 	playsound(loc, 'sound/machines/hydraulics_2.ogg', 50)
 	LAZYADD(backup_clips, A)
-	to_chat(user, SPAN_NOTICE("You load \the [A] into \the [name]. Ammo: <b>[SPAN_HELPFUL(ammo.current_rounds)]/[SPAN_HELPFUL(ammo.max_rounds)]</b> | Mags: <b>[SPAN_HELPFUL(LAZYLEN(backup_clips))]/[SPAN_HELPFUL(max_clips)]</b>"))
+	to_chat(user, SPAN_NOTICE("You load \the [A] into \the [name]. Ammo: <b>[SPAN_HELPFUL(ammo ? ammo.current_rounds : 0)]/[SPAN_HELPFUL(ammo ? ammo.max_rounds : 0)]</b> | Mags: <b>[SPAN_HELPFUL(LAZYLEN(backup_clips))]/[SPAN_HELPFUL(max_clips)]</b>"))
 	return TRUE
 
+/**
+ * Offers wound-fix and integrity-repair together in one picker when a welder could do either.
+ * Only reachable while detached.
+ */
 /obj/item/hardpoint/attackby(obj/item/O, mob/user)
+	if(!owner && try_fix_detached_wound_with_tool(O, user))
+		return
 	if(iswelder(O))
 		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
@@ -464,7 +650,11 @@
 		WT.remove_fuel(1, user)
 
 		//get_skill_duration_multiplier returns a multiplier, so we delete by it
-		health += initial(health)/100 * (amount_fixed / amount_fixed_adjustment)
+		var/health_restored = initial(health)/100 * (amount_fixed / amount_fixed_adjustment)
+		health += health_restored
+		// Bleed down both sub-pools by the same amount health just recovered.
+		acid_damage_taken = max(0, acid_damage_taken - health_restored)
+		brute_damage_taken = max(0, brute_damage_taken - health_restored)
 		if(health >= initial(health))
 			health = initial(health)
 			user.visible_message(SPAN_NOTICE("[user] finishes repairing \the [name]."), SPAN_NOTICE("You finish repairing \the [name]. The integrity of the module is at [SPAN_HELPFUL(floor(get_integrity_percent()))]%."))
@@ -523,6 +713,7 @@
 
 /// Reset variables used in firing and remove the gun from the autofire system.
 /obj/item/hardpoint/proc/stop_fire(datum/source, atom/object, turf/location, control, params)
+	trigger_held = FALSE
 	SEND_SIGNAL(src, COMSIG_GUN_STOP_FIRE)
 	if(auto_firing)
 		reset_fire() //automatic fire doesn't reset itself from COMSIG_GUN_STOP_FIRE
@@ -545,15 +736,19 @@
 		return
 
 	set_target(get_turf_on_clickcatcher(object, source, params))
+	trigger_held = TRUE
 
 	if(gun_firemode == GUN_FIREMODE_SEMIAUTO)
-		var/fire_return = try_fire(object, source, params)
-		//end-of-fire, show ammo (if changed)
-		if(fire_return == AUTOFIRE_CONTINUE)
-			reset_fire()
-			display_ammo(source)
+		INVOKE_ASYNC(src, PROC_REF(fire_semiauto), object, source, params)
 	else
 		SEND_SIGNAL(src, COMSIG_GUN_FIRE)
+
+// Fires a single semi-auto shot and handles its result so it can be invoked asynchronous for linters
+/obj/item/hardpoint/proc/fire_semiauto(atom/target, mob/living/user, params)
+	var/fire_return = try_fire(target, user, params)
+	if(fire_return == AUTOFIRE_CONTINUE)
+		reset_fire()
+		display_ammo(user)
 
 /// Wrapper proc for the autofire system to ensure the important args aren't null.
 /obj/item/hardpoint/proc/fire_wrapper(atom/target, mob/living/user, params)
@@ -583,12 +778,45 @@
 	return handle_fire(target, user, params)
 
 /// Actually fires the gun, sets up the projectile and fires it.
-/obj/item/hardpoint/proc/handle_fire(atom/target, mob/living/user, params)
+/obj/item/hardpoint/proc/handle_fire(atom/target, mob/living/user, params, atom/original_target)
+	if(isnull(original_target))
+		original_target = target
 	var/turf/origin_turf = get_origin_turf()
 
-	var/obj/projectile/projectile_to_fire = generate_bullet(user, origin_turf)
-	ammo.current_rounds--
+	// Spawn projectile outside the vehicle hull, and never on a dense turf, so it doesn't end up
+	// stuck inside a wall the vehicle is pressed against.
+	var/turf/spawn_turf = origin_turf
+	if(owner && length(owner.locs) > 1)
+		var/turf/target_turf = get_turf(target)
+		// Flatten the target's z to origin's own so cross-z targets don't break the exit search.
+		var/turf/search_target = target_turf ? (locate(target_turf.x, target_turf.y, origin_turf.z) || target_turf) : target_turf
+		// Walk the line from the vehicle's center so diagonal aims exit the right hull tile.
+		var/list/path = get_line(get_turf(owner), search_target)
+		var/found_exit = FALSE
+		for(var/turf/T as anything in path)
+			// preventts a bug where the projectile disappears if it occupies the same tile the projectile spawns in
+			if(!(T in owner.locs) && T != search_target)
+				spawn_turf = T
+				found_exit = TRUE
+				break
+		// Point-blank range: spawn at the target's own tile instead of falling back to the hull.
+		if(!found_exit && search_target && !(search_target in owner.locs) && !search_target.density)
+			spawn_turf = search_target
+	if(!spawn_turf || spawn_turf.density || (owner && (spawn_turf in owner.locs)))
+		spawn_turf = get_turf(owner) // last-resort fallback, always valid and non-dense
+
+	var/obj/projectile/projectile_to_fire = generate_bullet(user, spawn_turf)
+	ammo.current_rounds -= ammo_cost_per_shot
 	SEND_SIGNAL(projectile_to_fire, COMSIG_BULLET_USER_EFFECTS, user)
+	// The tank's own IFF module overrides whatever IFF the firer's ID card set.
+	if(projectile_to_fire.runtime_iff_group && owner)
+		var/obj/item/hardpoint/iff_module/iff = locate() in owner.get_hardpoints_copy()
+		projectile_to_fire.runtime_iff_group = (iff && iff.is_functional()) ? iff.set_faction : null
+	projectile_to_fire.original = original_target
+
+	// Mirrors every handheld gun's own def_zone assignment (Fire(), gun.dm).
+	if(isliving(user))
+		projectile_to_fire.def_zone = user.zone_selected
 
 	// turf-targeted projectiles are fired without scatter, because proc would raytrace them further away
 	var/ammo_flags = projectile_to_fire.ammo.flags_ammo_behavior | projectile_to_fire.projectile_override_flags
@@ -596,7 +824,16 @@
 		projectile_to_fire.scatter = scatter
 		target = simulate_scatter(projectile_to_fire, target, origin_turf, get_turf(target), user)
 
-	INVOKE_ASYNC(projectile_to_fire, TYPE_PROC_REF(/obj/projectile, fire_at), target, user, src, projectile_to_fire.ammo.max_range, projectile_to_fire.ammo.shell_speed)
+	// Damaged weapons hit softer.
+	projectile_to_fire.ammo.damage *= get_combined_weapon_mult("damage_mult", WEAPON_MIN_DAMAGE_MULT)
+
+	// Primary weapons only: a slowed round also loses penetration by the same fraction.
+	if(istype(src, /obj/item/hardpoint/primary))
+		projectile_to_fire.ammo.penetration *= get_combined_weapon_mult("projectile_speed_mult", WEAPON_MIN_PROJECTILE_SPEED_MULT)
+
+	// projectile_speed_mult: a fouled or bent barrel slows the round leaving it.
+	var/wound_shell_speed = projectile_to_fire.ammo.shell_speed * get_combined_weapon_mult("projectile_speed_mult", WEAPON_MIN_PROJECTILE_SPEED_MULT)
+	INVOKE_ASYNC(projectile_to_fire, TYPE_PROC_REF(/obj/projectile, fire_at), target, user, src, projectile_to_fire.ammo.max_range, wound_shell_speed)
 	projectile_to_fire = null
 
 	shots_fired++
@@ -607,6 +844,150 @@
 	set_fire_cooldown(gun_firemode)
 
 	return AUTOFIRE_CONTINUE
+
+/**
+ * No-op by default - only the flamer hardpoints (primary/flamer.dm, secondary/flamer.dm) override
+ * this to flip between FLAME_MODE_STTREAM and FLAME_MODE_GLOB
+ */
+/obj/item/hardpoint/proc/toggle_fire_mode(mob/user)
+	return
+
+/**
+ * Null by default. Flamer hardpoints override this to return their own flame_mode, so the
+ * Toggle Fire Mode action button can pick an icon without knowing the specific subtype.
+ */
+/obj/item/hardpoint/proc/get_flame_mode()
+	return null
+
+/**
+ * Fires the flamer hardpoint's stream mode, drawing fuel properties from the loaded ammo's chem.
+ *
+ * Arguments:
+ * * target = Where the stream is aimed.
+ * * user = The gunner firing.
+ * * flameshape = Spray pattern override. Falls back to the loaded chem's own flameshape.
+ * * range_bonus = Flat extra tiles of range added to the loaded fuel's own reach.
+ */
+/obj/item/hardpoint/proc/fire_flame_stream(atom/target, mob/living/user, flameshape, range_bonus = 0)
+	var/datum/reagent/chem = LAZYACCESS(ammo.reagents?.reagent_list, 1)
+	if(!chem)
+		click_empty(user)
+		return NONE
+
+	//step forward along path so flame starts outside hull
+	var/list/turfs = get_line(get_origin_turf(), get_turf(target))
+	var/turf/origin_turf
+	for(var/turf/turf as anything in turfs)
+		if(turf in owner.locs)
+			continue
+		origin_turf = turf
+		break
+
+	var/base_range = ((chem.rangefire == -1) ? ammo.reagents.max_fire_rad : chem.rangefire) + range_bonus
+	var/weapon_mult = get_combined_weapon_mult("projectile_speed_mult", WEAPON_MIN_PROJECTILE_SPEED_MULT)
+	var/effective_max_range = max(1, round(base_range * weapon_mult))
+	var/distance = get_dist(origin_turf, get_turf(target))
+	var/fire_amount = min(distance+1, effective_max_range)
+
+	chem.intensityfire = clamp(chem.intensityfire, ammo.reagents.min_fire_int, ammo.reagents.max_fire_int)
+	chem.durationfire = clamp(chem.durationfire, ammo.reagents.min_fire_dur, ammo.reagents.max_fire_dur)
+
+	new /obj/flamer_fire(origin_turf, create_cause_data(initial(name), user), chem, fire_amount, ammo.reagents, flameshape || chem.flameshape, target, CALLBACK(src, PROC_REF(sync_ammo_from_reagents)), 1, chem.fire_type)
+	sync_ammo_from_reagents()
+
+	play_firing_sounds()
+
+	COOLDOWN_START(src, fire_cooldown, fire_delay)
+
+	return AUTOFIRE_CONTINUE
+
+/**
+ * Tank equivalent of the infantry M240's unleash_smoke(). Disperses the loaded chem as smoke
+ * along the aimed line instead of fire.
+ *
+ * Arguments:
+ * * target = Where the smoke is aimed.
+ * * user = The gunner firing.
+ * * smoke_range = Max tiles the smoke travels.
+ * * units_in_smoke = Reagent units per dispersed smoke puff.
+ */
+/obj/item/hardpoint/proc/fire_smoke_stream(atom/target, mob/living/user, smoke_range = 4, units_in_smoke = 35)
+	var/datum/reagent/chemical = LAZYACCESS(ammo.reagents?.reagent_list, 1)
+	if(!chemical)
+		click_empty(user)
+		return NONE
+
+	//step forward along path so the smoke starts outside the hull, same as fire_flame_stream()
+	var/list/turfs = get_line(get_origin_turf(), get_turf(target))
+	var/turf/origin_turf
+	for(var/turf/turf as anything in turfs)
+		if(turf in owner.locs)
+			continue
+		origin_turf = turf
+		break
+
+	if(!origin_turf)
+		click_empty(user)
+		return NONE
+
+	var/use_multiplier = 3
+	var/distance = 0
+
+	var/datum/reagents/to_disperse = new()
+	to_disperse.add_reagent(chemical.id, units_in_smoke)
+	to_disperse.my_atom = src
+
+	var/list/turf/travel_turfs = get_line(origin_turf, get_turf(target), FALSE)
+	var/amount_required = min(length(travel_turfs), smoke_range) * use_multiplier
+	for(var/turf/turf in travel_turfs)
+		if(chemical.volume < amount_required)
+			smoke_range = floor(chemical.volume / use_multiplier)
+
+		if(distance >= smoke_range)
+			break
+
+		if(turf.density)
+			break
+		else
+			var/obj/effect/particle_effect/smoke/chem/checker = new()
+			var/atom/blocked = LinkBlocked(checker, origin_turf, turf)
+			qdel(checker)
+			if(blocked)
+				break
+
+		playsound(turf, 'sound/effects/smoke.ogg', 25, 1)
+		var/datum/effect_system/smoke_spread/chem/smoke = new()
+		smoke.set_up(to_disperse, 5, loca = turf)
+		smoke.start()
+		sleep(4)
+
+		distance++
+
+	var/amount_used = distance * use_multiplier
+	chemical.volume = max(chemical.volume - amount_used, 0)
+	ammo.reagents.total_volume = chemical.volume
+
+	if(chemical.volume < use_multiplier) // not enough left for even one more tile of smoke - empty the tank, same as unleash_smoke()
+		ammo.reagents.clear_reagents()
+
+	sync_ammo_from_reagents()
+
+	play_firing_sounds()
+
+	COOLDOWN_START(src, fire_cooldown, fire_delay)
+
+	return AUTOFIRE_CONTINUE
+
+/**
+ * Re-syncs ammo.current_rounds to match ammo.reagents.total_volume.sync_ammo_from_reagents()
+ * Called both right after firing and again once a since reagent consumption happens asynchronously tile by tile
+ * as the flame propagates, not all at once at the moment of firing. Also refreshes the mounted sprite
+ * immediately.
+ */
+/obj/item/hardpoint/proc/sync_ammo_from_reagents()
+	if(ammo && ammo.reagents)
+		ammo.current_rounds = round(ammo.reagents.total_volume)
+	owner?.update_icon()
 
 /// Start cooldown to respect delay of firemode.
 /obj/item/hardpoint/proc/set_fire_cooldown(firemode)
@@ -622,6 +1003,10 @@
 
 /// Adjust target based on random scatter angle.
 /obj/item/hardpoint/proc/simulate_scatter(obj/projectile/projectile_to_fire, atom/target, turf/curloc, turf/targloc)
+	// without this, clicking a point-blank target that resolves to the same turf as the muzzle
+	if(curloc == targloc)
+		return target
+
 	var/fire_angle = Get_Angle(curloc, targloc)
 	var/total_scatter_angle = projectile_to_fire.scatter
 
@@ -629,6 +1014,9 @@
 	if(total_scatter_angle > 0)
 		fire_angle += rand(-total_scatter_angle, total_scatter_angle)
 		target = get_angle_target_turf(curloc, fire_angle, 30)
+
+	if(curloc.z != targloc.z)
+		target = locate(target.x, target.y, targloc.z)
 
 	return target
 
@@ -649,7 +1037,7 @@
 
 /// Determines whether something is in firing arc of a hardpoint.
 /obj/item/hardpoint/proc/in_firing_arc(atom/target)
-	if(!firing_arc || !ISINRANGE_EX(firing_arc, 0, 360))
+	if(!traverse_arc || !ISINRANGE_EX(traverse_arc, 0, 360))
 		return TRUE
 
 	var/turf/muzzle_turf = get_origin_turf()
@@ -665,7 +1053,7 @@
 	else if(angle_diff > 180)
 		angle_diff -= 360
 
-	return abs(angle_diff) <= (firing_arc * 0.5)
+	return abs(angle_diff) <= (traverse_arc * 0.5)
 
 //-----------------------------
 //------ICON PROCS----------
@@ -683,10 +1071,21 @@
 	var/image/I = get_icon_image(offset_x, offset_y, dir)
 	return I
 
+/**
+ * The on-hull damage suffix used by get_icon_image(). 1 (damaged) once integrity drops below
+ * threshold_pct or this hardpoint carries a tier-2+ wound, 0 (healthy) otherwise.
+ */
+/obj/item/hardpoint/proc/get_mounted_damage_suffix(threshold_pct = 50)
+	if(get_integrity_percent() < threshold_pct)
+		return 1
+	for(var/family_type in wound_tiers)
+		if(wound_tiers[family_type] >= 2)
+			return 1
+	return 0
+
 //Returns the image object to overlay onto the root object
 /obj/item/hardpoint/proc/get_icon_image(x_offset, y_offset, new_dir)
-	var/is_broken = health <= 0
-	var/image/I = image(icon = disp_icon, icon_state = "[disp_icon_state]_[is_broken ? "1" : "0"]", pixel_x = x_offset, pixel_y = y_offset, dir = new_dir)
+	var/image/I = image(icon = disp_icon, icon_state = "[disp_icon_state]_[get_mounted_damage_suffix()]", pixel_x = x_offset, pixel_y = y_offset, dir = new_dir)
 	switch(floor((health / initial(health)) * 100))
 		if(0)
 			I.color = "#888888"
@@ -701,6 +1100,33 @@
 		else
 			I.color = null
 	return I
+
+/**
+ * Builds one clickable, wound-highlighted examine line for this hardpoint.
+ *
+ * Arguments:
+ * * user = Mob examining, passed through to icon2html().
+ * * mounted_on = Optional parent holder's name, shown if set.
+ */
+/obj/item/hardpoint/proc/build_examine_line(mob/user, mounted_on)
+	var/line = mounted_on ? "There [p_are()] \a [src] module[p_s()] installed on [mounted_on]." : "There [p_are()] \a [src] module[p_s()] installed."
+	// Style has to live inside the <a> tag's own text, or the link color wins over it.
+	// A destroyed part always gets the DESTROYED callout, even with no active wound.
+	var/is_destroyed = health <= 0
+	var/name_text = is_destroyed ? "DESTROYED [name]" : name
+	var/display_name = (is_destroyed || LAZYLEN(wound_tiers)) ? SPAN_BOLDWARNING(name_text) : name_text
+	var/styled_name = "<a href='byond://?src=\ref[src];examine_hardpoint=1'>[display_name]</a>"
+	line = replacetext(line, name, styled_name)
+	return "[icon2html(src, user)] [line]"
+
+/**
+ * The common healthy/damaged suffix shared by simple 2-state modules. Damaged if integrity
+ * drops below threshold_pct or this hardpoint has any active wound.
+ */
+/obj/item/hardpoint/proc/get_shared_damage_suffix(threshold_pct = 50)
+	if(LAZYLEN(wound_tiers) || get_integrity_percent() < threshold_pct)
+		return 1
+	return 0
 
 // debug proc
 /obj/item/hardpoint/proc/set_offsets(dir, x, y)

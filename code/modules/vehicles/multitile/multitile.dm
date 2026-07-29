@@ -681,12 +681,36 @@ GLOBAL_LIST_INIT(vehicle_gear_order, list("P", "R", "N", "D", "1", "2"))
 				clients += interior_mob.client
 	return clients
 
-//Normal examine() but tells the player what is installed and if it's broken
+/// Normal examine() but a compact one-line-per-part list, each linking to its own full examine popup.
 /obj/vehicle/multitile/get_examine_text(mob/user)
 	. = ..()
 	for(var/obj/item/hardpoint/H in hardpoints)
-		. += "There [H.p_are()] \a [H] module[H.p_s()] installed."
-		H.examine(user, TRUE)
+		. += H.build_examine_line(user)
+		// Holders (e.g. the turret) mount their own weapons in a nested hardpoints list, list those inline too.
+		if(istype(H, /obj/item/hardpoint/holder))
+			var/obj/item/hardpoint/holder/sub_holder = H
+			for(var/obj/item/hardpoint/sub in sub_holder.hardpoints)
+				. += sub.build_examine_line(user, "\the [sub_holder]")
+	. += get_missing_hardpoint_slot_lines(hardpoints_allowed, hardpoints)
+	// Same reasoning as above, but for a holder's own empty nested slots.
+	for(var/obj/item/hardpoint/holder/sub_holder in hardpoints)
+		. += get_missing_hardpoint_slot_lines(sub_holder.accepted_hardpoints, sub_holder.hardpoints)
+	var/is_xeno_examiner = isxeno(user)
+	for(var/family_type in hull_wound_tiers)
+		var/tier = hull_wound_tiers[family_type]
+		var/datum/hardpoint_wound_family/family = GLOB.hardpoint_wound_families_by_type[family_type]
+		if(!family || tier > length(family.tiers))
+			continue
+		var/list/tier_data = family.tiers[tier]
+		var/blurb = is_xeno_examiner ? tier_data["xeno_feedback"] : tier_data["marine_feedback_red"]
+		if(!blurb)
+			continue
+		if(is_xeno_examiner)
+			. += tier_data["bold_feedback"] ? SPAN_XENOBOLDNOTICE(blurb) : SPAN_XENOWARNING(blurb)
+			continue
+		var/line = tier_data["bold_feedback"] ? SPAN_BOLDWARNING(blurb) : SPAN_WARNING(blurb)
+		line += " <a href='byond://?src=\ref[src];hull_wound_info=[family_type]'>(Repair Info)</a>"
+		. += line
 	if(clamped)
 		. += "There is a vehicle clamp attached."
 	if(isxeno(user) && interior)
@@ -695,6 +719,25 @@ GLOBAL_LIST_INIT(vehicle_gear_order, list("P", "R", "N", "D", "1", "2"))
 			passengers_amount += RRS.taken
 		if(passengers_amount > 0)
 			. += "You can sense approximately [passengers_amount] host\s inside."
+
+/// Resolves the "(Repair Info)" link the Hull wound lines above add. No in-place repair action for Hull wounds yet.
+/obj/vehicle/multitile/Topic(href, list/href_list)
+	if(href_list["hull_wound_info"])
+		show_hull_wound_repair_info(usr, href_list["hull_wound_info"])
+		return
+	return ..()
+
+/// Same shape as /obj/item/hardpoint/proc/show_wound_repair_info(), reads hull_wound_tiers instead.
+/obj/vehicle/multitile/proc/show_hull_wound_repair_info(mob/user, family_type_text)
+	var/family_type = text2path(family_type_text)
+	var/tier = LAZYACCESS(hull_wound_tiers, family_type)
+	if(!tier)
+		return
+	var/datum/hardpoint_wound_family/family = GLOB.hardpoint_wound_families_by_type[family_type]
+	if(!family || tier > length(family.tiers))
+		return
+	var/list/tier_data = family.tiers[tier]
+	to_chat(user, SPAN_NOTICE("[SPAN_BOLD(tier_data["wound_name"])]: [format_repair_info_sentence(tier_data)]"))
 
 /obj/vehicle/multitile/proc/load_hardpoints()
 	return

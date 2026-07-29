@@ -5,24 +5,19 @@
 /*
 *Current Problems:
 	- //TODO: Shit code
-	- The mag clip doesn't goes into the gun, instead the magazine teleports into the gun and leaves the mag clip behind while the mag clip still points to the magazine
-	- Lacks user feedback when the clip is switched
-	- The fucking clip eats everything, make it so it only eats magazines
-	- Tactical reload is un-accounted for, after tactical reload into a normal mag and when the mag is set to be unloaded the magazine is disapeared and the magazine clip is teleported over instead
-	- //TODO: The fucking color band on ap ammo and such doesn't give a fuck when the thing is thrown: everything else spins while it just stands there
+	- //TODO: Need better sprites: in-hand is fine with the default mag in-hand sprite, item icon is suboptimal, and prefferably there should be sprite change on the gun when mag clip is loaded into it.
+	- //TODO: The current check on compatible mags relies on istype, problem is that m41a MK2 is the base type for all rifle magazine, ie it's gonna be hard to make mag-sepcific mag clips
 */
 /*
 TODO:
 	- Further refine the item examine message: include the magazine names as well
 	- Clean up the comments
-	- Check over all the procs, look into initiate() and destroy() [research qdelete]
+	- Check over all the procs
 	- Work on potential optimization problems
 	- Work out an acceptable sprite
-	- Actually add the item into vendor
 	- Allow people to interact with the magazine clip using context menu when it's on the ground; no clue how to do this one
-	- Add support for tactical reload; Actually erm probably gonna avoid it altogether, took a peak at the code and I don't see a easy non-intrusive way to include it as a feature. Besides people really shouldn't be doing tactical reload all that often, and even more unlikely to do it with mag clips
 	- Make sure all cases inside reload() and unload() are accounted for
-	- Generalize magazine_clip and make more specific objects
+	- Generalize magazine_clip and make more specific sub types
 */
 
 /obj/item/magazine_clip

@@ -487,8 +487,9 @@
 			visible_message(SPAN_XENODANGER("[acid_t] loses its shine as the acid bubbles against it."))
 			acid_gun.has_second_wind = FALSE
 			playsound(src, 'sound/weapons/handling/gun_jam_click.ogg', 25, TRUE)
-			qdel(src)
-			return
+		else
+			visible_message(SPAN_XENODANGER("[acid_t] collapses under its own weight into a puddle of goop and undigested debris!"))
+			qdel(acid_t)
 
 	else if(istype(acid_t, /turf))
 		visible_message(SPAN_XENODANGER("[acid_t] is terribly damaged by the acid covering it!"))
@@ -526,6 +527,7 @@
 			mob.forceMove(loc)
 		visible_message(SPAN_XENODANGER("[acid_t] collapses under its own weight into a puddle of goop and undigested debris!"))
 		qdel(acid_t)
+
 	qdel(src)
 
 /obj/effect/xenomorph/acid/extinguish_acid()

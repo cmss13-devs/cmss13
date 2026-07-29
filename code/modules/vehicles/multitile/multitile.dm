@@ -729,6 +729,94 @@ GLOBAL_LIST_INIT(vehicle_gear_order, list("P", "R", "N", "D", "1", "2"))
 /obj/vehicle/multitile/proc/remove_seated_verbs(mob/living/M, seat)
 	return
 
+/**
+ * Re-evaluates any per-seat HUD action buttons that depend on currently-installed hardpoints.
+ * Generic DRIVER/GUNNER handling only. A vehicle with its own holder/support-module logic (e.g.
+ * the tank's turret, artillery module, and slavable secondary) overrides this instead.
+ */
+/obj/vehicle/multitile/proc/refresh_hardpoint_actions()
+	for(var/seat in list(VEHICLE_DRIVER, VEHICLE_GUNNER))
+		var/mob/living/M = seats[seat]
+		if(!istype(M) || !M.client)
+			continue
+
+		if(length(get_activatable_hardpoints(seat)) >= 2)
+			give_action(M, /datum/action/human_action/vehicle_action/cycle_hardpoint)
+			// give_action() no-ops when this seat already has the action, so force the icon refresh here too.
+			for(var/datum/action/human_action/vehicle_action/cycle_hardpoint/action in M.actions)
+				action.update_button_icon()
+		else
+			remove_action(M, /datum/action/human_action/vehicle_action/cycle_hardpoint)
+
+		if(active_hp[seat]?.get_flame_mode())
+			give_action(M, /datum/action/human_action/vehicle_action/toggle_hardpoint_fire_mode)
+		else
+			remove_action(M, /datum/action/human_action/vehicle_action/toggle_hardpoint_fire_mode)
+
+		if(seat == VEHICLE_GUNNER)
+			if(get_slavable_secondary())
+				give_action(M, /datum/action/human_action/vehicle_action/slave_secondary)
+			else
+				remove_action(M, /datum/action/human_action/vehicle_action/slave_secondary)
+
+		if(seat == VEHICLE_DRIVER)
+			if(!(M.client.prefs.toggles_vehicle & VEHICLE_SIMPLE_ACCELERATION))
+				give_action(M, /datum/action/human_action/vehicle_action/toggle_cruise_control)
+				give_action(M, /datum/action/human_action/vehicle_action/set_cruise_control_granularity)
+			else
+				remove_action(M, /datum/action/human_action/vehicle_action/toggle_cruise_control)
+				remove_action(M, /datum/action/human_action/vehicle_action/set_cruise_control_granularity)
+
+		for(var/datum/action/human_action/vehicle_action/action in M.actions)
+			action.update_button_icon()
+
+/**
+ * Ensures active_hp[seat] holds a valid, currently-activatable hardpoint whenever one exists.
+ * Leaves an existing valid selection alone. Generic DRIVER/GUNNER pick: the first mounted Primary,
+ * else the first mounted Secondary. A vehicle with its own holder-based weapon (e.g. the tank's
+ * turret) overrides this instead.
+ */
+/obj/vehicle/multitile/proc/ensure_active_hardpoint(seat)
+	if(seat != VEHICLE_DRIVER && seat != VEHICLE_GUNNER)
+		return
+
+	var/list/usable_hps = get_activatable_hardpoints(seat)
+	var/obj/item/hardpoint/current = active_hp[seat]
+	if(current && (current in usable_hps))
+		return
+
+	var/obj/item/hardpoint/new_active = null
+	for(var/obj/item/hardpoint/primary/candidate in usable_hps)
+		new_active = candidate
+		break
+	if(!new_active)
+		for(var/obj/item/hardpoint/secondary/candidate in usable_hps)
+			new_active = candidate
+			break
+	if(!new_active)
+		for(var/obj/item/hardpoint/support/candidate in usable_hps)
+			new_active = candidate
+			break
+
+	if(current && !QDELETED(current))
+		SEND_SIGNAL(current, COMSIG_GUN_INTERRUPT_FIRE)
+	active_hp[seat] = new_active
+	// Keeps action buttons that depend on the specific active hardpoint correct across every caller of this proc.
+	refresh_hardpoint_actions()
+
+/**
+ * Registered on the driver while seated, so a live preference toggle re-evaluates this seat's action buttons.
+ * Also force-disengages cruise control if the driver just toggled into Simple Acceleration while already engaged.
+ */
+/obj/vehicle/multitile/proc/on_driver_prefs_changed(datum/source)
+	SIGNAL_HANDLER
+	if(cruise_control_enabled && (get_driver_vehicle_prefs() & VEHICLE_SIMPLE_ACCELERATION))
+		cruise_control_enabled = FALSE
+		var/mob/driver = source
+		if(istype(driver))
+			to_chat(driver, SPAN_WARNING("Cruise control disengaged - not available with simple vehicle acceleration."))
+	refresh_hardpoint_actions()
+
 /obj/vehicle/multitile/set_seated_mob(seat, mob/living/M)
 	// Give/remove verbs
 	if(QDELETED(M))

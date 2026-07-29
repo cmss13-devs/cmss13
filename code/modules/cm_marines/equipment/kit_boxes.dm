@@ -685,3 +685,15 @@
 	new /obj/item/attachable/extended_barrel(src)
 	new /obj/item/ammo_magazine/rifle/type71/ap(src)
 	new /obj/item/ammo_magazine/rifle/type71/ap(src)
+
+// Intended to be handed to Crewmen when buying more than one Humvee.
+// Should allow operation of a Humvee's turrets as well as driving it, but not interacting with the tank or the APC.
+/obj/item/storage/box/kit/mini_vehicle
+	name = "\improper Vehicle Crewman Support Kit"
+	pro_case_overlay = "jtac"
+
+/obj/item/storage/box/kit/mini_vehicle/fill_preset_inventory()
+	new /obj/item/clothing/head/helmet/marine/tech/tanker(src)
+	new /obj/item/device/helmet_visor/vehicle(src)
+	new /obj/item/pamphlet/upgradeable/vehicle(src)
+	new /obj/item/storage/pouch/tools/full (src)

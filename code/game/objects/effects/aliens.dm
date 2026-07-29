@@ -43,7 +43,7 @@
 	density = FALSE
 	opacity = FALSE
 	anchored = TRUE
-	layer = ABOVE_OBJ_LAYER
+	layer = TANK_RIDER_LAYER
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	var/datum/cause_data/cause_data
 
@@ -126,14 +126,15 @@
 
 			continue
 
-		if(isVehicleMultitile(atm))
-			var/obj/vehicle/multitile/V = atm
-			V.handle_acidic_environment(src)
-			continue
 		if (istype(loc, /turf/open))
 			var/turf/open/scorch_turf_target = loc
 			if(scorch_turf_target.scorchable)
 				scorch_turf_target.scorch(damage_amount)
+
+	// Needed since a multitile vehicle only really occupies its one anchor turf.
+	var/obj/vehicle/multitile/vehicle_here = get_multitile_vehicle_at(loc)
+	if(vehicle_here)
+		vehicle_here.handle_acidic_environment(src)
 
 	START_PROCESSING(SSobj, src)
 	addtimer(CALLBACK(src, PROC_REF(die)), time_to_live)
@@ -699,6 +700,11 @@
 	var/total_hits = 0
 	for (var/obj/structure/barricade/B in loc)
 		B.take_acid_damage(damage*(1.15 + 0.55 * empowered))
+
+	// Needed since a parked tank's footprint can span several of the mine's detonating tiles.
+	var/obj/vehicle/multitile/vehicle_here = get_multitile_vehicle_at(loc)
+	if(vehicle_here)
+		vehicle_here.expose_to_acid_mine(src)
 
 	for (var/mob/living/carbon/human in loc)
 		if (human.stat == DEAD)

@@ -1247,6 +1247,10 @@ Defined in conflicts.dm of the #defines folder.
 		return TRUE
 
 	if(!G.zoom)
+		if(is_in_tank_interior(user))
+			if(user)
+				to_chat(user, SPAN_WARNING("There's not enough room to use [src] properly in here."))
+			return FALSE
 		if(!(G.flags_item & WIELDED))
 			if(user)
 				to_chat(user, SPAN_WARNING("You must hold [G] with two hands to use [src]."))

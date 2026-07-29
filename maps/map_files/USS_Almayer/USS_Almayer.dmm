@@ -690,6 +690,10 @@
 /obj/item/tank/phoron,
 /turf/open/floor/almayer/redfull,
 /area/almayer/engineering/upper_engineering)
+"abS" = (
+/obj/structure/machinery/light/red,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/maint/hull/lower/l_m_p)
 "abT" = (
 /turf/open/floor/almayer/flooredge/east,
 /area/almayer/squads/platoon1_shared)
@@ -851,6 +855,13 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cicconference)
+"ack" = (
+/obj/structure/largecrate/supply,
+/obj/structure/largecrate/random/mini{
+	pixel_y = 13
+	},
+/turf/open/floor/almayer/cargo,
+/area/almayer/maint/hull/lower/l_m_p)
 "acl" = (
 /obj/structure/machinery/cm_vending/sorted/medical/blood{
 	pixel_y = 1;
@@ -883,6 +894,17 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/chapel)
+"acp" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/kitchen,
+/area/almayer/living/grunt_rnr)
 "acq" = (
 /turf/open/floor/almayer/blue/north,
 /area/almayer/living/offices/flight)
@@ -2790,6 +2812,18 @@
 	},
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/lower_medical_lobby)
+"agH" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/kitchen,
+/area/almayer/living/grunt_rnr)
 "agI" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/cell_charger{
@@ -3343,6 +3377,14 @@
 	},
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/medical/lower_medical_lobby)
+"ahL" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/kitchen,
+/area/almayer/living/grunt_rnr)
 "ahM" = (
 /obj/structure/platform/metal/almayer/west,
 /obj/structure/stairs/multiz/up,
@@ -4281,6 +4323,13 @@
 /obj/structure/machinery/cryopod/joe/seegson/alt,
 /turf/open/floor/almayer/aicore/no_build/ai_cargo,
 /area/almayer/command/airoom)
+"akm" = (
+/obj/structure/sign/poster/propaganda{
+	pixel_x = -32;
+	pixel_y = 7
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/squads/platoon2_shared)
 "akn" = (
 /turf/open/floor/almayer/flooredgesmooth2/west,
 /area/almayer/command/cicconference)
@@ -4421,6 +4470,11 @@
 	},
 /turf/open/floor/almayer/silver/north,
 /area/almayer/command/cichallway)
+"akM" = (
+/obj/structure/machinery/light,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/bluefull2,
+/area/almayer/squads/delta)
 "akN" = (
 /turf/open/floor/almayer/plating_striped/north,
 /area/almayer/hallways/lower/port_midship_hallway)
@@ -4880,6 +4934,10 @@
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/living/tankerbunks)
+"alZ" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/squads/alpha)
 "ama" = (
 /obj/structure/stairs/perspective{
 	dir = 4
@@ -22291,7 +22349,6 @@
 /area/almayer/middeck/engineer)
 "bfw" = (
 /obj/effect/landmark/start/marine/tl/alpha,
-/obj/effect/landmark/late_join/alpha,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk,
@@ -22337,12 +22394,10 @@
 /area/almayer/medical/containment/cell/cl)
 "bfD" = (
 /obj/effect/landmark/start/marine/leader/alpha,
-/obj/effect/landmark/late_join/alpha,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/alpha)
 "bfE" = (
-/obj/effect/landmark/late_join/delta,
 /obj/effect/landmark/start/marine/spec/delta,
 /turf/open/floor/almayer,
 /area/almayer/squads/delta)
@@ -28457,16 +28512,15 @@
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/req)
 "btc" = (
-/obj/structure/machinery/cm_vending/clothing/engi/bravo{
-	pixel_y = 0;
-	pixel_x = 26;
-	density = 0
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
 	layer = 3.3
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/cm_vending/clothing/engi/delta{
+	density = 0;
+	pixel_x = 26
+	},
 /turf/open/floor/almayer/flooredge/west,
 /area/almayer/squads/delta)
 "btd" = (
@@ -50144,6 +50198,7 @@
 	pixel_y = 1;
 	pixel_x = -26
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/flooredge/east,
 /area/almayer/squads/delta)
 "cta" = (
@@ -51030,11 +51085,6 @@
 /turf/open/floor/almayer/flooredge/east,
 /area/almayer/squads/support)
 "cvo" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	pixel_y = 1;
-	pixel_x = 1
-	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/support)
@@ -51465,10 +51515,6 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_m_p)
 "cwr" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 8
-	},
 /obj/item/trash/popcorn,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_m_p)
@@ -51801,6 +51847,9 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
+	},
+/obj/structure/sign/prop3{
+	pixel_y = -32
 	},
 /turf/open/floor/almayer/flooredge/north,
 /area/almayer/squads/platoon2_shared)
@@ -52204,6 +52253,7 @@
 "cyb" = (
 /obj/structure/machinery/seed_extractor,
 /obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/grunt_rnr)
 "cyc" = (
@@ -55156,6 +55206,9 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
 /turf/open/floor/plating,
 /area/almayer/squads/platoon1_shared)
 "cEW" = (
@@ -56857,13 +56910,11 @@
 /turf/open/floor/almayer/flooredge/north,
 /area/almayer/squads/alpha)
 "cII" = (
-/obj/effect/landmark/late_join/alpha,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/start/marine/spec/alpha,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/alpha)
 "cIJ" = (
-/obj/effect/landmark/late_join/alpha,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/start/marine/spec/alpha,
@@ -56871,7 +56922,6 @@
 /area/almayer/squads/alpha)
 "cIK" = (
 /obj/effect/landmark/start/marine/leader/delta,
-/obj/effect/landmark/late_join/delta,
 /turf/open/floor/almayer,
 /area/almayer/squads/delta)
 "cIL" = (
@@ -64027,6 +64077,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/kitchen,
 /area/almayer/living/grunt_rnr)
 "fKW" = (
@@ -64925,12 +64976,11 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_a_p)
 "gjy" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	pixel_y = 1;
-	pixel_x = 1
-	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/sign/banners/colonial_marines_flag_worn{
+	pixel_y = 32;
+	desc = "A very worn flag of the United States Colonial Marine Corps. A symbol of pride for Delta squad, having survived Operation Canton."
+	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/delta)
 "gjK" = (
@@ -65140,6 +65190,7 @@
 	icon_state = "NW-out";
 	pixel_y = 1
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/kitchen,
 /area/almayer/living/grunt_rnr)
 "gpO" = (
@@ -66640,10 +66691,6 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/lower)
 "gWE" = (
-/obj/structure/machinery/alarm/almayer{
-	dir = 1;
-	pixel_y = 22
-	},
 /turf/open/floor/almayer/flooredge/southeast,
 /area/almayer/squads/delta)
 "gWG" = (
@@ -73203,6 +73250,9 @@
 /area/almayer/hallways/lower/port_midship_hallway)
 "kcl" = (
 /obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
 /turf/open/floor/plating,
 /area/almayer/squads/delta)
 "kcp" = (
@@ -78614,6 +78664,7 @@
 	pixel_x = -26;
 	pixel_y = 1
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/blue2/northwest,
 /area/almayer/squads/delta)
 "mLN" = (
@@ -80049,7 +80100,6 @@
 /area/almayer/shipboard/brig/yard)
 "nuA" = (
 /obj/effect/landmark/start/marine/tl/delta,
-/obj/effect/landmark/late_join/delta,
 /turf/open/floor/almayer,
 /area/almayer/squads/delta)
 "nuM" = (
@@ -91088,6 +91138,7 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/kitchen,
 /area/almayer/living/grunt_rnr)
 "swx" = (
@@ -96657,6 +96708,7 @@
 	dir = 1;
 	pixel_x = -16
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/kitchen,
 /area/almayer/living/grunt_rnr)
 "veq" = (
@@ -96885,6 +96937,7 @@
 	pixel_y = 1;
 	density = 0
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/blue2/southwest,
 /area/almayer/squads/delta)
 "vjb" = (
@@ -101256,16 +101309,6 @@
 	},
 /turf/open/floor/prison/kitchen,
 /area/almayer/shipboard/brig/yard)
-"xaN" = (
-/obj/structure/largecrate/supply,
-/obj/structure/largecrate/random/mini{
-	pixel_y = 13
-	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/almayer/cargo,
-/area/almayer/maint/hull/lower/l_m_p)
 "xaS" = (
 /turf/open/floor/almayer/uscm/directional/northeast,
 /area/almayer/command/lifeboat)
@@ -102992,10 +103035,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/port_fore_hallway)
-"xOT" = (
-/obj/structure/largecrate/random/case/double,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/maint/hull/lower/l_m_p)
 "xPq" = (
 /obj/structure/machinery/disposal{
 	pixel_y = 4;
@@ -151334,7 +151373,7 @@ bJt
 bJt
 gpI
 tvM
-wpI
+agH
 tvM
 dfC
 mgb
@@ -151437,7 +151476,7 @@ bJt
 bJt
 ven
 njJ
-wpI
+agH
 cyb
 tsa
 xbg
@@ -151541,11 +151580,11 @@ bJt
 cyX
 cyc
 fKV
-cyc
+acp
 lHG
 xbg
-mJO
-mJO
+mgb
+xbg
 hAz
 mgb
 tSp
@@ -151647,9 +151686,9 @@ wpI
 wXI
 nUd
 xbg
-xOT
-mJO
-gSk
+mgb
+xbg
+abS
 mJO
 mJO
 cuZ
@@ -151749,8 +151788,8 @@ mJi
 wpI
 iMm
 mJO
-mgb
-xaN
+ack
+xbg
 cwr
 vwI
 luS
@@ -151846,10 +151885,10 @@ mPM
 esd
 mPM
 yfS
-bDs
-lHu
+cBF
+ahL
 jSy
-wpI
+agH
 cyd
 mJO
 cwZ
@@ -151949,7 +151988,7 @@ amv
 ter
 czF
 czA
-bDs
+cBF
 lHu
 ocm
 wpI
@@ -155306,7 +155345,7 @@ aLT
 aLT
 aLT
 aLT
-bfu
+alZ
 avv
 bfu
 cEP
@@ -155554,7 +155593,7 @@ oYi
 mkx
 cAe
 cwf
-chP
+akm
 chP
 chP
 raK
@@ -158407,7 +158446,7 @@ bSJ
 bSJ
 clg
 vil
-cFN
+akM
 bSJ
 cFa
 bqc

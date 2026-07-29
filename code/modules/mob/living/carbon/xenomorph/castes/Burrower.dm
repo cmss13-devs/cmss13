@@ -67,6 +67,7 @@
 		/datum/action/xeno_action/activable/burrow, //third macro
 		/datum/action/xeno_action/onclick/tremor, //fourth macro
 		/datum/action/xeno_action/active_toggle/toggle_meson_vision,
+		/datum/action/xeno_action/onclick/autoweeding_toggle,
 		)
 
 	inherent_verbs = list(

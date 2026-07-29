@@ -690,6 +690,13 @@
 /obj/item/tank/phoron,
 /turf/open/floor/almayer/redfull,
 /area/almayer/engineering/upper_engineering)
+"abS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/landinglight{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
 "abT" = (
 /turf/open/floor/almayer/flooredge/east,
 /area/almayer/squads/platoon1_shared)
@@ -851,6 +858,13 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cicconference)
+"ack" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/landinglight/delayone{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
 "acl" = (
 /obj/structure/machinery/cm_vending/sorted/medical/blood{
 	pixel_y = 1;
@@ -883,6 +897,12 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/chapel)
+"acp" = (
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
 "acq" = (
 /turf/open/floor/almayer/blue/north,
 /area/almayer/living/offices/flight)
@@ -2790,6 +2810,12 @@
 	},
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/lower_medical_lobby)
+"agH" = (
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
 "agI" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/cell_charger{
@@ -3343,6 +3369,12 @@
 	},
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/medical/lower_medical_lobby)
+"ahL" = (
+/obj/structure/machinery/landinglight{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
 "ahM" = (
 /obj/structure/platform/metal/almayer/west,
 /obj/structure/stairs/multiz/up,
@@ -4281,6 +4313,13 @@
 /obj/structure/machinery/cryopod/joe/seegson/alt,
 /turf/open/floor/almayer/aicore/no_build/ai_cargo,
 /area/almayer/command/airoom)
+"akm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
 "akn" = (
 /turf/open/floor/almayer/flooredgesmooth2/west,
 /area/almayer/command/cicconference)
@@ -4421,6 +4460,12 @@
 	},
 /turf/open/floor/almayer/silver/north,
 /area/almayer/command/cichallway)
+"akM" = (
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
 "akN" = (
 /turf/open/floor/almayer/plating_striped/north,
 /area/almayer/hallways/lower/port_midship_hallway)
@@ -4880,6 +4925,12 @@
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/living/tankerbunks)
+"alZ" = (
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
 "ama" = (
 /obj/structure/stairs/perspective{
 	dir = 4
@@ -5052,6 +5103,12 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/lower/workshop)
+"amt" = (
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
 "amu" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
@@ -6059,6 +6116,12 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/pilotbunks)
+"ape" = (
+/obj/structure/machinery/landinglight{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
 "apf" = (
 /obj/structure/coatrack,
 /obj/item/clothing/head/helmet/marine/pilot{
@@ -7638,6 +7701,12 @@
 /obj/item/flag/plantable/ua,
 /turf/open/floor/almayer/redfull,
 /area/almayer/command/cic)
+"asR" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
 "asS" = (
 /obj/structure/machinery/cryopod/right{
 	pixel_y = 6
@@ -7760,6 +7829,12 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/offices/cryo)
+"atj" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
 "atk" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -7835,6 +7910,12 @@
 	},
 /turf/open/floor/almayer/green/north,
 /area/almayer/hallways/upper/fore_hallway)
+"atA" = (
+/obj/structure/machinery/landinglight{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
 "atB" = (
 /turf/open/floor/almayer/plating_striped/west,
 /area/almayer/hallways/lower/starboard_midship_hallway)
@@ -7844,6 +7925,12 @@
 "atD" = (
 /turf/open/floor/almayer/cargo_arrow/north,
 /area/almayer/hallways/lower/starboard_midship_hallway)
+"atE" = (
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
 "atF" = (
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/hallways/lower/starboard_midship_hallway)
@@ -8255,6 +8342,10 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/p_bow)
+"auT" = (
+/obj/structure/machinery/landinglight/delaytwo,
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
 "auU" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/plating_striped/west,
@@ -8504,6 +8595,10 @@
 /obj/item/tool/screwdriver,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sp)
+"avC" = (
+/obj/structure/machinery/landinglight/delayone,
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
 "avD" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/bridgebunks)
@@ -8739,6 +8834,10 @@
 "awp" = (
 /turf/open/floor/almayer/flooredge/northeast,
 /area/almayer/medical/morgue)
+"awq" = (
+/obj/structure/machinery/landinglight,
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
 "awr" = (
 /turf/open/floor/almayer/blue/northwest,
 /area/almayer/living/bridgebunks)
@@ -9125,6 +9224,10 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/telecomms)
+"axp" = (
+/obj/structure/machinery/landinglight/delaythree,
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
 "axq" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer/orange,
@@ -9334,6 +9437,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/pb)
+"axW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/landinglight,
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
 "axX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
@@ -29385,7 +29493,6 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/stairs,
 /turf/open/floor/almayer/plating_striped/west,
 /area/almayer/stair_clone/lower/port_aft)
 "buZ" = (
@@ -35062,7 +35169,6 @@
 /area/almayer/hallways/lower/port_fore_hallway)
 "bIP" = (
 /obj/docking_port/stationary/emergency_response/port3,
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/shipboard/stern_point_defense)
 "bIQ" = (
@@ -42644,7 +42750,6 @@
 /turf/open/floor/almayer/research/containment/floor2,
 /area/almayer/medical/containment/cell)
 "cbg" = (
-/obj/structure/stairs,
 /turf/open/floor/almayer/plating_striped/west,
 /area/almayer/stair_clone/lower/port_aft)
 "cbh" = (
@@ -46823,6 +46928,9 @@
 /area/almayer/shipboard/brig/visitation_waiting)
 "ckP" = (
 /obj/structure/surface/table/almayer,
+/obj/structure/machinery/light{
+	dir = 4
+	},
 /turf/open/floor/almayer/silver/east,
 /area/almayer/shipboard/brig/cic_hallway)
 "ckQ" = (
@@ -50444,14 +50552,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_a_p)
-"ctL" = (
-/obj/structure/stairs,
-/turf/open/floor/plating/almayer/no_build,
-/area/almayer/stair_clone/lower/port_aft)
-"ctM" = (
-/obj/structure/stairs,
-/turf/open/floor/almayer/plating_striped/east,
-/area/almayer/stair_clone/lower/port_aft)
 "ctN" = (
 /obj/structure/window/reinforced{
 	dir = 8;
@@ -57613,18 +57713,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_a_s)
-"cKB" = (
-/obj/structure/stairs{
-	dir = 1
-	},
-/turf/open/floor/plating/almayer/no_build,
-/area/almayer/stair_clone/lower/starboard_aft)
-"cKC" = (
-/obj/structure/stairs{
-	dir = 1
-	},
-/turf/open/floor/almayer/plating_striped/east,
-/area/almayer/stair_clone/lower/starboard_aft)
 "cKD" = (
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F";
@@ -63327,7 +63415,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/lower/port_fore_hallway)
 "fqW" = (
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt,
 /turf/open/floor/almayer/cargo,
 /area/almayer/engineering/lower/engine_core)
 "fqX" = (
@@ -66335,7 +66423,7 @@
 /turf/open/floor/plating,
 /area/almayer/maint/lower/constr)
 "gOC" = (
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt,
 /turf/open/floor/almayer/orange/northeast,
 /area/almayer/engineering/lower)
 "gPc" = (
@@ -68539,10 +68627,7 @@
 	name = "storage shutters";
 	pixel_y = 26
 	},
-/obj/structure/machinery/recharge_station{
-	desc = "Where the cargo department's Working Joe used to charge before it tragically fell into the ASRS elevator three years ago. The replacement still hasn't arrived.";
-	name = "Working Joe charging station"
-	},
+/obj/structure/machinery/recharge_station/alt,
 /obj/structure/sign/safety/synth_storage{
 	pixel_x = 8;
 	pixel_y = 36
@@ -68721,9 +68806,6 @@
 "hXm" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6
-	},
-/obj/structure/machinery/light{
-	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/disposalpipe/segment,
@@ -76906,9 +76988,6 @@
 /turf/open/floor/almayer/red/northwest,
 /area/almayer/shipboard/brig/interrogation)
 "lSJ" = (
-/obj/structure/stairs{
-	dir = 1
-	},
 /turf/open/floor/almayer/plating_striped/west,
 /area/almayer/stair_clone/lower/starboard_aft)
 "lSN" = (
@@ -83718,9 +83797,6 @@
 "oWE" = (
 /obj/structure/machinery/light{
 	dir = 8
-	},
-/obj/structure/stairs{
-	dir = 1
 	},
 /turf/open/floor/almayer/plating_striped/west,
 /area/almayer/stair_clone/lower/starboard_aft)
@@ -154182,7 +154258,7 @@ aag
 aag
 aag
 ajZ
-aaY
+aaa
 aaa
 aab
 aaa
@@ -154193,7 +154269,7 @@ aaa
 aaa
 aab
 bdH
-aaY
+aaa
 aad
 aag
 kyw
@@ -154285,7 +154361,7 @@ lyW
 lyW
 aag
 ajZ
-aaY
+aaa
 aaa
 aab
 aaa
@@ -154296,7 +154372,7 @@ aaa
 aaa
 aab
 bdH
-aaC
+aaa
 aad
 aag
 kyw
@@ -154388,7 +154464,7 @@ iDk
 lyW
 aag
 ajZ
-aaC
+aaa
 aaa
 aab
 aaa
@@ -154399,7 +154475,7 @@ aaa
 aaa
 aab
 bdH
-aaC
+aaa
 aad
 aag
 kyw
@@ -154491,7 +154567,7 @@ wdW
 lyW
 aag
 ajZ
-aaC
+aaa
 aaa
 aab
 aaa
@@ -154502,7 +154578,7 @@ aaa
 aaa
 aab
 bdH
-aaC
+aaa
 aad
 aag
 kyw
@@ -154594,7 +154670,7 @@ mgb
 lyW
 aag
 ajZ
-aaC
+aaa
 aaa
 aab
 aaa
@@ -154605,7 +154681,7 @@ aaa
 aaa
 aab
 bdH
-aaC
+aaa
 aad
 aag
 kyw
@@ -154697,7 +154773,7 @@ mgb
 lyW
 aag
 ajZ
-aaC
+aaa
 aaa
 aab
 aaa
@@ -154708,7 +154784,7 @@ aaa
 aaa
 aab
 bdH
-aaC
+aaa
 aad
 aag
 kyw
@@ -154800,7 +154876,7 @@ xGT
 lyW
 aag
 ajZ
-aaC
+aaa
 aaa
 aab
 aaa
@@ -154811,7 +154887,7 @@ aaa
 aaa
 aab
 bdH
-aaC
+aaa
 aad
 aag
 kyw
@@ -154820,9 +154896,9 @@ cKH
 wDr
 wDr
 cRL
-cKB
-cKB
-cKB
+qJj
+qJj
+qJj
 qJj
 uZm
 atF
@@ -154892,9 +154968,9 @@ fqA
 fqA
 mFL
 aqL
-ctL
-ctL
-ctL
+aqL
+aqL
+aqL
 acO
 anm
 wDr
@@ -154903,7 +154979,7 @@ ctD
 lyW
 aag
 ajZ
-aaC
+aaa
 aaa
 aab
 aaa
@@ -154914,7 +154990,7 @@ aaa
 aaa
 aab
 bdH
-aaC
+aaa
 aad
 aag
 emA
@@ -154923,9 +154999,9 @@ gPS
 wDr
 wDr
 cRL
-cKC
-cKC
-cKC
+wNz
+wNz
+wNz
 wNz
 suU
 atC
@@ -154995,9 +155071,9 @@ cuv
 akK
 dBg
 iyE
-ctM
-ctM
-ctM
+iyE
+iyE
+iyE
 wkH
 anm
 wDr
@@ -155006,7 +155082,7 @@ hIp
 tcO
 aag
 ajZ
-aaC
+aaa
 aaa
 aab
 aaa
@@ -155017,7 +155093,7 @@ aaa
 aaa
 aab
 bdH
-aaC
+aaa
 aad
 aag
 emA
@@ -155109,7 +155185,7 @@ gEh
 tcO
 aag
 ajZ
-aaC
+aaa
 aaa
 aab
 aaa
@@ -155120,7 +155196,7 @@ aaa
 aaa
 aab
 bdH
-aaC
+aaa
 aad
 aag
 emA
@@ -155212,7 +155288,7 @@ xhO
 tcO
 aag
 ajZ
-aaC
+aaa
 aaa
 aab
 aaa
@@ -155223,7 +155299,7 @@ aaa
 aaa
 aab
 bdH
-aaC
+aaa
 aad
 aag
 emA
@@ -155315,7 +155391,7 @@ pFr
 tcO
 aag
 ajZ
-aaC
+aaa
 aaa
 aab
 aaa
@@ -155326,7 +155402,7 @@ aaa
 aaa
 aab
 bdH
-aaC
+aaa
 aad
 aag
 emA
@@ -155418,7 +155494,7 @@ ctE
 tcO
 aag
 ajZ
-aaC
+aaa
 aaa
 aab
 aaa
@@ -155429,7 +155505,7 @@ aaa
 aaa
 aab
 bdH
-aaC
+aaa
 aad
 aag
 emA
@@ -155521,7 +155597,7 @@ lia
 tcO
 aag
 ajZ
-aaC
+aaa
 aaa
 aab
 aaa
@@ -164018,19 +164094,19 @@ aad
 gFP
 vVI
 lMb
-bIN
-bIN
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-bIN
-bIN
+akM
+atA
+asR
+amt
+akM
+atA
+asR
+amt
+akM
+atA
+asR
+amt
+akM
 lMb
 bIA
 gFP
@@ -164120,21 +164196,21 @@ aaa
 aad
 gFP
 bJi
-lMb
-bIN
-lMb
-lMb
-lMb
+auT
 lMb
 lMb
 bIN
 bIN
+bIN
+lMb
+bIN
+lMb
 lMb
 lMb
 lMb
 lMb
 bIP
-lMb
+abS
 bIB
 gFP
 ajZ
@@ -164223,13 +164299,10 @@ aaa
 aad
 gFP
 bJj
+avC
 lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
+bIN
+bIN
 bIN
 bIN
 bIN
@@ -164238,6 +164311,9 @@ lMb
 lMb
 lMb
 lMb
+lMb
+lMb
+ack
 bIC
 gFP
 ajZ
@@ -164326,13 +164402,7 @@ aaa
 aad
 gFP
 bJi
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
+awq
 lMb
 bIN
 bIN
@@ -164341,6 +164411,12 @@ lMb
 lMb
 lMb
 lMb
+lMb
+lMb
+lMb
+lMb
+lMb
+acp
 amS
 gFP
 ajZ
@@ -164429,6 +164505,7 @@ aaa
 aad
 gFP
 bJk
+axp
 lMb
 lMb
 lMb
@@ -164442,8 +164519,7 @@ lMb
 lMb
 lMb
 lMb
-lMb
-lMb
+agH
 gsi
 gFP
 ajZ
@@ -164532,6 +164608,7 @@ aaa
 aad
 gFP
 aoO
+auT
 lMb
 lMb
 lMb
@@ -164545,8 +164622,7 @@ lMb
 lMb
 lMb
 lMb
-lMb
-lMb
+ahL
 amS
 gFP
 ajZ
@@ -164635,14 +164711,7 @@ aaa
 aad
 gFP
 riT
-lMb
-bIN
-lMb
-lMb
-lMb
-lMb
-lMb
-bIN
+avC
 lMb
 lMb
 lMb
@@ -164650,6 +164719,13 @@ lMb
 lMb
 lMb
 lMb
+lMb
+lMb
+lMb
+lMb
+lMb
+lMb
+ack
 bIC
 gFP
 ajZ
@@ -164738,21 +164814,21 @@ aaa
 aad
 gFP
 aoO
+axW
+lMb
+lMb
+lMb
+lMb
+lMb
+lMb
+lMb
+lMb
+lMb
+lMb
 lMb
 bIN
-bIN
 lMb
-lMb
-lMb
-bIN
-bIN
-bIN
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
+akm
 bIB
 gFP
 ajZ
@@ -164842,19 +164918,19 @@ aad
 gFP
 bJl
 lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
+alZ
+atE
+atj
+ape
+alZ
+atE
+atj
+ape
+alZ
+atE
+atj
+ape
+alZ
 lMb
 gsi
 gFP
@@ -207670,9 +207746,9 @@ bdH
 bdH
 bdH
 aaa
-aae
-aah
-aag
+bdH
+bdH
+aad
 aag
 aag
 cZe

@@ -76,7 +76,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/cec_patch(new_human), WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/upp_pfb(new_human.back), WEAR_IN_BACK)
 	// gun //
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/np92/suppressed(new_human), WEAR_L_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/np92(new_human), WEAR_L_HAND)
 
 	//eyewear//
 	var/random_goggles = rand(1,2)
@@ -174,7 +174,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/cec(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(new_human), WEAR_L_STORE)
 	// gun //
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/np92/suppressed(new_human), WEAR_L_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/np92(new_human), WEAR_L_HAND)
 	add_random_cl_survivor_loot(new_human)
 	..()
 
@@ -409,7 +409,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/civi/plant_worker(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(new_human), WEAR_HANDS)
 	// gun //
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/np92/suppressed(new_human), WEAR_L_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/np92(new_human), WEAR_L_HAND)
 	..()
 
 /datum/equipment_preset/survivor/engineer/atlan_processing_engineer

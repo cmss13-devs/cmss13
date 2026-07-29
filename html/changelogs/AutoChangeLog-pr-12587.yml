@@ -1,4 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - admin: "Most logging (and fingerprints) should now properly use ckey, instead of key"

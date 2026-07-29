@@ -22,26 +22,29 @@
 /obj/item/hardpoint/holder/get_examine_text(mob/user)
 	. = ..()
 	if(health <= 0)
-		. += "It's busted!"
+		. += SPAN_BOLDWARNING("It's busted!")
 	else if(isobserver(user) || (ishuman(user) && (skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE) || skillcheck(user, SKILL_VEHICLE, SKILL_VEHICLE_CREWMAN))))
 		. += "It's at [round(get_integrity_percent(), 1)]% integrity!"
 	for(var/obj/item/hardpoint/H in hardpoints)
-		. += "There is \a [H] module installed on [src]."
-		. += H.get_examine_text(user, TRUE)
+		var/line = "There is \a [H] module installed on [src]."
+		// Styling has to live inside the <a> tag's own text to render red, not wrap it.
+		// A mounted weapon at 0% health always reads "DESTROYED" and red/bold.
+		var/is_destroyed = H.health <= 0
+		var/name_text = is_destroyed ? "DESTROYED [H.name]" : H.name
+		var/display_name = (is_destroyed || LAZYLEN(H.wound_tiers)) ? SPAN_BOLDWARNING(name_text) : name_text
+		var/styled_name = "<a href='byond://?src=\ref[H];examine_hardpoint=1'>[display_name]</a>"
+		line = replacetext(line, H.name, styled_name)
+		. += "[icon2html(H, user)] [line]"
+	. += get_missing_hardpoint_slot_lines(accepted_hardpoints, hardpoints)
 
+/// Returns a flat list of dicts: this holder's own entry followed by one entry per mounted hardpoint.
 /obj/item/hardpoint/holder/get_tgui_info()
-	var/list/data = list()
+	var/list/data = list(..())
 
 	for(var/obj/item/hardpoint/H in hardpoints)
 		data += list(H.get_tgui_info())
 
 	return data
-
-/obj/item/hardpoint/holder/take_damage(damage)
-	..()
-
-	for(var/obj/item/hardpoint/H in hardpoints)
-		H.take_damage(damage)
 
 /obj/item/hardpoint/holder/on_install(obj/vehicle/multitile/vehicle)
 	..()
@@ -56,6 +59,8 @@
 		return
 	for(var/obj/item/hardpoint/hardpoint in hardpoints)
 		hardpoint.on_uninstall(vehicle)
+		// Must run before owner is nulled below, or reset_rottation() has nothing to read and no-ops.
+		hardpoint.reset_rotation()
 		hardpoint.owner = null
 	..()
 
@@ -135,6 +140,9 @@
 	H.on_install(owner)
 	H.rotate(turning_angle(H.dir, dir))
 
+	owner?.ensure_active_hardpoint(VEHICLE_DRIVER)
+	owner?.ensure_active_hardpoint(VEHICLE_GUNNER)
+
 /obj/item/hardpoint/holder/proc/remove_hardpoint(obj/item/hardpoint/H, turf/uninstall_to)
 	if(!hardpoints)
 		return
@@ -142,11 +150,24 @@
 
 	H.on_uninstall(owner)
 	H.reset_rotation()
+
+	if(H.self_gimballed)
+		H.self_gimballed = FALSE
+		H.allowed_seat = initial(H.allowed_seat)
+
 	hardpoints -= H
 	H.owner = null
+	owner?.refresh_hardpoint_actions()
+	owner?.ensure_active_hardpoint(VEHICLE_DRIVER)
+	owner?.ensure_active_hardpoint(VEHICLE_GUNNER)
 
 	if(H.health <= 0)
 		qdel(H)
+
+	// Same rider-drop fix as the top-level remove_hardpoint(). Only tanks have the rider system.
+	if(!QDELETED(H))
+		var/obj/vehicle/multitile/tank/tank_owner = istype(owner, /obj/vehicle/multitile/tank) ? owner : null
+		tank_owner?.obj_mark_on_top(H)
 
 //Returns all activatable hardpoints
 /obj/item/hardpoint/holder/proc/get_activatable_hardpoints(seat)
@@ -161,7 +182,7 @@
 /obj/item/hardpoint/holder/proc/get_hardpoints_with_ammo(seat)
 	var/list/hps = list()
 	for(var/obj/item/hardpoint/H in hardpoints)
-		if(!H.ammo || seat && seat != H.allowed_seat)
+		if(!H.ammo_type || seat && seat != H.allowed_seat)
 			continue
 		hps += H
 	return hps
@@ -184,8 +205,11 @@
 		images += HI
 	return images
 
-/obj/item/hardpoint/holder/rotate(deg)
+/obj/item/hardpoint/holder/rotate(deg, override_gyro = FALSE, sync_angle = TRUE)
 	for(var/obj/item/hardpoint/H in hardpoints)
+		// A child already mid-uninstall has no owner left to read. Skip it instead of crashing.
+		if(!H.owner)
+			continue
 		H.rotate(deg)
 
-	..()
+	return ..(deg, override_gyro, sync_angle)

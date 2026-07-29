@@ -395,6 +395,9 @@ GLOBAL_LIST_INIT(vehicle_gear_order, list("P", "R", "N", "D", "1", "2"))
 
 	GLOB.all_multi_vehicles += src
 
+	GLOB.vehicle_hardpoint_hud.add_to_hud(src)
+	INVOKE_ASYNC(src, PROC_REF(hardpoint_hud_loop))
+
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/vehicle/multitile/LateInitialize()
@@ -443,6 +446,9 @@ GLOBAL_LIST_INIT(vehicle_gear_order, list("P", "R", "N", "D", "1", "2"))
 	QDEL_NULL(track_soundloop)
 	QDEL_NULL(drift_soundloop)
 	QDEL_NULL(gunner_rangefinder)
+
+	GLOB.vehicle_hardpoint_hud.remove_from_hud(src)
+	hardpoint_hud_images = null
 
 	GLOB.all_multi_vehicles -= src
 

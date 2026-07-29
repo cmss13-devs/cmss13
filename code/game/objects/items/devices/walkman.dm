@@ -540,6 +540,31 @@
 								"sound/music/walkman/surf/10-2-3.ogg",\
 								"sound/music/walkman/surf/10-2-4.ogg"))
 
+// This one might need to be moved server-side.
+/obj/item/device/cassette_tape/liberation // Allies world war songs & american civil war songs. Lyrics to all songs are in the public domain.
+	name = "liberation cassette"
+	id = 19
+	desc = "A plastic cassette tape with the UA Flag"
+	icon_state = "cassette_liberation"
+	side1_icon = "cassette_liberation"
+	songs = list(
+		"side1" = list(
+			"sound/music/walkman/liberation/10-1-1.ogg", /* "Over There" (George M. Cohan, 1917).*/\
+														/* Sung in 1917 by Billy Murray. This recording is in the public domain.*/\
+			"sound/music/walkman/liberation/10-1-2.ogg", /* "When Johnny Comes Marching Home" (Patrick Gilmore, 1863)*/\
+														/* 1990 U.S. Military Academy Band recording, also in the public domain.*/\
+			"sound/music/walkman/liberation/10-1-3.ogg", /* "Battle Cry Of Freedom" (Geo. F. Root, 1862).*/\
+														/* Recording by UC Regents, licensed CC BY-NC 2.5. Cleaned up in Audacity.*/\
+			"sound/music/walkman/liberation/10-1-4.ogg"), /* "Blood On The Risers" (US Paratrooper song from WW2).*/\
+														/* Unsure if this specific recording, by Alorsx, is in the public domain, but the lyrics are.*/\
+		"side2" = list(
+			"sound/music/walkman/liberation/10-2-1.ogg", /* "Chanson de l'oignon" (French marching song. Melody from 1797, lyrics from 1800).*/\
+														/* Unsure if this specific recording, by the Chorale De Saint Cyr, is in the public domain, but the lyrics are.*/\
+			"sound/music/walkman/liberation/10-2-2.ogg", /* "Ride of the Valkyries" (Wagner, from Die Walküre, 1870) In the US public domain.*/\
+														/* This is a 2022 recording, conducted by Philip Milman, licensed under 3.0 CC*/\
+			"sound/music/walkman/liberation/10-2-3.ogg")) /* "It's a Long Way to Tipperary" (British WW2 song. Albert Farrington, 1915).*/\
+														/* This specific recording is in the US public domain.*/\
+
 // hotline reference
 /obj/item/device/cassette_tape/aesthetic
 	name = "aesthetic cassette"

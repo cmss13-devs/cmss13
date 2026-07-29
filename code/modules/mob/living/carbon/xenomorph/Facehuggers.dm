@@ -212,6 +212,8 @@
 	go_idle()
 
 /obj/item/clothing/mask/facehugger/Crossed(atom/target)
+	..()
+	
 	has_proximity(target)
 
 /obj/item/clothing/mask/facehugger/on_found(mob/finder)

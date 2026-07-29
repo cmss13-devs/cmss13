@@ -245,3 +245,50 @@
       volume lowered from 75 to 30
   Venuska1117:
   - refactor: Updates Praetorian code for cleaner look and making it easier to follow.
+2026-07-28:
+  Drathek:
+  - rscdel: Removed logic making turfs persist signals
+  - bugfix: open_space now calls Entered for atoms in its contents on Initialize (making
+      them fall automatically if game has started)
+  - bugfix: Various props are now set to NO_ZFALL
+  - bugfix: Multiloc objects now only fall in open_space if their main loc is in that
+      turf
+  - code_imp: open_space now checks placement is valid when testing and doesn't attempt
+      to forcemove anything out of the map
+  - balance: Hijack hallucinations upper limit on probability is halved (was 5 mins
+      in FTL would have 25% chance per tick, now 12.5%)
+  - balance: Some hallucinations have an earlier message to them
+  - code_imp: Replaced an unnecessary old way of RNGing old boiler hallucinations
+      with just a 50% probability (in addition to the standard 15s cooldown FTL imposed
+      to hallucinations)
+  - balance: Hijack ground crash now causes xenomorph major once the ground crash
+      sequence is complete
+  MistChristmas:
+  - bugfix: Zip Cuff boxes can now only take tiny items like zip cuffs.
+  - rscdel: Removed the Large zip cuff box from SLs and some others. Replaced with
+      small ones.
+  - bugfix: Users no longer see admin's IC Characters from ahelp interactions
+  - ui: Ticket Panel scales better. Collapsibles like in the Overwatch Console are
+      no longer bordered.
+  Mister-moon1:
+  - balance: medium armour range increased to 5
+  - balance: light armour power increased to 4
+  NHC:
+  - code_imp: Renamed and properly sorted Autocannon hitsounds in code
+  - soundtweak: made Autocannon hitsounds quiter
+  Nihisohel:
+  - balance: You can now alt click another human to check their status, being able
+      to check their limb status at a glance without requiring a scanner. Obviously,
+      you wouldn't be able to tell if someone has a broken limb or prosthesis without
+      a scanner, however
+  - qol: Additionally, you can remove theirs AND your individual splints rather than
+      having to use the verb that removes all of it at once
+  - qol: You can now split stacks (brutekits, burnkits, etc) by increments of 1 via
+      unique action
+  - code_imp: Defuncts some legacy code regarding unreachable limbs from wearing a
+      space suit, well, pretty much refactors the remove surgery procedure in its
+      entirety
+  - code_imp: As a result of this PR, you can no longer alt-click a carbon to check
+      the contents of a tile, you would have to click on an object or a tile by that
+      point
+  - spellcheck: Touches up on some grammar and proper wording regarding status checking

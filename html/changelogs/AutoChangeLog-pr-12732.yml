@@ -1,0 +1,4 @@
+author: "JackieEstegado"
+delete-after: True
+changes:
+  - qol: "Made full pillbottles restockable."

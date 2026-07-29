@@ -99,7 +99,7 @@
 		You're also right there with the ribs cracked to fix it, so you can use the 3-9 seconds you spend on that to think about using the PICT next time.*/
 		for(var/i in 1 to rand(2,6))
 			var/datum/internal_organ/organ = pick(surgery.affected_limb.internal_organs)
-			organ.take_damage(5, organ == 1)
+			organ.take_damage(5, i == 1)
 
 	log_interact(user, target, "[key_name(user)] cut the roots of a larva in [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], starting [surgery].")
 

@@ -221,7 +221,7 @@
 	var/time_charged = min(world.time - start_time, max_charge_time)
 	var/modifier = 0
 	if(delegate.hypertension_stacks)
-		modifier = abs(min(delegate.hypertension_stacks, 4 * (time_charged / max_charge_time))) //how many stacks did we consume
+		modifier = abs(min(delegate.hypertension_stacks, 1 + 3 * (time_charged / max_charge_time))) //how many stacks did we consume
 		delegate.hypertension_stacks -= modifier
 		xeno.update_hypertension()
 		modifier *= 4 //4 more spits per consumed stack
@@ -351,7 +351,7 @@
 
 	apply_cooldown()
 
-	playsound(xeno, 'sound/voice/xeno_praetorian_screech.ogg', 75, 0, status = 0)
+	playsound(xeno, "alien_roarhiss", 30, 0, status = 0)
 	var/severity = (xeno.health <= (0.7 * xeno.maxHealth)) + (xeno.health <= 0.5 * xeno.maxHealth) + (xeno.health <= (0.3 * xeno.maxHealth))
 	var/acid_range = severity + 2
 	var/blocked = FALSE

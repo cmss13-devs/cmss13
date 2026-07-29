@@ -368,7 +368,7 @@
 				blocked = TRUE
 				break
 			var/obj/flamer_fire/temp = new()
-			var/atom/blocker = LinkBlocked(temp, prev_turf, turf)
+			var/atom/blocker = LinkBlocked(temp, prev_turf, path_turf)
 			if(blocker)
 				blocked = TRUE
 				break

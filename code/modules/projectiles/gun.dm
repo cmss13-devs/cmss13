@@ -1018,6 +1018,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 	user.visible_message(SPAN_NOTICE("[user] unloads [current_mag] from [src]."),
 	SPAN_NOTICE("You unload [current_mag] from [src]."), null, 4, CHAT_TYPE_COMBAT_ACTION)
 	current_mag.update_icon()
+	attached_magazine_clip.update_icon()
 	current_mag = null
 	attached_magazine_clip = null
 

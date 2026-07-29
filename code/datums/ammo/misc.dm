@@ -48,22 +48,39 @@
 /datum/ammo/flamethrower/do_at_max_range(obj/projectile/P)
 	drop_flame(get_turf(P), P.weapon_cause_data)
 
+// "Glob shot" mode ammo for the tank's primary/secondary flamer hardpoints
 /datum/ammo/flamethrower/tank_flamer
 	flamer_reagent_id = "highdamagenapalm"
 	max_range = 8
 	shell_speed = 1.5
+	var/loaded_chem_id
 
 /datum/ammo/flamethrower/tank_flamer/drop_flame(turf/turf, datum/cause_data/cause_data)
 	if(!istype(turf))
 		return
 
-	var/datum/reagent/napalm/high_damage/reagent = new()
-	new /obj/flamer_fire(turf, cause_data, reagent, 1)
+	var/datum/reagent/reagent = loaded_chem_id ? GLOB.chemical_reagents_list[loaded_chem_id] : null
+	if(!reagent)
+		reagent = new /datum/reagent/napalm/high_damage()
+	// Shape is forced to FLAMESHAPE_DEFAULT so the glob always spreads as a 5-tile cardinal cross.
+	new /obj/flamer_fire(turf, cause_data, reagent, 1, null, FLAMESHAPE_DEFAULT, null, null, 1, reagent.fire_type)
 
-	var/datum/effect_system/smoke_spread/landingsmoke = new /datum/effect_system/smoke_spread
-	landingsmoke.set_up(1, 0, turf, null, 4, cause_data)
-	landingsmoke.start()
-	landingsmoke = null
+/// Same as tank_flamer above, but for the secondary flamer hardpoint's smaller glob.
+/datum/ammo/flamethrower/tank_flamer_secondary
+	flamer_reagent_id = "highdamagenapalm"
+	max_range = 8
+	shell_speed = 1.5
+	var/loaded_chem_id
+
+/datum/ammo/flamethrower/tank_flamer_secondary/drop_flame(turf/turf, datum/cause_data/cause_data)
+	if(!istype(turf))
+		return
+
+	var/datum/reagent/reagent = loaded_chem_id ? GLOB.chemical_reagents_list[loaded_chem_id] : null
+	if(!reagent)
+		reagent = new /datum/reagent/napalm/high_damage()
+	// fire_spread_amount 0, so this glob stays confined to the tile it lands on.
+	new /obj/flamer_fire(turf, cause_data, reagent, 0, null, reagent.flameshape, null, null, 1, reagent.fire_type)
 
 /datum/ammo/flamethrower/sentry_flamer
 	flags_ammo_behavior = AMMO_IGNORE_ARMOR|AMMO_IGNORE_COVER|AMMO_FLAME|AMMO_NO_DEFLECT
@@ -316,6 +333,29 @@
 	damage = 2.5
 	flare_type = /obj/item/device/flashlight/flare/on/starshell_ash
 
+// Fired from the tank turret's flare launcher
+/datum/ammo/flare/starshell/burst
+	name = "star shell burst"
+	max_range = 7
+
+/datum/ammo/flare/starshell/burst/on_hit_mob(mob/M, obj/projectile/P)
+	detonate(get_turf(M), P)
+
+/datum/ammo/flare/starshell/burst/on_hit_obj(obj/O, obj/projectile/P)
+	detonate(get_turf(P), P)
+
+/datum/ammo/flare/starshell/burst/on_hit_turf(turf/T, obj/projectile/P)
+	if(T.density && isturf(P.loc))
+		detonate(P.loc, P)
+	else
+		detonate(T, P)
+
+/datum/ammo/flare/starshell/burst/do_at_max_range(obj/projectile/P, mob/firer)
+	detonate(get_turf(P), P)
+
+/datum/ammo/flare/starshell/burst/proc/detonate(turf/hit_turf, obj/projectile/fired_projectile)
+	create_shrapnel(hit_turf, 8, , 360, /datum/ammo/flare/starshell, fired_projectile.weapon_cause_data, FALSE, 0)
+
 /datum/ammo/flare/starshell/set_bullet_traits()
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff),
@@ -392,41 +432,39 @@
 	var/nade_type = /obj/item/explosive/grenade/high_explosive
 	icon_state = "grenade"
 	flags_ammo_behavior = AMMO_IGNORE_COVER|AMMO_SKIPS_ALIENS
+	/// Fuse (deciseconds) set on the dropped nade_type once it lands.
+	var/dropped_det_time = 10
 
 	damage = 15
 	accuracy = HIT_ACCURACY_TIER_3
 	max_range = 6
 
 /datum/ammo/grenade_container/on_hit_mob(mob/M,obj/projectile/P)
-	drop_nade(P)
+	drop_nade(get_turf(M), P)
 
 /datum/ammo/grenade_container/on_hit_obj(obj/O,obj/projectile/P)
-	drop_nade(P)
+	drop_nade(get_turf(O), P)
 
 /datum/ammo/grenade_container/on_hit_turf(turf/T,obj/projectile/P)
-	drop_nade(P)
+	drop_nade(T.density ? get_turf(P) : T, P)
 
 /datum/ammo/grenade_container/do_at_max_range(obj/projectile/P)
-	drop_nade(P)
+	drop_nade(get_turf(P), P)
 
-/datum/ammo/grenade_container/proc/drop_nade(obj/projectile/P)
-	var/turf/T = get_turf(P)
+/datum/ammo/grenade_container/proc/drop_nade(turf/T, obj/projectile/P)
 	var/obj/item/explosive/grenade/G = new nade_type(T)
 	G.visible_message(SPAN_WARNING("\A [G] lands on [T]!"))
-	G.det_time = 10
+	G.det_time = dropped_det_time
 	G.cause_data = P.weapon_cause_data
 	G.activate()
 
 /datum/ammo/grenade_container/rifle
 	flags_ammo_behavior = NO_FLAGS
 
-/datum/ammo/grenade_container/smoke
-	name = "smoke grenade shell"
-	nade_type = /obj/item/explosive/grenade/smokebomb
-	icon_state = "smoke_shell"
-
 /datum/ammo/grenade_container/tank_glauncher
 	max_range = 8
+	flags_ammo_behavior = AMMO_IGNORE_COVER|AMMO_SKIPS_ALIENS|AMMO_HITS_TARGET_TURF // let me know if this is too much. Idea being that those shells are being 'lobbed up' into the air.
+	dropped_det_time = 3 SECONDS
 
 /datum/ammo/hugger_container
 	name = "hugger shell"

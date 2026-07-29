@@ -1,7 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - balance: "Comms signal clarity no longer decays and instead drops to minimum when xenos destroy a comms tower that had marine frequencies. If a second tower happens to be online at the same time, there will still be perfect communication clarity until it goes down too."
-  - bugfix: "Fixed some logic with OW signal clarity trampling ui theme and incorrect fallback behavior"
-  - bugfix: "Fixed incorrect set_interaction usage on comms computers"
-  - code_imp: "Removed useless argument bypass_cooldown from ai_silent_announcement"

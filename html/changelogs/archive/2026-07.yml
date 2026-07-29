@@ -292,3 +292,35 @@
       the contents of a tile, you would have to click on an object or a tile by that
       point
   - spellcheck: Touches up on some grammar and proper wording regarding status checking
+2026-07-29:
+  Drathek:
+  - balance: Comms signal clarity no longer decays and instead drops to minimum when
+      xenos destroy a comms tower that had marine frequencies. If a second tower happens
+      to be online at the same time, there will still be perfect communication clarity
+      until it goes down too.
+  - bugfix: Fixed some logic with OW signal clarity trampling ui theme and incorrect
+      fallback behavior
+  - bugfix: Fixed incorrect set_interaction usage on comms computers
+  - code_imp: Removed useless argument bypass_cooldown from ai_silent_announcement
+  - balance: Spotter sight is now spotter trait locked on first equip, but then is
+      free to equip after ID lock ends (generally permadeath)
+  Drathek, BOBAMA:
+  - qol: Players can now choose to opt in or out of certain archetypes for nightmare
+      insert survivor roles and FORECON. This is located in your player preferences.
+  JHINgle4ce:
+  - bugfix: Fixed weeds spreading logic when encountering platforms.
+  JackieEstegado:
+  - qol: Made full pillbottles restockable.
+  Venuska1117:
+  - bugfix: Made player unable to reset strain as bulwark when they have stances active
+      like encasing plates or reflective plates.
+  boskoramen:
+  - rscadd: Movement unit tests
+  cuberound:
+  - bugfix: can keybind to / * - + ,
+  fira:
+  - code_imp: Improved minimap_on_move and remove_marker performance
+  - bugfix: Fixed runtimes regarding ares step alerts for non-mobs
+  neeshacark:
+  - rscadd: Staff Officers now come fourth in the chain of command, and Field Doctors
+      are after normal Doctors.

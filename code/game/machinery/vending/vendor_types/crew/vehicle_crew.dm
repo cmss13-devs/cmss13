@@ -141,11 +141,14 @@ GLOBAL_LIST_INIT(cm_vending_vehicle_crew_tank, list(
 	list("AC3-E Autocannon", 0, /obj/effect/essentials_set/tank/autocannon, VEHICLE_PRIMARY_AVAILABLE, VENDOR_ITEM_RECOMMENDED),
 	list("DRG-N Offensive Flamer Unit", 0, /obj/effect/essentials_set/tank/dragonflamer, VEHICLE_PRIMARY_AVAILABLE, VENDOR_ITEM_REGULAR),
 	list("LTAA-AP Minigun", 0, /obj/effect/essentials_set/tank/gatling, VEHICLE_PRIMARY_AVAILABLE, VENDOR_ITEM_REGULAR),
+	list("LTB Cannon", 0, /obj/effect/essentials_set/tank/ltb, VEHICLE_PRIMARY_AVAILABLE, VENDOR_ITEM_RECOMMENDED),
 
 	list("SECONDARY WEAPON", 0, null, null, null),
 	list("M92T Grenade Launcher", 0, /obj/effect/essentials_set/tank/tankgl, VEHICLE_SECONDARY_AVAILABLE, VENDOR_ITEM_REGULAR),
-	list("M56 Cupola", 0, /obj/effect/essentials_set/tank/m56cupola, VEHICLE_SECONDARY_AVAILABLE, VENDOR_ITEM_REGULAR),
-	list("LZR-N Flamer Unit", 0, /obj/effect/essentials_set/tank/tankflamer, VEHICLE_SECONDARY_AVAILABLE, VENDOR_ITEM_RECOMMENDED),
+	list("M56 Cupola", 0, /obj/effect/essentials_set/tank/m56cupola, VEHICLE_SECONDARY_AVAILABLE, VENDOR_ITEM_RECOMMENDED),
+	list("M6H-BRUTE Launcher", 0, /obj/effect/essentials_set/tank/brute_launcher, VEHICLE_SECONDARY_AVAILABLE, VENDOR_ITEM_REGULAR),
+	list("LZR-N Flamer Unit", 0, /obj/effect/essentials_set/tank/tankflamer, VEHICLE_SECONDARY_AVAILABLE, VENDOR_ITEM_REGULAR),
+	list("Mounted UA Flag", 0, /obj/effect/essentials_set/tank/united_americas_flag, VEHICLE_SECONDARY_AVAILABLE, VENDOR_ITEM_RECOMMENDED),
 
 	list("SUPPORT MODULE", 0, null, null, null),
 	list("Artillery Module", 0, /obj/item/hardpoint/support/artillery_module, VEHICLE_SUPPORT_AVAILABLE, VENDOR_ITEM_REGULAR),
@@ -153,7 +156,13 @@ GLOBAL_LIST_INIT(cm_vending_vehicle_crew_tank, list(
 	list("Overdrive Enhancer", 0, /obj/item/hardpoint/support/overdrive_enhancer, VEHICLE_SUPPORT_AVAILABLE, VENDOR_ITEM_RECOMMENDED),
 
 	list("ARMOR", 0, null, null, null),
-	list("Snowplow", 0, /obj/item/hardpoint/armor/snowplow, VEHICLE_ARMOR_AVAILABLE, VENDOR_ITEM_REGULAR),
+	list("Ballistic Armor", 0, /obj/item/hardpoint/armor/ballistic, VEHICLE_ARMOR_AVAILABLE, VENDOR_ITEM_REGULAR),
+	list("Caustic Armor", 0, /obj/item/hardpoint/armor/caustic, VEHICLE_ARMOR_AVAILABLE, VENDOR_ITEM_REGULAR),
+	list("Concussive Armor", 0, /obj/item/hardpoint/armor/concussive, VEHICLE_ARMOR_AVAILABLE, VENDOR_ITEM_REGULAR),
+	list("Paladin Armor", 0, /obj/item/hardpoint/armor/paladin, VEHICLE_ARMOR_AVAILABLE, VENDOR_ITEM_REGULAR),
+
+	list("UTILITY", 0, null, null, null),
+	list("Snowplow", 0, /obj/item/hardpoint/snowplow, VEHICLE_UTILITY_AVAILABLE, VENDOR_ITEM_REGULAR),
 
 	list("TREADS", 0, null, null, null),
 	list("Reinforced Treads", 0, /obj/item/hardpoint/locomotion/treads/robust, VEHICLE_TREADS_AVAILABLE, VENDOR_ITEM_REGULAR),
@@ -193,7 +202,7 @@ GLOBAL_LIST_INIT(cm_vending_vehicle_crew_apc_spare, list(
 	list("M-97F Flare Launcher", 300, /obj/item/hardpoint/support/flare_launcher, null, VENDOR_ITEM_REGULAR),
 
 	list("SUPPORT AMMUNITION", 0, null, null, null),
-	list("M-97F Flare Launcher Magazine", 50, /obj/item/ammo_magazine/hardpoint/flare_launcher, null, VENDOR_ITEM_REGULAR),
+	list("M74 AGM-S Star Shell Packet", 50, /obj/item/storage/box/packet/flare, null, VENDOR_ITEM_REGULAR),
 
 	list("WHEELS", 0, null, null, null),
 	list("APC Wheels", 200, /obj/item/hardpoint/locomotion/apc_wheels, null, VENDOR_ITEM_REGULAR)))
@@ -270,6 +279,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 		list("Tanker Armor", 0, /obj/item/clothing/suit/storage/marine/tanker, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 		list("M50 Tanker Helmet", 0, /obj/item/clothing/head/helmet/marine/tech/tanker, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
 		list("Medical Helmet Optic", 0, /obj/item/device/helmet_visor/medical, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
+		list("Vehicle Diagnostics Optic", 0, /obj/item/device/helmet_visor/vehicle, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
 		list("Welding Kit", 0, /obj/item/tool/weldpack, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
 		list("MRE", 0, /obj/item/storage/box/mre, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 
@@ -375,11 +385,18 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 	desc = "A giant cannon firing explosive 86mm shells. You'd be lucky if this even leaves the dust of whatever you hit with it."
 	spawned_gear_list = list(
 		/obj/item/hardpoint/primary/cannon,
-		/obj/item/ammo_magazine/hardpoint/ltb_cannon,
-		/obj/item/ammo_magazine/hardpoint/ltb_cannon,
-		/obj/item/ammo_magazine/hardpoint/ltb_cannon,
-		/obj/item/ammo_magazine/hardpoint/ltb_cannon,
-		/obj/item/ammo_magazine/hardpoint/ltb_cannon,
+		/obj/item/ammo_magazine/hardpoint/ltb_cannon/he_shell,
+		/obj/item/ammo_magazine/hardpoint/ltb_cannon/he_shell,
+		/obj/item/ammo_magazine/hardpoint/ltb_cannon/he_shell,
+		/obj/item/ammo_magazine/hardpoint/ltb_cannon/he_shell,
+		/obj/item/ammo_magazine/hardpoint/ltb_cannon/he_shell,
+		/obj/item/ammo_magazine/hardpoint/ltb_cannon/he_shell,
+		/obj/item/ammo_magazine/hardpoint/ltb_cannon/he_shell,
+		/obj/item/ammo_magazine/hardpoint/ltb_cannon/he_shell,
+		/obj/item/ammo_magazine/hardpoint/ltb_cannon/he_shell,
+		/obj/item/ammo_magazine/hardpoint/ltb_cannon/he_shell,
+		/obj/item/ammo_magazine/hardpoint/ltb_cannon/he_shell,
+		/obj/item/ammo_magazine/hardpoint/ltb_cannon/he_shell,
 	)
 
 /obj/effect/essentials_set/tank/gatling
@@ -427,7 +444,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 	desc = "A permanently fixed M56D, firing standard issue 10x28mm rounds."
 	spawned_gear_list = list(
 		/obj/item/hardpoint/secondary/m56cupola,
-		/obj/item/ammo_magazine/hardpoint/m56_cupola,
+		/obj/item/ammo_magazine/m56d,
 	)
 
 /obj/effect/essentials_set/tank/tankgl
@@ -440,11 +457,29 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 		/obj/item/ammo_magazine/hardpoint/tank_glauncher,
 	)
 
+/obj/effect/essentials_set/tank/brute_launcher
+	desc = "A tank-mounted BRUTE breaching rocket launcher. Laser-guides a single 90mm shaped-charge rocket onto structures and walls, given a few seconds to lock on."
+	spawned_gear_list = list(
+		/obj/item/hardpoint/secondary/brute_launcher,
+		/obj/item/ammo_magazine/rocket/brute,
+		/obj/item/ammo_magazine/rocket/brute,
+		/obj/item/ammo_magazine/rocket/brute,
+		/obj/item/ammo_magazine/rocket/brute,
+		/obj/item/ammo_magazine/rocket/brute,
+		/obj/item/ammo_magazine/rocket/brute,
+	)
+
+/obj/effect/essentials_set/tank/united_americas_flag
+	desc = "An United Americas Flag for mounting atop the tank."
+	spawned_gear_list = list(
+		/obj/item/hardpoint/secondary/united_americas_flag,
+	)
+
 /obj/effect/essentials_set/tank/turret
 	spawned_gear_list = list(
 		/obj/item/hardpoint/holder/tank_turret,
-		/obj/item/ammo_magazine/hardpoint/turret_smoke,
-		/obj/item/ammo_magazine/hardpoint/turret_smoke,
+		/obj/item/storage/box/packet/flare,
+		/obj/item/storage/box/packet/flare,
 	)
 
 /obj/effect/essentials_set/apc/dualcannon
@@ -465,7 +500,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 /obj/effect/essentials_set/apc/flarelauncher
 	spawned_gear_list = list(
 		/obj/item/hardpoint/support/flare_launcher,
-		/obj/item/ammo_magazine/hardpoint/flare_launcher,
-		/obj/item/ammo_magazine/hardpoint/flare_launcher,
-		/obj/item/ammo_magazine/hardpoint/flare_launcher,
+		/obj/item/storage/box/packet/flare,
+		/obj/item/storage/box/packet/flare,
 	)

@@ -571,6 +571,15 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		intel_squad.put_marine_in_squad(human)
 		return
 
+	// Tank crew default to Foxtrot instead of a randomized combat squad, but are still fully transferable.
+	if(human.job == JOB_TANK_CREW)
+		var/datum/squad/tank_crew_squad = get_squad_by_name(SQUAD_MARINE_CRYO)
+		if(!tank_crew_squad || !istype(tank_crew_squad)) //Something went horribly wrong!
+			to_chat(human, "Something went wrong with randomize_squad()! Tell a coder!")
+			return
+		tank_crew_squad.put_marine_in_squad(human)
+		return
+
 	var/slot_check
 	if(human.job != "Reinforcements")
 		slot_check = GET_DEFAULT_ROLE(human.job)

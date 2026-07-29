@@ -149,7 +149,7 @@
 		user.affected_message(target,
 			SPAN_NOTICE("You try to forcefully rip the writhing larva from [target]'s chest with your bare hand."),
 			SPAN_NOTICE("[user] tries to forcefully rip the writhing larva from your chest with \his bare hand."),
-			SPAN_NOTICE("[user] tries to forcefully rip the writhing larva from [target]'s chest with \his bare hand."))
+			SPAN_NOTICE("[user], with \his bare hands, tries to forcefully rip the writhing larva from [target]'s chest!"))
 
 	to_chat(target, SPAN_HIGHDANGER("IT'S COMING OUT! BRACE YOURSELF!"))
 	if(target.stat == CONSCIOUS)
@@ -169,7 +169,7 @@
 			user.affected_message(target,
 				SPAN_WARNING("Your hands and your patient's insides are burned by acid as you forcefully rip a wriggling parasite out of [target]'s ribcage!"),
 				SPAN_WARNING("Your insides and [user]'s hands are burned by acid as \he rips a wriggling parasite out of your ribcage!"),
-				SPAN_WARNING("[user]'s hands and [target]'s insides are burned by acid as \he rips a wriggling parasite out of [target]'s ribcage!"))
+				SPAN_WARNING("[target]'s insides and [user]'s hands are burned by acid as \he rips a wriggling parasite out of [target]'s ribcage!"))
 
 			var/datum/internal_organ/impacted_organ = pick(surgery.affected_limb.internal_organs)
 			impacted_organ.take_damage(5, FALSE)
@@ -214,12 +214,14 @@
 
 	var/datum/internal_organ/int_organ = pick(surgery.affected_limb.internal_organs)
 	int_organ.take_damage(5,0)
+
 	if(target.stat == CONSCIOUS)
 		to_chat(target, SPAN_HIGHDANGER("Your [int_organ.name] burns like hell in your [surgery.affected_limb.cavity]!"))
 		if(target.pain.reduction_pain >= surgery.pain_reduction_required) //if patient is under the proper anesthesia
 			target.emote("pain")
 		else
 			target.emote("scream")
+
 	target.apply_damage(15, BURN, target_zone)
 
 	to_chat(user, SPAN_HIGHDANGER("Your hands are scalded by acid!"))

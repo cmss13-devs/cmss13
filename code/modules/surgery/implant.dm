@@ -150,9 +150,9 @@
 				target.emote("pain")
 			else
 				return
-		var/datum/wound/internal_bleeding/int_organ = new (0)
-		surgery.affected_limb.add_bleeding(int_organ, TRUE)
-		surgery.affected_limb.wounds += int_organ
+		var/datum/wound/internal_bleeding/int_bleeding = new (0)
+		surgery.affected_limb.add_bleeding(int_bleeding, TRUE)
+		surgery.affected_limb.wounds += int_bleeding
 		target.apply_damage(5, BRUTE, target_zone)
 		surgery.affected_limb.add_bleeding(null, FALSE, 15)
 

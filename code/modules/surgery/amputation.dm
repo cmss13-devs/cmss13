@@ -85,7 +85,6 @@
 		to_chat(target, SPAN_HIGHDANGER("You can no longer move your [surgery.affected_limb.display_name]!"))
 		if(target.pain.reduction_pain >= surgery.pain_reduction_required)
 			target.emote("pain") // We don't have an 'I am startled and in distress' emote, so this will have to do.
-			return
 		else
 			target.emote("scream") ///AAAA MY ARM HURTS AND I CAN'T MOVE IT AWAY!
 

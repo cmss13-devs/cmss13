@@ -209,7 +209,7 @@
 /datum/surgery_step/clamp_bleeders_step/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_WARNING("Your hand slips and tears several blood vessels in [target]'s [surgery.affected_limb.display_name]! Blood gushes everywhere, causing internal bleeding."),
-		SPAN_WARNING("[user]'s hand slips and tears several blood vessels in your [surgery.affected_limb.display_name]"),
+		SPAN_WARNING("[user]'s hand slips and tears several blood vessels in your [surgery.affected_limb.display_name]! Blood gushes everywhere, causing internal bleeding."),
 		SPAN_WARNING("[user]'s hand slips and tears several blood vessels in [target]'s [surgery.affected_limb.display_name]! Blood gushes everywhere, causing internal bleeding."))
 
 	target.custom_pain("You feel something rip in your [surgery.affected_limb.display_name]!", 1)
@@ -217,8 +217,6 @@
 		to_chat(user, SPAN_WARNING("Blood is gushing out of your [surgery.affected_limb.display_name]! It looks horrifying!"))
 		if(target.pain.reduction_pain < surgery.pain_reduction_required)//if patient is not under the proper anesthesia
 			target.emote("pain")
-		else
-			return
 
 	var/datum/wound/internal_bleeding/int_bleeding = new (0)
 	surgery.affected_limb.add_bleeding(int_bleeding, TRUE)
@@ -339,8 +337,9 @@
 				SPAN_WARNING("[user] tears the incision on your [surgery.affected_limb.display_name] open with [tool], exposing bleeding blood vessels!"),
 				SPAN_WARNING("[user] tears the incision on [target]'s [surgery.affected_limb.display_name] open with [tool], exposing bleeding blood vessels!"))
 
-	if(target.stat == CONSCIOUS && target.pain.reduction_pain < surgery.pain_reduction_required) //if patient is not under the proper anesthesia
-		target.emote("pain")
+	if(target.stat == CONSCIOUS)
+		if(target.pain.reduction_pain < surgery.pain_reduction_required) //if patient is not under the proper anesthesia
+			target.emote("pain")
 
 	target.apply_damage(15, BRUTE, target_zone)
 	log_interact(user, target, "[key_name(user)] violently retracted skin in [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")

@@ -342,16 +342,21 @@ SUBSYSTEM_DEF(hijack)
 
 	for(var/area/cycled_area as anything in progress_areas)
 		var/new_area_state = cycled_area.power_equip
+		var/repairable = TRUE
 		for(var/obj/structure/machinery/fuelpump/pump in fuelpumps)
 			// Pumps don't care about area power but health
 			if(get_area(pump) == cycled_area)
+				repairable = FALSE
 				new_area_state = pump.operable()
 				break // Assumption: One pump per area
 		progress_areas[cycled_area] = new_area_state
 		if(new_area_state)
+			// Powered: xenos interested to know this
 			xeno_warning_areas += "[cycled_area], "
 			continue
-		marine_warning_areas += "[cycled_area], "
+		if(repairable)
+			// Not powered, but can be powered: marines interested to know this
+			marine_warning_areas += "[cycled_area], "
 
 	// Remove ending commas and whitespace
 	if(xeno_warning_areas)

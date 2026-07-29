@@ -265,13 +265,14 @@
 	var/datum/behavior_delegate/despoiler_base/delegate = xeno.behavior_delegate
 	stage = min(stage, delegate.hypertension_stacks)
 	distance += stage * 2
+	if(charge_overlay)
+		owner.overlays -= charge_overlay
 	. = ..()
 	if(.)
 		delegate.hypertension_stacks -= stage
 		xeno.update_hypertension()
 	distance = initial(distance)
-	if(charge_overlay)
-		owner.overlays -= charge_overlay
+
 
 /datum/action/xeno_action/activable/pounce/caustic_embrace/proc/release_charge(atom/source, atom/target, list/args)
 	UnregisterSignal(owner, COMSIG_MOB_MOUSEUP)

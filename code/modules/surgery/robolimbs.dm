@@ -31,12 +31,12 @@
 /datum/surgery_step/connect_prosthesis/tool_check(mob/user, obj/item/robot_parts/tool, datum/surgery/surgery)
 	. = ..()
 	if(. && (!tool.part || !(user.zone_selected in tool.part)))
-		to_chat(user, SPAN_WARNING("\The [tool] cannot be used to replace a missing [parse_zone(user.zone_selected)]"))
+		to_chat(user, SPAN_WARNING("[tool] cannot be used to replace a missing [parse_zone(user.zone_selected)]"))
 		return FALSE
 
 /datum/surgery_step/connect_prosthesis/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/robot_parts/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_NOTICE("You begin connecting [tool] to the prepared stump of [target]'s [parse_zone(target_zone)]."),
+		SPAN_NOTICE("You begin to connect [tool] to the prepared stump of [target]'s [parse_zone(target_zone)]."),
 		SPAN_NOTICE("[user] begins to connect [tool] to the prepared stump of your [parse_zone(target_zone)]."),
 		SPAN_NOTICE("[user] begins to connect [tool] to the prepared stump of [target]'s [parse_zone(target_zone)]."))
 
@@ -81,15 +81,15 @@
 /datum/surgery_step/strenghten_prosthesis_connection/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_NOTICE("You start tightening [target]'s new prosthetic [parse_zone(target_zone)]'s connection to \his [surgery.affected_limb.display_name]'s stump."),
-		SPAN_NOTICE("[user] starts to tighten your new prosthetic [parse_zone(target_zone)]'s connection to your [surgery.affected_limb.display_name]'s stump."),
-		SPAN_NOTICE("[user] starts to tighten [target]'s new prosthetic [parse_zone(target_zone)]'s connection to \his [surgery.affected_limb.display_name]'s stump."))
+		SPAN_NOTICE("[user] starts tightening your new prosthetic [parse_zone(target_zone)]'s connection to your [surgery.affected_limb.display_name]'s stump."),
+		SPAN_NOTICE("[user] starts tightening [target]'s new prosthetic [parse_zone(target_zone)]'s connection to \his [surgery.affected_limb.display_name]'s stump."))
 
 	log_interact(user, target, "[key_name(user)] began tightening a prosthesis to [key_name(target)]'s [parse_zone(target_zone)]'s stump.")
 
 /datum/surgery_step/strenghten_prosthesis_connection/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_NOTICE("You firmly attach the prosthesis' connections to [target]'s [surgery.affected_limb.display_name]'s stump."),
-		SPAN_NOTICE("[user] firmly attaches prosthesis' connections to your [surgery.affected_limb.display_name]'s stump."),
+		SPAN_NOTICE("[user] firmly attaches the prosthesis' connections to your [surgery.affected_limb.display_name]'s stump."),
 		SPAN_NOTICE("[user] firmly attaches the prosthesis' connections to [target]'s [surgery.affected_limb.display_name]'s stump."))
 
 	log_interact(user, target, "[key_name(user)] finished tightening a prosthesis to [key_name(target)]'s [surgery.affected_limb.display_name]'s stump.")
@@ -143,9 +143,9 @@
 /datum/surgery_step/calibrate_prosthesis/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	var/failure_mode
 	if(target_zone in HANDLING_LIMBS) //Arm/hand
-		failure_mode = pick("flails wildly.", "gestures rudely.", "attempts to throttle its owner.")
+		failure_mode = pick("flails wildly", "gestures rudely", "attempts to throttle its owner")
 	else //Leg/foot
-		failure_mode = pick("kicks wildly.", "contorts inhumanly.", "almost kicks [user] with its toes.")
+		failure_mode = pick("kicks wildly", "contorts inhumanly", "almost kicks [user] with its toes")
 
 	user.affected_message(target,
 		SPAN_WARNING("You make a mistake calibrating the prosthetic [parse_zone(target_zone)] and it [failure_mode]!"),

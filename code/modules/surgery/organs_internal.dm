@@ -107,7 +107,6 @@ and organ transplant code which may come in handy in future but haven't been edi
 		if(target.pain.reduction_pain < surgery.pain_reduction_required)//if patient is not under the proper anesthesia
 			target.emote("pain")
 
-
 	var/dam_amt = 2
 	switch(tool_type)
 		if(/obj/item/stack/medical/bruise_pack)

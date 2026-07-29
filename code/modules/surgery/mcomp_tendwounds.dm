@@ -186,8 +186,8 @@
 	else
 		user.affected_message(target,
 			SPAN_HELPFUL("You finish closing [target]'s treated wounds with [tool]."),
-			SPAN_HELPFUL("[user] finished closing your treated wounds with [tool]."),
-			SPAN_NOTICE("[user] finished closing [target]'s treated wounds with [tool]."))
+			SPAN_HELPFUL("[user] finishes closing your treated wounds with [tool]."),
+			SPAN_NOTICE("[user] finishes closing [target]'s treated wounds with [tool]."))
 
 	if(isyautja(target))
 		target.emote("loudroar")

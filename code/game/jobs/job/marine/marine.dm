@@ -19,9 +19,6 @@
 	var/extra_slots = 0
 
 	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
-		if(!target_squad)
-			continue
-
 		if(target_squad.pop_lock && target_squad.pop_lock < length(GLOB.clients))
 			target_squad.roles_cap = target_squad.initial_roles_cap
 

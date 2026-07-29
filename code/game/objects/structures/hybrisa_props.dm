@@ -1805,14 +1805,14 @@
 		return
 
 	if(amount < initial(amount) / 3)
-		overlays += image(icon=icon, icon_state="mugs-3")
+		overlays += image(icon, icon_state="mugs-3")
 		return
 
 	if(amount < 2 * initial(amount) / 3)
-		overlays += image(icon=icon, icon_state="mugs-2")
+		overlays += image(icon, icon_state="mugs-2")
 		return
 
-	overlays += image(icon=icon, icon_state="mugs-1")
+	overlays += image(icon, icon_state="mugs-1")
 
 /obj/structure/mug_rack/attackby(obj/item/item, mob/user)
 	if(istype(item, /obj/item/reagent_container/food/drinks/coffeecup))

@@ -166,8 +166,6 @@
 	SSticker.mode.update_gear_scale()
 
 	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
-		if(!target_squad)
-			continue
 
 		if(target_squad.dynamic_scaling)
 			target_squad.roles_cap[JOB_SQUAD_ENGI] = engi_slot_formula(length(GLOB.clients))

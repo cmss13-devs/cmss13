@@ -432,6 +432,61 @@
 	},
 /turf/open/fire_colony/basalt/basalt0,
 /area/fire_colony/exterior/underground/caves/north_west)
+"abp" = (
+/obj/effect/decal/warning_stripes/worn/stripes_double{
+	dir = 8;
+	pixel_y = 25
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c";
+	color = "#858680"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 5
+	},
+/turf/open/fire_colony/asteroid,
+/area/fire_colony/exterior/clearing/pass)
+"abq" = (
+/obj/effect/decal/warning_stripes/worn/stripes_double{
+	dir = 8;
+	pixel_y = 25
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	color = "#858680"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/prison/ramptop,
+/area/fire_colony/exterior/clearing/pass)
+"abr" = (
+/obj/effect/decal/warning_stripes/worn/stripes_double{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	color = "#858680"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/prison/ramptop,
+/area/fire_colony/interior/seegson/synthetic_storage)
+"abs" = (
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c";
+	color = "#858680"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 6
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fire_colony/interior/seegson/synthetic_storage)
 "abw" = (
 /obj/effect/lava/edges/basalt/side_rock{
 	dir = 1
@@ -23069,16 +23124,6 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/floor/plating/fire_colony,
 /area/fire_colony/interior/hangar/broken_dropship)
-"dVJ" = (
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	color = "#858680"
-	},
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/plating/fire_colony/filtrationside_lava/north,
-/area/fire_colony/interior/seegson/synthetic_storage)
 "dVX" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -26886,17 +26931,6 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/floor/strata/multi_tiles/west,
 /area/fire_colony/interior/seegson/ai_core/lobby)
-"eNH" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c";
-	color = "#858680"
-	},
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 6
-	},
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/fire_colony/interior/seegson/synthetic_storage)
 "eNN" = (
 /obj/structure/prop/hybrisa/misc/prop_deco_edging/corner{
 	color = "#6b6b6b"
@@ -52023,6 +52057,13 @@
 	dir = 4
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	color = "#858680"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
 /turf/open/fire_colony/asteroid,
 /area/fire_colony/exterior/clearing/pass)
 "kQi" = (
@@ -64700,21 +64741,6 @@
 	},
 /turf/open/fire_colony/basalt/basalt11,
 /area/fire_colony/exterior/valley/southeast)
-"nPG" = (
-/obj/structure/machinery/door/airlock/prison/alt/autoname{
-	dir = 1
-	},
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	color = "#858680"
-	},
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/machinery/door/poddoor/almayer/dark/open{
-	id = "joe_storage_3"
-	},
-/turf/open/floor/prison/floor_plate,
-/area/fire_colony/interior/seegson/synthetic_storage)
 "nPI" = (
 /obj/effect/blocker/lava,
 /turf/open/fire_colony/hot_lava/single_end/east,
@@ -83018,6 +83044,11 @@
 /obj/structure/machinery/door/poddoor/hybrisa/shutters{
 	id = "joe_storage_2"
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	color = "#858680"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/corsat,
 /area/fire_colony/interior/seegson/synthetic_storage)
 "sdD" = (
@@ -88170,17 +88201,6 @@
 /obj/effect/blocker/lava,
 /turf/open/fire_colony/hot_lava/side/east,
 /area/fire_colony/exterior/underground/caves/south_west)
-"tul" = (
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	color = "#858680"
-	},
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/fire_colony/asteroid,
-/area/fire_colony/exterior/clearing/pass)
 "tur" = (
 /obj/effect/lava/edges/basalt/l_piece{
 	dir = 1
@@ -95008,9 +95028,12 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/disposalpipe/segment{
 	dir = 2;
+	icon_state = "pipe-c";
 	color = "#858680"
 	},
-/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 10
+	},
 /turf/open/fire_colony/asteroid,
 /area/fire_colony/exterior/clearing/pass)
 "vcJ" = (
@@ -139954,11 +139977,11 @@ aAb
 aAb
 aAb
 gAB
-pAz
-xsT
+abs
+abr
 sdA
-hSy
-psT
+abq
+abp
 gfe
 bjx
 fXu
@@ -140156,7 +140179,7 @@ aAg
 aAb
 azU
 bxF
-azE
+rBg
 kbw
 bQo
 lji
@@ -140358,10 +140381,10 @@ rnc
 aAb
 aFH
 bxF
-eNH
-dVJ
-nPG
-tul
+rBg
+dyC
+mOc
+iYW
 vcI
 daI
 hVp

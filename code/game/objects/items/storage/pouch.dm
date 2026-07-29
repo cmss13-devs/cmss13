@@ -152,6 +152,7 @@
 		/obj/item/tool/crowbar,
 		/obj/item/storage/pill_bottle/packet,
 		/obj/item/stack/medical/bruise_pack,
+		/obj/item/stack/medical/ointment,
 		/obj/item/device/radio,
 		/obj/item/attachable/bayonet,
 		/obj/item/stack/medical/splint,

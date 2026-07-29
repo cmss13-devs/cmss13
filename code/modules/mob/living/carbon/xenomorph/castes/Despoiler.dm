@@ -221,7 +221,7 @@
 	var/time_charged = min(world.time - start_time, max_charge_time)
 	var/modifier = 0
 	if(delegate.hypertension_stacks)
-		modifier = abs(min(delegate.hypertension_stacks, 1 + 3 * (time_charged / max_charge_time))) //how many stacks did we consume
+		modifier = round(min(delegate.hypertension_stacks, 3 * (time_charged / max_charge_time))) //how many stacks did we consume
 		delegate.hypertension_stacks -= modifier
 		xeno.update_hypertension()
 		modifier *= 4 //4 more spits per consumed stack
@@ -232,7 +232,9 @@
 	for(var/index in 1 to barrage_size)
 		var/initial_angle = Get_Angle(xeno, target)
 		var/rand_angle = rand(-scatter, scatter)
-		var/turf/new_target = get_angle_target_turf(xeno, initial_angle + rand_angle, rand(1, 6))
+		var/turf/new_target = target
+		if(barrage_size > 1)
+			new_target = get_angle_target_turf(xeno, initial_angle + rand_angle, rand(1, 6))
 		var/obj/projectile/proj = new (get_turf(xeno), create_cause_data(xeno.ammo.name, xeno))
 		var/matrix/scale_matrix = matrix()
 		var/factor = rand(0.9, 1.33)

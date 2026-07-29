@@ -1,4 +1,0 @@
-author: "boskoramen"
-delete-after: True
-changes:
-  - rscadd: "Movement unit tests"

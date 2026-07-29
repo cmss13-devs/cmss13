@@ -20800,8 +20800,8 @@
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12"
 	},
-/turf/open/floor/strata/floor3/east,
-/area/atlan/asteroid/processing_sw_train)
+/turf/closed/wall/mineral/bone_resin,
+/area/atlan/oob)
 "cKN" = (
 /obj/structure/shuttle/part/ert/transparent/left_engine,
 /turf/open/floor/plating,
@@ -21196,7 +21196,6 @@
 /turf/closed/wall/upp_ship/grey/orange,
 /area/atlan/station/atmospherics)
 "ddM" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/strata/orange_edge/southwest,
 /area/atlan/asteroid/exports_west)
 "deb" = (
@@ -31630,6 +31629,7 @@
 "kUg" = (
 /obj/effect/decal/strata_decals/grime/grime3,
 /obj/effect/decal/cleanable/dirt/alt_dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/asteroid/exports_east)
 "kUq" = (
@@ -131437,7 +131437,7 @@ btT
 rRt
 kpJ
 kpJ
-kpJ
+lGF
 lGF
 lGF
 epu
@@ -131648,9 +131648,9 @@ dhU
 btT
 rRt
 wtD
-kpJ
-kpJ
-kpJ
+lGF
+lGF
+lGF
 kpJ
 kpJ
 wyW
@@ -131857,7 +131857,7 @@ lGF
 btT
 btT
 btT
-lNN
+btT
 ddM
 mPk
 rNh
@@ -132069,8 +132069,8 @@ lGF
 btT
 btT
 bma
-lNN
-lNN
+lGF
+btT
 btT
 btT
 btT
@@ -132280,8 +132280,8 @@ btT
 btT
 btT
 btT
-btT
-hFb
+lGF
+xEp
 bVf
 jqk
 sMF
@@ -132492,7 +132492,7 @@ btT
 btT
 hFb
 btT
-btT
+lGF
 btT
 btT
 btT
@@ -134405,7 +134405,7 @@ iEP
 idM
 pky
 pky
-idM
+pky
 bqQ
 xnZ
 xEp
@@ -134617,7 +134617,7 @@ pky
 pky
 aGw
 aGw
-pky
+idM
 pky
 lGF
 lGF

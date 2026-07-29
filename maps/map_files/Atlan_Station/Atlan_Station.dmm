@@ -986,6 +986,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/asteroid/processing_caves)
+"adm" = (
+/obj/structure/machinery/vending/cigarette/wy{
+	pixel_x = -7;
+	pixel_y = 15
+	},
+/turf/open/floor/strata/blue1,
+/area/atlan/station/hab_flight)
 "adn" = (
 /obj/structure/surface/rack{
 	color = "#98a3ab"
@@ -4237,6 +4244,9 @@
 	pixel_y = 4;
 	pixel_x = 7
 	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/prison/blue_plate/north,
 /area/atlan/station/water_tanks)
 "amE" = (
@@ -4938,7 +4948,7 @@
 /obj/structure/sign/poster/upp{
 	pixel_y = -26
 	},
-/turf/open/floor/prison/sterile_white/south,
+/turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_sw_train)
 "aoV" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -4964,6 +4974,12 @@
 	},
 /turf/open/floor/strata,
 /area/atlan/station/double_dorms)
+"aoZ" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/atlan/station/cargooffice)
 "apa" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 10
@@ -7659,6 +7675,9 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/cargooffice)
 "axs" = (
@@ -8619,11 +8638,11 @@
 /area/atlan/station/hab_flight)
 "aAC" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/platform/metal/atlan/north,
 /obj/structure/barricade/handrail/strata{
 	dir = 4;
 	layer = 3
 	},
-/obj/structure/platform/metal/atlan/north,
 /turf/open/floor/strata,
 /area/atlan/station/single_dorms)
 "aAD" = (
@@ -11918,7 +11937,7 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/item/stack/sheet/plasteel/med_small_stack,
+/obj/item/stack/sheet/plasteel/small_stack,
 /turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/single_dorms)
 "aLu" = (
@@ -17566,14 +17585,6 @@
 /obj/structure/platform/metal/atlan/east,
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/exports_east)
-"bdL" = (
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice2";
-	pixel_x = 16;
-	pixel_y = 16
-	},
-/turf/open/floor/strata/green1,
-/area/atlan/station/double_dorms)
 "bdM" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
@@ -17596,9 +17607,6 @@
 	dir = 8
 	},
 /obj/structure/barricade/handrail/strata,
-/obj/structure/machinery/vending/cigarette/wy{
-	layer = 2.97
-	},
 /turf/open/floor/strata/blue1,
 /area/atlan/station/hab_flight)
 "bdP" = (
@@ -21378,10 +21386,11 @@
 /area/atlan/station/canteen)
 "djQ" = (
 /obj/structure/barricade/handrail/strata{
-	pixel_y = 16
+	dir = 8
 	},
 /obj/structure/barricade/handrail/strata{
-	dir = 8
+	dir = 1;
+	layer = 2.97
 	},
 /turf/open/floor/strata/blue1,
 /area/atlan/station/hab_flight)
@@ -22715,7 +22724,8 @@
 "emq" = (
 /obj/structure/machinery/vending/cigarette/koorlander{
 	pixel_x = 2;
-	pixel_y = 14
+	pixel_y = 14;
+	layer = 3.20
 	},
 /turf/open/floor/strata/blue1,
 /area/atlan/station/admin)
@@ -26929,7 +26939,6 @@
 /turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/admin)
 "hAS" = (
-/obj/item/ammo_magazine/revolver/upp,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -29352,9 +29361,6 @@
 /turf/open/floor/prison/ramptop,
 /area/atlan/asteroid/processing_sw_train)
 "jja" = (
-/obj/structure/barricade/handrail/strata{
-	pixel_y = 16
-	},
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
 	pixel_x = 5;
@@ -29362,6 +29368,10 @@
 	},
 /obj/structure/barricade/handrail/strata{
 	dir = 8
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 1;
+	layer = 2.97
 	},
 /turf/open/floor/strata/blue1,
 /area/atlan/station/hab_flight)
@@ -44927,7 +44937,6 @@
 	pixel_y = 11;
 	pixel_x = -25
 	},
-/obj/item/weapon/gun/revolver/upp,
 /turf/open/floor/strata/floor2,
 /area/atlan/station/cargooffice)
 "uTv" = (
@@ -104691,7 +104700,7 @@ aAf
 iFu
 imV
 aAf
-krb
+adm
 pvS
 apr
 aoz
@@ -114660,7 +114669,7 @@ uya
 jXv
 bez
 uya
-bdL
+beq
 akL
 akL
 aoD
@@ -115857,7 +115866,7 @@ aAk
 nww
 mZp
 axr
-mZp
+aoZ
 cAM
 cAM
 fZM
@@ -119482,7 +119491,7 @@ aQV
 aRe
 aRh
 aQK
-aix
+poi
 emq
 itu
 itu
@@ -128861,7 +128870,7 @@ bva
 dpn
 sYF
 eSX
-fwe
+wpw
 jRi
 aso
 pEn

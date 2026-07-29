@@ -538,6 +538,88 @@
 		return list("blocked" = TRUE, "delay_mult" = 1)
 	return list("blocked" = FALSE, "delay_mult" = 1)
 
+//-----------------------------
+// ammo cookoff.
+//-----------------------------
+
+/// Kicks off the shared cookoff sequence (multitile_cookoff.dm) the instant hull health first reaches 0.
+/obj/vehicle/multitile/tank/on_hull_destroyed()
+	start_hull_cookoff_sequence()
+
+/// The tank's one "something special" to eject once the hull cooks off: its turret, with every nested weapon.
+/obj/vehicle/multitile/tank/launch_special_wreckage()
+	launch_turret_wreckage()
+
+/**
+ * Physically launches the Turret holder into the air as wreckage. Every nested weapon comes along for free since they live inside it.
+ * Bypasses remove_hardpoint() (which would qdel() it outright) and hand-rolls the reparenting instead, so the wreckage persists and lands somewhere.
+ */
+/obj/vehicle/multitile/tank/proc/launch_turret_wreckage()
+	var/obj/item/hardpoint/holder/tank_turret/turret = locate() in hardpoints
+	if(!turret)
+		return
+
+	// The exterior explosion is still lingering here, so mark the wreckage immune before moving it onto this turf.
+	turret.explo_proof = TRUE
+
+	for(var/obj/item/hardpoint/nested in turret.hardpoints)
+		nested.explo_proof = TRUE
+
+	hardpoints -= turret
+	turret.owner = null
+
+	var/turf/launch_turf = get_turf(src)
+	turret.forceMove(launch_turf)
+	turret.pixel_y = initial(turret.pixel_y)
+	render_turret_wreck_visuals(turret)
+
+	playsound(launch_turf, 'sound/effects/metal_crash.ogg', 60, TRUE)
+	var/datum/effect_system/spark_spread/launch_sparks = new
+	launch_sparks.set_up(5, 0, launch_turf)
+	launch_sparks.start()
+
+	// Brief "shoots up" beat before drop_turret_wreckage() wraps it in a droppod and drops it at the landing turf.
+	animate(turret, pixel_y = 48, time = 0.3 SECONDS, easing = QUAD_EASING)
+	addtimer(CALLBACK(src, PROC_REF(drop_turret_wreckage), turret, launch_turf), 0.3 SECONDS)
+
+/// Builds the turret's own standalone appearance now that it's a loose object again, instead of the vehicle's usual overlay compositing.
+/obj/vehicle/multitile/tank/proc/render_turret_wreck_visuals(obj/item/hardpoint/holder/tank_turret/turret)
+	turret.update_icon()
+
+/// Wraps the airborne turret in a droppod and sends it falling toward a random turf near where it launched.
+/obj/vehicle/multitile/tank/proc/drop_turret_wreckage(obj/item/hardpoint/holder/tank_turret/turret, turf/launch_turf)
+	turret.pixel_y = initial(turret.pixel_y)
+	var/turf/landing_turf = get_turret_wreckage_landing_turf(launch_turf)
+	var/obj/structure/droppod/wreck/pod = new(launch_turf, turret)
+	pod.launch(landing_turf)
+
+/**
+ * Picks a random valid, open turf near `origin` for a piece of turret wreckage to land on.
+ * Widens the search outward if the normal ring is entirely blocked. Only returns `origin` itself as a last resort.
+ */
+/obj/vehicle/multitile/tank/proc/get_turret_wreckage_landing_turf(turf/origin)
+	var/list/candidates = get_valid_turret_landing_turfs(origin, HULL_COOKOFF_TURRET_LAUNCH_MIN_RANGE, HULL_COOKOFF_TURRET_LAUNCH_MAX_RANGE)
+	if(length(candidates))
+		return pick(candidates)
+
+	for(var/search_range = HULL_COOKOFF_TURRET_LAUNCH_MAX_RANGE + 1, search_range <= 10, search_range++)
+		candidates = get_valid_turret_landing_turfs(origin, search_range, search_range)
+		if(length(candidates))
+			return pick(candidates)
+
+	return origin
+
+/// Every genuinely open, non-dense, non-space turf between min_range and max_range tiles of origin.
+/obj/vehicle/multitile/tank/proc/get_valid_turret_landing_turfs(turf/origin, min_range, max_range)
+	. = list()
+	for(var/turf/open/candidate_turf in range(max_range, origin))
+		if(istype(candidate_turf, /turf/open/space) || candidate_turf.density)
+			continue
+		var/distance = get_dist(origin, candidate_turf)
+		if(distance < min_range || distance > max_range)
+			continue
+		. += candidate_turf
+
 /*
 ** PRESETS SPAWNERS
 */

@@ -22,6 +22,7 @@
 	invisibility = 101
 
 /obj/effect/blocker/lava/Crossed(atom/thing)
+	. = ..()
 	if(ishuman(thing) || isxeno(thing)) //affects everything
 		var/mob/living/affected_mob = thing
 		affected_mob.AddComponent(/datum/component/damage_over_time, /obj/effect/blocker/lava, dam_amount = dam_amount, dam_type = dam_type, target_temp = target_temp, temp_delta = temp_delta, synth_dmg_mult=0.8, pred_dmg_mult=0.8, warning_message=warning_message, enviro=TRUE, apply_fire=TRUE, burn_reagent = burn_reagent, burn_stacks = burn_stacks)

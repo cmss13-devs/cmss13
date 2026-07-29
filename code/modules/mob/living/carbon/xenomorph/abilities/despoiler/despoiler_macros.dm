@@ -18,10 +18,3 @@
 	set hidden = TRUE
 	var/action_name = "Oozing Wounds"
 	handle_xeno_macro(src, action_name)
-
-/datum/action/xeno_action/verb/catalyze()
-	set category = "Alien"
-	set name = "Catalyze"
-	set hidden = TRUE
-	var/action_name = "Catalyze"
-	handle_xeno_macro(src, action_name)

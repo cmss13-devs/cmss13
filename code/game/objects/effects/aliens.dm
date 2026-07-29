@@ -266,9 +266,6 @@
 	if(!acid_effect)
 		acid_effect = new /datum/effects/acid(carbon)
 
-/obj/effect/xenomorph/spray/despoiler/empowered
-	stun_duration = 1
-
 /obj/effect/xenomorph/spray/despoiler/empowered/apply_spray(mob/living/carbon/carbon)
 	var/datum/component/acid_immunity/immunity = carbon.GetComponent(/datum/component/acid_immunity)
 

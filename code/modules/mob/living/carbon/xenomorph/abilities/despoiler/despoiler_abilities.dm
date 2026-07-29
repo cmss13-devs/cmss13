@@ -11,8 +11,7 @@
 
 	var/start_time
 	var/min_volley = 1
-	var/max_volley = 8
-	var/empower_modifier = 6
+	var/max_volley = 6
 	var/max_charge_time = 3 SECONDS
 	var/scatter = 30 // Degrees
 	var/image/charge_overlay
@@ -36,6 +35,9 @@
 	var/empowered_distance = 5
 	var/weaken_duration = 1
 	var/damage = 30
+	var/image/charge_overlay
+	var/max_charge_time = 2 SECONDS
+	var/stage = 0
 
 /datum/action/xeno_action/onclick/oozing_wounds
 	name = "Oozing wounds"
@@ -45,17 +47,5 @@
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	plasma_cost = 100
 
-/datum/action/xeno_action/onclick/catalyze
-	name = "Catalyze"
-	action_icon_state = "catalyze"
-	macro_path = /datum/action/xeno_action/verb/catalyze
-	xeno_cooldown = 20 SECONDS
-	ability_primacy = XENO_PRIMARY_ACTION_4
-	plasma_cost = 0
-
-	var/duration = 10 SECONDS
-
 /datum/action/xeno_action/activable/tail_stab/despoiler
 	name = "Finishing Acid Stab"
-	charge_time = 2 SECONDS
-

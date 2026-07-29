@@ -22,6 +22,10 @@
 	var/datum/cause_data/cause_data = null
 	//does it obscure aim
 	var/obscuring = TRUE
+	/// Vehicle this instance was bridged into. Null for a non-bridged placement.
+	var/obj/vehicle/multitile/bridged_vehicle
+	/// Fraction (0-1) of a bridged instance's normal damage, effects and alpha that gets through.
+	var/gas_leak_fraction = 1
 
 	//Remove this bit to use the old smoke
 	icon = 'icons/effects/96x96.dmi'
@@ -534,9 +538,57 @@
 	smokeranking = SMOKE_RANK_HARMLESS
 	amount = 0
 
+/**
+ * Harmless, but still neat to add into vehicles for flavor.
+ */
+/obj/effect/particle_effect/smoke/acid_runner_harmless/apply_smoke_effect(turf/cur_turf)
+	if(bridged_vehicle && world.time > bridged_vehicle.next_gas_exposure_time)
+		qdel(src)
+		return
+	..()
+	handle_vehicle_gas_exposure(cur_turf)
+
 /////////////////////////////////////////
 // BOILER SMOKES
 /////////////////////////////////////////
+
+/**
+ * Exposes a vehicle sitting in Boiler gas to damage and wounds, and leaks a weakened
+ * copy into the crew compartmentt through the air filter.
+ */
+/obj/effect/particle_effect/smoke/proc/handle_vehicle_gas_exposure(turf/cur_turf)
+	var/obj/vehicle/multitile/vehicle = get_multitile_vehicle_at(cur_turf)
+	if(!vehicle)
+		return
+
+	var/obj/vehicle/multitile/tank/tank = istype(vehicle, /obj/vehicle/multitile/tank) ? vehicle : null
+	// acid_runner_harmless counts as acid too, even though it isn't a xeno_burn subtype.
+	var/is_acid = istype(src, /obj/effect/particle_effect/smoke/xeno_burn) || istype(src, /obj/effect/particle_effect/smoke/acid_runner_harmless)
+
+	if(world.time < vehicle.next_gas_exposure_time)
+		return
+	vehicle.next_gas_exposure_time = world.time + (tank ? TANK_GLOB_EXPOSURE_INTERVAL : VEHICLE_GAS_EXPOSURE_INTERVAL)
+
+	if(tank)
+		// Matches tile coverage against this call's own smoke type, rather than a hardcoded pick.
+		var/gas_type_to_match = src.type
+		var/covered_tiles = 0
+		for(var/turf/vehicle_turf as anything in tank.locs)
+			if(locate(gas_type_to_match) in vehicle_turf)
+				covered_tiles++
+		var/covered_fraction = covered_tiles / length(tank.locs)
+
+		if(is_acid)
+			tank.apply_glob_acid_tick(covered_fraction, cause_data?.resolve_mob())
+		else
+			tank.apply_glob_neuro_tick(covered_fraction)
+	else
+		if(is_acid)
+			vehicle.take_damage_type(15, "acid")
+		vehicle.expose_to_boiler_gas()
+
+	// Interior leak-in is shared with every other smoke source that touches the vehicle.
+	vehicle.bridge_smoke_into_interior(src.type)
 
 //Xeno acid smoke.
 /obj/effect/particle_effect/smoke/xeno_burn
@@ -545,6 +597,8 @@
 	anchored = TRUE
 	spread_speed = 6
 	smokeranking = SMOKE_RANK_BOILER
+	// Sits above a tank's turret so the glob cloud visibly covers the whole tank.
+	layer = TANK_ABOVE_RIDER_LAYER
 
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/gas_damage = 20
@@ -560,17 +614,21 @@
 	return ..()
 
 /obj/effect/particle_effect/smoke/xeno_burn/apply_smoke_effect(turf/cur_turf)
+	if(bridged_vehicle && world.time > bridged_vehicle.next_gas_exposure_time)
+		qdel(src)
+		return
 	..()
 	for(var/obj/structure/barricade/barricade in cur_turf)
 		barricade.take_acid_damage(XENO_ACID_GAS_BARRICADE_DAMAGE)
 		if(prob(75)) // anti sound spam
 			playsound(src, pick("acid_sizzle", "acid_hit"), 25)
 
-	for(var/obj/vehicle/multitile/vehicle in cur_turf)
-		vehicle.take_damage_type(15, "acid")
+	// Vehicle damage is handled by handle_vehicle_gas_exposure() below instead of here.
 
 	for(var/obj/structure/machinery/m56d_hmg/auto/gun in cur_turf)
 		gun.update_health(XENO_ACID_HMG_DAMAGE)
+
+	handle_vehicle_gas_exposure(cur_turf)
 
 //No effect when merely entering the smoke turf, for balance reasons
 /obj/effect/particle_effect/smoke/xeno_burn/Crossed(mob/living/carbon/affected_mob as mob)
@@ -590,14 +648,14 @@
 		return FALSE
 
 	affected_mob.last_damage_data = cause_data
-	affected_mob.apply_damage(3, OXY) //Basic oxyloss from "can't breathe"
+	affected_mob.apply_damage(3 * gas_leak_fraction, OXY) //Basic oxyloss from "can't breathe"
 
 	if(isxeno(affected_mob))
-		affected_mob.apply_damage(gas_damage * XVX_ACID_DAMAGEMULT, BURN) //Inhalation damage
+		affected_mob.apply_damage(gas_damage * XVX_ACID_DAMAGEMULT * gas_leak_fraction, BURN) //Inhalation damage
 	else
-		affected_mob.apply_damage(gas_damage, BURN) //Inhalation damage
+		affected_mob.apply_damage(gas_damage * gas_leak_fraction, BURN) //Inhalation damage
 
-	if(affected_mob.coughedtime < world.time && !affected_mob.stat && ishuman(affected_mob)) //Coughing/gasping
+	if(affected_mob.coughedtime < world.time && !affected_mob.stat && ishuman(affected_mob) && prob(gas_leak_fraction * 100)) //Coughing/gasping - a light leak only occasionally catches your throat
 		affected_mob.coughedtime = world.time + 1.5 SECONDS
 		if(issynth(affected_mob))
 			affected_mob.visible_message(SPAN_DANGER("[affected_mob]'s skin is sloughing off!"),
@@ -612,9 +670,9 @@
 	to_chat(affected_mob, SPAN_DANGER("Your skin feels like it is melting away!"))
 	if(ishuman(affected_mob))
 		var/mob/living/carbon/human/human = affected_mob
-		human.apply_armoured_damage(amount*rand(15, 20), ARMOR_BIO, BURN) //Burn damage, randomizes between various parts //Amount corresponds to upgrade level, 1 to 2.5
+		human.apply_armoured_damage(amount*rand(15, 20) * gas_leak_fraction, ARMOR_BIO, BURN) //Burn damage, randomizes between various parts //Amount corresponds to upgrade level, 1 to 2.5
 	else
-		affected_mob.burn_skin(5) //Failsafe for non-humans
+		affected_mob.burn_skin(5 * gas_leak_fraction) //Failsafe for non-humans
 	affected_mob.last_damage_data = cause_data
 	return TRUE
 
@@ -625,9 +683,18 @@
 	spread_speed = 5
 	amount = 1 //Amount depends on Boiler upgrade!
 	smokeranking = SMOKE_RANK_BOILER
+	// Same layer fix as xeno_burn above.
+	layer = TANK_ABOVE_RIDER_LAYER
 	/// How much neuro is dosed per tick
 	var/neuro_dose = 6
 	var/msg = "Your skin tingles as the gas consumes you!" // Message given per tick. Changes depending on which species is hit.
+
+/obj/effect/particle_effect/smoke/xeno_weak/apply_smoke_effect(turf/cur_turf)
+	if(bridged_vehicle && world.time > bridged_vehicle.next_gas_exposure_time)
+		qdel(src)
+		return
+	..()
+	handle_vehicle_gas_exposure(cur_turf)
 
 //No effect when merely entering the smoke turf, for balance reasons
 /obj/effect/particle_effect/smoke/xeno_weak/Crossed(mob/living/carbon/moob as mob)
@@ -652,18 +719,18 @@
 		if(human_moob.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO)
 			return FALSE
 
-	var/effect_amt = floor(6 + amount*6)
+	var/effect_amt = floor((6 + amount*6) * gas_leak_fraction)
 	moob.eye_blurry = max(moob.eye_blurry, effect_amt)
 	moob.EyeBlur(max(moob.eye_blurry, effect_amt))
-	moob.apply_damage(5, OXY) //  Base "I can't breath oxyloss" Slightly more longer lasting then stamina damage
+	moob.apply_damage(5 * gas_leak_fraction, OXY) //  Base "I can't breath oxyloss" Slightly more longer lasting then stamina damage
 	// reworked code below
 	if(!issynth(moob))
 		var/datum/effects/neurotoxin/neuro_effect = locate() in moob.effects_list
 		if(!neuro_effect)
 			neuro_effect = new(moob, cause_data.resolve_mob())
 			neuro_effect.strength = effect_amt
-		neuro_effect.duration += neuro_dose
-		if(human_moob && moob.coughedtime < world.time && !moob.stat) //Coughing/gasping
+		neuro_effect.duration += neuro_dose * gas_leak_fraction
+		if(human_moob && moob.coughedtime < world.time && !moob.stat && prob(gas_leak_fraction * 100)) //Coughing/gasping - a light leak only occasionally catches your throat
 			moob.coughedtime = world.time + 1.5 SECONDS
 			if(prob(50))
 				moob.Slow(1)
@@ -672,7 +739,8 @@
 				moob.emote("gasp")
 	else
 		msg = "You are consumed by the harmless gas, it is hard to navigate in!"
-		moob.Slow(1)
+		if(prob(gas_leak_fraction * 100))
+			moob.Slow(1)
 	to_chat(moob, SPAN_DANGER(msg))
 	return TRUE
 

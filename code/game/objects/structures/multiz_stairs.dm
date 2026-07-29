@@ -165,13 +165,14 @@
 	RegisterSignal(new_turf, COMSIG_TURF_ENTERED, PROC_REF(handle_entered))
 	RegisterSignal(new_turf, COMSIG_PRE_TURF_CHANGE, PROC_REF(handle_pre_turf_change))
 
-/// Handles COMSIG_TURF_ENTERED for mobs that enters a from_turf to register handle_movement and handle_deleted
-/datum/staircase/proc/handle_entered(turf/originator, atom/what_did_it)
+/// Handles COMSIG_TURF_ENTERED for mobs/vehicles that enter a from_turf to register handle_movement and handle_deleted
+/datum/staircase/proc/handle_entered(turf/originator, atom/movable/what_did_it)
 	SIGNAL_HANDLER
 
-	var/mob/mover = what_did_it
-	if(!istype(mover))
+	// A multitile vehicle only fires this on its own anchor tile, same as any mob walking through.
+	if(!ismob(what_did_it) && !istype(what_did_it, /obj/vehicle/multitile))
 		return
+	var/atom/movable/mover = what_did_it
 
 	if(mover in in_range_mob)
 		return
@@ -182,26 +183,38 @@
 
 	in_range_mob += mover
 
-/// Handles COMSIG_MOVABLE_MOVED for mobs that were in a from_turf
-/datum/staircase/proc/handle_movement(mob/mover, old_loc, direction)
+/// Handles COMSIG_MOVABLE_MOVED for mobs/vehicles that were in a from_turf
+/datum/staircase/proc/handle_movement(atom/movable/mover, old_loc, direction)
 	SIGNAL_HANDLER
+
+	// A plain mob shows this to itself; a vehicle shows it to its seated driver/gunner instead.
+	// An empty list just makes the loops below no-ops.
+	var/list/client/viewers = mover.get_staircase_vision_clients()
 
 	var/turf/where_from = get_turf(old_loc)
 	if(length(from_turf_to_images[where_from]))
-		for(var/image in from_turf_to_images[where_from])
-			mover.client?.images -= image
+		for(var/client/viewer as anything in viewers)
+			for(var/image in from_turf_to_images[where_from])
+				viewer.images -= image
 
 	var/turf/where_to = get_turf(mover)
 	if(length(from_turf_to_images[where_to]))
-		for(var/image in from_turf_to_images[where_to])
-			mover.client?.images += image
+		for(var/client/viewer as anything in viewers)
+			for(var/image in from_turf_to_images[where_to])
+				viewer.images += image
 
 		return
 
 	in_range_mob -= mover
 	UnregisterSignal(mover, list(COMSIG_MOVABLE_MOVED, COMSIG_PARENT_QDELETING))
 
-/// Handles COMSIG_PARENT_QDELETING for mobs that were in a from_turf
+/atom/movable/proc/get_staircase_vision_clients()
+	return list()
+
+/mob/get_staircase_vision_clients()
+	return client ? list(client) : list()
+
+/// Handles COMSIG_PARENT_QDELETING for mobs/vehicles that were in a from_turf
 /datum/staircase/proc/handle_deleted(atom/updater)
 	SIGNAL_HANDLER
 

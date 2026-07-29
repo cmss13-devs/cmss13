@@ -351,8 +351,8 @@
 	apply_cooldown()
 
 	playsound(xeno, 'sound/voice/xeno_praetorian_screech.ogg', 75, 0, status = 0)
-	var/severity = (xeno.health <= (0.7 * xeno.maxHealth)) + (xeno.health <= (0.3 * xeno.maxHealth))
-	var/acid_range = severity + 1
+	var/severity = (xeno.health <= (0.7 * xeno.maxHealth)) + (xeno.health <= 0.5 * xeno.maxHealth) + (xeno.health <= (0.3 * xeno.maxHealth))
+	var/acid_range = severity + 2
 	for(var/turf/turf in orange(acid_range, get_turf(xeno)))
 		if(get_dist_sqrd(turf, xeno) > acid_range ** 2)
 			continue

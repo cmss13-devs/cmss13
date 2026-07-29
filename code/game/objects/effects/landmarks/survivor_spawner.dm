@@ -464,8 +464,6 @@
 	story_text = "You are a soldier fighting for the Colonial Liberation Front. You were dispatched to this oil rig to raid it for actionable intelligence. However, your team arrived at the worst time, in the middle of a full-scale xenomorph outbreak. You've successfully recovered the intel, however someone, or something, has disabled your escape craft. Trapped on this world, all your team can do is survive the odds until someone comes to investigate."
 	equipment = /datum/equipment_preset/survivor/navalis/clf_wet_ops/operative
 	synth_equipment = /datum/equipment_preset/synth/survivor/clf
-	CO_equipment = /datum/equipment_preset/survivor/clf/coordinator
-
 /obj/effect/landmark/survivor_spawner/clf_lead/navalis
 	intro_text = list("<h2>You are a survivor of a failed raid!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
@@ -473,8 +471,6 @@
 	story_text = "You are a soldier fighting for the Colonial Liberation Front. You were dispatched to this oil rig to raid it for actionable intelligence. However, your team arrived at the worst time, in the middle of a full-scale xenomorph outbreak. You've successfully recovered the intel, however someone, or something, has disabled your escape craft. Trapped on this world, all your team can do is survive the odds until someone comes to investigate."
 	equipment = /datum/equipment_preset/survivor/navalis/clf_wet_ops/leader
 	synth_equipment = /datum/equipment_preset/synth/survivor/clf
-	CO_equipment = /datum/equipment_preset/survivor/clf/coordinator
-
 
 /obj/effect/landmark/survivor_spawner/clf_engi/navalis
 	intro_text = list("<h2>You are a survivor of a failed raid!</h2>",\
@@ -483,7 +479,6 @@
 	story_text = "You are a soldier fighting for the Colonial Liberation Front. You were dispatched to this oil rig to raid it for actionable intelligence. However, your team arrived at the worst time, in the middle of a full-scale xenomorph outbreak. You've successfully recovered the intel, however someone, or something, has disabled your escape craft. Trapped on this world, all your team can do is survive the odds until someone comes to investigate."
 	equipment = /datum/equipment_preset/survivor/navalis/clf_wet_ops/tech
 	synth_equipment = /datum/equipment_preset/synth/survivor/clf
-	CO_equipment = /datum/equipment_preset/survivor/clf/coordinator
 
 /obj/effect/landmark/survivor_spawner/clf_medic/navalis
 	intro_text = list("<h2>You are a survivor of a failed raid!</h2>",\
@@ -492,7 +487,6 @@
 	story_text = "You are a soldier fighting for the Colonial Liberation Front. You were dispatched to this oil rig to raid it for actionable intelligence. However, your team arrived at the worst time, in the middle of a full-scale xenomorph outbreak. You've successfully recovered the intel, however someone, or something, has disabled your escape craft. Trapped on this world, all your team can do is survive the odds until someone comes to investigate."
 	equipment = /datum/equipment_preset/survivor/navalis/clf_wet_ops/medic
 	synth_equipment = /datum/equipment_preset/synth/survivor/clf
-	CO_equipment = /datum/equipment_preset/survivor/clf/coordinator
 
 /obj/effect/landmark/survivor_spawner/clf_heavy
 	icon_state = "surv_clf"
@@ -503,7 +497,6 @@
 	story_text = "You are a soldier fighting for the Colonial Liberation Front. You were dispatched to this oil rig to raid it for actionable intelligence. However, your team arrived at the worst time, in the middle of a full-scale xenomorph outbreak. You've successfully recovered the intel, however someone, or something, has disabled your escape craft. Trapped on this world, all your team can do is survive the odds until someone comes to investigate."
 	equipment = /datum/equipment_preset/survivor/navalis/clf_wet_ops/spec
 	synth_equipment = /datum/equipment_preset/synth/survivor/clf
-	CO_equipment = /datum/equipment_preset/survivor/clf/coordinator
 	roundstart_damage_min = 3
 	roundstart_damage_max = 10
 	roundstart_damage_times = 2

@@ -9,7 +9,7 @@
 	priority = SURGERY_PRIORITY_LOW
 	possible_locs = EXTREMITY_LIMBS
 	invasiveness = list(SURGERY_DEPTH_SHALLOW)
-	pain_reduction_required = PAIN_REDUCTION_FULL
+	pain_reduction_required = PAIN_REDUCTION_HEAVY
 	required_surgery_skill = SKILL_SURGERY_TRAINED
 	steps = list(
 		/datum/surgery_step/cut_muscle,

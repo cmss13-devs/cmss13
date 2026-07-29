@@ -148,9 +148,9 @@
 		failure_mode = pick("kicks wildly", "contorts inhumanly", "almost kicks [user] with its toes")
 
 	user.affected_message(target,
-		SPAN_WARNING("You make a mistake calibrating the prosthetic [parse_zone(target_zone)] and it [failure_mode]!"),
-		SPAN_WARNING("[user] makes a mistake calibrating the prosthetic [parse_zone(target_zone)] and it [failure_mode]!"),
-		SPAN_WARNING("[user] makes a mistake calibrating the prosthetic [parse_zone(target_zone)] and it [failure_mode]!"))
+		SPAN_WARNING("You make a mistake while calibrating the prosthetic [parse_zone(target_zone)] and it [failure_mode]!"),
+		SPAN_WARNING("[user] makes a mistake while calibrating the prosthetic [parse_zone(target_zone)] and it [failure_mode]!"),
+		SPAN_WARNING("[user] makes a mistake while calibrating the prosthetic [parse_zone(target_zone)] and it [failure_mode]!"))
 
 	log_interact(user, target, "[key_name(user)] failed to calibrate a prosthesis on [key_name(target)]'s [surgery.affected_limb.display_name].")
 	return FALSE

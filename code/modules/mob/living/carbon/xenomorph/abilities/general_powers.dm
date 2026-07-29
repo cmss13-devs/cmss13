@@ -134,7 +134,7 @@
 	for(var/obj/effect/alien/weeds/node/preplanted_node in view(4, turf))
 		if(preplanted_node)
 			return
-	if(((our_sister.plasma_stored - linked_planting.plasma_cost) / our_sister.plasma_max * 100) < 50)
+	if(((our_sister.plasma_stored - linked_planting.plasma_cost) / our_sister.plasma_max * 100) < 20)
 		to_chat(our_sister, SPAN_XENONOTICE("Plasma is too low."))
 		src.use_ability()
 		return

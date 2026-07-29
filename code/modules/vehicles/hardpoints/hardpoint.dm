@@ -628,6 +628,13 @@
  * Only reachable while detached.
  */
 /obj/item/hardpoint/attackby(obj/item/O, mob/user)
+	if(uses_starshell_ammo)
+		if(istype(O, /obj/item/explosive/grenade/high_explosive/airburst/starshell))
+			load_star_shell(O, user)
+			return TRUE
+		if(istype(O, /obj/item/storage/box/packet/flare))
+			load_star_shell_packet(O, user)
+			return TRUE
 	if(!owner && try_fix_detached_wound_with_tool(O, user))
 		return
 	if(iswelder(O))
@@ -637,6 +644,44 @@
 		handle_repair(O, user)
 		return
 	..()
+
+/// Loads a single loose star shell directly into this hardpoint's internal holders.
+/obj/item/hardpoint/proc/load_star_shell(obj/item/explosive/grenade/high_explosive/airburst/starshell/shell, mob/user)
+	if(shell.active)
+		to_chat(user, SPAN_WARNING("You can't load a primed star shell into \the [src]!"))
+		return
+	if(ammo.current_rounds >= ammo.max_rounds)
+		to_chat(user, SPAN_WARNING("\The [src]'s shell holders are already full."))
+		return
+	user.visible_message(SPAN_NOTICE("[user] loads \a [shell] into \the [src]."), SPAN_NOTICE("You load \a [shell] into \the [src]'s shell holders."))
+	playsound(loc, 'sound/weapons/gun_shotgun_shell_insert.ogg', 25, TRUE)
+	ammo.current_rounds++
+	qdel(shell)
+
+/// Loads as many star shells as fit out of a star shell packet into this hardpoint's internal holders.
+/obj/item/hardpoint/proc/load_star_shell_packet(obj/item/storage/box/packet/flare/packet, mob/user)
+	var/space_left = ammo.max_rounds - ammo.current_rounds
+	if(space_left <= 0)
+		to_chat(user, SPAN_WARNING("\The [src]'s shell holders are already full."))
+		return
+
+	var/list/shells_to_load = list()
+	for(var/obj/item/explosive/grenade/high_explosive/airburst/starshell/shell in packet.contents)
+		shells_to_load += shell
+		if(length(shells_to_load) >= space_left)
+			break
+
+	if(!length(shells_to_load))
+		to_chat(user, SPAN_WARNING("\The [packet] has no star shells left to load."))
+		return
+
+	for(var/obj/item/explosive/grenade/high_explosive/airburst/starshell/shell as anything in shells_to_load)
+		qdel(shell)
+
+	ammo.current_rounds += length(shells_to_load)
+	packet.update_icon()
+	user.visible_message(SPAN_NOTICE("[user] loads [length(shells_to_load)] star shell\s from \the [packet] into \the [src]."), SPAN_NOTICE("You load [length(shells_to_load)] star shell\s from \the [packet] into \the [src]'s shell holders."))
+	playsound(loc, 'sound/weapons/gun_shotgun_shell_insert.ogg', 25, TRUE)
 
 //repair procs
 /obj/item/hardpoint/proc/handle_repair(obj/item/tool/weldingtool/WT, mob/user)
@@ -816,6 +861,11 @@
 
 /// Tests if firing should be interrupted, otherwise fires.
 /obj/item/hardpoint/proc/try_fire(atom/target, mob/living/user, params)
+	if(uses_starshell_ammo && owner)
+		var/fire_angle = dir2angle(owner.dir) + rand(-flare_spread * 0.5, flare_spread * 0.5)
+		var/fire_range = rand(flare_range_min, flare_range_max)
+		target = get_angle_target_turf(owner, fire_angle, fire_range)
+
 	if(health <= 0)
 		to_chat(user, SPAN_WARNING("<b>\The [name] is broken!</b>"))
 		return NONE

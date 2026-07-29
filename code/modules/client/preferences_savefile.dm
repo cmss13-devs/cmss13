@@ -327,6 +327,7 @@
 	S["toggles_survivor"] >> toggles_survivor
 	S["toggles_ert_pred"] >> toggles_ert_pred
 	S["toggles_admin"] >> toggles_admin
+	S["toggles_vehicle"] >> toggles_vehicle
 	S["UI_style"] >> UI_style
 	S["tgui_say"] >> tgui_say
 	S["UI_style_color"] >> UI_style_color
@@ -490,6 +491,7 @@
 	toggles_survivor = sanitize_integer(toggles_survivor, 0, SHORT_REAL_LIMIT, initial(toggles_survivor))
 	toggles_ert_pred = sanitize_integer(toggles_ert_pred, 0, SHORT_REAL_LIMIT, initial(toggles_ert_pred))
 	toggles_admin = sanitize_integer(toggles_admin, 0, SHORT_REAL_LIMIT, initial(toggles_admin))
+	toggles_vehicle = sanitize_integer(toggles_vehicle, 0, SHORT_REAL_LIMIT, initial(toggles_vehicle))
 	UI_style_color = sanitize_hexcolor(UI_style_color, initial(UI_style_color))
 	UI_style_alpha = sanitize_integer(UI_style_alpha, 0, 255, initial(UI_style_alpha))
 	item_animation_pref_level = sanitize_integer(item_animation_pref_level, SHOW_ITEM_ANIMATIONS_NONE, SHOW_ITEM_ANIMATIONS_ALL, SHOW_ITEM_ANIMATIONS_ALL)
@@ -624,6 +626,7 @@
 	S["toggles_survivor"] << toggles_survivor
 	S["toggles_ert_pred"] << toggles_ert_pred
 	S["toggles_admin"] << toggles_admin
+	S["toggles_vehicle"] << toggles_vehicle
 	S["window_skin"] << window_skin
 	S["fps"] << fps
 	S["ghost_vision_pref"] << ghost_vision_pref

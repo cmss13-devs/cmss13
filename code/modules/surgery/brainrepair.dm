@@ -62,12 +62,12 @@
 	if(target.sdisabilities & DISABILITY_MUTE) ////My self esteem emphatically dramatically improved since I was dumb!
 		user.affected_message(target,
 			SPAN_NOTICE("You finish extracting fragments of bone that were piercing [target]'s Broca's and Wernicke's area."),
-			SPAN_NOTICE("[user] finishes extracting fragments of bone that were piercing your Broca's and Wernicke's area and prevented you from speaking.")
+			SPAN_NOTICE("[user] finishes extracting fragments of bone that were piercing your Broca's and Wernicke's area and prevented you from speaking."),
 			SPAN_NOTICE("[user] finishes extracting fragments of bone that were piercing [target]'s Broca's and Wernicke's area."))
 	if(target.sdisabilities & DISABILITY_DEAF) ///Wait, I can hear, now?
 		user.affected_message(target,
 			SPAN_NOTICE("You finish extracting fragments of bone that were piercing [target]'s auditory cortex."),
-			SPAN_NOTICE("[user] finishes extracting fragments of bone that were piercing your auditory cortex and causing your severe tinnitus.")
+			SPAN_NOTICE("[user] finishes extracting fragments of bone that were piercing your auditory cortex and causing your severe tinnitus."),
 			SPAN_NOTICE("[user] finishes extracting fragments of bone that were piercing [target]'s' auditory cortex."))
 	user.affected_message(target,
 		SPAN_NOTICE("You finish extracting sharp pieces of bone that were piercing [target]'s brain."),
@@ -83,7 +83,7 @@
 	if(target.stat == CONSCIOUS)
 		to_chat(target, SPAN_NOTICE("The rattling and piercing feelings in your brain cease. Your mind and ears feel more clear."))
 
-	var/obj/item/shard/shrapnel/bone_chips/human/chips = new(user.loc) //sneakily spawn bone chips
+	new /obj/item/shard/shrapnel/bone_chips/human(user.loc) //sneakily spawn bone chips
 
 	target.disabilities &= ~NERVOUS
 	target.sdisabilities &= ~DISABILITY_DEAF

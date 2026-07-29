@@ -1,4 +1,4 @@
-/obj/structure/machinery/door/poddoor/almayer
+/obj/structure/machinery/door/poddoor/almayer // Can be crowbarred open - with no power.
 	icon = 'icons/obj/structures/doors/blastdoors_shutters.dmi'
 	openspeed = 4 //shorter open animation.
 	var/vehicle_resistant = FALSE

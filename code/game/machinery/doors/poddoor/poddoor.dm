@@ -228,7 +228,7 @@
 	base_icon_state = "w_almayer_pdoor"
 	unslashable = TRUE
 
-/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door // Can't be crowbarred open - even with no power.
 	desc = "That looks like it doesn't open easily."
 	icon_state = "pdoor1"
 	base_icon_state = "pdoor"

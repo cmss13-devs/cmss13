@@ -13704,7 +13704,7 @@
 	pixel_y = 32;
 	layer = 2.9
 	},
-/turf/open/floor/plating/fire_colony,
+/turf/open/floor/fire_colony,
 /area/fire_colony/exterior/underground/caves/north_west)
 "bHv" = (
 /obj/structure/sign/safety/restrictedarea/dark{
@@ -18963,7 +18963,7 @@
 /area/fire_colony/interior/hydroponics/south)
 "cWF" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/plating/fire_colony,
+/turf/open/floor/fire_colony,
 /area/fire_colony/exterior/underground/caves/north_west)
 "cWG" = (
 /obj/effect/blocker/lava,
@@ -31865,7 +31865,7 @@
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 1
 	},
-/turf/open/floor/plating/fire_colony,
+/turf/open/floor/fire_colony,
 /area/fire_colony/exterior/underground/caves/north_west)
 "fTY" = (
 /turf/open/fire_colony/basalt/basalt10,
@@ -42179,7 +42179,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 5
 	},
-/turf/open/floor/plating/fire_colony,
+/turf/open/floor/fire_colony,
 /area/fire_colony/exterior/underground/caves/north_west)
 "iqX" = (
 /obj/structure/fence/slim/blue,
@@ -43423,7 +43423,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor/plating/fire_colony,
+/turf/open/floor/fire_colony,
 /area/fire_colony/exterior/underground/caves/north_west)
 "iGP" = (
 /obj/structure/closet,
@@ -50452,7 +50452,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/plating/fire_colony,
+/turf/open/floor/fire_colony,
 /area/fire_colony/exterior/underground/caves/north_west)
 "kxD" = (
 /obj/effect/lava/edges/basalt/side_rock{
@@ -77189,7 +77189,7 @@
 /turf/open/fire_colony/hot_lava,
 /area/fire_colony/exterior/underground/caves/north_west)
 "qPp" = (
-/turf/open/floor/plating/fire_colony,
+/turf/open/floor/fire_colony,
 /area/fire_colony/exterior/underground/caves/north_west)
 "qPt" = (
 /obj/effect/lava/edges/basalt/l_piece{
@@ -80341,7 +80341,7 @@
 	pixel_y = 32;
 	layer = 2.9
 	},
-/turf/open/floor/plating/fire_colony,
+/turf/open/floor/fire_colony,
 /area/fire_colony/exterior/underground/caves/north_west)
 "rzb" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -85249,7 +85249,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 9
 	},
-/turf/open/floor/plating/fire_colony,
+/turf/open/floor/fire_colony,
 /area/fire_colony/exterior/underground/caves/north_west)
 "sHr" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -96268,7 +96268,7 @@
 "vqL" = (
 /obj/structure/inflatable/popped/door/black,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/floor/plating/fire_colony,
+/turf/open/floor/fire_colony,
 /area/fire_colony/exterior/underground/caves/north_west)
 "vqR" = (
 /obj/effect/lava/edges/basalt/l_piece,
@@ -105528,7 +105528,7 @@
 /obj/structure/inflatable/popped/door/black,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/plating/fire_colony,
+/turf/open/floor/fire_colony,
 /area/fire_colony/exterior/underground/caves/north_west)
 "xGA" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -107293,7 +107293,7 @@
 	pixel_x = -1;
 	pixel_y = -1
 	},
-/turf/open/floor/plating/fire_colony,
+/turf/open/floor/fire_colony,
 /area/fire_colony/exterior/underground/caves/north_west)
 "ybY" = (
 /turf/closed/wall/almayer/aicore/hull,

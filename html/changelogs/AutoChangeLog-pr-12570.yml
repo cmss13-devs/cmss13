@@ -1,0 +1,5 @@
+author: "NHC"
+delete-after: True
+changes:
+  - balance: "Removes Smoke AGMs and Hornet Shell Pointbuy options from most Vendors"
+  - balance: "Increases roundstart Hornet and Starshells in Squad prep and REQ. Also increasing roundstart smoke AGMs in REQ."

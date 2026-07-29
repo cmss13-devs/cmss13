@@ -282,6 +282,15 @@
 	item_state_slots = list(WEAR_AS_GARB = "headbandred")
 
 /obj/item/clothing/head/headband/red/static
+	icon_state = "headbandalpha"
+	icon = 'icons/obj/items/clothing/hats/headbands.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/headbands.dmi',
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/headbands.dmi',
+	)
+	item_state_slots = list(
+		WEAR_AS_GARB = "headbandalpha",
+	)
 	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/headband/tan
@@ -447,6 +456,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	/obj/item/clothing/head/headband = PREFIX_HAT_GARB_OVERRIDE, // _hat
 	/obj/item/clothing/head/headband/tan = PREFIX_HAT_GARB_OVERRIDE, // _hat
 	/obj/item/clothing/head/headband/red = PREFIX_HAT_GARB_OVERRIDE, // _hat
+	/obj/item/clothing/head/headband/red/static = PREFIX_HAT_GARB_OVERRIDE, // _hat
 	/obj/item/clothing/head/headband/brown = PREFIX_HAT_GARB_OVERRIDE, // _hat
 	/obj/item/clothing/head/headband/gray = PREFIX_HAT_GARB_OVERRIDE, // _hat
 	/obj/item/clothing/head/headband/intel = PREFIX_HAT_GARB_OVERRIDE, // _hat

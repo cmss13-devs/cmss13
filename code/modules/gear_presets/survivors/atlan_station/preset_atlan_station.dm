@@ -18,7 +18,7 @@
 /datum/equipment_preset/survivor/atlan_cec_scientist/load_gear(mob/living/carbon/human/new_human)
 
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/cec(new_human), WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/upp_pfb(new_human.back), WEAR_IN_BACK)
+
 
 	var/random_gloves = rand(1,2)
 	switch(random_gloves)
@@ -27,18 +27,14 @@
 		if(2)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/botanic_leather(new_human), WEAR_HANDS)
 
-	var/random_labcoat = rand(1,5)
+	var/random_labcoat = rand(1,3)
 	switch(random_labcoat)
 		if(1)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/long(new_human), WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/cec/red(new_human), WEAR_JACKET)
 		if(2)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat(new_human), WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/cec/red_hood(new_human), WEAR_JACKET)
 		if(3)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/brown(new_human), WEAR_JACKET)
-		if(4)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/blue(new_human), WEAR_JACKET)
-		if(5)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/green(new_human), WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/cec/blue(new_human), WEAR_JACKET)
 
 	var/random_scientist_satchel= rand(1,3)
 	switch(random_scientist_satchel)
@@ -67,9 +63,20 @@
 		if(3)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp(new_human), WEAR_FEET)
 
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/scientist/hybrisa(new_human), WEAR_BODY)
+	var/random_uniform = rand(1,3)
+	switch(random_uniform)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/scientist/hybrisa(new_human), WEAR_BODY)
+		if(2)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/brown/upp(new_human), WEAR_BODY)
+		if(3)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/gray/upp(new_human), WEAR_BODY)
+
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/cec_patch(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/upp_pfb(new_human.back), WEAR_IN_BACK)
+	// gun //
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/np92/suppressed(new_human), WEAR_L_HAND)
 
 	//eyewear//
 	var/random_goggles = rand(1,2)
@@ -107,22 +114,7 @@
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/upp(new_human), WEAR_HANDS)
 
-	var/random_trenchcoat = rand(1,7)
-	switch(random_trenchcoat)
-		if(1)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/trenchcoat/brown(new_human), WEAR_JACKET)
-		if(2)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/trenchcoat/grey(new_human), WEAR_JACKET)
-		if(3)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/long(new_human), WEAR_JACKET)
-		if(4)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat(new_human), WEAR_JACKET)
-		if(5)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/brown(new_human), WEAR_JACKET)
-		if(6)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/blue(new_human), WEAR_JACKET)
-		if(7)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/green(new_human), WEAR_JACKET)
+
 
 	var/random_scientist_satchel= rand(1,3)
 	switch(random_scientist_satchel)
@@ -151,10 +143,38 @@
 		if(3)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp(new_human), WEAR_FEET)
 
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/scientist/hybrisa(new_human), WEAR_BODY)
+	var/random_uniform = rand(1,3)
+	switch(random_uniform)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/blue(new_human), WEAR_BODY)
+		if(2)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/black(new_human), WEAR_BODY)
+		if(3)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/brown(new_human), WEAR_BODY)
+
+	var/random_tie = rand(1,3)
+	switch(random_tie)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/tie(new_human), WEAR_ACCESSORY)
+		if(2)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/tie/red(new_human), WEAR_ACCESSORY)
+		if(3)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/tie/black(new_human), WEAR_ACCESSORY)
+
+	var/random_labcoat = rand(1,3)
+	switch(random_labcoat)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/cec/red(new_human), WEAR_JACKET)
+		if(2)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/cec/red_hood(new_human), WEAR_JACKET)
+		if(3)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/cec/blue(new_human), WEAR_JACKET)
+
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/cec_patch(new_human), WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/cec(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(new_human), WEAR_L_STORE)
+	// gun //
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/np92/suppressed(new_human), WEAR_L_HAND)
 	add_random_cl_survivor_loot(new_human)
 	..()
 
@@ -787,6 +807,8 @@
 		if(6)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical/morgue(new_human), WEAR_BODY)
 
+
+
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/upp_pfb(new_human.back), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/civi/plant_worker(new_human), WEAR_HEAD)
 
@@ -804,7 +826,6 @@
 	survivor_variant = SECURITY_SURVIVOR
 
 /datum/equipment_preset/synth/survivor/atlan/security/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(new_human), WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)
 	var/choice = rand(1,2)
 	switch(choice)
@@ -812,6 +833,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/ushanka(new_human), WEAR_HEAD)
 		if(2)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/beret(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/webbing/black(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/black(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/webbing/black(new_human), WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran(new_human), WEAR_HANDS)
@@ -827,7 +849,7 @@
 // Corporate
 
 /datum/equipment_preset/synth/survivor/atlan/corporate
-	name = "Survivor - Atlan Station - Synthetic - CEC Synthetic"
+	name = "Survivor - Atlan Station - Synthetic - CEC Support Synthetic"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	faction = FACTION_CEC
 	job_title = JOB_CEC_SYNTH
@@ -846,6 +868,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp(new_human), WEAR_FEET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/upp(new_human), WEAR_HANDS)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/blue(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/tie(new_human), WEAR_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/cec_patch, WEAR_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/black(new_human), WEAR_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate(new_human), WEAR_FEET)
@@ -853,27 +876,11 @@
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/telebaton(new_human.back), WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/combat(new_human.back), WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/droppouch(new_human), WEAR_ACCESSORY)
-			var/random_trenchcoat = rand(1,7)
-			switch(random_trenchcoat)
-				if(1)
-					new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/trenchcoat/brown(new_human), WEAR_JACKET)
-				if(2)
-					new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/trenchcoat/grey(new_human), WEAR_JACKET)
-				if(3)
-					new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/long(new_human), WEAR_JACKET)
-				if(4)
-					new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat(new_human), WEAR_JACKET)
-				if(5)
-					new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/brown(new_human), WEAR_JACKET)
-				if(6)
-					new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/blue(new_human), WEAR_JACKET)
-				if(7)
-					new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/green(new_human), WEAR_JACKET)
 		if(2)
 			new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/cec(new_human), WEAR_L_EAR)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp(new_human), WEAR_FEET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/upp(new_human), WEAR_HANDS)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/detective/grey(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/gray/upp(new_human), WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/cec_patch, WEAR_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/black(new_human), WEAR_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate(new_human), WEAR_FEET)
@@ -881,33 +888,21 @@
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/telebaton(new_human.back), WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/combat(new_human.back), WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/droppouch(new_human), WEAR_ACCESSORY)
-			var/random_trenchcoat = rand(1,7)
-			switch(random_trenchcoat)
-				if(1)
-					new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/trenchcoat/brown(new_human), WEAR_JACKET)
-				if(2)
-					new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/trenchcoat/grey(new_human), WEAR_JACKET)
-				if(3)
-					new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/long(new_human), WEAR_JACKET)
-				if(4)
-					new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat(new_human), WEAR_JACKET)
-				if(5)
-					new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/brown(new_human), WEAR_JACKET)
-				if(6)
-					new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/blue(new_human), WEAR_JACKET)
-				if(7)
-					new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/green(new_human), WEAR_JACKET)
 	add_random_cl_survivor_loot(new_human)
 	..()
 
 // Science
 
 /datum/equipment_preset/synth/survivor/atlan/scientist
-	name = "Survivor - Atlan Station - Synthetic - Cosmos Exploration Corps Researcher"
+	name = "Survivor - Atlan Station - Synthetic - CEC Technician"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	job_title = JOB_CEC_SYNTH
+	assignment = JOB_CEC_SYNTH
 	faction = FACTION_CEC
+	role_comm_title = "CEC Syn"
 	faction_group = list(FACTION_LIST_SURVIVOR_UPP, FACTION_UPP)
 	origin_override = ORIGIN_UPP
+	minimap_icon = "upp_synth"
 
 
 	survivor_variant = SCIENTIST_SURVIVOR
@@ -915,27 +910,12 @@
 /datum/equipment_preset/synth/survivor/atlan/scientist/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/cec(new_human), WEAR_L_EAR)
 
-	var/random_gloves = rand(1,3)
+	var/random_gloves = rand(1,2)
 	switch(random_gloves)
 		if(1)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(new_human), WEAR_HANDS)
 		if(2)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/botanic_leather(new_human), WEAR_HANDS)
-		if(3)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/upp(new_human), WEAR_HANDS)
-
-	var/random_labcoat = rand(1,5)
-	switch(random_labcoat)
-		if(1)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/long(new_human), WEAR_JACKET)
-		if(2)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat(new_human), WEAR_JACKET)
-		if(3)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/brown(new_human), WEAR_JACKET)
-		if(4)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/blue(new_human), WEAR_JACKET)
-		if(5)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/green(new_human), WEAR_JACKET)
 
 	var/random_professional_shoe = rand(1,3)
 	switch(random_professional_shoe)
@@ -944,7 +924,7 @@
 		if(2)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup/brown(new_human), WEAR_FEET)
 		if(3)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp(new_human), WEAR_FEET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife(new_human), WEAR_FEET)
 
 	var/random_synth_uniform = rand(1,6)
 	switch(random_synth_uniform)
@@ -961,9 +941,10 @@
 		if(6)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/gray(new_human), WEAR_BODY)
 
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/cec/blue(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/cec_patch(new_human), WEAR_ACCESSORY)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern(new_human.back), WEAR_IN_BACK)
 
 	..()

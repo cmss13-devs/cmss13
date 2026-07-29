@@ -464,6 +464,10 @@
 /obj/effect/decal/strata_decals/grime/grime3,
 /turf/open/floor/strata/floor2,
 /area/atlan/station/airlock_maints)
+"aby" = (
+/obj/item/clothing/suit/storage/labcoat/cec/red,
+/turf/open/floor/strata/purp1,
+/area/atlan/asteroid/servers)
 "abz" = (
 /obj/structure/surface/rack{
 	color = "#98a3ab"
@@ -480,6 +484,15 @@
 /obj/structure/machinery/disposal,
 /turf/open/floor/strata/fake_wood,
 /area/atlan/station/promenade)
+"abC" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/barricade/deployable,
+/turf/open/floor/strata/fake_wood,
+/area/atlan/station/admin)
+"abD" = (
+/obj/item/ammo_magazine/rifle/ak4047,
+/turf/open/floor/prison/darkyellowfull2,
+/area/atlan/station/substation)
 "abE" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -3686,6 +3699,10 @@
 "alc" = (
 /turf/open/floor/strata,
 /area/template_noop)
+"ald" = (
+/obj/structure/largecrate/empty/case,
+/turf/open/floor/prison/sterile_white/south,
+/area/atlan/station/medical/morgue)
 "ale" = (
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
@@ -6294,6 +6311,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/item/weapon/gun/rifle/ak4047,
 /turf/open/floor/strata/floor2,
 /area/atlan/station/substation)
 "atd" = (
@@ -12272,8 +12290,8 @@
 /turf/open/floor/strata/blue1,
 /area/atlan/asteroid/processing_train_control)
 "aMy" = (
-/obj/item/clothing/suit/storage/labcoat/blue,
 /obj/structure/platform_decoration/metal/atlan/north,
+/obj/item/clothing/suit/storage/labcoat/cec/red_hood,
 /turf/open/floor/prison/whitegreen/northeast,
 /area/atlan/station/botany)
 "aMz" = (
@@ -14509,10 +14527,6 @@
 	},
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/cargo)
-"aTY" = (
-/obj/structure/largecrate/random/barrel/true_random,
-/turf/open/floor/strata/floor2,
-/area/atlan/station/medical/morgue)
 "aTZ" = (
 /obj/structure/bed/chair{
 	dir = 8;
@@ -18328,10 +18342,6 @@
 /obj/effect/hunter/ancient_temple/rubble/rubble_2,
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_nw_train)
-"bgc" = (
-/obj/structure/largecrate/empty/case,
-/turf/open/floor/strata/floor2,
-/area/atlan/station/medical/morgue)
 "bgd" = (
 /obj/structure/largecrate/empty{
 	pixel_y = 3
@@ -18356,31 +18366,15 @@
 	},
 /turf/open/floor/strata/multi_tiles,
 /area/atlan/asteroid/processing_nw_train)
-"bgh" = (
-/obj/structure/largecrate/empty/secure,
-/turf/open/floor/strata/floor2,
-/area/atlan/station/medical/morgue)
-"bgi" = (
-/obj/structure/largecrate/empty/case/double,
-/turf/open/floor/strata/floor3/east,
-/area/atlan/station/medical/morgue)
 "bgj" = (
 /obj/structure/cargo_container/upp_single/container_5,
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_nw_train)
-"bgk" = (
-/obj/structure/largecrate/random/barrel/true_random,
-/turf/open/floor/strata/floor3/east,
-/area/atlan/station/medical/morgue)
 "bgl" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/platform_decoration/metal/atlan/east,
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_nw_train)
-"bgm" = (
-/obj/structure/largecrate/empty/case/double,
-/turf/open/floor/strata/floor2,
-/area/atlan/station/medical/morgue)
 "bgn" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12"
@@ -28971,8 +28965,8 @@
 /turf/open/floor/strata/floor2,
 /area/atlan/station/cargo)
 "iXH" = (
-/obj/structure/largecrate/empty/secure,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/empty/secure,
 /turf/open/floor/strata/floor2,
 /area/atlan/station/medical/morgue)
 "iXM" = (
@@ -33226,9 +33220,7 @@
 /obj/structure/machinery/light/double/blue{
 	dir = 1
 	},
-/obj/structure/largecrate/empty{
-	pixel_y = 3
-	},
+/obj/structure/largecrate/empty/case/double,
 /turf/open/floor/strata/floor2,
 /area/atlan/station/medical/morgue)
 "mpq" = (
@@ -38305,7 +38297,7 @@
 	pixel_x = -10;
 	pixel_y = -3
 	},
-/obj/item/clothing/suit/storage/labcoat/blue,
+/obj/item/clothing/suit/storage/labcoat/cec/blue,
 /turf/open/floor/prison/whitegreenfull,
 /area/atlan/station/botany_storage)
 "qcT" = (
@@ -43868,10 +43860,10 @@
 /turf/open/floor/strata/white_cyan2/west,
 /area/atlan/station/cargooffice)
 "uiU" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_29";
-	pixel_y = 11;
-	pixel_x = -3
+/obj/structure/coatrack,
+/obj/item/clothing/suit/storage/labcoat/cec/blue{
+	pixel_y = 4;
+	pixel_x = -5
 	},
 /turf/open/floor/strata/blue1,
 /area/atlan/station/admin)
@@ -47209,11 +47201,6 @@
 	color = "#98a3ab"
 	},
 /obj/item/storage/box/gloves,
-/obj/structure/surface/rack{
-	color = "#98a3ab";
-	pixel_y = 19;
-	layer = 3
-	},
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/atlan/station/medical)
@@ -109918,7 +109905,7 @@ aBm
 hje
 mLy
 xOF
-iEU
+abD
 aBm
 aBm
 aBm
@@ -116455,9 +116442,9 @@ vQC
 aUK
 aSQ
 aUl
-bgm
+aSo
 iXH
-aTY
+aSo
 aTl
 sko
 aSC
@@ -116668,9 +116655,9 @@ aRL
 aSo
 aSE
 aSo
-aTY
-bgh
-bgc
+aSo
+aSo
+aSo
 aSo
 aSD
 aSn
@@ -116880,8 +116867,8 @@ aUL
 pix
 uDa
 aSQ
-bgk
-bgi
+aTA
+aTA
 bgd
 cij
 aSE
@@ -117097,7 +117084,7 @@ tFN
 bge
 pLz
 nNQ
-aSp
+ald
 aRJ
 aRr
 aRe
@@ -124130,7 +124117,7 @@ asB
 arM
 nsr
 arM
-arM
+abC
 meK
 cZl
 aqY
@@ -129234,7 +129221,7 @@ aKr
 aKl
 aAL
 aJP
-aJD
+aby
 eCk
 cmV
 aIW

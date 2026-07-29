@@ -251,7 +251,7 @@ GLOBAL_LIST_INIT(vehicle_gear_order, list("P", "R", "N", "D", "1", "2"))
 	var/vehicle_flags = VEHICLE_CLASS_WEAK
 
 	// References to the active/chosen hardpoint for each seat
-	var/active_hp = list(
+	var/list/obj/item/hardpoint/active_hp = list(
 		VEHICLE_DRIVER = null
 	)
 

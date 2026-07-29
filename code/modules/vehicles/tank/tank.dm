@@ -266,7 +266,7 @@
 		var/obj/item/hardpoint/support/artillery_module/AM = get_artillery_module()
 		AM?.clear_user_effects(M)
 
-/obj/vehicle/multitile/tank/proc/get_artillery_module()
+/obj/vehicle/multitile/tank/proc/get_artillery_module() as /obj/item/hardpoint/support/artillery_module
 	for(var/obj/item/hardpoint/support/artillery_module/AM in hardpoints)
 		return AM
 	return null

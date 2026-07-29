@@ -244,7 +244,7 @@
 	return
 
 /// This vehicle's own gyro-capable hardpoint: its turret holder, or a rotation-tracked top-level hardpoint.
-/obj/vehicle/multitile/proc/get_gyro_hardpoint()
+/obj/vehicle/multitile/proc/get_gyro_hardpoint() as /obj/item/hardpoint
 	var/obj/item/hardpoint/holder/tank_turret/turret = locate() in hardpoints
 	if(turret)
 		return turret

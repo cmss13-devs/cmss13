@@ -1018,7 +1018,7 @@ DEFINES in setup.dm, referenced here.
 		return null
 	// params2turf() treats its "origin" turf as the center of the client's viewport, which breaks for a
 	// seated vehicle crewman whose eye isn't their own body.
-	var/turf/anchor = get_turf(user.client?.eye) || get_turf(user)
+	var/turf/anchor = get_turf(user.client?.get_eye()) || get_turf(user)
 	return params2turf(modifiers[SCREEN_LOC], anchor, user.client)
 
 /// check if the gun contains any light source that is currently turned on.

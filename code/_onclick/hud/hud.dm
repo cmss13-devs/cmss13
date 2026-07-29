@@ -156,6 +156,7 @@
 	unique_action = null
 
 	zone_sel = null
+	vehicle_zone_sel = null
 	pull_icon = null
 	throw_icon = null
 	oxygen_icon = null

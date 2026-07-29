@@ -51,6 +51,21 @@
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_GLASS
 
+/**
+ * A multi-tile vehicle resolves directional windows through its own travel-direction scan instead.
+ * Full-tile windows aren't exempted.
+ */
+/obj/structure/window/BlockedExitDirs(atom/movable/mover, target_dir)
+	if(istype(mover, /obj/vehicle/multitile) && !is_full_window())
+		return NO_BLOCKED_MOVEMENT
+	return ..()
+
+/// Same reasoning as BlockedExitDirs() above.
+/obj/structure/window/BlockedPassDirs(atom/movable/mover, target_dir)
+	if(istype(mover, /obj/vehicle/multitile) && !is_full_window())
+		return NO_BLOCKED_MOVEMENT
+	return ..()
+
 /obj/structure/window/proc/set_constructed_window(start_dir)
 	state = 0
 	anchored = FALSE

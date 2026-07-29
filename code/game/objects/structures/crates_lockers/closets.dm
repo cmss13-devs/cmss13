@@ -76,8 +76,17 @@
 
 /obj/structure/closet/proc/dump_contents()
 
-	for(var/obj/I in src)
-		I.forceMove(loc)
+	var/obj/vehicle/multitile/tank/tank = src.get_tank_on_top_of()
+
+	for(var/obj/object in src)
+		object.forceMove(loc)
+		// closets can't go atop vehicles, but this sets behavior for bodybags, which can.
+		if(tank)
+			tank.obj_mark_on_top(object)
+		else
+			var/obj/vehicle/multitile/tank/obj_tank = object.get_tank_on_top_of()
+			if(obj_tank)
+				obj_tank.obj_clear_on_top(object)
 
 	for(var/mob/M in src)
 		M.forceMove(loc)
@@ -88,6 +97,13 @@
 			if(living_M.mobility_flags & MOBILITY_MOVE)
 				M.visible_message(SPAN_WARNING("[M] suddenly gets out of [src]!"),
 				SPAN_WARNING("You get out of [src] and get your bearings!"))
+			// closets can't go atop vehicles, but this sets behavior for bodybags, which can.
+			if(tank)
+				tank.mark_on_top(living_M)
+			else
+				var/obj/vehicle/multitile/tank/mob_tank = living_M.get_tank_on_top_of()
+				if(mob_tank)
+					mob_tank.clear_on_top(living_M)
 
 /// Attempts to open this closet by user, skipping checks that prevent opening if forced
 /obj/structure/closet/proc/open(mob/user, force)

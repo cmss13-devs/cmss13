@@ -224,7 +224,7 @@
 	var/time_charged = min(world.time - start_time, max_charge_time)
 	var/modifier = 0
 	if(delegate.hypertension_stacks)
-		modifier = abs(min(delegate.hypertension_stacks, time_charged / max_charge_time)) //how many stacks did we consume
+		modifier = abs(min(delegate.hypertension_stacks, 4 * (time_charged / max_charge_time))) //how many stacks did we consume
 		delegate.hypertension_stacks -= modifier
 		modifier *= 4 //4 more spits per consumed stack
 
@@ -245,24 +245,20 @@
 		proj.def_zone = xeno.get_limbzone_target()
 		proj.fire_at(new_target, xeno, xeno, xeno.ammo.max_range, xeno.ammo.shell_speed)
 
-/datum/action/xeno_action/activable/pounce/caustic_embrace/on_select(mob/user)
-	RegisterSignal(user, COMSIG_MOB_MOUSEDOWN, PROC_REF(on_mouse_down))
-
-
 /datum/action/xeno_action/activable/pounce/caustic_embrace/proc/on_mouse_down(mob/source, atom/target, turf, skin_ctl, params)
 	SIGNAL_HANDLER
 	var/list/mods = params2list(params)
 	source.click(target, mods)
 
 /datum/action/xeno_action/activable/pounce/caustic_embrace/on_deselect(mob/user)
-	UnregisterSignal(user, COMSIG_MOB_MOUSEDOWN)
+	UnregisterSignal(user, COMSIG_MOB_MOUSEUP)
 
 
-/datum/action/xeno_action/activable/pounce/caustic_embrace/use_ability(atom/target, released = FALSE)
+/datum/action/xeno_action/activable/pounce/caustic_embrace/use_ability(atom/target, list/args, released = FALSE)
 	if(!released)
 		stage = 0
 		update_charge_overlay()
-		addtimer(CALLBACK(src, PROC_REF(update_charge_overlay)), (max_charge_time / 2), TIMER_STOPPABLE)
+		addtimer(CALLBACK(src, PROC_REF(update_charge)), (max_charge_time / 2), TIMER_STOPPABLE)
 		RegisterSignal(owner, COMSIG_MOB_MOUSEUP, PROC_REF(release_charge))
 		return
 	distance += stage * 2
@@ -271,8 +267,9 @@
 	if(charge_overlay)
 		owner.overlays -= charge_overlay
 
-/datum/action/xeno_action/activable/pounce/caustic_embrace/proc/release_charge(atom/source, atom/target, turf, skin_ctl, params)
-	use_ability(target, TRUE)
+/datum/action/xeno_action/activable/pounce/caustic_embrace/proc/release_charge(atom/source, atom/target, list/args)
+	UnregisterSignal(owner, COMSIG_MOB_MOUSEUP)
+	use_ability(target, args, TRUE)
 
 /datum/action/xeno_action/activable/pounce/caustic_embrace/proc/update_charge()
 	if(!action_cooldown_check())//we have released the ability
@@ -280,14 +277,14 @@
 	var/mob/living/carbon/xenomorph/despoiler/xeno = owner
 	var/datum/behavior_delegate/despoiler_base/delegate = xeno.behavior_delegate
 	if(delegate.hypertension_stacks <= 0)
-		addtimer(CALLBACK(src, PROC_REF(update_charge_overlay)), 1, TIMER_STOPPABLE)
+		addtimer(CALLBACK(src, PROC_REF(release_charge)), 1, TIMER_STOPPABLE)
 		return
 	delegate.hypertension_stacks --
 
 	update_charge_overlay()
 	if(stage == 2)
 		return
-	addtimer(CALLBACK(src, PROC_REF(update_charge_overlay)), (max_charge_time / 2), TIMER_STOPPABLE)
+	addtimer(CALLBACK(src, PROC_REF(release_charge)), (max_charge_time / 2), TIMER_STOPPABLE)
 
 /datum/action/xeno_action/activable/pounce/caustic_embrace/proc/update_charge_overlay()
 	if(charge_overlay)
@@ -300,7 +297,6 @@
 
 /datum/action/xeno_action/activable/pounce/caustic_embrace/additional_effects_always()
 	var/mob/living/carbon/xenomorph/despoiler/xeno = owner
-	var/datum/behavior_delegate/despoiler_base/delegate = xeno.behavior_delegate
 	xeno.emote("roar")
 
 	if(stage)
@@ -323,7 +319,6 @@
 
 /datum/action/xeno_action/activable/pounce/caustic_embrace/additional_effects(mob/living/carbon/target)
 	var/mob/living/carbon/xenomorph/despoiler/xeno = owner
-	var/datum/behavior_delegate/despoiler_base/delegate = xeno.behavior_delegate
 
 	if(!stage)
 		return
@@ -345,7 +340,6 @@
 	. = ..()
 
 	var/mob/living/carbon/xenomorph/despoiler/xeno = owner
-	var/datum/behavior_delegate/despoiler_base/delegate = xeno.behavior_delegate
 
 	if(!action_cooldown_check())
 		to_chat(xeno, SPAN_WARNING("We must wait for our acid glands to refill."))

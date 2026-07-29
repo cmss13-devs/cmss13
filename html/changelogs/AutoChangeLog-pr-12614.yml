@@ -1,4 +1,0 @@
-author: "JHINgle4ce"
-delete-after: True
-changes:
-  - bugfix: "Fixed weeds spreading logic when encountering platforms."

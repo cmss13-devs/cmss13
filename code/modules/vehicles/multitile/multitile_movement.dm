@@ -1052,6 +1052,8 @@
 /obj/vehicle/multitile/proc/simple_accel_movement_loop()
 	while(current_speed > VEHICLE_MIN_CRAWL_SPEED && (get_driver_vehicle_prefs() & VEHICLE_SIMPLE_ACCELERATION))
 		sleep(GEAR_MOVEMENT_POLL_INTERVAL)
+		if(world.time >= throttle_held_until)
+			break
 		simple_accel_move_step()
 	movement_loop_active = FALSE
 

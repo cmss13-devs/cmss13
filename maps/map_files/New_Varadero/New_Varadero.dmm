@@ -41,6 +41,20 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/predship/tile/hunter_tile_6/west,
 /area/varadero/interior_protected/vessel)
+"aag" = (
+/obj/structure/prop/structure_lattice{
+	dir = 1;
+	health = 300
+	},
+/obj/structure/prop/structure_lattice{
+	dir = 1;
+	pixel_y = 10;
+	health = 300;
+	layer = 3.1
+	},
+/obj/effect/decal/warning_stripes/asteroid,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior_protected/caves)
 "aah" = (
 /obj/structure/bed/chair/hunter{
 	name = "alien chair";
@@ -137,6 +151,27 @@
 	},
 /turf/closed/wall/r_wall/unmeltable,
 /area/varadero/interior/oob)
+"aas" = (
+/obj/structure/prop/structure_lattice{
+	dir = 1;
+	health = 300
+	},
+/obj/effect/decal/warning_stripes/asteroid,
+/obj/structure/prop/structure_lattice{
+	dir = 1;
+	pixel_y = 10;
+	health = 300;
+	layer = 3.1
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior_protected/caves)
+"aat" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform4{
+	dir = 1
+	},
+/obj/item/ammo_magazine/rifle/rmc_f90/marksman,
+/turf/open/gm/dirt/dark_brown,
+/area/varadero/interior_protected/caves)
 "aav" = (
 /obj/item/tool/pickaxe,
 /obj/effect/decal/cleanable/dirt,
@@ -526,7 +561,9 @@
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/varadero/interior_protected/caves/central)
 "abN" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /turf/open/gm/dirt/dark_brown,
 /area/varadero/interior_protected/caves/central)
 "abO" = (
@@ -848,7 +885,9 @@
 /turf/open/gm/dirt/dark_brown,
 /area/varadero/interior_protected/caves/central)
 "adc" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/dirt/dark_brown,
 /area/varadero/interior_protected/caves/central)
@@ -1319,7 +1358,9 @@
 /turf/open/gm/dirt/dark_brown,
 /area/varadero/interior_protected/caves/digsite)
 "aeI" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
 "aeJ" = (
@@ -1397,7 +1438,9 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate3{
 	dir = 1
 	},
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /turf/open/gm/dirt/dark_brown,
 /area/varadero/interior_protected/caves/digsite)
 "aeV" = (
@@ -1649,7 +1692,9 @@
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/varadero/interior_protected/caves/swcaves)
 "afI" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/swcaves)
 "afJ" = (
@@ -2064,7 +2109,9 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
 "agO" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /turf/open/gm/dirt/dark_brown,
 /area/varadero/interior_protected/caves/digsite)
 "agP" = (
@@ -2825,7 +2872,9 @@
 /turf/open/gm/dirt/dark_brown,
 /area/varadero/interior_protected/caves/central)
 "aiW" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/central)
@@ -3260,7 +3309,9 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance)
 "akh" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/varadero/interior_protected/caves/central)
 "aki" = (
@@ -6133,7 +6184,9 @@
 /turf/open/gm/dirt/dark_brown,
 /area/varadero/interior_protected/caves/central)
 "asG" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/central)
@@ -8100,7 +8153,9 @@
 /turf/open/gm/dirt/dark_brown,
 /area/varadero/interior_protected/caves/central)
 "ayz" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/central)
@@ -8141,7 +8196,9 @@
 /turf/open/slippery/hull/dir/west,
 /area/sky)
 "ayF" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/lz2_near)
 "ayG" = (
@@ -10995,7 +11052,9 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/maintenance/south)
 "aGv" = (
@@ -12788,7 +12847,9 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/maintenance/south)
 "aKP" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/maintenance/south)
 "aKQ" = (
@@ -12915,7 +12976,9 @@
 /turf/open/floor/asteroidfloor,
 /area/varadero/interior/maintenance/security/south/hangar)
 "aLi" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/eastocean)
 "aLj" = (
@@ -13896,7 +13959,9 @@
 /turf/open/floor/asteroidwarning/northeast,
 /area/varadero/interior/maintenance/security/south/hangar)
 "aNK" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /obj/structure/platform/metal/kutjevo_smooth/north{
 	climb_delay = 1
 	},
@@ -18706,7 +18771,9 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/south/hangar)
 "baz" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/monsoon)
 "baA" = (
@@ -19080,7 +19147,9 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/south)
 "bbG" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /turf/open/gm/coast/west,
 /area/varadero/exterior/pontoon_beach)
 "bbH" = (
@@ -21922,7 +21991,9 @@
 /turf/open/floor/asteroid,
 /area/varadero/interior/maintenance/security/south/hangar)
 "bjC" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
 "bjD" = (
@@ -24057,7 +24128,9 @@
 /obj/structure/platform/metal/kutjevo_smooth/east{
 	climb_delay = 1
 	},
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /turf/open/gm/dirt/desert_dug,
 /area/varadero/exterior/monsoon)
 "bpv" = (
@@ -24663,7 +24736,9 @@
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/monsoon)
 "bqX" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
@@ -28528,7 +28603,9 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
 "bAP" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/caves/north_research)
 "bAQ" = (
@@ -29398,7 +29475,9 @@
 /area/varadero/exterior/eastbeach)
 "bDf" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/eastbeach)
 "bDg" = (
@@ -32576,7 +32655,9 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/eastbeach)
 "bLu" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /obj/item/clothing/yautja_cape/damaged,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/eastbeach)
@@ -36817,7 +36898,9 @@
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "bUZ" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/central)
 "bVa" = (
@@ -40118,11 +40201,15 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/lz2_near)
 "cdo" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /turf/open/gm/dirt/desert1,
 /area/varadero/exterior/lz2_near)
 "cdp" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /turf/open/gm/dirt/desert3,
 /area/varadero/exterior/lz2_near)
 "cdq" = (
@@ -41904,7 +41991,9 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/comms4)
 "chO" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/comms4)
 "chP" = (
@@ -42465,7 +42554,9 @@
 /area/varadero/exterior/comms4)
 "cjm" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/comms4)
 "cjn" = (
@@ -42938,7 +43029,9 @@
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/exterior/pontoon_beach)
 "cks" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/pontoon_beach)
 "ckt" = (
@@ -45040,7 +45133,7 @@
 	pixel_y = 4;
 	dir = 1;
 	anchored = 1;
-	layer = 4.1
+	layer = 2.99
 	},
 /turf/open/floor/plating/bare_catwalk,
 /area/varadero/exterior/lz1_near)
@@ -45690,7 +45783,8 @@
 	},
 /obj/structure/flora/bush/ausbushes/var3/fernybush{
 	pixel_x = -2;
-	pixel_y = 8
+	pixel_y = 8;
+	layer = 3.75
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/lz2_near)
@@ -46409,7 +46503,9 @@
 /obj/structure/platform/metal/kutjevo_smooth/north{
 	climb_delay = 1
 	},
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /turf/open/gm/dirt/desert1,
 /area/varadero/exterior/lz2_near)
 "csL" = (
@@ -47630,7 +47726,9 @@
 /turf/open/gm/dirt/desert3,
 /area/varadero/exterior/lz2_near)
 "cvp" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /obj/structure/platform/metal/kutjevo_smooth/east{
 	climb_delay = 1
 	},
@@ -48455,7 +48553,9 @@
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/exterior/pontoon_beach)
 "cxf" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
@@ -48594,7 +48694,9 @@
 /obj/structure/platform/metal/kutjevo_smooth/east{
 	climb_delay = 1
 	},
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz2_near)
 "cxz" = (
@@ -52927,7 +53029,9 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
 "ebi" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/eastbeach)
 "ebm" = (
@@ -53090,7 +53194,9 @@
 /turf/open/floor/shiva/yellow/north,
 /area/varadero/interior/electrical)
 "ekO" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/comms4)
 "elI" = (
@@ -57658,7 +57764,9 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/north)
 "hPq" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz2_near)
 "hPs" = (
@@ -57894,7 +58002,9 @@
 /turf/open/floor/shiva/redfull,
 /area/varadero/interior/security)
 "hZE" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /turf/open/gm/coast/north,
 /area/varadero/exterior/lz1_near)
 "iad" = (
@@ -62365,7 +62475,9 @@
 /turf/open/floor/platingdmg1,
 /area/varadero/interior/research)
 "lxs" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/exterior/eastocean)
 "lxy" = (
@@ -62881,7 +62993,9 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/hall_NW)
 "lVQ" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/central)
 "lVW" = (
@@ -64940,7 +65054,9 @@
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "nFD" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/exterior/pontoon_beach)
 "nFK" = (
@@ -70214,7 +70330,9 @@
 /obj/structure/platform/metal/kutjevo_smooth/west{
 	climb_delay = 1
 	},
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /turf/open/gm/coast/beachcorner/south_west,
 /area/varadero/exterior/pontoon_beach/lz)
 "rAf" = (
@@ -70534,7 +70652,9 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/comms1)
 "rMb" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/pontoon_beach)
 "rMM" = (
@@ -75479,7 +75599,9 @@
 /turf/open/floor/shiva/red/southeast,
 /area/varadero/interior/security)
 "vEg" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/flora/bush/ausbushes/var3/fernybush{
+	layer = 3.75
+	},
 /turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/pontoon_beach)
 "vEi" = (
@@ -84780,7 +84902,7 @@ aJY
 aIS
 aHZ
 aHh
-aFZ
+aag
 abE
 pGs
 pGs
@@ -86236,7 +86358,7 @@ uMQ
 aIX
 aIf
 aHo
-aFZ
+aas
 aFf
 aqE
 aqE
@@ -86599,7 +86721,7 @@ aKG
 aKe
 aEm
 aCv
-aBy
+aat
 aGi
 apP
 asn

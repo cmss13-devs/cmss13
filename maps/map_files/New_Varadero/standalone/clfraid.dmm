@@ -283,8 +283,8 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/caves/north_research)
 "aU" = (
-/obj/item/ammo_magazine/rifle/mar40,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/rifle/rmc_f90,
 /turf/open/floor/plating/platingdmg2,
 /area/varadero/interior/research)
 "aV" = (
@@ -308,8 +308,12 @@
 /area/varadero/interior/research)
 "aY" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/prop_gun/m41aMK1{
-	custom_gun_desc = "An older design of the Pulse Rifle commonly used by Colonial Marines. This one has seen better days. With its handle, trigger, and barrel all melted by some form of acid... game over man!."
+/obj/item/prop{
+	desc = "The molten husk of an M41A Mk1 Pulse Rifle. Most of the rifle's dust cover has melted into a vauge homogenous tan painted refuge vaugely in the shape of an Mk1. The barrel has fused into the underail which in turn has fused into the ammo feed. The trigger has melted into the grip itself and the carry handle is barely recogniseable.";
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/assault_rifles.dmi';
+	name = "Melted M41A Mk1 Pulse Rifle";
+	icon_state = "m41amk1_d";
+	layer = 3.1
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/caves/north_research)
@@ -335,8 +339,12 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
 "bd" = (
-/obj/effect/spawner/prop_gun/m41aMK1{
-	custom_gun_desc = "An older design of the Pulse Rifle commonly used by Colonial Marines. This one has seen better days. With its handle, trigger, and barrel all melted by some form of acid... game over man!."
+/obj/item/prop{
+	desc = "The molten husk of an M41A Mk1 Pulse Rifle. Most of the rifle's dust cover has melted into a vauge homogenous tan painted refuge vaugely in the shape of an Mk1. The barrel has fused into the underail which in turn has fused into the ammo feed. The trigger has melted into the grip itself and the carry handle is barely recogniseable.";
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/assault_rifles.dmi';
+	name = "Melted M41A Mk1 Pulse Rifle";
+	icon_state = "m41amk1_d";
+	layer = 3.1
 	},
 /turf/open/floor/plating/burnt_platingdmg3,
 /area/varadero/interior/maintenance/research)
@@ -346,6 +354,7 @@
 	name = "impact";
 	icon_state = "thermite"
 	},
+/obj/structure/largecrate/supply/supplies/water,
 /turf/open/floor/platingdmg3,
 /area/varadero/interior/research)
 "bf" = (
@@ -372,8 +381,12 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance/research)
 "bj" = (
-/obj/effect/spawner/prop_gun/m41aMK1{
-	custom_gun_desc = "An older design of the Pulse Rifle commonly used by Colonial Marines. This one has seen better days. With its handle, trigger, and barrel all melted by some form of acid... game over man!."
+/obj/item/prop{
+	desc = "The molten husk of an M41A Mk1 Pulse Rifle. Most of the rifle's dust cover has melted into a vauge homogenous tan painted refuge vaugely in the shape of an Mk1. The barrel has fused into the underail which in turn has fused into the ammo feed. The trigger has melted into the grip itself and the carry handle is barely recogniseable.";
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/assault_rifles.dmi';
+	name = "Melted M41A Mk1 Pulse Rifle";
+	icon_state = "m41amk1_d";
+	layer = 3.1
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance/research)
@@ -546,8 +559,12 @@
 /area/varadero/interior/maintenance/research)
 "dm" = (
 /obj/effect/decal/cleanable/blood/gibs/limb,
-/obj/effect/spawner/prop_gun/m41aMK1{
-	custom_gun_desc = "An older design of the Pulse Rifle commonly used by Colonial Marines. This one has seen better days. With its handle, trigger, and barrel all melted by some form of acid... game over man!."
+/obj/item/prop{
+	desc = "The molten husk of an M41A Mk1 Pulse Rifle. Most of the rifle's dust cover has melted into a vauge homogenous tan painted refuge vaugely in the shape of an Mk1. The barrel has fused into the underail which in turn has fused into the ammo feed. The trigger has melted into the grip itself and the carry handle is barely recogniseable.";
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/assault_rifles.dmi';
+	name = "Melted M41A Mk1 Pulse Rifle";
+	icon_state = "m41amk1_d";
+	layer = 3.1
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
@@ -737,8 +754,12 @@
 /area/varadero/interior/maintenance/research)
 "gA" = (
 /obj/structure/machinery/power/apc/no_power/north,
-/obj/effect/spawner/prop_gun/m41aMK1{
-	custom_gun_desc = "An older design of the Pulse Rifle commonly used by Colonial Marines. This one has seen better days. With its handle, trigger, and barrel all melted by some form of acid... game over man!."
+/obj/item/prop{
+	desc = "The molten husk of an M41A Mk1 Pulse Rifle. Most of the rifle's dust cover has melted into a vauge homogenous tan painted refuge vaugely in the shape of an Mk1. The barrel has fused into the underail which in turn has fused into the ammo feed. The trigger has melted into the grip itself and the carry handle is barely recogniseable.";
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/assault_rifles.dmi';
+	name = "Melted M41A Mk1 Pulse Rifle";
+	icon_state = "m41amk1_d";
+	layer = 3.1
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
@@ -1045,7 +1066,8 @@
 	desc = "A timeless piece of technology from another era, of spacemen who once plunged into the 12th Bay and beyond."
 	},
 /obj/structure/sign/banners/clf_worn{
-	pixel_y = 32
+	pixel_y = 32;
+	desc = "A very worn flag of the Colonial Liberation Front. Inspires patriotism, fear, or revulsion depending on the viewer's political leanings. This one has the words 'Never forget the Bloody Fifth' enscribed onto it."
 	},
 /turf/open/floor/shiva/purple/north,
 /area/varadero/interior/research)
@@ -1518,11 +1540,11 @@
 /obj/structure/barricade/sandbags/wired{
 	dir = 8
 	},
-/obj/item/ammo_magazine/rifle/mar40,
 /obj/effect/decal/cleanable/dirt{
 	name = "impact";
 	icon_state = "thermite"
 	},
+/obj/item/ammo_magazine/rifle/rmc_f90,
 /turf/open/floor/plating/burnt_platingdmg3,
 /area/varadero/interior/maintenance/research)
 "wl" = (
@@ -1568,11 +1590,11 @@
 	dir = 1
 	},
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/rifle/m16{
-	pixel_x = 5;
-	pixel_y = 6
+/obj/item/weapon/gun/rifle/rmc_f90/scope,
+/obj/item/weapon/gun/rifle/rmc_f90/scope{
+	pixel_x = 2;
+	pixel_y = 4
 	},
-/obj/item/weapon/gun/rifle/m16,
 /turf/open/floor/almayer,
 /area/varadero/interior/research/clfship)
 "xe" = (
@@ -1654,8 +1676,8 @@
 /obj/structure/barricade/sandbags/wired{
 	dir = 8
 	},
-/obj/item/ammo_magazine/rifle/mar40,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/rifle/rmc_f90,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
 "za" = (
@@ -1881,8 +1903,8 @@
 /turf/open/floor/shiva/purple/east,
 /area/varadero/interior/research)
 "El" = (
-/obj/item/ammo_magazine/rifle/mar40,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/rifle/rmc_f90,
 /turf/open/floor/plating/burnt_platingdmg3,
 /area/varadero/interior/research)
 "Em" = (
@@ -1893,7 +1915,6 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
 "Ev" = (
-/obj/structure/largecrate/supply/supplies/water,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer,
 /area/varadero/interior/research/clfship)
@@ -2172,18 +2193,12 @@
 	dir = 1
 	},
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/rifle/mar40{
-	pixel_y = 6
-	},
-/obj/item/weapon/gun/rifle/mar40{
-	pixel_y = -1
-	},
-/obj/item/ammo_magazine/rifle/mar40,
-/obj/item/ammo_magazine/rifle/mar40,
-/obj/item/ammo_magazine/rifle/mar40,
-/obj/item/ammo_magazine/rifle/mar40,
-/obj/item/ammo_magazine/rifle/mar40,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/gun/rifle/rmc_f90,
+/obj/item/weapon/gun/rifle/rmc_f90{
+	pixel_x = 4;
+	pixel_y = 5
+	},
 /turf/open/floor/almayer,
 /area/varadero/interior/research/clfship)
 "Jd" = (
@@ -2724,19 +2739,23 @@
 /area/varadero/interior/maintenance/research)
 "VO" = (
 /obj/structure/closet/crate/ammo,
-/obj/item/ammo_magazine/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16/ap,
-/obj/item/ammo_magazine/rifle/m16/ap,
-/obj/item/ammo_magazine/rifle/m16/ap,
-/obj/item/ammo_magazine/rifle/m16/ap,
-/obj/item/ammo_magazine/rifle/m16/ap,
+/obj/item/ammo_magazine/rifle/rmc_f90/marksman,
+/obj/item/ammo_magazine/rifle/rmc_f90/marksman,
+/obj/item/ammo_magazine/rifle/rmc_f90/marksman,
+/obj/item/ammo_magazine/rifle/rmc_f90/marksman,
+/obj/item/ammo_magazine/rifle/rmc_f90,
+/obj/item/ammo_magazine/rifle/rmc_f90,
+/obj/item/ammo_magazine/rifle/rmc_f90,
+/obj/item/ammo_magazine/rifle/rmc_f90,
+/obj/item/ammo_magazine/rifle/rmc_f90,
+/obj/item/ammo_magazine/rifle/rmc_f90,
+/obj/item/ammo_magazine/rifle/rmc_f90,
+/obj/item/ammo_magazine/rifle/rmc_f90,
+/obj/item/ammo_magazine/rifle/rmc_f90,
+/obj/item/ammo_magazine/rifle/rmc_f90,
+/obj/item/ammo_magazine/rifle/rmc_f90,
+/obj/item/ammo_magazine/rifle/rmc_f90,
+/obj/item/ammo_magazine/rifle/rmc_f90,
 /turf/open/floor/platingdmg1,
 /area/varadero/interior/research/clfship)
 "VQ" = (
@@ -2843,7 +2862,7 @@
 /obj/item/stack/rods,
 /obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood,
-/obj/item/weapon/gun/rifle/mar40/carbine,
+/obj/item/weapon/gun/rifle/rmc_f90/shotgun,
 /turf/open/floor/platingdmg1,
 /area/varadero/interior/research)
 "YN" = (

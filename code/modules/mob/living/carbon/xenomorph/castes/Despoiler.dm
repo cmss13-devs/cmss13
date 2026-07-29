@@ -261,8 +261,14 @@
 		addtimer(CALLBACK(src, PROC_REF(update_charge)), (max_charge_time / 2), TIMER_STOPPABLE)
 		RegisterSignal(owner, COMSIG_MOB_MOUSEUP, PROC_REF(release_charge))
 		return
+	var/mob/living/carbon/xenomorph/despoiler/xeno = owner
+	var/datum/behavior_delegate/despoiler_base/delegate = xeno.behavior_delegate
+	stage = min(stage, delegate.hypertension_stacks)
 	distance += stage * 2
 	. = ..()
+	if(.)
+		delegate.hypertension_stacks -= stage
+		xeno.update_hypertension()
 	distance = initial(distance)
 	if(charge_overlay)
 		owner.overlays -= charge_overlay
@@ -275,12 +281,6 @@
 	if(!action_cooldown_check())//we have released the ability
 		return
 	var/mob/living/carbon/xenomorph/despoiler/xeno = owner
-	var/datum/behavior_delegate/despoiler_base/delegate = xeno.behavior_delegate
-	if(delegate.hypertension_stacks <= 0)
-		addtimer(CALLBACK(src, PROC_REF(update_charge)), 1, TIMER_STOPPABLE)
-		return
-	delegate.hypertension_stacks --
-	xeno.update_hypertension()
 	stage ++
 
 	update_charge_overlay()
@@ -357,6 +357,7 @@
 	var/severity = (xeno.health <= (0.7 * xeno.maxHealth)) + (xeno.health <= 0.5 * xeno.maxHealth) + (xeno.health <= (0.3 * xeno.maxHealth))
 	var/acid_range = severity + 2
 	var/blocked = FALSE
+	var/loose_per_distance = (60 / (acid_range - 1)) //80 on adjacent tile degrades to 60 on last tile
 
 	for(var/turf/turf in orange(acid_range, get_turf(xeno)))
 		blocked = FALSE
@@ -377,11 +378,13 @@
 
 		if(blocked)
 			continue
-		addtimer(CALLBACK(src, PROC_REF(spawn_acid), xeno, turf), 0.2 SECONDS * get_dist(turf, xeno))
+		var/chance = 80 - (get_dist(turf, owner) - 1) * loose_per_distance
 
-/datum/action/xeno_action/onclick/oozing_wounds/proc/spawn_acid(mob/living/carbon/xenomorph/xeno, turf/turf)
+		addtimer(CALLBACK(src, PROC_REF(spawn_acid), xeno, turf, chance), 0.2 SECONDS * get_dist(turf, xeno))
+
+/datum/action/xeno_action/onclick/oozing_wounds/proc/spawn_acid(mob/living/carbon/xenomorph/xeno, turf/turf, chance)
 	new /obj/effect/xenomorph/spray/despoiler(turf, create_cause_data(initial(xeno.caste_type), src), xeno.hivenumber)
-	if(prob(20))
+	if(prob(chance))
 		new /obj/effect/lingering_acid(turf, xeno.hivenumber)
 
 /obj/effect/lingering_acid

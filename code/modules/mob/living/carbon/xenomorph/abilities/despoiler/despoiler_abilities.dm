@@ -32,7 +32,6 @@
 	slash = FALSE
 	freeze_self = FALSE
 
-	var/empowered_distance = 5
 	var/weaken_duration = 1
 	var/damage = 30
 	var/image/charge_overlay

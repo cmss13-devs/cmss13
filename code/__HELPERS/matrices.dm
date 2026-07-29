@@ -108,9 +108,9 @@ list(0.393,0.349,0.272,0, 0.769,0.686,0.534,0, 0.189,0.168,0.131,0, 0,0,0,1, 0,0
 	if((length != 7 && length != 9) || length != length_char(string))
 		return COLOR_MATRIX_IDENTITY
 	var/list/color_list = rgb2num(string)
-	var/r = color_list[1]
-	var/g = color_list[2]
-	var/b = color_list[3]
+	var/r = color_list[1] /255
+	var/g = color_list[2] /255
+	var/b = color_list[3] /255
 	var/a = length(color_list) == 4 ? color_list[4] : 1
 	if(!isnum(r) || !isnum(g) || !isnum(b) || !isnum(a))
 		return COLOR_MATRIX_IDENTITY
@@ -122,9 +122,9 @@ list(0.393,0.349,0.272,0, 0.769,0.686,0.534,0, 0.189,0.168,0.131,0, 0,0,0,1, 0,0
 		return COLOR_MATRIX_IDENTITY
 
 	var/list/color_list = rgb2num(string)
-	var/string_r = color_list[1]
-	var/string_g = color_list[2]
-	var/string_b = color_list[3]
+	var/string_r = color_list[1] /255
+	var/string_g = color_list[2] /255
+	var/string_b = color_list[3] /255
 
 	return list(string_r,0,0,0, 0,string_g,0,0, 0,0,string_b,0, 0,0,0,1, 0,0,0,0)
 

@@ -725,6 +725,8 @@ note dizziness decrements automatically in the mob's Life() proc.
 	if(!canface())
 		return 0
 	if(dir != ndir)
+		if(HAS_TRAIT(src, TRAIT_ABILITY_REFLECTIVE_PLATES))
+			return
 		flags_atom &= ~DIRLOCK
 		setDir(ndir)
 	if(buckled && !buckled.anchored)

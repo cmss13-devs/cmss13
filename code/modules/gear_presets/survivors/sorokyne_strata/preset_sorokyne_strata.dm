@@ -811,7 +811,7 @@
 	job_title = JOB_HC_SEC_SYNTH
 	assignment = JOB_HC_SEC_SYNTH
 	role_comm_title = "HC Sec Syn"
-	faction_group = list(FACTION_HYPERDYNE, FACTION_LIST_SURVIVOR_UPP)
+	faction_group = FACTION_LIST_SURVIVOR_HYPERDYNE
 	idtype = /obj/item/card/id/silver/cl/hyperdyne
 	survivor_variant = CORPORATE_SURVIVOR
 	minimap_background = "background_hc_management"

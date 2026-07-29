@@ -98,6 +98,7 @@
 	. = ..()
 
 /obj/effect/bell_tripwire/Crossed(atom/movable/A)
+	..()
 	if(!linked_bell)
 		qdel(src)
 		return

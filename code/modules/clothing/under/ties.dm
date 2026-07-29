@@ -1076,6 +1076,17 @@
 	new /obj/item/tool/wirecutters(src)
 	new /obj/item/device/multitool(src)
 
+/obj/item/clothing/accessory/storage/tool_webbing/small/equipped_mct
+	hold = /obj/item/storage/internal/accessory/tool_webbing/small/equipped_mct
+
+/obj/item/storage/internal/accessory/tool_webbing/small/equipped_mct/fill_preset_inventory()
+	new /obj/item/tool/screwdriver(src)
+	new /obj/item/tool/wrench(src)
+	new /obj/item/tool/weldingtool/simple(src)
+	new /obj/item/tool/crowbar(src)
+	new /obj/item/tool/wirecutters(src)
+	new /obj/item/device/multitool(src)
+
 /obj/item/clothing/accessory/storage/tool_webbing/equipped
 	hold = /obj/item/storage/internal/accessory/tool_webbing/equipped
 
@@ -1103,6 +1114,9 @@
 
 /obj/item/clothing/accessory/storage/tool_webbing/yellow_drop/small/equipped
 	hold = /obj/item/storage/internal/accessory/tool_webbing/small/equipped
+
+/obj/item/clothing/accessory/storage/tool_webbing/yellow_drop/small/equipped_mct
+	hold = /obj/item/storage/internal/accessory/tool_webbing/small/equipped_mct
 
 /obj/item/storage/internal/accessory/surg_vest
 	storage_slots = 14

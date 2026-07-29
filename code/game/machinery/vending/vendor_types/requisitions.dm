@@ -75,6 +75,8 @@
 		list("Drop Pouch", floor(scale * 2), /obj/item/clothing/accessory/storage/droppouch, VENDOR_ITEM_REGULAR),
 		list("Black Drop Pouch", floor(scale * 2), /obj/item/clothing/accessory/storage/droppouch/black, VENDOR_ITEM_REGULAR),
 		list("External Webbing", floor(scale * 5), /obj/item/clothing/suit/storage/webbing, VENDOR_ITEM_REGULAR),
+		list("Small Tool Webbing (Full)", floor(scale * 1), /obj/item/clothing/accessory/storage/tool_webbing/small/equipped_mct, VENDOR_ITEM_REGULAR),
+		list("Small Tool Drop Pouch (Full)", floor(scale * 1), /obj/item/clothing/accessory/storage/tool_webbing/yellow_drop/small/equipped_mct, VENDOR_ITEM_REGULAR),
 
 		list("BACKPACKS", -1, null, null),
 		list("Lightweight IMP Backpack", floor(scale * 15), /obj/item/storage/backpack/marine, VENDOR_ITEM_REGULAR),

@@ -82,7 +82,7 @@
 		user.affected_message(target,
 			SPAN_WARNING("As you sever the larva's pseudoroots, acid sprays into the air and lands in [target]'s [surgery.affected_limb.cavity], where it pools and sizzles across \his organs!"),
 			SPAN_WARNING("As [user] severs the larva's pseudoroots, acid sprays into the air and lands in your [surgery.affected_limb.cavity], where it pools and sizzles across your organs!"),
-			SPAN_WARNING("As [user] severs the larva's pseudoroots, acid sprays into the air and lands in target's [surgery.affected_limb.cavity], where it pools and sizzles over the exposed organs."))
+			SPAN_WARNING("As [user] severs the larva's pseudoroots, acid sprays into the air and lands in [target]'s [surgery.affected_limb.cavity], where it pools and sizzles over the exposed organs."))
 
 		if(target.stat == CONSCIOUS)
 			to_chat(target, SPAN_HIGHDANGER("Your organs are melting!"))

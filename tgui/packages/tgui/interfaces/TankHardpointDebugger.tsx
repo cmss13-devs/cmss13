@@ -208,9 +208,7 @@ const SlotsTable = (props: { readonly slots: SlotRow[] }) => {
                     ml={1}
                     icon="trash"
                     color="bad"
-                    onClick={() =>
-                      act('remove', { ref: row.installed!.ref })
-                    }
+                    onClick={() => act('remove', { ref: row.installed!.ref })}
                   >
                     Remove
                   </Button.Confirm>

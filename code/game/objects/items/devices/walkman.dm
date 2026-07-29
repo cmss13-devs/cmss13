@@ -563,7 +563,7 @@
 			"sound/music/walkman/liberation/10-2-2.ogg", /* "Ride of the Valkyries" (Wagner, from Die Walküre, 1870) In the US public domain.*/\
 														/* This is a 2022 recording, conducted by Philip Milman, licensed under 3.0 CC*/\
 			"sound/music/walkman/liberation/10-2-3.ogg")) /* "It's a Long Way to Tipperary" (British WW2 song. Albert Farrington, 1915).*/\
-														/* This specific recording is in the US public domain.*/\
+														/* This specific recording is in the US public domain.*/
 
 // hotline reference
 /obj/item/device/cassette_tape/aesthetic

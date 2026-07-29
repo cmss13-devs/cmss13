@@ -94,7 +94,9 @@ export const TankPivotTuner = (props) => {
           </Section>
         )}
         {selected_name && (
-          <Section title={`${selected_name} - rotation pivot (${tuning_label})`}>
+          <Section
+            title={`${selected_name} - rotation pivot (${tuning_label})`}
+          >
             <LabeledList>
               <AxisRow axis="x" value={pivot_x} target="rotation" />
               <AxisRow axis="y" value={pivot_y} target="rotation" />

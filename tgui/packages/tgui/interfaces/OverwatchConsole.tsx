@@ -504,7 +504,8 @@ const SquadMonitor = (props) => {
   const [marineSearch, setMarineSearch] = useSharedState('marinesearch', '');
 
   let determine_status_color = (status) => {
-    let conscious = status.includes('Conscious') || status.includes('Operational');
+    let conscious =
+      status.includes('Conscious') || status.includes('Operational');
     let unconscious = status.includes('Unconscious');
 
     let state_color = 'red';
@@ -675,7 +676,8 @@ const SquadMonitor = (props) => {
                         </Button>
                       )) || (
                         <Box color="yellow">
-                          {marine.name} ({marine.no_camera_label || 'NO CAMERA'})
+                          {marine.name} ({marine.no_camera_label || 'NO CAMERA'}
+                          )
                         </Box>
                       )}
                     </Table.Cell>

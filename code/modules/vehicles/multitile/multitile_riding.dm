@@ -160,25 +160,24 @@
 
 	var/climb_speed_factor = (move_momentum / move_max_momentum) // % of our max speed attained.
 
-	if(has_instant_dancer_climb(user))
-		// Dodge's evasive stance skips every delay branch below entirely.
+	if(!has_instant_dancer_climb(user)) // Dodge's evasive stance skips every delay branch below entirely.
 
-	else if(health == 0) // When broken, everyone takes 0.20 seconds to climb up. Keep in mind that the real perceived value is around 2-3x higher when you take in account lag.
-		if(!do_after (user, 0.20 SECONDS, INTERRUPT_MOVED, BUSY_ICON_CLIMBING, numticks = 1))
+		if(health == 0) // When broken, everyone takes 0.20 seconds to climb up. Keep in mind that the real perceived value is around 2-3x higher when you take in account lag.
+			if(!do_after (user, 0.20 SECONDS, INTERRUPT_MOVED, BUSY_ICON_CLIMBING, numticks = 1))
+				to_chat(user, SPAN_WARNING("You stop climbing onto [src]."))
+				return
+
+		else if(isxeno(user)) // Xenos take longer to climb to avoid accidentally getting on top while slashing inside boiler gas.
+			// takes between 0.8 seconds when still and 2 seconds when at full speed. (You'd have to climb through one of the sides) OR pounce on it.
+			if(!do_after(user, max((2 * climb_speed_factor), 0.80) SECONDS, INTERRUPT_MOVED, BUSY_ICON_CLIMBING, numticks = 4))
+				to_chat(user, SPAN_WARNING("You stop climbing onto [src]."))
+				return
+
+		// Humans and preds climb up faster. Humans can't climb down instantly.
+		// takes between 0.25 seconds when still and 1.20 second when at full speed (You'd have to climb through one of the sides)
+		else if(!do_after(user, max((1.20 * climb_speed_factor), 0.30) SECONDS, INTERRUPT_MOVED, BUSY_ICON_CLIMBING, numticks = 3))
 			to_chat(user, SPAN_WARNING("You stop climbing onto [src]."))
 			return
-
-	else if(isxeno(user)) // Xenos take longer to climb to avoid accidentally getting on top while slashing inside boiler gas.
-		// takes between 0.8 seconds when still and 2 seconds when at full speed. (You'd have to climb through one of the sides) OR pounce on it.
-		if(!do_after(user, max((2 * climb_speed_factor), 0.80) SECONDS, INTERRUPT_MOVED, BUSY_ICON_CLIMBING, numticks = 4))
-			to_chat(user, SPAN_WARNING("You stop climbing onto [src]."))
-			return
-
-	// Humans and preds climb up faster. Humans can't climb down instantly.
-	// takes between 0.25 seconds when still and 1.20 second when at full speed (You'd have to climb through one of the sides)
-	else if(!do_after(user, max((1.20 * climb_speed_factor), 0.30) SECONDS, INTERRUPT_MOVED, BUSY_ICON_CLIMBING, numticks = 3))
-		to_chat(user, SPAN_WARNING("You stop climbing onto [src]."))
-		return
 
 	if(!_validate_climb_target(user, preferred, TRUE))
 		to_chat(user, SPAN_WARNING("The spot on [src] is no longer reachable."))
@@ -211,19 +210,18 @@
 		SPAN_WARNING("[user] starts climbing down from [src]."),
 		SPAN_WARNING("You start climbing down from [src]."))
 
-	if(has_instant_dancer_climb(user))
-		// Dodge's evasive stance skips the delay entirely.
+	if(!has_instant_dancer_climb(user)) // Dodge's evasive stance skips the delay entirely.
 
-	else if(!ishuman(user)) // Xenos and preds can always climb down with almost no delay to avoid situations where they get stuck atop the vehicle.
-		// The tiny delay here is meant to prevent fast castes from accidentally disembarking from a misinput
-		if(!do_after(user,  0.20 SECONDS, INTERRUPT_INCAPACITATED, BUSY_ICON_GENERIC, numticks = 1))
+		if(!ishuman(user)) // Xenos and preds can always climb down with almost no delay to avoid situations where they get stuck atop the vehicle.
+			// The tiny delay here is meant to prevent fast castes from accidentally disembarking from a misinput
+			if(!do_after(user,  0.20 SECONDS, INTERRUPT_INCAPACITATED, BUSY_ICON_GENERIC, numticks = 1))
+				to_chat(user, SPAN_WARNING("You stop climbing down from [src]."))
+				return
+
+		// Humans take at most 0.9 seconds to climb down at full speed, and 0.30 when standing still.
+		else if(!do_after(user, max((0.9 * climb_speed_factor), 0.30) SECONDS, INTERRUPT_INCAPACITATED, BUSY_ICON_GENERIC, numticks = 3))
 			to_chat(user, SPAN_WARNING("You stop climbing down from [src]."))
 			return
-
-	// Humans take at most 0.9 seconds to climb down at full speed, and 0.30 when standing still.
-	else if(!do_after(user, max((0.9 * climb_speed_factor), 0.30) SECONDS, INTERRUPT_INCAPACITATED, BUSY_ICON_GENERIC, numticks = 3))
-		to_chat(user, SPAN_WARNING("You stop climbing down from [src]."))
-		return
 
 	// edge case where the vehicle moves while we're climbing down
 	if(!_validate_climb_target(user, target, FALSE))

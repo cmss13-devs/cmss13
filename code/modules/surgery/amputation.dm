@@ -62,9 +62,9 @@
 /datum/surgery_step/cut_muscle/preop(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	var/muscle_type = target.get_muscle_type() //Uses the proc in surgery_steps.dm to fetch the correct type for the species.
 	user.affected_message(target,
-		SPAN_NOTICE("You begin to sever \the [muscle_type] in [target]'s [surgery.affected_limb.display_name] with [tool]."),
-		SPAN_WARNING("[user] begins to sever \the [muscle_type] in your [surgery.affected_limb.display_name] with [tool]!"),
-		SPAN_NOTICE("[user] begins to sever \the [muscle_type] in [target]'s [surgery.affected_limb.display_name] with [tool]."))
+		SPAN_NOTICE("You begin to sever the [muscle_type] in [target]'s [surgery.affected_limb.display_name] with [tool]."),
+		SPAN_WARNING("[user] begins to sever the [muscle_type] in your [surgery.affected_limb.display_name] with [tool]!"),
+		SPAN_NOTICE("[user] begins to sever the [muscle_type] in [target]'s [surgery.affected_limb.display_name] with [tool]."))
 
 	target.custom_pain("It feels as if your [surgery.affected_limb.display_name] is being ripped apart!", 1)
 
@@ -75,9 +75,9 @@
 /datum/surgery_step/cut_muscle/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	var/muscle_type = target.get_muscle_type()
 	user.affected_message(target,
-		SPAN_NOTICE("You finish severing \the [muscle_type] in [target]'s [surgery.affected_limb.display_name]."),
-		SPAN_WARNING("[user] has severed \the [muscle_type] in your [surgery.affected_limb.display_name]!"),
-		SPAN_NOTICE("[user] has severed \the [muscle_type] in [target]'s [surgery.affected_limb.display_name]."))
+		SPAN_NOTICE("You finish severing the [muscle_type] in [target]'s [surgery.affected_limb.display_name]."),
+		SPAN_WARNING("[user] has severed the [muscle_type] in your [surgery.affected_limb.display_name]!"),
+		SPAN_NOTICE("[user] has severed the [muscle_type] in [target]'s [surgery.affected_limb.display_name]."))
 
 	to_chat(user, SPAN_WARNING("Please ask if this is what [target] wants before you continue. The muscles in the patient's [surgery.affected_limb.display_name] can be reattached if you've changed your mind, but once you begin cutting through the bone, you'll have to see it through to the end."))
 
@@ -118,9 +118,9 @@
 /datum/surgery_step/abort_amputation/preop(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	var/muscle_type = target.get_muscle_type()
 	user.affected_message(target,
-		SPAN_NOTICE("You begin to stitch \the [muscle_type] in [target]'s [surgery.affected_limb.display_name] back together with [tool]."),
-		SPAN_NOTICE("[user] begins to stitch \the [muscle_type] in your [surgery.affected_limb.display_name] back together with [tool]."),
-		SPAN_NOTICE("[user] begins to stitch \the [muscle_type] in [target]'s [surgery.affected_limb.display_name] back together with [tool]."))
+		SPAN_NOTICE("You begin to stitch the [muscle_type] in [target]'s [surgery.affected_limb.display_name] back together with [tool]."),
+		SPAN_NOTICE("[user] begins to stitch the [muscle_type] in your [surgery.affected_limb.display_name] back together with [tool]."),
+		SPAN_NOTICE("[user] begins to stitch the [muscle_type] in [target]'s [surgery.affected_limb.display_name] back together with [tool]."))
 
 	target.custom_pain("The tightening of the stitches feels unbearable!", 1)
 	log_interact(user, target, "[key_name(user)] attempted to abort an amputation on [key_name(target)]'s [surgery.affected_limb.display_name] with [tool].")

@@ -107,7 +107,7 @@
 	user.affected_message(target,
 		SPAN_WARNING("Your hand slips and you accidentally slice into the larva! Acid sprays into the air and lands in [target]'s [surgery.affected_limb.cavity], where it pools and sizzles across \his organs!"),
 		SPAN_WARNING("[user]'s hand slips and accidentally slices into the larva! Acid sprays into the air and lands in your [surgery.affected_limb.cavity], where it pools and sizzles across your organs!"),
-		SPAN_WARNING("[user]'s hand slips and accidentally slices into the larva! Acid sprays into the air and lands in target's [surgery.affected_limb.cavity], where it pools and sizzles over the exposed organs."))
+		SPAN_WARNING("[user]'s hand slips and accidentally slices into the larva! Acid sprays into the air and lands in [target]'s [surgery.affected_limb.cavity], where it pools and sizzles over the exposed organs."))
 
 	if(target.stat == CONSCIOUS)
 		to_chat(target, SPAN_HIGHDANGER("Your organs are melting!"))
@@ -169,7 +169,7 @@
 			user.affected_message(target,
 				SPAN_WARNING("Your hands and your patient's insides are burned by acid as you forcefully rip a wriggling parasite out of [target]'s ribcage!"),
 				SPAN_WARNING("Your insides and [user]'s hands are burned by acid as \he rips a wriggling parasite out of your ribcage!"),
-				SPAN_WARNING("[user]'s hands and [target]'s insices are burned by acid as \he rips a wriggling parasite out of [target]'s ribcage!"))
+				SPAN_WARNING("[user]'s hands and [target]'s insides are burned by acid as \he rips a wriggling parasite out of [target]'s ribcage!"))
 
 			var/datum/internal_organ/impacted_organ = pick(surgery.affected_limb.internal_organs)
 			impacted_organ.take_damage(5, FALSE)
@@ -194,7 +194,7 @@
 		var/mob/living/carbon/xenomorph/larva/larba = locate() in target //the larva was fully grown, ready to burst.
 		if(larba)
 			larba.forceMove(target.loc)
-			qdel(larba)
+			qdel(embryo)
 			user.affected_message(target,
 				SPAN_HIGHDANGER("You removed the larva just in time, but it is fully grown and alive!"),
 				SPAN_HIGHDANGER("[user] removed the larva just in time, but it is fully grown and alive!"),
@@ -208,7 +208,7 @@
 
 /datum/surgery_step/remove_larva/failure(mob/living/carbon/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_WARNING("Your hands slip, bruising [target]'s organs and wounding the larva, which spills acid over your hands and into \his [surgery.affected_limb.cavity]."),
+		SPAN_WARNING("Your hands slip, bruising [target]'s organs and wounding the larva, which spills acid over your hands and into \his [surgery.affected_limb.cavity]!"),
 		SPAN_WARNING("[user]'s hands slip, bruising your organs and wounding the larva, which spills acid over \his hands and into your [surgery.affected_limb.cavity]!"),
 		SPAN_WARNING("[user]'s hands slip, bruising [target]'s organs and spilling acid in the patient's [surgery.affected_limb.cavity] and the doctor's hands!"))
 

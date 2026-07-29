@@ -22,16 +22,16 @@
 /obj/item/ammo_magazine/pkp,
 /turf/open/floor/strata/blue1,
 /area/atlan/station/admin)
+"af" = (
+/obj/effect/landmark/survivor_spawner/SOF_survivor_atlan/squad_leader,
+/turf/open/floor/strata/blue1,
+/area/atlan/station/admin)
 "ag" = (
 /obj/structure/shuttle/part/upp_sof/transparent{
 	icon_state = "2,1"
 	},
 /turf/open/floor/plating,
 /area/atlan/station/hab_docks)
-"ah" = (
-/obj/item/explosive/grenade/high_explosive/upp,
-/turf/open/floor/strata/floor3/east,
-/area/atlan/station/admin)
 "ai" = (
 /obj/effect/decal/floor_symbol/upp/westface/northeast,
 /turf/open/floor/strata/floor3/east,
@@ -39,6 +39,10 @@
 "aj" = (
 /obj/effect/decal/floor_symbol/upp/westface/northwest,
 /obj/effect/decal/cleanable/dirt/alt_dirt,
+/turf/open/floor/strata/floor3/east,
+/area/atlan/station/admin)
+"ak" = (
+/obj/effect/landmark/survivor_spawner/SOF_survivor_atlan/sapper,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/admin)
 "al" = (
@@ -391,6 +395,7 @@
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_2"
 	},
+/obj/effect/landmark/survivor_spawner/SOF_survivor_atlan/soldier,
 /turf/open/floor/strata/blue1,
 /area/atlan/station/admin)
 "gb" = (
@@ -561,6 +566,7 @@
 	icon_state = "trash_7";
 	pixel_y = 12
 	},
+/obj/effect/landmark/survivor_spawner/SOF_survivor_atlan/medic,
 /turf/open/floor/strata/blue1,
 /area/atlan/station/admin)
 "jd" = (
@@ -1232,6 +1238,7 @@
 /obj/structure/barricade/deployable{
 	dir = 1
 	},
+/obj/effect/landmark/survivor_spawner/SOF_survivor_atlan/soldier,
 /turf/open/floor/strata/blue1,
 /area/atlan/station/admin)
 "ta" = (
@@ -1504,6 +1511,7 @@
 	},
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/effect/spawner/gibspawner/xeno,
+/obj/effect/landmark/survivor_spawner/SOF_survivor_atlan/soldier,
 /turf/open/floor/strata/blue1,
 /area/atlan/station/admin)
 "xA" = (
@@ -2115,6 +2123,7 @@
 	dir = 10;
 	pixel_x = 5
 	},
+/obj/effect/landmark/survivor_spawner/SOF_survivor_atlan/specialist,
 /turf/open/floor/strata,
 /area/atlan/station/admin)
 "Fi" = (
@@ -2142,6 +2151,7 @@
 /area/atlan/station/hab_docks)
 "Fu" = (
 /obj/effect/decal/floor_symbol/upp/westface/southwest,
+/obj/effect/landmark/survivor_spawner/SOF_survivor_atlan/synth,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/admin)
 "FG" = (
@@ -2529,7 +2539,6 @@
 /area/atlan/station/single_dorms)
 "NY" = (
 /obj/effect/decal/floor_symbol/upp/northface/east,
-/obj/item/explosive/grenade/high_explosive/upp,
 /obj/item/explosive/grenade/high_explosive/upp,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/admin)
@@ -7587,7 +7596,7 @@ rT
 UN
 TB
 rT
-rT
+af
 Sy
 Kv
 Rs
@@ -7789,7 +7798,7 @@ MJ
 Rm
 Qs
 ay
-ah
+Qs
 aj
 vj
 Fu
@@ -8102,7 +8111,7 @@ WC
 am
 am
 Sg
-Qs
+ak
 xP
 Qs
 Rh

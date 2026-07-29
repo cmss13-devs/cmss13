@@ -157,6 +157,45 @@
 	if(!istype(fendy))
 		return
 
+	//fendys can fendy-bendy now
+	if(istype(target_atom, /obj/vehicle/multitile))
+		if(!fendy.check_state())
+			return
+		if(!action_cooldown_check())
+			return
+		if(!is_adjacent_to_multitile_vehicle(fendy, target_atom))
+			return
+		if(!check_and_use_plasma_owner())
+			return
+		if(fendy.fortify && !usable_while_fortified)
+			to_chat(fendy, SPAN_XENOWARNING("We cannot use headbutt while fortified."))
+			return
+
+		var/obj/vehicle/multitile/vehicle = target_atom
+		var/damage = base_damage - (fendy.crest_defense * 10)
+		var/atop_vehicle = (get_multitile_vehicle_at(get_turf(fendy)) == vehicle)
+
+		fendy.visible_message(SPAN_XENOWARNING("[fendy] rams [vehicle] with its armored crest!"), SPAN_XENOWARNING("We ram [vehicle.get_attack_desc(fendy)] with our armored crest!"))
+		fendy.face_atom(vehicle)
+		fendy.animation_attack_on(vehicle)
+		fendy.flick_attack_overlay(vehicle, "punch")
+		playsound(vehicle, 'sound/weapons/alien_claw_block.ogg', 50, TRUE)
+		playsound(vehicle, 'sound/effects/metal_crash.ogg', 35)
+		play_wound_gain_effects(vehicle, WOUND_DAMTYPE_BRUTE, fendy)
+
+		// Standing atop the vehicle means no push regardless of crest state, but bypasses armor entirely.
+		vehicle.take_damage_type(damage, "blunt", fendy, unmitigated = atop_vehicle)
+
+		// A lowered-crest hit pushes the vehicle back a tile
+		//
+		// Fortify and crest_defense are normally mutually exclusive. Steelcrest's headbutt override sets
+		// usable_while_fortified = TRUE, the only way to get here fortified, and gets the same push.
+		if((fendy.crest_defense || (fendy.fortify && usable_while_fortified)) && !atop_vehicle)
+			vehicle.knockback(get_cardinal_dir(fendy, vehicle), 1, jostle_riders = FALSE)
+
+		apply_cooldown()
+		return
+
 	if(!isxeno_human(target_atom) || fendy.can_not_harm(target_atom))
 		return
 

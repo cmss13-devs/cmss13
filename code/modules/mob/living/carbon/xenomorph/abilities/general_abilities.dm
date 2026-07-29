@@ -410,6 +410,8 @@
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!xeno)
 		return FALSE
+	if(xeno.get_tank_on_top_of()) // Prevents cheesy layering underneath the tank.
+		return FALSE
 	if(xeno.on_fire)
 		return FALSE
 	if(!xeno.buckled && !xeno.is_mob_incapacitated() && !LAZYLEN(xeno.buckled_mobs))
@@ -418,6 +420,10 @@
 
 /// remove hide and apply modified attack cooldown
 /datum/action/xeno_action/onclick/xenohide/proc/post_attack()
+	remove_hide_status()
+	apply_cooldown(4) //2 second cooldown after attacking
+
+/datum/action/xeno_action/onclick/xenohide/proc/remove_hide_status()
 	var/mob/living/carbon/xenomorph/xeno = owner
 	UnregisterSignal(xeno, COMSIG_MOB_STATCHANGE)
 	if(xeno.layer == XENO_HIDING_LAYER)
@@ -425,7 +431,6 @@
 		button.icon_state = "template_xeno"
 		xeno.update_wounds()
 		xeno.update_layer()
-	apply_cooldown(4) //2 second cooldown after attacking
 
 /datum/action/xeno_action/onclick/xenohide/give_to(mob/living/living_mob)
 	. = ..()

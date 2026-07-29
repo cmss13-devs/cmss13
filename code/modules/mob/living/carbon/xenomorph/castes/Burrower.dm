@@ -334,6 +334,8 @@
 				carbon_target.apply_effect(1, WEAKEN)
 			to_chat(carbon_target, SPAN_WARNING("The violent tremors make you lose your footing!"))
 
+	apply_atop_tank_turret_damage(burrower_tremor, 65)
+
 	apply_cooldown()
 	return ..()
 

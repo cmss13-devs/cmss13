@@ -138,6 +138,9 @@
 	if(!succeeded)
 		return SECRETE_RESIN_INTERRUPT
 
+	if(!resin_construct.can_build_here(current_turf, src))
+		return SECRETE_RESIN_FAIL
+
 	if(maybe_convert_to_weedbound(current_turf, resin_construct, thick))
 		if(use_plasma)
 			use_plasma(total_resin_cost)
@@ -146,9 +149,6 @@
 				SPAN_XENONOTICE("We regurgitate some resin and shape it into \a [resin_construct.construction_name][use_plasma ? " at the cost of a total [total_resin_cost] plasma" : ""]."), null, 5)
 			playsound(loc, "alien_resin_build", 25)
 		return SECRETE_RESIN_SUCCESS
-
-	if(!resin_construct.can_build_here(current_turf, src))
-		return SECRETE_RESIN_FAIL
 
 	if(use_plasma)
 		use_plasma(total_resin_cost)

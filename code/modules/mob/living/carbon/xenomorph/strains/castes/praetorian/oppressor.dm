@@ -38,6 +38,9 @@
 	var/tearing_damage = 15
 
 /datum/behavior_delegate/oppressor_praetorian/melee_attack_additional_effects_target(mob/living/carbon/target_carbon)
+	if(!isxeno_human(target_carbon))
+		return
+
 	if(target_carbon.stat == DEAD)
 		return
 
@@ -70,7 +73,7 @@
 	var/datum/ammo/ammoDatum = GLOB.ammo_list[/datum/ammo/xeno/oppressor_tail]
 
 	hook_projectile.generate_bullet(ammoDatum, bullet_generator = stabbing_xeno)
-	hook_projectile.bound_beam = hook_projectile.beam(stabbing_xeno, "oppressor_tail", 'icons/effects/beam.dmi', 1 SECONDS, 5)
+	hook_projectile.bound_beam = hook_projectile.beam(stabbing_xeno, "oppressor_tail", 'icons/effects/beam.dmi', 1 SECONDS, 5, /obj/effect/ebeam/above_tank)
 
 	hook_projectile.fire_at(targetted_atom, stabbing_xeno, stabbing_xeno, ammoDatum.max_range, ammoDatum.shell_speed)
 	playsound(stabbing_xeno, 'sound/effects/oppressor_tail.ogg', 40, FALSE)
@@ -252,6 +255,28 @@
 	var/mob/living/carbon/xenomorph/oppressor_user = owner
 
 	if (!action_cooldown_check())
+		return
+
+	// Dislocate's vehicle resolution, same aim-dependent split Warrior Punch uses.
+	if(istype(target_atom, /obj/vehicle/multitile))
+		if(!oppressor_user.check_state() || oppressor_user.agility)
+			return
+		if(!is_adjacent_to_multitile_vehicle(oppressor_user, target_atom))
+			return
+		if(!check_and_use_plasma_owner())
+			return
+
+		var/obj/vehicle/multitile/vehicle = target_atom
+		oppressor_user.face_atom(vehicle)
+		oppressor_user.animation_attack_on(vehicle)
+		oppressor_user.flick_attack_overlay(vehicle, "punch")
+		var/turned_turret = resolve_turret_wrench_damage(vehicle, oppressor_user, damage * OPPRESSOR_DISLOCATE_TANK_DAMAGE_MULT, "blunt")
+		if(turned_turret)
+			oppressor_user.visible_message(SPAN_XENOWARNING("[oppressor_user] dislocates [vehicle]'s turret with a crushing blow!"), SPAN_XENOWARNING("We dislocate [vehicle.get_attack_desc(oppressor_user)] with a crushing blow!"))
+		else
+			oppressor_user.visible_message(SPAN_XENOWARNING("[oppressor_user] crushes into [vehicle]!"), SPAN_XENOWARNING("We crush into [vehicle.get_attack_desc(oppressor_user)]!"))
+			playsound(vehicle, "punch", 25, TRUE) // force_turret_wrench() already plays its own punch/turretdamaged sounds when it fires - this covers the case where it doesn't
+		apply_cooldown()
 		return
 
 	if (!isxeno_human(target_atom) || oppressor_user.can_not_harm(target_atom))

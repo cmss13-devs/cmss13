@@ -81,15 +81,27 @@
 	// State
 	var/next_slash_buffed = FALSE
 
-/datum/behavior_delegate/lurker_base/melee_attack_modify_damage(original_damage, mob/living/carbon/target_carbon)
+/datum/behavior_delegate/lurker_base/melee_attack_modify_damage(original_damage, atom/target_carbon)
+	// Crippling Strike's buff should still consume against a vehicle
+	if(istype(target_carbon, /obj/vehicle/multitile) && next_slash_buffed)
+		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We significantly strengthen our attack!"))
+		original_damage *= buffed_slash_damage_ratio
+		next_slash_buffed = FALSE
+		var/datum/action/xeno_action/onclick/lurker_assassinate/tank_ability = get_action(bound_xeno, /datum/action/xeno_action/onclick/lurker_assassinate)
+		if(tank_ability)
+			tank_ability.button.icon_state = "template_xeno"
+		return original_damage
+
 	if (!isxeno_human(target_carbon))
 		return original_damage
 
+	var/mob/living/carbon/target_mob = target_carbon
+
 	if (next_slash_buffed)
-		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We significantly strengthen our attack, slowing [target_carbon]!"))
-		to_chat(target_carbon, SPAN_XENOHIGHDANGER("You feel a sharp pain as [bound_xeno] slashes you, slowing you down!"))
+		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We significantly strengthen our attack, slowing [target_mob]!"))
+		to_chat(target_mob, SPAN_XENOHIGHDANGER("You feel a sharp pain as [bound_xeno] slashes you, slowing you down!"))
 		original_damage *= buffed_slash_damage_ratio
-		target_carbon.set_effect(get_xeno_stun_duration(target_carbon, 3), SUPERSLOW)
+		target_mob.set_effect(get_xeno_stun_duration(target_mob, 3), SUPERSLOW)
 		next_slash_buffed = FALSE
 		var/datum/action/xeno_action/onclick/lurker_assassinate/ability = get_action(bound_xeno, /datum/action/xeno_action/onclick/lurker_assassinate)
 		if (ability)

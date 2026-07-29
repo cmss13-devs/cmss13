@@ -90,8 +90,10 @@
 
 	else if (istype(target, /obj/vehicle/multitile))
 		var/obj/vehicle/multitile/vehicle_in_path = target
-		visible_message(SPAN_DANGER("[src] rams into [vehicle_in_path] and skids to a halt!"), SPAN_XENOWARNING("We ram into [vehicle_in_path] and skid to a halt!"))
+		visible_message(SPAN_DANGER("[src] rams into [vehicle_in_path], knocking it back!"), SPAN_XENOWARNING("We ram into [vehicle_in_path], knocking it back!"))
 
+		// Uses get_cardinal_dir(), not the crusher's own dir, since a vehicle only moves cardinally.
+		vehicle_in_path.resolve_crusher_charge_hit(src, get_cardinal_dir(src, vehicle_in_path), CRUSHER_CHARGE_TANK_KNOCKBACK_TILES, CRUSHER_CHARGE_TANK_DAMAGE)
 		vehicle_in_path.Collided(src)
 		. = FALSE
 
@@ -385,6 +387,12 @@
 	pounced_turf.ex_act(EXPLOSION_THRESHOLD_VLOW, , create_cause_data(caste_type, src))
 	..(pounced_turf)
 
+/**
+ * If standing on a tank, also deals Stomp's damage to every turret hardpoint.
+ */
+/datum/action/xeno_action/onclick/crusher_stomp/proc/apply_tank_turret_bonus_damage(mob/living/carbon/xenomorph/xeno)
+	apply_atop_tank_turret_damage(xeno, damage)
+
 /datum/action/xeno_action/onclick/crusher_stomp/use_ability(atom/Atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
 
@@ -417,6 +425,7 @@
 		targets.apply_effect(get_xeno_stun_duration(targets, 0.2), WEAKEN)
 		to_chat(targets, SPAN_XENOHIGHDANGER("You are slowed as [xeno] knocks you off balance!"))
 
+	apply_tank_turret_bonus_damage(xeno)
 	apply_cooldown()
 	return ..()
 
@@ -464,6 +473,7 @@
 			to_chat(targets_to_get, SPAN_XENOHIGHDANGER("You watch as [stomped_carbon] gets crushed by [xeno]!"))
 		to_chat(targets_to_get, SPAN_XENOHIGHDANGER("You are shaken as [xeno] quakes the earth!"))
 
+	apply_tank_turret_bonus_damage(xeno)
 	apply_cooldown()
 	return ..()
 

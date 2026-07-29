@@ -69,6 +69,11 @@
 		to_chat(X, SPAN_WARNING("You cannot build under \the [V]!"))
 		return FALSE
 
+	var/obj/vehicle/multitile/multitile_vehicle = get_multitile_vehicle_at(T)
+	if(multitile_vehicle)
+		to_chat(X, SPAN_WARNING("You cannot build under \the [multitile_vehicle]!"))
+		return FALSE
+
 	if(alien_weeds.linked_hive.hivenumber != X.hivenumber)
 		to_chat(X, SPAN_WARNING("These weeds do not belong to your hive!"))
 		return FALSE

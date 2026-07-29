@@ -142,7 +142,7 @@
 		return
 
 	slowspit_user.visible_message(SPAN_XENOWARNING("[slowspit_user] spits at [target]!"),
-	SPAN_XENOWARNING("You spit at [target]!") )
+	SPAN_XENOWARNING("You spit at [target.get_attack_desc(slowspit_user)]!") )
 	var/sound_to_play = pick(1, 2) == 1 ? 'sound/voice/alien_spitacid.ogg' : 'sound/voice/alien_spitacid2.ogg'
 	playsound(slowspit_user.loc, sound_to_play, 25, 1)
 
@@ -174,7 +174,7 @@
 		return
 
 	scatterspit_user.visible_message(SPAN_XENOWARNING("[scatterspit_user] spits at [target]!"),
-	SPAN_XENOWARNING("You spit at [target]!") )
+	SPAN_XENOWARNING("You spit at [target.get_attack_desc(scatterspit_user)]!") )
 	var/sound_to_play = pick(1, 2) == 1 ? 'sound/voice/alien_spitacid.ogg' : 'sound/voice/alien_spitacid2.ogg'
 	playsound(scatterspit_user.loc, sound_to_play, 25, 1)
 

@@ -208,6 +208,32 @@
 	if(!dancer_user.check_state())
 		return
 
+	if(istype(target_atom, /obj/vehicle/multitile))
+		var/obj/vehicle/multitile/vehicle = target_atom
+		if(get_dist(dancer_user, vehicle) > range)
+			to_chat(dancer_user, SPAN_WARNING("[vehicle] is too far away!"))
+			return
+		if(!check_and_use_plasma_owner())
+			return
+		apply_cooldown()
+
+		dancer_user.face_atom(vehicle)
+		dancer_user.animation_attack_on(vehicle)
+		dancer_user.flick_attack_overlay(vehicle, "tail")
+		playsound(vehicle, 'sound/weapons/alien_tail_attack.ogg', 30, TRUE)
+		dancer_user.visible_message(SPAN_DANGER("\The [dancer_user] violently impales [vehicle] with its tail!"), SPAN_DANGER("We impale [vehicle] with our tail!"))
+
+		// Guaranteed unmitigated hit to a random internal module when aiming at Hull/Turret, otherwise a
+		// bigger unmitigated hit straight to whatever external module is being aimed at.
+		var/damage = rand(dancer_user.melee_damage_lower, dancer_user.melee_damage_upper)
+		var/target_slot = vehicle.get_attack_target_slot(dancer_user)
+		if(target_slot == WOUND_SLOT_HULL || target_slot == HDPT_TURRET)
+			vehicle.force_internal_module_damage(target_slot, damage, "slash", dancer_user)
+		else
+			var/obj/item/hardpoint/target_hardpoint = vehicle.resolve_targeted_hardpoint(target_slot)
+			target_hardpoint?.take_damage(damage * GUARANTEED_EXTERNAL_HIT_DAMAGE_MULT, "slash", dancer_user, unmitigated = TRUE)
+		return
+
 	if(!ismob(target_atom))
 		apply_cooldown_override(impale_click_miss_cooldown)
 		update_button_icon()

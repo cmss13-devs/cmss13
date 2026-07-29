@@ -858,6 +858,25 @@
 			continue
 		M.handle_queen_screech(xeno, mobs_in_view)
 
+	// Seated vehicle crew are sealed in a separate interior, so key off distance to the vehicle instead...
+	for(var/obj/vehicle/multitile/vehicle in orange(10, xeno))
+		var/dist = get_dist(xeno, vehicle)
+		var/stun_amount
+		if(dist <= 4)
+			stun_amount = 4 * QUEEN_SCREECH_CREW_STUN_FRACTION
+		else if(dist < 8)
+			stun_amount = 3 * QUEEN_SCREECH_CREW_STUN_FRACTION
+		else
+			continue
+
+		for(var/seat in list(VEHICLE_DRIVER, VEHICLE_GUNNER))
+			var/mob/living/crew = vehicle.get_seat_mob(seat)
+			crew?.AdjustStun(stun_amount)
+
+		var/obj/item/hardpoint/visual_sensors/sensors = locate() in vehicle.get_hardpoints_copy()
+		if(sensors)
+			sensors.deal_unmitigated_damage(initial(sensors.health) * QUEEN_SCREECH_CAMERA_DAMAGE_PCT)
+
 	apply_cooldown()
 
 	return ..()

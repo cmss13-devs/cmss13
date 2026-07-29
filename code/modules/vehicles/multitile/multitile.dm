@@ -993,10 +993,50 @@ GLOBAL_LIST_INIT(vehicle_gear_order, list("P", "R", "N", "D", "1", "2"))
 /obj/vehicle/multitile/get_applying_acid_time()
 	return 3 SECONDS
 
-//handling dangerous acidic environment, like acidic spray or toxic waters, maybe toxic vapor in future
+/**
+ * Handling dangerous acidic environment, like acidic spray or toxic waters, maybe toxic vapor in future.
+ *
+ * Spray Acid and Despoiler's lingering acid puddles get a dedicated tank-only redirect
+ * (expose_to_weighted_acid()) instead of the plain Treads-only hit below. Acid Mine and toxic water keep
+ * the original Treads-only path, since Acid Mine already has its own explicit Treads + Hull design.
+ */
 /obj/vehicle/multitile/proc/handle_acidic_environment(atom/A)
+	if(istype(src, /obj/vehicle/multitile/tank) && (istype(A, /obj/effect/xenomorph/spray) || istype(A, /obj/effect/lingering_acid)))
+		var/obj/vehicle/multitile/tank/tank = src
+		tank.expose_to_weighted_acid(A)
+		return
+
 	for(var/obj/item/hardpoint/locomotion/Loco in hardpoints)
 		Loco.handle_acid_damage(A)
+
+/**
+ * Handles one Acid Mine detonation tile touching this vehicle. A parked tank's 3x3 footprint can overlap
+ * several of one cast's simultaneously-detonating tiles at once, deduped via next_acid_mine_damage_time so
+ * that only applies once. Hits Treads like the acid spray does, plus a direct Hull hit on top.
+ */
+/obj/vehicle/multitile/proc/expose_to_acid_mine(obj/effect/xenomorph/acid_damage_delay/boiler_landmine/mine)
+	if(world.time < next_acid_mine_damage_time)
+		return
+	next_acid_mine_damage_time = world.time + ACID_MINE_VEHICLE_DAMAGE_COOLDOWN
+
+	handle_acidic_environment(mine)
+
+	var/hull_damage = mine.damage * (mine.empowered ? 1.25 : 1) * get_hull_incoming_damage_wound_multiplier(WOUND_DAMTYPE_ACID)
+	health = max(0, health - hull_damage)
+	hull_acid_damage_taken += hull_damage
+	roll_hull_wounds(hull_damage, WOUND_DAMTYPE_ACID, mine.linked_xeno)
+
+/**
+ * Handles a Despoiler acid puddle (Oozing Wounds) touching this vehicle. Unlike Acid Mine's one-shot
+ * detonation, a puddle lasts 15-20 seconds and can be sat in or re-crossed repeatedly, deduped via
+ * next_lingering_acid_damage_time. Treads-only, no bonus Hull hit like Acid Mine gets.
+ */
+/obj/vehicle/multitile/proc/expose_to_lingering_acid(obj/effect/lingering_acid/puddle)
+	if(world.time < next_lingering_acid_damage_time)
+		return
+	next_lingering_acid_damage_time = world.time + LINGERING_ACID_VEHICLE_DAMAGE_COOLDOWN
+
+	handle_acidic_environment(puddle)
 
 /atom/movable/vehicle_light_holder
 	light_system = MOVABLE_LIGHT

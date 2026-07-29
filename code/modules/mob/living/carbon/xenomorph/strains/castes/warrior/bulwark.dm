@@ -170,6 +170,32 @@
 /datum/action/xeno_action/activable/plate_bash/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/xeno_player = owner
 
+	// Plain hit against a vehicle, unlike Punch. Otherwise plays out like a Defender's lowered-crest
+	// Headbutt, only pushing the vehicle while plates are actually down.
+	if(istype(target_atom, /obj/vehicle/multitile))
+		if(!is_adjacent_to_multitile_vehicle(xeno_player, target_atom))
+			return
+		XENO_ACTION_CHECK_USE_PLASMA(xeno_player)
+
+		var/obj/vehicle/multitile/vehicle = target_atom
+		var/atop_vehicle = (get_multitile_vehicle_at(get_turf(xeno_player)) == vehicle)
+
+		xeno_player.visible_message(SPAN_XENOWARNING("[xeno_player] bashes [vehicle] with its armored plates!"), SPAN_XENOWARNING("We bash [vehicle.get_attack_desc(xeno_player)] with our armored plates!"))
+		xeno_player.face_atom(vehicle)
+		xeno_player.animation_attack_on(vehicle)
+		playsound(vehicle, 'sound/weapons/alien_claw_block.ogg', 50, TRUE)
+		playsound(vehicle, 'sound/effects/metal_crash.ogg', 35)
+		play_wound_gain_effects(vehicle, WOUND_DAMTYPE_BRUTE, xeno_player)
+
+		vehicle.take_damage_type(base_damage, "blunt", xeno_player, unmitigated = TRUE)
+
+		// Never while atop the vehicle, mirrors Headbutt's own atop_vehicle exemption.
+		if(!atop_vehicle && HAS_TRAIT(xeno_player, TRAIT_ABILITY_ENCLOSED_PLATES))
+			vehicle.knockback(get_cardinal_dir(xeno_player, vehicle), 1, jostle_riders = FALSE)
+
+		apply_custom_cooldown()
+		return
+
 	if(!iscarbon(target_atom))
 		return
 

@@ -128,7 +128,12 @@
 	..()
 	last_combat_time = world.time
 
-/datum/behavior_delegate/despoiler_base/melee_attack_modify_burn_damage(original_damage, mob/living/carbon/target_carbon)
+/datum/behavior_delegate/despoiler_base/melee_attack_modify_burn_damage(original_damage, atom/target_carbon)
+	// A vehicle has no effects_list DoT to stack acid onto, so just build hypertension at half rate.
+	if(istype(target_carbon, /obj/vehicle/multitile))
+		increase_hypertension(50)
+		return original_damage
+
 	if (!isxeno_human(target_carbon))
 		return original_damage
 
@@ -263,6 +268,7 @@
 		return // Handled in additional_effects()
 
 	var/list/turfs = orange(1, get_turf(xeno)) - get_step(xeno.loc, REVERSE_DIR(xeno.dir))
+	var/hit_vehicle = FALSE
 	for(var/turf/turf in turfs)
 		for(var/mob/living/carbon/human/target in turf)
 			playsound(target.loc, "acid_strike", 25, 1)
@@ -276,6 +282,14 @@
 		if(prob(30))
 			new /obj/effect/lingering_acid(turf, xeno.hivenumber)
 		new /obj/effect/xenomorph/xeno_telegraph/yellow(turf, 2)
+
+		// Once per use, not once per overlapping tile. A single acid splash hit, no grab/drain mechanic.
+		if(!hit_vehicle)
+			var/obj/vehicle/multitile/vehicle = get_multitile_vehicle_at(turf)
+			if(vehicle)
+				hit_vehicle = TRUE
+				playsound(vehicle, "acid_strike", 25, TRUE)
+				vehicle.take_damage_type(damage, "acid", xeno)
 
 /datum/action/xeno_action/activable/pounce/caustic_embrace/additional_effects(mob/living/carbon/target)
 	var/mob/living/carbon/xenomorph/despoiler/xeno = owner
@@ -380,6 +394,10 @@
 	opacity = FALSE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	layer = ABOVE_OBJ_LAYER
+	// Lets a puddle on a vehicle's footprint ride along atop it instead of staying behind when it moves.
+	is_allowed_atop_vehicle = TRUE
+	// You ain't crashing your way out of this one, PVT Ryan 'Drive' Gosling.
+	immune_to_tank_crash_scatter = TRUE
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/damage = 20
 	var/slow_amt = 4
@@ -400,10 +418,29 @@
 	animate(src, alpha = 127, time = decay_time)
 	QDEL_IN(src, decay_time)
 
+	// A vehicle already parked on this tile when the puddle spawns never triggers Crossed(), so check directly.
+	var/obj/vehicle/multitile/vehicle_here = get_multitile_vehicle_at(loc)
+	if(vehicle_here)
+		vehicle_here.expose_to_lingering_acid(src)
+		mount_on_vehicle(vehicle_here)
+
+/obj/effect/lingering_acid/proc/mount_on_vehicle(obj/vehicle/multitile/vehicle)
+	vehicle.obj_mark_on_top(src)
+
 /obj/effect/lingering_acid/Crossed(atom/movable/movable)
 	. = ..()
+	if(isVehicleMultitile(movable))
+		var/obj/vehicle/multitile/vehicle = movable
+		vehicle.expose_to_lingering_acid(src)
+		mount_on_vehicle(vehicle)
+		return
+
 	var/mob/living/carbon/carbon = movable
 	if(!istype(carbon))
+		return
+
+	// Mounted atop a tank: only a mob riding atop that same tank can actually be "crossing" this puddle.
+	if(is_atop_vehicle() && carbon.get_tank_on_top_of() != get_tank_on_top_of())
 		return
 
 	if(carbon.ally_of_hivenumber(hivenumber))

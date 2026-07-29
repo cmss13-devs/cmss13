@@ -458,6 +458,40 @@
 	if(jostle_riders)
 		_scatter_riders_on_crash(scatter_momentum)
 
+/// Damage/knockback scale for resolve_crusher_charge_hit(), keyed off this vehicle's weight class. Tank-tuned baseline values pass through unscaled.
+/obj/vehicle/multitile/proc/get_crusher_ram_scale()
+	if(vehicle_flags & (VEHICLE_CLASS_MEDIUM|VEHICLE_CLASS_HEAVY))
+		return 1
+	if(vehicle_flags & VEHICLE_CLASS_LIGHT)
+		return 0.85
+	return 0.65 // VEHICLE_CLASS_WEAK
+
+/**
+ * Handles a Crusher Charge or Charger ram hitting this vehicle: crash sound, damage, knockback.
+ * Damage and knockback distance both scale with get_crusher_ram_scale(), so a lighter vehicle takes
+ * less structural damage but gets shoved further.
+ *
+ * Debounced via last_crusher_charge_hit, a diagonal Charge can register more than one hit at once.
+ *
+ * Arguments:
+ * * attacker = The charging/ramming Crusher.
+ * * direction = Direction to knock this vehicle back in, at the tank-tuned baseline distance.
+ * * tiles = How many tiles to attempt to knock this vehicle back, at the tank-tuned baseline distance.
+ * * damage = Damage to deal, at the tank-tuned baseline value.
+ */
+/obj/vehicle/multitile/proc/resolve_crusher_charge_hit(mob/living/carbon/xenomorph/attacker, direction, tiles, damage)
+	if(world.time < last_crusher_charge_hit + 10)
+		return
+	last_crusher_charge_hit = world.time
+
+	var/ram_scale = get_crusher_ram_scale()
+	playsound(src, 'sound/effects/metal_crash.ogg', 35)
+	play_wound_gain_effects(src, WOUND_DAMTYPE_BRUTE, attacker)
+	take_damage_type(damage * ram_scale, "blunt", attacker)
+
+	// Deferred a tick so we don't pull the vehicle out from under a still-in-flight throw.
+	addtimer(CALLBACK(src, PROC_REF(knockback), direction, round(tiles / ram_scale), 2, TRUE, TRUE), 0)
+
 /obj/vehicle/multitile/proc/can_rotate(deg)
 	if(bound_width == bound_height)
 		return TRUE

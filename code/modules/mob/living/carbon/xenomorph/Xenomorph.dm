@@ -207,6 +207,8 @@
 	//
 	//////////////////////////////////////////////////////////////////
 	var/damage_modifier = 0
+	/// Unlike damage_modifier, this only adds onto melee_vehicle_damage, for strains with anti-vehicle capability.
+	var/vehicle_damage_modifier = 0
 	var/health_modifier = 0
 	var/armor_modifier = 0
 	var/explosivearmor_modifier = 0
@@ -1020,7 +1022,7 @@
 /mob/living/carbon/xenomorph/proc/recalculate_damage()
 	melee_damage_lower = damage_modifier
 	melee_damage_upper = damage_modifier
-	melee_vehicle_damage = damage_modifier
+	melee_vehicle_damage = damage_modifier + vehicle_damage_modifier
 	if(caste)
 		melee_damage_lower += caste.melee_damage_lower
 		melee_damage_upper += caste.melee_damage_upper

@@ -85,6 +85,41 @@
 	weaken_power = 0
 	slowdown = 8
 
+/**
+ * Headbutt's vehicle resolution. Weaker than charges and rams, and doesn't joust riders ontop.
+ * Falls through to the inherited behavior for any non-vehicle target.
+ */
+/datum/action/xeno_action/activable/fling/charger/use_ability(atom/affected_atom)
+	if(istype(affected_atom, /obj/vehicle/multitile))
+		var/mob/living/carbon/xenomorph/fling_user = owner
+		var/obj/vehicle/multitile/vehicle = affected_atom
+
+		if(!action_cooldown_check())
+			return
+		if(!fling_user.check_state() || fling_user.agility)
+			return
+		if(!is_adjacent_to_multitile_vehicle(fling_user, vehicle))
+			return
+		if(!check_and_use_plasma_owner())
+			return
+
+		var/atop_vehicle = (get_multitile_vehicle_at(get_turf(fling_user)) == vehicle)
+
+		fling_user.visible_message(SPAN_XENOWARNING("[fling_user] headbutts [vehicle]!"), SPAN_XENOWARNING("We headbutt [vehicle.get_attack_desc(fling_user)]!"))
+		playsound(vehicle, 'sound/weapons/alien_claw_block.ogg', 75, TRUE)
+		playsound(vehicle, 'sound/effects/metal_crash.ogg', 35)
+		play_wound_gain_effects(vehicle, WOUND_DAMTYPE_BRUTE, fling_user)
+		fling_user.face_atom(vehicle)
+		fling_user.animation_attack_on(vehicle)
+
+		// Standing atop the vehicle when headbutting it. What are you going to push it off? Off of itself?
+		vehicle.take_damage_type(CRUSHER_HEADBUTT_TANK_DAMAGE * vehicle.get_crusher_ram_scale(), "blunt", fling_user, unmitigated = atop_vehicle)
+		if(!atop_vehicle)
+			vehicle.knockback(get_cardinal_dir(fling_user, vehicle), 1, jostle_riders = FALSE, is_crusher_source = TRUE)
+
+		apply_cooldown()
+		return
+	return ..()
 
 /datum/action/xeno_action/onclick/charger_charge
 	name = "Toggle Charging"

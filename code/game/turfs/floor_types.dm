@@ -9,6 +9,7 @@
 	icon_state = "plating"
 	intact_tile = FALSE
 	tool_flags = NO_FLAGS
+	traction = 1.1
 
 /turf/open/floor/plating/is_plating()
 	return TRUE
@@ -207,6 +208,7 @@
 
 /turf/open/floor/plating/almayer
 	icon = 'icons/turf/almayer.dmi'
+	traction = 1.2
 
 /turf/open/floor/plating/almayer/no_build
 	allow_construction = FALSE
@@ -363,6 +365,7 @@
 	icon = 'icons/turf/almayer.dmi'
 	icon_state = "default"
 	plating_type = /turf/open/floor/plating/almayer
+	traction = 1.2
 
 /turf/open/floor/almayer/pod_landing_floor
 	desc = "There's a hatch above it, presumably to allow pods to drop in."
@@ -2442,6 +2445,7 @@
 	icon_state = "wood"
 	tile_type = /obj/item/stack/tile/wood
 	tool_flags = BREAK_CROWBAR|REMOVE_SCREWDRIVER
+	traction = 1
 
 /turf/open/floor/wood/is_wood_floor()
 	return TRUE
@@ -2576,6 +2580,7 @@
 	icon_state = "grass1"
 	tile_type = /obj/item/stack/tile/grass
 	tool_flags = null
+	traction = 0.8
 
 /turf/open/floor/grass/Initialize(mapload, ...)
 	. = ..()
@@ -2608,6 +2613,7 @@
 	icon_state = "carpet"
 	tile_type = /obj/item/stack/tile/carpet
 	tool_flags = REMOVE_SCREWDRIVER
+	traction = 0.9 // unlikely that a vehicle will ever step in a carpet tile, but HEY!! you never know!!!
 
 /turf/open/floor/carpet/Initialize(mapload, ...)
 	. = ..()
@@ -3478,6 +3484,7 @@
 	icon_state = "oldwood1"
 	tile_type = /obj/item/stack/tile/wood
 	turf_flags = NO_FLAGS // platingdmg && panelscorched icon_state does not exist in this icon
+	traction = 1
 
 /turf/open/floor/interior/wood/is_wood_floor()
 	return TRUE

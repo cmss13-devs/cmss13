@@ -146,6 +146,10 @@
 	if(user.action_busy)
 		return
 
+	if(exceeds_desant_cap())
+		to_chat(user, SPAN_WARNING("[src] is moving too fast to climb onto!"))
+		return
+
 	if(!_validate_climb_target(user, preferred, TRUE))
 		to_chat(user, SPAN_WARNING("You can't climb there."))
 		return
@@ -587,6 +591,24 @@
 			M.apply_effect(1.5, WEAKEN)
 			mark_on_top(M)
 
+/// Whether this vehicle is currently moving too fast to safely carry riders, per desant_momentum_cap.
+/obj/vehicle/multitile/proc/exceeds_desant_cap()
+	if(!desant_momentum_cap || !move_max_momentum)
+		return FALSE
+	return (abs(move_momentum) / move_max_momentum) >= desant_momentum_cap
+
+/**
+ * Throws every non-xeno rider and item off this vehicle once it's moving too fast to carry them
+ * safely, per desant_momentum_cap. No-ops if the cap isn't currently exceeded. Reuses
+ * _scatter_riders_on_crash()'s own throw physics, minus its crash-force floor and with xenos exempt.
+ */
+/obj/vehicle/multitile/proc/_joust_riders_over_desant_cap()
+	if(!exceeds_desant_cap())
+		return
+	if(!length(on_top_mobs) && !length(on_top_obj))
+		return
+	_scatter_riders_on_crash(move_momentum, min_force = 0, exclude_xenos = TRUE)
+
 /**
  * Builds a matrix of this vehicle's occupied tiles and returns a consistent anchor coordinate pair
  * from it. Not necessarily the true geometric center for an even-width footprint, but consistent
@@ -807,3 +829,5 @@
 		if(target != from)
 			M.forceMove(target)
 		mark_on_top(M)
+
+	addtimer(CALLBACK(src, PROC_REF(_joust_riders_over_desant_cap)), 0)

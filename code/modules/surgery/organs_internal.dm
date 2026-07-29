@@ -82,7 +82,7 @@ and organ transplant code which may come in handy in future but haven't been edi
 		var/obj/item/stack/medical/packs = tool
 		if(!packs.use(use_stack))
 			to_chat(user, SPAN_BOLDWARNING("You don't have enough of [packs] to finish repairing organs!"))
-			return FALSE
+			return
 		else
 			for(var/datum/internal_organ/int_organ as anything in surgery.affected_limb.internal_organs)
 				if(int_organ && int_organ.damage > 0 && int_organ.robotic != ORGAN_ROBOT)

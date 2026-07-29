@@ -530,6 +530,11 @@ SUBSYSTEM_DEF(minimaps)
 	var/actual_z = target.z
 	if(ismob(target) && target.loc && !isturf(target.loc))
 		actual_z = target.loc.z
+	else if(SSinterior.in_interior(target))
+		// Starting out inside a vehicle interior, use the vehicle's real z for minimap bucketing.
+		var/datum/interior/interior = SSinterior.get_interior_by_coords(target.x, target.y, target.z)
+		if(interior?.exterior)
+			actual_z = interior.exterior.z
 
 	if(!initialized || !(minimaps_by_z["[actual_z]"])) //the minimap doesn't exist yet, z level was probably loaded after init
 		for(var/datum/callback/callback as anything in LAZYACCESS(earlyadds, "[actual_z]"))
@@ -543,6 +548,10 @@ SUBSYSTEM_DEF(minimaps)
 	var/turf/target_turf = get_turf(target)
 	if(ismob(target) && target.loc && !isturf(target.loc))
 		target_turf = get_turf(target.loc)
+	else if(SSinterior.in_interior(target))
+		var/datum/interior/interior = SSinterior.get_interior_by_coords(target.x, target.y, target.z)
+		if(interior?.exterior)
+			target_turf = get_turf(interior.exterior)
 
 	blip.pixel_x = MINIMAP_PIXEL_FROM_WORLD(target_turf.x) + minimaps_by_z["[target_turf.z]"].x_offset + image_x
 	blip.pixel_y = MINIMAP_PIXEL_FROM_WORLD(target_turf.y) + minimaps_by_z["[target_turf.z]"].y_offset + image_y
@@ -624,13 +633,18 @@ SUBSYSTEM_DEF(minimaps)
  */
 /image/proc/minimap_on_move(atom/movable/source, oldloc)
 	SIGNAL_HANDLER
-	if(isturf(source.loc))
+	if(isturf(source.loc) && !SSinterior.in_interior(source))
 		pixel_x = MINIMAP_PIXEL_FROM_WORLD(source.x) + SSminimaps.minimaps_by_z["[source.z]"].x_offset
 		pixel_y = MINIMAP_PIXEL_FROM_WORLD(source.y) + SSminimaps.minimaps_by_z["[source.z]"].y_offset
 		return
 
 	var/atom/movable/movable_loc = source.loc
-	source.override_minimap_tracking(source.loc)
+	if(isturf(movable_loc) && SSinterior.in_interior(source))
+		// Inside a vehicle's interior, track the vehicle itself instead, same as the container case below.
+		var/datum/interior/interior = SSinterior.get_interior_by_coords(source.x, source.y, source.z)
+		if(interior?.exterior)
+			movable_loc = interior.exterior
+	source.override_minimap_tracking(movable_loc)
 	pixel_x = MINIMAP_PIXEL_FROM_WORLD(movable_loc.x) + SSminimaps.minimaps_by_z["[movable_loc.z]"].x_offset
 	pixel_y = MINIMAP_PIXEL_FROM_WORLD(movable_loc.y) + SSminimaps.minimaps_by_z["[movable_loc.z]"].y_offset
 
@@ -1138,7 +1152,8 @@ SUBSYSTEM_DEF(minimaps)
 		// Apply ceiling protection overlay if client has preference enabled
 		if(owner.client.prefs?.show_minimap_ceiling_protection)
 			map.update_ceiling_overlay(owner.client)
-		locator.link_locator(map, owner)
+		// Must be `tracking`, not `owner`, or an active locator_override like a vehicle interior gets lost.
+		locator.link_locator(map, tracking)
 		locator.update(tracking, null, null)
 		// Show ceiling protection toggle action when minimap opens
 		for(var/datum/action/minimap_ceiling/ceiling_action in owner.actions)

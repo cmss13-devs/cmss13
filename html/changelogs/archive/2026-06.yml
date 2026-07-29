@@ -488,3 +488,78 @@
   fira:
   - bugfix: Fixed a number of bad cleanup involved in visual effects, notably smoke.
   - bugfix: Rockets and Explosive Arrows will now properly cause on-hit smoke as intended.
+2026-06-26:
+  ori-disillusion-mirnov:
+  - bugfix: daniels and dzhos spawn with mop buckets instead of janibuckets presumably
+      being put inside them
+  - bugfix: dzho and daniel join announcements use the right link
+  - bugfix: the correct join button appears when forcing a colony joe round
+  - bugfix: colony joe storage thingies can no longer be blown up
+  - bugfix: working joes can no longer shoot guns, unrelated to colony joe pr
+  - maptweak: adds a colony joe spawn to white antre
+  realforest2001:
+  - rscadd: Added backend landmark code for pathogen spore sacs to randomly spawn.
+      Will not actually spawn the spore sacs.
+  - imageadd: Added the landmark icon for above.
+  - bugfix: US Army Tank Crew are now considered on the reserve list.
+2026-06-27:
+  MistChristmas:
+  - bugfix: Uniform shutters are now actually EMP Proof.
+  - bugfix: XM88 no longer has a signal override warning.
+  Nihisohel:
+  - rscadd: Pushups can now be bound to a key, undefined by default
+  - rscadd: You can now perform singular pushups, both weak and normal, only found
+      through the keybind menu
+  - balance: The weight class of your worn backslot and worn armor now dynamically
+      determines your stamina loss during pushups
+  - balance: Your body type and size now affects your stamina loss during pushups.
+      Additionally, A.W.s perform much better at pushups, damn vatties
+  - code_imp: Knee-pushups now visually look weaker compared to normal
+  - balance: Suddenly, every human across the galaxy can perform double the pushups
+      than before, thats neat
+  - spellcheck: Adds unique text when performing knee pushups
+  - refactor: Minorly cleans up the limb icon setting backend, adds defines for body
+      types, sizes, and colours
+  fira:
+  - bugfix: Hotfixed an issue causing the Synthetic Reset Keys to be unusable
+  - bugfix: The Synth Reset Keys now makes no sparks, as intended
+2026-06-29:
+  AmoryBlaine, Detective-Google:
+  - imageadd: surplus uniform vendors have a unique sprite now
+  Drathek:
+  - balance: Almayer ground crash now breaks the powernet and APCs will randomly short
+      out over time
+  - bugfix: Openspace no longer doubles up the openspace backdrop when viewing an
+      intermediate openspace
+  MistChristmas:
+  - admin: Changed the colour of FF alive to Red.
+  - bugfix: Jobs not contained in the RoleAuthority can now cryo. Add Goons job datum
+      so they're in the RoleAuthority stuff
+  - rscadd: Dzho's get a label that they're made by norcomm
+  - bugfix: Daniel's get their synthetic verbs once again
+  Wabberspace:
+  - rscadd: DNA-disintegrating's xeno-transformation-disease now takes less time to
+      reach the final stage, and accounts for instances of ciphering within the host's
+      body.
+  - rscadd: the Xeno-Transformation disease now removes your ability to speak anything
+      but xenomorph-ese!
+  - qol: Xeno-Transformation disease progression is now no longer hidden, and can
+      be tracked freely using scanners. Furthermore, XT disease stages are incremented
+      linearly, and reaching stage 5 will take a lot less time.
+  - code_imp: refactors prop_special.dm to not use single letter variable definitions
+  halgmor:
+  - rscadd: SensorMate HUDs have been returned to squad vendors
+2026-06-30:
+  Ammoniacres:
+  - imagetweak: fixes flamethrower sprite issues in PR 12345
+  Drathek:
+  - balance: HE OB now has exponential falloff when entering into pylon protected
+      areas
+  MistChristmas:
+  - rscadd: 2 ASRS console circuit boards to the circuit board vendor.
+  Ordosian, DimDim:
+  - bugfix: Fixed WJ station invisibility bug
+  - imageadd: New synth repair station. WJ station directionals added.
+  - maptweak: Implemented new repair stations.
+  Puckaboo2:
+  - imagetweak: Polishes Lab and Morgue shoes on the north state.

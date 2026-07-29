@@ -143,29 +143,14 @@
 				return null
 
 /mob/living/carbon/human/proc/set_limb_icons()
-	var/datum/skin_color/set_skin_color = GLOB.skin_color_list[skin_color]
-	var/datum/body_size/set_body_size = GLOB.body_size_list[body_size]
-	var/datum/body_type/set_body_type = GLOB.body_type_list[body_type]
+	var/datum/skin_color/set_skin_color = GLOB.skin_color_list[skin_color] || GLOB.skin_color_list[SKIN_COLOR_PALE2]
+	var/skin_color_icon = set_skin_color?.icon_name
 
-	var/skin_color_icon
-	var/body_size_icon
-	var/body_type_icon
+	var/datum/body_size/set_body_size = GLOB.body_size_list[body_size] || GLOB.body_size_list[BODY_SIZE_AVERAGE]
+	var/body_size_icon = set_body_size?.icon_name
 
-	if(!set_skin_color)
-		skin_color_icon = "pale2"
-	else
-		skin_color_icon = set_skin_color.icon_name
-
-	if(!set_body_size)
-		body_size_icon = "avg"
-	else
-		body_size_icon = set_body_size.icon_name
-
-
-	if(!set_body_type)
-		body_type_icon = "lean"
-	else
-		body_type_icon = set_body_type.icon_name
+	var/datum/body_type/set_body_type = GLOB.body_type_list[body_type] || GLOB.body_type_list[BODY_TYPE_LEAN]
+	var/body_type_icon = set_body_type?.icon_name
 
 	if(isspeciesyautja(src))
 		skin_color_icon = skin_color

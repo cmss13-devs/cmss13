@@ -98,7 +98,8 @@
 /datum/element/bloody_feet/proc/blood_crossed(mob/living/carbon/human/target, amount, bcolor, dry_time_left)
 	SIGNAL_HANDLER
 	Detach(target)
-	target.AddElement(/datum/element/bloody_feet, dry_time_left, target.shoes, amount, bcolor)
+	if(!QDELETED(target))
+		target.AddElement(/datum/element/bloody_feet, dry_time_left, target.shoes, amount, bcolor)
 
 /datum/element/bloody_feet/proc/clear_blood(datum/target)
 	SIGNAL_HANDLER

@@ -49,6 +49,10 @@
 	/// Type of Falloff calculation to use
 	var/falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR
 
+	/// TODO List of movables that already ate the blast wave, so they don't eat it again if they get pushed out of the way
+	/// Typically this will be a shared list between all 4 cardinal blast waves, so don't .Cut it
+	var/list/atom/movable/exploded
+
 	/// List of turfs comprising the wave currently
 	/// Note that in this house we order everything in ascending X/Y order
 	/// This means it doesn't matter if the explosion goes North or South, the first item is always leftmost cell
@@ -144,7 +148,8 @@
 						color = "#c864c8"
 					if(WEST)
 						color = "#4148c8"
-				explode_turf(wave_turfs[i], intensities[i], color)
+				apply_overlay(wave_turfs[i], intensities[i])
+				//explode_turf(wave_turfs[i], intensities[i], color)
 				exploded_something = TRUE
 
 	if(!exploded_something)
@@ -154,7 +159,6 @@
 /datum/explosion_wave/proc/apply_falloff(list/turf/turfs, list/intensities)
 	for(var/i in 1 to length(turfs))
 		var/turf/turf = turfs[i]
-		var/new_intensit = intensities[i]
 		// TODO? We don't respect legacy behavior in two ways:
 		//  * Falloff is not tracked but calc'd in one go - so EXPONENTIAL_(HALF_)IN_PYLON behaves as if it was in pylon the whole time when there
 		//  * Legacy behavior is to *sqrt(2) diagonals falloff, but i don't see how it makes sense here if we don't also spread the explosive power
@@ -176,6 +180,10 @@
 					intensities[i] -= falloff
 				else
 					intensities[i] -= (falloff * (1.5**(order-1)))
+
+		// FIXME for demo purposes only - have this include atom contents and move it to the explosion application proc later
+		intensities[i] -= turf.get_explosion_resistance(dir) // FIXME this doesn't work properly with corners/diagonals in some cases! Maybe do this before expanding the wave
+
 
 // Spawns a cellular automaton of an explosion
 /proc/cell_explosion(turf/epicenter, power, falloff, falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR, direction, datum/cause_data/explosion_cause_data, enviro=FALSE)
@@ -199,8 +207,6 @@
 		playsound(epicenter, "bigboom", 80, 1, max(round(power,1),7))
 	else
 		playsound(epicenter, "explosion", 90, 1, max(round(power,1),7))
-
-	var/datum/automata_cell/explosion/E = new /datum/automata_cell/explosion(epicenter)
 
 	if(direction)
 		var/datum/explosion_wave/wave = new(epicenter, dir = direction, power = power, falloff = falloff, falloff_shape = falloff_shape, cause_data = explosion_cause_data)
@@ -227,3 +233,24 @@
 /proc/uncolor_turf(turf/turf)
 	turf.color = null
 	turf.alpha = 255
+
+/datum/explosion_wave/proc/apply_overlay(turf/turf, intensity)
+	var/image/image = image('icons/effects/effects.dmi', "dissolve-fast") // Find something better and where dir matters!
+	image.plane = DISPLACEMENT_PLATE_RENDER_LAYER
+	image.layer = FLY_LAYER
+	var/prop_x = 0
+	var/prop_y = 0
+	switch(dir)
+		if(NORTH)
+			prop_x = 0; prop_y = 1;
+		if(SOUTH)
+			prop_x = 0; prop_y = -1;
+		if(EAST)
+			prop_x = 1; prop_y = 0;
+		if(WEST)
+			prop_x = -1; prop_y = 0;
+	turf.overlays += image
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(remove_overlay), turf, image), 2 DECISECONDS)
+
+/proc/remove_overlay(atom/atom, image/overlay)
+	atom.overlays -= overlay

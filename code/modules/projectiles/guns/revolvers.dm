@@ -81,7 +81,7 @@
 		return
 
 	if(href_list["list_cylinder"])
-		if(!usr || usr.get_hands() != src || !current_mag || current_mag.chamber_closed)
+		if(!usr || !usr.is_holding(src) || !current_mag || current_mag.chamber_closed)
 			to_chat(usr, SPAN_WARNING("You can't see [src]'s cylinder from here!"))
 			return
 
@@ -111,7 +111,7 @@
 		return TRUE
 
 	if(href_list["load_chamber"])
-		if(!usr || usr.get_inactive_hand() != src || !current_mag || current_mag.chamber_closed)
+		if(!usr || !usr.is_holding(src) || !current_mag || current_mag.chamber_closed)
 			to_chat(usr, SPAN_WARNING("You can't load [src]'s cylinder from here!"))
 			return
 

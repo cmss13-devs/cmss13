@@ -227,7 +227,7 @@
 		modifier *= 4 //4 more spits per consumed stack
 
 	var/barrage_size = max(round((time_charged / max_charge_time) * max_volley), min_volley) + modifier
-	playsound(xeno, 'sound/voice/xeno_praetorian_screech.ogg', 75, 0, status = 0)
+	playsound(xeno, "alien_roarhiss", 30, 0, status = 0)
 	playsound(xeno.loc, "acid_spit", 25, 1)
 	for(var/index in 1 to barrage_size)
 		var/initial_angle = Get_Angle(xeno, target)
@@ -357,6 +357,7 @@
 	var/severity = (xeno.health <= (0.7 * xeno.maxHealth)) + (xeno.health <= 0.5 * xeno.maxHealth) + (xeno.health <= (0.3 * xeno.maxHealth))
 	var/acid_range = severity + 2
 	var/blocked = FALSE
+
 	for(var/turf/turf in orange(acid_range, get_turf(xeno)))
 		blocked = FALSE
 		if(get_dist_sqrd(turf, xeno) > acid_range ** 2)

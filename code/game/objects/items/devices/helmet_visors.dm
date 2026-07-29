@@ -174,6 +174,23 @@
 	action_icon_string = "sec_sight_down"
 	helmet_overlay = "sec_sight_right"
 
+/**
+ * Reads hardpoint status telemetry broadcast by USCM vehicles.
+ */
+/obj/item/device/helmet_visor/vehicle
+	name = "vehicle diagnostics optic"
+	desc = "An insertable visor HUD into a standard USCM helmet. Reads hardpoint status telemetry broadcast by USCM vehicles, showing engine/tread/weapon/armor condition and damage at a glance."
+	icon_state = "veh_sight"
+	hud_type = null
+	action_icon_string = "veh_sight_down"
+	helmet_overlay = "veh_sight_right"
+
+/obj/item/device/helmet_visor/vehicle/activate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
+	GLOB.vehicle_hardpoint_hud.add_hud_to(user, attached_helmet)
+
+/obj/item/device/helmet_visor/vehicle/deactivate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
+	GLOB.vehicle_hardpoint_hud.remove_hud_from(user, attached_helmet)
+
 /obj/item/device/helmet_visor/welding_visor
 	name = "welding visor"
 	icon_state = "sight_empty"

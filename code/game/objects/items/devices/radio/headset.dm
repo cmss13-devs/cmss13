@@ -1472,11 +1472,13 @@
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_MARINE
 
-/obj/item/device/radio/headset/almayer/mcom/vc
+// Parented under marine, not mcom, so put_marine_in_squad() keeps retuning ";" to the crew's
+// assigned squad channel
+/obj/item/device/radio/headset/almayer/marine/vc
 	name = "marine vehicle crew radio headset"
-	desc = "Used by USCM vehicle crew, features a non-standard brace. Channels are as follows: :v - marine command, :n - engineering, :m - medbay, :u - requisitions."
-	initial_keys = list(/obj/item/device/encryptionkey/vc)
-	volume = RADIO_VOLUME_RAISED
+	desc = "Used by USCM vehicle crew, features a non-standard brace. Channels are as follows: :u - requisitions, :n - engineering, :j - JTAC. Speaking with a leading ';' uses your squad's channel."
+	icon_state = "mcom_headset"
+	initial_keys = list(/obj/item/device/encryptionkey/almayer, /obj/item/device/encryptionkey/jtac, /obj/item/device/encryptionkey/engi)
 	multibroadcast_cooldown = HIGH_MULTIBROADCAST_COOLDOWN
 
 /obj/item/device/radio/headset/distress/UPP/recon

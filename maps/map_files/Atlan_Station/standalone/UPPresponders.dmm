@@ -2245,12 +2245,6 @@
 	},
 /turf/open/floor/strata,
 /area/atlan/station/walkway)
-"Hr" = (
-/obj/structure/barricade/handrail/strata{
-	dir = 8
-	},
-/turf/open/floor/prison/whitegreen/west,
-/area/atlan/station/botany)
 "HC" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
@@ -6876,9 +6870,9 @@ AA
 Lb
 nF
 cU
-Hr
 np
-Hr
+np
+np
 mI
 ya
 lM

@@ -18,8 +18,6 @@
 /datum/equipment_preset/survivor/atlan_cec_scientist/load_gear(mob/living/carbon/human/new_human)
 
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/cec(new_human), WEAR_L_EAR)
-
-
 	var/random_gloves = rand(1,2)
 	switch(random_gloves)
 		if(1)
@@ -113,9 +111,6 @@
 /datum/equipment_preset/survivor/cec_liaison/load_gear(mob/living/carbon/human/new_human)
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/upp(new_human), WEAR_HANDS)
-
-
-
 	var/random_scientist_satchel= rand(1,3)
 	switch(random_scientist_satchel)
 		if(1)

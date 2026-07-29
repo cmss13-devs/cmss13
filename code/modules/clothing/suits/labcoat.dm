@@ -424,7 +424,8 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_righthand.dmi'
 	)
-
+	icon_state = "labcoat"
+	item_state = "labcoat"
 
 /obj/item/clothing/suit/storage/labcoat/cec/red
 	name = "CEC lab coat"

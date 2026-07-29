@@ -55,6 +55,9 @@
 
 	var/time_to_live = 10
 
+	///for despoiler acid that only removes two pats of flame not all of it
+	var/weak_extinguish = FALSE
+
 /obj/effect/xenomorph/spray/no_stun
 	stun_duration = 0
 
@@ -161,7 +164,10 @@
 	if(isliving(AM))
 		var/mob/living/living_mob = AM
 		if(living_mob.ally_of_hivenumber(hivenumber))
-			living_mob.ExtinguishMob()
+			if(!weak_extinguish)
+				living_mob.ExtinguishMob()
+			else
+				living_mob.adjust_fire_stacks(-10, min_stacks = 0) //two pats
 		else
 			apply_spray(living_mob)
 	else if(isVehicleMultitile(AM))
@@ -258,6 +264,7 @@
 	damage_amount = 30
 	time_to_live = 2 SECONDS
 	stun_duration = 0
+	weak_extinguish = TRUE
 
 /obj/effect/xenomorph/spray/despoiler/apply_spray(mob/living/carbon/carbon)
 	. = ..()

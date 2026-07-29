@@ -133,15 +133,12 @@
 	increase_hypertension(100)
 	var/burn_damage = hypertension_stacks * 5
 
-	if(hypertension_stacks < 3)
-		return original_damage + burn_damage
-
 	var/datum/effects/acid/acid_effect = locate() in target_carbon.effects_list
 	var/speed_up_progress = (hypertension_stacks - 2) * 5
 
 	//fallowing are not exclusive and do add up
-	if(hypertension_stacks >=2 && !acid_effect)
-		acid_effect = new /datum/effects/acid/(target_carbon)
+	if(hypertension_stacks >= 2 && !acid_effect)
+		acid_effect = new /datum/effects/acid/(target_carbon, bound_xeno)
 	if(hypertension_stacks >= 3)
 		acid_effect.enhance_acid()
 	if(hypertension_stacks >= 4)
@@ -226,6 +223,7 @@
 	if(delegate.hypertension_stacks)
 		modifier = abs(min(delegate.hypertension_stacks, 4 * (time_charged / max_charge_time))) //how many stacks did we consume
 		delegate.hypertension_stacks -= modifier
+		xeno.update_hypertension()
 		modifier *= 4 //4 more spits per consumed stack
 
 	var/barrage_size = max(round((time_charged / max_charge_time) * max_volley), min_volley) + modifier
@@ -277,19 +275,22 @@
 	var/mob/living/carbon/xenomorph/despoiler/xeno = owner
 	var/datum/behavior_delegate/despoiler_base/delegate = xeno.behavior_delegate
 	if(delegate.hypertension_stacks <= 0)
-		addtimer(CALLBACK(src, PROC_REF(release_charge)), 1, TIMER_STOPPABLE)
+		addtimer(CALLBACK(src, PROC_REF(update_charge)), 1, TIMER_STOPPABLE)
 		return
 	delegate.hypertension_stacks --
+	xeno.update_hypertension()
+	stage ++
 
 	update_charge_overlay()
 	if(stage == 2)
 		return
-	addtimer(CALLBACK(src, PROC_REF(release_charge)), (max_charge_time / 2), TIMER_STOPPABLE)
+	addtimer(CALLBACK(src, PROC_REF(update_charge)), (max_charge_time / 2), TIMER_STOPPABLE)
 
 /datum/action/xeno_action/activable/pounce/caustic_embrace/proc/update_charge_overlay()
 	if(charge_overlay)
 		owner.overlays -= charge_overlay
-	charge_overlay = image('icons/mob/do_afters.dmi', "charge_[stage*2]", pixel_x = 10, pixel_y = 54)
+	var/icon = min(stage*2, 3)
+	charge_overlay = image('icons/mob/do_afters.dmi', "charge_[icon]", pixel_x = 10, pixel_y = 54)
 	charge_overlay.layer = FLY_LAYER
 	charge_overlay.plane = ABOVE_GAME_PLANE
 	owner.overlays |= charge_overlay
@@ -353,8 +354,25 @@
 	playsound(xeno, 'sound/voice/xeno_praetorian_screech.ogg', 75, 0, status = 0)
 	var/severity = (xeno.health <= (0.7 * xeno.maxHealth)) + (xeno.health <= 0.5 * xeno.maxHealth) + (xeno.health <= (0.3 * xeno.maxHealth))
 	var/acid_range = severity + 2
+	var/blocked = FALSE
 	for(var/turf/turf in orange(acid_range, get_turf(xeno)))
+		blocked = FALSE
 		if(get_dist_sqrd(turf, xeno) > acid_range ** 2)
+			continue
+		var/list/turf/path = get_line(owner, turf)
+		var/turf/prev_turf = get_turf(owner)
+		for(var/turf/path_turf in path)
+			if(path_turf.density)
+				blocked = TRUE
+				break
+			var/obj/flamer_fire/temp = new()
+			var/atom/blocker = LinkBlocked(temp, prev_turf, turf)
+			if(blocker)
+				blocked = TRUE
+				break
+			prev_turf = path_turf
+
+		if(blocked)
 			continue
 		addtimer(CALLBACK(src, PROC_REF(spawn_acid), xeno, turf), 0.2 SECONDS * get_dist(turf, xeno))
 

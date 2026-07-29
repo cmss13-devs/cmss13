@@ -3,6 +3,7 @@
 	desc = "Integral to the movement of the APC."
 	icon = 'icons/obj/vehicles/hardpoints/apc.dmi'
 
+	slot = HDPT_WHEELS
 	damage_multiplier = 0.15
 
 	icon_state = "tires"

@@ -302,6 +302,16 @@
 			return
 		load_target_tag = "floodlight"
 
+	else if(istype(target, /obj/item/hardpoint))
+		var/obj/item/hardpoint/H = target
+		if(H.owner)
+			to_chat(user, SPAN_WARNING("\The [src] can't grab \the [target], it's still installed on something."))
+			return
+		if(H.w_class != SIZE_MASSIVE)
+			to_chat(user, SPAN_WARNING("\The [target] is light enough to carry by hand."))
+			return
+		load_target_tag = "vehicle_module"
+
 	if(!load_target_tag)
 		return
 	grab_object(user, target, load_target_tag)

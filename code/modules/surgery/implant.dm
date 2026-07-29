@@ -130,13 +130,6 @@
 	log_interact(user, target, "[key_name(user)] started to put [tool] inside [key_name(target)]'s [surgery.affected_limb.cavity].")
 
 /datum/surgery_step/place_item/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.affected_message(target,
-		SPAN_NOTICE("You implant [tool] into [target]'s [surgery.affected_limb.cavity]."),
-		SPAN_NOTICE("[user] implants [tool] into your [surgery.affected_limb.cavity]."),
-		SPAN_NOTICE("[user] implants [tool] into [target]'s [surgery.affected_limb.cavity]."))
-
-	log_interact(user, target, "[key_name(user)] put [tool] inside [key_name(target)]'s [surgery.affected_limb.cavity].")
-
 	if(tool.w_class >= SIZE_SMALL)
 		user.affected_message(target,
 			SPAN_NOTICE("You tear some blood vessels trying to fit such a bulky object in [target]'s [surgery.affected_limb.cavity], causing internal bleeding!"),
@@ -154,9 +147,16 @@
 		surgery.affected_limb.wounds += int_bleeding
 		target.apply_damage(5, BRUTE, target_zone)
 		surgery.affected_limb.add_bleeding(null, FALSE, 15)
+	else
+		user.affected_message(target,
+			SPAN_NOTICE("You implant [tool] into [target]'s [surgery.affected_limb.cavity]."),
+			SPAN_NOTICE("[user] implants [tool] into your [surgery.affected_limb.cavity]."),
+			SPAN_NOTICE("[user] implants [tool] into [target]'s [surgery.affected_limb.cavity]."))
 
 	user.drop_inv_item_to_loc(tool, target)
 	surgery.affected_limb.hidden = tool
+
+	log_interact(user, target, "[key_name(user)] put [tool] inside [key_name(target)]'s [surgery.affected_limb.cavity].")
 
 /datum/surgery_step/place_item/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,

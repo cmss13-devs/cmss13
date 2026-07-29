@@ -793,6 +793,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 		PF.flags_pass = PASS_FLAGS_FLAME
 
 /obj/flamer_fire/Crossed(atom/movable/atom_movable)
+	..()
 	// Mounting is only decided at creation, not when a tank drives onto existing fire.
 	if(is_atop_vehicle() && isliving(atom_movable))
 		// Only a mob riding atop that same tank can be "crossing" it for real.

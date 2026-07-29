@@ -570,11 +570,9 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 
 /obj/structure/machinery/computer/overwatch/groundside_operations/ui_data(mob/user)
-	var/list/data = list()
+	var/list/data = pack_radio_data()
 	data["executive"] = isnull(role)
 	data["theme"] = ui_theme
-
-	data = pack_radio_data()
 
 	if(!current_squad)
 		data["squad_list"] = list()

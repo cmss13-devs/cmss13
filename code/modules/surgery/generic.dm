@@ -220,9 +220,9 @@
 		else
 			return
 
-	var/datum/wound/internal_bleeding/int_organ = new (0)
-	surgery.affected_limb.add_bleeding(int_organ, TRUE)
-	surgery.affected_limb.wounds += int_organ
+	var/datum/wound/internal_bleeding/int_bleeding = new (0)
+	surgery.affected_limb.add_bleeding(int_bleeding, TRUE)
+	surgery.affected_limb.wounds += int_bleeding
 	target.apply_damage(4, BRUTE, target_zone)
 	log_interact(user, target, "[key_name(user)] failed to clamp bleeders in [key_name(target)]'s [surgery.affected_limb.display_name], possibly ending [surgery].")
 	return FALSE

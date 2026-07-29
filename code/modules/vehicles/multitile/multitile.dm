@@ -512,6 +512,126 @@ GLOBAL_LIST_INIT(vehicle_gear_order, list("P", "R", "N", "D", "1", "2"))
 		var/image/J = image(icon, icon_state = "vehicle_clamp", layer = layer+0.1)
 		overlays += J
 
+	if(turn_signal_flags && turn_signal_blink_visible)
+		for(var/signal_direction in list(NORTH, SOUTH, EAST, WEST))
+			if(turn_signal_flags & signal_direction)
+				overlays += build_turn_signal_image(signal_direction)
+
+/**
+ * Pixel offset for a turn signal light's maptext overlay, per compass direction. Hand-tuned against
+ * observed in-game rendering.
+ *
+ * Arguments:
+ * * direction = NORTH, SOUTH, EAST or WEST.
+ *
+ * Returns:
+ * * A 2-element list, list(maptext_x, maptext_y).
+ */
+/obj/vehicle/multitile/proc/get_turn_signal_offset(direction)
+	var/base_x = (bound_width - 64) / 2
+	var/base_y = bound_height - bound_y + 4
+
+	switch(direction)
+		if(NORTH)
+			return list(base_x + 32, base_y - 16)
+		if(WEST)
+			return list(base_x - 24, base_y - 72)
+		if(SOUTH)
+			return list(base_x + 32, base_y - 128)
+		if(EAST)
+			return list(base_x + 96, base_y - 72)
+	return list(base_x, base_y)
+
+/**
+ * Builds this vehicle's turn signal maptext overlay for one compass direction.
+ *
+ * Arguments:
+ * * signal_direction = NORTH, SOUTH, EAST or WEST.
+ *
+ * Returns:
+ * * A new /image, ready to add to overlays.
+ */
+/obj/vehicle/multitile/proc/build_turn_signal_image(signal_direction)
+	var/glyph
+	switch(signal_direction)
+		if(NORTH)
+			glyph = "&#9650;&#9650;"
+		if(SOUTH)
+			glyph = "&#9660;&#9660;"
+		if(EAST)
+			glyph = "&#9654;&#9654;"
+		if(WEST)
+			glyph = "&#9664;&#9664;"
+
+	var/image/turn_signal_image = image(null, src)
+	turn_signal_image.maptext_width = 64
+	turn_signal_image.maptext_height = 32
+	var/list/offset = get_turn_signal_offset(signal_direction)
+	turn_signal_image.maptext_x = offset[1]
+	turn_signal_image.maptext_y = offset[2]
+	turn_signal_image.layer = 20
+	// font-size kept small relative to maptext_height (32px) so the glyph doesn't get clipped.
+	turn_signal_image.maptext = MAPTEXT("<span style='color:red;font-size:14px;font-weight:bold'>[glyph]</span>")
+	return turn_signal_image
+
+/**
+ * Whether this vehicle currently has power to run its turn signals.
+ *
+ * Arguments:
+ * * ignore_battery = Passed straight through to has_vehicle_power().
+ */
+/obj/vehicle/multitile/proc/can_use_turn_signals(ignore_battery = FALSE)
+	return has_vehicle_power(ignore_battery)
+
+/**
+ * Force-switches off whatever turn signal is currently active if this vehicle can no longer power it.
+ *
+ * Arguments:
+ * * ignore_battery = Passed straight through to can_use_turn_signals().
+ */
+/obj/vehicle/multitile/proc/recheck_turn_signals(ignore_battery = FALSE)
+	if(turn_signal_flags && !can_use_turn_signals(ignore_battery))
+		toggle_turn_signal(turn_signal_flags)
+
+/**
+ * Toggles one of this vehicle's 4 independent turn signal lights on/off. Only one can be active at once.
+ * Purely manual, toggling the active direction again is the only way to turn it off.
+ *
+ * Arguments:
+ * * direction = NORTH, SOUTH, EAST or WEST. Which light to toggle.
+ */
+/obj/vehicle/multitile/proc/toggle_turn_signal(direction)
+	var/was_active = (turn_signal_flags != 0)
+	var/turning_on = !(turn_signal_flags & direction)
+
+	turn_signal_flags = turning_on ? direction : 0
+	turn_signal_blink_visible = (turn_signal_flags != 0)
+	update_icon()
+
+	if(turning_on)
+		if(!was_active)
+			INVOKE_ASYNC(src, PROC_REF(turn_signal_blink_loop))
+		turn_signal_soundloop?.stop()
+		turn_signal_soundloop?.start()
+		addtimer(CALLBACK(src, PROC_REF(stop_turn_signal_sound)), TURN_SIGNAL_SOUND_DURATION, TIMER_UNIQUE|TIMER_OVERRIDE)
+	else
+		turn_signal_soundloop?.stop()
+
+/// Cuts the turn signal's relay sound after it's played for TURN_SIGNAL_SOUND_DURATION. The visual blink keeps going regardless. Audio spam = bad
+/obj/vehicle/multitile/proc/stop_turn_signal_sound()
+	if(turn_signal_flags != 0)
+		turn_signal_soundloop?.stop()
+
+/// Blinks the turn signal overlays on/off at a fixed cadence while a signal is active.
+/obj/vehicle/multitile/proc/turn_signal_blink_loop()
+	while(turn_signal_flags != 0)
+		sleep(TURN_SIGNAL_BLINK_INTERVAL)
+		turn_signal_blink_visible = !turn_signal_blink_visible
+		update_icon()
+
+	turn_signal_blink_visible = FALSE
+	update_icon()
+
 /**
  * Toggles this vehicle's ignition state. While off, gear_cruise_loop() can't generate torque and the
  * tank_engine sound loop stops. Turning it on starts a fresh ENGINE_SPINUP_TIME window before it can build

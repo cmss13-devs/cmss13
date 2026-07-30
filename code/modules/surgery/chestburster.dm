@@ -107,7 +107,7 @@
 	user.affected_message(target,
 		SPAN_WARNING("Your hand slips and you accidentally slice into the larva! Acid sprays into the air and lands in [target]'s [surgery.affected_limb.cavity], where it pools and sizzles across \his organs!"),
 		SPAN_WARNING("[user]'s hand slips and accidentally slices into the larva! Acid sprays into the air and lands in your [surgery.affected_limb.cavity], where it pools and sizzles across your organs!"),
-		SPAN_WARNING("[user]'s hand slips and accidentally slices into the larva! Acid sprays into the air and lands in [target]'s [surgery.affected_limb.cavity], where it pools and sizzles over the exposed organs."))
+		SPAN_WARNING("[user]'s hand slips and accidentally slices into the larva! Acid sprays into the air and lands in [target]'s [surgery.affected_limb.cavity], where it pools and sizzles over \his organs."))
 
 	if(target.stat == CONSCIOUS)
 		to_chat(target, SPAN_HIGHDANGER("Your organs are melting!"))
@@ -147,13 +147,13 @@
 			SPAN_NOTICE("[user] tries to extract the larva from [target]'s chest with [tool]."))
 	else
 		user.affected_message(target,
-			SPAN_NOTICE("You try to forcefully rip the writhing larva from [target]'s chest with your bare hand."),
-			SPAN_NOTICE("[user] tries to forcefully rip the writhing larva from your chest with \his bare hand."),
-			SPAN_NOTICE("[user], with \his bare hands, tries to forcefully rip the writhing larva from [target]'s chest!"))
+			SPAN_NOTICE("You try to forcefully rip the writhing larva from [target]'s chest with your [user.hand ? "left" : "right"] hand."),
+			SPAN_NOTICE("[user] tries to forcefully rip the writhing larva from your chest with \his [user.hand ? "left" : "right"] hand."),
+			SPAN_NOTICE("[user], with \his [user.hand ? "left" : "right"] hand, tries to forcefully rip the writhing larva from [target]'s chest!"))
 
 	to_chat(target, SPAN_HIGHDANGER("IT'S COMING OUT! BRACE YOURSELF!"))
-	if(target.stat == CONSCIOUS)
-		target.emote("burstscream") //special case, larba is fighting inside your chest
+	if(target.stat == CONSCIOUS) //special case, larba is fighting inside your chest
+		target.emote("burstscream")
 
 	log_interact(user, target, "[key_name(user)] started to remove an embryo from [key_name(target)]'s ribcage.")
 
@@ -166,13 +166,12 @@
 				SPAN_WARNING("[user] pulls a wriggling parasite out of your ribcage!"),
 				SPAN_WARNING("[user] pulls a wriggling parasite out of [target]'s ribcage!"))
 		else
-			user.affected_message(target,
-				SPAN_WARNING("Your hands and your patient's insides are burned by acid as you forcefully rip a wriggling parasite out of [target]'s ribcage!"),
-				SPAN_WARNING("Your insides and [user]'s hands are burned by acid as \he rips a wriggling parasite out of your ribcage!"),
-				SPAN_WARNING("[target]'s insides and [user]'s hands are burned by acid as \he rips a wriggling parasite out of [target]'s ribcage!"))
-
 			var/datum/internal_organ/impacted_organ = pick(surgery.affected_limb.internal_organs)
-			impacted_organ.take_damage(5, FALSE)
+			user.affected_message(target,
+				SPAN_WARNING("Your burn your [user.hand ? "left" : "right"] hand and [target]'s [impacted_organ.name] with acid as you forcefully rip a wriggling parasite from \his ribcage!"),
+				SPAN_WARNING("Your [impacted_organ.name] and [user]'s [user.hand ? "left" : "right"] hand are burned by acid as \he rips a wriggling parasite from your ribcage!"),
+				SPAN_WARNING("[user] burns \his [user.hand ? "left" : "right"] hand and [target]'s [impacted_organ.name] with acid while forcefully ripping a wriggling parasite out from \his ribcage!"))
+
 			if(target.stat == CONSCIOUS)
 				to_chat(target, SPAN_HIGHDANGER("Your [impacted_organ.name] burns like hell in your [surgery.affected_limb.cavity]!"))
 				if(target.pain.reduction_pain >= surgery.pain_reduction_required) //if patient is under the proper anesthesia
@@ -184,11 +183,13 @@
 
 			play_failure_sound(user, target, target_zone, tool, surgery)
 			user.emote("pain")
-
-			to_chat(user, SPAN_HIGHDANGER("Your hands are scalded by acid!"))
-			user.emote("pain")
-			user.apply_damage(15, BURN, "l_hand")
-			user.apply_damage(15, BURN, "r_hand")
+			var/hand_zone = user.hand ? "l_hand" : "r_hand"
+			if(user.get_inactive_hand() == src)
+				hand_zone = !hand_zone
+			if(hand_zone)
+				user.apply_damage(15, BURN, "l_hand")
+			else
+				user.apply_damage(15, BURN, "r_hand")
 
 		user.count_niche_stat(STATISTICS_NICHE_SURGERY_LARVA)
 		var/mob/living/carbon/xenomorph/larva/larba = locate() in target //the larva was fully grown, ready to burst.
@@ -207,16 +208,16 @@
 		log_interact(user, target, "[key_name(user)] removed an embryo from [key_name(target)]'s ribcage with [tool ? "[tool]" : "their hands"], ending [surgery].")
 
 /datum/surgery_step/remove_larva/failure(mob/living/carbon/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.affected_message(target,
-		SPAN_WARNING("Your hands slip, bruising [target]'s organs and wounding the larva, who spills acid over your hands and into \his [surgery.affected_limb.cavity]!"),
-		SPAN_WARNING("[user]'s hands slip, bruising your organs and wounding the larva, who spills acid over \his hands and into your [surgery.affected_limb.cavity]!"),
-		SPAN_WARNING("[user]'s hands slip, bruising the organs they touched and wounding the larva, who spills acid all over \his hands and into [target]'s [surgery.affected_limb.cavity]!"))
+	var/datum/internal_organ/impacted_organ = pick(surgery.affected_limb.internal_organs)
+	impacted_organ.take_damage(5,0)
 
-	var/datum/internal_organ/int_organ = pick(surgery.affected_limb.internal_organs)
-	int_organ.take_damage(5,0)
+	user.affected_message(target,
+		SPAN_WARNING("Your [user.hand ? "left" : "right"] slips, bruising [target]'s [impacted_organ.name] and wounding the larva, who spills acid over your hand and into \his [surgery.affected_limb.cavity]!"),
+		SPAN_WARNING("[user]'s [user.hand ? "left" : "right"] slips, bruising your [impacted_organ.name] and wounding the larva, who spills acid over \his hand and into your [surgery.affected_limb.cavity]!"),
+		SPAN_WARNING("[user]'s [user.hand ? "left" : "right"] slips and wounds the larva, who spills acid all over \his hand, [target]'s [impacted_organ.name] and \his [surgery.affected_limb.cavity]! "))
 
 	if(target.stat == CONSCIOUS)
-		to_chat(target, SPAN_HIGHDANGER("Your [int_organ.name] burns like hell in your [surgery.affected_limb.cavity]!"))
+		to_chat(target, SPAN_HIGHDANGER("Your [impacted_organ.name] burns like hell in your [surgery.affected_limb.cavity]!"))
 		if(target.pain.reduction_pain >= surgery.pain_reduction_required) //if patient is under the proper anesthesia
 			target.emote("pain")
 		else
@@ -224,10 +225,15 @@
 
 	target.apply_damage(15, BURN, target_zone)
 
-	to_chat(user, SPAN_HIGHDANGER("Your hands are scalded by acid!"))
+	to_chat(user, SPAN_HIGHDANGER("Acid scalds your [user.hand ? "left" : "right"] hand!"))
 	user.emote("pain")
-	user.apply_damage(15, BURN, "l_hand")
-	user.apply_damage(15, BURN, "r_hand")
+	var/hand_zone = user.hand ? "l_hand" : "r_hand"
+	if(user.get_inactive_hand() == src)
+		hand_zone = !hand_zone
+	if(hand_zone)
+		user.apply_damage(15, BURN, "l_hand")
+	else
+		user.apply_damage(15, BURN, "r_hand")
 
-	log_interact(user, target, "[key_name(user)] failed to remove an embryo from [key_name(target)]'s ribcage with [tool ? "[tool]" : "their hands"].")
+	log_interact(user, target, "[key_name(user)] failed to remove an embryo from [key_name(target)]'s ribcage with [tool ? "[tool]" : "their hand"].")
 	return FALSE

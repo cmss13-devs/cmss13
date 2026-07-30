@@ -50,7 +50,7 @@
 		SPAN_NOTICE("[user] begins picking chips of bone out of your skull with [tool]."),
 		SPAN_NOTICE("[user] begins picking chips of bone out of [target]'s skull with [tool]."))
 
-	target.custom_pain("You feel [user] picking around your brain! It does not hurt, butit feels... Strange.", 1)
+	target.custom_pain("You feel [user] picking around your brain. It does not hurt, but it feels alarming: like something that should never be touched!", 1)
 	log_interact(user, target, "[key_name(user)] started taking bone chips out of [key_name(target)]'s skull with [tool], possibly beginning [surgery].")
 
 /datum/surgery_step/remove_bone_chips/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

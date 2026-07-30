@@ -135,7 +135,7 @@
 	pain_reduction_required = PAIN_REDUCTION_MEDIUM
 
 /datum/surgery/clamp_bleeders/can_start(mob/user, mob/living/carbon/patient, obj/limb/patient_limb, obj/item/tool)
-	for(var/datum/effects/bleeding/external/patient_brain in patient_limb.bleeding_effects_list)
+	for(var/datum/effects/bleeding/external/bleeding in patient_limb.bleeding_effects_list)
 		return TRUE
 	return FALSE
 
@@ -572,9 +572,7 @@
 
 		surgery.affected_limb.fracture(100)
 		if(target.stat == CONSCIOUS)
-			if (target.pain.reduction_pain >= surgery.pain_reduction_required) //if patient is under the proper anesthesia
-				return // "It's ok doc, I know it was an accident."
-			else
+			if(target.pain.reduction_pain <= surgery.pain_reduction_required) //if patient is not under the proper anesthesia. Patient under anesthesia can't feel shit.
 				target.emote("scream") //AWWW FUCK MY RIBS!
 	else
 		user.affected_message(target,

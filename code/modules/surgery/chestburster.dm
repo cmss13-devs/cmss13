@@ -208,9 +208,9 @@
 
 /datum/surgery_step/remove_larva/failure(mob/living/carbon/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_WARNING("Your hands slip, bruising [target]'s organs and wounding the larva, which spills acid over your hands and into \his [surgery.affected_limb.cavity]!"),
-		SPAN_WARNING("[user]'s hands slip, bruising your organs and wounding the larva, which spills acid over \his hands and into your [surgery.affected_limb.cavity]!"),
-		SPAN_WARNING("[user]'s hands slip, bruising [target]'s organs and spilling acid in the patient's [surgery.affected_limb.cavity] and the doctor's hands!"))
+		SPAN_WARNING("Your hands slip, bruising [target]'s organs and wounding the larva, who spills acid over your hands and into \his [surgery.affected_limb.cavity]!"),
+		SPAN_WARNING("[user]'s hands slip, bruising your organs and wounding the larva, who spills acid over \his hands and into your [surgery.affected_limb.cavity]!"),
+		SPAN_WARNING("[user]'s hands slip, bruising the organs they touched and wounding the larva, who spills acid all over \his hands and into [target]'s [surgery.affected_limb.cavity]!"))
 
 	var/datum/internal_organ/int_organ = pick(surgery.affected_limb.internal_organs)
 	int_organ.take_damage(5,0)

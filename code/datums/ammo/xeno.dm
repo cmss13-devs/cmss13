@@ -110,7 +110,7 @@
 			sns = sentinel_neuro_stacks
 			break
 
-		if (sns == null)
+		if (!sns)
 			sns = new /datum/effects/sentinel_neuro_stacks(human)
 		sns.increment_stack_count(increment_amount)
 

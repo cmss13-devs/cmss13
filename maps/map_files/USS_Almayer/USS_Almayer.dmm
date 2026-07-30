@@ -17042,7 +17042,7 @@
 	pixel_y = -6;
 	throw_range = 15;
 	pixel_x = 25;
-	req_one_access_txt = "5;19;39"
+	req_one_access_txt = "5;19;38"
 	},
 /obj/structure/sign/safety/storage{
 	pixel_x = 32;
@@ -53861,7 +53861,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical{
 	name = "\improper Field Medical Equipment Storage";
 	req_one_access = null;
-	req_one_access_txt = "5;19;39"
+	req_one_access_txt = "5;19;38"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	layer = 1.9

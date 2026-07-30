@@ -1,13 +1,7 @@
 
 /obj/effect/blocker/sorokyne_hot_water
-	anchored = TRUE
-	density = FALSE
-	opacity = FALSE
-	unacidable = 1
 	layer = ABOVE_FLY_LAYER //to make it visible in the map editor
-	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	icon = 'icons/landmarks.dmi'
-
 	icon_state = "map_blocker_hazard"
 
 	var/dam_amount = 0.5
@@ -20,6 +14,7 @@
 	invisibility = 101
 
 /obj/effect/blocker/sorokyne_hot_water/Crossed(mob/living/affected_mob)
+	..()
 	if(!ismob(affected_mob))
 		return
 	if(affected_mob.stat == DEAD)

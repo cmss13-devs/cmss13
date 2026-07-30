@@ -391,7 +391,7 @@
 	apply_cooldown()
 
 	playsound(xeno, "alien_roarhiss", 30, 0, status = 0)
-	var/severity = (xeno.health <= (0.7 * xeno.maxHealth)) + (xeno.health <= 0.5 * xeno.maxHealth) + (xeno.health <= (0.3 * xeno.maxHealth))
+	var/severity = (xeno.health <= (0.7 * xeno.maxHealth)) + (xeno.health <= 0.5 * xeno.maxHealth)
 	var/acid_range = severity + 2
 	var/blocked = FALSE
 	var/loose_per_distance = (60 / (acid_range - 1)) //80 on adjacent tile degrades to 60 on last tile

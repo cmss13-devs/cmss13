@@ -721,7 +721,7 @@
 			return
 
 /obj/structure/overwatch_camera_tripod/attackby(obj/item/item, mob/user)
-		// ToDO: This should be magic-fied so it covers UPP, TWE, CLF etc for future use
+	// ToDO: This should be magic-fied so it covers UPP, TWE, CLF etc for future use
     if(istype(item, /obj/item/device/multitool))
         var/list/squad_names = list("Alpha", "Bravo", "Charlie", "Delta", "Intel", "Foxtrot", "Echo", "Clear Override")
         var/selected = tgui_input_list(user, "Override which squad this camera should transmit to.", "Override Squad", squad_names)

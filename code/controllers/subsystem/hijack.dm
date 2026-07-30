@@ -220,9 +220,9 @@ SUBSYSTEM_DEF(hijack)
 			current_run_mobs = GLOB.alive_human_list.Copy()
 
 	if(in_ftl)
-		// Scalar between 30s and 5min for ~0-25% chance of a hallucination when in FTL outside a pod
+		// Scalar between 30s and 15min for ~0-12.5% chance of a hallucination when in FTL outside a pod
 		var/duration_clamped = clamp(world.time - in_ftl_time, 30 SECONDS, 5 MINUTES)
-		var/chance_haullucinate = SCALE(duration_clamped, 30 SECONDS, 20 MINUTES) * 100 // max actually seems to be like ~23% because byond floats
+		var/chance_haullucinate = SCALE(duration_clamped, 30 SECONDS, 40 MINUTES) * 100 // max actually seems to be a little less because byond floats
 		for(var/mob/living/carbon/human/current_mob as anything in current_run_mobs)
 			current_run_mobs -= current_mob
 
@@ -802,7 +802,7 @@ SUBSYSTEM_DEF(hijack)
 	log_debug("crack_open_ship took [(world.timeofday - time) / 10]s")
 	explode_apcs(50)
 
-	if(!admin_sd_blocked)
+	if(!admin_sd_blocked && MODE_HAS_MODIFIER(/datum/gamemode_modifier/continue_on_ground_crash))
 		addtimer(CALLBACK(src, PROC_REF(unlock_self_destruct), FALSE), 15 SECONDS)
 
 /// Called to explode the apcs with probability (so more shipwide damage)
@@ -986,12 +986,9 @@ SUBSYSTEM_DEF(hijack)
 		target = target.ChangeTurf(make_current_walkable_type)
 		return target
 
-	// Make target open_space and chuck stuff down
+	// Make target open_space (which will chuck stuff down)
 	var/turf/open_space/space = target.ChangeTurf(/turf/open_space)
-	for(var/atom/movable/thing in space)
-		if(istype(thing, /obj/vis_contents_holder))
-			continue
-		space.check_fall(thing)
+
 	return space
 
 //~~~~~~~~~~~~~~~~~~~~~~~~ FTL STUFF ~~~~~~~~~~~~~~~~~~~~~~~~//

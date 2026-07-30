@@ -18071,7 +18071,7 @@
 	pixel_x = -9;
 	pixel_y = -9
 	},
-/obj/item/reagent_container/hypospray/autoinjector/adrenaline{
+/obj/item/reagent_container/hypospray/autoinjector/standard/adrenaline{
 	pixel_y = 6;
 	pixel_x = 9
 	},

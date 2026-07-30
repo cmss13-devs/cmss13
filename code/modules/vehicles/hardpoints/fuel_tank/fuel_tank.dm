@@ -114,7 +114,7 @@
 		try_tape_leak(item, user)
 		return
 
-	if(!item.reagents)
+	if(!item.reagents || iswelder(item))
 		return ..()
 
 	if(!item.reagents.total_volume)

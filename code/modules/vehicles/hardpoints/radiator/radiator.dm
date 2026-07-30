@@ -92,7 +92,7 @@
 
 /// Pours the held item's reagents into this radiator.
 /obj/item/hardpoint/radiator/attackby(obj/item/item, mob/user)
-	if(!item.reagents)
+	if(!item.reagents || iswelder(item))
 		return ..()
 
 	if(!item.reagents.total_volume)

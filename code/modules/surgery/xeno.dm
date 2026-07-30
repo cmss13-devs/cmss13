@@ -77,6 +77,8 @@
 		playsound(victim, "acid_sizzle", 25, TRUE)
 		animation_flash_color(victim, "#FF0000")
 		//Having acid spray everywhere *but* the floor makes no sense, but this can be removed if research gets too messy.
+		victim.add_blood(BLOOD_COLOR_XENO, BLOOD_HANDS) //messy
+		victim.add_blood(BLOOD_COLOR_XENO, BLOOD_BODY) //splish splosh
 		target.add_splatter_floor(get_turf(target.loc))
 
 /datum/surgery_step/xenomorph/open_exoskeleton
@@ -118,7 +120,9 @@
 		victim.visible_message(
 			SPAN_WARNING("[victim] is [pick("covered", "drenched", "soaked")] in the acidic blood that [pick("spurts", "sprays", "bursts")] out from the [target.caste_type]!"),
 			SPAN_DANGER("You're [pick("covered", "drenched", "soaked")] in the acidic blood that [pick("spurts", "sprays", "bursts")] out from the [target.caste_type]!"))
-		victim.emote("pain")
+
+		victim.add_blood(BLOOD_COLOR_XENO, BLOOD_HANDS)
+		victim.add_blood(BLOOD_COLOR_XENO, BLOOD_BODY)
 		victim.apply_damage(rand(50, 75), BURN) // still dangerous
 		playsound(victim, "acid_sizzle", 25, TRUE)
 		animation_flash_color(victim, "#FF0000")
@@ -171,6 +175,9 @@
 		victim.visible_message(
 			SPAN_WARNING("[victim] is [pick("covered", "drenched", "soaked")] in the acidic blood that [pick("spurts", "sprays", "bursts")] out from the [target.caste_type]!"),
 			SPAN_DANGER("You're [pick("covered", "drenched", "soaked")] in the acidic blood that [pick("spurts", "sprays", "bursts")] out from the [target.caste_type]!"))
+
+		victim.add_blood(BLOOD_COLOR_XENO, BLOOD_HANDS) //messy
+		victim.add_blood(BLOOD_COLOR_XENO, BLOOD_BODY) //splish splosh
 		victim.emote("pain")
 		victim.apply_damage(rand(50, 75), BURN) // not AS dangerous but still is
 		playsound(victim, "acid_sizzle", 25, TRUE)
@@ -223,6 +230,8 @@
 			playsound(user, "acid_sizzle", 25, TRUE)
 			animation_flash_color(user, "#FF0000")
 			//no blood splatter here, we're just sticking our hands in, not cutting anything open
+			user.add_blood(BLOOD_COLOR_XENO, BLOOD_HANDS)
+
 	var/obj/item/organ/xeno/organ = locate() in target
 	if(!isnull(organ))
 		organ.forceMove(target.loc)

@@ -132,9 +132,9 @@
 /datum/surgery_step/place_item/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(tool.w_class >= SIZE_SMALL)
 		user.affected_message(target,
-			SPAN_NOTICE("You tear some blood vessels trying to fit such a bulky object in [target]'s [surgery.affected_limb.cavity], causing internal bleeding!"),
-			SPAN_NOTICE("[user] tears some blood vessels trying to fit such a bulky object in your [surgery.affected_limb.cavity], causing internal bleeding!"),
-			SPAN_NOTICE("[user] tears some blood vessels trying to fit such a bulky object in [target]'s [surgery.affected_limb.cavity], causing internal bleeding!"))
+			SPAN_NOTICE("You tear some blood vessels trying to fit such a bulky object in [target]'s [surgery.affected_limb.cavity]! Blood gushes everywhere, causing internal bleeding!"),
+			SPAN_NOTICE("[user] tears some blood vessels trying to fit such a bulky object in your [surgery.affected_limb.cavity]! Blood gushes everywhere, causing internal bleeding!"),
+			SPAN_NOTICE("[user] tears some blood vessels trying to fit such a bulky object in [target]'s [surgery.affected_limb.cavity]! Blood gushes everywhere, causing internal bleeding!"))
 
 		target.custom_pain("You feel something rip in your [surgery.affected_limb.cavity]!", 1)
 		if(target.stat == CONSCIOUS)
@@ -142,6 +142,8 @@
 			if(target.pain.reduction_pain < surgery.pain_reduction_required)//if patient is not under the proper anesthesia
 				target.emote("pain")
 
+		user.add_blood(target.get_blood_color(), BLOOD_HANDS) //messy
+		user.add_blood(target.get_blood_color(), BLOOD_BODY) //splish splosh
 		var/datum/wound/internal_bleeding/int_bleeding = new (0)
 		surgery.affected_limb.add_bleeding(int_bleeding, TRUE)
 		surgery.affected_limb.wounds += int_bleeding

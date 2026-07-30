@@ -82,7 +82,7 @@
 		user.affected_message(target,
 			SPAN_WARNING("As you sever the larva's pseudoroots, acid sprays into the air and lands in [target]'s [surgery.affected_limb.cavity], where it pools and sizzles across \his organs!"),
 			SPAN_WARNING("As [user] severs the larva's pseudoroots, acid sprays into the air and lands in your [surgery.affected_limb.cavity], where it pools and sizzles across your organs!"),
-			SPAN_WARNING("As [user] severs the larva's pseudoroots, acid sprays into the air and lands in [target]'s [surgery.affected_limb.cavity], where it pools and sizzles over the exposed organs."))
+			SPAN_WARNING("As [user] severs the larva's pseudoroots, acid sprays into the air and lands in [target]'s [surgery.affected_limb.cavity], where it pools and sizzles over \his exposed organs."))
 
 		if(target.stat == CONSCIOUS)
 			to_chat(target, SPAN_HIGHDANGER("Your organs are melting!"))
@@ -91,7 +91,10 @@
 			else
 				target.emote("scream") //MY ORGANS! AAAA!
 
+		playsound(target, "acid_sizzle", 25, TRUE)
 		larva_blood_spray(user, target)
+		target.add_blood(BLOOD_COLOR_XENO, BLOOD_BODY)
+		user.add_blood(BLOOD_COLOR_XENO, BLOOD_BODY)
 		target.apply_damage(15, BURN, target_zone)
 
 		/*10-30 dam across 1-3 organs. This may shred one organ, but will most likely scatter a decent amount of damage across several.
@@ -116,8 +119,16 @@
 		else
 			target.emote("scream")
 
+	playsound(target, "acid_sizzle", 25, TRUE)
 	larva_blood_spray(user, target)
+	target.add_blood(BLOOD_COLOR_XENO, BLOOD_BODY)
+	user.add_blood(BLOOD_COLOR_XENO, BLOOD_BODY)
 	target.apply_damage(15, BURN, target_zone)
+
+	for(var/i in 1 to rand(2,6))
+		var/datum/internal_organ/organ = pick(surgery.affected_limb.internal_organs)
+		organ.take_damage(5, i == 1)
+
 	log_interact(user, target, "[key_name(user)] failed to cut the roots of a larva in [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], aborting [surgery].")
 	return FALSE
 
@@ -182,14 +193,15 @@
 			target.apply_damage(15, BURN, target_zone)
 
 			play_failure_sound(user, target, target_zone, tool, surgery)
-			user.emote("pain")
 			var/hand_zone = user.hand ? "l_hand" : "r_hand"
+			to_chat(user, SPAN_HIGHDANGER("Acid scalds your [user.hand ? "left" : "right"] hand!"))
 			if(user.get_inactive_hand() == src)
 				hand_zone = !hand_zone
 			if(hand_zone)
 				user.apply_damage(15, BURN, "l_hand")
 			else
 				user.apply_damage(15, BURN, "r_hand")
+			user.emote("pain")
 
 		user.count_niche_stat(STATISTICS_NICHE_SURGERY_LARVA)
 		var/mob/living/carbon/xenomorph/larva/larba = locate() in target //the larva was fully grown, ready to burst.
@@ -205,12 +217,10 @@
 			target.status_flags &= ~XENO_HOST
 
 		SEND_SIGNAL(user, COMSIG_HUMAN_REMOVED_A_LARVA)
-		log_interact(user, target, "[key_name(user)] removed an embryo from [key_name(target)]'s ribcage with [tool ? "[tool]" : "their hands"], ending [surgery].")
+		log_interact(user, target, "[key_name(user)] removed an embryo from [key_name(target)]'s ribcage with [tool ? "[tool]" : "their [user.hand ? "left" : "right"] hand"], ending [surgery].")
 
 /datum/surgery_step/remove_larva/failure(mob/living/carbon/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	var/datum/internal_organ/impacted_organ = pick(surgery.affected_limb.internal_organs)
-	impacted_organ.take_damage(5,0)
-
 	user.affected_message(target,
 		SPAN_WARNING("Your [user.hand ? "left" : "right"] slips, bruising [target]'s [impacted_organ.name] and wounding the larva, who spills acid over your hand and into \his [surgery.affected_limb.cavity]!"),
 		SPAN_WARNING("[user]'s [user.hand ? "left" : "right"] slips, bruising your [impacted_organ.name] and wounding the larva, who spills acid over \his hand and into your [surgery.affected_limb.cavity]!"),
@@ -223,10 +233,11 @@
 		else
 			target.emote("scream")
 
+	playsound(target, "acid_sizzle", 25, TRUE)
+	impacted_organ.take_damage(5,0)
 	target.apply_damage(15, BURN, target_zone)
 
 	to_chat(user, SPAN_HIGHDANGER("Acid scalds your [user.hand ? "left" : "right"] hand!"))
-	user.emote("pain")
 	var/hand_zone = user.hand ? "l_hand" : "r_hand"
 	if(user.get_inactive_hand() == src)
 		hand_zone = !hand_zone
@@ -234,6 +245,7 @@
 		user.apply_damage(15, BURN, "l_hand")
 	else
 		user.apply_damage(15, BURN, "r_hand")
+	user.emote("pain")
 
-	log_interact(user, target, "[key_name(user)] failed to remove an embryo from [key_name(target)]'s ribcage with [tool ? "[tool]" : "their hand"].")
+	log_interact(user, target, "[key_name(user)] failed to remove an embryo from [key_name(target)]'s ribcage with [tool ? "[tool]" : "their [user.hand ? "left" : "right"] hand"].")
 	return FALSE

@@ -107,6 +107,17 @@
 	var/last_hypertension_loss_time = 0
 	var/hypertension_loss_time = 10 SECONDS
 
+/datum/behavior_delegate/despoiler_base/proc/add_overlay()
+	empowered_overlay = image('icons/mob/xenos/castes/tier_3/despoiler.dmi', "hypertension")
+	empowered_overlay.layer = FLY_LAYER
+	empowered_overlay.plane = ABOVE_GAME_PLANE
+	bound_xeno.overlays |= empowered_overlay
+
+/datum/behavior_delegate/despoiler_base/proc/remove_overlay()
+	bound_xeno.overlays -= empowered_overlay
+
+
+
 /datum/behavior_delegate/despoiler_base/proc/increase_hypertension(amount)
 	var/mob/living/carbon/xenomorph/despoiler/xeno = bound_xeno
 	hypertension += amount
@@ -198,6 +209,10 @@
 	charge_overlay.layer = FLY_LAYER
 	charge_overlay.plane = ABOVE_GAME_PLANE
 	owner.overlays |= charge_overlay
+	if(stage == 1)
+		var/mob/living/carbon/xenomorph/despoiler/xeno = owner
+		var/datum/behavior_delegate/despoiler_base/delegate = xeno.behavior_delegate
+		delegate.add_overlay()
 
 /datum/action/xeno_action/activable/acid_barrage/proc/notify_max_charge()
 	to_chat(owner, SPAN_XENOHIGHDANGER("Our acid barrage is full!"))
@@ -218,6 +233,7 @@
 	xeno.recalculate_speed()
 
 	var/datum/behavior_delegate/despoiler_base/delegate = xeno.behavior_delegate
+	delegate.remove_overlay()
 	var/time_charged = min(world.time - start_time, max_charge_time)
 	var/modifier = 0
 	if(delegate.hypertension_stacks)
@@ -255,6 +271,9 @@
 
 
 /datum/action/xeno_action/activable/pounce/caustic_embrace/use_ability(atom/target, list/args, released = FALSE)
+	var/mob/living/carbon/xenomorph/despoiler/xeno = owner
+	var/datum/behavior_delegate/despoiler_base/delegate = xeno.behavior_delegate
+	delegate.remove_overlay()
 	UnregisterSignal(owner, COMSIG_MOB_MOUSEUP)
 	if(timer)
 		deltimer(timer)
@@ -271,8 +290,6 @@
 		update_charge_overlay()
 		timer = addtimer(CALLBACK(src, PROC_REF(update_charge)), (max_charge_time / 2), TIMER_STOPPABLE)
 		return
-	var/mob/living/carbon/xenomorph/despoiler/xeno = owner
-	var/datum/behavior_delegate/despoiler_base/delegate = xeno.behavior_delegate
 	stage = min(stage, delegate.hypertension_stacks)
 	distance += stage * 2
 
@@ -296,6 +313,10 @@
 	update_charge_overlay()
 	if(stage == 2)
 		return
+	else
+		var/mob/living/carbon/xenomorph/despoiler/xeno = owner
+		var/datum/behavior_delegate/despoiler_base/delegate = xeno.behavior_delegate
+		delegate.add_overlay()
 	timer = addtimer(CALLBACK(src, PROC_REF(update_charge)), (max_charge_time / 2), TIMER_STOPPABLE)
 
 /datum/action/xeno_action/activable/pounce/caustic_embrace/proc/update_charge_overlay()

@@ -95,6 +95,7 @@
 		larva_blood_spray(user, target)
 		target.add_blood(BLOOD_COLOR_XENO, BLOOD_BODY)
 		user.add_blood(BLOOD_COLOR_XENO, BLOOD_BODY)
+		user.add_blood(BLOOD_COLOR_XENO, BLOOD_HANDS)
 		target.apply_damage(15, BURN, target_zone)
 
 		/*10-30 dam across 1-3 organs. This may shred one organ, but will most likely scatter a decent amount of damage across several.
@@ -123,6 +124,7 @@
 	larva_blood_spray(user, target)
 	target.add_blood(BLOOD_COLOR_XENO, BLOOD_BODY)
 	user.add_blood(BLOOD_COLOR_XENO, BLOOD_BODY)
+	user.add_blood(BLOOD_COLOR_XENO, BLOOD_HANDS)
 	target.apply_damage(15, BURN, target_zone)
 
 	for(var/i in 1 to rand(2,6))
@@ -195,6 +197,7 @@
 			play_failure_sound(user, target, target_zone, tool, surgery)
 			var/hand_zone = user.hand ? "l_hand" : "r_hand"
 			to_chat(user, SPAN_HIGHDANGER("Acid scalds your [user.hand ? "left" : "right"] hand!"))
+			user.add_blood(BLOOD_COLOR_XENO, BLOOD_HANDS)
 			if(user.get_inactive_hand() == src)
 				hand_zone = !hand_zone
 			if(hand_zone)
@@ -233,6 +236,7 @@
 		else
 			target.emote("scream")
 
+	user.add_blood(BLOOD_COLOR_XENO, BLOOD_HANDS)
 	playsound(target, "acid_sizzle", 25, TRUE)
 	impacted_organ.take_damage(5,0)
 	target.apply_damage(15, BURN, target_zone)

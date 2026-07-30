@@ -357,6 +357,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 		list("M44 Heavy Speed Loader (.44)", 10, /obj/item/ammo_magazine/revolver/heavy, null, VENDOR_ITEM_REGULAR),
 
 		list("UTILITIES", 0, null, null, null),
+		list("JP-8 Fuel Canister", 25, /obj/item/reagent_container/glass/beaker/jp8_canister/full, null, VENDOR_ITEM_REGULAR),
 		list("Binoculars", 10, /obj/item/device/binoculars, null, VENDOR_ITEM_REGULAR),
 		list("Fire Extinguisher (Portable)", 5, /obj/item/tool/extinguisher/mini, null, VENDOR_ITEM_REGULAR),
 		list("Fuel Tank Strap Pouch", 5, /obj/item/storage/pouch/flamertank, null, VENDOR_ITEM_REGULAR),

@@ -89930,7 +89930,14 @@
 	},
 /obj/structure/surface/rack,
 /obj/item/device/radio,
-/obj/item/tool/weldpack,
+/obj/item/tool/weldpack{
+	pixel_x = -4;
+	pixel_y = 0
+	},
+/obj/item/reagent_container/glass/beaker/jp8_canister/full{
+	pixel_x = 6;
+	pixel_y = -2
+	},
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/hallways/lower/vehiclehangar)
 "tFF" = (

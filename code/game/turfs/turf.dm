@@ -883,21 +883,18 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 		T.setDir(dir)
 	return T
 
-/turf/open/shuttle/dropship/copyTurf(turf/open/shuttle/dropship/T)
-	if(T.type != type)
-		T.ChangeTurf(type)
-	if(T.icon_state != icon_state)
-		T.icon_state = icon_state
-	if(T.icon != icon)
-		T.icon = icon
-	//if(color)
-	// T.atom_colours = atom_colours.Copy()
-	// T.update_atom_colour()
-	if(T.dir != dir)
-		T.setDir(dir)
-	if(T.linked_door != linked_door)
-		T.linked_door = linked_door
-	return T
+/turf/open/shuttle/dropship/copyTurf(turf/open/shuttle/dropship/turfazoid)
+	if(turfazoid.type != type)
+		turfazoid.ChangeTurf(type)
+	if(turfazoid.icon_state != icon_state)
+		turfazoid.icon_state = icon_state
+	if(turfazoid.icon != icon)
+		turfazoid.icon = icon
+	if(turfazoid.dir != dir)
+		turfazoid.setDir(dir)
+	if(turfazoid.linked_door != linked_door)
+		turfazoid.linked_door = linked_door
+	return turfazoid
 
 /turf/proc/remove_flag(flag)
 	turf_flags &= ~flag

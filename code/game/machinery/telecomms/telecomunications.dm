@@ -64,6 +64,8 @@ GLOBAL_LIST_EMPTY_TYPED(telecomms_list, /obj/structure/machinery/telecomms)
 
 // When effectively started up
 /obj/structure/machinery/telecomms/proc/tcomms_startup()
+	if(!toggled)
+		return
 	on = TRUE
 	if(tcomms_machine)
 		SSradio.add_tcomm_machine(src)

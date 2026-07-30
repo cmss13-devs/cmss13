@@ -16,22 +16,32 @@
 /datum/ss13lib/proc/perform_handshake()
 	SS13LIB_INFO_LOG("Beginning handshake with hub server.")
 
-	var/handshake_url = "[SS13LIB_HUB_SERVER]/handshake?port=[SS13LIB_SERVER_PORT]&version=[SS13LIB_VERSION]"
+	var/list/handshake_body = list(
+		"port" = SS13LIB_SERVER_PORT,
+		"version" = SS13LIB_VERSION,
+	)
+
 #ifdef SS13LIB_AUTH_METHODS
 	var/list/auth_methods = SS13LIB_AUTH_METHODS
 	if(length(auth_methods))
-		handshake_url += "&auth_methods=[jointext(auth_methods, ",")]"
+		handshake_body["auth_methods"] = auth_methods
 #endif
+
 #ifdef SS13LIB_ENGINE
 	var/engine = SS13LIB_ENGINE
 	if(length(engine))
-		handshake_url += "&engine=[engine]"
+		handshake_body["engine"] = engine
 #endif
+
+	handshake_body += build_static_info()
+
+	var/handshake_url = "[SS13LIB_HUB_SERVER]/handshake"
 
 	for(var/i in 1 to SS13LIB_MAX_HANDSHAKE_ATTEMPTS)
 		var/datum/ss13lib_http_response/response = perform_http_request(
-			SS13LIB_HTTP_GET,
+			SS13LIB_HTTP_POST,
 			handshake_url,
+			handshake_body,
 		)
 
 		if(response.errored)

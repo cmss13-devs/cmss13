@@ -73,6 +73,11 @@
 /// Optional field
 #define SS13LIB_WHITELISTED // list("link" = list("type" = "discord", "link" = "https://discord.gg/invite/example"), "description" = "Apply in #whitelist-apps")
 
+/// If this server has a terms of service, provide the URL where players can view it.
+/// When set, the launcher prompts players to accept before joining.
+/// Optional field
+#define SS13LIB_TERMS_OF_SERVICE // "https://myserver.com/tos"
+
 /// If this server has a maximum number of connected players
 /// Optional field
 #define SS13LIB_PLAYER_LIMIT // CONFIG_GET(number/popcap)

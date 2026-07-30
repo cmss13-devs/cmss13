@@ -20,6 +20,9 @@
 #endif
 		return json_encode(response)
 
+	if(parameters[SS13LIB_INFO_CODE])
+		return json_encode(build_static_info())
+
 	if(!parameters[SS13LIB_QUERY_CODE])
 		return FALSE
 
@@ -43,59 +46,6 @@
 #error SS13LIB_PLAYER_COUNT must be defined if using external SS13Lib configuration!
 #endif
 		"pop" = SS13LIB_PLAYER_COUNT,
-
-#ifndef SS13LIB_SERVER_DISPLAY_NAME
-#error SS13LIB_SERVER_DISPLAY_NAME must be defined if using external SS13Lib configuration!
-#endif
-		"display_name" = SS13LIB_SERVER_DISPLAY_NAME,
-
-#ifndef SS13LIB_SERVER_LANGUAGE
-#error SS13LIB_SERVER_LANGUAGE must be defined if using external SS13Lib configuration!
-#endif
-		"language" = SS13LIB_SERVER_LANGUAGE,
-
-#ifdef SS13LIB_SERVER_DESCRIPTION
-		"description" = SS13LIB_SERVER_DESCRIPTION,
-#endif
-
-#ifdef SS13LIB_PLAYER_LIMIT
-		"pop_cap" = SS13LIB_PLAYER_LIMIT,
-#endif
-
-#ifdef SS13LIB_REGION
-		"region" = SS13LIB_REGION,
-#endif
-
-#ifdef SS13LIB_SERVER_TAGS
-		"server_tags" = SS13LIB_SERVER_TAGS,
-#endif
-
-
-		"engine" = list(
-#ifdef SS13LIB_ENGINE_MIN_VERSION
-			"min_version" = SS13LIB_ENGINE_MIN_VERSION,
-#endif
-
-#ifdef SS13LIB_ENGINE_MAX_VERSION
-			"max_version" = SS13LIB_ENGINE_MAX_VERSION,
-#endif
-
-#ifdef SS13LIB_ENGINE_BLACKLISTED_VERSIONS
-			"blacklisted_versions" = SS13LIB_ENGINE_BLACKLISTED_VERSIONS,
-#endif
-		),
-
-#ifdef SS13LIB_SERVER_LINKS
-		"links" = SS13LIB_SERVER_LINKS,
-#endif
-
-#ifdef SS13LIB_WHITELISTED
-		"whitelisted" = SS13LIB_WHITELISTED,
-#endif
-
-#ifdef SS13LIB_CONNECTION_ADDRESS
-		"connection_address" = SS13LIB_CONNECTION_ADDRESS,
-#endif
 
 		"round" = list(
 #ifdef SS13LIB_ROUND_MAP_NAME
@@ -130,4 +80,62 @@
 
 	return json_encode(response)
 
+/datum/ss13lib/proc/build_static_info()
+	var/response = list()
 
+#ifndef SS13LIB_SERVER_DISPLAY_NAME
+#error SS13LIB_SERVER_DISPLAY_NAME must be defined if using external SS13Lib configuration!
+#endif
+	response["display_name"] = SS13LIB_SERVER_DISPLAY_NAME
+
+#ifndef SS13LIB_SERVER_LANGUAGE
+#error SS13LIB_SERVER_LANGUAGE must be defined if using external SS13Lib configuration!
+#endif
+	response["language"] = SS13LIB_SERVER_LANGUAGE
+
+#ifdef SS13LIB_SERVER_DESCRIPTION
+	response["description"] = SS13LIB_SERVER_DESCRIPTION
+#endif
+
+#ifdef SS13LIB_PLAYER_LIMIT
+	response["pop_cap"] = SS13LIB_PLAYER_LIMIT
+#endif
+
+#ifdef SS13LIB_REGION
+	response["region"] = SS13LIB_REGION
+#endif
+
+#ifdef SS13LIB_SERVER_TAGS
+	response["server_tags"] = SS13LIB_SERVER_TAGS
+#endif
+
+	var/list/engine_info = list()
+#ifdef SS13LIB_ENGINE_MIN_VERSION
+	engine_info["min_version"] = SS13LIB_ENGINE_MIN_VERSION
+#endif
+#ifdef SS13LIB_ENGINE_MAX_VERSION
+	engine_info["max_version"] = SS13LIB_ENGINE_MAX_VERSION
+#endif
+#ifdef SS13LIB_ENGINE_BLACKLISTED_VERSIONS
+	engine_info["blacklisted_versions"] = SS13LIB_ENGINE_BLACKLISTED_VERSIONS
+#endif
+	if(length(engine_info))
+		response["engine"] = engine_info
+
+#ifdef SS13LIB_SERVER_LINKS
+	response["links"] = SS13LIB_SERVER_LINKS
+#endif
+
+#ifdef SS13LIB_WHITELISTED
+	response["whitelisted"] = SS13LIB_WHITELISTED
+#endif
+
+#ifdef SS13LIB_TERMS_OF_SERVICE
+	response["terms_of_service"] = list("url" = SS13LIB_TERMS_OF_SERVICE)
+#endif
+
+#ifdef SS13LIB_CONNECTION_ADDRESS
+	response["connection_address"] = SS13LIB_CONNECTION_ADDRESS
+#endif
+
+	return response

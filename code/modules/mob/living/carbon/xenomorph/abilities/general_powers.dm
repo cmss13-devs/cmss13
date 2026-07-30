@@ -125,10 +125,7 @@
 		return
 	if(turf.density)
 		return
-	var/is_weedable = turf.is_weedable
-	if(!is_weedable)
-		return
-	if(is_weedable < FULLY_WEEDABLE)
+	if(turf.is_weedable < FULLY_WEEDABLE)
 		return
 
 	for(var/obj/effect/alien/weeds/node/preplanted_node in view(4, turf))

@@ -395,7 +395,6 @@
 	if(flags_atom & MAP_COLOR_INDEX)
 		return
 	var/list/states = icon_states(icon)
-	/// this keeps track of what map it is so we can look for map_prefix + whichever sprite we need at that time
 	var/map_prefix
 	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 		if("jungle")

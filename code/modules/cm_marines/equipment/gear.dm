@@ -554,29 +554,29 @@
 	user.temp_drop_inv_item()
 	qdel(src)
 
-/obj/item/device/overwatch_camera_tripod/attackby(obj/item/item, mob/user)
-	if(istype(item, /obj/item/device/multitool))
-		// ToDO: This should be magic-fied so it covers UPP, TWE, CLF etc for future use
-		var/list/squad_names = list("Alpha", "Bravo", "Charlie", "Delta", "Intel", "Foxtrot", "Clear Override")
-		var/selected = tgui_input_list(user, "Select a Squad for this camera to stream to.", "Override Squad", squad_names)
-		if(!selected)
-			return
-		if(selected == "Clear Override")
-			squad = null
-			to_chat(user, SPAN_NOTICE("Squad override cleared."))
-		else
-			var/datum/squad/found = null // mostly a safety check
-			for(var/datum/squad/squad in GLOB.RoleAuthority.squads)
-				if(squad.name == selected)
-					found = squad
-					break
-			if(found)
-				squad = found
-				to_chat(user, SPAN_NOTICE("Squad set to [selected]."))
-			else
-				to_chat(user, SPAN_WARNING("Squad [selected] not found."))
-		return
-	..()
+// /obj/item/device/overwatch_camera_tripod/attackby(obj/item/item, mob/user)
+// 	if(istype(item, /obj/item/device/multitool))
+// 		// ToDO: This should be magic-fied so it covers UPP, TWE, CLF etc for future use
+// 		var/list/squad_names = list("Alpha", "Bravo", "Charlie", "Delta", "Intel", "Foxtrot", "Clear Override")
+// 		var/selected = tgui_input_list(user, "Select a Squad for this camera to stream to.", "Override Squad", squad_names)
+// 		if(!selected)
+// 			return
+// 		if(selected == "Clear Override")
+// 			squad = null
+// 			to_chat(user, SPAN_NOTICE("Squad override cleared."))
+// 		else
+// 			var/datum/squad/found = null // mostly a safety check
+// 			for(var/datum/squad/squad in GLOB.RoleAuthority.squads)
+// 				if(squad.name == selected)
+// 					found = squad
+// 					break
+// 			if(found)
+// 				squad = found
+// 				to_chat(user, SPAN_NOTICE("Squad set to [selected]."))
+// 			else
+// 				to_chat(user, SPAN_WARNING("Squad [selected] not found."))
+// 		return
+// 	..()
 
 /obj/structure/overwatch_camera_tripod
 	name = "FTC Tripod Camera"

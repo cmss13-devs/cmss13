@@ -187,8 +187,8 @@
 	if(surgery.affected_limb.hidden) //Perhaps it self-deleted in the meantime.
 		user.affected_message(target,
 			SPAN_NOTICE("You attempt to get a grip on [surgery.affected_limb.hidden] implanted in [target]'s [surgery.affected_limb.cavity] with [tool]."),
-			SPAN_NOTICE("[user] attempt to get a grip on [surgery.affected_limb.hidden] implanted in your [surgery.affected_limb.cavity] with [tool]."),
-			SPAN_NOTICE("[user] attempt to get a grip on [surgery.affected_limb.hidden] implanted in [target]'s [surgery.affected_limb.cavity] with [tool]."))
+			SPAN_NOTICE("[user] attempts to get a grip on [surgery.affected_limb.hidden] implanted in your [surgery.affected_limb.cavity] with [tool]."),
+			SPAN_NOTICE("[user] attempts to get a grip on [surgery.affected_limb.hidden] implanted in [target]'s [surgery.affected_limb.cavity] with [tool]."))
 	else
 		user.affected_message(target,
 			SPAN_NOTICE("You start poking around inside [target]'s [surgery.affected_limb.cavity] with [tool]."),

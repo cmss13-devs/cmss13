@@ -1,5 +1,0 @@
-author: "Puckaboo2"
-delete-after: True
-changes:
-  - bugfix: "CLF Soldiers and CLF Survivor Medics no longer spawn with deployed Surgical Beds in their inventories."
-  - bugfix: "Roller Beds and Surgical Beds longer vend from vending machines and Doctor/Field Doctor Essentials already deployed, so you no longer need to roll them up."

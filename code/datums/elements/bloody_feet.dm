@@ -32,7 +32,7 @@
 		RegisterSignal(shoes, COMSIG_ITEM_DROPPED, PROC_REF(on_shoes_removed), override = TRUE)
 
 	if(dry_time)
-		addtimer(CALLBACK(src, PROC_REF(clear_blood), target), dry_time)
+		addtimer(CALLBACK(src, PROC_REF(clear_blood), WEAKREF(target)), dry_time)
 
 /datum/element/bloody_feet/Detach(datum/target, force)
 	UnregisterSignal(target, list(
@@ -98,9 +98,12 @@
 /datum/element/bloody_feet/proc/blood_crossed(mob/living/carbon/human/target, amount, bcolor, dry_time_left)
 	SIGNAL_HANDLER
 	Detach(target)
-	if(!QDELETED(target) && target.stat == CONSCIOUS)
+	if(target.stat == CONSCIOUS)
 		target.AddElement(/datum/element/bloody_feet, dry_time_left, target.shoes, amount, bcolor)
 
 /datum/element/bloody_feet/proc/clear_blood(datum/target)
 	SIGNAL_HANDLER
+	if(isweakref(target))
+		var/datum/weakref/target_ref = target
+		target = target_ref.resolve()
 	Detach(target)

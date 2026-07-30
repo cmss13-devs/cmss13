@@ -227,10 +227,10 @@
 		var/rankpath = get_rank_pins(current_rank)
 		if(rankpath)
 			var/obj/item/clothing/accessory/ranks/R = new rankpath()
-			if(new_human.wear_suit && new_human.wear_suit.can_attach_accessory(R))
-				new_human.wear_suit.attach_accessory(new_human, R, TRUE)
-			else if(new_human.w_uniform && new_human.w_uniform.can_attach_accessory(R))
+			if(new_human.w_uniform && new_human.w_uniform.can_attach_accessory(R))
 				new_human.w_uniform.attach_accessory(new_human, R, TRUE)
+			else if(new_human.wear_suit && new_human.wear_suit.can_attach_accessory(R))
+				new_human.wear_suit.attach_accessory(new_human, R, TRUE)
 			else
 				qdel(R)
 

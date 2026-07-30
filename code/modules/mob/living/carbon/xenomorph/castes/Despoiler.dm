@@ -275,7 +275,7 @@
 	UnregisterSignal(user, COMSIG_MOB_MOUSEUP)
 
 
-/datum/action/xeno_action/activable/pounce/caustic_embrace/use_ability(atom/target, list/args, released = FALSE)
+/datum/action/xeno_action/activable/pounce/caustic_embrace/use_ability(atom/target, list/unused_aguments, released = FALSE)
 	var/mob/living/carbon/xenomorph/despoiler/xeno = owner
 	var/datum/behavior_delegate/despoiler_base/delegate = xeno.behavior_delegate
 	delegate.remove_overlay()

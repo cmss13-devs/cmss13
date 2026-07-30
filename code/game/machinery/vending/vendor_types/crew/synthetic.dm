@@ -40,7 +40,7 @@
 		list("Stasis Bag", 6, /obj/item/bodybag/cryobag, null, VENDOR_ITEM_REGULAR),
 		list("MS-11 Smart Refill Tank", 6, /obj/item/reagent_container/glass/minitank, null, VENDOR_ITEM_REGULAR),
 		list("Blood", 5, /obj/item/reagent_container/blood/OMinus, null, VENDOR_ITEM_REGULAR),
-		list("Surgical Bed", 10, /obj/structure/bed/portable_surgery, null, VENDOR_ITEM_REGULAR),
+		list("Surgical Bed", 10, /obj/item/roller/surgical, null, VENDOR_ITEM_REGULAR),
 
 		list("Pill Bottle (Bicaridine)", 5, /obj/item/storage/pill_bottle/bicaridine, null, VENDOR_ITEM_RECOMMENDED),
 		list("Pill Bottle (Dexalin)", 5, /obj/item/storage/pill_bottle/dexalin, null, VENDOR_ITEM_REGULAR),
@@ -223,7 +223,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 	path = /obj/item/clothing/under/rank/medical/morgue
 
 /datum/gear/synthetic/uscm/medical_pharmacist
-	path = /obj/item/clothing/under/rank/medical/pharmacist
+	path = /obj/item/clothing/under/rank/medical/white
 
 /datum/gear/synthetic/uscm/standard_synth
 	path = /obj/item/clothing/under/rank/synthetic
@@ -528,7 +528,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 	path = /obj/item/clothing/head/surgery/morgue
 
 /datum/gear/synthetic/headwear/surgcap_pharmacist
-	path = /obj/item/clothing/head/surgery/pharmacist
+	path = /obj/item/clothing/head/surgery/white
 
 /datum/gear/synthetic/headwear/beanie
 	path = /obj/item/clothing/head/beanie

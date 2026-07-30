@@ -128,6 +128,9 @@ SUBSYSTEM_DEF(hijack)
 	/// A list of all APCs on the main ship
 	var/list/obj/structure/machinery/power/apc/almayer/apcs = list()
 
+	/// A list of all powernets on the main ship
+	var/list/datum/powernet/powernets = list()
+
 /datum/controller/subsystem/hijack/Initialize(timeofday)
 	RegisterSignal(SSdcs, COMSIG_GLOB_GENERATOR_SET_OVERLOADING, PROC_REF(on_generator_overload))
 
@@ -192,6 +195,16 @@ SUBSYSTEM_DEF(hijack)
 
 			if((sd_time_remaining <= 0) && !sd_detonated)
 				detonate_sd()
+
+		// Handle power shortage by ship being cracked in half
+		if(crashed && hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)
+			for(var/obj/structure/machinery/power/apc/almayer/apc as anything in apcs)
+				if(prob(5))
+					apc.shorted = TRUE
+					playsound(apc.loc, 'sound/effects/sparks2.ogg', 25, 1)
+					var/datum/effect_system/spark_spread/spark = new /datum/effect_system/spark_spread
+					spark.set_up(2, 1, apc)
+					spark.start()
 		return
 
 	if(!SSticker.mode.count_marines(SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)))
@@ -207,9 +220,9 @@ SUBSYSTEM_DEF(hijack)
 			current_run_mobs = GLOB.alive_human_list.Copy()
 
 	if(in_ftl)
-		// Scalar between 30s and 5min for ~0-25% chance of a hallucination when in FTL outside a pod
+		// Scalar between 30s and 15min for ~0-12.5% chance of a hallucination when in FTL outside a pod
 		var/duration_clamped = clamp(world.time - in_ftl_time, 30 SECONDS, 5 MINUTES)
-		var/chance_haullucinate = SCALE(duration_clamped, 30 SECONDS, 20 MINUTES) * 100 // max actually seems to be like ~23% because byond floats
+		var/chance_haullucinate = SCALE(duration_clamped, 30 SECONDS, 40 MINUTES) * 100 // max actually seems to be a little less because byond floats
 		for(var/mob/living/carbon/human/current_mob as anything in current_run_mobs)
 			current_run_mobs -= current_mob
 
@@ -723,7 +736,7 @@ SUBSYSTEM_DEF(hijack)
 	if(!ground_origin)
 		CRASH("Unable to determine origin location on groundmap for hijack ground crash! Origin can be manually specified with a /obj/effect/landmark/mainship_crashsite")
 
-	msg_admin_niche("Crashing mainship to[ADMIN_COORDJMP(ground_origin)]")
+	msg_admin_niche("Crashing mainship to [ADMIN_COORDJMP(ground_origin)]")
 
 	shakeship(
 		sstrength = 1,
@@ -789,7 +802,7 @@ SUBSYSTEM_DEF(hijack)
 	log_debug("crack_open_ship took [(world.timeofday - time) / 10]s")
 	explode_apcs(50)
 
-	if(!admin_sd_blocked)
+	if(!admin_sd_blocked && MODE_HAS_MODIFIER(/datum/gamemode_modifier/continue_on_ground_crash))
 		addtimer(CALLBACK(src, PROC_REF(unlock_self_destruct), FALSE), 15 SECONDS)
 
 /// Called to explode the apcs with probability (so more shipwide damage)
@@ -797,7 +810,7 @@ SUBSYSTEM_DEF(hijack)
 	var/cause_data = create_cause_data("ship explosion")
 	for(var/obj/structure/machinery/power/apc/apc as anything in apcs)
 		var/turf/apc_turf = get_turf(apc)
-		if(apc_turf && prob(chance))
+		if(apc_turf && apc.crash_break_probability && prob(chance))
 			cell_explosion(apc_turf, 30, 5, explosion_cause_data=cause_data, enviro=TRUE)
 			CHECK_TICK
 
@@ -973,12 +986,9 @@ SUBSYSTEM_DEF(hijack)
 		target = target.ChangeTurf(make_current_walkable_type)
 		return target
 
-	// Make target open_space and chuck stuff down
+	// Make target open_space (which will chuck stuff down)
 	var/turf/open_space/space = target.ChangeTurf(/turf/open_space)
-	for(var/atom/movable/thing in space)
-		if(istype(thing, /obj/vis_contents_holder))
-			continue
-		space.check_fall(thing)
+
 	return space
 
 //~~~~~~~~~~~~~~~~~~~~~~~~ FTL STUFF ~~~~~~~~~~~~~~~~~~~~~~~~//

@@ -216,13 +216,6 @@
 	for(var/mob/current in hearers(hear_dist, loc))
 		current.show_message(message, SHOW_MESSAGE_AUDIBLE, deaf_message, SHOW_MESSAGE_VISIBLE, message_flags = message_flags)
 
-/atom/proc/ranged_message(message, blind_message, max_distance, message_flags = CHAT_TYPE_OTHER)
-	var/view_dist = 7
-	if(max_distance)
-		view_dist = max_distance
-	for(var/mob/M in orange(view_dist, src))
-		M.show_message(message, SHOW_MESSAGE_VISIBLE, blind_message, SHOW_MESSAGE_AUDIBLE, message_flags)
-
 
 /mob/proc/findname(msg)
 	for(var/mob/M in GLOB.mob_list)
@@ -725,6 +718,8 @@ note dizziness decrements automatically in the mob's Life() proc.
 	if(!canface())
 		return 0
 	if(dir != ndir)
+		if(HAS_TRAIT(src, TRAIT_ABILITY_REFLECTIVE_PLATES))
+			return
 		flags_atom &= ~DIRLOCK
 		setDir(ndir)
 	if(buckled && !buckled.anchored)

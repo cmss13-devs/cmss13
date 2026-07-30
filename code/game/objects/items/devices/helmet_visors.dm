@@ -88,16 +88,19 @@
 /obj/item/device/helmet_visor/medical/advanced
 	name = "advanced medical optic"
 	helmet_overlay = "med_sight_right"
+	var/datum/weakref/equipped_user
 
 /obj/item/device/helmet_visor/medical/advanced/activate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
 	. = ..()
-
+	equipped_user = WEAKREF(user)
+	user.RegisterSignal(GLOB.chemical_data, COMSIG_CHEMICAL_ANNOUNCEMENT, PROC_REF(announce_to_user), override = TRUE)
 	var/datum/action/item_action/view_publications/helmet_visor/publication_action = new(attached_helmet)
 	publication_action.give_to(user)
 
 /obj/item/device/helmet_visor/medical/advanced/deactivate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
 	. = ..()
-
+	equipped_user = null
+	UnregisterSignal(GLOB.chemical_data, COMSIG_CHEMICAL_ANNOUNCEMENT)
 	var/datum/action/item_action/view_publications/helmet_visor/publication_action = locate() in attached_helmet.actions
 	qdel(publication_action)
 
@@ -111,6 +114,11 @@
 		return FALSE
 
 	return TRUE
+
+/obj/item/device/helmet_visor/medical/advanced/proc/announce_to_user(datum/source, text, name)
+	var/mob/player = equipped_user.resolve()
+	playsound_client(player.client, 'sound/effects/radiostatic.ogg', player.loc, 25, FALSE)
+	player.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>Chemical Advisory: [name]</u></span><br>[text]", /atom/movable/screen/text/screen_text/chemical_advisory, "#13d182", TRUE)
 
 /obj/item/device/helmet_visor/medical/advanced/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_strict_state

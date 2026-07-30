@@ -37,3 +37,8 @@
 	heat_damage_per_tick = 15 //amount of damage applied if animal's body temperature is higher than maxbodytemp
 	cold_damage_per_tick = 10 //same as heat_damage_per_tick, only if the bodytemperature it's lower than minbodytemp
 	unsuitable_atoms_damage = 10
+
+/mob/living/simple_animal/hostile/retaliate/clown/Initialize()
+	. = ..()
+	AddElement(/datum/element/waddling)
+	AddComponent(/datum/component/footstep, 2, 10, 4, 4, "clown_footstep", vary_ = 0)

@@ -43,7 +43,6 @@
 	mob_size = MOB_SIZE_XENO
 	hand = 1 //Make right hand active by default. 0 is left hand, mob defines it as null normally
 	see_in_dark = 12
-	recovery_constant = 1.5
 	see_invisible = SEE_INVISIBLE_LIVING
 	hud_possible = list(HEALTH_HUD_XENO, PLASMA_HUD, SPECIAL_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_TAG_SPREAD, XENO_HOSTILE_FREEZE, HUNTER_HUD, NEW_PLAYER_HUD)
 	unacidable = TRUE
@@ -136,6 +135,8 @@
 	var/armor_integrity_last_damage_time = 0
 	var/armor_integrity_immunity_time = 0
 
+	var/melee_vulnerability_mult = 0
+
 	var/pull_multiplier = 1
 	var/aura_strength = 0 // Pheromone strength
 	var/weed_level = WEED_LEVEL_STANDARD
@@ -211,6 +212,8 @@
 	var/plasmapool_modifier = 1
 	var/plasmagain_modifier = 0
 	var/tackle_chance_modifier = 0
+	var/tackle_min_modifier = 0
+	var/tackle_max_modifier = 0
 	var/regeneration_multiplier = 1
 	var/speed_modifier = 0
 	var/phero_modifier = 0
@@ -220,6 +223,9 @@
 	var/evasion_modifier = 0
 	var/attack_speed_modifier = 0
 	var/armor_integrity_modifier = 0
+
+	///Used to add plasma to strain if caste have 0 plasma_max
+	var/add_plasma = 0
 
 	var/list/modifier_sources
 	COOLDOWN_DECLARE(next_strain_reset)
@@ -248,6 +254,7 @@
 	/// Caste-based spit windup
 	var/spit_windup = FALSE
 	/// Caste-based spit windup duration (if applicable)
+	var/spit_delay = 0
 	var/tileoffset = 0 	// How much your view will be offset in the direction that you zoom?
 	var/viewsize = 0	//What size your view will be changed to when you zoom?
 	var/banished = FALSE // Banished xenos can be attacked by all other xenos
@@ -318,12 +325,15 @@
 	var/obj/effect/alien/resin/fruit/selected_fruit = null
 	var/list/built_structures = list()
 
-	// Designer stuff
+	/// Designer related
 	var/obj/effect/alien/resin/design/selected_design = null
 	var/list/available_design = list()
 	var/list/current_design = list()
 	var/max_design_nodes = 0
 	var/selected_design_mark
+
+	var/front_armor
+	var/side_armor
 
 	var/icon_xeno
 	var/icon_xenonid
@@ -502,7 +512,7 @@
 		INVOKE_NEXT_TICK(src, PROC_REF(add_minimap_marker))
 
 	//Sight
-	sight |= (SEE_MOBS|SEE_BLACKNESS|SEE_TURFS)
+	sight |= SEE_MOBS
 	see_invisible = SEE_INVISIBLE_LIVING
 	see_in_dark = 12
 
@@ -606,6 +616,9 @@
 		. |= COMPONENT_NO_IGNITE
 	if(fire_immunity & FIRE_IMMUNITY_XENO_FRENZY)
 		. |= COMPONENT_XENO_FRENZY
+
+/mob/living/carbon/xenomorph/proc/get_reflection_chance(obj/projectile/bullet)
+	return
 
 //Off-load this proc so it can be called freely
 //Since Xenos change names like they change shoes, we need somewhere to hammer in all those legos
@@ -945,8 +958,8 @@
 	recalculate_tackle()
 
 /mob/living/carbon/xenomorph/proc/recalculate_tackle()
-	tackle_min = caste.tackle_min
-	tackle_max = caste.tackle_max
+	tackle_min = caste.tackle_min + tackle_min_modifier
+	tackle_max = caste.tackle_max + tackle_max_modifier
 	tackle_chance = caste.tackle_chance + tackle_chance_modifier
 	tacklestrength_min = caste.tacklestrength_min
 	tacklestrength_max = caste.tacklestrength_max
@@ -967,19 +980,23 @@
 		health = maxHealth
 
 /mob/living/carbon/xenomorph/proc/recalculate_plasma()
-	if(!plasma_max)
+	var/new_plasma_max = (plasmapool_modifier * caste.plasma_max) + add_plasma
+	if(!plasma_max && new_plasma_max <= 0)
 		return
 
-	var/new_plasma_max = plasmapool_modifier * caste.plasma_max
 	plasma_gain = plasmagain_modifier + caste.plasma_gain
 	if(hive)
 		new_plasma_max += hive.hive_stat_modifier_flat["plasmapool"]
 		new_plasma_max *= hive.hive_stat_modifier_multiplier["plasmapool"]
 		plasma_gain += hive.hive_stat_modifier_flat["plasmagain"]
 		plasma_gain *= hive.hive_stat_modifier_multiplier["plasmagain"]
-	if (new_plasma_max == plasma_max)
+	if(new_plasma_max == plasma_max)
 		return
-	var/plasma_ratio = plasma_stored / plasma_max
+
+	var/plasma_ratio = 0
+	if(plasma_max > 0)
+		plasma_ratio = plasma_stored / plasma_max
+
 	plasma_max = new_plasma_max
 	plasma_stored = floor(plasma_max * plasma_ratio + 0.5) //Restore our plasma ratio, so if we're full, we continue to be full, etc. Rounding up (hence the +0.5)
 	if(plasma_stored > plasma_max)
@@ -1133,6 +1150,13 @@
 	drop_inv_item_on_ground(legcuffed)
 
 /mob/living/carbon/xenomorph/IgniteMob(force)
+	// Force xenos out of hiding if something tried to ignite it (like walking over fire)
+	if(layer == XENO_HIDING_LAYER)
+		var/datum/action/xeno_action/onclick/xenohide/hide = get_action(src, /datum/action/xeno_action/onclick/xenohide)
+		if (hide)
+			INVOKE_ASYNC(hide, TYPE_PROC_REF(/datum/action/xeno_action/onclick/xenohide, use_ability))
+			visible_message(SPAN_DANGER("[src] is forced out of hiding by the flames!"), SPAN_DANGER("You are forced out of hiding by the flames!"))
+
 	var/penetrating = fire_reagent?.fire_penetrating && !(fire_immunity & FIRE_IMMUNITY_IGNORE_PEN)
 	if(!force && !penetrating)
 		if((fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
@@ -1259,24 +1283,11 @@
 
 /mob/living/carbon/xenomorph/proc/get_throw_range(obj/item/I)
 	return 1
-/**
- * Checks if user can mount src
- *
- * Arguments:
- * * user - The mob trying to mount
- * * target_mounting - Is the target initiating the mounting process?
- */
-/mob/living/carbon/xenomorph/proc/can_mount(mob/living/user, target_mounting = FALSE)
+
+/mob/living/carbon/xenomorph/can_mount(mob/living/user, target_mounting = FALSE)
 	return FALSE
 
-/**
- * Handles the target trying to ride src
- *
- * Arguments:
- * * target - The mob being put on the back
- * * target_mounting - Is the target initiating the mounting process?
- */
-/mob/living/carbon/xenomorph/proc/carry_target(mob/living/carbon/target, target_mounting = FALSE)
+/mob/living/carbon/xenomorph/carry_target(mob/living/carbon/target, target_mounting = FALSE)
 	if(!ismob(target))
 		return
 	if(target.is_mob_incapacitated())
@@ -1299,6 +1310,3 @@
 	. = ..()
 	if(isxeno(user))
 		return
-	if(!can_mount(user, TRUE))
-		return
-	INVOKE_ASYNC(src, PROC_REF(carry_target), dropping, TRUE) // target_mounting is always true, the runner should never be buckling someone to itself (unless someone wants to make it happen)

@@ -169,8 +169,6 @@
 		if(living_mob.ally_of_hivenumber(hivenumber))
 			if(!weak_extinguish)
 				living_mob.ExtinguishMob()
-			else
-				living_mob.adjust_fire_stacks(-10, min_stacks = 0) //two pats
 		else
 			apply_spray(living_mob)
 	else if(isVehicleMultitile(AM))

@@ -69,8 +69,6 @@
 
 	var/voice
 
-	var/special_voice = "" // For changing our voice. Used by a symptom.
-
 	var/last_dam = -1 //Used for determining if we need to process all limbs or just some or even none.
 	var/list/limbs_to_process = list()// limbs we check until they are good.
 
@@ -84,7 +82,6 @@
 	//Life variables
 	var/oxygen_alert = 0
 	var/fire_alert = 0
-	var/prev_gender = null // Debug for plural genders
 	var/revive_grace_period = 5 MINUTES //5 minutes
 	var/undefibbable = FALSE //whether the human is dead and past the defibbrillation period.
 
@@ -166,7 +163,7 @@
 		HOLOCARD_HUD,
 		NEW_PLAYER_HUD,
 		)
-	var/embedded_flag //To check if we've need to roll for damage on movement while an item is imbedded in us.
+
 	var/allow_gun_usage = TRUE
 	var/melee_allowed = TRUE
 	var/throw_allowed = TRUE

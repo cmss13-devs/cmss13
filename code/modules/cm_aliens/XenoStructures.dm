@@ -135,6 +135,7 @@
 	explo_proof = TRUE
 	invisibility = 101
 	alpha = 0
+	flags_atom = NO_ZFALL
 	/// The atom we are blocking for
 	var/atom/linked_structure
 
@@ -167,15 +168,15 @@
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
 /obj/effect/alien/resin/sticky/Crossed(atom/movable/AM)
-	. = ..()
+	..()
 	var/mob/living/carbon/human/H = AM
 	if(istype(H) && !H.ally_of_hivenumber(hivenumber))
 		H.next_move_slowdown = max(H.next_move_slowdown, slow_amt)
-		return .
+		return
 	var/mob/living/carbon/xenomorph/X = AM
 	if(istype(X) && !X.ally_of_hivenumber(hivenumber))
 		X.next_move_slowdown = max(X.next_move_slowdown, slow_amt)
-		return .
+		return
 
 /obj/effect/alien/resin/sticky/proc/forsaken_handling()
 	SIGNAL_HANDLER
@@ -216,7 +217,7 @@
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
 /obj/effect/alien/resin/spike/Crossed(atom/movable/AM)
-	. = ..()
+	..()
 	var/mob/living/carbon/H = AM
 	if(!istype(H))
 		return
@@ -260,11 +261,8 @@
 	desc = "A layer of disgusting sleek slime."
 	icon_state = "fast"
 	health = HEALTH_RESIN_XENO_FAST
+	slow_amt = 0
 	var/speed_amt = 0.7
-
-/obj/effect/alien/resin/sticky/fast/Crossed(atom/movable/AM)
-	return
-
 
 //xeno marker :0)
 /obj/effect/alien/resin/marker
@@ -499,9 +497,8 @@
 	..()
 
 /obj/structure/mineral_door/resin/Destroy()
-	if(upper_wall)
+	if(!QDESTROYING(upper_wall))
 		upper_wall.dismantle_wall()
-		upper_wall = null
 	var/turf/above = SSmapping.get_turf_above(src)
 	while(above && istransparentturf(above))
 		above.update_vis_contents()
@@ -510,9 +507,11 @@
 	var/area/area = get_area(src)
 	area?.current_resin_count--
 	var/turf/base_turf = loc
-	if(upper_wall)
+
+	if(!QDESTROYING(upper_wall)) // Why is this done twice? Hell if i know.
 		upper_wall.dismantle_wall()
-	spawn(0)
+
+	spawn(0) // <--- Don't do that, src probably won't even be valid anymore when it executes
 		var/turf/adjacent_turf
 		for(var/cardinal in GLOB.cardinals)
 			adjacent_turf = get_step(base_turf, cardinal)

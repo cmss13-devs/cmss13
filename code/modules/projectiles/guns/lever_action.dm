@@ -37,7 +37,6 @@ their unique feature is that a direct hit will buff your damage and firerate
 	var/levered = FALSE
 	var/message_cooldown
 	var/cur_onehand_chance = 85
-	var/reset_onehand_chance = 85
 	var/hit_buff_reset_cooldown = 1 SECONDS //how much time after a direct hit until streaks reset
 	var/lever_message = "You work the lever."
 	var/lever_name = "lever" //the thing we use to chamber the next round. Lever, button, etc. for to_chats
@@ -80,29 +79,12 @@ their unique feature is that a direct hit will buff your damage and firerate
 	reset_hit_buff(user)
 	if(flags_gun_lever_action & USES_STREAKS)
 		UnregisterSignal(user, COMSIG_BULLET_DIRECT_HIT)
-	addtimer(VARSET_CALLBACK(src, cur_onehand_chance, reset_onehand_chance), 4 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE)
+	addtimer(VARSET_CALLBACK(src, cur_onehand_chance, initial(cur_onehand_chance)), 4 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE)
 
-/obj/item/weapon/gun/lever_action/proc/direct_hit_buff(mob/user, mob/target, obj/item/weapon/gun/projectile_source, one_hand_lever = FALSE)
+/obj/item/weapon/gun/lever_action/proc/direct_hit_buff(mob/user, mob/target, obj/item/weapon/gun/projectile_source)
 	SIGNAL_HANDLER
 	if(projectile_source != src)
 		return FALSE
-	var/mob/living/carbon/human/human_user = user
-	if(one_hand_lever && !(flags_gun_lever_action & DANGEROUS_TO_ONEHAND_LEVER))
-		return FALSE
-	else if(one_hand_lever) //base marines should never be able to easily pass the skillcheck, only specialists and etc.
-		if(prob(cur_onehand_chance) || skillcheck(human_user, SKILL_FIREARMS, SKILL_FIREARMS_SKILLED))
-			cur_onehand_chance = cur_onehand_chance - 20 //gets steadily worse if you spam it
-			return FALSE
-		else
-			to_chat(user, SPAN_DANGER("Augh! Your hand catches on the [lever_name]!!"))
-			var/obj/limb/O = human_user.get_limb(human_user.hand ? "l_hand" : "r_hand")
-			if(O.status & LIMB_BROKEN)
-				O = human_user.get_limb(user.hand ? "l_arm" : "r_arm")
-				human_user.drop_held_item()
-			O.fracture()
-			O.status &= ~LIMB_SPLINTED
-			human_user.pain.recalculate_pain()
-			return FALSE
 
 	if(!istype(target))
 		return FALSE //sanity...
@@ -119,10 +101,10 @@ their unique feature is that a direct hit will buff your damage and firerate
 		playsound(user, lever_hitsound, 25, FALSE)
 	if(!(flags_gun_lever_action & USES_STREAKS))
 		return FALSE
-	apply_hit_buff(user, target, one_hand_lever) //this is a separate proc so it's configgable
-	addtimer(CALLBACK(src, PROC_REF(reset_hit_buff), user, one_hand_lever), hit_buff_reset_cooldown, TIMER_OVERRIDE|TIMER_UNIQUE)
+	apply_hit_buff(user, target) //this is a separate proc so it's configgable
+	addtimer(CALLBACK(src, PROC_REF(reset_hit_buff), user), hit_buff_reset_cooldown, TIMER_OVERRIDE|TIMER_UNIQUE)
 
-/obj/item/weapon/gun/lever_action/proc/apply_hit_buff(mob/user, mob/target, one_hand_lever = FALSE)
+/obj/item/weapon/gun/lever_action/proc/apply_hit_buff(mob/user, mob/target)
 	lever_sound = lever_super_sound
 	lever_message = SPAN_BOLD("You quickly work the [lever_name]!")
 	last_fired = world.time - buff_fire_reduc //to shoot the next round faster
@@ -136,7 +118,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 			modify_fire_delay(AM.delay_mod)
 	wield_delay = 0 //for one-handed levering
 
-/obj/item/weapon/gun/lever_action/proc/reset_hit_buff(mob/user, one_hand_lever)
+/obj/item/weapon/gun/lever_action/proc/reset_hit_buff(mob/user)
 	if(!(flags_gun_lever_action & USES_STREAKS))
 		return
 	streak = 0
@@ -149,8 +131,6 @@ their unique feature is that a direct hit will buff your damage and firerate
 	set_fire_delay(FIRE_DELAY_TIER_1)
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recalculate_attachment_bonuses() //stock wield delay
-	if(one_hand_lever)
-		addtimer(VARSET_CALLBACK(src, cur_onehand_chance, reset_onehand_chance), 4 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE)
 
 /obj/item/weapon/gun/lever_action/proc/replace_internal_mag(number_to_replace)
 	if(!current_mag)
@@ -289,8 +269,25 @@ their unique feature is that a direct hit will buff your damage and firerate
 		return
 	if(flags_gun_lever_action & MOVES_WHEN_LEVERING)
 		to_chat(user, SPAN_WARNING("<i>You spin \the [src] one-handed! Fuck yeah!<i>"))
-		animation_wrist_flick(src)
-	direct_hit_buff(user, projectile_source=src, one_hand_lever=TRUE)
+		animation_spin(loop_amount = 1, clockwise = FALSE)
+	else
+		to_chat(user, SPAN_WARNING(lever_message))
+	if(!(flags_gun_lever_action & DANGEROUS_TO_ONEHAND_LEVER) || skillcheck(user, SKILL_FIREARMS, SKILL_FIREARMS_SKILLED))
+		return
+	if(prob(cur_onehand_chance))
+		cur_onehand_chance = cur_onehand_chance - 20 //gets steadily worse if you spam it
+	else
+		to_chat(user, SPAN_DANGER("Augh! Your hand catches on the [lever_name]!!"))
+		user.drop_held_item()
+		var/obj/limb/holding_hand = user.get_limb(user.hand ? "l_hand" : "r_hand")
+		if(holding_hand.status & LIMB_BROKEN) //Hand already broken? Break their arm next
+			var/obj/limb/holding_arm = user.get_limb(user.hand ? "l_arm" : "r_arm")
+			holding_arm.fracture()
+			holding_arm.status &= ~LIMB_SPLINTED
+		holding_hand.fracture()
+		holding_hand.status &= ~LIMB_SPLINTED
+		user.pain.recalculate_pain()
+	addtimer(VARSET_CALLBACK(src, cur_onehand_chance, initial(cur_onehand_chance)), 4 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE)
 
 /obj/item/weapon/gun/lever_action/reload_into_chamber(mob/user)
 	if(!current_mag)
@@ -531,7 +528,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 		levered = FALSE
 	return empty_chamber(user)
 
-/obj/item/weapon/gun/lever_action/xm88/reset_hit_buff(mob/user, one_hand_lever)
+/obj/item/weapon/gun/lever_action/xm88/reset_hit_buff(mob/user)
 	if(!(flags_gun_lever_action & USES_STREAKS))
 		return
 	if(streak > 0)
@@ -551,10 +548,8 @@ their unique feature is that a direct hit will buff your damage and firerate
 	lever_delay = FIRE_DELAY_TIER_3
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recalculate_attachment_bonuses() //stock wield delay
-	if(one_hand_lever)
-		addtimer(VARSET_CALLBACK(src, cur_onehand_chance, reset_onehand_chance), 4 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE)
 
-/obj/item/weapon/gun/lever_action/xm88/direct_hit_buff(mob/user, mob/target, /obj/item/weapon/gun/projectile_source, one_hand_lever = FALSE)
+/obj/item/weapon/gun/lever_action/xm88/direct_hit_buff(mob/user, mob/target, /obj/item/weapon/gun/projectile_source)
 	. = ..()
 	if(!.)
 		return

@@ -16,8 +16,8 @@
 		holed_wall = W
 		holed_wall.opacity = FALSE
 		// Original intended way for mappers to set the direction was to set wall.acided_hole_dir, but mappers didnt know that, so we will just handle all ways they could have set it.
-		// Since holes can only have two states (S-N, E-W) we assume no varedits to be S-N and any edits W-E.
-		if(icon_state != initial(icon_state)) // Mapper varedited icon_state to east/west, so we update code to reflect it.
+		// Since holes can only have two states (vertical/horizontal) we assume no varedits to be vertical and any edits horizontal.
+		if(icon_state != initial(icon_state)) // Mapper varedited icon_state to horizontal, so we update code to reflect it.
 			holed_wall.acided_hole_dir = EAST
 		if(dir != EAST) // Mapper didnt varedit dir, so we will use acided_hole_dir. If he did thats fine that will work.
 			setDir(W.acided_hole_dir)

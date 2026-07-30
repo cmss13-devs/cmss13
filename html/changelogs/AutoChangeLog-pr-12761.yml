@@ -1,0 +1,4 @@
+author: "Nihisohel"
+delete-after: True
+changes:
+  - bugfix: "Fixes a runtime related to attempting to stack a non-stackable item"

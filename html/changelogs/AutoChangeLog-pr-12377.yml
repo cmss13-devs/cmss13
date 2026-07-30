@@ -1,4 +1,0 @@
-author: "MistChristmas"
-delete-after: True
-changes:
-  - code_imp: "Xenos destroying reactors now have their do_after checks occur faster."

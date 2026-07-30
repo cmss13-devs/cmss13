@@ -1,5 +1,0 @@
-author: "DawsonKeyes"
-delete-after: True
-changes:
-  - rscadd: "Adds new lineart for both AMRs and the M42A sniper"
-  - bugfix: "Centers the new AMR sprites"

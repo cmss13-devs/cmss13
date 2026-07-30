@@ -127,7 +127,7 @@ type Data = {
     Miscellaneous: TransformEntry[];
   };
   mob_name: string;
-  mob_sleeping: number;
+  mob_sleeping: BooleanLike;
   mob_frozen: BooleanLike;
   mob_speed: number;
   mob_status_flags: number;
@@ -411,11 +411,11 @@ const GeneralActions = (props) => {
         <Stack align="right" fill>
           <Button.Checkbox
             width="100%"
-            checked={mob_sleeping > 500}
-            color={mob_sleeping > 500 ? 'good' : 'bad'}
+            checked={mob_sleeping}
+            color={mob_sleeping ? 'good' : 'bad'}
             disabled={!hasPermission(data, 'mob_sleep')}
             onClick={() =>
-              act('mob_sleep', { sleep: mob_sleeping > 500 ? false : true })
+              act('mob_sleep', { sleep: mob_sleeping ? false : true })
             }
           >
             Toggle Sleeping

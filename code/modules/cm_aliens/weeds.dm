@@ -79,8 +79,9 @@
 		weeded_turf = turf
 		SEND_SIGNAL(turf, COMSIG_WEEDNODE_GROWTH) // Currently for weed_food wakeup
 
+	// COMSIG_MOVABLE_TURF_ENTERED to handle ChangeTurf
 	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTERED, PROC_REF(set_turf_weeded))
-	RegisterSignal(turf, COMSIG_PRE_TURF_CHANGE, PROC_REF(pre_turf_change))
+
 	if(hivenumber == XENO_HIVE_NORMAL)
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
@@ -94,10 +95,6 @@
 		weeded_turf.weeds = null
 
 	T.weeds = src
-
-// Before the turf changes, register a temporary callback to update `weeds` post-change.
-/obj/effect/alien/weeds/proc/pre_turf_change(turf/source, path, list/new_baseturfs, flags, list/post_change_callbacks)
-	post_change_callbacks += CALLBACK(src, PROC_REF(set_turf_weeded), source)
 
 /obj/effect/alien/weeds/proc/forsaken_handling()
 	SIGNAL_HANDLER
@@ -179,6 +176,7 @@
 
 
 /obj/effect/alien/weeds/Crossed(atom/movable/atom_movable)
+	..()
 	if(!isliving(atom_movable))
 		return
 
@@ -232,6 +230,9 @@
 			continue
 		if(!spread_on_semiweedable && T.is_weedable < FULLY_WEEDABLE)
 			continue
+		if(!weed_expand_objects(T, dirn))
+			continue
+
 		T.clean_cleanables()
 
 		var/obj/effect/alien/resin/fruit/old_fruit
@@ -266,9 +267,6 @@
 				weeds.Add(new /obj/effect/alien/weeds(T, node, TRUE, FALSE))
 				continue
 
-		if(!weed_expand_objects(T, dirn))
-			continue
-
 		var/obj/effect/alien/weeds/new_weed = new(T, node)
 		weeds += new_weed
 
@@ -286,7 +284,7 @@
 
 /obj/effect/alien/weeds/proc/weed_expand_objects(turf/T, direction)
 	for(var/obj/structure/platform/P in src.loc)
-		if(P.dir == reverse_direction(direction))
+		if(!(P.stat & BROKEN) && P.dir == direction)
 			return FALSE
 	for(var/obj/structure/barricade/from_blocking_cade in loc) //cades on tile we're coming from
 		if(from_blocking_cade.density && from_blocking_cade.dir == direction && from_blocking_cade.health >= (from_blocking_cade.maxhealth / 4))
@@ -294,7 +292,8 @@
 
 	for(var/obj/O in T)
 		if(istype(O, /obj/structure/platform))
-			if(O.dir == direction)
+			var/obj/structure/platform/P = O
+			if(!(P.stat & BROKEN) && P.dir == GLOB.reverse_dir[direction])
 				return FALSE
 
 		if(istype(O, /obj/structure/barricade)) //cades on tile we're trying to expand to

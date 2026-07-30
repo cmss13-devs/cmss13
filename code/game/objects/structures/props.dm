@@ -1266,6 +1266,9 @@
 	desc = "Windsocks, Air-Con units, solarpanels, oh my!"
 	density = FALSE
 
+/obj/structure/prop/invuln/ice_prefab/roof_greeble/turf_layer
+	layer = ABOVE_TURF_LAYER
+	name = "roof installation"
 
 /obj/structure/prop/invuln/ice_prefab/standalone
 	density = TRUE
@@ -1482,6 +1485,7 @@
 	icon = 'icons/obj/structures/props/dropship/dropship_equipment.dmi'
 	icon_state = "rope"
 	density = FALSE
+	flags_atom = FPRINT|NO_ZFALL
 
 /obj/structure/prop/pred_flight
 	name = "hunter flight console"

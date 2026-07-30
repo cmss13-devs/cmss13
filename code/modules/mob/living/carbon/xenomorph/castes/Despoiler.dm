@@ -106,6 +106,8 @@
 	var/last_combat_time = 0
 	var/last_hypertension_loss_time = 0
 	var/hypertension_loss_time = 10 SECONDS
+	var/cooldown_reduction_per_stack = 0.5 SECONDS
+	var/max_cooldown_reduction = 1.5 SECONDS
 
 /datum/behavior_delegate/despoiler_base/proc/add_overlay()
 	empowered_overlay = image('icons/mob/xenos/castes/tier_3/despoiler.dmi', "hypertension")
@@ -136,6 +138,9 @@
 /datum/behavior_delegate/despoiler_base/melee_attack_additional_effects_self()
 	..()
 	last_combat_time = world.time
+	var/datum/action/xeno_action/activable/pounce/caustic_embrace/cAction = get_action(bound_xeno, /datum/action/xeno_action/activable/pounce/caustic_embrace)
+	if (!cAction.action_cooldown_check())
+		cAction.reduce_cooldown(min(hypertension * cooldown_reduction_per_stack, max_cooldown_reduction))
 
 /datum/behavior_delegate/despoiler_base/melee_attack_modify_burn_damage(original_damage, mob/living/carbon/target_carbon)
 	if (!isxeno_human(target_carbon))

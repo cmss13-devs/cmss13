@@ -113,19 +113,22 @@
 
 		// Humans?
 		if(isliving(atm)) //For extinguishing mobs on fire
-			var/mob/living/M = atm
+			var/mob/living/mob = atm
 
-			if(M != cause_data?.resolve_mob())
-				M.ExtinguishMob()
+			if(mob != cause_data?.resolve_mob())
+				if(!weak_extinguish)
+					mob.ExtinguishMob()
+				else
+					mob.adjust_fire_stacks(-10, min_stacks = 0) //two pats
 
-			if(M.stat == DEAD) // NO. DAMAGING. DEAD. MOBS.
+			if(mob.stat == DEAD) // NO. DAMAGING. DEAD. MOBS.
 				continue
-			if (iscarbon(M))
-				var/mob/living/carbon/C = M
-				if (C.ally_of_hivenumber(hivenumber))
+			if (iscarbon(mob))
+				var/mob/living/carbon/carbon = mob
+				if (carbon.ally_of_hivenumber(hivenumber))
 					continue
-				apply_spray(M)
-				M.apply_armoured_damage(get_xeno_damage_acid(M, damage_amount), ARMOR_BIO, BURN) // Deal extra damage when first placing ourselves down.
+				apply_spray(mob)
+				mob.apply_armoured_damage(get_xeno_damage_acid(mob, damage_amount), ARMOR_BIO, BURN) // Deal extra damage when first placing ourselves down.
 
 			continue
 

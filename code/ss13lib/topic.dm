@@ -120,7 +120,7 @@
 	engine_info["blacklisted_versions"] = SS13LIB_ENGINE_BLACKLISTED_VERSIONS
 #endif
 	if(length(engine_info))
-		response["engine"] = engine_info
+		response["engine_info"] = engine_info
 
 #ifdef SS13LIB_SERVER_LINKS
 	response["links"] = SS13LIB_SERVER_LINKS

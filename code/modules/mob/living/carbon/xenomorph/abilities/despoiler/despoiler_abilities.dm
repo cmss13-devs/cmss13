@@ -37,6 +37,7 @@
 	var/image/charge_overlay
 	var/max_charge_time = 2 SECONDS
 	var/stage = 0
+	var/timer
 
 /datum/action/xeno_action/onclick/oozing_wounds
 	name = "Oozing wounds"

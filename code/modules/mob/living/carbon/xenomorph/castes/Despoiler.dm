@@ -255,23 +255,33 @@
 
 
 /datum/action/xeno_action/activable/pounce/caustic_embrace/use_ability(atom/target, list/args, released = FALSE)
-	if(!released)
+	UnregisterSignal(owner, COMSIG_MOB_MOUSEUP)
+	if(timer)
+		deltimer(timer)
+	if(charge_overlay)
+		owner.overlays -= charge_overlay
+	if(!action_cooldown_check())
+		return
+	if(!check_plasma_owner())
+		return
+
+	if(!released && owner.client.holding_click) //only if clicekd and holding
+		RegisterSignal(owner, COMSIG_MOB_MOUSEUP, PROC_REF(release_charge))
 		stage = 0
 		update_charge_overlay()
-		addtimer(CALLBACK(src, PROC_REF(update_charge)), (max_charge_time / 2), TIMER_STOPPABLE)
-		RegisterSignal(owner, COMSIG_MOB_MOUSEUP, PROC_REF(release_charge))
+		timer = addtimer(CALLBACK(src, PROC_REF(update_charge)), (max_charge_time / 2), TIMER_STOPPABLE)
 		return
 	var/mob/living/carbon/xenomorph/despoiler/xeno = owner
 	var/datum/behavior_delegate/despoiler_base/delegate = xeno.behavior_delegate
 	stage = min(stage, delegate.hypertension_stacks)
 	distance += stage * 2
-	if(charge_overlay)
-		owner.overlays -= charge_overlay
+
 	. = ..()
 	if(.)
 		delegate.hypertension_stacks -= stage
 		xeno.update_hypertension()
 	distance = initial(distance)
+	stage = 0
 
 
 /datum/action/xeno_action/activable/pounce/caustic_embrace/proc/release_charge(atom/source, atom/target, list/args)
@@ -281,13 +291,12 @@
 /datum/action/xeno_action/activable/pounce/caustic_embrace/proc/update_charge()
 	if(!action_cooldown_check())//we have released the ability
 		return
-	var/mob/living/carbon/xenomorph/despoiler/xeno = owner
 	stage ++
 
 	update_charge_overlay()
 	if(stage == 2)
 		return
-	addtimer(CALLBACK(src, PROC_REF(update_charge)), (max_charge_time / 2), TIMER_STOPPABLE)
+	timer = addtimer(CALLBACK(src, PROC_REF(update_charge)), (max_charge_time / 2), TIMER_STOPPABLE)
 
 /datum/action/xeno_action/activable/pounce/caustic_embrace/proc/update_charge_overlay()
 	if(charge_overlay)
@@ -317,6 +326,7 @@
 			else if(n_acid_damage <= 0.67*damage)
 				to_chat(target, SPAN_WARNING("Your armor softens the acid!"))
 			target.apply_damage(n_acid_damage, BURN, "chest")
+			xeno.flick_attack_overlay(target, "slash")
 		if(prob(30))
 			new /obj/effect/lingering_acid(turf, xeno.hivenumber)
 		new /obj/effect/xenomorph/xeno_telegraph/yellow(turf, 2)
@@ -328,7 +338,7 @@
 		return
 
 	xeno.visible_message(SPAN_XENODANGER("[xeno] ravages [target] as it charges at them!"), SPAN_XENODANGER("We ruthlessly ravage [target] as we charge at them!"))
-	target.apply_effect(weaken_duration, WEAKEN)
+	target.apply_effect(stage * weaken_duration / 2, WEAKEN)
 	target.attack_alien(xeno, rand(xeno.melee_damage_lower, xeno.melee_damage_upper))
 	xeno.flick_attack_overlay(target, "embrace_slash")
 

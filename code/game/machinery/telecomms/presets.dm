@@ -109,7 +109,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 /obj/structure/machinery/telecomms/relay/preset/tower/toggle_state(mob/user)
 	if(!toggled && (inoperable() || (health <= initial(health) / 2)))
-		to_chat(user, SPAN_WARNING("\The [src.name] needs repairs to be turned back on!"))
+		to_chat(user, SPAN_WARNING("[src] needs repairs to be turned back on!"))
 		return
 	..()
 
@@ -157,7 +157,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	if(isSilicon(user))
 		return ..()
 	if(on)
-		to_chat(user, SPAN_WARNING("\The [src.name] blinks and beeps incomprehensibly as it operates, better not touch this..."))
+		to_chat(user, SPAN_WARNING("[src] blinks and beeps incomprehensibly as it operates, better not touch this..."))
 		return
 	toggle_state(user) // just flip dat switch
 
@@ -277,7 +277,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/attackby(obj/item/I, mob/user)
 	if(HAS_TRAIT(I, TRAIT_TOOL_MULTITOOL))
 		if(inoperable() || (health <= initial(health) * 0.5))
-			to_chat(user, SPAN_WARNING("\The [src.name] needs repairs to have frequencies added to its software!"))
+			to_chat(user, SPAN_WARNING("[src] needs repairs to have frequencies added to its software!"))
 			return
 		var/choice = tgui_input_list(user, "What do you wish to do?", "TC-3T comms tower", list("Wipe communication frequencies", "Add your faction's frequencies"))
 		if(choice == "Wipe communication frequencies")
@@ -319,9 +319,8 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	..()
 	if((stat & NOPOWER))
 		if(on)
-			toggle_state()
-			on = FALSE
-			update_icon()
+			toggled = FALSE
+			update_state()
 			SSradio.update_cache()
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/update_state()

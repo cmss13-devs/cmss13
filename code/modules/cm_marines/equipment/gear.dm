@@ -529,16 +529,16 @@
 			to_chat(user, SPAN_WARNING("[blocking_object] is blocking the deployment spot!"))
 			return
 
-	var/datum/squad/user_squad = null
-	if(ishuman(user))
+	var/datum/squad/use_squad = src.squad  // squad should always be null if not set via multi-tool, so we check if it is now
+	if(!use_squad && ishuman(user) && issynth(user)) // if null and we aren't predator, we set our own squad
 		var/mob/living/carbon/human/human_user = user
-		user_squad = human_user.assigned_squad
+		use_squad = human_user.assigned_squad
 
 	var/base_label = label ? label : "FTC - Field Tripod Camera"
 
 	var/obj/structure/overwatch_camera_tripod/deployed_structure = new(deploy_turf)
 	deployed_structure.base_label = base_label
-	deployed_structure.squad = user_squad
+	deployed_structure.squad = use_squad
 	deployed_structure.update_full_label()
 	deployed_structure.setDir(user.dir)
 
@@ -553,6 +553,30 @@
 	playsound(loc, 'sound/weapons/mine_armed.ogg', 25, 1)
 	user.temp_drop_inv_item()
 	qdel(src)
+
+/obj/item/device/overwatch_camera_tripod/attackby(obj/item/item, mob/user)
+	if(istype(item, /obj/item/device/multitool))
+		// ToDO: This should be magic-fied so it covers UPP, TWE, CLF etc for future use
+		var/list/squad_names = list("Alpha", "Bravo", "Charlie", "Delta", "Intel", "Foxtrot", "Clear Override")
+		var/selected = tgui_input_list(user, "Select a Squad for this camera to stream to.", "Override Squad", squad_names)
+		if(!selected)
+			return
+		if(selected == "Clear Override")
+			squad = null
+			to_chat(user, SPAN_NOTICE("Squad override cleared."))
+		else
+			var/datum/squad/found = null // mostly a safety check
+			for(var/datum/squad/squad in GLOB.RoleAuthority.squads)
+				if(squad.name == selected)
+					found = squad
+					break
+			if(found)
+				squad = found
+				to_chat(user, SPAN_NOTICE("Squad set to [selected]."))
+			else
+				to_chat(user, SPAN_WARNING("Squad [selected] not found."))
+		return
+	..()
 
 /obj/structure/overwatch_camera_tripod
 	name = "FTC Tripod Camera"
@@ -695,6 +719,31 @@
 				return
 			undeploy(user)
 			return
+
+/obj/structure/overwatch_camera_tripod/attackby(obj/item/item, mob/user)
+		// ToDO: This should be magic-fied so it covers UPP, TWE, CLF etc for future use
+    if(istype(item, /obj/item/device/multitool))
+        var/list/squad_names = list("Alpha", "Bravo", "Charlie", "Delta", "Intel", "Foxtrot", "Echo", "Clear Override")
+        var/selected = tgui_input_list(user, "Override which squad this camera should transmit to.", "Override Squad", squad_names)
+        if(!selected)
+            return
+        if(selected == "Clear Override")
+            squad = null
+            to_chat(user, SPAN_NOTICE("Squad override cleared."))
+        else
+            var/datum/squad/found = null
+            for(var/datum/squad/squad in GLOB.RoleAuthority.squads)
+                if(squad.name == selected)
+                    found = squad
+                    break
+            if(found)
+                squad = found
+                to_chat(user, SPAN_NOTICE("Squad set to [selected]."))
+            else
+                to_chat(user, SPAN_WARNING("Squad: [selected] wasn't not found."))
+        update_full_label()
+        return
+    ..()
 
 /obj/structure/overwatch_camera_tripod/attack_alien(mob/living/carbon/xenomorph/Xeno)
 	if(islarva(Xeno))

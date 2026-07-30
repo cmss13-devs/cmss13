@@ -437,3 +437,6 @@
 	if(!target_mob.ally_of_hivenumber(hivenumber))
 		target_mob.next_move_slowdown = max(target_mob.next_move_slowdown, slow_amt)
 		carbon.apply_armoured_damage(damage, damage_type = BURN, def_zone = pick(target_limbs))
+
+/obj/effect/lingering_acid/extinguish_acid()
+	qdel(src)

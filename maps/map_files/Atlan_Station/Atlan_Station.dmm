@@ -322,7 +322,6 @@
 	pixel_y = 7;
 	pixel_x = -7
 	},
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/strata/red1,
 /area/atlan/station/security)
 "abc" = (
@@ -3697,9 +3696,6 @@
 	},
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_offices)
-"alc" = (
-/turf/open/floor/strata,
-/area/template_noop)
 "ald" = (
 /obj/structure/largecrate/empty/case,
 /turf/open/floor/prison/sterile_white/south,
@@ -4225,7 +4221,6 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 9
 	},
-/obj/item/storage/backpack/marine/engineerpack/welder_chestrig,
 /turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/promenade)
 "amB" = (
@@ -7593,13 +7588,6 @@
 	},
 /turf/open/floor/strata,
 /area/atlan/station/water_tanks)
-"axd" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/obj/item/storage/backpack/marine/engineerpack/welder_chestrig,
-/turf/open/floor/strata,
-/area/atlan/station/promenade)
 "axe" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/strata/floor2,
@@ -8019,10 +8007,6 @@
 /obj/structure/closet/emcloset,
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/cargooffice)
-"ayw" = (
-/obj/item/storage/pouch/general/large,
-/turf/open/floor/strata,
-/area/atlan/station/promenade)
 "ayx" = (
 /obj/item/weapon/gun/rifle/type71,
 /obj/effect/decal/cleanable/blood/gibs/down,
@@ -11068,10 +11052,6 @@
 /obj/structure/machinery/door/airlock/upp_grey/generic/autoname,
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/repairoffice)
-"aIK" = (
-/obj/item/storage/backpack/marine/engineerpack/upp,
-/turf/open/floor/strata/floor2,
-/area/atlan/station/cargo)
 "aIL" = (
 /obj/structure/sign/safety/maint{
 	pixel_y = 7;
@@ -15534,13 +15514,17 @@
 /obj/structure/machinery/light/double/blue{
 	dir = 4
 	},
-/obj/structure/surface/rack{
-	color = "#98a3ab"
-	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/empty/secure,
 /turf/open/floor/strata/red1,
 /area/atlan/comms/lz1_control)
 "aWT" = (
 /obj/effect/decal/cleanable/blood/oil,
+/obj/structure/sign/poster/upp{
+	pixel_y = 36;
+	pixel_x = 9;
+	layer = 2.8
+	},
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/cargooffice)
 "aWU" = (
@@ -17564,10 +17548,6 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/promenade)
-"bdH" = (
-/obj/structure/machinery/vending/walkman,
-/turf/open/floor/strata,
-/area/atlan/station/walkway)
 "bdI" = (
 /obj/structure/platform_decoration/metal/atlan/west,
 /turf/open/floor/corsat/marked,
@@ -17585,6 +17565,13 @@
 /obj/structure/platform/metal/atlan/east,
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/exports_east)
+"bdL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/deployable{
+	dir = 4
+	},
+/turf/open/floor/strata/red1,
+/area/atlan/station/security)
 "bdM" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
@@ -18941,6 +18928,33 @@
 /obj/structure/machinery/landinglight,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/lz/near_lz1)
+"bhH" = (
+/obj/structure/barricade/handrail/no_vault,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/atlan/station/drydock)
+"bhI" = (
+/obj/structure/barricade/handrail/no_vault,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/atlan/station/drydock)
+"bhJ" = (
+/obj/structure/barricade/handrail/no_vault{
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/atlan/station/drydock)
 "bhK" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	name = "launch bay door"
@@ -18948,6 +18962,17 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/space/basic,
 /area/atlan/oob)
+"bhL" = (
+/obj/structure/barricade/handrail/no_vault{
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/atlan/station/drydock)
 "bid" = (
 /obj/structure/bed/chair/office/light,
 /turf/open/floor/strata/floor3/east,
@@ -23127,6 +23152,7 @@
 /obj/item/paper,
 /obj/item/tool/pen,
 /obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/red1,
 /area/atlan/comms/lz1_control)
 "eBG" = (
@@ -28030,7 +28056,6 @@
 /obj/item/clothing/shoes/marine/upp/black/knife,
 /obj/item/clothing/shoes/marine/upp/black/knife,
 /obj/item/clothing/shoes/marine/upp/black/knife,
-/obj/item/storage/backpack/marine/engineerpack/welder_chestrig,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/cargo)
 "iqK" = (
@@ -29407,12 +29432,8 @@
 	icon_state = "S";
 	pixel_y = -1
 	},
-/obj/structure/barricade/deployable{
-	damage_state = 3;
-	health = 50;
-	icon_state = "folding_3"
-	},
 /obj/effect/decal/cleanable/blood,
+/obj/structure/barricade/deployable,
 /turf/open/floor/strata/fake_wood,
 /area/atlan/station/security)
 "jkh" = (
@@ -29974,6 +29995,7 @@
 /obj/structure/machinery/light/double/blue{
 	dir = 1
 	},
+/obj/item/ammo_magazine/rifle/ak4047,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/medical)
 "jFv" = (
@@ -32549,6 +32571,12 @@
 	layer = 3.3
 	},
 /obj/effect/decal/cleanable/blood/splatter,
+/obj/structure/barricade/deployable{
+	damage_state = 2;
+	dir = 4;
+	health = 140;
+	icon_state = "folding_2"
+	},
 /turf/open/floor/strata/red1,
 /area/atlan/station/security)
 "lHL" = (
@@ -40854,6 +40882,7 @@
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	pixel_y = 10
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/red1,
 /area/atlan/comms/lz1_control)
 "rUn" = (
@@ -46424,6 +46453,7 @@
 	color = "#98a3ab"
 	},
 /obj/structure/machinery/computer/atmos_alert,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/red1,
 /area/atlan/comms/lz1_control)
 "wnq" = (
@@ -46787,9 +46817,6 @@
 /obj/structure/closet/secure_closet/cargotech,
 /obj/item/clothing/head/uppcap,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/sign/poster/upp{
-	pixel_y = 33
-	},
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/cargo)
 "wId" = (
@@ -108194,11 +108221,11 @@ alD
 alD
 alD
 alD
-alD
-alD
-alD
-alD
-alD
+alE
+alE
+alE
+alE
+alE
 alE
 azb
 azb
@@ -108411,7 +108438,7 @@ alD
 alD
 alE
 alD
-alD
+alE
 alE
 azb
 azb
@@ -112230,8 +112257,8 @@ agj
 aDg
 tfN
 bak
-fgp
-hrc
+bhJ
+bhH
 gLn
 mQj
 djG
@@ -112491,7 +112518,7 @@ awR
 awP
 awL
 nUR
-aIK
+nUR
 nUR
 wXK
 sfU
@@ -113389,7 +113416,7 @@ adR
 iFT
 rAD
 aoB
-alc
+tPr
 lLk
 eaH
 qQG
@@ -113949,7 +113976,7 @@ kSN
 djG
 aCZ
 eBh
-giW
+bTH
 giW
 giW
 aCW
@@ -114161,8 +114188,8 @@ kSN
 gkb
 agj
 wno
-hGZ
-giW
+aCW
+bTH
 gjL
 eZB
 djp
@@ -114774,8 +114801,8 @@ agj
 aDg
 tfN
 ban
-fgp
-hrc
+bhL
+bhI
 gLn
 gcz
 djG
@@ -117038,7 +117065,7 @@ orU
 loF
 kcA
 ayA
-ayw
+loF
 amy
 loF
 qUB
@@ -117675,7 +117702,7 @@ hyo
 xba
 bdh
 fWD
-axd
+amw
 umD
 aAk
 aAk
@@ -120616,7 +120643,7 @@ dGM
 tmn
 tmn
 tmn
-bdH
+tmn
 tmn
 aHD
 oVk
@@ -126978,7 +127005,7 @@ trf
 lMY
 nkg
 lHC
-qXM
+bdL
 trf
 azX
 aGz

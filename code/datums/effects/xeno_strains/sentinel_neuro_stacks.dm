@@ -71,7 +71,7 @@
 	return ..()
 
 /datum/effects/sentinel_neuro_stacks/proc/increment_stack_count(difference = 5)
-	stack_count = min(max_stacks, floor( stack_count + difference))
+	stack_count = min(max_stacks, floor(stack_count + difference))
 
 	if(stack_count <= 0)
 		qdel(src)

@@ -317,11 +317,10 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/power_change()
 	..()
-	if((stat & NOPOWER))
-		if(on)
-			toggled = FALSE
-			update_state()
-			SSradio.update_cache()
+	if((stat & NOPOWER) && on)
+		toggled = FALSE
+		update_state()
+		SSradio.update_cache()
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/update_state()
 	..()

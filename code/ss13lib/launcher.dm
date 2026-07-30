@@ -21,7 +21,7 @@
 	launcher.setup(setup_client, port, key)
 
 	ckey_to_launcher[setup_client.ckey] = launcher
-	connection_details_has_launcher |= key
+	connection_details_has_launcher |= hash
 
 	return TRUE
 

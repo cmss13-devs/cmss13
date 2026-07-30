@@ -9,6 +9,8 @@
 	var/ready = FALSE
 	/// Whether we have already warned about being blacklist-hidden
 	var/blacklist_warned = FALSE
+	/// IDs of announcements we have already shown, to avoid spamming admins
+	var/list/seen_announcement_ids = list()
 
 #define SS13LIB_MAX_HANDSHAKE_ATTEMPTS 3
 

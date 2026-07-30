@@ -13,3 +13,36 @@
 	else if(blacklist_warned)
 		blacklist_warned = FALSE
 		SS13LIB_INFO_LOG("This server is now visible on the hub listing.")
+
+	if(!response.body)
+		return
+
+	var/body
+	try
+		body = json_decode(response.body)
+	catch
+		return
+
+	if(!islist(body))
+		return
+
+	var/list/announcements = body["announcements"]
+	if(!islist(announcements) || !length(announcements))
+		return
+
+	for(var/list/announcement in announcements)
+		var/id = announcement["id"]
+		if(!id)
+			continue
+		if(id in seen_announcement_ids)
+			continue
+		seen_announcement_ids += id
+		on_hub_announcement(id, announcement["title"], announcement["body"], announcement["kind"])
+
+/// Called when a new hub announcement is received. Override this in your codebase
+/// to display announcements to server operators.
+/datum/ss13lib/proc/on_hub_announcement(id, title, body, kind)
+#ifdef SS13LIB_MESSAGE_ADMINS
+	SS13LIB_MESSAGE_ADMINS("SS13Hub Announcement: [title]")
+#endif
+	SS13LIB_INFO_LOG("Hub announcement ([kind]): [title] - [body]")

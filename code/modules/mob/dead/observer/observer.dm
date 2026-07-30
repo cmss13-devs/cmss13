@@ -268,11 +268,6 @@
 	// Override the signal from any previous targets.
 	RegisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_ADD, PROC_REF(observe_target_screen_add), TRUE)
 	RegisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_REMOVE, PROC_REF(observe_target_screen_remove), TRUE)
-	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(observer_move_react))
-	RegisterSignal(observe_target_mob, COMSIG_PARENT_QDELETING, PROC_REF(clean_observe_target))
-	RegisterSignal(observe_target_mob, COMSIG_MOB_GHOSTIZE, PROC_REF(observe_target_ghosting))
-	RegisterSignal(observe_target_mob, COMSIG_MOB_NEW_MIND, PROC_REF(observe_target_new_mind))
-	RegisterSignal(observe_target_mob, COMSIG_MOB_LOGIN, PROC_REF(observe_target_login))
 
 ///makes the ghost see the target hud and sets the eye at the target.
 /mob/dead/observer/proc/do_observe(atom/movable/target)
@@ -294,6 +289,11 @@
 
 	carbon_target.auto_observed(src)
 
+	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(observer_move_react))
+	RegisterSignal(observe_target_mob, COMSIG_PARENT_QDELETING, PROC_REF(clean_observe_target))
+	RegisterSignal(observe_target_mob, COMSIG_MOB_GHOSTIZE, PROC_REF(observe_target_ghosting))
+	RegisterSignal(observe_target_mob, COMSIG_MOB_NEW_MIND, PROC_REF(observe_target_new_mind))
+	RegisterSignal(observe_target_mob, COMSIG_MOB_LOGIN, PROC_REF(observe_target_login))
 
 	if(observe_target_mob.client)
 		observe_target_client = observe_target_mob.client

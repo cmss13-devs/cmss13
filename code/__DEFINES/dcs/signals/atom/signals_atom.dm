@@ -55,3 +55,6 @@
 
 //from base of atom/Exited(): (atom/movable/exiting, direction)
 #define COMSIG_ATOM_EXITED "atom_exited"
+
+/// Called when an atom is crossed by a movable atom
+#define COMSIG_ATOM_CROSSED "atom_crossed"

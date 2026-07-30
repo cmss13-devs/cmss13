@@ -139,7 +139,7 @@
 	..()
 	last_combat_time = world.time
 	var/datum/action/xeno_action/activable/pounce/caustic_embrace/cAction = get_action(bound_xeno, /datum/action/xeno_action/activable/pounce/caustic_embrace)
-	if (!cAction.action_cooldown_check())
+	if(!cAction.action_cooldown_check())
 		cAction.reduce_cooldown(min(hypertension * cooldown_reduction_per_stack, max_cooldown_reduction))
 
 /datum/behavior_delegate/despoiler_base/melee_attack_modify_burn_damage(original_damage, mob/living/carbon/target_carbon)

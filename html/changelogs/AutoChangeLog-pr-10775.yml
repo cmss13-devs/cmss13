@@ -1,0 +1,6 @@
+author: "PoltavskaPraca"
+delete-after: True
+changes:
+  - balance: "added ability to wear m5 gas mask + rail flashlight to headset, patrol cap and subtypes,"
+  - code_imp: "changed some code regarding flashlight attachment, as well as update_icon(). Also m5 gasmask checks for clothing head subtypes, instead of just helmets now, regarding bitflag application"
+  - imageadd: "added sprite variants for gasmask and onmob flashlight"

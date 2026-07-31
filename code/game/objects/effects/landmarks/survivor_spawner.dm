@@ -1062,14 +1062,6 @@
 	equipment = /datum/equipment_preset/survivor/clf_lv1021/engineer
 	spawn_priority = SPAWN_PRIORITY_MEDIUM
 
-/obj/effect/landmark/survivor_spawner/lv1021/upp_liaison
-	intro_text = list("<h2>You are a member of the CLF!</h2>",\
-	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
-	"<span class='danger'>Follow your Commanders orders.</span>")
-	story_text = "You are a member of the Union of Progressive People Armed Forces; you have been assigned as a liaison with the Colonial Liberation Front. You were sent to this camp to debrief its personnel following the rebel’s recent operations against the USCMC. Several days ago, a loud explosion occurred to the east. The rebel’s sent their best fighters to investigate, they never returned. Xenomorphs now invade from the east, and there are humans to the west. You must do everything in your power to prevent useful intelligence falling into the hands of anyone outside of the UPP or CLF. You doubt rescue will ever be sent just for you, and if you are captured or found you will likely be declared a ‘rogue element’, you knew the risk when you took the job, but can you live with the consequences? "
-	equipment = /datum/equipment_preset/survivor/clf_lv1021/upp_liaison
-	spawn_priority = SPAWN_PRIORITY_MEDIUM
-
 /obj/effect/landmark/survivor_spawner/lv1021/clf_leader
 	intro_text = list("<h2>You are a member of the CLF!</h2>",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\

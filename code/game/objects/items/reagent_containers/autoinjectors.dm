@@ -349,7 +349,7 @@
 	amount_per_transfer_from_this = 15
 	volume = 15
 //	icon_state = "marine_oneuse"
-	autoinjector_type = "marine"
+//	autoinjector_type = "marine"
 	maptext_label = "OuTc"
 
 /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tramadol

@@ -356,6 +356,9 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(!newcaste)
 		return
 
+	if(!can_transmute(newcaste))
+		return
+
 	transmute(newcaste, "We transmute into a new form.")
 
 // The queen de-evo, but on yourself.
@@ -506,6 +509,14 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		return FALSE
 	else if(tier == 2 && !slots[TIER_3][OPEN_SLOTS] && !slots[TIER_3][GUARANTEED_SLOTS][castepick] && castepick != XENO_CASTE_QUEEN)
 		to_chat(src, SPAN_WARNING("The hive cannot support another Tier 3, wait for either more aliens to be born or someone to die."))
+		return FALSE
+
+	return TRUE
+
+/mob/living/carbon/xenomorph/proc/can_transmute(castepick)
+	var/slots = hive.get_tier_slots()
+	if(tier == 2 && ( caste_type == XENO_CASTE_BURROWER || caste_type == XENO_CASTE_CARRIER || caste_type == XENO_CASTE_HIVELORD) && hive.get_caste_count(caste_type) == 1 && !slots[TIER_2][OPEN_SLOTS] && !slots[TIER_2][GUARANTEED_SLOTS][castepick])
+		to_chat(src, SPAN_WARNING("The hive cannot support another Tier 2 of this caste, wait for either more aliens to be born or someone to die."))
 		return FALSE
 
 	return TRUE

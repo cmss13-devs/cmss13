@@ -520,7 +520,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		return FALSE
 
 	var/slots = hive.get_tier_slots()
-	if(tier == 2 && hive.get_caste_count(caste_type) <= hive.free_slots[caste.type] && !slots[TIER_2][OPEN_SLOTS] && !slots[TIER_2][GUARANTEED_SLOTS][caste_pick])
+	if(tier == 2 && (hive.get_caste_count(caste_type) <= hive.free_slots[caste.type]) && !slots[TIER_2][OPEN_SLOTS] && !slots[TIER_2][GUARANTEED_SLOTS][caste_pick])
 		to_chat(src, SPAN_WARNING("The hive cannot support another Tier 2 of this caste, wait for either more aliens to be born or someone to die."))
 		return FALSE
 

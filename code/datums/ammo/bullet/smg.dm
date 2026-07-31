@@ -181,9 +181,8 @@
 	flags_ammo_behavior = AMMO_LASER
 	hit_effect_color = "#ff0000"
 	///chance of the bullet burning the mob
-	var/ignition_probability = 5
+	var/laser_stacks = 12
 
 /datum/ammo/bullet/smg/a_m36/on_hit_mob(mob/target, obj/projectile/bullet)
 	..()
-	if(prob(ignition_probability))
-		target.fire_act()
+	target.AddComponent(/datum/component/bonus_fire_stack, laser_stacks, world.time)

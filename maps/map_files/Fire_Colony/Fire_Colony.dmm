@@ -39868,16 +39868,6 @@
 	},
 /turf/open/floor/plating/fire_colony,
 /area/fire_colony/interior/mining_north_west)
-"hKv" = (
-/obj/structure/prop/roof/glass{
-	color = "#716c71";
-	icon_state = "glass_roof_2"
-	},
-/obj/structure/prop/roof/glass{
-	icon_state = "glass_3"
-	},
-/turf/open/slippery/hull/colorable/purple/tiles,
-/area/sky)
 "hKG" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -78545,16 +78535,6 @@
 /obj/structure/window/framed/lava,
 /turf/open/floor/corsat,
 /area/fire_colony/interior/bar/canteen)
-"rdZ" = (
-/obj/structure/prop/roof/glass{
-	icon_state = "glass_3"
-	},
-/obj/structure/prop/roof/glass{
-	color = "#716c71";
-	icon_state = "glass_roof_2"
-	},
-/turf/open/space/basic,
-/area/sky)
 "rec" = (
 /turf/open/floor/almayer/research/containment/corner_var1/west,
 /area/fire_colony/interior/epsilon_facility/containment)
@@ -162781,7 +162761,7 @@ rKz
 rKz
 tiY
 tiY
-hKv
+nxS
 nxS
 nxS
 nxS
@@ -165589,7 +165569,7 @@ oKP
 tiY
 nxS
 nxS
-rdZ
+iub
 nxS
 oez
 oKP
@@ -165598,7 +165578,7 @@ oKP
 tiY
 nxS
 nxS
-rdZ
+iub
 nxS
 oez
 oKP
@@ -165856,8 +165836,8 @@ rKz
 rKz
 rKz
 rKz
-dqE
-iua
+dvR
+adM
 oKP
 tiY
 lUI
@@ -166058,8 +166038,8 @@ rKz
 rKz
 rKz
 rKz
-rKz
 tiY
+oKP
 oKP
 tiY
 lUI
@@ -166260,8 +166240,8 @@ sTb
 sTb
 sTb
 sTb
-dvR
-adM
+tiY
+oKP
 oKP
 tiY
 lUI
@@ -167225,7 +167205,7 @@ rKz
 rKz
 tiY
 tiY
-hKv
+nxS
 nxS
 nxS
 nxS
@@ -174295,7 +174275,7 @@ oez
 oKP
 oKP
 tiY
-hKv
+nxS
 nxS
 nxS
 nxS

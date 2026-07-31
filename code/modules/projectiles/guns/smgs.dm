@@ -1063,6 +1063,43 @@
 	recoil_unwielded = RECOIL_AMOUNT_TIER_1
 	fa_max_scatter = SCATTER_AMOUNT_TIER_10 + 0.5
 
+/obj/item/weapon/gun/smg/a_m36/load_into_chamber(mob/user)
+	//The workhorse of the bullet procs.
+	//If we have a round chambered and no active attachable, we're good to go.
+	if(in_chamber && !active_attachable)
+		var/obj/projectile/projectile = create_bullet(ammo, initial(name))
+		projectile.set_light(1, 1, LIGHT_COLOR_RED)
+		in_chamber = projectile
+		return in_chamber
+
+	//Let's check on the active attachable. It loads ammo on the go, so it never chambers anything
+	if(active_attachable)
+		if(shots_fired >= 1) // This is what you'll want to remove if you want automatic underbarrel guns in the future
+			SEND_SIGNAL(src, COMSIG_GUN_INTERRUPT_FIRE)
+			return
+
+		if(active_attachable.current_rounds > 0) //If it's still got ammo and stuff.
+			active_attachable.current_rounds--
+			var/obj/projectile/bullet = create_bullet(active_attachable.ammo, initial(name))
+			// For now, only bullet traits from the attachment itself will apply to its projectiles
+			for(var/entry in active_attachable.traits_to_give_attached)
+				var/list/L
+				// Check if this is an ID'd bullet trait
+				if(istext(entry))
+					L = active_attachable.traits_to_give_attached[entry].Copy()
+				else
+					// Prepend the bullet trait to the list
+					L = list(entry) + active_attachable.traits_to_give_attached[entry]
+				bullet.apply_bullet_trait(L)
+			return bullet
+		else
+			to_chat(user, SPAN_WARNING("[active_attachable] is empty!"))
+			to_chat(user, SPAN_NOTICE("You disable [active_attachable]."))
+			playsound(user, active_attachable.activation_sound, 15, 1)
+			active_attachable.activate_attachment(src, null, TRUE)
+	else
+		return ready_in_chamber()//We're not using the active attachable, we must use the active mag if there is one.
+
 /obj/item/weapon/gun/smg/a_m36/Initialize()
 	. = ..()
 	AddElement(/datum/element/corp_label/bionational)

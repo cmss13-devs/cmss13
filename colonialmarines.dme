@@ -438,6 +438,7 @@
 #include "code\datums\components\armor_link.dm"
 #include "code\datums\components\bad_leg.dm"
 #include "code\datums\components\bonus_damage_stack.dm"
+#include "code\datums\components\bonus_fire_stack.dm"
 #include "code\datums\components\cell.dm"
 #include "code\datums\components\cluster_stack.dm"
 #include "code\datums\components\connect_mob_behalf.dm"

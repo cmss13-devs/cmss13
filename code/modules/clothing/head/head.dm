@@ -485,7 +485,6 @@ GLOBAL_LIST_INIT(allowed_headset_items, list(
 	/obj/item/prop/helmetgarb/helmet_nvg = PREFIX_HAT_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/helmet_nvg/cosmetic = PREFIX_HAT_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/helmet_nvg/marsoc = PREFIX_HAT_GARB_OVERRIDE,
-	/obj/item/attachable/flashlight = PREFIX_HAT_GARB_OVERRIDE,
 ))
 
 GLOBAL_LIST_INIT(allowed_hat_items, list(
@@ -533,7 +532,6 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	/obj/item/prop/helmetgarb/lucky_feather/purple = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/lucky_feather/yellow = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/helmet_gasmask = PREFIX_HAT_GARB_OVERRIDE,
-	/obj/item/attachable/flashlight = PREFIX_HAT_GARB_OVERRIDE,
 ))
 
 /obj/item/clothing/head/cmcap

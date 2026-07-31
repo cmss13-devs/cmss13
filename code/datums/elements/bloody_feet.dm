@@ -53,7 +53,8 @@
 
 /datum/element/bloody_feet/proc/on_moved(mob/living/carbon/human/target, turf/old_loc, direction)
 	SIGNAL_HANDLER
-	INVOKE_ASYNC(src, PROC_REF(add_tracks), target, old_loc, direction)
+	if(target.stat == CONSCIOUS)
+		INVOKE_ASYNC(src, PROC_REF(add_tracks), target, old_loc, direction)
 
 /datum/element/bloody_feet/proc/add_tracks(mob/living/carbon/human/target, turf/old_loc, direction)
 	if(GLOB.perf_flags & PERF_TOGGLE_NOBLOODPRINTS)
@@ -98,8 +99,7 @@
 /datum/element/bloody_feet/proc/blood_crossed(mob/living/carbon/human/target, amount, bcolor, dry_time_left)
 	SIGNAL_HANDLER
 	Detach(target)
-	if(target.stat == CONSCIOUS)
-		target.AddElement(/datum/element/bloody_feet, dry_time_left, target.shoes, amount, bcolor)
+	target.AddElement(/datum/element/bloody_feet, dry_time_left, target.shoes, amount, bcolor)
 
 /datum/element/bloody_feet/proc/clear_blood(datum/target)
 	SIGNAL_HANDLER

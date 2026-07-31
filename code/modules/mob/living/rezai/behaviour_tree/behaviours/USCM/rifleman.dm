@@ -35,6 +35,7 @@
 	return BT_NODE_RETURN_FAIL
 
 
+// Fix navigation - they can't open doors and get stuck on walls and sh-stuff..
 /datum/rezai/bt/uscm/rifleman/proc/follow_squad_leader()
 	if (!bboard.squad_leader_mob)
 		return BT_NODE_RETURN_FAIL

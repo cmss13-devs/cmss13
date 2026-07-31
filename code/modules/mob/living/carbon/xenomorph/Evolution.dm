@@ -516,7 +516,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 //checks if transmuting T2 is guaranteed slot holder and prevents them from going over general T2 slot cap
 /mob/living/carbon/xenomorph/proc/can_transmute(castepick)
 	var/slots = hive.get_tier_slots()
-	if(tier == 2 && ( caste_type == XENO_CASTE_BURROWER || caste_type == XENO_CASTE_CARRIER || caste_type == XENO_CASTE_HIVELORD) && hive.get_caste_count(caste_type) == 1 && !slots[TIER_2][OPEN_SLOTS] && !slots[TIER_2][GUARANTEED_SLOTS][castepick])
+	if(tier == 2 && (caste_type == XENO_CASTE_BURROWER || caste_type == XENO_CASTE_CARRIER || caste_type == XENO_CASTE_HIVELORD) && hive.get_caste_count(caste_type) == 1 && !slots[TIER_2][OPEN_SLOTS] && !slots[TIER_2][GUARANTEED_SLOTS][castepick])
 		to_chat(src, SPAN_WARNING("The hive cannot support another Tier 2 of this caste, wait for either more aliens to be born or someone to die."))
 		return FALSE
 

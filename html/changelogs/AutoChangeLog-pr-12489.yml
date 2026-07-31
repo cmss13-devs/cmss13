@@ -1,0 +1,4 @@
+author: "Antlers"
+delete-after: True
+changes:
+  - bugfix: "Ladders are no longer exempt from clickdrag override"

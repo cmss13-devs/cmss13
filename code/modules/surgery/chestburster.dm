@@ -39,7 +39,7 @@
 	time = 5 SECONDS
 	preop_sound = 'sound/surgery/scalpel1.ogg'
 	success_sound = 'sound/surgery/scalpel2.ogg'
-	failure_sound = 'sound/surgery/organ2.ogg'
+	failure_sound = 'sound/effects/acid_sizzle2.ogg'
 
 /datum/surgery_step/cut_larval_pseudoroots/proc/larva_blood_spray(mob/living/carbon/human/user, mob/living/carbon/human/patient) //Mostly check_blood_splash().
 	var/i = 0 //Tally up our victims.
@@ -91,7 +91,7 @@
 			else
 				target.emote("scream") //MY ORGANS! AAAA!
 
-		playsound(target, "acid_sizzle", 25, TRUE)
+		play_failure_sound(user, target, target_zone, tool, surgery)
 		larva_blood_spray(user, target)
 		target.add_blood(BLOOD_COLOR_XENO, BLOOD_BODY)
 		user.add_blood(BLOOD_COLOR_XENO, BLOOD_BODY)
@@ -124,7 +124,6 @@
 		var/datum/internal_organ/organ = pick(surgery.affected_limb.internal_organs)
 		organ.take_damage(5, i == 1)
 
-	playsound(target, "acid_sizzle", 25, TRUE)
 	larva_blood_spray(user, target)
 	target.add_blood(BLOOD_COLOR_XENO, BLOOD_BODY)
 	user.add_blood(BLOOD_COLOR_XENO, BLOOD_BODY)
@@ -239,7 +238,6 @@
 			target.emote("scream")
 
 	user.add_blood(BLOOD_COLOR_XENO, BLOOD_HANDS)
-	playsound(target, "acid_sizzle", 25, TRUE)
 	impacted_organ.take_damage(5,0)
 	target.apply_damage(15, BURN, target_zone)
 

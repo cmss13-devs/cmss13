@@ -42,6 +42,7 @@
 
 	return turret
 
+/*
 /// Debug tool for live-tuning weapon sprite alignment on the vehicle you're seated in.
 /mob/living/carbon/verb/set_weapon_rotation_pivot()
 	set name = "Set Weapon Rotation Pivot"
@@ -65,6 +66,8 @@
 
 	tuner.weapon = candidates[1]
 	tuner.tgui_interact(src)
+
+*/
 
 /datum/tank_pivot_tuner
 	var/obj/vehicle/multitile/vehicle
@@ -213,6 +216,7 @@
 
 // instantly swaps whichever primary/secondary weapon is mounted on the tank turret
 
+/*
 /mob/living/carbon/verb/cycle_tank_weapon_hardpoint()
 	set name = "Cycle Tank Weapon Hardpoint"
 	set category = "Debug"
@@ -247,7 +251,9 @@
 	turret.owner.update_icon()
 
 	to_chat(src, SPAN_NOTICE("Installed [next_hardpoint.name] on the turret ([turret.debug_cycle_index]/[length(turret.accepted_hardpoints)])."))
+*/
 
+/*
 // Full visual hardpoint editor. Swap/remove hardpoints and set health/wound tiers directly.
 /mob/living/carbon/verb/debug_edit_tank_hardpoints()
 	set name = "Edit Tank Hardpoints"
@@ -264,7 +270,7 @@
 	var/datum/tank_hardpoint_debugger/debugger = new
 	debugger.vehicle = tank_vehicle
 	debugger.tgui_interact(src)
-
+*/
 /datum/tank_hardpoint_debugger
 	var/obj/vehicle/multitile/tank/vehicle
 	var/obj/item/hardpoint/selected

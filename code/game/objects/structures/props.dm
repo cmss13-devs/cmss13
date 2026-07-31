@@ -302,7 +302,8 @@
 		return
 	else if (ishuman(user) && HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		on = !on
-		visible_message("You pry at the control valve on [src]. The machine shudders." , "[user] pries at the control valve on [src]. The entire machine shudders.")
+		to_chat(user, SPAN_NOTICE("You pry at the control valve on [src]. The machine shudders."))
+		visible_message(SPAN_NOTICE("[user] pries at the control valve on [src]. The entire machine shudders."))
 
 		Update()
 

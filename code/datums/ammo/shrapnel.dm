@@ -149,11 +149,11 @@
 	icon_state = "shrapnel_glass"
 
 /particles/shrapnel
-	icon = 'icons/obj/items/weapons/projectiles.dmi'
-	icon_state = "shrapnel_bright2"
+	icon = 'icons/effects/particles/generic_particles.dmi'
+	icon_state = "spark"
 	width = 1000
 	height = 1000
-	count = 100
+	count = 200
 	spawning = 0
 	lifespan = 0.6 SECONDS
 	fadein = 0.2 SECONDS
@@ -169,7 +169,7 @@
 /obj/shrapnel_effect/New()
 	. = ..()
 	particles = new /particles/shrapnel
-	particles.spawning = rand(5,9) + rand(5,9)
+	particles.spawning = rand(50,80)
 	addtimer(CALLBACK(src, PROC_REF(stop)), 0.1 SECONDS)
 	QDEL_IN(src, 0.9 SECONDS)
 

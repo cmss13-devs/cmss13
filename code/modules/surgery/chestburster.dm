@@ -107,7 +107,7 @@
 
 	log_interact(user, target, "[key_name(user)] cut the roots of a larva in [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], starting [surgery].")
 
-/datum/surgery_step/cut_larval_pseudoroots/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/cut_larval_pseudoroots/failure(mob/living/carbon/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_WARNING("Your hand slips and you accidentally slice into the larva! Acid sprays into the air and lands in [target]'s [surgery.affected_limb.cavity], where it pools and sizzles across \his organs!"),
 		SPAN_WARNING("[user]'s hand slips and accidentally slices into the larva! Acid sprays into the air and lands in your [surgery.affected_limb.cavity], where it pools and sizzles across your organs!"),
@@ -120,6 +120,10 @@
 		else
 			target.emote("scream")
 
+	for(var/i in 1 to rand(2,6)) //Look what you've done.
+		var/datum/internal_organ/organ = pick(surgery.affected_limb.internal_organs)
+		organ.take_damage(5, i == 1)
+
 	playsound(target, "acid_sizzle", 25, TRUE)
 	larva_blood_spray(user, target)
 	target.add_blood(BLOOD_COLOR_XENO, BLOOD_BODY)
@@ -127,9 +131,10 @@
 	user.add_blood(BLOOD_COLOR_XENO, BLOOD_HANDS)
 	target.apply_damage(15, BURN, target_zone)
 
-	for(var/i in 1 to rand(2,6))
-		var/datum/internal_organ/organ = pick(surgery.affected_limb.internal_organs)
-		organ.take_damage(5, i == 1)
+	to_chat(user, SPAN_HIGHDANGER("Acid scalds your [user.hand ? "left" : "right"] hand!"))
+	var/hand_zone = user.hand ? "l_hand" : "r_hand"
+	user.apply_damage(15, BURN, hand_zone) //You WILL be more careful next time.
+	user.emote("pain")
 
 	log_interact(user, target, "[key_name(user)] failed to cut the roots of a larva in [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], aborting [surgery].")
 	return FALSE
@@ -195,13 +200,11 @@
 					target.emote("scream")
 
 			target.apply_damage(15, BURN, target_zone)
-
 			play_failure_sound(user, target, target_zone, tool, surgery)
-			var/hand_zone = user.hand ? "l_hand" : "r_hand"
+
 			to_chat(user, SPAN_HIGHDANGER("Acid scalds your [user.hand ? "left" : "right"] hand!"))
+			var/hand_zone = user.hand ? "l_hand" : "r_hand"
 			user.add_blood(BLOOD_COLOR_XENO, BLOOD_HANDS)
-			if(user.get_inactive_hand() == src)
-				hand_zone = !hand_zone
 			user.apply_damage(15, BURN, hand_zone)
 			user.emote("pain")
 
@@ -242,8 +245,6 @@
 
 	to_chat(user, SPAN_HIGHDANGER("Acid scalds your [user.hand ? "left" : "right"] hand!"))
 	var/hand_zone = user.hand ? "l_hand" : "r_hand"
-	if(user.get_inactive_hand() == src)
-		hand_zone = !hand_zone
 	user.apply_damage(15, BURN, hand_zone)
 	user.emote("pain")
 

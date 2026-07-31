@@ -279,7 +279,6 @@
 	if(mover in exploded)
 		return
 	var/i = wave_turfs.Find(source)
-	var/intensity = intensities[i]
 	exploded += mover
 	// Contrary to explode_turfs above, here we defer everything to SSdelayed_ex_act
 	// This is because since this came from a movement operation, we might not be on SS time at all
@@ -313,10 +312,10 @@
 	var/list/exploded_list = list()
 
 	if(direction)
-		var/datum/explosion_wave/wave = new(epicenter, dir = direction, power = power, falloff = falloff, falloff_shape = falloff_shape, cause_data = explosion_cause_data, exploded_list = exploded_list)
+		new /datum/explosion_wave(epicenter, dir = direction, power = power, falloff = falloff, falloff_shape = falloff_shape, cause_data = explosion_cause_data, exploded_list = exploded_list)
 	else
 		for(var/dir in GLOB.cardinals)
-			var/datum/explosion_wave/wave = new(epicenter, dir = dir, power = power, falloff = falloff, falloff_shape = falloff_shape, cause_data = explosion_cause_data, exploded_list = exploded_list)
+			new /datum/explosion_wave(epicenter, dir = dir, power = power, falloff = falloff, falloff_shape = falloff_shape, cause_data = explosion_cause_data, exploded_list = exploded_list)
 
 	if(power >= 150) //shockwave for anything over 150 power
 		new /obj/effect/shockwave(epicenter, power/50)

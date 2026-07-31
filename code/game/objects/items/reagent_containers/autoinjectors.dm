@@ -334,6 +334,8 @@
 	desc = "An EZ autoinjector loaded with a single `15u dose of Inaprovaline to self administer for oxygen-stabilizing in anticipation of passing out. You can refill it at Wey-Med vending machines or with a smart tank. Thankfully, there's no lock on it, so anyone can use it!"
 //	icon_state = "marine_oneuse"
 //	autoinjector_type = "marine"
+	icon_state = "emptyskill"
+	autoinjector_type = "autoinjector"
 	amount_per_transfer_from_this = 30
 	volume = 30
 	skilllock = SKILL_MEDICAL_DEFAULT

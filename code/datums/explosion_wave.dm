@@ -30,6 +30,8 @@
 	 *
 	 * At the diagonals, we have two overlapping waves each time. This may require us
 	 * to divide the explosive power by two to match, or to merge it between waves.
+	 * Another option is to use a shared list for all waves so the target will only
+	 * eat blast from one of the waves. That's what we're doing for now.
 	 */
 
 	/// Origin point of the wave
@@ -48,10 +50,10 @@
 	var/falloff = 0
 	/// Type of Falloff calculation to use
 	var/falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR
-
-	/// TODO List of movables that already ate the blast wave, so they don't eat it again if they get pushed out of the way
-	/// Typically this will be a shared list between all 4 cardinal blast waves, so don't .Cut it
-	var/list/atom/movable/exploded
+	/// Is this environemental damage?
+	var/enviro = FALSE
+	/// Informations on the action that caused the explosion
+	var/datum/cause_data/cause_data
 
 	/// List of turfs comprising the wave currently
 	/// Note that in this house we order everything in ascending X/Y order
@@ -59,11 +61,11 @@
 	var/list/turf/wave_turfs
 	/// Explosive intensities in order of the turfs above
 	var/list/turf/intensities
+	/// List of movables that already ate the blast wave, so they don't eat it again if they get pushed out of the way
+	/// Typically this will be a shared list between all 4 cardinal blast waves, so don't .Cut it
+	var/list/atom/movable/exploded
 
-	/// Informations on the action that caused the explosion
-	var/datum/cause_data/cause_data
-
-/datum/explosion_wave/New(turf/epicenter, dir = NONE, power = 0, falloff = 0, falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR, datum/cause_data/cause_data)
+/datum/explosion_wave/New(turf/epicenter, dir = NONE, power = 0, falloff = 0, falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR, datum/cause_data/cause_data, enviro, list/exploded_list)
 	. = ..()
 	if(!dir || !power)
 		qdel(src)
@@ -74,24 +76,47 @@
 	src.falloff = max(falloff, power/100)
 	src.falloff_shape = falloff_shape
 	src.cause_data = cause_data
+	src.exploded = exploded_list || list()
+	if(!isnull(enviro))
+		src.enviro = enviro
+
+	// Bootstrap internal state
 	wave_turfs = list(epicenter)
 	intensities = list(power)
+
 	START_PROCESSING(SSexplosion_waves, src)
 
 /datum/explosion_wave/Destroy(force, ...)
 	. = ..()
 	cause_data = null
+	exploded = null // DON'T Cut it, other waves might depend on it
 	STOP_PROCESSING(SSexplosion_waves, src)
 
 /datum/explosion_wave/process(delta_time)
-	propagate()
+	pre_travel_effects(delta_time)
 
-/datum/explosion_wave/proc/propagate()
+	. = propagate(delta_time) // Not delta_time enabled, it's hard to do fractionals of 1 tick
+	if(!.)
+		qdel(src)
+		return
+
+	. = post_travel_effects(delta_time)
+	if(!.)
+		qdel(src)
+		return
+
+/// What happens before moving the explosion wave
+/datum/explosion_wave/proc/pre_travel_effects(delta_time)
+	remove_overlays()
+	tear_signals_down()
+
+/// Actually step forward and move the explosion wave
+/datum/explosion_wave/proc/propagate(delta_time)
 	. = FALSE
+
 	order++
 
 	// Consider the new list of affected turfs, let's project it
-
 	var/prop_x = 0 // Coordinate multipliers for the propagation of the wave
 	var/prop_y = 0
 	switch(dir)
@@ -104,13 +129,13 @@
 		if(WEST)
 			prop_x = -1; prop_y = 0;
 
-	// Get the middle of the waveEXPLOSION_MIN_FALLOFF
+	// Get the middle of the wave
 	var/turf/wave_center_turf = locate(epicenter.x + prop_x * order, epicenter.y + prop_y * order, epicenter.z)
 	if(!wave_center_turf)
-		qdel(src)
 		return FALSE // Done here.
 
 	// Consider the entire wave as it is in game world
+	// It doesn't matter if these turfs don't exist, we'll check that later
 	var/list/turf/new_wave_turfs = new /list(order * 2 + 1)
 	for(var/i in 1 to (order * 2 + 1))
 		new_wave_turfs[i] = locate(wave_center_turf.x + (!!prop_y)*(i-order-1), wave_center_turf.y + (!!prop_x)*(i-order-1), wave_center_turf.z)
@@ -119,7 +144,7 @@
 	//  * The wave expands as shown above when it travels, so we have to compute new edge values
 	//  * When the wave moves forward, it loses intensity through falloff
 	//  * As the wave propagates, atoms in the way can dampen the explosion for rest of the travel
-	// We'll do the first and third step now. The dampening can happen as we scan for explosion damage later.
+	// We'll do the first step now. The dampening can happen as we scan for explosion damage later.
 	// This is a bit weird, but note that the splitting of the wave as it expand doesnt reduce the explosion intensity.
 	var/list/new_intensities = new /list(order * 2 + 1)
 	for(var/i in 1 to length(intensities))
@@ -127,38 +152,28 @@
 	new_intensities[1] = intensities[min(2, length(intensities))]
 	new_intensities[order*2+1] = intensities[length(intensities)]
 
-	// Now run everything through Falloff!
-	apply_falloff(new_wave_turfs, new_intensities)
-
 	// We store the new values
 	intensities = new_intensities
 	wave_turfs = new_wave_turfs
+	return TRUE
 
-	var/exploded_something = FALSE
-	for(var/i in 1 to length(wave_turfs))
-		if(intensities[i] > 0)
-			if(wave_turfs[i])
-				var/color
-				switch(dir)
-					if(NORTH)
-						color = "#e61919"
-					if(SOUTH)
-						color = "#ffc32d"
-					if(EAST)
-						color = "#c864c8"
-					if(WEST)
-						color = "#4148c8"
-				apply_overlay(wave_turfs[i], intensities[i])
-				//explode_turf(wave_turfs[i], intensities[i], color)
-				exploded_something = TRUE
-
-	if(!exploded_something)
-		qdel(src) // It's over
+/// Effects that take place after the explosion wave travels:
+/// - falloff, explosion dampening, and exploding actual contents of the turfs
+/datum/explosion_wave/proc/post_travel_effects(delta_time)
+	apply_falloff()
+	set_signals_up()
+	. = explode_turfs()
+	if(.)
+		apply_overlays()
 
 /// Applies falloff to a set of turfs and explosion intensities, in-place
-/datum/explosion_wave/proc/apply_falloff(list/turf/turfs, list/intensities)
-	for(var/i in 1 to length(turfs))
-		var/turf/turf = turfs[i]
+/datum/explosion_wave/proc/apply_falloff()
+	for(var/i in 1 to length(wave_turfs))
+		var/turf/turf = wave_turfs[i]
+		if(!turf) // This went out of bounds. Reset strength to zero. Move on.
+			intensities[i] = 0
+			continue
+
 		// TODO? We don't respect legacy behavior in two ways:
 		//  * Falloff is not tracked but calc'd in one go - so EXPONENTIAL_(HALF_)IN_PYLON behaves as if it was in pylon the whole time when there
 		//  * Legacy behavior is to *sqrt(2) diagonals falloff, but i don't see how it makes sense here if we don't also spread the explosive power
@@ -181,11 +196,97 @@
 				else
 					intensities[i] -= (falloff * (1.5**(order-1)))
 
-		// FIXME for demo purposes only - have this include atom contents and move it to the explosion application proc later
-		intensities[i] -= turf.get_explosion_resistance(dir) // FIXME this doesn't work properly with corners/diagonals in some cases! Maybe do this before expanding the wave
+		if(intensities[i] <= 0)
+			intensities[i] = 0
 
+/// Apply effects to the turfs as we travel
+/datum/explosion_wave/proc/explode_turfs()
+	SHOULD_NOT_SLEEP(TRUE)
 
-// Spawns a cellular automaton of an explosion
+	var/still_exploding = FALSE
+	for(var/i in 1 to length(wave_turfs))
+		var/turf/turf = wave_turfs[i]
+		if(!turf)
+			continue // Make sure this turf exists in the world too
+		if(intensities[i] <= 0)
+			continue // Not really exploding
+
+		// Step 1: We dampen the explosion with the turf itself.
+		intensities[i] -= turf.get_explosion_resistance(dir)
+		// Step 2: We dampen with the turf contents.
+		for(var/atom/movable/thing as anything in turf)
+			intensities[i] -= thing.get_explosion_resistance(dir)
+
+		if(intensities[i] <= 0)
+			continue
+
+		still_exploding = TRUE
+
+		// Step 3: We blow up the turf
+		if(!(turf in exploded))
+			exploded += turf
+			INVOKE_ASYNC(turf, TYPE_PROC_REF(/atom, ex_act), intensities[i], dir, cause_data, 0, enviro)
+
+		// Step 4: We blow up the turf contents
+		for(var/atom/movable/thing as anything in turf)
+			if(thing in exploded)
+				continue
+			exploded += thing
+
+			// Mob explosions are expensive due to limbs and throws. We defer these entirely.
+			if(ishuman(thing))
+				SSdelayed_ex_act.queue(thing, intensities[i], dir, cause_data, 0, enviro)
+			else
+				INVOKE_ASYNC(thing, TYPE_PROC_REF(/atom, ex_act), intensities[i], dir, cause_data, 0, enviro)
+
+	return still_exploding
+
+/// Apply blast wave overlay to all the current turfs
+/datum/explosion_wave/proc/apply_overlays()
+	var/image/image = image('icons/effects/effects.dmi', "smoke", layer = FLY_LAYER)
+	for(var/i in 1 to (order * 2 + 1))
+		var/turf/turf = wave_turfs[i]
+		var/intensity = intensities[i]
+		if(intensity > 0)
+			turf.overlays += image
+
+/// Remove blast wave overlay from all the current turfs
+/datum/explosion_wave/proc/remove_overlays()
+	var/image/image = image('icons/effects/effects.dmi', "smoke", layer = FLY_LAYER)
+	for(var/i in 1 to (order * 2 + 1))
+		var/turf/turf = wave_turfs[i]
+		var/intensity = intensities[i]
+		if(intensity > 0) // Yes, we need to check even while removing, so that a dead explosion doens't clip overlays from a living explosion
+			turf.overlays -= image
+
+/// Set signals on all of our wave present turfs so we can explode things that come into them
+/datum/explosion_wave/proc/set_signals_up()
+	for(var/i in 1 to (order * 2 + 1))
+		if(intensities[i] <= 0)
+			continue
+		var/turf/turf = wave_turfs[i]
+		if(turf)
+			RegisterSignal(turf, COMSIG_TURF_ENTERED, PROC_REF(turf_entered))
+
+/datum/explosion_wave/proc/tear_signals_down()
+	for(var/i in 1 to (order * 2 + 1))
+		var/turf/turf = wave_turfs[i]
+		if(turf)
+			UnregisterSignal(turf, COMSIG_TURF_ENTERED)
+
+/datum/explosion_wave/proc/turf_entered(turf/source, atom/movable/mover)
+	SIGNAL_HANDLER
+	if(mover in exploded)
+		return
+	var/i = wave_turfs.Find(source)
+	var/intensity = intensities[i]
+	exploded += mover
+	// Contrary to explode_turfs above, here we defer everything to SSdelayed_ex_act
+	// This is because since this came from a movement operation, we might not be on SS time at all
+	// right now, and we may cause overtime if we start throwing humans around
+	SSdelayed_ex_act.queue(mover, intensities[i], dir, cause_data, 0, enviro)
+
+// Legacy proc spawning cellular automata explosions repurposed for our use. This should eventually go somewhere else and be cleaned up.
 /proc/cell_explosion(turf/epicenter, power, falloff, falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR, direction, datum/cause_data/explosion_cause_data, enviro=FALSE)
 	if(!istype(explosion_cause_data))
 		if(explosion_cause_data)
@@ -195,7 +296,7 @@
 			stack_trace("cell_explosion called without cause_data.")
 			explosion_cause_data = create_cause_data("Explosion")
 
-	falloff = max(falloff, power/100)
+	falloff = max(falloff, power/100) // Clamp to make sure someone doesn't make an infinite explosion
 
 	var/obj/causing_obj = explosion_cause_data?.resolve_cause()
 	var/mob/causing_mob = explosion_cause_data?.resolve_mob()
@@ -208,49 +309,30 @@
 	else
 		playsound(epicenter, "explosion", 90, 1, max(round(power,1),7))
 
+	// We make one common list for all of this explosions' blastwaves to refer to so that all of them can only explode each atom once
+	var/list/exploded_list = list()
+
 	if(direction)
-		var/datum/explosion_wave/wave = new(epicenter, dir = direction, power = power, falloff = falloff, falloff_shape = falloff_shape, cause_data = explosion_cause_data)
+		var/datum/explosion_wave/wave = new(epicenter, dir = direction, power = power, falloff = falloff, falloff_shape = falloff_shape, cause_data = explosion_cause_data, exploded_list = exploded_list)
 	else
 		for(var/dir in GLOB.cardinals)
-			var/datum/explosion_wave/wave = new(epicenter, dir = dir, power = power, falloff = falloff, falloff_shape = falloff_shape, cause_data = explosion_cause_data)
+			var/datum/explosion_wave/wave = new(epicenter, dir = dir, power = power, falloff = falloff, falloff_shape = falloff_shape, cause_data = explosion_cause_data, exploded_list = exploded_list)
 
 	if(power >= 150) //shockwave for anything over 150 power
-		new /obj/effect/shockwave(epicenter, power/60)
+		new /obj/effect/shockwave(epicenter, power/50)
 
 	if(power >= 100) // powerful explosions send out some special effects
 		epicenter = get_turf(epicenter) // the ex_acts might have changed the epicenter
 		new /obj/shrapnel_effect(epicenter)
 
+	var/effect_radius = power / falloff
+	if(power >= 300) // constructor is small, large, tiny. idk why TGMC didn't make this an enum?
+		new /obj/effect/temp_visual/explosion(epicenter, effect_radius, FALSE, TRUE, FALSE)
+	else if(power >= 200)
+		new /obj/effect/temp_visual/explosion(epicenter, effect_radius, FALSE, FALSE, FALSE)
+	else if (power >= 150)
+		new /obj/effect/temp_visual/explosion(epicenter, effect_radius, TRUE, FALSE, FALSE)
+	else
+		new /obj/effect/temp_visual/explosion(epicenter, effect_radius, FALSE, FALSE, TRUE)
 
-/// Explodes a turf. Don't actually use a proc for this, this is just for testing. Doesn't explode, either, it just paints.
-/datum/explosion_wave/proc/explode_turf(turf/turf, power, color)
-	// TESTING for now. COLOR THE TURF. YEP.
-	var/list/factors = rgb2num(color)
-	var/gradient = power / src.power
-	turf.color = rgb(factors[1], factors[2], factors[3], gradient * 255 + 100)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(uncolor_turf), turf), 0.5 SECONDS)
-
-/proc/uncolor_turf(turf/turf)
-	turf.color = null
-	turf.alpha = 255
-
-/datum/explosion_wave/proc/apply_overlay(turf/turf, intensity)
-	var/image/image = image('icons/effects/effects.dmi', "dissolve-fast") // Find something better and where dir matters!
-	image.plane = DISPLACEMENT_PLATE_RENDER_LAYER
-	image.layer = FLY_LAYER
-	var/prop_x = 0
-	var/prop_y = 0
-	switch(dir)
-		if(NORTH)
-			prop_x = 0; prop_y = 1;
-		if(SOUTH)
-			prop_x = 0; prop_y = -1;
-		if(EAST)
-			prop_x = 1; prop_y = 0;
-		if(WEST)
-			prop_x = -1; prop_y = 0;
-	turf.overlays += image
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(remove_overlay), turf, image), 2 DECISECONDS)
-
-/proc/remove_overlay(atom/atom, image/overlay)
-	atom.overlays -= overlay
+	// Possibly you can add screenshake on top of all that but you'll need to scan nearby mobs for that and it sucks

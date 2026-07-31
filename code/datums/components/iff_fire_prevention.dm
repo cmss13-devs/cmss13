@@ -1,5 +1,3 @@
-#define IFF_HALT_COOLDOWN 0.5 SECONDS
-
 /// A component that prevents gun (although you can attach it to anything else that shoot projectiles) from shooting when mob from the same faction stands in the way.
 /// You can also pass number of ticks, to make gun have an additional delay if firing prevention comes into play, but it is not neccesary.
 /datum/component/iff_fire_prevention
@@ -100,11 +98,9 @@
 /datum/component/iff_fire_prevention/proc/apply_fire_delay(obj/firing_weapon, mob/living/user)
 	playsound_client(user.client, 'sound/weapons/smartgun_fail.ogg', src, 25)
 	to_chat(user, SPAN_WARNING("[firing_weapon] halts firing as an IFF marked target crosses your field of fire!"))
-	COOLDOWN_START(src, iff_halt_cooldown, IFF_HALT_COOLDOWN + iff_additional_fire_delay)
+	COOLDOWN_START(src, iff_halt_cooldown, iff_additional_fire_delay)
 	if(iff_additional_fire_delay)
 		var/obj/item/weapon/gun/gun = firing_weapon
 		if(istype(gun))
 			gun.last_fired = world.time + iff_additional_fire_delay
 			SEND_SIGNAL(gun, COMSIG_GUN_NEXT_FIRE_MODIFIED, gun.last_fired) //for autofire
-
-#undef IFF_HALT_COOLDOWN

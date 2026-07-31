@@ -1,5 +1,5 @@
 
-
+/* Todo - make it locked to admin only.
 CLIENT_VERB(rezai_create_rfn)
 	set name = "Create_RFN_BT"
 	set category = "Rezzer.BT_AI"
@@ -27,5 +27,5 @@ CLIENT_VERB(rezai_create_rfn)
 	//create behaviour tree
 	spawned_human.rezai = new(spawned_human)
 
-
+*/
 

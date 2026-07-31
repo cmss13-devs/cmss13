@@ -180,6 +180,8 @@
 				SPAN_WARNING("[user] pulls a wriggling parasite out of [target]'s ribcage!"))
 		else
 			var/datum/internal_organ/impacted_organ = pick(surgery.affected_limb.internal_organs)
+			impacted_organ.take_damage(5, FALSE)
+
 			user.affected_message(target,
 				SPAN_WARNING("Your burn your [user.hand ? "left" : "right"] hand and [target]'s [impacted_organ.name] with acid as you forcefully rip a wriggling parasite from \his ribcage!"),
 				SPAN_WARNING("Your [impacted_organ.name] and [user]'s [user.hand ? "left" : "right"] hand are burned by acid as \he rips a wriggling parasite from your ribcage!"),
@@ -200,10 +202,7 @@
 			user.add_blood(BLOOD_COLOR_XENO, BLOOD_HANDS)
 			if(user.get_inactive_hand() == src)
 				hand_zone = !hand_zone
-			if(hand_zone)
-				user.apply_damage(15, BURN, "l_hand")
-			else
-				user.apply_damage(15, BURN, "r_hand")
+			user.apply_damage(15, BURN, hand_zone)
 			user.emote("pain")
 
 		user.count_niche_stat(STATISTICS_NICHE_SURGERY_LARVA)
@@ -225,9 +224,9 @@
 /datum/surgery_step/remove_larva/failure(mob/living/carbon/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	var/datum/internal_organ/impacted_organ = pick(surgery.affected_limb.internal_organs)
 	user.affected_message(target,
-		SPAN_WARNING("Your [user.hand ? "left" : "right"] slips, bruising [target]'s [impacted_organ.name] and wounding the larva, who spills acid over your hand and into \his [surgery.affected_limb.cavity]!"),
-		SPAN_WARNING("[user]'s [user.hand ? "left" : "right"] slips, bruising your [impacted_organ.name] and wounding the larva, who spills acid over \his hand and into your [surgery.affected_limb.cavity]!"),
-		SPAN_WARNING("[user]'s [user.hand ? "left" : "right"] slips and wounds the larva, who spills acid all over \his hand, [target]'s [impacted_organ.name] and \his [surgery.affected_limb.cavity]! "))
+		SPAN_WARNING("Your [user.hand ? "left" : "right"] hand slips, bruising [target]'s [impacted_organ.name] and wounding the larva, who spills acid over your hand and into \his [surgery.affected_limb.cavity]!"),
+		SPAN_WARNING("[user]'s [user.hand ? "left" : "right"] hand slips, bruising your [impacted_organ.name] and wounding the larva, who spills acid over \his hand and into your [surgery.affected_limb.cavity]!"),
+		SPAN_WARNING("[user]'s [user.hand ? "left" : "right"] hand slips and wounds the larva, who spills acid all over \his hand, [target]'s [impacted_organ.name] and \his [surgery.affected_limb.cavity]! "))
 
 	if(target.stat == CONSCIOUS)
 		to_chat(target, SPAN_HIGHDANGER("Your [impacted_organ.name] burns like hell in your [surgery.affected_limb.cavity]!"))
@@ -245,10 +244,7 @@
 	var/hand_zone = user.hand ? "l_hand" : "r_hand"
 	if(user.get_inactive_hand() == src)
 		hand_zone = !hand_zone
-	if(hand_zone)
-		user.apply_damage(15, BURN, "l_hand")
-	else
-		user.apply_damage(15, BURN, "r_hand")
+	user.apply_damage(15, BURN, hand_zone)
 	user.emote("pain")
 
 	log_interact(user, target, "[key_name(user)] failed to remove an embryo from [key_name(target)]'s ribcage with [tool ? "[tool]" : "their [user.hand ? "left" : "right"] hand"].")

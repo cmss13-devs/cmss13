@@ -123,6 +123,7 @@
 
 		victim.add_blood(BLOOD_COLOR_XENO, BLOOD_HANDS)
 		victim.add_blood(BLOOD_COLOR_XENO, BLOOD_BODY)
+		victim.emote("pain")
 		victim.apply_damage(rand(50, 75), BURN) // still dangerous
 		playsound(victim, "acid_sizzle", 25, TRUE)
 		animation_flash_color(victim, "#FF0000")

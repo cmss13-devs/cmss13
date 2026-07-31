@@ -208,9 +208,9 @@
 
 /datum/surgery_step/clamp_bleeders_step/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_WARNING("Your hand slips and tears several blood vessels in [target]'s [surgery.affected_limb.display_name]! Blood gushes everywhere, causing internal bleeding!"),
-		SPAN_WARNING("[user]'s hand slips and tears several blood vessels in your [surgery.affected_limb.display_name]! Blood gushes everywhere, causing internal bleeding!"),
-		SPAN_WARNING("[user]'s hand slips and tears several blood vessels in [target]'s [surgery.affected_limb.display_name]! Blood gushes everywhere, causing internal bleeding!"))
+		SPAN_WARNING("Your hand slips and tears several blood vessels in [target]'s [surgery.affected_limb.display_name], causing internal bleeding! Blood gushes everywhere!"),
+		SPAN_WARNING("[user]'s hand slips and tears several blood vessels in your [surgery.affected_limb.display_name], causing internal bleeding! Blood gushes everywhere!"),
+		SPAN_WARNING("[user]'s hand slips and tears several blood vessels in [target]'s [surgery.affected_limb.display_name], causing internal bleeding! Blood gushes everywhere!"))
 
 	target.custom_pain("You feel something rip in your [surgery.affected_limb.display_name]!", 1)
 	if(target.stat == CONSCIOUS)
@@ -574,7 +574,7 @@
 
 		surgery.affected_limb.fracture(100)
 		if(target.stat == CONSCIOUS)
-			if(target.pain.reduction_pain <= surgery.pain_reduction_required) //if patient is not under the proper anesthesia. Patient under anesthesia can't feel shit.
+			if(target.pain.reduction_pain < surgery.pain_reduction_required) //if patient is not under the proper anesthesia. Patient under anesthesia can't feel shit.
 				target.emote("scream") //AWWW FUCK MY RIBS!
 	else
 		user.affected_message(target,

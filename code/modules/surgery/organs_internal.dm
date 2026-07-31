@@ -82,19 +82,20 @@ and organ transplant code which may come in handy in future but haven't been edi
 		var/obj/item/stack/medical/packs = tool
 		if(!packs.use(use_stack))
 			to_chat(user, SPAN_BOLDWARNING("You don't have enough of [packs] to finish repairing organs!"))
-		else
-			for(var/datum/internal_organ/int_organ as anything in surgery.affected_limb.internal_organs)
-				if(int_organ && int_organ.damage > 0 && int_organ.robotic != ORGAN_ROBOT)
-					user.affected_message(target,
-						SPAN_NOTICE("You finish treating [target]'s damaged [int_organ.name]."),
-						SPAN_NOTICE("[user] finishes treating your damaged [int_organ.name]."),
-						SPAN_NOTICE("[user] finishes treating [target]'s damaged [int_organ.name]."))
+			return
 
-					log_interact(user, target, "[key_name(user)] mended an organ in [key_name(target)]'s [surgery.affected_limb.display_name], possibly ending [surgery].")
-					user.count_niche_stat(STATISTICS_NICHE_SURGERY_ORGAN_REPAIR)
-					int_organ.rejuvenate()
-					target.pain.recalculate_pain()
-					break
+		for(var/datum/internal_organ/int_organ as anything in surgery.affected_limb.internal_organs)
+			if(int_organ && int_organ.damage > 0 && int_organ.robotic != ORGAN_ROBOT)
+				user.affected_message(target,
+					SPAN_NOTICE("You finish treating [target]'s damaged [int_organ.name]."),
+					SPAN_NOTICE("[user] finishes treating your damaged [int_organ.name]."),
+					SPAN_NOTICE("[user] finishes treating [target]'s damaged [int_organ.name]."))
+
+				log_interact(user, target, "[key_name(user)] mended an organ in [key_name(target)]'s [surgery.affected_limb.display_name], possibly ending [surgery].")
+				user.count_niche_stat(STATISTICS_NICHE_SURGERY_ORGAN_REPAIR)
+				int_organ.rejuvenate()
+				target.pain.recalculate_pain()
+				break
 
 /datum/surgery_step/repair_organs/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,

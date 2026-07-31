@@ -48,8 +48,7 @@
 		return
 
 	var/mob/living/carbon/human/human = affected_atom
-	addtimer(CALLBACK(human, TYPE_PROC_REF(/mob/living/carbon/human, update_xeno_hostile_hud)), 3)
-
+	human.update_xeno_hostile_hud()
 	. = ..()
 
 /datum/effects/xeno_slow/superslow/process_mob()

@@ -361,7 +361,7 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/antitoxin
 	name = "antitoxin EZ autoinjector"
-	chemname = "antitoxin"
+	chemname = "anti_toxin"
 	desc = "An autoinjector loaded with a single 15u dose of Dylovene to self-administer for toxin treatment. You can refill it at Wey-Med vending machines, at wall meds, or with a smart tank. Thankfully, there's no lock on it, so anyone can use it!"
 	amount_per_transfer_from_this = 15
 	volume = 15
@@ -369,7 +369,7 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/bicaridine
 	name = "wound care EZ autoinjector"
-	chemname = "antitoxin"
+	chemname = "bicaridine"
 	desc = "An autoinjector loaded with a single 15u dose of Bicaridine to self-administer for the most serious wounds. You can refill it at Wey-Med vending machines, at wall meds, or with a smart tank. Thankfully, there's no lock on it, so anyone can use it!"
 	amount_per_transfer_from_this = 15
 	volume = 15

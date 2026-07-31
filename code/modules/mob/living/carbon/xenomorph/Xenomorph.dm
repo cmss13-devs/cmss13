@@ -1146,21 +1146,10 @@
 /mob/living/carbon/xenomorph/IgniteMob(force)
 	// Force xenos out of hiding if something tried to ignite it (like walking over fire)
 	if(layer == XENO_HIDING_LAYER)
-<<<<<<< HEAD
-		layer = initial(layer)
-		update_wounds()
-		update_layer()
-		visible_message(SPAN_DANGER("[src] is forced out of hiding by the flames!"), SPAN_DANGER("You are forced out of hiding by the flames!"))
-
-		var/datum/action/xeno_action/onclick/xenohide/hide = get_action(src, /datum/action/xeno_action/onclick/xenohide)
-		if (hide)
-			hide.button.icon_state = "template_xeno"
-=======
 		var/datum/action/xeno_action/onclick/xenohide/hide = get_action(src, /datum/action/xeno_action/onclick/xenohide)
 		if (hide)
 			INVOKE_ASYNC(hide, TYPE_PROC_REF(/datum/action/xeno_action/onclick/xenohide, use_ability))
 			visible_message(SPAN_DANGER("[src] is forced out of hiding by the flames!"), SPAN_DANGER("You are forced out of hiding by the flames!"))
->>>>>>> a8025a2a29d139a840242c26455555e24ee678c7
 
 	var/penetrating = fire_reagent?.fire_penetrating && !(fire_immunity & FIRE_IMMUNITY_IGNORE_PEN)
 	if(!force && !penetrating)

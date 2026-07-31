@@ -1138,37 +1138,6 @@ Defined in conflicts.dm of the #defines folder.
 			. = TRUE
 	return .
 
-/obj/item/attachable/alt_iff_scope
-	name = "B8 Smart-Scope"
-	icon = 'icons/obj/items/weapons/guns/attachments/rail.dmi'
-	icon_state = "iffbarrel"
-	attach_icon = "iffbarrel_a"
-	desc = "An experimental B8 Smart-Scope. Based on the technologies used in the Smart Gun by Armat, this sight has integrated IFF systems. It can only attach to the M4RA Battle Rifle, the M44 Combat Revolver, and the M41A MK2 Pulse Rifle."
-	desc_lore = "An experimental fire-control optic capable of linking into compatible IFF systems on certain weapons, designated the XAN/PVG-110 Smart Scope. Experimental technology developed by Armat, who have assured that all previously reported issues with false-negative IFF recognitions have been solved. Make sure to check the sight after every deployment, just in case."
-	slot = "rail"
-	pixel_shift_y = 15
-
-/obj/item/attachable/alt_iff_scope/New()
-	..()
-	damage_mod = -BULLET_DAMAGE_MULT_TIER_2
-	damage_falloff_mod = 0.2
-
-/obj/item/attachable/alt_iff_scope/set_bullet_traits()
-	LAZYADD(traits_to_give, list(
-		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
-	))
-
-/obj/item/attachable/alt_iff_scope/Attach(obj/item/weapon/gun/attaching_gun)
-	. = ..()
-	if(!GetComponent(attaching_gun, /datum/component/iff_fire_prevention))
-		attaching_gun.AddComponent(/datum/component/iff_fire_prevention, 5)
-	SEND_SIGNAL(attaching_gun, COMSIG_GUN_ALT_IFF_TOGGLED, TRUE)
-
-/obj/item/attachable/alt_iff_scope/Detach(mob/user, obj/item/weapon/gun/detaching_gun)
-	. = ..()
-	SEND_SIGNAL(detaching_gun, COMSIG_GUN_ALT_IFF_TOGGLED, FALSE)
-	detaching_gun.GetExactComponent(/datum/component/iff_fire_prevention).RemoveComponent()
-
 /obj/item/attachable/scope
 	name = "S8 4x telescopic scope"
 	icon = 'icons/obj/items/weapons/guns/attachments/rail.dmi'
@@ -1365,6 +1334,43 @@ Defined in conflicts.dm of the #defines folder.
 #undef ZOOM_LEVEL_2X
 #undef ZOOM_LEVEL_4X
 
+/obj/item/attachable/scope/alt_iff_scope
+	name = "B8 Smart-Scope"
+	icon = 'icons/obj/items/weapons/guns/attachments/rail.dmi'
+	icon_state = "iffbarrel"
+	attach_icon = "iffbarrel_a"
+	desc = "An experimental B8 Smart-Scope. Based on the technologies used in the Smart Gun by Armat, this sight has integrated IFF systems. It can only attach to the M4RA Battle Rifle, the M44 Combat Revolver, and the M41A MK2 Pulse Rifle."
+	desc_lore = "An experimental fire-control optic capable of linking into compatible IFF systems on certain weapons, designated the XAN/PVG-110 Smart Scope. Experimental technology developed by Armat, who have assured that all previously reported issues with false-negative IFF recognitions have been solved. Make sure to check the sight after every deployment, just in case."
+	slot = "rail"
+	zoom_offset = 6
+	zoom_viewsize = 7
+	pixel_shift_y = 15
+
+/obj/item/attachable/scope/alt_iff_scope/New()
+	..()
+
+	movement_onehanded_acc_penalty_mod = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_4
+
+	// Mini-scope level accuracy
+	accuracy_scoped_buff = HIT_ACCURACY_MULT_TIER_8
+	delay_scoped_nerf = FIRE_DELAY_TIER_SMG
+	damage_falloff_scoped_buff = -0.2
+
+/obj/item/attachable/scope/alt_iff_scope/set_bullet_traits()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
+	))
+
+/obj/item/attachable/scope/alt_iff_scope/Attach(obj/item/weapon/gun/attaching_gun)
+	. = ..()
+	if(!GetComponent(attaching_gun, /datum/component/iff_fire_prevention))
+		attaching_gun.AddComponent(/datum/component/iff_fire_prevention, 5)
+	SEND_SIGNAL(attaching_gun, COMSIG_GUN_ALT_IFF_TOGGLED, TRUE)
+
+/obj/item/attachable/scope/alt_iff_scope/Detach(mob/user, obj/item/weapon/gun/detaching_gun)
+	. = ..()
+	SEND_SIGNAL(detaching_gun, COMSIG_GUN_ALT_IFF_TOGGLED, FALSE)
+	detaching_gun.GetExactComponent(/datum/component/iff_fire_prevention).RemoveComponent()
 
 /obj/item/attachable/scope/mini
 	name = "S4 2x telescopic mini-scope"
@@ -1381,6 +1387,9 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/scope/mini/New()
 	..()
+
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_2
+
 	delay_mod = 0
 	delay_scoped_nerf = FIRE_DELAY_TIER_SMG
 	damage_falloff_scoped_buff = -0.2 //has to be negative

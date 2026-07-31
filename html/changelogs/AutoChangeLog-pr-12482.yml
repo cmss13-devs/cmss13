@@ -1,0 +1,10 @@
+author: "matttheficus"
+delete-after: True
+changes:
+  - rscadd: "Scout now gets their own encryption key with expanded comms access."
+  - code_imp: "Direct SL Orders now always go to SLs regardless of garble."
+  - code_imp: "Squad Orders now go to RTO wearers regardless of garble."
+  - rscdel: "removed a number of roles from the Command Comms channel."
+  - rscadd: "Command Channel handheld radios."
+  - rscdel: "removed RTO packs from a number of roles."
+  - rscadd: "SLs get CIC Access for Briefs/Planning if needed."

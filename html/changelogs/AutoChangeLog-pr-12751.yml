@@ -1,0 +1,4 @@
+author: "fira"
+delete-after: True
+changes:
+  - code_imp: "Removed unnecessary rotation updates for projectiles. They may in rare cases strafe a little rather than turning, but you shouldn't notice the difference."

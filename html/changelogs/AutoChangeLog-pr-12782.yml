@@ -1,0 +1,4 @@
+author: "halgmor"
+delete-after: True
+changes:
+  - rscadd: "Adds Corporal and Sergeant ranks to MST playtime progression"

@@ -154,8 +154,9 @@
 	penetration = ARMOR_PENETRATION_TIER_6
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_5
 
+
 /datum/ammo/bullet/pistol/deagle/super //Commander's variant
-	name = ".50 high-power pistol bullet"
+	name = ".50 high-velocity pistol bullet"
 	damage = 60
 	headshot_state = HEADSHOT_OVERLAY_HEAVY
 	accuracy = -HIT_ACCURACY_TIER_3
@@ -177,8 +178,8 @@
 	damage = 50
 	handful_type = /obj/item/ammo_magazine/handful/pistol/deagle/super/highimpact/ap
 
-//T73
-/datum/ammo/bullet/pistol/deagle/highimpact/upp
+//Type 73 pistol
+/datum/ammo/bullet/pistol/deagle/super/highimpact/upp
 	name = "high-impact pistol bullet"
 	sound_override = 'sound/weapons/gun_DE50.ogg'
 	penetration = ARMOR_PENETRATION_TIER_6
@@ -186,11 +187,11 @@
 	flags_ammo_behavior = AMMO_BALLISTIC
 	handful_type = /obj/item/ammo_magazine/handful/pistol/deagle/super/highimpact // lazy, but I not making new ammo rn
 
-/datum/ammo/bullet/pistol/deagle/highimpact/New()
+/datum/ammo/bullet/pistol/deagle/super/highimpact/New()
 	..()
 	RegisterSignal(src, COMSIG_AMMO_BATTLEFIELD_EXECUTION, PROC_REF(handle_battlefield_execution))
 
-/datum/ammo/bullet/pistol/deagle/highimpact/on_hit_mob(mob/M, obj/projectile/P)
+/datum/ammo/bullet/pistol/deagle/super/highimpact/on_hit_mob(mob/M, obj/projectile/P)
 	knockback(M, P, 4)
 
 /datum/ammo/bullet/pistol/incendiary

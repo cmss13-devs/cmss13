@@ -1,0 +1,4 @@
+author: "JackieEstegado"
+delete-after: True
+changes:
+  - bugfix: "Fixed fast cryo not properly applying to players that climbed into a cryopod by themselves."

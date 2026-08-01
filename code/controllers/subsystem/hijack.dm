@@ -743,7 +743,7 @@ SUBSYSTEM_DEF(hijack)
 	unlock_all_dropship_doors() // Unlock doors because they'll be uninteractable
 	disallow_dropship_launching()
 	disallow_dropship_pad_landing()
-	shipwide_ai_announcement("ALERT: Lifeboat telemetry equipment destroyed. Cause: atmospheric reentry.\nEvacuation via port and starboard lifeboats is no longer possible.", HIJACK_ANNOUNCE, sound('sound/effects/creak1.ogg'))
+	shipwide_ai_announcement("ALERT: Lifeboat telemetry equipment destroyed. Cause: Atmospheric reentry.\n\nEvacuation via port and starboard lifeboats is no longer possible.", HIJACK_ANNOUNCE, sound('sound/effects/creak1.ogg'))
 
 	// Place the crash template
 	var/datum/map_config/ship_map_config = SSmapping.configs[SHIP_MAP]

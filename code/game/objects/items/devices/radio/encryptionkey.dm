@@ -222,7 +222,7 @@
 /obj/item/device/encryptionkey/req/ct
 	name = "Supply Radio Encryption Key"
 	icon_state = "req_key"
-	channels = list(RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_COMMAND = FALSE, RADIO_CHANNEL_ENGI = FALSE)
+	channels = list(RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_ENGI = FALSE)
 
 /obj/item/device/encryptionkey/req
 	name = "Supply Radio Encryption Key"
@@ -253,7 +253,6 @@
 	name = "\improper Corporate Liaison radio encryption key"
 	icon_state = "cap_key"
 	channels = list(
-		RADIO_CHANNEL_COMMAND = TRUE,
 		RADIO_CHANNEL_ENGI = TRUE,
 		RADIO_CHANNEL_MEDSCI = TRUE,
 		RADIO_CHANNEL_REQ = TRUE,
@@ -273,7 +272,6 @@
 	name = "\improper Marine Pilot Officer Radio Encryption Key"
 	icon_state = "cap_key"
 	channels = list(
-		RADIO_CHANNEL_COMMAND = TRUE,
 		RADIO_CHANNEL_ENGI = TRUE,
 		RADIO_CHANNEL_JTAC = TRUE,
 		RADIO_CHANNEL_MEDSCI = TRUE,
@@ -284,7 +282,6 @@
 	name = "\improper Marine Intelligence Officer Radio Encryption Key"
 	icon_state = "cap_key"
 	channels = list(
-		RADIO_CHANNEL_COMMAND = TRUE,
 		RADIO_CHANNEL_ENGI = TRUE,
 		RADIO_CHANNEL_REQ = TRUE,
 		RADIO_CHANNEL_JTAC = TRUE,
@@ -310,7 +307,7 @@
 /obj/item/device/encryptionkey/req/mst
 	name = "Supply Radio Encryption Key"
 	icon_state = "req_key"
-	channels = list(RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_COMMAND = FALSE)
+	channels = list(RADIO_CHANNEL_REQ = TRUE)
 
 /obj/item/device/encryptionkey/cmpcom/synth/ai //AI only.
 	name = "AI Integrated Radio Encryption Key"
@@ -332,6 +329,17 @@
 		)
 	translate_apollo = TRUE
 	translate_artemis = TRUE
+
+/obj/item/device/encryptionkey/scout
+	name = "\improper Marine Scout Specialist Radio Encryption Key"
+	icon_state = "cap_key"
+	channels = list(SQUAD_MARINE_1 = TRUE, SQUAD_MARINE_2 = TRUE, SQUAD_MARINE_3 = TRUE, SQUAD_MARINE_4 = TRUE, SQUAD_MARINE_5 = TRUE, SQUAD_MARINE_CRYO = TRUE, RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_JTAC = TRUE)
+
+/obj/item/device/encryptionkey/cc
+	name = "\improper Combat Correspondent Radio Encryption Key"
+	icon_state = "cap_key"
+	channels = list(SQUAD_MARINE_1 = TRUE, SQUAD_MARINE_2 = TRUE, SQUAD_MARINE_3 = TRUE, SQUAD_MARINE_4 = TRUE, SQUAD_MARINE_5 = TRUE, SQUAD_MARINE_CRYO = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_INTEL = TRUE)
+
 
 // MARINE SQUADS
 

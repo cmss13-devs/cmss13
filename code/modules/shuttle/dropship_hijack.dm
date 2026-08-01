@@ -54,6 +54,16 @@
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_HIJACK_IMPACTED)
 	RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_LANDED, PROC_REF(finish_landing))
 
+	// Sleep while the explosions do their job
+	var/explosion_alive = TRUE
+	while(explosion_alive)
+		explosion_alive = FALSE
+		for(var/datum/automata_cell/explosion/existing_cell as anything in GLOB.cellauto_cells)
+			if(existing_cell.explosion_cause_data && existing_cell.explosion_cause_data.cause_name == "dropship crash")
+				explosion_alive = TRUE
+				break
+		sleep(10)
+
 /datum/dropship_hijack/almayer/proc/finish_landing()
 	SShijack.announce_status_on_crash()
 	SSticker.hijack_ocurred()

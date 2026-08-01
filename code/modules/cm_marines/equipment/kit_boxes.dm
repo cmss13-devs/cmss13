@@ -261,6 +261,8 @@
 	new /obj/item/tool/wrench(src)
 	new /obj/item/device/binoculars/range(src)
 	new /obj/item/device/binoculars/range/designator(src)
+	new /obj/item/storage/backpack/marine/satchel/rto(src)
+	new /obj/item/storage/backpack/marine/satchel/rto(src)
 
 
 //-----------------SPEC KIT BOX------------------

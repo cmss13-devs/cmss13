@@ -668,7 +668,7 @@ SUBSYSTEM_DEF(hijack)
 /// Called when pumps failed before FTL initiated to crash onto the ground map
 /datum/controller/subsystem/hijack/proc/initiate_ground_crash()
 	hijack_status = HIJACK_OBJECTIVES_GROUND_CRASH
-	marine_announcement("Tachyon quantum jump drive deactivated due to insufficient fueling. Entry into atmosphere imminent.", HIJACK_ANNOUNCE, sound('sound/mecha/internaldmgalarm.ogg'))
+	marine_announcement("Tachyon quantum jump drive deactivated due to insufficient fueling. Entry into atmosphere imminent.", HIJACK_ANNOUNCE, sound('sound/effect/creak1.ogg'))
 
 	// Figure out the main Z by assuming the LZs are on that Z
 	var/obj/lz = locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1)
@@ -743,6 +743,7 @@ SUBSYSTEM_DEF(hijack)
 	unlock_all_dropship_doors() // Unlock doors because they'll be uninteractable
 	disallow_dropship_launching()
 	disallow_dropship_pad_landing()
+	shipwide_ai_announcement("ALERT: Lifeboat telemetry equipment destroyed. Cause: atmospheric reentry.\nEvacuation via port and starboard lifeboats is no longer possible.", HIJACK_ANNOUNCE, sound('sound/mecha/internaldmgalarm.ogg'))
 
 	// Place the crash template
 	var/datum/map_config/ship_map_config = SSmapping.configs[SHIP_MAP]

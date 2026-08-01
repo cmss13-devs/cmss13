@@ -1498,7 +1498,7 @@
 /turf/open/fire_colony/brock,
 /area/fire_colony/exterior/clearing/north_east)
 "afO" = (
-/obj/structure/machinery/power/power_generator/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony/alt,
 /turf/open/floor/platebot,
 /area/fire_colony/interior/mining)
 "afR" = (
@@ -20493,7 +20493,7 @@
 /turf/open/fire_colony/basalt/basalt10,
 /area/fire_colony/exterior/valley/southeast)
 "doO" = (
-/obj/structure/machinery/power/power_generator/reactor/rostock,
+/obj/structure/machinery/power/power_generator/reactor/colony/alt,
 /turf/open/floor/platebot,
 /area/fire_colony/interior/seegson/engineering/generator_room)
 "doP" = (
@@ -87826,11 +87826,11 @@
 /turf/open/fire_colony/basalt/glowing/basalt3,
 /area/fire_colony/exterior/valley/north)
 "toR" = (
-/obj/structure/machinery/power/power_generator/reactor/colony,
 /obj/effect/decal/large_stain{
 	dir = 8;
 	color = "#342a31"
 	},
+/obj/structure/machinery/power/power_generator/reactor/colony/alt,
 /turf/open/floor/platebot,
 /area/fire_colony/interior/mining)
 "toU" = (

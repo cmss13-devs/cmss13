@@ -60,7 +60,9 @@
 	/// This means it doesn't matter if the explosion goes North or South, the first item is always leftmost cell
 	var/list/turf/wave_turfs
 	/// Explosive intensities in order of the turfs above
-	var/list/turf/intensities
+	var/list/intensities
+	/// Store falloff values per cell, to be used with compounding falloff
+	var/list/wave_falloff
 	/// List of movables that already ate the blast wave, so they don't eat it again if they get pushed out of the way
 	/// Typically this will be a shared list between all 4 cardinal blast waves, so don't .Cut it
 	var/list/atom/movable/exploded
@@ -82,6 +84,7 @@
 
 	// Bootstrap internal state
 	wave_turfs = list(epicenter)
+	wave_falloff = list(falloff)
 	intensities = list(power)
 
 	START_PROCESSING(SSexplosion_waves, src)
@@ -146,15 +149,21 @@
 	//  * As the wave propagates, atoms in the way can dampen the explosion for rest of the travel
 	// We'll do the first step now. The dampening can happen as we scan for explosion damage later.
 	// This is a bit weird, but note that the splitting of the wave as it expand doesnt reduce the explosion intensity.
+	// We also give same treatment to stored falloff value. They'll be modified to account for the travel later.
 	var/list/new_intensities = new /list(order * 2 + 1)
+	var/list/new_falloff = new /list(order * 2 + 1)
 	for(var/i in 1 to length(intensities))
 		new_intensities[i+1] = intensities[i]
-	new_intensities[1] = intensities[min(2, length(intensities))]
-	new_intensities[order*2+1] = intensities[length(intensities)]
+		new_falloff[i+1] = wave_falloff[i]
+	new_intensities[1] = intensities[min(2, length(intensities))] // clamping needed for the order=1 case
+	new_intensities[length(new_intensities)] = intensities[length(intensities)]
+	new_falloff[1] = wave_falloff[min(2, length(wave_falloff))]
+	new_falloff[length(new_falloff)] = wave_falloff[length(wave_falloff)]
 
 	// We store the new values
 	intensities = new_intensities
 	wave_turfs = new_wave_turfs
+	wave_falloff = new_falloff
 	return TRUE
 
 /// Effects that take place after the explosion wave travels:
@@ -174,30 +183,29 @@
 			intensities[i] = 0
 			continue
 
-		// TODO? We don't respect legacy behavior in two ways:
-		//  * Falloff is not tracked but calc'd in one go - so EXPONENTIAL_(HALF_)IN_PYLON behaves as if it was in pylon the whole time when there
-		//  * Legacy behavior is to *sqrt(2) diagonals falloff, but i don't see how it makes sense here if we don't also spread the explosive power
-		switch(falloff_shape)
-			if(EXPLOSION_FALLOFF_SHAPE_LINEAR)
-				intensities[i] -= falloff
-			if(EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL)
-				intensities[i] -= (falloff * (2**(order-1)))
-			if(EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF)
-				intensities[i] -= (falloff * (1.5**(order-1)))
-			if(EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_IN_PYLON)
-				if(turf.get_pylon_protection_level() < TURF_PROTECTION_OB)
-					intensities[i] -= falloff
-				else
-					intensities[i] -= (falloff * (2**(order-1)))
-			if(EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF_IN_PYLON)
-				intensities[i] -= (falloff * (1.5**(order-1)))
-				if(turf.get_pylon_protection_level() < TURF_PROTECTION_OB)
-					intensities[i] -= falloff
-				else
-					intensities[i] -= (falloff * (1.5**(order-1)))
-
+		// First we apply the falloff to explosion strength
+		intensities[i] -= wave_falloff[i]
 		if(intensities[i] <= 0)
 			intensities[i] = 0
+			continue
+
+		// Then we modify the falloff for subsequent propagations
+		// There is one difference with legacy CellAuto behavior, which is that CellAuto would
+		// multiply by sqrt(2) diagnoals falloff. I can't see how this makes sense unless we
+		// also spread out the explosion strength around the wave.
+		switch(falloff_shape)
+			if(EXPLOSION_FALLOFF_SHAPE_LINEAR)
+				wave_falloff[i] = falloff
+			if(EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL)
+				wave_falloff[i] += falloff
+			if(EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF)
+				wave_falloff[i] += falloff * 0.5
+			if(EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_IN_PYLON)
+				if(turf.get_pylon_protection_level() >= TURF_PROTECTION_OB)
+					wave_falloff[i] += falloff
+			if(EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF_IN_PYLON)
+				if(turf.get_pylon_protection_level() >= TURF_PROTECTION_OB)
+					wave_falloff[i] += falloff * 0.5
 
 /// Apply effects to the turfs as we travel
 /datum/explosion_wave/proc/explode_turfs()

@@ -1,0 +1,4 @@
+author: "antlersss"
+delete-after: True
+changes:
+  - bugfix: "The duplicate dry foodstuffs freezer in the brig's kitchen is now an organics freezer."

@@ -41,6 +41,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/predship/tile/hunter_tile_6/west,
 /area/varadero/interior_protected/vessel)
+"aag" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "clfraid"
+	},
+/turf/closed/wall/rock/brown,
+/area/varadero/interior/oob)
 "aah" = (
 /obj/structure/bed/chair/hunter{
 	name = "alien chair";
@@ -238,9 +244,6 @@
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/varadero/exterior/islands)
 "aaO" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "clfraid"
-	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves/swcaves)
@@ -25707,10 +25710,6 @@
 	},
 /turf/open/floor/asteroid,
 /area/varadero/exterior/monsoon)
-"btC" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/closed/wall/rock/brown,
-/area/varadero/interior/maintenance/research)
 "btD" = (
 /obj/item/device/flashlight/lamp/tripod,
 /obj/effect/decal/cleanable/dirt,
@@ -71302,20 +71301,6 @@
 	},
 /turf/open/floor/shiva/yellowfull/west,
 /area/varadero/interior/electrical)
-"sid" = (
-/obj/structure/window/framed/colony,
-/obj/structure/prop{
-	name = "\improper reinforced shutters";
-	desc = "Reinforced metal shutters, more for show than security. They redirect light and add a bit of structure to the space.";
-	icon = 'icons/obj/structures/doors/hybrisashutters.dmi';
-	icon_state = "almayer_pdoor1";
-	dir = 8;
-	unacidable = 1;
-	explo_proof = 1;
-	unslashable = 1
-	},
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/maintenance/north)
 "siC" = (
 /obj/structure/platform/metal/kutjevo_smooth/north{
 	climb_delay = 1
@@ -79600,7 +79585,7 @@ pGs
 pGs
 pGs
 pGs
-pGs
+aag
 pGs
 aRC
 aRC
@@ -81764,7 +81749,7 @@ yks
 yks
 pGs
 abE
-btC
+bsI
 bsI
 yks
 yks
@@ -94297,8 +94282,8 @@ lTR
 kpe
 msS
 huF
-sid
-sid
+qzb
+qzb
 bgE
 bgE
 bgE

@@ -397,6 +397,10 @@
 	name = "custom EZ one-use autoinjector (60u)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/ez/huge
 
+/datum/autolathe/recipe/medilathe/autoinjector/s1x6
+	name = "reagent pouch autoinjector (6x1u)"
+	path = /obj/item/reagent_container/hypospray/autoinjector/empty/medic/tiny
+
 /datum/autolathe/recipe/medilathe/autoinjector/s5x6
 	name = "reagent pouch autoinjector (6x5u)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/medic/extrasmall

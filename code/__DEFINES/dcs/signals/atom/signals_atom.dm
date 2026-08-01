@@ -53,11 +53,10 @@
 /// Called when an atom has emp_act called on it, from /atom/emp_act: (severity)
 #define COMSIG_ATOM_EMP_ACT "atom_emp_act"
 
+#define COMSIG_ATOM_LANGCHAT_SEND_MESSAGE "atom_langchat_send_message"
+#define COMSIG_ATOM_LANGCHAT_SEEN_BY_MOB "atom_langchat_seen_by_mob"
+
 //from base of atom/Exited(): (atom/movable/exiting, direction)
 #define COMSIG_ATOM_EXITED "atom_exited"
 
 #define COMSIG_ATOM_CROSSED "atom_crossed"
-
-#define COMSIG_ATOM_LANGCHAT_SEND_MESSAGE "atom_langchat_send_message"
-#define COMSIG_ATOM_LANGCHAT_SEEN_BY_MOB "atom_langchat_seen_by_mob"
-

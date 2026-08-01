@@ -533,13 +533,13 @@
 	//------------------//
 	intensityfire = BURN_LEVEL_TIER_1
 	durationfire = BURN_TIME_TIER_1
-	burn_sprite = "red"
+	burn_sprite = "dynamic"
 	rangefire = 4
 	//------------------//
 	explosive = TRUE
 	power = 0.12
 	falloff_modifier = -0.1
-	burncolor = "#ff9900"
+	burncolor = "#660000"
 	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_FUELING = 5, PROPERTY_OXIDIZING = 3, PROPERTY_VISCOUS = 4, PROPERTY_TOXIC = 1)
 

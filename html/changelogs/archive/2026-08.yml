@@ -1,0 +1,21 @@
+2026-08-01:
+  Antlers:
+  - bugfix: Ladders are no longer exempt from clickdrag override
+  Drathek:
+  - bugfix: Fixed clusters being unable to convert towers because they're in core
+      weeds
+  PoltavskaPraca:
+  - balance: added ability to wear m5 gas mask + rail flashlight to headset, patrol
+      cap and subtypes,
+  - code_imp: changed some code regarding flashlight attachment, as well as update_icon().
+      Also m5 gasmask checks for clothing head subtypes, instead of just helmets now,
+      regarding bitflag application
+  - imageadd: added sprite variants for gasmask and onmob flashlight
+  matttheficus:
+  - rscadd: Scout now gets their own encryption key with expanded comms access.
+  - code_imp: Direct SL Orders now always go to SLs regardless of garble.
+  - code_imp: Squad Orders now go to RTO wearers regardless of garble.
+  - rscdel: removed a number of roles from the Command Comms channel.
+  - rscadd: Command Channel handheld radios.
+  - rscdel: removed RTO packs from a number of roles.
+  - rscadd: SLs get CIC Access for Briefs/Planning if needed.

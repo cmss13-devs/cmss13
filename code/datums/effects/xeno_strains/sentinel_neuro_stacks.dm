@@ -1,3 +1,6 @@
+#define COOLDOWN_START_DECREMENT "cooldown_start_decrement"
+#define COOLDOWN_NEXT_DECREMENT "cooldown_next_decrement"
+
 /datum/effects/sentinel_neuro_stacks
 	effect_name = "Sentinel neuro spit stacks"
 	duration = null
@@ -6,12 +9,8 @@
 	var/stack_count = 0
 	///maximal number of stacks on mob
 	var/max_stacks = 30
-	///word time when was stack count decreased
-	var/last_decrement_time = 0
 	///number of ticks of waiting for next decrease
 	var/time_between_decrements = 1
-	///word time of last stack increase
-	var/last_increment_time = 0
 	///how long should pass from last increase till decreasing begins
 	var/increment_grace_time = 50
 	///how much oxy damage should be given per process
@@ -22,8 +21,7 @@
 	var/obj/effect/abstract/particle_holder/particle_holder
 
 /datum/effects/sentinel_neuro_stacks/New(mob/living/carbon/human/human, mob/from = null, last_dmg_source = null, zone = "chest")
-	last_decrement_time = world.time
-	last_increment_time = world.time
+	TIMER_COOLDOWN_START(src, COOLDOWN_START_DECREMENT, increment_grace_time)
 	particle_holder = new(human, /particles/neuro_particles)
 	particle_holder.particles.spawning = 1 + round(stack_count / 2)
 	particle_holder.pixel_x = -2
@@ -47,9 +45,10 @@
 		human.apply_damage(min(max_oxyloss - human.oxyloss, proc_damage_per_stack * stack_count, 5), OXY)
 	human.update_xeno_hostile_hud()
 
-	if (last_decrement_time + time_between_decrements < world.time && !(last_increment_time + increment_grace_time > world.time))
+	if (TIMER_COOLDOWN_CHECK(src, COOLDOWN_NEXT_DECREMENT) && TIMER_COOLDOWN_CHECK(src, COOLDOWN_START_DECREMENT))
 		stack_count--
-		last_decrement_time = world.time
+		TIMER_COOLDOWN_END(src, COOLDOWN_NEXT_DECREMENT)
+		TIMER_COOLDOWN_START(src, COOLDOWN_NEXT_DECREMENT, time_between_decrements)
 
 		if (stack_count <= 0)
 			qdel(src)
@@ -79,11 +78,8 @@
 
 	if (!istype(affected_atom, /mob/living/carbon/human))
 		return
-
-	var/mob/living/carbon/human/human = affected_atom
-	human.update_xeno_hostile_hud()
-
-	last_increment_time = world.time
+	TIMER_COOLDOWN_END(src, COOLDOWN_START_DECREMENT)
+	TIMER_COOLDOWN_START(src, COOLDOWN_START_DECREMENT, increment_grace_time)
 
 /particles/neuro_particles
 	icon = 'icons/effects/particles/generic_particles.dmi'

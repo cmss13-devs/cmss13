@@ -35,7 +35,6 @@
 	var/list/linked_pylons
 	var/obj/effect/alien/weeds/weeds
 
-	var/list/datum/automata_cell/autocells
 	/**
 	 * Associative list of cleanable types (strings) mapped to
 	 * cleanable objects
@@ -170,7 +169,6 @@
 /turf/Destroy(force)
 	linked_pylons = null
 	weeds = null
-	autocells = null
 	opacity_sources = null
 	baseturfs = null
 
@@ -460,7 +458,6 @@
 	// return src
 
 	var/list/pylons = linked_pylons
-	var/list/cells = autocells
 
 	var/list/old_baseturfs = baseturfs
 	var/old_ref = weak_reference
@@ -492,8 +489,6 @@
 		new_self.baseturfs = old_baseturfs
 
 	new_self.linked_pylons = pylons
-	if(length(cells))
-		LAZYOR(new_self.autocells, cells)
 
 	new_self.hybrid_lights_affecting = old_hybrid_lights_affecting
 	new_self.dynamic_lumcount = dynamic_lumcount

@@ -21,7 +21,7 @@
 	var/obj/effect/abstract/particle_holder/particle_holder
 
 /datum/effects/sentinel_neuro_stacks/New(mob/living/carbon/human/human, mob/from = null, last_dmg_source = null, zone = "chest")
-	TIMER_COOLDOWN_START(src, COOLDOWN_START_DECREMENT, increment_grace_time)
+	S_TIMER_COOLDOWN_START(src, COOLDOWN_START_DECREMENT, increment_grace_time)
 	particle_holder = new(human, /particles/neuro_particles)
 	particle_holder.particles.spawning = 1 + round(stack_count / 2)
 	particle_holder.pixel_x = -2
@@ -45,10 +45,10 @@
 		human.apply_damage(min(max_oxyloss - human.oxyloss, proc_damage_per_stack * stack_count, 5), OXY)
 	human.update_xeno_hostile_hud()
 
-	if (TIMER_COOLDOWN_CHECK(src, COOLDOWN_NEXT_DECREMENT) && TIMER_COOLDOWN_CHECK(src, COOLDOWN_START_DECREMENT))
+	if (!TIMER_COOLDOWN_CHECK(src, COOLDOWN_NEXT_DECREMENT) && !TIMER_COOLDOWN_CHECK(src, COOLDOWN_START_DECREMENT))
 		stack_count--
-		TIMER_COOLDOWN_END(src, COOLDOWN_NEXT_DECREMENT)
-		TIMER_COOLDOWN_START(src, COOLDOWN_NEXT_DECREMENT, time_between_decrements)
+		S_TIMER_COOLDOWN_RESET(src, COOLDOWN_NEXT_DECREMENT)
+		S_TIMER_COOLDOWN_START(src, COOLDOWN_NEXT_DECREMENT, time_between_decrements)
 
 		if (stack_count <= 0)
 			qdel(src)
@@ -78,8 +78,8 @@
 
 	if (!istype(affected_atom, /mob/living/carbon/human))
 		return
-	TIMER_COOLDOWN_END(src, COOLDOWN_START_DECREMENT)
-	TIMER_COOLDOWN_START(src, COOLDOWN_START_DECREMENT, increment_grace_time)
+	S_TIMER_COOLDOWN_RESET(src, COOLDOWN_START_DECREMENT)
+	S_TIMER_COOLDOWN_START(src, COOLDOWN_START_DECREMENT, increment_grace_time)
 
 /particles/neuro_particles
 	icon = 'icons/effects/particles/generic_particles.dmi'

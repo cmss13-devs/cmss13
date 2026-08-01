@@ -377,11 +377,6 @@
 	SEND_SIGNAL(src, COMSIG_TURF_ENTERED, entered_movable)
 	SEND_SIGNAL(entered_movable, COMSIG_MOVABLE_TURF_ENTERED, src)
 
-	// Let explosions know that the atom entered
-	if(old_loc != src)
-		for(var/datum/automata_cell/explosion/cell as anything in autocells)
-			cell.on_turf_entered(entered_movable)
-
 /turf/proc/is_plating()
 	return 0
 /turf/proc/is_asteroid_floor()
@@ -700,15 +695,6 @@
 
 /turf/proc/wet_floor()
 	return
-
-/turf/proc/get_cell(type)
-	for(var/datum/automata_cell/existing_cell as anything in autocells)
-		if(istype(existing_cell, type))
-			return existing_cell
-	return null
-
-//////////////////////////////////////////////////////////
-
 
 /turf/proc/can_dig_xeno_tunnel()
 	return FALSE

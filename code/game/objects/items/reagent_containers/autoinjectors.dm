@@ -603,3 +603,13 @@
 	name = "30u Reagent Pouch Autoinjector"
 	volume = 180
 	amount_per_transfer_from_this = 30
+
+/obj/item/reagent_container/hypospray/autoinjector/empty/medic/small
+	name = "5u Reagent Pouch Autoinjector"
+	volume = 30
+	amount_per_transfer_from_this = 5
+
+/obj/item/reagent_container/hypospray/autoinjector/empty/medic/tiny
+	name = "1u Reagent Pouch Autoinjector"
+	volume = 6
+	amount_per_transfer_from_this = 1

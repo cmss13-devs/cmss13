@@ -52865,15 +52865,17 @@
 /obj/structure/surface/table/almayer{
 	color = "#848484"
 	},
-/obj/item/storage/toolbox/emergency{
-	pixel_x = 2;
-	pixel_y = 6
-	},
 /obj/item/device/flashlight/lantern/alt{
 	pixel_x = -15;
 	pixel_y = 2
 	},
 /obj/effect/landmark/objective_landmark/close,
+/obj/item/stack/sheet/plasteel/small_stack,
+/obj/item/storage/toolbox/emergency{
+	pixel_x = 2;
+	pixel_y = 6;
+	layer = 3.1
+	},
 /turf/open/fire_colony/basalt/basalt0,
 /area/fire_colony/exterior/underground/excavation/south)
 "laz" = (
@@ -74793,12 +74795,13 @@
 /turf/open/slippery/hull/colorable/purple/dir/east,
 /area/sky)
 "qnt" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/sign/safety/synth_storage{
 	pixel_x = 8;
-	pixel_y = 32
+	pixel_y = 31;
+	color = "#967743"
 	},
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/floor/plating/fire_colony/filtrationside_lava,
 /area/fire_colony/interior/seegson/synthetic_storage)
 "qnv" = (

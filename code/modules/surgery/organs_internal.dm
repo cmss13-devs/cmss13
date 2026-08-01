@@ -91,6 +91,7 @@ and organ transplant code which may come in handy in future but haven't been edi
 					SPAN_NOTICE("[user] finishes treating your damaged [int_organ.name]."),
 					SPAN_NOTICE("[user] finishes treating [target]'s damaged [int_organ.name]."))
 
+				playsound(target.loc, 'sound/handling/bandage.ogg', 25, TRUE)
 				log_interact(user, target, "[key_name(user)] mended an organ in [key_name(target)]'s [surgery.affected_limb.display_name], possibly ending [surgery].")
 				user.count_niche_stat(STATISTICS_NICHE_SURGERY_ORGAN_REPAIR)
 				int_organ.rejuvenate()

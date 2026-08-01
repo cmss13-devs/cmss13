@@ -37,8 +37,8 @@
 		epicenter = get_turf(epicenter) // the ex_acts might have changed the epicenter
 		new /obj/shrapnel_effect(epicenter)
 
-	var/effect_radius = power / falloff
-	if(power >= 300) // constructor is small, large, tiny. idk why TGMC didn't make this an enum?
+	var/effect_radius = power / falloff * 0.6
+	if(power >= 300) // constructor bools are [small, large, tiny]. idk why TGMC didn't make this an enum?
 		new /obj/effect/temp_visual/explosion(epicenter, effect_radius, FALSE, TRUE, FALSE)
 	else if(power >= 200)
 		new /obj/effect/temp_visual/explosion(epicenter, effect_radius, FALSE, FALSE, FALSE)

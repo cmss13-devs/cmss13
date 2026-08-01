@@ -96,7 +96,12 @@ and organ transplant code which may come in handy in future but haven't been edi
 				user.count_niche_stat(STATISTICS_NICHE_SURGERY_ORGAN_REPAIR)
 				int_organ.rejuvenate()
 				target.pain.recalculate_pain()
-				break
+				break // <--- this break means we don't process any other organs in the success proc
+
+			if(repeat_step && repeat_step_criteria(user, target, target_zone, tool, tool_type, surgery)) //<---- repair_organs repeats
+				surgery.step_in_progress = FALSE
+				INVOKE_ASYNC(surgery, TYPE_PROC_REF(/datum/surgery, attempt_next_step), user, tool, TRUE) //<---- it will call attempt_next_step again which will call success and repair another organ
+				return TRUE
 
 /datum/surgery_step/repair_organs/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,

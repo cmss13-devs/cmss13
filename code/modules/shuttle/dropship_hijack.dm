@@ -54,7 +54,7 @@
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_HIJACK_IMPACTED)
 	RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_LANDED, PROC_REF(finish_landing))
 
-	sleep(5 SECONDS) // arbitrary, to let explosions run their course
+	sleep(10 SECONDS) // Arbitrary, to let explosions run their course. It's possible that they'd land inside the explosion if it's not enough!!!
 
 /datum/dropship_hijack/almayer/proc/finish_landing()
 	SShijack.announce_status_on_crash()

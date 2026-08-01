@@ -51,7 +51,7 @@
 
 
 /// Handle all logging for an automata_cell explosion.
-/proc/log_explosion(mob/living/affected, datum/automata_cell/explosion/explosion)
+/proc/log_explosion(mob/living/affected, datum/cause_data/cause_data)
 	if(!istype(affected))
 		return
 
@@ -60,9 +60,9 @@
 	if(QDELETED(affected) || !location)
 		return
 
-	affected.last_damage_data = explosion.explosion_cause_data
-	var/explosion_source = explosion.explosion_cause_data?.cause_name
-	var/mob/firing_mob = explosion.explosion_cause_data?.resolve_mob()
+	affected.last_damage_data = cause_data
+	var/explosion_source = cause_data?.cause_name
+	var/mob/firing_mob = cause_data?.resolve_mob()
 
 	if(!firing_mob)
 		log_attack("[key_name(affected)] was harmed by unknown explosion in [location.loc.name] at ([location.x],[location.y],[location.z])")

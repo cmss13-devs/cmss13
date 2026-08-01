@@ -19,6 +19,9 @@ SUBSYSTEM_DEF(delayed_ex_act)
 		queued_work -= list(order)
 		var/atom/target = order[1]
 		var/list/arguments = order.Copy(2, 0)
+		if(isliving(target) && length(arguments) >= 3)
+			var/datum/cause_data/cause_data = arguments[3]
+			log_explosion(target, cause_data)
 		target.ex_act(arglist(arguments))
 
 		if(MC_TICK_CHECK)

@@ -242,7 +242,7 @@
 			exploded += thing
 
 			// Mob explosions are expensive due to limbs and throws. We defer these entirely.
-			if(ishuman(thing))
+			if(isliving(thing))
 				SSdelayed_ex_act.queue(thing, intensities[i], dir, cause_data, 0, enviro)
 			else
 				INVOKE_ASYNC(thing, TYPE_PROC_REF(/atom, ex_act), intensities[i], dir, cause_data, 0, enviro)

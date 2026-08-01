@@ -177,6 +177,9 @@
 
 /// Applies falloff to a set of turfs and explosion intensities, in-place
 /datum/explosion_wave/proc/apply_falloff()
+	if(order == 1) // Don't apply falloff first propagation to replicate legacy CellAuto behavior
+		return
+
 	for(var/i in 1 to length(wave_turfs))
 		var/turf/turf = wave_turfs[i]
 		if(!turf) // This went out of bounds. Reset strength to zero. Move on.
@@ -219,16 +222,13 @@
 		if(intensities[i] <= 0)
 			continue // Not really exploding
 
-		// Step 1: We dampen the explosion with the turf itself.
-		intensities[i] -= turf.get_explosion_resistance(dir)
-		// Step 2: We dampen with the turf contents.
+		// First we calculate explosion dampening, but we don't apply it just yet
+		var/dampening = 0
+		// Step 1: We dampen the explosion with the turf itself
+		dampening += turf.get_explosion_resistance(dir)
+		// Step 2: We dampen with the turf contents
 		for(var/atom/movable/thing as anything in turf)
-			intensities[i] -= thing.get_explosion_resistance(dir)
-
-		if(intensities[i] <= 0)
-			continue
-
-		still_exploding = TRUE
+			dampening += thing.get_explosion_resistance(dir)
 
 		// Step 3: We blow up the turf
 		if(!(turf in exploded))
@@ -246,6 +246,13 @@
 				SSdelayed_ex_act.queue(thing, intensities[i], dir, cause_data, 0, enviro)
 			else
 				INVOKE_ASYNC(thing, TYPE_PROC_REF(/atom, ex_act), intensities[i], dir, cause_data, 0, enviro)
+
+		// Now we apply dampening to the blast wave
+		intensities[i] -= dampening
+		if(intensities[i] <= 0)
+			intensities[i] = 0
+		else
+			still_exploding = TRUE
 
 	return still_exploding
 

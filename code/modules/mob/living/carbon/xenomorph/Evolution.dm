@@ -520,6 +520,11 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		return FALSE
 
 	var/slots = hive.get_tier_slots()
+	/*
+		Find how many player's current caste xenos there are and compare with number of guaranteed slots per that caste.
+		If current caste number is less or equal the guaranteed slots number, it means they are taking the guaranteed free slot and we need to check if there are general/guaranteed slots open for the caste player picked
+		If current caste number is more than guaranteed slots number, it means that xeno takes up a regular slot and we don't need a check. It can transform into anything.
+		if it's not in the free_slots list(null), it means it takes regular slot and can transform into anything.*/
 	if(tier == 2 && (hive.get_caste_count(caste_type) <= hive.free_slots[caste.type]) && !slots[TIER_2][OPEN_SLOTS] && !slots[TIER_2][GUARANTEED_SLOTS][caste_pick])
 		to_chat(src, SPAN_WARNING("We cannot support another Tier 2 of this caste, wait for more sisters to be born or someone to die."))
 		return FALSE

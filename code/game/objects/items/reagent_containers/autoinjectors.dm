@@ -681,6 +681,11 @@
 	icon_state = "empty_medic"
 	uses_left = 0
 
+/obj/item/reagent_container/hypospray/autoinjector/empty/medic/tiny
+	name = "reagent canister pouch autoinjector (5u)"
+	volume = 6
+	amount_per_transfer_from_this = 1
+
 /obj/item/reagent_container/hypospray/autoinjector/empty/medic/extrasmall
 	name = "reagent canister pouch autoinjector (5u)"
 	volume = 30

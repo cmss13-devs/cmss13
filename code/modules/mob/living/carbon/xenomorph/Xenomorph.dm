@@ -43,7 +43,6 @@
 	mob_size = MOB_SIZE_XENO
 	hand = 1 //Make right hand active by default. 0 is left hand, mob defines it as null normally
 	see_in_dark = 12
-	recovery_constant = 1.5
 	see_invisible = SEE_INVISIBLE_LIVING
 	hud_possible = list(HEALTH_HUD_XENO, PLASMA_HUD, SPECIAL_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_TAG_SPREAD, XENO_HOSTILE_FREEZE, HUNTER_HUD, NEW_PLAYER_HUD)
 	unacidable = TRUE
@@ -1145,6 +1144,13 @@
 	drop_inv_item_on_ground(legcuffed)
 
 /mob/living/carbon/xenomorph/IgniteMob(force)
+	// Force xenos out of hiding if something tried to ignite it (like walking over fire)
+	if(layer == XENO_HIDING_LAYER)
+		var/datum/action/xeno_action/onclick/xenohide/hide = get_action(src, /datum/action/xeno_action/onclick/xenohide)
+		if (hide)
+			INVOKE_ASYNC(hide, TYPE_PROC_REF(/datum/action/xeno_action/onclick/xenohide, use_ability))
+			visible_message(SPAN_DANGER("[src] is forced out of hiding by the flames!"), SPAN_DANGER("You are forced out of hiding by the flames!"))
+
 	var/penetrating = fire_reagent?.fire_penetrating && !(fire_immunity & FIRE_IMMUNITY_IGNORE_PEN)
 	if(!force && !penetrating)
 		if((fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
@@ -1271,24 +1277,11 @@
 
 /mob/living/carbon/xenomorph/proc/get_throw_range(obj/item/I)
 	return 1
-/**
- * Checks if user can mount src
- *
- * Arguments:
- * * user - The mob trying to mount
- * * target_mounting - Is the target initiating the mounting process?
- */
-/mob/living/carbon/xenomorph/proc/can_mount(mob/living/user, target_mounting = FALSE)
+
+/mob/living/carbon/xenomorph/can_mount(mob/living/user, target_mounting = FALSE)
 	return FALSE
 
-/**
- * Handles the target trying to ride src
- *
- * Arguments:
- * * target - The mob being put on the back
- * * target_mounting - Is the target initiating the mounting process?
- */
-/mob/living/carbon/xenomorph/proc/carry_target(mob/living/carbon/target, target_mounting = FALSE)
+/mob/living/carbon/xenomorph/carry_target(mob/living/carbon/target, target_mounting = FALSE)
 	if(!ismob(target))
 		return
 	if(target.is_mob_incapacitated())
@@ -1311,6 +1304,3 @@
 	. = ..()
 	if(isxeno(user))
 		return
-	if(!can_mount(user, TRUE))
-		return
-	INVOKE_ASYNC(src, PROC_REF(carry_target), dropping, TRUE) // target_mounting is always true, the runner should never be buckling someone to itself (unless someone wants to make it happen)

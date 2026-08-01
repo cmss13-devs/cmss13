@@ -624,18 +624,20 @@ SUBSYSTEM_DEF(minimaps)
  */
 /image/proc/minimap_on_move(atom/movable/source, oldloc)
 	SIGNAL_HANDLER
-	if(isturf(source.loc))
-		pixel_x = MINIMAP_PIXEL_FROM_WORLD(source.x) + SSminimaps.minimaps_by_z["[source.z]"].x_offset
-		pixel_y = MINIMAP_PIXEL_FROM_WORLD(source.y) + SSminimaps.minimaps_by_z["[source.z]"].y_offset
+	if(source.z)
+		var/datum/hud_displays/minimap = SSminimaps.minimaps_by_z["[source.z]"]
+		pixel_x = MINIMAP_PIXEL_FROM_WORLD(source.x) + minimap.x_offset
+		pixel_y = MINIMAP_PIXEL_FROM_WORLD(source.y) + minimap.y_offset
 		return
 
-	var/atom/movable/movable_loc = source.loc
-	source.override_minimap_tracking(source.loc)
-	pixel_x = MINIMAP_PIXEL_FROM_WORLD(movable_loc.x) + SSminimaps.minimaps_by_z["[movable_loc.z]"].x_offset
-	pixel_y = MINIMAP_PIXEL_FROM_WORLD(movable_loc.y) + SSminimaps.minimaps_by_z["[movable_loc.z]"].y_offset
+	var/atom/movable/movable_loc = source.loc // How does none of this just crash if the loc isn't on map?
+	source.override_minimap_tracking()
+	var/datum/hud_displays/minimap = SSminimaps.minimaps_by_z["[movable_loc.z]"]
+	pixel_x = MINIMAP_PIXEL_FROM_WORLD(movable_loc.x) + minimap.x_offset
+	pixel_y = MINIMAP_PIXEL_FROM_WORLD(movable_loc.y) + minimap.y_offset
 
 ///Used to handle minimap tracking inside other movables
-/atom/movable/proc/override_minimap_tracking(atom/movable/loc)
+/atom/movable/proc/override_minimap_tracking()
 	var/image/blip = SSminimaps.images_by_source[src]
 	blip.RegisterSignal(loc, COMSIG_MOVABLE_MOVED, TYPE_PROC_REF(/image, minimap_on_move))
 	RegisterSignal(loc, COMSIG_ATOM_EXITED, PROC_REF(cancel_override_minimap_tracking))
@@ -659,9 +661,10 @@ SUBSYSTEM_DEF(minimaps)
 		return
 	UnregisterSignal(source, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_Z_CHANGED))
 	var/turf/source_turf = get_turf(source)
+	var/datum/hud_displays/minimap = minimaps_by_z["[source_turf.z]"]
 	for(var/flag in GLOB.all_minimap_flags)
-		minimaps_by_z["[source_turf.z]"].images_assoc["[flag]"] -= source
-		minimaps_by_z["[source_turf.z]"].images_assoc["[flag]label"] -= source
+		minimap.images_assoc["[flag]"] -= source
+		minimap.images_assoc["[flag]label"] -= source
 	images_by_source -= source
 	removal_cbs[source].Invoke()
 	removal_cbs -= source

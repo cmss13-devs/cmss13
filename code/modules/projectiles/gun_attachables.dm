@@ -338,6 +338,7 @@ Defined in conflicts.dm of the #defines folder.
 	flags_equip_slot = SLOT_FACE
 	flags_armor_protection = SLOT_FACE
 	flags_item = CAN_DIG_SHRAPNEL
+	gun_traits = list(TRAIT_GUN_BAYONET)
 
 
 	attach_icon = "bayonet_a"
@@ -684,6 +685,7 @@ Defined in conflicts.dm of the #defines folder.
 	sound_override = TRUE
 	verb_override = TRUE
 	attack_speed = 9
+	gun_traits = list(TRAIT_GUN_BAYONET)
 
 /obj/item/attachable/shotgun_choke
 	name = "shotgun choke"
@@ -882,23 +884,23 @@ Defined in conflicts.dm of the #defines folder.
 	user.put_in_hands(new /obj/item/attachable/flashlight/under_barrel(user))
 	qdel(src)
 
-/obj/item/attachable/flashlight/on_enter_storage(obj/item/storage/internal/S)
+/obj/item/attachable/flashlight/on_enter_storage(obj/item/storage/internal/inner_inv)
 	..()
 
-	if(!istype(S, /obj/item/storage/internal))
+	if(!istype(inner_inv, /obj/item/storage/internal))
 		return
 
-	if(!istype(S.master_object, /obj/item/clothing/head/helmet/marine))
+	if(!istype(inner_inv.master_object, /obj/item/clothing/head/helmet/marine) && !istype(inner_inv.master_object, /obj/item/clothing/head/headset) && !istype(inner_inv.master_object, /obj/item/clothing/head/cmcap))
 		return
 
 	remove_attached_item()
 
-	attached_item = S.master_object
+	attached_item = inner_inv.master_object
 	RegisterSignal(attached_item, COMSIG_PARENT_QDELETING, PROC_REF(remove_attached_item))
-	activation = new /datum/action/item_action/toggle/rail_flashlight(src, S.master_object)
+	activation = new /datum/action/item_action/toggle/rail_flashlight(src, inner_inv.master_object)
 
-	if(ismob(S.master_object.loc))
-		activation.give_to(S.master_object.loc)
+	if(ismob(inner_inv.master_object.loc))
+		activation.give_to(inner_inv.master_object.loc)
 
 /obj/item/attachable/flashlight/on_exit_storage(obj/item/storage/S)
 	remove_attached_item()
@@ -933,7 +935,7 @@ Defined in conflicts.dm of the #defines folder.
 	if(. != CHECKS_PASSED)
 		return
 
-	if(istype(attached_item, /obj/item/clothing/head/helmet/marine))
+	if(istype(attached_item, /obj/item/clothing/head/helmet/marine) || istype(attached_item, /obj/item/clothing/head/headset) || istype(attached_item, /obj/item/clothing/head/cmcap))
 		if(!toggle_on || light_on)
 			if(light_on)
 				playsound(user, deactivation_sound, 15, 1)

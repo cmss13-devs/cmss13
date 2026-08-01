@@ -22,7 +22,8 @@
 		RegisterSignal(loc, COMSIG_MOVABLE_MOVED, PROC_REF(on_move))
 	RegisterSignal(loc, COMSIG_PARENT_QDELETING, PROC_REF(on_qdel))
 	weak_attached = WEAKREF(loc)
-	particles = new particle_path
+	if(particle_path)
+		particles = new particle_path
 	update_visual_contents(loc)
 
 /obj/effect/abstract/particle_holder/Destroy(force)

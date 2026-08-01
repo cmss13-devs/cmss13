@@ -262,7 +262,7 @@
 /turf/open/floor/strata,
 /area/atlan/lz/near_lz2)
 "aaU" = (
-/obj/structure/closet/firecloset/full,
+/obj/structure/closet/firecloset/upp_full,
 /turf/open/floor/strata,
 /area/atlan/lz/near_lz2)
 "aaV" = (
@@ -2369,8 +2369,8 @@
 /turf/open/floor/corsat,
 /area/atlan/station/cent_maintenace)
 "ahu" = (
-/obj/structure/closet/firecloset/full,
 /obj/effect/landmark/objective_landmark/far,
+/obj/structure/closet/firecloset/upp_full,
 /turf/open/floor/strata/floor2,
 /area/atlan/station/medical/morgue)
 "ahv" = (
@@ -3696,6 +3696,9 @@
 	},
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_offices)
+"alc" = (
+/turf/open/floor/almayer_hull/outerhull_dir/southwest,
+/area/atlan/oob/space)
 "ald" = (
 /obj/structure/largecrate/empty/case,
 /turf/open/floor/prison/sterile_white/south,
@@ -3960,12 +3963,12 @@
 /turf/open/floor/strata/cyan2/east,
 /area/atlan/station/promenade)
 "alM" = (
-/obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/reagent_container/food/snacks/dough,
 /obj/item/tool/kitchen/rollingpin{
 	pixel_x = -5;
 	pixel_y = 3
 	},
+/obj/structure/surface/table/reinforced/almayer_B,
 /turf/open/floor/strata/cyan2/east,
 /area/atlan/station/promenade)
 "alN" = (
@@ -7588,6 +7591,9 @@
 	},
 /turf/open/floor/strata,
 /area/atlan/station/water_tanks)
+"axd" = (
+/turf/open/floor/almayer_hull/outerhull_dir,
+/area/atlan/oob/space)
 "axe" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/strata/floor2,
@@ -8007,9 +8013,12 @@
 /obj/structure/closet/emcloset,
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/cargooffice)
+"ayw" = (
+/turf/open/floor/almayer_hull/outerhull_dir/southeast,
+/area/atlan/oob/space)
 "ayx" = (
-/obj/item/weapon/gun/rifle/type71,
 /obj/effect/decal/cleanable/blood/gibs/down,
+/obj/item/weapon/gun/rifle/ak4047,
 /turf/open/floor/strata/floor2,
 /area/atlan/station/cargooffice)
 "ayy" = (
@@ -8335,7 +8344,10 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/poddoor/hybrisa/shutters{
-	dir = 8
+	dir = 8;
+	explo_proof = 1;
+	heavy = 1;
+	unacidable = 1
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/comms/lz2_stairs)
@@ -8382,7 +8394,10 @@
 	dir = 8
 	},
 /obj/structure/machinery/door/poddoor/hybrisa/shutters{
-	dir = 8
+	dir = 8;
+	explo_proof = 1;
+	heavy = 1;
+	unacidable = 1
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/comms/lz2_stairs)
@@ -8684,9 +8699,6 @@
 	},
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/cargo)
-"aAJ" = (
-/turf/open/floor/strata/white_cyan1,
-/area/atlan/oob/space)
 "aAK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/handrail/strata{
@@ -8957,7 +8969,7 @@
 /area/atlan/oob)
 "aBI" = (
 /obj/structure/window/framed/upp_ship/grey/teal/hull,
-/turf/open/space/basic,
+/turf/open/floor/plating,
 /area/atlan/oob)
 "aBJ" = (
 /obj/structure/prop/invuln/lattice_prop{
@@ -9523,15 +9535,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata,
 /area/atlan/station/single_dorms)
-"aDA" = (
-/obj/structure/closet/firecloset/full,
-/obj/item/clothing/head/helmet/marine/veteran/UPP/firefighter,
-/obj/item/clothing/suit/storage/marine/light/vest/fire_light/upp,
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/strata/orange_edge/west,
-/area/atlan/lz/near_lz1)
 "aDB" = (
 /obj/structure/closet/athletic_mixed,
 /turf/open/floor/whitered/west,
@@ -10069,9 +10072,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/orange_edge/northwest,
 /area/atlan/station/hab_docks)
-"aFn" = (
-/turf/open/floor/strata/floor2,
-/area/atlan/oob/space)
 "aFo" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 8
@@ -10698,11 +10698,34 @@
 /turf/open/floor/corsat/squares,
 /area/atlan/asteroid/exports_east)
 "aHB" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/trash/plate{
+	pixel_x = 7;
+	pixel_y = 13
+	},
+/obj/item/trash/plate{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/item/trash/plate{
+	pixel_x = -3;
+	pixel_y = 13
+	},
+/obj/item/trash/plate{
+	pixel_x = -5;
+	pixel_y = -5
+	},
+/obj/item/trash/plate{
+	pixel_x = -1;
+	pixel_y = 4
+	},
+/obj/effect/landmark/objective_landmark/close,
 /obj/structure/barricade/handrail/strata{
 	dir = 4;
 	layer = 4
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata,
 /area/atlan/station/canteen)
 "aHC" = (
@@ -11052,6 +11075,9 @@
 /obj/structure/machinery/door/airlock/upp_grey/generic/autoname,
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/repairoffice)
+"aIK" = (
+/turf/open/floor/almayer_hull/outerhull_dir/west,
+/area/atlan/oob/space)
 "aIL" = (
 /obj/structure/sign/safety/maint{
 	pixel_y = 7;
@@ -11145,7 +11171,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/single_dorms)
 "aJb" = (
-/obj/structure/closet/firecloset/full,
+/obj/structure/closet/firecloset/upp_full,
 /turf/open/floor/strata/orange_icorner/west,
 /area/atlan/asteroid/processing_sw_train)
 "aJc" = (
@@ -11173,7 +11199,7 @@
 /turf/open/gm/dirt/dark_brown,
 /area/atlan/asteroid/exports_cave)
 "aJg" = (
-/obj/structure/closet/firecloset/full,
+/obj/structure/closet/firecloset/upp_full,
 /turf/open/floor/strata/green1,
 /area/atlan/station/double_dorms)
 "aJh" = (
@@ -12053,9 +12079,6 @@
 /obj/effect/decal/cleanable/dirt/alt_dirt,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/cent_maintenace)
-"aLM" = (
-/turf/closed/wall/upp_ship/grey/red/reinforced,
-/area/atlan/oob)
 "aLN" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_1,
 /turf/open/floor/strata/floor2,
@@ -12495,7 +12518,7 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/atlan/asteroid/processing_seperation/cas)
 "aNi" = (
-/obj/structure/closet/firecloset/full,
+/obj/structure/closet/firecloset/upp_full,
 /turf/open/floor/prison/darkbrownfull2,
 /area/atlan/asteroid/processing_seperation/cas)
 "aNj" = (
@@ -13340,7 +13363,7 @@
 /turf/open/gm/dirt/dark_brown,
 /area/atlan/asteroid/processing_ne_train)
 "aPE" = (
-/obj/structure/closet/firecloset/full,
+/obj/structure/closet/firecloset/upp_full,
 /turf/open/floor/strata/orange_icorner/east,
 /area/atlan/asteroid/processing_nw_train)
 "aPF" = (
@@ -13556,7 +13579,7 @@
 /turf/open/gm/dirt/dark_brown,
 /area/atlan/asteroid/caves)
 "aQt" = (
-/obj/structure/closet/firecloset/full,
+/obj/structure/closet/firecloset/upp_full,
 /turf/open/floor/prison/darkyellowfull2,
 /area/atlan/asteroid/exports_cave)
 "aQu" = (
@@ -14540,6 +14563,9 @@
 /obj/effect/decal/cleanable/blood{
 	icon_state = "csplatter1"
 	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/cargo)
 "aTY" = (
@@ -15111,10 +15137,6 @@
 	},
 /turf/open/floor/strata/floor3/east,
 /area/atlan/lz/near_lz1)
-"aVM" = (
-/obj/structure/closet/firecloset/full,
-/turf/open/floor/strata/orange_cover,
-/area/atlan/station/repairoffice)
 "aVN" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice1";
@@ -16074,16 +16096,16 @@
 /area/atlan/station/repairoffice)
 "aYx" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/ak4047{
+	current_rounds = 0
+	},
 /turf/open/floor/strata,
 /area/atlan/station/walkway)
 "aYy" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/item/ammo_magazine/rifle/ak4047{
-	current_rounds = 0
-	},
+/obj/item/ammo_magazine/rifle/type71,
 /turf/open/floor/strata,
 /area/atlan/station/walkway)
 "aYz" = (
@@ -16468,7 +16490,7 @@
 /turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/cent_maintenace)
 "aZR" = (
-/obj/structure/closet/firecloset/full,
+/obj/structure/closet/firecloset/upp_full,
 /turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/cent_maintenace)
 "aZS" = (
@@ -17548,6 +17570,9 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/promenade)
+"bdH" = (
+/turf/open/floor/almayer_hull/outerhull_dir/east,
+/area/atlan/oob/space)
 "bdI" = (
 /obj/structure/platform_decoration/metal/atlan/west,
 /turf/open/floor/corsat/marked,
@@ -18168,12 +18193,6 @@
 	},
 /turf/open/floor/strata/floor2,
 /area/atlan/station/cargooffice)
-"bfw" = (
-/obj/structure/machinery/door/poddoor/almayer/locked{
-	name = "launch bay door"
-	},
-/turf/open/space/basic,
-/area/atlan/oob)
 "bfx" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics{
 	icon_state = "hydrotray4"
@@ -18960,7 +18979,7 @@
 	name = "launch bay door"
 	},
 /obj/structure/blocker/invisible_wall,
-/turf/open/space/basic,
+/turf/open/floor/plating,
 /area/atlan/oob)
 "bhL" = (
 /obj/structure/barricade/handrail/no_vault{
@@ -18973,6 +18992,78 @@
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/atlan/station/drydock)
+"bhM" = (
+/turf/open/floor/almayer_hull/outerhull_dir_alt/northeast,
+/area/atlan/oob/space)
+"bhN" = (
+/turf/open/floor/almayer_hull/outerhull_dir_alt/northwest,
+/area/atlan/oob/space)
+"bhO" = (
+/turf/open/floor/almayer_hull/outerhull_dir/northwest,
+/area/atlan/oob/space)
+"bhP" = (
+/turf/open/floor/almayer_hull/outerhull_dir/north,
+/area/atlan/oob/space)
+"bhQ" = (
+/turf/open/floor/almayer_hull/outerhull_dir_alt/southeast,
+/area/atlan/oob/space)
+"bhR" = (
+/turf/open/floor/almayer_hull/outerhull_dir_alt/southwest,
+/area/atlan/oob/space)
+"bhS" = (
+/turf/open/floor/almayer_hull/outerhull_dir/northeast,
+/area/atlan/oob/space)
+"bhT" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating/prison,
+/area/atlan/oob)
+"bhU" = (
+/obj/structure/window/framed/upp_ship/grey/blue/hull,
+/turf/open/floor/plating,
+/area/atlan/oob)
+"bhV" = (
+/obj/structure/platform/metal/atlan/north,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_x = -8
+	},
+/turf/open/floor/prison/sterile_white/south,
+/area/atlan/station/walkway)
+"bhW" = (
+/obj/structure/platform/metal/atlan/east,
+/obj/item/ammo_casing/bullet{
+	pixel_y = 11;
+	pixel_x = -25
+	},
+/turf/open/floor/prison/sterile_white/south,
+/area/atlan/station/walkway)
+"bhX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet{
+	pixel_y = 11;
+	pixel_x = -25
+	},
+/turf/open/floor/strata/floor2,
+/area/atlan/station/storage)
+"bhY" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -1
+	},
+/obj/item/device/motiondetector/hacked,
+/turf/open/floor/strata/floor2,
+/area/atlan/station/cargo)
+"bhZ" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/effect/spawner/random/tool,
+/turf/open/floor/strata/floor2,
+/area/atlan/lz/near_lz1)
+"bia" = (
+/obj/structure/window/framed/upp_ship/grey/orange/hull,
+/turf/open/floor/plating,
+/area/atlan/oob)
 "bid" = (
 /obj/structure/bed/chair/office/light,
 /turf/open/floor/strata/floor3/east,
@@ -20212,7 +20303,7 @@
 /turf/open/floor/greengrid,
 /area/atlan/station/substation)
 "cnR" = (
-/obj/structure/closet/firecloset/full,
+/obj/structure/closet/firecloset/upp_full,
 /turf/open/floor/strata/green1,
 /area/atlan/station/single_dorms)
 "cnU" = (
@@ -20222,7 +20313,7 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/item/device/motiondetector,
+/obj/item/device/motiondetector/hacked,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/cargo)
 "cov" = (
@@ -20429,8 +20520,8 @@
 /area/atlan/station/admin)
 "cxZ" = (
 /obj/item/clothing/under/colonist/workwear/blue,
-/obj/structure/closet/secure_closet/personal,
 /obj/effect/landmark/objective_landmark/close,
+/obj/structure/closet,
 /turf/open/floor/strata/green3/east,
 /area/atlan/station/double_dorms)
 "cyd" = (
@@ -20511,6 +20602,10 @@
 	can_buckle = 0;
 	dir = 4
 	},
+/obj/item/toy/deck{
+	pixel_x = 6;
+	pixel_y = 6
+	},
 /turf/open/floor/strata/green1,
 /area/atlan/comms/lz2_stairs)
 "cAM" = (
@@ -20544,12 +20639,12 @@
 	},
 /area/atlan/oob)
 "cDk" = (
-/obj/structure/closet/firecloset/full,
 /obj/structure/machinery/light/double/blue{
 	dir = 8;
 	pixel_x = -10;
 	pixel_y = -1
 	},
+/obj/structure/closet/firecloset/upp_full,
 /turf/open/floor/strata/orange_icorner/west,
 /area/atlan/asteroid/processing_nw_train)
 "cDL" = (
@@ -20560,7 +20655,7 @@
 /obj/structure/sign/poster/upp{
 	pixel_y = -26
 	},
-/obj/item/weapon/gun/rifle/type71/carbine,
+/obj/item/weapon/gun/rifle/type71,
 /turf/open/floor/strata/floor2,
 /area/atlan/station/storage)
 "cDT" = (
@@ -21311,6 +21406,19 @@
 /obj/effect/decal/cleanable/blood{
 	icon_state = "csplatter1"
 	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6;
+	pixel_y = -8
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = 11;
+	pixel_y = -7
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = 11;
+	pixel_y = 12
+	},
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/atlan/station/storage)
 "dgc" = (
@@ -21441,7 +21549,7 @@
 /turf/open/floor/strata,
 /area/atlan/station/promenade)
 "dlE" = (
-/obj/structure/closet/firecloset/full,
+/obj/structure/closet/firecloset/upp_full,
 /turf/open/floor/strata/orange_edge,
 /area/atlan/station/storage)
 "dlX" = (
@@ -22222,33 +22330,6 @@
 	},
 /turf/open/floor/strata/green3/north,
 /area/atlan/station/double_dorms)
-"dPF" = (
-/obj/structure/surface/rack{
-	color = "#98a3ab"
-	},
-/obj/item/trash/plate{
-	pixel_x = 7;
-	pixel_y = 13
-	},
-/obj/item/trash/plate{
-	pixel_x = 6;
-	pixel_y = 4
-	},
-/obj/item/trash/plate{
-	pixel_x = -3;
-	pixel_y = 13
-	},
-/obj/item/trash/plate{
-	pixel_x = -5;
-	pixel_y = -5
-	},
-/obj/item/trash/plate{
-	pixel_x = -1;
-	pixel_y = 4
-	},
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/strata/green1,
-/area/atlan/station/canteen)
 "dPJ" = (
 /obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/prison/floor_marked,
@@ -22377,9 +22458,6 @@
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/storage)
 "dTZ" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#98a3ab"
-	},
 /obj/item/ammo_box/magazine/misc/mre/upp{
 	pixel_y = 14;
 	pixel_x = -9
@@ -22388,6 +22466,7 @@
 /obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
 	dir = 4
 	},
+/obj/structure/surface/table/reinforced/almayer_B,
 /turf/open/floor/strata/cyan2/east,
 /area/atlan/station/canteen)
 "dUj" = (
@@ -22469,7 +22548,7 @@
 /turf/open/floor/strata/red1,
 /area/atlan/station/security)
 "dYz" = (
-/obj/structure/closet/firecloset,
+/obj/structure/closet/firecloset/upp_full,
 /turf/open/floor/prison/darkyellowfull2,
 /area/atlan/station/airlock_maints)
 "dYZ" = (
@@ -22484,7 +22563,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/closet/secure_closet/cargotech,
+/obj/structure/closet/secure_closet/cargotech_upp,
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/repairs_lift)
 "dZp" = (
@@ -22789,10 +22868,21 @@
 	pixel_x = -3;
 	pixel_y = 5
 	},
+/obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet{
-	icon_state = "cartridge_1_1";
-	pixel_y = -3;
-	dir = 10
+	pixel_x = -6;
+	pixel_y = -8
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = 11;
+	pixel_y = -7
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = 11;
+	pixel_y = 12
 	},
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/atlan/station/storage)
@@ -22872,21 +22962,19 @@
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/exports_west)
 "epy" = (
-/obj/structure/closet/secure_closet/cargotech,
-/obj/item/clothing/head/uppcap,
+/obj/structure/closet/secure_closet/cargotech_upp,
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/cargo)
 "eqd" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
-/obj/structure/machinery/faxmachine{
-	pixel_x = -1;
-	pixel_y = 4
-	},
 /obj/structure/window/reinforced{
 	dir = 8;
 	health = 80
+	},
+/obj/structure/machinery/faxmachine/upp{
+	pixel_y = 4
 	},
 /turf/open/floor/strata,
 /area/atlan/station/hab_sec)
@@ -22935,12 +23023,6 @@
 	},
 /turf/open/floor/strata/floor3/east,
 /area/atlan/asteroid/exports_west/cas)
-"esx" = (
-/obj/structure/closet/firecloset/full,
-/obj/item/clothing/head/helmet/marine/veteran/UPP/firefighter,
-/obj/item/clothing/suit/storage/marine/light/vest/fire_light/upp,
-/turf/open/floor/prison/darkbrownfull2,
-/area/atlan/asteroid/processing_seperation/cas)
 "esF" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
@@ -23065,9 +23147,9 @@
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/exports_east)
 "eyz" = (
-/obj/structure/window/framed/prison/reinforced/hull,
+/obj/structure/window/framed/upp_ship/grey/blue/hull,
 /obj/structure/curtain/red,
-/turf/open/space/basic,
+/turf/open/floor/plating,
 /area/atlan/oob)
 "eyJ" = (
 /obj/structure/surface/rack{
@@ -23642,16 +23724,13 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
-/obj/structure/machinery/faxmachine{
-	pixel_y = 1;
-	pixel_x = -1
-	},
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
 	layer = 5.4
 	},
+/obj/structure/machinery/faxmachine/upp,
 /turf/open/floor/strata/blue1,
 /area/atlan/station/admin)
 "eWf" = (
@@ -23815,10 +23894,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
-/obj/structure/machinery/faxmachine{
-	pixel_y = 1;
-	pixel_x = -1
-	},
+/obj/structure/machinery/faxmachine/upp,
 /turf/open/floor/strata/fake_wood,
 /area/atlan/station/security)
 "fbw" = (
@@ -24041,16 +24117,6 @@
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3,
 /turf/closed/wall/upp_ship/grey/red,
 /area/atlan/station/security)
-"fma" = (
-/obj/structure/stairs/perspective{
-	color = "#6e6e6e";
-	dir = 8;
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
-	},
-/obj/structure/platform/metal/stair_cut/atlan/atlan_left,
-/turf/open/floor/strata,
-/area/atlan/asteroid/processing_nw_train)
 "fmR" = (
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
@@ -25213,9 +25279,7 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/atlan/asteroid/processing_cooling)
 "gjC" = (
-/obj/structure/closet/firecloset/full,
-/obj/item/clothing/head/helmet/marine/veteran/UPP/firefighter,
-/obj/item/clothing/suit/storage/marine/light/vest/fire_light/upp,
+/obj/structure/closet/firecloset/upp_full,
 /turf/open/floor/prison/darkyellowfull2,
 /area/atlan/station/substation)
 "gjL" = (
@@ -25709,9 +25773,6 @@
 /area/atlan/lz/near_lz2)
 "gBJ" = (
 /obj/structure/largecrate/random/barrel/true_random,
-/obj/structure/machinery/light{
-	dir = 4
-	},
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6";
 	pixel_y = 11;
@@ -25826,7 +25887,7 @@
 /area/atlan/oob)
 "gGn" = (
 /obj/item/clothing/under/marine/veteran/UPP/civi3,
-/obj/structure/closet/secure_closet/personal,
+/obj/structure/closet,
 /turf/open/floor/strata/green4/east,
 /area/atlan/station/double_dorms)
 "gHv" = (
@@ -25879,7 +25940,7 @@
 /turf/open/floor/strata/floor2,
 /area/atlan/station/storage)
 "gKc" = (
-/obj/structure/closet/firecloset/full,
+/obj/structure/closet/firecloset/upp_full,
 /turf/open/floor/strata/orange_icorner/east,
 /area/atlan/asteroid/processing_sw_train)
 "gKn" = (
@@ -26077,7 +26138,7 @@
 	dir = 4
 	},
 /obj/structure/platform/metal/atlan,
-/turf/open/floor/strata/multi_tiles,
+/turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/cent_maintenace)
 "gSg" = (
 /obj/effect/decal/cleanable/dirt,
@@ -26753,6 +26814,43 @@
 	amount = 2
 	},
 /obj/effect/spawner/gibspawner/xeno,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet{
+	pixel_y = 11;
+	pixel_x = -25
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6;
+	pixel_y = -8
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6;
+	pixel_y = -8
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = 11;
+	pixel_y = -7
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = 11;
+	pixel_y = -7
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = 11;
+	pixel_y = 12
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_y = 11;
+	pixel_x = -25
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6
+	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/storage)
 "hsj" = (
@@ -26816,7 +26914,7 @@
 /turf/open/floor/prison/darkyellowfull2,
 /area/atlan/station/hab_docks)
 "hvz" = (
-/obj/structure/closet/firecloset/full,
+/obj/structure/closet/firecloset/upp_full,
 /turf/open/floor/strata/orange_edge/north,
 /area/atlan/station/hab_docks)
 "hvC" = (
@@ -26861,14 +26959,12 @@
 	},
 /area/atlan/oob)
 "hxj" = (
-/obj/structure/closet/secure_closet/atmos_personal,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/structure/closet,
 /turf/open/floor/plating/prison,
 /area/atlan/station/atmospherics)
 "hxl" = (
-/obj/structure/closet/firecloset/full,
-/obj/item/clothing/head/helmet/marine/veteran/UPP/firefighter,
-/obj/item/clothing/suit/storage/marine/light/vest/fire_light/upp,
+/obj/structure/closet/firecloset/upp_full,
 /turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/promenade)
 "hxu" = (
@@ -26970,6 +27066,10 @@
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/down,
 /obj/effect/decal/cleanable/blood/gibs/limb,
+/obj/item/ammo_casing/bullet{
+	pixel_x = 11;
+	pixel_y = -7
+	},
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/cargooffice)
 "hAV" = (
@@ -27139,7 +27239,10 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/poddoor/hybrisa/shutters{
-	dir = 8
+	dir = 8;
+	explo_proof = 1;
+	heavy = 1;
+	unacidable = 1
 	},
 /turf/open/floor/strata,
 /area/atlan/station/stairs1)
@@ -27278,6 +27381,7 @@
 	dir = 1;
 	icon_state = "p_stair_sn_full_cap"
 	},
+/obj/structure/platform/metal/atlan/east,
 /turf/open/floor/plating/prison,
 /area/atlan/station/hab_docks)
 "hNm" = (
@@ -27498,7 +27602,10 @@
 	dir = 8
 	},
 /obj/structure/machinery/door/poddoor/hybrisa/shutters{
-	dir = 8
+	dir = 8;
+	explo_proof = 1;
+	heavy = 1;
+	unacidable = 1
 	},
 /turf/open/floor/strata,
 /area/atlan/station/stairs1)
@@ -27570,8 +27677,8 @@
 /turf/open/floor/plating,
 /area/atlan/station/hab_docks)
 "hZX" = (
-/obj/structure/closet/secure_closet/personal,
 /obj/effect/landmark/objective_landmark/close,
+/obj/structure/closet,
 /turf/open/floor/strata/red1,
 /area/atlan/station/hab_sec)
 "iae" = (
@@ -27724,9 +27831,6 @@
 /turf/closed/wall/upp_ship/grey,
 /area/atlan/station/hab_docks)
 "ieS" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#98a3ab"
-	},
 /obj/item/storage/box/mre/upp{
 	pixel_x = -1;
 	pixel_y = 7
@@ -27734,6 +27838,7 @@
 /obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
 	dir = 4
 	},
+/obj/structure/surface/table/reinforced/almayer_B,
 /turf/open/floor/strata/cyan2/east,
 /area/atlan/station/canteen)
 "ifN" = (
@@ -28756,10 +28861,16 @@
 	dir = 4;
 	layer = 4
 	},
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_29";
-	pixel_y = 2;
-	pixel_x = 4
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/trash/plate{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/item/trash/plate{
+	pixel_x = -3;
+	pixel_y = 13
 	},
 /turf/open/floor/strata,
 /area/atlan/station/canteen)
@@ -29122,6 +29233,7 @@
 	},
 /area/atlan/oob)
 "iZq" = (
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/corsat/marked,
 /area/atlan/oob)
 "iZr" = (
@@ -29165,15 +29277,6 @@
 /obj/item/device/flashlight,
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/exports_east)
-"jaz" = (
-/obj/structure/stairs/perspective{
-	color = "#6e6e6e";
-	dir = 4;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/metal/atlan,
-/turf/open/asphalt/cement/cement1,
-/area/atlan/asteroid/processing_nw_train)
 "jaC" = (
 /obj/structure/prop/structure_lattice{
 	dir = 4
@@ -29404,28 +29507,26 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/atlan/station/walkway)
 "jjt" = (
-/obj/structure/closet/firecloset,
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/structure/closet/firecloset/upp_full,
 /turf/open/floor/prison/darkyellowfull2,
 /area/atlan/station/medical_maint)
 "jjy" = (
-/obj/structure/closet/firecloset/full,
-/obj/item/clothing/head/helmet/marine/veteran/UPP/firefighter,
-/obj/item/clothing/suit/storage/marine/light/vest/fire_light/upp,
 /obj/structure/machinery/light{
 	dir = 8;
 	pixel_y = 16
 	},
 /obj/effect/landmark/objective_landmark/far,
+/obj/structure/closet/firecloset/upp_full,
 /turf/open/floor/prison/blue_plate/north,
 /area/atlan/station/water_tanks)
 "jjB" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
-/turf/open/floor/prison/sterile_white,
+/turf/open/floor/strata/floor2,
 /area/atlan/station/botany)
 "jjH" = (
 /obj/effect/decal/warning_stripes{
@@ -29782,7 +29883,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/atlan/asteroid/processing_offices)
 "jwc" = (
-/obj/structure/closet/firecloset/full,
+/obj/structure/closet/firecloset/upp_full,
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/storage)
 "jwt" = (
@@ -30138,10 +30239,6 @@
 /turf/open/floor/corsat,
 /area/atlan/asteroid/processing_seperation/cas)
 "jKL" = (
-/obj/item/ammo_casing{
-	icon_state = "casing_6"
-	},
-/obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = 6;
 	pixel_y = 10
@@ -30393,7 +30490,7 @@
 	dir = 4
 	},
 /obj/structure/platform/metal/stair_cut/atlan/atlan_right,
-/turf/open/floor/strata,
+/turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/walkway)
 "jTM" = (
 /obj/structure/barricade/handrail/strata{
@@ -30731,7 +30828,8 @@
 /turf/open/floor/strata,
 /area/atlan/station/walkway)
 "kkt" = (
-/turf/open/floor/almayer_hull,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating,
 /area/atlan/oob)
 "kkP" = (
 /obj/item/trash/crushed_cup,
@@ -30861,7 +30959,6 @@
 /turf/open/floor/strata,
 /area/atlan/station/hab_flight)
 "kqI" = (
-/obj/structure/machinery/faxmachine,
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
@@ -30869,6 +30966,9 @@
 	pixel_y = 29
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/faxmachine/upp{
+	pixel_y = 4
+	},
 /turf/open/floor/strata/blue1,
 /area/atlan/station/admin)
 "krb" = (
@@ -31011,7 +31111,6 @@
 	},
 /obj/item/clothing/mask/gas/upp_pfb,
 /obj/item/clothing/mask/gas/upp_pfb,
-/obj/effect/spawner/random/tool,
 /turf/open/floor/strata/floor2,
 /area/atlan/lz/near_lz1)
 "kvr" = (
@@ -31028,10 +31127,10 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/hab_rec)
 "kvX" = (
-/obj/structure/closet/firecloset/full,
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/closet/firecloset/upp_full,
 /turf/open/floor/strata/orange_edge,
 /area/atlan/asteroid/exports_west)
 "kwm" = (
@@ -31156,10 +31255,6 @@
 	dir = 1;
 	health = 45;
 	icon_state = "folding_3"
-	},
-/obj/item/ammo_casing/cartridge{
-	pixel_x = -28;
-	pixel_y = -5
 	},
 /turf/open/floor/strata,
 /area/atlan/station/security)
@@ -31325,7 +31420,7 @@
 	dir = 4
 	},
 /obj/structure/blocker/invisible_wall,
-/turf/open/space/basic,
+/turf/open/floor/plating,
 /area/atlan/oob)
 "kGI" = (
 /obj/effect/decal/warning_stripes{
@@ -31337,10 +31432,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/cargo)
 "kHm" = (
-/obj/item/ammo_casing/cartridge{
-	pixel_y = 6;
-	pixel_x = 2
-	},
+/obj/item/ammo_casing/shell,
 /turf/open/floor/strata,
 /area/atlan/station/security)
 "kHw" = (
@@ -31533,11 +31625,11 @@
 /turf/open/floor/prison/darkyellowfull2,
 /area/atlan/station/water_maintenance)
 "kNZ" = (
-/obj/structure/closet/firecloset/full,
 /obj/structure/machinery/light{
 	dir = 1;
 	pixel_x = 16
 	},
+/obj/structure/closet/firecloset/upp_full,
 /turf/open/floor/strata/orange_icorner/east,
 /area/atlan/asteroid/processing_offices)
 "kOh" = (
@@ -31567,14 +31659,22 @@
 /turf/open/floor/engine/nitrogen,
 /area/atlan/station/atmospherics)
 "kOZ" = (
-/obj/item/ammo_casing{
-	dir = 8;
-	icon_state = "casing_6"
-	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12"
 	},
 /obj/structure/platform/metal/atlan/east,
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6;
+	pixel_y = -8
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = 11;
+	pixel_y = 12
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6;
+	pixel_y = -8
+	},
 /turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/walkway)
 "kPh" = (
@@ -32216,10 +32316,41 @@
 	},
 /obj/item/weapon/gun/rifle/ak4047,
 /obj/item/ammo_casing/bullet{
-	icon_state = "cartridge_1_1";
-	pixel_y = 8;
-	dir = 10;
-	pixel_x = -5
+	pixel_y = 11;
+	pixel_x = -25
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet{
+	pixel_y = 11;
+	pixel_x = -25
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_y = 11;
+	pixel_x = -25
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_y = 11;
+	pixel_x = -25
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6;
+	pixel_y = -8
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = 11;
+	pixel_y = -7
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = 11;
+	pixel_y = 12
 	},
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/atlan/station/storage)
@@ -32430,7 +32561,7 @@
 /turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/promenade)
 "lCZ" = (
-/obj/structure/closet/firecloset/full,
+/obj/structure/closet/firecloset/upp_full,
 /turf/open/floor/prison/darkbrownfull2,
 /area/atlan/asteroid/processing_cooling)
 "lDs" = (
@@ -34056,13 +34187,6 @@
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/lz/near_lz2)
-"mSt" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/turf/open/floor/strata/floor2,
-/area/atlan/station/cargooffice)
 "mSw" = (
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/atlan/comms/lz2_hab_relay)
@@ -34233,14 +34357,6 @@
 "nau" = (
 /obj/structure/surface/rack{
 	color = "#98a3ab"
-	},
-/obj/item/trash/plate{
-	pixel_x = 6;
-	pixel_y = 4
-	},
-/obj/item/trash/plate{
-	pixel_x = -3;
-	pixel_y = 13
 	},
 /turf/open/floor/strata/green1,
 /area/atlan/station/canteen)
@@ -34436,10 +34552,13 @@
 /turf/open/floor/prison/darkyellowfull2,
 /area/atlan/station/cent_maintenace)
 "niq" = (
-/obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = -11;
 	pixel_y = 10
+	},
+/obj/item/ammo_casing/shell{
+	pixel_x = 13;
+	pixel_y = 18
 	},
 /turf/open/floor/strata,
 /area/atlan/station/security)
@@ -34461,7 +34580,7 @@
 	},
 /area/atlan/oob)
 "njx" = (
-/obj/structure/closet,
+/obj/structure/closet/firecloset/upp_full,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/lz/near_lz1)
 "njD" = (
@@ -34551,6 +34670,9 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 4;
 	layer = 4
+	},
+/obj/structure/surface/rack{
+	color = "#98a3ab"
 	},
 /turf/open/floor/strata,
 /area/atlan/station/canteen)
@@ -34931,6 +35053,11 @@
 /obj/structure/machinery/light/double/blue{
 	dir = 4
 	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_y = 11;
+	layer = 4
+	},
 /turf/open/floor/corsat,
 /area/atlan/station/single_dorms)
 "nAw" = (
@@ -34962,10 +35089,10 @@
 /turf/open/floor/plating,
 /area/atlan/comms/lz2_hab_relay)
 "nAT" = (
-/obj/structure/closet/firecloset/full,
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/closet/firecloset/upp_full,
 /turf/open/floor/strata/orange_edge,
 /area/atlan/station/hab_docks)
 "nAU" = (
@@ -35124,7 +35251,8 @@
 /area/atlan/asteroid/exports_east)
 "nHm" = (
 /obj/structure/prop/dam/crane,
-/turf/open/floor/almayer_hull,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating,
 /area/atlan/oob)
 "nHp" = (
 /obj/structure/sign/safety/security,
@@ -35333,9 +35461,8 @@
 /turf/open/floor/strata/blue1,
 /area/atlan/station/admin)
 "nPT" = (
-/obj/structure/closet/secure_closet/cargotech,
-/obj/item/clothing/head/uppcap,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/structure/closet/secure_closet/cargotech_upp,
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/cargo)
 "nPV" = (
@@ -35892,13 +36019,12 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/closet/secure_closet/req_officer,
 /obj/structure/sign/poster/upp{
 	pixel_y = 33
 	},
-/obj/item/clothing/head/uppcap,
 /obj/item/clothing/head/hardhat/white,
 /obj/effect/landmark/objective_landmark/far,
+/obj/structure/closet/secure_closet/cargotech_upp,
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/cargo)
 "olO" = (
@@ -35988,7 +36114,10 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/poddoor/hybrisa/shutters{
-	dir = 8
+	dir = 8;
+	explo_proof = 1;
+	heavy = 1;
+	unacidable = 1
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/single_dorms)
@@ -36142,7 +36271,7 @@
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/repairs_lift)
 "otF" = (
-/obj/structure/closet/firecloset,
+/obj/structure/closet/firecloset/upp_full,
 /turf/open/floor/prison/darkyellowfull2,
 /area/atlan/station/atmospherics)
 "otK" = (
@@ -36372,8 +36501,8 @@
 /turf/open/floor/strata/floor2,
 /area/atlan/station/repairoffice)
 "oBN" = (
-/obj/structure/closet/firecloset/full,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/firecloset/upp_full,
 /turf/open/floor/strata/floor2,
 /area/atlan/lz/near_lz1)
 "oBO" = (
@@ -36892,7 +37021,7 @@
 	dir = 4
 	},
 /obj/structure/blocker/invisible_wall,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/plating/prison,
 /area/atlan/oob)
 "paC" = (
 /turf/closed/shuttle/ert{
@@ -37463,7 +37592,7 @@
 	icon_state = "p_stair_full"
 	},
 /obj/structure/platform/metal/atlan,
-/turf/open/floor/strata,
+/turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/walkway)
 "pwr" = (
 /obj/structure/machinery/door/airlock/upp_grey/engi/autoname{
@@ -38543,8 +38672,8 @@
 /turf/open/floor/corsat/squares,
 /area/atlan/asteroid/exports_west/cas)
 "qiH" = (
-/obj/structure/closet/firecloset,
 /obj/effect/landmark/objective_landmark/close,
+/obj/structure/closet/firecloset/upp_full,
 /turf/open/floor/prison/darkyellowfull2,
 /area/atlan/station/cargooffice)
 "qiS" = (
@@ -40642,10 +40771,10 @@
 	},
 /area/atlan/oob)
 "rME" = (
-/obj/structure/closet/firecloset/full,
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/structure/closet/firecloset/upp_full,
 /turf/open/floor/prison/darkyellowfull2,
 /area/atlan/station/atmospherics)
 "rMQ" = (
@@ -40939,10 +41068,6 @@
 /turf/open/floor/strata,
 /area/atlan/comms/lz2_hab_relay)
 "rWS" = (
-/obj/item/ammo_casing/cartridge{
-	pixel_y = -9;
-	pixel_x = -8
-	},
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = -11;
 	pixel_y = 10
@@ -40950,6 +41075,9 @@
 /obj/item/trash/cigbutt{
 	pixel_x = 1;
 	pixel_y = 5
+	},
+/obj/item/ammo_casing/shell{
+	pixel_x = -8
 	},
 /turf/open/floor/strata,
 /area/atlan/station/security)
@@ -42123,10 +42251,10 @@
 /turf/open/floor/strata/floor2,
 /area/atlan/station/cargooffice)
 "sUK" = (
-/obj/structure/closet/firecloset/full,
 /obj/structure/machinery/light/double/blue{
 	dir = 8
 	},
+/obj/structure/closet/firecloset/upp_full,
 /turf/open/floor/strata/orange_edge/east,
 /area/atlan/asteroid/processing_se_train)
 "sUQ" = (
@@ -42841,12 +42969,10 @@
 /turf/open/floor/strata/white_cyan2/west,
 /area/atlan/station/single_dorms)
 "tsj" = (
-/obj/structure/closet/firecloset/full,
-/obj/item/clothing/head/helmet/marine/veteran/UPP/firefighter,
-/obj/item/clothing/suit/storage/marine/light/vest/fire_light/upp,
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/structure/closet/firecloset/upp_full,
 /turf/open/floor/strata/orange_edge,
 /area/atlan/station/hab_docks)
 "tsA" = (
@@ -43643,7 +43769,7 @@
 /turf/open/floor/strata/red1,
 /area/atlan/station/security)
 "tYa" = (
-/obj/structure/closet/firecloset,
+/obj/structure/closet/firecloset/upp_full,
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/repairoffice)
 "tYq" = (
@@ -43906,7 +44032,7 @@
 "uhL" = (
 /obj/item/clothing/under/marine/veteran/UPP/civi5,
 /obj/effect/landmark/objective_landmark/medium,
-/obj/structure/closet/secure_closet/personal,
+/obj/structure/closet,
 /turf/open/floor/strata/green4/west,
 /area/atlan/station/single_dorms)
 "uhN" = (
@@ -44143,7 +44269,7 @@
 /turf/open/floor/prison/darkyellowfull2,
 /area/atlan/station/atmospherics)
 "upd" = (
-/obj/structure/closet/firecloset/full,
+/obj/structure/closet/firecloset/upp_full,
 /turf/open/floor/prison/darkbrownfull2,
 /area/atlan/asteroid/processing_handling/cas)
 "uph" = (
@@ -44272,7 +44398,7 @@
 	layer = 3.5
 	},
 /obj/structure/platform/metal/stair_cut/atlan/atlan_right,
-/turf/open/floor/strata/multi_tiles,
+/turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/cent_maintenace)
 "utY" = (
 /obj/effect/decal/warning_stripes{
@@ -44596,9 +44722,9 @@
 /turf/open/floor/strata/white_cyan2/west,
 /area/atlan/station/medical)
 "uGL" = (
-/obj/structure/closet/secure_closet/personal,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/closet,
 /turf/open/floor/strata/red1,
 /area/atlan/station/hab_flight)
 "uGM" = (
@@ -44996,12 +45122,12 @@
 /turf/open/floor/prison/darkyellowfull2,
 /area/atlan/station/substation)
 "uUj" = (
-/obj/structure/closet/firecloset/full,
+/obj/structure/closet/firecloset/upp_full,
 /turf/open/floor/strata/cyan1,
 /area/atlan/station/medical)
 "uUq" = (
-/obj/structure/closet/secure_closet/personal,
 /obj/effect/landmark/objective_landmark/far,
+/obj/structure/closet,
 /turf/open/floor/strata/blue1,
 /area/atlan/station/admin)
 "uUB" = (
@@ -45045,12 +45171,12 @@
 /turf/open/floor/strata,
 /area/atlan/station/walkway)
 "uYY" = (
-/obj/structure/closet/firecloset/full,
 /obj/structure/sign/poster/upp{
 	pixel_y = 36;
 	pixel_x = 9;
 	layer = 2.8
 	},
+/obj/structure/closet/firecloset/upp_full,
 /turf/open/floor/prison/sterile_white/south,
 /area/atlan/comms/lz2_stairs)
 "uZa" = (
@@ -45266,10 +45392,8 @@
 /turf/open/floor/prison/darkyellowfull2,
 /area/atlan/station/atmospherics)
 "vhC" = (
-/obj/structure/closet/firecloset/full,
-/obj/item/clothing/head/helmet/marine/veteran/UPP/firefighter,
-/obj/item/clothing/suit/storage/marine/light/vest/fire_light/upp,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/firecloset/upp_full,
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/repairoffice)
 "vhS" = (
@@ -45419,8 +45543,8 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/asteroid/processing_sw_train)
 "vnQ" = (
-/obj/structure/closet/secure_closet/personal,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/structure/closet,
 /turf/open/floor/whitered/northeast,
 /area/atlan/station/hab_rec)
 "vnX" = (
@@ -46027,7 +46151,7 @@
 /turf/open/floor/strata/fake_wood,
 /area/atlan/station/hab_rec)
 "vRC" = (
-/obj/structure/closet/firecloset/full,
+/obj/structure/closet/firecloset/upp_full,
 /turf/open/floor/strata/orange_edge/west,
 /area/atlan/lz/near_lz2)
 "vRR" = (
@@ -46389,6 +46513,10 @@
 "wjA" = (
 /obj/item/ammo_casing/bullet,
 /obj/structure/platform/metal/atlan/east,
+/obj/item/ammo_casing/bullet{
+	pixel_y = 11;
+	pixel_x = -25
+	},
 /turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/walkway)
 "wkO" = (
@@ -46424,7 +46552,7 @@
 /turf/open/floor/strata/white_cyan2/west,
 /area/atlan/station/admin)
 "wmD" = (
-/obj/structure/closet/firecloset/full,
+/obj/structure/closet/firecloset/upp_full,
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/cargo)
 "wmJ" = (
@@ -46726,9 +46854,6 @@
 /turf/open/floor/strata/fake_wood,
 /area/atlan/station/hab_rec)
 "wBT" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#98a3ab"
-	},
 /obj/item/attachable/bayonet/upp,
 /obj/item/reagent_container/food/drinks/coffee{
 	pixel_x = -6;
@@ -46737,6 +46862,7 @@
 /obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
 	dir = 4
 	},
+/obj/structure/surface/table/reinforced/almayer_B,
 /turf/open/floor/strata/cyan2/east,
 /area/atlan/station/canteen)
 "wCq" = (
@@ -46760,8 +46886,8 @@
 /area/atlan/station/atmospherics)
 "wDz" = (
 /obj/item/clothing/head/uppcap/ushanka/civi,
-/obj/structure/closet/secure_closet/personal,
 /obj/effect/landmark/objective_landmark/close,
+/obj/structure/closet,
 /turf/open/floor/strata/green4,
 /area/atlan/station/single_dorms)
 "wDU" = (
@@ -46814,9 +46940,8 @@
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/repairs_lift)
 "wGV" = (
-/obj/structure/closet/secure_closet/cargotech,
-/obj/item/clothing/head/uppcap,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/secure_closet/cargotech_upp,
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/cargo)
 "wId" = (
@@ -47010,9 +47135,7 @@
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_nw_train)
 "wPU" = (
-/obj/structure/closet/firecloset/full,
-/obj/item/clothing/head/helmet/marine/veteran/UPP/firefighter,
-/obj/item/clothing/suit/storage/marine/light/vest/fire_light/upp,
+/obj/structure/closet/firecloset/upp_full,
 /turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/walkway)
 "wQm" = (
@@ -47408,9 +47531,7 @@
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/exports_east)
 "xht" = (
-/obj/structure/closet/firecloset/full,
-/obj/item/clothing/head/helmet/marine/veteran/UPP/firefighter,
-/obj/item/clothing/suit/storage/marine/light/vest/fire_light/upp,
+/obj/structure/closet/firecloset/upp_full,
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/repairs_lift)
 "xhv" = (
@@ -47624,7 +47745,7 @@
 /area/atlan/oob)
 "xsz" = (
 /obj/item/clothing/under/marine/veteran/UPP/civi5,
-/obj/structure/closet/secure_closet/personal,
+/obj/structure/closet,
 /turf/open/floor/strata/green4,
 /area/atlan/station/single_dorms)
 "xsJ" = (
@@ -47653,7 +47774,10 @@
 	dir = 8
 	},
 /obj/structure/machinery/door/poddoor/hybrisa/shutters{
-	dir = 8
+	dir = 8;
+	explo_proof = 1;
+	heavy = 1;
+	unacidable = 1
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/single_dorms)
@@ -47867,7 +47991,6 @@
 /turf/open/floor/plating,
 /area/atlan/station/hab_docks)
 "xCL" = (
-/obj/structure/largecrate/black_market/confiscated_weaponry,
 /obj/item/clothing/mask/cigarette{
 	pixel_x = 6;
 	pixel_y = 12
@@ -47880,6 +48003,7 @@
 	pixel_x = 5;
 	pixel_y = 14
 	},
+/obj/structure/largecrate/empty,
 /turf/open/floor/strata/green1,
 /area/atlan/comms/lz2_stairs)
 "xCN" = (
@@ -59778,15 +59902,15 @@ alD
 alD
 alD
 alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
+aAk
+aAk
+aAk
+aAk
+aAk
+aAk
+aAk
+aAk
+aAk
 alD
 alD
 alD
@@ -59990,15 +60114,15 @@ alD
 alD
 alD
 alD
-alD
-alD
+aAk
+bbH
 bbJ
 bbJ
 bbJ
 bbJ
 bbH
 bbH
-alD
+aAk
 alD
 alD
 alD
@@ -60202,15 +60326,15 @@ alD
 alD
 alD
 alD
-alD
-alD
+aAk
+bbH
 aAk
 bdd
 bbJ
 bcm
 aAk
 bbH
-alD
+aAk
 alD
 alD
 alD
@@ -60414,15 +60538,15 @@ alD
 alD
 alD
 alD
-alD
-alD
+aAk
+bbH
 bbJ
 bde
 bcQ
 bcF
 bbH
 bbH
-alD
+aAk
 alD
 alD
 alD
@@ -60626,15 +60750,15 @@ alD
 alD
 alD
 alD
-alD
-alD
+aAk
+bbH
 bbJ
 bdf
 bcR
 bcH
 bbJ
 bbH
-alD
+aAk
 alD
 alD
 alD
@@ -60838,15 +60962,15 @@ alD
 alD
 alD
 alD
-alD
-alD
+aAk
+bbH
 bbJ
 bdf
 bcT
 bcH
 bbJ
 bbH
-alD
+aAk
 alD
 alD
 alD
@@ -61050,15 +61174,15 @@ alD
 alD
 alD
 alD
-alD
-alD
+aAk
+bbH
 bbJ
 bdf
 bcU
 bcH
 bbH
 bbH
-alD
+aAk
 alD
 alD
 alD
@@ -61262,15 +61386,15 @@ alD
 alD
 alD
 alD
-alD
-alD
+aAk
+bbH
 bbJ
 bdf
 bcV
 bcH
 bbJ
 bbH
-alD
+aAk
 alD
 alD
 alD
@@ -61474,15 +61598,15 @@ alD
 alD
 alD
 alD
-alD
-alD
+aAk
+bbH
 bcP
 bdf
 bcW
 bcH
 bbH
 bbH
-alD
+aAk
 alD
 alD
 alD
@@ -61686,15 +61810,15 @@ alD
 alD
 alD
 alD
-alD
-alD
+aAk
+bbH
 bdp
 bdi
 bcX
 bcJ
 bcx
 bbH
-alD
+aAk
 alD
 alD
 alD
@@ -61898,15 +62022,15 @@ alD
 alD
 alD
 alD
-alD
-alD
+aAk
+bbH
 aAk
 bdj
 bcY
 bcK
 aAk
 bcn
-alD
+aAk
 alD
 alD
 alD
@@ -62110,15 +62234,15 @@ alD
 alD
 alD
 alD
-alD
-alD
+aAk
 bbH
 bbH
 bbH
 bbH
 bbH
 bbH
-alD
+bbH
+aAk
 alD
 alD
 alD
@@ -62322,15 +62446,15 @@ alD
 alD
 alD
 alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
+aAk
+aAk
+aAk
+aAk
+aAk
+aAk
+aAk
+aAk
+aAk
 alD
 alD
 alD
@@ -63553,9 +63677,9 @@ alD
 alD
 alD
 alD
-aAJ
-aAJ
-aAJ
+alD
+alD
+alD
 alD
 alD
 alD
@@ -63702,9 +63826,9 @@ alD
 alD
 alD
 alD
-bfw
+mOT
 eAC
-bfw
+mOT
 aEL
 aEF
 aEE
@@ -63767,8 +63891,8 @@ alD
 alD
 alD
 alD
-aAJ
-aAJ
+alD
+alD
 alD
 alD
 alD
@@ -63914,9 +64038,9 @@ alD
 alD
 alD
 alD
-bfw
+mOT
 eAC
-bfw
+mOT
 aEE
 aEE
 aEL
@@ -63981,7 +64105,7 @@ alD
 alD
 alD
 alD
-aAJ
+alD
 alD
 alD
 alD
@@ -64126,9 +64250,9 @@ alD
 alD
 alD
 alD
-bfw
+mOT
 eAC
-bfw
+mOT
 bbj
 aEE
 aEE
@@ -64194,7 +64318,7 @@ alD
 alD
 alD
 alD
-aAJ
+alD
 alD
 alD
 alD
@@ -64338,9 +64462,9 @@ alD
 alD
 alD
 alD
-bfw
+mOT
 eAC
-bfw
+mOT
 sOT
 aEE
 hDS
@@ -64407,7 +64531,7 @@ alD
 alD
 alD
 alD
-aAJ
+alD
 alD
 alD
 alD
@@ -64550,9 +64674,9 @@ alD
 alD
 alD
 alD
-bfw
+mOT
 eAC
-bfw
+mOT
 aEH
 sOT
 bzC
@@ -64619,7 +64743,7 @@ alD
 alD
 alD
 alD
-aAJ
+alD
 alD
 alD
 alD
@@ -64762,9 +64886,9 @@ alD
 alD
 alD
 alD
-bfw
+mOT
 eAC
-bfw
+mOT
 sOT
 aEG
 bzC
@@ -64831,7 +64955,7 @@ alD
 alD
 alD
 alD
-aAJ
+alD
 alD
 alD
 alD
@@ -64974,9 +65098,9 @@ alD
 alD
 alD
 alD
-bfw
+mOT
 eAC
-bfw
+mOT
 sOT
 aFa
 bzC
@@ -65030,12 +65154,6 @@ alD
 alD
 alD
 alD
-aAJ
-aAJ
-aAJ
-aAJ
-aAJ
-aAJ
 alD
 alD
 alD
@@ -65044,7 +65162,13 @@ alD
 alD
 alD
 alD
-aAJ
+alD
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 alD
 alD
@@ -65186,9 +65310,9 @@ alD
 alD
 alD
 alD
-bfw
+mOT
 eAC
-bfw
+mOT
 sOT
 aEE
 aEZ
@@ -65256,7 +65380,7 @@ alD
 alD
 alD
 alD
-aAJ
+alD
 alD
 alD
 alD
@@ -65398,9 +65522,9 @@ alD
 alD
 alD
 alD
-bfw
+mOT
 eAC
-bfw
+mOT
 aEE
 aEL
 aEE
@@ -65468,7 +65592,7 @@ alD
 alD
 alD
 alD
-aAJ
+alD
 alD
 alD
 alD
@@ -65610,9 +65734,9 @@ alD
 alD
 alD
 alD
-bfw
+mOT
 eAC
-bfw
+mOT
 aEE
 aEE
 aEE
@@ -65680,7 +65804,7 @@ alD
 alD
 alD
 alD
-aAJ
+alD
 alD
 alD
 alD
@@ -65822,9 +65946,9 @@ alD
 alD
 alD
 alD
-bfw
+mOT
 eAC
-bfw
+mOT
 aEL
 aFb
 aEE
@@ -65892,7 +66016,7 @@ alD
 alD
 alD
 alD
-aAJ
+alD
 alD
 alD
 alD
@@ -66104,7 +66228,7 @@ alD
 alD
 alD
 alD
-aAJ
+alD
 alD
 alD
 alD
@@ -66302,12 +66426,6 @@ alD
 alD
 alD
 alD
-aAJ
-aAJ
-aAJ
-aAJ
-aAJ
-aAJ
 alD
 alD
 alD
@@ -66315,7 +66433,13 @@ alD
 alD
 alD
 alD
-aAJ
+alD
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 alD
 alD
@@ -66527,7 +66651,7 @@ alD
 alD
 alD
 alD
-aAJ
+alD
 alD
 alD
 alD
@@ -66738,7 +66862,6 @@ alD
 alD
 alD
 alD
-aAJ
 alD
 alD
 alD
@@ -66774,18 +66897,19 @@ alD
 alD
 alD
 alD
+aAk
+aAk
+aAk
+aAk
+aAk
+aAk
+aAk
 alD
 alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
+aAk
+aAk
+aAk
+aAk
 alD
 alD
 alD
@@ -66949,8 +67073,6 @@ alD
 alD
 alD
 alD
-aAJ
-aAJ
 alD
 alD
 alD
@@ -66986,6 +67108,8 @@ alD
 alD
 alD
 alD
+alD
+aAk
 bdB
 bca
 bca
@@ -66997,7 +67121,7 @@ bco
 bce
 bca
 bbJ
-alD
+aAk
 alD
 alD
 alD
@@ -67160,8 +67284,6 @@ alD
 alD
 alD
 alD
-aAJ
-aAJ
 alD
 alD
 alD
@@ -67198,6 +67320,8 @@ alD
 alD
 alD
 alD
+alD
+aAk
 bdB
 bbJ
 bbJ
@@ -67209,7 +67333,7 @@ bcp
 bbJ
 bbJ
 bbJ
-alD
+aAk
 alD
 alD
 alD
@@ -67371,8 +67495,6 @@ alD
 alD
 alD
 alD
-aAJ
-aAJ
 alD
 alD
 alD
@@ -67410,6 +67532,8 @@ alD
 alD
 alD
 alD
+alD
+aAk
 bdC
 bdr
 bdq
@@ -67421,7 +67545,7 @@ bcq
 bbH
 bbH
 bbH
-alD
+aAk
 alD
 alD
 alD
@@ -67582,8 +67706,6 @@ alD
 alD
 alD
 alD
-aAJ
-aAJ
 alD
 alD
 alD
@@ -67622,6 +67744,8 @@ alD
 alD
 alD
 alD
+alD
+aAk
 bbJ
 bdt
 bbH
@@ -67633,7 +67757,7 @@ bcp
 bbH
 bbH
 bbH
-alD
+aAk
 alD
 alD
 alD
@@ -67791,10 +67915,6 @@ alD
 alD
 alD
 alD
-aAJ
-aAJ
-aAJ
-aAJ
 alD
 alD
 alD
@@ -67834,6 +67954,10 @@ alD
 alD
 alD
 alD
+alD
+alD
+alD
+aAk
 bbJ
 bdt
 bbH
@@ -67845,7 +67969,7 @@ bcr
 bcf
 aAk
 bbH
-alD
+aAk
 alD
 alD
 alD
@@ -68045,7 +68169,7 @@ alD
 alD
 alD
 alD
-alD
+aAk
 bbH
 bbS
 bdn
@@ -68057,7 +68181,7 @@ bcr
 bcg
 bcb
 bbH
-alD
+aAk
 alD
 alD
 alD
@@ -68257,7 +68381,7 @@ alD
 alD
 alD
 alD
-alD
+aAk
 bdD
 bdt
 bcd
@@ -68269,7 +68393,7 @@ bcq
 bch
 bcc
 bbH
-alD
+aAk
 alD
 alD
 alD
@@ -68469,7 +68593,7 @@ alD
 alD
 alD
 alD
-alD
+aAk
 bbK
 bdt
 bbH
@@ -68481,7 +68605,7 @@ bct
 bci
 bbH
 bbH
-alD
+aAk
 alD
 alD
 alD
@@ -68651,12 +68775,6 @@ alD
 alD
 alD
 alD
-aAJ
-aAJ
-aAJ
-aAJ
-aAJ
-aAJ
 alD
 alD
 alD
@@ -68682,6 +68800,12 @@ alD
 alD
 alD
 alD
+alD
+alD
+alD
+alD
+alD
+aAk
 bbH
 bdt
 bbL
@@ -68693,7 +68817,7 @@ bcw
 bcj
 bcd
 bbZ
-alD
+aAk
 alD
 alD
 alD
@@ -68866,7 +68990,6 @@ alD
 alD
 alD
 alD
-aAJ
 alD
 alD
 alD
@@ -68894,6 +69017,7 @@ alD
 alD
 alD
 alD
+aAk
 bbH
 bdt
 bbH
@@ -68905,7 +69029,7 @@ bcv
 bcl
 aAk
 bbH
-alD
+aAk
 alD
 alD
 alD
@@ -69078,7 +69202,6 @@ alD
 alD
 alD
 alD
-aAJ
 alD
 alD
 alD
@@ -69106,6 +69229,7 @@ alD
 alD
 alD
 alD
+aAk
 bbL
 bdu
 bbH
@@ -69117,7 +69241,7 @@ bcw
 bbJ
 aAk
 bbH
-alD
+aAk
 alD
 alD
 alD
@@ -69287,12 +69411,6 @@ alD
 alD
 alD
 alD
-aAJ
-aAJ
-aAJ
-aAJ
-aAJ
-aAJ
 alD
 alD
 alD
@@ -69318,6 +69436,12 @@ alD
 alD
 alD
 alD
+alD
+alD
+alD
+alD
+alD
+aAk
 bbH
 bdt
 bbH
@@ -69329,7 +69453,7 @@ bbH
 bbH
 bbH
 bbH
-alD
+aAk
 alD
 alD
 alD
@@ -69529,19 +69653,19 @@ alD
 alD
 alD
 alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
+aAk
+aAk
+aAk
+aAk
+aAk
+aAk
+aAk
+aAk
+aAk
+aAk
+aAk
+aAk
+aAk
 alD
 alD
 alD
@@ -70135,12 +70259,12 @@ alD
 alD
 alD
 alD
-aAJ
 alD
 alD
-aAJ
-aAJ
-aAJ
+alD
+alD
+alD
+alD
 alD
 alD
 alD
@@ -102748,8 +102872,8 @@ aAk
 aAk
 aAk
 aAk
-oVk
-aAk
+aSw
+aSw
 aAk
 aAk
 alD
@@ -103174,7 +103298,7 @@ iUm
 aVZ
 eOT
 eOT
-pkY
+bhZ
 aAk
 aAk
 aAk
@@ -103462,8 +103586,8 @@ alE
 alE
 aAf
 aAf
-aAl
-aAl
+bhU
+bhU
 aAl
 aAf
 aAf
@@ -103669,9 +103793,9 @@ alE
 alE
 aAf
 aAf
-aAl
-aAl
-aAl
+bhU
+bhU
+bhU
 aAf
 htV
 mXC
@@ -104039,7 +104163,7 @@ fdM
 fdM
 bCW
 oMq
-fLo
+bhX
 nlx
 nlx
 meu
@@ -104256,9 +104380,9 @@ fhg
 nlx
 vFI
 aAk
-oVk
-oVk
-oVk
+aSw
+aSw
+aSw
 aAk
 alE
 alE
@@ -104512,8 +104636,8 @@ alE
 alE
 alE
 aAf
-aAl
-aAl
+bhU
+bhU
 aAf
 bdQ
 jet
@@ -104721,8 +104845,8 @@ aAk
 alE
 alE
 aAk
-oVk
-oVk
+aSw
+aSw
 aAf
 iFu
 imV
@@ -104930,8 +105054,8 @@ aDT
 aDT
 iOR
 aAk
-oVk
-oVk
+aSw
+aSw
 aAk
 rjp
 abA
@@ -107173,7 +107297,7 @@ azb
 aDe
 aDe
 aDW
-aDA
+pBz
 eOT
 eOT
 eOT
@@ -107281,7 +107405,7 @@ azb
 azb
 azb
 alE
-aAh
+agj
 dNJ
 cEM
 qqL
@@ -107492,7 +107616,7 @@ alD
 alD
 alE
 aAk
-oVk
+aAk
 agj
 gsb
 qqL
@@ -107591,7 +107715,7 @@ alD
 alD
 alD
 alD
-azc
+xEE
 pPG
 rEX
 eOT
@@ -107700,9 +107824,9 @@ eaH
 nkz
 aoB
 aAk
-oVk
-oVk
-oVk
+aSw
+aSw
+aSw
 aAk
 tPr
 pwr
@@ -107803,7 +107927,7 @@ alD
 alD
 alD
 alE
-azc
+xEE
 xlP
 eOT
 oHv
@@ -107969,7 +108093,7 @@ vXx
 jea
 aFe
 jvx
-oVk
+aSw
 alE
 alE
 alD
@@ -108015,7 +108139,7 @@ alD
 alD
 alE
 alE
-azc
+xEE
 uxk
 eOT
 eOT
@@ -108181,7 +108305,7 @@ ohy
 ohy
 ohy
 ohy
-oVk
+aSw
 alE
 alE
 alE
@@ -108393,7 +108517,7 @@ ohy
 ohy
 ohy
 sri
-oVk
+aSw
 alE
 alE
 alD
@@ -108816,9 +108940,9 @@ ohy
 pKE
 eXt
 cCk
-bfw
+mOT
 eAC
-bfw
+mOT
 alE
 alE
 alE
@@ -108865,7 +108989,7 @@ lRL
 lRL
 lRL
 dGe
-oVk
+aAk
 vaI
 qnO
 qnO
@@ -109028,9 +109152,9 @@ ohy
 ohy
 hHY
 cCk
-bfw
+mOT
 eAC
-bfw
+mOT
 alD
 alD
 alE
@@ -109240,9 +109364,9 @@ ohy
 ohy
 eXt
 cCk
-bfw
+mOT
 eAC
-bfw
+mOT
 alD
 alE
 alE
@@ -109452,9 +109576,9 @@ aKJ
 cCk
 eXt
 ohy
-bfw
+mOT
 eAC
-bfw
+mOT
 alD
 alD
 alE
@@ -109664,9 +109788,9 @@ aKJ
 ohy
 ivV
 ohy
-bfw
+mOT
 eAC
-bfw
+mOT
 alD
 alD
 alE
@@ -109711,8 +109835,8 @@ alD
 alE
 alE
 agj
-aAh
-aAh
+bia
+bia
 agj
 agj
 aYj
@@ -109876,9 +110000,9 @@ cCk
 ohy
 eXt
 rrU
-bfw
+mOT
 eAC
-bfw
+mOT
 alD
 alD
 alE
@@ -110018,10 +110142,10 @@ bJU
 ntq
 ahc
 idW
-oVk
+aSw
 alE
 alE
-oVk
+aSw
 bfh
 tPr
 xxX
@@ -110088,9 +110212,9 @@ cCk
 ohy
 eXt
 ohy
-bfw
+mOT
 eAC
-bfw
+mOT
 alD
 alD
 alE
@@ -110230,10 +110354,10 @@ aBd
 ntq
 ahd
 vKd
-oVk
+aSw
 alE
 alD
-oVk
+aSw
 aqf
 tPr
 bfc
@@ -110300,9 +110424,9 @@ ohy
 ohy
 eXt
 pKE
-bfw
+mOT
 eAC
-bfw
+mOT
 alD
 alD
 alE
@@ -110345,7 +110469,7 @@ alD
 alD
 alD
 alD
-aAh
+bia
 igv
 qvF
 qvF
@@ -110557,7 +110681,7 @@ alD
 alD
 alD
 alD
-aAh
+bia
 tDh
 qvF
 qvF
@@ -110779,8 +110903,8 @@ qvF
 lOA
 agj
 agj
-aAh
-aAh
+bia
+bia
 agj
 agj
 aYa
@@ -111017,7 +111141,7 @@ oLd
 rbw
 rbw
 alj
-aVM
+ePD
 aVA
 oRn
 nUR
@@ -111206,7 +111330,7 @@ alE
 alE
 alE
 alE
-aAh
+bia
 wpo
 aXX
 lXz
@@ -111217,7 +111341,7 @@ aYW
 aYW
 aYW
 rbw
-oxI
+oEr
 aXn
 aCO
 aDq
@@ -111359,7 +111483,7 @@ sNj
 vUU
 agf
 vUU
-oVk
+aSw
 alE
 alE
 alD
@@ -111418,7 +111542,7 @@ alE
 alE
 alE
 alD
-aAh
+bia
 dsM
 cQJ
 uer
@@ -111571,7 +111695,7 @@ bbk
 vUU
 agg
 rjG
-oVk
+aSw
 alE
 alD
 alD
@@ -111783,7 +111907,7 @@ oHn
 vUU
 agg
 dDD
-oVk
+aSw
 alE
 alE
 alD
@@ -111839,8 +111963,8 @@ vpl
 lXz
 agj
 agj
-aDa
-aDa
+bia
+bia
 agj
 agj
 nSe
@@ -111995,7 +112119,7 @@ cCk
 vUU
 agl
 bfU
-oVk
+aSw
 alE
 alD
 alD
@@ -112463,9 +112587,9 @@ alD
 alD
 alD
 alD
-bfw
+mOT
 eAC
-bfw
+mOT
 djG
 tfN
 bal
@@ -112675,9 +112799,9 @@ alD
 alD
 alD
 alD
-bfw
+mOT
 eAC
-bfw
+mOT
 djG
 tfN
 bal
@@ -112887,9 +113011,9 @@ alD
 alD
 alD
 alD
-bfw
+mOT
 eAC
-bfw
+mOT
 djG
 tfN
 bal
@@ -113056,9 +113180,9 @@ ohy
 aFk
 eXt
 ohy
-bfw
+mOT
 eAC
-bfw
+mOT
 alE
 alE
 alD
@@ -113099,9 +113223,9 @@ alD
 alD
 alD
 alD
-bfw
+mOT
 eAC
-bfw
+mOT
 djG
 tfN
 bal
@@ -113268,9 +113392,9 @@ ohy
 amo
 eXt
 pKE
-bfw
+mOT
 eAC
-bfw
+mOT
 alE
 alD
 alD
@@ -113311,9 +113435,9 @@ alD
 alD
 alD
 alD
-bfw
+mOT
 eAC
-bfw
+mOT
 djG
 tfN
 bam
@@ -113354,7 +113478,7 @@ hHg
 nUR
 nmb
 nUR
-xjq
+bhY
 oBd
 vZP
 nUR
@@ -113441,7 +113565,7 @@ ieS
 dTZ
 wBT
 azP
-dPF
+heE
 kvr
 kvr
 kvr
@@ -113480,9 +113604,9 @@ ohy
 amN
 hHY
 ohy
-bfw
+mOT
 eAC
-bfw
+mOT
 alE
 alD
 alD
@@ -113523,9 +113647,9 @@ alD
 alD
 alD
 alD
-bfw
+mOT
 eAC
-bfw
+mOT
 djG
 tfN
 bam
@@ -113606,8 +113730,8 @@ bnz
 xGJ
 jaK
 jaK
-aBI
-aBI
+jaK
+jaK
 jaK
 agj
 pqu
@@ -113692,9 +113816,9 @@ rou
 agg
 eXt
 ohy
-bfw
+mOT
 eAC
-bfw
+mOT
 alE
 alD
 alD
@@ -113735,9 +113859,9 @@ alD
 alD
 alD
 alD
-bfw
+mOT
 eAC
-bfw
+mOT
 djG
 tfN
 bam
@@ -113904,9 +114028,9 @@ rou
 agg
 eXt
 pKE
-bfw
+mOT
 eAC
-bfw
+mOT
 alE
 alD
 alD
@@ -113947,9 +114071,9 @@ alD
 alD
 alD
 alD
-bfw
+mOT
 eAC
-bfw
+mOT
 djG
 tfN
 bal
@@ -114116,9 +114240,9 @@ ohy
 agg
 eXt
 pKE
-bfw
+mOT
 eAC
-bfw
+mOT
 alE
 alD
 alE
@@ -114159,9 +114283,9 @@ alD
 alD
 alD
 alE
-bfw
+mOT
 eAC
-bfw
+mOT
 djG
 tfN
 bal
@@ -114328,9 +114452,9 @@ ohy
 agg
 eXt
 ohy
-bfw
+mOT
 eAC
-bfw
+mOT
 alE
 alE
 alE
@@ -114371,9 +114495,9 @@ alD
 alD
 alD
 alE
-bfw
+mOT
 eAC
-bfw
+mOT
 djG
 tfN
 bal
@@ -114540,9 +114664,9 @@ ohy
 agg
 eXt
 cCk
-bfw
+mOT
 eAC
-bfw
+mOT
 alE
 alE
 alE
@@ -114583,9 +114707,9 @@ alD
 alE
 alE
 alE
-bfw
+mOT
 eAC
-bfw
+mOT
 djG
 tfN
 bal
@@ -114848,7 +114972,7 @@ nUR
 hLI
 nUR
 aSP
-duJ
+nhg
 hnV
 bMJ
 ayj
@@ -115053,7 +115177,7 @@ dWJ
 hDn
 afz
 uph
-nhg
+duJ
 duJ
 aTX
 gBJ
@@ -115177,7 +115301,7 @@ aFl
 ohy
 ohy
 aFd
-oVk
+aSw
 alD
 alE
 alD
@@ -115231,8 +115355,8 @@ umS
 nxK
 agj
 agj
-aDa
-aDa
+bia
+bia
 agj
 agj
 uNs
@@ -115389,7 +115513,7 @@ ahQ
 mDb
 gDb
 ylq
-oVk
+aSw
 alE
 alE
 alE
@@ -115658,7 +115782,7 @@ alE
 alD
 alD
 alE
-aAh
+bia
 iDG
 xiE
 oqe
@@ -115870,7 +115994,7 @@ alE
 alE
 alD
 alE
-aAh
+bia
 vXg
 umS
 qrH
@@ -116291,8 +116415,8 @@ gwg
 oiD
 agj
 agj
-aAh
-aAh
+bia
+bia
 agj
 agj
 rYj
@@ -116437,7 +116561,7 @@ aAk
 alE
 alE
 aAk
-oVk
+aAk
 aAk
 aAk
 oqj
@@ -116653,9 +116777,9 @@ alE
 alE
 alE
 aAk
-oVk
-oVk
-oVk
+aSw
+aSw
+aSw
 aAk
 alE
 alE
@@ -116733,7 +116857,7 @@ fMq
 oiD
 chU
 dJq
-mSt
+vQC
 vQC
 vQC
 aWC
@@ -117069,7 +117193,7 @@ loF
 amy
 loF
 qUB
-oVk
+aSw
 alE
 alE
 alE
@@ -117281,7 +117405,7 @@ loF
 amz
 lWm
 bdh
-oVk
+aSw
 alE
 alE
 alE
@@ -117369,7 +117493,7 @@ pjT
 pjT
 pjT
 dJq
-mSt
+vQC
 jtR
 vQC
 vQC
@@ -117493,7 +117617,7 @@ ayA
 lJB
 bdh
 ayB
-oVk
+aSw
 alD
 alE
 alE
@@ -117916,7 +118040,7 @@ loF
 loF
 amw
 bdh
-oVk
+aSw
 alD
 alD
 alE
@@ -118128,7 +118252,7 @@ xnD
 fWD
 amw
 vwJ
-oVk
+aSw
 alD
 alD
 alD
@@ -118259,7 +118383,7 @@ wag
 lYr
 aiL
 wXp
-aAl
+bhU
 alE
 alE
 alE
@@ -118340,7 +118464,7 @@ fbd
 loF
 bdv
 gdY
-oVk
+aSw
 alE
 alD
 alD
@@ -118471,7 +118595,7 @@ med
 auy
 lYr
 ydt
-aAl
+bhU
 alE
 alD
 alE
@@ -118683,7 +118807,7 @@ dya
 auz
 rnM
 dSo
-aAl
+bhU
 alE
 alE
 alE
@@ -118763,7 +118887,7 @@ amw
 loF
 loF
 uDj
-oVk
+aSw
 alE
 alE
 alD
@@ -118854,8 +118978,8 @@ aAk
 aAk
 aAk
 aAk
-oVk
-oVk
+aSw
+aSw
 aAk
 gyU
 xAJ
@@ -118975,7 +119099,7 @@ amw
 loF
 bdh
 qCK
-oVk
+aSw
 alE
 alD
 alD
@@ -119059,7 +119183,7 @@ oiD
 xXe
 aAk
 aAk
-oVk
+aSw
 aAk
 aAk
 aAk
@@ -119324,9 +119448,9 @@ eut
 tSa
 tSa
 aAf
-aAl
-aAl
-aAl
+bhU
+bhU
+bhU
 aAf
 qiS
 awr
@@ -119398,7 +119522,7 @@ loF
 amw
 bdh
 bdh
-oVk
+aSw
 alE
 alE
 alD
@@ -119474,11 +119598,11 @@ alE
 alD
 aAk
 aAk
-oVk
-oVk
+aSw
+aSw
 aAk
-oVk
-oVk
+aSw
+aSw
 aAk
 aAk
 alD
@@ -120646,9 +120770,9 @@ tmn
 tmn
 tmn
 aHD
-oVk
+aSw
 alE
-oVk
+aSw
 ajP
 lhj
 lhj
@@ -120858,9 +120982,9 @@ tmn
 tmn
 tmn
 aHE
-oVk
+aSw
 alD
-oVk
+aSw
 adj
 lhj
 lhj
@@ -121269,7 +121393,7 @@ tmn
 iyD
 wjA
 kOZ
-afR
+bhW
 afN
 lwX
 anK
@@ -121509,7 +121633,7 @@ loF
 bdh
 vZz
 eSB
-oVk
+aSw
 aAk
 alE
 alE
@@ -121694,7 +121818,7 @@ kzh
 bmu
 aSd
 fgG
-afO
+bhV
 tmn
 anK
 kzh
@@ -121930,7 +122054,7 @@ jes
 tHk
 bdh
 aAk
-oVk
+aSw
 aAk
 alD
 alD
@@ -122139,8 +122263,8 @@ grz
 hTn
 iLz
 aAk
-oVk
-oVk
+aSw
+aSw
 aAk
 alE
 alD
@@ -122347,9 +122471,9 @@ gZE
 vwJ
 urv
 aAk
-oVk
-oVk
-oVk
+aSw
+aSw
+aSw
 aAk
 alE
 alE
@@ -122524,7 +122648,7 @@ ahO
 lwX
 quI
 tmn
-iMt
+tmn
 nFx
 aYy
 tmn
@@ -122555,9 +122679,9 @@ tmn
 eVh
 aAk
 aAk
-oVk
-oVk
-oVk
+aSw
+aSw
+aSw
 aAk
 alE
 alE
@@ -122736,7 +122860,7 @@ aAz
 tmn
 quI
 ahp
-tmn
+iMt
 cfc
 anK
 lwX
@@ -123402,7 +123526,7 @@ pnZ
 trf
 ncS
 hqf
-azc
+xEE
 alE
 alE
 alE
@@ -125044,8 +125168,8 @@ tQc
 bfL
 qtZ
 mrj
-fma
-jaz
+bgy
+ade
 bfq
 aOv
 aSd
@@ -125053,8 +125177,8 @@ aSd
 aSd
 aSd
 eKm
-fma
-jaz
+bgy
+ade
 qld
 xTV
 xTV
@@ -126816,10 +126940,10 @@ aSd
 alE
 alE
 alE
-alF
-alF
-alF
-alF
+bhO
+aIK
+aIK
+alc
 alE
 alE
 alD
@@ -127028,10 +127152,10 @@ aSd
 aSd
 alE
 alE
+bhP
 alF
 alF
-alF
-alF
+axd
 alE
 alD
 alD
@@ -127240,16 +127364,16 @@ aSd
 aSd
 alE
 alE
+bhP
 alF
 alF
-alF
-alF
+axd
 alE
 alE
 alE
 alD
 alD
-alD
+alE
 alD
 alD
 alD
@@ -127452,21 +127576,21 @@ aSd
 aSd
 aAk
 alE
+bhP
 alF
 alF
-alF
-alF
+axd
+alE
+alE
 alE
 alE
 alD
+alE
+alE
+alE
 alD
 alD
-alD
-alD
-alD
-alD
-alD
-alD
+alE
 alD
 alD
 alD
@@ -127664,22 +127788,22 @@ aAk
 aAk
 aAk
 qbe
+bhQ
 alF
 alF
-alF
-alF
+axd
 alE
 alE
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
+alE
+alE
+alE
+alE
+alE
+alE
+alE
+alE
+alE
+alE
 alD
 alD
 alD
@@ -127879,25 +128003,25 @@ bhK
 alI
 alF
 alF
-alF
-alE
-alE
-alE
-alD
-alD
-alE
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
+bhM
+aIK
+aIK
+aIK
+aIK
+aIK
+aIK
+aIK
+aIK
+aIK
+aIK
+aIK
+aIK
+aIK
+aIK
+aIK
+aIK
+aIK
+alc
 alD
 alD
 alD
@@ -128092,24 +128216,24 @@ alI
 alF
 alF
 alF
-alE
-alE
-alE
-alE
-alD
-alE
-alE
-alE
-alD
-alD
-alE
-alD
-alD
-alD
-alD
-alD
-alD
-alD
+alF
+alF
+alF
+alF
+alF
+alF
+alF
+alF
+alF
+alF
+alF
+alF
+alF
+alF
+alF
+alF
+alF
+axd
 alD
 alD
 alD
@@ -128304,24 +128428,24 @@ alI
 alF
 alF
 alF
-alE
-alE
-alE
-alE
-alE
-alE
-alE
-alE
-alE
-alE
-alE
-alE
-alD
-alD
-alD
-alD
-alD
-alD
+alF
+alF
+alF
+alF
+alF
+alF
+alF
+alF
+alF
+alF
+alF
+alF
+alF
+alF
+alF
+alF
+alF
+axd
 alD
 alD
 alD
@@ -128515,25 +128639,25 @@ bhK
 alI
 alF
 alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
+bhN
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+ayw
 alD
 alD
 alD
@@ -128727,25 +128851,25 @@ qbe
 alF
 alF
 alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
+axd
+alE
+alE
+alE
+alE
+alE
+alE
+alE
+alE
+alE
+alE
+alE
+alD
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 alD
 alD
@@ -128939,25 +129063,25 @@ aAk
 alF
 alF
 alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
+axd
+alE
+alE
+alE
+alE
+alE
+alD
+alD
+alD
+alE
+alE
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 alD
 alD
@@ -129151,25 +129275,25 @@ aAk
 alF
 alF
 alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
+axd
+alE
+alE
+alE
+alE
+alE
+alE
+alD
+alD
+alE
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 alD
 alD
@@ -129363,18 +129487,18 @@ aSd
 alF
 alF
 alF
-alF
+axd
 alE
 alE
 alE
 alE
-alE
-alE
-alE
-alE
-alE
-alE
-alE
+alD
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 alD
 alD
@@ -129574,18 +129698,18 @@ aSd
 alF
 alF
 alF
-alF
-alF
-alE
-alE
-alE
+bhN
+ayw
 alE
 alE
 alD
 alD
 alD
-alE
-alE
+alD
+alD
+alD
+alD
+alD
 alD
 alD
 alD
@@ -129786,17 +129910,17 @@ alF
 alF
 alF
 alF
-alF
-alE
-alE
-alE
-alE
-alE
+axd
 alE
 alE
 alD
 alD
-alE
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 alD
 alD
@@ -129998,7 +130122,7 @@ aSd
 alF
 alF
 alF
-alF
+axd
 alE
 alE
 alE
@@ -130124,7 +130248,7 @@ aQq
 aQq
 aMr
 lGF
-esx
+aNi
 aNr
 fEC
 aNr
@@ -130210,7 +130334,7 @@ alF
 alF
 alF
 alF
-alF
+axd
 alE
 alE
 alD
@@ -130422,7 +130546,7 @@ alF
 alF
 alF
 alF
-alF
+axd
 alE
 alE
 alE
@@ -130634,7 +130758,7 @@ aSd
 alF
 alF
 alF
-alF
+axd
 alE
 alE
 alE
@@ -130846,7 +130970,7 @@ aSd
 aSd
 alF
 alF
-alF
+axd
 alE
 alE
 alE
@@ -131058,7 +131182,7 @@ aSd
 alF
 alF
 alF
-alF
+axd
 alE
 alD
 alD
@@ -131270,7 +131394,7 @@ aAk
 alF
 alF
 alF
-alF
+axd
 alE
 alE
 alE
@@ -131482,7 +131606,7 @@ aAk
 alF
 alF
 alF
-alF
+axd
 alE
 alE
 alE
@@ -131694,7 +131818,7 @@ aAk
 alF
 alF
 alF
-alF
+axd
 alE
 alE
 alE
@@ -131906,7 +132030,7 @@ qbe
 alF
 alF
 alF
-alF
+axd
 alE
 alE
 alE
@@ -131916,9 +132040,9 @@ alE
 alE
 alE
 alE
-alD
-alD
-alD
+alE
+alE
+alE
 alD
 alD
 alD
@@ -132118,25 +132242,25 @@ bhK
 alI
 alF
 alF
-alF
-alE
-alE
-alE
-alE
-alE
-alE
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
+bhM
+aIK
+aIK
+aIK
+aIK
+aIK
+aIK
+aIK
+aIK
+aIK
+aIK
+aIK
+aIK
+aIK
+aIK
+aIK
+aIK
+aIK
+alc
 alD
 alD
 alD
@@ -132331,24 +132455,24 @@ alI
 alF
 alF
 alF
-alE
-alE
-alE
-alE
-alE
-alE
-alE
-alE
-alE
-alE
-alE
-alE
-alD
-alD
-alD
-alD
-alD
-alD
+alF
+alF
+alF
+alF
+alF
+alF
+alF
+alF
+alF
+alF
+alF
+alF
+alF
+alF
+alF
+alF
+alF
+axd
 alD
 alD
 alD
@@ -132560,7 +132684,7 @@ alF
 alF
 alF
 alF
-alF
+axd
 alD
 alD
 alD
@@ -132754,25 +132878,25 @@ bhK
 alI
 alF
 alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
+bhN
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+ayw
 alD
 alD
 alD
@@ -132966,25 +133090,25 @@ qbe
 alF
 alF
 alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
+axd
+alE
+alE
+alE
+alE
+alE
+alE
+alE
+alE
+alE
+alE
+alE
+alE
+alE
+alD
+alD
+alD
+alD
+alD
 alD
 alD
 alD
@@ -133121,7 +133245,7 @@ fXJ
 iMJ
 pYC
 gzJ
-aLM
+fXJ
 aSd
 dmv
 pOz
@@ -133178,25 +133302,25 @@ aAk
 alF
 alF
 alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
+axd
+alE
+alE
+alE
+alE
+alE
+alD
+alD
+alE
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 alD
 alD
@@ -133390,14 +133514,14 @@ aSd
 alF
 alF
 alF
-alF
+axd
 alE
-alE
-alE
-alE
-alE
-alE
-alE
+alD
+alD
+alD
+alD
+alD
+alD
 alE
 alD
 alD
@@ -133602,7 +133726,7 @@ aSd
 alF
 alF
 alF
-alF
+axd
 alE
 alE
 alD
@@ -133814,7 +133938,7 @@ alF
 alF
 alF
 alF
-alF
+axd
 alE
 alE
 alE
@@ -134026,7 +134150,7 @@ aSd
 alF
 alF
 alF
-alF
+axd
 alE
 alD
 alD
@@ -134237,8 +134361,8 @@ aSd
 alF
 alF
 alF
-alF
-alF
+bhN
+ayw
 alE
 alE
 alE
@@ -134449,7 +134573,7 @@ aSd
 alF
 alF
 alF
-alF
+axd
 alE
 alE
 alE
@@ -134661,7 +134785,7 @@ alF
 alF
 alF
 alF
-alF
+axd
 alE
 alE
 alD
@@ -134873,14 +134997,14 @@ alF
 alF
 alF
 alF
-alF
-alE
-alE
+axd
 alE
 alE
 alD
 alD
-alE
+alD
+alD
+alD
 alD
 alD
 alD
@@ -135085,15 +135209,15 @@ alF
 alF
 alF
 alF
-alF
+axd
 alE
 alE
 alE
-alE
-alE
-alE
-alE
-alE
+alD
+alD
+alD
+alD
+alD
 alD
 alD
 alD
@@ -135297,7 +135421,7 @@ alF
 alF
 alF
 alF
-alF
+axd
 alE
 alE
 alD
@@ -135305,11 +135429,11 @@ alD
 alD
 alD
 alD
-alE
-alE
-alE
-alE
-alE
+alD
+alD
+alD
+alD
+alD
 alD
 alD
 alD
@@ -135509,7 +135633,7 @@ alF
 alF
 alF
 alF
-alF
+axd
 alE
 alD
 alD
@@ -135519,7 +135643,7 @@ alD
 alD
 alD
 alD
-alE
+alD
 alD
 alD
 alD
@@ -135721,7 +135845,7 @@ aAk
 alF
 alF
 alF
-alF
+axd
 alE
 alE
 alE
@@ -135731,12 +135855,12 @@ alD
 alD
 alD
 alD
-alE
 alD
 alD
 alD
 alD
-aFn
+alD
+alD
 alD
 alD
 alD
@@ -135933,7 +136057,7 @@ aAk
 alF
 alF
 alF
-alF
+axd
 alE
 alE
 alE
@@ -135942,8 +136066,8 @@ alE
 alE
 alD
 alD
-alD
-alD
+aIK
+alE
 alD
 alD
 alD
@@ -136145,18 +136269,18 @@ qbe
 alF
 alF
 alF
-alF
+axd
+alE
+alE
+alE
+alE
 alE
 alE
 alE
 alE
 alD
-alD
-alD
-alD
-alD
-alD
-alD
+alE
+alE
 alD
 alD
 alD
@@ -136357,22 +136481,22 @@ bhK
 alI
 alF
 alF
+bhM
+aIK
+aIK
+aIK
+aIK
+aIK
+aIK
+aIK
 alF
+alD
+aIK
 alE
 alE
+aIK
 alD
-alD
-alD
-alD
-alE
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
+alG
 alD
 alD
 alD
@@ -136570,24 +136694,24 @@ alI
 alF
 alF
 alF
+alF
+alF
+alF
+vvK
+alF
+alF
+alF
+alE
+alF
+alF
+alF
+alF
+alD
 alE
 alE
 alE
-alE
-alD
-alE
-alE
-alD
-alE
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
+alG
+axd
 alD
 alD
 alD
@@ -136782,23 +136906,23 @@ alI
 alF
 alF
 alF
+alF
+alF
+alF
+alF
+alF
+alF
+alF
+alF
+alF
 alE
-alE
-alE
-alE
-alE
-alE
-alE
+alF
 alG
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
+alG
+alF
+alF
+alE
+alE
 alD
 alD
 alD
@@ -136993,23 +137117,23 @@ bhK
 alI
 alF
 alF
-alF
+bhN
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 alE
-alE
-alE
-alE
-alE
-alE
-alE
-alE
+bdH
+alG
+alG
+alG
 alD
 alE
+bdH
+alD
 alE
-alD
-alD
-alD
-alD
-alD
 alD
 alD
 alD
@@ -137205,22 +137329,22 @@ qbe
 alF
 alF
 alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alD
-alF
+axd
 alE
 alE
-alF
+alE
+alE
+alE
+alE
+bdH
+alE
 alD
-alG
+alE
+alD
+bdH
+alD
+alD
+alD
 alD
 alD
 alD
@@ -137417,25 +137541,25 @@ aAk
 alF
 alF
 alF
-alF
-alF
-alF
-alF
-vvK
-alF
-alF
-alF
+axd
 alE
-alF
-alF
-alF
-alF
+alE
+alE
+alE
+alE
+alE
 alD
-alE
-alE
-alE
-alG
-alG
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 alD
 alD
@@ -137629,24 +137753,24 @@ aAk
 alF
 alF
 alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alE
-alF
-alG
-alG
-alF
-alF
+axd
 alE
 alE
+alE
+alE
+alE
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 alD
 alD
@@ -137841,21 +137965,21 @@ aSd
 alF
 alF
 alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alG
-alG
-alG
+axd
+alE
 alD
 alE
-alF
+alE
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 alD
 alD
@@ -138053,19 +138177,19 @@ aSd
 alF
 alF
 alF
-alF
+axd
 alE
-alE
-alE
-alE
-alE
-alE
-alG
-alE
+alD
 alD
 alE
 alD
-alG
+alD
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 alD
 alD
@@ -138265,19 +138389,19 @@ aSd
 aSd
 alF
 alF
-alF
+axd
+alE
+alE
+alE
+alE
+alE
 alE
 alE
 alE
 alE
 alD
-alE
-alE
-alE
-alE
-alE
-alE
-alE
+alD
+alD
 alD
 alD
 alD
@@ -138477,18 +138601,18 @@ aSd
 alF
 alF
 alF
-alF
+axd
 alE
-alE
-alE
-alE
+alD
 alD
 alD
 alE
 alE
-alE
-alE
-alE
+alD
+alD
+alD
+alD
+alD
 alD
 alD
 alD
@@ -138689,17 +138813,17 @@ alF
 alF
 alF
 alF
-alF
-alE
-alD
+axd
 alE
 alE
 alD
 alD
+alE
 alD
 alD
-alE
-alE
+alD
+alD
+alD
 alD
 alD
 alD
@@ -138900,18 +139024,18 @@ aSd
 aSd
 alF
 alF
-alF
-alF
-alD
-alD
-alE
-alD
-alD
-alD
-alD
-alD
+bhN
+ayw
 alE
 alE
+alE
+alE
+alE
+alE
+alD
+alD
+alD
+alD
 alD
 alD
 alD
@@ -139112,17 +139236,17 @@ aSd
 alF
 alF
 alF
-alF
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
+axd
 alE
 alE
+alE
+alE
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 alD
 alD
@@ -139323,18 +139447,18 @@ aSd
 alF
 alF
 alF
-alF
-alF
-alD
-alD
-alD
-alD
-alD
-alD
-alD
-alD
+bhN
+ayw
+alE
 alD
 alE
+alD
+alD
+alD
+alD
+alD
+alD
+alD
 alD
 alD
 alD
@@ -139514,7 +139638,7 @@ lGF
 lGF
 aSd
 lGF
-kkt
+bhT
 aAk
 aSd
 aAk
@@ -139535,7 +139659,10 @@ alF
 alF
 alF
 alF
-alF
+axd
+alE
+alD
+alD
 alE
 alD
 alD
@@ -139544,9 +139671,6 @@ alD
 alD
 alD
 alD
-alD
-alD
-alE
 alD
 alD
 alD
@@ -139726,7 +139850,7 @@ aSd
 lGF
 aSd
 lGF
-kkt
+bhT
 aAk
 aSd
 aAk
@@ -139746,8 +139870,8 @@ alF
 alF
 alF
 alF
-alF
-alF
+bhN
+ayw
 alE
 alE
 alD
@@ -139758,7 +139882,7 @@ alD
 alD
 alD
 alD
-alE
+alD
 alD
 alD
 alD
@@ -139938,7 +140062,7 @@ aSd
 lGF
 aSd
 aAk
-kkt
+bhT
 aAk
 aSd
 alF
@@ -139957,8 +140081,8 @@ alF
 alF
 alF
 alF
-alF
-alF
+bhN
+ayw
 alE
 alE
 alD
@@ -140167,9 +140291,9 @@ alF
 alF
 alF
 alF
-alF
-alF
-alF
+bhN
+bdH
+ayw
 alE
 alE
 alD
@@ -140377,9 +140501,9 @@ alF
 alF
 alF
 alF
-alF
-alF
-alF
+bhN
+bdH
+ayw
 alE
 alE
 alE
@@ -140587,9 +140711,9 @@ alF
 alF
 alF
 alF
-alF
-alF
-alF
+bhN
+bdH
+ayw
 alD
 alE
 alE
@@ -140786,20 +140910,20 @@ aSd
 lGF
 aSd
 aSd
+bdH
+bdH
+bdH
+bdH
+bdH
+bhR
 alF
 alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
-alF
+bhN
+bdH
+bdH
+bdH
+bdH
+ayw
 alE
 alD
 alD
@@ -141001,12 +141125,12 @@ aSd
 aSd
 alE
 alE
-alF
-alF
-alF
-alF
 alE
 alE
+bhP
+alF
+alF
+axd
 alE
 alE
 alE
@@ -141210,15 +141334,15 @@ aSd
 aSd
 alD
 aSd
+alE
+alE
 alD
 alE
 alE
+bhP
 alF
 alF
-alF
-alF
-alE
-alE
+axd
 alE
 alE
 alD
@@ -141424,15 +141548,15 @@ alD
 alD
 alD
 alE
+alD
 alE
-alF
+alE
+bhP
 ciu
 alF
-alF
+axd
 alE
 alE
-alE
-alD
 alD
 alE
 alE
@@ -141636,15 +141760,15 @@ alD
 alD
 alD
 alD
-alE
-alF
-alF
-alF
-alF
-alE
-alE
-alE
 alD
+alD
+alE
+bhP
+alF
+alF
+axd
+alE
+alE
 alD
 alE
 alD
@@ -141848,15 +141972,15 @@ alD
 alD
 alD
 alD
-alE
-alF
-alF
-alF
-alF
-alE
-alE
-alE
 alD
+alD
+alE
+bhP
+alF
+alF
+axd
+alE
+alE
 alE
 alE
 alD
@@ -142060,15 +142184,15 @@ alD
 alD
 alD
 alD
-alE
-alF
-alF
-alF
-alF
-alE
-alE
 alD
 alD
+alE
+bhP
+alF
+alF
+axd
+alE
+alE
 alD
 alE
 alD
@@ -142270,17 +142394,17 @@ alD
 alD
 alD
 alD
-alE
-alE
-alE
-alF
-alF
-alF
-alF
-alE
-alE
 alD
 alD
+alE
+alE
+alE
+bhP
+alF
+alF
+axd
+alE
+alE
 alD
 alE
 alD
@@ -142483,16 +142607,16 @@ alD
 alD
 alD
 alD
-alE
-alE
-alF
-alF
-alF
-alF
-alE
-alE
-alE
 alD
+alD
+alE
+alE
+bhP
+alF
+alF
+axd
+alE
+alE
 alD
 alE
 alE
@@ -142696,15 +142820,15 @@ alD
 alD
 alD
 alD
-alE
-alF
-alF
-alF
-alF
-alE
-alE
 alD
 alD
+alE
+bhP
+alF
+alF
+axd
+alE
+alE
 alD
 alE
 alD
@@ -142908,14 +143032,14 @@ alD
 alD
 alD
 alD
-alE
-alF
-alF
-alF
-alF
-alE
 alD
 alD
+alE
+bhP
+alF
+alF
+axd
+alE
 alD
 alD
 alE
@@ -143120,14 +143244,14 @@ alD
 alD
 alD
 alD
-alE
-alF
-alF
-alF
-alF
-alE
 alD
 alD
+alE
+bhP
+alF
+alF
+axd
+alE
 alD
 alD
 alD
@@ -143332,14 +143456,14 @@ alD
 alD
 alD
 alD
-alE
-alF
-alF
-alF
-alF
-alE
 alD
 alD
+alE
+bhP
+alF
+alF
+axd
+alE
 alD
 alD
 alD
@@ -143545,14 +143669,14 @@ alD
 alD
 alD
 alD
-alF
-alF
-alF
-alF
-alE
-alE
 alD
 alD
+bhP
+alF
+alF
+axd
+alE
+alE
 alD
 alD
 alD
@@ -143756,14 +143880,14 @@ alD
 alD
 alD
 alD
-alE
-alF
-alF
-alF
-alF
-alE
 alD
 alD
+alE
+bhP
+alF
+alF
+axd
+alE
 alD
 alD
 alD
@@ -143969,13 +144093,13 @@ alD
 alD
 alD
 alD
+alD
+alD
+bhP
 alF
 alF
-alF
-alF
+axd
 alE
-alD
-alD
 alD
 alD
 alD
@@ -144181,13 +144305,13 @@ alD
 alD
 alD
 alD
+alD
+alD
+bhP
 alF
 alF
-alF
-alF
+axd
 alE
-alD
-alD
 alD
 alD
 alD
@@ -144393,12 +144517,12 @@ alD
 alD
 alD
 alD
-alF
-alF
-alF
-alF
 alD
 alD
+bhP
+alF
+alF
+axd
 alD
 alD
 alD
@@ -144605,12 +144729,12 @@ alD
 alD
 alD
 alD
-alF
-alF
-alF
-alF
 alD
 alD
+bhP
+alF
+alF
+axd
 alD
 alD
 alD
@@ -144817,12 +144941,12 @@ alD
 alD
 alD
 alD
-alF
-alF
-alF
-alF
 alD
 alD
+bhS
+bdH
+bdH
+ayw
 alD
 alD
 alD

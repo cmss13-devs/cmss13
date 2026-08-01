@@ -25,14 +25,20 @@
 		if(2)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/botanic_leather(new_human), WEAR_HANDS)
 
-	var/random_labcoat = rand(1,3)
-	switch(random_labcoat)
+	var/random_labcoat_number = rand(1,3)
+	var/obj/item/clothing/suit/storage/labcoat/surv_labcoat
+	switch(random_labcoat_number)
 		if(1)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/cec/red(new_human), WEAR_JACKET)
+			surv_labcoat = new /obj/item/clothing/suit/storage/labcoat/cec/red
 		if(2)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/cec/red_hood(new_human), WEAR_JACKET)
+			surv_labcoat = new /obj/item/clothing/suit/storage/labcoat/cec/red_hood
 		if(3)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/cec/blue(new_human), WEAR_JACKET)
+			surv_labcoat = new /obj/item/clothing/suit/storage/labcoat/cec/blue
+
+	if(prob(50))
+		surv_labcoat.toggle()
+
+	new_human.equip_to_slot_or_del(surv_labcoat, WEAR_JACKET)
 
 	var/random_scientist_satchel= rand(1,3)
 	switch(random_scientist_satchel)
@@ -156,14 +162,20 @@
 		if(3)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/tie/black(new_human), WEAR_ACCESSORY)
 
-	var/random_labcoat = rand(1,3)
-	switch(random_labcoat)
+	var/random_labcoat_number = rand(1,3)
+	var/obj/item/clothing/suit/storage/labcoat/surv_labcoat
+	switch(random_labcoat_number)
 		if(1)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/cec/red(new_human), WEAR_JACKET)
+			surv_labcoat = new /obj/item/clothing/suit/storage/labcoat/cec/red
 		if(2)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/cec/red_hood(new_human), WEAR_JACKET)
+			surv_labcoat = new /obj/item/clothing/suit/storage/labcoat/cec/red_hood
 		if(3)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/cec/blue(new_human), WEAR_JACKET)
+			surv_labcoat = new /obj/item/clothing/suit/storage/labcoat/cec/blue
+
+	if(prob(50))
+		surv_labcoat.toggle()
+
+	new_human.equip_to_slot_or_del(surv_labcoat, WEAR_JACKET)
 
 	new_human.equip_to_slot_or_del(new /obj/item/tool/pen(new_human), WEAR_R_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/cec_patch(new_human), WEAR_ACCESSORY)
@@ -934,7 +946,17 @@
 		if(6)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/gray(new_human), WEAR_BODY)
 
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/cec/blue(new_human), WEAR_JACKET)
+	var/random_labcoat_number = rand(1,1)
+	var/obj/item/clothing/suit/storage/labcoat/surv_labcoat
+	switch(random_labcoat_number)
+		if(1)
+			surv_labcoat = new /obj/item/clothing/suit/storage/labcoat/cec/blue
+
+	if(prob(50))
+		surv_labcoat.toggle()
+
+	new_human.equip_to_slot_or_del(surv_labcoat, WEAR_JACKET)
+
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/synth/full(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/cec_patch(new_human), WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)

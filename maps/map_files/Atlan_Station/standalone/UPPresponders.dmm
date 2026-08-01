@@ -32,6 +32,20 @@
 	},
 /turf/open/floor/plating,
 /area/atlan/station/hab_docks)
+"ah" = (
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6;
+	pixel_y = -8
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_y = 11;
+	pixel_x = -25
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = 11
+	},
+/turf/open/floor/strata,
+/area/atlan/station/hab_docks)
 "ai" = (
 /obj/effect/decal/floor_symbol/upp/westface/northeast,
 /turf/open/floor/strata/floor3/east,
@@ -146,6 +160,47 @@
 /obj/structure/platform_decoration/metal/atlan/north,
 /turf/open/floor/strata,
 /area/atlan/station/admin)
+"aG" = (
+/obj/item/ammo_casing/bullet{
+	pixel_y = 11;
+	pixel_x = -25
+	},
+/turf/open/floor/strata,
+/area/atlan/station/hab_docks)
+"aH" = (
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6
+	},
+/turf/open/floor/strata,
+/area/atlan/station/walkway)
+"aI" = (
+/obj/item/ammo_casing/bullet{
+	pixel_y = 11;
+	pixel_x = -25
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6
+	},
+/turf/open/floor/strata,
+/area/atlan/station/walkway)
+"aJ" = (
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6;
+	pixel_y = -8
+	},
+/turf/open/floor/strata,
+/area/atlan/station/walkway)
+"aK" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet{
+	pixel_x = 11;
+	pixel_y = -7
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6
+	},
+/turf/open/floor/strata,
+/area/atlan/station/walkway)
 "aL" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
@@ -164,8 +219,45 @@
 	},
 /turf/open/floor/strata/blue1,
 /area/atlan/station/admin)
+"aM" = (
+/obj/item/ammo_casing/bullet{
+	pixel_x = 11;
+	pixel_y = -7
+	},
+/turf/open/floor/strata,
+/area/atlan/station/walkway)
 "aN" = (
 /turf/open/floor/strata/floor3/east,
+/area/atlan/station/walkway)
+"aO" = (
+/obj/item/ammo_magazine/rifle/ak4047/heap{
+	current_rounds = 0
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_y = 11;
+	pixel_x = -25
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6;
+	pixel_y = -8
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_y = 11;
+	pixel_x = -25
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet{
+	pixel_x = 11;
+	pixel_y = 12
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = 11;
+	pixel_y = -7
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6
+	},
+/turf/open/floor/strata,
 /area/atlan/station/walkway)
 "aP" = (
 /obj/structure/stairs/perspective{
@@ -179,6 +271,41 @@
 /obj/structure/flora/bush/ausbushes,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/atlan/station/walkway)
+"aR" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/strata/floor3/east,
+/area/atlan/station/admin)
+"aS" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/platform/metal/atlan/east,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/strata,
+/area/atlan/station/admin)
+"aT" = (
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6;
+	pixel_y = -8
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = 11;
+	pixel_y = 12
+	},
+/turf/open/floor/strata/floor3/east,
+/area/atlan/station/admin)
+"aU" = (
+/obj/item/ammo_casing/bullet{
+	pixel_x = 11;
+	pixel_y = 12
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6
+	},
+/turf/open/floor/strata/floor3/east,
+/area/atlan/station/admin)
 "aY" = (
 /obj/structure/sign/safety/reception,
 /obj/structure/sign/safety/bridge{
@@ -226,6 +353,9 @@
 	},
 /obj/item/ammo_magazine/rifle/ak4047/heap{
 	current_rounds = 0
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6
 	},
 /turf/open/floor/strata,
 /area/atlan/station/admin)
@@ -877,11 +1007,6 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/effect/spawner/gibspawner/xeno,
 /obj/effect/decal/cleanable/dirt/alt_dirt,
-/obj/item/ammo_casing/bullet{
-	icon_state = "cartridge_1_1";
-	pixel_y = -3;
-	dir = 10
-	},
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/admin)
 "oA" = (
@@ -928,9 +1053,9 @@
 /obj/structure/machinery/light/double/blue{
 	pixel_y = -1
 	},
-/obj/item/ammo_casing{
-	dir = 8;
-	icon_state = "casing_6"
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6;
+	pixel_y = -8
 	},
 /turf/open/floor/strata/blue1,
 /area/atlan/station/admin)
@@ -1065,14 +1190,22 @@
 	pixel_y = 11;
 	pixel_x = -25
 	},
-/obj/item/ammo_casing/bullet{
-	icon_state = "cartridge_1_1";
-	pixel_y = -3;
-	dir = 10;
-	pixel_x = 5
-	},
 /obj/item/ammo_magazine/rifle/ak4047/heap{
 	current_rounds = 0
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = 11
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_y = 11;
+	pixel_x = -25
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_y = 11;
+	pixel_x = -25
 	},
 /turf/open/floor/strata/green1,
 /area/atlan/station/hab_docks)
@@ -1142,14 +1275,19 @@
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/atlan/station/hab_docks)
 "rJ" = (
-/obj/item/ammo_casing/bullet{
-	icon_state = "cartridge_1_1";
-	pixel_y = -2;
-	dir = 10;
-	pixel_x = 7
-	},
 /obj/item/ammo_magazine/rifle/ak4047/heap{
 	current_rounds = 0
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = 11;
+	pixel_y = 12
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6;
+	pixel_y = -8
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6
 	},
 /turf/open/floor/strata,
 /area/atlan/station/walkway)
@@ -1297,6 +1435,10 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = 11
+	},
+/obj/item/ammo_casing/bullet,
 /turf/open/floor/strata/blue1,
 /area/atlan/station/admin)
 "ua" = (
@@ -1387,14 +1529,6 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata/blue1,
 /area/atlan/station/admin)
-"vf" = (
-/obj/item/ammo_casing{
-	dir = 8;
-	icon_state = "casing_6"
-	},
-/obj/structure/platform/metal/atlan/north,
-/turf/open/floor/strata,
-/area/atlan/station/admin)
 "vj" = (
 /obj/effect/decal/floor_symbol/upp/northface/west,
 /turf/open/floor/strata/floor3/east,
@@ -1407,10 +1541,8 @@
 	dir = 4
 	},
 /obj/item/ammo_casing/bullet{
-	icon_state = "cartridge_1_1";
-	pixel_y = 8;
-	dir = 10;
-	pixel_x = -5
+	pixel_x = -6;
+	pixel_y = -8
 	},
 /turf/open/floor/strata,
 /area/atlan/station/admin)
@@ -1449,11 +1581,6 @@
 /obj/effect/decal/cleanable/blood/gibs,
 /obj/effect/decal/cleanable/blood/gibs/down,
 /obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet{
-	icon_state = "cartridge_1_1";
-	pixel_y = -3;
-	dir = 10
-	},
 /turf/open/floor/plating,
 /area/atlan/station/hab_docks)
 "vZ" = (
@@ -1471,9 +1598,6 @@
 "wk" = (
 /turf/closed/wall/upp_ship/grey/blue/reinforced/outer,
 /area/atlan/oob)
-"wm" = (
-/turf/open/space/basic,
-/area/template_noop)
 "wJ" = (
 /obj/effect/decal/hybrisa/warning/redandwhite_N,
 /turf/open/floor/hybrisa/metal/red_warning_floor,
@@ -1534,47 +1658,51 @@
 	},
 /obj/item/weapon/gun/pkp,
 /obj/item/ammo_casing/bullet{
-	icon_state = "cartridge_1_1";
-	pixel_y = -3;
-	dir = 10
+	pixel_x = -6
 	},
 /obj/item/ammo_casing/bullet{
-	icon_state = "cartridge_1_1";
-	pixel_y = 8;
-	dir = 10;
-	pixel_x = -5
+	pixel_x = -6
 	},
 /obj/item/ammo_casing/bullet{
-	icon_state = "cartridge_1_1";
-	pixel_y = -3;
-	dir = 10
+	pixel_x = -6
 	},
 /obj/item/ammo_casing/bullet{
-	icon_state = "cartridge_1_1";
-	pixel_y = -3;
-	dir = 10
+	pixel_x = -6;
+	pixel_y = -8
 	},
 /obj/item/ammo_casing/bullet{
-	icon_state = "cartridge_1_1";
-	pixel_y = -3;
-	dir = 10;
-	pixel_x = 5
+	pixel_x = 11
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6;
+	pixel_y = -8
 	},
 /obj/item/ammo_casing/bullet{
-	icon_state = "cartridge_1_1";
-	pixel_y = -3;
-	dir = 10
+	pixel_x = -6;
+	pixel_y = -8
 	},
 /obj/item/ammo_casing/bullet{
-	icon_state = "cartridge_1_1";
-	pixel_y = -3;
-	dir = 10
+	pixel_x = 11;
+	pixel_y = 12
 	},
 /obj/item/ammo_casing/bullet{
-	icon_state = "cartridge_1_1";
-	pixel_y = -3;
-	dir = 10
+	pixel_x = 11;
+	pixel_y = 12
 	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = 11;
+	pixel_y = -7
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_y = 11;
+	pixel_x = -25
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6
+	},
+/obj/item/ammo_casing/bullet,
 /turf/open/floor/strata/floor2,
 /area/atlan/station/admin)
 "xM" = (
@@ -1687,7 +1815,7 @@
 /area/atlan/station/botany)
 "yU" = (
 /obj/structure/window/framed/upp_ship/grey/hull,
-/turf/open/space/basic,
+/turf/open/floor/plating,
 /area/atlan/oob)
 "yY" = (
 /obj/effect/decal/cleanable/blood,
@@ -1778,11 +1906,9 @@
 	pixel_y = 1;
 	pixel_x = 8
 	},
+/obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet{
-	icon_state = "cartridge_1_1";
-	pixel_y = 8;
-	dir = 10;
-	pixel_x = -5
+	pixel_x = 11
 	},
 /turf/open/floor/strata/green1,
 /area/atlan/station/hab_docks)
@@ -2038,6 +2164,15 @@
 	pixel_x = 7;
 	pixel_y = 11
 	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6;
+	pixel_y = -8
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6;
+	pixel_y = -8
+	},
+/obj/item/ammo_casing/bullet,
 /turf/open/floor/strata/blue1,
 /area/atlan/station/admin)
 "Et" = (
@@ -2117,13 +2252,27 @@
 	},
 /area/atlan/station/hab_docks)
 "Fd" = (
-/obj/item/ammo_casing/bullet{
-	icon_state = "cartridge_1_1";
-	pixel_y = -3;
-	dir = 10;
-	pixel_x = 5
-	},
 /obj/effect/landmark/survivor_spawner/SOF_survivor_atlan/specialist,
+/obj/item/ammo_casing/bullet{
+	pixel_x = 11
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = 11
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6;
+	pixel_y = -8
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6;
+	pixel_y = -8
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6;
+	pixel_y = -8
+	},
 /turf/open/floor/strata,
 /area/atlan/station/admin)
 "Fi" = (
@@ -2133,6 +2282,10 @@
 "Fp" = (
 /obj/item/explosive/grenade/high_explosive/upp,
 /obj/item/explosive/grenade/high_explosive/upp,
+/obj/item/ammo_casing/bullet{
+	pixel_x = 11;
+	pixel_y = 12
+	},
 /turf/open/floor/strata/blue1,
 /area/atlan/station/admin)
 "Fs" = (
@@ -2212,6 +2365,9 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 1;
 	layer = 2.97
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6
 	},
 /turf/open/floor/strata/blue1,
 /area/atlan/station/admin)
@@ -2305,9 +2461,7 @@
 /turf/open/floor/strata,
 /area/atlan/station/walkway)
 "Ja" = (
-/obj/structure/closet/firecloset/full,
-/obj/item/clothing/head/helmet/marine/veteran/UPP/firefighter,
-/obj/item/clothing/suit/storage/marine/light/vest/fire_light/upp,
+/obj/structure/closet/firecloset/upp_full,
 /turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/walkway)
 "Jx" = (
@@ -2441,6 +2595,17 @@
 "Mi" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet{
+	pixel_x = 11
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6;
+	pixel_y = -8
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = 11;
+	pixel_y = -7
+	},
 /turf/open/floor/strata,
 /area/atlan/station/walkway)
 "Mn" = (
@@ -2653,23 +2818,38 @@
 	dir = 4
 	},
 /obj/item/ammo_casing/bullet{
-	icon_state = "cartridge_1_1";
-	pixel_y = -3;
-	dir = 10;
-	pixel_x = 5
+	pixel_x = -6
 	},
 /obj/item/ammo_casing/bullet{
-	icon_state = "cartridge_1_1";
-	pixel_y = -3;
-	dir = 10;
-	pixel_x = 5
+	pixel_x = -6
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6;
+	pixel_y = -8
 	},
 /obj/item/ammo_casing/bullet{
-	icon_state = "cartridge_1_1";
-	pixel_y = 8;
-	dir = 10;
-	pixel_x = -5
+	pixel_x = -6;
+	pixel_y = -8
 	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6;
+	pixel_y = -8
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6;
+	pixel_y = -8
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6;
+	pixel_y = -8
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = 11;
+	pixel_y = -7
+	},
+/obj/item/ammo_casing/bullet,
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/atlan/station/admin)
 "Qi" = (
@@ -2756,6 +2936,10 @@
 "Rm" = (
 /obj/item/paper/crumpled{
 	pixel_y = -3
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6
 	},
 /turf/open/floor/strata/blue1,
 /area/atlan/station/admin)
@@ -2844,13 +3028,29 @@
 /turf/open/floor/plating,
 /area/atlan/station/admin)
 "SU" = (
-/obj/item/ammo_casing/bullet{
-	icon_state = "cartridge_1_1";
-	pixel_y = -3;
-	dir = 10
-	},
 /obj/item/ammo_magazine/rifle/ak4047/heap{
 	current_rounds = 0
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = 11;
+	pixel_y = 12
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = 11;
+	pixel_y = 12
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = 11
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = 11
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_y = 11;
+	pixel_x = -25
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6
 	},
 /turf/open/floor/strata/blue1,
 /area/atlan/station/admin)
@@ -3067,7 +3267,6 @@
 /turf/open/floor/strata,
 /area/atlan/station/walkway)
 "WC" = (
-/obj/structure/machinery/faxmachine,
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
@@ -3075,6 +3274,9 @@
 	pixel_y = 29
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/faxmachine/upp{
+	pixel_y = 4
+	},
 /turf/open/floor/strata/blue1,
 /area/atlan/station/admin)
 "WG" = (
@@ -3128,30 +3330,61 @@
 	},
 /obj/item/stack/sheet/metal,
 /obj/item/ammo_casing/bullet{
-	icon_state = "cartridge_1_1";
-	pixel_y = 8;
-	dir = 10;
-	pixel_x = -5
+	pixel_x = -6
 	},
 /obj/item/ammo_casing/bullet{
-	icon_state = "cartridge_1_1";
-	pixel_y = -3;
-	dir = 10;
-	pixel_x = 5
+	pixel_x = 11
 	},
 /obj/item/ammo_casing/bullet{
-	icon_state = "cartridge_1_1";
-	pixel_y = 8;
-	dir = 10;
-	pixel_x = -5
+	pixel_x = 11
 	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6;
+	pixel_y = -8
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6;
+	pixel_y = -8
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6;
+	pixel_y = -8
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = 11
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = 11;
+	pixel_y = -7
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = 11;
+	pixel_y = 12
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = 11;
+	pixel_y = -7
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6
+	},
+/obj/item/ammo_casing/bullet{
+	pixel_x = -6;
+	pixel_y = -8
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
 /turf/open/floor/strata,
 /area/atlan/station/admin)
 "XJ" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	name = "launch bay door"
 	},
-/turf/open/space/basic,
+/turf/open/floor/plating,
 /area/template_noop)
 "XK" = (
 /obj/structure/reagent_dispensers/tank/fuel,
@@ -4343,8 +4576,8 @@ DY
 DY
 dE
 ma
-DY
-DY
+aG
+ah
 DY
 DY
 Sk
@@ -4352,7 +4585,7 @@ DY
 DY
 cb
 cb
-wm
+kv
 "}
 (11,1,1) = {"
 kv
@@ -7318,9 +7551,9 @@ kv
 kv
 Vv
 hE
-hE
+aJ
 rJ
-hE
+aH
 hE
 hE
 Kw
@@ -7382,7 +7615,7 @@ Ay
 dI
 dI
 dI
-dI
+aS
 dI
 xA
 oI
@@ -7421,9 +7654,9 @@ kv
 kv
 kv
 Vv
-hE
-hE
-hE
+aM
+aK
+aI
 hE
 kX
 Kw
@@ -7489,7 +7722,7 @@ OS
 Za
 ly
 Kv
-Ej
+aR
 jd
 xV
 hE
@@ -7525,7 +7758,7 @@ kv
 kv
 kv
 Vv
-rJ
+aO
 Mi
 OU
 hE
@@ -7790,7 +8023,7 @@ kv
 kv
 MJ
 Rm
-Qs
+aT
 ay
 Qs
 aj
@@ -7894,7 +8127,7 @@ kv
 kv
 aY
 Es
-Qs
+aU
 ay
 ay
 DB
@@ -8320,7 +8553,7 @@ yb
 Gb
 sj
 Vk
-vf
+Kv
 Ej
 Xp
 YH

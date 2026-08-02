@@ -1,0 +1,4 @@
+author: "zzzmike"
+delete-after: True
+changes:
+  - bugfix: "fixed a message telling everyone nearby that they pried a valve"

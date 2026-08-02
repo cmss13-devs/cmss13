@@ -228,9 +228,6 @@
 	update_icon()
 	update_sound()
 
-/obj/item/device/taperecorder/proc/play_as_proc()
-	play() // What are you making me do
-
 /obj/item/device/taperecorder/verb/play()
 	set name = "Play Tape"
 	set category = "Object"
@@ -303,7 +300,7 @@
 			if("Record")
 				record()
 			if("Play")
-				INVOKE_ASYNC(src, PROC_REF(play_as_proc))
+				INVOKE_ASYNC(src, VERB_REF(play))
 			if("Print Transcript")
 				print_transcript()
 			if("Eject")

@@ -273,7 +273,9 @@
 #define TRAIT_ABILITY_CLEAVE_ROOT "t_ability_cleave_root"
 #define TRAIT_ABILITY_CLEAVE_BUFFED "t_ability_cleave_buffed"
 #define TRAIT_ABILITY_PRE_DASH "t_ability_pre_dash"
+/// Used by shielder to check stance.
 #define TRAIT_ABILITY_ENCLOSED_PLATES "t_ability_enclosed_plates"
+/// Used by shielder for reflective plates.
 #define TRAIT_ABILITY_REFLECTIVE_PLATES "t_ability_reflective_plates"
 
 

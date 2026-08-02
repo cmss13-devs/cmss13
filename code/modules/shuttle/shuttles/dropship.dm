@@ -21,6 +21,8 @@
 	// Is hijacked by opfor
 	var/is_hijacked = FALSE
 	var/datum/dropship_hijack/almayer/hijack
+	/// Any allied queen present on launch otherwise null
+	var/datum/weakref/boarded_allied_queen = null
 	// CAS gear
 	var/list/obj/structure/dropship_equipment/equipments = list()
 
@@ -89,6 +91,10 @@
 	. = ..()
 	if(SSticker?.mode && !(SSticker.mode.flags_round_type & MODE_DS_LANDED) && !in_flyby && is_ground_level(destination?.z)) //Launching on first drop.
 		SSticker.mode.ds_first_drop(src)
+	boarded_allied_queen = null
+	var/mob/boarded_queen = find_allied_queen()
+	if(boarded_queen)
+		boarded_allied_queen = WEAKREF(boarded_queen)
 
 /obj/docking_port/mobile/marine_dropship/beforeShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)
 	. = ..()
@@ -165,6 +171,7 @@
 
 /// Searches the shuttle_areas for a non-dead, non-USCM-allied, non-USCM-iff tagged queen and returns her (or null)
 /obj/docking_port/mobile/marine_dropship/proc/find_hijack_queen()
+	var/mob/existing_allied_queen = boarded_allied_queen?.resolve()
 	for(var/area/checked_area in shuttle_areas)
 		for(var/mob/living/carbon/xenomorph/queen/checked_queen in checked_area)
 			if(checked_queen.stat == DEAD)
@@ -173,7 +180,21 @@
 				continue
 			if(FACTION_MARINE in checked_queen.iff_tag?.faction_groups)
 				continue
+			if(checked_queen == existing_allied_queen)
+				continue // She was allied when boarding
 			return checked_queen
+	return null
+
+/// Searches the shuttle_areas for a non-dead, USCM-allied or USCM-iff tagged queen and returns her (or null)
+/obj/docking_port/mobile/marine_dropship/proc/find_allied_queen()
+	for(var/area/checked_area in shuttle_areas)
+		for(var/mob/living/carbon/xenomorph/queen/checked_queen in checked_area)
+			if(checked_queen.stat == DEAD)
+				continue
+			if(checked_queen.hive?.faction_is_ally(FACTION_MARINE, TRUE))
+				return checked_queen
+			if(FACTION_MARINE in checked_queen.iff_tag?.faction_groups)
+				return checked_queen
 	return null
 
 /// Triggers a sneak hijack if not already hijacked, less than 20s left on call, and a hostile queen is aboard

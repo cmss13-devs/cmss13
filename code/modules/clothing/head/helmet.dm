@@ -1374,6 +1374,31 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_marine_helmet = HELMET_GARB_OVERLAY
 	flags_item = MOB_LOCK_ON_EQUIP
 	specialty = "M45 ghillie"
+	var/eye_glowing = FALSE
+	var/eye_glow_icon = 'icons/mob/humans/onmob/clothing/head/overlays.dmi'
+	var/eye_glow_state = "visor_glow"
+
+/obj/item/clothing/head/helmet/marine/ghillie/proc/glowing_visor_activate(mob/user)
+	SIGNAL_HANDLER
+	eye_glowing = TRUE
+	update_icon()
+
+/obj/item/clothing/head/helmet/marine/ghillie/proc/glowing_visor_deactivate(mob/user)
+	SIGNAL_HANDLER
+	eye_glowing = FALSE
+	update_icon()
+
+/obj/item/clothing/head/helmet/marine/ghillie/equipped(mob/living/carbon/human/user, slot)
+	. = ..()
+	if(slot != WEAR_HEAD)
+		return
+	RegisterSignal(user, COMSIG_HUMAN_AIMED_SHOT_START, PROC_REF(glowing_visor_activate))
+	RegisterSignal(user, COMSIG_HUMAN_AIMED_SHOT_END, PROC_REF(glowing_visor_deactivate))
+
+/obj/item/clothing/head/helmet/marine/ghillie/unequipped(mob/living/carbon/human/user, slot)
+	. = ..()
+	UnregisterSignal(user, list(COMSIG_HUMAN_AIMED_SHOT_START, COMSIG_HUMAN_AIMED_SHOT_END))
+	eye_glowing = FALSE
 
 /obj/item/clothing/head/helmet/marine/ghillie/select_gamemode_skin()
 	. = ..()

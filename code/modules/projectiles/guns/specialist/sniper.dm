@@ -172,12 +172,16 @@
 		animate(laser_beam.visuals, alpha = initial(laser_beam.visuals.alpha), f_aiming_time, easing = SINE_EASING|EASE_OUT)
 
 	////timer is (f_spotting_time + 1 SECONDS) because sometimes it janks out before the doafter is done. blame sleeps or something
+	SEND_SIGNAL(human, COMSIG_HUMAN_AIMED_SHOT_START)
 
 	if(!do_after(human, f_aiming_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, NO_BUSY_ICON))
+		SEND_SIGNAL(human, COMSIG_HUMAN_AIMED_SHOT_END)
 		target.overlays -= lockon_icon
 		target.overlays -= lockon_direction_icon
 		qdel(laser_beam)
 		return
+
+	SEND_SIGNAL(human, COMSIG_HUMAN_AIMED_SHOT_END)
 
 	target.overlays -= lockon_icon
 	target.overlays -= lockon_direction_icon

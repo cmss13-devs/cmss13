@@ -32,11 +32,6 @@
 	while(outer_target.y > 1 && istype(get_turf(outer_target), /turf/open/space))
 		outer_target.y += y_travel
 
-	// Switch explosions to delayed mode, to avoid the explosion itself hanging and causing awkward damage,
-	// such as persisting inside the dropship when it lands
-	// This iS for TESTING to see how it fares ingame
-	SSdelayed_ex_act.defer_everything = TRUE
-
 	// draw a line of explosions to the landing site
 	while(outer_target.y < crash_site.y)
 		outer_target.y += (y_travel * 5)
@@ -54,13 +49,15 @@
 		var/turf/sploded = locate(crash_site.x + rand(-5, 15), crash_site.y + rand(-5, 25), crash_site.z)
 		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), sploded, 250, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("dropship crash"))
 
+	SSexplosion_waves.set_checkpoint("checkpoint_hijack_crash")
+
 	// Break the ultra-reinforced windows.
 	// Break the briefing windows.
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_HIJACK_IMPACTED)
 	RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_LANDED, PROC_REF(finish_landing))
 
-	sleep(10 SECONDS)
-	SSdelayed_ex_act.defer_everything = FALSE
+	SSexplosion_waves.synchronize("checkpoint_hijack_crash")
+	sleep(5 SECONDS)
 
 /datum/dropship_hijack/almayer/proc/finish_landing()
 	SShijack.announce_status_on_crash()

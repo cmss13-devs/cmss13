@@ -302,7 +302,7 @@
 		return
 	else if (ishuman(user) && HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		on = !on
-		visible_message("You pry at the control valve on [src]. The machine shudders." , "[user] pries at the control valve on [src]. The entire machine shudders.")
+		user.visible_message("[user] pries at the control valve on [src]. The entire machine shudders." , "You pry at the control valve on [src]. The machine shudders.")
 
 		Update()
 

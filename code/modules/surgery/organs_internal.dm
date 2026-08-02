@@ -17,11 +17,6 @@ and organ transplant code which may come in handy in future but haven't been edi
 	for(var/datum/internal_organ/int_organ as anything in patient_limb.internal_organs)
 		if(int_organ.damage > 0 && int_organ.robotic != ORGAN_ROBOT)
 			return TRUE
-
-	if(repeat_step && repeat_step_criteria(user, target, target_zone, tool, tool_type, surgery)) //<---- repair_organs repeats
-		surgery.step_in_progress = FALSE
-		INVOKE_ASYNC(surgery, TYPE_PROC_REF(/datum/surgery, attempt_next_step), user, tool, TRUE) //<---- it will call attempt_next_step again which will call success and repair another organ
-		return TRUE
 	return FALSE
 
 /datum/surgery/organ_repair/groin
@@ -77,6 +72,11 @@ and organ transplant code which may come in handy in future but haven't been edi
 			SPAN_NOTICE("You begin treating [target]'s damaged [damaged_organs[1]] with [toolname]."),
 			SPAN_NOTICE("[user] begins to treat your damaged [damaged_organs[1]] with [toolname]."),
 			SPAN_NOTICE("[user] begins to treat [target]'s damaged [damaged_organs[1]] with [toolname]."))
+
+	if(repeat_step && repeat_step_criteria(user, target, target_zone, tool, tool_type, surgery)) //<---- repair_organs repeats
+		surgery.step_in_progress = FALSE
+		INVOKE_ASYNC(surgery, TYPE_PROC_REF(/datum/surgery, attempt_next_step), user, tool, TRUE) //<---- it will call attempt_next_step again which will call success and repair another organ
+		return TRUE
 
 	target.custom_pain("You feel [toolname] moving the organs around in your [surgery.affected_limb.display_name]! The pressure is maddening!", 1)
 	playsound(target.loc, 'sound/handling/bandage.ogg', 25, TRUE)

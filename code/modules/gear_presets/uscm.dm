@@ -359,6 +359,17 @@
 
 	minimap_icon = "tl"
 
+/datum/equipment_preset/uscm/tl/rto
+	name = "USCM Radio Telephone Operator"
+	assignment = JOB_SQUAD_TEAM_LEADER_RTO
+	role_comm_title = "RTO"
+
+/datum/equipment_preset/uscm/tl/jtac
+	name = "USCM JTAC Operator"
+	assignment = JOB_SQUAD_TEAM_LEADER_JTAC
+	role_comm_title = "JTAC"
+
+
 /datum/equipment_preset/uscm/tl/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = get_backpack_item(new_human)
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)

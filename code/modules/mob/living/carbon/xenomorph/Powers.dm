@@ -1,4 +1,4 @@
-/mob/living/carbon/xenomorph/proc/build_resin(atom/target, thick = FALSE, message = TRUE, use_plasma = TRUE, add_build_mod = 1)
+/mob/living/carbon/xenomorph/proc/build_resin(atom/target, thick = FALSE, message = TRUE, use_plasma = TRUE, add_build_mod = 1, blocked = FALSE)
 	if(!selected_resin)
 		return SECRETE_RESIN_FAIL
 
@@ -32,6 +32,8 @@
 			return SECRETE_RESIN_FAIL
 
 	var/turf/current_turf = get_turf(target)
+	if(blocked && !can_remote_build_resin_at(current_turf))
+		return SECRETE_RESIN_FAIL
 
 	if(extra_build_dist != IGNORE_BUILD_DISTANCE && get_dist(src, target) > src.caste.max_build_dist + extra_build_dist) // Hivelords and eggsac carriers have max_build_dist of 1, drones and queens 0
 		to_chat(src, SPAN_XENOWARNING("We can't build from that far!"))
@@ -137,6 +139,8 @@
 
 	if(!succeeded)
 		return SECRETE_RESIN_INTERRUPT
+	if(blocked && !can_remote_build_resin_at(current_turf))
+		return SECRETE_RESIN_FAIL
 
 	if(maybe_convert_to_weedbound(current_turf, resin_construct, thick))
 		if(use_plasma)
@@ -177,6 +181,14 @@
 				msg_admin_niche("[src.ckey]/([src]) has built a closed resin structure, [new_resin.name], on top of a dead human, [enclosed_human.ckey]/([enclosed_human]), at [new_resin.x],[new_resin.y],[new_resin.z] [ADMIN_JMP(new_resin)]")
 
 	return SECRETE_RESIN_SUCCESS
+
+/mob/living/carbon/xenomorph/proc/can_remote_build_resin_at(turf/target)
+	for(var/mob/living/carbon/human/human in range(2, target))
+		if(human.stat == DEAD)
+			continue
+		to_chat(src, SPAN_XENOWARNING("A nearby tallhost is disrupting our connection to the resin!"))
+		return FALSE
+	return TRUE
 
 /mob/living/carbon/xenomorph/proc/maybe_convert_to_weedbound(turf/current_turf, datum/resin_construction/resin_construct, thick = FALSE)
 	if(current_turf.is_weedable != SEMI_WEEDABLE)

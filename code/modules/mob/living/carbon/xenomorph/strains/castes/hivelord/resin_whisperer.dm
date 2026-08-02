@@ -44,6 +44,7 @@
 	xeno_cooldown = 2.5 SECONDS
 	thick = FALSE
 	make_message = FALSE
+	blocked = TRUE
 
 	no_cooldown_msg = TRUE
 

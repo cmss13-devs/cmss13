@@ -98,6 +98,8 @@
 	var/xeno_cooldown_fail = 1
 	/// Placement time increase modifier
 	var/build_speed_mod = 1
+	/// Whether living humans near the target block construction
+	var/blocked = FALSE
 
 	plasma_cost = 1
 

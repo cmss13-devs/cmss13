@@ -271,7 +271,7 @@
 		to_chat(owner, SPAN_XENOWARNING("This area is too far away to affect!"))
 		return
 	apply_cooldown()
-	switch(xeno_owner.build_resin(target, thick, make_message, plasma_cost != 0, build_speed_mod))
+	switch(xeno_owner.build_resin(target, thick, make_message, plasma_cost != 0, build_speed_mod, blocked))
 		if(SECRETE_RESIN_INTERRUPT)
 			if(xeno_cooldown || xeno_cooldown_interrupt_penalty)
 				apply_cooldown_override(xeno_cooldown + xeno_cooldown_interrupt_penalty)
@@ -1132,4 +1132,3 @@
 
 	target.handle_blood_splatter(get_dir(owner.loc, target.loc))
 	return target
-

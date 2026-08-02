@@ -1377,6 +1377,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	var/eye_glowing = FALSE
 	var/eye_glow_icon = 'icons/mob/humans/onmob/clothing/head/overlays.dmi'
 	var/eye_glow_state = "visor_glow"
+	// There's prbably a better way to do this, but the repsrite only covers desert and jungle so it only needs to apply on those skin maps.
+	var/allow_eye_glow = FALSE
+
 
 /obj/item/clothing/head/helmet/marine/ghillie/proc/glowing_visor_activate(mob/user)
 	SIGNAL_HANDLER
@@ -1405,6 +1408,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	if(SSmapping.configs[GROUND_MAP].camouflage_type == "urban"	|| "classic")
 		name = "\improper M10-LS pattern sniper helmet"
 		desc = "A lightweight version of M10 helmet with thermal signature dampering used by USCM snipers on urban recon missions."
+
+	if(SSmapping.configs[GROUND_MAP].camouflage_type == "jungle"	|| "desert")
+		allow_eye_glow = TRUE
 
 /obj/item/clothing/head/helmet/marine/leader/CO
 	name = "\improper M11C pattern commanding officer helmet"

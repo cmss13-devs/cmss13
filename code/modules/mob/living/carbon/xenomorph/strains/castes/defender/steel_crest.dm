@@ -45,18 +45,18 @@
 	UnregisterSignal(owner, COMSIG_MOB_DEATH)
 
 /datum/action/xeno_action/onclick/soak/use_ability(atom/target_atom)
-	var/mob/living/carbon/xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/steelcrest = owner
 
-	XENO_ACTION_CHECK_USE_PLASMA(xeno)
+	XENO_ACTION_CHECK_USE_PLASMA(steelcrest)
 
-	RegisterSignal(xeno, COMSIG_MOB_TAKE_DAMAGE, PROC_REF(damage_accumulate))
+	RegisterSignal(steelcrest, COMSIG_MOB_TAKE_DAMAGE, PROC_REF(damage_accumulate))
 	addtimer(CALLBACK(src, PROC_REF(stop_accumulating)), 6 SECONDS)
 
-	xeno.balloon_alert(xeno, "begins to tank incoming damage!")
+	steelcrest.balloon_alert(steelcrest, "begins to tank incoming damage!")
 
-	to_chat(xeno, SPAN_XENONOTICE("We begin to tank incoming damage!"))
+	to_chat(steelcrest, SPAN_XENONOTICE("We begin to tank incoming damage!"))
 
-	xeno.add_filter("steelcrest_enraging", 1, list("type" = "outline", "color" = "#421313", "size" = 1))
+	steelcrest.add_filter("steelcrest_enraging", 1, list("type" = "outline", "color" = "#421313", "size" = 1))
 
 	apply_cooldown()
 	return ..()
@@ -84,8 +84,8 @@
 	owner.visible_message(SPAN_XENOWARNING("[owner] gets enraged and their carapace start to rapidly mend!"), SPAN_XENOWARNING("We feel enraged after taking in oncoming damage! Our tail slam's cooldown is reset and our carapace start to rapidly mend!"))
 	owner.flick_heal_overlay(3 SECONDS, "#00B800")
 
-	var/mob/living/carbon/xenomorph/xeno = owner
-	xeno.gain_health(75) // pretty reasonable amount of health recovered
+	var/mob/living/carbon/xenomorph/enraged_mob = owner
+	enraged_mob.gain_health(75) // pretty reasonable amount of health recovered
 
 	// Check actions list for tail slam and reset it's cooldown if it's there
 	var/datum/action/xeno_action/activable/tail_stab/slam/slam_action = locate() in owner.actions

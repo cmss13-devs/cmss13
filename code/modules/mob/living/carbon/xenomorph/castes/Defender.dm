@@ -169,27 +169,27 @@
 
 // Defender Headbutt
 /datum/action/xeno_action/activable/headbutt/use_ability(atom/target_atom)
-	var/mob/living/carbon/xenomorph/xeno = owner
-	if(!istype(xeno))
+	var/mob/living/carbon/xenomorph/fendy = owner
+	if(!istype(fendy))
 		return
 
-	if(!isxeno_human(target_atom) || xeno.can_not_harm(target_atom))
+	if(!isxeno_human(target_atom) || fendy.can_not_harm(target_atom))
 		return
 
-	XENO_ACTION_CHECK_USE_PLASMA(xeno)
+	XENO_ACTION_CHECK_USE_PLASMA(fendy)
 
-	if(HAS_TRAIT(xeno, TRAIT_ABILITY_FORTIFY) && !usable_while_fortified)
-		to_chat(xeno, SPAN_XENOWARNING("We cannot use headbutt while fortified."))
+	if(HAS_TRAIT(fendy, TRAIT_ABILITY_FORTIFY) && !usable_while_fortified)
+		to_chat(fendy, SPAN_XENOWARNING("We cannot use headbutt while fortified."))
 		return
 
-	var/mob/living/carbon/target_carbon = target_atom
-	if(target_carbon.stat == DEAD)
+	var/mob/living/carbon/carbone = target_atom
+	if(carbone.stat == DEAD)
 		return
 
-	var/fortify = HAS_TRAIT(xeno, TRAIT_ABILITY_FORTIFY)
-	var/crest_defense = HAS_TRAIT(xeno, TRAIT_ABILITY_CREST)
+	var/fortify = HAS_TRAIT(fendy, TRAIT_ABILITY_FORTIFY)
+	var/crest_defense = HAS_TRAIT(fendy, TRAIT_ABILITY_CREST)
 
-	var/distance = get_dist(xeno, target_carbon)
+	var/distance = get_dist(fendy, carbone)
 
 	var/max_distance = 3 - (crest_defense ? 2 : 0)
 
@@ -198,29 +198,29 @@
 
 	if(!crest_defense)
 		apply_cooldown()
-		xeno.throw_atom(get_step_towards(target_carbon, xeno), 3, SPEED_SLOW, xeno, tracking=TRUE)
-	if(!xeno.Adjacent(target_carbon))
+		fendy.throw_atom(get_step_towards(carbone, fendy), 3, SPEED_SLOW, fendy, tracking=TRUE)
+	if(!fendy.Adjacent(carbone))
 		on_cooldown_end()
 		return
 
-	target_carbon.last_damage_data = create_cause_data(xeno.caste_type, xeno)
-	xeno.visible_message(SPAN_XENOWARNING("[xeno] rams [target_carbon] with its armored crest!"),
-	SPAN_XENOWARNING("We ram [target_carbon] with our armored crest!"))
+	carbone.last_damage_data = create_cause_data(fendy.caste_type, fendy)
+	fendy.visible_message(SPAN_XENOWARNING("[fendy] rams [carbone] with its armored crest!"),
+	SPAN_XENOWARNING("We ram [carbone] with our armored crest!"))
 
-	if(target_carbon.stat != DEAD && (!(target_carbon.status_flags & XENO_HOST) || !HAS_TRAIT(target_carbon, TRAIT_NESTED)))
+	if(carbone.stat != DEAD && (!(carbone.status_flags & XENO_HOST) || !HAS_TRAIT(carbone, TRAIT_NESTED)))
 		// -10 damage if their crest is down.
 		var/damage = base_damage - (crest_defense ? 10 : 0)
-		target_carbon.apply_armoured_damage(get_xeno_damage_slash(target_carbon, damage), ARMOR_MELEE, BRUTE, "chest", 5)
+		carbone.apply_armoured_damage(get_xeno_damage_slash(carbone, damage), ARMOR_MELEE, BRUTE, "chest", 5)
 
-	var/facing = get_dir(xeno, target_carbon)
+	var/facing = get_dir(fendy, carbone)
 	var/headbutt_distance = 1 + (crest_defense ? 2 : 0) + (fortify ? 2 : 0)
 
 	// Hmm today I will kill a marine while looking away from them
-	xeno.face_atom(target_carbon)
-	xeno.animation_attack_on(target_carbon)
-	xeno.flick_attack_overlay(target_carbon, "punch")
-	xeno.throw_carbon(target_carbon, facing, headbutt_distance, SPEED_SLOW, shake_camera = FALSE, immobilize = FALSE)
-	playsound(target_carbon,'sound/weapons/alien_claw_block.ogg', 50, 1)
+	fendy.face_atom(carbone)
+	fendy.animation_attack_on(carbone)
+	fendy.flick_attack_overlay(carbone, "punch")
+	fendy.throw_carbon(carbone, facing, headbutt_distance, SPEED_SLOW, shake_camera = FALSE, immobilize = FALSE)
+	playsound(carbone,'sound/weapons/alien_claw_block.ogg', 50, 1)
 	apply_cooldown()
 	return ..()
 

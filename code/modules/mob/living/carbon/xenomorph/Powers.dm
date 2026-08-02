@@ -184,7 +184,7 @@
 
 /mob/living/carbon/xenomorph/proc/can_remote_build_resin_at(turf/target)
 	for(var/mob/living/carbon/human/human in range(2, target))
-		if(human.stat == DEAD)
+		if(human.stat == DEAD || HAS_TRAIT(human, TRAIT_NESTED) || HAS_TRAIT(human, TRAIT_HAULED))
 			continue
 		to_chat(src, SPAN_XENOWARNING("A nearby tallhost is disrupting our connection to the resin!"))
 		return FALSE

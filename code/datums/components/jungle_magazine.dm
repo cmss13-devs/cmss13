@@ -1,66 +1,61 @@
 //TODO: WIP
 
 /*
-*Run down of how the component should work:
-- Player use a tape on a magazine -> performs necessary checks and attach component
-- Click with another magazine to complete the construct
-- The icon now shows the original mag and the taped on mag
-- Listen for special action for switching active slot
-- For interaction involving magazines the construct would reference the magazine that is in the active slot
-- When examined the construct would add information regarding jungle mags to it; the name of the item should show that it is a jungle mag
-- Listen for use in hand to signal the dismantle of the construct
-
-
-Ways a normal magazine is interacted with:
-- Examined
-- Attacked with hand
-- Attacked by other items
-
 Extra signals that should be accounted for:
-- When the mag is put into any storage
+- When the mag is put into any storage (For balance purpose, to stop jungle style from going into belts and armor like normal)
 
 Items for initiating the construct should handle all the necessary stuffs themselves
 AKA the code here shouldn't worrying about setting up the construct I guess
+
+When adding magazine whatever signal is also registered for that magazine
+And when mag is switched the magazine item in hand literally switches
+
+Alternatively TakeComponent() looks promising //TODO: test this out at some point, preferably after a working version is achieved
+
+The two flags:
+- JUNGLE_STYLE_ABLE [conflict.dm]
+- JUNGLE_MAG_BINDER [equipment.dm]
+
+okay okay here it goes:
+- Dont give a crap about prime magazine or not.
+- Use in hand to eject magazine
+- If there is more than one (aka an attaching magazine exists) eject that
+- If there is only the parent eject both parent and binding object, remove the component
+Down side is that if you used up prime mag you have to detach everything, annoying.
+Good thing is that the whole process would be simple and intuative, you just slap the binding object on the new mag and make it pretty quickly!
 */
 
 /datum/component/jungle_magazine
-	var/contained_mags = list(0, 0) //A list referencing the actual magazine objects
+	var/obj/item/binding_item //The item that initiated the jungle mag construct
+	var/contained_mags = list(0, 0) //A list referencing the actual magazine objects, parent shouldd always be in [1]
 	var/active_slot = FALSE //It's two slots, 0 and 1
-	var/is_completed = FALSE //If the jungle mag construct is completed
+	// var/is_completed = FALSE //If the jungle mag construct is completed
 
-/datum/component/jungle_magazine/Initialize()
-	if(istype(parent, /obj/item/ammo_magazine))
+/datum/component/jungle_magazine/Initialize(mob/user, obj/item/trigger_item)
+	if(!istype(parent, /obj/item/ammo_magazine))
 		return COMPONENT_INCOMPATIBLE
+	binding_item = trigger_item
 	contained_mags[1] = parent
+	if(user)
+		user.drop_inv_item_to_loc(binding_item, parent)
+	else
+		binding_item.forceMove(parent)
 
 
 /datum/component/jungle_magazine/RegisterWithParent()
-	RegisterSignal(parent, COMSIG_ITEM_ATTACK, PROC_REF(on_attackby))
-	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
-	RegisterSignal(parent, COMSIG_ITEM_ATTACK_SELF, PROC_REF(on_attack_self))
-	RegisterSignal(parent, COMSIG_ITEM_UNIQUE_ACTION, PROC_REF(on_unique_action))
+	signal_reg(parent)
 
 /datum/component/jungle_magazine/UnregisterFromParent()
-	UnregisterFromParent(parent, COMSIG_ITEM_ATTACK)
-	UnregisterFromParent(parent, COMSIG_PARENT_EXAMINE)
-	UnregisterFromParent(parent, COMSIG_ITEM_ATTACK_SELF)
-	UnregisterFromParent(parent, COMSIG_ITEM_UNIQUE_ACTION)
+	signal_unreg(parent)
 
 //* Trigger procs
-/datum/component/jungle_magazine/proc/on_attackby(datum/source, obj/item/attacking_item, mob/user)
+/datum/component/jungle_magazine/proc/on_attackby(datum/source, obj/item/attacking_item, mob/user) //! This crap is never triggered
 	SIGNAL_HANDLER
 
 	//Check if the incoming item is a magazine -> attempt to add the magazine
-	if(istype(attacking_item, /obj/item/ammo_magazine) && !is_completed)
+	if(istype(attacking_item, /obj/item/ammo_magazine))
 		add_magazine(user, attacking_item)
 		return COMPONENT_CANCEL_ITEM_ATTACK //? I think this is how it works?d
-
-	//Check if the incoming item is something idk //TODO: Add other checks if needed, like idk screwdriver and welding tools
-
-	//Everything else is pass to magazine's attackby proc //TODO:
-	var/obj/item/ammo_magazine/target_magazine = active_magazine()
-	target_magazine.attackby(attacking_item, user)
-	return COMPONENT_CANCEL_ITEM_ATTACK
 
 /datum/component/jungle_magazine/proc/on_examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
@@ -70,18 +65,38 @@ AKA the code here shouldn't worrying about setting up the construct I guess
 /datum/component/jungle_magazine/proc/on_unique_action(datum/source, mob/user) //TODO: Actally add the arguments in SEND_SIGNAL
 	SIGNAL_HANDLER
 
-	switch_active_slot(user)
+	switch_active_magazine(user)
 
 /datum/component/jungle_magazine/proc/on_attack_self(datum/source, mob/user) //TODO: Actally add the arguments in SEND_SIGNAL
 	SIGNAL_HANDLER
 
+	// switch_active_magazine(user)
+	remove_magazine(user)
+
 //* Custom procs
 /datum/component/jungle_magazine/proc/update_sprite() //TODO: This one might need a bit more work, perhaps I'd need to merge the new icons beforehand
 
-/datum/component/jungle_magazine/proc/switch_active_slot(mob/user)
-	active_slot= !active_slot
-	if(user)
-		to_chat(user, SPAN_BLUE("You switched the magazine slot to slot [active_slot+1]"))
+/datum/component/jungle_magazine/proc/switch_active_magazine(mob/user)
+	//Swaps magazine locations
+	var/obj/item/ammo_magazine/old_mag = active_magazine()
+	active_slot = !active_slot
+	var/obj/item/ammo_magazine/new_mag = active_magazine()
+	if(new_mag)
+		if(user) //TODO: Get help to think up a better way to handel switching mag entities
+			user.drop_inv_item_on_ground(old_mag)
+			user.put_in_hands(new_mag)
+			old_mag.forceMove(new_mag)
+			to_chat(user, SPAN_BLUE("You switched the magazine slot to slot [active_slot+1]"))
+		else
+			var/old_loc = old_mag.loc
+			old_mag.forceMove(get_turf(new_mag))
+			new_mag.forceMove(old_loc)
+			old_mag.forceMove(new_mag)
+		//TODO: Update icon here
+	else
+		active_slot = !active_slot
+		if(user)
+			to_chat(user, SPAN_WARNING("There is no magazine to switch to!"))
 
 /datum/component/jungle_magazine/proc/active_magazine()
 	return contained_mags[active_slot+1]
@@ -97,16 +112,17 @@ AKA the code here shouldn't worrying about setting up the construct I guess
 		// 	if(!is_compatible)
 		// 		to_chat(user, SPAN_WARNING("This magazine is not compatible!"))
 		// 		return FALSE
-		if (src.active_magazine() == 0)
+		if(contained_mags[2] == 0)
 			if (user)
-				user.drop_inv_item_to_loc(M, src)
-			else
-				M.forceMove(get_turf(src))
-			contained_mags[active_slot+1] = M
+				user.drop_inv_item_to_loc(M, parent)
+			else //? Honestly don't know in what case would one add a magazine without an user; pending for remove if uneeded
+				M.forceMove(parent)
+			contained_mags[2] = M
+			signal_reg(M)
 			// update_icon() //TODO: yeah update the godamn icon
 			return TRUE
 		else
-			to_chat(user, SPAN_WARNING("The active slot already has a magazine in it!"))
+			to_chat(user, SPAN_WARNING("A magazine is already attached to the jungle magazine!"))
 			return FALSE
 	else
 		to_chat(user, SPAN_WARNING("[src] only accepts magazines!"))
@@ -116,31 +132,30 @@ AKA the code here shouldn't worrying about setting up the construct I guess
 	// 	return FALSE
 
 /datum/component/jungle_magazine/proc/remove_magazine(mob/user)
-	// if(!is_integrated) //TODO: Implement a flag for is_integrated
-	var/obj/item/ammo_magazine/target_magazine = active_magazine()
-	if (!target_magazine)
-		to_chat(user, SPAN_WARNING("The active slot doesn't have any magazines in it!"))
-		return FALSE
-	if (user)
-		user.put_in_hands(target_magazine)
-	else
-		target_magazine.forceMove(get_turf(src))
-	contained_mags[active_slot+1] = 0
-	// update_icon() //TODO: yeah update the godamn icon
+	//* Two Cases: 1) Remove parent magazine - Ejects everything and removes component
+	//*            2) Remove attached magazine - Ejects attached magazine, allowing for fresh mags
+	//Doing this with if statement since there's only two magazines max
+	var/obj/item/ammo_magazine/target_magazine
+	if(contained_mags[2] != 0) //Case #2
+		target_magazine = contained_mags[2]
+		if (user)
+			user.put_in_hands(target_magazine)
+		else
+			target_magazine.forceMove(get_turf(parent))
+		contained_mags[2] = 0
+		signal_unreg(target_magazine)
+	else //Case #1
+		target_magazine = parent
+		if(user)
+			user.put_in_hands(binding_item)
+			// user.put_in_hands(target_magazine) //Yea idk man the magazine is PROBABLY being HELD IN HAND
+		else
+			var/target_turf = get_turf(parent)
+			binding_item.forceMove(target_turf)
+			target_magazine.forceMove(target_turf)
+		src.Destroy() //Removes the component completely
+
 	return TRUE
-	// else
-	// 	to_chat(user, SPAN_WARNING("[src] can not have its magazine removed!"))
-	// 	return FALSE
-
-/datum/component/jungle_magazine/proc/init_construct()
-
-/datum/component/jungle_magazine/proc/complete_construct() //? Send component to functioning phase
-
-/datum/component/jungle_magazine/proc/break_down_construct() //? Send component back to construction phase
-
-/datum/component/jungle_magazine/proc/remove_construct() //TODO: Pay special attention to this, make sure everything works as intended
-	//TODO: Reset the sprite
-	RemoveComponent()
 
 /datum/component/jungle_magazine/proc/get_examine_text()
 	. += "Use special action or alt-click to switch active slot, use in hand or click with an empty hand to remove magazine."
@@ -152,6 +167,15 @@ AKA the code here shouldn't worrying about setting up the construct I guess
 			. += "Slot [i] is occupied: [target_mag] has [target_mag.current_rounds] out of [target_mag.max_rounds]."
 	. += "The active slot is slot [active_slot+1]."
 
-// /datum/component/jungle_magazine/proc/insert_magazine(mob/user, obj/item/ammo_magazine/M)
+/datum/component/jungle_magazine/proc/signal_reg(obj/item/ammo_magazine/target_magazine) //? Only expecting magazines here
+	RegisterSignal(target_magazine, COMSIG_ITEM_ATTACKED, PROC_REF(on_attackby))
+	RegisterSignal(target_magazine, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
+	RegisterSignal(target_magazine, COMSIG_ITEM_ATTACK_SELF, PROC_REF(on_attack_self))
+	RegisterSignal(target_magazine, COMSIG_ITEM_UNIQUE_ACTION, PROC_REF(on_unique_action))
 
-// /datum/component/jungle_magazine/proc/remove_magazine()
+/datum/component/jungle_magazine/proc/signal_unreg(obj/item/ammo_magazine/target_magazine)
+	UnregisterSignal(target_magazine, COMSIG_ITEM_ATTACKED)
+	UnregisterSignal(target_magazine, COMSIG_PARENT_EXAMINE)
+	UnregisterSignal(target_magazine, COMSIG_ITEM_ATTACK_SELF)
+	UnregisterSignal(target_magazine, COMSIG_ITEM_UNIQUE_ACTION)
+

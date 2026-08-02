@@ -114,6 +114,8 @@
 #define AMMUNITION_CANNOT_REMOVE_BULLETS (1<<4)
 /// If this magazine can transfer to other magazines of the same type by slapping one with the other
 #define AMMUNITION_SLAP_TRANSFER (1<<5)
+/// If this magazine can be jungle styled
+#define JUNGLE_STYLE_ABLE (1<<6)
 //Slowdown from various armors.
 
 /// How much shoes slow you down by default. Negative values speed you up

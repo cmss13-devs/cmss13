@@ -33,6 +33,3 @@
 
 /// Called when IFF is toggled on or off
 #define COMSIG_GUN_ALT_IFF_TOGGLED "gun_iff_toggled"
-
-//TODO:
-#define COMSIG_GUN_PREPARE_RELOAD "gun_prepare_reload"

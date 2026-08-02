@@ -509,3 +509,9 @@
 	icon_state = "carpenters_hammer" //yay, it now has a sprite.
 	item_state = "carpenters_hammer"
 	desc = "Can be used to thwack nails into wooden objects to repair them."
+
+/obj/item/tool/tape
+	name = "tape"
+	icon_state = "wrap_paper"
+	desc = "A blue tape, you have an urge to wrap it around two AK magazines..."
+	flags_item = JUNGLE_MAG_BINDER

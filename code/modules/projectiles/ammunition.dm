@@ -32,7 +32,7 @@ They're all essentially identical when it comes to getting the job done.
 	var/max_inherent_rounds = 0 //How many extra rounds the magazine has thats not in use? Used for Sentry Post, specifically for inherent reloading
 	var/gun_type = null //Path of the gun that it fits. Mags will fit any of the parent guns as well, so make sure you want this.
 	var/reload_delay = 1 //Set a timer for reloading mags. Higher is slower.
-	var/flags_magazine = AMMUNITION_REFILLABLE //flags specifically for magazines.
+	var/flags_magazine = AMMUNITION_REFILLABLE | JUNGLE_STYLE_ABLE //flags specifically for magazines. //TODO: remove the jungle style default it's for testing only
 	var/base_mag_icon //the default mag icon state.
 	var/base_mag_item //the default mag item (inhand) state.
 	var/transfer_handful_amount = 8 //amount of bullets to transfer, 5 for 12g, 9 for 45-70
@@ -124,6 +124,7 @@ They're all essentially identical when it comes to getting the job done.
 
 //We should only attack it with handfuls. Empty hand to take out, handful to put back in. Same as normal handful.
 /obj/item/ammo_magazine/attackby(obj/item/I, mob/living/user, bypass_hold_check = 0)
+	..() //? Adding a call to parent so it sends out signals, not sure why it's not here in the first place
 	if(istype(I, /obj/item/ammo_magazine))
 		var/obj/item/ammo_magazine/MG = I
 		if((MG.flags_magazine & AMMUNITION_HANDFUL) || (MG.flags_magazine & AMMUNITION_SLAP_TRANSFER && flags_magazine & AMMUNITION_SLAP_TRANSFER)) //got a handful of bullets
@@ -137,6 +138,8 @@ They're all essentially identical when it comes to getting the job done.
 						to_chat(user, SPAN_NOTICE("Those aren't the same rounds. Better not mix them up."))
 				else
 					to_chat(user, SPAN_NOTICE("Try holding [src] before you attempt to restock it."))
+	else if(I.flags_item & JUNGLE_MAG_BINDER && src.flags_magazine & JUNGLE_STYLE_ABLE)
+		AddComponent(/datum/component/jungle_magazine, user, I)
 
 //Is the ammo magazine transferrable, silent version
 /obj/item/ammo_magazine/proc/is_transferable(obj/item/ammo_magazine/source)

@@ -24,10 +24,7 @@
 /// From base of /obj/item/proc/attack_self(): (mob/user)
 #define COMSIG_ITEM_ATTACK_SELF "item_attack_self"
 
-//TODO: WIP
-#define COMSIG_ITEM_ATTACK_HAND "item_attack_hand"
-
-//TODO: Added; need testing
+/// From /obj/item/proc/unique_action(): (mob/user)
 #define COMSIG_ITEM_UNIQUE_ACTION "item_unique_action"
 	#define COMPONENT_CANCEL_UNIQUE_ACTION (1<<0)
 

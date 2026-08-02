@@ -127,6 +127,37 @@
 /turf/LateInitialize(mapload)
 	update_vis_contents()
 
+/turf/proc/fix_water_clipping_layers() // used in SUBSYSTEM_DEF(water_layer_fix), for water display_effects so big mobs dont clip into the ground
+	if(istype(src, /turf/open/gm/river) || istype(src, /turf/open/gm/coast))
+		return
+	//so mobs in the water dont clip under these turfs ...
+	if(layer == UNDER_TURF_LAYER - 0.03)
+		return
+
+	for(var/direction_check in GLOB.cardinals)
+		if(direction_check == NORTH)
+			continue
+
+		var/turf/neighbor = get_step(src, direction_check)
+		if(istype(neighbor, /turf/open/gm/river) || istype(neighbor, /turf/open/gm/coast))
+			var/turf/s1 = get_step(src, turn(direction_check, 90))
+			var/turf/s2 = get_step(src, turn(direction_check, -90))
+
+			layer = UNDER_TURF_LAYER - 0.03
+			if(s1)
+				s1.layer = UNDER_TURF_LAYER - 0.03
+			if(s2)
+				s2.layer = UNDER_TURF_LAYER - 0.03
+
+/turf/proc/fix_water_clipping_layers_final() // if any of the rurfs we changed above have water above them, we reset them
+	if(istype(src, /turf/open/gm/river) || istype(src, /turf/open/gm/coast))
+		return
+	var/turf/direction_check = get_step(src, NORTH)
+	if(istype(direction_check, /turf/open/gm/river) || istype(direction_check, /turf/open/gm/coast))
+		var/turf/direction_check2 = get_step(src,SOUTH)
+		if(!istype(direction_check2, /turf/open/gm/river) && !istype(direction_check2, /turf/open/gm/coast))
+			layer = TURF_LAYER
+
 /obj/vis_contents_holder
 	plane = OPEN_SPACE_PLANE_START
 	vis_flags = VIS_HIDE

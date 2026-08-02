@@ -315,7 +315,6 @@
 	name = "water"
 	icon = 'icons/turf/floors/desert_water.dmi'
 	icon_state = "shallow"
-	icon_overlay = "_shallow"
 	var/toxic = 0
 	default_name = "water"
 	is_weedable = NOT_WEEDABLE
@@ -338,7 +337,6 @@
 //shallow water
 /turf/open/gm/river/desert/shallow
 	icon_state = "shallow"
-	icon_overlay = "_shallow"
 
 /turf/open/gm/river/desert/shallow/covered
 	covered = TRUE
@@ -353,7 +351,6 @@
 //shallow water transition to deep
 /turf/open/gm/river/desert/shallow_edge
 	icon_state = "shallow_edge"
-	icon_overlay = "shallow_edge_overlay"
 
 /turf/open/gm/river/desert/shallow_edge/southwest
 	dir = SOUTHWEST
@@ -395,7 +392,6 @@
 //shallow water transition to deep corner
 /turf/open/gm/river/desert/shallow_corner
 	icon_state = "shallow_c"
-	icon_overlay = "shallow_c_overlay"
 
 /turf/open/gm/river/desert/shallow_corner/covered
 	covered = TRUE
@@ -414,7 +410,6 @@
 //deep water
 /turf/open/gm/river/desert/deep
 	icon_state = "deep"
-	icon_overlay = "_deep"
 
 /turf/open/gm/river/desert/deep/no_slowdown
 	base_river_slowdown = 0
@@ -626,7 +621,6 @@
 //shallow water
 /turf/open/gm/river/desert/tyrargo
 	icon_state = "seashallow"
-	icon_overlay = "_seashallow"
 
 /turf/open/gm/river/desert/tyrargo/no_slowdown
 	base_river_slowdown = 1
@@ -636,8 +630,8 @@
 	icon = 'icons/turf/floors/desert_water_covered.dmi'
 
 /turf/open/gm/river/desert/tyrargo/deep
-	icon_state = "seadeep"
-	icon_overlay = "_seadeep"
+	icon_state = "bluesea"
+	depth = -12 //used for display_effect
 
 /turf/open/gm/river/desert/tyrargo/deep/no_slowdown
 	base_river_slowdown = 1

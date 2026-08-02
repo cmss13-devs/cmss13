@@ -484,6 +484,7 @@
 	icon = 'icons/turf/ground_map.dmi'
 	icon_state = "desert"
 	is_groundmap_turf = TRUE
+	var/depth = 0; // used by display_effects
 
 /turf/open/gm/attackby(obj/item/I, mob/user)
 
@@ -716,7 +717,6 @@
 	icon_state = "seashallow"
 	can_bloody = FALSE
 	fishing_allowed = TRUE
-	var/icon_overlay = "riverwater"
 	var/covered = 0
 	var/covered_name = "grate"
 	var/cover_icon = 'icons/turf/floors/filtration.dmi'
@@ -728,10 +728,14 @@
 	supports_surgery = FALSE
 	minimap_color = MINIMAP_WATER
 	is_weedable = NOT_WEEDABLE
+	depth = -8 //used for the offset of mobs that enter it (see display_effect.dm)
+	layer = UNDER_TURF_LAYER -0.03
 
 /turf/open/gm/river/Initialize(mapload, ...)
 	. = ..()
 	update_icon()
+	RegisterSignal(src, COMSIG_TURF_ENTERED, PROC_REF(on_enter))
+	RegisterSignal(src, COMSIG_ATOM_HITBY, PROC_REF(on_hit))
 
 /turf/open/gm/river/update_icon()
 	..()
@@ -744,9 +748,18 @@
 	if(covered)
 		name = covered_name
 		overlays += image("icon"=src.cover_icon,"icon_state"=cover_icon_state,"layer"=CATWALK_LAYER,"dir" = dir)
-	else
-		name = default_name
-		overlays += image("icon"=src.icon,"icon_state"=icon_overlay,"layer"=ABOVE_MOB_LAYER,"dir" = dir)
+
+/turf/open/gm/river/proc/on_enter(turf/source, atom/movable/mover)
+	SIGNAL_HANDLER
+	if(!isliving(mover) || mover.throwing)
+		return
+	mover.AddComponent(/datum/component/display_effect, src.type, depth)
+
+/turf/open/gm/river/proc/on_hit(turf/T, atom/movable/AM)
+	SIGNAL_HANDLER
+	if(!isliving(AM) || AM.throwing)
+		return
+	AM.AddComponent(/datum/component/display_effect, src.type, depth)
 
 /turf/open/gm/river/Entered(atom/movable/AM)
 	..()
@@ -847,11 +860,15 @@
 /turf/open/gm/river/ocean
 	color = "#dae3e2"
 	base_river_slowdown = 4 // VERY. SLOW.
+	icon_state = "seaintermediate"
+	depth = -12
 
 /turf/open/gm/river/ocean/deep_ocean
 	name = "deep ocean"
 	default_name = "deep ocean"
 	allow_construction = FALSE
+	icon_state = "seadeep"
+	depth = -16
 
 /turf/open/gm/river/ocean/Entered(atom/movable/AM)
 	. = ..()
@@ -884,11 +901,32 @@
 	baseturfs = /turf/open/gm/coast
 	supports_surgery = FALSE
 	is_weedable = NOT_WEEDABLE
+	depth = -2 //used for the offset of mobs that enter it (see display_effect.dm)
+	layer = UNDER_TURF_LAYER -0.03
+
+/turf/open/gm/coast/Initialize(mapload, ...)
+	. = ..()
+	RegisterSignal(src, COMSIG_TURF_ENTERED, PROC_REF(on_enter))
+	RegisterSignal(src, COMSIG_ATOM_HITBY, PROC_REF(on_hit))
+
+/turf/open/gm/coast/proc/on_enter(turf/source, atom/movable/mover)
+	SIGNAL_HANDLER
+	if(!isliving(mover) || mover.throwing)
+		return
+	mover.AddComponent(/datum/component/display_effect, src.type, depth)
+
+/turf/open/gm/coast/proc/on_hit(turf/T, atom/movable/AM)
+	SIGNAL_HANDLER
+	if(!isliving(AM) || AM.throwing)
+		return
+	AM.AddComponent(/datum/component/display_effect, src.type, depth)
 
 /turf/open/gm/coast/north
+	depth = -4
 
 /turf/open/gm/coast/south
 	dir = 1
+	depth = 0
 
 /turf/open/gm/coast/west
 	dir = 4
@@ -903,18 +941,23 @@
 	icon_state = "beachcorner"
 
 /turf/open/gm/coast/beachcorner/north_west
+	depth = -2
 
 /turf/open/gm/coast/beachcorner/north_east
 	dir = 1
+	depth = -2
 
 /turf/open/gm/coast/beachcorner/south_east
 	dir = 4
+	depth = 0
 
 /turf/open/gm/coast/beachcorner/south_west
 	dir = 8
+	depth = 0
 
 /turf/open/gm/coast/beachcorner2
 	icon_state = "beachcorner2"
+	depth = -4
 
 /turf/open/gm/coast/beachcorner2/east
 	dir = EAST
@@ -923,6 +966,7 @@
 
 /turf/open/gm/coast/beachcorner2/north_east
 	dir = 1
+	depth = -4
 
 /turf/open/gm/coast/beachcorner2/south_west
 	dir = 4
@@ -932,13 +976,14 @@
 
 /turf/open/gm/riverdeep
 	name = "river"
-	icon_state = "seadeep"
+	icon_state = "bluesea"
 	can_bloody = FALSE
 	baseturfs = /turf/open/gm/riverdeep
 	supports_surgery = FALSE
 	minimap_color = MINIMAP_WATER
 	is_groundmap_turf = FALSE // Not real ground
 	fishing_allowed = TRUE
+	depth = -12 //used for the offset of mobs that enter it (see display_effect.dm)
 
 
 /turf/open/gm/riverdeep/Initialize(mapload, ...)
@@ -968,9 +1013,10 @@
 	name = "ocean"
 	desc = "It's a long way down to the ocean from here."
 	icon = 'icons/turf/ground_map.dmi'
-	icon_state = "seadeep"
+	icon_state = "bluesea"
 	can_bloody = FALSE
 	supports_surgery = FALSE
+	var/depth = -12 //used for display_effect
 
 //Ice Colony grounds
 

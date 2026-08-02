@@ -10,7 +10,7 @@
 	flags_atom = NO_ZFALL
 
 	icon = 'icons/turf/floors/desert_water.dmi'
-	icon_state = "seadeep"
+	icon_state = "bluesea"
 
 /obj/effect/blocker/water
 	var/flooded_alpha = 180

@@ -1409,7 +1409,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		name = "\improper M10-LS pattern sniper helmet"
 		desc = "A lightweight version of M10 helmet with thermal signature dampering used by USCM snipers on urban recon missions."
 
-	if(SSmapping.configs[GROUND_MAP].camouflage_type == "jungle"	|| "desert")
+	if(SSmapping.configs[GROUND_MAP].camouflage_type == "jungle" || "desert")
 		eye_glow_allowed = TRUE
 
 /obj/item/clothing/head/helmet/marine/leader/CO

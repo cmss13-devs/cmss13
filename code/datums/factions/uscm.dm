@@ -19,7 +19,7 @@
 				marine_rk = "engi"
 			if(JOB_SQUAD_SPECIALIST)
 				marine_rk = "spec"
-			if(JOB_SQUAD_TEAM_LEADER)
+			if(JOB_SQUAD_TEAM_LEADER || JOB_SQUAD_TEAM_LEADER_RTO || JOB_SQUAD_TEAM_LEADER_JTAC)
 				marine_rk = "tl"
 			if(JOB_SQUAD_MEDIC)
 				if(current_human.rank_fallback == "medk9")
@@ -280,7 +280,7 @@
 				marine_rk = "spec"
 			if(JOB_SQUAD_SMARTGUN)
 				marine_rk = "gun"
-			if(JOB_SQUAD_TEAM_LEADER)
+			if(JOB_SQUAD_TEAM_LEADER || JOB_SQUAD_TEAM_LEADER_RTO || JOB_SQUAD_TEAM_LEADER_JTAC)
 				marine_rk = "tl"
 			if(JOB_SQUAD_LEADER)
 				marine_rk = "leader"

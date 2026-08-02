@@ -316,7 +316,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				leader_count++
 				if(mob_state != "Dead")
 					leaders_alive++
-			if(JOB_SQUAD_TEAM_LEADER)
+			if(JOB_SQUAD_TEAM_LEADER || JOB_SQUAD_TEAM_LEADER_RTO || JOB_SQUAD_TEAM_LEADER_JTAC)
 				ftl_count++
 				if(mob_state != "Dead")
 					ftl_alive++

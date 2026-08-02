@@ -185,6 +185,10 @@
 					rank = "Spc"
 				if(JOB_SQUAD_TEAM_LEADER)
 					rank = "TL"
+				if(JOB_SQUAD_TEAM_LEADER_RTO)
+					rank = "RTO"
+				if(JOB_SQUAD_TEAM_LEADER_JTAC)
+					rank = "JTAC"
 				if(JOB_SQUAD_LEADER)
 					rank = "SL"
 				else
@@ -276,6 +280,10 @@
 								rank = "Spc"
 					if(JOB_SQUAD_TEAM_LEADER)
 						rank = "TL"
+					if(JOB_SQUAD_TEAM_LEADER_RTO)
+						rank = "RTO"
+					if(JOB_SQUAD_TEAM_LEADER_JTAC)
+						rank = "JTAC"
 					if(JOB_SQUAD_LEADER)
 						rank = "SL"
 					else
@@ -323,6 +331,10 @@
 						rank = "Spc"
 					if(JOB_SQUAD_TEAM_LEADER)
 						rank = "TL"
+					if(JOB_SQUAD_TEAM_LEADER_RTO)
+						rank = "RTO"
+					if(JOB_SQUAD_TEAM_LEADER_JTAC)
+						rank = "JTAC"
 					if(JOB_SQUAD_LEADER)
 						rank = "SL"
 					else

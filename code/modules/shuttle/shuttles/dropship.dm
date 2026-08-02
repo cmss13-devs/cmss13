@@ -176,8 +176,10 @@
 		for(var/mob/living/carbon/xenomorph/queen/checked_queen in checked_area)
 			if(checked_queen.stat == DEAD)
 				continue
+			if(checked_queen.hive?.need_round_end_check && !checked_queen.hive.can_delay_round_end())
+				continue // Not a hive that can hijack
 			if(checked_queen.hive?.faction_is_ally(FACTION_MARINE, TRUE))
-				continue
+				continue // Technically included in above for corrupted but really don't want an ally to hijack
 			if(FACTION_MARINE in checked_queen.iff_tag?.faction_groups)
 				continue
 			if(checked_queen == existing_allied_queen)

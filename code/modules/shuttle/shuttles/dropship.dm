@@ -163,11 +163,15 @@
 	else
 		sneak_hijack_check()
 
-/// Searches the shuttle_areas for a non-dead, non-iff tagged queen and returns her (or null)
+/// Searches the shuttle_areas for a non-dead, non-USCM-allied, non-USCM-iff tagged queen and returns her (or null)
 /obj/docking_port/mobile/marine_dropship/proc/find_hijack_queen()
 	for(var/area/checked_area in shuttle_areas)
 		for(var/mob/living/carbon/xenomorph/queen/checked_queen in checked_area)
-			if(checked_queen.stat == DEAD || (FACTION_MARINE in checked_queen.iff_tag?.faction_groups))
+			if(checked_queen.stat == DEAD)
+				continue
+			if(checked_queen.hive?.faction_is_ally(FACTION_MARINE, TRUE))
+				continue
+			if(FACTION_MARINE in checked_queen.iff_tag?.faction_groups)
 				continue
 			return checked_queen
 	return null

@@ -33,7 +33,7 @@
  */
 /obj/item/tool/surgery/hemostat
 	name = "hemostat"
-	desc = "A tool for surgery used to control bleeding by pinching blood vessels closed. It can also be used to remove foreign objects and manipulate and lift small organs and tissue."
+	desc = "A tool for surgery used to control bleeding by pinching blood vessels closed. It can also be used to remove foreign objects and to manipulate small organs and tissues."
 	icon_state = "hemostat"
 	hitsound = 'sound/weapons/pierce.ogg'
 	matter = list("metal" = 5000, "glass" = 2500)
@@ -53,7 +53,7 @@
  */
 /obj/item/tool/surgery/cautery
 	name = "cautery"
-	desc = "A tool for surgery that uses extreme heat to stop bleeding, seal blood vessels, and remove unwanted tissue. Closes incisions by burning things, in this case."
+	desc = "A tool for surgery that seals blood vessles and removes unwanted tissue by using extreme heat to burn them away. Closes incisions by burning things, in this case."
 	icon_state = "cautery"
 	matter = list("metal" = 5000, "glass" = 2500)
 	force = 10
@@ -76,7 +76,7 @@
  */
 /obj/item/tool/surgery/surgicaldrill
 	name = "surgical drill"
-	desc = "A surgical tool used to drill through bone to make a cavity for implantation purposes."
+	desc = "A surgical tool used to drill through bone to make a cavity within it. They are most often used for implantation purposes on this ship, however."
 	icon_state = "drill"
 	hitsound = 'sound/weapons/circsawhit.ogg'
 	matter = list("metal" = 15000, "glass" = 10000)
@@ -98,7 +98,7 @@
  */
 /obj/item/tool/surgery/scalpel
 	name = "scalpel"
-	desc = "A surgical tool used to create incisions, debride diseased flesh, and separate muscles and organs via a cutting motion. Can also remove foreign objects. Begins most surgeries."
+	desc = "A surgical tool used to create incisions, debride diseased flesh, and separate muscles and organs via a cutting motion, but it can also remove small, foreign objects stuck in the body. Begins most surgeries."
 	icon_state = "scalpel"
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
@@ -139,7 +139,7 @@
 /obj/item/tool/surgery/scalpel/laser/improved
 	name = "laser scalpel"
 	desc = "A scalpel augmented with a directed laser for controlling bleeding as the incision is made and for functioning as a cautery. This standard model uses a CO2 laser to vaporize tissue and seal blood vessels, but the incisions are not always bloodless."
-	desc_lore = "After figuring out how to make a laser that incises flesh, the prototype and its blade became nothing more than a distant memory and a reminder to not haphazardly slap two independently-functioning tools together and praying to Spess Jesus they will work in tandem with one another. This design, hailing from the early 2000s, uses a CO2 laser to create an incision by using an invisible infrared beam that vaporizes tissue while sealing blood vessels. While pinpoint bleeding occurs occasionally, the laser scalpel is a perfect, if not expensive alternative to replacing the standard scalpel and cautery."
+	desc_lore = "After figuring out how to make a laser that incises flesh, the prototype and its blade became nothing more than a distant memory and a reminder to not haphazardly slap two independently-functioning tools together and praying to Spess Jesus they will work in tandem with one another. This design, hailing from the early 2000s, uses a CO2 laser to create an incision by using an invisible infrared beam that vaporizes tissue while sealing blood vessels. While pinpoint bleeding occurs occasionally, the laser scalpel is a perfect, if not expensive, alternative to replacing the standard scalpel and cautery."
 	icon_state = "scalpel_laser_2"
 	damtype = "fire"
 	bloodlessprob = 80
@@ -148,7 +148,7 @@
 /obj/item/tool/surgery/scalpel/laser/advanced
 	name = "advanced laser scalpel"
 	desc = "A scalpel augmented with a directed laser for controlling bleeding as the incision is made and for functioning as a cautery. This one's laser has smart detection technology to target and burn every blood vessel in its vicinity and represents the pinnacle of precision energy cutlery!"
-	desc_lore = "Scientists perfected the standard model by using a much stronger type of laser that creates explosions on the microscopic scale to vaporize any tissue and blood vessels in its way as it makes an incision. With a 100% success rate in creating bloodless incisions, these scalpels have no issue taking the place of scalpels and cauteries, despite their exorbitant price tags."
+	desc_lore = "Scientists perfected the standard model by using a much stronger type of laser that creates explosions on the microscopic scale to vaporize any tissue and blood vessels in its way as it makes an incision. With a 100% success rate in creating bloodless incisions, these laser scalpels have no issue taking the place of standard scalpels and cauteries, despite their exorbitant price tags."
 	icon_state = "scalpel_laser_3"
 	damtype = "fire"
 	bloodlessprob = 100
@@ -185,7 +185,7 @@
 
 /obj/item/tool/surgery/circular_saw
 	name = "circular saw"
-	desc = "A surgical tool used to saw through thick bone in the skull and ribcage before prying them apart, amputating diseased limbs, and removing malfunctioning prosthetics."
+	desc = "A surgical tool used for cutting through thick bone in the skull and ribcage before prying them apart to access the damaged organs beneath them. It is also used for amputating diseased limbs and sawing through the thick clasps of malfunctioning prosthetics."
 	icon_state = "saw"
 	hitsound = 'sound/weapons/circsawhit.ogg'
 	flags_atom = FPRINT|CONDUCT
@@ -256,20 +256,20 @@
 	. = ..()
 	if(unlimited_gel) //Only show how much gel is left if it actually uses bone gel
 		return
-	. += "A volume reader on the side tells you there is still [remaining_gel]% of [src] remaining."
+	. += "A volume reader on the side tells you there is [remaining_gel]% of [src] remaining."
 	. += "[src] can be refilled from an osteomimetic lattice fabricator."
 
 	if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_DOCTOR)) //Know how much you will be using if you can use it
 		return
-	. += SPAN_NOTICE("You will need to use [fracture_fix_cost]% of the bone gel to repair a fracture.")
-	. += SPAN_NOTICE("You will need to use [mend_bones_fix_cost]% of the bone gel to mend bones.")
+	. += SPAN_NOTICE("You will need to use [fracture_fix_cost]% of the bone gel to repair each fracture.")
+	. += SPAN_NOTICE("You will need to use [mend_bones_fix_cost]% of the bone gel to mend each bone.")
 
 /obj/item/tool/surgery/bonegel/proc/refill_gel(obj/refilling_obj, mob/user)
 	if(unlimited_gel)
 		to_chat(user, SPAN_NOTICE("[refilling_obj] refuses to fill [src]."))
 		return
 	if(remaining_gel >= 100)
-		to_chat(user, SPAN_NOTICE("[src] cannot be filled with any more bone gel."))
+		to_chat(user, SPAN_NOTICE("[src] is full! It cannot be filled with any more bone gel."))
 		return
 
 	if(refilling)
@@ -317,8 +317,8 @@
 /obj/item/tool/surgery/FixOVein
 	name = "\improper FixOVein"
 	icon_state = "fixovein"
-	desc = "A surgical tool used to repair broken blood vessels using a bio-analogue membrane. The tool can also be used to reconnect other ligaments and tissue in a pinch."
-	desc_lore = "Hemophilics everywhere can thank a likewise hemophilic surgeon and their love for birds for the development of this tool. Inspired by the protective keratin sheath surrounding blood feathers as they grow and the crumbling of pin feather sheaths after the feather finishes growing, they worked with scientists to develop a tool that secretes a thin and flexible membrane of connective tissue to provide a framework and protective casing for the healing blood vessel until it naturally repairs itself, after which the body absorbs it for nutrients. Since the membrane operates on a cellular level, it is practically infinite. With patients having been operated on experiencing a 100% recovery rate, the FixOVein has earned it a spot on every surgeon's surgical tray."
+	desc = "A miraculous surgical tool used to repair broken blood vessels using a bio-analogue membrane. The tool can also reconnect torn ligaments and tissue in a pinch."
+	desc_lore = "Hemophilics everywhere can thank a likewise hemophilic surgeon and their love for birds for the development of this tool. Inspired by the keratin sheath surrounding blood feathers as they grow and the crumbling of pin feather sheaths after the feather finishes growing, they worked with scientists to develop a tool that secretes a thin and flexible membrane of connective tissue to provide a framework and protective casing for the healing blood vessel until it naturally repairs itself, after which the body absorbs the membrane for nutrients. Since the membrane operates on a cellular level, it is practically infinite and cannot overdose the patient, unlike bone gel. With patients having been operated on experiencing a 100% recovery rate, the FixOVein has earned a spot for itself on every surgeon's surgical tray."
 	force = 0
 	throwforce = 1
 	matter = list("plastic" = 5000)
@@ -396,7 +396,7 @@ t. optimisticdude
 
 /obj/item/tool/surgery/handheld_pump
 	name = "handheld surgical pump"
-	desc = "This sucks. Literally."
+	desc = "This sucks. Literally. It is used to suction out foreign bodies and excess fluids from tissues and body cavities."
 	icon_state = "pump"
 	force = 0
 	throwforce = 9
@@ -409,7 +409,7 @@ t. optimisticdude
 
 /obj/item/tool/surgery/drapes //Does nothing at present. Might be useful for increasing odds of success.
 	name = "surgical drapes"
-	desc = "Used to cover a limb before the beginning of a surgical procedure."
+	desc = "Used to cover a limb before the beginning of a surgical procedure to keep the area clean."
 	icon_state = "drapes"
 	gender = PLURAL
 	w_class = SIZE_SMALL
@@ -421,7 +421,7 @@ t. optimisticdude
 
 /obj/item/tool/surgery/stabilizer_gel
 	name = "stabilizer gel vial"
-	desc = "Used for stabilizing wounds for treatment."
+	desc = "A vial filled with a special gel that stabilizes wounds."
 	icon_state = "stabilizer_gel"
 	force = 0
 	throwforce = 1
@@ -431,7 +431,7 @@ t. optimisticdude
 
 /obj/item/tool/surgery/healing_gun
 	name = "healing gun"
-	desc = "Used for mending stabilized wounds."
+	desc = "Used for mending stabilized wounds by secreting a special healing gel that must be loaded into it with a gel capsule."
 	icon_state = "healing_gun"
 	force = 0
 	throwforce = 1

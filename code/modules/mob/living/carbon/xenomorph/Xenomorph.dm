@@ -881,9 +881,7 @@
 
 	. = ..()
 
-	for(var/mob/dead/observer/observer as anything in observers?.Copy())
-		if(!observer.client)
-			continue
+	for(var/mob/dead/observer/observer as anything in observers)
 		observer.do_observe()
 
 /mob/living/carbon/xenomorph/check_improved_pointing()

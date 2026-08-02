@@ -242,7 +242,8 @@
 			exploded += thing
 
 			// Mob explosions are expensive due to limbs and throws. We defer these entirely.
-			if(isliving(thing))
+			// During Hijack, we also defer everything so explosions can keep running even if their effects are awkwardly delayed.
+			if(SSdelayed_ex_act.defer_everything || isliving(thing))
 				SSdelayed_ex_act.queue(thing, intensities[i], dir, cause_data, 0, enviro)
 			else
 				INVOKE_ASYNC(thing, TYPE_PROC_REF(/atom, ex_act), intensities[i], dir, cause_data, 0, enviro)

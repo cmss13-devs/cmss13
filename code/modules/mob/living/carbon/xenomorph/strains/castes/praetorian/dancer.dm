@@ -529,13 +529,13 @@
 	var/xeno_smashed = FALSE
 
 	if(isxeno(target_carbon))
-		var/mob/living/carbon/xenomorph/dancer_user = target_carbon
-		if(dancer_user.mob_size >= MOB_SIZE_BIG)
+		var/mob/living/carbon/xenomorph/target_xeno = target_carbon
+		if(target_xeno.mob_size >= MOB_SIZE_BIG)
 			xeno_smashed = TRUE
-			shake_camera(dancer_user, 10, 1)
-			dancer_user.visible_message(SPAN_XENODANGER("[dancer_user] smashes [dancer_user] with it's tail!"), SPAN_XENODANGER("We smash [dancer_user] with your tail!"))
-			to_chat(dancer_user, SPAN_XENOHIGHDANGER("You feel dizzy as [dancer_user] smashes you with their tail!"))
-			dancer_user.animation_attack_on(dancer_user)
+			shake_camera(target_xeno, 10, 1)
+			dancer_user.visible_message(SPAN_XENODANGER("[dancer_user] smashes [target_xeno] with it's tail!"), SPAN_XENODANGER("We smash [target_xeno] with your tail!"))
+			to_chat(target_xeno, SPAN_XENOHIGHDANGER("You feel dizzy as [dancer_user] smashes you with their tail!"))
+			dancer_user.animation_attack_on(target_xeno)
 
 	if(!xeno_smashed)
 		if(stun_duration > 0)

@@ -106,12 +106,12 @@
 	width = 500
 	height = 500
 	count = 80
-	spawning = 5
-	lifespan = 15
+	spawning = 3
+	lifespan = 10
 	fade = 10
 	fadein = 3
 	scale = generator(GEN_NUM, 0.18, 0.15)
-	position = generator(GEN_SPHERE, 150, 150)
+	position = generator(GEN_SPHERE, 100, 100)
 	color = COLOR_BROWN
 	velocity = list(0, 12)
 	grow = list(0, 0.01)
@@ -123,12 +123,12 @@
 	width = 500
 	height = 500
 	count = 80
-	spawning = 5
-	lifespan = 15
+	spawning = 3
+	lifespan = 10
 	fade = 10
 	fadein = 3
 	scale = generator(GEN_NUM, 0.18, 0.15)
-	position = generator(GEN_SPHERE, 150, 150)
+	position = generator(GEN_SPHERE, 100, 100)
 	velocity = list(0, 12)
 	grow = list(0, 0.01)
 	gravity = list(0, -1.25)
@@ -218,13 +218,13 @@
 	width = 750
 	height = 750
 	count = 80
-	spawning = 40
-	lifespan = 15
-	fade = 15
+	spawning = 10
+	lifespan = 10
+	fade = 10
 	position = generator(GEN_SPHERE, 8, 8)
-	velocity = generator(GEN_CIRCLE, 30, 30)
+	velocity = generator(GEN_CIRCLE, 120, 120)
 	scale = 0.1
-	friction = 0.1
+	friction = 0.06
 
 /particles/water_outwards
 	icon = 'icons/effects/particles/generic_particles.dmi'
@@ -332,11 +332,11 @@
 	if(tiny)
 		explosion_smoke.particles.count = 0
 	else
-		smoke_wave.particles.count = 0
-		explosion_smoke.particles.count = 0
-		sparks.particles.count = 0
-		large_kickup.particles.count = 0
-		falling_debris.particles.count = 0
+		smoke_wave?.particles.count = 0
+		explosion_smoke?.particles.count = 0
+		sparks?.particles.count = 0
+		large_kickup?.particles.count = 0
+		falling_debris?.particles.count = 0
 
 /obj/effect/temp_visual/explosion/proc/set_count_long()
 	dirt_kickup.particles.count = 0

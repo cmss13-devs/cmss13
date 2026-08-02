@@ -15,17 +15,17 @@
 	spin = generator(GEN_NUM, -20, 20)
 	friction = generator(GEN_NUM, 0.1, 0.5)
 	gravity = list(1, 2)
-	scale = 0.25
+	scale = 0.2
 	grow = 0.05
 
 /particles/explosion_smoke/deva
-	scale = 0.5
+	scale = 0.35
 	velocity = generator(GEN_CIRCLE, 23, 23)
 
 /particles/explosion_smoke/small
 	count = 25
 	spawning = 25
-	scale = 0.25
+	scale = 0.15
 	velocity = generator(GEN_CIRCLE, 10, 10)
 
 /particles/explosion_smoke/tiny
@@ -50,7 +50,7 @@
 	spin = generator(GEN_NUM, -20, 20)
 	friction = generator(GEN_NUM, 0.1, 0.5)
 	gravity = list(1, 2)
-	scale = 0.15
+	scale = 0.1
 	grow = 0.02
 
 /particles/explosion_water/tiny
@@ -75,7 +75,7 @@
 	color_change = generator(GEN_NUM, 0.08, 0.07)
 	velocity = generator(GEN_CIRCLE, 25, 25)
 	rotation = generator(GEN_NUM, -45, 45)
-	scale = 0.25
+	scale = 0.2
 	grow = 0.05
 	friction = 0.05
 
@@ -96,7 +96,7 @@
 	color_change = generator(GEN_NUM, 0.08, 0.07)
 	velocity = generator(GEN_CIRCLE, 25, 25)
 	rotation = generator(GEN_NUM, -45, 45)
-	scale = 0.45
+	scale = 0.25
 	grow = 0.05
 	friction = 0.05
 
@@ -106,7 +106,7 @@
 	width = 500
 	height = 500
 	count = 80
-	spawning = 10
+	spawning = 5
 	lifespan = 15
 	fade = 10
 	fadein = 3
@@ -123,7 +123,7 @@
 	width = 500
 	height = 500
 	count = 80
-	spawning = 10
+	spawning = 5
 	lifespan = 15
 	fade = 10
 	fadein = 3
@@ -217,8 +217,8 @@
 	icon_state = "flare"
 	width = 750
 	height = 750
-	count = 40
-	spawning = 20
+	count = 80
+	spawning = 40
 	lifespan = 15
 	fade = 15
 	position = generator(GEN_SPHERE, 8, 8)
@@ -306,15 +306,14 @@
 				smoke_wave = new(src, /particles/smoke_wave/small)
 			else
 				smoke_wave = new(src, /particles/smoke_wave)
-			dirt_kickup = new(src, /particles/dirt_kickup)
+			if(!tiny && !small)
+				dirt_kickup = new(src, /particles/dirt_kickup)
 			if(small)
 				falling_debris = new(src, /particles/falling_debris/small)
 			else
 				falling_debris = new(src, /particles/falling_debris)
 			sparks = new(src, /particles/sparks_outwards)
 			if(large)
-				large_kickup = new(src, /particles/dirt_kickup_large/deva)
-			else
 				large_kickup = new(src, /particles/dirt_kickup_large)
 			if(large)
 				smoke_wave.particles.velocity = generator(GEN_CIRCLE, 6 * radius, 6 * radius)

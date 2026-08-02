@@ -133,7 +133,7 @@
 	if(acid_amount >= acid_gen_cap)
 		holder.overlays += image('icons/mob/hud/hud.dmi', "cap[percentage_acid_cap]")
 
-/datum/behavior_delegate/runner_acider/handle_death()
+/datum/behavior_delegate/runner_acider/handle_death(mob/target_mob)
 	var/image/holder = bound_xeno.hud_list[SPECIAL_HUD]
 	holder.overlays.Cut()
 	STOP_PROCESSING(SSfasteffects, src)
@@ -336,8 +336,8 @@
 
 		target_living.apply_damage(damage, BURN)
 	FOR_DVIEW_END
-	FOR_DVIEW(var/turf/T, acid_range, xeno, HIDE_INVISIBLE_OBSERVER)
-		new /obj/effect/particle_effect/smoke/acid_runner_harmless(T)
+	FOR_DVIEW(var/turf/target_turf, acid_range, xeno, HIDE_INVISIBLE_OBSERVER)
+		new /obj/effect/particle_effect/smoke/acid_runner_harmless(target_turf)
 	FOR_DVIEW_END
 	playsound(xeno, 'sound/effects/blobattack.ogg', 75)
 	if(xeno.client && xeno.hive)

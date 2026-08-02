@@ -330,7 +330,7 @@
 
 /obj/effect/temp_visual/explosion/proc/set_count_short(tiny = FALSE)
 	if(tiny)
-		explosion_smoke.particles.count = 0
+		explosion_smoke?.particles.count = 0
 	else
 		smoke_wave?.particles.count = 0
 		explosion_smoke?.particles.count = 0
@@ -339,7 +339,7 @@
 		falling_debris?.particles.count = 0
 
 /obj/effect/temp_visual/explosion/proc/set_count_long()
-	dirt_kickup.particles.count = 0
+	dirt_kickup?.particles.count = 0
 
 /obj/effect/temp_visual/explosion/Destroy()
 	QDEL_NULL(smoke_wave)

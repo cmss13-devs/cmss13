@@ -20,6 +20,9 @@
 		return
 	if(istype(crossed_by, /mob/dead/observer) && !affect_ghosts)
 		return
+	INVOKE_ASYNC(src, PROC_REF(PreTrigger), crossed_by)
+
+/obj/effect/step_trigger/proc/PreTrigger(atom/movable/crossed_by)
 	/// If we have a proc to validate trigger, call it to see whether trigger can occur
 	if(can_trigger_proc_ref && !call(src, can_trigger_proc_ref)(crossed_by))
 		return

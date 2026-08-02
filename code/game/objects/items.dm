@@ -387,9 +387,8 @@
 
 	remove_item_verbs(user)
 
-	for(var/X in actions)
-		var/datum/action/A = X
-		A.remove_from(user)
+	for(var/datum/action/action as anything in actions)
+		action.remove_from(user)
 
 	if(flags_item & DELONDROP)
 		qdel(src)

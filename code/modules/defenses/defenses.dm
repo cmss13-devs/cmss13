@@ -433,10 +433,11 @@
 	visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("The [name] starts to blink rapidly!")]")
 	playsound(loc, 'sound/mecha/critdestrsyndi.ogg', 25, 1)
 
-	sleep(5)
+	addtimer(CALLBACK(src, PROC_REF(final_destroyed_action)), 0.5 SECONDS)
 
-	cell_explosion(loc, 10, 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("defense explosion"))
+/obj/structure/machinery/defenses/proc/final_destroyed_action()
 	if(!QDELETED(src))
+		cell_explosion(loc, 10, 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("defense explosion"))
 		qdel(src)
 
 /obj/structure/machinery/defenses/proc/damaged_action(damage)

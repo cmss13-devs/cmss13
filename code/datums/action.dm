@@ -137,6 +137,7 @@
 
 /datum/action/proc/remove_from(mob/L)
 	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
 	SEND_SIGNAL(src, COMSIG_ACTION_REMOVED, L)
 	if(listen_signal)
 		UnregisterSignal(L, listen_signal)
@@ -144,6 +145,7 @@
 	owner = null
 
 /mob/proc/handle_remove_action(datum/action/action)
+	SHOULD_NOT_SLEEP(TRUE)
 	actions?.Remove(action)
 	if(client)
 		client.remove_from_screen(action.button)
@@ -151,7 +153,7 @@
 
 /mob/living/carbon/human/handle_remove_action(datum/action/action)
 	if(selected_ability == action)
-		action.action_activate()
+		INVOKE_ASYNC(action, TYPE_PROC_REF(/datum/action, action_activate))
 	return ..()
 
 /proc/hide_action(mob/L, action_path)

@@ -19,6 +19,9 @@
 		SENTRY_CATEGORY_IFF = FACTION_MARINE,
 	)
 
+	/// The type of flames to spill upon destruction
+	var/destruction_spill_type = /datum/reagent/napalm/blue
+
 /obj/structure/machinery/defenses/sentry/flamer/handle_rof(level)
 	switch(level)
 		if(ROF_SINGLE)
@@ -39,19 +42,14 @@
 		visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("The [name] beeps steadily and its ammo light blinks red.")]")
 		playsound(loc, 'sound/weapons/smg_empty_alarm.ogg', 25, 1)
 
-/obj/structure/machinery/defenses/sentry/flamer/destroyed_action()
-	visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("The [name] starts spitting out sparks and smoke!")]")
-	playsound(loc, 'sound/mecha/critdestrsyndi.ogg', 25, 1)
-	for(var/i = 1 to 6)
-		setDir(pick(NORTH, EAST, SOUTH, WEST))
-		sleep(2)
+	final_destroyed_action()
 
-	if(ammo.current_rounds != 0)
-		var/datum/reagent/napalm/blue/R = new()
-		new /obj/flamer_fire(loc, create_cause_data("sentry explosion", owner_mob), R, 2)
-	cell_explosion(loc, 10, 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("sentry explosion", owner_mob))
+/obj/structure/machinery/defenses/sentry/flamer/final_destroyed_action()
 	if(!QDELETED(src))
-		qdel(src)
+		if(ammo.current_rounds != 0 && destruction_spill_type)
+			var/datum/reagent/R = new destruction_spill_type
+			new /obj/flamer_fire(loc, create_cause_data("sentry explosion", owner_mob), R, 2)
+	. = ..()
 
 
 /obj/structure/machinery/defenses/sentry/flamer/mini
@@ -119,21 +117,7 @@
 		SENTRY_CATEGORY_ROF = ROF_SINGLE,
 		SENTRY_CATEGORY_IFF = SENTRY_FACTION_WEYLAND,
 	)
-
-/obj/structure/machinery/defenses/sentry/flamer/wy/destroyed_action()
-	visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("The [name] starts spitting out sparks and smoke!")]")
-	playsound(loc, 'sound/mecha/critdestrsyndi.ogg', 25, 1)
-	for(var/i = 1 to 6)
-		setDir(pick(NORTH, EAST, SOUTH, WEST))
-		sleep(2)
-
-	if(ammo.current_rounds != 0)
-		var/datum/reagent/napalm/sticky/sticky_napalm = new()
-		new /obj/flamer_fire(loc, create_cause_data("sentry explosion", owner_mob), sticky_napalm, 2)
-	cell_explosion(loc, 10, 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("sentry explosion", owner_mob))
-	if(!QDELETED(src))
-		qdel(src)
-
+	destruction_spill_type = /datum/reagent/napalm/sticky
 
 /obj/structure/machinery/defenses/sentry/flamer/upp
 	name = "UPP SDS-R5 Sentry Flamer"
@@ -150,17 +134,4 @@
 		SENTRY_CATEGORY_ROF = ROF_SINGLE,
 		SENTRY_CATEGORY_IFF = FACTION_UPP,
 	)
-
-/obj/structure/machinery/defenses/sentry/flamer/upp/destroyed_action()
-	visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("The [name] starts spitting out sparks and smoke!")]")
-	playsound(loc, 'sound/mecha/critdestrsyndi.ogg', 25, 1)
-	for(var/i = 1 to 6)
-		setDir(pick(NORTH, EAST, SOUTH, WEST))
-		sleep(2)
-
-	if(ammo.current_rounds != 0)
-		var/datum/reagent/napalm/gel/gel_napalm = new()
-		new /obj/flamer_fire(loc, create_cause_data("sentry explosion", owner_mob), gel_napalm, 2)
-	cell_explosion(loc, 10, 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("sentry explosion", owner_mob))
-	if(!QDELETED(src))
-		qdel(src)
+	destruction_spill_type = /datum/reagent/napalm/gel

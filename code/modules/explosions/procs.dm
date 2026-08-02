@@ -25,10 +25,10 @@
 	var/list/exploded_list = list()
 
 	if(direction)
-		new /datum/explosion_wave(epicenter, dir = direction, power = power, falloff = falloff, falloff_shape = falloff_shape, cause_data = explosion_cause_data, exploded_list = exploded_list)
+		new /datum/explosion_wave(epicenter, dir = direction, power = power, falloff = falloff, falloff_shape = falloff_shape, cause_data = explosion_cause_data, enviro = enviro, exploded_list = exploded_list)
 	else
 		for(var/dir in GLOB.cardinals)
-			new /datum/explosion_wave(epicenter, dir = dir, power = power, falloff = falloff, falloff_shape = falloff_shape, cause_data = explosion_cause_data, exploded_list = exploded_list)
+			new /datum/explosion_wave(epicenter, dir = dir, power = power, falloff = falloff, falloff_shape = falloff_shape, cause_data = explosion_cause_data, enviro = enviro, exploded_list = exploded_list)
 
 	if(power >= 150) //shockwave for anything over 150 power
 		new /obj/effect/shockwave(epicenter, power/50)

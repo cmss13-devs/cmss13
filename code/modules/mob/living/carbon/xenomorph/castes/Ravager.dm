@@ -255,16 +255,16 @@
 	xeno.throw_carbon(human, facing, fling_distance, SPEED_VERY_FAST, shake_camera = FALSE, immobilize = TRUE)
 
 /datum/action/xeno_action/activable/scissor_cut/use_ability(atom/target_atom)
-	var/mob/living/carbon/xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/ravager_user = owner
 
-	XENO_ACTION_CHECK(xeno)
+	ravager_user_ACTION_CHECK(ravager_user)
 
 	// Get line of turfs
 	var/list/turf/target_turfs = list()
 
-	var/facing = Get_Compass_Dir(xeno, target_atom)
-	var/turf/turf = xeno.loc
-	var/turf/temp = xeno.loc
+	var/facing = Get_Compass_Dir(ravager_user, target_atom)
+	var/turf/turf = ravager_user.loc
+	var/turf/temp = ravager_user.loc
 	var/list/telegraph_atom_list = list()
 
 	for(var/step in 0 to 3)
@@ -303,12 +303,12 @@
 
 	// Extract our 'optimal' turf, if it exists
 	if(length(target_turfs) >= 2)
-		xeno.animation_attack_on(target_turfs[length(target_turfs)], 15)
+		ravager_user.animation_attack_on(target_turfs[length(target_turfs)], 15)
 
 	// Hmm today I will kill a marine while looking away from them
-	xeno.face_atom(target_atom)
-	xeno.emote("roar")
-	xeno.visible_message(SPAN_XENODANGER("[xeno] sweeps its claws through the area in front of it!"), SPAN_XENODANGER("We sweep our claws through the area in front of us!"))
+	ravager_user.face_atom(target_atom)
+	ravager_user.emote("roar")
+	ravager_user.visible_message(SPAN_XENODANGER("[ravager_user] sweeps its claws through the area in front of it!"), SPAN_XENODANGER("We sweep our claws through the area in front of us!"))
 
 	// Loop through our turfs, finding any humans there and dealing damage to them
 	for(var/turf/target_turf in target_turfs)
@@ -319,14 +319,14 @@
 			if(HAS_TRAIT(carbon_target, TRAIT_NESTED))
 				continue
 
-			if(xeno.can_not_harm(carbon_target))
+			if(ravager_user.can_not_harm(carbon_target))
 				continue
-			xeno.flick_attack_overlay(carbon_target, "slash")
+			ravager_user.flick_attack_overlay(carbon_target, "slash")
 			carbon_target.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE)
 			playsound(get_turf(carbon_target), "alien_claw_flesh", 30, TRUE)
 
-			if(HAS_TRAIT(xeno, TRAIT_ABILITY_EMPOWER))
-				new /datum/effects/xeno_slow/superslow(carbon_target, xeno, ttl = superslow_duration)
+			if(HAS_TRAIT(ravager_user, TRAIT_ABILITY_EMPOWER))
+				new /datum/effects/xeno_slow/superslow(carbon_target, ravager_user, ttl = superslow_duration)
 
 	apply_cooldown()
 	return ..()

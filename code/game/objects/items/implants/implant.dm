@@ -184,7 +184,6 @@ Implant Specifics:<BR>"}
 					var/malf_msg = "Something beeps inside [imp_in][part ? "'s [part.display_name]" : ""]!"
 					imp_in.visible_message(SPAN_DANGER(malf_msg))
 					playsound(loc, 'sound/items/countdown.ogg', 25, 1, 6)
-					sleep(25)
 					addtimer(CALLBACK(PROC_REF(kaboom), part), 2.5 SECONDS)
 					return
 			if (elevel == "Destroy Body")

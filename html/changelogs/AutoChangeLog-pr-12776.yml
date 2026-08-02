@@ -1,4 +1,0 @@
-author: "Bugwasabi"
-delete-after: True
-changes:
-  - bugfix: "Fixes welding fuel flames having the wrong color"

@@ -1,6 +1,0 @@
-author: "JackieEstegado"
-delete-after: True
-changes:
-  - bugfix: "Fixed a bug where an eggsac carrier could sustain infinite fragile eggs."
-  - rscadd: "Fragile eggs are now counted against the sustain limit until they are destroyed."
-  - rscadd: "Fragile eggs that no longer have a hugger will quickly die."

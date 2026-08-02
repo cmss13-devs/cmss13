@@ -1,4 +1,0 @@
-author: "LiquidPotroh"
-delete-after: True
-changes:
-  - bugfix: "fixed valkyrie retrieve resource consumption"

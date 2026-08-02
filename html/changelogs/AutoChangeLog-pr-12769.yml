@@ -1,5 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "You now need to be conscious for bloody footprints to apply"
-  - code_imp: "Cleaned up code regarding bloody footprints and hopefully eliminated the cause of flaky tests"

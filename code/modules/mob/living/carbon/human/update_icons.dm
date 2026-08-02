@@ -506,15 +506,6 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 
 	var/image/head_overlay = head.get_mob_overlay(src, WEAR_HEAD)
 	head_overlay.layer = -HEAD_LAYER
-
-	if(istype(head, /obj/item/clothing/head/helmet/marine/ghillie))
-		var/obj/item/clothing/head/helmet/marine/ghillie/ghillie_helmet = head
-		if(ghillie_helmet.eye_glowing && ghillie_helmet.eye_glow_allowed)
-			var/image/glow = image(ghillie_helmet.eye_glow_icon, icon_state = ghillie_helmet.eye_glow_state)
-			glow.appearance_flags |= RESET_COLOR|RESET_ALPHA
-			head_overlay.overlays += glow
-			head_overlay.overlays += emissive_appearance(ghillie_helmet.eye_glow_icon, ghillie_helmet.eye_glow_state)
-
 	overlays_standing[HEAD_LAYER] = head_overlay
 	apply_overlay(HEAD_LAYER)
 

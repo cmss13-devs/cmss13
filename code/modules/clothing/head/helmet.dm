@@ -650,6 +650,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	..()
 	return pockets.attackby(attacking_item, user)
 
+/obj/item/clothing/head/helmet/marine/proc/add_helmet_state_overlays()
+	return
+
 /obj/item/clothing/head/helmet/marine/on_pocket_insertion()
 	update_icon()
 
@@ -687,6 +690,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 	if(active_visor)
 		helmet_overlays += overlay_image(active_visor.helmet_overlay_icon, active_visor.helmet_overlay, color, RESET_COLOR)
+
+	add_helmet_state_overlays()
 
 	if(ismob(loc))
 		var/mob/moob = loc
@@ -1383,6 +1388,14 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	// There's probably a better way to do this, but the repsrite only covers desert and jungle so it only needs to apply on those skin maps.
 	var/eye_glow_allowed = FALSE
 
+/obj/item/clothing/head/helmet/marine/ghillie/add_helmet_state_overlays()
+
+	if(!eye_glowing || !eye_glow_allowed)
+		return
+	var/image/glow = image(eye_glow_icon, icon_state = eye_glow_state)
+	glow.appearance_flags |= RESET_COLOR|RESET_ALPHA
+	helmet_overlays += glow
+	helmet_overlays += emissive_appearance(eye_glow_icon, eye_glow_state)
 
 /obj/item/clothing/head/helmet/marine/ghillie/proc/glowing_visor_activate(mob/user)
 	SIGNAL_HANDLER

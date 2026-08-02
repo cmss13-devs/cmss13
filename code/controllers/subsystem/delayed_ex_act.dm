@@ -17,7 +17,7 @@ SUBSYSTEM_DEF(delayed_ex_act)
 
 /datum/controller/subsystem/delayed_ex_act/fire(resumed = FALSE)
 	if(!resumed)
-		current_work = reverselist(queued_work) // So we pop rightmost elements which are the first ones
+		current_work = queued_work.Copy()
 		queued_work = list()
 
 	while(length(current_work))

@@ -87,6 +87,10 @@
 	wave_falloff = list(falloff)
 	intensities = list(power)
 
+	// Explode the epicenter right off, we won't get another chance at this
+	set_signals_up()
+	explode_turfs(force_defer = TRUE)
+
 	START_PROCESSING(SSexplosion_waves, src)
 
 /datum/explosion_wave/Destroy(force, ...)
@@ -170,6 +174,8 @@
 /// - falloff, explosion dampening, and exploding actual contents of the turfs
 /datum/explosion_wave/proc/post_travel_effects(delta_time)
 	apply_falloff()
+	// Always set signals up before applying explosion effects,
+	// because ex_act effects could cause things to move into the wave
 	set_signals_up()
 	. = explode_turfs()
 	if(.)
@@ -211,7 +217,7 @@
 					wave_falloff[i] += falloff * 0.5
 
 /// Apply effects to the turfs as we travel
-/datum/explosion_wave/proc/explode_turfs()
+/datum/explosion_wave/proc/explode_turfs(force_defer = FALSE)
 	SHOULD_NOT_SLEEP(TRUE)
 
 	var/still_exploding = FALSE
@@ -243,7 +249,8 @@
 
 			// Mob explosions are expensive due to limbs and throws. We defer these entirely.
 			// During Hijack, we also defer everything so explosions can keep running even if their effects are awkwardly delayed.
-			if(SSdelayed_ex_act.defer_everything || isliving(thing))
+			// During Initialization, we defer everything too, because we're probably NOT running on SS time (someone shooting a rocket point blank, anything with a do_after, you name it)
+			if(force_defer || SSdelayed_ex_act.defer_everything || isliving(thing))
 				SSdelayed_ex_act.queue(thing, intensities[i], dir, cause_data, 0, enviro)
 			else
 				INVOKE_ASYNC(thing, TYPE_PROC_REF(/atom, ex_act), intensities[i], dir, cause_data, 0, enviro)

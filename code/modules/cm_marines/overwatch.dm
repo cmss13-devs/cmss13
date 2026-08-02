@@ -1190,7 +1190,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		selected_sl.comm_title = "aSL"
 	ADD_TRAIT(selected_sl, TRAIT_ACTING_LEAD, TRAIT_SOURCE_SQUAD_LEADER)
 
-	var/obj/item/device/radio/headset/sl_headset = selected_sl.get_type_in_ears(/obj/item/device/radio/headset/almayer/marine)
+	var/obj/item/device/radio/headset/sl_headset = selected_sl.get_type_in_ears(/obj/item/device/radio/headset/almayer)
 	switch(faction)
 		if (FACTION_UPP)
 			sl_headset = selected_sl.get_type_in_ears(/obj/item/device/radio/headset/distress/UPP)

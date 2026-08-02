@@ -27,15 +27,13 @@ Good thing is that the whole process would be simple and intuative, you just sla
 
 /datum/component/jungle_magazine
 	var/obj/item/binding_item //The item that initiated the jungle mag construct
-	var/contained_mags = list(0, 0) //A list referencing the actual magazine objects, parent shouldd always be in [1]
-	var/active_slot = FALSE //It's two slots, 0 and 1
-	// var/is_completed = FALSE //If the jungle mag construct is completed
+	var/is_attached_magazine_active = FALSE //It's two slots, 0 and 1
+	var/attached_magazine = 0
 
 /datum/component/jungle_magazine/Initialize(mob/user, obj/item/trigger_item)
 	if(!istype(parent, /obj/item/ammo_magazine))
 		return COMPONENT_INCOMPATIBLE
 	binding_item = trigger_item
-	contained_mags[1] = parent
 	if(user)
 		user.drop_inv_item_to_loc(binding_item, parent)
 	else
@@ -60,7 +58,7 @@ Good thing is that the whole process would be simple and intuative, you just sla
 /datum/component/jungle_magazine/proc/on_examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 
-	examine_list += get_examine_text()
+	examine_list += get_examine_text(user)
 
 /datum/component/jungle_magazine/proc/on_unique_action(datum/source, mob/user) //TODO: Actally add the arguments in SEND_SIGNAL
 	SIGNAL_HANDLER
@@ -74,32 +72,46 @@ Good thing is that the whole process would be simple and intuative, you just sla
 	remove_magazine(user)
 
 //* Custom procs
-/datum/component/jungle_magazine/proc/update_sprite() //TODO: This one might need a bit more work, perhaps I'd need to merge the new icons beforehand
+/datum/component/jungle_magazine/proc/update_sprite(obj/item/target) //TODO: This one might need a bit more work, perhaps I'd need to merge the new icons beforehand
+	if(target.overlays)
+		target.overlays.Cut()
+	else
+		target.overlays = list()
 
-/datum/component/jungle_magazine/proc/switch_active_magazine(mob/user)
+
+
+/datum/component/jungle_magazine/proc/switch_active_magazine(mob/user, be_silent = FALSE)
 	//Swaps magazine locations
 	var/obj/item/ammo_magazine/old_mag = active_magazine()
-	active_slot = !active_slot
+	is_attached_magazine_active = !is_attached_magazine_active
 	var/obj/item/ammo_magazine/new_mag = active_magazine()
 	if(new_mag)
-		if(user) //TODO: Get help to think up a better way to handel switching mag entities
+		if(user) //! This part sometimes breaks magically. Get help to think up a better way to handel switching mag entities
 			user.drop_inv_item_on_ground(old_mag)
 			user.put_in_hands(new_mag)
 			old_mag.forceMove(new_mag)
-			to_chat(user, SPAN_BLUE("You switched the magazine slot to slot [active_slot+1]"))
-		else
+			if(!be_silent)
+				to_chat(user, SPAN_BLUE("You switched to use [new_mag]."))
+		else //For when there's no user, if that is to happen
 			var/old_loc = old_mag.loc
 			old_mag.forceMove(get_turf(new_mag))
 			new_mag.forceMove(old_loc)
 			old_mag.forceMove(new_mag)
 		//TODO: Update icon here
 	else
-		active_slot = !active_slot
+		is_attached_magazine_active = !is_attached_magazine_active
 		if(user)
 			to_chat(user, SPAN_WARNING("There is no magazine to switch to!"))
 
 /datum/component/jungle_magazine/proc/active_magazine()
-	return contained_mags[active_slot+1]
+	if(is_attached_magazine_active)
+		return attached_magazine
+	return parent
+
+/datum/component/jungle_magazine/proc/inactive_magazine()
+	if(!is_attached_magazine_active)
+		return attached_magazine
+	return parent
 
 /datum/component/jungle_magazine/proc/add_magazine(mob/user, obj/item/ammo_magazine/M) //? Used in construction phase
 	// if(!is_integrated) //TODO: Implement a flag for is_integrated
@@ -112,12 +124,12 @@ Good thing is that the whole process would be simple and intuative, you just sla
 		// 	if(!is_compatible)
 		// 		to_chat(user, SPAN_WARNING("This magazine is not compatible!"))
 		// 		return FALSE
-		if(contained_mags[2] == 0)
+		if(attached_magazine == 0)
 			if (user)
 				user.drop_inv_item_to_loc(M, parent)
 			else //? Honestly don't know in what case would one add a magazine without an user; pending for remove if uneeded
 				M.forceMove(parent)
-			contained_mags[2] = M
+			attached_magazine = M
 			signal_reg(M)
 			// update_icon() //TODO: yeah update the godamn icon
 			return TRUE
@@ -132,17 +144,20 @@ Good thing is that the whole process would be simple and intuative, you just sla
 	// 	return FALSE
 
 /datum/component/jungle_magazine/proc/remove_magazine(mob/user)
-	//* Two Cases: 1) Remove parent magazine - Ejects everything and removes component
-	//*            2) Remove attached magazine - Ejects attached magazine, allowing for fresh mags
+	//* Three Cases: 1) Remove parent magazine - Ejects everything and removes component
+	//*              2) Remove attached magazine - Ejects attached magazine, allowing for fresh mags
+	//*				 3) Remove attached magazine (attached is active) - Ditto, however magazine would be switched first / that or a special case idk
 	//Doing this with if statement since there's only two magazines max
 	var/obj/item/ammo_magazine/target_magazine
-	if(contained_mags[2] != 0) //Case #2
-		target_magazine = contained_mags[2]
+	if(attached_magazine != 0) //Case #2
+		if(is_attached_magazine_active)
+			switch_active_magazine(user, TRUE)
+		target_magazine = attached_magazine
 		if (user)
 			user.put_in_hands(target_magazine)
 		else
 			target_magazine.forceMove(get_turf(parent))
-		contained_mags[2] = 0
+		attached_magazine = 0
 		signal_unreg(target_magazine)
 	else //Case #1
 		target_magazine = parent
@@ -157,15 +172,15 @@ Good thing is that the whole process would be simple and intuative, you just sla
 
 	return TRUE
 
-/datum/component/jungle_magazine/proc/get_examine_text()
-	. += "Use special action or alt-click to switch active slot, use in hand or click with an empty hand to remove magazine."
-	for(var/i in 1 to length(contained_mags))
-		if (contained_mags[i] == 0)
-			. += "Slot [i] is empty."
-		else
-			var/obj/item/ammo_magazine/target_mag = contained_mags[i]
-			. += "Slot [i] is occupied: [target_mag] has [target_mag.current_rounds] out of [target_mag.max_rounds]."
-	. += "The active slot is slot [active_slot+1]."
+/datum/component/jungle_magazine/proc/get_examine_text(mob/user) //TODO: Clean up examine, make it easier to get the status of the other magazine
+	. += "\n"
+	. += SPAN_INFO("Use special action switch between magazines, use in hand eject magazines.")
+	. += "\n"
+	if (attached_magazine == 0) //If there's no attached magazine there really shouldn't be a need for description of the other mag, user WILL have parent as active
+		. += "No magazine is attached at this moment."
+	else
+		var/obj/item/ammo_magazine/target_mag = inactive_magazine()
+		. += SPAN_BLUE("Inactive Magazine: [icon2html(target_mag, user)] \a [target_mag] has [target_mag.current_rounds] out of [target_mag.max_rounds].")
 
 /datum/component/jungle_magazine/proc/signal_reg(obj/item/ammo_magazine/target_magazine) //? Only expecting magazines here
 	RegisterSignal(target_magazine, COMSIG_ITEM_ATTACKED, PROC_REF(on_attackby))

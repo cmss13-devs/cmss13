@@ -9,20 +9,27 @@ SUBSYSTEM_DEF(delayed_ex_act)
 	var/list/list/queued_work = list()
 	var/list/list/current_work
 
+	/// If true, callers are encouraged to defer everything to SSdelayed_ex_act for the time being.
+	/// We use this so explosions during hijack crash can be processed quickly and avoid clipping into the
+	/// landing dropship and gib xenos. It's less performant, and it will certainly look stupid,
+	/// but it's better than the alternative. TESTING FOR NOW!!!
+	var/defer_everything = FALSE
+
 /datum/controller/subsystem/delayed_ex_act/fire(resumed = FALSE)
 	if(!resumed)
-		current_work = queued_work.Copy()
+		current_work = reverselist(queued_work) // So we pop rightmost elements which are the first ones
+		queued_work = list()
 
 	while(length(current_work))
 		var/list/order = current_work[current_work.len]
 		current_work.len--
-		queued_work -= list(order)
 		var/atom/target = order[1]
-		var/list/arguments = order.Copy(2, 0)
-		if(isliving(target) && length(arguments) >= 3)
-			var/datum/cause_data/cause_data = arguments[3]
-			log_explosion(target, cause_data)
-		target.ex_act(arglist(arguments))
+		if(!QDELETED(target)) // Very neccessary here
+			var/list/arguments = order.Copy(2, 0)
+			if(isliving(target) && length(arguments) >= 3)
+				var/datum/cause_data/cause_data = arguments[3]
+				log_explosion(target, cause_data)
+			target.ex_act(arglist(arguments))
 
 		if(MC_TICK_CHECK)
 			return

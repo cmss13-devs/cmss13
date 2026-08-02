@@ -214,6 +214,9 @@
 	if(timeLeft(1) > 20 SECONDS) // This time must be more than /datum/dropship_hijack/almayer/proc/check_final_approach() time
 		return FALSE
 
+	if(!is_mainship_level(destination?.z))
+		return FALSE
+
 	// Not already hijacked, look for a queen
 	var/mob/living/carbon/xenomorph/queen/queen = find_hijack_queen()
 	if(!queen)

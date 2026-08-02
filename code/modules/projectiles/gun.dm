@@ -1008,6 +1008,8 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 		else
 			user.put_in_hands(attached_magazine_clip)
 		current_mag.forceMove(attached_magazine_clip)
+		attached_magazine_clip.update_icon()
+		attached_magazine_clip = null
 
 	else if(drop_override || !user) //If we want to drop it on the ground or there's no user.
 		current_mag.forceMove(get_turf(src))//Drop it on the ground.
@@ -1018,9 +1020,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 	user.visible_message(SPAN_NOTICE("[user] unloads [current_mag] from [src]."),
 	SPAN_NOTICE("You unload [current_mag] from [src]."), null, 4, CHAT_TYPE_COMBAT_ACTION)
 	current_mag.update_icon()
-	attached_magazine_clip.update_icon()
 	current_mag = null
-	attached_magazine_clip = null
 
 	update_icon()
 

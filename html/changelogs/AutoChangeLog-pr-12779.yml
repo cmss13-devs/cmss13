@@ -1,0 +1,4 @@
+author: "sippykot"
+delete-after: True
+changes:
+  - bugfix: "XO formal uniform properly spawns with accessories like other uniforms"

@@ -211,7 +211,7 @@
 /turf/open/desert/rock,
 /area/kutjevo/exterior/Northwest_Colony)
 "aR" = (
-/turf/open/floor/almayer/research/containment/floor1,
+/turf/open/floor/almayer/research/containment/floor2/west,
 /area/kutjevo/exterior/Northwest_Colony)
 "aS" = (
 /obj/structure/flora/grass/tallgrass/desert,
@@ -1110,7 +1110,7 @@
 /turf/open/desert/desert_shore/shore_edge1/north,
 /area/kutjevo/exterior/lz_pad)
 "xJ" = (
-/turf/open/floor/almayer/research/containment/floor1,
+/turf/open/floor/almayer/research/containment/floor2/west,
 /area/kutjevo/exterior/lz_pad)
 "xN" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname{
@@ -1280,7 +1280,7 @@
 /obj/structure/barricade/plasteel/wired{
 	dir = 8
 	},
-/turf/open/floor/almayer/research/containment/floor1,
+/turf/open/floor/almayer/research/containment/floor2/west,
 /area/kutjevo/exterior/lz_pad)
 "CJ" = (
 /obj/structure/platform/stone/kutjevo/north,
@@ -1362,7 +1362,7 @@
 /obj/structure/barricade/metal/wired{
 	dir = 4
 	},
-/turf/open/floor/almayer/research/containment/floor1,
+/turf/open/floor/almayer/research/containment/floor2/west,
 /area/kutjevo/exterior/lz_pad)
 "Ep" = (
 /turf/open/floor/kutjevo/tan/alt_edge/southeast,
@@ -1398,7 +1398,7 @@
 /obj/structure/barricade/plasteel/wired{
 	dir = 4
 	},
-/turf/open/floor/almayer/research/containment/floor1,
+/turf/open/floor/almayer/research/containment/floor2/west,
 /area/kutjevo/exterior/lz_pad)
 "Fw" = (
 /obj/structure/machinery/landinglight,
@@ -1966,7 +1966,7 @@
 /area/kutjevo/interior/complex/Northwest_Security_Checkpoint)
 "Us" = (
 /obj/effect/sentry_landmark/lz_2/bottom_right,
-/turf/open/floor/almayer/research/containment/floor1,
+/turf/open/floor/almayer/research/containment/floor2/west,
 /area/kutjevo/exterior/Northwest_Colony)
 "Uv" = (
 /obj/structure/surface/table/almayer,

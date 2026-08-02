@@ -1,0 +1,5 @@
+author: "labeo0"
+delete-after: True
+changes:
+  - bugfix: "Fixed deagle incorrect ammo type. Fixed CO deagle ammo type."
+  - balance: "Regular deagle ammo stats change from 55 damage/15 AP to 45 damage/30 AP. High-impact ammo stats change from 45 damage to 60"

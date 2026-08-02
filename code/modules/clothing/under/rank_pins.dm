@@ -297,111 +297,125 @@
 ################################################*/
 //ENLISTED
 /obj/item/clothing/accessory/ranks/navy/e1
+	name = "rank shoulder patch"
 	rank_short = PAY_SHORT_NE1
+	icon_state = "ranks_ne1"
 
 /obj/item/clothing/accessory/ranks/navy/e2
+	name = "rank shoulder patch"
 	rank_short = PAY_SHORT_NE2
+	icon_state = "ranks_ne2"
 
 /obj/item/clothing/accessory/ranks/navy/e3
+	name = "rank shoulder patch"
 	rank_short = PAY_SHORT_NE3
+	icon_state = "ranks_ne3"
 
 /obj/item/clothing/accessory/ranks/navy/e4
+	name = "rank shoulder patch"
 	rank_short = PAY_SHORT_NE4
-	icon_state = "ranks_nco"
+	icon_state = "ranks_ne4"
 
 /obj/item/clothing/accessory/ranks/navy/e5
+	name = "rank shoulder patch"
 	rank_short = PAY_SHORT_NE5
-	icon_state = "ranks_nco"
+	icon_state = "ranks_ne5"
 
 /obj/item/clothing/accessory/ranks/navy/e6
+	name = "rank shoulder patch"
 	rank_short = PAY_SHORT_NE6
-	icon_state = "ranks_nco"
+	icon_state = "ranks_ne6"
 
 /obj/item/clothing/accessory/ranks/navy/e7
+	name = "rank shoulder patch"
 	rank_short = PAY_SHORT_NE7
-	icon_state = "ranks_snco"
+	icon_state = "ranks_ne7"
 
 /obj/item/clothing/accessory/ranks/navy/e8
+	name = "rank shoulder patch"
 	rank_short = PAY_SHORT_NE8
-	icon_state = "ranks_snco"
+	icon_state = "ranks_ne8"
 
 /obj/item/clothing/accessory/ranks/navy/e8c
+	name = "rank shoulder patch"
 	rank_short = PAY_SHORT_NE8C
-	icon_state = "ranks_snco"
+	icon_state = "ranks_ne8"
 
 /obj/item/clothing/accessory/ranks/navy/e9
+	name = "rank shoulder patch"
 	rank_short = PAY_SHORT_NE9
-	icon_state = "ranks_snco"
+	icon_state = "ranks_ne9"
 
 /obj/item/clothing/accessory/ranks/navy/e9c
+	name = "rank shoulder patch"
 	rank_short = PAY_SHORT_NE9C
-	icon_state = "ranks_snco"
+	icon_state = "ranks_ne9"
 
 //OFFICERS
 /obj/item/clothing/accessory/ranks/navy/o1
 	name = "rank boards"
 	rank_short = PAY_SHORT_NO1
-	icon_state = "ranks_officer"
+	icon_state = "ranks_no1"
 
 /obj/item/clothing/accessory/ranks/navy/o2
 	name = "rank boards"
 	rank_short = PAY_SHORT_NO2
-	icon_state = "ranks_officer"
+	icon_state = "ranks_no2"
 
 /obj/item/clothing/accessory/ranks/navy/o3
 	name = "rank boards"
 	rank_short = PAY_SHORT_NO3
-	icon_state = "ranks_officer"
+	icon_state = "ranks_no3"
 
 /obj/item/clothing/accessory/ranks/navy/o4
 	name = "rank boards"
 	rank_short = PAY_SHORT_NO4
-	icon_state = "ranks_seniorofficer"
+	icon_state = "ranks_no4"
 
 /obj/item/clothing/accessory/ranks/navy/o5
 	name = "rank boards"
 	rank_short = PAY_SHORT_NO5
-	icon_state = "ranks_seniorofficer"
+	icon_state = "ranks_no5"
 
 /obj/item/clothing/accessory/ranks/navy/o6
 	name = "rank boards"
 	rank_short = PAY_SHORT_NO6
-	icon_state = "ranks_seniorofficer"
+	icon_state = "ranks_no6"
 
 /obj/item/clothing/accessory/ranks/navy/o6e
 	name = "rank boards"
 	rank_short = PAY_SHORT_NO6E
-	icon_state = "ranks_seniorofficer"
+	icon_state = "ranks_no6"
 
 /obj/item/clothing/accessory/ranks/navy/o6c
 	name = "rank boards"
 	rank_short = PAY_SHORT_NO6C
-	icon_state = "ranks_seniorofficer"
+	icon_state = "ranks_no6"
 
 /obj/item/clothing/accessory/ranks/navy/o7
 	name = "rank boards"
 	rank_short = PAY_SHORT_NO7
-	icon_state = "ranks_flagofficer"
+	icon_state = "ranks_no7"
 
 /obj/item/clothing/accessory/ranks/navy/o8
 	name = "rank boards"
 	rank_short = PAY_SHORT_NO8
-	icon_state = "ranks_flagofficer"
+	icon_state = "ranks_no8"
 
 /obj/item/clothing/accessory/ranks/navy/o9
 	name = "rank boards"
 	rank_short = PAY_SHORT_NO9
-	icon_state = "ranks_flagofficer"
+	icon_state = "ranks_no9"
 
 /obj/item/clothing/accessory/ranks/navy/o10
 	name = "rank boards"
 	rank_short = PAY_SHORT_NO10
-	icon_state = "ranks_flagofficer"
+	icon_state = "ranks_no10"
 
 /obj/item/clothing/accessory/ranks/navy/o10c
 	name = "rank boards"
 	rank_short = PAY_SHORT_NO10C
-	icon_state = "ranks_flagofficer"
+	icon_state = "ranks_no10"
 /*################################################
 ################# SPECIAL  #################
 ################################################*/

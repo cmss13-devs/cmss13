@@ -15,6 +15,8 @@
 
 	behavior_delegate_type = /datum/behavior_delegate/warrior_base
 
+	available_strains = list(/datum/xeno_strain/bulwark)
+
 	evolves_to = list(XENO_CASTE_PRAETORIAN, XENO_CASTE_CRUSHER)
 	deevolves_to = list(XENO_CASTE_DEFENDER)
 	caste_desc = "A powerful front line combatant."
@@ -78,12 +80,19 @@
 	var/emote_cooldown = 0
 	var/lunging = FALSE // whether or not the warrior is currently lunging (holding) a target
 
+/mob/living/carbon/xenomorph/warrior/handle_special_state()
+	return HAS_TRAIT(src, TRAIT_ABILITY_ENCLOSED_PLATES)
+
+/mob/living/carbon/xenomorph/warrior/handle_special_wound_states(severity)
+	if(HAS_TRAIT(src, TRAIT_ABILITY_ENCLOSED_PLATES))
+		return "Warrior_plates_[severity]"
+
 /mob/living/carbon/xenomorph/warrior/throw_item(atom/target)
 	toggle_throw_mode(THROW_MODE_OFF)
 
 /mob/living/carbon/xenomorph/warrior/stop_pulling()
 	var/datum/behavior_delegate/warrior_base/warrior_delegate = behavior_delegate
-	if(isliving(pulling) && warrior_delegate.lunging)
+	if(isliving(pulling) && istype(warrior_delegate) && warrior_delegate.lunging)
 		warrior_delegate.lunging = FALSE // To avoid extreme cases of stopping a lunge then quickly pulling and stopping to pull someone else
 		var/mob/living/lunged = pulling
 		lunged.set_effect(0, STUN)

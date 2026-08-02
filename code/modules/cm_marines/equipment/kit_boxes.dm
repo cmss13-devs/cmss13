@@ -156,7 +156,7 @@
 	new /obj/item/bodybag/tarp/reactive/scout(src)
 	new /obj/item/explosive/plastic(src)
 	new /obj/item/explosive/plastic(src)
-	new /obj/item/device/encryptionkey/jtac(src)
+	new /obj/item/device/encryptionkey/scout(src)
 	if(SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST)
 		new /obj/item/device/binoculars/designator(src)
 	else
@@ -271,7 +271,7 @@
 	desc = "A paper box. Open it and get a specialist kit."
 	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "spec_kit"
-	var/list/allowed_roles_list = list(JOB_SQUAD_SPECIALIST, JOB_WO_SQUAD_SPECIALIST, JOB_WO_CREWMAN)
+	var/list/allowed_roles_list = list(JOB_SQUAD_SPECIALIST, JOB_WO_SQUAD_SPECIALIST, JOB_WO_WARDEN)
 
 	///Used for cryo specs who already have "foxtrot" appended to their ID assignments
 	var/squad_assignment_update = TRUE

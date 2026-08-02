@@ -182,6 +182,16 @@
 	key = "6"
 	flags = RESTRICTED|HIVEMIND
 
+/datum/language/artemis
+	name = LANGUAGE_ARTEMIS
+	desc = "The ARTEMIS Link is an AI subprocessor based on APOLLO Link. Its signal is stronger than APOLLO Link to accomidate the ground it must travel through for an underground AI core."
+	color = "skrell"
+	speech_verb = "states"
+	ask_verb = "queries"
+	exclaim_verb = "declares"
+	key = "z"
+	flags = RESTRICTED|HIVEMIND
+
 /datum/language/apollo/broadcast(mob/living/speaker, message, speaker_mask)
 	if(!speaker.hear_apollo())
 		return
@@ -218,10 +228,51 @@
 	var/list/listening = hearers(1, src)
 	listening -= src
 
-	for (var/mob/living/M in listening)
-		if(isSilicon(M) || M.hear_apollo())
+	for (var/mob/living/listener in listening)
+		if(isSilicon(listener) || listener.hear_apollo())
 			continue
-		M.show_message("<i><span class='game say'><span class='name'>synthesised voice</span> <span class='message'>beeps, \"beep beep beep\"</span></span></i>",2)
+		listener.show_message("<i><span class='game say'><span class='name'>synthesised voice</span> <span class='message'>beeps, \"beep beep beep\"</span></span></i>",2)
+
+/datum/language/artemis/broadcast(mob/living/speaker, message, speaker_mask)
+	if(!speaker.hear_artemis())
+		return
+
+	if (!message)
+		return
+
+	///Font size
+	var/scale = "message"
+	if(isARES(speaker))
+		scale = "large"
+
+	var/message_start = "<i><span class='game say'>[name], <span class='name'>[speaker.name]</span>"
+	var/message_body = "<span class='message'>broadcasts, \"[message]\"</span></span></i>"
+	var/full_message = "<span class='[scale]'><span class='[color]'>[message_start] [message_body]</span></span>"
+
+
+	GLOB.STUI.game.Add("\[[time_stamp()]]<font color='#FFFF00'>APOLLO: [key_name(speaker)] : [message]</font><br>")
+	GLOB.STUI.processing |= STUI_LOG_GAME_CHAT
+	log_say("[speaker.name != "Unknown" ? speaker.name : "([speaker.real_name])"] \[APOLLO\]: [message] (CKEY: [speaker.key]) (JOB: [speaker.job]) (AREA: [get_area_name(speaker)])")
+	log_ares_apollo(speaker.real_name, message)
+	for (var/mob/dead in GLOB.dead_mob_list)
+		if(!istype(dead,/mob/new_player) && !istype(dead,/mob/living/brain)) //No meta-evesdropping
+			var/dead_message = "<span class='[scale]'><span class='[color]'>[message_start](<a href='byond://?src=\ref[dead];track=\ref[speaker]'>F</a>) [message_body]</span></span>"
+			dead.show_message(dead_message, SHOW_MESSAGE_VISIBLE)
+
+	for (var/mob/living/listener in GLOB.alive_mob_list)
+
+		if (!listener.hear_artemis())
+			continue
+
+		listener.show_message(full_message, SHOW_MESSAGE_VISIBLE)
+
+	var/list/listening = hearers(1, src)
+	listening -= src
+
+	for (var/mob/living/listener in listening)
+		if(isSilicon(listener) || listener.hear_artemis())
+			continue
+		listener.show_message("<i><span class='game say'><span class='name'>synthesised voice</span> <span class='message'>beeps, \"beep beep beep\"</span></span></i>",2)
 
 /datum/language/primitive
 	name = LANGUAGE_MONKEY

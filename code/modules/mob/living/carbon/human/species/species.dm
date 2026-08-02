@@ -76,6 +76,10 @@
 	var/base_color   //Used when setting species.
 	var/hair_color   //If the species only has one hair color
 	var/no_grad_style //Hair gradients or no
+	var/list/eyes_help = list() //red, green, blue
+	var/list/eyes_disarm = list()
+	var/list/eyes_grab = list()
+	var/list/eyes_harm = list()
 
 	//Currently, this is only used for flavor in surgery messages. Can be changed for individual species (i.e. synths)
 	var/flesh_type = "flesh"
@@ -452,20 +456,8 @@
 /datum/species/proc/handle_unique_behavior(mob/living/carbon/human/H)
 	return
 
-// Used to update alien icons for aliens.
-/datum/species/proc/handle_login_special(mob/living/carbon/human/H)
-	return
-
-// As above.
-/datum/species/proc/handle_logout_special(mob/living/carbon/human/H)
-	return
-
 // Builds the HUD using species-specific icons and usable slots.
 /datum/species/proc/build_hud(mob/living/carbon/human/H)
-	return
-
-// Grabs the window received when you click-drag someone onto you.
-/datum/species/proc/get_inventory_dialogue(mob/living/carbon/human/H)
 	return
 
 //Used by xenos understanding larvae and dionaea understanding nymphs.

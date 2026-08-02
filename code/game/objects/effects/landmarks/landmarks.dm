@@ -4,6 +4,7 @@
 	icon_state = "x2"
 	anchored = TRUE
 	unacidable = TRUE
+	flags_atom = NO_ZFALL
 
 	var/invisibility_value = INVISIBILITY_MAXIMUM
 	var/spawn_chance = 100
@@ -456,9 +457,9 @@
 	icon_state = "mo_spawn"
 	job = /datum/job/command/pilot/whiskey
 
-/obj/effect/landmark/start/whiskey/tank_crew
+/obj/effect/landmark/start/whiskey/warden
 	icon_state = "spec_hg_spawn"
-	job = /datum/job/command/tank_crew/whiskey
+	job = /datum/job/command/warden/whiskey
 
 /obj/effect/landmark/start/whiskey/intel
 	icon_state = "io_spawn"
@@ -529,6 +530,11 @@
 	name = "working joe late join"
 	icon_state = "late_join_misc"
 	job = JOB_WORKING_JOE
+
+/obj/effect/landmark/late_join/working_joe/colony
+	name = "colony working joe late join"
+	icon_state = "late_join_misc"
+	job = JOB_COLONY_JOE
 
 /obj/effect/landmark/late_join/dzho_automaton
 	name = "dzho automaton late join"

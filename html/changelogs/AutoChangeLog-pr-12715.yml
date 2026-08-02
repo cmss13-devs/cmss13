@@ -1,0 +1,4 @@
+author: "JackieEstegado"
+delete-after: True
+changes:
+  - bugfix: "Fixed being able to bypass id locks on bags by shaking or being able to put an item inside."

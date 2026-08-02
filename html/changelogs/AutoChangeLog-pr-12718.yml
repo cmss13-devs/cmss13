@@ -1,0 +1,4 @@
+author: "JackieEstegado"
+delete-after: True
+changes:
+  - bugfix: "Eyepiece NVGs no longer increase eye damage from welding when turned off."

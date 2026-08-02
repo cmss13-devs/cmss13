@@ -38,7 +38,7 @@ SUBSYSTEM_DEF(explosion_waves)
 
 	for(var/name, contents in checkpoints)
 		var/list/datum/explosion_wave/checkpoint_waves = contents
-		contents -= item
+		checkpoint_waves -= item
 
 /datum/controller/subsystem/explosion_waves/proc/set_checkpoint(name)
 	checkpoints[name] = queued.Copy()

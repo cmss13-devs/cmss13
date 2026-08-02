@@ -200,24 +200,24 @@
 
 
 /datum/action/xeno_action/activable/valkyrie_rage/proc/remove_target_speed()
-	var/mob/living/carbon/xenomorph/raging_valkyrie = focus_rage.resolve()
-	if(raging_valkyrie) //if the target was qdeleted it would be null so you need to check for it
-		raging_valkyrie.speed_modifier += speed_buff_amount
-		raging_valkyrie.remove_filter("raging")
-		REMOVE_TRAIT(raging_valkyrie, TRAIT_VALKYRIE_ARMORED, TRAIT_SOURCE_ABILITY("Tantrum"))
-		raging_valkyrie.recalculate_speed()
-		to_chat(raging_valkyrie, SPAN_XENOHIGHDANGER("We feel ourselves calm down."))
+	var/mob/living/carbon/xenomorph/target_xeno = focus_rage.resolve()
+	if(target_xeno) //if the target was qdeleted it would be null so you need to check for it
+		target_xeno.speed_modifier += speed_buff_amount
+		target_xeno.remove_filter("raging")
+		REMOVE_TRAIT(target_xeno, TRAIT_VALKYRIE_ARMORED, TRAIT_SOURCE_ABILITY("Tantrum"))
+		target_xeno.recalculate_speed()
+		to_chat(target_xeno, SPAN_XENOHIGHDANGER("We feel ourselves calm down."))
 	armor_buffs_speed_target = FALSE
 
 /datum/action/xeno_action/activable/valkyrie_rage/proc/remove_target_rage()
-	var/mob/living/carbon/xenomorph/raging_valkyrie = focus_rage.resolve()
-	if(raging_valkyrie) //if the target was qdeleted it would be null so you need to check for it
-		raging_valkyrie.armor_modifier -= target_armor_buff
-		raging_valkyrie.remove_filter("raging")
-		REMOVE_TRAIT(raging_valkyrie, TRAIT_VALKYRIE_ARMORED, TRAIT_SOURCE_ABILITY("Tantrum"))
-		raging_valkyrie.recalculate_armor()
-		UnregisterSignal(raging_valkyrie, list(COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE))
-		to_chat(raging_valkyrie, SPAN_XENOHIGHDANGER("We feel ourselves calm down."))
+	var/mob/living/carbon/xenomorph/target_xeno = focus_rage.resolve()
+	if(target_xeno) //if the target was qdeleted it would be null so you need to check for it
+		target_xeno.armor_modifier -= target_armor_buff
+		target_xeno.remove_filter("raging")
+		REMOVE_TRAIT(target_xeno, TRAIT_VALKYRIE_ARMORED, TRAIT_SOURCE_ABILITY("Tantrum"))
+		target_xeno.recalculate_armor()
+		UnregisterSignal(target_xeno, list(COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE))
+		to_chat(target_xeno, SPAN_XENOHIGHDANGER("We feel ourselves calm down."))
 	armor_buffs_active_target = FALSE
 
 /datum/action/xeno_action/activable/valkyrie_rage/proc/calculate_damage_mitigation_self(mob/living/carbon/xenomorph/source, list/damagedata)
@@ -256,9 +256,9 @@
 		damagedata["armor"], damagedata["penetration"], damagedata["armour_break_pr_pen"],
 		damagedata["armour_break_flat"], damagedata["armor_integrity"])
 
-	var/mob/living/carbon/xenomorph/valkyrie = owner
-	if(istype(valkyrie.behavior_delegate, /datum/behavior_delegate/praetorian_valkyrie))
-		var/datum/behavior_delegate/praetorian_valkyrie/valk = valkyrie.behavior_delegate
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(istype(xeno.behavior_delegate, /datum/behavior_delegate/praetorian_valkyrie))
+		var/datum/behavior_delegate/praetorian_valkyrie/valk = xeno.behavior_delegate
 		valk.damage_mitigated += pre_mit_damage - post_mit_damage
 
 /datum/action/xeno_action/activable/high_gallop/use_ability(atom/target_atom)
@@ -400,49 +400,49 @@
 
 
 /datum/action/xeno_action/activable/prae_retrieve/use_ability(atom/target_atom)
-	var/mob/living/carbon/xenomorph/retrive_user = owner
-	if(!istype(retrive_user))
+	var/mob/living/carbon/xenomorph/valkyrie = owner
+	if(!istype(valkyrie))
 		return
 
-	var/datum/behavior_delegate/praetorian_valkyrie/behavior = retrive_user.behavior_delegate
+	var/datum/behavior_delegate/praetorian_valkyrie/behavior = valkyrie.behavior_delegate
 	if(!istype(behavior))
 		return
 
-	if(retrive_user.observed_xeno != null)
-		to_chat(retrive_user, SPAN_XENOHIGHDANGER("We cannot retrieve sisters through overwatch!"))
+	if(valkyrie.observed_xeno != null)
+		to_chat(valkyrie, SPAN_XENOHIGHDANGER("We cannot retrieve sisters through overwatch!"))
 		return
 
-	if(!isxeno(target_atom) || !retrive_user.can_not_harm(target_atom))
-		to_chat(retrive_user, SPAN_XENODANGER("We must target one of our sisters!"))
+	if(!isxeno(target_atom) || !valkyrie.can_not_harm(target_atom))
+		to_chat(valkyrie, SPAN_XENODANGER("We must target one of our sisters!"))
 		return
 
-	if(target_atom == retrive_user)
-		to_chat(retrive_user, SPAN_XENODANGER("We cannot retrieve ourself!"))
+	if(target_atom == valkyrie)
+		to_chat(valkyrie, SPAN_XENODANGER("We cannot retrieve ourself!"))
 		return
 
-	if(!(target_atom in view(7, retrive_user)))
-		to_chat(retrive_user, SPAN_XENODANGER("That sister is too far away!"))
+	if(!(target_atom in view(7, valkyrie)))
+		to_chat(valkyrie, SPAN_XENODANGER("That sister is too far away!"))
 		return
 
 	var/mob/living/carbon/xenomorph/target_xeno = target_atom
 
 	if(target_xeno.anchored)
-		to_chat(retrive_user, SPAN_XENODANGER("That sister cannot move!"))
+		to_chat(valkyrie, SPAN_XENODANGER("That sister cannot move!"))
 		return
 
 	if(!(target_xeno.resting || target_xeno.stat == UNCONSCIOUS))
 		if(target_xeno.mob_size > MOB_SIZE_BIG)
-			to_chat(retrive_user, SPAN_WARNING("[target_xeno] is too big to retrieve while standing up!"))
+			to_chat(valkyrie, SPAN_WARNING("[target_xeno] is too big to retrieve while standing up!"))
 			return
 
 	if(target_xeno.stat == DEAD)
-		to_chat(retrive_user, SPAN_WARNING("[target_xeno] is already dead!"))
+		to_chat(valkyrie, SPAN_WARNING("[target_xeno] is already dead!"))
 		return
 
-	if(retrive_user.action_busy)
+	if(valkyrie.action_busy)
 		return
 
-	XENO_ACTION_CHECK_USE_PLASMA(retrive_user)
+	XENO_ACTION_CHECK_USE_PLASMA(valkyrie)
 
 	if(!behavior.use_internal_fury_ability(retrieve_cost))
 		return
@@ -450,10 +450,10 @@
 	// Build our turflist
 	var/list/turf/turflist = list()
 	var/list/telegraph_atom_list = list()
-	var/facing = get_dir(retrive_user, target_atom)
-	var/reversefacing = get_dir(target_atom, retrive_user)
-	var/turf/target_turf = retrive_user.loc
-	var/turf/temp = retrive_user.loc
+	var/facing = get_dir(valkyrie, target_atom)
+	var/reversefacing = get_dir(target_atom, valkyrie)
+	var/turf/target_turf = valkyrie.loc
+	var/turf/temp = valkyrie.loc
 	for(var/x in 0 to max_distance)
 		temp = get_step(target_turf, facing)
 		if(facing in GLOB.diagonals) // check if it goes through corners
@@ -471,7 +471,7 @@
 				blocked = TRUE
 				break
 		if(blocked)
-			to_chat(retrive_user, SPAN_XENOWARNING("We can't reach [target_xeno] with our resin retrieval hook!"))
+			to_chat(valkyrie, SPAN_XENOWARNING("We can't reach [target_xeno] with our resin retrieval hook!"))
 			return
 
 		target_turf = temp
@@ -484,34 +484,34 @@
 		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/green(target_turf, windup)
 
 	if(!length(turflist))
-		to_chat(retrive_user, SPAN_XENOWARNING("We don't have any room to do our retrieve!"))
+		to_chat(valkyrie, SPAN_XENOWARNING("We don't have any room to do our retrieve!"))
 		return
 
-	retrive_user.visible_message(SPAN_XENODANGER("[retrive_user] prepares to fire its resin retrieval hook at [target_atom]!"), SPAN_XENODANGER("We prepare to fire our resin retrieval hook at [target_atom]!"))
-	retrive_user.emote("roar")
+	valkyrie.visible_message(SPAN_XENODANGER("[valkyrie] prepares to fire its resin retrieval hook at [target_atom]!"), SPAN_XENODANGER("We prepare to fire our resin retrieval hook at [target_atom]!"))
+	valkyrie.emote("roar")
 
-	var/throw_target_turf = get_step(retrive_user, facing)
-	var/turf/behind_turf = get_step(retrive_user, reversefacing)
+	var/throw_target_turf = get_step(valkyrie, facing)
+	var/turf/behind_turf = get_step(valkyrie, reversefacing)
 	if(!(behind_turf.density))
 		throw_target_turf = behind_turf
 
-	ADD_TRAIT(retrive_user, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Praetorian Retrieve"))
+	ADD_TRAIT(valkyrie, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Praetorian Retrieve"))
 	if(windup)
-		if(!do_after(retrive_user, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 1))
-			to_chat(retrive_user, SPAN_XENOWARNING("We cancel our retrieve."))
+		if(!do_after(valkyrie, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 1))
+			to_chat(valkyrie, SPAN_XENOWARNING("We cancel our retrieve."))
 			apply_cooldown()
 
 			for (var/obj/effect/xenomorph/xeno_telegraph/target_telegraph in telegraph_atom_list)
 				telegraph_atom_list -= target_telegraph
 				qdel(target_telegraph)
 
-			REMOVE_TRAIT(retrive_user, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Praetorian Retrieve"))
+			REMOVE_TRAIT(valkyrie, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Praetorian Retrieve"))
 
 			return
 
-	REMOVE_TRAIT(retrive_user, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Praetorian Retrieve"))
+	REMOVE_TRAIT(valkyrie, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Praetorian Retrieve"))
 
-	playsound(get_turf(retrive_user), 'sound/effects/bang.ogg', 25, 0)
+	playsound(get_turf(valkyrie), 'sound/effects/bang.ogg', 25, 0)
 
 	var/successful_retrieve = FALSE
 	for(var/turf/choosed_turf in turflist)
@@ -520,18 +520,18 @@
 			break
 
 	if(!successful_retrieve)
-		to_chat(retrive_user, SPAN_XENOWARNING("We can't reach [target_xeno] with our resin retrieval hook!"))
+		to_chat(valkyrie, SPAN_XENOWARNING("We can't reach [target_xeno] with our resin retrieval hook!"))
 		return
 
-	to_chat(target_xeno, SPAN_XENOBOLDNOTICE("We are pulled toward [retrive_user]!"))
+	to_chat(target_xeno, SPAN_XENOBOLDNOTICE("We are pulled toward [valkyrie]!"))
 
 	shake_camera(target_xeno, 10, 1)
 	var/throw_dist = get_dist(throw_target_turf, target_xeno)-1
 	if(throw_target_turf == behind_turf)
 		throw_dist++
-		to_chat(retrive_user, SPAN_XENOBOLDNOTICE("We fling [target_xeno] over our head with our resin hook, and they land behind us!"))
+		to_chat(valkyrie, SPAN_XENOBOLDNOTICE("We fling [target_xeno] over our head with our resin hook, and they land behind us!"))
 	else
-		to_chat(retrive_user, SPAN_XENOBOLDNOTICE("We fling [target_xeno] towards us with our resin hook, and they land in front of us!"))
+		to_chat(valkyrie, SPAN_XENOBOLDNOTICE("We fling [target_xeno] towards us with our resin hook, and they land in front of us!"))
 	target_xeno.throw_atom(throw_target_turf, throw_dist, SPEED_VERY_FAST, pass_flags = PASS_MOB_THRU)
 	apply_cooldown()
 	return ..()

@@ -33,14 +33,10 @@
 	if(power >= 150) //shockwave for anything over 150 power
 		new /obj/effect/shockwave(epicenter, power/50)
 
-	if(power >= 100) // powerful explosions send out some special effects
-		epicenter = get_turf(epicenter) // the ex_acts might have changed the epicenter
-		new /obj/shrapnel_effect(epicenter)
-
 	var/effect_radius = power / falloff * 0.6
-	if(power >= 300) // constructor bools are [small, large, tiny]. idk why TGMC didn't make this an enum?
+	if(power >= 400) // constructor bools are [small, large, tiny]. idk why TGMC didn't make this an enum?
 		new /obj/effect/temp_visual/explosion(epicenter, effect_radius, FALSE, TRUE, FALSE)
-	else if(power >= 200)
+	else if(power >= 300)
 		new /obj/effect/temp_visual/explosion(epicenter, effect_radius, FALSE, FALSE, FALSE)
 	else if (power >= 150)
 		new /obj/effect/temp_visual/explosion(epicenter, effect_radius, TRUE, FALSE, FALSE)

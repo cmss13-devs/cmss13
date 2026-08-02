@@ -235,9 +235,9 @@
 		damagedata["armor"], damagedata["penetration"], damagedata["armour_break_pr_pen"],
 		damagedata["armour_break_flat"], damagedata["armor_integrity"])
 
-	var/mob/living/carbon/xenomorph/valkyrie = owner
-	if(istype(valkyrie.behavior_delegate, /datum/behavior_delegate/praetorian_valkyrie))
-		var/datum/behavior_delegate/praetorian_valkyrie/valk = valkyrie.behavior_delegate
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(istype(xeno.behavior_delegate, /datum/behavior_delegate/praetorian_valkyrie))
+		var/datum/behavior_delegate/praetorian_valkyrie/valk = xeno.behavior_delegate
 		valk.damage_mitigated += pre_mit_damage - post_mit_damage
 
 

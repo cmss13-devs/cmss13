@@ -42,8 +42,6 @@
 		visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("The [name] beeps steadily and its ammo light blinks red.")]")
 		playsound(loc, 'sound/weapons/smg_empty_alarm.ogg', 25, 1)
 
-	final_destroyed_action()
-
 /obj/structure/machinery/defenses/sentry/flamer/final_destroyed_action()
 	if(!QDELETED(src))
 		if(ammo.current_rounds != 0 && destruction_spill_type)

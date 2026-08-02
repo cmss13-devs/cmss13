@@ -172,7 +172,7 @@
 	var/mob/living/carbon/xenomorph/xeno = owner
 	return xeno.deselect_timer < world.time // We clicked the same ability in a very short time
 
-/datum/action/xeno_action/onclick/lurker_invisibility/use_ability()
+/datum/action/xeno_action/onclick/lurker_invisibility/use_ability(atom/targeted_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if(!istype(xeno))
@@ -266,7 +266,7 @@
 		to_chat(owner, SPAN_XENOHIGHDANGER("We are ready to use our invisibility again!"))
 	..()
 
-/datum/action/xeno_action/onclick/lurker_assassinate/use_ability()
+/datum/action/xeno_action/onclick/lurker_assassinate/use_ability(atom/targeted_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if(!istype(xeno))

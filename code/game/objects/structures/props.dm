@@ -507,8 +507,8 @@
 	state = STATE_FUEL
 
 /obj/structure/prop/brazier/frame/full
-	name = "empty full brazier"
-	desc = "An empty brazier. Yet it's also full. What??? Use something hot to ignite it, like a welding tool."
+	name = "unlit brazier"
+	desc = "A brazier full of wood, though unlit. Something hot could ignite it."
 	icon_state = "brazier_frame_filled"
 	frame_type = /obj/structure/prop/brazier
 	state = STATE_IGNITE

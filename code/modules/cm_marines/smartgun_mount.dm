@@ -8,8 +8,8 @@
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/machineguns.dmi'
 	w_class = SIZE_MEDIUM
 	icon_state = "m56d_drum"
-	flags_magazine = NO_FLAGS //can't be refilled or emptied by hand
 	caliber = "10x28mm"
+	flags_magazine = AMMUNITION_REFILLABLE|AMMUNITION_SLAP_TRANSFER
 	max_rounds = 700
 	default_ammo = /datum/ammo/bullet/machinegun
 	gun_type = null
@@ -1305,8 +1305,15 @@
 	var/obj/structure/dropship_equipment/mg_holder/deployment_system
 	gun_has_gamemode_skin = FALSE
 
+
+/obj/structure/machinery/m56d_hmg/mg_turret/dropship/update_health(damage, pass_forward = FALSE)
+	pass_forward = !pass_forward
+	if(pass_forward)
+		deployment_system.update_health(damage, pass_forward)
+	. = ..()
+
 /obj/structure/machinery/m56d_hmg/mg_turret/dropship/Destroy()
 	if(deployment_system)
 		deployment_system.deployed_mg = null
 		deployment_system = null
-	return ..()
+	. = ..()

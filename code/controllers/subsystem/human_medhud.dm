@@ -6,7 +6,7 @@ SUBSYSTEM_DEF(human_medhud)
 
 	var/list/mob/living/carbon/human/currentrun
 
-/datum/controller/subsystem/human_medhud/proc/fire(resumed = FALSE)
+/datum/controller/subsystem/human_medhud/fire(resumed = FALSE)
 	if(!resumed)
 		currentrun = SShuman.processable_human_list.Copy()
 

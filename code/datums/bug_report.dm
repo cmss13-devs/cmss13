@@ -162,8 +162,7 @@
 	GLOB.admin_help_ui_handler.perform_adminhelp(initial_user, general_message, urgent = FALSE)
 
 	var/href_message = ADMIN_VIEW_BUG_REPORT(src)
-	var/link_data = list("View Report", "byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];view_bug_report=[REF(src)]")
-	initial_user.current_ticket.AddInteraction(href_message, link_data = link_data)
+	initial_user.current_ticket.AddInteraction(href_message)
 
 /datum/tgui_bug_report_form/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()

@@ -1,4 +1,3 @@
-// EGGMMORPG set to release soon
 #define EGGMORPG_RANGE 2
 
 //Eggmorpher - Basically a big reusable egg
@@ -6,7 +5,7 @@
 	name = XENO_STRUCTURE_EGGMORPH
 	desc = "A disgusting biomass generator that reeks of rotting flesh. Capable of producing facehuggers on its own."
 	icon_state = "eggmorph"
-	health = 400
+	health = 300
 	appearance_flags = KEEP_TOGETHER
 	layer = FACEHUGGER_LAYER
 
@@ -18,6 +17,8 @@
 	var/huggers_to_grow_max = 6
 	///How many huggers are reserved from observers.
 	var/huggers_reserved = 0
+	///Datum used for mob detection.
+	var/datum/shape/range_bounds
 	///How long it takes to generate one facehugger.
 	var/spawn_cooldown_length = 120 SECONDS
 	///How long it takes to generate one facehugger if queen is on ovi.
@@ -28,6 +29,7 @@
 /obj/effect/alien/resin/special/eggmorph/Initialize(mapload, hive_ref)
 	. = ..()
 	COOLDOWN_START(src, spawn_cooldown, get_egg_cooldown())
+	range_bounds = SQUARE(x, y, EGGMORPG_RANGE)
 	update_minimap_icon()
 
 /obj/effect/alien/resin/special/eggmorph/proc/update_minimap_icon()
@@ -45,6 +47,7 @@
 				F = new(loc, linked_hive.hivenumber)
 				step_away(F,src,1)
 
+	range_bounds = null
 	SSminimaps.remove_marker(src)
 	. = ..()
 
@@ -64,7 +67,7 @@
 
 /obj/effect/alien/resin/special/eggmorph/attackby(obj/item/item, mob/user)
 	if(!isxeno(user))
-		return ..(item, user)
+		return
 
 	if(istype(item, /obj/item/clothing/mask/facehugger))
 		var/obj/item/clothing/mask/facehugger/hugger = item
@@ -122,17 +125,20 @@
 		stored_huggers = min(huggers_to_grow_max, stored_huggers + 1)
 
 /obj/effect/alien/resin/special/eggmorph/proc/check_facehugger_target()
-	var/list/atom/movable/targets = SSmapgrids.get_movables_in_region(z, x - EGGMORPG_RANGE, x + EGGMORPG_RANGE, y - EGGMORPG_RANGE, y + EGGMORPG_RANGE)
+	if(!range_bounds)
+		range_bounds = SQUARE(x, y, EGGMORPG_RANGE)
+
+	var/list/targets = SSquadtree.players_in_range(range_bounds, z, QTREE_SCAN_MOBS | QTREE_FILTER_LIVING)
+	if(isnull(targets) || !length(targets))
+		return
+
+	for(var/mob/living/carbon/xenomorph/xeno in targets)
+		targets -= xeno //Don't add xenomorphs to the list of possible players we hug.
+
 
 	if(!length(targets))
 		return
-
-	var/list/mob/vetted_targets = list()
-	for(var/atom/movable/thing as anything in targets)
-		if(ismob(thing) && !isxeno(thing))
-			vetted_targets += thing
-
-	var/target = SAFEPICK(vetted_targets)
+	var/target = pick(targets)
 	if(isnull(target))
 		return
 

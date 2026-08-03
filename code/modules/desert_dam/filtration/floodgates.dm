@@ -11,8 +11,4 @@
 	icon = 'icons/turf/walls/bunker.dmi'
 	icon_state = "gate_west"
 	density = TRUE
-	explo_proof = TRUE
-	breakable = FALSE
-	unslashable = TRUE
-	unacidable = TRUE
 

@@ -19,10 +19,6 @@
 /obj/item/reagent_container/blood/OMinus,
 /turf/open/floor/shiva/purple/east,
 /area/varadero/interior/research)
-"ae" = (
-/obj/effect/landmark/survivor_spawner/clf_coordinator/varadero,
-/turf/open/floor/platingdmg3,
-/area/varadero/interior/research)
 "af" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/stack/tile/plasteel{
@@ -573,11 +569,11 @@
 /area/varadero/interior/research)
 "nj" = (
 /obj/structure/surface/table/almayer,
-/obj/item/weapon/gun/pistol/deagle,
-/obj/item/ammo_magazine/pistol/deagle,
-/obj/item/ammo_magazine/pistol/deagle,
-/obj/item/ammo_magazine/pistol/deagle,
-/obj/item/ammo_magazine/pistol/deagle,
+/obj/item/weapon/gun/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/almayer,
 /area/varadero/interior/research/clfship)
@@ -772,7 +768,6 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
 "sD" = (
-/obj/effect/landmark/survivor_spawner/clf_synth/varadero,
 /turf/open/floor/platingdmg3,
 /area/varadero/interior/research)
 "sU" = (
@@ -2650,7 +2645,7 @@ Km
 TV
 AS
 AS
-ae
+sD
 vF
 Sl
 Dp

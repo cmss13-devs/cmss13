@@ -858,8 +858,8 @@
 /turf/open/predship/hunter_grille,
 /area/yautja_ship/middle_deck/trophy_hall)
 "bY" = (
-/obj/structure/machinery/telecomms/bus/preset_yaut,
-/turf/open/predship/hunter_catwalk_new,
+/obj/structure/foamed_metal/iron,
+/turf/open/predship/mainfloor/plain,
 /area/yautja_ship/lower_deck/training_center)
 "bZ" = (
 /obj/structure/prop/hunter/fake_platform/hunter,
@@ -1975,7 +1975,7 @@
 	pixel_y = 23;
 	name = "Secure Armory Lockdown";
 	pixel_x = -9;
-	req_one_access_txt = "394"
+	req_one_access_txt = "391"
 	},
 /turf/open/predship/hunter_grille,
 /area/yautja_ship/middle_deck/armory)
@@ -3795,10 +3795,6 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/predship,
 /area/yautja_ship/middle_deck/food)
-"hV" = (
-/obj/structure/machinery/telecomms/server/presets/yaut,
-/turf/open/predship/hunter_catwalk_new,
-/area/yautja_ship/lower_deck/training_center)
 "hW" = (
 /obj/structure/shuttle/engine/router{
 	color = "#c0baae"
@@ -4680,10 +4676,6 @@
 	},
 /turf/open/predship/plating,
 /area/yautja_ship/middle_deck/trophy_hall)
-"jE" = (
-/obj/structure/machinery/telecomms/receiver/preset_yaut,
-/turf/open/predship/hunter_catwalk_new,
-/area/yautja_ship/lower_deck/training_center)
 "jF" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/predship/hull/non_weedable_hull,
@@ -4729,7 +4721,7 @@
 "jM" = (
 /obj/structure/machinery/door/airlock/yautja/secure{
 	name = "\improper Ladder Access";
-	req_one_access = list(391,392,393,394)
+	req_one_access = list(391,392,393)
 	},
 /turf/open/predship/hunter_grille,
 /area/yautja_ship/lower_deck/corridors)
@@ -5290,7 +5282,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/weapon/gun/pistol/deagle/co/gold{
+/obj/item/weapon/gun/pistol/heavy/co/gold{
 	pixel_y = 6
 	},
 /obj/item/clothing/head/general{
@@ -6818,7 +6810,7 @@
 /obj/structure/machinery/door/airlock/yautja/secure/elder{
 	name = "\improper Elder Quarters";
 	dir = 1;
-	req_one_access = list(391,392,393,394)
+	req_one_access = list(391,392,393)
 	},
 /turf/open/predship/hunter_grille,
 /area/yautja_ship/upper_deck/elder)
@@ -6970,7 +6962,7 @@
 "pa" = (
 /obj/structure/machinery/door/airlock/yautja/secure/elder{
 	name = "\improper Elder Quarters";
-	req_one_access = list(391,392,393,394)
+	req_one_access = list(391,392,393)
 	},
 /turf/open/predship/hunter_grille,
 /area/yautja_ship/upper_deck/elder)
@@ -7125,7 +7117,7 @@
 "pi" = (
 /obj/structure/machinery/door/airlock/yautja/secure{
 	name = "\improper Ladder Access";
-	req_one_access = list(391,392,393,394)
+	req_one_access = list(391,392,393)
 	},
 /turf/open/predship/hunter_grille,
 /area/yautja_ship/upper_deck/elder)
@@ -8488,7 +8480,7 @@
 "sv" = (
 /obj/structure/machinery/door/airlock/yautja/secure/elder{
 	name = "\improper Elder Quarters";
-	req_one_access = list(391,392,393,394)
+	req_one_access = list(391,392,393)
 	},
 /turf/open/predship/hunter_grille,
 /area/yautja_ship/middle_deck/elder)
@@ -9622,7 +9614,7 @@
 	id = "armory";
 	pixel_y = 23;
 	name = "Armory Lockdown";
-	req_one_access_txt = "392"
+	req_one_access_txt = "391"
 	},
 /obj/effect/hunter/rune{
 	dir = 1
@@ -11350,13 +11342,13 @@
 	pixel_x = 7;
 	density = 0
 	},
+/obj/structure/machinery/juicer/yautja{
+	pixel_x = -9;
+	pixel_y = 16
+	},
 /obj/structure/window/reinforced/toughened{
 	dir = 4;
 	color = "#912727"
-	},
-/obj/structure/machinery/reagentgrinder/yautja{
-	pixel_x = -9;
-	pixel_y = 16
 	},
 /turf/open/predship/tile/red4/glow,
 /area/yautja_ship/middle_deck/research)
@@ -12352,7 +12344,7 @@
 /obj/structure/machinery/door/airlock/yautja/secure/elder{
 	name = "\improper Elder Quarters";
 	dir = 1;
-	req_one_access = list(391,392,393,394)
+	req_one_access = list(391,392,393)
 	},
 /turf/open/predship/hunter_grille,
 /area/yautja_ship/middle_deck/elder)
@@ -17644,7 +17636,7 @@
 "MC" = (
 /obj/structure/machinery/door/airlock/yautja/secure{
 	name = "\improper Ladder Access";
-	req_one_access = list(391,392,393,394)
+	req_one_access = list(391,392,393)
 	},
 /turf/open/predship/hunter_grille,
 /area/yautja_ship/middle_deck/elder)
@@ -30034,9 +30026,9 @@ kL
 kL
 kv
 bY
-am
-am
-am
+bY
+bY
+bY
 aj
 aj
 aj
@@ -30125,10 +30117,10 @@ kv
 kL
 kv
 kv
-hV
-am
-am
-am
+bY
+bY
+bY
+bY
 aj
 aj
 aj
@@ -30217,10 +30209,10 @@ kR
 kL
 kL
 kv
-am
-am
-am
-am
+bY
+bY
+bY
+bY
 aj
 aj
 aj
@@ -30309,10 +30301,10 @@ kR
 kL
 kL
 kv
-jE
-am
-am
-am
+bY
+bY
+bY
+bY
 kv
 kv
 kv

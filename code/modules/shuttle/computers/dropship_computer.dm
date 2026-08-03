@@ -33,7 +33,6 @@
 
 	/// If this computer should respect the faction variable of destination LZ
 	var/use_factions = TRUE
-	COOLDOWN_DECLARE(dropship_alarm)
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/upp
 	icon_state = "console_upp"
@@ -264,7 +263,7 @@
 				to_chat(xeno, SPAN_WARNING("The metal bird can not land here. It might be currently occupied!"))
 				return
 			to_chat(xeno, SPAN_NOTICE("You command the metal bird to come down. Clever girl."))
-			xeno_announcement(SPAN_XENOANNOUNCE("Our Queen has commanded the metal bird to the hive at [landing_zone.name]."),xeno.hivenumber,XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("Our Queen has commanded the metal bird to the hive at [linked_lz]."), xeno.hivenumber, XENO_GENERAL_ANNOUNCE)
 			log_ares_flight("Unknown", "Remote launch signal for [shuttle.name] received. Authentication garbled.")
 			log_ares_security("Security Alert", "Remote launch signal for [shuttle.name] received. Authentication garbled.")
 			return
@@ -410,7 +409,7 @@
 	addtimer(CALLBACK(hive, TYPE_PROC_REF(/datum/hive_status, override_evilution), original_evilution, FALSE), XENO_HIJACK_EVILUTION_TIME)
 
 	// Notify the yautja too so they stop the hunt
-	elder_overseer_message("The serpent Queen has commanded the landing shuttle to depart.")
+	message_all_yautja("The serpent Queen has commanded the landing shuttle to depart.")
 	playsound(src, 'sound/misc/queen_alarm.ogg')
 
 	if(istype(SSticker.mode, /datum/game_mode/colonialmarines))
@@ -503,7 +502,7 @@
 				var/new_shuttle = params["new_shuttle"]
 				return set_shuttle(new_shuttle)
 		return
-	var/mob/user = ui.user
+	var/mob/user = usr
 	if (shuttle)
 		var/obj/structure/machinery/computer/shuttle/dropship/flight/comp = shuttle.getControlConsole()
 		if(comp.dropship_control_lost)
@@ -518,7 +517,7 @@
 			if(!shuttle)
 				return FALSE
 			if(shuttle.mode != SHUTTLE_IDLE && (shuttle.mode != SHUTTLE_CALL && !shuttle.destination))
-				to_chat(user, SPAN_WARNING("You can't move to a new destination right now."))
+				to_chat(usr, SPAN_WARNING("You can't move to a new destination right now."))
 				return TRUE
 
 			var/is_optimised = FALSE
@@ -641,14 +640,10 @@
 			if(!shuttle)
 				return FALSE
 			if (shuttle.mode != SHUTTLE_IDLE && shuttle.mode != SHUTTLE_RECHARGING)
-				to_chat(user, SPAN_WARNING("The Launch Announcement Alarm is designed to tell people that you're going to take off soon."))
-				return TRUE
-			if(!(COOLDOWN_FINISHED(src, dropship_alarm)))
-				to_chat(user, SPAN_WARNING("The Launch Announcement Alarm can not be restarted yet."))
+				to_chat(usr, SPAN_WARNING("The Launch Announcement Alarm is designed to tell people that you're going to take off soon."))
 				return TRUE
 			shuttle.alarm_sound_loop.start()
 			shuttle.playing_launch_announcement_alarm = TRUE
-			COOLDOWN_START(src, dropship_alarm, 6 SECONDS)
 			return TRUE
 		if ("stop_playing_launch_announcement_alarm")
 			if(!shuttle)

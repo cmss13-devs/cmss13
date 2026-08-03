@@ -29,6 +29,18 @@
 	if(!isnull(render_relay_plane))
 		relay_render_to_plane(mymob, render_relay_plane)
 
+/atom/movable/screen/plane_master/turf
+	name = "turf plane master"
+	plane = TURF_PLANE
+	appearance_flags = PLANE_MASTER
+	blend_mode = BLEND_OVERLAY
+
+/atom/movable/screen/plane_master/turf/backdrop(mob/mymob)
+	. = ..()
+	remove_filter("AO")
+	if(istype(mymob) && mymob?.client?.prefs?.toggle_prefs & TOGGLE_AMBIENT_OCCLUSION)
+		add_filter("AO", 1, drop_shadow_filter(x = 0, y = -2, size = 4, color = "#04080FAA"))
+
 /atom/movable/screen/plane_master/floor
 	name = "floor plane master"
 	plane = FLOOR_PLANE
@@ -255,7 +267,7 @@
 	filters += filter(type = "drop_shadow", color = "#04080FAA", size = -20)
 
 /atom/movable/screen/plane_master/seethrough
-	name = "see-through plane"
+	name = "seethrough plane"
 	plane = SEETHROUGH_PLANE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 

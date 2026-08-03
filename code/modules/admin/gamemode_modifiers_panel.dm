@@ -65,8 +65,6 @@
 	if(action != "set_modifier_state")
 		return FALSE
 
-	var/old_value = MODE_HAS_MODIFIER(text2path(params["path"]))
+	message_admins("[key_name_admin(user)] has [params["state"] ? "enabled" : "disabled" ] [params["name"]] modifier.")
 	MODE_SET_MODIFIER(text2path(params["path"]), params["state"])
-	if(old_value != MODE_HAS_MODIFIER(text2path(params["path"])))
-		message_admins("[key_name_admin(user)] has [params["state"] ? "enabled" : "disabled" ] [params["name"]] modifier.")
 	update_static_data(user, ui)

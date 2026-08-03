@@ -99,9 +99,6 @@
 		return
 	if(!user.check_alien_construction(T, ignore_nest = TRUE))
 		return
-	if(locate(/obj/structure/ladder) in range(2, T))
-		to_chat(user, SPAN_XENOWARNING("We cannot plant [src] so close to a ladder."))
-		return
 	if(!user.check_plasma(30))
 		return
 
@@ -210,10 +207,6 @@
 /obj/item/xeno_egg/alpha
 	color = "#ff4040"
 	hivenumber = XENO_HIVE_ALPHA
-
-/obj/item/xeno_egg/kseries
-	color = "#ffff80"
-	hivenumber = XENO_HIVE_K_SERIES
 
 /obj/item/xeno_egg/forsaken
 	color = "#cc8ec4"

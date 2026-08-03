@@ -26,7 +26,7 @@
 
 /turf
 	icon = 'icons/turf/floors/floors.dmi'
-	plane = GAME_PLANE
+	plane = TURF_PLANE
 
 	///Used by floors to indicate the floor is a tile (otherwise its plating)
 	var/intact_tile = TRUE
@@ -105,9 +105,8 @@
 	else
 		initialize_pass_flags()
 
-	// Be sure to do this if you don't call parent!
-	for(var/atom/movable/thing in src)
-		Entered(thing)
+	for(var/atom/movable/AM in src)
+		Entered(AM)
 
 	if(light_power && light_range)
 		update_light()
@@ -132,13 +131,11 @@
 	vis_flags = VIS_HIDE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	anchored = TRUE
-	flags_atom = NO_ZFALL
 
-/obj/vis_contents_holder/Initialize(mapload, vis, offset, backdrop=TRUE)
+/obj/vis_contents_holder/Initialize(mapload, vis, offset, backdrop = TRUE)
 	. = ..()
 	plane -= offset
-	if(backdrop)
-		vis_contents += GLOB.openspace_backdrop_one_for_all
+	vis_contents += GLOB.openspace_backdrop_one_for_all
 	vis_contents += vis
 	name = null // Makes it invisible on right click
 
@@ -168,12 +165,6 @@
 		update_vis_contents()
 
 /turf/Destroy(force)
-	linked_pylons = null
-	weeds = null
-	autocells = null
-	opacity_sources = null
-	baseturfs = null
-
 	if(hybrid_lights_affecting)
 		for(var/atom/movable/lighting_mask/mask as anything in hybrid_lights_affecting)
 			LAZYREMOVE(mask.affecting_turfs, src)
@@ -255,8 +246,8 @@
 	return
 
 // Handles whether an atom is able to enter the src turf
-/turf/Enter(atom/movable/mover, atom/old_loc)
-	if(QDELETED(mover) || !isturf(mover.loc))
+/turf/Enter(atom/movable/mover, atom/forget)
+	if (!mover || !isturf(mover.loc))
 		return FALSE
 
 	var/override = SEND_SIGNAL(mover, COMSIG_MOVABLE_TURF_ENTER, src)
@@ -286,7 +277,7 @@
 		mover.Collide(T)
 		return FALSE
 	for (obstacle in T) //First, check objects to block exit
-		if (mover == obstacle || old_loc == obstacle)
+		if (mover == obstacle || forget == obstacle)
 			continue
 		A = obstacle
 		if (!istype(A) || !A.can_block_movement)
@@ -307,7 +298,7 @@
 					mover.Collide(T)
 					return FALSE
 			for(obstacle in T)
-				if(old_loc == obstacle)
+				if(forget == obstacle)
 					continue
 				A = obstacle
 				if (!istype(A) || !A.can_block_movement)
@@ -327,7 +318,7 @@
 					mover.Collide(T)
 					return FALSE
 			for(obstacle in T)
-				if(old_loc == obstacle)
+				if(forget == obstacle)
 					continue
 				A = obstacle
 				if (!istype(A) || !A.can_block_movement)
@@ -345,7 +336,7 @@
 		mover.Collide(src)
 		return FALSE
 	for(obstacle in src) //Then, check atoms in the target turf
-		if(old_loc == obstacle)
+		if(forget == obstacle)
 			continue
 		A = obstacle
 		if (!istype(A) || !A.can_block_movement)
@@ -366,21 +357,16 @@
 
 	return TRUE //Nothing found to block so return success!
 
-/turf/Entered(atom/movable/entered_movable, atom/old_loc)
-	SHOULD_CALL_PARENT(TRUE)
-
-	..() // Shouldn't do anything but to satisfy lint
-
-	if(QDELETED(entered_movable))
+/turf/Entered(atom/movable/A)
+	if(!istype(A))
 		return
 
-	SEND_SIGNAL(src, COMSIG_TURF_ENTERED, entered_movable)
-	SEND_SIGNAL(entered_movable, COMSIG_MOVABLE_TURF_ENTERED, src)
+	SEND_SIGNAL(src, COMSIG_TURF_ENTERED, A)
+	SEND_SIGNAL(A, COMSIG_MOVABLE_TURF_ENTERED, src)
 
 	// Let explosions know that the atom entered
-	if(old_loc != src)
-		for(var/datum/automata_cell/explosion/cell as anything in autocells)
-			cell.on_turf_entered(entered_movable)
+	for(var/datum/automata_cell/explosion/E in autocells)
+		E.on_turf_entered(A)
 
 /turf/proc/is_plating()
 	return 0
@@ -472,6 +458,13 @@
 	created_baseturf_lists[new_baseturfs[length(new_baseturfs)]] = new_baseturfs.Copy()
 	return new_baseturfs
 
+/// WARNING WARNING
+/// Turfs DO NOT lose their signals when they get replaced, REMEMBER THIS
+/// It's possible because turfs are fucked, and if you have one in a list and it's replaced with another one, the list ref points to the new turf
+/// We do it because moving signals over was needlessly expensive, and bloated a very commonly used bit of code
+/turf/clear_signal_refs()
+	return
+
 // Creates a new turf
 // new_baseturfs can be either a single type or list of types, formatted the same as baseturfs. see turf.dm
 /turf/proc/ChangeTurf(path, list/new_baseturfs, flags)
@@ -486,8 +479,7 @@
 	//if(src.type == new_turf_path) // Put this back if shit starts breaking
 	// return src
 
-	var/list/pylons = linked_pylons
-	var/list/cells = autocells
+	var/pylons = linked_pylons
 
 	var/list/old_baseturfs = baseturfs
 	var/old_ref = weak_reference
@@ -506,24 +498,33 @@
 
 	changing_turf = TRUE
 	qdel(src) //Just get the side effects and call Destroy
-	var/turf/new_self = new path(src)
+	// Get signal registrations post-Destroy so stuff that's unregistered on Destroy won't be readded
+	var/list/old_comp_lookup = comp_lookup?.Copy()
+	var/list/old_signal_procs = signal_procs?.Copy()
+	var/turf/W = new path(src)
 
-	new_self.weak_reference = old_ref
+	// WARNING WARNING
+	// Turfs DO NOT lose their signals when they get replaced, REMEMBER THIS
+	// It's possible because turfs are fucked, and if you have one in a list and it's replaced with another one, the list ref points to the new turf
+	if(old_comp_lookup)
+		LAZYOR(W.comp_lookup, old_comp_lookup)
+	if(old_signal_procs)
+		LAZYOR(W.signal_procs, old_signal_procs)
+
+	W.weak_reference = old_ref
 
 	for(var/datum/callback/callback as anything in post_change_callbacks)
-		callback.InvokeAsync(new_self)
+		callback.InvokeAsync(W)
 
 	if(new_baseturfs)
-		new_self.baseturfs = new_baseturfs
+		W.baseturfs = new_baseturfs
 	else
-		new_self.baseturfs = old_baseturfs
+		W.baseturfs = old_baseturfs
 
-	new_self.linked_pylons = pylons
-	if(length(cells))
-		LAZYOR(new_self.autocells, cells)
+	W.linked_pylons = pylons
 
-	new_self.hybrid_lights_affecting = old_hybrid_lights_affecting
-	new_self.dynamic_lumcount = dynamic_lumcount
+	W.hybrid_lights_affecting = old_hybrid_lights_affecting
+	W.dynamic_lumcount = dynamic_lumcount
 
 	lighting_corner_NE = old_lighting_corner_NE
 	lighting_corner_SE = old_lighting_corner_SE
@@ -534,21 +535,21 @@
 	if(SSlighting.initialized)
 		recalculate_directional_opacity()
 
-		new_self.static_lighting_object = old_lighting_object
+		W.static_lighting_object = old_lighting_object
 
 		if(static_lighting_object && !static_lighting_object.needs_update)
 			static_lighting_object.update()
 
 	//Since the old turf was removed from hybrid_lights_affecting, readd the new turf here
-	if(new_self.hybrid_lights_affecting)
-		for(var/atom/movable/lighting_mask/mask as anything in new_self.hybrid_lights_affecting)
-			LAZYADD(mask.affecting_turfs, new_self)
+	if(W.hybrid_lights_affecting)
+		for(var/atom/movable/lighting_mask/mask as anything in W.hybrid_lights_affecting)
+			LAZYADD(mask.affecting_turfs, W)
 
-	if(new_self.directional_opacity != old_directional_opacity)
-		new_self.reconsider_lights()
+	if(W.directional_opacity != old_directional_opacity)
+		W.reconsider_lights()
 
-	new_self.levelupdate()
-	return new_self
+	W.levelupdate()
+	return W
 
 //If you modify this function, ensure it works correctly with lateloaded map templates.
 /turf/proc/AfterChange(flags, oldType) //called after a turf has been replaced in ChangeTurf()
@@ -702,9 +703,9 @@
 	return
 
 /turf/proc/get_cell(type)
-	for(var/datum/automata_cell/existing_cell as anything in autocells)
-		if(istype(existing_cell, type))
-			return existing_cell
+	for(var/datum/automata_cell/C in autocells)
+		if(istype(C, type))
+			return C
 	return null
 
 //////////////////////////////////////////////////////////
@@ -779,12 +780,18 @@
 
 /turf/proc/get_pylon_protection_level()
 	var/protection_level = TURF_PROTECTION_NONE
-	for(var/obj/effect/alien/resin/special/resin_structure in linked_pylons)
-		if(QDELETED(resin_structure))
-			LAZYREMOVE(linked_pylons, resin_structure)
-			continue
-		if(resin_structure.protection_level > protection_level)
-			protection_level = resin_structure.protection_level
+	for (var/atom/pylon in linked_pylons)
+		if (pylon.loc != null)
+			var/obj/effect/alien/resin/special/pylon/P = pylon
+
+			if(!istype(P))
+				continue
+
+			if(P.protection_level > protection_level)
+				protection_level = P.protection_level
+		else
+			LAZYREMOVE(linked_pylons, pylon)
+
 	return protection_level
 
 GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
@@ -894,8 +901,8 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 			return
 
 		if (stun_modifier > 0)
-			human_victim.KnockDown(0.7 *height * stun_modifier)
-			human_victim.Superslow(3 * height * stun_modifier)
+			human_victim.KnockDown(3 * height * stun_modifier)
+			human_victim.Stun(3 * height * stun_modifier)
 			human_victim.Slow(5 * height * stun_modifier)
 
 		if (damage_modifier > 0)
@@ -914,31 +921,15 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 		var/mob/living/carbon/xenomorph/xeno_victim = victim
 		if(stun_modifier > 0)
 			if(xeno_victim.mob_size >= MOB_SIZE_BIG)
-				xeno_victim.KnockDown(height * 1.5 * stun_modifier)
-				xeno_victim.Stun(height * 1.5 * stun_modifier)
-				xeno_victim.Slow(height * 3.5 * stun_modifier)
-				xeno_victim.Daze(height * 2.5 * stun_modifier)
+				xeno_victim.KnockDown(height * 3.5 * stun_modifier)
+				xeno_victim.Stun( height * 3.5 * stun_modifier)
+				xeno_victim.Slow(height * 6 * stun_modifier)
 			else
 				xeno_victim.KnockDown(height * 0.5 * stun_modifier)
-				xeno_victim.Stun(height * 0.5 * stun_modifier)
-				xeno_victim.Superslow(height * 1 * stun_modifier)
-				xeno_victim.Slow(height * 2 * stun_modifier)
-				xeno_victim.Daze(height * 1.5 * stun_modifier)
+				xeno_victim.Stun( height * 0.5 * stun_modifier)
+				xeno_victim.Slow(height * 2.5 * stun_modifier)
+
+
 
 	if(damage_modifier > 0.5)
 		playsound(loc, "slam", 50, 1)
-
-/turf/proc/on_climb_down(victim)
-	if(!isxeno(victim))
-		return
-	var/mob/living/carbon/xenomorph/xeno_victim = victim
-	if(xeno_victim.mob_size >= MOB_SIZE_BIG)
-		xeno_victim.Superslow(1.5)
-		xeno_victim.Slow(2)
-		xeno_victim.Daze(1.5)
-		return
-
-	xeno_victim.Superslow(1)
-	xeno_victim.Slow(1.5)
-	xeno_victim.Daze(1)
-

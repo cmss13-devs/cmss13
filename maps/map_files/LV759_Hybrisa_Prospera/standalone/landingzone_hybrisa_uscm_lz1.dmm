@@ -870,20 +870,11 @@
 /area/lv759/outdoors/mining_outpost/south_entrance)
 "cq" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/effect/decal/hybrisa/colorable_line/line1{
-	color = "#65544c"
-	},
-/obj/effect/decal/hybrisa/colorable_line/line4{
-	color = "#65544c"
-	},
 /turf/open/floor/hybrisa/carpet/carpetbeige,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
 "cr" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_3"
-	},
-/obj/effect/decal/hybrisa/colorable_line/line1{
-	color = "#65544c"
 	},
 /turf/open/floor/hybrisa/carpet/carpetbeige,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
@@ -913,9 +904,6 @@
 /obj/structure/prop/hybrisa/misc/blood/blood3{
 	pixel_x = -9;
 	pixel_y = 32
-	},
-/obj/effect/decal/hybrisa/colorable_line/line3{
-	color = "#65544c"
 	},
 /turf/open/floor/hybrisa/carpet/carpetbeige,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
@@ -1450,8 +1438,7 @@
 /area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room)
 "dU" = (
 /obj/structure/sign/banners/colonial_marines_flag{
-	pixel_x = -15;
-	layer = 4
+	pixel_x = -15
 	},
 /turf/closed/wall/hybrisa/colony/reinforced,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room)
@@ -1507,8 +1494,7 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/sign/prop1{
 	pixel_x = -15;
-	pixel_y = 18;
-	layer = 4
+	pixel_y = 18
 	},
 /turf/open/hybrisa/street/sidewalk/north,
 /area/lv759/outdoors/landing_zone_2)
@@ -2069,13 +2055,7 @@
 /obj/structure/sign/poster/propaganda{
 	pixel_y = 32
 	},
-/obj/effect/decal/hybrisa/colorable_line/line3{
-	color = "#65544c"
-	},
-/obj/effect/decal/hybrisa/colorable_line/line4{
-	color = "#65544c"
-	},
-/turf/open/floor/hybrisa/carpet/carpetbeige,
+/turf/open/floor/almayer/plate,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
 "lV" = (
 /obj/structure/prop/hybrisa/vehicles/Box_Vans/Maintenance_Blue{
@@ -2777,13 +2757,7 @@
 /obj/effect/decal/hybrisa/trash,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/decal/hybrisa/colorable_line/line2{
-	color = "#65544c"
-	},
-/obj/effect/decal/hybrisa/colorable_line/line3{
-	color = "#65544c"
-	},
-/turf/open/floor/hybrisa/carpet/carpetbeige,
+/turf/open/floor/almayer/plate,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
 "va" = (
 /obj/structure/pipes/standard/simple/hidden/dark,
@@ -2956,9 +2930,6 @@
 	dir = 8
 	},
 /obj/item/device/radio/headset,
-/obj/effect/decal/hybrisa/colorable_line/line4{
-	color = "#65544c"
-	},
 /turf/open/floor/hybrisa/carpet/carpetbeige,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
 "xk" = (
@@ -3165,9 +3136,6 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/pipes/standard/simple/hidden/dark,
-/obj/effect/decal/hybrisa/colorable_line/line3{
-	color = "#65544c"
-	},
 /turf/open/floor/hybrisa/carpet/carpetbeige,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
 "zU" = (
@@ -3475,9 +3443,6 @@
 	pixel_y = 12
 	},
 /obj/structure/pipes/standard/simple/hidden/dark,
-/obj/effect/decal/hybrisa/colorable_line/line1{
-	color = "#65544c"
-	},
 /turf/open/floor/hybrisa/carpet/carpetbeige,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
 "Dw" = (
@@ -3586,6 +3551,7 @@
 /obj/structure/machinery/door_control/brbutton/alt{
 	id = "hybrisaLZ2_2";
 	name = "north - door-control";
+	explo_proof = 1;
 	needs_power = 0
 	},
 /obj/effect/decal/warning_stripes{
@@ -3769,9 +3735,6 @@
 	pixel_y = 18;
 	layer = 3.1
 	},
-/obj/effect/decal/hybrisa/colorable_line/line3{
-	color = "#65544c"
-	},
 /turf/open/floor/hybrisa/carpet/carpetbeige,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
 "HN" = (
@@ -3928,9 +3891,6 @@
 /turf/open/auto_turf/hybrisa_auto_turf/layer3,
 /area/lv759/outdoors/mining_outpost/south_entrance)
 "Ki" = (
-/obj/effect/decal/hybrisa/colorable_line/line1{
-	color = "#65544c"
-	},
 /turf/open/floor/hybrisa/carpet/carpetbeige,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
 "Kl" = (
@@ -4135,10 +4095,7 @@
 	pixel_x = 1;
 	pixel_y = 5
 	},
-/obj/effect/decal/hybrisa/colorable_line/line2{
-	color = "#65544c"
-	},
-/turf/open/floor/hybrisa/carpet/carpetbeige,
+/turf/open/floor/almayer/plate,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
 "Nu" = (
 /obj/item/fuel_cell,
@@ -4714,13 +4671,7 @@
 	pixel_x = 3;
 	pixel_y = 2
 	},
-/obj/effect/decal/hybrisa/colorable_line/line2{
-	color = "#65544c"
-	},
-/obj/effect/decal/hybrisa/colorable_line/line1{
-	color = "#65544c"
-	},
-/turf/open/floor/hybrisa/carpet/carpetbeige,
+/turf/open/floor/almayer/plate,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
 "Xm" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -4868,6 +4819,7 @@
 	id = "hybrisaLZ2_4";
 	name = "southwest - door-control";
 	pixel_x = -5;
+	explo_proof = 1;
 	pixel_y = 6;
 	needs_power = 0
 	},
@@ -4898,6 +4850,7 @@
 	id = "hybrisaLZ2_1";
 	pixel_x = -7;
 	pixel_y = -1;
+	explo_proof = 1;
 	name = "west - door-control";
 	needs_power = 0
 	},

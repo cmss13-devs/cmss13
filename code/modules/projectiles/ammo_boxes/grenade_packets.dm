@@ -8,7 +8,7 @@
 	w_class = SIZE_MEDIUM//fits into bags
 	storage_slots = 3
 	can_hold = list(/obj/item/explosive/grenade)
-	foldable = TRUE
+	foldable = null
 	var/content_type
 
 /obj/item/storage/box/packet/update_icon()

@@ -1419,7 +1419,7 @@
 /obj/item/reagent_container/food/snacks/sliceable/chocolatecake{
 	pixel_y = 12
 	},
-/obj/item/tool/kitchen/utensil/knife/plastic{
+/obj/item/tool/kitchen/utensil/pknife{
 	pixel_x = -12;
 	pixel_y = 2
 	},

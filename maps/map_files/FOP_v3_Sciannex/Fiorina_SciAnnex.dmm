@@ -390,82 +390,6 @@
 /obj/effect/landmark/mainship_crashsite,
 /turf/closed/wall/mineral/bone_resin,
 /area/fiorina/oob)
-"abs" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 8;
-	pixel_x = -10;
-	pixel_y = 13
-	},
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/corsat/plate,
-/area/fiorina/station/telecomm/lz1_cargo)
-"abt" = (
-/obj/effect/decal/cleanable/blood/splatter,
-/obj/item/reagent_container/food/snacks/xenoburger,
-/turf/open/floor/corsat/plate,
-/area/fiorina/station/telecomm/lz1_cargo)
-"abu" = (
-/obj/effect/decal/cleanable/blood/oil/streak,
-/obj/effect/decal/cleanable/ash,
-/turf/open/floor/corsat/plate,
-/area/fiorina/station/telecomm/lz1_cargo)
-"abv" = (
-/obj/item/weapon/gun/flamer/survivor,
-/obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor/corsat/squares,
-/area/fiorina/station/telecomm/lz1_cargo)
-"abw" = (
-/obj/effect/decal/cleanable/ash,
-/turf/open/floor/corsat/squares,
-/area/fiorina/station/telecomm/lz1_cargo)
-"abx" = (
-/obj/effect/landmark/corpsespawner/chef,
-/obj/effect/decal/cleanable/blood/oil/streak,
-/obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor/corsat/squares,
-/area/fiorina/station/telecomm/lz1_cargo)
-"aby" = (
-/obj/effect/decal/cleanable/ash,
-/obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/ash,
-/turf/open/floor/corsat/squares,
-/area/fiorina/station/telecomm/lz1_cargo)
-"abz" = (
-/obj/effect/decal/cleanable/blood/oil/streak,
-/turf/open/floor/corsat/plate,
-/area/fiorina/station/telecomm/lz1_cargo)
-"abA" = (
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/corsat/squares,
-/area/fiorina/station/telecomm/lz1_cargo)
-"abB" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 8;
-	pixel_x = -10;
-	pixel_y = 13
-	},
-/obj/effect/landmark/start/working_joe/colony,
-/obj/effect/landmark/late_join/working_joe/colony,
-/turf/open/floor/plating/prison,
-/area/fiorina/maintenance)
-"abC" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 4;
-	pixel_x = 10;
-	pixel_y = 13
-	},
-/obj/effect/landmark/start/working_joe/colony,
-/obj/effect/landmark/late_join/working_joe/colony,
-/turf/open/floor/plating/prison,
-/area/fiorina/maintenance)
-"abD" = (
-/obj/structure/machinery/cryopod/joe/weyland{
-	pixel_y = 25;
-	density = 0
-	},
-/turf/open/floor/plating/prison,
-/area/fiorina/maintenance)
 "abG" = (
 /obj/item/trash/chunk,
 /turf/open/floor/prison/whitegreen/north,
@@ -2649,9 +2573,9 @@
 "bJb" = (
 /obj/structure/closet/cabinet,
 /obj/item/device/encryptionkey/WY,
-/obj/item/weapon/gun/pistol/deagle,
-/obj/item/ammo_magazine/pistol/deagle,
-/obj/item/ammo_magazine/pistol/deagle,
+/obj/item/weapon/gun/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
 /turf/open/floor/wood,
 /area/fiorina/station/civres_blue)
 "bJn" = (
@@ -3520,7 +3444,7 @@
 /obj/structure/barricade/metal/wired{
 	dir = 4
 	},
-/obj/structure/machinery/m56d_hmg/mg_turret{
+/obj/structure/machinery/m56d_hmg/mg_turret/dropship{
 	dir = 4
 	},
 /turf/open/floor/prison/cell_stripe/north,
@@ -4631,7 +4555,7 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/fiorina/station/research_cells/east)
 "doe" = (
-/obj/item/tool/kitchen/utensil/spoon/plastic,
+/obj/item/tool/kitchen/utensil/pspoon,
 /turf/open/space/basic,
 /area/fiorina/oob)
 "doq" = (
@@ -10652,7 +10576,7 @@
 	pixel_x = 5;
 	pixel_y = 12
 	},
-/obj/item/weapon/gun/pistol/deagle,
+/obj/item/weapon/gun/pistol/heavy,
 /obj/structure/machinery/light/double/blue,
 /turf/open/floor/prison,
 /area/fiorina/station/medbay)
@@ -16966,10 +16890,6 @@
 /area/fiorina/station/civres_blue)
 "mTM" = (
 /obj/item/tool/warning_cone,
-/obj/structure/machinery/cryopod/joe/weyland{
-	pixel_y = 25;
-	density = 0
-	},
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
 "mUd" = (
@@ -25145,7 +25065,7 @@
 /turf/open/floor/prison/blue/west,
 /area/fiorina/station/civres_blue)
 "thV" = (
-/obj/item/tool/kitchen/utensil/fork/plastic,
+/obj/item/tool/kitchen/utensil/pfork,
 /turf/open/floor/prison/blue/east,
 /area/fiorina/station/power_ring)
 "tii" = (
@@ -27278,7 +27198,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/lz/near_lzII)
 "uSX" = (
-/obj/item/tool/kitchen/utensil/knife/plastic,
+/obj/item/tool/kitchen/utensil/pknife,
 /turf/open/floor/prison,
 /area/fiorina/station/power_ring)
 "uTb" = (
@@ -30900,7 +30820,7 @@
 /turf/open/floor/prison/whitegreen/north,
 /area/fiorina/station/central_ring)
 "xTf" = (
-/obj/item/tool/kitchen/utensil/spoon/plastic,
+/obj/item/tool/kitchen/utensil/pspoon,
 /turf/open/floor/prison/blue/east,
 /area/fiorina/station/power_ring)
 "xTD" = (
@@ -54266,7 +54186,7 @@ qhk
 oPU
 eLu
 mTM
-abB
+gyJ
 cME
 cME
 rJh
@@ -54689,8 +54609,8 @@ oPU
 oMu
 oPU
 eLu
-abD
-abC
+cME
+cPq
 cME
 cME
 cME
@@ -75148,9 +75068,9 @@ jii
 mPW
 cpP
 aFK
-abu
-abu
-abs
+qGn
+qGn
+aFK
 fnD
 oUg
 oUg
@@ -75359,10 +75279,10 @@ pUG
 jii
 puE
 hTf
-abz
-abx
-abv
-abt
+qGn
+eqQ
+eqQ
+qGn
 pbp
 qGn
 pbp
@@ -75571,9 +75491,9 @@ jii
 wHV
 puE
 cJv
-abA
-aby
-abw
+eqQ
+eqQ
+eqQ
 eqQ
 eqQ
 eqQ

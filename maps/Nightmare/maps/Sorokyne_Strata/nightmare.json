@@ -48,7 +48,7 @@
 	{
 	"type": "map_insert",
 	"landmark": "flamer_bodypile",
-	"chance": 1.0,
+	"chance": 0.60,
 	"path": "sprinkles/flamer_bodypile.dmm"
 	}
 ]

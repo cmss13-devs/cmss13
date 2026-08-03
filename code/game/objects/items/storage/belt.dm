@@ -157,7 +157,6 @@
 		/obj/item/stack/rods,
 		/obj/item/stack/tile,
 		/obj/item/device/defibrillator/synthetic,
-		/obj/item/device/overwatch_camera_tripod,
 	)
 
 	bypass_w_limit = list(
@@ -167,7 +166,6 @@
 		/obj/item/stack/sandbags_empty,
 		/obj/item/stack/sandbags,
 		/obj/item/defenses/handheld,
-		/obj/item/device/overwatch_camera_tripod,
 	)
 
 /obj/item/storage/belt/medical
@@ -1260,6 +1258,7 @@
 	max_storage_space = 24
 	can_hold = list(/obj/item/explosive/grenade)
 
+
 /obj/item/storage/belt/grenade/full/fill_preset_inventory()
 	new /obj/item/explosive/grenade/incendiary(src)
 	new /obj/item/explosive/grenade/incendiary(src)
@@ -1271,7 +1270,7 @@
 	new /obj/item/explosive/grenade/high_explosive/airburst(src)
 
 /obj/item/storage/belt/grenade/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/storage/box/nade_box) || istype(W, /obj/item/storage/backpack/marine/grenadepack) || istype(W, /obj/item/storage/box/packet) || istype(W, /obj/item/storage/belt/grenade))
+	if(istype(W, /obj/item/storage/box/nade_box) || istype(W, /obj/item/storage/backpack/marine/grenadepack))
 		dump_into(W,user)
 	else
 		return ..()
@@ -1336,6 +1335,12 @@
 	new /obj/item/explosive/grenade/high_explosive/upp(src)
 	new /obj/item/explosive/grenade/high_explosive/upp(src)
 
+/obj/item/storage/belt/grenade/upp/attackby(obj/item/attacked_item, mob/user)
+	if(istype(attacked_item, /obj/item/storage/box/nade_box) || istype(attacked_item, /obj/item/storage/backpack/marine/grenadepack))
+		dump_into(attacked_item, user)
+	else
+		return ..()
+
 ////////////////////////////// GUN BELTS /////////////////////////////////////
 
 /obj/item/storage/belt/gun
@@ -1379,9 +1384,6 @@
 		/obj/item/weapon/gun/pistol/chimp, // HONKed currently
 		/obj/item/weapon/gun/pistol/skorpion, // HONKed currently
 	)
-
-	///Where update_gun_icon should look for their holstered gun icon
-	var/gun_slot_icon = 'icons/obj/items/clothing/belts/holstered_guns.dmi'
 
 /obj/item/storage/belt/gun/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	. = ..()
@@ -1467,18 +1469,17 @@
 		sure that we don't have to do any extra calculations.
 		*/
 		playsound(src, drawSound, 7, TRUE)
-		var/prefix = ""
+		var/image/gun_underlay = image('icons/obj/items/clothing/belts/holstered_guns.dmi', current_gun.base_gun_icon)
 		if(gun_has_gamemode_skin && current_gun.map_specific_decoration)
 			switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 				if("snow")
-					prefix = "s_"
+					gun_underlay = image('icons/obj/items/clothing/belts/holstered_guns.dmi', "s_" + current_gun.base_gun_icon)
 				if("desert")
-					prefix = "d_"
+					gun_underlay = image('icons/obj/items/clothing/belts/holstered_guns.dmi', "d_" + current_gun.base_gun_icon)
 				if("classic")
-					prefix = "c_"
+					gun_underlay = image('icons/obj/items/clothing/belts/holstered_guns.dmi', "c_" + current_gun.base_gun_icon)
 				if("urban")
-					prefix = "u_"
-		var/image/gun_underlay = image(gun_slot_icon, prefix + current_gun.base_gun_icon)
+					gun_underlay = image('icons/obj/items/clothing/belts/holstered_guns.dmi', "u_" + current_gun.base_gun_icon)
 		gun_underlay.pixel_x = holster_slots[slot]["icon_x"]
 		gun_underlay.pixel_y = holster_slots[slot]["icon_y"]
 		gun_underlay.color = current_gun.color
@@ -1586,9 +1587,9 @@
 	can_hold = list(
 		/obj/item/weapon/gun/pistol,
 		/obj/item/ammo_magazine/pistol,
-		/obj/item/ammo_magazine/pistol/deagle,
-		/obj/item/ammo_magazine/pistol/deagle/super,
-		/obj/item/ammo_magazine/pistol/deagle/super/highimpact,
+		/obj/item/ammo_magazine/pistol/heavy,
+		/obj/item/ammo_magazine/pistol/heavy/super,
+		/obj/item/ammo_magazine/pistol/heavy/super/highimpact,
 	)
 	cant_hold = list(
 		/obj/item/weapon/gun/pistol/smart,
@@ -1717,25 +1718,25 @@
 	)
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
-/obj/item/storage/belt/gun/m4a3/deagle/fill_preset_inventory()
-	handle_item_insertion(new /obj/item/weapon/gun/pistol/deagle())
-	new /obj/item/ammo_magazine/pistol/deagle(src)
-	new /obj/item/ammo_magazine/pistol/deagle(src)
-	new /obj/item/ammo_magazine/pistol/deagle(src)
-	new /obj/item/ammo_magazine/pistol/deagle(src)
-	new /obj/item/ammo_magazine/pistol/deagle(src)
-	new /obj/item/ammo_magazine/pistol/deagle(src)
+/obj/item/storage/belt/gun/m4a3/heavy/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/heavy())
+	new /obj/item/ammo_magazine/pistol/heavy(src)
+	new /obj/item/ammo_magazine/pistol/heavy(src)
+	new /obj/item/ammo_magazine/pistol/heavy(src)
+	new /obj/item/ammo_magazine/pistol/heavy(src)
+	new /obj/item/ammo_magazine/pistol/heavy(src)
+	new /obj/item/ammo_magazine/pistol/heavy(src)
 
-/obj/item/storage/belt/gun/m4a3/deagle/co/fill_preset_inventory()
-	handle_item_insertion(new /obj/item/weapon/gun/pistol/deagle/co())
-	new /obj/item/ammo_magazine/pistol/deagle/super/highimpact(src)
-	new /obj/item/ammo_magazine/pistol/deagle/super/highimpact(src)
-	new /obj/item/ammo_magazine/pistol/deagle/super/highimpact(src)
-	new /obj/item/ammo_magazine/pistol/deagle/super/highimpact(src)
-	new /obj/item/ammo_magazine/pistol/deagle/super/highimpact/ap(src)
-	new /obj/item/ammo_magazine/pistol/deagle/super/highimpact/ap(src)
+/obj/item/storage/belt/gun/m4a3/heavy/co/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/heavy/co())
+	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact/ap(src)
+	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact/ap(src)
 
-/obj/item/storage/belt/gun/m4a3/deagle/co_golden
+/obj/item/storage/belt/gun/m4a3/heavy/co_golden
 	icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi',
@@ -1744,14 +1745,14 @@
 	)
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
-/obj/item/storage/belt/gun/m4a3/deagle/co_golden/fill_preset_inventory()
-	handle_item_insertion(new /obj/item/weapon/gun/pistol/deagle/co/gold())
-	new /obj/item/ammo_magazine/pistol/deagle/super/highimpact(src)
-	new /obj/item/ammo_magazine/pistol/deagle/super/highimpact(src)
-	new /obj/item/ammo_magazine/pistol/deagle/super/highimpact(src)
-	new /obj/item/ammo_magazine/pistol/deagle/super/highimpact(src)
-	new /obj/item/ammo_magazine/pistol/deagle/super/highimpact/ap(src)
-	new /obj/item/ammo_magazine/pistol/deagle/super/highimpact/ap(src)
+/obj/item/storage/belt/gun/m4a3/heavy/co_golden/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/heavy/co/gold())
+	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact/ap(src)
+	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact/ap(src)
 
 /obj/item/storage/belt/gun/m4a3/highpower/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/highpower())
@@ -2781,9 +2782,9 @@
 			new /obj/item/ammo_magazine/pistol/t73(src)
 			new /obj/item/ammo_magazine/pistol/t73(src)
 		if(5)
-			handle_item_insertion(new /obj/item/weapon/gun/pistol/deagle())
-			new /obj/item/ammo_magazine/pistol/deagle(src)
-			new /obj/item/ammo_magazine/pistol/deagle(src)
+			handle_item_insertion(new /obj/item/weapon/gun/pistol/heavy())
+			new /obj/item/ammo_magazine/pistol/heavy(src)
+			new /obj/item/ammo_magazine/pistol/heavy(src)
 	new /obj/item/ammo_magazine/smartgun/rusty(src)
 	new /obj/item/ammo_magazine/smartgun/rusty(src)
 

@@ -36,14 +36,14 @@
 /datum/player_action/mob_sleep/act(client/user, mob/target, list/params)
 	if(!istype(target, /mob/living))
 		return TRUE
-	var/mob/living/living_target = target
+	var/mob/living/living = target
 
-	if(living_target.is_admin_slept()) //if they're already slept, remove the aslept trait and remove the icon
-		living_target.set_admin_sleep(FALSE)
-		living_target.RemoveSleepingIcon()
+	if (!params["sleep"]) //if they're already slept, set their sleep to zero and remove the icon
+		living.sleeping = 0
+		living.RemoveSleepingIcon()
 	else
-		living_target.set_admin_sleep(TRUE) //if they're not, add the aslept trait and add the sleep icon, so other marines nearby know not to mess with them.
-		living_target.AddSleepingIcon()
+		living.sleeping = 9999999 //if they're not, sleep them and add the sleep icon, so other marines nearby know not to mess with them.
+		living.AddSleepingIcon()
 
 	message_admins("[key_name_admin(user)] toggled sleep on [key_name_admin(target)].")
 

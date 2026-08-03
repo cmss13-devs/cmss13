@@ -283,7 +283,7 @@
 			if(!selected || !(selected in PRED_LEGACIES))
 				return
 
-			if(!ui.user.client?.can_use_pred_legacies())
+			if(!ui.user.client?.check_whitelist_status(WHITELIST_YAUTJA_LEGACY))
 				return
 
 			prefs.predator_use_legacy = selected
@@ -293,7 +293,12 @@
 			if(!selected || !(selected in PRED_UNIQUES))
 				return
 
-			if(!ui.user.client?.can_use_pred_specials())
+			var/datum/job/pred_job = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
+			if(!pred_job)
+				return
+			var/clanrank = pred_job.get_whitelist_status(ui.user.client)
+
+			if(!(clanrank in list(CLAN_RANK_ELITE, CLAN_RANK_ELDER, CLAN_RANK_LEADER, CLAN_RANK_ADMIN)))
 				return
 
 			prefs.predator_use_unique = selected

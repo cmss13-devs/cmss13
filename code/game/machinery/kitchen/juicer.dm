@@ -162,7 +162,7 @@
 			break
 
 /obj/structure/machinery/juicer/yautja
-	name = "Gibs Juicer"
+	name = "bone grinder"
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 
 /obj/structure/closet/crate/juice

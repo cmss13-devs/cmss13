@@ -238,7 +238,10 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 		tool.update_icon() // in order to not reset shit too far.
 
 	if(advance)
-		surgery.status += max(skipped + 1, 1)
+		if(skipped) //Skipped previous step.
+			surgery.status += 2
+		else
+			surgery.status++
 		if(surgery.status > length(surgery.steps))
 			complete(target, surgery)
 

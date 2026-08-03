@@ -63,12 +63,17 @@
 	if(!target_turf)
 		return
 
-	var/list/atom/movable/candidates = SSmapgrids.get_movables_in_region(target_turf.z, target_turf.x - ping_range, target_turf.x + ping_range, target_turf.y - ping_range, target_turf.y + ping_range)
+	var/datum/shape/rectangle/square/range_bounds = new
+	range_bounds.set_shape(target_turf.x, target_turf.y, ping_range * 2)
 
-	for(var/mob/living/carbon/human/viewer in candidates)
+	var/list/candidates = SSquadtree.players_in_range(range_bounds, target_turf.z, QTREE_FILTER_LIVING | QTREE_SCAN_MOBS)
+
+	for(var/mob/living/carbon/human/viewer as anything in candidates)
+		if(!ishuman(viewer))
+			continue
 		if(!viewer.client)
 			continue
-		if(viewer.stat)
+		if(viewer.stat != CONSCIOUS)
 			continue
 		if(!shooter || viewer.faction != shooter.faction)
 			continue

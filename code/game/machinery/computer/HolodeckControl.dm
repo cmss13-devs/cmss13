@@ -129,8 +129,6 @@
 	anchored = TRUE
 	density = TRUE
 	throwpass = 1
-
-	var/enable_shimmy = TRUE
 	var/side = ""
 	var/id = ""
 
@@ -177,13 +175,9 @@
 
 	return ..()
 
-/obj/structure/holohoop/noshimmy
-	enable_shimmy = FALSE
-
 /obj/structure/holohoop/Initialize(mapload, ...)
 	. = ..()
-	if (enable_shimmy)
-		AddComponent(/datum/component/shimmy_around, east_offset = -15, west_offset = -15, north_offset = 15, south_offset = 15)
+	AddComponent(/datum/component/shimmy_around, east_offset = -15, west_offset = -15, north_offset = 15, south_offset = 15)
 
 /obj/structure/machinery/readybutton
 	name = "Ready Declaration Device"

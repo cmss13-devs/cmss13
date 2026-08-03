@@ -18,7 +18,6 @@ type Data = {
   mode: string;
   cards: number;
   punch_card?: number[];
-  forced_ping?: number;
 };
 
 type DecoderData = {
@@ -359,12 +358,6 @@ const EncoderPanel = (props) => {
     }
   }, [data.punch_card]);
 
-  useEffect(() => {
-    if (data.forced_ping) {
-      startLoading();
-    }
-  }, [data.forced_ping]);
-
   function handleInput(index: number, value: number) {
     const newInput = input.map((oldValue, i) => {
       if (i === index) {
@@ -385,7 +378,6 @@ const EncoderPanel = (props) => {
       if (loading >= 100) {
         // Done loading
         clearInterval(timer);
-        act('finished_ping');
         return;
       }
       // Randomly increase loading value by up to 50%

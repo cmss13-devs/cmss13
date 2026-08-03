@@ -1,5 +1,3 @@
-SET_PROTECTED_DATUM(/datum/controller/configuration)
-
 /datum/controller/configuration
 	name = "Configuration"
 
@@ -29,6 +27,7 @@ SET_PROTECTED_DATUM(/datum/controller/configuration)
 	if(IsAdminAdvancedProcCall())
 		alert_proccall("configuration admin_reload")
 		return PROC_BLOCKED
+	log_admin("[key_name(usr)] has forcefully reloaded the configuration from disk.")
 	message_admins("[key_name_admin(usr)] has forcefully reloaded the configuration from disk.")
 	full_wipe()
 	Load(world.params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])
@@ -162,9 +161,6 @@ SET_PROTECTED_DATUM(/datum/controller/configuration)
 			continue
 		_entries[esname] = E
 		_entries_by_type[I] = E
-
-		if(E.protection & (CONFIG_ENTRY_SENSITIVE|CONFIG_ENTRY_SENSITIVE_KEY))
-			GLOB.protected_config_entries += E
 
 
 /datum/controller/configuration/proc/RemoveEntry(datum/config_entry/CE)

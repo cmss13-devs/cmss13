@@ -12,7 +12,3 @@
 /datum/lazy_template/pred/desert_moon
 	map_name = "desert_moon"
 	hunting_ground_name = "Desert Moon"
-
-/area/yautja/badblood
-	name = "\improper Yautja Survivor Preparation"
-	base_lighting_alpha = 105

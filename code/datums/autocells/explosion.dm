@@ -79,31 +79,20 @@
 /datum/automata_cell/explosion/death()
 	if(shockwave)
 		qdel(shockwave)
-	exploded_atoms.Cut()
 
-/datum/automata_cell/explosion/propagate(dir)
-	var/datum/automata_cell/explosion/new_cell = ..()
-	new_cell?.exploded_atoms += exploded_atoms
-	return new_cell
-
-// Attempts to merge explosions. Will compare directions to determine effects on power.
-// If the other explosion is traveling in the same direction, the explosion is amplified.
-// If not, it's weakened
-// Returns TRUE if this explosion survived.
-/datum/automata_cell/explosion/merge(datum/automata_cell/explosion/other)
-	if(QDELETED(other))
-		return TRUE
-
+// Compare directions. If the other explosion is traveling in the same direction,
+// the explosion is amplified. If not, it's weakened
+/datum/automata_cell/explosion/merge(datum/automata_cell/explosion/E)
 	// Non-merging explosions take priority
-	if(!should_merge || !other.should_merge)
+	if(!should_merge)
 		return TRUE
 
 	// The strongest of the two explosions should survive the merge
 	// This prevents a weaker explosion merging with a strong one,
 	// the strong one removing all the weaker one's power and just killing the explosion
-	var/is_stronger = (power >= other.power)
-	var/datum/automata_cell/explosion/survivor = is_stronger ? src : other
-	var/datum/automata_cell/explosion/dying = is_stronger ? other : src
+	var/is_stronger = (power >= E.power)
+	var/datum/automata_cell/explosion/survivor = is_stronger ? src : E
+	var/datum/automata_cell/explosion/dying = is_stronger ? E : src
 
 	// Two epicenters merging, or a new epicenter merging with a traveling wave
 	if((!survivor.direction && !dying.direction) || (survivor.direction && !dying.direction))
@@ -120,13 +109,10 @@
 	// Two waves traveling the same direction amplifies the explosion
 	if(survivor.direction == dying.direction)
 		survivor.power += dying.power
-		survivor.exploded_atoms |= dying.exploded_atoms
 
 	// Two waves travling towards each other weakens the explosion
 	if(survivor.direction == GLOB.reverse_dir[dying.direction])
 		survivor.power -= dying.power
-
-	qdel(dying)
 
 	return is_stronger
 
@@ -159,19 +145,19 @@
 		return
 	// The resistance here will affect the damage taken and the falloff in the propagated explosion
 	var/resistance = max(0, in_turf.get_explosion_resistance(direction))
-	for(var/atom/thing in in_turf)
-		resistance += max(0, thing.get_explosion_resistance())
+	for(var/atom/A in in_turf)
+		resistance += max(0, A.get_explosion_resistance())
 
 	// Blow stuff up
 	INVOKE_ASYNC(in_turf, TYPE_PROC_REF(/atom, ex_act), power, direction, explosion_cause_data, 0, enviro)
-	for(var/atom/thing in in_turf)
-		if(thing.gc_destroyed)
+	for(var/atom/A in in_turf)
+		if(A in exploded_atoms)
 			continue
-		if(thing in exploded_atoms)
+		if(A.gc_destroyed)
 			continue
-		exploded_atoms += thing
-		INVOKE_ASYNC(thing, TYPE_PROC_REF(/atom, ex_act), power, direction, explosion_cause_data, 0, enviro)
-		log_explosion(thing, src)
+		INVOKE_ASYNC(A, TYPE_PROC_REF(/atom, ex_act), power, direction, explosion_cause_data, 0, enviro)
+		exploded_atoms += A
+		log_explosion(A, src)
 
 	var/reflected = FALSE
 
@@ -208,34 +194,28 @@
 		if(new_power <= 0)
 			continue
 
-		var/datum/automata_cell/explosion/new_cell = propagate(dir)
-		if(!QDELETED(new_cell))
-			var/new_falloff = power_falloff
-			// Handle our falloff function.
-			switch(falloff_shape)
-				if(EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL)
-					new_falloff += new_falloff * dir_falloff
-				if(EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF)
-					new_falloff += (new_falloff*0.5) * dir_falloff
-				if(EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_IN_PYLON)
-					if(new_cell.in_turf.get_pylon_protection_level() >= TURF_PROTECTION_OB)
-						new_falloff += new_falloff * dir_falloff
-				if(EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF_IN_PYLON)
-					if(new_cell.in_turf.get_pylon_protection_level() >= TURF_PROTECTION_OB)
-						new_falloff += (new_falloff*0.5) * dir_falloff
+		var/new_falloff = power_falloff
+		// Handle our falloff function.
+		switch(falloff_shape)
+			if(EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL)
+				new_falloff += new_falloff * dir_falloff
+			if(EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF)
+				new_falloff += (new_falloff*0.5) * dir_falloff
 
-			new_cell.power = new_power
-			new_cell.power_falloff = new_falloff
-			new_cell.falloff_shape = falloff_shape
-			new_cell.explosion_cause_data = explosion_cause_data
+		var/datum/automata_cell/explosion/E = propagate(dir)
+		if(E)
+			E.power = new_power
+			E.power_falloff = new_falloff
+			E.falloff_shape = falloff_shape
+			E.explosion_cause_data = explosion_cause_data
 
 			// Set the direction the explosion is traveling in
-			new_cell.direction = dir
+			E.direction = dir
 			//Diagonal cells have a small delay when branching off the center. This helps the explosion look circular
 			if(!direction && (dir in GLOB.diagonals))
-				new_cell.delay = 1
+				E.delay = 1
 
-			setup_new_cell(new_cell)
+			setup_new_cell(E)
 
 	// We've done our duty, now die pls
 	qdel(src)
@@ -251,20 +231,20 @@ When the cell processes, we simply don't blow up atoms that were tracked
 as having entered the turf.
 */
 
-/datum/automata_cell/explosion/proc/on_turf_entered(atom/movable/thing)
+/datum/automata_cell/explosion/proc/on_turf_entered(atom/movable/A)
 	// Once is enough
-	if(thing.gc_destroyed)
-		return
-	if(thing in exploded_atoms)
+	if(A in exploded_atoms)
 		return
 
-	exploded_atoms += thing
+	exploded_atoms += A
 
 	// Note that we don't want to make it a directed ex_act because
 	// it could toss them back and make them get hit by the explosion again
-	// so we indicate this with a direction < 0
-	INVOKE_ASYNC(thing, TYPE_PROC_REF(/atom, ex_act), power, -1, explosion_cause_data, 0, enviro)
-	log_explosion(thing, src)
+	if(A.gc_destroyed)
+		return
+
+	INVOKE_ASYNC(A, TYPE_PROC_REF(/atom, ex_act), power, null, explosion_cause_data, 0, enviro)
+	log_explosion(A, src)
 
 // I'll admit most of the code from here on out is basically just copypasta from DOREC
 
@@ -350,11 +330,11 @@ as having entered the turf.
 		affected.attack_log += "\[[time_stamp()]\] <b>[key_name(firing_mob)]</b> blew up <b>[key_name(affected)]</b> with \a <b>[explosion_source]</b> in [get_area(location)]."
 		firing_mob.attack_log += "\[[time_stamp()]\] <b>[key_name(firing_mob)]</b> blew up <b>[key_name(affected)]</b> with \a <b>[explosion_source]</b> in [get_area(location)]."
 
-		var/ff_msg = "[key_name(firing_mob)] blew up [key_name(affected)] with \a [explosion_source] in [get_area(location)] [ADMIN_JUMP_COORDS(location.x, location.y, location.z)] [ADMIN_JMP_USER(firing_mob)] [ADMIN_PM(firing_mob)]"
+		var/ff_msg = "[key_name(firing_mob)] blew up [key_name(affected)] with \a [explosion_source] in [get_area(location)] (<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>JMP LOC</a>) [ADMIN_JMP_USER(firing_mob)] [ADMIN_PM(firing_mob)]"
 		var/ff_living = TRUE
 		if(affected.stat == DEAD)
 			ff_living = FALSE
-		msg_admin_ff(ff_msg, ff_living, firing_mob.loc.z)
+		msg_admin_ff(ff_msg, ff_living)
 
 		if(ishuman(firing_mob))
 			var/mob/living/carbon/human/attacking_human = firing_mob

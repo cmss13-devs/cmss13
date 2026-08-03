@@ -25,8 +25,6 @@
 	icon_state = "nest"
 	path_to_spawn = /obj/structure/bed/nest
 
-
-
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node
 	name = "Distress Xeno weed node spawner"
 	icon_state = "weednode"
@@ -48,11 +46,3 @@
 	name = "Distress Xeno reinforced door spawner"
 	icon_state = "door_r"
 	path_to_spawn = /obj/structure/mineral_door/resin/thick
-
-// K-Series
-
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest/kseries
-	path_to_spawn = /obj/structure/bed/nest/kseries
-
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall/kseries
-	path_to_spawn = /turf/closed/wall/resin/kseries

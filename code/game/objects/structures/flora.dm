@@ -811,7 +811,6 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 
 
 /obj/structure/flora/jungle/thickbush/Crossed(atom/movable/AM)
-	..()
 	if(!stump)
 		if(isliving(AM))
 			var/mob/living/L = AM

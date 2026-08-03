@@ -1294,20 +1294,6 @@
 /obj/structure/machinery/computer/objective,
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
-"aey" = (
-/obj/item/device/binoculars/range/designator,
-/obj/effect/decal/cleanable/blood/splatter,
-/turf/open/asphalt/cement/cement3,
-/area/lv522/outdoors/nw_rockies)
-"aez" = (
-/obj/effect/landmark/survivor_spawner/lv522_forecon_major,
-/turf/open/floor/prison,
-/area/lv522/indoors/a_block/admin)
-"aeA" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/survivor_spawner/lv522_forecon_synth,
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/lv522/indoors/a_block/admin)
 "aeD" = (
 /obj/structure/largecrate/random,
 /obj/effect/decal/cleanable/dirt,
@@ -13409,6 +13395,12 @@
 	dir = 8
 	},
 /turf/open/floor/corsat/plate,
+/area/lv522/atmos/filt)
+"hao" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/closed/wall/strata_outpost/reinforced,
 /area/lv522/atmos/filt)
 "haq" = (
 /turf/open/floor/strata/white_cyan3,
@@ -46709,7 +46701,7 @@
 /turf/open/asphalt/cement/cement3,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "xTJ" = (
-/obj/item/tool/kitchen/utensil/knife/plastic{
+/obj/item/tool/kitchen/utensil/pknife{
 	pixel_x = -9
 	},
 /obj/structure/pipes/standard/manifold/hidden/green,
@@ -62197,7 +62189,7 @@ frZ
 gXR
 gXR
 hvE
-aey
+bHA
 bHA
 uSo
 xyL
@@ -76408,7 +76400,7 @@ sYl
 sYl
 sYl
 gUv
-shD
+hao
 shD
 cpy
 cpy
@@ -78503,7 +78495,7 @@ fRk
 ibk
 qcd
 mEx
-aez
+sWr
 lxZ
 lHV
 wGY
@@ -79326,7 +79318,7 @@ lsa
 svf
 ydV
 sWT
-aeA
+oGF
 dkq
 iBr
 wGY

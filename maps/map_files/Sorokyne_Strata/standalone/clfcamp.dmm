@@ -1117,14 +1117,6 @@
 	},
 /turf/open/asphalt/cement/cement12,
 /area/strata/interior/outpost/clf_dorms)
-"cZ" = (
-/obj/effect/landmark/survivor_spawner/clf_synth/soro,
-/turf/open/floor/strata/orange_cover,
-/area/strata/interior/outpost/clf_dorms)
-"da" = (
-/obj/effect/landmark/survivor_spawner/clf_coordinator/soro,
-/turf/open/floor/wood,
-/area/strata/interior/outpost/clf_office)
 "dk" = (
 /turf/open/floor/wood/wood_broken6,
 /area/strata/interior/outpost/clf_dorms)
@@ -2472,11 +2464,11 @@
 /area/strata/exterior/far_north_outpost)
 "Yz" = (
 /obj/structure/closet,
-/obj/item/weapon/gun/pistol/deagle,
-/obj/item/ammo_magazine/pistol/deagle,
-/obj/item/ammo_magazine/pistol/deagle,
-/obj/item/ammo_magazine/pistol/deagle,
-/obj/item/ammo_magazine/pistol/deagle,
+/obj/item/weapon/gun/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
 /turf/open/floor/wood,
 /area/strata/interior/outpost/clf_office)
 "YD" = (
@@ -2777,7 +2769,7 @@ Ef
 fR
 xH
 bL
-cZ
+Sl
 Sl
 Sl
 xH
@@ -2863,7 +2855,7 @@ cH
 cH
 bA
 cM
-da
+xt
 jw
 OF
 ev

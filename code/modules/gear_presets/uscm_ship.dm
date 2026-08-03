@@ -33,6 +33,21 @@
 	selection_categories = list(FACTION_MARINE)
 
 	idtype = /obj/item/card/id/silver/cl
+	access = list(
+		ACCESS_WY_GENERAL,
+		ACCESS_MARINE_COMMAND,
+		ACCESS_MARINE_RESEARCH,
+		ACCESS_MARINE_MEDBAY,
+		ACCESS_MARINE_DATABASE,
+		ACCESS_CIVILIAN_PUBLIC,
+		ACCESS_CIVILIAN_RESEARCH,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_CIVILIAN_LOGISTICS,
+		ACCESS_CIVILIAN_BRIG,
+		ACCESS_CIVILIAN_MEDBAY,
+		ACCESS_WY_FLIGHT,
+		ACCESS_CIVILIAN_COMMAND,
+	)
 	assignment = JOB_CORPORATE_LIAISON
 	job_title = JOB_CORPORATE_LIAISON
 	paygrades = list(PAY_SHORT_WYC2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_WYC3 = JOB_PLAYTIME_TIER_2, PAY_SHORT_WYC4 = JOB_PLAYTIME_TIER_3, PAY_SHORT_WYC5 = JOB_PLAYTIME_TIER_4)
@@ -68,11 +83,25 @@
 	selection_categories = list(FACTION_MARINE)
 
 	idtype = /obj/item/card/id/silver/cl
+	access = list(
+		ACCESS_WY_GENERAL,
+		ACCESS_MARINE_COMMAND,
+		ACCESS_MARINE_RESEARCH,
+		ACCESS_MARINE_MEDBAY,
+		ACCESS_CIVILIAN_PUBLIC,
+		ACCESS_CIVILIAN_RESEARCH,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_CIVILIAN_LOGISTICS,
+		ACCESS_CIVILIAN_BRIG,
+		ACCESS_CIVILIAN_MEDBAY,
+		ACCESS_WY_FLIGHT,
+		ACCESS_CIVILIAN_COMMAND,
+	)
 	assignment = JOB_CORPORATE_BODYGUARD
 	job_title = JOB_CORPORATE_BODYGUARD
 	paygrades = list(PAY_SHORT_WY_SEC_TPPO = JOB_PLAYTIME_TIER_0, PAY_SHORT_WY_SEC_PPO = JOB_PLAYTIME_TIER_1, PAY_SHORT_WY_SEC_PPS = JOB_PLAYTIME_TIER_3, PAY_SHORT_WY_SEC_PPC = JOB_PLAYTIME_TIER_4)
 	role_comm_title = "CB"
-	skills = /datum/skills/wy_ppo
+	skills = /datum/skills/wy_goon
 
 	minimap_icon = "goon_guard"
 	minimap_background = "background_goon"
@@ -146,10 +175,10 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/camera(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK) // Needs backpack for loadout gear to spawn
 
-/datum/equipment_preset/uscm_ship/reporter/load_vendor_points(mob/living/carbon/human/new_human, client/mob_client)
+/datum/equipment_preset/uscm_ship/reporter/load_preset(mob/living/carbon/human/new_human, randomise, count_participant, client/mob_client, show_job_gear)
 	. = ..()
-	new_human.vendor_buyable_categories[CIVILIAN_CAN_BUY_BACKPACK] = 1
-	new_human.vendor_buyable_categories[CIVILIAN_CAN_BUY_UTILITY] = 1
+	new_human.marine_buyable_categories[CIVILIAN_CAN_BUY_BACKPACK] = 1
+	new_human.marine_buyable_categories[CIVILIAN_CAN_BUY_UTILITY] = 1
 
 /datum/equipment_preset/uscm_ship/reporter_uscm
 	name = "Combat Correspondent"
@@ -202,6 +231,7 @@
 		ACCESS_MARINE_CE,
 		ACCESS_MARINE_ENGINEERING,
 		ACCESS_MARINE_COMMAND,
+		ACCESS_CIVILIAN_ENGINEERING,
 		ACCESS_MARINE_GENERAL,
 		ACCESS_MARINE_DATABASE,
 		ACCESS_MARINE_MAINT,
@@ -243,6 +273,7 @@
 
 	access = list(
 		ACCESS_MARINE_ENGINEERING,
+		ACCESS_CIVILIAN_ENGINEERING,
 		ACCESS_MARINE_MAINT,
 	)
 	assignment = JOB_MAINT_TECH
@@ -277,6 +308,7 @@
 
 	access = list(
 		ACCESS_MARINE_ENGINEERING,
+		ACCESS_CIVILIAN_ENGINEERING,
 		ACCESS_MARINE_MAINT,
 		ACCESS_MARINE_OT,
 
@@ -478,7 +510,7 @@
 	skills = /datum/skills/SEA
 
 	minimap_icon = "sea"
-	minimap_background = "background_shipside"
+	minimap_background = "background_command"
 
 	service_hat = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/drillhat)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/nco)
@@ -503,14 +535,14 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flash(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars(new_human), WEAR_L_HAND)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/device/whistle(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/device/whistle(new_human), WEAR_R_HAND)
 
 /datum/equipment_preset/uscm_ship/sea/load_rank(mob/living/carbon/human/rankee, client/mob_client)
 	mob_client?.toggle_newplayer_ic_hud(TRUE)
 	if(rankee?.client?.prefs?.pref_special_job_options[job_title])
-		var/paygrade_choice = get_paygrade_id_by_name(rankee.client.prefs.pref_special_job_options[job_title], GLOB.uscm_sea_paygrades)
+		var/paygrade_choice = get_paygrade_id_by_name(rankee.client.prefs.pref_special_job_options[job_title])
 		return paygrade_choice
-	. = ..()
+	..()
 
 //*****************************************************************************************************/
 
@@ -589,7 +621,7 @@
 	skills = /datum/skills/pilot
 
 	minimap_icon = "gp"
-	minimap_background = "background_officer"
+	minimap_background = "background_command"
 
 /datum/equipment_preset/uscm_ship/gp/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
@@ -641,7 +673,7 @@
 	skills = /datum/skills/pilot
 
 	minimap_icon = "pilot"
-	minimap_background = "background_officer"
+	minimap_background = "background_command"
 
 /datum/equipment_preset/uscm_ship/dp/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
@@ -779,7 +811,7 @@
 	access = list(ACCESS_MARINE_KITCHEN)
 	assignment = JOB_MESS_SERGEANT
 	job_title = JOB_MESS_SERGEANT
-	paygrades = list(PAY_SHORT_ME1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME2 = JOB_PLAYTIME_TIER_1, PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_2, PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_3, PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_4)
+	paygrades = list(PAY_SHORT_ME1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME2 = JOB_PLAYTIME_TIER_1, PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "MST"
 	skills = /datum/skills/mess_technician
 

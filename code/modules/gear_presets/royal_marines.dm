@@ -45,7 +45,7 @@
 
 /datum/equipment_preset/twe/royal_marine
 	name = "Royal Marines Commando"
-	assignment = JOB_TWE_RMC_RIFLEMAN
+	assignment = "Royal Marine"
 	job_title = JOB_TWE_RMC_RIFLEMAN
 	var/human_versus_human = FALSE
 	///Gives the Royal Marines their radios
@@ -59,7 +59,7 @@
 	paygrades = list(PAY_SHORT_RMC1 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "RMC"
 	flags = EQUIPMENT_PRESET_EXTRA
-	assignment = JOB_TWE_RMC_RIFLEMAN
+	assignment = "Royal Marines Rifleman"
 	job_title = JOB_TWE_RMC_RIFLEMAN
 
 	minimap_icon = "rmc_rifleman"
@@ -121,7 +121,7 @@
 
 /datum/equipment_preset/twe/royal_marine/spec/marksman
 	name = "TWE Royal Marine Commando (Marksman)"
-	assignment = JOB_TWE_RMC_MARKSMAN
+	assignment = "Royal Marines Marksman"
 	job_title = JOB_TWE_RMC_MARKSMAN
 	minimap_icon = "rmc_marksman"
 
@@ -166,7 +166,7 @@
 /datum/equipment_preset/twe/royal_marine/spec/breacher
 	name = "TWE Royal Marine Commando (Breacher)"
 	role_comm_title = "RMC BRC"
-	assignment = JOB_TWE_RMC_BREACHER
+	assignment = "Royal Marines Breacher"
 	job_title = JOB_TWE_RMC_BREACHER
 	minimap_icon = "rmc_breacher"
 
@@ -216,7 +216,7 @@
 /datum/equipment_preset/twe/royal_marine/spec/machinegun
 	name = "TWE Royal Marine Commando (Smartgunner)"
 	role_comm_title = "RMC SG"
-	assignment = JOB_TWE_RMC_SMARTGUNNER
+	assignment = "Royal Marines Smartgunner"
 	job_title = JOB_TWE_RMC_SMARTGUNNER
 
 	minimap_icon = "rmc_sg"
@@ -267,7 +267,7 @@
 	paygrades = list(PAY_SHORT_RMC3 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "RMC MED"
 	flags = EQUIPMENT_PRESET_EXTRA
-	assignment = JOB_TWE_RMC_MEDIC
+	assignment = "Royal Marines Medical Technician"
 	job_title = JOB_TWE_RMC_MEDIC
 
 	minimap_icon = "rmc_medic"
@@ -316,7 +316,7 @@
 	paygrades = list(PAY_SHORT_RMC4 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "RMC TL"
 	flags = EQUIPMENT_PRESET_EXTRA
-	assignment = JOB_TWE_RMC_TEAMLEADER
+	assignment = "Royal Marines Team Leader"
 	job_title = JOB_TWE_RMC_TEAMLEADER
 
 	minimap_icon = "rmc_teamleader"
@@ -369,7 +369,7 @@
 	paygrades = list(PAY_SHORT_RNO1A = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "RMC LT"
 	flags = EQUIPMENT_PRESET_EXTRA
-	assignment = JOB_TWE_RMC_LIEUTENANT
+	assignment = "Royal Marines Team Commander"
 	job_title = JOB_TWE_RMC_LIEUTENANT
 
 	minimap_icon = "rmc_lieutenant"
@@ -438,7 +438,7 @@
 	paygrades = list(PAY_SHORT_RNO2 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "RMC CPT"
 	flags = EQUIPMENT_PRESET_EXTRA
-	assignment = JOB_TWE_RMC_CAPTAIN
+	assignment = "Royal Marines Captain"
 	job_title = JOB_TWE_RMC_CAPTAIN
 
 	minimap_icon = "rmc_commander"
@@ -507,7 +507,7 @@
 	paygrades = list(PAY_SHORT_RNO3 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "RMC MJR"
 	flags = EQUIPMENT_PRESET_EXTRA
-	assignment = JOB_TWE_RMC_MAJOR
+	assignment = "Royal Marines Major"
 	job_title = JOB_TWE_RMC_MAJOR
 
 	minimap_icon = "rmc_major"

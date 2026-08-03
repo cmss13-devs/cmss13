@@ -1,50 +1,50 @@
 //Corrosive acid is consolidated -- it checks for specific castes for strength now, but works identically to each other.
 //The acid items are stored in XenoProcs.
-/mob/living/carbon/xenomorph/proc/corrosive_acid(atom/acided_thing, acid_type, plasma_cost)
+/mob/living/carbon/xenomorph/proc/corrosive_acid(atom/O, acid_type, plasma_cost)
 	if(!check_state())
 		return
-	if(!acided_thing.Adjacent(src))
-		if(istype(acided_thing,/obj/item/explosive/plastic))
-			var/obj/item/explosive/plastic/acided_c4 = acided_thing
-			if(acided_c4.plant_target && !acided_c4.plant_target.Adjacent(src))
-				to_chat(src, SPAN_WARNING("We can't reach [acided_thing]."))
+	if(!O.Adjacent(src))
+		if(istype(O,/obj/item/explosive/plastic))
+			var/obj/item/explosive/plastic/E = O
+			if(E.plant_target && !E.plant_target.Adjacent(src))
+				to_chat(src, SPAN_WARNING("We can't reach [O]."))
 				return
 		else
-			to_chat(src, SPAN_WARNING("[acided_thing] is too far away."))
+			to_chat(src, SPAN_WARNING("[O] is too far away."))
 			return
 
 	if(!isturf(loc) || HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
-		to_chat(src, SPAN_WARNING("We can't melt [acided_thing] from here!"))
+		to_chat(src, SPAN_WARNING("We can't melt [O] from here!"))
 		return
 
-	face_atom(acided_thing)
+	face_atom(O)
 
 	var/wait_time = 10
 
-	var/turf/turf = get_turf(acided_thing)
+	var/turf/turf = get_turf(O)
 
-	for(var/obj/effect/xenomorph/acid/other_acid in turf)
-		if(acid_type == other_acid.type && other_acid.acid_t == acided_thing)
-			to_chat(src, SPAN_WARNING("[other_acid] is already drenched in acid."))
+	for(var/obj/effect/xenomorph/acid/A in turf)
+		if(acid_type == A.type && A.acid_t == O)
+			to_chat(src, SPAN_WARNING("[A] is already drenched in acid."))
 			return
 
-	var/obj/acided_object
+	var/obj/I
 	//OBJ CHECK
-	if(isobj(acided_thing))
-		acided_object = acided_thing
+	if(isobj(O))
+		I = O
 
-		wait_time = acided_object.get_applying_acid_time()
+		wait_time = I.get_applying_acid_time()
 		if(wait_time == -1)
-			to_chat(src, SPAN_WARNING("We cannot dissolve \the [acided_object]."))
+			to_chat(src, SPAN_WARNING("We cannot dissolve \the [I]."))
 			return
 
 	//TURF CHECK
-	else if(isturf(acided_thing))
+	else if(isturf(O))
 
-		if(istype(acided_thing, /turf/closed/wall))
-			var/turf/closed/wall/wall_target = acided_thing
+		if(istype(O, /turf/closed/wall))
+			var/turf/closed/wall/wall_target = O
 			if(wall_target.acided_hole)
-				to_chat(src, SPAN_WARNING("[acided_thing] is already weakened."))
+				to_chat(src, SPAN_WARNING("[O] is already weakened."))
 				return
 
 		var/dissolvability = turf.can_be_dissolved()
@@ -62,102 +62,102 @@
 			else
 				return
 		if(istype(turf, /turf/closed/wall))
-			var/turf/closed/wall/acided_wall = turf
+			var/turf/closed/wall/W = turf
 
 			// Direction from wall to the mob generating acid on the wall turf
-			var/ambiguous_dir_msg = SPAN_XENOWARNING("We are unsure which direction to melt through [acided_wall]. Face it directly and try again.")
-			var/dir_to = get_dir(src, acided_wall)
+			var/ambiguous_dir_msg = SPAN_XENOWARNING("We are unsure which direction to melt through [W]. Face it directly and try again.")
+			var/dir_to = get_dir(src, W)
 			switch(dir_to)
 				if(WEST, EAST, NORTH, SOUTH)
-					acided_wall.acided_hole_dir = dir_to
+					W.acided_hole_dir = dir_to
 				if(NORTHWEST, NORTHEAST, SOUTHWEST, SOUTHEAST)
-					var/turf/closed/wall/wall_north_turf = get_step(acided_wall, NORTH)
-					var/turf/closed/wall/wall_south_turf = get_step(acided_wall, SOUTH)
-					var/turf/closed/wall/wall_east_turf = get_step(acided_wall, EAST)
-					var/turf/closed/wall/wall_west_turf = get_step(acided_wall, WEST)
+					var/turf/closed/wall/wall_north_turf = get_step(W, NORTH)
+					var/turf/closed/wall/wall_south_turf = get_step(W, SOUTH)
+					var/turf/closed/wall/wall_east_turf = get_step(W, EAST)
+					var/turf/closed/wall/wall_west_turf = get_step(W, WEST)
 					// When wall is passable from all cardinal directions...
 					if(!istype(wall_north_turf) && !istype(wall_south_turf) && !istype(wall_east_turf) && !istype(wall_west_turf))
 						// ...don't make an acid hole
 						to_chat(src, ambiguous_dir_msg)
 						return
 					else if(!istype(wall_north_turf) && !istype(wall_south_turf))
-						acided_wall.acided_hole_dir = dir_to & (NORTH|SOUTH)
+						W.acided_hole_dir = dir_to & (NORTH|SOUTH)
 					else if(!istype(wall_east_turf) && !istype(wall_west_turf))
-						acided_wall.acided_hole_dir = dir_to & (EAST|WEST)
+						W.acided_hole_dir = dir_to & (EAST|WEST)
 					else
 						// ...don't make an acid hole for corners bordering other walls
 						to_chat(src, ambiguous_dir_msg)
 						return
 
-			var/acided_hole_type = acided_wall.acided_hole_dir & (EAST|WEST) ? "a hole horizontally" : "a hole vertically"
-			to_chat(src, SPAN_XENOWARNING("We begin generating enough acid to melt [acided_hole_type] through [acided_wall]."))
+			var/acided_hole_type = W.acided_hole_dir & (EAST|WEST) ? "a hole horizontally" : "a hole vertically"
+			to_chat(src, SPAN_XENOWARNING("We begin generating enough acid to melt [acided_hole_type] through [W]."))
 		else
 			to_chat(src, SPAN_XENOWARNING("We begin generating enough acid to melt through [turf]."))
 	else
-		to_chat(src, SPAN_WARNING("You cannot dissolve [acided_thing]."))
+		to_chat(src, SPAN_WARNING("You cannot dissolve [O]."))
 		return
 
 	if(!do_after(src, wait_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 		return
 
 	// AGAIN BECAUSE SOMETHING COULD'VE ACIDED THE PLACE
-	for(var/obj/effect/xenomorph/acid/other_acid in turf)
-		if(acid_type == other_acid.type && other_acid.acid_t == acided_thing)
-			to_chat(src, SPAN_WARNING("[other_acid] is already drenched in acid."))
+	for(var/obj/effect/xenomorph/acid/A in turf)
+		if(acid_type == A.type && A.acid_t == O)
+			to_chat(src, SPAN_WARNING("[A] is already drenched in acid."))
 			return
 
 	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED)) //Checked again to account for people trying to place acid while channeling the burrow ability
-		to_chat(src, SPAN_WARNING("We can't melt [acided_thing] from here!"))
+		to_chat(src, SPAN_WARNING("We can't melt [O] from here!"))
 		return
 
 	if(!check_state())
 		return
 
-	if(!acided_thing || QDELETED(acided_thing)) //Some logic.
+	if(!O || QDELETED(O)) //Some logic.
 		return
 
 	if(!check_plasma(plasma_cost))
 		return
 
-	if(!acided_thing.Adjacent(src) || (acided_object && !isturf(acided_object.loc)))//not adjacent or inside something
-		if(istype(acided_thing,/obj/item/explosive/plastic))
-			var/obj/item/explosive/plastic/acided_c4 = acided_thing
-			if(acided_c4.plant_target && !acided_c4.plant_target.Adjacent(src))
-				to_chat(src, SPAN_WARNING("We can't reach [acided_thing]."))
+	if(!O.Adjacent(src) || (I && !isturf(I.loc)))//not adjacent or inside something
+		if(istype(O,/obj/item/explosive/plastic))
+			var/obj/item/explosive/plastic/E = O
+			if(E.plant_target && !E.plant_target.Adjacent(src))
+				to_chat(src, SPAN_WARNING("We can't reach [O]."))
 				return
 		else
-			to_chat(src, SPAN_WARNING("[acided_thing] is too far away."))
+			to_chat(src, SPAN_WARNING("[O] is too far away."))
 			return
 
 	use_plasma(plasma_cost)
 
-	var/obj/effect/xenomorph/acid/new_acid = new acid_type(turf, acided_thing)
+	var/obj/effect/xenomorph/acid/A = new acid_type(turf, O)
 
-	if(istype(acided_thing, /obj/vehicle/multitile))
-		var/obj/vehicle/multitile/acided_vehicle = acided_thing
-		acided_vehicle.take_damage_type(40 / new_acid.acid_delay, "acid", src)
-		visible_message(SPAN_XENOWARNING("[src] vomits globs of vile stuff at \the [acided_thing]. It sizzles under the bubbling mess of acid!"),
-			SPAN_XENOWARNING("We vomit globs of vile stuff at [acided_thing]. It sizzles under the bubbling mess of acid!"), null, 5)
+	if(istype(O, /obj/vehicle/multitile))
+		var/obj/vehicle/multitile/R = O
+		R.take_damage_type(40 / A.acid_delay, "acid", src)
+		visible_message(SPAN_XENOWARNING("[src] vomits globs of vile stuff at \the [O]. It sizzles under the bubbling mess of acid!"),
+			SPAN_XENOWARNING("We vomit globs of vile stuff at [O]. It sizzles under the bubbling mess of acid!"), null, 5)
 		playsound(loc, "sound/bullets/acid_impact1.ogg", 25)
-		QDEL_IN(new_acid, 20)
+		QDEL_IN(A, 20)
 		return
 
-	if(isturf(acided_thing))
-		new_acid.icon_state += "_wall"
+	if(isturf(O))
+		A.icon_state += "_wall"
 
-	if(istype(acided_thing, /obj/structure) || istype(acided_thing, /obj/structure/machinery)) //Always appears above machinery
-		new_acid.layer = acided_thing.layer + 0.1
+	if(istype(O, /obj/structure) || istype(O, /obj/structure/machinery)) //Always appears above machinery
+		A.layer = O.layer + 0.1
 	else //If not, appear on the floor or on an item
-		new_acid.layer = LOWER_ITEM_LAYER //below any item, above BELOW_OBJ_LAYER (smartfridge)
+		A.layer = LOWER_ITEM_LAYER //below any item, above BELOW_OBJ_LAYER (smartfridge)
 
-	new_acid.add_hiddenprint(src)
-	new_acid.name += " ([acided_thing])"
+	A.add_hiddenprint(src)
+	A.name += " ([O])"
 
-	if(!isturf(acided_thing))
-		msg_admin_attack("[src.name] ([src.ckey]) spat acid on [acided_thing] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
-		attack_log += text("\[[time_stamp()]\] <font color='green'>Spat acid on [acided_thing]</font>")
-	visible_message(SPAN_XENOWARNING("[src] vomits globs of vile stuff all over [acided_thing]. It begins to sizzle and melt under the bubbling mess of acid!"),
-	SPAN_XENOWARNING("We vomit globs of vile stuff all over [acided_thing]. It begins to sizzle and melt under the bubbling mess of acid!"), null, 5)
+	if(!isturf(O))
+		msg_admin_attack("[src.name] ([src.ckey]) spat acid on [O] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
+		attack_log += text("\[[time_stamp()]\] <font color='green'>Spat acid on [O]</font>")
+	visible_message(SPAN_XENOWARNING("[src] vomits globs of vile stuff all over [O]. It begins to sizzle and melt under the bubbling mess of acid!"),
+	SPAN_XENOWARNING("We vomit globs of vile stuff all over [O]. It begins to sizzle and melt under the bubbling mess of acid!"), null, 5)
 	playsound(loc, "sound/bullets/acid_impact1.ogg", 25)
 
 /proc/unroot_human(mob/living/carbon/H, trait_source)

@@ -221,15 +221,9 @@
 
 	return ..()
 
-/obj/structure/barricade/handle_barrier_chance(mob/living/attacker)
+/obj/structure/barricade/handle_barrier_chance()
 	if(!anchored)
 		return FALSE
-
-	if(isxeno(attacker))
-		var/mob/living/carbon/xenomorph/xeno = attacker
-		if(xeno.strain && istype(xeno.strain, /datum/xeno_strain/bulwark))
-			return prob(25) //Bulwark can attack through wired cade with 75% chance.
-
 	return prob(max(30,(100.0*health)/maxhealth))
 
 /obj/structure/barricade/attack_animal(mob/user as mob)
@@ -296,7 +290,7 @@
 				new/obj/item/stack/barbed_wire( src.loc )
 		return
 
-	if((item.force > force_level_absorption) && !HAS_TRAIT(item, TRAIT_TOOL_CROWBAR))
+	if(item.force > force_level_absorption)
 		. = ..()
 		if(barricade_hitsound)
 			playsound(src, barricade_hitsound, 35, 1)

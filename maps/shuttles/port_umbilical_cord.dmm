@@ -7,33 +7,29 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
-	dir = 6
-	},
 /turf/open/floor/almayer/plate,
-/area/shuttle/ert/no_defenses/no_gas)
+/area/shuttle/ert/no_defenses)
 "c" = (
 /obj/effect/landmark/ert_spawns/umbilical,
 /obj/structure/machinery/door_control/automatic/umbilical{
 	pixel_x = -22
 	},
 /turf/open/floor/almayer/plate,
-/area/shuttle/ert/no_defenses/no_gas)
+/area/shuttle/ert/no_defenses)
 "d" = (
 /obj/effect/landmark/ert_spawns/umbilical,
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer/plate,
-/area/shuttle/ert/no_defenses/no_gas)
+/area/shuttle/ert/no_defenses)
 "e" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	name = "\improper Umbillical Airlock";
 	id = "hangar_umbilical_ert"
 	},
 /turf/open/floor/almayer/plate,
-/area/shuttle/ert/no_defenses/no_gas)
+/area/shuttle/ert/no_defenses)
 "f" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -44,61 +40,17 @@
 	id = "hangar_umbilical_ert"
 	},
 /turf/open/floor/plating/almayer,
-/area/shuttle/ert/no_defenses/no_gas)
-"g" = (
-/obj/effect/landmark/ert_spawns/umbilical,
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	dir = 1;
-	keep_as_object = 1
-	},
-/obj/structure/pipes/vents/scrubber/no_boom,
-/turf/open/floor/plating/almayer,
-/area/shuttle/ert/no_defenses/no_gas)
-"h" = (
-/obj/effect/landmark/ert_spawns/umbilical,
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1;
-	keep_as_object = 1
-	},
-/obj/structure/pipes/vents/scrubber/no_boom,
-/turf/open/floor/plating/almayer,
-/area/shuttle/ert/no_defenses/no_gas)
-"i" = (
-/obj/effect/landmark/ert_spawns/umbilical,
-/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
-	dir = 10
-	},
-/turf/open/floor/almayer/plate,
-/area/shuttle/ert/no_defenses/no_gas)
-"j" = (
-/obj/effect/landmark/ert_spawns/umbilical,
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/almayer/plate,
-/area/shuttle/ert/no_defenses/no_gas)
-"k" = (
-/obj/effect/landmark/ert_spawns/umbilical,
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/almayer/plate,
-/area/shuttle/ert/no_defenses/no_gas)
+/area/shuttle/ert/no_defenses)
 "l" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	name = "\improper Umbillical Airlock"
 	},
 /turf/open/floor/almayer/plate,
-/area/shuttle/ert/no_defenses/no_gas)
+/area/shuttle/ert/no_defenses)
 "m" = (
-/obj/structure/machinery/defenses/sentry/premade/umbilical{
-	dir = 1
-	},
-/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
+/obj/effect/landmark/ert_spawns/umbilical,
 /turf/open/floor/almayer/plate,
-/area/shuttle/ert/no_defenses/no_gas)
+/area/shuttle/ert/no_defenses)
 "s" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -108,7 +60,7 @@
 	name = "\improper Umbillical Airlock"
 	},
 /turf/open/floor/plating/almayer,
-/area/shuttle/ert/no_defenses/no_gas)
+/area/shuttle/ert/no_defenses)
 "y" = (
 /obj/effect/landmark/ert_spawns/umbilical,
 /obj/effect/decal/warning_stripes{
@@ -117,7 +69,7 @@
 	keep_as_object = 1
 	},
 /turf/open/floor/plating/almayer,
-/area/shuttle/ert/no_defenses/no_gas)
+/area/shuttle/ert/no_defenses)
 "A" = (
 /obj/effect/landmark/ert_spawns/umbilical,
 /obj/effect/decal/warning_stripes{
@@ -126,7 +78,7 @@
 	keep_as_object = 1
 	},
 /turf/open/floor/plating/almayer,
-/area/shuttle/ert/no_defenses/no_gas)
+/area/shuttle/ert/no_defenses)
 "H" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -137,7 +89,7 @@
 	id = "hangar_umbilical_ert"
 	},
 /turf/open/floor/plating/almayer,
-/area/shuttle/ert/no_defenses/no_gas)
+/area/shuttle/ert/no_defenses)
 "Q" = (
 /turf/closed/wall/almayer/white/hull/blend_pod,
 /area/shuttle/ert/no_defenses)
@@ -156,7 +108,7 @@
 	name = "\improper Umbillical Airlock"
 	},
 /turf/open/floor/plating/almayer,
-/area/shuttle/ert/no_defenses/no_gas)
+/area/shuttle/ert/no_defenses)
 
 (1,1,1) = {"
 a
@@ -216,7 +168,7 @@ Q
 "}
 (8,1,1) = {"
 e
-j
+b
 c
 b
 m
@@ -226,22 +178,22 @@ l
 f
 A
 A
-g
+A
 A
 Z
 "}
 (10,1,1) = {"
 H
 y
-h
+y
 y
 y
 s
 "}
 (11,1,1) = {"
 e
-k
-i
+d
+m
 d
 m
 l

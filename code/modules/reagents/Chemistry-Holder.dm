@@ -816,8 +816,7 @@
 	if(smokerad)
 		var/datum/effect_system/smoke_spread/phosphorus/smoke = new /datum/effect_system/smoke_spread/phosphorus
 		smoke.set_up(max(smokerad, 1), 0, sourceturf, null, 6)
-		smoke.set_intensity(intensity, max_fire_int)
-		smoke.start()
+		smoke.start(intensity, max_fire_int)
 		smoke = null
 
 	if(flush_beaker)

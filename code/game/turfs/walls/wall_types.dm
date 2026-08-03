@@ -158,7 +158,6 @@
 /turf/closed/wall/almayer/research/containment/wall/divide
 	icon_state = "containment_wall_divide"
 	var/operating = FALSE
-	var/remote_id
 
 /turf/closed/wall/almayer/research/containment/wall/divide/proc/open()
 	if(operating)
@@ -200,9 +199,6 @@
 
 /turf/closed/wall/almayer/research/containment/wall/connect3
 	icon_state = "containment_wall_connect3"
-
-/turf/closed/wall/almayer/research/containment/wall/connect3
-	icon_state = "containment_wall_connect4"
 
 /turf/closed/wall/almayer/research/containment/wall/connect_w
 	icon_state = "containment_wall_connect_w"
@@ -540,9 +536,6 @@
 	walltype = WALL_BONE_RESIN
 	turf_flags = TURF_HULL
 
-/turf/closed/wall/mineral/bone_resin/k_series //mineral wall because, reasons bro.
-	desc = "A wall made of molted resin. Seems these yellow xenomorphs are fast builders."
-	color = "#ffff80"
 /turf/closed/wall/mineral/bone
 	is_weedable = NOT_WEEDABLE
 
@@ -611,7 +604,6 @@
 
 /turf/closed/wall/wood
 	name = "wood wall"
-	desc = "A large wooden wall used to separate rooms. It makes for a very cozy atmosphere."
 	icon = 'icons/turf/walls/wood.dmi'
 	icon_state = "wood"
 	walltype = WALL_WOOD
@@ -955,13 +947,13 @@
 	if(!(turf_flags & TURF_HULL))
 		var/area/area = get_area(src)
 		area?.current_resin_count--
-	if(!QDESTROYING(upper_wall))
+	if(upper_wall)
 		upper_wall.dismantle_wall()
+		upper_wall = null
 	var/turf/above = SSmapping.get_turf_above(src)
 	while(above && istransparentturf(above))
 		above.update_vis_contents()
 		above = SSmapping.get_turf_above(above)
-
 /turf/closed/wall/resin/process()
 	. = ..()
 
@@ -1044,15 +1036,12 @@
 
 /turf/closed/wall/resin/above/Destroy(force)
 	. = ..()
-	// Keep a local copy in case we accidentally destroy ourselves, or the proc will crash
-	var/turf/closed/wall/resin/wall_below = src.wall_below
-	var/obj/structure/mineral_door/resin/door_below = src.door_below
-	if(!QDESTROYING(wall_below)) // Don't cause a delete loop
-		wall_below.upper_wall = null
-		wall_below.dismantle_wall()
+	if(wall_below)
+		wall_below.upper_wall = null //we should not get here naturaly
+		wall_below = null
 	if(door_below)
 		door_below.upper_wall = null
-		door_below.Dismantle(TRUE)
+		door_below = null
 	var/turf/above = SSmapping.get_turf_above(src)
 	if(above && istransparentturf(above))
 		above.update_vis_contents()
@@ -1116,10 +1105,6 @@
 	desc = "Weird slime solidified into a wall. Remarkably resilient."
 	hivenumber = XENO_HIVE_TUTORIAL
 
-/turf/closed/wall/resin/kseries
-	color = "#ffff80"
-	hivenumber = XENO_HIVE_K_SERIES
-
 /turf/closed/wall/resin/tutorial/attack_alien(mob/living/carbon/xenomorph/xeno)
 	return
 
@@ -1131,6 +1116,14 @@
 	damage_cap = HEALTH_WALL_XENO_MEMBRANE
 	opacity = FALSE
 	alpha = 180
+
+/turf/closed/wall/resin/membrane/can_bombard(mob/living/carbon/xenomorph/X)
+	if(!istype(X))
+		return FALSE
+
+	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
+
+	return hive.is_ally(X)
 
 /turf/closed/wall/resin/membrane/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -1279,10 +1272,7 @@
 		hivenumber = hive
 		set_hive_data(src, hive)
 	recalculate_structure()
-	if(!mapload)
-		update_tied_turf()
-	// COMSIG_MOVABLE_TURF_ENTERED to handle movement and ChangeTurf
-	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTERED, PROC_REF(update_tied_turf))
+	update_tied_turf(loc)
 	RegisterSignal(src, COMSIG_MOVABLE_XENO_START_PULLING, PROC_REF(allow_xeno_drag))
 	RegisterSignal(src, COMSIG_MOVABLE_PULLED, PROC_REF(continue_allowing_drag))
 
@@ -1393,17 +1383,20 @@
 
 	return ..()
 
-/obj/structure/alien/movable_wall/proc/update_tied_turf()
-	SIGNAL_HANDLER // COMSIG_MOVABLE_TURF_ENTERED
+/obj/structure/alien/movable_wall/proc/update_tied_turf(turf/T)
+	SIGNAL_HANDLER
 
-	if(!loc)
+	if(!T)
 		return
 
 	if(tied_turf)
-		UnregisterSignal(tied_turf, list(COMSIG_TURF_ENTER))
+		UnregisterSignal(tied_turf, COMSIG_TURF_ENTER)
+	RegisterSignal(T, COMSIG_TURF_ENTER, PROC_REF(check_for_move))
+	tied_turf = T
 
-	tied_turf = loc
-	RegisterSignal(loc, COMSIG_TURF_ENTER, PROC_REF(check_for_move))
+/obj/structure/alien/movable_wall/forceMove(atom/dest)
+	. = ..()
+	update_tied_turf(loc)
 
 /obj/structure/alien/movable_wall/proc/check_for_move(turf/T, atom/movable/mover)
 	if(group.next_push > world.time)
@@ -1473,11 +1466,8 @@
 	var/explosive_multiplier = 0.3
 	var/reflection_multiplier = 0.5
 
-/turf/closed/wall/resin/reflective/bullet_act(obj/projectile/proj_bullet)
-	if(proj_bullet.projectile_flags & PROJECTILE_REFLECTED)
-		return
-
-	if(proj_bullet.ammo.flags_ammo_behavior & AMMO_NO_DEFLECT)
+/turf/closed/wall/resin/reflective/bullet_act(obj/projectile/P)
+	if(src in P.permutated)
 		return
 
 	//Ineffective if someone is sitting on the wall
@@ -1485,15 +1475,26 @@
 		return ..()
 
 	if(!prob(chance_to_reflect))
-		if(proj_bullet.ammo.damage_type == BRUTE)
-			proj_bullet.damage *= brute_multiplier
+		if(P.ammo.damage_type == BRUTE)
+			P.damage *= brute_multiplier
 		return ..()
+	if(P.runtime_iff_group || P.ammo.flags_ammo_behavior & AMMO_NO_DEFLECT)
+		// Bullet gets absorbed if it has IFF or can't be reflected.
+		return
 
-	var/atom/target = proj_bullet.firer
-	if(!target)
-		return ..()
+	var/obj/projectile/new_proj = new(src, construction_data ? construction_data : create_cause_data(initial(name)))
+	new_proj.generate_bullet(P.ammo)
+	new_proj.damage = P.damage * reflection_multiplier // don't make it too punishing
+	new_proj.accuracy = HIT_ACCURACY_TIER_7 // 35% chance to hit something
 
-	proj_bullet.reflect_projectile_at_firer(src, proj_bullet, proj_bullet.firer, target, damage_multiplier = reflection_multiplier, accuracy_override = HIT_ACCURACY_TIER_7, range_override = reflect_range, angle_variance = 30)
+	// Move back to who fired you.
+	RegisterSignal(new_proj, COMSIG_BULLET_PRE_HANDLE_TURF, PROC_REF(bullet_ignore_turf))
+	new_proj.permutated |= src
+
+	var/angle = Get_Angle(src, P.firer) + rand(30, -30)
+	var/atom/target = get_angle_target_turf(src, angle, get_dist(src, P.firer))
+	new_proj.projectile_flags |= PROJECTILE_SHRAPNEL
+	new_proj.fire_at(target, P.firer, src, reflect_range, speed = P.ammo.shell_speed)
 
 	return TRUE
 

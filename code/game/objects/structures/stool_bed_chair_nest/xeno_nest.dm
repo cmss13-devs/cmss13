@@ -11,7 +11,6 @@
 	layer = ABOVE_MOB_LAYER
 	plane = GAME_PLANE
 	buckle_lying = 0
-	flags_obj = OBJ_ORGANIC
 	var/on_fire = 0
 	var/resisting = 0
 	var/resisting_ready = 0
@@ -58,6 +57,7 @@
 		pixel_y = buckling_y["[dir]"]
 		pixel_x = buckling_x["[dir]"]
 		if(dir == SOUTH)
+			buckled_mob.plane = TURF_PLANE
 			buckled_mob.layer = ABOVE_TURF_LAYER
 			if(ishuman(current_mob))
 				var/mob/living/carbon/human/current_human = current_mob
@@ -71,6 +71,7 @@
 	REMOVE_TRAIT(current_mob, TRAIT_UNDENSE, XENO_NEST_TRAIT)
 	if(dir == SOUTH)
 		current_mob.layer = initial(current_mob.layer)
+		current_mob.plane = initial(current_mob.plane)
 		if(!ishuman(current_mob))
 			var/mob/living/carbon/human/current_human = current_mob
 			for(var/obj/limb/current_mobs_limb in current_human.limbs)
@@ -86,19 +87,15 @@
 	color = "#cc8ec4"
 	hivenumber = XENO_HIVE_FORSAKEN
 
-/obj/structure/bed/nest/kseries
-	color = "#ffff80"
-	hivenumber = XENO_HIVE_K_SERIES
-
-/obj/structure/bed/nest/attackby(obj/item/thing, mob/living/user)
-	if(istype(thing, /obj/item/grab))
-		var/obj/item/grab/grab_item = thing
-		if(ismob(grab_item.grabbed_thing))
-			var/mob/grabbed_mob = grab_item.grabbed_thing
-			to_chat(user, SPAN_NOTICE("You place \the [grabbed_mob] on \the [src]."))
-			grabbed_mob.forceMove(loc)
+/obj/structure/bed/nest/attackby(obj/item/W, mob/living/user)
+	if(istype(W, /obj/item/grab))
+		var/obj/item/grab/G = W
+		if(ismob(G.grabbed_thing))
+			var/mob/M = G.grabbed_thing
+			to_chat(user, SPAN_NOTICE("You place \the [M] on \the [src]."))
+			M.forceMove(loc)
 		return TRUE
-	if(thing.flags_item & NOBLUDGEON)
+	if(W.flags_item & NOBLUDGEON)
 		return
 	if(iscarbon(user))
 		var/mob/living/carbon/carbon = user
@@ -106,25 +103,25 @@
 			to_chat(user, SPAN_XENOWARNING("We shouldn't interfere with the nest, leave that to the drones."))
 			return
 	if(buckled_mob)
-		if(iswelder(thing))
-			var/obj/item/tool/weldingtool/welder = thing
-			if(!welder.isOn())
-				to_chat(user, SPAN_WARNING("You need to turn \the [thing] on before you can unnest someone!"))
+		if(iswelder(W))
+			var/obj/item/tool/weldingtool/WT = W
+			if(!WT.isOn())
+				to_chat(user, SPAN_WARNING("You need to turn \the [W] on before you can unnest someone!"))
 				return
 			playsound(loc, 'sound/items/weldingtool_weld.ogg', 25)
 			user.visible_message(SPAN_NOTICE("\The [user] starts burning through the resin binding \the [buckled_mob] in place..."), SPAN_NOTICE("You start burning through the resin binding \the [buckled_mob] in place..."))
-			if(!do_after(user, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE) || !welder.isOn())
+			if(!do_after(user, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE) || !WT.isOn())
 				return
 			if(!buckled_mob)
 				return
 			buckled_mob.visible_message(SPAN_NOTICE("\The [user] pulls \the [buckled_mob] free from \the [src]!"), SPAN_NOTICE("\The [user] pulls you free from \the [src]."), SPAN_NOTICE("You hear squelching."))
 			playsound(loc, "alien_resin_move", 50)
 			if(ishuman(buckled_mob))
-				var/mob/living/carbon/human/buckled_human = buckled_mob
-				log_interact(user, buckled_human, "[key_name(user)] unnested [key_name(buckled_human)] at [get_area_name(loc)]")
+				var/mob/living/carbon/human/H = buckled_mob
+				log_interact(user, H, "[key_name(user)] unnested [key_name(H)] at [get_area_name(loc)]")
 			unbuckle()
 			return
-		if(is_sharp(thing))
+		if(is_sharp(W))
 			user.visible_message(SPAN_NOTICE("\The [user] starts cutting through the resin binding \the [buckled_mob] in place..."), SPAN_NOTICE("You start cutting through the resin binding \the [buckled_mob] in place..."))
 			if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 				return
@@ -133,17 +130,16 @@
 			buckled_mob.visible_message(SPAN_NOTICE("\The [user] pulls \the [buckled_mob] free from \the [src]!"), SPAN_NOTICE("\The [user] pulls you free from \the [src]."), SPAN_NOTICE("You hear squelching."))
 			playsound(loc, "alien_resin_move", 50)
 			if(ishuman(buckled_mob))
-				var/mob/living/carbon/human/buckled_human = buckled_mob
-				log_interact(user, buckled_human, "[key_name(user)] unnested [key_name(buckled_human)] at [get_area_name(loc)]")
+				var/mob/living/carbon/human/H = buckled_mob
+				log_interact(user, H, "[key_name(user)] unnested [key_name(H)] at [get_area_name(loc)]")
 			unbuckle()
 			return
-	health = max(0, health - thing.force)
+	health = max(0, health - W.force)
 	playsound(loc, "alien_resin_break", 25)
 	user.animation_attack_on(src)
-	user.visible_message(SPAN_WARNING("\The [user] hits \the [src] with \the [thing]!"),
-	SPAN_WARNING("You hit \the [src] with \the [thing]!"))
+	user.visible_message(SPAN_WARNING("\The [user] hits \the [src] with \the [W]!"),
+	SPAN_WARNING("You hit \the [src] with \the [W]!"))
 	healthcheck()
-	return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 
 /obj/structure/bed/nest/manual_unbuckle(mob/living/user)
 	if(!(buckled_mob && buckled_mob.buckled == src && buckled_mob != user))
@@ -244,10 +240,6 @@
 
 	if(buckled_mob) //Just in case
 		to_chat(user, SPAN_WARNING("There's already someone in [src]."))
-		return
-
-	if(!loc) //In case the nest's wall no longer exists
-		to_chat(user, SPAN_WARNING("We require a wall to secure [mob] to!"))
 		return
 
 	if(human) //Improperly stunned Marines won't be nested

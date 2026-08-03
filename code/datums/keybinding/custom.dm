@@ -14,12 +14,6 @@
 	/// If this emote should fire when human
 	var/when_human = TRUE
 
-	/// If this emote should fire when yautja
-	var/when_yautja = TRUE
-
-	/// If this emote should fire when synthetic
-	var/when_synth = TRUE
-
 	/// When this emote was last used
 	var/last_fired
 
@@ -32,20 +26,10 @@
 	if(!COOLDOWN_FINISHED(src, last_fired))
 		return FALSE
 
-	var/usermob = user?.mob
-	if(ishuman(usermob))
-		var/mob/living/carbon/human/human_based_mob = usermob
+	if(isxeno(user?.mob))
+		return when_xeno
 
-		if(isspecieshuman(human_based_mob))
-			return when_human
-
-		if(isspeciesyautja(human_based_mob))
-			return when_yautja
-
-		if(isspeciessynth(human_based_mob))
-			return when_synth
-
-	return when_xeno
+	return when_human
 
 /datum/keybinding/custom/down(client/user)
 	. = ..()

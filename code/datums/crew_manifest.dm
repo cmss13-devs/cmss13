@@ -39,7 +39,6 @@ GLOBAL_DATUM_INIT(crew_manifest, /datum/crew_manifest, new)
 	for(var/datum/data/record/record_entry in GLOB.data_core.general)
 		var/name = record_entry.fields["name"]
 		var/rank = record_entry.fields["rank"]
-		var/paygrade_prefix = record_entry.fields["paygrade_prefix"]
 		var/squad = record_entry.fields["squad"]
 		if(isnull(name) || isnull(rank))
 			continue
@@ -49,7 +48,6 @@ GLOBAL_DATUM_INIT(crew_manifest, /datum/crew_manifest, new)
 
 		var/entry_dept = null
 		var/list/entry = list(
-			"paygrade_prefix" = paygrade_prefix,
 			"name" = name,
 			"rank" = rank,
 			"squad" = squad,

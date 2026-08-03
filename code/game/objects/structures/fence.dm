@@ -111,13 +111,13 @@
 		return
 	attack_generic(simple, simple.melee_damage_upper)
 
-/obj/structure/fence/attackby(obj/item/weapontool, mob/user)
+/obj/structure/fence/attackby(obj/item/W, mob/user)
 
-	if(istype(weapontool, /obj/item/stack/barbed_wire) && health < health_max)
+	if(istype(W, /obj/item/stack/barbed_wire) && health < health_max)
 		if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_ENGI))
 			to_chat(user, SPAN_WARNING("You don't have the skill needed to fix [src]'s wiring."))
 			return
-		var/obj/item/stack/barbed_wire/wire = weapontool
+		var/obj/item/stack/barbed_wire/wire = W
 		var/amount_needed = 2
 		if(health)
 			amount_needed = 1
@@ -142,22 +142,22 @@
 			to_chat(user, SPAN_WARNING("You need more barbed wire to repair [src]."))
 			return
 
-	if(HAS_TRAIT(weapontool, TRAIT_TOOL_WIRECUTTERS) && cut)
-		user.visible_message(SPAN_NOTICE("[user] starts cutting away the remains of [src] with [weapontool]."),
-		SPAN_NOTICE("You start cutting away the remains of [src] with [weapontool]."))
+	if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS) && cut)
+		user.visible_message(SPAN_NOTICE("[user] starts cutting away the remains of [src] with [W]."),
+		SPAN_NOTICE("You start cutting away the remains of [src] with [W]."))
 		playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
 		if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
-			user.visible_message(SPAN_NOTICE("[user] cuts away the remains of [src] with [weapontool]."),
-			SPAN_NOTICE("You cut away the remains of [src] with [weapontool]."))
+			user.visible_message(SPAN_NOTICE("[user] cuts away the remains of [src] with [W]."),
+			SPAN_NOTICE("You cut away the remains of [src] with [W]."))
 			deconstruct()
 			return
 
 	if(cut) //Cut/brokn grilles can't be messed with further than this
 		return
 
-	if(istype(weapontool, /obj/item/grab) && get_dist(src, user) < 2)
-		var/obj/item/grab/grabby = weapontool
+	if(istype(W, /obj/item/grab) && get_dist(src, user) < 2)
+		var/obj/item/grab/grabby = W
 		if(istype(grabby.grabbed_thing, /mob/living))
 			var/mob/living/grabbed_mob = grabby.grabbed_thing
 			var/state = user.grab_level
@@ -186,52 +186,32 @@
 			healthcheck(1, 1, grabbed_mob) //The person thrown into the window literally shattered it
 		return
 
-	if(weapontool.flags_item & NOBLUDGEON)
+	if(W.flags_item & NOBLUDGEON)
 		return
 
-	if(HAS_TRAIT(weapontool, TRAIT_TOOL_WIRECUTTERS) || istype(weapontool, /obj/item/attachable/bayonet) || istype(weapontool, /obj/item/weapon))
-
-		var duration = 10 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION)
-		if(istype(weapontool, /obj/item/weapon))
-			switch(weapontool.sharp)
-				if(0)
-					user.visible_message(SPAN_NOTICE("[user] starts smashing through [src] with [weapontool], with slow, annoying effort."),
-					SPAN_DANGER("You smash [src] with [weapontool], slowly undoing the chain-links with great difficulty."))
-					playsound(src.loc, 'sound/weapons/slash.ogg', 25, 1)
-					duration *=12 //likely a blunt tool, least viable, you're gonna be there for a while
-				if(1)
-					user.visible_message(SPAN_NOTICE("[user] messily hacks through the [src] with [weapontool]!"),
-					SPAN_NOTICE("You start trying to cut through [src] with [weapontool], but it's not the right tool for the job."))
-					playsound(src.loc, 'sound/weapons/slash.ogg', 25, 1)
-					duration *= 2
-				if(2)
-					user.visible_message(SPAN_NOTICE("[user] starts cutting through [src] with [weapontool]."),
-					SPAN_NOTICE("You start cutting through [src] with [weapontool]."))
-					playsound(src.loc, 'sound/items/wirecutter.ogg', 25, 1)
-				if(3)
-					user.visible_message(SPAN_NOTICE("[user] pulverizes [src]  with [weapontool]!"),
-					SPAN_NOTICE("You gruesomely cut through [src] with [weapontool], maybe try something smaller and more accurate?"))
-					playsound(src.loc, 'sound/weapons/slash.ogg', 25, 1)
-					duration *= 1.5
+	if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS) || istype(W, /obj/item/attachable/bayonet) || istype(W, /obj/item/weapon/bracer_attachment))
+		user.visible_message(SPAN_NOTICE("[user] starts cutting through [src] with [W]."),
+		SPAN_NOTICE("You start cutting through [src] with [W]."))
+		playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
 
 		//Bayonets and Wristblades are 3/4th as effective at cutting fences
-		if(istype(weapontool, /obj/item/attachable/bayonet) || istype(weapontool, /obj/item/weapon/bracer_attachment))
+		var duration = 10 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION)
+		if(istype(W, /obj/item/attachable/bayonet) || istype(W, /obj/item/weapon/bracer_attachment))
 			duration *= 1.5
 
 		if(do_after(user, duration, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
-			user.visible_message(SPAN_NOTICE("[user] cuts through [src] with [weapontool]."),
-			SPAN_NOTICE("You cut through [src] with [weapontool]."))
+			user.visible_message(SPAN_NOTICE("[user] cuts through [src] with [W]."),
+			SPAN_NOTICE("You cut through [src] with [W]."))
 			cut_grille()
 		return
-
 	else
-		switch(weapontool.damtype)
+		switch(W.damtype)
 			if("fire")
-				health -= weapontool.force * weapontool.demolition_mod
+				health -= W.force * W.demolition_mod
 			if("brute")
-				health -= weapontool.force * weapontool.demolition_mod * 0.1
-		healthcheck(1, 1, user, weapontool)
+				health -= W.force * W.demolition_mod * 0.1
+		healthcheck(1, 1, user, W)
 		. = ..()
 
 /obj/structure/fence/deconstruct(disassembled = TRUE)
@@ -373,7 +353,7 @@ GLOBAL_LIST_INIT(all_electric_fences, list())
 	GLOB.all_electric_fences -= src
 	return ..()
 
-/obj/structure/fence/electrified/attackby(obj/item/weapontool, mob/user)
+/obj/structure/fence/electrified/attackby(obj/item/W, mob/user)
 	if(electrified && !cut)
 		electrocute_mob(user, get_area(breaker_switch), src, 2.25)
 	return ..()

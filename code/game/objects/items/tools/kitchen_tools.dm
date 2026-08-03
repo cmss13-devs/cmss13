@@ -78,7 +78,7 @@
 	icon_state = "fork"
 	item_state = "fork"
 
-/obj/item/tool/kitchen/utensil/fork/plastic
+/obj/item/tool/kitchen/utensil/pfork
 	name = "plastic fork"
 	desc = "Yay, no washing up to do."
 	icon_state = "pfork"
@@ -91,7 +91,7 @@
 	item_state = "spoon"
 	attack_verb = list("attacked", "poked")
 
-/obj/item/tool/kitchen/utensil/spoon/plastic
+/obj/item/tool/kitchen/utensil/pspoon
 	name = "plastic spoon"
 	desc = "It's a plastic spoon. How dull."
 	icon_state = "pspoon"
@@ -130,7 +130,7 @@
 	if(.)
 		playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1, 5)
 
-/obj/item/tool/kitchen/utensil/knife/plastic
+/obj/item/tool/kitchen/utensil/pknife
 	name = "plastic knife"
 	desc = "The bluntest of blades."
 	icon_state = "pknife"
@@ -139,8 +139,13 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_righthand.dmi'
 	)
 	item_state = "pknife"
-	sharp = IS_SHARP_ITEM_SIMPLE
-	edge = FALSE
+	force = 10
+	throwforce = 10
+
+/obj/item/tool/kitchen/utensil/pknife/attack(target as mob, mob/living/user as mob)
+	. = ..()
+	if(.)
+		playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1, 5)
 
 /*
  * Kitchen knives

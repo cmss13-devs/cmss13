@@ -68,9 +68,9 @@
 
 				// Apply human species coloration to masks.
 				if(fleshcolor)
-					gib.color = fleshcolor
+					gib.fleshcolor = fleshcolor
 				if(bloodcolor)
-					gib.color = bloodcolor
+					gib.basecolor = bloodcolor
 
 				gib.update_icon()
 

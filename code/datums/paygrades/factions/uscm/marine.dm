@@ -61,7 +61,6 @@
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/e7
 	ranking = 6
 	pay_multiplier = 2.75
-	sea_grade = TRUE
 
 /datum/paygrade/marine/e8
 	paygrade = PAY_SHORT_ME8
@@ -70,7 +69,6 @@
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/e8
 	ranking = 7
 	pay_multiplier = 2.75
-	sea_grade = TRUE
 
 /datum/paygrade/marine/e8e
 	paygrade = PAY_SHORT_ME8E
@@ -79,7 +77,6 @@
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/e8e
 	ranking = 8
 	pay_multiplier = 2.75
-	sea_grade = TRUE
 
 /datum/paygrade/marine/e9
 	paygrade = PAY_SHORT_ME9
@@ -88,7 +85,6 @@
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/e9
 	ranking = 9
 	pay_multiplier = 3
-	sea_grade = TRUE
 
 /datum/paygrade/marine/e9e
 	paygrade = PAY_SHORT_ME9E
@@ -97,7 +93,6 @@
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/e9e
 	ranking = 10
 	pay_multiplier = 3
-	sea_grade = TRUE
 
 /datum/paygrade/marine/e9c
 	paygrade = PAY_SHORT_ME9C
@@ -106,7 +101,6 @@
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/e9c
 	ranking = 11
 	pay_multiplier = 3
-	sea_grade = TRUE
 
 /datum/paygrade/marine/wo
 	paygrade = PAY_SHORT_MWO

@@ -66,7 +66,7 @@
 	landingsmoke = null
 
 /datum/ammo/flamethrower/sentry_flamer
-	flags_ammo_behavior = AMMO_IGNORE_ARMOR|AMMO_IGNORE_COVER|AMMO_FLAME|AMMO_NO_DEFLECT
+	flags_ammo_behavior = AMMO_IGNORE_ARMOR|AMMO_IGNORE_COVER|AMMO_FLAME
 	flamer_reagent_id = "napalmx"
 
 	accuracy = HIT_ACCURACY_TIER_8
@@ -83,11 +83,21 @@
 /datum/ammo/flamethrower/sentry_flamer/glob
 	max_range = 14
 	accurate_range = 10
+	var/datum/effect_system/smoke_spread/phosphorus/smoke
+
+/datum/ammo/flamethrower/sentry_flamer/glob/New()
+	. = ..()
+	smoke = new()
 
 /datum/ammo/flamethrower/sentry_flamer/glob/drop_flame(turf/T, datum/cause_data/cause_data)
 	if(!istype(T))
 		return
-	do_smoke(loca = T, cause_data = cause_data)
+	smoke.set_up(1, 0, T, new_cause_data = cause_data)
+	smoke.start()
+
+/datum/ammo/flamethrower/sentry_flamer/glob/Destroy()
+	qdel(smoke)
+	return ..()
 
 /datum/ammo/flamethrower/sentry_flamer/mini
 	name = "normal fire"
@@ -172,7 +182,7 @@
 		flare_gun_fired_from.last_signal_flare_name = signal_flare.name
 
 /datum/ammo/arrow
-	name = "inert arrow"
+	name = "arrow"
 	ping = null //no bounce off.
 	damage_type = BRUTE
 	icon_state = "arrow"
@@ -188,14 +198,6 @@
 	handful_type = /obj/item/arrow
 	sound_hit = 'sound/weapons/pierce.ogg'
 	var/activated = FALSE
-	var/loaded_icon = "loaded"
-	var/arrow_icon = "arrow_expl"
-
-/datum/ammo/arrow/dynamic
-	name = "inert dynamic arrow"
-	arrow_icon = "arrow_inert"
-	shrapnel_type = /obj/item/arrow/dynamic_warhead
-	handful_type = /obj/item/arrow/dynamic_warhead
 
 /datum/ammo/arrow/on_embed(mob/embedded_mob, obj/limb/target_organ, silent = FALSE)
 	if(!ishumansynth_strict(embedded_mob) || !istype(target_organ))
@@ -227,87 +229,41 @@
 /datum/ammo/arrow/do_at_max_range(obj/projectile/projectile, mob/firer)
 	drop_arrow(get_turf(projectile), projectile)
 
-/datum/ammo/arrow/snare
-	name = "snare arrow"
-	damage = 30
-	penetration = 15
-	max_range = 7
-	shrapnel_type = /obj/item/arrow/snare
-	handful_type = /obj/item/arrow/snare
-	loaded_icon = "trap"
-	arrow_icon = "arrow_trap"
-
-/datum/ammo/arrow/snare/on_hit_mob(mob/mob, obj/projectile/projectile)
-	mob.apply_effect(1, STUN)
-	mob.apply_effect(3, DAZE)
-	var/obj/item/arrow/snare/arrow = new(get_turf(mob))
-	var/matrix/rotation = matrix()
-	rotation.Turn(projectile.angle - 90)
-	arrow.apply_transform(rotation)
-	arrow.trigger_snare(mob)
-	pushback(mob, projectile, 2)
-
 /datum/ammo/arrow/expl
-	name = "activated explosive arrow"
 	activated = TRUE
-	handful_type = /obj/item/arrow/expl_active
+	handful_type = /obj/item/arrow/expl
 	damage_type = BURN
 	flags_ammo_behavior = AMMO_HITS_TARGET_TURF
 	shrapnel_chance = 0
-	loaded_icon = "expl"
-	arrow_icon = "arrow_expl_active"
+	var/datum/effect_system/smoke_spread/smoke
 
-/datum/ammo/arrow/expl/dynamic
-	name = "explosive dynamic arrow"
-	handful_type = /obj/item/arrow/dynamic_warhead
+/datum/ammo/arrow/expl/New()
+	. = ..()
+	smoke = new()
 
 /datum/ammo/arrow/expl/on_hit_mob(mob/mob,obj/projectile/projectile)
 	cell_explosion(get_turf(mob), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
-	do_smoke(loca = mob)
+	smoke.set_up(1, get_turf(mob))
+	smoke.start()
 
 /datum/ammo/arrow/expl/on_hit_obj(obj/object,obj/projectile/projectile)
 	cell_explosion(get_turf(projectile), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
-	do_smoke(projectile)
+	smoke.set_up(1, get_turf(projectile))
+	smoke.start()
 /datum/ammo/arrow/expl/on_hit_turf(turf/turf, obj/projectile/projectile)
 	if(turf.density && isturf(projectile.loc))
 		cell_explosion(get_turf(projectile), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
-		do_smoke(projectile)
+		smoke.set_up(1, get_turf(projectile))
+		smoke.start()
 	else
 		cell_explosion(turf, 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
-		do_smoke(loca = turf)
+		smoke.set_up(1, turf)
+		smoke.start()
 
 /datum/ammo/arrow/expl/do_at_max_range(obj/projectile/projectile, mob/firer)
 	cell_explosion(get_turf(projectile), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
-	do_smoke(projectile)
-
-/datum/ammo/arrow/emp
-	name = "activated EMP arrow"
-	activated = TRUE
-	handful_type = /obj/item/arrow/emp/active
-	damage_type = BURN
-	flags_ammo_behavior = AMMO_HITS_TARGET_TURF
-	shrapnel_chance = 0
-	loaded_icon = "emp"
-	arrow_icon = "arrow_emp_active"
-
-/datum/ammo/arrow/emp/dynamic
-	name = "EMP dynamic arrow"
-	handful_type = /obj/item/arrow/dynamic_warhead
-
-/datum/ammo/arrow/emp/on_hit_mob(mob/mob,obj/projectile/projectile)
-	empulse(projectile, 1, 4)
-
-/datum/ammo/arrow/emp/on_hit_obj(obj/object,obj/projectile/projectile)
-	empulse(projectile, 1, 4)
-
-/datum/ammo/arrow/emp/on_hit_turf(turf/turf, obj/projectile/projectile)
-	if(turf.density && isturf(projectile.loc))
-		empulse(projectile.loc, 1, 4)
-	else
-		empulse(projectile, 1, 4)
-
-/datum/ammo/arrow/emp/do_at_max_range(obj/projectile/projectile, mob/firer)
-	empulse(projectile, 1, 4)
+	smoke.set_up(1, get_turf(projectile))
+	smoke.start()
 
 /datum/ammo/flare/starshell
 	name = "starshell ash"

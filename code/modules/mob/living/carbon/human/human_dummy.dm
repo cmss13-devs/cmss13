@@ -3,7 +3,6 @@
 // subtypes as a basis for non-common-speaking alien foreigners. ~ Z
 
 /mob/living/carbon/human/dummy
-	mob_flags = MOB_ABSTRACT
 	var/in_use = FALSE
 
 /mob/living/carbon/human/dummy/proc/wipe_state()

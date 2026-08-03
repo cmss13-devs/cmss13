@@ -484,44 +484,27 @@ SUBSYSTEM_DEF(cmtv)
 		camera_operator.view = "32x24"
 
 /datum/controller/subsystem/cmtv/proc/is_subscriber(client/potential_subscriber)
-	var/static/lookup_cache = list()
-
-	var/cmtv_subscriber_api = CONFIG_GET(string/cmtv_subscriber_api)
-	var/cmtv_subscriber_api_key = CONFIG_GET(string/cmtv_subscriber_api_key)
-
-	if(!CONFIG_GET(string/cmtv_api) || !CONFIG_GET(string/cmtv_api_key) || !cmtv_subscriber_api || !cmtv_subscriber_api_key)
+	if(!CONFIG_GET(string/cmtv_api) || !CONFIG_GET(string/cmtv_api_key))
 		return FALSE
+
+	WAIT_DB_READY
 
 	UNTIL(initialized)
 
 	if(!potential_subscriber)
 		return FALSE
 
-	var/twitch_id = lookup_cache[potential_subscriber.ckey]
-	if(!twitch_id)
-		var/datum/http_request/request = new
-		request.prepare(RUSTG_HTTP_METHOD_GET, "[cmtv_subscriber_api]?ckey=[potential_subscriber.ckey]", null, list("Authorization" = "Bearer [cmtv_subscriber_api_key]"))
-		request.begin_async()
+	var/list/datum/view_record/twitch_link/links = DB_VIEW(/datum/view_record/twitch_link, DB_AND(
+		DB_COMP("ckey", DB_EQUALS, potential_subscriber.ckey),
+		DB_COMP("twitch_id", DB_ISNOT)
+	))
 
-		UNTIL(request.is_complete())
+	if(!length(links))
+		return FALSE
 
-		var/datum/http_response/response = request.into_response()
-
-		var/decoded
-		try
-			decoded = json_decode(response.body)
-		catch
-			log_debug("cmtv_subscriber_api returned an invalid response.")
-			return FALSE
-
-		twitch_id = decoded["twitch_id"]
-		if(!twitch_id)
-			return FALSE
-
-		lookup_cache[potential_subscriber.ckey] = twitch_id
-
-	if(twitch_id in subscribers)
-		return TRUE
+	for(var/datum/view_record/twitch_link/link as anything in links)
+		if(link.twitch_id in subscribers)
+			return TRUE
 
 	return FALSE
 
@@ -672,14 +655,7 @@ SUBSYSTEM_DEF(cmtv)
 	protection = CONFIG_ENTRY_LOCKED
 
 /datum/config_entry/string/cmtv_api_key
-	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED|CONFIG_ENTRY_SENSITIVE
-
-/datum/config_entry/string/cmtv_subscriber_api
-	protection = CONFIG_ENTRY_LOCKED
-
-/datum/config_entry/string/cmtv_subscriber_api_key
 	protection = CONFIG_ENTRY_HIDDEN | CONFIG_ENTRY_LOCKED
-
 
 /atom/movable/screen/cmtv
 	plane = ESCAPE_MENU_PLANE

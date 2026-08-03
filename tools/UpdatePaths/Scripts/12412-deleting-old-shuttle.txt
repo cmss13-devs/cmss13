@@ -1,2 +1,0 @@
-/obj/structure/machinery/status_display/supply_display : @DELETE
-/obj/structure/machinery/computer/shuttle_control/@SUBTYPES : @DELETE

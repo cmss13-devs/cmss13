@@ -103,7 +103,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		var/datum/admin_help/AH = I
 		if(AH.initiator)
 			var/obj/effect/statclick/updated = AH.statclick.update()
-			L[++L.len] = list("#[AH.id]. [AH.initiator_key_name]:", "[updated.name]", REF(updated), REF(updated))
+			L[++L.len] = list("#[AH.id]. [AH.initiator_key_name]:", "[updated.name]", REF(AH))
 		else
 			++num_disconnected
 	if(num_disconnected)
@@ -117,14 +117,14 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	C.current_ticket = CKey2ActiveTicket(C.ckey)
 	if(C.current_ticket)
 		C.current_ticket.initiator = C
-		C.current_ticket.AddInteraction("Client reconnected.", message_type = "system")
+		C.current_ticket.AddInteraction("Client reconnected.")
 		log_ahelp(C.current_ticket.id, "Reconnected", "Client reconnected", C.ckey)
 
 //Dissasociate ticket
 /datum/admin_help_tickets/proc/ClientLogout(client/C)
 	if(C.current_ticket)
 		var/datum/admin_help/T = C.current_ticket
-		T.AddInteraction("Client disconnected.", message_type = "system")
+		T.AddInteraction("Client disconnected.")
 		//Gotta async this cause clients only logout on destroy, and sleeping in destroy is disgusting
 		log_ahelp(T.id, "Disconnected", "Client disconnected", C.ckey)
 		T.initiator = null
@@ -153,20 +153,15 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		log_game("[key_name(usr)] non-holder clicked on a ticket list statclick! ([src])")
 		return
 
-	// GLOB.ahelp_tickets.BrowseTickets(current_state)
-	if(usr.client.admin_holder)
-		usr.client.admin_holder.ticket_panel()
-		to_chat(usr, SPAN_NOTICE("Accessing Ticket Panel... (Click <A href='byond://?_src_=admin_holder;[HrefToken()];ahelp_tickets=[current_state]'>here</A> for legacy view)"))
+	GLOB.ahelp_tickets.BrowseTickets(current_state)
 
 //called by admin topic
-/obj/effect/statclick/ticket_list/Action()
+/obj/effect/statclick/ticket_list/proc/Action()
 	clicked()
 
 #define WEBHOOK_NONE 0
 #define WEBHOOK_URGENT 1
 #define WEBHOOK_NON_URGENT 2
-
-SET_PROTECTED_DATUM(/datum/admin_help)
 
 /**
  * # Adminhelp Ticket
@@ -176,8 +171,6 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 	var/id
 	/// The current name of the ticket
 	var/name
-	/// The current subject of the ticket
-	var/subject = ""
 	/// The current state of the ticket
 	var/state = AHELP_ACTIVE
 	/// The time at which the ticket was opened
@@ -208,18 +201,12 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 	var/list/player_interactions
 	/// List of admin ckeys that are involved, like through responding
 	var/list/admins_involved = list()
-	/// The ckey of the admin that marked this ahelp?
+	/// Which admin has marked this ahelp?
 	var/marked_admin
-	/// The key name of that admin
-	var/marked_admin_key_name
 	/// Has the player replied to this ticket yet?
 	var/player_replied = FALSE
 	/// What was the first message sent by the player?
-	var/initial_message = ""
-	/// What was the latest message sent by the player?
-	var/latest_message = ""
-
-	var/time_activity = list("opened_at" = null, "closed_at" = null)
+	var/initial_message
 
 /**
  * Call this on its own to create a ticket, don't manually assign current_ticket
@@ -236,8 +223,7 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 		return
 
 	id = ++ticket_counter
-	opened_at = REALTIMEOFDAY
-	time_activity["opened_at"] = "[time2text(opened_at, "YYYY-MM-DD hh:mm:ss")]"
+	opened_at = world.time
 
 	name = copytext_char(msg, 1, 100)
 	initial_message = msg
@@ -248,7 +234,7 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 	initiator_key_name = key_name(initiator, FALSE, TRUE, show_username = TRUE)
 	if(initiator.current_ticket) //This is a bug
 		stack_trace("Multiple ahelp current_tickets")
-		initiator.current_ticket.AddInteraction("Ticket erroneously left open by code", message_type = "system")
+		initiator.current_ticket.AddInteraction("Ticket erroneously left open by code")
 		initiator.current_ticket.Close()
 	initiator.current_ticket = src
 
@@ -259,10 +245,8 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 	player_interactions = list()
 
 	if(is_bwoink)
-		var/admin_initiating = key_name_admin(usr, FALSE)
-		AddInteraction(SPAN_BLUE("[admin_initiating] PM'd [LinkedReplyName()]"),
-		plain_message = "[admin_initiating] PM'd [initiator_key_name]")
-		message_admins(SPAN_BLUE("Ticket [TicketHref("#[id]")] created"))
+		AddInteraction("<font color='blue'>[key_name_admin(usr)] PM'd [LinkedReplyName()]</font>", player_message = "<font color='blue'>[key_name_admin(usr, include_name = FALSE)] PM'd [LinkedReplyName()]</font>")
+		message_admins("<font color='blue'>Ticket [TicketHref("#[id]")] created</font>")
 	else
 		MessageNoRecipient(msg_raw, urgent)
 		send_message_to_external(msg, urgent)
@@ -370,50 +354,14 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 	GLOB.ahelp_tickets.resolved_tickets -= src
 	return ..()
 
-/datum/admin_help/proc/AddInteraction(formatted_message, plain_message = null, message_type = "admin", link_data = null)
-	var/ckey_to_use = null
-	var/username_to_use = null
-
-	// Safely get the user's ckey
-	if(usr && !isnull(usr.ckey))
-		ckey_to_use = usr.ckey
-		if(!isnull(usr.client))
-			username_to_use = usr.client.username()
-		if(ckey_to_use != initiator_ckey)
-			admins_involved |= ckey_to_use
-			if(heard_by_no_admins)
-				heard_by_no_admins = FALSE
-
-	if(!formatted_message)
-		formatted_message = "[plain_message || "No message"]"
-
-	if(!plain_message && link_data && length(link_data))
-		plain_message = link_data[1]
-
-	var/time_stamp = time_stamp()
-	var/plain_text = plain_message || strip_html(formatted_message)
-	var/html_message = "[time_stamp]: [formatted_message]"
-
-	var/author = username_to_use || "System"
-
-	if(message_type == "system")
-		author = "System"
-
-	var/list/structured_data = list(
-		"timestamp" = time_stamp,
-		"author" = author,
-		"message" = html_encode(plain_text),
-		"html_message" = formatted_message,
-		"type" = message_type,
-		"islink" = link_data
-	)
-
-	ticket_interactions[html_message] = structured_data
-
-	if (formatted_message)
-		player_interactions += "[time_stamp()]: [formatted_message]"
-	if(plain_text)
-		latest_message = plain_text
+/datum/admin_help/proc/AddInteraction(formatted_message, player_message)
+	if (!isnull(usr) && usr.ckey != initiator_ckey)
+		admins_involved |= usr.ckey
+		if(heard_by_no_admins)
+			heard_by_no_admins = FALSE
+	ticket_interactions += "[time_stamp()]: [formatted_message]"
+	if (!isnull(player_message))
+		player_interactions += "[time_stamp()]: [player_message]"
 
 //Removes the ahelp verb and returns it after 2 minutes
 /datum/admin_help/proc/TimeoutVerb()
@@ -459,14 +407,13 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 
 //message from the initiator without a target, all admins will see this
 //won't bug irc/discord
-/datum/admin_help/proc/MessageNoRecipient(msg, urgent = FALSE, raw_message = null)
+/datum/admin_help/proc/MessageNoRecipient(msg, urgent = FALSE)
 	msg = sanitize(copytext_char(msg, 1, MAX_MESSAGE_LEN))
 	var/ref_src = "[REF(src)]"
 	//Message to be sent to all admins
 	var/admin_msg = SPAN_ADMINSAY(SPAN_ADMINHELP("Ticket [TicketHref("#[id]", ref_src)]</span><b>: [LinkedReplyName(ref_src)] [FullMonty(ref_src)]</b><br> <span class='linkify'>[msg]"))
 
-	AddInteraction(SPAN_RED("[LinkedReplyName(ref_src)]: [msg]"),
-		plain_message = "[msg]", message_type = "legacy")
+	AddInteraction("<font color='red'>[LinkedReplyName(ref_src)]: [msg]</font>", player_message = "<font color='red'>[LinkedReplyName(ref_src)]: [msg]</font>")
 	log_admin_private("Ticket #[id]: [key_name(initiator)]: [msg]")
 
 	//send this msg to all admins
@@ -494,13 +441,9 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 		to_chat(usr, SPAN_WARNING("This ticket is already open."), confidential = TRUE)
 		return
 
-	var/datum/admin_help/existing_ticket = GLOB.ahelp_tickets.CKey2ActiveTicket(initiator_ckey)
-	if(existing_ticket && existing_ticket != src)
-		if(tgui_alert(usr, "[initiator_ckey] already has an active adminhelp ticket. Would you like to close it and reopen this one?", "Existing Adminhelp Found", list("Yes", "No")) == "Yes")
-			existing_ticket.Close(usr.ckey, TRUE)
-		else
-			to_chat(usr, SPAN_NOTICE("Using the existing adminhelp thread for [initiator_ckey]."), confidential = TRUE)
-			return FALSE
+	if(GLOB.ahelp_tickets.CKey2ActiveTicket(initiator_ckey))
+		to_chat(usr, SPAN_WARNING("This user already has an active ticket, cannot reopen this one."), confidential = TRUE)
+		return
 
 	statclick = new(null, src)
 	GLOB.ahelp_tickets.active_tickets += src
@@ -508,158 +451,146 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 	GLOB.ahelp_tickets.resolved_tickets -= src
 	state = AHELP_ACTIVE
 	closed_at = null
-	time_activity["closed_at"] = null
 	if(initiator)
 		initiator.current_ticket = src
 
-	AddInteraction(SPAN_PURPLE("Reopened by [key_name_admin(usr, FALSE)]"),
-	plain_message = "Reopened by [usr.username()]", message_type = "system")
+	AddInteraction("<font color='purple'>Reopened by [key_name_admin(usr)]</font>", player_message = "Ticket reopened!")
 	var/msg = SPAN_ADMINHELP("Ticket [TicketHref("#[id]")] reopened by [key_name_admin(usr)].")
 	message_admins(msg)
-	log_ahelp(id, "Reopened", "Reopened by [usr.username()]", usr.ckey)
+	log_admin_private(msg)
+	log_ahelp(id, "Reopened", "Reopened by [usr.key]", usr.ckey)
+	TicketPanel() //can only be done from here, so refresh it
 
 //private
 /datum/admin_help/proc/RemoveActive()
 	if(state != AHELP_ACTIVE)
 		return
-	closed_at = REALTIMEOFDAY
-	time_activity["closed_at"] = "[time2text(closed_at, "YYYY-MM-DD hh:mm:ss")]"
+	closed_at = world.time
 	QDEL_NULL(statclick)
 	GLOB.ahelp_tickets.active_tickets -= src
 	if(initiator && initiator.current_ticket == src)
 		initiator.current_ticket = null
 
 //Mark open ticket as closed/meme
-/datum/admin_help/proc/Close(key_name = key_name_admin(usr, FALSE), silent = FALSE)
+/datum/admin_help/proc/Close(key_name = key_name_admin(usr), silent = FALSE)
 	if(state != AHELP_ACTIVE)
 		return
 
-	if(marked_admin && marked_admin != usr.ckey)
-		to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin_key_name]. Please override their mark to interact with this ticket!"))
+	if(marked_admin != usr.ckey)
+		if(marked_admin)
+			to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin]. Please override their mark to interact with this ticket!"))
+		else
+			to_chat(usr, SPAN_WARNING("This ticket is not currently marked. Please mark it first to interact with this ticket!"))
 		return
 
-	marked_admin = null
-	marked_admin_key_name = null
 	RemoveActive()
 	state = AHELP_CLOSED
 	GLOB.ahelp_tickets.ListInsert(src)
-	AddInteraction(SPAN_RED("Closed by [key_name]."), plain_message = "Closed by [usr.username()]", message_type = "system")
+	AddInteraction("<font color='red'>Closed by [key_name].</font>", player_message = "<font color='red'>Ticket closed!</font>")
 	if(!silent)
 		var/msg = "Ticket [TicketHref("#[id]")] closed by [key_name]."
 		message_admins(msg)
-		log_ahelp(id, "Closed", "Closed by [usr.username()]", null, usr.ckey)
+		log_ahelp(id, "Closed", "Closed by [usr.key]", null, usr.ckey)
+		log_admin_private(msg)
 
 //Mark open ticket as resolved/legitimate, returns ahelp verb
-/datum/admin_help/proc/Resolve(key_name = key_name_admin(usr, FALSE), silent = FALSE)
+/datum/admin_help/proc/Resolve(key_name = key_name_admin(usr), silent = FALSE)
 	if(state != AHELP_ACTIVE)
 		return
 
-	if(marked_admin && marked_admin != usr.ckey)
-		to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin_key_name]. Please override their mark to interact with this ticket!"))
+	if(marked_admin != usr.ckey)
+		if(marked_admin)
+			to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin]. Please override their mark to interact with this ticket!"))
+		else
+			to_chat(usr, SPAN_WARNING("This ticket is not currently marked. Please mark it first to interact with this ticket!"))
 		return
 
-	marked_admin = null
-	marked_admin_key_name = null
 	RemoveActive()
 	state = AHELP_RESOLVED
 	GLOB.ahelp_tickets.ListInsert(src)
 
 	addtimer(CALLBACK(initiator, /client/proc/giveadminhelpverb), 50)
 
-	AddInteraction(SPAN_GREEN("Resolved by [key_name]."),
-	plain_message = "Resolved by [usr.username()]", message_type = "system")
+	AddInteraction("<font color='green'>Resolved by [key_name].</font>", player_message = "<font color='green'>Ticket resolved!</font>")
 	to_chat(initiator, SPAN_ADMINHELP("Your ticket has been resolved by an admin. The Adminhelp verb will be returned to you shortly."), confidential = TRUE)
 	if(!silent)
 		var/msg = "Ticket [TicketHref("#[id]")] resolved by [key_name]"
 		message_admins(msg)
-		log_ahelp(id, "Resolved", "Resolved by [usr.username()]", null, usr.ckey)
+		log_ahelp(id, "Resolved", "Resolved by [usr.key]", null, usr.ckey)
+		log_admin_private(msg)
 
 /datum/admin_help/proc/defer_to_mentors()
 	if(state != AHELP_ACTIVE || !initial_message)
 		return
 
 	if(marked_admin && marked_admin != usr.ckey)
-		to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin_key_name]. Please override their mark to interact with this ticket!"))
+		to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin]. Please override their mark to interact with this ticket!"))
 		return
 
-	if(GLOB.mentorhelp_manager.get_active_ticket_by_ckey(initiator_ckey))
-		to_chat(usr, SPAN_WARNING("This user already has an active mentorhelp ticket. Please close it first or use the existing one."))
-		return
+	if(!initiator.current_mhelp)
+		initiator.current_mhelp = new(initiator)
 
 	var/options = tgui_alert(usr, "Use the first message in this ticket, or a custom option?", "Defer to Mentors", list("First Message", "Custom"))
 	if(!options)
 		return
 
-	var/message
 	switch(options)
 		if("First Message")
-			message = initial_message
+			initiator.current_mhelp.broadcast_unhandled(initial_message, initiator)
 		if("Custom")
-			var/custom_msg = tgui_input_text(usr, "Text to Send to Mentors", "Defer to Mentors")
-			if(!custom_msg)
+			var/message = tgui_input_text(usr, "Text to Send to Mentors", "Defer to Mentors")
+			if(!message)
 				return
-			message = "DEFERRED BY ADMIN [usr.username()]: [custom_msg]\n\nOriginal message: [initial_message]"
+			initiator.current_mhelp.broadcast_unhandled(message, initiator)
 
-	if(!message)
-		return
-
-	var/datum/mentorhelp/MH = GLOB.mentorhelp_manager.create_ticket(initiator, message)
-	MH.subject = subject
-	MH.broadcast_unhandled(message, initiator)
-
-	AddInteraction("Deferred to Mentors by [key_name_admin(usr, FALSE)].", plain_message = "Deferred to Mentors by [usr.username()]", message_type = "system")
-	to_chat(initiator, SPAN_ADMINHELP("[usr.username()] has deferred your ticket to Mentors."))
-	log_admin_private("Ticket [TicketHref("#[id]")] deferred to mentors by [usr.username()].")
-	for(var/client/admin in GLOB.admins)
-		if(CLIENT_IS_STAFF(admin) || CLIENT_IS_MENTOR(admin))
-			to_chat(admin, SPAN_ADMINNOTICE("[usr.username()] has deferred [initiator.username()]'s ticket to Mentors."))
-	log_ahelp(id, "Defer", "Deferred to mentors by [usr.username()]", null, usr.ckey)
+	AddInteraction("Deferred to Mentors by [key_name_admin(usr)].", player_message = "Deferred to Mentors.")
+	to_chat(initiator, SPAN_ADMINHELP("Your ticket has been deferred to Mentors."))
+	log_admin_private("Ticket [TicketHref("#[id]")] deferred to mentors by [usr.key].")
+	log_ahelp(id, "Defer", "Deferred to mentors by [usr.key]", null,  usr.ckey)
 	Close(silent = TRUE)
 
 /datum/admin_help/proc/mark_ticket(mob/marking_admin)
 	var/mob/user = marking_admin || usr
-	if(state != AHELP_ACTIVE)
-		to_chat(user, SPAN_WARNING("This ticket is already closed!"))
-		return
 	if(marked_admin)
 		if(marked_admin == user.ckey)
 			unmark_ticket()
 			return
-		to_chat(user, SPAN_WARNING("This ticket has already been marked by [marked_admin_key_name]."))
-		var/unmark_option = tgui_alert(user, "This message has been marked by [marked_admin_key_name]. Do you want to override?", "Marked Ticket", list("Overwrite Mark", "Unmark", "Cancel"))
+		to_chat(user, SPAN_WARNING("This ticket has already been marked by [marked_admin]."))
+		var/unmark_option = tgui_alert(user, "This message has been marked by [marked_admin]. Do you want to override?", "Marked Ticket", list("Overwrite Mark", "Unmark", "Cancel"))
 		if(unmark_option == "Unmark")
 			unmark_ticket()
 			return
 		if(unmark_option != "Overwrite Mark")
 			return
 
-	var/key_name = key_name_admin(user, FALSE)
-	AddInteraction("Marked by [key_name].",
-		plain_message = "Marked by [user.username()]", message_type = "system")
+	var/key_name = key_name_admin(user)
+	AddInteraction("Marked by [key_name].", player_message = "Ticket marked!")
 	to_chat(initiator, SPAN_ADMINHELP("An admin is preparing to respond to your ticket."))
 	var/msg = "Ticket [TicketHref("#[id]")] marked by [key_name]."
 	message_admins(msg)
-	log_ahelp(id, "Marked", "Marked by [user.username()]", sender = user.ckey)
+	log_admin_private(msg)
+	log_ahelp(id, "Marked", "Marked by [user.key]", sender = user.ckey)
 	marked_admin = user.ckey
-	marked_admin_key_name = user.username()
 
 /datum/admin_help/proc/unmark_ticket()
-	var/key_name = key_name_admin(usr, FALSE)
-	AddInteraction("Unmarked by [key_name] (previously [marked_admin_key_name]).",
-		plain_message = "Unmarked by [usr.username()] (previously [marked_admin_key_name])", message_type = "system")
+	var/key_name = key_name_admin(usr)
+	AddInteraction("Unmarked by [key_name] (previously [marked_admin]).", player_message = "Ticket unmarked!")
 	var/msg = "Ticket [TicketHref("#[id]")] unmarked by [key_name]."
 	message_admins(msg)
-	log_ahelp(id, "Unmarked", "Unmarked by [usr.username()] (previously [marked_admin_key_name])", sender = usr.ckey)
+	log_admin_private(msg)
+	log_ahelp(id, "Unmarked", "Unmarked by [usr.key] (previously [marked_admin])", sender = usr.ckey)
 	marked_admin = null
-	marked_admin_key_name = null
 
 //Close and return ahelp verb, use if ticket is incoherent
-/datum/admin_help/proc/Reject(key_name = key_name_admin(usr, FALSE))
+/datum/admin_help/proc/Reject(key_name = key_name_admin(usr))
 	if(state != AHELP_ACTIVE)
 		return
 
-	if(marked_admin && ckey(marked_admin) != usr.ckey)
-		to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin_key_name]. Please override their mark to interact with this ticket!"))
+	if(marked_admin != usr.ckey)
+		if(marked_admin)
+			to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin]. Please override their mark to interact with this ticket!"))
+		else
+			to_chat(usr, SPAN_WARNING("This ticket is not currently marked. Please mark it first to interact with this ticket!"))
 		return
 
 	if(initiator)
@@ -667,30 +598,30 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 
 		SEND_SOUND(initiator, sound('sound/effects/adminhelp_new.ogg'))
 
-		to_chat(initiator, SPAN_HIGHDANGER("- AdminHelp Rejected! -"), confidential = TRUE)
-		to_chat(initiator, SPAN_DANGER("<b>Your admin help was rejected.</b> The adminhelp verb has been returned to you so that you may try again."), confidential = TRUE)
+		to_chat(initiator, "<font color='red' size='4'><b>- AdminHelp Rejected! -</b></font>", confidential = TRUE)
+		to_chat(initiator, "<font color='red'><b>Your admin help was rejected.</b> The adminhelp verb has been returned to you so that you may try again.</font>", confidential = TRUE)
 		to_chat(initiator, "Please try to be calm, clear, and descriptive in admin helps, do not assume the admin has seen any related events, and clearly state the names of anybody you are reporting.", confidential = TRUE)
 
 	var/msg = "Ticket [TicketHref("#[id]")] rejected by [key_name]"
 	message_admins(msg)
-	AddInteraction("Rejected by [key_name].",
-		plain_message = "Rejected by [usr.username()]", message_type = "system")
-	log_ahelp(id, "Rejected", "Rejected by [usr.username()]", null, usr.ckey)
+	log_admin_private(msg)
+	AddInteraction("Rejected by [key_name].", player_message = "Ticket rejected!")
+	log_ahelp(id, "Rejected", "Rejected by [usr.key]", null, usr.ckey)
 	Close(silent = TRUE)
 
 /// Resolve ticket with a premade message
 /datum/admin_help/proc/AutoReply()
-	var/key_name = key_name_admin(usr, FALSE)
+	var/key_name = key_name_admin(usr)
 	if(state != AHELP_ACTIVE)
 		to_chat(usr, SPAN_WARNING("This ticket is already closed!"))
 		return
 
 	if(marked_admin != usr.ckey)
 		if(marked_admin)
-			to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin_key_name]. Please override their mark to interact with this ticket!"))
-			return
+			to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin]. Please override their mark to interact with this ticket!"))
 		else
-			mark_ticket(usr)
+			to_chat(usr, SPAN_WARNING("This ticket is not currently marked. Please mark it first to interact with this ticket!"))
+		return
 
 	var/chosen = tgui_input_list(usr, "Which auto response do you wish to send?", "AutoReply", GLOB.adminreplies)
 	var/datum/autoreply/admin/response = GLOB.adminreplies[chosen]
@@ -698,17 +629,17 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 	if(!response || !istype(response))
 		return
 
-	var/msg = "[SPAN_HIGHDANGER("- AdminHelp marked as [response.title]! -")]<br>"
-	msg += SPAN_DANGER("[response.message]")
+	var/msg = "<font color='red' size='4'><b>- AdminHelp marked as [response.title]! -</b></font><br>"
+	msg += "<font color='red'>[response.message]</font>"
 
 	if(initiator)
 		to_chat(initiator, msg, confidential = TRUE)
 
 	msg = "Ticket [TicketHref("#[id]")] marked as [response.title] by [key_name]"
 	message_admins(msg)
-	AddInteraction("Marked as [response.title] by [key_name]",
-		plain_message = "Marked as [response.title] by [usr.username()]", message_type = "system")
-	log_ahelp(id, "Autoreply", "Marked as [response.title] by [usr.username()]", null,  usr.ckey)
+	log_admin_private(msg)
+	AddInteraction("Marked as [response.title] by [key_name]", player_message = "Marked as [response.title]!")
+	log_ahelp(id, "Autoreply", "Marked as [response.title] by [usr.key]", null,  usr.ckey)
 	if(response.closer)
 		Resolve(silent = TRUE)
 
@@ -723,9 +654,9 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 	dat += "[FOURSPACES][TicketHref("Refresh", ref_src)][FOURSPACES][TicketHref("Re-Title", ref_src, "retitle")]"
 	if(state != AHELP_ACTIVE)
 		dat += "[FOURSPACES][TicketHref("Reopen", ref_src, "reopen")]"
-	dat += "<br><br>Opened at: [time2text(opened_at, "hh:mm:ss")] (Approx [DisplayTimeText(REALTIMEOFDAY - opened_at)] ago)"
+	dat += "<br><br>Opened at: [gameTimestamp(wtime = opened_at)] (Approx [DisplayTimeText(world.time - opened_at)] ago)"
 	if(closed_at)
-		dat += "<br>Closed at: [time2text(closed_at, "hh:mm:ss")] (Approx [DisplayTimeText(REALTIMEOFDAY - closed_at)] ago)"
+		dat += "<br>Closed at: [gameTimestamp(wtime = closed_at)] (Approx [DisplayTimeText(world.time - closed_at)] ago)"
 	dat += "<br>"
 	if(initiator)
 		dat += "[FullMonty(ref_src)]<br>" //All the action buttons for tickets/ahelps
@@ -752,32 +683,23 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 /datum/admin_help/proc/ticket_status()
 	switch(state)
 		if(AHELP_ACTIVE)
-			return SPAN_RED("OPEN")
+			return "<font color='red'>OPEN</font>"
 		if(AHELP_RESOLVED)
-			return SPAN_GREEN("RESOLVED")
+			return "<font color='green'>RESOLVED</font>"
 		if(AHELP_CLOSED)
 			return "CLOSED"
 		else
 			stack_trace("Invalid ticket state: [state]")
 			return "INVALID, CALL A CODER"
 
-/datum/admin_help/proc/set_subject(new_subject, client/setter)
-	if(!new_subject || !setter)
-		return FALSE
-
-	subject = sanitize(copytext_char(new_subject, 1, 100))
-
-	message_admins("[setter.ckey] set the subject of ticket [id] to: [subject]")
-
-	return TRUE
-
 /datum/admin_help/proc/Retitle()
-	var/new_title = tgui_input_text(usr, "Enter a title for the ticket", "Rename Ticket", name)
+	var/new_title = input(usr, "Enter a title for the ticket", "Rename Ticket", name) as text|null
 	if(new_title)
 		name = new_title
 		//not saying the original name cause it could be a long ass message
 		var/msg = "Ticket [TicketHref("#[id]")] titled [name] by [key_name_admin(usr)]"
 		message_admins(msg)
+		log_admin_private(msg)
 	TicketPanel() //we have to be here to do this
 
 //Forwarded action from admin/Topic
@@ -822,17 +744,17 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 	dat += "<b>State: "
 	switch(state)
 		if(AHELP_ACTIVE)
-			dat += "[SPAN_RED("OPEN")]</b>"
+			dat += "<font color='red'>OPEN</font></b>"
 		if(AHELP_RESOLVED)
-			dat += "[SPAN_GREEN("RESOLVED")]</b>"
+			dat += "<font color='green'>RESOLVED</font></b>"
 		if(AHELP_CLOSED)
 			dat += "CLOSED</b>"
 		else
 			dat += "UNKNOWN</b>"
 	dat += "\n[FOURSPACES]<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];player_ticket_panel=1'>Refresh</A>"
-	dat += "<br><br>Opened at: [time2text(opened_at, "hh:mm:ss")] (Approx [DisplayTimeText(REALTIMEOFDAY - opened_at)] ago)"
+	dat += "<br><br>Opened at: [gameTimestamp("hh:mm:ss", opened_at)] (Approx [DisplayTimeText(world.time - opened_at)] ago)"
 	if(closed_at)
-		dat += "<br>Closed at: [time2text(closed_at, "hh:mm:ss")] (Approx [DisplayTimeText(REALTIMEOFDAY - closed_at)] ago)"
+		dat += "<br>Closed at: [gameTimestamp("hh:mm:ss", closed_at)] (Approx [DisplayTimeText(world.time - closed_at)] ago)"
 	dat += "<br><br>"
 	dat += "<br><b>Log:</b><br><br>"
 	for (var/interaction in player_interactions)
@@ -863,17 +785,7 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 		log_game("[key_name(usr)] non-holder clicked on an ahelp statclick! ([src])")
 		return
 
-	// ahelp_datum.TicketPanel()
-	if(usr.client.admin_holder)
-		if(!usr.client.ticket_panel)
-			usr.client.ticket_panel = new /datum/ticket_panel()
-		usr.client.ticket_panel.selected_tab = "admin"
-		usr.client.ticket_panel.selected_ticket = ahelp_datum.id
-		usr.client.admin_holder.ticket_panel()
-		to_chat(usr, SPAN_NOTICE("Accessing Ticket Panel... (Click <A href='byond://?_src_=admin_holder;[HrefToken()];ahelp=[REF(ahelp_datum)];ahelp_action=ticket'>here</A> for legacy view)"))
-
-/obj/effect/statclick/ahelp/Action(action)
-	clicked()
+	ahelp_datum.TicketPanel()
 
 /obj/effect/statclick/ahelp/Destroy()
 	ahelp_datum = null
@@ -891,8 +803,6 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 	adminhelptimerid = 0
 
 GLOBAL_DATUM_INIT(admin_help_ui_handler, /datum/admin_help_ui_handler, new)
-
-SET_PROTECTED_DATUM(/datum/admin_help_ui_handler)
 
 /datum/admin_help_ui_handler
 	var/list/ahelp_cooldowns = list()
@@ -992,7 +902,6 @@ CLIENT_VERB(mentorhelp)
 		if(tgui_alert(src, "You already have a mentorhelp thread open, would you like to close it?", "Mentor Help", list("Yes", "No")) == "Yes")
 			current_mhelp.close(src)
 		return
-
 	current_mhelp = new(src)
 	if(!current_mhelp.broadcast_request(src))
 		QDEL_NULL(current_mhelp)
@@ -1034,7 +943,7 @@ CLIENT_VERB(view_latest_ticket)
 /// player_message: If the message should be shown in the player ticket panel, fill this out
 /// log_in_blackbox: Whether or not this message with the blackbox system.
 /// If disabled, this message should be logged with a different proc call
-/proc/admin_ticket_log(what, message, player_message, log_in_blackbox = TRUE, raw_message, raw_player_message)
+/proc/admin_ticket_log(what, message, player_message, log_in_blackbox = TRUE)
 	var/client/mob_client
 	var/mob/Mob = what
 	if(istype(Mob))
@@ -1043,11 +952,9 @@ CLIENT_VERB(view_latest_ticket)
 		mob_client = what
 	if(istype(mob_client) && mob_client.current_ticket)
 		if (isnull(player_message))
-			mob_client.current_ticket.AddInteraction(message,
-			plain_message = raw_message)
+			mob_client.current_ticket.AddInteraction(message)
 		else
-			mob_client.current_ticket.AddInteraction(message, player_message,
-			plain_message = raw_player_message, message_type = "legacy")
+			mob_client.current_ticket.AddInteraction(message, player_message)
 		if(log_in_blackbox)
 			log_ahelp(mob_client.current_ticket.id, "Interaction", message, mob_client.ckey, usr.ckey)
 		return mob_client.current_ticket
@@ -1055,11 +962,9 @@ CLIENT_VERB(view_latest_ticket)
 		var/datum/admin_help/active_admin_help = GLOB.ahelp_tickets.CKey2ActiveTicket(what)
 		if(active_admin_help)
 			if (isnull(player_message))
-				active_admin_help.AddInteraction(message,
-				plain_message = raw_message)
+				active_admin_help.AddInteraction(message)
 			else
-				active_admin_help.AddInteraction(message, player_message,
-				plain_message = raw_player_message, message_type = "legacy")
+				active_admin_help.AddInteraction(message, player_message)
 			if(log_in_blackbox)
 				log_ahelp(active_admin_help.id, "Interaction", message, what, usr.ckey)
 			return active_admin_help

@@ -21,8 +21,6 @@
 	/// Whether to convert/orphan once EGG_BURSTING is complete
 	var/convert_on_release = FALSE
 	var/huggers_can_spawn = TRUE
-	/// Timer holder for the tolerance of how long a fragile egg will last without a hugger inside
-	var/empty_orphan_timer = null
 
 /obj/effect/alien/egg/Initialize(mapload, hive)
 	. = ..()
@@ -225,7 +223,7 @@
 		return
 
 	if(instant_trigger)
-		if(!child.leap_at_nearest_target(EGG_JUMP_RANGE))
+		if(!child.leap_at_nearest_target())
 			child.return_to_egg(src)
 	else
 		child.go_idle()
@@ -275,8 +273,6 @@
 				status = EGG_GROWN
 				icon_state = "Egg"
 
-				deltimer(empty_orphan_timer)
-
 				flags_embryo = F.flags_embryo
 
 				qdel(F)
@@ -315,7 +311,6 @@
 		Burst(TRUE)
 
 /obj/effect/alien/egg/Crossed(atom/movable/AM)
-	..()
 	HasProximity(AM)
 
 /obj/effect/alien/egg/HasProximity(atom/movable/AM)
@@ -329,9 +324,6 @@
 
 /obj/effect/alien/egg/alpha
 	hivenumber = XENO_HIVE_ALPHA
-
-/obj/effect/alien/egg/kseries
-	hivenumber = XENO_HIVE_K_SERIES
 
 /obj/effect/alien/egg/forsaken
 	hivenumber = XENO_HIVE_FORSAKEN
@@ -377,7 +369,6 @@
 
 
 /obj/effect/egg_trigger/Crossed(atom/movable/AM)
-	..()
 	if(!linked_egg && !linked_eggmorph) //something went very wrong.
 		qdel(src)
 	else if(linked_egg && (get_dist(src, linked_egg) != 1 || !isturf(linked_egg.loc))) //something went wrong
@@ -451,14 +442,11 @@ SPECIAL EGG USED BY EGG CARRIER
 
 /obj/effect/alien/egg/carrier_egg/Burst(kill, instant_trigger, mob/living/carbon/xenomorph/X, is_hugger_player_controlled)
 	. = ..()
-	if(!kill)
-		empty_orphan_timer = addtimer(CALLBACK(src, PROC_REF(Burst), TRUE), HUGGER_TIME_TO_LIVE, TIMER_STOPPABLE)
-	else
-		if(life_timer)
-			deltimer(life_timer)
-		if(owner)
-			var/datum/behavior_delegate/carrier_eggsac/behavior = owner.behavior_delegate
-			behavior.remove_egg_owner(src)
+	if(owner)
+		var/datum/behavior_delegate/carrier_eggsac/behavior = owner.behavior_delegate
+		behavior.remove_egg_owner(src)
+	if(kill && life_timer)
+		deltimer(life_timer)
 
 /obj/effect/alien/egg/carrier_egg/on_weed_deletion()
 	return

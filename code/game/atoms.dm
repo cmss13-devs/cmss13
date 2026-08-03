@@ -194,6 +194,15 @@ directive is properly returned.
 /atom/proc/can_be_syringed()
 	return flags_atom & CAN_BE_SYRINGED
 
+/*//Convenience proc to see whether a container can be accessed in a certain way.
+
+	proc/can_subract_container()
+		return flags & EXTRACT_CONTAINER
+
+	proc/can_add_container()
+		return flags & INSERT_CONTAINER
+*/
+
 /atom/proc/allow_drop()
 	return 1
 
@@ -291,25 +300,25 @@ directive is properly returned.
 	return
 
 /atom/proc/add_hiddenprint(mob/living/M)
-	if(!M || QDELETED(M) || !M.ckey || !(flags_atom  & FPRINT) || fingerprintslast == M.ckey)
+	if(!M || QDELETED(M) || !M.key || !(flags_atom  & FPRINT) || fingerprintslast == M.key)
 		return
 	if (ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if (H.gloves)
-			fingerprintshidden += "\[[time_stamp()]\] (Wearing gloves). Real name: [H.real_name], CKEY: [H.ckey]"
+			fingerprintshidden += "\[[time_stamp()]\] (Wearing gloves). Real name: [H.real_name], Key: [H.key]"
 		else
-			fingerprintshidden += "\[[time_stamp()]\] Real name: [H.real_name], CKEY: [H.ckey]"
+			fingerprintshidden += "\[[time_stamp()]\] Real name: [H.real_name], Key: [H.key]"
 	else
-		fingerprintshidden += "\[[time_stamp()]\] Real name: [M.real_name], CKEY: [M.ckey]"
-	fingerprintslast = M.ckey
+		fingerprintshidden += "\[[time_stamp()]\] Real name: [M.real_name], Key: [M.key]"
+	fingerprintslast = M.key
 
 
 /atom/proc/add_fingerprint(mob/living/M)
-	if(!M || QDELETED(M) || !M.ckey || !(flags_atom & FPRINT) || fingerprintslast == M.ckey)
+	if(!M || QDELETED(M) || !M.key || !(flags_atom & FPRINT) || fingerprintslast == M.key)
 		return
 	if(!fingerprintshidden)
 		fingerprintshidden = list()
-	fingerprintslast = M.ckey
+	fingerprintslast = M.key
 
 	if (ishuman(M))
 		var/mob/living/carbon/human/H = M
@@ -317,15 +326,15 @@ directive is properly returned.
 		//Fibers~
 		blood_touch(H)
 
-		fingerprintslast = M.ckey
+		fingerprintslast = M.key
 
 		//Now, deal with gloves.
 		if (H.gloves && H.gloves != src)
-			fingerprintshidden += "\[[time_stamp()]\](Wearing gloves). Real name: [H.real_name], CKEY: [H.ckey]"
+			fingerprintshidden += "\[[time_stamp()]\](Wearing gloves). Real name: [H.real_name], Key: [H.key]"
 		else
-			fingerprintshidden += "\[[time_stamp()]\]Real name: [H.real_name], CKEY: [H.ckey]"
+			fingerprintshidden += "\[[time_stamp()]\]Real name: [H.real_name], Key: [H.key]"
 	else
-		fingerprintshidden +=  "\[[time_stamp()]\]Real name: [M.real_name], CKEY: [M.ckey]"
+		fingerprintshidden +=  "\[[time_stamp()]\]Real name: [M.real_name], Key: [M.key]"
 
 
 
@@ -676,7 +685,7 @@ Parameters are passed from New.
 		var/datum/effect_system/spark_spread/spark_system = new
 		spark_system.set_up(5, 0, src)
 		spark_system.attach(src)
-		spark_system.start()
+		spark_system.start(src)
 	return CHECKS_PASSED
 
 ///Turn on the light, should be called by a timer

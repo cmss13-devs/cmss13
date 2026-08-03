@@ -21,19 +21,20 @@
 	// This affects what neighbors you'll get passed in update_state()
 	var/neighbor_type = NEIGHBORS_CARDINAL
 
-/datum/automata_cell/New(turf/location)
+/datum/automata_cell/New(turf/T)
 	..()
 
-	if(!isturf(location))
+	if(!istype(T))
 		qdel(src)
 		return
 
-	// Attempt to merge two cells if they end up in the same turf
-	var/datum/automata_cell/existing_cell = location.get_cell(type)
-	if(!merge(existing_cell))
-		return // We didn't survive
+	// Attempt to merge the two cells if they end up in the same turf
+	var/datum/automata_cell/C = T.get_cell(type)
+	if(C && merge(C))
+		qdel(src)
+		return
 
-	in_turf = location
+	in_turf = T
 	LAZYADD(in_turf.autocells, src)
 
 	GLOB.cellauto_cells += src
@@ -43,8 +44,9 @@
 /datum/automata_cell/Destroy()
 	. = ..()
 
-	LAZYREMOVE(in_turf?.autocells, src)
-	in_turf = null
+	if(!QDELETED(in_turf))
+		LAZYREMOVE(in_turf.autocells, src)
+		in_turf = null
 
 	GLOB.cellauto_cells -= src
 
@@ -63,19 +65,21 @@
 	if(QDELETED(new_turf))
 		return
 
-	LAZYREMOVE(in_turf?.autocells, src)
+	if(!QDELETED(in_turf))
+		LAZYREMOVE(in_turf.autocells, src)
+		in_turf = null
 
 	in_turf = new_turf
 	LAZYADD(in_turf.autocells, src)
 
-/// Use this proc to merge this cell with another one if the other cell enters the same turf
-/// Returns TRUE if this cell should survive the merge (the other one will die/be qdeleted)
-/// Returns FALSE if this cell died and is replaced by the other cell
-/datum/automata_cell/proc/merge(datum/automata_cell/other)
+// Use this proc to merge this cell with another one if the other cell enters the same turf
+// Return TRUE if this cell should survive the merge (the other one will die/be qdeleted)
+// Return FALSE if this cell should die and be replaced by the other cell
+/datum/automata_cell/proc/merge(datum/automata_cell/other_cell)
 	return TRUE
 
-/// Returns a list of neighboring cells
-/// This is called by and results are passed to update_state by the cellauto subsystem
+// Returns a list of neighboring cells
+// This is called by and results are passed to update_state by the cellauto subsystem
 /datum/automata_cell/proc/get_neighbors()
 	if(QDELETED(in_turf))
 		return
@@ -85,25 +89,25 @@
 	// Get cardinal neighbors
 	if(neighbor_type & NEIGHBORS_CARDINAL)
 		for(var/dir in GLOB.cardinals)
-			var/turf/location = get_step(in_turf, dir)
-			if(QDELETED(location))
+			var/turf/T = get_step(in_turf, dir)
+			if(QDELETED(T))
 				continue
 
 			// Only add neighboring cells of the same type
-			for(var/datum/automata_cell/existing_cell as anything in location.autocells)
-				if(istype(existing_cell, type))
-					neighbors += existing_cell
+			for(var/datum/automata_cell/C in T.autocells)
+				if(istype(C, type))
+					neighbors += C
 
 	// Get ordinal/diagonal neighbors
 	if(neighbor_type & NEIGHBORS_ORDINAL)
 		for(var/dir in GLOB.diagonals)
-			var/turf/location = get_step(in_turf, dir)
-			if(QDELETED(location))
+			var/turf/T = get_step(in_turf, dir)
+			if(QDELETED(T))
 				continue
 
-			for(var/datum/automata_cell/existing_cell as anything in location.autocells)
-				if(istype(existing_cell, type))
-					neighbors += existing_cell
+			for(var/datum/automata_cell/C in T.autocells)
+				if(istype(C, type))
+					neighbors += C
 
 	return neighbors
 

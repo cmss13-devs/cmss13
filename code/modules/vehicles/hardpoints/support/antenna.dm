@@ -91,5 +91,4 @@
 
 	if(arc_owner.antenna_deployed)
 		retract_antenna()
-		arc_owner.clear_tacmap()
 		addtimer(CALLBACK(arc_owner, TYPE_PROC_REF(/obj/vehicle/multitile/arc, finish_antenna_retract)), deploy_animation_time)

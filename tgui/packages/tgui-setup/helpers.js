@@ -33,7 +33,6 @@
   Byond.styleSheet = 'tgui:stylesheet';
 
   Byond.storageCdn = 'tgui:storagecdn';
-  Byond.OPENDREAM = 'tgui:opendream';
 
   // Backwards compatibility
   window.__windowId__ = Byond.windowId;

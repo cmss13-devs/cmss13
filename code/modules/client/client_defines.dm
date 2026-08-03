@@ -9,8 +9,6 @@
 	// Holds the client's current mentorhelp thread
 	var/datum/mentorhelp/current_mhelp = null
 
-	var/datum/ticket_panel/ticket_panel
-
 	var/last_message = "" //Contains the last message sent by this client - used to protect against copy-paste spamming.
 	var/last_message_count = 0 //contins a number of how many times a message identical to last_message was sent.
 	var/talked = 0
@@ -49,7 +47,7 @@
 		//SECURITY//
 		////////////
 	var/next_allowed_topic_time = 10
-	control_freak = CONTROL_FREAK_ALL | CONTROL_FREAK_SKIN
+	control_freak = CONTROL_FREAK_MACROS
 
 	var/received_irc_pm = -99999
 

@@ -163,8 +163,7 @@
 	if(istype(W,/obj/item/storage))
 		..() // -> item/attackby()
 
-	// No longer scoop up food with knife utensils, instead try to actually cut with them
-	if(istype(W,/obj/item/tool/kitchen/utensil) && !istype(W,/obj/item/tool/kitchen/utensil/knife))
+	if(istype(W,/obj/item/tool/kitchen/utensil))
 
 		var/obj/item/tool/kitchen/utensil/U = W
 
@@ -197,7 +196,7 @@
 		return 0
 
 	var/inaccurate = 0
-	if(W.sharp == IS_SHARP_ITEM_BIG || W.sharp == IS_SHARP_ITEM_SIMPLE)
+	if(W.sharp == IS_SHARP_ITEM_BIG)
 		inaccurate = 1
 	else if(W.sharp != IS_SHARP_ITEM_ACCURATE)
 		return 1

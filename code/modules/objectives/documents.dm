@@ -22,6 +22,7 @@
 	document?.objective = null
 	document = null
 	initial_area = null
+	state = OBJECTIVE_DELETED
 	return ..()
 
 /datum/cm_objective/document/get_related_label()

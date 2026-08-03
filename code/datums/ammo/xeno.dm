@@ -256,8 +256,7 @@
 	if(. == FALSE)
 		return
 	var/datum/effects/acid/acid_effect = locate() in mob.effects_list
-	if(!acid_effect)
-		acid_effect = new /datum/effects/acid(mob, projectile.firer)
+	acid_effect = new /datum/effects/acid(mob, projectile.firer)
 	acid_effect.enhance_acid()
 	acid_effect.increment_duration(acid_progression)
 	splatter(mob, 1, projectile)
@@ -266,7 +265,7 @@
 	. = ..()
 	if(istype(target_object, /obj/structure/barricade))
 		var/obj/structure/barricade/barricade = target_object
-		var/datum/effects/acid/acid_effect = locate() in barricade.effects_list
+		var/datum/effects/acid/acid_effect = locate() in barricade
 		if(!acid_effect)
 			barricade.acid_spray_act()
 
@@ -284,6 +283,7 @@
 	ping = "ping_x"
 	debilitate = list(2,2,0,1,11,12,1,10) // Stun,knockdown,knockout,irradiate,stutter,eyeblur,drowsy,agony
 	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_EXPLOSIVE|AMMO_IGNORE_RESIST|AMMO_HITS_TARGET_TURF|AMMO_ACIDIC
+	var/datum/effect_system/smoke_spread/smoke_system
 	spit_cost = 200
 	pre_spit_warn = TRUE
 	spit_windup = 5 SECONDS
@@ -293,10 +293,8 @@
 	scatter = SCATTER_AMOUNT_TIER_4
 	shell_speed = 0.75
 	max_range = 16
-	var/datum/effect_system/smoke_spread/smoke_system
 	/// range on the smoke in tiles from center
 	var/smokerange = 4
-	/// The multiplier for the smoke lifetime
 	var/lifetime_mult = 1.0
 
 /datum/ammo/xeno/boiler_gas/New()
@@ -304,7 +302,8 @@
 	set_xeno_smoke()
 
 /datum/ammo/xeno/boiler_gas/Destroy()
-	QDEL_NULL(smoke_system)
+	qdel(smoke_system)
+	smoke_system = null
 	. = ..()
 
 /datum/ammo/xeno/boiler_gas/on_hit_mob(mob/moob, obj/projectile/proj)
@@ -336,12 +335,13 @@
 	smoke_system = new /datum/effect_system/smoke_spread/xeno_weaken()
 
 /datum/ammo/xeno/boiler_gas/proc/drop_nade(turf/turf, obj/projectile/proj)
+	var/lifetime_mult = 1.0
 	var/datum/cause_data
 	if(isboiler(proj.firer))
 		cause_data = proj.weapon_cause_data
 	smoke_system.set_up(smokerange, 0, turf, new_cause_data = cause_data)
 	smoke_system.lifetime = 12 * lifetime_mult
-	smoke_system.start(do_NOT_delete = TRUE)
+	smoke_system.start()
 	turf.visible_message(SPAN_DANGER("A glob of acid lands with a splat and explodes into noxious fumes!"))
 
 

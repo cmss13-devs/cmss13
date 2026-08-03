@@ -302,7 +302,7 @@
 		return
 	else if (ishuman(user) && HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		on = !on
-		user.visible_message("[user] pries at the control valve on [src]. The entire machine shudders." , "You pry at the control valve on [src]. The machine shudders.")
+		visible_message("You pry at the control valve on [src]. The machine shudders." , "[user] pries at the control valve on [src]. The entire machine shudders.")
 
 		Update()
 
@@ -441,7 +441,6 @@
 /obj/structure/prop/invuln/dropship_parts/lifeboat
 	name = "Lifeboat"
 	icon_state = ""
-	desc = "Separates you from certain death."
 	icon = 'icons/turf/lifeboat.dmi'
 
 #define STATE_COMPLETE 0
@@ -507,8 +506,8 @@
 	state = STATE_FUEL
 
 /obj/structure/prop/brazier/frame/full
-	name = "unlit brazier"
-	desc = "A brazier full of wood, though unlit. Something hot could ignite it."
+	name = "empty full brazier"
+	desc = "An empty brazier. Yet it's also full. What??? Use something hot to ignite it, like a welding tool."
 	icon_state = "brazier_frame_filled"
 	frame_type = /obj/structure/prop/brazier
 	state = STATE_IGNITE
@@ -1266,9 +1265,6 @@
 	desc = "Windsocks, Air-Con units, solarpanels, oh my!"
 	density = FALSE
 
-/obj/structure/prop/invuln/ice_prefab/roof_greeble/turf_layer
-	layer = ABOVE_TURF_LAYER
-	name = "roof installation"
 
 /obj/structure/prop/invuln/ice_prefab/standalone
 	density = TRUE
@@ -1485,7 +1481,6 @@
 	icon = 'icons/obj/structures/props/dropship/dropship_equipment.dmi'
 	icon_state = "rope"
 	density = FALSE
-	flags_atom = FPRINT|NO_ZFALL
 
 /obj/structure/prop/pred_flight
 	name = "hunter flight console"

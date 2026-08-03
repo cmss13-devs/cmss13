@@ -22,7 +22,7 @@
 	/// radio which broadcasts updates
 	var/obj/item/device/radio/motion/transceiver
 	/// the hidden mob which voices updates
-	var/mob/living/silicon/abstract/voice
+	var/mob/living/silicon/voice
 
 	var/assigned_network = "MP"
 	var/assigned_channel
@@ -45,7 +45,7 @@
 
 /obj/item/device/motion_sensor/Initialize(mapload, ...)
 	. = ..()
-	voice = new
+	voice = new /mob/living/silicon
 	voice.name = "[name]:[serial_number]"
 	voice.forceMove(src)
 
@@ -69,27 +69,27 @@
 		name = initial(name)
 
 /obj/item/device/motion_sensor/Crossed(mob/living/passer)
-	..()
 	if(!anchored)//Not working if it isn't on the floor.
-		return
+		return FALSE
 	if(!transceiver || !voice)//Can't send if there's no radio or voice
-		return
+		return FALSE
 	if(!COOLDOWN_FINISHED(src, sensor_cooldown))//Don't want alerts spammed.
-		return
+		return FALSE
 	if(!passer)
-		return
+		return FALSE
 	if(!(ishuman(passer) || isxeno(passer)))
-		return
+		return FALSE
 	if(HAS_TRAIT(passer, TRAIT_CLOAKED))
-		return
+		return FALSE
 	if(pass_jobs)
 		if(passer.job in pass_jobs)
-			return
+			return FALSE
 		if(isxeno(passer) && (JOB_XENOMORPH in pass_jobs))
-			return
+			return FALSE
 	if(allowed(passer))
-		return
+		return FALSE
 	send_alert(passer)
+	return TRUE
 
 /obj/item/device/motion_sensor/proc/send_alert(mob/living/passer, message_override)
 	var/broadcast_message = alert_message

@@ -202,7 +202,8 @@
 		visible_message(SPAN_WARNING("[src] catches on fire and starts cooking off! It's gonna blow!"))
 		anchored = TRUE // don't want other explosions launching it elsewhere
 		var/datum/effect_system/spark_spread/sparks = new()
-		sparks.setup_and_start(particle_count = 10, target = loc)
+		sparks.set_up(n = 10, loca = loc)
+		sparks.start()
 		new /obj/effect/warning/explosive(loc, 5 SECONDS)
 
 		addtimer(CALLBACK(src, PROC_REF(explode), cause_data), 5 SECONDS)

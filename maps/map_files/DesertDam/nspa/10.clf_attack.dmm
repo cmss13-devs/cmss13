@@ -167,7 +167,7 @@
 /area/desert_dam/building/security/lobby)
 "pa" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/twohanded/lungemine/damaged,
+/obj/item/weapon/twohanded/lungemine,
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_security)
 "pf" = (

@@ -271,7 +271,6 @@
 	..()
 
 /obj/effect/alien/resin/trap/Crossed(atom/A)
-	..()
 	if(ismob(A) || isVehicleMultitile(A))
 		HasProximity(A)
 
@@ -294,7 +293,6 @@
 	. = ..()
 
 /obj/effect/trap_tripwire/Crossed(atom/A)
-	..()
 	if(!linked_trap)
 		qdel(src)
 		return

@@ -111,7 +111,6 @@
 		special_assembly.HasProximity(AM)
 
 /obj/item/device/assembly_holder/Crossed(atom/movable/AM as mob|obj)
-	..()
 	if(a_left)
 		a_left.Crossed(AM)
 	if(a_right)

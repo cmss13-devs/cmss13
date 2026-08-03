@@ -8,7 +8,6 @@
 	explo_proof = TRUE
 	icon = 'icons/landmarks.dmi'
 	icon_state = "map_blocker"
-	flags_atom = NO_ZFALL
 
 /obj/structure/blocker/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -60,29 +59,6 @@
 	to_chat(M, SPAN_NOTICE("You peer through the fog, but it's impossible to tell what's on the other side..."))
 
 /obj/structure/blocker/fog/attack_alien(M)
-	attack_hand(M)
-	return XENO_NONCOMBAT_ACTION
-
-/obj/structure/blocker/door
-	name = "shutter"
-	desc = "Containment shutter. Used during routine testing to reduce the risk of a containment breach."
-	icon = 'icons/effects/effects.dmi'
-	icon_state = "shutter"
-	opacity = TRUE
-
-/obj/structure/blocker/door/Initialize(mapload, time_to_dispel)
-	. = ..()
-
-	if(!time_to_dispel)
-		return INITIALIZE_HINT_QDEL
-
-	dir = pick(CARDINAL_DIRS)
-	QDEL_IN(src, time_to_dispel)
-
-/obj/structure/blocker/door/attack_hand(mob/M)
-	to_chat(M, SPAN_NOTICE("Won't budge, you'll have to wait until the all-clear is sent."))
-
-/obj/structure/blocker/door/attack_alien(M)
 	attack_hand(M)
 	return XENO_NONCOMBAT_ACTION
 

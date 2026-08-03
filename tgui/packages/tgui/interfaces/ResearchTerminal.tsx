@@ -143,11 +143,6 @@ const CompoundRecord = (props: CompoundRecordProps) => {
               </Button>
             </Flex.Item>
           )}
-          <Flex.Item>
-            <Button icon="exclamation" onClick={() => act('announce', doc_ref)}>
-              Announce
-            </Button>
-          </Flex.Item>
           {isMainTerminal && !compound.isPublished && (
             <Flex.Item>
               <Button

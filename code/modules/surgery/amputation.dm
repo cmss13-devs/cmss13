@@ -171,7 +171,7 @@
 		SPAN_WARNING("[user] starts cutting through the [bone_type] in your [surgery.affected_limb.display_name]!"),
 		SPAN_NOTICE("[user] starts cutting through the [bone_type] in [target]'s [surgery.affected_limb.display_name] with [tool]!"))
 
-	target.custom_pain("Your [surgery.affected_limb.display_name] is being hacked away!", 1)
+	target.custom_pain("Your [surgery.affected_limb.display_name] is being hacked away! The pain and sight is so mortifying, you think you might pass out!", 1)
 
 	if(target.stat == CONSCIOUS)
 		if (target.pain.reduction_pain >= surgery.pain_reduction_required) //if patient is under the proper anesthesia
@@ -242,11 +242,11 @@
 /datum/surgery_step/carve_amputation/preop(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	var/flesh_type = target.get_flesh_type()
 	user.affected_message(target,
-		SPAN_NOTICE("You begin removing irregular chunks of [flesh_type] from the stump of [target]'s [surgery.affected_limb.display_name] with [tool]."),
+		SPAN_NOTICE("You begin removing irregular chunks of [flesh_type] from what's left of [target]'s [surgery.affected_limb.display_name] with [tool]."),
 		SPAN_NOTICE("[user] starts cutting away pieces of [flesh_type] from what's left of your [surgery.affected_limb.display_name]."),
 		SPAN_NOTICE("[user] begins to cut irregular chunks of [flesh_type] from what's left of [target]'s [surgery.affected_limb.display_name] with [tool]."))
 
-	target.custom_pain("[user] is carving up your stump like stripping bark from a brisket!", 1)
+	target.custom_pain("[user] is carving up your flesh up like stripping bark from a brisket! The agonizing pain makes you want to scream!", 1)
 	log_interact(user, target, "[key_name(user)] attempted to begin cleaning up the stump of [key_name(target)]'s [surgery.affected_limb.display_name] with [tool].")
 
 /datum/surgery_step/carve_amputation/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -335,7 +335,7 @@
 		SPAN_NOTICE("[user] begins folding the [flesh_type] of your [surgery.affected_limb.display_name]'s stump over the [bone_type] and stitching it together with [tool]."),
 		SPAN_NOTICE("[user] begins folding the [flesh_type] of [target]'s [surgery.affected_limb.display_name]'s stump over the [bone_type] and stitching it together with [tool]."))
 
-	target.custom_pain("The pain in your [surgery.affected_limb.display_name] is unbearable!", 1)
+	target.custom_pain("The skin on your[surgery.affected_limb.display_name] stump feels tight and those stitches sting like hell!", 1)
 	log_interact(user, target, "[key_name(user)] attempted to close the stump of [key_name(target)]'s [surgery.affected_limb.display_name] with [tool].")
 
 /datum/surgery_step/close_amputation/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

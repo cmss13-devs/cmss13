@@ -79,3 +79,19 @@
   sippykot:
   - code_imp: rank pins now prioritize uniforms instead of suits
   - bugfix: XO formal uniform properly spawns with accessories like other uniforms
+2026-08-03:
+  Jesters-Ballad:
+  - spellcheck: fixed a typo.
+  Puckaboo2:
+  - bugfix: Combat Correspondent's HUD and minimap sprites are no longer identical
+      to MP's.
+  - imagetweak: Adds Thwomper's WO Mortar Crew HUD sprite.
+  Venuska1117:
+  - rscdel: Removed unused queen "bombard" and boiler "acid lance" code.
+  - rscdel: Removed remains of vanguard "pierce_spin" and "agility" code.
+  - rscdel: Removes most of xenos  _powers.dm files, exception is queen_powers.dm.
+  matttheficus:
+  - bugfix: fixed oversight with JTAC Kits. They come with a pamphlet now.
+  - bugfix: fixed oversight with Mortar Kits. They come with RTO bags now.
+  zzzmike:
+  - bugfix: fixed a message telling everyone nearby that they pried a valve

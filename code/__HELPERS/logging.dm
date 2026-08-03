@@ -306,6 +306,8 @@ GLOBAL_PROTECT(config_error_log)
 	WRITE_LOG(GLOB.mapping_log, text)
 	SEND_TEXT(world.log, text)
 
+/// Logs to Admin Log without sending to in-game admins.
+/// Upstream compatibility proc, don't double up with our message_admins that also logs
 /proc/log_admin_private(text)
 	log_admin(text)
 

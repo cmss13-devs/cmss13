@@ -1,4 +1,4 @@
-SUBSYSTMEM_DEF(human_medhud)
+SUBSYSTEM_DEF(human_medhud)
 	name       = "Human MedHUD"
 	wait       = 2 SECONDS
 	flags      = SS_NO_INIT | SS_KEEP_TIMING

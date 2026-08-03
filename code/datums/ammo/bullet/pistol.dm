@@ -168,11 +168,7 @@
 	debilitate = list(0,1.5,0,0,0,1,0,0)
 	flags_ammo_behavior = AMMO_BALLISTIC
 
-/datum/ammo/bullet/pistol/deagle/highimpact/New()
-	..()
-	RegisterSignal(src, COMSIG_AMMO_BATTLEFIELD_EXECUTION, PROC_REF(handle_battlefield_execution))
-
-/datum/ammo/bullet/pistol/deagle/highimpact/on_hit_mob(mob/M, obj/projectile/P)
+/datum/ammo/bullet/pistol/deagle/super/highimpact/on_hit_mob(mob/M, obj/projectile/P)
 	knockback(M, P, 4)
 
 /datum/ammo/bullet/pistol/incendiary

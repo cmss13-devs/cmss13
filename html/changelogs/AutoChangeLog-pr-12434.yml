@@ -1,9 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Hopefully fixed runtimes causing infinite explosion recursion (namely explosion entry should more properly be a directionless explosion, and more ways for explosions to merge)"
-  - bugfix: "Explosion cells now merge even if the 2nd to spawn should be the survivor"
-  - bugfix: "Fixed oceans throwing/messaging ghosts"
-  - code_imp: "ChangeTurf now cleans up more references and passes autocells to the new turf"
-  - code_imp: "Simplified some loop type checks for autocells and cellauto_cells"
-  - rscdel: "Removed some seemingly unnecessary sleeps during hijack shuttle crash"

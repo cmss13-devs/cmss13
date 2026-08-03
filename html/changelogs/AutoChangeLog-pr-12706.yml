@@ -1,7 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - rscadd: "All living mobs can now be tracked by Motion Detectors and Sentries, among others."
-  - rscadd: "Jones and ARES now have appropriate IFF to avoid turrets."
-  - code_imp: "Some internal mobs are now considered abstract and barred from certain mechanics."
-  - refactor: "Ranging backend (used by Sound, Motion Detector, Sentries, in particular) has been replaced by something much more performant. This may come with side effects."

@@ -1,4 +1,0 @@
-author: "PoltavskaPraca"
-delete-after: True
-changes:
-  - rscdel: "F1 is no longer hardcoded to open adminhelp"

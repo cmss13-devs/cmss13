@@ -162,9 +162,9 @@
 		return
 	to_chat(target, SPAN_NOTICE("You taste [pick(V.reagent_list)]."))
 
-	for(var/datum/reagent/RG in V.reagent_list) // If it can't be ingested, remove it.
+	for(var/datum/reagent/RG as anything in V.reagent_list) // If it can't be ingested, remove it.
 		if(RG.flags & REAGENT_NOT_INGESTIBLE)
-			V.del_reagent(RG.id)
+			V.del_reagent_by_reference(RG)
 
 	addtimer(CALLBACK(V, TYPE_PROC_REF(/datum/reagents/vessel, inject_vessel), target, INGEST, TRUE, 0.5 SECONDS), 9.5 SECONDS)
 	return amount
@@ -245,9 +245,9 @@
 	var/reaction_occurred = FALSE
 	do
 		reaction_occurred = FALSE
-		for(var/datum/reagent/reagent in reagent_list) // Usually a small list
+		for(var/datum/reagent/reagent as anything in reagent_list) // Usually a small list
 			if(reagent.original_id) //Prevent synthesised chem variants from being mixed
-				for(var/datum/reagent/current in reagent_list)
+				for(var/datum/reagent/current as anything in reagent_list)
 					if(current.id == reagent.id)
 						continue
 					else if(current.original_id == reagent.original_id || current.id == reagent.original_id)
@@ -257,8 +257,7 @@
 							volume_factor = 1
 						reagent_list -= reagent
 						add_reagent(current.id, floor(reagent.volume / volume_factor))
-						var/list/seen = viewers(4, get_turf(my_atom))
-						for(var/mob/seen_mob in seen)
+						for(var/mob/seen_mob as anything in viewers(4, get_turf(my_atom)))
 							if(volume_factor == 1)
 								to_chat(seen_mob, SPAN_NOTICE("[icon2html(my_atom, seen_mob)] The solution begins to bubble."))
 							else
@@ -276,7 +275,7 @@
 				var/matching_container = FALSE
 				var/list/multipliers = new/list()
 
-				for(var/required_reagent in reaction.required_reagents)
+				for(var/required_reagent as anything in reaction.required_reagents)
 					if(!has_reagent(required_reagent, reaction.required_reagents[required_reagent]))
 						break
 					total_matching_reagents++
@@ -443,7 +442,7 @@
 /datum/reagents/proc/isolate_reagent(reagent)
 	for(var/datum/reagent/R as anything in reagent_list)
 		if(R.id != reagent)
-			del_reagent(R.id)
+			del_reagent_by_reference(R)
 			update_total()
 
 /datum/reagents/proc/del_reagent(reagent)
@@ -457,27 +456,34 @@
 			return FALSE
 	return TRUE
 
+/// Faster version of [/datum/reagents/proc/del_reagent] for when we already have the reagent reference
+/datum/reagents/proc/del_reagent_by_reference(datum/reagent/reagent)
+	reagent.on_delete()
+	qdel(reagent)
+	update_total()
+	my_atom?.on_reagent_change()
+
 // Returns FALSE if the reagent is getting deleted
 /datum/reagents/proc/update_total()
 	total_volume = 0
 	for(var/datum/reagent/R as anything in reagent_list)
-		if(R.volume < 0.1)
+		if(R.volume < 0.1 && !R.deleted)
 			R.deleted = TRUE
-			del_reagent(R.id)
+			del_reagent_by_reference(R)
 		else
 			total_volume += R.volume
 
 	return FALSE
 
 /datum/reagents/proc/clear_reagents()
-	for(var/datum/reagent/R in reagent_list)
-		del_reagent(R.id)
+	for(var/datum/reagent/reagent as anything in reagent_list)
+		del_reagent_by_reference(reagent)
 	return FALSE
 
 /datum/reagents/proc/reaction(atom/A, method=TOUCH, volume_modifier=0, permeable_in_mobs=TRUE)
 	if(method != TOUCH && method != INGEST)
 		return
-	for(var/datum/reagent/R in reagent_list)
+	for(var/datum/reagent/R as anything in reagent_list)
 		if(ismob(A))
 			R.reaction_mob(A, method, R.volume + volume_modifier, permeable_in_mobs)
 		else if(isturf(A))

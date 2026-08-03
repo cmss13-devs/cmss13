@@ -187,7 +187,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 //Main Processing
 /datum/reagent/proc/handle_processing(mob/living/M, list/mods, delta_time)
-	for(var/datum/chem_property/P in properties)
+	for(var/datum/chem_property/P as anything in properties)
 		//A level of 1 == 0.5 potency, which is equal to REM (0.2/0.4) in the old system
 		//That means the level of the property by default is the number of REMs the effect had in the old system
 		var/potency = mods[REAGENT_EFFECT] * ((P.level+mods[REAGENT_BOOST]) * LEVEL_TO_POTENCY_MULTIPLIER)

@@ -90,13 +90,17 @@
 
 	if(!range_bounds)
 		set_range()
-	targets = SSquadtree.players_in_range(range_bounds, z, QTREE_SCAN_MOBS | QTREE_FILTER_LIVING)
-	if(!targets)
-		return FALSE
+	var/list/atom/movable/all_targets = scan_targets()
+	targets = list()
+	for(var/mob/target in all_targets)
+		if(target.z != z)
+			continue
+		if(target.mob_flags & MOB_ABSTRACT)
+			continue
+		targets += target
 
-	if(!target && length(targets))
-		target = pick(targets)
-
+	if(!target)
+		target = SAFEPICK(targets)
 	get_target(target)
 	return TRUE
 
@@ -113,6 +117,12 @@
 			range_bounds = SQUARE(x, y + 4, 7)
 		if(SOUTH)
 			range_bounds = SQUARE(x, y - 4, 7)
+
+/obj/structure/machinery/defenses/sentry/proc/scan_targets()
+	RETURN_TYPE(/list/atom/movable)
+	if(!z)
+		return // Stop it. Get some help.
+	return SSmapgrids.get_movables_in_region(z, range_bounds.center_x - range_bounds.bounds_x / 2, range_bounds.center_x + range_bounds.bounds_x / 2, range_bounds.center_y - range_bounds.bounds_y / 2, range_bounds.center_y + range_bounds.bounds_y / 2  )
 
 /obj/structure/machinery/defenses/sentry/proc/unset_range()
 	SIGNAL_HANDLER
@@ -608,6 +618,13 @@
 		deployment_system = null
 	. = ..()
 
+/obj/structure/machinery/defenses/sentry/premade/deployable/update_health(damage, pass_forward = FALSE)
+	. = ..()
+	pass_forward = !pass_forward
+	if(pass_forward)
+		if(deployment_system)
+			deployment_system.update_health(damage, pass_forward)
+
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony
 	faction_group = list(FACTION_MARINE, FACTION_COLONIST, FACTION_SURVIVOR, FACTION_NSPA)
 
@@ -728,6 +745,13 @@
 	minimap_icon_state = "sentry_omni"
 	var/obj/structure/dropship_equipment/sentry_holder/deployment_system
 	var/obj/structure/machinery/camera/cas/linked_cam
+
+/obj/structure/machinery/defenses/sentry/premade/dropship/update_health(damage, pass_forward = FALSE)
+	. = ..()
+	pass_forward = !pass_forward
+	if(pass_forward)
+		if(deployment_system)
+			deployment_system.update_health(damage, pass_forward)
 
 /obj/structure/machinery/defenses/sentry/premade/dropship/Destroy()
 	if(deployment_system)

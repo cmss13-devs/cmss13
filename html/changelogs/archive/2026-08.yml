@@ -1,0 +1,81 @@
+2026-08-01:
+  Antlers:
+  - bugfix: Ladders are no longer exempt from clickdrag override
+  Drathek:
+  - bugfix: Fixed clusters being unable to convert towers because they're in core
+      weeds
+  PoltavskaPraca:
+  - balance: added ability to wear m5 gas mask + rail flashlight to headset, patrol
+      cap and subtypes,
+  - code_imp: changed some code regarding flashlight attachment, as well as update_icon().
+      Also m5 gasmask checks for clothing head subtypes, instead of just helmets now,
+      regarding bitflag application
+  - imageadd: added sprite variants for gasmask and onmob flashlight
+  matttheficus:
+  - rscadd: Scout now gets their own encryption key with expanded comms access.
+  - code_imp: Direct SL Orders now always go to SLs regardless of garble.
+  - code_imp: Squad Orders now go to RTO wearers regardless of garble.
+  - rscdel: removed a number of roles from the Command Comms channel.
+  - rscadd: Command Channel handheld radios.
+  - rscdel: removed RTO packs from a number of roles.
+  - rscadd: SLs get CIC Access for Briefs/Planning if needed.
+2026-08-02:
+  Bugwasabi:
+  - bugfix: Fixes welding fuel flames having the wrong color
+  Drathek:
+  - bugfix: Hopefully fixed runtimes causing infinite explosion recursion (namely
+      explosion entry should more properly be a directionless explosion, and more
+      ways for explosions to merge)
+  - bugfix: Explosion cells now merge even if the 2nd to spawn should be the survivor
+  - bugfix: Fixed oceans throwing/messaging ghosts
+  - code_imp: ChangeTurf now cleans up more references and passes autocells to the
+      new turf
+  - code_imp: Simplified some loop type checks for autocells and cellauto_cells
+  - rscdel: Removed some seemingly unnecessary sleeps during hijack shuttle crash
+  - bugfix: Hardcore trait/mode now triggers undefib signal to unlock stuff like spotter
+      sight
+  - bugfix: You now need to be conscious for bloody footprints to apply
+  - code_imp: Cleaned up code regarding bloody footprints and hopefully eliminated
+      the cause of flaky tests
+  - bugfix: Static tcomms no longer are "on" when initialized (namely for the purpose
+      of nuke decryption checks)
+  JackieEstegado:
+  - bugfix: Fixed being able to bypass id locks on bags by shaking or being able to
+      put an item inside.
+  - bugfix: Eyepiece NVGs no longer increase eye damage from welding when turned off.
+  - bugfix: Fixed fast cryo not properly applying to players that climbed into a cryopod
+      by themselves.
+  - bugfix: Fixed players mobs bugging out when attempted to be nested on a wall that
+      no longer exists.
+  - bugfix: Fixed attacking nests not having an attack delay.
+  - bugfix: Fixed a bug where an eggsac carrier could sustain infinite fragile eggs.
+  - rscadd: Fragile eggs are now counted against the sustain limit until they are
+      destroyed.
+  - rscadd: Fragile eggs that no longer have a hugger will quickly die.
+  LiquidPotroh:
+  - bugfix: fixed valkyrie retrieve resource consumption
+  PoltavskaPraca:
+  - rscdel: F1 is no longer hardcoded to open adminhelp
+  antlersss:
+  - bugfix: The duplicate dry foodstuffs freezer in the brig's kitchen is now an organics
+      freezer.
+  fira:
+  - rscadd: All living mobs can now be tracked by Motion Detectors and Sentries, among
+      others.
+  - rscadd: Jones and ARES now have appropriate IFF to avoid turrets.
+  - code_imp: Some internal mobs are now considered abstract and barred from certain
+      mechanics.
+  - refactor: Ranging backend (used by Sound, Motion Detector, Sentries, in particular)
+      has been replaced by something much more performant. This may come with side
+      effects.
+  - code_imp: Removed unnecessary rotation updates for projectiles. They may in rare
+      cases strafe a little rather than turning, but you shouldn't notice the difference.
+  halgmor:
+  - rscadd: Adds Corporal and Sergeant ranks to MST playtime progression
+  labeo0:
+  - bugfix: Fixed deagle incorrect ammo type. Fixed CO deagle ammo type.
+  - balance: Regular deagle ammo stats change from 55 damage/15 AP to 45 damage/30
+      AP. High-impact ammo stats change from 45 damage to 60
+  sippykot:
+  - code_imp: rank pins now prioritize uniforms instead of suits
+  - bugfix: XO formal uniform properly spawns with accessories like other uniforms

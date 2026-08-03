@@ -2,20 +2,19 @@
 //returns FALSE otherwise
 /obj/proc/allowed(mob/M)
 	//check if it doesn't require any access at all
-	if(check_access() || isRemoteControlling(M))
-		return TRUE
-
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		//if they are holding or wearing a card that has access, that works
-		if(check_access(H.get_active_hand()) || check_access(H.wear_id))
-			return TRUE
-		return check_yautja_access(H)
-	if(istype(M, /mob/living/carbon/xenomorph))
-		var/mob/living/carbon/C = M
-		if(check_access(C.get_active_hand()))
-			return TRUE
-		return FALSE
+	if(!check_access() || !isRemoteControlling(M))
+		if(ishuman(M))
+			var/mob/living/carbon/human/H = M
+			//if they are holding or wearing a card that has access, that works
+			if(check_access(H.get_active_hand()) || check_access(H.wear_id))
+				return TRUE
+			return check_yautja_access(H)
+		if(istype(M, /mob/living/carbon/xenomorph))
+			var/mob/living/carbon/C = M
+			if(check_access(C.get_active_hand()))
+				return TRUE
+			return FALSE
+	return TRUE
 
 /obj/proc/check_yautja_access(mob/living/carbon/human/yautja)
 	if(!ishuman(yautja) || !HAS_TRAIT(yautja, TRAIT_YAUTJA_TECH))
@@ -109,21 +108,26 @@
 			return list(ACCESS_ILLEGAL_PIRATE) + get_access(ACCESS_LIST_MARINE_ALL) + get_access(ACCESS_LIST_WY_ALL) + get_access(ACCESS_LIST_COLONIAL_ALL) + get_access(ACCESS_LIST_CLF_ALL) + get_access(ACCESS_LIST_UPP_ALL)
 		if(ACCESS_LIST_MARINE_MAIN)
 			return list(
+				ACCESS_MARINE_DATABASE,
 				ACCESS_MARINE_SENIOR,
 				ACCESS_MARINE_GENERAL,
 				ACCESS_MARINE_COMMAND,
+				ACCESS_MARINE_SYNTH,
+				ACCESS_MARINE_ASO,
+				ACCESS_MARINE_SEA,
 				ACCESS_MARINE_CMP,
 				ACCESS_MARINE_BRIG,
 				ACCESS_MARINE_ARMORY,
 				ACCESS_MARINE_CMO,
+				ACCESS_MARINE_FIELD_DOC,
 				ACCESS_MARINE_MEDBAY,
 				ACCESS_MARINE_CHEMISTRY,
 				ACCESS_MARINE_MORGUE,
 				ACCESS_MARINE_RESEARCH,
 				ACCESS_MARINE_CE,
+				ACCESS_MARINE_OT,
 				ACCESS_MARINE_ENGINEERING,
 				ACCESS_MARINE_MAINT,
-				ACCESS_MARINE_OT,
 				ACCESS_MARINE_RO,
 				ACCESS_MARINE_CARGO,
 				ACCESS_MARINE_PREP,
@@ -139,22 +143,16 @@
 				ACCESS_MARINE_DELTA,
 				ACCESS_MARINE_PILOT,
 				ACCESS_MARINE_DROPSHIP,
-				ACCESS_MARINE_SEA,
 				ACCESS_MARINE_KITCHEN,
-				ACCESS_MARINE_SYNTH,
-				ACCESS_MARINE_ASO,
-				ACCESS_MARINE_CHAPLAIN,
-				ACCESS_MARINE_FIELD_DOC,
 				ACCESS_PRESS,
-				ACCESS_MARINE_DATABASE,
 			)
 
 		if(ACCESS_LIST_MARINE_ALL)
 			return list(
-				ACCESS_MARINE_CO,
-				ACCESS_MARINE_DATABASE_ADMIN,
 				ACCESS_MARINE_AI,
 				ACCESS_MARINE_AI_TEMP,
+				ACCESS_MARINE_CO,
+				ACCESS_MARINE_DATABASE_ADMIN,
 			) + get_access(ACCESS_LIST_MARINE_MAIN)
 
 		if(ACCESS_LIST_EMERGENCY_RESPONSE)
@@ -391,10 +389,12 @@
 			return "[MAIN_SHIP_NAME] Chemistry"
 		if(ACCESS_MARINE_MORGUE)
 			return "[MAIN_SHIP_NAME] Morgue"
+		if(ACCESS_MARINE_ASO)
+			return "ASO's Office"
 		if(ACCESS_MARINE_CE)
 			return "CE's Office"
 		if(ACCESS_MARINE_RO)
-			return "RO's Office"
+			return "QM's Office"
 		if(ACCESS_MARINE_ENGINEERING)
 			return "[MAIN_SHIP_NAME] Engineering"
 		if(ACCESS_MARINE_OT)
@@ -403,12 +403,12 @@
 			return "[MAIN_SHIP_NAME] General Access"
 		if(ACCESS_MARINE_DATABASE)
 			return "[MAIN_SHIP_NAME] Database Access"
+		if(ACCESS_MARINE_DATABASE_ADMIN)
+			return "[MAIN_SHIP_NAME] Database Admin"
 		if(ACCESS_MARINE_SENIOR)
 			return "[MAIN_SHIP_NAME] Senior Command"
 		if(ACCESS_MARINE_CO)
 			return "Commander's Quarters"
-		if(ACCESS_MARINE_DATABASE)
-			return "[MAIN_SHIP_NAME]'s Database"
 		if(ACCESS_MARINE_COMMAND)
 			return "[MAIN_SHIP_NAME] Command"
 		if(ACCESS_MARINE_CREWMAN)
@@ -469,6 +469,8 @@
 			return "AI Access"
 		if(ACCESS_ARES_DEBUG)
 			return "AI Debug"
+		if(ACCESS_PRESS)
+			return "[MAIN_SHIP_NAME] Press"
 
 /proc/get_region_accesses_wy(code)
 	switch(code)

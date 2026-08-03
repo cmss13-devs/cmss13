@@ -53,9 +53,9 @@
 		list("M40 HSDP Smoke Grenade", floor(scale * 5), /obj/item/explosive/grenade/smokebomb, VENDOR_ITEM_REGULAR),
 		list("M74 AGM-Frag Airburst Grenade", floor(scale * 4), /obj/item/explosive/grenade/high_explosive/airburst, VENDOR_ITEM_REGULAR),
 		list("M74 AGM-Incendiary Airburst Grenade", floor(scale * 4), /obj/item/explosive/grenade/incendiary/airburst, VENDOR_ITEM_REGULAR),
-		list("M74 AGM-Smoke Airburst Grenade", floor(scale * 4), /obj/item/explosive/grenade/smokebomb/airburst, VENDOR_ITEM_REGULAR),
-		list("M74 AGM-Star Shell", floor(scale * 2), /obj/item/explosive/grenade/high_explosive/airburst/starshell, VENDOR_ITEM_REGULAR),
-		list("M74 AGM-Hornet Shell", floor(scale * 4), /obj/item/explosive/grenade/high_explosive/airburst/hornet_shell, VENDOR_ITEM_REGULAR),
+		list("M74 AGM-Smoke Airburst Grenade", floor(scale * 5), /obj/item/explosive/grenade/smokebomb/airburst, VENDOR_ITEM_REGULAR),
+		list("M74 AGM-Star Shell", floor(scale * 6), /obj/item/explosive/grenade/high_explosive/airburst/starshell, VENDOR_ITEM_REGULAR),
+		list("M74 AGM-Hornet Shell", floor(scale * 6), /obj/item/explosive/grenade/high_explosive/airburst/hornet_shell, VENDOR_ITEM_REGULAR),
 		list("G2 Electroshock Grenade", floor(scale * 5), /obj/item/explosive/grenade/sebb, VENDOR_ITEM_REGULAR),
 		list("M40 HIRR Baton Slug", floor(scale * 8), /obj/item/explosive/grenade/slug/baton, VENDOR_ITEM_REGULAR),
 		list("M40 MFHS Metal Foam Grenade", floor(scale * 6), /obj/item/explosive/grenade/metal_foam, VENDOR_ITEM_REGULAR),
@@ -84,7 +84,6 @@
 		list("Mortar Shell Backpack", floor(scale * 1), /obj/item/storage/backpack/marine/mortarpack, VENDOR_ITEM_REGULAR),
 		list("Technician Welder-Satchel", floor(scale * 5), /obj/item/storage/backpack/marine/engineerpack/satchel, VENDOR_ITEM_REGULAR),
 		list("IMP Ammo Rack", floor(scale * 2), /obj/item/storage/backpack/marine/ammo_rack, VENDOR_ITEM_REGULAR),
-		list("Radio Telephone Pack", floor(scale * 2), /obj/item/storage/backpack/marine/satchel/rto, VENDOR_ITEM_REGULAR),
 		list("Parachute", floor(scale * 20), /obj/item/parachute, VENDOR_ITEM_REGULAR),
 		list("Grenade Satchel", floor(scale * 2), /obj/item/storage/backpack/marine/grenadepack, VENDOR_ITEM_REGULAR),
 
@@ -143,6 +142,7 @@
 		list("W-Y brand rechargeable mini-battery", floor(scale * 3), /obj/item/cell/crap, VENDOR_ITEM_REGULAR),
 
 		list("MISCELLANEOUS", -1, null, null),
+		list("K92 Maintenance Jack", floor(scale * 1), /obj/item/maintenance_jack, VENDOR_ITEM_REGULAR),
 		list("Entrenching Tool", floor(scale * 4), /obj/item/tool/shovel/etool/folded, VENDOR_ITEM_REGULAR),
 		list("Gas Mask", floor(scale * 10), /obj/item/clothing/mask/gas, VENDOR_ITEM_REGULAR),
 		list("Machete Scabbard (Full)", floor(scale * 6), /obj/item/storage/large_holster/machete/full, VENDOR_ITEM_REGULAR),
@@ -151,9 +151,10 @@
 		list("Fire Extinguisher (Portable)", floor(scale * 3), /obj/item/tool/extinguisher/mini, VENDOR_ITEM_REGULAR),
 		list("High-Capacity Power Cell", floor(scale * 1), /obj/item/cell/high, VENDOR_ITEM_REGULAR),
 		list("Nailgun Magazine (7x45mm)", floor(scale * 4), /obj/item/ammo_magazine/smg/nailgun, VENDOR_ITEM_REGULAR),
+		list("FCT - Field Camera Tripod", floor(scale * 1), /obj/item/device/overwatch_camera_tripod, VENDOR_ITEM_REGULAR),
 
 		list("SKILL PAMPHLETS", -1, null, null),
-		list("JTAC Pamphlet", floor(scale * 1), /obj/item/pamphlet/upgradeable/jtac, VENDOR_ITEM_REGULAR),
+		list("JTAC Radio Kit", floor(scale * 1), /obj/item/storage/box/kit/mini_jtac, VENDOR_ITEM_REGULAR),
 		list("Engineering Pamphlet", floor(scale * 1), /obj/item/pamphlet/upgradeable/engineer, VENDOR_ITEM_REGULAR),
 		list("Powerloader Certification", 0.75, /obj/item/pamphlet/upgradeable/powerloader, VENDOR_ITEM_REGULAR),
 

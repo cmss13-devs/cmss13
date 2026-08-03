@@ -114,10 +114,10 @@
 
 		// Prevent the shuttle from being smushed by the shipmap and vice-versa
 		if (SShijack.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH && SShijack.crashed_offset_x != null && SShijack.crashed_offset_y != null)
-			var/above_min_x = checked_crashable_port.x > SShijack.crashed_offset_x + SShijack.open_space_bounds[OPEN_SPACE_BOUNDS_MINX]
-			var/below_max_x = checked_crashable_port.x < SShijack.crashed_offset_x + SShijack.open_space_bounds[OPEN_SPACE_BOUNDS_MAXX]
-			var/above_min_y = checked_crashable_port.y > SShijack.crashed_offset_y + SShijack.open_space_bounds[OPEN_SPACE_BOUNDS_MINY]
-			var/below_max_y = checked_crashable_port.y < SShijack.crashed_offset_y + SShijack.open_space_bounds[OPEN_SPACE_BOUNDS_MAXY]
+			var/above_min_x = found_turf.x > SShijack.crashed_offset_x + SShijack.open_space_bounds[OPEN_SPACE_BOUNDS_MINX]
+			var/below_max_x = found_turf.x < SShijack.crashed_offset_x + SShijack.open_space_bounds[OPEN_SPACE_BOUNDS_MAXX]
+			var/above_min_y = found_turf.y > SShijack.crashed_offset_y + SShijack.open_space_bounds[OPEN_SPACE_BOUNDS_MINY]
+			var/below_max_y = found_turf.y < SShijack.crashed_offset_y + SShijack.open_space_bounds[OPEN_SPACE_BOUNDS_MAXY]
 
 			// Shuttle would land inside the shipmap or vice versa
 			if (above_min_x && below_max_x && above_min_y && below_max_y)

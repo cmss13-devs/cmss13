@@ -396,7 +396,7 @@ t. optimisticdude
 
 /obj/item/tool/surgery/handheld_pump
 	name = "handheld surgical pump"
-	desc = "This sucks. Literally. It is used to suction out foreign bodies and excess fluids from tissues and body cavities."
+	desc = "This sucks. Literally. It is used to suction out foreign objects and excess fluids from tissues and body cavities."
 	icon_state = "pump"
 	force = 0
 	throwforce = 9
@@ -507,7 +507,7 @@ t. optimisticdude
 		return
 	if(active)
 		resetting = 1
-		to_chat(usr, "Resetting tool. This will take a few seconds... Do not attempt to use the tool during the reset or it may malfunction.")
+		to_chat(usr, "Resetting tool. This will take a few seconds... Do not attempt to use this tool during the reset or it may malfunction.")
 		while(active) //While keep running until it's reset (in case of lag-spam)
 			active = 0 //Sets it to not active
 			to_chat(usr, "Processing...")
@@ -523,10 +523,10 @@ t. optimisticdude
 	if(resetting)
 		to_chat(usr, "This tool is currently returning to its factory default settings. If you have been waiting, try running the reset again.")
 	if(!isxeno(body))
-		to_chat(usr, "What are you, some sort of fucking MONSTER?")
+		to_chat(usr, "What are you, some sort of monster?")
 		return
 	if(body.health > 0)
-		to_chat(usr, "What the fuck are you doing!? Kill her!")
+		to_chat(usr, "What the fuck are you doing!? Kill it!")
 		return
 	if(active)
 		to_chat(usr, "You are already performing an autopsy.")
@@ -537,9 +537,9 @@ t. optimisticdude
 	active = 1
 	var CHECK = user.loc
 	playsound(loc, 'sound/weapons/pierce.ogg', 25)
-	to_chat(usr, "You begin to cut into [body]'s carapace. This might take some time...")
+	to_chat(usr, "You begin to cut into [body]'s carapace. This will take some time...")
 	if(body.health > body.health_threshold_dead)
-		to_chat(usr, "HOLY SHIT! SHE'S STILL ALIVE! She springs to life and uses her body weight to knock you down!")
+		to_chat(usr, "HOLY SHIT! IT'S STILL ALIVE! It springs to life and uses its body weight to knock you down!")
 		usr.apply_effect(20, WEAKEN)
 		to_chat(body, "Though you feel a monumental amount of pain, you jump back up to use the last of your strength to kill [usr] with your final moments of life.") ///~10 seconds
 		body.health = body.maxHealth*2 //It's hulk levels of angry.

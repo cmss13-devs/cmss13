@@ -527,7 +527,15 @@ SUBSYSTEM_DEF(minimaps)
 	var/turf/target_turf = get_turf(target)
 	if(!hud_flags || !blip || !target_turf)
 		CRASH("Invalid marker added to subsystem")
-	var/z = "[target_turf.z]"
+
+	// Legacy behavior: track mobs one level in
+	var/z = target.z
+	if(ismob(target) && !z && target.loc)
+		z = target.loc.z
+	if(!z)
+		return
+	z = "[z]"
+
 	var/datum/hud_displays/minimap = minimaps_by_z[z]
 
 	if(!initialized || !minimap) //the minimap doesn't exist yet, z level was probably loaded after init

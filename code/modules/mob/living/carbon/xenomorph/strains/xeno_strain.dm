@@ -171,7 +171,7 @@
 		to_chat(src, SPAN_WARNING("We must be at full health to take a strain."))
 		return FALSE
 
-	if(agility || HAS_TRAIT(src, TRAIT_ABILITY_FORTIFY) || HAS_TRAIT(src, TRAIT_ABILITY_CREST) || stealth || HAS_TRAIT(src, TRAIT_ABILITY_ENCLOSED_PLATES) || HAS_TRAIT(src, TRAIT_ABILITY_REFLECTIVE_PLATES))
+	if(HAS_TRAIT(src, TRAIT_ABILITY_FORTIFY) || HAS_TRAIT(src, TRAIT_ABILITY_CREST) || stealth || HAS_TRAIT(src, TRAIT_ABILITY_ENCLOSED_PLATES) || HAS_TRAIT(src, TRAIT_ABILITY_REFLECTIVE_PLATES))
 		to_chat(src, SPAN_WARNING("We cannot take a strain while in this stance."))
 		return FALSE
 

@@ -1,0 +1,5 @@
+author: "matttheficus"
+delete-after: True
+changes:
+  - bugfix: "fixed oversight with JTAC Kits. They come with a pamphlet now."
+  - bugfix: "fixed oversight with Mortar Kits. They come with RTO bags now."

@@ -53,20 +53,6 @@
 
 	last_combat_time = world.time
 
-/datum/behavior_delegate/praetorian_vanguard/proc/next_pierce_spin()
-	var/datum/action/xeno_action/activable/pierce/pAction = get_action(bound_xeno, /datum/action/xeno_action/activable/pierce)
-	if (istype(pAction))
-		pAction.should_spin_instead = TRUE
-
-	addtimer(CALLBACK(src, PROC_REF(next_pierce_normal)), pierce_spin_time)
-	return
-
-/datum/behavior_delegate/praetorian_vanguard/proc/next_pierce_normal()
-	var/datum/action/xeno_action/activable/pierce/pAction = get_action(bound_xeno, /datum/action/xeno_action/activable/pierce)
-	if (istype(pAction))
-		pAction.should_spin_instead = FALSE
-	return
-
 /datum/behavior_delegate/praetorian_vanguard/proc/regen_shield()
 	var/datum/xeno_shield/vanguard/found_shield = null
 	for(var/datum/xeno_shield/vanguard/vanguard_shield in bound_xeno.xeno_shields)

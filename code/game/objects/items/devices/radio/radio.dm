@@ -427,3 +427,7 @@
 
 /obj/item/device/radio/marine
 	frequency = PUB_FREQ
+
+/obj/item/device/radio/marine/command
+	frequency = COMM_FREQ
+	name = "command shortwave radio"

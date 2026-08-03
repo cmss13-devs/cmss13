@@ -286,7 +286,7 @@
 	if(!isxeno_human(affected_atom) || xeno.can_not_harm(affected_atom))
 		return
 
-	var/distance = get_dist(xeno, affected_atom)
+	var/distance = get_dist(punch_user, affected_atom)
 
 	if(distance > 2)
 		return

@@ -320,8 +320,8 @@
 
 		target_living.apply_damage(damage, BURN)
 	FOR_DVIEW_END
-	FOR_DVIEW(var/turf/T, acid_range, xeno, HIDE_INVISIBLE_OBSERVER)
-		new /obj/effect/particle_effect/smoke/acid_runner_harmless(T)
+	FOR_DVIEW(var/turf/target_turf, acid_range, xeno, HIDE_INVISIBLE_OBSERVER)
+		new /obj/effect/particle_effect/smoke/acid_runner_harmless(target_turf)
 	FOR_DVIEW_END
 	playsound(xeno, 'sound/effects/blobattack.ogg', 75)
 	if(xeno.client && xeno.hive)

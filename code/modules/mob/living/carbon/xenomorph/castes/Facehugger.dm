@@ -322,11 +322,6 @@
 		did_hug = facehugger.handle_hug(target_living)
 	log_attack("[key_name] [did_hug ? "successfully hugged" : "tried to hug"] [key_name(target_living)] (Pounce Distance: [facehugger.pounce_distance]) at [get_location_in_text(target_living)]")
 
-/datum/action/xeno_action/activable/pounce/facehugger/start_airbone()
-	var/mob/living/carbon/xenomorph/xeno = owner
-
-	ADD_TRAIT(xeno, TRAIT_ABILITY_POUNCE, TRAIT_SOURCE_ABILITY("pounce"))
-
 /datum/action/xeno_action/onclick/toggle_long_range/facehugger/on_zoom_out()
 	. = ..()
 

@@ -50,7 +50,7 @@
 	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		return
 
-	if(body_position == LYING_DOWN && direction)
+	if(body_position == LYING_DOWN && direction > 0)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
 
 	if(severity >= 30)

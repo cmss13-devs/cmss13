@@ -108,6 +108,8 @@
 	if(destination)
 		crash_land = TRUE
 
+#undef CRASHABLE_SHIP_BUFFER_SPACE
+
 /// Checks for anything that may get in the way of a crash, returns FALSE if there is something in the way or is out of bounds
 /obj/docking_port/mobile/crashable/proc/check_crash_point(obj/docking_port/stationary/crashable/checked_crashable_port)
 	for(var/turf/found_turf as anything in checked_crashable_port.return_turfs())

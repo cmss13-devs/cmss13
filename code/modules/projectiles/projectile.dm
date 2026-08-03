@@ -132,6 +132,7 @@
 			qdel(src)
 
 /obj/projectile/Crossed(atom/movable/AM)
+	..()
 	/* Fun fact: Crossed is called for any contents involving operations.
 	 * This notably means, inserting a magazing in a gun Crossed() it with the bullets in the gun. */
 	if(!loc?.z)
@@ -280,6 +281,11 @@
 	var/dy = p_y + aim_turf.y * 32 - source_turf.y * 32
 	angle = delta_to_angle(dx, dy)
 
+	//Change the bullet angle to match
+	var/matrix/rotate = matrix()
+	rotate.Turn(angle)
+	apply_transform(rotate)
+
 /obj/projectile/process(delta_time)
 	. = PROC_RETURN_SLEEP
 
@@ -314,13 +320,6 @@
 	var/turf/vis_target = path[length(path)]
 	var/pixel_x_target = vis_target.x * world.icon_size + p_x
 	var/pixel_y_target = vis_target.y * world.icon_size + p_y
-
-	//Change the bullet angle to its visual path
-
-	var/vis_angle = delta_to_angle(pixel_x_target - pixel_x_source, pixel_y_target - pixel_y_source)
-	var/matrix/rotate = matrix()
-	rotate.Turn(vis_angle)
-	apply_transform(rotate)
 
 	//Determine apparent position along visual path, then lerp between start and end positions
 

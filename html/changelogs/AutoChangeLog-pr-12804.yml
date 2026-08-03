@@ -1,0 +1,5 @@
+author: "Puckaboo2"
+delete-after: True
+changes:
+  - bugfix: "Combat Correspondent's HUD and minimap sprites are no longer identical to MP's."
+  - imagetweak: "Adds Thwomper's WO Mortar Crew HUD sprite."

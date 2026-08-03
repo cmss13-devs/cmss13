@@ -53,20 +53,6 @@
 
 	last_combat_time = world.time
 
-/datum/behavior_delegate/praetorian_vanguard/proc/next_pierce_spin()
-	var/datum/action/xeno_action/activable/pierce/pAction = get_action(bound_xeno, /datum/action/xeno_action/activable/pierce)
-	if (istype(pAction))
-		pAction.should_spin_instead = TRUE
-
-	addtimer(CALLBACK(src, PROC_REF(next_pierce_normal)), pierce_spin_time)
-	return
-
-/datum/behavior_delegate/praetorian_vanguard/proc/next_pierce_normal()
-	var/datum/action/xeno_action/activable/pierce/pAction = get_action(bound_xeno, /datum/action/xeno_action/activable/pierce)
-	if (istype(pAction))
-		pAction.should_spin_instead = FALSE
-	return
-
 /datum/behavior_delegate/praetorian_vanguard/proc/regen_shield()
 	var/mob/living/carbon/xenomorph/praetorian = bound_xeno
 	var/datum/xeno_shield/vanguard/found_shield = null
@@ -76,9 +62,8 @@
 			found_shield = vanguard_shield
 			break
 
-	if (found_shield)
+	if(found_shield)
 		praetorian.add_xeno_shield(800, XENO_SHIELD_SOURCE_VANGUARD_PRAE, /datum/xeno_shield/vanguard)
-
 	else
 		var/datum/xeno_shield/vanguard/new_shield = praetorian.add_xeno_shield(800, XENO_SHIELD_SOURCE_VANGUARD_PRAE, /datum/xeno_shield/vanguard)
 		bound_xeno.explosivearmor_modifier += 1.5*XENO_EXPOSIVEARMOR_MOD_VERY_LARGE
@@ -87,7 +72,7 @@
 		to_chat(praetorian, SPAN_XENOHIGHDANGER("We feel our defensive shell regenerate! It will block one hit!"))
 
 	var/datum/action/xeno_action/activable/cleave/caction = get_action(bound_xeno, /datum/action/xeno_action/activable/cleave)
-	if (istype(caction))
+	if(istype(caction))
 		caction.buffed = TRUE
 
 

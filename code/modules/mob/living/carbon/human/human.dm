@@ -16,8 +16,6 @@
 	AddElement(/datum/element/strippable, GLOB.strippable_human_items, TYPE_PROC_REF(/mob/living/carbon/human, should_strip))
 	. = ..()
 
-	prev_gender = gender // Debug for plural genders
-
 	if(SSticker?.mode?.hardcore)
 		hardcore = TRUE //For WO disposing of corpses
 
@@ -153,7 +151,7 @@
 			. += "Self Destruct Status: [SShijack.get_sd_eta()]"
 
 /mob/living/carbon/human/ex_act(severity, direction, datum/cause_data/cause_data, pierce=0, enviro=FALSE)
-	if(body_position == LYING_DOWN && direction)
+	if(body_position == LYING_DOWN && direction > 0)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
 
 	var/b_loss = 0
@@ -328,6 +326,7 @@
 // called when something steps onto a human
 // this handles mulebots and vehicles
 /mob/living/carbon/human/Crossed(atom/movable/AM)
+	..()
 	if(istype(AM, /obj/structure/machinery/bot/mulebot))
 		var/obj/structure/machinery/bot/mulebot/MB = AM
 		MB.RunOver(src)

@@ -176,6 +176,7 @@
 
 
 /obj/effect/alien/weeds/Crossed(atom/movable/atom_movable)
+	..()
 	if(!isliving(atom_movable))
 		return
 
@@ -229,6 +230,9 @@
 			continue
 		if(!spread_on_semiweedable && T.is_weedable < FULLY_WEEDABLE)
 			continue
+		if(!weed_expand_objects(T, dirn))
+			continue
+
 		T.clean_cleanables()
 
 		var/obj/effect/alien/resin/fruit/old_fruit
@@ -263,9 +267,6 @@
 				weeds.Add(new /obj/effect/alien/weeds(T, node, TRUE, FALSE))
 				continue
 
-		if(!weed_expand_objects(T, dirn))
-			continue
-
 		var/obj/effect/alien/weeds/new_weed = new(T, node)
 		weeds += new_weed
 
@@ -283,7 +284,7 @@
 
 /obj/effect/alien/weeds/proc/weed_expand_objects(turf/T, direction)
 	for(var/obj/structure/platform/P in src.loc)
-		if(P.dir == reverse_direction(direction))
+		if(!(P.stat & BROKEN) && P.dir == direction)
 			return FALSE
 	for(var/obj/structure/barricade/from_blocking_cade in loc) //cades on tile we're coming from
 		if(from_blocking_cade.density && from_blocking_cade.dir == direction && from_blocking_cade.health >= (from_blocking_cade.maxhealth / 4))
@@ -291,7 +292,8 @@
 
 	for(var/obj/O in T)
 		if(istype(O, /obj/structure/platform))
-			if(O.dir == direction)
+			var/obj/structure/platform/P = O
+			if(!(P.stat & BROKEN) && P.dir == GLOB.reverse_dir[direction])
 				return FALSE
 
 		if(istype(O, /obj/structure/barricade)) //cades on tile we're trying to expand to
@@ -576,10 +578,9 @@
 /obj/effect/alien/weeds/node/Destroy()
 	// When the node is removed, weeds should start dying out
 	// Make all the children look for a new parent node
-	for(var/X in children)
-		var/obj/effect/alien/weeds/W = X
-		remove_child(W)
-		addtimer(CALLBACK(W, PROC_REF(avoid_orphanage)), WEED_BASE_DECAY_SPEED + rand(0, 1 SECONDS)) // Slight variation whilst decaying
+	for(var/obj/effect/alien/weeds/child as anything in children)
+		remove_child(child)
+		addtimer(CALLBACK(child, PROC_REF(avoid_orphanage)), WEED_BASE_DECAY_SPEED + rand(0, 1 SECONDS)) // Slight variation whilst decaying
 
 	. = ..()
 
@@ -591,6 +592,13 @@
 		COMSIG_WEEDNODE_CANNOT_EXPAND_FURTHER,
 	))
 	health = NODE_HEALTH_STANDARD
+
+/obj/effect/alien/weeds/node/proc/is_in_range(atom/thing)
+	if(!thing?.loc)
+		return FALSE
+	var/x_diff = abs(thing.x - x)
+	var/y_diff = abs(thing.y - y)
+	return (x_diff <= node_range && y_diff < node_range) || (x_diff < node_range && y_diff <= node_range)
 
 /obj/effect/alien/weeds/node/alpha
 	hivenumber = XENO_HIVE_ALPHA
@@ -615,16 +623,6 @@
 	spread_on_semiweedable = TRUE
 	var/obj/effect/alien/resin/special/resin_parent
 
-/obj/effect/alien/weeds/node/pylon/proc/set_parent_damaged()
-	if(!resin_parent)
-		return
-
-	var/obj/effect/alien/resin/special/pylon/parent_pylon = resin_parent
-	parent_pylon.damaged = TRUE
-
-/obj/effect/alien/weeds/node/pylon/core
-	node_range = WEED_RANGE_CORE
-
 /obj/effect/alien/weeds/node/pylon/Destroy()
 	resin_parent = null
 	return ..()
@@ -644,11 +642,40 @@
 /obj/effect/alien/weeds/node/pylon/acid_spray_act()
 	return
 
+/obj/effect/alien/weeds/node/pylon/proc/set_parent_damaged()
+	if(!resin_parent)
+		return
+
+	var/obj/effect/alien/resin/special/pylon/parent_pylon = resin_parent
+	parent_pylon.damaged = TRUE
+
+/obj/effect/alien/weeds/node/pylon/core
+	node_range = WEED_RANGE_CORE
+
 /obj/effect/alien/weeds/node/pylon/hunted
 	hivenumber = XENO_HIVE_HUNTED
 
+GLOBAL_LIST_EMPTY(all_xeno_pylon_cluster_nodes)
+
 /obj/effect/alien/weeds/node/pylon/cluster
 	spread_on_semiweedable = TRUE
+
+/obj/effect/alien/weeds/node/pylon/cluster/Initialize(mapload, obj/effect/alien/weeds/node/node, mob/living/carbon/xenomorph/xeno, datum/hive_status/hive)
+	GLOB.all_xeno_pylon_cluster_nodes += src
+	return ..()
+
+/obj/effect/alien/weeds/node/pylon/cluster/Destroy()
+	GLOB.all_xeno_pylon_cluster_nodes -= src
+	return ..()
+
+/obj/effect/alien/weeds/node/pylon/cluster/complete_growth()
+	. = ..()
+
+	if(length(children) != 1)
+		return
+	for(var/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/tower in GLOB.all_static_telecomms_towers)
+		if(is_in_range(tower))
+			tower.handle_xeno_acquisition(invoking_pylon=src)
 
 /obj/effect/alien/weeds/node/pylon/cluster/set_parent_damaged()
 	if(!resin_parent)

@@ -68,27 +68,9 @@ GLOBAL_LIST_INIT(medal_references, generate_medal_references())
 	return options_list
 
 /proc/get_medal_path(medal_type)
-	switch(medal_type)
-		if(MARINE_RIBBON_COMMENDATION)
-			return /obj/item/clothing/accessory/medal/ribbon/commendation
-		if(MARINE_RIBBON_LEADERSHIP)
-			return /obj/item/clothing/accessory/medal/ribbon/leadership
-		if(MARINE_RIBBON_PROFICIENCY)
-			return /obj/item/clothing/accessory/medal/ribbon/proficiency
-		if(MARINE_MEDAL_PURPLE_HEART)
-			return /obj/item/clothing/accessory/medal/purple_heart
-		if(MARINE_MEDAL_VALOR)
-			return /obj/item/clothing/accessory/medal/silver/valor
-		if(MARINE_MEDAL_SILVER_STAR)
-			return /obj/item/clothing/accessory/medal/silver/star
-		if(MARINE_MEDAL_GALACTIC_CROSS)
-			return /obj/item/clothing/accessory/medal/gold/cross
-		if(MARINE_MEDAL_HONOR)
-			return /obj/item/clothing/accessory/medal/platinum/honor
-		if(WY_MEDAL_AWARD_1)
-			return /obj/item/clothing/accessory/medal/gold/corporate_award
-		if(WY_MEDAL_AWARD_2)
-			return /obj/item/clothing/accessory/medal/gold/corporate_award2
+	for(var/obj/item/clothing/accessory/medal/medal as anything in GLOB.medal_references)
+		if(medal.name == medal_type)
+			return medal.type
 
 /proc/give_medal_award(medal_location, as_admin = FALSE, as_xo = FALSE)
 	if(as_admin && !check_rights(R_ADMIN))
@@ -122,7 +104,7 @@ GLOBAL_LIST_INIT(medal_references, generate_medal_references())
 		return FALSE
 
 	// Write a citation
-	var/citation = strip_html(input("What should the medal citation read?", "Medal Citation", null, null) as message|null, MAX_PAPER_MESSAGE_LEN)
+	var/citation = tgui_input_text(usr, "What should the medal citation read?", "Medal Citation", multiline = TRUE)
 	if(!citation)
 		return FALSE
 
@@ -372,15 +354,15 @@ GLOBAL_LIST_INIT(xeno_medals, list(XENO_SLAUGHTER_MEDAL, XENO_RESILIENCE_MEDAL, 
 		return FALSE
 
 	// Write the pheromone
-	var/citation = strip_html(input("What should the pheromone read?", "Jelly Pheromone", null, null) as message|null, MAX_PAPER_MESSAGE_LEN)
+	var/citation = tgui_input_text(usr, "What should the pheromone read?", "Jelly Pheromone", multiline=TRUE)
 	if(!citation)
 		return FALSE
 
 	// Admin: Override attribution
 	var/admin_attribution = null
 	if(as_admin)
-		admin_attribution = strip_html(input("Override the jelly attribution? Press cancel for no attribution.", "Jelly Attribution", "Queen Mother", null) as text|null, MAX_NAME_LEN)
-		if(!admin_attribution) // Its actually "" but this also seems to check that
+		admin_attribution = tgui_input_text(usr, "Override the jelly attribution? Cancel or 'none' for no attribution.", "Jelly Attribution", "Queen Mother", max_length=MAX_NAME_LEN)
+		if(!admin_attribution)
 			admin_attribution = "none"
 
 	// Get mob information
@@ -520,6 +502,9 @@ GLOBAL_LIST_INIT(xeno_medals, list(XENO_SLAUGHTER_MEDAL, XENO_RESILIENCE_MEDAL, 
 	var/reason
 	var/recommended_by_rank
 
+/datum/medal_recommendation/Destroy(force, ...)
+	GLOB.medal_recommendations -= src
+	return ..()
 
 /proc/add_medal_recommendation(mob/recommendation_giver)
 	// Pick a marine
@@ -710,7 +695,6 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 				return
 
 			if(give_medal_award_prefilled(actual_loc, user, recommendation.recipient_name, recommendation.recipient_rank, recommendation.recipient_ckey, medal_citation, medal_type, recommendation.recommended_by_ckey, recommendation.recommended_by_name))
-				GLOB.medal_recommendations -= recommendation
 				qdel(recommendation)
 				user.visible_message(SPAN_NOTICE("[actual_loc] prints a medal."))
 				. = TRUE
@@ -723,7 +707,6 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 			var/confirm = tgui_alert(user, "Are you sure you want to deny this medal recommendation?", "Medal Confirmation", list("Yes", "No"))
 			if(confirm != "Yes")
 				return
-			GLOB.medal_recommendations -= recommendation
 			qdel(recommendation)
 			. = TRUE
 

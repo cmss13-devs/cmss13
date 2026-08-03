@@ -95,6 +95,7 @@ They're all essentially identical when it comes to getting the job done.
 			C.update_inv_l_hand()
 	if(ammo_band_color && ammo_band_icon)
 		update_ammo_band()
+	SEND_SIGNAL(src, COMSIG_MAGAZINE_FINISH_UPDATE_ICON)
 
 /obj/item/ammo_magazine/get_examine_text(mob/user)
 	. = ..()
@@ -109,6 +110,8 @@ They're all essentially identical when it comes to getting the job done.
 		. += "[src] has <b>[current_rounds]</b> rounds out of <b>[max_rounds]</b>."
 
 /obj/item/ammo_magazine/attack_hand(mob/user)
+	if(SEND_SIGNAL(src, COMSIG_MAGAZINE_ATTEMPT_WITHDRAW_HANDFUL, user) & COMPONENT_MAGAZINE_CANCEL_ATTEMPT_WITHDRAW_HANDFUL)
+		return ..() //Do normal stuff yeah
 	if(flags_magazine & AMMUNITION_REFILLABLE) //actual refillable magazine, not just a handful of bullets or a fuel tank.
 		if(src == user.get_inactive_hand()) //Have to be holding it in the hand.
 			if(flags_magazine & AMMUNITION_CANNOT_REMOVE_BULLETS)

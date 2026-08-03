@@ -29,6 +29,7 @@ Good thing is that the whole process would be simple and intuative, you just sla
 	var/obj/item/binding_item //The item that initiated the jungle mag construct
 	var/is_attached_magazine_active = FALSE //It's two slots, 0 and 1
 	var/attached_magazine = 0
+	var/is_reseting_sprite = FALSE
 
 /datum/component/jungle_magazine/Initialize(mob/user, obj/item/trigger_item)
 	if(!istype(parent, /obj/item/ammo_magazine))
@@ -38,6 +39,7 @@ Good thing is that the whole process would be simple and intuative, you just sla
 		user.drop_inv_item_to_loc(binding_item, parent)
 	else
 		binding_item.forceMove(parent)
+	add_overlay(parent)
 
 
 /datum/component/jungle_magazine/RegisterWithParent()
@@ -68,17 +70,51 @@ Good thing is that the whole process would be simple and intuative, you just sla
 /datum/component/jungle_magazine/proc/on_attack_self(datum/source, mob/user) //TODO: Actally add the arguments in SEND_SIGNAL
 	SIGNAL_HANDLER
 
-	// switch_active_magazine(user)
 	remove_magazine(user)
 
+//Allow you to switch which hand is holding the jungle mag
+/datum/component/jungle_magazine/proc/on_attempt_withdraw_handful(datum/source, mob/user)
+	SIGNAL_HANDLER
+
+	return COMPONENT_MAGAZINE_CANCEL_ATTEMPT_WITHDRAW_HANDFUL
+
+/datum/component/jungle_magazine/proc/on_finish_update_magazine_icon(obj/item/ammo_magazine/source)
+	SIGNAL_HANDLER
+
+	if(!is_reseting_sprite)
+		reset_magazine_sprite(source)
+		add_overlay(source)
+
 //* Custom procs
-/datum/component/jungle_magazine/proc/update_sprite(obj/item/target) //TODO: This one might need a bit more work, perhaps I'd need to merge the new icons beforehand
-	if(target.overlays)
-		target.overlays.Cut()
-	else
-		target.overlays = list()
+/datum/component/jungle_magazine/proc/add_overlay(obj/item/target) //TODO: This one might need a bit more work, perhaps I'd need to merge the new icons beforehand
+	//! Current problem: when magazine is empty the sprite isn't updated; magazines with color bands cut their overlays when updating their icon - not cool man
+	if(attached_magazine != 0) //Only necessary if there's a magazine attached
+		//* Add the inactive magazine icon
+		var/obj/item/ammo_magazine/inactive_mag = inactive_magazine()
+		var/image/inactive_mag_image = image(inactive_mag.icon, target, inactive_mag.icon_state)
+		inactive_mag_image.overlays += inactive_mag.overlays
+		inactive_mag_image.pixel_x = 4
+		inactive_mag_image.pixel_y = -1
+		var/image/target_copy_image = image(target.icon, target, target.icon_state) //? I tried underlays, setting layers, vis content; this is the most painless one
+		target_copy_image.overlays += target.overlays
 
+		target.overlays += inactive_mag_image
+		target.overlays += target_copy_image
+	//* Add the velcro/zipper band
+	var/image/magazine_bind = image('icons/obj/items/weapons/guns/jungle_style_bind.dmi', "zipper_band_b")
+	magazine_bind.blend_mode = BLEND_INSET_OVERLAY
+	target.overlays += magazine_bind
 
+/datum/component/jungle_magazine/proc/reset_magazine_sprite(obj/item/ammo_magazine/target)
+	is_reseting_sprite = TRUE
+	// target.vis_contents.Cut()
+	// target.vis_flags = 0
+	// target.pixel_x = 0
+	// target.pixel_y = 0
+	target.overlays.Cut()
+	target.underlays.Cut()
+	target.update_icon()
+	is_reseting_sprite = FALSE
 
 /datum/component/jungle_magazine/proc/switch_active_magazine(mob/user, be_silent = FALSE)
 	//Swaps magazine locations
@@ -98,6 +134,9 @@ Good thing is that the whole process would be simple and intuative, you just sla
 			new_mag.forceMove(old_loc)
 			old_mag.forceMove(new_mag)
 		//TODO: Update icon here
+		reset_magazine_sprite(old_mag)
+		reset_magazine_sprite(new_mag)
+		add_overlay(new_mag)
 	else
 		is_attached_magazine_active = !is_attached_magazine_active
 		if(user)
@@ -131,7 +170,9 @@ Good thing is that the whole process would be simple and intuative, you just sla
 				M.forceMove(parent)
 			attached_magazine = M
 			signal_reg(M)
-			// update_icon() //TODO: yeah update the godamn icon
+			reset_magazine_sprite(M)
+			reset_magazine_sprite(parent)
+			add_overlay(parent) //TODO: yeah update the godamn icon
 			return TRUE
 		else
 			to_chat(user, SPAN_WARNING("A magazine is already attached to the jungle magazine!"))
@@ -150,7 +191,7 @@ Good thing is that the whole process would be simple and intuative, you just sla
 	//Doing this with if statement since there's only two magazines max
 	var/obj/item/ammo_magazine/target_magazine
 	if(attached_magazine != 0) //Case #2
-		if(is_attached_magazine_active)
+		if(is_attached_magazine_active) //Case #3, so afterwards we know the prime mag is being seen as active mag
 			switch_active_magazine(user, TRUE)
 		target_magazine = attached_magazine
 		if (user)
@@ -159,6 +200,9 @@ Good thing is that the whole process would be simple and intuative, you just sla
 			target_magazine.forceMove(get_turf(parent))
 		attached_magazine = 0
 		signal_unreg(target_magazine)
+		reset_magazine_sprite(target_magazine)
+		reset_magazine_sprite(parent)
+		add_overlay(parent)
 	else //Case #1
 		target_magazine = parent
 		if(user)
@@ -168,8 +212,8 @@ Good thing is that the whole process would be simple and intuative, you just sla
 			var/target_turf = get_turf(parent)
 			binding_item.forceMove(target_turf)
 			target_magazine.forceMove(target_turf)
+		reset_magazine_sprite(target_magazine)
 		src.Destroy() //Removes the component completely
-
 	return TRUE
 
 /datum/component/jungle_magazine/proc/get_examine_text(mob/user) //TODO: Clean up examine, make it easier to get the status of the other magazine
@@ -187,10 +231,13 @@ Good thing is that the whole process would be simple and intuative, you just sla
 	RegisterSignal(target_magazine, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
 	RegisterSignal(target_magazine, COMSIG_ITEM_ATTACK_SELF, PROC_REF(on_attack_self))
 	RegisterSignal(target_magazine, COMSIG_ITEM_UNIQUE_ACTION, PROC_REF(on_unique_action))
+	RegisterSignal(target_magazine, COMSIG_MAGAZINE_ATTEMPT_WITHDRAW_HANDFUL, PROC_REF(on_attempt_withdraw_handful))
+	RegisterSignal(target_magazine, COMSIG_MAGAZINE_FINISH_UPDATE_ICON, PROC_REF(on_finish_update_magazine_icon))
 
 /datum/component/jungle_magazine/proc/signal_unreg(obj/item/ammo_magazine/target_magazine)
 	UnregisterSignal(target_magazine, COMSIG_ITEM_ATTACKED)
 	UnregisterSignal(target_magazine, COMSIG_PARENT_EXAMINE)
 	UnregisterSignal(target_magazine, COMSIG_ITEM_ATTACK_SELF)
 	UnregisterSignal(target_magazine, COMSIG_ITEM_UNIQUE_ACTION)
-
+	UnregisterSignal(target_magazine, COMSIG_MAGAZINE_ATTEMPT_WITHDRAW_HANDFUL)
+	UnregisterSignal(target_magazine, COMSIG_MAGAZINE_FINISH_UPDATE_ICON)

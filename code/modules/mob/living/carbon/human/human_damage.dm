@@ -15,13 +15,14 @@
 	var/tox_l = ((species && species.flags & NO_POISON) ? 0 : getToxLoss())
 	var/clone_l = getCloneLoss()
 
+	var/previous_health = health
 	health = ((species != null)? species.total_health : 200) - oxy_l - tox_l - clone_l - total_burn - total_brute
 
 	recalculate_move_delay = TRUE
 
-	med_hud_set_health()
-	med_hud_set_armor()
-	med_hud_set_status()
+	if(previous_health != health)
+		med_hud_set_health()
+		med_hud_set_armor()
 
 	if(health <= health_threshold_dead || (species.has_organ["brain"] && !has_brain()))
 		death(last_damage_data)

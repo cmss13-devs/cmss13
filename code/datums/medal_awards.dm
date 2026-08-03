@@ -310,11 +310,10 @@ GLOBAL_LIST_INIT(medal_references, generate_medal_references())
 		to_chat(user, SPAN_WARNING("You must have an authenticated ID Card to award medals."))
 		return
 
-	var/is_xo_medal
-	if(user.job == JOB_XO)
-		is_xo_medal = TRUE
+	var/is_xo = user.job == JOB_XO || user.job == JOB_WO_XO
+	var/is_co = (card.paygrade in GLOB.co_paygrades) || (card.paygrade in GLOB.uscm_highcom_paygrades) || user.job == JOB_WO_CO
 
-	if(!((card.paygrade in GLOB.co_paygrades) || (card.paygrade in GLOB.uscm_highcom_paygrades) || is_xo_medal))
+	if(!is_xo && !is_co)
 		to_chat(user, SPAN_WARNING("Only a Senior Officer can award medals!"))
 		return
 
@@ -651,11 +650,10 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 		to_chat(user, SPAN_WARNING("You must have an authenticated ID Card to award medals."))
 		return
 
-	var/is_xo_medal
-	if(user.job == JOB_XO)
-		is_xo_medal = TRUE
+	var/is_xo = user.job == JOB_XO || user.job == JOB_WO_XO
+	var/is_co = (card.paygrade in GLOB.co_paygrades) || (card.paygrade in GLOB.uscm_highcom_paygrades) || user.job == JOB_WO_CO
 
-	if(!((card.paygrade in GLOB.co_paygrades) || (card.paygrade in GLOB.uscm_highcom_paygrades) || is_xo_medal))
+	if(!is_xo && !is_co)
 		to_chat(user, SPAN_WARNING("Only a Senior Officer can award medals!"))
 		return
 
@@ -683,9 +681,10 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 		if("approve_medal")
 			var/recommendation_ref = params["ref"]
 			var/medal_type = params["medal_type"]
-			if(!(medal_type in GLOB.medal_options["marine_medals_co"]) && !(medal_type in GLOB.medal_options["marine_medals_xo"]))
+			if(is_xo && !(medal_type in GLOB.medal_options["marine_medals_xo"]))
+				to_chat(user, SPAN_WARNING("You cannot award this medal!"))
 				return
-			if((is_xo_medal && !(medal_type in GLOB.medal_options["marine_medals_xo"])) || (!is_xo_medal && !(medal_type in GLOB.medal_options["marine_medals_co"])))
+			if(!is_xo && !(medal_type in GLOB.medal_options["marine_medals_co"]))
 				to_chat(user, SPAN_WARNING("You cannot award this medal!"))
 				return
 			var/datum/medal_recommendation/recommendation = locate(recommendation_ref) in GLOB.medal_recommendations
@@ -694,7 +693,7 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 			if(recommendation.recipient_name == user.real_name)
 				to_chat(user, SPAN_WARNING("You cannot give medals to yourself!"))
 				return
-			if(recommendation.recipient_rank == JOB_CO)
+			if(recommendation.recipient_rank == JOB_CO || recommendation.recipient_rank == JOB_WO_CO)
 				to_chat(user, SPAN_WARNING("You cannot give a ribbon or medal to the Commanding Officer!"))
 				return
 			if(recommendation.recipient_rank == JOB_SYNTH)

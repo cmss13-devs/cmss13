@@ -26,7 +26,7 @@
 	possible_locs = EXTREMITY_LIMBS
 	invasiveness = list(SURGERY_DEPTH_SURFACE)
 	required_surgery_skill = SKILL_SURGERY_NOVICE
-	pain_reduction_required = NONE
+	pain_reduction_required = PAIN_REDUCTION_HEAVY
 	steps = list(
 		/datum/surgery_step/carve_amputation,
 		/datum/surgery_step/close_ruptured_veins,

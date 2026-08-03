@@ -58,8 +58,8 @@
 	var/explosion_alive = TRUE
 	while(explosion_alive)
 		explosion_alive = FALSE
-		for(var/datum/automata_cell/explosion/E in GLOB.cellauto_cells)
-			if(E.explosion_cause_data && E.explosion_cause_data.cause_name == "dropship crash")
+		for(var/datum/automata_cell/explosion/existing_cell as anything in GLOB.cellauto_cells)
+			if(existing_cell.explosion_cause_data && existing_cell.explosion_cause_data.cause_name == "dropship crash")
 				explosion_alive = TRUE
 				break
 		sleep(10)
@@ -173,7 +173,6 @@
 	var/list/turfs = list()
 	switch(ship_section)
 		if("Upper deck Foreship")
-			turfs += get_area_turfs(/area/almayer/shipboard/brig/armory)
 			turfs += get_area_turfs(/area/almayer/shipboard/brig/cells)
 			turfs += get_area_turfs(/area/almayer/shipboard/brig/cic_hallway)
 			turfs += get_area_turfs(/area/almayer/shipboard/brig/cryo)
@@ -184,8 +183,9 @@
 			turfs += get_area_turfs(/area/almayer/shipboard/brig/perma)
 			turfs += get_area_turfs(/area/almayer/shipboard/brig/processing)
 			turfs += get_area_turfs(/area/almayer/shipboard/brig/medical)
-			turfs += get_area_turfs(/area/almayer/shipboard/brig/mp_bunks)
 			turfs += get_area_turfs(/area/almayer/shipboard/brig/chief_mp_office)
+			turfs += get_area_turfs(/area/almayer/shipboard/brig/visitation)
+			turfs += get_area_turfs(/area/almayer/shipboard/brig/visitation_waiting)
 			turfs += get_area_turfs(/area/almayer/command/cichallway)
 			turfs += get_area_turfs(/area/almayer/command/cic)
 		if("Upper deck Midship")

@@ -94,9 +94,6 @@
 	if(destination)
 		crash_land = TRUE
 
-/// A buffer area used to account for the size of the crashable shuttle.
-#define CRASHABLE_SHIP_BUFFER_SPACE 5
-
 /// Checks for anything that may get in the way of a crash, returns FALSE if there is something in the way or is out of bounds
 /obj/docking_port/mobile/crashable/proc/check_crash_point(obj/docking_port/stationary/crashable/checked_crashable_port)
 	for(var/turf/found_turf as anything in checked_crashable_port.return_turfs())
@@ -115,6 +112,17 @@
 		if(istype(found_turf, /turf/closed/shuttle))
 			return FALSE
 
+		// Prevent the shuttle from being smushed by the shipmap and vice-versa
+		if (SShijack.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH && SShijack.crashed_offset_x != null && SShijack.crashed_offset_y != null)
+			var/above_min_x = checked_crashable_port.x > SShijack.crashed_offset_x + SShijack.open_space_bounds[OPEN_SPACE_BOUNDS_MINX]
+			var/below_max_x = checked_crashable_port.x < SShijack.crashed_offset_x + SShijack.open_space_bounds[OPEN_SPACE_BOUNDS_MAXX]
+			var/above_min_y = checked_crashable_port.y > SShijack.crashed_offset_y + SShijack.open_space_bounds[OPEN_SPACE_BOUNDS_MINY]
+			var/below_max_y = checked_crashable_port.y < SShijack.crashed_offset_y + SShijack.open_space_bounds[OPEN_SPACE_BOUNDS_MAXY]
+
+			// Shuttle would land inside the shipmap or vice versa
+			if (above_min_x && below_max_x && above_min_y && below_max_y)
+				return FALSE
+
 	for(var/obj/docking_port/stationary/stationary_dock in get_turf(checked_crashable_port))
 		if(stationary_dock != checked_crashable_port)
 			return FALSE
@@ -129,20 +137,7 @@
 		if(length(checked_crashable_port.return_turfs() & cycled_mobile_port.destination.return_turfs()))
 			return FALSE
 
-	// Prevent the shuttle from being smushed by the shipmap and vice-versa
-	if (SShijack.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH && SShijack.crashed_offset_x != null && SShijack.crashed_offset_y != null)
-		var/above_min_x = checked_crashable_port.x > SShijack.crashed_offset_x + SShijack.open_space_bounds[OPEN_SPACE_BOUNDS_MINX] + CRASHABLE_SHIP_BUFFER_SPACE
-		var/below_max_x = checked_crashable_port.x < SShijack.crashed_offset_x + SShijack.open_space_bounds[OPEN_SPACE_BOUNDS_MAXX] - CRASHABLE_SHIP_BUFFER_SPACE
-		var/above_min_y = checked_crashable_port.y > SShijack.crashed_offset_y + SShijack.open_space_bounds[OPEN_SPACE_BOUNDS_MINY] + CRASHABLE_SHIP_BUFFER_SPACE
-		var/below_max_y = checked_crashable_port.y < SShijack.crashed_offset_y + SShijack.open_space_bounds[OPEN_SPACE_BOUNDS_MAXY] - CRASHABLE_SHIP_BUFFER_SPACE
-
-		// Shuttle would land inside the shipmap or vice versa
-		if (above_min_x && below_max_x && above_min_y && below_max_y)
-			return FALSE
-
 	return TRUE
-
-#undef CRASHABLE_SHIP_BUFFER_SPACE
 
 /// Forces the shuttle to crash, admin called
 /obj/docking_port/mobile/crashable/proc/force_crash()

@@ -23,12 +23,10 @@
 	var/datum/callback/callback_reset_fire
 	///Callback to ask the parent to fire
 	var/datum/callback/callback_fire
-	///Callback to ask the parent to display ammo
-	var/datum/callback/callback_display_ammo
 	///Callback to set parent's fa_firing
 	var/datum/callback/callback_set_firing
 
-/datum/component/automatedfire/autofire/Initialize(auto_fire_shot_delay = 0.3 SECONDS, burstfire_shot_delay, burst_shots_to_fire = 3, fire_mode = GUN_FIREMODE_SEMIAUTO, automatic_delay_mult = 1, datum/callback/callback_bursting, datum/callback/callback_reset_fire, datum/callback/callback_fire, datum/callback/callback_display_ammo, datum/callback/callback_set_firing)
+/datum/component/automatedfire/autofire/Initialize(auto_fire_shot_delay = 0.3 SECONDS, burstfire_shot_delay, burst_shots_to_fire = 3, fire_mode = GUN_FIREMODE_SEMIAUTO, automatic_delay_mult = 1, datum/callback/callback_bursting, datum/callback/callback_reset_fire, datum/callback/callback_fire, datum/callback/callback_set_firing)
 	. = ..()
 
 	RegisterSignal(parent, COMSIG_GUN_FIRE_MODE_TOGGLE, PROC_REF(modify_fire_mode))
@@ -48,14 +46,12 @@
 	src.callback_bursting = callback_bursting
 	src.callback_reset_fire = callback_reset_fire
 	src.callback_fire = callback_fire
-	src.callback_display_ammo = callback_display_ammo
 	src.callback_set_firing = callback_set_firing
 
 /datum/component/automatedfire/autofire/Destroy(force, silent)
 	QDEL_NULL(callback_fire)
 	QDEL_NULL(callback_reset_fire)
 	QDEL_NULL(callback_bursting)
-	QDEL_NULL(callback_display_ammo)
 	QDEL_NULL(callback_set_firing)
 	return ..()
 
@@ -131,7 +127,6 @@
 			shots_fired++
 			if(shots_fired == burst_shots_to_fire)
 				callback_bursting?.Invoke(FALSE)
-				callback_display_ammo?.Invoke()
 				bursting = FALSE
 				stop_firing()
 				if(have_to_reset_at_burst_end)//We failed to reset because we were bursting, we do it now

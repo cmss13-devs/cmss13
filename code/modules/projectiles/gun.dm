@@ -295,7 +295,7 @@
 		AddElement(/datum/element/drop_retrieval/gun, auto_retrieval_slot)
 	update_icon() //for things like magazine overlays
 	gun_firemode = gun_firemode_list[1] || GUN_FIREMODE_SEMIAUTO
-	AddComponent(/datum/component/automatedfire/autofire, fire_delay, burst_delay, burst_amount, gun_firemode, autofire_slow_mult, CALLBACK(src, PROC_REF(set_bursting)), CALLBACK(src, PROC_REF(reset_fire)), CALLBACK(src, PROC_REF(fire_wrapper)), CALLBACK(src, PROC_REF(display_ammo)), CALLBACK(src, PROC_REF(set_auto_firing))) //This should go after handle_starting_attachment() and setup_firemodes() to get the proper values set.
+	AddComponent(/datum/component/automatedfire/autofire, fire_delay, burst_delay, burst_amount, gun_firemode, autofire_slow_mult, CALLBACK(src, PROC_REF(set_bursting)), CALLBACK(src, PROC_REF(reset_fire)), CALLBACK(src, PROC_REF(fire_wrapper)), CALLBACK(src, PROC_REF(set_auto_firing))) //This should go after handle_starting_attachment() and setup_firemodes() to get the proper values set.
 
 /obj/item/weapon/gun/proc/set_gun_attachment_offsets()
 	attachable_offset = null
@@ -1262,6 +1262,7 @@ and you're good to go.
 			dual_wield = TRUE //increases recoil, increases scatter, and reduces accuracy.
 
 	var/fire_return = handle_fire(target, user, params, reflex, dual_wield, check_for_attachment_fire, akimbo, fired_by_akimbo)
+	display_ammo(user)
 	if(!fire_return)
 		return fire_return
 
@@ -2184,7 +2185,6 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 	if(gun_firemode == GUN_FIREMODE_AUTOMATIC)
 		reset_fire()
-		display_ammo(gun_user)
 	SEND_SIGNAL(src, COMSIG_GUN_STOP_FIRE)
 
 /obj/item/weapon/gun/proc/set_gun_user(mob/to_set)
@@ -2270,7 +2270,6 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	set_target(get_turf_on_clickcatcher(object, gun_user, params))
 	if((gun_firemode == GUN_FIREMODE_SEMIAUTO) || active_attachable)
 		if(Fire(object, gun_user, modifiers))
-			display_ammo(gun_user)
 			reset_fire()
 		return COMSIG_MOB_CLICK_HANDLED
 	SEND_SIGNAL(src, COMSIG_GUN_FIRE)

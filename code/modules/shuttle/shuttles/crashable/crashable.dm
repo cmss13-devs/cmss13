@@ -60,6 +60,9 @@
 /obj/docking_port/mobile/crashable/proc/crash_check()
 	return FALSE
 
+/// A buffer area used to account for the size of the crashable shuttle.
+#define CRASHABLE_SHIP_BUFFER_SPACE 5
+
 /// Sets up a valid crash point, fails after 10 tries
 /obj/docking_port/mobile/crashable/proc/create_crash_point()
 	var/list/all_ground_levels = SSmapping.levels_by_trait(ZTRAIT_GROUND)
@@ -78,6 +81,18 @@
 			continue
 
 		var/turf/turf_picked = pick(potential_turfs)
+
+		// Prevent the shuttle from being smushed by the shipmap and vice-versa
+		if (SShijack.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH && SShijack.crashed_offset_x != null && SShijack.crashed_offset_y != null)
+
+			var/above_min_x = turf_picked.x > SShijack.crashed_offset_x + SShijack.open_space_bounds[OPEN_SPACE_BOUNDS_MINX] + CRASHABLE_SHIP_BUFFER_SPACE
+			var/below_max_x = turf_picked.x < SShijack.crashed_offset_x + SShijack.open_space_bounds[OPEN_SPACE_BOUNDS_MAXX] - CRASHABLE_SHIP_BUFFER_SPACE
+			var/above_min_y = turf_picked.y > SShijack.crashed_offset_y + SShijack.open_space_bounds[OPEN_SPACE_BOUNDS_MINY] + CRASHABLE_SHIP_BUFFER_SPACE
+			var/below_max_y = turf_picked.y < SShijack.crashed_offset_y + SShijack.open_space_bounds[OPEN_SPACE_BOUNDS_MAXY] - CRASHABLE_SHIP_BUFFER_SPACE
+
+			// Shuttle would land inside the shipmap or vice versa
+			if (above_min_x && below_max_x && above_min_y && below_max_y)
+				continue
 
 		var/obj/docking_port/stationary/crashable/temp_crashable_port = new(turf_picked)
 		temp_crashable_port.width = width

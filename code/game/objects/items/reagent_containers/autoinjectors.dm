@@ -682,7 +682,7 @@
 	uses_left = 0
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/medic/tiny
-	name = "reagent canister pouch autoinjector (5u)"
+	name = "reagent canister pouch autoinjector (1u)"
 	volume = 6
 	amount_per_transfer_from_this = 1
 

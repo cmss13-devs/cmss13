@@ -882,7 +882,7 @@
 	. = ..()
 
 	for(var/mob/dead/observer/observer as anything in observers)
-		observer.do_observe()
+		observer.do_observe(target)
 
 /mob/living/carbon/xenomorph/check_improved_pointing()
 	//xeno leaders get a big arrow and less cooldown

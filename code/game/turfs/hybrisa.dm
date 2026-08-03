@@ -75,6 +75,18 @@
 /turf/open/hybrisa/street/sidewalkcorner
 	icon_state = "sidewalkcorner"
 
+/turf/open/hybrisa/street/sidewalkcorner/south
+	dir = SOUTH
+
+/turf/open/hybrisa/street/sidewalkcorner/north
+	dir = NORTH
+
+/turf/open/hybrisa/street/sidewalkcorner/east
+	dir = EAST
+
+/turf/open/hybrisa/street/sidewalkcorner/west
+	dir = WEST
+
 // Side-Walk
 
 /turf/open/hybrisa/street/sidewalk
@@ -786,8 +798,18 @@
 	icon_state = "darkblackmetal2"
 /turf/open/floor/hybrisa/metal/darkredfull2
 	icon_state = "darkredfull2"
+
 /turf/open/floor/hybrisa/metal/redcorner
 	icon_state = "zredcorner"
+
+/turf/open/floor/hybrisa/metal/redcorner/north
+	dir = NORTH
+
+/turf/open/floor/hybrisa/metal/redcorner/east
+	dir = EAST
+
+/turf/open/floor/hybrisa/metal/redcorner/west
+	dir = WEST
 
 /turf/open/floor/hybrisa/metal/grated
 	icon_state = "rampsmaller"

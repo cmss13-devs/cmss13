@@ -151,10 +151,21 @@
 	item_spawn = /obj/effect/landmark/ert_spawns/distress_pmc/item
 	probability = 0
 	ert_message = "A corporate lawyer beacon has been activated!"
+	time_required_for_job = 15 HOURS
 
 /datum/emergency_call/inspection_wy/lawyer/New()
 	..()
 	objectives = "Make sure the crew of the [MAIN_SHIP_NAME] is aware of your presence. Investigate who the Corporate Liaison reported for breaking their contract and any review other Company assets and make sure they remain loyal to the Company. Make a detailed report back to Corporate."
+
+/datum/emergency_call/inspection_wy/lawyer/remove_nonqualifiers(list/datum/mind/candidates_list)
+	var/list/datum/mind/candidates_clean = list()
+	for(var/datum/mind/single_candidate in candidates_list)
+		if(check_timelock(single_candidate.current?.client, list(JOB_POLICE, JOB_CORPORATE_LIAISON), time_required_for_job))
+			candidates_clean.Add(single_candidate)
+			continue
+		if(single_candidate.current)
+			to_chat(single_candidate.current, SPAN_WARNING("You didn't qualify for the ERT beacon because you don't have enough playtime (15 Hours) as military police/corporate liaison!"))
+	return candidates_clean
 
 /datum/emergency_call/inspection_wy/lawyer/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/T = override_spawn_loc ? override_spawn_loc : get_spawn_point()

@@ -84,6 +84,10 @@ GLOBAL_LIST_EMPTY(ui_data_keybindings)
 
 			var/list/tempList = list()
 			for(var/i in splittext(full_key, "+"))
+				if(full_key == "+")
+					i = "+" //we split by + so empty means input was +
+					tempList += GLOB._kbMap[i]
+					break
 				if(GLOB._kbMap[i])
 					tempList += GLOB._kbMap[i]
 				else
@@ -169,8 +173,10 @@ GLOBAL_LIST_EMPTY(ui_data_keybindings)
 
 			var/when_human = sanitize_integer(params["when_human"], FALSE, TRUE, TRUE)
 			var/when_xeno = sanitize_integer(params["when_xeno"], FALSE, TRUE, TRUE)
+			var/when_yautja = sanitize_integer(params["when_yautja"], FALSE, TRUE, TRUE)
+			var/when_synth = sanitize_integer(params["when_synth"], FALSE, TRUE, TRUE)
 
-			prefs.custom_keybinds[index] = list("type" = keybind_type, "keybinding" = keybind, "contents" = contents, "when_human" = when_human, "when_xeno" = when_xeno)
+			prefs.custom_keybinds[index] = list("type" = keybind_type, "keybinding" = keybind, "contents" = contents, "when_human" = when_human, "when_xeno" = when_xeno, "when_yautja" = when_yautja, "when_synth" = when_synth)
 			prefs.load_custom_keybinds()
 
 			prefs.save_preferences()

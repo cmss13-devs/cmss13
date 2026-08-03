@@ -54,8 +54,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_spec_heavy, list(
 	list("Heavy Armor Set", 0, /obj/item/storage/box/spec/B18, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_RECOMMENDED),
 ))
 
-
-
 /obj/structure/machinery/cm_vending/gear/spec
 	name = "\improper ColMarTech Squad Weapons Specialist Gear Rack"
 	desc = "An automated gear rack for Squad Weapons Specialists."
@@ -110,8 +108,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_spec_heavy, list(
 	if(!handle_vend(itemspec, human_user))
 		return
 	vendor_successful_vend(itemspec, user)
-	var/obj/item/card/id/idcard = human_user.get_idcard()
-	GLOB.data_core.manifest_modify(human_user.real_name, WEAKREF(human_user), idcard.assignment)
 
 //------------CLOTHING VENDOR---------------
 
@@ -179,7 +175,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_specialist, list(
 		list("CLOTHING ITEMS", 0, null, null, null),
 		list("Machete Scabbard (Full)", 6, /obj/item/storage/large_holster/machete/full, null, VENDOR_ITEM_REGULAR),
 		list("Machete Pouch (Full)", 15, /obj/item/storage/pouch/machete/full, null, VENDOR_ITEM_REGULAR),
-		list("USCM Radio Telephone Pack", 15, /obj/item/storage/backpack/marine/satchel/rto, null, VENDOR_ITEM_REGULAR),
 		list("Fuel Tank Strap Pouch", 5, /obj/item/storage/pouch/flamertank, null, VENDOR_ITEM_REGULAR),
 		list("Welding Goggles", 3, /obj/item/clothing/glasses/welding, null, VENDOR_ITEM_REGULAR),
 		list("Large General Pouch", 10, /obj/item/storage/pouch/general/large, null, VENDOR_ITEM_REGULAR),
@@ -193,6 +188,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_specialist, list(
 		list("Motion Detector", 10, /obj/item/device/motiondetector, null, VENDOR_ITEM_REGULAR),
 		list("Data Detector", 10, /obj/item/device/motiondetector/intel, null, VENDOR_ITEM_REGULAR),
 		list("Whistle", 5, /obj/item/clothing/accessory/device/whistle, null, VENDOR_ITEM_REGULAR),
+		list("SensorMate Medical HUD", 15, /obj/item/clothing/glasses/hud/sensor, null, VENDOR_ITEM_REGULAR),
 
 		list("BINOCULARS", 0, null, null, null),
 		list("Binoculars", 5, /obj/item/device/binoculars, null, VENDOR_ITEM_REGULAR),

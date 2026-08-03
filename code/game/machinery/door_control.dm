@@ -69,32 +69,44 @@
 	shuttle.control_doors("force-lock", "all", force=FALSE)
 
 /obj/structure/machinery/door_control/proc/handle_door()
-	for(var/obj/structure/machinery/door/airlock/D in range(range))
-		if(D.id_tag == id)
+	for(var/obj/structure/machinery/door/airlock/target_door in range(range))
+		if(target_door.id_tag == id)
 			if(specialfunctions & OPEN)
-				if (D.density)
-					INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, open))
+				if (target_door.density)
+					INVOKE_ASYNC(target_door, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 				else
-					INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, close))
+					INVOKE_ASYNC(target_door, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 			if(desiredstate == CONTROL_STATE_OPEN)
 				if(specialfunctions & IDSCAN)
-					D.remoteDisabledIdScanner = 1
+					target_door.remoteDisabledIdScanner = 1
 				if(specialfunctions & BOLTS)
-					D.lock()
+					if(target_door.density)
+						target_door.lock()
+					else
+						INVOKE_ASYNC(target_door, TYPE_PROC_REF(/obj/structure/machinery/door, close))
+						addtimer(CALLBACK(target_door, TYPE_PROC_REF(/obj/structure/machinery/door/airlock, lock)), 1 SECONDS)
 				if(specialfunctions & SHOCK)
-					D.secondsElectrified = -1
+					target_door.secondsElectrified = -1
 				if(specialfunctions & SAFE)
-					D.safe = 0
+					target_door.safe = 0
 			else
 				if(specialfunctions & IDSCAN)
-					D.remoteDisabledIdScanner = 0
+					target_door.remoteDisabledIdScanner = 0
 				if(specialfunctions & BOLTS)
-					if(!D.isWireCut(4) && D.arePowerSystemsOn())
-						D.unlock()
+					if(!target_door.isWireCut(4) && target_door.arePowerSystemsOn())
+						target_door.unlock()
 				if(specialfunctions & SHOCK)
-					D.secondsElectrified = 0
+					target_door.secondsElectrified = 0
 				if(specialfunctions & SAFE)
-					D.safe = 1
+					target_door.safe = 1
+
+/obj/structure/machinery/door_control/proc/handle_cell_divider()
+	for(var/turf/closed/wall/almayer/research/containment/wall/divide/wall in range(range))
+		if(wall.remote_id == id)
+			if(wall.density)
+				wall.open()
+			else
+				wall.close()
 
 /obj/structure/machinery/door_control/proc/handle_pod()
 	for(var/obj/structure/machinery/door/poddoor/M in GLOB.machines)
@@ -139,6 +151,8 @@
 			handle_pod()
 		if(CONTROL_DROPSHIP)
 			handle_dropship(id)
+		if(CONTROL_CELL_DIVIDER)
+			handle_cell_divider()
 
 	desiredstate = !desiredstate
 	spawn(15)
@@ -236,6 +250,8 @@
 			handle_pod()
 		if(CONTROL_DROPSHIP)
 			handle_dropship(id)
+		if(CONTROL_CELL_DIVIDER)
+			handle_cell_divider()
 
 	desiredstate = !desiredstate
 
@@ -334,6 +350,14 @@
 	icon_state = "launcherbtt"
 	/// The faction to open for (or none for any)
 	var/faction_to_monitor
+	/// Any optional delay between triggering and opening
+	var/open_delay = 0 SECONDS
+	/// Any optional delay between untriggering and closing
+	var/close_delay = 0 SECONDS
+	/// timer_id for any change_state(TRUE) timer
+	var/timer_id_open = TIMER_ID_NULL
+	/// timer_id for any change_state(FALSE) timer
+	var/timer_id_close = TIMER_ID_NULL
 
 /obj/structure/machinery/door_control/automatic/Initialize(mapload, ...)
 	. = ..()
@@ -356,11 +380,39 @@
 			return
 	change_state(FALSE)
 
-/obj/structure/machinery/door_control/automatic/proc/change_state(triggered)
+/obj/structure/machinery/door_control/automatic/proc/change_state(triggered, immediate)
+	icon_state = triggered ? "launcheract" : "launcherbtt"
+
 	if(triggered == desiredstate)
+		// Cancel any timers if needed
+		if(triggered)
+			if(timer_id_close != TIMER_ID_NULL)
+				deltimer(timer_id_close)
+				timer_id_close = TIMER_ID_NULL
+		else
+			if(timer_id_open != TIMER_ID_NULL)
+				deltimer(timer_id_open)
+				timer_id_open = TIMER_ID_NULL
 		return
 
-	icon_state = triggered ? "launcheract" : "launcherbtt"
+	if(!immediate)
+		// Open/Close w/ delay?
+		if(triggered)
+			if(open_delay > 0)
+				if(timer_id_open == TIMER_ID_NULL)
+					timer_id_open = addtimer(CALLBACK(src, PROC_REF(change_state), TRUE, TRUE), open_delay, TIMER_UNIQUE|TIMER_NO_HASH_WAIT|TIMER_STOPPABLE)
+				return
+		else
+			if(close_delay > 0)
+				if(timer_id_close == TIMER_ID_NULL)
+					timer_id_close = addtimer(CALLBACK(src, PROC_REF(change_state), FALSE, TRUE), close_delay, TIMER_UNIQUE|TIMER_NO_HASH_WAIT|TIMER_STOPPABLE)
+				return
+	else
+		if(triggered)
+			timer_id_open = TIMER_ID_NULL
+		else
+			timer_id_close = TIMER_ID_NULL
+
 	use_power(5)
 
 	switch(normaldoorcontrol)

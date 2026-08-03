@@ -53,6 +53,7 @@
 	mob_size = MOB_SIZE_XENO_SMALL
 
 	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
@@ -75,7 +76,6 @@
 
 	skull = /obj/item/skull/runner
 	pelt = /obj/item/pelt/runner
-
 
 /mob/living/carbon/xenomorph/runner/initialize_pass_flags(datum/pass_flags_container/pass_flags_container)
 	..()
@@ -109,3 +109,26 @@
 	var/datum/action/xeno_action/onclick/xenohide/hide = get_action(bound_xeno, /datum/action/xeno_action/onclick/xenohide)
 	if(hide)
 		hide.post_attack()
+
+/datum/action/xeno_action/activable/runner_skillshot/use_ability(atom/affected_atom)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!istype(xeno))
+		return
+
+	if(!affected_atom || affected_atom.layer >= FLY_LAYER || !isturf(xeno.loc))
+		return
+
+	XENO_ACTION_CHECK_USE_PLASMA(xeno)
+
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] fires a burst of bone chips at [affected_atom]!"), SPAN_XENOWARNING("We fire a burst of bone chips at [affected_atom]!"))
+
+	var/turf/target = locate(affected_atom.x, affected_atom.y, affected_atom.z)
+	var/obj/projectile/projectile = new /obj/projectile(xeno.loc, create_cause_data(initial(xeno.caste_type), xeno))
+
+	var/datum/ammo/ammo_datum = GLOB.ammo_list[ammo_type]
+
+	projectile.generate_bullet(ammo_datum)
+	projectile.fire_at(target, xeno, xeno, ammo_datum.max_range, ammo_datum.shell_speed)
+
+	apply_cooldown()
+	return ..()

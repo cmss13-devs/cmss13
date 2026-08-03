@@ -217,7 +217,7 @@
 	var/mob/cause_mob = cause_data?.resolve_mob()
 	if(cause_mob) //so we don't message for simulations
 		reagents.source_mob = WEAKREF(cause_mob)
-		msg_admin_niche("[key_name(cause_mob)] detonated custom explosive by [key_name(creator)]: [name] (REAGENTS: [reagent_list_text]) in [get_area(src)] [ADMIN_JMP(loc)]", loc.x, loc.y, loc.z)
+		msg_admin_niche("[key_name(cause_mob)] detonated custom explosive by [key_name(creator)]: [name] (REAGENTS: [reagent_list_text]) in [ADMIN_VERBOSEJMP(src)]")
 
 	if(length(containers) < 2)
 		reagents.trigger_volatiles = TRUE //Explode on the first transfer

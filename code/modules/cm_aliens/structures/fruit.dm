@@ -62,6 +62,20 @@
 	// Need to do it here because baseline initialize override the icon through config.
 	icon = 'icons/mob/xenos/fruits.dmi'
 
+/obj/effect/alien/resin/fruit/clicked(mob/user, list/mods)
+	var/mob/living/carbon/xenomorph/xeno = user
+	if(mods[ALT_CLICK])
+		if(!istype(xeno) || !Adjacent(xeno) || xeno != usr || xeno.is_mob_incapacitated() || xeno.body_position == LYING_DOWN)
+			return
+		xeno.pickup_fruit(src)
+		return TRUE
+	..()
+
+/obj/effect/alien/resin/fruit/get_examine_text(mob/user)
+	. = ..()
+	if(isxeno(user) || isobserver(user))
+		. += "[SPAN_HELPFUL("Press Alt + Click to pick up fruit.")]"
+
 /obj/effect/alien/resin/fruit/proc/on_weed_expire()
 	SIGNAL_HANDLER
 	qdel(src)

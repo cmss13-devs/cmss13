@@ -10568,9 +10568,28 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/space)
+"Ev" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/hybrisa/road/lines4,
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"Ew" = (
+/turf/open/hybrisa/street/sidewalkcorner/east,
+/area/space)
+"Ex" = (
+/turf/open/hybrisa/street/sidewalkcorner/west,
+/area/space)
 "Ey" = (
 /obj/structure/largecrate/supply/supplies/water,
 /turf/open/floor/plating,
+/area/space)
+"Ez" = (
+/turf/open/hybrisa/street/sidewalkcorner/north,
+/area/space)
+"EA" = (
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/decal/hybrisa/road/lines2,
+/turf/open/hybrisa/street/asphalt,
 /area/space)
 "EB" = (
 /obj/structure/surface/table,
@@ -10579,6 +10598,11 @@
 /obj/item/reagent_container/food/snacks/candy,
 /obj/item/reagent_container/food/snacks/chips,
 /turf/open/floor/whitebluefull/northeast,
+/area/space)
+"EC" = (
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/effect/decal/hybrisa/road/lines2,
+/turf/open/hybrisa/street/asphalt,
 /area/space)
 "ED" = (
 /obj/structure/flora/grass/desert/lightgrass_9,
@@ -10593,6 +10617,10 @@
 /obj/item/ammo_magazine/rifle/m16,
 /obj/item/ammo_magazine/rifle/m16,
 /turf/open/mars_cave/mars_cave_3,
+/area/space)
+"EG" = (
+/obj/effect/decal/hybrisa/road/corner,
+/turf/open/hybrisa/street/asphalt,
 /area/space)
 "EH" = (
 /obj/structure/surface/table,
@@ -10625,6 +10653,12 @@
 /obj/structure/prop/invuln/minecart_tracks/bumper,
 /turf/open/mars_cave/mars_cave_2,
 /area/space)
+"EK" = (
+/obj/effect/decal/hybrisa/road/corner{
+	dir = 1
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
 "EL" = (
 /obj/structure/flora/grass/desert/lightgrass_11,
 /turf/open/mars_cave/mars_dirt_4,
@@ -10636,9 +10670,36 @@
 	},
 /turf/open/floor/greengrid,
 /area/space)
+"EN" = (
+/obj/effect/decal/hybrisa/road/corner{
+	dir = 4
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"EO" = (
+/turf/open/floor/hybrisa/metal/redcorner/north,
+/area/space)
+"EP" = (
+/obj/structure/machinery/camera/autoname/lz_camera,
+/turf/open/floor/hybrisa/metal/redcorner/north,
+/area/space)
+"EQ" = (
+/turf/open/floor/hybrisa/metal/redcorner/west,
+/area/space)
 "ER" = (
 /obj/structure/sign/nosmoking_1,
 /turf/closed/wall/solaris/reinforced,
+/area/space)
+"ES" = (
+/turf/open/floor/hybrisa/metal/redcorner/east,
+/area/space)
+"ET" = (
+/obj/structure/machinery/camera/autoname/lz_camera,
+/turf/open/floor/hybrisa/metal/redcorner/east,
+/area/space)
+"EU" = (
+/obj/structure/machinery/camera/autoname/lz_camera,
+/turf/open/floor/hybrisa/metal/redcorner/west,
 /area/space)
 "EV" = (
 /obj/effect/landmark/nightmare{
@@ -35990,7 +36051,7 @@ aF
 aP
 cc
 bg
-bk
+ET
 Rk
 Rk
 Rk
@@ -36008,7 +36069,7 @@ Rk
 Rk
 Rk
 Rk
-bk
+EP
 bg
 aR
 aF
@@ -36241,7 +36302,7 @@ ch
 aF
 aP
 cc
-bh
+ES
 Rk
 Rk
 Rk
@@ -36254,14 +36315,14 @@ bg
 bg
 bg
 bg
+EQ
 Rk
 Rk
 Rk
 Rk
 Rk
 Rk
-Rk
-bh
+EO
 aS
 aG
 Cm
@@ -36501,13 +36562,13 @@ Rk
 Rk
 bh
 bg
+ES
 Rk
 Rk
 Rk
-Rk
-Rk
+EO
 bg
-Rk
+EQ
 Rk
 Rk
 Rk
@@ -36518,7 +36579,7 @@ aW
 aH
 Co
 ao
-ak
+EN
 Ae
 zF
 iv
@@ -36752,13 +36813,13 @@ Rk
 Rk
 Rk
 bg
+ES
 Rk
-Rk
-Rk
+bh
 bN
+EQ
 Rk
-Rk
-Rk
+EO
 bg
 Rk
 Rk
@@ -37005,11 +37066,11 @@ Rk
 Rk
 bg
 Rk
-Rk
-Rk
+bh
+bg
 bN
-Rk
-Rk
+bg
+EQ
 Rk
 bg
 Rk
@@ -37025,7 +37086,7 @@ as
 ak
 ak
 ak
-ak
+EG
 mf
 AN
 Af
@@ -37509,11 +37570,11 @@ Rk
 Rk
 bg
 Rk
-Rk
-Rk
+EO
+bg
 bN
-Rk
-Rk
+bg
+ES
 Rk
 bg
 Rk
@@ -37529,7 +37590,7 @@ as
 ak
 ak
 ak
-ak
+EK
 iL
 AO
 Af
@@ -37760,11 +37821,11 @@ Rk
 Rk
 Rk
 bg
+EQ
 Rk
-Rk
-Rk
+EO
 bN
-Rk
+ES
 Rk
 bh
 bg
@@ -38011,15 +38072,15 @@ Rk
 Rk
 Rk
 Rk
-Rk
+EO
 bg
-Rk
+EQ
 Rk
 Rk
 Rk
 bh
 bg
-Rk
+ES
 Rk
 Rk
 Rk
@@ -38030,7 +38091,7 @@ aW
 aH
 Cq
 ap
-ak
+CI
 Ae
 zF
 iv
@@ -38257,20 +38318,20 @@ ch
 aF
 aP
 cc
-bh
+EQ
 Rk
 Rk
 Rk
 Rk
 Rk
 Rk
-Rk
+EO
 bg
 bg
 bg
 bg
 bg
-Rk
+ES
 Rk
 Rk
 Rk
@@ -38510,7 +38571,7 @@ aF
 aP
 cc
 bg
-bk
+EU
 Rk
 Rk
 Rk
@@ -39295,7 +39356,7 @@ Ae
 zF
 iv
 Bj
-am
+AM
 fb
 yy
 zS
@@ -39303,7 +39364,7 @@ zR
 zI
 zB
 fb
-em
+Ew
 yA
 yA
 yA
@@ -40040,7 +40101,7 @@ BL
 ak
 BL
 BL
-ak
+EK
 iL
 CI
 BL
@@ -40048,7 +40109,7 @@ BL
 ak
 BL
 BL
-ak
+EK
 BB
 Bj
 al
@@ -40803,7 +40864,7 @@ BR
 BR
 BR
 BR
-am
+BR
 am
 al
 Bk
@@ -40815,7 +40876,7 @@ me
 me
 zC
 fb
-em
+Ex
 ds
 ak
 ak
@@ -41060,7 +41121,7 @@ el
 el
 AT
 AT
-em
+Ew
 du
 da
 da
@@ -41313,12 +41374,12 @@ yA
 yA
 yA
 du
-ak
-ak
-ak
-ak
-ak
-ak
+EA
+mf
+mf
+mf
+mf
+AN
 zs
 du
 ak
@@ -41565,14 +41626,14 @@ Bl
 Bl
 AV
 da
-ak
+zc
 ak
 zL
 zL
 ak
-ak
-da
-ak
+iv
+Af
+BQ
 ak
 ak
 yI
@@ -41817,14 +41878,14 @@ zL
 zL
 ft
 da
-ak
+zc
 Ae
 em
 em
 zF
-ak
-da
-ak
+iv
+Af
+jB
 ak
 ak
 ak
@@ -42069,14 +42130,14 @@ zN
 zN
 ft
 da
-ak
+zc
 Ae
 em
 em
 zF
-ak
-da
-ak
+iv
+Af
+jB
 ak
 ak
 ak
@@ -42321,14 +42382,14 @@ BD
 Bm
 zB
 da
-ak
+zc
 ak
 zN
 zN
 ak
-ak
-da
-ak
+iv
+Af
+Ev
 ak
 ak
 yJ
@@ -42556,7 +42617,7 @@ el
 el
 el
 el
-el
+ds
 Cj
 zA
 CY
@@ -42573,12 +42634,12 @@ zA
 zA
 AW
 ds
-ak
-ak
-ak
-ak
-ak
-ak
+EC
+iL
+iL
+iL
+iL
+BB
 zu
 ds
 ak
@@ -42808,7 +42869,7 @@ yA
 yA
 yA
 em
-em
+yy
 Ck
 Bq
 Bq
@@ -42824,14 +42885,14 @@ Bq
 Bq
 Bq
 Bb
-em
+Ex
 ds
-da
-da
-da
-da
+Af
+Af
+Af
+Af
 zu
-em
+Ez
 yy
 ak
 ak
@@ -43060,7 +43121,7 @@ am
 am
 am
 em
-em
+Ex
 el
 el
 el
@@ -43078,10 +43139,10 @@ yA
 yA
 em
 yy
-ak
-ak
-ak
-ak
+EA
+zJ
+zJ
+Bz
 zs
 yA
 du
@@ -43330,7 +43391,7 @@ mf
 mf
 zs
 du
-ak
+zc
 ak
 ak
 ak

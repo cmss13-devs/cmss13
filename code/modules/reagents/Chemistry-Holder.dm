@@ -230,10 +230,10 @@
 	//handle_reactions() Don't need to handle reactions on the source since you're (presumably isolating and) transferring a specific reagent.
 	return amount
 
-/datum/reagents/proc/metabolize(mob/M, alien, delta_time)
-	for(var/datum/reagent/reagent in reagent_list)
-		if(M && reagent && !QDELETED(reagent))
-			reagent.on_mob_life(M, alien, delta_time)
+/datum/reagents/proc/metabolize(mob/mob, alien, delta_time)
+	for(var/datum/reagent/reagent as anything in reagent_list)
+		if(!QDELETED(reagent))
+			reagent.on_mob_life(mob, alien, delta_time)
 	update_total()
 
 /datum/reagents/proc/handle_reactions()
@@ -441,13 +441,13 @@
 	addtimer(CALLBACK(src, PROC_REF(handle_endothermic_reaction), reaction), 1 SECONDS, TIMER_UNIQUE)
 
 /datum/reagents/proc/isolate_reagent(reagent)
-	for(var/datum/reagent/R in reagent_list)
+	for(var/datum/reagent/R as anything in reagent_list)
 		if(R.id != reagent)
 			del_reagent(R.id)
 			update_total()
 
 /datum/reagents/proc/del_reagent(reagent)
-	for(var/datum/reagent/R in reagent_list)
+	for(var/datum/reagent/R as anything in reagent_list)
 		if(R.id == reagent)
 			R.on_delete()
 			reagent_list -= R
@@ -460,7 +460,7 @@
 // Returns FALSE if the reagent is getting deleted
 /datum/reagents/proc/update_total()
 	total_volume = 0
-	for(var/datum/reagent/R in reagent_list)
+	for(var/datum/reagent/R as anything in reagent_list)
 		if(R.volume < 0.1)
 			R.deleted = TRUE
 			del_reagent(R.id)
@@ -498,7 +498,7 @@
 		for(var/index in data)
 			new_data[index] = data[index]
 
-	for(var/datum/reagent/R in reagent_list)
+	for(var/datum/reagent/R as anything in reagent_list)
 		if(R.id == reagent)
 			R.volume += amount
 			R.last_source_mob = new_data["last_source_mob"]
@@ -506,7 +506,7 @@
 
 			if(my_atom)
 				my_atom.on_reagent_change()
-				for(var/datum/chem_property/P in R.properties)
+				for(var/datum/chem_property/P as anything in R.properties)
 					P.reagent_added(my_atom, R, R.volume)
 
 			// mix dem viruses
@@ -550,7 +550,7 @@
 		reagent_list += R
 
 		if(my_atom)
-			for(var/datum/chem_property/P in D.properties)
+			for(var/datum/chem_property/P as anything in D.properties)
 				P.reagent_added(my_atom, D, amount)
 
 		update_total()
@@ -570,7 +570,7 @@
 	if(!isnum(amount))
 		return TRUE
 
-	for(var/datum/reagent/R in reagent_list)
+	for(var/datum/reagent/R as anything in reagent_list)
 		if(R.id == reagent)
 			R.volume -= amount
 			update_total()
@@ -581,8 +581,16 @@
 
 	return TRUE
 
+/// Faster version of [/datum/reagents/proc/remove_reagent] for when we already know the reagent involved
+/datum/reagents/proc/remove_reagent_by_reference(datum/reagent/reagent, amount, safety = FALSE)
+	reagent.volume -= amount
+	update_total()
+	if(!safety)
+		handle_reactions()
+	my_atom?.on_reagent_change()
+
 /datum/reagents/proc/has_reagent(reagent, amount = -1)
-	for(var/datum/reagent/R in reagent_list)
+	for(var/datum/reagent/R as anything in reagent_list)
 		if(R.id == reagent)
 			if(!amount)
 				return R
@@ -594,14 +602,14 @@
 	return FALSE
 
 /datum/reagents/proc/get_reagent_amount(reagent)
-	for(var/datum/reagent/R in reagent_list)
+	for(var/datum/reagent/R as anything in reagent_list)
 		if(R.id == reagent)
 			return R.volume
 	return 0
 
 /datum/reagents/proc/get_reagents()
 	var/res = ""
-	for(var/datum/reagent/A in reagent_list)
+	for(var/datum/reagent/A as anything in reagent_list)
 		if(res != "")
 			res += ","
 		res += A.name
@@ -614,7 +622,7 @@
 
 	var/has_removed_reagent = FALSE
 
-	for(var/datum/reagent/R in reagent_list)
+	for(var/datum/reagent/R as anything in reagent_list)
 		var/matches = FALSE
 		// Switch between how we check the reagent type
 		if(strict)
@@ -632,12 +640,12 @@
 
 //two helper functions to preserve data across reactions (needed for xenoarch)
 /datum/reagents/proc/get_data(reagent_id)
-	for(var/datum/reagent/D in reagent_list)
+	for(var/datum/reagent/D as anything in reagent_list)
 		if(D.id == reagent_id)
 			return D.data_properties
 
 /datum/reagents/proc/set_data(reagent_id, new_data)
-	for(var/datum/reagent/D in reagent_list)
+	for(var/datum/reagent/D as anything in reagent_list)
 		if(D.id == reagent_id)
 			D.data_properties = new_data
 

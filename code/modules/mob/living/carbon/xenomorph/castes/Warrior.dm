@@ -279,11 +279,11 @@
 	return ..()
 
 /datum/action/xeno_action/activable/warrior_punch/use_ability(atom/affected_atom)
-	var/mob/living/carbon/xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/punch_user = owner
 
-	XENO_ACTION_CHECK(xeno)
+	XENO_ACTION_CHECK(punch_user)
 
-	if(!isxeno_human(affected_atom) || xeno.can_not_harm(affected_atom))
+	if(!isxeno_human(affected_atom) || punch_user.can_not_harm(affected_atom))
 		return
 
 	var/distance = get_dist(punch_user, affected_atom)
@@ -293,7 +293,7 @@
 
 	var/mob/living/carbon/target_carbon = affected_atom
 
-	if(!xeno.Adjacent(target_carbon))
+	if(!punch_user.Adjacent(target_carbon))
 		return
 
 	if(target_carbon.stat == DEAD)
@@ -301,16 +301,16 @@
 	if(HAS_TRAIT(target_carbon, TRAIT_NESTED))
 		return
 
-	var/obj/limb/target_limb = target_carbon.get_limb(check_zone(xeno.zone_selected))
+	var/obj/limb/target_limb = target_carbon.get_limb(check_zone(punch_user.zone_selected))
 
 	if(ishuman(target_carbon) && (!target_limb || (target_limb.status & LIMB_DESTROYED)))
 		target_limb = target_carbon.get_limb("chest")
 
-	XENO_ACTION_CHECK_USE_PLASMA(xeno)
+	XENO_ACTION_CHECK_USE_PLASMA(punch_user)
 
-	target_carbon.last_damage_data = create_cause_data(initial(xeno.caste_type), xeno)
+	target_carbon.last_damage_data = create_cause_data(initial(punch_user.caste_type), punch_user)
 
-	xeno.visible_message(SPAN_XENOWARNING("[xeno] hits [target_carbon] in the [target_limb ? target_limb.display_name : "chest"] with a devastatingly powerful punch!"),
+	punch_user.visible_message(SPAN_XENOWARNING("[punch_user] hits [target_carbon] in the [target_limb ? target_limb.display_name : "chest"] with a devastatingly powerful punch!"),
 	SPAN_XENOWARNING("We hit [target_carbon] in the [target_limb ? target_limb.display_name : "chest"] with a devastatingly powerful punch!"))
 	var/sound = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg',)
 	playsound(target_carbon, sound, 50, 1)
@@ -319,7 +319,7 @@
 	return ..()
 
 /datum/action/xeno_action/activable/warrior_punch/proc/do_base_warrior_punch(mob/living/carbon/target_carbon, obj/limb/target_limb)
-	var/mob/living/carbon/xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/punch_user = owner
 	var/damage = rand(base_damage, base_damage + damage_variance)
 
 	if(ishuman(target_carbon))
@@ -341,8 +341,8 @@
 	target_carbon.apply_armoured_damage(get_xeno_damage_slash(target_carbon, damage), ARMOR_MELEE, BRUTE, target_limb ? target_limb.name : "chest")
 
 	// Hmm today I will kill a marine while looking away from them
-	xeno.face_atom(target_carbon)
-	xeno.animation_attack_on(target_carbon)
-	xeno.flick_attack_overlay(target_carbon, "punch")
+	punch_user.face_atom(target_carbon)
+	punch_user.animation_attack_on(target_carbon)
+	punch_user.flick_attack_overlay(target_carbon, "punch")
 	shake_camera(target_carbon, 2, 1)
-	step_away(target_carbon, xeno, 2)
+	step_away(target_carbon, punch_user, 2)

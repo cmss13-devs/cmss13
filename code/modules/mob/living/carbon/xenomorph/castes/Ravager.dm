@@ -257,7 +257,7 @@
 /datum/action/xeno_action/activable/scissor_cut/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/ravager_user = owner
 
-	ravager_user_ACTION_CHECK(ravager_user)
+	XENO_ACTION_CHECK(ravager_user)
 
 	// Get line of turfs
 	var/list/turf/target_turfs = list()

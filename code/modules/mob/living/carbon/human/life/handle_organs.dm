@@ -59,3 +59,6 @@
 				emote("pain")
 			custom_pain("You can't stand on broken legs!", 1)
 			apply_effect(5, WEAKEN)
+
+	// Essentially limbs want to update damage overlays every tick. So do it once for the whole tick, it'll be a little less awful.
+	update_damage_overlays()

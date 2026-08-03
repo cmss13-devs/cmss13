@@ -459,6 +459,7 @@
 /// Faster version of [/datum/reagents/proc/del_reagent] for when we already have the reagent reference
 /datum/reagents/proc/del_reagent_by_reference(datum/reagent/reagent)
 	reagent.on_delete()
+	reagent_list -= reagent
 	qdel(reagent)
 	update_total()
 	my_atom?.on_reagent_change()

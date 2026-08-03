@@ -90,13 +90,17 @@
 
 	if(!range_bounds)
 		set_range()
-	targets = SSquadtree.players_in_range(range_bounds, z, QTREE_SCAN_MOBS | QTREE_FILTER_LIVING)
-	if(!targets)
-		return FALSE
+	var/list/atom/movable/all_targets = scan_targets()
+	targets = list()
+	for(var/mob/target in all_targets)
+		if(target.z != z)
+			continue
+		if(target.mob_flags & MOB_ABSTRACT)
+			continue
+		targets += target
 
-	if(!target && length(targets))
-		target = pick(targets)
-
+	if(!target)
+		target = SAFEPICK(targets)
 	get_target(target)
 	return TRUE
 
@@ -113,6 +117,12 @@
 			range_bounds = SQUARE(x, y + 4, 7)
 		if(SOUTH)
 			range_bounds = SQUARE(x, y - 4, 7)
+
+/obj/structure/machinery/defenses/sentry/proc/scan_targets()
+	RETURN_TYPE(/list/atom/movable)
+	if(!z)
+		return // Stop it. Get some help.
+	return SSmapgrids.get_movables_in_region(z, range_bounds.center_x - range_bounds.bounds_x / 2, range_bounds.center_x + range_bounds.bounds_x / 2, range_bounds.center_y - range_bounds.bounds_y / 2, range_bounds.center_y + range_bounds.bounds_y / 2  )
 
 /obj/structure/machinery/defenses/sentry/proc/unset_range()
 	SIGNAL_HANDLER
@@ -575,6 +585,23 @@
 	faction_group = FACTION_LIST_CLF
 	ammo = new /obj/item/ammo_magazine/sentry/premade/lowammo/dumb
 
+/obj/structure/machinery/defenses/sentry/premade/antre_wy
+	name = "\improper Static UA-577 Gauss Turret"
+	immobile = TRUE
+	turned_on = TRUE
+	icon = 'icons/obj/structures/machinery/defenses/wy_defenses.dmi'
+	icon_state = "premade"
+	sentry_type = "wy_sentry"
+	faction_group = list(FACTION_LIST_WY, FACTION_COLONIST, FACTION_SURVIVOR)
+	ammo = new /obj/item/ammo_magazine/sentry/premade/lowammo
+	static = TRUE
+
+/obj/structure/machinery/defenses/sentry/premade/antre_wy/random
+
+/obj/structure/machinery/defenses/sentry/premade/antre_wy/random/Initialize()
+	. = ..()
+	ammo.current_rounds = rand(40,60)
+
 //the turret inside a static sentry deployment system
 /obj/structure/machinery/defenses/sentry/premade/deployable
 	name = "\improper UA-633 Static Gauss Turret"
@@ -590,6 +617,13 @@
 		deployment_system.deployed_turret = null
 		deployment_system = null
 	. = ..()
+
+/obj/structure/machinery/defenses/sentry/premade/deployable/update_health(damage, pass_forward = FALSE)
+	. = ..()
+	pass_forward = !pass_forward
+	if(pass_forward)
+		if(deployment_system)
+			deployment_system.update_health(damage, pass_forward)
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony
 	faction_group = list(FACTION_MARINE, FACTION_COLONIST, FACTION_SURVIVOR, FACTION_NSPA)
@@ -712,6 +746,13 @@
 	var/obj/structure/dropship_equipment/sentry_holder/deployment_system
 	var/obj/structure/machinery/camera/cas/linked_cam
 
+/obj/structure/machinery/defenses/sentry/premade/dropship/update_health(damage, pass_forward = FALSE)
+	. = ..()
+	pass_forward = !pass_forward
+	if(pass_forward)
+		if(deployment_system)
+			deployment_system.update_health(damage, pass_forward)
+
 /obj/structure/machinery/defenses/sentry/premade/dropship/Destroy()
 	if(deployment_system)
 		deployment_system.deployed_turret = null
@@ -759,6 +800,7 @@
 #undef SENTRY_SNIPER_RANGE
 /obj/structure/machinery/defenses/sentry/shotgun
 	name = "\improper UA 12-G Shotgun Sentry"
+	desc = "A fully-automated defence turret with short-range targeting capabilities. Armed with a modified M12-G Autocannon and a 50-round drum magazine."
 	defense_type = "Shotgun"
 	health = 250
 	health_max = 250
@@ -811,8 +853,8 @@
 	static = TRUE
 	/// Cost to give sentry extra health
 	var/upgrade_cost = 5
-	/// Amount of bonus health they get from upgrade
-	var/health_upgrade = 50
+	/// Amount of health set after upgrade
+	var/health_upgrade = 250
 	var/obj/structure/machinery/camera/cas/linked_cam
 	var/static/sentry_count = 1
 	var/sentry_number
@@ -839,24 +881,32 @@
 /obj/structure/machinery/defenses/sentry/launchable/attackby(obj/item/stack/sheets, mob/user)
 	. = ..()
 
+	if(user.action_busy)
+		return
+
 	if(!istype(sheets, /obj/item/stack/sheet/metal))
 		to_chat(user, SPAN_WARNING("Use [upgrade_cost] metal sheets to give the sentry some plating."))
 		return
 
 	if(upgraded)
-		to_chat(user, SPAN_WARNING("\The [src] has already been upgraded."))
+		to_chat(user, SPAN_WARNING("\The [name] has already been upgraded."))
+		return
+
+	if(health != health_max)
+		to_chat(user, SPAN_WARNING("\The [name] must have no damage to be upgraded."))
 		return
 
 	if(sheets.amount >= upgrade_cost)
+		upgraded = TRUE
 		if(!do_after(user, 4 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION) , INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+			upgraded = FALSE
 			to_chat(user, SPAN_WARNING("You were interrupted! Try to stay still while you bolster the sentry with metal sheets..."))
 			return
 
 		if(sheets.use(upgrade_cost))
-			src.health_max += health_upgrade
-			src.update_health(-health_upgrade)
-			upgraded = TRUE
-			to_chat(user, SPAN_WARNING("You added some metal plating to the sentry, increasing its durability!"))
+			health_max = health_upgrade
+			health = health_max
+			to_chat(user, SPAN_WARNING("You added some metal plating to the [name], increasing its durability!"))
 		else
 			to_chat(user, SPAN_WARNING("You need at least [upgrade_cost] sheets of metal to upgrade this."))
 	else
@@ -870,7 +920,7 @@
 			return
 
 		var/rounds_used = ammo.inherent_reload(user)
-		to_chat(user, SPAN_WARNING("[src]'s internal magazine was reloaded with [rounds_used] rounds, [ammo.max_inherent_rounds] rounds left in storage."))
+		to_chat(user, SPAN_WARNING("[name]'s internal magazine was reloaded with [rounds_used] rounds, [ammo.max_inherent_rounds] rounds left in storage."))
 		playsound(loc, 'sound/weapons/handling/m40sd_reload.ogg', 25, 1)
 		update_icon()
 		return FALSE

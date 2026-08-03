@@ -16,7 +16,7 @@
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 	gun_category = GUN_CATEGORY_RIFLE
 	aim_slowdown = SLOWDOWN_ADS_RIFLE
-	wield_delay = WIELD_DELAY_NORMAL
+	wield_delay = WEAPON_DELAY_NORMAL
 
 /obj/item/weapon/gun/rifle/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -155,7 +155,7 @@
 	cocked_sound = 'sound/weapons/handling/nsg23_cocked.ogg'
 	force = 10
 	aim_slowdown = SLOWDOWN_ADS_QUICK
-	wield_delay = WIELD_DELAY_VERY_FAST
+	wield_delay = WEAPON_DELAY_VERY_FAST
 	current_mag = /obj/item/ammo_magazine/rifle/nsg23
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
@@ -261,7 +261,7 @@
 	current_mag = /obj/item/ammo_magazine/rifle/ap
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_WY_RESTRICTED
 	aim_slowdown = SLOWDOWN_ADS_QUICK
-	wield_delay = WIELD_DELAY_FAST
+	wield_delay = WEAPON_DELAY_FAST
 	map_specific_decoration = FALSE
 	starting_attachment_types = list(/obj/item/attachable/stock/rifle/collapsible)
 
@@ -311,6 +311,10 @@
 /obj/item/weapon/gun/rifle/m41a/elite/whiteout //special version for whiteout, has preset attachments and HEAP mag loaded.
 	current_mag = /obj/item/ammo_magazine/rifle/heap
 	starting_attachment_types = list(/obj/item/attachable/stock/rifle/collapsible, /obj/item/attachable/magnetic_harness, /obj/item/attachable/angledgrip, /obj/item/attachable/suppressor)
+
+/obj/item/weapon/gun/rifle/m41a/elite/no_lock
+	desc = "A modified version M41A Pulse Rifle MK2, re-engineered for better weight, handling and accuracy. Fires precise two-round bursts. This one had its IFF electronics removed."
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 
 /obj/item/weapon/gun/rifle/m41a/corporate
 	desc = "A Weyland-Yutani creation, this M41A MK2 comes equipped in corporate white. Uses 10x24mm caseless ammunition."
@@ -367,7 +371,7 @@
 	current_mag = /obj/item/ammo_magazine/rifle/xm40/heap
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	aim_slowdown = SLOWDOWN_ADS_QUICK
-	wield_delay = WIELD_DELAY_FAST
+	wield_delay = WEAPON_DELAY_FAST
 	map_specific_decoration = FALSE
 	starting_attachment_types = list()
 	accepted_ammo = list(
@@ -834,7 +838,7 @@
 	unload_sound = 'sound/weapons/handling/gun_mar40_unload.ogg'
 
 	aim_slowdown = SLOWDOWN_ADS_QUICK //Carbine is more lightweight
-	wield_delay = WIELD_DELAY_FAST
+	wield_delay = WEAPON_DELAY_FAST
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/bayonet,
@@ -1523,7 +1527,7 @@
 	reload_sound = 'sound/weapons/handling/m41_reload.ogg'
 	unload_sound = 'sound/weapons/handling/m41_unload.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/type71
-	wield_delay = WIELD_DELAY_FAST
+	wield_delay = WEAPON_DELAY_FAST
 	attachable_allowed = list(
 		/obj/item/attachable/flashlight, // Rail
 		/obj/item/attachable/magnetic_harness,
@@ -1695,7 +1699,7 @@
 	hud_offset = 0
 
 	aim_slowdown = SLOWDOWN_ADS_QUICK //Carbine is more lightweight
-	wield_delay = WIELD_DELAY_VERY_FAST
+	wield_delay = WEAPON_DELAY_VERY_FAST
 	bonus_overlay_x = 2
 	force = 20 //integrated melee mod from stock, which doesn't fit on the gun but is still clearly there on the sprite
 	attachable_allowed = list(
@@ -1779,6 +1783,17 @@
 	random_spawn_muzzle = list()
 	bonus_overlay_x = 1
 	bonus_overlay_y = 0
+	var/iff_enabled = TRUE
+
+/obj/item/weapon/gun/rifle/type71/carbine/commando/Initialize(mapload, ...)
+	LAZYADD(actions_types, /datum/action/item_action/toggle_alt_iff)
+	. = ..()
+	AddComponent(/datum/component/iff_fire_prevention, 5)
+	if(iff_enabled)
+		LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff)
+		))
+		SEND_SIGNAL(src, COMSIG_GUN_ALT_IFF_TOGGLED, TRUE)
 
 /obj/item/weapon/gun/rifle/type71/carbine/commando/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 35, "muzzle_y" = 17,"rail_x" = 10, "rail_y" = 22, "under_x" = 23, "under_y" = 14, "stock_x" = 21, "stock_y" = 18)
@@ -1799,6 +1814,43 @@
 	set_fire_delay(FIRE_DELAY_TIER_11)
 	set_burst_delay(FIRE_DELAY_TIER_12)
 	scatter = SCATTER_AMOUNT_TIER_8
+
+/datum/action/item_action/toggle_alt_iff/New(Target, obj/item/holder)
+	. = ..()
+	name = "Toggle IFF"
+	action_icon_state = "iff_toggle_on"
+	button.name = name
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
+/datum/action/item_action/toggle_alt_iff/action_activate()
+	. = ..()
+	var/obj/item/weapon/gun/rifle/type71/carbine/commando/protag_gun = holder_item
+	protag_gun.toggle_iff(usr)
+	if(protag_gun.iff_enabled)
+		action_icon_state = "iff_toggle_on"
+	else
+		action_icon_state = "iff_toggle_off"
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
+// -- ability actions procs -- \\
+
+/obj/item/weapon/gun/rifle/type71/carbine/commando/proc/toggle_iff(mob/user)
+	iff_enabled = !iff_enabled
+	to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You [iff_enabled? "enable": "disable"] the IFF on [src]."))
+	playsound(loc,'sound/machines/click.ogg', 25, 1)
+
+	recalculate_attachment_bonuses()
+	if(iff_enabled)
+		SEND_SIGNAL(src, COMSIG_GUN_ALT_IFF_TOGGLED, TRUE)
+		add_bullet_trait(BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff))
+	else
+		remove_bullet_trait("iff")
+		SEND_SIGNAL(src, COMSIG_GUN_ALT_IFF_TOGGLED, FALSE)
+
+/obj/item/weapon/gun/rifle/type71/carbine/commando/deathsquad
+	current_mag = /obj/item/ammo_magazine/rifle/type71/heap
 
 	//-------------------------------------------------------
 
@@ -1945,7 +1997,7 @@
 	starting_attachment_types = list(/obj/item/attachable/attached_gun/flare_launcher)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
-	wield_delay = WIELD_DELAY_VERY_FAST
+	wield_delay = WEAPON_DELAY_VERY_FAST
 	aim_slowdown = SLOWDOWN_ADS_QUICK
 	map_specific_decoration = TRUE
 	pixel_x = -5
@@ -2038,7 +2090,7 @@
 	)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
-	wield_delay = WIELD_DELAY_VERY_FAST
+	wield_delay = WEAPON_DELAY_VERY_FAST
 	aim_slowdown = SLOWDOWN_ADS_QUICK
 	starting_attachment_types = list(/obj/item/attachable/stock/carbine)
 	map_specific_decoration = TRUE
@@ -2108,7 +2160,7 @@
 		/obj/item/attachable/stock/carbine/wood/tactical,
 	)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
-	wield_delay = WIELD_DELAY_FAST
+	wield_delay = WEAPON_DELAY_FAST
 	starting_attachment_types = list(/obj/item/attachable/stock/carbine/wood, /obj/item/attachable/scope/mini/hunting)
 	map_specific_decoration = FALSE
 	civilian_usable_override = TRUE
@@ -2334,7 +2386,7 @@
 	unload_sound = 'sound/weapons/handling/nsg23_unload.ogg'
 	cocked_sound = 'sound/weapons/handling/nsg23_cocked.ogg'
 	aim_slowdown = SLOWDOWN_ADS_QUICK
-	wield_delay = WIELD_DELAY_VERY_FAST
+	wield_delay = WEAPON_DELAY_VERY_FAST
 	current_mag = /obj/item/ammo_magazine/rifle/l23
 	force = 10
 
@@ -2419,7 +2471,7 @@
 	unload_sound = 'sound/weapons/handling/nsg23_unload.ogg'
 	cocked_sound = 'sound/weapons/handling/nsg23_cocked.ogg'
 	aim_slowdown = SLOWDOWN_ADS_QUICK
-	wield_delay = WIELD_DELAY_VERY_FAST
+	wield_delay = WEAPON_DELAY_VERY_FAST
 	current_mag = /obj/item/ammo_magazine/rifle/l23/extended
 
 	attachable_allowed = list(
@@ -2525,7 +2577,7 @@
 	)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
-	wield_delay = WIELD_DELAY_VERY_FAST
+	wield_delay = WEAPON_DELAY_VERY_FAST
 	aim_slowdown = SLOWDOWN_ADS_QUICK
 
 /obj/item/weapon/gun/rifle/l64a3/set_gun_attachment_offsets()

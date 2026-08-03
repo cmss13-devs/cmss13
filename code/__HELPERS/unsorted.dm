@@ -254,39 +254,6 @@
 			return FALSE
 	return TRUE
 
-//This will update a mob's name, real_name, mind.name, data_core records, pda and id
-//Calling this proc without an oldname will only update the mob and skip updating the pda, id and records ~Carn
-/mob/proc/fully_replace_character_name(oldname, newname)
-	if(!newname)
-		return 0
-	change_real_name(src, newname)
-
-	if(oldname)
-		//update the datacore records! This is goig to be a bit costly.
-		var/mob_ref = WEAKREF(src)
-		for(var/list/L in list(GLOB.data_core.general, GLOB.data_core.medical, GLOB.data_core.security, GLOB.data_core.locked))
-			for(var/datum/data/record/record_entry in L)
-				if(record_entry.fields["ref"] == mob_ref)
-					record_entry.fields["name"] = newname
-					record_entry.name = newname
-					break
-
-		//update our pda and id if we have them on our person
-		var/list/searching = GetAllContents(searchDepth = 3)
-		var/search_id = 1
-		var/search_pda = 1
-
-		for(var/A in searching)
-			if(search_id && istype(A, /obj/item/card/id))
-				var/obj/item/card/id/ID = A
-				if(ID.registered_name == oldname)
-					ID.registered_name = newname
-					ID.name = "[newname]'s [ID.id_type] ([ID.assignment])"
-					if(!search_pda)
-						break
-					search_id = 0
-	return 1
-
 //Returns a list of all mobs with their name
 /proc/getmobs()
 	var/list/mobs = sortmobs()
@@ -365,46 +332,56 @@
 		moblist += friend
 	return moblist
 
-/proc/key_name(whom, include_link = null, include_name = 1, highlight_special_characters = 1, show_username = FALSE)
+/proc/key_name(whom, include_link = null, include_name = 1, highlight_special_characters = 1, show_username = FALSE, logging = TRUE)
 	var/mob/M
 	var/client/C
-	var/key
+	var/ckey // If it's going to go anywhere programatic like logs, we want consistent formatting, so the ckey rather than the key
+	var/key // Otherwise, we can use the key for friendly display
 	var/username
 
 	if(!whom)
 		return "*null*"
+
 	if(istype(whom, /client))
 		C = whom
 		M = C.mob
+		ckey = C.ckey
 		key = C.key
 		username = C.username()
+
 	else if(ismob(whom))
 		M = whom
 		C = M.client
+		ckey = M.persistent_ckey
 		key = M.key
 		username = M.username()
-	else if(istype(whom, /datum))
+
+	else if(istype(whom, /datum) && !logging)
 		var/datum/D = whom
 		return "*invalid:[D.type]*"
+
 	else
 		return "*invalid*"
 
 	. = ""
 
-	if(key)
-		if(include_link && C)
-			. += "<a href='byond://?priv_msg=[C.ckey]'>"
-
-		if(show_username && username && username != key)
-			. += "[username] ([key])"
-		else
-			. += key
-
-		if(include_link)
-			if(C) . += "</a>"
-			else . += " (DC)"
+	// We still output the links in logging mode because message_admins is everywhere. They'll be stripped by logging backend later.
+	if(ckey && include_link)
+		. += "<a href='byond://?priv_msg=[ckey]'>"
 	else
-		. += "*no key*"
+		include_link = FALSE
+
+	if(key && show_username && username && username != key)
+		. += "[username] ([logging ? ckey : key])"
+	else if(ckey && logging)
+		. += ckey
+	else if(key)
+		. += key
+	else
+		. += "*no_key*" // No spaces here to be loosely format-compatible with ckeys
+
+	if(include_link)
+		. += "</a>"
 
 	if(include_name && M)
 		var/name
@@ -416,6 +393,9 @@
 
 		. += "/([name])"
 
+	if(!C)
+		. += " (DC)"
+
 	return .
 
 /proc/key_name_admin(whom, include_name = 1)
@@ -423,7 +403,7 @@
 
 /// Returns key_name with username shown when it differs from key - for admin contexts
 /proc/key_name_with_username(whom, include_name = 1)
-	return key_name(whom, TRUE, include_name, TRUE, TRUE)
+	return key_name(whom, TRUE, include_name, TRUE, TRUE, logging = FALSE)
 
 
 // returns the turf located at the map edge in the specified direction relative to A
@@ -1465,6 +1445,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	invisibility = INVISIBILITY_ABSTRACT
 	density = FALSE
 	see_in_dark = INFINITY
+	mob_flags = MOB_ABSTRACT
 	var/ready_to_die = FALSE
 
 /mob/dview/Initialize() //Properly prevents this mob from gaining huds or joining any global lists
@@ -1803,6 +1784,9 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 /// Returns TRUE if the target is somewhere that the game should not interact with if possible
 /// In this case, admin Zs and tutorial areas
 /proc/should_block_game_interaction(atom/target, include_hunting_grounds = FALSE)
+	if (!target)
+		return TRUE
+
 	if(is_admin_level(target.z))
 		return TRUE
 
@@ -1823,3 +1807,10 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 	var/x = (text2num(x_dirty[1])-1)*32 + text2num(x_dirty[2])
 	var/y = (text2num(y_dirty[1])-1)*32 + text2num(y_dirty[2])
 	return list(x, y)
+
+/// Checks if a player mob is in a cryopod
+/proc/is_mob_cryoing(mob/person)
+	if(istype(person.loc, /obj/structure/machinery/cryopod))
+		return TRUE
+	else
+		return FALSE

@@ -152,6 +152,11 @@
 		if(!can_hug(human, hivenumber))
 			to_chat(src, SPAN_WARNING("You can't infect \the [human]..."))
 			return
+		var/hug_dir = get_dir(src, human)
+		for(var/atom/movable/atom in get_turf(human))
+			if(atom != human && atom.density && atom.BlockedPassDirs(src, hug_dir))
+				to_chat(src, SPAN_WARNING("[atom] prevents us from infecting [human]!"))
+				return
 		visible_message(SPAN_WARNING("\The [src] starts climbing onto \the [human]'s face..."), SPAN_XENONOTICE("You start climbing onto \the [human]'s face..."))
 		if(!do_after(src, FACEHUGGER_CLIMB_DURATION, INTERRUPT_ALL, BUSY_ICON_HOSTILE, human, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 			return

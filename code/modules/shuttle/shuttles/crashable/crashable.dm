@@ -84,7 +84,6 @@
 
 		// Prevent the shuttle from being smushed by the shipmap and vice-versa
 		if (SShijack.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH && SShijack.crashed_offset_x != null && SShijack.crashed_offset_y != null)
-
 			var/above_min_x = turf_picked.x > SShijack.crashed_offset_x + SShijack.open_space_bounds[OPEN_SPACE_BOUNDS_MINX] + CRASHABLE_SHIP_BUFFER_SPACE
 			var/below_max_x = turf_picked.x < SShijack.crashed_offset_x + SShijack.open_space_bounds[OPEN_SPACE_BOUNDS_MAXX] - CRASHABLE_SHIP_BUFFER_SPACE
 			var/above_min_y = turf_picked.y > SShijack.crashed_offset_y + SShijack.open_space_bounds[OPEN_SPACE_BOUNDS_MINY] + CRASHABLE_SHIP_BUFFER_SPACE

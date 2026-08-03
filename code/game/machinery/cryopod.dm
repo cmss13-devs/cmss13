@@ -502,8 +502,8 @@ GLOBAL_LIST_INIT(frozen_items, list("MP" = list(), "REQ" = list(), "Eng" = list(
 			to_chat(usr, SPAN_WARNING("[src] is occupied."))
 			return
 
-		go_in_cryopod(usr)
 		willing = TRUE
+		go_in_cryopod(usr)
 		add_fingerprint(usr)
 
 

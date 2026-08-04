@@ -1,0 +1,4 @@
+author: "cuberound"
+delete-after: True
+changes:
+  - balance: "if you are firing on another z level accuracy is impacted by how good your character can see the target"

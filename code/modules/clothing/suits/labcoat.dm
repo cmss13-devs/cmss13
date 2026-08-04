@@ -422,9 +422,6 @@
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/cec_labcoats.dmi'
 	)
-
-
-
 /obj/item/clothing/suit/storage/labcoat/cec/red
 	name = "CEC lab coat"
 	desc = "A suit that protects against minor chemical spills and biological hazards. This one is in a Cosmos Exploration Corps red."

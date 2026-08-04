@@ -81,11 +81,6 @@ and organ transplant code which may come in handy in future but haven't been edi
 			SPAN_NOTICE("[user] begins to treat your damaged [damaged_organs[1]] with [toolname]."),
 			SPAN_NOTICE("[user] begins to treat [target]'s damaged [damaged_organs[1]] with [toolname]."))
 
-	if(repeat_step && repeat_step_criteria(user, target, target_zone, tool, tool_type, surgery))
-		surgery.step_in_progress = FALSE
-		INVOKE_ASYNC(surgery, TYPE_PROC_REF(/datum/surgery, attempt_next_step), user, tool, TRUE)
-		return TRUE
-
 	target.custom_pain("You feel [toolname] moving the organs around in your [surgery.affected_limb.display_name]! The pressure is maddening!", 1)
 	playsound(target.loc, 'sound/handling/bandage.ogg', 25, TRUE)
 	log_interact(user, target, "[key_name(user)] began mending organs in [key_name(target)]'s [surgery.affected_limb.display_name], beginning [surgery].")

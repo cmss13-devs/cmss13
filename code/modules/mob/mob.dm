@@ -392,6 +392,19 @@
 			new /obj/effect/overlay/temp/point/big(T, src, A)
 		else
 			new /obj/effect/overlay/temp/point/big/squad(T, src, A, squad.equipment_color)
+		if(ishuman(mob) && ishumansynth_strict(A) && A != mob) //Don't yell out the name of predators ever, that would be weird. Our ourselves
+			var/mob/living/carbon/human/yelled_at_human = A
+			if(yelled_at_human.faction == mob.faction && yelled_at_human.name != "Unknown") // Don't yell out the name of CLF... Or someone you don't know
+				var/split_name = splittext(yelled_at_human.name, " ")
+				var/last_name = split_name[length(split_name)]
+				var/final_spoken_name
+				if(mob.a_intent == INTENT_GRAB)
+					final_spoken_name = "[last_name]!"
+				if(mob.a_intent == INTENT_HARM)
+					final_spoken_name = "[uppertext(last_name)]!!"
+				if(final_spoken_name)
+					say(final_spoken_name)
+
 	visible_message("<b>[src]</b> points to [A]", null, null, 5)
 	return TRUE
 

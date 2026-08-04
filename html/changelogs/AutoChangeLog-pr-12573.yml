@@ -1,0 +1,4 @@
+author: "fira"
+delete-after: True
+changes:
+  - admin: "Added OpenSearch Query Builder for in-game log searching"

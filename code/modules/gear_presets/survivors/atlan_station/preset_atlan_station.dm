@@ -2,7 +2,7 @@
 	name = "Survivor - UPP - Atlan Cosmos Exploration Corps Researcher"
 	assignment = "Issledovatel' Korpusa Kosmicheskoy Eksploratsii"
 	minimap_icon = "upp_sci"
-	minimap_background = "background_upp_charlie"
+	minimap_background = "background_upp_bravo"
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_CHINESE)
 	job_title = JOB_CEC_DOCENT
 	paygrades = list(PAY_SHORT_CEC2 = JOB_PLAYTIME_TIER_0)
@@ -101,6 +101,7 @@
 	name = "Survivor - UPP - Atlan Cosmos Exploration Corps Liaison" //CEC Representative/Liaison, higher academic standing and the cec scientist supervisor
 	assignment = "Svyaz' Korpusa Kosmicheskoy Eksploratsii"
 	minimap_icon = "upp_sci"
+	minimap_background = "background_upp_bravo"
 	job_title = JOB_CEC_PROFESSOR
 	skills = /datum/skills/civilian/survivor/scientist
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_ENGLISH, LANGUAGE_CHINESE)
@@ -424,7 +425,7 @@
 	name = "Survivor - UPP - Ministry of Industry - Atlan Refinery Engineer"
 	assignment = "Inzhener Neftepererabatyvayushchiy Zavod"
 	minimap_icon = "upp_cont"
-	minimap_background = "background_upp_bravo"
+	minimap_background = "background_upp_civilian"
 	faction_group = FACTION_LIST_SURVIVOR_UPP
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_CHINESE)
 	faction = FACTION_UPP
@@ -496,7 +497,7 @@
 	assignment = "Sotrudnik Sluzhby Bezopasnosti"
 	faction_group = FACTION_LIST_SURVIVOR_PAP
 	minimap_icon = "upp_sec"
-	minimap_background = "background_upp_alpha"
+	minimap_background = "background_upp"
 	paygrades = list(PAY_SHORT_UE3 = JOB_PLAYTIME_TIER_0, PAY_SHORT_UE4 = JOB_PLAYTIME_TIER_1, PAY_SHORT_UE5 = JOB_PLAYTIME_TIER_2)
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_CHINESE, LANGUAGE_GERMAN)
 	faction = FACTION_UPP
@@ -531,7 +532,7 @@
 	name = "Survivor - UPP - Atlan Station Maintenance Technician"
 	assignment = "Tekhnik Po Obsluzhivaniyu"
 	minimap_icon = "upp_cont"
-	minimap_background = "background_upp_bravo"
+	minimap_background = "background_upp_civilian"
 	faction_group = FACTION_LIST_SURVIVOR_UPP
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_CHINESE)
 	faction = FACTION_UPP
@@ -607,6 +608,8 @@
 	faction = FACTION_UPP
 	faction_group = FACTION_LIST_SURVIVOR_UPP
 	origin_override = ORIGIN_UPP
+	minimap_icon = "upp_synth"
+	minimap_background = "background_upp_civilian"
 
 	survivor_variant = CIVILIAN_SURVIVOR
 
@@ -701,6 +704,8 @@
 	faction = FACTION_UPP
 	faction_group = FACTION_LIST_SURVIVOR_UPP
 	origin_override = ORIGIN_UPP
+	minimap_icon = "upp_synth"
+	minimap_background = "background_upp_civilian"
 
 	survivor_variant = ENGINEERING_SURVIVOR
 
@@ -772,6 +777,8 @@
 	faction = FACTION_UPP
 	faction_group = FACTION_LIST_SURVIVOR_UPP
 	origin_override = ORIGIN_UPP
+	minimap_icon = "upp_synth"
+	minimap_background = "background_upp_medical"
 
 
 	survivor_variant = MEDICAL_SURVIVOR
@@ -827,6 +834,8 @@
 	faction = FACTION_UPP
 	faction_group = FACTION_LIST_SURVIVOR_UPP
 	origin_override = ORIGIN_UPP
+	minimap_icon = "upp_synth"
+	minimap_background = "background_upp"
 
 	survivor_variant = SECURITY_SURVIVOR
 
@@ -864,6 +873,7 @@
 	idtype = /obj/item/card/id/cec
 	survivor_variant = CORPORATE_SURVIVOR
 	minimap_icon = "upp_synth"
+	minimap_background = "background_upp_bravo"
 
 /datum/equipment_preset/synth/survivor/atlan/corporate/load_gear(mob/living/carbon/human/new_human)
 	var/choice = rand(1,2)
@@ -908,6 +918,7 @@
 	faction_group = list(FACTION_LIST_SURVIVOR_UPP, FACTION_UPP)
 	origin_override = ORIGIN_UPP
 	minimap_icon = "upp_synth"
+	minimap_background = "background_upp_bravo"
 
 
 	survivor_variant = SCIENTIST_SURVIVOR

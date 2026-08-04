@@ -157,8 +157,8 @@
 		deconstruct(FALSE)
 		return XENO_ATTACK_ACTION
 	else
-		attack_hand(xeno)
-		return XENO_NONCOMBAT_ACTION
+		to_chat(xeno, SPAN_WARNING("We stare at \the [src] cluelessly."))
+		return XENO_NO_DELAY_ACTION
 
 /obj/structure/target/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(unslashable)

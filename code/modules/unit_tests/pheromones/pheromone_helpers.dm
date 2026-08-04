@@ -38,12 +38,13 @@
 	UnregisterSignal(src, COSMIG_GLOB_XENO_LIFE_COMPLETE)
 
 /datum/unit_test/pheromones/proc/poke_full_life_loop()
+	SIGNAL_HANDLER
+
 	if (!last_life_complete)
 		last_life_complete = TRUE
 		return
 	full_life_complete = TRUE
 	last_life_complete = FALSE
-	return
 
 /**
  * Tests whether a pair of xenomorphs, one dedicated emitter and one dedicated receiver, transmit the expected level of pheromones.
@@ -52,18 +53,24 @@
 	TEST_ASSERT_NOTNULL(abstract_emitter, "No abstract emitter datum was specified for this test")
 	TEST_ASSERT_NOTNULL(abstract_receiver, "No abstract receiver datum was specified for this test")
 	TEST_ASSERT_NOTNULL(test_callback, "No testing callback was specified for this test")
+	log_test("Abstract objects received, initializing physical xenomorphs...")
 
 	var/mob/living/carbon/xenomorph/emitter = init_abstract_xeno(abstract_emitter)
 	var/mob/living/carbon/xenomorph/receiver = init_abstract_xeno(abstract_receiver)
 	TEST_ASSERT_NOTNULL(emitter, "Initialization of the physical emitter xenomorph resulted in a null reference")
 	TEST_ASSERT_NOTNULL(receiver, "Initialization of the physical receiver xenomorph resulted in a null reference")
+	log_test("...physical emitter and receiver xenomorphs initialized.")
 
 	// Make the emitter release the appropriate pheromones
 	emitter.emit_pheromones(pheromone_type)
 
+	log_test("Waiting for full xeno life loop completion...")
 	wait_full_life_loop()
+	log_test("...life loop complete.")
 
+	log_test("Invoking test validation callback...")
 	test_callback.Invoke(receiver)
+	log_test("...test complete!")
 
 /// Initializes an abstract xenomorph into a living, breathing mob. Spawns on the lower leftmost testing turf.
 /datum/unit_test/pheromones/proc/init_abstract_xeno(datum/abstract_xenomorph/abstract)

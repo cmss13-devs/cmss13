@@ -274,10 +274,6 @@ DEFINES in setup.dm, referenced here.
 		if(check_inactive_hand(user))
 			reload(user,attack_item)
 
-	else if(istype(attack_item,/obj/item/magazine_clip)) //?basically copied the normal reloading proc but modified to referencing the mags inside intead
-		if(check_inactive_hand(user))
-			var/obj/item/magazine_clip/clip_used = attack_item
-			reload(user,clip_used.active_magazine(), attack_item) //!Shit works but the magazine clip is left out...
 
 //tactical reloads
 /obj/item/weapon/gun/MouseDrop_T(atom/dropping, mob/living/carbon/human/user)

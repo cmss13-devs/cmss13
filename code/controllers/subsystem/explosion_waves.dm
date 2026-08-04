@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(explosion_waves)
 	name     = "Explosion Waves"
-	wait     = 1
+	wait     = 2
 	flags    = SS_TICKER | SS_NO_INIT
 	priority = SS_PRIORITY_EXPLOSION_WAVES
 

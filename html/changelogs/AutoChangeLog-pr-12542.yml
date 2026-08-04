@@ -1,0 +1,8 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - balance: "Xenos now can upgrade their grabs to a defensive grab which slows their speed but protects the target so long as the xeno has atleast 25% health. The upgraded grab is needed to restrain. (0.4s to upgrade instantly, 5s do_after to restrain)"
+  - rscadd: "Added a preference (and verb to change the preference) to override the defensive grab damage redirection threshold per caste. A setting of 100% disables defensive grab entirely for that caste."
+  - bugfix: "Grab upgrade icons now actually update"
+  - bugfix: "Warriors now stop fighting themselves to be the puller of a mob"
+  - code_imp: "Standardized implementation between xenos clicking self and clicking their dragged target"

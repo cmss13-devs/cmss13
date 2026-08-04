@@ -24,6 +24,10 @@
 /// From base of /obj/item/proc/attack_self(): (mob/user)
 #define COMSIG_ITEM_ATTACK_SELF "item_attack_self"
 
+/// From /obj/item/proc/unique_action(): (mob/user)
+#define COMSIG_ITEM_UNIQUE_ACTION "item_unique_action"
+	#define COMPONENT_CANCEL_UNIQUE_ACTION (1<<0)
+
 ///from /obj/item/reagent_container/food/snacks/proc/On_Consume
 #define COMSIG_SNACK_EATEN "snack_eaten"
 
@@ -66,3 +70,10 @@
 //from /datum/component/overwatch_console_control
 #define COMSIG_OW_CONSOLE_OBSERVE_START "ow_console_observe_start"
 #define COMSIG_OW_CONSOLE_OBSERVE_END "ow_console_observe_end"
+
+//from /obj/item/ammo_magazine/attack_hand() : (mob/user)
+#define COMSIG_MAGAZINE_ATTEMPT_WITHDRAW_HANDFUL "magazine_attempt_withdraw_handful"
+	#define COMPONENT_MAGAZINE_CANCEL_ATTEMPT_WITHDRAW_HANDFUL (1<<0)
+
+//from /obj/item/ammo_magazine/update_icon() : (round_diff = 0)
+#define COMSIG_MAGAZINE_FINISH_UPDATE_ICON "magazine_finish_update_ammo_band"

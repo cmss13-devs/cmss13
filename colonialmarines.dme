@@ -450,6 +450,7 @@
 #include "code\datums\components\heavy_bullets.dm"
 #include "code\datums\components\id_lock.dm"
 #include "code\datums\components\iff_fire_prevention.dm"
+#include "code\datums\components\jungle_magazine.dm"
 #include "code\datums\components\label.dm"
 #include "code\datums\components\orbiter.dm"
 #include "code\datums\components\overlay_lighting.dm"

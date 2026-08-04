@@ -1162,6 +1162,8 @@
 
 // formerly in gun_helpers.dm, moved here for universal usage
 /obj/item/proc/unique_action(mob/user)
+	if(SEND_SIGNAL(src, COMSIG_ITEM_UNIQUE_ACTION, user) & COMPONENT_CANCEL_UNIQUE_ACTION) //? Rather pointless right now as unique action is typically overwrited
+		return
 	return
 
 /obj/item/verb/use_unique_action()

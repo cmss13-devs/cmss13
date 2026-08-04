@@ -95,3 +95,6 @@
   - bugfix: fixed oversight with Mortar Kits. They come with RTO bags now.
   zzzmike:
   - bugfix: fixed a message telling everyone nearby that they pried a valve
+2026-08-04:
+  antlersss:
+  - bugfix: Auto-holotag preferences are actually saved

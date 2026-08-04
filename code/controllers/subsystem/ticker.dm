@@ -499,7 +499,6 @@ SUBSYSTEM_DEF(ticker)
 	 * SScellauto: can't touch this because it would directly affect explosion spread speed
 	 */
 
-	SSquadtree?.wait    = 0.8 SECONDS // From 0.5, relevant based on player movement speed (higher = more error in sound location, motion detector pings, sentries target acquisition)
 	SSlighting?.wait    = 0.6 SECONDS // From 0.4, same but also heavily scales on player/scene density (higher = less frequent lighting updates which is very noticeable as you move)
 	SSstatpanels?.wait  = 1.5 SECONDS // From 0.6, refresh rate mainly matters for ALT+CLICK turf contents (which gens icons, intensive)
 	SSsoundscape?.wait  =   2 SECONDS // From 1, soudscape triggering checks, scales on player count

@@ -106,6 +106,8 @@
 #include "..\modules\unit_tests\movement\link_blocked_cardinal.dm"
 #include "..\modules\unit_tests\movement\link_blocked_diagonal.dm"
 #include "..\modules\unit_tests\movement\movement_helpers.dm"
+#include "..\modules\unit_tests\pheromones\transmit_hive.dm"
+#include "..\modules\unit_tests\pheromones\pheromone_helpers.dm"
 
 // Unit tests backend
 #include "..\modules\unit_tests\focus_only_tests.dm"

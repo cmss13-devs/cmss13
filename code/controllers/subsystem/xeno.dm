@@ -26,3 +26,7 @@ SUBSYSTEM_DEF(xeno)
 
 		if (MC_TICK_CHECK)
 			return
+
+	#ifdef UNIT_TESTS
+		SEND_SIGNAL(src, COSMIG_GLOB_XENO_LIFE_COMPLETE)
+	#endif

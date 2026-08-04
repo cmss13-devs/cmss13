@@ -101,3 +101,7 @@
 
 /// From /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/signal_cic()
 #define COMSIG_GLOB_DELAYED_COMMS_FAILURE "!comms_delayed_failure"
+
+#ifdef UNIT_TESTS
+	#define COSMIG_GLOB_XENO_LIFE_COMPLETE "!xeno_life_complete"
+#endif

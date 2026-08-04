@@ -21,7 +21,10 @@ TEST_FOCUS(/datum/unit_test/pheromones/)
 
 /datum/unit_test/pheromones/transmit_hive__allied_recovery/Run()
 	pair_reception_test(
-		abstract_emitter = new /datum/abstract_xenomorph(),
+		abstract_emitter = new /datum/abstract_xenomorph(
+			caste = XENO_CASTE_QUEEN,
+			initialization_callback = CALLBACK(src, PROC_REF(setup_alliance), XENO_HIVE_ALPHA)
+		),
 		abstract_receiver = new /datum/abstract_xenomorph(hive = XENO_HIVE_ALPHA),
 		pheromone_type = XENO_PHERO_RECOVERY,
 		test_callback = CALLBACK(src, PROC_REF(pheromone_validation), list(XENO_PHERO_RECOVERY = 2))

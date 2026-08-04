@@ -15,6 +15,11 @@
 	src.initialization_callback = initialization_callback
 
 /datum/unit_test/pheromones
+	/// Overrides the `wait` variable of the SSxeno subsystem with this value when certain test functions are called.
+	/// This is used to expedite tests so they don't have to wait the full 2 seconds per life loop.
+	/// Resets the `wait` var to its original value after testing is complete.
+	var/ss_wait_override = 100 MILLISECONDS
+
 	var/last_life_complete = FALSE
 	var/full_life_complete = FALSE
 
@@ -27,7 +32,7 @@
 
 	var/waiting_loops = 0
 	while (!full_life_complete)
-		sleep(1 SECONDS)
+		sleep(ss_wait_override ? ss_wait_override : 1 SECONDS)
 
 		waiting_loops++
 		if (waiting_loops > 30)
@@ -57,6 +62,11 @@
 	TEST_ASSERT_NOTNULL(abstract_receiver, "No abstract receiver datum was specified for this test")
 	TEST_ASSERT_NOTNULL(test_callback, "No testing callback was specified for this test")
 
+	var/original_wait
+	if (ss_wait_override)
+		original_wait = SSxeno.wait
+		SSxeno.wait = ss_wait_override
+
 	var/mob/living/carbon/xenomorph/emitter = init_abstract_xeno(abstract_emitter)
 	var/mob/living/carbon/xenomorph/receiver = init_abstract_xeno(abstract_receiver)
 	TEST_ASSERT_NOTNULL(emitter, "Initialization of the physical emitter xenomorph resulted in a null reference")
@@ -70,6 +80,9 @@
 
 	test_callback.Invoke(receiver)
 
+	if (original_wait)
+		SSxeno.wait = original_wait
+
 /// Initializes an abstract xenomorph into a living, breathing mob. Spawns on the lower leftmost testing turf.
 /datum/unit_test/pheromones/proc/init_abstract_xeno(datum/abstract_xenomorph/abstract)
 	var/mob/living/carbon/xenomorph/xeno = allocate(GLOB.RoleAuthority.get_caste_by_text(abstract.caste))
@@ -82,6 +95,7 @@
 	return xeno
 
 /// Validates that a given xenomorph is receiving the correct level of pheromones for every type.
+/// Premade function for `test_callback` fields.
 /datum/unit_test/pheromones/proc/pheromone_validation(list/expected_pheromones, mob/living/carbon/xenomorph/receiver)
 	TEST_ASSERT_NOTNULL(receiver, "No receiver xenomorph was specified for pheromone validation")
 
@@ -126,3 +140,12 @@
 		// We got something, but it was the wrong strength
 		if (expected_pheromones[phero_type] != received_pheromones[phero_type])
 			TEST_FAIL("Receiver [receiver.caste_type] of hive [receiver.hivenumber] received [phero_type] at strength [received_pheromones[phero_type]] when expected to receive it at strength [expected_pheromones[phero_type]]")
+
+/// Sets up an alliance with the given faction after the abstract xeno is initialized. Fails if the xeno is not a queen.
+/// Premade function for `initialization_callback` field of abstract xenomorphs.
+/datum/unit_test/pheromones/proc/setup_alliance(mob/living/carbon/xenomorph/xeno, faction)
+	if (xeno.caste != XENO_CASTE_QUEEN)
+		TEST_FAIL("Test attempted to set up an alliance from a non-queen xenomorph")
+
+	xeno.hive.change_stance(faction, TRUE)
+	TEST_ASSERT(!HIVE_ALLIED_TO_HIVE(XENO_HIVE_NORMAL, faction), "Hive alliance setup failed during test initialization")

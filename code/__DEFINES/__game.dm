@@ -45,9 +45,16 @@
 #define MAP_CHINOOK "Chinook 91 GSO" //admin level
 #define MAP_ROSTOCK "SSV Rostock" //UPP Warship
 #define MAP_HUNTERSHIP "Hunter Ship"
+
+#define GAMEMODE_DISTRESS_SIGNAL "Distress Signal"
 #define GAMEMODE_WHISKEY_OUTPOST "Whiskey Outpost"
 #define GAMEMODE_HIVE_WARS "Hive Wars"
+#define GAMEMODE_FACTION_CLASH "Faction Clash"
 #define GAMEMODE_FACTION_CLASH_UPP_CM "Faction Clash UPP CM"
+#define GAMEMODE_HUNTER_GAMES "Hunter Games"
+#define GAMEMODE_INFECTION "Infection"
+#define GAMEMODE_EXTENDED "Extended"
+#define GAMEMODE_EXTENDED_NO_SPAWN "Extended - No Spawn"
 
 /// Number of players before we switch to lowpop maps only (LV, BR, Prison).
 #define PLAYERCOUNT_LOWPOP_MAP_LIMIT 130
@@ -525,15 +532,6 @@
 
 /// Window skin types
 #define TOGGLE_WINDOW_SKIN 1
-
-// Quadtree values
-
-/// Max amount of player coordinates in a quadtree cell
-#define QUADTREE_CAPACITY 12
-/// Minimum X width up to which we keep dividing the tree (meaning cells can be half that)
-#define QUADTREE_BOUNDARY_MINIMUM_WIDTH 12
-/// Minimum Y height up to which we keep dividing the tree (meaning cells can be half that)
-#define QUADTREE_BOUNDARY_MINIMUM_HEIGHT 12
 
 /// Whether to filter to only living mobs
 #define QTREE_FILTER_LIVING 1

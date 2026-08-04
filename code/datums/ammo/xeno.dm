@@ -256,7 +256,8 @@
 	if(. == FALSE)
 		return
 	var/datum/effects/acid/acid_effect = locate() in mob.effects_list
-	acid_effect = new /datum/effects/acid(mob, projectile.firer)
+	if(!acid_effect)
+		acid_effect = new /datum/effects/acid(mob, projectile.firer)
 	acid_effect.enhance_acid()
 	acid_effect.increment_duration(acid_progression)
 	splatter(mob, 1, projectile)

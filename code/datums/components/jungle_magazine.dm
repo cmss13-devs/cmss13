@@ -1,35 +1,28 @@
 //TODO: WIP
 
 /*
-Extra signals that should be accounted for:
-- When the mag is put into any storage (For balance purpose, to stop jungle style from going into belts and armor like normal)
-
-Items for initiating the construct should handle all the necessary stuffs themselves
-AKA the code here shouldn't worrying about setting up the construct I guess
-
-When adding magazine whatever signal is also registered for that magazine
-And when mag is switched the magazine item in hand literally switches
-
-Alternatively TakeComponent() looks promising //TODO: test this out at some point, preferably after a working version is achieved
-
 The two flags:
 - JUNGLE_STYLE_ABLE [conflict.dm]
 - JUNGLE_MAG_BINDER [equipment.dm]
 
-okay okay here it goes:
-- Dont give a crap about prime magazine or not.
-- Use in hand to eject magazine
-- If there is more than one (aka an attaching magazine exists) eject that
-- If there is only the parent eject both parent and binding object, remove the component
-Down side is that if you used up prime mag you have to detach everything, annoying.
-Good thing is that the whole process would be simple and intuative, you just slap the binding object on the new mag and make it pretty quickly!
+Current Expected Characteristics:
+- Apply binding item to a magazine to initiate this component on the magazine (from now one referenced as prime mag)
+- Apply another magazine to prime magazine to add into the jungle mag
+- Unique action to switch slots, which switches the magazine item in user's hand
+- Use magazines in hand to dettach: if there is an attached mag, it would be ejected; if there is only prime mag, it would eject binding item and destroy the component
+- Active magazine is represented graphcially as the top-left mag on the icon
+- The jungle mag behaves like a normal mag does, except hanfuls can not be extracted from it while magazines are still attached, allowing the user to change which hand to hold the jungle mag
+
+Current Problems:
+- There's currently no way to limit the jungle mag from going into ammo belts etc.
+- The ammo band on magazine does not heed to throwing animation or changing hand animation (does not rotate and does not fade in)
 */
 
 /datum/component/jungle_magazine
 	var/obj/item/binding_item //The item that initiated the jungle mag construct
 	var/is_attached_magazine_active = FALSE //It's two slots, 0 and 1
-	var/attached_magazine = 0
-	var/is_reseting_sprite = FALSE
+	var/attached_magazine = 0 //Default to zero for no attached mag
+	var/is_reseting_sprite = FALSE //Used to identify if the update_icon is called by the component (viz. the reseting sprite proc)
 
 /datum/component/jungle_magazine/Initialize(mob/user, obj/item/trigger_item)
 	if(!istype(parent, /obj/item/ammo_magazine))
@@ -78,6 +71,7 @@ Good thing is that the whole process would be simple and intuative, you just sla
 
 	return COMPONENT_MAGAZINE_CANCEL_ATTEMPT_WITHDRAW_HANDFUL
 
+//Update the overlay to have jungle mag after an update_icon is called on magazine
 /datum/component/jungle_magazine/proc/on_finish_update_magazine_icon(obj/item/ammo_magazine/source)
 	SIGNAL_HANDLER
 
@@ -86,8 +80,7 @@ Good thing is that the whole process would be simple and intuative, you just sla
 		add_overlay(source)
 
 //* Custom procs
-/datum/component/jungle_magazine/proc/add_overlay(obj/item/target) //TODO: This one might need a bit more work, perhaps I'd need to merge the new icons beforehand
-	//! Current problem: when magazine is empty the sprite isn't updated; magazines with color bands cut their overlays when updating their icon - not cool man
+/datum/component/jungle_magazine/proc/add_overlay(obj/item/target)
 	if(attached_magazine != 0) //Only necessary if there's a magazine attached
 		//* Add the inactive magazine icon
 		var/obj/item/ammo_magazine/inactive_mag = inactive_magazine()
@@ -105,12 +98,9 @@ Good thing is that the whole process would be simple and intuative, you just sla
 	magazine_bind.blend_mode = BLEND_INSET_OVERLAY
 	target.overlays += magazine_bind
 
+//Cleans the magazine icon
 /datum/component/jungle_magazine/proc/reset_magazine_sprite(obj/item/ammo_magazine/target)
 	is_reseting_sprite = TRUE
-	// target.vis_contents.Cut()
-	// target.vis_flags = 0
-	// target.pixel_x = 0
-	// target.pixel_y = 0
 	target.overlays.Cut()
 	target.underlays.Cut()
 	target.update_icon()
@@ -122,23 +112,23 @@ Good thing is that the whole process would be simple and intuative, you just sla
 	is_attached_magazine_active = !is_attached_magazine_active
 	var/obj/item/ammo_magazine/new_mag = active_magazine()
 	if(new_mag)
-		if(user) //! This part sometimes breaks magically. Get help to think up a better way to handel switching mag entities
+		if(user) //Switch the old mag to new mag
 			user.drop_inv_item_on_ground(old_mag)
 			user.put_in_hands(new_mag)
 			old_mag.forceMove(new_mag)
-			if(!be_silent)
+			if(!be_silent) //For internal use
 				to_chat(user, SPAN_BLUE("You switched to use [new_mag]."))
 		else //For when there's no user, if that is to happen
 			var/old_loc = old_mag.loc
 			old_mag.forceMove(get_turf(new_mag))
 			new_mag.forceMove(old_loc)
 			old_mag.forceMove(new_mag)
-		//TODO: Update icon here
+		//Updating icons after finish
 		reset_magazine_sprite(old_mag)
 		reset_magazine_sprite(new_mag)
 		add_overlay(new_mag)
 	else
-		is_attached_magazine_active = !is_attached_magazine_active
+		is_attached_magazine_active = !is_attached_magazine_active //Revert the change, as no switch happened
 		if(user)
 			to_chat(user, SPAN_WARNING("There is no magazine to switch to!"))
 
@@ -153,26 +143,17 @@ Good thing is that the whole process would be simple and intuative, you just sla
 	return parent
 
 /datum/component/jungle_magazine/proc/add_magazine(mob/user, obj/item/ammo_magazine/M) //? Used in construction phase
-	// if(!is_integrated) //TODO: Implement a flag for is_integrated
 	if(istype(M)) //Checks if incoming item is a magazine
-		// if(compatible_magazines) //TODO: Implement a flag for this as well?
-		// 	var/is_compatible = FALSE
-		// 	for(var/I in compatible_magazines)
-		// 		if(istype(M, I))
-		// 			is_compatible = TRUE
-		// 	if(!is_compatible)
-		// 		to_chat(user, SPAN_WARNING("This magazine is not compatible!"))
-		// 		return FALSE
 		if(attached_magazine == 0)
 			if (user)
 				user.drop_inv_item_to_loc(M, parent)
-			else //? Honestly don't know in what case would one add a magazine without an user; pending for remove if uneeded
+			else //In case there's no user
 				M.forceMove(parent)
 			attached_magazine = M
 			signal_reg(M)
 			reset_magazine_sprite(M)
 			reset_magazine_sprite(parent)
-			add_overlay(parent) //TODO: yeah update the godamn icon
+			add_overlay(parent)
 			return TRUE
 		else
 			to_chat(user, SPAN_WARNING("A magazine is already attached to the jungle magazine!"))
@@ -180,9 +161,6 @@ Good thing is that the whole process would be simple and intuative, you just sla
 	else
 		to_chat(user, SPAN_WARNING("[src] only accepts magazines!"))
 		return FALSE
-	// else
-	// 	to_chat(user,SPAN_WARNING("[src] can not have its magazine changed!"))
-	// 	return FALSE
 
 /datum/component/jungle_magazine/proc/remove_magazine(mob/user)
 	//* Three Cases: 1) Remove parent magazine - Ejects everything and removes component
@@ -207,7 +185,6 @@ Good thing is that the whole process would be simple and intuative, you just sla
 		target_magazine = parent
 		if(user)
 			user.put_in_hands(binding_item)
-			// user.put_in_hands(target_magazine) //Yea idk man the magazine is PROBABLY being HELD IN HAND
 		else
 			var/target_turf = get_turf(parent)
 			binding_item.forceMove(target_turf)
@@ -216,8 +193,7 @@ Good thing is that the whole process would be simple and intuative, you just sla
 		src.Destroy() //Removes the component completely
 	return TRUE
 
-/datum/component/jungle_magazine/proc/get_examine_text(mob/user) //TODO: Clean up examine, make it easier to get the status of the other magazine
-	. += "\n"
+/datum/component/jungle_magazine/proc/get_examine_text(mob/user)
 	. += SPAN_INFO("Use special action switch between magazines, use in hand eject magazines.")
 	. += "\n"
 	if (attached_magazine == 0) //If there's no attached magazine there really shouldn't be a need for description of the other mag, user WILL have parent as active

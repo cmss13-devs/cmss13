@@ -1,4 +1,0 @@
-author: "antlersss"
-delete-after: True
-changes:
-  - bugfix: "Auto-holotag preferences are actually saved"

@@ -24,6 +24,17 @@ Current Problems:
 	var/attached_magazine = 0 //Default to zero for no attached mag
 	var/is_reseting_sprite = FALSE //Used to identify if the update_icon is called by the component (viz. the reseting sprite proc)
 
+	//Storage black lists
+	var/list/generic_storage_black_list = list( //* Includes all the magazine belts and armors
+		/obj/item/storage/belt,
+		/obj/item/storage/internal,
+	)
+
+	//Storage white lists, higher precedence than black lists
+	var/list/generic_storage_white_list = list(
+		/obj/item/storage/internal/accessory/drop_pouch,
+	) //? Could add specific belt to be whitelisted as well, like the dutch's belt or anything mentions jungle, it'd be funny
+
 /datum/component/jungle_magazine/Initialize(mob/user, obj/item/trigger_item)
 	if(!istype(parent, /obj/item/ammo_magazine))
 		return COMPONENT_INCOMPATIBLE
@@ -34,14 +45,14 @@ Current Problems:
 		binding_item.forceMove(parent)
 	add_overlay(parent)
 
-
 /datum/component/jungle_magazine/RegisterWithParent()
 	signal_reg(parent)
 
 /datum/component/jungle_magazine/UnregisterFromParent()
 	signal_unreg(parent)
 
-//* Trigger procs
+
+//* Signal Handlers***************************************************************************************
 /datum/component/jungle_magazine/proc/on_attackby(datum/source, obj/item/attacking_item, mob/user) //! This crap is never triggered
 	SIGNAL_HANDLER
 
@@ -79,7 +90,22 @@ Current Problems:
 		reset_magazine_sprite(source)
 		add_overlay(source)
 
-//* Custom procs
+//Check against blacklists to stop jungle mag from going into certain storages
+/datum/component/jungle_magazine/proc/on_attempt_insert_into_storage(obj/item/source, obj/item/storage/storage, prevent_warning, mob/user)
+	SIGNAL_HANDLER
+
+	for(var/whitelisted_type in generic_storage_white_list)
+		if(istype(storage, whitelisted_type))
+			return
+
+	for(var/blacklisted_type in generic_storage_black_list)
+		if(istype(storage, blacklisted_type))
+			if(user && !prevent_warning)
+				to_chat(user, SPAN_NOTICE("[storage] cannot hold [source]"))
+			return COMPONENT_ITEM_CANCEL_INSERTION_INTO_STORAGE
+
+
+//* Custom procs***************************************************************************************
 /datum/component/jungle_magazine/proc/add_overlay(obj/item/target)
 	if(attached_magazine != 0) //Only necessary if there's a magazine attached
 		//* Add the inactive magazine icon
@@ -209,6 +235,7 @@ Current Problems:
 	RegisterSignal(target_magazine, COMSIG_ITEM_UNIQUE_ACTION, PROC_REF(on_unique_action))
 	RegisterSignal(target_magazine, COMSIG_MAGAZINE_ATTEMPT_WITHDRAW_HANDFUL, PROC_REF(on_attempt_withdraw_handful))
 	RegisterSignal(target_magazine, COMSIG_MAGAZINE_FINISH_UPDATE_ICON, PROC_REF(on_finish_update_magazine_icon))
+	RegisterSignal(target_magazine, COMSIG_ITEM_ATTEMPT_INSERTION_INTO_STORAGE, PROC_REF(on_attempt_insert_into_storage))
 
 /datum/component/jungle_magazine/proc/signal_unreg(obj/item/ammo_magazine/target_magazine)
 	UnregisterSignal(target_magazine, COMSIG_ITEM_ATTACKED)
@@ -217,3 +244,4 @@ Current Problems:
 	UnregisterSignal(target_magazine, COMSIG_ITEM_UNIQUE_ACTION)
 	UnregisterSignal(target_magazine, COMSIG_MAGAZINE_ATTEMPT_WITHDRAW_HANDFUL)
 	UnregisterSignal(target_magazine, COMSIG_MAGAZINE_FINISH_UPDATE_ICON)
+	UnregisterSignal(target_magazine, COMSIG_ITEM_ATTEMPT_INSERTION_INTO_STORAGE)

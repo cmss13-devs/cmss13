@@ -77,3 +77,7 @@
 
 //from /obj/item/ammo_magazine/update_icon() : (round_diff = 0)
 #define COMSIG_MAGAZINE_FINISH_UPDATE_ICON "magazine_finish_update_ammo_band"
+
+//from /obj/item/storage/proc/attempt_item_insertion() : (prevent_warning = FALSE, mob/user)
+#define COMSIG_ITEM_ATTEMPT_INSERTION_INTO_STORAGE "item_attempt_insertion_into_storage"
+	#define COMPONENT_ITEM_CANCEL_INSERTION_INTO_STORAGE (1<<0)

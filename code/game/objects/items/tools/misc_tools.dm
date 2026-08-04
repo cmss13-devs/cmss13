@@ -514,5 +514,6 @@
 	name = "Elastic Band"
 	icon = 'icons/obj/items/weapons/guns/jungle_style_bind.dmi'
 	icon_state = "blue_band"
+	w_class = SIZE_TINY
 	desc = "A blue elastic band, you have an urge to wrap it around two AK magazines..."
 	flags_item = JUNGLE_MAG_BINDER

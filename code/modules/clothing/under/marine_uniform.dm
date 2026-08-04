@@ -403,8 +403,8 @@
 	..(loc, new_protection)
 
 /obj/item/clothing/under/marine/chef
-	name = "\improper USCM Mess Technician uniform"
-	desc = "Standard-issue Mess Technician uniform. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	name = "\improper USCM food service specialist uniform"
+	desc = "Standard-issue Food Service Specialist uniform. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "chef_uniform"
 	worn_state = "chef_uniform"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/service.dmi'

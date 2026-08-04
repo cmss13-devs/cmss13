@@ -215,7 +215,7 @@
 	initial_icon_state = "jacket_tanker"
 
 /obj/item/clothing/suit/storage/jacket/marine/chef
-	name = "mess technician jacket"
+	name = "food service specialist jacket"
 	desc = "Smells like vanilla. Signifies prestige and power, if a little flashy."
 	icon_state = "chef_jacket"
 	icon = 'icons/obj/items/clothing/suits/jackets.dmi'

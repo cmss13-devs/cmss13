@@ -805,14 +805,14 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/chef
-	name = "USCM Mess Technician (MST)"
+	name = "USCM Food Service Specialist (FSS)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	access = list(ACCESS_MARINE_KITCHEN)
 	assignment = JOB_MESS_SERGEANT
 	job_title = JOB_MESS_SERGEANT
 	paygrades = list(PAY_SHORT_ME1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME2 = JOB_PLAYTIME_TIER_1, PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_3)
-	role_comm_title = "MST"
+	role_comm_title = "FSS"
 	skills = /datum/skills/mess_technician
 
 	minimap_icon = "mst"

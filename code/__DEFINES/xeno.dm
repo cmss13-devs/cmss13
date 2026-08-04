@@ -526,6 +526,11 @@
 #define XENO_NEURO_TIER_4   1.75
 #define XENO_NEURO_TIER_5   2
 
+// Pheromone types
+#define XENO_PHERO_RECOVERY "recovery"
+#define XENO_PHERO_FRENZY "frenzy"
+#define XENO_PHERO_WARDING "warding"
+
 // Pheremone strength modifiers
 #define XENO_PHERO_MOD_VERY_SMALL  0.25
 #define XENO_PHERO_MOD_SMALL   0.5

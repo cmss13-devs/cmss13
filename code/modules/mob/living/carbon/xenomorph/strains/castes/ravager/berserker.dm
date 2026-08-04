@@ -22,7 +22,7 @@
 	ravager.health_modifier -= XENO_HEALTH_MOD_MED
 	ravager.armor_modifier += XENO_ARMOR_MOD_VERY_SMALL
 	ravager.speed_modifier += XENO_SPEED_FASTMOD_TIER_3
-	ravager.received_phero_caps["frenzy"] = 2.9 // Moderate
+	ravager.received_phero_caps[XENO_PHERO_FRENZY] = 2.9 // Moderate
 
 	ravager.recalculate_everything()
 

@@ -2471,7 +2471,6 @@
 #include "code\modules\projectiles\guns\specialist\launcher\launcher.dm"
 #include "code\modules\projectiles\guns\specialist\launcher\rocket_launcher.dm"
 #include "code\modules\projectiles\magazine_clip\magazine_clip.dm"
-#include "code\modules\projectiles\magazine_clip\rifles.dm"
 #include "code\modules\projectiles\magazines\flamer.dm"
 #include "code\modules\projectiles\magazines\lever_action.dm"
 #include "code\modules\projectiles\magazines\misc.dm"

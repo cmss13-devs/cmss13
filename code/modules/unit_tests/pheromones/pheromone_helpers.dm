@@ -18,9 +18,12 @@
 	var/last_life_complete = FALSE
 	var/full_life_complete = FALSE
 
+/datum/unit_test/pheromones/Run()
+	SHOULD_CALL_PARENT(FALSE)
+
 /// Sleeps until a full loop of the xeno life subsystem has completed
 /datum/unit_test/pheromones/proc/wait_full_life_loop()
-	RegisterSignal(src, COSMIG_GLOB_XENO_LIFE_COMPLETE, PROC_REF(poke_full_life_loop))
+	RegisterSignal(SSdcs, COSMIG_GLOB_XENO_LIFE_COMPLETE, PROC_REF(poke_full_life_loop), override = TRUE)
 
 	var/waiting_loops = 0
 	while (!full_life_complete)
@@ -53,24 +56,19 @@
 	TEST_ASSERT_NOTNULL(abstract_emitter, "No abstract emitter datum was specified for this test")
 	TEST_ASSERT_NOTNULL(abstract_receiver, "No abstract receiver datum was specified for this test")
 	TEST_ASSERT_NOTNULL(test_callback, "No testing callback was specified for this test")
-	log_test("Abstract objects received, initializing physical xenomorphs...")
 
 	var/mob/living/carbon/xenomorph/emitter = init_abstract_xeno(abstract_emitter)
 	var/mob/living/carbon/xenomorph/receiver = init_abstract_xeno(abstract_receiver)
 	TEST_ASSERT_NOTNULL(emitter, "Initialization of the physical emitter xenomorph resulted in a null reference")
 	TEST_ASSERT_NOTNULL(receiver, "Initialization of the physical receiver xenomorph resulted in a null reference")
-	log_test("...physical emitter and receiver xenomorphs initialized.")
 
 	// Make the emitter release the appropriate pheromones
 	emitter.emit_pheromones(pheromone_type)
 
-	log_test("Waiting for full xeno life loop completion...")
 	wait_full_life_loop()
-	log_test("...life loop complete.")
+	wait_full_life_loop()
 
-	log_test("Invoking test validation callback...")
 	test_callback.Invoke(receiver)
-	log_test("...test complete!")
 
 /// Initializes an abstract xenomorph into a living, breathing mob. Spawns on the lower leftmost testing turf.
 /datum/unit_test/pheromones/proc/init_abstract_xeno(datum/abstract_xenomorph/abstract)
@@ -108,8 +106,8 @@
 		return
 
 	for (var/phero_type as anything in ALL_XENO_PHEROMONES)
-		var/received_nothing = isnull(expected_pheromones[phero_type]) || expected_pheromones[phero_type] == 0
-		var/expected_nothing = isnull(received_pheromones[phero_type]) || received_pheromones[phero_type] == 0
+		var/received_nothing = isnull(received_pheromones[phero_type]) || received_pheromones[phero_type] == 0
+		var/expected_nothing = isnull(expected_pheromones[phero_type]) || expected_pheromones[phero_type] == 0
 
 		// We did not expect to receive this type of pheromone and we did not receive it; CONTINUE
 		if (expected_nothing && received_nothing)
@@ -118,10 +116,12 @@
 		// We received something for this type of pheromone when we shouldn't have; FAIL
 		if (expected_nothing)
 			TEST_FAIL("Receiver [receiver.caste_type] of hive [receiver.hivenumber] received [phero_type] at strength [received_pheromones[phero_type]] when no [phero_type] was expected")
+			continue
 
 		// We expected to receive something for this type of pheromone and got nothing; FAIL
 		if (received_nothing)
 			TEST_FAIL("Receiver [receiver.caste_type] of hive [receiver.hivenumber] received no [phero_type] when expected to receive it at strength [expected_pheromones[phero_type]]")
+			continue
 
 		// We got something, but it was the wrong strength
 		if (expected_pheromones[phero_type] != received_pheromones[phero_type])

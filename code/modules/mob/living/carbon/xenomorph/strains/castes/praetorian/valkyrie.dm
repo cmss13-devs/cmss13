@@ -325,6 +325,7 @@
 	valkyrie.emote("roar")
 	playsound(valkyrie, 'sound/effects/alien_footstep_charge3.ogg', 35, 0)
 
+	var/hit_vehicle = FALSE
 	for (var/turf/range in target_turfs)
 		for (var/mob/living/carbon/target in range)
 			if (target.stat == DEAD)
@@ -344,6 +345,13 @@
 			var/turf/target_destination = get_ranged_target_turf(grenades, direction, 3)
 
 			grenades.throw_atom(get_step_towards(target_destination, grenades), 3, SPEED_FAST, grenades)
+
+		// Minor momentum loss if it hits a vehicle at all, once per use, not once per overlapping tile.
+		if(!hit_vehicle)
+			var/obj/vehicle/multitile/vehicle = get_multitile_vehicle_at(range)
+			if(vehicle)
+				hit_vehicle = TRUE
+				vehicle.move_momentum *= HIGH_GALLOP_MOMENTUM_LOSS_MULT
 
 	return ..()
 

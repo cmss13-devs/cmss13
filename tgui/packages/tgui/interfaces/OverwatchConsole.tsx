@@ -29,6 +29,7 @@ type MarineData = {
   distance: string;
   area_name: string;
   ref: string;
+  no_camera_label?: string;
 };
 
 type Data = {
@@ -503,7 +504,8 @@ const SquadMonitor = (props) => {
   const [marineSearch, setMarineSearch] = useSharedState('marinesearch', '');
 
   let determine_status_color = (status) => {
-    let conscious = status.includes('Conscious');
+    let conscious =
+      status.includes('Conscious') || status.includes('Operational');
     let unconscious = status.includes('Unconscious');
 
     let state_color = 'red';
@@ -672,7 +674,12 @@ const SquadMonitor = (props) => {
                         >
                           {marine.name}
                         </Button>
-                      )) || <Box color="yellow">{marine.name} (NO CAMERA)</Box>}
+                      )) || (
+                        <Box color="yellow">
+                          {marine.name} ({marine.no_camera_label || 'NO CAMERA'}
+                          )
+                        </Box>
+                      )}
                     </Table.Cell>
                     <Table.Cell p="2px">{marine.role}</Table.Cell>
                     <Table.Cell

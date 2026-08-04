@@ -124,7 +124,18 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 
 	user.visible_message(SPAN_WARNING("[user] climbs down."), SPAN_WARNING("You climb down."))
 
+	var/obj/vehicle/multitile/tank/tank_at_destination = null
+	for(var/obj/vehicle/multitile/tank/T in below.contents)
+		if(below in T.locs)
+			tank_at_destination = T
+			break
+
 	user.forceMove(below)
+
+	if(tank_at_destination && isliving(user))
+		var/mob/living/L = user
+		tank_at_destination.mark_on_top(L)
+
 	for(var/atom/movable/thing as anything in grabbed_things) // grabbed things aren't moved to the tile immediately to: make the animation better, preserve the grab
 		thing.forceMove(below)
 	below.on_climb_down(user)
@@ -154,6 +165,16 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	if(kill_if_blocked && isliving(movable) && check_blocked())
 		var/mob/living/living_mob = movable
 		living_mob.death(create_cause_data("falling from a high place"))
+
+	var/obj/vehicle/multitile/tank/tank_at_destination = null
+	for(var/obj/vehicle/multitile/tank/T in below.contents)
+		if(below in T.locs)
+			tank_at_destination = T
+			break
+
+	if(tank_at_destination && isliving(movable))
+		var/mob/living/L = movable
+		tank_at_destination.mark_on_top(L)
 
 /// Returns a boolean whether the turf is closed and has no opening in any cardinal direction
 /turf/proc/check_blocked()

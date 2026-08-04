@@ -233,11 +233,24 @@
 		return
 	. = ..()
 
+// this proc only serves to fix a visual bug where hauled mobs get layered below the vehicle.
+// this is a rare edge case, because xenos won't usually be hauling mobs atop a vehicle, but just for completeness...
+/mob/living/carbon/xenomorph/proc/check_on_tank_hauled_mob(mob/victim)
+	var/obj/vehicle/multitile/vehicle = null
+	if(src.is_on_tank_hull())
+		vehicle = src.get_tank_on_top_of()
+		vehicle._apply_rider_visuals(victim)
+	else
+		victim.layer   = initial(victim.layer)
+		victim.plane   = initial(victim.plane)
+		victim.pixel_y = initial(victim.pixel_y)
+
 /mob/living/carbon/xenomorph/Move(NewLoc, direct)
 	. = ..()
 	var/mob/user = hauled_mob?.resolve()
 	if(user)
 		user.forceMove(loc)
+		check_on_tank_hauled_mob(user)
 
 /mob/living/carbon/xenomorph/forceMove(atom/destination)
 	. = ..()
@@ -245,8 +258,10 @@
 	if(user)
 		if(!isturf(destination))
 			user.forceMove(src)
+			check_on_tank_hauled_mob(user)
 		else
 			user.forceMove(loc)
+			check_on_tank_hauled_mob(user)
 
 /mob/living/carbon/xenomorph/relaymove(mob/user, direction)
 	. = ..()
@@ -351,6 +366,14 @@
 		ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
 		pounceAction.freeze_timer_id = addtimer(CALLBACK(src, PROC_REF(unfreeze_pounce)), pounceAction.freeze_time, TIMER_STOPPABLE)
 	pounceAction.additional_effects(carbon_mob)
+	var/obj/vehicle/multitile/pounced_vehicle = pounced_mob.get_tank_on_top_of()
+	if(pounced_vehicle)
+		src.forceMove(get_turf(pounced_mob))
+		pounced_vehicle.mark_on_top(src)
+	else
+		var/obj/vehicle/multitile/vehicle = src.get_tank_on_top_of()
+		if(vehicle)
+			vehicle.clear_on_top(src)
 
 	if(pounceAction.slash)
 		carbon_mob.attack_alien(src, pounceAction.slash_bonus_damage)
@@ -370,6 +393,21 @@
 	if(!check_state() || (!throwing && !pounceAction.action_cooldown_check()))
 		obj_launch_collision(O)
 		return
+
+	// Castes that can pounce can use this ability to instantly climb ontop or down a vehicle with no delay.
+	var/obj/vehicle/multitile/V = null
+	if(istype(O, /obj/vehicle/multitile))
+		V = O
+		if(V)
+			var/turf/current = get_turf(src)
+			var/turf/facing = get_step(current, dir)
+			if(facing && (facing in V.locs))
+				forceMove(facing)
+				V.mark_on_top(src)
+	else
+		var/obj/vehicle/multitile/current_vehicle = src.get_tank_on_top_of()
+		if(current_vehicle && !(locate(/obj/vehicle/multitile) in get_turf(src)))
+			current_vehicle.clear_on_top(src) // if we're not atop the vehicle still, clear us from it.
 
 	if (pounceAction.should_destroy_objects)
 		if(istype(O, /obj/structure/surface/table) || istype(O, /obj/structure/surface/rack) || istype(O, /obj/structure/window_frame))

@@ -87,6 +87,13 @@
 	skill_upgrade = SKILL_INTEL
 	skill_cap = 2
 
+/obj/item/pamphlet/upgradeable/vehicle
+	name = "vehicular operation instructional pamphlet"
+	desc = "A pamphlet used to quickly impart vital knowledge of operating vehicles and simple turret systems."
+	icon_state = "pamphlet_reading"
+	skill_upgrade = SKILL_VEHICLE
+	skill_cap = 1
+
 /obj/item/pamphlet/upgradeable/machinegunner
 	name = "heavy machinegunner instructional pamphlet"
 	desc = "A pamphlet used to quickly impart vital knowledge on heavier-duty equipments and firearms. You suppose you can utilize some of its teachings for some engineering practices."

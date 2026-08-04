@@ -28,14 +28,40 @@
 
 	required_skill = SKILL_VEHICLE_LARGE
 
-	movement_sound = 'sound/vehicles/tank_driving.ogg'
+	movement_sound = 'sound/vehicles/box_van_driving.ogg'
+	engine_soundloop_type = /datum/looping_sound/tank_engine/arc
 
 	luminosity = 7
+
+	engine_on = FALSE
+
+	uses_gear_transmission = TRUE
+	current_gear = "P"
+	top_speed = 3.5
+	base_acceleration = 1.2
+	base_fuel_use = 0.175
+	// 80% smaller than the baseline idle rate. intent being that the ARC should be a lower-maintenance vehicle when parked with sensors on.
+	idle_fuel_use_mult = 0.2
+	desant_momentum_cap = 0.35
+
+	hull_cookoff_exterior_power = 100
+	hull_cookoff_exterior_falloff = 14
+	hull_cookoff_interior_power = 200
+	hull_cookoff_interior_falloff = 80
 
 	hardpoints_allowed = list(
 		/obj/item/hardpoint/locomotion/arc_wheels,
 		/obj/item/hardpoint/primary/arc_sentry,
 		/obj/item/hardpoint/support/arc_antenna,
+		/obj/item/hardpoint/engine/arc,
+		/obj/item/hardpoint/fuel_tank/arc,
+		/obj/item/hardpoint/radiator/uscm,
+		/obj/item/hardpoint/battery/uscm,
+		/obj/item/hardpoint/iff_module/uscm,
+		/obj/item/hardpoint/visual_sensors/uscm,
+		/obj/item/hardpoint/air_filter/uscm,
+		/obj/item/hardpoint/turret_ring/uscm,
+		/obj/item/hardpoint/hatch/armored/uscm,
 	)
 
 	seats = list(
@@ -79,6 +105,16 @@
 /obj/vehicle/multitile/arc/Initialize()
 	. = ..()
 	RegisterSignal(src, COMSIG_ARC_ANTENNA_TOGGLED, PROC_REF(on_antenna_toggle))
+	gear_stats = build_gear_stats()
+	cruise_control_granularity = gear_stats["D"]["max_speed"] * CRUISE_CONTROL_DEFAULT_GRANULARITY_FRACTION
+
+/// Kicks off the shared cookoff sequence the instant hull health first reaches 0.
+/obj/vehicle/multitile/arc/on_hull_destroyed()
+	start_hull_cookoff_sequence()
+
+/// The ARC has a Visual Sensors slot.
+/obj/vehicle/multitile/arc/supports_visual_sensors()
+	return TRUE
 
 /obj/vehicle/multitile/arc/crew_mousedown(datum/source, atom/object, turf/location, control, params)
 	var/list/modifiers = params2list(params)
@@ -120,7 +156,9 @@
 		return
 
 	var/obj/item/hardpoint/support/arc_antenna/antenna = locate() in hardpoints
-	if(!antenna || (antenna.health <= 0))
+	// Also requires vehicle power, so a deployed-but-unpowered antenna stops the sensor effects
+	// until power returns. Doesn't affect the deploy/retract verb itself.
+	if(!antenna || !antenna.is_functional())
 		clear_tacmap()
 		return
 
@@ -179,7 +217,26 @@
 		/obj/vehicle/multitile/proc/activate_horn,
 		/obj/vehicle/multitile/proc/name_vehicle,
 		/obj/vehicle/multitile/arc/proc/toggle_antenna,
+		/obj/vehicle/multitile/proc/toggle_cruise_control,
+		/obj/vehicle/multitile/proc/set_cruise_control_granularity,
+		/obj/vehicle/multitile/proc/toggle_turn_signal_north,
+		/obj/vehicle/multitile/proc/toggle_turn_signal_south,
+		/obj/vehicle/multitile/proc/toggle_turn_signal_east,
+		/obj/vehicle/multitile/proc/toggle_turn_signal_west,
+		/obj/vehicle/multitile/proc/toggle_engine,
+		/obj/vehicle/multitile/proc/toggle_iff_module,
 	))
+	give_action(M, /datum/action/human_action/vehicle_action/toggle_door_lock)
+	give_action(M, /datum/action/human_action/vehicle_action/toggle_engine)
+	give_action(M, /datum/action/human_action/vehicle_action/toggle_iff)
+	give_action(M, /datum/action/human_action/vehicle_action/use_phone)
+	if(!(M.client.prefs.toggles_vehicle & VEHICLE_SIMPLE_ACCELERATION))
+		give_action(M, /datum/action/human_action/vehicle_action/toggle_cruise_control)
+		give_action(M, /datum/action/human_action/vehicle_action/set_cruise_control_granularity)
+	RegisterSignal(M, COMSIG_MOB_VEHICLE_PREFS_CHANGED, PROC_REF(on_driver_prefs_changed))
+	start_crew_hud(M, VEHICLE_DRIVER)
+	refresh_hardpoint_actions()
+	ensure_active_hardpoint(seat)
 
 /obj/vehicle/multitile/arc/remove_seated_verbs(mob/living/M, seat)
 	if(!M.client)
@@ -191,7 +248,23 @@
 		/obj/vehicle/multitile/proc/activate_horn,
 		/obj/vehicle/multitile/proc/name_vehicle,
 		/obj/vehicle/multitile/arc/proc/toggle_antenna,
+		/obj/vehicle/multitile/proc/toggle_cruise_control,
+		/obj/vehicle/multitile/proc/set_cruise_control_granularity,
+		/obj/vehicle/multitile/proc/toggle_turn_signal_north,
+		/obj/vehicle/multitile/proc/toggle_turn_signal_south,
+		/obj/vehicle/multitile/proc/toggle_turn_signal_east,
+		/obj/vehicle/multitile/proc/toggle_turn_signal_west,
+		/obj/vehicle/multitile/proc/toggle_engine,
+		/obj/vehicle/multitile/proc/toggle_iff_module,
 	))
+	remove_action(M, /datum/action/human_action/vehicle_action/toggle_door_lock)
+	remove_action(M, /datum/action/human_action/vehicle_action/toggle_engine)
+	remove_action(M, /datum/action/human_action/vehicle_action/toggle_iff)
+	remove_action(M, /datum/action/human_action/vehicle_action/use_phone)
+	remove_action(M, /datum/action/human_action/vehicle_action/toggle_cruise_control)
+	remove_action(M, /datum/action/human_action/vehicle_action/set_cruise_control_granularity)
+	UnregisterSignal(M, COMSIG_MOB_VEHICLE_PREFS_CHANGED)
+	stop_crew_hud(M, VEHICLE_DRIVER)
 	SStgui.close_user_uis(M, src)
 
 /obj/vehicle/multitile/arc/initialize_cameras(change_tag = FALSE)
@@ -267,3 +340,12 @@
 	vehicle.add_hardpoint(new /obj/item/hardpoint/locomotion/arc_wheels)
 	vehicle.add_hardpoint(new /obj/item/hardpoint/primary/arc_sentry)
 	vehicle.add_hardpoint(new /obj/item/hardpoint/support/arc_antenna)
+	vehicle.add_hardpoint(new /obj/item/hardpoint/engine/arc)
+	vehicle.add_hardpoint(new /obj/item/hardpoint/fuel_tank/arc)
+	vehicle.add_hardpoint(new /obj/item/hardpoint/radiator/uscm)
+	vehicle.add_hardpoint(new /obj/item/hardpoint/battery/uscm)
+	vehicle.add_hardpoint(new /obj/item/hardpoint/iff_module/uscm)
+	vehicle.add_hardpoint(new /obj/item/hardpoint/visual_sensors/uscm)
+	vehicle.add_hardpoint(new /obj/item/hardpoint/air_filter/uscm)
+	vehicle.add_hardpoint(new /obj/item/hardpoint/turret_ring/uscm)
+	vehicle.add_hardpoint(new /obj/item/hardpoint/hatch/armored/uscm)

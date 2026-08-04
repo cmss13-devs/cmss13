@@ -147,6 +147,12 @@
 		to_chat(usr, SPAN_WARNING("[singular_name] cannot be built here!"))
 		return
 
+	if(isliving(user))
+		var/mob/living/L = user
+		if(L.is_on_tank_hull())
+			to_chat(user, SPAN_WARNING("[singular_name] cannot be built here!"))
+			return
+
 	user.visible_message(SPAN_NOTICE("[user] begins deploying [singular_name]."),
 			SPAN_NOTICE("You begin deploying [singular_name]."))
 

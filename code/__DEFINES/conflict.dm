@@ -34,7 +34,7 @@
 /// Whether or not the bullet hits the target that was clicked or if it keeps travelling
 #define AMMO_HITS_TARGET_TURF (1<<17)
 #define AMMO_ALWAYS_FF (1<<18)
-//                              (1<<19) unused, previously was AMMO_HOMING
+#define AMMO_PASSES_OVER_VEHICLES (1<<19)
 /// Can't be deflected
 #define AMMO_NO_DEFLECT (1<<20)
 ///Can only hit people with criminal status
@@ -208,6 +208,16 @@
 #define ANTISTRUCT_DMG_MULT_BARRICADES 1.45
 #define ANTISTRUCT_DMG_MULT_WALL 2.5
 #define ANTISTRUCT_DMG_MULT_TANK 1.5
+
+/// Acid spits and acid shotgun were too weak against tanks, so multiply damage and wound chance.
+#define ACID_SPIT_TANK_DAMAGE_MULT 6
+#define ACID_SHOTGUN_TANK_DAMAGE_MULT 6
+#define ACID_SHOTGUN_TANK_WOUND_CHANCE_MULT 6
+#define ACID_SPIT_TANK_WOUND_CHANCE_MULT 6
+/// Another acid shotgun tweak to make it less shit against vehicles.
+#define ACID_SHOTGUN_TANK_EFFECTIVE_PENETRATION 10
+/// Multiplies bone chips' wound chances. They still deal very little damage.
+#define BONE_CHIPS_TANK_WOUND_CHANCE_MULT 2
 
 // human armor
 #define CLOTHING_ARMOR_NONE 0

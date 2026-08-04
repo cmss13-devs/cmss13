@@ -1,4 +1,56 @@
 
+/**
+ * Pours a reagent container into whichever fuel tank/radiator hardpoint matches its contents, without
+ * needing to uninstall either first.
+ *
+ * Classified by category: any vehicle_fuel reagent counts as fuel, any vehicle_coolant reagent counts
+ * as water, anything else is "other". Mixing categories is rejected.
+ *
+ * Arguments:
+ * * O = The container being poured onto this vehicle.
+ * * user = Whoever's pouring it.
+ *
+ * Returns:
+ * * TRUE if O was a reagent container with something in it. FALSE if O has no reagents.
+ */
+/obj/vehicle/multitile/proc/try_pour_container(obj/item/O, mob/user)
+	if(!O.reagents || !length(O.reagents.reagent_list))
+		return FALSE
+
+	var/has_water = FALSE
+	var/has_fuel = FALSE
+	var/has_other = FALSE
+	for(var/datum/reagent/current_reagent in O.reagents.reagent_list)
+		if(current_reagent.vehicle_coolant)
+			has_water = TRUE
+		else if(current_reagent.vehicle_fuel)
+			has_fuel = TRUE
+		else
+			has_other = TRUE
+
+	if((has_water + has_fuel + has_other) > 1)
+		to_chat(user, SPAN_WARNING("You shouldn't mix different fluids together!"))
+		return TRUE
+
+	if(has_fuel)
+		var/obj/item/hardpoint/fuel_tank/tank = get_fuel_tank_hardpoint()
+		if(!tank)
+			to_chat(user, SPAN_WARNING("\The [src] has no fuel tank installed!"))
+			return TRUE
+		tank.attackby(O, user)
+		return TRUE
+
+	if(has_water)
+		var/obj/item/hardpoint/radiator/rad = get_radiator_hardpoint()
+		if(!rad)
+			to_chat(user, SPAN_WARNING("\The [src] has no radiator installed!"))
+			return TRUE
+		rad.attackby(O, user)
+		return TRUE
+
+	to_chat(user, SPAN_WARNING("Neither of those fluids are suitable for a vehicle."))
+	return TRUE
+
 // Special cases abound, handled below or in subclasses
 /obj/vehicle/multitile/attackby(obj/item/O, mob/user)
 	// Are we trying to install stuff?
@@ -13,14 +65,33 @@
 			install_hardpoint(PC, user)
 			return
 
-	// Are we trying to remove stuff?
+	// Are we trying to remove stuff, or fix an in-place wound a crowbar happens to also fix?
+	// If there's a crowbar-fixable wound, offer it in the same picker as the normal removal choices.
 	if(HAS_TRAIT(O, TRAIT_TOOL_CROWBAR) || ispowerclamp(O))
+		if(!ispowerclamp(O) && try_fix_or_remove_with_crowbar(O, user))
+			return
 		uninstall_hardpoint(O, user)
 		return
 
-	// Are we trying to repair the frame?
+	// Are we trying to fix an in-place wound, or (if none apply) repair the frame?
 	if(iswelder(O) || HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
+		if(try_fix_wound_with_tool(O, user))
+			return
+		if(try_fix_hull_wound_with_tool(O, user))
+			return
 		handle_repairs(O, user)
+		return
+
+	// Are we trying to fix a wound step that needs a stack of material instead of a tool trait?
+	// No-ops if neither wound-fix dispatcher has a use for it.
+	if(istype(O, /obj/item/stack))
+		if(try_fix_wound_with_tool(O, user))
+			return
+		if(try_fix_hull_wound_with_tool(O, user))
+			return
+
+	// Are we trying to refuel the fuel tank, or top off the radiator's coolant?
+	if(try_pour_container(O, user))
 		return
 
 	// Are we trying to immobilize the vehicle?
@@ -302,6 +373,13 @@
 	if(X.frenzy_aura > 0)
 		damage += (X.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER)
 
+	// Same per-caste damage-modifier hooks a plain claw attack against a mob goes through.
+	if(X.behavior_delegate)
+		X.behavior_delegate.melee_attack_modify_burn_damage(0, src)
+		damage = X.behavior_delegate.melee_attack_modify_damage(damage, src)
+		X.behavior_delegate.melee_attack_additional_effects_target(src)
+		X.behavior_delegate.melee_attack_additional_effects_self()
+
 	X.animation_attack_on(src)
 
 	//Somehow we will deal no damage on this attack
@@ -312,7 +390,7 @@
 		return XENO_ATTACK_ACTION
 
 	X.visible_message(SPAN_DANGER("\The [X] slashes \the [src]!"),
-	SPAN_DANGER("We slash \the [src]!"))
+	SPAN_DANGER("We slash [get_attack_desc(X)]!"))
 	playsound(X.loc, pick('sound/effects/metalhit.ogg', 'sound/weapons/alien_claw_metal1.ogg', 'sound/weapons/alien_claw_metal2.ogg', 'sound/weapons/alien_claw_metal3.ogg'), 25, 1)
 
 	take_damage_type(damage * damage_mult, "slash", X)
@@ -349,7 +427,36 @@
 		pixel_y_offset -= 32
 	bullet_ping(P, pixel_x_offset, pixel_y_offset)
 
-	take_damage_type(damage * (0.33 + penetration/100), dam_type, firer)
+	var/scaled_damage = damage * (0.33 + penetration/100)
+
+	// Xeno spit/acid/toxin ammo hitting a tank gets a dedicated resolution instead of the normal
+	// single-target pipeline, which crushed this kind of hit down to nearly nothing.
+	if(istype(src, /obj/vehicle/multitile/tank) && istype(P.ammo, /datum/ammo/xeno))
+		var/obj/vehicle/multitile/tank/tank = src
+		if(istype(P.ammo, /datum/ammo/xeno/toxin))
+			// Neurotoxin deals 0 damage against the tank, same as mobs. Instead it advances a
+			// neuro-foulable wound directly.
+			tank.expose_to_neurotoxin_spit(firer, ignore_aim = istype(P.ammo, /datum/ammo/xeno/toxin/shotgun))
+		else if(istype(P.ammo, /datum/ammo/xeno/acid/prae_nade))
+			tank.apply_random_external_acid_hit(scaled_damage, firer)
+		else if(istype(P.ammo, /datum/ammo/xeno/acid))
+			// Every other acid spit is a directed single shot, resolve it to the aimed slot instead of
+			// the weighted-random pick below.
+			tank.apply_targeted_acid_hit(scaled_damage * ACID_SPIT_TANK_DAMAGE_MULT, dam_type, firer, wound_chance_mult = ACID_SPIT_TANK_WOUND_CHANCE_MULT)
+		else if(istype(P.ammo, /datum/ammo/xeno/acid_shotgun))
+			// Trapper Boiler's Acid Shotgun falls through to the same weighted-random module pick as
+			// other unaimed xeno ammo, but with its own damage multiplier and effective penetration.
+			var/tank_scaled_damage = damage * (0.33 + ACID_SHOTGUN_TANK_EFFECTIVE_PENETRATION/100)
+			tank.apply_weighted_module_hit(tank_scaled_damage * ACID_SHOTGUN_TANK_DAMAGE_MULT, dam_type, firer, wound_chance_mult = ACID_SHOTGUN_TANK_WOUND_CHANCE_MULT)
+		else if(istype(P.ammo, /datum/ammo/xeno/bone_chips))
+			// Hedgehog Ravager's bone chips are deliberately weak, so double the wound-roll chance
+			// instead of inflating damage.
+			tank.apply_weighted_module_hit(scaled_damage, dam_type, firer, wound_chance_mult = BONE_CHIPS_TANK_WOUND_CHANCE_MULT)
+		else
+			tank.apply_weighted_module_hit(scaled_damage, dam_type, firer)
+		return
+
+	take_damage_type(scaled_damage, dam_type, firer)
 
 	healthcheck()
 
@@ -373,9 +480,10 @@
 	RegisterSignal(user, COMSIG_MOB_MOUSEDOWN, PROC_REF(crew_mousedown))
 	RegisterSignal(user, COMSIG_MOB_MOUSEDRAG, PROC_REF(crew_mousedrag))
 	RegisterSignal(user, COMSIG_MOB_MOUSEUP, PROC_REF(crew_mouseup))
+	RegisterSignal(user, COMSIG_MOB_MOUSEMOVE, PROC_REF(crew_mousemove))
 
 /obj/vehicle/multitile/on_unset_interaction(mob/user)
-	UnregisterSignal(user, list(COMSIG_MOB_MOUSEUP, COMSIG_MOB_MOUSEDOWN, COMSIG_MOB_MOUSEDRAG))
+	UnregisterSignal(user, list(COMSIG_MOB_MOUSEUP, COMSIG_MOB_MOUSEDOWN, COMSIG_MOB_MOUSEDRAG, COMSIG_MOB_MOUSEMOVE))
 
 	var/obj/item/hardpoint/hardpoint = get_mob_hp(user)
 	if(hardpoint)
@@ -399,6 +507,46 @@
 
 	hardpoint.change_target(source, src_object, over_object, src_location, over_location, src_control, over_control, params)
 
+	// BYOND doesn't send MouseMove while a button is held - MouseDrag takes over. Feed it into
+	// the same tracking patths so aiming doesn't freeze while the crew is firing/holding M1
+	track_gunner_mouse(source, over_object, params)
+	track_driver_mouse(source, over_object, params)
+
+/// Relays live cursor position to the gunner's turret / driver's slaved secondary, if any, so they can track the mouse.
+/obj/vehicle/multitile/proc/crew_mousemove(datum/source, atom/object, turf/location, control, params)
+	SIGNAL_HANDLER
+	track_gunner_mouse(source, object, params)
+	track_driver_mouse(source, object, params)
+
+/// Updates the gunner's turret, or their own tracked active hardpoint if there's no turret, to aim toward the given screen position.
+/obj/vehicle/multitile/proc/track_gunner_mouse(mob/source, atom/object, params)
+	if(get_mob_seat(source) != VEHICLE_GUNNER)
+		return
+
+	var/obj/item/hardpoint/holder/tank_turret/turret = locate() in hardpoints
+	if(turret)
+		turret.update_desired_angle(object, source, params)
+		return
+
+	var/obj/item/hardpoint/active = active_hp[VEHICLE_GUNNER]
+	if(active && active.uses_live_rotation_tracking && active.get_rotation_owner() == active)
+		active.update_desired_angle(object, source, params)
+
+/// Updates the driver's slaved secondary to aim at the given position, only once cycled to as active.
+/obj/vehicle/multitile/proc/track_driver_mouse(mob/source, atom/object, params)
+	if(get_mob_seat(source) != VEHICLE_DRIVER)
+		return
+
+	var/obj/item/hardpoint/holder/tank_turret/turret = locate() in hardpoints
+	var/list/search_list = turret ? turret.hardpoints : hardpoints
+	for(var/obj/item/hardpoint/secondary/secondary_weapon in search_list)
+		if(!secondary_weapon.self_gimballed || !secondary_weapon.has_independent_aim())
+			continue
+		if(active_hp[VEHICLE_DRIVER] != secondary_weapon)
+			return
+		secondary_weapon.update_desired_angle(object, source, params)
+		return
+
 /// Checks for special control keybinds, else relays crew mouse press to active hardpoint.
 /obj/vehicle/multitile/proc/crew_mousedown(datum/source, atom/object, turf/location, control, params)
 	SIGNAL_HANDLER
@@ -414,8 +562,11 @@
 				activate_horn()
 				return
 		if(VEHICLE_GUNNER)
+			if(modifiers[LEFT_CLICK] && modifiers[CTRL_CLICK])
+				gunner_rangefind(source, object, modifiers)
+				return
 			if(modifiers[LEFT_CLICK] && modifiers[ALT_CLICK])
-				toggle_gyrostabilizer()
+				toggle_turret_safety()
 				return
 
 	var/obj/item/hardpoint/hardpoint = get_mob_hp(source)
@@ -424,6 +575,69 @@
 		return
 
 	hardpoint.start_fire(source, object, location, control, params)
+
+/**
+ * Lets the gunner Ctrl+Click a tile to rangefind it, exactly like the rangefinder binoculars.
+ *
+ * Tank-exclusive. Requires a working, unwounded visual sensors module.
+ */
+/obj/vehicle/multitile/proc/gunner_rangefind(mob/living/carbon/human/user, atom/target, list/modifiers)
+	if(!ishuman(user))
+		return
+	if(!has_gunner_rangefinder())
+		return
+	var/obj/item/hardpoint/visual_sensors/sensors = locate() in get_hardpoints_copy()
+	if(!sensors || LAZYLEN(sensors.wound_tiers))
+		to_chat(user, SPAN_WARNING("The rangefinder needs working, unwounded visual sensors to get a fix on anything."))
+		return
+	if(!gunner_rangefinder)
+		gunner_rangefinder = new /obj/item/device/binoculars/range(src)
+	gunner_rangefinder.handle_click(user, target, modifiers)
+
+/**
+ * Decides whether M is let through this vehicle's door lock, and how much longer or shorter it takes.
+ * Called on both entry and exit.
+ *
+ * Only the tank overrides this, to read its Hatch hardpoint's wound state instead.
+ *
+ * Arguments:
+ * * M = Whoever's trying to get through.
+ * * entering = TRUE for entry, FALSE for exit.
+ *
+ * Returns:
+ * * An assoc list: "blocked" and "delay_mult".
+ */
+/obj/vehicle/multitile/proc/get_hatch_lock_result(mob/M, entering = TRUE)
+	if(!entering || isxeno(M))
+		return list("blocked" = FALSE, "delay_mult" = 1)
+
+	if(door_locked && health > 0)
+		if(ishuman(M))
+			var/mob/living/carbon/human/user = M
+			if(!allowed(user) || !get_target_lock(user.faction_group)) //if we are human, we check access and faction
+				to_chat(user, SPAN_WARNING("\The [src] is locked!"))
+				return list("blocked" = TRUE, "delay_mult" = 1)
+		else
+			to_chat(M, SPAN_WARNING("\The [src] is locked!")) //animals are not allowed inside without supervision
+			return list("blocked" = TRUE, "delay_mult" = 1)
+
+	return list("blocked" = FALSE, "delay_mult" = 1)
+
+/**
+ * Whether at least one of this vehicle's known exits is currently usable. Matters because a xeno
+ * breaching a hull-dead vehicle can enter anywhere, but can still only leave through a usable exit.
+ */
+/obj/vehicle/multitile/proc/has_usable_exit(atom/movable/A)
+	if(!interior)
+		return TRUE // no interior instance, nothing to be trapped inside of
+
+	for(var/entrance_id in entrances)
+		var/entrance_coord = entrances[entrance_id]
+		var/turf/exit_turf = locate(x + entrance_coord[1], y + entrance_coord[2], z)
+		if(interior.can_exit(A, exit_turf, show_message = FALSE))
+			return TRUE
+
+	return FALSE
 
 /obj/vehicle/multitile/proc/handle_player_entrance(mob/M)
 	if(!M || M.client == null)
@@ -438,26 +652,24 @@
 			entrance_used = entrance
 			break
 
+	var/list/lock_result = get_hatch_lock_result(M, TRUE)
+	if(lock_result["blocked"])
+		return
+
 	var/enter_time = 0
 	// door locks break when hull is destroyed. Xenos enter slower, but their speed is not affected by anything and they ignore locks
 	if(isxeno(M))
 		enter_time = 3 SECONDS
-	else
-		if(door_locked && health > 0) //check if lock on and actually works
-			if(ishuman(M))
-				var/mob/living/carbon/human/user = M
-				if(!allowed(user) || !get_target_lock(user.faction_group)) //if we are human, we check access and faction
-					to_chat(user, SPAN_WARNING("\The [src] is locked!"))
-					return
-			else
-				to_chat(M, SPAN_WARNING("\The [src] is locked!")) //animals are not allowed inside without supervision
-				return
-
 
 	// Only xenos can force their way in without doors, and only when the frame is completely broken
 	if(!entrance_used && health > 0)
 		return
 	else if(!entrance_used && !isxeno(M))
+		return
+
+	// A xeno breaching a dead hull can enter anywhere, but don't trap them if every exit is blocked.
+	if(!entrance_used && isxeno(M) && !has_usable_exit(M))
+		to_chat(M, SPAN_WARNING("We would be trapped in there with no way out!"))
 		return
 
 	var/enter_msg = "We start climbing into \the [src]..."
@@ -477,6 +689,7 @@
 		enter_time = entrance_speed
 		if(dragged_atom)
 			enter_time = 2 SECONDS
+	enter_time *= lock_result["delay_mult"]
 
 	to_chat(M, SPAN_NOTICE(enter_msg))
 	if(!do_after(M, enter_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))

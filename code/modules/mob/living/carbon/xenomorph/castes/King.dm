@@ -224,6 +224,22 @@
 				for(var/datum/reagent/x in human.reagents.reagent_list)
 					human.reagents.remove_reagent(x.id, 100)
 
+		// Seated vehicle crew are sealed inside a separate interior instance, so this view(owner) loop
+		// wouldn't find them on their own. Handled here instead, keyed off the vehicle itself.
+		else if(istype(current_atom, /obj/vehicle/multitile))
+			var/obj/vehicle/multitile/vehicle = current_atom
+			for(var/seat in list(VEHICLE_DRIVER, VEHICLE_GUNNER))
+				var/mob/living/crew = vehicle.get_seat_mob(seat)
+				if(!crew || xeno.can_not_harm(crew))
+					continue
+				crew.add_client_color_matrix("doom", 99, color_matrix_multiply(color_matrix_saturation(0), color_matrix_from_string("#eeeeee")))
+				addtimer(CALLBACK(crew, TYPE_PROC_REF(/mob, remove_client_color_matrix), "doom", 1 SECONDS), 5 SECONDS)
+				to_chat(crew, SPAN_HIGHDANGER("[xeno]'s roar overwhelms your entire being!"))
+				shake_camera(crew, 6, 1)
+
+			var/obj/item/hardpoint/visual_sensors/sensors = locate() in vehicle.get_hardpoints_copy()
+			if(sensors)
+				sensors.deal_unmitigated_damage(initial(sensors.health) * KING_DOOM_CAMERA_DAMAGE_PCT)
 
 		if(!istype(current_atom, /mob/dead))
 			var/power = current_atom.light_power
@@ -301,10 +317,6 @@
 		to_chat(xeno, SPAN_XENONOTICE("It would not be wise to try to leap there..."))
 		return
 
-	if(istype(target, /obj/vehicle/multitile))
-		to_chat(xeno, SPAN_XENONOTICE("It would not be wise to try to leap there..."))
-		return
-
 	var/area/target_area = get_area(target_turf)
 	if(target_area.flags_area & AREA_NOBURROW)
 		to_chat(xeno, SPAN_XENONOTICE("We cannot leap to that area!"))
@@ -353,7 +365,10 @@
 
 	//Initial visual
 	var/obj/effect/king_leap/leap_visual = new(owner.loc, negative, owner.dir)
-	new /obj/effect/xenomorph/xeno_telegraph/king_attack_template(template_turf, 20)
+	var/obj/effect/xenomorph/xeno_telegraph/king_attack_template/landing_telegraph = new(template_turf, 20)
+	// Bump above the vehicle so the telegraph renders on top of it.
+	if(locate(/obj/vehicle/multitile) in target_turf)
+		landing_telegraph.layer = TANK_RIDER_LAYER
 
 	negative = !negative //invert it for the descent later
 
@@ -395,10 +410,14 @@
 	owner.mouse_opacity = initial(owner.mouse_opacity)
 	playsound(owner.loc, 'sound/effects/meteorimpact.ogg', 200, TRUE)
 
-	/// Effects for landing
-	new /obj/effect/heavy_impact(owner.loc)
+	/// Effects for landing. Bumped above a vehicle so impact visuals don't render underneath it.
+	var/list/impact_turfs = list(owner.loc)
 	for(var/step in CARDINAL_ALL_DIRS)
-		new /obj/effect/heavy_impact(get_step(owner.loc, step))
+		impact_turfs += get_step(owner.loc, step)
+	for(var/turf/impact_turf in impact_turfs)
+		var/obj/effect/heavy_impact/impact = new(impact_turf)
+		if(locate(/obj/vehicle/multitile) in impact_turf)
+			impact.layer = TANK_RIDER_LAYER
 
 	// Actual Damaging Effects - Add stuff for cades - NEED TELEGRAPHS NEED EFFECTS
 
@@ -424,6 +443,35 @@
 
 	for(var/mob/living in range(7, owner))
 		shake_camera(living, 15, 1)
+
+	// Vehicle landing damage scales with how many landing tiles overlap its footprint.
+	var/list/landing_tiles = (orange(1, owner) - owner) + get_turf(owner)
+	var/list/vehicles_hit = list()
+	for(var/turf/landing_turf in landing_tiles)
+		var/obj/vehicle/multitile/vehicle = locate() in landing_turf
+		if(vehicle)
+			vehicles_hit |= vehicle
+
+	for(var/obj/vehicle/multitile/vehicle in vehicles_hit)
+		var/overlap_tiles = 0
+		for(var/turf/landing_turf in landing_tiles)
+			if(landing_turf in vehicle.locs)
+				overlap_tiles++
+		if(!overlap_tiles)
+			continue
+
+		var/vehicle_damage = overlap_tiles * KING_JUMP_DAMAGE_PER_TILE
+		vehicle.apply_hull_damage(vehicle_damage, "blunt", owner, unmitigated = TRUE)
+		for(var/obj/item/hardpoint/H in vehicle.hardpoints)
+			H.take_damage(vehicle_damage, "blunt", owner, unmitigated = TRUE)
+			if(istype(H, /obj/item/hardpoint/holder))
+				var/obj/item/hardpoint/holder/holder = H
+				for(var/obj/item/hardpoint/nested in holder.hardpoints)
+					nested.take_damage(vehicle_damage, "blunt", owner, unmitigated = TRUE)
+
+		// Landed dead-centre on a vehicle tile, place the King as a rider directly.
+		if(get_turf(owner) in vehicle.locs)
+			vehicle.mark_on_top(owner)
 
 	REMOVE_TRAIT(owner, TRAIT_UNDENSE, "Destroy")
 	REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, "Destroy")

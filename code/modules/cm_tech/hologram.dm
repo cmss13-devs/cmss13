@@ -94,7 +94,7 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 /mob/hologram/Destroy()
 	if(linked_mob)
 		UnregisterSignal(linked_mob, COMSIG_MOB_RESET_VIEW)
-		linked_mob.reset_view()
+		restore_viewer_view()
 		linked_mob = null
 
 	if(!QDESTROYING(leave_button))
@@ -105,6 +105,9 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 	GLOB.hologram_list -= src
 
 	return ..()
+
+/mob/hologram/proc/restore_viewer_view()
+	linked_mob?.reset_view()
 
 /datum/action/leave_hologram
 	name = "Leave"
@@ -134,19 +137,24 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 	flags_atom = NO_ZFALL
 	var/view_registered = TRUE
 	var/list/view_blocker_images = list()
+	/// If set, this hologram follows this vehicle instead of the viewer, and restores the camera to it.
+	var/obj/vehicle/multitile/tracked_vehicle
+	var/tracked_vehicle_seat
 
-/mob/hologram/look_up/Initialize(mapload, mob/viewer)
+/mob/hologram/look_up/Initialize(mapload, mob/viewer, obj/vehicle/multitile/vehicle, seat)
 	. = ..()
 
 	if(viewer)
+		tracked_vehicle = vehicle
+		tracked_vehicle_seat = seat
 		UnregisterSignal(viewer, COMSIG_CLIENT_MOB_MOVE)
-		RegisterSignal(viewer, COMSIG_MOVABLE_MOVED, PROC_REF(handle_move))
+		RegisterSignal(tracked_vehicle || viewer, COMSIG_MOVABLE_MOVED, PROC_REF(handle_move))
 		RegisterSignal(viewer, COMSIG_MOB_GHOSTIZE, PROC_REF(end_lookup))
 		update_view_blockers(viewer)
 
 /mob/hologram/look_up/Destroy()
 	if(linked_mob)
-		UnregisterSignal(linked_mob, COMSIG_MOVABLE_MOVED)
+		UnregisterSignal(tracked_vehicle || linked_mob, COMSIG_MOVABLE_MOVED)
 		if(istype(linked_mob, /mob/living))
 			var/mob/living/linked_living = linked_mob
 			linked_living.observed_atom = null
@@ -156,6 +164,13 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 	view_blocker_images.Cut()
 	. = ..()
 
+/mob/hologram/look_up/restore_viewer_view()
+	if(tracked_vehicle && linked_mob?.client)
+		linked_mob.client.change_view(VEHICLE_SEAT_VIEW_RADIUS, tracked_vehicle)
+		tracked_vehicle.set_seated_mob(tracked_vehicle_seat, linked_mob)
+		return
+	return ..()
+
 /mob/hologram/look_up/proc/update_view_blockers(mob/user)
 	if(!user || !user.client)
 		return
@@ -164,15 +179,18 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 	view_blocker_images.Cut()
 	var/list/turf/visible_turfs = alist()
 
-	for(var/turf/cur_turf in view(world.view + 1, user))
+	// Uses the tracked vehicle's real position for a seated crewman, not their disconnected interior loc.
+	var/atom/movable/reference = tracked_vehicle || user
+
+	for(var/turf/cur_turf in view(world.view + 1, reference))
 		visible_turfs["[cur_turf.x]-[cur_turf.y]"] = TRUE
 
-	for(var/x in user.x - world.view - 1 to user.x + world.view + 1)
-		for(var/y in user.y - world.view - 1 to user.y + world.view + 1)
+	for(var/x in reference.x - world.view - 1 to reference.x + world.view + 1)
+		for(var/y in reference.y - world.view - 1 to reference.y + world.view + 1)
 			if(visible_turfs["[x]-[y]"])
 				continue
 
-			var/turf/cur_turf = locate(x, y, user.z + 1)
+			var/turf/cur_turf = locate(x, y, reference.z + 1)
 
 			if(istransparentturf(cur_turf))
 				var/image/view_blocker = image('icons/turf/floors/floors.dmi', cur_turf, "full_black", 100000)
@@ -180,7 +198,7 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 				view_blocker_images += view_blocker
 				user.client.images += view_blocker
 
-/mob/hologram/look_up/handle_move(mob/M, oldLoc, direct)
+/mob/hologram/look_up/handle_move(atom/movable/M, oldLoc, direct)
 	if(!isturf(M.loc) || HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		qdel(src)
 		return
@@ -200,11 +218,11 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 	if(!istransparentturf(new_turf))
 		UnregisterSignal(linked_mob, COMSIG_MOB_RESET_VIEW)
 		view_registered = FALSE
-		linked_mob.reset_view()
+		restore_viewer_view()
 	else if (!view_registered)
 		RegisterSignal(linked_mob, COMSIG_MOB_RESET_VIEW, PROC_REF(end_lookup))
 		view_registered = TRUE
-		linked_mob.reset_view()
+		restore_viewer_view()
 
 	if(linked_mob)
 		update_view_blockers(linked_mob)

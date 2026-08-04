@@ -9,6 +9,7 @@
 	slot = HDPT_TREADS
 
 	health = 300
+	traction_dampening = TRACTION_DAMPENING_TREADS
 
 	//with this settings, takes 3 tiles to reach top speed
 	move_delay = 3.8
@@ -24,10 +25,12 @@
 	acid_resistant = TRUE
 
 	move_max_momentum = 5 //same top speed, but takes 5 tiles to reach it
+	gear_torque_mult = 0.6
 
 /obj/item/hardpoint/locomotion/treads/on_install(obj/vehicle/multitile/V)
+	// Uses is_functional(), don't re-apply an Overdrive Enhancer buff if wounded or unpowered.
 	for(var/obj/item/hardpoint/support/overdrive_enhancer/OD in V.hardpoints)
-		if(OD.health > 0)
+		if(OD.is_functional(V))
 			OD.apply_buff(V)
 	if(move_delay)
 		V.move_delay = move_delay
@@ -37,6 +40,7 @@
 		V.move_momentum_build_factor = move_momentum_build_factor
 	if(move_turn_momentum_loss_factor)
 		V.move_turn_momentum_loss_factor = move_turn_momentum_loss_factor
+	V.gear_torque_mult = gear_torque_mult
 
 /obj/item/hardpoint/locomotion/treads/deactivate()
 	for(var/obj/item/hardpoint/support/overdrive_enhancer/OD in owner.hardpoints)
@@ -46,3 +50,4 @@
 	owner.move_max_momentum = initial(owner.move_max_momentum)
 	owner.move_momentum_build_factor = initial(owner.move_momentum_build_factor)
 	owner.move_turn_momentum_loss_factor = initial(owner.move_turn_momentum_loss_factor)
+	owner.gear_torque_mult = initial(owner.gear_torque_mult)

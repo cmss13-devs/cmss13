@@ -956,7 +956,7 @@
 
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] spits at [atom]!"),
 
-	SPAN_XENOWARNING("We spit [xeno.ammo.name] at [atom]!") )
+	SPAN_XENOWARNING("We spit [xeno.ammo.name] at [atom.get_attack_desc(xeno)]!") )
 	playsound(xeno.loc, sound_to_play, 25, 1)
 
 	var/obj/projectile/proj = new (current_turf, create_cause_data(xeno.ammo.name, xeno))
@@ -1002,11 +1002,24 @@
 		if(xeno_turf_above?.z != targetted_atom.z && xeno_turf_below?.z != targetted_atom.z)
 			return
 
-	var/distance = get_dist(stabbing_xeno, targetted_atom)
+	// A multitile vehicle's real .loc is only its center tile, so measure to its footprint instead.
+	var/distance
+	if(isVehicleMultitile(targetted_atom))
+		var/obj/vehicle/multitile/vehicle_target = targetted_atom
+		distance = get_dist_to_multitile_vehicle(stabbing_xeno, vehicle_target)
+	else
+		distance = get_dist(stabbing_xeno, targetted_atom)
 	if(stabbing_xeno.z != targetted_atom.z)
 		distance++
 	if(distance > stab_range)
 		return FALSE
+
+	// allows tailstabs into mobs riding atop a vehicle
+	var/obj/vehicle/multitile/skip_vehicle = null
+	if(ismob(targetted_atom))
+		var/mob/living/target_mob = targetted_atom
+		if(istype(target_mob))
+			skip_vehicle = target_mob.get_tank_on_top_of()
 
 	var/list/turf/path = get_line(stabbing_xeno, targetted_atom, include_start_atom = FALSE)
 	for(var/turf/path_turf as anything in path)
@@ -1014,13 +1027,18 @@
 			to_chat(stabbing_xeno, SPAN_WARNING("There's something blocking our strike!"))
 			return FALSE
 		for(var/obj/path_contents in path_turf.contents)
+			if(skip_vehicle && path_contents == skip_vehicle)
+				continue
 			if(path_contents != targetted_atom && path_contents.density && !path_contents.throwpass)
 				to_chat(stabbing_xeno, SPAN_WARNING("There's something blocking our strike!"))
 				return FALSE
 
 		var/atom/barrier = path_turf.handle_barriers(stabbing_xeno, null, (PASS_MOB_THRU_XENO|PASS_OVER_THROW_MOB|PASS_TYPE_CRAWLER))
 		if(barrier != path_turf)
+			if(skip_vehicle && barrier == skip_vehicle)
+				continue
 			var/tail_stab_cooldown_multiplier = barrier.handle_tail_stab(stabbing_xeno, blunt_stab)
+
 			if(!tail_stab_cooldown_multiplier)
 				to_chat(stabbing_xeno, SPAN_WARNING("There's something blocking our strike!"))
 			else

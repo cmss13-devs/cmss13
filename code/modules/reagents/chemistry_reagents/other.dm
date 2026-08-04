@@ -153,6 +153,7 @@
 	chemclass = CHEM_CLASS_BASIC
 	chemfiresupp = TRUE
 	intensitymod = -3
+	vehicle_coolant = TRUE
 
 /datum/reagent/water/reaction_turf(turf/T, volume)
 	if(!istype(T))
@@ -542,6 +543,29 @@
 	burncolor = "#660000"
 	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_FUELING = 5, PROPERTY_OXIDIZING = 3, PROPERTY_VISCOUS = 4, PROPERTY_TOXIC = 1)
+	vehicle_fuel = TRUE
+	// -20% top speed/acceleration when run neat, worse than the cooking-oil substitute.
+	vehicle_fuel_performance_mult = 0.8
+
+/// Same burncolor-overwrite bug as napalm's own recalculate_variables() below.
+/datum/reagent/fuel/recalculate_variables()
+	. = ..()
+	burncolor = initial(burncolor)
+
+/// standard fuel for the tank.
+/datum/reagent/fuel/jp8
+	name = "JP-8"
+	id = "jp8"
+	description = "Kerosene-based jet fuel"
+	// +20% top speed and acceleration when run neat.
+	vehicle_fuel_performance_mult = 1.2
+
+/// Same fuel qualitty as JP-8, minus the mobility boost. Native fuel for the colony vans.
+/datum/reagent/fuel/diesel
+	name = "Diesel"
+	id = "diesel"
+	description = "Refined diesel fuel for civillian combustion engines."
+	vehicle_fuel_performance_mult = 1
 
 /datum/reagent/space_cleaner
 	name = "Space cleaner"
@@ -777,6 +801,10 @@
 	burn_sprite = "red"
 	properties = list(PROPERTY_OXIDIZING = 6, PROPERTY_FUELING = 7, PROPERTY_FLOWING = 1)
 
+/datum/reagent/napalm/recalculate_variables()
+	. = ..()
+	burncolor = initial(burncolor)
+
 /datum/reagent/napalm/sticky
 	name = "Sticky-Napalm"
 	id = "stickynapalm"
@@ -936,6 +964,10 @@
 	burncolor = "#ff9300"
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_CORROSIVE = 6, PROPERTY_TOXIC = 6, PROPERTY_OXIDIZING = 9, PROPERTY_IGNITING = 1)
+
+/datum/reagent/chlorinetrifluoride/recalculate_variables()
+	. = ..()
+	durationfire = 2
 
 /datum/reagent/methane
 	name = "Methane"

@@ -1346,6 +1346,34 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 			FTL.caliber = "UT-Napthal Fuel"
 			to_chat(user, SPAN_NOTICE("You refill [FTL] with [FTL.caliber]."))
 			FTL.update_icon()
+	else if(istype(W, /obj/item/ammo_magazine/hardpoint/primary_flamer))
+		var/obj/item/ammo_magazine/hardpoint/primary_flamer/vehicle_tank = W
+		var/missing_volume = vehicle_tank.max_rounds - vehicle_tank.reagents.total_volume
+
+		if((vehicle_tank.flamer_chem == fuel_type || !vehicle_tank.reagents.total_volume) && missing_volume && reagents.total_volume)
+			var/fuel_available = min(reagents.total_volume, missing_volume)
+			reagents.remove_reagent(fuel_type, fuel_available)
+			vehicle_tank.reagents.add_reagent(fuel_type, fuel_available)
+			playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
+			vehicle_tank.caliber = fuel_type
+			vehicle_tank.flamer_chem = fuel_type
+			vehicle_tank.current_rounds = round(vehicle_tank.reagents.total_volume)
+			to_chat(user, SPAN_NOTICE("You refill [vehicle_tank] with [vehicle_tank.caliber]."))
+			vehicle_tank.update_icon()
+	else if(istype(W, /obj/item/ammo_magazine/hardpoint/secondary_flamer))
+		var/obj/item/ammo_magazine/hardpoint/secondary_flamer/vehicle_tank = W
+		var/missing_volume = vehicle_tank.max_rounds - vehicle_tank.reagents.total_volume
+
+		if((vehicle_tank.flamer_chem == fuel_type || !vehicle_tank.reagents.total_volume) && missing_volume && reagents.total_volume)
+			var/fuel_available = min(reagents.total_volume, missing_volume)
+			reagents.remove_reagent(fuel_type, fuel_available)
+			vehicle_tank.reagents.add_reagent(fuel_type, fuel_available)
+			playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
+			vehicle_tank.caliber = fuel_type
+			vehicle_tank.flamer_chem = fuel_type
+			vehicle_tank.current_rounds = round(vehicle_tank.reagents.total_volume)
+			to_chat(user, SPAN_NOTICE("You refill [vehicle_tank] with [vehicle_tank.caliber]."))
+			vehicle_tank.update_icon()
 	. = ..()
 
 /obj/item/storage/backpack/marine/engineerpack/flamethrower/kit

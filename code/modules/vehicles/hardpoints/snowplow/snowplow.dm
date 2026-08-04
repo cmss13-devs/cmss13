@@ -1,22 +1,27 @@
-/obj/item/hardpoint/armor/snowplow
+/obj/item/hardpoint/snowplow
 	name = "\improper Snowplow"
 	desc = "Clears a path in the snow for friendlies. It doesn't seem to have much use beyond that."
+
+	slot = HDPT_SNOWPLOW
+	hdpt_layer = HDPT_LAYER_ARMOR
 
 	icon_state = "snowplow"
 	disp_icon = "tank"
 	disp_icon_state = "snowplow"
 
+	damage_multiplier = 0.5
+
 	health = 150
 	activatable = 1
 
-/obj/item/hardpoint/armor/snowplow/livingmob_interact(mob/living/M)
+/obj/item/hardpoint/snowplow/livingmob_interact(mob/living/M)
 	var/turf/targ = get_step(M, owner.dir)
 	targ = get_step(M, owner.dir)
 	targ = get_step(M, owner.dir)
 	M.throw_atom(targ, 4, SPEED_FAST, src, 1)
 	M.apply_damage(7 + rand(0, 3), BRUTE)
 
-/obj/item/hardpoint/armor/snowplow/on_move(turf/old, turf/new_turf, move_dir)
+/obj/item/hardpoint/snowplow/on_move(turf/old, turf/new_turf, move_dir)
 	if(health <= 0)
 		return
 

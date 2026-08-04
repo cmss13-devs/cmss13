@@ -642,6 +642,13 @@ Parameters are passed from New.
 /atom/proc/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	return TAILSTAB_COOLDOWN_NONE
 
+/**
+ * A short "attack target" description for flavor messages. Multitile vehicles override this to also name
+ * whichever module is being aimed at.
+ */
+/atom/proc/get_attack_desc(atom/attacker)
+	return "\the [src]"
+
 /atom/proc/handle_flamer_fire(obj/flamer_fire/fire, damage, delta_time)
 	return
 

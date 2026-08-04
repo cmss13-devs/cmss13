@@ -89,6 +89,8 @@
 
 	var/count = 0 //Current # in the squad
 	var/list/marines_list = list() // list of mobs (or name, not always a mob ref) in that squad.
+	/// Vehicles whose overwatch is assigned to this squad
+	var/list/overwatch_vehicles = list()
 
 	var/mob/living/carbon/human/overwatch_officer = null //Who's overwatching this squad?
 	COOLDOWN_DECLARE(next_supplydrop)
@@ -184,7 +186,8 @@
 	omni_squad_vendor = TRUE
 	radio_freq = CRYO_FREQ
 
-	active = FALSE
+	// Active from round start so overwatch can reach Foxtrot now that tank crewmen start off into them. Remind me to remove this once ASS gets merged to allow tank crewmen to get assigned in accordance to their prefs.
+	active = TRUE
 	roundstart = FALSE
 	locked = TRUE
 
@@ -754,6 +757,16 @@
 	var/slot_check = GET_DEFAULT_ROLE(target_mob.job)
 	if(slot_check && !isnull(roles_cap[slot_check]))
 		roles_in[slot_check]--
+
+/// Adds a vehicle to this squad's overwatch roster. No-op if already tracked.
+/datum/squad/proc/add_overwatch_vehicle(obj/vehicle/multitile/V)
+	if(V in overwatch_vehicles)
+		return
+	overwatch_vehicles += V
+
+/// Removes a vehicle from this squad's overwatch roster.
+/datum/squad/proc/remove_overwatch_vehicle(obj/vehicle/multitile/V)
+	overwatch_vehicles -= V
 
 //proc for demoting current Squad Leader
 /datum/squad/proc/demote_squad_leader(leader_killed)

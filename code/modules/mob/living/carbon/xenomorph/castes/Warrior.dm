@@ -297,6 +297,17 @@
 	if(!action_cooldown_check())
 		return
 
+	if(istype(affected_atom, /obj/vehicle/multitile))
+		if(!punch_user.check_state() || punch_user.agility)
+			return
+		if(get_dist(punch_user, affected_atom) > 2) // matches the human-target branch's own tolerance below
+			return
+		if(!check_and_use_plasma_owner())
+			return
+		punch_vehicle(punch_user, affected_atom)
+		apply_cooldown()
+		return ..()
+
 	if(!isxeno_human(affected_atom) || punch_user.can_not_harm(affected_atom))
 		return
 
@@ -364,3 +375,15 @@
 	warrior.flick_attack_overlay(carbon, "punch")
 	shake_camera(carbon, 2, 1)
 	step_away(carbon, warrior, 2)
+
+/**
+ * Warrior Punch's vehicle resolution. Wrenches the turret aside if aiming at the gun or
+ * turret itself and one exists, otherwise just deals plain damage.
+ */
+/datum/action/xeno_action/activable/warrior_punch/proc/punch_vehicle(mob/living/carbon/xenomorph/warrior, obj/vehicle/multitile/vehicle)
+	var/turned_turret = resolve_turret_wrench_damage(vehicle, warrior, rand(base_damage, base_damage + damage_variance) * WARRIOR_PUNCH_TANK_DAMAGE_MULT, "blunt", ring_damage_mult = WARRIOR_PUNCH_TURRET_RING_DAMAGE_MULT)
+	if(turned_turret)
+		warrior.visible_message(SPAN_XENOWARNING("[warrior] slams into [vehicle]'s turret, wrenching it aside!"), SPAN_XENOWARNING("We slam into [vehicle.get_attack_desc(warrior)], wrenching the turret aside!"))
+	else
+		warrior.visible_message(SPAN_XENOWARNING("[warrior] slams into [vehicle]!"), SPAN_XENOWARNING("We slam into [vehicle.get_attack_desc(warrior)]!"))
+		playsound(vehicle, "punch", 25, TRUE) // force_turret_wrench() already plays its own punch/turretdamaged sounds when it fires - this covers the case where it doesn't

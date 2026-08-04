@@ -16,6 +16,7 @@
 	draw_pull(ui_alien_datum)
 	draw_throw(ui_alien_datum)
 	draw_zone_sel(ui_alien_datum)
+	draw_vehicle_zone_sel(ui_alien_datum)
 	draw_healths(ui_alien_datum)
 	draw_alien_nightvision(ui_alien_datum)
 	draw_alien_plasma_display(ui_alien_datum)

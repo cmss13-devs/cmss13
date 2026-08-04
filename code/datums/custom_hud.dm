@@ -20,12 +20,14 @@
 
 	//Lower right, persistent menu
 	var/ui_dropbutton = "EAST-4:22,1:5"
-	var/ui_drop_throw = "EAST-1:28,2:7"
-	var/ui_pull = "EAST-2:26,2:7"
-	var/ui_resist = "EAST-2:26,2:7"
+	var/ui_drop_throw = "EAST-1:28,3:9"
+	var/ui_pull = "EAST-2:26,3:9"
+	var/ui_resist = "EAST-2:26,3:9"
 	var/ui_acti = "EAST-2:26,1:5"
 	var/ui_movi = "EAST-3:24,1:5"
 	var/ui_zonesel = "EAST-1:28,1:5"
+	//Vehicle-part doll, directly above ui_zonesel
+	var/ui_vehicle_zonesel = "EAST-1:28,2:7"
 
 	//Gun buttons
 	var/ui_gun1 = "EAST-2:26,3:7"

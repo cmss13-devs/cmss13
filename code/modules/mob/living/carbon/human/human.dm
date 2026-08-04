@@ -1525,20 +1525,28 @@
 		return
 
 	var/atom/tracking_atom = H
-	if(tracking_atom.z != z && SSinterior.in_interior(tracking_atom))
+	if(SSinterior.in_interior(tracking_atom))
 		var/datum/interior/interior = SSinterior.get_interior_by_coords(tracking_atom.x, tracking_atom.y, tracking_atom.z)
-		var/atom/exterior = interior.exterior
+		var/atom/exterior = interior?.exterior
 		if(exterior)
 			tracking_atom = exterior
 
-	if(!SSmapping.same_z_map(z, tracking_atom.z) || get_dist(src, tracking_atom) < 1 || src == tracking_atom)
+	// Same redirect, but for the observer wearing this tracker.
+	var/atom/observer_atom = src
+	if(SSinterior.in_interior(observer_atom))
+		var/datum/interior/observer_interior = SSinterior.get_interior_by_coords(observer_atom.x, observer_atom.y, observer_atom.z)
+		var/atom/observer_exterior = observer_interior?.exterior
+		if(observer_exterior)
+			observer_atom = observer_exterior
+
+	if(!SSmapping.same_z_map(observer_atom.z, tracking_atom.z) || get_dist(observer_atom, tracking_atom) < 1 || observer_atom == tracking_atom)
 		hud_used.locate_leader.icon_state = "trackondirect[tracking_suffix]"
 	else
-		hud_used.locate_leader.setDir(Get_Compass_Dir(src, tracking_atom))
+		hud_used.locate_leader.setDir(Get_Compass_Dir(observer_atom, tracking_atom))
 		hud_used.locate_leader.icon_state = "trackon[tracking_suffix]"
-		if(tracking_atom.z > z)
+		if(tracking_atom.z > observer_atom.z)
 			hud_used.locate_leader.overlays |= image('icons/mob/hud/human_bronze.dmi', "up")
-		if(tracking_atom.z < z)
+		if(tracking_atom.z < observer_atom.z)
 			hud_used.locate_leader.overlays |= image('icons/mob/hud/human_bronze.dmi', "down")
 
 /mob/living/carbon/proc/locate_nearest_nuke()

@@ -432,7 +432,7 @@
 	name = "tail hook"
 	icon_state = "none"
 	ping = null
-	flags_ammo_behavior = AMMO_XENO|AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER
+	flags_ammo_behavior = AMMO_XENO|AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER|AMMO_PASSES_OVER_VEHICLES
 	damage_type = BRUTE
 
 	damage = XENO_DAMAGE_TIER_5
@@ -441,7 +441,7 @@
 
 /datum/ammo/xeno/oppressor_tail/on_bullet_generation(obj/projectile/generated_projectile, mob/bullet_generator)
 	//The projectile has no icon, so the overlay shows up in FRONT of the projectile, and the beam connects to it in the middle.
-	var/image/hook_overlay = new(icon = 'icons/effects/beam.dmi', icon_state = "oppressor_tail_hook", layer = BELOW_MOB_LAYER)
+	var/image/hook_overlay = new(icon = 'icons/effects/beam.dmi', icon_state = "oppressor_tail_hook", layer = TANK_ABOVE_RIDER_LAYER)
 	generated_projectile.overlays += hook_overlay
 
 /datum/ammo/xeno/oppressor_tail/on_hit_mob(mob/target, obj/projectile/fired_proj)
@@ -450,7 +450,7 @@
 		return
 
 	shake_camera(target, 5, 0.1 SECONDS)
-	var/obj/effect/beam/tail_beam = fired_proj.firer.beam(target, "oppressor_tail", 'icons/effects/beam.dmi', 0.5 SECONDS, 5)
+	var/obj/effect/beam/tail_beam = fired_proj.firer.beam(target, "oppressor_tail", 'icons/effects/beam.dmi', 0.5 SECONDS, 5, /obj/effect/ebeam/above_tank)
 	var/image/tail_image = image('icons/effects/status_effects.dmi', "hooked")
 	target.overlays += tail_image
 

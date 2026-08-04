@@ -302,6 +302,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/device/cassette_tape/hiphop = NO_GARB_OVERRIDE,
 	/obj/item/device/cassette_tape/nam = NO_GARB_OVERRIDE,
 	/obj/item/device/cassette_tape/ocean = NO_GARB_OVERRIDE,
+	/obj/item/device/cassette_tape/liberation = NO_GARB_OVERRIDE,
 	/obj/item/storage/pouch/cassette = NO_GARB_OVERRIDE,
 
 	// PREFERENCES GEAR
@@ -840,6 +841,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		"nvg_sight_down",
 		"med_sight_down",
 		"sec_sight_down",
+		"veh_sight_down",
 		"blank_hud_sight_down"
 	)
 

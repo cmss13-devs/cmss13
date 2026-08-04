@@ -6,6 +6,7 @@
 #define MENU_MENTOR "mentor"
 #define MENU_SETTINGS "settings"
 #define MENU_SPECIAL "special"
+#define MENU_VEHICLE "vehicle"
 
 GLOBAL_LIST_EMPTY(preferences_datums)
 
@@ -81,6 +82,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/toggles_survivor = TOGGLES_SURVIVOR_DEFAULT
 	var/toggles_insert = TOGGLES_INSERT_DEFAULT
 	var/toggles_ert_pred = TOGGLES_ERT_GROUNDS
+	var/toggles_vehicle = TOGGLES_VEHICLE_DEFAULT
 	var/list/volume_preferences = list(1, 0.5, 1, 0.6) // Game, music, admin midis, lobby music (this is also set in sanitize_volume_preferences() call)
 	var/chat_display_preferences = CHAT_TYPE_ALL
 	var/item_animation_pref_level = SHOW_ITEM_ANIMATIONS_ALL
@@ -420,7 +422,8 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	if(owner.check_whitelist_status(WHITELIST_MENTOR))
 		dat += "<a[current_menu == MENU_MENTOR ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_MENTOR]\"><b>Mentor</b></a> - "
 	dat += "<a[current_menu == MENU_SETTINGS ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_SETTINGS]\"><b>Settings</b></a> - "
-	dat += "<a[current_menu == MENU_SPECIAL ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_SPECIAL]\"><b>Special Roles</b></a>"
+	dat += "<a[current_menu == MENU_SPECIAL ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_SPECIAL]\"><b>Special Roles</b></a> - "
+	dat += "<a[current_menu == MENU_VEHICLE ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_VEHICLE]\"><b>Vehicle</b></a>"
 	dat += "</center>"
 
 	dat += "<hr>"
@@ -773,6 +776,15 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 				dat += "<b>Spawn as Insert Synth:</b> <a href='byond://?_src_=prefs;preference=toggles_insert;flag=[PLAY_INSERT_SYNTH]'><b>[toggles_insert & PLAY_INSERT_SYNTH ? "Yes" : "No"]</b></a><br>"
 			if(owner.check_whitelist_status(WHITELIST_COMMANDER))
 				dat += "<b>Spawn as Insert CO:</b> <a href='byond://?_src_=prefs;preference=toggles_insert;flag=[PLAY_INSERT_CO]'><b>[toggles_insert & PLAY_INSERT_CO ? "Yes" : "No"]</b></a><br>"
+			dat += "</div>"
+
+		if(MENU_VEHICLE)
+			dat += "<div id='column1'>"
+			dat += "<h2><b><u>Vehicle Preferences:</u></b></h2>"
+			dat += "<b>Transmission:</b> <a href='byond://?_src_=prefs;preference=toggles_vehicle;flag=[VEHICLE_SIMPLE_TRANSMISSION]'><b>[toggles_vehicle & VEHICLE_SIMPLE_TRANSMISSION ? "Simple" : "Complex"]</b></a><br>"
+			dat += "<b>Control Layout:</b> <a href='byond://?_src_=prefs;preference=toggles_vehicle;flag=[VEHICLE_SIMPLE_CONTROLS]'><b>[toggles_vehicle & VEHICLE_SIMPLE_CONTROLS ? "Simple" : "Complex"]</b></a><br>"
+			dat += "<b>Acceleration Mode:</b> <a href='byond://?_src_=prefs;preference=toggles_vehicle;flag=[VEHICLE_SIMPLE_ACCELERATION]'><b>[toggles_vehicle & VEHICLE_SIMPLE_ACCELERATION ? "Simple" : "Complex"]</b></a><br>"
+			dat += "<b>Speed Units:</b> <a href='byond://?_src_=prefs;preference=toggles_vehicle;flag=[VEHICLE_UNITS_MPH]'><b>[toggles_vehicle & VEHICLE_UNITS_MPH ? "MPH" : "KM/H"]</b></a><br>"
 			dat += "</div>"
 
 	dat += "</div></body>"
@@ -2012,6 +2024,13 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 						else
 							toggles_survivor ^= PLAY_SURVIVOR_NON_HOSTILE
 
+				if("toggles_vehicle")
+					var/flag = text2num(href_list["flag"])
+					toggles_vehicle ^= flag
+					save_preferences()
+					if(flag == VEHICLE_SIMPLE_ACCELERATION && user)
+						SEND_SIGNAL(user, COMSIG_MOB_VEHICLE_PREFS_CHANGED)
+
 				if("ambientocclusion")
 					toggle_prefs ^= TOGGLE_AMBIENT_OCCLUSION
 					var/atom/movable/screen/plane_master/game_world/plane_master = locate() in user?.client.screen
@@ -2474,6 +2493,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 #undef MENU_MENTOR
 #undef MENU_SETTINGS
 #undef MENU_SPECIAL
+#undef MENU_VEHICLE
 
 /datum/preferences/proc/generate_name(faction = FACTION_MARINE)
 	var/female = prob(50)

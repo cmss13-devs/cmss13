@@ -86,6 +86,7 @@
 		target_turfs += current_turfs
 		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/red(current_turfs, 2)
 
+	var/hit_vehicle = FALSE
 	for(var/turf/current_turfs in target_turfs)
 		for(var/mob/living/carbon/target in current_turfs)
 			if(target.stat == DEAD)
@@ -108,6 +109,21 @@
 				xeno.flick_heal_overlay(1 SECONDS, "#00B800")
 				xeno.gain_health(30)
 			xeno.animation_attack_on(target)
+
+		// Once per use, not once per overlapping tile, since a vehicle's footprint can span multiple targets.
+		if(!hit_vehicle)
+			var/obj/vehicle/multitile/vehicle = get_multitile_vehicle_at(current_turfs)
+			if(vehicle)
+				hit_vehicle = TRUE
+				xeno.visible_message(SPAN_DANGER("[xeno] slashes [vehicle]!"), SPAN_XENOWARNING("We slash [vehicle.get_attack_desc(xeno)] multiple times!"))
+				xeno.flick_attack_overlay(vehicle, "slash")
+				log_attack("[key_name(xeno)] attacked [vehicle] with Flurry")
+				playsound(vehicle, 'sound/weapons/alien_claw_metal1.ogg', 30, TRUE)
+				vehicle.take_damage_type(xeno.caste.melee_damage_upper, "slash", xeno, unmitigated = TRUE)
+				if(!xeno.on_fire)
+					xeno.flick_heal_overlay(1 SECONDS, "#00B800")
+					xeno.gain_health(30)
+				xeno.animation_attack_on(vehicle)
 
 	xeno.emote("roar")
 	return ..()
@@ -149,6 +165,17 @@
 			if(current_structure.density && !current_structure.throwpass)
 				to_chat(xeno, SPAN_WARNING("There's something blocking us from striking!"))
 				return
+
+	if(istype(targeted_atom, /obj/vehicle/multitile))
+		var/obj/vehicle/multitile/vehicle = targeted_atom
+		to_chat(xeno, SPAN_XENOHIGHDANGER("We attack [vehicle.get_attack_desc(xeno)] with our tail, piercing it!"))
+		playsound(vehicle, 'sound/weapons/alien_tail_attack.ogg', 50, TRUE)
+		xeno.flick_attack_overlay(vehicle, "tail")
+		xeno.animation_attack_on(vehicle)
+		vehicle.take_damage_type(15, "slash", xeno, unmitigated = TRUE)
+		apply_cooldown()
+		return
+
 	// find a target in the target turf
 	if(!iscarbon(targeted_atom) || hit_target.stat == DEAD)
 		for(var/mob/living/carbon/carbonara in get_turf(targeted_atom))

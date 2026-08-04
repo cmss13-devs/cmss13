@@ -554,6 +554,23 @@
 
 	charger_ability.stop_momentum()
 
+// Vehicles
+
+/obj/vehicle/multitile/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+	if(!charger_ability.momentum)
+		charger_ability.stop_momentum()
+		return
+	playsound(loc, "punch", 25, TRUE)
+	xeno.visible_message(
+		SPAN_DANGER("[xeno] rams [src], knocking it back!"),
+		SPAN_XENODANGER("You ram [src], knocking it back!")
+	)
+	var/momentum_mult = (charger_ability.momentum == charger_ability.max_momentum) ? 8 : 5
+	// Uses get_cardinal_dir(), not the charger's own dir, since a vehicle only moves cardinally.
+	resolve_crusher_charge_hit(xeno, get_cardinal_dir(xeno, src), CRUSHER_CHARGER_RAM_TANK_KNOCKBACK_TILES, charger_ability.momentum * momentum_mult)
+	charger_ability.lose_momentum(CCA_MOMENTUM_LOSS_MIN)
+	return XENO_CHARGE_TRY_MOVE
+
 // Sentry
 
 /obj/structure/machinery/defenses/sentry/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)

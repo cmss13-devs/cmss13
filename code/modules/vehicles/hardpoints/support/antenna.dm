@@ -51,7 +51,7 @@
 	disp_icon_state = initial(disp_icon_state)
 
 /obj/item/hardpoint/support/arc_antenna/get_icon_image(x_offset, y_offset, new_dir)
-	var/is_broken = health <= 0
+	var/is_broken = get_mounted_damage_suffix()
 	var/antenna_extended = FALSE
 	if(istype(owner, /obj/vehicle/multitile/arc))
 		var/obj/vehicle/multitile/arc/arc_owner = owner

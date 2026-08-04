@@ -30,6 +30,8 @@
 
 	///Used by floors to indicate the floor is a tile (otherwise its plating)
 	var/intact_tile = TRUE
+	/// How good this turf is for vehicle acceleration. 1 is neutral.
+	var/traction = 1.0
 	///Can blood spawn on this turf?
 	var/can_bloody = TRUE
 	var/list/linked_pylons
@@ -71,6 +73,39 @@
 
 	/// Can xenomorph weeds grow on the tile
 	var/is_weedable = FULLY_WEEDABLE
+
+/**
+ * How good this turf is for vehicle acceleration right now.
+ *
+ * Weeds and xeno resin drag traction down further than the turf's own base value.
+ * Hazards cap traction independently rather than stacking.
+ *
+ * Returns:
+ * * traction, capped further by whichever weed/resin hazard on this turf caps it hardest.
+ */
+/turf/proc/get_traction()
+	var/result = traction
+	if(weeds)
+		result = min(result, get_weed_traction_cap(weeds.weed_strength))
+	for(var/obj/effect/alien/resin/R in src)
+		if(istype(R, /obj/effect/alien/resin/sticky/fast))
+			continue
+		else if(istype(R, /obj/effect/alien/resin/sticky/thin/weak))
+			result = min(result, STICKY_RESIN_WEAK_TRACTION_CAP)
+		else if(istype(R, /obj/effect/alien/resin/sticky))
+			result = min(result, STICKY_RESIN_TRACTION_CAP)
+		else if(istype(R, /obj/effect/alien/resin/spike))
+			result = min(result, RESIN_SPIKE_TRACTION_CAP)
+	return result
+
+/turf/proc/get_weed_traction_cap(strength)
+	if(strength >= WEED_LEVEL_HIVE)
+		return WEED_TRACTION_CAP_HIVE
+	if(strength == WEED_LEVEL_HARDY)
+		return WEED_TRACTION_CAP_HARDY
+	if(strength == WEED_LEVEL_STANDARD)
+		return WEED_TRACTION_CAP_STANDARD
+	return WEED_TRACTION_CAP_WEAK
 
 /turf/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE) // this doesn't parent call for optimisation reasons

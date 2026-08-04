@@ -383,6 +383,11 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 	hud_used.zone_sel.selecting = target_zone
 	hud_used.zone_sel.update_icon()
 
+	if(hud_used.vehicle_zone_sel)
+		vehicle_zone_selected = GLOB.human_zone_to_vehicle_part[target_zone] || WOUND_SLOT_HULL
+		hud_used.vehicle_zone_sel.selecting = target_zone
+		hud_used.vehicle_zone_sel.update_icon()
+
 #define DURATION_MULTIPLIER_TIER_1 0.75
 #define DURATION_MULTIPLIER_TIER_2 0.5
 #define DURATION_MULTIPLIER_TIER_3 0.25

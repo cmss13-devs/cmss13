@@ -10,7 +10,7 @@
 	activation_sounds = list('sound/weapons/gun_smartgun1.ogg', 'sound/weapons/gun_smartgun2.ogg', 'sound/weapons/gun_smartgun3.ogg', 'sound/weapons/gun_smartgun4.ogg')
 
 	health = 100
-	firing_arc = 120
+	traverse_arc = 120
 	//FPWs reload automatically
 	var/reloading = FALSE
 	var/reload_time = 10 SECONDS
@@ -48,6 +48,7 @@
 	data["current_rounds"] = ammo.current_rounds
 	data["max_rounds"] = ammo.max_rounds
 	data["fpw"] = TRUE
+	data["wounds"] = get_wound_tgui_data()
 
 	return data
 

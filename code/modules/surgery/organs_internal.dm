@@ -47,6 +47,14 @@ and organ transplant code which may come in handy in future but haven't been edi
 			return TRUE
 	return FALSE
 
+/datum/surgery_step/repair_organs/extra_checks(mob/living/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, repeating, skipped)
+	if(istype(tool, /obj/item/stack/medical))
+		var/obj/item/stack/medical/packs = tool
+		if(packs.get_amount() < use_stack)
+			to_chat(user, SPAN_BOLDWARNING("You don't have enough of [packs] to finish repairing organs!"))
+			return FALSE
+	return TRUE
+
 /datum/surgery_step/repair_organs/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	var/list/damaged_organs = list()
 	var/toolname
@@ -73,9 +81,9 @@ and organ transplant code which may come in handy in future but haven't been edi
 			SPAN_NOTICE("[user] begins to treat your damaged [damaged_organs[1]] with [toolname]."),
 			SPAN_NOTICE("[user] begins to treat [target]'s damaged [damaged_organs[1]] with [toolname]."))
 
-	if(repeat_step && repeat_step_criteria(user, target, target_zone, tool, tool_type, surgery)) //<---- repair_organs repeats
+	if(repeat_step && repeat_step_criteria(user, target, target_zone, tool, tool_type, surgery))
 		surgery.step_in_progress = FALSE
-		INVOKE_ASYNC(surgery, TYPE_PROC_REF(/datum/surgery, attempt_next_step), user, tool, TRUE) //<---- it will call attempt_next_step again which will call success and repair another organ
+		INVOKE_ASYNC(surgery, TYPE_PROC_REF(/datum/surgery, attempt_next_step), user, tool, TRUE)
 		return TRUE
 
 	target.custom_pain("You feel [toolname] moving the organs around in your [surgery.affected_limb.display_name]! The pressure is maddening!", 1)
@@ -85,23 +93,21 @@ and organ transplant code which may come in handy in future but haven't been edi
 /datum/surgery_step/repair_organs/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(istype(tool, /obj/item/stack/medical))
 		var/obj/item/stack/medical/packs = tool
-		if(!packs.use(use_stack))
-			to_chat(user, SPAN_BOLDWARNING("You don't have enough of [packs] to finish repairing organs!"))
-			return
+		packs.use(use_stack)
 
-		for(var/datum/internal_organ/int_organ as anything in surgery.affected_limb.internal_organs)
-			if(int_organ && int_organ.damage > 0 && int_organ.robotic != ORGAN_ROBOT)
-				user.affected_message(target,
-					SPAN_NOTICE("You finish treating [target]'s damaged [int_organ.name]."),
-					SPAN_NOTICE("[user] finishes treating your damaged [int_organ.name]."),
-					SPAN_NOTICE("[user] finishes treating [target]'s damaged [int_organ.name]."))
+	for(var/datum/internal_organ/int_organ as anything in surgery.affected_limb.internal_organs)
+		if(int_organ && int_organ.damage > 0 && int_organ.robotic != ORGAN_ROBOT)
+			user.affected_message(target,
+				SPAN_NOTICE("You finish treating [target]'s damaged [int_organ.name]."),
+				SPAN_NOTICE("[user] finishes treating your damaged [int_organ.name]."),
+				SPAN_NOTICE("[user] finishes treating [target]'s damaged [int_organ.name]."))
 
-				playsound(target.loc, 'sound/handling/bandage.ogg', 25, TRUE)
-				log_interact(user, target, "[key_name(user)] mended an organ in [key_name(target)]'s [surgery.affected_limb.display_name], possibly ending [surgery].")
-				user.count_niche_stat(STATISTICS_NICHE_SURGERY_ORGAN_REPAIR)
-				int_organ.rejuvenate()
-				target.pain.recalculate_pain()
-				break // <--- this break means we don't process any other organs in the success proc
+			playsound(target.loc, 'sound/handling/bandage.ogg', 25, TRUE)
+			log_interact(user, target, "[key_name(user)] mended an organ in [key_name(target)]'s [surgery.affected_limb.display_name], possibly ending [surgery].")
+			user.count_niche_stat(STATISTICS_NICHE_SURGERY_ORGAN_REPAIR)
+			int_organ.rejuvenate()
+			target.pain.recalculate_pain()
+			break
 
 /datum/surgery_step/repair_organs/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
@@ -110,7 +116,7 @@ and organ transplant code which may come in handy in future but haven't been edi
 		SPAN_WARNING("[user]'s hand slips, bruising [target]'s organs and contaminating \his [surgery.affected_limb.cavity]!"))
 
 	if(target.stat == CONSCIOUS)
-		if(target.pain.reduction_pain < surgery.pain_reduction_required)//if patient is not under the proper anesthesia
+		if(target.pain.reduction_pain < surgery.pain_reduction_required)
 			target.emote("pain")
 
 	var/dam_amt = 2

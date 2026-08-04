@@ -154,15 +154,27 @@
 	// We'll do the first step now. The dampening can happen as we scan for explosion damage later.
 	// This is a bit weird, but note that the splitting of the wave as it expand doesnt reduce the explosion intensity.
 	// We also give same treatment to stored falloff value. They'll be modified to account for the travel later.
+
+	// How this works: We part the wave away from epicenter like this:
+	//
+	//                           ABCDE
+	//                         /      |
+	//                        ABC C CDE
+
 	var/list/new_intensities = new /list(order * 2 + 1)
 	var/list/new_falloff = new /list(order * 2 + 1)
-	for(var/i in 1 to length(intensities))
-		new_intensities[i+1] = intensities[i]
-		new_falloff[i+1] = wave_falloff[i]
-	new_intensities[1] = intensities[min(2, length(intensities))] // clamping needed for the order=1 case
-	new_intensities[length(new_intensities)] = intensities[length(intensities)]
-	new_falloff[1] = wave_falloff[min(2, length(wave_falloff))]
-	new_falloff[length(new_falloff)] = wave_falloff[length(wave_falloff)]
+
+	for(var/i in 1 to order*2+1)
+		if(order < 2) // Bootstrap case, just copy everything
+			new_intensities[i] = intensities[1]
+			new_falloff[i] = wave_falloff[1]
+		else if(i <= order + 1)
+			// Left side. New is wider than old, so 1 corresponds to 2 in old. So just mapping i = i we still are offsetting.
+			new_intensities[i] = intensities[i]
+			new_falloff[i] = wave_falloff[i]
+		else // Right side. We're 1 wider, and also need to skip the middle one, so that's a 2 difference
+			new_intensities[i] = intensities[i-2]
+			new_falloff[i] = wave_falloff[i-2]
 
 	// We store the new values
 	intensities = new_intensities

@@ -492,7 +492,7 @@
 
 /obj/item/device/radio/headset/almayer/chef
 	name = "kitchen radio headset"
-	desc = "Used by the onboard kitchen staff, filled with background noise of sizzling pots. Can coordinate with the supply channel, using :u and inform command of delivery service using :v."
+	desc = "Used by the onboard kitchen staff, filled with background noise of sizzling pots. Can coordinate with the supply channel with :u."
 	icon_state = "req_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/req/mst)
 

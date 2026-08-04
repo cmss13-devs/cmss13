@@ -165,13 +165,28 @@
 	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_REQ = TRUE)
 
 /obj/item/device/encryptionkey/req/mst
-	name = "Supply Radio Encryption Key"
+	name = "Mess Technician radio encryption key"
 	icon_state = "req_key"
 	channels = list(RADIO_CHANNEL_REQ = TRUE)
 
 /obj/item/device/encryptionkey/cmpcom/synth/ai //AI only.
 	name = "AI Integrated Radio Encryption Key"
-	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_MP = TRUE, SQUAD_MARINE_1 = TRUE, SQUAD_MARINE_2 = TRUE, SQUAD_MARINE_3 = TRUE, SQUAD_MARINE_4 = TRUE, SQUAD_MARINE_5 = TRUE, SQUAD_MARINE_CRYO = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_INTEL = TRUE, RADIO_CHANNEL_WY = TRUE)
+	channels = list(
+		RADIO_CHANNEL_COMMAND = TRUE,
+		RADIO_CHANNEL_MP = TRUE,
+		SQUAD_MARINE_1 = TRUE,
+		SQUAD_MARINE_2 = TRUE,
+		SQUAD_MARINE_3 = TRUE,
+		SQUAD_MARINE_4 = TRUE,
+		SQUAD_MARINE_5 = TRUE,
+		SQUAD_MARINE_CRYO = TRUE,
+		RADIO_CHANNEL_ENGI = TRUE,
+		RADIO_CHANNEL_MEDSCI = TRUE,
+		RADIO_CHANNEL_REQ = TRUE,
+		RADIO_CHANNEL_JTAC = TRUE,
+		RADIO_CHANNEL_INTEL = TRUE,
+		RADIO_CHANNEL_WY = TRUE,
+	)
 	translate_apollo = TRUE
 	translate_artemis = TRUE
 

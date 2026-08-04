@@ -277,12 +277,15 @@
 	return still_exploding
 
 /// Apply blast wave overlay to all the current turfs
+/// Note that we do NOT store the overlays so nothing should change the intensities inbetween
+/// addition and removal otherwise we won't be able to remove them later!
 /datum/explosion_wave/proc/apply_overlays()
 	var/image/image = image('icons/effects/effects.dmi', "smoke", layer = FLY_LAYER)
 	for(var/i in 1 to (order * 2 + 1))
 		var/turf/turf = wave_turfs[i]
 		var/intensity = intensities[i]
 		if(intensity > 0)
+			image.alpha = intensity
 			turf.overlays += image
 
 /// Remove blast wave overlay from all the current turfs
@@ -292,6 +295,7 @@
 		var/turf/turf = wave_turfs[i]
 		var/intensity = intensities[i]
 		if(intensity > 0) // Yes, we need to check even while removing, so that a dead explosion doens't clip overlays from a living explosion
+			image.alpha = intensity // Make sure this is right, or the overlay won't remove!
 			turf.overlays -= image
 
 /// Set signals on all of our wave present turfs so we can explode things that come into them

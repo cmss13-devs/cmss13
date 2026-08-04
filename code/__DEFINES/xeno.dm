@@ -530,6 +530,7 @@
 #define XENO_PHERO_RECOVERY "recovery"
 #define XENO_PHERO_FRENZY "frenzy"
 #define XENO_PHERO_WARDING "warding"
+#define ALL_XENO_PHEROMONES list(XENO_PHERO_RECOVERY, XENO_PHERO_FRENZY, XENO_PHERO_WARDING)
 
 // Pheremone strength modifiers
 #define XENO_PHERO_MOD_VERY_SMALL  0.25

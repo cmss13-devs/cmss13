@@ -322,7 +322,7 @@
 		buckled.unbuckle()
 	. = ..()
 	var/turf/T = get_turf(destination)
-	SEND_SIGNAL(T, COMSIG_TURF_ENTERED, src)
+	SEND_SIGNAL(T, COMSIG_TURF_ENTERED, src, TRUE)
 	SEND_SIGNAL(src, COMSIG_MOB_MOVE_OR_LOOK, TRUE, dir, dir)
 
 	if(.)

@@ -234,8 +234,8 @@
 		launch_impact(hit_atom)
 	if (loc)
 		var/turf/T = get_turf(src)
-		SEND_SIGNAL(T, COMSIG_TURF_ENTERED, src)
-		T.hitby(LM)
+		SEND_SIGNAL(T, COMSIG_TURF_ENTERED, src, TRUE)
+		T.hitby(src)
 		throwing = FALSE
 		rebounding = FALSE
 		cur_speed = old_speed

@@ -153,8 +153,8 @@
 	if(istype(src, /turf/open/gm/river) || istype(src, /turf/open/gm/coast))
 		return
 	var/turf/direction_check = get_step(src, NORTH)
-	if(istype(direction_check, /turf/open/gm/river) || istype(direction_check, /turf/open/gm/coast))
-		var/turf/direction_check2 = get_step(src,SOUTH)
+	if(istype(direction_check, /turf/open/gm/river)) 	//only check full water tiles here, coastlines have a gradient ...
+		var/turf/direction_check2 = get_step(src,SOUTH)	//that negates needing to simulate a dropoff (which having these tiles overlay water does)
 		if(!istype(direction_check2, /turf/open/gm/river) && !istype(direction_check2, /turf/open/gm/coast))
 			layer = TURF_LAYER
 

@@ -518,6 +518,9 @@
 	pixel_y = -7
 	next_haul_resist = 0
 
+	var/datum/component/display_effect/found_component = src.GetComponent(/datum/component/display_effect)
+	if(found_component) found_component.Destroy()
+
 /mob/living/carbon/human/proc/release_haul_death()
 	SIGNAL_HANDLER
 	handle_unhaul()

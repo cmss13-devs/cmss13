@@ -354,6 +354,8 @@
 				sound = pick('sound/weapons/alien_bite1.ogg','sound/weapons/alien_bite2.ogg')
 			if("alien_footstep_large")
 				sound = pick('sound/effects/alien_footstep_large1.ogg','sound/effects/alien_footstep_large2.ogg','sound/effects/alien_footstep_large3.ogg')
+			if("alien_footstep_large_water")
+				sound = pick('sound/effects/alien_footstep_large_water1.ogg','sound/effects/alien_footstep_large_water2.ogg','sound/effects/alien_footstep_large_water3.ogg')
 			if("alien_footstep_medium")
 				sound = pick('sound/effects/alien_footstep_medium1.ogg','sound/effects/alien_footstep_medium2.ogg','sound/effects/alien_footstep_medium3.ogg')
 			if("alien_charge")

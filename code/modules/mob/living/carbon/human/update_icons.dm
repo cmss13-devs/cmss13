@@ -785,7 +785,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 	apply_overlay(FIRE_LAYER)
 
 
-/mob/living/carbon/human/proc/update_effects()
+/mob/living/carbon/human/update_effects()
 	remove_overlay(EFFECTS_LAYER)
 
 	var/image/I

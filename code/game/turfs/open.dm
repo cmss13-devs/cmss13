@@ -11,6 +11,7 @@
 	var/scorchable = FALSE //if TRUE set to be an icon_state which is the full sprite version of whatever gets scorched --> for border turfs like grass edges and shorelines
 	var/scorchedness = 0 //how scorched is this turf 0 to 3
 	var/icon_state_before_scorching //this is really dumb, blame the mappers...
+	var/depth = 0 // for display_effects
 
 /turf/open/Initialize(mapload, ...)
 	. = ..()
@@ -484,7 +485,6 @@
 	icon = 'icons/turf/ground_map.dmi'
 	icon_state = "desert"
 	is_groundmap_turf = TRUE
-	var/depth = 0; // used by display_effects
 
 /turf/open/gm/attackby(obj/item/I, mob/user)
 
@@ -749,17 +749,25 @@
 		name = covered_name
 		overlays += image("icon"=src.cover_icon,"icon_state"=cover_icon_state,"layer"=CATWALK_LAYER,"dir" = dir)
 
-/turf/open/gm/river/proc/on_enter(turf/source, atom/movable/mover)
+/turf/open/gm/river/proc/on_enter(turf/source, atom/movable/mover, force_update=FALSE)
 	SIGNAL_HANDLER
-	if(!isliving(mover) || mover.throwing)
+	if(!isliving(mover) || mover.throwing || (!ishuman(mover) && !isxeno(mover) && !isyautja(mover)))
 		return
-	mover.AddComponent(/datum/component/display_effect, src.type, depth)
+	if(iscarbon(mover))
+		var/mob/living/carbon/carbon_mover =  mover
+		if(carbon_mover.IsKnockDown())
+			return
+		var/datum/component/display_effect/existing = carbon_mover.GetComponent(/datum/component/display_effect)
+		if(existing)
+			carbon_mover.AddComponent(/datum/component/display_effect, src.type, depth, existing.my_display_effect)
+			return
+	mover.AddComponent(/datum/component/display_effect, src.type, depth, force_update)
 
 /turf/open/gm/river/proc/on_hit(turf/T, atom/movable/AM)
 	SIGNAL_HANDLER
 	if(!isliving(AM) || AM.throwing)
 		return
-	AM.AddComponent(/datum/component/display_effect, src.type, depth)
+	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, T)
 
 /turf/open/gm/river/Entered(atom/movable/AM)
 	..()
@@ -868,7 +876,7 @@
 	default_name = "deep ocean"
 	allow_construction = FALSE
 	icon_state = "seadeep"
-	depth = -16
+	depth = -18
 
 /turf/open/gm/river/ocean/Entered(atom/movable/AM)
 	. = ..()
@@ -911,15 +919,23 @@
 
 /turf/open/gm/coast/proc/on_enter(turf/source, atom/movable/mover)
 	SIGNAL_HANDLER
-	if(!isliving(mover) || mover.throwing)
+	if(!isliving(mover) || mover.throwing || (!ishuman(mover) && !isxeno(mover) && !isyautja(mover)))
 		return
+	if(iscarbon(mover))
+		var/mob/living/carbon/carbon_mover =  mover
+		if(carbon_mover.IsKnockDown())
+			return
+		var/datum/component/display_effect/existing = carbon_mover.GetComponent(/datum/component/display_effect)
+		if(existing)
+			carbon_mover.AddComponent(/datum/component/display_effect, src.type, depth, existing.my_display_effect)
+			return
 	mover.AddComponent(/datum/component/display_effect, src.type, depth)
 
 /turf/open/gm/coast/proc/on_hit(turf/T, atom/movable/AM)
 	SIGNAL_HANDLER
 	if(!isliving(AM) || AM.throwing)
 		return
-	AM.AddComponent(/datum/component/display_effect, src.type, depth)
+	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, T)
 
 /turf/open/gm/coast/north
 	depth = -4
@@ -1016,7 +1032,7 @@
 	icon_state = "bluesea"
 	can_bloody = FALSE
 	supports_surgery = FALSE
-	var/depth = -12 //used for display_effect
+	depth = -12 //used for display_effect
 
 //Ice Colony grounds
 

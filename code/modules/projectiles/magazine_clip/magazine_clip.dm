@@ -25,7 +25,7 @@ TODO:
 */
 
 /obj/item/magazine_clip
-	name = "\improper magazine clip"
+	name = "magazine_clip"
 	desc = "A 3D printed magazine clip, can secure two magazines."
 	icon = 'icons/obj/items/tools.dmi' //PLACEHOLDER FOR TESTING
 	icon_state = "c_tube"
@@ -75,8 +75,6 @@ TODO:
 /obj/item/magazine_clip/get_examine_text(mob/user)
 	. += ..()
 
-	. += "Use special action or alt-click to switch active slot, use in hand or click with an empty hand to remove magazine."
-
 	for(var/i in 1 to length(contained_mags))
 		if (contained_mags[i] == 0)
 			. += "Slot [i] is empty."
@@ -105,6 +103,6 @@ TODO:
 
 /obj/item/magazine_clip/clicked(mob/user, list/mods) //? Absolutely clueless as to how this works, mimicing gun_helpers.dm
 	if (mods[ALT_CLICK])
-		src.switch_active_slot(user)
+		src.switch_active_slot()
 		return TRUE
 	return (..())

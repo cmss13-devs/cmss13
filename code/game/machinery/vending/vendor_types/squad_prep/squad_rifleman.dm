@@ -113,7 +113,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 		list("Data Detector", 15, /obj/item/device/motiondetector/intel, null, VENDOR_ITEM_REGULAR),
 		list("Whistle", 5, /obj/item/clothing/accessory/device/whistle, null, VENDOR_ITEM_REGULAR),
 		list("SensorMate Medical HUD", 15, /obj/item/clothing/glasses/hud/sensor, null, VENDOR_ITEM_REGULAR),
-		list("Rifle Magazine Clip", 5, /obj/item/magazine_clip/rifle, null, VENDOR_ITEM_REGULAR),
 		list("Tape", 5, /obj/item/tool/tape, null, VENDOR_ITEM_REGULAR),/*TODO: REMOVE AFTER TESTING*/
 
 		list("BINOCULARS", 0, null, null, null),

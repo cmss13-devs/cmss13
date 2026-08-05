@@ -28,6 +28,13 @@ Current Problems:
 	///Used to identify if the update_icon is called by the component (viz. the reseting sprite proc)
 	var/is_reseting_sprite = FALSE
 
+	//* Default overlay settings
+	var/list/overlay_inactive_mag_offsets = list(5, 0)
+	var/overlay_is_blend_inset = FALSE
+	var/overlay_icon = 'icons/obj/items/weapons/guns/jungle_style_bind.dmi'
+	var/overlay_icon_state = "zipper_band_b"
+
+	//* Storage lists
 	///Storage black lists
 	var/list/generic_storage_black_list = list( //* Includes all the magazine belts and internal storages (armors, webbings)
 		/obj/item/storage/belt,
@@ -47,7 +54,21 @@ Current Problems:
 		user.drop_inv_item_to_loc(binding_item, parent)
 	else
 		binding_item.forceMove(parent)
-	add_overlay(parent)
+
+	if(istype(binding_item, /obj/item/jungle_mag_binders))
+		var/obj/item/jungle_mag_binders/target = binding_item
+
+		//Check if the binding item has unique overlay settings
+		if(target.jungle_mag_overlay_inactive_mag_offsets)
+			overlay_inactive_mag_offsets = target.jungle_mag_overlay_inactive_mag_offsets
+		if(target.jungle_mag_overlay_is_blend_inset)
+			overlay_is_blend_inset = target.jungle_mag_overlay_is_blend_inset
+		if(target.jungle_mag_overlay_icon)
+			overlay_icon = target.jungle_mag_overlay_icon
+		if(target.jungle_mag_overlay_icon_state)
+			overlay_icon_state = target.jungle_mag_overlay_icon_state
+
+	add_overlay(parent, overlay_inactive_mag_offsets, overlay_is_blend_inset, overlay_icon, overlay_icon_state)
 
 /datum/component/jungle_magazine/RegisterWithParent()
 	signal_reg(parent)
@@ -92,7 +113,8 @@ Current Problems:
 
 	if(!is_reseting_sprite)
 		reset_magazine_sprite(source)
-		add_overlay(source)
+		add_overlay(source, overlay_inactive_mag_offsets, overlay_is_blend_inset, overlay_icon, overlay_icon_state)
+
 
 ///Check against blacklists to stop jungle mag from going into certain storages
 /datum/component/jungle_magazine/proc/on_attempt_insert_into_storage(obj/item/source, obj/item/storage/storage, prevent_warning, mob/user)
@@ -111,22 +133,23 @@ Current Problems:
 
 //* Custom procs***************************************************************************************
 ///Creates an overlay for jungle mag
-/datum/component/jungle_magazine/proc/add_overlay(obj/item/target)
+/datum/component/jungle_magazine/proc/add_overlay(obj/item/target, list/inactive_mag_offsets, is_blend_inset, band_icon, band_icon_state)
 	if(attached_magazine != 0) //Only necessary if there's a magazine attached
 		//* Add the inactive magazine icon
 		var/obj/item/ammo_magazine/inactive_mag = inactive_magazine()
 		var/image/inactive_mag_image = image(inactive_mag.icon, target, inactive_mag.icon_state)
 		inactive_mag_image.overlays += inactive_mag.overlays
-		inactive_mag_image.pixel_x = 4
-		inactive_mag_image.pixel_y = -1
+		inactive_mag_image.pixel_x = inactive_mag_offsets[1]
+		inactive_mag_image.pixel_y = inactive_mag_offsets[2]
 		var/image/target_copy_image = image(target.icon, target, target.icon_state)
 		target_copy_image.overlays += target.overlays
 
 		target.overlays += inactive_mag_image
 		target.overlays += target_copy_image
 	//* Add the velcro/zipper band
-	var/image/magazine_bind = image('icons/obj/items/weapons/guns/jungle_style_bind.dmi', "zipper_band_b")
-	magazine_bind.blend_mode = BLEND_INSET_OVERLAY
+	var/image/magazine_bind = image(band_icon, band_icon_state)
+	if(is_blend_inset)
+		magazine_bind.blend_mode = BLEND_INSET_OVERLAY
 	target.overlays += magazine_bind
 
 ///Cleans the magazine icon in conjuncture with the jungle mag overlay
@@ -157,7 +180,7 @@ Current Problems:
 		//Updating icons after finish
 		reset_magazine_sprite(old_mag)
 		reset_magazine_sprite(new_mag)
-		add_overlay(new_mag)
+		add_overlay(new_mag, overlay_inactive_mag_offsets, overlay_is_blend_inset, overlay_icon, overlay_icon_state)
 	else
 		is_attached_magazine_active = !is_attached_magazine_active //Revert the change, as no switch happened
 		if(user)
@@ -184,7 +207,7 @@ Current Problems:
 			signal_reg(incoming_magazine)
 			reset_magazine_sprite(incoming_magazine)
 			reset_magazine_sprite(parent)
-			add_overlay(parent)
+			add_overlay(parent, overlay_inactive_mag_offsets, overlay_is_blend_inset, overlay_icon, overlay_icon_state)
 			return TRUE
 		else
 			to_chat(user, SPAN_WARNING("A magazine is already attached to the jungle magazine!"))
@@ -211,7 +234,7 @@ Current Problems:
 		signal_unreg(target_magazine)
 		reset_magazine_sprite(target_magazine)
 		reset_magazine_sprite(parent)
-		add_overlay(parent)
+		add_overlay(parent, overlay_inactive_mag_offsets, overlay_is_blend_inset, overlay_icon, overlay_icon_state)
 	else //Case #1
 		target_magazine = parent
 		if(user)

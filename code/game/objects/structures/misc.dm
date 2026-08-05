@@ -172,9 +172,9 @@
 
 /obj/structure/target/toggle_anchored(obj/item/wrench, mob/user)
 	//no need for movable,unbreakable bullet sponge
-	if(. = ..())
+	if(..())
 		density = !density
-
+//
 
 /obj/structure/target/syndicate
 	icon_state = "target_s"

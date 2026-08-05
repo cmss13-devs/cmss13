@@ -172,6 +172,7 @@ Current Problems:
 			old_mag.forceMove(new_mag)
 			if(!be_silent) //For internal use
 				to_chat(user, SPAN_NOTICE("You switched to use [new_mag]."))
+				playsound(user, 'sound/weapons/handling/gun_underbarrel_deactivate.ogg', 80)
 		else //For when there's no user, if that is to happen
 			var/old_loc = old_mag.loc
 			old_mag.forceMove(get_turf(new_mag))

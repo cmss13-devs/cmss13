@@ -294,7 +294,7 @@
 	if(auto_retrieval_slot)
 		AddElement(/datum/element/drop_retrieval/gun, auto_retrieval_slot)
 	update_icon() //for things like magazine overlays
-	gun_firemode = gun_firemode_list[1] || GUN_FIREMODE_SEMIAUTO //addcomp
+	gun_firemode = gun_firemode_list[1] || GUN_FIREMODE_SEMIAUTO
 	AddComponent(/datum/component/automatedfire/autofire, fire_delay, burst_delay, burst_amount, gun_firemode, autofire_slow_mult, CALLBACK(src, PROC_REF(set_bursting)), CALLBACK(src, PROC_REF(reset_fire)), CALLBACK(src, PROC_REF(fire_wrapper)), CALLBACK(src, PROC_REF(display_ammo)), CALLBACK(src, PROC_REF(set_auto_firing))) //This should go after handle_starting_attachment() and setup_firemodes() to get the proper values set.
 
 /obj/item/weapon/gun/proc/set_gun_attachment_offsets()
@@ -1207,7 +1207,6 @@ and you're good to go.
 
 /obj/item/weapon/gun/proc/Fire(atom/target, mob/living/user, params, reflex = FALSE, dual_wield)
 	set waitfor = FALSE
-	to_chat(world, "yoshiyoshi")
 	if(!gun_user)
 		set_gun_user(user)
 
@@ -1408,7 +1407,6 @@ and you're good to go.
 
 
 /obj/item/weapon/gun/attack(mob/living/attacked_mob, mob/living/user, dual_wield)
-	to_chat(world, "yolo?")
 	if(active_attachable && (active_attachable.flags_attach_features & ATTACH_MELEE)) //this is expected to do something in melee.
 		active_attachable.last_fired = world.time
 		active_attachable.fire_attachment(attacked_mob, src, user)
@@ -2196,7 +2194,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 	gun_user = to_set
 	if(gun_user)
-		RegisterSignal(gun_user, COMSIG_MOB_MOUSEDOWN, PROC_REF(start_fire)) //???
+		RegisterSignal(gun_user, COMSIG_MOB_MOUSEDOWN, PROC_REF(start_fire))
 		RegisterSignal(gun_user, COMSIG_MOB_MOUSEDRAG, PROC_REF(change_target))
 		RegisterSignal(gun_user, COMSIG_MOB_MOUSEUP, PROC_REF(stop_fire))
 
@@ -2210,7 +2208,6 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 ///Update the target if you draged your mouse
 /obj/item/weapon/gun/proc/change_target(datum/source, atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)
 	SIGNAL_HANDLER
-	to_chat(world, "changetarget GUN")
 	set_target(get_turf_on_clickcatcher(over_object, gun_user, params))
 	gun_user?.face_atom(target)
 
@@ -2218,7 +2215,6 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 /// SIGNAL_HANDLER for COMSIG_MOB_MOUSEDOWN
 /obj/item/weapon/gun/proc/start_fire(datum/source, atom/object, turf/location, control, params, bypass_checks = FALSE)
 	SIGNAL_HANDLER
-	to_chat(world, "who am I")
 	if(!gun_user)
 		set_gun_user(source)
 
@@ -2272,18 +2268,15 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	set_target(get_turf_on_clickcatcher(object, gun_user, params))
 	if((gun_firemode == GUN_FIREMODE_SEMIAUTO) || active_attachable)
 		if(Fire(object, gun_user, modifiers))
-			to_chat(world, "wah wah")
 			display_ammo(gun_user)
 			reset_fire()
-		return COMSIG_MOB_CLICK_HANDLED //truthnike?
+		return COMSIG_MOB_CLICK_HANDLED
 	SEND_SIGNAL(src, COMSIG_GUN_FIRE)
-	to_chat(world, "gunshot 0")
 	return COMSIG_MOB_CLICK_HANDLED
 
 /// Wrapper proc for the autofire subsystem to ensure the important args aren't null
 /obj/item/weapon/gun/proc/fire_wrapper(atom/target, mob/living/user, params, reflex = FALSE, dual_wield)
 	SHOULD_NOT_OVERRIDE(TRUE)
-	to_chat(world, "fire wrapper")
 	if(!target)
 		target = src.target
 	if(!user)
@@ -2295,7 +2288,6 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 /// Setter proc for fa_firing
 /obj/item/weapon/gun/proc/set_auto_firing(auto = FALSE)
 	SIGNAL_HANDLER
-	to_chat(world, "set FA")
 	fa_firing = auto
 
 /// Getter for gun_user

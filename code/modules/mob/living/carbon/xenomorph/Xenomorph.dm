@@ -556,14 +556,8 @@
 
 	RegisterSignal(src, COMSIG_MOB_SCREECH_ACT, PROC_REF(handle_screech_act))
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_SPAWN, src)
-//	to_chat(world, "evo evo")
-	AddComponent(/datum/component/automatedfire/autoslash, 10 + caste.attack_delay + attack_speed_modifier, CALLBACK(src, PROC_REF(UnarmedAttack_wrapper)), CALLBACK(src, PROC_REF(clear_target)))
+	AddComponent(/datum/component/automatedfire/autoslash, 10 + caste.attack_delay + attack_speed_modifier, CALLBACK(src, PROC_REF(UnarmedAttack_wrapper)))
 	RegisterSignal(src, COMSIG_MOB_MOUSEDRAG, PROC_REF(change_target))
-//	RegisterSignal(src, COMSIG_MOB_MOUSEUP, PROC_REF(clear_target))
-
-/mob/living/carbon/xenomorph/proc/clear_target()
-	SIGNAL_HANDLER
-	last_target = null
 
 /mob/living/carbon/xenomorph/proc/update_minimap_see_humans()
 	var/datum/action/minimap/ref

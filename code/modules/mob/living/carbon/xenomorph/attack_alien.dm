@@ -368,9 +368,6 @@
 		else
 			xeno.visible_message(SPAN_DANGER("[xeno] [xeno.slashes_verb] [src]!"),
 			SPAN_DANGER("We [xeno.slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-			if(xeno.a_intent == INTENT_DISARM)
-				if(do_after(xeno, (10 + xeno.caste.attack_delay + xeno.attack_speed_modifier), show_busy_icon = BUSY_ICON_BUILD, target = src, max_dist = 1))
-					src.attack_alien(xeno)
 		return XENO_ATTACK_ACTION
 
 /obj/structure/surface/table/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
@@ -392,7 +389,7 @@
 	return TAILSTAB_COOLDOWN_NORMAL
 
 //Breaking barricades
-/obj/structure/barricade/attack_alien(mob/living/carbon/xenomorph/xeno) //
+/obj/structure/barricade/attack_alien(mob/living/carbon/xenomorph/xeno)
 	xeno.animation_attack_on(src)
 	take_damage( rand(xeno.melee_damage_lower, xeno.melee_damage_upper) * brute_multiplier)
 	if(barricade_hitsound)
@@ -410,10 +407,6 @@
 			xeno.apply_damage(5, enviro=TRUE)
 		else
 			xeno.apply_damage(10, enviro=TRUE)
-//	if(xeno.a_intent == INTENT_DISARM)
-//		if(do_after(xeno, (10 + xeno.caste.attack_delay + xeno.attack_speed_modifier), show_busy_icon = BUSY_ICON_BUILD, target = src, max_dist = 1))
-//			src.attack_alien(xeno)
-
 	return XENO_ATTACK_ACTION
 
 /obj/structure/barricade/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
@@ -455,10 +448,6 @@
 	if(unslashable || health <= 0 && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
 		to_chat(xeno, SPAN_WARNING("We stare at \the [src] cluelessly."))
 		return XENO_NO_DELAY_ACTION
-
-	if(xeno.a_intent == INTENT_DISARM)
-		if(do_after(xeno, (10 + xeno.caste.attack_delay + xeno.attack_speed_modifier), show_busy_icon = BUSY_ICON_BUILD, target = src, max_dist = 1))
-			src.attack_alien(xeno)
 
 /obj/structure/magazine_box/attack_alien(mob/living/carbon/xenomorph/xeno)
 	if(HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
@@ -537,9 +526,6 @@
 		SPAN_WARNING("You hear a glass tapping sound."), 5, CHAT_TYPE_XENO_COMBAT)
 	else
 		attack_generic(xeno, xeno.melee_damage_lower)
-		if(xeno.a_intent == INTENT_DISARM)
-			if(do_after(xeno, (10 + xeno.caste.attack_delay + xeno.attack_speed_modifier), show_busy_icon = BUSY_ICON_BUILD, target = src, max_dist = 1))
-				src.attack_alien(xeno)
 	return XENO_ATTACK_ACTION
 
 /obj/structure/window/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
@@ -598,9 +584,6 @@
 	if(xeno.mob_size >= MOB_SIZE_BIG)
 		damage = 40
 	take_damage(damage)
-	if(xeno.a_intent == INTENT_DISARM)
-		if(do_after(xeno, (10 + xeno.caste.attack_delay + xeno.attack_speed_modifier), show_busy_icon = BUSY_ICON_BUILD, target = src, max_dist = 1))
-			src.attack_alien(xeno)
 	return XENO_ATTACK_ACTION
 
 /obj/structure/machinery/door/window/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
@@ -916,9 +899,6 @@
 	else
 		xeno.visible_message(SPAN_DANGER("[xeno] [xeno.slashes_verb] \the [src]!"),
 		SPAN_DANGER("We [xeno.slash_verb] \the [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-	if(xeno.a_intent == INTENT_DISARM)
-		if(do_after(xeno, (10 + xeno.caste.attack_delay + xeno.attack_speed_modifier), show_busy_icon = BUSY_ICON_BUILD, target = src, max_dist = 1))
-			src.attack_alien(xeno)
 	return XENO_ATTACK_ACTION
 
 /obj/structure/machinery/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)

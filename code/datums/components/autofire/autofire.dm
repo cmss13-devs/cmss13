@@ -82,7 +82,6 @@
 ///Insert the component in the bucket system if it was not in already
 /datum/component/automatedfire/autofire/proc/initiate_shot()
 	SIGNAL_HANDLER
-	to_chat(world, "gunshot1")
 	if(shooting)//if we are already shooting, it means the shooter is still on cooldown
 		if(bursting && (world.time > (next_fire + (burstfire_shot_delay * burst_shots_to_fire))))
 			hard_reset()
@@ -120,12 +119,13 @@
 
 ///Ask the shooter to fire and schedule the next shot if need
 /datum/component/automatedfire/autofire/process_shot()
-	to_chat(world, "whatanabe1")
 	if(!shooting)
 		return
 	if(next_fire > world.time)//This mean duplication somewhere, we abort now
+		to_chat(world, "prcoesshot2")
 		return
 	if(!(callback_fire.Invoke() & AUTOFIRE_CONTINUE))//reset fire if we want to stop
+		to_chat(world, "prcoesshot3")
 		hard_reset()
 		return
 	switch(fire_mode)
@@ -150,7 +150,6 @@
 		if(GUN_FIREMODE_SEMIAUTO)
 			return
 	schedule_shot()
-
 
 /datum/component/automatedfire/autoslash // COMSIG_MOB_INTENT_CHANGE
 	///Delay between two shots when in full auto
@@ -177,16 +176,12 @@
 	RegisterSignal(parent, COMSIG_XENO_EVOLVE_TO_NEW_CASTE, PROC_REF(modify_autoslash_attack_delay))
 	RegisterSignal(parent, COMSIG_AUTOSLASH, PROC_REF(start_autoslash))
 	RegisterSignal(parent, COMSIG_MOB_MOUSEUP, PROC_REF(stop_autoslash))
-	RegisterSignal(parent, COMSIG_AUTOSLASH_MOVE, PROC_REF(set_next_slash))
-//	RegisterSignal(parent, COMSIG_GUN_NEXT_FIRE_MODIFIED, PROC_REF(set_next_fire))
+//	RegisterSignal(parent, COMSIG_AUTOSLASH_MOVE, PROC_REF(set_next_slash))
 
 	src.autoslash_attack_delay = autoslash_attack_delay
-//	src.mob_intent = mob_intent
 	src.callback_bursting = callback_bursting
 	src.callback_clear_target = callback_clear_target
 	src.callback_slash = callback_slash
-//	src.callback_display_ammo = callback_display_ammo
-//	src.callback_set_firing = callback_set_firing
 	to_chat(world, "inited comp")
 	to_chat(world, "src is [src]")
 	to_chat(world, "parent is [parent]")
@@ -208,19 +203,17 @@
 
 /datum/component/automatedfire/autoslash/proc/start_autoslash()
 	SIGNAL_HANDLER
-//	to_chat(world, "init shot")
 	if(shooting)//if we are already shooting, it means the shooter is still on cooldown
 		return
 	shooting = TRUE
-//	to_chat(world, "startedAS1")
 	process_shot()
 
-/datum/component/automatedfire/autoslash/proc/stop_autoslash()
+/datum/component/automatedfire/autoslash/proc/stop_autoslash(mob/living/carbon/xenomorph/our_xeno)
 	SIGNAL_HANDLER
 	if(!shooting)
 		return
 	shooting = FALSE
-	callback_clear_target.Invoke()
+	our_xeno.last_target = null
 
 ///Hard reset the autofire, happens when the shooter fall/is thrown, at the end of a burst or when it runs out of ammunition
 /datum/component/automatedfire/autoslash/proc/hard_reset()
@@ -230,19 +223,17 @@
 	shooting = FALSE
 
 ///Manually sets firedelay
-/datum/component/automatedfire/autoslash/proc/set_next_slash(atom/movable, new_next_slash)
+/datum/component/automatedfire/autoslash/proc/set_next_fire(atom/movable, new_next_slash)
 	SIGNAL_HANDLER
-//	to_chat(world, "New next slash [new_next_slash]")
-//	next_slash = new_next_slash
+	next_fire = new_next_slash
 
 /datum/component/automatedfire/autoslash/process_shot()
 	to_chat(world, "prcoesshot")
 	if(!shooting)
 		to_chat(world, "prcoesshot1")
 		return
-	if(next_slash > world.time)//This mean duplication somewhere, we abort now
+	if(next_fire > world.time)//requeue the slashing
 		to_chat(world, "prcoesshot2")
-		to_chat(world, "next_fire is [next_slash]")
 		return
 	if(!(callback_slash.Invoke()))//reset fire if we want to stop/& AUTOFIRE_CONTINUE
 		to_chat(world, "prcoesshot3")

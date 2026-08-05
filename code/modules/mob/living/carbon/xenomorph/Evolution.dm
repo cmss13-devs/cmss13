@@ -240,7 +240,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		else
 			SSticker.mode?.round_stats.castes_evolved[caste_cleaned_key] += 1
 
-	SEND_SIGNAL(src, COMSIG_XENO_EVOLVE_TO_NEW_CASTE, new_xeno) // evo
+	SEND_SIGNAL(src, COMSIG_XENO_EVOLVE_TO_NEW_CASTE, new_xeno)
 
 /mob/living/carbon/xenomorph/proc/evolve_checks()
 	if(!check_state(TRUE))

@@ -3,7 +3,6 @@
 */
 
 /mob/living/carbon/xenomorph/UnarmedAttack(atom/target, proximity, click_parameters, tile_attack = FALSE, ignores_resin = FALSE)
-	to_chat(world, "unarmed attack")
 	if(body_position == LYING_DOWN || HAS_TRAIT(src, TRAIT_ABILITY_BURROWED) || cannot_slash) //No attacks while laying down
 		return FALSE
 	var/mob/alt
@@ -52,7 +51,7 @@
 					return FALSE
 
 	target = target.handle_barriers(src, , (PASS_MOB_THRU_XENO|PASS_TYPE_CRAWLER)) // Checks if target will be attacked by the current alien OR if the blocker will be attacked
-	switch(target.attack_alien(src)) // meh
+	switch(target.attack_alien(src))
 		if(XENO_ATTACK_ACTION)
 			xeno_attack_delay(src)
 		if(XENO_NONCOMBAT_ACTION)
@@ -94,32 +93,9 @@
 				else
 					src.visible_message(SPAN_DANGER("\The [src] swipes at \the [target]!"),
 					SPAN_DANGER("We swipe at \the [target]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-//	to_chat(world, "we got here")
-//	while(var/signal )
 	last_target = target
-//		to_chat(world, "next_move is [next_move]")
-//		to_chat(world, "worlttime is [world.time]")
 	SEND_SIGNAL(src, COMSIG_AUTOSLASH_MOVE, next_move)
-	SEND_SIGNAL(src, COMSIG_AUTOSLASH)//this
-
-//	to_chat(world, "src is [src]")
-	return TRUE
-
-/mob/living/carbon/xenomorph/proc/UnarmedAttack_wrapper(atom/target, proximity, click_parameters, tile_attack = FALSE, ignores_resin = FALSE)
-	SHOULD_NOT_OVERRIDE(TRUE)
-	if(src.next_move <= world.time && last_target)
-		target = src.last_target
-	//	to_chat(world, "proximity is [proximity]")
-		if(target.Adjacent(src))
-			return UnarmedAttack(target, 1, click_parameters)
-		else
-			return RangedAttack(target)
-	else
-		SEND_SIGNAL(src, COMSIG_AUTOSLASH)
-		return TRUE
-
-/mob/living/carbon/xenomorph/proc/dummy()
-	to_chat(world, "dummy")
+	SEND_SIGNAL(src, COMSIG_AUTOSLASH)
 	return TRUE
 
 /mob/living/carbon/xenomorph/RangedAttack(atom/A)
@@ -132,6 +108,19 @@
 		return UnarmedAttack(get_step(src, Get_Compass_Dir(src, A)), tile_attack = TRUE, ignores_resin = TRUE)
 	return FALSE
 
+/mob/living/carbon/xenomorph/proc/UnarmedAttack_wrapper(atom/target, proximity, click_parameters, tile_attack = FALSE, ignores_resin = FALSE)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	if(src.next_move <= world.time && last_target)
+		target = src.last_target
+		src.face_atom(target)
+		if(target.Adjacent(src))
+			return UnarmedAttack(target, 1, click_parameters)
+		else
+			return RangedAttack(target)
+	else
+		SEND_SIGNAL(src, COMSIG_AUTOSLASH)
+		return TRUE
+
 /**The parent proc, will default to UnarmedAttack behaviour unless overridden
 Return XENO_ATTACK_ACTION if it does something and the attack should have full attack delay.
 Return XENO_NONCOMBAT_ACTION if it did something and should have some delay.
@@ -143,9 +132,7 @@ so that it doesn't double up on the delays) so that it applies the delay immedia
 /atom/proc/attack_alien(mob/user as mob)
 	return
 
-/mob/living/carbon/xenomorph/click(atom/target, list/mods) // ehhh
-	to_chat(world, "xeno click")
-//	last_target = target
+/mob/living/carbon/xenomorph/click(atom/target, list/mods)
 	if(queued_action)
 		handle_queued_action(target)
 		return TRUE
@@ -186,9 +173,6 @@ so that it doesn't double up on the delays) so that it applies the delay immedia
 	if(next_move >= world.time)
 		return FALSE
 
-//	if(a_intent == INTENT_HELP)
-//		SEND_SIGNAL(src, )
-
 	return ..()
 
 //Larva attack, will default to attack_alien behaviour unless overridden
@@ -197,12 +181,6 @@ so that it doesn't double up on the delays) so that it applies the delay immedia
 
 /mob/living/carbon/xenomorph/proc/change_target(datum/source, atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)
 	SIGNAL_HANDLER
-	to_chat(world, "changing target")
 	var/atom/target = get_turf_on_clickcatcher(over_object, src, params)
 	face_atom(target)
-//	to_chat(world, "src is [src]")
-//	to_chat(world, "src_object is [src_object]")
-//	to_chat(world, "over_object is [over_object]")
-//	to_chat(world, "src_loc is [src_location]")
-//	to_chat(world, "over loc is [over_location]")
 	last_target = target

@@ -37,7 +37,6 @@
 		return
 
 	if (world.time < next_click)
-//		to_chat(world, "meow1")
 		return
 
 	next_click = world.time + 1 //Maximum code-permitted clickrate 10.26/s, practical maximum manual rate: 8.5, autoclicker maximum: between 7.2/s and 8.5/s.
@@ -51,7 +50,6 @@
 
 	// Don't allow any other clicks while dragging something
 	if(mods[DRAG])
-		to_chat(world, "brahhh")
 		return
 
 	if(SEND_SIGNAL(client, COMSIG_CLIENT_PRE_CLICK, atom_clicked, mods) & COMPONENT_INTERRUPT_CLICK)
@@ -135,7 +133,6 @@
 
 	next_move = world.time
 	if(atom_clicked.Adjacent(src)) // If standing next to the atom clicked.
-		to_chat(world, "clickadjacent")
 		click_adjacent(atom_clicked, object_used, mods)
 		return
 	// If not standing next to the atom clicked.
@@ -145,14 +142,11 @@
 
 	if(SEND_SIGNAL(src, COMSIG_MOB_CLICKON, atom_clicked, params) & COMSIG_MOB_CLICK_CANCELED)
 		return
-	to_chat(world, "click ranged")
 	RangedAttack(atom_clicked, mods)
 	SEND_SIGNAL(src, COMSIG_MOB_POST_CLICK, atom_clicked, mods)
-//	SEND_SIGNAL(src, COMSIG_AUTOSLASH)
 	return
 
 /mob/proc/click_adjacent(atom/targeted_atom, obj/item/used_item, mods)
-//	to_chat(world, "called this")
 	if(HAS_TRAIT(src, TRAIT_HAULED))
 		if(!isstorage(targeted_atom) && !isclothing(targeted_atom) && !isweapon(targeted_atom) && !isgun(targeted_atom))
 			return
@@ -282,7 +276,6 @@
 /mob/proc/UnarmedAttack(atom/A, proximity_flag, click_parameters)
 	if(!client || !client.remote_control)
 		return FALSE
-	to_chat(world, "mreow222")
 	A.attack_remote(src)
 
 /*

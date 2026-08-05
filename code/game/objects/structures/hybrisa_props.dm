@@ -26,9 +26,6 @@
 		user.visible_message(SPAN_DANGER("[user] [user.slashes_verb] [src]!"),
 		SPAN_DANGER("We [user.slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	update_icon()
-	if(user.a_intent == INTENT_DISARM)
-		if(do_after(user, (10 + user.caste.attack_delay + user.attack_speed_modifier), show_busy_icon = BUSY_ICON_BUILD, target = src, max_dist = 1))
-			src.attack_alien(user)
 	return XENO_ATTACK_ACTION
 
 /obj/structure/prop/hybrisa/vehicles/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)

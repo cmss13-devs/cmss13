@@ -20,7 +20,7 @@
 			attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [key_name(S)]</font>")
 			updatehealth()
 
-/mob/living/carbon/xenomorph/attack_hand(mob/living/carbon/human/M) // truthnuke
+/mob/living/carbon/xenomorph/attack_hand(mob/living/carbon/human/M)
 	if(..())
 		return TRUE
 

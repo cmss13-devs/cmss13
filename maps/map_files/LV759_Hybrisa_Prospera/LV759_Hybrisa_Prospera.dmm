@@ -102370,11 +102370,11 @@
 	pixel_x = 7;
 	pixel_y = 10
 	},
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/weapon/gun/pistol/heavy,
+/obj/item/ammo_magazine/pistol/deagle,
+/obj/item/ammo_magazine/pistol/deagle,
+/obj/item/ammo_magazine/pistol/deagle,
+/obj/item/ammo_magazine/pistol/deagle,
+/obj/item/weapon/gun/pistol/deagle,
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},

@@ -79,7 +79,7 @@
 		icon_state = "telebaton_1"
 		item_state = "telebaton_1"
 		w_class = SIZE_MEDIUM
-		force = MELEE_FORCE_VERY_STRONG
+		force = MELEE_FORCE_STRONG
 		stun_force = 40
 		attack_verb = list("smacked", "struck", "slapped", "beat")
 	else

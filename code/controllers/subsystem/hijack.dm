@@ -265,7 +265,6 @@ SUBSYSTEM_DEF(hijack)
 			if(machine)
 				// Pumps don't care about area power but health
 				new_area_state = machine.operable()
-				break // Assumption: One pump per area
 
 			if(progress_areas[cycled_area] != new_area_state)
 				progress_areas[cycled_area] = new_area_state
@@ -320,7 +319,6 @@ SUBSYSTEM_DEF(hijack)
 		if(machine)
 			// Pumps don't care about area power but health
 			new_area_state = machine.operable()
-			break // Assumption: One pump per area
 		message += "[cycled_area] - [new_area_state ? "Online" : "Offline"]\n"
 		progress_areas[cycled_area] = new_area_state
 
@@ -349,7 +347,6 @@ SUBSYSTEM_DEF(hijack)
 			// Pumps don't care about area power but health
 			repairable = FALSE
 			new_area_state = machine.operable()
-			break // Assumption: One pump per area
 		progress_areas[cycled_area] = new_area_state
 		if(new_area_state)
 			// Powered: xenos interested to know this

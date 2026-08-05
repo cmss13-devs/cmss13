@@ -122,8 +122,8 @@ SUBSYSTEM_DEF(hijack)
 	/// Where the ship is currently transiting to
 	var/datum/spaceport/spaceport
 
-	/// A list of all fuel pumps
-	var/list/obj/structure/machinery/fuelpump/fuelpumps = list()
+	/// An alist of area -> machinery (fuelpumps) for lookup
+	var/alist/area_machinery_lookup = alist()
 
 	/// A list of all APCs on the main ship
 	var/list/obj/structure/machinery/power/apc/almayer/apcs = list()
@@ -260,11 +260,12 @@ SUBSYSTEM_DEF(hijack)
 			current_run -= cycled_area
 
 			var/new_area_state = cycled_area.power_equip
-			for(var/obj/structure/machinery/fuelpump/pump in fuelpumps)
+
+			var/obj/structure/machinery/machine = SShijack.area_machinery_lookup[cycled_area]
+			if(machine)
 				// Pumps don't care about area power but health
-				if(get_area(pump) == cycled_area)
-					new_area_state = pump.operable()
-					break // Assumption: One pump per area
+				new_area_state = machine.operable()
+				break // Assumption: One pump per area
 
 			if(progress_areas[cycled_area] != new_area_state)
 				progress_areas[cycled_area] = new_area_state
@@ -315,11 +316,11 @@ SUBSYSTEM_DEF(hijack)
 
 	for(var/area/cycled_area as anything in progress_areas)
 		var/new_area_state = cycled_area.power_equip
-		for(var/obj/structure/machinery/fuelpump/pump in fuelpumps)
+		var/obj/structure/machinery/machine = SShijack.area_machinery_lookup[cycled_area]
+		if(machine)
 			// Pumps don't care about area power but health
-			if(get_area(pump) == cycled_area)
-				new_area_state = pump.operable()
-				break // Assumption: One pump per area
+			new_area_state = machine.operable()
+			break // Assumption: One pump per area
 		message += "[cycled_area] - [new_area_state ? "Online" : "Offline"]\n"
 		progress_areas[cycled_area] = new_area_state
 
@@ -343,12 +344,12 @@ SUBSYSTEM_DEF(hijack)
 	for(var/area/cycled_area as anything in progress_areas)
 		var/new_area_state = cycled_area.power_equip
 		var/repairable = TRUE
-		for(var/obj/structure/machinery/fuelpump/pump in fuelpumps)
+		var/obj/structure/machinery/machine = SShijack.area_machinery_lookup[cycled_area]
+		if(machine)
 			// Pumps don't care about area power but health
-			if(get_area(pump) == cycled_area)
-				repairable = FALSE
-				new_area_state = pump.operable()
-				break // Assumption: One pump per area
+			repairable = FALSE
+			new_area_state = machine.operable()
+			break // Assumption: One pump per area
 		progress_areas[cycled_area] = new_area_state
 		if(new_area_state)
 			// Powered: xenos interested to know this
@@ -1131,18 +1132,19 @@ SUBSYSTEM_DEF(hijack)
 /datum/controller/subsystem/hijack/proc/explode_pumps_with_warning(time_till = 10 SECONDS)
 	shipwide_ai_announcement("ALERT: Build up detected within pumping systems. Overload in [DisplayTimeText(time_till)].", HIJACK_ANNOUNCE, sound('sound/effects/double_klaxon.ogg'))
 	addtimer(CALLBACK(src, PROC_REF(explode_pumps)), time_till)
-	for(var/obj/structure/machinery/fuelpump/pump as anything in fuelpumps)
-		playsound(pump, 'sound/effects/pipe_hissing.ogg', vol = 40)
-		pump.visible_message(SPAN_HIGHDANGER("[pump] begins hissing violently!"))
-		for(var/turf/position in pump.locs)
+	for(var/key,value in SShijack.area_machinery_lookup)
+		var/obj/structure/machinery/machine = value
+		playsound(machine, 'sound/effects/pipe_hissing.ogg', vol = 40)
+		machine.visible_message(SPAN_HIGHDANGER("[machine] begins hissing violently!"))
+		for(var/turf/position in machine.locs)
 			new /obj/effect/warning/explosive(position, time_till)
 
 /// Called to explode the fuel pumps
 /datum/controller/subsystem/hijack/proc/explode_pumps()
 	var/datum/space_weapon_ammo/rocket_launcher/swing_rockets/rockets = new
 	rockets.name = "ship explosion"
-	for(var/obj/structure/machinery/fuelpump/pump as anything in fuelpumps)
-		rockets.hit_target(get_turf(pump), shake=FALSE)
+	for(var/key,machine in SShijack.area_machinery_lookup)
+		rockets.hit_target(get_turf(machine), shake=FALSE)
 	qdel(rockets)
 
 /// Called when FTL is completed successfully to load in shuttles

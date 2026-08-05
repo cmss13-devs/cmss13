@@ -398,10 +398,14 @@ Class Procs:
 /obj/structure/machinery/fuelpump/Initialize(mapload, ...)
 	. = ..()
 	RegisterSignal(SSdcs, COMSIG_GLOB_FUEL_PUMP_UPDATE, PROC_REF(on_pump_update))
-	SShijack.fuelpumps += src
+	var/area/my_area = get_area(src)
+	if(my_area)
+		SShijack.area_machinery_lookup[my_area] = src
 
 /obj/structure/machinery/fuelpump/Destroy(force)
-	SShijack.fuelpumps -= src
+	for(var/key,machine in SShijack.area_machinery_lookup)
+		if(machine == src)
+			SShijack.area_machinery_lookup -= key
 	return ..()
 
 /obj/structure/machinery/fuelpump/ex_act(severity)

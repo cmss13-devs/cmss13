@@ -395,7 +395,7 @@
 			new /obj/effect/overlay/temp/point/big/squad(turf_pointed_at, src, pointed_at, squad.equipment_color)
 			outline_color = squad.equipment_color
 
-		if(ismob(pointed_at))
+		if(ismob(pointed_at) && ishuman(mob))
 			var/outline_name = "point_outline_[REF(src)]"
 			var/outline_size = 0.25
 			if(skills)

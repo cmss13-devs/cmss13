@@ -175,6 +175,7 @@
 	. - ..()
 	if(.)
 		density = !density
+	return .
 
 
 /obj/structure/target/syndicate

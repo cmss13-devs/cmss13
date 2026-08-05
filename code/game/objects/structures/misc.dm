@@ -172,7 +172,7 @@
 
 /obj/structure/target/toggle_anchored(obj/item/wrench, mob/user)
 	//no need for movable,unbreakable bullet sponge
-	. - ..()
+	. = ..()
 	if(.)
 		density = !density
 	return .

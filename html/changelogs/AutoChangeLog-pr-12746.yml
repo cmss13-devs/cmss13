@@ -1,0 +1,4 @@
+author: "zzzmike"
+delete-after: True
+changes:
+  - balance: "disabler capacity moved from 16 to 10, but the bolts are faster by one speed level"

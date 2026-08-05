@@ -32,7 +32,7 @@ They're all essentially identical when it comes to getting the job done.
 	var/max_inherent_rounds = 0 //How many extra rounds the magazine has thats not in use? Used for Sentry Post, specifically for inherent reloading
 	var/gun_type = null //Path of the gun that it fits. Mags will fit any of the parent guns as well, so make sure you want this.
 	var/reload_delay = 1 //Set a timer for reloading mags. Higher is slower.
-	var/flags_magazine = AMMUNITION_REFILLABLE | JUNGLE_STYLE_ABLE //flags specifically for magazines. //TODO: remove the jungle style default it's for testing only
+	var/flags_magazine = AMMUNITION_REFILLABLE | JUNGLE_STYLE_ABLE //flags specifically for magazines.
 	var/base_mag_icon //the default mag icon state.
 	var/base_mag_item //the default mag item (inhand) state.
 	var/transfer_handful_amount = 8 //amount of bullets to transfer, 5 for 12g, 9 for 45-70

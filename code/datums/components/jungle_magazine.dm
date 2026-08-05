@@ -13,7 +13,6 @@ Current Expected Characteristics:
 
 Current Problems:
 - The ammo band on magazine does not heed to throwing animation or changing hand animation (does not rotate and does not fade in)
-- Add SFX when switching "sound/weapons/handling/gun_underbarrel_deactivate.ogg"
 - Add ways to manipulate magazine offset through arguments (just add more arguments for generating the overlay in general)
 - " -make it so the jungle styled mag attacking another magazine also attaches it rather than being attacked"
 - Improve the jungle mag sprite
@@ -36,16 +35,18 @@ Current Problems:
 
 	//* Storage lists
 	///Storage black lists
-	var/list/generic_storage_black_list = list( //* Includes all the magazine belts and internal storages (armors, webbings)
+	var/list/generic_storage_black_list = list( //* Includes all the magazine belts, pouches and internal storages (armors, webbings)
 		/obj/item/storage/belt,
 		/obj/item/storage/internal,
+		/obj/item/storage/pouch/magazine,
 	)
 
 	///Storage white lists, higher precedence than black lists
-	var/list/generic_storage_white_list = list(
+	var/list/generic_storage_white_list = list( //* Only the drop pouch is realistically considered, the other two are left as flavor
 		/obj/item/storage/internal/accessory/drop_pouch,
-	) //? Could add specific belt to be whitelisted as well, like the dutch's belt or anything mentions jungle, it'd be funny
-
+		/obj/item/storage/belt/marine/dutch,
+		/obj/item/storage/belt/marine/rmc,
+	)
 /datum/component/jungle_magazine/Initialize(mob/user, obj/item/trigger_item)
 	if(!istype(parent, /obj/item/ammo_magazine))
 		return COMPONENT_INCOMPATIBLE

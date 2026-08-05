@@ -145,7 +145,7 @@
 					continue
 				if(get_dist(aura_center, target) > floor(6 + aura_strength * 2))
 					continue
-				if(!HIVE_ALLIED_TO_HIVE(target.hivenumber, hivenumber))
+				if(!HIVE_ALLIED_TO_HIVE(hivenumber, target.hivenumber))
 					continue
 				if(target.banished)
 					continue

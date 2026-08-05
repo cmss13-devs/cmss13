@@ -1045,6 +1045,7 @@
 	"<span class='danger'>Follow your Commanders orders.</span>")
 	story_text = "You are a very recent induction of the Colonial Liberation Front. As a fresh recruit to the cause, you were sent here to participate in training drills. A few days ago, several loud explosions were heard to your east. The veteran members went to investigate, and they never returned. Now, Xenomorphs have appeared out of the Jungle to the east, and rumours swirl of unknown figures hiding in the western jungles. You joined expecting a fight, you just were not expecting it to happen so soon. Have the events caused you to change your mind?"
 	spawn_priority = SPAWN_PRIORITY_LOW
+	archetype = INSERT_STANDARD
 
 /obj/effect/landmark/survivor_spawner/lv1021/clf_medic
 	intro_text = list("<h2>You are a member of the CLF!</h2>",\
@@ -1053,6 +1054,7 @@
 	story_text = "You are a long-serving member of the Colonial Liberation Front. You work as part of a training camp that specializes in training up the next generation of freedom fighters while scything the weak and the traitors from the new crop. Several days ago, several loud explosions were heard to the east. Most of the veteran fighters went to investigate, and they never returned. Xenomorphs now encroach from your east, and rumours swirl of human figures to the west. You were already ready to fight for the cause, you just didn’t expect the fight to come to you here. As the colonial song goes, a rebel’s work is never done."
 	equipment = /datum/equipment_preset/survivor/clf_lv1021/medic
 	spawn_priority = SPAWN_PRIORITY_HIGH
+	archetype = INSERT_MEDIC
 
 /obj/effect/landmark/survivor_spawner/lv1021/clf_engi
 	intro_text = list("<h2>You are a member of the CLF!</h2>",\
@@ -1061,6 +1063,7 @@
 	story_text = "You are a long-serving member of the Colonial Liberation Front. You work as part of a training camp that specializes in training up the next generation of freedom fighters while scything the weak and the traitors from the new crop. Several days ago, several loud explosions were heard to the east. Most of the veteran fighters went to investigate, and they never returned. Xenomorphs now encroach from your east, and rumours swirl of human figures to the west. You were already ready to fight for the cause, you just didn’t expect the fight to come to you here. As the colonial song goes, a rebel’s work is never done."
 	equipment = /datum/equipment_preset/survivor/clf_lv1021/engineer
 	spawn_priority = SPAWN_PRIORITY_MEDIUM
+	archetype = INSERT_ENGINEER
 
 /obj/effect/landmark/survivor_spawner/lv1021/clf_leader
 	intro_text = list("<h2>You are a member of the CLF!</h2>",\
@@ -1069,3 +1072,4 @@
 	story_text = "You are a long-serving member of the Colonial Liberation Front. You work as part of a training camp that specializes in training up the next generation of freedom fighters while scything the weak and the traitors from the new crop. Several days ago, several loud explosions were heard to the east. Most of the veteran fighters went to investigate, and they never returned. Xenomorphs now encroach from your east, and rumours swirl of human figures to the west. You were already ready to fight for the cause, you just didn’t expect the fight to come to you here. As the colonial song goes, a rebel’s work is never done."
 	equipment = /datum/equipment_preset/survivor/clf_lv1021/leader
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
+	archetype = INSERT_LEADER

@@ -340,9 +340,9 @@
 			qdel(src)
 	return FALSE
 
-/obj/structure/machinery/fuelpump/handle_vehicle_bump(obj/vehicle/multitile/V)
-	visible_message(SPAN_DANGER("[V] can't destroy [src]!"))
-	playsound(V, 'sound/effects/metal_crash.ogg', 35)
+/obj/structure/machinery/fuelpump/handle_vehicle_bump(obj/vehicle/multitile/vehicle)
+	visible_message(SPAN_DANGER("[vehicle] can't destroy [src]!"))
+	playsound(vehicle, 'sound/effects/metal_crash.ogg', 35)
 	return FALSE
 
 /obj/structure/machinery/cm_vending/handle_vehicle_bump(obj/vehicle/multitile/V)

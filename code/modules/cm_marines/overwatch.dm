@@ -1118,9 +1118,6 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	if(!mods[CTRL_CLICK])
 		return
 
-	if(!ishuman(clicked_on))
-		return
-
 	var/params = list("target_ref" = REF(clicked_on))
 	try_watch_camera(controller, params)
 	return COMPONENT_INTERRUPT_CLICK

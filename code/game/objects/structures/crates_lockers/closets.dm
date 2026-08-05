@@ -64,7 +64,7 @@
 /obj/structure/closet/proc/check_doors()
 	for(var/obj/structure/machinery/door/door in loc)
 		if(door.density)
-			mouse_opacity = 0
+			mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 			return
 	mouse_opacity = initial(mouse_opacity)
 

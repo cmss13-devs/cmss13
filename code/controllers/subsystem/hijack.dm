@@ -625,7 +625,7 @@ SUBSYSTEM_DEF(hijack)
 
 	var/sound_picked = pick('sound/theme/nuclear_detonation1.ogg','sound/theme/nuclear_detonation2.ogg')
 	for(var/client/player as anything in GLOB.clients)
-		playsound_client(player, sound_picked, 90)
+		playsound_client(player, sound_picked, vol=90)
 
 	var/list/alive_mobs = list() //Everyone who will be destroyed on the zlevel(s).
 	var/list/dead_mobs = list() //Everyone who only needs to see the cinematic.
@@ -671,7 +671,7 @@ SUBSYSTEM_DEF(hijack)
 	explosive_cinematic.icon_state = "summary_destroyed"
 
 	for(var/client/player as anything in GLOB.clients)
-		playsound_client(player, 'sound/effects/explosionfar.ogg', 90)
+		playsound_client(player, 'sound/effects/explosionfar.ogg', vol=90)
 
 
 	sleep(0.5 SECONDS)

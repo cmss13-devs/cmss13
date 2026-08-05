@@ -40,7 +40,7 @@
 	for(var/obj/structure/machinery/door/door in loc)
 		RegisterSignal(door, list(COMSIG_DOOR_OPEN, COMSIG_DOOR_CLOSE), PROC_REF(check_doors))
 		if(door.density)
-			mouse_opacity = 0
+			mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /obj/structure/closet/Destroy()
 	GLOB.closet_list -= src

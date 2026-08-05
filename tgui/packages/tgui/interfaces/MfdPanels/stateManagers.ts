@@ -93,3 +93,19 @@ export const useLazeTarget = () => {
     setSelectedTarget: set,
   };
 };
+
+export const useDirectFireXOffsetValue = () => {
+  const [data, set] = useSharedState<number>('directfire-x-offset-value', 0);
+  return {
+    directXOffsetValue: data,
+    setDirectXOffsetValue: set,
+  };
+};
+
+export const useDirectFireYOffsetValue = () => {
+  const [data, set] = useSharedState<number>('directfire-y-offset-value', 0);
+  return {
+    directYOffsetValue: data,
+    setDirectYOffsetValue: set,
+  };
+};

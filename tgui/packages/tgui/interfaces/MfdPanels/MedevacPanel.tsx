@@ -1,12 +1,13 @@
 import { range } from 'common/collections';
 import { useState } from 'react';
-import { useBackend } from 'tgui/backend';
+import { useBackend, useSharedState } from 'tgui/backend';
 import { Box, Divider, Flex, Stack } from 'tgui/components';
 import { Icon } from 'tgui/components';
 
 import { MfdPanel, type MfdProps } from './MultifunctionDisplay';
 import { mfdState, useEquipmentState } from './stateManagers';
 import type { MedevacContext, MedevacTargets } from './types';
+import { useSupportCooldown } from './WeaponPanel';
 
 const MedevacOccupant = (props: { readonly data: MedevacTargets }) => (
   <Box>
@@ -52,12 +53,20 @@ const MedevacOccupant = (props: { readonly data: MedevacTargets }) => (
 export const MedevacMfdPanel = (props: MfdProps) => {
   const { data, act } = useBackend<MedevacContext>();
   const [medevacOffset, setMedevacOffset] = useState(0);
+  const [selectedMedevacRef, setSelectedMedevacRef] = useSharedState<
+    string | undefined
+  >(`${props.panelStateId}_selected_medevac`, undefined);
   const { setPanelState } = mfdState(props.panelStateId);
   const { equipmentState } = useEquipmentState(props.panelStateId);
 
   const result = data.equipment_data.find(
     (x) => x.mount_point === equipmentState,
   );
+
+  const { isOnCooldown, remainingTime } = useSupportCooldown(
+    (result as any) || {},
+  );
+
   const medevacs = data.medevac_targets === null ? [] : data.medevac_targets;
   const medevac_mapper = (x: number) => {
     const target = medevacs.length > x ? medevacs[x] : undefined;
@@ -65,11 +74,19 @@ export const MedevacMfdPanel = (props: MfdProps) => {
       children: target
         ? (target.occupant?.split(' ')[0] ?? 'Empty')
         : undefined,
-      onClick: () =>
-        act('medevac-target', {
-          equipment_id: result?.mount_point,
-          ref: target?.ref,
-        }),
+      borderColor:
+        target && target.ref && selectedMedevacRef === target.ref
+          ? '#ff0000'
+          : undefined,
+      onClick: () => {
+        if (target && target.ref) {
+          setSelectedMedevacRef(target.ref);
+          act('medevac-target', {
+            equipment_id: result?.mount_point,
+            ref: target.ref,
+          });
+        }
+      },
     };
   };
 
@@ -88,6 +105,7 @@ export const MedevacMfdPanel = (props: MfdProps) => {
   return (
     <MfdPanel
       panelStateId={props.panelStateId}
+      color={props.color}
       leftButtons={left_targets}
       rightButtons={[
         {
@@ -125,35 +143,35 @@ export const MedevacMfdPanel = (props: MfdProps) => {
               {all_targets.length > 0 && (
                 <path
                   fillOpacity="0"
-                  stroke="#00e94e"
+                  stroke={props.color || '#00e94e'}
                   d="M 50 50 l -20 0 l -20 -20 l -20 0"
                 />
               )}
               {all_targets.length > 1 && (
                 <path
                   fillOpacity="0"
-                  stroke="#00e94e"
+                  stroke={props.color || '#00e94e'}
                   d="M 50 100 l -20 0 l -20 30 l -20 0"
                 />
               )}
               {all_targets.length > 2 && (
                 <path
                   fillOpacity="0"
-                  stroke="#00e94e"
+                  stroke={props.color || '#00e94e'}
                   d="M 50 155 l -20 0 l -20 80 l -20 0"
                 />
               )}
               {all_targets.length > 3 && (
                 <path
                   fillOpacity="0"
-                  stroke="#00e94e"
+                  stroke={props.color || '#00e94e'}
                   d="M 50 210 l -20 0 l -20 120 l -20 0"
                 />
               )}
               {all_targets.length > 4 && (
                 <path
                   fillOpacity="0"
-                  stroke="#00e94e"
+                  stroke={props.color || '#00e94e'}
                   d="M 50 260 l -20 0 l -20 170 l -20 0"
                 />
               )}
@@ -164,6 +182,20 @@ export const MedevacMfdPanel = (props: MfdProps) => {
               <Stack.Item>
                 <h3>Medevac Requests</h3>
               </Stack.Item>
+              {isOnCooldown && (
+                <Stack.Item>
+                  <h3 style={{ color: '#ff8c00' }}>
+                    <Icon name="clock" /> Cooldown: {remainingTime}s
+                  </h3>
+                </Stack.Item>
+              )}
+              {!isOnCooldown && result && (
+                <Stack.Item>
+                  <h3 style={{ color: '#00e94e' }}>
+                    <Icon name="crosshairs" /> Ready to Extract
+                  </h3>
+                </Stack.Item>
+              )}
               {all_targets.map((x) => (
                 <>
                   <Stack.Item key={x.occupant} width="100%" minHeight="32px">
@@ -179,21 +211,21 @@ export const MedevacMfdPanel = (props: MfdProps) => {
               {all_targets.length > 5 && (
                 <path
                   fillOpacity="0"
-                  stroke="#00e94e"
+                  stroke={props.color || '#00e94e'}
                   d="M 0 310 l 20 0 l 20 -180 l 20 0"
                 />
               )}
               {all_targets.length > 6 && (
                 <path
                   fillOpacity="0"
-                  stroke="#00e94e"
+                  stroke={props.color || '#00e94e'}
                   d="M 0 360 l 20 0 l 20 -130 l 20 0"
                 />
               )}
               {all_targets.length > 7 && (
                 <path
                   fillOpacity="0"
-                  stroke="#00e94e"
+                  stroke={props.color || '#00e94e'}
                   d="M 0 410 l 20 0 l 20 -80 l 20 0"
                 />
               )}

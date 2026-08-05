@@ -168,10 +168,13 @@
 		if(order < 2) // Bootstrap case, just copy everything
 			new_intensities[i] = intensities[1]
 			new_falloff[i] = wave_falloff[1]
-		else if(i <= order + 1)
+		else if(i < order + 1)
 			// Left side. New is wider than old, so 1 corresponds to 2 in old. So just mapping i = i we still are offsetting.
 			new_intensities[i] = intensities[i]
 			new_falloff[i] = wave_falloff[i]
+		else if(i == order + 1) // Center case, copy straight ahead
+			new_intensities[i] = intensities[i-1]
+			new_falloff[i] = wave_falloff[i-1]
 		else // Right side. We're 1 wider, and also need to skip the middle one, so that's a 2 difference
 			new_intensities[i] = intensities[i-2]
 			new_falloff[i] = wave_falloff[i-2]

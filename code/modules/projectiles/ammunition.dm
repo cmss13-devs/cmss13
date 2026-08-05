@@ -126,13 +126,13 @@ They're all essentially identical when it comes to getting the job done.
 	return ..() //Do normal stuff.
 
 //We should only attack it with handfuls. Empty hand to take out, handful to put back in. Same as normal handful.
-/obj/item/ammo_magazine/attackby(obj/item/I, mob/living/user, bypass_hold_check = 0)
-	..() //? Adding a call to parent so it sends out signals, not sure why it's not here in the first place
-	if(istype(I, /obj/item/ammo_magazine))
-		var/obj/item/ammo_magazine/MG = I
+/obj/item/ammo_magazine/attackby(obj/item/item, mob/living/user, bypass_hold_check = 0)
+	. = ..()
+	if(istype(item, /obj/item/ammo_magazine))
+		var/obj/item/ammo_magazine/MG = item
 		if((MG.flags_magazine & AMMUNITION_HANDFUL) || (MG.flags_magazine & AMMUNITION_SLAP_TRANSFER && flags_magazine & AMMUNITION_SLAP_TRANSFER)) //got a handful of bullets
 			if(flags_magazine & AMMUNITION_REFILLABLE) //and a refillable magazine
-				var/obj/item/ammo_magazine/handful/transfer_from = I
+				var/obj/item/ammo_magazine/handful/transfer_from = item
 				if(src == user.get_inactive_hand() || bypass_hold_check) //It has to be held.
 					if(default_ammo == transfer_from.default_ammo)
 						if(transfer_ammo(transfer_from,user,transfer_from.current_rounds)) // This takes care of the rest.
@@ -141,8 +141,8 @@ They're all essentially identical when it comes to getting the job done.
 						to_chat(user, SPAN_NOTICE("Those aren't the same rounds. Better not mix them up."))
 				else
 					to_chat(user, SPAN_NOTICE("Try holding [src] before you attempt to restock it."))
-	else if(I.flags_item & JUNGLE_MAG_BINDER && src.flags_magazine & JUNGLE_STYLE_ABLE)
-		AddComponent(/datum/component/jungle_magazine, user, I)
+	else if(item.flags_item & JUNGLE_MAG_BINDER && src.flags_magazine & JUNGLE_STYLE_ABLE)
+		AddComponent(/datum/component/jungle_magazine, user, item)
 
 //Is the ammo magazine transferrable, silent version
 /obj/item/ammo_magazine/proc/is_transferable(obj/item/ammo_magazine/source)

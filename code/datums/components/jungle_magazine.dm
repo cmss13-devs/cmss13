@@ -1,5 +1,3 @@
-//TODO: WIP
-
 /*
 The two flags:
 - JUNGLE_STYLE_ABLE [conflict.dm]
@@ -14,23 +12,29 @@ Current Expected Characteristics:
 - The jungle mag behaves like a normal mag does, except hanfuls can not be extracted from it while magazines are still attached, allowing the user to change which hand to hold the jungle mag
 
 Current Problems:
-- There's currently no way to limit the jungle mag from going into ammo belts etc.
 - The ammo band on magazine does not heed to throwing animation or changing hand animation (does not rotate and does not fade in)
+- Add SFX when switching "sound/weapons/handling/gun_underbarrel_deactivate.ogg"
+- Add ways to manipulate magazine offset through arguments (just add more arguments for generating the overlay in general)
+- " -make it so the jungle styled mag attacking another magazine also attaches it rather than being attacked"
+- Improve the jungle mag sprite
 */
 
 /datum/component/jungle_magazine
-	var/obj/item/binding_item //The item that initiated the jungle mag construct
+	///The item that initiated the jungle mag construct
+	var/obj/item/binding_item
 	var/is_attached_magazine_active = FALSE //It's two slots, 0 and 1
-	var/attached_magazine = 0 //Default to zero for no attached mag
-	var/is_reseting_sprite = FALSE //Used to identify if the update_icon is called by the component (viz. the reseting sprite proc)
+	///Default to zero for no attached mag
+	var/attached_magazine = 0
+	///Used to identify if the update_icon is called by the component (viz. the reseting sprite proc)
+	var/is_reseting_sprite = FALSE
 
-	//Storage black lists
-	var/list/generic_storage_black_list = list( //* Includes all the magazine belts and armors
+	///Storage black lists
+	var/list/generic_storage_black_list = list( //* Includes all the magazine belts and internal storages (armors, webbings)
 		/obj/item/storage/belt,
 		/obj/item/storage/internal,
 	)
 
-	//Storage white lists, higher precedence than black lists
+	///Storage white lists, higher precedence than black lists
 	var/list/generic_storage_white_list = list(
 		/obj/item/storage/internal/accessory/drop_pouch,
 	) //? Could add specific belt to be whitelisted as well, like the dutch's belt or anything mentions jungle, it'd be funny
@@ -53,36 +57,36 @@ Current Problems:
 
 
 //* Signal Handlers***************************************************************************************
-/datum/component/jungle_magazine/proc/on_attackby(datum/source, obj/item/attacking_item, mob/user) //! This crap is never triggered
+/datum/component/jungle_magazine/proc/on_attackby(datum/source, obj/item/attacking_item, mob/user)
 	SIGNAL_HANDLER
 
 	//Check if the incoming item is a magazine -> attempt to add the magazine
 	if(istype(attacking_item, /obj/item/ammo_magazine))
 		add_magazine(user, attacking_item)
-		return COMPONENT_CANCEL_ITEM_ATTACK //? I think this is how it works?d
+		return COMPONENT_CANCEL_ITEM_ATTACK
 
 /datum/component/jungle_magazine/proc/on_examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 
 	examine_list += get_examine_text(user)
 
-/datum/component/jungle_magazine/proc/on_unique_action(datum/source, mob/user) //TODO: Actally add the arguments in SEND_SIGNAL
+/datum/component/jungle_magazine/proc/on_unique_action(datum/source, mob/user)
 	SIGNAL_HANDLER
 
 	switch_active_magazine(user)
 
-/datum/component/jungle_magazine/proc/on_attack_self(datum/source, mob/user) //TODO: Actally add the arguments in SEND_SIGNAL
+/datum/component/jungle_magazine/proc/on_attack_self(datum/source, mob/user)
 	SIGNAL_HANDLER
 
 	remove_magazine(user)
 
-//Allow you to switch which hand is holding the jungle mag
+///Allow you to switch which hand is holding the jungle mag
 /datum/component/jungle_magazine/proc/on_attempt_withdraw_handful(datum/source, mob/user)
 	SIGNAL_HANDLER
 
 	return COMPONENT_MAGAZINE_CANCEL_ATTEMPT_WITHDRAW_HANDFUL
 
-//Update the overlay to have jungle mag after an update_icon is called on magazine
+///Update the overlay to have jungle mag after an update_icon is called on magazine
 /datum/component/jungle_magazine/proc/on_finish_update_magazine_icon(obj/item/ammo_magazine/source)
 	SIGNAL_HANDLER
 
@@ -90,7 +94,7 @@ Current Problems:
 		reset_magazine_sprite(source)
 		add_overlay(source)
 
-//Check against blacklists to stop jungle mag from going into certain storages
+///Check against blacklists to stop jungle mag from going into certain storages
 /datum/component/jungle_magazine/proc/on_attempt_insert_into_storage(obj/item/source, obj/item/storage/storage, prevent_warning, mob/user)
 	SIGNAL_HANDLER
 
@@ -106,6 +110,7 @@ Current Problems:
 
 
 //* Custom procs***************************************************************************************
+///Creates an overlay for jungle mag
 /datum/component/jungle_magazine/proc/add_overlay(obj/item/target)
 	if(attached_magazine != 0) //Only necessary if there's a magazine attached
 		//* Add the inactive magazine icon
@@ -114,7 +119,7 @@ Current Problems:
 		inactive_mag_image.overlays += inactive_mag.overlays
 		inactive_mag_image.pixel_x = 4
 		inactive_mag_image.pixel_y = -1
-		var/image/target_copy_image = image(target.icon, target, target.icon_state) //? I tried underlays, setting layers, vis content; this is the most painless one
+		var/image/target_copy_image = image(target.icon, target, target.icon_state)
 		target_copy_image.overlays += target.overlays
 
 		target.overlays += inactive_mag_image
@@ -124,7 +129,7 @@ Current Problems:
 	magazine_bind.blend_mode = BLEND_INSET_OVERLAY
 	target.overlays += magazine_bind
 
-//Cleans the magazine icon
+///Cleans the magazine icon in conjuncture with the jungle mag overlay
 /datum/component/jungle_magazine/proc/reset_magazine_sprite(obj/item/ammo_magazine/target)
 	is_reseting_sprite = TRUE
 	target.overlays.Cut()
@@ -143,7 +148,7 @@ Current Problems:
 			user.put_in_hands(new_mag)
 			old_mag.forceMove(new_mag)
 			if(!be_silent) //For internal use
-				to_chat(user, SPAN_BLUE("You switched to use [new_mag]."))
+				to_chat(user, SPAN_NOTICE("You switched to use [new_mag]."))
 		else //For when there's no user, if that is to happen
 			var/old_loc = old_mag.loc
 			old_mag.forceMove(get_turf(new_mag))
@@ -168,16 +173,16 @@ Current Problems:
 		return attached_magazine
 	return parent
 
-/datum/component/jungle_magazine/proc/add_magazine(mob/user, obj/item/ammo_magazine/M) //? Used in construction phase
-	if(istype(M)) //Checks if incoming item is a magazine
+/datum/component/jungle_magazine/proc/add_magazine(mob/user, obj/item/ammo_magazine/incoming_magazine) //? Used in construction phase
+	if(istype(incoming_magazine)) //Checks if incoming item is a magazine
 		if(attached_magazine == 0)
 			if (user)
-				user.drop_inv_item_to_loc(M, parent)
+				user.drop_inv_item_to_loc(incoming_magazine, parent)
 			else //In case there's no user
-				M.forceMove(parent)
-			attached_magazine = M
-			signal_reg(M)
-			reset_magazine_sprite(M)
+				incoming_magazine.forceMove(parent)
+			attached_magazine = incoming_magazine
+			signal_reg(incoming_magazine)
+			reset_magazine_sprite(incoming_magazine)
 			reset_magazine_sprite(parent)
 			add_overlay(parent)
 			return TRUE
@@ -226,7 +231,7 @@ Current Problems:
 		. += "No magazine is attached at this moment."
 	else
 		var/obj/item/ammo_magazine/target_mag = inactive_magazine()
-		. += SPAN_BLUE("Inactive Magazine: [icon2html(target_mag, user)] \a [target_mag] has [target_mag.current_rounds] out of [target_mag.max_rounds].")
+		. += SPAN_NOTICE("Inactive Magazine: [icon2html(target_mag, user)] \a [target_mag] has [target_mag.current_rounds] out of [target_mag.max_rounds].")
 
 /datum/component/jungle_magazine/proc/signal_reg(obj/item/ammo_magazine/target_magazine) //? Only expecting magazines here
 	RegisterSignal(target_magazine, COMSIG_ITEM_ATTACKED, PROC_REF(on_attackby))

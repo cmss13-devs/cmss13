@@ -157,7 +157,7 @@
 		deconstruct(FALSE)
 		return XENO_ATTACK_ACTION
 	else
-		to_chat(xeno, SPAN_WARNING("We stare at \the [src] cluelessly."))
+		to_chat(xeno, SPAN_WARNING("We stare at [src] cluelessly."))
 		return XENO_NO_DELAY_ACTION
 
 /obj/structure/target/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
@@ -170,10 +170,11 @@
 	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
-/obj/structure/target/toggle_anchored(obj/item/W, mob/user)
-	//no need for immovable,unbreakable bullet sponge
-	density = !density
-	. = ..()
+/obj/structure/target/toggle_anchored(obj/item/wrench, mob/user)
+	//no need for movable,unbreakable bullet sponge
+	if(. = ..())
+		density = !density
+
 
 /obj/structure/target/syndicate
 	icon_state = "target_s"

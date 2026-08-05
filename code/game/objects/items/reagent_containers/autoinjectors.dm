@@ -124,7 +124,7 @@
 	maptext_label = "Ep"
 
 
-/obj/item/reagent_container/hypospray/autoinjector/standard/adrenaline/
+/obj/item/reagent_container/hypospray/autoinjector/standard/adrenaline
 	name = "epinephrine autoinjector"
 	chemname = "adrenaline"
 	desc = "An autoinjector loaded with three 5.25u doses of Epinephrine, better known as Adrenaline, a nerve stimulant useful in restarting the heart during defibrillation. Only those trained in medicine can use it. You can refill it at Wey-Med vending machines or with a smart tank."

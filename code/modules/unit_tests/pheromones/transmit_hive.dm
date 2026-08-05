@@ -36,7 +36,7 @@ TEST_FOCUS(/datum/unit_test/pheromones/)
 		abstract_receiver = new /datum/abstract_xenomorph(
 			initialization_callback = CALLBACK(src, PROC_REF(banish_then_readmit))
 		),
-		pheromone_type = XENO_PHERO_RECOVERY,
+		pheromone_type = pheromone_type,
 		test_callback = CALLBACK(src, PROC_REF(pheromone_validation), expected_pheromones)
 	)
 
@@ -53,7 +53,7 @@ TEST_FOCUS(/datum/unit_test/pheromones/)
 	pair_reception_test(
 		abstract_emitter = new /datum/abstract_xenomorph(),
 		abstract_receiver = new /datum/abstract_xenomorph(hive = XENO_HIVE_ALPHA),
-		pheromone_type = XENO_PHERO_RECOVERY,
+		pheromone_type = pheromone_type,
 		test_callback = CALLBACK(src, PROC_REF(pheromone_validation), list())
 	)
 
@@ -76,7 +76,7 @@ TEST_FOCUS(/datum/unit_test/pheromones/)
 			caste = XENO_CASTE_QUEEN,
 			initialization_callback = CALLBACK(src, PROC_REF(setup_alliance), XENO_HIVE_NORMAL, XENO_HIVE_ALPHA)
 		),
-		pheromone_type = XENO_PHERO_RECOVERY,
+		pheromone_type = pheromone_type,
 		test_callback = CALLBACK(src, PROC_REF(pheromone_validation), expected_pheromones)
 	)
 

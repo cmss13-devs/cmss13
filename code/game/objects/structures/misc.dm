@@ -174,7 +174,7 @@
 	//no need for movable,unbreakable bullet sponge
 	if(..())
 		density = !density
-//
+
 
 /obj/structure/target/syndicate
 	icon_state = "target_s"

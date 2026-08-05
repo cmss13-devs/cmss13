@@ -78,13 +78,13 @@ IN_USE used for vending/denying
 	for(var/obj/structure/machinery/door/door in loc)
 		RegisterSignal(door, list(COMSIG_DOOR_OPEN, COMSIG_DOOR_CLOSE), PROC_REF(check_doors))
 		if(door.density)
-			mouse_opacity = 0
+			mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /// This will update the mouse_opacity depending on if any of the doors in our loc have density
 /obj/structure/machinery/cm_vending/proc/check_doors()
 	for(var/obj/structure/machinery/door/door in loc)
 		if(door.density)
-			mouse_opacity = 0
+			mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 			return
 	mouse_opacity = initial(mouse_opacity)
 

@@ -142,6 +142,9 @@
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	var/hits_divisor = reinforced ? XENO_HITS_TO_DESTROY_R_WINDOW_FRAME : XENO_HITS_TO_DESTROY_WINDOW_FRAME
 	take_damage((max_health / hits_divisor) + 1)
+	if(user.a_intent == INTENT_DISARM)
+		if(do_after(user, (10 + user.caste.attack_delay + user.attack_speed_modifier), show_busy_icon = BUSY_ICON_BUILD, target = src, max_dist = 1))
+			src.attack_alien(user)
 	return XENO_ATTACK_ACTION
 
 /obj/structure/window_frame/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)

@@ -11,6 +11,7 @@
 
 /// schedule the shooter into the system, inserting it into the next fire queue
 /datum/component/automatedfire/proc/schedule_shot()
+	to_chat(world, "are we even using this?")
 	//We move to another bucket, so we clean the reference from the former linked list
 	next = null
 	prev = null
@@ -29,6 +30,7 @@
 	// If there is no existing head of this bucket, we can set this shooter to be that head
 	if (!bucket_head)
 		bucket_list[bucket_pos] = src
+//		to_chat(world, "buycketpos")
 		return
 
 	// Otherwise it's a simple insertion into the double-linked list
@@ -43,6 +45,7 @@
 	if(prev == src)
 		next_fire += 1
 		schedule_shot()
+//	to_chat(world, "scheduling")
 
 ///Handle the firing of the autofire component
 /datum/component/automatedfire/proc/process_shot()

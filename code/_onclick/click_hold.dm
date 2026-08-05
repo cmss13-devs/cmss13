@@ -18,6 +18,7 @@
 
 /client/MouseDown(atom/atom_clicked, turf/turf_of_atom_clicked, skin_ctl, params)
 	ignore_next_click = FALSE
+	to_chat(world, "yo?")
 	if(!atom_clicked)
 		return
 
@@ -40,6 +41,7 @@
 		params = list2params(mods)
 
 	var/click_signal_result = SEND_SIGNAL(mob, COMSIG_MOB_MOUSEDOWN, atom_clicked, turf_of_atom_clicked, skin_ctl, params) & (COMSIG_MOB_CLICK_CANCELED|COMSIG_MOB_CLICK_HANDLED)
+//	to_chat(world, "sigres [click_signal_result]")
 	if(click_signal_result)
 		if(click_signal_result & COMSIG_MOB_CLICK_HANDLED)
 			mob.face_atom(atom_clicked)
@@ -54,7 +56,7 @@
 	from 'eating' attacks. We'll either abort and let Byond behave normally, or override it and do a click immediately even if the button is held down.*/
 	if(prefs && prefs.toggle_prefs & TOGGLE_COMBAT_CLICKDRAG_OVERRIDE && !(HAS_TRAIT(mob, TRAIT_OVERRIDE_CLICKDRAG)) )
 		switch(mob.a_intent) //Only combat intents should override click-drags.
-			if(INTENT_HELP, INTENT_GRAB)
+			if(INTENT_HELP)
 				return
 
 		//Some combat intent click-drags shouldn't be overridden.
@@ -85,6 +87,7 @@
 		SEND_SIGNAL(src, COMSIG_CLIENT_LMB_UP, atom_clicked, params)
 
 /client/MouseDrag(atom/src_obj, atom/over_obj, turf/src_loc, turf/over_loc, src_ctl, over_ctl, params)
+	to_chat(world, "mousedrag proc")
 	if(!over_obj)
 		return
 
@@ -94,6 +97,7 @@
 		params += CLICK_CATCHER_ADD_PARAM
 
 	if(SEND_SIGNAL(mob, COMSIG_MOB_MOUSEDRAG, src_obj, over_obj, src_loc, over_loc, src_ctl, over_ctl, params) & COMSIG_MOB_CLICK_CANCELED)
+		to_chat(world, "mousedrag signal")
 		return
 
 	var/list/mods = params2list(params)

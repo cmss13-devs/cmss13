@@ -140,12 +140,3 @@
 		// We got something, but it was the wrong strength
 		if (expected_pheromones[phero_type] != received_pheromones[phero_type])
 			TEST_FAIL("Receiver [receiver.caste_type] of hive [receiver.hivenumber] received [phero_type] at strength [received_pheromones[phero_type]] when expected to receive it at strength [expected_pheromones[phero_type]]")
-
-/// Sets up an alliance with the given faction after the abstract xeno is initialized. Fails if the xeno is not a queen.
-/// Premade function for `initialization_callback` field of abstract xenomorphs.
-/datum/unit_test/pheromones/proc/setup_alliance(mob/living/carbon/xenomorph/xeno, faction)
-	if (xeno.caste != XENO_CASTE_QUEEN)
-		TEST_FAIL("Test attempted to set up an alliance from a non-queen xenomorph")
-
-	xeno.hive.change_stance(faction, TRUE)
-	TEST_ASSERT(!HIVE_ALLIED_TO_HIVE(XENO_HIVE_NORMAL, faction), "Hive alliance setup failed during test initialization")

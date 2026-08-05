@@ -147,7 +147,7 @@
 					continue
 				if(!HIVE_ALLIED_TO_HIVE(hivenumber, target.hivenumber))
 					continue
-				if(target.banished)
+				if(banished || target.banished)
 					continue
 				if(use_leader_aura)
 					target.affected_by_pheromones(leader_current_aura, leader_aura_strength)

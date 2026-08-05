@@ -9,6 +9,10 @@
 	"files.eol": "\n",
 	"files.insertFinalNewline": true,
 	"gitlens.advanced.blame.customArguments": ["-w"],
+    "tgstationTestExplorer.project.defines": [
+        "#define RUNTIME_MAP",
+        "#define UNIT_TESTS"
+    ],
 	"tgstationTestExplorer.project.resultsType": "json",
 	"[javascript]": {
 		"editor.rulers": [80],

@@ -1,7 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - balance: "A hostile queen that sneaks on a shuttle will now trigger a hijack automatically just before arrival"
-  - balance: "Queen pry on dropship airlocks is increased from 3s to 5s"
-  - bugfix: "Fixed grant transmute on hijack buff loop stopping early if it encounters a king or xeno with the ability already"
-  - bugfix: "Hive buff purchase for transmute no longer is applied to queen"

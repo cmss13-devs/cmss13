@@ -329,7 +329,6 @@ SUBSYSTEM_DEF(hijack)
 ///Called when an area's operable status is changed to announce that it has been changed
 /datum/controller/subsystem/hijack/proc/announce_area_state_change(area/changed_area, new_state)
 	var/message = "[changed_area] - [new_state ? "Online" : "Offline"]"
-
 	shipwide_ai_announcement(message, HIJACK_ANNOUNCE, sound('sound/misc/notice2.ogg'))
 
 ///Called to announce to xenos the state of evacuation progression
@@ -408,6 +407,13 @@ SUBSYSTEM_DEF(hijack)
 		return "Never"
 
 	return "[duration2text_sec(sd_time_remaining)]"
+
+/// Plays the passed sfx for any xenos shipside
+/datum/controller/subsystem/hijack/proc/play_sfx_for_shipside_xenos(sound/soundin, vol=45)
+	for(var/mob/living/carbon/xenomorph as anything in GLOB.xeno_mob_list)
+		if(!is_mainship_level(xenomorph.z))
+			continue
+		playsound_client(xenomorph.client, soundin, vol=vol)
 
 
 //~~~~~~~~~~~~~~~~~~~~~~~~ EVAC STUFF ~~~~~~~~~~~~~~~~~~~~~~~~//
@@ -692,6 +698,7 @@ SUBSYSTEM_DEF(hijack)
 /datum/controller/subsystem/hijack/proc/initiate_ground_crash()
 	hijack_status = HIJACK_OBJECTIVES_GROUND_CRASH
 	marine_announcement("Tachyon quantum jump drive deactivated due to insufficient fueling. Entry into atmosphere imminent.", HIJACK_ANNOUNCE, sound('sound/mecha/internaldmgalarm.ogg'))
+	play_sfx_for_shipside_xenos('sound/mecha/internaldmgalarm.ogg')
 
 	// Break all shipside ships and disable all non-pod/elevator pads
 	unlock_all_dropship_doors() // Unlock doors because they'll be uninteractable
@@ -801,6 +808,7 @@ SUBSYSTEM_DEF(hijack)
 		drop = FALSE,
 	)
 	shipwide_ai_announcement("ALERT: Altitude rapidly decreasing. Brace for impact.", HIJACK_ANNOUNCE, sound('sound/effects/GQfullcall.ogg'))
+	play_sfx_for_shipside_xenos('sound/effects/GQfullcall.ogg')
 	if(GLOB.security_level < SEC_LEVEL_RED)
 		set_security_level(SEC_LEVEL_RED, no_sound = TRUE, announce = FALSE)
 
@@ -1034,6 +1042,8 @@ SUBSYSTEM_DEF(hijack)
 	disallow_dropship_pad_landing()
 
 	marine_announcement("Initiating quantum jump. Opening virtual mass field. Lifeboats and pods disabled until arrival.", HIJACK_ANNOUNCE, sound('sound/mecha/powerup.ogg'))
+	play_sfx_for_shipside_xenos('sound/mecha/powerup.ogg')
+
 	addtimer(CALLBACK(src, PROC_REF(enter_ftl)), 5 SECONDS)
 
 /// Updates a specific space turf to have the speedspace animation
@@ -1079,6 +1089,7 @@ SUBSYSTEM_DEF(hijack)
 /datum/controller/subsystem/hijack/proc/initiate_ftl_crash()
 	hijack_status = HIJACK_OBJECTIVES_FTL_CRASH
 	shipwide_ai_announcement("Tachyon quantum jump drive deactivated due to insufficient fueling. Brace for destabilization of hyperdrive field.", HIJACK_ANNOUNCE, sound('sound/mecha/internaldmgalarm.ogg'))
+	play_sfx_for_shipside_xenos('sound/mecha/internaldmgalarm.ogg')
 
 	addtimer(CALLBACK(src, PROC_REF(leave_ftl), TRUE), 5 SECONDS)
 	if(GLOB.security_level < SEC_LEVEL_RED)
@@ -1128,6 +1139,7 @@ SUBSYSTEM_DEF(hijack)
 /// Warn exploding pumps
 /datum/controller/subsystem/hijack/proc/explode_pumps_with_warning(time_till = 10 SECONDS)
 	shipwide_ai_announcement("ALERT: Build up detected within pumping systems. Overload in [DisplayTimeText(time_till)].", HIJACK_ANNOUNCE, sound('sound/effects/double_klaxon.ogg'))
+	play_sfx_for_shipside_xenos('sound/effects/double_klaxon.ogg')
 	addtimer(CALLBACK(src, PROC_REF(explode_pumps)), time_till)
 	for(var/key,value in SShijack.area_machinery_lookup)
 		var/obj/structure/machinery/machine = value

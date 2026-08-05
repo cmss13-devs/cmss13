@@ -1,14 +1,52 @@
 TEST_FOCUS(/datum/unit_test/pheromones/)
 
-/datum/unit_test/pheromones/transmit_hive__hivemate_recovery/Run()
+/datum/unit_test/pheromones/transmit_hive__hivemate/Run(pheromone_type = XENO_PHERO_RECOVERY)
+	var/list/expected_pheromones = list()
+	expected_pheromones[pheromone_type] = XENO_PHERO_STRENGTH_NORMAL
+
 	pair_reception_test(
 		abstract_emitter = new /datum/abstract_xenomorph(),
 		abstract_receiver = new /datum/abstract_xenomorph(),
-		pheromone_type = XENO_PHERO_RECOVERY,
-		test_callback = CALLBACK(src, PROC_REF(pheromone_validation), list(XENO_PHERO_RECOVERY = 2))
+		pheromone_type = pheromone_type,
+		test_callback = CALLBACK(src, PROC_REF(pheromone_validation), expected_pheromones)
 	)
 
-/datum/unit_test/pheromones/transmit_hive__unallied_recovery/Run()
+/datum/unit_test/pheromones/transmit_hive__hivemate/frenzy/Run()
+	. = ..(pheromone_type = XENO_PHERO_FRENZY)
+
+/datum/unit_test/pheromones/transmit_hive__hivemate/warding/Run()
+	. = ..(pheromone_type = XENO_PHERO_WARDING)
+
+/datum/unit_test/pheromones/transmit_hive__banished_recovery/Run(pheromone_type = XENO_PHERO_RECOVERY)
+	pair_reception_test(
+		abstract_emitter = new /datum/abstract_xenomorph(),
+		abstract_receiver = new /datum/abstract_xenomorph(
+			initialization_callback = CALLBACK(src, PROC_REF(banish_xeno))
+		),
+		pheromone_type = pheromone_type,
+		test_callback = CALLBACK(src, PROC_REF(pheromone_validation), list())
+	)
+
+/datum/unit_test/pheromones/trasnmit_hive__readmit/Run(pheromone_type = XENO_PHERO_RECOVERY)
+	var/list/expected_pheromones = list()
+	expected_pheromones[pheromone_type] = XENO_PHERO_STRENGTH_NORMAL
+
+	pair_reception_test(
+		abstract_emitter = new /datum/abstract_xenomorph(),
+		abstract_receiver = new /datum/abstract_xenomorph(
+			initialization_callback = CALLBACK(src, PROC_REF(banish_then_readmit))
+		),
+		pheromone_type = XENO_PHERO_RECOVERY,
+		test_callback = CALLBACK(src, PROC_REF(pheromone_validation), expected_pheromones)
+	)
+
+/datum/unit_test/pheromones/trasnmit_hive__readmit/frenzy/Run()
+	. = ..(pheromone_type = XENO_PHERO_FRENZY)
+
+/datum/unit_test/pheromones/trasnmit_hive__readmit/warding/Run()
+	. = ..(pheromone_type = XENO_PHERO_WARDING)
+
+/datum/unit_test/pheromones/transmit_hive__unallied/Run(pheromone_type = XENO_PHERO_RECOVERY)
 	GLOB.hive_datum[XENO_HIVE_NORMAL].change_stance(FACTION_XENOMORPH_ALPHA, FALSE)
 	TEST_ASSERT(!HIVE_ALLIED_TO_HIVE(XENO_HIVE_NORMAL, XENO_HIVE_ALPHA), "Hive alliance setup failed during test initialization")
 
@@ -19,7 +57,16 @@ TEST_FOCUS(/datum/unit_test/pheromones/)
 		test_callback = CALLBACK(src, PROC_REF(pheromone_validation), list())
 	)
 
-/datum/unit_test/pheromones/transmit_hive__allied_recovery/Run()
+/datum/unit_test/pheromones/transmit_hive__unallied/frenzy/Run()
+	. = ..(pheromone_type = XENO_PHERO_FRENZY)
+
+/datum/unit_test/pheromones/transmit_hive__unallied/warding/Run()
+	. = ..(pheromone_type = XENO_PHERO_WARDING)
+
+/datum/unit_test/pheromones/transmit_hive__allied/Run(pheromone_type = XENO_PHERO_RECOVERY)
+	var/list/expected_pheromones = list()
+	expected_pheromones[pheromone_type] = XENO_PHERO_STRENGTH_VERY_STRONG
+
 	pair_reception_test(
 		abstract_emitter = new /datum/abstract_xenomorph(
 			caste = XENO_CASTE_QUEEN
@@ -30,8 +77,26 @@ TEST_FOCUS(/datum/unit_test/pheromones/)
 			initialization_callback = CALLBACK(src, PROC_REF(setup_alliance), XENO_HIVE_NORMAL, XENO_HIVE_ALPHA)
 		),
 		pheromone_type = XENO_PHERO_RECOVERY,
-		test_callback = CALLBACK(src, PROC_REF(pheromone_validation), list(XENO_PHERO_RECOVERY = 4))
+		test_callback = CALLBACK(src, PROC_REF(pheromone_validation), expected_pheromones)
 	)
+
+/datum/unit_test/pheromones/transmit_hive__allied/frenzy/Run()
+	. = ..(pheromone_type = XENO_PHERO_FRENZY)
+
+/datum/unit_test/pheromones/transmit_hive__allied/warding/Run()
+	. = ..(pheromone_type = XENO_PHERO_WARDING)
+
+/datum/unit_test/pheromones/proc/banish_xeno(mob/living/carbon/xenomorph/xeno)
+	var/datum/action/xeno_action/onclick/manage_hive/action = allocate(/datum/action/xeno_action/onclick/manage_hive/)
+	action.do_banish(null, xeno)
+
+/datum/unit_test/pheromones/proc/banish_then_readmit(mob/living/carbon/xenomorph/xeno)
+	var/datum/action/xeno_action/onclick/manage_hive/action = allocate(/datum/action/xeno_action/onclick/manage_hive/)
+	action.do_banish(null, xeno)
+
+	wait_full_life_loop()
+
+	action.do_readmit(null, xeno)
 
 /// Sets up an alliance between the given hives after the abstract xeno is initialized. Fails if either faction lacks a queen.
 /// Premade function for `initialization_callback` field of abstract xenomorphs.

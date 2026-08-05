@@ -13,7 +13,6 @@ Current Expected Characteristics:
 
 Current Problems:
 - The ammo band on magazine does not heed to throwing animation or changing hand animation (does not rotate and does not fade in)
-- Add ways to manipulate magazine offset through arguments (just add more arguments for generating the overlay in general)
 - " -make it so the jungle styled mag attacking another magazine also attaches it rather than being attacked"
 - Improve the jungle mag sprite
 */
@@ -101,12 +100,6 @@ Current Problems:
 	SIGNAL_HANDLER
 
 	remove_magazine(user)
-
-///Allow you to switch which hand is holding the jungle mag
-/datum/component/jungle_magazine/proc/on_attempt_withdraw_handful(datum/source, mob/user)
-	SIGNAL_HANDLER
-
-	return COMPONENT_MAGAZINE_CANCEL_ATTEMPT_WITHDRAW_HANDFUL
 
 ///Update the overlay to have jungle mag after an update_icon is called on magazine
 /datum/component/jungle_magazine/proc/on_finish_update_magazine_icon(obj/item/ammo_magazine/source)
@@ -263,7 +256,6 @@ Current Problems:
 	RegisterSignal(target_magazine, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
 	RegisterSignal(target_magazine, COMSIG_ITEM_ATTACK_SELF, PROC_REF(on_attack_self))
 	RegisterSignal(target_magazine, COMSIG_ITEM_UNIQUE_ACTION, PROC_REF(on_unique_action))
-	RegisterSignal(target_magazine, COMSIG_MAGAZINE_ATTEMPT_WITHDRAW_HANDFUL, PROC_REF(on_attempt_withdraw_handful))
 	RegisterSignal(target_magazine, COMSIG_MAGAZINE_FINISH_UPDATE_ICON, PROC_REF(on_finish_update_magazine_icon))
 	RegisterSignal(target_magazine, COMSIG_ITEM_ATTEMPT_INSERTION_INTO_STORAGE, PROC_REF(on_attempt_insert_into_storage))
 
@@ -272,6 +264,5 @@ Current Problems:
 	UnregisterSignal(target_magazine, COMSIG_PARENT_EXAMINE)
 	UnregisterSignal(target_magazine, COMSIG_ITEM_ATTACK_SELF)
 	UnregisterSignal(target_magazine, COMSIG_ITEM_UNIQUE_ACTION)
-	UnregisterSignal(target_magazine, COMSIG_MAGAZINE_ATTEMPT_WITHDRAW_HANDFUL)
 	UnregisterSignal(target_magazine, COMSIG_MAGAZINE_FINISH_UPDATE_ICON)
 	UnregisterSignal(target_magazine, COMSIG_ITEM_ATTEMPT_INSERTION_INTO_STORAGE)

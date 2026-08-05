@@ -48,7 +48,7 @@
 	var/spit_windup = FALSE
 
 	///The strength of our aura. Zero means we can't emit one
-	var/aura_strength = 0
+	var/aura_strength = XENO_PHERO_STRENGTH_NONE
 
 	///"Evolving" removed for the time being
 	var/aura_allowed = list(XENO_PHERO_FRENZY, XENO_PHERO_WARDING, XENO_PHERO_RECOVERY)

@@ -28,7 +28,7 @@
 	tackle_min = 4
 	tackle_max = 5
 
-	aura_strength = 1
+	aura_strength = XENO_PHERO_STRENGTH_WEAK
 
 	minimap_icon = "lesser_drone"
 

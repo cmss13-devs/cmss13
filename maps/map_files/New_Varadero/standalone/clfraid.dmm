@@ -10,6 +10,18 @@
 /obj/effect/landmark/survivor_spawner/clf/varadero,
 /turf/open/floor/carpet,
 /area/varadero/interior/research)
+"ab" = (
+/obj/structure/surface/table/almayer,
+/obj/effect/landmark/objective_landmark/science,
+/obj/item/weapon/gun/revolver/m44/custom/webley{
+	desc = "A top-break revolver typically used by the Imperial Armed Space Forces, this one still bares registeration denoting it belonging to the long disolved Austrlian Army... Fires .455 Magnum. Archaic, yes, but brutally effective. Vacuum-sealed internals, Bakelite-style grips, and a recoil like getting kicked by a mule. Still puts things down. Hard."
+	},
+/obj/item/ammo_magazine/revolver/webley,
+/obj/item/ammo_magazine/revolver/webley,
+/obj/item/ammo_magazine/revolver/webley,
+/obj/item/ammo_magazine/revolver/webley,
+/turf/open/floor/almayer/blue/north,
+/area/varadero/interior/research/clfship)
 "ac" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice2";
@@ -994,16 +1006,6 @@
 /obj/structure/barricade/plasteel/wired,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
-"hG" = (
-/obj/structure/surface/table/almayer,
-/obj/effect/landmark/objective_landmark/science,
-/obj/item/weapon/gun/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/turf/open/floor/almayer/blue/north,
-/area/varadero/interior/research/clfship)
 "hK" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
 /obj/item/stack/tile/plasteel{
@@ -4611,7 +4613,7 @@ bF
 Ie
 bi
 Wz
-hG
+Mz
 aE
 Pd
 kB
@@ -4646,7 +4648,7 @@ uS
 KG
 bE
 Wz
-Mz
+ab
 aE
 Zk
 VR

@@ -325,7 +325,7 @@
 /turf/open/floor/prison/darkyellow2/north,
 /area/desert_dam/interior/dam_interior/upper_walkway)
 "Wn" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/autoname{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering/autoname{
 	welded = 1
 	},
 /turf/open/floor/prison/bright_clean/southwest,

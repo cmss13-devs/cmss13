@@ -998,7 +998,7 @@
 /area/prison/cellblock/maxsec/north)
 "ade" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony{
 	name = "Biological Testing"
 	},
 /turf/open/floor/prison/whitepurplefull,
@@ -2536,7 +2536,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony{
 	dir = 2;
 	name = "Test Subject Containment"
 	},
@@ -2558,7 +2558,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony{
 	dir = 2;
 	name = "Test Subject Containment"
 	},
@@ -7848,7 +7848,7 @@
 /turf/open/floor/plating,
 /area/prison/security/checkpoint/maxsec)
 "aBM" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony{
 	name = "Maximum-Security Wing"
 	},
 /turf/open/floor/prison/darkredfull2/southwest,
@@ -7871,7 +7871,7 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/prison/medbay)
 "aBQ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass{
 	name = "Infirmary"
 	},
 /turf/open/floor/prison/whitegreenfull/southwest,
@@ -8897,7 +8897,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/medbay/foyer)
 "aFQ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass{
 	dir = 2;
 	name = "Infirmary Foyer"
 	},
@@ -8907,7 +8907,7 @@
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/medbay/foyer)
 "aFT" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony{
 	dir = 2;
 	name = "Biological Research Department"
 	},
@@ -8927,7 +8927,7 @@
 /turf/open/floor/plating,
 /area/prison/hangar_storage/main)
 "aFX" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony{
 	dir = 2;
 	name = "Research Common Room"
 	},
@@ -15570,7 +15570,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony{
 	dir = 2;
 	name = "Canteen"
 	},
@@ -17118,7 +17118,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony{
 	dir = 2;
 	name = "VIP Cellblock / Civilian Residences Access"
 	},
@@ -20188,7 +20188,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/visitation)
 "bzE" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony{
 	name = "East Hallway"
 	},
 /turf/open/floor/prison/bright_clean/southwest,
@@ -21286,7 +21286,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/hallway/east)
 "bDU" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony{
 	dir = 2
 	},
 /turf/open/floor/prison/bright_clean/southwest,
@@ -22285,7 +22285,7 @@
 "bHO" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony,
 /turf/open/floor/prison,
 /area/prison/hallway/east)
 "bHQ" = (
@@ -36403,7 +36403,7 @@
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/residential/north)
 "qEB" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass{
 	name = "Infirmary"
 	},
 /turf/open/floor/prison/bright_clean/southwest,

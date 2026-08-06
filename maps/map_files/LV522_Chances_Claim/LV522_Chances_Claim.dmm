@@ -6084,7 +6084,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/mining)
 "cYF" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering{
 	dir = 1
 	},
 /turf/open/floor/corsat/marked,
@@ -21163,7 +21163,7 @@
 /turf/open/floor/prison/blue_plate,
 /area/lv522/indoors/a_block/admin)
 "lbX" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering,
 /turf/open/floor/corsat/marked,
 /area/lv522/atmos/command_centre)
 "lcK" = (

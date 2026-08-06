@@ -1034,7 +1034,7 @@
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/administration/hallway)
 "lY" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	name = "\improper Administration Hallway"
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -1097,7 +1097,7 @@
 /turf/open/floor/prison/blue/east,
 /area/desert_dam/building/administration/gate)
 "mR" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	dir = 1;
 	name = "\improper Administration Departures Gate"
 	},
@@ -1236,7 +1236,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/desert_dam/exterior/landing_pad_one)
 "pc" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	name = "\improper Breakroom"
 	},
 /turf/open/floor/prison/bright_clean2,
@@ -1954,7 +1954,7 @@
 /area/desert_dam/building/administration/gate)
 "CP" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	dir = 1;
 	name = "\improper Administration Departures Gate"
 	},
@@ -2367,7 +2367,7 @@
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "Km" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	name = "\improper Administration Lobby"
 	},
 /turf/open/floor/prison/bright_clean2,

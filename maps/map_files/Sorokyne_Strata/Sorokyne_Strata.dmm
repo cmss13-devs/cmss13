@@ -32349,7 +32349,7 @@
 /turf/open/floor/strata/red1,
 /area/strata/interior/bball)
 "bOV" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony{
 	name = "\improper Airlock"
 	},
 /turf/open/floor/strata/floor3,
@@ -36145,7 +36145,7 @@
 /turf/open/floor/strata/fake_wood,
 /area/strata/interior/outpost/canteen)
 "bYV" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony{
 	name = "\improper Airlock"
 	},
 /turf/open/floor/interior/plastic,
@@ -37799,7 +37799,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/deep_jungle/carplake_north)
 "chi" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony{
 	dir = 1;
 	name = "\improper Airlock"
 	},
@@ -38701,7 +38701,7 @@
 /turf/open/gm/river/soro,
 /area/strata/exterior/marsh/spring_marshes)
 "crp" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony{
 	name = "\improper Airlock"
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
@@ -39287,7 +39287,7 @@
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/marsh/spring_marshes)
 "cEs" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony{
 	dir = 1;
 	name = "\improper Airlock"
 	},
@@ -40586,7 +40586,7 @@
 /turf/open/gm/river/soro,
 /area/strata/interior/parts_storage)
 "etQ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony{
 	name = "\improper Airlock"
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
@@ -42132,7 +42132,7 @@
 /turf/open/floor/strata/red1,
 /area/strata/interior/planet_core_research_station)
 "gls" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony{
 	dir = 1;
 	name = "\improper Airlock"
 	},
@@ -43707,7 +43707,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony{
 	dir = 1;
 	name = "\improper Airlock"
 	},
@@ -44622,7 +44622,7 @@
 /turf/open/floor/strata,
 /area/strata/exterior/outpost_decks)
 "jzD" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/interior/planet_core_research_station)
 "jBc" = (
@@ -46549,7 +46549,7 @@
 /turf/open/floor/strata/floor2,
 /area/strata/interior/research)
 "mes" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony{
 	dir = 1;
 	name = "\improper Airlock"
 	},
@@ -47619,7 +47619,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony{
 	dir = 1;
 	name = "\improper Airlock"
 	},
@@ -51460,7 +51460,7 @@
 /turf/open/floor/strata/purp2,
 /area/strata/interior/planet_core_research_station)
 "syh" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony{
 	name = "\improper Airlock"
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
@@ -54043,7 +54043,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/deep_jungle/east)
 "vHd" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony{
 	dir = 1;
 	name = "\improper Airlock"
 	},
@@ -54307,7 +54307,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/marsh/spring_marshes)
 "wbK" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony{
 	dir = 1;
 	name = "\improper Airlock"
 	},
@@ -54916,7 +54916,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/marsh/spring_marshes)
 "wSf" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony{
 	name = "\improper Airlock"
 	},
 /turf/open/floor/strata/multi_tiles/southeast,

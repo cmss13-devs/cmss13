@@ -36680,7 +36680,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_warning_red"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/security/glass/reinforced/colony{
 	dir = 1
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -39256,7 +39256,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_warning_red"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/security/glass/reinforced/colony{
 	dir = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -55826,7 +55826,7 @@
 	},
 /area/white_antre/indoors/pmc_dropship)
 "wRF" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/autoname{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering/glass/autoname{
 	dir = 1;
 	req_one_access = null
 	},

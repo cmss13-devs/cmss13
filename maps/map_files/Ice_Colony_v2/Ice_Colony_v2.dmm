@@ -5011,7 +5011,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/valley/southwest)
 "asj" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony{
 	name = "\improper Aurora Medical Clinic Treatment";
 	req_access_txt = "100"
 	},
@@ -5479,7 +5479,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Aurora Medical Clinic";
 	req_access_txt = "100"
@@ -7483,7 +7483,7 @@
 "aBf" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony{
 	name = "\improper Colony Administration"
 	},
 /turf/open/floor/dark2,
@@ -8389,7 +8389,7 @@
 	id = "colony_admin_top";
 	name = "\improper Colony Administration Blast Door"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony{
 	name = "\improper Colony Offices"
 	},
 /turf/open/floor/dark2,
@@ -8828,7 +8828,7 @@
 	id = "colony_admin_top";
 	name = "\improper Colony Administration Blast Door"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony{
 	dir = 1;
 	name = "\improper Colony Control Center"
 	},
@@ -9069,7 +9069,7 @@
 /obj/structure/machinery/door/poddoor/almayer/open{
 	name = "\improper Forced Blast Door"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony{
 	name = "\improper Colony Crisis Room"
 	},
 /turf/open/floor/wood,
@@ -13938,7 +13938,7 @@
 /turf/closed/wall,
 /area/ice_colony/surface/excavation)
 "bcj" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony{
 	name = "\improper Colony Xenoarcheology Outpost"
 	},
 /turf/open/floor/dark2,
@@ -17183,7 +17183,7 @@
 /area/ice_colony/underground/medical/lobby)
 "bqV" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony{
 	name = "\improper Underground Medical Laboratory";
 	req_access_txt = "100"
 	},
@@ -17720,7 +17720,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Underground Medical Laboratory"
 	},
@@ -17896,7 +17896,7 @@
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/engineering/substation)
 "btC" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Underground Medical Laboratory"
 	},
@@ -21229,7 +21229,7 @@
 /area/ice_colony/underground/command/checkpoint)
 "bGE" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony{
 	name = "\improper Colony Administration"
 	},
 /turf/open/floor/dark2,
@@ -21879,7 +21879,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Theta-V Research Laboratory"
 	},
@@ -22083,7 +22083,7 @@
 /turf/open/floor/dark2,
 /area/ice_colony/underground/research)
 "bJO" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Theta-V Research Laboratory"
 	},
@@ -22157,7 +22157,7 @@
 /turf/open/floor/darkblue2,
 /area/ice_colony/underground/command/checkpoint)
 "bKf" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony{
 	dir = 1;
 	name = "\improper Colony Offices"
 	},
@@ -22392,7 +22392,7 @@
 "bKR" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony{
 	name = "\improper Colony Administration"
 	},
 /turf/open/floor/dark2,

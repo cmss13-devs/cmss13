@@ -3081,7 +3081,7 @@
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/south_west_jungle)
 "apZ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony{
 	dir = 2;
 	name = "\improper Medical Bay"
 	},
@@ -13216,7 +13216,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_east_jungle)
 "gXu" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony,
 /turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "gXy" = (
@@ -21477,7 +21477,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/central_caves)
 "ydX" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering/glass/colony{
 	name = "\improper Communications Dome";
 	req_access_txt = "100";
 	req_one_access = null

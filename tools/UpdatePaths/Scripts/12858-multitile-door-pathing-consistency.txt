@@ -1,0 +1,17 @@
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/@SUBTYPES : /obj/structure/machinery/door/airlock/multi_tile/almayer/engineering/@SUBTYPES{@OLD}
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/@SUBTYPES : /obj/structure/machinery/door/airlock/multi_tile/almayer/medical/@SUBTYPES{@OLD}
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/@SUBTYPES : /obj/structure/machinery/door/airlock/multi_tile/almayer/security/@SUBTYPES{@OLD}
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/@SUBTYPES : /obj/structure/machinery/door/airlock/multi_tile/almayer/command/@SUBTYPES{@OLD}
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/@SUBTYPES : /obj/structure/machinery/door/airlock/multi_tile/almayer/engineering/@SUBTYPES{@OLD}
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/@SUBTYPES : /obj/structure/machinery/door/airlock/multi_tile/almayer/medical/@SUBTYPES{@OLD}
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/@SUBTYPES : /obj/structure/machinery/door/airlock/multi_tile/almayer/security/@SUBTYPES{@OLD}
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command : /obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{@OLD}
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/colony/@SUBTYPES : /obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony/@SUBTYPES{@OLD}
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/reinforced/@SUBTYPES : /obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/reinforced/@SUBTYPES{@OLD}
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/solid/@SUBTYPES : /obj/structure/machinery/door/airlock/multi_tile/almayer/command/@SUBTYPES{@OLD}
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical : /obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass{@OLD}
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/colony/@SUBTYPES : /obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony/@SUBTYPES{@OLD}
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/research/@SUBTYPES : /obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/research/@SUBTYPES{@OLD}
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/solid/@SUBTYPES : /obj/structure/machinery/door/airlock/multi_tile/almayer/medical/@SUBTYPES{@OLD}

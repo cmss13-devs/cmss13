@@ -2426,7 +2426,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/desert_dam/exterior/valley/valley_civilian)
 "Im" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/solid/reinforced{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/reinforced{
 	req_access = null
 	},
 /turf/open/floor/corsat/marked,

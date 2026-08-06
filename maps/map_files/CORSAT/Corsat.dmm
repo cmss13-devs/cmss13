@@ -5065,7 +5065,7 @@
 /turf/open/floor/corsat/squares,
 /area/corsat/gamma/hallwaysouth)
 "aum" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	name = "Administration";
 	req_access_txt = "106"
 	},
@@ -6505,7 +6505,7 @@
 /turf/open/floor/corsat/retrosquares,
 /area/corsat/omega/hallways)
 "azx" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	dir = 2;
 	name = "Airlock Control";
 	req_access_txt = "102"
@@ -7136,7 +7136,7 @@
 /turf/open/floor/corsat/officesquares,
 /area/corsat/theta/airlock/east)
 "aBY" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	dir = 2;
 	name = "Airlock Control Office";
 	req_access_txt = "102"
@@ -7213,7 +7213,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/corsat/gamma/hangar/flightcontrol)
 "aCl" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	dir = 2;
 	name = "Airlock Control Office";
 	req_access_txt = "102"
@@ -7437,7 +7437,7 @@
 /turf/open/floor/corsat,
 /area/corsat/theta/airlock/east)
 "aCY" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass{
 	dir = 1;
 	name = "Medical Lobby";
 	req_one_access = null
@@ -7936,7 +7936,7 @@
 /turf/open/floor/corsat/yellow/north,
 /area/corsat/gamma/engineering)
 "aET" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	name = "Administration";
 	req_access_txt = "106"
 	},
@@ -9361,7 +9361,7 @@
 /turf/open/floor/corsat/marked,
 /area/corsat/sigma/airlock/control)
 "aJL" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	dir = 2;
 	name = "Sigma Dome Control"
 	},
@@ -9670,7 +9670,7 @@
 /area/corsat/sigma/south/complex)
 "aLf" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	name = "Hangar Office"
 	},
 /turf/open/floor/corsat/officesquares,
@@ -10158,7 +10158,7 @@
 /turf/open/floor/corsat/bluegrey/north,
 /area/corsat/gamma/hangar/flightcontrol)
 "aNb" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	name = "Administration Office"
 	},
 /turf/open/floor/corsat/bluegrey/west,
@@ -10203,7 +10203,7 @@
 /turf/open/floor/corsat/red/southeast,
 /area/corsat/theta/airlock/east/id)
 "aNm" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	dir = 2;
 	name = "Data Office";
 	req_access_txt = "102;103"
@@ -10450,7 +10450,7 @@
 /turf/open/floor/corsat/plate,
 /area/corsat/gamma/hangar/monorail/control)
 "aOm" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass{
 	dir = 1;
 	name = "Medbay";
 	req_one_access = null
@@ -13888,7 +13888,7 @@
 /turf/open/floor/corsat/squares,
 /area/corsat/omega/hangar/security)
 "bao" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	dir = 2;
 	name = "Omega Dome Control"
 	},
@@ -13964,7 +13964,7 @@
 /turf/open/floor/corsat/omega,
 /area/corsat/omega/control)
 "bay" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	dir = 2;
 	name = "Omega Dome Control"
 	},
@@ -14193,7 +14193,7 @@
 /turf/open/floor/corsat/squares,
 /area/corsat/sigma/airlock/control)
 "bbh" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	name = "Theta Dome Control"
 	},
 /turf/open/floor/corsat/blue/west,
@@ -14516,7 +14516,7 @@
 	id = "Toxins";
 	name = "Toxins Lockdown"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass{
 	name = "Toxins Lab";
 	req_one_access_txt = "103"
 	},
@@ -14716,7 +14716,7 @@
 /turf/open/floor/corsat/squares,
 /area/corsat/gamma/airlock/control)
 "bcA" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	dir = 2;
 	name = "Gamma Dome Control"
 	},
@@ -16666,13 +16666,13 @@
 /turf/open/floor/corsat/red/northeast,
 /area/corsat/gamma/hangar/monorail/control)
 "bku" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	name = "Hangar Office"
 	},
 /turf/open/floor/corsat/officesquares,
 /area/corsat/gamma/hangar/office)
 "bkv" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	name = "Flight Control"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -19929,7 +19929,7 @@
 /turf/open/floor/corsat/plate,
 /area/corsat/omega/complex)
 "byI" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass{
 	name = "\improper Medical Storage";
 	req_access_txt = "100";
 	req_one_access = null
@@ -20498,7 +20498,7 @@
 /turf/open/floor/corsat/greenwhite,
 /area/corsat/gamma/medbay/surgery)
 "bAE" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass{
 	dir = 1;
 	name = "Genetics Lab";
 	req_one_access_txt = "103"
@@ -20852,7 +20852,7 @@
 /turf/open/floor/corsat,
 /area/corsat/omega/complex)
 "bBQ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass{
 	dir = 1;
 	name = "Dehydration Chamber";
 	req_one_access_txt = "103"
@@ -34885,7 +34885,7 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/corsat/gamma/rnr/arcade)
 "lug" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	dir = 1;
 	name = "Administration Office"
 	},
@@ -36736,7 +36736,7 @@
 /turf/open/floor/wood,
 /area/corsat/gamma/rnr/library)
 "nqd" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	name = "Administration";
 	req_access = null;
 	req_one_access_txt = "106;104"
@@ -42793,7 +42793,7 @@
 /turf/open/floor/corsat/white/west,
 /area/corsat/gamma/residential/east)
 "tPk" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	name = "Administration";
 	req_access_txt = "106"
 	},

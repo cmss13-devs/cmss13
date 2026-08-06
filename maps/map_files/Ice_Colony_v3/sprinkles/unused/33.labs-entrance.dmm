@@ -93,7 +93,7 @@
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
 "am" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering/glass/colony{
 	dir = 1;
 	req_access_txt = "100";
 	name = "\improper Omicron Field Gear Storage"
@@ -297,7 +297,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
 "sj" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering/glass/colony{
 	req_access_txt = "100";
 	name = "\improper Omicron Field Gear Storage"
 	},

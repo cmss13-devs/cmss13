@@ -485,7 +485,7 @@
 /turf/open/floor/prison,
 /area/tyrargo/indoors/engineering/ground)
 "abz" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering/glass/colony{
 	autoname = 1;
 	dir = 1
 	},
@@ -71207,7 +71207,7 @@
 /turf/open/shuttle/escapepod/floor1/east,
 /area/tyrargo/underground/engineering)
 "dwH" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering/colony{
 	dir = 1
 	},
 /obj/effect/blocker/water,
@@ -71912,7 +71912,7 @@
 /turf/open/floor/prison/darkyellowfull2,
 /area/tyrargo/underground/engineering)
 "dyF" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering/glass/colony,
 /turf/open/floor/strata/floor3,
 /area/tyrargo/underground/engineering)
 "dyG" = (
@@ -72514,14 +72514,14 @@
 /turf/open/floor/plating,
 /area/tyrargo/underground/engineering)
 "dAi" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering/glass/colony{
 	autoname = 1;
 	dir = 1
 	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/engineering)
 "dAj" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering/glass/colony{
 	autoname = 1;
 	dir = 1
 	},
@@ -73897,7 +73897,7 @@
 /turf/open/floor/prison/darkyellowfull2,
 /area/tyrargo/underground/engineering)
 "dDu" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering/glass/colony,
 /obj/effect/blocker/water,
 /turf/open/floor/corsat/marked,
 /area/tyrargo/underground/engineering)
@@ -82882,7 +82882,7 @@
 /turf/open/floor/plating,
 /area/tyrargo/indoors/power_substation_outskirt)
 "dZz" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering/glass/colony{
 	autoname = 1;
 	dir = 1
 	},
@@ -106306,7 +106306,7 @@
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/west)
 "jVj" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering/glass/colony,
 /turf/open/floor/corsat/marked,
 /area/tyrargo/indoors/engineering/ground)
 "jVy" = (

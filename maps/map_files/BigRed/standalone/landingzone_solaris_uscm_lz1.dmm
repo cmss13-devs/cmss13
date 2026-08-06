@@ -1849,14 +1849,14 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
 "OL" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering{
 	dir = 1;
 	name = "\improper Engineering Workshop"
 	},
 /turf/open/floor/delivery,
 /area/bigred/ground/garage_workshop)
 "OO" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering{
 	name = "\improper Engineering Workshop"
 	},
 /turf/open/floor,

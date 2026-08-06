@@ -7175,7 +7175,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/primary_tool_storage/server)
 "awZ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/autoname,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering/autoname,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/primary_tool_storage/server)
 "axa" = (
@@ -10296,7 +10296,7 @@
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/administration/gate)
 "aGm" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	dir = 1;
 	name = "\improper Administration Departures Gate"
 	},
@@ -10437,7 +10437,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/administration/breakroom)
 "aGL" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	name = "\improper Breakroom"
 	},
 /turf/open/floor/prison/bright_clean2,
@@ -11742,7 +11742,7 @@
 /turf/closed/wall/r_wall,
 /area/desert_dam/building/administration/stairwell/upper)
 "aKH" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	name = "\improper Stairwell"
 	},
 /turf/open/floor/prison/bright_clean2,
@@ -12066,7 +12066,7 @@
 	},
 /area/desert_dam/building/water_treatment_one/garage)
 "aLH" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	name = "\improper Administration Balcony"
 	},
 /turf/open/floor/prison/bright_clean2,
@@ -14104,7 +14104,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/upper_walkway)
 "aSl" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/autoname,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering/autoname,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/upper_walkway)
 "aSm" = (
@@ -18579,7 +18579,7 @@
 /turf/closed/wall/huntership/destructible,
 /area/desert_dam/interior/caves/pred_ship)
 "bgd" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering/glass/colony,
 /turf/open/floor/prison/greencorner/west,
 /area/desert_dam/building/substation/west)
 "bge" = (
@@ -24547,7 +24547,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/warehouse/warehouse)
 "bHj" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony{
 	name = "\improper Medical"
 	},
 /turf/open/floor/prison/sterile_white/west,
@@ -24984,7 +24984,7 @@
 /turf/open/floor/prison/darkbrown2,
 /area/desert_dam/building/warehouse/warehouse)
 "bQD" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony,
 /turf/open/floor/prison/whitegreen/west,
 /area/desert_dam/building/medical/north_wing_hallway)
 "bQE" = (
@@ -27283,7 +27283,7 @@
 /turf/open/floor/prison/kitchen/southwest,
 /area/desert_dam/building/cafeteria/cafeteria)
 "cNF" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	name = "\improper Administration Hallway"
 	},
 /turf/open/floor/prison/bright_clean2,
@@ -27321,7 +27321,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/desert_dam/exterior/landing_pad_two)
 "cOx" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Medical Hallway"
 	},
@@ -28590,7 +28590,7 @@
 /turf/open/hybrisa/street/NSPA_2x2_emblem/east,
 /area/desert_dam/exterior/valley/valley_security)
 "dny" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	dir = 1;
 	name = "\improper Administration Control Room"
 	},
@@ -29288,7 +29288,7 @@
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "dzV" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering/glass/colony{
 	dir = 1
 	},
 /turf/open/floor/vault2/northeast,
@@ -30245,7 +30245,7 @@
 /area/desert_dam/exterior/valley/valley_medical)
 "dUx" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony{
 	name = "\improper Medical Outgoing"
 	},
 /turf/open/floor/prison/whitegreen/west,
@@ -34890,7 +34890,7 @@
 /turf/open/floor/whiteyellowcorner/north,
 /area/desert_dam/building/water_treatment_one/breakroom)
 "fKZ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony{
 	dir = 2;
 	name = "\improper Containment Pen"
 	},
@@ -35180,7 +35180,7 @@
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/desert_dam/exterior/valley/valley_hydro)
 "fQg" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony{
 	name = "\improper Emergency Room"
 	},
 /turf/open/floor/prison/whitegreen/west,
@@ -35282,7 +35282,7 @@
 /turf/open/floor/prison/darkyellow2,
 /area/desert_dam/building/mining/workshop)
 "fRN" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering/glass/colony{
 	dir = 8
 	},
 /turf/open/floor/prison/bright_clean/southwest,
@@ -35400,7 +35400,7 @@
 /turf/open/floor/prison/darkredcorners2,
 /area/desert_dam/building/security/southern_hallway)
 "fTc" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering/glass/colony{
 	dir = 1
 	},
 /turf/open/floor/vault2/northeast,
@@ -35630,7 +35630,7 @@
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/disposals)
 "fYT" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Medical Hallway"
 	},
@@ -35739,7 +35739,7 @@
 /area/desert_dam/interior/dam_interior/hangar_storage)
 "gaH" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony{
 	name = "\improper Medical Outgoing";
 	dir = 1
 	},
@@ -38123,7 +38123,7 @@
 /turf/open/floor/prison/darkred2/northwest,
 /area/desert_dam/building/security/warden)
 "gUO" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	name = "\improper Offices"
 	},
 /turf/open/floor/prison/bright_clean2,
@@ -39365,7 +39365,7 @@
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "huO" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	dir = 1;
 	name = "\improper Administration Departures Gate"
 	},
@@ -41832,7 +41832,7 @@
 /turf/open/desert/dirt/desert_transition_edge1/southwest,
 /area/desert_dam/exterior/valley/valley_security)
 "iqS" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony,
 /turf/open/floor/prison/whitegreen/west,
 /area/desert_dam/building/medical/stairwell/upper_north)
 "iqT" = (
@@ -42638,7 +42638,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/overlook)
 "iGi" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	name = "\improper Stairwell"
 	},
 /turf/open/floor/prison/bright_clean2,
@@ -45519,7 +45519,7 @@
 /turf/open/floor/prison/yellow/northeast,
 /area/desert_dam/building/hydroponics/hydroponics)
 "jNR" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony,
 /turf/open/floor/prison/whitegreen/west,
 /area/desert_dam/building/medical/stairwell/upper)
 "jNV" = (
@@ -49146,7 +49146,7 @@
 /turf/open/floor/prison/darkbrown3/east,
 /area/desert_dam/interior/dam_interior/hanger)
 "lnT" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering/glass/colony{
 	dir = 2
 	},
 /turf/open/floor/prison/southwest,
@@ -49212,7 +49212,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/valley_labs)
 "loU" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Medical Hallway"
 	},
@@ -49823,7 +49823,7 @@
 /turf/open/gm/river/desert/shallow_edge/northwest,
 /area/desert_dam/exterior/valley/valley_labs)
 "lBu" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Medical Hallway"
 	},
@@ -51223,7 +51223,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/autoname,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/security/glass/autoname,
 /turf/open/floor/prison,
 /area/desert_dam/building/security/prison)
 "meE" = (
@@ -53896,7 +53896,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/desert_dam/exterior/landing_pad_two)
 "nhP" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony,
 /turf/open/floor/prison/whitegreen/west,
 /area/desert_dam/building/medical/break_room)
 "nhR" = (
@@ -55031,7 +55031,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "nEP" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Medical Hallway"
 	},
@@ -56628,7 +56628,7 @@
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_mining)
 "ohl" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	name = "\improper Administration Hallway"
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -57160,7 +57160,7 @@
 /turf/open/floor/prison/whitegreen/north,
 /area/desert_dam/building/medical/upper_hallway)
 "osX" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering/glass/colony,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/desert_dam/building/substation/southwest)
 "osY" = (
@@ -60442,7 +60442,7 @@
 /turf/open/gm/river/desert/shallow_edge/west,
 /area/desert_dam/exterior/river/riverside_south)
 "pHy" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony,
 /turf/open/floor/prison/whitegreen/west,
 /area/desert_dam/building/medical/helipad_triage)
 "pHT" = (
@@ -62493,7 +62493,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony{
 	name = "\improper Medical Outgoing";
 	dir = 1
 	},
@@ -66903,7 +66903,7 @@
 /turf/open/floor/prison/blue/north,
 /area/desert_dam/building/administration/hallway)
 "sfW" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Medical Hallway"
 	},
@@ -68503,7 +68503,7 @@
 /area/desert_dam/interior/dam_interior/garage)
 "sJG" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering/glass/colony{
 	dir = 2
 	},
 /turf/open/floor/prison/bright_clean/southwest,
@@ -68939,7 +68939,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "sTl" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering/glass/colony,
 /turf/open/floor/prison,
 /area/desert_dam/building/substation/west)
 "sTm" = (
@@ -69123,7 +69123,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "sXC" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony,
 /turf/open/floor/prison/whitegreen/west,
 /area/desert_dam/building/medical/stairwell)
 "sXD" = (
@@ -71314,7 +71314,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "tOy" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	dir = 1;
 	name = "\improper Administration Hallway"
 	},
@@ -72839,7 +72839,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/maint/south)
 "usy" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony{
 	name = "\improper Observation"
 	},
 /turf/open/floor/prison/sterile_white/west,
@@ -76047,7 +76047,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/desert_dam/exterior/valley/valley_medical)
 "vHY" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony{
 	name = "\improper Examination Room"
 	},
 /turf/open/floor/prison/sterile_white/west,
@@ -76224,7 +76224,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_medical)
 "vLA" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony{
 	dir = 1
 	},
 /turf/open/floor/prison/whitegreen,
@@ -77439,7 +77439,7 @@
 /turf/open/desert/desert_shore/desert_shore1/north,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "wkC" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony{
 	name = "\improper Medical Hallway"
 	},
 /turf/open/floor/prison/whitegreen/west,
@@ -78397,7 +78397,7 @@
 /turf/open/floor/prison/whitegreen/east,
 /area/desert_dam/building/medical/virology_wing)
 "wHi" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	name = "\improper Administration Lobby"
 	},
 /turf/open/floor/prison/bright_clean2,
@@ -79379,7 +79379,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Medical Hallway"
 	},
@@ -80205,7 +80205,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/landing_pad_two)
 "xtG" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Emergency Room"
 	},
@@ -80906,7 +80906,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "xIA" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony{
 	dir = 2;
 	name = "\improper Medical Lobby"
 	},
@@ -82022,7 +82022,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
 "yfk" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony{
 	name = "\improper Containment Pen"
 	},
 /obj/effect/decal/cleanable/dirt,

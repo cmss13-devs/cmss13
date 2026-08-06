@@ -167,7 +167,7 @@
 /turf/closed/wall/mineral/bone_resin,
 /area/tyrargo/indoors/admin/upper)
 "ko" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
 /turf/open/floor/prison/ramptop,
 /area/tyrargo/indoors/admin/upper)
@@ -228,7 +228,7 @@
 	pixel_y = -3;
 	pixel_x = -1
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/ramptop,
 /area/tyrargo/indoors/admin/upper)
 "oQ" = (
@@ -288,7 +288,7 @@
 /turf/open/floor/strata/floor2,
 /area/tyrargo/indoors/admin/upper)
 "rP" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/upper)
 "sf" = (
@@ -793,7 +793,7 @@
 /area/tyrargo/indoors/admin/upper/external)
 "PH" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/upper)
 "Qs" = (

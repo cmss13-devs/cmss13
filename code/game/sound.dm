@@ -316,14 +316,20 @@
 				sound = pick('sound/weapons/gun_m4a3_1.ogg','sound/weapons/gun_m4a3_2.ogg','sound/weapons/gun_m4a3_3.ogg','sound/weapons/gun_m4a3_4.ogg','sound/weapons/gun_m4a3_5.ogg')
 			if("88m4")
 				sound = pick('sound/weapons/gun_88m4_v7.ogg')
-			if("gun_casing_shotgun")
-				sound = pick ('sound/bullets/bulletcasing_shotgun_fall1.ogg')
 			if("gun_nsg23")
 				sound = pick('sound/weapons/gun_nsg23_1.ogg','sound/weapons/gun_nsg23_2.ogg')
 			if("gun_pkd")
 				sound = pick('sound/weapons/gun_pkd_fire01.ogg','sound/weapons/gun_pkd_fire02.ogg','sound/weapons/gun_pkd_fire03.ogg')
 			if("gun_l64")
 				sound = pick('sound/weapons/gun_l64_1.ogg','sound/weapons/gun_l64_2.ogg','sound/weapons/gun_l64_3.ogg')
+
+			// casings
+			if("gun_casing_generic") // the default
+				sound = pick('sound/bullets/bullet_casings/bullet_casing_generic_fall1.ogg')
+			if("gun_casing_rifle")
+				sound = pick('sound/bullets/bullet_casings/bullet_casing_rifle_fall1.ogg', 'sound/bullets/bullet_casings/bullet_casing_rifle_fall2.ogg')
+			if("gun_casing_shotgun")
+				sound = pick('sound/bullets/bullet_casings/bullet_casing_shotgun_fall1.ogg')
 
 			// Xeno
 			if("acid_hit")

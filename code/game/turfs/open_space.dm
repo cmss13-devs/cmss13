@@ -53,9 +53,10 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	if(. && mover.move_intentionally)
 		var/mob/living/climber = mover
 		if(climber.a_intent == INTENT_HARM)
-			return TRUE
-		climb_down(climber)
-		. = FALSE
+			. = TRUE
+		else
+			. = FALSE
+			climb_down(climber)
 
 	if(. && !mover.throwing && check_blocked())
 		to_chat(mover, SPAN_WARNING("It would be too dangerous to go that way."))

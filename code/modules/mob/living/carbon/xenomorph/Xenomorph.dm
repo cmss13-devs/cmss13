@@ -389,7 +389,7 @@
 	/// cooldown between throwing facehuggers
 	var/hugger_throw_cooldown = 0
 
-	var/atom/last_target
+	var/datum/weakref/last_target
 
 /mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
 	if(old_xeno && old_xeno.hivenumber)

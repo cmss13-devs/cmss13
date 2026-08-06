@@ -93,7 +93,7 @@
 				else
 					src.visible_message(SPAN_DANGER("\The [src] swipes at \the [target]!"),
 					SPAN_DANGER("We swipe at \the [target]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-	last_target = target
+	last_target = WEAKREF(target)
 	SEND_SIGNAL(src, COMSIG_AUTOSLASH)
 	return TRUE
 
@@ -108,13 +108,14 @@
 
 /mob/living/carbon/xenomorph/proc/UnarmedAttack_wrapper(atom/target, proximity, click_parameters, tile_attack = FALSE, ignores_resin = FALSE)
 	SHOULD_NOT_OVERRIDE(TRUE)
-	if(src.next_move <= world.time && last_target)
-		target = src.last_target
-		src.face_atom(target)
-		if(target.Adjacent(src))
-			return UnarmedAttack(target, 1, click_parameters)
-		else
-			return RangedAttack(target)
+	if(next_move <= world.time)
+		target = last_target.resolve()
+		if(target)
+			face_atom(target)
+			if(target.Adjacent(src))
+				return UnarmedAttack(target, 1, click_parameters)
+			else
+				return RangedAttack(target)
 	else
 		SEND_SIGNAL(src, COMSIG_AUTOSLASH)
 		return TRUE
@@ -181,4 +182,4 @@ so that it doesn't double up on the delays) so that it applies the delay immedia
 	SIGNAL_HANDLER
 	var/atom/target = get_turf_on_clickcatcher(over_object, src, params)
 	face_atom(target)
-	last_target = target
+	last_target = WEAKREF(target)

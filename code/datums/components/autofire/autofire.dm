@@ -158,16 +158,11 @@
 	var/shooting = FALSE
 	///If TRUE, the shooter will reset its references at the end of the burst
 	var/have_to_reset_at_burst_end = FALSE
-	///Callback to set bursting mode on the parent
-	var/datum/callback/callback_bursting
 	///Callback to ask the parent to reset its firing vars
 	var/datum/callback/callback_clear_target
 	///Callback to ask the parent to fire
 	var/datum/callback/callback_slash
-	///Callback to ask the parent to display ammo
-	var/datum/callback/callback_display_ammo
-	///Callback to set parent's fa_firing
-	var/datum/callback/callback_set_firing
+
 	var/next_slash
 
 /datum/component/automatedfire/autoslash/Initialize(autoslash_attack_delay, datum/callback/callback_slash, datum/callback/callback_clear_target)
@@ -176,27 +171,17 @@
 	RegisterSignal(parent, COMSIG_XENO_EVOLVE_TO_NEW_CASTE, PROC_REF(modify_autoslash_attack_delay))
 	RegisterSignal(parent, COMSIG_AUTOSLASH, PROC_REF(start_autoslash))
 	RegisterSignal(parent, COMSIG_MOB_MOUSEUP, PROC_REF(stop_autoslash))
-//	RegisterSignal(parent, COMSIG_AUTOSLASH_MOVE, PROC_REF(set_next_slash))
-
 	src.autoslash_attack_delay = autoslash_attack_delay
-	src.callback_bursting = callback_bursting
 	src.callback_clear_target = callback_clear_target
 	src.callback_slash = callback_slash
-	to_chat(world, "inited comp")
-	to_chat(world, "src is [src]")
-	to_chat(world, "parent is [parent]")
 
 /datum/component/automatedfire/autoslash/Destroy(force, silent)
 	QDEL_NULL(callback_slash)
 	QDEL_NULL(callback_clear_target)
-	QDEL_NULL(callback_bursting)
-	QDEL_NULL(callback_display_ammo)
-	QDEL_NULL(callback_set_firing)
 	return ..()
 
-///Setter for fire mode
 
-///Setter for auto fire shot delay
+///Setter for auto slash delay
 /datum/component/automatedfire/autoslash/proc/modify_autoslash_attack_delay(datum/source, autoslash_attack_delay)
 	SIGNAL_HANDLER
 	src.autoslash_attack_delay = autoslash_attack_delay
@@ -215,10 +200,9 @@
 	shooting = FALSE
 	our_xeno.last_target = null
 
-///Hard reset the autofire, happens when the shooter fall/is thrown, at the end of a burst or when it runs out of ammunition
 /datum/component/automatedfire/autoslash/proc/hard_reset()
 	SIGNAL_HANDLER
-	callback_clear_target.Invoke() //resets the gun
+	callback_clear_target.Invoke()
 	have_to_reset_at_burst_end = FALSE
 	shooting = FALSE
 
@@ -228,17 +212,12 @@
 	next_fire = new_next_slash
 
 /datum/component/automatedfire/autoslash/process_shot()
-	to_chat(world, "prcoesshot")
 	if(!shooting)
-		to_chat(world, "prcoesshot1")
 		return
 	if(next_fire > world.time)//requeue the slashing
-		to_chat(world, "prcoesshot2")
 		return
-	if(!(callback_slash.Invoke()))//reset fire if we want to stop/& AUTOFIRE_CONTINUE
-		to_chat(world, "prcoesshot3")
+	if(!(callback_slash.Invoke()))
 		hard_reset()
 		return
-	callback_set_firing?.Invoke(TRUE)
 	next_fire = world.time + autoslash_attack_delay
 	schedule_shot()

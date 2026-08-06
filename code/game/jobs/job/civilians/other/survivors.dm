@@ -100,7 +100,7 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 
 	if(spawner) //if there is a generic spawn, use it
 		slotted_landmarks[new_player] = spawner
-		slotted_landmarks[new_player] = spawner
+		generic_landmarks -= spawner
 		return TRUE
 	return FALSE
 

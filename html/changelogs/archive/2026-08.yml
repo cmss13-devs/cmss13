@@ -123,3 +123,13 @@
   fira:
   - admin: Added OpenSearch Query Builder for in-game log searching
   - code_imp: Optimized some aspects of chemical processing.
+2026-08-06:
+  PoltavskaPraca:
+  - bugfix: fixed door rotations
+  - code_imp: touched some code
+  - maptweak: touched shuttles a little bit, added new floor type and put them underneath
+      the airlocks
+  - imagetweak: changed dirs and made them saner for shuttle attachments sprites
+  zzzmike:
+  - balance: disabler capacity moved from 16 to 10, but the bolts are faster by one
+      speed level

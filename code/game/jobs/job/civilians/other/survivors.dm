@@ -99,7 +99,7 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 	var/obj/effect/landmark/survivor_spawner/spawner = SAFEPICK(generic_landmarks)
 
 	if(spawner) //if there is a generic spawn, use it
-		generic_landmarks -= spawner
+		slotted_landmarks[new_player] = spawner
 		slotted_landmarks[new_player] = spawner
 		return TRUE
 	return FALSE

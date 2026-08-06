@@ -9957,6 +9957,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/platingdmg3/west,
 /area/space)
+"CF" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/hybrisa/street/sidewalk/east,
+/area/space)
 "CG" = (
 /obj/structure/flora/grass/desert/lightgrass_5,
 /turf/open/mars,
@@ -10537,6 +10542,7 @@
 	dir = 6;
 	pixel_y = 2
 	},
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/hybrisa/street/asphalt,
 /area/space)
 "Eu" = (
@@ -10899,6 +10905,10 @@
 	},
 /obj/effect/decal/cleanable/dirt/alt_dirt{
 	color = "#140400"
+	},
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/space)
@@ -12274,7 +12284,7 @@
 	icon_state = "road_edge_decal9"
 	},
 /obj/effect/decal/hybrisa/road/lines1,
-/turf/closed/wall/hybrisa/colony/office/reinforced/hull,
+/turf/open/hybrisa/street/asphalt,
 /area/space)
 "JT" = (
 /obj/item/ore{
@@ -12647,6 +12657,8 @@
 	pixel_y = 32;
 	pixel_x = 8
 	},
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/rods,
 /turf/open/hybrisa/street/sidewalk/north,
 /area/space)
 "KM" = (
@@ -12660,6 +12672,7 @@
 /obj/structure/machinery/light/blue{
 	dir = 1
 	},
+/obj/item/stack/sheet/metal,
 /turf/open/floor/hybrisa/metal/grated/east,
 /area/space)
 "KO" = (
@@ -12772,6 +12785,7 @@
 	dir = 4
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/item/shard,
 /turf/open/hybrisa/street/underground_unweedable,
 /area/space)
 "Le" = (
@@ -12873,6 +12887,14 @@
 "Lv" = (
 /obj/item/frame/table,
 /turf/open/floor/white,
+/area/space)
+"Lw" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
+	},
+/turf/open/floor/prison/floor_plate/southwest,
 /area/space)
 "Lx" = (
 /obj/structure/showcase{
@@ -14143,6 +14165,16 @@
 	},
 /turf/open/hybrisa/street/sidewalkfull,
 /area/space)
+"PC" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/shard,
+/turf/open/hybrisa/street/sidewalk/north,
+/area/space)
+"PD" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/hybrisa/street/sidewalkfull,
+/area/space)
 "PE" = (
 /obj/structure/closet/fireaxecabinet{
 	pixel_y = 27
@@ -14165,6 +14197,11 @@
 /obj/structure/platform/metal/almayer_smooth/north,
 /turf/open/hybrisa/street/cement1,
 /area/space)
+"PI" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/shard,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/space)
 "PJ" = (
 /obj/structure/platform_decoration/metal/almayer_smooth/west,
 /turf/open/hybrisa/street/cement1,
@@ -14179,6 +14216,13 @@
 /obj/structure/platform/metal/almayer_smooth/east,
 /turf/open/hybrisa/street/cement1,
 /area/space)
+"PM" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/item/stack/rods,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/space)
 "PN" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
@@ -14188,6 +14232,25 @@
 	dir = 1
 	},
 /turf/open/floor/plating,
+/area/space)
+"PO" = (
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/space)
+"PP" = (
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
+	},
+/turf/open/hybrisa/street/sidewalk/west,
+/area/space)
+"PQ" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/rods,
+/turf/open/hybrisa/street/sidewalk/east,
 /area/space)
 "PR" = (
 /obj/structure/surface/table,
@@ -14215,6 +14278,15 @@
 	dir = 4
 	},
 /turf/open/floor/prison,
+/area/space)
+"PW" = (
+/obj/structure/prop/hybrisa/vehicles/Meridian/Orange/damage_2{
+	dir = 1;
+	pixel_x = 6;
+	icon_state = "meridian_orange_damage_2"
+	},
+/obj/structure/girder/reinforced,
+/turf/closed/wall/hybrisa/colony/office/reinforced/hull,
 /area/space)
 "PX" = (
 /obj/effect/decal/hybrisa/grate{
@@ -14253,6 +14325,10 @@
 	dir = 4
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
+/area/space)
+"Qe" = (
+/obj/structure/girder/reinforced,
+/turf/closed/wall/hybrisa/colony/office/reinforced/hull,
 /area/space)
 "Qf" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
@@ -15323,11 +15399,6 @@
 "Tx" = (
 /turf/open/mars_cave/mars_cave_7,
 /area/space)
-"Ty" = (
-/obj/effect/decal/hybrisa/road/lines3,
-/obj/effect/decal/hybrisa/road/lines1,
-/turf/closed/wall/hybrisa/colony/office/reinforced/hull,
-/area/space)
 "Tz" = (
 /obj/effect/decal/hybrisa/road/lines3,
 /turf/closed/wall/hybrisa/colony/office/reinforced/hull,
@@ -15347,6 +15418,26 @@
 	icon_state = "xgib1"
 	},
 /turf/open/mars_cave/mars_dirt_4,
+/area/space)
+"TD" = (
+/obj/structure/prop/hybrisa/vehicles/Meridian/Taxi/damage_3{
+	dir = 1;
+	pixel_x = -3;
+	pixel_y = 3;
+	layer = 5.1;
+	icon_state = "meridian_taxi_damage_3"
+	},
+/obj/structure/girder/reinforced,
+/turf/closed/wall/hybrisa/colony/office/reinforced/hull,
+/area/space)
+"TE" = (
+/obj/structure/prop/hybrisa/vehicles/Meridian/Turquoise/damage_3{
+	dir = 1;
+	pixel_y = -3;
+	layer = 4.12;
+	icon_state = "meridian_turquoise_damage_3"
+	},
+/turf/closed/wall/hybrisa/colony/office/reinforced/hull,
 /area/space)
 "TF" = (
 /turf/open/floor/plating/plating_catwalk,
@@ -15368,11 +15459,27 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/platingdmg3/west,
 /area/space)
+"TI" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/shard,
+/turf/open/hybrisa/street/cement2,
+/area/space)
 "TJ" = (
 /obj/effect/decal/strata_decals/grime/grime2{
 	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
+/area/space)
+"TK" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/obj/item/stack/sheet/metal,
+/turf/open/hybrisa/street/cement2,
+/area/space)
+"TL" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/hybrisa/street/cement2,
 /area/space)
 "TM" = (
 /turf/open/floor/darkyellow2/southwest,
@@ -15392,6 +15499,21 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidwarning,
 /area/space)
+"TQ" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/shard,
+/turf/open/hybrisa/street/sidewalk/west,
+/area/space)
+"TR" = (
+/obj/structure/prop/hybrisa/vehicles/car_pileup,
+/obj/structure/prop/hybrisa/vehicles/Meridian/Turquoise/damage_3{
+	dir = 1;
+	pixel_y = -3;
+	layer = 4.12;
+	icon_state = "meridian_turquoise_damage_3"
+	},
+/turf/closed/wall/hybrisa/colony/office/reinforced/hull,
+/area/space)
 "TS" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6";
@@ -15410,6 +15532,14 @@
 /obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/dark,
 /area/space)
+"TV" = (
+/obj/structure/prop/hybrisa/vehicles/Meridian/WeylandYutani/damage_5{
+	pixel_y = -4;
+	layer = 5.1;
+	icon_state = "meridian_wy_damage_5"
+	},
+/turf/closed/wall/hybrisa/colony/office/reinforced/hull,
+/area/space)
 "TW" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	desc = "A heavy duty power cable for high voltage applications";
@@ -15420,9 +15550,29 @@
 	},
 /turf/open/mars_cave/mars_dirt_4,
 /area/space)
+"TX" = (
+/obj/structure/prop/hybrisa/vehicles/Meridian/WeylandYutani/damage_5{
+	pixel_y = -1;
+	layer = 5.1;
+	icon_state = "meridian_wy_damage_5";
+	pixel_x = -7
+	},
+/turf/closed/wall/hybrisa/colony/office/reinforced/hull,
+/area/space)
 "TY" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidwarning/west,
+/area/space)
+"TZ" = (
+/obj/structure/prop/hybrisa/vehicles/car_pileup,
+/turf/closed/wall/hybrisa/colony/office/reinforced/hull,
+/area/space)
+"Ua" = (
+/obj/structure/prop/hybrisa/vehicles/Meridian/WeylandYutani/damage_3{
+	layer = 5.1;
+	icon_state = "meridian_wy_damage_3"
+	},
+/turf/closed/wall/hybrisa/colony/office/reinforced/hull,
 /area/space)
 "Ub" = (
 /obj/structure/prop/invuln/minecart_tracks{
@@ -15448,6 +15598,18 @@
 /obj/structure/cargo_container/arious/right,
 /turf/open/floor/plating/warnplate,
 /area/space)
+"Uf" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/rods,
+/turf/open/hybrisa/street/sidewalk,
+/area/space)
+"Ug" = (
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
+	},
+/turf/open/hybrisa/street/sidewalk,
+/area/space)
 "Uh" = (
 /obj/item/stack/cable_coil/cut,
 /turf/open/mars_cave/mars_cave_16,
@@ -15457,6 +15619,11 @@
 	dir = 8
 	},
 /turf/open/floor/asteroidwarning/north,
+/area/space)
+"Uj" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/sheet/metal,
+/turf/open/hybrisa/street/roadlines4,
 /area/space)
 "Uk" = (
 /obj/structure/bed/chair,
@@ -15468,6 +15635,25 @@
 	icon_state = "NW-in"
 	},
 /turf/open/floor/plating/platebot,
+/area/space)
+"Um" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/rods,
+/turf/open/hybrisa/street/sidewalk/northwest,
+/area/space)
+"Un" = (
+/obj/structure/prop/hybrisa/misc/fire/fire1{
+	color = "#ffa700";
+	layer = 7;
+	light_color = "#FF7700";
+	pixel_x = 1;
+	pixel_y = 2
+	},
+/turf/closed/wall/hybrisa/colony/office/reinforced/hull,
+/area/space)
+"Uo" = (
+/obj/structure/prop/structure_lattice,
+/turf/closed/wall/hybrisa/colony/office/reinforced/hull,
 /area/space)
 "Up" = (
 /obj/effect/decal/strata_decals/grime/grime3,
@@ -15504,11 +15690,86 @@
 	},
 /turf/open/mars_cave/mars_cave_13,
 /area/space)
+"Uv" = (
+/obj/structure/prop/hybrisa/vehicles/Meridian/WeylandYutani/damage_3{
+	pixel_y = -12;
+	layer = 3.9;
+	icon_state = "meridian_wy_damage_3"
+	},
+/obj/structure/prop/hybrisa/misc/fire/fire2{
+	color = "#FF7700";
+	icon = 'icons/effects/fire.dmi';
+	icon_state = "dynamic_2";
+	pixel_y = 10;
+	light_color = "#FF7700";
+	pixel_x = 3
+	},
+/obj/structure/girder/reinforced,
+/turf/closed/wall/hybrisa/colony/office/reinforced/hull,
+/area/space)
+"Uw" = (
+/obj/structure/prop/hybrisa/vehicles/Meridian/WeylandYutani/damage_5{
+	icon_state = "meridian_wy_damage_5"
+	},
+/turf/closed/wall/hybrisa/colony/office/reinforced/hull,
+/area/space)
+"Ux" = (
+/obj/structure/prop/structure_lattice,
+/obj/structure/prop/hybrisa/vehicles/Meridian/Turquoise/damage_3{
+	dir = 1;
+	pixel_y = -3;
+	layer = 4.12;
+	icon_state = "meridian_turquoise_damage_3"
+	},
+/turf/closed/wall/hybrisa/colony/office/reinforced/hull,
+/area/space)
+"Uy" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/hybrisa/street/sidewalk/north,
+/area/space)
 "Uz" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	name = "\improper Access door"
 	},
 /turf/open/mars_cave/mars_dirt_4,
+/area/space)
+"UA" = (
+/obj/structure/prop/hybrisa/vehicles/Meridian/WeylandYutani/damage_5{
+	pixel_y = -4;
+	layer = 5.1;
+	icon_state = "meridian_wy_damage_5"
+	},
+/obj/structure/girder/reinforced,
+/turf/closed/wall/hybrisa/colony/office/reinforced/hull,
+/area/space)
+"UB" = (
+/obj/structure/girder/reinforced,
+/obj/structure/girder/reinforced,
+/turf/closed/wall/hybrisa/colony/office/reinforced/hull,
+/area/space)
+"UC" = (
+/obj/structure/prop/hybrisa/vehicles/Meridian/WeylandYutani/damage_3{
+	pixel_y = -3;
+	layer = 3.9;
+	icon_state = "meridian_wy_damage_3";
+	pixel_x = -6
+	},
+/turf/closed/wall/hybrisa/colony/office/reinforced/hull,
+/area/space)
+"UD" = (
+/obj/structure/prop/hybrisa/vehicles/Meridian/WeylandYutani/damage_3{
+	pixel_y = -12;
+	layer = 3.9;
+	icon_state = "meridian_wy_damage_3"
+	},
+/obj/structure/prop/hybrisa/vehicles/Meridian/Turquoise/damage_3{
+	dir = 1;
+	pixel_y = 8;
+	layer = 4.12;
+	icon_state = "meridian_turquoise_damage_3";
+	pixel_x = -4
+	},
+/turf/closed/wall/hybrisa/colony/office/reinforced/hull,
 /area/space)
 "UE" = (
 /obj/effect/decal/cleanable/dirt,
@@ -15534,6 +15795,12 @@
 /obj/item/weapon/gun/boltaction,
 /turf/open/floor/plating/platingdmg3/west,
 /area/space)
+"UJ" = (
+/obj/structure/prop/hybrisa/vehicles/Meridian/Red/damage_3{
+	icon_state = "meridian_red_damage_3"
+	},
+/turf/closed/wall/hybrisa/colony/office/reinforced/hull,
+/area/space)
 "UK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/device/flashlight/lantern,
@@ -15550,6 +15817,36 @@
 	pixel_y = 2
 	},
 /turf/open/floor/white,
+/area/space)
+"UN" = (
+/obj/structure/prop/hybrisa/vehicles/Meridian/Turquoise/damage_1{
+	pixel_y = 8;
+	layer = 5.11;
+	icon_state = "meridian_turquoise_damage_1"
+	},
+/obj/structure/prop/hybrisa/misc/fire/fire1{
+	color = "#ffa700";
+	layer = 7;
+	light_color = "#FF7700";
+	pixel_x = 1;
+	pixel_y = 2
+	},
+/obj/structure/girder/reinforced,
+/turf/closed/wall/hybrisa/colony/office/reinforced/hull,
+/area/space)
+"UO" = (
+/obj/structure/prop/hybrisa/vehicles/Meridian/WeylandYutani/damage_3{
+	layer = 5.1;
+	icon_state = "meridian_wy_damage_3"
+	},
+/obj/structure/girder/reinforced,
+/turf/closed/wall/hybrisa/colony/office/reinforced/hull,
+/area/space)
+"UP" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/shard,
+/turf/open/asphalt/brown,
 /area/space)
 "UQ" = (
 /obj/effect/decal/warning_stripes{
@@ -15571,6 +15868,12 @@
 "US" = (
 /obj/structure/machinery/light/small,
 /turf/open/floor/plating/platingdmg3/west,
+/area/space)
+"UT" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/rods,
+/turf/open/asphalt/brown,
 /area/space)
 "UU" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -15606,14 +15909,39 @@
 	},
 /turf/open/mars_cave/mars_dirt_7,
 /area/space)
+"Va" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/hybrisa/street/roadlines4,
+/area/space)
+"Vb" = (
+/obj/effect/decal/hybrisa/road/road_stop,
+/obj/item/stack/rods,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/hybrisa/street/asphalt,
+/area/space)
 "Vc" = (
 /obj/structure/largecrate/supply,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/platingdmg3/west,
 /area/space)
+"Vd" = (
+/obj/effect/decal/hybrisa/doubleroad/lines3{
+	pixel_y = 0
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/shard,
+/turf/open/hybrisa/street/sidewalkcenter,
+/area/space)
 "Ve" = (
 /obj/effect/decal/strata_decals/grime/grime3,
 /turf/open/floor/asteroidwarning/north,
+/area/space)
+"Vf" = (
+/obj/effect/decal/hybrisa/doubleroad/lines3{
+	pixel_y = 0
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/hybrisa/street/sidewalkcenter,
 /area/space)
 "Vg" = (
 /obj/structure/machinery/computer/telecomms/monitor{
@@ -15627,6 +15955,49 @@
 	pixel_x = -18
 	},
 /turf/open/floor/dark,
+/area/space)
+"Vh" = (
+/obj/structure/prop/hybrisa/vehicles/Meridian/WeylandYutani/damage_5{
+	pixel_y = 1;
+	layer = 5.1;
+	icon_state = "meridian_wy_damage_5";
+	pixel_x = 5
+	},
+/obj/structure/prop/hybrisa/vehicles/Meridian/WeylandYutani/damage_5{
+	pixel_y = -10;
+	layer = 5.1;
+	icon_state = "meridian_wy_damage_5";
+	pixel_x = -8
+	},
+/obj/structure/girder/reinforced,
+/turf/closed/wall/hybrisa/colony/office/reinforced/hull,
+/area/space)
+"Vi" = (
+/obj/effect/decal/hybrisa/road/roadmiddle{
+	dir = 1;
+	pixel_y = 14
+	},
+/obj/effect/decal/hybrisa/doubleroad/lines3{
+	pixel_y = 0
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/prop/hybrisa/vehicles/Meridian/Red/damage_5{
+	pixel_x = -3;
+	icon_state = "meridian_red_damage_5";
+	pixel_y = -7
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"Vj" = (
+/obj/effect/decal/hybrisa/doubleroad/lines3{
+	pixel_y = 0
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/shard,
+/obj/item/stack/rods{
+	pixel_y = 14
+	},
+/turf/open/hybrisa/street/sidewalkcenter,
 /area/space)
 "Vk" = (
 /obj/effect/decal/cleanable/blood/drip{
@@ -15645,6 +16016,15 @@
 	icon_state = "gib6"
 	},
 /turf/open/mars_cave/mars_dirt_7,
+/area/space)
+"Vl" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/shard,
+/turf/open/hybrisa/street/sidewalkcenter,
+/area/space)
+"Vm" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/hybrisa/street/sidewalkcenter,
 /area/space)
 "Vn" = (
 /obj/structure/sign/safety/manualopenclose{
@@ -15665,12 +16045,39 @@
 /obj/structure/machinery/landinglight/delaytwo,
 /turf/open/floor/asteroidwarning,
 /area/space)
+"Vq" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"Vr" = (
+/obj/effect/decal/hybrisa/doubleroad/lines3{
+	pixel_y = 0
+	},
+/obj/item/shard,
+/turf/open/hybrisa/street/sidewalkcenter,
+/area/space)
 "Vs" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 8
 	},
 /obj/structure/plasticflaps,
 /turf/open/floor/plating,
+/area/space)
+"Vt" = (
+/obj/effect/decal/hybrisa/road/road_stop,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"Vu" = (
+/obj/effect/decal/hybrisa/doubleroad/lines2{
+	pixel_y = 1
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/hybrisa/street/sidewalkcenter/north,
 /area/space)
 "Vv" = (
 /obj/structure/bed/chair{
@@ -15679,6 +16086,14 @@
 	pixel_y = 10
 	},
 /turf/open/floor/plating/platingdmg3/west,
+/area/space)
+"Vw" = (
+/obj/effect/decal/hybrisa/doubleroad/lines2{
+	pixel_y = 1
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/shard,
+/turf/open/hybrisa/street/sidewalkcenter/north,
 /area/space)
 "Vx" = (
 /obj/structure/surface/table,
@@ -15710,10 +16125,50 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/space)
+"VC" = (
+/obj/effect/decal/hybrisa/doubleroad/lines2{
+	pixel_y = 1
+	},
+/obj/item/stack/rods,
+/turf/open/hybrisa/street/sidewalkcenter/north,
+/area/space)
+"VD" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/rods{
+	pixel_y = 14
+	},
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
 "VE" = (
 /obj/structure/surface/table,
 /obj/item/spacecash/c1,
 /turf/open/mars_cave/mars_cave_2,
+/area/space)
+"VF" = (
+/obj/effect/decal/hybrisa/doubleroad/lines2{
+	pixel_y = 1
+	},
+/obj/item/stack/sheet/metal,
+/turf/open/hybrisa/street/sidewalkcenter/north,
+/area/space)
+"VG" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/asphalt/brown,
+/area/space)
+"VH" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/item/shard,
+/obj/item/stack/rods,
+/turf/open/asphalt/brown,
+/area/space)
+"VI" = (
+/obj/structure/prop/tyrargo/traffic_signal/traffic_signal_4,
+/turf/open/hybrisa/street/cement1,
 /area/space)
 "VJ" = (
 /obj/effect/decal/cleanable/blood{
@@ -15737,6 +16192,14 @@
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/space)
+"VL" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 5
+	},
+/obj/structure/machinery/landinglight/spoke,
+/turf/open/floor/prison/darkbrown2/east,
+/area/space)
 "VM" = (
 /obj/effect/decal/cleanable/dirt{
 	pixel_x = 17
@@ -15744,6 +16207,10 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating/platingdmg3/west,
+/area/space)
+"VN" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/hybrisa/street/sidewalk,
 /area/space)
 "VO" = (
 /turf/closed/wall/wood,
@@ -15757,6 +16224,12 @@
 	},
 /turf/open/floor/plating,
 /area/space)
+"VQ" = (
+/obj/structure/machinery/colony_floodlight/street{
+	pixel_y = 12
+	},
+/turf/open/hybrisa/street/sidewalkcorner,
+/area/space)
 "VR" = (
 /obj/structure/flora/grass/desert/lightgrass_11,
 /turf/open/mars,
@@ -15768,11 +16241,35 @@
 	},
 /turf/open/floor/plating/platebot,
 /area/space)
+"VT" = (
+/obj/item/tool/warning_cone{
+	pixel_y = 17
+	},
+/obj/item/tool/warning_cone{
+	pixel_x = -11;
+	pixel_y = 6
+	},
+/turf/open/hybrisa/street/sidewalk/northeast,
+/area/space)
+"VU" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/hybrisa/street/sidewalk/northwest,
+/area/space)
 "VV" = (
 /obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/floor/asteroidwarning/west,
+/area/space)
+"VW" = (
+/obj/structure/prop/tyrargo/illuminator{
+	icon_state = "floodlight-on";
+	light_on = 1;
+	light_range = 8;
+	light_power = 2;
+	light_color = "#FFEFD2"
+	},
+/turf/open/hybrisa/street/sidewalkcorner/north,
 /area/space)
 "VX" = (
 /obj/structure/machinery/light,
@@ -15787,22 +16284,107 @@
 	},
 /turf/open/floor/plating/platebot,
 /area/space)
+"VZ" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 8
+	},
+/obj/structure/barricade/sandbags/wired{
+	pixel_y = -2
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"Wa" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_2"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"Wb" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/item/stack/rods,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/hybrisa/street/asphalt,
+/area/space)
 "Wc" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/space)
+"Wd" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/structure/barricade/concrete{
+	pixel_y = -6;
+	layer = 2.99
+	},
+/obj/structure/barricade/concrete{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"We" = (
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/hybrisa/street/sidewalk/northeast,
+/area/space)
 "Wf" = (
 /obj/effect/decal/strata_decals/grime/grime4,
 /turf/open/floor/asteroidwarning/north,
+/area/space)
+"Wg" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -21;
+	pixel_y = 3
+	},
+/turf/open/hybrisa/street/roadlines2,
+/area/space)
+"Wh" = (
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/structure/barricade/concrete{
+	dir = 8
+	},
+/obj/item/ammo_casing/cartridge,
+/obj/item/ammo_casing/cartridge,
+/turf/open/hybrisa/street/asphalt,
 /area/space)
 "Wi" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement/cement1/north,
 /area/space)
+"Wj" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/obj/item/device/flashlight/flare/on{
+	fuel_rate = 5
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
 "Wk" = (
 /obj/effect/landmark/hunter_primary,
 /turf/open/mars_cave/mars_dirt_4,
+/area/space)
+"Wl" = (
+/obj/effect/decal/hybrisa/doubleroad/lines3{
+	pixel_y = 0
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/hybrisa/street/sidewalkcenter,
 /area/space)
 "Wm" = (
 /obj/structure/surface/table,
@@ -15819,6 +16401,21 @@
 	},
 /turf/open/floor/whitebluefull/northeast,
 /area/space)
+"Wn" = (
+/obj/effect/decal/hybrisa/doubleroad/lines3{
+	pixel_y = 0
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/item/prop/colony/usedbandage{
+	dir = 10
+	},
+/obj/item/prop/colony/usedbandage{
+	dir = 4;
+	pixel_y = 4;
+	pixel_x = 9
+	},
+/turf/open/hybrisa/street/sidewalkcenter,
+/area/space)
 "Wo" = (
 /obj/structure/machinery/vending/snack{
 	icon_state = "snack-broken";
@@ -15826,11 +16423,23 @@
 	},
 /turf/open/floor/darkyellow2/northwest,
 /area/space)
+"Wp" = (
+/obj/item/trash/cigbutt,
+/obj/item/ammo_casing/cartridge,
+/obj/item/ammo_casing/cartridge,
+/turf/open/hybrisa/street/asphalt,
+/area/space)
 "Wq" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "viro-rock_open"
 	},
 /turf/closed/wall/solaris/reinforced,
+/area/space)
+"Wr" = (
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/cartridge,
+/turf/open/hybrisa/street/asphalt,
 /area/space)
 "Ws" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -15847,9 +16456,20 @@
 	},
 /turf/open/floor/asteroidfloor/north,
 /area/space)
+"Wu" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/marked,
+/area/space)
 "Wv" = (
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/plating,
+/area/space)
+"Ww" = (
+/obj/item/tool/warning_cone{
+	pixel_y = -1;
+	pixel_x = -14
+	},
+/turf/open/hybrisa/street/roadlines2,
 /area/space)
 "Wx" = (
 /obj/effect/sentry_landmark/lz_2/bottom_left,
@@ -15862,19 +16482,127 @@
 	},
 /turf/open/mars_cave/mars_dirt_5,
 /area/space)
+"Wz" = (
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/decal/hybrisa/doubleroad/lines4{
+	pixel_x = 4
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_7";
+	pixel_y = 12
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"WA" = (
+/obj/item/tool/shovel/etool{
+	pixel_x = 12;
+	pixel_y = 3
+	},
+/turf/open/hybrisa/street/sidewalkcenter/west,
+/area/space)
+"WB" = (
+/obj/structure/prop/hybrisa/misc/concretestatue/scrawled{
+	pixel_y = 9
+	},
+/obj/structure/prop/invuln/static_corpse/afric_zimmer/trooper{
+	pixel_y = -23;
+	pixel_x = 2
+	},
+/turf/open/hybrisa/street/sidewalkfull,
+/area/space)
+"WC" = (
+/obj/item/weapon/gun/rifle/rmc_f90{
+	pixel_y = -10;
+	pixel_x = 13
+	},
+/turf/open/hybrisa/street/sidewalkfull,
+/area/space)
+"WD" = (
+/obj/effect/decal/hybrisa/road/road_stop,
+/obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
+	dir = 1
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"WE" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
+	dir = 1
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"WF" = (
+/obj/item/tool/warning_cone{
+	pixel_y = 4;
+	pixel_x = -5
+	},
+/turf/open/hybrisa/street/roadlines4,
+/area/space)
+"WG" = (
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/decal/hybrisa/doubleroad/lines4{
+	pixel_x = 4
+	},
+/obj/structure/barricade/concrete{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/hybrisa/street/asphalt,
+/area/space)
 "WH" = (
 /obj/structure/largecrate/random,
 /turf/open/floor/bot/north,
 /area/space)
+"WI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sandbags_empty{
+	pixel_x = 5;
+	pixel_y = -10
+	},
+/turf/open/hybrisa/street/sidewalkcenter/west,
+/area/space)
+"WJ" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_12"
+	},
+/turf/open/hybrisa/street/sidewalkfull,
+/area/space)
 "WK" = (
 /obj/structure/machinery/computer/med_data,
 /turf/open/floor/white,
+/area/space)
+"WL" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_5";
+	layer = 3.1;
+	pixel_x = 1;
+	pixel_y = 2
+	},
+/turf/open/hybrisa/street/sidewalkcenter/east,
 /area/space)
 "WM" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgib4"
 	},
 /turf/open/mars_cave/mars_dirt_5,
+/area/space)
+"WN" = (
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/effect/decal/hybrisa/doubleroad/lines1{
+	pixel_x = -4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"WO" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
+	dir = 4
+	},
+/turf/open/floor/corsat/marked,
+/area/space)
+"WP" = (
+/obj/effect/decal/hybrisa/road/road_stop,
+/obj/structure/prop/hybrisa/vehicles/Meridian/Cop,
+/turf/open/hybrisa/street/asphalt,
 /area/space)
 "WQ" = (
 /obj/structure/machinery/light{
@@ -15885,20 +16613,111 @@
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/space)
+"WR" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/asphalt/brown,
+/area/space)
+"WS" = (
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/structure/barricade/concrete{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/device/m56d_post{
+	pixel_x = 7;
+	pixel_y = -2
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"WT" = (
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/obj/item/ammo_casing/cartridge,
+/obj/item/ammo_casing/cartridge,
+/obj/item/ammo_casing/cartridge,
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"WU" = (
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/item/ammo_casing/cartridge,
+/obj/item/ammo_casing/cartridge,
+/obj/item/ammo_casing/cartridge,
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"WV" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_12";
+	pixel_y = 1
+	},
+/obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
+	dir = 4
+	},
+/turf/open/floor/corsat/marked,
+/area/space)
 "WW" = (
 /obj/effect/spawner/random/tool,
 /turf/open/mars_cave/mars_dirt_5,
+/area/space)
+"WX" = (
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/structure/prop/tyrargo/traffic_signal/traffic_signal_4,
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"WY" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/structure/barricade/concrete{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/device/m56d_gun{
+	pixel_x = -1;
+	pixel_y = 0
+	},
+/turf/open/hybrisa/street/asphalt,
 /area/space)
 "WZ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo,
 /turf/open/floor/plating/platingdmg3/west,
 /area/space)
+"Xa" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/structure/barricade/concrete{
+	dir = 1
+	},
+/obj/structure/barricade/concrete{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
 "Xb" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgib4"
 	},
 /turf/open/mars_cave/mars_cave_16,
+/area/space)
+"Xc" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/cleanable/blood,
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"Xd" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/structure/barricade/deployable{
+	damage_state = 3;
+	health = 10;
+	icon_state = "folding_3";
+	dir = 4
+	},
+/obj/item/stack/sandbags/small_stack,
+/turf/open/hybrisa/street/asphalt,
 /area/space)
 "Xe" = (
 /obj/effect/decal/cleanable/dirt,
@@ -15907,12 +16726,49 @@
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/space)
+"Xf" = (
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/cartridge,
+/obj/structure/tent/med,
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"Xg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/hybrisa/street/sidewalk/southwest,
+/area/space)
+"Xh" = (
+/obj/structure/barricade/concrete{
+	dir = 8
+	},
+/turf/open/hybrisa/street/sidewalk,
+/area/space)
 "Xi" = (
 /obj/structure/machinery/alarm{
 	dir = 1;
 	pixel_y = -30
 	},
 /turf/open/floor/whitebluefull/northeast,
+/area/space)
+"Xj" = (
+/obj/structure/prop/tyrargo/military_alert_sign/alt{
+	pixel_y = 31
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/space)
+"Xk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_9";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/hybrisa/street/sidewalk/southeast,
 /area/space)
 "Xl" = (
 /obj/structure/cargo_container/hd/left/alt,
@@ -15925,11 +16781,28 @@
 	},
 /turf/open/floor/delivery,
 /area/space)
+"Xn" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/hybrisa/street/roadlines4,
+/area/space)
+"Xo" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/hybrisa/street/roadlines2,
+/area/space)
 "Xp" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "cargo_containers"
 	},
 /turf/closed/wall/solaris,
+/area/space)
+"Xq" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_15";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/obj/item/stack/rods,
+/turf/open/hybrisa/street/roadlines2,
 /area/space)
 "Xr" = (
 /obj/structure/machinery/iv_drip,
@@ -15945,9 +16818,22 @@
 	},
 /turf/open/mars_cave/mars_cave_20,
 /area/space)
+"Xt" = (
+/obj/structure/barricade/hesco{
+	dir = 4
+	},
+/turf/open/hybrisa/street/roadlines4,
+/area/space)
 "Xu" = (
 /obj/structure/platform/stone/kutjevo/north,
 /turf/open/mars/mars_dirt_9,
+/area/space)
+"Xv" = (
+/obj/item/reagent_container/blood/empty{
+	pixel_x = 6;
+	pixel_y = 5
+	},
+/turf/open/hybrisa/street/sidewalk/southwest,
 /area/space)
 "Xw" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
@@ -15955,6 +16841,10 @@
 	name = "\improper Engineering Break Room"
 	},
 /turf/open/floor/almayer/test_floor4,
+/area/space)
+"Xx" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/hybrisa/street/sidewalkcorner/west,
 /area/space)
 "Xy" = (
 /obj/structure/closet/fireaxecabinet{
@@ -15967,6 +16857,16 @@
 	dir = 4
 	},
 /turf/open/floor/asteroidwarning/east,
+/area/space)
+"XA" = (
+/obj/structure/barricade/concrete{
+	dir = 8
+	},
+/obj/structure/machinery/colony_floodlight/street{
+	pixel_y = 12;
+	layer = 4.12
+	},
+/turf/open/hybrisa/street/sidewalkcorner,
 /area/space)
 "XB" = (
 /obj/effect/landmark/xeno_hive_spawn,
@@ -15991,6 +16891,16 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/space)
+"XF" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/hybrisa/street/sidewalk/east,
+/area/space)
+"XG" = (
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red,
+/turf/open/asphalt/brown,
+/area/space)
 "XH" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/mars_cave/mars_cave_2,
@@ -16008,6 +16918,24 @@
 	pixel_x = 7
 	},
 /turf/open/floor/whitebluefull/northeast,
+/area/space)
+"XJ" = (
+/obj/effect/decal/hybrisa/road/road_stop{
+	icon_state = "stop_decal4"
+	},
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red,
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
+	dir = 4
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/space)
+"XK" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/structure/barricade/hesco{
+	dir = 4
+	},
+/turf/open/asphalt/brown,
 /area/space)
 "XL" = (
 /obj/structure/prop/almayer/cannon_cable_connector{
@@ -16035,6 +16963,11 @@
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/floor/asteroidwarning/east,
 /area/space)
+"XQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/iv_drip,
+/turf/open/hybrisa/street/sidewalk/northwest,
+/area/space)
 "XR" = (
 /obj/effect/decal/strata_decals/grime/grime3,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
@@ -16053,9 +16986,52 @@
 /obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/plating,
 /area/space)
+"XV" = (
+/obj/structure/bed/portable_surgery,
+/obj/item/reagent_container/blood/empty{
+	pixel_x = -6;
+	pixel_y = -4
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/hybrisa/street/sidewalk/north,
+/area/space)
 "XW" = (
 /obj/structure/bed,
 /turf/open/floor/freezerfloor,
+/area/space)
+"XX" = (
+/obj/structure/barricade/concrete{
+	dir = 8
+	},
+/turf/open/hybrisa/street/sidewalk/east,
+/area/space)
+"XY" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
+	dir = 4
+	},
+/turf/open/hybrisa/street/sidewalkcenter/west,
+/area/space)
+"XZ" = (
+/obj/effect/decal/hybrisa/doubleroad/lines1{
+	pixel_x = -4
+	},
+/obj/effect/decal/hybrisa/road/corner{
+	dir = 1
+	},
+/obj/item/stack/sheet/metal,
+/turf/open/asphalt/brown,
+/area/space)
+"Ya" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/structure/barricade/deployable{
+	damage_state = 3;
+	health = 10;
+	icon_state = "folding_3"
+	},
+/turf/open/asphalt/brown,
 /area/space)
 "Yb" = (
 /obj/structure/machinery/light{
@@ -16072,6 +17048,35 @@
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/space)
+"Yd" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal11"
+	},
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/structure/barricade/deployable{
+	damage_state = 3;
+	health = 10;
+	icon_state = "folding_3"
+	},
+/turf/open/asphalt/brown,
+/area/space)
+"Ye" = (
+/obj/structure/barricade/concrete/wired{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/space)
+"Yf" = (
+/obj/structure/barricade/concrete,
+/turf/open/floor/plating,
+/area/space)
+"Yg" = (
+/obj/structure/barricade/concrete/wired{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/space)
 "Yh" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
@@ -16079,14 +17084,30 @@
 	},
 /turf/open/floor/delivery,
 /area/space)
+"Yi" = (
+/obj/structure/barricade/concrete/wired{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/space)
 "Yj" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/white,
 /area/space)
+"Yk" = (
+/obj/structure/barricade/concrete/wired,
+/turf/open/floor/plating,
+/area/space)
 "Yl" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/warnwhite/northwest,
+/area/space)
+"Ym" = (
+/obj/structure/barricade/concrete{
+	dir = 8
+	},
+/turf/open/floor/plating,
 /area/space)
 "Yn" = (
 /obj/effect/sentry_landmark/lz_2/top_left,
@@ -16104,9 +17125,35 @@
 /obj/structure/lz_sign/solaris_sign,
 /turf/open/mars,
 /area/space)
+"Yq" = (
+/obj/structure/barricade/concrete{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/space)
+"Yr" = (
+/obj/structure/barricade/concrete{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/space)
 "Ys" = (
 /obj/item/paper/crumpled/bloody,
 /turf/open/floor,
+/area/space)
+"Yt" = (
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/decal/hybrisa/road/lines2,
+/turf/closed/wall/hybrisa/colony/office/reinforced/hull,
+/area/space)
+"Yu" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/turf/closed/wall/hybrisa/colony/office/reinforced/hull,
+/area/space)
+"Yv" = (
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/effect/decal/hybrisa/road/lines2,
+/turf/closed/wall/hybrisa/colony/office/reinforced/hull,
 /area/space)
 "Yw" = (
 /obj/effect/decal/cleanable/dirt,
@@ -32362,8 +33409,8 @@ bB
 bB
 yA
 yA
-yA
-yA
+al
+al
 al
 al
 al
@@ -32612,11 +33659,11 @@ zA
 zA
 zA
 zA
-zA
-zA
-zA
-zA
 al
+al
+al
+Di
+Di
 Di
 AV
 BQ
@@ -32861,14 +33908,14 @@ ak
 ak
 ak
 ak
-ak
-ak
-ak
-ak
-ak
-ak
 al
 al
+al
+al
+gh
+zL
+zL
+zL
 zL
 ft
 zc
@@ -33112,14 +34159,14 @@ ak
 ak
 ak
 ak
-ak
-ak
-ak
-ak
-ak
-ak
-ak
 al
+al
+zN
+zN
+zN
+ak
+zN
+zN
 zN
 zN
 ft
@@ -33362,16 +34409,16 @@ yy
 zA
 ak
 ak
-zA
-zA
-zA
-zA
-zA
-zA
-zA
-zA
 al
 al
+eL
+eL
+eL
+eL
+eL
+DE
+eL
+eL
 eL
 eL
 zC
@@ -33613,16 +34660,16 @@ fb
 yy
 zA
 ak
-ak
+al
 zA
 zu
 el
-bB
-bB
-bB
 el
 el
-al
+el
+el
+el
+el
 el
 el
 el
@@ -33864,18 +34911,18 @@ bB
 fb
 yy
 zA
-ak
+al
 ak
 zA
 fb
-yy
-bB
-bB
-bB
-bB
-bB
-al
-al
+Ew
+yA
+yA
+yA
+yA
+yA
+yA
+yA
 yA
 yA
 du
@@ -34115,18 +35162,18 @@ bb
 bb
 fb
 yy
-zA
-ak
+al
+al
 ak
 zA
 fb
 yy
+bB
+bB
+bB
+bB
 bb
 bb
-bB
-bB
-bB
-bB
 Lj
 Lj
 Lj
@@ -34367,18 +35414,18 @@ bb
 bb
 fb
 yy
-zA
+al
 ak
 ak
 zA
 fb
 yy
-bb
-bb
-bb
-bb
 bB
 bB
+bb
+bb
+bb
+bb
 Lj
 an
 an
@@ -34618,8 +35665,8 @@ bb
 bb
 bb
 fb
-yy
-zA
+al
+al
 ak
 ak
 zA
@@ -34869,8 +35916,8 @@ bb
 bb
 bb
 bb
-fb
-yy
+al
+al
 zA
 ak
 ak
@@ -35121,7 +36168,7 @@ bb
 bb
 bb
 bb
-fb
+al
 yy
 zA
 ak
@@ -37479,7 +38526,7 @@ Lu
 Lu
 Hs
 Hs
-Lu
+LW
 an
 an
 an
@@ -37983,8 +39030,8 @@ be
 be
 aF
 bd
-Lu
-Lu
+LW
+LW
 an
 an
 an
@@ -38236,8 +39283,8 @@ be
 aF
 bd
 bd
-Lu
-Lu
+LW
+LW
 an
 an
 al
@@ -38473,11 +39520,11 @@ HF
 HF
 HF
 HF
-HF
+VL
 Ic
 Ic
 Ic
-HF
+VL
 HF
 HF
 HF
@@ -38489,7 +39536,7 @@ HF
 HF
 LE
 Hk
-Lu
+LW
 LD
 LD
 al
@@ -38887,7 +39934,7 @@ bg
 EQ
 Rk
 Rk
-Rk
+Yg
 Rk
 Rk
 Rk
@@ -39139,7 +40186,7 @@ EO
 bg
 Rk
 Rk
-Rk
+Yi
 Rk
 Rk
 Rk
@@ -39391,8 +40438,8 @@ Rk
 bg
 Rk
 Rk
-Rk
-Rk
+Yk
+Ye
 Rk
 Rk
 aW
@@ -39895,7 +40942,7 @@ Rk
 bg
 Rk
 Rk
-Rk
+Ym
 Rk
 Rk
 Rk
@@ -40147,8 +41194,8 @@ bh
 bg
 Rk
 Rk
-Rk
-Rk
+Yq
+Yf
 Rk
 Rk
 aX
@@ -40399,7 +41446,7 @@ bg
 ES
 Rk
 Rk
-Rk
+Yr
 Rk
 Rk
 Rk
@@ -40518,7 +41565,7 @@ FG
 FF
 FB
 Fp
-da
+Uj
 Dn
 DE
 DE
@@ -40768,11 +41815,11 @@ zu
 ds
 da
 da
-da
-al
-zu
-el
-el
+Va
+UA
+Um
+TQ
+PP
 el
 el
 al
@@ -41019,12 +42066,12 @@ ad
 fb
 yy
 Dk
-zJ
-zJ
+Vt
+Vb
+UB
 al
-al
-al
-yA
+TR
+PQ
 yA
 yA
 yA
@@ -41270,12 +42317,12 @@ bb
 ad
 fb
 yy
-zS
-zR
-zI
-al
-al
-al
+VG
+Vu
+Vd
+UC
+Un
+TV
 cq
 KK
 Kw
@@ -41519,16 +42566,16 @@ rq
 Lu
 bb
 bb
-ad
+VI
 fb
 yy
-zS
-zR
-zI
+VH
+Vu
+Vf
+TV
 al
 al
-al
-al
+PW
 KL
 Kz
 eB
@@ -41775,13 +42822,13 @@ bb
 fb
 yy
 zS
-zR
-al
-al
-al
-al
-al
-fb
+Vw
+Vh
+UD
+Uo
+TX
+Qe
+PC
 Kk
 Kk
 el
@@ -42027,14 +43074,14 @@ bb
 fb
 yy
 zS
-zR
-zI
+VC
+TA
+UC
+Uv
 al
-al
-al
-al
-Kk
-dU
+TD
+PD
+CF
 Km
 Kb
 al
@@ -42278,15 +43325,15 @@ bb
 bb
 fb
 yy
-zS
-ak
-Ft
-al
-al
-al
-al
-bd
-cO
+VG
+VD
+Vi
+UJ
+Uw
+TV
+TE
+PI
+Lw
 Ko
 Kc
 al
@@ -42531,12 +43578,12 @@ bb
 fb
 yy
 zS
-zR
-zI
-al
-al
-al
-al
+Vu
+Vj
+Qe
+TV
+TE
+Qe
 KN
 KB
 Kp
@@ -42635,14 +43682,14 @@ bB
 bB
 bB
 bB
+bb
+bb
+bb
+bb
+bb
 bB
 bB
-bb
-bb
-bb
-bb
-bb
-bb
+bB
 bb
 bb
 bb
@@ -42681,7 +43728,7 @@ AW
 Bj
 FY
 FY
-fb
+Xj
 yy
 zS
 zR
@@ -42783,13 +43830,13 @@ bB
 fb
 yy
 zS
-zR
+Vu
+Vl
+UN
 al
-al
-al
-al
+TZ
 KY
-CR
+PM
 KF
 Kq
 Kf
@@ -42888,15 +43935,15 @@ bB
 bB
 bB
 bB
+bb
+bb
+bb
 bB
 bB
-bb
-bb
-bb
-bb
-bb
-bb
-bb
+bB
+bB
+bB
+bB
 bb
 bb
 bb
@@ -42935,7 +43982,7 @@ FY
 bn
 Ez
 yy
-zS
+WR
 zR
 zI
 zB
@@ -43035,8 +44082,8 @@ bB
 fb
 yy
 zS
-zR
-al
+Vw
+zF
 al
 al
 al
@@ -43141,15 +44188,15 @@ bB
 bB
 bB
 bB
-bB
-bB
-bB
-bB
-bB
 bb
 bb
-bb
-bb
+bB
+bB
+bB
+bB
+bB
+bB
+bB
 bb
 bb
 bb
@@ -43287,11 +44334,11 @@ bB
 fb
 yy
 zS
-zR
+VF
+Vm
+UO
 al
-al
-al
-al
+Ua
 Le
 KQ
 cO
@@ -43404,7 +44451,7 @@ el
 el
 el
 el
-el
+al
 el
 el
 el
@@ -43440,11 +44487,11 @@ AT
 Ew
 du
 da
-da
-EW
-EW
+WF
+Ww
+Wg
 zs
-zr
+VQ
 yy
 bR
 ak
@@ -43540,12 +44587,12 @@ fb
 yy
 zS
 ak
-al
-al
-al
-al
-IZ
-fb
+Vq
+Qe
+Ux
+Qe
+TI
+PO
 Kk
 Kv
 al
@@ -43655,7 +44702,7 @@ yA
 yA
 yA
 yA
-yA
+al
 EA
 mf
 cb
@@ -43688,15 +44735,15 @@ yA
 yA
 yA
 yA
-yA
-du
-EA
-mf
-cb
-cb
-mf
-AN
-zs
+XF
+Xk
+WX
+WS
+WG
+Wz
+Wh
+VZ
+VT
 du
 bR
 ak
@@ -43792,11 +44839,11 @@ fb
 yy
 zS
 zR
-zI
-zB
-al
-yy
-IZ
+Vd
+UP
+Qe
+Uf
+TK
 KT
 Kk
 al
@@ -43907,7 +44954,7 @@ zA
 zA
 Bl
 AV
-da
+al
 zc
 ak
 zL
@@ -43940,14 +44987,14 @@ Bl
 Bl
 Bl
 Bl
-AV
-da
-zc
-ak
-zL
-zL
-ak
-iv
+XG
+Xn
+WY
+WT
+WI
+WA
+Wj
+Wa
 Af
 BQ
 EN
@@ -44045,10 +45092,10 @@ yy
 zS
 zR
 zI
-zB
-fb
-yy
-IZ
+UT
+PC
+Ug
+TL
 KX
 eB
 al
@@ -44159,7 +45206,7 @@ ak
 ak
 zL
 ft
-EW
+al
 zc
 zR
 em
@@ -44191,14 +45238,14 @@ gh
 zL
 zL
 zL
-zL
-ft
-EW
-zc
+XY
+XJ
+Xo
+Xa
 zR
-em
-cL
-zI
+WJ
+WB
+Wl
 iv
 Af
 jB
@@ -44296,9 +45343,9 @@ fb
 yy
 zS
 zR
-zI
+Vr
 zB
-fb
+Uy
 yy
 Lh
 fb
@@ -44411,7 +45458,7 @@ ak
 ak
 zN
 ft
-EW
+al
 zc
 zR
 em
@@ -44445,13 +45492,13 @@ zN
 zN
 zN
 ft
-EW
-zc
+Xq
+Xc
 zR
 em
-cM
-zI
-iv
+WC
+Wn
+Wb
 Af
 jB
 ak
@@ -44663,7 +45710,7 @@ zA
 zA
 eL
 zB
-da
+al
 zc
 ak
 zN
@@ -44695,14 +45742,14 @@ BV
 BD
 BD
 BD
-LC
-zC
-da
-zc
+XZ
+XK
+Xt
+Xd
 ak
+WL
 zN
-zN
-ak
+Wp
 iv
 Af
 Ev
@@ -44770,8 +45817,8 @@ LD
 Dx
 Dx
 Dx
-Lu
-Lu
+LW
+LW
 Dx
 Dx
 Dx
@@ -44779,8 +45826,8 @@ Dx
 Dx
 Dx
 Dx
-Lu
-Lu
+LW
+LW
 Dx
 Dx
 LD
@@ -44916,7 +45963,7 @@ el
 el
 el
 el
-EC
+Yv
 iL
 dj
 dj
@@ -44947,16 +45994,16 @@ zA
 zA
 zA
 zA
-AW
-zu
-ds
-EC
-iL
+Ya
+XQ
+Xv
+Xf
+WU
+WN
 dj
-dj
-iL
-BB
-zu
+Wr
+Wd
+VU
 ds
 bR
 ak
@@ -45022,8 +46069,8 @@ Lu
 ek
 ek
 ek
-Lu
-Lu
+LW
+LW
 bb
 aE
 aE
@@ -45031,10 +46078,10 @@ bB
 aE
 aE
 aE
-Lu
-Lu
-Lu
-Lu
+LW
+LW
+LW
+LW
 Lu
 an
 an
@@ -45168,7 +46215,7 @@ yA
 yA
 yA
 yA
-du
+al
 da
 da
 da
@@ -45199,17 +46246,17 @@ Bq
 Bq
 Bq
 Bq
-Bb
-fb
-Ex
-ds
+Yd
+XV
+Xx
+Xg
+WV
+WO
 Af
-Af
-Af
-Af
+Wu
 zu
-Ez
-yy
+VW
+VN
 bR
 ak
 zd
@@ -45274,7 +46321,7 @@ Lu
 Af
 Af
 Af
-Lu
+LW
 bb
 bb
 bb
@@ -45421,12 +46468,12 @@ bB
 bB
 bB
 bB
-Dk
+Yt
 zJ
 zJ
-Ty
+AV
 bB
-aa
+bb
 bB
 aE
 bB
@@ -45452,14 +46499,14 @@ yA
 yA
 yA
 yA
-yA
-zr
-yy
+XX
+XA
+Xh
 EA
-zJ
-zJ
+WP
+WD
 Bz
-zs
+We
 yA
 du
 bR
@@ -45673,13 +46720,13 @@ bB
 bB
 bB
 bB
-zS
+Yu
 zR
 zI
-Tz
+zB
 aa
-aa
-aa
+bb
+bb
 aa
 bB
 dl
@@ -45709,7 +46756,7 @@ zs
 du
 zc
 ak
-ak
+WE
 EG
 mf
 mf
@@ -45925,10 +46972,10 @@ bB
 bB
 bB
 bB
-zS
+Yu
 zR
 zI
-Tz
+zB
 aE
 aa
 aa
@@ -46177,10 +47224,10 @@ bB
 bB
 bB
 bB
-zS
+Yu
 zR
-TA
-Tz
+zI
+zB
 zu
 el
 el
@@ -46430,8 +47477,8 @@ bB
 bB
 bB
 zS
-ak
-Lm
+al
+Ft
 zB
 fb
 Ew
@@ -46683,7 +47730,7 @@ bB
 bB
 zS
 Lr
-TA
+zI
 zB
 fb
 yy
@@ -49214,7 +50261,7 @@ bB
 bB
 bB
 bb
-bb
+bB
 bB
 bB
 bB
@@ -49467,7 +50514,7 @@ bB
 bb
 bb
 bb
-bb
+bB
 bB
 bB
 bB
@@ -49967,7 +51014,7 @@ bB
 bB
 bB
 bB
-bb
+bB
 bb
 bb
 bb
@@ -50219,11 +51266,11 @@ bB
 bB
 bB
 bB
+bB
 bb
 bb
 bb
-bb
-bb
+bB
 bB
 bB
 bB
@@ -51229,7 +52276,7 @@ bB
 bB
 bB
 bB
-bb
+bB
 bB
 bB
 bB
@@ -56116,7 +57163,7 @@ an
 an
 an
 QH
-bd
+QH
 tn
 fb
 em
@@ -56265,7 +57312,7 @@ fb
 yy
 bB
 bB
-bB
+al
 al
 bB
 bB
@@ -56367,7 +57414,7 @@ an
 an
 an
 an
-QH
+an
 QH
 QH
 zs
@@ -56517,7 +57564,7 @@ fb
 yy
 bB
 bB
-bB
+al
 al
 al
 bB
@@ -56769,8 +57816,8 @@ fb
 yy
 bB
 bB
-bB
-bB
+al
+al
 al
 bB
 bB
@@ -57020,11 +58067,11 @@ zB
 fb
 yy
 bB
-bB
-bB
-bB
-bB
 al
+al
+al
+al
+bB
 bB
 bB
 bB
@@ -57119,8 +58166,8 @@ fb
 yy
 Rj
 QH
-an
-an
+QH
+QH
 an
 an
 an
@@ -57272,12 +58319,12 @@ zB
 fb
 yy
 bB
-bB
-bB
-bB
-bB
-bB
 al
+al
+al
+al
+bB
+bB
 bB
 bB
 bB
@@ -57371,8 +58418,8 @@ fb
 yy
 Rj
 QH
-an
-an
+QH
+QH
 an
 an
 an
@@ -57524,13 +58571,13 @@ zB
 fb
 yy
 bB
-bB
-bB
-bB
-bB
-bB
 al
 al
+al
+al
+bB
+bB
+bB
 bB
 bB
 bB
@@ -57623,8 +58670,8 @@ fb
 yy
 Rj
 QH
-an
-an
+QH
+QH
 an
 an
 an
@@ -57776,13 +58823,13 @@ zB
 fb
 yy
 bB
-bB
-bB
-bB
-bB
-bB
-bB
 al
+al
+al
+bB
+bB
+bB
+bB
 bB
 bB
 bB
@@ -58027,13 +59074,6 @@ zI
 zB
 fb
 yy
-bB
-bB
-bB
-bB
-bB
-bB
-bB
 al
 al
 bB
@@ -58044,14 +59084,21 @@ bB
 bB
 bB
 bB
-al
-al
-al
-al
 bB
 bB
 bB
 bB
+bB
+bB
+bB
+al
+al
+al
+al
+al
+al
+al
+al
 LZ
 an
 an
@@ -58278,7 +59325,13 @@ zR
 zI
 zB
 fb
-yy
+al
+al
+bB
+bB
+bB
+bB
+bB
 bB
 bB
 bB
@@ -58298,12 +59351,6 @@ al
 al
 al
 al
-al
-bB
-bB
-bB
-bB
-bB
 LZ
 an
 an
@@ -58382,7 +59429,7 @@ QH
 an
 an
 an
-JJ
+an
 JJ
 JJ
 al
@@ -58529,8 +59576,9 @@ zS
 zR
 zI
 zB
-fb
-yy
+al
+al
+al
 bB
 bB
 bB
@@ -58543,19 +59591,18 @@ bB
 bB
 bB
 bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
 LZ
 an
 an
@@ -58635,7 +59682,7 @@ an
 an
 an
 JJ
-bB
+JJ
 bB
 bB
 al
@@ -58780,9 +59827,9 @@ bB
 zS
 zR
 zI
-zB
-fb
-yy
+Tz
+al
+al
 bB
 bB
 bB
@@ -58791,23 +59838,23 @@ bB
 bB
 bB
 bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
 LZ
 an
 an
@@ -59032,8 +60079,8 @@ bB
 zS
 ak
 Ft
-zB
-fb
+Tz
+al
 yy
 bB
 bB
@@ -59042,24 +60089,24 @@ bB
 bB
 bB
 bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
 LZ
 an
 an
@@ -59284,8 +60331,8 @@ bB
 zS
 zR
 zI
-zB
-fb
+Tz
+al
 yy
 bB
 bB
@@ -59293,25 +60340,25 @@ bB
 bB
 bB
 bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
 LZ
 an
 an
@@ -59536,34 +60583,34 @@ bB
 zS
 zR
 zI
-zB
-fb
+Tz
+al
 yy
 bB
 bB
 bB
 bB
 bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
 LZ
 an
 an
@@ -59788,34 +60835,34 @@ bB
 zS
 zR
 zI
-zB
-fb
+Tz
+al
 yy
 bB
 bB
 bB
 bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
 LZ
 an
 an
@@ -60040,34 +61087,34 @@ bB
 zS
 zR
 zI
-zB
-fb
+Tz
+al
 yy
 bB
 bB
 bB
 bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
 LZ
 an
 an
@@ -60292,34 +61339,34 @@ bB
 zS
 ak
 Ft
-zB
-fb
+Tz
+al
 yy
 bB
 bB
 bB
 bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
 LZ
 an
 an
@@ -60545,32 +61592,32 @@ zS
 zR
 zI
 zB
-fb
+al
 yy
 bB
 bB
 bB
 bB
 bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
 al
 LZ
 LZ
@@ -60797,7 +61844,7 @@ zS
 zR
 zI
 zB
-fb
+al
 yy
 bB
 bB
@@ -60806,23 +61853,23 @@ bB
 bB
 bB
 bB
+al
+al
+al
+al
+al
+al
 bB
 bB
 bB
 bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
+al
+al
+al
+al
+al
+al
+al
 al
 al
 al
@@ -61049,7 +62096,7 @@ zS
 zR
 zI
 zB
-fb
+al
 yy
 bB
 bB
@@ -61059,21 +62106,21 @@ bB
 bB
 bB
 bB
+al
+al
+al
+al
 bB
 bB
 bB
 bB
 bB
 bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
+al
+al
+al
+al
+al
 al
 al
 bB
@@ -61301,7 +62348,7 @@ zS
 zR
 zI
 zB
-fb
+al
 yy
 bB
 bB
@@ -61317,10 +62364,10 @@ bB
 bB
 bB
 bB
-al
-al
-al
-al
+bB
+bB
+bB
+bB
 al
 al
 al
@@ -61553,7 +62600,7 @@ zS
 ak
 Ft
 zB
-fb
+al
 yy
 bB
 bB
@@ -61561,20 +62608,20 @@ zu
 el
 el
 el
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
-al
+el
+el
+el
+el
+el
+el
+el
+el
+el
+el
+el
+el
+el
+el
 al
 al
 el
@@ -61805,15 +62852,15 @@ zS
 zR
 zI
 zB
-fb
+al
 yy
 bB
 bB
 fb
 Ew
-al
-al
-al
+yA
+yA
+yA
 yA
 yA
 yA
@@ -62057,8 +63104,8 @@ zS
 zR
 zI
 zB
-fb
-yy
+al
+al
 bB
 bB
 fb
@@ -62310,11 +63357,11 @@ zR
 zI
 zB
 fb
-yy
+al
 bB
 bB
 fb
-al
+yy
 zZ
 zc
 yV
@@ -62562,11 +63609,11 @@ zR
 zI
 zB
 fb
+al
+bB
+bB
+fb
 yy
-bB
-bB
-al
-al
 zZ
 yI
 yI
@@ -62814,10 +63861,10 @@ ak
 Ft
 zB
 fb
-yy
-bB
-bB
 al
+al
+bB
+fb
 yy
 zZ
 yJ
@@ -63067,9 +64114,9 @@ zI
 zB
 fb
 yy
-bB
-bB
 al
+bB
+fb
 yy
 zZ
 zc
@@ -63319,9 +64366,9 @@ zI
 zB
 fb
 yy
-bB
-bB
 al
+bB
+fb
 yy
 zZ
 zc
@@ -63572,8 +64619,8 @@ zB
 fb
 yy
 bB
-bB
 al
+fb
 yy
 zZ
 yI
@@ -63824,8 +64871,8 @@ zB
 fb
 yy
 bB
-bB
 al
+fb
 yy
 zZ
 yJ
@@ -70001,8 +71048,8 @@ an
 an
 an
 an
-Ll
-bB
+ak
+ak
 bB
 bB
 bB
@@ -70254,7 +71301,7 @@ an
 an
 an
 ak
-bB
+ak
 bB
 bB
 bB
@@ -70491,7 +71538,7 @@ Ll
 ak
 ak
 ak
-Ll
+ak
 ak
 ak
 ak
@@ -70501,13 +71548,13 @@ Ll
 Ll
 Ll
 Ll
-Ll
 ak
 ak
 ak
 ak
-bB
-bB
+ak
+ak
+ak
 bB
 bB
 bB
@@ -70759,7 +71806,7 @@ ak
 ak
 ak
 ak
-bB
+ak
 bB
 bB
 bB
@@ -70961,7 +72008,7 @@ bB
 al
 al
 al
-bB
+al
 bb
 bb
 bb
@@ -71011,7 +72058,7 @@ ak
 ak
 ak
 ak
-bB
+ak
 bB
 bB
 bB
@@ -71211,10 +72258,10 @@ bB
 al
 al
 al
-bB
-bB
-bB
-bB
+al
+al
+al
+al
 bb
 bb
 al
@@ -71461,14 +72508,14 @@ al
 al
 al
 al
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
+al
+al
+al
+al
+al
+al
+al
+al
 al
 al
 al
@@ -71710,17 +72757,17 @@ an
 an
 LZ
 al
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
 al
 al
 al
@@ -71963,15 +73010,15 @@ an
 LZ
 al
 al
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
+al
+al
+al
+al
+al
+al
+al
+al
+al
 al
 al
 al
@@ -72216,14 +73263,14 @@ LZ
 al
 al
 al
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
+al
+al
+al
+al
+al
+al
+al
+al
 al
 al
 al
@@ -72469,12 +73516,12 @@ al
 al
 al
 al
-bB
-bB
-bB
-bB
-bB
-bB
+al
+al
+al
+al
+al
+al
 al
 al
 al
@@ -72722,9 +73769,9 @@ al
 al
 al
 al
-bB
-bB
-bB
+al
+al
+al
 al
 al
 al
@@ -72975,7 +74022,7 @@ bB
 bB
 al
 al
-bB
+al
 al
 al
 al
@@ -73747,11 +74794,11 @@ an
 an
 an
 an
-am
-am
-am
-am
-am
+al
+al
+al
+al
+al
 bB
 bB
 bB
@@ -73999,11 +75046,11 @@ an
 an
 an
 an
-am
+al
 bB
 bB
 bB
-am
+al
 am
 am
 bB
@@ -74251,11 +75298,11 @@ an
 an
 an
 an
-am
+al
 bB
 bB
 bB
-am
+al
 am
 am
 bB
@@ -74503,11 +75550,11 @@ an
 an
 an
 an
-am
+al
 bB
 bB
 bB
-am
+al
 am
 am
 bB
@@ -74755,11 +75802,11 @@ an
 an
 an
 an
-am
-am
-am
-am
-am
+al
+al
+al
+al
+al
 an
 am
 bB
@@ -77765,11 +78812,11 @@ bB
 al
 am
 an
-am
-am
-am
-am
-am
+al
+al
+al
+al
+al
 an
 an
 an
@@ -78017,11 +79064,11 @@ al
 al
 am
 am
-am
+al
 bB
 bB
 bB
-am
+al
 an
 an
 an
@@ -78269,11 +79316,11 @@ al
 al
 am
 am
-am
+al
 bB
 bB
 bB
-am
+al
 an
 an
 an
@@ -78521,11 +79568,11 @@ bB
 bB
 am
 am
-am
+al
 bB
 bB
 bB
-am
+al
 an
 an
 an
@@ -78773,11 +79820,11 @@ bB
 bB
 bB
 bB
-am
-am
-am
-am
-am
+al
+al
+al
+al
+al
 an
 an
 an
@@ -79535,11 +80582,11 @@ am
 am
 am
 am
-am
-am
-am
-am
-am
+ak
+ak
+ak
+ak
+ak
 am
 am
 am
@@ -79786,13 +80833,13 @@ bB
 bB
 bB
 bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
+ak
+ak
+ak
+ak
+ak
+ak
+ak
 bB
 bB
 bB
@@ -80037,13 +81084,13 @@ bB
 bB
 bB
 bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
+ak
+ak
+ak
+ak
+ak
+ak
+ak
 bB
 bB
 bB
@@ -80268,6 +81315,7 @@ ak
 ak
 ak
 ak
+ak
 bB
 bB
 bB
@@ -80277,24 +81325,23 @@ bB
 bB
 bB
 bB
+ak
+ak
+ak
+ak
+ak
+ak
 bB
 bB
 bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
 bB
 bB
 bB
@@ -80519,34 +81566,34 @@ ak
 ak
 ak
 ak
+ak
+ak
+ak
 bB
 bB
 bB
 bB
 bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
 bB
 bB
 bB
@@ -80770,34 +81817,34 @@ ak
 ak
 ak
 ak
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
 bB
 bB
 bB
@@ -81021,34 +82068,34 @@ ak
 ak
 ak
 ak
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
 bB
 bB
 bB
@@ -81272,34 +82319,34 @@ ak
 ak
 ak
 ak
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
 bB
 bB
 bB
@@ -81526,31 +82573,31 @@ ak
 bB
 bB
 bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
 bB
 bB
 bB
@@ -81779,28 +82826,28 @@ bB
 bB
 bB
 bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
 bB
 bB
 bB
@@ -82032,25 +83079,25 @@ bB
 bB
 bB
 bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
 bB
 bB
 bB
@@ -82287,19 +83334,19 @@ bB
 bB
 bB
 bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
 bB
 bB
 bB
@@ -82542,14 +83589,14 @@ bB
 bB
 bB
 bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
-bB
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
 bB
 bB
 bB

@@ -41,7 +41,6 @@
 	melee_damage_upper = 25
 	break_stuff_probability = 100
 	attack_same = FALSE
-	langchat_color = LIGHT_COLOR_GREEN
 
 	///Reference to the ZZzzz sleep overlay when resting.
 	var/sleep_overlay
@@ -153,6 +152,7 @@
 	vis_contents += wound_icon_holder
 	vis_contents += tongue_icon_holder
 
+	AddComponent(/datum/component/langchat_image, 32, LIGHT_COLOR_GREEN)
 	RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, PROC_REF(change_tongue_offset))
 
 	GLOB.giant_lizards_alive += src

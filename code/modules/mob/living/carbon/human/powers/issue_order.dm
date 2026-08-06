@@ -164,18 +164,21 @@
 		to_chat(src, SPAN_WARNING("You don't particularly understand how to speak... 'authoritatively.'"))
 		return
 
-	switch(langchat_styles)
-		if("", null)
-			langchat_styles = "langchat_smaller_bolded"
+	switch(voice_level)
+		if(0)
+			AddComponent(/datum/component/langchat_image, default_styles = list("langchat_smaller_bolded"))
 			to_chat(src, SPAN_NOTICE("You will now speak authoritatively."))
+			voice_level = 1
 			return
 
 		if("langchat_smaller_bolded")
-			langchat_styles = "langchat_bolded"
+			AddComponent(/datum/component/langchat_image, default_styles = list("langchat_bolded"))
 			to_chat(src, SPAN_NOTICE("You will now speak loudly and authoritatively."))
+			voice_level = 2
 			return
 
-		if("langchat_bolded")
-			langchat_styles = ""
+		if(2)
+			AddComponent(/datum/component/langchat_image, default_styles = list("langchat"))
 			to_chat(src, SPAN_NOTICE("You will now speak normally."))
+			voice_level = 0
 			return

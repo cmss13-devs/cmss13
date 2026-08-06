@@ -214,6 +214,10 @@
 	circuit = /obj/item/circuitboard/computer/cameras/tv
 	var/obj/item/device/broadcasting/broadcastingcamera = null
 
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/langchat_image)
+
 /obj/structure/machinery/computer/cameras/wooden_tv/broadcast/Destroy()
 	broadcastingcamera = null
 	return ..()
@@ -305,7 +309,7 @@
 	if(inoperable())
 		return
 	if(show_message_above_tv)
-		langchat_speech(message, get_mobs_in_view(7, src), language, sourcemob.langchat_color, FALSE, LANGCHAT_FAST_POP, list(sourcemob.langchat_styles))
+		langchat_send_message(message, NO_FLAGS, get_mobs_in_view(7, src), LANGCHAT_FAST_POP, language = language)
 	for(var/datum/weakref/user_ref in concurrent_users)
 		var/mob/user = user_ref.resolve()
 		if(user?.client?.prefs && !user.client.prefs.lang_chat_disabled && !user.ear_deaf && user.say_understands(sourcemob, language))
@@ -316,7 +320,7 @@
 	if(inoperable())
 		return
 	if(show_message_above_tv)
-		langchat_speech(emote, get_mobs_in_view(7, src), skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("emote"))
+		langchat_send_message(emote, LANGCHAT_IMAGE_IS_EMOTE | LANGCHAT_IMAGE_IGNORE_LANG, get_mobs_in_view(7, src), LANGCHAT_FAST_POP)
 	for(var/datum/weakref/user_ref in concurrent_users)
 		var/mob/user = user_ref.resolve()
 		if(user?.client?.prefs && (user.client.prefs.toggles_langchat & LANGCHAT_SEE_EMOTES) && (!audible || !user.ear_deaf))

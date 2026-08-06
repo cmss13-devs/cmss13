@@ -1529,6 +1529,7 @@
 /obj/structure/prop/invuln/joey/Initialize()
 	. = ..()
 	START_PROCESSING(SSobj, src)
+	AddComponent(/datum/component/langchat_image)
 
 /obj/structure/prop/invuln/joey/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -1568,7 +1569,7 @@
 	for(var/mob/current_mob in viewers)
 		if(!(current_mob.client?.prefs.toggles_langchat & LANGCHAT_SEE_EMOTES))
 			viewers -= current_mob
-	langchat_speech(initial(emote.say_message), viewers, GLOB.all_languages, skip_language_check = TRUE)
+	langchat_send_message(initial(emote.say_message), LANGCHAT_IMAGE_IGNORE_LANG, viewers)
 
 	if(initial(emote.sound))
 		playsound(loc, initial(emote.sound), 50, FALSE)

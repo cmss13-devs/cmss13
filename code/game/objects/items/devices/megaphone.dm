@@ -135,7 +135,7 @@
 			langchat_long_listeners += listener
 
 		playsound(loc, 'sound/items/megaphone.ogg', 100, FALSE, TRUE)
-		user.langchat_speech(message, langchat_long_listeners, speaking, additional_styles = list("langchat_announce"), split_long_messages = TRUE)
+		user.langchat_send_message(message, LANGCHAT_IMAGE_MULTIPART, langchat_long_listeners, additional_styles = list("langchat_announce"), language = speaking)
 
 		COOLDOWN_START(src, spam_cooldown, spam_cooldown_time)
 

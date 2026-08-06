@@ -10,9 +10,7 @@
 		give_action(target, action_type)
 
 	give_action(target, /datum/action/human_action/cycle_voice_level)
-
-	var/mob/living/carbon/human/leader = target
-	leader.langchat_styles = "langchat_smaller_bolded"
+	target.AddComponent(/datum/component/langchat_image, default_styles = list("langchat_smaller_bolded"))
 
 /datum/element/traitbound/leadership/Detach(datum/target)
 	var/mob/living/carbon/human/leader = target
@@ -21,7 +19,6 @@
 
 	var/datum/action/human_action/cycle_voice_level/voice = get_action(leader, /datum/action/human_action/cycle_voice_level)
 	voice?.remove_from(leader)
-
-	leader.langchat_styles = ""
+	target.AddComponent(/datum/component/langchat_image, default_styles = list())
 
 	return ..()

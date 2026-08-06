@@ -62,7 +62,7 @@
 		holder.overlays += image(file_to_use, human, "upp_background")
 		var/image/rank_icon_image = image(file_to_use, human, "upp_[hud_icon_state]")
 		if(istype(squad))
-			human.langchat_color = human.assigned_squad.chat_color
+			human.AddComponent(/datum/component/langchat_image, default_color = squad.equipment_color)
 			rank_icon_image.color = squad.equipment_color
 			var/image/squad_circle = image(file_to_use, human, "upp_squad_circle")
 			squad_circle.color = squad.equipment_color

@@ -1207,6 +1207,7 @@ and you're good to go.
 
 /obj/item/weapon/gun/proc/Fire(atom/target, mob/living/user, params, reflex = FALSE, dual_wield)
 	set waitfor = FALSE
+
 	if(!gun_user)
 		set_gun_user(user)
 
@@ -2215,6 +2216,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 /// SIGNAL_HANDLER for COMSIG_MOB_MOUSEDOWN
 /obj/item/weapon/gun/proc/start_fire(datum/source, atom/object, turf/location, control, params, bypass_checks = FALSE)
 	SIGNAL_HANDLER
+
 	if(!gun_user)
 		set_gun_user(source)
 

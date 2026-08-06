@@ -122,10 +122,8 @@
 	if(!shooting)
 		return
 	if(next_fire > world.time)//This mean duplication somewhere, we abort now
-		to_chat(world, "prcoesshot2")
 		return
 	if(!(callback_fire.Invoke() & AUTOFIRE_CONTINUE))//reset fire if we want to stop
-		to_chat(world, "prcoesshot3")
 		hard_reset()
 		return
 	switch(fire_mode)
@@ -144,7 +142,6 @@
 			bursting = TRUE
 			next_fire = world.time + burstfire_shot_delay
 		if(GUN_FIREMODE_AUTOMATIC)
-			to_chat(world, "prcoesshot auto")
 			callback_set_firing?.Invoke(TRUE)
 			next_fire = world.time + (auto_fire_shot_delay * automatic_delay_mult)
 		if(GUN_FIREMODE_SEMIAUTO)

@@ -414,24 +414,3 @@ GLOBAL_LIST_INIT(shotgun_handfuls_12g, list(
 	gun_type = /obj/item/weapon/gun/shotgun/double/twobore
 	handful_state = "twobore"
 	transfer_handful_amount = 3
-
-// i fucking hate gun code
-
-/obj/item/ammo_magazine/handful/revolver
-	name = "handful of revolver bullets (.44)"
-	default_ammo = /datum/ammo/bullet/revolver
-	caliber = ".44"
-	max_rounds = 8
-	current_rounds = 8
-	gun_type = /obj/item/weapon/gun/shotgun/double/cane
-
-/obj/item/ammo_magazine/handful/revolver/marksman
-	name = "handful of marksman revolver bullets (.44)"
-	default_ammo = /datum/ammo/bullet/revolver/marksman
-	gun_type = /obj/item/weapon/gun/shotgun/double/cane
-
-/obj/item/ammo_magazine/handful/revolver/marksman/six_rounds
-	name = "handful of marksman revolver bullets (.44)"
-	default_ammo = /datum/ammo/bullet/revolver/marksman
-	current_rounds = 6
-	gun_type = /obj/item/weapon/gun/shotgun/double/cane

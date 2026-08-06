@@ -19,6 +19,7 @@
 	gun_type = /obj/item/weapon/gun/revolver/m44
 	ammo_band_icon = "+m44_tip"
 	ammo_band_icon_empty = "empty"
+	transfer_handful_amount = 7
 
 /obj/item/ammo_magazine/revolver/marksman
 	name = "\improper M44 marksman speed loader (.44)"
@@ -62,6 +63,7 @@
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/revolvers.dmi'
 	icon_state = "pkd_44"
 	caliber = ".44 sabot"
+	transfer_handful_amount = 8
 
 /obj/item/ammo_magazine/revolver/upp
 	name = "\improper ZHNK-72 speed loader (7.62x38mmR)"
@@ -87,6 +89,7 @@
 	icon_state = "38"
 	max_rounds = 6
 	gun_type = /obj/item/weapon/gun/revolver/small
+	transfer_handful_amount = 6
 
 /obj/item/ammo_magazine/revolver/cmb
 	name = "\improper Spearhead hollowpoint speed loader (.357)"
@@ -97,6 +100,7 @@
 	icon_state = "cmb_hp"
 	max_rounds = 6
 	gun_type = /obj/item/weapon/gun/revolver/cmb
+	transfer_handful_amount = 6
 
 /obj/item/ammo_magazine/revolver/cmb/normalpoint //put these in the marshal ert - ok sure :)
 	name = "\improper Spearhead speed loader (.357)"
@@ -116,6 +120,7 @@
 	icon_state = "mateba"
 	max_rounds = 6
 	gun_type = /obj/item/weapon/gun/revolver/mateba
+	transfer_handful_amount = 6
 
 /obj/item/ammo_magazine/revolver/mateba/highimpact
 	name = "\improper High Impact Unica 6 speed loader (.454)"
@@ -148,6 +153,7 @@
 	icon_state = "357"
 	max_rounds = 6
 	gun_type = /obj/item/weapon/gun/revolver/m44/custom/webley
+	transfer_handful_amount = 6
 
 //INTERNAL MAGAZINES
 
@@ -254,3 +260,114 @@
 	caliber = ".455"
 	default_ammo = /datum/ammo/bullet/revolver/webley
 	gun_type = /obj/item/weapon/gun/revolver/m44/custom/webley
+
+/**
+ * Handfuls
+*/
+
+//-------------------------------------------------------
+//.44 handfuls
+/obj/item/ammo_magazine/handful/revolver
+	name = "handful of revolver bullets (.44)"
+	default_ammo = /datum/ammo/bullet/revolver
+	caliber = ".44"
+	max_rounds = 7
+	current_rounds = 7
+	transfer_handful_amount = 7
+
+/obj/item/ammo_magazine/handful/revolver/heavy
+	name = "handful of revolver heavy bullets (.44)"
+	default_ammo = /datum/ammo/bullet/revolver/heavy
+
+/obj/item/ammo_magazine/handful/revolver/marksman
+	name = "handful of marksman revolver bullets (.44)"
+	default_ammo = /datum/ammo/bullet/revolver/marksman
+
+/obj/item/ammo_magazine/handful/revolver/marksman/six_rounds
+	current_rounds = 6
+
+/obj/item/ammo_magazine/handful/revolver/marksman/toxin
+	name = "handful of toxic revolver bullets (.44)"
+	default_ammo = /datum/ammo/bullet/revolver/marksman/toxin
+
+/obj/item/ammo_magazine/handful/revolver/incendiary
+	name = "handful of incendiary revolver bullets (.44)"
+	default_ammo = /datum/ammo/bullet/revolver/incendiary
+
+/obj/item/ammo_magazine/handful/revolver/penetrating
+	name = "handful of wall-penetrating revolver bullets (.44)"
+	default_ammo = /datum/ammo/bullet/revolver/penetrating
+
+//-------------------------------------------------------
+//.44 PKD
+/obj/item/ammo_magazine/handful/revolver/pkd
+	name = "handful of revolver bullets (.44 sabot)"
+	caliber = ".44 sabot"
+	max_rounds = 8
+	current_rounds = 8
+	transfer_handful_amount = 8
+
+//-------------------------------------------------------
+//UPP revolver
+/obj/item/ammo_magazine/handful/revolver/upp
+	name = "handful of heavy revolver bullets (7.62x38mmR)"
+	default_ammo = /datum/ammo/bullet/revolver/upp
+
+/obj/item/ammo_magazine/handful/revolver/upp/shrapnel
+	name = "handful of shrapnel-shot revolver bullets (7.62x38mmR)"
+	default_ammo = /datum/ammo/bullet/revolver/upp/shrapnel
+
+//-------------------------------------------------------
+//S&W .38
+/obj/item/ammo_magazine/handful/revolver/small
+	name = "handful of small revolver bullets (.38)"
+	default_ammo = /datum/ammo/bullet/revolver/small
+	caliber = ".38"
+	max_rounds = 6
+	current_rounds = 6
+	transfer_handful_amount = 6
+
+//-------------------------------------------------------
+//.357
+/obj/item/ammo_magazine/handful/revolver/small/hollowpoint
+	name = "handful of small hollowpoint revolver bullets (.357)"
+	default_ammo = /datum/ammo/bullet/revolver/small/hollowpoint
+	caliber = ".357"
+
+/obj/item/ammo_magazine/handful/revolver/small/cmb
+	name = "handful of small revolver bullets (.357)"
+	default_ammo = /datum/ammo/bullet/revolver/small/cmb
+	caliber = ".357"
+
+//-------------------------------------------------------
+//Mateba .454
+/obj/item/ammo_magazine/handful/revolver/mateba
+	name = "handful of heavy revolver bullets (.454)"
+	default_ammo = /datum/ammo/bullet/revolver/mateba
+	caliber = ".454"
+	max_rounds = 6
+	current_rounds = 6
+	transfer_handful_amount = 6
+
+/obj/item/ammo_magazine/handful/revolver/mateba/highimpact
+	name = "handful of heavy high-impact revolver bullets (.454)"
+	default_ammo = /datum/ammo/bullet/revolver/mateba/highimpact
+
+/obj/item/ammo_magazine/handful/revolver/mateba/highimpact/ap
+	name = "handful of heavy high-impact armor piercing revolver bullets (.454)"
+	default_ammo = /datum/ammo/bullet/revolver/mateba/highimpact/ap
+
+/obj/item/ammo_magazine/handful/revolver/mateba/highimpact/explosive
+	name = "handful of heavy explosive revolver bullets (.454)"
+	default_ammo = /datum/ammo/bullet/revolver/mateba/highimpact/explosive
+
+
+//-------------------------------------------------------
+//Webley .455
+/obj/item/ammo_magazine/handful/revolver/webley
+	name = "handful of revolver bullets (.455)"
+	default_ammo = /datum/ammo/bullet/revolver/webley
+	caliber = ".455"
+	max_rounds = 6
+	current_rounds = 6
+	transfer_handful_amount = 6

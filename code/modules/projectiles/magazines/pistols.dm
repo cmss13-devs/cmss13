@@ -554,3 +554,148 @@ L54 service pistol
 	name = "\improper L54 toxin magazine (9mm)"
 	default_ammo = /datum/ammo/bullet/pistol/ap/toxin
 	ammo_band_color = AMMO_BAND_COLOR_TOXIN
+
+
+//-------------------------------------------------------
+
+/**
+ * Handfuls
+*/
+
+//-------------------------------------------------------
+//9mm
+
+/obj/item/ammo_magazine/handful/pistol
+	name = "handful of pistol bullets (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol
+	caliber = "9mm"
+	max_rounds = 6
+	current_rounds = 6
+	transfer_handful_amount = 6
+
+/obj/item/ammo_magazine/handful/pistol/hp
+	name = "handful of hollowpoint pistol bullets (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/hollow
+
+/obj/item/ammo_magazine/handful/pistol/incendiary
+	name = "handful of hollowpoint pistol bullets (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/incendiary
+
+/obj/item/ammo_magazine/handful/pistol/ap
+	name = "handful of armor-piercing pistol bullets (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/ap
+
+/obj/item/ammo_magazine/handful/pistol/ap/penetrating
+	name = "handful of wall-penetrating pistol bullets (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/ap/penetrating
+
+/obj/item/ammo_magazine/handful/pistol/ap/toxin
+	name = "handful of toxic pistol bullets (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/ap/toxin
+
+/obj/item/ammo_magazine/handful/pistol/le
+	name = "handful of armor-shredding pistol bullets (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/le
+
+/obj/item/ammo_magazine/handful/pistol/rubber
+	name = "handful of rubber pistol bullets (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/rubber
+
+//-------------------------------------------------------
+//9mm ES-4
+
+/obj/item/ammo_magazine/handful/pistol/rubber/es4
+	name = "handful of stun pistol bullets (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/rubber/es4
+
+//-------------------------------------------------------
+//.45
+
+/obj/item/ammo_magazine/handful/pistol/heavy
+	name = "handful of heavy pistol bullets (.45)"
+	default_ammo = /datum/ammo/bullet/pistol/heavy
+	caliber = ".45"
+	max_rounds = 6
+	current_rounds = 6
+	transfer_handful_amount = 6
+
+/obj/item/ammo_magazine/handful/pistol/heavy/highimpact
+	name = "handful of high-impact pistol bullets (.45)"
+	default_ammo = /datum/ammo/bullet/pistol/heavy/highimpact
+
+/obj/item/ammo_magazine/handful/pistol/heavy/highimpact/ap
+	name = "handful of high-impact armor-piercing pistol bullets (.45)"
+	default_ammo = /datum/ammo/bullet/pistol/heavy/highimpact/ap
+
+//-------------------------------------------------------
+//.50
+
+/obj/item/ammo_magazine/handful/pistol/deagle
+	name = "handful of heavy pistol bullets (.50)"
+	default_ammo = /datum/ammo/bullet/pistol/deagle
+	caliber = ".50"
+	max_rounds = 7
+	current_rounds = 7
+	transfer_handful_amount = 7
+
+/obj/item/ammo_magazine/handful/pistol/deagle/super
+	name = "handful of high-power pistol bullets (.50)"
+	default_ammo = /datum/ammo/bullet/pistol/deagle/super
+
+/obj/item/ammo_magazine/handful/pistol/deagle/super/highimpact
+	name = "handful of high-impact pistol bullets (.50)"
+	default_ammo = /datum/ammo/bullet/pistol/deagle/super/highimpact
+
+/obj/item/ammo_magazine/handful/pistol/deagle/super/highimpact/ap
+	name = "handful of high-impact armor-piercing pistol bullets (.50)"
+	default_ammo = /datum/ammo/bullet/pistol/deagle/super/highimpact/ap
+
+//-------------------------------------------------------
+//.45 MK-45
+/obj/item/ammo_magazine/handful/pistol/highpower
+	name = "handful of high-power pistol bullets (.45)"
+	default_ammo = /datum/ammo/bullet/pistol/highpower
+	caliber = ".45"
+	max_rounds = 6
+	current_rounds = 6
+	transfer_handful_amount = 6
+
+//-------------------------------------------------------
+//9mm squash VP78/Auto 9
+
+/obj/item/ammo_magazine/handful/pistol/squash
+	name = "handful of squash-head pistol bullets (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/squash
+	caliber = "9mm"
+	max_rounds = 6
+	current_rounds = 6
+	transfer_handful_amount = 6
+
+/obj/item/ammo_magazine/handful/pistol/squash/toxin
+	name = "handful of toxic squash-head pistol bullets (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/squash/toxin
+
+/obj/item/ammo_magazine/handful/pistol/squash/penetrating
+	name = "handful of wall-penetrating squash-head pistol bullets (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/squash/penetrating
+
+/obj/item/ammo_magazine/handful/pistol/squash/incendiary
+	name = "handful of incendiary squash-head pistol bullets (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/squash/incendiary
+
+/obj/item/ammo_magazine/handful/pistol/squash/heap
+	name = "handful of high-explosive armor-piercing squash-head pistol bullets (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/squash/heap
+
+/obj/item/ammo_magazine/handful/pistol/squash/rubber
+	name = "handful of rubber squash-head pistol bullets (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/squash/rubber
+
+//-------------------------------------------------------
+//.70M CHIMP70 monkey...
+
+/obj/item/ammo_magazine/handful/pistol/chimp
+	name = "handful of pistol bullets (.70M)"
+	default_ammo = /datum/ammo/bullet/pistol/mankey
+	caliber = ".70M"
+

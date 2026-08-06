@@ -383,6 +383,11 @@
 /obj/structure/machinery/door/airlock/almayer/command/autoname
 	autoname = TRUE
 
+/obj/structure/machinery/door/airlock/almayer/command/glass
+	icon = 'icons/obj/structures/doors/comdoor_glass.dmi'
+	opacity = FALSE
+	glass = TRUE
+
 /obj/structure/machinery/door/airlock/almayer/command/reinforced
 	name = "\improper Reinforced Command Airlock"
 	masterkey_resist = TRUE

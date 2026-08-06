@@ -6,7 +6,6 @@
 #define COMSIG_GUN_BURST_SHOT_DELAY_MODIFIED "gun_burst_shot_delay_modified"
 #define COMSIG_GUN_NEXT_FIRE_MODIFIED "gun_next_fire_modified"
 #define COMSIG_AUTOSLASH "autoslash"
-#define COMSIG_AUTOSLASH_MOVE "autoslash_move"
 
 #define COMSIG_GUN_VULTURE_FIRED_ONEHAND "gun_vulture_fired_onehand"
 #define COMSIG_VULTURE_SCOPE_MOVED "vulture_scope_moved"

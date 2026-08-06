@@ -142,6 +142,7 @@
 
 	if(SEND_SIGNAL(src, COMSIG_MOB_CLICKON, atom_clicked, params) & COMSIG_MOB_CLICK_CANCELED)
 		return
+
 	RangedAttack(atom_clicked, mods)
 	SEND_SIGNAL(src, COMSIG_MOB_POST_CLICK, atom_clicked, mods)
 	return

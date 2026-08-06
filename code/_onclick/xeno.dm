@@ -94,13 +94,11 @@
 					src.visible_message(SPAN_DANGER("\The [src] swipes at \the [target]!"),
 					SPAN_DANGER("We swipe at \the [target]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	last_target = target
-	SEND_SIGNAL(src, COMSIG_AUTOSLASH_MOVE, next_move)
 	SEND_SIGNAL(src, COMSIG_AUTOSLASH)
 	return TRUE
 
 /mob/living/carbon/xenomorph/RangedAttack(atom/A)
 	. = ..()
-	to_chat(world, "ranged attack")
 	if (.)
 		return
 	if (client && client.prefs && client.prefs.toggle_prefs & TOGGLE_DIRECTIONAL_ATTACK)

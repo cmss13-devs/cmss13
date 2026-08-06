@@ -99,7 +99,7 @@
 	holding_movable.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	var/mutable_appearance/mugshot = mutable_appearance()
 	if(!mugshottee)
-		debug_log("Mob based HUD portrait alert was called without a mob.")
+		//debug_log("Mob based HUD portrait alert was called without a mob.")
 		//return
 		mugshot.appearance = image('icons/mob/mob.dmi', "spook")
 	else

@@ -1755,7 +1755,7 @@
 /turf/closed/wall/hybrisa/colony/reinforced,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aeu" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass/autoname,
 /turf/open/floor/corsat/marked,
 /area/white_antre/indoors/upper_level/canteen)
 "aev" = (
@@ -45416,7 +45416,7 @@
 /turf/open/floor/prison/darkyellow2/southeast,
 /area/white_antre/indoors/upper_level/east_corridor)
 "ciW" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass/autoname{
 	dir = 1
 	},
 /turf/open/floor/corsat/marked,
@@ -45480,7 +45480,7 @@
 /turf/open_space,
 /area/white_antre/indoors/upper_level/central_corridor)
 "cjq" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass/autoname{
 	dir = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan{

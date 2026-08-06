@@ -15,3 +15,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medical/colony/@SUBTYPES : /obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony/@SUBTYPES{@OLD}
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medical/research/@SUBTYPES : /obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/research/@SUBTYPES{@OLD}
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medical/solid/@SUBTYPES : /obj/structure/machinery/door/airlock/multi_tile/almayer/medical/@SUBTYPES{@OLD}
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic : /obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{@OLD}
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname : /obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass/autoname{@OLD}
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/solid : /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{@OLD}

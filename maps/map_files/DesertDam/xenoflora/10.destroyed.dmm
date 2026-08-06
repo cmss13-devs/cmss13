@@ -170,7 +170,7 @@
 /turf/open/floor/platingdmg1,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "wr" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Xenoflora"
 	},

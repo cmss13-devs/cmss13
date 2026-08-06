@@ -326,7 +326,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_one/equipment)
 "cL" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -672,7 +672,7 @@
 /turf/template_noop,
 /area/template_noop)
 "qt" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Decontamination"
 	},
@@ -821,7 +821,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/garage)
 "tX" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Treatment Breakroom"
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -1371,7 +1371,7 @@
 /turf/open/floor/whiteyellow/northeast,
 /area/desert_dam/building/water_treatment_one/breakroom)
 "Os" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Decontamination"
 	},
 /turf/open/floor/prison/bright_clean/southwest,
@@ -1472,7 +1472,7 @@
 /turf/open/floor/whiteyellow/west,
 /area/desert_dam/building/water_treatment_one/breakroom)
 "RR" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Treatment Controlroom"
 	},

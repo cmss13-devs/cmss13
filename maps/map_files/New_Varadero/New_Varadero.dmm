@@ -4555,7 +4555,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/research)
 "dpz" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Underground Security Brig";
 	req_access_txt = "100"
 	},
@@ -5683,7 +5683,7 @@
 /turf/open/floor/wood,
 /area/varadero/interior/library)
 "etf" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Underground Main Hallway"
 	},
 /turf/open/floor/shiva/floor3,
@@ -6705,7 +6705,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/maintenance/south)
 "fiv" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Underground Staff Canteen"
 	},
@@ -9675,7 +9675,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Underground Power Substation"
 	},
@@ -15440,7 +15440,7 @@
 /area/varadero/exterior/farocean)
 "msx" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Underground Requesitions Bay"
 	},
 /turf/open/floor/shiva/yellow/west,
@@ -16095,7 +16095,7 @@
 /turf/open/floor/shiva/blue/east,
 /area/varadero/interior/administration)
 "mXx" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Underground Sports Center"
 	},
 /turf/open/floor/shiva/floor3,
@@ -16445,7 +16445,7 @@
 /turf/open/shuttle/red,
 /area/varadero/interior_protected/vessel)
 "nnt" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Underground Requesitions Lobby"
 	},
 /turf/open/floor/shiva/floor3,
@@ -18556,7 +18556,7 @@
 /turf/closed/wall,
 /area/varadero/interior/mess)
 "pbM" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Underground Staff Canteen"
 	},
@@ -19229,7 +19229,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Underground Main Hallway"
 	},
@@ -21731,7 +21731,7 @@
 /turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/farocean)
 "rsL" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Underground Security Checkpoint";
 	req_access_txt = "100"
 	},
@@ -26414,7 +26414,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Underground Power Substation"
 	},
@@ -26452,7 +26452,7 @@
 /turf/open/floor/freezerfloor,
 /area/varadero/interior/cargo)
 "vke" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Underground Visitor Entrance"
 	},
 /turf/open/floor/shiva/multi_tiles,
@@ -27382,7 +27382,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "vUT" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Underground Chapel"
 	},
@@ -27750,7 +27750,7 @@
 /turf/open/floor/wood,
 /area/varadero/interior/records)
 "wir" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Underground Main Hallway"
 	},

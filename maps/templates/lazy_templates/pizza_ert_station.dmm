@@ -791,7 +791,7 @@
 /area/adminlevel/ert_station/pizza_station)
 "kz" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Kitchen"
 	},
@@ -812,7 +812,7 @@
 /obj/structure/machinery/door/poddoor/almayer{
 	unacidable = 1
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	locked = 1
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -1322,7 +1322,7 @@
 	name = "\improper Umbillical Airlock";
 	unacidable = 1
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	locked = 1
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -1493,7 +1493,7 @@
 	name = "\improper Umbillical Airlock";
 	id = "pizza_ert_arrival"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Galaxy Pizza!"
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -2400,7 +2400,7 @@
 	name = "\improper Umbillical Airlock";
 	id = "pizza_ert_arrival"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass,
 /turf/open/floor/almayer/test_floor4,
 /area/adminlevel/ert_station/pizza_station)
 "EH" = (
@@ -3713,7 +3713,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Kitchen and Cleaning"
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -3843,7 +3843,7 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "STAFF ONLY"
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -3942,7 +3942,7 @@
 	id = "pizza_ert_arrival"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Galaxy Pizza!"
 	},
 /turf/open/floor/almayer/test_floor4,

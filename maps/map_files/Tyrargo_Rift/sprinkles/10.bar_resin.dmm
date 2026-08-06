@@ -1002,7 +1002,7 @@
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/indoors/bar/ground)
 "ZP" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass/autoname,
 /turf/open/floor/corsat/marked,
 /area/tyrargo/indoors/bar/ground)
 "ZS" = (

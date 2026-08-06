@@ -577,7 +577,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Spaceport"
 	},
@@ -1015,7 +1015,7 @@
 /turf/open/floor/asteroidwarning/southeast,
 /area/bigredv2/outside/nw)
 "wU" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Spaceport"
 	},

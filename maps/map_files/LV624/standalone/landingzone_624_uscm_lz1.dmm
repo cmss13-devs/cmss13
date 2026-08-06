@@ -116,7 +116,7 @@
 /turf/open/floor/vault2,
 /area/lv624/lazarus/robotics)
 "gq" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Corporation Office"
 	},
@@ -575,7 +575,7 @@
 /turf/open/floor/warning/west,
 /area/lv624/lazarus/landing_zones/lz2)
 "ui" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Corporation Dome"
 	},
 /turf/open/floor/white,

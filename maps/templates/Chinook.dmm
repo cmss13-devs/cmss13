@@ -3701,7 +3701,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/shuttle)
 "ow" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Pool"
 	},
 /turf/open/floor/almayer,
@@ -9145,7 +9145,7 @@
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/sec)
 "LS" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Basketball Court"
 	},
 /turf/open/floor/almayer,
@@ -9352,7 +9352,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/sec)
 "ML" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Hydroponics"
 	},
 /turf/open/floor/almayer,
@@ -9452,7 +9452,7 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/offices)
 "Nl" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Shuttlebay"
 	},
@@ -10235,7 +10235,7 @@
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/event)
 "Qv" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Cryogenics Bay"
 	},
@@ -11986,7 +11986,7 @@
 /turf/open/floor/almayer/orange/east,
 /area/adminlevel/chinook/engineering)
 "XP" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Observation Lounge"
 	},
 /turf/open/floor/almayer/plate,

@@ -935,7 +935,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "ke" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/hanger)
 "kh" = (

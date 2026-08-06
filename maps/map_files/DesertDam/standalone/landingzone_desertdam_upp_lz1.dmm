@@ -474,7 +474,7 @@
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/cafeteria/cafeteria)
 "cR" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Workshop Foyer"
 	},
 /turf/open/floor/prison/bright_clean/southwest,
@@ -551,7 +551,7 @@
 /turf/open/floor/prison/kitchen/southwest,
 /area/desert_dam/building/cafeteria/cafeteria)
 "dF" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Mess Hall"
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -1213,7 +1213,7 @@
 /turf/open/asphalt,
 /area/desert_dam/building/cafeteria/loading)
 "nR" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Workshop"
 	},
@@ -1258,7 +1258,7 @@
 /turf/open/floor/strata/blue3,
 /area/event/metal/dynamic/lit)
 "os" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Delivery"
 	},
 /turf/open/floor/prison,
@@ -2098,7 +2098,7 @@
 /turf/open/floor/plating,
 /area/event/dynamic/lit)
 "CX" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Mess Hall"
 	},
@@ -2322,7 +2322,7 @@
 /turf/open/floor/prison/darkyellow2/east,
 /area/desert_dam/building/mining/workshop)
 "GG" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Dormitories"
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -3406,7 +3406,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/desert_dam/exterior/valley/valley_civilian)
 "Zc" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Mess Hall"
 	},
 /turf/open/floor/prison/sterile_white,

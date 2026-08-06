@@ -996,7 +996,7 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/corsat/sigma/cafe)
 "adQ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Researcher's Lounge"
 	},
@@ -5989,7 +5989,7 @@
 /turf/open/floor/corsat/red/northwest,
 /area/corsat/sigma/hangar/checkpoint)
 "axJ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Laundry"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -6063,7 +6063,7 @@
 /turf/open/floor/corsat/squares,
 /area/corsat/sigma/airlock/east/id)
 "axY" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Bar"
 	},
 /turf/open/floor/corsat/retrosquares,
@@ -7576,7 +7576,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/corsat/theta/airlock/east)
 "aDy" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Cafe"
 	},
 /turf/open/floor/wood,
@@ -7747,7 +7747,7 @@
 /turf/open/floor/plating,
 /area/prison/hangar_storage/research/shuttle)
 "aDZ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Control Room";
 	req_access_txt = "103"
 	},
@@ -8918,7 +8918,7 @@
 /turf/open/floor/corsat/bluegrey,
 /area/corsat/theta/airlock/east)
 "aHV" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "Kitchen"
 	},
@@ -8928,7 +8928,7 @@
 /turf/open/floor/corsat/sterileplate,
 /area/corsat/gamma/kitchen)
 "aHW" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Canteen"
 	},
@@ -9390,7 +9390,7 @@
 /turf/open/floor/corsat/red/north,
 /area/corsat/sigma/south/security)
 "aJR" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Sigma Remote Complex";
 	req_access_txt = "103"
 	},
@@ -9688,7 +9688,7 @@
 	id = "Viro";
 	name = "Virology Lockdown"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Virology Wing";
 	req_access_txt = "103"
 	},
@@ -10806,7 +10806,7 @@
 /turf/open/gm/dirtgrassborder/west,
 /area/corsat/theta/biodome)
 "aPH" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Arrivals"
 	},
 /turf/open/floor/corsat/retrosquares,
@@ -11245,7 +11245,7 @@
 /turf/open/floor/plating,
 /area/corsat/gamma/kitchen)
 "aRo" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "Chemistry";
 	req_one_access_txt = "103"
@@ -14329,7 +14329,7 @@
 /turf/open/floor/plating,
 /area/corsat/gamma/biodome/virology)
 "bbC" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "Research Complex Gamma";
 	req_access_txt = "103"
@@ -14394,7 +14394,7 @@
 /turf/open/floor/corsat/retrosquareslight,
 /area/corsat/omega/security)
 "bbL" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "Research Complex Gamma"
 	},
@@ -14429,7 +14429,7 @@
 	id = "GammaLab";
 	name = "Privacy Shutters"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Director's Room";
 	req_access_txt = "103"
 	},
@@ -15071,7 +15071,7 @@
 /turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "bej" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Research Complex Sigma";
 	req_access_txt = "103"
 	},
@@ -15657,7 +15657,7 @@
 /turf/open/mars/mars_dirt_9,
 /area/corsat/sigma/biodome)
 "bgw" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Research Complex Gamma";
 	req_access_txt = "103"
 	},
@@ -16525,7 +16525,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/corsat/omega/offices)
 "bjU" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "CORSAT Library"
 	},
 /turf/open/floor/corsat/squareswood/north,
@@ -16589,7 +16589,7 @@
 /turf/open/floor/corsat/plate,
 /area/corsat/gamma/airlock/south/id)
 "bkd" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Research Complex Theta"
 	},
 /turf/open/floor/corsat/squares,
@@ -17112,7 +17112,7 @@
 /turf/open/floor/corsat/squares,
 /area/corsat/sigma/hangar/monorail/control)
 "bmi" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	id = "OmegaA";
 	name = "Xenobiology";
@@ -17276,7 +17276,7 @@
 	name = "Omega Lockdown";
 	use_power = 0
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "Xenobiology";
 	req_access_txt = "103"
@@ -20127,7 +20127,7 @@
 /turf/open/floor/corsat/retrosquareslight,
 /area/corsat/omega/complex)
 "bzq" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Research Complex Theta";
 	req_one_access_txt = "103"
 	},
@@ -20437,14 +20437,14 @@
 /turf/open/floor/corsat/greenwhite/north,
 /area/corsat/gamma/medbay/lobby)
 "bAw" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Hydroponics Lab";
 	req_access_txt = "103"
 	},
 /turf/open/floor/corsat/retrosquareslight,
 /area/corsat/theta/biodome/complex)
 "bAx" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Laboratory";
 	req_access_txt = "103"
 	},
@@ -20821,7 +20821,7 @@
 	name = "Omega Lockdown";
 	use_power = 0
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "Containment";
 	req_access_txt = "103"
@@ -20983,7 +20983,7 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/corsat/gamma/rnr/library)
 "bCu" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Laboratory";
 	req_access_txt = "103"
 	},
@@ -21451,7 +21451,7 @@
 /turf/open/floor/corsat/red/west,
 /area/corsat/omega/hangar/security)
 "bEv" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "Research Complex Omega";
 	req_access_txt = "103"
@@ -21459,7 +21459,7 @@
 /turf/open/floor/corsat/retrosquareslight,
 /area/corsat/omega/complex)
 "bEy" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Laboratory";
 	req_access_txt = "103"
 	},
@@ -32233,7 +32233,7 @@
 /turf/open/floor/corsat/red/north,
 /area/corsat/omega/hallways)
 "isS" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Laboratory";
 	req_access_txt = "103"
 	},
@@ -33373,7 +33373,7 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/corsat/sigma/cafe)
 "jJt" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Arrivals"
 	},
 /turf/open/floor/corsat/retrosquares,
@@ -35505,7 +35505,7 @@
 /turf/open/floor/wood,
 /area/corsat/omega/offices)
 "lZp" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Researcher's Lounge"
 	},
@@ -37321,7 +37321,7 @@
 /turf/open/floor/corsat/plate,
 /area/corsat/gamma/foyer)
 "nTO" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Arcade"
 	},
 /turf/open/floor/corsat/squareswood/north,
@@ -41216,7 +41216,7 @@
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
 "sfJ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Baths"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -42147,7 +42147,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/corsat/sigma/biodome/gunrange)
 "tbY" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "Auditorium"
 	},
@@ -44364,7 +44364,7 @@
 /turf/open/floor/corsat/plate,
 /area/corsat/gamma/foyer)
 "vxb" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Baths"
 	},
 /turf/open/floor/corsat/whitebluefull/southwest,
@@ -46278,7 +46278,7 @@
 /turf/open/floor/corsat/squares,
 /area/corsat/sigma/hangar)
 "xBb" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "Observation Chamber";
 	req_access_txt = "103"
@@ -46672,7 +46672,7 @@
 /turf/open/floor/corsat/red/west,
 /area/corsat/omega/hangar)
 "xYI" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Auditorium"
 	},
 /turf/open/floor/corsat/tan/north,

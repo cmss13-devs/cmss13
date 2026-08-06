@@ -434,7 +434,7 @@
 /turf/open/desert/dirt/dirt2,
 /area/desert_dam/exterior/valley/valley_labs)
 "abe" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Cargo Bay"
 	},
@@ -1886,7 +1886,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/control_room)
 "afL" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Engineering Hallway"
 	},
@@ -2079,7 +2079,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Engineering Hallway"
 	},
@@ -2293,7 +2293,7 @@
 /turf/open/floor/almayer_hull,
 /area/desert_dam/interior/dam_interior/upper_stairwell)
 "ahf" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Engineering Hallway"
 	},
 /turf/open/floor/prison/bright_clean/southwest,
@@ -2716,13 +2716,13 @@
 /turf/open/floor/prison/darkred2/southwest,
 /area/desert_dam/building/security/southern_hallway)
 "air" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass/autoname{
 	dir = 1
 	},
 /turf/open/floor/prison/darkred2,
 /area/desert_dam/building/security/southern_hallway)
 "ais" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass/autoname{
 	dir = 1
 	},
 /turf/open/floor/prison,
@@ -3155,7 +3155,7 @@
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_security)
 "ajF" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Breakroom"
 	},
 /turf/open/floor/prison/sterile_white,
@@ -3531,7 +3531,7 @@
 /turf/open/asphalt/tile,
 /area/desert_dam/interior/lab_northeast/east_lab_west_entrance)
 "akQ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Marshal Office"
 	},
 /obj/structure/platform_decoration/metal/kutjevo_smooth_immune/north,
@@ -5214,7 +5214,7 @@
 /turf/open/floor/prison/darkred2/east,
 /area/desert_dam/building/security/upper_hallway)
 "aqv" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass/autoname,
 /turf/open/floor/prison,
 /area/desert_dam/building/security/stairwell/upper)
 "aqw" = (
@@ -5446,7 +5446,7 @@
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/desert_dam/building/medical/surgury_observation)
 "arp" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass/autoname,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison,
 /area/desert_dam/building/security/waiting)
@@ -5579,7 +5579,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/security/break_room)
 "arS" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass/autoname,
 /turf/open/floor/prison,
 /area/desert_dam/building/security/break_room)
 "arT" = (
@@ -14237,7 +14237,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/upper_walkway)
 "aSL" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Engineering Hallway"
 	},
@@ -14428,7 +14428,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_hydro)
 "aTo" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Filtration"
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -23673,7 +23673,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/roof)
 "bvq" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Workshop"
 	},
@@ -24674,7 +24674,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/desert_dam/building/security/evidence)
 "bJj" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Dormitories"
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -24847,7 +24847,7 @@
 /turf/open/floor/prison/darkpurple2/east,
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
 "bMq" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Marshal Office"
 	},
 /turf/open/floor/prison/bright_clean/southwest,
@@ -25694,7 +25694,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/exterior/landing_pad_two)
 "cgT" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Research Hallway"
 	},
@@ -26083,7 +26083,7 @@
 /turf/open/floor/asteroidplating,
 /area/desert_dam/exterior/telecomm/lz2_tcomms)
 "cpt" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Waterway"
 	},
@@ -26693,7 +26693,7 @@
 /turf/open/floor/dark,
 /area/desert_dam/building/security/evidence)
 "cDI" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Treatment Lobby"
 	},
 /turf/open/floor/prison/bright_clean/southwest,
@@ -28010,7 +28010,7 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/bar)
 "dbi" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Water Treatment"
 	},
@@ -29665,7 +29665,7 @@
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "dGJ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Mining Substation"
 	},
 /turf/open/floor/prison,
@@ -30858,7 +30858,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/north_valley_dam)
 "ehc" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Break Room"
 	},
 /turf/open/floor/prison/sterile_white/west,
@@ -30967,7 +30967,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "eiY" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Bar"
 	},
 /turf/open/floor/interior/wood,
@@ -31429,7 +31429,7 @@
 /turf/open/floor/prison/darkredfull2,
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "etc" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Treatment Controlroom"
 	},
 /turf/open/floor/prison/bright_clean/southwest,
@@ -31724,7 +31724,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Marshal Office"
 	},
 /turf/open/floor/prison/bright_clean/southwest,
@@ -32157,7 +32157,7 @@
 /turf/open/desert/desert_shore/desert_shore1/west,
 /area/desert_dam/exterior/river/riverside_central_south)
 "eIN" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Filtration"
 	},
 /turf/open/floor/prison/whitegreenfull/southwest,
@@ -32524,7 +32524,7 @@
 /turf/open/floor/prison/whitegreen/north,
 /area/desert_dam/building/medical/east_wing_hallway)
 "eQH" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Hydroponics"
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -33501,7 +33501,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/landing_pad_one)
 "fhW" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Lobby"
 	},
 /obj/structure/disposalpipe/segment,
@@ -33613,7 +33613,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/cafeteria/loading)
 "fkC" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper SMES"
 	},
@@ -34096,7 +34096,7 @@
 /turf/open/floor/prison/whitegreen/northeast,
 /area/desert_dam/building/medical/virology_wing)
 "fue" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Tool Storage"
 	},
 /turf/open/floor/prison/bright_clean/southwest,
@@ -34187,7 +34187,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/lobby)
 "fwL" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Decontamination"
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -34265,7 +34265,7 @@
 /turf/open/desert/rock/deep/transition/north,
 /area/desert_dam/exterior/telecomm/lz1_south)
 "fxW" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Break Room"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -34358,7 +34358,7 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/medical/break_room)
 "fAa" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Dormitories"
 	},
 /turf/open/floor/prison,
@@ -34494,7 +34494,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/desert_dam/exterior/valley/valley_cargo)
 "fCq" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass/autoname{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -34579,7 +34579,7 @@
 "fFj" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Marshal Office"
 	},
 /turf/open/floor/prison/bright_clean/southwest,
@@ -36391,7 +36391,7 @@
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "gnF" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Foremans Office"
 	},
@@ -36714,7 +36714,7 @@
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/warehouse/warehouse)
 "gtO" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass/autoname{
 	dir = 1
 	},
 /turf/open/floor/prison,
@@ -37230,7 +37230,7 @@
 /turf/open/desert/dirt/desert_transition_edge1/southeast,
 /area/desert_dam/exterior/landing_pad_one)
 "gDY" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Hydroponics"
 	},
 /turf/open/floor/prison/bright_clean/southwest,
@@ -38368,7 +38368,7 @@
 /turf/open/asphalt/cement,
 /area/desert_dam/exterior/telecomm/lz1_south)
 "hab" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Loading Bay"
 	},
@@ -38431,7 +38431,7 @@
 /turf/open/asphalt/cement/cement3,
 /area/desert_dam/interior/dam_interior/workshop)
 "hbi" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Treatment Hallway"
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -40100,7 +40100,7 @@
 /turf/open/floor/darkyellow2,
 /area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
 "hJf" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Disposals"
 	},
@@ -40250,7 +40250,7 @@
 /turf/open/floor/prison/darkyellow2/west,
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 "hLW" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Loading Bay"
 	},
@@ -40445,7 +40445,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/desert_dam/exterior/valley/valley_medical)
 "hQk" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Floodgate Control"
 	},
 /turf/open/floor/prison/whitegreenfull/southwest,
@@ -40467,7 +40467,7 @@
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/interior/lab_northeast/east_lab_workshop)
 "hQQ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Mess Hall"
 	},
 /turf/open/floor/prison/sterile_white,
@@ -40482,7 +40482,7 @@
 /turf/open/gm/river/desert/shallow_corner/west,
 /area/desert_dam/exterior/river/riverside_south)
 "hRg" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Delivery"
 	},
 /turf/open/floor/prison,
@@ -40666,7 +40666,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -40876,7 +40876,7 @@
 /turf/open/floor/prison/darkyellowcorners2/north,
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 "hYO" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Break Room"
 	},
@@ -42150,7 +42150,7 @@
 /turf/open/floor/carpet6_2/west,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "ixf" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 "ixl" = (
@@ -42561,7 +42561,7 @@
 /turf/open/floor/prison/whitegreen/north,
 /area/desert_dam/building/medical/upper_hallway)
 "iEV" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Workshop"
 	},
@@ -42587,7 +42587,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_one/hallway)
 "iFl" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Containment"
 	},
 /turf/open/floor/prison/bright_clean/southwest,
@@ -43713,7 +43713,7 @@
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "jeu" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Packaging"
 	},
 /turf/open/floor/prison/bright_clean/southwest,
@@ -43965,7 +43965,7 @@
 /turf/open/floor/almayer/research/containment/floor2/west,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
 "jit" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper East Filtration"
 	},
@@ -44717,7 +44717,7 @@
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "jwb" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Rec Yard"
 	},
@@ -45197,7 +45197,7 @@
 /turf/open/floor/prison/darkred2/east,
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "jHB" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Hangar"
 	},
 /turf/open/floor/prison/bright_clean/southwest,
@@ -45780,7 +45780,7 @@
 /turf/open/desert/dirt/desert_transition_corner1/west,
 /area/desert_dam/exterior/landing_pad_one)
 "jTg" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Decontamination"
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -46757,7 +46757,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_mining)
 "kmI" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Tool Storage"
 	},
@@ -47344,7 +47344,7 @@
 /turf/open/floor/prison/darkred2/northwest,
 /area/desert_dam/building/security/armory)
 "kAh" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Floodgate Control"
 	},
 /turf/open/floor/prison/whitegreenfull/southwest,
@@ -48428,7 +48428,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_two/hallway)
 "kZD" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/lobby)
 "kZI" = (
@@ -48505,7 +48505,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/hydroponics/hydroponics)
 "laB" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Treatment Controlroom"
 	},
@@ -48544,7 +48544,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/desert_dam/exterior/valley/valley_mining)
 "lbq" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Marshal Office"
 	},
 /turf/open/floor/prison,
@@ -50029,7 +50029,7 @@
 /turf/open/floor/prison/whitered/east,
 /area/desert_dam/building/medical/office3)
 "lEC" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2
 	},
 /turf/open/floor/prison/bright_clean2,
@@ -50757,7 +50757,7 @@
 /turf/open/desert/desert_shore/desert_shore1/west,
 /area/desert_dam/exterior/river_mouth/southern)
 "lTy" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Filtration"
 	},
@@ -51315,13 +51315,13 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/medical/CMO)
 "mgj" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Lobby"
 	},
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/security/lobby)
 "mgp" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Tool Storage"
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -51356,13 +51356,13 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached16,
 /area/desert_dam/exterior/valley/valley_labs)
 "mgE" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Garage"
 	},
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/garage)
 "mgU" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Bunkhouse"
 	},
 /turf/open/floor/interior/wood,
@@ -53036,7 +53036,7 @@
 /turf/open/floor/carpet10_8/west,
 /area/desert_dam/building/church)
 "mOM" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Bar"
 	},
@@ -53744,7 +53744,7 @@
 /turf/open/asphalt/cement/cement12,
 /area/desert_dam/exterior/telecomm/lz1_south)
 "nej" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Floodgate Controlroom"
 	},
@@ -54025,7 +54025,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "nkc" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Research Hallway"
 	},
 /obj/structure/disposalpipe/segment,
@@ -54375,7 +54375,7 @@
 /turf/open/floor/darkyellow2/east,
 /area/desert_dam/building/substation/northwest)
 "nqO" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass,
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison/bright_clean/southwest,
@@ -54426,7 +54426,7 @@
 "nrE" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Marshal Office"
 	},
 /turf/open/floor/prison/bright_clean/southwest,
@@ -57035,7 +57035,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "oqn" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Lobby"
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -58156,7 +58156,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/desert_dam/exterior/valley/valley_northwest)
 "oMP" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Research Hallway"
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -58306,7 +58306,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/dorms/hallway_northwing)
 "oQA" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper RnD"
 	},
 /turf/open/floor/prison/southwest,
@@ -59669,7 +59669,7 @@
 /turf/open/floor/white,
 /area/desert_dam/building/medical/chemistry)
 "psF" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Water Treatment Hallway"
 	},
 /obj/structure/disposalpipe/segment,
@@ -59688,7 +59688,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/north_valley_dam)
 "pta" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Excavation"
 	},
 /turf/open/floor/prison,
@@ -60247,7 +60247,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/valley_cargo)
 "pDX" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Water Treatment Foyer"
 	},
 /obj/structure/disposalpipe/segment,
@@ -60809,7 +60809,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "pOf" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/engine_west_wing)
@@ -60891,7 +60891,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Engineering Hallway"
 	},
@@ -61515,7 +61515,7 @@
 /turf/open/floor/prison/darkbrown2/north,
 /area/desert_dam/building/medical/break_room)
 "qbH" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/hanger)
 "qbI" = (
@@ -61579,7 +61579,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_two/hallway)
 "qcV" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Engineering Hallway"
 	},
@@ -61605,7 +61605,7 @@
 /turf/open/floor/prison/whitegreen/north,
 /area/desert_dam/building/medical/stairwell)
 "qde" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Decontamination"
 	},
 /turf/open/floor/prison/bright_clean/southwest,
@@ -62270,7 +62270,7 @@
 /turf/open/gm/river/desert/shallow_corner/east,
 /area/desert_dam/exterior/valley/valley_labs)
 "qrB" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass,
 /turf/open/floor/prison,
 /area/desert_dam/building/dorms/hallway_westwing)
 "qrD" = (
@@ -62434,7 +62434,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/landing_pad_two)
 "quw" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Mess Hall"
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -64808,7 +64808,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/exterior/landing_pad_two)
 "rlr" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Workshop"
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -65337,7 +65337,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Engine Room"
 	},
@@ -65866,7 +65866,7 @@
 /turf/open/floor/coagulation/icon4_8,
 /area/desert_dam/building/water_treatment_two/purification)
 "rIW" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2
 	},
 /turf/open/floor/prison/bright_clean/southwest,
@@ -66551,7 +66551,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/desert_dam/building/security/evidence)
 "sah" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Xenoflora"
 	},
@@ -66683,7 +66683,7 @@
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/hydroponics/hydroponics_breakroom)
 "scu" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Lobby"
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -66949,7 +66949,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_telecoms)
 "sgR" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Engineering Central"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -67635,7 +67635,7 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/medical/CMO)
 "stF" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Hydroponics"
 	},
@@ -67819,7 +67819,7 @@
 /turf/open/floor/prison/darkredfull2,
 /area/desert_dam/building/security/staffroom)
 "sxx" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Research Workshop"
 	},
@@ -68575,7 +68575,7 @@
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/administration/hallway)
 "sLb" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Decontamination"
 	},
@@ -68692,7 +68692,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "sOm" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Water Treatment"
 	},
 /turf/open/floor/prison/whitegreenfull/southwest,
@@ -71390,7 +71390,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/desert_dam/exterior/valley/valley_civilian)
 "tQr" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass/autoname{
 	dir = 1
 	},
 /turf/open/floor/prison/bright_clean/southwest,
@@ -71702,7 +71702,7 @@
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "tXG" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Hydroponics Breakroom"
 	},
 /obj/structure/disposalpipe/segment,
@@ -72561,7 +72561,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/desert_dam/interior/dam_interior/south_tunnel_research)
 "unC" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Research Workshop"
 	},
 /turf/open/floor/prison/sterile_white/west,
@@ -72854,7 +72854,7 @@
 /turf/open/floor/coagulation/icon8_7,
 /area/desert_dam/exterior/valley/valley_mining)
 "usI" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Backup SMES"
 	},
 /obj/structure/disposalpipe/segment,
@@ -72881,7 +72881,7 @@
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/medical/east_wing_hallway)
 "utm" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Mess Hall"
 	},
@@ -73039,7 +73039,7 @@
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/river/riverside_south)
 "uwH" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Xenoflora"
 	},
 /turf/open/floor/whitegreenfull,
@@ -73276,7 +73276,7 @@
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/desert_dam/exterior/valley/north_valley_dam)
 "uBv" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2
 	},
 /obj/structure/disposalpipe/segment{
@@ -73784,7 +73784,7 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/medical/upper_hallway)
 "uMj" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper SMES"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -75446,7 +75446,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/telecomm/lz1_valley)
 "vvy" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/dorms/pool)
@@ -76019,7 +76019,7 @@
 /turf/open/predship/tile/hunter_tile_1/west,
 /area/desert_dam/interior/caves/pred_ship)
 "vHF" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Workshop Foyer"
 	},
 /turf/open/floor/prison/bright_clean/southwest,
@@ -77323,7 +77323,7 @@
 /turf/open/floor/freezerfloor,
 /area/desert_dam/building/cafeteria/backroom)
 "wiZ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Research Hallway"
 	},
 /turf/open/floor/prison/bright_clean2,
@@ -77430,7 +77430,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_security)
 "wkp" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Engineering Central"
 	},
 /turf/open/floor/prison/bright_clean/southwest,
@@ -77620,7 +77620,7 @@
 /area/desert_dam/exterior/valley/south_valley_dam)
 "woK" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Engineering Central"
 	},
 /turf/open/floor/prison/bright_clean/southwest,
@@ -77745,7 +77745,7 @@
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
 "wre" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Workshop"
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -80186,7 +80186,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "xtm" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Chapel"
 	},
@@ -80285,7 +80285,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "xvn" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Treatment Breakroom"
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -81870,7 +81870,7 @@
 /turf/open/floor/prison/darkred2/southeast,
 /area/desert_dam/building/security/armory)
 "ycO" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Loading"
 	},
 /turf/open/floor/dark2,
@@ -81962,7 +81962,7 @@
 /turf/open/desert/desert_shore/desert_shore1,
 /area/desert_dam/interior/caves/east_caves)
 "yeu" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper East Filtration"
 	},
@@ -82281,7 +82281,7 @@
 /turf/open/floor/prison/whitegreen/west,
 /area/desert_dam/building/medical/outgoing)
 "yjI" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2
 	},
 /obj/effect/decal/cleanable/dirt,

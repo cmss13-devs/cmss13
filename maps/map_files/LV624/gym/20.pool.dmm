@@ -113,7 +113,7 @@
 /turf/closed/wall,
 /area/lv624/lazarus/fitness)
 "tV" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Leisure Dome";
 	req_access_txt = "100"

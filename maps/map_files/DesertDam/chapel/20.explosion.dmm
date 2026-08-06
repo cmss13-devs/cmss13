@@ -101,7 +101,7 @@
 /turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/church)
 "po" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Chapel"
 	},

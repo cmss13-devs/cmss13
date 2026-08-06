@@ -150,19 +150,17 @@
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic
 	name = "\improper Airlock"
-	icon = 'icons/obj/structures/doors/2x1generic.dmi'
-	opacity = FALSE
-	glass = TRUE
+	icon = 'icons/obj/structures/doors/2x1generic_solid.dmi'
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname
 	autoname = TRUE
 
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/solid
-	icon = 'icons/obj/structures/doors/2x1generic_solid.dmi'
-	opacity = TRUE
-	glass = FALSE
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass
+	icon = 'icons/obj/structures/doors/2x1generic.dmi'
+	opacity = FALSE
+	glass = TRUE
 
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/solid
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass/autoname
 	autoname = TRUE
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medical

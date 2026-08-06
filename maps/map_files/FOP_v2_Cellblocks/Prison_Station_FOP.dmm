@@ -1829,7 +1829,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/cellblock/maxsec/north)
 "afE" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Panopticon Monitoring"
 	},
 /turf/open/floor/prison/floor_plate/southwest,
@@ -1936,7 +1936,7 @@
 /area/prison/research/secret/bioengineering)
 "agc" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Bioengineering"
 	},
 /turf/open/floor/prison/whitepurplefull,
@@ -2801,7 +2801,7 @@
 /area/prison/research/secret/containment)
 "aiS" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Classified Research"
 	},
 /turf/open/floor/prison,
@@ -5562,7 +5562,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "Research Hallway"
 	},
@@ -5595,7 +5595,7 @@
 /turf/open/floor/prison/whitepurple/east,
 /area/prison/research)
 "asG" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "Biological Research Department"
 	},
@@ -5608,7 +5608,7 @@
 /turf/open/floor/prison/darkpurple2,
 /area/prison/hanger/research)
 "asJ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "Research Hangar Storage"
 	},
@@ -5817,7 +5817,7 @@
 "atx" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Research Common Room"
 	},
 /turf/open/floor/prison/darkpurplefull2,
@@ -6283,7 +6283,7 @@
 /turf/open/floor/prison/kitchen,
 /area/prison/research)
 "avu" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "Research Hangar Storage"
 	},
@@ -8323,7 +8323,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "North High-Security Recreation"
 	},
@@ -9142,7 +9142,7 @@
 /area/prison/chapel)
 "aGO" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Chapel"
 	},
 /turf/open/floor/prison/bright_clean/southwest,
@@ -9896,7 +9896,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/hallway/central/north)
 "aJI" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "Central Ring"
 	},
@@ -10195,7 +10195,7 @@
 /turf/open/floor/plating,
 /area/prison/maintenance/staff_research)
 "aKY" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Main Hangar Storage"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -10754,7 +10754,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "North High-Security Cellblock"
 	},
@@ -11508,7 +11508,7 @@
 /turf/open/floor/plating,
 /area/prison/cellblock/lowsec/nw)
 "aQm" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Low-Security"
 	},
 /turf/open/floor/prison/bright_clean/southwest,
@@ -12059,7 +12059,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "Low-Security Recreation"
 	},
@@ -12103,7 +12103,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "Northwest Low-Security Cellblock"
 	},
@@ -12135,7 +12135,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "Northeast Low-Security Cellblock"
 	},
@@ -13450,7 +13450,7 @@
 /turf/open/floor/prison/darkred2/north,
 /area/prison/security/checkpoint/highsec/n)
 "aXS" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Low-Security Recreation"
 	},
 /turf/open/floor/prison/greenfull,
@@ -13751,7 +13751,7 @@
 /turf/open/floor/plating,
 /area/prison/hallway/staff)
 "aZb" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Staff Hallway"
 	},
 /turf/open/floor/prison/bright_clean/southwest,
@@ -14014,7 +14014,7 @@
 /turf/open/floor/prison/bright_clean_marked/southwest,
 /area/prison/canteen)
 "baf" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Kitchen"
 	},
 /turf/open/floor/prison,
@@ -14475,7 +14475,7 @@
 /turf/open/floor/prison/darkred2/north,
 /area/prison/security/checkpoint/vip)
 "bbN" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass,
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/prison/sterile_white/southwest,
 /area/prison/residential/central)
@@ -14976,7 +14976,7 @@
 /area/prison/yard)
 "bdS" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Central Ring"
 	},
 /turf/open/floor/prison/bright_clean/southwest,
@@ -14997,7 +14997,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "Yard"
 	},
@@ -15426,7 +15426,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "Canteen"
 	},
@@ -16002,7 +16002,7 @@
 /turf/open/floor/prison/darkyellow2,
 /area/prison/storage/vip)
 "bhB" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Northwest Low-Security Cellblock"
 	},
 /turf/open/floor/prison/greenfull,
@@ -16088,7 +16088,7 @@
 "bhQ" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Northeast Low-Security Cellblock"
 	},
 /turf/open/floor/prison/greenfull,
@@ -16252,7 +16252,7 @@
 /turf/open/floor/prison/green/north,
 /area/prison/hallway/central/west)
 "bit" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Yard"
 	},
 /turf/open/floor/prison/bright_clean/southwest,
@@ -16271,7 +16271,7 @@
 /area/prison/yard)
 "biy" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Yard"
 	},
 /turf/open/floor/prison/bright_clean/southwest,
@@ -16981,7 +16981,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/hallway/entrance)
 "blE" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "Entrance Hallway"
 	},
@@ -17196,7 +17196,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "Low-Security"
 	},
@@ -17579,7 +17579,7 @@
 /turf/open/floor/prison/sterile_white/southwest,
 /area/prison/residential/central)
 "bnZ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Monorail Station West"
 	},
 /turf/open/floor/prison/greenfull/northwest,
@@ -17690,7 +17690,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/canteen)
 "bos" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "Canteen Restrooms"
 	},
@@ -17832,7 +17832,7 @@
 /turf/open/floor/prison/darkyellow2/north,
 /area/prison/storage/vip)
 "boX" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Southwest Low-Security Cellblock"
 	},
 /turf/open/floor/prison/greenfull,
@@ -17881,7 +17881,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "Entrance Hallway"
 	},
@@ -18357,7 +18357,7 @@
 /area/prison/cellblock/lowsec/se)
 "brm" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Southeast Low-Security Cellblock"
 	},
 /turf/open/floor/prison/greenfull,
@@ -18709,7 +18709,7 @@
 /turf/open/floor/prison/green/east,
 /area/prison/cellblock/lowsec/sw)
 "bsQ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "Yard"
 	},
@@ -18801,7 +18801,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "Visitation"
 	},
@@ -19096,7 +19096,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "Holding Cell 1"
 	},
@@ -19226,7 +19226,7 @@
 "buN" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Central Ring"
 	},
 /turf/open/floor/prison/bright_clean/southwest,
@@ -19689,7 +19689,7 @@
 /turf/closed/wall/prison,
 /area/prison/visitation)
 "bwY" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "East Monorail Station"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -20182,7 +20182,7 @@
 "bzD" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Visitation"
 	},
 /turf/open/floor/prison/bright_clean/southwest,
@@ -21096,14 +21096,14 @@
 /turf/open/floor/prison/green/southeast,
 /area/prison/cellblock/lowsec/sw)
 "bDs" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "Southwest Low-Security Cellblock"
 	},
 /turf/open/floor/prison/greenfull,
 /area/prison/cellblock/lowsec/sw)
 "bDt" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "Southeast Low-Security Cellblock"
 	},
@@ -21201,7 +21201,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "East Hallway"
 	},
@@ -21374,7 +21374,7 @@
 /turf/open/floor/prison/floor_marked/southwest,
 /area/prison/hallway/central/west)
 "bEm" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 8;
 	name = "South High-Security Cellblock"
 	},
@@ -22196,7 +22196,7 @@
 /turf/open/floor/prison/sterile_white/southwest,
 /area/prison/security/checkpoint/highsec/s)
 "bHx" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "South High-Security Cellblock"
 	},
@@ -22444,7 +22444,7 @@
 /turf/open/floor/prison/darkbrown2/west,
 /area/prison/hallway/east)
 "bIB" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2
 	},
 /turf/open/floor/prison/darkbrownfull2,
@@ -22709,7 +22709,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/holding/holding2)
 "bJF" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "Holding Cell 2"
 	},
@@ -22756,7 +22756,7 @@
 /turf/open/floor/prison/darkbrown2/east,
 /area/prison/hallway/east)
 "bJO" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Intake Processing"
 	},
 /turf/open/floor/prison/darkbrownfull2,
@@ -22967,7 +22967,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "Central Ring"
 	},
@@ -23631,7 +23631,7 @@
 /turf/open/floor/wood,
 /area/prison/residential/south)
 "bNt" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass,
 /turf/open/floor/prison/damaged3,
 /area/prison/laundry)
 "bNu" = (
@@ -24707,7 +24707,7 @@
 /turf/open/floor/prison,
 /area/prison/recreation/highsec/s)
 "bSm" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "South High-Security Recreation"
 	},
@@ -25226,7 +25226,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Medium-Security Cellblock"
 	},
 /turf/open/floor/prison,
@@ -27573,7 +27573,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "Medium-Security Recreation"
 	},
@@ -28605,7 +28605,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "Protective Custody Cells"
 	},
@@ -29188,7 +29188,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "Protective Custody Parole Waiting"
 	},
@@ -33128,7 +33128,7 @@
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/access/south)
 "dnf" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "Protective Custody Cells"
 	},
@@ -33390,7 +33390,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "Low-Security"
 	},
@@ -33790,7 +33790,7 @@
 /turf/closed/shuttle/elevator/button/freight,
 /area/prison/hallway/central/west)
 "gsD" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Visitation"
 	},
 /turf/open/floor/prison,
@@ -34652,7 +34652,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/canteen)
 "joJ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Main Hangar Storage"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -35024,7 +35024,7 @@
 /turf/open/floor/prison/bluefull,
 /area/prison/cellblock/protective)
 "kLB" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "Chapel"
 	},
@@ -35747,7 +35747,7 @@
 /turf/open/floor/prison/damaged2/southwest,
 /area/prison/hallway/central/east)
 "nWl" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Low-Security"
 	},
 /turf/open/floor/prison/bright_clean/southwest,
@@ -35760,7 +35760,7 @@
 /turf/open/organic/grass,
 /area/prison/residential/south)
 "nXF" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "South High-Security Recreation"
 	},
 /turf/open/floor/prison/redfull,
@@ -35926,7 +35926,7 @@
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/prison/security/monitoring/protective)
 "oFh" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "Holding Cell 1"
 	},
@@ -36064,7 +36064,7 @@
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/south/south)
 "pcU" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Visitation"
 	},
 /turf/open/floor/plating,
@@ -37434,7 +37434,7 @@
 /turf/open/floor/plating,
 /area/prison/maintenance/staff_research)
 "vwc" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "Protective Custody Cells"
 	},

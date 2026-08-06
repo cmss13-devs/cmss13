@@ -4287,7 +4287,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Midship Upper Medical Ladders"
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -11679,7 +11679,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Upper Medical Corridors";
 	req_access = list()
 	},
@@ -17812,7 +17812,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Midship Upper Medical Ladders"
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -44237,7 +44237,7 @@
 /turf/open/floor/almayer/flooredge/east,
 /area/almayer/hallways/upper/fore_hallway)
 "ccU" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Midship Upper Medical Ladders";
 	dir = 2
 	},
@@ -44960,7 +44960,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 1
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Cryosleep Storage Room";
 	req_one_access = list(28,206,207);
 	req_access = list()
@@ -48125,7 +48125,7 @@
 /turf/open/floor/plating,
 /area/almayer/shipboard/brig/visitation_waiting)
 "clB" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Brig Visitation Waiting"
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -95038,7 +95038,7 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Upper Medical Corridors";
 	req_access = list()
 	},

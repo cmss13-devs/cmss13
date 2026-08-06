@@ -519,7 +519,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/canteen)
 "acn" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Nexus Dome Canteen";
 	req_access_txt = "100"
 	},
@@ -4267,7 +4267,7 @@
 /turf/open/floor,
 /area/lv624/lazarus/fitness)
 "awP" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Leisure Dome";
 	req_access_txt = "100"
@@ -4665,7 +4665,7 @@
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/main_hall)
 "ayQ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Nexus Dome";
 	req_access_txt = "100"
 	},
@@ -5396,7 +5396,7 @@
 /turf/open/floor/bluecorner,
 /area/lv624/lazarus/sleep_male)
 "aBZ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Nexus Dome Male Dormitories";
 	req_access_txt = "100"
@@ -5404,7 +5404,7 @@
 /turf/open/floor/bluecorner,
 /area/lv624/lazarus/sleep_male)
 "aCb" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Nexus Dome Female Dormitories";
 	req_access_txt = "100"
@@ -6566,7 +6566,7 @@
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "aHH" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Nexus Dome Chapel";
 	req_access_txt = "100"
 	},
@@ -6793,7 +6793,7 @@
 /turf/closed/wall,
 /area/lv624/lazarus/yggdrasil)
 "aIP" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Nexus Dome";
 	req_access_txt = "100"
@@ -6862,7 +6862,7 @@
 /turf/open/floor/whiteyellowcorner/west,
 /area/lv624/lazarus/main_hall)
 "aJk" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Nexus Dome";
 	req_access_txt = "100"
@@ -9472,7 +9472,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/main_hall)
 "aWL" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Nexus Dome";
 	req_access_txt = "100"
 	},
@@ -11922,7 +11922,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
 "ehy" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "Hydroponics"
 	},
 /turf/open/floor/green/northwest,
@@ -12340,7 +12340,7 @@
 /turf/open/floor/dark,
 /area/lv624/lazarus/quartstorage)
 "ffb" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "Hydroponics"
 	},
@@ -12672,7 +12672,7 @@
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
 "fMl" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Corporation Office";
 	req_access_txt = "100"
@@ -13416,7 +13416,7 @@
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/caves/sand_temple)
 "hrD" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	locked = 1;
 	name = "\improper Corporation Dome";
 	req_access_txt = "100"
@@ -21527,7 +21527,7 @@
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
 "yiw" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Corporation Dome";
 	req_access_txt = "100"
 	},

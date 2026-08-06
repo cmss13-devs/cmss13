@@ -13614,7 +13614,7 @@
 	pixel_y = 2;
 	layer = 6
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass/autoname,
 /turf/open/hybrisa/street/sidewalk,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "aIf" = (
@@ -48069,7 +48069,7 @@
 /turf/open/hybrisa/street/cement2,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "cjp" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass/autoname,
 /obj/structure/prop/hybrisa/misc/fire/fire2{
 	color = "#FF7700";
 	icon = 'icons/effects/fire.dmi';
@@ -49666,7 +49666,7 @@
 /turf/closed/wall/strata_outpost,
 /area/tyrargo/indoors/apartment/north_ground)
 "coo" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass,
 /turf/open/floor/corsat/marked,
 /area/tyrargo/indoors/apartment/north_ground)
 "cop" = (
@@ -51132,7 +51132,7 @@
 /turf/open/floor/plating,
 /area/tyrargo/indoors/admin/ground)
 "csT" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass/autoname,
 /turf/open/floor/corsat/marked,
 /area/tyrargo/indoors/admin/ground)
 "csU" = (
@@ -52612,7 +52612,7 @@
 /turf/open/asphalt,
 /area/tyrargo/indoors/gararge/ground)
 "cxB" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass/autoname{
 	dir = 1
 	},
 /turf/open/floor/corsat/marked,
@@ -76616,7 +76616,7 @@
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/underground/apartment)
 "dKc" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass,
 /turf/open/floor/corsat/marked,
 /area/tyrargo/indoors/apartment/south_ground)
 "dKd" = (
@@ -89353,7 +89353,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/oob)
 "eqc" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass/autoname,
 /turf/open/hybrisa/street/cement1,
 /area/tyrargo/oob/outdoors)
 "eqd" = (
@@ -92789,7 +92789,7 @@
 /turf/open/gm/dirt/dark_brown,
 /area/tyrargo/landing_zone_2)
 "eyn" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass/autoname,
 /turf/open/floor/corsat/marked,
 /area/tyrargo/indoors/bar/ground)
 "eyo" = (
@@ -94955,7 +94955,7 @@
 /turf/open/floor/plating,
 /area/tyrargo/oob/outdoors)
 "eDF" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass/autoname,
 /turf/open/floor/plating,
 /area/tyrargo/oob/outdoors)
 "eDG" = (
@@ -104480,7 +104480,7 @@
 /turf/open/floor/plating/wood,
 /area/tyrargo/landing_zone_1/ceiling)
 "fUA" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass/autoname{
 	dir = 1
 	},
 /turf/open/floor/corsat/marked,

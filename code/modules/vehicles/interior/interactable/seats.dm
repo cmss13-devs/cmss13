@@ -328,6 +328,10 @@
 	var/buckle_offset_y = 0
 	var/mob_old_y = 0
 
+	var/init_pixel_y
+	var/init_pixel_x
+	var/higher_layer
+
 /obj/structure/bed/chair/vehicle/Initialize()
 	. = ..()
 	chairbar = image(icon, "vehicle_bars")
@@ -336,6 +340,10 @@
 	addtimer(CALLBACK(src, PROC_REF(setup_buckle_offsets)), 1 SECONDS)
 
 	handle_rotation()
+
+	init_pixel_y = pixel_y
+	init_pixel_x = pixel_x
+
 
 /obj/structure/bed/chair/vehicle/proc/setup_buckle_offsets()
 	if(pixel_x != 0)
@@ -347,7 +355,10 @@
 	if(dir == NORTH)
 		layer = FLY_LAYER
 	else
-		layer = BELOW_MOB_LAYER
+		if(higher_layer)
+			layer = BELOW_MOB_LAYER + 0.01
+		else
+			layer = BELOW_MOB_LAYER
 	if(buckled_mob)
 		buckled_mob.setDir(dir)
 

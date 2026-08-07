@@ -117,11 +117,11 @@
 	if(current_mine_safety)
 		current_mine_safety = FALSE
 		mine_mode_notice += "[icon2html(src, user)] You set [src]'s mine mode to DANGER mode. Explosive ammo will blow up regardless of friendly presence."
-		user.balloon_alert(user, "activated DANGER mode")
+		user.balloon_alert(user, "activated DANGER mode", text_color = "#ce1e1e")
 	else
 		current_mine_safety = TRUE
-		mine_mode_notice += "[icon2html(src, user)] You set [src]'s mine mode to SAFE mode. Explosive ammo will NEVER blow up near detected friendly targets."
-		user.balloon_alert(user, "activated SAFE mode")
+		mine_mode_notice += "[icon2html(src, user)] You set [src]'s mine mode to SAFE mode. Explosive ammo will NEVER blow up near friendly targets."
+		user.balloon_alert(user, "activated SAFE mode", text_color = "#1ece4a")
 	to_chat(user, SPAN_NOTICE(mine_mode_notice))
 
 	var/datum/action/item_action/specialist/sharp_firemode_ability/SFA = locate(/datum/action/item_action/specialist/sharp_firemode_ability) in actions

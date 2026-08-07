@@ -723,7 +723,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	actions_types = list(/datum/action/item_action/rto_pack/use_phone)
 
-	flags_item = ITEM_OVERRIDE_NORTHFACE
+	flags_item = ITEM_OVERRIDE_NORTHFACE|MOB_LOCK_ON_EQUIP
 
 	var/obj/structure/transmitter/internal/internal_transmitter
 

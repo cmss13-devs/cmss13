@@ -902,6 +902,9 @@
 	icon_state = "shiva_fab_red"
 	walltype = WALL_SHIVA_FAB_RED
 
+/turf/closed/wall/shiva/prefabricated/dark
+	icon_state = "shiva_fab_dark"
+	walltype = WALL_SHIVA_FAB_DARK
 
 //Xenomorph's Resin Walls
 

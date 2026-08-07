@@ -363,7 +363,7 @@ GLOBAL_LIST_INIT_TYPED(cardboard_recipes, /datum/stack_recipe, list ( \
 		null, \
 		new/datum/stack_recipe("empty magazine box (KT-42)", /obj/item/ammo_box/magazine/kt42/empty), \
 		null, \
-		new/datum/stack_recipe("empty magazine box (Beretta 92FS)", /obj/item/ammo_box/magazine/b92fs/empty), \
+		new/datum/stack_recipe("empty magazine box (Beretta M92X)", /obj/item/ammo_box/magazine/b92fs/empty), \
 		null, \
 		new/datum/stack_recipe("empty magazine box (FN FP9000)", /obj/item/ammo_box/magazine/fp9000/empty), \
 		null, \
@@ -410,6 +410,7 @@ GLOBAL_LIST_INIT_TYPED(cardboard_recipes, /datum/stack_recipe, list ( \
 	icon_state = "sheet-card"
 	sheettype = "cardboard"
 	stack_id = "cardboard"
+	amount_sprites = TRUE
 
 /obj/item/stack/sheet/cardboard/New(loc, amount=null)
 	recipes = GLOB.cardboard_recipes
@@ -438,6 +439,16 @@ GLOBAL_LIST_INIT_TYPED(aluminium_recipes, /datum/stack_recipe, list ( \
 	icon_state = "sheet-aluminum"
 	sheettype = "aluminum"
 	black_market_value = 10
+	amount_sprites = TRUE
+
+/obj/item/stack/sheet/aluminum/small_stack
+	amount = STACK_10
+
+/obj/item/stack/sheet/aluminum/medium_stack
+	amount = STACK_30
+
+/obj/item/stack/sheet/aluminum/full_stack
+	amount = STACK_50
 
 /*
  * Copper
@@ -453,4 +464,45 @@ GLOBAL_LIST_INIT_TYPED(copper_recipes, /datum/stack_recipe, list ( \
 	icon_state = "sheet-copper"
 	sheettype = "copper"
 	black_market_value = 10
+	amount_sprites = TRUE
 
+/obj/item/stack/sheet/copper/small_stack
+	amount = STACK_10
+
+/obj/item/stack/sheet/copper/medium_stack
+	amount = STACK_30
+
+/obj/item/stack/sheet/copper/full_stack
+	amount = STACK_50
+
+/*
+ * Pyrotrinium
+ */
+
+/obj/item/stack/sheet/pyrotrinium
+	name = "pyrotrinium"
+	desc = "Refined from heat-resistant crystalline deposits, pyrotrinium is a dull red alloy prized for its exceptional thermal stability and conductivity. It is commonly used in reactor housings, power systems, and high-stress industrial equipment where conventional metals would fail."
+	singular_name = "pyrotrinium sheet"
+	icon_state = "sheet-pyrotrinium"
+	sheettype = "pyrotrinium"
+	stack_id = "pyrotrinium"
+	item_state = "sheet-metal"
+	throwforce = 14
+	amount_sprites = TRUE
+
+	black_market_value = 15
+
+/obj/item/stack/sheet/pyrotrinium/small_stack
+	amount = STACK_10
+
+/obj/item/stack/sheet/pyrotrinium/med_small_stack
+	amount = STACK_20
+
+/obj/item/stack/sheet/pyrotrinium/medium_stack
+	amount = STACK_30
+
+/obj/item/stack/sheet/pyrotrinium/med_large_stack
+	amount = STACK_40
+
+/obj/item/stack/sheet/pyrotrinium/large_stack
+	amount = STACK_50

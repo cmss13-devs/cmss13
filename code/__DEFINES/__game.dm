@@ -42,6 +42,7 @@
 #define MAP_NEW_VARADERO "New Varadero"//ice colony underground but as its own map
 #define MAP_TYRARGO_RIFT "Tyrargo Rift"
 #define MAP_WHITE_ANTRE_RESEARCH_FACILITY "White Antre Research Facility"
+#define MAP_FIRE_COLONY "LV-376 Charon's Crucible"//heavily modified ice colony V2 - low-medium pop
 #define MAP_CHINOOK "Chinook 91 GSO" //admin level
 #define MAP_ROSTOCK "SSV Rostock" //UPP Warship
 #define MAP_HUNTERSHIP "Hunter Ship"
@@ -429,6 +430,8 @@
 #define WALL_SHIVA_FAB_PINK "shiva_fab_pnk"
 #define WALL_SHIVA_FAB_WHITE "shiva_fab_wht"
 #define WALL_SHIVA_FAB_RED "shiva_fab_red"
+#define WALL_SHIVA_FAB_DARK "shiva_fab_dark"
+#define WALL_ENGINEER_RUIN "engineer_stone"
 #define WALL_DOME "dome"
 #define WALL_DOMER "r_dome"
 #define WALL_SOLARIS "solaris_interior"

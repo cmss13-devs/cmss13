@@ -328,6 +328,53 @@
 /obj/structure/machinery/door/airlock/almayer/glass/autoname
 	autoname = TRUE
 
+// Lavaland Single Door
+
+/obj/structure/machinery/door/airlock/almayer/lavaland/solid
+	name = "Secure Airlock"
+	icon = 'icons/obj/structures/doors/lava/single_door_solid.dmi'
+	openspeed = 4 //shorter open animation.
+
+/obj/structure/machinery/door/airlock/almayer/lavaland/solid/autoname
+	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/almayer/lavaland/glass
+	name = "Secure Airlock"
+	icon = 'icons/obj/structures/doors/lava/single_glass_door_teal.dmi'
+	opacity = FALSE
+	glass = TRUE
+	openspeed = 4 //shorter open animation.
+
+/obj/structure/machinery/door/airlock/almayer/lavaland/glass/autoname
+	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/almayer/lavaland/glass/orange
+	name = "Secure Airlock"
+	icon = 'icons/obj/structures/doors/lava/single_glass_door_orange.dmi'
+	opacity = FALSE
+	glass = TRUE
+
+/obj/structure/machinery/door/airlock/almayer/lavaland/glass/orange/autoname
+	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/almayer/lavaland/glass/red
+	name = "Secure Airlock"
+	icon = 'icons/obj/structures/doors/lava/single_glass_door_red.dmi'
+	opacity = FALSE
+	glass = TRUE
+
+/obj/structure/machinery/door/airlock/almayer/lavaland/glass/red/autoname
+	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/almayer/lavaland/glass/purple
+	name = "Secure Airlock"
+	icon = 'icons/obj/structures/doors/lava/single_glass_door_purple.dmi'
+	opacity = FALSE
+	glass = TRUE
+
+/obj/structure/machinery/door/airlock/almayer/lavaland/glass/purple/autoname
+	autoname = TRUE
+
 /obj/structure/machinery/door/airlock/almayer/security
 	name = "\improper Security Airlock"
 	icon = 'icons/obj/structures/doors/secdoor.dmi'
@@ -954,10 +1001,19 @@
 	name = "cell Door"
 	icon = 'icons/obj/structures/doors/celldoor.dmi'
 	glass = FALSE
+	openspeed = 4 //shorter open animation.
+	req_one_access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /obj/structure/machinery/door/airlock/prison/horizontal
 	dir = SOUTH
 
+/obj/structure/machinery/door/airlock/prison/alt
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/celldoor_alt.dmi'
+	glass = FALSE
+
+/obj/structure/machinery/door/airlock/prison/alt/autoname
+	autoname = TRUE
 
 // Hybrisa
 

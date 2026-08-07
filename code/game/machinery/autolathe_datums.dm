@@ -156,6 +156,11 @@
 	path = /obj/item/frame/rack
 	category = AUTOLATHE_CATEGORY_ENGINEERING
 
+/datum/autolathe/recipe/longrack_parts
+	name = "rack parts"
+	path = /obj/item/frame/rack/long
+	category = AUTOLATHE_CATEGORY_ENGINEERING
+
 /datum/autolathe/recipe/scalpel
 	name = "scalpel"
 	path = /obj/item/tool/surgery/scalpel

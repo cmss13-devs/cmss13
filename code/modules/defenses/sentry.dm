@@ -275,14 +275,14 @@
 /obj/structure/machinery/defenses/sentry/destroyed_action()
 	visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("The [name] starts spitting out sparks and smoke!")]")
 	playsound(loc, 'sound/mecha/critdestrsyndi.ogg', 25, 1)
+	INVOKE_ASYNC(src, PROC_REF(spin_and_explode))
+
+/obj/structure/machinery/defenses/sentry/proc/spin_and_explode()
 	for(var/i = 1 to 6)
 		setDir(pick(NORTH, EAST, SOUTH, WEST))
 		update_minimap_icon()
 		sleep(2)
-
-	cell_explosion(loc, 10, 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("sentry explosion", owner_mob))
-	if(!QDELETED(src))
-		qdel(src)
+	final_destroyed_action()
 
 /obj/structure/machinery/defenses/sentry/damaged_action(damage)
 	if(prob(10))

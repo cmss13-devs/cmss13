@@ -21,9 +21,7 @@
 		SPAN_DANGER("We slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		deconstruct(FALSE)
 		return XENO_ATTACK_ACTION
-	else
-		attack_hand(xeno)
-		return XENO_NONCOMBAT_ACTION
+	return XENO_NONCOMBAT_ACTION
 
 /obj/structure/bookcase/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(unslashable)

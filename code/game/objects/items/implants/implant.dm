@@ -184,17 +184,8 @@ Implant Specifics:<BR>"}
 					var/malf_msg = "Something beeps inside [imp_in][part ? "'s [part.display_name]" : ""]!"
 					imp_in.visible_message(SPAN_DANGER(malf_msg))
 					playsound(loc, 'sound/items/countdown.ogg', 25, 1, 6)
-					sleep(25)
-					if (istype(part,/obj/limb/chest) || \
-						istype(part,/obj/limb/groin) || \
-						istype(part,/obj/limb/head))
-						part.createwound(BRUISE, 60) //mangle them instead
-						explosion(get_turf(imp_in), -1, -1, 2, 3)
-						qdel(src)
-					else
-						explosion(get_turf(imp_in), -1, -1, 2, 3)
-						part.droplimb(0, 0, "dismemberment")
-						qdel(src)
+					addtimer(CALLBACK(PROC_REF(kaboom), part), 2.5 SECONDS)
+					return
 			if (elevel == "Destroy Body")
 				explosion(get_turf(T), -1, 0, 1, 6)
 				T.gib()
@@ -208,6 +199,16 @@ Implant Specifics:<BR>"}
 	if(need_gib)
 		imp_in.gib()
 
+/obj/item/implant/explosive/proc/kaboom(obj/limb/part)
+	if (istype(part,/obj/limb/chest) || \
+		istype(part,/obj/limb/groin) || \
+		istype(part,/obj/limb/head))
+		part.createwound(BRUISE, 60) //mangle them instead
+		explosion(get_turf(imp_in), -1, -1, 2, 3)
+	else
+		explosion(get_turf(imp_in), -1, -1, 2, 3)
+		part.droplimb(0, 0, "dismemberment")
+	qdel(src)
 
 /obj/item/implant/explosive/implanted(mob/source as mob)
 	elevel = alert("What sort of explosion would you prefer?", "Implant Intent", "Localized Limb", "Destroy Body", "Full Explosion")

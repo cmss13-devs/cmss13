@@ -662,4 +662,3 @@
 
 	if(reload_screen)
 		client.add_to_screen(hud_used.hide_actions_toggle)
-

@@ -24,10 +24,15 @@ SUBSYSTEM_DEF(input)
 		"Any" = "\"KeyDown \[\[*\]\]\"",
 		"Any+UP" = "\"KeyUp \[\[*\]\]\"",
 		"Back" = "\".winset \\\"input.text=\\\"\\\"\\\"\"",
-		"F1" = "adminhelp", // Need to unbind F1 because by default, it is bound to .options
+		"F1" = "dummy", //overriding .options menu being triggered by assigning F1 to proc a verb that actually does nothing
 		"CTRL+SHIFT+F1+REP" = ".options",
 		"Escape" = "Open-Escape-Menu",
 		)
+
+CLIENT_VERB(dummy) // idk where else to put it
+	set category = null
+	set name = "dummy"
+	set hidden = TRUE
 
 // Badmins just wanna have fun ♪
 /datum/controller/subsystem/input/proc/refresh_client_macro_sets()

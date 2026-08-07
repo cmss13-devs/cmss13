@@ -50,7 +50,7 @@
 	if(severity >= health && severity >= EXPLOSION_THRESHOLD_GIB)
 		gibbing = TRUE
 
-	if(body_position == LYING_DOWN && direction)
+	if(body_position == LYING_DOWN && direction > 0)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
 
 	if(HAS_TRAIT(src, TRAIT_HAULED) && !gibbing) // We still probably wanna gib them as well if they were supposed to be gibbed by the explosion in the first place
@@ -69,7 +69,7 @@
 	apply_damage(severity, BRUTE, enviro=enviro)
 	updatehealth()
 
-	var/knock_value = min( round( severity*0.1 ,1) ,10)
+	var/knock_value = min(round(severity*0.1, 1), 10)
 	if(knock_value > 0)
 		apply_effect(knock_value, PARALYZE)
 		explosion_throw(severity, direction)
@@ -197,7 +197,7 @@
 	// Super bio armor
 	var/bio_hardcore = 0
 
-	var/list/worn_clothes = list(head, wear_suit, hands, glasses, w_uniform, shoes, wear_mask)
+	var/list/worn_clothes = list(head, wear_suit, glasses, w_uniform, shoes, wear_mask)
 
 	for(var/obj/item/clothing/worn_item in worn_clothes)
 		total_prot += worn_item.armor_bio

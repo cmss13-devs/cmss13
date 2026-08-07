@@ -7,9 +7,13 @@
 	for(var/datum/internal_organ/I as anything in internal_organs)
 		I.process(delta_time)
 
+	// Bundle wound overlay updates if they are needed instead of doing it once per limb
+	var/update_wound_overlays = FALSE
+
 	for(var/obj/limb/E as anything in limbs_to_process)
-		if(!E)
-			continue
+		if(!(E.status & LIMB_DESTROYED))
+			update_wound_overlays = TRUE
+
 		if(!E.need_process())
 			E.stop_processing()
 			continue
@@ -59,3 +63,7 @@
 				emote("pain")
 			custom_pain("You can't stand on broken legs!", 1)
 			apply_effect(5, WEAKEN)
+
+	// Essentially limbs want to update damage overlays each individually. We update them all at same time to optimize.
+	if(update_wound_overlays)
+		update_damage_overlays()

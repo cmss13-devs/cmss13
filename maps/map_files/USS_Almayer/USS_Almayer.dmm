@@ -90861,7 +90861,7 @@
 /area/almayer/living/basketball)
 "uaU" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/secure_closet/fridge/dry/stock,
+/obj/structure/closet/secure_closet/fridge/organic/stock,
 /turf/open/floor/prison/kitchen,
 /area/almayer/shipboard/brig/yard)
 "uaV" = (

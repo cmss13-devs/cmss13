@@ -31,6 +31,8 @@
 	burrow_cooldown = 2 SECONDS
 	tunnel_cooldown = 7 SECONDS
 
+	aura_strength = 2
+
 	minimum_evolve_time = 7 MINUTES
 
 	minimap_icon = "burrower"
@@ -61,6 +63,7 @@
 		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/corrosive_acid,
 		/datum/action/xeno_action/activable/place_construction,
+		/datum/action/xeno_action/onclick/emit_pheromones,
 		/datum/action/xeno_action/onclick/build_tunnel,
 		/datum/action/xeno_action/onclick/plant_weeds, //first macro
 		/datum/action/xeno_action/onclick/place_trap, //second macro

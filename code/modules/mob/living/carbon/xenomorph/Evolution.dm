@@ -285,7 +285,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		to_chat(src, SPAN_WARNING("We must be at full health to evolve."))
 		return FALSE
 
-	if(fortify || crest_defense || stealth || HAS_TRAIT(src, TRAIT_ABILITY_ENCLOSED_PLATES) || HAS_TRAIT(src, TRAIT_ABILITY_REFLECTIVE_PLATES))
+	if(HAS_TRAIT(src, TRAIT_ABILITY_FORTIFY) || HAS_TRAIT(src, TRAIT_ABILITY_CREST) || HAS_TRAIT(src, TRAIT_ABILITY_INVIS) || HAS_TRAIT(src, TRAIT_ABILITY_ENCLOSED_PLATES) || HAS_TRAIT(src, TRAIT_ABILITY_REFLECTIVE_PLATES))
 		to_chat(src, SPAN_WARNING("We cannot evolve while in this stance."))
 		return FALSE
 
@@ -326,7 +326,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(tier == 0 || tier == 4)
 		to_chat(src, SPAN_XENOWARNING("We can't transmute."))
 		return
-	if(fortify || crest_defense || stealth)
+	if(HAS_TRAIT(src, TRAIT_ABILITY_FORTIFY) || HAS_TRAIT(src, TRAIT_ABILITY_CREST) || HAS_TRAIT(src, TRAIT_ABILITY_INVIS) || HAS_TRAIT(src, TRAIT_ABILITY_ENCLOSED_PLATES) || HAS_TRAIT(src, TRAIT_ABILITY_REFLECTIVE_PLATES))
 		to_chat(src, SPAN_XENOWARNING("We can't transmute while in this stance."))
 		return
 	if(lock_evolve)

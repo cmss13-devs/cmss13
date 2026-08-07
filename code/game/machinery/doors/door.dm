@@ -305,10 +305,5 @@
 			bound_height = width * world.icon_size
 		change_filler_opacity(opacity)
 
-/obj/structure/machinery/door/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
-	. = ..()
-	// Yes, for a split second after departure you can see through rear dropship airlocks, but it's the simplest solution I could've think of
-	handle_multidoor()
-
 /obj/structure/machinery/door/morgue
 	icon = 'icons/obj/structures/doors/doormorgue.dmi'

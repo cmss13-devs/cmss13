@@ -1122,6 +1122,7 @@
 	name = "colony headset"
 	desc = "A standard headset used by colonists."
 	frequency = COLONY_FREQ
+	minimap_type = /datum/action/minimap/survivor
 
 /obj/item/device/radio/headset/distress/WY
 	name = "WY corporate headset"

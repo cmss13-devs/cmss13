@@ -378,21 +378,34 @@
 	SIGNAL_HANDLER
 	reset_view(null)
 
-/mob/proc/point_to_atom(atom/A, turf/T)
+/mob/proc/point_to_atom(atom/pointed_at, turf/turf_pointed_at)
 	var/mob/living/carbon/human/mob = src
 	var/datum/squad/squad = null
 	if(ishuman(mob))
 		squad = mob.assigned_squad
 	if(!check_improved_pointing()) //Squad Leaders and above have reduced cooldown and get a bigger arrow
 		recently_pointed_to = world.time + 2.5 SECONDS
-		new /obj/effect/overlay/temp/point(T, src, A)
+		new /obj/effect/overlay/temp/point(turf_pointed_at, src, pointed_at)
 	else
 		recently_pointed_to = world.time + 10
 		if(isnull(squad)) //If they get the big arrow but aren't in a squad, they get the default green arrow
-			new /obj/effect/overlay/temp/point/big(T, src, A)
+			new /obj/effect/overlay/temp/point/big(turf_pointed_at, src, pointed_at)
 		else
-			new /obj/effect/overlay/temp/point/big/squad(T, src, A, squad.equipment_color)
-	visible_message("<b>[src]</b> points to [A]", null, null, 5)
+			new /obj/effect/overlay/temp/point/big/squad(turf_pointed_at, src, pointed_at, squad.equipment_color)
+		if(ishuman(mob) && ishumansynth_strict(pointed_at) && pointed_at != mob) //Don't yell out the name of predators ever, that would be weird. Our ourselves
+			var/mob/living/carbon/human/yelled_at_human = pointed_at
+			if(yelled_at_human.faction == mob.faction && yelled_at_human.name != "Unknown") // Don't yell out the name of CLF... Or someone you don't know
+				var/split_name = splittext(yelled_at_human.name, " ")
+				var/last_name = split_name[length(split_name)]
+				var/final_spoken_name
+				if(mob.a_intent == INTENT_GRAB)
+					final_spoken_name = "[last_name]!"
+				if(mob.a_intent == INTENT_HARM)
+					final_spoken_name = "[uppertext(last_name)]!!"
+				if(final_spoken_name)
+					say(final_spoken_name)
+
+	visible_message("<b>[src]</b> points to [pointed_at]", null, null, 5)
 	return TRUE
 
 ///Is this mob important enough to point with big arrows?

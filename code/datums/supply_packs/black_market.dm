@@ -1115,6 +1115,18 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
+/datum/supply_packs/contraband/deep_storage/snow_boots
+	name = "Snow Pattern Combat Boots"
+	contains = list(/obj/item/clothing/shoes/marine/snow)
+	dollar_cost = 10
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/deep_storage/urban_boots
+	name = "Urban Pattern Combat Boots"
+	contains = list(/obj/item/clothing/shoes/marine/urban)
+	dollar_cost = 10
+	containertype = /obj/structure/largecrate/black_market
+
 //Weapons
 
 /datum/supply_packs/contraband/deep_storage/type_replica

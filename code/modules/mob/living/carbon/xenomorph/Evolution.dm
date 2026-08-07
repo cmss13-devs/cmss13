@@ -302,10 +302,12 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 	return TRUE
 
-/mob/living/carbon/xenomorph/proc/transmute_verb()
+// Intentionally a proc variant of a verb so its not just automatically given to xenos
+/mob/living/carbon/xenomorph/proc/verb_transmute()
 	set name = "Transmute"
 	set desc = "Transmute into a different caste of the same tier."
 	set category = "Alien"
+	set hidden = TRUE
 
 	if(!check_state())
 		return

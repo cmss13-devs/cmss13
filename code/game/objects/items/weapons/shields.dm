@@ -1,6 +1,6 @@
 /obj/item/weapon/shield
 	name = "shield"
-	shield_flags = CAN_BLOCK_POUNCE
+	shield_flags = CAN_BLOCK_POUNCE|NO_LOWERED_GUARD
 	var/base_icon_state = "shield"
 	var/passive_block = SHIELD_CHANCE_LOW
 	var/passive_projectile_mult = PROJECTILE_BLOCK_PERC_30

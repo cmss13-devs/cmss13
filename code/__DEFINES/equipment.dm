@@ -641,9 +641,14 @@ GLOBAL_LIST_INIT(uniform_categories, list(
 #define SHIELD_BASH_COOLDOWN 2.5 SECONDS
 
 // Special flags
+/// Can be bashed on a shield to make a sound.
 #define CAN_SHIELD_BASH (1<<0)
+/// Can block pounces.
 #define CAN_BLOCK_POUNCE (1<<1)
+/// Can block heavy weapons.
 #define CAN_BLOCK_HEAVY (1<<2)
+/// Cannot be lowered (TRAIT_LOWERED_GUARD will not disable the block)
+#define NO_LOWERED_GUARD (1<<3)
 
 // Grades of protection against projectiles, including thrown items.
 

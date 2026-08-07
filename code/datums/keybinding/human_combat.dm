@@ -205,3 +205,18 @@
 	if(istype(held_item))
 		held_item.toggle_tube()
 		return TRUE
+
+/datum/keybinding/human/combat/toggle_melee_guard
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "toggle_melee_guard"
+	full_name = "Toggle Guard Mode"
+	keybind_signal = COMSIG_KB_HUMAN_TOGGLE_GUARD_MODE
+
+/datum/keybinding/human/combat/toggle_melee_guard/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/human/human = user.mob
+	human.toggle_blocking_guard()
+	return TRUE

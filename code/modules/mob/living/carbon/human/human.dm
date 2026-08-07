@@ -114,6 +114,9 @@
 		for(var/tab_item in species_tab_items)
 			. += tab_item
 
+	if(HAS_TRAIT(src, TRAIT_LOWERED_GUARD))
+		. += "Melee Guard: Lowered, not blocking."
+
 	if(faction == FACTION_MARINE & !isnull(SSticker) && !isnull(SSticker.mode) && !isnull(SSticker.mode.active_lz) && !isnull(SSticker.mode.active_lz.loc) && !isnull(SSticker.mode.active_lz.loc.loc))
 		. += "Primary LZ: [SSticker.mode.active_lz.loc.loc.name]"
 
@@ -2043,3 +2046,18 @@
 		if(PULSE_THREADY)
 			return method ? ">250" : "extremely weak and fast, patient's artery feels like a thread"
 // output for machines^ ^^^^^^^output for people^^^^^^^^^
+
+/mob/living/carbon/human/verb/toggle_blocking_guard()
+	set name = "Toggle Guard Mode"
+	set category = "IC"
+	set hidden = TRUE
+	set src = usr
+
+	if(HAS_TRAIT(src, TRAIT_LOWERED_GUARD))
+		REMOVE_TRAIT(src, TRAIT_LOWERED_GUARD, TRAIT_SOURCE_INHERENT)
+		to_chat(usr, SPAN_WARNING("You will now block with melee weapons when able!"))
+		return
+
+	ADD_TRAIT(src, TRAIT_LOWERED_GUARD, TRAIT_SOURCE_INHERENT)
+	to_chat(usr, SPAN_WARNING("You will no longer block with melee weapons!"))
+	return

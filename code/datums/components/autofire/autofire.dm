@@ -11,8 +11,6 @@
 	var/shots_fired = 0
 	///If the shooter is currently shooting
 	var/shooting = FALSE
-	///If TRUE, the shooter will reset its references at the end of the burst
-	var/have_to_reset_at_burst_end = FALSE
 	///If we are in a burst
 	var/bursting = FALSE
 	/// The multiplier for how much slower the parent should fire in automatic mode. 1 is normal, 1.2 is 20% slower, 2 is 100% slower, etc.
@@ -92,7 +90,7 @@
 		return
 	///We are burst firing, we can't clean the state now. We will do it when the burst is over
 	if(bursting)
-		have_to_reset_at_burst_end = TRUE
+		bursting = FALSE
 		return
 	shooting = FALSE
 	shots_fired = 0
@@ -102,10 +100,9 @@
 	SIGNAL_HANDLER
 	callback_reset_fire.Invoke() //resets the gun
 	shots_fired = 0
-	have_to_reset_at_burst_end = FALSE
 	if(bursting)
 		bursting = FALSE
-		callback_bursting.Invoke(FALSE)
+		callback_bursting?.Invoke(FALSE)
 	shooting = FALSE
 
 ///Manually sets firedelay
@@ -125,13 +122,8 @@
 	switch(fire_mode)
 		if(GUN_FIREMODE_BURSTFIRE)
 			shots_fired++
-			if(shots_fired == burst_shots_to_fire)
-				callback_bursting?.Invoke(FALSE)
-				bursting = FALSE
-				stop_firing()
-				if(have_to_reset_at_burst_end)//We failed to reset because we were bursting, we do it now
-					callback_reset_fire?.Invoke()
-					have_to_reset_at_burst_end = FALSE
+			if(shots_fired >= burst_shots_to_fire)
+				hard_reset()
 				return
 			callback_bursting?.Invoke(TRUE)
 			bursting = TRUE

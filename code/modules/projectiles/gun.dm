@@ -1252,12 +1252,13 @@ and you're good to go.
 			if(current_mag.current_rounds <= 0 && flags_gun_features & GUN_AUTO_EJECTOR)
 				if (user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_OFF))
 					update_icon()
-				else if (!(flags_gun_features & GUN_BURST_FIRING) || !in_chamber) // Magazine will only unload once burstfire is over
+				else
 					var/drop_to_ground = TRUE
-					if (user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND))
-						drop_to_ground = FALSE
-						unwield(user)
-						user.swap_hand()
+					if(user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND))
+						if(!(flags_gun_features & GUN_BURST_FIRING) || ((flags_gun_features & GUN_BURST_FIRING) && burst_amount >= shots_fired)) //Don't mess with our hands if we're not done with the burst yet.
+							drop_to_ground = FALSE
+							unwield(user)
+							user.swap_hand()
 					unload(user, TRUE, drop_to_ground) // We want to quickly autoeject the magazine. This proc does the rest based on magazine type. User can be passed as null.
 					playsound(src, empty_sound, 25, 1)
 					SEND_SIGNAL(user, COMSIG_MOB_GUN_EMPTY, src)
@@ -2278,6 +2279,8 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if(gun_firemode == GUN_FIREMODE_AUTOMATIC)
 		reset_fire()
 		display_ammo(gun_user)
+	else if(gun_firemode == GUN_FIREMODE_BURSTFIRE && flags_gun_features & GUN_FIREMODE_BURSTFIRE)
+		return
 	SEND_SIGNAL(src, COMSIG_GUN_STOP_FIRE)
 
 /obj/item/weapon/gun/proc/set_gun_user(mob/to_set)
@@ -2367,6 +2370,8 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		if(Fire(object, gun_user, modifiers))
 			reset_fire()
 		return COMSIG_MOB_CLICK_HANDLED
+	else if(gun_firemode == GUN_FIREMODE_BURSTFIRE && (flags_gun_features & GUN_BURST_FIRING))
+		return FALSE
 	SEND_SIGNAL(src, COMSIG_GUN_FIRE)
 	return COMSIG_MOB_CLICK_HANDLED
 

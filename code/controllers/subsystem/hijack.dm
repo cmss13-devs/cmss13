@@ -686,11 +686,6 @@ SUBSYSTEM_DEF(hijack)
 	hijack_status = HIJACK_OBJECTIVES_GROUND_CRASH
 	marine_announcement("Tachyon quantum jump drive deactivated due to insufficient fueling. Entry into atmosphere imminent.", HIJACK_ANNOUNCE, sound('sound/mecha/internaldmgalarm.ogg'))
 
-	// Break all shipside ships and disable all non-pod/elevator pads
-	unlock_all_dropship_doors() // Unlock doors because they'll be uninteractable
-	disallow_dropship_launching()
-	disallow_dropship_pad_landing()
-
 	// Figure out the main Z by assuming the LZs are on that Z
 	var/obj/lz = locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1)
 	if(!lz)
@@ -759,6 +754,12 @@ SUBSYSTEM_DEF(hijack)
 		stime = 3,
 		drop = FALSE,
 	)
+
+	// Break all shipside ships and disable all non-pod/elevator pads
+	unlock_all_dropship_doors() // Unlock doors because they'll be uninteractable
+	disallow_dropship_launching()
+	disallow_dropship_pad_landing()
+	shipwide_ai_announcement("ALERT: Lifeboat telemetry equipment destroyed. Cause: Atmospheric reentry.\n\nEvacuation via port and starboard lifeboats is no longer possible.", HIJACK_ANNOUNCE, sound('sound/effects/creak1.ogg'))
 
 	// Place the crash template
 	var/datum/map_config/ship_map_config = SSmapping.configs[SHIP_MAP]

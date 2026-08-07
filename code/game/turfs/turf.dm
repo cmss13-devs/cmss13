@@ -128,7 +128,7 @@
 	update_vis_contents()
 
 /turf/proc/fix_water_clipping_layers() // used in SUBSYSTEM_DEF(water_layer_fix), for water display_effects so big mobs dont clip into the ground
-	if(istype(src, /turf/open/gm/river) || istype(src, /turf/open/gm/coast))
+	if(is_water(src))
 		return
 	//so mobs in the water dont clip under these turfs ...
 	if(layer == UNDER_TURF_LAYER - 0.03)
@@ -139,7 +139,9 @@
 			continue
 
 		var/turf/neighbor = get_step(src, direction_check)
-		if(istype(neighbor, /turf/open/gm/river) || istype(neighbor, /turf/open/gm/coast))
+		if(neighbor == null)
+			continue
+		if(is_water(neighbor))
 			var/turf/s1 = get_step(src, turn(direction_check, 90))
 			var/turf/s2 = get_step(src, turn(direction_check, -90))
 
@@ -150,12 +152,17 @@
 				s2.layer = UNDER_TURF_LAYER - 0.03
 
 /turf/proc/fix_water_clipping_layers_final() // if any of the rurfs we changed above have water above them, we reset them
-	if(istype(src, /turf/open/gm/river) || istype(src, /turf/open/gm/coast))
+	if(is_water(src))
 		return
 	var/turf/direction_check = get_step(src, NORTH)
-	if(istype(direction_check, /turf/open/gm/river)) 	//only check full water tiles here, coastlines have a gradient ...
+	if(direction_check == null)
+		return
+	if(is_full_water(direction_check)) 	//only check full water tiles here, coastlines have a gradient ...
 		var/turf/direction_check2 = get_step(src,SOUTH)	//that negates needing to simulate a dropoff (which having these tiles overlay water does)
-		if(!istype(direction_check2, /turf/open/gm/river) && !istype(direction_check2, /turf/open/gm/coast))
+		if(direction_check2 == null)
+			layer = TURF_LAYER
+			return
+		if(!is_full_water(direction_check2))
 			layer = TURF_LAYER
 
 /obj/vis_contents_holder

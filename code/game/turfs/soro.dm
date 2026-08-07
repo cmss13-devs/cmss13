@@ -115,9 +115,11 @@
 	supports_surgery = FALSE
 
 /turf/open/gm/coast/dirt/north
+	depth = -4
 
 /turf/open/gm/coast/dirt/south
 	dir = 1
+	depth = 0
 
 /turf/open/gm/coast/dirt/west
 	dir = 4
@@ -135,17 +137,21 @@
 
 /turf/open/gm/coast/dirt/beachcorner/south_east
 	dir = 4
+	depth = 0
 
 /turf/open/gm/coast/dirt/beachcorner/south_west
 	dir = 8
+	depth = 0
 
 /turf/open/gm/coast/dirt/beachcorner2
 	icon_state = "beachcorner2"
 
 /turf/open/gm/coast/dirt/beachcorner2/north_west
+	depth = -4
 
 /turf/open/gm/coast/dirt/beachcorner2/north_east
 	dir = 1
+	depth = -4
 
 /turf/open/gm/coast/dirt/beachcorner2/south_west
 	dir = 4
@@ -221,7 +227,9 @@
 
 /turf/open/gm/river/soro
 	icon = 'icons/turf/floors/ground_map_dirt.dmi'
+	depth = -8
 
 /turf/open/gm/river/tyrargo
 	icon = 'icons/turf/floors/tyrargo_map_dirt.dmi'
 	icon_state = "forestseashallow"
+	depth = -8

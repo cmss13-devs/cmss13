@@ -165,6 +165,8 @@
 	var/toxic = 0
 	supports_surgery = FALSE
 	is_weedable = NOT_WEEDABLE
+	depth = -2
+	layer = UNDER_TURF_LAYER -0.03
 
 /turf/open/desert/desert_shore/update_icon()
 	..()
@@ -179,42 +181,76 @@
 			set_light(1)
 			icon = 'icons/turf/floors/desert_water_transition.dmi'
 
+/turf/open/desert/desert_shore/Initialize(mapload, ...)
+	. = ..()
+	update_icon()
+	RegisterSignal(src, COMSIG_TURF_ENTERED, PROC_REF(on_enter))
+	RegisterSignal(src, COMSIG_ATOM_HITBY, PROC_REF(on_hit))
+
 /turf/open/desert/desert_shore/desert_shore1
 	name = "shore"
 	icon_state = "shore1"
+	depth = 0
 
 /turf/open/desert/desert_shore/desert_shore1/north
 	dir = NORTH
+	depth = -4
 
 /turf/open/desert/desert_shore/desert_shore1/east
 	dir = EAST
+	depth = -2
 
 /turf/open/desert/desert_shore/desert_shore1/west
 	dir = WEST
+	depth = -2
+
+//shore corners are outside edges, corner of land, rest water
+/turf/open/desert/desert_shore/shore_corner1 //theres 2 of these across all our maps and they're almost identical to shore_corner2
+	name = "shore"
+	icon_state = "shore_corner1"
 
 /turf/open/desert/desert_shore/shore_corner1/north
 	dir = NORTH
+	depth = -4
 
 /turf/open/desert/desert_shore/shore_corner1/west
 	dir = WEST
+	depth = -4
+
+/turf/open/desert/desert_shore/shore_corner2 //much more popularily used compared to shore_corner1, the poster child of shore_corners
+	name = "shore"
+	icon_state = "shore_corner2"
+	depth = -2
 
 /turf/open/desert/desert_shore/shore_corner2/north
 	dir = NORTH
+	depth = -4
 
 /turf/open/desert/desert_shore/shore_corner2/east
 	dir = EAST
+	depth = -2
 
 /turf/open/desert/desert_shore/shore_corner2/west
 	dir = WEST
+	depth = -4
+
+//shore edges are inside edges, corner of water, rest land
+/turf/open/desert/desert_shore/shore_edge1
+	name = "shore"
+	icon_state = "shore_edge1"
+	depth = 0
 
 /turf/open/desert/desert_shore/shore_edge1/north
 	dir = NORTH
+	depth = -2
 
 /turf/open/desert/desert_shore/shore_edge1/east
 	dir = EAST
+	depth = -2
 
 /turf/open/desert/desert_shore/shore_edge1/west
 	dir = WEST
+	depth = 0
 
 /*
 /turf/open/desert/desert_shore/desert_shore2
@@ -225,19 +261,8 @@
 	icon_state = "shore3"
 */
 
-
-/turf/open/desert/desert_shore/shore_edge1
-	name = "shore"
-	icon_state = "shore_edge1"
-/turf/open/desert/desert_shore/shore_corner1
-	name = "shore"
-	icon_state = "shore_corner1"
-/turf/open/desert/desert_shore/shore_corner2
-	name = "shore"
-	icon_state = "shore_corner2"
-
 //Desert Waterway
-/turf/open/desert/waterway
+/turf/open/desert/waterway			//these are unused, and probably shouldnt ever be.. cursed steep shoreline, terrible for display_effects
 	icon = 'icons/turf/floors/desert_water.dmi'
 	icon_state = "dock"
 	supports_surgery = FALSE
@@ -287,6 +312,7 @@
 	icon = 'icons/turf/floors/desert_water.dmi'
 	icon_state = "shore_caves"
 	var/toxic = 0
+	layer = UNDER_TURF_LAYER -0.03
 
 /turf/open/desert/cave/cave_shore/update_icon()
 	..()
@@ -318,6 +344,7 @@
 	var/toxic = 0
 	default_name = "water"
 	is_weedable = NOT_WEEDABLE
+	depth = -8
 
 /turf/open/gm/river/desert/update_icon()
 	..()
@@ -337,6 +364,7 @@
 //shallow water
 /turf/open/gm/river/desert/shallow
 	icon_state = "shallow"
+	depth = -8
 
 /turf/open/gm/river/desert/shallow/covered
 	covered = TRUE
@@ -351,6 +379,7 @@
 //shallow water transition to deep
 /turf/open/gm/river/desert/shallow_edge
 	icon_state = "shallow_edge"
+	depth = -12
 
 /turf/open/gm/river/desert/shallow_edge/southwest
 	dir = SOUTHWEST
@@ -392,6 +421,7 @@
 //shallow water transition to deep corner
 /turf/open/gm/river/desert/shallow_corner
 	icon_state = "shallow_c"
+	depth = -12
 
 /turf/open/gm/river/desert/shallow_corner/covered
 	covered = TRUE
@@ -399,6 +429,7 @@
 
 /turf/open/gm/river/desert/shallow_corner/north
 	dir = NORTH
+	depth = -16
 
 /turf/open/gm/river/desert/shallow_corner/east
 	dir = EAST
@@ -410,6 +441,7 @@
 //deep water
 /turf/open/gm/river/desert/deep
 	icon_state = "deep"
+	depth = -16
 
 /turf/open/gm/river/desert/deep/no_slowdown
 	base_river_slowdown = 0

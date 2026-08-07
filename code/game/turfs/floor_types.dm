@@ -268,7 +268,7 @@
 	icon = 'icons/turf/almayer.dmi'
 	icon_state = "plating_catwalk"
 	var/base_state = "plating" //Post mapping
-	var/covered = TRUE
+	covered = TRUE
 	var/covered_icon_state = "catwalk"
 
 /turf/open/floor/plating/plating_catwalk/Initialize(mapload, ...)

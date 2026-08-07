@@ -4,16 +4,16 @@
 
 /datum/effects/display_effect			// used to display stuff on things
 	effect_name = "display_effect"
-	icon_path = 'icons/effects/display_effects_32.dmi'
+	icon_path = 'icons/effects/display_effects/_32.dmi'
 	flags = INF_DURATION|EFFECT_NO_PROCESS
 	var/will_alter_layerings = FALSE
 	var/obj/effect/display_effect/the_effect
 	var/pixel_y_offset = 0
 	var/list/icon_paths = list(
-		'icons/effects/display_effects_32.dmi',	//humans, etc
-		'icons/effects/display_effects_48.dmi',	//facehugger, drone
-		'icons/effects/display_effects_64.dmi', //most xenos
-		'icons/effects/display_effects_88.dmi',	//queen
+		'icons/effects/display_effects/_32.dmi',	//humans, etc
+		'icons/effects/display_effects/_48.dmi',	//facehugger, drone
+		'icons/effects/display_effects/_64.dmi', //most xenos
+		'icons/effects/display_effects/_88.dmi',	//queen
 	)
 
 /datum/effects/display_effect/New(atom/input_atom, force_update=FALSE)
@@ -76,7 +76,7 @@
 
 		//layerings will be used in the case theres a dropoff.. ei turf south is high and the one we're in is "deep"
 		will_alter_layerings = abs(pixel_y_offset) >= 1 ? TRUE : FALSE	//if theres a meaningful difference in depth then we'll need to change the layer of the affected mob so its "below" the dropoff
-		if(!pixel_y_offset) 											//firstly if theres no offset, theres no depth, meaning no need for the effect at all
+		if(!pixel_y_offset || input_openturf.covered) 											//firstly if theres no offset, theres no depth, meaning no need for the effect at all
 			mob_icon_state_path = null
 			obj_icon_state_path = null
 			affected_mob.update_effects()
@@ -91,7 +91,7 @@
 				found.UnregisterFromParent()
 				found.Destroy()
 			return													//if there is a meaningful difference in depth, change layerings and animate the mob "down" to where it should be
-		if(istype(input_openturf, /turf/open/gm/coast)) 			//unless its a coast, things here will never need to be "below" the turf south of it (they should always be shallow/seemingly be gradient of depth)
+		if(is_coastline(input_openturf)) 				//unless its a coast, things here will never need to be "below" the turf south of it (they should always be shallow/seemingly be gradient of depth)
 			on_coast = TRUE
 			affected_mob.layer = initial(affected_mob.layer )
 			affected_mob.plane = initial(affected_mob.plane)
@@ -139,37 +139,18 @@
 	overlays.Cut()	//clean slate, dont need the old overlay
 	var/icon/water_overlay = icon(owner.icon_path,"empty")						//this is what will our water texture will be
 	var/icon/subtraction_texture = icon(owner.icon_path,"culling_mask")			//this is the part of it we'll keep, rest will become "air"
-	var/icon/turf_texture = icon(input_openturf.icon, input_openturf.icon_state)//this is the actual texture we'll use to create the water texture
-	var/w_w = water_overlay.Width()
+	var/icon/turf_texture = icon(get_water_turf_iconstuff(input_openturf, "icon"), get_water_turf_iconstuff(input_openturf, "icon_state"))
+	var/w_w = water_overlay.Width()												//this is the actual texture we'll use to create the water texture
 	var/w_h = water_overlay.Height()
 	var/t_t = turf_texture.Width()
-	var/pieces = round(w_w / t_t) + (w_w / t_t > round( w_w / t_t ) ? 1 : 0)	//since mobs wont always be 32x32 the water texture will need be build out of 32x32 parts
-	for(var/i=0, i<pieces, i++)
-		water_overlay.Blend(turf_texture, ICON_OVERLAY, (i*32)+1,1)				//place a 32x32 texture on our water texture every 32 pixels
-	subtraction_texture.Shift(SOUTH, (w_h - abs(pixel_y_offset)-3), FALSE)		//we move it down to "water level"
-	water_overlay.AddAlphaMask(subtraction_texture)								//remove everything other than what the subraction overlay overlaps
-	var/list/mob_culling_masks = list(
-		/mob/living/carbon/human = "culling_human",
-		/mob/living/carbon/human/yautja = "culling_human",
-		/mob/living/carbon/xenomorph/drone = "culling_drone",
-		/mob/living/carbon/xenomorph/sentinel = "culling_sentinel",
-		/mob/living/carbon/xenomorph/lurker = "culling_lurker",
-		/mob/living/carbon/xenomorph/spitter = "culling_spitter",
-		/mob/living/carbon/xenomorph/defender = "culling_defender",
-		/mob/living/carbon/xenomorph/runner = "culling_runner",
-		/mob/living/carbon/xenomorph/carrier = "culling_carrier",
-		/mob/living/carbon/xenomorph/burrower = "culling_burrower",
-		/mob/living/carbon/xenomorph/hivelord = "culling_hivelord",
-		/mob/living/carbon/xenomorph/warrior = "culling_warrior",
-		/mob/living/carbon/xenomorph/boiler = "culling_boiler",
-		/mob/living/carbon/xenomorph/despoiler = "culling_despoiler",
-		/mob/living/carbon/xenomorph/praetorian = "culling_praetorian",
-		/mob/living/carbon/xenomorph/ravager = "culling_ravager",
-		/mob/living/carbon/xenomorph/crusher = "culling_crusher",
-		/mob/living/carbon/xenomorph/queen = "culling_queen",
-		//predalien
-	)
-	var/mob_culling_mask = mob_culling_masks[owner.affected_atom.type]
+	var/pieces_x = round(w_w / t_t) + (w_w / t_t > round( w_w / t_t ) ? 1 : 0)	//since mobs wont always be 32x32 the water texture will need be build out of 32x32 parts
+	for(var/i=0, i<pieces_x, i++)
+		for(var/j=0, j<2, j++)
+			water_overlay.Blend(turf_texture, ICON_OVERLAY, (i*32)+1, (j*32)+1)				//place a 32x32 texture on our water texture every 32 pixels
+	if(!islarva(owner.affected_atom) && !isfacehugger(owner.affected_atom))
+		subtraction_texture.Shift(SOUTH, (w_h - abs(pixel_y_offset)-3), FALSE)	//we move it down to "water level"
+		water_overlay.AddAlphaMask(subtraction_texture)								//remove everything other than what the subraction overlay overlaps
+	var/mob_culling_mask = GLOB.mob_culling_masks[owner.affected_atom.type]
 	water_overlay.AddAlphaMask(icon(owner.icon_path, mob_culling_mask))
 	var/mutable_appearance/final_texture = mutable_appearance(water_overlay)	//water overlay done!
 	final_texture.layer = input_living.layer+0.01

@@ -12,6 +12,7 @@
 	var/scorchedness = 0 //how scorched is this turf 0 to 3
 	var/icon_state_before_scorching //this is really dumb, blame the mappers...
 	var/depth = 0 // for display_effects
+	var/covered = 0
 
 /turf/open/Initialize(mapload, ...)
 	. = ..()
@@ -140,6 +141,32 @@
 				. += "Medium Roasted."
 			if(3)
 				. += "Well Done."
+
+/turf/open/proc/handle_add_display_effect(turf/source, atom/movable/mover, force_update=FALSE)
+	if(!isliving(mover) || mover.throwing || (!ishuman(mover) && !isxeno(mover) && !isyautja(mover)))
+		return
+	if(iscarbon(mover))
+		var/mob/living/carbon/carbon_mover =  mover
+		if(carbon_mover.IsKnockDown())
+			return
+		var/datum/component/display_effect/existing = carbon_mover.GetComponent(/datum/component/display_effect)
+		if(existing)
+			carbon_mover.AddComponent(/datum/component/display_effect, src.type, depth, existing.my_display_effect)
+			return
+	mover.AddComponent(/datum/component/display_effect, src.type, depth, force_update)
+
+/turf/open/proc/handle_hit(turf/T, atom/movable/AM)
+	if(!isliving(AM))
+		return
+	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, T)
+
+/turf/open/proc/on_enter(turf/source, atom/movable/mover, force_update=FALSE)
+	SIGNAL_HANDLER
+	handle_add_display_effect(source, mover, force_update)
+
+/turf/open/proc/on_hit(turf/T, atom/movable/AM)
+	SIGNAL_HANDLER
+	handle_hit(T, AM)
 
 // Black & invisible to the mouse. used by vehicle interiors
 /turf/open/void
@@ -570,21 +597,32 @@
 /turf/open/gm/grass/grassbeach
 	icon_state = "grassbeach"
 
+/turf/open/gm/grass/grassbeach/Initialize(mapload, ...)
+	. = ..()
+	update_icon()
+	RegisterSignal(src, COMSIG_TURF_ENTERED, PROC_REF(on_enter))
+	RegisterSignal(src, COMSIG_ATOM_HITBY, PROC_REF(on_hit))
+
 /turf/open/gm/grass/grassbeach/north
+	depth = -4
 
 /turf/open/gm/grass/grassbeach/south
 	dir = 1
 
 /turf/open/gm/grass/grassbeach/west
 	dir = 4
+	depth = -2
 
 /turf/open/gm/grass/grassbeach/east
 	dir = 8
+	depth = -2
 
 /turf/open/gm/grass/gbcorner
 	icon_state = "gbcorner"
 
+
 /turf/open/gm/grass/gbcorner/north_west
+	depth = -2
 
 /turf/open/gm/grass/gbcorner/south_east
 	dir = 1
@@ -594,6 +632,7 @@
 
 /turf/open/gm/grass/gbcorner/north_east
 	dir = 8
+	depth = -2
 
 /turf/open/gm/grass/Initialize(mapload, ...)
 	. = ..()
@@ -717,7 +756,6 @@
 	icon_state = "seashallow"
 	can_bloody = FALSE
 	fishing_allowed = TRUE
-	var/covered = 0
 	var/covered_name = "grate"
 	var/cover_icon = 'icons/turf/floors/filtration.dmi'
 	var/cover_icon_state = "grate"
@@ -740,6 +778,7 @@
 /turf/open/gm/river/update_icon()
 	..()
 	update_overlays()
+	layer = covered ? TURF_LAYER : UNDER_TURF_LAYER -0.03
 
 /turf/open/gm/river/proc/update_overlays()
 	overlays.Cut()
@@ -748,26 +787,6 @@
 	if(covered)
 		name = covered_name
 		overlays += image("icon"=src.cover_icon,"icon_state"=cover_icon_state,"layer"=CATWALK_LAYER,"dir" = dir)
-
-/turf/open/gm/river/proc/on_enter(turf/source, atom/movable/mover, force_update=FALSE)
-	SIGNAL_HANDLER
-	if(!isliving(mover) || mover.throwing || (!ishuman(mover) && !isxeno(mover) && !isyautja(mover)))
-		return
-	if(iscarbon(mover))
-		var/mob/living/carbon/carbon_mover =  mover
-		if(carbon_mover.IsKnockDown())
-			return
-		var/datum/component/display_effect/existing = carbon_mover.GetComponent(/datum/component/display_effect)
-		if(existing)
-			carbon_mover.AddComponent(/datum/component/display_effect, src.type, depth, existing.my_display_effect)
-			return
-	mover.AddComponent(/datum/component/display_effect, src.type, depth, force_update)
-
-/turf/open/gm/river/proc/on_hit(turf/T, atom/movable/AM)
-	SIGNAL_HANDLER
-	if(!isliving(AM) || AM.throwing)
-		return
-	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, T)
 
 /turf/open/gm/river/Entered(atom/movable/AM)
 	..()
@@ -916,26 +935,6 @@
 	. = ..()
 	RegisterSignal(src, COMSIG_TURF_ENTERED, PROC_REF(on_enter))
 	RegisterSignal(src, COMSIG_ATOM_HITBY, PROC_REF(on_hit))
-
-/turf/open/gm/coast/proc/on_enter(turf/source, atom/movable/mover)
-	SIGNAL_HANDLER
-	if(!isliving(mover) || mover.throwing || (!ishuman(mover) && !isxeno(mover) && !isyautja(mover)))
-		return
-	if(iscarbon(mover))
-		var/mob/living/carbon/carbon_mover =  mover
-		if(carbon_mover.IsKnockDown())
-			return
-		var/datum/component/display_effect/existing = carbon_mover.GetComponent(/datum/component/display_effect)
-		if(existing)
-			carbon_mover.AddComponent(/datum/component/display_effect, src.type, depth, existing.my_display_effect)
-			return
-	mover.AddComponent(/datum/component/display_effect, src.type, depth)
-
-/turf/open/gm/coast/proc/on_hit(turf/T, atom/movable/AM)
-	SIGNAL_HANDLER
-	if(!isliving(AM) || AM.throwing)
-		return
-	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, T)
 
 /turf/open/gm/coast/north
 	depth = -4

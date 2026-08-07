@@ -1,5 +1,0 @@
-author: "JackieEstegado"
-delete-after: True
-changes:
-  - bugfix: "Fixed players mobs bugging out when attempted to be nested on a wall that no longer exists."
-  - bugfix: "Fixed attacking nests not having an attack delay."

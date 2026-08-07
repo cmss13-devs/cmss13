@@ -52,6 +52,8 @@
 #define MAP_COLOR_INDEX (1<<21)
 /// If an object will fall through open space, use this when dashing \ jumping for example
 #define NO_ZFALL (1<<22)
+/// Allows a non-mob movable to use multi-Z stairs
+#define CAN_USE_MULTIZ_STAIRS (1<<23)
 
 //==========================================================================================
 

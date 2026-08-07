@@ -199,6 +199,10 @@
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space)
+"aaD" = (
+/obj/vehicle/powerloader/ft/lightweight,
+/turf/open/floor/plating,
+/area/almayer/maint/lower/constr)
 "aaE" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/almayer/plating_striped/south,
@@ -36633,7 +36637,7 @@
 /turf/open/floor/almayer/orange/north,
 /area/almayer/engineering/lower)
 "bLX" = (
-/obj/vehicle/powerloader,
+/obj/vehicle/powerloader/ft/lightweight,
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/req)
 "bLY" = (
@@ -141902,7 +141906,7 @@ bcm
 uTk
 tTC
 tTC
-tTC
+aaD
 cyR
 tTC
 hOV

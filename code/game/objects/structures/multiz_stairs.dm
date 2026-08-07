@@ -25,7 +25,7 @@
 
 /obj/structure/stairs/multiz/proc/on_stairs_moved(turf/source, atom/movable/enterer)
 	SIGNAL_HANDLER
-	if(!istype(enterer, /mob))
+	if(!istype(enterer, /mob) && !(enterer.flags_atom & CAN_USE_MULTIZ_STAIRS))
 		return
 
 	RegisterSignal(enterer, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(on_premove))

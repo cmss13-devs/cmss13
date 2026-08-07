@@ -54,7 +54,14 @@
 		return INITIALIZE_HINT_QDEL
 
 	dir = pick(CARDINAL_DIRS)
-	QDEL_IN(src, time_to_dispel + rand(-5 SECONDS, 5 SECONDS))
+
+	var/time = time_to_dispel + rand(-5 SECONDS, 5 SECONDS)
+	var/turf/turf = get_turf(src)
+	var/turf_opacity = turf.opacity
+	turf.set_opacity(TRUE)
+
+	addtimer(CALLBACK(turf, TYPE_PROC_REF(/atom, set_opacity), turf_opacity), time)
+	QDEL_IN(src, time)
 
 /obj/structure/blocker/fog/attack_hand(mob/M)
 	to_chat(M, SPAN_NOTICE("You peer through the fog, but it's impossible to tell what's on the other side..."))

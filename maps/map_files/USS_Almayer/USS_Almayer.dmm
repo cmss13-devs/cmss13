@@ -10996,12 +10996,6 @@
 "aCn" = (
 /turf/open/floor/almayer/orange/southeast,
 /area/almayer/engineering/upper_engineering)
-"aCo" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "test_square_smooth"
-	},
-/turf/closed/wall/almayer/white,
-/area/almayer/medical/morgue)
 "aCp" = (
 /turf/open/floor/almayer/flooredgesmooth2/west,
 /area/almayer/command/cichallway)
@@ -23618,7 +23612,7 @@
 /area/almayer/middeck/medical)
 "bic" = (
 /obj/structure/window/framed/almayer,
-/turf/open/floor/almayer/dark_sterile,
+/turf/open/floor/plating,
 /area/almayer/medical/cmo_office)
 "bid" = (
 /turf/open/floor/plating/plating_catwalk,
@@ -50195,7 +50189,7 @@
 "cqu" = (
 /obj/structure/window/framed/almayer/white,
 /obj/structure/window/framed/almayer,
-/turf/open/floor/almayer/dark_sterile,
+/turf/open/floor/plating,
 /area/almayer/medical/cmo_office)
 "cqv" = (
 /obj/effect/decal/cleanable/dirt,
@@ -50228,7 +50222,7 @@
 	id = "CMO Shutters";
 	name = "\improper CMO Office Shutters"
 	},
-/turf/open/floor/almayer/sterile_green_side/southeast,
+/turf/open/floor/plating,
 /area/almayer/medical/cmo_office)
 "cqB" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -50303,15 +50297,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/maint/hull/lower/l_m_s)
-"cqI" = (
-/obj/structure/window/framed/almayer,
-/obj/structure/machinery/door/poddoor/shutters/almayer/open{
-	dir = 4;
-	id = "CMO Shutters";
-	name = "\improper CMO Office Shutters"
-	},
-/turf/open_space,
-/area/almayer/medical/cmo_office)
 "cqJ" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -177888,11 +177873,11 @@ bnv
 blH
 cax
 bhz
-cqI
-cqI
-cqI
-cqI
-cqI
+cqA
+cqA
+cqA
+cqA
+cqA
 cqA
 bhz
 bXM
@@ -208384,7 +208369,7 @@ crx
 arb
 arb
 aoe
-aCo
+aoe
 aoe
 ajl
 ajl
@@ -208486,7 +208471,7 @@ aoe
 skl
 aEO
 ceS
-aCo
+aoe
 crs
 crs
 crs

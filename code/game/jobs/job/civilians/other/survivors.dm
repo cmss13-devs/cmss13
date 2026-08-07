@@ -22,7 +22,7 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 	var/list/available_landmarks
 	/// List of all generic survivor landmarks (INSERT_NONE and lowest priority)
 	var/list/generic_landmarks
- 	/// Flag to determine if there is an insert, if there is but a player has opted out of too many archetypes, we can know to simply not spawn them.
+	/// Flag to determine if there is an insert, if there is but a player has opted out of too many archetypes, we can know to simply not spawn them.
 	var/insert_present_flag = FALSE
 
 /datum/job/civilian/survivor/set_spawn_positions(count)

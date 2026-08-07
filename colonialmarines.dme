@@ -53,6 +53,7 @@
 #include "code\__DEFINES\combat.dm"
 #include "code\__DEFINES\configuration.dm"
 #include "code\__DEFINES\conflict.dm"
+#include "code\__DEFINES\constants.dm"
 #include "code\__DEFINES\cooldowns.dm"
 #include "code\__DEFINES\db_defs.dm"
 #include "code\__DEFINES\defenses.dm"

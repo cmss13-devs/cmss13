@@ -295,7 +295,6 @@
 
 	var/tunnel = FALSE
 	/// for check on lurker invisibility
-	var/stealth = FALSE
 	var/fortify = FALSE
 	var/crest_defense = FALSE
 	/// For drones/hivelords. Extends the maximum build range they have
@@ -827,7 +826,7 @@
 			return TRUE
 		playsound(puller.loc, 'sound/weapons/pierce.ogg', 25, 1)
 		puller.visible_message(SPAN_WARNING("[puller] tried to pull [src] but instead gets a tail swipe to the head!"))
-		if(stealth)
+		if(HAS_TRAIT(src, TRAIT_ABILITY_INVIS))
 			puller.apply_effect(caste.tacklestrength_min, WEAKEN)
 			return FALSE
 		puller.apply_effect(rand(caste.tacklestrength_min,caste.tacklestrength_max), WEAKEN)

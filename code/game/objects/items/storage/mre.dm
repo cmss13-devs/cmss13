@@ -148,8 +148,8 @@
 	qdel(src)
 
 /obj/item/storage/box/mre/proc/set_can_hold()
-	for(var/item in contents)
-		can_hold += item
+	for(var/obj/item/item in contents)
+		can_hold += item.type
 		if(istype(item, /obj/item/mre_food_packet))
 			var/obj/item/mre_food_packet/food_packet = item
 			if(food_packet.contents_food)

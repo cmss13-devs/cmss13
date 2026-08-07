@@ -260,7 +260,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 	playsound(get_turf(target), preop_sound, vol = 40, sound_range = 1)
 
 ///This is used for end-step narration and relevant success changes - whatever the step is meant to do, if it isn't just flavour. tool_type may be a typepath or simply '1'.
-/datum/surgery_step/proc/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/proc/success(mob/user, mob/living/carbon/target, mob/living/carbon/human/target_limbs, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.visible_message(SPAN_NOTICE("[user] succeeds!"),
 			SPAN_NOTICE("You succeed."))
 

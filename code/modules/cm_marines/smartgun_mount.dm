@@ -622,7 +622,7 @@
 	..()
 
 /obj/structure/machinery/m56d_hmg/BlockedPassDirs(atom/movable/mover, target_turf)
-	if(istype(mover, /obj/item) && mover.throwing)
+	if(istype(mover, /obj/item) && HAS_TRAIT(mover, TRAIT_LAUNCHED))
 		return FALSE
 	else
 		return ..()

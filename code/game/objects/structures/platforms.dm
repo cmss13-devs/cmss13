@@ -200,6 +200,11 @@
 	creaking_sound = 'sound/effects/rock_creaking.ogg'
 	breaking_sound = 'sound/effects/meteorimpact.ogg'
 
+/obj/structure/platform/wood
+	icon_state = "wood_platform"
+	creaking_sound = 'sound/effects/wood_creaking.ogg'
+	breaking_sound = 'sound/effects/woodhit.ogg'
+
 //------------------------------//
 //    Metal Stairs Platforms    //
 //------------------------------//
@@ -1032,6 +1037,56 @@
 	dir = EAST
 /obj/structure/platform_decoration/stone/runed_sandstone/west
 	dir = WEST
+
+//------------------------------//
+//    Wooden Stairs Platforms    //
+//------------------------------//
+
+/obj/structure/platform/wood
+	icon_state = "wood_platform"
+	name = "wooden platform"
+	desc = "A raised level of wood, often used to elevate areas above others. You could probably climb it."
+
+/obj/structure/platform/wood/north
+	dir = NORTH
+/obj/structure/platform/wood/east
+	dir = EAST
+/obj/structure/platform/wood/west
+	dir = WEST
+
+/obj/structure/platform/wood/stair_cut
+	icon_state = "wood_platform_stair"
+	dir = NORTH
+
+/obj/structure/platform/wood/stair_cut/platform_left
+	icon_state = "wood_platform_stair"
+
+/obj/structure/platform/wood/stair_cut/platform_right
+	icon_state = "wood_platform_stair_alt"
+
+//------------------------------------//
+// Wood based Platforms "decoration" //
+//------------------------------------//
+
+/obj/structure/platform_decoration/wood
+	icon_state = "wood_platform_deco"
+
+/obj/structure/platform_decoration/wood/north
+	icon_state = "wood_platform_deco"
+	dir = NORTH
+
+/obj/structure/platform_decoration/wood/east
+	dir = EAST
+/obj/structure/platform_decoration/wood/west
+	dir = WEST
+/obj/structure/platform_decoration/wood/northeast
+	dir = NORTHEAST
+/obj/structure/platform_decoration/wood/northwest
+	dir = NORTHWEST
+/obj/structure/platform_decoration/wood/southeast
+	dir = SOUTHEAST
+/obj/structure/platform_decoration/wood/southwest
+	dir = SOUTHWEST
 
 // Colorable variants
 // strata rocks

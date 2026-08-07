@@ -18,7 +18,7 @@
 	/// Overrides the `wait` variable of the SSxeno subsystem with this value when certain test functions are called.
 	/// This is used to expedite tests so they don't have to wait the full 2 seconds per life loop.
 	/// Resets the `wait` var to its original value after testing is complete.
-	var/ss_wait_override = 100 MILLISECONDS
+	var/ss_wait_override = 50 MILLISECONDS
 
 	var/last_life_complete = FALSE
 	var/full_life_complete = FALSE
@@ -79,6 +79,42 @@
 	wait_full_life_loop()
 
 	test_callback.Invoke(receiver)
+
+	if (original_wait)
+		SSxeno.wait = original_wait
+
+/**
+ * Tests whether a single xenomorph successfully emits its pheromones to every possible caste (barring hellhounds) of the same hive.
+ */
+/datum/unit_test/pheromones/proc/all_caste_reception_test(datum/abstract_xenomorph/abstract_emitter, pheromone_type, datum/callback/test_callback, datum/callback/hivemate_initialization_callback = null)
+	TEST_ASSERT_NOTNULL(abstract_emitter, "No abstract emitter datum was specified for this test")
+	TEST_ASSERT_NOTNULL(test_callback, "No testing callback was specified for this test")
+
+	var/original_wait
+	if (ss_wait_override)
+		original_wait = SSxeno.wait
+		SSxeno.wait = ss_wait_override
+
+	var/datum/abstract_xenomorph/abstract_receiver = new
+	abstract_receiver.hive = abstract_emitter.hive
+	abstract_receiver.initialization_callback = hivemate_initialization_callback
+
+	var/list/mob/living/carbon/xenomorph/hivemates = list()
+	var/mob/living/carbon/xenomorph/emitter = init_abstract_xeno(abstract_emitter)
+	for (var/caste_type in ALL_XENO_CASTES)
+		if (caste_type == XENO_CASTE_HELLHOUND)
+			continue
+
+		abstract_receiver.caste = caste_type
+		hivemates += init_abstract_xeno(abstract_receiver)
+
+	emitter.emit_pheromones(pheromone_type)
+
+	wait_full_life_loop()
+	wait_full_life_loop()
+
+	for (var/mob/living/carbon/xenomorph/receiver as anything in hivemates)
+		test_callback.Invoke(receiver)
 
 	if (original_wait)
 		SSxeno.wait = original_wait

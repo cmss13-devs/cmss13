@@ -1,0 +1,162 @@
+/datum/unit_test/pheromones/transmit_castes/drone/Run(pheromone_type = XENO_PHERO_RECOVERY)
+	var/list/expected_pheromones = list()
+	expected_pheromones[pheromone_type] = XENO_PHERO_STRENGTH_NORMAL
+
+	all_caste_reception_test(
+		abstract_emitter = new /datum/abstract_xenomorph(),
+		pheromone_type = pheromone_type,
+		test_callback = CALLBACK(src, PROC_REF(pheromone_validation), expected_pheromones)
+	)
+
+/datum/unit_test/pheromones/transmit_castes/drone/frenzy/Run()
+	. = ..(pheromone_type = XENO_PHERO_FRENZY)
+
+/datum/unit_test/pheromones/transmit_castes/drone/warding/Run()
+	. = ..(pheromone_type = XENO_PHERO_WARDING)
+
+/datum/unit_test/pheromones/transmit_castes/drone/healer/Run(pheromone_type = XENO_PHERO_RECOVERY)
+	var/list/expected_pheromones = list()
+	expected_pheromones[pheromone_type] = XENO_PHERO_STRENGTH_STRONG
+
+	all_caste_reception_test(
+		abstract_emitter = new /datum/abstract_xenomorph(
+			initialization_callback = CALLBACK(src, PROC_REF(set_strain_on_init), DRONE_HEALER)
+		),
+		pheromone_type = pheromone_type,
+		test_callback = CALLBACK(src, PROC_REF(pheromone_validation), expected_pheromones)
+	)
+
+/datum/unit_test/pheromones/transmit_castes/drone/healer/frenzy/Run()
+	. = ..(pheromone_type = XENO_PHERO_FRENZY)
+
+/datum/unit_test/pheromones/transmit_castes/drone/healer/warding/Run()
+	. = ..(pheromone_type = XENO_PHERO_WARDING)
+
+/datum/unit_test/pheromones/transmit_castes/lesser/Run(pheromone_type = XENO_PHERO_RECOVERY)
+	var/list/expected_pheromones = list()
+	expected_pheromones[pheromone_type] = XENO_PHERO_STRENGTH_WEAK
+
+	all_caste_reception_test(
+		abstract_emitter = new /datum/abstract_xenomorph(caste = XENO_CASTE_LESSER_DRONE),
+		pheromone_type = pheromone_type,
+		test_callback = CALLBACK(src, PROC_REF(pheromone_validation), expected_pheromones)
+	)
+
+/datum/unit_test/pheromones/transmit_castes/lesser/frenzy/Run()
+	. = ..(pheromone_type = XENO_PHERO_FRENZY)
+
+/datum/unit_test/pheromones/transmit_castes/lesser/warding/Run()
+	. = ..(pheromone_type = XENO_PHERO_WARDING)
+
+/datum/unit_test/pheromones/transmit_castes/hivelord/Run(pheromone_type = XENO_PHERO_RECOVERY)
+	var/list/expected_pheromones = list()
+	expected_pheromones[pheromone_type] = XENO_PHERO_STRENGTH_HIVELORD
+
+	all_caste_reception_test(
+		abstract_emitter = new /datum/abstract_xenomorph(caste = XENO_CASTE_HIVELORD),
+		pheromone_type = pheromone_type,
+		test_callback = CALLBACK(src, PROC_REF(pheromone_validation), expected_pheromones)
+	)
+
+/datum/unit_test/pheromones/transmit_castes/hivelord/frenzy/Run()
+	. = ..(pheromone_type = XENO_PHERO_FRENZY)
+
+/datum/unit_test/pheromones/transmit_castes/hivelord/warding/Run()
+	. = ..(pheromone_type = XENO_PHERO_WARDING)
+
+/datum/unit_test/pheromones/transmit_castes/hivelord/designer/Run(pheromone_type = XENO_PHERO_RECOVERY)
+	var/list/expected_pheromones = list()
+	expected_pheromones[pheromone_type] = XENO_PHERO_STRENGTH_HIVELORD + XENO_PHERO_MOD_LARGE
+
+	all_caste_reception_test(
+		abstract_emitter = new /datum/abstract_xenomorph(
+			caste = XENO_CASTE_HIVELORD,
+			initialization_callback = CALLBACK(src, PROC_REF(set_strain_on_init), HIVELORD_DESIGNER)
+		),
+		pheromone_type = pheromone_type,
+		test_callback = CALLBACK(src, PROC_REF(pheromone_validation), expected_pheromones)
+	)
+
+/datum/unit_test/pheromones/transmit_castes/hivelord/designer/frenzy/Run()
+	. = ..(pheromone_type = XENO_PHERO_FRENZY)
+
+/datum/unit_test/pheromones/transmit_castes/hivelord/designer/warding/Run()
+	. = ..(pheromone_type = XENO_PHERO_WARDING)
+
+/datum/unit_test/pheromones/transmit_castes/carrier/Run(pheromone_type = XENO_PHERO_RECOVERY)
+	var/list/expected_pheromones = list()
+	expected_pheromones[pheromone_type] = XENO_PHERO_STRENGTH_NORMAL
+
+	all_caste_reception_test(
+		abstract_emitter = new /datum/abstract_xenomorph(caste = XENO_CASTE_CARRIER),
+		pheromone_type = pheromone_type,
+		test_callback = CALLBACK(src, PROC_REF(pheromone_validation), expected_pheromones)
+	)
+
+/datum/unit_test/pheromones/transmit_castes/carrier/frenzy/Run()
+	. = ..(pheromone_type = XENO_PHERO_FRENZY)
+
+/datum/unit_test/pheromones/transmit_castes/carrier/warding/Run()
+	. = ..(pheromone_type = XENO_PHERO_WARDING)
+
+/datum/unit_test/pheromones/transmit_castes/praetoreon/Run(pheromone_type = XENO_PHERO_RECOVERY)
+	var/list/expected_pheromones = list()
+	expected_pheromones[pheromone_type] = XENO_PHERO_STRENGTH_STRONG
+
+	all_caste_reception_test(
+		abstract_emitter = new /datum/abstract_xenomorph(
+			caste = XENO_CASTE_PRAETORIAN,
+			initialization_callback = CALLBACK(src, PROC_REF(set_strain_on_init), PRAETORIAN_VALKYRIE)
+		),
+		pheromone_type = pheromone_type,
+		test_callback = CALLBACK(src, PROC_REF(pheromone_validation), expected_pheromones)
+	)
+
+/datum/unit_test/pheromones/transmit_castes/praetoreon/frenzy/Run()
+	. = ..(pheromone_type = XENO_PHERO_FRENZY)
+
+/datum/unit_test/pheromones/transmit_castes/praetoreon/warding/Run()
+	. = ..(pheromone_type = XENO_PHERO_WARDING)
+
+/datum/unit_test/pheromones/transmit_castes/queen/Run(pheromone_type = XENO_PHERO_RECOVERY)
+	var/list/expected_pheromones = list()
+	expected_pheromones[pheromone_type] = XENO_PHERO_STRENGTH_VERY_STRONG
+
+	all_caste_reception_test(
+		abstract_emitter = new /datum/abstract_xenomorph(caste = XENO_CASTE_QUEEN),
+		pheromone_type = pheromone_type,
+		test_callback = CALLBACK(src, PROC_REF(pheromone_validation), expected_pheromones)
+	)
+
+/datum/unit_test/pheromones/transmit_castes/queen/frenzy/Run()
+	. = ..(pheromone_type = XENO_PHERO_FRENZY)
+
+/datum/unit_test/pheromones/transmit_castes/queen/warding/Run()
+	. = ..(pheromone_type = XENO_PHERO_WARDING)
+
+/datum/unit_test/pheromones/transmit_castes/king/Run(pheromone_type = XENO_PHERO_RECOVERY)
+	var/list/expected_pheromones = list()
+	expected_pheromones[pheromone_type] = XENO_PHERO_STRENGTH_OVERWHELMING
+
+	all_caste_reception_test(
+		abstract_emitter = new /datum/abstract_xenomorph(caste = XENO_CASTE_KING),
+		pheromone_type = pheromone_type,
+		test_callback = CALLBACK(src, PROC_REF(pheromone_validation), expected_pheromones)
+	)
+
+/datum/unit_test/pheromones/transmit_castes/king/frenzy/Run()
+	. = ..(pheromone_type = XENO_PHERO_FRENZY)
+
+/datum/unit_test/pheromones/transmit_castes/king/warding/Run()
+	. = ..(pheromone_type = XENO_PHERO_WARDING)
+
+/datum/unit_test/pheromones/proc/set_strain_on_init(strain_name, mob/living/carbon/xenomorph/xeno)
+	var/list/datum/xeno_strain/strain_list = list()
+	for(var/datum/xeno_strain/strain_type as anything in xeno.caste.available_strains)
+		strain_list[initial(strain_type.name)] = strain_type
+
+	var/datum/xeno_strain/chosen_strain = strain_list[strain_name]
+	TEST_ASSERT_NOTNULL(chosen_strain, "Failed to find specified strain [strain_name] on [xeno] during test initializtion")
+
+	var/datum/xeno_strain/strain_instance = new chosen_strain()
+	strain_instance._add_to_xeno(xeno)

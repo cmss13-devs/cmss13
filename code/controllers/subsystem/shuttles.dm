@@ -59,6 +59,7 @@ SUBSYSTEM_DEF(shuttle)
 
 /datum/controller/subsystem/shuttle/Initialize(timeofday)
 	initial_load()
+	SSmapping.canonize_reserved_turfs() // we just created and got rid of a ton of temporary reservations, we should really make sure those are done returning
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/shuttle/proc/initial_load()
@@ -254,9 +255,17 @@ SUBSYSTEM_DEF(shuttle)
 	if(!midpoint)
 		log_mapping("generate_transit_dock() failed to get a midpoint")
 		return FALSE
+
+	var/area/old_area = midpoint.loc
+	LISTASSERTLEN(old_area.turfs_to_uncontain_by_zlevel, bottomleft.z, list())
+	old_area.turfs_to_uncontain_by_zlevel[bottomleft.z] += proposal.reserved_turfs
+
 	var/area/shuttle/transit/new_area = new()
 	//new_area.parallax_movedir = travel_dir
 	new_area.contents = proposal.reserved_turfs
+	LISTASSERTLEN(new_area.turfs_by_zlevel, bottomleft.z, list())
+	new_area.turfs_by_zlevel[bottomleft.z] = proposal.reserved_turfs
+
 	var/obj/docking_port/stationary/transit/new_transit_dock = new(midpoint)
 	new_transit_dock.reserved_area = proposal
 	new_transit_dock.name = "Transit for [M.id]/[M.name]"
@@ -455,9 +464,9 @@ SUBSYSTEM_DEF(shuttle)
 		to_replace.jumpToNullSpace()
 
 	for(var/area/cur_area as anything in preview_shuttle.shuttle_areas)
-		for(var/turf/cur_turf as anything in cur_area)
-			// update underlays
-			if(istype(cur_turf, /turf/closed/shuttle))
+		for(var/list/turf_list in cur_area.get_zlevel_turf_lists())
+			for(var/turf/closed/shuttle/cur_turf in turf_list)
+				// update underlays
 				var/dx = cur_turf.x - preview_shuttle.x
 				var/dy = cur_turf.y - preview_shuttle.y
 				var/turf/target_lz = locate(dest_dock.x + dx, dest_dock.y + dy, dest_dock.z)

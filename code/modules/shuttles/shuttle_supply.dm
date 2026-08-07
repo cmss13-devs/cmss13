@@ -141,8 +141,9 @@
 
 		/*We attach the turfs in our starting area to the vis_contents overlay. The elevator effect procs will animate this. If we're going down, the stuff will instantly be
 		teleported and then cosmetically animated as lowering; otherwise, it will be animated as raising, then teleported afterwards. Either way, it's all on the admin level.*/
-		for(var/turf/T in away_area)
-			elevator_animation.vis_contents += T
+		for(var/list/turf_list in away_area.get_zlevel_turf_lists())
+			for(var/turf/T in turf_list)
+				elevator_animation.vis_contents += T
 
 		for(var/turf/vis_turf in elevator_animation.vis_contents)
 			for(var/atom/movable/vis_content in vis_turf.contents)

@@ -64,15 +64,12 @@
 /obj/docking_port/mobile/crashable/proc/create_crash_point()
 	var/list/all_ground_levels = SSmapping.levels_by_trait(ZTRAIT_GROUND)
 	var/ground_z_level = all_ground_levels[1]
-	var/list/area/potential_areas = SSmapping.areas_in_z["[ground_z_level]"]
+	var/list/area/potential_areas = SSmapping.areas_in_z[ground_z_level]
 
 	for(var/i in 1 to 10)
 		var/area/area_picked = pick(potential_areas)
 
-		var/list/potential_turfs = list()
-
-		for(var/turf/turf_in_area in area_picked)
-			potential_turfs += turf_in_area
+		var/list/potential_turfs = area_picked.get_turfs_from_all_zlevels()
 
 		if(!length(potential_turfs))
 			continue
@@ -139,8 +136,7 @@
 /obj/docking_port/mobile/crashable/proc/handle_fires()
 	var/list/turf/total_turfs = list()
 	for(var/area/shuttle_area as anything in shuttle_areas)
-		for(var/turf/cycled_turf in shuttle_area)
-			total_turfs += cycled_turf
+		total_turfs += shuttle_area.get_turfs_from_all_zlevels()
 
 	for(var/i = 1 to (length(total_turfs) / 40))
 		var/turf/position = pick(total_turfs)

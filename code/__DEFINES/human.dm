@@ -42,6 +42,17 @@
 /// Limb has eschar
 #define LIMB_ESCHAR (1<<11)
 
+///////////////////SURGERY FLAGS///////////////////
+//Surgery defines strictly for overlay application.
+
+//An incision has been made.
+#define INCISION_MADE (1<<0)
+
+//An incision has been widened.
+#define INCISION_WIDENED (1<<1)
+
+//Applies to skulls, ribs, and pelvis; they've been sawed and opened, or organs were moved away from the pelvis.
+#define BONE_OPENED (1<<2)
 
 
 ///////////////////WOUND DEFINES///////////////////
@@ -127,12 +138,13 @@
 #define ORDER_FOCUS_MAX_LEVEL   50
 
 //Human Overlays Indexes used in update_icons/////////
-#define BODYPARTS_LAYER 43
-#define DAMAGE_LAYER 42
+#define BODYPARTS_LAYER 44
+#define DAMAGE_LAYER 43
 
-#define UNDERWEAR_LAYER 41
-#define UNDERSHIRT_LAYER 40
-#define MUTANTRACE_LAYER 39
+#define UNDERWEAR_LAYER 42
+#define UNDERSHIRT_LAYER 41
+#define MUTANTRACE_LAYER 40
+#define SURGERY_LAYER 39
 
 /// For use by Hunter Flay
 #define FLAY_LAYER 38
@@ -189,7 +201,7 @@
 /// If you're hit by an acid DoT
 #define EFFECTS_LAYER 1
 
-#define TOTAL_LAYERS 43
+#define TOTAL_LAYERS 44
 #define MAX_HEAD_GARB_LAYERS 6
 //////////////////////////////////
 

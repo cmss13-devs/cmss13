@@ -13,6 +13,7 @@
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_TIER_3
 	heal_standing = 0.66
+	tacklefumbler = TRUE
 
 	tackle_min = 2
 	tackle_max = 5
@@ -73,6 +74,10 @@
 	skull = /obj/item/skull/ravager
 	pelt = /obj/item/pelt/ravager
 
+/mob/living/carbon/xenomorph/ravager/get_examine_text(mob/user)
+	. = ..()
+	if(isxeno(user) || isobserver(user))
+		. += "[SPAN_DANGER("This one's dangerous claws make it very risky to tackle hosts.")]"
 
 // Mutator delegate for base ravager
 /datum/behavior_delegate/ravager_base

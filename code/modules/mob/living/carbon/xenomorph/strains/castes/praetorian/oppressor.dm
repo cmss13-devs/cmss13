@@ -257,7 +257,7 @@
 	if (!isxeno_human(target_atom) || oppressor_user.can_not_harm(target_atom))
 		return
 
-	if (!oppressor_user.check_state() || oppressor_user.agility)
+	if (!oppressor_user.check_state())
 		return
 
 	var/mob/living/carbon/target_carbon = target_atom

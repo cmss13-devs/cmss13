@@ -1,0 +1,4 @@
+author: "AnCopper"
+delete-after: True
+changes:
+  - rscadd: "Squad Leaders now buy a megaphone from their vendor for 5 points."

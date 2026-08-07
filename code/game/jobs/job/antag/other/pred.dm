@@ -160,16 +160,27 @@ AddTimelock(/datum/job/antag/pred_surv, list(
 
 /// Does this client have access to Yautja Legacy sets?
 /client/proc/can_use_pred_legacies()
-	return check_whitelist_status(WHITELIST_YAUTJA_LEGACY)
+	return check_whitelist_status_list(list(WHITELIST_YAUTJA_LEGACY, WHITELIST_YAUTJA_COUNCIL, WHITELIST_YAUTJA_LEADER))
 
 /// Does this client have access to Yautja Special (Elite) sets?
-/client/proc/can_use_pred_specials()
+/client/proc/can_use_pred_specials(higher_lock = FALSE)
+	if(check_whitelist_status_list(list(WHITELIST_YAUTJA_LEGACY, WHITELIST_YAUTJA_COUNCIL, WHITELIST_YAUTJA_LEADER)))
+		return TRUE
+
 	var/datum/job/pred_job = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
 	if(!pred_job)
 		return FALSE
 	var/clanrank = pred_job.get_whitelist_status(src)
 
-	if(!(clanrank in list(CLAN_RANK_ELITE, CLAN_RANK_ELDER, CLAN_RANK_LEADER, CLAN_RANK_ADMIN)))
+	var/list/lower_set = list(CLAN_RANK_ELITE, CLAN_RANK_ELDER, CLAN_RANK_LEADER, CLAN_RANK_ADMIN)
+	var/list/higher_set = list(CLAN_RANK_LEADER, CLAN_RANK_ADMIN)
+
+	var/list/list_to_use = lower_set
+
+	if(higher_lock)
+		list_to_use = higher_set
+
+	if(!(clanrank in list_to_use))
 		return FALSE
 
 	return TRUE

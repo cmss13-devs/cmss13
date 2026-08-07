@@ -221,18 +221,21 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "fullcape"
 	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
+		WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
 	)
 	flags_equip_slot = SLOT_BACK
 	flags_item = ITEM_PREDATOR
 	unacidable = TRUE
-	var/councillor_override = FALSE
 	worn_accessory_slot = ACCESSORY_SLOT_PONCHO
 	flags_obj = OBJ_CAN_ACCESSORIZE
+	var/can_recolor = TRUE
 
 /obj/item/clothing/yautja_cape/Initialize(mapload, new_color = "#654321")
 	. = ..()
 	color = new_color
+	if(!can_recolor) //Why this is necessary I don't know, but it won't work any other way.
+		color = null
 
 /obj/item/clothing/yautja_cape/dropped(mob/living/user)
 	add_to_missing_pred_gear(src)
@@ -270,6 +273,19 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 /obj/item/clothing/yautja_cape/damaged
 	name = PRED_YAUTJA_DAMAGED_CAPE
 	icon_state = "damagedcape"
+
+/obj/item/clothing/yautja_cape/bone
+	name = PRED_YAUTJA_BONE_CAPE_FULL
+	icon_state = "fullcape_bone"
+	can_recolor = FALSE
+
+/obj/item/clothing/yautja_cape/bone/third
+	name = PRED_YAUTJA_BONE_CAPE_THIRD
+	icon_state = "thirdcape_bone"
+
+/obj/item/clothing/yautja_cape/bone/ceremonial
+	name = PRED_YAUTJA_BONE_CAPE_CEREMONIAL
+	icon_state = "ceremonialcape_bone"
 
 // ---------- Shoes ----------
 

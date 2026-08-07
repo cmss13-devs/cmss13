@@ -518,12 +518,6 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	layer = ABOVE_XENO_LAYER
 	fire_flag = FLORA_BURN_NO_SPREAD
 
-/obj/structure/flora/bush/Initialize()
-	. = ..()
-	if(is_water(get_turf(src)))
-		plane = FLOOR_PLANE
-		layer = UNDER_TURF_LAYER -0.02
-
 /obj/structure/flora/bush/snow
 	icon_tag = "snowbush"
 	variations = 6

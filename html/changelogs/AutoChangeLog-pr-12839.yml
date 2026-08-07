@@ -1,5 +1,0 @@
-author: "labeo0"
-delete-after: True
-changes:
-  - bugfix: "Shooting target damage display now accounts for damage falloff."
-  - bugfix: "Bullets hit shooting target without spriteclick too. As a result you can't walk through a target but you can unanchor it to pass and xeno can break it."

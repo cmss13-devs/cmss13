@@ -133,3 +133,81 @@
   zzzmike:
   - balance: disabler capacity moved from 16 to 10, but the bolts are faster by one
       speed level
+2026-08-07:
+  Nihisohel:
+  - rscadd: You can now split handfuls by attacking it with your other, empty hand,
+      or decrementing it by 1 to the other hand by using it inhand
+  - rscadd: Similarly, you can now directly remove handfuls from magazines by using
+      it inhand, assuming it has the refillable flag
+  - balance: Examine code has been given a massive facelift, from fanciful colors
+      to proper word grammar, shorter, and arguably, better formatting
+  - balance: Gun examining now care if you are adjacent to them, giving you information
+      appropriate to the adjacency. TLDR, you aren't gonna know the status of a guns
+      from afar such as if the magazine is loaded, or if its empty, or if the chamber
+      is loaded, but with an empty magazine unless you are next to, or holding the
+      weapon
+  - balance: You can now tell what kind of bullet is currently chambered for all guns,
+      or in the case of revolvers and break action shotguns, that are ready to fire,
+      following the caveats of the gun examination adjacency
+  - balance: You can now load individual bullets into specific individual chambers
+      of a revolvers cylinder, provided it is open
+  - spellcheck: Reduces the word verbiage of melee and throw force text
+  - spellcheck: Properly colorizes most of examine code, color coded based on danger/importance
+  - code_imp: Defines Cyan as a color span
+  - bugfix: Heavy buckshot shells no longer generate an incorrect ammo capacity
+  - code_imp: No longer hardcodes max_rounds on most generate_handful procs as the
+      argument is defunct now. As a result, max_rounds are now retrieved based on
+      handful type, which means contributors should be defining handfuls in the future,
+      although the parent is typically more than enough in most cases. As a stopgap
+      solution to problems that may occur, handfuls max_rounds are properly adjusted
+      if it exceeds the current_rounds
+  - bugfix: Revolver, lever_action, and shotgun handfuls now properly generate as
+      its typepath, rather than the handful parent
+  - bugfix: CO revolver belts can now hold revolver handfuls as well, similar to the
+      other revolver belt
+  - bugfix: Fixes suicide code not respecting the damage multiplier of a gun when
+      committing suicide on an otherwise head-exploding projectile
+  - refactor: Refactors firing_to_air bullet chambering to be more inline with the
+      suicide block's method
+  - refactor: Battlefield Executions are refactored into a flag rather than a signal,
+      and brought up to standard to suicide code and fire_to_air code
+  - code_imp: Only your head gets gibbed on battlefield execution rather than gibbing
+      your entire body with explosive ammo
+  - bugfix: Revolver cylinders no longer spin backwards when fired
+  - bugfix: Revolvers no longer automatically open when attempting to fire when empty
+  - rscadd: You can now rotate the cylinder of a revolver by a single position IF
+      you are wielding it, accompanied with a balloon alert. The balloon alert obviously
+      does not display during russian roulette
+  - bugfix: You can no longer use combat statistics to cheat russian roulette
+  - code_imp: Adds a comment on combat statistics code regarding the accuracy variable
+      differences
+  - bugfix: Battlefield Executions now properly use up its ammo on execution
+  - balance: Battlefield Executions are now tied to the gun, rather than the type
+      of ammo
+  - code_imp: Calibers can now be used as a list, rather than just a single defined
+      variable, fixes an exploit related to it, thankfully I'm the only one that knows
+      of it, is what I would say if this PR was merged months ago, and if an issue
+      related to it didn't just come up
+  - spellcheck: A19 magazines are worded just a tad bit more accurately
+  - code_imp: SHARP no longer overrides the parent proc with its old, defunct, unload
+      proc
+  - bugfix: Double barrel shotguns and its subtypes no longer unwield when you close
+      the chamber
+  - bugfix: Fixes bolt actions deleting inserted bullets
+  - bugfix: Fixes bolt actions allowing bullets to be inserted while the bolt is closed
+  - spellcheck: Adds some more text regarding bolt action... actions
+  - bugfix: Fixes the CO's M1911 Custom from being explodable and acidable, matching
+      with the rest of their sidearms
+  - bugfix: Fixes flamer attachment unnecessarily appending a cooldown on firing failures
+  - bugfix: Fixes rail flashlights breaking when turning it on during a detach by
+      forcing it off in the codeblock. Although, there could have been merit to just
+      prevent using any of the procs during a detach, but this worked just as fine.
+  - code_imp: Autodocs more than just a few variables, cleans up single letter variables,
+      and clarifies a few comments
+  - bugfix: Fixes negative falloff by clamping the falloff min value to 0
+  - bugfix: Fixes a bug related to wield assisting when the active hand does not contain
+      the gun, adds a failure text whenever this happens instead
+  labeo0:
+  - bugfix: Shooting target damage display now accounts for damage falloff.
+  - bugfix: Bullets hit shooting target without spriteclick too. As a result you can't
+      walk through a target but you can unanchor it to pass and xeno can break it.

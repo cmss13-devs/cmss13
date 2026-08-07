@@ -79,3 +79,57 @@
   sippykot:
   - code_imp: rank pins now prioritize uniforms instead of suits
   - bugfix: XO formal uniform properly spawns with accessories like other uniforms
+2026-08-03:
+  Jesters-Ballad:
+  - spellcheck: fixed a typo.
+  Puckaboo2:
+  - bugfix: Combat Correspondent's HUD and minimap sprites are no longer identical
+      to MP's.
+  - imagetweak: Adds Thwomper's WO Mortar Crew HUD sprite.
+  Venuska1117:
+  - rscdel: Removed unused queen "bombard" and boiler "acid lance" code.
+  - rscdel: Removed remains of vanguard "pierce_spin" and "agility" code.
+  - rscdel: Removes most of xenos  _powers.dm files, exception is queen_powers.dm.
+  matttheficus:
+  - bugfix: fixed oversight with JTAC Kits. They come with a pamphlet now.
+  - bugfix: fixed oversight with Mortar Kits. They come with RTO bags now.
+  zzzmike:
+  - bugfix: fixed a message telling everyone nearby that they pried a valve
+2026-08-04:
+  antlersss:
+  - bugfix: Auto-holotag preferences are actually saved
+2026-08-05:
+  Drathek:
+  - balance: A hostile queen that sneaks on a shuttle will now trigger a hijack automatically
+      just before arrival
+  - balance: Queen pry on dropship airlocks is increased from 3s to 5s
+  - bugfix: Fixed grant transmute on hijack buff loop stopping early if it encounters
+      a king or xeno with the ability already
+  - bugfix: Hive buff purchase for transmute no longer is applied to queen
+  - balance: Xenos now can upgrade their grabs to a defensive grab which slows their
+      speed but protects the target so long as the xeno has atleast 25% health. The
+      upgraded grab is needed to restrain. (0.4s to upgrade instantly, 5s do_after
+      to restrain)
+  - rscadd: Added a preference (and verb to change the preference) to override the
+      defensive grab damage redirection threshold per caste. A setting of 100% disables
+      defensive grab entirely for that caste.
+  - bugfix: Grab upgrade icons now actually update
+  - bugfix: Warriors now stop fighting themselves to be the puller of a mob
+  - code_imp: Standardized implementation between xenos clicking self and clicking
+      their dragged target
+  cuberound:
+  - balance: if you are firing on another z level accuracy is impacted by how good
+      your character can see the target
+  fira:
+  - admin: Added OpenSearch Query Builder for in-game log searching
+  - code_imp: Optimized some aspects of chemical processing.
+2026-08-06:
+  PoltavskaPraca:
+  - bugfix: fixed door rotations
+  - code_imp: touched some code
+  - maptweak: touched shuttles a little bit, added new floor type and put them underneath
+      the airlocks
+  - imagetweak: changed dirs and made them saner for shuttle attachments sprites
+  zzzmike:
+  - balance: disabler capacity moved from 16 to 10, but the bolts are faster by one
+      speed level

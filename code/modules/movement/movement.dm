@@ -78,8 +78,6 @@
 	if (.)
 		Moved(oldloc, direct)
 
-	handle_rotation()
-
 /// Called when `crossed_by` enters the atom's turf (via native Move() or doMove() if allowed).
 /// Does not return anything, only handles side effects from Crossed.
 /atom/Crossed(atom/movable/crossed_by)

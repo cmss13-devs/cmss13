@@ -26,6 +26,13 @@ Current Problems:
 	///Used to identify if the update_icon is called by the component (viz. the reseting sprite proc)
 	var/is_reseting_sprite = FALSE
 
+	//* Magazine type lists
+	var/list/magazine_blacklist = list(
+		/obj/item/ammo_magazine/handful,
+	)
+
+	var/list/magazine_whitelist = list() //Takes a higher prcedence than blacklist; this is mainly here to support different type of jungle mag binds
+
 	//* Default overlay settings
 	var/list/overlay_inactive_mag_offsets = list(5, 0)
 	var/overlay_is_blend_inset = FALSE
@@ -33,15 +40,15 @@ Current Problems:
 	var/overlay_icon_state = "zipper_band_b"
 
 	//* Storage lists
-	///Storage black lists
-	var/list/generic_storage_black_list = list( //* Includes all the magazine belts, pouches and internal storages (armors, webbings)
+	///Storage blacklists
+	var/list/storage_blacklist = list( //* Includes all the magazine belts, pouches and internal storages (armors, webbings)
 		/obj/item/storage/belt,
 		/obj/item/storage/internal,
 		/obj/item/storage/pouch/magazine,
 	)
 
-	///Storage white lists, higher precedence than black lists
-	var/list/generic_storage_white_list = list( //* Only the drop pouch is realistically considered, the other two are left as flavor
+	///Storage whitelists, higher precedence than blacklists
+	var/list/storage_whitelist = list( //* Only the drop pouch is realistically considered, the other two are left as flavor
 		/obj/item/storage/internal/accessory/drop_pouch,
 		/obj/item/storage/belt/marine/dutch,
 		/obj/item/storage/belt/marine/rmc,
@@ -68,6 +75,20 @@ Current Problems:
 		if(target.jungle_mag_overlay_icon_state)
 			overlay_icon_state = target.jungle_mag_overlay_icon_state
 
+		//Load black/whitelists
+		if(target.jungle_mag_magazine_blacklist)
+			magazine_blacklist.Cut()
+			magazine_blacklist += target.jungle_mag_magazine_blacklist
+		if(target.jungle_mag_magazine_whitelist)
+			magazine_whitelist.Cut()
+			magazine_whitelist += target.jungle_mag_magazine_whitelist
+		if(target.jungle_mag_storage_blacklist)
+			storage_blacklist.Cut()
+			storage_blacklist += target.jungle_mag_storage_blacklist
+		if(target.jungle_mag_storage_whitelist)
+			storage_whitelist.Cut()
+			storage_whitelist += target.jungle_mag_storage_whitelist
+
 	add_overlay(parent, overlay_inactive_mag_offsets, overlay_is_blend_inset, overlay_icon, overlay_icon_state)
 
 /datum/component/jungle_magazine/RegisterWithParent()
@@ -78,11 +99,18 @@ Current Problems:
 
 
 //* Signal Handlers***************************************************************************************
+///Check if the incoming item is a magazine -> attempt to add the magazine
 /datum/component/jungle_magazine/proc/on_attackby(datum/source, obj/item/attacking_item, mob/user)
 	SIGNAL_HANDLER
 
-	//Check if the incoming item is a magazine -> attempt to add the magazine
-	if(istype(attacking_item, /obj/item/ammo_magazine))
+	for(var/whitelisted_type in magazine_whitelist) //Approve all whitelisted types
+		if(istype(attacking_item, whitelisted_type))
+			add_magazine(user, attacking_item)
+			return COMPONENT_CANCEL_ITEM_ATTACK
+	for(var/blacklisted_type in magazine_blacklist) //Blacklisted types does nothing
+		if(istype(attacking_item, blacklisted_type))
+			return
+	if(istype(attacking_item, /obj/item/ammo_magazine)) //Approve whatever is left
 		add_magazine(user, attacking_item)
 		return COMPONENT_CANCEL_ITEM_ATTACK
 
@@ -100,6 +128,7 @@ Current Problems:
 	SIGNAL_HANDLER
 
 	remove_magazine(user)
+	return COMPONENT_ITEM_CANCEL_ATTACK_SELF
 
 ///Update the overlay to have jungle mag after an update_icon is called on magazine
 /datum/component/jungle_magazine/proc/on_finish_update_magazine_icon(obj/item/ammo_magazine/source)
@@ -114,11 +143,11 @@ Current Problems:
 /datum/component/jungle_magazine/proc/on_attempt_insert_into_storage(obj/item/source, obj/item/storage/storage, prevent_warning, mob/user)
 	SIGNAL_HANDLER
 
-	for(var/whitelisted_type in generic_storage_white_list)
+	for(var/whitelisted_type in storage_whitelist)
 		if(istype(storage, whitelisted_type))
 			return
 
-	for(var/blacklisted_type in generic_storage_black_list)
+	for(var/blacklisted_type in storage_blacklist)
 		if(istype(storage, blacklisted_type))
 			if(user && !prevent_warning)
 				to_chat(user, SPAN_NOTICE("[storage] cannot hold [source]"))

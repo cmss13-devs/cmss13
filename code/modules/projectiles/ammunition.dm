@@ -122,7 +122,8 @@ They're all essentially identical when it comes to getting the job done.
 		. += SPAN_NOTICE("It has [SPAN_BOLD(current_rounds)] round[current_rounds == 1 ? "" : "s"] out of [SPAN_BOLD(max_rounds)].")
 
 /obj/item/ammo_magazine/attack_self(mob/user) // literally just a copy of attack_hand
-	if(flags_magazine & AMMUNITION_REFILLABLE)
+	. = ..() //Calling the parent so the signals are properly handled; expecting either nothing or 1
+	if(flags_magazine & AMMUNITION_REFILLABLE && !.)
 		if(flags_magazine & AMMUNITION_CANNOT_REMOVE_BULLETS)
 			to_chat(user, SPAN_WARNING("You can't remove ammo from \the [src]!"))
 			return
@@ -132,7 +133,7 @@ They're all essentially identical when it comes to getting the job done.
 		else
 			to_chat(user, SPAN_INFO("[src] is empty. Nothing to grab."))
 		return
-	return ..()
+	return
 
 /obj/item/ammo_magazine/attack_hand(mob/user)
 	if(SEND_SIGNAL(src, COMSIG_MAGAZINE_ATTEMPT_WITHDRAW_HANDFUL, user) & COMPONENT_MAGAZINE_CANCEL_ATTEMPT_WITHDRAW_HANDFUL)

@@ -23,6 +23,7 @@
 #define COMSIG_ITEM_UNWIELD "item_unwield"
 /// From base of /obj/item/proc/attack_self(): (mob/user)
 #define COMSIG_ITEM_ATTACK_SELF "item_attack_self"
+	#define COMPONENT_ITEM_CANCEL_ATTACK_SELF (1<<0)
 
 /// From /obj/item/proc/unique_action(): (mob/user)
 #define COMSIG_ITEM_UNIQUE_ACTION "item_unique_action"

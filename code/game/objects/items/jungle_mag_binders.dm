@@ -7,6 +7,11 @@
 	var/jungle_mag_overlay_icon
 	var/jungle_mag_overlay_icon_state
 
+	var/list/jungle_mag_magazine_blacklist
+	var/list/jungle_mag_magazine_whitelist
+	var/list/jungle_mag_storage_blacklist
+	var/list/jungle_mag_storage_whitelist
+
 /obj/item/jungle_mag_binders/elastic_band
 	name = "Elastic Band"
 	icon_state = "blue_band"

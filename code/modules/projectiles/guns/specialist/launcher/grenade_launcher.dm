@@ -33,7 +33,6 @@
 	var/is_lobbing = FALSE
 	///Verboten munitions. This is a blacklist. Anything in this list isn't loadable.
 	var/disallowed_grenade_types = list(/obj/item/explosive/grenade/spawnergrenade,
-										/obj/item/explosive/grenade/alien,
 										/obj/item/explosive/grenade/nerve_gas,
 										/obj/item/explosive/grenade/incendiary/bursting_pipe,
 										/obj/item/explosive/grenade/xeno_acid_grenade,
@@ -338,7 +337,7 @@
 		/obj/item/explosive/grenade/high_explosive/m15/rubber,
 	)
 	preload = /obj/item/explosive/grenade/slug/baton
-	disallowed_grenade_types = list(/obj/item/explosive/grenade/spawnergrenade, /obj/item/explosive/grenade/alien, /obj/item/explosive/grenade/incendiary/molotov)
+	disallowed_grenade_types = list(/obj/item/explosive/grenade/spawnergrenade, /obj/item/explosive/grenade/incendiary/molotov)
 	actions_types = list(/datum/action/item_action/toggle_firing_level)
 
 	is_lobbing = TRUE

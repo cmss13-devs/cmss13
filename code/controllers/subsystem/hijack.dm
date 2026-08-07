@@ -122,8 +122,8 @@ SUBSYSTEM_DEF(hijack)
 	/// Where the ship is currently transiting to
 	var/datum/spaceport/spaceport
 
-	/// A list of all fuel pumps
-	var/list/obj/structure/machinery/fuelpump/fuelpumps = list()
+	/// An alist of area -> machinery (fuelpumps) for lookup
+	var/alist/area_machinery_lookup = alist()
 
 	/// A list of all APCs on the main ship
 	var/list/obj/structure/machinery/power/apc/almayer/apcs = list()
@@ -259,9 +259,16 @@ SUBSYSTEM_DEF(hijack)
 		for(var/area/almayer/cycled_area as anything in current_run)
 			current_run -= cycled_area
 
-			if(progress_areas[cycled_area] != cycled_area.power_equip)
-				progress_areas[cycled_area] = !progress_areas[cycled_area]
-				announce_area_power_change(cycled_area)
+			var/new_area_state = cycled_area.power_equip
+
+			var/obj/structure/machinery/machine = SShijack.area_machinery_lookup[cycled_area]
+			if(machine)
+				// Pumps don't care about area power but health
+				new_area_state = machine.operable()
+
+			if(progress_areas[cycled_area] != new_area_state)
+				progress_areas[cycled_area] = new_area_state
+				announce_area_state_change(cycled_area, new_area_state)
 
 			if(progress_areas[cycled_area])
 				switch(cycled_area.hijack_evacuation_type)
@@ -323,17 +330,21 @@ SUBSYSTEM_DEF(hijack)
 	var/message = ""
 
 	for(var/area/cycled_area as anything in progress_areas)
-		message += "[cycled_area] - [cycled_area.power_equip ? "Online" : "Offline"]\n"
-		progress_areas[cycled_area] = cycled_area.power_equip
+		var/new_area_state = cycled_area.power_equip
+		var/obj/structure/machinery/machine = SShijack.area_machinery_lookup[cycled_area]
+		if(machine)
+			// Pumps don't care about area power but health
+			new_area_state = machine.operable()
+		message += "[cycled_area] - [new_area_state ? "Online" : "Offline"]\n"
+		progress_areas[cycled_area] = new_area_state
 
 	message += "\nCritical damage sustained to ship systems. Altitude rapidly decreasing. Initiating sublight burn to exit AO.\nMaintain fueling functionality to initiate quantum jump to [spaceport.name]."
 
 	marine_announcement(message, HIJACK_ANNOUNCE)
 
-///Called when an area power status is changed to announce that it has been changed
-/datum/controller/subsystem/hijack/proc/announce_area_power_change(area/changed_area)
-	var/message = "[changed_area] - [changed_area.power_equip ? "Online" : "Offline"]"
-
+///Called when an area's operable status is changed to announce that it has been changed
+/datum/controller/subsystem/hijack/proc/announce_area_state_change(area/changed_area, new_state)
+	var/message = "[changed_area] - [new_state ? "Online" : "Offline"]"
 	shipwide_ai_announcement(message, HIJACK_ANNOUNCE, sound('sound/misc/notice2.ogg'))
 
 ///Called to announce to xenos the state of evacuation progression
@@ -344,14 +355,25 @@ SUBSYSTEM_DEF(hijack)
 	var/xeno_warning_areas = ""
 
 	for(var/area/cycled_area as anything in progress_areas)
-		if(cycled_area.power_equip)
+		var/new_area_state = cycled_area.power_equip
+		var/repairable = TRUE
+		var/obj/structure/machinery/machine = SShijack.area_machinery_lookup[cycled_area]
+		if(machine)
+			// Pumps don't care about area power but health
+			repairable = FALSE
+			new_area_state = machine.operable()
+		progress_areas[cycled_area] = new_area_state
+		if(new_area_state)
+			// Powered: xenos interested to know this
 			xeno_warning_areas += "[cycled_area], "
 			continue
-		marine_warning_areas += "[cycled_area], "
+		if(repairable)
+			// Not powered, but can be powered: marines interested to know this
+			marine_warning_areas += "[cycled_area], "
 
+	// Remove ending commas and whitespace
 	if(xeno_warning_areas)
 		xeno_warning_areas = copytext(xeno_warning_areas, 1, -2)
-
 	if(marine_warning_areas)
 		marine_warning_areas = copytext(marine_warning_areas, 1, -2)
 
@@ -401,6 +423,13 @@ SUBSYSTEM_DEF(hijack)
 		return "Never"
 
 	return "[duration2text_sec(sd_time_remaining)]"
+
+/// Plays the passed sfx for any xenos shipside
+/datum/controller/subsystem/hijack/proc/play_sfx_for_shipside_xenos(sound/soundin, vol=45)
+	for(var/mob/living/carbon/xenomorph as anything in GLOB.xeno_mob_list)
+		if(!is_mainship_level(xenomorph.z))
+			continue
+		playsound_client(xenomorph.client, soundin, vol=vol)
 
 
 //~~~~~~~~~~~~~~~~~~~~~~~~ EVAC STUFF ~~~~~~~~~~~~~~~~~~~~~~~~//
@@ -618,7 +647,7 @@ SUBSYSTEM_DEF(hijack)
 
 	var/sound_picked = pick('sound/theme/nuclear_detonation1.ogg','sound/theme/nuclear_detonation2.ogg')
 	for(var/client/player as anything in GLOB.clients)
-		playsound_client(player, sound_picked, 90)
+		playsound_client(player, sound_picked, vol=90)
 
 	var/list/alive_mobs = list() //Everyone who will be destroyed on the zlevel(s).
 	var/list/dead_mobs = list() //Everyone who only needs to see the cinematic.
@@ -664,7 +693,7 @@ SUBSYSTEM_DEF(hijack)
 	explosive_cinematic.icon_state = "summary_destroyed"
 
 	for(var/client/player as anything in GLOB.clients)
-		playsound_client(player, 'sound/effects/explosionfar.ogg', 90)
+		playsound_client(player, 'sound/effects/explosionfar.ogg', vol=90)
 
 
 	sleep(0.5 SECONDS)
@@ -685,6 +714,7 @@ SUBSYSTEM_DEF(hijack)
 /datum/controller/subsystem/hijack/proc/initiate_ground_crash()
 	hijack_status = HIJACK_OBJECTIVES_GROUND_CRASH
 	marine_announcement("Tachyon quantum jump drive deactivated due to insufficient fueling. Entry into atmosphere imminent.", HIJACK_ANNOUNCE, sound('sound/mecha/internaldmgalarm.ogg'))
+	play_sfx_for_shipside_xenos('sound/mecha/internaldmgalarm.ogg')
 
 	// Break all shipside ships and disable all non-pod/elevator pads
 	unlock_all_dropship_doors() // Unlock doors because they'll be uninteractable
@@ -794,6 +824,7 @@ SUBSYSTEM_DEF(hijack)
 		drop = FALSE,
 	)
 	shipwide_ai_announcement("ALERT: Altitude rapidly decreasing. Brace for impact.", HIJACK_ANNOUNCE, sound('sound/effects/GQfullcall.ogg'))
+	play_sfx_for_shipside_xenos('sound/effects/GQfullcall.ogg')
 	if(GLOB.security_level < SEC_LEVEL_RED)
 		set_security_level(SEC_LEVEL_RED, no_sound = TRUE, announce = FALSE)
 
@@ -1024,6 +1055,8 @@ SUBSYSTEM_DEF(hijack)
 	disallow_dropship_pad_landing()
 
 	marine_announcement("Initiating quantum jump. Opening virtual mass field. Lifeboats and pods disabled until arrival.", HIJACK_ANNOUNCE, sound('sound/mecha/powerup.ogg'))
+	play_sfx_for_shipside_xenos('sound/mecha/powerup.ogg')
+
 	addtimer(CALLBACK(src, PROC_REF(enter_ftl)), 5 SECONDS)
 
 /// Updates a specific space turf to have the speedspace animation
@@ -1069,6 +1102,7 @@ SUBSYSTEM_DEF(hijack)
 /datum/controller/subsystem/hijack/proc/initiate_ftl_crash()
 	hijack_status = HIJACK_OBJECTIVES_FTL_CRASH
 	shipwide_ai_announcement("Tachyon quantum jump drive deactivated due to insufficient fueling. Brace for destabilization of hyperdrive field.", HIJACK_ANNOUNCE, sound('sound/mecha/internaldmgalarm.ogg'))
+	play_sfx_for_shipside_xenos('sound/mecha/internaldmgalarm.ogg')
 
 	addtimer(CALLBACK(src, PROC_REF(leave_ftl), TRUE), 5 SECONDS)
 	if(GLOB.security_level < SEC_LEVEL_RED)
@@ -1118,20 +1152,21 @@ SUBSYSTEM_DEF(hijack)
 /// Warn exploding pumps
 /datum/controller/subsystem/hijack/proc/explode_pumps_with_warning(time_till = 10 SECONDS)
 	shipwide_ai_announcement("ALERT: Build up detected within pumping systems. Overload in [DisplayTimeText(time_till)].", HIJACK_ANNOUNCE, sound('sound/effects/double_klaxon.ogg'))
+	play_sfx_for_shipside_xenos('sound/effects/double_klaxon.ogg')
 	addtimer(CALLBACK(src, PROC_REF(explode_pumps)), time_till)
-	for(var/obj/structure/machinery/fuelpump/pump as anything in fuelpumps)
-		playsound(pump, 'sound/effects/pipe_hissing.ogg', vol = 40)
-		pump.visible_message(SPAN_HIGHDANGER("[pump] begins hissing violently!"))
-		var/turf/origin = get_turf(pump)
-		for(var/turf/position in block(origin, locate(origin.x + 3, origin.y, origin.z)))
+	for(var/key,value in SShijack.area_machinery_lookup)
+		var/obj/structure/machinery/machine = value
+		playsound(machine, 'sound/effects/pipe_hissing.ogg', vol = 40)
+		machine.visible_message(SPAN_HIGHDANGER("[machine] begins hissing violently!"))
+		for(var/turf/position in machine.locs)
 			new /obj/effect/warning/explosive(position, time_till)
 
 /// Called to explode the fuel pumps
 /datum/controller/subsystem/hijack/proc/explode_pumps()
 	var/datum/space_weapon_ammo/rocket_launcher/swing_rockets/rockets = new
 	rockets.name = "ship explosion"
-	for(var/obj/structure/machinery/fuelpump/pump as anything in fuelpumps)
-		rockets.hit_target(get_turf(pump), shake=FALSE)
+	for(var/key,machine in SShijack.area_machinery_lookup)
+		rockets.hit_target(get_turf(machine), shake=FALSE)
 	qdel(rockets)
 
 /// Called when FTL is completed successfully to load in shuttles

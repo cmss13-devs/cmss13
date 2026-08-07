@@ -1,7 +1,0 @@
-author: "PoltavskaPraca"
-delete-after: True
-changes:
-  - bugfix: "fixed door rotations"
-  - code_imp: "touched some code"
-  - maptweak: "touched shuttles a little bit, added new floor type and put them underneath the airlocks"
-  - imagetweak: "changed dirs and made them saner for shuttle attachments sprites"

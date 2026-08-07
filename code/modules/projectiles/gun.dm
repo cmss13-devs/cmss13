@@ -1335,7 +1335,6 @@ and you're good to go.
 	var/fired_by_akimbo = FALSE
 	if(dual_wield)
 		fired_by_akimbo = TRUE
-		gun_user = null
 
 	//Dual wielding. Do we have a gun in the other hand and is it the same category?
 	var/obj/item/weapon/gun/akimbo = user.get_inactive_hand()

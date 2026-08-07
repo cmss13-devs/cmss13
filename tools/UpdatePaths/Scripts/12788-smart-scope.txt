@@ -1,0 +1,1 @@
+/obj/item/attachable/alt_iff_scope : /obj/item/attachable/scope/alt_iff_scope{@OLD}

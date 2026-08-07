@@ -345,32 +345,32 @@
 
 // Due to storage type consolidation this should get used more now.
 // I have cleaned it up a little, but it could probably use more.  -Sayu
-/obj/item/attackby(obj/item/W, mob/user)
-	if(SEND_SIGNAL(src, COMSIG_ITEM_ATTACKED, W, user) & COMPONENT_CANCEL_ITEM_ATTACK)
+/obj/item/attackby(obj/item/object, mob/user)
+	if(SEND_SIGNAL(src, COMSIG_ITEM_ATTACKED, object, user) & COMPONENT_CANCEL_ITEM_ATTACK)
 		return
 
-	if(istype(W,/obj/item/storage))
-		var/obj/item/storage/S = W
-		if(S.storage_flags & STORAGE_CLICK_GATHER && isturf(loc))
-			if(S.storage_flags & STORAGE_GATHER_SIMULTANEOUSLY) //Mode is set to collect all items on a tile and we clicked on a valid one.
+	if(istype(object,/obj/item/storage))
+		var/obj/item/storage/container = object
+		if(container.storage_flags & STORAGE_CLICK_GATHER && isturf(loc))
+			if(container.storage_flags & STORAGE_GATHER_SIMULTANEOUSLY) //Mode is set to collect all items on a tile and we clicked on a valid one.
 				var/success = 0
 				var/failure = 0
 
-				for(var/obj/item/I in src.loc)
-					if(!S.can_be_inserted(I, user, stop_messages = TRUE))
+				for(var/obj/item/thing in src.loc)
+					if(!container.can_be_inserted(thing, user, stop_messages = TRUE))
 						failure = 1
 						continue
 					success = 1
-					S.handle_item_insertion(I, TRUE, user) //The 1 stops the "You put the [src] into [S]" insertion message from being displayed.
+					container.handle_item_insertion(thing, TRUE, user) //The 1 stops the "You put [src] into [container]" insertion message from being displayed.
 				if(success && !failure)
-					to_chat(user, SPAN_NOTICE("You put everything in [S]."))
+					to_chat(user, SPAN_NOTICE("You put everything in [container]."))
 				else if(success)
-					to_chat(user, SPAN_NOTICE("You put some things in [S]."))
+					to_chat(user, SPAN_NOTICE("You put some things in [container]."))
 				else
-					to_chat(user, SPAN_NOTICE("You fail to pick anything up with [S]."))
+					to_chat(user, SPAN_NOTICE("You fail to pick anything up with [container]."))
 
-			else if(S.can_be_inserted(src, user))
-				S.handle_item_insertion(src, FALSE, user)
+			else if(container.can_be_inserted(src, user))
+				container.handle_item_insertion(src, FALSE, user)
 
 	return
 

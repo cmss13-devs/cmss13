@@ -232,7 +232,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 		//Jobs, uses bitflags
 	var/list/job_preference_list = list()
 
-	//Keeps track of preferrence for not getting any wanted jobs
+	//Keeps track of preference for not getting any wanted jobs
 	var/alternate_option = RETURN_TO_LOBBY //Be a marine.
 
 	// maps each organ to either null(intact), "cyborg" or "amputated"

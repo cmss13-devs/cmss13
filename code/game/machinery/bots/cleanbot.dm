@@ -120,7 +120,7 @@ text("<A href='byond://?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes
 			src.patrol_path = null
 			src.updateUsrDialog()
 		if("freq")
-			var/freq = text2num(input("Select frequency for  navigation beacons", "Frequnecy", num2text(beacon_freq / 10))) * 10
+			var/freq = text2num(input("Select frequency for navigation beacons", "Frequency", num2text(beacon_freq / 10))) * 10
 			if (freq > 0)
 				src.beacon_freq = freq
 			src.updateUsrDialog()
@@ -133,16 +133,16 @@ text("<A href='byond://?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes
 			to_chat(usr, SPAN_NOTICE("You press the weird button."))
 			src.updateUsrDialog()
 
-/obj/structure/machinery/bot/cleanbot/attackby(obj/item/W, mob/user as mob)
-	if (istype(W, /obj/item/card/id))
+/obj/structure/machinery/bot/cleanbot/attackby(obj/item/card, mob/user as mob)
+	if (istype(card, /obj/item/card/id))
 		if(src.allowed(usr) && !open)
 			src.locked = !src.locked
-			to_chat(user, SPAN_NOTICE("You [ src.locked ? "lock" : "unlock"] the [src] behaviour controls."))
+			to_chat(user, SPAN_NOTICE("You [ src.locked ? "lock" : "unlock"] [src]'s behaviour controls."))
 		else
 			if(open)
 				to_chat(user, SPAN_WARNING("Please close the access panel before locking it."))
 			else
-				to_chat(user, SPAN_NOTICE("This [src] doesn't seem to respect your authority."))
+				to_chat(user, SPAN_NOTICE("[src] doesn't seem to respect your authority."))
 	else
 		return ..()
 

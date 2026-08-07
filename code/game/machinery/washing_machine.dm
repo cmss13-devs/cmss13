@@ -70,67 +70,67 @@
 /obj/structure/machinery/washing_machine/update_icon()
 	icon_state = "wm_[state][panel]"
 
-/obj/structure/machinery/washing_machine/attackby(obj/item/W as obj, mob/user as mob)
-	/*if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
+/obj/structure/machinery/washing_machine/attackby(obj/item/thing as obj, mob/user as mob)
+	/*if(HAS_TRAIT(thing, TRAIT_TOOL_SCREWDRIVER))
 		panel = !panel
-		to_chat(user, SPAN_NOTICE("you [panel ? "))open" : "close"] the [src]'s maintenance panel"*/
-	if(istype(W,/obj/item/toy/crayon) ||istype(W,/obj/item/tool/stamp))
+		to_chat(user, SPAN_NOTICE("you [panel ? "))open" : "close"] [src]'s maintenance panel"*/
+	if(istype(thing,/obj/item/toy/crayon) ||istype(thing,/obj/item/tool/stamp))
 		if( state in list( 1, 3, 6 ) )
 			if(!crayon)
 				if(user.drop_inv_item_to_loc(crayon, src))
-					crayon = W
+					crayon = thing
 			else
 				. = ..()
 		else
 			. = ..()
 
-	else if(istype(W,/obj/item/stack/sheet/hairlesshide) || \
-		istype(W,/obj/item/clothing/under) || \
-		istype(W,/obj/item/clothing/mask) || \
-		istype(W,/obj/item/clothing/head) || \
-		istype(W,/obj/item/clothing/gloves) || \
-		istype(W,/obj/item/clothing/shoes) || \
-		istype(W,/obj/item/clothing/suit) || \
-		istype(W,/obj/item/bedsheet))
+	else if(istype(thing,/obj/item/stack/sheet/hairlesshide) || \
+		istype(thing,/obj/item/clothing/under) || \
+		istype(thing,/obj/item/clothing/mask) || \
+		istype(thing,/obj/item/clothing/head) || \
+		istype(thing,/obj/item/clothing/gloves) || \
+		istype(thing,/obj/item/clothing/shoes) || \
+		istype(thing,/obj/item/clothing/suit) || \
+		istype(thing,/obj/item/bedsheet))
 
 		//YES, it's hardcoded... saves a var/can_be_washed for every single clothing item.
-		if ( istype(W,/obj/item/clothing/suit/space ) )
+		if ( istype(thing,/obj/item/clothing/suit/space ) )
 			to_chat(user, "This item does not fit.")
 			return
-		if ( istype(W,/obj/item/clothing/suit/syndicatefake ) )
+		if ( istype(thing,/obj/item/clothing/suit/syndicatefake ) )
 			to_chat(user, "This item does not fit.")
 			return
-// if ( istype(W,/obj/item/clothing/suit/powered ) )
+// if ( istype(thing,/obj/item/clothing/suit/powered ) )
 // to_chat(user, "This item does not fit.")
 // return
-		if ( istype(W,/obj/item/clothing/suit/bomb_suit ) )
+		if ( istype(thing,/obj/item/clothing/suit/bomb_suit ) )
 			to_chat(user, "This item does not fit.")
 			return
-		if ( istype(W,/obj/item/clothing/suit/armor ) )
+		if ( istype(thing,/obj/item/clothing/suit/armor ) )
 			to_chat(user, "This item does not fit.")
 			return
-		if ( istype(W,/obj/item/clothing/suit/armor ) )
+		if ( istype(thing,/obj/item/clothing/suit/armor ) )
 			to_chat(user, "This item does not fit.")
 			return
-		if ( istype(W,/obj/item/clothing/mask/gas ) )
+		if ( istype(thing,/obj/item/clothing/mask/gas ) )
 			to_chat(user, "This item does not fit.")
 			return
-		if ( istype(W,/obj/item/clothing/mask/cigarette ) )
+		if ( istype(thing,/obj/item/clothing/mask/cigarette ) )
 			to_chat(user, "This item does not fit.")
 			return
-		if ( istype(W,/obj/item/clothing/head/syndicatefake ) )
+		if ( istype(thing,/obj/item/clothing/head/syndicatefake ) )
 			to_chat(user, "This item does not fit.")
 			return
-// if ( istype(W,/obj/item/clothing/head/powered ) )
+// if ( istype(thing,/obj/item/clothing/head/powered ) )
 // to_chat(user, "This item does not fit.")
 // return
-		if ( istype(W,/obj/item/clothing/head/helmet ) )
+		if ( istype(thing,/obj/item/clothing/head/helmet ) )
 			to_chat(user, "This item does not fit.")
 			return
 
 		if(length(contents) < 5)
 			if ( state in list(1, 3) )
-				if(user.drop_inv_item_to_loc(W, src))
+				if(user.drop_inv_item_to_loc(thing, src))
 					state = 3
 			else
 				to_chat(user, SPAN_NOTICE("You can't put the item in right now."))

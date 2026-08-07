@@ -228,24 +228,24 @@
 	qdel(src)
 	return
 
-/obj/item/reagent_container/food/snacks/attack_animal(mob/M)
-	if(isanimal(M))
-		if(iscorgi(M))
+/obj/item/reagent_container/food/snacks/attack_animal(mob/animal)
+	if(isanimal(animal))
+		if(iscorgi(animal))
 			if(bitecount == 0 || prob(50))
-				M.emote("nibbles away at [src]")
+				animal.emote("nibbles away at [src].")
 			bitecount++
 			if(bitecount >= 5)
-				var/sattisfaction_text = pick("burps from enjoyment", "yaps for more", "woofs twice", "looks at the area where [src] was")
-				if(sattisfaction_text)
-					M.emote("[sattisfaction_text].")
+				var/satisfaction_text = pick("burps from enjoyment", "yaps for more", "woofs twice", "looks at the area where [src] was")
+				if(satisfaction_text)
+					animal.emote("[satisfaction_text].")
 				qdel(src)
-		if(ismouse(M))
-			var/mob/living/simple_animal/small/mouse/N = M
-			to_chat(N, text(SPAN_NOTICE("You nibble away at [src].")))
+		if(ismouse(animal))
+			var/mob/living/simple_animal/small/mouse/maus = animal
+			to_chat(maus, text(SPAN_NOTICE("You nibble away at [src].")))
 			if(prob(50))
-				N.visible_message("[N] nibbles away at [src].", "")
-			//N.emote("nibbles away at the [src]")
-			N.health = min(N.health + 1, N.maxHealth)
+				maus.visible_message("[maus] nibbles away at [src].", "")
+			//maus.emote("nibbles away at [src]")
+			maus.health = min(maus.health + 1, maus.maxHealth)
 
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -216,7 +216,7 @@ MILITARY NONCOMBATANT
 	)
 
 /datum/skills/mess_technician
-	name = "Mess Technician"
+	name = "Food Service Specialist"
 	skills = list(
 		SKILL_FIREARMS = SKILL_FIREARMS_MASTER, // need to hunt food somehow
 		SKILL_ENGINEER = SKILL_ENGINEER_NOVICE,

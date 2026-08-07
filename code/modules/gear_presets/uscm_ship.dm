@@ -773,14 +773,15 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/chef
-	name = "USCM Mess Technician (MST)"
+	name = "USCM Food Service Specialist (FSS)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	access = list(ACCESS_MARINE_KITCHEN)
 	assignment = JOB_MESS_SERGEANT
 	job_title = JOB_MESS_SERGEANT
 	paygrades = list(PAY_SHORT_ME1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME2 = JOB_PLAYTIME_TIER_1, PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_2, PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_3, PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_4)
-	role_comm_title = "MST"
+	role_comm_title = "FSS"
+
 	skills = /datum/skills/mess_technician
 
 	minimap_icon = "mst"
@@ -800,7 +801,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/chef(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/chef(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/chef(new_human), WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/full(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)

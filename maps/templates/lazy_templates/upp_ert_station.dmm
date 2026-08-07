@@ -812,7 +812,7 @@
 /turf/open/floor/strata/blue1,
 /area/adminlevel/ert_station/upp_station)
 "oK" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony,
 /turf/open/floor/strata/floor3/east,
 /area/adminlevel/ert_station/upp_station)
 "pb" = (
@@ -875,7 +875,7 @@
 /turf/open/floor/strata/floorscorched2,
 /area/adminlevel/ert_station/upp_station)
 "qM" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass{
 	dir = 1
 	},
 /turf/open/floor/strata/floor3/east,
@@ -1421,7 +1421,7 @@
 /turf/closed/wall/rock/brown,
 /area/adminlevel/ert_station/upp_station)
 "Cu" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering/glass/colony{
 	name = "Engineering";
 	dir = 1
 	},
@@ -1464,7 +1464,7 @@
 /turf/open/floor/strata/red3/east,
 /area/adminlevel/ert_station/upp_station)
 "CM" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering/colony{
 	name = "\improper Elevator Airlock";
 	dir = 1
 	},
@@ -1804,7 +1804,7 @@
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/adminlevel/ert_station/upp_station)
 "Lk" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering/glass/colony{
 	name = "Engineering"
 	},
 /turf/open/floor/strata/floor3/east,

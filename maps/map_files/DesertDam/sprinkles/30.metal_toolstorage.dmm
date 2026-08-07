@@ -365,7 +365,7 @@
 /turf/open/floor/prison/darkyellow2/north,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "Fq" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Engineering Central"
 	},
 /turf/open/floor/prison/bright_clean/southwest,
@@ -383,7 +383,7 @@
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "IE" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Engineering Central"
 	},
 /turf/open/floor/prison/bright_clean/southwest,

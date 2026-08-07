@@ -623,7 +623,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass{
 	id_tag = "souexit2";
 	name = "\improper Treatment Center";
 	req_access = null
@@ -2446,7 +2446,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/starboard_missiles)
 "afU" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass{
 	name = "\improper Cryosleep Storage Room";
 	req_one_access = null;
 	req_one_access_txt = "19;20"
@@ -2748,7 +2748,7 @@
 /turf/open/floor/plating,
 /area/almayer/living/basketball)
 "agB" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/solid{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical{
 	dir = 1;
 	name = "\improper Medical Locker Room";
 	req_one_access = null;
@@ -3683,7 +3683,7 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass{
 	name = "\improper Medical Main Lobby";
 	req_access = null;
 	req_one_access = null
@@ -3708,7 +3708,7 @@
 	id = "northtreatcenter2";
 	name = "\improper North Treatment Center Shutters"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass{
 	id_tag = "nortexit2";
 	name = "\improper Treatment Center";
 	req_access = null
@@ -3860,7 +3860,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/research{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/research{
 	dir = 2;
 	name = "\improper Research Workshop"
 	},
@@ -4287,7 +4287,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Midship Upper Medical Ladders"
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -4847,7 +4847,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/upper_engineering)
 "alS" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering/glass{
 	req_one_access = list(19,35);
 	name = "\improper Ordnance Workshop"
 	},
@@ -6389,7 +6389,7 @@
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "apU" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/solid{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical{
 	dir = 1;
 	name = "Research Break Room";
 	req_one_access = list(28,206,207)
@@ -7239,7 +7239,7 @@
 /turf/open/floor/almayer/red/east,
 /area/almayer/shipboard/panic)
 "arZ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/reinforced{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/security/reinforced{
 	name = "\improper Saferoom";
 	dir = 1;
 	req_one_access = list(3,19);
@@ -8785,7 +8785,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "awB" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering{
 	name = "\improper Damage Control Storage";
 	masterkey_resist = 1;
 	unacidable = 1;
@@ -9524,7 +9524,7 @@
 /turf/open/floor/almayer/orange/southwest,
 /area/almayer/command/cic)
 "ayA" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/reinforced{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/reinforced{
 	name = "\improper Officer's Quarters"
 	},
 /obj/structure/disposalpipe/segment,
@@ -10934,7 +10934,7 @@
 "aCe" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/solid{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command{
 	name = "\improper Officer's Mess"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -11679,7 +11679,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Upper Medical Corridors";
 	req_access = list()
 	},
@@ -12867,7 +12867,7 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/antitheft{
 	id = "engie_store"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering{
 	name = "\improper Engineering Storage";
 	masterkey_resist = 1;
 	unacidable = 1;
@@ -17267,7 +17267,7 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/engineer)
 "aTt" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/research{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/research{
 	name = "\improper Containment Analysis";
 	dir = 1
 	},
@@ -17812,7 +17812,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Midship Upper Medical Ladders"
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -18063,7 +18063,7 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/paft)
 "aVi" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/research{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/research{
 	dir = 8;
 	name = "\improper Decontamination Lounge"
 	},
@@ -22664,7 +22664,7 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/medical)
 "bfN" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/research{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/research{
 	dir = 8;
 	name = "\improper Decontamination Lounge"
 	},
@@ -27739,7 +27739,7 @@
 	id = "Hangar Lockdown";
 	name = "\improper Hangar Lockdown Blast Door"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass{
 	dir = 2;
 	name = "\improper Medical Main Lobby";
 	req_access = null;
@@ -28235,7 +28235,7 @@
 /turf/open/floor/almayer/blue,
 /area/almayer/living/bridgebunks)
 "brT" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering{
 	dir = 1
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -32743,7 +32743,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass{
 	name = "\improper Medical Main Lobby";
 	req_access = null;
 	req_one_access = null
@@ -35050,7 +35050,7 @@
 /turf/open/floor/almayer,
 /area/almayer/shipboard/port_point_defense)
 "bHK" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/autoname{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering/glass/autoname{
 	dir = 1;
 	req_one_access = list(19,34)
 	},
@@ -35130,7 +35130,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/port_point_defense)
 "bHV" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/autoname{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering/glass/autoname{
 	req_one_access = list(19,34)
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -35294,7 +35294,7 @@
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/command/airoom)
 "bIq" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/autoname{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering/glass/autoname{
 	req_one_access = list(19,34)
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -35453,7 +35453,7 @@
 /turf/open/floor/prison/kitchen,
 /area/almayer/living/grunt_rnr)
 "bIK" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/autoname{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering/glass/autoname{
 	dir = 1;
 	req_one_access = list(19,34)
 	},
@@ -35719,7 +35719,7 @@
 /turf/closed/wall/almayer,
 /area/almayer/shipboard/starboard_point_defense)
 "bJy" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/autoname{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering/glass/autoname{
 	req_one_access = list(19,34)
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -35962,7 +35962,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/starboard_point_defense)
 "bKi" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/autoname{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering/glass/autoname{
 	dir = 1;
 	req_one_access = list(19,34)
 	},
@@ -39356,7 +39356,7 @@
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
 "bSN" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering/glass{
 	name = "\improper Cryogenics Bay"
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -41329,7 +41329,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/lower_medical_medbay)
 "bXx" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/research{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/research{
 	name = "\improper Containment Analysis";
 	dir = 1
 	},
@@ -44237,7 +44237,7 @@
 /turf/open/floor/almayer/flooredge/east,
 /area/almayer/hallways/upper/fore_hallway)
 "ccU" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Midship Upper Medical Ladders";
 	dir = 2
 	},
@@ -44269,7 +44269,7 @@
 /turf/open/floor/almayer/sterile_green2,
 /area/almayer/medical/upper_medical)
 "ccZ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/research{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/research{
 	name = "\improper Research Wing";
 	id = null;
 	id_tag = "rsr01"
@@ -44960,7 +44960,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 1
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Cryosleep Storage Room";
 	req_one_access = list(28,206,207);
 	req_access = list()
@@ -44968,7 +44968,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/medical_science)
 "cey" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/solid{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical{
 	dir = 8;
 	name = "Morgue";
 	req_one_access = list(25)
@@ -45093,7 +45093,7 @@
 	id = "ResearchStairs";
 	name = "\improper Stairway Lockdown"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/research{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/research{
 	dir = 8;
 	name = "\improper Research Workshop"
 	},
@@ -45510,7 +45510,7 @@
 /turf/open/floor/almayer/test_floor5,
 /area/almayer/medical/hydroponics)
 "cfO" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/solid{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical{
 	name = "\improper Research's Meeting Room";
 	req_one_access = list(28,206,207)
 	},
@@ -45527,7 +45527,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 1
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/solid{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical{
 	name = "Researchers' Quarters";
 	req_one_access = list(28,206,207)
 	},
@@ -45904,7 +45904,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/morgue)
 "cgI" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/solid{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical{
 	dir = 2;
 	name = "Morgue";
 	req_one_access = list(25)
@@ -46195,7 +46195,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/solid{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical{
 	name = "Morgue";
 	req_one_access = list(25)
 	},
@@ -48125,7 +48125,7 @@
 /turf/open/floor/plating,
 /area/almayer/shipboard/brig/visitation_waiting)
 "clB" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Brig Visitation Waiting"
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -49702,7 +49702,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/starboard_point_defense)
 "coU" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/security/glass/reinforced{
 	dir = 2;
 	name = "\improper Offices and Secondary Cells"
 	},
@@ -52486,7 +52486,7 @@
 /turf/open/floor/almayer/plating_striped/east,
 /area/almayer/maint/hull/lower/l_a_p)
 "dof" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering{
 	name = "\improper Upper Engineering"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -55220,7 +55220,7 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/req)
 "eyD" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/security/glass/reinforced{
 	closeOtherId = "briglobby";
 	dir = 2;
 	name = "\improper Brig Lobby"
@@ -56087,7 +56087,7 @@
 	layer = 2.2;
 	name = "\improper Combat Information Center Blast Door"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/reinforced{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/reinforced{
 	name = "\improper Combat Information Center"
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -56635,7 +56635,7 @@
 	id = "CIC Lockdown";
 	name = "\improper Combat Information Center Blast Door"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/reinforced{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/reinforced{
 	dir = 1;
 	name = "\improper Combat Information Center"
 	},
@@ -57771,7 +57771,7 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/req)
 "fDG" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering{
 	dir = 1;
 	name = "\improper Telecommunications"
 	},
@@ -61445,7 +61445,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/reinforced{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/reinforced{
 	dir = 1;
 	name = "\improper Combat Information Center"
 	},
@@ -61563,7 +61563,7 @@
 /turf/open/floor/almayer/no_build,
 /area/almayer/underdeck/vehicle)
 "hoK" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/security/glass/reinforced{
 	dir = 2;
 	name = "\improper Brig Equipment"
 	},
@@ -64242,7 +64242,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/reinforced{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/reinforced{
 	dir = 1;
 	name = "\improper Combat Information Center"
 	},
@@ -67869,7 +67869,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering{
 	dir = 1
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -68397,7 +68397,7 @@
 /area/almayer/command/corporateliaison)
 "kph" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering{
 	dir = 1
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -70101,7 +70101,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cic_hallway)
 "laQ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering/glass{
 	name = "\improper Engineering Reception"
 	},
 /obj/structure/disposalpipe/segment,
@@ -71038,7 +71038,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/reinforced{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/reinforced{
 	name = "\improper Combat Information Center"
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -71202,7 +71202,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/u_a_p)
 "lAu" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering{
 	dir = 1
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -74454,7 +74454,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/research{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/research{
 	name = "\improper Chemical Laboratory"
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -78687,7 +78687,7 @@
 /area/almayer/maint/hull/upper/p_bow)
 "oLF" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/security/glass/reinforced{
 	dir = 2;
 	name = "\improper Brig Lobby";
 	req_access = null
@@ -79567,7 +79567,7 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/navigation)
 "pfc" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering{
 	dir = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
@@ -80771,7 +80771,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/lower/repair_bay)
 "pKZ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass{
 	name = "\improper Cryosleep Storage Room";
 	req_access = null;
 	req_one_access = null;
@@ -81531,7 +81531,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/upper/u_a_s)
 "qbZ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering/glass{
 	dir = 1;
 	name = "\improper Engineering Bunks"
 	},
@@ -84041,7 +84041,7 @@
 /turf/open/floor/plating,
 /area/almayer/squads/req)
 "rcx" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass{
 	dir = 2;
 	id_tag = "tc01";
 	name = "\improper Treatment Center";
@@ -84717,7 +84717,7 @@
 /turf/open/floor/almayer/red/northeast,
 /area/almayer/shipboard/brig/cells)
 "rrB" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/reinforced{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/reinforced{
 	name = "\improper Command Cryogenics Bay"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -85449,7 +85449,7 @@
 	id = "medicalemergency";
 	name = "\improper Medical Bay Lockdown"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass{
 	dir = 2;
 	name = "\improper Medical Main Lobby";
 	req_access = null;
@@ -88761,7 +88761,7 @@
 /turf/open/floor/almayer/orange/west,
 /area/almayer/engineering/upper_engineering/starboard)
 "tff" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/security/glass/reinforced{
 	closeOtherId = "briglobby";
 	name = "\improper Brig Lobby"
 	},
@@ -90734,7 +90734,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass{
 	dir = 2;
 	id_tag = "tc02";
 	name = "\improper Treatment Center";
@@ -91277,7 +91277,7 @@
 /turf/open/floor/almayer/orange/north,
 /area/almayer/hallways/hangar)
 "uiZ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/reinforced{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/reinforced{
 	dir = 1;
 	name = "\improper Combat Information Center"
 	},
@@ -95038,7 +95038,7 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Upper Medical Corridors";
 	req_access = list()
 	},
@@ -97468,7 +97468,7 @@
 /turf/open/floor/almayer/sterile_green_side/east,
 /area/almayer/medical/operating_room_four)
 "wJh" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/security/glass/reinforced{
 	closeOtherId = "briglobby";
 	name = "\improper Brig Equipment"
 	},
@@ -100736,7 +100736,7 @@
 /turf/closed/wall/almayer,
 /area/almayer/maint/upper/u_a_p)
 "yaz" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	name = "\improper Officer's Study"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{

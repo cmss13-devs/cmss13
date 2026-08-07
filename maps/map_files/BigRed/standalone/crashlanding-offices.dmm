@@ -482,7 +482,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "dk" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Office Complex Janitor Room"
 	},
 /turf/open/floor/delivery,
@@ -857,7 +857,7 @@
 /turf/open/floor/plating/panelscorched,
 /area/bigredv2/outside/office_complex)
 "zq" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Office Complex Janitor Room";
 	welded = 1
 	},
@@ -1380,7 +1380,7 @@
 /area/bigredv2/outside/office_complex)
 "Xm" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Office Complex"
 	},
 /turf/open/floor/plating/panelscorched,

@@ -3063,7 +3063,7 @@
 /turf/open/floor/corsat/whitetan,
 /area/adminlevel/ert_station/weyland_station)
 "Wo" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering/glass/colony{
 	name = "Engineering"
 	},
 /turf/open/floor/corsat/marked,

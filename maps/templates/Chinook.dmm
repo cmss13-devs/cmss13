@@ -8,7 +8,7 @@
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/event)
 "ac" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass{
 	dir = 2;
 	name = "\improper Medical Bay";
 	req_access = null;
@@ -240,7 +240,7 @@
 /turf/open/floor/almayer/red,
 /area/adminlevel/chinook/sec)
 "aT" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	name = "\improper Locker Rooms"
 	},
 /turf/open/floor/almayer,
@@ -1060,7 +1060,7 @@
 /turf/open/floor/almayer/tcomms,
 /area/adminlevel/chinook/engineering)
 "dB" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering{
 	name = "\improper Engineering";
 	dir = 1
 	},
@@ -2365,7 +2365,7 @@
 /turf/open/floor/wood,
 /area/adminlevel/chinook/offices)
 "iW" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	dir = 2;
 	name = "\improper Breakroom"
 	},
@@ -3146,7 +3146,7 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/engineering)
 "mr" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	name = "\improper Awards Stage"
 	},
 /turf/open/floor/carpet,
@@ -3701,7 +3701,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/shuttle)
 "ow" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Pool"
 	},
 /turf/open/floor/almayer,
@@ -4002,7 +4002,7 @@
 /turf/open/floor/almayer/red/north,
 /area/adminlevel/chinook/sec)
 "pH" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	name = "\improper Command Offices"
 	},
 /turf/open/floor/almayer/plate,
@@ -4513,7 +4513,7 @@
 /turf/open/floor/almayer/silvercorner/north,
 /area/adminlevel/chinook)
 "rO" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering{
 	name = "\improper Engineering"
 	},
 /turf/open/floor/almayer,
@@ -5012,7 +5012,7 @@
 /turf/open/floor/almayer/silvercorner/west,
 /area/adminlevel/chinook)
 "tV" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	name = "\improper Senior Enlisted Advisor Offices"
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -5029,7 +5029,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/offices)
 "tX" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	name = "\improper Command Offices"
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -5050,7 +5050,7 @@
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook)
 "ud" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	dir = 2;
 	name = "\improper Bar"
 	},
@@ -7040,7 +7040,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering{
 	name = "\improper Engineering"
 	},
 /turf/open/floor/almayer/orange/west,
@@ -7473,7 +7473,7 @@
 /turf/open/floor/kutjevo/tan/plate,
 /area/adminlevel/chinook/event)
 "EK" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	name = "\improper Dining Hall"
 	},
 /turf/open/floor/almayer,
@@ -7508,7 +7508,7 @@
 /turf/open/floor/almayer/red/east,
 /area/adminlevel/chinook/sec)
 "EU" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	name = "\improper Conference Room"
 	},
 /turf/open/floor/almayer,
@@ -7889,7 +7889,7 @@
 /turf/open/floor/kutjevo/tan/alt_edge,
 /area/adminlevel/chinook)
 "GH" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/security/glass/reinforced{
 	name = "Firing Range"
 	},
 /turf/open/floor/almayer,
@@ -9145,7 +9145,7 @@
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/sec)
 "LS" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Basketball Court"
 	},
 /turf/open/floor/almayer,
@@ -9352,13 +9352,13 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/sec)
 "ML" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Hydroponics"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook)
 "MN" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering{
 	name = "\improper Engineering"
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -9452,7 +9452,7 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/offices)
 "Nl" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Shuttlebay"
 	},
@@ -10094,7 +10094,7 @@
 /turf/open/floor/plating,
 /area/adminlevel/chinook/sec)
 "PW" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	name = "\improper Senior Enlisted Advisor Offices"
 	},
 /turf/open/floor/almayer,
@@ -10235,7 +10235,7 @@
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/event)
 "Qv" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Cryogenics Bay"
 	},
@@ -10367,7 +10367,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook)
 "QS" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass{
 	dir = 2;
 	name = "\improper Medical Bay";
 	req_access = null;
@@ -11986,7 +11986,7 @@
 /turf/open/floor/almayer/orange/east,
 /area/adminlevel/chinook/engineering)
 "XP" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Observation Lounge"
 	},
 /turf/open/floor/almayer/plate,
@@ -12258,7 +12258,7 @@
 /turf/open/floor/almayer/red/east,
 /area/adminlevel/chinook/sec)
 "YR" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass{
 	name = "\improper Medical Bay";
 	req_access = null;
 	req_one_access = null

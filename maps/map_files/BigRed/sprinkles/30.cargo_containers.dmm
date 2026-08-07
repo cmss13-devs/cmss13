@@ -143,7 +143,7 @@
 /area/bigredv2/outside/cargo)
 "aD" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Cargo Offices"
 	},
 /turf/open/floor/delivery,
@@ -345,7 +345,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "by" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Cargo Bay"
 	},
@@ -611,7 +611,7 @@
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/engineering)
 "cw" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Engineering Complex"
 	},
 /turf/open/floor/delivery,

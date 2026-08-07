@@ -4719,7 +4719,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/ice_colony/surface/command/control)
 "arh" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Colony Dormitories";
 	req_access_txt = "100"
@@ -4820,7 +4820,7 @@
 /turf/open/floor/darkgreen2,
 /area/ice_colony/surface/dorms)
 "arx" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Colony Dormitories";
 	req_access_txt = "100"
@@ -4992,7 +4992,7 @@
 /area/ice_colony/exterior/surface/valley/west)
 "asg" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Hydroponics Dome North Wing";
 	req_access_txt = "100"
 	},
@@ -5011,7 +5011,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/valley/southwest)
 "asj" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony{
 	name = "\improper Aurora Medical Clinic Treatment";
 	req_access_txt = "100"
 	},
@@ -5479,7 +5479,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Aurora Medical Clinic";
 	req_access_txt = "100"
@@ -5957,7 +5957,7 @@
 /turf/open/floor/plating,
 /area/ice_colony/surface/hydroponics/lobby)
 "avB" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Hydroponics Zoo Dome"
 	},
@@ -5989,7 +5989,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Hydroponics Dome"
 	},
@@ -6060,7 +6060,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Hydroponics Dome"
 	},
@@ -6082,7 +6082,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Colony Dormitories"
 	},
@@ -6131,7 +6131,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Colony Dormitories"
 	},
@@ -6752,7 +6752,7 @@
 /area/ice_colony/surface/hydroponics/south)
 "ayq" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Hydroponics Dome South Wing"
 	},
 /turf/open/floor/darkgreen2/west,
@@ -7056,7 +7056,7 @@
 /area/ice_colony/surface/hydroponics/south)
 "azy" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Colony Dormitories Lavatory"
 	},
 /turf/open/floor/dark2,
@@ -7070,7 +7070,7 @@
 /area/ice_colony/surface/dorms/canteen)
 "azB" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Colony Dormitories Canteen"
 	},
 /turf/open/floor/dark2,
@@ -7483,7 +7483,7 @@
 "aBf" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony{
 	name = "\improper Colony Administration"
 	},
 /turf/open/floor/dark2,
@@ -8093,7 +8093,7 @@
 /turf/open/floor/dark2,
 /area/ice_colony/surface/garage/repair)
 "aDq" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Colony Garage"
 	},
@@ -8389,7 +8389,7 @@
 	id = "colony_admin_top";
 	name = "\improper Colony Administration Blast Door"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony{
 	name = "\improper Colony Offices"
 	},
 /turf/open/floor/dark2,
@@ -8828,7 +8828,7 @@
 	id = "colony_admin_top";
 	name = "\improper Colony Administration Blast Door"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony{
 	dir = 1;
 	name = "\improper Colony Control Center"
 	},
@@ -9069,7 +9069,7 @@
 /obj/structure/machinery/door/poddoor/almayer/open{
 	name = "\improper Forced Blast Door"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony{
 	name = "\improper Colony Crisis Room"
 	},
 /turf/open/floor/wood,
@@ -9932,7 +9932,7 @@
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xtracks"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Anti-Freeze Bar"
 	},
 /turf/open/floor/wood,
@@ -10230,7 +10230,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Anti-Freeze Canteen"
 	},
@@ -10788,7 +10788,7 @@
 /area/ice_colony/surface/hangar/alpha)
 "aOh" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Security Checkpoint"
 	},
 /turf/open/floor/darkbrown2/northwest,
@@ -13129,7 +13129,7 @@
 /turf/open/floor/darkbrown2/southeast,
 /area/ice_colony/surface/hangar/alpha)
 "aXR" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Aerodrome Hangar"
 	},
 /turf/open/floor/darkbrown2/southwest,
@@ -13938,7 +13938,7 @@
 /turf/closed/wall,
 /area/ice_colony/surface/excavation)
 "bcj" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony{
 	name = "\improper Colony Xenoarcheology Outpost"
 	},
 /turf/open/floor/dark2,
@@ -15265,7 +15265,7 @@
 /area/ice_colony/underground/requesition)
 "biC" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Underground Requesitions Bay"
 	},
 /turf/open/floor/dark2,
@@ -15656,7 +15656,7 @@
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/north)
 "bkn" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Underground Requesitions Lobby"
 	},
 /turf/open/floor/dark2,
@@ -16148,7 +16148,7 @@
 /turf/open/floor/dark2,
 /area/ice_colony/underground/hallway/north_west)
 "bmr" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Underground Chapel"
 	},
@@ -16899,7 +16899,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Underground Main Hallway"
 	},
@@ -16928,7 +16928,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Underground Power Substation"
 	},
@@ -16958,7 +16958,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Underground Power Substation"
 	},
@@ -17183,7 +17183,7 @@
 /area/ice_colony/underground/medical/lobby)
 "bqV" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony{
 	name = "\improper Underground Medical Laboratory";
 	req_access_txt = "100"
 	},
@@ -17251,7 +17251,7 @@
 /turf/open/floor/plating,
 /area/ice_colony/underground/crew/bball)
 "brm" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Underground Sports Center"
 	},
 /turf/open/floor/dark2,
@@ -17720,7 +17720,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Underground Medical Laboratory"
 	},
@@ -17896,7 +17896,7 @@
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/engineering/substation)
 "btC" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Underground Medical Laboratory"
 	},
@@ -19636,7 +19636,7 @@
 /turf/open/floor/dark2,
 /area/ice_colony/underground/crew/canteen)
 "bAp" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Underground Staff Canteen"
 	},
@@ -21229,7 +21229,7 @@
 /area/ice_colony/underground/command/checkpoint)
 "bGE" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony{
 	name = "\improper Colony Administration"
 	},
 /turf/open/floor/dark2,
@@ -21852,7 +21852,7 @@
 /turf/open/floor/darkred2/southeast,
 /area/ice_colony/underground/security/interrogation)
 "bJe" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Underground Security Checkpoint"
 	},
 /turf/open/floor/darkred2/west,
@@ -21879,7 +21879,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Theta-V Research Laboratory"
 	},
@@ -22083,7 +22083,7 @@
 /turf/open/floor/dark2,
 /area/ice_colony/underground/research)
 "bJO" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Theta-V Research Laboratory"
 	},
@@ -22157,7 +22157,7 @@
 /turf/open/floor/darkblue2,
 /area/ice_colony/underground/command/checkpoint)
 "bKf" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony{
 	dir = 1;
 	name = "\improper Colony Offices"
 	},
@@ -22392,7 +22392,7 @@
 "bKR" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony{
 	name = "\improper Colony Administration"
 	},
 /turf/open/floor/dark2,
@@ -22793,7 +22793,7 @@
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/security)
 "bMt" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Underground Security Checkpoint"
 	},
 /turf/open/floor/darkred2/west,
@@ -22824,7 +22824,7 @@
 /turf/open/floor/darkpurple2/west,
 /area/ice_colony/underground/hallway/north_west)
 "bMy" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Underground Main Hallway"
 	},
@@ -23441,7 +23441,7 @@
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/security/brig)
 "bOY" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Underground Security Brig"
 	},
 /turf/open/floor/dark2,
@@ -24647,7 +24647,7 @@
 /turf/open/floor/plating,
 /area/ice_colony/underground/hallway/south_east)
 "bTd" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Underground Main Hallway"
 	},
 /turf/open/floor/dark2,
@@ -24942,7 +24942,7 @@
 /turf/open/floor/white,
 /area/ice_colony/underground/reception/toilet_men)
 "bUq" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Underground Visitor Entrance"
 	},
 /turf/open/floor/dark2,

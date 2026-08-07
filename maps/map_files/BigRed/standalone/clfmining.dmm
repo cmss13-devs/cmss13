@@ -204,7 +204,7 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "aH" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 8;
 	name = "\improper Abandoned Mining Storage"
 	},
@@ -875,7 +875,7 @@
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/caves/mining)
 "mG" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Abandoned Mining Storage"
 	},
@@ -2931,7 +2931,7 @@
 /area/bigredv2/caves/mining)
 "Ti" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Abandoned Mining Storage";
 	welded = 1

@@ -292,7 +292,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "qc" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Bunkhouse"
 	},
 /turf/open/floor/interior/wood,

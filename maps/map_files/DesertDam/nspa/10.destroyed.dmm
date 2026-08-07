@@ -164,7 +164,7 @@
 "pp" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Marshal Office"
 	},
 /turf/open/floor/prison/bright_clean/southwest,
@@ -324,7 +324,7 @@
 /turf/open/floor/prison/redcorner/north,
 /area/desert_dam/building/security/lobby)
 "DC" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Marshal Office"
 	},
 /obj/effect/decal/cleanable/dirt,

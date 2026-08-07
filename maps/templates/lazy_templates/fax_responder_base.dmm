@@ -1972,7 +1972,7 @@
 /turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station/fax_response_station)
 "uu" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering{
 	dir = 1;
 	name = "\improper Sector Relay Power Storage";
 	locked = 1;
@@ -2181,7 +2181,7 @@
 /turf/open/floor/darkgreen2/west,
 /area/adminlevel/ert_station/fax_response_station)
 "wJ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	dir = 1;
 	name = "\improper High Command Office";
 	req_access = null
@@ -3339,7 +3339,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/adminlevel/ert_station/fax_response_station/exterior)
 "HQ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/reinforced{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/security/reinforced{
 	health = 999999;
 	emp_proof = 1;
 	explo_proof = 1;
@@ -3361,7 +3361,7 @@
 /turf/open/floor/shiva/blue/northeast,
 /area/adminlevel/ert_station/fax_response_station)
 "If" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/security/glass{
 	dir = 1;
 	req_access = null;
 	name = "\improper Provost Office"
@@ -3548,7 +3548,7 @@
 /turf/open/floor/corsat/marked,
 /area/adminlevel/ert_station/fax_response_station)
 "JT" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/solid/reinforced{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/reinforced{
 	name = "\improper HC Communications Office";
 	req_access = null;
 	locked = 1;

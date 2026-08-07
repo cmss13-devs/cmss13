@@ -792,7 +792,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass{
 	dir = 1;
 	name = "\improper Underground Medical Laboratory";
 	req_access = null;
@@ -1143,7 +1143,7 @@
 /area/template_noop)
 "IF" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass{
 	name = "\improper Underground Medical Laboratory";
 	req_access = null;
 	req_one_access = null
@@ -1185,7 +1185,7 @@
 /turf/open/floor/shiva/wredfull,
 /area/template_noop)
 "Ki" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass{
 	dir = 1;
 	name = "\improper Underground Medical Laboratory";
 	req_access = null;

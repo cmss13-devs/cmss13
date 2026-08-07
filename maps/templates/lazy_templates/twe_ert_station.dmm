@@ -409,7 +409,7 @@
 /turf/open/floor/almayer/sterile_green,
 /area/adminlevel/ert_station/royal_marines_station)
 "jk" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass,
 /turf/open/floor/almayer/test_floor4,
 /area/adminlevel/ert_station/royal_marines_station)
 "jl" = (
@@ -1775,7 +1775,7 @@
 /turf/open/void,
 /area/adminlevel/ert_station/royal_marines_station)
 "Pb" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1
 	},
 /turf/open/floor/almayer/test_floor4,

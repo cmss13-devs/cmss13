@@ -843,3 +843,17 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 /mob/living/carbon/human/on_floored_trait_loss(datum/source)
 	. = ..()
 	update_xeno_hostile_hud()
+
+/mob/living/carbon/human/proc/update_surgery_overlays()
+	remove_overlay(SURGERY_LAYER)
+	
+	var/list/surgery_overlays = list()
+	for(var/obj/limb/affected_limb as anything in human.contents)
+		if(affected_limb.status & LIMB_DESTROYED)
+			continue
+
+		surgery_overlays += affected_limb.get_surgery_overlays()
+
+	overlays_standing[SURGERY_LAYER] = surgery_overlays
+
+	apply_overlay(SURGERY_LAYER)

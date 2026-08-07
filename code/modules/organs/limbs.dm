@@ -60,6 +60,7 @@
 	var/has_stump_icon = FALSE
 	var/image/wound_overlay //Used to save time redefining it every wound update. Doesn't remember anything but the most recently used icon state.
 	var/image/burn_overlay //Ditto but for burns.
+	var/image/surgery_overlay
 
 	var/splint_icon_amount = 1
 	var/bandage_icon_amount = 1
@@ -106,6 +107,8 @@
 	wound_overlay.color = owner?.species.blood_color
 
 	burn_overlay = image('icons/mob/humans/dam_human.dmi', "burn_0", -DAMAGE_LAYER)
+
+	surgery_overlay = image('icons/mob/humans/dam_human.dmi', "surgery_0", -SURGERY_LAYER)
 
 	if(owner)
 		forceMove(owner)
@@ -1397,6 +1400,29 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 		burn_overlay.icon_state = "burn_[icon_name]_[burnstate]"
 		. += wound_overlay
 
+
+/obj/limb/proc/get_surgery_overlays()
+	. = list()
+	if(!(status & LIMB_DESTROYED))
+		if(status & INCISION_MADE)
+			surgery_overlay.icon_state = "[name]_incision"
+			. += surgery_overlay
+
+		if(status & INCISION_WIDENED)
+			if(status & LIMB_BROKEN)
+				surgery_overlay.icon_state = "[name]_incision_wide_broken" //special case for broken pelvis; need to move organs out of the way.
+				. += surgery_overlay
+			else
+				surgery_overlay.icon_state = "[name]_incision_wide_fixed" //special case for broken pelvis after being fixed.
+				. += surgery_overlay
+
+		if(status & BONE_OPENED)
+			if(status & LIMB_BROKEN)
+				surgery_overlay.icon_state = "[name]_incision_bone_open_broken"
+				. += surgery_overlay
+			else
+				surgery_overlay.icon_state = "[name]_incision_bone_open"
+				. += surgery_overlay
 /*
 			LIMB TYPES
 */

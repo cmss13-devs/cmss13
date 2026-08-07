@@ -43,6 +43,19 @@
 	attack_same = FALSE
 	langchat_color = LIGHT_COLOR_GREEN
 
+	///used for the other icons to be modular
+	var/base_state = "Giant Lizard"
+
+	var/death_sound = 'sound/effects/giant_lizard_death.ogg'
+
+	var/growl_sound = "giant_lizard_growl"
+
+	var/hiss_sound = "giant_lizard_hiss"
+
+	var/wound_icon = 'icons/mob/mob_64.dmi'
+
+	var/has_tongue = TRUE
+
 	///Reference to the ZZzzz sleep overlay when resting.
 	var/sleep_overlay
 	///Reference to the tongue flick overlay.
@@ -89,6 +102,8 @@
 	var/list/acceptable_foods = list(/obj/item/reagent_container/food/snacks/mre_food, /obj/item/reagent_container/food/snacks/resin_fruit)
 	///Is the mob currently eating the food_target?
 	var/is_eating = FALSE
+	///How long do we stun the pounced target for
+	var/stun_duration = 0.5
 	///Cooldown dictating how long the mob will wait between eating food.
 	COOLDOWN_DECLARE(food_cooldown)
 
@@ -106,6 +121,9 @@
 //i don't know if there's any worthwhile performance gain in having a second signal exclusively for movement so we can check if the olddir and newdir are same.
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/change_tongue_offset(datum/source, olddir, newdir)
 	SIGNAL_HANDLER
+
+	if(!has_tongue)
+		return
 
 	if(!newdir)
 		newdir = dir
@@ -148,10 +166,13 @@
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/Initialize()
 	. = ..()
 	wound_icon_holder = new(null, src)
+	wound_icon_holder.icon = wound_icon
 	tongue_icon_holder = new(null, src)
 	tongue_icon_holder.pixel_x = 2
-	vis_contents += wound_icon_holder
 	vis_contents += tongue_icon_holder
+
+	vis_contents += wound_icon_holder
+
 
 	RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, PROC_REF(change_tongue_offset))
 
@@ -178,7 +199,7 @@
 		manual_emote("growls at [target_mob].")
 	else
 		manual_emote("growls.")
-	playsound(loc, "giant_lizard_growl", 60)
+	playsound(loc, growl_sound, 60)
 	COOLDOWN_START(src, growl_message, rand(10, 14) SECONDS)
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/get_status_tab_items()
@@ -232,15 +253,17 @@
 	walk_to(src, 0)
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/update_transform(instant_update = FALSE)
-	tongue_icon_holder.alpha = alpha
+	if(has_tongue)
+		tongue_icon_holder.alpha = alpha
 	if(stat == DEAD)
 		icon_state = icon_dead
 	else if(body_position == LYING_DOWN)
 		if(!HAS_TRAIT(src, TRAIT_INCAPACITATED) && !HAS_TRAIT(src, TRAIT_FLOORED))
-			icon_state = "Giant Lizard Sleeping"
+			icon_state = "[base_state] Sleeping"
 		else
-			icon_state = "Giant Lizard Knocked Down"
-			tongue_icon_holder.alpha = 0
+			icon_state = "[base_state] Knocked Down"
+			if(has_tongue)
+				tongue_icon_holder.alpha = 0
 			//we can't stop an animation that's called via flick(). best we can do is hide it.
 	else
 		icon_state = icon_living
@@ -271,11 +294,11 @@
 			wound_icon_holder.icon_state = "none"
 		else if(body_position == LYING_DOWN)
 			if(!HAS_TRAIT(src, TRAIT_INCAPACITATED) && !HAS_TRAIT(src, TRAIT_FLOORED))
-				wound_icon_holder.icon_state = "Giant Lizard [health_threshold] Rest"
+				wound_icon_holder.icon_state = "[base_state] [health_threshold] Rest"
 			else
-				wound_icon_holder.icon_state = "Giant Lizard [health_threshold] Stun"
+				wound_icon_holder.icon_state = "[base_state] [health_threshold] Stun"
 		else
-			wound_icon_holder.icon_state = "Giant Lizard [health_threshold]"
+			wound_icon_holder.icon_state = "[base_state] [health_threshold]"
 
 #undef NO_WOUNDS
 #undef SMALL_WOUNDS
@@ -313,7 +336,7 @@
 	return ..()
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/death(datum/cause_data/cause_data, gibbed = FALSE, deathmessage = "lets out a waning growl....")
-	playsound(loc, 'sound/effects/giant_lizard_death.ogg', 70)
+	playsound(loc, death_sound, 70)
 	GLOB.giant_lizards_alive -= src
 	return ..()
 
@@ -355,8 +378,9 @@
 				COOLDOWN_START(src, emote_cooldown, rand(5, 8) SECONDS)
 				manual_emote(pick(pick(pet_emotes), "stares at [attacking_mob].", "nuzzles [attacking_mob].", "licks [attacking_mob]'s hand."), "nibbles [attacking_mob]'s arm.")
 				if(prob(50))
-					playsound(loc, "giant_lizard_hiss", 25)
-					flick("Giant Lizard Tongue", tongue_icon_holder)
+					playsound(loc, hiss_sound, 25)
+					if(has_tongue)
+						flick("Giant Lizard Tongue", tongue_icon_holder)
 	if(attacking_mob.a_intent == INTENT_DISARM && prob(25))
 		playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 		KnockDown(0.4)
@@ -397,7 +421,7 @@
 	food_target_ref = null
 	is_eating = FALSE
 	manual_emote("hisses in agony!")
-	playsound(src, "giant_lizard_hiss", 40)
+	playsound(src, hiss_sound, 40)
 	MoveTo(null, 9, TRUE, 4 SECONDS, FALSE)
 	COOLDOWN_START(src, calm_cooldown, 8 SECONDS)
 
@@ -433,7 +457,8 @@
 			AddSleepingIcon()
 
 	if(stat != DEAD && !HAS_TRAIT(src, TRAIT_INCAPACITATED) && !HAS_TRAIT(src, TRAIT_FLOORED) && prob(25))
-		flick("Giant Lizard Tongue", tongue_icon_holder)
+		if(has_tongue)
+			flick("Giant Lizard Tongue", tongue_icon_holder)
 
 	if(bleed_ticks)
 		var/is_small_pool = FALSE
@@ -932,8 +957,8 @@
 			playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 			return
 
-	playsound(loc, "giant_lizard_hiss", 25)
-	pounced_mob.KnockDown(0.5)
+	playsound(loc, hiss_sound, 25)
+	pounced_mob.KnockDown(stun_duration)
 	step_to(src, pounced_mob)
 	if(!client && !(pounced_mob.faction in faction_group))
 		ravagingattack(pounced_mob)
@@ -1009,7 +1034,6 @@
 	. = ..()
 	if(!.)
 		return
-
 	flick("Giant Lizard Tongue", user.tongue_icon_holder)
 
 #undef ATTACK_SLASH

@@ -11,7 +11,8 @@
 	emote_hear = list("meows.","mews.", "mrrps.")
 	emote_see = list("shakes their head.", "shivers.", "licks their paw.")
 	speak_chance = 1
-	turns_per_move = 5
+	min_turns_per_move = 4
+	max_turns_per_move = 10
 	meat_type = /obj/item/reagent_container/food/snacks/meat
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"

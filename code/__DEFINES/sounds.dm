@@ -90,6 +90,7 @@
 #define AMBIENCE_JUNGLE 'sound/ambience/ambienceLV624.ogg'
 #define AMBIENCE_JUNGLEMOON 'sound/ambience/junglemoon.ogg'
 #define AMBIENCE_JUNGLE_ALT 'sound/ambience/ambience_strata.ogg'
+#define AMBIENCE_SWAMP 'sound/ambience/swamp.ogg'
 #define AMBIENCE_RIVER  'sound/ambience/ambienceriver.ogg'
 #define AMBIENCE_MALL 'sound/ambience/medbay1.ogg'
 #define AMBIENCE_CAVE 'sound/ambience/desert.ogg'

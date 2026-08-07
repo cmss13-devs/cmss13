@@ -1428,7 +1428,30 @@
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down
 	icon_state = "rasputin15"
 
+/turf/open/shuttle/dropship/omaha
+	icon = 'icons/turf/mohawk/mohawk-floors.dmi'
+	icon_state = "mohawk_floor"
 
+/turf/open/shuttle/dropship/omaha/basic
+	icon_state = "mohawk_floor"
+
+/turf/open/shuttle/dropship/omaha/grated
+	icon_state = "mohawk_floor_grated"
+
+/turf/open/shuttle/dropship/omaha/external
+	icon_state = "mohawk_external"
+
+/turf/open/shuttle/dropship/omaha/cargo
+	icon_state = "mohawk_cargo"
+
+/turf/open/shuttle/dropship/omaha/half_girder
+	icon_state = "mohawk_half_girder"
+
+/turf/open/shuttle/dropship/omaha/full_girder1
+	icon_state = "mohawk_full_girder1"
+
+/turf/open/shuttle/dropship/omaha/full_girder2
+	icon_state = "mohawk_full_girder2"
 
 /turf/open/shuttle/predship
 	name = "ship floor"

@@ -1,0 +1,218 @@
+"ak" = (/turf/closed/shuttle/dropship_omaha{icon_state = "4,12"},/area/shuttle/drop1/sulaco)
+"al" = (/turf/open/shuttle/dropship/omaha/basic,/area/shuttle/drop1/sulaco)
+"ay" = (/turf/closed/shuttle/dropship_omaha{icon_state = "8,8"},/area/shuttle/drop1/sulaco)
+"aH" = (/turf/closed/shuttle/dropship_omaha{icon_state = "3,0"},/area/shuttle/drop1/sulaco)
+"bm" = (/turf/closed/shuttle/dropship_omaha{icon_state = "1,2"},/area/shuttle/drop1/sulaco)
+"bD" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_23,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"bF" = (/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_22,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"bM" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_13,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"bS" = (/obj/structure/shuttle/part/dropship1/transparent/lower_left_wing{icon = 'icons/obj/structures/machinery/mohawk/mohawk-windshield-64x64.dmi'; icon_state = "wingpoint-left"; pixel_x = -32; pixel_y = -16},/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_00,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"cV" = (/turf/closed/shuttle/dropship_omaha/transparent{icon_state = "6,20"},/area/shuttle/drop1/sulaco)
+"db" = (/turf/closed/shuttle/dropship_omaha{icon_state = "6,9"},/area/shuttle/drop1/sulaco)
+"dr" = (/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_14,/obj/structure/shuttle/part/dropship1/transparent/inner_left_weapons{icon = 'icons/obj/structures/machinery/mohawk/mohawk-windshield.dmi'; icon_state = "hardpoint-left"},/turf/template_noop,/area/shuttle/drop1/sulaco)
+"ee" = (/turf/closed/shuttle/dropship_omaha{icon_state = "0,15"},/area/shuttle/drop1/sulaco)
+"eL" = (/turf/closed/shuttle/dropship_omaha/transparent{icon_state = "2,20"},/area/shuttle/drop1/sulaco)
+"eR" = (/turf/closed/shuttle/dropship_omaha{icon_state = "4,0"},/area/shuttle/drop1/sulaco)
+"fb" = (/turf/closed/shuttle/dropship_omaha/landing_gear{icon_state = "landing_gear2_sw"},/area/shuttle/drop1/sulaco)
+"fd" = (/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_06,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"fI" = (/turf/closed/shuttle/dropship_omaha{icon_state = "3,16"},/area/shuttle/drop1/sulaco)
+"gO" = (/turf/open/shuttle/dropship/omaha/full_girder2,/area/shuttle/drop1/sulaco)
+"hz" = (/turf/closed/shuttle/dropship_omaha/transparent{icon_state = "3,20"},/area/shuttle/drop1/sulaco)
+"ie" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_01,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"iD" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_32,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"iG" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_14,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"iQ" = (/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_36,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"jY" = (/turf/closed/shuttle/dropship_omaha{icon_state = "8,6"},/area/shuttle/drop1/sulaco)
+"kq" = (/turf/closed/shuttle/dropship_omaha/transparent{icon_state = "4,20"; dir = 1},/area/shuttle/drop1/sulaco)
+"kx" = (/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_14,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"ky" = (/turf/closed/shuttle/dropship_omaha{icon_state = "7,16"},/area/shuttle/drop1/sulaco)
+"lw" = (/turf/closed/shuttle/dropship_omaha{icon_state = "0,9"},/area/shuttle/drop1/sulaco)
+"lx" = (/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_02,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"mu" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_22,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"mD" = (/turf/closed/shuttle/dropship_omaha{icon_state = "8,9"},/area/shuttle/drop1/sulaco)
+"mL" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_12,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"mY" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_21,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"nc" = (/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_11,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"nt" = (/turf/closed/shuttle/dropship_omaha{icon_state = "0,6"},/area/shuttle/drop1/sulaco)
+"nC" = (/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_13,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"nN" = (/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_01,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"nQ" = (/turf/closed/shuttle/dropship_omaha{icon_state = "7,1"},/area/shuttle/drop1/sulaco)
+"nW" = (/turf/closed/shuttle/dropship_omaha{icon_state = "2,0"},/area/shuttle/drop1/sulaco)
+"oW" = (/obj/item/cpr_dummy{pixel_y = -1},/turf/template_noop,/area/shuttle/drop1/sulaco)
+"pT" = (/turf/closed/shuttle/dropship_omaha,/area/shuttle/drop1/sulaco)
+"pY" = (/obj/structure/machinery/computer/dropship_weapons/dropship_omaha{pixel_x = -17; pixel_y = -8},/turf/open/shuttle/dropship/omaha/full_girder2{dir = 1; icon_state = "mohawk_cockpit_right"},/area/shuttle/drop1/sulaco)
+"qc" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_14,/turf/closed/shuttle/dropship_omaha{icon_state = "0,13"},/area/shuttle/drop1/sulaco)
+"ql" = (/turf/closed/shuttle/dropship_omaha{icon_state = "1,11"},/area/shuttle/drop1/sulaco)
+"qm" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_30,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"qo" = (/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_01,/obj/structure/shuttle/part/dropship1/transparent/outer_right_weapons{icon = 'icons/obj/structures/machinery/mohawk/mohawk-windshield.dmi'; icon_state = "hardpoint-right"},/turf/template_noop,/area/shuttle/drop1/sulaco)
+"qr" = (/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_13,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"qE" = (/turf/closed/shuttle/dropship_omaha{icon_state = "1,15"},/area/shuttle/drop1/sulaco)
+"qI" = (/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_14,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"qO" = (/obj/structure/machinery/computer/shuttle/dropship/flight/omaha{pixel_x = -17; pixel_y = -14},/turf/open/shuttle/dropship/omaha/basic,/area/shuttle/drop1/sulaco)
+"qY" = (/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_24,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"rb" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_33,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"re" = (/turf/closed/shuttle/dropship_omaha{icon_state = "6,16"},/area/shuttle/drop1/sulaco)
+"rf" = (/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_01,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"rq" = (/turf/closed/shuttle/dropship_omaha{icon_state = "2,17"},/area/shuttle/drop1/sulaco)
+"rU" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_00,/turf/closed/shuttle/dropship_omaha{icon_state = "8,12"},/area/shuttle/drop1/sulaco)
+"sq" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_11,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"sz" = (/turf/closed/shuttle/dropship_omaha{icon_state = "8,3"},/area/shuttle/drop1/sulaco)
+"sP" = (/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_02,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"tn" = (/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_12,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"tC" = (/turf/closed/shuttle/dropship_omaha{icon_state = "0,7"},/area/shuttle/drop1/sulaco)
+"tI" = (/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_12,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"ub" = (/turf/open/shuttle/dropship/omaha/external,/area/shuttle/drop1/sulaco)
+"uf" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_10,/turf/closed/shuttle/dropship_omaha{icon_state = "8,13"},/area/shuttle/drop1/sulaco)
+"uj" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_03,/turf/closed/shuttle/dropship_omaha{icon_state = "0,12"},/area/shuttle/drop1/sulaco)
+"uq" = (/mob/living/carbon/human/professor_dummy,/turf/open/shuttle/dropship/omaha/basic,/area/shuttle/drop1/sulaco)
+"uu" = (/obj/structure/closet/secure_closet/professor_dummy,/turf/open/shuttle/dropship/omaha/basic,/area/shuttle/drop1/sulaco)
+"va" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_11,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"ve" = (/obj/structure/machinery/computer/cameras/dropship/omaha{pixel_x = -16; pixel_y = -6},/turf/open/shuttle/dropship/omaha/full_girder2{icon_state = "mohawk_cockpit_left"; dir = 1},/area/shuttle/drop1/sulaco)
+"vf" = (/obj/structure/closet/secure_closet/professor_dummy,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"vm" = (/turf/closed/shuttle/dropship_omaha{icon_state = "0,4"},/area/shuttle/drop1/sulaco)
+"vr" = (/turf/closed/shuttle/dropship_omaha{icon_state = "0,5"},/area/shuttle/drop1/sulaco)
+"vs" = (/turf/closed/shuttle/dropship_omaha{icon_state = "2,9"},/area/shuttle/drop1/sulaco)
+"vD" = (/turf/closed/shuttle/dropship_omaha{icon_state = "8,14"},/area/shuttle/drop1/sulaco)
+"vW" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_20,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"wq" = (/turf/closed/shuttle/dropship_omaha{icon_state = "0,14"},/area/shuttle/drop1/sulaco)
+"wG" = (/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_11,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"wW" = (/turf/closed/shuttle/dropship_omaha/landing_gear{icon_state = "landing_gear1_ne"},/area/shuttle/drop1/sulaco)
+"xH" = (/turf/closed/shuttle/dropship_omaha{icon_state = "2,16"},/area/shuttle/drop1/sulaco)
+"xY" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_23,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"ym" = (/obj/structure/bed/chair/dropship/pilot{dir = 1},/turf/open/shuttle/dropship/omaha/full_girder2,/area/shuttle/drop1/sulaco)
+"yu" = (/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_04,/obj/structure/shuttle/part/dropship1/transparent/outer_left_weapons{icon = 'icons/obj/structures/machinery/mohawk/mohawk-windshield.dmi'; icon_state = "hardpoint-left"},/turf/template_noop,/area/shuttle/drop1/sulaco)
+"yy" = (/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_13,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"yO" = (/turf/closed/shuttle/dropship_omaha{icon_state = "8,15"},/area/shuttle/drop1/sulaco)
+"zq" = (/turf/closed/shuttle/dropship_omaha{icon_state = "1,12"},/area/shuttle/drop1/sulaco)
+"zt" = (/turf/closed/shuttle/dropship_omaha/landing_gear{icon_state = "landing_gear2_ne"},/area/shuttle/drop1/sulaco)
+"zG" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_31,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"zX" = (/turf/closed/shuttle/dropship_omaha{icon_state = "7,0"},/area/shuttle/drop1/sulaco)
+"zY" = (/turf/closed/shuttle/dropship_omaha/transparent{icon_state = "2,19"},/area/shuttle/drop1/sulaco)
+"AD" = (/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_21,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"Br" = (/turf/closed/shuttle/dropship_omaha{icon_state = "7,12"},/area/shuttle/drop1/sulaco)
+"Bv" = (/turf/closed/shuttle/dropship_omaha{icon_state = "8,7"},/area/shuttle/drop1/sulaco)
+"BB" = (/turf/closed/shuttle/dropship_omaha{icon_state = "0,2"},/area/shuttle/drop1/sulaco)
+"BI" = (/turf/closed/shuttle/dropship_omaha/landing_gear{icon_state = "landing_gear1_nw"},/area/shuttle/drop1/sulaco)
+"CH" = (/turf/closed/shuttle/dropship_omaha{icon_state = "6,2"},/area/shuttle/drop1/sulaco)
+"CN" = (/turf/closed/shuttle/dropship_omaha/landing_gear{icon_state = "landing_gear2_se"},/area/shuttle/drop1/sulaco)
+"Dm" = (/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_03,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"Dq" = (/turf/closed/shuttle/dropship_omaha/transparent{icon_state = "6,19"},/area/shuttle/drop1/sulaco)
+"Dv" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_33,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"Ep" = (/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_02,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"Fi" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_32,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"FC" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_21,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"FR" = (/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_03,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"FX" = (/turf/closed/shuttle/dropship_omaha/landing_gear{icon_state = "landing_gear1_se"},/area/shuttle/drop1/sulaco)
+"Gc" = (/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_24,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"Go" = (/turf/closed/shuttle/dropship_omaha{icon_state = "1,1"},/area/shuttle/drop1/sulaco)
+"Gp" = (/turf/closed/shuttle/dropship_omaha/landing_gear{icon_state = "landing_gear2_nw"},/area/shuttle/drop1/sulaco)
+"GK" = (/turf/closed/shuttle/dropship_omaha{icon_state = "5,16"},/area/shuttle/drop1/sulaco)
+"Hm" = (/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_21,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"HB" = (/turf/closed/shuttle/dropship_omaha{icon_state = "2,2"},/area/shuttle/drop1/sulaco)
+"HD" = (/turf/open/shuttle/dropship/omaha/grated,/area/shuttle/drop1/sulaco)
+"HO" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_30,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"Ie" = (/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_12,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"Ir" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_22,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"Jb" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_01,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"Jz" = (/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_16,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"JL" = (/turf/closed/shuttle/dropship_omaha/transparent{icon_state = "5,20"},/area/shuttle/drop1/sulaco)
+"JO" = (/turf/closed/shuttle/dropship_omaha{icon_state = "6,11"},/area/shuttle/drop1/sulaco)
+"JW" = (/turf/open/shuttle/dropship/omaha/half_girder{dir = 4},/area/shuttle/drop1/sulaco)
+"KC" = (/turf/closed/shuttle/dropship_omaha{icon_state = "1,16"},/area/shuttle/drop1/sulaco)
+"KD" = (/turf/closed/shuttle/dropship_omaha{icon_state = "5,0"},/area/shuttle/drop1/sulaco)
+"KI" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_13,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"Md" = (/obj/item/cpr_dummy{pixel_y = -1},/turf/open/shuttle/dropship/omaha/grated,/area/shuttle/drop1/sulaco)
+"Mu" = (/turf/closed/shuttle/dropship_omaha{icon_state = "8,2"},/area/shuttle/drop1/sulaco)
+"MG" = (/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_04,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"Nf" = (/turf/closed/shuttle/dropship_omaha{icon_state = "0,3"},/area/shuttle/drop1/sulaco)
+"NO" = (/turf/closed/shuttle/dropship_omaha/landing_gear{icon_state = "landing_gear1_sw"},/area/shuttle/drop1/sulaco)
+"NS" = (/turf/closed/shuttle/dropship_omaha{icon_state = "0,8"},/area/shuttle/drop1/sulaco)
+"OH" = (/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_10,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"OW" = (/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_23,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"PX" = (/obj/structure/shuttle/part/dropship1/transparent/lower_right_wing{icon = 'icons/obj/structures/machinery/mohawk/mohawk-windshield-64x64.dmi'; icon_state = "wingpoint-right"; pixel_y = -16},/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_02,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"Qv" = (/turf/closed/shuttle/dropship_omaha{icon_state = "7,15"},/area/shuttle/drop1/sulaco)
+"Rb" = (/turf/closed/shuttle/dropship_omaha{icon_state = "4,11"},/area/shuttle/drop1/sulaco)
+"Rf" = (/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_22,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"RM" = (/obj/item/cpr_dummy{pixel_y = -1},/turf/open/shuttle/dropship/omaha/full_girder2,/area/shuttle/drop1/sulaco)
+"RX" = (/turf/closed/shuttle/dropship_omaha{icon_state = "1,9"},/area/shuttle/drop1/sulaco)
+"So" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_20,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"Ss" = (/turf/closed/shuttle/dropship_omaha{icon_state = "6,18"},/area/shuttle/drop1/sulaco)
+"SK" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_10,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"SV" = (/turf/closed/shuttle/dropship_omaha{icon_state = "2,11"},/area/shuttle/drop1/sulaco)
+"Ti" = (/turf/closed/shuttle/dropship_omaha{icon_state = "6,0"},/area/shuttle/drop1/sulaco)
+"Tq" = (/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_03,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"TD" = (/turf/open/shuttle/dropship/omaha/half_girder{dir = 8},/area/shuttle/drop1/sulaco)
+"TH" = (/turf/closed/shuttle/dropship_omaha{icon_state = "7,11"},/area/shuttle/drop1/sulaco)
+"TL" = (/turf/closed/shuttle/dropship_omaha{icon_state = "7,2"},/area/shuttle/drop1/sulaco)
+"TU" = (/turf/template_noop,/area/shuttle/drop1/sulaco)
+"Uq" = (/mob/living/carbon/human/professor_dummy,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"Uv" = (/turf/closed/shuttle/dropship_omaha{icon_state = "7,9"},/area/shuttle/drop1/sulaco)
+"Ux" = (/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_15,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"UP" = (/turf/closed/shuttle/dropship_omaha{icon_state = "8,5"},/area/shuttle/drop1/sulaco)
+"US" = (/turf/closed/shuttle/dropship_omaha{icon_state = "6,17"},/area/shuttle/drop1/sulaco)
+"Vd" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_31,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"VX" = (/obj/docking_port/mobile/marine_dropship/omaha,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"Wa" = (/turf/template_noop,/area/space)
+"WI" = (/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_00,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"Xc" = (/turf/open/shuttle/dropship/omaha/cargo,/area/shuttle/drop1/sulaco)
+"Xv" = (/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_04,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"XV" = (/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_30,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"Yd" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_12,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"Yu" = (/turf/closed/shuttle/dropship_omaha{icon_state = "8,4"},/area/shuttle/drop1/sulaco)
+"YA" = (/turf/closed/shuttle/dropship_omaha{icon_state = "2,18"},/area/shuttle/drop1/sulaco)
+"YC" = (/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_11,/obj/structure/shuttle/part/dropship1/transparent/inner_right_weapons{icon = 'icons/obj/structures/machinery/mohawk/mohawk-windshield.dmi'; icon_state = "hardpoint-right"},/turf/template_noop,/area/shuttle/drop1/sulaco)
+"Zd" = (/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_05,/turf/template_noop,/area/shuttle/drop1/sulaco)
+"ZA" = (/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_23,/turf/template_noop,/area/shuttle/drop1/sulaco)
+
+(1,1,1) = {"
+WaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWa
+WaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWa
+WaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWa
+WaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWa
+WaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWa
+WaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWa
+WaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWa
+WaWaWaBIwWWaWaWaWaWaWaWaBIwWWaWaWa
+WaWaWaNOFXWaWaWaWaWaWaWaNOFXWaWaWa
+WaWaWaWaTUWaWaWaWaWaWaWaTUWaWaWaWa
+WaWaWaWaTUWaWaWaWaWaWaWaTUWaWaWaWa
+WaWaWaWaTUWaWaWaWaWaWaWaTUWaWaWaWa
+WaWaWaWaTUTUvfUqVXoWTUTUTUWaWaWaWa
+WaWaWaWaTUWaWaWaWaWaWaWaTUWaWaWaWa
+WaWaWaWarfWaWaWaWaWaWaWaTUWaWaWaWa
+WaWaWaWaTUWaWaWaWaWaWaWaTUWaWaWaWa
+WaWaWaWaTUWaWaWaWaWaWaWaTUWaWaWaWa
+WaWaWaWaGpztWaWaWaWaWaGpztWaWaWaWa
+WaWaWaWafbCNWaWaWaWaWafbCNWaWaWaWa
+WaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWa
+WaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWa
+WaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWa
+WaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWa
+WaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWa
+"}
+(1,1,2) = {"
+WaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWa
+WaWaWaWaWaWaeLhzkqJLcVWaWaWaWaWaWa
+WaWaWaWaWaWazYveqOpYDqWaWaWaWaWaWa
+WaWaHmRfOWqYYAymalymSsADbFZAGcWaWa
+WaWanctInCdrrqalHDalUSYCtnqrkxWaWa
+WarflxTqyuKCxHfIRMGKrekyqosPDmMGWa
+qmzGiDDveeqEHDalHDalHDQvyOHOVdFirb
+vWmYmuxYwqHDTDalgOalJWHDvDSoFCIrbD
+SKsqYdKIqcHDTDalgOalJWHDufvamLbMiG
+WaTUbSJbujzqHDalakalHDBrrUiePXTUWa
+WaWaWaWaubqlSValRbalJOTHubWaWaWaWa
+WaWaWaWaubHDalalMdalalHDubWaWaWaWa
+WaWaWaWalwRXvsuquuuudbUvmDWaWaWaWa
+WaWaWaWaNSHDalHDuqHDalHDayWaWaWaWa
+WaWaWaWatCHDalTUTUTUalHDBvWaWaWaWa
+WaWaWaWantHDalTUTUTUalHDjYWaWaWaWa
+WaWaWaWavrMdalTUTUTUalMdUPWaWaWaWa
+WaWaWaWavmHDJWTUTUTUTDHDYuWaWaWaWa
+WaWaWaWaNfHDJWHDalHDTDHDszWaWaWaWa
+WaWaWaWaBBbmHBHDalHDCHTLMuWaWaWaWa
+WaWaWaWaXVGoXcHDalHDXcnQiQWaWaWaWa
+WaWaWaWaWapTnWaHeRKDTizXWaWaWaWaWa
+WaWaWaWaWaOHwGIeyyqIUxJzWaWaWaWaWa
+WaWaWaWaWaWInNEpFRXvZdfdWaWaWaWaWa
+"}

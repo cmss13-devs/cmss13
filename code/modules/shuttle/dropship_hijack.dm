@@ -49,20 +49,15 @@
 		var/turf/sploded = locate(crash_site.x + rand(-5, 15), crash_site.y + rand(-5, 25), crash_site.z)
 		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), sploded, 250, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("dropship crash"))
 
+	SSexplosion_waves.set_checkpoint("checkpoint_hijack_crash")
+
 	// Break the ultra-reinforced windows.
 	// Break the briefing windows.
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_HIJACK_IMPACTED)
 	RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_LANDED, PROC_REF(finish_landing))
 
-	// Sleep while the explosions do their job
-	var/explosion_alive = TRUE
-	while(explosion_alive)
-		explosion_alive = FALSE
-		for(var/datum/automata_cell/explosion/existing_cell as anything in GLOB.cellauto_cells)
-			if(existing_cell.explosion_cause_data && existing_cell.explosion_cause_data.cause_name == "dropship crash")
-				explosion_alive = TRUE
-				break
-		sleep(10)
+	SSexplosion_waves.synchronize("checkpoint_hijack_crash")
+	sleep(5 SECONDS)
 
 /datum/dropship_hijack/almayer/proc/finish_landing()
 	SShijack.announce_status_on_crash()

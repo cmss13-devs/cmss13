@@ -155,21 +155,21 @@
 	apply_cooldown()
 
 /datum/action/xeno_action/activable/tail_stab/boiler/use_ability(atom/affected_atom)
-	var/mob/living/carbon/xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/stabbing_xeno = owner
 	var/target = ..()
 	if(iscarbon(target))
 		var/mob/living/carbon/carbon_target = target
-		if(xeno.ammo == GLOB.ammo_list[/datum/ammo/xeno/boiler_gas/acid])
+		if(stabbing_xeno.ammo == GLOB.ammo_list[/datum/ammo/xeno/boiler_gas/acid])
 			carbon_target.reagents.add_reagent("molecularacid", 6)
 			carbon_target.reagents.set_source_mob(owner, /datum/reagent/toxin/molecular_acid)
-		else if(xeno.ammo == GLOB.ammo_list[/datum/ammo/xeno/boiler_gas])
+		else if(stabbing_xeno.ammo == GLOB.ammo_list[/datum/ammo/xeno/boiler_gas])
 			var/datum/effects/neurotoxin/neuro_effect = locate() in carbon_target.effects_list
 			if(!neuro_effect)
 				neuro_effect = new(carbon_target, owner)
 			neuro_effect.duration += 20
-			to_chat(carbon_target,SPAN_HIGHDANGER("You are injected with something from [xeno]'s tailstab!"))
+			to_chat(carbon_target,SPAN_HIGHDANGER("You are injected with something from [stabbing_xeno]'s tailstab!"))
 		else
-			CRASH("Globber has unknown ammo [xeno.ammo]! Oh no!")
+			CRASH("Globber has unknown ammo [stabbing_xeno.ammo]! Oh no!")
 		return TRUE
 
 #define ACID_COST_BOILER 200 // ACID_COST_LEVEL_3

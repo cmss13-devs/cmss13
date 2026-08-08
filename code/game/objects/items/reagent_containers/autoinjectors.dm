@@ -442,9 +442,9 @@
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 
-/obj/item/reagent_container/hypospray/autoinjector/tutorial/epinephrine //in case we ever want to add defibrillation to the medical tutorial
+/obj/item/reagent_container/hypospray/autoinjector/tutorial/adrenaline //in case we ever want to add defibrillation to the medical tutorial
 	name = "epinephrine EZ autoinjector (FOR TRAINING USE ONLY)"
-	chemname = "anti_toxin"
+	chemname = "adrenaline"
 	desc = "An EZ autoinjector loaded with a single 5u dose of Epinephrine, a medicine used to stabilize defibrillated patients. To use it, click the autoinjector while it is in your hand. You can also click any person one tile near you, or yourself, to inject its contents. Most autoinjectors can be refilled with a Wey-Med vending machine."
 	maptext_label = "OuDy"
 	amount_per_transfer_from_this = LOWM_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD

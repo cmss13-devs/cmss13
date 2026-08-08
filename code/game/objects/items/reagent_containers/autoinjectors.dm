@@ -391,8 +391,8 @@
 	name = "tricordrazine EZ autoinjector (FOR TRAINING USE ONLY)"
 	chemname = "tricordrazine"
 	desc = "An autoinjector loaded with a single 15u dose of Tricordrazine, a common wide-spectrum damage healer. To use it, click the autoinjector while it is in your hand. You can also click any person one tile near you, or yourself, to inject its contents. Most autoinjectors can be refilled with a Wey-Med vending machine."
-	icon_state = "empty_tutorial"
-	autoinjector_type = "autoinjector_single"
+	icon_state = "empty_oneuse"
+	autoinjector_type = "autoinjector_oneuse"
 	display_maptext = TRUE
 	skilllock = SKILL_MEDICAL_DEFAULT
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
@@ -409,7 +409,7 @@
 	volume = (REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 
 /obj/item/reagent_container/hypospray/autoinjector/tutorial/kelotane
-	name = "kelotane EZ  autoinjector (FOR TRAINING USE ONLY)"
+	name = "kelotane EZ autoinjector (FOR TRAINING USE ONLY)"
 	chemname = "kelotane"
 	desc = "An autoinjector loaded with a single 15u dose of Kelotane, a common burn medicine. To use it, click the autoinjector while it is in your hand. You can also click any person one tile near you, or yourself, to inject its contents. Most autoinjectors can be refilled with a Wey-Med vending machine."
 	maptext_label = "OuKl"

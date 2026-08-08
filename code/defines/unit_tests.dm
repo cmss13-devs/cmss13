@@ -108,6 +108,7 @@
 #include "..\modules\unit_tests\movement\movement_helpers.dm"
 #include "..\modules\unit_tests\pheromones\transmit_hive.dm"
 #include "..\modules\unit_tests\pheromones\transmit_castes.dm"
+#include "..\modules\unit_tests\pheromones\transmit_permutation.dm"
 #include "..\modules\unit_tests\pheromones\pheromone_helpers.dm"
 
 // Unit tests backend

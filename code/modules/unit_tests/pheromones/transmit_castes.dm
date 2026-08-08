@@ -99,6 +99,25 @@
 /datum/unit_test/pheromones/transmit_castes/carrier/warding/Run()
 	. = ..(pheromone_type = XENO_PHERO_WARDING)
 
+/datum/unit_test/pheromones/transmit_castes/carrier/eggsac/Run(pheromone_type = XENO_PHERO_RECOVERY)
+	var/list/expected_pheromones = list()
+	expected_pheromones[pheromone_type] = XENO_PHERO_STRENGTH_NORMAL
+
+	all_caste_reception_test(
+		abstract_emitter = new /datum/abstract_xenomorph(
+			caste = XENO_CASTE_CARRIER,
+			initialization_callback = CALLBACK(src, PROC_REF(set_strain_on_init), CARRIER_EGGSAC)
+		),
+		pheromone_type = pheromone_type,
+		test_callback = CALLBACK(src, PROC_REF(pheromone_validation), expected_pheromones)
+	)
+
+/datum/unit_test/pheromones/transmit_castes/carrier/eggsac/frenzy/Run()
+	. = ..(pheromone_type = XENO_PHERO_FRENZY)
+
+/datum/unit_test/pheromones/transmit_castes/carrier/eggsac/warding/Run()
+	. = ..(pheromone_type = XENO_PHERO_WARDING)
+
 /datum/unit_test/pheromones/transmit_castes/praetoreon/Run(pheromone_type = XENO_PHERO_RECOVERY)
 	var/list/expected_pheromones = list()
 	expected_pheromones[pheromone_type] = XENO_PHERO_STRENGTH_STRONG

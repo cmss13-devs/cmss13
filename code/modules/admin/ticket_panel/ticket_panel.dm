@@ -65,7 +65,7 @@
 		"closed_at" = AH.time_activity["closed_at"],
 		"claimed_by" = AH.marked_admin_key_name,
 		"all_responses" = formatted_responses,
-		"viewer_is_claiming" = (AH.marked_admin == (viewer ? viewer.ckey : usr?.ckey) ? TRUE : FALSE),
+		"viewer_is_claiming" = (AH.marked_admin == (viewer ? viewer.username() : usr?.username()) ? TRUE : FALSE),
 		"is_archived" = (AH.state != AHELP_ACTIVE),
 		"ic_name" = player_info ? player_info["ic_name"] : null,
 		"faction" = player_info ? player_info["faction"] : null,
@@ -115,9 +115,9 @@
 		"status" = status,
 		"timestamp" = mentor_help_thread.time_activity["opened_at"],
 		"closed_at" = mentor_help_thread.time_activity["closed_at"],
-		"claimed_by" = mentor_help_thread.mentor ? mentor_help_thread.mentor.ckey : null,
+		"claimed_by" = mentor_help_thread.mentor ? mentor_help_thread.mentor.username() : null,
 		"all_responses" = formatted_responses,
-		"viewer_is_claiming" = (mentor_help_thread.mentor && (mentor_help_thread.mentor.ckey == viewer?.ckey) ? TRUE : FALSE),
+		"viewer_is_claiming" = (mentor_help_thread.mentor && (mentor_help_thread.mentor.username() == viewer?.username()) ? TRUE : FALSE),
 		"is_archived" = !mentor_help_thread.open,
 		"ic_name" = ic_name,
 		"faction" = faction,
@@ -254,7 +254,7 @@
 				to_chat(parent_mob, SPAN_NOTICE("Switched to existing mentor ticket for [target.current_mhelp.get_display_name(current_client, target)]"))
 				return TRUE
 
-			if(GLOB.mentorhelp_manager.get_active_ticket_by_ckey(target.ckey))
+			if(GLOB.mentorhelp_manager.get_active_ticket_by_ckey(target.username()))
 				to_chat(current_mob, SPAN_WARNING("This user already has an open mentor ticket. Please close it first or use the existing one."), confidential = TRUE)
 				return FALSE
 
@@ -294,7 +294,7 @@
 						return FALSE
 					player = mentor_help_thread.author.mob
 
-			if(!player || !player.ckey)
+			if(!player || !player.username())
 				to_chat(current_mob, SPAN_WARNING("Could not find player associated with this ticket."))
 				return FALSE
 
@@ -353,13 +353,13 @@
 				if(ADMIN_TAB)
 					var/datum/admin_help/AH = GLOB.ahelp_tickets.TicketByID(ticket_id)
 					if(AH)
-						if(AH.marked_admin && AH.marked_admin != current_mob.ckey)
+						if(AH.marked_admin && AH.marked_admin != current_mob.username())
 							to_chat(current_mob, SPAN_WARNING("You don't have permission to close this ticket."))
 							return
 						if(AH.state != AHELP_ACTIVE)
 							to_chat(current_mob, SPAN_WARNING("This ticket is already [AH.state == AHELP_RESOLVED ? "resolved" : "closed"]."))
 							return
-						AH.Resolve(current_mob.ckey, FALSE)
+						AH.Resolve(current_mob.username(), FALSE)
 						message_admins("[key_name_admin(current_mob)] closed ticket #[ticket_id]")
 						log_admin("Ticket #[ticket_id] closed by [key_name(current_mob)]")
 				if(MENTOR_TAB)
@@ -369,7 +369,7 @@
 							to_chat(current_mob, SPAN_WARNING("This mentor ticket is already closed."))
 							return
 
-						if(mentor_help_thread.mentor && mentor_help_thread.mentor.ckey != current_mob.ckey && !CLIENT_IS_STAFF(current_client))
+						if(mentor_help_thread.mentor && mentor_help_thread.mentor.username() != current_mob.username() && !CLIENT_IS_STAFF(current_client))
 							to_chat(current_mob, SPAN_WARNING("You don't have permission to close this ticket."))
 							return
 
@@ -386,7 +386,7 @@
 					var/datum/admin_help/AH = GLOB.ahelp_tickets.TicketByID(ticket_id)
 					if(AH)
 						if(AH.marked_admin)
-							if(AH.marked_admin == current_mob.ckey)
+							if(AH.marked_admin == current_mob.username())
 								AH.unmark_ticket()
 								message_admins("[key_name_admin(current_mob)] unclaimed ticket #[ticket_id]")
 							else
@@ -400,7 +400,7 @@
 						return FALSE
 
 					if(mentor_help_thread.mentor)
-						if(mentor_help_thread.mentor.ckey == current_mob.ckey)
+						if(mentor_help_thread.mentor.username() == current_mob.username())
 							mentor_help_thread.unmark(current_client)
 						else
 							mentor_help_thread.toggle_mark(current_client)
@@ -485,7 +485,7 @@
 				return FALSE
 
 			var/mob/noted_mob = AH.initiator.mob
-			if(!noted_mob || !noted_mob.ckey)
+			if(!noted_mob || !noted_mob.username())
 				to_chat(current_mob, SPAN_WARNING("Unable to find mob."))
 				return FALSE
 
@@ -516,11 +516,11 @@
 				return FALSE
 
 			var/mob/banned_mob = AH.initiator.mob
-			if(!current_mob || !current_mob.ckey)
+			if(!current_mob || !current_mob.username())
 				to_chat(current_mob, SPAN_WARNING("Unable to find player to ban."))
 				return FALSE
 
-			var/choice = tgui_alert(current_mob, "Are you sure you want to permaban [banned_mob.ckey]?", "Ban [banned_mob.ckey]", list("Ban", "Cancel"))
+			var/choice = tgui_alert(current_mob, "Are you sure you want to permaban [banned_mob.username()]?", "Ban [banned_mob.username()]", list("Ban", "Cancel"))
 
 			if(!choice || (choice == "Cancel"))
 				return FALSE
@@ -531,9 +531,9 @@
 			if(!perm_ban.act(current_client, banned_mob))
 				return FALSE
 
-			AH.Resolve(current_mob.ckey, FALSE)
+			AH.Resolve(current_mob.username(), FALSE)
 			message_admins("[key_name_admin(current_mob)] banned [key_name_admin(banned_mob)] and closed ticket #[ticket_id]")
-			log_admin("Ticket #[ticket_id] closed by [key_name(current_mob)] after banning [banned_mob.ckey]")
+			log_admin("Ticket #[ticket_id] closed by [key_name(current_mob)] after banning [banned_mob.username()]")
 			return TRUE
 
 /datum/ticket_panel/tgui_interact(mob/user, datum/tgui/ui)

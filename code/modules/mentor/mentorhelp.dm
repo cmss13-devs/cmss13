@@ -14,17 +14,17 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 	if(!ckey)
 		return null
 	for(var/id in active_tickets)
-		var/datum/mentorhelp/MH = active_tickets[id]
-		if(MH && ckey(MH.author_key) == ckey)
-			return MH
+		var/datum/mentorhelp/mentor_help_thread = active_tickets[id]
+		if(mentor_help_thread && ckey(mentor_help_thread.author_key) == ckey)
+			return mentor_help_thread
 	return null
 
 /datum/mentorhelp_manager/proc/create_ticket(client/author, message)
-	var/datum/mentorhelp/MH = new(author)
-	MH.initial_message = message
-	MH.latest_message = message
-	author.current_mhelp = MH
-	return MH
+	var/datum/mentorhelp/mentor_help_thread = new(author)
+	mentor_help_thread.initial_message = message
+	mentor_help_thread.latest_message = message
+	author.current_mhelp = mentor_help_thread
+	return mentor_help_thread
 
 // Represents a mentorhelp thread
 /datum/mentorhelp
@@ -60,7 +60,7 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 		qdel(src)
 		return
 
-	var/datum/mentorhelp/existing = GLOB.mentorhelp_manager.get_active_ticket_by_ckey(thread_author.ckey)
+	var/datum/mentorhelp/existing = GLOB.mentorhelp_manager.get_active_ticket_by_ckey(thread_author.username())
 	if(existing)
 		to_chat(thread_author, SPAN_WARNING("You already have an active mentor help ticket. Please wait for a mentor to respond."))
 		qdel(src)
@@ -329,7 +329,7 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 
 		// Initial broadcast
 		else if(!staff_only && !recipient && CLIENT_HAS_RIGHTS(admin_client, R_MENTOR))
-			formatted = wrap_message(formatted, sender, admin_client)
+			formatted = wrap_message(formatted, sender, admin_client, TRUE)
 			soundfile = 'sound/effects/mhelp.ogg'
 
 		// Eavesdrop
@@ -376,13 +376,13 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 	return
 
 // Sanitizes and wraps the message with some info and links, depending on the sender...?
-/datum/mentorhelp/proc/wrap_message(message, client/sender, client/recipient = null)
+/datum/mentorhelp/proc/wrap_message(message, client/sender, client/recipient = null, first_message = FALSE)
 	var/message_title = "MentorPM"
 	var/message_sender_key = ""
 	var/message_sender_options = ""
 
 	// The message is being sent to the mentor and should be formatted as a mentorhelp message
-	if(sender == author)
+	if(sender == author && first_message)
 		message_title = "MentorHelp"
 		var/display_text = get_display_name(recipient, sender)
 		message_sender_key = "<a href='byond://?src=\ref[src];action=message'>[display_text]</a>"
@@ -505,7 +505,7 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 
 	if(!author && author_key)
 		for(var/client/C in GLOB.clients)
-			if(C.ckey == author_key)
+			if(C.username() == author_key)
 				author = C
 				break
 

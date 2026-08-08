@@ -112,6 +112,273 @@
 /obj/structure/shuttle/part/dropship1/transparent/right_outer_bottom_wing
 	icon_state = "6"
 
+/obj/structure/shuttle/part/dropship_omaha
+	name = "\improper Omaha"
+	icon = 'icons/turf/mohawk/mohawk-facade.dmi'
+	icon_state = "15,16"
+
+/obj/structure/shuttle/part/dropship_omaha/ex_act(severity, direction)
+	return FALSE
+
+/obj/structure/shuttle/part/dropship_omaha/transparent
+	opacity = FALSE
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/Initialize(mapload, ...)
+	ADD_TRAIT(src, TURF_Z_TRANSPARENT_TRAIT, TRAIT_SOURCE_INHERENT)
+
+	. = ..()
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/LateInitialize(mapload)
+	. = ..()
+	update_vis_contents()
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/proc/update_vis_contents()
+	if(!istransparentturf(src))
+		return
+
+	vis_contents.Cut()
+	for(var/obj/vis_contents_holder/holder in src)
+		qdel(holder)
+
+	var/turf/below = get_turf_below()
+	var/depth = 0
+	while(below)
+		var/below_transparent = istransparentturf(below)
+		new /obj/vis_contents_holder(src, below, depth, !below_transparent || !istype(below, /turf/open_space))
+		if(!below_transparent)
+			break
+		below = SSmapping.get_turf_below(below)
+		depth++
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/proc/get_turf_below()
+	return SSmapping.get_turf_below(src)
+
+//// BOTTOM STUFF////
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_00
+	icon_state = "5,0"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_01
+	icon_state = "6,0"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_02
+	icon_state = "7,0"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_03
+	icon_state = "8,0"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_04
+	icon_state = "9,0"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_05
+	icon_state = "10,0"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_06
+	icon_state = "11,0"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_10
+	icon_state = "5,1"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_11
+	icon_state = "6,1"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_12
+	icon_state = "7,1"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_13
+	icon_state = "8,1"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_14
+	icon_state = "9,1"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_15
+	icon_state = "10,1"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_16
+	icon_state = "11,1"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_30
+	icon_state = "4,3"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_36
+	icon_state = "12,3"
+
+/// WINGS LEFT ////
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_00
+	icon_state = "2,14"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_01
+	icon_state = "3,14"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_03 // this goes over wall
+	icon_state = "4,14"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_10
+	icon_state = "0,15"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_11
+	icon_state = "1,15"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_12
+	icon_state = "2,15"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_13
+	icon_state = "3,15"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_14
+	icon_state = "4,15"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_20
+	icon_state = "0,16"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_21
+	icon_state = "1,16"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_22
+	icon_state = "2,16"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_23
+	icon_state = "3,16"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_30
+	icon_state = "0,17"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_31
+	icon_state = "1,17"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_32
+	icon_state = "2,17"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_33
+	icon_state = "3,17"
+
+/// WINGS RIGHT ///
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_00
+	icon_state = "12,14"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_01
+	icon_state = "13,14"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_02
+	icon_state = "14,14"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_10
+	icon_state = "12,15"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_11
+	icon_state = "13,15"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_12
+	icon_state = "14,15"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_13
+	icon_state = "15,15"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_14
+	icon_state = "16,15"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_20
+	icon_state = "13,16"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_21
+	icon_state = "14,16"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_22
+	icon_state = "15,16"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_23
+	icon_state = "16,16"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_30
+	icon_state = "13,17"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_31
+	icon_state = "14,17"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_32
+	icon_state = "15,17"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_33
+	icon_state = "16,17"
+
+/// NOSE LEFT ///
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_01
+	icon_state = "1,18"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_02
+	icon_state = "2,18"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_03
+	icon_state = "3,18"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_04
+	icon_state = "4,18"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_11
+	icon_state = "2,19"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_12
+	icon_state = "3,19"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_13
+	icon_state = "4,19"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_14
+	icon_state = "5,19"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_21
+	icon_state = "2,20"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_22
+	icon_state = "3,20"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_23
+	icon_state = "4,20"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_24
+	icon_state = "5,20"
+
+/// NOSE RIGHT ///
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_01
+	icon_state = "12,18"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_02
+	icon_state = "13,18"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_03
+	icon_state = "14,18"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_04
+	icon_state = "15,18"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_11
+	icon_state = "11,19"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_12
+	icon_state = "12,19"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_13
+	icon_state = "13,19"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_14
+	icon_state = "14,19"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_21
+	icon_state = "11,20"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_22
+	icon_state = "12,20"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_23
+	icon_state = "13,20"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_24
+	icon_state = "14,20"
+
+
 // USCM Dropship Normandy
 
 /obj/structure/shuttle/part/dropship2

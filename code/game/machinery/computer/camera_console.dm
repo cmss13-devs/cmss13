@@ -434,6 +434,13 @@
 	name = "\improper 'Alamo' camera controls"
 	network = list(CAMERA_NET_ALAMO, CAMERA_NET_LASER_TARGETS)
 
+/obj/structure/machinery/computer/cameras/dropship/omaha
+	name = "\improper 'Omaha' camera controls"
+	icon = 'icons/obj/structures/machinery/mohawk/mohawk-controls.dmi'
+	icon_state = "weapons-console"
+	density = FALSE
+	network = list(CAMERA_NET_OMAHA, CAMERA_NET_LASER_TARGETS)
+
 /obj/structure/machinery/computer/cameras/dropship/two
 	name = "\improper 'Normandy' camera controls"
 	network = list(CAMERA_NET_NORMANDY, CAMERA_NET_LASER_TARGETS)

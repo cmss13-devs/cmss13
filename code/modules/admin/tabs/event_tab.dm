@@ -548,7 +548,7 @@
 	set desc = "Force a dropship to be hijacked."
 	set category = "Admin.Shuttles"
 
-	var/list/shuttles = list(DROPSHIP_ALAMO, DROPSHIP_NORMANDY)
+	var/list/shuttles = list(DROPSHIP_ALAMO, DROPSHIP_OMAHA, DROPSHIP_NORMANDY)
 	var/tag = tgui_input_list(usr, "Which dropship should be force hijacked?", "Select a dropship:", shuttles)
 	if(!tag)
 		return

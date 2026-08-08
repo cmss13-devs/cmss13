@@ -50,6 +50,12 @@
 			var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/hatch = air
 			if(istype(hatch))
 				hatch.linked_dropship = src
+	for(var/place in shuttle_areas)
+		for(var/obj/structure/machinery/door_control/hatch_ladder/air in place)
+			var/obj/structure/machinery/door_control/hatch_ladder/hatch_button = air
+			if(istype(hatch_button))
+				hatch_button.linked_dropship = src
+
 
 	RegisterSignal(src, COMSIG_DROPSHIP_ADD_EQUIPMENT, PROC_REF(add_equipment))
 	RegisterSignal(src, COMSIG_DROPSHIP_REMOVE_EQUIPMENT, PROC_REF(remove_equipment))
@@ -113,6 +119,20 @@
 
 /obj/docking_port/mobile/marine_dropship/alamo/get_transit_path_type()
 	return /turf/open/space/transit/dropship/alamo
+
+/obj/docking_port/mobile/marine_dropship/omaha
+	name = "Omaha"
+	id = DROPSHIP_OMAHA
+	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
+
+	width = 17
+	height = 24
+	dwidth = 8
+	dheight = 12
+	zheight = 1 // or 2
+
+/obj/docking_port/mobile/marine_dropship/omaha/get_transit_path_type()
+	return /turf/open/space/transit/dropship/omaha
 
 /obj/docking_port/mobile/marine_dropship/normandy
 	name = "Normandy"
@@ -371,6 +391,18 @@
 	auto_open = TRUE
 	roundstart_template = /datum/map_template/shuttle/alamo
 
+/obj/docking_port/stationary/marine_dropship/almayer_hangar_omaha_1 //look
+	name = "Almayer Hangar bay 1"
+	id = ALMAYER_DROPSHIP_LZ1
+	auto_open = TRUE
+	roundstart_template = /datum/map_template/shuttle/omaha // change this
+
+	width = 17
+	height = 24
+	dwidth = 8
+	dheight = 12
+	zheight = 1
+
 /obj/docking_port/stationary/marine_dropship/almayer_hangar_2
 	name = "Almayer Hangar bay 2"
 	id = ALMAYER_DROPSHIP_LZ2
@@ -431,6 +463,10 @@
 /datum/map_template/shuttle/alamo
 	name = "Alamo"
 	shuttle_id = DROPSHIP_ALAMO
+
+/datum/map_template/shuttle/omaha
+	name = "Omaha"
+	shuttle_id = DROPSHIP_OMAHA
 
 /datum/map_template/shuttle/normandy
 	name = "Normandy"

@@ -484,6 +484,7 @@
 	return
 
 /obj/item/reagent_container/food/snacks/grown/bluetomato/Crossed(AM as mob|obj)
+	..()
 	if (iscarbon(AM))
 		var/mob/living/carbon/C = AM
 		C.slip(name, 8, 5)

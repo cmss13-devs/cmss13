@@ -1,0 +1,6 @@
+author: "NHC"
+delete-after: True
+changes:
+  - code_imp: "Renamed Basic medical optic, into SensorMate Optic"
+  - imageadd: "added icons for the SensorMate opics"
+  - imagetweak: "Changed Medical Optic hud icon to represent the itemsprite better"

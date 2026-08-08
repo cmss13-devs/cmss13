@@ -1,0 +1,4 @@
+author: "SpypigDev"
+delete-after: True
+changes:
+  - bugfix: "Restores the ability to knockout others in a boxing match"

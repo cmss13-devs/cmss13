@@ -278,7 +278,7 @@
 	var/obj/item/explosive/grenade/xeno_acid_grenade/grenade = new /obj/item/explosive/grenade/xeno_acid_grenade
 	grenade.cause_data = create_cause_data(initial(acid_ball_user.caste_type), acid_ball_user)
 	grenade.forceMove(get_turf(acid_ball_user))
-	grenade.throw_atom(target, 5, SPEED_AVERAGE, acid_ball_user, TRUE, launch_type = HIGH_LAUNCH)
+	grenade.throw_atom(target_atom, 5, SPEED_AVERAGE, acid_ball_user, TRUE, launch_type = HIGH_LAUNCH, pass_flags = PASS_ACID_GRENADE)
 	addtimer(CALLBACK(grenade, TYPE_PROC_REF(/obj/item/explosive, prime)), prime_delay)
 
 	return ..()

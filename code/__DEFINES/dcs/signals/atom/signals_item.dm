@@ -8,6 +8,7 @@
 /// from /obj/item/attackby() : (obj/item, mob/user)
 #define COMSIG_ITEM_ATTACKED "item_attacked"
 	#define COMPONENT_CANCEL_ITEM_ATTACK (1<<0)
+#define COMSIG_ITEM_ATTACK_ITEM "item_attack_item"
 
 // Return a nonzero value to cancel these actions
 #define COMSIG_BINOCULAR_ATTACK_SELF "binocular_attack_self"

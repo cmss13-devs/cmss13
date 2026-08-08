@@ -13,7 +13,6 @@ Current Expected Characteristics:
 
 Current Problems:
 - The ammo band on magazine does not heed to throwing animation or changing hand animation (does not rotate and does not fade in)
-- " -make it so the jungle styled mag attacking another magazine also attaches it rather than being attacked"
 - Improve the jungle mag sprite
 */
 
@@ -112,6 +111,20 @@ Current Problems:
 			return
 	if(istype(attacking_item, /obj/item/ammo_magazine)) //Approve whatever is left
 		add_magazine(user, attacking_item)
+		return COMPONENT_CANCEL_ITEM_ATTACK
+
+/datum/component/jungle_magazine/proc/on_attack_item(datum/source, obj/item/attacked_item, mob/user)
+	SIGNAL_HANDLER
+
+	for(var/whitelisted_type in magazine_whitelist) //Approve all whitelisted types
+		if(istype(attacked_item, whitelisted_type))
+			add_magazine(user, attacked_item)
+			return COMPONENT_CANCEL_ITEM_ATTACK
+	for(var/blacklisted_type in magazine_blacklist) //Blacklisted types does nothing
+		if(istype(attacked_item, blacklisted_type))
+			return
+	if(istype(attacked_item, /obj/item/ammo_magazine)) //Approve whatever is left
+		add_magazine(user, attacked_item)
 		return COMPONENT_CANCEL_ITEM_ATTACK
 
 /datum/component/jungle_magazine/proc/on_examine(datum/source, mob/user, list/examine_list)
@@ -287,6 +300,7 @@ Current Problems:
 	RegisterSignal(target_magazine, COMSIG_ITEM_UNIQUE_ACTION, PROC_REF(on_unique_action))
 	RegisterSignal(target_magazine, COMSIG_MAGAZINE_FINISH_UPDATE_ICON, PROC_REF(on_finish_update_magazine_icon))
 	RegisterSignal(target_magazine, COMSIG_ITEM_ATTEMPT_INSERTION_INTO_STORAGE, PROC_REF(on_attempt_insert_into_storage))
+	RegisterSignal(target_magazine, COMSIG_ITEM_ATTACK_ITEM, PROC_REF(on_attack_item))
 
 /datum/component/jungle_magazine/proc/signal_unreg(obj/item/ammo_magazine/target_magazine)
 	UnregisterSignal(target_magazine, COMSIG_ITEM_ATTACKED)
@@ -295,3 +309,4 @@ Current Problems:
 	UnregisterSignal(target_magazine, COMSIG_ITEM_UNIQUE_ACTION)
 	UnregisterSignal(target_magazine, COMSIG_MAGAZINE_FINISH_UPDATE_ICON)
 	UnregisterSignal(target_magazine, COMSIG_ITEM_ATTEMPT_INSERTION_INTO_STORAGE)
+	UnregisterSignal(target_magazine, COMSIG_ITEM_ATTACK_ITEM)

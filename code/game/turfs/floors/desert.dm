@@ -262,7 +262,7 @@
 */
 
 //Desert Waterway
-/turf/open/desert/waterway			//these are unused, and probably shouldnt ever be.. cursed steep shoreline, terrible for display_effects
+/turf/open/desert/waterway			//these are unused, and probably shouldnt ever be.. cursed steep shoreline, terrible for water_overlay_effects
 	icon = 'icons/turf/floors/desert_water.dmi'
 	icon_state = "dock"
 	supports_surgery = FALSE
@@ -663,7 +663,7 @@
 
 /turf/open/gm/river/desert/tyrargo/deep
 	icon_state = "bluesea"
-	depth = -12 //used for display_effect
+	depth = -12 //used for water_overlay_effect
 
 /turf/open/gm/river/desert/tyrargo/deep/no_slowdown
 	base_river_slowdown = 1

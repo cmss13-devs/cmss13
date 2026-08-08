@@ -564,6 +564,9 @@
 		update_transform(instant_update = on_movement) // Don't use transition for eg. crawling movement, because we already have the movement glide
 		lying_prev = lying_angle
 
+/mob/living/proc/get_lying_angle()
+	return lying_angle
+
 ///Called by mob Move() when the lying_angle is different than zero, to better visually simulate crawling.
 /mob/living/proc/lying_angle_on_movement(direct)
 	if(direct & EAST)

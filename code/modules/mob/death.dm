@@ -128,3 +128,6 @@
 			if(isxeno(cause_mob))
 				var/mob/living/carbon/xenomorph/X = cause_mob
 				X.behavior_delegate.on_kill_mob(src)
+	var/datum/component/water_overlay_effect/found = src.GetComponent(/datum/component/water_overlay_effect)
+	if(found)
+		found.my_water_overlay_effect.update_icons(get_turf(src))	//this is sketchy

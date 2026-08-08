@@ -163,15 +163,19 @@
 	icon = 'icons/turf/floors/tyrargo_map_dirt.dmi'
 	icon_state = "forestbeach"
 	baseturfs = /turf/open/gm/coast
+	depth = -4
 
 /turf/open/gm/coast/dirt/forestdir/south
 	dir = 1
+	depth = 0
 
 /turf/open/gm/coast/dirt/forestdir/west
 	dir = 4
+	depth = -2
 
 /turf/open/gm/coast/dirt/forestdir/east
 	dir = 8
+	depth = -2
 
 /turf/open/gm/coast/dirt/forestbeachcorner
 	icon = 'icons/turf/floors/tyrargo_map_dirt.dmi'
@@ -184,18 +188,22 @@
 
 /turf/open/gm/coast/dirt/forestbeachcorner/south_east
 	dir = 4
+	depth = 0
 
 /turf/open/gm/coast/dirt/forestbeachcorner/south_west
 	dir = 8
+	depth = 0
 
 /turf/open/gm/coast/dirt/forestbeachcorner2
 	icon = 'icons/turf/floors/tyrargo_map_dirt.dmi'
 	icon_state = "forestbeachcorner2"
 
 /turf/open/gm/coast/dirt/forestbeachcorner2/north_west
+	depth = -4
 
 /turf/open/gm/coast/dirt/forestbeachcorner2/north_east
 	dir = 1
+	depth = -4
 
 /turf/open/gm/coast/dirt/forestbeachcorner2/south_west
 	dir = 4

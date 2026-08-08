@@ -11,7 +11,7 @@
 	var/scorchable = FALSE //if TRUE set to be an icon_state which is the full sprite version of whatever gets scorched --> for border turfs like grass edges and shorelines
 	var/scorchedness = 0 //how scorched is this turf 0 to 3
 	var/icon_state_before_scorching //this is really dumb, blame the mappers...
-	var/depth = 0 // for display_effects
+	var/depth = 0 // for water_overlay_effects
 	var/covered = 0
 
 /turf/open/Initialize(mapload, ...)
@@ -142,18 +142,18 @@
 			if(3)
 				. += "Well Done."
 
-/turf/open/proc/handle_add_display_effect(turf/source, atom/movable/mover, force_update=FALSE)
+/turf/open/proc/handle_add_water_overlay_effect(turf/source, atom/movable/mover, force_update=FALSE)
 	if(!isliving(mover) || mover.throwing || (!ishuman(mover) && !isxeno(mover) && !isyautja(mover)))
 		return
 	if(iscarbon(mover))
 		var/mob/living/carbon/carbon_mover =  mover
 		if(carbon_mover.IsKnockDown())
 			return
-		var/datum/component/display_effect/existing = carbon_mover.GetComponent(/datum/component/display_effect)
+		var/datum/component/water_overlay_effect/existing = carbon_mover.GetComponent(/datum/component/water_overlay_effect)
 		if(existing)
-			carbon_mover.AddComponent(/datum/component/display_effect, src.type, depth, existing.my_display_effect)
+			carbon_mover.AddComponent(/datum/component/water_overlay_effect, src.type, depth, existing.my_water_overlay_effect)
 			return
-	mover.AddComponent(/datum/component/display_effect, src.type, depth, force_update)
+	mover.AddComponent(/datum/component/water_overlay_effect, src.type, depth, force_update)
 
 /turf/open/proc/handle_hit(turf/T, atom/movable/AM)
 	if(!isliving(AM))
@@ -162,7 +162,7 @@
 
 /turf/open/proc/on_enter(turf/source, atom/movable/mover, force_update=FALSE)
 	SIGNAL_HANDLER
-	handle_add_display_effect(source, mover, force_update)
+	handle_add_water_overlay_effect(source, mover, force_update)
 
 /turf/open/proc/on_hit(turf/T, atom/movable/AM)
 	SIGNAL_HANDLER
@@ -766,7 +766,7 @@
 	supports_surgery = FALSE
 	minimap_color = MINIMAP_WATER
 	is_weedable = NOT_WEEDABLE
-	depth = -8 //used for the offset of mobs that enter it (see display_effect.dm)
+	depth = -8 //used for the offset of mobs that enter it (see water_overlay_effect.dm)
 	layer = UNDER_TURF_LAYER -0.03
 
 /turf/open/gm/river/Initialize(mapload, ...)
@@ -928,7 +928,7 @@
 	baseturfs = /turf/open/gm/coast
 	supports_surgery = FALSE
 	is_weedable = NOT_WEEDABLE
-	depth = -2 //used for the offset of mobs that enter it (see display_effect.dm)
+	depth = -2 //used for the offset of mobs that enter it (see water_overlay_effect.dm)
 	layer = UNDER_TURF_LAYER -0.03
 
 /turf/open/gm/coast/Initialize(mapload, ...)
@@ -998,7 +998,7 @@
 	minimap_color = MINIMAP_WATER
 	is_groundmap_turf = FALSE // Not real ground
 	fishing_allowed = TRUE
-	depth = -12 //used for the offset of mobs that enter it (see display_effect.dm)
+	depth = -12 //used for the offset of mobs that enter it (see water_overlay_effect.dm)
 
 
 /turf/open/gm/riverdeep/Initialize(mapload, ...)
@@ -1031,7 +1031,7 @@
 	icon_state = "bluesea"
 	can_bloody = FALSE
 	supports_surgery = FALSE
-	depth = -12 //used for display_effect
+	depth = -12 //used for water_overlay_effect
 
 //Ice Colony grounds
 

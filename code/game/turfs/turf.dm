@@ -127,7 +127,7 @@
 /turf/LateInitialize(mapload)
 	update_vis_contents()
 
-/turf/proc/fix_water_clipping_layers() // used in SUBSYSTEM_DEF(water_layer_fix), for water display_effects so big mobs dont clip into the ground
+/turf/proc/fix_water_clipping_layers() // used in SUBSYSTEM_DEF(water_overlays), for water water_overlay_effects so big mobs dont clip into the ground
 	if(is_water(src))
 		return
 	//so mobs in the water dont clip under these turfs ...

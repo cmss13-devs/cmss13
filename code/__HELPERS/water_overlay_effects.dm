@@ -4,7 +4,7 @@ var/list/water_rerouting =  list(
 	"/turf/open/gm/coast/east" = /turf/open/gm/river,		//this table is used to "reroute" those to the type that holds a similar texture
 	"/turf/open/gm/coast/south" = /turf/open/gm/river,		//but its completely water;
 	"/turf/open/gm/coast/west" = /turf/open/gm/river,		//we use  type because we need icon and icon_state, so two birds with one stone
-	"/turf/open/gm/coast/south_east" = /turf/open/gm/river, // why does this exist lol, SE but none of the other ordinals
+	"/turf/open/gm/coast/south_east" = /turf/open/gm/river,
 	"/turf/open/gm/coast/beachcorner" = /turf/open/gm/river,
 	"/turf/open/gm/coast/beachcorner/north_west" = /turf/open/gm/river,
 	"/turf/open/gm/coast/beachcorner/north_east" = /turf/open/gm/river,
@@ -70,20 +70,20 @@ var/list/water_rerouting =  list(
 	"/turf/open/gm/coast/dirt/beachcorner2/north_east" = /turf/open/gm/river/soro,
 	"/turf/open/gm/coast/dirt/beachcorner2/south_west" = /turf/open/gm/river/soro,
 	"/turf/open/gm/coast/dirt/beachcorner2/south_east" = /turf/open/gm/river/soro,
-	"/turf/open/gm/coast/dirt/forestdir" = /turf/open/gm/river/soro,
-	"/turf/open/gm/coast/dirt/forestdir/south" = /turf/open/gm/river/soro,
-	"/turf/open/gm/coast/dirt/forestdir/west" = /turf/open/gm/river/soro,
-	"/turf/open/gm/coast/dirt/forestdir/east" = /turf/open/gm/river/soro,
-	"/turf/open/gm/coast/dirt/forestbeachcorner" = /turf/open/gm/river/soro,
-	"/turf/open/gm/coast/dirt/forestbeachcorner/north_west" = /turf/open/gm/river/soro,
-	"/turf/open/gm/coast/dirt/forestbeachcorner/north_east" = /turf/open/gm/river/soro,
-	"/turf/open/gm/coast/dirt/forestbeachcorner/south_east" = /turf/open/gm/river/soro,
-	"/turf/open/gm/coast/dirt/forestbeachcorner/south_west" = /turf/open/gm/river/soro,
-	"/turf/open/gm/coast/dirt/forestbeachcorner2" = /turf/open/gm/river/soro,
-	"/turf/open/gm/coast/dirt/forestbeachcorner2/north_west" = /turf/open/gm/river/soro,
-	"/turf/open/gm/coast/dirt/forestbeachcorner2/north_east" = /turf/open/gm/river/soro,
-	"/turf/open/gm/coast/dirt/forestbeachcorner2/south_west" = /turf/open/gm/river/soro,
-	"/turf/open/gm/coast/dirt/forestbeachcorner2/south_east" = /turf/open/gm/river/soro,
+	"/turf/open/gm/coast/dirt/forestdir" = /turf/open/gm/river/tyrargo,
+	"/turf/open/gm/coast/dirt/forestdir/south" = /turf/open/gm/river/tyrargo,
+	"/turf/open/gm/coast/dirt/forestdir/west" = /turf/open/gm/river/tyrargo,
+	"/turf/open/gm/coast/dirt/forestdir/east" = /turf/open/gm/river/tyrargo,
+	"/turf/open/gm/coast/dirt/forestbeachcorner" = /turf/open/gm/river/tyrargo,
+	"/turf/open/gm/coast/dirt/forestbeachcorner/north_west" = /turf/open/gm/river/tyrargo,
+	"/turf/open/gm/coast/dirt/forestbeachcorner/north_east" = /turf/open/gm/river/tyrargo,
+	"/turf/open/gm/coast/dirt/forestbeachcorner/south_east" = /turf/open/gm/river/tyrargo,
+	"/turf/open/gm/coast/dirt/forestbeachcorner/south_west" = /turf/open/gm/river/tyrargo,
+	"/turf/open/gm/coast/dirt/forestbeachcorner2" = /turf/open/gm/river/tyrargo,
+	"/turf/open/gm/coast/dirt/forestbeachcorner2/north_west" = /turf/open/gm/river/tyrargo,
+	"/turf/open/gm/coast/dirt/forestbeachcorner2/north_east" = /turf/open/gm/river/tyrargo,
+	"/turf/open/gm/coast/dirt/forestbeachcorner2/south_west" = /turf/open/gm/river/tyrargo,
+	"/turf/open/gm/coast/dirt/forestbeachcorner2/south_east" = /turf/open/gm/river/tyrargo,
 )
 
 var/list/coastline_water_turfs = list(
@@ -199,6 +199,8 @@ var/list/full_water_turfs = list(
 	/turf/open/gm/river/desert/shallow_corner/east,
 	/turf/open/gm/river/desert/shallow_corner/west,
 	/turf/open/gm/river/desert/deep,
+	/turf/open/gm/river/tyrargo,
+	/turf/open/gm/river/soro,
 )
 
 /proc/is_full_water(turf/open/gm/T)
@@ -253,13 +255,13 @@ var/list/full_water_turfs = list(
 )
 
 GLOBAL_LIST_INIT(water_overlay_icon_paths,list(
-		"32" = 'icons/effects/display_effects/_32.dmi',	//humans, etc
-		"48" = 'icons/effects/display_effects/_48.dmi',	//facehugger, drone
-		"64" = 'icons/effects/display_effects/_64.dmi', //most xenos
-		"88" = 'icons/effects/display_effects/_88.dmi',	//queen
+		"32" = 'icons/effects/water_overlay_effects/_32.dmi',	//humans, etc
+		"48" = 'icons/effects/water_overlay_effects/_48.dmi',	//facehugger, drone
+		"64" = 'icons/effects/water_overlay_effects/_64.dmi', //most xenos
+		"88" = 'icons/effects/water_overlay_effects/_88.dmi',	//queen
 	))
 
-GLOBAL_LIST_INIT(display_effect_water_overlays, list())
+GLOBAL_LIST_INIT(water_overlay_effect_water_overlays, list())
 
 /proc/get_water_turf_iconstuff(turf/open/gm/T, key)
 	var/turf/open/found_type = water_rerouting["[T.type]"] ? water_rerouting["[T.type]"] : T.type
@@ -275,7 +277,7 @@ GLOBAL_LIST_INIT(display_effect_water_overlays, list())
 			return_icon = 'icons/turf/floors/desert_water_transition.dmi'
 	return key == "icon" ? return_icon : return_icon_state
 
-/proc/generate_water_display_icons() //used in water_layer_fix subsystem, generates the overlays to be used in water display_effects
+/proc/generate_water_display_icons() //used in water_overlays subsystem, generates the overlays to be used in water water_overlay_effects
 	for (var/found_type in coastline_water_turfs + full_water_turfs)
 		var/turf/open/working_T = found_type
 		if(working_T.depth == 0) continue 		//some turfs are water turfs, but have no depth... meaning no need for an overlay
@@ -295,10 +297,21 @@ GLOBAL_LIST_INIT(display_effect_water_overlays, list())
 			for(var/mob_type in mob_masks)													//using static icons for the masks, since often the mobs get overlays and with this method we can account for those
 				var/mob_culling_mask = mob_masks[mob_type]									//I just dont want to think about generating those on roundstart, just the inhands alone, not to mention armors or backpacks
 				var/icon/mob_specific_water_overlay = icon(water_overlay)					//duplicate the water_overlay, so we dont reuse a culled texture later in the for loop
+				if(mob_type == /mob/living/carbon/human)
+					var/resting_key = working_T.depth >= -4 ? "coast" : "float"
+					var/icon/resting_east = icon(water_overlay)								//only adding resting icons for humans, if we ever add some for xenos this will have to be rewritten :(
+					var/icon/resting_west = icon(water_overlay)
+					var/icon/resting_under = icon(water_overlay)
+					resting_east.AddAlphaMask(icon(GLOB.water_overlay_icon_paths["[texture_size]"], "culling_[resting_key]_rest_e"))
+					resting_west.AddAlphaMask(icon(GLOB.water_overlay_icon_paths["[texture_size]"], "culling_[resting_key]_rest_w"))
+					resting_under.AddAlphaMask(icon(GLOB.water_overlay_icon_paths["[texture_size]"], mob_culling_mask))
+					GLOB.water_overlay_effect_water_overlays["[mob_type]_[working_T.type]_resting_e"] =  resting_east
+					GLOB.water_overlay_effect_water_overlays["[mob_type]_[working_T.type]_resting_w"] =  resting_west
+					GLOB.water_overlay_effect_water_overlays["[mob_type]_[working_T.type]_resting_u"] =  resting_under
 				if(mob_culling_mask != "culling_facehugger" && mob_culling_mask != "culling_larva") //these are special cases, they look weird with default overlay since they are so close to the ground
 					mob_specific_water_overlay.AddAlphaMask(subtraction_texture)			//remove everything other than what the subraction overlay overlaps
 				mob_specific_water_overlay.AddAlphaMask(icon(GLOB.water_overlay_icon_paths["[texture_size]"], mob_culling_mask))
-				GLOB.display_effect_water_overlays["[mob_type]_[working_T.type]"] =  mob_specific_water_overlay	//water overlay done!
+				GLOB.water_overlay_effect_water_overlays["[mob_type]_[working_T.type]"] =  mob_specific_water_overlay	//water overlay done!
 
 		CHECK_TICK
 

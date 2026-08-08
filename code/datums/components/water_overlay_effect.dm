@@ -29,7 +29,7 @@
 	if(M.m_intent == MOVE_INTENT_RUN)
 		var/turf/open/gm/T = get_turf(parent_source)
 		var/soundname = T.depth >= -4 ? "shallowwading" : (T.depth >= -8 ? "wading":"deepwading")
-		playsound(T, "sound/effects/water/[soundname][rand(1,3)].ogg", 10, 1, 10, falloff=1)
+		playsound(T, soundname, 10, 1, 10, falloff=1)
 
 /datum/component/water_overlay_effect/proc/handle_lying_angle_change()
 	my_water_overlay_effect.update_icons(get_turf(parent))

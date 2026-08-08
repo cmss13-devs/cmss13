@@ -461,6 +461,13 @@
 				sound = pick('sound/voice/wy_droid/wy_stealth_droid_death1.ogg', 'sound/voice/wy_droid/wy_stealth_droid_death2.ogg')
 			if("clown_footstep")
 				sound = pick('sound/effects/clownstep1.ogg', 'sound/effects/clownstep2.ogg')
+			//water sounds
+			if("shallowwading")
+				sound = pick('sound/effects/water/shallowwading1.ogg','sound/effects/water/shallowwading2.ogg','sound/effects/water/shallowwading3.ogg','sound/effects/water/shallowwading4.ogg','sound/effects/water/shallowwading5.ogg','sound/effects/water/shallowwading6.ogg')
+			if("wading")
+				sound = pick('sound/effects/water/wading1.ogg','sound/effects/water/wading2.ogg','sound/effects/water/wading3.ogg')
+			if("deepwading")
+				sound = pick('sound/effects/water/deepwading1.ogg','sound/effects/water/deepwading2.ogg','sound/effects/water/deepwading3.ogg','sound/effects/water/deepwading4.ogg')
 	return sound
 
 /client/proc/generate_sound_queues()

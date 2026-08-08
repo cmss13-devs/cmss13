@@ -509,6 +509,7 @@
 
 /atom/movable/proc/unbuckle()
 	SIGNAL_HANDLER
+	var/turf/T = get_turf(buckled_mob)
 	if(buckled_mob && buckled_mob.buckled == src)
 		buckled_mob.clear_alert(ALERT_BUCKLED)
 		buckled_mob.set_buckled(null)
@@ -519,6 +520,7 @@
 		REMOVE_TRAITS_IN(mob, TRAIT_SOURCE_BUCKLE)
 		SEND_SIGNAL(src, COMSIG_MOVABLE_UNBUCKLE, mob)
 		LAZYREMOVE(buckled_mobs, mob)
+		SEND_SIGNAL(T, COMSIG_TURF_ENTERED, mob)
 		afterbuckle(mob)
 
 /atom/movable/proc/manual_unbuckle(mob/user as mob)

@@ -216,7 +216,7 @@ var/list/full_water_turfs = list(
 //		SUBSYSTEM CODE --> Generate the icons at roundstart for the display effects		//
 //////////////////////////////////////////////////////////////////////////////////////////
 
-//depths: -2, -4 (shores), -8 (shallows), -12 (transition to deep), -16(deep)
+//depths: -2, -4 (shores), -8 (shallows), -12 (transition to deep), -18(deep)
 //water turfs are hardcoded to only have certain depths, but the shorelines take from their fulltile varients, so for some we'll have to make multiple for those
 //and for each of these we need to generate 4 overlays, for each of the texture sizes used for mobs, and special cases like larva or facehugger
 

@@ -383,9 +383,11 @@
 
 /turf/open/gm/river/desert/shallow_edge/southwest
 	dir = SOUTHWEST
+	depth = -8
 
 /turf/open/gm/river/desert/shallow_edge/north
 	dir = NORTH
+	depth = -18
 
 /turf/open/gm/river/desert/shallow_edge/east
 	dir = EAST
@@ -395,6 +397,7 @@
 
 /turf/open/gm/river/desert/shallow_edge/southeast
 	dir = SOUTHEAST
+	depth = -8
 
 /turf/open/gm/river/desert/shallow_edge/west
 	dir = WEST
@@ -421,7 +424,7 @@
 //shallow water transition to deep corner
 /turf/open/gm/river/desert/shallow_corner
 	icon_state = "shallow_c"
-	depth = -12
+	depth = -18
 
 /turf/open/gm/river/desert/shallow_corner/covered
 	covered = TRUE
@@ -429,19 +432,21 @@
 
 /turf/open/gm/river/desert/shallow_corner/north
 	dir = NORTH
-	depth = -16
+	depth = -18
 
 /turf/open/gm/river/desert/shallow_corner/east
 	dir = EAST
+	depth = -12
 
 /turf/open/gm/river/desert/shallow_corner/west
 	dir = WEST
+	depth = -12
 
 
 //deep water
 /turf/open/gm/river/desert/deep
 	icon_state = "deep"
-	depth = -16
+	depth = -18
 
 /turf/open/gm/river/desert/deep/no_slowdown
 	base_river_slowdown = 0

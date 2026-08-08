@@ -100,10 +100,10 @@
 
 /datum/action/xeno_action/activable/xeno_spit/bombard/use_ability(atom/affected_atom)
 	. = ..()
-	var/mob/living/carbon/xenomorph/bombard_user = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!action_cooldown_check()) // activate c/d only if we already spit
 		for(var/action_type in action_types_to_cd)
-			var/datum/action/xeno_action/xeno_action = get_action(bombard_user, action_type)
+			var/datum/action/xeno_action/xeno_action = get_action(xeno, action_type)
 			if(!istype(xeno_action))
 				continue
 

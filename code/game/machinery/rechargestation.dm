@@ -322,6 +322,10 @@
 	if(revive_target.stat != DEAD)
 		return FALSE
 
+	if(!revive_target.client && !(revive_target.status_flags & FAKESOUL) && !revive_target.get_ghost(FALSE, TRUE))
+		visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: DNR order detected. Reactivation aborted."))
+		return FALSE
+
 	if(!revive_target.is_revivable())
 		visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Synthetic's general condition does not allow reviving."))
 		return FALSE
@@ -341,8 +345,8 @@
 	playsound(get_turf(src), 'sound/mecha/powerup.ogg' , 25, 0)
 	sleep(3 SECONDS)
 
-	if(!revived_target.is_revivable())
-		visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Synthetic's general condition does not allow reviving."))
+	if(!check_revive(revived_target))
+		return
 
 	if(!revived_target.client && !(revived_target.status_flags & FAKESOUL)) //Freak case, no client at all. This is a braindead mob (like a colonist)
 		visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Non-specific core damage detected, Attempting to re-activate..."))

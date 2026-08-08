@@ -173,6 +173,10 @@
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Vital signs detected. Aborting."))
 		return
 
+	if(!H.client && !(H.status_flags & FAKESOUL) && !H.get_ghost(FALSE, TRUE))
+		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: DNR order detected. Reactivation aborted."))
+		return
+
 	if(!H.is_revivable())
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Patient's general condition does not allow reviving."))
 		return
@@ -408,6 +412,10 @@
 		return FALSE
 	if(H.stat != DEAD)
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Function signs detected. Aborting."))
+		return FALSE
+
+	if(!H.client && !(H.status_flags & FAKESOUL) && !H.get_ghost(FALSE, TRUE))
+		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: DNR order detected. Resuscitation aborted."))
 		return FALSE
 
 	if(!H.is_revivable())

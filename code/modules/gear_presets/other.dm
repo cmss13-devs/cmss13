@@ -882,6 +882,7 @@
 	new_human.equip_to_slot_or_del(tablet, WEAR_R_HAND)
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest, WEAR_JACKET)
 
 //*****************************************************************************************************/
 

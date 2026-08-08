@@ -37,14 +37,14 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 			if(AH.id == id)
 				return J
 
-/datum/admin_help_tickets/proc/TicketsByCKey(ckey)
+/datum/admin_help_tickets/proc/TicketsByUsername(username)
 	. = list()
 	var/list/lists = list(active_tickets, closed_tickets, resolved_tickets)
-	for(var/I in lists)
-		for(var/J in I)
-			var/datum/admin_help/AH = J
-			if(AH.initiator_ckey == ckey)
-				. += AH
+	for(var/ticket_list in lists)
+		for(var/ticket in ticket_list)
+			var/datum/admin_help/admin_help = ticket
+			if(admin_help.initiator_username == username)
+				. += admin_help
 
 //private
 /datum/admin_help_tickets/proc/ListInsert(datum/admin_help/new_ticket)
@@ -736,7 +736,7 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 		dat += "[I]<br>"
 
 	// Append any tickets also opened by this user if relevant
-	var/list/related_tickets = GLOB.ahelp_tickets.TicketsByCKey(initiator_ckey)
+	var/list/related_tickets = GLOB.ahelp_tickets.TicketsByUsername(initiator_username)
 	if (length(related_tickets) > 1)
 		dat += "<br/><b>Other Tickets by User</b><br/>"
 		for (var/datum/admin_help/related_ticket in related_tickets)
@@ -994,6 +994,7 @@ CLIENT_VERB(mentorhelp)
 		return
 
 	current_mhelp = new(src)
+	current_mhelp.author_key = username()
 	if(!current_mhelp.broadcast_request(src))
 		QDEL_NULL(current_mhelp)
 

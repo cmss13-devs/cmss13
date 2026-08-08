@@ -169,8 +169,8 @@
 			SPAN_NOTICE("[user], with \his [user.hand ? "left" : "right"] hand, tries to forcefully rip the writhing larva from [target]'s chest!"))
 
 	to_chat(target, SPAN_HIGHDANGER("IT'S COMING OUT! BRACE YOURSELF!"))
-	if(target.stat == CONSCIOUS) //special case, larba is fighting inside your chest
-		target.emote("burstscream")
+	if(target.stat == CONSCIOUS) //larba is fighting inside your chest
+		target.emote("scream")
 
 	log_interact(user, target, "[key_name(user)] started to remove an embryo from [key_name(target)]'s ribcage.")
 

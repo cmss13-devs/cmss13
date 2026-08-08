@@ -13,9 +13,6 @@
 	var/gid = 0
 
 	var/stat = 0 //Whether a mob is alive or dead. TODO: Move this to living - Nodrak
-	var/chatWarn = 0 //Tracks how many times someone has spammed and gives them a no-no timer
-
-	var/atom/movable/screen/hands = null //robot
 
 	/// a ckey that persists client logout / ghosting, replaced when a client inhabits the mob
 	var/persistent_ckey
@@ -128,11 +125,8 @@
 	var/old_x = 0
 	var/old_y = 0
 
-	var/charges = 0
 	var/nutrition = NUTRITION_NORMAL//Carbon
 
-	var/overeatduration = 0 // How long this guy is overeating //Carbon
-	var/recovery_constant = 1
 	var/a_intent = INTENT_HELP//Living
 	var/m_intent = MOVE_INTENT_RUN
 	var/lastKnownIP = null
@@ -149,8 +143,6 @@
 	var/datum/hud/hud_used = null
 
 	var/grab_level = GRAB_PASSIVE //if we're pulling a mob, tells us how aggressive our grab is.
-
-	var/list/mapobjs = list()
 
 	var/throw_mode = THROW_MODE_OFF
 

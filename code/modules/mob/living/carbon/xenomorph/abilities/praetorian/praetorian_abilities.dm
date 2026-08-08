@@ -15,7 +15,6 @@
 	// Config
 	var/damage = 45
 	var/shield_regen_threshold = 2
-	var/should_spin_instead = FALSE
 
 /datum/action/xeno_action/activable/pounce/prae_dash
 	name = "Dash"
@@ -252,36 +251,33 @@
 	var/activation_delay = 1 SECONDS
 	var/prime_delay = 1 SECONDS
 
-/datum/action/xeno_action/activable/prae_acid_ball/use_ability(atom/target)
-	if (!target)
+/datum/action/xeno_action/activable/prae_acid_ball/use_ability(atom/target_atom)
+	var/mob/living/carbon/xenomorph/acid_ball_user = owner
+
+	if(acid_ball_user.action_busy)
 		return
 
-	var/mob/living/carbon/xenomorph/acidball_user = owner
-	if (!acidball_user.check_state() || acidball_user.action_busy)
+	XENO_ACTION_CHECK(acid_ball_user)
+
+	var/turf/current_turf = get_turf(acid_ball_user)
+
+	if(!current_turf)
 		return
 
-	if (!action_cooldown_check())
-		return
-	var/turf/current_turf = get_turf(acidball_user)
-
-	if (!current_turf)
+	if(!do_after(acid_ball_user, activation_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+		to_chat(acid_ball_user, SPAN_XENODANGER("We cancel our acid ball."))
 		return
 
-	if (!do_after(acidball_user, activation_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
-		to_chat(acidball_user, SPAN_XENODANGER("We cancel our acid ball."))
-		return
-
-	if (!check_and_use_plasma_owner())
-		return
+	XENO_ACTION_CHECK_USE_PLASMA(acid_ball_user)
 
 	apply_cooldown()
 
-	to_chat(acidball_user, SPAN_XENOWARNING("We lob a compressed ball of acid into the air!"))
+	to_chat(acid_ball_user, SPAN_XENOWARNING("We lob a compressed ball of acid into the air!"))
 
 	var/obj/item/explosive/grenade/xeno_acid_grenade/grenade = new /obj/item/explosive/grenade/xeno_acid_grenade
-	grenade.cause_data = create_cause_data(initial(acidball_user.caste_type), acidball_user)
-	grenade.forceMove(get_turf(acidball_user))
-	grenade.throw_atom(target, 5, SPEED_SLOW, acidball_user, TRUE)
+	grenade.cause_data = create_cause_data(initial(acid_ball_user.caste_type), acid_ball_user)
+	grenade.forceMove(get_turf(acid_ball_user))
+	grenade.throw_atom(target_atom, 5, SPEED_SLOW, acid_ball_user, TRUE)
 	addtimer(CALLBACK(grenade, TYPE_PROC_REF(/obj/item/explosive, prime)), prime_delay)
 
 	return ..()

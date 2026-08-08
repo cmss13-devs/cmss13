@@ -1415,6 +1415,8 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 			else
 				surgery_overlay.icon_state = "[name]_incision_wide_fixed" //special case for broken pelvis after being fixed.
 				. += surgery_overlay
+			surgery_overlay.icon_state = "[name]_incision_wide"
+			. += surgery_overlay
 
 		if(status & BONE_OPENED)
 			if(status & LIMB_BROKEN)

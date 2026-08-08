@@ -1254,7 +1254,7 @@ and you're good to go.
 					update_icon()
 				else
 					var/drop_to_ground = TRUE
-					if(user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND))
+					if(user.client?.prefs && (user.client.prefs.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND))
 						if(!(flags_gun_features & GUN_BURST_FIRING) || ((flags_gun_features & GUN_BURST_FIRING) && burst_amount >= shots_fired)) //Don't mess with our hands if we're not done with the burst yet.
 							drop_to_ground = FALSE
 							unwield(user)
@@ -2279,7 +2279,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if(gun_firemode == GUN_FIREMODE_AUTOMATIC)
 		reset_fire()
 		display_ammo(gun_user)
-	else if(gun_firemode == GUN_FIREMODE_BURSTFIRE && flags_gun_features & GUN_FIREMODE_BURSTFIRE)
+	else if(gun_firemode == GUN_FIREMODE_BURSTFIRE && (flags_gun_features & GUN_BURST_FIRING))
 		return
 	SEND_SIGNAL(src, COMSIG_GUN_STOP_FIRE)
 

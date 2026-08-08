@@ -390,8 +390,8 @@
 	volume = (REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 	maptext_label = "OuDx"
 
-//ONE-USE EZ AUTOINJECTORS
-/obj/item/reagent_container/hypospray/autoinjector/tutorial/ //only here to set up pathing
+//TUTORIAL AUTOINJECTORS
+/obj/item/reagent_container/hypospray/autoinjector/tutorial
 	name = "tricordrazine EZ autoinjector (FOR TRAINING USE ONLY)"
 	chemname = "tricordrazine"
 	desc = "An autoinjector loaded with a single 15u dose of Tricordrazine, a common wide-spectrum damage healer. To use it, click the autoinjector while it is in your hand. You can also click any person one tile near you, or yourself, to inject its contents. Most autoinjectors can be refilled with a Wey-Med vending machine."

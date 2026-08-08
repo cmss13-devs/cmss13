@@ -77,10 +77,10 @@
 #define NEURO_TOUCH_DELAY 4 SECONDS
 
 /datum/behavior_delegate/sentinel_base/melee_attack_modify_damage(original_damage, mob/living/carbon/carbon_target)
-	if (!next_slash_buffed)
+	if(!next_slash_buffed)
 		return original_damage
 
-	if (!isxeno_human(carbon_target))
+	if(!isxeno_human(carbon_target))
 		return original_damage
 
 	if(skillcheck(carbon_target, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX ))
@@ -88,12 +88,12 @@
 		next_slash_buffed = FALSE
 		return original_damage //endurance 5 makes you immune to weak neurotoxin
 	if(ishuman(carbon_target))
-		var/mob/living/carbon/human/human = carbon_target
-		if(human.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || human.species.flags & NO_NEURO)
-			human.visible_message(SPAN_DANGER("[human] shrugs off the neurotoxin!"))
+		var/mob/living/carbon/human/target_human = carbon_target
+		if(target_human.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || target_human.species.flags & NO_NEURO)
+			target_human.visible_message(SPAN_DANGER("[target_human] shrugs off the neurotoxin!"))
 			next_slash_buffed = FALSE
 			return //species like zombies or synths are immune to neurotoxin
-	if (next_slash_buffed)
+	if(next_slash_buffed)
 		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We add neurotoxin into our attack, [carbon_target] is about to fall over paralyzed!"))
 		to_chat(carbon_target, SPAN_XENOHIGHDANGER("You feel like you're about to fall over, as [bound_xeno] slashes you with its neurotoxin coated claws!"))
 		carbon_target.sway_jitter(times = 3, steps = floor(NEURO_TOUCH_DELAY/3))
@@ -102,7 +102,7 @@
 		next_slash_buffed = FALSE
 	if(!next_slash_buffed)
 		var/datum/action/xeno_action/onclick/paralyzing_slash/ability = get_action(bound_xeno, /datum/action/xeno_action/onclick/paralyzing_slash)
-		if (ability && istype(ability))
+		if(ability && istype(ability))
 			ability.button.icon_state = "template"
 	return original_damage
 
@@ -124,10 +124,8 @@
 
 
 
-/datum/action/xeno_action/activable/slowing_spit/use_ability(atom/target)
+/datum/action/xeno_action/activable/slowing_spit/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/slowspit_user = owner
-	if(!slowspit_user.check_state())
-		return
 
 	if(!action_cooldown_check())
 		to_chat(src, SPAN_WARNING("We must wait for our spit glands to refill."))
@@ -138,11 +136,10 @@
 	if(!current_turf)
 		return
 
-	if (!check_and_use_plasma_owner())
-		return
+	XENO_ACTION_CHECK_USE_PLASMA(slowspit_user)
 
-	slowspit_user.visible_message(SPAN_XENOWARNING("[slowspit_user] spits at [target]!"),
-	SPAN_XENOWARNING("You spit at [target]!") )
+	slowspit_user.visible_message(SPAN_XENOWARNING("[slowspit_user] spits at [target_atom]!"),
+	SPAN_XENOWARNING("You spit at [target_atom]!") )
 	var/sound_to_play = pick(1, 2) == 1 ? 'sound/voice/alien_spitacid.ogg' : 'sound/voice/alien_spitacid2.ogg'
 	playsound(slowspit_user.loc, sound_to_play, 25, 1)
 
@@ -151,15 +148,13 @@
 	projectile.generate_bullet(slowspit_user.ammo)
 	projectile.permutated += slowspit_user
 	projectile.def_zone = slowspit_user.get_limbzone_target()
-	projectile.fire_at(target, slowspit_user, slowspit_user, slowspit_user.ammo.max_range, slowspit_user.ammo.shell_speed)
+	projectile.fire_at(target_atom, slowspit_user, slowspit_user, slowspit_user.ammo.max_range, slowspit_user.ammo.shell_speed)
 
 	apply_cooldown()
 	return ..()
 
-/datum/action/xeno_action/activable/scattered_spit/use_ability(atom/target)
+/datum/action/xeno_action/activable/scattered_spit/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/scatterspit_user = owner
-	if(!scatterspit_user.check_state())
-		return
 
 	if(!action_cooldown_check())
 		to_chat(src, SPAN_WARNING("We must wait for your spit glands to refill."))
@@ -170,11 +165,10 @@
 	if(!current_turf)
 		return
 
-	if (!check_and_use_plasma_owner())
-		return
+	XENO_ACTION_CHECK_USE_PLASMA(scatterspit_user)
 
-	scatterspit_user.visible_message(SPAN_XENOWARNING("[scatterspit_user] spits at [target]!"),
-	SPAN_XENOWARNING("You spit at [target]!") )
+	scatterspit_user.visible_message(SPAN_XENOWARNING("[scatterspit_user] spits at [target_atom]!"),
+	SPAN_XENOWARNING("You spit at [target_atom]!") )
 	var/sound_to_play = pick(1, 2) == 1 ? 'sound/voice/alien_spitacid.ogg' : 'sound/voice/alien_spitacid2.ogg'
 	playsound(scatterspit_user.loc, sound_to_play, 25, 1)
 
@@ -183,25 +177,21 @@
 	projectile.generate_bullet(scatterspit_user.ammo)
 	projectile.permutated += scatterspit_user
 	projectile.def_zone = scatterspit_user.get_limbzone_target()
-	projectile.fire_at(target, scatterspit_user, scatterspit_user, scatterspit_user.ammo.max_range, scatterspit_user.ammo.shell_speed)
+	projectile.fire_at(target_atom, scatterspit_user, scatterspit_user, scatterspit_user.ammo.max_range, scatterspit_user.ammo.shell_speed)
 
 	apply_cooldown()
 	return ..()
 
-/datum/action/xeno_action/onclick/paralyzing_slash/use_ability(atom/target)
+/datum/action/xeno_action/onclick/paralyzing_slash/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/paraslash_user = owner
 
-	if (!istype(paraslash_user))
+	if(!istype(paraslash_user))
 		return
 
-	if (!action_cooldown_check())
-		return
-
-	if (!check_and_use_plasma_owner())
-		return
+	XENO_ACTION_CHECK_USE_PLASMA(paraslash_user)
 
 	var/datum/behavior_delegate/sentinel_base/behavior = paraslash_user.behavior_delegate
-	if (istype(behavior))
+	if(istype(behavior))
 		behavior.next_slash_buffed = TRUE
 
 	to_chat(paraslash_user, SPAN_XENOHIGHDANGER("Our next slash will apply neurotoxin!"))
@@ -214,12 +204,12 @@
 
 /datum/action/xeno_action/onclick/paralyzing_slash/proc/unbuff_slash()
 	var/mob/living/carbon/xenomorph/unbuffslash_user = owner
-	if (!istype(unbuffslash_user))
+	if(!istype(unbuffslash_user))
 		return
 	var/datum/behavior_delegate/sentinel_base/behavior = unbuffslash_user.behavior_delegate
-	if (istype(behavior))
+	if(istype(behavior))
 		// In case slash has already landed
-		if (!behavior.next_slash_buffed)
+		if(!behavior.next_slash_buffed)
 			return
 		behavior.next_slash_buffed = FALSE
 

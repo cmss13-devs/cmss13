@@ -1,6 +1,6 @@
 /datum/game_mode/extended/faction_clash
-	name = "Faction Clash"
-	config_tag = "Faction Clash"
+	name = GAMEMODE_FACTION_CLASH
+	config_tag = GAMEMODE_FACTION_CLASH
 	flags_round_type = MODE_THUNDERSTORM|MODE_FACTION_CLASH
 	starting_round_modifiers = list(
 		/datum/gamemode_modifier/blood_optimization,

@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Hardcore trait/mode now triggers undefib signal to unlock stuff like spotter sight"

@@ -1,4 +1,0 @@
-author: "sippykot"
-delete-after: True
-changes:
-  - code_imp: "rank pins now prioritize uniforms instead of suits"

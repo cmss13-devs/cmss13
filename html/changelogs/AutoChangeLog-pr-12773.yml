@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Static tcomms no longer are \"on\" when initialized (namely for the purpose of nuke decryption checks)"

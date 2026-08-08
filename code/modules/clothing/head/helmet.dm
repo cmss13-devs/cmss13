@@ -840,6 +840,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		"nvg_sight_down",
 		"med_sight_down",
 		"sec_sight_down",
+		"sensor_sight_down",
 		"blank_hud_sight_down",
 	)
 

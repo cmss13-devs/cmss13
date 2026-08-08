@@ -40,7 +40,7 @@ They're all essentially identical when it comes to getting the job done.
 	///Set a timer for reloading mags. Higher is slower.
 	var/reload_delay = 1
 	///flags specifically for magazines.
-	var/flags_magazine = AMMUNITION_REFILLABLE
+	var/flags_magazine = AMMUNITION_REFILLABLE | JUNGLE_STYLE_ABLE
 	///the default mag icon state.
 	var/base_mag_icon
 	///the default mag item (inhand) state.
@@ -107,6 +107,7 @@ They're all essentially identical when it comes to getting the job done.
 			C.update_inv_l_hand()
 	if(ammo_band_color && ammo_band_icon)
 		update_ammo_band()
+	SEND_SIGNAL(src, COMSIG_MAGAZINE_FINISH_UPDATE_ICON)
 
 /obj/item/ammo_magazine/get_examine_text(mob/user)
 	. = ..()
@@ -121,7 +122,8 @@ They're all essentially identical when it comes to getting the job done.
 		. += SPAN_NOTICE("It has [SPAN_BOLD(current_rounds)] round[current_rounds == 1 ? "" : "s"] out of [SPAN_BOLD(max_rounds)].")
 
 /obj/item/ammo_magazine/attack_self(mob/user) // literally just a copy of attack_hand
-	if(flags_magazine & AMMUNITION_REFILLABLE)
+	. = ..() //Calling the parent so the signals are properly handled; expecting either nothing or 1
+	if(flags_magazine & AMMUNITION_REFILLABLE && !.)
 		if(flags_magazine & AMMUNITION_CANNOT_REMOVE_BULLETS)
 			to_chat(user, SPAN_WARNING("You can't remove ammo from \the [src]!"))
 			return
@@ -131,9 +133,11 @@ They're all essentially identical when it comes to getting the job done.
 		else
 			to_chat(user, SPAN_INFO("[src] is empty. Nothing to grab."))
 		return
-	return ..()
+	return
 
 /obj/item/ammo_magazine/attack_hand(mob/user)
+	if(SEND_SIGNAL(src, COMSIG_MAGAZINE_ATTEMPT_WITHDRAW_HANDFUL, user) & COMPONENT_MAGAZINE_CANCEL_ATTEMPT_WITHDRAW_HANDFUL)
+		return ..() //Do normal stuff yeah
 	if(flags_magazine & AMMUNITION_REFILLABLE) //actual refillable magazine, not just a handful of bullets or a fuel tank.
 		if(src == user.get_inactive_hand()) //Have to be holding it in the hand.
 			if(flags_magazine & AMMUNITION_CANNOT_REMOVE_BULLETS)
@@ -149,6 +153,7 @@ They're all essentially identical when it comes to getting the job done.
 
 //We should only attack it with handfuls. Empty hand to take out, handful to put back in. Same as normal handful.
 /obj/item/ammo_magazine/attackby(obj/item/transferring, mob/living/user, bypass_hold_check = 0)
+	. = ..()
 	if(istype(transferring, /obj/item/ammo_magazine))
 		var/obj/item/ammo_magazine/magazine = transferring
 		if((magazine.flags_magazine & AMMUNITION_HANDFUL) || (magazine.flags_magazine & AMMUNITION_SLAP_TRANSFER && flags_magazine & AMMUNITION_SLAP_TRANSFER)) //got a handful of bullets
@@ -163,6 +168,8 @@ They're all essentially identical when it comes to getting the job done.
 						to_chat(user, SPAN_NOTICE("Those aren't the same rounds. Better not mix them up."))
 				else
 					to_chat(user, SPAN_NOTICE("Try holding [src] before you attempt to restock it."))
+	else if(transferring.flags_item & JUNGLE_MAG_BINDER && src.flags_magazine & JUNGLE_STYLE_ABLE)
+		AddComponent(/datum/component/jungle_magazine, user, transferring)
 
 //Is the ammo magazine transferrable, silent version
 /obj/item/ammo_magazine/proc/is_transferable(obj/item/ammo_magazine/source)

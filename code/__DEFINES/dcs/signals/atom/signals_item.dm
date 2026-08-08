@@ -8,6 +8,7 @@
 /// from /obj/item/attackby() : (obj/item, mob/user)
 #define COMSIG_ITEM_ATTACKED "item_attacked"
 	#define COMPONENT_CANCEL_ITEM_ATTACK (1<<0)
+#define COMSIG_ITEM_ATTACK_ITEM "item_attack_item"
 
 // Return a nonzero value to cancel these actions
 #define COMSIG_BINOCULAR_ATTACK_SELF "binocular_attack_self"
@@ -23,6 +24,11 @@
 #define COMSIG_ITEM_UNWIELD "item_unwield"
 /// From base of /obj/item/proc/attack_self(): (mob/user)
 #define COMSIG_ITEM_ATTACK_SELF "item_attack_self"
+	#define COMPONENT_ITEM_CANCEL_ATTACK_SELF (1<<0)
+
+/// From /obj/item/proc/unique_action(): (mob/user)
+#define COMSIG_ITEM_UNIQUE_ACTION "item_unique_action"
+	#define COMPONENT_CANCEL_UNIQUE_ACTION (1<<0)
 
 ///from /obj/item/reagent_container/food/snacks/proc/On_Consume
 #define COMSIG_SNACK_EATEN "snack_eaten"
@@ -66,3 +72,14 @@
 //from /datum/component/overwatch_console_control
 #define COMSIG_OW_CONSOLE_OBSERVE_START "ow_console_observe_start"
 #define COMSIG_OW_CONSOLE_OBSERVE_END "ow_console_observe_end"
+
+//from /obj/item/ammo_magazine/attack_hand() : (mob/user)
+#define COMSIG_MAGAZINE_ATTEMPT_WITHDRAW_HANDFUL "magazine_attempt_withdraw_handful"
+	#define COMPONENT_MAGAZINE_CANCEL_ATTEMPT_WITHDRAW_HANDFUL (1<<0)
+
+//from /obj/item/ammo_magazine/update_icon() : (round_diff = 0)
+#define COMSIG_MAGAZINE_FINISH_UPDATE_ICON "magazine_finish_update_ammo_band"
+
+//from /obj/item/storage/proc/attempt_item_insertion() : (prevent_warning = FALSE, mob/user)
+#define COMSIG_ITEM_ATTEMPT_INSERTION_INTO_STORAGE "item_attempt_insertion_into_storage"
+	#define COMPONENT_ITEM_CANCEL_INSERTION_INTO_STORAGE (1<<0)

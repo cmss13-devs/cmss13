@@ -1250,11 +1250,11 @@ and you're good to go.
 
 			// This is where the magazine is auto-ejected
 			if(current_mag.current_rounds <= 0 && flags_gun_features & GUN_AUTO_EJECTOR)
-				if (user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_OFF))
+				if((user.client?.prefs?.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_OFF))
 					update_icon()
 				else
 					var/drop_to_ground = TRUE
-					if(user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND))
+					if(user.client?.prefs?.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND)
 						if(!(flags_gun_features & GUN_BURST_FIRING) || ((flags_gun_features & GUN_BURST_FIRING) && burst_amount >= shots_fired)) //Don't mess with our hands if we're not done with the burst yet.
 							drop_to_ground = FALSE
 							unwield(user)

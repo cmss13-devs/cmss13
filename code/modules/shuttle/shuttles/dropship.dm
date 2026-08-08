@@ -50,6 +50,12 @@
 			var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/hatch = air
 			if(istype(hatch))
 				hatch.linked_dropship = src
+	for(var/place in shuttle_areas)
+		for(var/obj/structure/machinery/door_control/hatch_ladder/air in place)
+			var/obj/structure/machinery/door_control/hatch_ladder/hatch_button = air
+			if(istype(hatch_button))
+				hatch_button.linked_dropship = src
+
 
 	RegisterSignal(src, COMSIG_DROPSHIP_ADD_EQUIPMENT, PROC_REF(add_equipment))
 	RegisterSignal(src, COMSIG_DROPSHIP_REMOVE_EQUIPMENT, PROC_REF(remove_equipment))

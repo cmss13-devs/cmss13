@@ -924,6 +924,7 @@
 	name = "\improper 'Omaha' weapons controls"
 	icon = 'icons/obj/structures/machinery/mohawk/mohawk-controls.dmi'
 	icon_state = "system-monitor"
+	density = FALSE
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_FLIGHT)
 	firemission_envelope = new /datum/cas_fire_envelope/uscm_dropship()
 	shuttle_tag = DROPSHIP_OMAHA

@@ -424,3 +424,37 @@
 			handle_dropship(id)
 
 	desiredstate = !desiredstate
+
+/obj/structure/machinery/door_control/hatch_ladder
+	name = "Hatch Ladder Access"
+	desc = "Looks intimaditing enough to challenge non-humans to use it."
+	icon = 'icons/obj/structures/machinery/mohawk/mohawk-interior-item.dmi'
+	icon_state = "hatch_ladder"
+	normaldoorcontrol = CONTROL_NORMAL_DOORS
+	var/obj/structure/ladder/dropship_omaha/linked_ladder
+	id = "omaha_1"
+	var/obj/docking_port/mobile/marine_dropship/linked_dropship
+
+/obj/structure/machinery/door_control/hatch_ladder/attack_hand(mob/living/user)
+	add_fingerprint(user) // removed xeno check. i am in control
+	if(linked_dropship.mode == "called" || linked_dropship.mode == "pre-arrival")
+		to_chat(user, SPAN_NOTICE("You almost press \the [name] button, but then reconsider killing yourself by venting atmo."))
+		return
+	else
+		use_button(user)
+
+/obj/structure/machinery/door_control/hatch_ladder/handle_door() // test this and map it
+	if(!linked_ladder)
+		for(var/obj/structure/ladder/dropship_omaha/target_ladder in range(1))
+			if(target_ladder.id == id)
+				linked_ladder = target_ladder
+				break
+	if(linked_ladder.deployed) // add transit check
+		linked_ladder.undeploy()
+	else
+		linked_ladder.deploy()
+
+/obj/structure/machinery/door_control/hatch_ladder/beforeShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)
+	. = ..()
+	if(linked_ladder.deployed)
+		linked_ladder.undeploy() // forced true

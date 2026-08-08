@@ -30,15 +30,13 @@
 	human.update_xeno_hostile_hud()
 
 /datum/effects/sentinel_neuro_stacks/validate_atom(mob/living/carbon/human/human)
-	if (human.stat == DEAD)
+	if (human.stat == DEAD || !ishuman(human))
 		return FALSE
 
 	return ..()
 
 /datum/effects/sentinel_neuro_stacks/process_mob()
 	. = ..()
-	if (!istype(affected_atom, /mob/living/carbon/human))
-		return
 
 	var/mob/living/carbon/human/human = affected_atom
 	if(human.oxyloss < max_oxyloss)
@@ -58,11 +56,11 @@
 
 
 /datum/effects/sentinel_neuro_stacks/Destroy()
+	QDEL_NULL(particle_holder)
 	if (!ishuman(affected_atom))
 		return ..()
 
 	var/mob/living/carbon/human/human = affected_atom
-	QDEL_NULL(particle_holder)
 	if(!QDELETED(human))
 		human.update_xeno_hostile_hud()
 		human.med_hud_set_health()

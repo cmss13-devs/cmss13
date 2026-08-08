@@ -2279,7 +2279,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if(gun_firemode == GUN_FIREMODE_AUTOMATIC)
 		reset_fire()
 		display_ammo(gun_user)
-	else if(gun_firemode == GUN_FIREMODE_BURSTFIRE && flags_gun_features & GUN_FIREMODE_BURSTFIRE)
+	else if(gun_firemode == GUN_FIREMODE_BURSTFIRE && (flags_gun_features & GUN_BURST_FIRING))
 		return
 	SEND_SIGNAL(src, COMSIG_GUN_STOP_FIRE)
 

@@ -211,3 +211,23 @@
   - bugfix: Shooting target damage display now accounts for damage falloff.
   - bugfix: Bullets hit shooting target without spriteclick too. As a result you can't
       walk through a target but you can unanchor it to pass and xeno can break it.
+2026-08-08:
+  AnCopper:
+  - rscadd: Squad Leaders now buy a megaphone from their vendor for 5 points.
+  Armsdealer9876:
+  - bugfix: fixed Req Tutorial marines asking for impossible item
+  DangerRevolution:
+  - bugfix: Fixed the QYJ Machine Gun for the UPP having magazines that counted as
+      "small" in a backpack, it is now set to "medium" like the Smartgun magazines
+  NHC:
+  - code_imp: Renamed Basic medical optic, into SensorMate Optic
+  - imageadd: added icons for the SensorMate opics
+  - imagetweak: Changed Medical Optic hud icon to represent the itemsprite better
+  PoltavskaPraca:
+  - maptweak: changed dir on a door in a shuttle on hybrisa to match the new directions
+      for icon states
+  SpypigDev:
+  - bugfix: Restores the ability to knockout others in a boxing match
+  Venuska1117:
+  - refactor: Updates Berserker Ravager code for cleaner look and making it easier
+      to follow.

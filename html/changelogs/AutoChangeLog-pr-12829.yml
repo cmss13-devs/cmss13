@@ -1,4 +1,0 @@
-author: "DangerRevolution"
-delete-after: True
-changes:
-  - bugfix: "Fixed the QYJ Machine Gun for the UPP having magazines that counted as \"small\" in a backpack, it is now set to \"medium\" like the Smartgun magazines"

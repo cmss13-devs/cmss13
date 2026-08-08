@@ -50,7 +50,7 @@
 	icon_state = "riot"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi',
 	)
 	armor_melee = CLOTHING_ARMOR_HIGH
 	armor_bullet = CLOTHING_ARMOR_LOW
@@ -146,7 +146,7 @@
 	item_state = "legionary_helm"
 	icon = 'icons/obj/items/clothing/hats/misc_ert_colony.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/misc_ert_colony.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/misc_ert_colony.dmi',
 	)
 	flags_inventory = COVEREYES|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEEYES
@@ -167,7 +167,7 @@
 	worn_x_dimension = 64
 	worn_y_dimension = 64
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/head_64.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/head_64.dmi',
 	)
 
 
@@ -179,7 +179,7 @@
 	worn_x_dimension = 64
 	worn_y_dimension = 64
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/head_64.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/head_64.dmi',
 	)
 	flags_inv_hide = HIDEMASK|HIDEEARS|HIDEEYES
 	anti_hug = 1
@@ -425,7 +425,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_state = "helmet"
 	blood_overlay_type = "m10helmet"
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi',
 	)
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
@@ -841,7 +841,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		"med_sight_down",
 		"sec_sight_down",
 		"sensor_sight_down",
-		"blank_hud_sight_down"
+		"blank_hud_sight_down",
 	)
 
 /datum/action/item_action/cycle_helmet_huds/New(Target, obj/item/holder)
@@ -899,7 +899,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/classic.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi',
 	)
 
 /obj/item/clothing/head/helmet/marine/jungle
@@ -908,7 +908,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi',
 	)
 
 /obj/item/clothing/head/helmet/marine/snow
@@ -918,7 +918,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi',
 	)
 
 /obj/item/clothing/head/helmet/marine/desert
@@ -927,7 +927,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/desert.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi',
 	)
 
 /obj/item/clothing/head/helmet/marine/urban
@@ -936,7 +936,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/urban.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi',
 	)
 
 /obj/item/clothing/head/helmet/marine/tech/tanker
@@ -968,11 +968,11 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi',
 	)
 	item_state_slots = list(
 		WEAR_L_HAND = "helmet",
-		WEAR_R_HAND = "helmet"
+		WEAR_R_HAND = "helmet",
 	)
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 	flags_marine_helmet = HELMET_GARB_OVERLAY|HELMET_DAMAGE_OVERLAY
@@ -984,7 +984,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/classic.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi',
 	)
 
 /obj/item/clothing/head/helmet/marine/medic/jungle
@@ -993,7 +993,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi',
 	)
 
 /obj/item/clothing/head/helmet/marine/medic/snow
@@ -1003,7 +1003,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi',
 	)
 
 /obj/item/clothing/head/helmet/marine/medic/desert
@@ -1012,7 +1012,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/desert.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi',
 	)
 
 /obj/item/clothing/head/helmet/marine/medic/urban
@@ -1021,7 +1021,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/urban.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi',
 	)
 
 /obj/item/clothing/head/helmet/marine/covert
@@ -1032,11 +1032,11 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi',
 	)
 	item_state_slots = list(
 		WEAR_L_HAND = "helmet",
-		WEAR_R_HAND = "helmet"
+		WEAR_R_HAND = "helmet",
 	)
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
@@ -1066,7 +1066,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	max_inserted_visors = 2
 	item_state_slots = list(
 		WEAR_L_HAND = "helmet",
-		WEAR_R_HAND = "helmet"
+		WEAR_R_HAND = "helmet",
 	)
 
 /obj/item/clothing/head/helmet/marine/rto/army
@@ -1099,7 +1099,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/classic.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi',
 	)
 
 /obj/item/clothing/head/helmet/marine/rto/intel/jungle
@@ -1108,7 +1108,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi',
 	)
 
 /obj/item/clothing/head/helmet/marine/rto/intel/snow
@@ -1118,7 +1118,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi',
 	)
 
 /obj/item/clothing/head/helmet/marine/rto/intel/desert
@@ -1127,7 +1127,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/desert.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi',
 	)
 
 /obj/item/clothing/head/helmet/marine/rto/intel/urban
@@ -1136,7 +1136,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/urban.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi',
 	)
 
 /obj/item/clothing/head/helmet/marine/specialist
@@ -1146,7 +1146,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_state = "grenadier_helmet"
 	item_state_slots = list(
 		WEAR_L_HAND = "helmet",
-		WEAR_R_HAND = "helmet"
+		WEAR_R_HAND = "helmet",
 	)
 	armor_melee = CLOTHING_ARMOR_HIGH
 	armor_bullet = CLOTHING_ARMOR_HIGH
@@ -1166,7 +1166,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_state = "grenadier_helmet"
 	item_state_slots = list(
 		WEAR_L_HAND = "helmet",
-		WEAR_R_HAND = "helmet"
+		WEAR_R_HAND = "helmet",
 	)
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
@@ -1392,7 +1392,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_state = "co"
 	item_state_slots = list(
 		WEAR_L_HAND = "helmet",
-		WEAR_R_HAND = "helmet"
+		WEAR_R_HAND = "helmet",
 	)
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_HIGH
@@ -1411,7 +1411,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi',
 	)
 	specialty = "M11 pattern ceremonial"
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
@@ -1423,7 +1423,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_state = "mp_helmet"
 	item_state_slots = list(
 		WEAR_L_HAND = "helmet",
-		WEAR_R_HAND = "helmet"
+		WEAR_R_HAND = "helmet",
 	)
 	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
 	specialty = "M10 pattern military police"
@@ -1436,7 +1436,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/classic.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi',
 	)
 
 /obj/item/clothing/head/helmet/marine/MP/jungle
@@ -1445,7 +1445,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi',
 	)
 
 /obj/item/clothing/head/helmet/marine/MP/snow
@@ -1455,7 +1455,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi',
 	)
 
 /obj/item/clothing/head/helmet/marine/MP/desert
@@ -1464,7 +1464,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/desert.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi',
 	)
 
 /obj/item/clothing/head/helmet/marine/MP/urban
@@ -1473,7 +1473,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/urban.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi',
 	)
 
 /obj/item/clothing/head/helmet/marine/MP/WO
@@ -1490,7 +1490,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_state = "officer"
 	item_state_slots = list(
 		WEAR_L_HAND = "helmet",
-		WEAR_R_HAND = "helmet"
+		WEAR_R_HAND = "helmet",
 	)
 	specialty = "M10 pattern officer"
 	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical/advanced)
@@ -1518,11 +1518,11 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi',
 	)
 	item_state_slots = list(
 		WEAR_L_HAND = "helmet",
-		WEAR_R_HAND = "helmet"
+		WEAR_R_HAND = "helmet",
 	)
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_HIGH
@@ -1543,11 +1543,11 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi',
 	)
 	item_state_slots = list(
 		WEAR_L_HAND = "helmet",
-		WEAR_R_HAND = "helmet"
+		WEAR_R_HAND = "helmet",
 	)
 	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
 	specialty = "RC6"
@@ -1652,11 +1652,11 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UPP.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi',
 	)
 	item_state_slots = list(
 		WEAR_L_HAND = "helmet",
-		WEAR_R_HAND = "helmet"
+		WEAR_R_HAND = "helmet",
 	)
 	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_energy = CLOTHING_ARMOR_MEDIUM
@@ -1716,7 +1716,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UPP.dmi'
 	icon_state = "upp_cap"
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UPP.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UPP.dmi',
 	)
 	siemens_coefficient = 2
 	flags_armor_protection = BODY_FLAG_HEAD
@@ -1825,7 +1825,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi',
 	)
 
 /obj/item/clothing/head/helmet/specrag/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
@@ -1869,7 +1869,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi',
 	)
 
 /obj/item/clothing/head/helmet/skullcap/Initialize(mapload, ...)
@@ -1919,7 +1919,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	icon_state = "mercenary_heavy_helmet"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/CLF.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/CLF.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/CLF.dmi',
 	)
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	armor_melee = CLOTHING_ARMOR_VERYHIGH
@@ -2050,11 +2050,11 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi',
 	)
 	item_state_slots = list(
 		WEAR_L_HAND = "helmet",
-		WEAR_R_HAND = "helmet"
+		WEAR_R_HAND = "helmet",
 	)
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 
@@ -2102,7 +2102,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_state = "rmc_helm1"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/TWE.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/TWE.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/TWE.dmi',
 	)
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUM

@@ -532,7 +532,7 @@ GLOBAL_LIST_INIT(cm_vending_equipment_badblood, list(
 		switch(mob_client.prefs.predator_use_unique)
 			if("Anubys")
 				item_icons = list(
-					WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_gear64.dmi' // fat fuckass mask
+					WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_gear64.dmi', // fat fuckass mask
 				)
 				icon_state = "pred_mask_elite_anubys"
 				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elite_anubys")
@@ -544,7 +544,7 @@ GLOBAL_LIST_INIT(cm_vending_equipment_badblood, list(
 				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elite_plated")
 			if("Ronin")
 				item_icons = list(
-					WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_gear64.dmi'
+					WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_gear64.dmi',
 				)
 				icon_state = "pred_mask_elite_ronin"
 				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elite_ronin")

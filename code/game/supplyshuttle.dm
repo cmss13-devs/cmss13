@@ -797,7 +797,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		"Surplus Equipment",
 		"Contraband Ammo",
 		"Deep Storage",
-		"Miscellaneous"
+		"Miscellaneous",
 		)
 	//dropship part fabricator's points, so we can reference them globally (mostly for DEFCON)
 	var/dropship_points = 10000 //gains roughly 18 points per minute | Original points of 5k doubled due to removal of prespawned ammo.
@@ -1409,7 +1409,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	. = ..()
 
 	vehicles = list(
-		new /datum/vehicle_order/tank/plain
+		new /datum/vehicle_order/tank/plain,
 	)
 
 	if(!GLOB.VehicleElevatorConsole)

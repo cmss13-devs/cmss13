@@ -204,7 +204,7 @@
 		"l_leg",
 		"l_foot",
 		"r_leg",
-		"r_foot"
+		"r_foot",
 	)
 
 /obj/effect/alien/resin/spike/Initialize(mapload, hive)

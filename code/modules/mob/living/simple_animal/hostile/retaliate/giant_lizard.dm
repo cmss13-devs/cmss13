@@ -55,7 +55,16 @@
 	///If 0, moves the mob out of attacking into idle state. Used to prevent the mob from chasing down targets that did not mean to hurt it.
 	var/aggression_value = 0
 	///Every type of structure that can get attacked in the DestroySurroundings() proc.
-	var/list/destruction_targets = list(/obj/structure/mineral_door/resin, /obj/structure/window, /obj/structure/closet, /obj/structure/surface/table, /obj/structure/grille, /obj/structure/barricade, /obj/structure/machinery/door, /obj/structure/largecrate)
+	var/list/destruction_targets = list(
+		/obj/structure/mineral_door/resin,
+		/obj/structure/window,
+		/obj/structure/closet,
+		/obj/structure/surface/table,
+		/obj/structure/grille,
+		/obj/structure/barricade,
+		/obj/structure/machinery/door,
+		/obj/structure/largecrate,
+		)
 
 	///Emotes to play when being pet by a friend.
 	var/list/pet_emotes = list("closes its eyes.", "growls happily.", "wags its tail.", "rolls on the ground.")

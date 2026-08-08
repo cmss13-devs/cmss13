@@ -36,7 +36,7 @@
 	var/has_blast_wave_dampener = FALSE;
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/grenades_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/grenades_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/grenades_righthand.dmi',
 	)
 
 /obj/item/explosive/Initialize()

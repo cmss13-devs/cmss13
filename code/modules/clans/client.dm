@@ -54,7 +54,7 @@ CLIENT_VERB(view_clan_info)
 
 			var/options = list(
 				"Your clan" = clan_info.clan_id,
-				"People without clans" = null
+				"People without clans" = null,
 			)
 
 			var/input = tgui_input_list(src, "Choose the clan to view", "View clan", options)
@@ -140,7 +140,7 @@ CLIENT_VERB(view_clan_info)
 			name = CP.ckey,
 			rank = GLOB.clan_ranks[CP.clan_rank], // rank_to_give not used here, because we need to get their visual rank, not their position
 			rank_pos = rank_to_give,
-			honor = (CP.honor? CP.honor : 0)
+			honor = (CP.honor? CP.honor : 0),
 		)
 
 		clan_members[index++] = player

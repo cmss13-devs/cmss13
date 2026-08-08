@@ -102,9 +102,9 @@
 	. = ..()
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!action_cooldown_check()) // activate c/d only if we already spit
-		for (var/action_type in action_types_to_cd)
+		for(var/action_type in action_types_to_cd)
 			var/datum/action/xeno_action/xeno_action = get_action(xeno, action_type)
-			if (!istype(xeno_action))
+			if(!istype(xeno_action))
 				continue
 
 			xeno_action.apply_cooldown_override(cooldown_duration)
@@ -113,21 +113,17 @@
 /datum/action/xeno_action/onclick/acid_shroud/use_ability(atom/affected_atom)
 	var/datum/effect_system/smoke_spread/xeno_acid/spicy_gas
 	var/mob/living/carbon/xenomorph/xeno = owner
-	if (!isxeno(owner))
+	if(!isxeno(owner))
 		return
 
-	if (!action_cooldown_check())
-		return
-
-	if (!xeno.check_state())
-		return
+	XENO_ACTION_CHECK(xeno)
 
 	if(sound_play)
 		playsound(xeno,"acid_strike", 35, 1)
 		sound_play = FALSE
 		addtimer(VARSET_CALLBACK(src, sound_play, TRUE), 2 SECONDS)
 
-	if (!do_after(xeno, xeno.ammo.spit_windup/6.5, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE, numticks = 2)) /// 0.7 seconds
+	if(!do_after(xeno, xeno.ammo.spit_windup / 6.5, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE, numticks = 2)) /// 0.7 seconds
 		to_chat(xeno, SPAN_XENODANGER("We decide to cancel our gas shroud."))
 		return
 
@@ -144,9 +140,9 @@
 	spicy_gas.start()
 	to_chat(xeno, SPAN_XENOHIGHDANGER("We dump our acid through our pores, creating a shroud of gas!"))
 
-	for (var/action_type in action_types_to_cd)
+	for(var/action_type in action_types_to_cd)
 		var/datum/action/xeno_action/xeno_action = get_action(xeno, action_type)
-		if (!istype(xeno_action))
+		if(!istype(xeno_action))
 			continue
 
 		xeno_action.apply_cooldown_override(cooldown_duration)

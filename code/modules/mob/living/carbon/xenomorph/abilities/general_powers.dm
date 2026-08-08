@@ -911,52 +911,48 @@
 			return FALSE
 	return TRUE
 
-/datum/action/xeno_action/activable/xeno_spit/use_ability(atom/atom)
+/datum/action/xeno_action/activable/xeno_spit/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
-	var/spit_target = aim_turf ? get_turf(atom) : atom
-	if(!xeno.check_state())
-		return
+	var/spit_target = aim_turf ? get_turf(target_atom) : target_atom
 
-	if(spitting)
-		to_chat(src, SPAN_WARNING("We are already preparing a spit!"))
+	if(HAS_TRAIT(xeno, TRAIT_ABILITY_BOMBARD))
+		to_chat(xeno, SPAN_WARNING("We are already preparing a spit!"))
 		return
 
 	if(!isturf(xeno.loc))
-		to_chat(src, SPAN_WARNING("We can't spit from here!"))
+		to_chat(xeno, SPAN_WARNING("We can't spit from here!"))
 		return
 
 	if(!action_cooldown_check())
-		to_chat(src, SPAN_WARNING("We must wait for our spit glands to refill."))
+		to_chat(xeno, SPAN_WARNING("We must wait for our spit glands to refill."))
 		return
 
 	var/turf/current_turf = get_turf(xeno)
-
 	if(!current_turf)
 		return
 
-	if (!check_plasma_owner())
-		return
+	XENO_ACTION_CHECK(xeno)
 
 	if(xeno.ammo.spit_windup)
-		spitting = TRUE
+		ADD_TRAIT(xeno, TRAIT_ABILITY_BOMBARD, TRAIT_SOURCE_ABILITY("bombard"))
 		if(xeno.ammo.pre_spit_warn)
 			playsound(xeno.loc,"alien_drool", 55, 1)
 		to_chat(xeno, SPAN_WARNING("We begin to prepare a large spit!"))
 		xeno.visible_message(SPAN_WARNING("[xeno] prepares to spit a massive glob!"),
 		SPAN_WARNING("We begin to spit [xeno.ammo.name]!"))
-		if (!do_after(xeno, xeno.ammo.spit_windup, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+		if(!do_after(xeno, xeno.ammo.spit_windup, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 			to_chat(xeno, SPAN_XENODANGER("We decide to cancel our spit."))
-			spitting = FALSE
+			REMOVE_TRAIT(xeno, TRAIT_ABILITY_BOMBARD, TRAIT_SOURCE_ABILITY("bombard"))
 			return
 	plasma_cost = xeno.ammo.spit_cost
 
 	if(!check_and_use_plasma_owner())
-		spitting = FALSE
+		REMOVE_TRAIT(xeno, TRAIT_ABILITY_BOMBARD, TRAIT_SOURCE_ABILITY("bombard"))
 		return
 
-	xeno.visible_message(SPAN_XENOWARNING("[xeno] spits at [atom]!"),
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] spits at [target_atom]!"),
 
-	SPAN_XENOWARNING("We spit [xeno.ammo.name] at [atom]!") )
+	SPAN_XENOWARNING("We spit [xeno.ammo.name] at [target_atom]!") )
 	playsound(xeno.loc, sound_to_play, 25, 1)
 
 	var/obj/projectile/proj = new (current_turf, create_cause_data(xeno.ammo.name, xeno))
@@ -965,8 +961,7 @@
 	proj.def_zone = xeno.get_limbzone_target()
 	proj.fire_at(spit_target, xeno, xeno, xeno.ammo.max_range, xeno.ammo.shell_speed)
 
-	spitting = FALSE
-
+	REMOVE_TRAIT(xeno, TRAIT_ABILITY_BOMBARD, TRAIT_SOURCE_ABILITY("bombard"))
 	SEND_SIGNAL(xeno, COMSIG_XENO_POST_SPIT)
 
 	apply_cooldown()

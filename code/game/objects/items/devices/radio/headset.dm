@@ -1500,3 +1500,15 @@
 	hud_type = MOB_HUD_FACTION_PAP
 	additional_hud_types = list(MOB_HUD_FACTION_UPP)
 	volume = RADIO_VOLUME_IMPORTANT
+
+/obj/item/device/radio/headset/distress/cec
+	name = "\improper UPP CEC headset"
+	desc = "A headset commonly worn by Cosmos Exploration Corps personnel."
+	icon_state = "generic_headset"
+	frequency = UPP_FREQ
+	ignore_z = FALSE
+	has_hud = TRUE
+	hud_type = MOB_HUD_FACTION_CEC
+	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/upp)
+	additional_hud_types = list(MOB_HUD_FACTION_UPP, MOB_HUD_FACTION_CEC)
+

@@ -273,8 +273,7 @@
 
 
 //EZ AUTOINJECTORS
-
-/obj/item/reagent_container/hypospray/autoinjector/ez //only here to set up pathing
+/obj/item/reagent_container/hypospray/autoinjector/ez //only here to set up pathing, as inapro is commonly administered by medics.
 	name = "inaprovaline EZ autoinjector"
 	chemname = "inaprovaline"
 	desc = "An EZ autoinjector loaded with three 30u doses of Inaprovaline, a common oxygen stabilizer for critical patients. You can refill it at Wey-Med vending machines or with a smart tank, and it does not require any training to use."
@@ -328,8 +327,7 @@
 
 
 //MARINE AUTOINJECTORS
-
-/obj/item/reagent_container/hypospray/autoinjector/ez/one_use
+/obj/item/reagent_container/hypospray/autoinjector/ez/one_use //only here to set up pathing, as inapro is commonly administered by medics.
 	name = "crit-save EZ autoinjector"
 	chemname = "inaprovaline"
 	desc = "An EZ autoinjector loaded with a single 30u dose of Inaprovaline to self administer for oxygen-stabilizing in anticipation of passing out. You can refill it at Wey-Med vending machines or with a smart tank. Thankfully, there's no lock on it, so anyone can use it!"
@@ -390,8 +388,9 @@
 	volume = (REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 	maptext_label = "OuDx"
 
+
 //TUTORIAL AUTOINJECTORS
-/obj/item/reagent_container/hypospray/autoinjector/tutorial
+/obj/item/reagent_container/hypospray/autoinjector/tutorial //only here to set up pathing
 	name = "tricordrazine EZ autoinjector (FOR TRAINING USE ONLY)"
 	chemname = "tricordrazine"
 	desc = "An autoinjector loaded with a single 15u dose of Tricordrazine, a common wide-spectrum damage healer. To use it, click the autoinjector while it is in your hand. You can also click any person one tile near you, or yourself, to inject its contents. Most autoinjectors can be refilled with a Wey-Med vending machine."
@@ -413,7 +412,7 @@
 	volume = (REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 
 /obj/item/reagent_container/hypospray/autoinjector/tutorial/kelotane
-	name = "kelotane EZ  autoinjector (FOR TRAINING USE ONLY)"
+	name = "kelotane EZ autoinjector (FOR TRAINING USE ONLY)"
 	chemname = "kelotane"
 	desc = "An autoinjector loaded with a single 15u dose of Kelotane, a common burn medicine. To use it, click the autoinjector while it is in your hand. You can also click any person one tile near you, or yourself, to inject its contents. Most autoinjectors can be refilled with a Wey-Med vending machine."
 	maptext_label = "OuKl"
@@ -463,12 +462,13 @@
 	volume = (HIGH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 
 /obj/item/reagent_container/hypospray/autoinjector/tutorial/peridaxon //in case we ever want to simulate transporting somebody to surgery.
-	name = "p;eridaxon EZ autoinjector (FOR TRAINING USE ONLY)"
+	name = "peridaxon EZ autoinjector (FOR TRAINING USE ONLY)"
 	chemname = "peridaxon"
 	desc = "An EZ autoinjector loaded with a single 7.5u dose of Peridaxon, used to stabilize a patient's organs before surgery. To use it, click the autoinjector while it is in your hand. You can also click any person one tile near you, or yourself, to inject its contents. Most autoinjectors can be refilled with a Wey-Med vending machine."
 	maptext_label = "OuIn"
 	amount_per_transfer_from_this = LOWH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (LOWH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
+
 
 //MIXED/MISC AUTOINJECTORS THAT CANNOT BE REFILLED
 /obj/item/reagent_container/hypospray/autoinjector/chloralhydrate

@@ -98,7 +98,7 @@
 /obj/docking_port/mobile/crashable/proc/check_crash_point(obj/docking_port/stationary/crashable/checked_crashable_port)
 	// Pre-laod shipmap template and origin if the shipmap has crashed
 	var/datum/map_template/template
-	if (SShijack.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)
+	if(SShijack.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)
 		var/datum/map_config/ship_map_config = SSmapping.configs[SHIP_MAP]
 		template = SSmapping.map_templates[ship_map_config?.ground_crash_template_name]
 
@@ -120,7 +120,7 @@
 
 		// Prevent the shuttle from being smushed by the shipmap and vice-versa
 		if(SShijack.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)
-			if(!template)
+			if(!template || !SShijack.ground_origin)
 				// Template failed to load; to prevent this from blocking all shuttles from crashing, land anyway
 				. = TRUE
 				CRASH("Shipmap template failed to load when determining a safe position for a shuttle to crash at.")

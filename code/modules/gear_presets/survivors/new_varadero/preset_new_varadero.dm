@@ -61,12 +61,15 @@
 	uniform.attach_accessory(new_human,pin)
 	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 
+	var/obj/item/clothing/suit/storage/jacket/marine/service/mp(new_human) = new()
+	suit.icon_state = "[suit.initial_icon_state]_o"
+	suit.buttoned = FALSE
+
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR) // placeholder
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/MP(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/full(new_human), WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/service/mp(new_human), WEAR_JACKET)
 
 	switch(choice)
 		if(1)
@@ -100,9 +103,9 @@
 	uniform.attach_accessory(new_human,pin)
 	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/webbing(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR) // placeholder
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/tech/LACN(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/service/green(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran(new_human), WEAR_HANDS)
 
 	switch(choice)
@@ -200,7 +203,7 @@
 	..()
 
 /datum/equipment_preset/survivor/new_varadero/firefighter
-	name = "Survivor - New Varadero - LACN Airport Firefighter (med)"
+	name = "Survivor - New Varadero - LACN Airport Firefighter (Doctor)"
 	assignment = "LACN Aviation Rescue & Fire Protection Specialist" //combo of regional names for the role
 	role_comm_title = "LACN ARFPS"
 	minimap_icon = "nurse"
@@ -293,7 +296,6 @@
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(new_human), WEAR_EYES)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/windbreaker/windbreaker_green(new_human), WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
-			new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/plasteel/small_stack(new_human.back), WEAR_IN_BACK)
 
 	add_random_survivor_medical_gear(new_human)
 	add_lacn_weapon(new_human)
@@ -331,7 +333,6 @@
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(new_human), WEAR_EYES)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/welding(new_human), WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
-			new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/plasteel/med_small_stack(new_human.back), WEAR_IN_BACK)
 		if(2)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/headset(new_human), WEAR_HEAD)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/yellow(new_human), WEAR_JACKET)
@@ -339,23 +340,19 @@
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/welding(new_human), WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(new_human), WEAR_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/insulated(new_human), WEAR_HANDS)
-			new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/plasteel/small_stack(new_human.back), WEAR_IN_BACK)
 		if(3)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/welding(new_human), WEAR_HEAD)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest(new_human), WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(new_human), WEAR_R_STORE)
-			new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/plasteel/med_small_stack(new_human.back), WEAR_IN_BACK)
 		if(4)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/welding(new_human), WEAR_HEAD)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/blue(new_human), WEAR_JACKET)
-			new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/plasteel/small_stack(new_human.back), WEAR_IN_BACK)
 		if(5)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap(new_human), WEAR_HEAD)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest(new_human), WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(new_human), WEAR_EYES)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
-			new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/plasteel/med_small_stack(new_human.back), WEAR_IN_BACK)
 		if(6)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hardhat/orange(new_human), WEAR_HEAD)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(new_human), WEAR_EYES)
@@ -363,7 +360,6 @@
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest(new_human), WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/nailgun(new_human.back), WEAR_IN_BACK)
-			new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/plasteel/small_stack(new_human.back), WEAR_IN_BACK)
 	add_lacn_weapon(new_human)
 	..()
 
@@ -391,7 +387,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/welding(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/plasteel/small_stack(new_human.back), WEAR_IN_BACK)
 
 	add_lacn_weapon(new_human)
 	..()
@@ -446,60 +441,6 @@
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/swat(new_human), WEAR_FACE)
 	add_random_survivor_research_gear(new_human)
 	add_lacn_weapon(new_human)
-	..()
-
-/datum/equipment_preset/survivor/new_varadero/scientist_xenoarchaeologist
-	name = "Survivor - New Varadero - Xenoarchaeologist"
-	assignment = "New Varadero Xenoarchaeologist"
-	role_comm_title = "WY XARC"
-	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)
-	minimap_icon = "goon_sci"
-	minimap_background = "background_pmc"
-	faction = FACTION_WY
-	faction_group = list(FACTION_WY, FACTION_SURVIVOR, FACTION_MARINE)
-	skills = /datum/skills/civilian/survivor/scientist
-	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	idtype = /obj/item/card/id/silver/clearance_badge/scientist
-	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY,)
-
-	survivor_variant = SCIENTIST_SURVIVOR
-
-/datum/equipment_preset/survivor/new_varadero/scientist_xenoarchaeologist/load_gear(mob/living/carbon/human/new_human)
-	var/random_gear = rand(1,55)
-
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY(new_human), WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/science(new_human), WEAR_EYES)
-
-	switch(random_gear)
-		if(1 to 25)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/researcher(new_human), WEAR_JACKET)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/researcher(new_human), WEAR_BODY)
-		if(26 to 35)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/bio_suit/wy_bio(new_human), WEAR_JACKET)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/brown(new_human), WEAR_HANDS)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/bio_hood/wy_bio/alt(new_human), WEAR_HEAD)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/researcher(new_human), WEAR_BODY)
-		if(36 to 50)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/bio_suit/wy_bio(new_human), WEAR_JACKET)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/brown(new_human), WEAR_HANDS)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/bio_hood/wy_bio/alt(new_human), WEAR_HEAD)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/scientist/hybrisa(new_human), WEAR_BODY)
-		if(51 to 55)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(new_human), WEAR_BACK)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/bio_suit/wy_bio(new_human), WEAR_JACKET)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/cbrn(new_human), WEAR_HANDS)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/commando/cbrn(new_human), WEAR_FEET)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/scientist/hybrisa(new_human), WEAR_BODY)
-			new_human.equip_to_slot_or_del(new /obj/item/tank/emergency_oxygen/engi(new_human), WEAR_WAIST)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas(new_human), WEAR_FACE)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/headband/tan(new_human), WEAR_HEAD)
-			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/flamer/survivor(new_human), WEAR_R_HAND)
-
-	add_lacn_weapon(new_human)
-	add_random_survivor_research_gear(new_human)
 	..()
 
 /datum/equipment_preset/survivor/new_varadero/scientist_xenobiologist
@@ -678,4 +619,36 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/fancy/cigarettes/wypacket(new_human.back), WEAR_IN_BACK)
 	add_survivor_weapon_civilian(new_human)
 	add_ice_colony_survivor_equipment(new_human)
+	..()
+
+/////////////////// SYNTHETIC SURVIVORS ///////////////////////
+//////////////////////////////////////////////////////////////
+
+/datum/equipment_preset/synth/survivor/new_varadero
+	flags = EQUIPMENT_PRESET_STUB
+
+/datum/equipment_preset/synth/survivor/new_varadero/lacnsyn
+	name = "Survivor - New Varadero Base Synthetic"
+	assignment = "LACN Support Synthetic"
+	role_comm_title = "LACN Syn"
+	minimap_icon = "synth"
+	faction = FACTION_MARINE
+	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
+	languages = ALL_SYNTH_LANGUAGES
+	idtype = /obj/item/card/id/gold
+	origin_override = ORIGIN_USCM
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+
+/datum/equipment_preset/synth/survivor/new_varadero/lacnsyn/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR) // placeholder
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/medical_green(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/full/with_defib_and_analyzer(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/big(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector(preset_human), WEAR_L_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular(preset_human), WEAR_R_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(preset_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/synth/full(preset_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/synthetic, WEAR_IN_BACK)
+	add_random_survivor_medical_gear(new_human)
 	..()

@@ -14,7 +14,6 @@
         "/datum/equipment_preset/survivor/new_varadero/groundcrew",
         "/datum/equipment_preset/survivor/new_varadero/pilot",
         "/datum/equipment_preset/survivor/new_varadero/scientist",
-        "/datum/equipment_preset/survivor/new_varadero/scientist_xenoarchaeologist",
         "/datum/equipment_preset/survivor/new_varadero/scientist_xenobiologist",
         "/datum/equipment_preset/survivor/new_varadero/rd",
         "/datum/equipment_preset/survivor/new_varadero/assrep",
@@ -22,6 +21,9 @@
         "/datum/equipment_preset/survivor/new_varadero/chaplain",
         "/datum/equipment_preset/survivor/beachbum",
         "/datum/equipment_preset/survivor/hybrisa/kelland_miner"
+    ],
+	"synth_survivor_types": [
+        "/datum/equipment_preset/synth/survivor/new_varadero/lacnsyn"
     ],
 	"CO_survivor_types": [
         "/datum/equipment_preset/survivor/new_varadero/commander"

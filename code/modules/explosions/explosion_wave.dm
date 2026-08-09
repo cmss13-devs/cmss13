@@ -28,10 +28,11 @@
 	 *                         W   E
 	 *                         *SSS*
 	 *
-	 * At the diagonals, we have two overlapping waves each time. This may require us
-	 * to divide the explosive power by two to match, or to merge it between waves.
-	 * Another option is to use a shared list for all waves so the target will only
-	 * eat blast from one of the waves. That's what we're doing for now.
+	 * At the diagonals, we have two overlapping waves each time.
+	 * To avoid this, we clip the leftmost turf each time.
+	 * Why is it important not to have diagnoals overlap even if don't explode an
+	 * atom twice? Because presence of atoms still affects explosive resistance
+	 * dampening the blast wave.
 	 */
 
 	/// Origin point of the wave
@@ -43,6 +44,8 @@
 	var/order = 0
 	/// How fast this must be scheduled to propagate the explosion - as a delay in deciseconds
 	var/delay = 0.5 DECISECONDS
+	/// True if this wave is part of a radial blast and NOT standalone
+	var/radial = FALSE
 
 	/// Initial power of the blast wave
 	var/power = 0
@@ -67,11 +70,9 @@
 	/// Typically this will be a shared list between all 4 cardinal blast waves, so don't .Cut it
 	var/list/atom/movable/exploded
 
-/datum/explosion_wave/New(turf/epicenter, dir = NONE, power = 0, falloff = 0, falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR, datum/cause_data/cause_data, enviro, list/exploded_list)
+/datum/explosion_wave/New(turf/epicenter, dir = NONE, power = 0, falloff = 0, falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR, datum/cause_data/cause_data, enviro, list/exploded_list, radial = FALSE)
 	. = ..()
-	if(!dir || !power)
-		qdel(src)
-		return
+
 	src.epicenter = epicenter
 	src.dir = dir
 	src.power = min(power, EXPLOSION_MAX_POWER)
@@ -79,6 +80,7 @@
 	src.falloff_shape = falloff_shape
 	src.cause_data = cause_data
 	src.exploded = exploded_list || list()
+	src.radial = radial
 	if(!isnull(enviro))
 		src.enviro = enviro
 
@@ -87,11 +89,13 @@
 	wave_falloff = list(falloff)
 	intensities = list(power)
 
-	SSexplosion_waves.queue(src)
-
-	// Explode the epicenter right off, we won't get another chance at this
 	set_signals_up()
-	explode_turfs(force_defer = TRUE)
+	if(dir & (NORTH|SOUTH|EAST|WEST)) // If the wave travels
+		SSexplosion_waves.queue(src)
+	else // Otherwise explode only the epicenter and call it a day
+		explode_turfs(force_defer = TRUE)
+		qdel(src)
+
 
 /datum/explosion_wave/Destroy(force, ...)
 	. = ..()
@@ -178,6 +182,24 @@
 		else // Right side. We're 1 wider, and also need to skip the middle one, so that's a 2 difference
 			new_intensities[i] = intensities[i-2]
 			new_falloff[i] = wave_falloff[i-2]
+
+	// Special case: At the start of propagation, we clip the leftmost explosion cell of the wave.
+	// We do this so there is no overlap in the diagonals, as a full explosion becomes a spiral of sorts
+	// See at top of file why we want to have no overlap depsite using var/exploded
+	// Basically we want this to look like this:
+	/*
+		w n n n n
+		w w n n e
+		w w c e e
+		w s s e e
+		s s s s e
+	*/
+	if(radial && order == 1)
+		// find out where 'left' radially is for coordinates
+		if(dir & (NORTH|WEST))
+			new_intensities[1] = 0
+		else if(dir & (SOUTH|EAST))
+			new_intensities[3] = 0
 
 	// We store the new values
 	intensities = new_intensities
@@ -288,7 +310,6 @@
 		var/turf/turf = wave_turfs[i]
 		var/intensity = intensities[i]
 		if(intensity > 0)
-			image.alpha = intensity
 			turf.overlays += image
 
 /// Remove blast wave overlay from all the current turfs
@@ -298,7 +319,6 @@
 		var/turf/turf = wave_turfs[i]
 		var/intensity = intensities[i]
 		if(intensity > 0) // Yes, we need to check even while removing, so that a dead explosion doens't clip overlays from a living explosion
-			image.alpha = intensity // Make sure this is right, or the overlay won't remove!
 			turf.overlays -= image
 
 /// Set signals on all of our wave present turfs so we can explode things that come into them
@@ -322,8 +342,12 @@
 		return
 	var/i = wave_turfs.Find(source)
 	exploded += mover
+	var/initial_power = intensities[i]
+	if(initial_power <= 0)
+		return
+	var/resistance = mover.get_explosion_resistance()
+	intensities[i] = max(0, initial_power - resistance)
 	// Contrary to explode_turfs above, here we defer everything to SSdelayed_ex_act
 	// This is because since this came from a movement operation, we might not be on SS time at all
 	// right now, and we may cause overtime if we start throwing humans around
-	SSdelayed_ex_act.queue(mover, intensities[i], dir, cause_data, 0, enviro)
-
+	SSdelayed_ex_act.queue(mover, initial_power, dir, cause_data, 0, enviro)

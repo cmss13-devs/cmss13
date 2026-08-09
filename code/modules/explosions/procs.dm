@@ -1,5 +1,5 @@
 // Legacy proc spawning cellular automata explosions repurposed for our use. This should eventually go somewhere else and be cleaned up.
-/proc/cell_explosion(turf/epicenter, power, falloff, falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR, direction, datum/cause_data/explosion_cause_data, enviro=FALSE)
+/proc/cell_explosion(turf/epicenter, power, falloff, falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR, direction = NONE, datum/cause_data/explosion_cause_data, enviro=FALSE)
 	if(!istype(explosion_cause_data))
 		if(explosion_cause_data)
 			stack_trace("cell_explosion called with string cause ([explosion_cause_data]) instead of datum")
@@ -22,13 +22,15 @@
 		playsound(epicenter, "explosion", 90, 1, max(round(power,1),7))
 
 	// We make one common list for all of this explosions' blastwaves to refer to so that all of them can only explode each atom once
-	var/list/exploded_list = list()
+	var/list/atom/exploded_list = list()
 
-	if(direction)
-		new /datum/explosion_wave(epicenter, dir = direction, power = power, falloff = falloff, falloff_shape = falloff_shape, cause_data = explosion_cause_data, enviro = enviro, exploded_list = exploded_list)
-	else
-		for(var/dir in GLOB.cardinals)
-			new /datum/explosion_wave(epicenter, dir = dir, power = power, falloff = falloff, falloff_shape = falloff_shape, cause_data = explosion_cause_data, enviro = enviro, exploded_list = exploded_list)
+	if(!direction)
+		direction = NORTH|SOUTH|EAST|WEST
+	for(var/dir in GLOB.cardinals)
+		if(direction & dir)
+			new /datum/explosion_wave(epicenter, dir = dir, power = power, falloff = falloff, falloff_shape = falloff_shape, cause_data = explosion_cause_data, enviro = enviro, exploded_list = exploded_list, radial = TRUE)
+	// Handle just the epicenter
+	new /datum/explosion_wave(epicenter, dir = NONE, power = power, falloff = falloff , falloff_shape = falloff_shape, cause_data = explosion_cause_data, enviro = enviro, exploded_list = exploded_list)
 
 	if(power >= 150) //shockwave for anything over 150 power
 		new /obj/effect/shockwave(epicenter, power/50)

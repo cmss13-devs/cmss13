@@ -231,3 +231,9 @@
   Venuska1117:
   - refactor: Updates Berserker Ravager code for cleaner look and making it easier
       to follow.
+2026-08-09:
+  JackieEstegado:
+  - bugfix: Fixed medbay chemical dispensers energy fully refilling each time a marine
+      latejoined.
+  - balance: Properly implement medbay chemical dispenser energy scaling, based on
+      the number of Hospital Corpsmen.

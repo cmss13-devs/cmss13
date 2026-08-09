@@ -474,7 +474,7 @@
 /datum/ammo/xeno/bone_chips/on_hit_mob(mob/living/target_mob, obj/projectile/projectile)
 	if(iscarbon(target_mob))
 		var/mob/living/carbon/target_carbon = target_mob
-		if((HAS_FLAG(target_mob.status_flags, XENO_HOST) && HAS_TRAIT(target_mob, TRAIT_NESTED)) || target_mob.stat == DEAD || HAS_TRAIT(target_mob, TRAIT_HAULED))
+		if((HAS_FLAG(target_carbon.status_flags, XENO_HOST) && HAS_TRAIT(target_carbon, TRAIT_NESTED)) || target_carbon.stat == DEAD || HAS_TRAIT(target_carbon, TRAIT_HAULED))
 			return
 	if(ishuman_strict(target_mob) || isxeno(target_mob))
 		playsound(target_mob, 'sound/effects/spike_hit.ogg', 25, 1, 1)

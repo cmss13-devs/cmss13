@@ -586,7 +586,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		data["ob_safety"] = ob_cannon_safety
 		if(current_orbital_cannon.tray.warhead)
 			data["ob_warhead"] = current_orbital_cannon.tray.warhead.warhead_kind
-	if(GLOB.almayer_aa_cannon.protecting_section)
+	if(GLOB.almayer_aa_cannon?.protecting_section)
 		data["aa_targeting"] = GLOB.almayer_aa_cannon.protecting_section
 
 	data["marines"] = list()

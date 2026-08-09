@@ -1341,6 +1341,57 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	category = "Civilian only (restricted)"
 	allowed_origins = list(ORIGIN_CIVILIAN)
 
+/datum/gear/civilian/uniform
+	slot = WEAR_BODY
+
+/datum/gear/civilian/uniform/red_dress_skirt
+	display_name = "Red dress skirt"
+	path = /obj/item/clothing/under/blackskirt
+
+/datum/gear/civilian/uniform/corporate_casual_skirt
+	display_name = "Corporate casual skirt"
+	path = /obj/item/clothing/under/liaison_suit/field/skirt
+
+/datum/gear/civilian/uniform/black_suitskirt
+	display_name = "Black suitskirt"
+	path = /obj/item/clothing/under/liaison_suit/black/skirt
+
+/datum/gear/civilian/uniform/overalls
+	display_name = "Laborer's overalls"
+	path = /obj/item/clothing/under/overalls
+
+/datum/gear/civilian/uniform/workwear
+	display_name = "Grey workwear"
+	path = /obj/item/clothing/under/colonist/workwear
+
+/datum/gear/civilian/uniform/workwear/khaki
+	display_name = "Khaki workwear"
+	path = /obj/item/clothing/under/colonist/workwear/khaki
+
+/datum/gear/civilian/uniform/workwear/pink
+	display_name = "Pink workwear"
+	path = /obj/item/clothing/under/colonist/workwear/pink
+
+/datum/gear/civilian/uniform/workwear/blue
+	display_name = "Blue workwear"
+	path = /obj/item/clothing/under/colonist/workwear/blue
+
+/datum/gear/civilian/uniform/workwear/green
+	display_name = "Green workwear"
+	path = /obj/item/clothing/under/colonist/workwear/green
+
+/datum/gear/civilian/uniform/tshirt_white
+	display_name = "White T-shirt and brown pants"
+	path = /obj/item/clothing/under/tshirt/w_br
+
+/datum/gear/civilian/uniform/tshirt_grey
+	display_name = "Grey T-shirt and blue jeans"
+	path = /obj/item/clothing/under/tshirt/gray_blu
+
+/datum/gear/civilian/uniform/tshirt_red
+	display_name = "Red T-shirt and black pants"
+	path = /obj/item/clothing/under/tshirt/r_bla
+
 
 /datum/gear/civilian/patch
 	display_name = "Freelancer's patch"
@@ -1397,6 +1448,10 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	fluff_cost = 2
 	slot = WEAR_HEAD
 
+/datum/gear/civilian/headwear/hairflower
+	display_name = "hair flower pin"
+	path = /obj/item/clothing/head/hairflower
+
 /datum/gear/civilian/headwear/cowboy_hat
 	display_name = "cowboy hat, brown"
 	path = /obj/item/clothing/head/cowboy
@@ -1415,6 +1470,10 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 /datum/gear/civilian/shoes/brown
 	display_name = "brown shoes"
 	path = /obj/item/clothing/shoes/brown
+
+/datum/gear/civilian/shoes/laceup
+	display_name = "laceup shoes"
+	path = /obj/item/clothing/shoes/laceup
 
 /datum/gear/civilian/shoes/blue
 	display_name = "blue shoes"

@@ -289,7 +289,7 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 /datum/game_mode/proc/send_end_round_music(musical_track)
 	if(!musical_track)
 		return
-	var/sound/theme = sound(musical_track, channel = SOUND_CHANNEL_END_ROUND_MUSIC)
+	var/sound/theme = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
 	theme.status = SOUND_STREAM
 	for(var/client/client as anything in GLOB.clients)
 		if(client.prefs?.toggles_sound & SOUND_ROUND_END)

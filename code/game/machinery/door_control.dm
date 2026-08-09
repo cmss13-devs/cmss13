@@ -432,11 +432,16 @@
 	icon_state = "hatch_ladder"
 	normaldoorcontrol = CONTROL_NORMAL_DOORS
 	var/obj/structure/ladder/dropship_omaha/linked_ladder
-	id = "omaha_1"
+	id = "omaha_cockpit_ladder"
 	var/obj/docking_port/mobile/marine_dropship/linked_dropship
 
 /obj/structure/machinery/door_control/hatch_ladder/attack_hand(mob/living/user)
 	add_fingerprint(user) // removed xeno check. i am in control
+	if(!linked_ladder)
+		for(var/obj/structure/ladder/dropship_omaha/target_ladder in range(1, src.loc))
+			if(target_ladder.id == id)
+				linked_ladder = target_ladder
+				break
 	if(linked_dropship.mode == "called" || linked_dropship.mode == "pre-arrival")
 		to_chat(user, SPAN_NOTICE("You almost press \the [name] button, but then reconsider killing yourself by venting atmo."))
 		return
@@ -444,11 +449,6 @@
 		use_button(user)
 
 /obj/structure/machinery/door_control/hatch_ladder/handle_door() // test this and map it
-	if(!linked_ladder)
-		for(var/obj/structure/ladder/dropship_omaha/target_ladder in range(1))
-			if(target_ladder.id == id)
-				linked_ladder = target_ladder
-				break
 	if(linked_ladder.deployed) // add transit check
 		linked_ladder.undeploy()
 	else
@@ -458,3 +458,40 @@
 	. = ..()
 	if(linked_ladder.deployed)
 		linked_ladder.undeploy() // forced true
+
+/obj/structure/machinery/door_control/side_hatch
+	icon = 'icons/obj/structures/machinery/mohawk/mohawk-interior-item.dmi'
+	var/obj/docking_port/mobile/marine_dropship/linked_dropship
+	var/obj/structure/machinery/door/airlock/hatch/side_hatch/linked_hatch
+	normaldoorcontrol = CONTROL_NORMAL_DOORS
+
+/obj/structure/machinery/door_control/side_hatch/omaha_hatch_left
+	name = "Port Hatch Access"
+	icon_state = "hatch_door_left"
+	id = "port_door"
+
+/obj/structure/machinery/door_control/side_hatch/omaha_hatch_right
+	name = "Starboard Hatch Access"
+	icon_state = "hatch_ladder"
+	id = "starboard_door"
+
+/obj/structure/machinery/door_control/side_hatch/attack_hand(mob/living/user)
+	add_fingerprint(user)
+	if(istype(user,/mob/living/carbon/xenomorph))
+		return
+	if(!linked_hatch)
+		for(var/obj/structure/machinery/door/airlock/hatch/side_hatch/target_hatch in range(1, src.loc))
+			if(target_hatch.id == id)
+				linked_hatch = target_hatch
+				break
+	if(linked_dropship.mode == "called" || linked_dropship.mode == "pre-arrival")
+		to_chat(user, SPAN_NOTICE("You almost press \the [name] button, but then reconsider killing yourself by venting atmo."))
+		return
+	else
+		use_button(user)
+
+/obj/structure/machinery/door_control/side_hatch/handle_door()
+	if(linked_hatch.locked)
+		linked_hatch.unlock()
+	else
+		linked_hatch.lock()

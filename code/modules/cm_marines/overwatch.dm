@@ -1649,6 +1649,12 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	icon = 'icons/obj/vehicles/interiors/arc.dmi'
 	icon_state = "overwatch_computer"
 
+/obj/structure/machinery/computer/overwatch/almayer/omaha
+	name = "Overwatch console"
+	density = FALSE
+	icon = 'icons/obj/structures/machinery/mohawk/mohawk-modules.dmi'
+	icon_state = "overwatch_module"
+
 /obj/structure/machinery/computer/overwatch/clf
 	faction = FACTION_CLF
 	freq = CLF_FREQ

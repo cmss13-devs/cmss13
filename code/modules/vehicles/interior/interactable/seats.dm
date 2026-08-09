@@ -486,3 +486,33 @@
 	name = "passenger seat"
 	desc = "A sturdy chair with a brace that lowers over your body. Prevents being flung around in vehicle during crash being injured as a result. Fasten your seatbelts, kids! Fix with welding tool in case of damage."
 	icon = 'icons/obj/vehicles/interiors/general_wy.dmi'
+
+/obj/structure/bed/chair/vehicle/omaha_pilot
+	icon = 'icons/obj/structures/machinery/mohawk/mohawk-seats.dmi'
+	icon_state = "passenger_chair"
+	name = "pilot's chair"
+	desc = "A specially designed chair for pilots to sit in."
+
+/obj/structure/bed/chair/vehicle/omaha_commander
+	icon = 'icons/obj/structures/machinery/mohawk/mohawk-seats.dmi'
+	icon_state = "command_chair"
+	name = "officer's chair"
+	desc = "A specially designed chair for officers to sit in."
+
+/obj/structure/bed/chair/vehicle/omaha_passenger
+	icon = 'icons/obj/vehicles/interiors/general.dmi'
+	icon_state = "vehicle_seat"
+	layer = 3.74 // im going insane chat
+
+/obj/structure/bed/chair/vehicle/omaha_passenger/Initialize()
+	. = ..()
+	chairbar = image(icon, "vehicle_bars")
+	chairbar.layer = ABOVE_MOB_LAYER
+
+	addtimer(CALLBACK(src, PROC_REF(setup_buckle_offsets)), 1 SECONDS)
+
+	handle_rotation()
+
+/obj/structure/bed/chair/vehicle/omaha_passenger/handle_rotation()
+	if(buckled_mob)
+		buckled_mob.setDir(dir)

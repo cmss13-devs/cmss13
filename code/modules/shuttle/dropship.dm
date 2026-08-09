@@ -123,35 +123,18 @@
 /obj/structure/shuttle/part/dropship_omaha/transparent
 	opacity = FALSE
 
-/obj/structure/shuttle/part/dropship_omaha/transparent/Initialize(mapload, ...)
-	ADD_TRAIT(src, TURF_Z_TRANSPARENT_TRAIT, TRAIT_SOURCE_INHERENT)
+/obj/structure/shuttle/part/dropship_omaha/transparent/lateShuttleMove()
+	.=..()
+	for(var/turf/open_space/transparent_turf in locs)
+		transparent_turf.update_vis_contents()
 
-	. = ..()
+/obj/structure/shuttle/part/dropship_omaha/transparent/lower_left_wing
+	icon = 'icons/obj/structures/machinery/mohawk/mohawk-windshield-64x64.dmi'
+	icon_state = "wingpoint-left"
 
-/obj/structure/shuttle/part/dropship_omaha/transparent/LateInitialize(mapload)
-	. = ..()
-	update_vis_contents()
-
-/obj/structure/shuttle/part/dropship_omaha/transparent/proc/update_vis_contents()
-	if(!istransparentturf(src))
-		return
-
-	vis_contents.Cut()
-	for(var/obj/vis_contents_holder/holder in src)
-		qdel(holder)
-
-	var/turf/below = get_turf_below()
-	var/depth = 0
-	while(below)
-		var/below_transparent = istransparentturf(below)
-		new /obj/vis_contents_holder(src, below, depth, !below_transparent || !istype(below, /turf/open_space))
-		if(!below_transparent)
-			break
-		below = SSmapping.get_turf_below(below)
-		depth++
-
-/obj/structure/shuttle/part/dropship_omaha/transparent/proc/get_turf_below()
-	return SSmapping.get_turf_below(src)
+/obj/structure/shuttle/part/dropship_omaha/transparent/lower_right_wing
+	icon = 'icons/obj/structures/machinery/mohawk/mohawk-windshield-64x64.dmi'
+	icon_state = "wingpoint-right"
 
 //// BOTTOM STUFF////
 
@@ -378,6 +361,40 @@
 /obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_24
 	icon_state = "14,20"
 
+/// COCKPIT ////
+/obj/structure/shuttle/part/dropship_omaha/transparent/cockpit
+	icon = 'icons/turf/mohawk/mohawk-walls.dmi'
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/cockpit/nose_00
+	icon_state = "2,19"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/cockpit/nose_01
+	icon_state = "3,19"
+	density = FALSE
+	layer = OBJ_LAYER - 0.05
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/cockpit/nose_02
+	icon_state = "5,19"
+	density = FALSE
+	layer = OBJ_LAYER - 0.05
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/cockpit/nose_03
+	icon_state = "6,19"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/cockpit/nose_10
+	icon_state = "2,20"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/cockpit/nose_11
+	icon_state = "3,20"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/cockpit/nose_12
+	icon_state = "4,20"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/cockpit/nose_13
+	icon_state = "5,20"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/cockpit/nose_14
+	icon_state = "6,20"
 
 // USCM Dropship Normandy
 

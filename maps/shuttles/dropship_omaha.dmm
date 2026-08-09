@@ -19,7 +19,7 @@
 "fI" = (/turf/closed/shuttle/dropship_omaha{icon_state = "3,16"},/area/shuttle/drop_omaha/omaha)
 "gO" = (/turf/open/shuttle/dropship/omaha/full_girder2,/area/shuttle/drop_omaha/omaha)
 "hz" = (/obj/structure/shuttle/part/dropship_omaha/transparent/cockpit/nose_11,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
-"hH" = (/obj/structure/machinery/door/airlock/hatch/cockpit/omaha{dir = 1},/turf/open/shuttle/dropship/omaha/basic,/area/shuttle/drop_omaha/omaha)
+"hH" = (/obj/structure/machinery/door/airlock/hatch/cockpit/omaha{dir = 1; name = "command"},/turf/open/shuttle/dropship/omaha/basic,/area/shuttle/drop_omaha/omaha)
 "ie" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_01,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
 "iD" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_32,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
 "iG" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_14,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
@@ -30,7 +30,7 @@
 "ky" = (/turf/closed/shuttle/dropship_omaha{icon_state = "7,16"},/area/shuttle/drop_omaha/omaha)
 "lw" = (/turf/closed/shuttle/dropship_omaha{icon_state = "0,9"},/area/shuttle/drop_omaha/omaha)
 "lx" = (/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_02,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
-"lF" = (/obj/structure/machinery/door/airlock/hatch/side_hatch{id = "starboard_door"},/turf/open/shuttle/dropship/omaha/grated,/area/shuttle/drop_omaha/omaha)
+"lF" = (/obj/structure/machinery/door/airlock/hatch/side_hatch{id = "starboard_door"; name = "Omaha Starboard Access"},/turf/open/shuttle/dropship/omaha/grated,/area/shuttle/drop_omaha/omaha)
 "mu" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_22,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
 "mD" = (/turf/closed/shuttle/dropship_omaha{icon_state = "8,9"},/area/shuttle/drop_omaha/omaha)
 "mL" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_12,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
@@ -94,6 +94,7 @@
 "yO" = (/turf/closed/shuttle/dropship_omaha{icon_state = "8,15"},/area/shuttle/drop_omaha/omaha)
 "zq" = (/turf/closed/shuttle/dropship_omaha{icon_state = "1,12"},/area/shuttle/drop_omaha/omaha)
 "zt" = (/turf/closed/shuttle/dropship_omaha/landing_gear{icon_state = "landing_gear2_ne"},/area/shuttle/drop_omaha/omaha)
+"zx" = (/obj/structure/blocker/invisible_wall,/turf/open/shuttle/dropship/omaha/full_girder2,/area/shuttle/drop_omaha/omaha)
 "zG" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_31,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
 "zX" = (/turf/closed/shuttle/dropship_omaha{icon_state = "7,0"},/area/shuttle/drop_omaha/omaha)
 "zY" = (/obj/structure/shuttle/part/dropship_omaha/transparent/cockpit/nose_00,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
@@ -150,7 +151,7 @@
 "Qv" = (/turf/closed/shuttle/dropship_omaha{icon_state = "7,15"},/area/shuttle/drop_omaha/omaha)
 "Rb" = (/turf/closed/shuttle/dropship_omaha{icon_state = "4,11"},/area/shuttle/drop_omaha/omaha)
 "Rf" = (/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_22,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
-"RM" = (/obj/structure/machinery/door/airlock/hatch/side_hatch{dir = 8; id = "port_door"},/turf/open/shuttle/dropship/omaha/grated,/area/shuttle/drop_omaha/omaha)
+"RM" = (/obj/structure/machinery/door/airlock/hatch/side_hatch{dir = 8; id = "port_door"; name = "Omaha Port Access"},/turf/open/shuttle/dropship/omaha/grated,/area/shuttle/drop_omaha/omaha)
 "RX" = (/turf/closed/shuttle/dropship_omaha{icon_state = "1,9"},/area/shuttle/drop_omaha/omaha)
 "So" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_20,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
 "Ss" = (/turf/closed/shuttle/dropship_omaha{icon_state = "6,18"},/area/shuttle/drop_omaha/omaha)
@@ -197,7 +198,7 @@ WaWaWaWaTUWaWaWaWaWaWaWaTUWaWaWaWa
 WaWaWaWaTUWaWaWaVXWaWaWaTUWaWaWaWa
 WaWaWaWaTUTUvfUqTUoWTUTUTUWaWaWaWa
 WaWaWaWaTUWaWaWaWaWaWaWaTUWaWaWaWa
-WaWaWaWarfWaWaWaWaWaWaWaTUWaWaWaWa
+WaWaWaWaTUWaWaWaWaWaWaWaTUWaWaWaWa
 WaWaWaWaTUWaWaWaWaWaWaWaTUWaWaWaWa
 WaWaWaWaTUWaWaWaWaWaWaWaTUWaWaWaWa
 WaWaWaWaGpztWaWaWaWaWaGpztWaWaWaWa
@@ -216,7 +217,7 @@ WaWaHmRfOWqYYAgOalgOSsADbFZAGcWaWa
 WaWanctInCdrrqalKrwdUSYCtnqrkxWaWa
 WarflxTqyuKCxHfIAwGKrekyqosPDmMGWa
 qmzGiDDveeqEsTalHDalAmQvyOHOVdFirb
-vWmYmuxYwqHDTDalgOalJWAovDSoFCIrbD
+vWmYmuxYwqHDTDalzxalJWAovDSoFCIrbD
 SKsqYdKIqcHDTDalvhalJWChufvamLbMiG
 WaTUbSJbujzqymalakalrgBrrUiePXTUWa
 WaWaWaWaubqlSVhHRbhHJOTHubWaWaWaWa

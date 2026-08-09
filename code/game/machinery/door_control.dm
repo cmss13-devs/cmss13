@@ -433,16 +433,15 @@
 	normaldoorcontrol = CONTROL_NORMAL_DOORS
 	var/obj/structure/ladder/dropship_omaha/linked_ladder
 	id = "omaha_cockpit_ladder"
-	var/obj/docking_port/mobile/marine_dropship/linked_dropship
 
-/obj/structure/machinery/door_control/hatch_ladder/attack_hand(mob/living/user)
+/obj/structure/machinery/door_control/hatch_ladder/attack_hand(mob/living/user) // if(is_reserved_level(z)
 	add_fingerprint(user) // removed xeno check. i am in control
 	if(!linked_ladder)
 		for(var/obj/structure/ladder/dropship_omaha/target_ladder in range(1, src.loc))
 			if(target_ladder.id == id)
 				linked_ladder = target_ladder
 				break
-	if(linked_dropship.mode == "called" || linked_dropship.mode == "pre-arrival")
+	if(is_reserved_level(z))
 		to_chat(user, SPAN_NOTICE("You almost press \the [name] button, but then reconsider killing yourself by venting atmo."))
 		return
 	else
@@ -456,12 +455,11 @@
 
 /obj/structure/machinery/door_control/hatch_ladder/beforeShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)
 	. = ..()
-	if(linked_ladder.deployed)
+	if(linked_ladder?.deployed)
 		linked_ladder.undeploy() // forced true
 
 /obj/structure/machinery/door_control/side_hatch
 	icon = 'icons/obj/structures/machinery/mohawk/mohawk-interior-item.dmi'
-	var/obj/docking_port/mobile/marine_dropship/linked_dropship
 	var/obj/structure/machinery/door/airlock/hatch/side_hatch/linked_hatch
 	normaldoorcontrol = CONTROL_NORMAL_DOORS
 
@@ -484,7 +482,7 @@
 			if(target_hatch.id == id)
 				linked_hatch = target_hatch
 				break
-	if(linked_dropship.mode == "called" || linked_dropship.mode == "pre-arrival")
+	if(is_reserved_level(z))
 		to_chat(user, SPAN_NOTICE("You almost press \the [name] button, but then reconsider killing yourself by venting atmo."))
 		return
 	else

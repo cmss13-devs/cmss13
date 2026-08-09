@@ -50,16 +50,6 @@
 			var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/hatch = air
 			if(istype(hatch))
 				hatch.linked_dropship = src
-	for(var/place in shuttle_areas)
-		for(var/obj/structure/machinery/door_control/hatch_ladder/air in place)
-			var/obj/structure/machinery/door_control/hatch_ladder/hatch_button = air
-			if(istype(hatch_button))
-				hatch_button.linked_dropship = src
-	for(var/place in shuttle_areas)
-		for(var/obj/structure/machinery/door_control/side_hatch/air in place)
-			var/obj/structure/machinery/door_control/side_hatch/side_button = air
-			if(istype(side_button))
-				side_button.linked_dropship = src
 
 
 	RegisterSignal(src, COMSIG_DROPSHIP_ADD_EQUIPMENT, PROC_REF(add_equipment))
@@ -134,7 +124,7 @@
 	height = 24
 	dwidth = 8
 	dheight = 12
-	zheight = 1 // or 2
+	zheight = 1
 
 /obj/docking_port/mobile/marine_dropship/omaha/get_transit_path_type()
 	return /turf/open/space/transit/dropship/omaha

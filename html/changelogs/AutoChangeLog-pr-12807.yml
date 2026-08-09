@@ -1,0 +1,5 @@
+author: "antlersss"
+delete-after: True
+changes:
+  - balance: "Dropships and lifeboats can now depart while the main ship is still falling to the ground."
+  - rscadd: "Added new ARES announcement text to indicate when lifeboats are disabled."

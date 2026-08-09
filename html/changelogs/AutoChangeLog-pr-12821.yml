@@ -1,0 +1,8 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - code_imp: "Gamemodes can now specify a required_ready_players which is how many must be ready to start the gamemode (set to 60 for WO)"
+  - config: "WO will now by default require 120 pop for voting instead of 140 (Also cycles on 65 rounds instead of 75)"
+  - bugfix: "Fixed groundside operation panel not working on WO because there's no almayer AA gun"
+  - bugfix: "Fixed WO CO and XO being unable to issue medals"
+  - ui: "Set TGUI input text for some medal writing inputs"

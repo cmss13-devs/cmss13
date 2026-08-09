@@ -193,7 +193,7 @@
 	spit_windup = 0.8 SECONDS
 	hits_lying_mobs = TRUE
 
-/datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/on_hit_mob(mob/target_mob, obj/projectile/P)
+/datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/on_hit_mob(mob/target_mob, obj/projectile/projectile)
 	. = ..()
 	new/obj/effect/xenomorph/spray/no_stun/dissolver(target_mob.loc)
 

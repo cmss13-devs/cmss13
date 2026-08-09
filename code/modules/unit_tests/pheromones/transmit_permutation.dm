@@ -33,7 +33,7 @@ TEST_FOCUS(/datum/unit_test/pheromones/transmit_permutation__strength_triplet/)
 		test_callback = CALLBACK(src, PROC_REF(permutable_pheromone_validation), expected_permutations)
 	)
 
-// Creates a lesser drone, drone, and queen as emitters and a single receiver drone..
+// Creates a lesser drone, drone, and queen as emitters and a single receiver drone.
 // Tests each permutation of pheromone emission against expected behavior.
 /datum/unit_test/pheromones/transmit_permutation__strength_triplet/Run()
 	var/list/datum/abstract_xenomorph/emitters = list(

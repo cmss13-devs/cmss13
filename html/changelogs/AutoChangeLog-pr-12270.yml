@@ -1,0 +1,5 @@
+author: "JackieEstegado"
+delete-after: True
+changes:
+  - bugfix: "Fixed medbay chemical dispensers energy fully refilling each time a marine latejoined."
+  - balance: "Properly implement medbay chemical dispenser energy scaling, based on the number of Hospital Corpsmen."

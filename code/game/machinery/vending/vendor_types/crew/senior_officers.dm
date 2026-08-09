@@ -37,7 +37,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_military_police_chief, list(
 		list("Marine Combat Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 		list("M276 Pattern Military Police Rig", 0, /obj/item/storage/belt/security/MP/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_MANDATORY),
 		list("Security HUD-Glasses", 0, /obj/item/clothing/glasses/sunglasses/sechud, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
-		list("Medical Helmet Optic", 0, /obj/item/device/helmet_visor/medical, MARINE_CAN_BUY_OPTIC, VENDOR_ITEM_RECOMMENDED),
+		list("SensorMate Medical Optic", 0, /obj/item/device/helmet_visor/medical, MARINE_CAN_BUY_OPTIC, VENDOR_ITEM_RECOMMENDED),
 
 		list("ARMOR (TAKE ALL)", 0, null, null, null),
 		list("Military Police Chief M3 Armor", 0, /obj/item/clothing/suit/storage/marine/MP/WO, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
@@ -437,7 +437,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_xo, list(
 		list("UNIFORM (CHOOSE ONE)", 0, null, null, null),
 		list("Service Uniform", 0, /obj/item/clothing/under/marine/officer/bridge, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_RECOMMENDED),
 		list("Operations Uniform", 0, /obj/item/clothing/under/marine/officer/boiler, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_RECOMMENDED),
-		list("Formal Uniform", 0, /obj/effect/essentials_set/xoformal, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_RECOMMENDED),
+		list("Formal Uniform", 0, list(/obj/item/clothing/suit/storage/jacket/marine/dress, /obj/item/clothing/head/marine/peaked, /obj/item/clothing/under/marine/dress), MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_RECOMMENDED),
 
 		list("PERSONAL WEAPON (CHOOSE 1)", 0, null, null, null),
 		list("VP78 Pistol", 0, /obj/item/storage/belt/gun/m4a3/vp78, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
@@ -581,11 +581,4 @@ GLOBAL_LIST_INIT(cm_vending_clothing_auxiliary_officer, list(
 		/obj/item/clothing/glasses/sunglasses/sechud,
 		/obj/item/storage/belt/security/MP/full,
 		/obj/item/clothing/head/helmet/marine/MP/WO,
-	)
-
-/obj/effect/essentials_set/xoformal
-	spawned_gear_list = list(
-		/obj/item/clothing/suit/storage/jacket/marine/dress,
-		/obj/item/clothing/head/marine/peaked,
-		/obj/item/clothing/under/marine/dress,
 	)

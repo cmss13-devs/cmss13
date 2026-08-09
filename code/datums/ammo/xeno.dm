@@ -296,7 +296,7 @@
 	if (!ishuman(target_mob))
 		return
 
-	var/mob/living/carbon/human/H = target_mob
+	var/mob/living/carbon/human/target_human = target_mob
 
 	var/datum/effects/prae_acid_stacks/PAS = null
 	for (var/datum/effects/prae_acid_stacks/prae_acid_stacks in H.effects_list)

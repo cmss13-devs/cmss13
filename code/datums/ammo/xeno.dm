@@ -249,15 +249,17 @@
 
 /datum/ammo/xeno/acid/dissolver_acid_blob/on_hit_turf(turf/target_turf, obj/projectile/projectile)
 	. = ..()
+	if(istype(target_turf, /turf/closed))
+		return
 	spread_acid(target_turf, pick(indirect_spreads))
 
 /datum/ammo/xeno/acid/dissolver_acid_blob/do_at_max_range(obj/projectile/projectile)
 	. = ..()
+	if(istype(projectile.loc, /turf/closed))
+		return
 	spread_acid(projectile.loc, pick(indirect_spreads))
 
 /datum/ammo/xeno/acid/dissolver_acid_blob/proc/spread_acid(location, list/directions)
-	if(istype(location, /turf/closed))
-		return
 	new/obj/effect/xenomorph/spray/no_stun/dissolver(location)
 	var/turf/spread_location
 	for(var/direction in directions)

@@ -1,0 +1,5 @@
+author: "matttheficus"
+delete-after: True
+changes:
+  - bugfix: "Intel aSLs now get Command Comms and they properly transfer on swapping aSL."
+  - bugfix: "XO RTO bag price oversight"

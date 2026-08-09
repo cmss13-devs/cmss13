@@ -193,7 +193,7 @@
 	spit_windup = 0.8 SECONDS
 	hits_lying_mobs = TRUE
 
-/datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/on_hit_mob(mob/target_mob, obj/projectile/P)
+/datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/on_hit_mob(mob/target_mob, obj/projectile/projectile)
 	. = ..()
 	new/obj/effect/xenomorph/spray/no_stun/dissolver(target_mob.loc)
 
@@ -230,7 +230,7 @@
 
 
 
-/datum/ammo/xeno/acid/dissolver_acid_blob/on_hit_mob(mob/target_mob, obj/projectile/P)
+/datum/ammo/xeno/acid/dissolver_acid_blob/on_hit_mob(mob/target_mob, obj/projectile/projectile)
 	. = ..()
 	spread_acid(target_mob.loc, direct_spread)
 	if(!istype(target_mob,/mob/living/carbon/human))
@@ -292,7 +292,7 @@
 
 	apply_delegate = FALSE
 
-/datum/ammo/xeno/acid/prae_nade/on_hit_mob(mob/target_mob, obj/projectile/P)
+/datum/ammo/xeno/acid/prae_nade/on_hit_mob(mob/target_mob, obj/projectile/projectile)
 	if (!ishuman(target_mob))
 		return
 

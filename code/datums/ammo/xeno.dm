@@ -251,9 +251,9 @@
 	. = ..()
 	spread_acid(target_turf, pick(indirect_spreads))
 
-/datum/ammo/xeno/acid/dissolver_acid_blob/do_at_max_range(obj/projectile/P)
+/datum/ammo/xeno/acid/dissolver_acid_blob/do_at_max_range(obj/projectile/projectile)
 	. = ..()
-	spread_acid(P.loc, pick(indirect_spreads))
+	spread_acid(projectile.loc, pick(indirect_spreads))
 
 /datum/ammo/xeno/acid/dissolver_acid_blob/proc/spread_acid(location, list/directions)
 	if(istype(location, /turf/closed))

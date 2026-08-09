@@ -173,7 +173,7 @@
 /datum/behavior_delegate/spitter_dissolver/proc/use_acid()
 	if(acid_stored == 0)
 		return FALSE
-	acid_stored --
+	acid_stored--
 	bound_xeno.armor_modifier += armor_reduction_per_stored
 	bound_xeno.recalculate_armor()
 	return TRUE

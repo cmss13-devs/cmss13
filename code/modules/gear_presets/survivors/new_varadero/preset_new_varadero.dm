@@ -64,6 +64,7 @@
 	var/obj/item/clothing/suit/storage/jacket/marine/service/mp(new_human) = new()
 	suit.icon_state = "[suit.initial_icon_state]_o"
 	suit.buttoned = FALSE
+	new_human.equip_to_slot_or_del(suit, WEAR_JACKET)
 
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR) // placeholder
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/MP(new_human), WEAR_HEAD)

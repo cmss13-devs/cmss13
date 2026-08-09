@@ -1,0 +1,4 @@
+author: "DangerRevolution"
+delete-after: True
+changes:
+  - bugfix: "Removed a light bulb floating off the side of the Normandy in mid air."

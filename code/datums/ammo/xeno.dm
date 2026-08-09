@@ -501,7 +501,7 @@
 	damage = 10
 	shrapnel_chance = 0
 
-/datum/ammo/xeno/bone_chips/spread/runner/on_hit_mob(mob/living/target_mob, obj/projectile/P)
+/datum/ammo/xeno/bone_chips/spread/runner/on_hit_mob(mob/living/target_mob, obj/projectile/projectile)
 	if(iscarbon(target_mob))
 		var/mob/living/carbon/C = target_mob
 		if((HAS_FLAG(C.status_flags, XENO_HOST) && HAS_TRAIT(C, TRAIT_NESTED)) || C.stat == DEAD || HAS_TRAIT(C, TRAIT_HAULED))

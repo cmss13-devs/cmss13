@@ -101,7 +101,7 @@
 
 /datum/unit_test/pheromones/transmit_castes/carrier/eggsac/Run(pheromone_type = XENO_PHERO_RECOVERY)
 	var/list/expected_pheromones = list()
-	expected_pheromones[pheromone_type] = XENO_PHERO_STRENGTH_NORMAL
+	expected_pheromones[pheromone_type] = XENO_PHERO_STRENGTH_STRONG
 
 	all_caste_reception_test(
 		abstract_emitter = new /datum/abstract_xenomorph(

@@ -18,7 +18,7 @@
 	/// Overrides the `wait` variable of the SSxeno subsystem with this value when certain test functions are called.
 	/// This is used to expedite tests so they don't have to wait the full 2 seconds per life loop.
 	/// Resets the `wait` var to its original value after testing is complete.
-	var/ss_wait_override = 75 MILLISECONDS
+	var/ss_wait_override = 100 MILLISECONDS
 
 	var/last_life_complete = FALSE
 	var/full_life_complete = FALSE

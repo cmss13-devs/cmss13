@@ -230,7 +230,7 @@
 
 
 
-/datum/ammo/xeno/acid/dissolver_acid_blob/on_hit_mob(mob/target_mob, obj/projectile/P)
+/datum/ammo/xeno/acid/dissolver_acid_blob/on_hit_mob(mob/target_mob, obj/projectile/projectile)
 	. = ..()
 	spread_acid(target_mob.loc, direct_spread)
 	if(!istype(target_mob,/mob/living/carbon/human))

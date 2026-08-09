@@ -201,9 +201,9 @@
 	. = ..()
 	new/obj/effect/xenomorph/spray/no_stun/dissolver(target_object.loc)
 
-/datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/on_hit_turf(turf/T, obj/projectile/P)
+/datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/on_hit_turf(turf/target_turf, obj/projectile/projectile)
 	. = ..()
-	new/obj/effect/xenomorph/spray/no_stun/dissolver(T)
+	new/obj/effect/xenomorph/spray/no_stun/dissolver(target_turf)
 
 /datum/ammo/xeno/acid/spatter/dissolver_enzymatic_breath
 	name = "Enzymatic breath"

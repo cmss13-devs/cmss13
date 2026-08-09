@@ -279,7 +279,7 @@
 	var/obj/item/skull/skull = /obj/item/skull
 	var/obj/item/pelt/pelt = /obj/item/pelt
 
-	///For custom strain damage states
+	///Prefix for damage states caste.caste_type by default
 	var/damage_state_prefix
 
 
@@ -399,6 +399,8 @@
 		src.hivenumber = old_xeno.hivenumber
 	else if(hivenumber)
 		src.hivenumber = hivenumber
+
+	damage_state_prefix = caste_type
 
 	//putting the organ in for research
 	if(organ_value != 0)

@@ -96,7 +96,7 @@
 
 /// Checks for anything that may get in the way of a crash, returns FALSE if there is something in the way or is out of bounds
 /obj/docking_port/mobile/crashable/proc/check_crash_point(obj/docking_port/stationary/crashable/checked_crashable_port)
-	// Pre-laod shipmap template and origin if the shipmap has crashed
+	// Pre-load shipmap template if the shipmap has crashed
 	var/datum/map_template/template
 	if(SShijack.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)
 		var/datum/map_config/ship_map_config = SSmapping.configs[SHIP_MAP]
@@ -119,7 +119,7 @@
 			return FALSE
 
 		// Prevent the shuttle from being smushed by the shipmap and vice-versa
-		if(SShijack.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)
+		if(SShijack.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH && SShijack.escape_possible)
 			if(!template || !SShijack.ground_origin)
 				// Template failed to load; to prevent this from blocking all shuttles from crashing, land anyway
 				. = TRUE

@@ -110,6 +110,9 @@ SUBSYSTEM_DEF(hijack)
 	/// The bottom left origin point where the shipmap crashes to the ground map
 	var/turf/ground_origin
 
+	/// Whether or not lifeboats are still allowed to depart or not
+	var/escape_possible = TRUE
+
 	/// The x origin for the mainship map
 	var/ship_origin_x = 0
 
@@ -762,6 +765,8 @@ SUBSYSTEM_DEF(hijack)
 	unlock_all_dropship_doors() // Unlock doors because they'll be uninteractable
 	disallow_dropship_launching()
 	disallow_dropship_pad_landing()
+
+	escape_possible = FALSE
 	shipwide_ai_announcement("ALERT: Lifeboat telemetry equipment destroyed. Cause: Atmospheric reentry.\n\nEvacuation via port and starboard lifeboats is no longer possible.", HIJACK_ANNOUNCE, sound('sound/effects/creak1.ogg'))
 
 	// Place the crash template

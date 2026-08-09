@@ -539,7 +539,10 @@ Class Procs:
 			icon_state = "fuelpump_on" // Never should happen
 
 /obj/structure/machinery/fuelpump/get_examine_text(mob/user)
+	var/not_powered = stat & NOPOWER
+	stat &= ~NOPOWER // Avoid caring about NOPOWER stat in parent implementation
 	. = ..()
+	stat |= not_powered
 
 	if(inoperable())
 		return

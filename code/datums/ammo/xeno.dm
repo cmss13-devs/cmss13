@@ -249,7 +249,7 @@
 
 /datum/ammo/xeno/acid/dissolver_acid_blob/on_hit_turf(turf/target_turf, obj/projectile/projectile)
 	. = ..()
-	spread_acid(T, pick(indirect_spreads))
+	spread_acid(target_turf, pick(indirect_spreads))
 
 /datum/ammo/xeno/acid/dissolver_acid_blob/do_at_max_range(obj/projectile/P)
 	. = ..()

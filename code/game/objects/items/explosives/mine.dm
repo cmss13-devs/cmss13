@@ -457,7 +457,7 @@
 	else
 		explosion_size = 125
 		explosion_falloff = 25
-	cell_explosion(loc, explosion_size, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, CARDINAL_ALL_DIRS, cause_data, enviro=map_deployed)
+	cell_explosion(loc, explosion_size, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, NONE, cause_data, enviro=map_deployed)
 	playsound(loc, 'sound/weapons/gun_sharp_explode.ogg', 100)
 	qdel(src)
 

@@ -56,15 +56,13 @@
 /datum/equipment_preset/survivor/new_varadero/lacn_police/load_gear(mob/living/carbon/human/new_human)
 	var/choice = rand(1,3)
 
-	var/obj/item/clothing/suit/storage/jacket/marine/service/mp = new()
-	suit.icon_state = "[suit.initial_icon_state]_o"
-	suit.buttoned = FALSE
+	var/obj/item/clothing/under/marine/lacn/uniform = new()
 	var/obj/item/clothing/accessory/ranks/navy/e6/pin = new()
-	suit.attach_accessory(new_human,pin)
-	new_human.equip_to_slot_or_del(suit, WEAR_JACKET)
+	uniform.attach_accessory(new_human,pin)
+	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/service/mp(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR) // placeholder
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/lacn/uniform(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/MP(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran(new_human), WEAR_HANDS)

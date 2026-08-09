@@ -123,14 +123,14 @@
 			return FALSE
 
 		// Prevent the shuttle from being smushed by the shipmap and vice-versa
-		if (SShijack.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)
-			if (!template)
+		if(SShijack.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)
+			if(!template)
 				// Template failed to load; to prevent this from blocking all shuttles from crashing, land anyway
 				. = TRUE
-				stack_trace("Shipmap template failed to load when determining a safe position for a shuttle to crash at.")
-			if (!ground_origin)
+				CRASH("Shipmap template failed to load when determining a safe position for a shuttle to crash at.")
+			if(!ground_origin)
 				. = TRUE
-				stack_trace("Crash origin landmark failed to load when determining a safe position for a shuttle to crash at.")
+				CRASH("Crash origin landmark failed to load when determining a safe position for a shuttle to crash at.")
 
 			var/above_min_x = found_turf.x > ground_origin.x - 1
 			var/below_max_x = found_turf.x < ground_origin.x + template.width + 1

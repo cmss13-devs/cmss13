@@ -119,7 +119,7 @@
 			return FALSE
 
 		// Prevent the shuttle from being smushed by the shipmap and vice-versa
-		if(SShijack.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH && SShijack.escape_possible)
+		if(SShijack.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)
 			if(!template || !SShijack.ground_origin)
 				// Template failed to load; to prevent this from blocking all shuttles from crashing, land anyway
 				. = TRUE

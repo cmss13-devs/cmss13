@@ -471,9 +471,9 @@
 	shrapnel_type = /obj/item/shard/shrapnel/bone_chips
 	shrapnel_chance = 60
 
-/datum/ammo/xeno/bone_chips/on_hit_mob(mob/living/target_mob, obj/projectile/P)
+/datum/ammo/xeno/bone_chips/on_hit_mob(mob/living/target_mob, obj/projectile/projectile)
 	if(iscarbon(target_mob))
-		var/mob/living/carbon/C = target_mob
+		var/mob/living/carbon/target_carbon = target_mob
 		if((HAS_FLAG(C.status_flags, XENO_HOST) && HAS_TRAIT(C, TRAIT_NESTED)) || C.stat == DEAD || HAS_TRAIT(C, TRAIT_HAULED))
 			return
 	if(ishuman_strict(target_mob) || isxeno(target_mob))

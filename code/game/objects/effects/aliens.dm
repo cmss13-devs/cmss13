@@ -68,16 +68,16 @@
 
 /obj/effect/xenomorph/spray/no_stun/dissolver/Initialize(mapload, new_cause_data, hive)
 	. = ..()
-	for(var/mob/living/carbon/human/target_mob)
+	for(var/mob/living/carbon/human/target_mob in loc)
 		var/datum/effects/acid/acid_effect = locate() in target_mob.effects_list
 		if(acid_effect)
 			acid_effect.increment_duration(acid_speedup_amount)
 
-/obj/effect/xenomorph/spray/no_stun/dissolver/Crossed(AM)
+/obj/effect/xenomorph/spray/no_stun/dissolver/Crossed(crossing_atom)
 	. = ..()
-	if(!istype(AM, /mob/living/carbon/human))
+	if(!istype(crossing_atom, /mob/living/carbon/human))
 		return
-	var/mob/living/carbon/human/target_mob = AM
+	var/mob/living/carbon/human/target_mob = crossing_atom
 	var/datum/effects/acid/acid_effect = locate() in target_mob.effects_list
 	if(acid_effect)
 		acid_effect.increment_duration(acid_speedup_amount_corssed)

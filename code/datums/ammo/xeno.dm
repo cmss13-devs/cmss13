@@ -290,7 +290,7 @@
 
 	apply_delegate = FALSE
 
-/datum/ammo/xeno/acid/prae_nade/on_hit_mob(mob/target_mob, obj/projectile/P)
+/datum/ammo/xeno/acid/prae_nade/on_hit_mob(mob/target_mob, obj/projectile/projectile)
 	if (!ishuman(target_mob))
 		return
 

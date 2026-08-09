@@ -1,0 +1,4 @@
+author: "Bibby0110"
+delete-after: True
+changes:
+  - rscadd: "SLs (and other leaders, determined by having big arrow) can now highlight mobs for 4.5 seconds by pointing at them."

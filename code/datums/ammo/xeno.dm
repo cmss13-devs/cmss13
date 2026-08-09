@@ -247,7 +247,7 @@
 	. = ..()
 	spread_acid(target_object.loc, pick(indirect_spreads))
 
-/datum/ammo/xeno/acid/dissolver_acid_blob/on_hit_turf(turf/T, obj/projectile/P)
+/datum/ammo/xeno/acid/dissolver_acid_blob/on_hit_turf(turf/target_turf, obj/projectile/projectile)
 	. = ..()
 	spread_acid(T, pick(indirect_spreads))
 

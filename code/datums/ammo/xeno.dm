@@ -299,12 +299,12 @@
 	var/mob/living/carbon/human/target_human = target_mob
 
 	var/datum/effects/prae_acid_stacks/PAS = null
-	for (var/datum/effects/prae_acid_stacks/prae_acid_stacks in H.effects_list)
+	for (var/datum/effects/prae_acid_stacks/prae_acid_stacks in target_human.effects_list)
 		PAS = prae_acid_stacks
 		break
 
 	if (PAS == null)
-		PAS = new /datum/effects/prae_acid_stacks(H)
+		PAS = new /datum/effects/prae_acid_stacks(target_human)
 	else
 		PAS.increment_stack_count()
 

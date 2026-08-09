@@ -98,13 +98,9 @@
 /obj/docking_port/mobile/crashable/proc/check_crash_point(obj/docking_port/stationary/crashable/checked_crashable_port)
 	// Pre-laod shipmap template and origin if the shipmap has crashed
 	var/datum/map_template/template
-	var/turf/ground_origin
 	if (SShijack.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)
 		var/datum/map_config/ship_map_config = SSmapping.configs[SHIP_MAP]
 		template = SSmapping.map_templates[ship_map_config?.ground_crash_template_name]
-
-		var/obj/effect/landmark/mainship_crashsite/origin_landmark = locate() in GLOB.landmarks_list
-		ground_origin = get_turf(origin_landmark)
 
 	for(var/turf/found_turf as anything in checked_crashable_port.return_turfs())
 		var/area/found_area = get_area(found_turf)
@@ -128,14 +124,11 @@
 				// Template failed to load; to prevent this from blocking all shuttles from crashing, land anyway
 				. = TRUE
 				CRASH("Shipmap template failed to load when determining a safe position for a shuttle to crash at.")
-			if(!ground_origin)
-				. = TRUE
-				CRASH("Crash origin landmark failed to load when determining a safe position for a shuttle to crash at.")
 
-			var/above_min_x = found_turf.x > ground_origin.x - 1
-			var/below_max_x = found_turf.x < ground_origin.x + template.width + 1
-			var/above_min_y = found_turf.y > ground_origin.y - 1
-			var/below_max_y = found_turf.y < ground_origin.y + template.height + 1
+			var/above_min_x = found_turf.x > SShijack.ground_origin.x - 1
+			var/below_max_x = found_turf.x < SShijack.ground_origin.x + template.width + 1
+			var/above_min_y = found_turf.y > SShijack.ground_origin.y - 1
+			var/below_max_y = found_turf.y < SShijack.ground_origin.y + template.height + 1
 
 			// Shuttle would land inside the shipmap or vice versa
 			if(above_min_x && below_max_x && above_min_y && below_max_y)

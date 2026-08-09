@@ -107,6 +107,9 @@ SUBSYSTEM_DEF(hijack)
 	/// The min ground z for open_space turfs when crashed
 	var/crashed_ground_z_min = 0
 
+	/// The bottom left origin point where the shipmap crashes to the ground map
+	var/turf/ground_origin
+
 	/// The x origin for the mainship map
 	var/ship_origin_x = 0
 
@@ -694,7 +697,7 @@ SUBSYSTEM_DEF(hijack)
 
 	// Figure out the bottom left of playable space with 1 extra border
 	var/obj/effect/landmark/mainship_crashsite/origin_landmark = locate() in GLOB.landmarks_list
-	var/turf/ground_origin = get_turf(origin_landmark)
+	ground_origin = get_turf(origin_landmark)
 	var/border_type = /turf/closed/wall/strata_ice/jungle
 	var/cordon_type = FALSE
 	if(ground_origin)

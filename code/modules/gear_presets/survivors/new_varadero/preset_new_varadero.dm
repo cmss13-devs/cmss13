@@ -56,17 +56,15 @@
 /datum/equipment_preset/survivor/new_varadero/lacn_police/load_gear(mob/living/carbon/human/new_human)
 	var/choice = rand(1,3)
 
-	var/obj/item/clothing/under/marine/lacn/uniform = new()
-	var/obj/item/clothing/accessory/ranks/navy/e6/pin = new()
-	uniform.attach_accessory(new_human,pin)
-	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
-
-	var/obj/item/clothing/suit/storage/jacket/marine/service/mp(new_human) = new()
+	var/obj/item/clothing/suit/storage/jacket/marine/service/mp = new()
 	suit.icon_state = "[suit.initial_icon_state]_o"
 	suit.buttoned = FALSE
+	var/obj/item/clothing/accessory/ranks/navy/e6/pin = new()
+	suit.attach_accessory(new_human,pin)
 	new_human.equip_to_slot_or_del(suit, WEAR_JACKET)
 
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR) // placeholder
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/lacn/uniform(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/MP(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran(new_human), WEAR_HANDS)
@@ -102,8 +100,8 @@
 	var/obj/item/clothing/under/marine/lacn/uniform = new()
 	var/obj/item/clothing/accessory/ranks/navy/e2/pin = new()
 	uniform.attach_accessory(new_human,pin)
-	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 
+	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/webbing(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR) // placeholder
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/tech/LACN(new_human), WEAR_BACK)
@@ -646,10 +644,10 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/medical_green(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/full/with_defib_and_analyzer(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/big(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector(preset_human), WEAR_L_HAND)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular(preset_human), WEAR_R_HAND)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(preset_human), WEAR_R_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/synth/full(preset_human), WEAR_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/synthetic, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector(new_human), WEAR_L_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular(new_human), WEAR_R_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/synth/full(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/synthetic(new_human), WEAR_IN_BACK)
 	add_random_survivor_medical_gear(new_human)
 	..()

@@ -26,8 +26,6 @@ require only minor tweaks.
 #define ZTRAIT_MARINE_MAIN_SHIP "Marine Main Ship"
 #define ZTRAIT_ADMIN "Admin"
 #define ZTRAIT_AWAY  "Away"
-#define ZTRAIT_INTERIORS "Interiors"
-#define ZTRAIT_TECHTREE "TechTree"
 /// Exists outside the mainstream round, like pred ship.
 #define ZTRAIT_BACKGROUND_MAP "Background Map"
 
@@ -35,12 +33,6 @@ require only minor tweaks.
 #define ZTRAIT_LOCKDOWN "Lockdown"
 #define ZTRAIT_BASIC_RT "BasicRT"
 #define ZTRAIT_IN_SPACE "InSpace" // Is our ground_level considered in space or on a space station
-
-// boolean - weather types that occur on the level
-#define ZTRAIT_SNOWSTORM "weather_snowstorm"
-#define ZTRAIT_ASHSTORM "weather_ashstorm"
-#define ZTRAIT_ACIDRAIN "weather_acidrain"
-#define ZTRAIT_SANDSTORM "weather_sandstorm"
 
 /// number - bombcap is multiplied by this before being applied to bombs
 #define ZTRAIT_BOMBCAP_MULTIPLIER "Bombcap Multiplier"
@@ -70,7 +62,6 @@ require only minor tweaks.
 #define ZTRAITS_GROUND list(ZTRAIT_GROUND = TRUE)
 #define ZTRAITS_ADMIN list(ZTRAIT_ADMIN = TRUE)
 #define ZTRAITS_SPACE list(ZTRAIT_LINKAGE = CROSSLINKED, ZTRAIT_SPACE_RUINS = TRUE)
-#define ZTRAITS_INTERIORS list(ZTRAIT_INTERIORS = TRUE)
 
 #define DL_NAME "name"
 #define DL_TRAITS "traits"

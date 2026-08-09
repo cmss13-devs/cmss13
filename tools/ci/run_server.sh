@@ -10,7 +10,9 @@ mkdir ci_test/data
 
 #set the map
 cp maps/$MAP.json ci_test/data/next_map.json
-cp maps/templates/space.json ci_test/data/next_ship.json
+# unit tests suppress the ship map code-side now, so this is unnecessary
+# also it caused weird issues
+# cp maps/templates/space.json ci_test/data/next_ship.json
 
 cd ci_test
 DreamDaemon colonialmarines.dmb -close -trusted -verbose -params "log-directory=ci"

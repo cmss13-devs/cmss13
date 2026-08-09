@@ -14,6 +14,9 @@
 ///Returns all turfs in a zlevel
 #define Z_TURFS(ZLEVEL) block(1, 1, (ZLEVEL), world.maxx, world.maxy, (ZLEVEL))
 
+///Returns all currently loaded turfs
+#define ALL_TURFS(...) block(1, 1, 1, world.maxx, world.maxy, world.maxz)
+
 /// Returns a list of turfs in the rectangle specified by BOTTOM LEFT corner and height/width
 #define CORNER_BLOCK(corner, width, height) CORNER_BLOCK_OFFSET(corner, width, height, 0, 0)
 
@@ -26,10 +29,10 @@
 
 /// Returns an outline (neighboring turfs) of the given block
 #define CORNER_OUTLINE(corner, width, height) ( \
-	CORNER_BLOCK_OFFSET(corner, width + 2, 1, -1, -1) + \
-	CORNER_BLOCK_OFFSET(corner, width + 2, 1, -1, height) + \
-	CORNER_BLOCK_OFFSET(corner, 1, height, -1, 0) + \
-	CORNER_BLOCK_OFFSET(corner, 1, height, width, 0))
+	CORNER_BLOCK_OFFSET(corner, 1 + width + 1, 1,      -1,    -1) + \
+	CORNER_BLOCK_OFFSET(corner, 1 + width + 1, 1,      -1,    height) + \
+	CORNER_BLOCK_OFFSET(corner, 1,             height, -1,    0) + \
+	CORNER_BLOCK_OFFSET(corner, 1,             height, width, 0))
 
 #define TURF_FROM_COORDS_LIST(List) (locate(List[1], List[2], List[3]))
 

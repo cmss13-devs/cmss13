@@ -62,8 +62,7 @@
 	var/list/targets = list()
 	for(var/currentturf = 1 to turfquantity)
 		var/list/turfs_of_area = list()
-		for(var/area in GLOB.ship_areas)
-			for(var/turf/my_turf in area)
-				turfs_of_area += my_turf
+		for(var/area/area in GLOB.ship_areas)
+			turfs_of_area += area.get_turfs_from_all_zlevels()
 		targets += pick(turfs_of_area)
 	return targets

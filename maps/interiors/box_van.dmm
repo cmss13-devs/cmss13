@@ -4,13 +4,13 @@
 	icon_state = "back_1"
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/box_van)
 "e" = (
 /obj/structure/interior_wall/box_van{
 	icon_state = "back_3"
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/box_van)
 "f" = (
 /obj/effect/vehicle_roof/box_van{
 	icon_state = "front_2"
@@ -44,7 +44,7 @@
 	icon_state = "roof_4"
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/box_van)
 "n" = (
 /obj/structure/interior_wall/box_van{
 	icon_state = "background_2";
@@ -76,13 +76,13 @@
 	icon_state = "roof_5"
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/box_van)
 "s" = (
 /obj/structure/interior_wall/box_van{
 	icon_state = "back_2"
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/box_van)
 "t" = (
 /obj/effect/landmark/interior/spawn/entrance{
 	dir = 1;
@@ -115,7 +115,7 @@
 	icon_state = "front_roof_1"
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/box_van)
 "w" = (
 /obj/effect/vehicle_roof/box_van{
 	icon_state = "front_3"

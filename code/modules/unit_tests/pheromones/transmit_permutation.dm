@@ -1,5 +1,3 @@
-TEST_FOCUS(/datum/unit_test/pheromones/transmit_permutation__strength_triplet/)
-
 // Creates a pair of regular emitter drones and a single receiver drone.
 // Tests each permutation of pheromone emission against expected behavior.
 /datum/unit_test/pheromones/transmit_permutation__identity_pair/Run()

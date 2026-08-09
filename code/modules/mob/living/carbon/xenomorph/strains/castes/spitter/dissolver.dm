@@ -165,7 +165,7 @@
 /datum/behavior_delegate/spitter_dissolver/proc/store_acid()
 	if(acid_stored == max_acid_stored)
 		return FALSE
-	acid_stored ++
+	acid_stored++
 	bound_xeno.armor_modifier -= armor_reduction_per_stored
 	bound_xeno.recalculate_armor()
 	return TRUE

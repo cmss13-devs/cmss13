@@ -19,7 +19,8 @@
 
 /obj/effect/alien/resin/chem_producer/Initialize(mapload, mob/builder)
 	. = ..()
-	create_reagents(production_amt * 2)
+	// Buffer for about 4 ticks.
+	create_reagents(production_amt * length(producing_chems) * 4)
 	START_PROCESSING(SSxeno_botany, src)
 
 /obj/effect/alien/resin/chem_producer/process(delta_time)

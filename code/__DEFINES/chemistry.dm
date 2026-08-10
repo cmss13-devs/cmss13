@@ -247,7 +247,7 @@
 //Beyond legendary, only unlockable by processing a xenomorph queen organ
 //Essentially requires a corrupted xenomorph queen because the only way to produce the chemicals needed is by grinding a queen heart.
 #define PROPERTY_WEED_RESISTANT "weed-resistant"
-#define PROPERTY_SCREECH_RESISTANT "vibration-stabilizing"
+#define PROPERTY_XENO_RECOGNIZED "xeno-recognizing"
 #define PROPERTY_RENEGADING "renegading"
 //Admin Only Properties
 #define PROPERTY_ORGAN_HEALING "organ-healing"
@@ -280,7 +280,7 @@
 ///Legendary properties, no PROPERTY_TYPE_ANOMALOUS, only normal ones.
 #define PROPERTY_LEGENDARY_LIST list(PROPERTY_HYPERGENETIC, PROPERTY_BOOSTING, PROPERTY_REGULATING, PROPERTY_OPTIMIZED)
 ///Xenomorphic properties
-#define PROPERTY_XENOMORPHIC_LIST list(PROPERTY_WEED_RESISTANT, PROPERTY_SCREECH_RESISTANT, PROPERTY_RENEGADING)
+#define PROPERTY_XENOMORPHIC_LIST list(PROPERTY_WEED_RESISTANT, PROPERTY_XENO_RECOGNIZED, PROPERTY_RENEGADING)
 
 //Property rarity
 

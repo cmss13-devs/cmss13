@@ -260,7 +260,7 @@
 /// Mob is resistant to xenomorph weeds
 #define TRAIT_WEED_RESISTANT "weed_resistant"
 /// Mob is resistant to queen screeches
-#define TRAIT_SCREECH_RESISTANT "screech_resistant"
+#define TRAIT_XENO_RECOGNIZED "screech_resistant"
 
 // -- ability traits --
 /// Xenos with this trait cannot have plasma transferred to them

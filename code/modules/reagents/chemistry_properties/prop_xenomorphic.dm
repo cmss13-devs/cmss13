@@ -20,19 +20,19 @@
 	return ..()
 
 /datum/chem_property/xenomorphic/screech_resistant
-	name = PROPERTY_SCREECH_RESISTANT
-	code = "VRS"
-	description = "Absorbs high intensity vibrations. Completely metabolizes the reagent when this occurs."
+	name = PROPERTY_XENO_RECOGNIZED
+	code = "XRZ"
+	description = "Xenobiological scrambler that confuses pheromones from pheromone emitter and receiving organisms."
 	category = PROPERTY_TYPE_STIMULANT|PROPERTY_TYPE_UNADJUSTABLE
 	value = 5
 	max_level = 1
 
 /datum/chem_property/xenomorphic/screech_resistant/on_start(mob/living/target)
 	. = ..()
-	ADD_TRAIT(target, TRAIT_SCREECH_RESISTANT, TRAIT_SOURCE_REAGENT(name))
+	ADD_TRAIT(target, TRAIT_XENO_RECOGNIZED, TRAIT_SOURCE_REAGENT(name))
 
 /datum/chem_property/xenomorphic/screech_resistant/on_delete(mob/living/target)
-	REMOVE_TRAIT(target, TRAIT_SCREECH_RESISTANT, TRAIT_SOURCE_REAGENT(name))
+	REMOVE_TRAIT(target, TRAIT_XENO_RECOGNIZED, TRAIT_SOURCE_REAGENT(name))
 	return ..()
 
 // Corrupted xenos probably won't like this one

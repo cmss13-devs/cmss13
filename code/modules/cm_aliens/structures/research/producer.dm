@@ -47,7 +47,7 @@
 	icon = 'icons/mob/xenos/effects.dmi'
 	icon_state = "static_costnode"
 
-	producing_chems = list(PLASMA_PURPLE, PLASMA_CATECHOLAMINE, PLASMA_CHITIN)
+	producing_chems = list(PLASMA_PURPLE, PLASMA_CATECHOLAMINE, PLASMA_CHITIN, PLASMA_NEUROTOXIN)
 	production_amt = 1
 
 /obj/effect/alien/resin/chem_producer/advanced
@@ -56,7 +56,7 @@
 	icon = 'icons/mob/xenos/effects.dmi'
 	icon_state = "static_constructnode"
 
-	producing_chems = list(PLASMA_REINFORCED_CHITIN, PLASMA_ADRENALINE, PLASMA_ACIDIC)
+	producing_chems = list(PLASMA_NUTRIENT, PLASMA_REINFORCED_CHITIN, PLASMA_ADRENALINE, PLASMA_ACIDIC)
 	production_amt = 1
 
 /obj/effect/alien/resin/chem_producer/plasma

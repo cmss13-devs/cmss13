@@ -43522,6 +43522,8 @@
 	pixel_x = 1
 	},
 /obj/structure/bed/roller/heavy,
+/obj/item/organ/xeno/drone,
+/obj/item/organ/xeno/drone,
 /turf/open/floor/almayer/research/containment/floor2,
 /area/almayer/medical/containment/cell)
 "cbj" = (

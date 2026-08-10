@@ -270,7 +270,7 @@
 	var/icon_file = 'icons/mob/hud/factions/marine.dmi'
 
 	var/list/icon_data = list(
-		list("Mar", null),
+		list("Mar", "hudsquad_grunt"),
 		list("ass", "hudsquad_ass"),
 		list("load", "hudsquad_load"),
 		list("mortar", "hudsquad_mortar"),

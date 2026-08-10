@@ -71,6 +71,8 @@
 				marine_rk = "tc_army"
 			if(JOB_ARMY_SYN)
 				marine_rk = "syn_army"
+			if(JOB_SQUAD_MARINE)
+				marine_rk = "rifle"
 		if(squad.squad_leader == current_human)
 			switch(squad.squad_type)
 				if("Squad")

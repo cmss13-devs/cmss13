@@ -100,12 +100,15 @@
 				taming = TRUE
 				break
 
-		var/amount_left = container.reagents.get_reagent_amount(reagent.id)
-		var/inject_speed = min(amount_left, max(amount * 50, 5))
+		var/amount_to_drain = amount
 
-		reagents.add_reagent(reagent.id, inject_speed, reagent.data_properties)
+		if(taming)
+			var/amount_left = container.reagents.get_reagent_amount(reagent.id)
+			amount_to_drain = min(amount_left, max(amount * 50, 5))
+
+		reagents.add_reagent(reagent.id, amount_to_drain, reagent.data_properties)
 		reagents.update_total()
-		container.reagents.remove_reagent(reagent.id, inject_speed)
+		container.reagents.remove_reagent(reagent.id, amount_to_drain)
 		return
 
 /mob/living/carbon/xenomorph/take_blood(obj/O, amount)

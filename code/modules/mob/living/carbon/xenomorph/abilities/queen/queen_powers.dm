@@ -632,9 +632,8 @@
 	target_xeno.hud_update_banished()
 	target_xeno.lock_evolve = TRUE
 
-	if (user_xeno)
-		user_xeno.hive.banished_ckeys[target_xeno.name] = target_xeno.ckey
-		addtimer(CALLBACK(src, PROC_REF(remove_banish), user_xeno.hive, target_xeno.name), 30 MINUTES)
+	target_xeno.hive.banished_ckeys[target_xeno.name] = target_xeno.ckey
+	addtimer(CALLBACK(src, PROC_REF(remove_banish), target_xeno.hive, target_xeno.name), 30 MINUTES)
 
 /datum/action/xeno_action/proc/remove_banish(datum/hive_status/hive, name)
 	hive.banished_ckeys.Remove(name)

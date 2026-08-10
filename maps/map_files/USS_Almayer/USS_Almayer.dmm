@@ -20568,15 +20568,6 @@
 /obj/effect/decal/heavy_cable/node_s_w,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/sp)
-"baM" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
-/obj/structure/machinery/landinglight/delaythree{
-	dir = 8
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/hallways/hangar)
 "baN" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/plate,
@@ -90861,7 +90852,7 @@
 /area/almayer/living/basketball)
 "uaU" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/secure_closet/fridge/dry/stock,
+/obj/structure/closet/secure_closet/fridge/organic/stock,
 /turf/open/floor/prison/kitchen,
 /area/almayer/shipboard/brig/yard)
 "uaV" = (
@@ -142100,7 +142091,7 @@ yeN
 qrp
 mUI
 xBr
-baM
+baX
 bcb
 bHB
 aYt

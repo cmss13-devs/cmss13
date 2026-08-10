@@ -1,6 +1,6 @@
 /datum/game_mode/extended
-	name = "Extended"
-	config_tag = "Extended"
+	name = GAMEMODE_EXTENDED
+	config_tag = GAMEMODE_EXTENDED
 	required_players = 0
 	latejoin_larva_drop = 0
 	static_comms_amount = 2

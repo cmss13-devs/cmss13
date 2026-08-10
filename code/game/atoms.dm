@@ -98,6 +98,13 @@
 	///typepath for the lighting maskfor dynamic light sources
 	var/light_mask_type = null
 
+	/// Abstract type of this atom. Used to discard specific checks in the unit tests
+	/// if the relevant type is only meant to be overloaded, not spawned in.
+	///
+	/// It would be a good idea to put this on all abstract types (i.e. /obj, /obj/effect, etc)
+	/// but it's only for bypassing specific unit tests right now, so not necessary.
+	var/abstract_type = /atom
+
 	///The color this atom will be if we choose to draw it on the minimap
 	var/minimap_color = MINIMAP_SOLID
 

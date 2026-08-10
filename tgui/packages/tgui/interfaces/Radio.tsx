@@ -19,6 +19,7 @@ type Data = {
   maxFrequency: number;
   freqlock: BooleanLike;
   channels: { name: string; status: BooleanLike; hotkey: string }[];
+  hear_channels: { name: string; status: BooleanLike }[];
   command: number;
   useCommand: BooleanLike;
   subspace: BooleanLike;
@@ -42,6 +43,7 @@ export const Radio = (props) => {
   } = data;
 
   const radioChannels = data.channels;
+  const hearChannels = data.hear_channels || [];
 
   const tunedChannel = RADIO_CHANNELS.find(
     (channel) => channel.freq === frequency,
@@ -50,8 +52,8 @@ export const Radio = (props) => {
   // Calculate window height
   let height = 106;
   if (subspace) {
-    if (radioChannels.length > 0) {
-      height += radioChannels.length * 21 + 6;
+    if (radioChannels.length > 0 || hearChannels.length > 0) {
+      height += (radioChannels.length + hearChannels.length) * 21 + 6;
     } else {
       height += 24;
     }
@@ -127,7 +129,7 @@ export const Radio = (props) => {
             </LabeledList.Item>
             {!!subspace && (
               <LabeledList.Item label="Channels">
-                {radioChannels.length === 0 && (
+                {radioChannels.length === 0 && hearChannels.length === 0 && (
                   <Box inline color="bad">
                     No encryption keys installed.
                   </Box>
@@ -150,6 +152,26 @@ export const Radio = (props) => {
                     </Button>
                   </Box>
                 ))}
+                {hearChannels.length > 0 && (
+                  <Box mt={1}>
+                    {hearChannels.map((channel) => (
+                      <Box key={'hear-' + channel.name}>
+                        <Button
+                          icon={channel.status ? 'volume-up' : 'volume-mute'}
+                          selected={channel.status}
+                          onClick={() =>
+                            act('channel', {
+                              channel: channel.name,
+                            })
+                          }
+                        >
+                          {channel.name + ' '}
+                          {'[Hear Only]'}
+                        </Button>
+                      </Box>
+                    ))}
+                  </Box>
+                )}
               </LabeledList.Item>
             )}
           </LabeledList>

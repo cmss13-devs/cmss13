@@ -775,6 +775,9 @@
 	selected_ability = null
 	queued_action = null
 
+	if(organ_regen_timer != TIMER_ID_NULL)
+		deltimer(organ_regen_timer)
+
 	QDEL_NULL(organ)
 	QDEL_NULL(strain)
 	QDEL_NULL(behavior_delegate)
@@ -896,6 +899,8 @@
 /// Regenerates the organ over time, based on caste statistics
 /mob/living/carbon/xenomorph/proc/trigger_regenerate_organ()
 	SIGNAL_HANDLER
+	if(QDELING(src))
+		return
 	organ = null
 	if(stat == DEAD || isnull(caste.organ_type))
 		return

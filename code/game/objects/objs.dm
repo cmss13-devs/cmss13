@@ -34,6 +34,9 @@
 	/// lets us know if the item is an objective or not
 	var/is_objective = FALSE
 
+	/// Abstract type of this obj.
+	var/abstract_type = /obj
+
 	vis_flags = VIS_INHERIT_PLANE
 
 

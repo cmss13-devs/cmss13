@@ -449,7 +449,7 @@
 	// Evolving does not regenerate the organ, maintain the timer
 	if(old_xeno && old_xeno.organ_regen_timer != TIMER_ID_NULL)
 		var/regen_time_left = timeleft(old_xeno.organ_regen_timer)
-		organ_regen_timer = addtimer(CALLBACK(src, PROC_REF(create_xeno_organ)), regen_time_left, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT|TIMER_STOPPABLE)
+		organ_regen_timer = addtimer(CALLBACK(src, PROC_REF(finish_organ_regen)), regen_time_left, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT|TIMER_STOPPABLE)
 	else
 		create_xeno_organ()
 
@@ -904,7 +904,7 @@
 	organ = null
 	if(stat == DEAD || isnull(caste.organ_type))
 		return
-	addtimer(CALLBACK(src, PROC_REF(finish_organ_regen)), caste.organ_regen_time, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT|TIMER_STOPPABLE)
+	organ_regen_timer = addtimer(CALLBACK(src, PROC_REF(create_xeno_organ)), regen_time_left, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT|TIMER_STOPPABLE)addtimer(CALLBACK(src, PROC_REF(finish_organ_regen)), caste.organ_regen_time, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT|TIMER_STOPPABLE)
 	recalculate_stats()
 	var/amt_to_death = health - health_threshold_dead
 	adjustBruteLoss(amt_to_death - 5)

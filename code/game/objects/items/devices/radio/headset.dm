@@ -105,7 +105,7 @@
 
 /obj/item/device/radio/headset/handle_message_mode(mob/living/speaker as mob, message, channel)
 
-	if(channel in hear_only_channels && !(channel in channels))
+	if((channel in hear_only_channels) && !(channel in channels))
 		to_chat(speaker, SPAN_WARNING("The [channel] channel is hear only. You cannot talk on it."))
 		return null
 

@@ -28,6 +28,8 @@
 	tackle_min = 4
 	tackle_max = 5
 
+	organ_type = null
+
 	aura_strength = 1
 
 	minimap_icon = "lesser_drone"

@@ -372,6 +372,10 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(health < maxHealth)
 		to_chat(src, SPAN_XENOWARNING("We are too weak to deevolve, we must regain our health first."))
 		return
+	if(!organ && caste.organ_type)
+		to_chat(src, SPAN_XENOWARNING("We must wait for our organs to regenerate."))
+		return
+
 	if(HAS_TRAIT(src, TRAIT_HIVEMIND_INTERFERENCE))
 		to_chat(src, SPAN_WARNING("Our link to the hive is being suppressed...we should wait a bit."))
 		return FALSE
@@ -431,11 +435,6 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		GLOB.deevolved_ckeys += new_xeno.ckey
 
 /mob/living/carbon/xenomorph/proc/transmute(newcaste, message="We regress into our previous form.")
-	// We have to delete the organ before creating the new xeno because all old_xeno contents are dropped to the ground on Initialize()
-	var/obj/item/organ/xeno/organ = locate() in src
-	if(!isnull(organ))
-		qdel(organ)
-
 	var/level_to_switch_to = get_vision_level()
 	var/xeno_type = GLOB.RoleAuthority.get_caste_by_text(newcaste)
 	var/mob/living/carbon/xenomorph/new_xeno = new xeno_type(get_turf(src), src)

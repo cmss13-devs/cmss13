@@ -23,7 +23,7 @@
 
 	/// List of additional chemicals that the chem storage can store.
 	/// Has a buffer on each individual additional chemical that can be stored
-	var/list/datum/reagent/additional_chemicals = list()
+	var/list/additional_chemicals = list()
 	/// Additional chemical volume. This is per-chemical
 	var/additional_chemical_volume = 200
 

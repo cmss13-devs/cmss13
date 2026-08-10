@@ -58,6 +58,7 @@
 			sending.additional_chemicals[reagent.id] = amt_to_remove
 
 /obj/structure/machinery/chem_extractor/Destroy()
+	collecting_from = null
 	STOP_PROCESSING(SSxeno_botany, src)
 	return ..()
 
@@ -74,18 +75,24 @@
 	. = ..()
 	deploy_extractor(user, get_turf(user))
 
-/obj/item/chem_extractor/proc/deploy_extractor(mob/user, turf/position)
-	var/blocked = position.density
-	for(var/obj/object in position)
+/obj/item/chem_extractor/proc/is_blocked(turf/spot)
+	var/blocked = spot.density
+	for(var/obj/object in spot)
 		if(object.density)
 			blocked = TRUE
 			break
 
-	if(blocked)
+	return blocked
+
+
+/obj/item/chem_extractor/proc/deploy_extractor(mob/user, turf/position)
+	if(is_blocked(position))
 		to_chat(user, SPAN_WARNING("This spot is already occupied. Find a clear place to deploy this"))
 		return
-
 	if(!do_after(user, 3 SECONDS, show_busy_icon = TRUE))
+		return
+	if(is_blocked(position))
+		to_chat(user, SPAN_WARNING("This spot is already occupied. Find a clear place to deploy this"))
 		return
 	user.visible_message(SPAN_NOTICE("[user] deploys [src]."), SPAN_NOTICE("You deploy [src]."));
 	var/obj/structure/machinery/chem_extractor/extractor = new(position)

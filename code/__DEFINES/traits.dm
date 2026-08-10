@@ -557,4 +557,4 @@ GLOBAL_LIST(trait_name_map)
 /// traits from wall hiding
 #define WALL_HIDING_TRAIT "wallhiding"
 /// traits from reagents
-#define REAGENT_TRAIT "reagent"
+#define TRAIT_SOURCE_REAGENT(reagent_id) "reagent_[reagent_id]"

@@ -21,6 +21,7 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 
 	if(organ_regen_timer != TIMER_ID_NULL)
 		deltimer(organ_regen_timer)
+		organ_regen_timer = TIMER_ID_NULL
 
 	if(is_zoomed)
 		zoom_out()

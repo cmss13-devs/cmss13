@@ -13,10 +13,10 @@
 
 /datum/chem_property/xenomorphic/weed_resistant/on_start(mob/living/target)
 	. = ..()
-	ADD_TRAIT(target, TRAIT_WEED_RESISTANT, REAGENT_TRAIT)
+	ADD_TRAIT(target, TRAIT_WEED_RESISTANT, TRAIT_SOURCE_REAGENT(name))
 
 /datum/chem_property/xenomorphic/weed_resistant/on_delete(mob/living/target)
-	REMOVE_TRAIT(target, TRAIT_WEED_RESISTANT, REAGENT_TRAIT)
+	REMOVE_TRAIT(target, TRAIT_WEED_RESISTANT, TRAIT_SOURCE_REAGENT(name))
 	return ..()
 
 /datum/chem_property/xenomorphic/screech_resistant
@@ -29,10 +29,10 @@
 
 /datum/chem_property/xenomorphic/screech_resistant/on_start(mob/living/target)
 	. = ..()
-	ADD_TRAIT(target, TRAIT_SCREECH_RESISTANT, REAGENT_TRAIT)
+	ADD_TRAIT(target, TRAIT_SCREECH_RESISTANT, TRAIT_SOURCE_REAGENT(name))
 
 /datum/chem_property/xenomorphic/screech_resistant/on_delete(mob/living/target)
-	REMOVE_TRAIT(target, TRAIT_SCREECH_RESISTANT, REAGENT_TRAIT)
+	REMOVE_TRAIT(target, TRAIT_SCREECH_RESISTANT, TRAIT_SOURCE_REAGENT(name))
 	return ..()
 
 // Corrupted xenos probably won't like this one

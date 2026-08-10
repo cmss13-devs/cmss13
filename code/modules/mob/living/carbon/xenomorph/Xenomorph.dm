@@ -775,6 +775,7 @@
 	selected_ability = null
 	queued_action = null
 
+	QDEL_NULL(organ)
 	QDEL_NULL(strain)
 	QDEL_NULL(behavior_delegate)
 

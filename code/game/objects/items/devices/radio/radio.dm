@@ -390,13 +390,12 @@
 			return -1
 	return canhear_range
 
-/obj/item/device/radio/proc/send_hear(freq, level)
-	var/range = receive_range(freq, level)
-	if(range > -1)
-		var/list/hearers
-		var/list/mobs = get_mobs_in_view(canhear_range, src)
-		hearers += mobs
-		return hearers
+/obj/item/device/radio/emp_act(severity)
+	. = ..()
+	broadcasting = FALSE
+	listening = FALSE
+	for (var/ch_name in channels)
+		channels[ch_name] = 0
 
 /obj/item/device/radio/proc/config(op)
 	for (var/ch_name in channels)

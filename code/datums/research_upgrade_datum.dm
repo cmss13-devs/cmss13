@@ -100,8 +100,8 @@
 	name = "Chemical Extractor"
 	desc = "A chemical extractor that can be used to extract chemicals from a specified vessel. Sends them to the tagged chemical network. These ones are configured for research."
 	behavior = RESEARCH_UPGRADE_ITEM
-	value_upgrade = 250
-	item_reference = /obj/item/research_upgrades/autoharvest
+	value_upgrade = 1000
+	item_reference = /obj/item/chem_extractor
 	upgrade_type = ITEM_MACHINERY_UPGRADE
 	clearance_req = 2
 

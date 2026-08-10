@@ -156,11 +156,6 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	// subtract the threshold, keep the stored amount
 	evolution_stored -= evolution_threshold
 
-	// don't drop their organ
-	var/obj/item/organ/xeno/organ = locate() in src
-	if(!isnull(organ))
-		qdel(organ)
-
 	//From there, the new xeno exists, hopefully
 	var/mob/living/carbon/xenomorph/new_xeno = new xeno_type(get_turf(src), src)
 	new_xeno.creation_time = creation_time

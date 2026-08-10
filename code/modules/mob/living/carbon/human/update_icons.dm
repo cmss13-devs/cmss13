@@ -848,11 +848,11 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 	remove_overlay(SURGERY_LAYER)
 
 	var/list/surgery_overlays = list()
-	for(var/obj/limb/affected_limb as anything in contents)
-		if(affected_limb.status & LIMB_DESTROYED)
+	for(var/obj/limb/part as anything in limbs)
+		if(part.status & LIMB_DESTROYED)
 			continue
 
-		surgery_overlays += affected_limb.get_surgery_overlays()
+		surgery_overlays += part.get_surgery_overlays()
 
 	overlays_standing[SURGERY_LAYER] = surgery_overlays
 

@@ -102,16 +102,16 @@
 		parent.children.Add(src)
 	if(mob_owner)
 		owner = mob_owner
+		
+	if(owner.species && owner.species.name == "Yautja")
+		surgery_overlay = null //Yautja body parts do not even have a complete torso or groin from the side. Please update the Yautja body sprites to the standard that is human body parts before I make overlays for them. - Puckaboo2
+	else
+		surgery_overlay = image('icons/mob/humans/dam_human.dmi', "surgery_0", -SURGERY_LAYER)
 
 	wound_overlay = image('icons/mob/humans/dam_human.dmi', "grayscale_0", -DAMAGE_LAYER)
 	wound_overlay.color = owner?.species.blood_color
 
 	burn_overlay = image('icons/mob/humans/dam_human.dmi', "burn_0", -DAMAGE_LAYER)
-
-	if(species.name == "Yautja")
-		surgery_overlay = null //Yautja body parts do not even have a complete torso or groin from the side. Pleas update the Yautja body sprites to the standard that is human body parts before I make overlays for them. - Puckaboo2
-	else
-		surgery_overlay = image('icons/mob/humans/dam_human.dmi', "surgery_0", -SURGERY_LAYER)
 
 	if(owner)
 		forceMove(owner)
@@ -1406,30 +1406,30 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 
 /obj/limb/proc/get_surgery_overlays()
 	. = list()
-	if(!(status & LIMB_DESTROYED))
-		if(status & INCISION_MADE)
-			surgery_overlay.icon_state = "[name]_incision"
-			surgery_overlay.color = owner?.species.blood_color
+
+	if(status & INCISION_MADE)
+		surgery_overlay.icon_state = "[name]_incision"
+		surgery_overlay.color = owner?.species.blood_color
+		. += surgery_overlay
+
+	if(status & INCISION_WIDENED)
+		surgery_overlay.icon_state = "[name]_incision_wide"
+		surgery_overlay.color = owner?.species.blood_color
+		. += surgery_overlay
+		if(status & LIMB_BROKEN) //adds bones on top of the widened incision
+			surgery_overlay.icon_state = "[name]_bone_broken"
+			. += surgery_overlay
+		else
+			surgery_overlay.icon_state = "[name]_bone"
 			. += surgery_overlay
 
-		if(status & INCISION_WIDENED)
-			surgery_overlay.icon_state = "[name]_incision_wide"
-			surgery_overlay.color = owner?.species.blood_color
+	if(status & BONE_OPENED)
+		if(status & LIMB_BROKEN)
+			surgery_overlay.icon_state = "[name]_bone_open_broken"
 			. += surgery_overlay
-			if(status & LIMB_BROKEN) //adds bones on top of the widened incision
-				surgery_overlay.icon_state = "[name]_bone_broken"
-				. += surgery_overlay
-			else
-				surgery_overlay.icon_state = "[name]_bone"
-				. += surgery_overlay
-
-		if(status & BONE_OPENED)
-			if(status & LIMB_BROKEN)
-				surgery_overlay.icon_state = "[name]_bone_open_broken"
-				. += surgery_overlay
-			else
-				surgery_overlay.icon_state = "[name]_bone_open"
-				. += surgery_overlay
+		else
+			surgery_overlay.icon_state = "[name]_bone_open"
+			. += surgery_overlay
 
 /*
 			LIMB TYPES

@@ -5,6 +5,14 @@
 
 /datum/chemical_reaction/generated
 	result_amount = 1 //Makes it a bit harder to mass produce
+	var/list/locked_reagents
+
+/datum/chemical_reaction/generated/make_alike(datum/chemical_reaction/reaction)
+	. = ..()
+	var/datum/chemical_reaction/generated/generated = reaction
+	if(istype(generated))
+		locked_reagents = generated.locked_reagents?.Copy()
+
 
 /datum/reagent/generated
 	reagent_state = LIQUID //why isn't this default, seriously

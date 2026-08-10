@@ -27,6 +27,7 @@
 	minimum_evolve_time = 4 MINUTES
 
 	minimap_icon = "defender"
+	organ_type = /obj/item/organ/xeno/defender
 
 /mob/living/carbon/xenomorph/defender
 	caste_type = XENO_CASTE_DEFENDER
@@ -39,7 +40,6 @@
 	pixel_x = -16
 	old_x = -16
 	tier = 1
-	organ_value = 1000
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/toggle_seethrough,
@@ -62,6 +62,15 @@
 
 	skull = /obj/item/skull/defender
 	pelt = /obj/item/pelt/defender
+
+/obj/item/organ/xeno/defender
+	name = "defender heart"
+	icon_state = "heart_t1"
+	item_state = "heart_t1"
+	research_value = 1000
+
+	xeno_organ_flags = XENO_ORGAN_WEAK|XENO_ORGAN_HARDENED
+
 
 /mob/living/carbon/xenomorph/defender/handle_special_state()
 	if(fortify)

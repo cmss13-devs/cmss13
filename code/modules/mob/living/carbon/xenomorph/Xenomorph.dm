@@ -270,10 +270,11 @@
 
 	// Life reduction variables.
 	var/life_slow_reduction = -1.5
-	//Research organ harvesting.
-	var/organ_removed = FALSE
-	/// value of organ in each caste, e.g. 7k is autodoc larva removal. runner is 500
-	var/organ_value = 0
+
+	/// Organ. Set by caste. A xeno without their organ receives a 0.5x multiplier to max plasma/health.
+	var/obj/item/organ/xeno/organ
+	/// Organ regeneration timer
+	var/organ_regen_timer = TIMER_ID_NULL
 
 	var/obj/item/skull/skull = /obj/item/skull
 	var/obj/item/pelt/pelt = /obj/item/pelt
@@ -393,14 +394,6 @@
 	else if(hivenumber)
 		src.hivenumber = hivenumber
 
-	//putting the organ in for research
-	if(organ_value != 0)
-		var/obj/item/organ/xeno/organ = new() //give
-		organ.forceMove(src)
-		organ.research_value = organ_value
-		organ.caste_origin = caste_type
-		organ.icon_state = get_organ_icon()
-
 	set_languages(list(LANGUAGE_XENOMORPH, LANGUAGE_HIVEMIND)) // The hive may alter this list
 
 	var/datum/hive_status/hive = GLOB.hive_datum[src.hivenumber]
@@ -452,6 +445,13 @@
 	if(!caste_type || !GLOB.xeno_datum_list[caste_type])
 		CRASH("Attempted to create a new xenomorph [src] without caste datum.")
 	caste = GLOB.xeno_datum_list[caste_type]
+
+	// Evolving does not regenerate the organ, maintain the timer
+	if(old_xeno && old_xeno.organ_regen_timer != TIMER_ID_NULL)
+		var/regen_time_left = timeleft(old_xeno.organ_regen_timer)
+		organ_regen_timer = addtimer(CALLBACK(src, PROC_REF(create_xeno_organ)), regen_time_left, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT|TIMER_STOPPABLE)
+	else
+		create_xeno_organ()
 
 	//Fire immunity check signals
 	RegisterSignal(src, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), PROC_REF(flamer_crossed))
@@ -742,7 +742,7 @@
 
 	if(iff_tag)
 		. += SPAN_NOTICE("It has an IFF tag sticking out of its carapace.")
-	if(organ_removed)
+	if(isnull(organ) && !isnull(caste.organ_type))
 		. += "It seems to have its carapace cut open."
 
 /mob/living/carbon/xenomorph/Destroy()
@@ -872,6 +872,29 @@
 		tunnel_target.tunnel_desc = "[new_name]"
 	return
 
+/// Initializes the xenomorph organ
+/mob/living/carbon/xenomorph/proc/create_xeno_organ()
+	organ_regen_timer = TIMER_ID_NULL
+	if(caste.organ_type)
+		var/obj/item/organ/xeno/organ = new caste.organ_type() //give
+		organ.forceMove(src)
+		organ.hivenumber = hivenumber
+		organ.caste_origin = caste_type
+		if(caste.plasma_max > 0)
+			organ.xeno_organ_flags |= XENO_ORGAN_PLASMA
+		RegisterSignal(organ, list(COMSIG_PARENT_QDELETING, COMSIG_XENO_ORGAN_REMOVED), PROC_REF(trigger_regenerate_organ))
+		src.organ = organ
+
+/// Regenerates the organ over time, based on caste statistics
+/mob/living/carbon/xenomorph/proc/trigger_regenerate_organ()
+	SIGNAL_HANDLER
+	organ = null
+	if(stat == DEAD || isnull(caste.organ_type))
+		return
+	addtimer(CALLBACK(src, PROC_REF(create_xeno_organ)), caste.organ_regen_time, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT|TIMER_STOPPABLE)
+	recalculate_stats()
+	var/amt_to_death = health - health_threshold_dead
+	adjustBruteLoss(amt_to_death - 5)
 
 /mob/living/carbon/xenomorph/prepare_huds()
 	..()
@@ -925,6 +948,7 @@
 	for(var/trait in new_hive.hive_inherited_traits)
 		ADD_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
 
+	organ = new_hivenumber
 	if(new_hivenumber == XENO_HIVE_FORSAKEN)
 		update_minimap_see_humans()
 
@@ -978,6 +1002,8 @@
 	if(hive)
 		new_max_health += hive.hive_stat_modifier_flat["health"]
 		new_max_health *= hive.hive_stat_modifier_multiplier["health"]
+	if(isnull(organ) && !isnull(caste.organ_type))
+		new_max_health *= 0.5
 	if(new_max_health == maxHealth)
 		return
 	var/currentHealthRatio = 1
@@ -999,6 +1025,8 @@
 		new_plasma_max *= hive.hive_stat_modifier_multiplier["plasmapool"]
 		plasma_gain += hive.hive_stat_modifier_flat["plasmagain"]
 		plasma_gain *= hive.hive_stat_modifier_multiplier["plasmagain"]
+	if(isnull(organ) && !isnull(caste.organ_type))
+		new_plasma_max *= 0.5
 	if(new_plasma_max == plasma_max)
 		return
 
@@ -1122,6 +1150,9 @@
 	for(var/datum/action/xeno_action/XA in actions)
 		XA.end_cooldown()
 
+	if(QDELETED(organ))
+		trigger_regenerate_organ()
+
 /mob/living/carbon/xenomorph/resist_fire()
 	adjust_fire_stacks(XENO_FIRE_RESIST_AMOUNT, min_stacks = 0)
 	apply_effect(4, WEAKEN)
@@ -1136,9 +1167,6 @@
 
 	visible_message(SPAN_DANGER("[src] has successfully extinguished themselves!"),
 		SPAN_NOTICE("We extinguish ourselves."), null, 5)
-
-/mob/living/carbon/xenomorph/proc/get_organ_icon()
-	return "heart_t[tier]"
 
 /mob/living/carbon/xenomorph/resist_restraints()
 	if(!legcuffed)

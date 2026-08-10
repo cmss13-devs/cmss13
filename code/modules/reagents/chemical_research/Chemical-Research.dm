@@ -1,5 +1,11 @@
 GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 
+// Amount of basic xenomorph reagents for contract level to upgrade
+#define XENO_BASIC_AMT_TO_PROGRESS 1
+
+// Amount of specialized xenomorph reagents needed to be identified before contract level is upgraded.
+#define XENO_SPECIALIZED_AMT_TO_PROGRESS 2
+
 /datum/chemical_data
 	var/rsc_credits = 0
 	var/clearance_level = 1
@@ -25,6 +31,8 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 	var/list/chemical_identified_list = list() //List of all identified objective reagents indexed by ID associated with the objective value
 	COOLDOWN_DECLARE(announcement_cooldown)
 	var/list/research_computers = list()
+
+	var/max_contract_level = 2
 
 /datum/chemical_data/proc/update_credits(change)
 	rsc_credits = max(0, rsc_credits + change)
@@ -146,6 +154,20 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 	tree.add_points(chem.objective_value)
 	GLOB.chemical_data.update_credits(chem.credit_reward)
 
+	if(max_contract_level < 4)
+		var/xeno_basic_chems = 0
+		var/xeno_specialized_chems = 0
+		for(var/chem_id in chemical_identified_list)
+			var/datum/reagent/reagent = GLOB.chemical_reagents_list[chem_id]
+			if(reagent.chemclass == CHEM_CLASS_XENO_SPECIALIZED || reagent.chemclass == CHEM_CLASS_XENO_ROYAL)
+				xeno_specialized_chems += 1
+			else if(reagent.chemclass == CHEM_CLASS_XENO_BASIC)
+				xeno_basic_chems += 1
+		if(xeno_specialized_chems >= XENO_SPECIALIZED_AMT_TO_PROGRESS)
+			max_contract_level = 4
+		else if(xeno_basic_chems >= XENO_BASIC_AMT_TO_PROGRESS)
+			max_contract_level = 3
+
 /datum/chemical_data/proc/add_chemical_objective(datum/reagent/chem)
 	chemical_objective_list[chem.id] = chem.objective_value
 	chemical_not_completed_objective_list[chem.id] = chem.objective_value
@@ -161,7 +183,7 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 		var/datum/reagent/generated/contract_chemical = new /datum/reagent/generated
 		contract_chemical.id = "contract-chem-[i]"// we don't actually create the recipe for it or give it a proper id, frankly that would be too much pain to remove when we reroll them
 		contract_chemical.generate_name()
-		contract_chemical.gen_tier = rand(1,3) //easy, hard and medium
+		contract_chemical.gen_tier = rand(1,max_contract_level)
 		contract_chemical.generate_stats()
 		var/roll = rand(1, 100)
 		switch(contract_chemical.gen_tier) // pick a reagent hint.
@@ -179,7 +201,14 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 					contract_chemical.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C3"])
 			if(3)
 				contract_chemical.credit_reward = 7
-				contract_chemical.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["H1"]) //hard chemicals *always* contain a hydro exclusive chem
+				contract_chemical.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["X1"])
+			if(4)
+				contract_chemical.credit_reward = 8
+				contract_chemical.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["X2"])
+			if(5)
+				contract_chemical.credit_reward = 10
+				contract_chemical.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["X3"])
+
 		contract_chemical.property_hint = pick(contract_chemical.properties)
 		contract_chems[contract_chemical.id] = contract_chemical
 	next_reroll = world.time + RESEARCH_CONTRACT_NOT_PICKED
@@ -216,3 +245,4 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 
 	return clue
 
+#undef XENO_SPECIALIZED_AMT_TO_PROGRESS

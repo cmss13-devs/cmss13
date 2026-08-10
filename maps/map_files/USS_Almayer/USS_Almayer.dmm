@@ -42419,6 +42419,9 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/item/chem_extractor,
+/obj/item/chem_extractor,
+/obj/item/chem_extractor,
 /turf/open/floor/almayer/sterile_green_side/east,
 /area/almayer/medical/containment)
 "bZo" = (

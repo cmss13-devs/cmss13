@@ -451,13 +451,6 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		to_chat(src, SPAN_WARNING("Something went terribly wrong here. Your new xeno is null! Tell a coder immediately!"))
 		if(new_xeno)
 			qdel(new_xeno)
-
-		if(organ_value != 0)
-			organ = new()
-			organ.forceMove(src)
-			organ.research_value = organ_value
-			organ.caste_origin = caste_type
-			organ.icon_state = get_organ_icon()
 		return FALSE
 
 	new_xeno.built_structures = built_structures.Copy()

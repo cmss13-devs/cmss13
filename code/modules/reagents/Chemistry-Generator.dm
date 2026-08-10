@@ -118,7 +118,17 @@
 					if(roll<=80)
 						chem_id = pick(GLOB.chemical_gen_classes_list[pick("C1", "C2")])
 					else
-						chem_id = pick(GLOB.chemical_gen_classes_list["H1"])
+						chem_id = pick(GLOB.chemical_gen_classes_list["X1"])
+				if(4)
+					if(roll<=80)
+						chem_id = pick(GLOB.chemical_gen_classes_list[pick("C2", "X1")])
+					else
+						chem_id = pick(GLOB.chemical_gen_classes_list["X2"])
+				if(5)
+					if(roll<=80)
+						chem_id = pick(GLOB.chemical_gen_classes_list[pick("X1", "X2")])
+					else
+						chem_id = pick(GLOB.chemical_gen_classes_list["X3"])
 				else
 					if(!required_reagents || is_catalyst)//first component is more likely to be special in chems tier 4 or higher, catalysts are always special in tier 4 or higher
 						if (prob(50))

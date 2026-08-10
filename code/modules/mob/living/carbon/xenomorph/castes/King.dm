@@ -24,6 +24,7 @@
 	tackle_max = 10
 
 	minimap_icon = "xenoqueen"
+	organ_type = /obj/item/organ/xeno/king
 
 /mob/living/carbon/xenomorph/king
 	caste_type = XENO_CASTE_KING
@@ -39,7 +40,6 @@
 	tier = 4
 	small_explosives_stun = FALSE
 	counts_for_slots = FALSE
-	organ_value = 50000
 
 	claw_type = CLAW_TYPE_VERY_SHARP
 	age = -1
@@ -68,8 +68,13 @@
 	skull = /obj/item/skull/king
 	pelt = /obj/item/pelt/king
 
-/mob/living/carbon/xenomorph/king/get_organ_icon()
-	return "heart_t3"
+/obj/item/organ/xeno/king
+	name = "king heart"
+	icon_state = "heart_t3"
+	item_state = "heart_t3"
+	research_value = 50000
+
+	xeno_organ_flags = XENO_ORGAN_ROYAL|XENO_ORGAN_HARDENED|XENO_ORGAN_TACHYCARDIA
 
 /mob/living/carbon/xenomorph/king/Destroy()
 	UnregisterSignal(src, COMSIG_MOVABLE_PRE_MOVE)

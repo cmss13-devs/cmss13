@@ -28,14 +28,33 @@
 	if(!(src in mobs_in_view))
 		return
 	var/dist = get_dist(queen, src)
-	if(dist <= 4)
+
+	var/effect_mult = 1
+	var/knockdown_dist = 4
+	// Reduces effective range, immediately metabolizes any screech-resistant reagents
+	if(HAS_TRAIT(src, TRAIT_SCREECH_RESISTANT))
+		knockdown_dist = 2
+		effect_mult = 0.5
+		for(var/datum/reagent/reagent as anything in reagents.reagent_list)
+			var/remove_reagent = FALSE
+			for(var/datum/chem_property/prop as anything in reagent.properties)
+				if(prop.name == PROPERTY_SCREECH_RESISTANT)
+					remove_reagent = TRUE
+					break
+
+			if(remove_reagent)
+				reagents.remove_reagent_by_reference(reagent, reagent.volume)
+
+
+
+	if(dist <= knockdown_dist)
 		to_chat(src, SPAN_DANGER("An ear-splitting guttural roar shakes the ground beneath your feet!"))
-		adjust_effect(4, STUN)
-		apply_effect(4, WEAKEN)
+		adjust_effect(4 * effect_mult, STUN)
+		apply_effect(4 * effect_mult, WEAKEN)
 		if(!ear_deaf || !HAS_TRAIT(src, TRAIT_EAR_PROTECTION))
 			AdjustEarDeafness(5) //Deafens them temporarily
-	else if(dist >= 5 && dist < 7)
-		adjust_effect(3, STUN)
+	else if(dist > knockdown_dist && dist < 7)
+		adjust_effect(3 * effect_mult, STUN)
 		if(!ear_deaf || !HAS_TRAIT(src, TRAIT_EAR_PROTECTION))
 			AdjustEarDeafness(2)
 		to_chat(src, SPAN_DANGER("The roar shakes your body to the core, freezing you in place!"))

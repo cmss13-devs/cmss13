@@ -1018,7 +1018,7 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_XENO_BASIC
 	objective_value = OBJECTIVE_EXTREME_VALUE
-	properties = list(PROPERTY_HYPERDENSIFICATING = 1)
+	properties = list(PROPERTY_HYPERDENSIFICATING = 1, PROPERTY_HEPATOTOXIC = 2)
 
 /datum/reagent/plasma/reinforced_chitin
 	name = "Reinforced Chitin Plasma"
@@ -1029,7 +1029,7 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_XENO_SPECIALIZED
 	objective_value = OBJECTIVE_EXTREME_VALUE
-	properties = list(PROPERTY_HYPERDENSIFICATING = 1, PROPERTY_REPAIRING = 2)
+	properties = list(PROPERTY_HYPERDENSIFICATING = 1, PROPERTY_REPAIRING = 2, PROPERTY_HEPATOTOXIC = 2)
 
 /datum/reagent/plasma/catecholamine
 	name = "Catecholamine Plasma"
@@ -1040,7 +1040,7 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_XENO_BASIC
 	objective_value = OBJECTIVE_EXTREME_VALUE
-	properties = list(PROPERTY_NEUROPATHIC = 2, PROPERTY_MUSCLESTIMULATING = 3)
+	properties = list(PROPERTY_NEUROPATHIC = 2, PROPERTY_MUSCLESTIMULATING = 3, PROPERTY_OCULOTOXIC = 2)
 
 /datum/reagent/plasma/adrenal
 	name = "Adrenal Plasma"

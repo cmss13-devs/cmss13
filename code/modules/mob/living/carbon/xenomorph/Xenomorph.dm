@@ -885,6 +885,9 @@
 	if(organ_regen_timer != TIMER_ID_NULL)
 		deltimer(organ_regen_timer)
 	organ_regen_timer = TIMER_ID_NULL
+	if(!QDELETED(organ))
+		UnregisterSignal(organ, list(COMSIG_PARENT_QDELETING, COMSIG_XENO_ORGAN_REMOVED))
+
 	if(caste.organ_type)
 		var/obj/item/organ/xeno/organ = new caste.organ_type() //give
 		organ.forceMove(src)
@@ -1166,7 +1169,7 @@
 		XA.end_cooldown()
 
 	if(QDELETED(organ))
-		trigger_regenerate_organ()
+		create_xeno_organ()
 
 /mob/living/carbon/xenomorph/resist_fire()
 	adjust_fire_stacks(XENO_FIRE_RESIST_AMOUNT, min_stacks = 0)

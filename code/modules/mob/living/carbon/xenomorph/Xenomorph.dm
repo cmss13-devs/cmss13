@@ -901,10 +901,12 @@
 	SIGNAL_HANDLER
 	if(QDELING(src))
 		return
+	if(!QDELETED(organ))
+		UnregisterSignal(organ, list(COMSIG_PARENT_QDELETING, COMSIG_XENO_ORGAN_REMOVED))
 	organ = null
 	if(stat == DEAD || isnull(caste.organ_type))
 		return
-	organ_regen_timer = addtimer(CALLBACK(src, PROC_REF(create_xeno_organ)), regen_time_left, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT|TIMER_STOPPABLE)addtimer(CALLBACK(src, PROC_REF(finish_organ_regen)), caste.organ_regen_time, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT|TIMER_STOPPABLE)
+	organ_regen_timer = addtimer(CALLBACK(src, PROC_REF(finish_organ_regen)), caste.organ_regen_time, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT|TIMER_STOPPABLE)
 	recalculate_stats()
 	var/amt_to_death = health - health_threshold_dead
 	adjustBruteLoss(amt_to_death - 5)

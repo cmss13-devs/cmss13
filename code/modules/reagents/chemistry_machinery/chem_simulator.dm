@@ -369,7 +369,7 @@
 			var/new_component_id = R.add_component(tier = max(target.data.gen_tier-1, 1))
 			var/datum/reagent/new_component = GLOB.chemical_reagents_list[new_component_id]
 			//Make sure we don't have an identical reaction and that the component is identified
-			if(R.check_duplicate() || R.check_reaction_uses_all_default_medical() || new_component.chemclass >= CHEM_CLASS_SPECIAL)
+			if(R.check_duplicate() || R.check_reaction_uses_all_default_medical() || new_component.chemclass >= CHEM_CLASS_XENO_BASIC)
 				R.required_reagents = old_reaction.Copy()
 				if(i >= 8) //doesn't really fix the issue but we went from 5 to 8 attempts to roll.
 					//Elevate the reaction to a higher order
@@ -406,12 +406,12 @@
 		if(C)
 			for(var/component in C.required_reagents)
 				var/datum/reagent/R = GLOB.chemical_reagents_list[component]
-				if(R && R.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[R.id])
+				if(R && R.chemclass >= CHEM_CLASS_XENO_BASIC && !GLOB.chemical_data.chemical_identified_list[R.id])
 					status_bar = "UNREGISTERED COMPONENTS DETECTED"
 					return FALSE
 			for(var/catalyst in C.required_catalysts)
 				var/datum/reagent/R = GLOB.chemical_reagents_list[catalyst]
-				if(R && R.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[R.id])
+				if(R && R.chemclass >= CHEM_CLASS_XENO_BASIC && !GLOB.chemical_data.chemical_identified_list[R.id])
 					status_bar = "UNREGISTERED CATALYSTS DETECTED"
 					return FALSE
 		if(target_property && mode != MODE_ADD)

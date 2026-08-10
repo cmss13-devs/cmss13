@@ -19,7 +19,7 @@
 
 /obj/effect/alien/resin/chem_producer/Initialize(mapload, mob/builder)
 	. = ..()
-	create_reagents(100)
+	create_reagents(production_amt * 2)
 	START_PROCESSING(SSxeno_botany, src)
 
 /obj/effect/alien/resin/chem_producer/process(delta_time)

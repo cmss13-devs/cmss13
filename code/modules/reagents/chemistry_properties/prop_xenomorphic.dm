@@ -37,8 +37,8 @@
 
 // Corrupted xenos probably won't like this one
 /datum/chem_property/xenomorphic/taming
-	name = PROPERTY_TAMING
-	code = "TMG"
+	name = PROPERTY_RENEGADING
+	code = "RNG"
 	description = "Chemically combines with the cells in the target, attuning to a desired frequency and stabilizing the DNA."
 	category = PROPERTY_TYPE_MEDICINE|PROPERTY_TYPE_UNADJUSTABLE
 	value = 5
@@ -49,8 +49,8 @@
 	if(!isxeno(checking))
 		return
 	var/mob/living/carbon/xenomorph/target = checking
-	if(reagent.volume < 100 || target.hivenumber != XENO_HIVE_CORRUPTED || isqueen(target))
+	if(reagent.volume < 50 || target.hivenumber != XENO_HIVE_CORRUPTED || isqueen(target))
 		return
-	target.set_hive_and_update(XENO_HIVE_TAMED)
+	target.set_hive_and_update(XENO_HIVE_RENEGADE)
 
 

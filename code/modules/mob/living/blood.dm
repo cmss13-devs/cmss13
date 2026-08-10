@@ -94,9 +94,18 @@
 // Xenomorph blood cannot be arbritrarily replenished
 /mob/living/carbon/xenomorph/inject_blood(obj/item/reagent_container/container, amount)
 	for(var/datum/reagent/reagent as anything in container.reagents.reagent_list)
-		reagents.add_reagent(reagent.id, amount, reagent.data_properties)
+		var/taming = FALSE
+		for(var/datum/chem_property/property as anything in reagent.properties)
+			if(property.name == PROPERTY_RENEGADING)
+				taming = TRUE
+				break
+
+		var/amount_left = container.reagents.get_reagent_amount(reagent.id)
+		var/inject_speed = min(amount_left, max(amount * 50, 5))
+
+		reagents.add_reagent(reagent.id, inject_speed, reagent.data_properties)
 		reagents.update_total()
-		container.reagents.remove_reagent(reagent.id, amount)
+		container.reagents.remove_reagent(reagent.id, inject_speed)
 		return
 
 /mob/living/carbon/xenomorph/take_blood(obj/O, amount)

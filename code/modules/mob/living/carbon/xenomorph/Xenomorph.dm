@@ -872,8 +872,14 @@
 		tunnel_target.tunnel_desc = "[new_name]"
 	return
 
+/mob/living/carbon/xenomorph/proc/finish_organ_regen()
+	organ_regen_timer = TIMER_ID_NULL
+	create_xeno_organ()
+
 /// Initializes the xenomorph organ
 /mob/living/carbon/xenomorph/proc/create_xeno_organ()
+	if(organ_regen_timer != TIMER_ID_NULL)
+		deltimer(organ_regen_timer)
 	organ_regen_timer = TIMER_ID_NULL
 	if(caste.organ_type)
 		var/obj/item/organ/xeno/organ = new caste.organ_type() //give
@@ -884,6 +890,7 @@
 			organ.xeno_organ_flags |= XENO_ORGAN_PLASMA
 		RegisterSignal(organ, list(COMSIG_PARENT_QDELETING, COMSIG_XENO_ORGAN_REMOVED), PROC_REF(trigger_regenerate_organ))
 		src.organ = organ
+		recalculate_stats()
 
 /// Regenerates the organ over time, based on caste statistics
 /mob/living/carbon/xenomorph/proc/trigger_regenerate_organ()
@@ -891,7 +898,7 @@
 	organ = null
 	if(stat == DEAD || isnull(caste.organ_type))
 		return
-	addtimer(CALLBACK(src, PROC_REF(create_xeno_organ)), caste.organ_regen_time, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT|TIMER_STOPPABLE)
+	addtimer(CALLBACK(src, PROC_REF(finish_organ_regen)), caste.organ_regen_time, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT|TIMER_STOPPABLE)
 	recalculate_stats()
 	var/amt_to_death = health - health_threshold_dead
 	adjustBruteLoss(amt_to_death - 5)

@@ -396,7 +396,6 @@
 		var/list/hearers
 		var/list/mobs = get_mobs_in_view(canhear_range, src)
 		hearers += mobs
-		hearers += radios
 		return hearers
 
 /obj/item/device/radio/proc/config(op)

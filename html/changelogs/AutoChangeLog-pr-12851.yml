@@ -1,5 +1,0 @@
-author: "JHINgle4ce"
-delete-after: True
-changes:
-  - bugfix: "fixed IS_DIAGONAL_DIR check"
-  - refactor: "usage of IS_DIAGONAL_DIR implemented"

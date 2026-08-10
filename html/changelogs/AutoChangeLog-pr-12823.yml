@@ -1,5 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - balance: "Struggling when restrained by a xeno with a item that does any damage now has a clamped lower end damage of 25"
-  - balance: "Struggling when restrained by a xeno with a item now only varies between 1/2-full of the damage instead of 1/4-full"

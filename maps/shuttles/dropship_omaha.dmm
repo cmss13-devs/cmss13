@@ -2,9 +2,12 @@
 "al" = (/turf/open/shuttle/dropship/omaha/basic,/area/shuttle/drop_omaha/omaha)
 "ay" = (/turf/closed/shuttle/dropship_omaha{icon_state = "8,8"},/area/shuttle/drop_omaha/omaha)
 "aH" = (/turf/closed/shuttle/dropship_omaha{icon_state = "3,0"},/area/shuttle/drop_omaha/omaha)
+"aW" = (/obj/structure/shuttle/part/dropship_omaha/ramp_decals/border_10,/turf/open/shuttle/dropship/omaha/ramp/rampio_10,/area/shuttle/drop_omaha/omaha)
+"bf" = (/obj/structure/shuttle/part/dropship_omaha/ramp_decals/border_20,/turf/open/shuttle/dropship/omaha/ramp/rampio_20,/area/shuttle/drop_omaha/omaha)
 "bm" = (/turf/closed/shuttle/dropship_omaha{icon_state = "1,2"},/area/shuttle/drop_omaha/omaha)
 "bD" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_23,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
 "bF" = (/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_22,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
+"bK" = (/obj/structure/shuttle/part/dropship_omaha/ramp_decals/border_30,/turf/open/shuttle/dropship/omaha/ramp/rampio_30,/area/shuttle/drop_omaha/omaha)
 "bM" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_13,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
 "bS" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_00,/obj/structure/shuttle/part/dropship_omaha/transparent/lower_left_wing{pixel_x = -32; pixel_y = -16},/turf/template_noop,/area/shuttle/drop_omaha/omaha)
 "cV" = (/obj/structure/shuttle/part/dropship_omaha/transparent/cockpit/nose_14,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
@@ -12,22 +15,25 @@
 "dr" = (/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_14,/obj/structure/shuttle/part/dropship1/transparent/inner_left_weapons{icon = 'icons/obj/structures/machinery/mohawk/mohawk-windshield.dmi'; icon_state = "hardpoint-left"},/turf/template_noop,/area/shuttle/drop_omaha/omaha)
 "dU" = (/obj/structure/bed/chair/vehicle/omaha_passenger{dir = 8; pixel_x = 8; layer = 3.63; pixel_y = 16},/obj/structure/bed/chair/vehicle/omaha_passenger{dir = 8; pixel_x = 8; layer = 3.64},/turf/open/shuttle/dropship/omaha/grated,/area/shuttle/drop_omaha/omaha)
 "ee" = (/turf/closed/shuttle/dropship_omaha{icon_state = "0,15"},/area/shuttle/drop_omaha/omaha)
+"ex" = (/turf/open/shuttle/dropship/omaha/platformed/basic_stripe_platform{dir = 8},/area/shuttle/drop_omaha/omaha)
 "eL" = (/obj/structure/shuttle/part/dropship_omaha/transparent/cockpit/nose_10,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
 "eR" = (/turf/closed/shuttle/dropship_omaha{icon_state = "4,0"},/area/shuttle/drop_omaha/omaha)
 "fb" = (/turf/closed/shuttle/dropship_omaha/landing_gear{icon_state = "landing_gear2_sw"},/area/shuttle/drop_omaha/omaha)
 "fd" = (/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_06,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
 "fI" = (/turf/closed/shuttle/dropship_omaha{icon_state = "3,16"},/area/shuttle/drop_omaha/omaha)
-"gO" = (/turf/open/shuttle/dropship/omaha/full_girder2,/area/shuttle/drop_omaha/omaha)
+"gO" = (/turf/open/shuttle/dropship/omaha/platformed/girder_inner_platformed,/area/shuttle/drop_omaha/omaha)
 "hz" = (/obj/structure/shuttle/part/dropship_omaha/transparent/cockpit/nose_11,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
 "hH" = (/obj/structure/machinery/door/airlock/hatch/cockpit/omaha{dir = 1; name = "command"},/turf/open/shuttle/dropship/omaha/basic,/area/shuttle/drop_omaha/omaha)
 "ie" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_01,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
 "iD" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_32,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
 "iG" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_14,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
 "iQ" = (/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_36,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
+"jU" = (/turf/open/shuttle/dropship/omaha/ramp/rampio_11,/area/shuttle/drop_omaha/omaha)
 "jY" = (/turf/closed/shuttle/dropship_omaha{icon_state = "8,6"},/area/shuttle/drop_omaha/omaha)
 "kq" = (/obj/structure/shuttle/part/dropship_omaha/transparent/cockpit/nose_12{dir = 1},/turf/template_noop,/area/shuttle/drop_omaha/omaha)
 "kx" = (/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_14,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
 "ky" = (/turf/closed/shuttle/dropship_omaha{icon_state = "7,16"},/area/shuttle/drop_omaha/omaha)
+"kI" = (/turf/open/shuttle/dropship/omaha/platformed/half_girder_striped_pl{dir = 8},/area/shuttle/drop_omaha/omaha)
 "lw" = (/turf/closed/shuttle/dropship_omaha{icon_state = "0,9"},/area/shuttle/drop_omaha/omaha)
 "lx" = (/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_02,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
 "lF" = (/obj/structure/machinery/door/airlock/hatch/side_hatch{id = "starboard_door"; name = "Omaha Starboard Access"},/turf/open/shuttle/dropship/omaha/grated,/area/shuttle/drop_omaha/omaha)
@@ -50,6 +56,7 @@
 "qm" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_30,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
 "qo" = (/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_01,/obj/structure/shuttle/part/dropship1/transparent/outer_right_weapons{icon = 'icons/obj/structures/machinery/mohawk/mohawk-windshield.dmi'; icon_state = "hardpoint-right"},/turf/template_noop,/area/shuttle/drop_omaha/omaha)
 "qr" = (/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_13,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
+"qD" = (/turf/open/shuttle/dropship/omaha/ramp/rampio_21,/area/shuttle/drop_omaha/omaha)
 "qE" = (/turf/closed/shuttle/dropship_omaha{icon_state = "1,15"},/area/shuttle/drop_omaha/omaha)
 "qI" = (/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_14,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
 "qO" = (/obj/structure/machinery/computer/shuttle/dropship/flight/omaha{pixel_x = -17; pixel_y = -14},/turf/open/shuttle/dropship/omaha/basic,/area/shuttle/drop_omaha/omaha)
@@ -58,6 +65,7 @@
 "re" = (/turf/closed/shuttle/dropship_omaha{icon_state = "6,16"},/area/shuttle/drop_omaha/omaha)
 "rf" = (/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_01,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
 "rg" = (/obj/structure/bed/chair/vehicle/omaha_pilot{pixel_x = 8; dir = 1},/obj/structure/bed/chair/vehicle/omaha_pilot{pixel_x = -8; dir = 1},/turf/open/shuttle/dropship/omaha/grated,/area/shuttle/drop_omaha/omaha)
+"rh" = (/obj/structure/shuttle/part/dropship_omaha/ramp_decals/border_31,/turf/open/shuttle/dropship/omaha/ramp/rampio_31,/area/shuttle/drop_omaha/omaha)
 "rq" = (/turf/closed/shuttle/dropship_omaha{icon_state = "2,17"},/area/shuttle/drop_omaha/omaha)
 "rU" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_00,/turf/closed/shuttle/dropship_omaha{icon_state = "8,12"},/area/shuttle/drop_omaha/omaha)
 "sq" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_11,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
@@ -82,11 +90,13 @@
 "vs" = (/turf/closed/shuttle/dropship_omaha{icon_state = "2,9"},/area/shuttle/drop_omaha/omaha)
 "vD" = (/turf/closed/shuttle/dropship_omaha{icon_state = "8,14"},/area/shuttle/drop_omaha/omaha)
 "vW" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_20,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
-"wd" = (/obj/structure/ladder/dropship_omaha,/obj/structure/machinery/door_control/hatch_ladder{pixel_y = 5; pixel_x = 16},/turf/open/shuttle/dropship/omaha/basic,/area/shuttle/drop_omaha/omaha)
+"wd" = (/obj/structure/ladder/dropship_omaha,/obj/structure/machinery/door_control/hatch_ladder{pixel_y = 5; pixel_x = 16},/turf/open/shuttle/dropship/omaha/platformed/basic_striped{dir = 1},/area/shuttle/drop_omaha/omaha)
 "wq" = (/turf/closed/shuttle/dropship_omaha{icon_state = "0,14"},/area/shuttle/drop_omaha/omaha)
+"wt" = (/turf/open/shuttle/dropship/omaha/platformed/basic_striped{dir = 1},/area/shuttle/drop_omaha/omaha)
 "wG" = (/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_11,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
 "wW" = (/turf/closed/shuttle/dropship_omaha/landing_gear{icon_state = "landing_gear1_ne"},/area/shuttle/drop_omaha/omaha)
 "xH" = (/turf/closed/shuttle/dropship_omaha{icon_state = "2,16"},/area/shuttle/drop_omaha/omaha)
+"xJ" = (/turf/open/shuttle/dropship/omaha/platformed/stairs_bot,/area/shuttle/drop_omaha/omaha)
 "xY" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_23,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
 "ym" = (/obj/structure/bed/chair/vehicle/omaha_pilot{pixel_x = -8; dir = 1},/obj/structure/bed/chair/vehicle/omaha_pilot{pixel_x = 8; dir = 1},/turf/open/shuttle/dropship/omaha/grated,/area/shuttle/drop_omaha/omaha)
 "yu" = (/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_04,/obj/structure/shuttle/part/dropship1/transparent/outer_left_weapons{icon = 'icons/obj/structures/machinery/mohawk/mohawk-windshield.dmi'; icon_state = "hardpoint-left"},/turf/template_noop,/area/shuttle/drop_omaha/omaha)
@@ -102,6 +112,7 @@
 "Ao" = (/obj/structure/bed/chair/vehicle/omaha_commander{dir = 4; layer = 3.02},/turf/open/shuttle/dropship/omaha/grated,/area/shuttle/drop_omaha/omaha)
 "Aw" = (/obj/structure/machinery/door/airlock/hatch/cockpit/omaha{dir = 1},/turf/open/shuttle/dropship/omaha/full_girder2,/area/shuttle/drop_omaha/omaha)
 "AD" = (/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_21,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
+"Bg" = (/obj/structure/shuttle/part/dropship_omaha/ramp_decals/border_21,/turf/open/shuttle/dropship/omaha/ramp/rampio_22,/area/shuttle/drop_omaha/omaha)
 "Br" = (/turf/closed/shuttle/dropship_omaha{icon_state = "7,12"},/area/shuttle/drop_omaha/omaha)
 "Bv" = (/turf/closed/shuttle/dropship_omaha{icon_state = "8,7"},/area/shuttle/drop_omaha/omaha)
 "BB" = (/turf/closed/shuttle/dropship_omaha{icon_state = "0,2"},/area/shuttle/drop_omaha/omaha)
@@ -112,6 +123,7 @@
 "Dh" = (/obj/structure/bed/chair/vehicle/omaha_passenger{dir = 8; pixel_x = 8; layer = 3.65; pixel_y = 16},/obj/structure/bed/chair/vehicle/omaha_passenger{dir = 8; pixel_x = 8; layer = 3.66},/turf/open/shuttle/dropship/omaha/grated,/area/shuttle/drop_omaha/omaha)
 "Dm" = (/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_03,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
 "Dv" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_33,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
+"Dy" = (/obj/structure/shuttle/part/dropship_omaha/ramp_decals/border_01,/turf/open/shuttle/dropship/omaha/ramp/rampio_01,/area/shuttle/drop_omaha/omaha)
 "Ep" = (/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_02,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
 "Fi" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_32,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
 "FC" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_21,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
@@ -125,21 +137,25 @@
 "HB" = (/turf/closed/shuttle/dropship_omaha{icon_state = "2,2"},/area/shuttle/drop_omaha/omaha)
 "HD" = (/turf/open/shuttle/dropship/omaha/grated,/area/shuttle/drop_omaha/omaha)
 "HO" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_30,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
+"HR" = (/obj/structure/shuttle/part/dropship_omaha/ramp_decals/border_02,/turf/open/shuttle/dropship/omaha/ramp/rampio_03,/area/shuttle/drop_omaha/omaha)
 "HY" = (/obj/structure/bed/chair/vehicle/omaha_passenger{dir = 8; pixel_x = 8; layer = 3.72},/obj/structure/bed/chair/vehicle/omaha_passenger{dir = 8; pixel_x = 8; pixel_y = 16; layer = 3.71},/turf/open/shuttle/dropship/omaha/grated,/area/shuttle/drop_omaha/omaha)
 "Ie" = (/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_12,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
 "Ir" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_22,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
+"Iy" = (/obj/structure/shuttle/part/dropship_omaha/ramp_decals/border_32,/turf/open/shuttle/dropship/omaha/ramp/rampio_32,/area/shuttle/drop_omaha/omaha)
 "Jb" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_01,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
 "Jz" = (/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_16,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
 "JL" = (/obj/structure/shuttle/part/dropship_omaha/transparent/cockpit/nose_13,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
 "JO" = (/turf/closed/shuttle/dropship_omaha{icon_state = "6,11"},/area/shuttle/drop_omaha/omaha)
+"JS" = (/turf/open/shuttle/dropship/omaha/platformed/basic_stairs_platformed,/area/shuttle/drop_omaha/omaha)
 "JW" = (/turf/open/shuttle/dropship/omaha/half_girder{dir = 4},/area/shuttle/drop_omaha/omaha)
 "JX" = (/obj/structure/shuttle/part/dropship_omaha/transparent/cockpit/nose_03,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
-"Kr" = (/mob/living/carbon/human/professor_dummy,/turf/open/shuttle/dropship/omaha/grated,/area/shuttle/drop_omaha/omaha)
+"Kr" = (/turf/open/shuttle/dropship/omaha/platformed/grated_striped{dir = 1},/area/shuttle/drop_omaha/omaha)
 "KC" = (/turf/closed/shuttle/dropship_omaha{icon_state = "1,16"},/area/shuttle/drop_omaha/omaha)
 "KD" = (/turf/closed/shuttle/dropship_omaha{icon_state = "5,0"},/area/shuttle/drop_omaha/omaha)
 "KH" = (/obj/structure/machinery/door_control/side_hatch/omaha_hatch_left{pixel_y = 32},/turf/open/shuttle/dropship/omaha/basic,/area/shuttle/drop_omaha/omaha)
 "KI" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_13,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
 "Md" = (/obj/item/cpr_dummy{pixel_y = -1},/turf/open/shuttle/dropship/omaha/grated,/area/shuttle/drop_omaha/omaha)
+"Mr" = (/turf/open/shuttle/dropship/omaha/platformed/basic_stripe_platform{dir = 4},/area/shuttle/drop_omaha/omaha)
 "Mu" = (/turf/closed/shuttle/dropship_omaha{icon_state = "8,2"},/area/shuttle/drop_omaha/omaha)
 "MG" = (/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_04,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
 "Nf" = (/turf/closed/shuttle/dropship_omaha{icon_state = "0,3"},/area/shuttle/drop_omaha/omaha)
@@ -147,12 +163,14 @@
 "NS" = (/turf/closed/shuttle/dropship_omaha{icon_state = "0,8"},/area/shuttle/drop_omaha/omaha)
 "OH" = (/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_10,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
 "OW" = (/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_23,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
+"Pl" = (/obj/structure/shuttle/part/dropship_omaha/ramp_decals/border_00,/turf/open/shuttle/dropship/omaha/ramp/rampio_00,/area/shuttle/drop_omaha/omaha)
 "PX" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_02,/obj/structure/shuttle/part/dropship_omaha/transparent/lower_right_wing{pixel_y = -16},/turf/template_noop,/area/shuttle/drop_omaha/omaha)
 "Qv" = (/turf/closed/shuttle/dropship_omaha{icon_state = "7,15"},/area/shuttle/drop_omaha/omaha)
 "Rb" = (/turf/closed/shuttle/dropship_omaha{icon_state = "4,11"},/area/shuttle/drop_omaha/omaha)
 "Rf" = (/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_22,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
 "RM" = (/obj/structure/machinery/door/airlock/hatch/side_hatch{dir = 8; id = "port_door"; name = "Omaha Port Access"},/turf/open/shuttle/dropship/omaha/grated,/area/shuttle/drop_omaha/omaha)
 "RX" = (/turf/closed/shuttle/dropship_omaha{icon_state = "1,9"},/area/shuttle/drop_omaha/omaha)
+"RY" = (/obj/structure/shuttle/part/dropship_omaha/ramp_decals/border_11,/turf/open/shuttle/dropship/omaha/ramp/rampio_12,/area/shuttle/drop_omaha/omaha)
 "So" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_20,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
 "Ss" = (/turf/closed/shuttle/dropship_omaha{icon_state = "6,18"},/area/shuttle/drop_omaha/omaha)
 "SK" = (/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_10,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
@@ -180,6 +198,7 @@
 "Yu" = (/turf/closed/shuttle/dropship_omaha{icon_state = "8,4"},/area/shuttle/drop_omaha/omaha)
 "YA" = (/turf/closed/shuttle/dropship_omaha{icon_state = "2,18"},/area/shuttle/drop_omaha/omaha)
 "YC" = (/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_11,/obj/structure/shuttle/part/dropship1/transparent/inner_right_weapons{icon = 'icons/obj/structures/machinery/mohawk/mohawk-windshield.dmi'; icon_state = "hardpoint-right"},/turf/template_noop,/area/shuttle/drop_omaha/omaha)
+"YJ" = (/turf/open/shuttle/dropship/omaha/platformed/half_girder_striped_pl{dir = 4},/area/shuttle/drop_omaha/omaha)
 "Zd" = (/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_05,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
 "ZA" = (/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_23,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
 
@@ -213,22 +232,22 @@ WaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWa
 WaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWaWa
 WaWaWaWaWaWaeLhzkqJLcVWaWaWaWaWaWa
 WaWaWaWaWaWazYveqOpYJXWaWaWaWaWaWa
-WaWaHmRfOWqYYAgOalgOSsADbFZAGcWaWa
-WaWanctInCdrrqalKrwdUSYCtnqrkxWaWa
+WaWaHmRfOWqYYAgOJSgOSsADbFZAGcWaWa
+WaWanctInCdrrqwtKrwdUSYCtnqrkxWaWa
 WarflxTqyuKCxHfIAwGKrekyqosPDmMGWa
-qmzGiDDveeqEsTalHDalAmQvyOHOVdFirb
+qmzGiDDveeqEsTwtKrwtAmQvyOHOVdFirb
 vWmYmuxYwqHDTDalzxalJWAovDSoFCIrbD
 SKsqYdKIqcHDTDalvhalJWChufvamLbMiG
 WaTUbSJbujzqymalakalrgBrrUiePXTUWa
 WaWaWaWaubqlSVhHRbhHJOTHubWaWaWaWa
 WaWaWaWaubRMKHalHDaluYlFubWaWaWaWa
-WaWaWaWalwRXvsalalaldbUvmDWaWaWaWa
-WaWaWaWaNSHDalHDuqHDaldUayWaWaWaWa
-WaWaWaWatCHDalTUTUTUalDhBvWaWaWaWa
-WaWaWaWantHDalTUTUTUalpIjYWaWaWaWa
-WaWaWaWavrMdalTUTUTUaluVUPWaWaWaWa
-WaWaWaWavmHDJWTUTUTUTDHYYuWaWaWaWa
-WaWaWaWaNfHDJWHDalHDTDXtszWaWaWaWa
+WaWaWaWalwRXvsxJxJxJdbUvmDWaWaWaWa
+WaWaWaWaNSHDexHDuqHDMrdUayWaWaWaWa
+WaWaWaWatCHDexbKrhIyMrDhBvWaWaWaWa
+WaWaWaWantHDexbfqDBgMrpIjYWaWaWaWa
+WaWaWaWavrMdexaWjURYMruVUPWaWaWaWa
+WaWaWaWavmHDkIPlDyHRYJHYYuWaWaWaWa
+WaWaWaWaNfHDkIHDalHDYJXtszWaWaWaWa
 WaWaWaWaBBbmHBHDalHDCHTLMuWaWaWaWa
 WaWaWaWaXVGoXcHDalHDXcnQiQWaWaWaWa
 WaWaWaWaWapTnWaHeRKDTizXWaWaWaWaWa

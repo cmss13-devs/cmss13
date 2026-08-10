@@ -396,6 +396,44 @@
 /obj/structure/shuttle/part/dropship_omaha/transparent/cockpit/nose_14
 	icon_state = "6,20"
 
+/obj/structure/shuttle/part/dropship_omaha/ramp_decals
+	name = "Platform"
+	icon = 'icons/turf/mohawk/mohawk-ramp.dmi'
+	density = FALSE
+
+/obj/structure/shuttle/part/dropship_omaha/ramp_decals/border_00
+	icon_state = "0,0"
+
+/obj/structure/shuttle/part/dropship_omaha/ramp_decals/border_01
+	icon_state = "1,0"
+
+/obj/structure/shuttle/part/dropship_omaha/ramp_decals/border_02
+	icon_state = "2,0"
+
+/obj/structure/shuttle/part/dropship_omaha/ramp_decals/border_10
+	icon_state = "0,1"
+
+/obj/structure/shuttle/part/dropship_omaha/ramp_decals/border_11
+	icon_state = "2,1"
+
+/obj/structure/shuttle/part/dropship_omaha/ramp_decals/border_20
+	icon_state = "0,2"
+
+/obj/structure/shuttle/part/dropship_omaha/ramp_decals/border_21
+	icon_state = "2,2"
+
+/obj/structure/shuttle/part/dropship_omaha/ramp_decals/border_30
+	icon_state = "0,3"
+
+/obj/structure/shuttle/part/dropship_omaha/ramp_decals/border_30
+	icon_state = "0,3"
+
+/obj/structure/shuttle/part/dropship_omaha/ramp_decals/border_31
+	icon_state = "1,3"
+
+/obj/structure/shuttle/part/dropship_omaha/ramp_decals/border_32
+	icon_state = "2,3"
+
 // USCM Dropship Normandy
 
 /obj/structure/shuttle/part/dropship2

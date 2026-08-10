@@ -1428,6 +1428,8 @@
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down
 	icon_state = "rasputin15"
 
+/// UD-6 MOHAWK OMAHA ///
+
 /turf/open/shuttle/dropship/omaha
 	icon = 'icons/turf/mohawk/mohawk-floors.dmi'
 	icon_state = "mohawk_floor"
@@ -1452,6 +1454,78 @@
 
 /turf/open/shuttle/dropship/omaha/full_girder2
 	icon_state = "mohawk_full_girder2"
+
+/// RAMP ////
+
+/turf/open/shuttle/dropship/omaha/ramp
+	icon = 'icons/turf/mohawk/mohawk-ramp.dmi'
+	icon_state = "ramp-low-2"
+
+/turf/open/shuttle/dropship/omaha/ramp/rampio_00
+	icon_state = "ramp-1"
+
+/turf/open/shuttle/dropship/omaha/ramp/rampio_01
+	icon_state = "ramp-2"
+
+/turf/open/shuttle/dropship/omaha/ramp/rampio_03
+	icon_state = "ramp-3"
+
+/turf/open/shuttle/dropship/omaha/ramp/rampio_10
+	icon_state = "ramp-4"
+
+/turf/open/shuttle/dropship/omaha/ramp/rampio_11
+	icon_state = "ramp-5"
+
+/turf/open/shuttle/dropship/omaha/ramp/rampio_12
+	icon_state = "ramp-6"
+
+/turf/open/shuttle/dropship/omaha/ramp/rampio_20
+	icon_state = "ramp-7"
+
+/turf/open/shuttle/dropship/omaha/ramp/rampio_21
+	icon_state = "ramp-8"
+
+/turf/open/shuttle/dropship/omaha/ramp/rampio_22
+	icon_state = "ramp-9"
+
+/turf/open/shuttle/dropship/omaha/ramp/rampio_30
+	icon_state = "ramp-10"
+
+/turf/open/shuttle/dropship/omaha/ramp/rampio_31
+	icon_state = "ramp-11"
+
+/turf/open/shuttle/dropship/omaha/ramp/rampio_32
+	icon_state = "ramp-12"
+
+/turf/open/shuttle/dropship/omaha/platformed
+	icon_state = "basic_stripe_platform"
+
+/turf/open/shuttle/dropship/omaha/platformed/basic_stripe_platform
+	icon_state = "basic_stripe_platform"
+
+/turf/open/shuttle/dropship/omaha/platformed/basic_stairs
+	icon_state = "basic_stairs"
+
+/turf/open/shuttle/dropship/omaha/platformed/half_girder_striped_pl
+	icon_state = "half_girder_striped_pl"
+
+/turf/open/shuttle/dropship/omaha/platformed/basic_striped
+	icon_state = "basic_stripe"
+
+/turf/open/shuttle/dropship/omaha/platformed/grated_striped
+	icon_state = "grated_stripe"
+
+/turf/open/shuttle/dropship/omaha/platformed/girder_inner_platformed
+	icon_state = "girder_inner_platform"
+
+/turf/open/shuttle/dropship/omaha/platformed/basic_platformed
+	icon_state = "basic_platform"
+
+/turf/open/shuttle/dropship/omaha/platformed/basic_stairs_platformed
+	icon_state = "basic_stairs_platform"
+
+/turf/open/shuttle/dropship/omaha/platformed/stairs_bot
+	icon_state = "stairs_bot"
 
 /turf/open/shuttle/predship
 	name = "ship floor"

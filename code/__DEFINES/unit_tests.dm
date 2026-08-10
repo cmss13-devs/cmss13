@@ -20,6 +20,6 @@
 #endif
 
 /// Global signal that only should be defined during unit testing
-#ifdef UNIT_TESTS
+#if defined(UNIT_TESTS) || defined(SPACEMAN_DMM)
 #define COSMIG_GLOB_XENO_LIFE_COMPLETE "!xeno_life_complete"
 #endif

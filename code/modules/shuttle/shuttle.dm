@@ -34,7 +34,7 @@
 	///position relative to covered area, parallel to dir
 	var/dheight = 0
 	//actual z-height of the shiipp
-	var/zheight = 0 // 0
+	var/zheight = 1 // 0
 	var/area_type
 	///are we invisible to shuttle navigation computers?
 	var/hidden = FALSE
@@ -146,8 +146,8 @@
 			sin = -1
 
 	. = list()
-
-	for(var/dz in 0 to zheight) // 0 to zheight
+	var/adjusted_zheight = zheight - 1
+	for(var/dz in 0 to adjusted_zheight) // 0 to zheight
 		for(var/dx in 0 to width-1)
 			var/compX = dx-dwidth
 			for(var/dy in 0 to height-1)
@@ -696,7 +696,12 @@
 		if(destination.landing_lights_on)
 			return //Return early if the lights are on, something went wrong and called twice.
 		destination.on_prearrival(src, landing_sound)
+	var/turf/center_turf = return_center_turf()
 	playsound(return_center_turf(), landing_sound, 60, 0)
+	if(zheight > 1)
+		var/adjusted_zheight = zheight - 1
+		var/center_turf_above = locate(center_turf.x, center_turf.y, center_turf.z + adjusted_zheight)
+		playsound(center_turf_above, landing_sound, 60, 0)
 	return
 
 /obj/docking_port/mobile/proc/on_prearrival()

@@ -124,7 +124,7 @@
 	height = 24
 	dwidth = 8
 	dheight = 12
-	zheight = 1
+	zheight = 2
 
 /obj/docking_port/mobile/marine_dropship/omaha/get_transit_path_type()
 	return /turf/open/space/transit/dropship/omaha
@@ -396,7 +396,7 @@
 	height = 24
 	dwidth = 8
 	dheight = 12
-	zheight = 1
+	zheight = 2
 
 /obj/docking_port/stationary/marine_dropship/almayer_hangar_2
 	name = "Almayer Hangar bay 2"

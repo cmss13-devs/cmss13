@@ -42,7 +42,7 @@
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/omaha
 	icon = 'icons/obj/structures/machinery/mohawk/mohawk-controls.dmi'
-	icon_state = "flight-controls"
+	icon_state = "flight_controls"
 	density = TRUE
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/Initialize(mapload, ...)

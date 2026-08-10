@@ -80,6 +80,8 @@
 
 /obj/item/device/radio/intercom/omaha // change icon
 	name = "dropship omaha intercom"
+	icon = 'icons/obj/structures/machinery/mohawk/mohawk-controls.dmi'
+	icon_state = "intercom"
 	frequency = DS4_FREQ
 
 /obj/item/device/radio/intercom/normandy

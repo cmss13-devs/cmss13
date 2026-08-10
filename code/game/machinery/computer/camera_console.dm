@@ -437,8 +437,9 @@
 /obj/structure/machinery/computer/cameras/dropship/omaha
 	name = "\improper 'Omaha' camera controls"
 	icon = 'icons/obj/structures/machinery/mohawk/mohawk-controls.dmi'
-	icon_state = "weapons-console"
+	icon_state = "weapons_console"
 	density = FALSE
+	layer = OBJ_LAYER + 0.01
 	network = list(CAMERA_NET_OMAHA, CAMERA_NET_LASER_TARGETS)
 
 /obj/structure/machinery/computer/cameras/dropship/two

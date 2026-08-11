@@ -388,10 +388,23 @@
 		new /obj/effect/overlay/temp/point(turf_pointed_at, src, pointed_at)
 	else
 		recently_pointed_to = world.time + 10
+		var/outline_color = "#282d8f" // Default color for people with command skill but no squad
 		if(isnull(squad)) //If they get the big arrow but aren't in a squad, they get the default green arrow
 			new /obj/effect/overlay/temp/point/big(turf_pointed_at, src, pointed_at)
 		else
 			new /obj/effect/overlay/temp/point/big/squad(turf_pointed_at, src, pointed_at, squad.equipment_color)
+      outline_color = squad.equipment_color
+
+		if(ismob(pointed_at) && ishuman(mob))
+			var/outline_name = "point_outline_[REF(src)]"
+			var/outline_size = 0.25
+			if(skills)
+				var/leadership_level = skills.get_skill_level(SKILL_LEADERSHIP)
+				outline_size += leadership_level * 0.25
+
+			pointed_at.add_filter(outline_name, 2, list("type" = "outline", "color" = outline_color, "size" = outline_size))
+			addtimer(CALLBACK(pointed_at, PROC_REF(disable_point_outline), outline_name), 4.5 SECONDS)
+
 		if(ishuman(mob) && ishumansynth_strict(pointed_at) && pointed_at != mob) //Don't yell out the name of predators ever, that would be weird. Our ourselves
 			var/mob/living/carbon/human/yelled_at_human = pointed_at
 			if(yelled_at_human.faction == mob.faction && yelled_at_human.name != "Unknown") // Don't yell out the name of CLF... Or someone you don't know
@@ -405,8 +418,12 @@
 				if(final_spoken_name)
 					say(final_spoken_name)
 
+
 	visible_message("<b>[src]</b> points to [pointed_at]", null, null, 5)
 	return TRUE
+
+/mob/proc/disable_point_outline(outline_name)
+	remove_filter(outline_name)
 
 ///Is this mob important enough to point with big arrows?
 /mob/proc/check_improved_pointing()

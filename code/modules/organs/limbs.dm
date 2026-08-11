@@ -1405,9 +1405,6 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 /obj/limb/proc/get_surgery_overlays()
 	. = list()
 
-	if(owner.species && owner.species.name == "Yautja")
-		surgery_overlay.icon_state = null
-
 	if(status & INCISION_MADE)
 		surgery_overlay.icon_state = "[name]_incision"
 		surgery_overlay.color = owner?.species.blood_color

@@ -284,3 +284,7 @@
   - bugfix: Intel aSLs now get Command Comms and they properly transfer on swapping
       aSL.
   - bugfix: XO RTO bag price oversight
+2026-08-11:
+  MistChristmas:
+  - bugfix: Message about not being able to perform surgery due to bad conditions...
+      the turf your standing on. I.E Water/Coast/Dropship

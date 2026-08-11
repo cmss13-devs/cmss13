@@ -1,5 +1,0 @@
-author: "DangerRevolution"
-delete-after: True
-changes:
-  - bugfix: "Fixes the Field Cameras' label reading \"this label label reads\"..."
-  - bugfix: "Moves the Field Cameras' labels to the examine box rather than outputting it to the chatbox."

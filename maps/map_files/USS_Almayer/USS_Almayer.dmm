@@ -62790,7 +62790,8 @@
 	pixel_y = 36
 	},
 /obj/structure/machinery/recharge_station{
-	desc = "Where the cargo department's Working Joe used to charge before it tragically fell into the ASRS elevator three years ago. The replacement still hasn't arrived."
+	desc = "Where the cargo department's Working Joe used to charge before it tragically fell into the ASRS elevator three years ago. The replacement still hasn't arrived.";
+	name = "Working Joe charging station"
 	},
 /turf/open/floor/almayer/test_floor5,
 /area/almayer/squads/req)

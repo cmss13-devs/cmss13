@@ -1,0 +1,4 @@
+author: "SpypigDev"
+delete-after: True
+changes:
+  - bugfix: "Autodoc pods and cryo pods now account for eschars and third degree burns"

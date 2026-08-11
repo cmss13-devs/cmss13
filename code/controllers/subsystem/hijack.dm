@@ -337,6 +337,8 @@ SUBSYSTEM_DEF(hijack)
 
 	var/marine_warning_areas = ""
 	var/xeno_warning_areas = ""
+	var/marine_no_repairable = " All fueling areas operational."
+	var/broken_unrepairable = 0
 
 	for(var/area/cycled_area as anything in progress_areas)
 		var/new_area_state = cycled_area.power_equip
@@ -354,12 +356,18 @@ SUBSYSTEM_DEF(hijack)
 		if(repairable)
 			// Not powered, but can be powered: marines interested to know this
 			marine_warning_areas += "[cycled_area], "
+		else
+			broken_unrepairable++
 
 	// Remove ending commas and whitespace
 	if(xeno_warning_areas)
 		xeno_warning_areas = copytext(xeno_warning_areas, 1, -2)
 	if(marine_warning_areas)
 		marine_warning_areas = copytext(marine_warning_areas, 1, -2)
+	if(broken_unrepairable > 0)
+		var/total_machines = length(SShijack.area_machinery_lookup)
+		var/working_machines = total_machines - broken_unrepairable
+		marine_no_repairable = " [working_machines]/[total_machines] fueling areas remain operational."
 
 	var/datum/hive_status/hive
 	for(var/hivenumber in GLOB.hive_datum)
@@ -379,11 +387,11 @@ SUBSYSTEM_DEF(hijack)
 
 	switch(announce)
 		if(1)
-			marine_announcement("Emergency fuel replenishment is at 50%. Tachyon field accelerators currently charging.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
+			marine_announcement("Emergency fuel replenishment is at 50%. Tachyon field accelerators currently charging.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : marine_no_repairable]", HIJACK_ANNOUNCE)
 		if(2)
-			marine_announcement("Emergency fuel replenishment is at 100%. Tachyon field accelerators fully charged, quantum jump initiating. Ensure constant supply of fuel to the tachyon field accelerators.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
+			marine_announcement("Emergency fuel replenishment is at 100%. Tachyon field accelerators fully charged, quantum jump initiating. Ensure constant supply of fuel to the tachyon field accelerators.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : marine_no_repairable]", HIJACK_ANNOUNCE)
 		if(3)
-			shipwide_ai_announcement("Tachyon quantum jump progress at 50 percent. Ensure constant supply of fuel to the tachyon field accelerators.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE, sound('sound/misc/notice2.ogg'))
+			shipwide_ai_announcement("Tachyon quantum jump progress at 50 percent. Ensure constant supply of fuel to the tachyon field accelerators.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : marine_no_repairable]", HIJACK_ANNOUNCE, sound('sound/misc/notice2.ogg'))
 		if(4)
 			shipwide_ai_announcement("Tachyon quantum jump complete. Initiating docking procedures with [spaceport.name]. Lifeboats and pods re-enabled.", HIJACK_ANNOUNCE, sound('sound/misc/notice2.ogg'))
 

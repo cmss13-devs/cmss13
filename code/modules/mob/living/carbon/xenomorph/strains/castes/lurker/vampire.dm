@@ -115,7 +115,7 @@
 	var/mob/living/carbon/hit_target = targeted_atom
 	var/distance = get_dist(xeno, hit_target)
 
-	XENO_ACTION_CHECK_USE_PLASMA(xeno)
+	XENO_ACTION_CHECK(xeno)
 
 	if(distance > 2)
 		return

@@ -104,7 +104,7 @@
 		owner = mob_owner
 
 	surgery_overlay = image('icons/mob/humans/dam_human.dmi', "surgery_0", -SURGERY_LAYER)
-	wound_overlay.color = owner?.species.blood_color
+	surgery_overlay.color = owner?.species.blood_color
 
 	wound_overlay = image('icons/mob/humans/dam_human.dmi', "grayscale_0", -DAMAGE_LAYER)
 	wound_overlay.color = owner?.species.blood_color
@@ -1404,6 +1404,9 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 
 /obj/limb/proc/get_surgery_overlays()
 	. = list()
+
+	if(owner.species && owner.species.name == "Yautja")
+		surgery_overlay.icon_state = null
 
 	if(status & INCISION_MADE)
 		surgery_overlay.icon_state = "[name]_incision"

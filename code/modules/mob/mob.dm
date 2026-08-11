@@ -411,9 +411,9 @@
 				var/split_name = splittext(yelled_at_human.name, " ")
 				var/last_name = split_name[length(split_name)]
 				var/final_spoken_name
-				if(mob.a_intent == INTENT_GRAB)
+				if(mob.a_intent == INTENT_DISARM)
 					final_spoken_name = "[last_name]!"
-				if(mob.a_intent == INTENT_HARM)
+				if(mob.a_intent == INTENT_GRAB)
 					final_spoken_name = "[uppertext(last_name)]!!"
 				if(final_spoken_name)
 					say(final_spoken_name)

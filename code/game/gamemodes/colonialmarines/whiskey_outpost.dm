@@ -11,7 +11,8 @@
 /datum/game_mode/whiskey_outpost
 	name = GAMEMODE_WHISKEY_OUTPOST
 	config_tag = GAMEMODE_WHISKEY_OUTPOST
-	required_players = 140
+	required_players = 120 // Ultimately controlled by /datum/config_entry/number/whiskey_required_players
+	required_ready_players = 60
 	xeno_bypass_timer = 1
 	static_comms_amount = 0
 	flags_round_type = MODE_NEW_SPAWN
@@ -80,13 +81,15 @@
 	starting_round_modifiers = list(/datum/gamemode_modifier/permadeath, /datum/gamemode_modifier/more_crit, /datum/gamemode_modifier/disable_wj_spawns)
 
 	votable = TRUE
-	vote_cycle = 75 // approx. once every 5 days, if it wins the vote
+	vote_cycle = 65 // approx. once every 5 days, if it wins the vote
 
 	taskbar_icon = 'icons/taskbar/gml_wo.png'
 
 /datum/game_mode/whiskey_outpost/New()
 	. = ..()
 	required_players = CONFIG_GET(number/whiskey_required_players)
+	if(!isnull(required_ready_players))
+		required_ready_players = min(required_ready_players, required_players) // Don't ever require more ready than voting
 
 /datum/game_mode/whiskey_outpost/get_roles_list()
 	return GLOB.ROLES_WO

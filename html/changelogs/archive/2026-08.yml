@@ -211,3 +211,80 @@
   - bugfix: Shooting target damage display now accounts for damage falloff.
   - bugfix: Bullets hit shooting target without spriteclick too. As a result you can't
       walk through a target but you can unanchor it to pass and xeno can break it.
+2026-08-08:
+  AnCopper:
+  - rscadd: Squad Leaders now buy a megaphone from their vendor for 5 points.
+  Armsdealer9876:
+  - bugfix: fixed Req Tutorial marines asking for impossible item
+  DangerRevolution:
+  - bugfix: Fixed the QYJ Machine Gun for the UPP having magazines that counted as
+      "small" in a backpack, it is now set to "medium" like the Smartgun magazines
+  NHC:
+  - code_imp: Renamed Basic medical optic, into SensorMate Optic
+  - imageadd: added icons for the SensorMate opics
+  - imagetweak: Changed Medical Optic hud icon to represent the itemsprite better
+  PoltavskaPraca:
+  - maptweak: changed dir on a door in a shuttle on hybrisa to match the new directions
+      for icon states
+  SpypigDev:
+  - bugfix: Restores the ability to knockout others in a boxing match
+  Venuska1117:
+  - refactor: Updates Berserker Ravager code for cleaner look and making it easier
+      to follow.
+2026-08-09:
+  JackieEstegado:
+  - bugfix: Fixed medbay chemical dispensers energy fully refilling each time a marine
+      latejoined.
+  - balance: Properly implement medbay chemical dispenser energy scaling, based on
+      the number of Hospital Corpsmen.
+2026-08-10:
+  Bibby0110:
+  - rscadd: SLs (and other leaders, determined by having big arrow) can now highlight
+      mobs for 4.5 seconds by pointing at them.
+  DangerRevolution:
+  - bugfix: Removed a light bulb floating off the side of the Normandy in mid air.
+  Drathek:
+  - code_imp: Rearranged unit testing code so it can be breakpointed correctly
+  - code_imp: Gamemodes can now specify a required_ready_players which is how many
+      must be ready to start the gamemode (set to 60 for WO)
+  - config: WO will now by default require 120 pop for voting instead of 140 (Also
+      cycles on 65 rounds instead of 75)
+  - bugfix: Fixed groundside operation panel not working on WO because there's no
+      almayer AA gun
+  - bugfix: Fixed WO CO and XO being unable to issue medals
+  - ui: Set TGUI input text for some medal writing inputs
+  - balance: Struggling when restrained by a xeno with a item that does any damage
+      now has a clamped lower end damage of 25
+  - balance: Struggling when restrained by a xeno with a item now only varies between
+      1/2-full of the damage instead of 1/4-full
+  JHINgle4ce:
+  - bugfix: fixed IS_DIAGONAL_DIR check
+  - refactor: usage of IS_DIAGONAL_DIR implemented
+  JohnFulpWillard:
+  - spellcheck: Fixed the description of Mess Technician's headset and updates the
+      encryption key name.
+  MistChristmas:
+  - rscadd: Full auto fire displays ammo counter every time it's divisible by 8.
+  - rscadd: Burstfire drops empty mags instead of holding onto them until the gun
+      is completely empty. Also bypasses your eject to hand preference if that would
+      unwield your gun during a burst.
+  - bugfix: Using guns on burst-fire now displays the ammo counter again.
+  - bugfix: Akimbo firing causing a signal override
+  - bugfix: Weird burst-fire queuing that could make it lose track of amount of shots
+      in a burst.
+  Namen-n:
+  - qol: Platforms can now be melted down.
+  SpypigDev:
+  - bugfix: Dead Yautja Bodies can now be tracked in Body Bags by bracers
+  antlersss:
+  - balance: Dropships and lifeboats can now depart while the main ship is still falling
+      to the ground.
+  - rscadd: Added new ARES announcement text to indicate when lifeboats are disabled.
+  matttheficus:
+  - bugfix: Intel aSLs now get Command Comms and they properly transfer on swapping
+      aSL.
+  - bugfix: XO RTO bag price oversight
+2026-08-11:
+  MistChristmas:
+  - bugfix: Message about not being able to perform surgery due to bad conditions...
+      the turf your standing on. I.E Water/Coast/Dropship

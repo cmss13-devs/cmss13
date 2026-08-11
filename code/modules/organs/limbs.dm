@@ -103,8 +103,11 @@
 	if(mob_owner)
 		owner = mob_owner
 
-	surgery_overlay = image('icons/mob/humans/dam_human.dmi', "surgery_0", -SURGERY_LAYER)
-	surgery_overlay.color = owner?.species.blood_color
+	if(owner && isyautja(owner)) //Who made these predator sprites? The heads are attached to the shoulders and the torso has no back or butt from the side. No surgery overlays for preds until someone fixes this--and it won't be me. - Puckaboo2
+		surgery_overlay = null
+	else
+		surgery_overlay = image('icons/mob/humans/dam_human.dmi', "surgery_0", -SURGERY_LAYER)
+		surgery_overlay.color = owner?.species.blood_color //because you can amputate synths, ig - Puckaboo2
 
 	wound_overlay = image('icons/mob/humans/dam_human.dmi', "grayscale_0", -DAMAGE_LAYER)
 	wound_overlay.color = owner?.species.blood_color

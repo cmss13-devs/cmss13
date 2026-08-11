@@ -23,6 +23,8 @@
 	var/reagent_recipe_hint = null
 	/// one consistent property hint picked from itself. Set when creating itself
 	var/property_hint = null
+	/// Locked reagent on this generated reagent, which will always be necessary to produce it.
+	var/locked_reagent = null
 
 /datum/reagent/generated/New()
 	//Generate stats

@@ -20,7 +20,7 @@
 //***************************************Recipe Generator**********************************************/
 //*****************************************************************************************************/
 
-/datum/chemical_reaction/proc/generate_recipe(list/complexity, list/required_reagents_to_add)
+/datum/chemical_reaction/proc/generate_recipe(list/complexity, list/required_reagents_to_add, additional_ingredients = 0)
 	//Determine modifier for uneven recipe balance
 	var/modifier = rand(0,100)
 	if(modifier<=60)
@@ -38,7 +38,7 @@
 
 	var/failed_attempts = 0 //safety for if a recipe can not be found
 	//pick components
-	var/desired_amount_of_chems = rand(3, max(min(gen_tier*2, 4),3))
+	var/desired_amount_of_chems = rand(3, max(min(gen_tier*2, 4),3)) + additional_ingredients
 	var/list/cache_reagents_to_add = required_reagents_to_add
 	for(var/i = 1, i <= desired_amount_of_chems, i++)
 		if(i >= 2) //only the first component should have a modifier higher than 1
@@ -435,14 +435,15 @@
 			info += "<I>WARNING: Mixing too much at a time can cause spontanous explosion! Do not mix more than the OD threshold!</I>"
 	description = info
 
-/datum/reagent/proc/generate_assoc_recipe(list/complexity, list/required_reagents_to_add)
+/datum/reagent/proc/generate_assoc_recipe(list/complexity, list/required_reagents_to_add, list/locked_chems)
 	var/datum/chemical_reaction/generated/C = new /datum/chemical_reaction/generated
 	C.id = id
 	C.result = id
 	C.name = name
 	C.gen_tier = gen_tier
-	if(!C.generate_recipe(complexity, required_reagents_to_add))
+	if(!C.generate_recipe(complexity, required_reagents_to_add, additional_ingredients = length(locked_chems)))
 		return //Generating a recipe failed, so return null
+	C.locked_reagents = locked_chems
 	GLOB.chemical_reactions_list[C.id] = C
 
 	C.add_to_filtered_list()

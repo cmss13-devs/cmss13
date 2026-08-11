@@ -200,14 +200,20 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 				else
 					contract_chemical.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C3"])
 			if(3)
+				var/locked_chem = pick(GLOB.chemical_gen_classes_list["X1"])
 				contract_chemical.credit_reward = 7
-				contract_chemical.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["X1"])
+				contract_chemical.reagent_recipe_hint = locked_chem
+				contract_chemical.locked_reagent = locked_chem
 			if(4)
-				contract_chemical.credit_reward = 8
-				contract_chemical.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["X2"])
+				var/locked_chem = pick(GLOB.chemical_gen_classes_list["X2"])
+				contract_chemical.credit_reward = 9
+				contract_chemical.reagent_recipe_hint = locked_chem
+				contract_chemical.locked_reagent = locked_chem
 			if(5)
-				contract_chemical.credit_reward = 10
-				contract_chemical.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["X3"])
+				var/locked_chem = pick(GLOB.chemical_gen_classes_list["X3"])
+				contract_chemical.credit_reward = 12
+				contract_chemical.reagent_recipe_hint = locked_chem
+				contract_chemical.locked_reagent = locked_chem
 
 		contract_chemical.property_hint = pick(contract_chemical.properties)
 		contract_chems[contract_chemical.id] = contract_chemical
@@ -231,7 +237,10 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 	chem.id = "tau-[length(GLOB.chemical_gen_classes_list["tau"])]"
 	GLOB.chemical_gen_classes_list["tau"] += chem.id
 	GLOB.chemical_reagents_list[chem.id] = chem
-	chem.generate_assoc_recipe(null, list(chem.reagent_recipe_hint))
+	var/locked_chems
+	if(chem.locked_reagent)
+		locked_chems = list(chem.locked_reagent)
+	chem.generate_assoc_recipe(null, list(chem.reagent_recipe_hint), locked_chems)
 	return chem.id
 
 /datum/chemical_data/proc/get_tgui_data(chemid)

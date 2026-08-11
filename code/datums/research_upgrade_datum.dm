@@ -131,8 +131,7 @@
 
 	GLOB.chemical_gen_classes_list["tau"] += endgame_chem.id
 	GLOB.chemical_reagents_list[endgame_chem.id] = endgame_chem
-	var/datum/chemical_reaction/generated/generated = endgame_chem.generate_assoc_recipe(null, list(endgame_chem.reagent_recipe_hint))
-	generated.locked_reagents = list(endgame_chem.reagent_recipe_hint)
+	endgame_chem.generate_assoc_recipe(null, list(endgame_chem.reagent_recipe_hint), list(endgame_chem.reagent_recipe_hint))
 
 	new /obj/item/paper/research_notes(machine_loc, GLOB.chemical_reagents_list[endgame_chem.id], "synthesis", TRUE)
 

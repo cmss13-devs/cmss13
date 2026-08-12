@@ -636,7 +636,7 @@
 	desc = "An autoinjector loaded with a single 15u dose of tramadol for marines to self-administer. You can refill it at Wey-Med vending machines."
 	maptext_label = "OuPs"
 
-/obj/item/reagent_container/hypospray/autoinjector/empty
+/obj/item/reagent_container/hypospray/autoinjector/research
 	name = "5u custom autoinjector"
 	desc = "A custom-made autoinjector, likely from research. You can refill it with a pressurized reagent canister pouch."
 	icon_state = "empty_research"
@@ -646,26 +646,26 @@
 	uses_left = 0
 	display_maptext = TRUE
 
-/obj/item/reagent_container/hypospray/autoinjector/empty/get_examine_text(mob/user)
+/obj/item/reagent_container/hypospray/autoinjector/research/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_NOTICE("It transfers [amount_per_transfer_from_this]u per injection and has a maximum of [volume/amount_per_transfer_from_this] injections.")
 
-/obj/item/reagent_container/hypospray/autoinjector/empty/small
+/obj/item/reagent_container/hypospray/autoinjector/research/small
 	name = "15u custom autoinjector"
 	amount_per_transfer_from_this = 15
 	volume = 45
 
-/obj/item/reagent_container/hypospray/autoinjector/empty/medium
+/obj/item/reagent_container/hypospray/autoinjector/research/medium
 	name = "30u custom autoinjector"
 	amount_per_transfer_from_this = 30
 	volume = 90
 
-/obj/item/reagent_container/hypospray/autoinjector/empty/large
+/obj/item/reagent_container/hypospray/autoinjector/research/large
 	name = "60u custom autoinjector"
 	amount_per_transfer_from_this = 60
 	volume = 180
 
-/obj/item/reagent_container/hypospray/autoinjector/empty/skillless
+/obj/item/reagent_container/hypospray/autoinjector/research/ez
 	name = "15u custom EZ autoinjector"
 	desc = "A custom-made EZ autoinjector, likely from research. You can refill it with a pressurized reagent canister pouch. It injects its entire payload immediately and doesn't require any training."
 	icon_state = "empty_research_oneuse"
@@ -675,37 +675,37 @@
 	volume = 15
 	uses_left = 0
 
-/obj/item/reagent_container/hypospray/autoinjector/empty/skillless/unit
+/obj/item/reagent_container/hypospray/autoinjector/research/ez/unit
 	name = "1u custom EZ autoinjector"
 	volume = 1
 	amount_per_transfer_from_this = 1
 
-/obj/item/reagent_container/hypospray/autoinjector/empty/skillless/verysmall
+/obj/item/reagent_container/hypospray/autoinjector/research/ez/verysmall
 	name = "5u custom EZ autoinjector"
 	volume = 5
 	amount_per_transfer_from_this = 5
 
-/obj/item/reagent_container/hypospray/autoinjector/empty/skillless/small
+/obj/item/reagent_container/hypospray/autoinjector/research/ez/small
 	name = "10u custom EZ autoinjector"
 	volume = 10
 	amount_per_transfer_from_this = 10
 
-/obj/item/reagent_container/hypospray/autoinjector/empty/skillless/medium
+/obj/item/reagent_container/hypospray/autoinjector/research/ez/medium
 	name = "30u custom EZ autoinjector"
 	volume = 30
 	amount_per_transfer_from_this = 30
 
-/obj/item/reagent_container/hypospray/autoinjector/empty/skillless/large
+/obj/item/reagent_container/hypospray/autoinjector/research/ez/large
 	name = "45u custom EZ autoinjector"
 	volume = 45
 	amount_per_transfer_from_this = 45
 
-/obj/item/reagent_container/hypospray/autoinjector/empty/skillless/extralarge
+/obj/item/reagent_container/hypospray/autoinjector/research/ez/extralarge
 	name = "60u custom EZ autoinjector"
 	volume = 60
 	amount_per_transfer_from_this = 60
 
-/obj/item/reagent_container/hypospray/autoinjector/empty/medic
+/obj/item/reagent_container/hypospray/autoinjector/research/medic
 	name = "15u Reagent Pouch Autoinjector"
 	desc = "An autoinjector specifically designed to fit inside and refill from Pressurized Reagent Canister Pouches. Has a similar lock to pill bottles, and fits up to 6 injections."
 	skilllock = SKILL_MEDICAL_MEDIC
@@ -715,7 +715,7 @@
 	icon_state = "empty_medic"
 	uses_left = 0
 
-/obj/item/reagent_container/hypospray/autoinjector/empty/medic/large
+/obj/item/reagent_container/hypospray/autoinjector/research/reagent_pouch/large
 	name = "30u Reagent Pouch Autoinjector"
 	volume = 180
 	amount_per_transfer_from_this = 30

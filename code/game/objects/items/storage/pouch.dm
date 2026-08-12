@@ -1094,7 +1094,7 @@
 	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
 	icon_state = "pressurized_reagent_canister"
 	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser."
-	can_hold = list(/obj/item/reagent_container/hypospray/autoinjector/empty)
+	can_hold = list(/obj/item/reagent_container/hypospray/autoinjector/research)
 	var/obj/item/reagent_container/glass/pressurized_canister/inner
 	matter = list("plastic" = 2000, "glass" = 2000)
 	flags_item = NOBLUDGEON
@@ -1130,13 +1130,13 @@
 	//Only add an autoinjector if the canister is empty
 	//Important for the snowflake /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone
 	if(length(contents) == 0)
-		new /obj/item/reagent_container/hypospray/autoinjector/empty/medic(src)
+		new /obj/item/reagent_container/hypospray/autoinjector/research/medic(src)
 	update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/proc/fill_with(ragent)
 	inner.reagents.add_reagent(ragent, inner.volume)
 	if(length(contents) > 0)
-		var/obj/item/reagent_container/hypospray/autoinjector/empty/A = contents[1]
+		var/obj/item/reagent_container/hypospray/autoinjector/research/A = contents[1]
 		A.reagents.add_reagent(ragent, A.volume)
 		A.update_uses_left()
 		A.update_icon()
@@ -1165,7 +1165,7 @@
 	inner.reagents.add_reagent("inaprovaline", inner.volume/3)
 	inner.reagents.add_reagent("tricordrazine", inner.volume/3)
 	if(length(contents) > 0)
-		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/A = contents[1]
+		var/obj/item/reagent_container/hypospray/autoinjector/research/reagent_pouch/A = contents[1]
 		A.reagents.add_reagent("adrenaline", A.volume/3)
 		A.reagents.add_reagent("inaprovaline", A.volume/3)
 		A.reagents.add_reagent("tricordrazine", A.volume/3)
@@ -1180,7 +1180,7 @@
 	inner.reagents.add_reagent("inaprovaline", inner.volume/3)
 	inner.reagents.add_reagent("peridaxon", inner.volume/3)
 	if(length(contents) > 0)
-		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/A = contents[1]
+		var/obj/item/reagent_container/hypospray/autoinjector/research/reagent_pouch/A = contents[1]
 		A.reagents.add_reagent("adrenaline", A.volume/3)
 		A.reagents.add_reagent("inaprovaline", A.volume/3)
 		A.reagents.add_reagent("peridaxon", A.volume/3)
@@ -1200,7 +1200,7 @@
 			update_icon()
 		return
 
-	if(istype(W, /obj/item/reagent_container/hypospray/autoinjector/empty))
+	if(istype(W, /obj/item/reagent_container/hypospray/autoinjector/research))
 		var/obj/item/reagent_container/hypospray/autoinjector/A = W
 		fill_autoinjector(A)
 		return ..()

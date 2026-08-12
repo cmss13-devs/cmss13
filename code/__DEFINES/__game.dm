@@ -422,6 +422,7 @@
 #define WALL_FOREST_ROCK_DIRTY "rock_forest_dirty"
 #define WALL_STRATA_OUTPOST_RIBBED "strata_ribbed_outpost_"
 #define WALL_STRATA_OUTPOST_BARE "strata_bare_outpost_"
+#define WALL_NORTHPOINT "Inflatable_interior"
 #define WALL_SHIVA_ICE "shiva_ice"
 #define WALL_SHIVA_FAB "shiva_fab"
 #define WALL_SHIVA_FAB_R "shiva_fab_r"

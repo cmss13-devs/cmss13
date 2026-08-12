@@ -110,7 +110,7 @@ GLOBAL_LIST_INIT_TYPED(sentry_spawns, /list/obj/effect/sentry_landmark, list())
 	icon = 'icons/landmarks.dmi'
 	icon_state = "map_sentry"
 
-	abstract_type = /obj/effect/sentry_landmark
+	var/abstract_type = /obj/effect/sentry_landmark
 
 	/// Which landing zone this landmark should be connected to
 	var/landing_zone

@@ -49,10 +49,6 @@
 			if(initial(item_path.flags_item) & ITEM_ABSTRACT)
 				continue // Ignore abstract
 
-		// Type acts as a parent for other types, not meant to exist in normal gameplay
-		if(obj_path.type == obj_path.abstract_type)
-			continue
-
 		// Ensure that it's not invisible/honk in mapping
 		var/initial_icon = initial(obj_path.icon)
 		var/initial_icon_state = initial(obj_path.icon_state)

@@ -1,6 +1,7 @@
 /obj/effect/alien/resin/chem_producer
 	name = "resin gland"
 	icon = 'icons/mob/xenos/fruits.dmi'
+	icon_state = ""
 	desc = "A weird-looking pulsating node that produces chemicals"
 	density = FALSE
 	opacity = FALSE
@@ -8,8 +9,6 @@
 	health = 50
 	layer = RESIN_STRUCTURE_LAYER
 	plane = FLOOR_PLANE
-	// Abstract object, acts as a base for the real chem producers.
-	abstract_type = /obj/effect/alien/resin/chem_producer
 
 	// Production stats
 	/// Which chem does this produce?

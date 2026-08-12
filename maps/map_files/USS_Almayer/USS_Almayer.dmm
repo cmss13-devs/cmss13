@@ -5362,6 +5362,21 @@
 	},
 /turf/open/floor/grass,
 /area/almayer/medical/upper_medical)
+"anq" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_y = -11;
+	pixel_x = 28
+	},
+/obj/structure/sign/safety/intercom{
+	pixel_y = 7;
+	pixel_x = 34
+	},
+/turf/open/floor/almayer/sterile_green_side/east,
+/area/almayer/medical/upper_medical)
 "anr" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -50757,7 +50772,7 @@
 /obj/structure/bed/hybrisa/hospital/hospitaldivider{
 	dir = 1
 	},
-/turf/open/floor/almayer/sterile_green_side,
+/turf/open/floor/almayer/sterile_green_corner/east,
 /area/almayer/medical/upper_medical)
 "crx" = (
 /obj/effect/decal/cleanable/dirt,
@@ -50779,30 +50794,20 @@
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/upper_medical)
 "crA" = (
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	name = "General Listening Channel";
-	pixel_y = 30;
-	pixel_x = 8
-	},
-/obj/structure/sign/safety/intercom{
-	pixel_y = 28;
-	pixel_x = -1
-	},
 /obj/structure/bed/roller/hospital_empty/bigrollerempty,
 /obj/item/bedsheet/green,
-/turf/open/floor/almayer/sterile_green_side/north,
+/turf/open/floor/almayer/sterile_green_corner,
 /area/almayer/medical/upper_medical)
 "crB" = (
 /obj/structure/machinery/shower{
 	dir = 8
 	},
-/obj/structure/machinery/door/window/tinted{
-	dir = 8
-	},
 /obj/item/tool/soap{
 	pixel_x = -3;
 	pixel_y = 6
+	},
+/obj/structure/machinery/door/window{
+	dir = 8
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/upper_medical)
@@ -58785,7 +58790,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/turf/open/floor/almayer/sterile_green_side/west,
+/turf/open/floor/almayer/sterile_green_corner/north,
 /area/almayer/medical/upper_medical)
 "fPn" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
@@ -90263,7 +90268,7 @@
 	pixel_y = 29;
 	pixel_x = 15
 	},
-/turf/open/floor/almayer/dark_sterile,
+/turf/open/floor/almayer/sterile_green_side/northwest,
 /area/almayer/medical/upper_medical)
 "tEu" = (
 /obj/structure/machinery/disposal,
@@ -207914,7 +207919,7 @@ ajp
 ajn
 crG
 ajg
-ccX
+anq
 akA
 cdu
 jBy

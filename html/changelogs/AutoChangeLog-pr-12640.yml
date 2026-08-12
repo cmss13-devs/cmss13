@@ -1,0 +1,12 @@
+author: "Drathek dimdimich1996"
+delete-after: True
+changes:
+  - balance: "Fuelpumps now can take damage from xenos during hijack (including most acid sources)"
+  - balance: "Fuelpumps cannot be repaired, but have a sizeable health pool - the health of the pump is what matters for hijack now rather than area power"
+  - bugfix: "Fixed bullet ping override offsets being ignored namely for vehicles (and now fuelpumps)"
+  - bugfix: "Xenos now get more hijack sfx"
+  - bugfix: "Fixed weird crusher charge logic for handling of anchored objects."
+  - imageadd: "Several new overlays and a destroyed state for fuelpumps by dimdimich1996"
+  - code_imp: "Boiler acid shotgun now properly flagged as AMMO_XENO"
+  - code_imp: "Fire extinguishers now always call extinguish_acid on their affected atoms"
+  - code_imp: "xeno handle_collision procs should now perform less redundant typechecks"

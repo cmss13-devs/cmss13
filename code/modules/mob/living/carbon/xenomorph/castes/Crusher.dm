@@ -206,7 +206,8 @@
 			. = FALSE
 		else if(object_in_path.anchored)
 			visible_message(SPAN_DANGER("[src] crushes [object_in_path]!"), SPAN_XENODANGER("We crush [object_in_path]!"))
-			qdel(object_in_path)
+			playsound(loc, "punch", 25, 1)
+			object_in_path.deconstruct(FALSE)
 			. = TRUE
 
 		else

@@ -206,11 +206,6 @@
 			. = FALSE
 		else if(object_in_path.anchored)
 			visible_message(SPAN_DANGER("[src] crushes [object_in_path]!"), SPAN_XENODANGER("We crush [object_in_path]!"))
-			if(length(object_in_path.contents)) //Hopefully won't auto-delete things inside crushed stuff.
-				var/turf/turf_for_obj = get_turf(src)
-				if(turf_for_obj)
-					for(var/atom/movable/stuff_to_move in turf_for_obj.contents)
-						stuff_to_move.forceMove(turf_for_obj)
 			qdel(object_in_path)
 			. = TRUE
 

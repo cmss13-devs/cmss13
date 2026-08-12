@@ -2,7 +2,7 @@
 //returns FALSE otherwise
 /obj/proc/allowed(mob/M)
 	//check if it doesn't require any access at all
-	if(!check_access() || !isRemoteControlling(M))
+	if(!check_access() && !isRemoteControlling(M))
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
 			//if they are holding or wearing a card that has access, that works

@@ -419,7 +419,8 @@ SUBSYSTEM_DEF(hijack)
 /// Plays the passed sfx for any xenos shipside
 /datum/controller/subsystem/hijack/proc/play_sfx_for_shipside_xenos(sound/soundin, vol=45)
 	for(var/mob/living/carbon/xenomorph as anything in GLOB.xeno_mob_list)
-		if(!is_mainship_level(xenomorph.z))
+		var/turf/xeno_turf = get_turf(xenomorph)
+		if(!xeno_turf || !is_mainship_level(xeno_turf.z))
 			continue
 		playsound_client(xenomorph.client, soundin, vol=vol)
 

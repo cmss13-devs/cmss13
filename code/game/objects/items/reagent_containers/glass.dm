@@ -352,7 +352,7 @@
 
 		if(!(chem_refill) || !(autoinjector.type in chem_refill)) //noo, you can't fill this! It's not the right autoinjector!
 			if(autoinjector.no_refill_valve) //Mixed chem autoinjectors like emergency and sleep are too complicated for the tank. It can only fill autoinjectors with one chemical inside.
-				if(istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/empty)) //Autoinjector says, "Where's my pouch?"
+				if(istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/research)) //Autoinjector says, "Where's my pouch?"
 					to_chat(user, SPAN_WARNING("A small LED on [src] blinks red. Refill failed. [autoinjector] can only be refilled with a pressurized reagent canister pouch."))
 					return FALSE
 				else //some autoinjectors truly are one-use... Example: That big ass 79u emergency first aid syringe.

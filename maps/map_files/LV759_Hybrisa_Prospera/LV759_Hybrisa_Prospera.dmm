@@ -31092,7 +31092,7 @@
 /obj/item/prop/colony/usedbandage{
 	dir = 4
 	},
-/obj/item/reagent_container/hypospray/autoinjector/empty/ez/medium,
+/obj/item/reagent_container/hypospray/autoinjector/research/ez/medium,
 /obj/structure/bed/roller,
 /obj/effect/decal/cleanable/blood,
 /turf/open/hybrisa/street/sidewalk/south,

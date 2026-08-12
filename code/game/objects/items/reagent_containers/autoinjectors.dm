@@ -601,7 +601,7 @@
 		return
 
 //CUSTOM AUTOINJECTORS
-/obj/item/reagent_container/hypospray/autoinjector/empty
+/obj/item/reagent_container/hypospray/autoinjector/research
 	name = "custom autoinjector (15u)"
 	desc = "A custom-made autoinjector, likely from research. Only those trained in medicine can use it. It can be filled with a pressurized reagent canister pouch."
 	icon_state = "empty_research"
@@ -612,11 +612,11 @@
 	uses_left = 0
 	display_maptext = FALSE
 
-/obj/item/reagent_container/hypospray/autoinjector/empty/get_examine_text(mob/user)
+/obj/item/reagent_container/hypospray/autoinjector/research/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_NOTICE("It transfers [amount_per_transfer_from_this]u per injection and has a maximum of [volume/amount_per_transfer_from_this] injections.")
 
-/obj/item/reagent_container/hypospray/autoinjector/empty/verb/flush_autoinjector()
+/obj/item/reagent_container/hypospray/autoinjector/research/verb/flush_autoinjector()
 	set category = "Object"
 	set name = "Flush Autoinjector"
 	set desc = "Flush the autoinjector to empty its reagents."
@@ -642,29 +642,29 @@
 	update_icon()
 	return
 
-/obj/item/reagent_container/hypospray/autoinjector/empty/small
+/obj/item/reagent_container/hypospray/autoinjector/research/small
 	name = "custom autoinjector (5u)"
 	amount_per_transfer_from_this = 5
 	volume = 15
 
-/obj/item/reagent_container/hypospray/autoinjector/empty/medium
+/obj/item/reagent_container/hypospray/autoinjector/research/medium
 	name = "custom autoinjector (15u)"
 	amount_per_transfer_from_this = 15
 	volume = 45
 
-/obj/item/reagent_container/hypospray/autoinjector/empty/large
+/obj/item/reagent_container/hypospray/autoinjector/research/large
 	name = "custom autoinjector (30u)"
 	amount_per_transfer_from_this = 30
 	volume = 90
 
-/obj/item/reagent_container/hypospray/autoinjector/empty/huge
+/obj/item/reagent_container/hypospray/autoinjector/research/huge
 	name = "custom autoinjector (60u)"
 	amount_per_transfer_from_this = 60
 	volume = 180
 
 
 //CUSTOM EZ AUTOINJECTORS
-/obj/item/reagent_container/hypospray/autoinjector/empty/ez
+/obj/item/reagent_container/hypospray/autoinjector/research/ez
 	name = "custom EZ one-use autoinjector (15u)"
 	desc = "A custom-made EZ autoinjector, likely from research. You can refill it with a pressurized reagent canister pouch. It injects its entire payload immediately and doesn't require any training."
 	icon_state = "empty_research_single"
@@ -674,43 +674,43 @@
 	volume = 15
 	uses_left = 0
 
-/obj/item/reagent_container/hypospray/autoinjector/empty/ez/unit
+/obj/item/reagent_container/hypospray/autoinjector/research/ez/unit
 	name = "custom EZ one-use autoinjector (1u)"
 	volume = 1
 	amount_per_transfer_from_this = 1
 
-/obj/item/reagent_container/hypospray/autoinjector/empty/ez/verysmall
+/obj/item/reagent_container/hypospray/autoinjector/research/ez/verysmall
 	name = "custom EZ one-use autoinjector (5u)"
 	volume = 5
 	amount_per_transfer_from_this = 5
 
-/obj/item/reagent_container/hypospray/autoinjector/empty/ez/small
+/obj/item/reagent_container/hypospray/autoinjector/research/ez/small
 	name = "custom EZ one-use autoinjector (10u)"
 	volume = 10
 	amount_per_transfer_from_this = 10
 
-/obj/item/reagent_container/hypospray/autoinjector/empty/ez/medium
+/obj/item/reagent_container/hypospray/autoinjector/research/ez/medium
 	name = "custom EZ one-use autoinjector (15u)"
 	volume = 15
 	amount_per_transfer_from_this = 15
 
-/obj/item/reagent_container/hypospray/autoinjector/empty/ez/large
+/obj/item/reagent_container/hypospray/autoinjector/research/ez/large
 	name = "custom EZ one-use autoinjector (30u)"
 	volume = 30
 	amount_per_transfer_from_this = 30
 
-/obj/item/reagent_container/hypospray/autoinjector/empty/ez/extralarge
+/obj/item/reagent_container/hypospray/autoinjector/research/ez/extralarge
 	name = "custom EZ one-use autoinjector (45u)"
 	volume = 45
 	amount_per_transfer_from_this = 45
 
-/obj/item/reagent_container/hypospray/autoinjector/empty/ez/huge
+/obj/item/reagent_container/hypospray/autoinjector/research/ez/huge
 	name = "custom EZ one-use autoinjector (60u)"
 	volume = 60
 	amount_per_transfer_from_this = 60
 
 //REAGENT POUCH AUTOINJECTORS
-/obj/item/reagent_container/hypospray/autoinjector/empty/medic
+/obj/item/reagent_container/hypospray/autoinjector/research/reagent_pouch
 	name = "reagent canister pouch autoinjector (15u)"
 	desc = "An autoinjector specifically designed to fit inside and refill from pressurized reagent canister pouches. It has a similar lock to pill bottles and fits up to 6 injections."
 	skilllock = SKILL_MEDICAL_MEDIC
@@ -720,32 +720,32 @@
 	icon_state = "empty_medic"
 	uses_left = 0
 
-/obj/item/reagent_container/hypospray/autoinjector/empty/medic/tiny
+/obj/item/reagent_container/hypospray/autoinjector/research/reagent_pouch/tiny
 	name = "reagent canister pouch autoinjector (1u)"
 	volume = 6
 	amount_per_transfer_from_this = 1
 
-/obj/item/reagent_container/hypospray/autoinjector/empty/medic/extrasmall
+/obj/item/reagent_container/hypospray/autoinjector/research/reagent_pouch/extrasmall
 	name = "reagent canister pouch autoinjector (5u)"
 	volume = 30
 	amount_per_transfer_from_this = 5
 
-/obj/item/reagent_container/hypospray/autoinjector/empty/medic/small
+/obj/item/reagent_container/hypospray/autoinjector/research/reagent_pouch/small
 	name = "reagent canister pouch autoinjector (10u)"
 	volume = 60
 	amount_per_transfer_from_this = 10
 
-/obj/item/reagent_container/hypospray/autoinjector/empty/medic/medium
+/obj/item/reagent_container/hypospray/autoinjector/research/reagent_pouch/medium
 	name = "reagent canister pouch autoinjector (15u)"
 	volume = 90
 	amount_per_transfer_from_this = 15
 
-/obj/item/reagent_container/hypospray/autoinjector/empty/medic/large //Unused, but will still throw it here.
+/obj/item/reagent_container/hypospray/autoinjector/research/reagent_pouch/large //Unused, but will still throw it here.
 	name = "reagent canister pouch autoinjector (20u)"
 	volume = 120
 	amount_per_transfer_from_this = 20
 
-/obj/item/reagent_container/hypospray/autoinjector/empty/medic/extralarge //haven't seen anyone use this yet.
+/obj/item/reagent_container/hypospray/autoinjector/research/reagent_pouch/extralarge //haven't seen anyone use this yet.
 	name = "reagent canister pouch autoinjector (30u)"
 	volume = 180
 	amount_per_transfer_from_this = 30

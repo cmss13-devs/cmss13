@@ -521,10 +521,10 @@
 		list("Autoinjector (Tricordrazine)", floor(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine, VENDOR_ITEM_REGULAR),
 
 		list("REAGENT POUCH AUTOINJECTORS", -1, null, null),
-		list("Reagent Pouch Autoinjector (1u)", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/empty/medic/tiny, VENDOR_ITEM_REGULAR),
-		list("Reagent Pouch Autoinjector (5u)", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/empty/medic/extrasmall, VENDOR_ITEM_REGULAR),
-		list("Reagent Pouch Autoinjector (10u)", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/empty/medic/small, VENDOR_ITEM_REGULAR),
-		list("Reagent Pouch Autoinjector (15u)", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/empty/medic/medium, VENDOR_ITEM_REGULAR),
+		list("Reagent Pouch Autoinjector (1u)", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/research/reagent_pouch/tiny, VENDOR_ITEM_REGULAR),
+		list("Reagent Pouch Autoinjector (5u)", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/research/reagent_pouch/extrasmall, VENDOR_ITEM_REGULAR),
+		list("Reagent Pouch Autoinjector (10u)", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/research/reagent_pouch/small, VENDOR_ITEM_REGULAR),
+		list("Reagent Pouch Autoinjector (15u)", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/research/reagent_pouch/medium, VENDOR_ITEM_REGULAR),
 
 		list("LIQUID BOTTLES", -1, null, null),
 		list("Bottle (Bicaridine)", floor(scale * 3), /obj/item/reagent_container/glass/bottle/bicaridine, VENDOR_ITEM_REGULAR),

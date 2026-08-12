@@ -14,8 +14,8 @@
 #define GROUNDSIDE_XENO_MULTIPLIER 1.0
 
 /datum/game_mode/colonialmarines
-	name = "Distress Signal"
-	config_tag = "Distress Signal"
+	name = GAMEMODE_DISTRESS_SIGNAL
+	config_tag = GAMEMODE_DISTRESS_SIGNAL
 	required_players = 1 //Need at least one player, but really we need 2.
 	xeno_required_num = 1 //Need at least one xeno.
 	monkey_amount = 5
@@ -685,7 +685,6 @@
 			round_finished = MODE_INFESTATION_M_MAJOR //Humans destroyed the xenomorphs.
 			ares_conclude()
 			end_of_round_ert()
-
 			addtimer(VARSET_CALLBACK(SSticker, roundend_check_paused, FALSE), MARINE_MAJOR_ROUND_END_DELAY)
 	else if(!num_humans && !num_xenos)
 		round_finished = MODE_INFESTATION_DRAW_DEATH //Both were somehow destroyed.

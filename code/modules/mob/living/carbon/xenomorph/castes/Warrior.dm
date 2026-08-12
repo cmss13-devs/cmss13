@@ -109,7 +109,7 @@
 	var/mob/living/living_mob = movable_atom
 	var/should_neckgrab = !(src.can_not_harm(living_mob)) && lunge
 
-	if(!QDELETED(living_mob) && !QDELETED(living_mob.pulledby) && living_mob != src ) //override pull of other mobs
+	if(!QDELETED(living_mob) && !QDELETED(living_mob.pulledby) && living_mob.pulledby != src ) //override pull of other mobs
 		visible_message(SPAN_WARNING("[src] has broken [living_mob.pulledby]'s grip on [living_mob]!"), null, null, 5)
 		living_mob.pulledby.stop_pulling()
 
@@ -207,7 +207,7 @@
 		to_chat(lunge_user, SPAN_XENOWARNING("We can't lunge from here!"))
 		return
 
-	if(!lunge_user.check_state() || lunge_user.agility)
+	if(!lunge_user.check_state())
 		return
 
 	if(lunge_user.can_not_harm(affected_atom) || !ismob(affected_atom))
@@ -246,7 +246,7 @@
 	if(!isxeno_human(affected_atom) || fling_user.can_not_harm(affected_atom))
 		return
 
-	if(!fling_user.check_state() || fling_user.agility)
+	if(!fling_user.check_state())
 		return
 
 	if(!fling_user.Adjacent(affected_atom))
@@ -300,7 +300,7 @@
 	if(!isxeno_human(affected_atom) || punch_user.can_not_harm(affected_atom))
 		return
 
-	if(!punch_user.check_state() || punch_user.agility)
+	if(!punch_user.check_state())
 		return
 
 	var/distance = get_dist(punch_user, affected_atom)

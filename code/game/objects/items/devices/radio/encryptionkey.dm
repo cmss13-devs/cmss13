@@ -40,7 +40,7 @@
 	channels = list(RADIO_CHANNEL_COMMAND = TRUE)
 
 /obj/item/device/encryptionkey/command/hear
-	name = "Command Encryption Key (Hear only)"
+	name = "Command Encryption Key (Receive only)"
 	hear_only = TRUE
 
 /obj/item/device/encryptionkey/jtac

@@ -53,3 +53,29 @@
 
 /area/northpoint/landing_zone_2/ceiling
 	ceiling = CEILING_METAL
+
+
+//Interior Areas
+
+// --
+
+//Exterior Areas
+
+// --
+
+/area/northpoint/outdoors/urban_cave
+	name = "Urban Cave Areas"
+	icon_state = "cave"
+	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
+	ceiling_muffle = FALSE
+	minimap_color = MINIMAP_AREA_COLONY_STREETS
+	unoviable_timer = FALSE
+
+/area/northpoint/outdoors/urban_cave/south_east
+	name = "Northpoint Hospital - Exterior Streets - Southeast"
+
+/area/northpoint/outdoors/urban_cave/east
+	name = "Northpoint Hospital - Exterior Streets - East"
+
+/area/northpoint/outdoors/urban_cave/north_east
+	name = "Northpoint Hospital - Exterior Streets - Northeast"

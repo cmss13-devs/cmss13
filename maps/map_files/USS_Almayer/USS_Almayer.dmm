@@ -5362,21 +5362,6 @@
 	},
 /turf/open/floor/grass,
 /area/almayer/medical/upper_medical)
-"anq" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/effect/decal/cleanable/dirt,
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	name = "General Listening Channel";
-	pixel_y = -11;
-	pixel_x = 28
-	},
-/obj/structure/sign/safety/intercom{
-	pixel_y = 7;
-	pixel_x = 34
-	},
-/turf/open/floor/almayer/sterile_green_side/east,
-/area/almayer/medical/upper_medical)
 "anr" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -50824,18 +50809,33 @@
 /turf/closed/wall/almayer/white/hull,
 /area/almayer/medical/upper_medical)
 "crF" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_y = -11;
+	pixel_x = 28
+	},
+/obj/structure/sign/safety/intercom{
+	pixel_y = 7;
+	pixel_x = 34
+	},
+/turf/open/floor/almayer/sterile_green_side/east,
+/area/almayer/medical/upper_medical)
+"crG" = (
 /turf/closed/wall/almayer/white/hull,
 /area/almayer/medical/morgue)
-"crG" = (
+"crH" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/flooredge/west,
 /area/almayer/medical/morgue)
-"crH" = (
+"crI" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light/small/blue,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/morgue)
-"crI" = (
+"crJ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_square_smooth"
 	},
@@ -50844,7 +50844,7 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/medical/morgue)
-"crJ" = (
+"crK" = (
 /obj/structure/morgue{
 	dir = 2
 	},
@@ -50856,7 +50856,7 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/medical/morgue)
-"crK" = (
+"crL" = (
 /obj/structure/morgue{
 	dir = 2
 	},
@@ -50868,14 +50868,14 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/medical/morgue)
-"crL" = (
+"crM" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_square_smooth"
 	},
 /obj/structure/morgue,
 /turf/open/floor/almayer/plate,
 /area/almayer/medical/morgue)
-"crM" = (
+"crN" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass{
 	desc = "Just like a real plant, but fake!";
 	name = "fake fullgrass"
@@ -50886,7 +50886,7 @@
 	},
 /turf/open/floor/grass,
 /area/almayer/medical/upper_medical)
-"crN" = (
+"crO" = (
 /obj/structure/platform/metal/almayer/north{
 	dir = 2
 	},
@@ -50902,7 +50902,7 @@
 	},
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/upper_medical)
-"crO" = (
+"crP" = (
 /obj/structure/platform/metal/almayer/north{
 	dir = 2
 	},
@@ -50917,11 +50917,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/upper_medical)
-"crP" = (
+"crQ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/medical/upper_medical)
-"crQ" = (
+"crR" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
 /obj/structure/sign/safety/hazard{
@@ -50934,38 +50934,38 @@
 	},
 /turf/open/floor/almayer/sterile_green_side/east,
 /area/almayer/medical/upper_medical)
-"crR" = (
+"crS" = (
 /obj/structure/closet/secure_closet/guncabinet/red/armory_m39_submachinegun,
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
 /turf/open/floor/almayer/redfull,
 /area/almayer/medical/upper_medical)
-"crS" = (
+"crT" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/sterile_green_corner/north,
 /area/almayer/medical/upper_medical)
-"crT" = (
+"crU" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	name = "ship-grade camera"
 	},
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/medical/upper_medical)
-"crU" = (
+"crV" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Psychiatric Care Unit";
 	req_access = list()
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/upper_medical)
-"crV" = (
+"crW" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/upper_medical)
-"crW" = (
+"crX" = (
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/upper_medical)
-"crX" = (
+"crY" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/flooredge/south,
 /area/almayer/hallways/upper/midship_hallway)
@@ -207917,9 +207917,9 @@ ceQ
 ajn
 ajp
 ajn
-crG
+crH
 ajg
-anq
+crF
 akA
 cdu
 jBy
@@ -208016,11 +208016,11 @@ chH
 chj
 aEN
 ajt
-crI
+crJ
 ajr
-crI
+crJ
 arb
-crH
+crI
 aoe
 aoe
 aoe
@@ -208224,7 +208224,7 @@ cgR
 ajt
 cfS
 aoe
-crJ
+crK
 arb
 arb
 aEN
@@ -208327,7 +208327,7 @@ wUd
 ajy
 cfU
 aoe
-crK
+crL
 aEO
 cfG
 ceA
@@ -208533,7 +208533,7 @@ cgS
 cgD
 cfS
 aoe
-crJ
+crK
 arb
 arb
 arb
@@ -208737,11 +208737,11 @@ aoe
 aoe
 jTj
 cgG
-crL
+crM
 isN
-crL
+crM
 arb
-crH
+crI
 aoe
 aoe
 aoe
@@ -208845,7 +208845,7 @@ ePX
 cfW
 ePX
 jZY
-crF
+crG
 fEC
 fEC
 fEC
@@ -208948,7 +208948,7 @@ cfG
 chr
 ceS
 ceA
-crF
+crG
 crC
 crC
 crC
@@ -209051,7 +209051,7 @@ cfH
 aoe
 aGW
 ajq
-crF
+crG
 crC
 crC
 crC
@@ -209154,7 +209154,7 @@ aoe
 aoe
 aoe
 aoe
-crF
+crG
 crE
 crE
 fEC
@@ -209350,7 +209350,7 @@ ciE
 ciA
 ciw
 ccn
-crQ
+crR
 chV
 cht
 cgW
@@ -209556,7 +209556,7 @@ rSW
 dNv
 rSW
 sqf
-crR
+crS
 aSn
 lYL
 pNP
@@ -209969,7 +209969,7 @@ lGh
 qmW
 ajl
 xyt
-crO
+crP
 tpa
 cek
 vOy
@@ -210070,10 +210070,10 @@ abE
 tkF
 qdJ
 bMW
-crU
+crV
 akw
 bIM
-crN
+crO
 mzq
 sqf
 vOy
@@ -210172,9 +210172,9 @@ afs
 agA
 lXl
 iCT
-crX
-crV
-crS
+crY
+crW
+crT
 wiW
 chu
 lFn
@@ -210277,10 +210277,10 @@ lXl
 yiu
 cih
 ajl
-crT
-crP
+crU
+crQ
 ydE
-crM
+crN
 sqf
 cgb
 vdO
@@ -210379,7 +210379,7 @@ agA
 lXl
 yiu
 bMW
-crU
+crV
 aAr
 pGK
 chw
@@ -210482,8 +210482,8 @@ abE
 tkF
 yiu
 bMW
-crW
-crP
+crX
+crQ
 gLc
 wub
 mzq

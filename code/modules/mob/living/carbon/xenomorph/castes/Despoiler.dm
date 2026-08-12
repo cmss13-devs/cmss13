@@ -306,9 +306,9 @@
 	stage = 0
 
 
-/datum/action/xeno_action/activable/pounce/caustic_embrace/proc/release_charge(atom/source, atom/target, list/args)
+/datum/action/xeno_action/activable/pounce/caustic_embrace/proc/release_charge(atom/source, atom/target)
 	UnregisterSignal(owner, COMSIG_MOB_MOUSEUP)
-	use_ability(target, args, TRUE)
+	use_ability(target, released = TRUE)
 
 /datum/action/xeno_action/activable/pounce/caustic_embrace/proc/update_charge()
 	if(!action_cooldown_check())//we have released the ability

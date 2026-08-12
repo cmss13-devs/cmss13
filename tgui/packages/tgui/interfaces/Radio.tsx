@@ -166,7 +166,7 @@ export const Radio = (props) => {
                           }
                         >
                           {channel.name + ' '}
-                          {'[Hear Only]'}
+                          {'[Receive Only]'}
                         </Button>
                       </Box>
                     ))}

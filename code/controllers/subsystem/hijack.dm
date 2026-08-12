@@ -107,6 +107,12 @@ SUBSYSTEM_DEF(hijack)
 	/// The min ground z for open_space turfs when crashed
 	var/crashed_ground_z_min = 0
 
+	/// The bottom left origin point where the shipmap crashes to the ground map
+	var/turf/ground_origin
+
+	/// Whether or not lifeboats are still allowed to depart or not
+	var/escape_possible = TRUE
+
 	/// The x origin for the mainship map
 	var/ship_origin_x = 0
 
@@ -686,11 +692,6 @@ SUBSYSTEM_DEF(hijack)
 	hijack_status = HIJACK_OBJECTIVES_GROUND_CRASH
 	marine_announcement("Tachyon quantum jump drive deactivated due to insufficient fueling. Entry into atmosphere imminent.", HIJACK_ANNOUNCE, sound('sound/mecha/internaldmgalarm.ogg'))
 
-	// Break all shipside ships and disable all non-pod/elevator pads
-	unlock_all_dropship_doors() // Unlock doors because they'll be uninteractable
-	disallow_dropship_launching()
-	disallow_dropship_pad_landing()
-
 	// Figure out the main Z by assuming the LZs are on that Z
 	var/obj/lz = locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1)
 	if(!lz)
@@ -699,7 +700,7 @@ SUBSYSTEM_DEF(hijack)
 
 	// Figure out the bottom left of playable space with 1 extra border
 	var/obj/effect/landmark/mainship_crashsite/origin_landmark = locate() in GLOB.landmarks_list
-	var/turf/ground_origin = get_turf(origin_landmark)
+	ground_origin = get_turf(origin_landmark)
 	var/border_type = /turf/closed/wall/strata_ice/jungle
 	var/cordon_type = FALSE
 	if(ground_origin)
@@ -759,6 +760,14 @@ SUBSYSTEM_DEF(hijack)
 		stime = 3,
 		drop = FALSE,
 	)
+
+	// Break all shipside ships and disable all non-pod/elevator pads
+	unlock_all_dropship_doors() // Unlock doors because they'll be uninteractable
+	disallow_dropship_launching()
+	disallow_dropship_pad_landing()
+
+	escape_possible = FALSE
+	shipwide_ai_announcement("ALERT: Lifeboat telemetry equipment destroyed. Cause: Atmospheric reentry.\n\nEvacuation via port and starboard lifeboats is no longer possible.", HIJACK_ANNOUNCE, sound('sound/effects/creak1.ogg'))
 
 	// Place the crash template
 	var/datum/map_config/ship_map_config = SSmapping.configs[SHIP_MAP]

@@ -640,8 +640,11 @@
 		layer = ABOVE_MOB_LAYER
 	else if (body_position == LYING_DOWN && stat == DEAD)
 		layer = LYING_DEAD_MOB_LAYER // Dead mobs should layer under living ones
-	else if(body_position == LYING_DOWN && layer == initial(layer)) //to avoid things like hiding larvas. //i have no idea what this means
-		layer = LYING_LIVING_MOB_LAYER
+	else if(body_position == LYING_DOWN && layer == initial(layer)) //to avoid things like hiding larvas.
+		if(locate(/datum/effects/water_overlay_effect) in effects_list)
+			layer = UNDER_WATER_MOB_LAYER
+		else
+			layer = LYING_LIVING_MOB_LAYER
 
 /// Called when mob changes from a standing position into a prone while lacking the ability to stand up at the moment.
 /mob/living/proc/on_fall()

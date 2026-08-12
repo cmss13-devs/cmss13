@@ -287,19 +287,17 @@
 		if(covered)
 			var/obj/item/stack/catwalk/R = new(src, 1, type)
 			R.add_to_stacks(usr)
-			covered = FALSE
+			set_covered(FALSE)
 			to_chat(user, SPAN_WARNING("You remove the top of the catwalk."))
 			playsound(src, 'sound/items/Crowbar.ogg', 25, 1)
-			update_icon()
 			return
 	if(istype(W, /obj/item/stack/catwalk))
 		if(!covered)
 			var/obj/item/stack/catwalk/E = W
 			E.use(1)
-			covered = TRUE
+			set_covered(TRUE)
 			to_chat(user, SPAN_WARNING("You replace the top of the catwalk."))
 			playsound(src, 'sound/items/Crowbar.ogg', 25, 1)
-			update_icon()
 			return
 	return ..()
 

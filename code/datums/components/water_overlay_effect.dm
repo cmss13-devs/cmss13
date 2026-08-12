@@ -21,17 +21,21 @@
 /datum/component/water_overlay_effect/proc/handle_affected_mob_move(parent_source, oldloc, direction, forced)
 	SIGNAL_HANDLER
 	var/turf/open/gm/TT = get_turf(parent_source) //dont use this
-	var/found_depth = TT.depth
-	if(found_depth>=0)
+	if(TT.depth >= 0 || TT.covered)
 		Destroy()
 		return
 	var/mob/M = parent_source
-	if(M.m_intent == MOVE_INTENT_RUN)
+	if(M.m_intent == MOVE_INTENT_RUN)	//walking doesnt make sounds from moving through water
 		var/turf/open/gm/T = get_turf(parent_source)
 		var/soundname = T.depth >= -4 ? "shallowwading" : (T.depth >= -8 ? "wading":"deepwading")
 		playsound(T, soundname, 10, 1, 10, falloff=1)
 
 /datum/component/water_overlay_effect/proc/handle_lying_angle_change()
+	var/turf/open/open_T
+	var/turf/T = get_turf(my_water_overlay_effect.affected_atom)
+	if(ispath(T.type, /turf/open))
+		open_T = T
+		my_water_overlay_effect.pixel_y_offset = open_T.depth
 	my_water_overlay_effect.update_icons(get_turf(parent))
 
 /datum/component/water_overlay_effect/proc/handle_body_position_change()

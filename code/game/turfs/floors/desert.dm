@@ -166,7 +166,7 @@
 	supports_surgery = FALSE
 	is_weedable = NOT_WEEDABLE
 	depth = -2
-	layer = UNDER_TURF_LAYER -0.03
+	layer = UNDER_WATER_TURF_LAYER
 
 /turf/open/desert/desert_shore/update_icon()
 	..()
@@ -184,8 +184,6 @@
 /turf/open/desert/desert_shore/Initialize(mapload, ...)
 	. = ..()
 	update_icon()
-	RegisterSignal(src, COMSIG_TURF_ENTERED, PROC_REF(on_enter))
-	RegisterSignal(src, COMSIG_ATOM_HITBY, PROC_REF(on_hit))
 
 /turf/open/desert/desert_shore/desert_shore1
 	name = "shore"
@@ -262,7 +260,7 @@
 */
 
 //Desert Waterway
-/turf/open/desert/waterway			//these are unused, and probably shouldnt ever be.. cursed steep shoreline, terrible for water_overlay_effects
+/turf/open/desert/waterway	//afaik these are unused, and probably shouldnt ever be.. cursed steep shoreline in middle of texture, terrible for water_overlay_effects
 	icon = 'icons/turf/floors/desert_water.dmi'
 	icon_state = "dock"
 	supports_surgery = FALSE
@@ -312,7 +310,7 @@
 	icon = 'icons/turf/floors/desert_water.dmi'
 	icon_state = "shore_caves"
 	var/toxic = 0
-	layer = UNDER_TURF_LAYER -0.03
+	layer = UNDER_WATER_TURF_LAYER
 
 /turf/open/desert/cave/cave_shore/update_icon()
 	..()
@@ -359,7 +357,6 @@
 			set_light(1)
 			icon = 'icons/turf/floors/desert_water_transition.dmi'
 	update_overlays()
-
 
 //shallow water
 /turf/open/gm/river/desert/shallow
@@ -461,14 +458,17 @@
 //shallow water channel plain
 /turf/open/gm/river/desert/channel
 	icon_state = "channel"
+	depth = -8
 
 //shallow water channel edge
 /turf/open/gm/river/desert/channel_edge
 	icon_state = "channel_edge"
+	depth = -8
 
 //shallow water channel corner
 /turf/open/gm/river/desert/channel_three
 	icon_state = "channel_three"
+	depth = -8
 
 
 /turf/open/desert/excavation

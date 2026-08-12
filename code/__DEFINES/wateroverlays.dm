@@ -1,0 +1,4 @@
+// Wateroverlay global status
+#define WATEROVERLAY_STATUS_STANDBY 0
+#define WATEROVERLAY_STATUS_RUNNING 1
+#define WATEROVERLAY_STATUS_DONE 2

@@ -127,43 +127,56 @@
 /turf/LateInitialize(mapload)
 	update_vis_contents()
 
-/turf/proc/fix_water_clipping_layers() // used in SUBSYSTEM_DEF(water_overlays), for water water_overlay_effects so big mobs dont clip into the ground
-	if(is_water(src))
-		return
-	//so mobs in the water dont clip under these turfs ...
-	if(layer == UNDER_TURF_LAYER - 0.03)
-		return
-
+/turf/proc/fix_water_clipping_layers(list/altered_turfs)	//so big mobs dont clip into the ground when standing in water
+	var/list/return_list = list()		//and they can still look like they're below turfs south of them
+	if(is_water(src) || layer == UNDER_WATER_TURF_LAYER)
+		return return_list
 	for(var/direction_check in GLOB.cardinals)
 		if(direction_check == NORTH)
 			continue
-
 		var/turf/neighbor = get_step(src, direction_check)
-		if(neighbor == null)
-			continue
-		if(is_water(neighbor))
+		if(neighbor && is_water(neighbor))
+			if(!(src in return_list))
+				visually_set_under_water_mobs(TRUE)
+			return_list |= src
 			var/turf/s1 = get_step(src, turn(direction_check, 90))
 			var/turf/s2 = get_step(src, turn(direction_check, -90))
+			if(s1 && !is_water(s1) && !(s1 in return_list) && !(s1 in altered_turfs))
+				s1.visually_set_under_water_mobs(TRUE)
+				return_list |= s1
+			if(s2 && !is_water(s2) && !(s2 in return_list) && !(s2 in altered_turfs))
+				s2.visually_set_under_water_mobs(TRUE)
+				return_list |= s2
+	return return_list
 
-			layer = UNDER_TURF_LAYER - 0.03
-			if(s1)
-				s1.layer = UNDER_TURF_LAYER - 0.03
-			if(s2)
-				s2.layer = UNDER_TURF_LAYER - 0.03
+/turf/proc/fix_water_clipping_layers_final() // if any of the turfs we changed above have water above them, we reset them
+	var/turf/checking_turf = get_step(src, SOUTH)	// this should be already handled, but was seeing some weird behaviour
+	if(checking_turf == null)
+		return
+	if(is_full_water(checking_turf) && layer != UNDER_WATER_TURF_LAYER)
+		visually_set_under_water_mobs(TRUE)
 
-/turf/proc/fix_water_clipping_layers_final() // if any of the rurfs we changed above have water above them, we reset them
-	if(is_water(src))
+	checking_turf = get_step(src, NORTH)
+	if(checking_turf == null)
 		return
-	var/turf/direction_check = get_step(src, NORTH)
-	if(direction_check == null)
-		return
-	if(is_full_water(direction_check)) 	//only check full water tiles here, coastlines have a gradient ...
-		var/turf/direction_check2 = get_step(src,SOUTH)	//that negates needing to simulate a dropoff (which having these tiles overlay water does)
-		if(direction_check2 == null)
-			layer = TURF_LAYER
-			return
-		if(!is_full_water(direction_check2))
-			layer = TURF_LAYER
+	if(is_full_water(checking_turf) && layer != initial(layer))
+
+		visually_set_under_water_mobs(FALSE)
+
+/turf/proc/visually_set_under_water_mobs(setting)
+	if(setting)
+		layer = UNDER_WATER_TURF_LAYER
+		plane = FLOOR_PLANE
+		for(var/obj/structure/S in contents)		//decals, railings, stairs etc
+			S.layer = UNDER_WATER_TURF_LAYER + 0.01
+			S.plane = FLOOR_PLANE
+	else
+		layer = initial(layer)
+		plane = initial(plane)
+		for(var/obj/structure/S in contents)
+			S.layer = initial(layer)
+			S.plane = initial(plane)
+
 
 /obj/vis_contents_holder
 	plane = OPEN_SPACE_PLANE_START

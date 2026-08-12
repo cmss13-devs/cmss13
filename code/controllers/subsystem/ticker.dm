@@ -142,6 +142,17 @@ SUBSYSTEM_DEF(ticker)
 				return // Wait for completion
 			log_debug("Nightmare setup finished")
 
+	// shamelessly copying nightmare setup to run water overlay subsystems layering changes, and CRITICALLY: !!!AFTER nightmares!!!
+	if(SSwater_overlays.stat != WATEROVERLAY_STATUS_DONE)
+		if(SSwater_overlays.start_time && (world.time - SSwater_overlays.start_time) > 30 SECONDS)
+			SSwater_overlays.stat = WATEROVERLAY_STATUS_DONE
+			log_admin("Wateroverlay setup was cancelled as it took more than 30 seconds! Mobs might visually clip under turfs!")
+		else
+			var/ret = INVOKE_ASYNC(SSwater_overlays, TYPE_PROC_REF(/datum/controller/subsystem/water_overlays, fix_water_neighbor_layers))
+			if(!ret)
+				return // Wait for completion
+			log_debug("Wateroverlay turf layering changes finished")
+
 	if(current_state != GAME_STATE_PREGAME)
 		return
 	current_state = GAME_STATE_SETTING_UP

@@ -16,7 +16,9 @@
 
 /turf/open/Initialize(mapload, ...)
 	. = ..()
-
+	if(depth < 0 && !covered)
+		RegisterSignal(src, COMSIG_TURF_ENTERED, PROC_REF(on_enter))
+		RegisterSignal(src, COMSIG_ATOM_HITBY, PROC_REF(on_hit))
 	update_icon()
 
 /turf/open/update_icon()
@@ -142,31 +144,39 @@
 			if(3)
 				. += "Well Done."
 
-/turf/open/proc/handle_add_water_overlay_effect(turf/source, atom/movable/mover, force_update=FALSE)
+/turf/open/proc/on_enter(turf/source, atom/movable/mover, force_update=FALSE)
+	SIGNAL_HANDLER
 	if(!isliving(mover) || mover.throwing || (!ishuman(mover) && !isxeno(mover) && !isyautja(mover)))
 		return
 	if(iscarbon(mover))
 		var/mob/living/carbon/carbon_mover =  mover
-		if(carbon_mover.IsKnockDown())
-			return
 		var/datum/component/water_overlay_effect/existing = carbon_mover.GetComponent(/datum/component/water_overlay_effect)
 		if(existing)
 			carbon_mover.AddComponent(/datum/component/water_overlay_effect, src.type, depth, existing.my_water_overlay_effect)
 			return
 	mover.AddComponent(/datum/component/water_overlay_effect, src.type, depth, force_update)
 
-/turf/open/proc/handle_hit(turf/T, atom/movable/AM)
+/turf/open/proc/on_hit(turf/T, atom/movable/AM)
+	SIGNAL_HANDLER
+	if(depth && !covered) //this check isnt really necessary, but wth
+		new /obj/effect/water_splash(src, src)
+		playsound(src, "sound/effects/water/splash.ogg", 20, 1, 10, falloff=1)
 	if(!isliving(AM))
 		return
 	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, T)
 
-/turf/open/proc/on_enter(turf/source, atom/movable/mover, force_update=FALSE)
-	SIGNAL_HANDLER
-	handle_add_water_overlay_effect(source, mover, force_update)
-
-/turf/open/proc/on_hit(turf/T, atom/movable/AM)
-	SIGNAL_HANDLER
-	handle_hit(T, AM)
+/turf/open/proc/set_covered(setting)
+	if(setting)
+		covered = TRUE
+		if(depth < 0)
+			UnregisterSignal(src, COMSIG_TURF_ENTERED, PROC_REF(on_enter))
+			UnregisterSignal(src, COMSIG_ATOM_HITBY, PROC_REF(on_hit))
+	else
+		covered = FALSE
+		if(depth < 0)
+			RegisterSignal(src, COMSIG_TURF_ENTERED, PROC_REF(on_enter))
+			RegisterSignal(src, COMSIG_ATOM_HITBY, PROC_REF(on_hit))
+	update_icon()
 
 // Black & invisible to the mouse. used by vehicle interiors
 /turf/open/void
@@ -487,25 +497,15 @@
 	icon_state = "water"
 	can_bloody = FALSE
 
-/turf/open/beach/water/Initialize(mapload, ...)
-	. = ..()
-	overlays += image("icon"='icons/turf/floors/beach.dmi',"icon_state"="water2","layer"=MOB_LAYER+0.1)
-
 /turf/open/beach/water2
 	name = "Water"
 	icon_state = "water"
 	can_bloody = FALSE
 
-/turf/open/beach/water2/Initialize(mapload, ...)
-	. = ..()
-	overlays += image("icon"='icons/turf/floors/beach.dmi',"icon_state"="water5","layer"=MOB_LAYER+0.1)
-
-
 
 
 
 //LV ground
-
 
 /turf/open/gm //Basic groundmap turf parent
 	name = "ground dirt"
@@ -600,8 +600,7 @@
 /turf/open/gm/grass/grassbeach/Initialize(mapload, ...)
 	. = ..()
 	update_icon()
-	RegisterSignal(src, COMSIG_TURF_ENTERED, PROC_REF(on_enter))
-	RegisterSignal(src, COMSIG_ATOM_HITBY, PROC_REF(on_hit))
+
 
 /turf/open/gm/grass/grassbeach/north
 	depth = -4
@@ -760,20 +759,17 @@
 	var/cover_icon = 'icons/turf/floors/filtration.dmi'
 	var/cover_icon_state = "grate"
 	var/default_name = "river"
-	var/no_overlay = FALSE
 	var/base_river_slowdown = 1.75
 	baseturfs = /turf/open/gm/river
 	supports_surgery = FALSE
 	minimap_color = MINIMAP_WATER
 	is_weedable = NOT_WEEDABLE
 	depth = -8 //used for the offset of mobs that enter it (see water_overlay_effect.dm)
-	layer = UNDER_TURF_LAYER -0.03
+	layer = UNDER_WATER_TURF_LAYER
 
 /turf/open/gm/river/Initialize(mapload, ...)
 	. = ..()
 	update_icon()
-	RegisterSignal(src, COMSIG_TURF_ENTERED, PROC_REF(on_enter))
-	RegisterSignal(src, COMSIG_ATOM_HITBY, PROC_REF(on_hit))
 
 /turf/open/gm/river/update_icon()
 	..()
@@ -782,11 +778,10 @@
 
 /turf/open/gm/river/proc/update_overlays()
 	overlays.Cut()
-	if(no_overlay)
-		return
 	if(covered)
 		name = covered_name
 		overlays += image("icon"=src.cover_icon,"icon_state"=cover_icon_state,"layer"=CATWALK_LAYER,"dir" = dir)
+	layer = UNDER_WATER_TURF_LAYER
 
 /turf/open/gm/river/Entered(atom/movable/AM)
 	..()
@@ -823,7 +818,6 @@
 		if(H.bloody_footsteps)
 			SEND_SIGNAL(H, COMSIG_HUMAN_CLEAR_BLOODY_FEET)
 
-
 /turf/open/gm/river/proc/cleanup(mob/living/carbon/human/M)
 	if(!M || !istype(M))
 		return
@@ -845,14 +839,8 @@
 			M.update_inv_shoes(0)
 	M.clean_blood()
 
-
 /turf/open/gm/river/stop_crusher_charge()
 	return !covered
-
-
-/turf/open/gm/river/poison/Initialize(mapload, ...)
-	. = ..()
-	overlays += image("icon"='icons/effects/effects.dmi',"icon_state"="greenglow","layer"=MOB_LAYER+0.1)
 
 /turf/open/gm/river/poison/Entered(mob/living/M)
 	..()
@@ -877,7 +865,14 @@
 	name = "pool"
 
 /turf/open/gm/river/pool/no_overlay
-	no_overlay = TRUE
+	depth = 0
+
+/turf/open/gm/river/no_overlay
+	depth = 0
+
+/turf/open/gm/river/no_overlay/sewage
+	name = "sewage"
+	depth = 0
 
 /turf/open/gm/river/shallow_ocean_shallow_ocean
 	name = "shallow ocean"
@@ -905,13 +900,30 @@
 		var/mob/unlucky_mob = AM
 		var/turf/target_turf = get_random_turf_in_range(AM, 3, 0)
 		var/datum/launch_metadata/LM = new()
+		if(isliving(unlucky_mob))
+			var/mob/living/unlucky_living = AM
+			unlucky_living.KnockDown(1.5) //swept off your feet!
+		if(!is_full_water(target_turf))			//below we put the mob on the shore, if needed
+			for(var/i = 1 to 3)				//currents dont operate outside water
+				var/found_water = FALSE
+				var/list/check_dirs = list(get_dir(target_turf, src))
+				check_dirs += turn(check_dirs[1], 45)
+				check_dirs += turn(check_dirs[1], -45)
+				for(var/check_dir in check_dirs)
+					var/turf/check_T = get_step(target_turf, check_dir)
+					if(is_full_water(check_T))
+						found_water = TRUE
+						break
+				if(found_water)
+					break
+				target_turf = get_step(target_turf, check_dirs[1])
 		LM.target = target_turf
 		LM.range = get_dist(AM.loc, target_turf)
-		LM.speed = SPEED_FAST
+		LM.speed = MIN_SPEED // its water, should look like being moved by a current
 		LM.thrower = unlucky_mob
 		LM.spin = TRUE
 		LM.pass_flags = NO_FLAGS
-		to_chat(unlucky_mob, SPAN_WARNING("The ocean currents sweep you off your feet and throw you away!"))
+		to_chat(unlucky_mob, SPAN_WARNING("The ocean currents sweep you off your feet and carry you away!"))
 		// Entered can occur during Initialize so we need to not sleep
 		INVOKE_ASYNC(unlucky_mob, TYPE_PROC_REF(/atom/movable, launch_towards), LM)
 		return
@@ -929,12 +941,7 @@
 	supports_surgery = FALSE
 	is_weedable = NOT_WEEDABLE
 	depth = -2 //used for the offset of mobs that enter it (see water_overlay_effect.dm)
-	layer = UNDER_TURF_LAYER -0.03
-
-/turf/open/gm/coast/Initialize(mapload, ...)
-	. = ..()
-	RegisterSignal(src, COMSIG_TURF_ENTERED, PROC_REF(on_enter))
-	RegisterSignal(src, COMSIG_ATOM_HITBY, PROC_REF(on_hit))
+	layer = UNDER_WATER_TURF_LAYER
 
 /turf/open/gm/coast/north
 	depth = -4
@@ -999,19 +1006,6 @@
 	is_groundmap_turf = FALSE // Not real ground
 	fishing_allowed = TRUE
 	depth = -12 //used for the offset of mobs that enter it (see water_overlay_effect.dm)
-
-
-/turf/open/gm/riverdeep/Initialize(mapload, ...)
-	. = ..()
-	overlays += image("icon"='icons/turf/ground_map.dmi',"icon_state"="water","layer"=MOB_LAYER+0.1)
-
-/turf/open/gm/river/no_overlay
-	no_overlay = TRUE
-	supports_surgery = FALSE
-
-/turf/open/gm/river/no_overlay/sewage
-	name = "sewage"
-
 
 //ELEVATOR SHAFT-----------------------------------//
 /turf/open/gm/empty

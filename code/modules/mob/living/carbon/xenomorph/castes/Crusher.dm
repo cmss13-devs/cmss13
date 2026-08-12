@@ -201,25 +201,25 @@
 
 	// Is it atleast an object?
 	if(!handled && isobj(target))
-		var/obj/objects_in_path = target
-		if(objects_in_path.unacidable)
+		var/obj/object_in_path = target
+		if(object_in_path.unacidable)
 			. = FALSE
-		else if(objects_in_path.anchored)
-			visible_message(SPAN_DANGER("[src] crushes [objects_in_path]!"), SPAN_XENODANGER("We crush [objects_in_path]!"))
-			if(length(objects_in_path.contents)) //Hopefully won't auto-delete things inside crushed stuff.
+		else if(object_in_path.anchored)
+			visible_message(SPAN_DANGER("[src] crushes [object_in_path]!"), SPAN_XENODANGER("We crush [object_in_path]!"))
+			if(length(object_in_path.contents)) //Hopefully won't auto-delete things inside crushed stuff.
 				var/turf/turf_for_obj = get_turf(src)
 				if(turf_for_obj)
 					for(var/atom/movable/stuff_to_move in turf_for_obj.contents)
 						stuff_to_move.forceMove(turf_for_obj)
-			qdel(objects_in_path)
+			qdel(object_in_path)
 			. = TRUE
 
 		else
-			if(objects_in_path.buckled_mob)
-				objects_in_path.unbuckle()
-			visible_message(SPAN_WARNING("[src] knocks [objects_in_path] aside!"), SPAN_XENOWARNING("We knock [objects_in_path] aside.")) //Canisters, crates etc. go flying.
+			if(object_in_path.buckled_mob)
+				object_in_path.unbuckle()
+			visible_message(SPAN_WARNING("[src] knocks [object_in_path] aside!"), SPAN_XENOWARNING("We knock [object_in_path] aside.")) //Canisters, crates etc. go flying.
 			playsound(loc, "punch", 25, 1)
-			var/turf/turfs_to_get = get_diagonal_step(objects_in_path, dir)
+			var/turf/turfs_to_get = get_diagonal_step(object_in_path, dir)
 			turfs_to_get = get_step_away(turfs_to_get, src)
 			throw_atom(turfs_to_get, range=2, speed=2)
 			. = TRUE

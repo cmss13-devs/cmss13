@@ -400,6 +400,7 @@
 	name = "Platform"
 	icon = 'icons/turf/mohawk/mohawk-ramp.dmi'
 	density = FALSE
+	opacity = FALSE
 
 /obj/structure/shuttle/part/dropship_omaha/ramp_decals/border_00
 	icon_state = "0,0"

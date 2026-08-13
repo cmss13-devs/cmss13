@@ -422,7 +422,8 @@
 	dropship_control_lost = FALSE
 	update_icon()
 
-/obj/structure/machinery/computer/shuttle/dropship/flight/ui_data(mob/user)
+/obj/structure/machinery/computer/shuttle/dropship/flight/ui_data(mob/user) // what is this
+	to_chat(world, "called UI data!!")
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId, warn=!can_change_shuttle)
 	. = list()
 	.["shuttle_id"] = shuttle?.id
@@ -443,7 +444,8 @@
 	if(shuttle?.destination)
 		.["target_destination"] = shuttle?.in_flyby? "Flyby" : shuttle?.destination.name
 
-	.["door_status"] = is_remote ? list() : shuttle?.get_door_data()
+	.["door_status"] = is_remote ? list() : shuttle?.get_door_data() // get door data
+	.["ramp_status"] = is_remote ? list() : shuttle?.get_ramp_data()
 	.["has_flyby_skill"] = skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT)
 
 	// Launch Alarm Variables
@@ -480,6 +482,7 @@
 	. = ..()
 	if(.)
 		return
+	to_chat(world, "UI act!!!")
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId, warn=!can_change_shuttle)
 	if(disabled || (shuttle && shuttle.is_hijacked))
 		switch(action)
@@ -527,6 +530,7 @@
 				return TRUE
 
 			update_equipment(is_optimised, FALSE)
+			to_chat(world, "ui_data first")
 			var/list/local_data = ui_data(user)
 			var/found = FALSE
 			playsound(loc, get_sfx("terminal_button"), 5, 1)
@@ -560,6 +564,7 @@
 			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
 			return FALSE
 		if("door-control")
+			to_chat(world, "calling door control")
 			if(!shuttle)
 				return FALSE
 			if(shuttle.mode == SHUTTLE_CALL || shuttle.mode == SHUTTLE_RECALL)
@@ -568,6 +573,21 @@
 			var/location = params["location"]
 			if(!dropship_control_lost)
 				shuttle.control_doors(interaction, location)
+			else
+				playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
+				to_chat(user, SPAN_WARNING("Door controls have been overridden. Please call technical support."))
+		if("ramp-control")
+			to_chat(world, "ramp control buttong")
+			if(!shuttle)
+				return FALSE
+			if(shuttle.mode == SHUTTLE_CALL || shuttle.mode == SHUTTLE_RECALL)
+				return TRUE
+			var/interaction = params["interaction"]
+			var/location = params["location"]
+			to_chat(world, "interaction [interaction]")
+			to_chat(world, "location [location]")
+			if(!dropship_control_lost)
+				shuttle.control_ramps(interaction, location)
 			else
 				playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
 				to_chat(user, SPAN_WARNING("Door controls have been overridden. Please call technical support."))

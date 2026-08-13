@@ -5,11 +5,33 @@
 	var/label = "dropship"
 	var/list/door_controllers = list()
 	var/allow_multicast = TRUE
+	var/list/ramp_controllers = list()
 
 /datum/door_controller/aggregate/Destroy(force, ...)
 	. = ..()
 	QDEL_LIST_ASSOC_VAL(door_controllers)
 	door_controllers = null
+	QDEL_LIST_ASSOC_VAL(ramp_controllers)
+	ramp_controllers = null
+
+/datum/door_controller/single_ramp
+	var/label = "dropship"
+	var/list/ramps = list()
+	var/status = SHUTTLE_RAMP_LOWERED
+
+/datum/door_controller/single_ramp/Destroy(force, ...)
+	. = ..()
+	ramps = null
+
+/datum/door_controller/aggregate/proc/add_ramp(ramp, direction)
+	if(!ramp_controllers[direction])
+		var/datum/door_controller/single_ramp/new_controller = new()
+		new_controller.label = label
+		new_controller.status = SHUTTLE_RAMP_LOWERED
+		ramp_controllers[direction] = new_controller
+
+	var/datum/door_controller/single_ramp/controller = ramp_controllers[direction]
+	controller.ramps += list(ramp)
 
 /datum/door_controller/aggregate/proc/set_label(label)
 	for(var/datum/door_controller/single/cont in door_controllers)
@@ -37,6 +59,9 @@
 		return single_controller.status == SHUTTLE_DOOR_LOCKED
 	else
 		WARNING("Direction [direction] does not exist.")
+	if(ramp_controllers[direction])
+		var/datum/door_controller/single_ramp/single_controller = ramp_controllers[direction]
+		return single_controller.status == SHUTTLE_RAMP_RAISED
 	return FALSE
 
 /datum/door_controller/aggregate/proc/control_doors(action, direction, force, asynchronous = TRUE)
@@ -54,9 +79,25 @@
 	else
 		WARNING("Door group [direction] does not exist.")
 
+/datum/door_controller/aggregate/proc/control_ramps(action, direction, force, asynchronous = TRUE)
+	if(direction == "all")
+		if(allow_multicast)
+			for(var/door_group in door_controllers)
+				var/datum/door_controller/single/controller = door_controllers[door_group]
+				controller.control_doors(action, force, asynchronous)
+			return
+		else
+			WARNING("Aggregate door controller does not support multicast.")
+	if(ramp_controllers[direction])
+		var/datum/door_controller/single_ramp/controller = ramp_controllers[direction]
+		controller.control_ramps(action, force)
+	else
+		WARNING("Door group [direction] does not exist.")
+
 /datum/door_controller/aggregate/proc/get_data()
 	. = list()
 	var/all_locked = TRUE
+	to_chat(world, "getting door data")
 
 	for(var/direction in door_controllers)
 		var/datum/door_controller/single/controller = door_controllers[direction]
@@ -64,9 +105,31 @@
 		. += list(door_data)
 		if(controller.status == SHUTTLE_DOOR_UNLOCKED)
 			all_locked = FALSE
-
+/*
+	for(var/direction in ramp_controllers)
+		var/datum/door_controller/single_ramp/controller = ramp_controllers[direction]
+		var/list/ramp_data = list("id" = direction, "value" = controller.status)
+		. += list(ramp_data)
+		if(controller.status == SHUTTLE_RAMP_LOWERED)
+			all_locked = FALSE
+*/
 	var/list/door_data = list("id" = "all", "value" = all_locked)
 	. += list(door_data)
+
+/datum/door_controller/aggregate/proc/get_ramp_data()
+	. = list()
+	var/all_locked = TRUE
+	to_chat(world, "getting ramp data")
+
+	for(var/direction in ramp_controllers)
+		var/datum/door_controller/single_ramp/controller = ramp_controllers[direction]
+		var/list/ramp_data = list("id" = direction, "value" = controller.status)
+		. += list(ramp_data)
+		if(controller.status == SHUTTLE_RAMP_LOWERED)
+			all_locked = FALSE
+
+//	var/list/door_data = list("id" = "all", "value" = all_locked)
+//	. += list(door_data)
 
 /**
 	Datum containing methods to allow for the control over a single door group.
@@ -119,6 +182,39 @@
 			else
 				CRASH("Unknown door command [action]")
 
+/datum/door_controller/single_ramp/proc/control_ramps(action, force = FALSE, asynchronous = TRUE)
+	to_chat(world, "control_ramps")
+	for(var/butt in ramps)
+		var/obj/structure/machinery/door_control/omaha_ramp/buttong = butt
+		if(buttong.is_reserved_level(buttong.z))
+			return
+		switch(action)
+			if("raise")
+				to_chat(world, "raising")
+				if(status != SHUTTLE_RAMP_BROKEN)
+					status = SHUTTLE_RAMP_RAISED
+				INVOKE_ASYNC(buttong, TYPE_PROC_REF(/obj/structure/machinery/door_control/omaha_ramp, raise))
+			if("lower")
+				to_chat(world, "lowering")
+				if(status != SHUTTLE_RAMP_BROKEN)
+					status = SHUTTLE_RAMP_LOWERED
+				INVOKE_ASYNC(buttong, TYPE_PROC_REF(/obj/structure/machinery/door_control/omaha_ramp, lower))
+
+/*
+	for(var/D in ramps)
+		var//obj/structure/machinery/door_control/buttong = D
+		var/is_external = door.borders_space()
+		// do not allow the user to normally control external doors
+		if(!force && is_external)
+			continue
+		switch(action)
+			if("lock")
+				INVOKE_ASYNC(door, TYPE_PROC_REF(/obj/structure/machinery/door/airlock, lock))
+				if (status != SHUTTLE_RAMP_BROKEN)
+					status = SHUTTLE_RAMP_RAISED
+			else
+				CRASH("Unknown door command [action]")
+*/
 /datum/door_controller/single/proc/lockdown_door_launch(obj/structure/machinery/door/door)
 	for(var/turf/door_turf in door.locs)
 		bump_at_turf(door_turf, door)

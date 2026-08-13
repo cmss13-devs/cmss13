@@ -161,6 +161,7 @@
 "Nf" = (/turf/closed/shuttle/dropship_omaha{icon_state = "0,3"},/area/shuttle/drop_omaha/omaha)
 "NO" = (/turf/closed/shuttle/dropship_omaha/landing_gear{icon_state = "landing_gear1_sw"},/area/shuttle/drop_omaha/omaha)
 "NS" = (/turf/closed/shuttle/dropship_omaha{icon_state = "0,8"},/area/shuttle/drop_omaha/omaha)
+"NV" = (/obj/structure/machinery/door_control/omaha_ramp{pixel_y = 32},/turf/open/shuttle/dropship/omaha/grated,/area/shuttle/drop_omaha/omaha)
 "OH" = (/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_10,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
 "OW" = (/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_23,/turf/template_noop,/area/shuttle/drop_omaha/omaha)
 "Pl" = (/obj/structure/shuttle/part/dropship_omaha/ramp_decals/border_00,/turf/open/shuttle/dropship/omaha/ramp/rampio_00,/area/shuttle/drop_omaha/omaha)
@@ -240,7 +241,7 @@ vWmYmuxYwqHDTDalzxalJWAovDSoFCIrbD
 SKsqYdKIqcHDTDalvhalJWChufvamLbMiG
 WaTUbSJbujzqymalakalrgBrrUiePXTUWa
 WaWaWaWaubqlSVhHRbhHJOTHubWaWaWaWa
-WaWaWaWaubRMKHalHDaluYlFubWaWaWaWa
+WaWaWaWaubRMKHalNValuYlFubWaWaWaWa
 WaWaWaWalwRXvsxJxJxJdbUvmDWaWaWaWa
 WaWaWaWaNSHDexHDuqHDMrdUayWaWaWaWa
 WaWaWaWatCHDexbKrhIyMrDhBvWaWaWaWa

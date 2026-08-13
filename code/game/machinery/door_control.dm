@@ -493,3 +493,16 @@
 		linked_hatch.unlock()
 	else
 		linked_hatch.lock()
+
+/obj/structure/machinery/door_control/omaha_ramp
+	icon = 'icons/obj/structures/machinery/mohawk/mohawk-interior-item.dmi'
+	icon_state = "ramp_control"
+	id = "aft_ramp"
+	var/obj/docking_port/mobile/marine_dropship/linked_dropship
+	var/list/ramp_turfs
+
+/obj/structure/machinery/door_control/omaha_ramp/proc/raise()
+	to_chat(world, "raising via button")
+
+/obj/structure/machinery/door_control/omaha_ramp/proc/lower()
+	to_chat(world, "lowering via button")

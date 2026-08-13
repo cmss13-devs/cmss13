@@ -1,0 +1,1 @@
+/datum/equipment_preset/guardian_cultist

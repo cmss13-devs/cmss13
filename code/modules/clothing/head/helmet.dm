@@ -1759,6 +1759,11 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	desc = "UPP headgear issued to Kapitans and above. It is made of high-quality materials, and has the officers rank in gold placed upon the front of the cap."
 	icon_state = "upp_peaked"
 
+/obj/item/clothing/head/uppcap/peaked/mss
+	name = "\improper UPP MSS officer peaked cap"
+	desc = "A peaked cap bearing the insignia of the UPP's Ministry of Space Security. You can't shake the feeling that the person wearing it already knows everything about you."
+	icon_state = "upp_peaked_mss"
+
 /obj/item/clothing/head/uppcap/ushanka
 	name = "\improper UL8 UPP ushanka"
 	icon_state = "upp_ushanka"

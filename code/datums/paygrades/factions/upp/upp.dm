@@ -67,6 +67,14 @@
 	pay_multiplier = 2.5
 	officer_grade = GRADE_OFFICER
 
+//UPP Ministry of Space Security
+/datum/paygrade/upp/mss
+	paygrade = PAY_SHORT_MSS
+	name = "MSS Officer"
+	prefix = "MSS Off."
+	pay_multiplier = 1.5
+	officer_grade = GRADE_OFFICER
+
 //UPP Officers
 /datum/paygrade/upp/uo1
 	paygrade = PAY_SHORT_UO1

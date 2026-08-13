@@ -734,20 +734,21 @@
 	for(var/mob/living/carbon/human/dead_yautja as anything in GLOB.yautja_mob_list)
 		if(dead_yautja.stat != DEAD)
 			continue
-		var/area/location = get_area(dead_yautja)
-		if(location?.flags_area & AREA_YAUTJA_GROUNDS)
+		var/area/current_area = get_area(dead_yautja)
+		if(current_area?.flags_area & AREA_YAUTJA_GROUNDS)
 			continue
-		if(is_reserved_level(dead_yautja.z))
+		var/atom/true_location = get_true_location(dead_yautja)
+		if(is_reserved_level(true_location.z))
 			dead_low_orbit++
-		else if(is_mainship_level(dead_yautja.z))
+		else if(is_mainship_level(true_location.z))
 			dead_on_almayer++
-		else if(is_ground_level(dead_yautja.z))
+		else if(is_ground_level(true_location.z))
 			dead_on_planet++
-		if(hunter_eye.z == dead_yautja.z)
-			var/dist = get_dist(hunter_eye, dead_yautja)
+		if(hunter_eye.z == true_location.z)
+			var/dist = get_dist(hunter_eye, true_location)
 			if(dist < closest)
 				closest = dist
-				direction = Get_Compass_Dir(hunter_eye, dead_yautja)
+				direction = Get_Compass_Dir(hunter_eye, true_location)
 				areaLoc = loc
 
 	var/output = FALSE

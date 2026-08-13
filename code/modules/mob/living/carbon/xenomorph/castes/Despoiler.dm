@@ -394,7 +394,7 @@
 	var/severity = (xeno.health <= (0.7 * xeno.maxHealth)) + (xeno.health <= 0.5 * xeno.maxHealth)
 	var/acid_range = severity + 2
 	var/blocked = FALSE
-	var/loose_per_distance = (60 / (acid_range - 1)) //80 on adjacent tile degrades to 60 on last tile
+	var/loose_per_distance = (60 / (acid_range - 1)) //80 on adjacent tile degrades to 20 on last tile
 
 	for(var/turf/turf in orange(acid_range, get_turf(xeno)))
 		blocked = FALSE

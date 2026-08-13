@@ -237,3 +237,74 @@
       latejoined.
   - balance: Properly implement medbay chemical dispenser energy scaling, based on
       the number of Hospital Corpsmen.
+2026-08-10:
+  Bibby0110:
+  - rscadd: SLs (and other leaders, determined by having big arrow) can now highlight
+      mobs for 4.5 seconds by pointing at them.
+  DangerRevolution:
+  - bugfix: Removed a light bulb floating off the side of the Normandy in mid air.
+  Drathek:
+  - code_imp: Rearranged unit testing code so it can be breakpointed correctly
+  - code_imp: Gamemodes can now specify a required_ready_players which is how many
+      must be ready to start the gamemode (set to 60 for WO)
+  - config: WO will now by default require 120 pop for voting instead of 140 (Also
+      cycles on 65 rounds instead of 75)
+  - bugfix: Fixed groundside operation panel not working on WO because there's no
+      almayer AA gun
+  - bugfix: Fixed WO CO and XO being unable to issue medals
+  - ui: Set TGUI input text for some medal writing inputs
+  - balance: Struggling when restrained by a xeno with a item that does any damage
+      now has a clamped lower end damage of 25
+  - balance: Struggling when restrained by a xeno with a item now only varies between
+      1/2-full of the damage instead of 1/4-full
+  JHINgle4ce:
+  - bugfix: fixed IS_DIAGONAL_DIR check
+  - refactor: usage of IS_DIAGONAL_DIR implemented
+  JohnFulpWillard:
+  - spellcheck: Fixed the description of Mess Technician's headset and updates the
+      encryption key name.
+  MistChristmas:
+  - rscadd: Full auto fire displays ammo counter every time it's divisible by 8.
+  - rscadd: Burstfire drops empty mags instead of holding onto them until the gun
+      is completely empty. Also bypasses your eject to hand preference if that would
+      unwield your gun during a burst.
+  - bugfix: Using guns on burst-fire now displays the ammo counter again.
+  - bugfix: Akimbo firing causing a signal override
+  - bugfix: Weird burst-fire queuing that could make it lose track of amount of shots
+      in a burst.
+  Namen-n:
+  - qol: Platforms can now be melted down.
+  SpypigDev:
+  - bugfix: Dead Yautja Bodies can now be tracked in Body Bags by bracers
+  antlersss:
+  - balance: Dropships and lifeboats can now depart while the main ship is still falling
+      to the ground.
+  - rscadd: Added new ARES announcement text to indicate when lifeboats are disabled.
+  matttheficus:
+  - bugfix: Intel aSLs now get Command Comms and they properly transfer on swapping
+      aSL.
+  - bugfix: XO RTO bag price oversight
+2026-08-11:
+  MistChristmas:
+  - bugfix: Message about not being able to perform surgery due to bad conditions...
+      the turf your standing on. I.E Water/Coast/Dropship
+2026-08-12:
+  SpypigDev:
+  - bugfix: Autodoc pods and cryo pods now account for eschars and third degree burns
+2026-08-13:
+  Drathek dimdimich1996:
+  - balance: Fuelpumps now can take damage from xenos during hijack (including most
+      acid sources)
+  - balance: Fuelpumps cannot be repaired, but have a sizeable health pool - the health
+      of the pump is what matters for hijack now rather than area power
+  - bugfix: Fixed bullet ping override offsets being ignored namely for vehicles (and
+      now fuelpumps)
+  - bugfix: Xenos now get more hijack sfx
+  - bugfix: Fixed weird crusher charge logic for handling of anchored objects.
+  - imageadd: Several new overlays and a destroyed state for fuelpumps by dimdimich1996
+  - code_imp: Boiler acid shotgun now properly flagged as AMMO_XENO
+  - code_imp: Fire extinguishers now always call extinguish_acid on their affected
+      atoms
+  - code_imp: xeno handle_collision procs should now perform less redundant typechecks
+  Venuska1117:
+  - refactor: Changes Runner bone_spur code to use get_turf() instead of locate().

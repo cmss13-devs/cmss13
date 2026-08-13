@@ -288,3 +288,6 @@
   MistChristmas:
   - bugfix: Message about not being able to perform surgery due to bad conditions...
       the turf your standing on. I.E Water/Coast/Dropship
+2026-08-12:
+  SpypigDev:
+  - bugfix: Autodoc pods and cryo pods now account for eschars and third degree burns

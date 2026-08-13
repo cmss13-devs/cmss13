@@ -8,7 +8,7 @@
 	item_state = "plasmacarbine"
 	unacidable = TRUE
 	fire_sound = 'sound/weapons/pred_plasma_shot.ogg'
-	ammo = /datum/ammo/energy/yautja/rifle/bolt
+	ammo = /datum/ammo/energy/yautja/rifle_bolt
 	flags_equip_slot = SLOT_BACK
 	w_class = SIZE_LARGE
 	pixel_x = -2
@@ -109,7 +109,7 @@
 			shot_cost = 1
 			fire_delay = FIRE_DELAY_TIER_8
 			to_chat(usr, SPAN_NOTICE("[src] will now fire incendiary plasma bolts."))
-			ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/rifle/bolt] // high ap and incendiary, but lower damage than the impact-explosive
+			ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/rifle_bolt] // high ap and incendiary, but lower damage than the impact-explosive
 
 #undef FIRE_MODE_INCENDIARY
 #undef FIRE_MODE_EXPLOSIVE

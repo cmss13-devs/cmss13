@@ -106,6 +106,7 @@
 		return TRUE
 	return FALSE
 
+ABSTRACT_TYPE(/datum/resin_construction/resin_obj)
 // Subtype encompassing all resin constructions that are of type /obj
 /datum/resin_construction/resin_obj/build(turf/build_turf, hivenumber, mob/living/carbon/xenomorph/builder)
 	var/path = check_thick_build(build_turf, hivenumber, builder) ? build_path_thick : build_path
@@ -113,6 +114,7 @@
 		return new path(build_turf, hivenumber, builder)
 	return new path(build_turf)
 
+ABSTRACT_TYPE(/datum/resin_construction/resin_turf)
 // Subtype encompassing all resin constructions that are of type /turf
 /datum/resin_construction/resin_turf/build(turf/build_turf, hivenumber, mob/living/carbon/xenomorph/builder)
 	var/path = check_thick_build(build_turf, hivenumber, builder) ? build_path_thick : build_path

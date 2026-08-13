@@ -74,7 +74,6 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, flatten_numeric_alist(alist(
 		/obj/effect/alien/resin/acid_pillar,
 		/obj/effect/alien/resin/shield_pillar,
 		/obj/effect/alien/resin/resin_pillar,
-		/obj/item/explosive/grenade/alien/acid,
 		/obj/structure/alien/movable_wall,
 		/turf/closed/wall/resin,
 		/obj/effect/alien/egg,

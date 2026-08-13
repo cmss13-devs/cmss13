@@ -35,7 +35,6 @@
 	var/list/linked_pylons
 	var/obj/effect/alien/weeds/weeds
 
-	var/list/datum/automata_cell/autocells
 	/**
 	 * Associative list of cleanable types (strings) mapped to
 	 * cleanable objects
@@ -170,7 +169,6 @@
 /turf/Destroy(force)
 	linked_pylons = null
 	weeds = null
-	autocells = null
 	opacity_sources = null
 	baseturfs = null
 
@@ -255,8 +253,10 @@
 	return
 
 // Handles whether an atom is able to enter the src turf
-/turf/Enter(atom/movable/mover, atom/old_loc)
-	if(QDELETED(mover) || !isturf(mover.loc))
+/turf/Enter(atom/movable/mover, atom/oldloc)
+	if(QDELETED(mover))
+		return FALSE // Prevent anything deleted from moving to limit side effects
+	if(!isturf(oldloc))
 		return FALSE
 
 	var/override = SEND_SIGNAL(mover, COMSIG_MOVABLE_TURF_ENTER, src)
@@ -276,66 +276,54 @@
 
 	var/blocking_dir = 0 // The directions that the mover's path is being blocked by
 
-	var/obstacle
-	var/turf/T
-	var/atom/A
-
-	T = mover.loc
-	blocking_dir |= T.BlockedExitDirs(mover, fdir)
+	blocking_dir |= oldloc.BlockedExitDirs(mover, fdir)
 	if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
-		mover.Collide(T)
+		mover.Collide(oldloc)
 		return FALSE
-	for (obstacle in T) //First, check objects to block exit
-		if (mover == obstacle || old_loc == obstacle)
+	for (var/atom/movable/obstacle as anything in oldloc) //First, check objects to block exit
+		if (mover == obstacle)
 			continue
-		A = obstacle
-		if (!istype(A) || !A.can_block_movement)
+		if (!obstacle.can_block_movement)
 			continue
-		blocking_dir |= A.BlockedExitDirs(mover, fdir)
+		blocking_dir |= obstacle.BlockedExitDirs(mover, fdir)
 		if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
-			mover.Collide(A)
+			mover.Collide(obstacle)
 			return FALSE
 
 	// if we are thrown, moved, dragged, or in any other way abused by code - check our diagonals
 	if(!mover.move_intentionally)
 		// Check objects in adjacent turf EAST/WEST
 		if(fd1 && fd1 != fdir)
-			T = get_step(mover, fd1)
+			var/turf/T = get_step(mover, fd1)
 			if (T.BlockedExitDirs(mover, fd2) || T.BlockedPassDirs(mover, fd1))
 				blocking_dir |= fd1
 				if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
 					mover.Collide(T)
 					return FALSE
-			for(obstacle in T)
-				if(old_loc == obstacle)
+			for(var/atom/movable/obstacle as anything in T)
+				if (!obstacle.can_block_movement)
 					continue
-				A = obstacle
-				if (!istype(A) || !A.can_block_movement)
-					continue
-				if (A.BlockedExitDirs(mover, fd2) || A.BlockedPassDirs(mover, fd1))
+				if (obstacle.BlockedExitDirs(mover, fd2) || obstacle.BlockedPassDirs(mover, fd1))
 					blocking_dir |= fd1
 					if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
-						mover.Collide(A)
+						mover.Collide(obstacle)
 						return FALSE
 
 		// Check for borders in adjacent turf NORTH/SOUTH
 		if(fd2 && fd2 != fdir)
-			T = get_step(mover, fd2)
+			var/turf/T = get_step(mover, fd2)
 			if (T.BlockedExitDirs(mover, fd1) || T.BlockedPassDirs(mover, fd2))
 				blocking_dir |= fd2
 				if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
 					mover.Collide(T)
 					return FALSE
-			for(obstacle in T)
-				if(old_loc == obstacle)
+			for(var/atom/movable/obstacle as anything in T)
+				if (!obstacle.can_block_movement)
 					continue
-				A = obstacle
-				if (!istype(A) || !A.can_block_movement)
-					continue
-				if (A.BlockedExitDirs(mover, fd1) || A.BlockedPassDirs(mover, fd2))
+				if (obstacle.BlockedExitDirs(mover, fd1) || obstacle.BlockedPassDirs(mover, fd2))
 					blocking_dir |= fd2
 					if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
-						mover.Collide(A)
+						mover.Collide(obstacle)
 						return FALSE
 					break
 
@@ -344,43 +332,26 @@
 	if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
 		mover.Collide(src)
 		return FALSE
-	for(obstacle in src) //Then, check atoms in the target turf
-		if(old_loc == obstacle)
+	for(var/atom/movable/obstacle as anything in src) //Then, check atoms in the target turf
+		if (!obstacle.can_block_movement)
 			continue
-		A = obstacle
-		if (!istype(A) || !A.can_block_movement)
-			continue
-		blocking_dir |= A.BlockedPassDirs(mover, fdir)
+		blocking_dir |= obstacle.BlockedPassDirs(mover, fdir)
 		if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
-			if(!mover.Collide(A))
+			if(!mover.Collide(obstacle))
 				return FALSE
-
-	if(mover.move_intentionally && istype(src, /turf/open_space) && istype(mover,/mob/living))
-		var/turf/open_space/space = src
-		var/mob/living/climber = mover
-		if(climber.a_intent == INTENT_HARM)
-			return TRUE
-		space.climb_down(climber)
-		return FALSE
-
 
 	return TRUE //Nothing found to block so return success!
 
-/turf/Entered(atom/movable/entered_movable, atom/old_loc)
+/turf/Entered(atom/movable/entered_movable, atom/OldLoc)
 	SHOULD_CALL_PARENT(TRUE)
 
 	..() // Shouldn't do anything but to satisfy lint
 
 	if(QDELETED(entered_movable))
-		return
+		return // Shouldn't be needed, we already fence it in Enter, but just in case
 
 	SEND_SIGNAL(src, COMSIG_TURF_ENTERED, entered_movable)
 	SEND_SIGNAL(entered_movable, COMSIG_MOVABLE_TURF_ENTERED, src)
-
-	// Let explosions know that the atom entered
-	if(old_loc != src)
-		for(var/datum/automata_cell/explosion/cell as anything in autocells)
-			cell.on_turf_entered(entered_movable)
 
 /turf/proc/is_plating()
 	return 0
@@ -487,7 +458,6 @@
 	// return src
 
 	var/list/pylons = linked_pylons
-	var/list/cells = autocells
 
 	var/list/old_baseturfs = baseturfs
 	var/old_ref = weak_reference
@@ -519,8 +489,6 @@
 		new_self.baseturfs = old_baseturfs
 
 	new_self.linked_pylons = pylons
-	if(length(cells))
-		LAZYOR(new_self.autocells, cells)
 
 	new_self.hybrid_lights_affecting = old_hybrid_lights_affecting
 	new_self.dynamic_lumcount = dynamic_lumcount
@@ -700,15 +668,6 @@
 
 /turf/proc/wet_floor()
 	return
-
-/turf/proc/get_cell(type)
-	for(var/datum/automata_cell/existing_cell as anything in autocells)
-		if(istype(existing_cell, type))
-			return existing_cell
-	return null
-
-//////////////////////////////////////////////////////////
-
 
 /turf/proc/can_dig_xeno_tunnel()
 	return FALSE

@@ -479,6 +479,7 @@
 	var/stab_range = 2
 	/// Used for defender's tail 'stab'.
 	var/blunt_stab = FALSE
+	var/damage_multiplier = TAILSTAB_MOB_DAMAGE_MULTIPLIER
 
 /datum/action/xeno_action/onclick/evolve
 	name = "Evolve"
@@ -503,11 +504,12 @@
 	name = "Transmute"
 	action_icon_state = "transmute"
 	action_type = XENO_ACTION_CLICK
+	macro_path = /mob/living/carbon/xenomorph/proc/verb_transmute
 
 /datum/action/xeno_action/onclick/transmute/action_activate()
 	. = ..()
 	var/mob/living/carbon/xenomorph/xeno = owner
-	xeno.transmute_verb()
+	xeno.verb_transmute()
 
 /datum/action/xeno_action/onclick/transmute/can_use_action()
 	if(!owner)

@@ -1,0 +1,4 @@
+author: "cuberound"
+delete-after: True
+changes:
+  - rscadd: "extra tacmap buttons, allows moving up and down z level and changing from ship to map on hud button map"

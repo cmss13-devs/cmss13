@@ -1,0 +1,4 @@
+author: "Jone62"
+delete-after: True
+changes:
+  - code_imp: "Adds a preference to toggle the end round sound theme"

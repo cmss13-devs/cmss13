@@ -919,7 +919,7 @@
 				target_turf = get_step(target_turf, check_dirs[1])
 		var/datum/launch_metadata/launch = new()
 		launch.target = target_turf
-		launch.range = get_dist(AM.loc, target_turf)
+		launch.range = get_dist(entered_movable.loc, target_turf)
 		launch.speed = MIN_SPEED // its water, should look like being moved by a current
 		launch.thrower = unlucky_mob
 		launch.spin = TRUE

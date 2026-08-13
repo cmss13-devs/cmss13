@@ -1417,9 +1417,7 @@
 /turf/open/floor/prison,
 /area/northpoint/oob)
 "adA" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -1937,10 +1935,6 @@
 	},
 /turf/open/floor/prison/greencorner/west,
 /area/northpoint/oob)
-"afp" = (
-/obj/structure/blocker/invisible_wall,
-/turf/open/hybrisa/street/sidewalkfull,
-/area/northpoint/oob)
 "afq" = (
 /obj/effect/decal/hybrisa/colorable_line/line1{
 	color = "#3d3c3c"
@@ -2283,9 +2277,7 @@
 /turf/open/floor/prison/whitegreencorner/north,
 /area/northpoint/oob)
 "agh" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -2730,9 +2722,7 @@
 /turf/open/floor/prison/whitegreenfull,
 /area/northpoint/oob)
 "ahL" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/northpoint/oob)
 "ahM" = (
@@ -2844,9 +2834,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/northpoint/oob)
 "aib" = (
@@ -3037,9 +3025,7 @@
 /turf/open/hybrisa/street/sidewalk,
 /area/northpoint/oob)
 "aiz" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk,
 /area/northpoint/oob)
 "aiA" = (
@@ -3051,9 +3037,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk,
 /area/northpoint/oob)
 "aiB" = (
@@ -3064,9 +3048,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk,
 /area/northpoint/oob)
 "aiC" = (
@@ -3078,9 +3060,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk,
 /area/northpoint/oob)
 "aiD" = (
@@ -3129,9 +3109,7 @@
 	icon_state = "meridian_turquoise_damage_3";
 	pixel_x = -4
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/northpoint/oob)
 "aiJ" = (
@@ -3146,22 +3124,16 @@
 	pixel_x = 1;
 	pixel_y = 2
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk/north,
 /area/northpoint/oob)
 "aiL" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk/north,
 /area/northpoint/oob)
 "aiM" = (
 /obj/structure/prop/structure_lattice,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk/north,
 /area/northpoint/oob)
 "aiN" = (
@@ -3173,9 +3145,7 @@
 	explo_proof = 1
 	},
 /obj/structure/girder/reinforced,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/hybrisa/misc/fire/fire2{
 	color = "#FF7700";
 	icon = 'icons/effects/fire.dmi';
@@ -3190,9 +3160,7 @@
 /obj/structure/prop/hybrisa/vehicles/Meridian/WeylandYutani/damage_5{
 	icon_state = "meridian_wy_damage_5"
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk/north,
 /area/northpoint/oob)
 "aiP" = (
@@ -3203,9 +3171,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk/north,
 /area/northpoint/oob)
 "aiQ" = (
@@ -3218,9 +3184,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk/north,
 /area/northpoint/oob)
 "aiR" = (
@@ -3266,9 +3230,7 @@
 /area/northpoint/oob)
 "aiY" = (
 /obj/structure/prop/structure_lattice,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/northpoint/oob)
 "aiZ" = (
@@ -3337,9 +3299,7 @@
 	icon_state = "meridian_turquoise_damage_3";
 	pixel_x = -4
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "ajf" = (
@@ -3351,9 +3311,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "ajg" = (
@@ -3631,9 +3589,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "ajQ" = (
@@ -3692,9 +3648,7 @@
 	acid_damage = 1;
 	explo_proof = 1
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/hybrisa/vehicles/Meridian/WeylandYutani/damage_3{
 	pixel_y = -12;
 	layer = 3.9;
@@ -3707,9 +3661,7 @@
 /area/northpoint/oob)
 "ajY" = (
 /obj/structure/prop/structure_lattice,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "ajZ" = (
@@ -3718,9 +3670,7 @@
 	pixel_x = 6;
 	icon_state = "meridian_orange_damage_2"
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/hybrisa/vehicles/Meridian/WeylandYutani/damage_3{
 	pixel_y = -12;
 	layer = 3.9;
@@ -3803,9 +3753,7 @@
 /area/northpoint/oob)
 "akj" = (
 /obj/structure/prop/structure_lattice,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/hybrisa/vehicles/Meridian/WeylandYutani/damage_3{
 	pixel_y = -12;
 	layer = 3.9;
@@ -3817,9 +3765,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "akk" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/hybrisa/vehicles/Meridian/WeylandYutani/damage_3{
 	pixel_y = -12;
 	layer = 3.9;
@@ -3840,9 +3786,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "akm" = (
@@ -3882,15 +3826,11 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/northpoint/oob)
 "akr" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "aks" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "akt" = (
@@ -3909,9 +3849,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "akw" = (
@@ -4237,9 +4175,7 @@
 /turf/open/hybrisa/street/sidewalk/north,
 /area/northpoint/outdoors/urban_cave/lz2_south)
 "alB" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -4301,9 +4237,7 @@
 /turf/open/hybrisa/street/cement2,
 /area/northpoint/outdoors/urban_cave/lz2_south)
 "alH" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.99
@@ -4311,9 +4245,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/northpoint/oob)
 "alI" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -4361,9 +4293,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/northpoint/oob)
 "alP" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -4372,9 +4302,7 @@
 /turf/open/hybrisa/street/sidewalk/west,
 /area/northpoint/oob)
 "alQ" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -4430,9 +4358,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/outdoors/urban_cave/lz2_south)
 "alZ" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/effect/decal/hybrisa/doubleroad/lines3{
 	pixel_y = 0
 	},
@@ -4444,9 +4370,7 @@
 /turf/open/hybrisa/street/sidewalkcenter,
 /area/northpoint/oob)
 "ama" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/effect/decal/hybrisa/road/roadmiddle{
 	dir = 1;
 	pixel_y = 14
@@ -4462,9 +4386,7 @@
 /obj/effect/decal/hybrisa/doubleroad/lines3{
 	pixel_y = 0
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -4526,9 +4448,7 @@
 /area/northpoint/outdoors/urban_cave/lz2_south)
 "ami" = (
 /obj/effect/decal/hybrisa/road/road_stop,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.97
@@ -4541,18 +4461,14 @@
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "amj" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/effect/decal/hybrisa/doubleroad/lines2{
 	pixel_y = 1
 	},
 /turf/open/hybrisa/street/sidewalkcenter/north,
 /area/northpoint/oob)
 "amk" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/effect/decal/hybrisa/doubleroad/lines2{
 	pixel_y = 1
 	},
@@ -4603,9 +4519,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/outdoors/urban_cave/lz2_south)
 "amq" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/effect/decal/hybrisa/road/lines2,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
@@ -4621,9 +4535,7 @@
 "amr" = (
 /obj/effect/decal/hybrisa/road/lines4,
 /obj/effect/decal/hybrisa/road/lines2,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.99
@@ -4673,9 +4585,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/outdoors/urban_cave/lz2_south)
 "amy" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/effect/decal/hybrisa/doubleroad/lines4{
 	pixel_x = 4
@@ -4688,17 +4598,19 @@
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "amz" = (
-/obj/structure/blocker/invisible_wall,
+/obj/structure/blocker/invisible_wall/map_edge{
+	opacity = 0
+	},
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "amA" = (
-/obj/structure/blocker/invisible_wall,
+/obj/structure/blocker/invisible_wall/map_edge{
+	opacity = 0
+	},
 /turf/open/hybrisa/street/sidewalk/east,
 /area/northpoint/oob)
 "amB" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/effect/decal/hybrisa/road/lines4,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
@@ -4712,9 +4624,7 @@
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "amC" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/effect/decal/hybrisa/road/lines3,
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
@@ -4725,9 +4635,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "amE" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -4755,9 +4663,7 @@
 /area/northpoint/landing_zone_2)
 "amH" = (
 /obj/structure/girder/reinforced,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/floor/almayer/plate,
 /area/northpoint/oob)
 "amI" = (
@@ -4765,9 +4671,7 @@
 /turf/open/floor/plating/platingdmg3,
 /area/northpoint/outdoors/urban_cave/south_east)
 "amJ" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/effect/decal/hybrisa/road/lines2,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
@@ -4783,9 +4687,7 @@
 "amK" = (
 /obj/effect/decal/hybrisa/road/lines2,
 /obj/effect/decal/hybrisa/road/lines1,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -4797,12 +4699,25 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/hybrisa/street/cement2,
 /area/northpoint/oob)
+"amM" = (
+/obj/structure/fence/slim/dark,
+/turf/open/floor/prison/cell_stripe,
+/area/northpoint/outdoors/urban_cave/south_east)
 "amN" = (
 /turf/open/floor/wood,
 /area/northpoint/oob)
 "amO" = (
 /obj/structure/girder,
 /turf/open/floor/plating/platingdmg3,
+/area/northpoint/outdoors/urban_cave/south_east)
+"amP" = (
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/northpoint/outdoors/urban_cave/south_east)
+"amQ" = (
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 8
+	},
+/turf/open/hybrisa/street/sidewalk/southeast,
 /area/northpoint/outdoors/urban_cave/south_east)
 "amR" = (
 /obj/structure/prop/northpoint/concrete_wall/wired,
@@ -4828,9 +4743,7 @@
 /turf/open/hybrisa/street/sidewalk/north,
 /area/northpoint/oob)
 "amU" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.99
@@ -4900,9 +4813,7 @@
 /obj/structure/platform/metal/hybrisa/metalplatform1,
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/underground_unweedable,
 /area/northpoint/oob)
 "ang" = (
@@ -4914,9 +4825,7 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/structure/platform/metal/hybrisa/metalplatform1,
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/underground_unweedable,
 /area/northpoint/oob)
 "anh" = (
@@ -4928,9 +4837,7 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/structure/platform/metal/hybrisa/metalplatform1,
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/underground_unweedable,
 /area/northpoint/oob)
 "ani" = (
@@ -4943,9 +4850,7 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/structure/platform/metal/hybrisa/metalplatform1,
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/underground_unweedable,
 /area/northpoint/oob)
 "anj" = (
@@ -5015,9 +4920,6 @@
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
 /turf/open/hybrisa/street/underground_unweedable,
 /area/northpoint/oob)
 "anw" = (
@@ -5028,9 +4930,6 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
 /turf/open/hybrisa/street/underground_unweedable,
 /area/northpoint/oob)
 "anx" = (
@@ -5040,9 +4939,6 @@
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
 /turf/open/hybrisa/street/underground_unweedable,
 /area/northpoint/oob)
 "any" = (
@@ -5052,9 +4948,6 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/structure/platform/metal/hybrisa/metalplatform1/east,
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
 /turf/open/hybrisa/street/underground_unweedable,
 /area/northpoint/oob)
 "anz" = (
@@ -5162,9 +5055,7 @@
 /obj/effect/decal/hybrisa/road/road_stop{
 	icon_state = "stop_decal4"
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -5333,6 +5224,12 @@
 "aou" = (
 /turf/open/floor/hybrisa/tile/supermartfloor1,
 /area/northpoint/oob)
+"aov" = (
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 1
+	},
+/turf/open/hybrisa/street/sidewalk,
+/area/northpoint/outdoors/urban_cave/south_east)
 "aow" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt_2,
@@ -5375,9 +5272,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/northpoint/landing_zone_1)
 "aoE" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -5389,9 +5284,7 @@
 /turf/open/floor/almayer/silver,
 /area/northpoint/oob)
 "aoG" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/barricade/handrail{
 	dir = 4
 	},
@@ -5450,9 +5343,7 @@
 /turf/open/floor/almayer/cargo_arrow/north,
 /area/northpoint/oob)
 "aoM" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/floor/almayer/orange2/south,
 /area/northpoint/oob)
 "aoN" = (
@@ -5466,9 +5357,7 @@
 /turf/open/floor/plating/platingdmg2,
 /area/northpoint/outdoors/urban_cave/south_east)
 "aoQ" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -5481,9 +5370,7 @@
 /turf/open/floor/plating/platingdmg1,
 /area/northpoint/outdoors/urban_cave/south_east)
 "aoS" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/barricade/handrail{
 	dir = 4
 	},
@@ -5531,9 +5418,7 @@
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/northpoint/oob)
 "aoY" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.99
@@ -5551,9 +5436,7 @@
 /obj/structure/prop/dam/crane/cargo{
 	pixel_y = -26
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/floor/almayer/orange2/east,
 /area/northpoint/oob)
 "apc" = (
@@ -5561,9 +5444,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/northpoint/outdoors/urban_cave/south_east)
 "apd" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.98
@@ -5659,6 +5540,10 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/northpoint/outdoors/urban_cave/south_east)
+"apq" = (
+/obj/effect/decal/grass_overlay/grass1/dark,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/northpoint/outdoors/urban_cave/south_east)
 "apr" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -5695,6 +5580,10 @@
 "apx" = (
 /obj/structure/prop/northpoint/concrete_wall/wired,
 /turf/open/hybrisa/street/asphalt,
+/area/northpoint/oob)
+"apy" = (
+/obj/structure/blocker/invisible_wall/map_edge,
+/turf/closed/wall/hybrisa/colony/office/reinforced/hull,
 /area/northpoint/oob)
 "apz" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -5774,6 +5663,12 @@
 	},
 /turf/open/hybrisa/street/sidewalkcorner/east,
 /area/northpoint/oob)
+"apL" = (
+/obj/structure/blocker/invisible_wall/map_edge{
+	opacity = 0
+	},
+/turf/open/asphalt/brown,
+/area/northpoint/oob)
 "apM" = (
 /obj/structure/prop/northpoint/concrete_wall/wired,
 /obj/structure/prop/northpoint/concrete_wall/wired{
@@ -5790,15 +5685,16 @@
 /turf/open/hybrisa/street/sidewalk,
 /area/northpoint/outdoors/urban_cave/lz2_south)
 "apO" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.98
 	},
 /turf/open/hybrisa/street/sidewalkcorner/east,
 /area/northpoint/oob)
+"apP" = (
+/turf/open/hybrisa/street/sidewalkcenter/west,
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
 "apQ" = (
 /obj/structure/prop/northpoint/concrete_wall/wired,
 /obj/structure/prop/northpoint/concrete_wall/wired{
@@ -5808,9 +5704,7 @@
 /turf/open/hybrisa/street/sidewalkcorner/north,
 /area/northpoint/oob)
 "apR" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.98
@@ -5862,9 +5756,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/northpoint/oob)
 "apX" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
@@ -5893,9 +5785,7 @@
 	dir = 1;
 	layer = 5.8
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/northpoint/oob)
 "aqb" = (
@@ -5916,7 +5806,10 @@
 /area/northpoint/oob)
 "aqd" = (
 /turf/open/floor/prison/cell_stripe,
-/area/northpoint/oob)
+/area/northpoint/outdoors/urban_cave/south_east)
+"aqe" = (
+/turf/open/hybrisa/street/sidewalkcenter/east,
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
 "aqf" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/hybrisa/misc/fake/wire/red{
@@ -5972,9 +5865,7 @@
 /turf/closed/wall/hybrisa/colony/engineering/reinforced/hull,
 /area/northpoint/oob)
 "aqj" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/effect/decal/hybrisa/road/roadmiddle{
 	dir = 8;
 	pixel_x = 16
@@ -5991,9 +5882,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "aqk" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/effect/decal/hybrisa/doubleroad/lines4{
 	pixel_x = 4
@@ -6010,9 +5899,7 @@
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "aql" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -6021,9 +5908,7 @@
 /turf/open/hybrisa/street/sidewalk/southwest,
 /area/northpoint/oob)
 "aqm" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -6036,9 +5921,7 @@
 /turf/open/hybrisa/street/sidewalk/east,
 /area/northpoint/oob)
 "aqn" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -6062,6 +5945,9 @@
 /obj/structure/platform/metal/hybrisa/metalplatform6,
 /turf/open/hybrisa/street/sidewalk,
 /area/northpoint/oob)
+"aqq" = (
+/turf/open/hybrisa/street/sidewalk/west,
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
 "aqr" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
 /obj/structure/stairs{
@@ -6102,6 +5988,9 @@
 /obj/structure/girder/displaced,
 /turf/open/floor/plating/platingdmg1,
 /area/northpoint/outdoors/urban_cave/east)
+"aqx" = (
+/turf/open/hybrisa/street/sidewalk/east,
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
 "aqy" = (
 /turf/open/floor/strata/multi_tiles,
 /area/northpoint/oob)
@@ -6122,6 +6011,16 @@
 "aqD" = (
 /turf/open/hybrisa/street/sidewalk/east,
 /area/northpoint/outdoors/urban_cave/south_east)
+"aqE" = (
+/obj/structure/blocker/invisible_wall/map_edge{
+	opacity = 0
+	},
+/turf/open/hybrisa/street/sidewalk/west,
+/area/northpoint/oob)
+"aqF" = (
+/obj/effect/decal/hybrisa/road/lines1,
+/turf/open/asphalt/brown,
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
 "aqG" = (
 /turf/open/floor/strata/orange_icorner,
 /area/northpoint/oob)
@@ -6139,20 +6038,32 @@
 "aqJ" = (
 /turf/open/floor/prison/bright_clean_marked,
 /area/northpoint/outdoors/urban_cave/east)
+"aqK" = (
+/obj/effect/decal/hybrisa/road/roadmiddle{
+	dir = 8;
+	pixel_x = 16
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
+"aqL" = (
+/turf/open/hybrisa/street/asphalt,
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
 "aqM" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
 	layer = 2.5
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.99
 	},
 /turf/open/floor/prison/cell_stripe/east,
 /area/northpoint/oob)
+"aqN" = (
+/obj/effect/decal/hybrisa/road/lines4,
+/turf/open/asphalt/brown,
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
 "aqO" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -6165,6 +6076,9 @@
 /obj/structure/girder/displaced,
 /turf/open/floor/plating/platingdmg1,
 /area/northpoint/outdoors/urban_cave/east)
+"aqQ" = (
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
 "aqR" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/blood,
@@ -6221,6 +6135,17 @@
 "aqX" = (
 /turf/open/floor/hybrisa/metal/grated/west,
 /area/northpoint/oob)
+"aqY" = (
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/decal/hybrisa/road/lines2,
+/turf/open/asphalt/brown,
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
+"aqZ" = (
+/obj/effect/decal/hybrisa/road/road_stop{
+	icon_state = "stop_decal2"
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
 "ara" = (
 /turf/open/floor/strata/orange_edge/northeast,
 /area/northpoint/oob)
@@ -6242,9 +6167,7 @@
 /turf/open/hybrisa/street/sidewalk/west,
 /area/northpoint/oob)
 "are" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.97
@@ -6262,9 +6185,7 @@
 /turf/open/floor/hybrisa/misc/wysmallright,
 /area/northpoint/oob)
 "ari" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.98
@@ -6274,9 +6195,7 @@
 "arj" = (
 /obj/effect/decal/hybrisa/road/lines3,
 /obj/effect/decal/hybrisa/road/lines1,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.99
@@ -6285,9 +6204,7 @@
 /area/northpoint/oob)
 "ark" = (
 /obj/effect/decal/hybrisa/road/road_stop,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.98
@@ -6297,9 +6214,7 @@
 "arl" = (
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/effect/decal/hybrisa/road/lines2,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.96
@@ -6319,9 +6234,7 @@
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "arn" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -6330,13 +6243,13 @@
 /turf/open/hybrisa/street/sidewalkcenter/east,
 /area/northpoint/oob)
 "aro" = (
-/obj/structure/blocker/invisible_wall,
+/obj/structure/blocker/invisible_wall/map_edge{
+	opacity = 0
+	},
 /turf/open/hybrisa/street/sidewalkcenter/west,
 /area/northpoint/oob)
 "arp" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/effect/decal/hybrisa/road/roadmiddle{
 	dir = 8;
 	pixel_x = 16
@@ -6365,24 +6278,18 @@
 /turf/open/hybrisa/street/sidewalk,
 /area/northpoint/outdoors/urban_cave/lz2_south)
 "ars" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/northpoint/oob)
 "art" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/effect/decal/hybrisa/doubleroad/lines3{
 	pixel_y = 0
 	},
 /turf/open/hybrisa/street/sidewalkcenter,
 /area/northpoint/oob)
 "aru" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/effect/decal/hybrisa/doubleroad/lines2{
 	pixel_y = 1
 	},
@@ -6523,9 +6430,7 @@
 /turf/open/floor/hybrisa/metal/zbrownfloor1/north,
 /area/northpoint/oob)
 "arR" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk/west,
 /area/northpoint/oob)
 "arS" = (
@@ -6538,9 +6443,7 @@
 /area/northpoint/oob)
 "arT" = (
 /obj/effect/decal/hybrisa/road/lines3,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.97
@@ -6705,9 +6608,7 @@
 	},
 /obj/effect/decal/hybrisa/road/lines4,
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "asp" = (
@@ -6744,9 +6645,7 @@
 "ast" = (
 /obj/effect/decal/hybrisa/road/road_edge,
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.98
@@ -6797,9 +6696,7 @@
 "asz" = (
 /obj/effect/decal/hybrisa/road/road_edge,
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalkcenter/east,
 /area/northpoint/oob)
 "asA" = (
@@ -6811,9 +6708,7 @@
 	pixel_x = 16
 	},
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalkcenter/west,
 /area/northpoint/oob)
 "asB" = (
@@ -6913,9 +6808,7 @@
 	dir = 1;
 	pixel_x = -4
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "asQ" = (
@@ -7207,9 +7100,7 @@
 /turf/open/hybrisa/street/sidewalk/west,
 /area/northpoint/outdoors/urban_cave/south_east)
 "aui" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/floor/plating,
 /area/northpoint/oob)
 "auj" = (
@@ -8463,9 +8354,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/outdoors/urban_cave/lz2_west)
 "ayE" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.97
@@ -8575,9 +8464,7 @@
 /area/northpoint/oob)
 "aza" = (
 /obj/effect/decal/hybrisa/road/lines2,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "azb" = (
@@ -8606,9 +8493,7 @@
 /turf/open/floor/plating/panelscorched,
 /area/northpoint/outdoors/urban_cave/lz2_west)
 "aze" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/cement2,
 /area/northpoint/oob)
 "azf" = (
@@ -8623,21 +8508,15 @@
 /turf/open/shuttle/escapepod/north,
 /area/northpoint/oob)
 "azi" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk/northwest,
 /area/northpoint/oob)
 "azj" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalkcorner/north,
 /area/northpoint/oob)
 "azk" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.97
@@ -8645,9 +8524,7 @@
 /turf/open/hybrisa/street/sidewalkfull,
 /area/northpoint/oob)
 "azl" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
@@ -8691,15 +8568,11 @@
 	dir = 8;
 	layer = 5.99
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/northpoint/oob)
 "azs" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.98
@@ -8738,15 +8611,11 @@
 /obj/effect/decal/hybrisa/doubleroad/lines4{
 	pixel_x = 4
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "azx" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.97
@@ -8761,9 +8630,7 @@
 /turf/closed/wall/hybrisa/colony/hospital,
 /area/northpoint/oob)
 "azz" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -8771,24 +8638,16 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/northpoint/oob)
-"azA" = (
-/obj/structure/prop/northpoint/concrete_wall/wired,
-/obj/structure/blocker/invisible_wall,
-/turf/open/hybrisa/street/sidewalk/southwest,
-/area/northpoint/oob)
 "azB" = (
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.98
 	},
 /obj/structure/prop/northpoint/concrete_wall/wired,
-/obj/structure/blocker/invisible_wall,
 /turf/open/hybrisa/street/sidewalk,
 /area/northpoint/oob)
 "azC" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.96
@@ -8803,21 +8662,16 @@
 /obj/structure/barricade/handrail{
 	dir = 4
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk/east,
 /area/northpoint/oob)
 "azF" = (
 /obj/structure/platform/metal/hybrisa/metalplatform2,
 /obj/structure/prop/northpoint/concrete_wall/wired,
-/obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/northpoint/oob)
 "azG" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalkcorner/west,
 /area/northpoint/oob)
 "azH" = (
@@ -8825,9 +8679,7 @@
 /turf/closed/wall/hybrisa/colony,
 /area/northpoint/oob)
 "azI" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.98
@@ -8844,9 +8696,7 @@
 /turf/open/hybrisa/street/sidewalk,
 /area/northpoint/oob)
 "azK" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.98
@@ -8859,9 +8709,7 @@
 /turf/open/hybrisa/street/sidewalk/north,
 /area/northpoint/oob)
 "azL" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.98
@@ -8869,9 +8717,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/northpoint/oob)
 "azM" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.98
@@ -8879,9 +8725,7 @@
 /turf/open/hybrisa/street/sidewalk/north,
 /area/northpoint/oob)
 "azN" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.98
@@ -8894,9 +8738,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/northpoint/oob)
 "azO" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.98
@@ -8918,9 +8760,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/northpoint/oob)
 "azS" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.97
@@ -8949,15 +8789,11 @@
 /area/northpoint/oob)
 "azV" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk,
 /area/northpoint/oob)
 "azW" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.98
@@ -8997,9 +8833,7 @@
 /turf/open/hybrisa/street/sidewalk/west,
 /area/northpoint/outdoors/urban_cave/lz2_west)
 "aAa" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.98
@@ -9007,9 +8841,7 @@
 /turf/open/floor/plating,
 /area/northpoint/oob)
 "aAb" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.98
@@ -9039,9 +8871,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/northpoint/oob)
 "aAd" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/effect/decal/hybrisa/road/lines3,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
@@ -9167,9 +8997,7 @@
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalkcenter,
 /area/northpoint/oob)
 "aAx" = (
@@ -9368,9 +9196,7 @@
 	pixel_x = 4;
 	density = 0
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/floor/plating/platingdmg3,
 /area/northpoint/oob)
 "aAX" = (
@@ -9416,9 +9242,7 @@
 /turf/open/floor/strata/red3/west,
 /area/northpoint/oob)
 "aBb" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.97
@@ -9432,15 +9256,11 @@
 /area/northpoint/oob)
 "aBc" = (
 /obj/structure/girder/displaced,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/floor/almayer/plate,
 /area/northpoint/oob)
 "aBd" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/girder/displaced,
 /turf/open/floor/hybrisa/tile/tilebeige,
 /area/northpoint/oob)
@@ -9580,6 +9400,11 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/strata/red1,
 /area/northpoint/oob)
+"aBp" = (
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/effect/decal/hybrisa/road/lines2,
+/turf/open/asphalt/brown,
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
 "aBq" = (
 /turf/open/floor/prison/darkpurple2/southwest,
 /area/northpoint/oob)
@@ -9672,9 +9497,7 @@
 	dir = 4;
 	layer = 5.98
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -9691,15 +9514,11 @@
 /turf/closed/wall/biodome,
 /area/northpoint/oob)
 "aBA" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk/east,
 /area/northpoint/oob)
 "aBB" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/floor/hybrisa/metal/grated,
 /area/northpoint/oob)
 "aBC" = (
@@ -9714,9 +9533,7 @@
 	},
 /area/northpoint/oob)
 "aBE" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalkfull,
 /area/northpoint/oob)
 "aBF" = (
@@ -9725,9 +9542,7 @@
 	layer = 5.8;
 	pixel_y = -6
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk/west,
 /area/northpoint/oob)
 "aBG" = (
@@ -9741,9 +9556,7 @@
 	layer = 5.8;
 	pixel_y = -6
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk/east,
 /area/northpoint/oob)
 "aBI" = (
@@ -9773,9 +9586,7 @@
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "aBL" = (
@@ -9823,9 +9634,7 @@
 /turf/open/hybrisa/street/cement3,
 /area/northpoint/oob)
 "aBS" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/alt{
 	dir = 1;
 	pixel_y = -6
@@ -9841,9 +9650,7 @@
 	layer = 5.8;
 	pixel_y = -6
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "aBU" = (
@@ -9855,9 +9662,7 @@
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "aBV" = (
@@ -9908,9 +9713,7 @@
 /turf/open/hybrisa/street/sidewalk/south,
 /area/northpoint/oob)
 "aBZ" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk/south,
 /area/northpoint/oob)
 "aCa" = (
@@ -9939,7 +9742,6 @@
 	layer = 5.98
 	},
 /obj/structure/prop/northpoint/concrete_wall/wired,
-/obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating/platingdmg3,
 /area/northpoint/oob)
 "aCd" = (
@@ -10217,9 +10019,7 @@
 /turf/open/floor/prison/darkyellowcorners2/north,
 /area/northpoint/oob)
 "aCV" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -10495,16 +10295,12 @@
 /obj/effect/decal/hybrisa/doubleroad/lines3{
 	pixel_y = 0
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalkcenter,
 /area/northpoint/oob)
 "aDO" = (
 /obj/structure/prop/northpoint/concrete_wall/wired,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk,
 /area/northpoint/oob)
 "aDP" = (
@@ -11354,9 +11150,7 @@
 	layer = 5.8;
 	pixel_y = -6
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/underground_unweedable,
 /area/northpoint/oob)
 "aFE" = (
@@ -11397,9 +11191,7 @@
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "aFK" = (
@@ -11408,9 +11200,7 @@
 	layer = 5.8;
 	pixel_y = -6
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk/north,
 /area/northpoint/oob)
 "aFL" = (
@@ -11419,9 +11209,7 @@
 	layer = 5.8;
 	pixel_y = -6
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4
 	},
@@ -11436,9 +11224,7 @@
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk,
 /area/northpoint/oob)
 "aFN" = (
@@ -11457,9 +11243,7 @@
 /turf/open/asphalt/brown,
 /area/northpoint/outdoors/urban_cave/lz2_south)
 "aFP" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -11484,9 +11268,7 @@
 "aFS" = (
 /obj/effect/decal/hybrisa/road/lines4,
 /obj/effect/decal/hybrisa/road/lines2,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -11499,9 +11281,7 @@
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "aFT" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/alt{
 	dir = 1;
 	pixel_y = -6
@@ -11523,9 +11303,7 @@
 /turf/open/hybrisa/street/sidewalk/northeast,
 /area/northpoint/outdoors/urban_cave/lz2_south)
 "aFW" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -11537,9 +11315,7 @@
 /turf/open/hybrisa/street/sidewalk/north,
 /area/northpoint/oob)
 "aFX" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -11553,9 +11329,7 @@
 	layer = 5.8;
 	pixel_y = -6
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "aFZ" = (
@@ -11590,9 +11364,7 @@
 /turf/open/asphalt/brown,
 /area/northpoint/outdoors/urban_cave/lz2_south)
 "aGd" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/effect/decal/hybrisa/road/lines3,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
@@ -11605,9 +11377,7 @@
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "aGe" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/effect/decal/hybrisa/road/lines3,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
@@ -11617,9 +11387,7 @@
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "aGf" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/effect/decal/hybrisa/road/lines3,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
@@ -11631,10 +11399,14 @@
 	},
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
+"aGg" = (
+/turf/open/hybrisa/street/sidewalk/northwest,
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
+"aGh" = (
+/turf/open/hybrisa/street/sidewalk/northeast,
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
 "aGi" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/effect/decal/hybrisa/road/roadmiddle{
 	dir = 1;
 	pixel_y = 14
@@ -11710,14 +11482,17 @@
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/outdoors/urban_cave/lz2_south)
+"aGq" = (
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/decal/hybrisa/road/lines3,
+/turf/open/hybrisa/street/asphalt,
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
 "aGr" = (
 /obj/effect/decal/hybrisa/road/roadmiddle{
 	dir = 1;
 	pixel_y = 14
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -11729,9 +11504,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "aGs" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/effect/decal/hybrisa/doubleroad/lines3{
 	pixel_y = 0
 	},
@@ -11746,9 +11519,7 @@
 /turf/open/hybrisa/street/sidewalkcenter,
 /area/northpoint/oob)
 "aGt" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/effect/decal/hybrisa/road/road_stop{
 	icon_state = "stop_decal3"
 	},
@@ -11760,9 +11531,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "aGu" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -11771,9 +11540,7 @@
 /turf/open/hybrisa/street/roadlines4,
 /area/northpoint/oob)
 "aGv" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -11782,9 +11549,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "aGw" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/effect/decal/hybrisa/doubleroad/lines2{
 	pixel_y = 1
 	},
@@ -11795,9 +11560,7 @@
 /area/northpoint/oob)
 "aGx" = (
 /obj/effect/decal/hybrisa/road/road_stop,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "aGy" = (
@@ -11810,9 +11573,7 @@
 /obj/effect/decal/hybrisa/doubleroad/lines2{
 	pixel_y = 1
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.99
@@ -11860,9 +11621,7 @@
 /turf/open/hybrisa/street/sidewalkcenter/north,
 /area/northpoint/outdoors/urban_cave/lz2_south)
 "aGE" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -11874,9 +11633,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "aGF" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	pixel_y = -6;
@@ -11932,9 +11689,7 @@
 /turf/open/asphalt/brown,
 /area/northpoint/outdoors/urban_cave/lz2_south)
 "aGN" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -11945,6 +11700,10 @@
 	},
 /turf/open/hybrisa/street/sidewalk/east,
 /area/northpoint/oob)
+"aGO" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/turf/open/hybrisa/street/asphalt,
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
 "aGP" = (
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/effect/decal/hybrisa/road/lines3,
@@ -11954,9 +11713,7 @@
 /obj/effect/decal/hybrisa/road/road_stop{
 	icon_state = "stop_decal4"
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.99
@@ -11971,9 +11728,7 @@
 "aGR" = (
 /obj/effect/decal/hybrisa/road/lines4,
 /obj/effect/decal/hybrisa/road/lines3,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -11986,9 +11741,7 @@
 	dir = 4;
 	layer = 5.98
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk,
 /area/northpoint/oob)
 "aGT" = (
@@ -12148,9 +11901,7 @@
 	dir = 4;
 	layer = 5.97
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk/north,
 /area/northpoint/oob)
 "aHn" = (
@@ -12268,17 +12019,13 @@
 /area/northpoint/outdoors/urban_cave/lz2_south)
 "aHD" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/northpoint/oob)
 "aHE" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/cement2,
 /area/northpoint/oob)
 "aHF" = (
@@ -12327,17 +12074,12 @@
 /area/northpoint/outdoors/urban_cave/lz2_south)
 "aHO" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/northpoint/oob)
 "aHP" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/northpoint/oob)
 "aHQ" = (
@@ -12430,15 +12172,11 @@
 	dir = 4;
 	layer = 5.99
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/cement3,
 /area/northpoint/oob)
 "aIe" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.9
@@ -12457,9 +12195,7 @@
 	dir = 4;
 	layer = 5.98
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -12488,9 +12224,7 @@
 	dir = 4;
 	layer = 5.99
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk/north,
 /area/northpoint/oob)
 "aIj" = (
@@ -12504,9 +12238,7 @@
 	dir = 4;
 	layer = 5.98
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -12525,9 +12257,7 @@
 	dir = 4;
 	layer = 5.99
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalkcenter,
 /area/northpoint/oob)
 "aIn" = (
@@ -12545,9 +12275,7 @@
 /turf/open/floor/plating/platingdmg3,
 /area/northpoint/outdoors/urban_cave/south_east)
 "aIp" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.9
@@ -12567,9 +12295,7 @@
 	dir = 4;
 	layer = 5.99
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -12578,9 +12304,7 @@
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "aIs" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.9
@@ -12602,15 +12326,11 @@
 	dir = 4;
 	layer = 5.99
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk,
 /area/northpoint/oob)
 "aIv" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/barricade/handrail{
 	dir = 4
 	},
@@ -12636,15 +12356,11 @@
 	dir = 4;
 	layer = 5.98
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk/north,
 /area/northpoint/oob)
 "aIz" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/barricade/handrail{
 	dir = 4
 	},
@@ -12672,9 +12388,7 @@
 /turf/open/hybrisa/street/sidewalk/east,
 /area/northpoint/oob)
 "aIC" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/barricade/handrail{
 	dir = 4
 	},
@@ -12690,9 +12404,7 @@
 /turf/open/asphalt/brown,
 /area/northpoint/outdoors/urban_cave/south_east)
 "aIE" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.99
@@ -12703,18 +12415,16 @@
 /obj/effect/decal/hybrisa/doubleroad/lines4{
 	pixel_x = 4
 	},
-/obj/structure/blocker/invisible_wall,
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.98
 	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "aIG" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/barricade/handrail{
 	dir = 4
 	},
@@ -12747,9 +12457,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/outdoors/urban_cave/south_east)
 "aIK" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.98
@@ -12760,12 +12468,12 @@
 /obj/effect/decal/hybrisa/doubleroad/lines4{
 	pixel_x = 4
 	},
-/obj/structure/blocker/invisible_wall,
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.97
 	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "aIM" = (
@@ -12773,9 +12481,7 @@
 /turf/open/floor/hybrisa/metal/redcorner/east,
 /area/northpoint/landing_zone_1)
 "aIN" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/barricade/handrail{
 	dir = 4
 	},
@@ -12792,29 +12498,27 @@
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/northpoint/oob)
 "aIP" = (
-/obj/structure/blocker/invisible_wall,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.97
 	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk/east,
 /area/northpoint/oob)
 "aIQ" = (
 /obj/effect/decal/hybrisa/doubleroad/lines4{
 	pixel_x = 4
 	},
-/obj/structure/blocker/invisible_wall,
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.96
 	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "aIR" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/barricade/handrail{
 	dir = 4
 	},
@@ -12825,7 +12529,6 @@
 /turf/open/hybrisa/street/sidewalk/east,
 /area/northpoint/oob)
 "aIS" = (
-/obj/structure/blocker/invisible_wall,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.96
@@ -12835,12 +12538,11 @@
 	layer = 5.8;
 	pixel_y = -6
 	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk/east,
 /area/northpoint/oob)
 "aIT" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
@@ -12849,9 +12551,7 @@
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "aIU" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.94
@@ -12859,9 +12559,7 @@
 /turf/open/hybrisa/street/sidewalk/east,
 /area/northpoint/oob)
 "aIV" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/effect/decal/hybrisa/doubleroad/lines4{
 	pixel_x = 4
@@ -12876,9 +12574,7 @@
 /obj/effect/decal/hybrisa/doubleroad/lines4{
 	pixel_x = 4
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
@@ -12896,9 +12592,7 @@
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "aIX" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.93
@@ -12912,9 +12606,7 @@
 /turf/open/hybrisa/street/sidewalk/east,
 /area/northpoint/outdoors/urban_cave/lz2_west)
 "aIZ" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.92
@@ -12922,9 +12614,7 @@
 /turf/open/hybrisa/street/sidewalk/east,
 /area/northpoint/oob)
 "aJa" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/barricade/handrail{
 	dir = 4
 	},
@@ -12935,9 +12625,7 @@
 /turf/open/hybrisa/street/sidewalk/east,
 /area/northpoint/oob)
 "aJb" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -13066,18 +12754,13 @@
 	layer = 5.8;
 	pixel_y = -6
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk/north,
 /area/northpoint/oob)
 "aJv" = (
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.99
-	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/northpoint/oob)
@@ -13086,9 +12769,7 @@
 	dir = 4;
 	layer = 5.99
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "aJx" = (
@@ -13103,9 +12784,6 @@
 	dir = 4;
 	layer = 5.98
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/northpoint/oob)
 "aJz" = (
@@ -13113,18 +12791,13 @@
 	dir = 4;
 	layer = 5.98
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalkcenter,
 /area/northpoint/oob)
 "aJA" = (
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.97
-	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/northpoint/oob)
@@ -13133,18 +12806,13 @@
 	dir = 4;
 	layer = 5.97
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalkcenter/north,
 /area/northpoint/oob)
 "aJC" = (
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.96
-	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/northpoint/oob)
@@ -13153,9 +12821,7 @@
 	dir = 4;
 	layer = 5.96
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "aJE" = (
@@ -13165,9 +12831,6 @@
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.95
-	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/northpoint/oob)
@@ -13183,9 +12846,6 @@
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.8
-	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/northpoint/oob)
@@ -13207,9 +12867,7 @@
 	layer = 5.8;
 	pixel_y = -6
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/northpoint/oob)
 "aJK" = (
@@ -13217,15 +12875,11 @@
 	dir = 4;
 	layer = 5.99
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/northpoint/oob)
 "aJL" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -13238,9 +12892,7 @@
 /turf/open/hybrisa/street/sidewalk/east,
 /area/northpoint/oob)
 "aJM" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.97
@@ -13248,9 +12900,7 @@
 /turf/open/hybrisa/street/sidewalk/west,
 /area/northpoint/oob)
 "aJN" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -13263,9 +12913,7 @@
 /turf/open/hybrisa/street/sidewalk/west,
 /area/northpoint/oob)
 "aJO" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.97
@@ -13274,9 +12922,7 @@
 /area/northpoint/oob)
 "aJP" = (
 /obj/structure/blocker/invisible_wall,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.96
@@ -13289,9 +12935,7 @@
 	layer = 5.8;
 	pixel_y = -6
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.95
@@ -13303,9 +12947,7 @@
 	dir = 4;
 	layer = 5.97
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "aJS" = (
@@ -13313,9 +12955,7 @@
 	dir = 4;
 	layer = 5.96
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "aJT" = (
@@ -13323,9 +12963,7 @@
 	dir = 4;
 	layer = 5.95
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "aJU" = (
@@ -13333,9 +12971,7 @@
 	dir = 4;
 	layer = 5.94
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "aJV" = (
@@ -13343,9 +12979,7 @@
 	dir = 4;
 	layer = 5.93
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "aJW" = (
@@ -13353,9 +12987,7 @@
 	dir = 4;
 	layer = 5.92
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "aJX" = (
@@ -13364,9 +12996,7 @@
 	layer = 5.8;
 	pixel_y = -6
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "aJY" = (
@@ -13379,11 +13009,14 @@
 	layer = 5.8;
 	pixel_y = -6
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
+"aJZ" = (
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/effect/decal/hybrisa/road/lines3,
+/turf/open/hybrisa/street/asphalt,
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
 "aKa" = (
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
@@ -13394,9 +13027,7 @@
 	dir = 4;
 	layer = 5.98
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "aKb" = (
@@ -13411,9 +13042,7 @@
 	dir = 4;
 	layer = 5.99
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk/west,
 /area/northpoint/oob)
 "aKd" = (
@@ -13421,9 +13050,7 @@
 	dir = 4;
 	layer = 5.98
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk/west,
 /area/northpoint/oob)
 "aKe" = (
@@ -13442,9 +13069,7 @@
 	layer = 5.8;
 	pixel_y = -6
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/cement2,
 /area/northpoint/oob)
 "aKg" = (
@@ -13457,9 +13082,7 @@
 	layer = 5.8;
 	pixel_y = -6
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk/west,
 /area/northpoint/oob)
 "aKh" = (
@@ -13477,7 +13100,6 @@
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "aKj" = (
-/obj/structure/blocker/invisible_wall,
 /obj/structure/prop/hybrisa/vehicles/Armored_Truck/fire_truck{
 	pixel_x = -39;
 	dir = 1;
@@ -13485,6 +13107,9 @@
 	icon_state = "small_firetruck_red_damage_2";
 	explo_proof = 1;
 	unacidable = 1
+	},
+/obj/structure/blocker/invisible_wall/map_edge{
+	opacity = 0
 	},
 /turf/open/hybrisa/street/sidewalkcenter/west,
 /area/northpoint/oob)
@@ -13502,9 +13127,7 @@
 	dir = 4;
 	layer = 5.99
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/cement2,
 /area/northpoint/oob)
 "aKm" = (
@@ -13535,9 +13158,7 @@
 	dir = 4;
 	layer = 5.98
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/cement2,
 /area/northpoint/oob)
 "aKp" = (
@@ -13559,12 +13180,14 @@
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "aKq" = (
-/obj/structure/blocker/invisible_wall,
 /obj/structure/prop/hybrisa/vehicles/car_pileup{
 	explo_proof = 1;
 	density = 0;
 	pixel_x = -123;
 	pixel_y = -15
+	},
+/obj/structure/blocker/invisible_wall/map_edge{
+	opacity = 0
 	},
 /turf/open/hybrisa/street/sidewalkcenter/west,
 /area/northpoint/oob)
@@ -13573,9 +13196,7 @@
 	dir = 4;
 	layer = 5.97
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/cement2,
 /area/northpoint/oob)
 "aKs" = (
@@ -13583,9 +13204,7 @@
 	dir = 4;
 	layer = 5.96
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/cement2,
 /area/northpoint/oob)
 "aKt" = (
@@ -13617,9 +13236,7 @@
 	dir = 4;
 	layer = 5.95
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/cement2,
 /area/northpoint/oob)
 "aKw" = (
@@ -13645,9 +13262,7 @@
 	dir = 4;
 	layer = 5.94
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/cement2,
 /area/northpoint/oob)
 "aKz" = (
@@ -13669,7 +13284,6 @@
 	icon_state = "meridian_red_damage_5";
 	pixel_y = -7
 	},
-/obj/structure/blocker/invisible_wall,
 /obj/structure/prop/hybrisa/misc/fire/fire1{
 	color = "#ffa700";
 	layer = 7;
@@ -13684,9 +13298,7 @@
 	dir = 4;
 	layer = 5.93
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/cement2,
 /area/northpoint/oob)
 "aKC" = (
@@ -13707,9 +13319,7 @@
 	dir = 4;
 	layer = 5.92
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/cement2,
 /area/northpoint/oob)
 "aKE" = (
@@ -13722,9 +13332,7 @@
 	dir = 4;
 	layer = 5.91
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/cement2,
 /area/northpoint/oob)
 "aKG" = (
@@ -13733,9 +13341,7 @@
 	dir = 4;
 	layer = 5.99
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk/west,
 /area/northpoint/oob)
 "aKH" = (
@@ -13743,9 +13349,7 @@
 	dir = 4;
 	layer = 5.97
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk/west,
 /area/northpoint/oob)
 "aKI" = (
@@ -13753,9 +13357,7 @@
 	dir = 4;
 	layer = 5.96
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk/west,
 /area/northpoint/oob)
 "aKJ" = (
@@ -13763,9 +13365,7 @@
 	dir = 4;
 	layer = 5.95
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk/west,
 /area/northpoint/oob)
 "aKK" = (
@@ -13774,9 +13374,7 @@
 	layer = 5.99
 	},
 /obj/structure/prop/northpoint/concrete_wall/alt,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk/east,
 /area/northpoint/oob)
 "aKL" = (
@@ -13784,15 +13382,11 @@
 	dir = 4;
 	layer = 5.98
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk/east,
 /area/northpoint/oob)
 "aKM" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.97
@@ -13800,9 +13394,7 @@
 /turf/open/hybrisa/street/sidewalk/east,
 /area/northpoint/oob)
 "aKN" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.96
@@ -13810,9 +13402,7 @@
 /turf/open/hybrisa/street/sidewalk/east,
 /area/northpoint/oob)
 "aKO" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.95
@@ -13820,9 +13410,7 @@
 /turf/open/hybrisa/street/sidewalk/east,
 /area/northpoint/oob)
 "aKP" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
@@ -13831,9 +13419,7 @@
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "aKQ" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.98
@@ -13841,9 +13427,7 @@
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "aKR" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
@@ -13852,9 +13436,7 @@
 /turf/open/hybrisa/street/sidewalkcenter/west,
 /area/northpoint/oob)
 "aKS" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.98
@@ -13865,9 +13447,7 @@
 /turf/closed/wall/hybrisa/colony,
 /area/northpoint/outdoors/urban_cave/north_east)
 "aKU" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.97
@@ -13875,9 +13455,7 @@
 /turf/open/hybrisa/street/sidewalkcenter/west,
 /area/northpoint/oob)
 "aKV" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
@@ -13886,9 +13464,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "aKW" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.98
@@ -13896,23 +13472,17 @@
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "aKX" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired,
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "aKY" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired,
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "aKZ" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
@@ -13921,9 +13491,7 @@
 /turf/open/hybrisa/street/sidewalk,
 /area/northpoint/oob)
 "aLa" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
@@ -13932,9 +13500,7 @@
 /turf/open/hybrisa/street/sidewalk/north,
 /area/northpoint/oob)
 "aLb" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/hybrisa/fakeplatforms/platform4/deco,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
@@ -13951,9 +13517,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/northpoint/oob)
 "aLd" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/platform/metal/hybrisa/metalplatform1/east,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
@@ -13986,9 +13550,7 @@
 /turf/open/hybrisa/street/sidewalk/north,
 /area/northpoint/oob)
 "aLh" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/platform/metal/hybrisa/metalplatform1/east,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
@@ -14019,9 +13581,7 @@
 	dir = 4;
 	layer = 5.99
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/floor/corsat/spiralplate,
 /area/northpoint/oob)
 "aLl" = (
@@ -14037,22 +13597,6 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/northpoint/oob)
-"aLn" = (
-/obj/structure/blocker/invisible_wall,
-/obj/structure/prop/northpoint/concrete_wall/wired{
-	dir = 4;
-	layer = 5.96
-	},
-/turf/open/auto_turf/tyrargo_grass/layer0,
-/area/northpoint/oob)
-"aLo" = (
-/obj/structure/blocker/invisible_wall,
-/obj/structure/prop/northpoint/concrete_wall/wired{
-	dir = 4;
-	layer = 5.95
-	},
-/turf/open/auto_turf/tyrargo_grass/layer0,
-/area/northpoint/oob)
 "aLp" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/hybrisa/street/sidewalk/west,
@@ -14060,14 +13604,6 @@
 "aLq" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1,
 /turf/open/floor/prison/floor_plate/southwest,
-/area/northpoint/oob)
-"aLr" = (
-/obj/structure/blocker/invisible_wall,
-/obj/structure/prop/northpoint/concrete_wall/wired{
-	dir = 4;
-	layer = 5.8
-	},
-/turf/open/auto_turf/tyrargo_grass/layer0,
 /area/northpoint/oob)
 "aLs" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -14083,11 +13619,14 @@
 	dir = 8;
 	layer = 5.9
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk,
 /area/northpoint/oob)
+"aLv" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/hybrisa/road/lines1,
+/turf/open/hybrisa/street/asphalt,
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
 "aLw" = (
 /obj/structure/prop/northpoint/concrete_wall/wired,
 /turf/open/hybrisa/street/sidewalk/southeast,
@@ -14104,35 +13643,36 @@
 /obj/structure/prop/northpoint/concrete_wall/wired,
 /turf/open/hybrisa/street/sidewalk/southwest,
 /area/northpoint/oob)
+"aLA" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/turf/open/hybrisa/street/asphalt,
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
 "aLB" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalkcorner,
 /area/northpoint/oob)
+"aLC" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/hybrisa/road/lines4,
+/turf/open/hybrisa/street/asphalt,
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
 "aLD" = (
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/effect/decal/hybrisa/road/lines3,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "aLE" = (
 /obj/effect/decal/hybrisa/road/road_stop{
 	icon_state = "stop_decal4"
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "aLF" = (
 /obj/effect/decal/hybrisa/road/lines3,
 /obj/effect/decal/hybrisa/road/lines4,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "aLG" = (
@@ -14152,17 +13692,15 @@
 	layer = 6.01
 	},
 /turf/open/floor/prison/floor_plate/southwest,
-/area/northpoint/oob)
+/area/northpoint/outdoors/urban_cave/south_east)
 "aLJ" = (
 /obj/structure/prop/hybrisa/misc/stoneplanterseats/empty{
 	layer = 6.01
 	},
 /turf/open/floor/prison/floor_plate/southwest,
-/area/northpoint/oob)
+/area/northpoint/outdoors/urban_cave/south_east)
 "aLK" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.98
@@ -14190,9 +13728,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/northpoint/oob)
 "aLP" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.97
@@ -14212,9 +13748,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/northpoint/oob)
 "aLS" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.99
@@ -14222,9 +13756,7 @@
 /turf/open/hybrisa/street/sidewalk/north,
 /area/northpoint/oob)
 "aLT" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/northpoint/oob)
 "aLU" = (
@@ -14266,9 +13798,7 @@
 /turf/open/floor/hybrisa/metal/grated/east,
 /area/northpoint/outdoors/urban_cave/lz2_west)
 "aMd" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.98
@@ -14281,9 +13811,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/northpoint/oob)
 "aMe" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -14296,9 +13824,7 @@
 	icon_state = "W";
 	layer = 2.5
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.98
@@ -14306,9 +13832,7 @@
 /turf/open/floor/prison/cell_stripe/east,
 /area/northpoint/oob)
 "aMg" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.99
@@ -14316,9 +13840,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/northpoint/oob)
 "aMh" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -14335,9 +13857,7 @@
 	icon_state = "W";
 	layer = 2.5
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.97
@@ -14345,9 +13865,7 @@
 /turf/open/floor/prison/cell_stripe/east,
 /area/northpoint/oob)
 "aMj" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -14394,9 +13912,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/northpoint/oob)
 "aMr" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -14415,9 +13931,7 @@
 /turf/open/hybrisa/street/sidewalkcorner,
 /area/northpoint/outdoors/urban_cave/lz2_west)
 "aMu" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.97
@@ -14425,9 +13939,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/northpoint/oob)
 "aMv" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.98
@@ -14435,9 +13947,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/northpoint/oob)
 "aMw" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.96
@@ -14455,9 +13965,7 @@
 /turf/open/floor/strata/orange_cover,
 /area/northpoint/outdoors/urban_cave/east)
 "aMz" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.95
@@ -14465,9 +13973,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/northpoint/oob)
 "aMA" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.99
@@ -14492,9 +13998,7 @@
 /turf/open/floor/hybrisa/tile/tilebeige,
 /area/northpoint/outdoors/urban_cave/lz2_west)
 "aME" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.97
@@ -14513,16 +14017,12 @@
 /area/northpoint/oob)
 "aMG" = (
 /obj/effect/decal/hybrisa/road/lines3,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "aMH" = (
 /obj/effect/decal/hybrisa/road/road_stop,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.97
@@ -14538,9 +14038,7 @@
 /turf/open/hybrisa/street/sidewalk/southwest,
 /area/northpoint/oob)
 "aMJ" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.98
@@ -14560,9 +14058,7 @@
 /obj/effect/decal/hybrisa/doubleroad/lines1{
 	pixel_x = -4
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "aMM" = (
@@ -14574,15 +14070,11 @@
 /turf/open/hybrisa/street/sidewalkcenter/west,
 /area/northpoint/oob)
 "aMN" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalkcenter/east,
 /area/northpoint/oob)
 "aMO" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.98
@@ -14593,9 +14085,7 @@
 /turf/closed/wall/hybrisa/colony/office/reinforced,
 /area/northpoint/outdoors/urban_cave/lz2_west)
 "aMQ" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.99
@@ -14603,9 +14093,7 @@
 /turf/open/hybrisa/street/sidewalkcenter/east,
 /area/northpoint/oob)
 "aMR" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.98
@@ -14618,9 +14106,7 @@
 /turf/open/hybrisa/street/sidewalkcenter/east,
 /area/northpoint/oob)
 "aMS" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/effect/decal/hybrisa/road/lines4,
 /obj/effect/decal/hybrisa/doubleroad/lines1{
 	pixel_x = -4
@@ -14632,9 +14118,7 @@
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "aMT" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/effect/decal/hybrisa/road/lines4,
 /obj/effect/decal/hybrisa/doubleroad/lines1{
 	pixel_x = -4
@@ -14651,18 +14135,16 @@
 	},
 /obj/effect/decal/hybrisa/road/lines1,
 /turf/open/asphalt/brown,
-/area/northpoint/outdoors/urban_cave/south_east)
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
 "aMV" = (
 /obj/effect/decal/hybrisa/doubleroad/lines1{
 	pixel_x = -4
 	},
 /obj/effect/decal/hybrisa/road/lines4,
 /turf/open/asphalt/brown,
-/area/northpoint/outdoors/urban_cave/south_east)
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
 "aMW" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.99
@@ -14670,9 +14152,7 @@
 /turf/open/hybrisa/street/sidewalk/west,
 /area/northpoint/oob)
 "aMX" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.97
@@ -14680,9 +14160,7 @@
 /turf/open/hybrisa/street/sidewalk/west,
 /area/northpoint/oob)
 "aMY" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.96
@@ -14695,9 +14173,7 @@
 /turf/open/hybrisa/street/sidewalk/west,
 /area/northpoint/oob)
 "aMZ" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.99
@@ -14710,9 +14186,7 @@
 /turf/open/hybrisa/street/sidewalkfull,
 /area/northpoint/oob)
 "aNa" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/effect/decal/hybrisa/road/lines3,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
@@ -14726,9 +14200,7 @@
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "aNb" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/effect/decal/hybrisa/doubleroad/lines3{
 	pixel_y = 0
 	},
@@ -14739,9 +14211,7 @@
 /turf/open/hybrisa/street/sidewalkcenter,
 /area/northpoint/oob)
 "aNc" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/effect/decal/hybrisa/doubleroad/lines2{
 	pixel_y = 1
 	},
@@ -14757,9 +14227,7 @@
 /turf/open/hybrisa/street/sidewalkcenter/north,
 /area/northpoint/oob)
 "aNd" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/effect/decal/hybrisa/road/lines2,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
@@ -14775,9 +14243,7 @@
 /turf/open/floor/prison/whitegreen/west,
 /area/northpoint/oob)
 "aNf" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.98
@@ -14793,11 +14259,9 @@
 /obj/effect/decal/hybrisa/road/lines3,
 /obj/effect/decal/hybrisa/road/lines4,
 /turf/open/asphalt/brown,
-/area/northpoint/outdoors/urban_cave/south_east)
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
 "aNh" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.99
@@ -14814,9 +14278,7 @@
 /turf/open/floor/prison/whitegreen/north,
 /area/northpoint/oob)
 "aNj" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.99
@@ -14825,10 +14287,10 @@
 /area/northpoint/oob)
 "aNk" = (
 /turf/open/hybrisa/street/sidewalkcorner,
-/area/northpoint/outdoors/urban_cave/south_east)
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
 "aNl" = (
 /turf/open/asphalt/brown,
-/area/northpoint/outdoors/urban_cave/south_east)
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
 "aNm" = (
 /obj/effect/decal/hybrisa/doubleroad/lines2{
 	pixel_y = 1
@@ -14846,7 +14308,7 @@
 	pixel_y = 14
 	},
 /turf/open/hybrisa/street/asphalt,
-/area/northpoint/outdoors/urban_cave/south_east)
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
 "aNo" = (
 /obj/effect/decal/hybrisa/road/lines2,
 /obj/structure/prop/northpoint/concrete_wall/wired,
@@ -14858,15 +14320,11 @@
 /area/northpoint/oob)
 "aNp" = (
 /obj/effect/decal/hybrisa/road/lines2,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "aNq" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.99
@@ -14875,9 +14333,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "aNr" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -14890,9 +14346,7 @@
 /turf/open/hybrisa/street/sidewalk,
 /area/northpoint/oob)
 "aNs" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -14912,9 +14366,7 @@
 /turf/open/hybrisa/street/sidewalk/southwest,
 /area/northpoint/outdoors/urban_cave/north_east)
 "aNu" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.99
@@ -14925,15 +14377,11 @@
 /turf/open/floor/prison/ramptop,
 /area/northpoint/oob)
 "aNv" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalkcorner/south,
 /area/northpoint/oob)
 "aNw" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -14950,9 +14398,7 @@
 	dir = 8;
 	layer = 5.98
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk/west,
 /area/northpoint/oob)
 "aNy" = (
@@ -14961,9 +14407,7 @@
 	layer = 5.8;
 	pixel_y = -6
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/northpoint/oob)
 "aNz" = (
@@ -14972,9 +14416,7 @@
 	layer = 5.8;
 	pixel_y = -6
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/floor/prison/ramptop/east,
 /area/northpoint/oob)
 "aNA" = (
@@ -14987,15 +14429,11 @@
 	dir = 4;
 	layer = 5.99
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/northpoint/oob)
 "aNB" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -15008,9 +14446,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/northpoint/oob)
 "aNC" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.99
@@ -15023,9 +14459,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/northpoint/oob)
 "aND" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -15034,9 +14468,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/northpoint/oob)
 "aNE" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.99
@@ -15051,9 +14483,7 @@
 	dir = 8;
 	layer = 5.99
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/floor/prison/ramptop/east,
 /area/northpoint/oob)
 "aNG" = (
@@ -15066,15 +14496,11 @@
 	dir = 4;
 	layer = 5.99
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/floor/prison/ramptop/east,
 /area/northpoint/oob)
 "aNH" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -15092,15 +14518,11 @@
 	layer = 5.8;
 	pixel_y = -6
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk/south,
 /area/northpoint/oob)
 "aNJ" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -15122,9 +14544,7 @@
 	dir = 8;
 	layer = 5.98
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/floor/prison/ramptop/east,
 /area/northpoint/oob)
 "aNL" = (
@@ -15137,9 +14557,7 @@
 /area/northpoint/oob)
 "aNM" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "aNN" = (
@@ -15148,9 +14566,7 @@
 	icon_state = "stop_decal5"
 	},
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "aNO" = (
@@ -15181,9 +14597,7 @@
 "aNS" = (
 /obj/effect/decal/hybrisa/road/road_edge,
 /obj/effect/decal/hybrisa/road/lines1,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "aNT" = (
@@ -15222,9 +14636,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/northpoint/oob)
 "aNY" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4
 	},
@@ -15240,9 +14652,7 @@
 	dir = 8
 	},
 /obj/structure/prop/northpoint/concrete_wall/wired,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/northpoint/oob)
 "aOa" = (
@@ -15252,9 +14662,7 @@
 	pixel_y = -6
 	},
 /obj/structure/prop/northpoint/concrete_wall/wired,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/northpoint/oob)
 "aOb" = (
@@ -15266,9 +14674,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/northpoint/oob)
 "aOc" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
@@ -15289,9 +14695,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/northpoint/oob)
 "aOe" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.95
@@ -15299,9 +14703,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/northpoint/oob)
 "aOf" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.94
@@ -15313,9 +14715,7 @@
 	dir = 8;
 	layer = 5.97
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/northpoint/oob)
 "aOh" = (
@@ -15332,9 +14732,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/northpoint/oob)
 "aOi" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.93
@@ -15360,9 +14758,7 @@
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "aOl" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -15407,9 +14803,7 @@
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "aOp" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk/northeast,
 /area/northpoint/oob)
 "aOq" = (
@@ -15538,9 +14932,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/northpoint/oob)
 "aOF" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -15651,15 +15043,11 @@
 	pixel_x = 4
 	},
 /obj/effect/decal/hybrisa/road/lines1,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "aOU" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalkcenter/west,
 /area/northpoint/oob)
 "aOV" = (
@@ -15667,9 +15055,7 @@
 	pixel_x = -4
 	},
 /obj/effect/decal/hybrisa/road/lines4,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "aOW" = (
@@ -15677,9 +15063,7 @@
 	dir = 8;
 	layer = 5.98
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk/north,
 /area/northpoint/oob)
 "aOX" = (
@@ -15724,9 +15108,7 @@
 /obj/effect/decal/hybrisa/road/corner{
 	dir = 1
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "aPd" = (
@@ -15745,9 +15127,7 @@
 	dir = 1;
 	pixel_y = 14
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "aPf" = (
@@ -15769,9 +15149,7 @@
 /obj/effect/decal/hybrisa/doubleroad/lines2{
 	pixel_y = 1
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalkcenter/north,
 /area/northpoint/oob)
 "aPi" = (
@@ -15792,6 +15170,127 @@
 	name = "TWE military evacuation notice"
 	},
 /turf/open/hybrisa/street/sidewalk,
+/area/northpoint/oob)
+"aPk" = (
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/decal/hybrisa/road/lines3,
+/turf/open/asphalt/brown,
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
+"aPl" = (
+/obj/effect/decal/hybrisa/road/road_stop{
+	icon_state = "stop_decal4"
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
+"aPm" = (
+/turf/open/hybrisa/street/sidewalk/southwest,
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
+"aPn" = (
+/turf/open/hybrisa/street/sidewalk/southeast,
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
+"aPo" = (
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/decal/hybrisa/doubleroad/lines4{
+	pixel_x = 4
+	},
+/turf/open/asphalt/brown,
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
+"aPp" = (
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
+"aPq" = (
+/turf/open/floor/prison/floor_plate/southwest,
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
+"aPr" = (
+/obj/structure/machinery/power/apc/power/south,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
+"aPs" = (
+/turf/open/hybrisa/street/cement3,
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
+"aPt" = (
+/turf/open/hybrisa/street/cement2,
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
+"aPu" = (
+/turf/open/hybrisa/street/sidewalkfull,
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
+"aPv" = (
+/turf/open/hybrisa/street/sidewalkcorner/east,
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
+"aPw" = (
+/turf/open/hybrisa/street/sidewalk,
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
+"aPx" = (
+/turf/open/hybrisa/street/sidewalkcorner/west,
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
+"aPy" = (
+/turf/open/hybrisa/street/sidewalk/north,
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
+"aPz" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/turf/open/asphalt/brown,
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
+"aPA" = (
+/obj/effect/decal/hybrisa/doubleroad/lines3{
+	pixel_y = 0
+	},
+/turf/open/hybrisa/street/sidewalkcenter,
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
+"aPB" = (
+/obj/effect/decal/hybrisa/doubleroad/lines2{
+	pixel_y = 1
+	},
+/turf/open/hybrisa/street/sidewalkcenter/north,
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
+"aPC" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/turf/open/asphalt/brown,
+/area/northpoint/outdoors/urban_cave/lz1_south_west)
+"aPD" = (
+/obj/structure/prop/hybrisa/vehicles/Meridian/WeylandYutani/damage_5{
+	pixel_y = -4;
+	layer = 5.1;
+	icon_state = "meridian_wy_damage_5";
+	explo_proof = 1;
+	unacidable = 1
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/northpoint/oob)
+"aPE" = (
+/obj/structure/prop/hybrisa/vehicles/Meridian/Orange/damage_2{
+	dir = 1;
+	pixel_x = 6;
+	icon_state = "meridian_orange_damage_2"
+	},
+/obj/structure/prop/hybrisa/vehicles/Meridian/WeylandYutani/damage_3{
+	pixel_y = -12;
+	layer = 3.9;
+	icon_state = "meridian_wy_damage_3";
+	unacidable = 1;
+	explo_proof = 1;
+	pixel_x = -27
+	},
+/turf/open/asphalt/brown,
+/area/northpoint/oob)
+"aPF" = (
+/obj/structure/prop/structure_lattice,
+/obj/structure/prop/hybrisa/vehicles/Meridian/Turquoise/damage_3{
+	dir = 1;
+	pixel_y = -3;
+	layer = 4.12;
+	icon_state = "meridian_turquoise_damage_3";
+	explo_proof = 1;
+	unacidable = 1
+	},
+/turf/open/asphalt/brown,
+/area/northpoint/oob)
+"aPG" = (
+/obj/structure/prop/hybrisa/vehicles/Meridian/Red/damage_3{
+	icon_state = "meridian_red_damage_3";
+	explo_proof = 1;
+	unacidable = 1
+	},
+/turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "aQc" = (
 /obj/effect/decal/warning_stripes{
@@ -15875,9 +15374,7 @@
 /area/northpoint/oob)
 "bdE" = (
 /obj/structure/prop/hybrisa/vehicles/Small_Truck/Brown_Cargo,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/floor/almayer/plate,
 /area/northpoint/oob)
 "beg" = (
@@ -15901,9 +15398,7 @@
 	layer = 2.99;
 	pixel_y = -6
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/floor/hybrisa/tile/tilebeige,
 /area/northpoint/oob)
 "bgt" = (
@@ -16056,7 +15551,6 @@
 "bHv" = (
 /obj/structure/platform/metal/hybrisa/metalplatform2,
 /obj/structure/prop/northpoint/concrete_wall/wired,
-/obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating,
 /area/northpoint/oob)
 "bHI" = (
@@ -16388,9 +15882,7 @@
 /turf/open/hybrisa/street/sidewalk/southwest,
 /area/northpoint/oob)
 "cNu" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/closed/shuttle/dropship2/transparent{
 	icon_state = "38";
 	dir = 8;
@@ -16428,9 +15920,7 @@
 /area/northpoint/landing_zone_1)
 "cWU" = (
 /obj/structure/cargo_container/hd/mid,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/floor/hybrisa/tile/asteroidfloor_bigtile,
 /area/northpoint/oob)
 "cZY" = (
@@ -16500,9 +15990,7 @@
 	color = "#4c5248";
 	pixel_y = -2
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/northpoint/oob)
 "dgd" = (
@@ -16552,7 +16040,6 @@
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_12"
 	},
-/obj/structure/blocker/invisible_wall,
 /turf/open/hybrisa/street/sidewalkfull,
 /area/northpoint/oob)
 "dlH" = (
@@ -16654,9 +16141,7 @@
 /obj/structure/shuttle/part/dropship_twe/transparent{
 	icon_state = "4,14"
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/northpoint/oob)
 "dxl" = (
@@ -16700,9 +16185,7 @@
 /area/northpoint/oob)
 "dIy" = (
 /obj/effect/decal/hybrisa/road/lines4,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -16841,9 +16324,7 @@
 /turf/open/hybrisa/street/cement1,
 /area/northpoint/oob)
 "ebs" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/floor/plating/platingdmg3,
 /area/northpoint/oob)
 "ecB" = (
@@ -17186,9 +16667,7 @@
 /area/northpoint/oob)
 "eXa" = (
 /obj/structure/platform/metal/almayer/west,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/floor/plating/kutjevo,
 /area/northpoint/oob)
 "eXd" = (
@@ -17300,9 +16779,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/northpoint/oob)
 "flx" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/girder/displaced,
 /turf/open/floor/almayer/cargo,
 /area/northpoint/oob)
@@ -17507,9 +16984,7 @@
 /area/northpoint/oob)
 "fVm" = (
 /obj/effect/decal/hybrisa/road/lines1,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -17521,9 +16996,7 @@
 /turf/open/asphalt/cement,
 /area/northpoint/landing_zone_2)
 "fXc" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/closed/shuttle/dropship2{
 	icon_state = "32";
 	name = "\improper Tychon";
@@ -17883,9 +17356,7 @@
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/northpoint/oob)
 "hrw" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.99
@@ -18047,9 +17518,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/northpoint/oob)
 "hPe" = (
@@ -18468,9 +17937,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/northpoint/outdoors/urban_cave/lz2_west)
 "jba" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/cement3,
 /area/northpoint/oob)
 "jbW" = (
@@ -18643,7 +18110,6 @@
 	pixel_y = -23;
 	pixel_x = 2
 	},
-/obj/structure/blocker/invisible_wall,
 /turf/open/hybrisa/street/sidewalkfull,
 /area/northpoint/oob)
 "jyr" = (
@@ -18850,9 +18316,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/northpoint/landing_zone_1)
 "khK" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/floor/plating/platingdmg1,
 /area/northpoint/oob)
 "kie" = (
@@ -18873,9 +18337,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/northpoint/oob)
 "knd" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/floor/hybrisa/tile/asteroidfloor_bigtile,
 /area/northpoint/oob)
 "koK" = (
@@ -19047,9 +18509,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/northpoint/oob)
 "kIC" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/closed/shuttle/dropship_twe/transparent{
 	icon_state = "5,13_alt"
 	},
@@ -19440,9 +18900,7 @@
 /area/northpoint/oob)
 "lSH" = (
 /obj/structure/platform/metal/almayer/east,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/floor/plating/kutjevo,
 /area/northpoint/oob)
 "lSZ" = (
@@ -19516,9 +18974,7 @@
 	density = 0;
 	name = "Tychon"
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/cement2,
 /area/northpoint/oob)
 "lZe" = (
@@ -19726,9 +19182,7 @@
 /obj/structure/shuttle/part/dropship2/transparent/engine_left_exhaust{
 	dir = 8
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalkcenter/east,
 /area/northpoint/oob)
 "mNn" = (
@@ -19813,9 +19267,7 @@
 /turf/open/floor/plating,
 /area/northpoint/outdoors/urban_cave/lz2_south)
 "nap" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/closed/shuttle/dropship_twe/transparent{
 	icon_state = "3,13_alt"
 	},
@@ -20103,9 +19555,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/northpoint/oob)
 "nMy" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/floor/prison/ramptop,
 /area/northpoint/oob)
 "nNb" = (
@@ -20175,9 +19625,7 @@
 /turf/open/hybrisa/street/sidewalk/east,
 /area/northpoint/outdoors/urban_cave/lz2_west)
 "nZX" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/girder/reinforced,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/northpoint/oob)
@@ -20251,7 +19699,6 @@
 	dir = 8;
 	layer = 5.99
 	},
-/obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/northpoint/oob)
 "ooh" = (
@@ -20650,9 +20097,7 @@
 /obj/structure/shuttle/part/dropship_twe/transparent{
 	icon_state = "2,0"
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk/west,
 /area/northpoint/oob)
 "pwB" = (
@@ -20744,15 +20189,11 @@
 	explo_proof = 1;
 	layer = 4.2
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/floor/hybrisa/tile/tilebeige,
 /area/northpoint/oob)
 "pPu" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/floor/prison/ramptop/east,
 /area/northpoint/oob)
 "pPL" = (
@@ -20778,9 +20219,7 @@
 	dir = 1;
 	pixel_y = 14
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
@@ -20810,9 +20249,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/floor/prison/ramptop,
 /area/northpoint/oob)
 "pUp" = (
@@ -20853,9 +20290,7 @@
 /turf/open/hybrisa/street/sidewalk/west,
 /area/northpoint/oob)
 "pZg" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/northpoint/oob)
 "qak" = (
@@ -21203,9 +20638,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "qMp" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/girder/reinforced,
 /turf/open/floor/hybrisa/tile/asteroidfloor_bigtile,
 /area/northpoint/oob)
@@ -21604,9 +21037,7 @@
 /area/northpoint/oob)
 "rPe" = (
 /obj/structure/cargo_container/hybrisa/containersextended/greenwywingsleft,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/northpoint/oob)
 "rPV" = (
@@ -21635,9 +21066,7 @@
 /turf/open/hybrisa/street/roadlines4,
 /area/northpoint/outdoors/urban_cave/lz2_south)
 "rTP" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/floor/hybrisa/tile/tilebeige,
 /area/northpoint/oob)
 "rUG" = (
@@ -21797,7 +21226,6 @@
 	pixel_y = -10;
 	pixel_x = 13
 	},
-/obj/structure/blocker/invisible_wall,
 /turf/open/hybrisa/street/sidewalkfull,
 /area/northpoint/oob)
 "ssk" = (
@@ -21854,9 +21282,7 @@
 	explo_proof = 1;
 	unacidable = 1
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/northpoint/oob)
 "swa" = (
@@ -22024,9 +21450,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "sWI" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/closed/shuttle/dropship2/transparent{
 	icon_state = "26";
 	dir = 8;
@@ -22261,9 +21685,7 @@
 	icon_state = "1,0"
 	},
 /obj/effect/decal/hybrisa/road/lines4,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "tGH" = (
@@ -22272,9 +21694,7 @@
 	icon_state = "thermite";
 	name = "impact"
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "tHd" = (
@@ -22314,9 +21734,7 @@
 	icon_state = "thermite";
 	name = "impact"
 	},
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/cement2,
 /area/northpoint/oob)
 "tQm" = (
@@ -22469,9 +21887,7 @@
 /turf/open/hybrisa/street/sidewalkfull,
 /area/northpoint/oob)
 "unH" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/effect/decal/hybrisa/grate{
 	dir = 1
 	},
@@ -22999,9 +22415,7 @@
 /turf/open/floor/hybrisa/metal/grated/west,
 /area/northpoint/landing_zone_2)
 "wcx" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/girder/displaced,
 /turf/open/floor/prison/ramptop,
 /area/northpoint/oob)
@@ -23038,9 +22452,7 @@
 /area/northpoint/oob)
 "wvu" = (
 /obj/effect/decal/hybrisa/road/lines4,
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "wvO" = (
@@ -23300,9 +22712,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "xuc" = (
-/obj/structure/blocker/invisible_wall{
-	opacity = 1
-	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.99
@@ -25100,9 +24510,9 @@ utR
 utR
 utR
 utR
-aLr
-aLo
-aLn
+aJH
+aJF
+aJC
 aLm
 aLi
 aLe
@@ -25857,9 +25267,9 @@ utR
 utR
 utR
 aku
-akr
-akj
-ajX
+lDw
+aKm
+aKp
 ajO
 aBf
 utR
@@ -26108,11 +25518,11 @@ utR
 utR
 utR
 utR
-akv
-akr
-akk
-ajY
-ajP
+aPG
+lDw
+aKn
+aKi
+aPD
 ajG
 utR
 utR
@@ -26141,11 +25551,11 @@ aKI
 aKH
 aKd
 aKG
-aqC
-aqC
-aka
-aka
-aka
+aqq
+aqq
+aqE
+aqE
+aqE
 aKA
 aKx
 aKu
@@ -26361,9 +25771,9 @@ utR
 utR
 utR
 akw
-aks
-akl
-ajZ
+vNC
+aPF
+aPE
 ajj
 ajj
 utR
@@ -26388,16 +25798,16 @@ aKN
 aKM
 aKL
 aKK
-aqD
-aqD
-aqD
-aqD
-aqD
-aqD
-aqD
-aqD
-aqD
-aqD
+aqx
+aqx
+aqx
+aqx
+aqx
+aqx
+aqx
+aqx
+aqx
+aqx
 amA
 amA
 amA
@@ -26635,25 +26045,25 @@ vNC
 vNC
 aKQ
 aKP
-aHi
-aHi
-aHi
-aGP
-atI
-asy
-aFQ
+aPo
+aPo
+aPo
+aPk
+aLv
+aGq
+aqY
 aMU
 aMU
 aMU
-agj
+aqF
 aMU
 aMU
 aMU
-agj
+aqF
 aMU
 azt
 azt
-ajj
+apL
 vNC
 aKn
 aKi
@@ -26885,24 +26295,24 @@ lDw
 aKU
 aKS
 aKR
-aHQ
-aHj
-aHj
-aHj
-aHj
-aIJ
-atJ
-asC
-aFR
-aHj
-aHj
-aHj
-aHQ
-aHj
-aHj
-aHj
-aHQ
-aHj
+aqK
+apP
+apP
+apP
+apP
+aPl
+aLA
+aGO
+aqZ
+apP
+apP
+apP
+aqK
+apP
+apP
+apP
+aqK
+apP
 ayW
 ayW
 azm
@@ -27134,27 +26544,27 @@ lDw
 lDw
 aKW
 aKV
-aHk
-aHk
-aHk
-amw
-aHk
-aHk
-aHk
-aHk
-aIJ
-atJ
-asC
-aFR
-aHk
-aHk
-aHk
-amw
-aHk
-aHk
-aHk
-amw
-aHk
+aqe
+aqe
+aqe
+aqL
+aqe
+aqe
+aqe
+aqe
+aPl
+aLA
+aGO
+aqZ
+aqe
+aqe
+aqe
+aqL
+aqe
+aqe
+aqe
+aqL
+aqe
 ayX
 ayX
 axC
@@ -27389,23 +26799,23 @@ aMV
 aMV
 aMV
 aMV
-atX
+aqN
 aMV
 aMV
 aMV
 aMV
 aNg
-atK
-atB
-aID
+aLC
+aJZ
+aBp
 aMV
 aMV
 aMV
-atX
+aqN
 aMV
 aMV
 aMV
-atX
+aqN
 aMV
 ayY
 ayY
@@ -27635,30 +27045,30 @@ vNC
 lDw
 aKV
 aNl
-atN
-aqC
-aqC
-aqC
-aqC
-aqC
-aqC
-aqC
-aqC
-aqC
-aqC
-atS
-amw
-amw
-atN
-aqC
-aqC
-aqC
-aqC
-aqC
-aqC
-aqC
-aqC
-aqC
+aGg
+aqq
+aqq
+aqq
+aqq
+aqq
+aqq
+aqq
+aqq
+aqq
+aqq
+aPm
+aqL
+aqL
+aGg
+aqq
+aqq
+aqq
+aqq
+aqq
+aqq
+aqq
+aqq
+aqq
 avI
 avI
 avI
@@ -27885,32 +27295,32 @@ vvO
 dkA
 vNC
 aKX
-amw
+aqL
 aNl
-atT
-atO
-aqD
-aqD
-aqD
-aqD
-aqD
-aqD
-aqD
-aqD
-aqD
-atQ
-amw
-amw
-atU
-aqD
-aqD
-aqD
-aqD
-aqD
-aqD
-aqD
-aqD
-aqD
+aPy
+aPv
+aqx
+aqx
+aqx
+aqx
+aqx
+aqx
+aqx
+aqx
+aqx
+aPn
+aqL
+aqL
+aGh
+aqx
+aqx
+aqx
+aqx
+aqx
+aqx
+aqx
+aqx
+aqx
 ayM
 ayM
 ayM
@@ -28137,15 +27547,15 @@ vvO
 dkA
 vNC
 aNq
-amw
+aqL
 aNl
-atT
-atP
-avc
-avc
-avc
-avc
-avc
+aPy
+aPw
+aqQ
+aqQ
+aqQ
+aqQ
+aqQ
 cBR
 oRe
 oRe
@@ -28157,10 +27567,10 @@ sSO
 sSO
 nmS
 nmS
-avc
-avc
-avc
-avc
+aqQ
+aqQ
+aqQ
+aqQ
 nmS
 cBR
 atu
@@ -28388,14 +27798,14 @@ cBR
 vvO
 dkA
 aKY
-amw
-amw
+aqL
+aqL
 aNl
-atT
-atP
-avc
-avc
-cBR
+aPy
+aPw
+aqQ
+aqQ
+aqQ
 cBR
 cBR
 cBR
@@ -28640,12 +28050,12 @@ cBR
 vvO
 dkA
 aKP
-amw
-amw
+aqL
+aqL
 aNl
-atT
-atP
-avc
+aPy
+aPw
+aqQ
 cBR
 cBR
 cBR
@@ -28892,11 +28302,11 @@ cBR
 vvO
 aKZ
 aNl
-amw
-amw
+aqL
+aqL
 aNl
-atT
-atP
+aPy
+aPw
 cBR
 cBR
 cBR
@@ -29142,13 +28552,13 @@ cBR
 cBR
 cBR
 aLa
-atP
+aPw
 aNl
-amw
-amw
+aqL
+aqL
 aNl
-atT
-auS
+aPy
+aPx
 wJG
 wJG
 wJG
@@ -29393,14 +28803,14 @@ cBR
 cBR
 cBR
 cBR
-atT
-atP
+aPy
+aPw
 aNl
-amw
-amw
+aqL
+aqL
 aNl
-atT
-atW
+aPy
+aPu
 wJG
 wJG
 cgd
@@ -29427,7 +28837,7 @@ cBR
 cBR
 cBR
 cBR
-pKY
+apy
 pKY
 pKY
 kjK
@@ -29644,16 +29054,16 @@ cBR
 cBR
 cBR
 cBR
-avc
-atT
-atP
+aqQ
+aPy
+aPw
 aNl
-amw
-amw
+aqL
+aqL
 aNl
-atT
-atW
-atW
+aPy
+aPu
+aPu
 wJG
 wJG
 wJG
@@ -29894,20 +29304,20 @@ cBR
 cBR
 cBR
 cBR
-avc
-avc
-avc
-atT
-atP
-atL
-aGy
-aIw
-auH
-atT
-atW
-atW
-fru
-emN
+aqQ
+aqQ
+aqQ
+aPy
+aPw
+aPC
+aPB
+aPA
+aPz
+aPy
+aPu
+aPu
+aPs
+aPp
 wJG
 cgd
 cgd
@@ -30145,21 +29555,21 @@ pKY
 pKY
 pKY
 cBR
-avc
-avc
-avc
-avc
-atT
-atP
-atL
-aGy
-aIw
-auH
-atT
-atW
-atW
-emN
-fru
+aqQ
+aqQ
+aqQ
+aqQ
+aPy
+aPw
+aPC
+aPB
+aPA
+aPz
+aPy
+aPu
+aPu
+aPt
+aPq
 wJG
 cgd
 cgd
@@ -30396,22 +29806,22 @@ vOO
 vOO
 vOO
 bia
-avc
-avc
-avc
-avc
-avc
-atT
-atP
-atL
-aGy
-aIw
-auH
-atT
-atW
-atW
-fru
-emN
+aqQ
+aqQ
+aqQ
+aqQ
+aqQ
+aPy
+aPw
+aPC
+aPB
+aPA
+aPz
+aPy
+aPu
+aPu
+aPs
+aPr
 wJG
 cgd
 cgd
@@ -30648,22 +30058,22 @@ vOO
 vOO
 vOO
 bia
-avc
-avc
-avc
-avc
-avc
-atT
-atP
-atL
-aGy
-aIw
-auH
-atT
-atW
-atW
-emN
-fru
+aqQ
+aqQ
+aqQ
+aqQ
+aqQ
+aPy
+aPw
+aPC
+aPB
+aPA
+aPz
+aPy
+aPu
+aPu
+aPt
+aPp
 wJG
 cgd
 cgd
@@ -30904,15 +30314,15 @@ sQm
 sQm
 sQm
 sQm
-avc
-atT
-atP
-atL
-amw
+aqQ
+aPy
+aPw
+aPC
+aqL
 aNn
-auH
-atU
-aqD
+aPz
+aGh
+aqx
 aNk
 wJG
 wJG
@@ -32010,7 +31420,7 @@ oTn
 oTn
 anF
 cBR
-aHO
+plT
 aHE
 aHr
 aqA
@@ -32766,7 +32176,7 @@ jrJ
 syF
 anF
 cBR
-rqz
+aHD
 anl
 aHs
 aqA
@@ -38468,7 +37878,7 @@ bmo
 tlV
 urp
 itD
-afp
+pCn
 srq
 peh
 nNY
@@ -54161,7 +53571,7 @@ jmg
 utR
 vvO
 azG
-azA
+aLz
 oRe
 hNg
 agw
@@ -64987,17 +64397,17 @@ cBR
 cBR
 ahL
 aLR
-iYT
-toj
-pCn
-pCn
-gFU
-iYT
-iYT
-iYT
-utR
-mVu
-rdX
+amP
+atU
+atW
+atW
+amQ
+amP
+amP
+amP
+avc
+atN
+amM
 cBR
 cBR
 cBR
@@ -65240,16 +64650,16 @@ utR
 utR
 ahL
 aqI
-iYT
-vvO
-wWx
-utR
-iYT
-iYT
-utR
-utR
-vvO
-rdX
+amP
+atT
+aov
+avc
+amP
+amP
+avc
+avc
+atT
+amM
 avc
 avc
 cBR
@@ -65493,14 +64903,14 @@ iYT
 ahL
 aLN
 aLI
-vvO
-wWx
-utR
-iYT
-utR
-utR
-iYT
-vvO
+atT
+aov
+avc
+amP
+avc
+avc
+amP
+atT
 aqd
 avc
 avc
@@ -65744,16 +65154,16 @@ iYT
 utR
 ahL
 aLN
-yhN
-vvO
-dkA
-iYT
-iYT
-utR
-utR
-utR
-vvO
-rdX
+apq
+atT
+atP
+amP
+amP
+avc
+avc
+avc
+atT
+amM
 avc
 auV
 auV
@@ -65997,14 +65407,14 @@ utR
 ahL
 aLO
 aLJ
-vvO
-wWx
-utR
-utR
-utR
-utR
-iYT
-vvO
+atT
+aov
+avc
+avc
+avc
+avc
+amP
+atT
 aqd
 avc
 auV
@@ -66247,16 +65657,16 @@ utR
 iYT
 ars
 aLN
-iYT
-swa
-vvO
-wWx
-utR
-utR
-utR
-iYT
-iYT
-vvO
+amP
+anN
+atT
+aov
+avc
+avc
+avc
+amP
+amP
+atT
 aqd
 auV
 avc
@@ -66499,17 +65909,17 @@ utR
 utR
 ahL
 aLN
-iYT
-iYT
-vvO
-dkA
-iYT
-utR
-iYT
-iYT
-iYT
-vvO
-rdX
+amP
+amP
+atT
+atP
+amP
+avc
+amP
+amP
+amP
+atT
+amM
 avc
 auV
 auV
@@ -66751,17 +66161,17 @@ utR
 uzV
 aLT
 aLR
-iYT
-mVu
-pCn
-pCn
-hwf
-iYT
-iYT
-iYT
-iYT
-toj
-rdX
+amP
+atN
+atW
+atW
+atS
+amP
+amP
+amP
+amP
+atU
+amM
 aqa
 azr
 azp

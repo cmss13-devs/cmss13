@@ -36,6 +36,14 @@
 	..()
 	icon_state = null
 
+/obj/structure/blocker/invisible_wall/map_edge
+	icon_state = "invisible_wall_edge"
+	opacity = TRUE
+
+/obj/structure/blocker/invisible_wall/map_edge/Initialize(mapload, ...)
+    . = ..()
+    loc.minimap_color = COLOR_WHITE
+
 /obj/structure/blocker/invisible_wall/water
 	desc = "You cannot wade out any further."
 	icon_state = "map_blocker"

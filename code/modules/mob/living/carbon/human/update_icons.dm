@@ -525,8 +525,9 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 
 		handle_helmet_overlays(marine_helmet)
 
-	else if(istype(head, /obj/item/clothing/head/cmcap))
+	else if(istype(head, /obj/item/clothing/head/cmcap) || istype(head, /obj/item/clothing/head/headset))
 		handle_helmet_overlays(head)
+
 
 /mob/living/carbon/human/proc/handle_helmet_overlays(obj/item/clothing/head/hat)
 	var/num_helmet_overlays = 0

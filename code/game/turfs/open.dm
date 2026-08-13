@@ -203,12 +203,12 @@
 	icon_state = "grass1"
 	is_weedable = NOT_WEEDABLE
 
-/turf/open/slippery/Enter(atom/movable/mover, atom/forget)
+/turf/open/slippery/Enter(atom/movable/mover, atom/old_loc)
 	. = ..()
 	if(isliving(mover))
 		return FALSE
 
-/turf/open/slippery/Entered(atom/movable/crosser)
+/turf/open/slippery/Entered(atom/movable/crosser, atom/old_loc)
 	. = ..()
 	if(isobserver(crosser) || crosser.anchored)
 		return
@@ -892,16 +892,16 @@
 	icon_state = "seadeep"
 	depth = -18
 
-/turf/open/gm/river/ocean/Entered(atom/movable/AM)
+/turf/open/gm/river/ocean/Entered(atom/movable/entered_movable, atom/old_loc)
 	. = ..()
-	if(prob(20)) // fuck you
-		if(!ismob(AM))
+	if(old_loc != src && prob(20)) // fuck you
+		if(!isliving(entered_movable))
 			return
-		var/mob/unlucky_mob = AM
-		var/turf/target_turf = get_random_turf_in_range(AM, 3, 0)
-		var/datum/launch_metadata/LM = new()
+		var/mob/unlucky_mob = entered_movable
+		var/turf/target_turf = get_random_turf_in_range(entered_movable, 3, 0)
+
 		if(isliving(unlucky_mob))
-			var/mob/living/unlucky_living = AM
+			var/mob/living/unlucky_living = entered_movable
 			unlucky_living.KnockDown(1.5) //swept off your feet!
 		if(!is_full_water(target_turf))			//below we put the mob on the shore, if needed
 			for(var/i = 1 to 3)				//currents dont operate outside water
@@ -917,22 +917,22 @@
 				if(found_water)
 					break
 				target_turf = get_step(target_turf, check_dirs[1])
-		LM.target = target_turf
-		LM.range = get_dist(AM.loc, target_turf)
-		LM.speed = MIN_SPEED // its water, should look like being moved by a current
-		LM.thrower = unlucky_mob
-		LM.spin = TRUE
-		LM.pass_flags = NO_FLAGS
+		var/datum/launch_metadata/launch = new()
+		launch.target = target_turf
+		launch.range = get_dist(AM.loc, target_turf)
+		launch.speed = MIN_SPEED // its water, should look like being moved by a current
+		launch.thrower = unlucky_mob
+		launch.spin = TRUE
+		launch.pass_flags = NO_FLAGS
 		to_chat(unlucky_mob, SPAN_WARNING("The ocean currents sweep you off your feet and carry you away!"))
 		// Entered can occur during Initialize so we need to not sleep
-		INVOKE_ASYNC(unlucky_mob, TYPE_PROC_REF(/atom/movable, launch_towards), LM)
+		INVOKE_ASYNC(unlucky_mob, TYPE_PROC_REF(/atom/movable, launch_towards), launch)
 		return
 
-	if(world.time % 5)
-		if(ismob(AM))
-			var/mob/rivermob = AM
-			if(!HAS_TRAIT(rivermob, TRAIT_HAULED))
-				to_chat(rivermob, SPAN_WARNING("Moving through the incredibly deep ocean slows you down a lot!"))
+	if((world.time % 5) && isliving(entered_movable))
+		var/mob/living/rivermob = entered_movable
+		if(!HAS_TRAIT(rivermob, TRAIT_HAULED))
+			to_chat(rivermob, SPAN_WARNING("Moving through the incredibly deep ocean slows you down a lot!"))
 
 /turf/open/gm/coast
 	name = "coastline"
@@ -1407,6 +1407,7 @@
 /turf/open/shuttle/dropship
 	name = "floor"
 	icon_state = "rasputin1"
+	var/linked_door
 
 /turf/open/shuttle/dropship/light_grey_single_wide_left_to_right
 	icon_state = "floor8"

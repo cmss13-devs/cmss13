@@ -65,6 +65,14 @@ CLIENT_VERB(togglerebootsound)
 	prefs.save_preferences()
 	to_chat(src, "You will [(prefs.toggles_sound & SOUND_REBOOT) ? "now" : "no longer"] hear server reboot sounds.")
 
+CLIENT_VERB(toggleroundendmusic)
+	set name = "Hear/Silence Round End Music"
+	set category = "Preferences.Sound"
+	set desc = "Toggles hearing the round end music."
+	prefs.toggles_sound ^= SOUND_ROUND_END
+	prefs.save_preferences()
+	to_chat(src, "You will [(prefs.toggles_sound & SOUND_ROUND_END ) ? "now" : "no longer"] hear the round end music.")
+
 CLIENT_VERB(togglemidis)
 	set name = "Silence Current Admin Sound"
 	set category = "Preferences.Sound"
@@ -446,6 +454,7 @@ CLIENT_VERB(toggle_prefs) // Toggle whether anything will happen when you click 
 			// Redundancy case, if defines ever get changed
 			prefs.auto_holotag = ALWAYS_TAG_PATIENTS
 	}
+	prefs.save_preferences()
 
 /client/proc/toggle_middle_mouse_swap_hands() //Toggle whether middle click swaps your hands
 	prefs.toggle_prefs ^= TOGGLE_MIDDLE_MOUSE_SWAP_HANDS

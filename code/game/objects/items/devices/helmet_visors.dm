@@ -339,19 +339,19 @@
 	user.sync_lighting_plane_alpha()
 
 /obj/item/device/helmet_visor/night_vision/proc/change_view(mob/user, new_size)
-    SIGNAL_HANDLER
-    if(new_size > 7 && !istype(src, /obj/item/device/helmet_visor/night_vision/marine_raider))///only elite ert's got raider nvo (like only admin MARSOC and extremely rare VAISO) during endgame, they dont need optics restiction and i dont think you do much CAS/MORTAR/OB laze in Almayer corridors.
-        var/obj/item/clothing/head/helmet/marine/attached_helmet = loc
-        if(!istype(attached_helmet))
-            return
-        deactivate_visor(attached_helmet, user)
-        to_chat(user, SPAN_NOTICE("You deactivate [src] on [attached_helmet]."))
-        playsound_client(user.client, toggle_off_sound, null, 75)
-        attached_helmet.active_visor = null
-        attached_helmet.update_icon()
-        var/datum/action/item_action/cycle_helmet_huds/cycle_action = locate() in attached_helmet.actions
-        if(cycle_action)
-            cycle_action.set_default_overlay()
+	SIGNAL_HANDLER
+	if(new_size > 7 && !istype(src, /obj/item/device/helmet_visor/night_vision/marine_raider))///only elite ert's got raider nvo (like only admin MARSOC and extremely rare VAISO) during endgame, they dont need optics restiction and i dont think you do much CAS/MORTAR/OB laze in Almayer corridors.
+		var/obj/item/clothing/head/helmet/marine/attached_helmet = loc
+		if(!istype(attached_helmet))
+			return
+		deactivate_visor(attached_helmet, user)
+		to_chat(user, SPAN_NOTICE("You deactivate [src] on [attached_helmet]."))
+		playsound_client(user.client, toggle_off_sound, null, 75)
+		attached_helmet.active_visor = null
+		attached_helmet.update_icon()
+		var/datum/action/item_action/cycle_helmet_huds/cycle_action = locate() in attached_helmet.actions
+		if(cycle_action)
+			cycle_action.set_default_overlay()
 
 ///High capacity battery cell recharges only 50%, Super 100%, lower capacity batteries are SUPER innefective. Super and High are extremely rare, and they recharging super slow in rechargers, self-recharging designed in emergency situations when player REALLY need extra energy, so pretty balanced.
 /obj/item/device/helmet_visor/night_vision/attackby(obj/item/W, mob/user)

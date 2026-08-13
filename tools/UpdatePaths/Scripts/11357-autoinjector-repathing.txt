@@ -1,3 +1,0 @@
-/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricordrazine/{@OLD}
-/obj/item/reagent_container/hypospray/autoinjector/skillless/@SUBTYPES /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricordrazine/{@OLD}
-

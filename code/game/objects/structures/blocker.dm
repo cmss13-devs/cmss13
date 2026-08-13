@@ -36,8 +36,8 @@
 	..()
 	icon_state = null
 
+//"Creates a colored tile on the tactical map. Can be used to mark the edge of a map in an area where walls are not located."
 /obj/structure/blocker/invisible_wall/map_edge
-	desc = "Creates a colored tile on the tactical map. Can be used to mark the edge of a map in an area where walls are not located. If you can read this desc in-game, something has gone wrong."
 	icon_state = "invisible_wall_edge"
 	opacity = TRUE
 

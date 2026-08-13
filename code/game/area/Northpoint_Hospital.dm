@@ -45,7 +45,7 @@
 	ceiling = CEILING_METAL
 
 /area/northpoint/landing_zone_2
-	name = "Northpoint Hospital - Logistics Area - SouthWest"
+	name = "Northpoint Hospital - Logistics Landing Pad - SouthWest"
 	icon_state = "shuttlered2"
 	is_landing_zone = TRUE
 	minimap_color = MINIMAP_AREA_LZ
@@ -68,7 +68,7 @@
 	icon_state = "cave"
 	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
 	ceiling_muffle = FALSE
-	minimap_color = MINIMAP_AREA_COLONY_STREETS
+	minimap_color = MINIMAP_AREA_CELL_HIGH
 	unoviable_timer = FALSE
 
 /area/northpoint/outdoors/urban_cave/south_east
@@ -79,3 +79,15 @@
 
 /area/northpoint/outdoors/urban_cave/north_east
 	name = "Northpoint Hospital - Exterior Streets - Northeast"
+
+/area/northpoint/outdoors/urban_cave/south
+	name = "Northpoint Hospital - Exterior Streets - South"
+
+/area/northpoint/outdoors/urban_cave/lz2_south
+	name = "Northpoint Hospital - Logistics LZ - Exterior Streets - South"
+
+/area/northpoint/outdoors/urban_cave/lz2_west
+	name = "Northpoint Hospital - Logistics LZ - Exterior Streets - West"
+
+/area/northpoint/outdoors/urban_cave/lz1_south_west
+	name = "Northpoint Hospital - Medical LZ - Exterior Streets - South-West"

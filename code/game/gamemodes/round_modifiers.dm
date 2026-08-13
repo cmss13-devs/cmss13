@@ -34,11 +34,11 @@
 	modifier.set_active(enabled)
 	return TRUE
 
+ABSTRACT_TYPE(/datum/gamemode_modifier)
 /datum/gamemode_modifier
 	var/active = FALSE
 	var/modifier_name
 	var/modifier_desc
-	var/datum/gamemode_modifier/abstract_type = /datum/gamemode_modifier
 
 /datum/gamemode_modifier/proc/set_active(enabled = FALSE)
 	SHOULD_CALL_PARENT(TRUE)

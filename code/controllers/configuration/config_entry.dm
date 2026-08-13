@@ -6,6 +6,7 @@
 #define KEY_MODE_TYPE 1
 #define KEY_MODE_TEXT_UNALTERED 2
 
+ABSTRACT_TYPE(/datum/config_entry)
 SET_PROTECTED_DATUM(/datum/config_entry)
 
 /datum/config_entry
@@ -80,9 +81,9 @@ SET_PROTECTED_DATUM(/datum/config_entry)
 /datum/config_entry/proc/DeprecationUpdate(value)
 	return
 
+ABSTRACT_TYPE(/datum/config_entry/string)
 /datum/config_entry/string
 	config_entry_value = ""
-	abstract_type = /datum/config_entry/string
 	var/auto_trim = TRUE
 
 /datum/config_entry/string/vv_edit_var(var_name, var_value)
@@ -94,9 +95,9 @@ SET_PROTECTED_DATUM(/datum/config_entry)
 	config_entry_value = auto_trim ? trim(str_val) : str_val
 	return TRUE
 
+ABSTRACT_TYPE(/datum/config_entry/number)
 /datum/config_entry/number
 	config_entry_value = 0
-	abstract_type = /datum/config_entry/number
 	var/integer = TRUE
 	var/max_val = INFINITY
 	var/min_val = -INFINITY
@@ -116,9 +117,9 @@ SET_PROTECTED_DATUM(/datum/config_entry)
 	var/static/list/banned_edits = list(NAMEOF_STATIC(src, max_val), NAMEOF_STATIC(src, min_val), NAMEOF_STATIC(src, integer))
 	return !(var_name in banned_edits) && ..()
 
+ABSTRACT_TYPE(/datum/config_entry/flag)
 /datum/config_entry/flag
 	config_entry_value = FALSE
-	abstract_type = /datum/config_entry/flag
 
 /datum/config_entry/flag/ValidateAndSet(str_val)
 	if(!VASProcCallGuard(str_val))
@@ -126,9 +127,9 @@ SET_PROTECTED_DATUM(/datum/config_entry)
 	config_entry_value = text2num(trim(str_val)) != 0
 	return TRUE
 
+ABSTRACT_TYPE(/datum/config_entry/str_list)
 /// List config entry, used for configuring a list of strings
 /datum/config_entry/str_list
-	abstract_type = /datum/config_entry/str_list
 	config_entry_value = list()
 	dupes_allowed = TRUE
 
@@ -140,8 +141,8 @@ SET_PROTECTED_DATUM(/datum/config_entry)
 		config_entry_value += str_val
 	return TRUE
 
+ABSTRACT_TYPE(/datum/config_entry/number_list)
 /datum/config_entry/number_list
-	abstract_type = /datum/config_entry/number_list
 	config_entry_value = list()
 
 /datum/config_entry/number_list/ValidateAndSet(str_val)
@@ -160,8 +161,8 @@ SET_PROTECTED_DATUM(/datum/config_entry)
 	config_entry_value = new_list
 	return TRUE
 
+ABSTRACT_TYPE(/datum/config_entry/keyed_list)
 /datum/config_entry/keyed_list
-	abstract_type = /datum/config_entry/keyed_list
 	config_entry_value = list()
 	dupes_allowed = TRUE
 	vv_VAS = FALSE //VAS will not allow things like deleting from lists, it'll just bug horribly.

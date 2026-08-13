@@ -9,6 +9,8 @@
 * use of variables at this level
 */
 /datum
+
+
 	/**
 	* Tick count time when this object was destroyed.
 	*
@@ -56,6 +58,18 @@
 
 	/// The weakref pointing to this datum; ref reuse can cause weakrefs to resolve to the wrong object, so we compare it against this.
 	var/datum/weakref/weak_reference
+
+	/**
+	 * Parent types.
+	 *
+	 * Abstract-ness is a meta-property of a class that is used to indicate
+	 * that the class is intended to be used as a base class for others, and
+	 * should not (or cannot) be instantiated.
+	 * We have no such language concept in DM, and so we provide a datum member
+	 * that can be used to hint at abstractness for circumstances where we would
+	 * like that to be the case, such as base behavior providers.
+	 */
+	var/abstract_type = /datum
 
 #ifdef REFERENCE_TRACKING
 	/// When was this datum last touched by a reftracker?

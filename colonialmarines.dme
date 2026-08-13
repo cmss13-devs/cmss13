@@ -1455,6 +1455,7 @@
 #include "code\game\objects\structures\morgue.dm"
 #include "code\game\objects\structures\multiz_stairs.dm"
 #include "code\game\objects\structures\musician.dm"
+#include "code\game\objects\structures\northpoint_props.dm"
 #include "code\game\objects\structures\noticeboard.dm"
 #include "code\game\objects\structures\platforms.dm"
 #include "code\game\objects\structures\prop_mech.dm"

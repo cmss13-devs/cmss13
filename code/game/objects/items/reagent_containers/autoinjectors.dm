@@ -22,6 +22,7 @@
 	transparent = FALSE
 	var/uses_left = 3
 	var/no_refill_valve = FALSE //mini tank will not accept no_refill_valve autoinjector types
+	var/wall_vend_refill = FALSE
 	var/display_maptext = FALSE
 	var/maptext_label
 	maptext_height = 16
@@ -65,12 +66,25 @@
 		overlays += filling
 		return
 
-/obj/item/reagent_container/hypospray/autoinjector/get_examine_text(mob/user)
+/obj/item/reagent_container/hypospray/autoinjector/get_examine_text(mob/user, uses_left, volume, amount_per_transfer_from_this)
 	. = ..()
-	if(uses_left)
-		. += SPAN_NOTICE("It is currently loaded with [uses_left].")
-	else
-		. += SPAN_NOTICE("It is empty.")
+	var/doses = volume / amount_per_transfer_from_this
+
+	if(uses_left > 1)
+		. += SPAN_NOTICE("It is currently loaded with [uses_left] injections out of a maximum of [volume/amount_per_transfer_from_this] injections of [amount_per_transfer_from_this]u.")
+	else if(uses_left == 1)
+		if((volume/amount_per_transfer_from_this) == 1)
+			. += SPAN_NOTICE("It is currently loaded with a single injection of [volume/amount_per_transfer_from_this]u.")
+		else
+			. += SPAN_NOTICE("It is currently loaded with a single injection out of a maximum of [volume/amount_per_transfer_from_this] injections of [amount_per_transfer_from_this]u.")
+	else if (uses_left == 0)
+		if(istype(src, /obj/item/reagent_container/hypospray/autoinjector/research))
+			. += SPAN_NOTICE("It is empty; the instructions say it can be refilled with a filled pressurized reagent canister pouch.")
+		if(!istype(src, /obj/item/reagent_container/hypospray/autoinjector/research) && no_refill_valve == TRUE)
+			. += SPAN_NOTICE("It is empty and has no refill valve; it must be disposed of.")
+		else
+			. += SPAN_NOTICE("It is empty, but you can refill it at any Wey-Med Plus dispenser, Wey-Med resupply station, or with an MS-11 Smart Refill Tank. ")
+
 
 /obj/item/reagent_container/hypospray/autoinjector/equipped()
 	..()
@@ -663,7 +677,7 @@
 //CUSTOM EZ AUTOINJECTORS
 /obj/item/reagent_container/hypospray/autoinjector/research/ez
 	name = "custom EZ one-use autoinjector (15u)"
-	desc = "A custom-made EZ autoinjector, likely from research. You can refill it with a pressurized reagent canister pouch. It injects its entire payload immediately and doesn't require any training."
+	desc = "A custom-made EZ autoinjector, likely from research. You can store and only refill it with a pressurized reagent canister pouchs with filled canisters inside. It injects its entire payload immediately and doesn't require any training."
 	icon_state = "empty_research_single"
 	autoinjector_type = "autoinjector_single"
 	amount_per_transfer_from_this = 15
@@ -709,7 +723,7 @@
 //REAGENT POUCH AUTOINJECTORS
 /obj/item/reagent_container/hypospray/autoinjector/research/reagent_pouch
 	name = "reagent canister pouch autoinjector (15u)"
-	desc = "An autoinjector specifically designed to fit inside and refill from pressurized reagent canister pouches. It has a similar lock to pill bottles and fits up to 6 injections."
+	desc = "An autoinjector specifically designed to fit inside and refill only from pressurized reagent canister pouches with filled canisters inside. It has a similar lock to pill bottles and uniquely fits up to 6 doses of medicine."
 	skilllock = SKILL_MEDICAL_MEDIC
 	volume = 90
 	amount_per_transfer_from_this = 15

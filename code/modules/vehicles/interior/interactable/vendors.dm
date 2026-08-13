@@ -14,7 +14,6 @@
 	hackable = FALSE
 
 	chem_refill = list(
-		/obj/item/reagent_container/hypospray/autoinjector/standard,
 		/obj/item/reagent_container/hypospray/autoinjector/ez,
 		/obj/item/reagent_container/hypospray/autoinjector/tutorial,
 	)

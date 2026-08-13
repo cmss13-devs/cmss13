@@ -586,7 +586,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		data["ob_safety"] = ob_cannon_safety
 		if(current_orbital_cannon.tray.warhead)
 			data["ob_warhead"] = current_orbital_cannon.tray.warhead.warhead_kind
-	if(GLOB.almayer_aa_cannon.protecting_section)
+	if(GLOB.almayer_aa_cannon?.protecting_section)
 		data["aa_targeting"] = GLOB.almayer_aa_cannon.protecting_section
 
 	data["marines"] = list()
@@ -699,7 +699,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 		if("sl_message")
 			if(current_squad)
-				var/input = sanitize_control_chars(tgui_input_text(user, "Please write a message to announce to the squad leader:", "SL Message"))
+				var/input = sanitize_control_chars(tgui_input_text(user, "Please write a message to announce to the squad leader - it cannot be garbled:", "SL Message"))
 				if(input)
 					current_squad.transmit_alert("", input, "", "Squad Leader Message:", user, only_leader=TRUE) //message, adds username, only to leader
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Message '[input]' sent to Squad Leader [current_squad.squad_leader] of squad '[current_squad]'.")]")
@@ -1190,7 +1190,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		selected_sl.comm_title = "aSL"
 	ADD_TRAIT(selected_sl, TRAIT_ACTING_LEAD, TRAIT_SOURCE_SQUAD_LEADER)
 
-	var/obj/item/device/radio/headset/sl_headset = selected_sl.get_type_in_ears(/obj/item/device/radio/headset/almayer/marine)
+	var/obj/item/device/radio/headset/sl_headset = selected_sl.get_type_in_ears(/obj/item/device/radio/headset/almayer)
 	switch(faction)
 		if (FACTION_UPP)
 			sl_headset = selected_sl.get_type_in_ears(/obj/item/device/radio/headset/distress/UPP)

@@ -482,7 +482,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 	return TRUE
 
 /obj/item/stack/attackby(obj/item/stack/used_stack, mob/user)
-	if(used_stack.stack_id != stack_id) //not the same stack type :)
+	if(!istype(used_stack) || used_stack.stack_id != stack_id) //not the same stack type :)
 		return ..()
 
 	if(used_stack.amount >= max_amount)

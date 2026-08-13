@@ -177,21 +177,27 @@
 	new /obj/effect/alien/weeds/node(plant_target, null, null, GLOB.hive_datum[hivenumber])
 	qdel(src)
 
-/obj/item/organ/xeno/proc/can_build_gland(turf/target)
+/obj/item/organ/xeno/proc/can_build_gland(turf/target, mob/user)
 	if(target.is_weedable == NOT_WEEDABLE || target.density)
-		return	FALSE
+		to_chat(user, SPAN_WARNING("Bad spot for [src]."))
+		return FALSE
 
 	for(var/atom/object as anything in target.contents)
 		if(istype(object, /obj/effect/alien/resin))
+			to_chat(user, SPAN_WARNING("This space is already occupied."))
 			return FALSE
 		if(istype(object, /obj/effect/alien/egg))
+			to_chat(user, SPAN_WARNING("This space is already occupied."))
 			return FALSE
+
+	if(!istype(target, /turf/open/floor/almayer/research/containment))
+		to_chat(user, SPAN_WARNING("It would be unwise to plant this out here."))
+		return FALSE
 
 	return TRUE
 
 /obj/item/organ/xeno/proc/handle_organ_planting(turf/target, mob/user)
 	if(!can_build_gland(target))
-		to_chat(user, SPAN_WARNING("This space is already occupied."))
 		return
 
 	var/list/buildables = list()
@@ -254,8 +260,7 @@
 	if(!do_after(user, 3 SECONDS, show_busy_icon = TRUE, target = target))
 		return
 
-	if(!can_build_gland(target))
-		to_chat(user, SPAN_WARNING("This space is already occupied."))
+	if(!can_build_gland(target, user))
 		return
 	playsound(target, "alien_resin_build", 25)
 	var/obj/effect/alien/resin/chem_producer/producer = new to_construct(target)

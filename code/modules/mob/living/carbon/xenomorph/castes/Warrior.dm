@@ -42,7 +42,6 @@
 	icon = 'icons/mob/xenos/castes/tier_2/warrior.dmi'
 	icon_size = 64
 	icon_state = "Warrior Walking"
-	plasma_types = list(PLASMA_CHITIN,PLASMA_REINFORCED_CHITIN)
 	pixel_x = -16
 	old_x = -16
 	tier = 2

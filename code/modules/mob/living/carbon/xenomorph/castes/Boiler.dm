@@ -44,7 +44,6 @@
 	icon = 'icons/mob/xenos/castes/tier_3/boiler.dmi'
 	icon_size = 64
 	icon_state = "Boiler Walking"
-	plasma_types = list(PLASMA_NEUROTOXIN, PLASMA_ACIDIC)
 	pixel_x = -16
 	old_x = -16
 	mob_size = MOB_SIZE_BIG

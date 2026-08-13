@@ -54,7 +54,6 @@
 	icon = 'icons/mob/xenos/castes/tier_2/hivelord.dmi'
 	icon_size = 64
 	icon_state = "Hivelord Walking"
-	plasma_types = list(PLASMA_PURPLE,PLASMA_PHEROMONE,PLASMA_NUTRIENT)
 	pixel_x = -16
 	old_x = -16
 	mob_size = MOB_SIZE_BIG

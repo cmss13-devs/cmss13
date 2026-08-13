@@ -37,7 +37,6 @@
 	desc = "A slithery, spitting kind of alien."
 	icon_size = 48
 	icon_state = "Sentinel Walking"
-	plasma_types = list(PLASMA_NEUROTOXIN)
 	pixel_x = -12
 	old_x = -12
 	xenonid_pixel_x = -9

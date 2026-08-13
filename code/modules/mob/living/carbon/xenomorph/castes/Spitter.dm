@@ -37,7 +37,6 @@
 	desc = "A gross, oozing alien of some kind."
 	icon_size = 48
 	icon_state = "Spitter Walking"
-	plasma_types = list(PLASMA_NEUROTOXIN,PLASMA_ACIDIC)
 	pixel_x = -12
 	old_x = -12
 	xenonid_pixel_x = -9

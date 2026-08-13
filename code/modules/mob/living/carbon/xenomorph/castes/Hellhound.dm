@@ -43,7 +43,6 @@
 	pixel_x = -16
 	old_x = -16
 	layer = MOB_LAYER
-	plasma_types = list(PLASMA_CHITIN)
 	tier = 0
 	acid_blood_damage = 0
 	pull_speed = -0.5

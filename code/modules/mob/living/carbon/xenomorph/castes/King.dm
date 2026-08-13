@@ -33,7 +33,6 @@
 	icon = 'icons/mob/xenos/castes/tier_4/king.dmi'
 	icon_size = 64
 	icon_state = "King Walking"
-	plasma_types = list(PLASMA_CHITIN)
 	pixel_x = -16
 	old_x = -16
 	mob_size = MOB_SIZE_IMMOBILE

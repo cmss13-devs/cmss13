@@ -46,7 +46,6 @@
 	icon_state = "Burrower Walking"
 	layer = MOB_LAYER
 	plasma_stored = 100
-	plasma_types = list(PLASMA_PURPLE,PLASMA_NUTRIENT)
 	pixel_x = -12
 	old_x = -12
 	xenonid_pixel_x = -16

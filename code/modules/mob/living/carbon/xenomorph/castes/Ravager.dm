@@ -44,7 +44,6 @@
 	icon = 'icons/mob/xenos/castes/tier_3/ravager.dmi'
 	icon_size = 64
 	icon_state = "Ravager Walking"
-	plasma_types = list(PLASMA_CATECHOLAMINE,PLASMA_ADRENALINE)
 	mob_size = MOB_SIZE_BIG
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tier = 3

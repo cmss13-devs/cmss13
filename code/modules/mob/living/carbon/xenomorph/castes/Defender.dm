@@ -36,7 +36,6 @@
 	icon = 'icons/mob/xenos/castes/tier_1/defender.dmi'
 	icon_size = 64
 	icon_state = "Defender Walking"
-	plasma_types = list(PLASMA_CHITIN)
 	pixel_x = -16
 	old_x = -16
 	tier = 1

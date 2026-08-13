@@ -42,7 +42,6 @@
 	icon_size = 64
 	buckle_flags = CAN_BUCKLE
 	layer = MOB_LAYER
-	plasma_types = list(PLASMA_CATECHOLAMINE)
 	tier = 1
 	pixel_x = -16  //Needed for 2x2
 	old_x = -16

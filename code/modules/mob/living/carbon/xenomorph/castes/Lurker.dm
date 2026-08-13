@@ -35,7 +35,6 @@
 	desc = "A beefy, fast alien with sharp claws."
 	icon_size = 48
 	icon_state = "Lurker Walking"
-	plasma_types = list(PLASMA_CATECHOLAMINE,PLASMA_ADRENALINE)
 	pixel_x = -12
 	old_x = -12
 	xenonid_pixel_x = -9

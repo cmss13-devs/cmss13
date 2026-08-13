@@ -37,7 +37,6 @@
 	desc = "A huge alien with an enormous armored crest."
 	icon_size = 64
 	icon_state = "Crusher Walking"
-	plasma_types = list(PLASMA_CHITIN,PLASMA_REINFORCED_CHITIN)
 	tier = 3
 	drag_delay = 6 //pulling a big dead xeno is hard
 

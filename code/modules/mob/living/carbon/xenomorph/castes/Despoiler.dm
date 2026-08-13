@@ -38,7 +38,6 @@
 	desc = "An emaciated acidic terror, barely alive and constantly leaking acid."
 	icon_size = 64
 	icon_state = "Despoiler Walking"
-	plasma_types = list(PLASMA_NEUROTOXIN, PLASMA_PURPLE, PLASMA_ACIDIC)
 	pixel_x = -16
 	old_x = -16
 	mob_size = MOB_SIZE_BIG

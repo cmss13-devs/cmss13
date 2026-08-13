@@ -168,8 +168,10 @@
 		layer = UNDER_WATER_TURF_LAYER
 		plane = FLOOR_PLANE
 		for(var/obj/structure/S in contents)		//decals, railings, stairs etc
-			S.layer = UNDER_WATER_TURF_LAYER + 0.01
-			S.plane = FLOOR_PLANE
+			var/icon/icon_check = icon(S.icon, S.icon_state)
+			if(icon_check.Width() <= 32)
+				S.layer = UNDER_WATER_TURF_LAYER + 0.01
+				S.plane = FLOOR_PLANE
 	else
 		layer = initial(layer)
 		plane = initial(plane)

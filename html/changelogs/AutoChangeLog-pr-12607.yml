@@ -1,6 +1,0 @@
-author: "Venuska1117"
-delete-after: True
-changes:
-  - rscdel: "Removed unused queen \"bombard\" and boiler \"acid lance\" code."
-  - rscdel: "Removed remains of vanguard \"pierce_spin\" and \"agility\" code."
-  - rscdel: "Removes most of xenos  _powers.dm files, exception is queen_powers.dm."

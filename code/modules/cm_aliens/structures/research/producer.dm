@@ -1,7 +1,7 @@
 /obj/effect/alien/resin/chem_producer
 	name = "resin gland"
 	icon = 'icons/mob/xenos/fruits.dmi'
-	icon_state = ""
+	icon_state = null
 	desc = "A weird-looking pulsating node that produces chemicals"
 	density = FALSE
 	opacity = FALSE

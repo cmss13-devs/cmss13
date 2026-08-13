@@ -169,8 +169,14 @@
 	if(!isturf(target) || plant_target.is_weedable == NOT_WEEDABLE || plant_target.density || user.action_busy)
 		return
 
+	if(!can_build_gland(target, user))
+		return
+
 	user.visible_message(SPAN_NOTICE("[user] starts planting [src]."), SPAN_NOTICE("You start planting [src]."))
 	if(!do_after(user, 3 SECONDS, show_busy_icon = TRUE, target = target))
+		return
+
+	if(!can_build_gland(target, user))
 		return
 
 	playsound(plant_target, "alien_resin_build", 25)

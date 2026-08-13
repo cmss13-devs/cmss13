@@ -2035,6 +2035,8 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 			skill_accuracy = 2
 		if(skill_accuracy)
 			gun_accuracy_mult += skill_accuracy * HIT_ACCURACY_MULT_TIER_3 // Accuracy mult increase/decrease per level is equal to attaching/removing a red dot sight
+		if(HAS_TRAIT(user, TRAIT_HUD_SIGHT))
+			skill_accuracy += 0.5
 
 		var/mob/living/carbon/human/focused_human = user
 		if(focused_human.marksman_aura >= 1) //adjust scatter based on focus aura

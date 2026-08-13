@@ -24,6 +24,7 @@
 		list("Insulated Gloves", floor(scale * 2), /obj/item/clothing/gloves/yellow, VENDOR_ITEM_REGULAR),
 		list("Utility Tool Belt", floor(scale * 2), /obj/item/storage/belt/utility, VENDOR_ITEM_REGULAR),
 		list("Welding Goggles", floor(scale * 2), /obj/item/clothing/glasses/welding, VENDOR_ITEM_REGULAR),
+		list("Welding Visor", floor(scale *2), /obj/item/device/helmet_visor/welding_visor, VENDOR_ITEM_REGULAR),
 		list("Welding Helmet", floor(scale * 2), /obj/item/clothing/head/welding, VENDOR_ITEM_REGULAR),
 		list("Engineer Kit", floor(scale * 2), /obj/item/storage/toolkit/empty, VENDOR_ITEM_REGULAR),
 
@@ -56,6 +57,7 @@
 		list("Utility Tool Belt", floor(scale * 4), /obj/item/storage/belt/utility, VENDOR_ITEM_REGULAR),
 		list("Cable Coil", floor(scale * 4), /obj/item/stack/cable_coil/random, VENDOR_ITEM_REGULAR),
 		list("Welding Goggles", floor(scale * 2), /obj/item/clothing/glasses/welding, VENDOR_ITEM_REGULAR),
+		list("Welding Visor", floor(scale *2), /obj/item/device/helmet_visor/welding_visor, VENDOR_ITEM_REGULAR),
 		list("Engineer Kit", floor(scale * 2), /obj/item/storage/toolkit/empty, VENDOR_ITEM_REGULAR),
 
 		list("TOOLS", -1, null, null),

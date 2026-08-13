@@ -210,7 +210,6 @@
 
 		list("OPTICS", -1, null, null, null),
 		list("Advanced Medical Optic (CORPSMAN ONLY)", floor(scale * 4), /obj/item/device/helmet_visor/medical/advanced, VENDOR_ITEM_REGULAR),
-		list("Squad Optic", floor(scale * 15), /obj/item/device/helmet_visor, VENDOR_ITEM_REGULAR),
 
 		)
 

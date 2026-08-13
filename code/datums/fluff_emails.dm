@@ -101,6 +101,58 @@
 				</html>
 				"}
 
+/datum/fluff_email/almayer/nightvision ///lore explanation why NVO's so bad, now marines have an answer.
+	title = "Night Vision problem"
+	entry_text = {"<html>
+					After the explosion at the warehouse, we lost almost all of the night vision devices – they were simply blown up, and the ones that did survive barely work.
+					Harrison and I tried to repair them, but the damage is too severe. We only managed to get them into some kind of working condition;
+					a full repair is impossible because we don't have the capacity. Today I tried to replace the battery on one of the lenses with Harrison
+					the NVO exploded, and Harrison suffered severe burns to his hands. They put him in medical cryosleep, so now I'm alone – shit!
+					Yes, they make special batteries for NVOs, because standard ones don't fit. I also tried to restore the zoom‑in/zoom‑out function, and... it didn't work.
+					I almost broke a second lens, barely managed to roll back the effect, and left it as is. Anyway, when the marines wake up, they are going to be very surprised that they have no proper NVGs, and the ones they do have are CRAP!
+				</html>
+				"}
+
+/datum/fluff_email/almayer/heapammo
+	title = "M309 HEAP are DONE!"
+	entry_text = {"<html>
+					The entire shipment of our standard M309 ammunition exploded we're cooked! we don't even have standard ammo! All we have left is antipersonnel ammunition.
+					The grunts call it "regular" or "FMJ", but in the tech manual it's antipersonnel, yeah. Worse than M309, but at least these guys won't blow themselves up with friendly fire,
+					I believe. Alright, I'm going to refill all preparation and requisition storages with antipersonnel rounds, and I'll make some standard AP from the materials I've got not much,
+					but if they run into anything heavily armored, they're done.
+				</html>
+				"}
+
+/datum/fluff_email/almayer/predator ///scary story about predator during previous op, adds atmosphere and reason why predators sometimes appear during the round (cuz they track the almayer since tychoon tackle) and love targeting intelligence officers (revenge for their hunter)
+	title = "Intel Leader MIA report"
+	entry_text = {"<html>
+					I am reporting the disappearance of the Almayer's Intelligence squad Leader, First Lieutenant Richard Voss, under the following circumstances.
+					During the deployment of the intelligence officer team, everything proceeded normally. However, when our main forces began to encounter heavy pressure from the CLF,
+					the situation changed drastically. As a result of a sudden attack by the enemy, the group was forced to split up. The CLF militants threw a grenade at the scouts' feet as they were moving near the edge of a cliff.
+					Everyone jumped aside; Lieutenant Voss also tried to evade the blast, but a CLF fighter ran up to him, and they both rolled off the cliff into tall grass.
+					I saw Voss use the militant as a cushion during the fall, and after landing, he slit the militant's throat with his own knife. Immediately after that, communication with the lieutenant was lost presumably his helmet was damaged in the fall.
+					The rest of the group was successfully evacuated, but the leader remained behind.
+					I repeatedly tried to contact Voss, but a stable connection could only be maintained for a few seconds at a time. His personal tracker was malfunctioning, making it impossible to pinpoint his exact location. Nevertheless,
+					I managed to re-establish contact briefly and learned that he was approximately three kilometres from the operational area. How he got there remains a mystery. Voice transmission was heavily distorted he was trying to say something over the radio,
+					but I could not make out the words due to the damaged equipment.
+					Additionally, I had access to the motion detector embedded in his vest. The system repeatedly registered extremely fast contacts approaching from various directions, but mostly from behind the lieutenant.
+					Someone was moving near him at high speed and almost invisibly. Twice I was able to briefly activate his helmet camera.
+					First - The camera turned on for 20 frames. A contact was detected 15 metres behind Voss. The footage shows him spinning around, aiming his M41 rifle at a tree, and opening fire. After that, the image cuts out.
+					Second episode 7 minutes later: The camera reactivated for 4 frames with intervals of approximately 3 seconds.
+					Frame 1 - The image shows Voss inside a cave. A CLF flag is hanging on the wall, and there is a weapon rack with MAR type rifles by all indications, this is a hidden enemy camp.
+					Frame 2 - Voss aims his M41 at a silhouette standing near the cave entrance. The recording is heavily noisy.
+					Frame 3 - Voss fires an under barrel grenade launcher at the ceiling near the silhouette, where a wooden support beam is visible.
+					Frame 4 - Severe interference; the aftermath of the explosion is visible. The lens is smeared with a bright green substance, but it is possible to make out that the cave entrance has collapsed, and the silhouette appears to have been crushed by falling rocks.
+					Final view - After Voss entered the cave, his vital signs indicators disappeared completely. However, they did not terminate with a death signal this means that he may have survived the collapse and either:
+					remained trapped inside the collapsed cave, exited through another possible entrance, or fallen into the hands of the CLF.
+					His status is currently listed as Missing in Action. I want to believe he is still alive.
+					Regarding the silhouette due to heavy interference, it is difficult to determine, but it appeared to be unusually tall much taller than any normal human. This is likely a distortion, but...
+					it raised a question for me. Voss has served in the Reconnaissance Battalion for four years, been through numerous operations, and holds a Medal for Heroism and two other decorations. He is a Green Beret. Could it be that, with all his equipment,
+					he could not simply shoot a CLF soldier with stealth camouflage? Or perhaps it was not CLF at all, but some kind of UPP commandos? I do not know what to think. I will send the camera recordings to ARES for image processing and analysis, and also forward them to High Command.
+					And Voss, if you will see this, somehow - You are ultimate badass...
+				</html>
+				"}
+
 
 /datum/fluff_email/almayer/tunes
 	title = "RE: Tunes"

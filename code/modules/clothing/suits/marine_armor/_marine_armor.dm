@@ -276,8 +276,9 @@
 	armor_variation = 0
 	name = "\improper M4 pattern marine armor"
 	desc = "A well tinkered and crafted hybrid of Smart-Gunner mesh and M3 pattern plates. Robust, yet nimble, with room for all your pouches."
-	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_rad = CLOTHING_ARMOR_MEDIUM
+	desc_lore = "After Operation Canton, which resulted in heavy casualties during firefights and from improvised explosive devices, the USCM command ordered the development of a next generation ARMAT armor suit to replace the M3  one that would provide better protection against small arms fire and explosives. ARMAT developed two variants of the new protection: the M3 EOD and the M4. The M4 features greater resistance to small arms and explosives, as well as improved load distribution, yet it does not impair mobility  unlike the EOD variant. Unfortunately, due to its more advanced and expensive production technology, the M4 could not fully replace the M3, since one set of M4 armor cost as much as two and a half sets of M3. Instead, it is issued to fire team leaders and reconnaissance officers as limited issue equipment."
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
 	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS
 	storage_slots = 4
 	specialty = "M4 pattern marine"

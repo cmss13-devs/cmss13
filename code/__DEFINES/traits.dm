@@ -257,6 +257,8 @@
 #define TRAIT_SPEC(spec_type) "t_spec_[spec_type]"
 /// If the mob won't drop items held in face slot when downed
 #define TRAIT_IRON_TEETH "t_iron_teeth"
+///Sight Optic buff if it's active
+#define TRAIT_HUD_SIGHT "t_hud_sight"
 
 // -- ability traits --
 /// Xenos with this trait cannot have plasma transferred to them

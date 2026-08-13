@@ -2,7 +2,7 @@
 	name = "squad optic"
 	desc = "An insertable visor HUD into a standard USCM helmet."
 	icon = 'icons/obj/items/clothing/helmet_visors.dmi'
-	icon_state = "hud_sight"
+	icon_state = "hud_squad"
 	w_class = SIZE_TINY
 
 	///The type of HUD our visor shows
@@ -67,11 +67,15 @@
 /// Called by toggle_visor() to activate the visor's effects
 /obj/item/device/helmet_visor/proc/activate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
 	var/datum/mob_hud/current_mob_hud = GLOB.huds[hud_type]
-	current_mob_hud.add_hud_to(user, attached_helmet)
+	if(!current_mob_hud)
+		return
+	current_mob_hud.remove_hud_from(user, attached_helmet)
 
 /// Called by toggle_visor() to deactivate the visor's effects
 /obj/item/device/helmet_visor/proc/deactivate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
 	var/datum/mob_hud/current_mob_hud = GLOB.huds[hud_type]
+	if(!current_mob_hud)
+		return
 	current_mob_hud.remove_hud_from(user, attached_helmet)
 
 /// Called by /obj/item/clothing/head/helmet/marine/get_examine_text(mob/user) to get extra examine text for this visor
@@ -211,6 +215,7 @@
 /obj/item/device/helmet_visor/night_vision
 	name = "night vision optic"
 	desc = "An insertable visor HUD into a standard USCM helmet. This type gives a form of night vision and is standard issue in units with regular funding."
+	desc_lore = "The AN/NVPAV-75 visor (or image intensifier). This unit allows visibility in total darkness, as it features an infrared illuminator, and operates for 12 hours without recharging. The NVO automatically recharges after being turned off, drawing power from the suits internal battery that also powers the shoulder lamp and other visors, a full recharge takes about 2 hours on average. Unfortunately, after the explosion of the M309 HEAP ammunition storage - located in another section containing these NVOs was also damaged. 94% of the lenses were destroyed; the remaining units were repaired and distributed to critical roles. The damaged lens has impaired zoom in/zoom out functionality, making it incompatible with binoculars and weapon scopes. Additionally, the infrared illuminator was repaired in a makeshift manner, but as a negative side effect, it now gives off a visible glow in the dark. As for the battery and electronics themselves, they lost their calibration after the blast and can no longer receive a recharge from the suit, and they now operate for only 10 minutes. The technicians aboard the Almayer were only able to devise a jury rigged charging system using standard batteries it is inefficient, but it is still better than nothing."
 	icon_state = "nvg_sight"
 	hud_type = null
 	action_icon_string = "nvg_sight_down"
@@ -233,6 +238,11 @@
 
 	/// Whether or not the sight uses on_light and produces light
 	var/visor_glows = TRUE
+
+	var/charging = FALSE
+
+	/// Used to prevent spamming low-battery sound
+	var/low_battery_alerted = FALSE
 
 /obj/item/device/helmet_visor/night_vision/Initialize(mapload, ...)
 	. = ..()
@@ -260,6 +270,8 @@
 		on_light.set_light_on(TRUE)
 	START_PROCESSING(SSobj, src)
 	RegisterSignal(user, COMSIG_MOB_CHANGE_VIEW, PROC_REF(change_view))
+	///Reset low battery alert when activated
+	low_battery_alerted = FALSE
 
 /obj/item/device/helmet_visor/night_vision/deactivate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
 	user.remove_client_color_matrix("nvg_visor", 1 SECONDS)
@@ -276,7 +288,6 @@
 
 /obj/item/device/helmet_visor/night_vision/process(delta_time)
 	if(!NVG_VISOR_USAGE(delta_time))
-
 		if(!istype(loc, /obj/item/clothing/head/helmet/marine))
 			return PROCESS_KILL
 
@@ -288,6 +299,16 @@
 		to_chat(user, SPAN_NOTICE("[src] deactivates as the battery goes out."))
 		deactivate_visor(attached_helmet, user)
 		return PROCESS_KILL
+
+	///Low power warning
+	var/percent = power_cell.percent()
+	if(percent <= 20 && !low_battery_alerted)
+		var/obj/item/clothing/head/helmet/marine/attached_helmet = loc
+		if(istype(attached_helmet) && istype(attached_helmet.loc, /mob/living/carbon/human))
+			var/mob/living/carbon/human/user = attached_helmet.loc
+			playsound_client(user.client, 'sound/handling/lowbattery.ogg', null, 50)
+			to_chat(user, SPAN_DANGER("[src] battery is low! [round(percent)]% remaining. Estimated time to failure - 2 MINUTES. Recharge immediately."))
+			low_battery_alerted = TRUE
 
 /obj/item/device/helmet_visor/night_vision/can_toggle(mob/living/carbon/human/user)
 	. = ..()
@@ -318,19 +339,83 @@
 	user.sync_lighting_plane_alpha()
 
 /obj/item/device/helmet_visor/night_vision/proc/change_view(mob/user, new_size)
-	SIGNAL_HANDLER
-	if(new_size > 7) // cannot use binos with NVO
-		var/obj/item/clothing/head/helmet/marine/attached_helmet = loc
-		if(!istype(attached_helmet))
-			return
-		deactivate_visor(attached_helmet, user)
-		to_chat(user, SPAN_NOTICE("You deactivate [src] on [attached_helmet]."))
-		playsound_client(user.client, toggle_off_sound, null, 75)
-		attached_helmet.active_visor = null
-		attached_helmet.update_icon()
-		var/datum/action/item_action/cycle_helmet_huds/cycle_action = locate() in attached_helmet.actions
-		if(cycle_action)
-			cycle_action.set_default_overlay()
+    SIGNAL_HANDLER
+    if(new_size > 7 && !istype(src, /obj/item/device/helmet_visor/night_vision/marine_raider))///only elite ert's got raider nvo (like only admin MARSOC and extremely rare VAISO) during endgame, they dont need optics restiction and i dont think you do much CAS/MORTAR/OB laze in Almayer corridors.
+        var/obj/item/clothing/head/helmet/marine/attached_helmet = loc
+        if(!istype(attached_helmet))
+            return
+        deactivate_visor(attached_helmet, user)
+        to_chat(user, SPAN_NOTICE("You deactivate [src] on [attached_helmet]."))
+        playsound_client(user.client, toggle_off_sound, null, 75)
+        attached_helmet.active_visor = null
+        attached_helmet.update_icon()
+        var/datum/action/item_action/cycle_helmet_huds/cycle_action = locate() in attached_helmet.actions
+        if(cycle_action)
+            cycle_action.set_default_overlay()
+
+///High capacity battery cell recharges only 50%, Super 100%, lower capacity batteries are SUPER innefective. Super and High are extremely rare, and they recharging super slow in rechargers, self-recharging designed in emergency situations when player REALLY need extra energy, so pretty balanced.
+/obj/item/device/helmet_visor/night_vision/attackby(obj/item/W, mob/user)
+	if(!istype(W, /obj/item/cell))
+		return ..()
+
+	if(charging)
+		to_chat(user, SPAN_WARNING("[src] is already being charged."))
+		return
+
+	var/obj/item/cell/external_cell = W
+
+	if(external_cell.charge <= 0)
+		to_chat(user, SPAN_WARNING("[external_cell] is dead."))
+		return
+
+	if(power_cell.charge >= power_cell.maxcharge)
+		to_chat(user, SPAN_WARNING("[src] is already fully charged."))
+		return
+
+	charging = TRUE
+	user.visible_message(SPAN_NOTICE("[user] starts recharging [src] with [external_cell]."),
+		SPAN_NOTICE("You start recharging [src] with [external_cell]."))
+
+	if(!do_after(user, 10 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, src))
+		charging = FALSE
+		return
+
+	if(!external_cell || external_cell.charge <= 0)
+		charging = FALSE
+		return
+
+	if(!power_cell)
+		charging = FALSE
+		return
+
+	if(power_cell.charge >= power_cell.maxcharge)
+		charging = FALSE
+		return
+
+	var/transfer_amount = min(
+		external_cell.charge,
+		power_cell.maxcharge - power_cell.charge
+	)
+
+	if(transfer_amount <= 0)
+		charging = FALSE
+		return
+
+	if(!external_cell.use(transfer_amount))
+		to_chat(user, SPAN_WARNING("Could not drain [external_cell]."))
+		charging = FALSE
+		return
+
+	power_cell.give(transfer_amount)
+	to_chat(user, SPAN_NOTICE("You finish recharging [src]. Current charge: [floor(power_cell.percent())]%."))
+	external_cell.update_icon()
+	charging = FALSE
+
+	// Reset low battery alert if charge is now above 20%
+	if(power_cell.percent() > 20)
+		low_battery_alerted = FALSE
+
+// =============================================================
 
 #undef NVG_VISOR_USAGE
 
@@ -344,6 +429,7 @@
 /obj/item/device/helmet_visor/night_vision/marine_raider
 	name = "advanced night vision optic"
 	desc = "An insertable visor HUD into a standard USCM helmet. This type gives a form of night vision and is standard issue in special forces units."
+	desc_lore = "The AN/NVPAV-77 visor (or advanced image intensifier) is an improved version of the AN/NVPAV-75. Unlike the 75, this model does not require power from the suit's internal source, as it features a more advanced and optimized power supply. It also has a covert infrared illuminator that does not reveal the NVO to other night vision devices or thermal imagers and as a bonus - integrated medical optic. It operates continuously for 32 hours, and recharging while switched off takes 2 hours."///lore explanation why NVO's so bad, now marines have an answer.
 	hud_type = list(MOB_HUD_FACTION_MARINE, MOB_HUD_MEDICAL_ADVANCED)
 	helmet_overlay = "nvg_sight_right_raider"
 	power_use = 0
@@ -354,6 +440,8 @@
 
 	for(var/type in hud_type)
 		var/datum/mob_hud/current_mob_hud = GLOB.huds[type]
+		if(!current_mob_hud)
+			continue
 		current_mob_hud.add_hud_to(user, attached_helmet)
 
 /obj/item/device/helmet_visor/night_vision/marine_raider/deactivate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
@@ -361,6 +449,8 @@
 
 	for(var/type in hud_type)
 		var/datum/mob_hud/current_mob_hud = GLOB.huds[type]
+		if(!current_mob_hud)
+			continue
 		current_mob_hud.remove_hud_from(user, attached_helmet)
 
 /obj/item/device/helmet_visor/night_vision/marine_raider/process(delta_time)
@@ -455,3 +545,25 @@
 	icon_state = "po_visor_yellow"
 	action_icon_string = "po_visor_yellow_down"
 	helmet_overlay = "po_visor_yellow"
+
+///SIGHT OPTIC, increases accuracy slighty when activated and gives movielike soul visor effect
+/obj/item/device/helmet_visor/sight
+	name = "sight optic"
+	desc = "M10 pattern helmet optic that grants its user point and shoot capabilities and provides tactical squad HUD display."
+	desc_lore = "AN/PAV-70 is the guts of a Personal Augmented Viewer HUD unit. Fitted as standard in almost all helmets in use by UA forces. It synchronizes with shipboard time, as well as the ships satellite and other sensors, which in turn allows the marine to see time information, information about approaching and current weather, and ambient temperature. It has a reticle that responds to eye movement, aiding in aiming with all types of weapons."
+	icon = 'icons/obj/items/clothing/helmet_visors.dmi'
+	icon_state = "hud_sight"
+	hud_type = null
+/obj/item/device/helmet_visor/sight/activate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
+	. = ..()
+
+	user.client.color = "#E0FFFF" ///SOUL
+	user.overlay_fullscreen("optic", /atom/movable/screen/fullscreen/flash/noise/nvg)
+	ADD_TRAIT(user, TRAIT_HUD_SIGHT, src)
+
+/obj/item/device/helmet_visor/sight/deactivate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
+	. = ..()
+
+	user.client.color = initial(user.client.color)
+	user.clear_fullscreen("optic", 0.5 SECONDS)
+	REMOVE_TRAIT(user, TRAIT_HUD_SIGHT, src)

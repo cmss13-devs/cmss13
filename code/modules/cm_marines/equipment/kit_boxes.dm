@@ -675,6 +675,7 @@
 	new /obj/item/storage/pouch/construction/low_grade_full(src)
 	new /obj/item/storage/pouch/electronics/full(src)
 	new /obj/item/clothing/glasses/welding(src)
+	new /obj/item/device/helmet_visor/welding_visor(src)
 
 
 /obj/item/storage/box/kit/UPP_leader_AR

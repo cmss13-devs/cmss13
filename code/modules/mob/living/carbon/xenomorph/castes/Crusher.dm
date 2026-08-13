@@ -106,10 +106,6 @@
 		var/obj/structure/window/window_in_path = target_atom
 		if (window_in_path.unacidable)
 			. = FALSE
-		else
-			window_in_path.deconstruct(FALSE)
-			. =  TRUE // Continue throw
-		playsound(loc, 'sound/effects/Glassbr1.ogg')
 
 	else if (istype(target_atom, /obj/structure/machinery/door/airlock))
 		var/obj/structure/machinery/door/airlock/airlock_in_path = target_atom
@@ -204,21 +200,17 @@
 				qdel(objects_in_path)
 				. = TRUE
 
-			else
-				if(objects_in_path.buckled_mob)
-					objects_in_path.unbuckle()
-				visible_message(SPAN_WARNING("[src] knocks [objects_in_path] aside!"), SPAN_XENOWARNING("We knock [objects_in_path] aside.")) //Canisters, crates etc. go flying.
-				playsound(loc, "punch", 25, 1)
+		else
+			if(object_in_path.buckled_mob)
+				object_in_path.unbuckle()
+			visible_message(SPAN_WARNING("[src] knocks [object_in_path] aside!"), SPAN_XENOWARNING("We knock [object_in_path] aside.")) //Canisters, crates etc. go flying.
+			playsound(loc, "punch", 25, 1)
+			var/turf/turfs_to_get = get_diagonal_step(object_in_path, dir)
+			turfs_to_get = get_step_away(turfs_to_get, src)
+			throw_atom(turfs_to_get, range=2, speed=2)
+			. = TRUE
 
-				var/impact_range = 2
-				var/turf/turfs_to_get = get_diagonal_step(objects_in_path, dir)
-				turfs_to_get = get_step_away(turfs_to_get, src)
-				var/launch_speed = 2
-				throw_atom(turfs_to_get, impact_range, launch_speed)
-
-				. = TRUE
-
-	if (!.)
+	if(!.)
 		update_icons()
 
 // Mutator delegate for base ravager

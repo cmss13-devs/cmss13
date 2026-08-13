@@ -411,7 +411,6 @@
 	external_cell.update_icon()
 	charging = FALSE
 
-	// Reset low battery alert if charge is now above 20%
 	if(power_cell.percent() > 20)
 		low_battery_alerted = FALSE
 

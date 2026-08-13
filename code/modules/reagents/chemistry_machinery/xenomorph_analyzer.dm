@@ -183,7 +183,7 @@
 	queue_proccessing = TRUE
 	var/datum/research_upgrades/upgrade = print_queue[length(print_queue)]
 	if(clamp(upgrade.value_upgrade + upgrade.change_purchase * technology_purchased[upgrade], upgrade.minimum_price, upgrade.maximum_price) > biomass_points \
-		&& upgrade.royal_value_upgrade > royal_biomass_points)
+		|| upgrade.royal_value_upgrade > royal_biomass_points)
 		to_chat(user, SPAN_WARNING("[src] makes a worrying beep and flashes red, theres not enough data processed to build the requested upgrade!"))
 		queue_proccessing = FALSE
 		return

@@ -227,16 +227,6 @@
 	forceMove(L.loc)
 	..()
 
-//user: The mob that is suiciding
-//damagetype: The type of damage the item will inflict on the user
-//BRUTELOSS = 1
-//FIRELOSS = 2
-//TOXLOSS = 4
-//OXYLOSS = 8
-//Output a creative message and then return the damagetype done
-/obj/item/proc/suicide_act(mob/user)
-	return
-
 /**
  * Global item proc for all of your unique item skin needs. Works with any
  * item, and will change the skin to whatever you specify here. You can also
@@ -303,20 +293,20 @@
 	var/size
 	switch(w_class)
 		if(SIZE_TINY)
-			size = "tiny"
+			size = SPAN_GREEN("tiny")
 		if(SIZE_SMALL)
-			size = "small"
+			size = SPAN_CYAN("small")
 		if(SIZE_MEDIUM)
-			size = "normal-sized"
+			size = SPAN_ORANGE("normal-sized")
 		if(SIZE_LARGE)
-			size = "bulky"
+			size = SPAN_DANGER("bulky")
 		if(SIZE_HUGE)
-			size = "huge"
+			size = SPAN_RED("huge")
 		if(SIZE_MASSIVE)
-			size = "massive"
-	. += "[p_are() == "are" ? "These are " : "This is a "][blood_color ? blood_color != COLOR_OIL ? "bloody " : "oil-stained " : ""][icon2html(src, user)][src.name]. [p_they(TRUE)] [p_are()] a [size] item."
+			size = SPAN_RED("massive")
+	. += "[p_are() == "are" ? "These are " : "This is a "][blood_color ? blood_color != COLOR_OIL ? "bloody " : "oil-stained " : ""][icon2html(src, user)][src.name]. [p_they(TRUE)] [p_are()] [size]."
 	if(desc)
-		. += desc
+		. += SPAN_INFO(desc)
 	if(desc_lore)
 		. += SPAN_NOTICE("This has an <a href='byond://?src=\ref[src];desc_lore=1'>extended lore description</a>.")
 

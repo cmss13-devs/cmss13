@@ -2,20 +2,19 @@
 //returns FALSE otherwise
 /obj/proc/allowed(mob/M)
 	//check if it doesn't require any access at all
-	if(check_access() || isRemoteControlling(M))
-		return TRUE
-
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		//if they are holding or wearing a card that has access, that works
-		if(check_access(H.get_active_hand()) || check_access(H.wear_id))
-			return TRUE
-		return check_yautja_access(H)
-	if(istype(M, /mob/living/carbon/xenomorph))
-		var/mob/living/carbon/C = M
-		if(check_access(C.get_active_hand()))
-			return TRUE
-		return FALSE
+	if(!check_access() || !isRemoteControlling(M))
+		if(ishuman(M))
+			var/mob/living/carbon/human/H = M
+			//if they are holding or wearing a card that has access, that works
+			if(check_access(H.get_active_hand()) || check_access(H.wear_id))
+				return TRUE
+			return check_yautja_access(H)
+		if(istype(M, /mob/living/carbon/xenomorph))
+			var/mob/living/carbon/C = M
+			if(check_access(C.get_active_hand()))
+				return TRUE
+			return FALSE
+	return TRUE
 
 /obj/proc/check_yautja_access(mob/living/carbon/human/yautja)
 	if(!ishuman(yautja) || !HAS_TRAIT(yautja, TRAIT_YAUTJA_TECH))

@@ -435,6 +435,11 @@
 	module.update_health(module_damage)
 	return (5 SECONDS) * acid_delay
 
+/obj/effect/xenomorph/acid/proc/handle_fuelpump()
+	var/obj/structure/machinery/fuelpump/pump = acid_t
+	pump.update_health(barricade_damage)
+	return (5 SECONDS)
+
 /obj/effect/xenomorph/acid/process(delta_time)
 	remaining -= delta_time * (1 SECONDS)
 	if(remaining > 0)
@@ -450,6 +455,8 @@
 		var/obj/structure/dropship_equipment/module = acid_t
 		if(module.ship_base) //If its not installed then we dont give it any special handling
 			return_delay = handle_dropship_module()
+	else if(istype(acid_t, /obj/structure/machinery/fuelpump))
+		return_delay = handle_fuelpump()
 
 	if(!ticks_left)
 		finish_melting()
@@ -480,10 +487,11 @@
 			visible_message(SPAN_XENODANGER("[acid_t] loses its shine as the acid bubbles against it."))
 			acid_gun.has_second_wind = FALSE
 			playsound(src, 'sound/weapons/handling/gun_jam_click.ogg', 25, TRUE)
-			qdel(src)
-			return
+		else
+			visible_message(SPAN_XENODANGER("[acid_t] collapses under its own weight into a puddle of goop and undigested debris!"))
+			qdel(acid_t)
 
-	if(istype(acid_t, /turf))
+	else if(istype(acid_t, /turf))
 		visible_message(SPAN_XENODANGER("[acid_t] is terribly damaged by the acid covering it!"))
 		if(istype(acid_t, /turf/closed/wall))
 			var/turf/closed/wall/wall = acid_t
@@ -492,7 +500,7 @@
 			var/turf/turf = acid_t
 			turf.ScrapeAway()
 
-	else if (istype(acid_t, /obj/structure/girder))
+	else if(istype(acid_t, /obj/structure/girder))
 		var/obj/structure/girder/girder = acid_t
 		visible_message(SPAN_XENODANGER("[acid_t] collapses and falls in on itself as the acid melts its frame!"))
 		girder.dismantle()
@@ -504,18 +512,32 @@
 
 	else if(istype(acid_t, /obj/structure/barricade))
 		visible_message(SPAN_XENODANGER("[acid_t] cracks and fragments as the acid sizzles against it!"))
-		pass() // Don't delete it, just damaj
+		// Don't delete it, just damaj
+
+	else if(istype(acid_t, /obj/structure/machinery/fuelpump))
+		visible_message(SPAN_XENODANGER("[acid_t] cracks and fragments as the acid sizzles against it!"))
 
 	else if(istype(acid_t, /obj/structure/dropship_equipment))
 		var/obj/structure/dropship_equipment/module = acid_t
 		visible_message(SPAN_XENODANGER("[acid_t] is ravaged by the acid that covered it!"))
 		if(!module.ship_base)
 			qdel(acid_t)
+
+	else if(istype(acid_t, /obj/structure/platform))
+		var/obj/structure/platform/P = acid_t
+		if(P.explo_proof)
+			visible_message(SPAN_XENODANGER("[P] sizzles but remains intact against the acid!"))
+			qdel(src)
+			return
+		visible_message(SPAN_XENODANGER("[P] cracks and fragments as the acid sizzles against it!"))
+		P.broken()
+
 	else
 		for(var/mob/mob in acid_t)
 			mob.forceMove(loc)
 		visible_message(SPAN_XENODANGER("[acid_t] collapses under its own weight into a puddle of goop and undigested debris!"))
 		qdel(acid_t)
+
 	qdel(src)
 
 /obj/effect/xenomorph/acid/extinguish_acid()

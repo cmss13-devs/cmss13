@@ -27,7 +27,7 @@
 	var/icon/reference = icon(input_atom.icon, input_atom.icon_state)
 	var/ref_w = reference.Width()
 	var/icon_path_key = ref_w<=32?"32":(ref_w<=48?"48":(ref_w<=64?"64":ref_w<=88?"88":null))
-	icon_path = GLOB.water_overlay_icon_paths[icon_path_key]
+	icon_path = SSwater_overlays.water_overlay_icon_paths[icon_path_key]
 	if(force_update)
 		update_icons(get_turf(input_atom))
 
@@ -161,7 +161,7 @@
 	if(ishuman(input_living))			//all human subtypes will just use the single human overlay
 		mob_type = /mob/living/carbon/human
 		mob_texture_size = 32
-	var/list/special_mob_types = GLOB.water_overlay_special["[mob_texture_size]"]
+	var/list/special_mob_types = SSwater_overlays.water_overlay_special["[mob_texture_size]"]
 	var/list/special_mob_details = special_mob_types[mob_type] ? special_mob_types[mob_type] : null
 	if(special_mob_details && special_mob_details[1])
 		key = "_[mob_type]"
@@ -172,5 +172,5 @@
 			key = "_/mob/living/carbon/human_w"
 		if(pixel_y_offset < -12 )		//when resting in the deep all mobs will look like they're unda da watur
 			key = "_u"
-	var/mutable_appearance/final_texture = mutable_appearance(GLOB.water_overlay_icons["[mob_texture_size]_[input_openturf.type][toxic_key][key]"])
+	var/mutable_appearance/final_texture = mutable_appearance(SSwater_overlays.water_overlay_icons["[mob_texture_size]_[input_openturf.type][toxic_key][key]"])
 	overlays += final_texture

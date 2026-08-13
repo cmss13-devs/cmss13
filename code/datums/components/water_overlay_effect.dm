@@ -16,7 +16,6 @@
 /datum/component/water_overlay_effect/Destroy()
 	. = ..()
 	my_water_overlay_effect.Destroy()
-	QDEL_NULL(my_water_overlay_effect)
 
 /datum/component/water_overlay_effect/proc/handle_affected_mob_move(parent_source, oldloc, direction, forced)
 	SIGNAL_HANDLER

@@ -667,7 +667,7 @@
 	icon = 'icons/turf/floors/desert_water_covered.dmi'
 
 /turf/open/gm/river/desert/tyrargo/deep
-	icon_state = "bluesea"
+	icon_state = "seadeep"
 	depth = -12 //used for water_overlay_effect
 
 /turf/open/gm/river/desert/tyrargo/deep/no_slowdown

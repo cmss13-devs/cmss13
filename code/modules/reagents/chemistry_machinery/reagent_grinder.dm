@@ -460,8 +460,8 @@
 		/obj/item/stack/sheet/copper = list("copper" = 60),
 
 		//Special Stuff
-		/obj/item/reagent_container/hypospray/autoinjector/yautja = list("thwei" = 30),
-		/obj/item/reagent_container/hypospray/autoinjector/yautja/thrall = list("dathwei" = 30),
+		/obj/item/reagent_container/hypospray/autoinjector/no_refill/yautja = list("thwei" = 30),
+		/obj/item/reagent_container/hypospray/autoinjector/no_refill/yautja/thrall = list("dathwei" = 30),
 
 		//Blender Stuff
 		/obj/item/reagent_container/food/snacks/grown/corn = list("cornoil" = 0)

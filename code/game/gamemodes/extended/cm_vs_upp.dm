@@ -2,8 +2,8 @@
 #define ROUND_END_DELAY (2 MINUTES)
 
 /datum/game_mode/extended/faction_clash/cm_vs_upp
-	name = "Faction Clash UPP CM"
-	config_tag = "Faction Clash UPP CM"
+	name = GAMEMODE_FACTION_CLASH_UPP_CM
+	config_tag = GAMEMODE_FACTION_CLASH_UPP_CM
 	flags_round_type = MODE_THUNDERSTORM|MODE_FACTION_CLASH
 	starting_round_modifiers = list(
 		/datum/gamemode_modifier/blood_optimization,

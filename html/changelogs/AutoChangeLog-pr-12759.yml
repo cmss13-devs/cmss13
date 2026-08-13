@@ -1,7 +1,0 @@
-author: "MistChristmas"
-delete-after: True
-changes:
-  - rscadd: "R4T now spins anti clockwise. As spinning it clockwise makes no sense..."
-  - code_imp: "Clean up some code related to lever action, onehanded chambering"
-  - bugfix: "A runtime related to the above."
-  - bugfix: "If your hand is already broken, failing the r4t levering breaks your arm and removes splints from both your hand and arm. As well as interrupting knitting time. Otherwise just does it only for the hand."

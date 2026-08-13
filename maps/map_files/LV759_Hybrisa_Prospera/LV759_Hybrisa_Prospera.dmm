@@ -146036,7 +146036,8 @@
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside/ds2{
 	id = "sh_dropship2";
-	name = "\improper WY-LWI StarGlider SG-200 airlock"
+	name = "\improper WY-LWI StarGlider SG-200 airlock";
+	dir = 2
 	},
 /turf/open/floor/corsat/officetiles,
 /area/lv759/indoors/spaceport/starglider)

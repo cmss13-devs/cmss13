@@ -92,7 +92,6 @@
 		/obj/item/clothing/suit/storage/webbing = list("External webbing"),
 		/obj/item/storage/backpack/marine/engineerpack/flamethrower/kit = list("Pyro pack", "Pyro backpack", "G4-1 pack", "Flamer backpack"),
 		/obj/item/storage/backpack/marine/ammo_rack = list ("IMP Ammo Rack", "Ammo rack", "Ammo IMP Rack"),
-		/obj/item/storage/backpack/marine/satchel/rto = list("Phone pack", "Phone backpack", "Radio pack", "RTO backpack"),
 		/obj/item/parachute = list("Chute", "Parachute"),
 		/obj/item/storage/backpack/general_belt = list("G8", "G8 belt", "G8 Utility belt"),
 		/obj/item/storage/pouch/autoinjector = list("Autoinjector pouch", "Injector pouch"),
@@ -110,7 +109,7 @@
 		/obj/item/device/binoculars/range = list("Rangefinders"),
 		/obj/item/device/binoculars/range/designator = list("LD", "Designator", "Laser Designator", "Tac Binos"),
 		/obj/item/stack/fulton = list("Fultons", "Fulton pack"),
-		/obj/item/pamphlet/upgradeable/jtac = list("JTAC Pamphlet"),
+		/obj/item/storage/box/kit/mini_jtac = list("JTAC Pamphlet", "JTAC Kit", "Radio Kit", "Radio Pack"),
 		/* Explosives */
 		/obj/item/explosive/grenade/high_explosive/m15 = list("M15", "M15 nade", "M15 Grenade"),
 		/obj/item/explosive/mine = list("Claymore", "Mine", "M20 Claymore"),

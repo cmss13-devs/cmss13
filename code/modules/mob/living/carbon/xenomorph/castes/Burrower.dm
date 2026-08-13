@@ -44,6 +44,7 @@
 	icon = 'icons/mob/xenos/castes/tier_2/burrower.dmi'
 	icon_size = 64
 	icon_state = "Burrower Walking"
+	plasma_types = list(PLASMA_PHEROMONE)
 	layer = MOB_LAYER
 	plasma_stored = 100
 	pixel_x = -12

@@ -52,6 +52,7 @@
 	name = XENO_CASTE_HIVELORD
 	desc = "A builder of really big hives."
 	icon = 'icons/mob/xenos/castes/tier_2/hivelord.dmi'
+	plasma_types = list(PLASMA_PHEROMONE)
 	icon_size = 64
 	icon_state = "Hivelord Walking"
 	pixel_x = -16

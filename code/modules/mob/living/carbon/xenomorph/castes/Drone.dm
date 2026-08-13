@@ -54,6 +54,7 @@
 	icon = 'icons/mob/xenos/castes/tier_1/drone.dmi'
 	icon_size = 48
 	icon_state = "Drone Walking"
+	plasma_types = list(PLASMA_PHEROMONE)
 	tier = 1
 	pixel_x = -12
 	old_x = -12

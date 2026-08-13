@@ -24,6 +24,10 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/guardian(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_if_possible(new /obj/item/storage/hugger_box/cultist, WEAR_L_HAND)
 
+/datum/equipment_preset/guardian/load_status(mob/living/carbon/human/new_human, client/mob_client)
+	. = ..()
+	give_action(new_human, /datum/action/human_action/activable/burst)
+
 
 /obj/item/clothing/shoes/guardian
 	name = "Guardian boots"

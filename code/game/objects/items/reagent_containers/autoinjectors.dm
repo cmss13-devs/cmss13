@@ -21,7 +21,7 @@
 	starting_vial = null
 	transparent = FALSE
 	var/uses_left = 3
-	var/no_refill_valve = FALSE //mini tank will not accept no_refill_valve autoinjector types
+	var/mixed_chem = FALSE //mini tank will not accept mixed_chem autoinjector types
 	var/wall_vend_refill = FALSE
 	var/display_maptext = FALSE
 	var/maptext_label
@@ -32,7 +32,7 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/Initialize()
 	. = ..()
-	if(no_refill_valve)
+	if(mixed_chem)
 		return
 	reagents.add_reagent(chemname, volume)
 	if(display_maptext == TRUE)
@@ -68,15 +68,14 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/get_examine_text(mob/user, uses_left, volume, amount_per_transfer_from_this)
 	. = ..()
-	var/doses = volume / amount_per_transfer_from_this
 
 	if(uses_left > 1)
 		. += SPAN_NOTICE("It is currently loaded with [uses_left] injections out of a maximum of [volume/amount_per_transfer_from_this] injections of [amount_per_transfer_from_this]u.")
 	else if(uses_left == 1)
 		if((volume/amount_per_transfer_from_this) == 1)
-			. += SPAN_NOTICE("It is currently loaded with a single injection of [volume/amount_per_transfer_from_this]u.")
+			. += SPAN_NOTICE("It is currently loaded with a single injection of [volume/amount_per_transfer_from_this]u.") //one-use autoinjectors
 		else
-			. += SPAN_NOTICE("It is currently loaded with a single injection out of a maximum of [volume/amount_per_transfer_from_this] injections of [amount_per_transfer_from_this]u.")
+			. += SPAN_NOTICE("It is currently loaded with a single injection out of a maximum of [volume/amount_per_transfer_from_this] injections of [amount_per_transfer_from_this]u.") //other autoinjectors that have one use left
 	else if (uses_left == 0)
 		if(istype(src, /obj/item/reagent_container/hypospray/autoinjector/research))
 			. += SPAN_NOTICE("It is empty; the instructions say it can be refilled with a filled pressurized reagent canister pouch.")
@@ -490,7 +489,7 @@
 	desc = "An autoinjector loaded with three 1u doses of Chloral Hydrate and three 9u doses of a sleep agent. Good to quickly pacify someone--for surgery, of course! What? Are you some sort of criminal?"
 	amount_per_transfer_from_this = 10
 	volume = 30
-	no_refill_valve = TRUE
+	mixed_chem = TRUE
 	display_maptext = TRUE
 	maptext_label = "Zzz"
 
@@ -508,7 +507,7 @@
 	autoinjector_type = "autoinjector_single"
 	amount_per_transfer_from_this = (REAGENTS_OVERDOSE-1)*2 + (MED_REAGENTS_OVERDOSE-1) + 1 //dexalin plus is the +1
 	volume = (REAGENTS_OVERDOSE-1)*2 + (MED_REAGENTS_OVERDOSE-1) + 1 //dexalin plus is the +1
-	no_refill_valve = TRUE
+	mixed_chem = TRUE
 	uses_left = 1
 	injectSFX = 'sound/items/air_release.ogg'
 	injectVOL = 70//limited-supply emergency injector with v.large injection of drugs. Variable sfx freq sometimes rolls too quiet.
@@ -534,7 +533,7 @@
 	volume = 5
 	uses_left = 1
 	injectSFX = 'sound/items/air_release.ogg'
-	no_refill_valve = TRUE
+	mixed_chem = TRUE
 	display_maptext = TRUE
 	maptext_label = "!!!"
 	skilllock = SKILL_MEDICAL_DEFAULT
@@ -619,7 +618,7 @@
 	desc = "A custom-made autoinjector, likely from research. Only those trained in medicine can use it. It can be filled with a pressurized reagent canister pouch."
 	icon_state = "empty_research"
 	skilllock = SKILL_MEDICAL_TRAINED
-	no_refill_valve = TRUE
+	mixed_chem = TRUE
 	amount_per_transfer_from_this = 15
 	volume = 45
 	uses_left = 0

@@ -351,14 +351,14 @@
 		var/amount = (autoinjector.reagents.maximum_volume - autoinjector.reagents.total_volume)
 
 		if(!(chem_refill) || !(autoinjector.type in chem_refill)) //noo, you can't fill this! It's not the right autoinjector!
-			if(autoinjector.no_refill_valve) //Mixed chem autoinjectors like emergency and sleep are too complicated for the tank. It can only fill autoinjectors with one chemical inside.
+			if(autoinjector.mixed_chem) //Mixed chem autoinjectors like emergency and sleep are too complicated for the tank. It can only fill autoinjectors with one chemical inside.
 				if(istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/research)) //Autoinjector says, "Where's my pouch?"
 					to_chat(user, SPAN_WARNING("A small LED on [src] blinks red. Refill failed. [autoinjector] can only be refilled with a pressurized reagent canister pouch."))
 					return FALSE
-				else //some autoinjectors truly are one-use... Example: That big ass 79u emergency first aid syringe.
+				if(istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/no_refill))
 					to_chat(user, SPAN_WARNING("A small LED on [src] blinks red. Refill failed. [autoinjector] does not have a refill valve. It must be disposed of."))
 					return FALSE
-			else //Ultrazine and any other autoinjector in the future that holds chemicals that is not considered medicine.
+			else //Failsafe for the future where autoinjectors, somehow, may not hold medicine, for some reason.
 				to_chat(user, SPAN_WARNING("A small LED on [src] blinks red. Refill failed. [src] does not recognize the chemicals in [autoinjector]."))
 				return FALSE
 

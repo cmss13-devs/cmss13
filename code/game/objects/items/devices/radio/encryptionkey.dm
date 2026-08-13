@@ -165,7 +165,7 @@
 	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_REQ = TRUE)
 
 /obj/item/device/encryptionkey/req/mst
-	name = "Supply Radio Encryption Key"
+	name = "Mess Technician radio encryption key"
 	icon_state = "req_key"
 	channels = list(RADIO_CHANNEL_REQ = TRUE)
 

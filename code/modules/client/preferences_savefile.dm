@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN 8
-#define SAVEFILE_VERSION_MAX 36
+#define SAVEFILE_VERSION_MAX 37
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -243,6 +243,12 @@
 		S["toggles_insert"] >> toggles_insert
 		toggles_insert |= (PLAY_INSERT_STANDARD|PLAY_INSERT_CORPORATE|PLAY_INSERT_LEADER|PLAY_INSERT_MEDIC|PLAY_INSERT_ENGINEER|PLAY_INSERT_SPECIALIST|PLAY_INSERT_SMARTGUNNER|PLAY_INSERT_SYNTH|PLAY_INSERT_CO) // enabled by default for new saves
 		S["toggles_insert"] << toggles_insert
+
+	if(savefile_version < 37)
+		var/toggles_insert
+		S["toggles_sound"] >> toggles_insert
+		toggles_insert |= (SOUND_ROUND_END)
+		S["toggles_sound"] << toggles_insert
 
 	if(updated_from)
 		RegisterSignal(owner, COMSIG_CLIENT_LOGGED_IN, PROC_REF(handle_logged_in))

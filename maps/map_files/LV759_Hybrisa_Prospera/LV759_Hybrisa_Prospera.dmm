@@ -33646,7 +33646,7 @@
 /obj/structure/machinery/iv_drip{
 	pixel_y = 19
 	},
-/obj/item/reagent_container/hypospray/autoinjector/emergency,
+/obj/item/reagent_container/hypospray/autoinjector/no_refill/emergency,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/lv759/indoors/wy_research_complex/medical_annex)

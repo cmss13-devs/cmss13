@@ -17078,7 +17078,7 @@
 /area/lv522/outdoors/colony_streets/north_street)
 "jdn" = (
 /obj/effect/decal/cleanable/blood/drip,
-/obj/item/reagent_container/hypospray/autoinjector/emergency,
+/obj/item/reagent_container/hypospray/autoinjector/no_refill/emergency,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/bridges/corpo)
 "jdo" = (

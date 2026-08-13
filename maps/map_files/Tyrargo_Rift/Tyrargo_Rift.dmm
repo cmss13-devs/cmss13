@@ -66514,7 +66514,7 @@
 /area/tyrargo/outdoors/colony_streets/west)
 "dlh" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/reagent_container/hypospray/autoinjector/emergency{
+/obj/item/reagent_container/hypospray/autoinjector/no_refill/emergency{
 	pixel_x = -6;
 	pixel_y = 4
 	},
@@ -67092,7 +67092,7 @@
 "dmA" = (
 /obj/structure/closet/crate/green,
 /obj/item/ammo_magazine/m56d,
-/obj/item/reagent_container/hypospray/autoinjector/emergency,
+/obj/item/reagent_container/hypospray/autoinjector/no_refill/emergency,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/landing_zone_1)
 "dmB" = (

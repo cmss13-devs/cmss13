@@ -74,4 +74,5 @@ map whiskey_outpost_v2
 endmap
 
 map atlan_station
+	minplayers 60
 endmap

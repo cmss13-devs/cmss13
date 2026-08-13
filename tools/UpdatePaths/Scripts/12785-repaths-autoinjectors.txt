@@ -9,4 +9,4 @@
 /obj/item/reagent_container/hypospray/autoinjector/meralyne/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/standard/meralyne/@SUBTYPES{@OLD}
 /obj/item/reagent_container/hypospray/autoinjector/dermaline/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/standard/dermaline/@SUBTYPES{@OLD}
 /obj/item/reagent_container/hypospray/autoinjector/inaprovaline/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/standard/inaprovaline/@SUBTYPES{@OLD}
-/obj/item/reagent_container/hypospray/autoinjector/empty/skillless/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/empty/ez/@SUBTYPES{@OLD}
+/obj/item/reagent_container/hypospray/autoinjector/empty/skillless/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/research/ez/@SUBTYPES{@OLD}

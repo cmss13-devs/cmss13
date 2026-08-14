@@ -86,8 +86,15 @@
 /area/northpoint/outdoors/urban_cave/lz2_south
 	name = "Northpoint Hospital - Logistics LZ - Exterior Streets - South"
 
+
+/area/northpoint/outdoors/urban_cave/lz2_south/weedkiller
+	linked_lz = DROPSHIP_LZ2
+
 /area/northpoint/outdoors/urban_cave/lz2_west
 	name = "Northpoint Hospital - Logistics LZ - Exterior Streets - West"
 
 /area/northpoint/outdoors/urban_cave/lz1_south_west
 	name = "Northpoint Hospital - Medical LZ - Exterior Streets - South-West"
+
+/area/northpoint/outdoors/urban_cave/lz1_south_west/weedkiller
+	linked_lz = DROPSHIP_LZ1

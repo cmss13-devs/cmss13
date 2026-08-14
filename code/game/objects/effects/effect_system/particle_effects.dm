@@ -49,5 +49,5 @@
 /obj/effect/particle_effect/dash_dust/Initialize(mapload, ...)
 	. = ..()
 	dir = pick(GLOB.alldirs)
-	animate(src, 5, alpha = 0, easing = CUBIC_EASING)
-	QDEL_IN(src, 5)
+	animate(src, 0.5 SECONDS, alpha = 0, easing = CUBIC_EASING)
+	QDEL_IN(src, 0.5 SECONDS)

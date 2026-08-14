@@ -920,8 +920,8 @@
 /obj/effect/particle_effect/smoke/dash_dust/Initialize(mapload, ...)
 	. = ..()
 	dir = pick(GLOB.alldirs)
-	animate(src, 5, alpha = 0, easing = CUBIC_EASING)
-	QDEL_IN(src, 2)
+	animate(src, 0.5 SECONDS, alpha = 0, easing = CUBIC_EASING)
+	QDEL_IN(src, 0.2 SECONDS)
 
 /datum/effect_system/smoke_spread/dash_dust
 	smoke_type = /obj/effect/particle_effect/smoke/dash_dust

@@ -492,13 +492,13 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 	if((SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)) & COMSIG_ITEM_PICKUP_CANCELLED) //acided
 		to_chat(user, SPAN_WARNING("[src] is covered in acid!"))
 		balloon_alert(user, "its covered in acid!")
-		return
+		return TRUE
 
 	if(used_stack.amount >= max_amount)
 		to_chat(user, SPAN_WARNING("The [name] is full!"))
 		return TRUE
-	var/to_transfer = min(amount, used_stack.max_amount - used_stack.amount)
 
+	var/to_transfer = min(amount, used_stack.max_amount - used_stack.amount)
 	if(to_transfer <= 0)
 		return
 

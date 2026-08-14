@@ -1582,6 +1582,10 @@ Wrist Accessories
 	name = "urban raincover"
 	icon_state = "raincover_urban"
 
+/obj/item/clothing/accessory/helmet/cover/raincover/snow
+	name = "snow raincover"
+	icon_state = "raincover_snow"
+
 /obj/item/clothing/accessory/helmet/cover/netting
 	name = "combat netting"
 	desc = "Probably combat netting for a helmet. Probably just an extra hairnet that got ordered for the phantom Almayer cooking staff. Probably useless."
@@ -1598,3 +1602,7 @@ Wrist Accessories
 /obj/item/clothing/accessory/helmet/cover/netting/urban
 	name = "urban combat netting"
 	icon_state = "netting_urban"
+
+/obj/item/clothing/accessory/helmet/cover/netting/snow
+	name = "snow combat netting"
+	icon_state = "netting_snow"

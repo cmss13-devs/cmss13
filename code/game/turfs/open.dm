@@ -768,14 +768,12 @@
 /turf/open/gm/river/update_icon()
 	..()
 	update_overlays()
-	layer = covered ? TURF_LAYER : UNDER_TURF_LAYER -0.03
 
 /turf/open/gm/river/proc/update_overlays()
 	overlays.Cut()
 	if(covered)
 		name = covered_name
 		overlays += image("icon"=src.cover_icon,"icon_state"=cover_icon_state,"layer"=CATWALK_LAYER,"dir" = dir)
-	layer = UNDER_WATER_TURF_LAYER
 
 /turf/open/gm/river/Entered(atom/movable/AM)
 	..()

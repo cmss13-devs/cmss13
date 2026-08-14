@@ -27,20 +27,21 @@ SUBSYSTEM_DEF(water_overlays)
 	)
 
 /datum/controller/subsystem/water_overlays/Initialize()
-	for(var/turf/T in GLOB.turfs)	//we're gonna cut down on the turfs we're gonna check to improve game start lag, ignoring water in nightmares...
-		if(is_water(T))				//maybe we can add their neighbors to turfs_to_process when placing the nightmares...  someone should
+	return SS_INIT_SUCCESS
+
+/datum/controller/subsystem/water_overlays/proc/gamestart_process()
+	start_time = world.time
+	stat = WATEROVERLAY_STATUS_RUNNING
+	for(var/turf/T in GLOB.turfs)
+		if(is_water(T))
 			found_waters |= T
 			for(var/direction in GLOB.alldirs)
 				var/turf/found_turf = get_step(T, direction)
 				if(found_turf && !is_water(found_turf))
 					turfs_to_process |= found_turf
-		CHECK_TICK
-	generate_water_display_icons()	//nightmares should only have water in their base maps, since we only generate overlays for basemap water turfs (otherwise we could do this at gamestart and add ~3 seconds of lag as this runs)
-	return SS_INIT_SUCCESS
 
-/datum/controller/subsystem/water_overlays/proc/fix_water_neighbor_layers()
-	start_time = world.time
-	stat = WATEROVERLAY_STATUS_RUNNING
+	generate_water_display_icons()
+
 	var/list/altered_turfs = list()
 	for(var/turf/current_turf in turfs_to_process)
 		if(current_turf in altered_turfs)

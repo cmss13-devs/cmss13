@@ -148,7 +148,7 @@ SUBSYSTEM_DEF(ticker)
 			SSwater_overlays.stat = WATEROVERLAY_STATUS_DONE
 			log_admin("Wateroverlay setup was cancelled as it took more than 30 seconds! Mobs might visually clip under turfs!")
 		else
-			var/ret = INVOKE_ASYNC(SSwater_overlays, TYPE_PROC_REF(/datum/controller/subsystem/water_overlays, fix_water_neighbor_layers))
+			var/ret = INVOKE_ASYNC(SSwater_overlays, TYPE_PROC_REF(/datum/controller/subsystem/water_overlays, gamestart_process))
 			if(!ret)
 				return // Wait for completion
 			log_debug("Wateroverlay turf layering changes finished")

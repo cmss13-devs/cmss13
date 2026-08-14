@@ -14,5 +14,5 @@
 	addtimer(CALLBACK(src, PROC_REF(destroy_effect)), lifetime)
 
 /obj/effect/water_splash/proc/destroy_effect()
-	Destroy()
+	qdel(src)
 

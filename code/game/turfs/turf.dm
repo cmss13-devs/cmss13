@@ -139,14 +139,14 @@
 			if(!(src in return_list))
 				visually_set_under_water_mobs(TRUE)
 			return_list |= src
-			var/turf/s1 = get_step(src, turn(direction_check, 90))
-			var/turf/s2 = get_step(src, turn(direction_check, -90))
-			if(s1 && !is_water(s1) && !(s1 in return_list) && !(s1 in altered_turfs))
-				s1.visually_set_under_water_mobs(TRUE)
-				return_list |= s1
-			if(s2 && !is_water(s2) && !(s2 in return_list) && !(s2 in altered_turfs))
-				s2.visually_set_under_water_mobs(TRUE)
-				return_list |= s2
+			var/turf/rightwards_turf = get_step(src, turn(direction_check, 90))
+			if(rightwards_turf && !is_water(rightwards_turf) && !(rightwards_turf in return_list) && !(rightwards_turf in altered_turfs))
+				rightwards_turf.visually_set_under_water_mobs(TRUE)
+				return_list |= rightwards_turf
+			var/turf/leftwards_turf = get_step(src, turn(direction_check, -90))
+			if(leftwards_turf && !is_water(leftwards_turf) && !(leftwards_turf in return_list) && !(leftwards_turf in altered_turfs))
+				leftwards_turf.visually_set_under_water_mobs(TRUE)
+				return_list |= leftwards_turf
 	return return_list
 
 /turf/proc/fix_water_clipping_layers_final() // if any of the turfs we changed above have water above them, we reset them
@@ -167,17 +167,17 @@
 	if(setting)
 		layer = UNDER_WATER_TURF_LAYER
 		plane = FLOOR_PLANE
-		for(var/obj/structure/S in contents)		//decals, railings, stairs etc
-			var/icon/icon_check = icon(S.icon, S.icon_state)
+		for(var/obj/structure/structure in contents)		//decals, railings, stairs etc
+			var/icon/icon_check = icon(structure.icon, structure.icon_state)
 			if(icon_check.Width() <= 32)
-				S.layer = UNDER_WATER_TURF_LAYER + 0.01
-				S.plane = FLOOR_PLANE
+				structure.layer = UNDER_WATER_TURF_LAYER + 0.01
+				structure.plane = FLOOR_PLANE
 	else
 		layer = initial(layer)
 		plane = initial(plane)
-		for(var/obj/structure/S in contents)
-			S.layer = initial(layer)
-			S.plane = initial(plane)
+		for(var/obj/structure/structure in contents)
+			structure.layer = initial(layer)
+			structure.plane = initial(plane)
 
 
 /obj/vis_contents_holder

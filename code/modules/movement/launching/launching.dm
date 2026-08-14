@@ -236,14 +236,14 @@
 				hit_atom = LM.target
 		launch_impact(hit_atom)
 	if (loc)
-		var/turf/T = get_turf(src)
-		SEND_SIGNAL(T, COMSIG_TURF_ENTERED, src, TRUE)
-		T.hitby(src)
 		throwing = FALSE
 		rebounding = FALSE
 		cur_speed = old_speed
 		remove_temp_pass_flags(pass_flags)
 		LM.invoke_end_throw_callbacks(src)
+		if(isturf(loc))
+			var/turf/hit_turf = get_turf(src)
+			hit_turf.hitby(src)
 	QDEL_NULL(launch_metadata)
 
 /atom/movable/proc/throw_random_direction(range, speed = 0, atom/thrower, spin, launch_type = NORMAL_LAUNCH, pass_flags = NO_FLAGS)

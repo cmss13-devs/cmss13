@@ -19,10 +19,6 @@
 /proc/is_water(turf/T)
 	return (is_full_water(T) || is_coastline(T))
 
-//////////////////////////////////////////////////////////////////////////////////////////
-//		SUBSYSTEM CODE --> Generate the icons at roundstart for the display effects		//
-//////////////////////////////////////////////////////////////////////////////////////////
-
 /proc/handle_get_icon(recieved_icon, toxic)		//I love Toxic code!!!
 	var/return_icon = recieved_icon
 	if(recieved_icon == 'icons/turf/floors/desert_water.dmi')

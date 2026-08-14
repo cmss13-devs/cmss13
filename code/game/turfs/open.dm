@@ -145,20 +145,19 @@
 			if(3)
 				. += "Well Done."
 
-/turf/open/proc/on_enter(turf/source, atom/movable/mover, force_update=FALSE)
+/turf/open/proc/on_enter(turf/source, atom/movable/mover)
 	SIGNAL_HANDLER
-	if(!iscarbon(mover) || mover.throwing)
+	if(!iscarbon(mover) || isobj(mover))
 		return
-	var/mob/living/carbon/carbon_mover =  mover
-	var/datum/component/water_overlay_effect/existing = carbon_mover.GetComponent(/datum/component/water_overlay_effect)
-	if(existing)
-		carbon_mover.AddComponent(/datum/component/water_overlay_effect, src.type, depth, existing.my_water_overlay_effect)
-		return
-	mover.AddComponent(/datum/component/water_overlay_effect, src.type, depth, force_update)
+	mover.AddComponent(/datum/component/water_overlay_effect, src, depth)
 
-/turf/open/proc/on_hit(turf/T, atom/movable/AM)
+/turf/open/proc/on_hit(atom/hit_thing, atom/movable/mover)
 	SIGNAL_HANDLER
-	if(depth && !covered) //this check isnt really necessary, but wth
+	if(depth && !covered)
+		var/datum/component/water_overlay_effect/found_component = mover.GetComponent(/datum/component/water_overlay_effect)
+		if(found_component)
+			found_component.my_water_overlay_effect.hidden = FALSE
+			found_component.my_water_overlay_effect.update(src)
 		new /obj/effect/water_splash(src, src)
 		playsound(src, "sound/effects/water/splash.ogg", 20, 1, 10, falloff=1)
 

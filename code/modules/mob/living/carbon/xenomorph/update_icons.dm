@@ -145,16 +145,16 @@
 /mob/living/carbon/xenomorph/update_effects()
 	remove_overlay(EFFECTS_LAYER)
 
-	var/image/I
-	for(var/datum/effects/E in effects_list)
-		if(E.icon_path && E.mob_icon_state_path)
-			if(!I)
-				I = image("icon" = E.icon_path, "icon_state" = E.mob_icon_state_path, "layer"= -EFFECTS_LAYER)
+	var/image/constructed_image
+	for(var/datum/effects/effect in effects_list)
+		if(effect.icon_path && effect.mob_icon_state_path)
+			if(!constructed_image)
+				constructed_image = image("icon" = effect.icon_path, "icon_state" = effect.mob_icon_state_path, "layer"= -EFFECTS_LAYER)
 			else
-				I.overlays += image("icon" = E.icon_path, "icon_state" = E.mob_icon_state_path, "layer"= -EFFECTS_LAYER)
-	if(!I)
+				constructed_image.overlays += image("icon" = effect.icon_path, "icon_state" = effect.mob_icon_state_path, "layer"= -EFFECTS_LAYER)
+	if(!constructed_image)
 		return
-	overlays_standing[EFFECTS_LAYER] = I
+	overlays_standing[EFFECTS_LAYER] = constructed_image
 	apply_overlay(EFFECTS_LAYER)
 
 /* ^^^^^^^^^^^^^^ End Icon updates */

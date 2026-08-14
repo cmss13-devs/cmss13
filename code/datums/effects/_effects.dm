@@ -43,7 +43,7 @@
 	if(!validate_atom(thing) || QDELETED(thing))
 		qdel(src)
 		return
-	if(flags & EFFECT_NO_PROCESS)
+	if(!(flags & EFFECT_NO_PROCESS))
 		START_PROCESSING(SSeffects, src)
 
 	affected_atom = thing

@@ -167,6 +167,8 @@
 	is_weedable = NOT_WEEDABLE
 	depth = -2
 	layer = UNDER_WATER_TURF_LAYER
+	turf_flags = TURF_COASTLINE
+	water_type = /turf/open/gm/river/desert/shallow
 
 /turf/open/desert/desert_shore/update_icon()
 	..()
@@ -180,10 +182,6 @@
 		if(/obj/effect/blocker/water/toxic::WATER_TOXIC_DISPERSING)
 			set_light(1)
 			icon = 'icons/turf/floors/desert_water_transition.dmi'
-
-/turf/open/desert/desert_shore/Initialize(mapload, ...)
-	. = ..()
-	update_icon()
 
 /turf/open/desert/desert_shore/desert_shore1
 	name = "shore"
@@ -311,6 +309,7 @@
 	icon_state = "shore_caves"
 	var/toxic = 0
 	layer = UNDER_WATER_TURF_LAYER
+	turf_flags = TURF_COASTLINE
 
 /turf/open/desert/cave/cave_shore/update_icon()
 	..()
@@ -377,6 +376,7 @@
 /turf/open/gm/river/desert/shallow_edge
 	icon_state = "shallow_edge"
 	depth = -12
+	water_type = /turf/open/gm/river/desert/shallow
 
 /turf/open/gm/river/desert/shallow_edge/southwest
 	dir = SOUTHWEST
@@ -385,6 +385,7 @@
 /turf/open/gm/river/desert/shallow_edge/north
 	dir = NORTH
 	depth = -18
+	water_type = /turf/open/gm/river/desert/deep
 
 /turf/open/gm/river/desert/shallow_edge/east
 	dir = EAST
@@ -408,6 +409,7 @@
 
 /turf/open/gm/river/desert/shallow_edge/covered/north
 	dir = NORTH
+	water_type = /turf/open/gm/river/desert/deep
 
 /turf/open/gm/river/desert/shallow_edge/covered/east
 	dir = EAST
@@ -422,6 +424,7 @@
 /turf/open/gm/river/desert/shallow_corner
 	icon_state = "shallow_c"
 	depth = -18
+	water_type = /turf/open/gm/river/desert/deep
 
 /turf/open/gm/river/desert/shallow_corner/covered
 	covered = TRUE
@@ -434,10 +437,12 @@
 /turf/open/gm/river/desert/shallow_corner/east
 	dir = EAST
 	depth = -12
+	water_type = /turf/open/gm/river/desert/shallow
 
 /turf/open/gm/river/desert/shallow_corner/west
 	dir = WEST
 	depth = -12
+	water_type = /turf/open/gm/river/desert/shallow
 
 
 //deep water

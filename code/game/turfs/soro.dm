@@ -113,6 +113,7 @@
 	icon_state = "beach"
 	baseturfs = /turf/open/gm/coast
 	supports_surgery = FALSE
+	water_type = /turf/open/gm/river/soro
 
 /turf/open/gm/coast/dirt/north
 	depth = -4
@@ -164,6 +165,7 @@
 	icon_state = "forestbeach"
 	baseturfs = /turf/open/gm/coast
 	depth = -4
+	water_type = /turf/open/gm/river/tyrargo
 
 /turf/open/gm/coast/dirt/forestdir/south
 	dir = 1

@@ -1,16 +1,20 @@
-/proc/is_full_water(turf/T)
-	if(istype(T, /turf/open))
-		var/turf/open/OT = T
-		if(OT.covered)
+/proc/is_full_water(turf/potential_water)
+	if(!isturf(potential_water))
+		return FALSE
+	if(istype(potential_water, /turf/open))
+		var/turf/open/potential_open_water = potential_water
+		if(potential_open_water.covered)
 			return FALSE
-	return (T.type in SSwater_overlays.full_water_turfs)
+	return (potential_water.turf_flags & TURF_FULL_WATER)
 
-/proc/is_coastline(turf/T)
-	if(istype(T, /turf/open))
-		var/turf/open/OT = T
-		if(OT.covered)
+/proc/is_coastline(turf/potential_coastline)
+	if(!isturf(potential_coastline))
+		return FALSE
+	if(istype(potential_coastline, /turf/open))
+		var/turf/open/potential_open_coastline = potential_coastline
+		if(potential_open_coastline.covered)
 			return FALSE
-	return (T.type in SSwater_overlays.coastline_water_turfs)
+	return  (potential_coastline.turf_flags & TURF_COASTLINE)
 
 /proc/is_water(turf/T)
 	return (is_full_water(T) || is_coastline(T))
@@ -36,7 +40,7 @@
 	return return_list
 
 /* //////////////////////////	GENERATING ICONS TO BE USED IN WATER OVERLAYS	/////////////////////////// generate_water_display_icons()
-water turfs are hardcoded to only have certain depths, but the shorelines take from their fulltile varients ---> water_rerouting()
+water turfs are hardcoded to only have certain depths, but the shorelines take from their fulltile varients ---> turf/open var/water_type
 so for each water turf we generate a water overlay for each size mobs' textures can have: 32, 48, 64, and 96 ---> texture_sizes
 in addition to those for extra deep water turfs we also generate an icon that will cover the mob completely
 some mobs look weird with just the default overlay, so for those we generate additional overlays using unique culling masks ---> water_overlay_special
@@ -46,33 +50,33 @@ and lastly 2 more overlays for resting humans per waterturf. and there, all the 
 //currently it generates about 1350 icons, which could concievably be lowered by having coasts of the same depth reroute to the same overlay... oh god, just imagining it hurts
 
 /proc/generate_water_display_icons()
-	for(var/starting_type in SSwater_overlays.coastline_water_turfs + SSwater_overlays.full_water_turfs)
-		var/turf/open/starting_T = starting_type	//if theres a water turf thats not an open turf subtype someones messed up
-		if(starting_T.depth == 0)
+	for(var/starting_type in SSwater_overlays.found_waters)
+		var/turf/open/starting_open_turf = starting_type	//if theres a water turf thats not an open turf subtype someones messed up
+		if(starting_open_turf.depth == 0)
 			continue       //some turfs are water turfs, but have no depth... meaning no need for an overlay
 		var/toxic = -1
-		for(var/found_type in handle_toxic_states(starting_T))	//if the water turf can be toxic, we need to add overlays for each possiblity
+		for(var/found_type in handle_toxic_states(starting_open_turf))	//if the water turf can be toxic, we need to add overlays for each possiblity
 			toxic++
 			var/usable_tox = toxic == 0 ? 0 : (toxic == 1 ? 1 : -1)
-			var/working_type = SSwater_overlays.water_rerouting["[found_type]"] || found_type	//handle rerouting
+			var/working_type = starting_open_turf.water_type ? starting_open_turf.water_type : found_type	//handle rerouting
 			var/turf/open/working_T = working_type
 			for(var/texture_size in SSwater_overlays.texture_sizes)
 				//	V V V V	construct water texture	V V V V
 				var/icon/sized_water_texture = icon(SSwater_overlays.water_overlay_icon_paths["[texture_size]"],"empty")              //this is what will eventually be our water texture
 				var/icon/turf_texture = icon(handle_get_icon(working_T.icon, usable_tox), working_T.icon_state)    //this is the actual texture we'll use to create the water texture
 				var/icon/subtraction_texture = icon(SSwater_overlays.water_overlay_icon_paths["[texture_size]"], "culling_mask") //this is the part of it we'll keep, rest will become "air"
-				var/w_w = sized_water_texture.Width()
-				var/pieces = round(w_w / 32) + (w_w / 32 > round(w_w / 32) ? 1 : 0)      //since mobs wont always be 32x32 the water texture will need be build out of 32x32 parts
+				var/texture_width = sized_water_texture.Width()
+				var/pieces = round(texture_width / 32) + (texture_width / 32 > round(texture_width / 32) ? 1 : 0)      //since mobs wont always be 32x32 the water texture will need be build out of 32x32 parts
 				for(var/i=0, i<pieces, i++)
 					for(var/j=0, j<pieces, j++)
 						sized_water_texture.Blend(turf_texture, ICON_OVERLAY, (i*32)+1, (j*32)+1)     //place our 32x32 textures on our water texture every 32 pixels
-				if(starting_T.depth <= -12)
+				if(starting_open_turf.depth <= -12)
 					SSwater_overlays.water_overlay_icons["[texture_size]_[found_type][usable_tox]_u"] = icon(sized_water_texture)	// for the full water overlay
 
 				//	V V V V	construct depthed overlay for mob texture size	V V V V
 				var/icon/culled_water = icon(sized_water_texture)
-				var/w_h = sized_water_texture.Height()
-				subtraction_texture.Shift(SOUTH, (w_h - abs(starting_T.depth)-3), FALSE)         //we move it down to "water level" if we're not using a custom mob culling mask
+				var/texture_hieght = sized_water_texture.Height()
+				subtraction_texture.Shift(SOUTH, (texture_hieght - abs(starting_open_turf.depth)-3), FALSE)         //we move it down to "water level" if we're not using a custom mob culling mask
 				culled_water.AddAlphaMask(subtraction_texture)
 				SSwater_overlays.water_overlay_icons["[texture_size]_[found_type][usable_tox]"] = culled_water	//this is the default overlays, made according to depth
 
@@ -81,7 +85,7 @@ and lastly 2 more overlays for resting humans per waterturf. and there, all the 
 				for(var/mob_type in special_mob_masks)
 					// * HUMANS RESTING * <-- this could be expanded later if someone wants to sprite 2 culling masks for every mob you want them on...
 					if(mob_type == /mob/living/carbon/human)
-						var/resting_key = starting_T.depth >= -4 ? "coast" : "float"
+						var/resting_key = starting_open_turf.depth >= -4 ? "coast" : "float"
 						var/icon/resting_east = icon(sized_water_texture)
 						var/icon/resting_west = icon(sized_water_texture)
 						resting_east.AddAlphaMask(icon(SSwater_overlays.water_overlay_icon_paths["[texture_size]"], "culling_[resting_key]_rest_e"))

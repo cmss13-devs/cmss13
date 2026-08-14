@@ -12,7 +12,8 @@
 	var/scorchedness = 0 //how scorched is this turf 0 to 3
 	var/icon_state_before_scorching //this is really dumb, blame the mappers...
 	var/depth = 0 // for water_overlay_effects
-	var/covered = 0
+	var/covered = 0	//if it has a catwalk like thing
+	var/water_type = null //for specifically partial water turfs: used in water overlays, as to not overlay sand/dirt/grass etc
 
 /turf/open/Initialize(mapload, ...)
 	. = ..()
@@ -146,14 +147,13 @@
 
 /turf/open/proc/on_enter(turf/source, atom/movable/mover, force_update=FALSE)
 	SIGNAL_HANDLER
-	if(!isliving(mover) || mover.throwing || (!ishuman(mover) && !isxeno(mover) && !isyautja(mover)))
+	if(!iscarbon(mover) || mover.throwing)
 		return
-	if(iscarbon(mover))
-		var/mob/living/carbon/carbon_mover =  mover
-		var/datum/component/water_overlay_effect/existing = carbon_mover.GetComponent(/datum/component/water_overlay_effect)
-		if(existing)
-			carbon_mover.AddComponent(/datum/component/water_overlay_effect, src.type, depth, existing.my_water_overlay_effect)
-			return
+	var/mob/living/carbon/carbon_mover =  mover
+	var/datum/component/water_overlay_effect/existing = carbon_mover.GetComponent(/datum/component/water_overlay_effect)
+	if(existing)
+		carbon_mover.AddComponent(/datum/component/water_overlay_effect, src.type, depth, existing.my_water_overlay_effect)
+		return
 	mover.AddComponent(/datum/component/water_overlay_effect, src.type, depth, force_update)
 
 /turf/open/proc/on_hit(turf/T, atom/movable/AM)
@@ -163,7 +163,7 @@
 		playsound(src, "sound/effects/water/splash.ogg", 20, 1, 10, falloff=1)
 	if(!isliving(AM))
 		return
-	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, T)
+	//SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, T)
 
 /turf/open/proc/set_covered(setting)
 	if(setting)
@@ -596,11 +596,8 @@
 
 /turf/open/gm/grass/grassbeach
 	icon_state = "grassbeach"
-
-/turf/open/gm/grass/grassbeach/Initialize(mapload, ...)
-	. = ..()
-	update_icon()
-
+	turf_flags = TURF_COASTLINE
+	water_type = /turf/open/gm/river
 
 /turf/open/gm/grass/grassbeach/north
 	depth = -4
@@ -766,6 +763,7 @@
 	is_weedable = NOT_WEEDABLE
 	depth = -8 //used for the offset of mobs that enter it (see water_overlay_effect.dm)
 	layer = UNDER_WATER_TURF_LAYER
+	turf_flags = TURF_FULL_WATER
 
 /turf/open/gm/river/Initialize(mapload, ...)
 	. = ..()
@@ -942,6 +940,8 @@
 	is_weedable = NOT_WEEDABLE
 	depth = -2 //used for the offset of mobs that enter it (see water_overlay_effect.dm)
 	layer = UNDER_WATER_TURF_LAYER
+	turf_flags = TURF_COASTLINE
+	water_type = /turf/open/gm/river
 
 /turf/open/gm/coast/north
 	depth = -4

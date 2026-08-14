@@ -2299,9 +2299,7 @@
 /obj/structure/disposalpipe/junction{
 	dir = 4
 	},
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 9
-	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/corsat,
 /area/atlan/station/cent_maintenace)
 "ahj" = (
@@ -5457,34 +5455,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/atlan/comms/lz2_hab_relay)
-"aqv" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/obj/structure/platform_decoration/metal/atlan,
-/turf/open/floor/prison/sterile_white/south,
-/area/atlan/station/walkway)
-"aqw" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/obj/structure/platform/metal/atlan,
-/turf/open/floor/prison/sterile_white/south,
-/area/atlan/station/walkway)
-"aqx" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/obj/structure/platform_decoration/metal/atlan/north,
-/turf/open/floor/prison/sterile_white/south,
-/area/atlan/station/walkway)
-"aqy" = (
-/obj/item/stack/sheet/metal,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 9
-	},
-/turf/open/floor/strata,
-/area/atlan/station/walkway)
 "aqz" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/strata/floor2,
@@ -8719,11 +8689,6 @@
 "aAM" = (
 /turf/closed/wall/upp_ship/grey/orange,
 /area/atlan/station/cent_maintenace)
-"aAN" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/strata/floor2,
-/area/atlan/station/cent_maintenace)
 "aAO" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
@@ -11314,16 +11279,6 @@
 /area/atlan/station/cent_maintenace)
 "aJA" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/prison/sterile_white/south,
-/area/atlan/station/cent_maintenace)
-"aJB" = (
-/obj/structure/machinery/light/double/blue,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 9
-	},
 /turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/cent_maintenace)
 "aJC" = (
@@ -11359,10 +11314,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/green1,
 /area/atlan/station/single_dorms)
-"aJI" = (
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/prison/sterile_white/south,
-/area/atlan/station/cent_maintenace)
 "aJJ" = (
 /obj/structure/bed/chair{
 	dir = 4;
@@ -11435,10 +11386,6 @@
 /obj/item/tool/extinguisher,
 /turf/open/floor/strata/purp1,
 /area/atlan/asteroid/servers)
-"aJT" = (
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/strata/floor2,
-/area/atlan/station/cent_maintenace)
 "aJU" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/floor2,
@@ -16106,9 +16053,6 @@
 /turf/open/floor/strata,
 /area/atlan/station/walkway)
 "aYy" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
 /obj/item/ammo_magazine/rifle/type71,
 /turf/open/floor/strata,
 /area/atlan/station/walkway)
@@ -17201,8 +17145,8 @@
 /turf/open/floor/strata/floor3/east,
 /area/atlan/oob)
 "bcu" = (
-/obj/structure/pipes/standard/manifold/hidden/cyan{
-	dir = 1
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 10
 	},
 /turf/open/floor/strata/floor2,
 /area/atlan/station/cent_maintenace)
@@ -45627,8 +45571,8 @@
 /obj/item/ammo_casing{
 	icon_state = "casing_5"
 	},
-/obj/structure/pipes/standard/manifold/hidden/cyan{
-	dir = 8
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 5
 	},
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/walkway)
@@ -45948,7 +45892,6 @@
 /area/atlan/station/cent_maintenace)
 "vGI" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt,
-/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/walkway)
 "vGR" = (
@@ -121155,16 +121098,16 @@ aLE
 qcT
 tmn
 mPW
-anJ
-anE
+tmn
+tmn
 vGI
-anE
-anE
-anE
-apU
-anE
-anY
-anE
+tmn
+tmn
+tmn
+agy
+tmn
+quI
+tmn
 anL
 apv
 apj
@@ -121367,7 +121310,7 @@ quI
 tmn
 tmn
 tmn
-anK
+tmn
 tmn
 tmn
 tmn
@@ -121579,7 +121522,7 @@ quI
 tmn
 kmL
 tmn
-aqv
+afZ
 afR
 afR
 afR
@@ -121791,7 +121734,7 @@ quI
 tmn
 lwX
 tmn
-aqw
+kzh
 faU
 uHn
 nvH
@@ -122003,7 +121946,7 @@ lSN
 afN
 tmn
 tmn
-aqw
+kzh
 hMy
 aSd
 gLQ
@@ -122215,7 +122158,7 @@ iVJ
 afO
 tmn
 tmn
-aqw
+kzh
 fSC
 jqa
 uKO
@@ -122427,7 +122370,7 @@ boR
 afP
 tmn
 tmn
-aqx
+vCg
 wIR
 isP
 pIc
@@ -122851,7 +122794,7 @@ quI
 ahp
 iMt
 cfc
-anK
+tmn
 lwX
 ntI
 tmn
@@ -123063,7 +123006,7 @@ anY
 anE
 aih
 vqL
-aqy
+nFx
 dOC
 agW
 afR
@@ -125404,7 +125347,7 @@ yjV
 aJr
 aJr
 rlO
-aJy
+rlO
 aJr
 afD
 fGl
@@ -125824,11 +125767,11 @@ aKM
 aKF
 aKv
 aKn
-aJT
-aJT
-aAN
-aJI
-aJB
+rlO
+rlO
+aJU
+aJr
+eZN
 aSd
 aSd
 aSd

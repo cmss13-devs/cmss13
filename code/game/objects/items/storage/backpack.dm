@@ -121,10 +121,25 @@
 /obj/item/storage/backpack/open(mob/user)
 	if(!is_accessible_by(user))
 		return
-	if(locking_id && !compare_id(user))//if id locked we the user's id against the locker's
+	if(!check_id_lock(user))
 		to_chat(user, SPAN_NOTICE("[src] is locked by [locking_id.registered_name]'s ID! You decide to leave it alone."))
 		return
 	..()
+
+/obj/item/storage/backpack/can_storage_interact(mob/user)
+	if(!check_id_lock(user))
+		return FALSE
+	. = ..()
+
+/obj/item/storage/backpack/can_be_inserted(obj/item/W, mob/user, stop_messages = FALSE)
+	if(!check_id_lock(user))
+		return FALSE
+	. = ..()
+
+/obj/item/storage/backpack/proc/check_id_lock(mob/user)
+	if(locking_id && !compare_id(user)) //if id locked we check the user's id against the locker's
+		return FALSE
+	return TRUE
 
 /obj/item/storage/backpack/storage_close(mob/user)
 	UnregisterSignal(user, COMSIG_MOVABLE_PRE_MOVE)
@@ -896,7 +911,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	xeno_types = null
 
 /obj/item/storage/backpack/marine/grenadepack/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/storage/box/nade_box) || istype(W, /obj/item/storage/backpack/marine/grenadepack) || istype(W, /obj/item/storage/belt/grenade))
+	if(istype(W, /obj/item/storage/box/nade_box) || istype(W, /obj/item/storage/backpack/marine/grenadepack) || istype(W, /obj/item/storage/box/packet) || istype(W, /obj/item/storage/belt/grenade))
 		dump_into(W,user)
 	else
 		return ..()

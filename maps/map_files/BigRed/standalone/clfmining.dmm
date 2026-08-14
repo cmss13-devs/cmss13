@@ -1869,7 +1869,7 @@
 	icon_state = "4-8";
 	name = "heavy duty power cable"
 	},
-/obj/effect/landmark/survivor_spawner/clf/solaris,
+/obj/effect/landmark/survivor_spawner/clf_synth/solaris,
 /turf/open/mars_cave/mars_cave_17,
 /area/bigredv2/caves/mining)
 "Ds" = (
@@ -2008,12 +2008,7 @@
 /area/bigredv2/caves/mining)
 "Fl" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/twohanded/lungemine{
-	pixel_y = 8
-	},
-/obj/item/weapon/twohanded/lungemine{
-	pixel_y = -7
-	},
+/obj/item/weapon/twohanded/lungemine,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "Fo" = (
@@ -3157,7 +3152,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/effect/landmark/survivor_spawner/clf/solaris,
+/obj/effect/landmark/survivor_spawner/clf_coordinator/solaris,
 /turf/open/mars_cave/mars_cave_17,
 /area/bigredv2/caves/mining)
 "Xy" = (

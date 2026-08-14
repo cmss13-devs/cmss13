@@ -8,8 +8,8 @@
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/machineguns.dmi'
 	w_class = SIZE_MEDIUM
 	icon_state = "m56d_drum"
-	flags_magazine = NO_FLAGS //can't be refilled or emptied by hand
 	caliber = "10x28mm"
+	flags_magazine = AMMUNITION_REFILLABLE|AMMUNITION_SLAP_TRANSFER
 	max_rounds = 700
 	default_ammo = /datum/ammo/bullet/machinegun
 	gun_type = null
@@ -102,6 +102,7 @@
 		. += "It seems to be lacking an ammo drum."
 
 /obj/item/device/m56d_gun/update_icon() //Lets generate the icon based on how much ammo it has.
+	icon_state = initial(icon_state)
 	if(has_mount)
 		icon_state += "_tri"
 	if(rounds)
@@ -400,6 +401,12 @@
 
 	if(istype(O,/obj/item/device/m56d_gun)) //lets mount the MG onto the mount.
 		var/obj/item/device/m56d_gun/MG = O
+		if(gun_mounted)
+			to_chat(user, SPAN_WARNING("There is already a gun mounted to this tripod!"))
+			return
+		if(MG.has_mount)
+			to_chat(user, SPAN_WARNING("The gun you're trying to attach already has a mount!"))
+			return
 		for(var/obj/structure/machinery/machine in long_orange(MG.defense_check_range, loc))
 			if(istype(machine, /obj/structure/machinery/m56d_hmg) || istype(machine, /obj/structure/machinery/m56d_post))
 				to_chat(user, SPAN_WARNING("This is too close to [machine]!"))
@@ -628,7 +635,7 @@
 	if(gun_has_gamemode_skin)
 		select_gamemode_skin()
 	update_icon()
-	AddComponent(/datum/component/automatedfire/autofire, fire_delay, burst_fire_delay, burst_amount, gun_firemode, autofire_slow_mult, CALLBACK(src, PROC_REF(set_burst_firing)), CALLBACK(src, PROC_REF(reset_fire)), CALLBACK(src, PROC_REF(try_fire)), CALLBACK(src, PROC_REF(display_ammo)))
+	AddComponent(/datum/component/automatedfire/autofire, fire_delay, burst_fire_delay, burst_amount, gun_firemode, autofire_slow_mult, CALLBACK(src, PROC_REF(set_burst_firing)), CALLBACK(src, PROC_REF(reset_fire)), CALLBACK(src, PROC_REF(try_fire)))
 
 /obj/structure/machinery/m56d_hmg/proc/select_gamemode_skin()
 	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
@@ -1298,8 +1305,15 @@
 	var/obj/structure/dropship_equipment/mg_holder/deployment_system
 	gun_has_gamemode_skin = FALSE
 
+
+/obj/structure/machinery/m56d_hmg/mg_turret/dropship/update_health(damage, pass_forward = FALSE)
+	pass_forward = !pass_forward
+	if(pass_forward)
+		deployment_system.update_health(damage, pass_forward)
+	. = ..()
+
 /obj/structure/machinery/m56d_hmg/mg_turret/dropship/Destroy()
 	if(deployment_system)
 		deployment_system.deployed_mg = null
 		deployment_system = null
-	return ..()
+	. = ..()

@@ -1,0 +1,4 @@
+author: "Red-byte3D"
+delete-after: True
+changes:
+  - bugfix: "Ghosts now properly get moved to new xenos as they evolve / devo"

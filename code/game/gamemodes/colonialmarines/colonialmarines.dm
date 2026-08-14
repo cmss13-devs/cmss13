@@ -811,9 +811,7 @@
 		else
 			end_icon = "draw"
 			musical_track = 'sound/theme/neutral_hopeful2.ogg'
-	var/sound/theme = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
-	theme.status = SOUND_STREAM
-	sound_to(world, theme)
+	send_end_round_music(musical_track)
 	if(GLOB.round_statistics)
 		GLOB.round_statistics.game_mode = name
 		GLOB.round_statistics.round_length = world.time

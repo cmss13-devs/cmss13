@@ -2745,7 +2745,7 @@
 			update_icon()
 		else if (!(flags_gun_features & GUN_BURST_FIRING) || !in_chamber) // Magazine will only unload once burstfire is over
 			var/drop_to_ground = TRUE
-			if (user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND))
+			if(user.client?.prefs?.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND)
 				drop_to_ground = FALSE
 				unwield(user)
 				user.swap_hand()

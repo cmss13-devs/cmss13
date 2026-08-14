@@ -416,7 +416,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 			return
 		if(amount <= 1)
 			return
-		if((SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)) & COMSIG_ITEM_PICKUP_CANCELLED) //acided
+		if(check_pickup_blocked(user) & COMPONENT_PICKUP_CANCELED_ACID) //acided
 			to_chat(user, SPAN_WARNING("[src] is covered in acid!"))
 			balloon_alert(user, "its covered in acid!")
 			return TRUE
@@ -489,7 +489,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 	if(!istype(used_stack) || used_stack.stack_id != stack_id) //not the same stack type :)
 		return ..()
 
-	if((SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)) & COMSIG_ITEM_PICKUP_CANCELLED) //acided
+	if(check_pickup_blocked(user) & COMPONENT_PICKUP_CANCELED_ACID) //acided
 		to_chat(user, SPAN_WARNING("[src] is covered in acid!"))
 		balloon_alert(user, "its covered in acid!")
 		return TRUE

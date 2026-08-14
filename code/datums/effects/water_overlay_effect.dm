@@ -19,9 +19,9 @@
 	if(isqueen(input_atom) || isking(input_atom))
 		input_atom.AddComponent(/datum/component/footstep, 2 , 35, 11, 4, footstep_sounds_="alien_footstep_large_water")
 
-	var/turf/open/gm/T = get_turf(input_atom)
-	if(istype(T, /turf/open/gm))
-		pixel_y_offset = T.depth
+	var/turf/open/gm/input_openturf = get_turf(input_atom)
+	if(istype(input_openturf, /turf/open/gm))
+		pixel_y_offset = input_openturf.depth
 	else
 		debug_log("something went catastrophically wrong, this code should only be called from turfs with depth")
 	var/icon/reference = icon(input_atom.icon, input_atom.icon_state)
@@ -170,7 +170,7 @@
 			key = "_/mob/living/carbon/human_e"
 		else if(found_angle == 90)
 			key = "_/mob/living/carbon/human_w"
-		if(pixel_y_offset < -12 )		//when resting in the deep all mobs will look like they're unda da watur
+		if(pixel_y_offset == DEPTH_DEEP)		//when resting in the deep all mobs will look like they're unda da watur
 			key = "_u"
 	var/mutable_appearance/final_texture = mutable_appearance(SSwater_overlays.water_overlay_icons["[mob_texture_size]_[input_openturf.type][toxic_key][key]"])
 	overlays += final_texture

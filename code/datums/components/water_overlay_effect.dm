@@ -20,12 +20,12 @@
 /datum/component/water_overlay_effect/proc/handle_affected_mob_move(parent_source, oldloc, direction, forced)
 	SIGNAL_HANDLER
 	var/turf/open/gm/moved_to_turf = get_turf(parent_source)
-	if(moved_to_turf.depth >= 0 || moved_to_turf.covered)
+	if(moved_to_turf.depth >= DEPTH_LAND || moved_to_turf.covered)
 		Destroy()
 		return
 	var/mob/M = parent_source
 	if(M.m_intent == MOVE_INTENT_RUN)	//walking doesnt make sounds from moving through water
-		var/soundname = moved_to_turf.depth >= -4 ? "shallowwading" : (moved_to_turf.depth >= -8 ? "wading":"deepwading")
+		var/soundname = moved_to_turf.depth >= DEPTH_COAST_INTERMEDIATE ? "shallowwading" : (moved_to_turf.depth >= DEPTH_SHALLOW ? "wading":"deepwading")
 		playsound(moved_to_turf, soundname, 10, 1, 10, falloff=1)
 
 /datum/component/water_overlay_effect/proc/handle_lying_angle_change()

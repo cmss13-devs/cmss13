@@ -445,7 +445,7 @@
 	name = "epinephrine EZ autoinjector (FOR TRAINING USE ONLY)"
 	chemname = "adrenaline"
 	desc = "An EZ autoinjector loaded with a single 5u dose of Epinephrine, a medicine used to stabilize defibrillated patients. To use it, click the autoinjector while it is in your hand. You can also click any person one tile near you, or yourself, to inject its contents. Most autoinjectors can be refilled with a Wey-Med vending machine."
-	maptext_label = "OuDy"
+	maptext_label = "OuEp"
 	amount_per_transfer_from_this = LOWM_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (LOWM_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 
@@ -461,7 +461,7 @@
 	name = "peridaxon EZ autoinjector (FOR TRAINING USE ONLY)"
 	chemname = "peridaxon"
 	desc = "An EZ autoinjector loaded with a single 7.5u dose of Peridaxon, used to stabilize a patient's organs before surgery. To use it, click the autoinjector while it is in your hand. You can also click any person one tile near you, or yourself, to inject its contents. Most autoinjectors can be refilled with a Wey-Med vending machine."
-	maptext_label = "OuIn"
+	maptext_label = "OuPr"
 	amount_per_transfer_from_this = LOWH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (LOWH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 

@@ -177,9 +177,10 @@
 /datum/equipment_preset/survivor/upp/mss
 	name = "Survivor - UPP Ministry of Space Security Officer"
 	paygrades = list(PAY_SHORT_MSS = JOB_PLAYTIME_TIER_0)
+	idtype = /obj/item/card/id/gold
 	assignment = JOB_UPP_MSS_OFFICER
 	job_title = JOB_UPP_MSS_OFFICER
-	role_comm_title = "MSS Off."
+	role_comm_title = "MSS-Off."
 	minimap_icon = "upp_plt"
 	skills = /datum/skills/military/survivor/upp_sl/mss
 	languages = ALL_HUMAN_LANGUAGES
@@ -207,12 +208,20 @@
 	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs(new_human), WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/peaked/mss(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/flare(new_human), WEAR_R_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/document(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/med_small_stack(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/pill/cyanide(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/camera(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/camera_film(new_human.back), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human.back), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(new_human), WEAR_HANDS)
+	var/obj/item/clipboard/clipboard = new(new_human)
+	for(var/paper_number in 1 to 5)
+		clipboard.toppaper = new /obj/item/paper(clipboard)
+	clipboard.haspen = new /obj/item/tool/pen/multicolor/fountain(clipboard)
+	clipboard.update_icon()
+	new_human.equip_to_slot_or_del(clipboard, WEAR_IN_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/brown(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/command(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/t73/leader/standard(new_human), WEAR_WAIST)
 	add_upp_weapon(new_human)

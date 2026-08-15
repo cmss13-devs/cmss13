@@ -249,9 +249,9 @@
 		S["toggles_sound"] >> toggles_insert
 		toggles_insert |= (SOUND_ROUND_END)
 		S["toggles_sound"] << toggles_insert
-    
+
 	if(savefile_version < 38)
-    var/pref_toggles
+		var/pref_toggles
 		S["toggle_prefs"] >> pref_toggles
 		pref_toggles |= TOGGLE_SHOUTING_AT_POINTED_PEOPLE // enabled by default for new saves
 		S["toggle_prefs"] << pref_toggles

@@ -124,7 +124,7 @@
 	plasma_cost = 50
 
 	/// Max distance of the hook line
-	var/max_distance = 6
+	var/max_distance = 7
 	var/throw_max_range = 3
 	var/windup = 8 DECISECONDS
 	var/ability_used_once = FALSE

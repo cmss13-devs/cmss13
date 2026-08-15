@@ -5,7 +5,7 @@
 
 /datum/player_action/make_mutineer/act(client/user, mob/target, list/params)
 	if(!ishuman(target))
-		to_chat(user, SPAN_WARNING("This can only be done to instances of type /mob/living/carbon/human"))
+		to_chat(user, SPAN_WARNING("This can only be done to instances of type /mob/living/carbon/human."))
 		return
 
 	var/mob/living/carbon/human/H = target

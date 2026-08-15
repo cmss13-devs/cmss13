@@ -51,17 +51,17 @@
 /obj/structure/sign/safety/airlock{
 	pixel_y = 32
 	},
-/turf/open/snow/layer3,
+/turf/open/auto_turf/snow/layer3,
 /area/corsat/gamma/biodome)
 "l" = (
-/turf/open/snow/layer0,
+/turf/open/auto_turf/snow/layer0,
 /area/corsat/gamma/biodome)
 "m" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/snow/layer0,
+/turf/open/auto_turf/snow/layer0,
 /area/corsat/gamma/biodome)
 "n" = (
-/turf/open/snow/layer3,
+/turf/open/auto_turf/snow/layer3,
 /area/corsat/gamma/biodome)
 
 (1,1,1) = {"

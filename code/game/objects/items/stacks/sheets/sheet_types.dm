@@ -433,7 +433,7 @@ GLOBAL_LIST_INIT_TYPED(aluminium_recipes, /datum/stack_recipe, list ( \
 
 /obj/item/stack/sheet/aluminum
 	name = "aluminum"
-	desc = "A silvery-white soft metal of the boron group. Because of its low density it is often uses as a structural material in aircrafts."
+	desc = "A silvery-white soft metal of the boron group. Because of its low density it is often used as a structural material in aircraft."
 	singular_name = "aluminum sheet"
 	icon_state = "sheet-aluminum"
 	sheettype = "aluminum"

@@ -50,7 +50,7 @@
 	if(severity >= health && severity >= EXPLOSION_THRESHOLD_GIB)
 		gibbing = TRUE
 
-	if(body_position == LYING_DOWN && direction)
+	if(body_position == LYING_DOWN && direction > 0)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
 
 	if(HAS_TRAIT(src, TRAIT_HAULED) && !gibbing) // We still probably wanna gib them as well if they were supposed to be gibbed by the explosion in the first place
@@ -69,7 +69,7 @@
 	apply_damage(severity, BRUTE, enviro=enviro)
 	updatehealth()
 
-	var/knock_value = min( round( severity*0.1 ,1) ,10)
+	var/knock_value = min(round(severity*0.1, 1), 10)
 	if(knock_value > 0)
 		apply_effect(knock_value, PARALYZE)
 		explosion_throw(severity, direction)
@@ -133,8 +133,8 @@
 	if(istype(get_active_hand(), /obj/item))
 		var/obj/item/item = get_active_hand()
 		if(item.force > 0)
-			var/limited_force = min(item.force, 35)
-			var/damage_of_item = rand(floor(limited_force / 4), limited_force)
+			var/force_range = clamp(item.force, MELEE_FORCE_NORMAL, MELEE_FORCE_STRONG)
+			var/damage_of_item = rand(floor(force_range / 2), force_range)
 
 			xeno.last_damage_data = create_cause_data("scuffling", src)
 			attack_log += "\[[time_stamp()]\]<font color='red'> Attacked [key_name(xeno)] with [item.name] (INTENT: [uppertext(intent_text(a_intent))]) (DAMTYPE: [uppertext(BRUTE)])</font>"
@@ -197,7 +197,7 @@
 	// Super bio armor
 	var/bio_hardcore = 0
 
-	var/list/worn_clothes = list(head, wear_suit, hands, glasses, w_uniform, shoes, wear_mask)
+	var/list/worn_clothes = list(head, wear_suit, glasses, w_uniform, shoes, wear_mask)
 
 	for(var/obj/item/clothing/worn_item in worn_clothes)
 		total_prot += worn_item.armor_bio
@@ -260,9 +260,6 @@
 	if(wielded_item && (wielded_item.flags_item & WIELDED)) //this segment checks if the item in your hand is twohanded.
 		var/obj/item/weapon/twohanded/offhand/offhand = get_inactive_hand()
 		if(offhand && (offhand.flags_item & WIELDED))
-			to_chat(src, SPAN_WARNING("Your other hand is too busy holding \the [offhand.name]")) //So it's an offhand.
-			return
-		else
 			wielded_item.unwield(src) //Get rid of it.
 	if(wielded_item && wielded_item.zoom) //Adding this here while we're at it
 		wielded_item.zoom(src)
@@ -471,7 +468,7 @@
 	set category = "IC"
 
 	if(sleeping)
-		to_chat(usr, SPAN_DANGER("You are already sleeping"))
+		to_chat(usr, SPAN_DANGER("You are already sleeping."))
 		return
 	if(alert(src,"You sure you want to sleep for a while?","Sleep","Yes","No") == "Yes")
 		sleeping = 20 //Short nap
@@ -598,6 +595,9 @@
 			. += SPAN_GREEN("[src] was thralled by [src.hunter_data.thralled_set.real_name] for '[src.hunter_data.thralled_reason]'.")
 		else if(src.hunter_data.gear)
 			. += SPAN_RED("[src] was marked as carrying gear by [src.hunter_data.gear_set].")
+
+		if(src.hunter_data.youngblood)
+			. += SPAN_GREEN("[src] is being taught by [src.hunter_data.hunter.real_name].")
 
 
 /mob/living/carbon/on_lying_down(new_lying_angle)

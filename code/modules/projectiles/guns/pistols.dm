@@ -18,7 +18,7 @@
 	w_class = SIZE_MEDIUM
 	force = 6
 	movement_onehanded_acc_penalty_mult = 3
-	wield_delay = WIELD_DELAY_VERY_FAST //If you modify your pistol to be two-handed, it will still be fast to aim
+	wield_delay = WEAPON_DELAY_VERY_FAST //If you modify your pistol to be two-handed, it will still be fast to aim
 	fire_sound = "m4a3"
 	firesound_volume = 25
 	attachable_allowed = list(
@@ -28,6 +28,7 @@
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/extended_barrel,
@@ -68,6 +69,7 @@
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/extended_barrel,
@@ -173,15 +175,34 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_5
 
 /obj/item/weapon/gun/pistol/m1911/socom/equipped
-	starting_attachment_types = list(/obj/item/attachable/suppressor, /obj/item/attachable/lasersight, /obj/item/attachable/reflex)
+	starting_attachment_types = list(/obj/item/attachable/suppressor/sleek, /obj/item/attachable/lasersight, /obj/item/attachable/reflex)
+
+/obj/item/weapon/gun/pistol/m1911/fluff
+	name = "\improper M48A4 service pistol"
+	desc = "A timeless classic since the first World War, the M1911A1 has limited use with the USCM, and is also often privately bought and used as a sidearm if a standard pistol is not issued out. This is a modernized version with an ammo counter and a polymer grip, designated M48A4. Chambered in .45 ACP. This one looks a bit worn and old."
+	icon_state = "m4a345_s"
+	item_state = "m4a3"
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+
+/obj/item/weapon/gun/pistol/m1911/fluff/set_gun_config_values() //does not have the damage boost that normal m1911 has
+	..()
+	set_fire_delay(FIRE_DELAY_TIER_11)
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_2
+	scatter = SCATTER_AMOUNT_TIER_8
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
+	scatter_unwielded = SCATTER_AMOUNT_TIER_6
+	damage_mult = BASE_BULLET_DAMAGE_MULT
 
 /obj/item/weapon/gun/pistol/m1911/custom
 	name = "\improper M1911C service pistol"
 	desc = "A variant of the legendary M1911 pistol in use by USCM command elements. Based off the modernized M48A4, it has been modified to more closely resemble a classic M1911 in shape, while retaining modern technology features like a discreet ammo counter. Chambered in .45 ACP."
 	icon_state = "m1911c"
 	item_state = "m4a3"
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER|GUN_BATTLEFIELD_EXECUTION|GUN_CAN_WARNING_SHOT
 	current_mag = /obj/item/ammo_magazine/pistol/m1911/highimpact
+	unacidable = TRUE
+	explo_proof = TRUE
 
 /obj/item/weapon/gun/pistol/m1911/custom/set_gun_config_values()
 	..()
@@ -238,8 +259,8 @@
 
 //-------------------------------------------------------
 //DEAGLE //This one is obvious.
-
-/obj/item/weapon/gun/pistol/heavy
+//
+/obj/item/weapon/gun/pistol/deagle
 	name = "\improper Desert Eagle"
 	desc = "The handcannon that needs no introduction, the Desert Eagle is expensive, unwieldy, and extremely heavy for a pistol. However, it more than makes up for its weighty build \
 	with its powerful shots, capable of stopping a human, or even a bear, dead in their tracks."
@@ -248,7 +269,7 @@
 	item_state = "deagle"
 	fire_sound = 'sound/weapons/gun_DE50.ogg'
 	firesound_volume = 40
-	current_mag = /obj/item/ammo_magazine/pistol/heavy
+	current_mag = /obj/item/ammo_magazine/pistol/deagle
 	force = 13
 
 	attachable_allowed = list(
@@ -256,17 +277,17 @@
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/compensator,
 	)
 
-/obj/item/weapon/gun/pistol/heavy/set_gun_attachment_offsets()
+/obj/item/weapon/gun/pistol/deagle/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 31, "muzzle_y" = 20, "rail_x" = 17, "rail_y" = 22, "under_x" = 21, "under_y" = 15, "stock_x" = 20, "stock_y" = 17)
 
-
-/obj/item/weapon/gun/pistol/heavy/set_gun_config_values()
+/obj/item/weapon/gun/pistol/deagle/set_gun_config_values()
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_5)
 	set_burst_amount(BURST_AMOUNT_TIER_2)
@@ -280,16 +301,17 @@
 	recoil = RECOIL_AMOUNT_TIER_5
 	recoil_unwielded = RECOIL_AMOUNT_TIER_3
 
-/obj/item/weapon/gun/pistol/heavy/co
+/obj/item/weapon/gun/pistol/deagle/co
 	name = "polished Desert Eagle"
 	icon_state = "c_deagle"
 	item_state = "c_deagle"
-	current_mag = /obj/item/ammo_magazine/pistol/heavy/super/highimpact
+	current_mag = /obj/item/ammo_magazine/pistol/deagle/super/highimpact
 	black_market_value = 100
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_BATTLEFIELD_EXECUTION|GUN_CAN_WARNING_SHOT
 	unacidable = TRUE
 	explo_proof = TRUE
 
-/obj/item/weapon/gun/pistol/heavy/co/set_gun_config_values()
+/obj/item/weapon/gun/pistol/deagle/co/set_gun_config_values()
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_5)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
@@ -301,11 +323,11 @@
 	recoil = RECOIL_AMOUNT_TIER_3
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
-/obj/item/weapon/gun/pistol/heavy/co/unique_action(mob/user)
+/obj/item/weapon/gun/pistol/deagle/co/unique_action(mob/user)
 	if(fire_into_air(user))
 		return ..()
 
-/obj/item/weapon/gun/pistol/heavy/co/gold
+/obj/item/weapon/gun/pistol/deagle/co/gold
 	name = "golden vintage Desert Eagle"
 	desc = "A Desert Eagle anodized in gold and adorned with rosewood grips. The living definition of ostentatious, it's flashy, unwieldy, tremendously heavy, and kicks like a mule. But as a symbol of power, there's nothing like it."
 	icon_state = "g_deagle"
@@ -386,6 +408,7 @@
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/suppressor,
@@ -412,7 +435,7 @@
 
 /obj/item/weapon/gun/pistol/t73/leader
 	name = "\improper Type 74 pistol"
-	desc = "The Type 74 is the designation for a specially modified Type 73 with an integrated laser sight system, multiple lightning cuts to reduce weight in order to allow a higher pressure round to be used with the same recoil sping, and a more comfortable grip. Due to the adoption of the NP92, the Type 74 was produced in limited numbers, because of this it is typically only issued on request to high-ranking officers."
+	desc = "The Type 74 is the designation for a specially modified Type 73 with an integrated laser sight system, multiple lightning cuts to reduce weight in order to allow a higher pressure round to be used with the same recoil spring, and a more comfortable grip. Due to the adoption of the NP92, the Type 74 was produced in limited numbers, because of this it is typically only issued on request to high-ranking officers."
 	icon_state = "ttb"
 	item_state = "ttb"
 	current_mag = /obj/item/ammo_magazine/pistol/t73_impact
@@ -493,6 +516,7 @@
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/lasersight,
 	)
 
@@ -544,6 +568,7 @@
 	attachable_allowed = list(
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/extended_barrel,
@@ -584,6 +609,7 @@
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/suppressor/sleek,
+		/obj/item/attachable/flashlight/under_barrel, // not like it matters lol
 		/obj/item/attachable/flashlight,
 	)
 
@@ -608,7 +634,7 @@
 
 /obj/item/weapon/gun/pistol/highpower
 	name = "\improper MK-45 'High-Power' Automagnum"
-	desc = "Originally designed as a replacement for the USCM's M44 combat revolver, it was rejected at the last minute by a committee, citing its need to be cocked after every loaded magazine to be too cumbersone and antiquated. The design has recently been purchased by the Henjin-Garcia company, refitted for .45 ACP, and sold to the Colonial Marshals and other various unscrupulous armed groups."
+	desc = "Originally designed as a replacement for the USCM's M44 combat revolver, it was rejected at the last minute by a committee, citing its need to be cocked after every loaded magazine to be too cumbersome and antiquated. The design has recently been purchased by the Henjin-Garcia company, refitted for .45 ACP, and sold to the Colonial Marshals and other various unscrupulous armed groups."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/pistols.dmi'
 	icon_state = "highpower"
 	item_state = "highpower"
@@ -644,6 +670,7 @@
 		/obj/item/attachable/gyro, // Under
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/burstfire_assembly,
+		/obj/item/attachable/flashlight/under_barrel,
 	)
 	/// This weapon needs to be manually racked every time a new magazine is loaded. I tried and failed to touch gun shitcode so this will do.
 	var/manually_slided = FALSE
@@ -704,7 +731,7 @@
 //unimplemented
 /obj/item/weapon/gun/pistol/highpower/tactical
 	name = "\improper MK-44 SOCOM Automagnum"
-	desc = "Originally designed as a replacement for the USCM's M44 combat revolver, it was rejected at the last minute by a committee, citing its need to be cocked after every loaded magazine to be too cumbersone and antiquated. The design has recently been purchased by the Henjin-Garcia company and sold to the Colonial Marshals and other various unscrupulous armed groups. This one has a sleek, dark design."
+	desc = "Originally designed as a replacement for the USCM's M44 combat revolver, it was rejected at the last minute by a committee, citing its need to be cocked after every loaded magazine to be too cumbersome and antiquated. The design has recently been purchased by the Henjin-Garcia company and sold to the Colonial Marshals and other various unscrupulous armed groups. This one has a sleek, dark design."
 	current_mag = /obj/item/ammo_magazine/pistol/highpower/black
 	icon_state = "highpower_tac"
 	item_state = "highpower_tac"
@@ -736,6 +763,7 @@
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reddot/small,
@@ -797,6 +825,7 @@
 	attachable_allowed = list(
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/lasersight,
@@ -840,7 +869,8 @@
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
-		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight, // look its kinda strange why you would list these as allowed when the vp-78 has an integrated flashlight, but flashlight attachment code does have a warning for this so yknow whatever really
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/flashlight/laser_light_combo,
 		/obj/item/attachable/extended_barrel,
@@ -878,6 +908,12 @@
 
 /obj/item/weapon/gun/pistol/vp78/whiteout
 	starting_attachment_types = list(/obj/item/attachable/heavy_barrel, /obj/item/attachable/reflex)
+
+/obj/item/weapon/gun/pistol/vp78/army
+	starting_attachment_types = list(/obj/item/attachable/extended_barrel, /obj/item/attachable/reflex)
+
+/obj/item/weapon/gun/pistol/vp78/army/heap
+	current_mag = /obj/item/ammo_magazine/pistol/vp78/heap
 
 
 //-------------------------------------------------------
@@ -1012,6 +1048,7 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/lasersight, //Underbarrel
 		/obj/item/attachable/burstfire_assembly,
+		/obj/item/attachable/flashlight/under_barrel,
 	)
 	start_semiauto = FALSE
 	start_automatic = TRUE
@@ -1043,8 +1080,8 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, underb
 	icon_state = "m10"
 	item_state = "m10"
 	attachable_allowed = list(
-		/obj/item/attachable/reddot,
-		/obj/item/attachable/reddot/small, //Rail
+		/obj/item/attachable/reddot, //Rail
+		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/magnetic_harness,
@@ -1057,9 +1094,10 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, underb
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/stock/pistol/collapsible, //Stock
 		/obj/item/attachable/stock/m10_solid,
-		/obj/item/attachable/lasersight/micro //Underbarrel
+		/obj/item/attachable/lasersight/micro, //Underbarrel
+		/obj/item/attachable/flashlight/under_barrel,
 	)
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	start_automatic = TRUE
 	map_specific_decoration = TRUE
 	fire_sound = null
@@ -1080,15 +1118,18 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, underb
 	..()
 	set_burst_amount(0)
 	set_fire_delay(FIRE_DELAY_TIER_12)
-	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_4
-	fa_max_scatter = SCATTER_AMOUNT_TIER_7
+	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_2
+	fa_max_scatter = SCATTER_AMOUNT_TIER_5
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_4
 	scatter = SCATTER_AMOUNT_TIER_5
 	scatter_unwielded = SCATTER_AMOUNT_TIER_4
-	recoil_unwielded = RECOIL_AMOUNT_TIER_5
-	damage_mult = BASE_BULLET_DAMAGE_MULT - BULLET_DAMAGE_MULT_TIER_5
+	recoil_unwielded = RECOIL_AMOUNT_TIER_4
+	recoil = RECOIL_AMOUNT_TIER_5
 
+
+/obj/item/weapon/gun/pistol/m10/extended
+	current_mag = /obj/item/ammo_magazine/pistol/m10/extended
 //-------------------------------------------------------
 /*
 
@@ -1114,6 +1155,7 @@ L54 service pistol
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/extended_barrel,
@@ -1146,6 +1188,7 @@ L54 service pistol
 		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/burstfire_assembly,
 	)

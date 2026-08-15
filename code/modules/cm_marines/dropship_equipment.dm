@@ -37,6 +37,11 @@
 		linked_console = null
 	. = ..()
 
+/obj/structure/dropship_equipment/update_health(damage)
+	health = min(initial(health), health-damage)
+	if(health <= 0)
+		visible_message(SPAN_DANGER("[src] is destroyed!"))
+		qdel(src)
 
 /obj/structure/dropship_equipment/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
 	if(unslashable)
@@ -48,7 +53,7 @@
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
 
-/obj/structure/dropship_equipment/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/dropship_equipment/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(unslashable || health <= 0)
 		return TAILSTAB_COOLDOWN_NONE
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
@@ -59,56 +64,88 @@
 	else
 		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
-/obj/structure/dropship_equipment/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/powerloader_clamp))
-		var/obj/item/powerloader_clamp/PC = I
-		if(PC.loaded)
+/obj/structure/dropship_equipment/attackby(obj/item/item, mob/user)
+	if(istype(item, /obj/item/powerloader_clamp))
+		if((SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)) & COMSIG_ITEM_PICKUP_CANCELLED) //acided
+			to_chat(user, SPAN_WARNING("[src] is covered in acid!"))
+			balloon_alert(user, "its covered in acid!")
+			return
+
+		var/obj/item/powerloader_clamp/powerloader_clamp = item
+		if(powerloader_clamp.loaded)
 			if(ammo_equipped)
 				to_chat(user, SPAN_WARNING("You need to unload \the [ammo_equipped] from \the [src] first!"))
 				return TRUE
 			if(uses_ammo)
-				load_ammo(PC, user) //it handles on it's own whether the ammo fits
+				load_ammo(powerloader_clamp, user) //it handles on it's own whether the ammo fits
 				return
 
 		else
 			if(uses_ammo && ammo_equipped)
-				unload_ammo(PC, user)
+				unload_ammo(powerloader_clamp, user)
 			else
-				grab_equipment(PC, user)
+				grab_equipment(powerloader_clamp, user)
 		return TRUE
 
-/obj/structure/dropship_equipment/proc/load_ammo(obj/item/powerloader_clamp/PC, mob/living/user)
-	if(!ship_base || !uses_ammo || ammo_equipped || !istype(PC.loaded, /obj/structure/ship_ammo))
+	if(iswelder(item))
+		try_repair(item, user, -50)
+
+/obj/structure/dropship_equipment/proc/try_repair(obj/item/tool/weldingtool/welder, mob/user, amount)
+	if(health == initial(health))
+		to_chat(user, SPAN_WARNING("[src] is in working condition."))
+		return FALSE
+	if(!HAS_TRAIT(welder, TRAIT_TOOL_BLOWTORCH))
+		to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+		return FALSE
+	if(user.action_busy)
+		return FALSE
+	if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
+		to_chat(user, SPAN_WARNING("You are not trained to fix [src]..."))
+		return FALSE
+	if(!(welder.remove_fuel(2, user)))
+		return FALSE
+	playsound(loc, 'sound/items/Welder.ogg', 25, 1)
+	if(!do_after(user, 5 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+		return FALSE
+	update_health(amount)
+	user.visible_message(SPAN_NOTICE("[user] repairs parts of [src]."),
+	SPAN_NOTICE("You repair damaged parts of [src]."))
+
+	return TRUE
+
+/obj/structure/dropship_equipment/proc/load_ammo(obj/item/powerloader_clamp/powerloader_clamp, mob/living/user)
+	if(!ship_base || !uses_ammo || ammo_equipped || !istype(powerloader_clamp.loaded, /obj/structure/ship_ammo))
 		return
-	var/obj/structure/ship_ammo/SA = PC.loaded
-	if(SA.equipment_type != type)
-		to_chat(user, SPAN_WARNING("[SA] doesn't fit in [src]."))
+	var/obj/structure/ship_ammo/ship_ammo = powerloader_clamp.loaded
+	if(ship_ammo.equipment_type != type)
+		to_chat(user, SPAN_WARNING("[ship_ammo] doesn't fit in [src]."))
 		return
 	playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
 	var/point_loc = ship_base.loc
-	if(!do_after(user, 30 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+	if(!do_after(user, 3 SECONDS * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
 	if(!ship_base || ship_base.loc != point_loc)
 		return
-	if(!ammo_equipped && PC.loaded == SA && PC.linked_powerloader && PC.linked_powerloader.buckled_mob == user)
-		SA.forceMove(src)
-		PC.loaded = null
+	if(!ammo_equipped && powerloader_clamp.loaded == ship_ammo && powerloader_clamp.linked_powerloader && powerloader_clamp.linked_powerloader.buckled_mob == user)
+		ship_ammo.forceMove(src)
+		powerloader_clamp.loaded = null
 		playsound(src, 'sound/machines/hydraulics_2.ogg', 40, 1)
-		PC.update_icon()
-		to_chat(user, SPAN_NOTICE("You load [SA] into [src]."))
-		ammo_equipped = SA
+		powerloader_clamp.update_icon()
+		to_chat(user, SPAN_NOTICE("You load [ship_ammo] into [src]."))
+		ammo_equipped = ship_ammo
 		update_equipment()
 
-/obj/structure/dropship_equipment/proc/unload_ammo(obj/item/powerloader_clamp/PC, mob/living/user)
+/obj/structure/dropship_equipment/proc/unload_ammo(obj/item/powerloader_clamp/powerloader_clamp, mob/living/user)
 	playsound(src, 'sound/machines/hydraulics_2.ogg', 40, 1)
 	var/point_loc = ship_base ? ship_base.loc : null
-	if(!do_after(user, 30 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+	if(!do_after(user, 3 SECONDS * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
 	if(point_loc && ship_base.loc != point_loc) //dropship flew away
 		return
-	if(!ammo_equipped || !PC.linked_powerloader || PC.linked_powerloader.buckled_mob != user)
+	if(!ammo_equipped || !powerloader_clamp.linked_powerloader || powerloader_clamp.linked_powerloader.buckled_mob != user)
 		return
 	if(!ammo_equipped.ammo_count)
 		ammo_equipped.moveToNullspace()
@@ -116,13 +153,13 @@
 		qdel(ammo_equipped)
 	else
 		if(ammo_equipped.ammo_name == "rocket")
-			PC.grab_object(user, ammo_equipped, "ds_rocket")
+			powerloader_clamp.grab_object(user, ammo_equipped, "ds_rocket")
 		else
-			PC.grab_object(user, ammo_equipped, "ds_ammo")
+			powerloader_clamp.grab_object(user, ammo_equipped, "ds_ammo")
 	ammo_equipped = null
 	update_icon()
 
-/obj/structure/dropship_equipment/proc/grab_equipment(obj/item/powerloader_clamp/PC, mob/living/user)
+/obj/structure/dropship_equipment/proc/grab_equipment(obj/item/powerloader_clamp/powerloader_clamp, mob/living/user)
 	playsound(loc, 'sound/machines/hydraulics_2.ogg', 40, 1)
 	var/duration_time = 10
 	var/point_loc
@@ -135,9 +172,9 @@
 		return
 	if(point_loc && ship_base && ship_base.loc != point_loc) //dropship flew away
 		return
-	if(!PC.linked_powerloader || PC.loaded || PC.linked_powerloader.buckled_mob != user)
+	if(!powerloader_clamp.linked_powerloader || powerloader_clamp.loaded || powerloader_clamp.linked_powerloader.buckled_mob != user)
 		return
-	PC.grab_object(user, src, "ds_gear", 'sound/machines/hydraulics_1.ogg')
+	powerloader_clamp.grab_object(user, src, "ds_gear", 'sound/machines/hydraulics_1.ogg')
 	if(ship_base)
 		ship_base.installed_equipment = null
 		ship_base = null
@@ -177,7 +214,6 @@
 	name = "\improper A/A-32-P Sentry Defense System"
 	desc = "A box that deploys a sentry turret. Fits on both the external weapon and crew compartment attach points of dropships. You need a powerloader to lift it."
 	density = FALSE
-	health = null
 	icon_state = "sentry_system"
 	is_interactable = TRUE
 	point_cost = 200
@@ -193,6 +229,21 @@
 	if(!deployed_turret)
 		deployed_turret = new(src)
 		deployed_turret.deployment_system = src
+	health = deployed_turret.health
+
+/obj/structure/dropship_equipment/sentry_holder/update_health(damage, pass_forward = FALSE)
+	pass_forward = !pass_forward
+	if(pass_forward)
+		deployed_turret.update_health(damage, pass_forward)
+	health = min(initial(deployed_turret.health), health-damage)
+	if(health <= 0)
+		visible_message(SPAN_DANGER("[src] is destroyed!"))
+		qdel(src)
+
+/obj/structure/dropship_equipment/sentry_holder/try_repair(obj/item/tool/weldingtool/welder, mob/user, amount)
+	. = ..()
+	if(.)
+		deployed_turret.update_health(amount)
 
 /obj/structure/dropship_equipment/sentry_holder/get_examine_text(mob/user)
 	. = ..()
@@ -223,11 +274,11 @@
 		.["engaged"] = length(sentrygun.targets)
 
 /obj/structure/dropship_equipment/sentry_holder/on_launch()
-	if(ship_base && ship_base.base_category == DROPSHIP_WEAPON) //only external sentires are automatically undeployed
+	if(ship_base && ship_base.base_category == DROPSHIP_WEAPON) //only external sentries are automatically undeployed
 		undeploy_sentry()
 
 /obj/structure/dropship_equipment/sentry_holder/on_arrival()
-	if(ship_base && auto_deploy && ship_base.base_category == DROPSHIP_WEAPON) //only external sentires are automatically deployed
+	if(ship_base && auto_deploy && ship_base.base_category == DROPSHIP_WEAPON) //only external sentries are automatically deployed
 		deploy_sentry()
 
 /obj/structure/dropship_equipment/sentry_holder/equipment_interact(mob/user)
@@ -358,6 +409,21 @@
 	if(!deployed_mg)
 		deployed_mg = new(src)
 		deployed_mg.deployment_system = src
+	health = deployed_mg.health
+
+/obj/structure/dropship_equipment/mg_holder/update_health(damage, pass_forward = FALSE)
+	pass_forward = !pass_forward
+	if(pass_forward)
+		deployed_mg.update_health(damage, pass_forward)
+	health = min(initial(deployed_mg.health), health-damage)
+	if(health <= 0)
+		visible_message(SPAN_DANGER("[src] is destroyed!"))
+		qdel(src)
+
+/obj/structure/dropship_equipment/mg_holder/try_repair(obj/item/tool/weldingtool/welder, mob/user, amount)
+	. = ..()
+	if(.)
+		deployed_mg.update_health(amount)
 
 /obj/structure/dropship_equipment/mg_holder/Destroy()
 	QDEL_NULL(deployed_mg)
@@ -738,7 +804,7 @@
 		var/total_seconds = max(floor(ammo_travelling_time / 10), 1)
 		for(var/i in 0 to total_seconds)
 			sleep(1 SECONDS)
-			new /obj/effect/overlay/temp/blinking_laser (impact) //no decreased accuracy if laser dissapears, it will land where it is telegraphed to land
+			new /obj/effect/overlay/temp/blinking_laser (impact) //no decreased accuracy if laser disappears, it will land where it is telegraphed to land
 
 	if(ammo_warn_sound)
 		playsound(impact, ammo_warn_sound, ammo_warn_sound_volume, 1,15)
@@ -773,7 +839,7 @@
 
 /obj/structure/dropship_equipment/weapon/heavygun
 	name = "\improper GAU-21 30mm cannon"
-	desc = "A dismounted GAU-21 'Rattler' 30mm rotary cannon. It seems to be missing its feed links and has exposed connection wires. Capable of firing 5200 rounds a minute, feared by many for its power. Earned the nickname 'Rattler' from the vibrations it would cause on dropships in its initial production run. Accepts PGU-100/PGU-105 ammo crates"
+	desc = "A dismounted GAU-21 'Rattler' 30mm rotary cannon. It seems to be missing its feed links and has exposed connection wires. Capable of firing 5200 rounds a minute, feared by many for its power. Earned the nickname 'Rattler' from the vibrations it would cause on dropships in its initial production run. Accepts PGU-100/PGU-105 ammo crates."
 	icon_state = "30mm_cannon"
 	firing_sound = 'sound/effects/gau_incockpit.ogg'
 	point_cost = 400
@@ -960,7 +1026,7 @@
 		return FALSE
 
 	if(busy_winch)
-		to_chat(user, SPAN_WARNING(" The winch is already in motion."))
+		to_chat(user, SPAN_WARNING("The winch is already in motion."))
 		return FALSE
 
 	if(world.time < medevac_cooldown)
@@ -1000,7 +1066,7 @@
 		return
 
 	if(busy_winch)
-		to_chat(user, SPAN_WARNING(" The winch is already in motion."))
+		to_chat(user, SPAN_WARNING("The winch is already in motion."))
 		return
 
 	if(world.time < medevac_cooldown)
@@ -1008,7 +1074,7 @@
 		return
 
 	if(selected_stretcher == linked_stretcher) //already linked to us, unlink it
-		to_chat(user, SPAN_NOTICE(" You move your dropship away from that stretcher's beacon."))
+		to_chat(user, SPAN_NOTICE("You move your dropship away from that stretcher's beacon."))
 		linked_stretcher.visible_message(SPAN_NOTICE("[linked_stretcher] detects a dropship is no longer overhead."))
 		linked_stretcher.linked_medevac = null
 		linked_stretcher = null
@@ -1064,7 +1130,7 @@
 	if(!ship_base) //not installed
 		return
 	if(!skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED) && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_DOCTOR))
-		to_chat(user, SPAN_WARNING(" You don't know how to use [src]."))
+		to_chat(user, SPAN_WARNING("You don't know how to use [src]."))
 		return
 
 	if(!linked_shuttle)
@@ -1075,7 +1141,7 @@
 		return
 
 	if(busy_winch)
-		to_chat(user, SPAN_WARNING(" The winch is already in motion."))
+		to_chat(user, SPAN_WARNING("The winch is already in motion."))
 		return
 
 	if(!linked_stretcher)
@@ -1085,7 +1151,7 @@
 	if(!is_ground_level(linked_stretcher.z))
 		linked_stretcher.linked_medevac = null
 		linked_stretcher = null
-		to_chat(user, SPAN_WARNING(" There seems to be no medevac stretcher connected to [src]."))
+		to_chat(user, SPAN_WARNING("There seems to be no medevac stretcher connected to [src]."))
 		return
 
 	if(world.time < medevac_cooldown)
@@ -1237,14 +1303,14 @@
 		return
 
 	if(busy_winch)
-		to_chat(user, SPAN_WARNING(" The winch is already in motion."))
+		to_chat(user, SPAN_WARNING("The winch is already in motion."))
 		return
 
 	if(world.time < fulton_cooldown)
 		to_chat(user, SPAN_WARNING("[src] was just used, you need to wait a bit before using it again."))
 		return
 
-	to_chat(user, SPAN_NOTICE(" You move your dropship above the selected balloon's beacon."))
+	to_chat(user, SPAN_NOTICE("You move your dropship above the selected balloon's beacon."))
 
 	activate_winch(user, fult)
 
@@ -1258,7 +1324,7 @@
 		return FALSE
 
 	if(busy_winch)
-		to_chat(user, SPAN_WARNING(" The winch is already in motion."))
+		to_chat(user, SPAN_WARNING("The winch is already in motion."))
 		return FALSE
 
 	if(world.time < fulton_cooldown)
@@ -1321,14 +1387,14 @@
 		return
 
 	if(busy_winch)
-		to_chat(user, SPAN_WARNING(" The winch is already in motion."))
+		to_chat(user, SPAN_WARNING("The winch is already in motion."))
 		return
 
 	if(world.time < fulton_cooldown)
 		to_chat(user, SPAN_WARNING("[src] was just used, you need to wait a bit before using it again."))
 		return
 
-	to_chat(user, SPAN_NOTICE(" You move your dropship above the selected balloon's beacon."))
+	to_chat(user, SPAN_NOTICE("You move your dropship above the selected balloon's beacon."))
 
 	activate_winch(user, fulton)
 

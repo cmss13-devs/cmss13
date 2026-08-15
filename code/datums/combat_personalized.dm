@@ -74,6 +74,15 @@
 	armor_steps = 5
 	armor_ignore_integrity = 0
 
+/datum/combat_configuration/marine/eschar
+	armor_minimal_efficiency = 0
+	non_null_damage_mult = 1
+	armor_full_deflection_mult = 1
+	armor_minimal_efficiency = 0
+	armor_effective_health = 0.1
+	armor_steps = 5
+	armor_ignore_integrity = 0
+
 /datum/combat_configuration/marine/organ_damage
 	armor_minimal_efficiency = 0
 	non_null_damage_mult = 1

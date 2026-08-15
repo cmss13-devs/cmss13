@@ -46,7 +46,7 @@
 				if (prob(40))
 					l_setshort = 1
 					l_set = 0
-					user.show_message(text(SPAN_DANGER("Internal memory reset.  Please give it a few seconds to reinitialize.")), SHOW_MESSAGE_VISIBLE)
+					user.show_message(text(SPAN_DANGER("Internal memory reset. Please give it a few seconds to reinitialize.")), SHOW_MESSAGE_VISIBLE)
 					sleep(80)
 					l_setshort = 0
 					l_hacking = 0

@@ -12,6 +12,10 @@
 	icon_state = "sec_helmet"
 	item_state = "sec_helmet"
 
+/obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/ppo
+	icon_state = "ppo_helmet"
+	item_state = "ppo_helmet"
+
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/medic
 	desc = "A basic skull-helm worn by corporate security assets. This variant lacks a visor, granting the wearer a better view of any potential patients."
 	icon_state = "med_helmet"
@@ -19,7 +23,7 @@
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/engi
 	name = "\improper WY corporate security technician helmet"
-	desc = "A basic skull-helm worn by corporate security assets. This variant comes equipped with a standard-issue integrated welding visor. Prone to fogging up over prolonged use"
+	desc = "A basic skull-helm worn by corporate security assets. This variant comes equipped with a standard-issue integrated welding visor. Prone to fogging up over prolonged use."
 	icon_state = "eng_helmet"
 	item_state = "eng_helmet"
 	built_in_visors = list(new /obj/item/device/helmet_visor/welding_visor/goon)

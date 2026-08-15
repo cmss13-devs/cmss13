@@ -62,12 +62,11 @@
 
 /// Sets up a valid crash point, fails after 10 tries
 /obj/docking_port/mobile/crashable/proc/create_crash_point()
-	for(var/i = 1 to 10)
-		var/list/all_ground_levels = SSmapping.levels_by_trait(ZTRAIT_GROUND)
-		var/ground_z_level = all_ground_levels[1]
+	var/list/all_ground_levels = SSmapping.levels_by_trait(ZTRAIT_GROUND)
+	var/ground_z_level = all_ground_levels[1]
+	var/list/area/potential_areas = SSmapping.areas_in_z["[ground_z_level]"]
 
-		var/list/area/potential_areas = SSmapping.areas_in_z["[ground_z_level]"]
-
+	for(var/i in 1 to 10)
 		var/area/area_picked = pick(potential_areas)
 
 		var/list/potential_turfs = list()
@@ -97,9 +96,15 @@
 
 /// Checks for anything that may get in the way of a crash, returns FALSE if there is something in the way or is out of bounds
 /obj/docking_port/mobile/crashable/proc/check_crash_point(obj/docking_port/stationary/crashable/checked_crashable_port)
+	// Pre-load shipmap template if the shipmap has crashed
+	var/datum/map_template/template
+	if(SShijack.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)
+		var/datum/map_config/ship_map_config = SSmapping.configs[SHIP_MAP]
+		template = SSmapping.map_templates[ship_map_config?.ground_crash_template_name]
+
 	for(var/turf/found_turf as anything in checked_crashable_port.return_turfs())
 		var/area/found_area = get_area(found_turf)
-		if(found_area.flags_area & AREA_NOTUNNEL)
+		if(found_area.flags_area & AREA_NOBURROW)
 			return FALSE
 
 		if(!found_area.can_build_special)
@@ -112,6 +117,22 @@
 
 		if(istype(found_turf, /turf/closed/shuttle))
 			return FALSE
+
+		// Prevent the shuttle from being smushed by the shipmap and vice-versa
+		if(SShijack.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)
+			if(!template || !SShijack.ground_origin)
+				// Template failed to load; to prevent this from blocking all shuttles from crashing, land anyway
+				. = TRUE
+				CRASH("Shipmap template failed to load when determining a safe position for a shuttle to crash at.")
+
+			var/above_min_x = found_turf.x > SShijack.ground_origin.x - 1
+			var/below_max_x = found_turf.x < SShijack.ground_origin.x + template.width + 1
+			var/above_min_y = found_turf.y > SShijack.ground_origin.y - 1
+			var/below_max_y = found_turf.y < SShijack.ground_origin.y + template.height + 1
+
+			// Shuttle would land inside the shipmap or vice versa
+			if(above_min_x && below_max_x && above_min_y && below_max_y)
+				return FALSE
 
 	for(var/obj/docking_port/stationary/stationary_dock in get_turf(checked_crashable_port))
 		if(stationary_dock != checked_crashable_port)

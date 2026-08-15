@@ -186,7 +186,7 @@ GLOBAL_VAR_INIT(focused_test, focused_test())
 	var/message = log_entry.Join("\n")
 	log_test(message)
 
-	var/test_output_desc = "[test_path] [duration / 10]s"
+	var/test_output_desc = "[test_path] [duration / 10]s."
 	if (test.succeeded)
 		log_world("[TEST_OUTPUT_GREEN("PASS")] [test_output_desc]")
 

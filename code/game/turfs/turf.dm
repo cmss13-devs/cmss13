@@ -26,7 +26,7 @@
 
 /turf
 	icon = 'icons/turf/floors/floors.dmi'
-	plane = TURF_PLANE
+	plane = GAME_PLANE
 
 	///Used by floors to indicate the floor is a tile (otherwise its plating)
 	var/intact_tile = TRUE
@@ -105,16 +105,12 @@
 	else
 		initialize_pass_flags()
 
-	for(var/atom/movable/AM in src)
-		Entered(AM)
+	// Be sure to do this if you don't call parent!
+	for(var/atom/movable/thing in src)
+		Entered(thing)
 
 	if(light_power && light_range)
 		update_light()
-
-	//Get area light
-	var/area/current_area = loc
-	if(current_area?.lighting_effect)
-		overlays += current_area.lighting_effect
 
 	if(opacity)
 		directional_opacity = ALL_CARDINALS
@@ -122,7 +118,6 @@
 	//dense turfs stop weeds
 	if(density)
 		is_weedable = NOT_WEEDABLE
-
 
 	if(istransparentturf(src))
 		return INITIALIZE_HINT_LATELOAD
@@ -137,11 +132,13 @@
 	vis_flags = VIS_HIDE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	anchored = TRUE
+	flags_atom = NO_ZFALL
 
-/obj/vis_contents_holder/Initialize(mapload, vis, offset, backdrop = TRUE)
+/obj/vis_contents_holder/Initialize(mapload, vis, offset, backdrop=TRUE)
 	. = ..()
 	plane -= offset
-	vis_contents += GLOB.openspace_backdrop_one_for_all
+	if(backdrop)
+		vis_contents += GLOB.openspace_backdrop_one_for_all
 	vis_contents += vis
 	name = null // Makes it invisible on right click
 
@@ -171,6 +168,12 @@
 		update_vis_contents()
 
 /turf/Destroy(force)
+	linked_pylons = null
+	weeds = null
+	autocells = null
+	opacity_sources = null
+	baseturfs = null
+
 	if(hybrid_lights_affecting)
 		for(var/atom/movable/lighting_mask/mask as anything in hybrid_lights_affecting)
 			LAZYREMOVE(mask.affecting_turfs, src)
@@ -252,8 +255,8 @@
 	return
 
 // Handles whether an atom is able to enter the src turf
-/turf/Enter(atom/movable/mover, atom/forget)
-	if (!mover || !isturf(mover.loc))
+/turf/Enter(atom/movable/mover, atom/old_loc)
+	if(QDELETED(mover) || !isturf(mover.loc))
 		return FALSE
 
 	var/override = SEND_SIGNAL(mover, COMSIG_MOVABLE_TURF_ENTER, src)
@@ -283,7 +286,7 @@
 		mover.Collide(T)
 		return FALSE
 	for (obstacle in T) //First, check objects to block exit
-		if (mover == obstacle || forget == obstacle)
+		if (mover == obstacle || old_loc == obstacle)
 			continue
 		A = obstacle
 		if (!istype(A) || !A.can_block_movement)
@@ -304,7 +307,7 @@
 					mover.Collide(T)
 					return FALSE
 			for(obstacle in T)
-				if(forget == obstacle)
+				if(old_loc == obstacle)
 					continue
 				A = obstacle
 				if (!istype(A) || !A.can_block_movement)
@@ -324,7 +327,7 @@
 					mover.Collide(T)
 					return FALSE
 			for(obstacle in T)
-				if(forget == obstacle)
+				if(old_loc == obstacle)
 					continue
 				A = obstacle
 				if (!istype(A) || !A.can_block_movement)
@@ -342,7 +345,7 @@
 		mover.Collide(src)
 		return FALSE
 	for(obstacle in src) //Then, check atoms in the target turf
-		if(forget == obstacle)
+		if(old_loc == obstacle)
 			continue
 		A = obstacle
 		if (!istype(A) || !A.can_block_movement)
@@ -363,16 +366,21 @@
 
 	return TRUE //Nothing found to block so return success!
 
-/turf/Entered(atom/movable/A)
-	if(!istype(A))
+/turf/Entered(atom/movable/entered_movable, atom/old_loc)
+	SHOULD_CALL_PARENT(TRUE)
+
+	..() // Shouldn't do anything but to satisfy lint
+
+	if(QDELETED(entered_movable))
 		return
 
-	SEND_SIGNAL(src, COMSIG_TURF_ENTERED, A)
-	SEND_SIGNAL(A, COMSIG_MOVABLE_TURF_ENTERED, src)
+	SEND_SIGNAL(src, COMSIG_TURF_ENTERED, entered_movable)
+	SEND_SIGNAL(entered_movable, COMSIG_MOVABLE_TURF_ENTERED, src)
 
 	// Let explosions know that the atom entered
-	for(var/datum/automata_cell/explosion/E in autocells)
-		E.on_turf_entered(A)
+	if(old_loc != src)
+		for(var/datum/automata_cell/explosion/cell as anything in autocells)
+			cell.on_turf_entered(entered_movable)
 
 /turf/proc/is_plating()
 	return 0
@@ -465,21 +473,24 @@
 	return new_baseturfs
 
 // Creates a new turf
-// new_baseturfs can be either a single type or list of types, formated the same as baseturfs. see turf.dm
+// new_baseturfs can be either a single type or list of types, formatted the same as baseturfs. see turf.dm
 /turf/proc/ChangeTurf(path, list/new_baseturfs, flags)
 	switch(path)
 		if(null)
 			return
 		if(/turf/baseturf_bottom)
 			path = /turf/open/floor/plating
+		if(/turf/open/space/basic) // these don't initialize, if you want to create one post-init just use the normal space turf
+			path = /turf/open/space
 
 	//if(src.type == new_turf_path) // Put this back if shit starts breaking
 	// return src
 
-	var/pylons = linked_pylons
+	var/list/pylons = linked_pylons
+	var/list/cells = autocells
 
 	var/list/old_baseturfs = baseturfs
-
+	var/old_ref = weak_reference
 	//static lighting
 	var/old_lighting_object = static_lighting_object
 	var/old_lighting_corner_NE = lighting_corner_NE
@@ -490,23 +501,29 @@
 	var/list/old_hybrid_lights_affecting = hybrid_lights_affecting?.Copy()
 	var/old_directional_opacity = directional_opacity
 
+	var/list/post_change_callbacks = list()
+	SEND_SIGNAL(src, COMSIG_PRE_TURF_CHANGE, path, new_baseturfs, flags, post_change_callbacks)
+
 	changing_turf = TRUE
 	qdel(src) //Just get the side effects and call Destroy
-	var/turf/W = new path(src)
+	var/turf/new_self = new path(src)
 
-	for(var/i in W.contents)
-		var/datum/A = i
-		SEND_SIGNAL(A, COMSIG_ATOM_TURF_CHANGE, src)
+	new_self.weak_reference = old_ref
+
+	for(var/datum/callback/callback as anything in post_change_callbacks)
+		callback.InvokeAsync(new_self)
 
 	if(new_baseturfs)
-		W.baseturfs = new_baseturfs
+		new_self.baseturfs = new_baseturfs
 	else
-		W.baseturfs = old_baseturfs
+		new_self.baseturfs = old_baseturfs
 
-	W.linked_pylons = pylons
+	new_self.linked_pylons = pylons
+	if(length(cells))
+		LAZYOR(new_self.autocells, cells)
 
-	W.hybrid_lights_affecting = old_hybrid_lights_affecting
-	W.dynamic_lumcount = dynamic_lumcount
+	new_self.hybrid_lights_affecting = old_hybrid_lights_affecting
+	new_self.dynamic_lumcount = dynamic_lumcount
 
 	lighting_corner_NE = old_lighting_corner_NE
 	lighting_corner_SE = old_lighting_corner_SE
@@ -517,25 +534,21 @@
 	if(SSlighting.initialized)
 		recalculate_directional_opacity()
 
-		W.static_lighting_object = old_lighting_object
+		new_self.static_lighting_object = old_lighting_object
 
 		if(static_lighting_object && !static_lighting_object.needs_update)
 			static_lighting_object.update()
 
 	//Since the old turf was removed from hybrid_lights_affecting, readd the new turf here
-	if(W.hybrid_lights_affecting)
-		for(var/atom/movable/lighting_mask/mask as anything in W.hybrid_lights_affecting)
-			LAZYADD(mask.affecting_turfs, W)
+	if(new_self.hybrid_lights_affecting)
+		for(var/atom/movable/lighting_mask/mask as anything in new_self.hybrid_lights_affecting)
+			LAZYADD(mask.affecting_turfs, new_self)
 
-	if(W.directional_opacity != old_directional_opacity)
-		W.reconsider_lights()
+	if(new_self.directional_opacity != old_directional_opacity)
+		new_self.reconsider_lights()
 
-	var/area/thisarea = get_area(W)
-	if(thisarea.lighting_effect)
-		W.overlays += thisarea.lighting_effect
-
-	W.levelupdate()
-	return W
+	new_self.levelupdate()
+	return new_self
 
 //If you modify this function, ensure it works correctly with lateloaded map templates.
 /turf/proc/AfterChange(flags, oldType) //called after a turf has been replaced in ChangeTurf()
@@ -551,7 +564,7 @@
 		while(ispath(turf_type, /turf/baseturf_skipover))
 			amount++
 			if(amount > length(new_baseturfs))
-				CRASH("The bottomost baseturf of a turf is a skipover [src]([type])")
+				CRASH("The bottom-most baseturf of a turf is a skipover [src]([type])")
 			turf_type = new_baseturfs[max(1, length(new_baseturfs) - amount + 1)]
 		new_baseturfs.len -= min(amount, length(new_baseturfs) - 1) // No removing the very bottom
 		if(length(new_baseturfs) == 1)
@@ -671,7 +684,7 @@
 		if(CEILING_UNDERGROUND_METAL_ALLOW_CAS)
 			return "It is underground. The ceiling above is made of thin metal. It will likely stop medevac pickups but not CAS."
 		if(CEILING_UNDERGROUND_METAL_BLOCK_CAS)
-			return "It is underground. The ceiling above is made of metal.  Can probably stop most ordnance."
+			return "It is underground. The ceiling above is made of metal. Can probably stop most ordnance."
 		if(CEILING_DEEP_UNDERGROUND)
 			return "It is deep underground. The cavern roof lies above. Nothing is getting through that."
 		if(CEILING_DEEP_UNDERGROUND_METAL)
@@ -689,9 +702,9 @@
 	return
 
 /turf/proc/get_cell(type)
-	for(var/datum/automata_cell/C in autocells)
-		if(istype(C, type))
-			return C
+	for(var/datum/automata_cell/existing_cell as anything in autocells)
+		if(istype(existing_cell, type))
+			return existing_cell
 	return null
 
 //////////////////////////////////////////////////////////
@@ -705,9 +718,6 @@
 
 /turf/open/gm/river/can_dig_xeno_tunnel()
 	return FALSE
-
-/turf/open/snow/can_dig_xeno_tunnel()
-	return TRUE
 
 /turf/open/mars/can_dig_xeno_tunnel()
 	return TRUE
@@ -755,12 +765,6 @@
 /turf/open/mars/get_dirt_type()
 	return DIRT_TYPE_MARS
 
-/turf/open/snow/get_dirt_type()
-	if(bleed_layer)
-		return DIRT_TYPE_SNOW
-	else
-		return DIRT_TYPE_GROUND
-
 /turf/open/desert/dirt/get_dirt_type()
 	return DIRT_TYPE_MARS
 
@@ -775,18 +779,12 @@
 
 /turf/proc/get_pylon_protection_level()
 	var/protection_level = TURF_PROTECTION_NONE
-	for (var/atom/pylon in linked_pylons)
-		if (pylon.loc != null)
-			var/obj/effect/alien/resin/special/pylon/P = pylon
-
-			if(!istype(P))
-				continue
-
-			if(P.protection_level > protection_level)
-				protection_level = P.protection_level
-		else
-			LAZYREMOVE(linked_pylons, pylon)
-
+	for(var/obj/effect/alien/resin/special/resin_structure in linked_pylons)
+		if(QDELETED(resin_structure))
+			LAZYREMOVE(linked_pylons, resin_structure)
+			continue
+		if(resin_structure.protection_level > protection_level)
+			protection_level = resin_structure.protection_level
 	return protection_level
 
 GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
@@ -794,52 +792,15 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	/turf/baseturf_bottom,
 	)))
 
-// Make a new turf and put it on top
-// The args behave identical to PlaceOnBottom except they go on top
-// Things placed on top of closed turfs will ignore the topmost closed turf
-// Returns the new turf
-/turf/proc/PlaceOnTop(list/new_baseturfs, turf/fake_turf_type, flags)
-	var/area/turf_area = loc
-	if(new_baseturfs && !length(new_baseturfs))
-		new_baseturfs = list(new_baseturfs)
-	flags = turf_area.PlaceOnTopReact(new_baseturfs, fake_turf_type, flags) // A hook so areas can modify the incoming args
+/// Places a turf at the top of the stack
+/turf/proc/place_on_top(turf/added_layer, flags)
+	var/list/turf/new_baseturfs = list()
 
-	var/turf/newT
-	if(flags & CHANGETURF_SKIP) // We haven't been initialized
-		if(flags_atom & INITIALIZED)
-			stack_trace("CHANGETURF_SKIP was used in a PlaceOnTop call for a turf that's initialized. This is a mistake. [src]([type])")
-		assemble_baseturfs()
-	if(fake_turf_type)
-		if(!new_baseturfs) // If no baseturfs list then we want to create one from the turf type
-			if(!length(baseturfs))
-				baseturfs = list(baseturfs)
-			var/list/old_baseturfs = baseturfs.Copy()
-			if(!istype(src, /turf/closed))
-				old_baseturfs += type
-			newT = ChangeTurf(fake_turf_type, null, flags)
-			newT.assemble_baseturfs(initial(fake_turf_type.baseturfs)) // The baseturfs list is created like roundstart
-			if(!length(newT.baseturfs))
-				newT.baseturfs = list(baseturfs)
-			newT.baseturfs -= GLOB.blacklisted_automated_baseturfs
-			newT.baseturfs.Insert(1, old_baseturfs) // The old baseturfs are put underneath
-			return newT
-		if(!length(baseturfs))
-			baseturfs = list(baseturfs)
-		insert_self_into_baseturfs()
-		baseturfs += new_baseturfs
-		return ChangeTurf(fake_turf_type, null, flags)
-	if(!length(baseturfs))
-		baseturfs = list(baseturfs)
-	insert_self_into_baseturfs()
-	var/turf/change_type
-	if(length(new_baseturfs))
-		change_type = new_baseturfs[length(new_baseturfs)]
-		new_baseturfs.len--
-		if(length(new_baseturfs))
-			baseturfs += new_baseturfs
-	else
-		change_type = new_baseturfs
-	return ChangeTurf(change_type, null, flags)
+	new_baseturfs.Add(baseturfs)
+	if(istype(src, /turf/open))
+		new_baseturfs.Add(type)
+
+	return ChangeTurf(added_layer, new_baseturfs, flags)
 
 /// Places a turf on top - for map loading
 /turf/proc/load_on_top(turf/added_layer, flags)
@@ -848,7 +809,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 
 	if(flags & CHANGETURF_SKIP) // We haven't been initialized
 		if(flags_atom & INITIALIZED)
-			stack_trace("CHANGETURF_SKIP was used in a PlaceOnTop call for a turf that's initialized. This is a mistake. [src]([type])")
+			stack_trace("CHANGETURF_SKIP was used in a place_on_top call for a turf that's initialized. This is a mistake. [src]([type])")
 		assemble_baseturfs()
 
 	var/turf/new_turf
@@ -920,6 +881,19 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 		T.setDir(dir)
 	return T
 
+/turf/open/shuttle/dropship/copyTurf(turf/open/shuttle/dropship/turfazoid)
+	if(turfazoid.type != type)
+		turfazoid.ChangeTurf(type)
+	if(turfazoid.icon_state != icon_state)
+		turfazoid.icon_state = icon_state
+	if(turfazoid.icon != icon)
+		turfazoid.icon = icon
+	if(turfazoid.dir != dir)
+		turfazoid.setDir(dir)
+	if(turfazoid.linked_door != linked_door)
+		turfazoid.linked_door = linked_door
+	return turfazoid
+
 /turf/proc/remove_flag(flag)
 	turf_flags &= ~flag
 
@@ -933,8 +907,8 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 			return
 
 		if (stun_modifier > 0)
-			human_victim.KnockDown(3 * height * stun_modifier)
-			human_victim.Stun(3 * height * stun_modifier)
+			human_victim.KnockDown(0.7 *height * stun_modifier)
+			human_victim.Superslow(3 * height * stun_modifier)
 			human_victim.Slow(5 * height * stun_modifier)
 
 		if (damage_modifier > 0)
@@ -953,15 +927,31 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 		var/mob/living/carbon/xenomorph/xeno_victim = victim
 		if(stun_modifier > 0)
 			if(xeno_victim.mob_size >= MOB_SIZE_BIG)
-				xeno_victim.KnockDown(height * 3.5 * stun_modifier)
-				xeno_victim.Stun( height * 3.5 * stun_modifier)
-				xeno_victim.Slow(height * 6 * stun_modifier)
+				xeno_victim.KnockDown(height * 1.5 * stun_modifier)
+				xeno_victim.Stun(height * 1.5 * stun_modifier)
+				xeno_victim.Slow(height * 3.5 * stun_modifier)
+				xeno_victim.Daze(height * 2.5 * stun_modifier)
 			else
 				xeno_victim.KnockDown(height * 0.5 * stun_modifier)
-				xeno_victim.Stun( height * 0.5 * stun_modifier)
-				xeno_victim.Slow(height * 2.5 * stun_modifier)
-
-
+				xeno_victim.Stun(height * 0.5 * stun_modifier)
+				xeno_victim.Superslow(height * 1 * stun_modifier)
+				xeno_victim.Slow(height * 2 * stun_modifier)
+				xeno_victim.Daze(height * 1.5 * stun_modifier)
 
 	if(damage_modifier > 0.5)
 		playsound(loc, "slam", 50, 1)
+
+/turf/proc/on_climb_down(victim)
+	if(!isxeno(victim))
+		return
+	var/mob/living/carbon/xenomorph/xeno_victim = victim
+	if(xeno_victim.mob_size >= MOB_SIZE_BIG)
+		xeno_victim.Superslow(1.5)
+		xeno_victim.Slow(2)
+		xeno_victim.Daze(1.5)
+		return
+
+	xeno_victim.Superslow(1)
+	xeno_victim.Slow(1.5)
+	xeno_victim.Daze(1)
+

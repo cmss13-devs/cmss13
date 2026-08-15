@@ -29,12 +29,14 @@
 	pixel_y = -6
 	old_x = -8
 	old_y = -6
+	xenonid_pixel_x = -1
+	xenonid_pixel_y = 0
 	layer = MOB_LAYER
 	mob_flags = NOBIOSCAN
 	see_in_dark = 8
 	tier = 0  //Facehuggers don't count towards Pop limits
 	acid_blood_damage = 5
-	crit_health = 0
+	health_threshold_dead = 0
 	crit_grace_time = 0
 	gib_chance = 75
 	mob_size = MOB_SIZE_SMALL
@@ -48,6 +50,7 @@
 	can_hivemind_speak = FALSE
 
 	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/onclick/xenohide,
@@ -86,11 +89,14 @@
 		3 MINUTES,\
 	)
 
+/mob/living/carbon/xenomorph/facehugger/warn_away_timer()
+	return // Ghostizing will just convert to regular hugger
+
 /mob/living/carbon/xenomorph/facehugger/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_MOB_THRU|PASS_FLAGS_CRAWLER
-		PF.flags_can_pass_all = PASS_ALL^PASS_OVER_THROW_ITEM
+		PF.flags_can_pass_all = PASS_ALL|PASS_OVER_THROW_ITEM
 
 /mob/living/carbon/xenomorph/facehugger/Logout()
 	. = ..()
@@ -174,7 +180,7 @@
 	qdel(src)
 	return did_hug
 
-/mob/living/carbon/xenomorph/facehugger/ghostize(can_reenter_corpse, aghosted)
+/mob/living/carbon/xenomorph/facehugger/ghostize(can_reenter_corpse = FALSE, aghosted = FALSE, transfer = FALSE)
 	if(!aghosted && !can_reenter_corpse && !QDELETED(src) && stat != DEAD)
 		// Become a npc once again
 		new /obj/item/clothing/mask/facehugger(loc, hivenumber)
@@ -280,3 +286,52 @@
 /datum/behavior_delegate/facehugger_base/on_life()
 	if(!(locate(/obj/effect/alien/weeds) in get_turf(bound_xeno)))
 		bound_xeno.adjustBruteLoss(2)
+
+
+/datum/action/xeno_action/activable/pounce/facehugger/use_ability(atom/target_atom)
+	for(var/obj/structure/machinery/door/airlock/current_airlock in get_turf(owner))
+		if(current_airlock.density) //if its CLOSED YOU'RE SCUTTLING AND CANNOT POUNCE!!!
+			to_chat(owner, SPAN_WARNING("We cannot do that while squeezing and scuttling!"))
+			return FALSE
+
+	if(HAS_TRAIT(owner, TRAIT_IMMOBILIZED))
+		to_chat(owner, SPAN_WARNING("We cannot do that while immobilized!"))
+		return FALSE
+
+	return ..()
+
+/datum/action/xeno_action/activable/pounce/facehugger/post_windup_effects(interrupted)
+	..()
+
+	var/mob/living/carbon/xenomorph/facehugger = owner
+	if(!istype(facehugger) || interrupted)
+		return
+	facehugger.update_icons()
+
+/datum/action/xeno_action/activable/pounce/facehugger/additional_effects(mob/living/target_living)
+	if(!ishuman(target_living))
+		return
+
+	var/mob/living/carbon/xenomorph/facehugger/facehugger = owner
+	if(!istype(facehugger))
+		return
+
+	var/key_name = key_name(facehugger)
+	var/did_hug = FALSE
+	if(facehugger.pounce_distance <= 1 && can_hug(target_living, facehugger.hivenumber))
+		did_hug = facehugger.handle_hug(target_living)
+	log_attack("[key_name] [did_hug ? "successfully hugged" : "tried to hug"] [key_name(target_living)] (Pounce Distance: [facehugger.pounce_distance]) at [get_location_in_text(target_living)]")
+
+/datum/action/xeno_action/onclick/toggle_long_range/facehugger/on_zoom_out()
+	. = ..()
+
+	var/mob/living/carbon/xenomorph/facehugger/facehugger = owner
+	REMOVE_TRAIT(facehugger, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Long-Range Sight"))
+
+/datum/action/xeno_action/onclick/toggle_long_range/facehugger/on_zoom_in()
+	. = ..()
+
+	var/mob/living/carbon/xenomorph/facehugger/facehugger = owner
+	ADD_TRAIT(facehugger, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Long-Range Sight"))
+
+

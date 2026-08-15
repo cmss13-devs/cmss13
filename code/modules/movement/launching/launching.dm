@@ -131,6 +131,9 @@
 
 // Proc for throwing items (should only really be used for throw)
 /atom/movable/proc/throw_atom(atom/target, range, speed = 0, atom/thrower, spin, launch_type = NORMAL_LAUNCH, pass_flags = NO_FLAGS, list/end_throw_callbacks, list/collision_callbacks, tracking = FALSE)
+	if(QDELETED(src))
+		return // Why throw something deleting?
+
 	var/temp_pass_flags = pass_flags
 	switch (launch_type)
 		if (NORMAL_LAUNCH)
@@ -191,10 +194,13 @@
 	add_temp_pass_flags(pass_flags)
 	var/turf/start_turf
 	var/turf/above = SSmapping.get_turf_above(loc)
-	if(LM.target.z > z && istype(above, /turf/open_space))
+	var/datum/turf_reservation/reservation = SSmapping.used_turfs[loc]
+	if(reservation && (reservation.is_below(loc, get_turf(LM.target))) || (LM.target.z > z) && istype(above, /turf/open_space))
 		start_turf = above
 	else
 		start_turf = get_step_towards(src, LM.target)
+		if(reservation && reservation.is_below(get_turf(LM.target), loc))
+			start_turf = get_step_towards(src, SSmapping.get_turf_above(LM.target))
 	var/list/turf/path = get_line(start_turf, LM.target)
 	var/last_loc = loc
 

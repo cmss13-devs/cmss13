@@ -24,9 +24,6 @@
 ///from /atom/hitby(): (atom/movable/AM)
 #define COMSIG_ATOM_HITBY "atom_hitby"
 
-///from /turf/ChangeTurf
-#define COMSIG_ATOM_TURF_CHANGE "movable_turf_change"
-
 //from atom/set_light(): (l_range, l_power, l_color)
 #define COMSIG_ATOM_SET_LIGHT "atom_set_light"
 
@@ -58,3 +55,6 @@
 
 //from base of atom/Exited(): (atom/movable/exiting, direction)
 #define COMSIG_ATOM_EXITED "atom_exited"
+
+/// Called when an atom is crossed by a movable atom
+#define COMSIG_ATOM_CROSSED "atom_crossed"

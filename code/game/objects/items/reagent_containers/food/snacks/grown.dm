@@ -99,13 +99,12 @@
 
 /obj/item/reagent_container/food/snacks/grown/nettle/pickup(mob/living/carbon/human/user, silent)
 	. = ..()
-	if(!istype(user) || user.gloves)
+	if(!istype(user))
 		return FALSE
-
-	to_chat(user, SPAN_DANGER("The nettle burns your bare hand!"))
-	var/obj/limb/affecting = user.get_limb(user.hand ? "l_hand":"r_hand")
-	affecting.take_damage(0, force)
-	return TRUE
+	if(!user.gloves)
+		to_chat(user, SPAN_DANGER("The nettle burns your bare hand!"))
+		var/obj/limb/affecting = user.get_limb(user.hand ? "l_hand":"r_hand")
+		affecting.take_damage(0, force)
 
 /obj/item/reagent_container/food/snacks/grown/nettle/death
 	plantname = "deathnettle"
@@ -120,10 +119,11 @@
 	user.apply_internal_damage(potency/potency_divisior, user.internal_organs_by_name["liver"])
 
 /obj/item/reagent_container/food/snacks/grown/nettle/death/pickup(mob/living/carbon/human/user)
-
-	if(..() && prob(50))
+	. = ..()
+	if(!user.gloves && prob(50))
 		user.apply_effect(5, PARALYZE)
 		to_chat(user, SPAN_DANGER("You are stunned by the deathnettle as you try to pick it up!"))
+		return FALSE
 
 /obj/item/reagent_container/food/snacks/grown/harebell
 	name = "harebell"
@@ -181,7 +181,7 @@
 
 /obj/item/reagent_container/food/snacks/grown/plastellium
 	name = "clump of plastellium"
-	desc = "Hmm, needs some processing"
+	desc = "Hmm, needs some processing."
 	icon_state = "plastellium"
 	filling_color = "#C4C4C4"
 	plantname = "plastic"
@@ -442,7 +442,7 @@
 
 	if(istype(user.loc,/turf/open/space))
 		return
-	new /mob/living/simple_animal/tomato(user.loc)
+	new /mob/living/simple_animal/small/tomato(user.loc)
 	qdel(src)
 
 	to_chat(user, SPAN_NOTICE("You plant the killer-tomato."))
@@ -484,6 +484,7 @@
 	return
 
 /obj/item/reagent_container/food/snacks/grown/bluetomato/Crossed(AM as mob|obj)
+	..()
 	if (iscarbon(AM))
 		var/mob/living/carbon/C = AM
 		C.slip(name, 8, 5)
@@ -513,7 +514,7 @@
 
 /obj/item/reagent_container/food/snacks/grown/icepepper
 	name = "ice-pepper"
-	desc = "It's a mutant strain of chili"
+	desc = "It's a mutant strain of chili."
 	icon_state = "icepepper"
 	potency = 20
 	filling_color = "#66CEED"
@@ -639,22 +640,17 @@
 		return
 	switch(rand(1,2))//Decides randomly to teleport the thrower or the throwee.
 		if(1) // Teleports the person who threw the tomato.
-			s.set_up(3, 1, M)
-			s.start()
+			s.setup_and_start(3, 1, M)
 			new/obj/effect/decal/cleanable/molten_item(M.loc) //Leaves a pile of goo behind for dramatic effect.
-			M.forceMove(picked )//
-			sleep(1)
-			s.set_up(3, 1, M)
-			s.start() //Two set of sparks, one before the teleport and one after.
+			M.forceMove(picked)//
+			//Two set of sparks, one before the teleport and one after.
+			s.setup_and_start_with_delay(3, 1, M, 0.1 SECONDS)
 		if(2) //Teleports mob the tomato hit instead.
 			for(var/mob/A in get_turf(hit_atom))//For the mobs in the tile that was hit...
-				s.set_up(3, 1, A)
-				s.start()
+				s.setup_and_start(3, 1, A)
 				new/obj/effect/decal/cleanable/molten_item(A.loc) //Leave a pile of goo behind for dramatic effect...
 				A.forceMove(picked)//And teleport them to the chosen location.
-				sleep(1)
-				s.set_up(3, 1, A)
-				s.start()
+				s.setup_and_start_with_delay(3, 1, A, 0.1 SECONDS)
 	new/obj/effect/decal/cleanable/blood/oil(src.loc)
 	src.visible_message(SPAN_NOTICE("The [src.name] has been squashed, causing a distortion in space-time."),SPAN_MODERATE("You hear a splat and a crackle."))
 	qdel(src)

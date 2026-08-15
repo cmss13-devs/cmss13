@@ -24,7 +24,7 @@ export const SkillsMenu = (props) => {
   const { skillset_name, skills, admin } = data;
 
   return (
-    <Window width={300} height={550}>
+    <Window width={300} height={600}>
       <Window.Content>
         <Section
           title={'Skillset name: ' + skillset_name}

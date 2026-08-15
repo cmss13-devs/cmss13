@@ -9,7 +9,7 @@
 
 	SEND_SIGNAL(attacking_mob, COMSIG_LIVING_ATTACKHAND_HUMAN, src)
 
-	if((attacking_mob != src) && check_shields(0, attacking_mob.name))
+	if((attacking_mob != src) && check_shields(attacking_mob.name, get_dir(src, attacking_mob), custom_response = TRUE))
 		visible_message(SPAN_DANGER("<B>[attacking_mob] attempted to touch [src]!</B>"), null, null, 5)
 		return FALSE
 
@@ -32,7 +32,7 @@
 				return 1
 
 			if(species.flags & IS_SYNTHETIC)
-				to_chat(attacking_mob, SPAN_DANGER("Your hands compress the metal chest uselessly... "))
+				to_chat(attacking_mob, SPAN_DANGER("Your hands compress the metal chest uselessly..."))
 				return 0
 
 			if(cpr_attempt_timer >= world.time)
@@ -49,7 +49,7 @@
 			cpr_attempt_timer = world.time + HUMAN_STRIP_DELAY * attacking_mob.get_skill_duration_multiplier(SKILL_MEDICAL)
 			if(do_after(attacking_mob, HUMAN_STRIP_DELAY * attacking_mob.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 				if(stat != DEAD)
-					var/suff = min(getOxyLoss(), 10) //Pre-merge level, less healing, more prevention of dieing.
+					var/suff = min(getOxyLoss(), 10) //Pre-merge level, less healing, more prevention of dying.
 					apply_damage(-suff, OXY)
 					updatehealth()
 					src.affected_message(attacking_mob,
@@ -72,7 +72,7 @@
 
 		if(INTENT_GRAB)
 			if(attacking_mob == src)
-				check_for_injuries()
+				check_for_injuries(src)
 				return 1
 
 			if(anchored)
@@ -117,7 +117,7 @@
 
 		if(INTENT_DISARM)
 			if(attacking_mob == src)
-				check_for_injuries()
+				check_for_injuries(src)
 				return 1
 
 			attacking_mob.attack_log += text("\[[time_stamp()]\] <font color='red'>Disarmed [key_name(src)]</font>")
@@ -156,7 +156,7 @@
 
 						attack_log += "\[[time_stamp()]\] <b>[key_name(src)]</b> accidentally discharged <b>[held_weapon.name]</b> in [get_area(src)] triggered by <b>[key_name(attacking_mob)]</b>."
 						attacking_mob.attack_log += "\[[time_stamp()]\] <b>[key_name(src)]</b> accidentally fired <b>[held_weapon.name]</b> in [get_area(src)] triggered by <b>[key_name(attacking_mob)]</b>."
-						msg_admin_ff("[key_name(src)][ADMIN_JMP(src)] [ADMIN_PM(src)] accidentally discharged <b>[held_weapon.name]</b> in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]) triggered by <b>[key_name(attacking_mob)][ADMIN_JMP(attacking_mob)] [ADMIN_PM(attacking_mob)]</b>.")
+						msg_admin_ff("[key_name(src)][ADMIN_JMP(src)] [ADMIN_PM(src)] accidentally discharged <b>[held_weapon.name]</b> in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]) triggered by <b>[key_name(attacking_mob)][ADMIN_JMP(attacking_mob)] [ADMIN_PM(attacking_mob)]</b>.", TRUE, loc.z)
 
 			var/disarm_chance = rand(1, 100)
 			var/attacker_skill_level = attacking_mob.skills ? attacking_mob.skills.get_skill_level(SKILL_CQC) : SKILL_CQC_MAX // No skills, so assume max
@@ -190,10 +190,10 @@
 /mob/living/carbon/human/proc/afterattack(atom/target as mob|obj|turf|area, mob/living/user as mob|obj, inrange, params)
 	return
 
-/mob/living/carbon/human/help_shake_act(mob/living/carbon/M)
+/mob/living/carbon/human/help_shake_act(mob/living/carbon/mob)
 	//Target is us
-	if(src == M)
-		check_for_injuries()
+	if(src == mob)
+		check_for_injuries(src)
 		return
 
 	//Target is not us
@@ -206,31 +206,38 @@
 		if(PLURAL)
 			t_him = "them"
 
-	if (w_uniform)
-		w_uniform.add_fingerprint(M)
+	if(w_uniform)
+		w_uniform.add_fingerprint(mob)
+
+	var/shaken_friend = FALSE
 
 	if(HAS_TRAIT(src, TRAIT_FLOORED) || HAS_TRAIT(src, TRAIT_KNOCKEDOUT) || body_position == LYING_DOWN || sleeping)
 		if(client)
 			sleeping = max(0,src.sleeping-5)
 		if(!sleeping)
 			if(is_dizzy)
-				to_chat(M, SPAN_WARNING("[src] looks dizzy. Maybe you should let [t_him] rest a bit longer."))
+				to_chat(mob, SPAN_WARNING("[src] looks dizzy. Maybe you should let [t_him] rest a bit longer."))
 			else
 				set_resting(FALSE)
-		M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to wake [t_him] up!"),
-			SPAN_NOTICE("You shake [src] trying to wake [t_him] up!"), null, 4)
+		shaken_friend = TRUE
+		mob.visible_message(SPAN_NOTICE("[mob] shakes [src] trying to wake [t_him] up!"),
+			SPAN_NOTICE("You shake [src], trying to wake [t_him] up!"), null, 4)
 	else if(HAS_TRAIT(src, TRAIT_INCAPACITATED))
-		M.visible_message(SPAN_NOTICE("[M] shakes [src], trying to shake [t_him] out of his stupor!"),
+		mob.visible_message(SPAN_NOTICE("[mob] shakes [src], trying to shake [t_him] out of his stupor!"),
 			SPAN_NOTICE("You shake [src], trying to shake [t_him] out of his stupor!"), null, 4)
+		shaken_friend = TRUE
 	else
-		var/mob/living/carbon/human/H = M
-		if(istype(H))
-			H.species.hug(H, src, H.zone_selected)
+		var/mob/living/carbon/human/human = mob
+		if(istype(human))
+			human.species.hug(human, src, human.zone_selected)
 		else
-			M.visible_message(SPAN_NOTICE("[M] pats [src] on the back to make [t_him] feel better!"),
+			mob.visible_message(SPAN_NOTICE("[mob] pats [src] on the back to make [t_him] feel better!"),
 				SPAN_NOTICE("You pat [src] on the back to make [t_him] feel better!"), null, 4)
 			playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 5)
 		return
+
+	if(shaken_friend)
+		SEND_SIGNAL(mob, COMSIG_HUMAN_HELPING_UP)
 
 	adjust_effect(-6, PARALYZE)
 	adjust_effect(-6, STUN)
@@ -238,12 +245,30 @@
 
 	playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 
-/mob/living/carbon/human/proc/check_for_injuries()
-	visible_message(SPAN_NOTICE("[src] examines [gender==MALE?"himself":"herself"]."),
-	SPAN_NOTICE("You check yourself for injuries."), null, 3)
+/mob/living/carbon/human/proc/check_for_injuries(mob/living/carbon/human/checker)
+	if(!checker)
+		return
+
+	if((checker != src && (checker.sdisabilities & DISABILITY_BLIND || checker.blinded)) || checker.stat != CONSCIOUS)
+		to_chat(checker, boxed_message(SPAN_NOTICE("You can't exactly tell what the problem is currently.")))
+		return
+
+	if(checker == src) // this probably would be better off in a separate, universal proc so itll be easier for everyone involved i think
+		var/pronoun = "itself"
+		switch(gender)
+			if(MALE)
+				pronoun = "himself"
+			if(FEMALE)
+				pronoun = "herself"
+			if(PLURAL)
+				pronoun = "themself"
+		visible_message(SPAN_NOTICE("[src] examines [pronoun] for injuries."),
+			SPAN_NOTICE("You check yourself for injuries."), null, 3)
+	else
+		checker.visible_message(SPAN_NOTICE("[checker] examines [src]."), SPAN_NOTICE("You check [src] for injuries."), null, 3)
 
 	var/list/limb_message = list()
-	for(var/obj/limb/org in limbs)
+	for(var/obj/limb/org as anything in limbs)
 		var/list/status = list()
 		var/brutedamage = org.brute_dam
 		var/burndamage = org.burn_dam
@@ -302,17 +327,26 @@
 			status += "OK"
 
 		var/postscript
-		if(org.status & LIMB_UNCALIBRATED_PROSTHETIC)
-			postscript += " <b>(NONFUNCTIONAL)</b>"
-		if(org.status & LIMB_BROKEN)
-			postscript += " <b>(BROKEN)</b>"
+		if(checker == src) // obviously it wont come off as obvious to other people, unless its dislocated or w/e
+			if(org.status & LIMB_UNCALIBRATED_PROSTHETIC)
+				postscript += " [SPAN_BOLD("(NONFUNCTIONAL)")]"
+			if(org.status & LIMB_BROKEN)
+				postscript += " [SPAN_BOLD("(BROKEN)")]"
+
 		if(org.status & LIMB_SPLINTED_INDESTRUCTIBLE)
-			postscript += " <b>(NANOSPLINTED)</b>"
+			postscript += " [SPAN_BOLD("(<a href='byond://?src=\ref[src];remove_splint=[org.name]'><span class='corp_label_red'>NANOSPLINTED</a>)")]"
 		else if(org.status & LIMB_SPLINTED)
-			postscript += " <b>(SPLINTED)</b>"
+			postscript += " [SPAN_BOLD("(<a href='byond://?src=\ref[src];remove_splint=[org.name]'><span class='corp_label_red'>SPLINTED</a>)")]"
+
+		if(org.status & LIMB_THIRD_DEGREE_BURNS)
+			postscript += SPAN_BOLD("(SEVERE BURN)")
+		if(org.status & LIMB_ESCHAR)
+			postscript += " [SPAN_BOLD("(ESCHAR)")]"
+
 
 		if(postscript)
-			limb_message += "\t My [org.display_name] is [SPAN_WARNING("[english_list(status, final_comma_text = ",")].[postscript]")]"
+			limb_message += "\t [checker == src ? "My" : "[src]'s"] [org.display_name] is [SPAN_WARNING("[english_list(status, final_comma_text = ",")].[postscript]")]"
 		else
-			limb_message += "\t My [org.display_name] is [status[1] == "OK" ? SPAN_NOTICE("OK.") : SPAN_WARNING("[english_list(status, final_comma_text = ",")].")]"
-	to_chat(src, boxed_message(limb_message.Join("\n")))
+			limb_message += "\t [checker == src ? "My" : "[src]'s"] [org.display_name] is [status[1] == "OK" ? SPAN_NOTICE("OK.") : SPAN_WARNING("[english_list(status, final_comma_text = ",")].")]"
+	limb_message += "\t \n<span class = 'deptradio'>Medical actions: <a href='byond://?src=\ref[src];check_status=1'>\[Check Status\]</a>\n"
+	to_chat(checker, boxed_message(limb_message.Join("<br>")))

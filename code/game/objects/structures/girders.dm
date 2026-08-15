@@ -275,10 +275,10 @@
 			playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 			var/turf/T = get_turf(src)
 			if(is_mainship_level(z))
-				T.PlaceOnTop(/turf/closed/wall/almayer)
+				T.place_on_top(/turf/closed/wall/almayer)
 				SEND_SIGNAL(user, COMSIG_MOB_CONSTRUCT_WALL, /turf/closed/wall/almayer)
 			else
-				T.PlaceOnTop(/turf/closed/wall)
+				T.place_on_top(/turf/closed/wall)
 				SEND_SIGNAL(user, COMSIG_MOB_CONSTRUCT_WALL, /turf/closed/wall)
 			var/obj/effect/alien/weeds/weeds_in_tile = locate(/obj/effect/alien/weeds) in T
 			if(weeds_in_tile)
@@ -329,9 +329,9 @@
 			playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 			var/turf/T = get_turf(src)
 			if(is_mainship_level(z))
-				T.PlaceOnTop(/turf/closed/wall/almayer/reinforced)
+				T.place_on_top(/turf/closed/wall/almayer/reinforced)
 			else
-				T.PlaceOnTop(/turf/closed/wall/r_wall)
+				T.place_on_top(/turf/closed/wall/r_wall)
 			var/obj/effect/alien/weeds/weeds_in_tile = locate(/obj/effect/alien/weeds) in T
 			if(weeds_in_tile)
 				qdel(weeds_in_tile)
@@ -432,7 +432,7 @@
 		playsound(loc, 'sound/effects/metalhit.ogg', 25, TRUE)
 	return XENO_ATTACK_ACTION
 
-/obj/structure/girder/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/girder/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(xeno.caste && xeno.caste.tier < 2 && xeno.claw_type < CLAW_TYPE_VERY_SHARP)
 		return TAILSTAB_COOLDOWN_NONE
 	if(unacidable || unslashable)
@@ -449,6 +449,7 @@
 	else
 		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
 #undef STATE_STANDARD

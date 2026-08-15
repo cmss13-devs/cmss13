@@ -139,6 +139,51 @@
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 
+/obj/item/clothing/head/helmet/roman
+	name = "\improper imperial galea helmet"
+	desc = "An extremely old helmet that was used by Roman heavy infantry units called the Legionares."
+	icon_state = "legionary_helm"
+	item_state = "legionary_helm"
+	icon = 'icons/obj/items/clothing/hats/misc_ert_colony.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/misc_ert_colony.dmi'
+	)
+	flags_inventory = COVEREYES|BLOCKSHARPOBJ
+	flags_inv_hide = HIDEEARS|HIDEEYES
+	siemens_coefficient = 1
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+
+/obj/item/clothing/head/helmet/roman/centurion
+	desc = "An extremely old helmet that was used by Roman heavy infantry units called the Legionares. This one has a crest indicating it was used by Centurions."
+	icon_state = "centurion_helm"
+	item_state = "centurion_helm"
+	worn_x_dimension = 64
+	worn_y_dimension = 64
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/head_64.dmi'
+	)
+
+
+/obj/item/clothing/head/helmet/roman/eaglebearer
+	name = "\improper Aquilifer's bear pelt mask"
+	desc = "a bear pelt and mask that was worn by a Roman Aquilifer, a prestigious role meant to inspire troops in battles."
+	icon_state = "eaglebearer_hat"
+	item_state = "eaglebearer_hat"
+	worn_x_dimension = 64
+	worn_y_dimension = 64
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/head_64.dmi'
+	)
+	flags_inv_hide = HIDEMASK|HIDEEARS|HIDEEYES
+	anti_hug = 1
+
 //===========================//MARINES HELMETS\\=================================\\
 //=======================================================================\\
 
@@ -261,21 +306,24 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 	// PREFERENCES GEAR
 	/obj/item/prop/helmetgarb/gunoil = NO_GARB_OVERRIDE,
-	/obj/item/prop/helmetgarb/netting = NO_GARB_OVERRIDE,
-	/obj/item/prop/helmetgarb/netting/desert = NO_GARB_OVERRIDE,
-	/obj/item/prop/helmetgarb/netting/jungle = NO_GARB_OVERRIDE,
-	/obj/item/prop/helmetgarb/netting/urban = NO_GARB_OVERRIDE,
+	/obj/item/clothing/accessory/helmet/cover/netting = NO_GARB_OVERRIDE,
+	/obj/item/clothing/accessory/helmet/cover/netting/desert = NO_GARB_OVERRIDE,
+	/obj/item/clothing/accessory/helmet/cover/netting/jungle = NO_GARB_OVERRIDE,
+	/obj/item/clothing/accessory/helmet/cover/netting/urban = NO_GARB_OVERRIDE,
+	/obj/item/clothing/accessory/helmet/cover/netting/snow = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/spent_buckshot = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/spent_slug = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/spent_flech = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/cartridge = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/prescription_bottle = NO_GARB_OVERRIDE,
-	/obj/item/prop/helmetgarb/raincover = NO_GARB_OVERRIDE,
-	/obj/item/prop/helmetgarb/raincover/jungle = NO_GARB_OVERRIDE,
-	/obj/item/prop/helmetgarb/raincover/desert = NO_GARB_OVERRIDE,
-	/obj/item/prop/helmetgarb/raincover/urban = NO_GARB_OVERRIDE,
+	/obj/item/clothing/accessory/helmet/cover/raincover = NO_GARB_OVERRIDE,
+	/obj/item/clothing/accessory/helmet/cover/raincover/jungle = NO_GARB_OVERRIDE,
+	/obj/item/clothing/accessory/helmet/cover/raincover/desert = NO_GARB_OVERRIDE,
+	/obj/item/clothing/accessory/helmet/cover/raincover/urban = NO_GARB_OVERRIDE,
+	/obj/item/clothing/accessory/helmet/cover/raincover/snow = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/rabbitsfoot = NO_GARB_OVERRIDE,
-	/obj/item/prop/helmetgarb/rosary = NO_GARB_OVERRIDE, // This one was already in the game for some reason, but never had an object
+	/obj/item/clothing/accessory/rosary = NO_GARB_OVERRIDE, // This one was already in the game for some reason, but never had an object
+	/obj/item/clothing/accessory/rosary/gold = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/lucky_feather = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/lucky_feather/blue = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/lucky_feather/purple = NO_GARB_OVERRIDE,
@@ -304,8 +352,10 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/clothing/head/headband = NO_GARB_OVERRIDE,
 	/obj/item/clothing/head/headband/tan = NO_GARB_OVERRIDE,
 	/obj/item/clothing/head/headband/red = NO_GARB_OVERRIDE,
+	/obj/item/clothing/head/headband/red/static = PREFIX_HELMET_GARB_OVERRIDE,
 	/obj/item/clothing/head/headband/brown = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
 	/obj/item/clothing/head/headband/gray = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
+	/obj/item/clothing/head/headband/intel = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
 	/obj/item/clothing/head/headband/squad = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
 	/obj/item/clothing/head/headband/rebel = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
 	/obj/item/tool/candle = NO_GARB_OVERRIDE,
@@ -330,7 +380,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/paper = NO_GARB_OVERRIDE,
 	/obj/item/device/flashlight/flare = NO_GARB_OVERRIDE,
 	/obj/item/clothing/head/headset = NO_GARB_OVERRIDE,
-	/obj/item/clothing/accessory/patch = NO_GARB_OVERRIDE,
+	/obj/item/clothing/accessory/patch/uscmpatch = NO_GARB_OVERRIDE,
 	/obj/item/clothing/accessory/patch/falcon = NO_GARB_OVERRIDE,
 	/obj/item/clothing/accessory/patch/falcon/squad_main = NO_GARB_OVERRIDE,
 	/obj/item/clothing/accessory/patch/cec_patch = NO_GARB_OVERRIDE,
@@ -375,6 +425,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
 	icon_state = "helmet"
 	item_state = "helmet"
+	blood_overlay_type = "m10helmet"
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi'
 	)
@@ -503,7 +554,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 			var/obj/item/device/helmet_visor/temp_visor_holder = active_visor
 			active_visor = null
 			toggle_visor(potential_user, temp_visor_holder, TRUE)
+	active_visor = null // Incase above checks failed we still need to clear the ref
 	QDEL_NULL_LIST(built_in_visors)
+	QDEL_NULL_LIST(inserted_visors)
 	return ..()
 
 /obj/item/clothing/head/helmet/marine/attack_hand(mob/user)
@@ -521,6 +574,10 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		..()
 
 /obj/item/clothing/head/helmet/marine/attackby(obj/item/attacking_item, mob/user)
+	. = ..()
+	if(.)
+		return
+
 	if(istype(attacking_item, /obj/item/ammo_magazine) && world.time > helmet_bash_cooldown && user)
 		var/obj/item/ammo_magazine/M = attacking_item
 		var/ammo_level = "more than half full."
@@ -595,6 +652,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	..()
 	return pockets.attackby(attacking_item, user)
 
+/obj/item/clothing/head/helmet/marine/proc/add_helmet_state_overlays()
+	return
+
 /obj/item/clothing/head/helmet/marine/on_pocket_insertion()
 	update_icon()
 
@@ -632,6 +692,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 	if(active_visor)
 		helmet_overlays += overlay_image(active_visor.helmet_overlay_icon, active_visor.helmet_overlay, color, RESET_COLOR)
+
+	add_helmet_state_overlays()
 
 	if(ismob(loc))
 		var/mob/moob = loc
@@ -785,6 +847,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		"nvg_sight_down",
 		"med_sight_down",
 		"sec_sight_down",
+		"sensor_sight_down",
 		"blank_hud_sight_down"
 	)
 
@@ -846,7 +909,6 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
 	)
 
-
 /obj/item/clothing/head/helmet/marine/jungle
 	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
@@ -855,7 +917,6 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
 	)
-
 
 /obj/item/clothing/head/helmet/marine/snow
 	name = "\improper M10 marine snow helmet"
@@ -923,6 +984,53 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 	flags_marine_helmet = HELMET_GARB_OVERLAY|HELMET_DAMAGE_OVERLAY
 
+/obj/item/clothing/head/helmet/marine/medic/grey
+	desc = "An M10 marine helmet version worn by marine hospital corpsmen. Has red cross painted on its front. This one has not had a camouflage pattern applied to it yet. There is a built-in camera on the right side."
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/classic.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/classic.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
+	)
+
+/obj/item/clothing/head/helmet/marine/medic/jungle
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+	)
+
+/obj/item/clothing/head/helmet/marine/medic/snow
+	name = "\improper M10 pattern medic snow helmet"
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/snow.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+
+/obj/item/clothing/head/helmet/marine/medic/desert
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/desert.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/desert.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+	)
+
+/obj/item/clothing/head/helmet/marine/medic/urban
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/urban.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/urban.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
+	)
+
 /obj/item/clothing/head/helmet/marine/covert
 	name = "\improper M10 covert helmet"
 	desc = "An M10 marine helmet version designed for use in darkened environments. It is coated with a special anti-reflective paint."
@@ -968,10 +1076,75 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		WEAR_R_HAND = "helmet"
 	)
 
+/obj/item/clothing/head/helmet/marine/rto/army
+	name = "\improper Personal body armor system helmet"
+	desc = "The personal body armor system helmet is the standard issue combat helmet for the US Army. Selected over the M12 pattern helmet during combat trials, it offers allegedly superior protection compared to the M12 series, at over four times the cost. Though it's far more uncomfortable to wear."
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi',
+	)
+	icon_state = "army_helmet"
+	item_state = "army_helmet"
+	specialty = "Personal body armor system"
+	flags_atom = NO_GAMEMODE_SKIN
+
+/obj/item/clothing/head/helmet/marine/rto/army/engi
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/welding_visor)
+
+/obj/item/clothing/head/helmet/marine/rto/army/medic
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical/advanced)
+
 /obj/item/clothing/head/helmet/marine/rto/intel
 	name = "\improper XM12 pattern intelligence helmet"
 	desc = "An experimental brain-bucket. A dust ruffle hangs from back. Moderately better at deflecting blunt objects at the cost of humiliation, can also hold a second visor optic. But who will be laughing at the memorial? Not you, you'll be busy getting medals for your intel work."
 	specialty = "XM12 pattern intel"
+
+/obj/item/clothing/head/helmet/marine/rto/intel/grey
+	desc = "An experimental brain-bucket. A dust ruffle hangs from back. Moderately better at deflecting blunt objects at the cost of humiliation, can also hold a second visor optic. But who will be laughing at the memorial? Not you, you'll be busy getting medals for your intel work. This one has not had a camouflage pattern applied to it yet."
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/classic.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/classic.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
+	)
+
+/obj/item/clothing/head/helmet/marine/rto/intel/jungle
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+	)
+
+/obj/item/clothing/head/helmet/marine/rto/intel/snow
+	name = "\improper XM12 pattern intel snow helmet"
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/snow.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+
+/obj/item/clothing/head/helmet/marine/rto/intel/desert
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/desert.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/desert.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+	)
+
+/obj/item/clothing/head/helmet/marine/rto/intel/urban
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/urban.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/urban.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
+	)
 
 /obj/item/clothing/head/helmet/marine/specialist
 	name = "\improper B18 helmet"
@@ -1212,12 +1385,51 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_marine_helmet = HELMET_GARB_OVERLAY
 	flags_item = MOB_LOCK_ON_EQUIP
 	specialty = "M45 ghillie"
+	var/eye_glowing = FALSE
+	var/eye_glow_icon = 'icons/mob/humans/onmob/clothing/head/overlays.dmi'
+	var/eye_glow_state = "visor_glow"
+	// There's probably a better way to do this, but the repsrite only covers desert and jungle so it only needs to apply on those skin maps.
+	var/eye_glow_allowed = FALSE
+
+/obj/item/clothing/head/helmet/marine/ghillie/add_helmet_state_overlays()
+
+	if(!eye_glowing || !eye_glow_allowed)
+		return
+	var/image/glow = image(eye_glow_icon, icon_state = eye_glow_state)
+	glow.appearance_flags |= RESET_COLOR|RESET_ALPHA
+	helmet_overlays += glow
+	helmet_overlays += emissive_appearance(eye_glow_icon, eye_glow_state)
+
+/obj/item/clothing/head/helmet/marine/ghillie/proc/glowing_visor_activate(mob/user)
+	SIGNAL_HANDLER
+	eye_glowing = TRUE
+	update_icon()
+
+/obj/item/clothing/head/helmet/marine/ghillie/proc/glowing_visor_deactivate(mob/user)
+	SIGNAL_HANDLER
+	eye_glowing = FALSE
+	update_icon()
+
+/obj/item/clothing/head/helmet/marine/ghillie/equipped(mob/living/carbon/human/user, slot)
+	. = ..()
+	if(slot != WEAR_HEAD)
+		return
+	RegisterSignal(user, COMSIG_HUMAN_AIMED_SHOT_START, PROC_REF(glowing_visor_activate))
+	RegisterSignal(user, COMSIG_HUMAN_AIMED_SHOT_END, PROC_REF(glowing_visor_deactivate))
+
+/obj/item/clothing/head/helmet/marine/ghillie/unequipped(mob/living/carbon/human/user, slot)
+	. = ..()
+	UnregisterSignal(user, list(COMSIG_HUMAN_AIMED_SHOT_START, COMSIG_HUMAN_AIMED_SHOT_END))
+	eye_glowing = FALSE
 
 /obj/item/clothing/head/helmet/marine/ghillie/select_gamemode_skin()
 	. = ..()
 	if(SSmapping.configs[GROUND_MAP].camouflage_type == "urban"	|| "classic")
 		name = "\improper M10-LS pattern sniper helmet"
 		desc = "A lightweight version of M10 helmet with thermal signature dampering used by USCM snipers on urban recon missions."
+
+	if(SSmapping.configs[GROUND_MAP].camouflage_type == "jungle" || "desert")
+		eye_glow_allowed = TRUE
 
 /obj/item/clothing/head/helmet/marine/leader/CO
 	name = "\improper M11C pattern commanding officer helmet"
@@ -1262,6 +1474,53 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
 	specialty = "M10 pattern military police"
 	built_in_visors = list(new /obj/item/device/helmet_visor/security)
+
+/obj/item/clothing/head/helmet/marine/MP/grey
+	desc = "A special variant of the M10 Pattern Helmet worn by the Military Police of the USCM. Whether you're facing a crime syndicate or a mutiny, this bucket will keep your brains intact. This one has not had a camouflage pattern applied to it yet."
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/classic.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/classic.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
+	)
+
+/obj/item/clothing/head/helmet/marine/MP/jungle
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+	)
+
+/obj/item/clothing/head/helmet/marine/MP/snow
+	name = "\improper M10 pattern military police snow helmet"
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/snow.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+
+/obj/item/clothing/head/helmet/marine/MP/desert
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/desert.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/desert.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+	)
+
+/obj/item/clothing/head/helmet/marine/MP/urban
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	icon = 'icons/obj/items/clothing/hats/hats_by_map/urban.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/urban.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
+	)
 
 /obj/item/clothing/head/helmet/marine/MP/WO
 	name = "\improper M3 pattern chief MP helmet"
@@ -1410,6 +1669,10 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_marine_helmet = HELMET_GARB_OVERLAY|HELMET_DAMAGE_OVERLAY
 	camera_factions = list(FACTION_DUTCH)
 
+/obj/item/clothing/head/helmet/marine/veteran/dutch/vietnam
+	name = "\improper M1 pattern army helmet"
+	desc = "A protective helmet worn by US Army Riflemen during the peak of the Vietnam War."
+
 /obj/item/clothing/head/helmet/marine/veteran/dutch/cap
 	name = "\improper Dutch's Dozen cap"
 	desc = "A protective cap worn by some seriously experienced mercs."
@@ -1473,7 +1736,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/veteran/UPP/army
 	name = "\improper 6B82 combat helmet"
-	desc = "An older version of the UPP Army's 6B92 combat helmet, still worn by certain units on planets the UPP deems less important"
+	desc = "An older version of the UPP Army's 6B92 combat helmet, still worn by certain units on planets the UPP deems less important."
 	icon_state = "upp_army_helmet"
 
 /obj/item/clothing/head/helmet/marine/veteran/UPP/heavy/SOF_helmet
@@ -1637,7 +1900,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/skullcap
 	name = "skullcap"
-	desc = "Good for keeping sweat out of your eyes"
+	desc = "Good for keeping sweat out of your eyes."
 	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
 	icon_state = "skullcap"
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
@@ -1951,7 +2214,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/veteran/royal_marine/breacher
 	name = "\improper L5A3 ballistic helmet"
-	desc = "A High-cut ballistic helmet featuring an attached mandible. Designed by Lindenthal-Ehrenfeld Militärindustrie it is intended to be used by Royal Marines Commando as part of the kestrel armour system"
+	desc = "A High-cut ballistic helmet featuring an attached mandible. Designed by Lindenthal-Ehrenfeld Militärindustrie it is intended to be used by Royal Marines Commando as part of the kestrel armour system."
 	icon_state = "rmc_helm_br"
 	item_state = "rmc_helm_br"
 	armor_melee = CLOTHING_ARMOR_HIGH

@@ -76,6 +76,7 @@
 
 /obj/structure/surface/table/Crossed(atom/movable/O)
 	..()
+	// TODO: Replace this with signals or trait checks from xeno
 	if(istype(O,/mob/living/carbon/xenomorph/ravager) || istype(O,/mob/living/carbon/xenomorph/crusher))
 		var/mob/living/carbon/xenomorph/M = O
 		if(!M.stat) //No dead xenos jumpin on the bed~
@@ -353,7 +354,7 @@
 
 /obj/structure/surface/table/verb/do_flip()
 	set name = "Flip table"
-	set desc = "Flips a non-reinforced table"
+	set desc = "Flips a non-reinforced table."
 	set category = "Object"
 	set src in oview(1)
 
@@ -415,7 +416,7 @@
 
 /obj/structure/surface/table/proc/do_put()
 	set name = "Put table back"
-	set desc = "Puts flipped table back"
+	set desc = "Puts flipped table back."
 	set category = "Object"
 	set src in oview(1)
 
@@ -521,6 +522,13 @@
 	icon_state = "fwoodtable"
 	parts = /obj/item/frame/table/wood/fancy
 	table_prefix = "fwood"
+
+/obj/structure/surface/table/woodentable/fancy/black
+	name = "fancy wooden table"
+	desc = "A nicely crafted dark stained mahogany wood surface resting on four legs. Useful to put stuff on. It's too heavy to flip over."
+	icon_state = "fbwoodtable"
+	parts = /obj/item/frame/table/wood/fancy
+	table_prefix = "fbwood"
 
 /obj/structure/surface/table/woodentable/fancy/flip(direction)
 	return 0 //That is mahogany!
@@ -717,6 +725,7 @@
 
 /obj/structure/surface/rack/Crossed(atom/movable/O)
 	..()
+	// TODO: Replace this with signals or trait check from xeno
 	if(istype(O,/mob/living/carbon/xenomorph/ravager) || istype(O,/mob/living/carbon/xenomorph/crusher))
 		var/mob/living/carbon/xenomorph/M = O
 		if(!M.stat) //No dead xenos jumpin on the bed~
@@ -736,3 +745,21 @@
 	. = ..()
 	if(.)
 		deconstruct(FALSE)
+
+/obj/structure/surface/hunter_shuttle_table
+	name = "console base"
+	desc = "A smooth metal alloy base table."
+	icon = 'icons/obj/structures/tables.dmi'
+	icon_state = "hs_table"
+	density = TRUE
+	layer = TABLE_LAYER
+	anchored = TRUE
+	throwpass = TRUE //You can throw objects over this, despite it's density.
+	breakable = FALSE
+	climbable = FALSE
+	wrenchable = FALSE
+	explo_proof = TRUE
+	health = 100
+
+/obj/structure/surface/hunter_shuttle_table/deconstruct(disassembled = TRUE)
+	return FALSE

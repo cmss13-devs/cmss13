@@ -70,16 +70,16 @@
 		var/list/listeners = hearers(5,src)
 		listeners |= src
 
-		for(var/mob/living/silicon/D in listeners)
-			if(D.client && istype(D,src.type))
-				to_chat(D, "<b>[src]</b> transmits, \"[message]\"")
+		for(var/mob/living/silicon/possible_listening_silicon in listeners)
+			if(possible_listening_silicon.client && istype(possible_listening_silicon,src.type))
+				to_chat(possible_listening_silicon, "<b>[src]</b> transmits, \"[message]\"")
 
-		for (var/mob/M in GLOB.player_list)
-			if (istype(M, /mob/new_player))
+		for(var/mob/possible_listening_mob in GLOB.player_list)
+			if (istype(possible_listening_mob, /mob/new_player))
 				continue
-			else if((M.stat == DEAD || isobserver(M)) &&  M.client.prefs.toggles_chat & CHAT_GHOSTEARS)
-				if(M.client)
-					to_chat(M, "<b>[src]</b> transmits, \")[message]\"")
+			else if((possible_listening_mob.stat == DEAD || isobserver(possible_listening_mob)) && (possible_listening_mob.client?.prefs?.toggles_chat & CHAT_GHOSTEARS))
+				if(possible_listening_mob.client)
+					to_chat(possible_listening_mob, "<b>[src]</b> transmits, \")[message]\"")
 		return
 
 	switch(message_mode)

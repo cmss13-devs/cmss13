@@ -50,7 +50,7 @@
 
 			else if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-				to_chat(user, "You unattach the assembly from it's place.")
+				to_chat(user, "You unattach the assembly from its place.")
 				anchored = FALSE
 				update_icon()
 				state = 0
@@ -58,7 +58,7 @@
 
 		if(2)
 			// State 2
-			if(iscoil(W))
+			if(iswire(W))
 				var/obj/item/stack/cable_coil/C = W
 				if(C.use(2))
 					to_chat(user, SPAN_NOTICE("You add wires to the assembly."))
@@ -72,7 +72,7 @@
 					to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 					return
 				if(weld(W, user))
-					to_chat(user, "You unweld the assembly from it's place.")
+					to_chat(user, "You unweld the assembly from its place.")
 					state = 1
 					anchored = TRUE
 				return

@@ -92,8 +92,8 @@
 		music_extra_data["title"] = data["title"]
 
 	if(!must_send_assets && web_sound_url && !findtext(web_sound_url, GLOB.is_http_protocol))
-		to_chat(src, SPAN_BOLDWARNING("BLOCKED: Content URL not using http(s) protocol"), confidential = TRUE)
-		to_chat(src, SPAN_WARNING("The media provider returned a content URL that isn't using the HTTP or HTTPS protocol"), confidential = TRUE)
+		to_chat(src, SPAN_BOLDWARNING("BLOCKED: Content URL not using http(s) protocol."), confidential = TRUE)
+		to_chat(src, SPAN_WARNING("The media provider returned a content URL that isn't using the HTTP or HTTPS protocol."), confidential = TRUE)
 		return
 
 
@@ -151,7 +151,6 @@
 		else
 			client?.tgui_panel?.stop_music()
 
-	log_admin("[key_name(src)] played admin sound: [web_sound_input] -[log_title ? " [title] -" : ""] [style]")
 	message_admins("[key_name_admin(src)] played admin sound: [web_sound_input] -[log_title ? " [title] -" : ""] [style]")
 
 /client/proc/stop_admin_sound()

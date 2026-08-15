@@ -22,7 +22,6 @@
 	acid_level = 3
 	caste_luminosity = 2
 	spit_types = list(/datum/ammo/xeno/boiler_gas/acid, /datum/ammo/xeno/boiler_gas)
-	fire_immunity = FIRE_VULNERABILITY
 	// 3x fire damage
 	fire_vulnerability_mult = FIRE_MULTIPLIER_DEADLY
 
@@ -52,6 +51,7 @@
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tileoffset = 3
 	viewsize = 7
+	fire_immunity = FIRE_VULNERABILITY
 
 	icon_xeno = 'icons/mob/xenos/castes/tier_3/boiler.dmi'
 	icon_xenonid = 'icons/mob/xenonids/castes/tier_3/boiler.dmi'
@@ -65,6 +65,7 @@
 	var/datum/effect_system/smoke_spread/xeno_acid/smoke
 
 	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
@@ -86,8 +87,6 @@
 	smoke.cause_data = create_cause_data(initial(caste_type), src)
 	see_in_dark = 20
 
-	update_icon_source()
-
 /mob/living/carbon/xenomorph/boiler/Destroy()
 	if(smoke)
 		qdel(smoke)
@@ -98,111 +97,6 @@
 /datum/behavior_delegate/boiler_base
 	name = "Base Boiler Behavior Delegate"
 
-
-/datum/action/xeno_action/activable/acid_lance/use_ability(atom/affected_atom)
-	var/mob/living/carbon/xenomorph/xeno = owner
-
-	if (!istype(xeno) || !xeno.check_state())
-		return
-
-	if (!activated_once && !action_cooldown_check())
-		return
-
-	if(!affected_atom || affected_atom.layer >= FLY_LAYER || !isturf(xeno.loc))
-		return
-
-	if (!activated_once)
-		// Start our 'charging'
-
-		if (!check_and_use_plasma_owner())
-			return
-
-		xeno.create_empower()
-		xeno.visible_message(SPAN_XENODANGER("[xeno] starts to gather its acid for a massive blast!"), SPAN_XENODANGER("We start to gather our acid for a massive blast!"))
-		activated_once = TRUE
-		stack()
-		addtimer(CALLBACK(src, PROC_REF(timeout)), max_stacks*stack_time + time_after_max_before_end)
-		apply_cooldown()
-		return ..()
-
-	else
-		activated_once = FALSE
-		var/range = base_range + stacks*range_per_stack
-		var/damage = base_damage + stacks*damage_per_stack
-		var/turfs_visited = 0
-		for (var/turf/turf in get_line(get_turf(xeno), affected_atom))
-			if(turf.density || turf.opacity)
-				break
-
-			var/should_stop = FALSE
-			for(var/obj/structure/structure in turf)
-				if(istype(structure, /obj/structure/window/framed))
-					var/obj/structure/window/framed/window_frame = structure
-					if(!window_frame.unslashable)
-						window_frame.deconstruct(disassembled = FALSE)
-
-				if(structure.opacity)
-					should_stop = TRUE
-					break
-
-			if (should_stop)
-				break
-
-			if (turfs_visited >= range)
-				break
-
-			turfs_visited++
-
-			new /obj/effect/xenomorph/acid_damage_delay(turf, damage, 7, FALSE, "You are blasted with a stream of high-velocity acid!", xeno)
-
-		xeno.visible_message(SPAN_XENODANGER("[xeno] fires a massive blast of acid at [affected_atom]!"), SPAN_XENODANGER("We fire a massive blast of acid at [affected_atom]!"))
-		remove_stack_effects("We feel our speed return to normal!")
-		return TRUE
-
-/datum/action/xeno_action/activable/acid_lance/proc/stack()
-	var/mob/living/carbon/xenomorph/xeno = owner
-	if (!istype(xeno))
-		return
-
-	if (!activated_once)
-		return
-
-	stacks = min(max_stacks, stacks + 1)
-	if (stacks != max_stacks)
-		xeno.speed_modifier += movespeed_per_stack
-		movespeed_nerf_applied += movespeed_per_stack
-		xeno.recalculate_speed()
-		addtimer(CALLBACK(src, PROC_REF(stack)), stack_time)
-		return
-	else
-		to_chat(xeno, SPAN_XENOHIGHDANGER("We have charged our acid lance to maximum!"))
-		return
-
-/datum/action/xeno_action/activable/acid_lance/proc/remove_stack_effects(message = null)
-	var/mob/living/carbon/xenomorph/xeno = owner
-
-	if (!istype(xeno))
-		return
-
-	if (stacks <= 0)
-		return
-
-	if (message)
-		to_chat(xeno, SPAN_XENODANGER(message))
-
-	stacks = 0
-	xeno.speed_modifier -= movespeed_nerf_applied
-	movespeed_nerf_applied = 0
-	xeno.recalculate_speed()
-
-/datum/action/xeno_action/activable/acid_lance/proc/timeout()
-	if (activated_once)
-		activated_once = FALSE
-		remove_stack_effects("We have waited too long and can no longer use our acid lance!")
-
-
-/datum/action/xeno_action/activable/acid_lance/action_cooldown_check()
-	return (activated_once || ..())
 
 /datum/action/xeno_action/activable/xeno_spit/bombard/use_ability(atom/affected_atom)
 	. = ..()

@@ -1,6 +1,6 @@
 /obj/structure/pipes/standard/simple/visible/universal
 	name = "Universal pipe adapter"
-	desc = "An adapter for regular, supply and scrubbers pipes"
+	desc = "An adapter for regular, supply and scrubbers pipes."
 	icon_state = "map_universal"
 
 /obj/structure/pipes/standard/simple/visible/universal/update_icon(safety = 0)
@@ -17,7 +17,7 @@
 
 /obj/structure/pipes/standard/simple/hidden/universal
 	name="Universal pipe adapter"
-	desc = "An adapter for regular, supply and scrubbers pipes"
+	desc = "An adapter for regular, supply and scrubbers pipes."
 	icon_state = "map_universal"
 
 /obj/structure/pipes/standard/simple/hidden/universal/update_icon(safety = 0)

@@ -2,10 +2,17 @@
 	category = CATEGORY_CLIENT
 	weight = WEIGHT_HIGHEST
 
+/datum/keybinding/client/switch_input
+	hotkey_keys = list()
+	classic_keys = list()
+	name = "switch_input"
+	full_name = "Switch Input to Command Bar"
+	description = "Switch between the map pane and the command bar."
+	keybind_signal = COMSIG_KB_CLIENT_SWITCHINPUT_DOWN
 
 /datum/keybinding/client/admin_help
 	hotkey_keys = list("Unbound")
-	classic_keys = list("Unbound")
+	classic_keys = list("F1")
 	name = "admin_help"
 	full_name = "Admin Help"
 	description = "Ask an admin for help."
@@ -63,3 +70,4 @@
 		return
 	user.mob.button_pressed_F12()
 	return TRUE
+

@@ -127,45 +127,7 @@
 	penetration = ARMOR_PENETRATION_TIER_10
 	damage = 40
 
-/datum/ammo/bullet/pistol/heavy/highimpact/New()
-	..()
-	RegisterSignal(src, COMSIG_AMMO_POINT_BLANK, PROC_REF(handle_battlefield_execution))
-
 /datum/ammo/bullet/pistol/heavy/highimpact/on_hit_mob(mob/M, obj/projectile/P)
-	knockback(M, P, 4)
-
-/datum/ammo/bullet/pistol/deagle //Commander's variant
-	name = ".50 heavy pistol bullet"
-	damage = 60
-	headshot_state = HEADSHOT_OVERLAY_HEAVY
-	accuracy = -HIT_ACCURACY_TIER_3
-	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
-	penetration = ARMOR_PENETRATION_TIER_6
-	shrapnel_chance = SHRAPNEL_CHANCE_TIER_5
-
-/datum/ammo/bullet/pistol/deagle/highimpact
-	name = ".50 high-impact pistol bullet"
-	penetration = ARMOR_PENETRATION_TIER_4
-	debilitate = list(0,1.5,0,0,0,1,0,0)
-	flags_ammo_behavior = AMMO_BALLISTIC
-
-/datum/ammo/bullet/pistol/deagle/highimpact/ap
-	name = ".50 high-impact armor piercing pistol bullet"
-	penetration = ARMOR_PENETRATION_TIER_10
-	damage = 50
-
-/datum/ammo/bullet/pistol/deagle/highimpact/upp
-	name = "high-impact pistol bullet"
-	sound_override = 'sound/weapons/gun_DE50.ogg'
-	penetration = ARMOR_PENETRATION_TIER_6
-	debilitate = list(0,1.5,0,0,0,1,0,0)
-	flags_ammo_behavior = AMMO_BALLISTIC
-
-/datum/ammo/bullet/pistol/deagle/highimpact/New()
-	..()
-	RegisterSignal(src, COMSIG_AMMO_POINT_BLANK, PROC_REF(handle_battlefield_execution))
-
-/datum/ammo/bullet/pistol/deagle/highimpact/on_hit_mob(mob/M, obj/projectile/P)
 	knockback(M, P, 4)
 
 /datum/ammo/bullet/pistol/deagle
@@ -176,6 +138,38 @@
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
 	penetration = ARMOR_PENETRATION_TIER_6
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_5
+
+
+/datum/ammo/bullet/pistol/deagle/super //Commander's variant
+	name = ".50 high-velocity pistol bullet"
+	damage = 60
+	headshot_state = HEADSHOT_OVERLAY_HEAVY
+	accuracy = -HIT_ACCURACY_TIER_3
+	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
+	penetration = ARMOR_PENETRATION_TIER_6
+	shrapnel_chance = SHRAPNEL_CHANCE_TIER_5
+
+/datum/ammo/bullet/pistol/deagle/super/highimpact
+	name = ".50 high-impact pistol bullet"
+	penetration = ARMOR_PENETRATION_TIER_4
+	debilitate = list(0,1.5,0,0,0,1,0,0)
+	flags_ammo_behavior = AMMO_BALLISTIC
+
+/datum/ammo/bullet/pistol/deagle/super/highimpact/ap
+	name = ".50 high-impact armor-piercing pistol bullet"
+	penetration = ARMOR_PENETRATION_TIER_10
+	damage = 50
+
+//Type 73 pistol
+/datum/ammo/bullet/pistol/deagle/super/highimpact/upp
+	name = "high-impact pistol bullet"
+	sound_override = 'sound/weapons/gun_DE50.ogg'
+	penetration = ARMOR_PENETRATION_TIER_6
+	debilitate = list(0,1.5,0,0,0,1,0,0)
+	flags_ammo_behavior = AMMO_BALLISTIC
+
+/datum/ammo/bullet/pistol/deagle/super/highimpact/on_hit_mob(mob/M, obj/projectile/P)
+	knockback(M, P, 4)
 
 /datum/ammo/bullet/pistol/incendiary
 	name = "incendiary pistol bullet"
@@ -263,6 +257,13 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
 
+/datum/ammo/bullet/pistol/squash/heap
+	name = "high-explosive armor-piercing pistol bullet"
+
+	headshot_state = HEADSHOT_OVERLAY_HEAVY
+	damage = 50
+	penetration = ARMOR_PENETRATION_TIER_10
+
 /datum/ammo/bullet/pistol/squash/rubber
 	name = "rubber squash-head pistol bullet"
 	damage_type = BURN
@@ -310,18 +311,16 @@
 
 /datum/ammo/bullet/pistol/m10
 	name = "auto-pistol bullet"
-	damage = 32
+	damage = 24
 	accurate_range = 2
 	effective_range_max = 3
 	penetration = ARMOR_PENETRATION_TIER_1
-	shell_speed = AMMO_SPEED_TIER_7
+	shell_speed = AMMO_SPEED_TIER_5
 	damage_falloff = DAMAGE_FALLOFF_TIER_4
 	scatter = SCATTER_AMOUNT_TIER_5
 	accuracy = HIT_ACCURACY_TIER_3
 
 /datum/ammo/bullet/pistol/m10/ap
 	name = "armor-piercing auto-pistol bullet"
-
-	damage = 24
+	damage = 18
 	penetration = ARMOR_PENETRATION_TIER_6
-	shell_speed = AMMO_SPEED_TIER_5

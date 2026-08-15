@@ -25,9 +25,16 @@
 		deployed_turret.deployment_system = src
 		ox = pixel_x
 		oy = pixel_y
+	health = deployed_turret.health
 
 /obj/structure/machinery/sentry_holder/Destroy()
 	QDEL_NULL(deployed_turret)
+	. = ..()
+
+/obj/structure/machinery/sentry_holder/update_health(damage, pass_forward = FALSE)
+	pass_forward = !pass_forward
+	if(pass_forward)
+		deployed_turret.update_health(damage, pass_forward)
 	. = ..()
 
 /obj/structure/machinery/sentry_holder/get_examine_text(mob/user)
@@ -114,7 +121,7 @@
 /obj/structure/machinery/sentry_holder/wy
 	health = 400
 	icon = 'icons/obj/structures/props/sentry_holder_wy.dmi'
-	desc = "A box that deploys a sentry turret for protecting Weyland-Yutani personnel"
+	desc = "A box that deploys a sentry turret for protecting Weyland-Yutani personnel."
 	turret_path = /obj/structure/machinery/defenses/sentry/premade/deployable/colony/wy
 
 /obj/structure/machinery/sentry_holder/almayer

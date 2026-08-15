@@ -13,9 +13,6 @@
 	var/gid = 0
 
 	var/stat = 0 //Whether a mob is alive or dead. TODO: Move this to living - Nodrak
-	var/chatWarn = 0 //Tracks how many times someone has spammed and gives them a no-no timer
-
-	var/atom/movable/screen/hands = null //robot
 
 	/// a ckey that persists client logout / ghosting, replaced when a client inhabits the mob
 	var/persistent_ckey
@@ -47,7 +44,6 @@
 	var/recalculate_move_delay = TRUE // Whether move delay needs to be recalculated, on by default so that new mobs actually get movement delay calculated upon creation
 	var/crawling = FALSE
 	var/can_crawl = TRUE
-	var/dirlock_slowdown = TRUE // are they slowed down by dirlocking
 	var/monkeyizing = null //Carbon
 	var/hand = null
 
@@ -64,7 +60,7 @@
 	var/paralyzed = 0 //Carbon
 	var/druggy = 0 //Carbon
 	var/confused = 0 //Carbon
-	var/drowsyness = 0.0//Carbon
+	var/drowsiness = 0.0//Carbon
 	var/dizziness = 0//Carbon
 	var/jitteriness = 0//Carbon
 	var/floatiness = 0
@@ -95,6 +91,7 @@
 	var/mob_size = MOB_SIZE_HUMAN
 	var/list/embedded = list()   // Embedded items, since simple mobs don't have organs.
 	var/list/datum/language/languages = list()  // For speaking/listening.
+	var/list/language_flags = list()
 	var/list/speak_emote = list("says") // Verbs used when speaking. Defaults to 'say' if speak_emote is null.
 	var/emote_type = 1 // Define emote default type, 1 for seen emotes, 2 for heard emotes
 
@@ -128,11 +125,8 @@
 	var/old_x = 0
 	var/old_y = 0
 
-	var/charges = 0
 	var/nutrition = NUTRITION_NORMAL//Carbon
 
-	var/overeatduration = 0 // How long this guy is overeating //Carbon
-	var/recovery_constant = 1
 	var/a_intent = INTENT_HELP//Living
 	var/m_intent = MOVE_INTENT_RUN
 	var/lastKnownIP = null
@@ -149,8 +143,6 @@
 	var/datum/hud/hud_used = null
 
 	var/grab_level = GRAB_PASSIVE //if we're pulling a mob, tells us how aggressive our grab is.
-
-	var/list/mapobjs = list()
 
 	var/throw_mode = THROW_MODE_OFF
 
@@ -334,7 +326,7 @@
 			return
 
 		if(!client || !client.admin_holder || !(client.admin_holder.rights & R_MOD))
-			to_chat(usr, "This can only be used on people with +MOD permissions")
+			to_chat(usr, "This can only be used on people with +MOD permissions.")
 			return
 
 		log_admin("[key_name(usr)] has toggled buildmode on [key_name(src)]")

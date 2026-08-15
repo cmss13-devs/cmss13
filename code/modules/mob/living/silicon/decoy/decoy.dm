@@ -24,6 +24,8 @@
 	real_name = MAIN_AI_SYSTEM
 	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_INHERENT)
 	AddElement(/datum/element/corp_label/wy)
+	faction = FACTION_ARES
+	faction_group = FACTION_LIST_ARES_MARINE
 
 /mob/living/silicon/decoy/ship_ai/Destroy()
 	QDEL_NULL(ai_headset)
@@ -36,7 +38,7 @@
 	..()
 	if(stat == DEAD)
 		return FALSE
-	if(health <= HEALTH_THRESHOLD_DEAD && stat != DEAD)
+	if(health <= health_threshold_dead && stat != DEAD)
 		death()
 
 /mob/living/silicon/decoy/updatehealth()

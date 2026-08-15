@@ -151,6 +151,9 @@ As such, don't expect any values assigned to common firearms to even consider ho
 #define FIRE_DELAY_TIER_SHOTGUN_COMBAT 1.4 SECONDS // Replaces previous combat shotgun value which was Tier_5 (7)*2 ...Wow that's confusing.
 #define FIRE_DELAY_TIER_SHOTGUN_DEATHSQUAD 0.6 SECONDS // For adminspawn ERTs, MARSOC, etc.
 
+/// Grenade launcher delays
+#define FIRE_DELAY_TIER_GL 3.2 SECONDS // delay for the base grenade launcher type
+
 /// General Delay Tiers
 #define FIRE_DELAY_TIER_1 12
 #define FIRE_DELAY_TIER_2 10
@@ -263,6 +266,7 @@ As such, don't expect any values assigned to common firearms to even consider ho
 #define AMMO_SPEED_TIER_5 5
 #define AMMO_SPEED_TIER_6 6
 #define AMMO_SPEED_TIER_7 7
+#define AMMO_SPEED_INSTANT 300
 
 /*
 ////ARMOR PENETRATION////

@@ -7,7 +7,7 @@
 	icon_state = "bottle-1"
 	item_state = "bottle-1"
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5, 10, 15, 25, 30, 40, 60)
+	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60)
 	flags_atom = FPRINT|OPENCONTAINER
 	volume = 60
 	attack_speed = 4
@@ -181,17 +181,6 @@
 /obj/item/reagent_container/glass/bottle/flu_virion/Initialize()
 	. = ..()
 	var/datum/disease/F = new /datum/disease/advance/flu(0)
-	var/list/data = list("viruses"= list(F))
-	reagents.add_reagent("blood", 20, data)
-	update_icon()
-
-/obj/item/reagent_container/glass/bottle/epiglottis_virion
-	name = "epiglottis virion culture bottle"
-	desc = "A small bottle. Contains Epiglottis virion culture in synthblood medium."
-
-/obj/item/reagent_container/glass/bottle/epiglottis_virion/Initialize()
-	. = ..()
-	var/datum/disease/F = new /datum/disease/advance/voice_change(0)
 	var/list/data = list("viruses"= list(F))
 	reagents.add_reagent("blood", 20, data)
 	update_icon()
@@ -384,7 +373,7 @@
 
 /obj/item/reagent_container/glass/bottle/oxycodone
 	name = "\improper Oxycodone bottle"
-	desc = "A small bottle. Contains Oxycodone - Used as an Extreme Painkiller.  ILLEGAL TO DISTRIBUTE."
+	desc = "A small bottle. Contains Oxycodone - Used as an Extreme Painkiller. Use with Caution."
 	volume = 60
 	amount_per_transfer_from_this = 60
 
@@ -405,7 +394,7 @@
 
 /obj/item/reagent_container/glass/bottle/epinephrine
 	name = "\improper Epinephrine bottle"
-	desc = "A small bottle. Contains epinephrine - Used to increase a patients arterial blood pressure, amongst other actions, to assist in cardiopulmonary resuscitation." //"I can't lie to you about your odds of a successful resuscitation, but you have my sympathies"
+	desc = "A small bottle. Contains epinephrine - Used to increase a patients arterial blood pressure, amongst other actions, to assist in cardiopulmonary resuscitation." //"I can't lie to you about your odds of a successful resuscitation, but you have my sympathies."
 	volume = 60
 
 /obj/item/reagent_container/glass/bottle/epinephrine/Initialize()

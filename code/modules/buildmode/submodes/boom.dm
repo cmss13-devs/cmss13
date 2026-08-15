@@ -23,4 +23,4 @@
 
 	if(LAZYACCESS(modifiers, LEFT_CLICK))
 		log_admin("Build Mode: [key_name(c)] caused an explosion(power=[power], falloff=[falloff]]")
-		cell_explosion(location, power, falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("divine intervention", c))
+		cell_explosion(location, power, falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("divine intervention"))

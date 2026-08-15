@@ -107,6 +107,12 @@ K9 SCANNER
 			last_health_display = new(target_mob)
 		else
 			last_health_display.target_mob = target_mob
+
+		// Handle automatic holotags
+		if (user?.client.prefs.auto_holotag >= ALWAYS_TAG_PATIENTS && istype(target_mob, /mob/living/carbon/human))
+			var/mob/living/carbon/human/human = target_mob
+			human.auto_assign_holotag(user, HOLOCARD_ACCURACY_HANDHELD)
+
 		SStgui.close_user_uis(user, src)
 		last_scan = last_health_display.ui_data(user, DETAIL_LEVEL_HEALTHANALYSER)
 		last_health_display.look_at(user, DETAIL_LEVEL_HEALTHANALYSER, bypass_checks = FALSE, ignore_delay = FALSE, alien = alien)
@@ -195,12 +201,12 @@ K9 SCANNER
 
 	user.show_message(SPAN_NOTICE("<B>Results:</B>"), 1)
 	if(abs(env_pressure - ONE_ATMOSPHERE) < 10)
-		user.show_message(SPAN_NOTICE("Pressure: [round(env_pressure,0.1)] kPa"), 1)
+		user.show_message(SPAN_NOTICE("Pressure: [round(env_pressure,0.1)] kPa."), 1)
 	else
-		user.show_message(SPAN_DANGER("Pressure: [round(env_pressure,0.1)] kPa"), 1)
+		user.show_message(SPAN_DANGER("Pressure: [round(env_pressure,0.1)] kPa."), 1)
 	if(env_pressure > 0)
 		user.show_message(SPAN_NOTICE("Gas Type: [env_gas]"), 1)
-		user.show_message(SPAN_NOTICE("Temperature: [floor(env_temp-T0C)]&deg;C"), 1)
+		user.show_message(SPAN_NOTICE("Temperature: [floor(env_temp-T0C)]&deg;C."), 1)
 
 	src.add_fingerprint(user)
 	return
@@ -298,11 +304,11 @@ K9 SCANNER
 				else
 					recent_fail = 1
 		if(dat)
-			to_chat(user, SPAN_NOTICE(" Chemicals found: [dat]"))
+			to_chat(user, SPAN_NOTICE("Chemicals found: [dat]"))
 		else
-			to_chat(user, SPAN_NOTICE(" No active chemical agents found in [O]."))
+			to_chat(user, SPAN_NOTICE("No active chemical agents found in [O]."))
 	else
-		to_chat(user, SPAN_NOTICE(" No significant chemical agents found in [O]."))
+		to_chat(user, SPAN_NOTICE("No significant chemical agents found in [O]."))
 
 	return
 

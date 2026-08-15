@@ -252,7 +252,7 @@
 	var/looping = FALSE
 	while(buildstate < BUILDSTATE_DAMAGE_WELD)
 		to_chat(xeno, SPAN_NOTICE("You [looping ? "continue damaging" : "start to damage"] [src]."))
-		if(!do_after(xeno, 10 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src))
+		if(!do_after(xeno, 10 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, numticks = 20))
 			to_chat(xeno, SPAN_DANGER("You stop damaging [src]."))
 			break
 		xeno.animation_attack_on(src)
@@ -269,7 +269,7 @@
 		update_icon()
 		looping = TRUE
 
-/obj/structure/machinery/power/power_generator/reactor/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/machinery/power/power_generator/reactor/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	return TAILSTAB_COOLDOWN_NONE
 
 /obj/structure/machinery/power/power_generator/reactor/attackby(obj/item/attacking_item, mob/user)

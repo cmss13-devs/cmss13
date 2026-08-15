@@ -18,15 +18,12 @@
 
 	attack_verb = list("beaten")
 	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_MARINE_ARMORY, ACCESS_MARINE_SENIOR, ACCESS_WY_GENERAL, ACCESS_WY_SECURITY, ACCESS_CIVILIAN_BRIG)
+	shield_flags = CAN_SHIELD_BASH
 	var/stunforce = 50
 	var/status = FALSE //whether the thing is on or not
 	var/obj/item/cell/bcell = null
 	var/hitcost = 1000 //oh god why do power cells carry so much charge? We probably need to make a distinction between "industrial" sized power cells for APCs and power cells for everything else.
 	var/has_user_lock = TRUE //whether the baton prevents people without correct access from using it.
-
-/obj/item/weapon/baton/suicide_act(mob/user)
-	user.visible_message(SPAN_SUICIDE("[user] is putting the live [name] in \his mouth! It looks like \he's trying to commit suicide."))
-	return (FIRELOSS)
 
 /obj/item/weapon/baton/Initialize(mapload, ...)
 	. = ..()

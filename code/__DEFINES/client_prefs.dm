@@ -65,6 +65,8 @@
 #define TOGGLE_AUTO_SHOVE_OFF (1<<20)
 ///Toggles whether activating marine leader orders will be spoken or not
 #define TOGGLE_LEADERSHIP_SPOKEN_ORDERS (1<<21)
+///Toggles the wield assist system for guns
+#define TOGGLE_WIELD_ASSIST (1<<22)
 
 // NOTE: Don't add flags past 1<<23, it'll break things due to BYOND limitations.
 //=================================================
@@ -90,6 +92,16 @@
 ///Do nothing when dual wielding
 #define DUAL_WIELD_NONE 2
 //=================================================
+
+//auto_holotag from /datum/preferences
+//=================================================
+/// Do not tag patients automatically
+#define NEVER_TAG_PATIENTS 0
+/// Only tag patients after scanning them in a bodyscanner (not a handheld scanner)
+#define BODYSCAN_TAG_PATIENTS 1
+/// Auto tag patients with triage tags upon scanning
+#define ALWAYS_TAG_PATIENTS 2
+
 
 //=================================================
 ///Do not show any item pickup animations
@@ -124,4 +136,4 @@
 //=================================================
 
 /// How many slots players have access to, both for loadout slots and character slots
-#define MAX_SAVE_SLOTS 10
+#define MAX_SAVE_SLOTS 20

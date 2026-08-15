@@ -13,9 +13,17 @@ $scrollbar-base: color.scale(
   base.$color-bg,
   $lightness: -25% * $scrollbar-color-multiplier
 );
+
+$scrollbar-lightness: null;
+
+@if $luminance > 0.05 {
+  $scrollbar-lightness: 30% * $scrollbar-color-multiplier;
+} @else {
+  $scrollbar-lightness: 10% * $scrollbar-color-multiplier;
+}
 $scrollbar-face: color.scale(
   color.mix(base.$color-bg, base.$color-fg, $method: hsl, $weight: 85%),
-  $lightness: if($luminance > 0.05, 30%, 10%) * $scrollbar-color-multiplier
+  $lightness: $scrollbar-lightness
 );
 
 // Fancy scrollbar

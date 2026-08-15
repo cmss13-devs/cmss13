@@ -16,6 +16,12 @@
 #define MAP_MAXY 5
 #define MAP_MAXZ 6
 
+// open_space_bounds indices
+#define OPEN_SPACE_BOUNDS_MINX 1
+#define OPEN_SPACE_BOUNDS_MAXX 2
+#define OPEN_SPACE_BOUNDS_MINY 3
+#define OPEN_SPACE_BOUNDS_MAXY 4
+
 #define MAP_MAXSIZE 300
 
 
@@ -34,12 +40,21 @@
 #define MAP_LV522_CHANCES_CLAIM "LV-522 Chance's Claim"
 #define MAP_LV759_HYBRISA_PROSPERA "LV-759 Hybrisa Prospera" // Highpop Only
 #define MAP_NEW_VARADERO "New Varadero"//ice colony underground but as its own map
+#define MAP_TYRARGO_RIFT "Tyrargo Rift"
+#define MAP_WHITE_ANTRE_RESEARCH_FACILITY "White Antre Research Facility"
 #define MAP_CHINOOK "Chinook 91 GSO" //admin level
 #define MAP_ROSTOCK "SSV Rostock" //UPP Warship
+#define MAP_HUNTERSHIP "Hunter Ship"
 
+#define GAMEMODE_DISTRESS_SIGNAL "Distress Signal"
 #define GAMEMODE_WHISKEY_OUTPOST "Whiskey Outpost"
 #define GAMEMODE_HIVE_WARS "Hive Wars"
+#define GAMEMODE_FACTION_CLASH "Faction Clash"
 #define GAMEMODE_FACTION_CLASH_UPP_CM "Faction Clash UPP CM"
+#define GAMEMODE_HUNTER_GAMES "Hunter Games"
+#define GAMEMODE_INFECTION "Infection"
+#define GAMEMODE_EXTENDED "Extended"
+#define GAMEMODE_EXTENDED_NO_SPAWN "Extended - No Spawn"
 
 /// Number of players before we switch to lowpop maps only (LV, BR, Prison).
 #define PLAYERCOUNT_LOWPOP_MAP_LIMIT 130
@@ -109,6 +124,7 @@
 #define SOUND_ARES_MESSAGE (1<<8)
 #define SOUND_OBSERVER_ANNOUNCEMENTS (1<<9)
 #define SOUND_FAX_MACHINE (1<<10)
+#define SOUND_ROUND_END (1<<11)
 
 //toggles_chat
 #define CHAT_OOC (1<<0)
@@ -155,13 +171,26 @@
 #define PLAY_SURVIVOR_HOSTILE (1<<0)
 #define PLAY_SURVIVOR_NON_HOSTILE (1<<1)
 
+//toggles_insert
+#define PLAY_INSERT_STANDARD (1<<0)
+#define PLAY_INSERT_CORPORATE (1<<1)
+#define PLAY_INSERT_LEADER (1<<2)
+#define PLAY_INSERT_MEDIC (1<<3)
+#define PLAY_INSERT_ENGINEER (1<<4)
+#define PLAY_INSERT_SPECIALIST (1<<5)
+#define PLAY_INSERT_SMARTGUNNER (1<<6)
+#define PLAY_INSERT_SYNTH (1<<7)
+#define PLAY_INSERT_CO (1<<8)
+
 //toggles_ert_pred
 #define PLAY_MERC (1<<0)
 #define PLAY_TWE (1<<1)
 #define PLAY_UPP (1<<2)
 #define PLAY_CLF (1<<3)
-#define PLAY_XENO_T2 (1<<4)
-#define PLAY_XENO_T3 (1<<5)
+#define PLAY_PMC (1<<4)
+#define PLAY_HUNT_MISC (1<<5)
+#define PLAY_XENO_T2 (1<<6)
+#define PLAY_XENO_T3 (1<<7)
 
 //toggles_admin
 /// Splits admin tabs in Statpanel
@@ -177,7 +206,7 @@
 
 #define TOGGLES_LANGCHAT_DEFAULT (LANGCHAT_SEE_EMOTES)
 
-#define TOGGLES_SOUND_DEFAULT (SOUND_ADMINHELP|SOUND_MIDI|SOUND_AMBIENCE|SOUND_LOBBY|SOUND_INTERNET|SOUND_ADMIN_MEME|SOUND_ADMIN_ATMOSPHERIC|SOUND_OBSERVER_ANNOUNCEMENTS|SOUND_FAX_MACHINE)
+#define TOGGLES_SOUND_DEFAULT (SOUND_ADMINHELP|SOUND_MIDI|SOUND_AMBIENCE|SOUND_ROUND_END|SOUND_LOBBY|SOUND_INTERNET|SOUND_ADMIN_MEME|SOUND_ADMIN_ATMOSPHERIC|SOUND_OBSERVER_ANNOUNCEMENTS|SOUND_FAX_MACHINE)
 
 #define TOGGLES_FLASHING_DEFAULT (FLASH_ROUNDSTART|FLASH_ROUNDEND|FLASH_CORPSEREVIVE|FLASH_ADMINPM|FLASH_UNNEST)
 
@@ -185,7 +214,9 @@
 
 #define TOGGLES_SURVIVOR_DEFAULT (PLAY_SURVIVOR_HOSTILE|PLAY_SURVIVOR_NON_HOSTILE)
 
-#define TOGGLES_ERT_GROUNDS (PLAY_MERC|PLAY_TWE|PLAY_UPP|PLAY_CLF|PLAY_XENO_T2|PLAY_XENO_T3)
+#define TOGGLES_INSERT_DEFAULT (PLAY_INSERT_STANDARD|PLAY_INSERT_CORPORATE|PLAY_INSERT_LEADER|PLAY_INSERT_MEDIC|PLAY_INSERT_ENGINEER|PLAY_INSERT_SPECIALIST|PLAY_INSERT_SMARTGUNNER|PLAY_INSERT_SYNTH|PLAY_INSERT_CO)
+
+#define TOGGLES_ERT_GROUNDS (PLAY_MERC|PLAY_TWE|PLAY_UPP|PLAY_CLF|PLAY_PMC|PLAY_HUNT_MISC|PLAY_XENO_T2|PLAY_XENO_T3)
 
 #define TOGGLES_ADMIN_DEFAULT (ADMIN_AFK_SAFE)
 
@@ -216,7 +247,6 @@
 #define ERT_SHUTTLE_TRANSIT_DURATION 30 SECONDS
 
 #define SHUTTLE_RECHARGE  2 MINUTES
-#define ELEVATOR_RECHARGE 15 SECONDS
 
 //Shuttle moving status
 //#define SHUTTLE_IDLE 0
@@ -268,6 +298,12 @@
 /// Frequency stuff only works with 45kbps oggs.
 #define GET_RANDOM_FREQ rand(32000, 55000)
 #define GET_RANDOM_FREQ_MINOR rand(42000, 48000)
+
+/// Directions as text for riding component
+#define TEXT_NORTH "[NORTH]"
+#define TEXT_SOUTH "[SOUTH]"
+#define TEXT_EAST "[EAST]"
+#define TEXT_WEST "[WEST]"
 
 // Ceilings
 // Ceiling types
@@ -381,6 +417,9 @@
 #define WALL_STRATA_ICE "strata_ice"
 #define WALL_STRATA_ICE_DIRTY "strata_ice_dirty"
 #define WALL_JUNGLE_UPDATED "jungle_veg"
+#define WALL_FOREST "forest_veg"
+#define WALL_FOREST_ROCK "rock_forest"
+#define WALL_FOREST_ROCK_DIRTY "rock_forest_dirty"
 #define WALL_STRATA_OUTPOST_RIBBED "strata_ribbed_outpost_"
 #define WALL_STRATA_OUTPOST_BARE "strata_bare_outpost_"
 #define WALL_SHIVA_ICE "shiva_ice"
@@ -402,10 +441,13 @@
 #define WALL_KUTJEVO_COLONYR "colonyr"
 #define WALL_DEVWALL "devwall"
 #define WALL_DEVWALL_R "devwall_r"
-#define WALL_HUNTERSHIP "metal"//DMI specific name
+#define WALL_HUNTERSHIP "hunter"
+#define WALL_ENGINEERSHIP "metal"
 #define WALL_AICORE "aiwall"
 #define WALL_UPP_SHIP "uppwall_interior"
 #define WALL_UPP_BASE "uppwall"
+#define WALL_ANCIENT_BASE "ancient_stone"
+#define WALL_RUNEDSTONE "runedstone"
 
 //Defines for dropship weapon gimbals
 #define GIMBAL_LEFT -1
@@ -491,15 +533,6 @@
 
 /// Window skin types
 #define TOGGLE_WINDOW_SKIN 1
-
-// Quadtree values
-
-/// Max amount of player coordinates in a quadtree cell
-#define QUADTREE_CAPACITY 12
-/// Minimum X width up to which we keep dividing the tree (meaning cells can be half that)
-#define QUADTREE_BOUNDARY_MINIMUM_WIDTH 12
-/// Minimum Y height up to which we keep dividing the tree (meaning cells can be half that)
-#define QUADTREE_BOUNDARY_MINIMUM_HEIGHT 12
 
 /// Whether to filter to only living mobs
 #define QTREE_FILTER_LIVING 1

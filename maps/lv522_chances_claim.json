@@ -25,12 +25,32 @@
     "survivor_message": "You are USCM Force Reconnaissance (FORECON) marine from the USS Hanyut, stranded on this planet after your team was wiped out while investigating the distress signal. With your pilot dead along with the majority of your unit, you and your team have been running and gunning to survive... but with supplies low and food running out maybe your only means of survival is to move west to the crashed dropship to salvage anything useful.",
     "announce_text": "Pan-Pan. This is the commanding officer of the USS Hanyut, USCMC FORECON. We are currently grounded on planet LV-522 in the immediate area of Chance's Claim. We are unable to contact the Hanyut and our dropships are unable to take off at this time. We are requesting assistance from any nearby vessels; this broadcast is set to repeat every 24 hours.",
     "map_item_type": "/obj/item/map/lv522_map",
-	"monkey_types": [
+	"co_briefing": {
+        "Hawks": "maps/map_briefings/commanding_officer/chances/CHANCEScpo.html",
+        "Doves": "maps/map_briefings/commanding_officer/chances/CHANCEShmm.html",
+        "Magpies": "maps/map_briefings/commanding_officer/chances/CHANCESmodi.html",
+        "Unaligned": "maps/map_briefings/commanding_officer/chances/CHANCESunaligned.html"
+    },
+    "monkey_types": [
         "neaera",
         "stok"
     ],
     "environment_traits": { "Fog": true },
-    "traits": [{ "Ground": true }],
+    "traits": [
+        {
+            "Ground": true,
+            "Up": 1
+        },
+        {
+            "Ground": true,
+            "Up": 1,
+            "Down": -1
+        },
+        {
+            "Ground": true,
+            "Down": -1
+        }
+    ],
     "nightmare_path": "maps/Nightmare/maps/LV522_Chances_Claim/",
     "xvx_hives": {
         "xeno_hive_alpha": 0,

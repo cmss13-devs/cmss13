@@ -41,7 +41,7 @@
 	icon_state = "oob"
 	requires_power = FALSE
 	is_resin_allowed = FALSE
-	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE
+	flags_area = AREA_NOBURROW|AREA_UNWEEDABLE
 
 /area/kutjevo/interior/oob/dev_room
 	name = "Kutjevo - Credits Room"

@@ -1,7 +1,7 @@
 /datum/surgery_step
 	var/name
 	/**Description of the surgery used for need-different-tool messages,
-	format: (You could/can't )["sever the bone in the patient's limb"]( with \the [tool], or )[next step desc]. Can't refer to outside vars as step datums are global.**/
+	format: (You could/can't )["sever the bone in the patient's limb"]( with [tool], or )[next step desc]. Can't refer to outside vars as step datums are global.**/
 	var/desc
 
 	/**Associative list, tools and their step time multiplier. tools_typecache is assigned from from first to last, so if you have a
@@ -101,7 +101,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 	if(surgery_limb)
 		var/obj/item/blocker = target.get_sharp_obj_blocker(surgery_limb)
 		if(blocker)
-			to_chat(user, SPAN_WARNING("[blocker] [target] is wearing restricts your access to the surgical site, take it off!"))
+			to_chat(user, SPAN_WARNING("[blocker] [target] is wearing restricts your access to the surgical site! Take it off!"))
 			return
 
 	var/step_duration = time
@@ -144,28 +144,28 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 		var/list/message = new() //Duration hint messages.
 
 		if(self_surgery)
-			message += "[pick("performing surgery", "working")] on [pick("yourself", "your own body")] is [pick("awkward", "tricky")]"
+			message += "[pick("performing surgery", "working", "operating")] on [pick("yourself", "your own body")] is [pick("awkward", "tricky")]"
 
 		switch(tool_modifier) //Implicitly means tool exists as accept_any_item item or accept_hand would = 1x. No message for 1x - that's the default.
 			if(SURGERY_TOOL_MULT_SUBOPTIMAL)
-				message += "this tool is[pick("n't ideal", " not the best")]"
+				message += "this tool [pick("is perfectly serviceable, but less efficient",  "takes some extra patience to work with", "is a bit different than what you're accustomed to using", "could be better, but considering the alternatives, it's fine")]"
 			if(SURGERY_TOOL_MULT_SUBSTITUTE)
-				message += "this tool is[pick("n't suitable", " a bad fit", " difficult to use")]"
+				message += "this tool [pick("is an acceptable substitute, but quite inefficient", "tests your patience and dexterity", "is unorthodox for executing this step", "feels odd in your hand, but it works, you suppose")]"
 			if(SURGERY_TOOL_MULT_BAD_SUBSTITUTE)
-				message += "this tool is [pick("awful", "barely usable")]"
+				message += "this tool [pick("has more favorable applications elsewhere", "is frustrating to work with", "is not appropriate for this surgical step", "could cause harm within unskilled hands")]"
 				failure_penalties += 1
 			if(SURGERY_TOOL_MULT_AWFUL)
-				message += "this tool is [pick("awful", "barely usable")]"
+				message += "this tool [pick("has better uses literally anywhere else", "should never be used for this purpose", "makes you long for the feel of any other instrument", "will almost certainly cause harm within unskilled hands")]"
 				failure_penalties += 2
 
 		switch(surface_modifier)
 			if(SURGERY_SURFACE_MULT_ADEQUATE)
-				message += "[pick("it isn't easy, working", "it's tricky to perform complex surgeries", "this would be quicker if you weren't working")] [pick("in the field", "under these conditions", "without a proper surgical theatre")]"
+				message += "[pick("you feel the need to double check your steps while working", "it's tricky to perform complex surgeries", "you would feel more confident of your pacing if you weren't working")] [pick("in the field", "outside of your element", "without a proper surgical theatre")]"
 			if(SURGERY_SURFACE_MULT_UNSUITED)
-				message += "[pick("it's difficult to work", "it's slow going, working", "you need to take your time")] in these [pick("primitive", "rough", "crude")] conditions"
+				message += "[pick("you feel nervous as you manipulate your tools", "you feel insecure and unsure of yourself", "you feel the need to triple check your steps")] while operating [pick("on non-sterile surfaces", "on a non-surgical bed", "in an unsanitary environment")]"
 				failure_penalties += 1
 			if(SURGERY_SURFACE_MULT_AWFUL)
-				message += "[pick("you need to work slowly and carefully", "you need to be very careful", "this is delicate work, especially")] [pick("in these", "under such")] [pick("terrible", "awful", "utterly unsuitable")] conditions"
+				message += "[pick("one wrong move and you could cause serious harm", "you have never felt more aware of your slow, careful, deliberate movements", "you are mortified, but you keep an unbreakable focus and the steadiest of hands", "you compulsively quadruple check your body and hand positioning")] while using your tools [pick("on a patient not lying on a secure bed", "on an unstable surface", "in an unsanitary environment", "in the worst conditions imaginable")]"
 				failure_penalties += 2
 
 		if(length(message))
@@ -220,9 +220,10 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 		msg_admin_niche("[user] failed a [surgery] step on [target] because of [failure_penalties] failure possibility penalties ([surgery_failure_chance]%)")
 
 	else //Help intent.
-		if(do_after(user, step_duration, INTERRUPT_ALL|INTERRUPT_DIFF_INTENT, BUSY_ICON_FRIENDLY,target,INTERRUPT_MOVED,BUSY_ICON_MEDICAL))
+		if(do_after(user, step_duration, INTERRUPT_ALL|INTERRUPT_DIFF_INTENT, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 			success(user, target, target_zone, tool, tool_type, surgery)
-			SEND_SIGNAL(user, COMSIG_HUMAN_SURGERY_STEP_SUCCESS, target, surgery, tool)
+			if(surgery_limb)
+				SEND_SIGNAL(surgery_limb, COMSIG_LIMB_SURGERY_STEP_SUCCESS, user, surgery, tool)
 			advance = TRUE
 			play_success_sound(user, target, target_zone, tool, surgery)
 			if(repeat_step && repeat_step_criteria(user, target, target_zone, tool, tool_type, surgery))
@@ -237,10 +238,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 		tool.update_icon() // in order to not reset shit too far.
 
 	if(advance)
-		if(skipped) //Skipped previous step.
-			surgery.status += 2
-		else
-			surgery.status++
+		surgery.status += max(skipped + 1, 1)
 		if(surgery.status > length(surgery.steps))
 			complete(target, surgery)
 
@@ -275,8 +273,8 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 /**This is used for failed-step narration and relevant failure changes, often damage etc. If it returns TRUE, the step succeeds anyway.
 tool_type may be a typepath or simply '1'. Note that a first step done on help-intent doesn't call failure(), it just ends harmlessly.**/
 /datum/surgery_step/proc/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.visible_message(SPAN_NOTICE("[user] fails to finish the surgery"),
-			SPAN_NOTICE("You fail to finish the surgery"))
+	user.visible_message(SPAN_NOTICE("[user] fails to finish the surgery."),
+			SPAN_NOTICE("You fail to finish the surgery."))
 	return FALSE
 
 /// Plays the failure sound

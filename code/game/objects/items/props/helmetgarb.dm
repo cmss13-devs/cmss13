@@ -19,26 +19,6 @@
 	desc = "It is a bottle of oil, for your gun. Don't fall for the rumors, the M41A is NOT a self-cleaning firearm."
 	icon_state = "gunoil"
 
-/obj/item/prop/helmetgarb/netting
-	name = "combat netting"
-	desc = "Probably combat netting for a helmet. Probably just an extra hairnet that got ordered for the phantom Almayer cooking staff. Probably useless."
-	icon_state = "netting"
-	item_icons = list(
-		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/helmet_covers.dmi',
-		)
-
-/obj/item/prop/helmetgarb/netting/desert
-	name = "desert combat netting"
-	icon_state = "netting_desert"
-
-/obj/item/prop/helmetgarb/netting/jungle
-	name = "jungle combat netting"
-	icon_state = "netting_jungle"
-
-/obj/item/prop/helmetgarb/netting/urban
-	name = "urban combat netting"
-	icon_state = "netting_urban"
-
 /obj/item/prop/helmetgarb/spent_buckshot
 	name = "spent buckshot"
 	desc = "Three spent rounds of good ol' buckshot. You know they used to paint these green? Strange times."
@@ -81,36 +61,10 @@
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/medical.dmi',
 	)
 
-/obj/item/prop/helmetgarb/raincover
-	name = "raincover"
-	desc = "The standard M10 combat helmet is already water-resistant at depths of up to 10 meters. This makes the top potentially water-proof. At least it's something."
-	icon_state = "raincover"
-	item_icons = list(
-		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/helmet_covers.dmi',
-	)
-
-/obj/item/prop/helmetgarb/raincover/jungle
-	name = "jungle raincover"
-	icon_state = "raincover_jungle"
-
-/obj/item/prop/helmetgarb/raincover/desert
-	name = "desert raincover"
-	icon_state = "raincover_desert"
-
-/obj/item/prop/helmetgarb/raincover/urban
-	name = "urban raincover"
-	icon_state = "raincover_urban"
-
 /obj/item/prop/helmetgarb/rabbitsfoot
 	name = "Rabbit's Foot"
 	desc = "Lucky for you, but not the rabbit, didn't really do it much good."
 	icon_state = "rabbitsfoot"
-
-/obj/item/prop/helmetgarb/rosary
-	name = "rosary"
-	desc = "Jesus Saves Lives!"
-	icon_state = "rosary"
-	item_state_slots = list(WEAR_AS_GARB = "rosary")
 
 /obj/item/prop/helmetgarb/lucky_feather
 	name = "\improper Red Lucky Feather"
@@ -144,7 +98,7 @@
 
 /obj/item/prop/helmetgarb/helmet_nvg
 	name = "\improper M2 night vision goggles"
-	desc = "USCM standard M2 Night vision goggles for military operations. Requires a battery in order to work"
+	desc = "USCM standard M2 Night vision goggles for military operations. Requires a battery in order to work."
 	icon_state = "nvg"
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/goggles.dmi',
@@ -180,19 +134,19 @@
 		RegisterSignal(src, COMSIG_CELL_TRY_RECHARGING, PROC_REF(cell_try_recharge))
 		RegisterSignal(src, COMSIG_CELL_OUT_OF_CHARGE, PROC_REF(on_power_out))
 
-/obj/item/prop/helmetgarb/helmet_nvg/on_enter_storage(obj/item/storage/internal/S)
+/obj/item/prop/helmetgarb/helmet_nvg/on_enter_storage(obj/item/storage/internal/inner_inv)
 	..()
 
-	if(!istype(S))
+	if(!istype(inner_inv))
 		return
 
 	remove_attached_item()
 
-	var/obj/item/MO = S.master_object
-	if(!istype(MO, /obj/item/clothing/head/helmet/marine) && !istype(MO, /obj/item/clothing/head/cmcap)) // Do not bother if it's not a helmet or at least a hat
+	var/obj/item/helm = inner_inv.master_object
+	if(!istype(helm, /obj/item/clothing/head/helmet/marine) && !istype(helm, /obj/item/clothing/head/cmcap) && !istype(helm, /obj/item/clothing/head/headset)) // Do not bother if it's not a helmet or at least a hat
 		return
 
-	attached_item = MO
+	attached_item = helm
 
 	RegisterSignal(attached_item, COMSIG_PARENT_QDELETING, PROC_REF(remove_attached_item))
 	RegisterSignal(attached_item, COMSIG_ITEM_EQUIPPED, PROC_REF(toggle_check))
@@ -581,7 +535,7 @@
 	..()
 	if(!istype(helmet_internal_inventory))
 		return
-	var/obj/item/clothing/head/helmet/helmet_item = helmet_internal_inventory.master_object
+	var/obj/item/clothing/head/helmet_item = helmet_internal_inventory.master_object
 
 	if(!istype(helmet_item))
 		return
@@ -593,7 +547,7 @@
 	..()
 	if(!istype(helmet_internal_inventory))
 		return
-	var/obj/item/clothing/head/helmet/helmet_item = helmet_internal_inventory.master_object
+	var/obj/item/clothing/head/helmet_item = helmet_internal_inventory.master_object
 
 	if(!istype(helmet_item))
 		return
@@ -634,6 +588,8 @@
 	item_state_slots = list(WEAR_AS_GARB = "paper") //PLACEHOLDER
 	///The human who spawns with the photo
 	var/datum/weakref/owner
+	///Have we Registered a signal already
+	var/register_attempted
 	///The belonging human name
 	var/owner_name
 	///The belonging human faction
@@ -643,14 +599,34 @@
 
 /obj/item/prop/helmetgarb/family_photo/pickup(mob/user, silent)
 	. = ..()
-	if(!owner)
-		RegisterSignal(user, COMSIG_POST_SPAWN_UPDATE, PROC_REF(set_owner), override = TRUE)
+	if(!register_attempted)
+		register_attempted = TRUE
+		RegisterSignal(user, COMSIG_POST_VANITY_UPDATE, PROC_REF(set_owner), override = TRUE)
 
+/obj/item/prop/helmetgarb/family_photo/on_enter_storage(obj/item/storage/inventory)
+	. = ..()
+	if(!register_attempted)
+		register_attempted = TRUE
+		var/mob/living/carbon/human/human_user
+		var/atom/container_on_human = inventory.loc
+		var/depth_limit
+		while(!ishuman(container_on_human) && depth_limit < 2)
+			container_on_human = container_on_human.loc
+			depth_limit++
+		human_user = container_on_human
+		if(human_user)
+			RegisterSignal(human_user, COMSIG_POST_VANITY_UPDATE, PROC_REF(set_owner), override = TRUE)
+
+/obj/item/prop/helmetgarb/family_photo/dropped(mob/user)
+	. = ..()
+	if(!register_attempted)
+		register_attempted = TRUE
+		RegisterSignal(user, COMSIG_POST_VANITY_UPDATE, PROC_REF(set_owner), override = TRUE)
 
 ///Sets the owner of the family photo to the human it spawns with, needs var/source for signals
 /obj/item/prop/helmetgarb/family_photo/proc/set_owner(datum/source)
 	SIGNAL_HANDLER
-	UnregisterSignal(source, COMSIG_POST_SPAWN_UPDATE)
+	UnregisterSignal(source, COMSIG_POST_VANITY_UPDATE)
 	var/mob/living/carbon/human/user = source
 	owner = WEAKREF(user)
 	owner_name = user.name

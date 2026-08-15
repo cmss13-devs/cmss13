@@ -113,6 +113,7 @@
 		. += 360
 
 /proc/angle_to_dir(angle)
+	angle = ((angle % 360) + 382.5) % 360
 	switch(angle) //diagonal directions get priority over straight directions in edge cases
 		if (22.5 to 67.5)
 			return NORTHEAST
@@ -220,8 +221,6 @@
 			continue
 		A = obstacle
 		blocking_dir |= A.BlockedPassDirs(mover, fdir)
-		if((fd1 && blocking_dir == fd1) || (fd2 && blocking_dir == fd2))
-			return A
 		if((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
 			return A
 
@@ -254,39 +253,6 @@
 		if (ch < 48 || ch > 57)
 			return FALSE
 	return TRUE
-
-//This will update a mob's name, real_name, mind.name, data_core records, pda and id
-//Calling this proc without an oldname will only update the mob and skip updating the pda, id and records ~Carn
-/mob/proc/fully_replace_character_name(oldname, newname)
-	if(!newname)
-		return 0
-	change_real_name(src, newname)
-
-	if(oldname)
-		//update the datacore records! This is goig to be a bit costly.
-		var/mob_ref = WEAKREF(src)
-		for(var/list/L in list(GLOB.data_core.general, GLOB.data_core.medical, GLOB.data_core.security, GLOB.data_core.locked))
-			for(var/datum/data/record/record_entry in L)
-				if(record_entry.fields["ref"] == mob_ref)
-					record_entry.fields["name"] = newname
-					record_entry.name = newname
-					break
-
-		//update our pda and id if we have them on our person
-		var/list/searching = GetAllContents(searchDepth = 3)
-		var/search_id = 1
-		var/search_pda = 1
-
-		for(var/A in searching)
-			if(search_id && istype(A, /obj/item/card/id))
-				var/obj/item/card/id/ID = A
-				if(ID.registered_name == oldname)
-					ID.registered_name = newname
-					ID.name = "[newname]'s [ID.id_type] ([ID.assignment])"
-					if(!search_pda)
-						break
-					search_id = 0
-	return 1
 
 //Returns a list of all mobs with their name
 /proc/getmobs()
@@ -366,40 +332,56 @@
 		moblist += friend
 	return moblist
 
-/proc/key_name(whom, include_link = null, include_name = 1, highlight_special_characters = 1)
+/proc/key_name(whom, include_link = null, include_name = 1, highlight_special_characters = 1, show_username = FALSE, logging = TRUE)
 	var/mob/M
 	var/client/C
-	var/key
+	var/ckey // If it's going to go anywhere programatic like logs, we want consistent formatting, so the ckey rather than the key
+	var/key // Otherwise, we can use the key for friendly display
+	var/username
 
 	if(!whom)
 		return "*null*"
+
 	if(istype(whom, /client))
 		C = whom
 		M = C.mob
+		ckey = C.ckey
 		key = C.key
+		username = C.username()
+
 	else if(ismob(whom))
 		M = whom
 		C = M.client
+		ckey = M.persistent_ckey
 		key = M.key
-	else if(istype(whom, /datum))
+		username = M.username()
+
+	else if(istype(whom, /datum) && !logging)
 		var/datum/D = whom
 		return "*invalid:[D.type]*"
+
 	else
 		return "*invalid*"
 
 	. = ""
 
-	if(key)
-		if(include_link && C)
-			. += "<a href='byond://?priv_msg=[C.ckey]'>"
-
-		. += key
-
-		if(include_link)
-			if(C) . += "</a>"
-			else . += " (DC)"
+	// We still output the links in logging mode because message_admins is everywhere. They'll be stripped by logging backend later.
+	if(ckey && include_link)
+		. += "<a href='byond://?priv_msg=[ckey]'>"
 	else
-		. += "*no key*"
+		include_link = FALSE
+
+	if(key && show_username && username && username != key)
+		. += "[username] ([logging ? ckey : key])"
+	else if(ckey && logging)
+		. += ckey
+	else if(key)
+		. += key
+	else
+		. += "*no_key*" // No spaces here to be loosely format-compatible with ckeys
+
+	if(include_link)
+		. += "</a>"
 
 	if(include_name && M)
 		var/name
@@ -411,10 +393,17 @@
 
 		. += "/([name])"
 
+	if(!C)
+		. += " (DC)"
+
 	return .
 
 /proc/key_name_admin(whom, include_name = 1)
 	return key_name(whom, 1, include_name)
+
+/// Returns key_name with username shown when it differs from key - for admin contexts
+/proc/key_name_with_username(whom, include_name = 1)
+	return key_name(whom, TRUE, include_name, TRUE, TRUE, logging = FALSE)
 
 
 // returns the turf located at the map edge in the specified direction relative to A
@@ -765,7 +754,7 @@ GLOBAL_DATUM(action_purple_power_up, /image)
  * numticks: If a value is given, denotes how often the timed action checks for interrupting actions. By default, there are 5 checks every delay/5 deciseconds.
  * Note: 'delay' should be divisible by numticks in order for the timing to work as intended. numticks should also be a whole number.
  */
-/proc/do_after(mob/user, delay, user_flags = INTERRUPT_ALL, show_busy_icon, atom/movable/target, target_flags = INTERRUPT_MOVED, show_target_icon, max_dist = 1, \
+/proc/do_after(mob/user, delay, user_flags = INTERRUPT_ALL, show_busy_icon, atom/movable/target, target_flags = INTERRUPT_MOVED, show_target_icon, max_dist = 1, status_effect = null, \
 		show_remaining_time = FALSE, numticks = DA_DEFAULT_NUM_TICKS) // These args should primarily be named args, since you only modify them in niche situations
 	if(!istype(user) || delay < 0)
 		return FALSE
@@ -804,6 +793,10 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 	if(user_flags & BEHAVIOR_IMMOBILE)
 		busy_user.status_flags |= IMMOBILE_ACTION
 
+	// if we wanna apply a status effect to a user
+	if(status_effect && busy_user)
+		busy_user.adjust_effect(delay, status_effect)
+
 	busy_user.action_busy++ // target is not tethered by action, the action is tethered by target though
 	busy_user.resisting = FALSE
 	busy_user.clicked_something = list()
@@ -837,7 +830,10 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 	for(var/i in 1 to numticks)
 		sleep(delayfraction)
 		time_remaining -= delayfraction
-		if(!istype(busy_user) || has_target && !istype(target)) // Checks if busy_user exists and is not dead and if the target exists and is not destroyed
+		if(QDELETED(busy_user) || !istype(busy_user)) // Checks if busy_user exists
+			. = FALSE
+			break
+		if(has_target && (QDELETED(target) || !istype(target))) // Checks if the target exists and is not destroyed
 			. = FALSE
 			break
 		if(user_flags & INTERRUPT_DIFF_LOC && busy_user.loc != user_orig_loc || \
@@ -951,6 +947,10 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 	if(target_is_mob)
 		T.resisting = FALSE
 	busy_user.status_flags &= ~IMMOBILE_ACTION
+
+	// remove the effect once we finish
+	if(status_effect && busy_user)
+		busy_user.adjust_effect(-delay, status_effect)
 
 	if (show_remaining_time)
 		return (. ? 0 : time_remaining/expected_total_time) // If action was not interrupted, return 0 for no time left, otherwise return ratio of time remaining
@@ -1298,12 +1298,21 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 /proc/get_line(atom/start_atom, atom/end_atom, include_start_atom = TRUE)
 	var/turf/start_turf = get_turf(start_atom)
 	var/turf/end_turf = get_turf(end_atom)
+	var/turf/end_turf_fall = end_turf //in case we are going cross fake z levels we store here the end tile to fall to
 	var/start_z
 
 	if(end_atom.z > start_atom.z)
 		start_z = end_atom.z
 	else
 		start_z = start_atom.z
+
+	var/datum/turf_reservation/reservation = SSmapping.used_turfs[start_turf]
+	if(reservation)
+		if(reservation.is_below(start_turf, end_turf))
+			start_turf = SSmapping.get_turf_above(start_turf)
+		else
+			if(reservation.is_below(end_turf, start_turf))
+				end_turf = SSmapping.get_turf_above(end_turf)
 
 	var/list/line = list()
 	if(include_start_atom)
@@ -1325,7 +1334,7 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 		y += step_y
 		line += locate(x, y, start_z)
 
-	line += end_turf
+	line += end_turf_fall
 
 	return line
 
@@ -1342,6 +1351,12 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 		return 1
 	if (!initial_delay)
 		initial_delay = world.tick_lag
+// Unit tests are not the normal environemnt. The mc can get absolutely thigh crushed, and sleeping procs running for ages is much more common
+// We don't want spurious hard deletes off this, so let's only sleep for the requested period of time here yeah?
+#ifdef UNIT_TESTS
+	sleep(initial_delay)
+	return CEILING(DS2TICKS(initial_delay), 1)
+#else
 	. = 0
 	var/i = DS2TICKS(initial_delay)
 	do
@@ -1349,6 +1364,7 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 		sleep(i*world.tick_lag*DELTA_CALC)
 		i *= 2
 	while (TICK_USAGE > min(TICK_LIMIT_TO_RUN, Master.current_ticklimit))
+#endif
 
 #undef DELTA_CALC
 
@@ -1429,6 +1445,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	invisibility = INVISIBILITY_ABSTRACT
 	density = FALSE
 	see_in_dark = INFINITY
+	mob_flags = MOB_ABSTRACT
 	var/ready_to_die = FALSE
 
 /mob/dview/Initialize() //Properly prevents this mob from gaining huds or joining any global lists
@@ -1767,6 +1784,9 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 /// Returns TRUE if the target is somewhere that the game should not interact with if possible
 /// In this case, admin Zs and tutorial areas
 /proc/should_block_game_interaction(atom/target, include_hunting_grounds = FALSE)
+	if (!target)
+		return TRUE
+
 	if(is_admin_level(target.z))
 		return TRUE
 
@@ -1787,3 +1807,10 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 	var/x = (text2num(x_dirty[1])-1)*32 + text2num(x_dirty[2])
 	var/y = (text2num(y_dirty[1])-1)*32 + text2num(y_dirty[2])
 	return list(x, y)
+
+/// Checks if a player mob is in a cryopod
+/proc/is_mob_cryoing(mob/person)
+	if(istype(person.loc, /obj/structure/machinery/cryopod))
+		return TRUE
+	else
+		return FALSE

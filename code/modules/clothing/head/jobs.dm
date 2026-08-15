@@ -92,6 +92,7 @@
 	name = "surgical cap"
 	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs."
 	icon_state = "surgcap_blue"
+	blood_overlay_type = "surgcap"
 	icon = 'icons/obj/items/clothing/hats/surgical_caps.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/surgical_caps.dmi'
@@ -99,33 +100,28 @@
 	flags_inv_hide = HIDETOPHAIR
 
 /obj/item/clothing/head/surgery/blue
-	name = "doctor's surgical cap"
-	desc = "A cap doctors wear during operations. Keeps their hair from tickling your internal organs. Typically worn by doctors, this one reminds you of blueberries. "
+	name = "blue surgical cap"
+	desc = "A cap doctors wear during operations. Keeps their hair from tickling your internal organs. This one reminds you of blueberries."
 	icon_state = "surgcap_blue"
 
 /obj/item/clothing/head/surgery/lightblue
-	name = "nurse's surgical cap"
-	desc = "A cap nurses wear while they assist during operations. Keeps their hair from tickling your internal organs. Typically worn by nurses, this one is baby blue."
+	name = "light blue surgical cap"
+	desc = "A cap nurses wear while they assist during operations. Keeps their hair from tickling your internal organs. This one is baby blue."
 	icon_state = "surgcap_lightblue"
 
 /obj/item/clothing/head/surgery/green
-	name = "surgeon's surgical cap"
-	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. Typically worn by surgeons, this one is jade green."
+	name = "green surgical cap"
+	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one matches the medbay's color scheme, jade green."
 	icon_state = "surgcap_green"
 
 /obj/item/clothing/head/surgery/morgue
-	name = "morgue surgical cap"
-	desc = "A cap doctors wear while making autopsies, rather than during operations. Keeps their hair from dropping and interfering with incision scans. This one is a black as coal."
+	name = "black surgical cap"
+	desc = "A cap doctors wear while making autopsies, or if they like black. Keeps their hair from tickling your internal organs. This one is as black as coal."
 	icon_state = "surgcap_morgue"
-
-/obj/item/clothing/head/surgery/pharmacist
-	name = "pharmaceutical physician's surgical cap"
-	desc = "A cap pharmaceutical physicians wear during to protect their scalp from chemical mishaps. It also keeps their hair from tickling your internal organs while they operate. It's white with an orange rim."
-	icon_state = "surgcap_pharm"
 
 /obj/item/clothing/head/surgery/cmo
 	name = "chief medical officer's surgical cap"
-	desc = "A striped cap the Chief Medical Officer wears during operations. Keeps their hair from tickling your internal organs. It's green with peach stripes to match the stripes on their lab coat."
+	desc = "A striped cap the Chief Medical Officer wears during operations. Keeps their hair from tickling your internal organs. It's jade green with peach stripes to match the stripes on their lab coat."
 	icon_state = "surgcap_cmo"
 
 /obj/item/clothing/head/surgery/purple

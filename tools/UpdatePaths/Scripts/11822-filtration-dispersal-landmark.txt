@@ -1,0 +1,4 @@
+/obj/structure/machinery/dispersal_initiator/@SUBTYPES : /obj/effect/landmark/dispersal_initiator/@SUBTYPES{@OLD}
+/obj/structure/machinery/filtration/console/@SUBTYPES : /obj/structure/machinery/filtration_console/@SUBTYPES{@OLD}
+# Also fix up some issues from Tyrargo's water refactor
+/obj/effect/blocker/toxic_water/@SUBTYPES : /obj/effect/blocker/water/toxic/@SUBTYPES{@OLD}

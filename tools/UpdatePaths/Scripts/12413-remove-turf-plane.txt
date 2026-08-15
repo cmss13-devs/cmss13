@@ -1,0 +1,1 @@
+/obj/structure/machinery/door/airlock/yautja/secure/turf_plane : /obj/structure/machinery/door/airlock/yautja/secure{@OLD}

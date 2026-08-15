@@ -2,7 +2,7 @@
 
 /obj/item/weapon/gun/rifle/m4ra_custom
 	name = "\improper M4RA custom battle rifle"
-	desc = "This is a further improvement upon the already rock-solid M4RA. Made by the USCM armorers on Chinook station - This variant of the M4RA has a specifically milled magazine well to accept A19 rounds. It sports a light-weight titantium-alloy frame, better responsive to the heavy kick of the tailor-made A19 rounds."
+	desc = "This is a further improvement upon the already rock-solid M4RA. Made by the USCM armorers on Chinook station - This variant of the M4RA has a specifically milled magazine well to accept A19 rounds. It sports a light-weight titanium-alloy frame, better responsive to the heavy kick of the tailor-made A19 rounds."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/marksman_rifles.dmi'
 	icon_state = "m4ra_custom"
 	item_state = "m4ra_custom"
@@ -25,6 +25,7 @@
 	map_specific_decoration = TRUE
 	aim_slowdown = SLOWDOWN_ADS_QUICK
 	flags_item = TWOHANDED|NO_CRYO_STORE
+	caliber = list("10x24mm", "A19")
 
 	accepted_ammo = list(
 		/obj/item/ammo_magazine/rifle/m4ra,
@@ -60,6 +61,7 @@
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/bipod,

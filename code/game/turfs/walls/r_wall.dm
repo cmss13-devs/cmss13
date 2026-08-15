@@ -234,7 +234,7 @@
 	..()
 	if(special_icon)
 		return
-	if(neighbors_list in list(EAST|WEST))
+	if(neighbors_bitfield == (EAST|WEST))
 		var/r1 = rand(0,10) //Make a random chance for this to happen
 		var/r2 = rand(0,3) // Which wall if we do choose it
 		if(r1 >= 9)

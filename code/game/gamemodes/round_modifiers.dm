@@ -120,6 +120,16 @@
 			continue
 		cur_area.is_resin_allowed = enabled ? TRUE : initial(cur_area.is_resin_allowed)
 
+/datum/gamemode_modifier/continue_on_ground_crash
+	modifier_name = "Continue on Hijack Ground Crash"
+	modifier_desc = "Enable this modifier to not trigger Xeno Major on ground crash."
+
+/datum/gamemode_modifier/continue_on_ground_crash/set_active(enabled)
+	if(SShijack?.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)
+		to_chat(usr, SPAN_WARNING("Its too late to toggle this!"))
+		return ..(active)
+	return ..()
+
 /datum/gamemode_modifier/mortar_laser_warning
 	modifier_name = "Mortar Telegraphing"
 	modifier_desc = "Shows a visual warning of where a mortar will hit."
@@ -148,4 +158,12 @@
 
 /datum/gamemode_modifier/ceasefire
 	modifier_name = "Ceasefire"
-	modifier_desc = "Prevents firing guns and throwing granades."
+	modifier_desc = "Prevents firing guns and throwing grenades."
+
+/datum/gamemode_modifier/more_crit
+	modifier_name = "Increased Crit Threshold"
+	modifier_desc = "Increases the crit and dead thresholds on humans."
+
+/datum/gamemode_modifier/disable_wj_spawns
+	modifier_name = "Disable Working Joe"
+	modifier_desc = "Disables Working Joes from spawning."

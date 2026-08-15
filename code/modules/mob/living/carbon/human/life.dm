@@ -7,7 +7,7 @@
 		return
 
 	if(undefibbable && stat == DEAD || spawned_corpse)
-		GLOB.data_core.manifest_modify(real_name, WEAKREF(src), null, null, "*Deceased*")
+		GLOB.data_core.manifest_modify(real_name, WEAKREF(src), null, null, "Deceased")
 		SShuman.processable_human_list -= src
 		if(hardcore)
 			qdel(src) //We just delete the corpse on WO to keep things simple and lag-free
@@ -63,7 +63,8 @@
 		else //Dead
 			if(!undefibbable)
 				handle_necro_chemicals_in_body(delta_time) //Specifically for chemicals that still work while dead.
-				if(life_tick > 5 && timeofdeath && (timeofdeath < 5 || world.time - timeofdeath > revive_grace_period) && !issynth(src)) //We are dead beyond revival, or we're junk mobs spawned like the clowns on the clown shuttle
+				var/hardcore = HAS_TRAIT(src, TRAIT_HARDCORE) || MODE_HAS_MODIFIER(/datum/gamemode_modifier/permadeath)
+				if(life_tick > 5 && timeofdeath && (timeofdeath < 5 || hardcore || world.time - timeofdeath > revive_grace_period) && !issynth(src)) //We are dead beyond revival, or we're junk mobs spawned like the clowns on the clown shuttle
 					undefibbable = TRUE
 					SEND_SIGNAL(src, COMSIG_HUMAN_SET_UNDEFIBBABLE)
 					med_hud_set_status()

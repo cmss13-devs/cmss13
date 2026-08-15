@@ -30,8 +30,7 @@
 		construction_data = create_cause_data(initial(name), builder)
 	if(block_range)
 		for(var/turf/turf in range(block_range, src))
-			var/obj/effect/build_blocker/blocker = new(turf, src)
-			blockers.Add(blocker)
+			blockers += WEAKREF(new /obj/effect/build_blocker(turf, src))
 
 	var/area/current_area = get_area(src)
 	if(current_area.linked_lz)
@@ -136,6 +135,7 @@
 	explo_proof = TRUE
 	invisibility = 101
 	alpha = 0
+	flags_atom = NO_ZFALL
 	/// The atom we are blocking for
 	var/atom/linked_structure
 
@@ -168,15 +168,15 @@
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
 /obj/effect/alien/resin/sticky/Crossed(atom/movable/AM)
-	. = ..()
+	..()
 	var/mob/living/carbon/human/H = AM
 	if(istype(H) && !H.ally_of_hivenumber(hivenumber))
 		H.next_move_slowdown = max(H.next_move_slowdown, slow_amt)
-		return .
+		return
 	var/mob/living/carbon/xenomorph/X = AM
 	if(istype(X) && !X.ally_of_hivenumber(hivenumber))
 		X.next_move_slowdown = max(X.next_move_slowdown, slow_amt)
-		return .
+		return
 
 /obj/effect/alien/resin/sticky/proc/forsaken_handling()
 	SIGNAL_HANDLER
@@ -217,7 +217,7 @@
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
 /obj/effect/alien/resin/spike/Crossed(atom/movable/AM)
-	. = ..()
+	..()
 	var/mob/living/carbon/H = AM
 	if(!istype(H))
 		return
@@ -261,11 +261,8 @@
 	desc = "A layer of disgusting sleek slime."
 	icon_state = "fast"
 	health = HEALTH_RESIN_XENO_FAST
+	slow_amt = 0
 	var/speed_amt = 0.7
-
-/obj/effect/alien/resin/sticky/fast/Crossed(atom/movable/AM)
-	return
-
 
 //xeno marker :0)
 /obj/effect/alien/resin/marker
@@ -365,6 +362,7 @@
 	var/close_delay = 100
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/upgrading_now = FALSE //flag to track upgrading/thickening process
+	var/turf/closed/wall/resin/above/upper_wall
 
 	flags_obj = OBJ_ORGANIC
 	layer = DOOR_CLOSED_LAYER
@@ -392,6 +390,11 @@
 			AddComponent(/datum/component/resin_cleanup)
 		area.current_resin_count++
 
+	var/turf/above = SSmapping.get_turf_above(loc)
+	if(istype(above, /turf/open_space))
+		above.place_on_top(/turf/closed/wall/resin/above)
+		upper_wall = above
+
 /obj/structure/mineral_door/resin/flamer_fire_act(dam = BURN_LEVEL_TIER_1)
 	health -= dam
 	healthcheck()
@@ -401,6 +404,10 @@
 	..()
 	healthcheck()
 	return 1
+
+/obj/structure/mineral_door/resin/proc/take_damage(dam, mob/mob)
+	health -= dam
+	healthcheck()
 
 /obj/structure/mineral_door/resin/attackby(obj/item/W, mob/living/user)
 	if(W.pry_capable == IS_PRY_CAPABLE_FORCE && user.a_intent != INTENT_HARM)
@@ -490,11 +497,21 @@
 	..()
 
 /obj/structure/mineral_door/resin/Destroy()
+	if(!QDESTROYING(upper_wall))
+		upper_wall.dismantle_wall()
+	var/turf/above = SSmapping.get_turf_above(src)
+	while(above && istransparentturf(above))
+		above.update_vis_contents()
+		above = SSmapping.get_turf_above(above)
 	relativewall_neighbours()
 	var/area/area = get_area(src)
 	area?.current_resin_count--
 	var/turf/base_turf = loc
-	spawn(0)
+
+	if(!QDESTROYING(upper_wall)) // Why is this done twice? Hell if i know.
+		upper_wall.dismantle_wall()
+
+	spawn(0) // <--- Don't do that, src probably won't even be valid anymore when it executes
 		var/turf/adjacent_turf
 		for(var/cardinal in GLOB.cardinals)
 			adjacent_turf = get_step(base_turf, cardinal)
@@ -766,7 +783,7 @@
 		T = i
 		if(T.density)
 			continue
-		T.PlaceOnTop(resin_wall_type)
+		T.place_on_top(resin_wall_type)
 		T.walltype = turf_icon
 		T.update_connections(TRUE)
 		T.update_icon()
@@ -942,8 +959,7 @@
 	for(var/x_offset in -1 to 1)
 		for(var/y_offset in -1 to 1)
 			var/turf/turf_to_block = locate(x + x_offset, y + y_offset, z)
-			var/obj/effect/build_blocker/blocker = new(turf_to_block, src)
-			blockers += blocker
+			blockers += WEAKREF(new /obj/effect/build_blocker(turf_to_block, src))
 
 	START_PROCESSING(SSobj, src)
 
@@ -1143,7 +1159,7 @@
 
 	for(var/mob/living/carbon/xenomorph/candidate in hive.totalXenos)
 		if(is_candidate_valid(hive, candidate, playtime_restricted = FALSE, skip_playtime = FALSE))
-			INVOKE_ASYNC(src, PROC_REF(cast_vote), candidate, voting_candidates)
+			INVOKE_ASYNC(src, PROC_REF(cast_vote), candidate, shuffle(voting_candidates))
 
 	candidates = voting_candidates
 
@@ -1299,7 +1315,7 @@
 
 /obj/item/explosive/grenade/alien
 	name = "alien grenade"
-	desc = "an alien grenade."
+	desc = "An alien grenade."
 	icon_state = "neuro_nade_greyscale"
 	item_state = "neuro_nade_greyscale"
 

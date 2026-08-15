@@ -6,7 +6,7 @@
 	var/trigger_volatiles = FALSE
 	var/allow_star_shape = TRUE
 	var/exploded = FALSE
-	var/endothermic_reaction_occuring = FALSE
+	var/endothermic_reaction_occurring = FALSE
 	var/datum/weakref/source_mob
 
 	var/locked = FALSE
@@ -38,13 +38,13 @@
 	return ..()
 
 /datum/reagents/proc/remove_any(amount=1)
-	var/total_transfered = 0
+	var/total_transferred = 0
 	var/current_list_element = 1
 
 	current_list_element = rand(1,length(reagent_list))
 
-	while(total_transfered != amount)
-		if(total_transfered >= amount)
+	while(total_transferred != amount)
+		if(total_transferred >= amount)
 			break
 		if(total_volume <= 0 || !length(reagent_list))
 			break
@@ -56,21 +56,21 @@
 		remove_reagent(current_reagent.id, 1)
 
 		current_list_element++
-		total_transfered++
+		total_transferred++
 		update_total()
 
 	handle_reactions()
-	return total_transfered
+	return total_transferred
 
 ///This proc is one that removes all reagents from the targeted datum other than the designated ignored reagent
 /datum/reagents/proc/remove_any_but(reagent_to_ignore, amount=1)
-	var/total_transfered = 0
+	var/total_transferred = 0
 	var/current_list_element = 1
 
 	current_list_element = rand(1, length(reagent_list))
 
-	while(total_transfered != amount)
-		if(total_transfered >= amount)
+	while(total_transferred != amount)
+		if(total_transferred >= amount)
 			break
 		if(total_volume <= 0 || !length(reagent_list))
 			break
@@ -90,11 +90,11 @@
 		remove_reagent(current_reagent.id, 1)
 
 		current_list_element++
-		total_transfered++
+		total_transferred++
 		update_total()
 
 	handle_reactions()
-	return total_transfered
+	return total_transferred
 
 
 /datum/reagents/proc/get_master_reagent()
@@ -132,7 +132,7 @@
 		return trans_to_datum(R, amount, multiplier, preserve_data, reaction)
 
 /// Transfers to a reagent datum
-/datum/reagents/proc/trans_to_datum(datum/reagents/target, amount=1, multiplier=1, preserve_data=1, reaction = TRUE)//if preserve_data=0, the reagents data will be lost. Usefull if you use data for some strange stuff and don't want it to be transferred.
+/datum/reagents/proc/trans_to_datum(datum/reagents/target, amount=1, multiplier=1, preserve_data=1, reaction = TRUE)//if preserve_data=0, the reagents data will be lost. Useful if you use data for some strange stuff and don't want it to be transferred.
 	amount = min(min(amount, total_volume), target.maximum_volume-target.total_volume)
 	var/part = amount / total_volume
 	for(var/datum/reagent/current_reagent in reagent_list)
@@ -162,9 +162,9 @@
 		return
 	to_chat(target, SPAN_NOTICE("You taste [pick(V.reagent_list)]."))
 
-	for(var/datum/reagent/RG in V.reagent_list) // If it can't be ingested, remove it.
+	for(var/datum/reagent/RG as anything in V.reagent_list) // If it can't be ingested, remove it.
 		if(RG.flags & REAGENT_NOT_INGESTIBLE)
-			V.del_reagent(RG.id)
+			V.del_reagent_by_reference(RG)
 
 	addtimer(CALLBACK(V, TYPE_PROC_REF(/datum/reagents/vessel, inject_vessel), target, INGEST, TRUE, 0.5 SECONDS), 9.5 SECONDS)
 	return amount
@@ -230,10 +230,10 @@
 	//handle_reactions() Don't need to handle reactions on the source since you're (presumably isolating and) transferring a specific reagent.
 	return amount
 
-/datum/reagents/proc/metabolize(mob/M, alien, delta_time)
-	for(var/datum/reagent/reagent in reagent_list)
-		if(M && reagent && !QDELETED(reagent))
-			reagent.on_mob_life(M, alien, delta_time)
+/datum/reagents/proc/metabolize(mob/mob, alien, delta_time)
+	for(var/datum/reagent/reagent as anything in reagent_list)
+		if(!QDELETED(reagent))
+			reagent.on_mob_life(mob, alien, delta_time)
 	update_total()
 
 /datum/reagents/proc/handle_reactions()
@@ -245,20 +245,19 @@
 	var/reaction_occurred = FALSE
 	do
 		reaction_occurred = FALSE
-		for(var/datum/reagent/reagent in reagent_list) // Usually a small list
+		for(var/datum/reagent/reagent as anything in reagent_list) // Usually a small list
 			if(reagent.original_id) //Prevent synthesised chem variants from being mixed
-				for(var/datum/reagent/current in reagent_list)
+				for(var/datum/reagent/current as anything in reagent_list)
 					if(current.id == reagent.id)
 						continue
 					else if(current.original_id == reagent.original_id || current.id == reagent.original_id)
 						//Merge into the original
-						var/volume_factor = clamp((max(current.overdose - reagent.overdose, 5) / 5)-1, 1, 3)
-						if(max(current.overdose, 5)/5 < 3)
+						var/volume_factor = clamp((max(abs(current.overdose - reagent.overdose), 5) / 5), 1, 3)
+						if(max(current.overdose, 5)/5 < 2)
 							volume_factor = 1
 						reagent_list -= reagent
-						current.volume += floor(reagent.volume / volume_factor)
-						var/list/seen = viewers(4, get_turf(my_atom))
-						for(var/mob/seen_mob in seen)
+						add_reagent(current.id, floor(reagent.volume / volume_factor))
+						for(var/mob/seen_mob as anything in viewers(4, get_turf(my_atom)))
 							if(volume_factor == 1)
 								to_chat(seen_mob, SPAN_NOTICE("[icon2html(my_atom, seen_mob)] The solution begins to bubble."))
 							else
@@ -276,13 +275,13 @@
 				var/matching_container = FALSE
 				var/list/multipliers = new/list()
 
-				for(var/required_reagent in reaction.required_reagents)
+				for(var/required_reagent as anything in reaction.required_reagents)
 					if(!has_reagent(required_reagent, reaction.required_reagents[required_reagent]))
 						break
 					total_matching_reagents++
 					multipliers += floor(get_reagent_amount(required_reagent) / reaction.required_reagents[required_reagent])
 				for(var/catalyst in reaction.required_catalysts)
-					if(catalyst == "silver" && istype(my_atom, /obj/item/reagent_container/glass/beaker/silver))
+					if(catalyst == "silver" && istype(my_atom, /obj/item/reagent_container/glass/beaker/catalyst/silver))
 						total_matching_catalysts++
 						continue
 					if(!has_reagent(catalyst, reaction.required_catalysts[catalyst]))
@@ -310,7 +309,7 @@
 						multiplier = max(multiplier, 1) //this shouldn't happen ...
 						set_data(reaction.result, preserved_data)
 					if(CHECK_BITFIELD(reaction.reaction_type, CHEM_REACTION_CALM) && !CHECK_BITFIELD(reaction.reaction_type, CHEM_REACTION_ENDOTHERMIC)) //mix the chemicals
-						if(endothermic_reaction_occuring)
+						if(endothermic_reaction_occurring)
 							continue
 						for(var/required_reagent in reaction.required_reagents)
 							remove_reagent(required_reagent, (multiplier * reaction.required_reagents[required_reagent]), safety = TRUE)
@@ -377,7 +376,7 @@
 							return
 						var/list/seen = viewers(3, get_turf(my_atom))
 						for(var/mob/seen_mob in seen)
-							to_chat(seen_mob, SPAN_WARNING("[icon2html(my_atom, seen_mob)] [my_atom] starts to give heavy fumes from it's contents!"))
+							to_chat(seen_mob, SPAN_WARNING("[icon2html(my_atom, seen_mob)] [my_atom] starts to give heavy fumes from its contents!"))
 						addtimer(CALLBACK(src, PROC_REF(create_smoke_reaction), created_volume, reaction), 4 SECONDS, TIMER_UNIQUE)
 						playsound(get_turf(my_atom), 'sound/effects/tankhiss3.ogg', 10, 30000, 4)// what a great sound where did it hide all this time
 
@@ -420,7 +419,7 @@
 		if((catalysts_in_holder.id in reaction.required_catalysts) && catalysts_in_holder.volume >= reaction.required_catalysts[catalysts_in_holder.id])
 			required_catalysts_present++
 	if(!(length(reaction.required_reagents) == required_reagents_present && length(reaction.required_catalysts) == required_catalysts_present))
-		endothermic_reaction_occuring = FALSE //forgive me
+		endothermic_reaction_occurring = FALSE //forgive me
 		handle_reactions()
 		return
 	var/list/seen = viewers(2, get_turf(my_atom))
@@ -437,17 +436,17 @@
 	for(var/mob/seen_mob in this_turf)
 		if(prob(15))
 			to_chat(seen_mob, SPAN_NOTICE("[icon2html(my_atom, seen_mob)] [my_atom] feels extremely cold to touch."))
-	endothermic_reaction_occuring = TRUE
+	endothermic_reaction_occurring = TRUE
 	addtimer(CALLBACK(src, PROC_REF(handle_endothermic_reaction), reaction), 1 SECONDS, TIMER_UNIQUE)
 
 /datum/reagents/proc/isolate_reagent(reagent)
-	for(var/datum/reagent/R in reagent_list)
+	for(var/datum/reagent/R as anything in reagent_list)
 		if(R.id != reagent)
-			del_reagent(R.id)
+			del_reagent_by_reference(R)
 			update_total()
 
 /datum/reagents/proc/del_reagent(reagent)
-	for(var/datum/reagent/R in reagent_list)
+	for(var/datum/reagent/R as anything in reagent_list)
 		if(R.id == reagent)
 			R.on_delete()
 			reagent_list -= R
@@ -457,27 +456,35 @@
 			return FALSE
 	return TRUE
 
+/// Faster version of [/datum/reagents/proc/del_reagent] for when we already have the reagent reference
+/datum/reagents/proc/del_reagent_by_reference(datum/reagent/reagent)
+	reagent.on_delete()
+	reagent_list -= reagent
+	qdel(reagent)
+	update_total()
+	my_atom?.on_reagent_change()
+
 // Returns FALSE if the reagent is getting deleted
 /datum/reagents/proc/update_total()
 	total_volume = 0
-	for(var/datum/reagent/R in reagent_list)
-		if(R.volume < 0.1)
+	for(var/datum/reagent/R as anything in reagent_list)
+		if(R.volume < 0.1 && !R.deleted)
 			R.deleted = TRUE
-			del_reagent(R.id)
+			del_reagent_by_reference(R)
 		else
 			total_volume += R.volume
 
 	return FALSE
 
 /datum/reagents/proc/clear_reagents()
-	for(var/datum/reagent/R in reagent_list)
-		del_reagent(R.id)
+	for(var/datum/reagent/reagent as anything in reagent_list)
+		del_reagent_by_reference(reagent)
 	return FALSE
 
 /datum/reagents/proc/reaction(atom/A, method=TOUCH, volume_modifier=0, permeable_in_mobs=TRUE)
 	if(method != TOUCH && method != INGEST)
 		return
-	for(var/datum/reagent/R in reagent_list)
+	for(var/datum/reagent/R as anything in reagent_list)
 		if(ismob(A))
 			R.reaction_mob(A, method, R.volume + volume_modifier, permeable_in_mobs)
 		else if(isturf(A))
@@ -491,14 +498,14 @@
 
 	update_total()
 	if(total_volume + amount > maximum_volume)
-		amount = maximum_volume - total_volume //Doesnt fit in. Make it disappear. Shouldnt happen. Will happen.
+		amount = maximum_volume - total_volume //Doesn't fit in. Make it disappear. Shouldn't happen. Will happen.
 
 	var/new_data = list("blood_type" = null, "blood_color" = "#A10808", "viruses" = null, "resistances" = null, "last_source_mob" = null)
 	if(data)
 		for(var/index in data)
 			new_data[index] = data[index]
 
-	for(var/datum/reagent/R in reagent_list)
+	for(var/datum/reagent/R as anything in reagent_list)
 		if(R.id == reagent)
 			R.volume += amount
 			R.last_source_mob = new_data["last_source_mob"]
@@ -506,7 +513,7 @@
 
 			if(my_atom)
 				my_atom.on_reagent_change()
-				for(var/datum/chem_property/P in R.properties)
+				for(var/datum/chem_property/P as anything in R.properties)
 					P.reagent_added(my_atom, R, R.volume)
 
 			// mix dem viruses
@@ -550,7 +557,7 @@
 		reagent_list += R
 
 		if(my_atom)
-			for(var/datum/chem_property/P in D.properties)
+			for(var/datum/chem_property/P as anything in D.properties)
 				P.reagent_added(my_atom, D, amount)
 
 		update_total()
@@ -570,7 +577,7 @@
 	if(!isnum(amount))
 		return TRUE
 
-	for(var/datum/reagent/R in reagent_list)
+	for(var/datum/reagent/R as anything in reagent_list)
 		if(R.id == reagent)
 			R.volume -= amount
 			update_total()
@@ -581,8 +588,16 @@
 
 	return TRUE
 
+/// Faster version of [/datum/reagents/proc/remove_reagent] for when we already know the reagent involved
+/datum/reagents/proc/remove_reagent_by_reference(datum/reagent/reagent, amount, safety = FALSE)
+	reagent.volume -= amount
+	update_total()
+	if(!safety)
+		handle_reactions()
+	my_atom?.on_reagent_change()
+
 /datum/reagents/proc/has_reagent(reagent, amount = -1)
-	for(var/datum/reagent/R in reagent_list)
+	for(var/datum/reagent/R as anything in reagent_list)
 		if(R.id == reagent)
 			if(!amount)
 				return R
@@ -594,27 +609,27 @@
 	return FALSE
 
 /datum/reagents/proc/get_reagent_amount(reagent)
-	for(var/datum/reagent/R in reagent_list)
+	for(var/datum/reagent/R as anything in reagent_list)
 		if(R.id == reagent)
 			return R.volume
 	return 0
 
 /datum/reagents/proc/get_reagents()
 	var/res = ""
-	for(var/datum/reagent/A in reagent_list)
+	for(var/datum/reagent/A as anything in reagent_list)
 		if(res != "")
 			res += ","
 		res += A.name
 
 	return res
 
-/datum/reagents/proc/remove_all_type(reagent_type, amount, strict = 0, safety = 1) // Removes all reagent of X type. @strict set to 1 determines whether the childs of the type are included.
+/datum/reagents/proc/remove_all_type(reagent_type, amount, strict = 0, safety = 1) // Removes all reagent of X type. @strict set to 1 determines whether the children of the type are included.
 	if(!isnum(amount))
 		return TRUE
 
 	var/has_removed_reagent = FALSE
 
-	for(var/datum/reagent/R in reagent_list)
+	for(var/datum/reagent/R as anything in reagent_list)
 		var/matches = FALSE
 		// Switch between how we check the reagent type
 		if(strict)
@@ -632,12 +647,12 @@
 
 //two helper functions to preserve data across reactions (needed for xenoarch)
 /datum/reagents/proc/get_data(reagent_id)
-	for(var/datum/reagent/D in reagent_list)
+	for(var/datum/reagent/D as anything in reagent_list)
 		if(D.id == reagent_id)
 			return D.data_properties
 
 /datum/reagents/proc/set_data(reagent_id, new_data)
-	for(var/datum/reagent/D in reagent_list)
+	for(var/datum/reagent/D as anything in reagent_list)
 		if(D.id == reagent_id)
 			D.data_properties = new_data
 
@@ -816,7 +831,8 @@
 	if(smokerad)
 		var/datum/effect_system/smoke_spread/phosphorus/smoke = new /datum/effect_system/smoke_spread/phosphorus
 		smoke.set_up(max(smokerad, 1), 0, sourceturf, null, 6)
-		smoke.start(intensity, max_fire_int)
+		smoke.set_intensity(intensity, max_fire_int)
+		smoke.start()
 		smoke = null
 
 	if(flush_beaker)

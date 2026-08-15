@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN 8
-#define SAVEFILE_VERSION_MAX 33
+#define SAVEFILE_VERSION_MAX 37
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -229,8 +229,51 @@
 		pref_toggles |= TOGGLE_COCKING_TO_HAND // enabled by default for new saves
 		S["toggle_prefs"] << pref_toggles
 
+	if(savefile_version < 34)
+		var/pref_toggles
+		S["toggle_prefs"] >> pref_toggles
+		pref_toggles |= TOGGLE_WIELD_ASSIST // enabled by default for new saves
+		S["toggle_prefs"] << pref_toggles
+
+	if(savefile_version < 35) // we have removed Tab from the default binds, allow users to bind it back if they want. needs to be async after logging in
+		updated_from = savefile_version
+
+	if(savefile_version < 36)
+		var/toggles_insert
+		S["toggles_insert"] >> toggles_insert
+		toggles_insert |= (PLAY_INSERT_STANDARD|PLAY_INSERT_CORPORATE|PLAY_INSERT_LEADER|PLAY_INSERT_MEDIC|PLAY_INSERT_ENGINEER|PLAY_INSERT_SPECIALIST|PLAY_INSERT_SMARTGUNNER|PLAY_INSERT_SYNTH|PLAY_INSERT_CO) // enabled by default for new saves
+		S["toggles_insert"] << toggles_insert
+
+	if(savefile_version < 37)
+		var/toggles_insert
+		S["toggles_sound"] >> toggles_insert
+		toggles_insert |= (SOUND_ROUND_END)
+		S["toggles_sound"] << toggles_insert
+
+	if(updated_from)
+		RegisterSignal(owner, COMSIG_CLIENT_LOGGED_IN, PROC_REF(handle_logged_in))
+
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1
+
+/datum/preferences/proc/handle_logged_in()
+	SIGNAL_HANDLER
+
+	handle_controlstyle_update(updated_from)
+
+/// Displays savefile updates that require user input
+/datum/preferences/proc/handle_controlstyle_update(savefile_version)
+	set waitfor = FALSE
+
+	if(savefile_version == /datum/preferences::savefile_version)
+		return
+
+	if(savefile_version < 34)
+		var/question = tgui_alert(owner, "Tab is no longer bound to switching between the map and the command bar. Restore this bind?", "Default Bind Changed", list("No", "Yes"))
+		if(question == "Yes")
+			LAZYADD(key_bindings["Tab"], /datum/keybinding/client/switch_input::name)
+			owner?.update_special_keybinds()
+			save_preferences()
 
 /datum/preferences/proc/load_path(ckey,filename="preferences.sav")
 	if(!ckey)
@@ -294,6 +337,7 @@
 	S["toggles_flashing"] >> toggles_flashing
 	S["toggles_ert"] >> toggles_ert
 	S["toggles_survivor"] >> toggles_survivor
+	S["toggles_insert"] >> toggles_insert
 	S["toggles_ert_pred"] >> toggles_ert_pred
 	S["toggles_admin"] >> toggles_admin
 	S["UI_style"] >> UI_style
@@ -311,6 +355,7 @@
 	S["ghost_vision_pref"] >> ghost_vision_pref
 	S["ghost_orbit"] >> ghost_orbit
 	S["auto_observe"] >> auto_observe
+	S["CMTV_toggle_optout"] >> CMTV_toggle_optout
 
 	S["human_name_ban"] >> human_name_ban
 
@@ -320,7 +365,9 @@
 	S["playtime_perks"] >> playtime_perks
 	S["skip_playtime_ranks"] >> skip_playtime_ranks
 	S["show_queen_name"] >> show_queen_name
+	S["show_minimap_ceiling_protection"] >> show_minimap_ceiling_protection
 	S["xeno_vision_level_pref"] >> xeno_vision_level_pref
+	S["xeno_defensive_grab_pref"] >> xeno_defensive_grab_pref
 	S["view_controller"] >> View_MC
 	S["observer_huds"] >> observer_huds
 	S["pref_special_job_options"] >> pref_special_job_options
@@ -333,6 +380,7 @@
 	S["pred_gender"] >> predator_gender
 	S["pred_age"] >> predator_age
 	S["pred_use_legacy"] >> predator_use_legacy
+	S["pred_use_unique"] >> predator_use_unique
 	S["pred_trans_type"] >> predator_translator_type
 	S["pred_invis_sound"] >> predator_invisibility_sound
 	S["pred_mask_type"] >> predator_mask_type
@@ -365,6 +413,9 @@
 	S["fax_name_press"] >> fax_name_press
 	S["fax_name_clf"] >> fax_name_clf
 
+	S["ff_log_color"] >> ff_log_color
+	S["ffd_log_color"] >> ffd_log_color
+
 	S["lang_chat_disabled"] >> lang_chat_disabled
 	S["show_permission_errors"] >> show_permission_errors
 	S["hear_vox"] >> hear_vox
@@ -378,6 +429,8 @@
 	S["adaptive_zoom"] >> adaptive_zoom
 	S["tooltips"] >> tooltips
 	S["key_bindings"] >> key_bindings
+
+	S["custom_keybinds"] >> custom_keybinds
 
 	S["tgui_lock"] >> tgui_lock
 	S["tgui_fancy"] >> tgui_fancy
@@ -422,6 +475,8 @@
 
 	S["remembered_key_bindings"] << GLOB.keybindings_by_name
 
+	load_custom_keybinds()
+
 	if(toggles_chat & SHOW_TYPING)
 		owner.typing_indicators = FALSE
 	else
@@ -447,6 +502,7 @@
 	toggles_flashing= sanitize_integer(toggles_flashing, 0, SHORT_REAL_LIMIT, initial(toggles_flashing))
 	toggles_ert = sanitize_integer(toggles_ert, 0, SHORT_REAL_LIMIT, initial(toggles_ert))
 	toggles_survivor = sanitize_integer(toggles_survivor, 0, SHORT_REAL_LIMIT, initial(toggles_survivor))
+	toggles_insert = sanitize_integer(toggles_insert, 0, SHORT_REAL_LIMIT, initial(toggles_insert))
 	toggles_ert_pred = sanitize_integer(toggles_ert_pred, 0, SHORT_REAL_LIMIT, initial(toggles_ert_pred))
 	toggles_admin = sanitize_integer(toggles_admin, 0, SHORT_REAL_LIMIT, initial(toggles_admin))
 	UI_style_color = sanitize_hexcolor(UI_style_color, initial(UI_style_color))
@@ -460,10 +516,13 @@
 	ghost_vision_pref = sanitize_inlist(ghost_vision_pref, list(GHOST_VISION_LEVEL_NO_NVG, GHOST_VISION_LEVEL_MID_NVG, GHOST_VISION_LEVEL_HIGH_NVG, GHOST_VISION_LEVEL_FULL_NVG), GHOST_VISION_LEVEL_MID_NVG)
 	ghost_orbit = sanitize_inlist(ghost_orbit, GLOB.ghost_orbits, initial(ghost_orbit))
 	auto_observe = sanitize_integer(auto_observe, 0, 1, 1)
+	CMTV_toggle_optout = sanitize_integer(CMTV_toggle_optout, 0, 1, 0)
 	playtime_perks = sanitize_integer(playtime_perks, 0, 1, 1)
 	skip_playtime_ranks = sanitize_integer(skip_playtime_ranks, 0, 1, 1)
 	show_queen_name = sanitize_integer(show_queen_name, FALSE, TRUE, FALSE)
+	show_minimap_ceiling_protection = sanitize_integer(show_minimap_ceiling_protection, FALSE, TRUE, FALSE)
 	xeno_vision_level_pref = sanitize_inlist(xeno_vision_level_pref, list(XENO_VISION_LEVEL_NO_NVG, XENO_VISION_LEVEL_MID_NVG, XENO_VISION_LEVEL_HIGH_NVG, XENO_VISION_LEVEL_FULL_NVG), XENO_VISION_LEVEL_MID_NVG)
+	xeno_defensive_grab_pref = sanitize_islist(xeno_defensive_grab_pref, alist())
 	hear_vox = sanitize_integer(hear_vox, FALSE, TRUE, TRUE)
 	hide_statusbar = sanitize_integer(hide_statusbar, FALSE, TRUE, FALSE)
 	no_radials_preference = sanitize_integer(no_radials_preference, FALSE, TRUE, FALSE)
@@ -474,11 +533,12 @@
 
 	synthetic_name = synthetic_name ? sanitize_text(synthetic_name, initial(synthetic_name)) : initial(synthetic_name)
 	synthetic_type = sanitize_inlist(synthetic_type, PLAYER_SYNTHS, initial(synthetic_type))
-	synth_specialisation = sanitize_inlist(synth_specialisation, list("Generalised", "Engineering", "Medical", "Intel", "Military Police", "Command"), initial(synth_specialisation))
+	synth_specialisation = sanitize_inlist(synth_specialisation, list("Generalised", "Engineering", "Medical", "Intel", "Military Police", "Command", "Research"), initial(synth_specialisation))
 	predator_name = predator_name ? sanitize_text(predator_name, initial(predator_name)) : initial(predator_name)
 	predator_gender = sanitize_text(predator_gender, initial(predator_gender))
 	predator_age = sanitize_integer(predator_age, 100, 10000, initial(predator_age))
 	predator_use_legacy = sanitize_inlist(predator_use_legacy, PRED_LEGACIES, initial(predator_use_legacy))
+	predator_use_unique = sanitize_inlist(predator_use_unique, PRED_UNIQUES, initial(predator_use_unique))
 	predator_translator_type = sanitize_inlist(predator_translator_type, PRED_TRANSLATORS, initial(predator_translator_type))
 	predator_invisibility_sound = sanitize_inlist(predator_invisibility_sound, PRED_INVIS_SOUNDS, initial(predator_invisibility_sound))
 	predator_mask_type = sanitize_integer(predator_mask_type,1,1000000,initial(predator_mask_type))
@@ -514,6 +574,9 @@
 	fax_name_press = fax_name_press ? sanitize_text(fax_name_press, initial(fax_name_press)) : generate_name(FACTION_COLONIST)
 	fax_name_clf = fax_name_clf ? sanitize_text(fax_name_clf, initial(fax_name_clf)) : generate_name(FACTION_CLF)
 
+	ff_log_color = sanitize_hexcolor(ff_log_color, initial(ff_log_color))
+	ffd_log_color = sanitize_hexcolor(ffd_log_color, initial(ffd_log_color))
+
 	key_bindings = sanitize_keybindings(key_bindings)
 	hotkeys = sanitize_integer(hotkeys, FALSE, TRUE, TRUE)
 	custom_cursors = sanitize_integer(custom_cursors, FALSE, TRUE, TRUE)
@@ -528,9 +591,15 @@
 	chem_presets = sanitize_islist(chem_presets, list())
 
 	if(!observer_huds)
-		observer_huds = list("Medical HUD" = FALSE, "Security HUD" = FALSE, "Squad HUD" = FALSE, "Xeno Status HUD" = FALSE, HUD_MENTOR_SIGHT = FALSE)
+		observer_huds = list("Medical HUD" = FALSE, "Security HUD" = FALSE, "Squad HUD" = FALSE, "Xeno Status HUD" = FALSE, "Hunter HUD"= FALSE, HUD_MENTOR_SIGHT = FALSE)
 
 	volume_preferences = sanitize_volume_preferences(volume_preferences, list(1, 0.5, 1, 0.6)) // Game, music, admin midis, lobby music
+
+	if(!islist(custom_keybinds))
+		custom_keybinds = new /list(KEYBIND_CUSTOM_MAX)
+
+	if(length(custom_keybinds) != KEYBIND_CUSTOM_MAX)
+		custom_keybinds.len = KEYBIND_CUSTOM_MAX
 
 /datum/preferences/proc/save_preferences()
 	if(!path)
@@ -569,6 +638,7 @@
 	S["toggles_flashing"] << toggles_flashing
 	S["toggles_ert"] << toggles_ert
 	S["toggles_survivor"] << toggles_survivor
+	S["toggles_insert"] << toggles_insert
 	S["toggles_ert_pred"] << toggles_ert_pred
 	S["toggles_admin"] << toggles_admin
 	S["window_skin"] << window_skin
@@ -576,6 +646,7 @@
 	S["ghost_vision_pref"] << ghost_vision_pref
 	S["ghost_orbit"] << ghost_orbit
 	S["auto_observe"] << auto_observe
+	S["CMTV_toggle_optout"] << CMTV_toggle_optout
 
 	S["human_name_ban"] << human_name_ban
 
@@ -583,9 +654,11 @@
 	S["xeno_postfix"] << xeno_postfix
 	S["xeno_name_ban"] << xeno_name_ban
 	S["xeno_vision_level_pref"] << xeno_vision_level_pref
+	S["xeno_defensive_grab_pref"] << xeno_defensive_grab_pref
 	S["playtime_perks"] << playtime_perks
 	S["skip_playtime_ranks"] << skip_playtime_ranks
 	S["show_queen_name"] << show_queen_name
+	S["show_minimap_ceiling_protection"] << show_minimap_ceiling_protection
 
 	S["view_controller"] << View_MC
 	S["observer_huds"] << observer_huds
@@ -599,6 +672,7 @@
 	S["pred_gender"] << predator_gender
 	S["pred_age"] << predator_age
 	S["pred_use_legacy"] << predator_use_legacy
+	S["pred_use_unique"] << predator_use_unique
 	S["pred_trans_type"] << predator_translator_type
 	S["pred_invis_sound"] << predator_invisibility_sound
 	S["pred_mask_type"] << predator_mask_type
@@ -631,6 +705,9 @@
 	S["fax_name_press"] << fax_name_press
 	S["fax_name_clf"] << fax_name_clf
 
+	S["ff_log_color"] << ff_log_color
+	S["ffd_log_color"] << ffd_log_color
+
 	S["lang_chat_disabled"] << lang_chat_disabled
 	S["show_permission_errors"] << show_permission_errors
 	S["key_bindings"] << key_bindings
@@ -660,6 +737,8 @@
 	S["show_cooldown_messages"] << show_cooldown_messages
 
 	S["chem_presets"] << chem_presets
+
+	S["custom_keybinds"] << custom_keybinds
 
 	return TRUE
 
@@ -973,7 +1052,7 @@
 	to_chat(owner, SPAN_ALERTWARNING("<u>Keybinding Conflict</u>"))
 	to_chat(owner, SPAN_ALERTWARNING("There are new <a href='byond://?_src_=prefs;preference=viewmacros'>keybindings</a> that default to keys you've already bound. The new ones will be unbound."))
 	for(var/datum/keybinding/conflicted as anything in notadded)
-		to_chat(owner, SPAN_DANGER("[conflicted.category]: [conflicted.full_name] needs updating"))
+		to_chat(owner, SPAN_DANGER("[conflicted.category]: [conflicted.full_name] needs updating."))
 
 		if(hotkeys)
 			for(var/entry in conflicted.hotkey_keys)
@@ -983,6 +1062,23 @@
 				LAZYREMOVE(key_bindings[entry], conflicted.name)
 
 		LAZYADD(key_bindings["Unbound"], conflicted.name) // set it to unbound to prevent this from opening up again in the future
+
+/datum/preferences/proc/load_custom_keybinds()
+	key_to_custom_keybind = list()
+
+	for(var/keybind in custom_keybinds)
+		if(!("keybinding" in keybind))
+			continue // unbound
+
+		var/datum/keybinding/custom/custom_key = new
+		custom_key.keybind_type = keybind["type"]
+		custom_key.contents = keybind["contents"]
+		custom_key.when_human = keybind["when_human"]
+		custom_key.when_xeno = keybind["when_xeno"]
+		custom_key.when_yautja = keybind["when_yautja"]
+		custom_key.when_synth = keybind["when_synth"]
+
+		key_to_custom_keybind[keybind["keybinding"]] = custom_key
 
 #undef SAVEFILE_VERSION_MAX
 #undef SAVEFILE_VERSION_MIN

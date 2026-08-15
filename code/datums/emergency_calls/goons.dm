@@ -2,6 +2,8 @@
 	name = "Weyland-Yutani Corporate Security (Squad)"
 	mob_max = 6
 	probability = 0
+	shuttle_id = MOBILE_SHUTTLE_ID_ERT2
+	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pmc
 	home_base = /datum/lazy_template/ert/weyland_station
 
 /datum/emergency_call/goon/New()

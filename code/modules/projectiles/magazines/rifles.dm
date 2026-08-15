@@ -48,6 +48,9 @@
 	default_ammo = /datum/ammo/bullet/rifle/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
 
+/obj/item/ammo_magazine/rifle/heap/empty
+	current_rounds = 0
+
 /obj/item/ammo_magazine/rifle/ap
 	name = "\improper M41A AP magazine (10x24mm)"
 	desc = "An armor-piercing 10x24mm assault rifle magazine."
@@ -163,6 +166,9 @@
 	desc = "A magazine of high-explosive armor-piercing 10x24mm rounds for use in the M4RA battle rifle."
 	default_ammo = /datum/ammo/bullet/rifle/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
+
+/obj/item/ammo_magazine/rifle/m4ra/heap/empty
+	current_rounds = 0
 
 /obj/item/ammo_magazine/rifle/m4ra/penetrating
 	name = "\improper M4RA wall-penetrating magazine (10x24mm)"
@@ -313,21 +319,18 @@
 	name = "\improper M41AE2 ammo box (10x24mm holo-target)"
 	desc = "A semi-rectangular holo-targeting box magazine for the M41AE2 Heavy Pulse Rifle."
 	default_ammo = /datum/ammo/bullet/rifle/holo_target
-	max_rounds = 200
 	ammo_band_color = AMMO_BAND_COLOR_HOLOTARGETING
 
 /obj/item/ammo_magazine/rifle/lmg/ap
 	name = "\improper M41AE2 ammo box (10x24mm armor-piercing)"
 	desc = "A semi-rectangular armor-piercing box magazine for the M41AE2 Heavy Pulse Rifle."
 	default_ammo = /datum/ammo/bullet/rifle/ap
-	max_rounds = 300
 	ammo_band_color = AMMO_BAND_COLOR_AP
 
 /obj/item/ammo_magazine/rifle/lmg/heap
 	name = "\improper M41AE2 ammo box (10x24mm high-explosive armor-piercing)"
 	desc = "A semi-rectangular box magazine for the M41AE2 Heavy Pulse Rifle. This one contains the standard armor-piercing explosive tipped round of the USCM."
 	default_ammo = /datum/ammo/bullet/rifle/heap
-	max_rounds = 300
 	gun_type = /obj/item/weapon/gun/rifle/lmg
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
 
@@ -527,7 +530,7 @@
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
 
 /obj/item/ammo_magazine/rifle/nsg23/incendiary
-	name = "\improper NSG 23 incindiary magazine (10x24mm)"
+	name = "\improper NSG 23 incendiary magazine (10x24mm)"
 	desc = "A white phosphorus-tipped incendiary NSG 23 assault rifle magazine."
 	default_ammo = /datum/ammo/bullet/rifle/incendiary
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
@@ -647,7 +650,7 @@
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
 
 /obj/item/ammo_magazine/rifle/l23/incendiary
-	name = "\improper L23 incindiary magazine (8.88x51mm)"
+	name = "\improper L23 incendiary magazine (8.88x51mm)"
 	desc = "A white phosphorus-tipped incendiary 8.88x51mm L23 assault rifle magazine."
 	default_ammo = /datum/ammo/bullet/rifle/l23/incendiary
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
@@ -666,7 +669,7 @@
 
 /obj/item/ammo_magazine/rifle/l64
 	name = "\improper L64A3 squash-head magazine (8.88x51mm Caseless)"
-	desc = "A magazine of L10A7 squash-head match-grade 8.88x51mm ammo. "
+	desc = "A magazine of L10A7 squash-head match-grade 8.88x51mm ammo."
 	caliber = "8.88x51mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/TWE/marksman_rifles.dmi'
 	icon_state = "l64"

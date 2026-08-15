@@ -491,7 +491,7 @@
 
 /area/lv624/ground/colony/phi_lab
 	name = "\improper Phi Labs"
-	icon = 'icons/turf/hybrisareas.dmi'
+	icon = 'icons/turf/area_hybrisa.dmi'
 	icon_state = "wylab"
 	ceiling = CEILING_METAL
 
@@ -518,7 +518,7 @@
 
 /area/lv624/ground/caves/mining
 	name = "\improper KMCC Mining Facility"
-	icon = 'icons/turf/hybrisareas.dmi'
+	icon = 'icons/turf/area_hybrisa.dmi'
 	icon_state = "mining"
 	always_unpowered = FALSE
 

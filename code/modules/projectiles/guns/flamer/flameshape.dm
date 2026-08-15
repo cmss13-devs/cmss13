@@ -265,9 +265,7 @@
 	var/turf/source_turf = get_turf(F.loc)
 	var/radius = fire_spread_amount - 1
 
-	for(var/turf/T in range(radius, source_turf))
-		if(T == source_turf)
-			continue
+	for(var/turf/T in orange(radius, source_turf))
 		if(istype(T, /turf/open/space))
 			continue
 
@@ -280,11 +278,11 @@
 			continue
 
 		var/obj/flamer_fire/temp = new()
-		var/atom/A = LinkBlocked(temp, source_turf, T)
+		var/atom/affected_atom = LinkBlocked(temp, source_turf, T)
 
-		if(A)
-			A.flamer_fire_act(burn_dam, F.weapon_cause_data)
-			if(A.flags_atom & ON_BORDER)
+		if(affected_atom)
+			affected_atom.flamer_fire_act(burn_dam, F.weapon_cause_data)
+			if(affected_atom.flags_atom & ON_BORDER)
 				continue
 
 		var/ring = get_dist(source_turf, T)

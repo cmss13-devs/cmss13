@@ -1881,37 +1881,37 @@
 	pistol_mags = 0
 	. = ..()
 
-/obj/item/storage/belt/gun/marine/can_be_inserted(obj/item/I, mob/user, stop_messages = FALSE)
+/obj/item/storage/belt/gun/marine/can_be_inserted(obj/item/inserted_item, mob/user, stop_messages = FALSE)
 	. = ..()
 	if(!.)
 		return
 
-	if(istype(I, /obj/item/ammo_magazine/pistol) || istype(I, /obj/item/ammo_magazine/revolver))
+	if(istype(inserted_item, /obj/item/ammo_magazine/pistol) || istype(inserted_item, /obj/item/ammo_magazine/revolver))
 		if(pistol_mags >= 2)
 			if(!stop_messages)
 				to_chat(user, SPAN_WARNING("[src] can't hold more pistol magazines."))
 			return FALSE
 		return TRUE
 
-	if(istype(I, /obj/item/ammo_magazine/rifle) || istype(I, /obj/item/ammo_magazine/smg) || istype(I, /obj/item/ammo_magazine/sniper))
+	if(istype(inserted_item, /obj/item/ammo_magazine/rifle) || istype(inserted_item, /obj/item/ammo_magazine/smg) || istype(inserted_item, /obj/item/ammo_magazine/sniper))
 		if(rifle_mags >= 3)
 			if(!stop_messages)
 				to_chat(user, SPAN_WARNING("[src] can't hold more rifle magazines."))
 			return FALSE
 		return TRUE
 
-/obj/item/storage/belt/gun/marine/_item_insertion(obj/item/I, prevent_warning = 0, mob/user)
-	if(istype(I, /obj/item/ammo_magazine/pistol) || istype(I, /obj/item/ammo_magazine/revolver))
+/obj/item/storage/belt/gun/marine/_item_insertion(obj/item/inserted_item, prevent_warning = 0, mob/user)
+	if(istype(inserted_item, /obj/item/ammo_magazine/pistol) || istype(inserted_item, /obj/item/ammo_magazine/revolver))
 		pistol_mags++
-	else if(istype(I, /obj/item/ammo_magazine/rifle) || istype(I, /obj/item/ammo_magazine/smg) || istype(I, /obj/item/ammo_magazine/sniper))
+	else if(istype(inserted_item, /obj/item/ammo_magazine/rifle) || istype(inserted_item, /obj/item/ammo_magazine/smg) || istype(inserted_item, /obj/item/ammo_magazine/sniper))
 		rifle_mags++
 
 	..()
 
-/obj/item/storage/belt/gun/marine/_item_removal(obj/item/I, atom/new_location)
-	if(istype(I, /obj/item/ammo_magazine/pistol) || istype(I, /obj/item/ammo_magazine/revolver))
+/obj/item/storage/belt/gun/marine/_item_removal(obj/item/inserted_item, atom/new_location)
+	if(istype(inserted_item, /obj/item/ammo_magazine/pistol) || istype(inserted_item, /obj/item/ammo_magazine/revolver))
 		pistol_mags = max(pistol_mags - 1, 0)
-	else if(istype(I, /obj/item/ammo_magazine/rifle) || istype(I, /obj/item/ammo_magazine/smg) || istype(I, /obj/item/ammo_magazine/sniper))
+	else if(istype(inserted_item, /obj/item/ammo_magazine/rifle) || istype(inserted_item, /obj/item/ammo_magazine/smg) || istype(inserted_item, /obj/item/ammo_magazine/sniper))
 		rifle_mags = max(rifle_mags - 1, 0)
 
 	..()

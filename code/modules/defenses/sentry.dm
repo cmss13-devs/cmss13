@@ -673,7 +673,7 @@
 	sentry_range = 10
 	omni_directional = TRUE
 	/// How long the battery for this turret lasts. Will warn low at 70% and critical at 90% use.
-	var/battery_duration = 20 MINUTES
+	var/battery_duration = 10 MINUTES
 	/// The current battery state
 	var/battery_state = TURRET_BATTERY_STATE_OK
 

@@ -891,8 +891,12 @@
 
 // Transfer any observing players over to the xeno's new body (`target`) on evolve/de-evolve.
 /mob/living/carbon/xenomorph/transfer_observers_to(atom/target)
+	if(!istype(target) || target == src || !get_turf(target))
+		return
+
+	. = ..()
+
 	for(var/mob/dead/observer/observer as anything in observers)
-		observer.clean_observe_target()
 		observer.do_observe(target)
 
 /mob/living/carbon/xenomorph/check_improved_pointing()

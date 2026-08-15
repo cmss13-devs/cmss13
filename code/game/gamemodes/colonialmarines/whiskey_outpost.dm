@@ -281,7 +281,7 @@
 		to_world(SPAN_ROUNDBODY("Well done, you've secured LV-624 for the hive!"))
 		to_world(SPAN_ROUNDBODY("It will be another five years before the USCM returns to the Neroid Sector, with the arrival of the 2nd 'Falling Falcons' Battalion and the USS Almayer."))
 		to_world(SPAN_ROUNDBODY("The xenomorph hive on LV-624 remains unthreatened until then..."))
-		world << sound('sound/misc/Game_Over_Man.ogg')
+		send_end_round_music('sound/misc/Game_Over_Man.ogg')
 		if(GLOB.round_statistics)
 			GLOB.round_statistics.round_result = MODE_INFESTATION_X_MAJOR
 			if(GLOB.round_statistics.current_map)
@@ -294,7 +294,7 @@
 		to_world(SPAN_ROUNDBODY("The signal rings out to the USS Alistoun, and Dust Raiders stationed elsewhere in the Neroid Sector begin to converge on LV-624."))
 		to_world(SPAN_ROUNDBODY("Eventually, the Dust Raiders secure LV-624 and the entire Neroid Sector in 2182, pacifiying it and establishing peace in the sector for decades to come."))
 		to_world(SPAN_ROUNDBODY("The USS Almayer and the 2nd 'Falling Falcons' Battalion are never sent to the sector and are spared their fate in 2186."))
-		world << sound('sound/misc/hell_march.ogg')
+		send_end_round_music('sound/misc/hell_march.ogg')
 		if(GLOB.round_statistics)
 			GLOB.round_statistics.round_result = MODE_INFESTATION_M_MAJOR
 			if(GLOB.round_statistics.current_map)
@@ -305,7 +305,7 @@
 		log_game("Round end result - no winners")
 		to_world(SPAN_ROUND_HEADER("NOBODY WON!"))
 		to_world(SPAN_ROUNDBODY("How? Don't ask me..."))
-		world << 'sound/misc/sadtrombone.ogg'
+		send_end_round_music('sound/misc/sadtrombone.ogg')
 		if(GLOB.round_statistics)
 			GLOB.round_statistics.round_result = MODE_INFESTATION_DRAW_DEATH
 

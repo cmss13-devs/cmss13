@@ -590,6 +590,7 @@
 			"tier" = xeno.tier, // This one is only important for sorting
 			"is_leader" = (IS_XENO_LEADER(xeno)),
 			"is_queen" = istype(xeno.caste, /datum/caste_datum/queen),
+			"is_muted" = xeno.hivemind_muted,
 			"caste_type" = xeno.caste_type
 		))
 

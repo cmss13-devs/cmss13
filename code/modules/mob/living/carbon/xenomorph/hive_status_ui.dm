@@ -235,6 +235,19 @@
 			var/datum/action/xeno_action/A = get_action(xenoSrc, /datum/action/xeno_action/activable/queen_heal)
 			A?.use_ability_wrapper(xenoTarget, TRUE)
 
+		if("mute")
+			var/mob/living/carbon/xenomorph/xenoTarget = locate(params["target_ref"]) in GLOB.living_xeno_list
+			var/mob/living/carbon/xenomorph/xenoSrc = ui.user
+
+			if(QDELETED(xenoTarget) || xenoTarget.stat == DEAD || should_block_game_interaction(xenoTarget))
+				return
+
+			if(xenoSrc.stat == DEAD)
+				return
+
+			var/datum/action/xeno_action/A = get_action(xenoSrc, /datum/action/xeno_action/activable/queen_mute_xeno)
+			A?.use_ability_wrapper(xenoTarget)
+
 		if("overwatch")
 			var/mob/living/carbon/xenomorph/xenoTarget = locate(params["target_ref"]) in GLOB.living_xeno_list
 			var/mob/living/carbon/xenomorph/xenoSrc = ui.user

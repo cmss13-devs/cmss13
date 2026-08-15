@@ -110,6 +110,8 @@
 	var/counts_for_roundend = TRUE
 	var/refunds_larva_if_banished = TRUE
 	var/can_hivemind_speak = TRUE
+	/// If TRUE, the Queen has silenced this xeno's ability to send hivemind messages. They can still read the hivemind.
+	var/hivemind_muted = FALSE
 
 	// Tackles
 	var/tackle_min = 2

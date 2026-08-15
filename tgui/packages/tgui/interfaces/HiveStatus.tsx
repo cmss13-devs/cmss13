@@ -58,6 +58,7 @@ const filterXenos = (data: {
       is_ssd: xeno_vitals[nicknumber].is_ssd,
       is_leader: key.is_leader,
       is_queen: key.is_queen,
+      is_muted: key.is_muted,
     };
     xeno_entries.push(entry);
   });
@@ -110,6 +111,7 @@ type XenoEntry = {
   is_ssd: BooleanLike;
   is_leader: BooleanLike;
   is_queen: BooleanLike;
+  is_muted: BooleanLike;
 };
 
 type XenoKey = {
@@ -117,6 +119,7 @@ type XenoKey = {
   tier: string;
   is_leader: BooleanLike;
   is_queen: BooleanLike;
+  is_muted: BooleanLike;
   caste_type: string;
 };
 
@@ -524,7 +527,12 @@ const XenoList = (props) => {
                       Watch
                     </Button>
                   </Flex.Item>
-                  {!!is_in_ovi && <QueenOviButtons target_ref={entry.ref} />}
+                  {!!is_in_ovi && (
+                    <QueenOviButtons
+                      target_ref={entry.ref}
+                      is_muted={entry.is_muted}
+                    />
+                  )}
                 </Flex>
               )}
             </Table.Cell>
@@ -570,9 +578,12 @@ const XenoCollapsible = (props: {
   );
 };
 
-const QueenOviButtons = (props: { readonly target_ref: string }) => {
-  const { act, data } = useBackend<Data>();
-  const { target_ref } = props;
+const QueenOviButtons = (props: {
+  readonly target_ref: string;
+  readonly is_muted: BooleanLike;
+}) => {
+  const { act } = useBackend<Data>();
+  const { target_ref, is_muted } = props;
 
   return (
     <>
@@ -598,6 +609,18 @@ const QueenOviButtons = (props: { readonly target_ref: string }) => {
           }
         >
           Give Plasma
+        </Button>
+      </Flex.Item>
+      <Flex.Item>
+        <Button
+          color={is_muted ? 'good' : 'bad'}
+          onClick={() =>
+            act('mute', {
+              target_ref: target_ref,
+            })
+          }
+        >
+          {is_muted ? 'Unmute' : 'Mute'}
         </Button>
       </Flex.Item>
     </>

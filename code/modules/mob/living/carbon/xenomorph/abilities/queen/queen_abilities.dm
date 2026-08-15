@@ -46,6 +46,12 @@
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	xeno_cooldown = 12 SECONDS
 
+/datum/action/xeno_action/activable/queen_mute_xeno
+	name = "Silence Xenomorph"
+	action_icon_state = "xeno_banish"
+	plasma_cost = 0
+	xeno_cooldown = 3 SECONDS
+
 /datum/action/xeno_action/onclick/queen_word
 	name = "Word of the Queen (50)"
 	action_icon_state = "queen_word"

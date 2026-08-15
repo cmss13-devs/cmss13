@@ -989,6 +989,37 @@
 	to_chat(queen, SPAN_XENONOTICE("You transfer some plasma to [target_xeno]."))
 	return ..()
 
+/datum/action/xeno_action/activable/queen_mute_xeno/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/queen/queen = owner
+	if(!queen.check_state())
+		return
+
+	if(!action_cooldown_check())
+		return
+
+	var/mob/living/carbon/xenomorph/target_xeno = target
+	if(!istype(target_xeno) || target_xeno.stat == DEAD)
+		to_chat(queen, SPAN_WARNING("You must target the xeno you want to silence."))
+		return
+
+	if(target_xeno == queen)
+		to_chat(queen, SPAN_XENOWARNING("We cannot silence ourselves!"))
+		return
+
+	if(!queen.can_not_harm(target_xeno))
+		to_chat(queen, SPAN_WARNING("You can only target xenos part of your hive!"))
+		return
+
+	apply_cooldown()
+	target_xeno.hivemind_muted = !target_xeno.hivemind_muted
+	if(target_xeno.hivemind_muted)
+		to_chat(queen, SPAN_XENONOTICE("You sever [target_xeno]'s voice from the hivemind."))
+		to_chat(target_xeno, SPAN_XENOWARNING("The Queen has severed your voice from the hivemind! You can no longer speak to your sisters."))
+	else
+		to_chat(queen, SPAN_XENONOTICE("You restore [target_xeno]'s voice in the hivemind."))
+		to_chat(target_xeno, SPAN_XENONOTICE("The Queen has restored your voice in the hivemind."))
+	return ..()
+
 /datum/action/xeno_action/onclick/send_thoughts/proc/queen_order()
 	var/mob/living/carbon/xenomorph/queen/xenomorph = owner
 	var/give_order_plasma_cost = 100

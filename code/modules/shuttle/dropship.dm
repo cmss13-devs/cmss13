@@ -401,6 +401,8 @@
 	icon = 'icons/turf/mohawk/mohawk-ramp.dmi'
 	density = FALSE
 	opacity = FALSE
+	flags_atom = NO_ZFALL
+	can_block_movement = FALSE
 
 /obj/structure/shuttle/part/dropship_omaha/ramp_decals/border_00
 	icon_state = "0,0"
@@ -434,6 +436,44 @@
 
 /obj/structure/shuttle/part/dropship_omaha/ramp_decals/border_32
 	icon_state = "2,3"
+
+/// ramp ///
+
+/obj/structure/shuttle/part/dropship_omaha/dummy_part
+	icon = 'icons/turf/floors/floors.dmi'
+	icon_state = "noop"
+	var/adjustable_ramp = FALSE
+	var/change_icon = FALSE
+	opacity = FALSE
+	density = FALSE
+	invisibility = 101
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	can_block_movement = FALSE
+	flags_atom = NO_ZFALL
+	var/turf/open/stored_turf
+	var/stored_icon_state
+	var/obj/structure/stairs/multiz/up/linked_staircase
+
+/obj/structure/shuttle/part/dropship_omaha/dummy_part/adjustable_first
+	adjustable_ramp = TRUE
+
+/obj/structure/shuttle/part/dropship_omaha/dummy_part/adjustable_second
+	change_icon = TRUE
+
+///landing gear ///
+
+/obj/structure/shuttle/part/dropship_omaha/landing_gear
+	name = "Omaha Landing Gear"
+	icon = 'icons/obj/structures/machinery/mohawk/bits_bobs.dmi'
+	icon_state = "landing_gear_bottom"
+	opacity = FALSE
+
+/obj/structure/shuttle/part/dropship_omaha/landing_gear/lower_half
+	icon_state = "landing_gear_bottom"
+
+/obj/structure/shuttle/part/dropship_omaha/landing_gear/upper_half
+	icon_state = "landing_gear_top"
+
 
 // USCM Dropship Normandy
 

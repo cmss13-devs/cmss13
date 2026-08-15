@@ -186,7 +186,7 @@
 	to_chat(world, "control_ramps")
 	for(var/butt in ramps)
 		var/obj/structure/machinery/door_control/omaha_ramp/buttong = butt
-		if(buttong.is_reserved_level(buttong.z))
+		if(is_reserved_level(buttong.z))
 			return
 		switch(action)
 			if("raise")

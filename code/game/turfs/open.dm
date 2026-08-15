@@ -1458,6 +1458,7 @@
 /// RAMP ////
 
 /turf/open/shuttle/dropship/omaha/ramp
+	name = "Ramp"
 	icon = 'icons/turf/mohawk/mohawk-ramp.dmi'
 	icon_state = "ramp-low-2"
 
@@ -1467,7 +1468,7 @@
 /turf/open/shuttle/dropship/omaha/ramp/rampio_01
 	icon_state = "ramp-2"
 
-/turf/open/shuttle/dropship/omaha/ramp/rampio_03
+/turf/open/shuttle/dropship/omaha/ramp/rampio_02
 	icon_state = "ramp-3"
 
 /turf/open/shuttle/dropship/omaha/ramp/rampio_10

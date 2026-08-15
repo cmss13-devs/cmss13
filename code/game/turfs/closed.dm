@@ -364,12 +364,6 @@
 /turf/closed/shuttle/dropship_omaha/transparent // ADMIN LOG: load_template(): Shuttle Template maps/shuttles/dropship_alamo.dmm has no mobile docking port. Aborting import.
 	opacity = FALSE
 
-/turf/closed/shuttle/dropship_omaha/landing_gear // split 64x64 sprites into 4 separate 32x32 sprites for ease when DS is rotating
-	name = "\improper Omaha landing gear" // change to obj/structure ig
-	icon = 'icons/obj/structures/machinery/mohawk/bits_bobs.dmi'
-	icon_state = "landing_gear2_nw" // gear1 is north-facing, gear2 is south facing
-	opacity = FALSE
-
 /turf/closed/shuttle/dropship2/transparent
 	opacity = FALSE
 

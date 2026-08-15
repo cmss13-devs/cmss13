@@ -310,6 +310,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/clothing/accessory/helmet/cover/netting/desert = NO_GARB_OVERRIDE,
 	/obj/item/clothing/accessory/helmet/cover/netting/jungle = NO_GARB_OVERRIDE,
 	/obj/item/clothing/accessory/helmet/cover/netting/urban = NO_GARB_OVERRIDE,
+	/obj/item/clothing/accessory/helmet/cover/netting/snow = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/spent_buckshot = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/spent_slug = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/spent_flech = NO_GARB_OVERRIDE,
@@ -319,6 +320,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/clothing/accessory/helmet/cover/raincover/jungle = NO_GARB_OVERRIDE,
 	/obj/item/clothing/accessory/helmet/cover/raincover/desert = NO_GARB_OVERRIDE,
 	/obj/item/clothing/accessory/helmet/cover/raincover/urban = NO_GARB_OVERRIDE,
+	/obj/item/clothing/accessory/helmet/cover/raincover/snow = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/rabbitsfoot = NO_GARB_OVERRIDE,
 	/obj/item/clothing/accessory/rosary = NO_GARB_OVERRIDE, // This one was already in the game for some reason, but never had an object
 	/obj/item/clothing/accessory/rosary/gold = NO_GARB_OVERRIDE,
@@ -350,6 +352,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/clothing/head/headband = NO_GARB_OVERRIDE,
 	/obj/item/clothing/head/headband/tan = NO_GARB_OVERRIDE,
 	/obj/item/clothing/head/headband/red = NO_GARB_OVERRIDE,
+	/obj/item/clothing/head/headband/red/static = PREFIX_HELMET_GARB_OVERRIDE,
 	/obj/item/clothing/head/headband/brown = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
 	/obj/item/clothing/head/headband/gray = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
 	/obj/item/clothing/head/headband/intel = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
@@ -551,7 +554,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 			var/obj/item/device/helmet_visor/temp_visor_holder = active_visor
 			active_visor = null
 			toggle_visor(potential_user, temp_visor_holder, TRUE)
+	active_visor = null // Incase above checks failed we still need to clear the ref
 	QDEL_NULL_LIST(built_in_visors)
+	QDEL_NULL_LIST(inserted_visors)
 	return ..()
 
 /obj/item/clothing/head/helmet/marine/attack_hand(mob/user)
@@ -837,6 +842,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		"nvg_sight_down",
 		"med_sight_down",
 		"sec_sight_down",
+		"sensor_sight_down",
 		"blank_hud_sight_down"
 	)
 

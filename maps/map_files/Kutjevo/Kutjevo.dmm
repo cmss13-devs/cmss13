@@ -929,7 +929,7 @@
 /turf/open/floor/kutjevo/multi_tiles/west,
 /area/kutjevo/interior/colony_south/power2/south)
 "adD" = (
-/turf/open/floor/almayer/research/containment/floor1,
+/turf/open/floor/almayer/research/containment/floor2/west,
 /area/kutjevo/exterior/lz_dunes)
 "adE" = (
 /obj/structure/stairs/perspective/kutjevo{
@@ -1822,6 +1822,24 @@
 "agU" = (
 /turf/open_space,
 /area/sky/level4)
+"agV" = (
+/obj/structure/machinery/cryopod/joe/weyland,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/interior/power)
+"agW" = (
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/interior/power)
+"agX" = (
+/obj/structure/machinery/cryopod/joe/weyland,
+/turf/open/floor/kutjevo/multi_tiles/southeast,
+/area/kutjevo/interior/power)
+"agY" = (
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/kutjevo/multi_tiles/southeast,
+/area/kutjevo/interior/power)
 "ahp" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -2743,7 +2761,7 @@
 	dir = 4;
 	pixel_y = 4
 	},
-/turf/open/floor/almayer/research/containment/floor1,
+/turf/open/floor/almayer/research/containment/floor2/west,
 /area/kutjevo/exterior/lz_pad)
 "bEp" = (
 /turf/closed/wall/kutjevo/rock,
@@ -3859,7 +3877,7 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/runoff_bridge)
 "dht" = (
-/turf/open/floor/almayer/research/containment/floor1,
+/turf/open/floor/almayer/research/containment/floor2/west,
 /area/kutjevo/exterior/Northwest_Colony)
 "dhL" = (
 /obj/structure/machinery/landinglight{
@@ -9012,7 +9030,7 @@
 /turf/open/floor/coagulation/icon0_5,
 /area/kutjevo/exterior/scrubland)
 "lzD" = (
-/turf/open/floor/almayer/research/containment/floor1,
+/turf/open/floor/almayer/research/containment/floor2/west,
 /area/kutjevo/exterior/lz_pad)
 "lAb" = (
 /obj/structure/platform/metal/kutjevo/west,
@@ -9208,7 +9226,7 @@
 /area/kutjevo/exterior/Northwest_Colony)
 "lRB" = (
 /obj/effect/sentry_landmark/lz_2/bottom_right,
-/turf/open/floor/almayer/research/containment/floor1,
+/turf/open/floor/almayer/research/containment/floor2/west,
 /area/kutjevo/exterior/Northwest_Colony)
 "lRV" = (
 /obj/structure/machinery/light,
@@ -15926,7 +15944,7 @@
 /area/kutjevo/interior/construction/north)
 "wvg" = (
 /obj/item/stack/sheet/metal,
-/turf/open/floor/almayer/research/containment/floor1,
+/turf/open/floor/almayer/research/containment/floor2/west,
 /area/kutjevo/exterior/lz_pad)
 "wvr" = (
 /turf/open/floor/kutjevo/colors/orange,
@@ -16628,7 +16646,7 @@
 /obj/structure/barricade/metal{
 	dir = 4
 	},
-/turf/open/floor/almayer/research/containment/floor1,
+/turf/open/floor/almayer/research/containment/floor2/west,
 /area/kutjevo/exterior/lz_pad)
 "xBm" = (
 /turf/open/floor/almayer/research/containment/floor2,
@@ -25551,7 +25569,7 @@ xzY
 xzY
 vMP
 xHm
-cvm
+agX
 jhS
 jhS
 kVJ
@@ -25718,9 +25736,9 @@ hQj
 psz
 vdC
 xHm
-cvm
-fRI
+agY
 hQj
+agV
 lAT
 xgV
 xHm
@@ -25887,7 +25905,7 @@ fCz
 nLJ
 dzD
 hQj
-hQj
+agW
 hQj
 xgV
 pnM

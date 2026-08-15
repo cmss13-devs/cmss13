@@ -134,7 +134,7 @@
 			M.take_limb_damage(min(6, volume))
 	if(isxeno(M))
 		var/mob/living/carbon/xenomorph/xeno = M
-		if(potency > POTENCY_MAX_TIER_1) //Needs level 7+ to have any effect
+		if(potency > 2) //Needs level 5+ to have any effect, remember that potency = level * 0.5
 			xeno.AddComponent(/datum/component/status_effect/toxic_buildup, potency * volume * 0.25)
 
 /datum/chem_property/negative/corrosive/reaction_obj(obj/O, volume, potency)
@@ -274,13 +274,14 @@
 		var/datum/internal_organ/O = pick(L.internal_organs)//Organs can't bleed, so we just damage them
 		O.take_damage(POTENCY_MULTIPLIER_LOW * potency)
 
-/datum/chem_property/negative/hemorrhaging/process_critical(mob/living/M, potency = 1, delta_time)
-	if(prob(10 * potency * delta_time) && ishuman(M))
-		var/mob/living/carbon/human/H = M
-		var/obj/limb/L = pick(H.limbs)
-		var/datum/wound/internal_bleeding/I = new (0)
-		L.add_bleeding(I, TRUE)
-		L.wounds += I
+/datum/chem_property/negative/hemorrhaging/process_critical(mob/living/victim, potency = 1, delta_time)
+	if(prob(10 * potency * delta_time) && ishuman(victim))
+		var/mob/living/carbon/human/bleeder = victim
+		var/obj/limb/limb = pick(bleeder.limbs)
+		var/datum/wound/internal_bleeding/bleed = new (0)
+		limb.owner.custom_pain("You feel something burst in your [limb.display_name]!", 1)
+		limb.add_bleeding(bleed, TRUE)
+		limb.wounds += bleed
 
 /datum/chem_property/negative/hemorrhaging/reaction_mob(mob/M, method = TOUCH, volume, potency)
 	M.AddComponent(/datum/component/status_effect/healing_reduction, potency * volume * POTENCY_MULTIPLIER_VLOW) //deals brute DOT to humans, prevents healing for xenos

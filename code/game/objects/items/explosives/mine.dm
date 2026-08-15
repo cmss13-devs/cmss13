@@ -467,7 +467,7 @@
 			active = TRUE
 
 /obj/item/explosive/mine/sharp/prime(mob/user)
-	SHOULD_NOT_SLEEP(TRUE)
+	set waitfor = FALSE
 	if (disarmed)
 		qdel(src)
 		return

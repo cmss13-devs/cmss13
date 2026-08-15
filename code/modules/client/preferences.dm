@@ -258,8 +258,10 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/xeno_prefix = "XX"
 	var/xeno_postfix = ""
 	var/xeno_name_ban = FALSE
-	var/xeno_vision_level_pref = XENO_VISION_LEVEL_MID_NVG
 	var/show_queen_name = FALSE
+
+	var/xeno_vision_level_pref = XENO_VISION_LEVEL_MID_NVG
+	var/alist/xeno_defensive_grab_pref = alist()
 
 	var/stylesheet = "Modern"
 
@@ -653,6 +655,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			dat += "<b>Set Crit Type:</b> <a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/set_crit_type'>Set</a><br>"
 			dat += "<b>Allow Flashing Lights:</b> <a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/set_flashing_lights_pref'>Set</a><br>"
 			dat += "<b>Play Lobby Music:</b> <a href='byond://?_src_=prefs;preference=lobby_music'><b>[(toggles_sound & SOUND_LOBBY) ? "Yes" : "No"]</b></a><br>"
+			dat += "<b>Play Round End Music:</b> <a href='byond://?_src_=prefs;preference=end_round_music'><b>[(toggles_sound & SOUND_ROUND_END) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Play VOX Announcements:</b> <a href='byond://?_src_=prefs;preference=sound_vox'><b>[(hear_vox) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Default Ghost Night Vision Level:</b> <a href='byond://?_src_=prefs;preference=ghost_vision_pref;task=input'><b>[ghost_vision_pref]</b></a><br>"
 			dat += "<b>Button To Activate Xenomorph Abilities:</b> <a href='byond://?_src_=prefs;preference=mouse_button_activation;task=input'><b>[xeno_ability_mouse_pref_to_string(xeno_ability_click_mode)]</b></a><br>"

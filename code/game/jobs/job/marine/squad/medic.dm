@@ -22,6 +22,15 @@
 
 	return slots * 2 + calculate_extra_slots(latejoin, slots)
 
+/datum/job/marine/medic/generate_entry_conditions(mob/living/carbon/human/current_human)
+	. = ..()
+	GLOB.marine_medics += current_human
+	RegisterSignal(current_human, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_medic_role))
+
+/datum/job/marine/medic/proc/cleanup_medic_role(mob/current_human)
+	SIGNAL_HANDLER
+	GLOB.marine_medics -= current_human
+
 /datum/job/marine/medic/whiskey
 	title = JOB_WO_SQUAD_MEDIC
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD

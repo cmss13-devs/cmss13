@@ -26,6 +26,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_leader, list(
 
 		list("UTILITIES", 0, null, null, null),
 		list("Fire Extinguisher (Portable)", 3, /obj/item/tool/extinguisher/mini, null, VENDOR_ITEM_REGULAR),
+		list("Megaphone", 5, /obj/item/device/megaphone, null, VENDOR_ITEM_REGULAR),
 		list("Motion Detector", 5, /obj/item/device/motiondetector, null, VENDOR_ITEM_REGULAR),
 		list("Fulton Device Stack", 5, /obj/item/stack/fulton, null, VENDOR_ITEM_REGULAR),
 		list("SensorMate Medical HUD", 4, /obj/item/clothing/glasses/hud/sensor, null, VENDOR_ITEM_REGULAR),
@@ -36,7 +37,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_leader, list(
 
 		list("HELMET OPTICS", 0, null, null, null),
 		list("Welding Visor", 5, /obj/item/device/helmet_visor/welding_visor, null, VENDOR_ITEM_REGULAR),
-		list("Medical Helmet Optic", 4, /obj/item/device/helmet_visor/medical, null, VENDOR_ITEM_RECOMMENDED),
+		list("SensorMate Medical Optic", 4, /obj/item/device/helmet_visor/medical, null, VENDOR_ITEM_RECOMMENDED),
 		list("Night Vision Optic", 25, /obj/item/device/helmet_visor/night_vision, null, VENDOR_ITEM_RECOMMENDED),
 
 		list("ENGINEERING SUPPLIES", 0, null, null, null),

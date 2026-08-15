@@ -46,19 +46,19 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
-/obj/item/clothing/accessory/patch/upp{
+/obj/item/clothing/accessory/patch/uscmpatch/upp{
 	pixel_x = -4;
 	pixel_y = 7
 	},
-/obj/item/clothing/accessory/patch/upp{
+/obj/item/clothing/accessory/patch/uscmpatch/upp{
 	pixel_x = -3;
 	pixel_y = 4
 	},
-/obj/item/clothing/accessory/patch/upp{
+/obj/item/clothing/accessory/patch/uscmpatch/upp{
 	pixel_x = -1;
 	pixel_y = 1
 	},
-/obj/item/clothing/accessory/patch/upp{
+/obj/item/clothing/accessory/patch/uscmpatch/upp{
 	pixel_x = 1;
 	pixel_y = -1
 	},
@@ -5262,7 +5262,7 @@
 	color = "#98a3ab"
 	},
 /obj/structure/barricade/handrail/strata,
-/obj/item/clothing/accessory/patch/upp/alt,
+/obj/item/clothing/accessory/patch/uscmpatch/upp/alt,
 /turf/open/floor/strata/red1,
 /area/strata/interior/outpost/security)
 "aoD" = (
@@ -12809,7 +12809,7 @@
 /area/strata/interior/outpost/canteen/bar)
 "aJC" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/clothing/accessory/patch/upp/alt,
+/obj/item/clothing/accessory/patch/uscmpatch/upp/alt,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/parts_storage_cave)
 "aJD" = (
@@ -31868,7 +31868,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/deep_jungle/old_tunnels)
 "bNv" = (
-/obj/item/clothing/accessory/patch/upp/alt,
+/obj/item/clothing/accessory/patch/uscmpatch/upp/alt,
 /turf/open/floor/almayer/plate,
 /area/strata/interior/research)
 "bNw" = (
@@ -36845,7 +36845,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/interior/outpost/canteen)
 "caN" = (
-/obj/item/clothing/accessory/patch/upp/alt,
+/obj/item/clothing/accessory/patch/uscmpatch/upp/alt,
 /obj/item/ammo_magazine/rifle/type71,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/bball_cave)
@@ -40745,7 +40745,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/item/clothing/accessory/patch/upp/alt,
+/obj/item/clothing/accessory/patch/uscmpatch/upp/alt,
 /turf/open/floor/interior/plastic,
 /area/strata/interior/outpost/canteen)
 "eBo" = (

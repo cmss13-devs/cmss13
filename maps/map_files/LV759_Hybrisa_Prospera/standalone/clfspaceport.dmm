@@ -106,14 +106,14 @@
 	icon_state = "triagedecalleft";
 	color = "#d3d3d3"
 	},
-/obj/item/clothing/accessory/patch/clf_patch,
-/obj/item/clothing/accessory/patch/clf_patch,
-/obj/item/clothing/accessory/patch/clf_patch,
-/obj/item/clothing/accessory/patch/clf_patch,
-/obj/item/clothing/accessory/patch/clf_patch,
-/obj/item/clothing/accessory/patch/clf_patch,
-/obj/item/clothing/accessory/patch/clf_patch,
-/obj/item/clothing/accessory/patch/clf_patch,
+/obj/item/clothing/accessory/patch/uscmpatch/clf_patch,
+/obj/item/clothing/accessory/patch/uscmpatch/clf_patch,
+/obj/item/clothing/accessory/patch/uscmpatch/clf_patch,
+/obj/item/clothing/accessory/patch/uscmpatch/clf_patch,
+/obj/item/clothing/accessory/patch/uscmpatch/clf_patch,
+/obj/item/clothing/accessory/patch/uscmpatch/clf_patch,
+/obj/item/clothing/accessory/patch/uscmpatch/clf_patch,
+/obj/item/clothing/accessory/patch/uscmpatch/clf_patch,
 /obj/item/clothing/under/colonist/clf,
 /obj/item/clothing/under/colonist/clf,
 /obj/item/clothing/under/colonist/clf,
@@ -3356,7 +3356,7 @@
 	level = 2
 	},
 /obj/structure/surface/table/almayer,
-/obj/item/clothing/accessory/patch/clf_patch{
+/obj/item/clothing/accessory/patch/uscmpatch/clf_patch{
 	pixel_x = 3;
 	pixel_y = 1
 	},

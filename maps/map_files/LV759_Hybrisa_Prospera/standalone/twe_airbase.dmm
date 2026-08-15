@@ -942,7 +942,7 @@
 /turf/open/floor/shiva/radiator_tile2,
 /area/lv759/indoors/twe_souter_outpost/hangar)
 "he" = (
-/obj/item/clothing/accessory/patch/twe,
+/obj/item/clothing/accessory/patch/uscmpatch/twe,
 /turf/open/floor/hybrisa/carpet/carpetdarkerblue,
 /area/lv759/indoors/twe_souter_outpost/dorm)
 "hi" = (
@@ -4197,7 +4197,7 @@
 	pixel_x = 16;
 	pixel_y = 2
 	},
-/obj/item/clothing/accessory/patch/twe,
+/obj/item/clothing/accessory/patch/uscmpatch/twe,
 /obj/item/reagent_container/food/snacks/packaged_burger{
 	pixel_y = 11
 	},

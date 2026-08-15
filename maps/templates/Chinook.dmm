@@ -2841,7 +2841,7 @@
 /area/adminlevel/chinook/event)
 "kU" = (
 /obj/structure/surface/table/reinforced/black,
-/obj/item/clothing/accessory/patch/uscmpatch{
+/obj/item/clothing/accessory/patch/uscmpatch/uscmpatch{
 	pixel_x = -3;
 	pixel_y = 6
 	},

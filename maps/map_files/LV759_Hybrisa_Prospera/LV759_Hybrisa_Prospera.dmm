@@ -6959,11 +6959,11 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /obj/structure/closet,
-/obj/item/clothing/accessory/patch/upp,
-/obj/item/clothing/accessory/patch/royal_marines,
-/obj/item/clothing/accessory/patch/forecon,
-/obj/item/clothing/accessory/patch/falcon,
-/obj/item/clothing/accessory/patch/uscmpatch,
+/obj/item/clothing/accessory/patch/uscmpatch/upp,
+/obj/item/clothing/accessory/patch/uscmpatch/royal_marines,
+/obj/item/clothing/accessory/patch/uscmpatch/forecon,
+/obj/item/clothing/accessory/patch/uscmpatch/falcon,
+/obj/item/clothing/accessory/patch/uscmpatch/uscmpatch,
 /obj/item/storage/box/saltshaker,
 /obj/item/reagent_container/food/condiment/saltshaker,
 /obj/item/reagent_container/food/condiment/saltshaker{
@@ -46473,7 +46473,7 @@
 /obj/effect/landmark/objective_landmark/close,
 /obj/structure/closet/cabinet,
 /obj/item/clothing/shoes/marine/royal_marine,
-/obj/item/clothing/accessory/patch/royal_marines,
+/obj/item/clothing/accessory/patch/uscmpatch/royal_marines,
 /obj/item/clothing/under/marine/veteran/royal_marine,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
@@ -135896,7 +135896,7 @@
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2{
 	pixel_y = 25
 	},
-/obj/item/clothing/accessory/patch/clf_patch,
+/obj/item/clothing/accessory/patch/uscmpatch/clf_patch,
 /turf/open/floor/plating/platingdmg3,
 /area/lv759/indoors/electical_systems/substation3)
 "tmK" = (

@@ -8,10 +8,7 @@
 /turf/open/auto_turf/strata_grass/layer0,
 /area/lv624/ground/caves/north_east_caves)
 "aac" = (
-/turf/closed/shuttle{
-	dir = 1;
-	icon_state = "pwall"
-	},
+/turf/closed/cordon,
 /area/space)
 "aad" = (
 /obj/structure/machinery/colony_floodlight{
@@ -3861,7 +3858,7 @@
 /obj/structure/machinery/colony_floodlight_switch{
 	pixel_y = 30
 	},
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 4
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate{
@@ -5352,7 +5349,7 @@
 /obj/item/reagent_container/food/condiment/peppermill{
 	pixel_y = 17
 	},
-/obj/item/tool/kitchen/utensil/pfork{
+/obj/item/tool/kitchen/utensil/fork/plastic{
 	pixel_y = 5;
 	pixel_x = 7
 	},
@@ -7612,7 +7609,7 @@
 /turf/open/hunter_temple,
 /area/lv624/ground/caves/ancient_temple)
 "azZ" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/hybrisa/street/cement1,
@@ -7795,7 +7792,7 @@
 /turf/open/floor/hybrisa/carpet/carpetfadedred,
 /area/lv624/lazarus/nexus_dorms)
 "aAJ" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/hybrisa/street/cement1,
@@ -8169,7 +8166,7 @@
 /turf/open/floor/hybrisa/wood/darkerwood,
 /area/lv624/lazarus/corpo_apartments)
 "aCh" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/hybrisa/street/cement1,
@@ -8502,19 +8499,19 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_jungle/swamp)
 "aDI" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/hybrisa/street/cement2,
 /area/lv624/lazarus/landing_zones/lz1)
 "aDJ" = (
-/obj/structure/machinery/landinglight/ds1/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/hybrisa/street/cement2,
 /area/lv624/lazarus/landing_zones/lz1)
 "aDK" = (
-/obj/structure/machinery/landinglight/ds1,
+/obj/structure/machinery/landinglight,
 /turf/open/hybrisa/street/cement2,
 /area/lv624/lazarus/landing_zones/lz1)
 "aDL" = (
-/obj/structure/machinery/landinglight/ds1/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/hybrisa/street/cement2,
 /area/lv624/lazarus/landing_zones/lz1)
 "aDM" = (
@@ -8529,7 +8526,7 @@
 /turf/open/gm/mudcoast/greenwater/cornerouter/north,
 /area/lv624/ground/jungle/west_jungle/swamp)
 "aDO" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/hybrisa/street/cement1,
@@ -8622,7 +8619,7 @@
 /turf/open/gm/grass/grassmud/corner2/north_west,
 /area/lv624/ground/jungle/west_jungle)
 "aEj" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/hybrisa/street/cement2,
@@ -8631,7 +8628,7 @@
 /turf/open/floor/wood,
 /area/lv624/lazarus/nexus_dorms)
 "aEl" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/hybrisa/street/cement2,
@@ -8689,7 +8686,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
 "aEw" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/hybrisa/street/cement1,
@@ -9145,7 +9142,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/lv624/lazarus/hydroponics)
 "aFK" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 4
 	},
 /turf/open/hybrisa/street/cement2,
@@ -9154,7 +9151,7 @@
 /turf/open/gm/river/red_pool,
 /area/lv624/lazarus/fitness)
 "aFM" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/hybrisa/street/cement2,
@@ -9252,13 +9249,13 @@
 /turf/open/floor/wood,
 /area/lv624/lazarus/nexus_dorms)
 "aGe" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/hybrisa/street/cement2,
 /area/lv624/lazarus/landing_zones/lz1)
 "aGf" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 8
 	},
 /turf/open/hybrisa/street/cement2,
@@ -9373,7 +9370,7 @@
 /turf/open/hybrisa/street/sidewalkcenter/west,
 /area/lv624/lazarus/quartstorage)
 "aGB" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/hybrisa/street/cement2,
@@ -9389,7 +9386,7 @@
 /turf/open/hybrisa/street/sidewalkfull,
 /area/lv624/lazarus/quartstorage)
 "aGE" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
 	},
 /turf/open/hybrisa/street/cement2,
@@ -9471,7 +9468,7 @@
 /turf/closed/wall,
 /area/lv624/lazarus/main_hall)
 "aGX" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 8
 	},
 /turf/open/hybrisa/street/cement1,
@@ -10102,10 +10099,6 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
-"aJY" = (
-/mob/living/simple_animal/lizard,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/central_jungle)
 "aJZ" = (
 /obj/structure/machinery/big_computers/computerwhite/computer5,
 /obj/structure/sign/poster{
@@ -10283,10 +10276,6 @@
 /obj/structure/curtain/leather/alt,
 /turf/open/floor/kutjevo/grey,
 /area/lv624/lazarus/security)
-"aKN" = (
-/mob/living/simple_animal/lizard,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/west_jungle/swamp)
 "aKO" = (
 /obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
@@ -10818,7 +10807,6 @@
 /turf/open/gm/grass/grass2,
 /area/lv624/lazarus/yggdrasil)
 "aMQ" = (
-/obj/structure/flora/tree/jungle/bigtreeTL,
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grassbeach/west,
 /area/lv624/lazarus/yggdrasil)
@@ -10828,10 +10816,6 @@
 "aMS" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /turf/open/gm/grass/grassbeach/south,
-/area/lv624/lazarus/yggdrasil)
-"aMT" = (
-/obj/structure/flora/tree/jungle/bigtreeTR,
-/turf/open/gm/grass/grass2,
 /area/lv624/lazarus/yggdrasil)
 "aMU" = (
 /turf/open/gm/grass/grass2,
@@ -10983,7 +10967,7 @@
 /area/lv624/ground/jungle/west_jungle/swamp)
 "aNp" = (
 /obj/effect/landmark/hunter_secondary,
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/hybrisa/street/cement2,
@@ -11523,7 +11507,7 @@
 	pixel_y = 17;
 	pixel_x = -5
 	},
-/obj/item/tool/kitchen/utensil/pfork{
+/obj/item/tool/kitchen/utensil/fork/plastic{
 	pixel_y = 5;
 	pixel_x = 7
 	},
@@ -12048,7 +12032,7 @@
 /turf/open/gm/dirt/brown,
 /area/lv624/ground/caves/mining)
 "aRu" = (
-/obj/structure/machinery/landinglight/ds2{
+/obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/hybrisa/street/cement1,
@@ -12190,25 +12174,25 @@
 /turf/open/hybrisa/street/sidewalkcorner,
 /area/lv624/lazarus/quartstorage/outdoors)
 "aRZ" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/hybrisa/street/cement2,
 /area/lv624/lazarus/landing_zones/lz1)
 "aSa" = (
-/obj/structure/machinery/landinglight/ds1{
+/obj/structure/machinery/landinglight{
 	dir = 1
 	},
 /turf/open/hybrisa/street/cement2,
 /area/lv624/lazarus/landing_zones/lz1)
 "aSb" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/hybrisa/street/cement2,
 /area/lv624/lazarus/landing_zones/lz1)
 "aSc" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/hybrisa/street/cement2,
@@ -12613,7 +12597,7 @@
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
 "aTt" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo,
+/obj/structure/machinery/landinglight/delaytwo,
 /turf/open/hybrisa/street/cement1,
 /area/lv624/lazarus/landing_zones/lz2)
 "aTu" = (
@@ -12625,7 +12609,7 @@
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
 "aTv" = (
-/obj/structure/machinery/landinglight/ds2,
+/obj/structure/machinery/landinglight,
 /turf/open/hybrisa/street/cement1,
 /area/lv624/lazarus/landing_zones/lz2)
 "aTx" = (
@@ -14425,7 +14409,7 @@
 /turf/open/hybrisa/street/sidewalk/northwest,
 /area/lv624/ground/jungle/north_jungle)
 "aZT" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
 /turf/open/hybrisa/street/cement1,
@@ -15977,7 +15961,7 @@
 /obj/structure/platform/metal/almayer/east{
 	layer = 3.05
 	},
-/obj/item/pamphlet/skill/powerloader{
+/obj/item/pamphlet/upgradeable/powerloader{
 	pixel_y = 7
 	},
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
@@ -17411,9 +17395,6 @@
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/north_west_jungle)
 "bjo" = (
-/mob/living/simple_animal/lizard{
-	dir = 4
-	},
 /turf/open/gm/grass/gbcorner/north_west,
 /area/lv624/ground/jungle/north_west_jungle)
 "bjp" = (
@@ -21193,9 +21174,7 @@
 /area/lv624/ground/colony/phi_lab)
 "bxW" = (
 /obj/structure/window_frame/colony/reinforced,
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /turf/open/floor/plating,
 /area/lv624/ground/colony/phi_lab)
 "bxX" = (
@@ -21433,7 +21412,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/lv624/ground/caves/west_caves)
 "byK" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
 /turf/open/hybrisa/street/cement1,
@@ -24997,9 +24976,7 @@
 	layer = 3.1
 	},
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /obj/effect/landmark/corpsespawner/wy/manager,
 /obj/structure/machinery/light{
 	dir = 1
@@ -25550,7 +25527,6 @@
 /area/lv624/ground/colony/phi_lab)
 "bKu" = (
 /obj/item/shard{
-	icon_state = "medium";
 	pixel_y = -7;
 	pixel_x = 3
 	},
@@ -27523,7 +27499,7 @@
 /area/lv624/ground/caves/west_caves)
 "bPr" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/tool/kitchen/utensil/pknife,
+/obj/item/tool/kitchen/utensil/knife/plastic,
 /turf/open/floor/corsat/whitebluefull,
 /area/lv624/ground/colony/phi_lab/breakroom)
 "bPs" = (
@@ -28097,7 +28073,7 @@
 /turf/open/floor/prison/darkbrowncorners3,
 /area/lv624/ground/colony/phi_lab/dome)
 "bRb" = (
-/mob/living/simple_animal/bat,
+/mob/living/simple_animal/small/bat,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/lv624/ground/caves/east_caves)
 "bRc" = (
@@ -30050,7 +30026,7 @@
 /area/lv624/ground/colony/phi_lab/dome)
 "bUQ" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2,
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 1
 	},
 /turf/open/floor/bcircuit,
@@ -32342,7 +32318,6 @@
 "cbo" = (
 /obj/structure/window_frame/wood,
 /obj/item/shard{
-	icon_state = "medium";
 	pixel_x = -1;
 	pixel_y = 11
 	},
@@ -32540,7 +32515,6 @@
 	dir = 4
 	},
 /obj/item/shard{
-	icon_state = "medium";
 	pixel_x = -1;
 	pixel_y = 11
 	},
@@ -35273,7 +35247,6 @@
 	pixel_y = 7
 	},
 /obj/item/shard{
-	icon_state = "medium";
 	pixel_y = -4;
 	pixel_x = -4
 	},
@@ -37993,7 +37966,6 @@
 /area/lv624/ground/caves/north_west_caves)
 "hKV" = (
 /obj/item/shard{
-	icon_state = "medium";
 	pixel_y = -7;
 	pixel_x = 3
 	},
@@ -39665,12 +39637,6 @@
 "jMo" = (
 /turf/open/floor/hybrisa/metal/bluemetal1/northeast,
 /area/lv624/lazarus/corpo_apartments)
-"jMI" = (
-/mob/living/simple_animal/lizard{
-	dir = 4
-	},
-/turf/open/gm/mudcoast/greenwater/east,
-/area/lv624/ground/jungle/south_east_jungle)
 "jMS" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -40242,7 +40208,7 @@
 /turf/open/floor/dark,
 /area/lv624/lazarus/comms)
 "kvE" = (
-/obj/structure/machinery/landinglight/ds2/delaythree,
+/obj/structure/machinery/landinglight/delaythree,
 /turf/open/hybrisa/street/cement1,
 /area/lv624/lazarus/landing_zones/lz2)
 "kwa" = (
@@ -40699,7 +40665,7 @@
 /turf/open/floor/dark,
 /area/lv624/lazarus/customs_dome)
 "kWJ" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/hybrisa/street/cement1,
@@ -41326,7 +41292,7 @@
 /turf/open/gm/dirt/brown/variant_1,
 /area/lv624/ground/colony/west_nexus_road)
 "lHc" = (
-/obj/structure/machinery/power/terminal{
+/obj/structure/terminal{
 	dir = 8
 	},
 /obj/effect/hybrisa/misc/fake/wire/blue{
@@ -43679,7 +43645,7 @@
 /turf/open/floor/plating,
 /area/lv624/ground/caves/mining)
 "odw" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
 /turf/open/hybrisa/street/cement1,
@@ -44246,7 +44212,7 @@
 /turf/open/gm/dirt/brown,
 /area/lv624/ground/jungle/south_west_jungle)
 "oOB" = (
-/obj/structure/machinery/landinglight/ds2/delayone,
+/obj/structure/machinery/landinglight/delayone,
 /turf/open/hybrisa/street/cement1,
 /area/lv624/lazarus/landing_zones/lz2)
 "oOD" = (
@@ -46119,7 +46085,7 @@
 /turf/open/floor/prison/darkbrown3,
 /area/lv624/lazarus/comms)
 "qNQ" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/hybrisa/street/cement1,
@@ -46649,7 +46615,7 @@
 	layer = 3;
 	name = "Mr. Wiggles' Bed"
 	},
-/mob/living/simple_animal/corgi/puppy{
+/mob/living/simple_animal/big/corgi/puppy{
 	desc = "It's a corgi puppy. MISTER WIGGLES!! HE IS THE GREATEST!";
 	name = "\improper Mister Wiggles"
 	},
@@ -46970,7 +46936,7 @@
 /turf/open/floor/kutjevo/tan/grey_edge/north,
 /area/lv624/lazarus/main_hall)
 "rME" = (
-/obj/structure/machinery/landinglight/ds1/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/liquid_fuel,
@@ -48303,7 +48269,7 @@
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 8
 	},
-/mob/living/simple_animal/bat,
+/mob/living/simple_animal/small/bat,
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 1;
 	layer = 2;
@@ -51810,7 +51776,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/customs_dome)
 "xhc" = (
-/mob/living/simple_animal/bat,
+/mob/living/simple_animal/small/bat,
 /obj/effect/decal/grass_overlay/grass1/inner{
 	dir = 1
 	},
@@ -53675,7 +53641,7 @@ alg
 buk
 sPm
 bpU
-aKN
+bpU
 bpU
 bli
 bli
@@ -72625,7 +72591,7 @@ aKl
 aKG
 aLe
 aLL
-aMT
+aMU
 aMU
 aOv
 aPh
@@ -76704,7 +76670,7 @@ ibS
 aJr
 aJr
 aJr
-aJY
+aJr
 aJr
 azW
 aJr
@@ -89067,7 +89033,7 @@ fEn
 pNr
 ruF
 rvQ
-jMI
+rvQ
 jUE
 eTQ
 wHb

@@ -338,7 +338,7 @@
 /area/desert_dam/building/bar/bar)
 "eV" = (
 /obj/structure/surface/table/almayer,
-/obj/item/clothing/accessory/patch/upp{
+/obj/item/clothing/accessory/patch/uscmpatch/upp{
 	pixel_y = -6;
 	pixel_x = -7
 	},
@@ -1246,7 +1246,7 @@
 /obj/structure/prop/wooden_cross{
 	pixel_y = 13
 	},
-/obj/item/clothing/accessory/patch/upp{
+/obj/item/clothing/accessory/patch/uscmpatch/upp{
 	pixel_y = -6
 	},
 /turf/open/desert/dirt,

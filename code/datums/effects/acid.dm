@@ -25,6 +25,8 @@
 
 /datum/effects/acid/New(atom/target_atom, mob/from = null, last_dmg_source = null, zone = "chest")
 	..(target_atom, from, last_dmg_source, zone)
+	if(QDELETED(src))
+		return
 	if(ishuman(target_atom))
 		var/mob/living/carbon/human/target_human = target_atom
 		target_human.update_effects()
@@ -42,6 +44,9 @@
 
 /datum/effects/acid/validate_atom(atom/target_atom)
 	if(istype(target_atom, /obj/structure/barricade))
+		return TRUE
+
+	if(istype(atom, /obj/structure/machinery/fuelpump))
 		return TRUE
 
 	if(isobj(target_atom))

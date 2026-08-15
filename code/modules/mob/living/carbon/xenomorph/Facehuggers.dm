@@ -48,7 +48,7 @@
 	/// the nearest human before dying
 	var/jumps_left = 5
 
-	var/time_to_live = 30 SECONDS
+	var/time_to_live = HUGGER_TIME_TO_LIVE
 	var/death_timer
 
 	var/icon_xeno = 'icons/mob/xenos/effects.dmi'
@@ -212,6 +212,8 @@
 	go_idle()
 
 /obj/item/clothing/mask/facehugger/Crossed(atom/target)
+	..()
+	
 	has_proximity(target)
 
 /obj/item/clothing/mask/facehugger/on_found(mob/finder)
@@ -502,11 +504,12 @@
 /obj/item/clothing/mask/facehugger/flamer_fire_act()
 	die()
 
-/obj/item/clothing/mask/facehugger/proc/return_to_egg(obj/effect/alien/egg/E)
-	visible_message(SPAN_XENOWARNING("[src] crawls back into [E]!"))
-	E.status = EGG_GROWN
-	E.icon_state = "Egg"
-	E.deploy_egg_triggers()
+/obj/item/clothing/mask/facehugger/proc/return_to_egg(obj/effect/alien/egg/egg)
+	visible_message(SPAN_XENOWARNING("[src] crawls back into [egg]!"))
+	egg.status = EGG_GROWN
+	egg.icon_state = "Egg"
+	deltimer(egg.empty_orphan_timer)
+	egg.deploy_egg_triggers()
 	qdel(src)
 
 /**

@@ -141,7 +141,7 @@
 
 /obj/item/clothing/head/helmet/roman
 	name = "\improper imperial galea helmet"
-	desc = "An extremely old helmet that was used by Roman heavy infantry units called the Legionares."
+	desc = "An extremely old helmet that was used by Roman heavy infantry units called the Legionary."
 	icon_state = "legionary_helm"
 	item_state = "legionary_helm"
 	icon = 'icons/obj/items/clothing/hats/misc_ert_colony.dmi'
@@ -161,7 +161,7 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 
 /obj/item/clothing/head/helmet/roman/centurion
-	desc = "An extremely old helmet that was used by Roman heavy infantry units called the Legionares. This one has a crest indicating it was used by Centurions."
+	desc = "An extremely old helmet that was used by Roman heavy infantry units called the Legionary. This one has a crest indicating it was used by Centurions."
 	icon_state = "centurion_helm"
 	item_state = "centurion_helm"
 	worn_x_dimension = 64
@@ -574,18 +574,18 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		return
 
 	if(istype(attacking_item, /obj/item/ammo_magazine) && world.time > helmet_bash_cooldown && user)
-		var/obj/item/ammo_magazine/M = attacking_item
+		var/obj/item/ammo_magazine/magazine = attacking_item
 		var/ammo_level = "more than half full."
 		playsound(user, 'sound/items/trayhit1.ogg', 15, FALSE)
-		if(M.current_rounds == (M.max_rounds/2))
+		if(magazine.current_rounds == (magazine.max_rounds/2))
 			ammo_level = "half full."
-		if(M.current_rounds < (M.max_rounds/2))
+		if(magazine.current_rounds < (magazine.max_rounds/2))
 			ammo_level = "less than half full."
-		if(M.current_rounds < (M.max_rounds/6))
+		if(magazine.current_rounds < (magazine.max_rounds/6))
 			ammo_level = "almost empty."
-		if(M.current_rounds == 0)
+		if(magazine.current_rounds == 0)
 			ammo_level = "empty. Uh oh."
-		user.visible_message("[user] bashes [M] against their helmet", "You bash [M] against your helmet. It is [ammo_level]")
+		user.visible_message("[user] bashes [magazine] against their helmet", "You bash [magazine] against your helmet. It is [ammo_level].")
 		helmet_bash_cooldown = world.time + 20 SECONDS
 		return
 
@@ -593,7 +593,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		var/obj/item/device/helmet_visor/new_visor = attacking_item
 
 		if(!new_visor.can_attach_to(src))
-			to_chat(user, SPAN_NOTICE("The [new_visor] does not fit on the [src]."))
+			to_chat(user, SPAN_NOTICE("[new_visor] does not fit on [src]."))
 			return
 
 		if(length(inserted_visors) >= max_inserted_visors)
@@ -608,7 +608,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 			return
 
 		inserted_visors += new_visor
-		to_chat(user, SPAN_NOTICE("You connect [new_visor] to the [src]."))
+		to_chat(user, SPAN_NOTICE("You connect [new_visor] to [src]."))
 		new_visor.forceMove(src)
 		if(!(locate(/datum/action/item_action/cycle_helmet_huds) in actions))
 			var/datum/action/item_action/cycle_helmet_huds/new_action = new(src)

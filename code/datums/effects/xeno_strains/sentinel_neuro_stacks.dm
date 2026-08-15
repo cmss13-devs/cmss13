@@ -16,7 +16,7 @@
 	///how much oxy damage should be given per process
 	var/proc_damage_per_stack = 0.2
 	///stopgrap for oxy damage on mob when this stops causing harm
-	var/max_oxyloss = 50
+	var/max_oxyloss = 20
 	///particles
 	var/obj/effect/abstract/particle_holder/particle_holder
 

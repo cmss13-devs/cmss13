@@ -478,16 +478,13 @@
 
 	if(mine_level == 1)
 		explosion_strength = 100
-		explosion_falloff = 50
 	else if(mine_level == 2)
 		explosion_strength = 100
-		explosion_falloff = 25
 	else if(mine_level == 3)
 		explosion_strength = 125
-		explosion_falloff = 30
 	else
 		explosion_strength = 125
-		explosion_falloff = 25
+	explosion_falloff = explosion_strength / mine_level
 
 	if (mine_safety)
 		for(var/mob/living/carbon/human in range((explosion_strength / explosion_falloff), src))

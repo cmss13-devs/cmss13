@@ -1544,7 +1544,7 @@
 
 	if(!QDELETED(bound_xeno))
 		bound_xeno.current_design.Remove(src)
-	unregister_weed_expiration_signal_design()
+	UnregisterSignal(bound_weed, COMSIG_PARENT_QDELETING)
 	bound_xeno = null
 	bound_weed = null
 	chosenMark = null
@@ -1577,10 +1577,6 @@
 	else if(bound_weed.hivenumber != bound_xeno.hivenumber)
 		visible_message(SPAN_XENOWARNING("The node withers away."))
 		qdel(src)
-
-/obj/effect/alien/resin/design/proc/unregister_weed_expiration_signal_design()
-	if(bound_weed)
-		UnregisterSignal(bound_weed, COMSIG_PARENT_QDELETING)
 
 /obj/effect/alien/resin/design/proc/register_weed_expiration_signal_design(obj/effect/alien/weeds/new_weed)
 	RegisterSignal(new_weed, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_expire))
@@ -1693,10 +1689,10 @@
 		else
 			node_wall = target_turf.place_on_top(/turf/closed/wall/resin/weedbound/node/normal)
 
-		var/turf/closed/wall/resin/Res = node_wall
-		if(istype(Res))
-			Res.hivenumber = src.hivenumber
-			set_hive_data(Res, Res.hivenumber)
+		var/turf/closed/wall/resin/target_resin = node_wall
+		if(istype(target_resin))
+			target_resin.hivenumber = src.hivenumber
+			set_hive_data(target_resin, target_resin.hivenumber)
 
 			to_chat(xeno, SPAN_NOTICE("We create a nodebound wall."))
 			playsound(node_wall, "alien_resin_build", 25)
@@ -1711,10 +1707,10 @@
 			else
 				placed = target_turf.place_on_top(/turf/closed/wall/resin/weedbound/normal)
 
-			var/turf/closed/wall/resin/Res = get_turf(target_turf)
-			if(istype(Res))
-				Res.hivenumber = src.hivenumber
-				set_hive_data(Res, Res.hivenumber)
+			var/turf/closed/wall/resin/target_resin = target_turf
+			if(istype(target_resin))
+				target_resin.hivenumber = src.hivenumber
+				set_hive_data(target_resin, target_resin.hivenumber)
 
 			to_chat(xeno, SPAN_NOTICE("We create a weedbound wall."))
 			playsound(placed, "alien_resin_build", 25)
@@ -1729,10 +1725,10 @@
 			else
 				new_structure = new /obj/structure/mineral_door/resin/weedbound/normal(target_turf)
 
-			var/obj/structure/mineral_door/resin/Res = locate(/obj/structure/mineral_door/resin) in get_turf(target_turf)
-			if(istype(Res))
-				Res.hivenumber = src.hivenumber
-				set_hive_data(Res, Res.hivenumber)
+			var/obj/structure/mineral_door/resin/target_resin = locate(/obj/structure/mineral_door/resin) in target_turf
+			if(istype(target_resin))
+				target_resin.hivenumber = src.hivenumber
+				set_hive_data(target_resin, target_resin.hivenumber)
 
 			to_chat(xeno, SPAN_NOTICE("We create a weedbound door."))
 			playsound(new_structure, "alien_resin_build", 25)
@@ -1745,7 +1741,7 @@
 	if(build_overlay && !QDELETED(build_overlay))
 		qdel(build_overlay)
 	if(bound_weed)
-		unregister_weed_expiration_signal_design()
+		UnregisterSignal(bound_weed, COMSIG_PARENT_QDELETING)
 	var/area/area = get_area(src)
 	area?.current_resin_count--
 	return ..()
@@ -1878,16 +1874,14 @@
 	if(!bound_weed)
 		addtimer(CALLBACK(src, PROC_REF(check_weed_replacement)), 3 SECONDS)
 		return
-	if(bound_weed)
-		old_hivenumber = bound_weed.hivenumber
-		RegisterSignal(bound_weed, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_expire))
+	old_hivenumber = bound_weed.hivenumber
+	RegisterSignal(bound_weed, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_expire))
 
 /turf/closed/wall/resin/weedbound/Destroy()
 	if(bound_weed)
 		UnregisterSignal(bound_weed, COMSIG_PARENT_QDELETING)
 		bound_weed = null
-		for(var/obj/effect/alien/weeds/node/weed_node in contents)
-			qdel(weed_node)
+		qdel(bound_weed)
 
 	var/turf/target_turf = get_turf(src)
 	if(target_turf)
@@ -1909,9 +1903,6 @@
 
 /turf/closed/wall/resin/weedbound/proc/check_weed_replacement()
 	var/turf/target_turf = get_turf(src)
-	if(!target_turf)
-		ScrapeAway()
-		return
 
 	var/obj/effect/alien/weeds/new_weed = locate(/obj/effect/alien/weeds) in target_turf
 	if(new_weed && new_weed.hivenumber == old_hivenumber)
@@ -2051,9 +2042,8 @@
 	if(!bound_weed)
 		addtimer(CALLBACK(src, PROC_REF(check_weed_replacement)), 3 SECONDS)
 		return
-	if(bound_weed)
-		old_hivenumber = bound_weed.hivenumber
-		RegisterSignal(bound_weed, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_expire))
+	old_hivenumber = bound_weed.hivenumber
+	RegisterSignal(bound_weed, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_expire))
 
 /obj/structure/mineral_door/resin/weedbound/Destroy()
 	if(bound_weed)

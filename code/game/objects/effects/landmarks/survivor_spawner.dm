@@ -1109,3 +1109,17 @@
 <span style='color:#607c4c; font-size:95%;'>While trying to locate the station's administrator and workers your squad was ambushed by xenomorphs. Fortifying your position you managed to stave off the initial assault but with moderate casualties. With your pilot not responding over your headets you fear your only hope of getting out of this rock is by someone else answering the ongoing distress signal.</span>"
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
 	archetype = INSERT_SYNTH
+
+/obj/effect/landmark/survivor_spawner/SOF_survivor_atlan/commandant
+	icon_state = "surv_upp"
+	equipment = /datum/equipment_preset/survivor/atlan/co_survivor_commandant
+	synth_equipment = /datum/equipment_preset/survivor/atlan/co_survivor_commandant
+	intro_text = list("You are the Commandant of Atlan Station!",\
+	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to survive. This station's armoury and cargo as well as the SOF shuttle should hold additional supplies./span>")
+	story_text = "<span style='color:#607c4c; font-size:95%;'>You are part of the Special Operating Force of the Union of Progressive Peoples, deployed alongside the CEC to build garrisons on distant worlds. Stationed as the Commandant of the Atlan Station mining platform in orbit of the gas giant KG-256, vital to the region's fuel economy.</span><br><br>\
+<span style='color:#607c4c; font-size:95%;'>After suffering damage to critical infrastructure, you were only able to send out a basic automated distress signal. Luckily a SOF response team heard your call and arrived soon after.</span><br><br>\
+<span style='color:#607c4c; font-size:95%;'>After the SOF force linked up with you, xenomorphs attacked. Fortifying your position you managed to stave off the initial assault but with moderate casualties. With the pilot not responding over your headets you fear your only hope of getting out of this rock is by someone else answering the ongoing distress signal.</span>"
+	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
+	archetype = INSERT_CO
+

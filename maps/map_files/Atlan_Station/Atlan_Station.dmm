@@ -44,7 +44,6 @@
 	color = "#98a3ab"
 	},
 /obj/item/weapon/gun/rifle/type71,
-/obj/item/weapon/gun/rifle/type71,
 /turf/open/floor/strata/red1,
 /area/atlan/station/security)
 "aaj" = (
@@ -87,9 +86,9 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/item/clothing/mask/gas/upp_pfb,
-/obj/item/clothing/mask/gas/upp_pfb,
-/obj/item/clothing/mask/gas/upp_pfb,
+/obj/item/clothing/under/marine/veteran/UPP/SOF_uniform,
+/obj/item/clothing/under/marine/veteran/UPP/SOF_uniform,
+/obj/item/clothing/under/marine/veteran/UPP/SOF_uniform,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/cargo)
 "aar" = (
@@ -3154,13 +3153,6 @@
 /obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_sw_train)
-"ajH" = (
-/obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/disposalpipe/junction{
-	dir = 2
-	},
-/turf/open/floor/corsat,
-/area/atlan/station/stairs1)
 "ajI" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/strata,
@@ -5469,6 +5461,14 @@
 	},
 /turf/closed/wall/upp_ship/grey/reinforced/outer,
 /area/atlan/oob)
+"aqx" = (
+/obj/item/weapon/gun/rifle/type71,
+/turf/open/floor/strata/blue1,
+/area/atlan/station/hab_flight)
+"aqy" = (
+/obj/item/ammo_magazine/rifle/type71,
+/turf/open/floor/strata,
+/area/atlan/station/hab_flight)
 "aqz" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/strata/floor2,
@@ -6744,6 +6744,14 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/floor2,
 /area/atlan/station/medical_maint)
+"auv" = (
+/obj/structure/filtration/machine_96x96/indestructible{
+	icon_state = "sedimentation_A_1";
+	can_block_movement = 0
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/corsat,
+/area/atlan/oob)
 "auw" = (
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/single_dorms)
@@ -8697,6 +8705,16 @@
 "aAM" = (
 /turf/closed/wall/upp_ship/grey/orange,
 /area/atlan/station/cent_maintenace)
+"aAN" = (
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	layer = 5.4
+	},
+/obj/structure/reagent_dispensers/tank/fuel,
+/turf/open/floor/prison/darkbrownfull2,
+/area/atlan/asteroid/processing_handling/cas)
 "aAO" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
@@ -9292,7 +9310,7 @@
 /area/atlan/oob)
 "aCN" = (
 /obj/structure/machinery/alarm,
-/turf/closed/wall/upp_ship/grey/red/reinforced,
+/turf/closed/wall/upp_ship/grey/red,
 /area/atlan/lz/near_lz1)
 "aCO" = (
 /turf/closed/wall/upp_ship/grey,
@@ -9512,6 +9530,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata,
 /area/atlan/station/single_dorms)
+"aDA" = (
+/obj/structure/machinery/light,
+/turf/open/floor/prison/darkyellowfull2,
+/area/atlan/station/water_maintenance)
 "aDB" = (
 /obj/structure/closet/athletic_mixed,
 /turf/open/floor/whitered/west,
@@ -10049,6 +10071,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/orange_edge/northwest,
 /area/atlan/station/hab_docks)
+"aFn" = (
+/obj/item/clothing/suit/storage/marine/faction/UPP/SOF_armor/medium,
+/turf/open/floor/strata/floor3/east,
+/area/atlan/station/cargo)
 "aFo" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 8
@@ -10815,7 +10841,9 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/item/ammo_box/magazine/ak4047,
+/obj/item/ammo_box/magazine/ak4047{
+	num_of_magazines = 11
+	},
 /turf/open/floor/strata/red1,
 /area/atlan/station/security)
 "aHW" = (
@@ -11149,6 +11177,7 @@
 /area/atlan/station/single_dorms)
 "aJb" = (
 /obj/structure/closet/firecloset/upp_full,
+/obj/item/clothing/suit/storage/marine/faction/UPP/army/alt,
 /turf/open/floor/strata/orange_icorner/west,
 /area/atlan/asteroid/processing_sw_train)
 "aJc" = (
@@ -11230,10 +11259,12 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/item/ammo_box/magazine/type71,
 /obj/item/ammo_magazine/rifle/type71,
 /obj/item/ammo_magazine/rifle/type71,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_box/magazine/type71{
+	num_of_magazines = 8
+	},
 /turf/open/floor/strata/red1,
 /area/atlan/station/security)
 "aJq" = (
@@ -11289,6 +11320,9 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/prison/sterile_white/south,
 /area/atlan/station/cent_maintenace)
+"aJB" = (
+/turf/closed/wall/upp_ship/grey/red,
+/area/atlan/lz/near_lz1)
 "aJC" = (
 /obj/structure/largecrate/random,
 /obj/structure/largecrate/random,
@@ -14578,11 +14612,9 @@
 /area/atlan/asteroid/processing_dock/cas)
 "aUk" = (
 /obj/structure/closet/coffin/woodencrate,
-/obj/item/clothing/suit/storage/marine/faction/UPP/support,
-/obj/item/clothing/suit/storage/marine/faction/UPP/support,
-/obj/item/clothing/suit/storage/marine/faction/UPP/support,
-/obj/item/clothing/suit/storage/marine/faction/UPP/support,
-/obj/item/clothing/suit/storage/marine/faction/UPP/support,
+/obj/item/clothing/suit/storage/marine/faction/UPP/SOF_armor,
+/obj/item/clothing/suit/storage/marine/faction/UPP/SOF_armor,
+/obj/item/clothing/suit/storage/marine/faction/UPP/SOF_armor,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/cargo)
 "aUl" = (
@@ -14642,8 +14674,7 @@
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/atlan/oob)
 "aUv" = (
-/obj/item/clothing/head/helmet/marine/veteran/UPP,
-/obj/item/clothing/head/helmet/marine/veteran/UPP,
+/obj/item/clothing/head/helmet/marine/veteran/UPP/heavy/SOF_helmet,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/cargo)
 "aUw" = (
@@ -14736,14 +14767,6 @@
 /obj/effect/hunter/ancient_temple/rubble/rubble_6,
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/processing_aux)
-"aUI" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	pixel_y = 1
-	},
-/obj/item/clothing/head/helmet/marine/veteran/UPP,
-/turf/open/floor/strata/multi_tiles/southeast,
-/area/atlan/station/cargo)
 "aUJ" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -21757,7 +21780,6 @@
 /area/atlan/station/atmospherics)
 "dwO" = (
 /obj/item/tool/crowbar,
-/obj/item/clothing/suit/storage/marine/faction/UPP,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/cargo)
 "dxq" = (
@@ -22228,7 +22250,6 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/item/weapon/gun/rifle/type71,
 /turf/open/floor/strata/red1,
 /area/atlan/station/hab_flight)
 "dOm" = (
@@ -25306,6 +25327,8 @@
 	color = "#98a3ab"
 	},
 /obj/structure/machinery/camera/autoname,
+/obj/item/clothing/suit/storage/marine/faction/UPP/army,
+/obj/item/clothing/suit/storage/marine/faction/UPP/army,
 /turf/open/floor/strata/red1,
 /area/atlan/station/security)
 "gmB" = (
@@ -27113,6 +27136,7 @@
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall{
 	pixel_y = 21
 	},
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/strata/floor2,
 /area/atlan/asteroid/exports_east)
 "hEL" = (
@@ -28351,7 +28375,6 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/item/ammo_magazine/rifle/type71,
 /obj/item/ammo_magazine/rifle/type71,
 /turf/open/floor/strata/red1,
 /area/atlan/station/hab_flight)
@@ -36813,7 +36836,7 @@
 /area/atlan/lz/near_lz2)
 "oUF" = (
 /obj/structure/sign/safety/flightcontrol,
-/turf/closed/wall/upp_ship/grey/red/reinforced,
+/turf/closed/wall/upp_ship/grey/red,
 /area/atlan/lz/near_lz1)
 "oUG" = (
 /obj/effect/decal/cleanable/blood,
@@ -37516,10 +37539,6 @@
 "pwW" = (
 /turf/closed/wall/upp_ship/grey,
 /area/atlan/asteroid/processing_se_train)
-"pxe" = (
-/obj/structure/machinery/door/airlock/prison_hatch/alt/autoname,
-/turf/open/floor/strata/multi_tiles/west,
-/area/atlan/station/storage)
 "pxn" = (
 /turf/closed/shuttle/ert/transparent{
 	icon_state = "leftengine_2"
@@ -38163,6 +38182,10 @@
 "pUA" = (
 /obj/structure/surface/rack{
 	color = "#98a3ab"
+	},
+/obj/effect/spawner/random/toolbox{
+	pixel_x = -2;
+	pixel_y = 5
 	},
 /obj/effect/spawner/random/toolbox{
 	pixel_x = -2;
@@ -41043,10 +41066,11 @@
 /turf/open/floor/strata/orange_cover,
 /area/atlan/station/repairs_lift)
 "rZM" = (
-/obj/structure/filtration/machine_96x96/indestructible{
-	icon_state = "sedimentation_A_1"
-	},
 /obj/structure/blocker/invisible_wall,
+/obj/structure/filtration/machine_96x96/indestructible{
+	icon_state = "sedimentation_A_1";
+	can_block_movement = 0
+	},
 /turf/open/floor/corsat,
 /area/atlan/oob)
 "rZQ" = (
@@ -47336,7 +47360,6 @@
 /obj/item/cell/high,
 /obj/item/cell/high,
 /obj/item/cell/high/empty,
-/obj/structure/machinery/light,
 /turf/open/floor/prison/darkyellowfull2,
 /area/atlan/station/water_maintenance)
 "xbP" = (
@@ -105562,7 +105585,7 @@ aAk
 aAk
 aAk
 nit
-pxe
+nit
 nit
 aOa
 aOa
@@ -105775,7 +105798,7 @@ bRA
 aAk
 jdH
 aQd
-ajr
+aOa
 aOa
 rDa
 qNK
@@ -105987,7 +106010,7 @@ aAk
 aAk
 dhp
 ajL
-ajH
+aju
 ajq
 rDa
 rDa
@@ -106668,7 +106691,7 @@ eDB
 srD
 aJw
 xNA
-jet
+aqy
 pvS
 aKu
 gxI
@@ -107093,7 +107116,7 @@ bdS
 aJw
 bXC
 tBY
-krb
+aqx
 aAw
 aAm
 rze
@@ -107204,7 +107227,7 @@ azb
 azb
 aDe
 aDe
-aDW
+aJB
 pBz
 eOT
 eOT
@@ -107235,7 +107258,7 @@ oUF
 aCR
 aCR
 aDW
-aDW
+aJB
 mEb
 nlx
 rqN
@@ -107416,7 +107439,7 @@ azb
 szy
 xlP
 gQM
-aDW
+aJB
 oUF
 oHv
 eOT
@@ -107442,13 +107465,13 @@ eOT
 eOT
 eOT
 vUh
-aDW
-aDW
+aJB
+aJB
 xfw
 gZc
 xzY
-aDW
-aDW
+aJB
+aJB
 lGI
 eMO
 fdM
@@ -108078,7 +108101,7 @@ aCV
 hWS
 uQB
 aDW
-aDW
+aJB
 rcW
 eOT
 eOT
@@ -108264,8 +108287,8 @@ azb
 cVU
 xlP
 xlP
-aDW
-aDW
+aJB
+aJB
 aDW
 hWS
 uQB
@@ -108290,13 +108313,13 @@ rbw
 rbw
 vaI
 vaI
-aDW
-aDW
+aJB
+aJB
 uQY
 xlP
 gZc
-aDW
-aDW
+aJB
+aJB
 fXm
 nlx
 rqN
@@ -108475,8 +108498,8 @@ alE
 azb
 azb
 xwQ
-aDW
-aDW
+aJB
+aJB
 oEr
 oxI
 rbw
@@ -108503,7 +108526,7 @@ rbw
 rbw
 vaI
 vaI
-aDW
+aJB
 aCR
 qKe
 aCR
@@ -112116,10 +112139,10 @@ tlF
 cTP
 llC
 nUR
-aUI
+taT
 ezm
 wTR
-ezm
+aFn
 noo
 awU
 taT
@@ -112330,8 +112353,8 @@ cFP
 nUR
 ftg
 hcZ
-rAA
 aTW
+rAA
 jGr
 awU
 ftg
@@ -121036,7 +121059,7 @@ woX
 aZU
 avS
 woX
-lLV
+aDA
 oCj
 iEF
 cDj
@@ -130366,7 +130389,7 @@ ycb
 aQj
 aQx
 ajR
-aQj
+aAN
 ajz
 lGF
 aNr
@@ -131470,7 +131493,7 @@ aSd
 aSd
 aSd
 aSd
-aSd
+hwP
 jRi
 fwe
 kUL
@@ -131900,7 +131923,7 @@ fwe
 fwe
 fwe
 fwe
-hwP
+fwe
 fwe
 aSd
 aSd
@@ -136117,7 +136140,7 @@ lCZ
 ntY
 mRn
 bro
-rZM
+auv
 qjo
 mRn
 arp
@@ -139486,7 +139509,7 @@ vQp
 uIG
 ajB
 uIG
-aSd
+uIG
 uIG
 aPD
 let
@@ -140340,7 +140363,7 @@ lGF
 aSd
 aSd
 aSd
-aSd
+bax
 let
 mVN
 mVN

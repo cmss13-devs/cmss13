@@ -2428,6 +2428,7 @@
 /obj/structure/machinery/power/apc/power/east,
 /obj/effect/decal/hybrisa/trash,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner/SOF_survivor_atlan/commandant,
 /turf/open/floor/strata/blue1,
 /area/atlan/station/admin)
 "Ia" = (

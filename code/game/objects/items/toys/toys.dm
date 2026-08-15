@@ -143,6 +143,8 @@
 	var/instant = 0
 	var/colorName = "red" //for updateIcon purposes
 
+	flags_obj = OBJ_IS_HELMET_GARB
+
 /*
  * Snap pops
  */
@@ -163,6 +165,7 @@
 	qdel(src)
 
 /obj/item/toy/snappop/Crossed(H as mob|obj)
+	..()
 	if((ishuman(H))) //i guess carp and shit shouldn't set them off
 		var/mob/living/carbon/M = H
 		to_chat(M, SPAN_WARNING("You step on the snap pop!"))

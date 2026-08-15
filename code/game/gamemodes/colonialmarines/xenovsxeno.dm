@@ -9,7 +9,7 @@
 	static_comms_amount = 0
 	flags_round_type = MODE_NO_SPAWN|MODE_NO_LATEJOIN|MODE_XVX|MODE_RANDOM_HIVE
 
-	var/list/structures_to_delete = list(/obj/effect/alien/weeds, /turf/closed/wall/resin, /obj/structure/mineral_door/resin, /obj/structure/bed/nest, /obj/item, /obj/structure/tunnel, /obj/structure/machinery/computer/shuttle_control, /obj/structure/machinery/defenses/sentry/premade)
+	var/list/structures_to_delete = list(/obj/effect/alien/weeds, /turf/closed/wall/resin, /obj/structure/mineral_door/resin, /obj/structure/bed/nest, /obj/item, /obj/structure/tunnel, /obj/structure/machinery/defenses/sentry/premade)
 	var/list/hives = list()
 	var/list/hive_cores = list()
 
@@ -278,9 +278,7 @@
 	var/musical_track
 	musical_track = pick('sound/theme/neutral_melancholy1.ogg', 'sound/theme/neutral_melancholy2.ogg')
 
-	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
-	S.status = SOUND_STREAM
-	sound_to(world, S)
+	send_end_round_music(musical_track)
 	if(GLOB.round_statistics)
 		GLOB.round_statistics.game_mode = name
 		GLOB.round_statistics.round_length = world.time

@@ -1209,59 +1209,6 @@
 	},
 /turf/open/floor/plating,
 /area/rostock/req)
-"adU" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/turf/open/floor/strata/floor2,
-/area/rostock/lower_deck/briefing)
-"adV" = (
-/obj/structure/platform{
-	dir = 8;
-	layer = 2.9
-	},
-/obj/structure/blocker/invisible_wall,
-/turf/open/gm/river/desert/deep/toxic,
-/area/space)
-"adW" = (
-/obj/structure/platform{
-	dir = 4;
-	layer = 2.7
-	},
-/turf/open/floor/strata/multi_tiles/southwest,
-/area/rostock/lower_deck/briefing)
-"adX" = (
-/obj/structure/platform{
-	layer = 2.7
-	},
-/turf/open/floor/strata/floor2,
-/area/rostock/lower_deck/briefing)
-"adY" = (
-/obj/structure/platform,
-/obj/structure/platform{
-	dir = 8;
-	layer = 3.0
-	},
-/obj/structure/platform_decoration{
-	dir = 10;
-	layer = 3.51
-	},
-/obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/rostock/command/cic)
-"adZ" = (
-/obj/structure/platform,
-/obj/structure/platform{
-	dir = 4;
-	layer = 2.5
-	},
-/obj/structure/platform_decoration{
-	dir = 6;
-	layer = 3.51
-	},
-/obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/rostock/command/cic)
 "aeC" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/camera/autoname/almayer{
@@ -3706,6 +3653,12 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/rostock/railgun/starboard)
+"bXt" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/turf/open/floor/strata/floor2,
+/area/rostock/lower_deck/briefing)
 "bXZ" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/light/small{
@@ -11056,6 +11009,14 @@
 	},
 /turf/open/floor/corsat,
 /area/rostock/lower_deck/starboard_umbilical)
+"hSG" = (
+/obj/structure/platform{
+	dir = 8;
+	layer = 2.9
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/river/desert/deep/toxic,
+/area/space)
 "hSN" = (
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/s_m)
@@ -12596,6 +12557,12 @@
 /obj/structure/morgue,
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/medical/morgue)
+"iZq" = (
+/obj/structure/platform{
+	layer = 2.7
+	},
+/turf/open/floor/strata/floor2,
+/area/rostock/lower_deck/briefing)
 "iZR" = (
 /obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -21418,6 +21385,13 @@
 /obj/structure/platform/metal/strata,
 /turf/open/floor/strata/multi_tiles/west,
 /area/rostock/lower_deck/kitchen)
+"qkJ" = (
+/obj/structure/platform{
+	dir = 4;
+	layer = 2.7
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/rostock/lower_deck/briefing)
 "qkX" = (
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer/sterile_green,
@@ -26122,6 +26096,19 @@
 	},
 /turf/open/floor/upp_hull_rostock,
 /area/space)
+"uhn" = (
+/obj/structure/platform,
+/obj/structure/platform{
+	dir = 4;
+	layer = 2.5
+	},
+/obj/structure/platform_decoration{
+	dir = 6;
+	layer = 3.51
+	},
+/obj/effect/decal/heavy_cable/cable_vertical,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/rostock/command/cic)
 "uhx" = (
 /obj/structure/platform_decoration,
 /turf/open/floor/strata/floor2,
@@ -29626,6 +29613,19 @@
 /obj/structure/machinery/cm_vending/sorted/medical/upp,
 /turf/open/floor/almayer/silverfull,
 /area/rostock/medical/lobby)
+"wSi" = (
+/obj/structure/platform,
+/obj/structure/platform{
+	dir = 8;
+	layer = 3.0
+	},
+/obj/structure/platform_decoration{
+	dir = 10;
+	layer = 3.51
+	},
+/obj/effect/decal/heavy_cable/cable_vertical,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/rostock/command/cic)
 "wSP" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 25
@@ -35091,25 +35091,25 @@ eIV
 eIV
 eIV
 mZs
-adV
-adV
-adV
-adV
-adV
-adV
-adV
+hSG
+hSG
+hSG
+hSG
+hSG
+hSG
+hSG
 nYE
 vxs
 gsb
 tAA
 nYE
-adV
-adV
-adV
-adV
-adV
-adV
-adV
+hSG
+hSG
+hSG
+hSG
+hSG
+hSG
+hSG
 gLr
 eIV
 eIV
@@ -39480,7 +39480,7 @@ xwM
 ayL
 oXx
 hGx
-adU
+bXt
 sVy
 hae
 hae
@@ -39662,7 +39662,7 @@ xwM
 qCp
 cLn
 oLb
-adU
+bXt
 sVy
 hae
 hae
@@ -40021,7 +40021,7 @@ gZZ
 sAw
 sAw
 uhx
-adW
+qkJ
 rWI
 mvo
 cLn
@@ -40202,7 +40202,7 @@ ati
 okd
 sAw
 rTW
-adX
+iZq
 kIM
 xUW
 vys
@@ -54572,7 +54572,7 @@ hjw
 tKG
 bMi
 aaI
-adY
+wSi
 bNV
 vqj
 bky
@@ -55118,7 +55118,7 @@ hjw
 vTf
 vaP
 fmG
-adZ
+uhn
 hjw
 gxw
 hjw

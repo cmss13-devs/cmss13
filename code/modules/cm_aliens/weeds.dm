@@ -255,7 +255,7 @@
 			old_design = locate() in T
 
 			if(old_design)
-				UnregisterSignal(old_design, COMSIG_PARENT_QDELETING)
+				old_design.unregister_weed_expiration_signal_design()
 
 			qdel(W)
 

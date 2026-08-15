@@ -1544,7 +1544,7 @@
 
 	if(!QDELETED(bound_xeno))
 		bound_xeno.current_design.Remove(src)
-	UnregisterSignal(bound_weed, COMSIG_PARENT_QDELETING)
+	unregister_weed_expiration_signal_design()
 	bound_xeno = null
 	bound_weed = null
 	chosenMark = null
@@ -1577,6 +1577,10 @@
 	else if(bound_weed.hivenumber != bound_xeno.hivenumber)
 		visible_message(SPAN_XENOWARNING("The node withers away."))
 		qdel(src)
+
+/obj/effect/alien/resin/design/proc/unregister_weed_expiration_signal_design()
+	if(bound_weed)
+		UnregisterSignal(bound_weed, COMSIG_PARENT_QDELETING)
 
 /obj/effect/alien/resin/design/proc/register_weed_expiration_signal_design(obj/effect/alien/weeds/new_weed)
 	RegisterSignal(new_weed, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_expire))
@@ -1741,7 +1745,7 @@
 	if(build_overlay && !QDELETED(build_overlay))
 		qdel(build_overlay)
 	if(bound_weed)
-		UnregisterSignal(bound_weed, COMSIG_PARENT_QDELETING)
+		unregister_weed_expiration_signal_design()
 	var/area/area = get_area(src)
 	area?.current_resin_count--
 	return ..()

@@ -1311,6 +1311,15 @@
 /obj/effect/landmark/survivor_spawner/lv522_forecon_synth,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/admin)
+"aeB" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/closed/wall/strata_outpost/reinforced,
+/area/lv522/atmos/way_in_command_centre)
+"aeC" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/closed/wall/strata_outpost/reinforced,
+/area/lv522/atmos/east_reactor/south)
 "aeD" = (
 /obj/structure/largecrate/random,
 /obj/effect/decal/cleanable/dirt,
@@ -1322,6 +1331,27 @@
 	},
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/mining)
+"aeE" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/closed/wall/strata_outpost/reinforced,
+/area/lv522/atmos/east_reactor/south)
+"aeF" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/closed/wall/strata_outpost/reinforced,
+/area/lv522/atmos/way_in_command_centre)
+"aeG" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/closed/wall/strata_outpost/reinforced,
+/area/lv522/atmos/filt)
+"aeH" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/corsat,
+/area/lv522/atmos/cargo_intake)
+"aeI" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/closed/wall/strata_outpost/reinforced,
+/area/lv522/atmos/cargo_intake)
 "aff" = (
 /obj/structure/platform_decoration/metal/almayer/west,
 /obj/effect/decal/warning_stripes{
@@ -2010,10 +2040,6 @@
 	},
 /turf/open/floor/plating,
 /area/lv522/outdoors/colony_streets/north_east_street)
-"aDx" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/closed/wall/strata_outpost/reinforced,
-/area/lv522/atmos/filt)
 "aDE" = (
 /obj/docking_port/stationary/marine_dropship/lz2{
 	name = "LZ2: Southeast Landing Zone"
@@ -11765,11 +11791,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorms)
-"gdw" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/closed/wall/strata_outpost/reinforced,
-/area/lv522/atmos/way_in_command_centre)
 "gdA" = (
 /obj/structure/barricade/deployable,
 /obj/effect/decal/cleanable/dirt,
@@ -14367,10 +14388,6 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/strata/white_cyan1/east,
 /area/lv522/indoors/a_block/medical)
-"hBH" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/closed/wall/strata_outpost/reinforced,
-/area/lv522/atmos/east_reactor/south)
 "hCi" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
@@ -14438,10 +14455,6 @@
 	},
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/central_streets)
-"hDM" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor/corsat,
-/area/lv522/atmos/cargo_intake)
 "hDZ" = (
 /obj/structure/window_frame/strata,
 /obj/item/shard{
@@ -18248,10 +18261,6 @@
 /obj/structure/largecrate/random,
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/mining)
-"jGD" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/closed/wall/strata_outpost/reinforced,
-/area/lv522/atmos/cargo_intake)
 "jGK" = (
 /obj/structure/largecrate/random/secure,
 /turf/open/auto_turf/shale/layer1,
@@ -26427,10 +26436,6 @@
 	},
 /turf/open/floor/plating,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
-"nPU" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/closed/wall/strata_outpost/reinforced,
-/area/lv522/atmos/way_in_command_centre)
 "nPV" = (
 /turf/open/asphalt/cement/cement2,
 /area/lv522/outdoors/colony_streets/north_street)
@@ -31499,11 +31504,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/casino)
-"qAv" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/closed/wall/strata_outpost/reinforced,
-/area/lv522/atmos/east_reactor/south)
 "qAy" = (
 /obj/item/toy/beach_ball,
 /turf/open/floor/prison/floor_plate,
@@ -56871,7 +56871,7 @@ ijv
 eyM
 iTX
 ePK
-jGD
+aeI
 ePK
 auG
 gat
@@ -58107,7 +58107,7 @@ dAG
 jmW
 iTX
 iTX
-jGD
+aeI
 fol
 fGh
 fYP
@@ -58313,7 +58313,7 @@ iEq
 eAz
 iTX
 ePK
-jGD
+aeI
 ePK
 fGH
 bcU
@@ -63256,7 +63256,7 @@ dXX
 saC
 saC
 saC
-hDM
+aeH
 iAv
 mEG
 alx
@@ -63462,7 +63462,7 @@ saC
 saC
 saC
 wBR
-hDM
+aeH
 iAv
 fsV
 fLA
@@ -63668,7 +63668,7 @@ saC
 saC
 oXk
 wBR
-hDM
+aeH
 rKS
 qqJ
 urp
@@ -64080,7 +64080,7 @@ saC
 saC
 oXk
 wBR
-hDM
+aeH
 rKS
 fuf
 qqJ
@@ -64287,7 +64287,7 @@ iyE
 eGs
 rdf
 xXV
-hDM
+aeH
 rKS
 rKS
 iAv
@@ -64494,9 +64494,9 @@ nMl
 wBR
 eUs
 xXV
-hDM
+aeH
 rvg
-hDM
+aeH
 iAv
 iAv
 iAv
@@ -66354,7 +66354,7 @@ aaW
 aaW
 aaU
 wGq
-nPU
+aeF
 tnN
 hKK
 lzb
@@ -66560,7 +66560,7 @@ qjG
 qjG
 qjG
 wGq
-nPU
+aeF
 dNe
 hMb
 lzb
@@ -66766,7 +66766,7 @@ qjG
 qjG
 oeU
 mkh
-nPU
+aeF
 tnN
 hNf
 sLc
@@ -66972,7 +66972,7 @@ iGl
 qjG
 qjG
 mkh
-nPU
+aeF
 oUq
 qpy
 vnX
@@ -68413,19 +68413,19 @@ qjG
 saC
 saC
 saC
-nPU
-nPU
+aeF
+aeF
 qHD
 hPq
 hPq
 iGM
 hPq
-nPU
-nPU
-nPU
-nPU
-nPU
-gdw
+aeF
+aeF
+aeF
+aeF
+aeF
+aeB
 yjp
 sOe
 uhF
@@ -68631,7 +68631,7 @@ jFG
 xZE
 xZE
 xZE
-hBH
+aeC
 men
 wrC
 kZe
@@ -68837,7 +68837,7 @@ nMC
 nNi
 kco
 xZE
-hBH
+aeC
 xZE
 wrC
 wrC
@@ -69043,7 +69043,7 @@ nMT
 nOg
 kdf
 xZE
-hBH
+aeC
 xZE
 xZE
 wrC
@@ -69249,7 +69249,7 @@ nNf
 yld
 kdL
 xZE
-hBH
+aeC
 dHF
 dHF
 dHF
@@ -69455,7 +69455,7 @@ nNf
 yld
 kel
 xZE
-hBH
+aeC
 vGp
 qSH
 qSH
@@ -69661,7 +69661,7 @@ jJa
 jWZ
 yaC
 xZE
-hBH
+aeC
 spy
 qnS
 uRL
@@ -69867,7 +69867,7 @@ faK
 fwo
 hQU
 xZE
-hBH
+aeC
 nQQ
 qSH
 trV
@@ -70073,7 +70073,7 @@ faZ
 jXp
 jlh
 xZE
-hBH
+aeC
 jGa
 qSH
 adz
@@ -70279,7 +70279,7 @@ faZ
 jYj
 tiQ
 xZE
-hBH
+aeC
 xZE
 qSH
 trV
@@ -70485,7 +70485,7 @@ faZ
 yaC
 kgb
 xZE
-hBH
+aeC
 kKD
 qSH
 trV
@@ -70691,7 +70691,7 @@ jJj
 jYu
 kdf
 xZE
-hBH
+aeC
 jOw
 qSH
 trV
@@ -70897,7 +70897,7 @@ jJa
 kaQ
 sfc
 xZE
-hBH
+aeC
 xZE
 qSH
 trV
@@ -71103,7 +71103,7 @@ nNf
 yld
 yaC
 xZE
-hBH
+aeC
 kdx
 vGp
 trV
@@ -71309,7 +71309,7 @@ nNf
 qjG
 kgm
 xZE
-hBH
+aeC
 svK
 sRI
 trV
@@ -71515,7 +71515,7 @@ jJI
 fwo
 khG
 xZE
-hBH
+aeC
 xZE
 isa
 trV
@@ -71721,7 +71721,7 @@ hSO
 yaC
 kiT
 xZE
-hBH
+aeC
 iel
 svK
 trV
@@ -71927,7 +71927,7 @@ xZE
 xZE
 xZE
 xZE
-hBH
+aeC
 sRI
 vGp
 trV
@@ -72133,7 +72133,7 @@ xZE
 xZE
 xZE
 xZE
-hBH
+aeC
 xZE
 isa
 trV
@@ -72339,7 +72339,7 @@ xZE
 xZE
 xZE
 xZE
-hBH
+aeC
 tNQ
 vGp
 trV
@@ -72540,12 +72540,12 @@ hSi
 xZE
 xZE
 xZE
-qAv
-hBH
-hBH
-hBH
-hBH
-qAv
+aeE
+aeC
+aeC
+aeC
+aeC
+aeE
 vTx
 vTx
 trV
@@ -72746,7 +72746,7 @@ aaK
 xZE
 xZE
 xZE
-hBH
+aeC
 xZE
 wDj
 wDj
@@ -72952,7 +72952,7 @@ yaC
 xZE
 xZE
 xZE
-hBH
+aeC
 wDj
 nJV
 elX
@@ -73158,7 +73158,7 @@ yaC
 xZE
 xZE
 xZE
-hBH
+aeC
 wDj
 aJS
 ezo
@@ -73364,7 +73364,7 @@ yaC
 xZE
 xZE
 xZE
-hBH
+aeC
 wDj
 cPg
 eJR
@@ -74600,7 +74600,7 @@ xZE
 xZE
 xZE
 xZE
-hBH
+aeC
 wDj
 rhh
 rtX
@@ -76646,14 +76646,14 @@ cpy
 cpy
 cpy
 cpy
-aDx
+aeG
 acQ
 fzK
 fzK
 fzK
 fzK
-aDx
-aDx
+aeG
+aeG
 cpy
 ien
 cpy

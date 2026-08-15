@@ -377,3 +377,17 @@
   labeo0:
   - bugfix: Guaranteed slot T2 xenos cannot transmute over the T2 slot capacity
   - bugfix: Xenos don't lose transmute by selecting their current caste.
+2026-08-15:
+  Antlers:
+  - spellcheck: The SEA's drill hat now refers to them as drill instructors rather
+      than drill sergeants.
+  Venuska1117:
+  - balance: Praetorian acid grenade got increased throwing speed and launch_type
+      changed to "HIGH_LAUNCH", allowing it to throw over more obstacles such as railings
+      or closets, but in exchange "explosion" time is increased from 1s to 1.25s
+  - bugfix: Fixed cades that got unwired not getting back their pass_flags.
+  Zenith, Aleksh. dimdimich1996:
+  - rscadd: adds various new thrall gear & expands their options.
+  - rscadd: adds the missing snow loadout gear, boots, rain-cover, netting.
+  - imageadd: adds arc icon for tech-tree.
+  - imagetweak: palette correction for prey_items.dmi

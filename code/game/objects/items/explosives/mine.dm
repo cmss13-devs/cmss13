@@ -467,7 +467,7 @@
 			active = TRUE
 
 /obj/item/explosive/mine/sharp/prime(mob/user)
-	set waitfor = FALSE
+	SHOULD_NOT_SLEEP(TRUE)
 	if (disarmed)
 		qdel(src)
 		return
@@ -490,11 +490,11 @@
 		explosion_falloff = 25
 
 	if (mine_safety)
-		for(var/mob/living/carbon/human in range((explosion_strength / explosion_falloff) - 1, src))
+		for(var/mob/living/carbon/human in range((explosion_strength / explosion_falloff), src))
 			if (human.get_target_lock(iff_signal))
 				disarm()
 				return
-	cell_explosion(loc, explosion_strength, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, CARDINAL_ALL_DIRS, cause_data, enviro=map_deployed)
+	cell_explosion(loc, explosion_strength, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data, enviro=map_deployed)
 	playsound(loc, 'sound/weapons/gun_sharp_explode.ogg', 100)
 	qdel(src)
 

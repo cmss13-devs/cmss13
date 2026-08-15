@@ -46,7 +46,7 @@
 	if(istype(target_atom, /obj/structure/barricade))
 		return TRUE
 
-	if(istype(atom, /obj/structure/machinery/fuelpump))
+	if(istype(target_atom, /obj/structure/machinery/fuelpump))
 		return TRUE
 
 	if(isobj(target_atom))

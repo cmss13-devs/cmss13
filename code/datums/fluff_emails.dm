@@ -212,7 +212,7 @@
 				Man last mission was an absolute shit show.
 				<br>
 				The USS Heyst got their shit kicked in with a missile and we got our cargo hold set on fire. And most of our good ammo is gone too!
-				Now we're left with the FMJs and the older AP munitions. What's worse is that most of 1st platoon is pretty much out of action.
+				Now we're left with the Antipersonell and AP munitions, no more superior firepower. What's worse is that most of 1st platoon is pretty much out of action.
 				Lotta folks are in the sickbay and the rest of us are heading off to cryosleep, well what's left of us. There's not many of the old guard left I'm afraid.
 				Until we get reinforced with more bodies, command has given the go ahead to merge 2nd platoon into 1st for the time being.
 				</html>

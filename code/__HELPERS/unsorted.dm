@@ -1846,3 +1846,53 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 		return TRUE
 	else
 		return FALSE
+
+/// Checks if given list of turfs has any specified obstacle, returns TRUE if path is free.
+/proc/is_path_free_check(list/turf/path, check_density=TRUE, check_opacity=TRUE, check_diagonal_clipping=TRUE, include_first=TRUE, include_last=TRUE)
+	var/list/turf/turfs = path.Copy(!include_first+1, path.len+include_last)
+	var/turf/current = null
+	var/turf/previous = turfs[1]
+	for(var/turf/tile in turfs) //Add as anything to all these fors
+		current = tile
+		if(check_diagonal_clipping && current != previous)
+			if(is_diagonal_clipping_check(previous, current, check_density, check_opacity))
+				return FALSE
+		if((check_density && current.density) || (check_opacity && current.opacity)) //Check turf itself
+			return FALSE
+		for (var/atom/obstacle in tile) //Check turf contents
+			if((check_density && obstacle.density && !ismob(obstacle)) || (check_opacity && obstacle.opacity))
+				return FALSE
+		previous = current
+
+	return TRUE
+
+/// Checks if a step between two adjacent turfs would be clipping diagonaly through a corner, returns TRUE if there is clipping.
+/proc/is_diagonal_clipping_check(turf/A, turf/B, check_density=TRUE, check_opacity=TRUE)
+	var/fdir = get_dir(A, B) //todo: check what happens if on same starting tile
+	var/fd1 = fdir & (fdir-1)
+	var/fd2 = fdir - fd1
+	var/turf/tt = get_step(A, fd1)
+	var/blocked = FALSE
+	if((check_density && tt.density) || (check_opacity && tt.opacity)) //Check turf itself
+		blocked = TRUE
+	for (var/atom/obstacle1 in tt)
+		if(((check_density && obstacle1.density && !ismob(obstacle1)) || (check_opacity && obstacle1.opacity)))
+			blocked = TRUE
+			break
+	if(!blocked)
+		return FALSE //If atleast one direction is free, then there is no clipping.
+	blocked = FALSE
+
+	tt = get_step(A, fd2)
+	if((check_density && tt.density) || (check_opacity && tt.opacity)) //Check turf itself
+		blocked = TRUE
+	for (var/atom/obstacle2 in tt)
+		if(((check_density && obstacle2.density && !ismob(obstacle2)) || (check_opacity && obstacle2.opacity)))
+			blocked = TRUE
+			break
+	if(blocked)
+		return TRUE
+
+	return FALSE
+
+

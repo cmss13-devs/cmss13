@@ -56181,7 +56181,10 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/white_antre/outdoors/facility_exterior)
 "ylt" = (
-/turf/closed/cordon,
+/turf/closed/shuttle{
+	dir = 1;
+	icon_state = "pwall"
+	},
 /area/white_antre/oob)
 "ymi" = (
 /turf/open/floor/almayer/silvercorner/east,

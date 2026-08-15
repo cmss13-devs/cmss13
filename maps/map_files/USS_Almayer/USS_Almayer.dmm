@@ -4410,7 +4410,7 @@
 /obj/item/clothing/head/helmet/marine/medic,
 /obj/item/storage/box/mre,
 /obj/item/device/radio/marine,
-/obj/item/clothing/accessory/patch/uscmpatch/medic_patch,
+/obj/item/clothing/accessory/patch/medic_patch,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/lower_medical_medbay)
@@ -5135,14 +5135,20 @@
 /turf/open/floor/almayer/silver/north,
 /area/almayer/command/cichallway)
 "amJ" = (
-/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform{
+	dir = 1;
+	layer = 2.9
+	},
 /obj/structure/machinery/cryopod{
 	dir = 1
 	},
 /obj/structure/platform_decoration/metal/almayer/northwest{
 	layer = 4.1
 	},
-/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform{
+	dir = 4;
+	layer = 2.8
+	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/living/cryo_cells)
 "amK" = (
@@ -6026,7 +6032,10 @@
 	dir = 1;
 	layer = 2.9
 	},
-/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform{
+	dir = 4;
+	layer = 2.8
+	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/living/cryo_cells)
 "apc" = (
@@ -6238,7 +6247,9 @@
 /turf/open/floor/wood/ship,
 /area/almayer/living/pilotbunks)
 "apH" = (
-/obj/structure/platform/metal/almayer,
+/obj/structure/platform{
+	layer = 2.9
+	},
 /obj/structure/machinery/vending/coffee{
 	layer = 2.89;
 	pixel_y = 5
@@ -7119,7 +7130,9 @@
 /turf/open/floor/almayer/orange/north,
 /area/almayer/engineering/upper_engineering)
 "arL" = (
-/obj/structure/platform_decoration/metal/almayer/east,
+/obj/structure/platform_decoration{
+	dir = 4
+	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
@@ -9199,7 +9212,9 @@
 /turf/open/floor/almayer/silver/east,
 /area/almayer/command/combat_correspondent)
 "axG" = (
-/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform{
+	dir = 4
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/combat_correspondent)
 "axH" = (
@@ -9225,7 +9240,10 @@
 	layer = 4.1
 	},
 /obj/effect/landmark/start/bridge,
-/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform{
+	layer = 2.9;
+	dir = 8
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/bridgebunks)
 "axL" = (
@@ -11819,7 +11837,9 @@
 /turf/open/floor/almayer/cargo,
 /area/almayer/engineering/upper_engineering)
 "aEy" = (
-/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform{
+	dir = 8
+	},
 /obj/structure/surface/table/almayer,
 /obj/item/storage/briefcase/inflatable{
 	pixel_x = 2
@@ -21359,7 +21379,9 @@
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/req)
 "bcC" = (
-/obj/structure/machinery/power/apc/almayer/north,
+/obj/structure/machinery/power/apc/almayer{
+	dir = 1
+	},
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/chemistry)
 "bcD" = (
@@ -33014,7 +33036,10 @@
 	layer = 3.1;
 	pixel_y = 13
 	},
-/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform{
+	dir = 4;
+	layer = 2.8
+	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/living/cryo_cells)
 "bCO" = (
@@ -33530,11 +33555,14 @@
 	layer = 2.91;
 	pixel_y = 13
 	},
-/obj/structure/platform/metal/almayer,
+/obj/structure/platform,
 /obj/structure/platform_decoration/metal/almayer/southeast{
 	layer = 4.1
 	},
-/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform{
+	dir = 4;
+	layer = 2.8
+	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/living/cryo_cells)
 "bDM" = (
@@ -49398,7 +49426,10 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_f_s)
 "cop" = (
-/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform{
+	dir = 1;
+	layer = 2.9
+	},
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
@@ -72561,7 +72592,9 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/p_bow)
 "mkG" = (
-/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform{
+	dir = 8
+	},
 /obj/effect/landmark/start/intel,
 /obj/effect/landmark/late_join/intel,
 /obj/effect/decal/cleanable/dirt,
@@ -94983,7 +95016,9 @@
 	dir = 4;
 	name = "ship-grade camera"
 	},
-/obj/structure/platform_decoration/metal/almayer/east,
+/obj/structure/platform_decoration{
+	dir = 4
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/repair_bay)
 "vLA" = (
@@ -97480,7 +97515,9 @@
 /turf/open/floor/almayer/green/north,
 /area/almayer/hallways/lower/port_aft_hallway)
 "wKF" = (
-/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform{
+	dir = 4
+	},
 /obj/structure/bed/chair{
 	dir = 8
 	},
@@ -99903,7 +99940,9 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/upper_engineering/starboard)
 "xKT" = (
-/obj/structure/platform/metal/almayer,
+/obj/structure/platform{
+	layer = 2.9
+	},
 /obj/structure/machinery/recharge_station/alt{
 	layer = 2.8
 	},

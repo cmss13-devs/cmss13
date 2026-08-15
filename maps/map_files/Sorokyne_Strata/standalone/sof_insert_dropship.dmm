@@ -364,7 +364,7 @@
 	pixel_y = -4;
 	layer = 3.1
 	},
-/obj/item/clothing/accessory/patch/uscmpatch/upp/alt,
+/obj/item/clothing/accessory/patch/upp/alt,
 /obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/hybrisa/metal/red_warning_floor,
 /area/strata/interior/shuttle_sof)

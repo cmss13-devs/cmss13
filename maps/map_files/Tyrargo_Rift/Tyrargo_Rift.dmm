@@ -50,7 +50,7 @@
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
 	},
-/obj/item/clothing/accessory/patch/uscmpatch/army/armor,
+/obj/item/clothing/accessory/patch/army/armor,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/oob/outdoors)
 "aah" = (
@@ -58,7 +58,7 @@
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
 	},
-/obj/item/clothing/accessory/patch/uscmpatch/army,
+/obj/item/clothing/accessory/patch/army,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/oob/outdoors)
 "aai" = (
@@ -100520,7 +100520,7 @@
 /turf/open/floor/almayer_hull/outerhull_dir_alt,
 /area/tyrargo/indoors/market/upper)
 "eSg" = (
-/obj/item/clothing/accessory/patch/uscmpatch/army/infantry,
+/obj/item/clothing/accessory/patch/army/infantry,
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
 	},

@@ -1232,7 +1232,10 @@
 /turf/open/floor/hybrisa/carpet/carpetreddeco_faded,
 /area/lv759/indoors/admin_records)
 "mX" = (
-/turf/closed/cordon,
+/turf/closed/shuttle{
+	dir = 1;
+	icon_state = "pwall"
+	},
 /area/lv759/oob)
 "na" = (
 /obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname,

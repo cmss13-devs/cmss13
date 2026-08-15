@@ -1075,7 +1075,7 @@
 /turf/open/floor/shiva/radiator_tile2,
 /area/lv759/indoors/twe_souter_outpost/hangar)
 "he" = (
-/obj/item/clothing/accessory/patch/uscmpatch/twe,
+/obj/item/clothing/accessory/patch/twe,
 /turf/open/floor/hybrisa/carpet/carpetdarkerblue,
 /area/lv759/indoors/twe_souter_outpost/dorm)
 "hi" = (
@@ -4702,7 +4702,7 @@
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
 "TJ" = (
 /obj/structure/surface/table/reinforced/black,
-/obj/item/clothing/accessory/patch/uscmpatch/twe,
+/obj/item/clothing/accessory/patch/twe,
 /turf/open/floor/almayer,
 /area/lv759/indoors/twe_souter_outpost/hallway)
 "TN" = (

@@ -196,7 +196,7 @@
 /datum/ammo/rifle/sharp/explosive/proc/delayed_explosion(obj/projectile/shot_dart, mob/target, mob/shooter)
 	if(ismob(target))
 		var/explosion_strength = 60
-		var/explosion_falloff = 35
+		var/explosion_falloff = 60
 		var/cause_data = create_cause_data("P9 SHARP Rifle", shooter)
 		if (mine_safety)
 			for(var/mob/living/carbon/human in range((explosion_strength / explosion_falloff), target))

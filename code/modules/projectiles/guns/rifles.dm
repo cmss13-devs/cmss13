@@ -1990,6 +1990,10 @@
 		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/alt_iff_scope,
 		/obj/item/attachable/flashlight/grip,
+		/obj/item/attachable/attached_gun/grenade,
+		/obj/item/attachable/attached_gun/flamer,
+		/obj/item/attachable/attached_gun/flamer/advanced,
+		/obj/item/attachable/attached_gun/shotgun,
 		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/attached_gun/flare_launcher,
 	)

@@ -3356,6 +3356,9 @@
 	pixel_x = -8;
 	pixel_y = 12
 	},
+/obj/item/clothing/suit/storage/marine/faction/UPP/SOF_armor,
+/obj/item/clothing/suit/storage/marine/faction/UPP/SOF_armor,
+/obj/item/clothing/suit/storage/marine/faction/UPP/SOF_armor,
 /turf/open/floor/strata/floor3/east,
 /area/atlan/station/cargo)
 "akm" = (
@@ -14610,13 +14613,6 @@
 "aUj" = (
 /turf/open/floor/prison/darkbrownfull2,
 /area/atlan/asteroid/processing_dock/cas)
-"aUk" = (
-/obj/structure/closet/coffin/woodencrate,
-/obj/item/clothing/suit/storage/marine/faction/UPP/SOF_armor,
-/obj/item/clothing/suit/storage/marine/faction/UPP/SOF_armor,
-/obj/item/clothing/suit/storage/marine/faction/UPP/SOF_armor,
-/turf/open/floor/strata/floor3/east,
-/area/atlan/station/cargo)
 "aUl" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 8
@@ -111505,7 +111501,7 @@ nUR
 nUR
 taT
 kHU
-aUk
+bFp
 ezm
 noo
 awW

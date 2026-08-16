@@ -195,7 +195,7 @@
 	faction = FACTION_UPP
 	minimap_background = "background_upp_civilian"
 	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
-	skills = /datum/skills/civilian
+	skills = /datum/skills/civilian/survivor
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 	idtype = /obj/item/card/id
 	flags = EQUIPMENT_PRESET_START_OF_ROUND

@@ -1,0 +1,6 @@
+author: "Unknownity"
+delete-after: True
+changes:
+  - balance: "Reinforced Walls now take 8 plasteel sheets to construct instead of 5."
+  - rscadd: "Added one marine tip about being able to reinforce reagent and fuel tanks with plasteel."
+  - refactor: "Nuked some single letter vars in the girders file."

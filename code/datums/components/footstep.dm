@@ -29,7 +29,7 @@
 
 	RegisterSignal(parent, list(COMSIG_MOVABLE_MOVED), PROC_REF(play_simplestep))
 
-/datum/component/footstep/InheritComponent(datum/component/C, i_am_originalsteps_ = 2, volume_ = 50, range_ = null, falloff_ = 1, footstep_sounds_ = "alien_footstep_large", drag_sounds_ = 'sound/effects/alien_dragsound_large.ogg', vary_ = rand(20000, 25000))
+/datum/component/footstep/InheritComponent(datum/component/C, i_am_original, steps_ = 2, volume_ = 50, range_ = null, falloff_ = 1, footstep_sounds_ = "alien_footstep_large", drag_sounds_ = 'sound/effects/alien_dragsound_large.ogg', vary_ = rand(20000, 25000))
 	. = ..()
 	footstep_sounds = footstep_sounds_
 

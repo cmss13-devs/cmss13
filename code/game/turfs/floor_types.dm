@@ -280,7 +280,7 @@
 /turf/open/floor/plating/plating_catwalk/update_icon()
 	. = ..()
 	if(covered)
-		overlays += image(icon, src, covered_icon_state, CATWALK_LAYER)
+		overlays += image(icon, src, covered_icon_state, depth == DEPTH_LAND ? CATWALK_LAYER : UNDER_TURF_LAYER)
 
 /turf/open/floor/plating/plating_catwalk/attackby(obj/item/W as obj, mob/user as mob)
 	if (HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))

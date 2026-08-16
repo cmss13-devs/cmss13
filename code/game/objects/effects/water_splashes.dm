@@ -9,9 +9,11 @@
 	layer = ABOVE_XENO_LAYER
 	var/lifetime = 5 SECONDS
 
-/obj/effect/water_splash/Initialize(mapload, ...)
+/obj/effect/water_splash/Initialize(mapload=FALSE, in_lifetime)
 	. = ..()
-	addtimer(CALLBACK(src, PROC_REF(destroy_effect)), lifetime)
+	lifetime = in_lifetime ? in_lifetime : lifetime
+	if(lifetime != INFINITY)
+		addtimer(CALLBACK(src, PROC_REF(destroy_effect)), lifetime)
 
 /obj/effect/water_splash/proc/destroy_effect()
 	qdel(src)

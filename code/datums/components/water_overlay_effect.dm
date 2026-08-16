@@ -4,14 +4,11 @@
 	var/datum/effects/water_overlay_effect/my_water_overlay_effect
 	var/turf_type //! Turf type the effect applies to
 
-
 /datum/component/water_overlay_effect/Initialize(turf/input_turf, y_offset)
-	if(!istype(parent, /atom/movable))
+	if((!iscarbon(usr) && !isobj(usr)) || !ispath(input_turf.type, /turf/open))
 		return COMPONENT_INCOMPATIBLE
 	turf_type = input_turf.type
-	my_water_overlay_effect = new(parent)
-	my_water_overlay_effect.pixel_y_offset = y_offset
-	my_water_overlay_effect.update(get_turf(parent))
+	my_water_overlay_effect = new(parent, src, input_turf)
 
 /datum/component/water_overlay_effect/Destroy()
 	. = ..()
@@ -27,7 +24,8 @@
 		my_water_overlay_effect.pixel_y_offset = y_offset
 		will_update = TRUE
 	if(will_update)
-		my_water_overlay_effect.update(get_turf(parent))
+		my_water_overlay_effect.water_turf = input_turf
+		my_water_overlay_effect.update()
 
 /datum/component/water_overlay_effect/proc/handle_affected_mob_move(parent_source, oldloc, direction, forced)
 	SIGNAL_HANDLER
@@ -45,6 +43,7 @@
 	if(ispath(laid_on_turf.type, /turf/open))
 		var/turf/open/open_laid_on_turf = laid_on_turf
 		my_water_overlay_effect.pixel_y_offset = open_laid_on_turf.depth
+	my_water_overlay_effect.water_turf = laid_on_turf
 	my_water_overlay_effect.update(laid_on_turf)
 
 /datum/component/water_overlay_effect/proc/update_the_effect()
@@ -54,6 +53,7 @@
 		var/turf/open/open_buckled_turf = unbuckled_turf
 		my_water_overlay_effect.pixel_y_offset = open_buckled_turf.depth
 	my_water_overlay_effect.hidden = FALSE
+	my_water_overlay_effect.water_turf = unbuckled_turf
 	my_water_overlay_effect.update(get_turf(parent))
 
 /datum/component/water_overlay_effect/RegisterWithParent(datum/target)

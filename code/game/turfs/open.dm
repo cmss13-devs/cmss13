@@ -157,8 +157,9 @@
 		var/datum/component/water_overlay_effect/found_component = mover.GetComponent(/datum/component/water_overlay_effect)
 		if(found_component)
 			found_component.my_water_overlay_effect.hidden = FALSE
-			found_component.my_water_overlay_effect.update(src)
-		new /obj/effect/water_splash(src, src)
+			found_component.my_water_overlay_effect.water_turf = src
+			found_component.my_water_overlay_effect.update()
+		new /obj/effect/water_splash(src)
 		playsound(src, "sound/effects/water/splash.ogg", 20, 1, 10, falloff=1)
 
 /turf/open/proc/set_covered(setting)
@@ -173,6 +174,28 @@
 			RegisterSignal(src, COMSIG_TURF_ENTERED, PROC_REF(on_enter))
 			RegisterSignal(src, COMSIG_ATOM_HITBY, PROC_REF(on_hit))
 	update_icon()
+
+/turf/open/proc/become_water(set_depth, set_type)
+	if(depth < DEPTH_LAND)	//already water
+		return
+	depth = set_depth
+	turf_flags = TURF_WATERLIKE
+	water_type = set_type
+	layer = UNDER_WATER_TURF_LAYER
+	for(var/obj/structure/catwalk/catwalk in contents)
+		catwalk.layer = UNDER_WATER_TURF_LAYER
+		layer = UNDER_WATER_TURF_LAYER - 0.01
+	update_icon()	//some turfs overlay themselves with a catwalk, we need to update the layer of that overlay
+	RegisterSignal(src, COMSIG_TURF_ENTERED, PROC_REF(on_enter))
+	RegisterSignal(src, COMSIG_ATOM_HITBY, PROC_REF(on_hit))
+
+/turf/open/proc/stop_being_water()
+	depth = DEPTH_LAND
+	turf_flags &= ~	TURF_WATERLIKE
+	water_type = null
+	layer = initial(layer)
+	UnregisterSignal(src, COMSIG_TURF_ENTERED, PROC_REF(on_enter))
+	UnregisterSignal(src, COMSIG_ATOM_HITBY, PROC_REF(on_hit))
 
 // Black & invisible to the mouse. used by vehicle interiors
 /turf/open/void
@@ -592,7 +615,7 @@
 
 /turf/open/gm/grass/grassbeach
 	icon_state = "grassbeach"
-	turf_flags = TURF_COASTLINE
+	turf_flags = TURF_WATER
 	water_type = /turf/open/gm/river
 
 /turf/open/gm/grass/grassbeach/north
@@ -759,7 +782,8 @@
 	is_weedable = NOT_WEEDABLE
 	depth = DEPTH_SHALLOW //used for the offset of mobs that enter it (see water_overlay_effect.dm)
 	layer = UNDER_WATER_TURF_LAYER
-	turf_flags = TURF_FULL_WATER
+	turf_flags = TURF_WATER
+	water_type = /turf/open/gm/river
 
 /turf/open/gm/river/Initialize(mapload, ...)
 	. = ..()
@@ -876,6 +900,7 @@
 	base_river_slowdown = 4 // VERY. SLOW.
 	icon_state = "seaintermediate"
 	depth = DEPTH_INTERMEDIATE
+	water_type = /turf/open/gm/river/ocean
 
 /turf/open/gm/river/ocean/deep_ocean
 	name = "deep ocean"
@@ -883,6 +908,7 @@
 	allow_construction = FALSE
 	icon_state = "seadeep"
 	depth = DEPTH_DEEP
+	water_type = /turf/open/gm/river/ocean/deep_ocean
 
 /turf/open/gm/river/ocean/Entered(atom/movable/entered_movable, atom/old_loc)
 	. = ..()
@@ -934,7 +960,7 @@
 	is_weedable = NOT_WEEDABLE
 	depth = DEPTH_COAST_SHALLOW //used for the offset of mobs that enter it (see water_overlay_effect.dm)
 	layer = UNDER_WATER_TURF_LAYER
-	turf_flags = TURF_COASTLINE
+	turf_flags = TURF_WATER
 	water_type = /turf/open/gm/river
 
 /turf/open/gm/coast/north

@@ -167,7 +167,7 @@
 	is_weedable = NOT_WEEDABLE
 	depth = DEPTH_COAST_SHALLOW
 	layer = UNDER_WATER_TURF_LAYER
-	turf_flags = TURF_COASTLINE
+	turf_flags = TURF_WATER
 	water_type = /turf/open/gm/river/desert/shallow
 
 /turf/open/desert/desert_shore/update_icon()
@@ -309,7 +309,7 @@
 	icon_state = "shore_caves"
 	var/toxic = 0
 	layer = UNDER_WATER_TURF_LAYER
-	turf_flags = TURF_COASTLINE
+	turf_flags = TURF_WATER
 
 /turf/open/desert/cave/cave_shore/update_icon()
 	..()
@@ -342,6 +342,7 @@
 	default_name = "water"
 	is_weedable = NOT_WEEDABLE
 	depth = DEPTH_SHALLOW
+	water_type = /turf/open/gm/river/desert
 
 /turf/open/gm/river/desert/update_icon()
 	..()
@@ -361,6 +362,7 @@
 /turf/open/gm/river/desert/shallow
 	icon_state = "shallow"
 	depth = DEPTH_SHALLOW
+	water_type = /turf/open/gm/river/desert/shallow
 
 /turf/open/gm/river/desert/shallow/covered
 	covered = TRUE
@@ -368,6 +370,7 @@
 
 /turf/open/gm/river/desert/shallow/toxic
 	icon = 'icons/turf/floors/desert_water_toxic.dmi'
+	water_type = /turf/open/gm/river/desert/shallow/toxic
 
 /turf/open/gm/river/desert/shallow/pool
 	name = "pool"
@@ -376,7 +379,6 @@
 /turf/open/gm/river/desert/shallow_edge
 	icon_state = "shallow_edge"
 	depth = DEPTH_INTERMEDIATE
-	water_type = /turf/open/gm/river/desert/shallow
 
 /turf/open/gm/river/desert/shallow_edge/southwest
 	dir = SOUTHWEST
@@ -449,6 +451,7 @@
 /turf/open/gm/river/desert/deep
 	icon_state = "deep"
 	depth = DEPTH_DEEP
+	water_type = /turf/open/gm/river/desert/deep
 
 /turf/open/gm/river/desert/deep/no_slowdown
 	base_river_slowdown = 0
@@ -464,16 +467,19 @@
 /turf/open/gm/river/desert/channel
 	icon_state = "channel"
 	depth = DEPTH_SHALLOW
+	water_type = /turf/open/gm/river/desert/channel
 
 //shallow water channel edge
 /turf/open/gm/river/desert/channel_edge
 	icon_state = "channel_edge"
 	depth = DEPTH_SHALLOW
+	water_type = /turf/open/gm/river/desert/channel_edge
 
 //shallow water channel corner
 /turf/open/gm/river/desert/channel_three
 	icon_state = "channel_three"
 	depth = DEPTH_SHALLOW
+	water_type = /turf/open/gm/river/desert/channel_three
 
 
 /turf/open/desert/excavation
@@ -663,6 +669,7 @@
 //shallow water
 /turf/open/gm/river/desert/tyrargo
 	icon_state = "seashallow"
+	water_type = /turf/open/gm/river/desert/tyrargo
 
 /turf/open/gm/river/desert/tyrargo/no_slowdown
 	base_river_slowdown = 1
@@ -674,6 +681,7 @@
 /turf/open/gm/river/desert/tyrargo/deep
 	icon_state = "seadeep"
 	depth = DEPTH_INTERMEDIATE
+	water_type = /turf/open/gm/river/desert/tyrargo/deep
 
 /turf/open/gm/river/desert/tyrargo/deep/no_slowdown
 	base_river_slowdown = 1

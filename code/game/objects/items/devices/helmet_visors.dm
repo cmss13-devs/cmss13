@@ -211,6 +211,7 @@
 /obj/item/device/helmet_visor/night_vision
 	name = "night vision optic"
 	desc = "An insertable visor HUD into a standard USCM helmet. This type gives a form of night vision and is standard issue in units with regular funding."
+	desc_lore = "The AN/NVPAV-75 visor (or image intensifier). This unit allows visibility in total darkness, as it features an infrared illuminator, and operates for 12 hours without recharging. The NVO automatically recharges after being turned off, drawing power from the suits internal battery that also powers the shoulder lamp and other visors, a full recharge takes about 2 hours on average. Unfortunately, after the explosion of the M309 HEAP ammunition storage - located in another section containing these NVOs was also damaged. 94% of the lenses were destroyed; the remaining units were repaired and distributed to critical roles. The damaged lens has impaired zoom in/zoom out functionality, making it incompatible with binoculars and weapon scopes. Additionally, the infrared illuminator was repaired in a makeshift manner, but as a negative side effect, it now gives off a visible glow in the dark. As for the battery and electronics themselves, they lost their calibration after the blast and can no longer receive a recharge from the suit, and they now operate for only 10 minutes.
 	icon_state = "nvg_sight"
 	hud_type = null
 	action_icon_string = "nvg_sight_down"
@@ -425,6 +426,7 @@
 /obj/item/device/helmet_visor/night_vision/marine_raider
 	name = "advanced night vision optic"
 	desc = "An insertable visor HUD into a standard USCM helmet. This type gives a form of night vision and is standard issue in special forces units."
+	desc_lore = "The AN/NVPAV-77 visor (or advanced image intensifier) is an improved version of the AN/NVPAV-75. Unlike the 75, this model does not require power from the suit's internal source, as it features a more advanced and optimized power supply. It also has a covert infrared illuminator that does not reveal the NVO to other night vision devices or thermal imagers and as a bonus - integrated medical optic. It operates continuously for 32 hours, and recharging while switched off takes 2 hours."
 	hud_type = list(MOB_HUD_FACTION_MARINE, MOB_HUD_MEDICAL_ADVANCED)
 	helmet_overlay = "nvg_sight_right_raider"
 	power_use = 0

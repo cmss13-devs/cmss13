@@ -7,8 +7,6 @@
 	var/on = 1 // 0 for off
 	var/frequency = PUB_FREQ //common chat
 	var/canhear_range = 3 // the range which mobs can hear this radio from
-	var/wires = WIRE_SIGNAL|WIRE_RECEIVE|WIRE_TRANSMIT
-	var/b_stat = 0
 	var/broadcasting = FALSE
 	var/listening = TRUE
 	var/freqlock = TRUE
@@ -200,11 +198,6 @@
 	if(!M || !message)
 		return
 
-	//  Uncommenting this. To the above comment:
-	// The permacell radios aren't suppose to be able to transmit, this isn't a bug and this "fix" is just making radio wires useless. -Giacom
-	if(!(src.wires & WIRE_TRANSMIT)) // The device has to have all its wires and shit intact
-		return
-
 	/* Quick introduction:
 		This new radio system uses a very robust FTL signaling technology unoriginally
 		dubbed "subspace" which is somewhat similar to 'blue-space' but can't
@@ -342,8 +335,6 @@
 	// what the range is in which mobs will hear the radio
 	// returns: -1 if can't receive, range otherwise
 
-	if (!(wires & WIRE_RECEIVE))
-		return -1
 	if(!listening)
 		return -1
 	if(!(0 in level))
@@ -377,33 +368,6 @@
 		if (!accept)
 			return -1
 	return canhear_range
-
-
-/obj/item/device/radio/get_examine_text(mob/user)
-	. = ..()
-	if ((in_range(src, user) || loc == user))
-		if (b_stat)
-			. += SPAN_NOTICE("[src] can be attached and modified!")
-		else
-			. += SPAN_NOTICE("[src] can not be modified or attached!")
-
-
-/obj/item/device/radio/attackby(obj/item/W as obj, mob/user as mob)
-	..()
-	if (!HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
-		return
-	b_stat = !( b_stat )
-	if(!istype(src, /obj/item/device/radio/beacon))
-		if (b_stat)
-			user.show_message(SPAN_NOTICE("The radio can now be attached and modified!"))
-		else
-			user.show_message(SPAN_NOTICE("The radio can no longer be modified or attached!"))
-		updateDialog()
-			//Foreach goto(83)
-		add_fingerprint(user)
-		return
-	else
-		return
 
 /obj/item/device/radio/emp_act(severity)
 	. = ..()

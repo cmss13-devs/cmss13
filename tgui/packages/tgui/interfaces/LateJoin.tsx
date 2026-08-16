@@ -46,23 +46,34 @@ export const LateJoin = (props, context) => {
       <Window.Content className="LateJoin" scrollable>
         {data.HijackInitiated ? (
           <Box>
-            <Stack className='HijackIndicator' align='center' justify='space-around'>
-              <Stack.Item><Icon name="warning" size={2}></Icon></Stack.Item>
-              <Stack.Item><h1>HIJACK IN PROGRESS</h1></Stack.Item>
-              <Stack.Item><Icon name="warning" size={2}></Icon></Stack.Item>
+            <Stack
+              className="HijackIndicator"
+              align="center"
+              justify="space-around"
+            >
+              <Stack.Item>
+                <Icon name="warning" size={2}></Icon>
+              </Stack.Item>
+              <Stack.Item>
+                <h1>HIJACK IN PROGRESS</h1>
+              </Stack.Item>
+              <Stack.Item>
+                <Icon name="warning" size={2}></Icon>
+              </Stack.Item>
             </Stack>
             <Divider></Divider>
           </Box>
         ) : null}
         {CategoryOrder.map((category) => {
-          return ((category in data.Categories) ? (data.Categories[category].length > 0 ? (
+          return category in data.Categories ? (
+            data.Categories[category].length > 0 ? (
               <RoleCategory
                 key={category}
                 category={category}
                 roles={data.Categories[category]}
               />
-            ) : null) : null
-          );
+            ) : null
+          ) : null;
         })}
       </Window.Content>
     </Window>
@@ -88,9 +99,9 @@ type RoleSlotInfoProps = ComponentProps<typeof Box> & {
 const RoleSlotInfo = (props: RoleSlotInfoProps) => {
   const { role } = props;
 
-  const infSlots = (role.Slots === -1);
+  const infSlots = role.Slots === -1;
   const roleSlots = 'x' + role.Slots;
-  let slotClasses = ["SlotCount"];
+  let slotClasses = ['SlotCount'];
 
   return (
     <Flex
@@ -109,9 +120,7 @@ const RoleSlotInfo = (props: RoleSlotInfoProps) => {
           <Flex.Item className="SlotInfoRow">
             <Icon name="users" />
           </Flex.Item>
-          <Flex.Item className="SlotInfoRow">
-            x{role.Active}
-          </Flex.Item>
+          <Flex.Item className="SlotInfoRow">x{role.Active}</Flex.Item>
         </Flex>
       </Flex.Item>
       <Flex.Item>
@@ -120,7 +129,7 @@ const RoleSlotInfo = (props: RoleSlotInfoProps) => {
             <Icon name="door-open" />
           </Flex.Item>
           <Flex.Item className="SlotInfoRow">
-            {(infSlots ? <Icon name="infinity"></Icon> : <Box>{roleSlots}</Box>)}
+            {infSlots ? <Icon name="infinity"></Icon> : <Box>{roleSlots}</Box>}
           </Flex.Item>
         </Flex>
       </Flex.Item>
@@ -143,7 +152,11 @@ const RoleCategory = (props: RoleCategoryProps) => {
         {roles.map((role) => {
           return (
             <Stack.Item key={role.Title}>
-              <Button className="JoinButton" fluid onClick={() => act(role.Title)}>
+              <Button
+                className="JoinButton"
+                fluid
+                onClick={() => act(role.Title)}
+              >
                 <Flex direction="row" justify="flex-start" align="center">
                   <Flex.Item grow={1}>
                     <Stack align="center">

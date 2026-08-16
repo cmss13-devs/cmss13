@@ -45,14 +45,20 @@
 ///////////////////SURGERY FLAGS///////////////////
 //Surgery defines strictly for overlay application.
 
-//An incision has been made.
+//The incision has been made on a limb.
 #define INCISION_MADE (1<<0)
-
-//An incision has been widened.
+//The incision has been widened.
 #define INCISION_WIDENED (1<<1)
 
+//An incision has either been clamped or not.
+#define INCISION_BLEEDING (1<<0)
+#define INCISION_CLAMPED (1<<1)
+
 //Applies to skulls, ribs, and pelvis; they've been sawed and opened, or organs were moved away from the pelvis.
-#define BONE_OPENED (1<<2)
+#define INCISION_BONE_OPENED (1<<1)
+
+//A limb is internally bleeding.
+#define INCISION_INT_BLEEDING (1<<0)
 
 
 ///////////////////WOUND DEFINES///////////////////

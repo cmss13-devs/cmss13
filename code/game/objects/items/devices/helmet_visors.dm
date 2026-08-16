@@ -225,6 +225,8 @@
 	/// About 10 minutes active use charge (hypothetically)
 	var/power_use = 33
 
+	var/obj/item/device/helmet_visor_module/installed_module = null
+
 	/// The alpha of darkness we set to for the mob while the visor is on, not completely fullbright but see-able
 	var/lighting_alpha = 100
 
@@ -239,6 +241,7 @@
 	power_cell = new(src)
 
 /obj/item/device/helmet_visor/night_vision/Destroy()
+	installed_module = null
 	power_cell = null
 	. = ..()
 
@@ -331,6 +334,85 @@
 		var/datum/action/item_action/cycle_helmet_huds/cycle_action = locate() in attached_helmet.actions
 		if(cycle_action)
 			cycle_action.set_default_overlay()
+
+/obj/item/device/helmet_visor/night_vision/proc/can_install_module(obj/item/device/helmet_visor_module/module, mob/user)
+	if(istype(src, /obj/item/device/helmet_visor/night_vision/marine_raider))
+		to_chat(user, SPAN_WARNING("[src] cannot accept this module."))
+		return FALSE
+
+	if(installed_module)
+		to_chat(user, SPAN_WARNING("[src] already has a module installed."))
+		return FALSE
+
+	if(module.slot != ACCESSORY_SLOT_VISOR_MODULE)
+		to_chat(user, SPAN_WARNING("[module] doesn't fit into [src]."))
+		return FALSE
+
+	if(istype(loc, /obj/item/clothing/head/helmet/marine))
+		to_chat(user, SPAN_WARNING("You must remove [src] from the helmet first."))
+		return FALSE
+
+	return TRUE
+
+/obj/item/device/helmet_visor/night_vision/proc/install_module(obj/item/device/helmet_visor_module/module, mob/user)
+	if(!can_install_module(module, user))
+		return
+
+	if(!user.temp_drop_inv_item(module))
+		return
+
+	module.forceMove(src)
+	installed_module = module
+	if(istype(module, /obj/item/device/helmet_visor_module/night_vision_power_efficiency))
+		var/obj/item/device/helmet_visor_module/night_vision_power_efficiency/efficiency_module = module
+		power_use = efficiency_module.power_use_setting
+		icon_state = "nvg_sight_upgraded"
+		action_icon_string = "nvg_sight_upgraded_down"
+		update_icon()
+
+	to_chat(user, SPAN_NOTICE("You install [module] into [src]."))
+
+/obj/item/device/helmet_visor/night_vision/proc/uninstall_module(mob/user)
+	if(!installed_module)
+		to_chat(user, SPAN_WARNING("[src] has no module installed."))
+		return
+
+	var/obj/item/device/helmet_visor_module/module = installed_module
+	installed_module = null
+	power_use = initial(power_use)
+	icon_state = initial(icon_state)
+	action_icon_string = initial(action_icon_string)
+	update_icon()
+
+	if(user)
+		if(!user.put_in_hands(module))
+			module.forceMove(get_turf(src))
+		to_chat(user, SPAN_NOTICE("You remove [module] from [src]."))
+	else
+		module.forceMove(get_turf(src))
+
+/obj/item/device/helmet_visor/night_vision/attackby(obj/item/I, mob/user, params)
+	. = ..()
+	if(.)
+		return
+
+	if(istype(I, /obj/item/device/helmet_visor_module))
+		install_module(I, user)
+		return TRUE
+
+/obj/item/device/helmet_visor/night_vision/verb/remove_module()
+	set name = "Remove Visor Module"
+	set category = "Object"
+	set src in view(1)
+
+	if(!installed_module)
+		to_chat(usr, SPAN_WARNING("[src] has no module installed."))
+		return
+
+	if(!ishuman(usr))
+		return
+
+	uninstall_module(usr)
 
 #undef NVG_VISOR_USAGE
 
@@ -455,3 +537,17 @@
 	icon_state = "po_visor_yellow"
 	action_icon_string = "po_visor_yellow_down"
 	helmet_overlay = "po_visor_yellow"
+
+//Visor modules
+/obj/item/device/helmet_visor_module
+	name = "visor module"
+	desc = "A module that can be installed into a helmet visor."
+	icon = 'icons/obj/items/clothing/helmet_visors.dmi'
+	icon_state = "night_vision_upgrade"
+	w_class = SIZE_TINY
+	var/slot = ACCESSORY_SLOT_VISOR_MODULE
+
+/obj/item/device/helmet_visor_module/night_vision_power_efficiency
+	name = "Night Vision optimizer"
+	desc = "A module that reduces the power consumption of a standard night vision optic, extending its battery life."
+	var/power_use_setting = 20

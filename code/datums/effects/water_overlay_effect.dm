@@ -192,7 +192,6 @@
 			key = "_/mob/living/carbon/human_w"
 		if(pixel_y_offset == DEPTH_DEEP)		//when resting in the deep all mobs will look like they're unda da watur
 			key = "_u"
-	var/debug_value = "[mob_texture_size]_[water_turf.water_type]_[toxic_key]_[pixel_y_offset][key]"
 	var/mutable_appearance/final_texture = mutable_appearance(SSwater_overlays.water_overlay_icons["[mob_texture_size]_[water_turf.water_type]_[toxic_key]_[pixel_y_offset][key]"])
 	final_texture.color = water_turf.color
 	overlays += final_texture

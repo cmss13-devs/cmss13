@@ -13,9 +13,6 @@
 	buckle_lying = 0
 	flags_obj = OBJ_ORGANIC
 	var/on_fire = 0
-	var/resisting = 0
-	var/resisting_ready = 0
-	var/nest_resist_time = 1200
 	var/mob/dead/observer/ghost_of_buckled_mob =  null
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/force_nest = FALSE
@@ -45,8 +42,6 @@
 	. = ..()
 	if(. && current_mob.pulledby)
 		current_mob.pulledby.stop_pulling()
-		resisting = FALSE //just in case
-		resisting_ready = FALSE
 
 	if(buckled_mob == current_mob)
 		current_mob.pixel_y = buckling_y["[dir]"]
@@ -146,7 +141,34 @@
 	return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 
 /obj/structure/bed/nest/manual_unbuckle(mob/living/user)
-	if(!(buckled_mob && buckled_mob.buckled == src && buckled_mob != user))
+	if(!(buckled_mob && buckled_mob.buckled == src))
+		return
+
+	if(buckled_mob == user)
+		if(!iscarbon(user))
+			return
+		var/mob/living/carbon/nested_mob = user
+		var/obj/item/clothing/mask/facehugger/hugger = nested_mob.wear_mask
+		if((nested_mob.status_flags & XENO_HOST) || (istype(hugger) && hugger.stat != DEAD))
+			to_chat(nested_mob, SPAN_WARNING("You struggle against the resin, but your weakened body cannot break free."))
+			return
+		if(nested_mob.action_busy)
+			return
+
+		nested_mob.visible_message(SPAN_WARNING("[nested_mob] struggles to break free of [src]."),
+		SPAN_WARNING("You struggle to break free from [src]. This will take around one minute."),
+		SPAN_NOTICE("You hear squelching."))
+		if(!do_after(nested_mob, 1 MINUTES, INTERRUPT_NO_NEEDHAND^INTERRUPT_RESIST, BUSY_ICON_HOSTILE, src))
+			return
+
+		hugger = nested_mob.wear_mask
+		if(buckled_mob != nested_mob || nested_mob.buckled != src || (nested_mob.status_flags & XENO_HOST) || (istype(hugger) && hugger.stat != DEAD))
+			return
+		nested_mob.visible_message(SPAN_DANGER("[nested_mob] breaks free from [src]!"),
+		SPAN_DANGER("You pull yourself free from [src]!"),
+		SPAN_NOTICE("You hear squelching."))
+		playsound(loc, "alien_resin_move", 50)
+		unbuckle()
 		return
 
 	if(user.body_position == LYING_DOWN || user.is_mob_incapacitated())
@@ -289,8 +311,6 @@
 /obj/structure/bed/nest/unbuckle(mob/user)
 	if(!buckled_mob)
 		return
-	resisting = FALSE
-	resisting_ready = FALSE
 	REMOVE_TRAIT(buckled_mob, TRAIT_NESTED, TRAIT_SOURCE_BUCKLE)
 	REMOVE_TRAIT(buckled_mob, TRAIT_NO_STRAY, TRAIT_SOURCE_BUCKLE)
 	var/mob/living/carbon/human/buckled_human = buckled_mob

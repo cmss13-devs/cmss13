@@ -117,18 +117,18 @@ const RoleSlotInfo = (props: RoleSlotInfoProps) => {
           justify="space-evenly"
           className="SlotInfoRow"
         >
-          <Flex.Item className="SlotInfoRow">
+          <Flex.Item className="SlotInfoRow big-text">
             <Icon name="users" />
           </Flex.Item>
-          <Flex.Item className="SlotInfoRow">x{role.Active}</Flex.Item>
+          <Flex.Item className="SlotInfoRow big-text">x{role.Active}</Flex.Item>
         </Flex>
       </Flex.Item>
       <Flex.Item>
         <Flex direction="row" align="center" justify="space-evenly">
-          <Flex.Item className="SlotInfoRow">
+          <Flex.Item className="SlotInfoRow big-text">
             <Icon name="door-open" />
           </Flex.Item>
-          <Flex.Item className="SlotInfoRow">
+          <Flex.Item className="SlotInfoRow big-text">
             {infSlots ? <Icon name="infinity"></Icon> : <Box>{roleSlots}</Box>}
           </Flex.Item>
         </Flex>
@@ -164,7 +164,7 @@ const RoleCategory = (props: RoleCategoryProps) => {
                         <RoleIcon role={role.Title} />
                       </Stack.Item>
                       <Stack.Item>
-                        <h3 className="RoleTitle">{role.DisplayTitle}</h3>
+                        <h3 className="big-text">{role.DisplayTitle}</h3>
                       </Stack.Item>
                     </Stack>
                   </Flex.Item>
@@ -172,8 +172,10 @@ const RoleCategory = (props: RoleCategoryProps) => {
                     <RoleSlotInfo role={role} />
                   </Flex.Item>
                   <Flex.Item>
-                    Join
-                    <Icon name="caret-right"></Icon>
+                    <Box className="medium-text">
+                      Join
+                      <Icon name="caret-right"></Icon>
+                    </Box>
                   </Flex.Item>
                 </Flex>
               </Button>

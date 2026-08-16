@@ -13,11 +13,7 @@
 }
 
 .RoleCategory .Section__titleText {
-  font-size: 2rem !important;
-}
-
-.RoleCategory {
-  font-size: 1.2rem;
+  font-size: 1.5rem !important;
 }
 
 .RoleIcon {
@@ -34,10 +30,6 @@
   filter: saturate(70%) grayscale(20%) drop-shadow(1px 1px 1px gray);
 }
 
-.RoleTitle {
-  font-size: 1.5rem;
-}
-
 .SlotInfo {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -45,6 +37,14 @@
 
 .SlotInfoRow {
   padding-right: 0.5rem;
+}
+
+.medium-text {
+  font-size: 1.2rem;
+}
+
+.big-text {
+  font-size: 1.5rem;
 }
 
 .commanding_officer {

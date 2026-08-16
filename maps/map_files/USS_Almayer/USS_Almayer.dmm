@@ -62764,13 +62764,13 @@
 	name = "storage shutters";
 	pixel_y = 26
 	},
-/obj/structure/machinery/recharge_station/alt{
-	desc = "Where the cargo department's Working Joe used to charge before it tragically fell into the ASRS elevator three years ago. The replacement still hasn't arrived.";
-	name = "Working Joe charging station"
-	},
 /obj/structure/sign/safety/synth_storage{
 	pixel_x = 8;
 	pixel_y = 36
+	},
+/obj/structure/machinery/recharge_station{
+	desc = "Where the cargo department's Working Joe used to charge before it tragically fell into the ASRS elevator three years ago. The replacement still hasn't arrived.";
+	name = "Working Joe charging station"
 	},
 /turf/open/floor/almayer/test_floor5,
 /area/almayer/squads/req)

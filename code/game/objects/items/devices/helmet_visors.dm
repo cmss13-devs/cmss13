@@ -367,7 +367,6 @@
 		var/obj/item/device/helmet_visor_module/night_vision_power_efficiency/efficiency_module = module
 		power_use = efficiency_module.power_use_setting
 		icon_state = "nvg_sight_upgraded"
-		action_icon_string = "nvg_sight_upgraded_down"
 		update_icon()
 
 	to_chat(user, SPAN_NOTICE("You install [module] into [src]."))
@@ -549,5 +548,5 @@
 
 /obj/item/device/helmet_visor_module/night_vision_power_efficiency
 	name = "Night Vision optimizer"
-	desc = "A module that reduces the power consumption of a standard night vision optic, extending its battery life."
-	var/power_use_setting = 20
+	desc = "A module that reduces power consumption of night vision optic, extending its battery life."
+	var/power_use_setting = 22 ///extra 5 minutes, 15 minutes total

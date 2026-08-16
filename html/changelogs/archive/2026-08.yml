@@ -391,3 +391,6 @@
   - rscadd: adds the missing snow loadout gear, boots, rain-cover, netting.
   - imageadd: adds arc icon for tech-tree.
   - imagetweak: palette correction for prey_items.dmi
+2026-08-16:
+  Red-byte3D:
+  - imageadd: New ghillie sprite

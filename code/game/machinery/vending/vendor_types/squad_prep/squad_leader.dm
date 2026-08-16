@@ -39,7 +39,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_leader, list(
 		list("Welding Visor", 5, /obj/item/device/helmet_visor/welding_visor, null, VENDOR_ITEM_REGULAR),
 		list("SensorMate Medical Optic", 4, /obj/item/device/helmet_visor/medical, null, VENDOR_ITEM_RECOMMENDED),
 		list("Night Vision Optic", 25, /obj/item/device/helmet_visor/night_vision, null, VENDOR_ITEM_RECOMMENDED),
-		list("Night Vision Optimizer", 5 /obj/item/device/helmet_visor_module/night_vision_power_efficiency, null, VENDOR_ITEM_RECOMMDENDED),
+		list("Night Vision Optimizer", 5, /obj/item/device/helmet_visor_module/night_vision_power_efficiency, null, VENDOR_ITEM_RECOMMENDED),
 
 		list("ENGINEERING SUPPLIES", 0, null, null, null),
 		list("Insulated Gloves (Yellow/Tan)", 3, /obj/item/clothing/gloves/yellow, null, VENDOR_ITEM_REGULAR),

@@ -1,0 +1,4 @@
+author: "AnCopper"
+delete-after: True
+changes:
+  - bugfix: "The New Varadero LACN Commander is once again a Commander instead of a LtCol"

@@ -55,7 +55,7 @@
 /obj/item/ammo_magazine/rifle/ap
 	name = "\improper M41A AP magazine (10x24mm)"
 	desc = "An armor-piercing 10x24mm assault rifle magazine."
-	desc_lore = "Unlike standard HEAP rounds, AP rounds were developed shortly after the M41A's introduction in 2164. The decision was driven by several critical drawbacks of the HEAP design: prohibitive manufacturing costs, severe transportation hazards due to its volatile explosive filler, and the devastating consequences of friendly fire. Statistics show that over 15% of marine casualties requiring immediate medevac are caused by FF incidents, as HEAP's delayed detonation inflicts catastrophic internal trauma. The AP variant eliminates the depleted uranium tip and explosive payload, trading raw stopping power for enhanced penetration and muzzle velocity. While less lethal against unarmored targets, these rounds drastically reduce injury severity in friendly-fire events and offer a cheaper, safer alternative. Consequently, AP ammunition is also standard-issue for low-qualification troops, where ease of logistics and reduced collateral risk are paramount."
+	desc_lore = "Unlike standard HEAP rounds, AP rounds were developed shortly after the M41A's introduction in 2164. The decision was driven by several critical drawbacks of the HEAP design: prohibitive manufacturing costs, severe transportation hazards due to its volatile explosive filler, and the devastating consequences of friendly fire. Statistics show that over 15% of marine casualties requiring immediate medevac are caused by FF incidents, as HEAP's delayed detonation inflicts catastrophic internal trauma. The AP variant eliminates the depleted uranium tip and explosive payload. While less lethal against unarmored targets, these rounds drastically reduce injury severity in friendly-fire events and offer a cheaper, safer alternative. Consequently, AP ammunition is also standard-issue for low-qualification troops, where ease of logistics and reduced collateral risk are paramount."
 	default_ammo = /datum/ammo/bullet/rifle/ap
 	ammo_band_color = AMMO_BAND_COLOR_AP
 
@@ -101,7 +101,7 @@
 /obj/item/ammo_magazine/rifle/m41aMK1/ap
 	name = "\improper M41A MK1 AP magazine (10x24mm)"
 	desc = "A long rectangular box of rounds that is only compatible with the older M41A MK1. Holds up to 95 rounds. This one contains AP bullets."
-	desc_lore = "Unlike standard HEAP rounds, AP rounds were developed shortly after the M41A's introduction in 2164. The decision was driven by several critical drawbacks of the HEAP design: prohibitive manufacturing costs, severe transportation hazards due to its volatile explosive filler, and the devastating consequences of friendly fire. Statistics show that over 15% of marine casualties requiring immediate medevac are caused by FF incidents, as HEAP's delayed detonation inflicts catastrophic internal trauma. The AP variant eliminates the depleted uranium tip and explosive payload, trading raw stopping power for enhanced penetration and muzzle velocity. While less lethal against unarmored targets, these rounds drastically reduce injury severity in friendly-fire events and offer a cheaper, safer alternative. Consequently, AP ammunition is also standard-issue for low-qualification troops, where ease of logistics and reduced collateral risk are paramount."
+	desc_lore = "Unlike standard HEAP rounds, AP rounds were developed shortly after the M41A's introduction in 2164. The decision was driven by several critical drawbacks of the HEAP design: prohibitive manufacturing costs, severe transportation hazards due to its volatile explosive filler, and the devastating consequences of friendly fire. Statistics show that over 15% of marine casualties requiring immediate medevac are caused by FF incidents, as HEAP's delayed detonation inflicts catastrophic internal trauma. The AP variant eliminates the depleted uranium tip and explosive payload. While less lethal against unarmored targets, these rounds drastically reduce injury severity in friendly-fire events and offer a cheaper, safer alternative. Consequently, AP ammunition is also standard-issue for low-qualification troops, where ease of logistics and reduced collateral risk are paramount."
 	default_ammo = /datum/ammo/bullet/rifle/ap
 	ammo_band_color = AMMO_BAND_COLOR_AP
 
@@ -135,7 +135,6 @@
 /obj/item/ammo_magazine/rifle/m4ra
 	name = "\improper M4RA magazine (10x24mm)"
 	desc = "A magazine of 10x24mm rounds for use in the M4RA battle rifle."
-	desc_lore = "Antipersonnel rounds are optimized for unarmored targets. Standard M309 HEAP suffers from over-penetration: the high-velocity slug passes through soft tissue without triggering the delayed fuse, as it only detonates after armor impact. Thus, an unarmored victim has significantly higher survival odds than an armored one."
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/marksman_rifles.dmi'
 	icon_state = "m4ra"
 	default_ammo = /datum/ammo/bullet/rifle
@@ -148,7 +147,6 @@
 /obj/item/ammo_magazine/rifle/m4ra/ap
 	name = "\improper M4RA armor-piercing magazine (10x24mm)"
 	desc = "A magazine of armor-piercing 10x24mm rounds for use in the M4RA battle rifle."
-	desc_lore = "Unlike standard HEAP rounds, AP rounds were developed shortly after the M41A's introduction in 2164. The decision was driven by several critical drawbacks of the HEAP design: prohibitive manufacturing costs, severe transportation hazards due to its volatile explosive filler, and the devastating consequences of friendly fire. Statistics show that over 15% of marine casualties requiring immediate medevac are caused by FF incidents, as HEAP's delayed detonation inflicts catastrophic internal trauma. The AP variant eliminates the depleted uranium tip and explosive payload, trading raw stopping power for enhanced penetration and muzzle velocity. While less lethal against unarmored targets, these rounds drastically reduce injury severity in friendly-fire events and offer a cheaper, safer alternative. Consequently, AP ammunition is also standard-issue for low-qualification troops, where ease of logistics and reduced collateral risk are paramount."
 	default_ammo = /datum/ammo/bullet/rifle/ap
 	max_rounds = 25
 	ammo_band_color = AMMO_BAND_COLOR_AP
@@ -330,7 +328,7 @@
 /obj/item/ammo_magazine/rifle/lmg/ap
 	name = "\improper M41AE2 ammo box (10x24mm armor-piercing)"
 	desc = "A semi-rectangular armor-piercing box magazine for the M41AE2 Heavy Pulse Rifle."
-	desc_lore = "Unlike standard HEAP rounds, AP rounds were developed shortly after the M41A's introduction in 2164. The decision was driven by several critical drawbacks of the HEAP design: prohibitive manufacturing costs, severe transportation hazards due to its volatile explosive filler, and the devastating consequences of friendly fire. Statistics show that over 15% of marine casualties requiring immediate medevac are caused by FF incidents, as HEAP's delayed detonation inflicts catastrophic internal trauma. The AP variant eliminates the depleted uranium tip and explosive payload, trading raw stopping power for enhanced penetration and muzzle velocity. While less lethal against unarmored targets, these rounds drastically reduce injury severity in friendly-fire events and offer a cheaper, safer alternative. Consequently, AP ammunition is also standard-issue for low-qualification troops, where ease of logistics and reduced collateral risk are paramount."
+	desc_lore = "Unlike standard HEAP rounds, AP rounds were developed shortly after the M41A's introduction in 2164. The decision was driven by several critical drawbacks of the HEAP design: prohibitive manufacturing costs, severe transportation hazards due to its volatile explosive filler, and the devastating consequences of friendly fire. Statistics show that over 15% of marine casualties requiring immediate medevac are caused by FF incidents, as HEAP's delayed detonation inflicts catastrophic internal trauma. The AP variant eliminates the depleted uranium tip and explosive payload. While less lethal against unarmored targets, these rounds drastically reduce injury severity in friendly-fire events and offer a cheaper, safer alternative. Consequently, AP ammunition is also standard-issue for low-qualification troops, where ease of logistics and reduced collateral risk are paramount."
 	default_ammo = /datum/ammo/bullet/rifle/ap
 	ammo_band_color = AMMO_BAND_COLOR_AP
 

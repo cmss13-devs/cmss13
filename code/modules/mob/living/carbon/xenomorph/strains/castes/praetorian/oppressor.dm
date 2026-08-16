@@ -151,6 +151,10 @@
 			break
 
 		for(var/obj/structure/structure in line_turf)
+
+			if(structure.pass_flags.flags_can_pass_all & PASS_HIGH_OVER)
+				continue
+
 			if(structure.density || istype(structure, /obj/structure/barricade))
 				blocked = TRUE
 				break

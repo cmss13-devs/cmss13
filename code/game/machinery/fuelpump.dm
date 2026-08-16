@@ -7,7 +7,7 @@
 	bound_width = 128
 	pixel_x = -64
 	bound_x = -64
-	health = 2500
+	health = 2000
 	density = TRUE
 	anchored = TRUE
 	wrenchable = FALSE

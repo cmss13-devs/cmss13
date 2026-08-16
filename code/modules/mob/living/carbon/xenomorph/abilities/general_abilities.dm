@@ -408,7 +408,11 @@
 
 /datum/action/xeno_action/onclick/xenohide/can_use_action()
 	var/mob/living/carbon/xenomorph/xeno = owner
-	if(xeno && !xeno.buckled && !xeno.is_mob_incapacitated() && !LAZYLEN(xeno.buckled_mobs))
+	if(!xeno)
+		return FALSE
+	if(xeno.on_fire)
+		return FALSE
+	if(!xeno.buckled && !xeno.is_mob_incapacitated() && !LAZYLEN(xeno.buckled_mobs))
 		if(!(SEND_SIGNAL(xeno, COMSIG_LIVING_SHIMMY_LAYER) & COMSIG_LIVING_SHIMMY_LAYER_CANCEL))
 			return TRUE
 
@@ -465,23 +469,6 @@
 /datum/action/xeno_action/activable/xeno_spit/queen_macro //so it doesn't screw other macros up
 	ability_primacy = XENO_PRIMARY_ACTION_3
 
-/datum/action/xeno_action/activable/bombard
-	name = "Bombard"
-	action_icon_state = "bombard"
-	plasma_cost = 75
-	macro_path = /datum/action/xeno_action/verb/verb_bombard
-	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_1
-	xeno_cooldown = 23 SECONDS
-	ability_uses_acid_overlay = TRUE
-
-	// Range and other config
-	var/effect_range = 3
-	var/effect_type = /obj/effect/xenomorph/boiler_bombard
-	var/activation_delay = 1.5 SECONDS
-	var/range = 15
-	var/interrupt_flags = INTERRUPT_ALL|BEHAVIOR_IMMOBILE
-
 /datum/action/xeno_action/activable/tail_stab
 	name = "Tail Stab"
 	action_icon_state = "tail_attack"
@@ -492,6 +479,7 @@
 	var/stab_range = 2
 	/// Used for defender's tail 'stab'.
 	var/blunt_stab = FALSE
+	var/damage_multiplier = TAILSTAB_MOB_DAMAGE_MULTIPLIER
 
 /datum/action/xeno_action/onclick/evolve
 	name = "Evolve"
@@ -516,11 +504,12 @@
 	name = "Transmute"
 	action_icon_state = "transmute"
 	action_type = XENO_ACTION_CLICK
+	macro_path = /mob/living/carbon/xenomorph/proc/verb_transmute
 
 /datum/action/xeno_action/onclick/transmute/action_activate()
 	. = ..()
 	var/mob/living/carbon/xenomorph/xeno = owner
-	xeno.transmute_verb()
+	xeno.verb_transmute()
 
 /datum/action/xeno_action/onclick/transmute/can_use_action()
 	if(!owner)
@@ -612,21 +601,18 @@
 		return FALSE
 
 	// Get a reference to the ability to utilize cooldowns
-	var/datum/action/xeno_action/onclick/queen_word/word_ability
-	for(var/datum/action/xeno_action/action in actions)
-		if(istype(action, /datum/action/xeno_action/onclick/queen_word))
-			word_ability = action
-			if(!word_ability.action_cooldown_check())
-				return FALSE
-			break
+	var/datum/action/xeno_action/onclick/queen_word/word_ability = locate() in actions
+	if(!word_ability?.action_cooldown_check())
+		return FALSE
+	if(word_ability.hidden)
+		return FALSE
 
-	var/input = stripped_multiline_input(src, "This message will be broadcast throughout the hive.", "Word of the Queen", "")
+	var/input = tgui_input_text(src, "This message will be broadcast throughout the hive.", "Word of the Queen", multiline=TRUE)
 	if(!input)
 		return FALSE
 
 	use_plasma(50)
-	if(word_ability)
-		word_ability.apply_cooldown()
+	word_ability.apply_cooldown()
 
 	xeno_announcement(input, hivenumber, "The words of the [name] reverberate in our head...")
 

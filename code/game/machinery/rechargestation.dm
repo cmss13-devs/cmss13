@@ -26,6 +26,9 @@
 	///stun time upon exiting, if at all
 	var/exit_stun = 2
 
+/obj/structure/machinery/recharge_station/alt
+	icon = 'icons/obj/structures/machinery/synth_repair_station.dmi'
+
 
 /obj/structure/machinery/recharge_station/Initialize(mapload, ...)
 	. = ..()

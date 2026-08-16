@@ -32,8 +32,6 @@ em {font-style: normal; font-weight: bold;}
 .staffsay {color: #b5850d; font-weight: bold;}
 .staff_ic {color: #000099;}
 .niche {color: #386aff; font-weight: bold;}
-.ffalive {color: #00FF00;}
-.ffdead {color: #FFA500;}
 
 .name { font-weight: bold;}
 
@@ -81,7 +79,15 @@ em {font-style: normal; font-weight: bold;}
 .italic {font-style: italic;}
 .underline {text-decoration: underline;}
 
+.admin_blue {color: #386aff;}
+.blue {color: #1F5AFF;}
+.debug_orange {color: #ff8c1a;}
 .green {color: #00ff00;}
+.maroon {color: #800000;}
+.orange {color: #EBA000;}
+.purple {color: #602D7B;}
+.red {color: #FF0000;}
+.darker_red {color: #A03C14;}
 
 .normal {font-style: normal;}
 

@@ -254,7 +254,7 @@
 	if(to_chat)
 		to_chat(usr, SPAN_NOTICE("We will now build <b>[resin_construction.construction_name]\s</b> when secreting resin."))
 	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, resin_construction.construction_name)
+	button.overlays += image('icons/mob/hud/xeno_building.dmi', button, resin_construction.construction_name)
 
 // Resin
 /datum/action/xeno_action/activable/secrete_resin/use_ability(atom/target)
@@ -972,124 +972,6 @@
 	apply_cooldown()
 	return ..()
 
-/datum/action/xeno_action/activable/bombard/use_ability(atom/atom)
-	var/mob/living/carbon/xenomorph/xeno = owner
-
-	if (!istype(xeno) || !xeno.check_state() || !action_cooldown_check() || xeno.action_busy)
-		return FALSE
-
-	var/turf/turf = get_turf(atom)
-
-	if(isnull(turf) || istype(turf, /turf/closed) || !turf.can_bombard(owner))
-		to_chat(xeno, SPAN_XENODANGER("We can't bombard that!"))
-		return FALSE
-
-	if (!check_plasma_owner())
-		return FALSE
-
-	if(turf.z != xeno.z)
-		to_chat(xeno, SPAN_WARNING("That target is too far away!"))
-		return FALSE
-
-	var/atom/bombard_source = get_bombard_source()
-	if (!xeno.can_bombard_turf(turf, range, bombard_source))
-		return FALSE
-
-	xeno.visible_message(SPAN_XENODANGER("[xeno] digs itself into place!"), SPAN_XENODANGER("We dig ourself into place!"))
-	if (!do_after(xeno, activation_delay, interrupt_flags, BUSY_ICON_HOSTILE))
-		to_chat(xeno, SPAN_XENODANGER("We decide to cancel our bombard."))
-		return FALSE
-
-	if (!xeno.can_bombard_turf(turf, range, bombard_source)) //Second check in case something changed during the do_after.
-		return FALSE
-
-	if (!check_and_use_plasma_owner())
-		return FALSE
-
-	apply_cooldown()
-
-	xeno.visible_message(SPAN_XENODANGER("[xeno] launches a massive ball of acid at [atom]!"), SPAN_XENODANGER("You launch a massive ball of acid at [atom]!"))
-	playsound(get_turf(xeno), 'sound/effects/blobattack.ogg', 25, 1)
-
-	recursive_spread(turf, effect_range, effect_range)
-
-	return ..()
-
-/datum/action/xeno_action/activable/bombard/proc/recursive_spread(turf/turf, dist_left, orig_depth)
-	if(!istype(turf))
-		return
-	else if(dist_left == 0)
-		return
-	else if(istype(turf, /turf/closed) || istype(turf, /turf/open/space))
-		return
-	else if(!turf.can_bombard(owner))
-		return
-
-	addtimer(CALLBACK(src, PROC_REF(new_effect), turf, owner), 2*(orig_depth - dist_left))
-
-	for(var/mob/living/L in turf)
-		to_chat(L, SPAN_XENOHIGHDANGER("You see a massive ball of acid flying towards you!"))
-
-	for(var/dirn in GLOB.alldirs)
-		recursive_spread(get_step(turf, dirn), dist_left - 1, orig_depth)
-
-
-/datum/action/xeno_action/activable/bombard/proc/new_effect(turf/turf, mob/living/carbon/xenomorph/xeno)
-	if(!istype(turf))
-		return
-
-	for(var/obj/effect/xenomorph/boiler_bombard/BB in turf)
-		return
-
-	new effect_type(turf, xeno)
-
-/datum/action/xeno_action/activable/bombard/proc/get_bombard_source()
-	return owner
-
-/turf/proc/can_bombard(mob/bombarder)
-	if(!can_be_dissolved() && density)
-		return FALSE
-	for(var/atom/atom in src)
-		if(istype(atom, /obj/structure/machinery))
-			continue // Machinery shouldn't block boiler gas (e.g. computers)
-		if(ismob(atom))
-			continue // Mobs shouldn't block boiler gas
-
-		if(atom && atom.unacidable && atom.density && !(atom.flags_atom & ON_BORDER))
-			return FALSE
-
-	return TRUE
-
-/mob/living/carbon/xenomorph/proc/can_bombard_turf(atom/target, range = 5, atom/bombard_source) // I couldn't be arsed to do actual raycasting :I This is horribly inaccurate.
-	if(!bombard_source || !isturf(bombard_source.loc))
-		to_chat(src, SPAN_XENODANGER("That target is obstructed!"))
-		return FALSE
-	var/turf/current = bombard_source.loc
-	var/turf/target_turf = get_turf(target)
-
-	if (get_dist_sqrd(current, target_turf) > (range*range))
-		to_chat(src, SPAN_XENODANGER("That is too far away!"))
-		return
-
-	. = TRUE
-	while(current != target_turf)
-		if(!current)
-			. = FALSE
-		if(!current.can_bombard(src))
-			. = FALSE
-		if(current.opacity)
-			. = FALSE
-		if(.)
-			for(var/atom/atom in current)
-				if(atom.opacity)
-					. = FALSE
-					break
-		if(!.)
-			to_chat(src, SPAN_XENODANGER("That target is obstructed!"))
-			return
-
-		current = get_step_towards(current, target_turf)
-
 /datum/action/xeno_action/activable/tail_stab/use_ability(atom/targetted_atom)
 	var/mob/living/carbon/xenomorph/stabbing_xeno = owner
 	if(HAS_TRAIT(targetted_atom, TRAIT_HAULED))
@@ -1234,7 +1116,7 @@
 	stabbing_xeno.animation_attack_on(target)
 	stabbing_xeno.flick_attack_overlay(target, stab_overlay)
 
-	var/damage = (stabbing_xeno.melee_damage_upper + stabbing_xeno.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER) * TAILSTAB_MOB_DAMAGE_MULTIPLIER
+	var/damage = (stabbing_xeno.melee_damage_upper + stabbing_xeno.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER) * damage_multiplier
 
 	if(stabbing_xeno.behavior_delegate && apply_behavior_delagate)
 		stabbing_xeno.behavior_delegate.melee_attack_additional_effects_target(target)

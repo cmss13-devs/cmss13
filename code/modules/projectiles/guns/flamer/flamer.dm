@@ -132,8 +132,8 @@
 			to_chat(user, SPAN_NOTICE("You disable [active_attachable]."))
 			active_attachable.activate_attachment(src, null, TRUE)
 		else
-			active_attachable.fire_attachment(target, src, user) //Fire it.
-			active_attachable.last_fired = world.time
+			if(active_attachable.fire_attachment(target, src, user)) //Fire it.
+				active_attachable.last_fired = world.time
 		return NONE
 
 	if(flags_gun_features & GUN_TRIGGER_SAFETY)
@@ -703,20 +703,20 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 				if(user)
 					var/area/thearea = get_area(user)
 					if(user.faction == target_human.faction && !thearea?.statistic_exempt)
-						target_human.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]."
-						user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]."
+						target_human.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]. <b>Shooter:</b> [ADMIN_VERBOSEJMP(user)], <b>Victim:</b> [ADMIN_VERBOSEJMP(target_human)]"
+						user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]. <b>Shooter:</b> [ADMIN_VERBOSEJMP(user)], <b>Victim:</b> [ADMIN_VERBOSEJMP(target_human)]"
 						if(weapon_cause_data.cause_name)
 							target_human.track_friendly_fire(weapon_cause_data.cause_name)
-						var/ff_msg = "[key_name(user)] shot [key_name(target_human)] with \a [name] in [get_area(user)] [ADMIN_JMP(user)] [ADMIN_PM(user)]"
+						var/ff_msg = "[key_name(user)] shot [key_name(target_human)] with \a [name]. [SPAN_BOLD("Shooter:")] [ADMIN_VERBOSEJMP(user)] [ADMIN_PM(user)], [SPAN_BOLD("Victim:")] [ADMIN_VERBOSEJMP(target_human)]."
 						var/ff_living = TRUE
 						if(target_human.stat == DEAD)
 							ff_living = FALSE
-						if(!((user.mob_flags & MUTINY_MUTINEER) && (target_human.mob_flags & MUTINY_LOYALIST)) && ((user.mob_flags & MUTINY_LOYALIST) && (target_human.mob_flags & MUTINY_MUTINEER)))
-							msg_admin_ff(ff_msg, ff_living)
+						if(!(((user.mob_flags & MUTINY_MUTINEER) && (target_human.mob_flags & MUTINY_LOYALIST)) || ((user.mob_flags & MUTINY_LOYALIST) && (target_human.mob_flags & MUTINY_MUTINEER))))
+							msg_admin_ff(ff_msg, ff_living, user.loc.z)
 					else
-						target_human.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]."
-						user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]."
-						msg_admin_attack("[key_name(user)] shot [key_name(target_human)] with \a [name] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+						target_human.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]. <b>Shooter:</b> [ADMIN_VERBOSEJMP(user)], <b>Victim:</b> [ADMIN_VERBOSEJMP(target_human)]"
+						user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]. <b>Shooter:</b> [ADMIN_VERBOSEJMP(user)], <b>Victim:</b> [ADMIN_VERBOSEJMP(target_human)]"
+						msg_admin_attack("[key_name(user)] shot [key_name(target_human)] with \a [name]. Shooter: [AREACOORD(user)] Victim: [AREACOORD(target_human)]", user.loc.x, user.loc.y, user.loc.z)
 				if(weapon_cause_data.cause_name)
 					target_human.track_shot_hit(weapon_cause_data.cause_name, target_human)
 
@@ -772,6 +772,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 		PF.flags_pass = PASS_FLAGS_FLAME
 
 /obj/flamer_fire/Crossed(atom/movable/atom_movable)
+	..()
 	atom_movable.handle_flamer_fire_crossed(src)
 
 /obj/flamer_fire/proc/type_b_debuff_xeno_armor(mob/living/carbon/xenomorph/X)

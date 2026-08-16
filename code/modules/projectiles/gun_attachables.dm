@@ -246,26 +246,37 @@ Defined in conflicts.dm of the #defines folder.
 	SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN_ATTACHMENT, src) // Because of this, the . = ..() check should be called last, just before firing
 	return TRUE
 
-/obj/item/attachable/proc/handle_attachment_description()
+/obj/item/attachable/proc/handle_attachment_description(mob/user)
+	var/obj/item/weapon/gun/gun = loc
+	var/adjacent = user && gun && gun.Adjacent(user)
 	var/base_attachment_desc
 	switch(slot)
 		if("rail")
-			base_attachment_desc = "It has a [icon2html(src)] [name] mounted on the top."
+			base_attachment_desc = "It has a [icon2html(src)][SPAN_ORANGE(name)] mounted on the top."
 		if("muzzle")
-			base_attachment_desc = "It has a [icon2html(src)] [name] mounted on the front."
+			base_attachment_desc = "It has a [icon2html(src)][SPAN_ORANGE(name)] mounted on the front."
 		if("stock")
-			base_attachment_desc = "It has a [icon2html(src)] [name] for a stock."
+			base_attachment_desc = "It has a [icon2html(src)][SPAN_ORANGE(name)] for a stock."
 		if("under")
-			var/output = "It has a [icon2html(src)] [name]"
-			if(flags_attach_features & ATTACH_WEAPON)
-				output += " ([current_rounds]/[max_rounds])"
+			var/output = "It has a [icon2html(src)][SPAN_ORANGE(name)]"
+
+			if(flags_attach_features & ATTACH_WEAPON && adjacent)
+				var/ammo_text = "([current_rounds]/[max_rounds])"
+				if(current_rounds <= 0)
+					ammo_text = SPAN_RED(ammo_text)
+				else if(current_rounds < max_rounds)
+					ammo_text = SPAN_ORANGE(ammo_text)
+				else
+					ammo_text = SPAN_GREEN(ammo_text)
+				output += " [ammo_text]"
 			output += " mounted underneath."
 			base_attachment_desc = output
 		else
-			base_attachment_desc = "It has a [icon2html(src)] [name] attached."
-	return handle_pre_break_attachment_description(base_attachment_desc) + "<br>"
+			base_attachment_desc = "It has a [icon2html(src)][SPAN_ORANGE(name)] attached."
 
-/obj/item/attachable/proc/handle_pre_break_attachment_description(base_description_text as text)
+	return SPAN_INFO(handle_pre_break_attachment_description(base_attachment_desc, user)) + "<br>"
+
+/obj/item/attachable/proc/handle_pre_break_attachment_description(base_description_text as text, mob/user)
 	return base_description_text
 
 // ======== Muzzle Attachments ======== //
@@ -338,6 +349,7 @@ Defined in conflicts.dm of the #defines folder.
 	flags_equip_slot = SLOT_FACE
 	flags_armor_protection = SLOT_FACE
 	flags_item = CAN_DIG_SHRAPNEL
+	gun_traits = list(TRAIT_GUN_BAYONET)
 
 
 	attach_icon = "bayonet_a"
@@ -684,6 +696,7 @@ Defined in conflicts.dm of the #defines folder.
 	sound_override = TRUE
 	verb_override = TRUE
 	attack_speed = 9
+	gun_traits = list(TRAIT_GUN_BAYONET)
 
 /obj/item/attachable/shotgun_choke
 	name = "shotgun choke"
@@ -882,23 +895,23 @@ Defined in conflicts.dm of the #defines folder.
 	user.put_in_hands(new /obj/item/attachable/flashlight/under_barrel(user))
 	qdel(src)
 
-/obj/item/attachable/flashlight/on_enter_storage(obj/item/storage/internal/S)
+/obj/item/attachable/flashlight/on_enter_storage(obj/item/storage/internal/inner_inv)
 	..()
 
-	if(!istype(S, /obj/item/storage/internal))
+	if(!istype(inner_inv, /obj/item/storage/internal))
 		return
 
-	if(!istype(S.master_object, /obj/item/clothing/head/helmet/marine))
+	if(!istype(inner_inv.master_object, /obj/item/clothing/head/helmet/marine) && !istype(inner_inv.master_object, /obj/item/clothing/head/headset) && !istype(inner_inv.master_object, /obj/item/clothing/head/cmcap))
 		return
 
 	remove_attached_item()
 
-	attached_item = S.master_object
+	attached_item = inner_inv.master_object
 	RegisterSignal(attached_item, COMSIG_PARENT_QDELETING, PROC_REF(remove_attached_item))
-	activation = new /datum/action/item_action/toggle/rail_flashlight(src, S.master_object)
+	activation = new /datum/action/item_action/toggle/rail_flashlight(src, inner_inv.master_object)
 
-	if(ismob(S.master_object.loc))
-		activation.give_to(S.master_object.loc)
+	if(ismob(inner_inv.master_object.loc))
+		activation.give_to(inner_inv.master_object.loc)
 
 /obj/item/attachable/flashlight/on_exit_storage(obj/item/storage/S)
 	remove_attached_item()
@@ -926,14 +939,14 @@ Defined in conflicts.dm of the #defines folder.
 			item_action.update_button_icon()
 
 /obj/item/attachable/flashlight/activate_attachment(obj/item/weapon/gun/G, mob/living/user, turn_off)
-	turn_light(user, turn_off ? !turn_off : !light_on)
+	turn_light(user, turn_off ? !turn_off : !light_on, forced = turn_off)
 
 /obj/item/attachable/flashlight/turn_light(mob/user, toggle_on, cooldown, sparks, forced, light_again)
 	. = ..()
 	if(. != CHECKS_PASSED)
 		return
 
-	if(istype(attached_item, /obj/item/clothing/head/helmet/marine))
+	if(istype(attached_item, /obj/item/clothing/head/helmet/marine) || istype(attached_item, /obj/item/clothing/head/headset) || istype(attached_item, /obj/item/clothing/head/cmcap))
 		if(!toggle_on || light_on)
 			if(light_on)
 				playsound(user, deactivation_sound, 15, 1)
@@ -3253,10 +3266,11 @@ Defined in conflicts.dm of the #defines folder.
 	if(get_dist(user,target) > max_range)
 		to_chat(user, SPAN_WARNING("Too far to fire the attachment!"))
 		playsound(user, 'sound/weapons/gun_empty.ogg', 50, TRUE, 5)
-		return
+		return FALSE
 
 	if(current_rounds > 0 && ..())
 		prime_grenade(target,gun,user)
+		return TRUE
 
 /obj/item/attachable/attached_gun/grenade/proc/prime_grenade(atom/target,obj/item/weapon/gun/gun,mob/living/user)
 	set waitfor = 0
@@ -3383,7 +3397,7 @@ Defined in conflicts.dm of the #defines folder.
 		intense_mode = TRUE
 	update_icon()
 
-/obj/item/attachable/attached_gun/flamer/handle_pre_break_attachment_description(base_description_text as text)
+/obj/item/attachable/attached_gun/flamer/handle_pre_break_attachment_description(base_description_text as text, mob/user)
 	return base_description_text + " It is on [intense_mode ? "intense" : "normal"] mode."
 
 /obj/item/attachable/attached_gun/flamer/reload_attachment(obj/item/ammo_magazine/flamer_tank/fuel_holder, mob/user)
@@ -3429,12 +3443,13 @@ Defined in conflicts.dm of the #defines folder.
 
 	if(!(attached_gun.flags_item & WIELDED))
 		to_chat(user, SPAN_WARNING("You must wield [attached_gun] to fire [src]!"))
-		return
+		return FALSE
 
 	if(current_rounds > round_usage_per_tile && ..())
 		unleash_flame(target, user)
 		if(attached_gun.last_fired < world.time)
 			attached_gun.last_fired = world.time
+		return TRUE
 
 /obj/item/attachable/attached_gun/flamer/proc/unleash_flame(atom/target, mob/living/user)
 	set waitfor = 0
@@ -3677,8 +3692,11 @@ Defined in conflicts.dm of the #defines folder.
 		return
 	. += SPAN_WARNING("It's empty.")
 
-/obj/item/attachable/attached_gun/extinguisher/handle_attachment_description(slot)
-	return "It has a [icon2html(src)] [name] ([floor(internal_extinguisher.reagents.total_volume)]/[internal_extinguisher.max_water]) mounted underneath.<br>"
+/obj/item/attachable/attached_gun/extinguisher/handle_attachment_description(mob/user)
+	var/obj/item/weapon/gun/gun = loc
+	var/adjacent = user && gun && gun.Adjacent(user)
+	var/info = adjacent ? " ([floor(internal_extinguisher.reagents.total_volume)]/[internal_extinguisher.max_water])" : ""
+	return SPAN_INFO("It has a [icon2html(src)] [SPAN_ORANGE(name)][info] mounted underneath.") + "<br>"
 
 /obj/item/attachable/attached_gun/extinguisher/New()
 	..()
@@ -3738,8 +3756,8 @@ Defined in conflicts.dm of the #defines folder.
 		'sound/weapons/gun_flamethrower3.ogg'
 	)
 
-/obj/item/attachable/attached_gun/flamer_nozzle/handle_attachment_description(slot)
-	return "It has a [icon2html(src)] [name] mounted beneath the barrel.<br>"
+/obj/item/attachable/attached_gun/flamer_nozzle/handle_attachment_description(mob/user)
+	return SPAN_INFO("It has a [icon2html(src)] [SPAN_ORANGE(name)] mounted beneath the barrel.") + "<br>"
 
 /obj/item/attachable/attached_gun/flamer_nozzle/activate_attachment(obj/item/weapon/gun/firearm, mob/living/user, turn_off)
 	. = ..()
@@ -3752,36 +3770,36 @@ Defined in conflicts.dm of the #defines folder.
 	. = ..()
 
 	if(world.time < gun.last_fired + gun.get_fire_delay())
-		return
+		return FALSE
 
 	if((gun.flags_gun_features & GUN_WIELDED_FIRING_ONLY) && !(gun.flags_item & WIELDED))
 		to_chat(user, SPAN_WARNING("You must wield [gun] to fire [src]!"))
-		return
+		return FALSE
 
 	if(gun.flags_gun_features & GUN_TRIGGER_SAFETY)
 		to_chat(user, SPAN_WARNING("\The [gun] isn't lit!"))
-		return
+		return FALSE
 
 	if(!istype(gun.current_mag, /obj/item/ammo_magazine/flamer_tank))
 		to_chat(user, SPAN_WARNING("\The [gun] needs a flamer tank installed!"))
-		return
+		return FALSE
 
 	if(!length(gun.current_mag.reagents.reagent_list))
 		to_chat(user, SPAN_WARNING("\The [gun] doesn't have enough fuel to launch a projectile!"))
-		return
+		return FALSE
 
 	var/datum/reagent/flamer_reagent = gun.current_mag.reagents.reagent_list[1]
 	if(flamer_reagent.volume < FLAME_REAGENT_USE_AMOUNT * fuel_per_projectile)
 		to_chat(user, SPAN_WARNING("\The [gun] doesn't have enough fuel to launch a projectile!"))
-		return
+		return FALSE
 
 	if(istype(flamer_reagent, /datum/reagent/foaming_agent/stabilized))
 		to_chat(user, SPAN_WARNING("This chemical will clog the nozzle!"))
-		return
+		return FALSE
 
 	if(istype(gun.current_mag, /obj/item/ammo_magazine/flamer_tank/smoke)) // you can't fire smoke like a projectile!
 		to_chat(user, SPAN_WARNING("[src] can't be used with this fuel tank!"))
-		return
+		return FALSE
 
 	gun.last_fired = world.time
 	gun.current_mag.reagents.remove_reagent(flamer_reagent.id, FLAME_REAGENT_USE_AMOUNT * fuel_per_projectile)

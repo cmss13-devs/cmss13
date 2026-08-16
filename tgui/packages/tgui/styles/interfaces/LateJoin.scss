@@ -1,0 +1,188 @@
+.HijackIndicator {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.HijackIndicator h1 {
+  font-size: 2rem;
+}
+
+.HijackIcon {
+  margin-left: 4rem;
+  margin-right: 4rem;
+}
+
+.RoleCategory .Section__titleText {
+  font-size: 2rem !important;
+}
+
+.RoleCategory {
+  font-size: 1.2rem;
+}
+
+.RoleIcon {
+  display: block;
+  width: 8px;
+  height: 8px;
+  transform: scale(2);
+  background-image: url('../assets/roles/default.png');
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+
+  filter: saturate(70%) grayscale(20%) drop-shadow(1px 1px 1px gray);
+}
+
+.RoleTitle {
+  font-size: 1.5rem;
+}
+
+.SlotInfo {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.SlotInfoRow {
+  padding-right: 0.5rem;
+}
+
+.commanding_officer {
+  background-image: url('../assets/roles/commanding_officer.png');
+}
+
+.executive_officer {
+  background-image: url('../assets/roles/executive_officer.png');
+}
+
+.staff_officer {
+  background-image: url('../assets/roles/staff_officer.png');
+}
+
+.auxiliary_support_officer {
+  background-image: url('../assets/roles/auxiliary_support_officer.png');
+}
+
+.senior_enlisted_advisor {
+  background-image: url('../assets/roles/senior_enlisted_advisor.png');
+}
+
+.intelligence_officer {
+  background-image: url('../assets/roles/intelligence_officer.png');
+}
+
+.gunship_pilot {
+  background-image: url('../assets/roles/gunship_pilot.png');
+}
+
+.dropship_pilot {
+  background-image: url('../assets/roles/dropship_pilot.png');
+}
+
+.dropship_crew_chief {
+  background-image: url('../assets/roles/dropship_crew_chief.png');
+}
+
+.tank_crew {
+  background-image: url('../assets/roles/tank_crew.png');
+}
+
+.chief_engineer {
+  background-image: url('../assets/roles/chief_engineer.png');
+}
+
+.maintenance_technician {
+  background-image: url('../assets/roles/maintenance_technician.png');
+}
+
+.chief_medical_officer {
+  background-image: url('../assets/roles/chief_medical_officer.png');
+}
+
+.nurse {
+  background-image: url('../assets/roles/nurse.png');
+}
+
+.doctor {
+  background-image: url('../assets/roles/doctor.png');
+}
+
+.field_doctor {
+  background-image: url('../assets/roles/field_doctor.png');
+}
+
+.researcher {
+  background-image: url('../assets/roles/researcher.png');
+}
+
+.cargo_technician {
+  background-image: url('../assets/roles/cargo_technician.png');
+}
+
+.quartermaster {
+  background-image: url('../assets/roles/quartermaster.png');
+}
+
+.chief_mp {
+  background-image: url('../assets/roles/chief_mp.png');
+}
+
+.military_warden {
+  background-image: url('../assets/roles/military_warden.png');
+}
+
+.military_police {
+  background-image: url('../assets/roles/military_police.png');
+}
+
+.synthetic {
+  background-image: url('../assets/roles/synthetic.png');
+}
+
+.working_joe {
+  background-image: url('../assets/roles/synthetic.png');
+}
+
+.corporate_liaison {
+  background-image: url('../assets/roles/corporate_liaison.png');
+}
+
+.corporate_bodyguard {
+  background-image: url('../assets/roles/corporate_bodyguard.png');
+}
+
+.combat_correspondent {
+  background-image: url('../assets/roles/combat_correspondent.png');
+}
+
+.mess_technician {
+  background-image: url('../assets/roles/mess_technician.png');
+}
+
+.squad_leader {
+  background-image: url('../assets/roles/squad_leader.png');
+}
+
+.fireteam_leader {
+  background-image: url('../assets/roles/fireteam_leader.png');
+}
+
+.weapons_specialist {
+  background-image: url('../assets/roles/weapons_specialist.png');
+}
+
+.smartgunner {
+  background-image: url('../assets/roles/smartgunner.png');
+}
+
+.hospital_corpsman {
+  background-image: url('../assets/roles/hospital_corpsman.png');
+}
+
+.combat_technician {
+  background-image: url('../assets/roles/combat_technician.png');
+}
+
+.rifleman {
+  background-image: url('../assets/roles/default.png');
+}

@@ -62,8 +62,7 @@
 			SPAN_NOTICE("[user] has constructed a prepared incision in [target]'s [surgery.affected_limb.display_name] that is now bleeding."))
 
 		surgery.status += 6 //IMS completes all steps.
-		surgery.affected_limb.limb_surgery_status &= INCISION_WIDENED
-		surgery.affected_limb.limb_surgery_status &= INCISION_CLAMPED
+		surgery.affected_limb.limb_surgery_status |= (INCISION_WIDENED | INCISION_CLAMPED)
 		switch(target_zone) //forces application of overlays
 			if("chest")
 				target.overlays += image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
@@ -77,26 +76,22 @@
 			SPAN_NOTICE("[user] finishes making a bloodless incision on [target]'s [surgery.affected_limb.display_name] with [tool]."))
 
 		surgery.status += 3 //A laser scalpel may cauterise as it cuts.
-		surgery.affected_limb.limb_surgery_status &= INCISION_MADE
-		surgery.affected_limb.limb_surgery_status &= INCISION_CLAMPED
+		surgery.affected_limb.limb_surgery_status |= (INCISION_MADE | INCISION_CLAMPED)
 	else
 		user.affected_message(target,
 			SPAN_NOTICE("You finish the incision on [target]'s [surgery.affected_limb.display_name]."),
 			SPAN_NOTICE("[user] finishes the incision on your [surgery.affected_limb.display_name]."),
 			SPAN_NOTICE("[user] finishes the incision on [target]'s [surgery.affected_limb.display_name]."))
-		surgery.affected_limb.limb_surgery_status &= INCISION_MADE
-		surgery.affected_limb.limb_surgery_status &= INCISION_BLEEDING
+		surgery.affected_limb.limb_surgery_status |= (INCISION_MADE | INCISION_BLEEDING)
 
 		if(!(surgery.affected_limb.status & LIMB_SYNTHSKIN))
 			var/datum/effects/bleeding/external/incision_bleed = new(target, surgery.affected_limb, 10)
 			incision_bleed.duration = 10 MINUTES //A weak bleed, but it doesn't stop on its own.
 			surgery.affected_limb.bleeding_effects_list += incision_bleed
-			surgery.affected_limb.limb_surgery_status &= INCISION_MADE
-			surgery.affected_limb.limb_surgery_status &= INCISION_BLEEDING
+			surgery.affected_limb.limb_surgery_status |= (INCISION_MADE | INCISION_BLEEDING)
 		else
 			surgery.status += 3 // synth skin doesn't cause bleeders
-			surgery.affected_limb.limb_surgery_status &= INCISION_MADE
-			surgery.affected_limb.limb_surgery_status &= INCISION_CLAMPED
+		surgery.affected_limb.limb_surgery_status |= (INCISION_MADE | INCISION_CLAMPED)
 
 	target.update_surgery_overlays()
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SHALLOW //Descriptionwise this is done by the retractor, but putting it here means people can examine to see if an unfinished surgery has been done.

@@ -686,10 +686,10 @@
 	if(ishuman(src))
 		var/mob/living/carbon/human/person = src
 		for(var/obj/limb/part as anything in person.limbs)
-			part.limb_surgery_status &= ~INCISION_MADE
-			part.limb_surgery_status &= ~INCISION_WIDENED
-			part.limb_surgery_status &= ~INCISION_BLEEDING
-			part.limb_surgery_status &= ~INCISION_CLAMPED
-			part.limb_surgery_status &= ~INCISION_BONE_OPENED
-			part.limb_surgery_status &= ~INCISION_BONE_CLOSED
-			part.limb_surgery_status &= ~INCISION_INT_BLEEDING
+			part.limb_surgery_status -= INCISION_MADE
+			part.limb_surgery_status -= INCISION_WIDENED
+			part.limb_surgery_status -= INCISION_BLEEDING
+			part.limb_surgery_status -= INCISION_CLAMPED
+			part.limb_surgery_status -= INCISION_BONE_OPENED
+			part.limb_surgery_status -= INCISION_BONE_CLOSED
+			part.limb_surgery_status -= INCISION_INT_BLEEDING

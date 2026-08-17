@@ -1,5 +1,0 @@
-author: "cuberound, datimesmog"
-delete-after: True
-changes:
-  - imageadd: " new HUD element to track Neurotoxin stacks"
-  - imageadd: "new HUD element for medhud to track Neurotoxin"

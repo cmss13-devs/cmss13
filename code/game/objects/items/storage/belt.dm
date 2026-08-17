@@ -1892,14 +1892,14 @@
 	if(!.)
 		return
 
-	if(istype(inserted_item, GLOB.sidearm_ammo))
+	if(is_type_in_list(inserted_item, GLOB.sidearm_ammo))
 		if(pistol_mags >= 2)
 			if(!stop_messages)
 				to_chat(user, SPAN_WARNING("[src] can't hold more pistol magazines."))
 			return FALSE
 		return TRUE
 
-	if(istype(inserted_item, GLOB.longarm_ammo))
+	if(is_type_in_list(inserted_item, GLOB.longarm_ammo))
 		if(rifle_mags >= 3)
 			if(!stop_messages)
 				to_chat(user, SPAN_WARNING("[src] can't hold more rifle magazines."))
@@ -1907,17 +1907,17 @@
 		return TRUE
 
 /obj/item/storage/belt/gun/combat_rig/_item_insertion(obj/item/inserted_item, prevent_warning = 0, mob/user)
-	if(istype(inserted_item, GLOB.sidearm_ammo))
+	if(is_type_in_list(inserted_item, GLOB.sidearm_ammo))
 		pistol_mags++
-	else if(istype(inserted_item, GLOB.longarm_ammo))
+	else if(is_type_in_list(inserted_item, GLOB.longarm_ammo))
 		rifle_mags++
 
 	..()
 
 /obj/item/storage/belt/gun/combat_rig/_item_removal(obj/item/inserted_item, atom/new_location)
-	if(istype(inserted_item, GLOB.sidearm_ammo))
+	if(is_type_in_list(inserted_item, GLOB.sidearm_ammo))
 		pistol_mags = max(pistol_mags - 1, 0)
-	else if(istype(inserted_item, GLOB.longarm_ammo))
+	else if(is_type_in_list(inserted_item, GLOB.longarm_ammo))
 		rifle_mags = max(rifle_mags - 1, 0)
 
 	..()

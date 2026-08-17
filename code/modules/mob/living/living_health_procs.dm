@@ -580,6 +580,7 @@
 
 /mob/living/proc/rejuvenate()
 	heal_all_damage()
+
 	// shut down ongoing problems
 	status_flags &= ~PERMANENTLY_DEAD
 	nutrition = NUTRITION_NORMAL

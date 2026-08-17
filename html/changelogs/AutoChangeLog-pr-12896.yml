@@ -1,0 +1,4 @@
+author: "MistChristmas"
+delete-after: True
+changes:
+  - bugfix: "Custom Hotkeys saving + as Add, and ARROWUP not being saved as North etc for the arrow keys."

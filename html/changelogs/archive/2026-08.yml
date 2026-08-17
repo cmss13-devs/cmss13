@@ -394,3 +394,14 @@
 2026-08-16:
   Red-byte3D:
   - imageadd: New ghillie sprite
+2026-08-17:
+  AnCopper:
+  - bugfix: The New Varadero LACN Commander is once again a Commander instead of a
+      LtCol
+  Namen-n:
+  - mapadd: added vehicle restrictions for caves on the LV522 Chances Claim map.
+  Unknownity:
+  - balance: Reinforced Walls now take 8 plasteel sheets to construct instead of 5.
+  - rscadd: Added one marine tip about being able to reinforce reagent and fuel tanks
+      with plasteel.
+  - refactor: Nuked some single letter vars in the girders file.

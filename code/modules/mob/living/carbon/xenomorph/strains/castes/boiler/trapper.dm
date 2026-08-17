@@ -239,7 +239,7 @@
 /datum/ammo/xeno/acid_shotgun
 	name = "acid ball"
 	ping = null
-	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER|AMMO_IGNORE_ARMOR|AMMO_ACIDIC
+	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER|AMMO_IGNORE_ARMOR|AMMO_ACIDIC|AMMO_XENO
 	bonus_projectiles_type = /datum/ammo/xeno/acid_shotgun/spread
 	hit_effect_color = "#FF0000"
 

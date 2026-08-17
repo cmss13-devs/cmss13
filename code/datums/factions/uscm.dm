@@ -190,9 +190,9 @@
 			if(JOB_CMO)
 				marine_rk = "cmo"
 			if(JOB_DOCTOR)
-				if(id_card.assignment == JOB_SURGEON)
+				if(id_card && id_card.assignment == JOB_SURGEON)
 					marine_rk = "surgeon"
-				else if(id_card.assignment == JOB_PHARMACIST)
+				else if(id_card && id_card.assignment == JOB_PHARMACIST)
 					marine_rk = "pharmacist"
 				else
 					marine_rk = "doctor"

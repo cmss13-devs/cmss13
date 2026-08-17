@@ -55,7 +55,8 @@
 #define INCISION_CLAMPED (1<<1)
 
 //Applies to skulls, ribs, and pelvis; they've been sawed and opened, or organs were moved away from the pelvis.
-#define INCISION_BONE_OPENED (1<<1)
+#define INCISION_BONE_OPENED (1<<0)
+#define INCISION_BONE_CLOSED (1<<1)
 
 //A limb is internally bleeding.
 #define INCISION_INT_BLEEDING (1<<0)

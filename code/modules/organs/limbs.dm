@@ -73,7 +73,7 @@
 
 	var/destroyed = FALSE
 	var/status = LIMB_ORGANIC
-	var/surgery_status = null
+	var/limb_surgery_status = null
 	var/processing = FALSE
 
 	/// skin color of the owner, used for limb appearance, set in [/obj/limb/proc/update_limb()]
@@ -1413,35 +1413,35 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 		surgery_overlay.icon_state = null
 		return
 
-	if(surgery_status & INCISION_BLEEDING) //sets up the fleshy bits--these are bleeding
-		if(surgery_status & INCISION_WIDENED || INCISION_BONE_OPENED)
+	if(limb_surgery_status & INCISION_BLEEDING) //sets up the fleshy bits--these are bleeding
+		if(limb_surgery_status & INCISION_WIDENED || INCISION_BONE_OPENED)
 			surgery_overlay.icon_state = "incision_wide_[name]_b"
 			surgery_overlay.color = owner?.species.blood_color
 			. += surgery_overlay
-		else if(!(surgery_status & INCISION_CLAMPED)) //just to make sure...
+		else if(!(limb_surgery_status & INCISION_CLAMPED)) //just to make sure...
 			surgery_overlay.icon_state = "incision_[name]_b"
 			surgery_overlay.color = owner?.species.blood_color
 			. += surgery_overlay
 
-	else if(surgery_status & INCISION_CLAMPED) //no bleed here
-		if(surgery_status & INCISION_WIDENED || INCISION_BONE_OPENED)
+	else if(limb_surgery_status & INCISION_CLAMPED) //no bleed here
+		if(limb_surgery_status & INCISION_WIDENED || INCISION_BONE_OPENED)
 			surgery_overlay.icon_state = "incision_wide_[name]"
 			surgery_overlay.color = owner?.species.blood_color
 			. += surgery_overlay
-		else if(!(surgery_status & INCISION_BLEEDING)) //just to make sure...
+		else if(!(limb_surgery_status & INCISION_BLEEDING)) //just to make sure...
 			surgery_overlay.icon_state = "incision_[name]"
 			surgery_overlay.color = owner?.species.blood_color
 			. += surgery_overlay
 
-	if(surgery_status & INCISION_WIDENED) //The incision is open; add bones now.
-		if(surgery_status & LIMB_BROKEN)
+	if(limb_surgery_status & INCISION_WIDENED) //The incision is open; add bones now.
+		if(limb_surgery_status & LIMB_BROKEN)
 			surgery_overlay.icon_state = "bone_broken_[name]"
 			. += surgery_overlay
 		else
 			surgery_overlay.icon_state = "bone_[name]"
 			. += surgery_overlay
-	else if(surgery_status & INCISION_BONE_OPENED) //adds open broken bones on top of widened incision
-		if(surgery_status & LIMB_BROKEN)
+	else if(limb_surgery_status & INCISION_BONE_OPENED) //adds open broken bones on top of widened incision
+		if(limb_surgery_status & LIMB_BROKEN)
 			surgery_overlay.icon_state = "bone_open_broken_[name]"
 			. += surgery_overlay
 		else

@@ -555,21 +555,32 @@
 	default_icon.Blend(icon('icons/mob/hud/factions/marine.dmi', icon_state = "hudsquad_grunt"), ICON_OVERLAY)
 	default_icon.Crop(25, 25, 32, 32)
 
+	// feeling particularly proud of this unhinged hack
+	var/mob/living/carbon/human/fake_human = new(locate(1,1,1))
 	for(var/title in GLOB.RoleAuthority.roles_by_name)
+		var/datum/job/job = GLOB.RoleAuthority.roles_by_name[title]
 		var/normalized_title = replacetext(lowertext(title), " ", "_")
-		// Because there's no actual role <-> faction mapping, go through them all naively until we get an icon back
 		var/icon/role_icon
-		for(var/faction in GLOB.faction_datums)
-			role_icon = GLOB.faction_datums[faction].get_role_icon(title)
-			if(!isnull(role_icon))
-				// perhaps a bit naive to assume all overlays are in the top right 8x8?
-				role_icon.Crop(25, 25, 32, 32)
-				break
+		// jobs are weakly linked to factions through their gear preset
+		// set the fake human's faction by loading the job's ID onto it
+		var/datum/equipment_preset/job_preset = GLOB.equipment_presets.gear_path_presets_list[job.gear_preset]
+		if(!isnull(job_preset))
+			job_preset.load_id(fake_human)
+
+			// render the fake human's HUD into our holder
+			var/image/holder = new()
+			var/datum/faction/faction = GLOB.faction_datums[fake_human.faction]
+			if(!isnull(faction))
+				faction.modify_hud_holder(holder, fake_human)
+				role_icon = getFlatIcon(holder)
+				if(!isnull(role_icon))
+					role_icon.Crop(25, 25, 32, 32)
 
 		// Use the default icon for roles that we couldn't generate an icon for
 		if(isnull(role_icon))
 			role_icon = icon(default_icon)
 
 		Insert(normalized_title, role_icon)
+	qdel(fake_human)
 
 	return ..()

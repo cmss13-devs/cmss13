@@ -145,9 +145,9 @@
 			else
 				rank_icon_substate = "mp"
 		if(JOB_DOCTOR)
-			if(id_card.assignment == JOB_SURGEON)
+			if(id_card && id_card.assignment == JOB_SURGEON)
 				rank_icon_substate = "surgeon"
-			else if(id_card.assignment == JOB_PHARMACIST)
+			else if(id_card && id_card.assignment == JOB_PHARMACIST)
 				rank_icon_substate = "pharmacist"
 			else
 				rank_icon_substate = "doctor"

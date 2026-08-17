@@ -176,7 +176,7 @@
 
 /datum/equipment_preset/survivor/upp/mss
 	name = "Survivor - UPP Ministry of Space Security Officer"
-	paygrades = list(PAY_SHORT_MSS = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_UO4 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/gold
 	assignment = JOB_UPP_MSS_OFFICER
 	job_title = JOB_UPP_MSS_OFFICER

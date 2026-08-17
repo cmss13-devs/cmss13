@@ -31,9 +31,6 @@
 /// UC3, 1st Kommando
 #define PAY_SHORT_UC3 "UC3"
 
-/// MSS, Ministry of Space Security Officer
-#define PAY_SHORT_MSS "MSS"
-
 /// UO1, Leytenant/Mladshiy Leytenant
 #define PAY_SHORT_UO1 "UO1"
 

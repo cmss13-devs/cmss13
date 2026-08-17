@@ -1856,7 +1856,7 @@
 	name = "\improper M276 pattern combat sidearm rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version has a holster assembly that allows one to carry the most common pistols. It also contains side pouches that can store most pistol and rifle magazines."
 	icon_state = "mag_holster"
-	storage_slots = 6 // 3 rifle mags + 2 pistol mags + 1 sidearm
+	storage_slots = 6 // 3 rifle mags + 2 pistol mags + 1 sidearm. Handfuls aren't counted towards limit but occupy slot.
 	holster_slots = list(
 		"1" = list(
 			"icon_x" = 5,
@@ -1881,8 +1881,6 @@
 
 	var/rifle_mags = 0
 	var/pistol_mags = 0
-	var/sidearm_ammo
-	var/longarm_ammo
 
 /obj/item/storage/belt/gun/combat_rig/Destroy()
 	rifle_mags = 0

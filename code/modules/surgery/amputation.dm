@@ -134,6 +134,8 @@
 	if(target.stat == CONSCIOUS)
 		to_chat(target, SPAN_NOTICE("You can move your [surgery.affected_limb.display_name] again."))
 
+	target.remove_surgery_flags()
+	target.update_surgery_overlays()
 	complete(target, surgery)
 	log_interact(user, target, "[key_name(user)] successfully aborted an amputation on [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], ending [surgery].")
 

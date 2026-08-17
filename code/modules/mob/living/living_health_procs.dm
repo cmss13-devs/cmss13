@@ -580,7 +580,6 @@
 
 /mob/living/proc/rejuvenate()
 	heal_all_damage()
-
 	// shut down ongoing problems
 	status_flags &= ~PERMANENTLY_DEAD
 	nutrition = NUTRITION_NORMAL
@@ -610,6 +609,7 @@
 	//Reset any surgeries.
 	active_surgeries = DEFENSE_ZONES_LIVING
 	initialize_incision_depths()
+	remove_surgery_flags()
 	remove_surgery_overlays()
 
 	// remove the character from the list of the dead
@@ -680,3 +680,15 @@
 		return
 	face_dir(direction)
 	return ..()
+
+/mob/living/proc/remove_surgery_flags()
+	if(ishuman(src))
+		var/mob/living/carbon/human/person = src
+		for(var/obj/limb/part as anything in person.limbs)
+			part.limb_surgery_status &= ~INCISION_MADE
+			part.limb_surgery_status &= ~INCISION_WIDENED
+			part.limb_surgery_status &= ~INCISION_BLEEDING
+			part.limb_surgery_status &= ~INCISION_CLAMPED
+			part.limb_surgery_status &= ~INCISION_BONE_OPENED
+			part.limb_surgery_status &= ~INCISION_BONE_CLOSED
+			part.limb_surgery_status &= ~INCISION_INT_BLEEDING

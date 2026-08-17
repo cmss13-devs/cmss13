@@ -11,6 +11,7 @@ import {
   Stack,
 } from 'tgui/components';
 import { Window } from 'tgui/layouts';
+import { resolveAsset } from 'tgui/assets';
 
 type RoleInformation = {
   readonly Title: string;
@@ -42,7 +43,7 @@ export const LateJoin = (props, context) => {
   const { act, data } = useBackend<LateJoinData>();
 
   return (
-    <Window theme={'crtgreen'} width={600} height={600}>
+    <Window theme={'crtgreen'} width={600} height={700}>
       <Window.Content className="LateJoin" scrollable>
         {data.HijackInitiated ? (
           <Box>
@@ -86,9 +87,14 @@ type RoleIconProps = ComponentProps<'img'> & {
 
 const RoleIcon = (props: RoleIconProps) => {
   const { role } = props;
+  const normalizedRoleName = role.toLowerCase().replaceAll(' ', '_');
   return (
     <i
-      className={classes(['RoleIcon', role.toLowerCase().replaceAll(' ', '_')])}
+      className={classes([
+        'RoleIcon',
+        'role_icons8x8',
+        `${normalizedRoleName}`,
+      ])}
     />
   );
 };
@@ -101,7 +107,6 @@ const RoleSlotInfo = (props: RoleSlotInfoProps) => {
 
   const infSlots = role.Slots === -1;
   const roleSlots = 'x' + role.Slots;
-  let slotClasses = ['SlotCount'];
 
   return (
     <Flex

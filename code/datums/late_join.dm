@@ -64,6 +64,10 @@ GLOBAL_DATUM_INIT(late_join_tgui, /datum/late_join, new)
 	LAZYADD(data["Categories"], categorized_roles)
 	return data
 
+/datum/late_join/ui_assets(mob/user)
+	. = ..()
+	. += get_asset_datum(/datum/asset/spritesheet/role_icons)
+
 /datum/late_join/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	var/success = user.AttemptLateSpawn(action)

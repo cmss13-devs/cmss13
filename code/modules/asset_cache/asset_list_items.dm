@@ -544,3 +544,16 @@
 	common_dirs = list(
 		"html/book_assets/",
 	)
+
+/datum/asset/spritesheet/role_icons
+	name = "role_icons"
+
+/datum/asset/spritesheet/role_icons/register()
+	for(var/title in GLOB.RoleAuthority.roles_by_name)
+		var/normalized_title = replacetext(lowertext(title), " ", "_")
+		var/datum/faction/uscm/marine_faction = GLOB.faction_datums[FACTION_MARINE]
+		if(istype(marine_faction))
+			var/icon/hud_icon = marine_faction.get_simple_icon(title)
+			hud_icon.Crop(25, 25, 32, 32)
+			Insert(normalized_title, hud_icon)
+	return ..()

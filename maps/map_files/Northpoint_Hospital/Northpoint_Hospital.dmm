@@ -7193,6 +7193,7 @@
 /turf/open/hybrisa/street/cement3,
 /area/northpoint/landing_zone_2)
 "auS" = (
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/hybrisa/street/sidewalkcorner/west,
 /area/northpoint/outdoors/urban_cave/south_east)
 "auT" = (
@@ -8902,6 +8903,10 @@
 /obj/structure/flora/wood/stick4,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/northpoint/landing_zone_2)
+"azZ" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalk/east,
+/area/northpoint/outdoors/urban_cave/south_east)
 "aAa" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/item/trash/cigbutt,
@@ -12548,11 +12553,299 @@
 /obj/item/trash/cigbutt,
 /turf/open/hybrisa/street/sidewalk/east,
 /area/northpoint/outdoors/urban_cave/lz1_south_west)
+"aJy" = (
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalk/west,
+/area/northpoint/outdoors/urban_cave/south_east)
+"aJz" = (
+/obj/effect/decal/large_stain{
+	pixel_y = 20;
+	dir = 1
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/northpoint/outdoors/urban_cave/south_east)
+"aJA" = (
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
+	},
+/turf/open/hybrisa/street/sidewalk/west,
+/area/northpoint/outdoors/urban_cave/south_east)
+"aJB" = (
+/obj/effect/decal/large_stain{
+	pixel_x = 10;
+	pixel_y = 10;
+	dir = 1
+	},
+/turf/open/floor/plating/platingdmg3,
+/area/northpoint/outdoors/urban_cave/south_east)
+"aJC" = (
+/obj/effect/decal/large_stain{
+	pixel_y = 20
+	},
+/turf/open/floor/plating/platingdmg2,
+/area/northpoint/outdoors/urban_cave/south_east)
+"aJD" = (
+/obj/effect/decal/large_stain,
+/turf/open/floor/plating,
+/area/northpoint/outdoors/urban_cave/south_east)
+"aJE" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/prop/hybrisa/misc/pole_stump,
+/turf/open/hybrisa/street/sidewalk/west,
+/area/northpoint/outdoors/urban_cave/south_east)
+"aJF" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalk/east,
+/area/northpoint/outdoors/urban_cave/south_east)
+"aJG" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -9;
+	pixel_y = 7
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/northpoint/outdoors/urban_cave/south_east)
+"aJH" = (
+/obj/item/tool/warning_cone{
+	pixel_x = 4;
+	pixel_y = 18
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/northpoint/outdoors/urban_cave/south_east)
+"aJI" = (
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 8;
+	pixel_y = 8
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 8;
+	pixel_y = 8
+	},
+/turf/open/hybrisa/street/cement3,
+/area/northpoint/outdoors/urban_cave/south_east)
+"aJJ" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 8;
+	pixel_y = 8
+	},
+/turf/open/hybrisa/street/cement3,
+/area/northpoint/outdoors/urban_cave/south_east)
+"aJK" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 8;
+	pixel_y = 8
+	},
+/turf/open/hybrisa/street/cement3,
+/area/northpoint/outdoors/urban_cave/south_east)
+"aJL" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/tool/warning_cone{
+	pixel_x = 2;
+	pixel_y = 9
+	},
+/turf/open/hybrisa/street/sidewalk,
+/area/northpoint/outdoors/urban_cave/south_east)
+"aJM" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/tiretrack,
+/turf/open/hybrisa/street/sidewalk,
+/area/northpoint/outdoors/urban_cave/south_east)
+"aJN" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalk,
+/area/northpoint/outdoors/urban_cave/south_east)
+"aJO" = (
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
+	},
+/turf/open/hybrisa/street/sidewalkfull,
+/area/northpoint/outdoors/urban_cave/south_east)
+"aJP" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/remains/robot,
+/obj/effect/decal/hybrisa/tiretrack,
+/obj/effect/decal/hybrisa/tiretrack,
+/turf/open/hybrisa/street/sidewalkfull,
+/area/northpoint/outdoors/urban_cave/south_east)
+"aJQ" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalkfull,
+/area/northpoint/outdoors/urban_cave/south_east)
+"aJR" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/hybrisa/street/sidewalkfull,
+/area/northpoint/outdoors/urban_cave/south_east)
+"aJS" = (
+/obj/effect/decal/hybrisa/tiretrack,
+/obj/effect/decal/hybrisa/tiretrack,
+/obj/effect/decal/hybrisa/tiretrack,
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/northpoint/oob)
+"aJT" = (
+/obj/item/stack/rods,
+/turf/open/floor/corsat/officetiles,
+/area/northpoint/oob)
+"aJU" = (
+/obj/effect/decal/remains/robot,
+/turf/open/floor/plating/platingdmg3,
+/area/northpoint/oob)
+"aJV" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/shard,
+/turf/open/floor/plating/platingdmg3,
+/area/northpoint/oob)
+"aJW" = (
+/obj/item/stack/rods,
+/turf/open/floor/plating/platingdmg3,
+/area/northpoint/oob)
+"aJX" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/obj/item/shard,
+/turf/open/floor/plating/platingdmg2,
+/area/northpoint/oob)
+"aJY" = (
+/obj/effect/decal/hybrisa/tiretrack,
+/obj/effect/decal/hybrisa/tiretrack,
+/obj/effect/decal/hybrisa/tiretrack,
+/turf/open/floor/plating/platingdmg3,
+/area/northpoint/oob)
+"aJZ" = (
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
+	},
+/turf/open/floor/plating,
+/area/northpoint/oob)
+"aKa" = (
+/obj/structure/prop/hybrisa/vehicles/Meridian/Light_Blue/damage_4{
+	pixel_x = -2;
+	icon_state = "meridian_lightblue_damage_4"
+	},
+/obj/structure/prop/hybrisa/misc/fire/fire1{
+	color = "#ffa700";
+	layer = 7;
+	light_color = "#FF7700";
+	pixel_x = 1;
+	pixel_y = 2
+	},
+/turf/closed/wall/hybrisa/colony/office/reinforced/hull,
+/area/northpoint/oob)
+"aKb" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 8;
+	pixel_y = 8
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 8;
+	pixel_y = 8
+	},
+/obj/effect/decal/large_stain{
+	dir = 1;
+	pixel_y = -13;
+	pixel_x = -5
+	},
+/turf/open/floor/plating/platingdmg2,
+/area/northpoint/oob)
+"aKc" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 8;
+	pixel_y = 8
+	},
+/obj/effect/decal/remains/robot,
+/turf/open/floor/plating/platingdmg3,
+/area/northpoint/oob)
+"aKd" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 8;
+	pixel_y = 8
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 8;
+	pixel_y = 8
+	},
+/turf/open/floor/prison,
+/area/northpoint/oob)
+"aKe" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 5;
+	pixel_x = -7
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 5;
+	pixel_x = -7
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 5;
+	pixel_x = -7
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 5;
+	pixel_x = -7
+	},
+/turf/open/floor/prison,
+/area/northpoint/oob)
+"aKf" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/plating,
+/area/northpoint/oob)
 "aKg" = (
 /turf/closed/wall/hybrisa/colony/engineering/reinforced/hull{
 	noblend_turfs = list(/turf/closed/wall/mineral,/turf/closed/wall/almayer/research/containment,/turf/closed/wall/northpoint/quarantine/reinforced/hull)
 	},
 /area/northpoint/oob)
+"aKh" = (
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
+	},
+/turf/open/floor/prison,
+/area/northpoint/oob)
+"aKi" = (
+/obj/item/stack/rods,
+/turf/open/floor/prison,
+/area/northpoint/oob)
+"aKj" = (
+/obj/item/shard,
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
+	},
+/turf/open/floor/prison,
+/area/northpoint/oob)
+"aKk" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating/platingdmg3,
+/area/northpoint/oob)
+"aKl" = (
+/turf/open/floor/plating/platingdmg2,
+/area/northpoint/outdoors/urban_cave/east)
+"aKm" = (
+/obj/structure/prop/tyrargo/military_alert_sign{
+	pixel_y = 30;
+	layer = 6.1;
+	desc = "A quarantine poster, bearing the ICC's logo, it reads: This area is designated a secure transit zone by the ICC and TWE Military. Non-compliance with military directives is punishable under the interplanetary biohazard preparedness act.";
+	pixel_x = 16
+	},
+/turf/open/hybrisa/street/cement2,
+/area/northpoint/outdoors/urban_cave/north_east)
 "aLg" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/north,
 /turf/open/hybrisa/street/sidewalk/north,
@@ -19802,6 +20095,7 @@
 /area/northpoint/oob)
 "kFB" = (
 /obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/hybrisa/street/sidewalk/east,
 /area/northpoint/outdoors/urban_cave/south_east)
 "kFU" = (
@@ -56819,7 +57113,7 @@ pKY
 tSQ
 bsJ
 atH
-atD
+aub
 aud
 atR
 apm
@@ -57278,13 +57572,13 @@ pKY
 pKY
 pKY
 pKY
-pKY
-cgd
+aKa
+aJV
 pKY
 iro
 mPR
-abT
-atD
+aJG
+atC
 aud
 aun
 apo
@@ -57432,13 +57726,13 @@ cgd
 cgd
 cgd
 cgd
-cgd
-cgd
-cgd
+aJW
+aKb
+aYd
 pKY
 qTU
 atP
-abT
+aJH
 atD
 apA
 anN
@@ -57586,15 +57880,15 @@ cgd
 cgd
 cgd
 cgd
-cgd
-cgd
-cgd
-cgd
+aKk
+aKj
+aKc
+aJW
 pKY
 apQ
-atP
+aJL
 apB
-atH
+aJC
 aud
 anN
 aoz
@@ -57742,14 +58036,14 @@ cgd
 cgd
 cgd
 cgd
-cgd
-cgd
-cgd
-vqV
-atW
-atP
+uUX
+aKd
+aJX
+rBx
+aJO
+rDg
 abT
-atD
+aJD
 aud
 anN
 atD
@@ -57898,11 +58192,11 @@ cgd
 cgd
 cgd
 cgd
-cgd
-cgd
-vqV
-atW
-atP
+aKe
+aJY
+aJS
+aJP
+aJM
 abT
 atC
 aud
@@ -58053,11 +58347,11 @@ cgd
 cgd
 cgd
 cgd
-cgd
-cgd
-vqV
-atW
-atP
+aKf
+eZT
+aJT
+aJQ
+aJN
 abT
 amZ
 apA
@@ -58209,16 +58503,16 @@ cgd
 cgd
 cgd
 cgd
-cgd
-xZX
-atW
-atP
-aek
+aYd
+nKg
+aJR
+aJN
+aJI
 auc
 auc
 apA
 anN
-anN
+aJz
 apc
 apA
 anN
@@ -58363,16 +58657,16 @@ cgd
 cgd
 cgd
 cgd
-cgd
-cgd
-vqV
+eZT
+aYd
+aJU
 atW
-atP
+rDg
+aJJ
 aek
-aek
-auc
+xUN
 atH
-apA
+aJB
 apg
 atD
 auc
@@ -58518,12 +58812,12 @@ cgd
 cgd
 cgd
 cgd
-cgd
-cgd
-vqV
+aKh
+aJZ
+pif
 atW
-atP
-aek
+rDg
+aJK
 aek
 aek
 abT
@@ -58673,22 +58967,22 @@ cgd
 cgd
 cgd
 cgd
-cgd
-cgd
-vqV
+aYd
+agN
+rBx
 atW
 auS
+tPn
+aJE
+tKf
+tKf
+aJy
+aJA
+tPn
 aqC
-aqC
-aqC
-aqC
-auh
-aqC
-aqC
-aqC
-auh
-aqC
-aqC
+aJy
+tPn
+tPn
 aqC
 aqC
 aom
@@ -58827,24 +59121,24 @@ cgd
 cgd
 cgd
 cgd
-cgd
-cgd
-cgd
+eZT
+aKi
+aYd
 pKY
 apR
 eBw
-aqD
-aqD
+azZ
+aJF
 kFB
 aqD
 aqD
 aqD
+azZ
+azZ
+azZ
 aqD
-aqD
-aqD
-aqD
-aqD
-aqD
+azZ
+azZ
 aqD
 aqD
 aqD
@@ -59829,7 +60123,7 @@ utR
 utR
 ahL
 bsJ
-ayq
+aKm
 lGO
 ayq
 lVv
@@ -60984,7 +61278,7 @@ avN
 avN
 avQ
 ssw
-avM
+aKl
 avF
 avH
 sKu

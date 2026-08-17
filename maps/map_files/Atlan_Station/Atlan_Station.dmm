@@ -42894,6 +42894,7 @@
 	name = "broken mirror";
 	pixel_y = 32
 	},
+/obj/effect/landmark/lv624/xeno_tunnel,
 /turf/open/floor/strata/white_cyan2/west,
 /area/atlan/station/single_dorms)
 "tsj" = (

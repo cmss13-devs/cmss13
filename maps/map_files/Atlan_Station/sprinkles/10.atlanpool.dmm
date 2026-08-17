@@ -115,7 +115,7 @@
 /area/atlan/station/hab_rec)
 "rj" = (
 /obj/structure/machinery/door/airlock/prison_hatch/alt/autoname,
-/turf/closed/wall/upp_ship/grey,
+/turf/open/floor/strata/multi_tiles/west,
 /area/atlan/station/hab_rec)
 "rs" = (
 /obj/structure/sign/safety/water,
@@ -263,10 +263,6 @@
 /area/atlan/station/hab_rec)
 "Qt" = (
 /turf/open/floor/strata/multi_tiles/west,
-/area/atlan/station/hab_rec)
-"Rf" = (
-/obj/structure/sign/safety/maint,
-/turf/closed/wall/upp_ship/grey/reinforced,
 /area/atlan/station/hab_rec)
 "Sf" = (
 /obj/structure/closet/secure_closet/personal,
@@ -536,7 +532,7 @@ Ty
 Ty
 Cw
 EY
-Rf
+ae
 am
 am
 am

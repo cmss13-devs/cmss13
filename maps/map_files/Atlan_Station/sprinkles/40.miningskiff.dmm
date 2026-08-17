@@ -285,10 +285,6 @@
 /obj/effect/landmark/monkey_spawn,
 /turf/open/floor/almayer/plate,
 /area/atlan/asteroid/ship)
-"rf" = (
-/obj/structure/girder/reinforced,
-/turf/open/space/basic,
-/area/atlan/asteroid/ship)
 "rr" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt,
 /turf/open/gm/dirt/brown/variant_1,
@@ -592,10 +588,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/plating,
 /area/atlan/asteroid/processing_dock)
-"VW" = (
-/obj/structure/girder/reinforced,
-/turf/open/floor/platingdmg1,
-/area/atlan/asteroid/ship)
 "We" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt,
 /turf/open/floor/strata/floor2,
@@ -986,7 +978,7 @@ XW
 fS
 ux
 Hl
-VW
+ER
 pZ
 ea
 nN
@@ -1004,7 +996,7 @@ XA
 Rg
 Hn
 qX
-rf
+ER
 kE
 ea
 HZ

@@ -37,12 +37,12 @@ SUBSYSTEM_DEF(minimaps)
 	var/list/image/images_by_source = list()
 	///the update target datums, sorted by update flag type
 	var/list/update_targets = list()
-	///Nonassoc list of updators we want to have their overlays reapplied
-	var/list/datum/minimap_updator/update_targets_unsorted = list()
+	///Nonassoc list of updaters we want to have their overlays reapplied
+	var/list/datum/minimap_updater/update_targets_unsorted = list()
 	///Assoc list of removal callbacks to invoke to remove images from the raw lists
 	var/list/datum/callback/removal_cbs = list()
 	///list of holders for data relating to tracked zlevel and tracked atum
-	var/list/datum/minimap_updator/updators_by_datum = list()
+	var/list/datum/minimap_updater/updaters_by_datum = list()
 	///assoc list of hash = image of images drawn by players
 	var/list/image/drawn_images = list()
 	///assoc list of CIC private drawings
@@ -63,6 +63,8 @@ SUBSYSTEM_DEF(minimaps)
 	for(var/datum/space_level/z_level as anything in SSmapping.z_list)
 		load_new_z(null, z_level)
 
+	RegisterSignal(SSdcs, COMSIG_GLOB_NEW_Z, PROC_REF(load_new_z))
+
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/minimaps/stat_entry(msg)
@@ -75,38 +77,44 @@ SUBSYSTEM_DEF(minimaps)
 	update_targets = SSminimaps.update_targets
 	update_targets_unsorted = SSminimaps.update_targets_unsorted
 	removal_cbs = SSminimaps.removal_cbs
-	updators_by_datum = SSminimaps.updators_by_datum
+	updaters_by_datum = SSminimaps.updaters_by_datum
 	drawn_images = SSminimaps.drawn_images
 
 /datum/controller/subsystem/minimaps/fire(resumed)
 	var/static/iteration = 0
 	var/depthcount = 0
-	for(var/datum/minimap_updator/updator as anything in update_targets_unsorted)
+	for(var/datum/minimap_updater/updater as anything in update_targets_unsorted)
 		if(depthcount < iteration) //under high load update in chunks
 			depthcount++
 			continue
 
-		var/atom/movable/screen/minimap/target = updator.minimap
-		if(istype(target) && !target.live)
-			update_targets_unsorted -= updator
+		var/atom/movable/screen/minimap/target = updater.minimap
+		var/is_live = FALSE
+		var/is_observer = FALSE
+		if(istype(target))
+			is_live = target.live
+			is_observer = target.is_observer_minimap
+
+		if(!is_live)
+			update_targets_unsorted -= updater
 			continue
 
 		// Preserve drawing overlays when updating minimap overlays
 		var/list/combined_overlays = list()
 
 		// Filter raw_blips for observer maps to exclude labels
-		if(istype(target) && target.is_observer_minimap)
+		if(is_observer)
 			// For observer maps, filter out any labels
-			for(var/image/blip as anything in updator.raw_blips)
+			for(var/image/blip as anything in updater.raw_blips)
 				if(!blip.maptext)
 					combined_overlays += blip
 		else
 			// For non-observer maps, use all raw_blips
-			combined_overlays = updator.raw_blips.Copy()
+			combined_overlays = updater.raw_blips.Copy()
 
 		if(length(target.current_drawing_overlays))
 			combined_overlays += target.current_drawing_overlays
-		updator.minimap.overlays = combined_overlays
+		updater.minimap.overlays = combined_overlays
 		depthcount++
 		iteration++
 		if(MC_TICK_CHECK)
@@ -118,6 +126,7 @@ SUBSYSTEM_DEF(minimaps)
 	SIGNAL_HANDLER
 
 	var/level = z_level.z_value
+	ASSERT(!minimaps_by_z["[level]"], "Duplicate load_new_z call for [level]!")
 	minimaps_by_z["[level]"] = new /datum/hud_displays
 	if(!is_mainship_level(level) && !is_ground_level(level) && !(SSmapping.level_trait(level, ZTRAIT_AWAY))) //todo: maybe move this around
 		return
@@ -237,14 +246,14 @@ SUBSYSTEM_DEF(minimaps)
 		minimaps_by_z["[z_level]"].drawing_image = old_display.drawing_image
 
 /**
- * Adds an atom to the processing updators that will have blips drawn on them
+ * Adds an atom to the processing updaters that will have blips drawn on them
  * Arguments:
  * * target: the target we want to be updating the overlays on
  * * flags: flags for the types of blips we want to be updated
  * * ztarget: zlevel we want to be updated with
  */
 /datum/controller/subsystem/minimaps/proc/add_to_updaters(atom/target, flags, ztarget, drawing, labels)
-	var/datum/minimap_updator/holder = new(target, ztarget, drawing)
+	var/datum/minimap_updater/holder = new(target, ztarget, drawing)
 	for(var/flag in bitfield2list(flags))
 		LAZYADD(update_targets["[flag]"], holder)
 
@@ -278,15 +287,15 @@ SUBSYSTEM_DEF(minimaps)
 						if(cic_drawings["[ztarget]-[flag]"])
 							holder.raw_blips += cic_drawings["[ztarget]-[flag]"]
 				else
-					// Other non-live updators get CIC drawings
+					// Other non-live updaters get CIC drawings
 					if(cic_drawings["[ztarget]-[flag]"])
 						holder.raw_blips += cic_drawings["[ztarget]-[flag]"]
 		if(!labels)
 			continue
 		LAZYADD(update_targets["[flag]label"], holder)
-	updators_by_datum[target] = holder
+	updaters_by_datum[target] = holder
 	update_targets_unsorted += holder
-	RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(remove_updator))
+	RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(remove_updater))
 
 /// Applies existing drawings to live minimaps after a Live Update is sent
 /datum/controller/subsystem/minimaps/proc/apply_drawings_to_live_minimaps(minimap_flag)
@@ -355,8 +364,8 @@ SUBSYSTEM_DEF(minimaps)
 			client_map.overlays = safe_overlays
 
 	// Now apply transmitted drawings to live minimaps only
-	for(var/datum/minimap_updator/updator in update_targets_unsorted)
-		var/atom/movable/screen/minimap/target = updator.minimap
+	for(var/datum/minimap_updater/updater in update_targets_unsorted)
+		var/atom/movable/screen/minimap/target = updater.minimap
 		if(istype(target) && target.live && target.minimap_flags & minimap_flag)
 			target.update_drawing_overlay(show_cic_drawings = FALSE)
 
@@ -390,8 +399,8 @@ SUBSYSTEM_DEF(minimaps)
 
 /// Refreshes CIC drawing overlays for real time updates
 /datum/controller/subsystem/minimaps/proc/refresh_cic_drawing_overlays(zlevel, minimap_flag)
-	for(var/datum/minimap_updator/updator in update_targets_unsorted)
-		var/atom/movable/screen/minimap/target = updator.minimap
+	for(var/datum/minimap_updater/updater in update_targets_unsorted)
+		var/atom/movable/screen/minimap/target = updater.minimap
 		if(istype(target) && target.is_cic_minimap && target.target == zlevel && target.minimap_flags & minimap_flag)
 			target.update_drawing_overlay(show_cic_drawings = TRUE)
 
@@ -400,8 +409,8 @@ SUBSYSTEM_DEF(minimaps)
 	if(!istype(target_map) || !target_map.live || target_map.drawing)
 		return
 
-	var/datum/minimap_updator/updator = updators_by_datum[target_map]
-	if(!updator)
+	var/datum/minimap_updater/updater = updaters_by_datum[target_map]
+	if(!updater)
 		return
 
 	// Check if there are any existing transmitted drawings for this map's flags and zlevel
@@ -422,14 +431,14 @@ SUBSYSTEM_DEF(minimaps)
 		// Add existing transmitted drawings to this live minimap
 		for(var/flag in bitfield2list(minimap_flags))
 			if(transmitted_drawings["[target_map.target]-[flag]"])
-				updator.raw_blips += transmitted_drawings["[target_map.target]-[flag]"]
+				updater.raw_blips += transmitted_drawings["[target_map.target]-[flag]"]
 			// Add all transmitted labels for this z-level and flag combination
 			for(var/key in transmitted_drawings)
 				if(findtext(key, "[target_map.target]-[flag]label-"))
-					updator.raw_blips += transmitted_drawings[key]
+					updater.raw_blips += transmitted_drawings[key]
 
 		// Update overlays to show existing drawings
-		target_map.overlays = updator.raw_blips
+		target_map.overlays = updater.raw_blips
 
 /// Removes client copy from tracking when deleted
 /datum/controller/subsystem/minimaps/proc/remove_client_copy(atom/movable/screen/minimap/source)
@@ -440,11 +449,11 @@ SUBSYSTEM_DEF(minimaps)
 /**
  * Removes a atom from the subsystems updating overlays
  */
-/datum/controller/subsystem/minimaps/proc/remove_updator(atom/target)
+/datum/controller/subsystem/minimaps/proc/remove_updater(atom/target)
 	SIGNAL_HANDLER
 	UnregisterSignal(target, COMSIG_PARENT_QDELETING)
-	var/datum/minimap_updator/holder = updators_by_datum[target]
-	updators_by_datum -= target
+	var/datum/minimap_updater/holder = updaters_by_datum[target]
+	updaters_by_datum -= target
 	for(var/key in update_targets)
 		LAZYREMOVE(update_targets[key], holder)
 	update_targets_unsorted -= holder
@@ -490,17 +499,17 @@ SUBSYSTEM_DEF(minimaps)
 /**
  * Holder datum to ease updating of atoms to update
  */
-/datum/minimap_updator
+/datum/minimap_updater
 	/// Atom to update with the overlays
 	var/atom/minimap
 	///Target zlevel we want to be updating to
 	var/ztarget = 0
 	/// list of overlays we update
 	var/list/raw_blips
-	/// does this updator showing map drawing
+	/// does this updater showing map drawing
 	var/drawing
 
-/datum/minimap_updator/New(minimap, ztarget, drawing)
+/datum/minimap_updater/New(minimap, ztarget, drawing)
 	..()
 	src.minimap = minimap
 	src.ztarget = ztarget
@@ -544,9 +553,9 @@ SUBSYSTEM_DEF(minimaps)
 			flag = "[flag]label"
 		minimaps_by_z["[target_turf.z]"].images_assoc["[flag]"][target] = blip
 		minimaps_by_z["[target_turf.z]"].images_raw["[flag]"] += blip
-		for(var/datum/minimap_updator/updator as anything in update_targets["[flag]"])
-			if(target_turf.z == updator.ztarget)
-				updator.raw_blips += blip
+		for(var/datum/minimap_updater/updater as anything in update_targets["[flag]"])
+			if(target_turf.z == updater.ztarget)
+				updater.raw_blips += blip
 	if(ismovableatom(target))
 		RegisterSignal(target, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(on_z_change))
 		blip.RegisterSignal(target, COMSIG_MOVABLE_MOVED, TYPE_PROC_REF(/image, minimap_on_move))
@@ -574,13 +583,13 @@ SUBSYSTEM_DEF(minimaps)
 	var/turf/target_turf = get_turf(target)
 	for(var/flag in bitfield2list(hud_flags))
 		minimaps_by_z["[target_turf.z]"].images_raw["[flag]"] -= blip
-		for(var/datum/minimap_updator/updator as anything in update_targets["[flag]"])
-			if(updator.ztarget == target_turf.z)
-				updator.raw_blips -= blip
+		for(var/datum/minimap_updater/updater as anything in update_targets["[flag]"])
+			if(updater.ztarget == target_turf.z)
+				updater.raw_blips -= blip
 		minimaps_by_z["[target_turf.z]"].images_raw["[flag]label"] -= blip
-		for(var/datum/minimap_updator/updator as anything in update_targets["[flag]label"])
-			if(updator.ztarget == target_turf.z)
-				updator.raw_blips -= blip
+		for(var/datum/minimap_updater/updater as anything in update_targets["[flag]label"])
+			if(updater.ztarget == target_turf.z)
+				updater.raw_blips -= blip
 	blip.UnregisterSignal(target, COMSIG_MOVABLE_MOVED)
 	removal_cbs -= target
 
@@ -600,11 +609,11 @@ SUBSYSTEM_DEF(minimaps)
 			blip = minimaps_by_z["[oldz]"].images_assoc["[flag]"][source]
 			blip.minimap_on_move(source, null)
 		// todo maybe make update_targets also sort by zlevel?
-		for(var/datum/minimap_updator/updator as anything in update_targets["[flag]"])
-			if(updator.ztarget == oldz)
-				updator.raw_blips -= blip
-			else if(updator.ztarget == newz)
-				updator.raw_blips += blip
+		for(var/datum/minimap_updater/updater as anything in update_targets["[flag]"])
+			if(updater.ztarget == oldz)
+				updater.raw_blips -= blip
+			else if(updater.ztarget == newz)
+				updater.raw_blips += blip
 		minimaps_by_z["[newz]"].images_assoc["[flag]"][source] = blip
 		minimaps_by_z["[oldz]"].images_assoc["[flag]"] -= source
 
@@ -615,18 +624,20 @@ SUBSYSTEM_DEF(minimaps)
  */
 /image/proc/minimap_on_move(atom/movable/source, oldloc)
 	SIGNAL_HANDLER
-	if(isturf(source.loc))
-		pixel_x = MINIMAP_PIXEL_FROM_WORLD(source.x) + SSminimaps.minimaps_by_z["[source.z]"].x_offset
-		pixel_y = MINIMAP_PIXEL_FROM_WORLD(source.y) + SSminimaps.minimaps_by_z["[source.z]"].y_offset
+	if(source.z)
+		var/datum/hud_displays/minimap = SSminimaps.minimaps_by_z["[source.z]"]
+		pixel_x = MINIMAP_PIXEL_FROM_WORLD(source.x) + minimap.x_offset
+		pixel_y = MINIMAP_PIXEL_FROM_WORLD(source.y) + minimap.y_offset
 		return
 
-	var/atom/movable/movable_loc = source.loc
-	source.override_minimap_tracking(source.loc)
-	pixel_x = MINIMAP_PIXEL_FROM_WORLD(movable_loc.x) + SSminimaps.minimaps_by_z["[movable_loc.z]"].x_offset
-	pixel_y = MINIMAP_PIXEL_FROM_WORLD(movable_loc.y) + SSminimaps.minimaps_by_z["[movable_loc.z]"].y_offset
+	var/atom/movable/movable_loc = source.loc // How does none of this just crash if the loc isn't on map?
+	source.override_minimap_tracking()
+	var/datum/hud_displays/minimap = SSminimaps.minimaps_by_z["[movable_loc.z]"]
+	pixel_x = MINIMAP_PIXEL_FROM_WORLD(movable_loc.x) + minimap.x_offset
+	pixel_y = MINIMAP_PIXEL_FROM_WORLD(movable_loc.y) + minimap.y_offset
 
 ///Used to handle minimap tracking inside other movables
-/atom/movable/proc/override_minimap_tracking(atom/movable/loc)
+/atom/movable/proc/override_minimap_tracking()
 	var/image/blip = SSminimaps.images_by_source[src]
 	blip.RegisterSignal(loc, COMSIG_MOVABLE_MOVED, TYPE_PROC_REF(/image, minimap_on_move))
 	RegisterSignal(loc, COMSIG_ATOM_EXITED, PROC_REF(cancel_override_minimap_tracking))
@@ -650,9 +661,10 @@ SUBSYSTEM_DEF(minimaps)
 		return
 	UnregisterSignal(source, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_Z_CHANGED))
 	var/turf/source_turf = get_turf(source)
+	var/datum/hud_displays/minimap = minimaps_by_z["[source_turf.z]"]
 	for(var/flag in GLOB.all_minimap_flags)
-		minimaps_by_z["[source_turf.z]"].images_assoc["[flag]"] -= source
-		minimaps_by_z["[source_turf.z]"].images_assoc["[flag]label"] -= source
+		minimap.images_assoc["[flag]"] -= source
+		minimap.images_assoc["[flag]label"] -= source
 	images_by_source -= source
 	removal_cbs[source].Invoke()
 	removal_cbs -= source
@@ -904,7 +916,7 @@ SUBSYSTEM_DEF(minimaps)
 	if(live)
 		return
 
-	SSminimaps.remove_updator(src)
+	SSminimaps.remove_updater(src)
 
 /// Updates ceiling protection overlay for this minimap
 /atom/movable/screen/minimap/proc/update_ceiling_overlay(client/owner_client)
@@ -1007,7 +1019,7 @@ SUBSYSTEM_DEF(minimaps)
 		return
 
 	var/list/pixel_coords = params2screenpixel(modifiers["screen-loc"])
-	var/zlevel = SSminimaps.updators_by_datum[src].ztarget
+	var/zlevel = SSminimaps.updaters_by_datum[src].ztarget
 	var/x = (pixel_coords[1] - SSminimaps.minimaps_by_z["[zlevel]"].x_offset + plane_master.cur_x_shift)  / MINIMAP_SCALE
 	var/y = (pixel_coords[2] - SSminimaps.minimaps_by_z["[zlevel]"].y_offset + plane_master.cur_y_shift)  / MINIMAP_SCALE
 	var/c_x = clamp(CEILING(x, 1), 1, world.maxx)
@@ -1082,6 +1094,10 @@ SUBSYSTEM_DEF(minimaps)
 	/// Is this a CIC map
 	var/is_cic_minimap = FALSE
 
+	var/list/atom/movable/screen/drawing_tools = list()
+
+	var/list/atom/movable/screen/minimap_tool/drawing_actions = list()
+
 /datum/action/minimap/New(Target, new_minimap_flags, new_marker_flags)
 	. = ..()
 	locator = new
@@ -1089,6 +1105,7 @@ SUBSYSTEM_DEF(minimaps)
 		minimap_flags = new_minimap_flags
 	if(new_marker_flags)
 		marker_flags = new_marker_flags
+	drawing_tools += list(/atom/movable/screen/minimap_tool/up/simple, /atom/movable/screen/minimap_tool/down/simple, /atom/movable/screen/minimap_tool/change_map)
 
 /datum/action/minimap/Destroy()
 	map = null
@@ -1124,6 +1141,12 @@ SUBSYSTEM_DEF(minimaps)
 		if(map in owner.client.screen)
 			to_chat(owner, SPAN_WARNING("You already have a minimap open!"))
 			return FALSE
+		var/list/atom/movable/screen/actions = list()
+		map = SSminimaps.fetch_minimap_object(owner.z, map.minimap_flags, map.live, FALSE, map.drawing)
+		for(var/path in drawing_tools)
+			actions += new path(null, owner.z, minimap_flags, map, null)
+		drawing_actions = actions
+		owner.client.add_to_screen(drawing_actions)
 		owner.client.add_to_screen(map)
 		owner.client.add_to_screen(locator)
 		// Apply ceiling protection overlay if client has preference enabled
@@ -1148,6 +1171,7 @@ SUBSYSTEM_DEF(minimaps)
 	else
 		owner.client.remove_from_screen(map)
 		owner.client.remove_from_screen(locator)
+		owner.client.remove_from_screen(drawing_actions)
 		map.stop_polling -= owner
 		// Hide ceiling protection toggle action when minimap closes
 		for(var/datum/action/minimap_ceiling/ceiling_action in owner.actions)
@@ -1157,6 +1181,8 @@ SUBSYSTEM_DEF(minimaps)
 		locator.UnregisterSignal(tracking, COMSIG_MOVABLE_MOVED)
 	minimap_displayed = force_state
 	return TRUE
+
+
 
 ///Overrides the minimap locator to a given atom
 /datum/action/minimap/proc/override_locator(atom/movable/to_track)
@@ -1336,7 +1362,7 @@ SUBSYSTEM_DEF(minimaps)
 	. = ..()
 
 /datum/action/minimap/xeno/see_humans
-	minimap_flags = MINIMAP_FLAG_XENO|MINIMAP_FLAG_USCM|MINIMAP_FLAG_WY|MINIMAP_FLAG_WY|MINIMAP_FLAG_UPP
+	minimap_flags = MINIMAP_FLAG_CLF|MINIMAP_FLAG_USCM|MINIMAP_FLAG_WY|MINIMAP_FLAG_PMC|MINIMAP_FLAG_UPP
 
 /datum/action/minimap/xeno/action_activate()
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -2115,6 +2141,57 @@ SUBSYSTEM_DEF(minimaps)
 	owner.move_tacmap_up()
 	return TRUE
 
+/atom/movable/screen/minimap_tool/up/simple
+
+/atom/movable/screen/minimap_tool/up/simple/clicked(mob/user, list/modifiers)
+	if(!SSmapping.same_z_map(linked_map.target, linked_map.target+1))
+		return
+	var/atom/movable/screen/minimap/new_linked_map = SSminimaps.fetch_minimap_object(linked_map.target+1, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
+	update_shown_map(user, new_linked_map)
+
+
+/atom/movable/screen/minimap_tool/proc/update_shown_map(mob/user, atom/movable/screen/minimap/new_linked_map)
+	user.client.remove_from_screen(linked_map)
+	user.client.add_to_screen(new_linked_map)
+	for(var/datum/action/minimap/user_map in user.actions)
+		user_map.map = new_linked_map
+	for(var/atom/movable/screen/minimap_tool/tool in user.client.screen)
+		tool.linked_map = new_linked_map
+
+/atom/movable/screen/minimap_tool/down/simple/clicked(mob/user, list/modifiers)
+	if(!SSmapping.same_z_map(linked_map.target, linked_map.target-1))
+		return
+	var/atom/movable/screen/minimap/new_linked_map = SSminimaps.fetch_minimap_object(linked_map.target-1, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
+	update_shown_map(user, new_linked_map)
+
+/atom/movable/screen/minimap_tool/change_map
+	desc = "Switch ground / ship map."
+	screen_loc = "15,7"
+	icon_state = "update"
+
+/atom/movable/screen/minimap_tool/change_map/clicked(mob/user, list/mods)
+	var/atom/movable/screen/minimap/new_linked_map
+	if(SSmapping.level_has_any_trait(linked_map.target, list(ZTRAIT_GROUND)))
+		if(SSmapping.level_has_any_trait(user.z, list(ZTRAIT_MARINE_MAIN_SHIP)))
+			new_linked_map = SSminimaps.fetch_minimap_object(user.z, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
+			for(var/datum/action/minimap/map in user.actions)
+				user.client.add_to_screen(map.locator)
+		else
+			new_linked_map = SSminimaps.fetch_minimap_object(SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)[1], linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
+			for(var/datum/action/minimap/map in user.actions)
+				user.client.remove_from_screen(map.locator)
+	else
+		if(SSmapping.level_has_any_trait(user.z, list(ZTRAIT_GROUND)))
+			new_linked_map = SSminimaps.fetch_minimap_object(user.z, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
+			for(var/datum/action/minimap/map in user.actions)
+				user.client.add_to_screen(map.locator)
+		else
+			new_linked_map = SSminimaps.fetch_minimap_object(SSmapping.levels_by_trait(ZTRAIT_GROUND)[1] , linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
+			for(var/datum/action/minimap/map in user.actions)
+				user.client.remove_from_screen(map.locator)
+
+	update_shown_map(user, new_linked_map)
+
 /atom/movable/screen/minimap_tool/down
 	icon_state = "down"
 	desc = "Move down a level."
@@ -2180,8 +2257,6 @@ SUBSYSTEM_DEF(minimaps)
 			return MINIMAP_FLAG_CLF
 		if(FACTION_PMC)
 			return MINIMAP_FLAG_PMC
-		if(FACTION_YAUTJA)
-			return MINIMAP_FLAG_YAUTJA
 		if(XENO_HIVE_CORRUPTED)
 			return MINIMAP_FLAG_XENO_CORRUPTED
 		if(XENO_HIVE_ALPHA)
@@ -2192,6 +2267,8 @@ SUBSYSTEM_DEF(minimaps)
 			return MINIMAP_FLAG_XENO_CHARLIE
 		if(XENO_HIVE_DELTA)
 			return MINIMAP_FLAG_XENO_DELTA
+		if(XENO_HIVE_K_SERIES)
+			return MINIMAP_FLAG_XENO_K_SERIES
 		if(XENO_HIVE_FERAL)
 			return MINIMAP_FLAG_XENO_FERAL
 		if(XENO_HIVE_TAMED)
@@ -2200,12 +2277,18 @@ SUBSYSTEM_DEF(minimaps)
 			return MINIMAP_FLAG_XENO_MUTATED
 		if(XENO_HIVE_FORSAKEN)
 			return MINIMAP_FLAG_XENO_FORSAKEN
-		if(XENO_HIVE_YAUTJA)
-			return MINIMAP_FLAG_YAUTJA
-		if(XENO_HIVE_HUNTED)
-			return MINIMAP_FLAG_XENO_HUNTED
 		if(XENO_HIVE_RENEGADE)
 			return MINIMAP_FLAG_XENO_RENEGADE
+		if(FACTION_YAUTJA)
+			return MINIMAP_FLAG_YAUTJA
+		if(XENO_HIVE_YAUTJA)
+			return MINIMAP_FLAG_YAUTJA
+		if(FACTION_YAUTJA_BADBLOOD)
+			return MINIMAP_FLAG_YAUTJA_BADBLOOD
+		if(XENO_HIVE_YAUTJA_BADBLOOD)
+			return MINIMAP_FLAG_YAUTJA_BADBLOOD
+		if(XENO_HIVE_HUNTED)
+			return MINIMAP_FLAG_XENO_HUNTED
 	return 0
 
 /// Returns the highest world.time for all minimap_flags passed

@@ -642,6 +642,16 @@
 	desc = "Semiotic Standard denoting the number nine."
 	icon_state = "9"
 
+/obj/structure/sign/safety/big_one
+	name = "one semiotic"
+	desc = "Semiotic Standard denoting the number one."
+	icon_state = "big1"
+
+/obj/structure/sign/safety/fire_station
+	name = "fire-station semiotic"
+	desc = "Semiotic Standard denoting the nearby presence of a fire-station."
+	icon_state = "firestation"
+
 //===================//
 //   Marine signs   //
 //=================//

@@ -22,6 +22,14 @@
 #define JOB_SQUAD_ENGI "Combat Technician"
 #define JOB_SQUAD_MEDIC "Hospital Corpsman"
 #define JOB_SQUAD_SPECIALIST "Weapons Specialist"
+#define JOB_SQUAD_SPECIALIST_SCOUT "Scout Specialist"
+#define JOB_SQUAD_SPECIALIST_SNIPER "Sniper Specialist"
+#define JOB_SQUAD_SPECIALIST_HEAVY_SNIPER "Heavy Sniper Specialist"
+#define JOB_SQUAD_SPECIALIST_DEMO "Demo Specialist"
+#define JOB_SQUAD_SPECIALIST_GRENADIER "Grenadier Specialist"
+#define JOB_SQUAD_SPECIALIST_SHARP "SHARP Specialist"
+#define JOB_SQUAD_SPECIALIST_PYRO "Pyro Specialist"
+#define JOB_SQUAD_SPECIALIST_HEAVY "Heavy Specialist"
 #define JOB_SQUAD_TEAM_LEADER "Fireteam Leader"
 #define JOB_SQUAD_SMARTGUN "Smartgunner"
 #define JOB_SQUAD_ROLES /datum/timelock/squad
@@ -33,6 +41,7 @@ GLOBAL_LIST_INIT(job_squad_roles, JOB_SQUAD_ROLES_LIST)
 #define JOB_PASSENGER "Passenger"
 #define JOB_SURVIVOR "Survivor"
 #define JOB_SYNTH_SURVIVOR "Synth Survivor"
+#define JOB_COLONY_JOE "Colony Working Joe"
 #define JOB_CO_SURVIVOR "CO Survivor"
 
 #define ANY_SURVIVOR "Any Survivor"
@@ -43,6 +52,17 @@ GLOBAL_LIST_INIT(job_squad_roles, JOB_SQUAD_ROLES_LIST)
 #define ENGINEERING_SURVIVOR "Engineering Survivor"
 #define CORPORATE_SURVIVOR "Corporate Survivor"
 #define SURVIVOR_VARIANT_LIST list(ANY_SURVIVOR = "Any", CIVILIAN_SURVIVOR = "Civ", SECURITY_SURVIVOR = "Sec", SCIENTIST_SURVIVOR = "Sci", MEDICAL_SURVIVOR = "Med", ENGINEERING_SURVIVOR = "Eng", CORPORATE_SURVIVOR = "W-Y")
+
+#define INSERT_STANDARD "Insert Standard"
+#define INSERT_CORPORATE "Insert Corporate"
+#define INSERT_LEADER "Insert Leader"
+#define INSERT_MEDIC "Insert Medic"
+#define INSERT_ENGINEER "Insert Engineer"
+#define INSERT_SMARTGUNNER "Insert Smartgunner"
+#define INSERT_SPECIALIST "Insert Specialist"
+#define INSERT_NONE "Insert None"
+#define INSERT_SYNTH "Insert Synth"
+#define INSERT_CO "Insert CO"
 
 //-1 is infinite amount, these are soft caps and can be bypassed by randomization
 #define MAX_SURVIVOR_PER_TYPE list(ANY_SURVIVOR = -1, CIVILIAN_SURVIVOR = -1, SECURITY_SURVIVOR = 2, SCIENTIST_SURVIVOR = 2, MEDICAL_SURVIVOR = 3, ENGINEERING_SURVIVOR = 4, CORPORATE_SURVIVOR = 2)
@@ -68,6 +88,8 @@ GLOBAL_LIST_INIT(job_squad_roles, JOB_SQUAD_ROLES_LIST)
 #define JOB_DOCTOR_ROLES_LIST list(JOB_CMO, JOB_DOCTOR, JOB_SURGEON, JOB_PHARMACIST, JOB_FIELD_DOCTOR)
 #define JOB_RESEARCH_ROLES /datum/timelock/research
 #define JOB_RESEARCH_ROLES_LIST list(JOB_RESEARCHER)
+/// all roles expected to perform shipside larva removal, used for ares_autodoc_check
+#define JOB_SURGERY_ROLES_LIST list(JOB_CMO, JOB_DOCTOR, JOB_SURGEON, JOB_PHARMACIST, JOB_FIELD_DOCTOR, JOB_SYNTH, JOB_SYNTH_ENG, JOB_SYNTH_MED, JOB_SYNTH_INTEL, JOB_SYNTH_MP, JOB_SYNTH_CMD, JOB_SYNTH_SCI)
 
 #define JOB_CORPORATE_LIAISON "Corporate Liaison"
 #define JOB_CORPORATE_BODYGUARD "Corporate Bodyguard"
@@ -90,6 +112,7 @@ GLOBAL_LIST_INIT(job_squad_roles, JOB_SQUAD_ROLES_LIST)
 #define JOB_SYNTH_INTEL "Intelligence Synthetic"
 #define JOB_SYNTH_MP "Military Police Synthetic"
 #define JOB_SYNTH_CMD "Command Support Synthetic"
+#define JOB_SYNTH_SCI "Research Synthetic"
 
 #define JOB_CO "Commanding Officer"
 #define JOB_XO "Executive Officer"
@@ -170,7 +193,7 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 }
 
 /// Role lists for Marine roles
-#define CHAIN_OF_COMMAND_ROLES list(JOB_CO, JOB_XO, JOB_AUXILIARY_OFFICER, JOB_CHIEF_POLICE, JOB_CMO, JOB_SO, JOB_CHIEF_ENGINEER, JOB_DROPSHIP_PILOT, JOB_CAS_PILOT, JOB_INTEL, JOB_FIELD_DOCTOR, JOB_SURGEON, JOB_DOCTOR, JOB_CHIEF_REQUISITION)
+#define CHAIN_OF_COMMAND_ROLES list(JOB_CO, JOB_XO, JOB_AUXILIARY_OFFICER, JOB_SO, JOB_CHIEF_POLICE, JOB_CMO, JOB_CHIEF_ENGINEER, JOB_DROPSHIP_PILOT, JOB_CAS_PILOT, JOB_INTEL, JOB_DOCTOR, JOB_FIELD_DOCTOR, JOB_CHIEF_REQUISITION)
 
 //-------------WO roles---------------
 
@@ -178,7 +201,7 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_WO_XO "Lieutenant Commander"
 #define JOB_WO_CHIEF_POLICE "Honor Guard Squad Leader"
 #define JOB_WO_SO "Veteran Honor Guard"
-#define JOB_WO_CREWMAN "Honor Guard Weapons Specialist"
+#define JOB_WO_WARDEN "Honor Guard Weapons Specialist"
 #define JOB_WO_POLICE "Honor Guard"
 
 #define JOB_WO_PILOT "Mortar Crew"
@@ -278,6 +301,15 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 
 #define ROLES_WY_GOONS list(JOB_WY_GOON_LEAD, JOB_WY_GOON_TECH, JOB_WY_GOON_MEDIC, JOB_WY_GOON, JOB_WY_RESEARCHER, JOB_WY_RESEARCH_LEAD, JOB_WY_GOON_SYNTH)
 
+#define JOB_WY_PPO "W-Y Personal Protection Officer"
+#define JOB_WY_PPS "W-Y Personal Protection Specialist"
+#define JOB_WY_PPC "W-Y Personal Protection Coordinator"
+#define JOB_WY_DPO "W-Y Directorate Protection Officer"
+#define JOB_WY_DPS "W-Y Directorate Protection Specialist"
+#define JOB_WY_DPC "W-Y Directorate Protection Coordinator"
+
+#define ROLES_WY_GUARDS list(JOB_WY_PPO, JOB_WY_PPS, JOB_WY_PPC, JOB_WY_DPO, JOB_WY_DPS, JOB_WY_DPC, JOB_CORPORATE_BODYGUARD)
+
 //-------- Hyperdyne --------//
 
 #define JOB_HC_SEC "HC Security Guard"
@@ -365,10 +397,11 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_ARMY_SMARTGUNNER "US Army Heavy Gunner"
 #define JOB_ARMY_SNCO "US Army Squad Leader"
 #define JOB_ARMY_CO "US Army Commander"
+#define JOB_ARMY_TANK "US Army Tank Crewman"
 #define JOB_ARMY_SYN "US Army Synthetic"
 
 
-#define JOB_ARMY_LIST list(JOB_ARMY_TROOPER, JOB_ARMY_ENGI, JOB_ARMY_MEDIC, JOB_ARMY_MARKSMAN, JOB_ARMY_SMARTGUNNER, JOB_ARMY_SNCO, JOB_ARMY_CO, JOB_ARMY_SYN)
+#define JOB_ARMY_LIST list(JOB_ARMY_TROOPER, JOB_ARMY_ENGI, JOB_ARMY_MEDIC, JOB_ARMY_MARKSMAN, JOB_ARMY_SMARTGUNNER, JOB_ARMY_SNCO, JOB_ARMY_CO, JOB_ARMY_TANK, JOB_ARMY_SYN)
 
 
 //-------- UPP --------//
@@ -402,6 +435,8 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_UPP_COMBAT_SYNTH "UPP Combat Synthetic"
 #define JOB_UPP_SUPPORT_SYNTH "UPP Support Synthetic"
 #define JOB_UPP_JOE "Dzho Automaton"
+#define JOB_UPP_COLONY_JOE "Colony Dzho Automaton"
+#define JOB_DANIEL "Daniel"
 
 #define UPP_JOB_LIST list(JOB_UPP, JOB_UPP_ENGI, JOB_UPP_MEDIC, JOB_UPP_SPECIALIST, JOB_UPP_LEADER, JOB_UPP_POLICE, JOB_UPP_LT_OFFICER, JOB_UPP_LT_DOKTOR, JOB_UPP_PILOT, JOB_UPP_SUPPLY, JOB_UPP_SRLT_OFFICER, JOB_UPP_KPT_OFFICER, JOB_UPP_CO_OFFICER, JOB_UPP_SUPPORT_SYNTH, JOB_UPP_JOE, JOB_UPP_COMMISSAR)
 #define UPP_JOB_GRUNT_LIST list(JOB_UPP, JOB_UPP_ENGI, JOB_UPP_MEDIC, JOB_UPP_SPECIALIST, JOB_UPP_LEADER, JOB_UPP_POLICE, JOB_UPP_CREWMAN)

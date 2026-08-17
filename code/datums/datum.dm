@@ -1,7 +1,7 @@
 /**
 * The absolute base class for everything
 *
-* A datum instantiated has no physical world prescence, use an atom if you want something
+* A datum instantiated has no physical world presence, use an atom if you want something
 * that actually lives in the world
 *
 * Be very mindful about adding variables to this class, they are inherited by every single
@@ -130,14 +130,6 @@
 			debug_log("'[src]' datum_components was not null after removing all components! [length(datum_components)] entries remained...")
 			datum_components.Cut()
 
-	clear_signal_refs()
-	//END: ECS SHIT
-
-	return QDEL_HINT_QUEUE
-
-///Only override this if you know what you're doing. You do not know what you're doing
-///This is a threat
-/datum/proc/clear_signal_refs()
 	var/list/lookup = comp_lookup
 	if(lookup)
 		for(var/sig in lookup)
@@ -152,6 +144,9 @@
 
 	for(var/target in signal_procs)
 		UnregisterSignal(target, signal_procs[target])
+	//END: ECS SHIT
+
+	return QDEL_HINT_QUEUE
 
 /**
  * Callback called by a timer to end an associative-list-indexed cooldown.

@@ -141,7 +141,7 @@
 			if(istype(structure, /obj/structure/barricade))
 				var/obj/structure/barricade/cade = structure
 				var/cade_facing = cade.dir
-				if(cade_facing == turn(facing, 180))
+				if(cade_facing & turn(facing, 180))
 					blocked = TRUE
 				else if(cade_facing == facing)
 					allow_one_more_step = TRUE
@@ -257,7 +257,7 @@
 	if (!isxeno_human(target_atom) || oppressor_user.can_not_harm(target_atom))
 		return
 
-	if (!oppressor_user.check_state() || oppressor_user.agility)
+	if (!oppressor_user.check_state())
 		return
 
 	var/mob/living/carbon/target_carbon = target_atom

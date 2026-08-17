@@ -74,6 +74,8 @@ Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency
 #define YAUT_FREQ 1205
 #define YAUT_OVR_FREQ 1206
 #define YAUT_SPEC_FREQ 1207
+#define BADBLOOD_FREQ 1208
+#define STRANDED_FREQ 1209
 #define DUT_FREQ 1210
 #define VAI_FREQ 1215
 #define RMC_FREQ 1216
@@ -167,6 +169,8 @@ GLOBAL_LIST_INIT(radiochannels, list(
 	RADIO_CHANNEL_YAUTJA = YAUT_FREQ,
 	RADIO_CHANNEL_YAUTJA_OVERSEER = YAUT_OVR_FREQ,
 	RADIO_CHANNEL_YAUTJA_SPECOPS = YAUT_SPEC_FREQ,
+	RADIO_CHANNEL_YAUTJA_STRANDED = STRANDED_FREQ,
+	RADIO_CHANNEL_YAUTJA_BADBLOOD = BADBLOOD_FREQ,
 	RADIO_CHANNEL_VAI = VAI_FREQ,
 	RADIO_CHANNEL_CMB = CMB_FREQ,
 	RADIO_CHANNEL_DUTCH_DOZEN = DUT_FREQ,
@@ -239,7 +243,7 @@ GLOBAL_LIST_INIT(radiochannels, list(
 ))
 
 // Response Teams
-#define ERT_FREQS list(VAI_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, YAUT_SPEC_FREQ, CMB_FREQ, RMC_FREQ)
+#define ERT_FREQS list(VAI_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, YAUT_SPEC_FREQ, BADBLOOD_FREQ, STRANDED_FREQ, CMB_FREQ, RMC_FREQ)
 
 // UPP Frequencies
 #define UPP_FREQS list(UPP_FREQ, UPP_CMD_FREQ, UPP_ENGI_FREQ, UPP_MED_FREQ, UPP_CCT_FREQ, UPP_KDO_FREQ)
@@ -290,7 +294,7 @@ GLOBAL_LIST_INIT(radiochannels, list(
 SUBSYSTEM_DEF(radio)
 	name = "radio"
 	wait = 30 SECONDS
-	flags = SS_KEEP_TIMING|SS_NO_INIT
+	flags = SS_KEEP_TIMING
 	init_order = SS_INIT_RADIO
 	var/list/datum/radio_frequency/frequencies = list()
 
@@ -354,6 +358,14 @@ SUBSYSTEM_DEF(radio)
 		"[HDC_FREQ]" = "hdcradio",
 	)
 
+/datum/controller/subsystem/radio/Initialize()
+	var/default_value = CONFIG_GET(number/announcement_max_clarity)
+	for(var/faction in faction_coms_clarity)
+		faction_coms_clarity[faction] = default_value
+
+	initialized = TRUE
+	return SS_INIT_SUCCESS
+
 /datum/controller/subsystem/radio/fire(resumed)
 	var/decay_rate = CONFIG_GET(number/announcement_clarity_decay)
 	var/clarity_min = CONFIG_GET(number/announcement_min_clarity)
@@ -368,9 +380,6 @@ SUBSYSTEM_DEF(radio)
 			if(current.time >= oldest_time)
 				break
 		codes.Cut(1, index)
-
-		// Decay current clarity
-		faction_coms_clarity[faction] = max(faction_coms_clarity[faction] - decay_rate, clarity_min)
 
 /datum/controller/subsystem/radio/proc/add_object(obj/device as obj, new_frequency as num, filter = null as text|null)
 	var/f_text = num2text(new_frequency)

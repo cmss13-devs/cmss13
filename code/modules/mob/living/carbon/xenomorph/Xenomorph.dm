@@ -43,9 +43,8 @@
 	mob_size = MOB_SIZE_XENO
 	hand = 1 //Make right hand active by default. 0 is left hand, mob defines it as null normally
 	see_in_dark = 12
-	recovery_constant = 1.5
 	see_invisible = SEE_INVISIBLE_LIVING
-	hud_possible = list(HEALTH_HUD_XENO, PLASMA_HUD, SPECIAL_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE, HUNTER_HUD, NEW_PLAYER_HUD)
+	hud_possible = list(HEALTH_HUD_XENO, PLASMA_HUD, SPECIAL_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_TAG_SPREAD, XENO_HOSTILE_FREEZE, HUNTER_HUD, NEW_PLAYER_HUD)
 	unacidable = TRUE
 	rebounds = TRUE
 	faction = FACTION_XENOMORPH
@@ -68,6 +67,13 @@
 
 	var/static/list/walking_state_cache = list()
 	var/has_walking_icon_state = FALSE
+
+	/// Timer for dodge_threshold
+	var/last_projectile_time = 0
+	/// Counts how many bullets hit xeno before dodge_threshold occurs.
+	var/projectiles_counted = 0
+	/// Guaranteed bullet dodge every X bullet shoot (don't work when you are laying down or UNCONSCIOUS)
+	var/dodge_threshold = 0
 
 	//////////////////////////////////////////////////////////////////
 	//
@@ -128,6 +134,8 @@
 	var/armor_integrity_max = 100
 	var/armor_integrity_last_damage_time = 0
 	var/armor_integrity_immunity_time = 0
+
+	var/melee_vulnerability_mult = 0
 
 	var/pull_multiplier = 1
 	var/aura_strength = 0 // Pheromone strength
@@ -204,6 +212,8 @@
 	var/plasmapool_modifier = 1
 	var/plasmagain_modifier = 0
 	var/tackle_chance_modifier = 0
+	var/tackle_min_modifier = 0
+	var/tackle_max_modifier = 0
 	var/regeneration_multiplier = 1
 	var/speed_modifier = 0
 	var/phero_modifier = 0
@@ -214,6 +224,9 @@
 	var/attack_speed_modifier = 0
 	var/armor_integrity_modifier = 0
 	var/healer_DNH = FALSE
+
+	///Used to add plasma to strain if caste have 0 plasma_max
+	var/add_plasma = 0
 
 	var/list/modifier_sources
 	COOLDOWN_DECLARE(next_strain_reset)
@@ -242,6 +255,7 @@
 	/// Caste-based spit windup
 	var/spit_windup = FALSE
 	/// Caste-based spit windup duration (if applicable)
+	var/spit_delay = 0
 	var/tileoffset = 0 	// How much your view will be offset in the direction that you zoom?
 	var/viewsize = 0	//What size your view will be changed to when you zoom?
 	var/banished = FALSE // Banished xenos can be attacked by all other xenos
@@ -285,9 +299,6 @@
 	var/stealth = FALSE
 	var/fortify = FALSE
 	var/crest_defense = FALSE
-	/// 0/FALSE - upright, 1/TRUE - all fours
-	var/agility = FALSE
-	var/ripping_limb = FALSE
 	/// For drones/hivelords. Extends the maximum build range they have
 	var/extra_build_dist = 0
 	/// tiles from self you can plant eggs.
@@ -313,12 +324,15 @@
 	var/obj/effect/alien/resin/fruit/selected_fruit = null
 	var/list/built_structures = list()
 
-	// Designer stuff
+	/// Designer related
 	var/obj/effect/alien/resin/design/selected_design = null
 	var/list/available_design = list()
 	var/list/current_design = list()
 	var/max_design_nodes = 0
 	var/selected_design_mark
+
+	var/front_armor
+	var/side_armor
 
 	var/icon_xeno
 	var/icon_xenonid
@@ -396,6 +410,8 @@
 
 	wound_icon_holder = new(null, src)
 	vis_contents += wound_icon_holder
+
+	AddComponent(/datum/component/seethrough_mob)
 
 	///Handle transferring things from the old Xeno if we have one in the case of evolve, devolve etc.
 	AddComponent(/datum/component/deevolve_cooldown, old_xeno)
@@ -495,7 +511,7 @@
 		INVOKE_NEXT_TICK(src, PROC_REF(add_minimap_marker))
 
 	//Sight
-	sight |= (SEE_MOBS|SEE_BLACKNESS|SEE_TURFS)
+	sight |= SEE_MOBS
 	see_invisible = SEE_INVISIBLE_LIVING
 	see_in_dark = 12
 
@@ -522,10 +538,14 @@
 
 	if(hive.hivenumber != XENO_HIVE_NORMAL)
 		remove_verb(src, /mob/living/carbon/xenomorph/verb/view_tacmaps)
-	minimap_ref = WEAKREF(new minimap_type(hive_number=hive.hivenumber))
-	var/datum/action/minimap/ref = minimap_ref.resolve()
-	ref.give_to(src, ref)
-	RegisterSignal(hive, COMSIG_XENO_REVEAL_TACMAP, PROC_REF(update_minimap_see_humans))
+
+	if(hive.hivenumber == XENO_HIVE_FORSAKEN)
+		update_minimap_see_humans()
+	else
+		minimap_ref = WEAKREF(new minimap_type(hive_number=hive.hivenumber))
+		var/datum/action/minimap/ref = minimap_ref.resolve()
+		ref.give_to(src, ref)
+		RegisterSignal(hive, COMSIG_XENO_REVEAL_TACMAP, PROC_REF(update_minimap_see_humans))
 
 	creation_time = world.time
 
@@ -535,11 +555,14 @@
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_SPAWN, src)
 
 /mob/living/carbon/xenomorph/proc/update_minimap_see_humans()
-	var/datum/action/minimap/ref = minimap_ref.resolve()
-	ref.remove_from(src)
+	var/datum/action/minimap/ref
+	if(minimap_ref)
+		ref = minimap_ref.resolve()
+		ref.remove_from(src)
 
 	minimap_ref = WEAKREF(new /datum/action/minimap/xeno/see_humans)
 	ref = minimap_ref.resolve()
+	ref.minimap_flags |= get_minimap_flag_for_faction(hive.hivenumber)
 	ref.give_to(src, ref)
 
 /mob/living/carbon/xenomorph/proc/handle_screech_act(mob/self, mob/living/carbon/xenomorph/queen/queen)
@@ -592,6 +615,9 @@
 		. |= COMPONENT_NO_IGNITE
 	if(fire_immunity & FIRE_IMMUNITY_XENO_FRENZY)
 		. |= COMPONENT_XENO_FRENZY
+
+/mob/living/carbon/xenomorph/proc/get_reflection_chance(obj/projectile/bullet)
+	return
 
 //Off-load this proc so it can be called freely
 //Since Xenos change names like they change shoes, we need somewhere to hammer in all those legos
@@ -830,6 +856,23 @@
 	. = 1
 
 
+/mob/living/carbon/xenomorph/proc/rename_tunnel(obj/structure/tunnel/tunnel_target in oview(1))
+	set name = "Rename Tunnel"
+	set desc = "Rename the tunnel."
+	set category = null
+
+	if(!istype(tunnel_target))
+		return
+
+	var/new_name = strip_html(input("Change the description of the tunnel:", "Tunnel Description") as text|null)
+	new_name = replace_non_alphanumeric_plus(new_name)
+	if(new_name)
+		new_name = "[new_name] ([get_area_name(tunnel_target)])"
+		log_admin("[key_name(src)] has renamed the tunnel \"[tunnel_target.tunnel_desc]\" as \"[new_name]\".")
+		msg_admin_niche("[src]/([key_name(src)]) has renamed the tunnel \"[tunnel_target.tunnel_desc]\" as \"[new_name]\".")
+		tunnel_target.tunnel_desc = "[new_name]"
+	return
+
 
 /mob/living/carbon/xenomorph/prepare_huds()
 	..()
@@ -849,8 +892,12 @@
 
 // Transfer any observing players over to the xeno's new body (`target`) on evolve/de-evolve.
 /mob/living/carbon/xenomorph/transfer_observers_to(atom/target)
+	if(!istype(target) || target == src || !get_turf(target))
+		return
+
+	. = ..()
+
 	for(var/mob/dead/observer/observer as anything in observers)
-		observer.clean_observe_target()
 		observer.do_observe(target)
 
 /mob/living/carbon/xenomorph/check_improved_pointing()
@@ -882,6 +929,9 @@
 
 	for(var/trait in new_hive.hive_inherited_traits)
 		ADD_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
+
+	if(new_hivenumber == XENO_HIVE_FORSAKEN)
+		update_minimap_see_humans()
 
 	generate_name()
 
@@ -922,8 +972,8 @@
 	recalculate_tackle()
 
 /mob/living/carbon/xenomorph/proc/recalculate_tackle()
-	tackle_min = caste.tackle_min
-	tackle_max = caste.tackle_max
+	tackle_min = caste.tackle_min + tackle_min_modifier
+	tackle_max = caste.tackle_max + tackle_max_modifier
 	tackle_chance = caste.tackle_chance + tackle_chance_modifier
 	tacklestrength_min = caste.tacklestrength_min
 	tacklestrength_max = caste.tacklestrength_max
@@ -944,19 +994,23 @@
 		health = maxHealth
 
 /mob/living/carbon/xenomorph/proc/recalculate_plasma()
-	if(!plasma_max)
+	var/new_plasma_max = (plasmapool_modifier * caste.plasma_max) + add_plasma
+	if(!plasma_max && new_plasma_max <= 0)
 		return
 
-	var/new_plasma_max = plasmapool_modifier * caste.plasma_max
 	plasma_gain = plasmagain_modifier + caste.plasma_gain
 	if(hive)
 		new_plasma_max += hive.hive_stat_modifier_flat["plasmapool"]
 		new_plasma_max *= hive.hive_stat_modifier_multiplier["plasmapool"]
 		plasma_gain += hive.hive_stat_modifier_flat["plasmagain"]
 		plasma_gain *= hive.hive_stat_modifier_multiplier["plasmagain"]
-	if (new_plasma_max == plasma_max)
+	if(new_plasma_max == plasma_max)
 		return
-	var/plasma_ratio = plasma_stored / plasma_max
+
+	var/plasma_ratio = 0
+	if(plasma_max > 0)
+		plasma_ratio = plasma_stored / plasma_max
+
 	plasma_max = new_plasma_max
 	plasma_stored = floor(plasma_max * plasma_ratio + 0.5) //Restore our plasma ratio, so if we're full, we continue to be full, etc. Rounding up (hence the +0.5)
 	if(plasma_stored > plasma_max)
@@ -1079,7 +1133,7 @@
 	visible_message(SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"),
 		SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
 
-	if(istype(get_turf(src), /turf/open/gm/river))
+	if(istype(get_turf(src), /turf/open/gm/river) || istype(get_turf(src), /turf/open/beach/coastline) || istype(get_turf(src), /turf/open/gm/coast))
 		ExtinguishMob()
 
 	if(fire_stacks > 0)
@@ -1110,6 +1164,13 @@
 	drop_inv_item_on_ground(legcuffed)
 
 /mob/living/carbon/xenomorph/IgniteMob(force)
+	// Force xenos out of hiding if something tried to ignite it (like walking over fire)
+	if(layer == XENO_HIDING_LAYER)
+		var/datum/action/xeno_action/onclick/xenohide/hide = get_action(src, /datum/action/xeno_action/onclick/xenohide)
+		if (hide)
+			INVOKE_ASYNC(hide, TYPE_PROC_REF(/datum/action/xeno_action/onclick/xenohide, use_ability))
+			visible_message(SPAN_DANGER("[src] is forced out of hiding by the flames!"), SPAN_DANGER("You are forced out of hiding by the flames!"))
+
 	var/penetrating = fire_reagent?.fire_penetrating && !(fire_immunity & FIRE_IMMUNITY_IGNORE_PEN)
 	if(!force && !penetrating)
 		if((fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
@@ -1236,24 +1297,11 @@
 
 /mob/living/carbon/xenomorph/proc/get_throw_range(obj/item/I)
 	return 1
-/**
- * Checks if user can mount src
- *
- * Arguments:
- * * user - The mob trying to mount
- * * target_mounting - Is the target initiating the mounting process?
- */
-/mob/living/carbon/xenomorph/proc/can_mount(mob/living/user, target_mounting = FALSE)
+
+/mob/living/carbon/xenomorph/can_mount(mob/living/user, target_mounting = FALSE)
 	return FALSE
 
-/**
- * Handles the target trying to ride src
- *
- * Arguments:
- * * target - The mob being put on the back
- * * target_mounting - Is the target initiating the mounting process?
- */
-/mob/living/carbon/xenomorph/proc/carry_target(mob/living/carbon/target, target_mounting = FALSE)
+/mob/living/carbon/xenomorph/carry_target(mob/living/carbon/target, target_mounting = FALSE)
 	if(!ismob(target))
 		return
 	if(target.is_mob_incapacitated())
@@ -1276,6 +1324,3 @@
 	. = ..()
 	if(isxeno(user))
 		return
-	if(!can_mount(user, TRUE))
-		return
-	INVOKE_ASYNC(src, PROC_REF(carry_target), dropping, TRUE) // target_mounting is always true, the runner should never be buckling someone to itself (unless someone wants to make it happen)

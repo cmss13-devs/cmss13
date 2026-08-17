@@ -224,6 +224,36 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	display_name = "Sunglasses"
 	path = /obj/item/clothing/glasses/sunglasses
 
+// Hippie Shades
+
+/datum/gear/eyewear/sunglasses/hippie_shades
+	display_name = "Suntex-Sightware rounded shades, pink"
+	path = /obj/item/clothing/glasses/sunglasses/hippie
+
+/datum/gear/eyewear/sunglasses/hippie_shades/green
+	display_name = "Suntex-Sightware rounded shades, green"
+	path = /obj/item/clothing/glasses/sunglasses/hippie/green
+
+/datum/gear/eyewear/sunglasses/hippie_shades/sunrise
+	display_name = "Suntex-Sightware rounded shades, sunrise"
+	path = /obj/item/clothing/glasses/sunglasses/hippie/sunrise
+
+/datum/gear/eyewear/sunglasses/hippie_shades/sunset
+	display_name = "Suntex-Sightware rounded shades, sunset"
+	path = /obj/item/clothing/glasses/sunglasses/hippie/sunset
+
+/datum/gear/eyewear/sunglasses/hippie_shades/nightblue
+	display_name = "Suntex-Sightware rounded shades, nightblue"
+	path = /obj/item/clothing/glasses/sunglasses/hippie/nightblue
+
+/datum/gear/eyewear/sunglasses/hippie_shades/midnight
+	display_name = "Suntex-Sightware rounded shades, midnight"
+	path = /obj/item/clothing/glasses/sunglasses/hippie/midnight
+
+/datum/gear/eyewear/sunglasses/hippie_shades/bloodred
+	display_name = "Suntex-Sightware rounded shades, bloodred"
+	path = /obj/item/clothing/glasses/sunglasses/hippie/bloodred
+
 /datum/gear/mask
 	category = "Masks and scarves"
 	slot = WEAR_FACE
@@ -435,13 +465,13 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	display_name = "USCM cap"
 	path = /obj/item/clothing/head/cmcap
 
+/datum/gear/headwear/uscm/headband_green
+	display_name = "USCM headband, area of operations specific"
+	path = /obj/item/clothing/head/headband
+
 /datum/gear/headwear/uscm/headband_brown
 	display_name = "USCM headband, brown"
 	path = /obj/item/clothing/head/headband/brown
-
-/datum/gear/headwear/uscm/headband_green
-	display_name = "USCM headband, green"
-	path = /obj/item/clothing/head/headband
 
 /datum/gear/headwear/uscm/headband_grey
 	display_name = "USCM headband, grey"
@@ -515,6 +545,10 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	display_name = "Urban Helmet netting"
 	path = /obj/item/clothing/accessory/helmet/cover/netting/urban
 
+/datum/gear/helmet_garb/netting/snow
+	display_name = "Snow Helmet netting"
+	path = /obj/item/clothing/accessory/helmet/cover/netting/snow
+
 /datum/gear/helmet_garb/lucky_feather
 	display_name = "Lucky feather, red"
 	path = /obj/item/prop/helmetgarb/lucky_feather
@@ -554,6 +588,10 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 /datum/gear/helmet_garb/raincover/urban
 	display_name = "Urban Rain cover"
 	path = /obj/item/clothing/accessory/helmet/cover/raincover/urban
+
+/datum/gear/helmet_garb/raincover/snow
+	display_name = "Snow Rain cover"
+	path = /obj/item/clothing/accessory/helmet/cover/raincover/snow
 
 /datum/gear/helmet_garb/rabbits_foot
 	display_name = "Rabbit's foot"
@@ -821,28 +859,41 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	display_name = "M8 Cartridge Bayonet"
 	path = /obj/item/storage/box/co2_knife
 
+
 /datum/gear/weapon/clfpistol
 	display_name = "D18 Holdout Pistol"
-	path = /obj/item/storage/box/clf
+	path = /obj/item/storage/box/fluff_gun/clf
+	slot = WEAR_R_HAND
 
 /datum/gear/weapon/upppistol //ww2 war trophy luger
 	display_name = "Type 73 Pistol"
-	path = /obj/item/storage/box/upp
-	slot = WEAR_IN_BACK
-	fluff_cost = 4
+	path = /obj/item/storage/box/fluff_gun/upp
+	slot = WEAR_R_HAND
+
+/datum/gear/weapon/np92_pistol
+	display_name = "NP92 Pistol"
+	path = /obj/item/storage/box/fluff_gun/np92
+	slot = WEAR_R_HAND
 
 /datum/gear/weapon/l54_pistol
 	display_name = "L54 Pistol" // TWE service pistol - same stats as the m4a3
-	path = /obj/item/weapon/gun/pistol/l54
-	allowed_origins = USCM_ORIGINS
+	path = /obj/item/storage/box/fluff_gun/l54
+	slot = WEAR_R_HAND
 
 /datum/gear/weapon/holdout
 	display_name = "W62 'Whisper'" //22LR ratkiller and/or plinker
-	path = /obj/item/storage/box/plinker
+	path = /obj/item/storage/box/fluff_gun/plinker
+	slot = WEAR_R_HAND
 
 /datum/gear/weapon/action
 	display_name = "AC71 'Action'" //380ACP holdout pistol
-	path = /obj/item/storage/box/action
+	path = /obj/item/storage/box/fluff_gun/action
+	slot = WEAR_R_HAND
+
+/datum/gear/weapon/m1911
+	display_name = "M48A4 Service pistol" //modernized m1911
+	path = /obj/item/storage/box/fluff_gun/m1911
+	slot = WEAR_R_HAND
 
 /datum/gear/weapon/m4a3_custom
 	display_name = "M4A3 Custom Pistol"
@@ -1198,19 +1249,14 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	path = /obj/item/facepaint/sniper
 	fluff_cost = 3
 
-/datum/gear/misc/jungle_boots
-	display_name = "Jungle pattern combat boots"
-	path = /obj/item/clothing/shoes/marine/jungle
-	fluff_cost = 2
-
-/datum/gear/misc/brown_boots
-	display_name = "brown combat boots"
-	path = /obj/item/clothing/shoes/marine/brown
-	fluff_cost = 2
-
 /datum/gear/misc/brown_gloves
 	display_name = "brown combat gloves"
 	path = /obj/item/clothing/gloves/marine/brown
+	fluff_cost = 2
+
+/datum/gear/misc/grey_gloves
+	display_name = "grey combat gloves"
+	path = /obj/item/clothing/gloves/marine/grey
 	fluff_cost = 2
 
 /datum/gear/misc/fingerless_gloves
@@ -1218,9 +1264,19 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	path = /obj/item/clothing/gloves/marine/fingerless
 	fluff_cost = 2
 
+/datum/gear/misc/brown_boots
+	display_name = "brown combat boots"
+	path = /obj/item/clothing/shoes/marine/brown
+	fluff_cost = 2
+
 /datum/gear/misc/grey_boots
 	display_name = "grey combat boots"
 	path = /obj/item/clothing/shoes/marine/grey
+	fluff_cost = 2
+
+/datum/gear/misc/jungle_boots
+	display_name = "Jungle pattern combat boots"
+	path = /obj/item/clothing/shoes/marine/jungle
 	fluff_cost = 2
 
 /datum/gear/misc/urban_boots
@@ -1228,9 +1284,9 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	path = /obj/item/clothing/shoes/marine/urban
 	fluff_cost = 2
 
-/datum/gear/misc/grey_gloves
-	display_name = "grey combat gloves"
-	path = /obj/item/clothing/gloves/marine/grey
+/datum/gear/misc/snow_boots
+	display_name = "Snow pattern combat boots"
+	path = /obj/item/clothing/shoes/marine/snow
 	fluff_cost = 2
 
 /datum/gear/misc/pdt_kit
@@ -1361,43 +1417,6 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 /datum/gear/civilian/headwear/cowboy_hat/light
 	display_name = "cowboy hat, light-brown"
 	path = /obj/item/clothing/head/cowboy/light
-
-// Hippie Shades
-
-/datum/gear/eyewear/sunglasses/hippie_shades/pink
-	display_name = "Suntex-Sightware rounded shades, pink"
-	path = /obj/item/clothing/glasses/sunglasses/hippie
-
-/datum/gear/eyewear/sunglasses/hippie_shades/green
-	display_name = "Suntex-Sightware rounded shades, green"
-	path = /obj/item/clothing/glasses/sunglasses/hippie/green
-
-/datum/gear/eyewear/sunglasses/hippie_shades/sunrise
-	display_name = "Suntex-Sightware rounded shades, sunrise"
-	path = /obj/item/clothing/glasses/sunglasses/hippie/sunrise
-
-/datum/gear/eyewear/sunglasses/hippie_shades/sunset
-	display_name = "Suntex-Sightware rounded shades, sunset"
-	path = /obj/item/clothing/glasses/sunglasses/hippie/sunset
-
-/datum/gear/eyewear/sunglasses/hippie_shades/nightblue
-	display_name = "Suntex-Sightware rounded shades, nightblue"
-	path = /obj/item/clothing/glasses/sunglasses/hippie/nightblue
-
-/datum/gear/eyewear/sunglasses/hippie_shades/midnight
-	display_name = "Suntex-Sightware rounded shades, midnight"
-	path = /obj/item/clothing/glasses/sunglasses/hippie/midnight
-
-/datum/gear/eyewear/sunglasses/hippie_shades/bloodred
-	display_name = "Suntex-Sightware rounded shades, bloodred"
-	path = /obj/item/clothing/glasses/sunglasses/hippie/bloodred
-
-// Headband
-
-/datum/gear/civilian/headwear/headband_rebel
-	display_name = "CLF headband"
-	path = /obj/item/clothing/head/headband/rebel
-	fluff_cost = 2
 
 // Civilian shoes
 

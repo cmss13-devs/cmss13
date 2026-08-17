@@ -111,7 +111,7 @@
 		hud_list[hud] = I
 
 
-/mob/proc/show_message(msg, type, alt, alt_type, message_flags = CHAT_TYPE_OTHER)//Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
+/mob/proc/show_message(msg, type, alt, alt_type, message_flags = CHAT_TYPE_OTHER, chat_type) //Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
 
 	if(!client || !client.prefs)
 		return
@@ -134,6 +134,8 @@
 	if(message_flags == CHAT_TYPE_OTHER || client.prefs && (message_flags & client.prefs.chat_display_preferences) > 0) // or logic between types
 		if(stat == UNCONSCIOUS)
 			to_chat(src, "<I>... You can almost hear someone talking ...</I>")
+		else if(chat_type) // probably best to deprecate below but im too lazy for it
+			to_chat(src, msg, type = chat_type)
 		else if(message_flags & CHAT_TYPE_ALL_COMBAT) // Pre-tag combat messages for tgchat
 			to_chat(src, html = msg, type = MESSAGE_TYPE_COMBAT)
 		else
@@ -213,13 +215,6 @@
 		hear_dist = max_distance
 	for(var/mob/current in hearers(hear_dist, loc))
 		current.show_message(message, SHOW_MESSAGE_AUDIBLE, deaf_message, SHOW_MESSAGE_VISIBLE, message_flags = message_flags)
-
-/atom/proc/ranged_message(message, blind_message, max_distance, message_flags = CHAT_TYPE_OTHER)
-	var/view_dist = 7
-	if(max_distance)
-		view_dist = max_distance
-	for(var/mob/M in orange(view_dist, src))
-		M.show_message(message, SHOW_MESSAGE_VISIBLE, blind_message, SHOW_MESSAGE_AUDIBLE, message_flags)
 
 
 /mob/proc/findname(msg)
@@ -383,22 +378,38 @@
 	SIGNAL_HANDLER
 	reset_view(null)
 
-/mob/proc/point_to_atom(atom/A, turf/T)
+/mob/proc/point_to_atom(atom/pointed_at, turf/turf_pointed_at)
 	var/mob/living/carbon/human/mob = src
 	var/datum/squad/squad = null
 	if(ishuman(mob))
 		squad = mob.assigned_squad
 	if(!check_improved_pointing()) //Squad Leaders and above have reduced cooldown and get a bigger arrow
 		recently_pointed_to = world.time + 2.5 SECONDS
-		new /obj/effect/overlay/temp/point(T, src, A)
+		new /obj/effect/overlay/temp/point(turf_pointed_at, src, pointed_at)
 	else
 		recently_pointed_to = world.time + 10
+		var/outline_color = "#282d8f" // Default color for people with command skill but no squad
 		if(isnull(squad)) //If they get the big arrow but aren't in a squad, they get the default green arrow
-			new /obj/effect/overlay/temp/point/big(T, src, A)
+			new /obj/effect/overlay/temp/point/big(turf_pointed_at, src, pointed_at)
 		else
-			new /obj/effect/overlay/temp/point/big/squad(T, src, A, squad.equipment_color)
-	visible_message("<b>[src]</b> points to [A]", null, null, 5)
+			new /obj/effect/overlay/temp/point/big/squad(turf_pointed_at, src, pointed_at, squad.equipment_color)
+			outline_color = squad.equipment_color
+
+		if(ismob(pointed_at) && ishuman(mob))
+			var/outline_name = "point_outline_[REF(src)]"
+			var/outline_size = 0.25
+			if(skills)
+				var/leadership_level = skills.get_skill_level(SKILL_LEADERSHIP)
+				outline_size += leadership_level * 0.25
+
+			pointed_at.add_filter(outline_name, 2, list("type" = "outline", "color" = outline_color, "size" = outline_size))
+			addtimer(CALLBACK(pointed_at, PROC_REF(disable_point_outline), outline_name), 4.5 SECONDS)
+
+	visible_message("<b>[src]</b> points to [pointed_at]", null, null, 5)
 	return TRUE
+
+/mob/proc/disable_point_outline(outline_name)
+	remove_filter(outline_name)
 
 ///Is this mob important enough to point with big arrows?
 /mob/proc/check_improved_pointing()
@@ -723,6 +734,8 @@ note dizziness decrements automatically in the mob's Life() proc.
 	if(!canface())
 		return 0
 	if(dir != ndir)
+		if(HAS_TRAIT(src, TRAIT_ABILITY_REFLECTIVE_PLATES))
+			return
 		flags_atom &= ~DIRLOCK
 		setDir(ndir)
 	if(buckled && !buckled.anchored)
@@ -863,6 +876,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 	handle_slurring()
 	handle_slowed()
 	handle_superslowed()
+	handle_hushed()
 
 /mob/living/proc/handle_slowed()
 	if(slowed)
@@ -873,6 +887,11 @@ note dizziness decrements automatically in the mob's Life() proc.
 	if(superslowed)
 		adjust_effect(-1, SUPERSLOW)
 	return superslowed
+
+/mob/living/proc/handle_hushed()
+	if(hushed)
+		adjust_effect(-1, HUSHED)
+	return hushed
 
 /mob/living/proc/handle_stuttering()
 	if(stuttering)
@@ -986,7 +1005,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 		AM.loc = destination
 		AM.loc.Entered(AM,oldLoc)
 		if(oldLoc.z != destination.z)
-			SEND_SIGNAL(AM, COMSIG_MOVABLE_Z_CHANGED)
+			AM.onTransitZ(oldLoc.z, destination.z)
 		var/area/old_area
 		if(oldLoc)
 			old_area = get_area(oldLoc)

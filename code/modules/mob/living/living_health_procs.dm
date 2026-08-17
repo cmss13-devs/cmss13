@@ -275,6 +275,18 @@
 	SetSuperslow(superslowed + amount)
 	return
 
+/mob/living/proc/hushed(amount)
+	hushed = max(max(hushed, amount), 0)
+	return
+
+/mob/living/proc/set_hushed(amount)
+	hushed = max(amount, 0)
+	return
+
+/mob/living/proc/adjust_hushed(amount)
+	hushed = max(hushed + amount, 0)
+	return
+
 /* KnockDown (Flooring) */
 /// Overridable handler to adjust the numerical value of status effects. Expand as needed
 /mob/living/proc/GetKnockDownDuration(amount)
@@ -474,7 +486,6 @@
 	else if(ear_deaf)
 		on_deafness_gain()
 
-
 /mob/living/proc/SetEarDeafness(amount)
 	var/prev_deaf = ear_deaf
 	ear_deaf = max(amount, 0)
@@ -496,6 +507,19 @@
 	if(!ear_deaf && (client?.soundOutput?.status_flags & EAR_DEAF_MUTE))
 		client.soundOutput.status_flags ^= EAR_DEAF_MUTE
 		client.soundOutput.apply_status()
+
+/mob/living/proc/is_admin_slept()
+	return has_status_effect(/datum/status_effect/incapacitating/unconscious/aslept)
+
+/// Sets Admin sleeping, TRUE for applying FALSE for removing, defualts to removing
+/mob/living/proc/set_admin_sleep(apply)
+	if(!apply)
+		var/datum/status_effect/incapacitating/unconscious/aslept/admin_slept = is_admin_slept()
+		if(admin_slept)
+			qdel(admin_slept)
+	else
+		apply_status_effect(/datum/status_effect/incapacitating/unconscious/aslept)
+	return
 
 /mob/living/proc/grant_spawn_protection(duration)
 	status_flags |= RECENTSPAWN|GODMODE
@@ -595,8 +619,9 @@
 		tod = null
 		timeofdeath = 0
 
-	// restore us to consciousness
-	set_stat(CONSCIOUS)
+	// restore us to consciousness if we're not admin slept
+	if(!(HAS_TRAIT_FROM(src, TRAIT_KNOCKEDOUT, TRAIT_STATUS_EFFECT(TRAIT_SOURCE_ADMIN))))
+		set_stat(CONSCIOUS)
 	regenerate_all_icons()
 
 	SEND_SIGNAL(src, COMSIG_LIVING_REJUVENATED)
@@ -615,6 +640,7 @@
 	set_effect(0, SLOW)
 	set_effect(0, SUPERSLOW)
 	set_effect(0, WEAKEN)
+	set_effect(0, HUSHED)
 	ExtinguishMob()
 	fire_stacks = 0
 

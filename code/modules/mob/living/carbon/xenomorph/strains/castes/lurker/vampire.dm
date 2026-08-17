@@ -48,11 +48,11 @@
 /datum/action/xeno_action/activable/flurry/use_ability(atom/targeted_atom) //flurry ability
 	var/mob/living/carbon/xenomorph/xeno = owner
 
-	if (!istype(xeno))
+	if(!istype(xeno))
 		return
-	if (!xeno.check_state())
+	if(!xeno.check_state())
 		return
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
 	xeno.visible_message(SPAN_DANGER("[xeno] drags its claws in a wide area in front of it!"),
@@ -73,31 +73,31 @@
 	var/turf/infront_right = get_step(root, turn(facing, -45))
 
 	temp_turfs += infront
-	if (!(!infront || infront.density))
+	if(!(!infront || infront.density))
 		temp_turfs += infront_left
-	if (!(!infront || infront.density))
+	if(!(!infront || infront.density))
 		temp_turfs += infront_right
 
-	for (var/turf/current_turfs in temp_turfs)
+	for(var/turf/current_turfs in temp_turfs)
 
-		if (!istype(current_turfs))
+		if(!istype(current_turfs))
 			continue
 
-		if (current_turfs.density)
+		if(current_turfs.density)
 			continue
 
 		target_turfs += current_turfs
 		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/red(current_turfs, 2)
 
-	for (var/turf/current_turfs in target_turfs)
-		for (var/mob/living/carbon/target in current_turfs)
-			if (target.stat == DEAD)
+	for(var/turf/current_turfs in target_turfs)
+		for(var/mob/living/carbon/target in current_turfs)
+			if(target.stat == DEAD)
 				continue
 
-			if (!isxeno_human(target) || xeno.can_not_harm(target))
+			if(!isxeno_human(target) || xeno.can_not_harm(target))
 				continue
 
-			if (HAS_TRAIT(target, TRAIT_NESTED))
+			if(HAS_TRAIT(target, TRAIT_NESTED))
 				continue
 
 			xeno.visible_message(SPAN_DANGER("[xeno] slashes [target]!"),
@@ -129,77 +129,38 @@
 
 	if(!xeno.check_state())
 		return
-	// Get line of turfs
-	var/list/turf/target_turfs = list()
 
-	var/facing = Get_Compass_Dir(xeno, targeted_atom)
-	var/turf/turf = xeno.loc
-	var/list/turf/turflist = list()
-	var/turf/temp = xeno.loc
-	var/list/telegraph_atom_list = list()
+	if(distance > 2)
+		return
 
-	for (var/step in 0 to 2)
-		temp = get_step(turf, facing)
-		if(facing in GLOB.diagonals) // check if it goes through corners
-			var/reverse_face = GLOB.reverse_dir[facing]
-			var/turf/back_left = get_step(temp, turn(reverse_face, 45))
-			var/turf/back_right = get_step(temp, turn(reverse_face, -45))
-			if((!back_left || back_left.density) && (!back_right || back_right.density))
-				break
-		if(!temp || temp.density || temp.opacity)
-			break
-
-		var/blocked = FALSE
-		for(var/obj/structure/structure_blocker in temp)
-			if(istype(structure_blocker, /obj/structure/window/framed))
-				var/obj/structure/window/framed/framed_window = structure_blocker
-				if(!framed_window.unslashable)
-					framed_window.deconstruct(disassembled = FALSE)
-			if(istype(structure_blocker, /obj/structure/fence))
-				var/obj/structure/fence/fence = structure_blocker
-				if(!fence.unslashable)
-					fence.health -= 50
-					fence.healthcheck()
-
-			if(structure_blocker.opacity)
-				blocked = TRUE
-				break
-		if(blocked)
-			break
-
-		turf = temp
-
-		if(turf in turflist)
-			break
-
-		turflist += turf
-		facing = get_dir(turf, targeted_atom)
-		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/red(turf, 0.25 SECONDS)
-
-	for(var/obj/structure/current_structure in turf)
-		if(istype(current_structure, /obj/structure/window/framed))
-			var/obj/structure/window/framed/target_window = current_structure
-			if(target_window.unslashable)
-				return
-			playsound(get_turf(target_window),'sound/effects/glassbreak3.ogg', 30, TRUE)
-			target_window.shatter_window(TRUE)
-			xeno.visible_message(SPAN_XENOWARNING("\The [xeno] strikes the window with their tail!"), SPAN_XENOWARNING("We strike the window with our tail!"))
+	var/list/turf/path = get_line(xeno, targeted_atom, include_start_atom = FALSE)
+	for(var/turf/path_turf as anything in path)
+		if(path_turf.density)
+			to_chat(xeno, SPAN_WARNING("There's something blocking us from striking!"))
 			return
-	// Extract our 'optimal' turf, if it exists
-	if(length(target_turfs) >= 2)
-		xeno.animation_attack_on(target_turfs[length(target_turfs)], 15)
-
-	// find a target in the target turfs
-	var/list/targets = list()
-	for(var/turf/target_turf in turflist)
-		for(var/mob/living/carbon/target in target_turf)
-			if(iscarbon(hit_target) && !xeno.can_not_harm(hit_target) && hit_target.stat != DEAD)
-				continue
-			targets += target
-
-	if(!length(turflist))
-		to_chat(xeno, SPAN_XENOWARNING("There's no room to jab anything!"))
-		apply_cooldown(cooldown_modifier = 0.2) //take pity on the sister who can't aim
+		var/atom/barrier = path_turf.handle_barriers(attacker = xeno , pass_flags = (PASS_MOB_THRU_XENO|PASS_OVER_THROW_MOB|PASS_TYPE_CRAWLER))
+		if(barrier != path_turf)
+			to_chat(xeno, SPAN_WARNING("There's something blocking us from striking!"))
+			return
+		for(var/obj/structure/current_structure in path_turf)
+			if(istype(current_structure, /obj/structure/window/framed))
+				var/obj/structure/window/framed/target_window = current_structure
+				if(target_window.unslashable)
+					return
+				playsound(get_turf(target_window),'sound/effects/glassbreak3.ogg', 30, TRUE)
+				target_window.shatter_window(TRUE)
+				xeno.visible_message(SPAN_XENOWARNING("\The [xeno] strikes the window with their tail!"), SPAN_XENOWARNING("We strike the window with our tail!"))
+				apply_cooldown(cooldown_modifier = 0.5)
+				return
+			if(current_structure.density && !current_structure.throwpass)
+				to_chat(xeno, SPAN_WARNING("There's something blocking us from striking!"))
+				return
+	// find a target in the target turf
+	if(!iscarbon(targeted_atom) || hit_target.stat == DEAD)
+		for(var/mob/living/carbon/carbonara in get_turf(targeted_atom))
+			hit_target = carbonara
+			if(!xeno.can_not_harm(hit_target) && hit_target.stat != DEAD)
+				break
 
 	if(iscarbon(hit_target) && !xeno.can_not_harm(hit_target) && hit_target.stat != DEAD)
 		if(targeted_atom == hit_target) //1 extra tile of pushback for a direct hit
@@ -219,8 +180,8 @@
 		hit_target.visible_message(SPAN_DANGER("[hit_target] slams into an obstacle!"),
 		isxeno(hit_target) ? SPAN_XENODANGER("We slam into an obstacle!") : SPAN_HIGHDANGER("You slam into an obstacle!"), null, 4, CHAT_TYPE_TAKING_HIT)
 		hit_target.apply_damage(MELEE_FORCE_TIER_2)
-		if (hit_target.mob_size < MOB_SIZE_BIG)
-			hit_target.KnockDown(1)
+		if(hit_target.mob_size < MOB_SIZE_BIG)
+			hit_target.KnockDown(0.5)
 		else
 			hit_target.Slow(1)
 	/// To reset the direction if they haven't moved since then in below callback.

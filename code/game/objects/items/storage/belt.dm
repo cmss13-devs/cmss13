@@ -1852,7 +1852,7 @@
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/smg/m39/ap(src)
 
-/obj/item/storage/belt/gun/marine
+/obj/item/storage/belt/gun/combat_rig
 	name = "\improper M276 pattern combat sidearm rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version has a holster assembly that allows one to carry the most common pistols. It also contains side pouches that can store most pistol and rifle magazines."
 	icon_state = "mag_holster"
@@ -1862,56 +1862,62 @@
 			"icon_x" = 5,
 			"icon_y" = -2))
 	can_hold = list(
+		//sidearms
 		/obj/item/weapon/gun/flare,
 		/obj/item/weapon/gun/pistol,
 		/obj/item/weapon/gun/revolver,
-		/obj/item/ammo_magazine/rifle,
-		/obj/item/ammo_magazine/smg,
+		/obj/item/weapon/gun/energy/taser,
+		//sidearm ammo
 		/obj/item/ammo_magazine/pistol,
 		/obj/item/ammo_magazine/revolver,
+		//longarm ammo
+		/obj/item/ammo_magazine/rifle,
+		/obj/item/ammo_magazine/smg,
 		/obj/item/ammo_magazine/sniper,
+		//Handfuls won't count for longarm/sidearm limit, just occupy slot.
+		/obj/item/ammo_magazine/handful,
 	)
 	flags_atom = FPRINT // has gamemode skin
 
 	var/rifle_mags = 0
 	var/pistol_mags = 0
 
-/obj/item/storage/belt/gun/marine/Destroy()
+/obj/item/storage/belt/gun/combat_rig/Destroy()
 	rifle_mags = 0
 	pistol_mags = 0
 	. = ..()
 
-/obj/item/storage/belt/gun/marine/can_be_inserted(obj/item/inserted_item, mob/user, stop_messages = FALSE)
+/obj/item/storage/belt/gun/combat_rig/can_be_inserted(obj/item/inserted_item, mob/user, stop_messages = FALSE)
 	. = ..()
 	if(!.)
 		return
 
-	if(istype(inserted_item, /obj/item/ammo_magazine/pistol) || istype(inserted_item, /obj/item/ammo_magazine/revolver))
+	if(istype(inserted_item.type in GLOB.sidearm_ammo))
 		if(pistol_mags >= 2)
 			if(!stop_messages)
 				to_chat(user, SPAN_WARNING("[src] can't hold more pistol magazines."))
 			return FALSE
 		return TRUE
 
-	if(istype(inserted_item, /obj/item/ammo_magazine/rifle) || istype(inserted_item, /obj/item/ammo_magazine/smg) || istype(inserted_item, /obj/item/ammo_magazine/sniper))
+	if(istype(inserted_item.type in GLOB.longarm_ammo))
 		if(rifle_mags >= 3)
 			if(!stop_messages)
 				to_chat(user, SPAN_WARNING("[src] can't hold more rifle magazines."))
 			return FALSE
 		return TRUE
 
-/obj/item/storage/belt/gun/marine/_item_insertion(obj/item/inserted_item, prevent_warning = 0, mob/user)
-	if(istype(inserted_item, /obj/item/ammo_magazine/pistol) || istype(inserted_item, /obj/item/ammo_magazine/revolver))
+/obj/item/storage/belt/gun/combat_rig/_item_insertion(obj/item/inserted_item, prevent_warning = 0, mob/user)
+	if(istype(inserted_item.type in GLOB.sidearm_ammo))
 		pistol_mags++
-	else if(istype(inserted_item, /obj/item/ammo_magazine/rifle) || istype(inserted_item, /obj/item/ammo_magazine/smg) || istype(inserted_item, /obj/item/ammo_magazine/sniper))
+	else if(istype(inserted_item.type in GLOB.longarm_ammo))
 		rifle_mags++
 
 	..()
 
-/obj/item/storage/belt/gun/marine/_item_removal(obj/item/inserted_item, atom/new_location)
-	if(istype(inserted_item, /obj/item/ammo_magazine/pistol) || istype(inserted_item, /obj/item/ammo_magazine/revolver))
+/obj/item/storage/belt/gun/combat_rig/_item_removal(obj/item/inserted_item, atom/new_location)
+	if(istype(inserted_item.type in GLOB.sidearm_ammo))
 		pistol_mags = max(pistol_mags - 1, 0)
-	else if(istype(inserted_item, /obj/item/ammo_magazine/rifle) || istype(inserted_item, /obj/item/ammo_magazine/smg) || istype(inserted_item, /obj/item/ammo_magazine/sniper))
+	else if(istype(inserted_item.type in GLOB.longarm_ammo))
 		rifle_mags = max(rifle_mags - 1, 0)
 
 	..()

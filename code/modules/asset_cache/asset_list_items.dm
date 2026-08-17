@@ -549,11 +549,27 @@
 	name = "role_icons"
 
 /datum/asset/spritesheet/role_icons/register()
+	// Default to the rifleman/grunt icon
+	var/icon/default_icon = icon('icons/mob/hud/factions/marine.dmi', icon_state = "hudsquad")
+	default_icon.Blend("#5A934A", ICON_MULTIPLY)
+	default_icon.Blend(icon('icons/mob/hud/factions/marine.dmi', icon_state = "hudsquad_grunt"), ICON_OVERLAY)
+	default_icon.Crop(25, 25, 32, 32)
+
 	for(var/title in GLOB.RoleAuthority.roles_by_name)
 		var/normalized_title = replacetext(lowertext(title), " ", "_")
-		var/datum/faction/uscm/marine_faction = GLOB.faction_datums[FACTION_MARINE]
-		if(istype(marine_faction))
-			var/icon/hud_icon = marine_faction.get_simple_icon(title)
-			hud_icon.Crop(25, 25, 32, 32)
-			Insert(normalized_title, hud_icon)
+		// Because there's no actual role <-> faction mapping, go through them all naively until we get an icon back
+		var/icon/role_icon
+		for(var/faction in GLOB.faction_datums)
+			role_icon = GLOB.faction_datums[faction].get_role_icon(title)
+			if(!isnull(role_icon))
+				// perhaps a bit naive to assume all overlays are in the top right 8x8?
+				role_icon.Crop(25, 25, 32, 32)
+				break
+
+		// Use the default icon for roles that we couldn't generate an icon for
+		if(isnull(role_icon))
+			role_icon = icon(default_icon)
+
+		Insert(normalized_title, role_icon)
+
 	return ..()

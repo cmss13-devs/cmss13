@@ -9,7 +9,7 @@
 	return
 
 // Construct a role HUD icon without basing it on dynamic state
-/datum/faction/uscm/proc/get_simple_icon(role)
+/datum/faction/proc/get_role_icon(role)
 	RETURN_TYPE(/icon)
 	return
 

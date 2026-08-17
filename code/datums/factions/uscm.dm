@@ -5,7 +5,6 @@
 
 	// Simple map from role name to icon, invariant to any dynamic state on mobs
 	var/list/simple_role_icon_map = list(
-		"default" = "grunt",
 		// Squad roles
 		JOB_SQUAD_LEADER = "leader",
 		JOB_SQUAD_TEAM_LEADER = "tl",
@@ -13,6 +12,7 @@
 		JOB_SQUAD_SMARTGUN = "gun",
 		JOB_SQUAD_ENGI = "engi",
 		JOB_SQUAD_MEDIC = "med",
+		JOB_SQUAD_MARINE = "grunt",
 		// Command
 		JOB_CO = "co",
 		JOB_XO = "xo",
@@ -44,6 +44,7 @@
 		JOB_POLICE = "mp",
 		// Medbay
 		JOB_CMO = "cmo",
+		JOB_DOCTOR = "doctor",
 		JOB_FIELD_DOCTOR = "field_doctor",
 		JOB_RESEARCHER = "researcher",
 		JOB_NURSE = "nurse",
@@ -195,19 +196,13 @@
 			fireteam_lead_overlay.color = squad_color
 			holder.overlays += fireteam_lead_overlay
 
-// Construct a role HUD icon without basing it on dynamic state
-/datum/faction/uscm/get_simple_icon(role)
+/datum/faction/uscm/get_role_icon(role)
 	RETURN_TYPE(/icon)
 
-	var/rank_icon_substate
 	if(!(role in simple_role_icon_map))
-		role = "default"
-	rank_icon_substate = simple_role_icon_map[role]
+		return null
 
-	if(rank_icon_substate)
-		var/icon/base_hud_layer = icon(base_icon_file, icon_state = "hudsquad")
-		base_hud_layer.Blend("#5A934A", ICON_MULTIPLY)
-		base_hud_layer.Blend(icon(base_icon_file, icon_state = "hudsquad_[rank_icon_substate]"), ICON_OVERLAY)
-		return base_hud_layer
-
-	return null
+	var/icon/base_hud_layer = icon(base_icon_file, icon_state = "hudsquad")
+	base_hud_layer.Blend("#5A934A", ICON_MULTIPLY)
+	base_hud_layer.Blend(icon(base_icon_file, icon_state = "hudsquad_[simple_role_icon_map[role]]"), ICON_OVERLAY)
+	return base_hud_layer

@@ -474,6 +474,76 @@
 /obj/structure/shuttle/part/dropship_omaha/landing_gear/upper_half
 	icon_state = "landing_gear_top"
 
+/obj/structure/shuttle/part/dropship_omaha/fuel_lines
+	icon = 'icons/turf/mohawk/mohawk_belly.dmi'
+	icon_state = "belly"
+	layer = FLY_LAYER
+	density = FALSE
+	opacity = FALSE
+	alpha = 190
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/obj/structure/shuttle/part/dropship_omaha/belly_deployer
+	icon = 'icons/obj/structures/machinery/mohawk/bits_bobs.dmi'
+	icon_state = "deployer"
+	density = FALSE
+	opacity = FALSE
+	invisibility = 101
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	var/obj/structure/shuttle/part/dropship_omaha/fuel_lines/lines
+
+/obj/structure/shuttle/part/dropship_omaha/belly_deployer/lateShuttleMove()
+	.=..()
+	var/turf/target_turf = locate(src.x-5, src.y, src.z)
+	var/turf/final_turf = SSmapping.get_turf_below(target_turf)
+	if(!lines)
+		lines = new /obj/structure/shuttle/part/dropship_omaha/fuel_lines(final_turf)
+	if(lines)
+		lines.Move(final_turf)
+
+/obj/structure/shuttle/part/dropship_omaha/landing_gear_hatch
+	icon = 'icons/obj/structures/machinery/mohawk/bits_bobs.dmi'
+	icon_state = "landing_gear_bottom"
+	layer = FLY_LAYER
+	density = FALSE
+	opacity = FALSE
+	alpha = 200
+
+/obj/structure/shuttle/part/dropship_omaha/landing_gear_hatch/piece_00
+	icon_state = "0,0"
+
+/obj/structure/shuttle/part/dropship_omaha/landing_gear_hatch/piece_01
+	icon_state = "0,1"
+
+/obj/structure/shuttle/part/dropship_omaha/landing_gear_hatch/piece_02
+	icon_state = "0,2"
+
+/obj/structure/shuttle/part/dropship_omaha/landing_gear_hatch/piece_03
+	icon_state = "0,3"
+
+/obj/structure/shuttle/part/dropship_omaha/landing_gear_hatch/piece_10
+	icon_state = "1,0"
+
+/obj/structure/shuttle/part/dropship_omaha/landing_gear_hatch/piece_11
+	icon_state = "1,1"
+
+/obj/structure/shuttle/part/dropship_omaha/landing_gear_hatch/piece_12
+	icon_state = "1,2"
+
+/obj/structure/shuttle/part/dropship_omaha/landing_gear_hatch/piece_13
+	icon_state = "1,3"
+
+/obj/structure/shuttle/part/dropship_omaha/landing_gear_hatch/piece_20
+	icon_state = "2,0"
+
+/obj/structure/shuttle/part/dropship_omaha/landing_gear_hatch/piece_21
+	icon_state = "2,1"
+
+/obj/structure/shuttle/part/dropship_omaha/landing_gear_hatch/piece_22
+	icon_state = "2,2"
+
+/obj/structure/shuttle/part/dropship_omaha/landing_gear_hatch/piece_23
+	icon_state = "2,3"
 
 // USCM Dropship Normandy
 

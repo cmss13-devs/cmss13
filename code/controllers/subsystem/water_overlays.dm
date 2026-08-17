@@ -2,8 +2,6 @@ SUBSYSTEM_DEF(water_overlays)
 	name = "Water Overlays"
 	init_order = SS_INIT_WATEROVERLAYS
 	flags = SS_NO_FIRE
-	var/stat = WATEROVERLAY_STATUS_STANDBY
-	var/start_time = 0
 	var/list/turfs_to_process = list()
 	var/list/texture_sizes = list(32, 48, 64, 88)
 	var/list/found_waters = list()
@@ -20,10 +18,10 @@ SUBSYSTEM_DEF(water_overlays)
 		"88" = list()
 	)
 	var/list/water_overlay_icon_paths = list(
-			"32" = 'icons/effects/water_overlay_effects/_32.dmi',   //humans, etc
-			"48" = 'icons/effects/water_overlay_effects/_48.dmi',   //facehugger, drone
-			"64" = 'icons/effects/water_overlay_effects/_64.dmi',	//most xenos
-			"88" = 'icons/effects/water_overlay_effects/_88.dmi',   //queen
+		"32" = 'icons/effects/water_overlay_effects/_32.dmi',   //humans, etc
+		"48" = 'icons/effects/water_overlay_effects/_48.dmi',   //facehugger, drone
+		"64" = 'icons/effects/water_overlay_effects/_64.dmi',	//most xenos
+		"88" = 'icons/effects/water_overlay_effects/_88.dmi',   //queen
 	)
 
 /datum/controller/subsystem/water_overlays/Initialize()
@@ -39,14 +37,15 @@ SUBSYSTEM_DEF(water_overlays)
 		for(var/obj/search_object in search_turf.contents)		//blocker/water objects can create water, we need to create overlays for those too
 			if(ispath(search_object.type, /obj/effect/blocker/water))
 				var/obj/effect/blocker/water/found_blocker = search_object
-				found_waters["[found_blocker.water_type][found_blocker.water_type][found_blocker.icon][found_blocker.icon_state][found_blocker.created_depth]"] = list(found_blocker.icon, found_blocker.icon_state, found_blocker.created_depth, found_blocker.water_type)
+				var/turf/water_blocker_turf = found_blocker.water_type
+				found_waters["[found_blocker.water_type][found_blocker.water_type][water_blocker_turf.icon][water_blocker_turf.icon_state][found_blocker.created_depth]"] = list(water_blocker_turf.icon, water_blocker_turf.icon_state, found_blocker.created_depth, found_blocker.water_type)
 		CHECK_TICK
-	generate_water_display_icons()	//nightmares should only have water in their base maps, since we only generate overlays for basemap water turfs
+	generate_water_display_icons()
+	found_waters = list()	//clear for nightmares to add their turfs, we'll generate some for those soon
+	RegisterSignal(SSnightmare, COMSIG_NIGHTMARES_STATUS_DONE, PROC_REF(after_nightmares_water))
 	return SS_INIT_SUCCESS
 
-/datum/controller/subsystem/water_overlays/proc/fix_water_neighbor_layers()
-	start_time = world.time
-	stat = WATEROVERLAY_STATUS_RUNNING
+/datum/controller/subsystem/water_overlays/proc/after_nightmares_water()
 	var/list/altered_turfs = list()
 	for(var/turf/current_turf in turfs_to_process)
 		if(current_turf in altered_turfs)
@@ -54,4 +53,5 @@ SUBSYSTEM_DEF(water_overlays)
 		altered_turfs |= current_turf.fix_water_clipping_layers(altered_turfs)
 	for(var/turf/current_turf in altered_turfs)
 		current_turf.fix_water_clipping_layers_final()
-	stat = WATEROVERLAY_STATUS_DONE
+	generate_water_display_icons() //part 2 -- handle nightmare water turfs
+	UnregisterSignal(SSnightmare, COMSIG_NIGHTMARES_STATUS_DONE)

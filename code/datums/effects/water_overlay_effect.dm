@@ -76,9 +76,10 @@
 		var/mob/living/carbon/affected_carbon = affected_atom
 		var/obj/structure/catwalk/catwalk = locate(/obj/structure/catwalk) in water_turf.contents		//maybe I should just make this a turf variable or something
 		var/obj/effect/blocker/water/water_blocker = locate(/obj/effect/blocker/water/) in water_turf.contents	// this too, searching turf contents every update seems expensive
+		var/blocker_dispersing = FALSE
 		if(water_blocker)
-			water_blocker = water_blocker.dispersing
-		if(!pixel_y_offset || (water_turf.covered && !water_blocker) || (catwalk && !water_blocker))
+			blocker_dispersing = water_blocker.dispersing
+		if(!pixel_y_offset || (water_turf.covered && !blocker_dispersing) || (catwalk && !blocker_dispersing))
 			affected_carbon.appearance_flags &= ~KEEP_TOGETHER
 			mob_icon_state_path = null
 			obj_icon_state_path = null

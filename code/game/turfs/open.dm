@@ -23,7 +23,7 @@
 	update_icon()
 
 /turf/open/update_icon()
-	overlays.Cut()
+	update_overlays()
 
 	add_cleanable_overlays()
 
@@ -94,6 +94,9 @@
 				edge_overlay.Blend(culling_mask, ICON_OVERLAY)
 				edge_overlay.SwapColor(rgb(255, 0, 255, 255), rgb(0, 0, 0, 0))
 				overlays += edge_overlay
+
+/turf/open/proc/update_overlays()
+	overlays.Cut()
 
 /turf/open/proc/scorch(heat_level)
 	// All scorched icons should be in the dmi that their unscorched bases are
@@ -173,10 +176,10 @@
 		if(depth < DEPTH_LAND)
 			RegisterSignal(src, COMSIG_TURF_ENTERED, PROC_REF(on_enter))
 			RegisterSignal(src, COMSIG_ATOM_HITBY, PROC_REF(on_hit))
-	update_icon()
+	update_overlays()
 
 /turf/open/proc/become_water(set_depth, set_type)
-	if(depth < DEPTH_LAND)	//already water
+	if(!covered && depth < DEPTH_LAND)	//already water
 		return
 	depth = set_depth
 	turf_flags = TURF_WATERLIKE
@@ -185,6 +188,9 @@
 	for(var/obj/structure/catwalk/catwalk in contents)
 		catwalk.layer = UNDER_WATER_TURF_LAYER
 		layer = UNDER_WATER_TURF_LAYER - 0.01
+	for(var/obj/found_object in contents)
+		if(found_object.layer == UNDERFLOOR_OBJ_LAYER)
+			found_object.layer = UNDER_WATER_TURF_LAYER + 0.005
 	update_icon()	//some turfs overlay themselves with a catwalk, we need to update the layer of that overlay
 	RegisterSignal(src, COMSIG_TURF_ENTERED, PROC_REF(on_enter))
 	RegisterSignal(src, COMSIG_ATOM_HITBY, PROC_REF(on_hit))
@@ -194,6 +200,10 @@
 	turf_flags &= ~	TURF_WATERLIKE
 	water_type = null
 	layer = initial(layer)
+	for(var/obj/found_object in contents)
+		if(found_object.layer == UNDER_WATER_TURF_LAYER + 0.005)
+			found_object.layer = UNDERFLOOR_OBJ_LAYER
+	update_icon()
 	UnregisterSignal(src, COMSIG_TURF_ENTERED, PROC_REF(on_enter))
 	UnregisterSignal(src, COMSIG_ATOM_HITBY, PROC_REF(on_hit))
 
@@ -793,11 +803,22 @@
 	..()
 	update_overlays()
 
-/turf/open/gm/river/proc/update_overlays()
-	overlays.Cut()
+/turf/open/gm/river/update_overlays()
+	. = ..()
 	if(covered)
 		name = covered_name
-		overlays += image("icon"=src.cover_icon,"icon_state"=cover_icon_state,"layer"=CATWALK_LAYER,"dir" = dir)
+		var/turf/check_turf = get_step(src, NORTH)
+		var/obj/effect/blocker/water/water_blocker = locate(/obj/effect/blocker/water) in contents
+		var/layer_to_use = CATWALK_LAYER
+		if(layer == UNDER_WATER_TURF_LAYER)
+			if(is_water(check_turf))
+				if(water_blocker && water_blocker.dispersing)
+					layer_to_use = UNDER_WATER_TURF_LAYER +0.01
+				else
+					layer_to_use = TURF_LAYER
+			else
+				layer_to_use = UNDER_WATER_TURF_LAYER +0.01
+		overlays += image("icon"=src.cover_icon,"icon_state"=cover_icon_state,"layer"= layer_to_use,"dir" = dir)
 
 /turf/open/gm/river/Entered(atom/movable/AM)
 	..()

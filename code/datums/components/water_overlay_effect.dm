@@ -30,7 +30,8 @@
 /datum/component/water_overlay_effect/proc/handle_affected_mob_move(parent_source, oldloc, direction, forced)
 	SIGNAL_HANDLER
 	var/turf/open/gm/moved_to_turf = get_turf(parent_source)
-	if(moved_to_turf.depth >= DEPTH_LAND || moved_to_turf.covered)
+	var/obj/effect/blocker/water/water_blocker = locate(/obj/effect/blocker/water/) in moved_to_turf.contents
+	if(moved_to_turf.depth >= DEPTH_LAND || (moved_to_turf.covered && !water_blocker.dispersing))
 		Destroy()
 		return
 	var/mob/M = parent_source

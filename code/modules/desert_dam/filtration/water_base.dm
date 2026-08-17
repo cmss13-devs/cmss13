@@ -3,13 +3,11 @@
 	density = FALSE
 	opacity = FALSE
 	unacidable = TRUE
-
 	alpha = 0
 	layer = UNDER_WATER_TURF_LAYER + 0.01
 	plane = FLOOR_PLANE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	flags_atom = NO_ZFALL
-
 	icon = 'icons/landmarks.dmi'
 	icon_state = "map_blocker"
 
@@ -19,7 +17,7 @@
 	var/disperse_group = 1
 	var/spread_delay = 0.5 SECONDS
 	var/list/water_sounds = list('sound/effects/slosh.ogg')
-	var/created_depth = DEPTH_COAST_INTERMEDIATE
+	var/created_depth = DEPTH_SHALLOW
 	var/water_type = /turf/open/gm/river/desert/tyrargo/deep
 
 /obj/effect/blocker/water/Initialize(mapload, ...)

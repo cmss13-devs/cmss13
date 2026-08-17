@@ -43,6 +43,9 @@
 /// from /datum/squad/proc/put_marine_in_squad
 #define COMSIG_SET_SQUAD "set_squad"
 
+/// from /datum/controller/subsystem/nightmare/proc/prepare_game()
+#define COMSIG_NIGHTMARES_STATUS_DONE "nightmare_status_done"
+
 //from /datum/nmtask/mapload/proc/initialize_boundary_contents()
 #define COMSIG_NIGHTMARE_TAINTED_BOUNDS "nightmare_tainted_bounds"
 //from /datum/nmnode/

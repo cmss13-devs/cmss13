@@ -160,8 +160,12 @@
 	if(checking_turf == null)
 		return
 	if(is_full_water(checking_turf) && layer != initial(layer))
-
 		visually_set_under_water_mobs(FALSE)
+
+	if(ispath(checking_turf.type, /turf/open/gm/river))
+		var/turf/open/gm/river/checking_river = checking_turf
+		if(checking_river.covered)
+			checking_river.update_overlays()
 
 /turf/proc/visually_set_under_water_mobs(setting)
 	if(setting)

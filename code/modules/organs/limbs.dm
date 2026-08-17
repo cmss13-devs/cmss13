@@ -73,6 +73,7 @@
 
 	var/destroyed = FALSE
 	var/status = LIMB_ORGANIC
+	var/surgery_status = null
 	var/processing = FALSE
 
 	/// skin color of the owner, used for limb appearance, set in [/obj/limb/proc/update_limb()]
@@ -1405,46 +1406,46 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 		. += wound_overlay
 
 
-/obj/limb/proc/get_surgery_overlays(mob/living/carbon/target, target_zone, datum/surgery/surgery)
-	var/obj/limb/affected_limb = target.get_limb(target_zone)
+/obj/limb/proc/get_surgery_overlays()
 	. = list()
 
 	if(owner.species && owner.species.name == "Yautja")
 		surgery_overlay.icon_state = null
+		return
 
-	if(status & INCISION_BLEEDING) //sets up the fleshy bits--these are bleeding
-		if(status & INCISION_WIDENED || INCISION_BONE_OPENED)
-			surgery_overlay.icon_state = "[affected_limb.name]_incision_wide_b"
+	if(surgery_status & INCISION_BLEEDING) //sets up the fleshy bits--these are bleeding
+		if(surgery_status & INCISION_WIDENED || INCISION_BONE_OPENED)
+			surgery_overlay.icon_state = "incision_wide_[name]_b"
 			surgery_overlay.color = owner?.species.blood_color
 			. += surgery_overlay
-		else if(!(status & INCISION_CLAMPED)) //just to make sure...
-			surgery_overlay.icon_state = "[affected_limb.name]_incision_b"
-			surgery_overlay.color = owner?.species.blood_color
-			. += surgery_overlay
-
-	else if(status & INCISION_CLAMPED) //no bleed here
-		if(status & INCISION_WIDENED || INCISION_BONE_OPENED)
-			surgery_overlay.icon_state = "[affected_limb.name]_incision_wide"
-			surgery_overlay.color = owner?.species.blood_color
-			. += surgery_overlay
-		else if(!(status & INCISION_BLEEDING)) //just to make sure...
-			surgery_overlay.icon_state = "[affected_limb.name]_incision"
+		else if(!(surgery_status & INCISION_CLAMPED)) //just to make sure...
+			surgery_overlay.icon_state = "incision_[name]_b"
 			surgery_overlay.color = owner?.species.blood_color
 			. += surgery_overlay
 
-	if(status & INCISION_WIDENED) //The incision is open; add bones now.
-		if(status & LIMB_BROKEN)
-			surgery_overlay.icon_state = "[affected_limb.name]_bone_broken"
+	else if(surgery_status & INCISION_CLAMPED) //no bleed here
+		if(surgery_status & INCISION_WIDENED || INCISION_BONE_OPENED)
+			surgery_overlay.icon_state = "incision_wide_[name]"
+			surgery_overlay.color = owner?.species.blood_color
+			. += surgery_overlay
+		else if(!(surgery_status & INCISION_BLEEDING)) //just to make sure...
+			surgery_overlay.icon_state = "incision_[name]"
+			surgery_overlay.color = owner?.species.blood_color
+			. += surgery_overlay
+
+	if(surgery_status & INCISION_WIDENED) //The incision is open; add bones now.
+		if(surgery_status & LIMB_BROKEN)
+			surgery_overlay.icon_state = "bone_broken_[name]"
 			. += surgery_overlay
 		else
-			surgery_overlay.icon_state = "[affected_limb.name]_bone"
+			surgery_overlay.icon_state = "bone_[name]"
 			. += surgery_overlay
-	else if(status & INCISION_BONE_OPENED) //adds open broken bones on top of widened incision
-		if(status & LIMB_BROKEN)
-			surgery_overlay.icon_state = "[affected_limb.name]_bone_open_broken"
+	else if(surgery_status & INCISION_BONE_OPENED) //adds open broken bones on top of widened incision
+		if(surgery_status & LIMB_BROKEN)
+			surgery_overlay.icon_state = "bone_open_broken_[name]"
 			. += surgery_overlay
 		else
-			surgery_overlay.icon_state = "[affected_limb.name]_bone_open"
+			surgery_overlay.icon_state = "bone_open_[name]"
 			. += surgery_overlay
 
 /*

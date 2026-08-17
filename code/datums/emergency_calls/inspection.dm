@@ -247,6 +247,8 @@
 		to_chat(mob, SPAN_ROLE_HEADER("You are a CMB Deputy!"))
 		arm_equipment(mob, /datum/equipment_preset/cmb/standard, TRUE, TRUE)
 
+	to_chat(mob, SPAN_ROLE_HEADER("You are not here to perform arrests independantly. You have no authority to do so unless granted by the Commanding Officer."))
+	to_chat(mob, SPAN_ROLE_HEADER("Work with the [MAIN_SHIP_NAME]'s Commanding Officer, and military police force."))
 	print_backstory(mob)
 
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
@@ -332,5 +334,7 @@
 		arm_equipment(mob, /datum/equipment_preset/cmb/standard, TRUE, TRUE)
 
 	print_backstory(mob)
+	to_chat(mob, SPAN_ROLE_HEADER("You are not here to perform arrests independantly. You have no authority to do so unless granted by the Commanding Officer."))
+	to_chat(mob, SPAN_ROLE_HEADER("Work with the [MAIN_SHIP_NAME]'s Commanding Officer, and military police force."))
 
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)

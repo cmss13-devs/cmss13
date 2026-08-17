@@ -578,7 +578,7 @@
 
 		// Use the default icon for roles that we couldn't generate an icon for
 		if(isnull(role_icon))
-			role_icon = icon(default_icon)
+			role_icon = default_icon
 
 		Insert(normalized_title, role_icon)
 	qdel(fake_human)

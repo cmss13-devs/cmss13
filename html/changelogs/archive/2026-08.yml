@@ -284,3 +284,124 @@
   - bugfix: Intel aSLs now get Command Comms and they properly transfer on swapping
       aSL.
   - bugfix: XO RTO bag price oversight
+2026-08-11:
+  MistChristmas:
+  - bugfix: Message about not being able to perform surgery due to bad conditions...
+      the turf your standing on. I.E Water/Coast/Dropship
+2026-08-12:
+  SpypigDev:
+  - bugfix: Autodoc pods and cryo pods now account for eschars and third degree burns
+2026-08-13:
+  Drathek dimdimich1996:
+  - balance: Fuelpumps now can take damage from xenos during hijack (including most
+      acid sources)
+  - balance: Fuelpumps cannot be repaired, but have a sizeable health pool - the health
+      of the pump is what matters for hijack now rather than area power
+  - bugfix: Fixed bullet ping override offsets being ignored namely for vehicles (and
+      now fuelpumps)
+  - bugfix: Xenos now get more hijack sfx
+  - bugfix: Fixed weird crusher charge logic for handling of anchored objects.
+  - imageadd: Several new overlays and a destroyed state for fuelpumps by dimdimich1996
+  - code_imp: Boiler acid shotgun now properly flagged as AMMO_XENO
+  - code_imp: Fire extinguishers now always call extinguish_acid on their affected
+      atoms
+  - code_imp: xeno handle_collision procs should now perform less redundant typechecks
+  Venuska1117:
+  - refactor: Changes Runner bone_spur code to use get_turf() instead of locate().
+2026-08-14:
+  Jone62:
+  - code_imp: Adds a preference to toggle the end round sound theme
+  MistChristmas:
+  - bugfix: Burn kits and ointment are usable again on areas like the dropship
+  Oceany:
+  - bugfix: Synth maintenance station in req, replaced with old sprite
+  Puckaboo2:
+  - rscadd: During certain surgery steps, the patient will receive an indication that
+      they 'feel better' after pain recalculation.
+  - rscadd: Surgery missteps or fails that cause significant harm to an awake patient,
+      such as initiating an amputation, internal bleeding, bone fractures, and organ
+      contamination, will now cause the patient to occasionally *pain regardless of
+      whether they have the appropriate painkillers or not.
+  - rscadd: An awake patient, regardless of whether oxycodone is in their system,
+      will scream (not burst scream) when the doctor tries to pull a larva out. Pain
+      relief does not relieve pressure, after all.
+  - rscadd: Surgery missteps or failures that cause harm to the person operating or
+      being operated on will occasionally make the victims cry out in pain.
+  - rscadd: Acid that gushes violently from surgery fails will get all over the place!
+  - rscadd: Bone chips will spawn under the doctor successfully completing the "Remove
+      Bone Chips" step on a patient.
+  - rscadd: Adds some flavor text if the small chance of a doctor breaking ribs or
+      skulls while opening them with a retractor that tells yourself and your patient
+      that sometimes this happens--it's nobody's fault.
+  - rscadd: Adds HIGHDANGER warnings to patients undergoing an amputation whilst awake
+      and encourages telling the doctor to stop if the step was a mistake.
+  - balance: Each organ repaired during organ repair surgery requires a surgical stack.
+  - balance: Healing a hematoma no longer cures disabilities; you must take out brain
+      chips to do so. Doing so gives you good boy points in flavor text form!
+  - balance: You will be punished for not being careful while cutting pseudoroots
+      and your patient will take organ damage from it. Shame on you for using bad
+      tools or rushing.
+  - code_imp: Adds more captivating and descriptive flavor text during certain surgeries,
+      especially if the patient is awake and not under that numb juice.
+  - code_imp: Changes some surgery step noises to make more sense.
+  - bugfix: Surgery missteps or failures that cause significant harm to a patient,
+      such as contamination, internal bleeding, or bone fractures, will now be evident
+      in the surgery step text. Not to mention, the patient will scream at you.
+  - bugfix: Patients must be anesthetized with oxycodone for them not to feel their
+      limb being chopped off for whatever reason.
+  - bugfix: Nonbinary pronouns can now appear in surgical steps instead of defaulting
+      to 'his'.
+  - bugfix: Brain surgery overlays are no longer misaligned from the skull.
+  - spellcheck: Fixed some spelling and grammar errors.
+  - imagetweak: Polished the closed chest sprite to add the sternum and clavicles;
+      polished the open chest sprite and added some wet organs in there.
+  - imagetweak: Adds the human spriting template to the damage overlay icon as a reference.
+  - imagetweak: Resprites and realigns brain surgery overlays.
+  - qol: Adds sounds to surgery procedures that did not have any.
+  - soundadd: Adds a hemostat 'snipping' sound for the hemostat initiation step, adds
+      surgical line sound effects for initiation and scissor snip for completing the
+      step, and adds 3 different types of circular saw fail noises depending on what
+      the circular saw hits.
+  - soundtweak: hemostat1.ogg swapped and renamed to hemostat2.ogg to make way for
+      the new hemostat1.ogg
+  - soundtweak: Some surgical steps had their sounds replaced.
+  - soundtweak: Surgical sounds now don't have any 'lag' before playing.
+  Red-byte3D:
+  - bugfix: Ghosts now properly get moved to new xenos as they evolve / devo
+  cuberound:
+  - rscadd: extra tacmap buttons, allows moving up and down z level and changing from
+      ship to map on hud button map
+  cuberound, datimesmog:
+  - imageadd: ' new HUD element to track Neurotoxin stacks'
+  - imageadd: new HUD element for medhud to track Neurotoxin
+  labeo0:
+  - bugfix: Guaranteed slot T2 xenos cannot transmute over the T2 slot capacity
+  - bugfix: Xenos don't lose transmute by selecting their current caste.
+2026-08-15:
+  Antlers:
+  - spellcheck: The SEA's drill hat now refers to them as drill instructors rather
+      than drill sergeants.
+  Venuska1117:
+  - balance: Praetorian acid grenade got increased throwing speed and launch_type
+      changed to "HIGH_LAUNCH", allowing it to throw over more obstacles such as railings
+      or closets, but in exchange "explosion" time is increased from 1s to 1.25s
+  - bugfix: Fixed cades that got unwired not getting back their pass_flags.
+  Zenith, Aleksh. dimdimich1996:
+  - rscadd: adds various new thrall gear & expands their options.
+  - rscadd: adds the missing snow loadout gear, boots, rain-cover, netting.
+  - imageadd: adds arc icon for tech-tree.
+  - imagetweak: palette correction for prey_items.dmi
+2026-08-16:
+  Red-byte3D:
+  - imageadd: New ghillie sprite
+2026-08-17:
+  AnCopper:
+  - bugfix: The New Varadero LACN Commander is once again a Commander instead of a
+      LtCol
+  Namen-n:
+  - mapadd: added vehicle restrictions for caves on the LV522 Chances Claim map.
+  Unknownity:
+  - balance: Reinforced Walls now take 8 plasteel sheets to construct instead of 5.
+  - rscadd: Added one marine tip about being able to reinforce reagent and fuel tanks
+      with plasteel.
+  - refactor: Nuked some single letter vars in the girders file.

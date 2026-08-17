@@ -462,7 +462,7 @@
 		return
 
 	if(behavior.base_fury < retrieve_cost)
-		to_chat(valkyrie, SPAN_XENODANGER("Мы не достаточно разозлены, чтобы сделать это!"))
+		to_chat(valkyrie, SPAN_XENODANGER("We don't feel angry enough to do this!"))
 		return
 
 	XENO_ACTION_CHECK(valkyrie)

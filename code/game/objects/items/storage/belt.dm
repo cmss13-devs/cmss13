@@ -1862,19 +1862,19 @@
 			"icon_x" = 5,
 			"icon_y" = -2))
 	can_hold = list(
-		//sidearms
+		//sidearms,
 		/obj/item/weapon/gun/flare,
 		/obj/item/weapon/gun/pistol,
 		/obj/item/weapon/gun/revolver,
 		/obj/item/weapon/gun/energy/taser,
-		//sidearm ammo
+		//sidearm ammo,
 		/obj/item/ammo_magazine/pistol,
 		/obj/item/ammo_magazine/revolver,
-		//longarm ammo
+		//longarm ammo,
 		/obj/item/ammo_magazine/rifle,
 		/obj/item/ammo_magazine/smg,
 		/obj/item/ammo_magazine/sniper,
-		//Handfuls won't count for longarm/sidearm limit, just occupy slot.
+		//Handfuls,
 		/obj/item/ammo_magazine/handful,
 	)
 	flags_atom = FPRINT // has gamemode skin

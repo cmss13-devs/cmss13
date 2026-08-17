@@ -1403,7 +1403,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	var/burnstate = copytext(damage_state, 2)
 	if(burnstate != "0")
 		burn_overlay.icon_state = "burn_[icon_name]_[burnstate]"
-		. += wound_overlay
+		. += burn_overlay
 
 
 /obj/limb/proc/get_surgery_overlays()
@@ -1441,7 +1441,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 			surgery_overlay.icon_state = "bone_broken_[name]_open"
 			. += surgery_overlay
 		else
-			surgery_overlay.icon_state = "bone_[name]_"
+			surgery_overlay.icon_state = "bone_[name]_open"
 			. += surgery_overlay
 /*
 			LIMB TYPES

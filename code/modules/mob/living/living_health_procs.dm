@@ -611,7 +611,9 @@
 	active_surgeries = DEFENSE_ZONES_LIVING
 	initialize_incision_depths()
 	remove_surgery_flags()
-	remove_surgery_overlays()
+	if(ishuman(src))
+		var/mob/living/carbon/human/person = src
+		person.remove_overlay(SURGERY_LAYER)
 
 	// remove the character from the list of the dead
 	if(stat == DEAD)
@@ -686,10 +688,4 @@
 	if(ishuman(src))
 		var/mob/living/carbon/human/person = src
 		for(var/obj/limb/part as anything in person.limbs)
-			part.limb_surgery_status -= INCISION_MADE
-			part.limb_surgery_status -= INCISION_WIDENED
-			part.limb_surgery_status -= INCISION_BLEEDING
-			part.limb_surgery_status -= INCISION_CLAMPED
-			part.limb_surgery_status -= INCISION_BONE_OPENED
-			part.limb_surgery_status -= INCISION_BONE_CLOSED
-			part.limb_surgery_status -= INCISION_INT_BLEEDING
+			part.limb_surgery_status = NO_FLAGS

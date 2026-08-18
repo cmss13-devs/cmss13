@@ -54,10 +54,73 @@
 /area/northpoint/landing_zone_2/ceiling
 	ceiling = CEILING_METAL
 
+//Communications
+
+/area/northpoint/indoors/comms
+	name = "Comms Area"
+	icon_state = "genetics"
+	minimap_color = MINIMAP_AREA_COMMS
+
+/area/northpoint/indoors/comms/com_alpha_1
+	name = "Northpoint Hospital - Colony Primary Communications Hub"
+
+/area/northpoint/indoors/comms/com_alpha_2
+	name = "Northpoint Hospital - Emergency Backup Communications"
+	ceiling = CEILING_NONE
+	soundscape_playlist = SCAPE_PL_LV522_OUTDOORS
+
+/area/northpoint/indoors/comms/com_bravo_1
+	name = "Northpoint Hospital - Internal Communications Array"
+
+/area/northpoint/indoors/comms/com_bravo_2
+	name = "Northpoint Hospital - Military Field Communications Network"
+	ceiling = CEILING_NONE
+	soundscape_playlist = SCAPE_PL_LV522_OUTDOORS
 
 //Interior Areas
 
 // --
+
+/area/northpoint/indoors/power
+	name = "Northpoint Hospital - Power Generator Substation"
+	icon_state = "engine"
+	minimap_color = MINIMAP_AREA_COLONY_ENGINEERING
+
+// --
+
+/area/northpoint/indoors/emer_dep
+	name = "Northpoint Hospital - Emergency Department"
+	icon_state = "medbay"
+	minimap_color = MINIMAP_AREA_MEDBAY
+
+// --
+
+/area/northpoint/indoors/main
+	name = "Northpoint Hospital - Main Hospital"
+	icon_state = "medbay2"
+	minimap_color = MINIMAP_AREA_COLONY_HOSPITAL
+
+// --
+
+/area/northpoint/indoors/res
+	name = "Northpoint Hospital - Medical Research Clinic"
+	icon_state = "medbay3"
+	minimap_color = MINIMAP_AREA_COLONY_RESANDCOM
+
+// --
+
+/area/northpoint/indoors/off
+	name = "Northpoint Hospital - Office"
+	icon_state = "captain"
+	minimap_color = MINIMAP_AREA_COLONY_SPACE_PORT
+
+// --
+
+/area/northpoint/indoors/sec_prep
+	name = "Northpoint Hospital - Security & Catering"
+	icon_state = "security"
+	minimap_color = MINIMAP_AREA_COLONY_MARSHALLS
+
 
 //Exterior Areas
 
@@ -67,7 +130,7 @@
 	name = "Street Areas"
 	icon_state = "iso1"
 	ceiling = CEILING_NO_PROTECTION
-	minimap_color = MINIMAP_AREA_COLONY_STREETS
+	minimap_color = MINIMAP_MARS_DIRT
 
 /area/northpoint/outdoors/streets/lz1
 	name = "Northpoint Hospital - LZ1 Streets"
@@ -80,11 +143,18 @@
 
 // --
 
+/area/northpoint/outdoors/park
+	name = "Northpoint Hospital - MacArthur Park"
+	icon_state = "iso1"
+	minimap_color = MINIMAP_AREA_CELL_LOW
+
+// --
+
 /area/northpoint/outdoors/hospital_exterior
 	name = "Exterior Hospital Areas"
 	icon_state = "valley"
 	ceiling = CEILING_NO_PROTECTION
-	minimap_color = MINIMAP_AREA_COLONY_RESANDCOM
+	minimap_color = MINIMAP_AREA_COLONY_STREETS
 
 /area/northpoint/outdoors/hospital_exterior/west
 	name = "Northpoint Hospital - West Hospital Grounds"
@@ -108,7 +178,7 @@
 	icon_state = "cave"
 	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
 	ceiling_muffle = FALSE
-	minimap_color = MINIMAP_AREA_CELL_HIGH
+	minimap_color = MINIMAP_AREA_COLONY_STREETS
 	unoviable_timer = FALSE
 
 /area/northpoint/outdoors/urban_cave/south_east

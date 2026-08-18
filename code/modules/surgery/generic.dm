@@ -93,6 +93,9 @@
 			surgery.status += 3 // synth skin doesn't cause bleeders
 		surgery.affected_limb.limb_surgery_status |= (INCISION_MADE | INCISION_CLAMPED)
 
+	var/datum/wound/internal_bleeding/int_bleeding
+	if(surgery.affected_limb.bleeding_effects_list & int_bleeding == TRUE)
+		surgery.affected_limb.limb_surgery_status |= INCISION_INT_BLEEDING
 	target.update_surgery_overlays()
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SHALLOW //Descriptionwise this is done by the retractor, but putting it here means people can examine to see if an unfinished surgery has been done.
 	user.add_blood(target.get_blood_color(), BLOOD_HANDS)
@@ -180,7 +183,7 @@
 	target.custom_pain("The pain in your [surgery.affected_limb.display_name] is maddening!", 1)
 	log_interact(user, target, "[key_name(user)] began clamping bleeders in [key_name(target)]'s [surgery.affected_limb.display_name], possibly beginning [surgery].")
 
-/datum/surgery_step/clamp_bleeders_step/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/clamp_bleeders_step/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(tool_type in ligation_tools)
 		user.affected_message(target,
 			SPAN_NOTICE("You finish ligating bleeders in [target]'s [surgery.affected_limb.display_name], stopping the incision's bleeding."),
@@ -192,6 +195,9 @@
 			SPAN_NOTICE("[user] clamps bleeders in your [parse_zone(target_zone)]."),
 			SPAN_NOTICE("[user] clamps bleeders in [target]'s [parse_zone(target_zone)]."))
 
+	surgery.affected_limb.limb_surgery_status |= INCISION_CLAMPED
+	surgery.affected_limb.limb_surgery_status &= ~INCISION_BLEEDING
+	target.update_surgery_overlays()
 	log_interact(user, target, "[key_name(user)] clamped bleeders in [key_name(target)]'s [surgery.affected_limb.display_name], possibly ending [surgery].")
 
 	var/surface_modifier = target.buckled?.surgery_duration_multiplier
@@ -200,6 +206,7 @@
 		for(var/obj/surface in get_turf(target))
 			if(surface_modifier > surface.surgery_duration_multiplier)
 				surface_modifier = surface.surgery_duration_multiplier
+
 
 	if(surface_modifier == SURGERY_SURFACE_MULT_IDEAL)
 		surgery.affected_limb.remove_all_bleeding(TRUE, FALSE)
@@ -211,7 +218,7 @@
 		to_chat(user, SPAN_WARNING("Stopping blood loss is less effective in these conditions."))
 
 
-/datum/surgery_step/clamp_bleeders_step/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/clamp_bleeders_step/failure(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_WARNING("Your hand slips and tears several blood vessels in [target]'s [surgery.affected_limb.display_name], causing internal bleeding! Blood gushes everywhere!"),
 		SPAN_WARNING("[user]'s hand slips and tears several blood vessels in your [surgery.affected_limb.display_name], causing internal bleeding! Blood gushes everywhere!"),
@@ -229,6 +236,8 @@
 	surgery.affected_limb.add_bleeding(int_bleeding, TRUE)
 	surgery.affected_limb.wounds += int_bleeding
 	target.apply_damage(4, BRUTE, target_zone)
+	surgery.affected_limb.limb_surgery_status |= INCISION_INT_BLEEDING
+	target.update_surgery_overlays()
 	log_interact(user, target, "[key_name(user)] failed to clamp bleeders in [key_name(target)]'s [surgery.affected_limb.display_name], possibly ending [surgery].")
 	return FALSE
 
@@ -271,7 +280,7 @@
 	target.custom_pain("It feels like the skin on your [surgery.affected_limb.display_name] is on fire as it is being pulled apart!", 1)
 	log_interact(user, target, "[key_name(user)] began retracting skin in [key_name(target)]'s [surgery.affected_limb.display_name].")
 
-/datum/surgery_step/retract_skin/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/retract_skin/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	var/h_his = "their" //[tool] doesn't have a gender.
 	switch(target.gender)
 		if(MALE)
@@ -305,9 +314,12 @@
 				SPAN_NOTICE("[user] holds the incision on your [surgery.affected_limb.display_name] open with [tool]."),
 				SPAN_NOTICE("[user] holds the incision on [target]'s [surgery.affected_limb.display_name] open with [tool]."))
 
-	log_interact(user, target, "[key_name(user)] retracted skin in [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")
+	surgery.affected_limb.limb_surgery_status |= (INCISION_WIDENED | INCISION_BONE_CLOSED)
+	surgery.affected_limb.limb_surgery_status &= ~INCISION_MADE
+	target.update_surgery_overlays()
 
-/datum/surgery_step/retract_skin/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	log_interact(user, target, "[key_name(user)] retracted skin in [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")
+/datum/surgery_step/retract_skin/failure(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	var/h_his = "their" //[tool] doesn't have a gender.
 	switch(target.gender)
 		if(MALE)
@@ -348,6 +360,8 @@
 		if(target.pain.reduction_pain < surgery.pain_reduction_required) //if patient is not under the proper anesthesia
 			target.emote("pain")
 
+	surgery.affected_limb.limb_surgery_status |= (INCISION_WIDENED | INCISION_BONE_CLOSED)
+	target.update_surgery_overlays()
 	target.apply_damage(15, BRUTE, target_zone)
 	log_interact(user, target, "[key_name(user)] violently retracted skin in [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")
 	return TRUE //Failing to finish this step doesn't fail it, it just means you do it a lot more violently.

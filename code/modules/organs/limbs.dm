@@ -60,7 +60,9 @@
 	var/has_stump_icon = FALSE
 	var/image/wound_overlay //Used to save time redefining it every wound update. Doesn't remember anything but the most recently used icon state.
 	var/image/burn_overlay //Ditto but for burns.
-	var/image/surgery_overlay
+	var/image/surgery_flesh_overlay
+	var/image/surgery_bone_overlay
+	var/image/surgery_bleed_overlay
 
 	var/splint_icon_amount = 1
 	var/bandage_icon_amount = 1
@@ -105,10 +107,18 @@
 		owner = mob_owner
 
 	if(owner && isyautja(owner)) //Who made these predator sprites? The heads are attached to the shoulders and the torso has no back or butt from the side. No surgery overlays for preds until someone fixes this--and it won't be me. - Puckaboo2
-		surgery_overlay = null
+		surgery_flesh_overlay = null
+		surgery_bone_overlay = null
+		surgery_bleed_overlay = null
 	else
-		surgery_overlay = image('icons/mob/humans/dam_human.dmi', "surgery_0", -SURGERY_LAYER)
-		surgery_overlay.color = owner?.species.blood_color //because you can amputate synths, ig - Puckaboo2
+		surgery_flesh_overlay = image('icons/mob/humans/dam_human.dmi', "surgery_flesh_0", -SURGERY_LAYER)
+		surgery_flesh_overlay.color = owner?.species.blood_color
+
+		surgery_bone_overlay = image('icons/mob/humans/dam_human.dmi', "surgery_bone_0", -SURGERY_LAYER)
+
+		surgery_bleed_overlay = image('icons/mob/humans/dam_human.dmi', "surgery_bone_0", -SURGERY_LAYER)
+		surgery_bleed_overlay.color = owner?.species.blood_color
+
 
 	wound_overlay = image('icons/mob/humans/dam_human.dmi', "grayscale_0", -DAMAGE_LAYER)
 	wound_overlay.color = owner?.species.blood_color
@@ -1411,38 +1421,37 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 
 	if(limb_surgery_status & INCISION_MADE) //sets up the initial incision sprite
 		if(limb_surgery_status & INCISION_BLEEDING)
-			surgery_overlay.icon_state = "incision_[name]_bleeding"
-			surgery_overlay.color = owner?.species.blood_color
-			. += surgery_overlay
+			surgery_flesh_overlay.icon_state = "incision_[name]_bleeding"
+			surgery_flesh_overlay.color = owner?.species.blood_color
+			. += surgery_flesh_overlay
 		else
-			surgery_overlay.icon_state = "incision_[name]"
-			surgery_overlay.color = owner?.species.blood_color
-			. += surgery_overlay
+			surgery_flesh_overlay.icon_state = "incision_[name]"
+			surgery_flesh_overlay.color = owner?.species.blood_color
+			. += surgery_flesh_overlay
 
 	if(limb_surgery_status & INCISION_WIDENED) //adds the widened incision
 		if(limb_surgery_status & INCISION_BLEEDING)
-			surgery_overlay.icon_state = "incision_wide_[name]_bleeding"
-			surgery_overlay.color = owner?.species.blood_color
-			. += surgery_overlay
-		else
-			surgery_overlay.icon_state = "incision_wide_[name]"
-			surgery_overlay.color = owner?.species.blood_color
-			. += surgery_overlay
+			surgery_flesh_overlay.icon_state = "incision_wide_[name]_bleeding"
+			surgery_flesh_overlay.color = owner?.species.blood_color
+			. += surgery_flesh_overlay
+		else if(limb_surgery_status & INCISION_CLAMPED)
+			surgery_flesh_overlay.icon_state = "incision_wide_[name]"
+			surgery_flesh_overlay.color = owner?.species.blood_color
+			. += surgery_flesh_overlay
 
 	if(limb_surgery_status & INCISION_BONE_CLOSED) //adds bones
 		if(limb_surgery_status & LIMB_BROKEN)
-			surgery_overlay.icon_state = "bone_broken_[name]"
-			. += surgery_overlay
+			surgery_bone_overlay.icon_state = "bone_[name]_broken"
+			. += surgery_bone_overlay
 		else
-			surgery_overlay.icon_state = "bone_[name]"
-			. += surgery_overlay
-	else if (limb_surgery_status & INCISION_BONE_OPENED)
+			surgery_bone_overlay.icon_state = "bone_[name]"
+	else if(limb_surgery_status & INCISION_BONE_OPENED)
 		if(limb_surgery_status & LIMB_BROKEN)
-			surgery_overlay.icon_state = "bone_broken_[name]_open"
-			. += surgery_overlay
+			surgery_bone_overlay.icon_state = "bone_open_[name]_broken"
+			. += surgery_bone_overlay
 		else
-			surgery_overlay.icon_state = "bone_[name]_open"
-			. += surgery_overlay
+			surgery_bone_overlay.icon_state += "bone_open_[name]"
+			. += surgery_bone_overlay
 /*
 			LIMB TYPES
 */

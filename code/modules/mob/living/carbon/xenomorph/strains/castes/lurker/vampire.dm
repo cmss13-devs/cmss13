@@ -21,8 +21,8 @@
 	lurker.plasmapool_modifier = 0
 	lurker.health_modifier -= XENO_HEALTH_MOD_MED
 	lurker.speed_modifier += XENO_SPEED_FASTMOD_TIER_1
-	lurker.armor_modifier += XENO_ARMOR_MOD_LARGE
-	lurker.damage_modifier -= XENO_DAMAGE_MOD_VERY_SMALL
+	lurker.armor_modifier += XENO_ARMOR_MOD_MED
+	lurker.damage_modifier -= XENO_DAMAGE_MOD_SMALL
 	lurker.attack_speed_modifier -= 2
 	lurker.received_phero_caps["recovery"] = 1.5 //Prevents benefits from recovery pheromones entirely.
 	lurker.healer_DNH = TRUE //Prevents healing from healer-strain drones.
@@ -32,6 +32,35 @@
 	lurker.execute_hud = TRUE
 
 	lurker.recalculate_everything()
+
+// Mutator delegate for Vampire Lurker
+/datum/behavior_delegate/vampire
+	name = "Vampire Lurker Behavior Delegate"
+
+
+	// Bloodlust Config
+	var/max_bloodlust = 9 //separated in 3 stages, 3 per stage, increased permanently up to 2 stages for every 2 hidebites
+	var/bloodlust_decay_time = 30 // How many deciseconds between slashes until we start to decay bloodlust
+	var/attack_delay_buff_per_stage = 0.4
+	var/armor_buff_per_stage = 1.5
+	var/movement_speed_buff_per_stage = 0.05
+
+	// Eviscerate config
+	var/bloodlust_lock_duration = 5 SECONDS   // 5 seconds of max bloodlust
+	var/bloodlust_cooldown_duration = 10 SECONDS  // 10 seconds of no bloodlust
+
+	// State for tracking bloodlust
+	var/bloodlust = 0
+	var/minbloodlust = 0 //stage set by acquiring headbite kills
+	var/last_slash_time = 0
+
+	// Eviscerate state
+	var/bloodlust_lock_start_time = 0
+	var/bloodlust_cooldown_start_time = 0
+
+	// State
+	var/next_slash_buffed = FALSE
+	var/slash_slow_duration = 2	//measured in life ticks
 
 /datum/action/xeno_action/activable/pounce/rush/additional_effects(mob/living/living_target) //pounce effects
 	var/mob/living/carbon/target = living_target
@@ -56,7 +85,7 @@
 		return
 
 	xeno.visible_message(SPAN_DANGER("[xeno] drags its claws in a wide area in front of it!"),
-	SPAN_XENOWARNING("We unleash a barrage of slashes!"))
+	SPAN_XENOWARNING("We unleash a barbloodlust of slashes!"))
 	playsound(xeno, 'sound/effects/alien_tail_swipe2.ogg', 30)
 	apply_cooldown()
 
@@ -109,7 +138,7 @@
 			playsound(get_turf(target), 'sound/weapons/alien_claw_flesh4.ogg', 30, TRUE)
 			if(!xeno.on_fire)
 				xeno.flick_heal_overlay(1 SECONDS, "#00B800")
-				xeno.gain_health(60)
+				xeno.gain_health(60) //function of stage/bloodlust
 			xeno.animation_attack_on(target)
 
 	xeno.emote("roar")
@@ -155,6 +184,7 @@
 			if(current_structure.density && !current_structure.throwpass)
 				to_chat(xeno, SPAN_WARNING("There's something blocking us from striking!"))
 				return
+				
 	// find a target in the target turf
 	if(!iscarbon(targeted_atom) || hit_target.stat == DEAD)
 		for(var/mob/living/carbon/carbonara in get_turf(targeted_atom))
@@ -171,8 +201,11 @@
 			to_chat(xeno, SPAN_XENOHIGHDANGER("We attack [hit_target], with our tail, piercing their body!"))
 			playsound(hit_target,'sound/weapons/alien_tail_attack.ogg', 50, TRUE)
 		else
-			xeno.visible_message(SPAN_XENOWARNING("\The [xeno] swipes their tail through the air!"), SPAN_XENOWARNING("We swipe our tail through the air!"))
-		apply_cooldown()
+			to_chat(xeno, SPAN_XENODANGER("We attack [hit_target], slashing them with our tail!"))
+	else
+		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] swipes their tail through the air!"), SPAN_XENOWARNING("We swipe our tail through the air!"))
+		apply_cooldown(cooldown_modifier = 0)
+		playsound(xeno, 'sound/effects/alien_tail_swipe1.ogg', 50, TRUE)
 		return
 
 	if(!step(hit_target, direction))
@@ -181,9 +214,9 @@
 		isxeno(hit_target) ? SPAN_XENODANGER("We slam into an obstacle!") : SPAN_HIGHDANGER("You slam into an obstacle!"), null, 4, CHAT_TYPE_TAKING_HIT)
 		hit_target.apply_damage(MELEE_FORCE_TIER_2)
 		if(hit_target.mob_size < MOB_SIZE_BIG)
-			hit_target.KnockDown(0.5)
+			hit_target.KnockDown(1.5) //significant reward for capitalizing on an environmental attack
 		else
-			hit_target.Slow(1)
+			hit_target.Slow(1.5)
 	/// To reset the direction if they haven't moved since then in below callback.
 	var/last_dir = xeno.dir
 
@@ -194,6 +227,8 @@
 	var/new_dir = xeno.dir
 	addtimer(CALLBACK(src, PROC_REF(reset_direction), xeno, last_dir, new_dir), 0.5 SECONDS)
 
+	hit_target.apply_armoured_damage(get_xeno_damage_slash(hit_target, xeno.caste.melee_damage_upper), ARMOR_MELEE, BRUTE, "chest")
+	hit_target.Slow(1)
 
 	for(var/mob/living/carbon/target in targets)
 		target.apply_armoured_damage(get_xeno_damage_slash(hit_target, xeno.caste.melee_damage_upper), ARMOR_MELEE, BRUTE, "chest")
@@ -274,3 +309,87 @@
 	apply_cooldown()
 	xeno.armor_deflection_buff -= 20 //final check to make sure the temporary deflection is gone
 	return ..()
+
+
+/datum/behavior_delegate/vampire/melee_attack_additional_effects_self()
+	..()
+
+	if(bloodlust != max_bloodlust && !bloodlust_cooldown_start_time)
+		bloodlust = bloodlust + 1
+		bound_xeno.armor_modifier += armor_buff_per_stage
+		bound_xeno.attack_speed_modifier -= attack_delay_buff_per_stage
+		bound_xeno.speed_modifier -= movement_speed_buff_per_stage
+		bound_xeno.recalculate_armor()
+		bound_xeno.recalculate_speed()
+		last_slash_time = world.time
+
+		if(bloodlust == max_bloodlust)
+			bound_xeno.add_filter("berserker_rage", 1, list("type" = "outline", "color" = "#000000ff", "size" = 1))
+			bloodlust_lock()
+			to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We feel a euphoric rush as we reach max bloodlust! We are LOCKED at max bloodlust!"))
+
+/datum/behavior_delegate/vampire/append_to_stat()
+	. = list()
+	. += "bloodlust: [bloodlust]/[max_bloodlust]"
+
+/datum/behavior_delegate/vampire/on_life()
+	// Compute our current bloodlust (demerit if necessary)
+	if(((last_slash_time + bloodlust_decay_time) < world.time) && !(bloodlust <= 0))
+		decrement_bloodlust()
+
+// Handles internal state from decrementing bloodlust
+/datum/behavior_delegate/vampire/proc/decrement_bloodlust(amount = 1)
+	if(bloodlust_lock_start_time)
+		return
+	var/real_amount = amount
+	if(amount > bloodlust)
+		real_amount = bloodlust
+
+	bloodlust -= real_amount
+	bound_xeno.armor_modifier -= armor_buff_per_bloodlust*real_amount
+	bound_xeno.attack_speed_modifier += attack_delay_buff_per_bloodlust*real_amount
+	bound_xeno.speed_modifier += movement_speed_buff_per_bloodlust*real_amount
+	bound_xeno.recalculate_armor()
+	bound_xeno.recalculate_speed()
+	return
+
+/datum/behavior_delegate/vampire/proc/bloodlust_lock()
+	bloodlust = max_bloodlust
+	bloodlust_lock_start_time = world.time
+	var/color = "#00000035"
+	bound_xeno.add_filter("empower_bloodlust", 1, list("type" = "outline", "color" = color, "size" = 3))
+	addtimer(CALLBACK(src, PROC_REF(bloodlust_lock_weaken)), bloodlust_lock_duration / 2)
+
+/datum/behavior_delegate/vampire/proc/bloodlust_lock_weaken()
+	bound_xeno.remove_filter("empower_bloodlust")
+	var/color = "#00000027"
+	bound_xeno.add_filter("empower_bloodlust", 1, list("type" = "outline", "color" = color, "size" = 3))
+	addtimer(CALLBACK(src, PROC_REF(bloodlust_lock_callback)), bloodlust_cooldown_duration / 2)
+
+
+/datum/behavior_delegate/vampire/proc/bloodlust_lock_callback()
+	bound_xeno.remove_filter("empower_bloodlust")
+	bloodlust_lock_start_time = 0
+	bloodlust_cooldown_start_time = world.time
+	decrement_bloodlust(bloodlust)
+	bound_xeno.remove_filter("berserker_bloodlust")
+	to_chat(bound_xeno, SPAN_XENOWARNING("Our adrenal glands spasm. We cannot gain any bloodlust for [bloodlust_cooldown_duration / 10] seconds."))
+	addtimer(CALLBACK(src, PROC_REF(bloodlust_cooldown_callback)), bloodlust_cooldown_duration)
+	bound_xeno.add_filter("berserker_lockdown", 1, list("type" = "outline", "color" = "#fcfcfcff", "size" = 1))
+
+/datum/behavior_delegate/vampire/proc/bloodlust_cooldown_callback()
+	bound_xeno.remove_filter("berserker_lockdown")
+	bloodlust_cooldown_start_time = 0
+	return
+
+/datum/behavior_delegate/vampire/melee_attack_modify_damage(original_damage, mob/living/carbon/target_carbon)
+	if(!isxeno_human(target_carbon))
+		return original_damage
+
+	if(next_slash_buffed)
+		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We significantly strengthen our attack, slowing [target_carbon]!"))
+		to_chat(target_carbon, SPAN_XENOHIGHDANGER("You feel a sharp pain as [bound_xeno] slashes you, slowing you down!"))
+		target_carbon.apply_effect(get_xeno_stun_duration(target_carbon, slash_slow_duration), SLOW)
+		next_slash_buffed = FALSE
+
+	return original_damage

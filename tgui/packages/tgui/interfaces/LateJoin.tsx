@@ -1,4 +1,6 @@
+import { useEffect, useState } from 'react';
 import { classes } from 'common/react';
+import { storage } from 'common/storage';
 import { type ComponentProps } from 'react';
 import { useBackend } from 'tgui/backend';
 import {
@@ -24,6 +26,7 @@ type RoleInformation = {
 type LateJoinData = {
   HijackInitiated?: boolean;
   Categories: Object;
+  UPPEnabled: boolean;
 };
 
 // Specific ordering for role categories
@@ -42,8 +45,16 @@ const CategoryOrder = [
 export const LateJoin = (props, context) => {
   const { act, data } = useBackend<LateJoinData>();
 
+  const [themeDisabled, setThemeDisabled] = useState<boolean | undefined>();
+
+  useEffect(() => {
+    storage.get('lobby-theme-disabled').then((val) => setThemeDisabled(!!val));
+  }, []);
+
+
+  const theme = themeDisabled ? 'weyland_yutani' : (data.UPPEnabled ? 'crtred' :  'crtgreen')
   return (
-    <Window theme={'crtgreen'} width={600} height={700}>
+    <Window theme={theme} width={600} height={700}>
       <Window.Content className="LateJoin" scrollable>
         {data.HijackInitiated ? (
           <Box>

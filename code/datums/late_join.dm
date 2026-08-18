@@ -62,6 +62,8 @@ GLOBAL_DATUM_INIT(late_join_tgui, /datum/late_join, new)
 		)
 
 	LAZYADD(data["Categories"], categorized_roles)
+	data["UPPEnabled"] = (GLOB.master_mode == /datum/game_mode/extended/faction_clash/cm_vs_upp::name)
+
 	return data
 
 /datum/late_join/ui_assets(mob/user)

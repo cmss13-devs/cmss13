@@ -63,6 +63,46 @@
 
 // --
 
+/area/northpoint/outdoors/streets
+	name = "Street Areas"
+	icon_state = "iso1"
+	ceiling = CEILING_NO_PROTECTION
+	minimap_color = MINIMAP_AREA_COLONY_STREETS
+
+/area/northpoint/outdoors/streets/lz1
+	name = "Northpoint Hospital - LZ1 Streets"
+
+/area/northpoint/outdoors/streets/lzstreets
+	name = "Northpoint Hospital - LZ1 / LZ2 Connection Streets"
+
+/area/northpoint/outdoors/streets/north_carpark
+	name = "Northpoint Hospital - North Carpark/Entrance"
+
+// --
+
+/area/northpoint/outdoors/hospital_exterior
+	name = "Exterior Hospital Areas"
+	icon_state = "valley"
+	ceiling = CEILING_NO_PROTECTION
+	minimap_color = MINIMAP_AREA_COLONY_RESANDCOM
+
+/area/northpoint/outdoors/hospital_exterior/west
+	name = "Northpoint Hospital - West Hospital Grounds"
+
+/area/northpoint/outdoors/hospital_exterior/north
+	name = "Northpoint Hospital - North Hospital Grounds"
+
+/area/northpoint/outdoors/hospital_exterior/south
+	name = "Northpoint Hospital - South Hospital Grounds"
+
+/area/northpoint/outdoors/hospital_exterior/east
+	name = "Northpoint Hospital - East Hospital Grounds"
+
+/area/northpoint/outdoors/hospital_exterior/central
+	name = "Northpoint Hospital - Central Hospital Grounds"
+
+// --
+
 /area/northpoint/outdoors/urban_cave
 	name = "Urban Cave Areas"
 	icon_state = "cave"
@@ -85,7 +125,7 @@
 
 /area/northpoint/outdoors/urban_cave/lz2_south
 	name = "Northpoint Hospital - Logistics LZ - Exterior Streets - South"
-
+	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 
 /area/northpoint/outdoors/urban_cave/lz2_south/weedkiller
 	linked_lz = DROPSHIP_LZ2
@@ -95,6 +135,7 @@
 
 /area/northpoint/outdoors/urban_cave/lz1_south_west
 	name = "Northpoint Hospital - Medical LZ - Exterior Streets - South-West"
+	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 
 /area/northpoint/outdoors/urban_cave/lz1_south_west/weedkiller
 	linked_lz = DROPSHIP_LZ1

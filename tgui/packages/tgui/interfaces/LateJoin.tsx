@@ -51,8 +51,11 @@ export const LateJoin = (props, context) => {
     storage.get('lobby-theme-disabled').then((val) => setThemeDisabled(!!val));
   }, []);
 
-
-  const theme = themeDisabled ? 'weyland_yutani' : (data.UPPEnabled ? 'crtred' :  'crtgreen')
+  const theme = themeDisabled
+    ? 'weyland_yutani'
+    : data.UPPEnabled
+      ? 'crtred'
+      : 'crtgreen';
   return (
     <Window theme={theme} width={600} height={700}>
       <Window.Content className="LateJoin" scrollable>

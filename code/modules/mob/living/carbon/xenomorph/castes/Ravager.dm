@@ -13,7 +13,6 @@
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_TIER_3
 	heal_standing = 0.66
-	tacklefumbler = TRUE
 
 	tackle_min = 2
 	tackle_max = 5

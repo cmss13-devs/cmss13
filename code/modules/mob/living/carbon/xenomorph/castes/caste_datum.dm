@@ -39,7 +39,6 @@
 	var/tackle_chance = 35
 	var/tacklestrength_min = 2
 	var/tacklestrength_max = 3
-	var/tacklefumbler = FALSE
 
 	///Chance of deflecting projectiles.
 	var/armor_deflection = 0

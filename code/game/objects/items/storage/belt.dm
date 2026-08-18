@@ -1866,7 +1866,6 @@
 		/obj/item/weapon/gun/flare,
 		/obj/item/weapon/gun/pistol,
 		/obj/item/weapon/gun/revolver,
-		/obj/item/weapon/gun/energy/taser,
 		//sidearm ammo,
 		/obj/item/ammo_magazine/pistol,
 		/obj/item/ammo_magazine/revolver,

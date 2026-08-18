@@ -45,25 +45,25 @@
 ///////////////////SURGERY FLAGS///////////////////
 //Surgery defines strictly for overlay application.
 
-//An incision exists.
+///An incision exists.
 #define INCISION_MADE (1<<0)
 
-//The closed or widened incision is bleeding.
+///The closed or widened incision is bleeding.
 #define INCISION_BLEEDING (1<<1)
 
-//The closed or widened incision is not bleeding.
+///The closed or widened incision is not bleeding.
 #define INCISION_CLAMPED (1<<2)
 
-//The incision has been widened.
+///The incision has been widened.
 #define INCISION_WIDENED (1<<3)
 
-//The widened incision's organs cannot be manipulated.
+///The widened incision's organs cannot be manipulated.
 #define INCISION_BONE_CLOSED (1<<4)
 
-//The widened incision's organs can be manipulated.
+///The widened incision's organs can be manipulated.
 #define INCISION_BONE_OPENED (1<<5)
 
-//The widened incision is internally bleeding.
+///The widened incision is internally bleeding.
 #define INCISION_INT_BLEEDING (1<<6)
 
 

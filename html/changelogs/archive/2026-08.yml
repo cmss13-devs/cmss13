@@ -405,3 +405,7 @@
   - rscadd: Added one marine tip about being able to reinforce reagent and fuel tanks
       with plasteel.
   - refactor: Nuked some single letter vars in the girders file.
+2026-08-18:
+  MistChristmas:
+  - bugfix: Custom Hotkeys saving + as Add, and ARROWUP not being saved as North etc
+      for the arrow keys.

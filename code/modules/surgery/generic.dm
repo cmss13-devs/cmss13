@@ -223,8 +223,6 @@
 		if(target.pain.reduction_pain < surgery.pain_reduction_required)//if patient is not under the proper anesthesia
 			target.emote("pain")
 
-	surgery.affected_limb.status &= INCISION_MADE
-	surgery.affected_limb.status &= INCISION_BLEEDING
 	user.add_blood(target.get_blood_color(), BLOOD_HANDS) //messy
 	user.add_blood(target.get_blood_color(), BLOOD_BODY) //splish splosh
 	var/datum/wound/internal_bleeding/int_bleeding = new (0)

@@ -52,7 +52,7 @@
 	// State for tracking bloodlust
 	var/bloodlust = 0
 	var/minbloodlust = 0 //stage set by acquiring headbite kills
-	var/last_slash_time = 0
+	var/last_slash_time = 0w
 
 	// Eviscerate state
 	var/bloodlust_lock_start_time = 0
@@ -184,7 +184,7 @@
 			if(current_structure.density && !current_structure.throwpass)
 				to_chat(xeno, SPAN_WARNING("There's something blocking us from striking!"))
 				return
-				
+
 	// find a target in the target turf
 	if(!iscarbon(targeted_atom) || hit_target.stat == DEAD)
 		for(var/mob/living/carbon/carbonara in get_turf(targeted_atom))

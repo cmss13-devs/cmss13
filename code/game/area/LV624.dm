@@ -199,11 +199,10 @@
 	name = "\improper Far North Storage Dome Communications Relay"
 	linked_lz = DROPSHIP_LZ2
 
-
 /area/lv624/ground/colony/telecomm/sw_lz1
-	name = "\improper South-West LZ2 Communications Relay"
+	name = "\improper South-West LZ1 Communications Relay"
 	ceiling = CEILING_NONE
-	linked_lz = DROPSHIP_LZ2
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/ground/colony/telecomm/tcommdome
 	name = "\improper Telecomms Dome Communications Relay"
@@ -211,11 +210,6 @@
 /area/lv624/ground/colony/telecomm/tcommdome/south
 	name = "\improper South Telecomms Dome Communications Relay"
 	ceiling = CEILING_NONE
-
-/area/lv624/ground/colony/telecomm/sw_lz2
-	name = "\improper South-West LZ1 Communications Relay"
-	ceiling = CEILING_NONE
-	linked_lz = DROPSHIP_LZ1
 
 // ambience = list('sound/ambience/jungle_amb1.ogg')
 

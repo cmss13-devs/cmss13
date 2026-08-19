@@ -12453,7 +12453,7 @@
 "fqM" = (
 /obj/structure/machinery/power/apc/no_power/south,
 /turf/open/floor/asteroidwarning/east,
-/area/lv624/ground/colony/telecomm/sw_lz2)
+/area/lv624/ground/colony/telecomm/sw_lz1)
 "fqS" = (
 /obj/structure/platform_decoration/stone/runed_sandstone/east,
 /turf/open/gm/dirt/desert_dug,
@@ -13284,7 +13284,7 @@
 /area/lv624/ground/caves/sand_temple)
 "hdh" = (
 /turf/open/floor/asteroidfloor/north,
-/area/lv624/ground/colony/telecomm/sw_lz2)
+/area/lv624/ground/colony/telecomm/sw_lz1)
 "hdA" = (
 /obj/effect/landmark/xeno_hive_spawn,
 /obj/effect/landmark/ert_spawns/groundside_xeno,
@@ -15884,7 +15884,7 @@
 /area/lv624/lazarus/engineering)
 "mBL" = (
 /turf/open/floor/asteroidwarning/north,
-/area/lv624/ground/colony/telecomm/sw_lz2)
+/area/lv624/ground/colony/telecomm/sw_lz1)
 "mBN" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -16935,7 +16935,7 @@
 "oKP" = (
 /obj/effect/landmark/static_comms/net_two,
 /turf/open/floor/asteroidfloor/north,
-/area/lv624/ground/colony/telecomm/sw_lz2)
+/area/lv624/ground/colony/telecomm/sw_lz1)
 "oLk" = (
 /obj/structure/fence/overgrown,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
@@ -17073,7 +17073,7 @@
 /area/lv624/ground/jungle/south_west_jungle)
 "oXI" = (
 /turf/closed/wall/r_wall,
-/area/lv624/ground/colony/telecomm/sw_lz2)
+/area/lv624/ground/colony/telecomm/sw_lz1)
 "oXS" = (
 /turf/open/gm/coast/west,
 /area/lv624/ground/river/central_river)
@@ -17470,7 +17470,7 @@
 /area/lv624/lazarus/quartstorage/outdoors)
 "pKm" = (
 /turf/open/floor/asteroidwarning/west,
-/area/lv624/ground/colony/telecomm/sw_lz2)
+/area/lv624/ground/colony/telecomm/sw_lz1)
 "pKp" = (
 /obj/effect/landmark/crap_item,
 /turf/open/floor/dark,
@@ -17938,7 +17938,7 @@
 /area/lv624/ground/colony/north_nexus_road)
 "qKC" = (
 /turf/open/floor/asteroidwarning/northwest,
-/area/lv624/ground/colony/telecomm/sw_lz2)
+/area/lv624/ground/colony/telecomm/sw_lz1)
 "qLc" = (
 /obj/structure/flora/grass/tallgrass/jungle,
 /turf/open/gm/grass/grass2,
@@ -20520,7 +20520,7 @@
 /area/lv624/ground/jungle/south_central_jungle)
 "vVf" = (
 /turf/open/floor/asteroidwarning/northeast,
-/area/lv624/ground/colony/telecomm/sw_lz2)
+/area/lv624/ground/colony/telecomm/sw_lz1)
 "vVC" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/caves/east_caves)

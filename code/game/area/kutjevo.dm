@@ -12,16 +12,16 @@
 	minimap_color = MINIMAP_AREA_ENGI
 
 /area/shuttle/drop1/kutjevo
-	name = "Kutjevo - Dropship Normandy Landing Zone"
+	name = "Kutjevo - Dropship Alamo Landing Zone"
 	icon_state = "shuttle"
 	icon = 'icons/turf/area_kutjevo.dmi'
-	linked_lz = DROPSHIP_LZ2
+	linked_lz = DROPSHIP_LZ1
 
 /area/shuttle/drop2/kutjevo
-	name = "Kutjevo - Dropship Alamo Landing Zone"
+	name = "Kutjevo - Dropship Normandy Landing Zone"
 	icon_state = "shuttle2"
 	icon = 'icons/turf/area_kutjevo.dmi'
-	linked_lz = DROPSHIP_LZ1
+	linked_lz = DROPSHIP_LZ2
 
 /area/kutjevo/exterior
 	name = "Kutjevo - Exterior"
@@ -144,20 +144,20 @@
 	base_muffle = MUFFLE_LOW
 
 /area/kutjevo/exterior/telecomm/lz1_north
-	name = "Kutjevo - North LZ2 Communications Relay"
-	linked_lz = DROPSHIP_LZ2
-
-/area/kutjevo/exterior/telecomm/lz1_south
-	name = "Kutjevo - South LZ2 Communications Relay"
-	linked_lz = DROPSHIP_LZ2
-
-/area/kutjevo/exterior/telecomm/lz2_north
 	name = "Kutjevo - North LZ1 Communications Relay"
 	linked_lz = DROPSHIP_LZ1
 
-/area/kutjevo/exterior/telecomm/lz2_south
+/area/kutjevo/exterior/telecomm/lz1_south
 	name = "Kutjevo - South LZ1 Communications Relay"
 	linked_lz = DROPSHIP_LZ1
+
+/area/kutjevo/exterior/telecomm/lz2_north
+	name = "Kutjevo - North LZ2 Communications Relay"
+	linked_lz = DROPSHIP_LZ2
+
+/area/kutjevo/exterior/telecomm/lz2_south
+	name = "Kutjevo - South LZ2 Communications Relay"
+	linked_lz = DROPSHIP_LZ2
 
 //interior areas + caves
 

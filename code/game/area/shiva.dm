@@ -60,16 +60,16 @@
 	icon_state = "ass_line"
 
 /area/shiva/exterior/telecomm/lz1_north
-	name = "Shiva's Snowball - North LZ2 Communications Relay"
+	name = "Shiva's Snowball - North LZ1 Communications Relay"
 	minimap_color = MINIMAP_AREA_LZ
-	linked_lz = DROPSHIP_LZ2
+	linked_lz = DROPSHIP_LZ1
 
-/area/shiva/exterior/telecomm/lz2_southeast
+/area/shiva/exterior/telecomm/lz1_southeast
 	name = "Shiva's Snowball - South-East LZ1 Communications Relay"
 	minimap_color = MINIMAP_AREA_LZ
 	linked_lz = DROPSHIP_LZ1
 
-/area/shiva/exterior/telecomm/lz2_northeast
+/area/shiva/exterior/telecomm/lz1_northeast
 	name = "Shiva's Snowball - North-East LZ1 Communications Relay"
 	minimap_color = MINIMAP_AREA_LZ
 	linked_lz = DROPSHIP_LZ1
@@ -113,7 +113,7 @@
 	is_landing_zone = TRUE
 	minimap_color = MINIMAP_AREA_LZ
 
-/area/shiva/exterior/lz2_fortress
+/area/shiva/exterior/lz1_fortress
 	name = "Shiva's Snowball - Landing Bulwark"
 	icon_state = "lz2_fortress"
 	linked_lz = DROPSHIP_LZ1
@@ -153,7 +153,7 @@
 	icon_state = "junkyard1"
 	unoviable_timer = FALSE
 
-/area/shiva/exterior/cp_lz2
+/area/shiva/exterior/cp_lz1
 	name = "Shiva's Snowball - North Colony Grounds"
 	icon_state = "junkyard3"
 	linked_lz = DROPSHIP_LZ1
@@ -181,8 +181,8 @@
 	name = "Shiva's Snowball - Crevice Passage"
 	icon_state = "caves2"
 
-/area/shiva/interior/caves/s_lz2
-	name = "Shiva's Snowball - South LZ2 Caves"
+/area/shiva/interior/caves/s_lz1
+	name = "Shiva's Snowball - South LZ1 Caves"
 	icon_state = "caves3"
 	minimap_color = MINIMAP_AREA_LZ
 	linked_lz = DROPSHIP_LZ1
@@ -282,7 +282,7 @@
 	icon_state = "hangars2"
 	unoviable_timer = FALSE
 
-/area/shiva/interior/lz2_habs
+/area/shiva/interior/lz1_habs
 	name = "Shiva's Snowball - Argentinian Research Headquarters"
 	icon_state = "bar1"
 	is_landing_zone = TRUE

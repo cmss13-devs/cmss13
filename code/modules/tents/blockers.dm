@@ -43,3 +43,11 @@
 	flags_atom = NO_FLAGS
 	icon = 'icons/landmarks.dmi'
 	icon_state = "invisible_wall"
+
+// A blocker that denotes the interior of the tent. Does not actually prevent movement, but blocks things like machine guns from being placed.
+/obj/structure/blocker/tent/interior_blocker
+	flags_atom = NO_FLAGS
+	icon = 'icons/landmarks.dmi'
+	icon_state = "invisible_wall"
+
+	density = FALSE

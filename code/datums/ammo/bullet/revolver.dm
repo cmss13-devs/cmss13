@@ -7,14 +7,15 @@
 /datum/ammo/bullet/revolver
 	name = "revolver bullet"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
-	damage = 72
-	penetration = ARMOR_PENETRATION_TIER_1
+	damage = 80
+	penetration = ARMOR_PENETRATION_TIER_3
 	accuracy = HIT_ACCURACY_TIER_1
+	accurate_range = 9
 	handful_type = /obj/item/ammo_magazine/handful/revolver
 
 /datum/ammo/bullet/revolver/marksman
 	name = "marksman revolver bullet"
-	damage = 55
+	damage = 70
 	shrapnel_chance = 0
 	damage_falloff = 0
 	accurate_range = 12
@@ -22,10 +23,10 @@
 
 /datum/ammo/bullet/revolver/heavy
 	name = "heavy revolver bullet"
-
-	damage = 35
+	damage = 50
 	penetration = ARMOR_PENETRATION_TIER_4
 	accuracy = HIT_ACCURACY_TIER_3
+	accurate_range = 7
 	var/add_thing = 1
 
 /datum/ammo/bullet/revolver/heavy/on_hit_mob(mob/living/M, obj/projectile/bullet)

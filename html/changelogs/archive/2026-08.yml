@@ -405,3 +405,12 @@
   - rscadd: Added one marine tip about being able to reinforce reagent and fuel tanks
       with plasteel.
   - refactor: Nuked some single letter vars in the girders file.
+2026-08-18:
+  MistChristmas:
+  - bugfix: Custom Hotkeys saving + as Add, and ARROWUP not being saved as North etc
+      for the arrow keys.
+2026-08-19:
+  BOBAMA:
+  - bugfix: generic survivors should no longer spawn during survivor team inserts,  generic
+      survivors should also no longer spawn on top of each other sometimes, and CO
+      survivors should no longer be able to duplicate non-co archetypes.

@@ -106,7 +106,7 @@
 
 //exterior areas
 
-/area/shiva/exterior/lz1_valley
+/area/shiva/exterior/lz2_valley
 	name = "Shiva's Snowball - Landing Valley"
 	icon_state = "landing_valley"
 	linked_lz = DROPSHIP_LZ2

@@ -18,18 +18,21 @@
 /obj/structure/blocker/tent{
 	dir = 1
 	},
+/obj/structure/blocker/tent/interior_blocker,
 /turf/template_noop,
 /area/template_noop)
 "s" = (
 /obj/structure/blocker/tent{
 	dir = 4
 	},
+/obj/structure/blocker/tent/interior_blocker,
 /turf/template_noop,
 /area/template_noop)
 "v" = (
 /obj/structure/blocker/tent{
 	dir = 8
 	},
+/obj/structure/blocker/tent/interior_blocker,
 /turf/template_noop,
 /area/template_noop)
 "x" = (
@@ -50,15 +53,18 @@
 /obj/structure/blocker/tent{
 	dir = 1
 	},
+/obj/structure/blocker/tent/interior_blocker,
 /turf/template_noop,
 /area/template_noop)
 "O" = (
+/obj/structure/blocker/tent/interior_blocker,
 /turf/template_noop,
 /area/template_noop)
 "S" = (
 /obj/structure/blocker/tent{
 	dir = 1
 	},
+/obj/structure/blocker/tent/interior_blocker,
 /turf/template_noop,
 /area/template_noop)
 

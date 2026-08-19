@@ -4,6 +4,7 @@
 	dir = 8
 	},
 /obj/structure/bed/chair,
+/obj/structure/blocker/tent/interior_blocker,
 /turf/template_noop,
 /area/template_noop)
 "d" = (
@@ -11,6 +12,7 @@
 	dir = 4
 	},
 /obj/structure/bed/chair,
+/obj/structure/blocker/tent/interior_blocker,
 /turf/template_noop,
 /area/template_noop)
 "o" = (
@@ -27,6 +29,7 @@
 	pixel_x = -2;
 	pixel_y = 6
 	},
+/obj/structure/blocker/tent/interior_blocker,
 /turf/template_noop,
 /area/template_noop)
 "p" = (
@@ -49,6 +52,7 @@
 	dir = 1
 	},
 /obj/structure/machinery/computer/overwatch/tent,
+/obj/structure/blocker/tent/interior_blocker,
 /turf/template_noop,
 /area/template_noop)
 "X" = (

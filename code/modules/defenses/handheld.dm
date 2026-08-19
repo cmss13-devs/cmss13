@@ -58,7 +58,7 @@
 
 	if(locate(/obj/structure/blocker/tent/interior_blocker) in T)
 		to_chat(user, SPAN_WARNING("You cannot deploy [src] inside of a tent!"))
-		break
+		return FALSE
 
 	var/blocked = FALSE
 	for(var/obj/O in T)

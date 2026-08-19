@@ -1,0 +1,4 @@
+author: "Ammoniacres"
+delete-after: True
+changes:
+  - balance: "made it so Ravagers have a 25% chance to accidentally slash instead of tackle on disarm intent!"

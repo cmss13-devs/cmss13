@@ -81,6 +81,11 @@
 
 	xeno_organ_flags = XENO_ORGAN_STRONG|XENO_ORGAN_TACHYCARDIA|XENO_ORGAN_HARDENED
 
+/mob/living/carbon/xenomorph/ravager/get_examine_text(mob/user)
+	. = ..()
+	if(isxeno(user) || isobserver(user))
+		. += "[SPAN_DANGER("This one's dangerous claws make it very risky to tackle hosts.")]"
+
 // Mutator delegate for base ravager
 /datum/behavior_delegate/ravager_base
 	var/shield_decay_time = 15 SECONDS // Time in deciseconds before our shield decays
@@ -137,6 +142,55 @@
 	if(mid_charge && target_carbon)
 		return INTENT_HARM
 
+	// If the ravager fails RNG, they perform an accidental slash instead!
+	if(bound_xeno.a_intent == INTENT_DISARM && prob(25)) // 1/4 chance
+		if(bound_xeno.claw_restrained())
+			bound_xeno.animation_attack_on(target_carbon)
+			bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] almost slashes [target_carbon]!"),
+			SPAN_XENONOTICE("We feel the strongest urge to destroy [target_carbon], but the Queen holds us back!"))
+			return XENO_ATTACK_ACTION
+
+		if(bound_xeno.can_not_harm(target_carbon, check_hive_flags=FALSE)) // We manually check hive_flags later
+			bound_xeno.animation_attack_on(bound_xeno)
+			bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] nibbles [target_carbon]"),
+			SPAN_XENONOTICE("We nibble [bound_xeno]"))
+			return XENO_ATTACK_ACTION
+
+		if(bound_xeno.behavior_delegate && bound_xeno.behavior_delegate.handle_slash(bound_xeno))
+			return XENO_NO_DELAY_ACTION
+
+		if(target_carbon.stat == DEAD)
+			to_chat(bound_xeno, SPAN_WARNING("We raise our claws to attack [target_carbon]!- but... they're already dead."))
+			return XENO_NO_DELAY_ACTION
+
+		if(bound_xeno.caste && !bound_xeno.caste.is_intelligent)
+			var/embryo_allied = FALSE
+			if(target_carbon.status_flags & XENO_HOST)
+				for(var/obj/item/alien_embryo/embryo in target_carbon)
+					if(HIVE_ALLIED_TO_HIVE(bound_xeno.hivenumber, embryo.hivenumber))
+						embryo_allied = TRUE
+						break
+
+			if(embryo_allied)
+				if(HAS_TRAIT(bound_xeno, TRAIT_NESTED))
+					bound_xeno.animation_attack_on(target_carbon)
+					bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] nibbles [target_carbon]"),
+					SPAN_XENONOTICE("ATTACK!!!! Oh- [target_carbon] has a sister inside..."))
+					return XENO_NO_DELAY_ACTION
+				if(!HAS_FLAG(bound_xeno.hive.hive_flags, XENO_SLASH_INFECTED))
+					bound_xeno.animation_attack_on(target_carbon)
+					bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] nibbles [target_carbon]"),
+					SPAN_XENONOTICE("ATTACK!!!! Oh- [target_carbon] has a sister inside..."))
+					return XENO_ATTACK_ACTION
+			if(!HAS_FLAG(bound_xeno.hive.hive_flags, XENO_SLASH_NORMAL))
+				bound_xeno.animation_attack_on(target_carbon)
+				bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] nibbles [target_carbon]"),
+				SPAN_XENONOTICE("ATTACK!!!! Wait- we're not allowed to attack hosts anymore..."))
+				return XENO_ATTACK_ACTION
+		bound_xeno.visible_message(SPAN_DANGER("[bound_xeno] fumbles stupidly for a moment, then slashes [target_carbon]!"), null, null, CHAT_TYPE_XENO_COMBAT)
+		bound_xeno.visible_message(SPAN_HIGHDANGER("Your oversized claws and small mind get in the way of restraining, slashing [target_carbon]!"), null, null, CHAT_TYPE_XENO_COMBAT)
+		return INTENT_HARM
+
 /datum/action/xeno_action/onclick/empower/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!xeno.check_state())
@@ -153,7 +207,7 @@
 		activated_once = TRUE
 		button.icon_state = "template_active"
 		get_initial_shield()
-		addtimer(CALLBACK(src, PROC_REF(timeout)), time_until_timeout)
+		addtimer(CALLBACK(xeno, PROC_REF(timeout)), time_until_timeout)
 		apply_cooldown()
 		return ..()
 	else
@@ -208,7 +262,7 @@
 	color += num2text(alpha, 2, 16)
 	xeno.add_filter("empower_rage", 1, list("type" = "outline", "color" = color, "size" = 3))
 
-	addtimer(CALLBACK(src, PROC_REF(weaken_superbuff), xeno, behavior), 5 SECONDS)
+	addtimer(CALLBACK(xeno, PROC_REF(weaken_superbuff), xeno, behavior), 5 SECONDS)
 
 /datum/action/xeno_action/onclick/empower/proc/weaken_superbuff(mob/living/carbon/xenomorph/xeno, datum/behavior_delegate/ravager_base/behavior)
 
@@ -218,7 +272,7 @@
 	color += num2text(alpha, 2, 16)
 	xeno.add_filter("empower_rage", 1, list("type" = "outline", "color" = color, "size" = 3))
 
-	addtimer(CALLBACK(src, PROC_REF(remove_superbuff), xeno, behavior), 1.5 SECONDS)
+	addtimer(CALLBACK(xeno, PROC_REF(remove_superbuff), xeno, behavior), 1.5 SECONDS)
 
 /datum/action/xeno_action/onclick/empower/proc/remove_superbuff(mob/living/carbon/xenomorph/xeno, datum/behavior_delegate/ravager_base/behavior)
 	behavior.empower_targets = 0

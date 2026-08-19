@@ -683,6 +683,7 @@
 	overlays.Cut()
 	if(broken)
 		// TODO: Add overlay for broken pill bottles
+		overlays += "pills_broken"
 	else if(content_watchers || !length(contents))
 		overlays += "pills_open"
 	else

@@ -391,3 +391,26 @@
   - rscadd: adds the missing snow loadout gear, boots, rain-cover, netting.
   - imageadd: adds arc icon for tech-tree.
   - imagetweak: palette correction for prey_items.dmi
+2026-08-16:
+  Red-byte3D:
+  - imageadd: New ghillie sprite
+2026-08-17:
+  AnCopper:
+  - bugfix: The New Varadero LACN Commander is once again a Commander instead of a
+      LtCol
+  Namen-n:
+  - mapadd: added vehicle restrictions for caves on the LV522 Chances Claim map.
+  Unknownity:
+  - balance: Reinforced Walls now take 8 plasteel sheets to construct instead of 5.
+  - rscadd: Added one marine tip about being able to reinforce reagent and fuel tanks
+      with plasteel.
+  - refactor: Nuked some single letter vars in the girders file.
+2026-08-18:
+  MistChristmas:
+  - bugfix: Custom Hotkeys saving + as Add, and ARROWUP not being saved as North etc
+      for the arrow keys.
+2026-08-19:
+  BOBAMA:
+  - bugfix: generic survivors should no longer spawn during survivor team inserts,  generic
+      survivors should also no longer spawn on top of each other sometimes, and CO
+      survivors should no longer be able to duplicate non-co archetypes.

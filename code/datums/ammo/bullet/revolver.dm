@@ -10,7 +10,7 @@
 	damage = 80
 	penetration = ARMOR_PENETRATION_TIER_3
 	accuracy = HIT_ACCURACY_TIER_1
-	accurate_range = 9
+	accurate_range = 7
 	handful_type = /obj/item/ammo_magazine/handful/revolver
 
 /datum/ammo/bullet/revolver/marksman

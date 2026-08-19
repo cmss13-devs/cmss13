@@ -800,10 +800,10 @@
 	if(.)
 		if(broken)
 			error_broken(user)
-			return
+			return FALSE
 		if(!can_storage_interact(user))
 			error_idlock(usr)
-			return
+			return FALSE
 
 /obj/item/storage/pill_bottle/clicked(mob/user, list/mods)
 	if(..())

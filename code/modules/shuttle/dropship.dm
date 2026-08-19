@@ -442,8 +442,7 @@
 /obj/structure/shuttle/part/dropship_omaha/dummy_part
 	icon = 'icons/turf/floors/floors.dmi'
 	icon_state = "noop"
-	var/adjustable_ramp = FALSE
-	var/change_icon = FALSE
+	var/mode = "default"
 	opacity = FALSE
 	density = FALSE
 	invisibility = 101
@@ -453,12 +452,22 @@
 	var/turf/open/stored_turf
 	var/stored_icon_state
 	var/obj/structure/stairs/multiz/up/linked_staircase
+	var/obj/structure/shuttle/part/dropship_omaha/structure_ramp/linked_structure_ramp
 
 /obj/structure/shuttle/part/dropship_omaha/dummy_part/adjustable_first
-	adjustable_ramp = TRUE
+	mode = "adjustable_down"
 
 /obj/structure/shuttle/part/dropship_omaha/dummy_part/adjustable_second
-	change_icon = TRUE
+	mode = "adjustable_up"
+
+/obj/structure/shuttle/part/dropship_omaha/dummy_part/adjustable_third
+	mode = "adjustable_space"
+
+/obj/structure/shuttle/part/dropship_omaha/structure_ramp
+	name = "Ramp"
+	icon = 'icons/turf/mohawk/mohawk-ramp.dmi'
+	opacity = FALSE
+	density = FALSE
 
 ///landing gear ///
 
@@ -480,7 +489,7 @@
 	layer = FLY_LAYER
 	density = FALSE
 	opacity = FALSE
-	alpha = 190
+	alpha = 150
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /obj/structure/shuttle/part/dropship_omaha/belly_deployer

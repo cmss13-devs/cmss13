@@ -495,14 +495,124 @@
 		linked_hatch.lock()
 
 /obj/structure/machinery/door_control/omaha_ramp
+	name = "Ramp Access"
 	icon = 'icons/obj/structures/machinery/mohawk/mohawk-interior-item.dmi'
 	icon_state = "ramp_control"
 	id = "aft_ramp"
 	var/obj/docking_port/mobile/marine_dropship/linked_dropship
-	var/list/ramp_turfs
+	var/list/adjustable_ramps = list()
+	var/list/iconchange_ramps = list()
+	var/list/static_ramps = list()
+	var/list/openspace_ramps = list()
+	normaldoorcontrol = CONTROL_NORMAL_DOORS
+	var/datum/door_controller/single_ramp/linked_single_controller
+	var/link_id = "ramp_aft"
+
+/obj/structure/machinery/door_control/omaha_ramp/handle_door()
+	if(linked_single_controller.status == SHUTTLE_RAMP_LOWERED)
+		raise()
+	else if(linked_single_controller.status == SHUTTLE_RAMP_RAISED)
+		lower()
+
+/obj/structure/machinery/door_control/omaha_ramp/proc/get_controller_status()
 
 /obj/structure/machinery/door_control/omaha_ramp/proc/raise()
 	to_chat(world, "raising via button")
 
+	for(var/obj/structure/shuttle/part/dropship_omaha/dummy_part/rampazoid in adjustable_ramps)
+		if(!rampazoid.linked_staircase)
+			return
+
+		var/turf/open/our_turf = rampazoid.loc
+		QDEL_NULL(rampazoid.linked_staircase.staircase)
+		QDEL_NULL(rampazoid.linked_staircase)
+		our_turf.ScrapeAway()
+		our_turf.update_vis_contents()
+
+	for(var/obj/structure/shuttle/part/dropship_omaha/dummy_part/rampazoid in iconchange_ramps)
+		if(!rampazoid.linked_staircase)
+			return
+//		var/turf/open/our_turf = rampazoid.loc
+//		our_turf.icon_state = initial(our_turf.icon_state)
+		QDEL_NULL(rampazoid.linked_staircase)
+
+	for(var/obj/structure/shuttle/part/dropship_omaha/dummy_part/rampazoid in openspace_ramps)
+		var/turf/open/our_turf = rampazoid.loc
+		our_turf.ScrapeAway()
+		our_turf.update_vis_contents()
+
+	for(var/obj/structure/shuttle/part/dropship_omaha/dummy_part/rampazoid in static_ramps)
+		var/turf/open/our_turf = rampazoid.loc
+		our_turf.ScrapeAway()
+		if(rampazoid.linked_structure_ramp)
+			rampazoid.linked_structure_ramp.moveToNullspace()
+		our_turf.update_vis_contents()
+
+	linked_single_controller.status = SHUTTLE_RAMP_RAISED
+
 /obj/structure/machinery/door_control/omaha_ramp/proc/lower()
 	to_chat(world, "lowering via button")
+
+	for(var/obj/structure/shuttle/part/dropship_omaha/dummy_part/rampazoid in adjustable_ramps)
+		var/turf/open/our_turf = rampazoid.loc
+		// make the ramp
+		if(!rampazoid.linked_staircase)
+			var/turf/turf_beneath = SSmapping.get_turf_below(our_turf)
+			rampazoid.linked_staircase = new /obj/structure/stairs/multiz/up/omaha_ramp(turf_beneath)
+			rampazoid.linked_staircase.icon = our_turf.icon
+			rampazoid.linked_staircase.icon_state = "[our_turf.icon_state]-low"
+		// get our brand new turf in
+		our_turf.place_on_top(/turf/open_space)
+		our_turf.update_vis_contents()
+
+	for(var/obj/structure/shuttle/part/dropship_omaha/dummy_part/rampazoid in iconchange_ramps)
+		var/turf/open/our_turf = rampazoid.loc
+//		our_turf.icon_state = "[our_turf.icon_state]-low"
+		if(!rampazoid.linked_staircase)
+			rampazoid.linked_staircase = new /obj/structure/stairs/multiz/down/omaha_ramp(our_turf)
+			rampazoid.linked_staircase.icon = "[our_turf.icon]"
+			rampazoid.linked_staircase.icon_state = "[our_turf.icon_state]-low"
+			rampazoid.linked_staircase.invisibility = 101
+//			var/turf/turf_to_put_down = our_turf.type
+//			var/turf/turf_beneath = SSmapping.get_turf_below(our_turf)
+//			turf_beneath.place_on_top(turf_to_put_down) // changeturf_skip
+//			turf_beneath.icon = "[our_turf.icon]"
+//			turf_beneath.icon_state = "[our_turf.icon_state]-low"
+
+	for(var/obj/structure/shuttle/part/dropship_omaha/dummy_part/rampazoid in openspace_ramps)
+		var/turf/open/our_turf = rampazoid.loc
+		our_turf.place_on_top(/turf/open_space)
+		our_turf.update_vis_contents()
+
+	for(var/obj/structure/shuttle/part/dropship_omaha/dummy_part/rampazoid in static_ramps)
+		var/turf/open/our_turf = rampazoid.loc
+		var/turf/turf_beneath = SSmapping.get_turf_below(our_turf)
+		if(!rampazoid.linked_structure_ramp)
+			rampazoid.linked_structure_ramp = new /obj/structure/shuttle/part/dropship_omaha/structure_ramp(turf_beneath)
+			rampazoid.linked_structure_ramp.icon_state = "[our_turf.icon_state]-low"
+		else
+			rampazoid.linked_structure_ramp.loc = turf_beneath
+		our_turf.place_on_top(/turf/open_space)
+		our_turf.update_vis_contents()
+
+	linked_single_controller.status = SHUTTLE_RAMP_LOWERED
+
+/obj/structure/machinery/door_control/omaha_ramp/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
+	.=..()
+	if(!length(adjustable_ramps))
+		for(var/place in linked_dropship.shuttle_areas)
+			for(var/obj/structure/shuttle/part/dropship_omaha/dummy_part/rampazoid in place) // switch to switch and "" vars
+				switch(rampazoid.mode)
+					if("adjustable_down")
+						adjustable_ramps += rampazoid
+					if("adjustable_up")
+						iconchange_ramps += rampazoid
+					if("adjustable_space")
+						openspace_ramps += rampazoid
+					if("default")
+						static_ramps += rampazoid
+	if(!linked_single_controller)
+		for(var/direction in linked_dropship.door_control.ramp_controllers)
+			var/datum/door_controller/single_ramp/controller = linked_dropship.door_control.ramp_controllers[direction]
+			if(controller.link_id = src.link_id)
+				linked_single_controller = controller

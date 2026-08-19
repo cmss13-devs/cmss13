@@ -174,7 +174,7 @@
 	var/datum/action/xeno_action/onclick/manage_hive/action = allocate(/datum/action/xeno_action/onclick/manage_hive/)
 	action.do_banish(null, xeno)
 
-	wait_full_life_loops()
+	wait_full_life_loops(1)
 
 	action.do_readmit(null, xeno)
 

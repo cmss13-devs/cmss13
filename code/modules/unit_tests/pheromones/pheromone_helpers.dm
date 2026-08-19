@@ -27,7 +27,7 @@
 	SHOULD_CALL_PARENT(FALSE)
 
 /// Sleeps until X amount of full loops of the xeno life subsystem have completed
-/datum/unit_test/pheromones/proc/wait_full_life_loops(loops = 1)
+/datum/unit_test/pheromones/proc/wait_full_life_loops(loops)
 	RegisterSignal(SSdcs, COSMIG_GLOB_XENO_LIFE_COMPLETE, PROC_REF(poke_full_life_loop), override = TRUE)
 
 	var/waiting_loops = 0
@@ -75,7 +75,7 @@
 	// Make the emitter release the appropriate pheromones
 	emitter.emit_pheromones(pheromone_type)
 
-	wait_full_life_loops(2)
+	wait_full_life_loops(1)
 
 	test_callback.Invoke(receiver)
 
@@ -110,7 +110,7 @@
 
 	emitter.emit_pheromones(pheromone_type)
 
-	wait_full_life_loops(2)
+	wait_full_life_loops(1)
 
 	for (var/mob/living/carbon/xenomorph/receiver as anything in hivemates)
 		test_callback.Invoke(receiver)
@@ -169,7 +169,7 @@
 				else
 					stack_trace("Received an out of bounds pheromone permutation")
 
-		wait_full_life_loops(3)
+		wait_full_life_loops(1)
 
 		test_callback.Invoke(receiver, permutation + 1)
 

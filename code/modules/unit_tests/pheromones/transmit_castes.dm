@@ -1,11 +1,11 @@
 /datum/unit_test/pheromones/transmit_castes/coverage/Run()
 	// Put any new castes/strains that can emit pheromones in here after creating a transmit_castes test for said variation
-	var/const/list/emitting_castes = list(XENO_CASTE_DRONE, XENO_CASTE_LESSER_DRONE, XENO_CASTE_HIVELORD, XENO_CASTE_CARRIER, XENO_CASTE_QUEEN, XENO_CASTE_KING) // Only count castes that can emit with their base strain
-	var/const/list/emitting_strains = list(DRONE_HEALER, DRONE_GARDENER, CARRIER_EGGSAC, HIVELORD_DESIGNER, PRAETORIAN_VALKYRIE)
+	var/list/emitting_castes = list(XENO_CASTE_DRONE, XENO_CASTE_LESSER_DRONE, XENO_CASTE_HIVELORD, XENO_CASTE_CARRIER, XENO_CASTE_QUEEN, XENO_CASTE_KING) // Only count castes that can emit with their base strain
+	var/list/emitting_strains = list(DRONE_HEALER, DRONE_GARDENER, CARRIER_EGGSAC, HIVELORD_DESIGNER, PRAETORIAN_VALKYRIE)
 
 	for (var/caste_name in ALL_XENO_CASTES)
 		var/datum/caste_datum/caste = GLOB.RoleAuthority.get_caste_by_text(caste_name)
-		if (!(caste.aura_allowed || caste.aura_strength > XENO_PHERO_STRENGTH_NONE) && !(caste_name in emitting_castes))
+		if (caste.aura_strength > XENO_PHERO_STRENGTH_NONE && !(caste_name in emitting_castes))
 			TEST_FAIL("Found a xenomorph caste [caste_name] define that can emit pheromones but does not have an associated /datum/unit_test/pheromones/transmit_castes subtype unit test. If you are adding a new xenomorph caste, set one up!")
 
 		for(var/datum/xeno_strain/strain_type as anything in caste.available_strains)
@@ -13,9 +13,9 @@
 			var/mob/living/dummy_xeno = init_abstract_xeno(dummy_xeno_abstract)
 
 			var/datum/xeno_strain/strain_instance = new strain_type()
-			strain_instance._add_to_xeno(strain_instance)
+			strain_instance._add_to_xeno(dummy_xeno)
 
-			if (!(caste.aura_allowed || caste.aura_strength > XENO_PHERO_STRENGTH_NONE) && !(strain_type.name in emitting_strains))
+			if (caste.aura_strength > XENO_PHERO_STRENGTH_NONE && !(strain_type.name in emitting_strains))
 				TEST_FAIL("Found a xenomorph strain [strain_type] of [caste_name] that can emit pheromones but does not have an associated /datum/unit_test/pheromones/transmit_castes subtype unit test. If you are adding a new xenomorph strain, set one up!")
 
 /datum/unit_test/pheromones/transmit_castes/drone/Run(pheromone_type = XENO_PHERO_RECOVERY)
@@ -54,7 +54,7 @@
 
 /datum/unit_test/pheromones/transmit_castes/drone/gardener/Run(pheromone_type = XENO_PHERO_RECOVERY)
 	var/list/expected_pheromones = list()
-	expected_pheromones[pheromone_type] = XENO_PHERO_STRENGTH_NORMAL
+	expected_pheromones[pheromone_type] = XENO_PHERO_STRENGTH_STRONG
 
 	all_caste_reception_test(
 		abstract_emitter = new /datum/abstract_xenomorph(

@@ -149,6 +149,7 @@
 	icon = 'icons/obj/structures/machinery/mohawk/mohawk-modules.dmi'
 	icon_state = "omaha_map"
 	density = TRUE
+	bound_height = 64
 
 //Nonpower using props
 

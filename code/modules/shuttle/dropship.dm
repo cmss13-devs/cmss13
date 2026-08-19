@@ -503,12 +503,70 @@
 
 /obj/structure/shuttle/part/dropship_omaha/belly_deployer/lateShuttleMove()
 	.=..()
+	if(is_reserved_level(src.z))
+		if(lines)
+			lines.moveToNullspace()
+		return
 	var/turf/target_turf = locate(src.x-5, src.y, src.z)
 	var/turf/final_turf = SSmapping.get_turf_below(target_turf)
-	if(!lines)
-		lines = new /obj/structure/shuttle/part/dropship_omaha/fuel_lines(final_turf)
-	if(lines)
-		lines.Move(final_turf)
+	if(final_turf)
+		if(lines)
+			lines.Move(final_turf)
+		else
+			lines = new /obj/structure/shuttle/part/dropship_omaha/fuel_lines(final_turf)
+
+/obj/structure/shuttle/part/dropship_omaha/landing_gear_deployer
+	icon = 'icons/obj/structures/machinery/mohawk/bits_bobs.dmi'
+	icon_state = "deployer"
+	density = FALSE
+	opacity = FALSE
+	invisibility = 101
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	var/offset_x
+	var/offset_y
+	var/map_offset_x
+	var/map_offset_y
+	var/obj/structure/shuttle/part/dropship_omaha/landing_gear_big/land_gear
+	var/obj/structure/shuttle/part/dropship_omaha/landing_hatch_big/hatch_big
+
+/obj/structure/shuttle/part/dropship_omaha/landing_gear_deployer/lateShuttleMove(turf/oldT, list/movement_force, move_dir)
+	. = ..()
+	if(is_reserved_level(src.z))
+		if(land_gear)
+			land_gear.moveToNullspace()
+		if(hatch_big)
+			hatch_big.moveToNullspace()
+		return
+	var/turf/open/t_below = SSmapping.get_turf_below(src.loc)
+	if(t_below)
+		var/turf/open/final_turf = locate(t_below.x + map_offset_x, t_below.y +map_offset_y, t_below.z)
+		if(land_gear)
+			land_gear.loc = final_turf
+		else
+			land_gear = new /obj/structure/shuttle/part/dropship_omaha/landing_gear_big(final_turf)
+			land_gear.dir = src.dir
+		if(hatch_big)
+			hatch_big.loc = final_turf
+		else
+			hatch_big = new /obj/structure/shuttle/part/dropship_omaha/landing_hatch_big(final_turf)
+			hatch_big.dir = src.dir
+			hatch_big.pixel_x = offset_x
+			hatch_big.pixel_y = offset_y
+
+/obj/structure/shuttle/part/dropship_omaha/landing_gear_big
+	icon = 'icons/obj/structures/machinery/mohawk/mohawk_big.dmi'
+	icon_state = "landing_gear"
+	density = TRUE
+	opacity = FALSE
+	bound_width = 64
+	bound_height = 64
+
+/obj/structure/shuttle/part/dropship_omaha/landing_hatch_big
+	icon = 'icons/obj/structures/machinery/mohawk/mohawk_big.dmi'
+	icon_state = "gear_hatch"
+	density = FALSE
+	opacity = FALSE
+	alpha = 227
 
 /obj/structure/shuttle/part/dropship_omaha/landing_gear_hatch
 	icon = 'icons/obj/structures/machinery/mohawk/bits_bobs.dmi'

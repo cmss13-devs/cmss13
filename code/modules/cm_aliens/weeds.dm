@@ -293,12 +293,12 @@
 	for(var/obj/O in T)
 		if(istype(O, /obj/structure/platform))
 			var/obj/structure/platform/P = O
-			if(!(P.stat & BROKEN) && P.dir == GLOB.reverse_dir[direction])
+			if(!(P.stat & BROKEN) && P.dir == REVERSE_DIR(direction))
 				return FALSE
 
 		if(istype(O, /obj/structure/barricade)) //cades on tile we're trying to expand to
 			var/obj/structure/barricade/to_blocking_cade = O
-			if(to_blocking_cade.density && to_blocking_cade.dir == GLOB.reverse_dir[direction] && to_blocking_cade.health >= (to_blocking_cade.maxhealth / 4))
+			if(to_blocking_cade.density && to_blocking_cade.dir == REVERSE_DIR(direction) && to_blocking_cade.health >= (to_blocking_cade.maxhealth / 4))
 				return FALSE
 
 		if(istype(O, /obj/structure/window/framed))

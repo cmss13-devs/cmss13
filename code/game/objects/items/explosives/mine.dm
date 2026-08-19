@@ -147,7 +147,7 @@
 				if(prob(75))
 					triggered = TRUE
 					if(tripwire)
-						var/direction = GLOB.reverse_dir[dir]
+						var/direction = REVERSE_DIR(dir)
 						var/step_direction = get_step(src, direction)
 						tripwire.forceMove(step_direction)
 					prime()

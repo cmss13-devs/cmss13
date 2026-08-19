@@ -957,7 +957,7 @@ SUBSYSTEM_DEF(hijack)
 
 	// Optionally leak water
 	if(leak)
-		var/opposite_dir = GLOB.reverse_dir[direction]
+		var/opposite_dir = REVERSE_DIR(direction)
 		var/x_adjust = 0
 		var/y_adjust = 0
 		switch(opposite_dir)

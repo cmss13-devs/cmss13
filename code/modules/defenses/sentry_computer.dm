@@ -41,9 +41,9 @@
 	var/turf/last_camera_turf
 
 	// radio which broadcasts updates
-	var/obj/item/device/radio/marine/transceiver = new /obj/item/device/radio/marine
+	var/obj/item/device/radio/marine/transceiver
 	// the hidden mob which voices updates
-	var/mob/living/voice = new /mob/living/silicon
+	var/mob/living/silicon/abstract/voice
 
 	// Stuff needed to render the map
 
@@ -52,6 +52,9 @@
 
 /obj/item/device/sentry_computer/Initialize(mapload)
 	. = ..()
+	transceiver = new
+	voice = new
+
 	if(cell_type)
 		cell = new cell_type()
 		cell.charge = cell.maxcharge

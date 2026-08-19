@@ -504,9 +504,9 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 
 
 	if(!author && author_key)
-		for(var/client/C in GLOB.clients)
-			if(C.username() == author_key)
-				author = C
+		for(var/client/author_client in GLOB.clients)
+			if(author_client.username() == author_key)
+				author = author_client
 				break
 
 	var/datum/mentorhelp/existing_mh = GLOB.mentorhelp_manager.get_active_ticket_by_ckey(author_key)

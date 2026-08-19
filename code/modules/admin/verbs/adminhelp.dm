@@ -31,11 +31,11 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 /datum/admin_help_tickets/proc/TicketByID(id)
 	var/list/lists = list(active_tickets, closed_tickets, resolved_tickets)
-	for(var/I in lists)
-		for(var/J in I)
-			var/datum/admin_help/AH = J
-			if(AH.id == id)
-				return J
+	for(var/thread_list in lists)
+		for(var/ahelp_thread in thread_list)
+			var/datum/admin_help/ahelp_index = ahelp_thread
+			if(ahelp_index.id == id)
+				return ahelp_thread
 
 /datum/admin_help_tickets/proc/TicketsByUsername(username)
 	. = list()

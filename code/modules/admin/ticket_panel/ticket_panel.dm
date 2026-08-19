@@ -9,64 +9,64 @@
 	SStgui.close_uis(src)
 	return ..()
 
-/datum/ticket_panel/proc/get_player_info(client/C)
-	if(!C || !C.mob)
+/datum/ticket_panel/proc/get_player_info(client/user_client)
+	if(!user_client || !user_client.mob)
 		return null
 
-	var/mob/M = C.mob
+	var/mob/target_mob = user_client.mob
 	var/list/info = list()
 
-	if(M.real_name)
-		info["ic_name"] = M.real_name
+	if(target_mob.real_name)
+		info["ic_name"] = target_mob.real_name
 
-	var/datum/faction/F = GLOB.faction_datums[M.faction]
-	if(F)
-		info["faction"] = F.name
-	else if(M.faction)
-		info["faction"] = "[M.faction]"
+	var/datum/faction/target_faction = GLOB.faction_datums[target_mob.faction]
+	if(target_faction)
+		info["faction"] = target_faction.name
+	else if(target_mob.faction)
+		info["faction"] = "[target_mob.faction]"
 	else
 		info["faction"] = FACTION_NEUTRAL
 
-	if(isobserver(M))
+	if(isobserver(target_mob))
 		info["role"] = "Ghost"
-	else if(isxeno(M))
-		var/mob/living/carbon/xenomorph/X = M
-		info["role"] = X.caste_type
-	else if(ishuman(M))
-		var/mob/living/carbon/human/HUM = M
-		if(HUM.comm_title)
-			info["role"] = HUM.comm_title
-		else if(HUM.job)
-			info["role"] = HUM.job
-	else if(M.job)
-		info["role"] = M.job
+	else if(isxeno(target_mob))
+		var/mob/living/carbon/xenomorph/target_xenomorph = target_mob
+		info["role"] = target_xenomorph.caste_type
+	else if(ishuman(target_mob))
+		var/mob/living/carbon/human/target_human = target_mob
+		if(target_human.comm_title)
+			info["role"] = target_human.comm_title
+		else if(target_human.job)
+			info["role"] = target_human.job
+	else if(target_mob.job)
+		info["role"] = target_mob.job
 
 	return info
 
 
-/datum/ticket_panel/proc/format_adminhelp_ticket(datum/admin_help/AH, client/viewer = null)
-	var/status = AH.state == AHELP_ACTIVE ? "open" : AH.state == AHELP_RESOLVED ? "resolved" : "closed" // just setting some readable names, I suppose
+/datum/ticket_panel/proc/format_adminhelp_ticket(datum/admin_help/ahelp_thread, client/viewer = null)
+	var/status = ahelp_thread.state == AHELP_ACTIVE ? "open" : ahelp_thread.state == AHELP_RESOLVED ? "resolved" : "closed" // just setting some readable names, I suppose
 
 	var/list/formatted_responses = list()
-	for(var/key in AH.ticket_interactions)
-		var/list/interaction = AH.ticket_interactions[key]
+	for(var/key in ahelp_thread.ticket_interactions)
+		var/list/interaction = ahelp_thread.ticket_interactions[key]
 		formatted_responses += list(interaction)
 
-	var/list/player_info = get_player_info(AH.initiator)
+	var/list/player_info = get_player_info(ahelp_thread.initiator)
 
 	return list(
-		"id" = AH.id,
-		"subject" = AH.subject,
-		"author" = AH.initiator_key_name || "Unknown",
-		"message" = AH.initial_message || "No message",
-		"latest_message" = AH.latest_message,
+		"id" = ahelp_thread.id,
+		"subject" = ahelp_thread.subject,
+		"author" = ahelp_thread.initiator_key_name || "Unknown",
+		"message" = ahelp_thread.initial_message || "No message",
+		"latest_message" = ahelp_thread.latest_message,
 		"status" = status,
-		"timestamp" = AH.time_activity["opened_at"],
-		"closed_at" = AH.time_activity["closed_at"],
-		"claimed_by" = AH.marked_admin_key_name,
+		"timestamp" = ahelp_thread.time_activity["opened_at"],
+		"closed_at" = ahelp_thread.time_activity["closed_at"],
+		"claimed_by" = ahelp_thread.marked_admin_key_name,
 		"all_responses" = formatted_responses,
-		"viewer_is_claiming" = (AH.marked_admin == (viewer ? viewer.username() : usr?.username()) ? TRUE : FALSE),
-		"is_archived" = (AH.state != AHELP_ACTIVE),
+		"viewer_is_claiming" = (ahelp_thread.marked_admin == (viewer ? viewer.username() : usr?.username()) ? TRUE : FALSE),
+		"is_archived" = (ahelp_thread.state != AHELP_ACTIVE),
 		"ic_name" = player_info ? player_info["ic_name"] : null,
 		"faction" = player_info ? player_info["faction"] : null,
 		"role" = player_info ? player_info["role"] : null
@@ -128,15 +128,15 @@
 	if(!user?.client)
 		return
 
-	var/client/C = user.client
-	if(!C.ticket_panel)
-		C.ticket_panel = new /datum/ticket_panel()
+	var/client/user_client = user.client
+	if(!user_client.ticket_panel)
+		user_client.ticket_panel = new /datum/ticket_panel()
 
 	var/list/data = list(
-		"is_admin" = CLIENT_IS_STAFF(C) ? TRUE: FALSE,
-		"is_mentor" = CLIENT_IS_MENTOR(C) ? TRUE : FALSE,
-		"selected_tab" = C.ticket_panel.selected_tab,
-		"selected_ticket" = C.ticket_panel.selected_ticket,
+		"is_admin" = CLIENT_IS_STAFF(user_client) ? TRUE: FALSE,
+		"is_mentor" = CLIENT_IS_MENTOR(user_client) ? TRUE : FALSE,
+		"selected_tab" = user_client.ticket_panel.selected_tab,
+		"selected_ticket" = user_client.ticket_panel.selected_ticket,
 		"admin_open_tickets" = list(),
 		"mentor_open_tickets" = list(),
 		"admin_archived_tickets" = list(),
@@ -144,24 +144,24 @@
 	)
 
 	if(CLIENT_IS_STAFF(user.client))
-		for(var/datum/admin_help/AH in GLOB.ahelp_tickets.active_tickets)
-			data["admin_open_tickets"] += list(format_adminhelp_ticket(AH, C))
+		for(var/datum/admin_help/ahelp_thread in GLOB.ahelp_tickets.active_tickets)
+			data["admin_open_tickets"] += list(format_adminhelp_ticket(ahelp_thread, user_client))
 
-		for(var/datum/admin_help/AH in GLOB.ahelp_tickets.closed_tickets)
-			data["admin_archived_tickets"] += list(format_adminhelp_ticket(AH, C))
+		for(var/datum/admin_help/ahelp_thread in GLOB.ahelp_tickets.closed_tickets)
+			data["admin_archived_tickets"] += list(format_adminhelp_ticket(ahelp_thread, user_client))
 
-		for(var/datum/admin_help/AH in GLOB.ahelp_tickets.resolved_tickets)
-			data["admin_archived_tickets"] += list(format_adminhelp_ticket(AH, C))
+		for(var/datum/admin_help/ahelp_thread in GLOB.ahelp_tickets.resolved_tickets)
+			data["admin_archived_tickets"] += list(format_adminhelp_ticket(ahelp_thread, user_client))
 
 	for(var/id in GLOB.mentorhelp_manager.active_tickets)
 		var/datum/mentorhelp/mentor_help_thread = GLOB.mentorhelp_manager.get_ticket_by_id(id)
 		if(istype(mentor_help_thread))
-			data["mentor_open_tickets"] += list(format_mentorhelp_ticket(mentor_help_thread, C))
+			data["mentor_open_tickets"] += list(format_mentorhelp_ticket(mentor_help_thread, user_client))
 
 	for(var/id in GLOB.mentorhelp_manager.archived_tickets)
 		var/datum/mentorhelp/mentor_help_thread = GLOB.mentorhelp_manager.get_ticket_by_id(id)
 		if(istype(mentor_help_thread))
-			data["mentor_archived_tickets"] += list(format_mentorhelp_ticket(mentor_help_thread, C))
+			data["mentor_archived_tickets"] += list(format_mentorhelp_ticket(mentor_help_thread, user_client))
 
 	return data
 
@@ -281,11 +281,11 @@
 
 			switch(selected_tab)
 				if(ADMIN_TAB)
-					var/datum/admin_help/AH = GLOB.ahelp_tickets.TicketByID(ticket_id)
-					if(!istype(AH))
+					var/datum/admin_help/ahelp_thread = GLOB.ahelp_tickets.TicketByID(ticket_id)
+					if(!istype(ahelp_thread))
 						to_chat(current_mob, SPAN_WARNING("Invalid admin ticket selected."))
 						return FALSE
-					player = AH.initiator.mob
+					player = ahelp_thread.initiator.mob
 
 				if(MENTOR_TAB)
 					var/datum/mentorhelp/mentor_help_thread = mentorhelp_by_id(ticket_id)
@@ -304,9 +304,9 @@
 		if("autoreply")
 			var/ticket_id = text2num(params["ticket_id"])
 			if(selected_tab == ADMIN_TAB)
-				var/datum/admin_help/AH = GLOB.ahelp_tickets.TicketByID(ticket_id)
-				if(AH)
-					AH.AutoReply()
+				var/datum/admin_help/ahelp_thread = GLOB.ahelp_tickets.TicketByID(ticket_id)
+				if(ahelp_thread)
+					ahelp_thread.AutoReply()
 					return TRUE
 			else
 				var/datum/mentorhelp/mentor_help_thread = mentorhelp_by_id(ticket_id)
@@ -317,12 +317,12 @@
 		if("reopen_ticket")
 			var/ticket_id = text2num(params["ticket_id"])
 			if(selected_tab == ADMIN_TAB)
-				var/datum/admin_help/AH = GLOB.ahelp_tickets.TicketByID(ticket_id)
-				if(!AH)
+				var/datum/admin_help/ahelp_thread = GLOB.ahelp_tickets.TicketByID(ticket_id)
+				if(!ahelp_thread)
 					to_chat(current_mob, SPAN_WARNING("Invalid admin ticket selected."))
 					return FALSE
 
-				var/client/target = AH.initiator
+				var/client/target = ahelp_thread.initiator
 				if(!target)
 					to_chat(current_mob, SPAN_WARNING("Could not find player associated with this ticket."))
 					return FALSE
@@ -330,7 +330,7 @@
 				if(target.current_ticket && target.current_ticket.state == AHELP_ACTIVE)
 					to_chat(current_mob, SPAN_WARNING("This user already has an open ticket. Please close it first or use the existing one."), confidential = TRUE)
 					return FALSE
-				AH.Reopen()
+				ahelp_thread.Reopen()
 
 				return TRUE
 			else
@@ -351,15 +351,15 @@
 			var/ticket_id = text2num(params["ticket_id"])
 			switch(selected_tab)
 				if(ADMIN_TAB)
-					var/datum/admin_help/AH = GLOB.ahelp_tickets.TicketByID(ticket_id)
-					if(AH)
-						if(AH.marked_admin && AH.marked_admin != current_mob.username())
+					var/datum/admin_help/ahelp_thread = GLOB.ahelp_tickets.TicketByID(ticket_id)
+					if(ahelp_thread)
+						if(ahelp_thread.marked_admin && ahelp_thread.marked_admin != current_mob.username())
 							to_chat(current_mob, SPAN_WARNING("You don't have permission to close this ticket."))
 							return
-						if(AH.state != AHELP_ACTIVE)
-							to_chat(current_mob, SPAN_WARNING("This ticket is already [AH.state == AHELP_RESOLVED ? "resolved" : "closed"]."))
+						if(ahelp_thread.state != AHELP_ACTIVE)
+							to_chat(current_mob, SPAN_WARNING("This ticket is already [ahelp_thread.state == AHELP_RESOLVED ? "resolved" : "closed"]."))
 							return
-						AH.Resolve(current_mob.username(), FALSE)
+						ahelp_thread.Resolve(current_mob.username(), FALSE)
 						message_admins("[key_name_admin(current_mob)] closed ticket #[ticket_id]")
 						log_admin("Ticket #[ticket_id] closed by [key_name(current_mob)]")
 				if(MENTOR_TAB)
@@ -383,16 +383,16 @@
 			var/ticket_id = text2num(params["ticket_id"])
 			switch(selected_tab)
 				if(ADMIN_TAB)
-					var/datum/admin_help/AH = GLOB.ahelp_tickets.TicketByID(ticket_id)
-					if(AH)
-						if(AH.marked_admin)
-							if(AH.marked_admin == current_mob.username())
-								AH.unmark_ticket()
+					var/datum/admin_help/ahelp_thread = GLOB.ahelp_tickets.TicketByID(ticket_id)
+					if(ahelp_thread)
+						if(ahelp_thread.marked_admin)
+							if(ahelp_thread.marked_admin == current_mob.username())
+								ahelp_thread.unmark_ticket()
 								message_admins("[key_name_admin(current_mob)] unclaimed ticket #[ticket_id]")
 							else
-								AH.mark_ticket(current_mob)
+								ahelp_thread.mark_ticket(current_mob)
 						else
-							AH.mark_ticket(current_mob)
+							ahelp_thread.mark_ticket(current_mob)
 							message_admins("[key_name_admin(current_mob)] claimed ticket #[ticket_id]")
 				else
 					var/datum/mentorhelp/mentor_help_thread = mentorhelp_by_id(ticket_id)
@@ -413,9 +413,9 @@
 			var/ticket_id = text2num(params["ticket_id"])
 			switch(selected_tab)
 				if(ADMIN_TAB)
-					var/datum/admin_help/AH = GLOB.ahelp_tickets.TicketByID(ticket_id)
-					if(AH)
-						AH.defer_to_mentors()
+					var/datum/admin_help/ahelp_thread = GLOB.ahelp_tickets.TicketByID(ticket_id)
+					if(ahelp_thread)
+						ahelp_thread.defer_to_mentors()
 				if(MENTOR_TAB)
 					var/datum/mentorhelp/mentor_help_thread = mentorhelp_by_id(ticket_id)
 					if(mentor_help_thread)
@@ -432,11 +432,11 @@
 				return
 
 			if(selected_tab == ADMIN_TAB)
-				var/datum/admin_help/AH = GLOB.ahelp_tickets.TicketByID(ticket_id)
-				if(AH)
-					if(!AH.marked_admin)
-						AH.mark_ticket(current_mob)
-					current_client.cmd_admin_pm(AH.initiator, message)
+				var/datum/admin_help/ahelp_thread = GLOB.ahelp_tickets.TicketByID(ticket_id)
+				if(ahelp_thread)
+					if(!ahelp_thread.marked_admin)
+						ahelp_thread.mark_ticket(current_mob)
+					current_client.cmd_admin_pm(ahelp_thread.initiator, message)
 			else
 				var/datum/mentorhelp/mentor_help_thread = mentorhelp_by_id(ticket_id)
 				if(mentor_help_thread)
@@ -452,12 +452,12 @@
 				return
 
 			if(selected_tab == ADMIN_TAB)
-				var/datum/admin_help/AH = GLOB.ahelp_tickets.TicketByID(ticket_id)
-				if(AH)
-					var/new_subject = tgui_input_text(current_mob, "Enter a subject for this ticket:", "Set Ticket Subject", AH.subject, 100)
+				var/datum/admin_help/ahelp_thread = GLOB.ahelp_tickets.TicketByID(ticket_id)
+				if(ahelp_thread)
+					var/new_subject = tgui_input_text(current_mob, "Enter a subject for this ticket:", "Set Ticket Subject", ahelp_thread.subject, 100)
 					if(!new_subject)
 						return
-					AH.set_subject(new_subject, current_client)
+					ahelp_thread.set_subject(new_subject, current_client)
 			else
 				var/datum/mentorhelp/mentor_help_thread = mentorhelp_by_id(ticket_id)
 				if(!mentor_help_thread)
@@ -479,12 +479,12 @@
 				return FALSE
 
 			var/ticket_id = text2num(params["ticket_id"])
-			var/datum/admin_help/AH = GLOB.ahelp_tickets.TicketByID(ticket_id)
-			if(!AH)
+			var/datum/admin_help/ahelp_thread = GLOB.ahelp_tickets.TicketByID(ticket_id)
+			if(!ahelp_thread)
 				to_chat(current_mob, SPAN_WARNING("Unable to find ticket."))
 				return FALSE
 
-			var/mob/noted_mob = AH.initiator.mob
+			var/mob/noted_mob = ahelp_thread.initiator.mob
 			if(!noted_mob || !noted_mob.username())
 				to_chat(current_mob, SPAN_WARNING("Unable to find mob."))
 				return FALSE
@@ -504,18 +504,18 @@
 			if(!ticket_id)
 				return FALSE
 
-			var/datum/admin_help/AH
+			var/datum/admin_help/ahelp_thread
 			if(selected_tab == ADMIN_TAB)
-				AH = GLOB.ahelp_tickets.TicketByID(ticket_id)
+				ahelp_thread = GLOB.ahelp_tickets.TicketByID(ticket_id)
 			else
 				to_chat(current_mob, SPAN_WARNING("Can only ban from admin tickets."))
 				return FALSE
 
-			if(!AH || !AH.initiator)
+			if(!ahelp_thread || !ahelp_thread.initiator)
 				to_chat(current_mob, SPAN_WARNING("Unable to find ticket or player."))
 				return FALSE
 
-			var/mob/banned_mob = AH.initiator.mob
+			var/mob/banned_mob = ahelp_thread.initiator.mob
 			if(!current_mob || !current_mob.username())
 				to_chat(current_mob, SPAN_WARNING("Unable to find player to ban."))
 				return FALSE
@@ -531,7 +531,7 @@
 			if(!perm_ban.act(current_client, banned_mob))
 				return FALSE
 
-			AH.Resolve(current_mob.username(), FALSE)
+			ahelp_thread.Resolve(current_mob.username(), FALSE)
 			message_admins("[key_name_admin(current_mob)] banned [key_name_admin(banned_mob)] and closed ticket #[ticket_id]")
 			log_admin("Ticket #[ticket_id] closed by [key_name(current_mob)] after banning [banned_mob.username()]")
 			return TRUE

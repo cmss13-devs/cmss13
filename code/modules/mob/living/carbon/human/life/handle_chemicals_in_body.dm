@@ -14,11 +14,8 @@
 				universal_understand = FALSE
 			chem_effect_flags = 0
 
-	if(reagents && !(species.flags & NO_CHEM_METABOLIZATION))
-		var/alien = 0
-		if(species && species.reagent_tag)
-			alien = species.reagent_tag
-		reagents.metabolize(src, alien, delta_time)
+	if(!(species.flags & NO_CHEM_METABOLIZATION))
+		reagents?.metabolize(src, species.reagent_tag, delta_time)
 
 	if(status_flags & GODMODE)
 		return 0 //Godmode

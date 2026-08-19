@@ -54,7 +54,7 @@
 	from 'eating' attacks. We'll either abort and let Byond behave normally, or override it and do a click immediately even if the button is held down.*/
 	if(prefs && prefs.toggle_prefs & TOGGLE_COMBAT_CLICKDRAG_OVERRIDE && !(HAS_TRAIT(mob, TRAIT_OVERRIDE_CLICKDRAG)) )
 		switch(mob.a_intent) //Only combat intents should override click-drags.
-			if(INTENT_HELP)
+			if(INTENT_HELP, INTENT_GRAB)
 				return
 
 		//Some combat intent click-drags shouldn't be overridden.

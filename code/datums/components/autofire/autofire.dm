@@ -152,7 +152,7 @@
 	///Delay between two shots when in full auto
 	var/autoslash_attack_delay
 	///If the shooter is currently shooting
-	var/shooting = FALSE
+	var/slashing = FALSE
 	///If TRUE, the shooter will reset its references at the end of the burst
 	var/have_to_reset_at_burst_end = FALSE
 	///Callback to ask the parent to reset its firing vars
@@ -185,36 +185,36 @@
 
 /datum/component/automatedfire/autoslash/proc/start_autoslash()
 	SIGNAL_HANDLER
-	if(shooting)//if we are already shooting, it means the shooter is still on cooldown
+	if(slashing)//if we are already shooting, it means the shooter is still on cooldown
 		return
-	shooting = TRUE
+	slashing = TRUE
 	process_shot()
 
 /datum/component/automatedfire/autoslash/proc/stop_autoslash(mob/living/carbon/xenomorph/our_xeno)
 	SIGNAL_HANDLER
-	if(!shooting)
+	if(!slashing)
 		return
-	shooting = FALSE
+	slashing = FALSE
 	our_xeno.last_target = null
 
 /datum/component/automatedfire/autoslash/proc/hard_reset()
 	SIGNAL_HANDLER
 	callback_clear_target.Invoke()
 	have_to_reset_at_burst_end = FALSE
-	shooting = FALSE
-
+	slashing = FALSE
+/*
 ///Manually sets firedelay
 /datum/component/automatedfire/autoslash/proc/set_next_fire(atom/movable, new_next_slash)
 	SIGNAL_HANDLER
 	next_fire = new_next_slash
-
+*/
 /datum/component/automatedfire/autoslash/process_shot()
-	if(!shooting)
+	if(!slashing)
 		return
-	if(next_fire > world.time)//requeue the slashing
+	if(next_fire > world.time)
 		return
 	if(!(callback_slash.Invoke()))
 		hard_reset()
 		return
-	next_fire = world.time + autoslash_attack_delay
+	next_fire = world.time + 4// + autoslash_attack_delay
 	schedule_shot()

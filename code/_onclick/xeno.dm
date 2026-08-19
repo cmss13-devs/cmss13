@@ -93,16 +93,18 @@
 				else
 					src.visible_message(SPAN_DANGER("\The [src] swipes at \the [target]!"),
 					SPAN_DANGER("We swipe at \the [target]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-	last_target = WEAKREF(target)
-	SEND_SIGNAL(src, COMSIG_AUTOSLASH)
+	if(a_intent == INTENT_DISARM)
+		last_target = WEAKREF(target)
+		SEND_SIGNAL(src, COMSIG_AUTOSLASH)
 	return TRUE
 
-/mob/living/carbon/xenomorph/RangedAttack(atom/A)
+/mob/living/carbon/xenomorph/RangedAttack(atom/A, adjust_move = TRUE)
 	. = ..()
 	if (.)
 		return
 	if (client && client.prefs && client.prefs.toggle_prefs & TOGGLE_DIRECTIONAL_ATTACK)
-		next_move += 0.25 SECONDS //Slight delay on missed directional attacks. If it finds a mob in the target tile, this will be overwritten by the attack delay.
+		if(adjust_move) // for teh sake of responsiveness of autoslash, there's already a 0.4 second delay built in
+			next_move += 0.25 SECONDS //Slight delay on missed directional attacks. If it finds a mob in the target tile, this will be overwritten by the attack delay.
 		return UnarmedAttack(get_step(src, Get_Compass_Dir(src, A)), tile_attack = TRUE, ignores_resin = TRUE)
 	return FALSE
 
@@ -115,7 +117,7 @@
 			if(target.Adjacent(src))
 				return UnarmedAttack(target, 1, click_parameters)
 			else
-				return RangedAttack(target)
+				return RangedAttack(target, adjust_move = FALSE)
 	else
 		SEND_SIGNAL(src, COMSIG_AUTOSLASH)
 		return TRUE

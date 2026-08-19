@@ -31,7 +31,6 @@
 #define SOUND_CHANNEL_LOBBY 1023
 #define SOUND_CHANNEL_Z 1024
 
-
 //default byond sound echo list index positions.
 //ECHO_DIRECT and ECHO_ROOM are the only two that actually appear to do anything, and represent the dry and wet channels of the environment effects, respectively.
 #define ECHO_DIRECT 1
@@ -143,3 +142,7 @@
 
 #define SCAPE_PL_TYRARGO_SEWER list('sound/ambience/tyrargo_underground_1.ogg','sound/ambience/tyrargo_underground_2.ogg','sound/ambience/tyrargo_underground_3.ogg','sound/ambience/tyrargo_underground_4.ogg')
 #define SCAPE_PL_TYRARGO_ALERT list('sound/ambience/tyrargo_alert_1.ogg', 'sound/ambience/tyrargo_alert_2.ogg', 'sound/ambience/tyrargo_alert_3.ogg', 'sound/ambience/tyrargo_alert_4.ogg', 'sound/ambience/tyrargo_alert_5.ogg', 'sound/ambience/tyrargo_alert_6.ogg')
+
+// White Antre Soundscapes
+#define AMBIENCE_ANTRE 'sound/ambience/venir_hallway.ogg'
+#define AMBIENCE_ANTRE_ADJACENT 'sound/ambience/venir_hallway_adjacent.ogg'

@@ -50,6 +50,13 @@
 #define PROJECTILE_SHRAPNEL  (1<<0)
 /// Apply additional effects upon hitting clicked target
 #define PROJECTILE_BULLSEYE  (1<<1)
+/// Reflected projectiles
+#define PROJECTILE_REFLECTED (1<<2)
+
+///Bonus Projectile Check Defines
+#define PROJECTILE_LONE 0
+#define PROJECTILE_ORIGINAL 1
+#define PROJECTILE_BONUS 2
 
 //Gun defines for gun related thing. More in the projectile folder.
 
@@ -76,6 +83,12 @@
 #define GUN_SUPPORT_PLATFORM (1<<16)
 /// No gun description, only base desc
 #define GUN_NO_DESCRIPTION (1<<17)
+/// If the gun can do battlefield executions
+#define GUN_BATTLEFIELD_EXECUTION (1<<18)
+/// If the gun can perform tricks
+#define GUN_TRICKSTER (1<<19)
+/// If the gun can perform a warning shot
+#define GUN_CAN_WARNING_SHOT (1<<20)
 // NOTE: Don't add flags past 1<<23, it'll break things due to BYOND limitations. You can usually use a Component instead.
 
 #define USES_STREAKS (1<<0)
@@ -135,15 +148,14 @@
 #define SLOWDOWN_ADS_MINISCOPE_DYNAMIC 1.8
 #define SLOWDOWN_ADS_SUPERWEAPON 2.75
 
-//Wield delays, in milliseconds. 10 is 1 second
-#define WIELD_DELAY_NONE 0
-#define WIELD_DELAY_MIN 1
-#define WIELD_DELAY_VERY_FAST 2
-#define WIELD_DELAY_FAST 4
-#define WIELD_DELAY_NORMAL 6
-#define WIELD_DELAY_SLOW 8
-#define WIELD_DELAY_VERY_SLOW 10
-#define WIELD_DELAY_HORRIBLE 12
+#define WEAPON_DELAY_NONE 0
+#define WEAPON_DELAY_MIN 1
+#define WEAPON_DELAY_VERY_FAST 2
+#define WEAPON_DELAY_FAST 4
+#define WEAPON_DELAY_NORMAL 6
+#define WEAPON_DELAY_SLOW 8
+#define WEAPON_DELAY_VERY_SLOW 10
+#define WEAPON_DELAY_HORRIBLE 12
 
 ///This is how long you must wait to throw again after throwing two things
 #define THROW_DELAY (1.5 SECONDS)

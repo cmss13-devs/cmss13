@@ -91,6 +91,7 @@
 	minimap_icon = "deputy"
 	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)
 	idtype = /obj/item/card/id/marshal
+	faction = FACTION_MARSHAL
 	skills = /datum/skills/cmb/co_survivor
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
@@ -135,7 +136,7 @@
 	assignment = "USCM Recruiter"
 	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0)
 	minimap_icon = "recruiter"
-	minimap_background = "background_medical"
+	minimap_background = "background_officer"
 	skills = /datum/skills/civilian/survivor/uscm_recruiter
 
 /datum/equipment_preset/survivor/uscm/solaris/load_gear(mob/living/carbon/human/new_human)
@@ -355,6 +356,10 @@
 
 /datum/equipment_preset/synth/survivor/solaris/corporate
 	name = "Survivor - Solaris - Synthetic - Corporate Assistant"
+	job_title = JOB_WY_SEC_SYNTH
+	assignment = "W-Y Corporate Assistant Synthetic"
+	faction = FACTION_WY
+	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/cl
 	role_comm_title = "WY Syn"

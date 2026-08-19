@@ -9,7 +9,7 @@
 	description = "Blood is classified as a connective tissue and consists of two main components: Plasma, which is a clear extracellular fluid. Formed elements, which are made up of the blood cells and platelets."
 	reagent_state = LIQUID
 	color = "#A10808"
-	data_properties = new/list("blood_type"=null,"blood_color"= "#A10808","viruses"=null,"resistances"=null)
+	data_properties = list("blood_type"=null,"blood_color"= "#A10808","viruses"=null,"resistances"=null)
 	chemclass = CHEM_CLASS_RARE
 
 
@@ -533,13 +533,13 @@
 	//------------------//
 	intensityfire = BURN_LEVEL_TIER_1
 	durationfire = BURN_TIME_TIER_1
-	burn_sprite = "red"
+	burn_sprite = "dynamic"
 	rangefire = 4
 	//------------------//
 	explosive = TRUE
 	power = 0.12
 	falloff_modifier = -0.1
-	burncolor = "#ff9900"
+	burncolor = "#660000"
 	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_FUELING = 5, PROPERTY_OXIDIZING = 3, PROPERTY_VISCOUS = 4, PROPERTY_TOXIC = 1)
 

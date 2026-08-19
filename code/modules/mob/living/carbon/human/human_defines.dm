@@ -26,9 +26,9 @@
 	var/g_eyes = 0
 	var/b_eyes = 0
 
-	var/skin_color = "Pale 2" // Skin color
-	var/body_size = "Average" // Body Size
-	var/body_type = "Lean" // Body Buffness
+	var/skin_color = SKIN_COLOR_PALE2 // Skin color
+	var/body_size = BODY_SIZE_AVERAGE // Body Size
+	var/body_type = BODY_TYPE_LEAN // Body Buffness
 	var/body_presentation
 
 	//Skin color
@@ -69,8 +69,6 @@
 
 	var/voice
 
-	var/special_voice = "" // For changing our voice. Used by a symptom.
-
 	var/last_dam = -1 //Used for determining if we need to process all limbs or just some or even none.
 	var/list/limbs_to_process = list()// limbs we check until they are good.
 
@@ -84,11 +82,11 @@
 	//Life variables
 	var/oxygen_alert = 0
 	var/fire_alert = 0
-	var/prev_gender = null // Debug for plural genders
 	var/revive_grace_period = 5 MINUTES //5 minutes
 	var/undefibbable = FALSE //whether the human is dead and past the defibbrillation period.
 
 	var/holo_card_color = "" //which color type of holocard is printed on us
+	var/holo_card_accuracy = HOLOCARD_ACCURACY_HANDHELD // What placed this holocard on the human
 
 	var/list/obj/limb/limbs = list()
 	var/list/internal_organs_by_name = list() // so internal organs have less ickiness too
@@ -117,6 +115,8 @@
 	var/datum/equipment_preset/assigned_equipment_preset
 	var/rank_override
 	var/rank_fallback
+	///Used for specialists for their chosen preference on roundstart
+	var/role_title_override
 
 	var/datum/squad/assigned_squad //the squad this human is assigned to
 	var/assigned_fireteam = 0 //the fireteam this human is assigned to
@@ -143,7 +143,7 @@
 
 	//taken from human.dm
 	hud_possible = list(HEALTH_HUD, STATUS_HUD, STATUS_HUD_OOC, STATUS_HUD_XENO_INFECTION, STATUS_HUD_XENO_CULTIST, ID_HUD, WANTED_HUD, ORDER_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_TAG_SPREAD, XENO_HOSTILE_FREEZE, XENO_EXECUTE, HUNTER_CLAN, HUNTER_HUD, FACTION_HUD, HOLOCARD_HUD, NEW_PLAYER_HUD)
-	var/embedded_flag //To check if we've need to roll for damage on movement while an item is imbedded in us.
+
 	var/allow_gun_usage = TRUE
 	var/melee_allowed = TRUE
 	var/throw_allowed = TRUE

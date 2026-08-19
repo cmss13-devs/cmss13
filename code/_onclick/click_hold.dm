@@ -16,20 +16,20 @@
 	var/list/lmb_last_mousedown_mods
 	var/datum/entity/clan_player/clan_info
 
-/client/MouseDown(atom/A, turf/T, skin_ctl, params)
+/client/MouseDown(atom/atom_clicked, turf/turf_of_atom_clicked, skin_ctl, params)
 	ignore_next_click = FALSE
-	if(!A)
+	if(!atom_clicked)
 		return
 
 	// If we're clicking on the black part of the screen
 	var/click_catcher_click = FALSE
-	CONVERT_CLICK_CATCHER(A, T, click_catcher_click)
+	CONVERT_CLICK_CATCHER(atom_clicked, turf_of_atom_clicked, click_catcher_click)
 	if(click_catcher_click)
 		params += CLICK_CATCHER_ADD_PARAM
 	holding_click = TRUE
 
 	mouse_trace_history = null
-	LAZYADD(mouse_trace_history, A)
+	LAZYADD(mouse_trace_history, atom_clicked)
 
 	var/list/mods = params2list(params)
 	if(mods[LEFT_CLICK] && mods[RIGHT_CLICK])
@@ -39,11 +39,15 @@
 			mods -= RIGHT_CLICK
 		params = list2params(mods)
 
-	if(SEND_SIGNAL(mob, COMSIG_MOB_MOUSEDOWN, A, T, skin_ctl, params) & COMSIG_MOB_CLICK_CANCELED)
+	var/click_signal_result = SEND_SIGNAL(mob, COMSIG_MOB_MOUSEDOWN, atom_clicked, turf_of_atom_clicked, skin_ctl, params) & (COMSIG_MOB_CLICK_CANCELED|COMSIG_MOB_CLICK_HANDLED)
+	if(click_signal_result)
+		if(click_signal_result & COMSIG_MOB_CLICK_HANDLED)
+			mob.face_atom(atom_clicked)
+		ignore_next_click = TRUE
 		return
 
 	if(mods[LEFT_CLICK])
-		SEND_SIGNAL(src, COMSIG_CLIENT_LMB_DOWN, A, mods)
+		SEND_SIGNAL(src, COMSIG_CLIENT_LMB_DOWN, atom_clicked, mods)
 		lmb_last_mousedown_mods = mods
 
 	/*Used by TOGGLE_COMBAT_CLICKDRAG_OVERRIDE to trigger clicks immediately when depressing the mouse button when on disarm/harm intent to prevent click-dragging
@@ -54,31 +58,31 @@
 				return
 
 		//Some combat intent click-drags shouldn't be overridden.
-		var/mob/target_mob = A
-		if(ismob(target_mob) && (target_mob.faction == mob.faction & mob.faction != FACTION_YAUTJA) && !mods[CTRL_CLICK] && !(iscarbonsizexeno(mob) && !mob.get_active_hand())) //Don't attack your allies (besides yautja) or yourself, unless you're a xeno with an open hand.
+		var/mob/target_mob = atom_clicked
+		if(ismob(target_mob) && (target_mob.faction == mob.faction && !(mob.faction == FACTION_YAUTJA || skillcheck(mob, SKILL_EXECUTION, SKILL_EXECUTION_TRAINED))) && !mods[CTRL_CLICK] && !(iscarbonsizexeno(mob) && !mob.get_active_hand())) //Don't attack your allies or yourself, unless you're a xeno with an open hand.
 			return
 
-		if(!isturf(T)) //If clickdragging something in your own inventory, it's probably a deliberate attempt to open something, tactical-reload, etc. Don't click it.
-			return //'T' is actually 'location', and if it isn't a turf, the item is most likely a HUD screen or in inventory somewhere.
+		if(!isturf(turf_of_atom_clicked)) //If clickdragging something in your own inventory, it's probably a deliberate attempt to open something, tactical-reload, etc. Don't click it.
+			return //'turf_of_atom_clicked' is actually 'location', and if it isn't a turf, the item is most likely a HUD screen or in inventory somewhere.
 
-		Click(A, T, skin_ctl, params)
+		Click(atom_clicked, turf_of_atom_clicked, skin_ctl, params)
 
-/client/MouseUp(atom/A, turf/T, skin_ctl, params)
-	if(!A)
+/client/MouseUp(atom/atom_clicked, turf/turf_of_atom_clicked, skin_ctl, params)
+	if(!atom_clicked)
 		return
 
 	var/click_catcher_click = FALSE
-	CONVERT_CLICK_CATCHER(A, T, click_catcher_click)
+	CONVERT_CLICK_CATCHER(atom_clicked, turf_of_atom_clicked, click_catcher_click)
 	if(click_catcher_click)
 		params += CLICK_CATCHER_ADD_PARAM
 	holding_click = FALSE
 
-	if(SEND_SIGNAL(mob, COMSIG_MOB_MOUSEUP, A, T, skin_ctl, params) & COMSIG_MOB_CLICK_CANCELED)
+	if(SEND_SIGNAL(mob, COMSIG_MOB_MOUSEUP, atom_clicked, turf_of_atom_clicked, skin_ctl, params) & (COMSIG_MOB_CLICK_CANCELED|COMSIG_MOB_CLICK_HANDLED) || ignore_next_click)
 		return
 
 	var/list/mods = params2list(params)
 	if(mods[LEFT_CLICK])
-		SEND_SIGNAL(src, COMSIG_CLIENT_LMB_UP, A, params)
+		SEND_SIGNAL(src, COMSIG_CLIENT_LMB_UP, atom_clicked, params)
 
 /client/MouseDrag(atom/src_obj, atom/over_obj, turf/src_loc, turf/over_loc, src_ctl, over_ctl, params)
 	if(!over_obj)

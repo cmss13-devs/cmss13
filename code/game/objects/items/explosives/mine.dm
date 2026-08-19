@@ -408,6 +408,14 @@
 	/// What ammo should it create when converted back
 	var/datum/ammo/rifle/sharp/ammo_path = /datum/ammo/rifle/sharp/explosive
 
+/obj/item/explosive/mine/sharp/Initialize()
+	. = ..()
+	ASSERT(ispath(ammo_path, /datum/ammo/rifle/sharp))
+
+/obj/item/explosive/mine/sharp/Destroy()
+	deltimer(timer_id)
+	. = ..()
+
 /obj/item/explosive/mine/sharp/proc/upgrade_mine()
 	mine_level++
 	icon_state = mine_state + "_[mine_level]"
@@ -483,7 +491,7 @@
 /// Converts the mine back into usable ammo
 /obj/item/explosive/mine/sharp/proc/convert_into_ammo()
 	var/obj/item/ammo_magazine/handful/new_handful = new(get_turf(src))
-	new_handful.generate_handful(ammo_path, /obj/item/ammo_magazine/rifle/sharp::caliber, 5, 1, /obj/item/weapon/gun/rifle/sharp::type)
+	new_handful.generate_handful(ammo_path, /obj/item/ammo_magazine/rifle/sharp::caliber, 1, /obj/item/weapon/gun/rifle/sharp::type)
 	qdel(src)
 
 /obj/item/explosive/mine/sharp/attack_self(mob/living/user)

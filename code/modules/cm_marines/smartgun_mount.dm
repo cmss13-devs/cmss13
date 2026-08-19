@@ -149,6 +149,9 @@
 		if(!floor.allow_construction)
 			to_chat(user, SPAN_WARNING("You cannot install \the [src] here, find a more secure surface!"))
 			return FALSE
+	if(locate(/obj/structure/blocker/tent/interior_blocker) in get_turf(user))
+		to_chat(user, SPAN_WARNING("You cannot install [src] inside of a tent!"))
+		return FALSE
 	var/fail = FALSE
 	if(T.density)
 		fail = TRUE
@@ -253,6 +256,10 @@
 		if(!floor.allow_construction)
 			to_chat(user, SPAN_WARNING("You cannot install \the [src] here, find a more secure surface!"))
 			return FALSE
+	if(locate(/obj/structure/blocker/tent/interior_blocker) in get_turf(user))
+		to_chat(user, SPAN_WARNING("You cannot install [src] inside of a tent!"))
+		return FALSE
+
 	var/fail = FALSE
 	if(T.density)
 		fail = TRUE

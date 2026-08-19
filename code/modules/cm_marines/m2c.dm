@@ -115,6 +115,9 @@
 	if(rotate_check.density)
 		to_chat(user, SPAN_WARNING("You can't set up \the [src] that way, there's a wall behind you!"))
 		return FALSE
+	if((locate(/obj/structure/blocker/tent/interior_blocker) in OT))
+		to_chat(user, SPAN_WARNING("You can't set up [src] inside of a tent!"))
+		return FALSE
 	for(var/obj/structure/potential_blocker in rotate_check)
 		if(potential_blocker.density)
 			to_chat(user, SPAN_WARNING("You can't set up \the [src] that way, there's \a [potential_blocker] behind you!"))

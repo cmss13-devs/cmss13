@@ -322,6 +322,8 @@
 			if(!floor.allow_construction)
 				to_chat(user, SPAN_WARNING("You cannot secure \the [src] here, find a more secure surface!"))
 				return FALSE
+			if(locate(/obj/structure/blocker/tent/interior_blocker) in floor)
+				to_chat(user, SPAN_WARNING("You cannot secure [src] inside of a tent!"))
 			user.visible_message(SPAN_NOTICE("[user] begins securing [src] to the ground."),
 			SPAN_NOTICE("You begin securing [src] to the ground."))
 

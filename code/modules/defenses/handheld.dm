@@ -56,6 +56,10 @@
 	var/turf/T = get_step(user, user.dir)
 	var/direction = user.dir
 
+	if(locate(/obj/structure/blocker/tent/interior_blocker) in T)
+		to_chat(user, SPAN_WARNING("You cannot deploy [src] inside of a tent!"))
+		break
+
 	var/blocked = FALSE
 	for(var/obj/O in T)
 		if(O.density)

@@ -26,7 +26,7 @@
 /datum/unit_test/pheromones/Run()
 	SHOULD_CALL_PARENT(FALSE)
 
-/// Sleeps until a full loop of the xeno life subsystem has completed
+/// Sleeps until X amount of full loops of the xeno life subsystem have completed
 /datum/unit_test/pheromones/proc/wait_full_life_loops(loops = 1)
 	RegisterSignal(SSdcs, COSMIG_GLOB_XENO_LIFE_COMPLETE, PROC_REF(poke_full_life_loop), override = TRUE)
 
@@ -35,13 +35,14 @@
 		sleep(ss_wait_override ? ss_wait_override : 1 SECONDS)
 
 		waiting_loops++
-		if (waiting_loops > 30)
-			TEST_NOTICE(src, "Test timed out while waiting for a full cycle of the xeno life loop to complete")
+		if (waiting_loops > 30 * loops)
+			TEST_FAIL("Test timed out while waiting for a full cycle of the xeno life loop to complete")
 			last_life_complete = FALSE
 			total_loops_complete = 0
 			UnregisterSignal(src, COSMIG_GLOB_XENO_LIFE_COMPLETE)
 			return
 
+	last_life_complete = FALSE
 	total_loops_complete = 0
 	UnregisterSignal(src, COSMIG_GLOB_XENO_LIFE_COMPLETE)
 
@@ -52,7 +53,6 @@
 		last_life_complete = TRUE
 		return
 	total_loops_complete++
-	last_life_complete = FALSE
 
 /**
  * Tests whether a pair of xenomorphs, one dedicated emitter and one dedicated receiver, transmit the expected level of pheromones.
@@ -202,7 +202,7 @@
 	if (receiver.warding_aura > 0)
 		received_pheromones[XENO_PHERO_WARDING] = receiver.warding_aura
 
-	if (!length(expected_pheromones))
+	if (isnull(expected_pheromones) || !length(expected_pheromones))
 		// No pheromones were expected and no pheromones were received; PASS
 		if (!length(received_pheromones))
 			return

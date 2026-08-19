@@ -217,7 +217,8 @@
 /obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
-	layer = 5.98
+	layer = 5.98;
+	pixel_y = -14
 	},
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
@@ -4111,10 +4112,11 @@
 	layer = 5.8;
 	pixel_y = -14
 	},
-/obj/structure/prop/northpoint/concrete_wall/wired{
-	dir = 4
-	},
 /obj/structure/blocker/invisible_wall/map_edge,
+/obj/structure/prop/northpoint/concrete_wall/wired{
+	dir = 4;
+	pixel_y = -14
+	},
 /turf/open/hybrisa/street/sidewalkcenter,
 /area/northpoint/oob)
 "amd" = (
@@ -4284,7 +4286,8 @@
 /obj/effect/decal/hybrisa/road/lines4,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
-	layer = 5.97
+	layer = 5.97;
+	pixel_y = -14
 	},
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
@@ -4298,7 +4301,8 @@
 /obj/effect/decal/hybrisa/road/lines3,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
-	layer = 5.98
+	layer = 5.98;
+	pixel_y = -14
 	},
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
@@ -4352,7 +4356,8 @@
 	},
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
-	layer = 5.97
+	layer = 5.97;
+	pixel_y = -14
 	},
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
@@ -4392,7 +4397,12 @@
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.98;
-	pixel_y = -4
+	pixel_y = -15
+	},
+/obj/structure/prop/northpoint/concrete_wall/wired{
+	dir = 1;
+	layer = 5.8;
+	pixel_y = -14
 	},
 /turf/open/floor/prison/floor_plate/southwest,
 /area/northpoint/oob)
@@ -4795,6 +4805,20 @@
 "anY" = (
 /turf/open/floor/carpetside/northeast,
 /area/northpoint/outdoors/urban_cave/south_east)
+"anZ" = (
+/obj/structure/blocker/invisible_wall/map_edge,
+/obj/structure/prop/northpoint/concrete_wall/wired{
+	dir = 1;
+	layer = 5.8;
+	pixel_y = -14
+	},
+/obj/structure/prop/northpoint/concrete_wall/wired{
+	dir = 4;
+	layer = 5.98;
+	pixel_y = -14
+	},
+/turf/open/hybrisa/street/sidewalk/east,
+/area/northpoint/oob)
 "aoa" = (
 /obj/structure/prop/hybrisa/fakeplatforms/platform4/deco,
 /obj/effect/decal/strata_decals/grime/grime4{
@@ -5011,7 +5035,9 @@
 	pixel_y = -14
 	},
 /obj/structure/prop/northpoint/concrete_wall/wired{
-	dir = 8
+	dir = 8;
+	layer = 5.99;
+	pixel_y = -14
 	},
 /turf/open/hybrisa/street/sidewalk,
 /area/northpoint/oob)
@@ -5744,7 +5770,8 @@
 "aqu" = (
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
-	layer = 5.91
+	layer = 5.91;
+	pixel_y = -14
 	},
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
@@ -5993,7 +6020,8 @@
 /obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
-	layer = 5.98
+	layer = 5.98;
+	pixel_y = -14
 	},
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
@@ -6064,7 +6092,8 @@
 	},
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
-	layer = 5.97
+	layer = 5.97;
+	pixel_y = -14
 	},
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
@@ -6617,7 +6646,9 @@
 	pixel_y = -14
 	},
 /obj/structure/prop/northpoint/concrete_wall/wired{
-	dir = 8
+	dir = 8;
+	layer = 5.99;
+	pixel_y = -14
 	},
 /turf/open/hybrisa/street/sidewalkcenter,
 /area/northpoint/oob)
@@ -8720,7 +8751,8 @@
 	},
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
-	layer = 5.99
+	layer = 5.99;
+	pixel_y = -14
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/northpoint/oob)
@@ -9579,7 +9611,7 @@
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.98;
-	pixel_y = -4
+	pixel_y = -14
 	},
 /obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
@@ -10367,7 +10399,7 @@
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.99;
-	pixel_y = -4
+	pixel_y = -14
 	},
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
@@ -18295,7 +18327,7 @@
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.99;
-	pixel_y = -4
+	pixel_y = -14
 	},
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
@@ -18348,7 +18380,8 @@
 /obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
-	layer = 5.97
+	layer = 5.97;
+	pixel_y = -14
 	},
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
@@ -18501,7 +18534,9 @@
 	pixel_y = -14
 	},
 /obj/structure/prop/northpoint/concrete_wall/wired{
-	dir = 8
+	dir = 8;
+	layer = 5.99;
+	pixel_y = -14
 	},
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
@@ -18608,7 +18643,8 @@
 "bAA" = (
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
-	layer = 5.99
+	layer = 5.99;
+	pixel_y = -14
 	},
 /obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
@@ -18922,7 +18958,8 @@
 /obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
-	layer = 5.98
+	layer = 5.98;
+	pixel_y = -14
 	},
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
@@ -19035,7 +19072,8 @@
 /obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
-	layer = 5.96
+	layer = 5.96;
+	pixel_y = -14
 	},
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
@@ -19313,7 +19351,8 @@
 /obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
-	layer = 5.97
+	layer = 5.97;
+	pixel_y = -14
 	},
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
@@ -19566,7 +19605,8 @@
 	},
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
-	layer = 5.96
+	layer = 5.96;
+	pixel_y = -14
 	},
 /turf/open/hybrisa/street/sidewalk/west,
 /area/northpoint/oob)
@@ -20426,7 +20466,7 @@
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.99;
-	pixel_y = -4
+	pixel_y = -14
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/northpoint/oob)
@@ -20850,7 +20890,8 @@
 /obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
-	layer = 5.99
+	layer = 5.99;
+	pixel_y = -14
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/northpoint/oob)
@@ -21945,7 +21986,7 @@
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.98;
-	pixel_y = -4
+	pixel_y = -14
 	},
 /obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
@@ -22372,7 +22413,8 @@
 	},
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
-	layer = 5.97
+	layer = 5.97;
+	pixel_y = -14
 	},
 /turf/open/hybrisa/street/sidewalk/east,
 /area/northpoint/oob)
@@ -22838,7 +22880,7 @@
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.99;
-	pixel_y = -4
+	pixel_y = -14
 	},
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
@@ -22969,7 +23011,7 @@
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.98;
-	pixel_y = -4
+	pixel_y = -14
 	},
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
@@ -23853,7 +23895,7 @@
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.98;
-	pixel_y = -4
+	pixel_y = -14
 	},
 /turf/open/hybrisa/street/sidewalkcenter/north,
 /area/northpoint/oob)
@@ -24198,7 +24240,9 @@
 	pixel_y = -14
 	},
 /obj/structure/prop/northpoint/concrete_wall/wired{
-	dir = 8
+	dir = 8;
+	layer = 5.99;
+	pixel_y = -14
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
@@ -25308,10 +25352,11 @@
 	layer = 5.8;
 	pixel_y = -14
 	},
-/obj/structure/prop/northpoint/concrete_wall/wired{
-	dir = 4
-	},
 /obj/structure/blocker/invisible_wall/map_edge,
+/obj/structure/prop/northpoint/concrete_wall/wired{
+	dir = 4;
+	pixel_y = -14
+	},
 /turf/open/hybrisa/street/sidewalk,
 /area/northpoint/oob)
 "kHA" = (
@@ -25477,7 +25522,7 @@
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.98;
-	pixel_y = -4
+	pixel_y = -14
 	},
 /obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/asphalt/brown,
@@ -26232,7 +26277,7 @@
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.99;
-	pixel_y = -4
+	pixel_y = -14
 	},
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
@@ -26537,10 +26582,11 @@
 	layer = 5.8;
 	pixel_y = -14
 	},
-/obj/structure/prop/northpoint/concrete_wall/wired{
-	dir = 4
-	},
 /obj/structure/blocker/invisible_wall/map_edge,
+/obj/structure/prop/northpoint/concrete_wall/wired{
+	dir = 4;
+	pixel_y = -14
+	},
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "mjY" = (
@@ -28303,10 +28349,11 @@
 	layer = 5.8;
 	pixel_y = -14
 	},
-/obj/structure/prop/northpoint/concrete_wall/wired{
-	dir = 4
-	},
 /obj/structure/blocker/invisible_wall/map_edge,
+/obj/structure/prop/northpoint/concrete_wall/wired{
+	dir = 4;
+	pixel_y = -14
+	},
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
 "oSX" = (
@@ -28565,7 +28612,8 @@
 	},
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
-	layer = 5.98
+	layer = 5.98;
+	pixel_y = -14
 	},
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
@@ -28896,7 +28944,7 @@
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.98;
-	pixel_y = -4
+	pixel_y = -14
 	},
 /turf/open/floor/prison/floor_plate/southwest,
 /area/northpoint/oob)
@@ -29008,7 +29056,9 @@
 	pixel_y = -14
 	},
 /obj/structure/prop/northpoint/concrete_wall/wired{
-	dir = 8
+	dir = 8;
+	layer = 5.99;
+	pixel_y = -14
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
@@ -29029,7 +29079,7 @@
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.98;
-	pixel_y = -4
+	pixel_y = -14
 	},
 /obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
@@ -29981,7 +30031,8 @@
 /obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
-	layer = 5.95
+	layer = 5.95;
+	pixel_y = -14
 	},
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
@@ -31072,10 +31123,11 @@
 	layer = 5.8;
 	pixel_y = -14
 	},
-/obj/structure/prop/northpoint/concrete_wall/wired{
-	dir = 4
-	},
 /obj/structure/blocker/invisible_wall/map_edge,
+/obj/structure/prop/northpoint/concrete_wall/wired{
+	dir = 4;
+	pixel_y = -14
+	},
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "sFW" = (
@@ -31220,7 +31272,9 @@
 	pixel_y = -14
 	},
 /obj/structure/prop/northpoint/concrete_wall/wired{
-	dir = 8
+	dir = 8;
+	layer = 5.99;
+	pixel_y = -14
 	},
 /turf/open/hybrisa/street/sidewalk/north,
 /area/northpoint/oob)
@@ -31253,7 +31307,7 @@
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.99;
-	pixel_y = -4
+	pixel_y = -14
 	},
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
@@ -32816,7 +32870,7 @@
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.99;
-	pixel_y = -4
+	pixel_y = -14
 	},
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
@@ -33171,7 +33225,8 @@
 	pixel_y = -14
 	},
 /obj/structure/prop/northpoint/concrete_wall/wired{
-	dir = 4
+	dir = 4;
+	pixel_y = -14
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
@@ -33241,7 +33296,7 @@
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.98;
-	pixel_y = -4
+	pixel_y = -14
 	},
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
@@ -33306,7 +33361,7 @@
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.98;
-	pixel_y = -4
+	pixel_y = -14
 	},
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
@@ -33828,7 +33883,8 @@
 	pixel_y = -14
 	},
 /obj/structure/prop/northpoint/concrete_wall/wired{
-	dir = 4
+	dir = 4;
+	pixel_y = -14
 	},
 /turf/open/asphalt/brown,
 /area/northpoint/oob)
@@ -34097,7 +34153,8 @@
 	},
 /obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
-	dir = 4
+	dir = 4;
+	pixel_y = -14
 	},
 /turf/open/hybrisa/street/sidewalk/north,
 /area/northpoint/oob)
@@ -34229,7 +34286,7 @@
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
 	layer = 5.99;
-	pixel_y = -4
+	pixel_y = -14
 	},
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
@@ -34476,7 +34533,8 @@
 "xFX" = (
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
-	layer = 5.97
+	layer = 5.97;
+	pixel_y = -14
 	},
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
@@ -34794,7 +34852,8 @@
 	},
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
-	layer = 5.99
+	layer = 5.99;
+	pixel_y = -14
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/northpoint/oob)
@@ -61400,7 +61459,7 @@ abg
 aKx
 ieP
 uda
-apy
+anZ
 uEx
 uEx
 uEx

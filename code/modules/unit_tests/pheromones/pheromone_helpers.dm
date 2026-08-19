@@ -21,28 +21,28 @@
 	var/ss_wait_override = 100 MILLISECONDS
 
 	var/last_life_complete = FALSE
-	var/full_life_complete = FALSE
+	var/total_loops_complete = 0
 
 /datum/unit_test/pheromones/Run()
 	SHOULD_CALL_PARENT(FALSE)
 
 /// Sleeps until a full loop of the xeno life subsystem has completed
-/datum/unit_test/pheromones/proc/wait_full_life_loop()
+/datum/unit_test/pheromones/proc/wait_full_life_loops(loops = 1)
 	RegisterSignal(SSdcs, COSMIG_GLOB_XENO_LIFE_COMPLETE, PROC_REF(poke_full_life_loop), override = TRUE)
 
 	var/waiting_loops = 0
-	while (!full_life_complete)
+	while (total_loops_complete < loops)
 		sleep(ss_wait_override ? ss_wait_override : 1 SECONDS)
 
 		waiting_loops++
 		if (waiting_loops > 30)
 			TEST_NOTICE(src, "Test timed out while waiting for a full cycle of the xeno life loop to complete")
 			last_life_complete = FALSE
-			full_life_complete = FALSE
+			total_loops_complete = 0
 			UnregisterSignal(src, COSMIG_GLOB_XENO_LIFE_COMPLETE)
 			return
 
-	full_life_complete = FALSE
+	total_loops_complete = 0
 	UnregisterSignal(src, COSMIG_GLOB_XENO_LIFE_COMPLETE)
 
 /datum/unit_test/pheromones/proc/poke_full_life_loop()
@@ -51,7 +51,7 @@
 	if (!last_life_complete)
 		last_life_complete = TRUE
 		return
-	full_life_complete = TRUE
+	total_loops_complete++
 	last_life_complete = FALSE
 
 /**
@@ -75,8 +75,7 @@
 	// Make the emitter release the appropriate pheromones
 	emitter.emit_pheromones(pheromone_type)
 
-	wait_full_life_loop()
-	wait_full_life_loop()
+	wait_full_life_loops(2)
 
 	test_callback.Invoke(receiver)
 
@@ -86,7 +85,7 @@
 /**
  * Tests whether a single xenomorph successfully emits its pheromones to every possible caste (barring hellhounds) of the same hive.
  */
-/datum/unit_test/pheromones/proc/all_caste_reception_test(datum/abstract_xenomorph/abstract_emitter, pheromone_type, datum/callback/test_callback, datum/callback/hivemate_initialization_callback = null)
+/datum/unit_test/pheromones/proc/all_caste_reception_test(datum/abstract_xenomorph/abstract_emitter, pheromone_type, datum/callback/test_callback)
 	TEST_ASSERT_NOTNULL(abstract_emitter, "No abstract emitter datum was specified for this test")
 	TEST_ASSERT_NOTNULL(test_callback, "No testing callback was specified for this test")
 
@@ -97,7 +96,6 @@
 
 	var/datum/abstract_xenomorph/abstract_receiver = new
 	abstract_receiver.hive = abstract_emitter.hive
-	abstract_receiver.initialization_callback = hivemate_initialization_callback
 
 	var/list/mob/living/carbon/xenomorph/hivemates = list()
 	var/mob/living/carbon/xenomorph/emitter = init_abstract_xeno(abstract_emitter)
@@ -112,8 +110,7 @@
 
 	emitter.emit_pheromones(pheromone_type)
 
-	wait_full_life_loop()
-	wait_full_life_loop()
+	wait_full_life_loops(2)
 
 	for (var/mob/living/carbon/xenomorph/receiver as anything in hivemates)
 		test_callback.Invoke(receiver)
@@ -172,9 +169,7 @@
 				else
 					stack_trace("Received an out of bounds pheromone permutation")
 
-		wait_full_life_loop()
-		wait_full_life_loop()
-		wait_full_life_loop()
+		wait_full_life_loops(3)
 
 		test_callback.Invoke(receiver, permutation + 1)
 
@@ -207,7 +202,7 @@
 	if (receiver.warding_aura > 0)
 		received_pheromones[XENO_PHERO_WARDING] = receiver.warding_aura
 
-	if (isnull(expected_pheromones) || !length(expected_pheromones))
+	if (!length(expected_pheromones))
 		// No pheromones were expected and no pheromones were received; PASS
 		if (!length(received_pheromones))
 			return

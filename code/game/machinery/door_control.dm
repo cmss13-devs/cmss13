@@ -432,13 +432,13 @@
 	icon_state = "doorctrl"
 	dir = EAST
 	normaldoorcontrol = CONTROL_NORMAL_DOORS
-	var/obj/structure/ladder/dropship_omaha/linked_ladder
+	var/obj/structure/ladder/multiz/dropship_omaha/linked_ladder
 	id = "omaha_cockpit_ladder"
 
 /obj/structure/machinery/door_control/hatch_ladder/attack_hand(mob/living/user) // if(is_reserved_level(z)
 	add_fingerprint(user) // removed xeno check. i am in control
 	if(!linked_ladder)
-		for(var/obj/structure/ladder/dropship_omaha/target_ladder in range(1, src.loc))
+		for(var/obj/structure/ladder/multiz/dropship_omaha/target_ladder in range(1, src.loc))
 			if(target_ladder.id == id)
 				linked_ladder = target_ladder
 				break

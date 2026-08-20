@@ -401,34 +401,32 @@
 	desc = "A sturdy metal ladder, made from an unknown metal, adorned with glowing runes."
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 
-/obj/structure/ladder/dropship_omaha
+/obj/structure/ladder/multiz/dropship_omaha
 	name = "ladder hatch"
 	icon = 'icons/obj/structures/machinery/mohawk/mohawk-interior-item.dmi'
 	icon_state = "ladder-hatch-closed"
 	var/deployed = FALSE
 	var/currently_adjusting = FALSE
 	var/deploy_speed = 18
-	var/obj/structure/ladder/dropship_omaha_bottom/stored_ladder
 	id = "omaha_cockpit_ladder"
 
-/obj/structure/ladder/dropship_omaha_bottom
+/obj/structure/ladder/multiz/dropship_omaha_bottom
 	name = "ladder"
 	icon = 'icons/obj/structures/machinery/mohawk/mohawk-interior-item.dmi'
 	icon_state = "hatch_ladder_bottom"
 
-/obj/structure/ladder/dropship_omaha_bottom/update_icon()
+/obj/structure/ladder/multiz/dropship_omaha_bottom/update_icon()
 	return // FUCK OFF
 
-/obj/structure/ladder/dropship_omaha/LateInitialize()
+/obj/structure/ladder/multiz/dropship_omaha/LateInitialize()
 	.=..()
-	stored_ladder = new /obj/structure/ladder/dropship_omaha_bottom
-	stored_ladder.moveToNullspace()
-	stored_ladder.up = src
+	down = new /obj/structure/ladder/multiz/dropship_omaha_bottom
+	down.up = src
 
-/obj/structure/ladder/dropship_omaha/update_icon()
+/obj/structure/ladder/multiz/dropship_omaha/update_icon()
 	return // FUCK OFF
 
-/obj/structure/ladder/dropship_omaha/proc/deploy()
+/obj/structure/ladder/multiz/dropship_omaha/proc/deploy()
 	if(currently_adjusting)
 		return
 	currently_adjusting = TRUE
@@ -437,36 +435,32 @@
 	playsound(loc, 'sound/machines/freesoundstock_step_ladder.ogg', 35, 0)
 	addtimer(CALLBACK(src, PROC_REF(finish_deploying)), deploy_speed,  TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT) //
 
-/obj/structure/ladder/dropship_omaha/proc/finish_deploying()
+/obj/structure/ladder/multiz/dropship_omaha/proc/finish_deploying()
 	name = "ladder"
 	icon_state = "hatch-open"
 	currently_adjusting = FALSE
 	deployed = TRUE
 	var/turf/open/turf_below = SSmapping.get_turf_below(src.loc)
-	stored_ladder.loc = turf_below
-	down = stored_ladder
-	stored_ladder.up = src
-	stored_ladder.update_icon()
+	down.loc = turf_below
+	down.update_icon()
 	playsound(loc, 'sound/machines/freesoundstock_step_ladder.ogg', 30, 0)
 	playsound(turf_below.loc, 'sound/machines/freesoundstock_step_ladder.ogg', 50, 0)
 
 
-/obj/structure/ladder/dropship_omaha/proc/undeploy(forced_adjusting = FALSE)
+/obj/structure/ladder/multiz/dropship_omaha/proc/undeploy(forced_adjusting = FALSE)
 	if(!forced_adjusting)
 		if(currently_adjusting)
 			return
 		currently_adjusting = TRUE
-		stored_ladder.moveToNullspace()
+		down.moveToNullspace()
 		icon_state = "hatch-closing"
 		playsound(loc, 'sound/machines/nightcustard_motor_whirring.ogg', 100, 0)
 		addtimer(CALLBACK(src, PROC_REF(finish_undeploying)), deploy_speed, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 	else
 		finish_undeploying() // gotta move fast big dog...
 
-/obj/structure/ladder/dropship_omaha/proc/finish_undeploying()
+/obj/structure/ladder/multiz/dropship_omaha/proc/finish_undeploying()
 	name = "ladder hatch"
 	icon_state = "ladder-hatch-closed"
 	currently_adjusting = FALSE
 	deployed = FALSE
-	down = null
-	stored_ladder.moveToNullspace()

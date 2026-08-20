@@ -1044,11 +1044,11 @@
 /turf/template_noop,
 /area/shuttle/drop_omaha/omaha)
 "WW" = (
-/obj/structure/ladder/dropship_omaha,
 /obj/structure/machinery/door_control/hatch_ladder{
 	pixel_y = 5;
 	pixel_x = 16
 	},
+/obj/structure/ladder/multiz/dropship_omaha,
 /turf/open/shuttle/dropship/omaha/platformed/basic_striped/north,
 /area/shuttle/drop_omaha/omaha)
 "Xk" = (

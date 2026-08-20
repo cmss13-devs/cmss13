@@ -429,7 +429,8 @@
 	name = "Hatch Ladder Access"
 	desc = "Looks intimaditing enough to challenge non-humans to use it."
 	icon = 'icons/obj/structures/machinery/mohawk/mohawk-interior-item.dmi'
-	icon_state = "hatch_ladder"
+	icon_state = "doorctrl"
+	dir = EAST
 	normaldoorcontrol = CONTROL_NORMAL_DOORS
 	var/obj/structure/ladder/dropship_omaha/linked_ladder
 	id = "omaha_cockpit_ladder"
@@ -460,6 +461,7 @@
 
 /obj/structure/machinery/door_control/side_hatch
 	icon = 'icons/obj/structures/machinery/mohawk/mohawk-interior-item.dmi'
+	icon_state = "doorctrl"
 	var/obj/structure/machinery/door/airlock/hatch/side_hatch/linked_hatch
 	normaldoorcontrol = CONTROL_NORMAL_DOORS
 	var/obj/docking_port/mobile/marine_dropship/linked_dropship
@@ -468,14 +470,14 @@
 
 /obj/structure/machinery/door_control/side_hatch/omaha_hatch_left
 	name = "Port Hatch Access"
-	icon_state = "hatch_door_left"
 	id = "port_door"
+	dir = WEST
 	direction = "port"
 
 /obj/structure/machinery/door_control/side_hatch/omaha_hatch_right
 	name = "Starboard Hatch Access"
-	icon_state = "hatch_ladder"
 	id = "starboard_door"
+	dir = EAST
 	direction = "starboard"
 
 /obj/structure/machinery/door_control/side_hatch/beforeShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)

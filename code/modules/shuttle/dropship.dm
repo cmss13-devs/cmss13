@@ -364,6 +364,7 @@
 /// COCKPIT ////
 /obj/structure/shuttle/part/dropship_omaha/transparent/cockpit
 	icon = 'icons/turf/mohawk/mohawk-walls.dmi'
+	icon_state = "2,19"
 
 /obj/structure/shuttle/part/dropship_omaha/transparent/cockpit/nose_00
 	icon_state = "2,19"
@@ -399,6 +400,7 @@
 /obj/structure/shuttle/part/dropship_omaha/ramp_decals
 	name = "Platform"
 	icon = 'icons/turf/mohawk/mohawk-ramp.dmi'
+	icon_state = "0,0"
 	density = FALSE
 	opacity = FALSE
 	flags_atom = NO_ZFALL

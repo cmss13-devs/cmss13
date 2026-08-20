@@ -236,10 +236,10 @@ GLOBAL_DATUM_INIT(above_blackness_backdrop, /atom/movable/above_blackness_backdr
 
 /obj/structure/stairs/multiz/up/omaha_ramp
 	icon = 'icons/turf/mohawk/mohawk-ramp.dmi'
+	icon_state = "ramp-1"
 	dir = NORTH
-	name = "ramp up"
 
 /obj/structure/stairs/multiz/down/omaha_ramp
 	icon = 'icons/turf/mohawk/mohawk-ramp.dmi'
+	icon_state = "ramp-1"
 	dir = NORTH
-	name = "ramp down"

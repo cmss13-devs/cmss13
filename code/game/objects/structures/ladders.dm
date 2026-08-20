@@ -410,6 +410,7 @@
 	var/deploy_speed = 18
 	var/obj/structure/ladder/dropship_omaha_bottom/stored_ladder
 	id = "omaha_cockpit_ladder"
+
 /obj/structure/ladder/dropship_omaha_bottom
 	name = "ladder"
 	icon = 'icons/obj/structures/machinery/mohawk/mohawk-interior-item.dmi'

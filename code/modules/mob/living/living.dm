@@ -579,9 +579,9 @@
 /mob/living/proc/set_buckled(new_buckled)
 	if(new_buckled == buckled)
 		return
-	SEND_SIGNAL(src, COMSIG_LIVING_SET_BUCKLED, new_buckled)
 	. = buckled
 	buckled = new_buckled
+	SEND_SIGNAL(src, COMSIG_LIVING_SET_BUCKLED, new_buckled)
 	if(buckled)
 //		if(!HAS_TRAIT(buckled, TRAIT_NO_IMMOBILIZE))
 //			ADD_TRAIT(src, TRAIT_IMMOBILIZED, BUCKLED_TRAIT)
@@ -642,7 +642,8 @@
 	else if (body_position == LYING_DOWN && stat == DEAD)
 		layer = LYING_DEAD_MOB_LAYER // Dead mobs should layer under living ones
 	else if(body_position == LYING_DOWN && layer == initial(layer)) //to avoid things like hiding larvas.
-		if(locate(/datum/effects/water_overlay_effect) in effects_list)
+		var/datum/component/turf_effect/water/found_component = GetComponent(/datum/component/turf_effect/water)
+		if(found_component)
 			layer = UNDER_WATER_MOB_LAYER
 		else
 			layer = LYING_LIVING_MOB_LAYER

@@ -128,38 +128,39 @@
 	update_vis_contents()
 
 /turf/proc/fix_water_clipping_layers(list/altered_turfs)	//so big mobs dont clip into the ground when standing in water
-	var/list/return_list = list()		//and they can still look like they're below turfs south of them
-	if(is_water(src) || layer == UNDER_WATER_TURF_LAYER)
+	var/list/return_list = list()							//and they can still look like they're below turfs south of them
+	if(SSwater_overlays.is_water(src) || layer == UNDER_WATER_TURF_LAYER)
 		return return_list
 	for(var/direction_check in GLOB.cardinals)
 		if(direction_check == NORTH)
 			continue
 		var/turf/neighbor = get_step(src, direction_check)
-		if(neighbor && is_water(neighbor))
+		if(neighbor && SSwater_overlays.is_water(neighbor))
 			if(!(src in return_list))
 				visually_set_under_water_mobs(TRUE)
 			return_list |= src
 			var/turf/rightwards_turf = get_step(src, turn(direction_check, 90))
-			if(rightwards_turf && !is_water(rightwards_turf) && !(rightwards_turf in return_list) && !(rightwards_turf in altered_turfs))
+			if(rightwards_turf && !SSwater_overlays.is_water(rightwards_turf) && !(rightwards_turf in return_list) && !(rightwards_turf in altered_turfs))
 				rightwards_turf.visually_set_under_water_mobs(TRUE)
 				return_list |= rightwards_turf
 			var/turf/leftwards_turf = get_step(src, turn(direction_check, -90))
-			if(leftwards_turf && !is_water(leftwards_turf) && !(leftwards_turf in return_list) && !(leftwards_turf in altered_turfs))
+			if(leftwards_turf && !SSwater_overlays.is_water(leftwards_turf) && !(leftwards_turf in return_list) && !(leftwards_turf in altered_turfs))
 				leftwards_turf.visually_set_under_water_mobs(TRUE)
 				return_list |= leftwards_turf
 	return return_list
 
 /turf/proc/fix_water_clipping_layers_final() // if any of the turfs we changed above have water above them, we reset them
 	var/turf/checking_turf = get_step(src, SOUTH)	// this should be already handled, but was seeing some weird behaviour
+	var/is_full_water = SSwater_overlays.is_full_water(checking_turf)
 	if(checking_turf == null)
 		return
-	if(is_full_water(checking_turf) && layer != UNDER_WATER_TURF_LAYER)
+	if(is_full_water && layer != UNDER_WATER_TURF_LAYER)
 		visually_set_under_water_mobs(TRUE)
 
 	checking_turf = get_step(src, NORTH)
 	if(checking_turf == null)
 		return
-	if(is_full_water(checking_turf) && layer != initial(layer))
+	if(is_full_water && layer != initial(layer))
 		visually_set_under_water_mobs(FALSE)
 
 	if(ispath(checking_turf.type, /turf/open/gm/river))

@@ -150,20 +150,25 @@
 
 /turf/open/proc/on_enter(turf/source, atom/movable/mover)
 	SIGNAL_HANDLER
-	if(!iscarbon(mover) || isobj(mover))
+	if(iscarbon(mover))
+		mover.AddComponent(/datum/component/turf_effect/water, src, depth)
+	if(!isliving(mover))
 		return
-	mover.AddComponent(/datum/component/water_overlay_effect, src, depth)
+	var/mob/living/living_mover = mover
+	if(living_mover.m_intent == MOVE_INTENT_RUN)	//walking doesnt make sounds from moving through water
+		var/soundname = depth >= DEPTH_COAST_INTERMEDIATE ? "shallowwading" : (depth >= DEPTH_SHALLOW ? "wading":"deepwading")
+		playsound(src, soundname, 10, 1, 10, falloff=1)
 
 /turf/open/proc/on_hit(atom/hit_thing, atom/movable/mover)
 	SIGNAL_HANDLER
 	if(depth && !covered)
-		var/datum/component/water_overlay_effect/found_component = mover.GetComponent(/datum/component/water_overlay_effect)
-		if(found_component)
-			found_component.my_water_overlay_effect.hidden = FALSE
-			found_component.my_water_overlay_effect.water_turf = src
-			found_component.my_water_overlay_effect.update()
-		new /obj/effect/water_splash(src)
-		playsound(src, "sound/effects/water/splash.ogg", 20, 1, 10, falloff=1)
+		new /obj/effect/water_splash(src, TRUE)	//SPLASHHH!! something hit the water!
+
+		var/datum/component/turf_effect/water/found_component = mover.GetComponent(/datum/component/turf_effect/water)
+		if(found_component)	//this is in case the mob flew over water turfs to get here, in which case we need to unhide their component and update()
+			found_component.hidden = FALSE
+			found_component.effect_turf = src
+			found_component.update()
 
 /turf/open/proc/set_covered(setting)
 	if(setting)
@@ -811,7 +816,7 @@
 		var/obj/effect/blocker/water/water_blocker = locate(/obj/effect/blocker/water) in contents
 		var/layer_to_use = CATWALK_LAYER
 		if(layer == UNDER_WATER_TURF_LAYER)
-			if(is_water(check_turf))
+			if(SSwater_overlays.is_water(check_turf))
 				if(water_blocker && water_blocker.dispersing)
 					layer_to_use = UNDER_WATER_TURF_LAYER +0.01
 				else
@@ -942,7 +947,7 @@
 		if(isliving(unlucky_mob))
 			var/mob/living/unlucky_living = entered_movable
 			unlucky_living.KnockDown(1.5) //swept off your feet!
-		if(!is_full_water(target_turf))			//below we put the mob on the shore, if needed
+		if(!SSwater_overlays.is_full_water(target_turf))			//below we put the mob on the shore, if needed
 			for(var/i = 1 to 3)				//currents dont operate outside water
 				var/found_water = FALSE
 				var/list/check_dirs = list(get_dir(target_turf, src))
@@ -950,7 +955,7 @@
 				check_dirs += turn(check_dirs[1], -45)
 				for(var/check_dir in check_dirs)
 					var/turf/check_T = get_step(target_turf, check_dir)
-					if(is_full_water(check_T))
+					if(SSwater_overlays.is_full_water(check_T))
 						found_water = TRUE
 						break
 				if(found_water)

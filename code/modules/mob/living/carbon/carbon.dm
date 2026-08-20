@@ -518,7 +518,7 @@
 	pixel_y = -7
 	next_haul_resist = 0
 
-	var/datum/component/water_overlay_effect/found_component = src.GetComponent(/datum/component/water_overlay_effect)
+	var/datum/component/turf_effect/water/found_component = src.GetComponent(/datum/component/turf_effect/water)
 	if(found_component) found_component.Destroy()
 
 /mob/living/carbon/human/proc/release_haul_death()

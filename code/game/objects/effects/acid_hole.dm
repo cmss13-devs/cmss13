@@ -16,10 +16,10 @@
 		holed_wall = acided_wall
 		holed_wall.opacity = FALSE
 		// Original intended way for mappers to set the direction was to set wall.acided_hole_dir, but mappers didnt know that, so we will just handle all ways they could have set it.
-		// Since holes can only have two states (vertical/horizontal) we assume no varedits to be vertical and any edits horizontal.
+		// Since holes can only have two states (vertical/horizontal), default is vertical.
 		if(icon_state != initial(icon_state)) // Mapper varedited icon_state to horizontal, so we update code to reflect it.
 			holed_wall.acided_hole_dir = EAST
-		if(dir != EAST) // Mapper didnt varedit dir, so we will use acided_hole_dir. If he did thats fine that will work.
+		if(dir != EAST && dir != WEST) // Mapper didnt varedit dir to horizontal, so we will use acided_hole_dir.
 			setDir(acided_wall.acided_hole_dir)
 
 /obj/effect/acid_hole/Destroy()

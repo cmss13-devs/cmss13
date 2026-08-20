@@ -468,6 +468,7 @@
 /obj/structure/shuttle/part/dropship_omaha/structure_ramp
 	name = "Ramp"
 	icon = 'icons/turf/mohawk/mohawk-ramp.dmi'
+	icon_state = "ramp-10-low"
 	opacity = FALSE
 	density = FALSE
 

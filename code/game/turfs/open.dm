@@ -1440,6 +1440,9 @@
 /turf/open/shuttle/dropship/omaha/grated
 	icon_state = "mohawk_floor_grated"
 
+/turf/open/shuttle/dropship/omaha/grated/east
+	dir = EAST
+
 /turf/open/shuttle/dropship/omaha/external
 	icon_state = "mohawk_external"
 
@@ -1449,11 +1452,20 @@
 /turf/open/shuttle/dropship/omaha/half_girder
 	icon_state = "mohawk_half_girder"
 
+/turf/open/shuttle/dropship/omaha/half_girder/east
+	dir = EAST
+
+/turf/open/shuttle/dropship/omaha/half_girder/west
+	dir = WEST
+
 /turf/open/shuttle/dropship/omaha/full_girder1
 	icon_state = "mohawk_full_girder1"
 
 /turf/open/shuttle/dropship/omaha/full_girder2
 	icon_state = "mohawk_full_girder2"
+
+/turf/open/shuttle/dropship/omaha/full_girder2/north
+	dir = NORTH
 
 /// RAMP ////
 
@@ -1504,17 +1516,35 @@
 /turf/open/shuttle/dropship/omaha/platformed/basic_stripe_platform
 	icon_state = "basic_stripe_platform"
 
+/turf/open/shuttle/dropship/omaha/platformed/basic_stripe_platform/east
+	dir = EAST
+
+/turf/open/shuttle/dropship/omaha/platformed/basic_stripe_platform/west
+	dir = WEST
+
 /turf/open/shuttle/dropship/omaha/platformed/basic_stairs
 	icon_state = "basic_stairs"
 
 /turf/open/shuttle/dropship/omaha/platformed/half_girder_striped_pl
 	icon_state = "half_girder_striped_pl"
 
+/turf/open/shuttle/dropship/omaha/platformed/half_girder_striped_pl/east
+	dir = EAST
+
+/turf/open/shuttle/dropship/omaha/platformed/half_girder_striped_pl/west
+	dir = WEST
+
 /turf/open/shuttle/dropship/omaha/platformed/basic_striped
 	icon_state = "basic_stripe"
 
+/turf/open/shuttle/dropship/omaha/platformed/basic_striped/north
+	dir = NORTH
+
 /turf/open/shuttle/dropship/omaha/platformed/grated_striped
 	icon_state = "grated_stripe"
+
+/turf/open/shuttle/dropship/omaha/platformed/grated_striped/north
+	dir = NORTH
 
 /turf/open/shuttle/dropship/omaha/platformed/girder_inner_platformed
 	icon_state = "girder_inner_platform"

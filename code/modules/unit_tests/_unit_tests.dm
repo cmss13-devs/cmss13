@@ -83,6 +83,7 @@
 #include "autowiki.dm"
 #include "check_runtimes.dm"
 #include "create_and_destroy.dm"
+#include "defender_abilities.dm"
 #include "duplicate_sprite_accessories.dm"
 #include "emote_panels.dm"
 #include "map_sanity.dm"

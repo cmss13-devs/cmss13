@@ -1993,7 +1993,6 @@
 		/obj/item/attachable/attached_gun/grenade,
 		/obj/item/attachable/attached_gun/flamer,
 		/obj/item/attachable/attached_gun/flamer/advanced,
-		/obj/item/attachable/attached_gun/shotgun,
 		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/attached_gun/flare_launcher,
 	)

@@ -142,6 +142,9 @@
 /area/northpoint/outdoors/streets/north_carpark
 	name = "Northpoint Hospital - North Carpark/Entrance"
 
+/area/northpoint/outdoors/streets/south_carpark
+	name = "Northpoint Hospital - South Carpark/Entrance"
+
 // --
 
 /area/northpoint/outdoors/park

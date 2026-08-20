@@ -203,9 +203,7 @@
 	pixel_x = -8;
 	dir = 1
 	},
-/turf/open/shuttle/dropship/omaha/grated{
-	dir = 4
-	},
+/turf/open/shuttle/dropship/omaha/grated/east,
 /area/shuttle/drop_omaha/omaha)
 "iS" = (
 /obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_21,
@@ -655,9 +653,7 @@
 	buckle_offset_y = -8
 	},
 /obj/structure/shuttle/part/dropship_omaha/transparent/cockpit/nose_01,
-/turf/open/shuttle/dropship/omaha/full_girder2{
-	dir = 1
-	},
+/turf/open/shuttle/dropship/omaha/full_girder2/north,
 /area/shuttle/drop_omaha/omaha)
 "Dw" = (
 /obj/structure/machinery/door_control/omaha_ramp{
@@ -933,9 +929,7 @@
 	pixel_x = 8;
 	dir = 1
 	},
-/turf/open/shuttle/dropship/omaha/grated{
-	dir = 4
-	},
+/turf/open/shuttle/dropship/omaha/grated/east,
 /area/shuttle/drop_omaha/omaha)
 "SB" = (
 /turf/open/shuttle/dropship/omaha/platformed/basic_stairs_platformed,
@@ -962,9 +956,7 @@
 	buckle_offset_y = -8
 	},
 /obj/structure/shuttle/part/dropship_omaha/transparent/cockpit/nose_02,
-/turf/open/shuttle/dropship/omaha/full_girder2{
-	dir = 1
-	},
+/turf/open/shuttle/dropship/omaha/full_girder2/north,
 /area/shuttle/drop_omaha/omaha)
 "Tz" = (
 /turf/closed/shuttle/dropship_omaha{
@@ -1024,11 +1016,6 @@
 	dir = 1
 	},
 /turf/open/shuttle/dropship/omaha/grated,
-/area/shuttle/drop_omaha/omaha)
-"Wc" = (
-/turf/open/shuttle/dropship/omaha/platformed/half_girder_striped_pl{
-	dir = 4
-	},
 /area/shuttle/drop_omaha/omaha)
 "Wd" = (
 /obj/structure/bed/chair/vehicle/omaha_pilot{
@@ -1401,7 +1388,7 @@ DS
 Tz
 Gc
 dZ
-Wc
+HX
 cs
 cs
 cs

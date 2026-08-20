@@ -521,7 +521,7 @@
 	var/list/openspace_ramps = list()
 	normaldoorcontrol = CONTROL_NORMAL_DOORS
 	var/datum/door_controller/single/linked_single_controller
-	var/direction = "aft ramp"
+	var/direction = "aft"
 
 /obj/structure/machinery/door_control/omaha_ramp/proc/borders_space()
 	if(is_reserved_level(src.z))
@@ -539,6 +539,8 @@
 
 /obj/structure/machinery/door_control/omaha_ramp/proc/raise()
 	to_chat(world, "raising via button")
+	if(linked_single_controller.status == SHUTTLE_DOOR_LOCKED)
+		return
 
 	for(var/obj/structure/shuttle/part/dropship_omaha/dummy_part/rampazoid in adjustable_ramps)
 		if(!rampazoid.linked_staircase)
@@ -571,6 +573,8 @@
 
 /obj/structure/machinery/door_control/omaha_ramp/proc/lower()
 	to_chat(world, "lowering via button")
+	if(linked_single_controller.status == SHUTTLE_DOOR_UNLOCKED)
+		return
 
 	for(var/obj/structure/shuttle/part/dropship_omaha/dummy_part/rampazoid in adjustable_ramps)
 		var/turf/open/our_turf = rampazoid.loc

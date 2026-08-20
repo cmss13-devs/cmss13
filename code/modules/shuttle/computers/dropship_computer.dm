@@ -321,7 +321,7 @@
 	if(dropship.is_hijacked)
 		return
 
-	// door controls being overridden
+	// door controls being overridden // look here
 	if(!dropship_control_lost && do_after(xeno, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		dropship.control_doors("unlock", "all", TRUE)
 		dropship_control_lost = TRUE
@@ -445,7 +445,6 @@
 		.["target_destination"] = shuttle?.in_flyby? "Flyby" : shuttle?.destination.name
 
 	.["door_status"] = is_remote ? list() : shuttle?.get_door_data() // get door data
-	.["ramp_status"] = is_remote ? list() : shuttle?.get_ramp_data()
 	.["has_flyby_skill"] = skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT)
 
 	// Launch Alarm Variables
@@ -573,21 +572,6 @@
 			var/location = params["location"]
 			if(!dropship_control_lost)
 				shuttle.control_doors(interaction, location)
-			else
-				playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
-				to_chat(user, SPAN_WARNING("Door controls have been overridden. Please call technical support."))
-		if("ramp-control")
-			to_chat(world, "ramp control buttong")
-			if(!shuttle)
-				return FALSE
-			if(shuttle.mode == SHUTTLE_CALL || shuttle.mode == SHUTTLE_RECALL)
-				return TRUE
-			var/interaction = params["interaction"]
-			var/location = params["location"]
-			to_chat(world, "interaction [interaction]")
-			to_chat(world, "location [location]")
-			if(!dropship_control_lost)
-				shuttle.control_ramps(interaction, location)
 			else
 				playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
 				to_chat(user, SPAN_WARNING("Door controls have been overridden. Please call technical support."))

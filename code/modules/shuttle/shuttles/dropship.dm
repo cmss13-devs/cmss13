@@ -55,9 +55,11 @@
 		for(var/obj/structure/machinery/door_control/omaha_ramp/ramp_button in place)
 			if(ramp_button.id == "aft_ramp")
 				ramp_button.linked_dropship = src
-				door_control.add_ramp(ramp_button, "aftswag")
-				to_chat(world, "success")
+				door_control.add_ramp(ramp_button, "aft")
 
+	for(var/place in shuttle_areas)
+		for(var/obj/structure/machinery/door_control/side_hatch/hatch_button in place)
+			hatch_button.linked_dropship = src
 
 	RegisterSignal(src, COMSIG_DROPSHIP_ADD_EQUIPMENT, PROC_REF(add_equipment))
 	RegisterSignal(src, COMSIG_DROPSHIP_REMOVE_EQUIPMENT, PROC_REF(remove_equipment))
@@ -86,20 +88,11 @@
 /obj/docking_port/mobile/marine_dropship/proc/get_door_data()
 	return door_control.get_data()
 
-/obj/docking_port/mobile/marine_dropship/proc/get_ramp_data()
-	return door_control.get_ramp_data()
-
 /obj/docking_port/mobile/marine_dropship/proc/control_doors(action, direction, force, asynchronous = TRUE)
 	// its been locked down by the queen
 	if(door_override)
 		return
 	door_control.control_doors(action, direction, force, asynchronous)
-
-/obj/docking_port/mobile/marine_dropship/proc/control_ramps(action, direction, force, asynchronous = TRUE)
-	// its been locked down by the queen
-	if(door_override) // change to ramp override
-		return
-	door_control.control_ramps(action, direction, force, asynchronous)
 
 /obj/docking_port/mobile/marine_dropship/proc/is_door_locked(direction)
 	return door_control.is_door_locked(direction)

@@ -71,7 +71,7 @@
 
 	for(var/direction in door_controllers)
 		var/datum/door_controller/single/controller = door_controllers[direction]
-		var/list/door_data = list("id" = direction, "value" = controller.status)
+		var/list/door_data = list("id" = direction, "value" = controller.status, "is_ramp" = "[controller.is_ramp]")
 		. += list(door_data)
 		if(controller.status == SHUTTLE_DOOR_UNLOCKED)
 			all_locked = FALSE

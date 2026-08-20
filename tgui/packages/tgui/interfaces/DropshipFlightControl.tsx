@@ -29,24 +29,12 @@ const DoorStatusEnum = {
   SHUTTLE_DOOR_LOCKED: 1,
 } as const;
 
-const RampStatusEnum = {
-  SHUTTLE_RAMP_BROKEN: -1,
-  SHUTTLE_RAMP_LOWERED: 0,
-  SHUTTLE_RAMP_RAISED: 1,
-} as const;
-
 type DoorStatusEnums = (typeof DoorStatusEnum)[keyof typeof DoorStatusEnum];
-
-type RampStatusEnums = (typeof RampStatusEnum)[keyof typeof RampStatusEnum];
 
 interface DoorStatus {
   id: string;
   value: DoorStatusEnums;
-}
-
-interface RampStatus {
-  id: string;
-  value: RampStatusEnums;
+  is_ramp: string; // idk how to pass a boolean. simple (....xxx, "is_ramp" = controller.is_ramp) in shuttle/helpers @ln75 is not working for some reason
 }
 
 interface AutomatedControl {
@@ -63,7 +51,6 @@ type ShuttleRef = {
 interface DropshipNavigationProps extends NavigationProps {
   shuttle_id: string;
   door_status: Array<DoorStatus>;
-  ramp_status: Array<RampStatus>;
   has_flight_optimisation?: 0 | 1;
   is_flight_optimised?: 0 | 1;
   can_fly_by?: 0 | 1;
@@ -137,7 +124,7 @@ const DropshipDoorControl = () => {
                       No response
                     </Button>
                   )}
-                  {x.value === DoorStatusEnum.SHUTTLE_DOOR_UNLOCKED && (
+                  {x.is_ramp === "0" && x.value === DoorStatusEnum.SHUTTLE_DOOR_UNLOCKED && (
                     <Button
                       disabled={disable_door_controls}
                       width="100%"
@@ -153,7 +140,7 @@ const DropshipDoorControl = () => {
                       Lock {name}
                     </Button>
                   )}
-                  {x.value === DoorStatusEnum.SHUTTLE_DOOR_LOCKED && (
+                  {x.is_ramp === "0" && x.value === DoorStatusEnum.SHUTTLE_DOOR_LOCKED && (
                     <Button
                       disabled={disable_door_controls}
                       width="100%"
@@ -169,52 +156,36 @@ const DropshipDoorControl = () => {
                       Unlock {name}
                     </Button>
                   )}
-                </>
-              </Stack.Item>
-            );
-          })}
-        {data.ramp_status
-          .filter((x) => x.id !== 'all')
-          .map((x) => {
-            const name = x.id.substr(0, 1).toLocaleUpperCase() + x.id.substr(1);
-            return (
-              <Stack.Item key={x.id} grow>
-                <>
-                  {x.value === RampStatusEnum.SHUTTLE_RAMP_BROKEN && (
-                    <Button disabled icon="ban" width="100%" textAlign="center">
-                      No response
-                    </Button>
-                  )}
-                  {x.value === RampStatusEnum.SHUTTLE_RAMP_LOWERED && (
+                  {x.is_ramp === "1" && x.value === DoorStatusEnum.SHUTTLE_DOOR_UNLOCKED && (
                     <Button
                       disabled={disable_door_controls}
                       width="100%"
                       textAlign="center"
                       onClick={() =>
-                        act('ramp-control', {
-                          interaction: 'raise',
+                        act('door-control', {
+                          interaction: 'force-lock',
                           location: x.id,
                         })
                       }
                       icon="door-closed"
                     >
-                      Raise {name}
+                      Raise {name} Ramp
                     </Button>
                   )}
-                  {x.value === RampStatusEnum.SHUTTLE_RAMP_RAISED && (
+                  {x.is_ramp === "1" && x.value === DoorStatusEnum.SHUTTLE_DOOR_LOCKED && (
                     <Button
                       disabled={disable_door_controls}
                       width="100%"
                       textAlign="center"
                       onClick={() =>
-                        act('ramp-control', {
-                          interaction: 'lower',
+                        act('door-control', {
+                          interaction: 'unlock',
                           location: x.id,
                         })
                       }
                       icon="door-open"
                     >
-                      Lower {name}
+                      Lower {name} Ramp
                     </Button>
                   )}
                 </>

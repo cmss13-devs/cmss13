@@ -462,16 +462,29 @@
 	icon = 'icons/obj/structures/machinery/mohawk/mohawk-interior-item.dmi'
 	var/obj/structure/machinery/door/airlock/hatch/side_hatch/linked_hatch
 	normaldoorcontrol = CONTROL_NORMAL_DOORS
+	var/obj/docking_port/mobile/marine_dropship/linked_dropship
+	var/datum/door_controller/single/linked_single_controller
+	var/direction
 
 /obj/structure/machinery/door_control/side_hatch/omaha_hatch_left
 	name = "Port Hatch Access"
 	icon_state = "hatch_door_left"
 	id = "port_door"
+	direction = "port"
 
 /obj/structure/machinery/door_control/side_hatch/omaha_hatch_right
 	name = "Starboard Hatch Access"
 	icon_state = "hatch_ladder"
 	id = "starboard_door"
+	direction = "starboard"
+
+/obj/structure/machinery/door_control/side_hatch/beforeShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
+	. = ..()
+	if(!linked_single_controller)
+		for(var/direction in linked_dropship.door_control.door_controllers)
+			var/datum/door_controller/single/controller = linked_dropship.door_control.door_controllers[direction]
+			if(direction == src.direction)
+				linked_single_controller = controller
 
 /obj/structure/machinery/door_control/side_hatch/attack_hand(mob/living/user)
 	add_fingerprint(user)
@@ -489,10 +502,12 @@
 		use_button(user)
 
 /obj/structure/machinery/door_control/side_hatch/handle_door()
-	if(linked_hatch.locked)
+	if(linked_single_controller.status == SHUTTLE_DOOR_LOCKED)
 		linked_hatch.unlock()
+		linked_single_controller.status = SHUTTLE_DOOR_UNLOCKED
 	else
 		linked_hatch.lock()
+		linked_single_controller.status = SHUTTLE_DOOR_LOCKED
 
 /obj/structure/machinery/door_control/omaha_ramp
 	name = "Ramp Access"
@@ -505,16 +520,22 @@
 	var/list/static_ramps = list()
 	var/list/openspace_ramps = list()
 	normaldoorcontrol = CONTROL_NORMAL_DOORS
-	var/datum/door_controller/single_ramp/linked_single_controller
-	var/link_id = "ramp_aft"
+	var/datum/door_controller/single/linked_single_controller
+	var/direction = "aft ramp"
+
+/obj/structure/machinery/door_control/omaha_ramp/proc/borders_space()
+	if(is_reserved_level(src.z))
+		return TRUE
+	else
+		return FALSE
 
 /obj/structure/machinery/door_control/omaha_ramp/handle_door()
-	if(linked_single_controller.status == SHUTTLE_RAMP_LOWERED)
+	if(is_reserved_level(src.z))
+		return
+	if(linked_single_controller.status == SHUTTLE_DOOR_UNLOCKED)
 		raise()
-	else if(linked_single_controller.status == SHUTTLE_RAMP_RAISED)
+	else if(linked_single_controller.status == SHUTTLE_DOOR_LOCKED)
 		lower()
-
-/obj/structure/machinery/door_control/omaha_ramp/proc/get_controller_status()
 
 /obj/structure/machinery/door_control/omaha_ramp/proc/raise()
 	to_chat(world, "raising via button")
@@ -532,8 +553,6 @@
 	for(var/obj/structure/shuttle/part/dropship_omaha/dummy_part/rampazoid in iconchange_ramps)
 		if(!rampazoid.linked_staircase)
 			return
-//		var/turf/open/our_turf = rampazoid.loc
-//		our_turf.icon_state = initial(our_turf.icon_state)
 		QDEL_NULL(rampazoid.linked_staircase)
 
 	for(var/obj/structure/shuttle/part/dropship_omaha/dummy_part/rampazoid in openspace_ramps)
@@ -548,36 +567,28 @@
 			rampazoid.linked_structure_ramp.moveToNullspace()
 		our_turf.update_vis_contents()
 
-	linked_single_controller.status = SHUTTLE_RAMP_RAISED
+	linked_single_controller.status = SHUTTLE_DOOR_LOCKED
 
 /obj/structure/machinery/door_control/omaha_ramp/proc/lower()
 	to_chat(world, "lowering via button")
 
 	for(var/obj/structure/shuttle/part/dropship_omaha/dummy_part/rampazoid in adjustable_ramps)
 		var/turf/open/our_turf = rampazoid.loc
-		// make the ramp
 		if(!rampazoid.linked_staircase)
 			var/turf/turf_beneath = SSmapping.get_turf_below(our_turf)
 			rampazoid.linked_staircase = new /obj/structure/stairs/multiz/up/omaha_ramp(turf_beneath)
 			rampazoid.linked_staircase.icon = our_turf.icon
 			rampazoid.linked_staircase.icon_state = "[our_turf.icon_state]-low"
-		// get our brand new turf in
 		our_turf.place_on_top(/turf/open_space)
 		our_turf.update_vis_contents()
 
 	for(var/obj/structure/shuttle/part/dropship_omaha/dummy_part/rampazoid in iconchange_ramps)
 		var/turf/open/our_turf = rampazoid.loc
-//		our_turf.icon_state = "[our_turf.icon_state]-low"
 		if(!rampazoid.linked_staircase)
 			rampazoid.linked_staircase = new /obj/structure/stairs/multiz/down/omaha_ramp(our_turf)
 			rampazoid.linked_staircase.icon = "[our_turf.icon]"
 			rampazoid.linked_staircase.icon_state = "[our_turf.icon_state]-low"
 			rampazoid.linked_staircase.invisibility = 101
-//			var/turf/turf_to_put_down = our_turf.type
-//			var/turf/turf_beneath = SSmapping.get_turf_below(our_turf)
-//			turf_beneath.place_on_top(turf_to_put_down) // changeturf_skip
-//			turf_beneath.icon = "[our_turf.icon]"
-//			turf_beneath.icon_state = "[our_turf.icon_state]-low"
 
 	for(var/obj/structure/shuttle/part/dropship_omaha/dummy_part/rampazoid in openspace_ramps)
 		var/turf/open/our_turf = rampazoid.loc
@@ -595,9 +606,9 @@
 		our_turf.place_on_top(/turf/open_space)
 		our_turf.update_vis_contents()
 
-	linked_single_controller.status = SHUTTLE_RAMP_LOWERED
+	linked_single_controller.status = SHUTTLE_DOOR_UNLOCKED
 
-/obj/structure/machinery/door_control/omaha_ramp/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
+/obj/structure/machinery/door_control/omaha_ramp/beforeShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
 	.=..()
 	if(!length(adjustable_ramps))
 		for(var/place in linked_dropship.shuttle_areas)
@@ -612,7 +623,7 @@
 					if("default")
 						static_ramps += rampazoid
 	if(!linked_single_controller)
-		for(var/direction in linked_dropship.door_control.ramp_controllers)
-			var/datum/door_controller/single_ramp/controller = linked_dropship.door_control.ramp_controllers[direction]
-			if(controller.link_id = src.link_id)
+		for(var/direction in linked_dropship.door_control.door_controllers)
+			var/datum/door_controller/single/controller = linked_dropship.door_control.door_controllers[direction]
+			if(direction == src.direction)
 				linked_single_controller = controller

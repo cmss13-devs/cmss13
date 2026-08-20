@@ -118,9 +118,9 @@
 
 		surgery_bone_overlay = image('icons/mob/humans/dam_human.dmi', "surgery_bone_0", -SURGERY_LAYER)
 
-		surgery_bleed_overlay = image('icons/mob/humans/dam_human.dmi', "surgery_bone_0", -SURGERY_LAYER)
+		surgery_bleed_overlay = image('icons/mob/humans/dam_human.dmi', "surgery_bleed_0", -SURGERY_LAYER)
 		surgery_bleed_overlay.color = owner?.species.blood_color
-		surgery_organ_overlay = image('icons/mob/humans/dam_human.dmi', "surgery_bone_0", -SURGERY_LAYER)
+		surgery_organ_overlay = image('icons/mob/humans/dam_human.dmi', "surgery_organ_0", -SURGERY_LAYER)
 
 
 	wound_overlay = image('icons/mob/humans/dam_human.dmi', "grayscale_0", -DAMAGE_LAYER)

@@ -19,6 +19,7 @@
 	name = "Northpoint Hospital - Outdoors"
 	icon_state = "unknown"
 	ceiling = CEILING_NONE
+	ceiling_muffle = FALSE
 	soundscape_playlist = SCAPE_PL_LV522_OUTDOORS
 
 /area/northpoint/oob
@@ -26,7 +27,7 @@
 	icon_state = "unknown"
 	ceiling = CEILING_MAX
 	is_resin_allowed = FALSE
-	flags_area = AREA_NOTUNNEL|AREA_NOBURROW
+	flags_area = AREA_NOBURROW|AREA_UNWEEDABLE|AREA_NOTUNNEL
 	minimap_color = MINIMAP_AREA_OOB
 	requires_power = FALSE
 	soundscape_playlist = SCAPE_PL_LV759_OUTDOORS
@@ -130,7 +131,7 @@
 	name = "Street Areas"
 	icon_state = "iso1"
 	ceiling = CEILING_NO_PROTECTION
-	minimap_color = MINIMAP_MARS_DIRT
+	minimap_color = MINIMAP_AREA_CELL_VIP
 
 /area/northpoint/outdoors/streets/lz1
 	name = "Northpoint Hospital - LZ1 Streets"

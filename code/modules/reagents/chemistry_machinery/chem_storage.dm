@@ -5,7 +5,7 @@
 #define DYNAMIC_SCALING_CHEM_ENERGY_MINIMUM_SCALE 4
 
 /// How much the recharge rate of chem storages are scaled by during roundstart (<00:20)
-#define ROUNDSTART_RECHARGE_RATE_MULTIPLIER 3
+#define ROUNDSTART_RECHARGE_RATE_MULTIPLIER 4
 
 /obj/structure/machinery/chem_storage
 	name = "Chemical Storage System"

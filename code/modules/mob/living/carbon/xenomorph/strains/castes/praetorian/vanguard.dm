@@ -72,7 +72,7 @@
 		bound_xeno.explosivearmor_modifier += 1.5 * XENO_EXPOSIVEARMOR_MOD_VERY_LARGE
 		bound_xeno.recalculate_armor()
 		new_shield.explosive_armor_amount = 1.5 * XENO_EXPOSIVEARMOR_MOD_VERY_LARGE
-		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We feel our defensive shell regenerate! It will block one hit!"))
+		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We feel our defensive shell regenerate! It will block few hits!"))
 
 	ADD_TRAIT(bound_xeno, TRAIT_ABILITY_CLEAVE_BUFFED, TRAIT_SOURCE_ABILITY("cleave_buffed"))
 
@@ -246,9 +246,17 @@
 	var/hitsound = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
 	playsound(target_carbon, hitsound, 75, 1)
 
-	var/buffed = HAS_TRAIT(cleave_user, TRAIT_ABILITY_CLEAVE_ROOT)
+	var/buffed = HAS_TRAIT(cleave_user, TRAIT_ABILITY_CLEAVE_FLING)
 
-	if(HAS_TRAIT(cleave_user, TRAIT_ABILITY_CLEAVE_ROOT))
+	if(HAS_TRAIT(cleave_user, TRAIT_ABILITY_CLEAVE_FLING))
+		var/fling_distance = buffed ? fling_dist_buffed : fling_dist_unbuffed
+
+		if(target_carbon.mob_size >= MOB_SIZE_BIG)
+			fling_distance *= 0.1
+		cleave_user.visible_message(SPAN_XENODANGER("[cleave_user] deals [target_atom] a massive blow, sending them flying!"), SPAN_XENOHIGHDANGER("We deal [target_atom] a massive blow, sending them flying!"))
+		cleave_user.flick_attack_overlay(target_carbon, "slam")
+		cleave_user.throw_carbon(target_atom, null, fling_distance)
+	else
 		var/root_duration = buffed ? root_duration_buffed : root_duration_unbuffed
 
 		cleave_user.visible_message(SPAN_XENODANGER("[cleave_user] slams [target_atom] into the ground!"), SPAN_XENOHIGHDANGER("We slam [target_atom] into the ground!"))
@@ -261,15 +269,6 @@
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(unroot_human), target_carbon, TRAIT_SOURCE_ABILITY("Cleave")), get_xeno_stun_duration(target_carbon, root_duration))
 		to_chat(target_carbon, SPAN_XENOHIGHDANGER("[cleave_user] has pinned you to the ground! You cannot move!"))
 		cleave_user.flick_attack_overlay(target_carbon, "punch")
-
-	else
-		var/fling_distance = buffed ? fling_dist_buffed : fling_dist_unbuffed
-
-		if(target_carbon.mob_size >= MOB_SIZE_BIG)
-			fling_distance *= 0.1
-		cleave_user.visible_message(SPAN_XENODANGER("[cleave_user] deals [target_atom] a massive blow, sending them flying!"), SPAN_XENOHIGHDANGER("We deal [target_atom] a massive blow, sending them flying!"))
-		cleave_user.flick_attack_overlay(target_carbon, "slam")
-		cleave_user.throw_carbon(target_atom, null, fling_distance)
 
 	apply_cooldown()
 	return ..()

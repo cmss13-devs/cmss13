@@ -85,14 +85,14 @@
 		return
 
 	var/action_icon_result
-	if(HAS_TRAIT(xeno, TRAIT_ABILITY_CLEAVE_ROOT))
-		REMOVE_TRAIT(xeno, TRAIT_ABILITY_CLEAVE_ROOT, TRAIT_SOURCE_ABILITY("cleave_root"))
-		action_icon_result = "prae_cleave_root"
-		to_chat(xeno, SPAN_WARNING("We will now root marines with our cleave."))
-	else
-		ADD_TRAIT(xeno, TRAIT_ABILITY_CLEAVE_ROOT, TRAIT_SOURCE_ABILITY("cleave_root"))
+	if(!HAS_TRAIT(xeno, TRAIT_ABILITY_CLEAVE_FLING))
+		ADD_TRAIT(xeno, TRAIT_ABILITY_CLEAVE_FLING, TRAIT_SOURCE_ABILITY("cleave_root"))
 		action_icon_result = "prae_cleave_fling" // TODO: update
 		to_chat(xeno, SPAN_WARNING("We will now throw marines with our cleave."))
+	else
+		REMOVE_TRAIT(xeno, TRAIT_ABILITY_CLEAVE_FLING, TRAIT_SOURCE_ABILITY("cleave_root"))
+		action_icon_result = "prae_cleave_root"
+		to_chat(xeno, SPAN_WARNING("We will now root marines with our cleave."))
 
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_result)

@@ -13,12 +13,15 @@
 	var/falloff = 1
 	var/volume_cat = VOLUME_SFX
 	var/range = 0
-	var/list/echo = new /list(18)
+	var/list/echo
+	var/atom/atom //! Tracked atom so we get the exact position even after delay in SSsound firing - replaces x/y/z if applicable
 	var/x //Map coordinates, not sound coordinates
 	var/y
 	var/z
-	var/y_s_offset // Vertical sound offset
-	var/x_s_offset // Horizontal sound offset
+	/// Horizontal sound offset, added to the dynamic offsets calculated using map coordinates above.
+	var/x_s_offset
+	/// Vertical (as in on screen) sound offset, added to the dynamic offsets calculated using map coordinates above. Get it right: Y in sound is up from the ground. Y in game is up on the screen. Game North is Sound Z axis.
+	var/z_s_offset
 
 /datum/sound_template/proc/get_hearers()
 	RETURN_TYPE(/list/client)
@@ -45,7 +48,7 @@
 //status: the regular 4 sound flags
 //falloff: max range till sound volume starts dropping as distance increases
 
-/proc/playsound(atom/source, sound/soundin, vol = 100, vary = FALSE, sound_range, vol_cat = VOLUME_SFX, channel = 0, status, falloff = 1, list/echo, y_s_offset, x_s_offset)
+/proc/playsound(atom/source, sound/soundin, vol = 100, vary = FALSE, sound_range, vol_cat = VOLUME_SFX, channel = 0, status, falloff = 1, list/echo, z_s_offset, x_s_offset)
 	if(isarea(source))
 		error("[source] is an area and is trying to make the sound: [soundin]")
 		return FALSE
@@ -62,11 +65,9 @@
 	template.falloff = falloff
 	template.volume = vol
 	template.volume_cat = vol_cat
-	for(var/pos = 1 to length(echo))
-		if(!echo[pos])
-			continue
-		template.echo[pos] = echo[pos]
-	template.y_s_offset = y_s_offset
+	if(echo)
+		template.echo = echo.Copy()
+	template.z_s_offset = z_s_offset
 	template.x_s_offset = x_s_offset
 	if(vary != FALSE)
 		if(vary > 1)
@@ -77,6 +78,9 @@
 	if(!sound_range)
 		sound_range = floor(0.25*vol) //if no specific range, the max range is equal to a quarter of the volume.
 	template.range = sound_range
+
+	if(ismovable(source))
+		template.atom = source
 
 	var/turf/turf_source = get_turf(source)
 	if(!turf_source || !turf_source.z)
@@ -96,6 +100,7 @@
 		if(vehicle_interior?.ready)
 			extra_interiors |= vehicle_interior
 			if(vehicle_interior.exterior)
+				template.atom = vehicle_interior.exterior
 				var/turf/new_turf_source = get_turf(vehicle_interior.exterior)
 				template.x = new_turf_source.x
 				template.y = new_turf_source.y
@@ -113,12 +118,14 @@
 
 
 //This is the replacement for playsound_local. Use this for sending sounds directly to a client
-/proc/playsound_client(client/client, sound/soundin, atom/origin, vol = 100, random_freq, vol_cat = VOLUME_SFX, channel = 0, status, list/echo, y_s_offset, x_s_offset)
+/proc/playsound_client(client/client, sound/soundin, atom/origin, vol = 100, random_freq, vol_cat = VOLUME_SFX, channel = 0, status, list/echo, z_s_offset, x_s_offset)
 	if(!istype(client) || !client.soundOutput)
 		return FALSE
 
 	var/datum/sound_template/template = new()
 	if(origin)
+		if(isatom(origin))
+			template.atom = origin
 		var/turf/T = get_turf(origin)
 		if(T)
 			template.x = T.x
@@ -140,16 +147,14 @@
 	template.volume_cat = vol_cat
 	template.channel = channel
 	template.status = status
-	for(var/pos = 1 to length(echo))
-		if(!echo[pos])
-			continue
-		template.echo[pos] = echo[pos]
-	template.y_s_offset = y_s_offset
+	if(echo)
+		template.echo = echo.Copy()
+	template.z_s_offset = z_s_offset
 	template.x_s_offset = x_s_offset
 	SSsound.queue(template, list(client))
 
 /// Plays sound to all mobs that are map-level contents of an area
-/proc/playsound_area(area/A, soundin, vol = 100, channel = 0, status, vol_cat = VOLUME_SFX, list/echo, y_s_offset, x_s_offset)
+/proc/playsound_area(area/A, soundin, vol = 100, channel = 0, status, vol_cat = VOLUME_SFX, list/echo, z_s_offset, x_s_offset)
 	if(!isarea(A))
 		return FALSE
 
@@ -159,10 +164,8 @@
 	template.channel = channel
 	template.status = status
 	template.volume_cat = vol_cat
-	for(var/pos = 1 to length(echo))
-		if(!echo[pos])
-			continue
-		template.echo[pos] = echo[pos]
+	if(echo)
+		template.echo = echo.Copy()
 
 	var/list/hearers = list()
 	for(var/mob/living/M in A.contents)
@@ -179,17 +182,15 @@
 
 
 /// Play sound for all on-map clients on a given Z-level. Good for ambient sounds.
-/proc/playsound_z(z, soundin, volume = 100, vol_cat = VOLUME_SFX, echo, y_s_offset, x_s_offset)
+/proc/playsound_z(z, soundin, volume = 100, vol_cat = VOLUME_SFX, list/echo, z_s_offset, x_s_offset)
 	var/datum/sound_template/template = new()
 	template.file = soundin
 	template.volume = volume
 	template.channel = SOUND_CHANNEL_Z
 	template.volume_cat = vol_cat
-	for(var/pos = 1 to length(echo))
-		if(!echo[pos])
-			continue
-		template.echo[pos] = echo[pos]
-	template.y_s_offset = y_s_offset
+	if(echo)
+		template.echo = echo.Copy()
+	template.z_s_offset = z_s_offset
 	template.x_s_offset = x_s_offset
 	var/list/hearers = list()
 	for(var/mob/M in GLOB.player_list)

@@ -462,7 +462,6 @@
 	ability_uses_acid_overlay = TRUE
 
 	/// Var that keeps track of in-progress wind-up spits like Bombard to prevent spitting multiple spits at the same time
-	var/spitting = FALSE
 	var/sound_to_play = "acid_spit"
 	var/aim_turf = FALSE
 

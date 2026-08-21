@@ -1176,6 +1176,11 @@
 		if((fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 			return IGNITE_FAILED
 
+	if(src.strain && istype(src.strain, /datum/xeno_strain/vampire))
+		var/datum/behavior_delegate/vampire/behavior = behavior_delegate
+		to_chat(src, SPAN_XENOHIGHDANGER ("F-FLAME! OUR POWER IS BURNING AWAY!"))
+		behavior.bloodlust_lock_callback()
+
 	. = ..()
 
 	if (. & IGNITE_IGNITED)

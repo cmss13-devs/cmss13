@@ -61,7 +61,7 @@
 		parent.AddComponent(/datum/component/footstep, 2 , 35, 11, 4, footstep_sounds_="alien_footstep_large")
 	if(iscarbon(parent))
 		var/mob/living/carbon/affected_carbon = parent
-		animate(affected_carbon, pixel_y = initial(affected_carbon.pixel_y), 0.2 SECONDS)
+		animate(affected_carbon, pixel_y = affected_carbon.base_pixel_y, 0.2 SECONDS)
 		affected_carbon.plane = initial(affected_carbon.plane)
 		if(!affected_carbon.stat == DEAD)
 			affected_carbon.layer = initial(affected_carbon.layer)
@@ -158,12 +158,12 @@
 		if(!water_depth || (effect_turf.covered && !blocker_dispersing) || (catwalk && !blocker_dispersing))
 			Destroy()
 			return
-
+		affected_carbon.pixel_y = affected_carbon.base_pixel_y		//some animations shake the mob around wildly (evoing for example)
 		animate(affected_carbon, pixel_y = water_depth, 0.2 SECONDS)	//if there is a meaningful difference in depth, change layerings and animate the mob "down" to where it should be
 		affected_carbon.appearance_flags |= KEEP_TOGETHER					//this eliminates the water overlays extending past the mobs exisiting sprite, and alot of overhead as a restult
 		var/xeno_resting = (isxeno(affected_carbon) && (affected_carbon.resting||affected_carbon.body_position == LYING_DOWN))	//side note here, why isKnockDown() not work for xenos? lol
 		if(SSwater_overlays.is_coastline(effect_turf) || xeno_resting) 				//unless its a coast, things here will never need to be "below" the turf south of it (they should always be shallow/be a gradient of depth)
-			affected_carbon.layer = initial(affected_carbon.layer )
+			affected_carbon.layer = initial(affected_carbon.layer)
 			affected_carbon.plane = initial(affected_carbon.plane)
 		else
 			affected_carbon.layer = UNDER_WATER_MOB_LAYER	//in the case theres a dropoff.. ei turf south is high and the one we're in is "deep".

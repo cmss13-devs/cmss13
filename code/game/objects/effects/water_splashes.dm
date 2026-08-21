@@ -33,7 +33,7 @@
 /obj/effect/water_splash/water_overlay_splash/proc/update_wateroverlay(turf/water_turf, mob/living/carbon/affected_carbon, pixel_y_offset = 0, xeno_resting=FALSE)
 	icon_state = null
 	icon = null
-	if(!xeno_resting && !isfacehugger(affected_carbon) && !islarva(affected_carbon)) //these dont get splashes
+	if(!(xeno_resting && pixel_y_offset != DEPTH_DEEP) && !isfacehugger(affected_carbon) && !islarva(affected_carbon)) //these dont get splashes
 		var/splash_state
 		var/resting_dir
 		var/found_angle = affected_carbon.get_lying_angle()
@@ -60,7 +60,10 @@
 			else if(pixel_y_offset == DEPTH_INTERMEDIATE)	//intermediate depth
 				splash_state = "intermediate"
 			else //pixel_y_offset== DEPTH_DEEP -- deep water
-				splash_state = "deep"
+				if(xeno_resting || isrunner(affected_carbon))	//runner literally underwater at this depth :P
+					splash_state = affected_carbon.stat == DEAD ? "empty" : "bubbles"
+				else
+					splash_state = "deep"
 		icon = SSwater_overlays.water_overlay_icon_paths[icon_path_key]
 		icon_state = splash_state
 

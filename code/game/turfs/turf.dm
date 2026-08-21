@@ -150,23 +150,26 @@
 	return return_list
 
 /turf/proc/fix_water_clipping_layers_final() // if any of the turfs we changed above have water above them, we reset them
+	var/list/return_list = list()
 	var/turf/checking_turf = get_step(src, SOUTH)	// this should be already handled, but was seeing some weird behaviour
-	var/is_full_water = SSwater_overlays.is_full_water(checking_turf)
 	if(checking_turf == null)
 		return
-	if(is_full_water && layer != UNDER_WATER_TURF_LAYER)
+	if(SSwater_overlays.is_full_water(checking_turf) && layer != UNDER_WATER_TURF_LAYER)
 		visually_set_under_water_mobs(TRUE)
+		return_list |= list(type, TRUE, x,y,z)
 
 	checking_turf = get_step(src, NORTH)
 	if(checking_turf == null)
 		return
-	if(is_full_water && layer != initial(layer))
+	if(SSwater_overlays.is_water(checking_turf) && layer != initial(layer))
 		visually_set_under_water_mobs(FALSE)
+		return_list |= list(type, FALSE, "[x],[y],[z]")
 
 	if(ispath(checking_turf.type, /turf/open/gm/river))
 		var/turf/open/gm/river/checking_river = checking_turf
 		if(checking_river.covered)
 			checking_river.update_overlays()
+	return return_list
 
 /turf/proc/visually_set_under_water_mobs(setting)
 	if(setting)

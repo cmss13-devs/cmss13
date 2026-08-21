@@ -47,14 +47,23 @@ SUBSYSTEM_DEF(water_overlays)
 
 /datum/controller/subsystem/water_overlays/proc/after_nightmares_water()
 	var/list/altered_turfs = list()
+	var/list/late_altereds = list()
 	for(var/turf/current_turf in turfs_to_process)
 		if(current_turf in altered_turfs)
 			continue
 		altered_turfs |= current_turf.fix_water_clipping_layers(altered_turfs)
 	for(var/turf/current_turf in altered_turfs)
-		current_turf.fix_water_clipping_layers_final()
+		late_altereds |= current_turf.fix_water_clipping_layers_final()
 	generate_water_display_icons() //part 2 -- handle nightmare water turfs (usually redundant or tiny)
 	UnregisterSignal(SSnightmare, COMSIG_NIGHTMARES_STATUS_DONE)
+
+	for(var/turf/T in altered_turfs)
+		message_admins("[T.type] was considered [T.layer == UNDER_WATER_TURF_LAYER ? "underwater" : "land"]", T.x, T.y, T.z)
+	for(var/entry in late_altereds)
+		var/list/entri = late_altereds[entry]
+		if(entri == null)
+			return
+		message_admins("[entri[1]] was set [entri[2]] lately", entri[3],entri[4],entri[5])
 
 /datum/controller/subsystem/water_overlays/proc/is_full_water(turf/potential_water)
 	if(!isturf(potential_water))

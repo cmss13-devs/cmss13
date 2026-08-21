@@ -2231,3 +2231,107 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_state = "rmc_helm_medic"
 	built_in_visors = list(new /obj/item/device/helmet_visor/medical/advanced)
 	start_down_visor_type = /obj/item/device/helmet_visor/medical/advanced
+
+// Fireproof suits
+
+/obj/item/clothing/head/helmet/marine/fireproof_hood
+	name = "HZP-12 entry-type proximity hood"
+	desc = "A sealed thermal hood component of the HZP-12 proximity suit system. It provides head and neck protection against extreme heat."
+	icon_state = "fireproof_hood"
+	item_state = "fireproof_hood"
+	icon = 'icons/obj/items/clothing/hats/hazard.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi',
+	)
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	max_heat_protection_temperature = ARMOR_MAX_HEAT_PROT
+	flags_cold_protection = BODY_FLAG_HEAD
+	flags_heat_protection = BODY_FLAG_HEAD
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_LOW
+	unacidable = TRUE
+	force = 0
+	throwforce = 0
+	flags_inventory = BLOCKSHARPOBJ|BLOCKGASEFFECT
+	flags_marine_helmet = NO_FLAGS
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	flags_inv_hide = HIDEEARS|HIDEALLHAIR
+	built_in_visors = list()
+
+/obj/item/clothing/head/helmet/marine/fireproof_hood/Initialize(mapload)
+	. = ..()
+	RemoveElement(/datum/element/corp_label/armat)
+	AddElement(/datum/element/corp_label/seegson)
+
+// Seegson Security
+
+/obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/seegson
+	name = "\improper Seegson security helmet"
+	desc = "A basic skull-helm worn by Seegson corporate security assets."
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/Seegson.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/Seegson.dmi'
+	)
+	icon_state = "seegson_security_helmet"
+	item_state = "seegson_security_helmet"
+
+/obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/seegson/Initialize()
+	. = ..()
+	RemoveElement(/datum/element/corp_label/wy)
+	AddElement(/datum/element/corp_label/seegson)
+
+// Lasalle Bionational - Mercs - (Bionational Hazard Intervention Group)
+
+/obj/item/clothing/head/helmet/marine/veteran/lb_merc
+	name = "\improper HIG combat helmet"
+	desc = "A fully enclosed combat helmet issued to Lasalle Bionational - Hazard Intervention Group operators. It is reinforced and has an integrated visor. Designed for high-risk operations in hostile environments."
+	icon_state = "lb_merc"
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/LASALLE.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/LASALLE.dmi',
+	)
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	flags_inventory = BLOCKSHARPOBJ
+	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
+	flags_inventory = COVEREYES|COVERMOUTH|BLOCKSHARPOBJ
+	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE|HIDEMASK|HIDEALLHAIR
+	flags_marine_helmet = NO_FLAGS
+
+	built_in_visors = list(new /obj/item/device/helmet_visor)
+
+	camera_factions = FACTION_LIST_LASALLE_BIONATIONAL
+
+/obj/item/clothing/head/helmet/marine/veteran/lb_merc/Initialize()
+	. = ..()
+	RemoveElement(/datum/element/corp_label/wy)
+	AddElement(/datum/element/corp_label/bionational)
+
+/obj/item/clothing/head/helmet/marine/veteran/lb_merc/leader
+	name = "\improper HIG team leader combat helmet"
+	desc = "A fully enclosed combat helmet issued to Lasalle Bionational - Hazard Intervention Group team leaders. It's single blue command markings and intergrated telemetry beacon clearly distinguish the wearer from the other members of an intervention team."
+	icon_state = "lb_merc_lead"
+
+/obj/item/clothing/head/helmet/marine/veteran/lb_merc/engi
+	name = "\improper HIG technical specialist combat helmet"
+	desc = "A fully enclosed combat helmet issued to Lasalle Bionational - Hazard Intervention Group technical specialists. It's enlarged visor provides improved visibility, it also has an integrated deployable welding visor."
+	icon_state = "lb_merc_engi"
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/welding_visor)
+
+/obj/item/clothing/head/helmet/marine/veteran/lb_merc/commander
+	name = "\improper HIG operations commander combat helmet"
+	desc = "A fully enclosed combat helmet issued to Lasalle Bionational - Hazard Intervention Group operations commanders. It's double blue command markings and intergrated telemetry beacon clearly distinguish the wearer from the other members of an intervention team."
+	icon_state = "lb_merc_co"
+	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_energy = CLOTHING_ARMOR_MEDIUM

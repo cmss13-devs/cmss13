@@ -1032,3 +1032,83 @@
 <span style='color:#607c4c; font-size:95%;'>Your mission is clear—find out what happened to your supply ship and comrades, retrieve your equipment, and uncover the truth of what really happened to the colony.</span>"
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
 	archetype = INSERT_SYNTH
+
+// Fire Colony - Lasalle Bionational - HIG - Survivors
+
+/obj/effect/landmark/survivor_spawner/fire_colony_lb_merc
+	icon_state = "surv_wy"
+	equipment = /datum/equipment_preset/survivor/lasalle_merc/standard
+	intro_text = list("<h2>You are a Lasalle-Bionational - HIG - Operative - stranded on LV-376 'Charon's Crucible'.</h2>",\
+	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your dropship remains locked down under remote command authorization. Extraction has been suspended until mission objectives are complete.</span>")
+	story_text = "<p style='font-size:110%; color:#43799e;'><b>You are a member of Lasalle Bionational's - Hazard Intervention Group (HIG)</b>, the corporation's specialized hazardous intervention and asset recovery unit. Your team was stationed aboard the LBV Vigilance, a Lasalle Bionational forward operating vessel maintaining a discreet orbit elsewhere within the LV-376 system, close enough to respond before any external government or corporate intervention could arrive.</p>\
+	<p style='font-size:100%; color:#43799e;'><b>Following the loss of contact with the colony, your team has been deployed under emergency containment protocols. Your orders are to liquidate all active biological assets, recover any salvageable project data, secure any inert or otherwise recoverable specimens, and eliminate any potential intelligence leaks that could compromise Lasalle Bionational's interests.</b></p>\
+	<p style='font-size:90%; color:#9f3333;'><b>MISSION DIRECTIVE:</b> Your off-world handler is monitoring the operation remotely and retains full remote control of your dropship. Once all primary objectives have been completed, extraction may be authorized. Until then, your orders are clear: <b>complete the mission, or remain planetside - permanently.</b></p>"
+	hostile = TRUE
+	spawn_priority = SPAWN_PRIORITY_MEDIUM
+	archetype = INSERT_STANDARD
+
+/obj/effect/landmark/survivor_spawner/fire_colony_lb_merc_medic
+	icon_state = "surv_wy"
+	equipment = /datum/equipment_preset/survivor/lasalle_merc/medic
+	intro_text = list("<h2>You are a Lasalle-Bionational - HIG - Operative - Medical Specialist - stranded on LV-376 'Charon's Crucible'.</h2>",\
+	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your dropship remains locked down under remote command authorization. Extraction has been suspended until mission objectives are complete.</span>")
+	story_text = "<p style='font-size:110%; color:#43799e;'><b>You are a member of Lasalle Bionational's - Hazard Intervention Group (HIG)</b>, the corporation's specialized hazardous intervention and asset recovery unit. Your team was stationed aboard the LBV Vigilance, a Lasalle Bionational forward operating vessel maintaining a discreet orbit elsewhere within the LV-376 system, close enough to respond before any external government or corporate intervention could arrive.</p>\
+	<p style='font-size:100%; color:#43799e;'><b>Following the loss of contact with the colony, your team has been deployed under emergency containment protocols. Your orders are to liquidate all active biological assets, recover any salvageable project data, secure any inert or otherwise recoverable specimens, and eliminate any potential intelligence leaks that could compromise Lasalle Bionational's interests.</b></p>\
+	<p style='font-size:90%; color:#9f3333;'><b>MISSION DIRECTIVE:</b> Your off-world handler is monitoring the operation remotely and retains full remote control of your dropship. Once all primary objectives have been completed, extraction may be authorized. Until then, your orders are clear: <b>complete the mission, or remain planetside - permanently.</b></p>"
+	hostile = TRUE
+	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
+	archetype = INSERT_MEDIC
+
+/obj/effect/landmark/survivor_spawner/fire_colony_lb_merc_engineer
+	icon_state = "surv_wy"
+	equipment = /datum/equipment_preset/survivor/lasalle_merc/engineer
+	intro_text = list("<h2>You are a Lasalle-Bionational - HIG - Operative - Technical Specialist - stranded on LV-376 'Charon's Crucible'.</h2>",\
+	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your dropship remains locked down under remote command authorization. Extraction has been suspended until mission objectives are complete.</span>")
+	story_text = "<p style='font-size:110%; color:#43799e;'><b>You are a member of Lasalle Bionational's - Hazard Intervention Group (HIG)</b>, the corporation's specialized hazardous intervention and asset recovery unit. Your team was stationed aboard the LBV Vigilance, a Lasalle Bionational forward operating vessel maintaining a discreet orbit elsewhere within the LV-376 system, close enough to respond before any external government or corporate intervention could arrive.</p>\
+	<p style='font-size:100%; color:#43799e;'><b>Following the loss of contact with the colony, your team has been deployed under emergency containment protocols. Your orders are to liquidate all active biological assets, recover any salvageable project data, secure any inert or otherwise recoverable specimens, and eliminate any potential intelligence leaks that could compromise Lasalle Bionational's interests.</b></p>\
+	<p style='font-size:90%; color:#9f3333;'><b>MISSION DIRECTIVE:</b> Your off-world handler is monitoring the operation remotely and retains full remote control of your dropship. Once all primary objectives have been completed, extraction may be authorized. Until then, your orders are clear: <b>complete the mission, or remain planetside - permanently.</b></p>"
+	hostile = TRUE
+	spawn_priority = SPAWN_PRIORITY_HIGH
+	archetype = INSERT_ENGINEER
+
+/obj/effect/landmark/survivor_spawner/fire_colony_lb_merc_leader
+	icon_state = "surv_wy"
+	equipment = /datum/equipment_preset/survivor/lasalle_merc/leader
+	intro_text = list("<h2>You are a Lasalle-Bionational - HIG - Operative - Team Leader - stranded on LV-376 'Charon's Crucible'.</h2>",\
+	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your dropship remains locked down under remote command authorization. Extraction has been suspended until mission objectives are complete.</span>")
+	story_text = "<p style='font-size:110%; color:#43799e;'><b>You are a member of Lasalle Bionational's - Hazard Intervention Group (HIG)</b>, the corporation's specialized hazardous intervention and asset recovery unit. Your team was stationed aboard the LBV Vigilance, a Lasalle Bionational forward operating vessel maintaining a discreet orbit elsewhere within the LV-376 system, close enough to respond before any external government or corporate intervention could arrive.</p>\
+	<p style='font-size:100%; color:#43799e;'><b>Following the loss of contact with the colony, your team has been deployed under emergency containment protocols. Your orders are to liquidate all active biological assets, recover any salvageable project data, secure any inert or otherwise recoverable specimens, and eliminate any potential intelligence leaks that could compromise Lasalle Bionational's interests.</b></p>\
+	<p style='font-size:90%; color:#9f3333;'><b>MISSION DIRECTIVE:</b> Your off-world handler is monitoring the operation remotely and retains full remote control of your dropship. Once all primary objectives have been completed, extraction may be authorized. Until then, your orders are clear: <b>complete the mission, or remain planetside - permanently.</b></p>"
+	hostile = TRUE
+	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
+	archetype = INSERT_LEADER
+
+/obj/effect/landmark/survivor_spawner/fire_colony_lb_merc_commander
+	icon_state = "surv_wy"
+	equipment = /datum/equipment_preset/survivor/lasalle_merc/lasalle_commander
+	intro_text = list("<h2>You are a Lasalle-Bionational - HIG - Operations Commander - stranded on LV-376 'Charon's Crucible'.</h2>",\
+	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your dropship remains locked down under remote command authorization. Extraction has been suspended until mission objectives are complete.</span>")
+	story_text = "<p style='font-size:110%; color:#43799e;'><b>You are a member of Lasalle Bionational's - Hazard Intervention Group (HIG)</b>, the corporation's specialized hazardous intervention and asset recovery unit. Your team was stationed aboard the LBV Vigilance, a Lasalle Bionational forward operating vessel maintaining a discreet orbit elsewhere within the LV-376 system, close enough to respond before any external government or corporate intervention could arrive.</p>\
+	<p style='font-size:100%; color:#43799e;'><b>Following the loss of contact with the colony, your team has been deployed under emergency containment protocols. Your orders are to liquidate all active biological assets, recover any salvageable project data, secure any inert or otherwise recoverable specimens, and eliminate any potential intelligence leaks that could compromise Lasalle Bionational's interests.</b></p>\
+	<p style='font-size:90%; color:#9f3333;'><b>MISSION DIRECTIVE:</b> Your off-world handler is monitoring the operation remotely and retains full remote control of your dropship. Once all primary objectives have been completed, extraction may be authorized. Until then, your orders are clear: <b>complete the mission, or remain planetside - permanently.</b></p>"
+	hostile = TRUE
+	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
+	archetype = INSERT_CO
+
+/obj/effect/landmark/survivor_spawner/fire_colony_lb_merc_synth
+	icon_state = "surv_wy"
+	equipment = /datum/equipment_preset/synth/survivor/lasalle_merc
+	intro_text = list("<h2>You are a Lasalle-Bionational - HIG - Support Synthetic - stranded on LV-376 'Charon's Crucible'.</h2>",\
+	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your dropship remains locked down under remote command authorization. Extraction has been suspended until mission objectives are complete.</span>")
+	story_text = "<p style='font-size:110%; color:#43799e;'><b>You are a member of Lasalle Bionational's - Hazard Intervention Group (HIG)</b>, the corporation's specialized hazardous intervention and asset recovery unit. Your team was stationed aboard the LBV Vigilance, a Lasalle Bionational forward operating vessel maintaining a discreet orbit elsewhere within the LV-376 system, close enough to respond before any external government or corporate intervention could arrive.</p>\
+	<p style='font-size:100%; color:#43799e;'><b>Following the loss of contact with the colony, your team has been deployed under emergency containment protocols. Your orders are to liquidate all active biological assets, recover any salvageable project data, secure any inert or otherwise recoverable specimens, and eliminate any potential intelligence leaks that could compromise Lasalle Bionational's interests.</b></p>\
+	<p style='font-size:90%; color:#9f3333;'><b>MISSION DIRECTIVE:</b> Your off-world handler is monitoring the operation remotely and retains full remote control of your dropship. Once all primary objectives have been completed, extraction may be authorized. Until then, your orders are clear: <b>complete the mission, or remain planetside - permanently.</b></p>"
+	hostile = TRUE
+	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
+	archetype = INSERT_SYNTH

@@ -119,6 +119,16 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	color = "#333333"
 	perunit = 3750
 	stack_id = "iron"
+	amount_sprites = TRUE
+
+/obj/item/stack/sheet/mineral/iron/small_stack
+	amount = STACK_10
+
+/obj/item/stack/sheet/mineral/iron/medium_stack
+	amount = STACK_30
+
+/obj/item/stack/sheet/mineral/iron/full_stack
+	amount = STACK_50
 
 /obj/item/stack/sheet/mineral/iron/Initialize()
 	. = ..()
@@ -251,6 +261,16 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	sheettype = "gold"
 	stack_id = "gold"
 	black_market_value = 30
+	amount_sprites = TRUE
+
+/obj/item/stack/sheet/mineral/gold/small_stack
+	amount = STACK_10
+
+/obj/item/stack/sheet/mineral/gold/medium_stack
+	amount = STACK_30
+
+/obj/item/stack/sheet/mineral/gold/full_stack
+	amount = STACK_50
 
 /obj/item/stack/sheet/mineral/gold/Initialize()
 	. = ..()
@@ -269,6 +289,16 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	sheettype = "silver"
 	stack_id = "silver"
 	black_market_value = 25
+	amount_sprites = TRUE
+
+/obj/item/stack/sheet/mineral/silver/small_stack
+	amount = STACK_10
+
+/obj/item/stack/sheet/mineral/silver/medium_stack
+	amount = STACK_30
+
+/obj/item/stack/sheet/mineral/silver/full_stack
+	amount = STACK_50
 
 /obj/item/stack/sheet/mineral/silver/Initialize()
 	. = ..()
@@ -285,6 +315,16 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 
 	perunit = 1000
 	stack_id = "enuranium"
+	amount_sprites = TRUE
+
+/obj/item/stack/sheet/mineral/enruranium/small_stack
+	amount = STACK_10
+
+/obj/item/stack/sheet/mineral/enruranium/medium_stack
+	amount = STACK_30
+
+/obj/item/stack/sheet/mineral/enruranium/full_stack
+	amount = STACK_50
 
 //Valuable resource, cargo can now actually sell it.
 /obj/item/stack/sheet/mineral/platinum
@@ -297,7 +337,16 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	perunit = 2000
 	stack_id = "platinum"
 	black_market_value = 35
+	amount_sprites = TRUE
 
+/obj/item/stack/sheet/mineral/platinum/small_stack
+	amount = STACK_10
+
+/obj/item/stack/sheet/mineral/platinum/medium_stack
+	amount = STACK_30
+
+/obj/item/stack/sheet/mineral/platinum/full_stack
+	amount = STACK_50
 
 /obj/item/stack/sheet/mineral/lead
 	name = "lead"
@@ -309,6 +358,16 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	perunit = 2000
 	stack_id = "lead"
 	black_market_value = 35
+	amount_sprites = TRUE
+
+/obj/item/stack/sheet/mineral/lead/small_stack
+	amount = STACK_10
+
+/obj/item/stack/sheet/mineral/lead/medium_stack
+	amount = STACK_30
+
+/obj/item/stack/sheet/mineral/lead/full_stack
+	amount = STACK_50
 
 //Extremely valuable to Research.
 /obj/item/stack/sheet/mineral/mhydrogen
@@ -333,6 +392,16 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	perunit = 2000
 	stack_id = "tritium"
 	black_market_value = 35
+	amount_sprites = TRUE
+
+/obj/item/stack/sheet/mineral/tritium/small_stack
+	amount = STACK_10
+
+/obj/item/stack/sheet/mineral/tritium/medium_stack
+	amount = STACK_30
+
+/obj/item/stack/sheet/mineral/tritium/full_stack
+	amount = STACK_50
 
 /obj/item/stack/sheet/mineral/osmium
 	name = "osmium"
@@ -345,6 +414,16 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	perunit = 2000
 	stack_id = "osmium"
 	black_market_value = 35
+	amount_sprites = TRUE
+
+/obj/item/stack/sheet/mineral/osmium/small_stack
+	amount = STACK_10
+
+/obj/item/stack/sheet/mineral/osmium/medium_stack
+	amount = STACK_30
+
+/obj/item/stack/sheet/mineral/osmium/full_stack
+	amount = STACK_50
 
 /obj/item/stack/sheet/mineral/chitin
 	name = "chitin"
@@ -356,3 +435,13 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	perunit = 2000
 	stack_id = "chitin"
 	black_market_value = 35
+	amount_sprites = TRUE
+
+/obj/item/stack/sheet/mineral/chitin/small_stack
+	amount = STACK_10
+
+/obj/item/stack/sheet/mineral/chitin/medium_stack
+	amount = STACK_30
+
+/obj/item/stack/sheet/mineral/chitin/full_stack
+	amount = STACK_50

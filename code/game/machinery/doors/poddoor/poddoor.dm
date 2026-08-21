@@ -218,6 +218,9 @@
 	gender = PLURAL
 	vehicle_resistant = FALSE
 
+/obj/structure/machinery/door/poddoor/hybrisa/shutters/open
+	density = FALSE
+
 /obj/structure/machinery/door/poddoor/hybrisa/white
 	name = null
 	desc = "That looks like it doesn't open easily."
@@ -225,12 +228,15 @@
 	base_icon_state = "w_almayer_pdoor"
 	unslashable = TRUE
 
-/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door // Can't be crowbarred open - even with no power.
 	desc = "That looks like it doesn't open easily."
 	icon_state = "pdoor1"
 	base_icon_state = "pdoor"
 	unslashable = TRUE
 	emp_proof = TRUE
+
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door/open
+	density = FALSE
 
 /obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door
 	desc = "A heavily reinforced metal-alloy door, designed to be virtually indestructible—nothing can penetrate its defenses."

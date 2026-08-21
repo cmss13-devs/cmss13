@@ -424,6 +424,21 @@ GLOBAL_LIST_INIT(all_electric_fences, list())
 	forms_junctions = FALSE
 	icon = 'icons/obj/structures/props/fences/fence_alt_door.dmi'
 
+/obj/structure/fence/slim/blue
+	name = "fence"
+	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
+	icon = 'icons/obj/structures/props/fences/fence_alt.dmi'
+	color = "#8d93a1ff"
+
+/obj/structure/fence/slim/blue/door
+	name = "fence door"
+	desc = "A sturdy chainlink door set between two metal poles. A cheap way to section off areas while still allowing visibility through it."
+	icon_state = "door_closed"
+	color = "#8d93a1ff"
+	door = TRUE
+	forms_junctions = FALSE
+	icon = 'icons/obj/structures/props/fences/fence_alt_door.dmi'
+
 /obj/structure/fence/slim/dark
 	name = "fence"
 	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
@@ -462,3 +477,62 @@ GLOBAL_LIST_INIT(all_electric_fences, list())
 	door = TRUE
 	forms_junctions = FALSE
 	icon = 'icons/obj/structures/props/fences/upp_fence_door.dmi'
+
+// Fake Fence / Fence Misc
+
+/obj/structure/prop/fence
+	name = "fence"
+	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
+	icon_state = "special_brokenfence1"
+	icon = 'icons/obj/structures/props/fences/fence.dmi'
+	density = FALSE
+	layer = WINDOW_LAYER
+	minimap_color = MINIMAP_FENCE
+
+/obj/structure/prop/fence/attackby(obj/item/W, mob/living/user)
+	// Any sufficiently sharp knife/blade destroys instantly
+	if(W.sharp >= IS_SHARP_ITEM_SIMPLE)
+		user.animation_attack_on(src)
+		to_chat(user, SPAN_WARNING("You cut \the [src] with \the [W]."))
+		playsound(src, 'sound/items/Wirecutter.ogg', 25, 1)
+		qdel(src)
+		return ATTACKBY_HINT_UPDATE_NEXT_MOVE
+	else
+		. = ..()
+
+/obj/structure/prop/fence/overgrown
+	name = "overgrown fence"
+	desc = "A large metal mesh strewn between two poles, tangled with vines and creeping growth. Still separates areas, but nature is reclaiming it."
+	icon = 'icons/obj/structures/props/fences/overgrown_fence.dmi'
+
+/obj/structure/prop/fence/dark
+	icon = 'icons/obj/structures/props/fences/dark_fence.dmi'
+
+/obj/structure/prop/fence/dark/overgrown
+	name = "overgrown fence"
+	desc = "A large metal mesh strewn between two poles, tangled with vines and creeping growth. Still separates areas, but nature is reclaiming it."
+	icon = 'icons/obj/structures/props/fences/overgrown_dark_fence.dmi'
+
+/obj/structure/prop/fence/dark/warning
+	icon = 'icons/obj/structures/props/fences/electric_fence.dmi'
+
+/obj/structure/prop/fence/dark/warning/overgrown
+	name = "overgrown fence"
+	desc = "A large metal mesh strewn between two poles, tangled with vines and creeping growth. Still separates areas, but nature is reclaiming it."
+	icon = 'icons/obj/structures/props/fences/overgrown_electric_fence.dmi'
+
+/obj/structure/prop/fence/slim
+	icon = 'icons/obj/structures/props/fences/fence_alt.dmi'
+
+/obj/structure/prop/fence/slim/blue
+	icon = 'icons/obj/structures/props/fences/fence_alt.dmi'
+	color = "#8d93a1ff"
+
+/obj/structure/prop/fence/slim/dark
+	icon = 'icons/obj/structures/props/fences/dark_fence_alt.dmi'
+
+/obj/structure/prop/fence/slim/warning
+	icon = 'icons/obj/structures/props/fences/electric_fence_alt.dmi'
+
+/obj/structure/prop/fence/slim/upp
+	icon = 'icons/obj/structures/props/fences/upp_fence.dmi'

@@ -112,6 +112,8 @@ SUBSYSTEM_DEF(ticker)
 			if(!roundend_check_paused && mode.check_finished(force_ending) || force_ending)
 				current_state = GAME_STATE_FINISHED
 				GLOB.ooc_allowed = TRUE
+				if(force_ending && (SSticker.mode.round_finished in list(MODE_INFESTATION_M_MAJOR, MODE_INFESTATION_M_MINOR))) //unforced endings call it themselves
+					GLOB.sun_status.start_sun_behavior(behavior = SPECIAL_LIGHTING_SUNRISE) //the new sun
 				mode.declare_completion(force_ending)
 				REDIS_PUBLISH("byond.round", "type" = "round-complete", "round_name" = GLOB.round_statistics.round_name, "round_finished" = mode.round_finished)
 				flash_clients()
@@ -284,6 +286,8 @@ SUBSYSTEM_DEF(ticker)
 
 	GLOB.supply_controller.start_processing()
 	GLOB.supply_controller_upp.start_processing()
+
+	GLOB.sun_status.start_sun_behavior(behavior = SPECIAL_LIGHTING_SUNSET)
 
 	for(var/i in GLOB.closet_list) //Set up special equipment for lockers and vendors, depending on gamemode
 		var/obj/structure/closet/C = i

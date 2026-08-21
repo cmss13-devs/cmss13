@@ -96,7 +96,7 @@ let bigButtons = [
 
 let clientButtons = {
 	"File": [
-		{name: "Take Screenshot	(F2)", command: ".screenshot auto"},
+		{name: "Take Screenshot", command: ".screenshot auto"},
 		{name: "Save Screenshot As (Shift+F2)", command: ".screenshot"},
 		{divider: true},
 		{name: "Reconnect", command: ".reconnect"},

@@ -17124,7 +17124,7 @@
 /area/lv522/outdoors/colony_streets/north_street)
 "jdn" = (
 /obj/effect/decal/cleanable/blood/drip,
-/obj/item/reagent_container/hypospray/autoinjector/emergency,
+/obj/item/reagent_container/hypospray/autoinjector/no_refill/emergency,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/bridges/corpo)
 "jdo" = (
@@ -33642,7 +33642,7 @@
 	pixel_x = -3;
 	pixel_y = 9
 	},
-/obj/item/reagent_container/hypospray/autoinjector/kelotane{
+/obj/item/reagent_container/hypospray/autoinjector/standard/kelotane{
 	pixel_y = -3
 	},
 /obj/effect/landmark/objective_landmark/close,

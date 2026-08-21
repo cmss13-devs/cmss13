@@ -27918,7 +27918,7 @@
 	pixel_x = -6;
 	pixel_y = 9
 	},
-/obj/item/reagent_container/hypospray/autoinjector/emergency{
+/obj/item/reagent_container/hypospray/autoinjector/no_refill/emergency{
 	pixel_x = 4;
 	pixel_y = -9
 	},
@@ -65561,7 +65561,7 @@
 /area/desert_dam/building/medical/stairwell)
 "rCW" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/reagent_container/hypospray/autoinjector/emergency,
+/obj/item/reagent_container/hypospray/autoinjector/no_refill/emergency,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/medical/helipad_triage)
 "rDc" = (
@@ -72034,7 +72034,7 @@
 "udG" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/pills/midchance,
-/obj/item/reagent_container/hypospray/autoinjector/emergency{
+/obj/item/reagent_container/hypospray/autoinjector/no_refill/emergency{
 	pixel_x = 5;
 	pixel_y = 8
 	},

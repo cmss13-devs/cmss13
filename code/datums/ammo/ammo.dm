@@ -1,3 +1,4 @@
+ABSTRACT_TYPE(/datum/ammo)
 /datum/ammo
 	var/name = "generic bullet"
 	//Icon state when a human is permanently killed with it by execution/suicide.

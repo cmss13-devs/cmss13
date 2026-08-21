@@ -67,8 +67,7 @@ SUBSYSTEM_DEF(reagents)
 	//I dislike having these here but map-objects are initialised before world/New() is called. >_>
 	set waitfor = FALSE
 	//Chemical Reagents - Initialises all /datum/reagent into a list indexed by reagent id
-	//Generated chemicals should be initialized last, hence the substract then readd.
-	var/list/paths = subtypesof(/datum/reagent) - typesof(/datum/reagent/generated) - subtypesof(/datum/reagent/generated) + subtypesof(/datum/reagent/generated)
+	var/list/paths = subtypesof(/datum/reagent) - /datum/reagent/generated
 	GLOB.chemical_reagents_list = list()
 	for(var/path in paths)
 		var/datum/reagent/chem = new path()
@@ -79,12 +78,11 @@ SUBSYSTEM_DEF(reagents)
 	// It is filtered into multiple lists within a list.
 	// For example:
 	// chemical_reaction_list["phoron"] is a list of all reactions relating to phoron
-	var/list/regular_paths = subtypesof(/datum/chemical_reaction) - typesof(/datum/chemical_reaction/generated)
-	var/list/generated_paths = subtypesof(/datum/chemical_reaction/generated) //Generated chemicals should be initialized last
+	var/list/regular_paths = subtypesof(/datum/chemical_reaction) - /datum/chemical_reaction/generated
 	GLOB.chemical_reactions_filtered_list = list()
 	GLOB.chemical_reactions_list = list()
 
-	for(paths in list(regular_paths, generated_paths))
+	for(paths in regular_paths)
 		for(var/path in paths)
 			var/datum/chemical_reaction/react = new path()
 			GLOB.chemical_reactions_list[react.id] = react

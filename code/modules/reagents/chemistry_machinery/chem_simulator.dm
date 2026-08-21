@@ -222,7 +222,7 @@
 					continue
 				target_property = target_prop
 			if(!target_property)
-				to_chat(ui.user, SPAN_WARNING("The [src] makes a suspicious wail."))
+				to_chat(ui.user, SPAN_WARNING("[src] makes a suspicious wail."))
 				return
 		if("select_reference_property")
 			if(!reference)
@@ -233,7 +233,7 @@
 				reference_property = reference_prop
 			update_costs()
 			if(!reference_property)
-				to_chat(ui.user, SPAN_WARNING("The [src] makes a suspicious wail."))
+				to_chat(ui.user, SPAN_WARNING("[src] makes a suspicious wail."))
 				return
 		if("simulate")
 			if(!ready)

@@ -181,6 +181,7 @@ SUBSYSTEM_DEF(hijack)
 		var/datum/emergency_call/emergency_call = new to_spawn
 		emergency_call.name_of_spawn = /obj/effect/landmark/ert_spawns/umbilical
 		emergency_call.shuttle_id = null
+		emergency_call.alert_sound = 'sound/items/pred_bracer.ogg'
 		emergency_call.activate(TRUE, FALSE)
 
 		TIMER_COOLDOWN_START(src, COOLDOWN_POSTHIJACK_ERT, 5 MINUTES)

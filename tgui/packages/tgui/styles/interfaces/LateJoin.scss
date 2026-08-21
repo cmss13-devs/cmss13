@@ -1,0 +1,47 @@
+.HijackIndicator {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.HijackIndicator h1 {
+  font-size: 2rem;
+}
+
+.HijackIcon {
+  margin-left: 4rem;
+  margin-right: 4rem;
+}
+
+.RoleCategory .Section__titleText {
+  font-size: 1.5rem !important;
+}
+
+.RoleIcon {
+  display: block;
+  width: 8px;
+  height: 8px;
+  transform: scale(2);
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+
+  filter: saturate(70%) grayscale(20%) drop-shadow(1px 1px 1px grey);
+}
+
+.SlotInfo {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.SlotInfoRow {
+  padding-right: 0.5rem;
+}
+
+.medium-text {
+  font-size: 1.2rem;
+}
+
+.big-text {
+  font-size: 1.5rem;
+}

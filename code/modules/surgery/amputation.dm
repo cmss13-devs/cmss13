@@ -158,7 +158,7 @@
 	var/list/cannot_hack = list(
 		/obj/item/tool/kitchen/knife/butcher,
 		/obj/item/tool/hatchet,
-		/obj/item/attachable/bayonet
+		/obj/item/attachable/bayonet,
 		)
 	preop_sound = 'sound/surgery/saw.ogg'
 	success_sound = 'sound/effects/bone_break4.ogg'

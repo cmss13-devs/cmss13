@@ -6,7 +6,7 @@
 	icon_state = "backpack_sprayer"
 	item_state = "backpack_sprayer"
 	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/sprayers.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/sprayers.dmi',
 	)
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK

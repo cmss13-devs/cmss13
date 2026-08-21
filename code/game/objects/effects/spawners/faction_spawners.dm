@@ -11,7 +11,7 @@
 		/obj/item/weapon/gun/rifle/m41a/tactical = /obj/item/ammo_magazine/rifle,
 		/obj/item/weapon/gun/smg/m39 = /obj/item/ammo_magazine/smg/m39,
 		/obj/item/weapon/gun/smg/m39 = /obj/item/ammo_magazine/smg/m39,
-		/obj/item/weapon/gun/shotgun/pump = /datum/ammo/bullet/shotgun/buckshot
+		/obj/item/weapon/gun/shotgun/pump = /datum/ammo/bullet/shotgun/buckshot,
 	)
 
 /obj/effect/spawner/random/gun/uscm_primary/lowchance
@@ -34,7 +34,7 @@
 	mags_min = 1
 	guns = list(
 		/obj/item/weapon/gun/pistol/m4a3 = /obj/item/ammo_magazine/pistol,
-		/obj/item/weapon/gun/revolver/m44 = /obj/item/ammo_magazine/handful/revolver/marksman
+		/obj/item/weapon/gun/revolver/m44 = /obj/item/ammo_magazine/handful/revolver/marksman,
 	)
 
 /obj/effect/spawner/random/gun/uscm_secondary/lowchance
@@ -61,7 +61,7 @@
 	guns = list(
 		/obj/item/weapon/gun/smg/bizon/upp = /obj/item/ammo_magazine/smg/bizon,
 		/obj/item/weapon/gun/rifle/type71 = /obj/item/ammo_magazine/rifle/type71,
-		/obj/item/weapon/gun/rifle/type71/carbine = /obj/item/ammo_magazine/rifle/type71
+		/obj/item/weapon/gun/rifle/type71/carbine = /obj/item/ammo_magazine/rifle/type71,
 	)
 
 /obj/effect/spawner/random/gun/upp_primary/lowchance
@@ -84,7 +84,7 @@
 	guns = list(
 		/obj/item/weapon/gun/pistol/t73 = /obj/item/ammo_magazine/pistol/t73,
 		/obj/item/weapon/gun/pistol/np92 = /obj/item/ammo_magazine/pistol/np92,
-		/obj/item/weapon/gun/revolver/upp = /obj/item/ammo_magazine/revolver/upp
+		/obj/item/weapon/gun/revolver/upp = /obj/item/ammo_magazine/revolver/upp,
 	)
 
 /obj/effect/spawner/random/gun/upp_secondary/lowchance
@@ -112,7 +112,7 @@
 		/obj/item/weapon/gun/smg/m39/elite = /obj/item/ammo_magazine/smg/m39/ap,
 		/obj/item/weapon/gun/smg/m39/elite = /obj/item/ammo_magazine/smg/m39/extended,
 		/obj/item/weapon/gun/rifle/nsg23 = /obj/item/ammo_magazine/rifle/nsg23/ap,
-		/obj/item/weapon/gun/rifle/nsg23 = /obj/item/ammo_magazine/rifle/nsg23/extended
+		/obj/item/weapon/gun/rifle/nsg23 = /obj/item/ammo_magazine/rifle/nsg23/extended,
 	)
 
 /obj/effect/spawner/random/gun/pmc_primary/lowchance
@@ -134,7 +134,7 @@
 	mags_min = 1
 	guns = list(
 		/obj/item/weapon/gun/pistol/vp78 = /obj/item/ammo_magazine/pistol/vp78,
-		/obj/item/weapon/gun/pistol/mod88 = /obj/item/ammo_magazine/pistol/mod88
+		/obj/item/weapon/gun/pistol/mod88 = /obj/item/ammo_magazine/pistol/mod88,
 	)
 
 /obj/effect/spawner/random/gun/pmc_secondary/lowchance
@@ -159,7 +159,7 @@
 	mags_min = 1
 	guns = list(
 		/obj/item/weapon/gun/rifle/m16 = /obj/item/ammo_magazine/rifle/m16,
-		/obj/item/weapon/gun/rifle/mar40/carbine = /obj/item/ammo_magazine/rifle/mar40
+		/obj/item/weapon/gun/rifle/mar40/carbine = /obj/item/ammo_magazine/rifle/mar40,
 	)
 
 /obj/effect/spawner/random/gun/clf_primary/lowchance
@@ -181,7 +181,7 @@
 	mags_min = 1
 	guns = list(
 		/obj/item/weapon/gun/pistol/kt42 = /obj/item/ammo_magazine/pistol/kt42,
-		/obj/item/weapon/gun/pistol/b92fs = /obj/item/ammo_magazine/pistol/b92fs
+		/obj/item/weapon/gun/pistol/b92fs = /obj/item/ammo_magazine/pistol/b92fs,
 	)
 
 /obj/effect/spawner/random/gun/clf_secondary/lowchance

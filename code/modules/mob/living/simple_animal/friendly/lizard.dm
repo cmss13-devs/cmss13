@@ -18,3 +18,5 @@
 	response_harm   = "stomps on"
 	black_market_value = 50
 	dead_black_market_value = 0
+	min_turns_per_move = 5
+	max_turns_per_move = 10

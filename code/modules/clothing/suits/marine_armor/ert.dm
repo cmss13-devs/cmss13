@@ -318,13 +318,19 @@
 
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 
-/obj/item/clothing/suit/storage/marine/faction/UPP/army/simple
-	name = "6B70 personal body armour"
+/obj/item/clothing/suit/armor/vest/UPP
 	icon_state = "upp_generic_ballistic_armor"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UPP.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UPP.dmi'
+	)
 
-/obj/item/clothing/suit/storage/marine/faction/UPP/army/alt
-	name = "6B75 personal body armour"
+/obj/item/clothing/suit/armor/vest/UPP/alt
 	icon_state = "upp_ballistic_armor"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UPP.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UPP.dmi'
+	)
 
 // People's Armed Police
 

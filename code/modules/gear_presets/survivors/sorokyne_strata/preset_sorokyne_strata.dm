@@ -181,7 +181,7 @@
 		if(4)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/army_beret(new_human), WEAR_HEAD)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/army/alt(new_human), WEAR_BODY)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP/army/alt(new_human), WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/UPP/alt(new_human), WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/black/knife(new_human), WEAR_FEET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran(new_human), WEAR_HANDS)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/security/brown/half_full(new_human), WEAR_WAIST)

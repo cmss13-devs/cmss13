@@ -180,6 +180,12 @@
 		if(hiding_humans[hiding] == direction)
 			return
 
+	if(direction == NORTH)
+		for(var/obj/structure/surface/table/table in get_turf(current_mob))
+			if (table.flipped && table.dir == SOUTH)
+				to_chat(user, SPAN_WARNING("You can't lean here with the table pressed up against the wall!"))
+				return
+
 	hiding_humans += current_mob
 	hiding_humans[current_mob] = direction
 	hiding_human.Moved() //just to be safe

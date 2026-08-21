@@ -19,7 +19,6 @@
 
 /datum/xeno_strain/eggsac/apply_strain(mob/living/carbon/xenomorph/carrier/carrier)
 	carrier.plasma_types = list(PLASMA_EGG)
-	carrier.phero_modifier += XENO_PHERO_MOD_LARGE // praetorian level pheremones
 	carrier.recalculate_plasma()
 	carrier.recalculate_pheromones()
 

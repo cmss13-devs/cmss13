@@ -7,8 +7,8 @@
 	melee_damage_upper = XENO_DAMAGE_TIER_4
 	melee_vehicle_damage = XENO_DAMAGE_TIER_3
 	max_health = XENO_HEALTH_TIER_9
-	plasma_gain = XENO_PLASMA_GAIN_TIER_6
-	plasma_max = XENO_PLASMA_TIER_5
+	plasma_gain = XENO_PLASMA_GAIN_TIER_8
+	plasma_max = XENO_PLASMA_TIER_10
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_2
 	armor_deflection = XENO_NO_ARMOR
 	evasion = XENO_EVASION_NONE
@@ -34,7 +34,7 @@
 	tacklestrength_min = 4
 	tacklestrength_max = 5
 
-	aura_strength = 2
+	aura_strength = 3 //Prae level pheromones
 	hugger_throw_delay = 5 DECISECONDS
 	egg_cooldown = 25 SECONDS
 

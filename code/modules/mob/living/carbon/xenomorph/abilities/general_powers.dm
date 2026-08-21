@@ -681,6 +681,9 @@
 		set_hive_data(the_replacer, xeno.hivenumber)
 		qdel(alien_weeds)
 
+	if(xeno.caste_type == XENO_CASTE_CARRIER) //carriers MUST DIE
+		plasma_cost = 400
+
 	if(!xeno.check_plasma(plasma_cost))
 		return
 

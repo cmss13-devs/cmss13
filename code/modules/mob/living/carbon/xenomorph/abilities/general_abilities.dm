@@ -434,7 +434,7 @@
 		button.icon_state = "template_active"
 
 /datum/action/xeno_action/onclick/place_trap
-	name = "Place resin hole (200)"
+	name = "Place resin hole"
 	action_icon_state = "place_trap"
 	plasma_cost = 200
 	macro_path = /datum/action/xeno_action/verb/verb_resin_hole

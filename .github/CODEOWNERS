@@ -22,6 +22,7 @@
 /code/game/sound.dm @Fira
 /code/modules/nightmare/ @Fira
 /code/modules/tents/ @Fira
+/maps/Nightmare/ @Fira
 /tools/docker/ @Fira
 /Dockerfile @Fira
 

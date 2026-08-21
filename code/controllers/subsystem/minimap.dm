@@ -622,7 +622,7 @@ SUBSYSTEM_DEF(minimaps)
 /**
  * Simple proc, updates overlay position on the map when a atom moves
  */
-/image/proc/minimap_on_move(atom/movable/source, oldloc)
+/image/proc/minimap_on_move(atom/movable/source, atom/oldloc)
 	SIGNAL_HANDLER
 	if(source.z)
 		var/datum/hud_displays/minimap = SSminimaps.minimaps_by_z["[source.z]"]
@@ -631,10 +631,11 @@ SUBSYSTEM_DEF(minimaps)
 		return
 
 	var/atom/movable/movable_loc = source.loc // How does none of this just crash if the loc isn't on map?
-	source.override_minimap_tracking()
-	var/datum/hud_displays/minimap = SSminimaps.minimaps_by_z["[movable_loc.z]"]
-	pixel_x = MINIMAP_PIXEL_FROM_WORLD(movable_loc.x) + minimap.x_offset
-	pixel_y = MINIMAP_PIXEL_FROM_WORLD(movable_loc.y) + minimap.y_offset
+	if(oldloc) //if we are not crossing z level inside of a an object
+		source.override_minimap_tracking()
+		var/datum/hud_displays/minimap = SSminimaps.minimaps_by_z["[movable_loc.z]"]
+		pixel_x = MINIMAP_PIXEL_FROM_WORLD(movable_loc.x) + minimap.x_offset
+		pixel_y = MINIMAP_PIXEL_FROM_WORLD(movable_loc.y) + minimap.y_offset
 
 ///Used to handle minimap tracking inside other movables
 /atom/movable/proc/override_minimap_tracking()

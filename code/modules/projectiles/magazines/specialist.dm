@@ -99,6 +99,7 @@
 /obj/item/ammo_magazine/smartgun
 	name = "M56 smartgun drum"
 	desc = "A 10x28mm 500-round drum magazine for use in the M56 Smartgun."
+	desc_lore = "Antipersonell/AP drums were introduced after CLF forces deployed EMP grenades against Smartgunners. The Smartgun's IFF system proved highly susceptible to EMP, frequently failing after such attacks. This caused accidental FF incidents, as gunners—believing IFF was active—engaged allies with HEAP, inflicting catastrophic casualties."
 	caliber = "10x28mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/machineguns.dmi'
 	icon_state = "m56_drum"

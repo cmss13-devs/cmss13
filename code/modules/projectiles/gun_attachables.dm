@@ -69,6 +69,7 @@ Defined in conflicts.dm of the #defines folder.
 	var/size_mod = 0 //Increases the weight class.
 	var/aim_speed_mod = 0 //Changes the aiming speed slowdown of the wearer by this value.
 	var/wield_delay_mod = 0 //How long ADS takes (time before firing)
+	var/min_wield_delay_mod = 0 //The minimum ADS time
 	var/movement_onehanded_acc_penalty_mod = 0 //Modifies accuracy/scatter penalty when firing onehanded while moving.
 	var/velocity_mod = 0 // Added velocity to bullets
 	var/hud_offset_mod  = 0 //How many pixels to adjust the gun's sprite coords by. Ideally, this should keep the gun approximately centered.
@@ -3139,6 +3140,7 @@ Defined in conflicts.dm of the #defines folder.
 	max_range = 7
 	attachment_action_type = /datum/action/item_action/toggle/ugl
 	slot = "under"
+	min_wield_delay_mod = WEAPON_DELAY_NORMAL
 	fire_sound = 'sound/weapons/gun_m92_attachable.ogg'
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_RELOADABLE|ATTACH_WEAPON
 	var/grenade_pass_flags
@@ -3343,6 +3345,7 @@ Defined in conflicts.dm of the #defines folder.
 	max_rounds = 40
 	max_range = 5
 	slot = "under"
+	min_wield_delay_mod = WEAPON_DELAY_NORMAL
 	fire_sound = 'sound/weapons/gun_flamethrower3.ogg'
 	gun_activate_sound = 'sound/weapons/handling/gun_underbarrel_flamer_activate.ogg'
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_RELOADABLE|ATTACH_WEAPON

@@ -427,6 +427,7 @@
 		recoil_unwielded += attached_attachment.recoil_unwielded_mod
 		aim_slowdown += attached_attachment.aim_speed_mod
 		wield_delay += attached_attachment.wield_delay_mod
+		wield_delay = max(wield_delay, attached_attachment.min_wield_delay_mod) //if the wield delay is higher just use that
 		movement_onehanded_acc_penalty_mult += attached_attachment.movement_onehanded_acc_penalty_mod
 		force += attached_attachment.melee_mod
 		w_class += attached_attachment.size_mod

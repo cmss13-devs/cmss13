@@ -642,6 +642,7 @@
 	var/skilllock = SKILL_MEDICAL_MEDIC
 	var/pill_type_to_fill //type of pill to use to fill in the bottle in /Initialize()
 	var/bottle_lid = TRUE //Whether it shows a visual lid when opened or closed.
+	var/broken = FALSE //Whether the top of the pill bottle has been torn off by a sharp object
 	var/display_maptext = TRUE
 	var/maptext_label
 	maptext_height = 16
@@ -680,7 +681,10 @@
 	if(!bottle_lid)
 		return
 	overlays.Cut()
-	if(content_watchers || !length(contents))
+	if(broken)
+		// TODO: Add overlay for broken pill bottles
+		overlays += "pills_broken"
+	else if(content_watchers || !length(contents))
 		overlays += "pills_open"
 	else
 		overlays += "pills_closed"
@@ -715,6 +719,9 @@
 	if(user.get_inactive_hand())
 		to_chat(user, SPAN_WARNING("You need an empty hand to take out a pill."))
 		return
+	if(broken)
+		error_broken(user)
+		return
 	if(!can_storage_interact(user))
 		error_idlock(user)
 		return
@@ -733,22 +740,57 @@
 		return
 
 /obj/item/storage/pill_bottle/shake(mob/user, turf/tile)
+	if(broken)
+		error_broken(user)
 	if(!can_storage_interact(user))
 		error_idlock(user)
 		return
 	return ..()
 
-/obj/item/storage/pill_bottle/attackby(obj/item/storage/pill_bottle/W, mob/user)
-	if(istype(W))
-		if((skilllock || W.skilllock) && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+/obj/item/storage/pill_bottle/attackby(obj/item/inhand, mob/user)
+	// If this is a sharp object, begin tearing the lid off
+	if(inhand.sharp == IS_SHARP_ITEM_ACCURATE)
+		if(broken)
+			to_chat(user, SPAN_WARNING("[src] has already been broken open!"))
+			return
+
+		if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+			user.visible_message(SPAN_NOTICE("[user] places the tip of [inhand] underneath the lid of [src] and begins torquing the lid off..."), SPAN_WARNING("You place the tip of [inhand] underneath the lid of [src] and begin torquing the lid off, though you could probably just open it normally."))
+		else
+			user.visible_message(SPAN_NOTICE("[user] places the tip of [inhand] underneath the lid of [src] and begins torquing the lid off..."), SPAN_WARNING("You place the tip of [inhand] underneath the lid of [src] and begin torquing the lid off."))
+		playsound(loc, 'sound/effects/pop.ogg', 25, 1)
+
+		if(do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+			broken = TRUE
+			update_icon()
+
+			desc += SPAN_WARNING("\nThe top has been broken open. It is unusable like this.\n")
+			if(length(contents) > 0)
+				spill_contents(user)
+				user.visible_message(SPAN_WARNING("[user] pops the lid off of [src], spilling its contents everywhere!"), SPAN_WARNING("You pop the lid off of [src], spilling its contents everywhere!"))
+				playsound(loc, 'sound/effects/pillbottle.ogg', 25, 1)
+				playsound(loc, 'sound/effects/pill_spill.ogg', 25, 1)
+			else
+				user.visible_message(SPAN_INFO("[user] pops the lid off of [src]."), SPAN_INFO("You pop the lid off of [src], breaking it in the process."))
+		else
+			to_chat(user, SPAN_NOTICE("You stop forcing the lid off of [src]."))
+	else if(broken)
+		error_broken(user)
+		return
+	// If this is a pill bottle, dump its contents into src
+	else if(istype(inhand, /obj/item/storage/pill_bottle))
+		var/obj/item/storage/pill_bottle/bottle = inhand
+		if((skilllock || bottle.skilllock) && !skillcheck(user, SKILL_MEDICAL, skilllock))
 			error_idlock(user)
 			return
-		dump_into(W,user)
+		dump_into(bottle, user)
 	else
 		return ..()
 
-
 /obj/item/storage/pill_bottle/open(mob/user)
+	if(broken)
+		error_broken(user)
+		return
 	if(!can_storage_interact(user))
 		error_idlock(user)
 		return
@@ -757,11 +799,12 @@
 /obj/item/storage/pill_bottle/can_be_inserted(obj/item/W, mob/user, stop_messages = FALSE)
 	. = ..()
 	if(.)
+		if(broken)
+			error_broken(user)
+			return FALSE
 		if(!can_storage_interact(user))
 			error_idlock(usr)
-			return
-
-
+			return FALSE
 
 /obj/item/storage/pill_bottle/clicked(mob/user, list/mods)
 	if(..())
@@ -773,6 +816,9 @@
 	if(!container_holding_pill.instant_pill_grabbable)
 		return FALSE
 	if(!container_holding_pill.instant_pill_grab_mode)
+		return FALSE
+	if(broken)
+		error_broken(user)
 		return FALSE
 	if(!can_storage_interact(user))
 		error_idlock(user)
@@ -793,7 +839,10 @@
 		return TRUE
 
 /obj/item/storage/pill_bottle/empty(mob/user, turf/T)
-	if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+	if(broken)
+		error_broken(user)
+		return
+	if(skilllock && !skillcheck(user, SKILL_MEDICAL, skilllock))
 		error_idlock(user)
 		return
 	..()
@@ -820,6 +869,10 @@
 	if(!ishuman(user))
 		return ..()
 
+	if(broken)
+		error_broken(user)
+		return FALSE
+
 	if(!can_storage_interact(user))
 		error_idlock(user)
 		return FALSE
@@ -828,6 +881,9 @@
 
 /obj/item/storage/pill_bottle/proc/error_idlock(mob/user)
 	to_chat(user, SPAN_WARNING("It must have some kind of ID lock..."))
+
+/obj/item/storage/pill_bottle/proc/error_broken(mob/user)
+	to_chat(user, SPAN_WARNING("[src] is broken..."))
 
 /obj/item/storage/pill_bottle/proc/choose_color(mob/user)
 	if(!user)
@@ -842,6 +898,20 @@
 	icon_state = base_icon + selected_color
 	to_chat(user, SPAN_NOTICE("You color [src]."))
 	update_icon()
+
+/obj/item/storage/pill_bottle/proc/spill_contents(mob/user)
+	storage_close(user)
+	var/turf/origin_turf = get_turf(user)
+	for (var/obj/item/pill in contents)
+		remove_from_storage(pill, origin_turf, user)
+		INVOKE_ASYNC(src, PROC_REF(spill_forward), pill, origin_turf, user.dir)
+
+/obj/item/storage/pill_bottle/proc/spill_forward(obj/item/pill, turf/origin_turf, direction)
+	var/turf/target_turf = origin_turf
+	for (var/i in 1 to 3)
+		if (prob(35))
+			target_turf = get_step(target_turf, direction)
+	pill.throw_atom(target_turf, 3, SPEED_FAST, spin = 1)
 
 /obj/item/storage/pill_bottle/verb/set_maptext()
 	set category = "Object"
@@ -861,6 +931,8 @@
 
 /obj/item/storage/pill_bottle/can_storage_interact(mob/user)
 	if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+		return FALSE
+	if(broken)
 		return FALSE
 	return ..()
 

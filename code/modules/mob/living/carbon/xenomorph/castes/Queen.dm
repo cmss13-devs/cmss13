@@ -37,7 +37,7 @@
 	tackle_max = 6
 	tackle_chance = 55
 
-	aura_strength = 4
+	aura_strength = XENO_PHERO_STRENGTH_VERY_STRONG
 	tacklestrength_min = 5
 	tacklestrength_max = 6
 

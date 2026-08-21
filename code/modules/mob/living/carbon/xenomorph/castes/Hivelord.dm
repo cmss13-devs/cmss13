@@ -35,7 +35,7 @@
 	tacklestrength_min = 4
 	tacklestrength_max = 5
 
-	aura_strength = 2.5
+	aura_strength = XENO_PHERO_STRENGTH_HIVELORD
 
 	minimum_evolve_time = 4 MINUTES
 

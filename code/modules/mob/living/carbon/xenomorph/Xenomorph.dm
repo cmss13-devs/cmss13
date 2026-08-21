@@ -1100,11 +1100,11 @@
 	// Also recalculate received pheros now
 	for(var/capped_aura in received_phero_caps)
 		switch(capped_aura)
-			if("frenzy")
+			if(XENO_PHERO_FRENZY)
 				frenzy_new = min(frenzy_new, received_phero_caps[capped_aura])
-			if("warding")
+			if(XENO_PHERO_WARDING)
 				warding_new = min(warding_new, received_phero_caps[capped_aura])
-			if("recovery")
+			if(XENO_PHERO_RECOVERY)
 				recovery_new = min(recovery_new, received_phero_caps[capped_aura])
 
 /mob/living/carbon/xenomorph/proc/recalculate_maturation()

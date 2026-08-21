@@ -99,6 +99,9 @@
 				victim_mob.apply_effect(1, WEAKEN)
 				trigger_trap()
 		if(RESIN_TRAP_GAS, RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3)
+			var/list/turf/path = list(loc, victim.loc)
+			if(!is_path_free_check(path, TRUE, TRUE))
+				return
 			if(ishuman_strict(victim))
 				var/mob/living/carbon/human/victim_human = victim
 				if(victim_human.stat == DEAD || victim_human.body_position == LYING_DOWN)

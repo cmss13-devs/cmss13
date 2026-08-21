@@ -35,7 +35,6 @@
 	var/list/linked_pylons
 	var/obj/effect/alien/weeds/weeds
 
-	var/list/datum/automata_cell/autocells
 	/**
 	 * Associative list of cleanable types (strings) mapped to
 	 * cleanable objects
@@ -170,7 +169,6 @@
 /turf/Destroy(force)
 	linked_pylons = null
 	weeds = null
-	autocells = null
 	opacity_sources = null
 	baseturfs = null
 
@@ -377,11 +375,6 @@
 	SEND_SIGNAL(src, COMSIG_TURF_ENTERED, entered_movable)
 	SEND_SIGNAL(entered_movable, COMSIG_MOVABLE_TURF_ENTERED, src)
 
-	// Let explosions know that the atom entered
-	if(old_loc != src)
-		for(var/datum/automata_cell/explosion/cell as anything in autocells)
-			cell.on_turf_entered(entered_movable)
-
 /turf/proc/is_plating()
 	return 0
 /turf/proc/is_asteroid_floor()
@@ -487,7 +480,6 @@
 	// return src
 
 	var/list/pylons = linked_pylons
-	var/list/cells = autocells
 
 	var/list/old_baseturfs = baseturfs
 	var/old_ref = weak_reference
@@ -519,8 +511,6 @@
 		new_self.baseturfs = old_baseturfs
 
 	new_self.linked_pylons = pylons
-	if(length(cells))
-		LAZYOR(new_self.autocells, cells)
 
 	new_self.hybrid_lights_affecting = old_hybrid_lights_affecting
 	new_self.dynamic_lumcount = dynamic_lumcount
@@ -700,15 +690,6 @@
 
 /turf/proc/wet_floor()
 	return
-
-/turf/proc/get_cell(type)
-	for(var/datum/automata_cell/existing_cell as anything in autocells)
-		if(istype(existing_cell, type))
-			return existing_cell
-	return null
-
-//////////////////////////////////////////////////////////
-
 
 /turf/proc/can_dig_xeno_tunnel()
 	return FALSE

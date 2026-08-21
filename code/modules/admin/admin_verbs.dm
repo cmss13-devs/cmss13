@@ -212,7 +212,6 @@ GLOBAL_LIST_INIT(admin_verbs_debug, list(
 	/client/proc/toggledebuglogs,
 	/client/proc/togglenichelogs,
 	/client/proc/cmd_admin_change_hivenumber,
-	/client/proc/spawn_wave,
 	/client/proc/toggle_log_hrefs,
 	/client/proc/matrix_editor,
 	/client/proc/generate_sound_queues,

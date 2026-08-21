@@ -333,16 +333,6 @@
 	var/obj/effect/alien/resin/shield_pillar/SP = build_path
 	range_between_constructions = initial(SP.range)*2
 
-/datum/resin_construction/resin_obj/grenade
-	name = "Resin Acid Grenade"
-	desc = "An acid grenade."
-	construction_name = "acid grenade"
-	cost = XENO_RESIN_ACID_GRENADE_COST
-	max_per_xeno = 1
-
-	build_path = /obj/item/explosive/grenade/alien/acid
-	build_time = 6 SECONDS
-
 //CHRISTMAS
 
 /datum/resin_construction/resin_obj/festivizer

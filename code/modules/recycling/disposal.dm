@@ -1483,7 +1483,7 @@
 	else
 		dirs = GLOB.alldirs.Copy()
 
-	INVOKE_ASYNC(streak(dirs))
+	INVOKE_ASYNC(src, PROC_REF(streak), dirs)
 
 /obj/effect/decal/cleanable/blood/gibs/robot/pipe_eject(direction)
 	var/list/dirs
@@ -1492,7 +1492,7 @@
 	else
 		dirs = GLOB.alldirs.Copy()
 
-	INVOKE_ASYNC(streak(dirs))
+	INVOKE_ASYNC(src, PROC_REF(streak), dirs)
 
 #undef DISPOSALS_OFF
 #undef DISPOSALS_CHARGING

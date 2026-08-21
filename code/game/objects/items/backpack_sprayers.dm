@@ -365,10 +365,11 @@
 			var/obj/effect/resin_container/ball = new (get_turf(src))
 			playsound(src,'sound/items/syringeproj.ogg',40,TRUE)
 			//projectile movement
+			var/step_delay = 0
 			for(var/i in 1 to 5)
-				step_towards(ball, target)
-				sleep(2)
-			ball.Smoke()
+				addtimer(CALLBACK(src, PROC_REF(move_ball), ball, target), 0.2 SECONDS * step_delay)
+				step_delay++
+			addtimer(CALLBACK(src, PROC_REF(smoke_ball), ball), 0.2 SECONDS * step_delay)
 			return
 
 		if(METAL_FOAM)
@@ -393,6 +394,11 @@
 			foam.set_up(0, target, null, metal_foam = FOAM_METAL_TYPE_ALUMINIUM)
 			foam.start()
 			return
+
+/obj/item/reagent_container/spray/mister/atmos/proc/move_ball(obj/effect/resin_container/ball, target)
+	step_towards(ball, target)
+/obj/item/reagent_container/spray/mister/atmos/proc/smoke_ball(obj/effect/resin_container/ball)
+	ball.Smoke()
 
 /obj/effect/resin_container //the projectile that the launcher fires
 	name = "metal foam ball"

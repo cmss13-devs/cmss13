@@ -151,7 +151,7 @@
 	stored_huggers = max(0, stored_huggers - 1)
 
 	var/obj/item/clothing/mask/facehugger/child = new(loc, linked_hive.hivenumber)
-	child.leap_at_nearest_target()
+	INVOKE_ASYNC(child, TYPE_PROC_REF(/obj/item/clothing/mask/facehugger, leap_at_nearest_target))
 
 /obj/effect/alien/resin/special/eggmorph/attack_alien(mob/living/carbon/xenomorph/M)
 	if(!istype(M))

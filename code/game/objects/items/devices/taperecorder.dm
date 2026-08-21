@@ -300,7 +300,7 @@
 			if("Record")
 				record()
 			if("Play")
-				play()
+				INVOKE_ASYNC(src, VERB_REF(play))
 			if("Print Transcript")
 				print_transcript()
 			if("Eject")

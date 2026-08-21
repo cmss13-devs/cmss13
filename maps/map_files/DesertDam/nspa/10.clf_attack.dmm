@@ -12,7 +12,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/security/lobby)
 "at" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Lobby"
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -47,7 +47,7 @@
 "bq" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Marshal Office"
 	},
 /turf/open/floor/prison/bright_clean/southwest,
@@ -461,7 +461,7 @@
 /turf/open/floor/prison/red/west,
 /area/desert_dam/building/security/lobby)
 "LC" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Marshal Office"
 	},
 /obj/effect/decal/cleanable/dirt,

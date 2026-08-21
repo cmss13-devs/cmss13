@@ -1950,7 +1950,7 @@
 /turf/open/floor/almayer/sterile_green,
 /area/adminlevel/bunker01/medbay)
 "fy" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass{
 	name = "\improper Medbay";
 	req_access_txt = "201";
 	req_one_access = null
@@ -2297,7 +2297,7 @@
 /turf/closed/wall,
 /area/adminlevel/bunker01/medbay)
 "gv" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass{
 	name = "\improper Medical Storage";
 	req_access_txt = "201";
 	req_one_access = null

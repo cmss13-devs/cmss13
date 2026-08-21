@@ -189,7 +189,7 @@
 /turf/open/floor/almayer/orange/east,
 /area/adminlevel/bunker01/engineering)
 "aS" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass{
 	dir = 1;
 	name = "\improper Medbay";
 	req_access_txt = "201";
@@ -418,7 +418,7 @@
 /turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/bunker01/medbay)
 "bz" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass{
 	dir = 1;
 	name = "\improper Medbay";
 	req_access_txt = "201";

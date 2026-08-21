@@ -219,7 +219,7 @@
 /turf/open/floor/prison/whitegreen/north,
 /area/misc/tutorial/no_baselight)
 "tf" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/solid{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical{
 	dir = 2;
 	locked = 1;
 	no_panel = 1;
@@ -447,7 +447,7 @@
 /turf/open/floor/prison/whitegreen/northwest,
 /area/misc/tutorial/no_baselight)
 "Tk" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass{
 	dir = 1
 	},
 /turf/open/floor/prison/whitegreenfull,

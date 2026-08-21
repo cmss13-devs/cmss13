@@ -1671,7 +1671,7 @@
 /turf/open/floor/shiva/wred/north,
 /area/shiva/interior/colony/medseceng)
 "afS" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony{
 	name = "\improper Aurora Medical Clinic Treatment"
 	},
 /turf/open/floor/shiva/wredfull,
@@ -1815,7 +1815,7 @@
 /turf/open/floor/prison/kitchen,
 /area/shiva/interior/colony/central)
 "agr" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Underground Security Checkpoint";
 	req_access_txt = "100"
 	},
@@ -1992,7 +1992,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/valley)
 "agV" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2
 	},
 /turf/open/floor/shiva/multi_tiles,
@@ -2453,7 +2453,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
 "aiu" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Underground Security Brig";
 	req_access_txt = "100"
 	},
@@ -2607,7 +2607,7 @@
 /turf/open/floor/shiva/bluefull/west,
 /area/shiva/interior/colony/central)
 "ajw" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering/glass/colony{
 	name = "\improper Colony Power Substation"
 	},
 /turf/open/floor/shiva/yellowfull/west,
@@ -2740,7 +2740,7 @@
 /turf/open/floor/shiva/greenfull/west,
 /area/shiva/interior/colony/n_admin)
 "akE" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Underground Sports Center";
 	req_access_txt = "100"
 	},
@@ -3184,7 +3184,7 @@
 /turf/open/asphalt/cement,
 /area/shiva/interior/warehouse)
 "anH" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Underground Staff Canteen";
 	req_access_txt = "100"
@@ -4614,7 +4614,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/garage)
 "aBi" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Colony Garage";
 	req_access_txt = "100"
@@ -4645,7 +4645,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/garage)
 "aBs" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Colony Dormitories";
 	req_access_txt = "100"
@@ -6986,7 +6986,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/bar)
 "bAK" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Colony Dormitories";
 	req_access_txt = "100"
@@ -7715,7 +7715,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_colony_grounds)
 "czH" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/central)
 "cAH" = (
@@ -7825,7 +7825,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/cp_colony_grounds)
 "cGS" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Aurora Medical Clinic Treatment";
 	req_one_access = null
@@ -7916,7 +7916,7 @@
 /turf/open/floor/shiva/bluefull/west,
 /area/shiva/interior/aerodrome)
 "cLx" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2
 	},
 /turf/open/floor/shiva/bluefull,
@@ -8348,7 +8348,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_s_research)
 "dkC" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2
 	},
 /turf/open/floor/shiva/snow_mat/north,
@@ -9870,7 +9870,7 @@
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/shiva/interior/colony/research_hab)
 "fwU" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Colony Dormitories";
 	req_access_txt = "100"
@@ -11546,7 +11546,7 @@
 /turf/open/floor/interior/plastic/alt,
 /area/shiva/interior/warehouse)
 "hAX" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass,
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
 "hBn" = (
@@ -12382,7 +12382,7 @@
 /turf/open/floor/wood,
 /area/shiva/interior/colony/central)
 "ivr" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Underground Chapel"
 	},
@@ -13019,7 +13019,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/colony/central)
 "jjm" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony{
 	name = "\improper Colony Administration"
 	},
 /turf/open/floor/shiva/north,
@@ -13484,7 +13484,7 @@
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
 "jQy" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Aurora Medical Clinic"
 	},
@@ -13817,7 +13817,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/garage)
 "kjM" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper North Aerodrome Hangar";
 	req_access_txt = "100"
 	},
@@ -13861,7 +13861,7 @@
 /turf/open/auto_turf/ice/layer0,
 /area/shiva/interior/caves/right_spiders)
 "knC" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony{
 	name = "\improper Aurora Medical Clinic Treatment"
 	},
 /turf/open/floor/shiva/redfull/west,
@@ -15078,7 +15078,7 @@
 /turf/open/floor/shiva/wred/southeast,
 /area/shiva/interior/colony/medseceng)
 "lDx" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Colony Dormitories";
 	req_access_txt = "100"
 	},
@@ -18793,7 +18793,7 @@
 /turf/open/auto_turf/ice/layer2,
 /area/shiva/interior/caves/s_lz2)
 "qgj" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/security/glass/colony{
 	name = "\improper Underground Security Armory";
 	req_access_txt = 100
 	},
@@ -21551,7 +21551,7 @@
 	},
 /area/shiva/interior/aerodrome)
 "tGU" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Colony Dormitories Canteen";
 	req_access_txt = "100"
 	},

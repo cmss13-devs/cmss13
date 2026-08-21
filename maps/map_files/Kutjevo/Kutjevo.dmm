@@ -493,7 +493,7 @@
 /turf/open/floor/coagulation/icon6_8_2,
 /area/kutjevo/interior/colony_south/power2/south)
 "ace" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/solid,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony_south/power2/south)
 "acf" = (
@@ -751,7 +751,7 @@
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/colony_south/power2/south)
 "acZ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass/autoname,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony_south/power2/south)
 "ada" = (
@@ -3471,7 +3471,7 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/lz_dunes)
 "cFJ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass/autoname,
 /turf/open/floor/kutjevo/multi_tiles/southeast,
 /area/kutjevo/interior/complex/botany/east_tech)
 "cFY" = (
@@ -7974,7 +7974,7 @@
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
 "jSQ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass/autoname,
 /turf/open/floor/kutjevo/multi_tiles/southeast,
 /area/kutjevo/interior/complex/botany/east)
 "jUK" = (
@@ -8544,7 +8544,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/construction/north)
 "kKq" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass/autoname{
 	dir = 1
 	},
 /turf/open/floor/kutjevo/grey/plate,
@@ -11515,7 +11515,7 @@
 /turf/open/floor/kutjevo/multi_tiles/southeast,
 /area/kutjevo/interior/complex/botany/east)
 "pma" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass/autoname,
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/complex/Northwest_Dorms)
 "pmo" = (
@@ -11778,7 +11778,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/complex/med/cells)
 "pEb" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass/autoname{
 	dir = 1
 	},
 /turf/open/floor/kutjevo/colors/orange/tile,
@@ -14868,7 +14868,7 @@
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/med)
 "uIF" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass/autoname{
 	dir = 1;
 	welded = 1
 	},

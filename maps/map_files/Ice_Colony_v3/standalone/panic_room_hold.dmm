@@ -1399,7 +1399,7 @@
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/shiva/interior/bar)
 "UD" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony{
 	name = "\improper Colony Administration";
 	locked = 1
 	},

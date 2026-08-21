@@ -1768,7 +1768,7 @@
 /turf/open/floor/corsat/bluecorner/west,
 /area/corsat/sigma/airlock/control)
 "OI" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass{
 	dir = 2;
 	name = "Sigma Dome Control";
 	req_access_txt = ""

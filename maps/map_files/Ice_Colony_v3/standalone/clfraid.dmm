@@ -785,7 +785,7 @@
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "tt" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Colony Dormitories Canteen";
 	req_access_txt = "100"
 	},
@@ -1567,7 +1567,7 @@
 /turf/open/floor/shiva/green,
 /area/shiva/interior/colony/botany)
 "Ns" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/colony{
 	name = "\improper Colony Administration"
 	},
 /turf/open/floor/shiva/north,

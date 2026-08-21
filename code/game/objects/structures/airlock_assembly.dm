@@ -275,7 +275,7 @@
 /obj/structure/airlock_assembly/proc/get_airlock_path()
 	//For some reason multi_tile doors have different paths... can't say it isn't annoying
 	if (width > 1)
-		return "/obj/structure/machinery/door/airlock/multi_tile/almayer/[airlock_type][glass ? "" : "/solid"]"
+		return "/obj/structure/machinery/door/airlock/multi_tile/almayer/[airlock_type][glass ? "/glass" : ""]"
 	return "/obj/structure/machinery/door/airlock/almayer/[airlock_type][glass ? "/glass" : ""]"
 
 /// Used for overloading proc in multi_tile

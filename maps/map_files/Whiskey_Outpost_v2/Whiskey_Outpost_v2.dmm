@@ -234,7 +234,7 @@
 /turf/open/gm/dirtgrassborder/west,
 /area/whiskey_outpost/outside/lane/two_south)
 "aL" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/solid{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
 	name = "\improper Synth Prep"
 	},
@@ -1542,7 +1542,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/whiskey_outpost/inside/supply)
 "fm" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper ComTech Preparations";
 	req_access = list(11);
 	req_one_access = list()
@@ -2275,7 +2275,7 @@
 /turf/open/floor/whitegreen/northeast,
 /area/whiskey_outpost/inside/hospital)
 "hO" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Bunker"
 	},
 /obj/structure/disposalpipe/segment,
@@ -2484,7 +2484,7 @@
 /turf/open/floor/prison/darkyellow2,
 /area/whiskey_outpost/inside/supply)
 "iz" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass{
 	name = "\improper Medical Bay";
 	req_one_access_txt = "2;8;19"
 	},
@@ -3508,7 +3508,7 @@
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
 "lI" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Cafeteria"
 	},
@@ -3925,7 +3925,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/whiskey_outpost/inside/bunker/bunker/front)
 "nA" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass{
 	name = "\improper Hospital";
 	req_one_access = null
 	},
@@ -4129,7 +4129,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/two_south)
 "oB" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Bunker"
 	},
 /turf/open/floor/prison,
@@ -4297,7 +4297,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/four_north)
 "pz" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Mortar Pit"
 	},
@@ -4489,7 +4489,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/whiskey_outpost/inside/engineering)
 "qk" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 8;
 	name = "\improper Storage"
 	},
@@ -5728,7 +5728,7 @@
 /turf/open/floor/prison/floor_marked/southwest,
 /area/whiskey_outpost/inside/supply)
 "vE" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Storage"
 	},
@@ -6395,14 +6395,14 @@
 /turf/open/floor/prison/floor_plate,
 /area/whiskey_outpost/inside/bunker)
 "yK" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Bunker"
 	},
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison/floor_plate,
 /area/whiskey_outpost/inside/bunker)
 "yL" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Bunker"
 	},
 /turf/open/floor/prison/floor_plate,

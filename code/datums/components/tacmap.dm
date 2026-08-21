@@ -34,7 +34,6 @@
 		return COMPONENT_INCOMPATIBLE
 	src.minimap_flag = minimap_flag
 	src.drawing = drawing
-	drawing_tools += list(/atom/movable/screen/minimap_tool/up, /atom/movable/screen/minimap_tool/down)
 
 	if(has_drawing_tools)
 		drawing_tools += list(
@@ -47,6 +46,8 @@
 			/atom/movable/screen/minimap_tool/draw_tool/erase,
 			/atom/movable/screen/minimap_tool/label,
 			/atom/movable/screen/minimap_tool/clear,
+			/atom/movable/screen/minimap_tool/up,
+			/atom/movable/screen/minimap_tool/down,
 			/atom/movable/screen/minimap_tool/popout,
 		)
 

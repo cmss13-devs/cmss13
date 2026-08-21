@@ -139,7 +139,6 @@
 	var/blocked = FALSE
 	var/distance_walked = 0
 
-
 	for(var/turf/line_turf in line_turfs)
 		if(distance_walked >= max_distance)
 			break
@@ -155,6 +154,9 @@
 			if(structure.pass_flags.flags_can_pass_all & PASS_HIGH_OVER)
 				continue
 
+			if(structure.flags_can_pass_front_temp & PASS_OVER_THROW_MOB)
+				continue
+
 			if(structure.density || istype(structure, /obj/structure/barricade))
 				blocked = TRUE
 				break
@@ -165,6 +167,10 @@
 		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/abduct_hook(line_turf, windup)
 		turf_list += line_turf
 		distance_walked++
+
+	if(!length(turf_list))
+		to_chat(abduct_user, SPAN_XENOWARNING("There is no room for our abduction!"))
+		return
 
 	is_active = TRUE
 	ADD_TRAIT(abduct_user, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))

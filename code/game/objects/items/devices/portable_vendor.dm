@@ -272,7 +272,7 @@
 	desc = "A suitcase-sized automated storage and retrieval system. Designed to efficiently store and selectively dispense small items. This one has the Weyland-Yutani logo stamped on its side."
 
 	special_prod_time_lock = CL_BRIEFCASE_TIME_LOCK
-	special_prods = list(/obj/item/implanter/neurostim, /obj/item/reagent_container/hypospray/autoinjector/ultrazine/liaison)
+	special_prods = list(/obj/item/implanter/neurostim, /obj/item/reagent_container/hypospray/autoinjector/no_refill/ultrazine/liaison)
 
 	req_access = list(ACCESS_WY_EXEC)
 	req_role = JOB_CORPORATE_LIAISON
@@ -281,7 +281,7 @@
 		list("Corporate Security Bodyguard", 50, /obj/item/handheld_distress_beacon/bodyguard, "white", "A beacon which sends the Corporate Security Division an encoded message informing them of your request for a Corporate Security Bodyguard."),
 		list("Corporate Lawyer Team", 50, /obj/item/handheld_distress_beacon/lawyer, "white", "A beacon which sends the Corporate Affairs Division an encoded message informing them of your request for a Corporate Lawyer, required when a contract signee breaks one of their clauses."),
 		list("Neurostimulator Implant", 30, /obj/item/implanter/neurostim, "white", "Implant which regulates nociception and sensory function. Benefits include pain reduction, improved balance, and improved resistance to overstimulation and disorientation. To encourage compliance, negative stimulus is applied if the implant hears a (non-radio) spoken codephrase. Implant will be degraded by the body's immune system over time, and thus malfunction with gradually increasing frequency. Personal use not recommended."),
-		list("Ultrazine Injector", 25, /obj/item/reagent_container/hypospray/autoinjector/ultrazine/liaison, "white", "Highly-addictive stimulant. Enhances short-term physical performance, particularly running speed. Effects last approximately 10 minutes per injection. More than two injections at a time will result in overdose. Withdrawal causes extreme discomfort and hallucinations. Long-term use results in halluciations and organ failure. Conditional distribution secures subject compliance. Not for personal use."),
+		list("Ultrazine Injector", 25, /obj/item/reagent_container/hypospray/autoinjector/no_refill/ultrazine/liaison, "white", "Highly-addictive stimulant. Enhances short-term physical performance, particularly running speed. Effects last approximately 10 minutes per injection. More than two injections at a time will result in overdose. Withdrawal causes extreme discomfort and hallucinations. Long-term use results in halluciations and organ failure. Conditional distribution secures subject compliance. Not for personal use."),
 		list("Cyanide Pill", 20, /obj/item/reagent_container/pill/cyanide, "white", "A cyanide pill, also known as a suicide pill. For the easy way out."),
 		list("Ceramic Plate", 10, /obj/item/trash/ceramic_plate, "white", "A ceramic plate, useful in a variety of situations."),
 		list("Cash", 5, /obj/item/spacecash/c1000/counterfeit, "white", "$1000 USD, unmarked bills"),

@@ -87,7 +87,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	// Highlander-style: there can only be one! Kill off the old and replace it with the new.
 
 	if(!random_seed)
-		#ifdef UNIT_TESTS
+		#ifdef REPRODUCIBLE_ENVIRONMENT
 		random_seed = 29051994
 		#else
 		random_seed = rand(1, 1e9)
@@ -271,6 +271,10 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 	if(tgs_prime)
 		world.TgsInitializationComplete()
+
+	#ifdef TRACY_PROFILE_AND_EXIT
+	del(world)
+	#endif
 
 	if(sleep_offline_after_initializations)
 		world.sleep_offline = TRUE

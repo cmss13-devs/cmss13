@@ -418,3 +418,6 @@
   Ammoniacres:
   - balance: made it so Ravagers have a 25% chance to accidentally slash instead of
       tackle on disarm intent!
+2026-08-21:
+  Unknownity:
+  - bugfix: Fixes some area oversights in Whiskey Outpost.

@@ -145,7 +145,7 @@
 	if (!linked_hive)
 		return
 
-	if(!can_hug(AM, linked_hive.hivenumber))
+	if(!can_hug(AM, linked_hive.hivenumber) || HAS_TRAIT(AM, TRAIT_XENO_RECOGNIZED))
 		return
 
 	stored_huggers = max(0, stored_huggers - 1)

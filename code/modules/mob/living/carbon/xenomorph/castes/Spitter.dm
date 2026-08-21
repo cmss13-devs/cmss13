@@ -27,6 +27,8 @@
 
 	minimum_evolve_time = 9 MINUTES
 
+	organ_type = /obj/item/organ/xeno/spitter
+
 	minimap_icon = "spitter"
 
 /mob/living/carbon/xenomorph/spitter
@@ -35,11 +37,9 @@
 	desc = "A gross, oozing alien of some kind."
 	icon_size = 48
 	icon_state = "Spitter Walking"
-	plasma_types = list(PLASMA_NEUROTOXIN)
 	pixel_x = -12
 	old_x = -12
 	xenonid_pixel_x = -9
-	organ_value = 2000
 	tier = 2
 	base_actions = list(
 		/datum/action/xeno_action/onclick/toggle_seethrough,
@@ -67,6 +67,15 @@
 
 	skull = /obj/item/skull/spitter
 	pelt = /obj/item/pelt/spitter
+
+/obj/item/organ/xeno/spitter
+	name = "spitter heart"
+	icon_state = "heart_t2"
+	item_state = "heart_t2"
+	research_value = 2000
+
+	xeno_organ_flags = XENO_ORGAN_STRONG|XENO_ORGAN_ACID
+
 
 /datum/action/xeno_action/onclick/charge_spit/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/zenomorf = owner

@@ -42406,6 +42406,9 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/item/chem_extractor,
+/obj/item/chem_extractor,
+/obj/item/chem_extractor,
 /turf/open/floor/almayer/sterile_green_side/east,
 /area/almayer/medical/containment)
 "bZo" = (
@@ -43506,6 +43509,8 @@
 	pixel_x = 1
 	},
 /obj/structure/bed/roller/heavy,
+/obj/item/organ/xeno/drone,
+/obj/item/organ/xeno/drone,
 /turf/open/floor/almayer/research/containment/floor2,
 /area/almayer/medical/containment/cell)
 "cbj" = (

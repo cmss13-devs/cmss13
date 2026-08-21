@@ -281,7 +281,7 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	job_options = null
 
 /datum/job/civilian/survivor/synth/set_spawn_positions(count)
-	return spawn_positions
+	return
 
 /datum/job/civilian/survivor/synth/create_landmark_lists()
 	slotted_landmarks = list()
@@ -355,7 +355,6 @@ AddTimelock(/datum/job/civilian/survivor, list(
 		return
 	total_positions = 1
 	spawn_positions = 1
-	return spawn_positions
 
 /datum/job/civilian/survivor/commanding_officer/create_landmark_lists()
 	slotted_landmarks = list()

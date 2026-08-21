@@ -4,6 +4,9 @@
 #define DYNAMIC_SCALING_CHEM_MAX_ENERGY_PER_MEDIC 60
 #define DYNAMIC_SCALING_CHEM_ENERGY_MINIMUM_SCALE 4
 
+/// How much the recharge rate of chem storages are scaled by during roundstart (<00:20)
+#define ROUNDSTART_RECHARGE_RATE_MULTIPLIER 4
+
 /obj/structure/machinery/chem_storage
 	name = "Chemical Storage System"
 	desc = "Storage system for a large supply of chemicals, which slowly recharges."
@@ -15,11 +18,12 @@
 	bound_x = 32
 
 	var/network = "Ground"
-	var/recharge_cooldown = 15
+	var/recharge_cooldown = 8
 	var/recharge_rate = BASE_CHEM_STORAGE_RECHARGE_RATE
 	var/energy = BASE_CHEM_STORAGE_MAX_ENERGY
 	var/max_energy = BASE_CHEM_STORAGE_MAX_ENERGY
 	var/dynamic_storage = FALSE
+	var/roundstart_buff = FALSE
 
 	unslashable = TRUE
 	unacidable = TRUE
@@ -28,6 +32,7 @@
 	name = "Chemical Storage System (Medbay)"
 	network = "Medbay"
 	dynamic_storage = TRUE
+	roundstart_buff = TRUE
 
 /obj/structure/machinery/chem_storage/research
 	name = "Chemical Storage System (Research)"
@@ -75,5 +80,13 @@
 		return
 	if(energy >= max_energy)
 		return
-	energy = min(energy + recharge_rate, max_energy)
+	var/roundstart_multiplier = (ROUND_TIME < 20 MINUTES && roundstart_buff) ? ROUNDSTART_RECHARGE_RATE_MULTIPLIER : 1
+	energy = min(energy + recharge_rate * roundstart_multiplier, max_energy)
 	use_power(1500) // This thing uses up a lot of power (this is still low as shit for creating reagents from thin air)
+
+#undef BASE_CHEM_STORAGE_RECHARGE_RATE
+#undef BASE_CHEM_STORAGE_MAX_ENERGY
+#undef DYNAMIC_SCALING_CHEM_ENERGY_RATE_PER_MEDIC
+#undef DYNAMIC_SCALING_CHEM_MAX_ENERGY_PER_MEDIC
+#undef DYNAMIC_SCALING_CHEM_ENERGY_MINIMUM_SCALE
+#undef ROUNDSTART_RECHARGE_RATE_MULTIPLIER

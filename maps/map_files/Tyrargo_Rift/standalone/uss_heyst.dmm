@@ -2156,8 +2156,7 @@
 	pixel_x = 32;
 	pixel_y = 6
 	},
-/obj/structure/stairs/multiz/up,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/almayer/plate,
 /area/tyrargo/indoors/heyst)
 "nt" = (
 /obj/effect/decal/cleanable/blood/xeno,
@@ -2640,11 +2639,8 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/tyrargo/indoors/heyst)
 "sn" = (
-/obj/structure/ladder{
-	id = "bunker_lad";
-	height = 2
-	},
 /obj/structure/blocker/forcefield/vehicles,
+/obj/structure/ladder/multiz,
 /turf/open/floor/almayer/blackfull2,
 /area/tyrargo/indoors/bunker/central_south)
 "so" = (
@@ -4276,12 +4272,6 @@
 /obj/structure/blocker/invisible_wall,
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/floor/almayer/plating/northeast,
-/area/tyrargo/indoors/heyst)
-"Hg" = (
-/obj/structure/stairs/multiz/up{
-	dir = 1
-	},
-/turf/open/floor/almayer_hull,
 /area/tyrargo/indoors/heyst)
 "Hl" = (
 /obj/structure/surface/table/almayer,
@@ -6865,7 +6855,7 @@ aN
 aN
 aN
 aN
-Hg
+kU
 aN
 aN
 VZ
@@ -7953,7 +7943,7 @@ SK
 aN
 aN
 aN
-Hg
+kU
 aN
 aN
 VZ

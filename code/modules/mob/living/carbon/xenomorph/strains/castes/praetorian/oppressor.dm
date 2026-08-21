@@ -106,15 +106,14 @@
 			var/reverse_face = GLOB.reverse_dir[facing]
 			var/turf/back_left = get_step(temp, turn(reverse_face, 45))
 			var/turf/back_right = get_step(temp, turn(reverse_face, -45))
-			if((!back_left || back_left.density) && (!back_right || back_right.density))
+			if((!back_left ||  back_left.density) && (!back_right || back_right.density) || (locate(/obj/structure/girder) in back_left && locate(/obj/structure/girder) in back_right))
 				break
 		if(!temp || temp.density || temp.opacity)
 			break
-
 		var/blocked = FALSE
 		var/allow_one_more_step = FALSE
 		for(var/obj/structure in temp)
-			if(istype(structure, /obj/effect/particle_effect/smoke))
+			if(!structure.can_block_movement)
 				continue
 			if(!structure.density && !structure.opacity)
 				continue
@@ -124,7 +123,7 @@
 			if(istype(structure, /obj/structure/window/reinforced))
 				var/obj/structure/window/reinforced/pane_glass = structure
 				var/pane_facing = pane_glass.dir
-				if(pane_facing == turn(facing, 180))
+				if(pane_facing & turn(facing, 180))
 					blocked = TRUE
 				else if(pane_facing == facing)
 					allow_one_more_step = TRUE
@@ -133,7 +132,7 @@
 				var/obj/structure/surface/table/flip_table = structure
 				var/table_facing = flip_table.dir
 				if(flip_table.flipped)
-					if(table_facing == turn(facing, 180))
+					if(table_facing & turn(facing, 180))
 						blocked = TRUE
 					else if(table_facing == facing)
 						allow_one_more_step = TRUE

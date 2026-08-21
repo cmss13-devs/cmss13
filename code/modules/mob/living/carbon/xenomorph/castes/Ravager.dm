@@ -199,7 +199,7 @@
 		activated_once = TRUE
 		button.icon_state = "template_active"
 		get_initial_shield()
-		addtimer(CALLBACK(xeno, PROC_REF(timeout)), time_until_timeout)
+		addtimer(CALLBACK(src, PROC_REF(timeout)), time_until_timeout)
 		apply_cooldown()
 		return ..()
 	else
@@ -254,7 +254,7 @@
 	color += num2text(alpha, 2, 16)
 	xeno.add_filter("empower_rage", 1, list("type" = "outline", "color" = color, "size" = 3))
 
-	addtimer(CALLBACK(xeno, PROC_REF(weaken_superbuff), xeno, behavior), 5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(weaken_superbuff), xeno, behavior), 5 SECONDS)
 
 /datum/action/xeno_action/onclick/empower/proc/weaken_superbuff(mob/living/carbon/xenomorph/xeno, datum/behavior_delegate/ravager_base/behavior)
 
@@ -264,7 +264,7 @@
 	color += num2text(alpha, 2, 16)
 	xeno.add_filter("empower_rage", 1, list("type" = "outline", "color" = color, "size" = 3))
 
-	addtimer(CALLBACK(xeno, PROC_REF(remove_superbuff), xeno, behavior), 1.5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(remove_superbuff), xeno, behavior), 1.5 SECONDS)
 
 /datum/action/xeno_action/onclick/empower/proc/remove_superbuff(mob/living/carbon/xenomorph/xeno, datum/behavior_delegate/ravager_base/behavior)
 	behavior.empower_targets = 0

@@ -206,7 +206,7 @@
 	return ""
 
 /datum/job/proc/set_spawn_positions(count)
-	return spawn_positions
+	return
 
 /datum/job/proc/create_landmark_lists()
 	return

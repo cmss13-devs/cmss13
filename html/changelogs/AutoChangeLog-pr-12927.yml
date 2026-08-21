@@ -1,0 +1,5 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - code_imp: "Added more pass flag bitfields for VV and unified them with a couple defines"
+  - code_imp: "Unified barricade pass flag initialization with a define"

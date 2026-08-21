@@ -25,6 +25,7 @@ SUBSYSTEM_DEF(input)
 		"Any+UP" = "\"KeyUp \[\[*\]\]\"",
 		"Back" = "\".winset \\\"input.text=\\\"\\\"\\\"\"",
 		"F1" = "dummy", //overriding .options menu being triggered by assigning F1 to proc a verb that actually does nothing
+		"F2" = "dummy",
 		"CTRL+SHIFT+F1+REP" = ".options",
 		"Escape" = "Open-Escape-Menu",
 		)

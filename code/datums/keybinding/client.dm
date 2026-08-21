@@ -27,8 +27,8 @@
 
 
 /datum/keybinding/client/screenshot
-	hotkey_keys = list("F2")
-	classic_keys = list("Unbound")
+	hotkey_keys = list("Unbound")
+	classic_keys = list("F2")
 	name = "screenshot"
 	full_name = "Screenshot"
 	description = "Take a screenshot."
@@ -70,4 +70,3 @@
 		return
 	user.mob.button_pressed_F12()
 	return TRUE
-

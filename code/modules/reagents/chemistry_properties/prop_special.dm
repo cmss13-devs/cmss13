@@ -109,19 +109,19 @@
 /datum/chem_property/special/regulating
 	name = PROPERTY_REGULATING
 	code = "REG"
-	description = "The chemical regulates its metabolization and can never cause an overdose."
+	description = "The chemical regulates its metabolization and the overdose levels are always static."
 	rarity = PROPERTY_LEGENDARY
 	category = PROPERTY_TYPE_METABOLITE
-	max_level = 1
+	max_level = 8
 	value = 6
 
-/datum/chem_property/special/regulating/reset_reagent()
-	holder.flags = initial(holder.flags)
-	..()
-
 /datum/chem_property/special/regulating/update_reagent()
-	holder.flags |= REAGENT_CANNOT_OVERDOSE
-	..()
+
+	var/datum/reagent/regulating_chemical = GLOB.chemical_reagents_list[holder.id]
+	if(regulating_chemical)
+		regulating_chemical.overdose = max(level * 5,1)
+		regulating_chemical.overdose_critical = max((level * 5) + 5,2)
+	. = ..()
 
 /datum/chem_property/special/ciphering
 	name = PROPERTY_CIPHERING

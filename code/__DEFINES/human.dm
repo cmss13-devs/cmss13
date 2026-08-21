@@ -42,6 +42,29 @@
 /// Limb has eschar
 #define LIMB_ESCHAR (1<<11)
 
+///////////////////SURGERY FLAGS///////////////////
+//Surgery defines strictly for overlay application.
+
+///An incision exists.
+#define INCISION_MADE (1<<0)
+
+///The closed or widened incision is bleeding.
+#define INCISION_BLEEDING (1<<1)
+
+///The closed or widened incision is not bleeding.
+#define INCISION_CLAMPED (1<<2)
+
+///The incision has been widened.
+#define INCISION_WIDENED (1<<3)
+
+///The widened incision's organs cannot be manipulated.
+#define INCISION_BONE_CLOSED (1<<4)
+
+///The widened incision's organs can be manipulated.
+#define INCISION_BONE_OPENED (1<<5)
+
+///The widened incision is internally bleeding.
+#define INCISION_INT_BLEEDING (1<<6)
 
 
 ///////////////////WOUND DEFINES///////////////////
@@ -127,12 +150,13 @@
 #define ORDER_FOCUS_MAX_LEVEL   50
 
 //Human Overlays Indexes used in update_icons/////////
-#define BODYPARTS_LAYER 43
-#define DAMAGE_LAYER 42
+#define BODYPARTS_LAYER 44
+#define DAMAGE_LAYER 43
 
-#define UNDERWEAR_LAYER 41
-#define UNDERSHIRT_LAYER 40
-#define MUTANTRACE_LAYER 39
+#define UNDERWEAR_LAYER 42
+#define UNDERSHIRT_LAYER 41
+#define MUTANTRACE_LAYER 40
+#define SURGERY_LAYER 39
 
 /// For use by Hunter Flay
 #define FLAY_LAYER 38
@@ -189,7 +213,7 @@
 /// If you're hit by an acid DoT
 #define EFFECTS_LAYER 1
 
-#define TOTAL_LAYERS 43
+#define TOTAL_LAYERS 44
 #define MAX_HEAD_GARB_LAYERS 6
 //////////////////////////////////
 

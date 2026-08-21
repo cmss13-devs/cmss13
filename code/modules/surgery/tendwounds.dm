@@ -58,6 +58,8 @@
 
 		log_interact(user, target, "[key_name(user)] finished suturing an incision in [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], ending [surgery].")
 
+	target.remove_surgery_flags()
+	target.update_surgery_overlays()
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SURFACE
 
 /datum/surgery_step/suture_incision/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -102,4 +104,6 @@
 
 		log_interact(user, target, "[key_name(user)] finished suturing an incision in [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], ending [surgery].")
 
+	target.remove_surgery_flags()
+	target.update_surgery_overlays()
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SURFACE

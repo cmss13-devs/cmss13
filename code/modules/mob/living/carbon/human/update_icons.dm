@@ -161,6 +161,21 @@ There are several things that need to be remembered:
 
 	apply_overlay(DAMAGE_LAYER)
 
+/mob/living/carbon/human/proc/update_surgery_overlays()
+	remove_overlay(SURGERY_LAYER)
+
+	var/list/surgery_overlays = list()
+	for(var/obj/limb/part as anything in limbs)
+		if(part.status & LIMB_DESTROYED)
+			continue
+
+		surgery_overlays += part.get_surgery_overlays()
+
+	overlays_standing[SURGERY_LAYER] = surgery_overlays
+
+	apply_overlay(SURGERY_LAYER)
+
+
 /// If this human should have underwear, reapply the overlays
 /mob/living/carbon/human/proc/update_undergarments()
 	if(!(species.flags & HAS_UNDERWEAR))

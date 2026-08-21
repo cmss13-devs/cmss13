@@ -72,7 +72,7 @@
 	var/list/abilities = list() // For species-derived or admin-given powers
 
 	var/blood_color = BLOOD_COLOR_HUMAN //Red.
-	var/flesh_color = "#FFC896" //Pink.
+	var/flesh_color = FLESH_COLOR_HUMAN //Pink.
 	var/base_color   //Used when setting species.
 	var/hair_color   //If the species only has one hair color
 	var/no_grad_style //Hair gradients or no

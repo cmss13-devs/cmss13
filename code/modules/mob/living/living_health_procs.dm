@@ -610,7 +610,10 @@
 	//Reset any surgeries.
 	active_surgeries = DEFENSE_ZONES_LIVING
 	initialize_incision_depths()
-	remove_surgery_overlays()
+	remove_surgery_flags()
+	if(ishuman(src))
+		var/mob/living/carbon/human/person = src
+		person.remove_overlay(SURGERY_LAYER)
 
 	// remove the character from the list of the dead
 	if(stat == DEAD)
@@ -680,3 +683,9 @@
 		return
 	face_dir(direction)
 	return ..()
+
+/mob/living/proc/remove_surgery_flags()
+	if(ishuman(src))
+		var/mob/living/carbon/human/person = src
+		for(var/obj/limb/part as anything in person.limbs)
+			part.limb_surgery_status = NO_FLAGS

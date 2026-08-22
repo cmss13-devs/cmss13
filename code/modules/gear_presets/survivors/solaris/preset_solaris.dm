@@ -136,7 +136,7 @@
 	assignment = "USCM Recruiter"
 	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0)
 	minimap_icon = "recruiter"
-	minimap_background = "background_medical"
+	minimap_background = "background_officer"
 	skills = /datum/skills/civilian/survivor/uscm_recruiter
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 

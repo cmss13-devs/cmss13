@@ -30,7 +30,7 @@
 	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST|AMMO_ALWAYS_FF //Not that ignoring will do much right now.
 	stamina_damage = 45
 	accuracy = HIT_ACCURACY_TIER_8
-	shell_speed = AMMO_SPEED_TIER_1 // Slightly faster
+	shell_speed = AMMO_SPEED_TIER_2 // Slightly faster
 	hit_effect_color = "#FFFF00"
 
 /datum/ammo/energy/taser/on_hit_mob(mob/mobs, obj/projectile/P)

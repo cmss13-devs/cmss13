@@ -42,7 +42,7 @@ SUBSYSTEM_DEF(influxplayerstats)
 
 
 	while(length(src.currentrun))
-		var/mob/living/target = currentrun[length(currentrun)]
+		var/mob/target = currentrun[length(currentrun)]
 		currentrun.len--
 
 		if(QDELETED(target))

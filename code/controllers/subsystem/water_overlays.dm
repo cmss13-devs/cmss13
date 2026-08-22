@@ -47,7 +47,6 @@ SUBSYSTEM_DEF(water_overlays)
 
 /datum/controller/subsystem/water_overlays/proc/after_nightmares_water()
 	var/list/altered_turfs = list()
-	var/list/late_altereds = list()
 	for(var/turf/current_turf in turfs_to_process)
 		if(current_turf in altered_turfs)
 			continue

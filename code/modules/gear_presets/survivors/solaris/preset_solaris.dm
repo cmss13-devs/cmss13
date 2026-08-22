@@ -134,10 +134,12 @@
 /datum/equipment_preset/survivor/uscm/solaris
 	name = "Survivor - Solaris United States Colonial Marine Corps Recruiter"
 	assignment = "USCM Recruiter"
-	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0)
+	job_title = JOB_RECRUITER
+	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME6 = JOB_PLAYTIME_TIER_3)
 	minimap_icon = "recruiter"
 	minimap_background = "background_officer"
 	skills = /datum/skills/civilian/survivor/uscm_recruiter
+	faction = FACTION_MARINE
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 
 /datum/equipment_preset/survivor/uscm/solaris/load_gear(mob/living/carbon/human/new_human)
@@ -149,6 +151,9 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/notepad(new_human), WEAR_IN_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/multicolor/fountain(new_human), WEAR_IN_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/uscm(new_human), WEAR_L_EAR)
 	..()
 
 /datum/equipment_preset/survivor/corporate/solaris

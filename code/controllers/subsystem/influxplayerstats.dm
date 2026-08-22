@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(influxplayerstats)
 	name = "Influx Player Stats"
-	wait = 30 SECONDS
+	wait = 1 MINUTES
 	priority = SS_PRIORITY_INFLUXPLAYERSTATS
 	flags = SS_KEEP_TIMING
 

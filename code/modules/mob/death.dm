@@ -10,6 +10,10 @@
 	// You're not coming back from being gibbed. Stop tracking here
 	SSround_recording.recorder.stop_tracking(src)
 	SSminimaps.remove_marker(src)
+	var/turf/death_turf = get_turf(src)
+
+	if(is_ground_level(death_turf.z) || is_mainship_level(death_turf.z) || is_reserved_level(death_turf.z))
+		new /mob/dead/mob_marker(death_turf, src)
 
 	qdel(src)
 

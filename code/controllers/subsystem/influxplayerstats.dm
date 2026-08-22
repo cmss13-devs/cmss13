@@ -1,5 +1,8 @@
+#define IPS_GROUND_LEVEL "ground"
+#define IPS_SHIP_LEVEL "ship"
+
 SUBSYSTEM_DEF(influxplayerstats)
-	name = "Influx Player Stats"
+	name = "InfluxDB Player Stats"
 	wait = 1 MINUTES
 	priority = SS_PRIORITY_INFLUXPLAYERSTATS
 	flags = SS_KEEP_TIMING
@@ -13,9 +16,13 @@ SUBSYSTEM_DEF(influxplayerstats)
 	var/list/currentrun = list()
 
 /datum/controller/subsystem/influxplayerstats/Initialize()
-	for(var/typepath in subtypesof(/datum/player_stats))
-		var/datum/player_stats/stat = new typepath()
-		recorded_stats[stat.key] = list()
+	recorded_stats[IPS_GROUND_LEVEL] = list()
+	recorded_stats[IPS_SHIP_LEVEL] = list()
+
+	for(var/typepath in subtypesof(/datum/influx_player_stats))
+		var/datum/influx_player_stats/stat = new typepath()
+		recorded_stats[IPS_GROUND_LEVEL][stat.key] = list()
+		recorded_stats[IPS_SHIP_LEVEL][stat.key] = list()
 		stat_types += stat
 
 	return SS_INIT_SUCCESS
@@ -23,22 +30,44 @@ SUBSYSTEM_DEF(influxplayerstats)
 
 /datum/controller/subsystem/influxplayerstats/fire(resumed = FALSE)
 	if (!resumed)
-		src.currentrun = GLOB.mob_list
+		src.currentrun = GLOB.living_mob_list + GLOB.marker_mob_list
 
-	for(var/key in recorded_stats)
-		for(var/entry in recorded_stats[key])
-			recorded_stats[entry] = 0
+	for(var/datum/influx_player_stats/stat as anything in stat_types)
+		var/list/ground_level = recorded_stats[IPS_GROUND_LEVEL][stat.key]
+		var/list/ship_level = recorded_stats[IPS_SHIP_LEVEL][stat.key]
+		for(var/entry in ground_level)
+			ground_level[entry] = 0
+		for(var/entry in ship_level)
+			ship_level[entry] = 0
 
 
 	while(length(src.currentrun))
-		var/mob/target = currentrun[length(currentrun)]
+		var/mob/living/target = currentrun[length(currentrun)]
 		currentrun.len--
 
-		for(var/datum/player_stats/stat as anything in src.stat_types)
+		if(QDELETED(target))
+			continue
+
+		var/turf/target_turf = get_turf(target)
+		var/list/level_stats
+		if(is_mainship_level(target_turf.z) || is_reserved_level(target_turf.z))
+			level_stats = recorded_stats[IPS_SHIP_LEVEL]
+		else if(is_ground_level(target_turf.z))
+			level_stats = recorded_stats[IPS_GROUND_LEVEL]
+		else
+			// Not interested in mobs in debug/admin only areas.
+			continue
+
+		for(var/datum/influx_player_stats/stat as anything in src.stat_types)
 			if(!stat.is_relevant(target))
 				continue
-			var/list/data = recorded_stats[stat.key]
+			var/list/data = level_stats[stat.key]
 			var/grouping = stat.group_by(target)
+			if(isnull(grouping))
+				continue
+			if(!istext(grouping))
+				stack_trace("Tried to use an invalid grouping value: [grouping]")
+				continue
 			if(!(grouping in data))
 				data[grouping] = 0
 			data[grouping] += 1
@@ -47,4 +76,12 @@ SUBSYSTEM_DEF(influxplayerstats)
 			return
 
 	for(var/key in recorded_stats)
-		SSinfluxdriver.enqueue_stats(key, list(), recorded_stats[key])
+		var/list/ship_level_data = recorded_stats[IPS_SHIP_LEVEL][key]
+		var/list/ground_level_data = recorded_stats[IPS_GROUND_LEVEL][key]
+		if(length(ship_level_data))
+			SSinfluxdriver.enqueue_stats(key, list("level" = IPS_SHIP_LEVEL), ship_level_data)
+		if(length(ground_level_data))
+			SSinfluxdriver.enqueue_stats(key, list("level" = IPS_GROUND_LEVEL), ground_level_data)
+
+#undef IPS_GROUND_LEVEL
+#undef IPS_SHIP_LEVEL

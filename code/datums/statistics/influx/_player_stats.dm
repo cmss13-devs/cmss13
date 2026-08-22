@@ -1,9 +1,9 @@
-/datum/player_stats
+/datum/influx_player_stats
 	var/name = "Player stats"
 	var/key = ""
 
-/datum/player_stats/proc/is_relevant(mob/target)
+/datum/influx_player_stats/proc/is_relevant(mob/target)
 	return FALSE
 
-/datum/player_stats/proc/group_by(mob/target)
+/datum/influx_player_stats/proc/group_by(mob/target)
 	return target.faction

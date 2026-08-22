@@ -4973,6 +4973,11 @@
 	},
 /turf/open/floor/strata,
 /area/atlan/station/double_dorms)
+"aoZ" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/strata/floor2,
+/area/atlan/station/repairs_lift)
 "apa" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 10
@@ -15559,6 +15564,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/repairs_lift)
 "aWW" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/atlan/station/repairs_lift)
 "aWX" = (
@@ -27302,6 +27308,7 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/floor2,
 /area/atlan/station/cargooffice)
 "hJB" = (
@@ -33997,7 +34004,9 @@
 /area/atlan/oob)
 "mMm" = (
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble10{
-	density = 1
+	density = 1;
+	bound_height = 64;
+	bound_width = 32
 	},
 /turf/open/floor/prison/blue_plate/north,
 /area/atlan/station/water_tanks)
@@ -41739,7 +41748,9 @@
 /area/atlan/asteroid/processing_train_control)
 "syC" = (
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble11{
-	density = 1
+	density = 1;
+	bound_height = 64;
+	bound_width = 32
 	},
 /turf/open/floor/prison/blue_plate/north,
 /area/atlan/station/water_tanks)
@@ -117246,12 +117257,12 @@ pjT
 pjT
 pjT
 aXA
-gwg
-pjT
-gwg
+aYc
+aoZ
+aYv
 aWW
 hJr
-vQC
+aVF
 aWF
 axi
 aWr

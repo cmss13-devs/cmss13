@@ -21,7 +21,6 @@
 /obj/effect/water_splash/proc/destroy_effect()
 	qdel(src)
 
-
 //this is what turf_effect/water puts on mobs that are in water
 /obj/effect/water_splash/water_overlay_splash
 	lifetime = INFINITY

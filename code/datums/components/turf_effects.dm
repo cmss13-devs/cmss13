@@ -158,7 +158,6 @@
 		if(!water_depth || (effect_turf.covered && !blocker_dispersing) || (catwalk && !blocker_dispersing))
 			Destroy()
 			return
-		affected_carbon.pixel_y = affected_carbon.base_pixel_y		//some animations shake the mob around wildly (evoing for example)
 		animate(affected_carbon, pixel_y = water_depth, 0.2 SECONDS)	//if there is a meaningful difference in depth, change layerings and animate the mob "down" to where it should be
 		affected_carbon.appearance_flags |= KEEP_TOGETHER					//this eliminates the water overlays extending past the mobs exisiting sprite, and alot of overhead as a restult
 		var/xeno_resting = (isxeno(affected_carbon) && (affected_carbon.resting||affected_carbon.body_position == LYING_DOWN))	//side note here, why isKnockDown() not work for xenos? lol

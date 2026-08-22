@@ -75,13 +75,13 @@ SUBSYSTEM_DEF(influxplayerstats)
 		if(MC_TICK_CHECK)
 			return
 
-	for(var/key in recorded_stats)
-		var/list/ship_level_data = recorded_stats[IPS_SHIP_LEVEL][key]
-		var/list/ground_level_data = recorded_stats[IPS_GROUND_LEVEL][key]
+	for(var/datum/influx_player_stats/stat as anything in stat_types)
+		var/list/ship_level_data = recorded_stats[IPS_SHIP_LEVEL][stat.key]
+		var/list/ground_level_data = recorded_stats[IPS_GROUND_LEVEL][stat.key]
 		if(length(ship_level_data))
-			SSinfluxdriver.enqueue_stats(key, list("level" = IPS_SHIP_LEVEL), ship_level_data)
+			SSinfluxdriver.enqueue_stats(stat.key, list("level" = IPS_SHIP_LEVEL), ship_level_data)
 		if(length(ground_level_data))
-			SSinfluxdriver.enqueue_stats(key, list("level" = IPS_GROUND_LEVEL), ground_level_data)
+			SSinfluxdriver.enqueue_stats(stat.key, list("level" = IPS_GROUND_LEVEL), ground_level_data)
 
 #undef IPS_GROUND_LEVEL
 #undef IPS_SHIP_LEVEL

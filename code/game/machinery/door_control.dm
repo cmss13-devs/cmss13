@@ -524,6 +524,7 @@
 	normaldoorcontrol = CONTROL_NORMAL_DOORS
 	var/datum/door_controller/single/linked_single_controller
 	var/direction = "aft"
+	var/busy = FALSE
 
 /obj/structure/machinery/door_control/omaha_ramp/proc/borders_space()
 	if(is_reserved_level(src.z))
@@ -543,7 +544,15 @@
 	to_chat(world, "raising via button")
 	if(linked_single_controller.status == SHUTTLE_DOOR_LOCKED)
 		return
+	if(busy)
+		return
 
+	busy = TRUE
+
+	playsound(src.loc, 'sound/machines/omaha_ramp.ogg', 50, 0)
+	addtimer(CALLBACK(src, PROC_REF(finish_raising)), 70,  TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+
+/obj/structure/machinery/door_control/omaha_ramp/proc/finish_raising()
 	for(var/obj/structure/shuttle/part/dropship_omaha/dummy_part/rampazoid in adjustable_ramps)
 		if(!rampazoid.linked_staircase)
 			return
@@ -572,12 +581,21 @@
 		our_turf.update_vis_contents()
 
 	linked_single_controller.status = SHUTTLE_DOOR_LOCKED
+	busy = FALSE
 
 /obj/structure/machinery/door_control/omaha_ramp/proc/lower()
 	to_chat(world, "lowering via button")
 	if(linked_single_controller.status == SHUTTLE_DOOR_UNLOCKED)
 		return
+	if(busy)
+		return
 
+	busy = TRUE
+
+	playsound(src.loc, 'sound/machines/omaha_ramp.ogg', 50, 0)
+	addtimer(CALLBACK(src, PROC_REF(finish_lowering)), 70,  TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+
+/obj/structure/machinery/door_control/omaha_ramp/proc/finish_lowering()
 	for(var/obj/structure/shuttle/part/dropship_omaha/dummy_part/rampazoid in adjustable_ramps)
 		var/turf/open/our_turf = rampazoid.loc
 		if(!rampazoid.linked_staircase)
@@ -612,6 +630,7 @@
 		our_turf.place_on_top(/turf/open_space)
 		our_turf.update_vis_contents()
 
+	busy = FALSE
 	linked_single_controller.status = SHUTTLE_DOOR_UNLOCKED
 
 /obj/structure/machinery/door_control/omaha_ramp/beforeShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)

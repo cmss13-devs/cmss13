@@ -1894,14 +1894,14 @@
 	if(is_type_in_list(inserted_item, GLOB.sidearm_ammo))
 		if(pistol_mags >= 2)
 			if(!stop_messages)
-				to_chat(user, SPAN_WARNING("[src] can't hold more pistol magazines."))
+				to_chat(user, SPAN_WARNING("[src] can't hold more sidearm magazines."))
 			return FALSE
 		return TRUE
 
 	if(is_type_in_list(inserted_item, GLOB.longarm_ammo))
 		if(rifle_mags >= 3)
 			if(!stop_messages)
-				to_chat(user, SPAN_WARNING("[src] can't hold more rifle magazines."))
+				to_chat(user, SPAN_WARNING("[src] can't hold more longarm magazines."))
 			return FALSE
 		return TRUE
 

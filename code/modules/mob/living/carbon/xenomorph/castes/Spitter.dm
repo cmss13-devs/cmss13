@@ -68,21 +68,17 @@
 	skull = /obj/item/skull/spitter
 	pelt = /obj/item/pelt/spitter
 
-/datum/action/xeno_action/onclick/charge_spit/use_ability(atom/A)
+/datum/action/xeno_action/onclick/charge_spit/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/zenomorf = owner
 
-	if (!action_cooldown_check())
+	if(!istype(zenomorf))
 		return
 
-	if (!istype(zenomorf) || !zenomorf.check_state())
-		return
-
-	if (buffs_active)
+	if(buffs_active)
 		to_chat(zenomorf, SPAN_XENOHIGHDANGER("We cannot stack this!"))
 		return
 
-	if (!check_and_use_plasma_owner())
-		return
+	XENO_ACTION_CHECK_USE_PLASMA(zenomorf)
 
 	to_chat(zenomorf, SPAN_XENOHIGHDANGER("We accumulate acid in your glands. Our next spit will be stronger but shorter-ranged."))
 	to_chat(zenomorf, SPAN_XENOWARNING("Additionally, we are slightly faster and more armored for a small amount of time."))
@@ -94,6 +90,7 @@
 	zenomorf.armor_modifier += armor_buff_amount
 	zenomorf.recalculate_speed()
 	zenomorf.recalculate_armor()
+	start_duration_display(duration)
 
 	/// Though the ability's other buffs are supposed to last for its duration, it's only supposed to enhance one spit.
 	RegisterSignal(zenomorf, COMSIG_XENO_POST_SPIT, PROC_REF(disable_spatter))
@@ -111,11 +108,12 @@
 		zenomorf.balloon_alert(zenomorf, "our spits are back to normal", text_color = "#93ec78")
 		zenomorf.ammo = GLOB.ammo_list[/datum/ammo/xeno/acid] // el codigo de mierda es mi ciudad
 	UnregisterSignal(zenomorf, COMSIG_XENO_POST_SPIT)
+	end_duration_display()
 
 /datum/action/xeno_action/onclick/charge_spit/proc/remove_effects()
 	var/mob/living/carbon/xenomorph/zenomorf = owner
 
-	if (!istype(zenomorf))
+	if(!istype(zenomorf))
 		return
 
 	zenomorf.speed_modifier += speed_buff_amount
@@ -126,7 +124,7 @@
 	disable_spatter()
 	buffs_active = FALSE
 
-/datum/action/xeno_action/activable/tail_stab/spitter/use_ability(atom/A)
+/datum/action/xeno_action/activable/tail_stab/spitter/use_ability(atom/target_atom)
 	var/target = ..()
 	if(iscarbon(target))
 		var/mob/living/carbon/carbon_target = target

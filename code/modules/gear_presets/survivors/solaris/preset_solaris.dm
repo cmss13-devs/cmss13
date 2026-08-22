@@ -138,6 +138,7 @@
 	minimap_icon = "recruiter"
 	minimap_background = "background_medical"
 	skills = /datum/skills/civilian/survivor/uscm_recruiter
+	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 
 /datum/equipment_preset/survivor/uscm/solaris/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(new_human), WEAR_BODY)

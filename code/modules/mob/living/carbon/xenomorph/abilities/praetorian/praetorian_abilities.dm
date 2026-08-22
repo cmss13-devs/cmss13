@@ -35,8 +35,6 @@
 	var/buff_duration = 12
 	var/damage = 40
 	var/shield_regen_threshold = 1
-
-	var/activated_once = FALSE
 	var/time_until_timeout = 20
 
 /datum/action/xeno_action/activable/pounce/prae_dash/initialize_pounce_pass_flags()
@@ -58,8 +56,6 @@
 	var/fling_dist_unbuffed = 3
 	var/fling_dist_buffed = 6
 
-	// Root or do a punch-like-effect.
-	var/root_toggle = TRUE
 	var/buffed = FALSE // Are we buffed
 
 /datum/action/xeno_action/onclick/toggle_cleave
@@ -69,39 +65,6 @@
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_cleave
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_4
-
-/datum/action/xeno_action/onclick/toggle_cleave/can_use_action()
-	var/mob/living/carbon/xenomorph/X = owner
-	if(X && !X.buckled && !X.is_mob_incapacitated())
-		return TRUE
-
-/datum/action/xeno_action/onclick/toggle_cleave/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/X = owner
-
-	if (!istype(X))
-		return
-
-	if(!X.check_state(1))
-		return
-
-	var/datum/action/xeno_action/activable/cleave/cAction = get_action(X, /datum/action/xeno_action/activable/cleave)
-
-	if (!istype(cAction))
-		return
-
-	cAction.root_toggle = !cAction.root_toggle
-
-	var/action_icon_result
-	if (cAction.root_toggle)
-		action_icon_result = "prae_cleave_root"
-		to_chat(X, SPAN_WARNING("We will now root marines with our cleave."))
-	else
-		action_icon_result = "prae_cleave_fling" // TODO: update
-		to_chat(X, SPAN_WARNING("We will now throw marines with our cleave."))
-
-	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_result)
-	return ..()
 
 ////////// Oppressor powers
 
@@ -172,6 +135,11 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_TAIL_STAB
 
+	/// How much damage Harpoon Tail on DISARM mode do. (pierces armor)
+	var/blunt_damage = 8
+	/// Harpoon Tail mode, used only to display in status.
+	var/tail_mode = null
+
 /datum/action/xeno_action/activable/prae_impale
 	name = "Impale"
 	action_icon_state = "prae_impale"
@@ -196,6 +164,15 @@
 	var/dodge_timer = TIMER_ID_NULL
 	var/speed_buff_amount = 0.5
 	var/afterimage_interval = 1 DECISECONDS
+
+	/// Used to countdown DANCER_DODGE_TIME.
+	var/dodge_start_time = -1
+	/// How much refund we want to get back? 1.0 is 1s used to 1s cooldown, 2.0 is 1s used 2s cooldown.
+	var/refund_multiplier = 2.0
+	/// Used in calculation, finalized number will be displayed as cooldown.
+	var/recharge_time = null
+	/// Cooldown after activation to prevent accidental double click.
+	var/safe_click_cooldown = 0
 
 /datum/action/xeno_action/activable/prae_tail_trip
 	name = "Tail Trip"

@@ -267,11 +267,15 @@
 #define TRAIT_ABILITY_BURROWED "t_ability_burrowed"
 /// Xenos with this trait can toggle long sight while resting.
 #define TRAIT_ABILITY_SIGHT_IGNORE_REST "t_ability_sight_ignore_rest"
+
+
+// -- specific ability traits --
+#define TRAIT_ABILITY_CREST "t_ability_crest"
+#define TRAIT_ABILITY_FORTIFY "t_ability_fortify"
 /// Used by shielder to check stance.
 #define TRAIT_ABILITY_ENCLOSED_PLATES "t_ability_enclosed_plates"
 /// Used by shielder for reflective plates.
 #define TRAIT_ABILITY_REFLECTIVE_PLATES "t_ability_reflective_plates"
-
 
 //-- item traits --
 // TOOL TRAITS

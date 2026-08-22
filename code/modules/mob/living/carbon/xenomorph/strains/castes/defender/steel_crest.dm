@@ -17,10 +17,9 @@
 
 /datum/xeno_strain/steel_crest/apply_strain(mob/living/carbon/xenomorph/defender/defender)
 	defender.damage_modifier -= XENO_DAMAGE_MOD_VERY_SMALL
-	if(defender.fortify)
+	if(HAS_TRAIT(defender, TRAIT_ABILITY_FORTIFY))
 		defender.ability_speed_modifier += 2.5
 	defender.recalculate_stats()
-
 
 
 // Steel crest override
@@ -36,18 +35,19 @@
 		xeno.ability_speed_modifier -= 3
 		xeno.damage_modifier += XENO_DAMAGE_MOD_SMALL
 
+/datum/action/xeno_action/activable/fortify/proc/unconscious_check()
+	SIGNAL_HANDLER
 
-/datum/action/xeno_action/onclick/soak/use_ability(atom/A)
+	if(QDELETED(owner))
+		return
+
+	UnregisterSignal(owner, COMSIG_XENO_ENTER_CRIT)
+	UnregisterSignal(owner, COMSIG_MOB_DEATH)
+
+/datum/action/xeno_action/onclick/soak/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/steelcrest = owner
 
-	if (!action_cooldown_check())
-		return
-
-	if (!steelcrest.check_state())
-		return
-
-	if(!check_and_use_plasma_owner())
-		return
+	XENO_ACTION_CHECK_USE_PLASMA(steelcrest)
 
 	RegisterSignal(steelcrest, COMSIG_MOB_TAKE_DAMAGE, PROC_REF(damage_accumulate))
 	addtimer(CALLBACK(src, PROC_REF(stop_accumulating)), 6 SECONDS)
@@ -79,10 +79,10 @@
 	owner.remove_filter("steelcrest_enraging")
 
 /datum/action/xeno_action/onclick/soak/proc/enraged()
-
 	owner.remove_filter("steelcrest_enraging")
 	owner.add_filter("steelcrest_enraged", 1, list("type" = "outline", "color" = "#ad1313", "size" = 1))
-	owner.visible_message(SPAN_XENOWARNING("[owner] gets enraged after being damaged enough!"), SPAN_XENOWARNING("We feel enraged after taking in oncoming damage! Our tail slam's cooldown is reset and we heal!"))
+	owner.visible_message(SPAN_XENOWARNING("[owner] gets enraged and their carapace start to rapidly mend!"), SPAN_XENOWARNING("We feel enraged after taking in oncoming damage! Our tail slam's cooldown is reset and our carapace start to rapidly mend!"))
+	owner.flick_heal_overlay(3 SECONDS, "#00B800")
 
 	var/mob/living/carbon/xenomorph/enraged_mob = owner
 	enraged_mob.gain_health(75) // pretty reasonable amount of health recovered
@@ -90,9 +90,8 @@
 	// Check actions list for tail slam and reset it's cooldown if it's there
 	var/datum/action/xeno_action/activable/tail_stab/slam/slam_action = locate() in owner.actions
 
-	if (slam_action && !slam_action.action_cooldown_check())
+	if(slam_action && !slam_action.action_cooldown_check())
 		slam_action.end_cooldown()
-
 
 	addtimer(CALLBACK(src, PROC_REF(remove_enrage), owner), 3 SECONDS)
 

@@ -3,6 +3,7 @@ SUBSYSTEM_DEF(influxplayerstats)
 	wait = 1 MINUTES
 	priority = SS_PRIORITY_INFLUXPLAYERSTATS
 	flags = SS_KEEP_TIMING
+	runlevels = RUNLEVEL_GAME|RUNLEVEL_POSTGAME
 
 	// The different stats we're recording for each mob
 	var/list/stat_types = list()

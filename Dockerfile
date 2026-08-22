@@ -1,10 +1,11 @@
-# TODO: Use an .envfile and make everyone use it instead
-ARG BYOND_BASE_IMAGE=ubuntu:focal
+# Unfortunately we have to duplicate values from dependencies.sh because this community decided to use a stupid sh script instead of an envfile, thanks a lot
+ARG BYOND_BASE_IMAGE=debian:trixie
 ARG UTILITY_BASE_IMAGE=alpine:3
 ARG PROJECT_NAME=colonialmarines
-ARG BYOND_MAJOR=514
-ARG BYOND_MINOR=1575
-ARG NODE_VERSION=16
+ARG BYOND_MAJOR=516
+ARG BYOND_MINOR=1687
+ARG NODE_VERSION=26-alpine
+ARG RUSTG_TARGET=7.0.0
 ARG BYOND_UID=1000
 
 # BUILD_TYPE=standalone to build with juke in docker
@@ -12,11 +13,21 @@ ARG BYOND_UID=1000
 # This will only work properly with later docker version! If it doesn't try launching with DOCKER_BUILDKIT=1 env variable
 ARG BUILD_TYPE=deploy
 
+# Layer building rustg for use in final containers
+FROM rust:1 AS rustg-builder
+RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y build-essential gcc-multilib
+RUN rustup target add i686-unknown-linux-gnu
+ARG RUSTG_ORIGIN=https://github.com/tgstation/rust-g.git
+ARG RUSTG_TARGET
+RUN git clone --depth 1 --branch ${RUSTG_TARGET} ${RUSTG_ORIGIN} /rustg
+WORKDIR /rustg
+RUN cargo build --release --target i686-unknown-linux-gnu --features redis_pubsub
+
 # Base BYOND image
 FROM ${BYOND_BASE_IMAGE} AS byond
 SHELL ["/bin/bash", "-c"]
 RUN dpkg --add-architecture i386
-RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y make man curl unzip libssl-dev libssl-dev:i386 libz-dev:i386 lib32stdc++6 python3-minimal
+RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y make man curl unzip python3-minimal libssl-dev libssl-dev:i386 libz-dev:i386 libcurl4-openssl-dev:i386
 RUN update-alternatives --install /usr/local/bin/python python /usr/bin/python3 20
 ARG BYOND_MAJOR
 ARG BYOND_MINOR
@@ -84,18 +95,17 @@ COPY tools/docker/runner-entrypoint.sh /entrypoint.sh
 RUN chmod a+x /entrypoint.sh /cm/ytdl
 RUN useradd -u ${BYOND_UID} -ms /bin/bash byond
 WORKDIR /cm
-COPY librust_g.so .
-COPY config config
-COPY map_config map_config
-COPY strings strings
-COPY nano nano
-COPY maps maps
-COPY html html
-COPY sound sound
-COPY icons icons
-COPY --from=build-results /build/tgui/public tgui/public/
-COPY --from=build-results /build/${PROJECT_NAME}.dmb application.dmb
-COPY --from=build-results /build/${PROJECT_NAME}.rsc application.rsc
-RUN chown -R byond:byond /byond /cm /entrypoint.sh
+COPY --chown=${BYOND_UID}:${BYOND_UID} --from=rustg-builder --link /rustg/target/i686-unknown-linux-gnu/release/librust_g.so librust_g.so
+COPY --chown=${BYOND_UID}:${BYOND_UID} --from=build-results --link /build/tgui/public tgui/public/
+COPY --chown=${BYOND_UID}:${BYOND_UID} --from=build-results --link /build/${PROJECT_NAME}.dmb application.dmb
+COPY --chown=${BYOND_UID}:${BYOND_UID} --from=build-results --link /build/${PROJECT_NAME}.rsc application.rsc
+COPY --chown=${BYOND_UID}:${BYOND_UID} map_config map_config
+COPY --chown=${BYOND_UID}:${BYOND_UID} strings strings
+COPY --chown=${BYOND_UID}:${BYOND_UID} nano nano
+COPY --chown=${BYOND_UID}:${BYOND_UID} maps maps
+COPY --chown=${BYOND_UID}:${BYOND_UID} html html
+COPY --chown=${BYOND_UID}:${BYOND_UID} sound sound
+COPY --chown=${BYOND_UID}:${BYOND_UID} icons icons
 USER ${BYOND_UID}
+RUN chown ${BYOND_UID}:${BYOND_UID} /cm
 ENTRYPOINT [ "/entrypoint.sh" ]

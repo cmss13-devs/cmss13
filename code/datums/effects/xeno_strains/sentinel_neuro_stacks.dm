@@ -16,9 +16,9 @@
 	///how much oxy damage should be given per process
 	var/proc_damage_per_stack = 0.2
 	///Maximum oxyloss is clamped between these two bounds, this prevents someone from achieving high oxyloss by keeping someone on 5-10 stacks for a long time. To get high damage, you need high stacks.
-	var/max_oxyloss_lower_bound = 15
-	var/max_oxyloss_upper_bound = 45
-	var/max_oxyloss = 15
+	var/max_oxyloss_lower_bound = 10
+	var/max_oxyloss_upper_bound = 40
+	var/max_oxyloss = 10
 	///particles
 	var/obj/effect/abstract/particle_holder/particle_holder
 

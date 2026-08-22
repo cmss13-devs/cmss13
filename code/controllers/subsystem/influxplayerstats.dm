@@ -10,7 +10,6 @@ SUBSYSTEM_DEF(influxplayerstats)
 	// Recorded stats
 	var/list/recorded_stats = list()
 
-
 	var/list/currentrun = list()
 
 /datum/controller/subsystem/influxplayerstats/Initialize()

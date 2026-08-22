@@ -1,6 +1,0 @@
-author: "Rad Chandelier"
-delete-after: True
-changes:
-  - rscadd: "Adds a check of MRE side dishes before allowing MRE folding into trash; Changes MRE weight class to small"
-  - code_imp: "All changes ported directly from PvE code"
-  - qol: "Adds check of MRE food items to allow storage into MRE"

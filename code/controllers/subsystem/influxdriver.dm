@@ -79,7 +79,7 @@ SUBSYSTEM_DEF(influxdriver)
 /datum/controller/subsystem/influxdriver/proc/enqueue_stats(measurement, list/tags, list/fields)
 	. = FALSE
 	var/valid = FALSE
-	var/serialized = "[measurement],round_id=[GLOB.round_id]"
+	var/serialized = "[measurement],round_id=[GLOB.round_id],round_time=[ROUND_TIME]"
 	if(tags)
 		for(var/tag in tags)
 			var/serialized_tag = serialize_field(tag, tags[tag])

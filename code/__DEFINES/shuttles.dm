@@ -117,6 +117,7 @@
 #define MOBILE_SHUTTLE_VEHICLE_ELEVATOR "vehicle_elevator"
 
 #define DROPSHIP_ALAMO "dropship_alamo"
+#define DROPSHIP_OMAHA "dropship_omaha"
 #define DROPSHIP_NORMANDY "dropship_normandy"
 #define DROPSHIP_SAIPAN "dropship_saipan"
 #define DROPSHIP_MORANA "dropship_morana"

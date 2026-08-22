@@ -356,6 +356,14 @@
 	icon = 'icons/turf/dropship2.dmi'
 	icon_state = "1"
 
+/turf/closed/shuttle/dropship_omaha // actual walls
+	name = "\improper Omaha"
+	icon = 'icons/turf/mohawk/mohawk-walls.dmi'
+	icon_state = "1,0"
+
+/turf/closed/shuttle/dropship_omaha/transparent // ADMIN LOG: load_template(): Shuttle Template maps/shuttles/dropship_alamo.dmm has no mobile docking port. Aborting import.
+	opacity = FALSE
+
 /turf/closed/shuttle/dropship2/transparent
 	opacity = FALSE
 

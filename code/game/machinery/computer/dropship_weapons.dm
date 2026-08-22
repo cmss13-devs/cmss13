@@ -920,6 +920,16 @@
 	firemission_envelope = new /datum/cas_fire_envelope/uscm_dropship()
 	shuttle_tag = DROPSHIP_ALAMO
 
+/obj/structure/machinery/computer/dropship_weapons/dropship_omaha
+	name = "\improper 'Omaha' weapons controls"
+	icon = 'icons/obj/structures/machinery/mohawk/mohawk-controls.dmi'
+	icon_state = "system_monitor"
+	density = FALSE
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_FLIGHT)
+	firemission_envelope = new /datum/cas_fire_envelope/uscm_dropship()
+	shuttle_tag = DROPSHIP_OMAHA
+	layer = OBJ_LAYER + 0.01
+
 /obj/structure/machinery/computer/dropship_weapons/dropship2
 	name = "\improper 'Normandy' weapons controls"
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_FLIGHT)

@@ -145,6 +145,12 @@
 /obj/structure/machinery/prop/almayer/CICmap/pmc
 	minimap_flag = MINIMAP_FLAG_PMC
 
+/obj/structure/machinery/prop/almayer/CICmap/omaha
+	icon = 'icons/obj/structures/machinery/mohawk/mohawk-modules.dmi'
+	icon_state = "omaha_map"
+	density = TRUE
+	bound_height = 64
+
 //Nonpower using props
 
 /obj/structure/prop/almayer

@@ -76,6 +76,12 @@
 	name = "dropship alamo intercom"
 	frequency = DS1_FREQ
 
+/obj/item/device/radio/intercom/omaha // change icon
+	name = "dropship omaha intercom"
+	icon = 'icons/obj/structures/machinery/mohawk/mohawk-controls.dmi'
+	icon_state = "intercom"
+	frequency = DS4_FREQ
+
 /obj/item/device/radio/intercom/normandy
 	name = "dropship normandy intercom"
 	frequency = DS2_FREQ

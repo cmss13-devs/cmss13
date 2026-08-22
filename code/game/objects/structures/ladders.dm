@@ -136,6 +136,7 @@
 	user.visible_message(SPAN_NOTICE("[user] starts climbing [ladder_dir_name] [src]."),
 	SPAN_NOTICE("You start climbing [ladder_dir_name] [src]."))
 	busy = TRUE
+	playsound(user.loc, 'sound/machines/mountain852_climbing_ladder_initial.ogg', 75, 0)
 	if(do_after(user, 20, INTERRUPT_INCAPACITATED|INTERRUPT_OUT_OF_RANGE|INTERRUPT_RESIST, BUSY_ICON_GENERIC, src, INTERRUPT_NONE))
 		if(!user.is_mob_incapacitated() && get_dist(user, src) <= 1 && !user.blinded && user.body_position != LYING_DOWN && !user.buckled && !user.anchored)
 			visible_message(SPAN_NOTICE("[user] climbs [ladder_dir_name] [src].")) //Hack to give a visible message to the people here without duplicating user message
@@ -143,6 +144,7 @@
 			SPAN_NOTICE("You climb [ladder_dir_name] [src]."))
 			ladder_dest.add_fingerprint(user)
 			user.trainteleport(ladder_dest.loc)
+			playsound(user.loc, 'sound/machines/mountain852_climbing_ladder_human_after.ogg', 50, 0)
 	busy = FALSE
 	add_fingerprint(user)
 	if(ladder_dest.up && ladder_dest.down) // Make sure it has a up and down before opening the radial wheel, otherwise it sends you
@@ -398,3 +400,67 @@
 	name = "ladder"
 	desc = "A sturdy metal ladder, made from an unknown metal, adorned with glowing runes."
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+
+/obj/structure/ladder/multiz/dropship_omaha
+	name = "ladder hatch"
+	icon = 'icons/obj/structures/machinery/mohawk/mohawk-interior-item.dmi'
+	icon_state = "ladder-hatch-closed"
+	var/deployed = FALSE
+	var/currently_adjusting = FALSE
+	var/deploy_speed = 18
+	id = "omaha_cockpit_ladder"
+
+/obj/structure/ladder/multiz/dropship_omaha_bottom
+	name = "ladder"
+	icon = 'icons/obj/structures/machinery/mohawk/mohawk-interior-item.dmi'
+	icon_state = "hatch_ladder_bottom"
+
+/obj/structure/ladder/multiz/dropship_omaha_bottom/update_icon()
+	return // FUCK OFF
+
+/obj/structure/ladder/multiz/dropship_omaha/LateInitialize()
+	.=..()
+	down = new /obj/structure/ladder/multiz/dropship_omaha_bottom
+	down.up = src
+
+/obj/structure/ladder/multiz/dropship_omaha/update_icon()
+	return // FUCK OFF
+
+/obj/structure/ladder/multiz/dropship_omaha/proc/deploy()
+	if(currently_adjusting)
+		return
+	currently_adjusting = TRUE
+	icon_state = "hatch-opening"
+	playsound(loc, 'sound/machines/nightcustard_motor_whirring.ogg', 75, 0)
+	playsound(loc, 'sound/machines/freesoundstock_step_ladder.ogg', 35, 0)
+	addtimer(CALLBACK(src, PROC_REF(finish_deploying)), deploy_speed,  TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT) //
+
+/obj/structure/ladder/multiz/dropship_omaha/proc/finish_deploying()
+	name = "ladder"
+	icon_state = "hatch-open"
+	currently_adjusting = FALSE
+	deployed = TRUE
+	var/turf/open/turf_below = SSmapping.get_turf_below(src.loc)
+	down.loc = turf_below
+	down.update_icon()
+	playsound(loc, 'sound/machines/freesoundstock_step_ladder.ogg', 30, 0)
+	playsound(turf_below.loc, 'sound/machines/freesoundstock_step_ladder.ogg', 50, 0)
+
+
+/obj/structure/ladder/multiz/dropship_omaha/proc/undeploy(forced_adjusting = FALSE)
+	if(!forced_adjusting)
+		if(currently_adjusting)
+			return
+		currently_adjusting = TRUE
+		down.moveToNullspace()
+		icon_state = "hatch-closing"
+		playsound(loc, 'sound/machines/nightcustard_motor_whirring.ogg', 100, 0)
+		addtimer(CALLBACK(src, PROC_REF(finish_undeploying)), deploy_speed, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+	else
+		finish_undeploying() // gotta move fast big dog...
+
+/obj/structure/ladder/multiz/dropship_omaha/proc/finish_undeploying()
+	name = "ladder hatch"
+	icon_state = "ladder-hatch-closed"
+	currently_adjusting = FALSE
+	deployed = FALSE

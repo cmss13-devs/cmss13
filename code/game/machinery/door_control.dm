@@ -424,3 +424,231 @@
 			handle_dropship(id)
 
 	desiredstate = !desiredstate
+
+/obj/structure/machinery/door_control/hatch_ladder
+	name = "Hatch Ladder Access"
+	desc = "Looks intimaditing enough to challenge non-humans to use it."
+	icon = 'icons/obj/structures/machinery/mohawk/mohawk-interior-item.dmi'
+	icon_state = "doorctrl"
+	dir = EAST
+	normaldoorcontrol = CONTROL_NORMAL_DOORS
+	var/obj/structure/ladder/multiz/dropship_omaha/linked_ladder
+	id = "omaha_cockpit_ladder"
+
+/obj/structure/machinery/door_control/hatch_ladder/attack_hand(mob/living/user) // if(is_reserved_level(z)
+	add_fingerprint(user) // removed xeno check. i am in control
+	if(!linked_ladder)
+		for(var/obj/structure/ladder/multiz/dropship_omaha/target_ladder in range(1, src.loc))
+			if(target_ladder.id == id)
+				linked_ladder = target_ladder
+				break
+	if(is_reserved_level(z))
+		to_chat(user, SPAN_NOTICE("You almost press \the [name] button, but then reconsider killing yourself by venting atmo."))
+		return
+	else
+		use_button(user)
+
+/obj/structure/machinery/door_control/hatch_ladder/handle_door() // test this and map it
+	if(linked_ladder.deployed) // add transit check
+		linked_ladder.undeploy()
+	else
+		linked_ladder.deploy()
+
+/obj/structure/machinery/door_control/hatch_ladder/beforeShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)
+	. = ..()
+	if(linked_ladder?.deployed)
+		linked_ladder.undeploy() // forced true
+
+/obj/structure/machinery/door_control/side_hatch
+	icon = 'icons/obj/structures/machinery/mohawk/mohawk-interior-item.dmi'
+	icon_state = "doorctrl"
+	var/obj/structure/machinery/door/airlock/hatch/side_hatch/linked_hatch
+	normaldoorcontrol = CONTROL_NORMAL_DOORS
+	var/obj/docking_port/mobile/marine_dropship/linked_dropship
+	var/datum/door_controller/single/linked_single_controller
+	var/direction
+
+/obj/structure/machinery/door_control/side_hatch/omaha_hatch_left
+	name = "Port Hatch Access"
+	id = "port_door"
+	dir = WEST
+	direction = "port"
+
+/obj/structure/machinery/door_control/side_hatch/omaha_hatch_right
+	name = "Starboard Hatch Access"
+	id = "starboard_door"
+	dir = EAST
+	direction = "starboard"
+
+/obj/structure/machinery/door_control/side_hatch/beforeShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
+	. = ..()
+	if(!linked_single_controller)
+		for(var/direction in linked_dropship.door_control.door_controllers)
+			var/datum/door_controller/single/controller = linked_dropship.door_control.door_controllers[direction]
+			if(direction == src.direction)
+				linked_single_controller = controller
+
+/obj/structure/machinery/door_control/side_hatch/attack_hand(mob/living/user)
+	add_fingerprint(user)
+	if(istype(user,/mob/living/carbon/xenomorph))
+		return
+	if(!linked_hatch)
+		for(var/obj/structure/machinery/door/airlock/hatch/side_hatch/target_hatch in range(1, src.loc))
+			if(target_hatch.id == id)
+				linked_hatch = target_hatch
+				break
+	if(is_reserved_level(z))
+		to_chat(user, SPAN_NOTICE("You almost press \the [name] button, but then reconsider killing yourself by venting atmo."))
+		return
+	else
+		use_button(user)
+
+/obj/structure/machinery/door_control/side_hatch/handle_door()
+	if(linked_single_controller.status == SHUTTLE_DOOR_LOCKED)
+		linked_hatch.unlock()
+		linked_single_controller.status = SHUTTLE_DOOR_UNLOCKED
+	else
+		linked_hatch.lock()
+		linked_single_controller.status = SHUTTLE_DOOR_LOCKED
+
+/obj/structure/machinery/door_control/omaha_ramp
+	name = "Ramp Access"
+	icon = 'icons/obj/structures/machinery/mohawk/mohawk-interior-item.dmi'
+	icon_state = "ramp_control"
+	id = "aft_ramp"
+	var/obj/docking_port/mobile/marine_dropship/linked_dropship
+	var/list/adjustable_ramps = list()
+	var/list/iconchange_ramps = list()
+	var/list/static_ramps = list()
+	var/list/openspace_ramps = list()
+	normaldoorcontrol = CONTROL_NORMAL_DOORS
+	var/datum/door_controller/single/linked_single_controller
+	var/direction = "aft"
+	var/busy = FALSE
+
+/obj/structure/machinery/door_control/omaha_ramp/proc/borders_space()
+	if(is_reserved_level(src.z))
+		return TRUE
+	else
+		return FALSE
+
+/obj/structure/machinery/door_control/omaha_ramp/handle_door()
+	if(is_reserved_level(src.z))
+		return
+	if(linked_single_controller.status == SHUTTLE_DOOR_UNLOCKED)
+		raise()
+	else if(linked_single_controller.status == SHUTTLE_DOOR_LOCKED)
+		lower()
+
+/obj/structure/machinery/door_control/omaha_ramp/proc/raise()
+	to_chat(world, "raising via button")
+	if(linked_single_controller.status == SHUTTLE_DOOR_LOCKED)
+		return
+	if(busy)
+		return
+
+	busy = TRUE
+
+	playsound(src.loc, 'sound/machines/omaha_ramp.ogg', 50, 0)
+	addtimer(CALLBACK(src, PROC_REF(finish_raising)), 70,  TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+
+/obj/structure/machinery/door_control/omaha_ramp/proc/finish_raising()
+	for(var/obj/structure/shuttle/part/dropship_omaha/dummy_part/rampazoid in adjustable_ramps)
+		if(!rampazoid.linked_staircase)
+			return
+
+		var/turf/open/our_turf = rampazoid.loc
+		QDEL_NULL(rampazoid.linked_staircase.staircase)
+		QDEL_NULL(rampazoid.linked_staircase)
+		our_turf.ScrapeAway()
+		our_turf.update_vis_contents()
+
+	for(var/obj/structure/shuttle/part/dropship_omaha/dummy_part/rampazoid in iconchange_ramps)
+		if(!rampazoid.linked_staircase)
+			return
+		QDEL_NULL(rampazoid.linked_staircase)
+
+	for(var/obj/structure/shuttle/part/dropship_omaha/dummy_part/rampazoid in openspace_ramps)
+		var/turf/open/our_turf = rampazoid.loc
+		our_turf.ScrapeAway()
+		our_turf.update_vis_contents()
+
+	for(var/obj/structure/shuttle/part/dropship_omaha/dummy_part/rampazoid in static_ramps)
+		var/turf/open/our_turf = rampazoid.loc
+		our_turf.ScrapeAway()
+		if(rampazoid.linked_structure_ramp)
+			rampazoid.linked_structure_ramp.moveToNullspace()
+		our_turf.update_vis_contents()
+
+	linked_single_controller.status = SHUTTLE_DOOR_LOCKED
+	busy = FALSE
+
+/obj/structure/machinery/door_control/omaha_ramp/proc/lower()
+	to_chat(world, "lowering via button")
+	if(linked_single_controller.status == SHUTTLE_DOOR_UNLOCKED)
+		return
+	if(busy)
+		return
+
+	busy = TRUE
+
+	playsound(src.loc, 'sound/machines/omaha_ramp.ogg', 50, 0)
+	addtimer(CALLBACK(src, PROC_REF(finish_lowering)), 70,  TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+
+/obj/structure/machinery/door_control/omaha_ramp/proc/finish_lowering()
+	for(var/obj/structure/shuttle/part/dropship_omaha/dummy_part/rampazoid in adjustable_ramps)
+		var/turf/open/our_turf = rampazoid.loc
+		if(!rampazoid.linked_staircase)
+			var/turf/turf_beneath = SSmapping.get_turf_below(our_turf)
+			rampazoid.linked_staircase = new /obj/structure/stairs/multiz/up/omaha_ramp(turf_beneath)
+			rampazoid.linked_staircase.icon = our_turf.icon
+			rampazoid.linked_staircase.icon_state = "[our_turf.icon_state]-low"
+		our_turf.place_on_top(/turf/open_space)
+		our_turf.update_vis_contents()
+
+	for(var/obj/structure/shuttle/part/dropship_omaha/dummy_part/rampazoid in iconchange_ramps)
+		var/turf/open/our_turf = rampazoid.loc
+		if(!rampazoid.linked_staircase)
+			rampazoid.linked_staircase = new /obj/structure/stairs/multiz/down/omaha_ramp(our_turf)
+			rampazoid.linked_staircase.icon = "[our_turf.icon]"
+			rampazoid.linked_staircase.icon_state = "[our_turf.icon_state]-low"
+			rampazoid.linked_staircase.invisibility = 101
+
+	for(var/obj/structure/shuttle/part/dropship_omaha/dummy_part/rampazoid in openspace_ramps)
+		var/turf/open/our_turf = rampazoid.loc
+		our_turf.place_on_top(/turf/open_space)
+		our_turf.update_vis_contents()
+
+	for(var/obj/structure/shuttle/part/dropship_omaha/dummy_part/rampazoid in static_ramps)
+		var/turf/open/our_turf = rampazoid.loc
+		var/turf/turf_beneath = SSmapping.get_turf_below(our_turf)
+		if(!rampazoid.linked_structure_ramp)
+			rampazoid.linked_structure_ramp = new /obj/structure/shuttle/part/dropship_omaha/structure_ramp(turf_beneath)
+			rampazoid.linked_structure_ramp.icon_state = "[our_turf.icon_state]-low"
+		else
+			rampazoid.linked_structure_ramp.loc = turf_beneath
+		our_turf.place_on_top(/turf/open_space)
+		our_turf.update_vis_contents()
+
+	busy = FALSE
+	linked_single_controller.status = SHUTTLE_DOOR_UNLOCKED
+
+/obj/structure/machinery/door_control/omaha_ramp/beforeShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
+	.=..()
+	if(!length(adjustable_ramps))
+		for(var/place in linked_dropship.shuttle_areas)
+			for(var/obj/structure/shuttle/part/dropship_omaha/dummy_part/rampazoid in place) // switch to switch and "" vars
+				switch(rampazoid.mode)
+					if("adjustable_down")
+						adjustable_ramps += rampazoid
+					if("adjustable_up")
+						iconchange_ramps += rampazoid
+					if("adjustable_space")
+						openspace_ramps += rampazoid
+					if("default")
+						static_ramps += rampazoid
+	if(!linked_single_controller)
+		for(var/direction in linked_dropship.door_control.door_controllers)
+			var/datum/door_controller/single/controller = linked_dropship.door_control.door_controllers[direction]
+			if(direction == src.direction)
+				linked_single_controller = controller

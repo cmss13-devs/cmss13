@@ -219,7 +219,7 @@ SUBSYSTEM_DEF(shuttle)
 	var/datum/turf_reservation/proposal = SSmapping.request_turf_block_reservation(
 		transit_width,
 		transit_height,
-		z_size = 1, //if this is changed the turf uncontain code below has to be updated to support multiple zs
+		z_size = 2, //if this is changed the turf uncontain code below has to be updated to support multiple zs // 3 works
 		reservation_type = /datum/turf_reservation/transit,
 		turf_type_override = transit_path,
 	)
@@ -413,6 +413,7 @@ SUBSYSTEM_DEF(shuttle)
  * * destination_port - The station docking port to send the shuttle to once loaded
  * * to_replace - A shuttle to replace, otherwise we create a new one
 */
+//main proc
 /datum/controller/subsystem/shuttle/proc/action_load(datum/map_template/shuttle/loading_template, obj/docking_port/stationary/destination_port, obj/docking_port/mobile/to_replace)
 	// Check for an existing preview
 	if(preview_shuttle && (loading_template != preview_template))
@@ -497,11 +498,11 @@ SUBSYSTEM_DEF(shuttle)
  */
 /datum/controller/subsystem/shuttle/proc/load_template(datum/map_template/shuttle/loading_template)
 	. = FALSE
-	// Load shuttle template to a fresh block reservation.
+	// Load shuttle template to a fresh block reservation. // change value?
 	preview_reservation = SSmapping.request_turf_block_reservation(
 		loading_template.width,
 		loading_template.height,
-		1,
+		loading_template.real_height,
 		reservation_type = /datum/turf_reservation/transit,
 	)
 	if(!preview_reservation)

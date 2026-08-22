@@ -940,6 +940,25 @@
 	no_panel = TRUE
 	not_weldable = TRUE
 
+/obj/structure/machinery/door/airlock/hatch/cockpit/omaha
+	icon = 'icons/obj/structures/machinery/mohawk/dropship_omaha_door.dmi'
+	icon_state = "door_closed"
+	opacity = FALSE
+	glass = TRUE
+	openspeed = 5
+
+/obj/structure/machinery/door/airlock/hatch/side_hatch
+	icon = 'icons/obj/structures/machinery/mohawk/dropship_omaha_door.dmi'
+	icon_state = "door_closed"
+	unslashable = TRUE
+	unacidable = TRUE
+	no_panel = TRUE
+	not_weldable = TRUE
+	id = "change_this"
+	opacity = FALSE
+	glass = TRUE
+	openspeed = 5
+
 /obj/structure/machinery/door/airlock/hatch/cockpit/two
 	icon = 'icons/obj/structures/doors/dropship2_pilot.dmi'
 

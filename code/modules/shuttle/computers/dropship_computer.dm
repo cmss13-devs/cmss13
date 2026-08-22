@@ -40,6 +40,11 @@
 	req_one_access = list(ACCESS_UPP_FLIGHT)
 	faction = FACTION_UPP
 
+/obj/structure/machinery/computer/shuttle/dropship/flight/omaha
+	icon = 'icons/obj/structures/machinery/mohawk/mohawk-controls.dmi'
+	icon_state = "flight_controls"
+	density = TRUE
+
 /obj/structure/machinery/computer/shuttle/dropship/flight/Initialize(mapload, ...)
 	. = ..()
 	compatible_landing_zones = get_landing_zones()
@@ -316,7 +321,7 @@
 	if(dropship.is_hijacked)
 		return
 
-	// door controls being overridden
+	// door controls being overridden // look here
 	if(!dropship_control_lost && do_after(xeno, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		dropship.control_doors("unlock", "all", TRUE)
 		dropship_control_lost = TRUE
@@ -417,7 +422,8 @@
 	dropship_control_lost = FALSE
 	update_icon()
 
-/obj/structure/machinery/computer/shuttle/dropship/flight/ui_data(mob/user)
+/obj/structure/machinery/computer/shuttle/dropship/flight/ui_data(mob/user) // what is this
+	to_chat(world, "called UI data!!")
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId, warn=!can_change_shuttle)
 	. = list()
 	.["shuttle_id"] = shuttle?.id
@@ -438,7 +444,7 @@
 	if(shuttle?.destination)
 		.["target_destination"] = shuttle?.in_flyby? "Flyby" : shuttle?.destination.name
 
-	.["door_status"] = is_remote ? list() : shuttle?.get_door_data()
+	.["door_status"] = is_remote ? list() : shuttle?.get_door_data() // get door data
 	.["has_flyby_skill"] = skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT)
 
 	// Launch Alarm Variables
@@ -475,6 +481,7 @@
 	. = ..()
 	if(.)
 		return
+	to_chat(world, "UI act!!!")
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId, warn=!can_change_shuttle)
 	if(disabled || (shuttle && shuttle.is_hijacked))
 		switch(action)
@@ -522,6 +529,7 @@
 				return TRUE
 
 			update_equipment(is_optimised, FALSE)
+			to_chat(world, "ui_data first")
 			var/list/local_data = ui_data(user)
 			var/found = FALSE
 			playsound(loc, get_sfx("terminal_button"), 5, 1)
@@ -555,6 +563,7 @@
 			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
 			return FALSE
 		if("door-control")
+			to_chat(world, "calling door control")
 			if(!shuttle)
 				return FALSE
 			if(shuttle.mode == SHUTTLE_CALL || shuttle.mode == SHUTTLE_RECALL)

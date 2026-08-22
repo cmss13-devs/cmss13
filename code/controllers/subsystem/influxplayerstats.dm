@@ -46,8 +46,5 @@ SUBSYSTEM_DEF(influxplayerstats)
 		if(MC_TICK_CHECK)
 			return
 
-	// Commit the recorded stats so that they're now cached.
-	// Need to do it like this so that the influxstats subsystem does
-	// not read stats that aren't fully finished recording.
 	for(var/key in recorded_stats)
 		SSinfluxdriver.enqueue_stats(key, list(), recorded_stats[key])

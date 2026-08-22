@@ -410,3 +410,42 @@
 	icon_state = "labcoat_long"
 	item_state = "labcoat_long"
 	blood_overlay_type = "suit"
+
+
+
+// UPP-CEC labcoats, courtesy of Zenith and Dimdimich
+
+/obj/item/clothing/suit/storage/labcoat/cec
+	icon = 'icons/obj/items/clothing/suits/cec_labcoats.dmi'
+	icon_state = "cec"
+	item_state = "cec"
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/cec_labcoats.dmi'
+	)
+/obj/item/clothing/suit/storage/labcoat/cec/red
+	name = "CEC lab coat"
+	desc = "A suit that protects against minor chemical spills and biological hazards. This one is in a Cosmos Exploration Corps red."
+	icon_state = "cec"
+	item_state = "cec"
+
+/obj/item/clothing/suit/storage/labcoat/cec/red_hood
+	name = "CEC field lab coat"
+	desc = "A suit that protects against minor chemical spills and biological hazards. This one is in a Cosmos Exploration Corps red and features additional protection for field use."
+	icon_state = "cec_hood"
+	item_state = "cec_hood"
+
+	// it's for field use after all //
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+
+
+/obj/item/clothing/suit/storage/labcoat/cec/blue
+	name = "CEC technician lab coat"
+	desc = "A suit that protects against minor chemical spills and biological hazards. This one is in a Cosmos Exploration Corps blue and has additional pockets."
+	icon_state = "cec_blue"
+	item_state = "cec_blue"
+	storage_slots = 3

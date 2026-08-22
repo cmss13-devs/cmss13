@@ -535,3 +535,14 @@
 	icon_state = "data"
 	item_state = "card-id"
 	unacidable = 1
+
+
+// Cosmos Exploration Corps ID
+/obj/item/card/id/cec
+	name = "CEC identification holo-badge"
+	desc = "A standard-issue holo-badge for personnel within the UPP's Cosmos Exploration Corps. It displays the individual's standing within the organization and their affiliation. "
+	icon_state = "lanyard"
+
+/obj/item/card/id/cec/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/cec)

@@ -6,4 +6,4 @@
 	if(!ishuman(target) || target.stat != DEAD)
 		return FALSE
 	var/mob/living/carbon/human/human_target = target
-	return human_target.is_revivable(ignore_heart = TRUE)
+	return human_target.is_revivable(ignore_heart = TRUE) && human_target.check_tod()

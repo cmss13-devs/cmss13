@@ -127,6 +127,67 @@
 /turf/LateInitialize(mapload)
 	update_vis_contents()
 
+/turf/proc/fix_water_clipping_layers(list/altered_turfs)	//so big mobs dont clip into the ground when standing in water
+	var/list/return_list = list()							//and they can still look like they're below turfs south of them
+	if(SSwater_overlays.is_water(src) || layer == UNDER_WATER_TURF_LAYER)
+		return return_list
+	for(var/direction_check in GLOB.cardinals)
+		if(direction_check == NORTH)
+			continue
+		var/turf/neighbor = get_step(src, direction_check)
+		if(neighbor && SSwater_overlays.is_water(neighbor))
+			if(!(src in return_list))
+				visually_set_under_water_mobs(TRUE)
+			return_list |= src
+			var/turf/rightwards_turf = get_step(src, turn(direction_check, 90))
+			if(rightwards_turf && !SSwater_overlays.is_water(rightwards_turf) && !(rightwards_turf in return_list) && !(rightwards_turf in altered_turfs))
+				rightwards_turf.visually_set_under_water_mobs(TRUE)
+				return_list |= rightwards_turf
+			var/turf/leftwards_turf = get_step(src, turn(direction_check, -90))
+			if(leftwards_turf && !SSwater_overlays.is_water(leftwards_turf) && !(leftwards_turf in return_list) && !(leftwards_turf in altered_turfs))
+				leftwards_turf.visually_set_under_water_mobs(TRUE)
+				return_list |= leftwards_turf
+	return return_list
+
+/turf/proc/fix_water_clipping_layers_final() // if any of the turfs we changed above have water above them, we reset them
+	var/list/return_list = list()
+	var/turf/checking_turf = get_step(src, SOUTH)	// this should be already handled, but was seeing some weird behaviour
+	if(checking_turf == null)
+		return
+	if(SSwater_overlays.is_full_water(checking_turf) && layer != UNDER_WATER_TURF_LAYER)
+		visually_set_under_water_mobs(TRUE)
+		return_list |= list(type, TRUE, x,y,z)
+
+	checking_turf = get_step(src, NORTH)
+	if(checking_turf == null)
+		return
+	if(SSwater_overlays.is_water(checking_turf) && layer != initial(layer))
+		visually_set_under_water_mobs(FALSE)
+		return_list |= list(type, FALSE, "[x],[y],[z]")
+
+	if(ispath(checking_turf.type, /turf/open/gm/river))
+		var/turf/open/gm/river/checking_river = checking_turf
+		if(checking_river.covered)
+			checking_river.update_overlays()
+	return return_list
+
+/turf/proc/visually_set_under_water_mobs(setting)
+	if(setting)
+		layer = UNDER_WATER_TURF_LAYER
+		plane = FLOOR_PLANE
+		for(var/obj/structure/structure in contents)		//decals, railings, stairs etc
+			var/icon/icon_check = icon(structure.icon, structure.icon_state)
+			if(icon_check.Width() <= 32)
+				structure.layer = UNDER_WATER_TURF_LAYER + 0.01
+				structure.plane = FLOOR_PLANE
+	else
+		layer = initial(layer)
+		plane = initial(plane)
+		for(var/obj/structure/structure in contents)
+			structure.layer = initial(layer)
+			structure.plane = initial(plane)
+
+
 /obj/vis_contents_holder
 	plane = OPEN_SPACE_PLANE_START
 	vis_flags = VIS_HIDE

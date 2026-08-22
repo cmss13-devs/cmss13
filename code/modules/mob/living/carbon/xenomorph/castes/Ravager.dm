@@ -178,8 +178,8 @@
 				bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] nibbles [target_carbon]"),
 				SPAN_XENONOTICE("ATTACK!!!! Wait- we're not allowed to attack hosts anymore..."))
 				return XENO_ATTACK_ACTION
-		bound_xeno.visible_message(SPAN_DANGER("[bound_xeno] fumbles stupidly for a moment, then slashes [target_carbon]!"), null, null, CHAT_TYPE_XENO_COMBAT)
-		bound_xeno.visible_message(SPAN_HIGHDANGER("Your oversized claws and small mind get in the way of restraining, slashing [target_carbon]!"), null, null, CHAT_TYPE_XENO_COMBAT)
+		bound_xeno.visible_message(SPAN_DANGER("[bound_xeno] fumbles stupidly for a moment, then slashes [target_carbon]!"), 
+			SPAN_HIGHDANGER("Your oversized claws and small mind get in the way of restraining, slashing [target_carbon]!"), message_flags=CHAT_TYPE_XENO_COMBAT)
 		return INTENT_HARM
 
 /datum/action/xeno_action/onclick/empower/use_ability(atom/target)
@@ -200,7 +200,7 @@
 		ADD_TRAIT(xeno, TRAIT_ABILITY_PRE_EMPOWER, TRAIT_SOURCE_ABILITY("pre_empower"))
 		button.icon_state = "template_active"
 		get_initial_shield()
-		addtimer(CALLBACK(xeno, PROC_REF(timeout)), time_until_timeout)
+		addtimer(CALLBACK(src, PROC_REF(timeout)), time_until_timeout)
 		apply_cooldown()
 		return ..()
 	else
@@ -259,7 +259,7 @@
 	color += num2text(alpha, 2, 16)
 	xeno.add_filter("empower_rage", 1, list("type" = "outline", "color" = color, "size" = 3))
 
-	addtimer(CALLBACK(xeno, PROC_REF(weaken_superbuff), xeno, behavior), 5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(weaken_superbuff), xeno, behavior), 5 SECONDS)
 
 /datum/action/xeno_action/onclick/empower/proc/weaken_superbuff(mob/living/carbon/xenomorph/xeno)
 
@@ -269,7 +269,7 @@
 	color += num2text(alpha, 2, 16)
 	xeno.add_filter("empower_rage", 1, list("type" = "outline", "color" = color, "size" = 3))
 
-	addtimer(CALLBACK(xeno, PROC_REF(remove_superbuff), xeno, behavior), 1.5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(remove_superbuff), xeno, behavior), 1.5 SECONDS)
 
 /datum/action/xeno_action/onclick/empower/proc/remove_superbuff(mob/living/carbon/xenomorph/xeno)
 	empower_targets = 0

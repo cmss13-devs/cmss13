@@ -131,7 +131,6 @@
 
 // Proc for throwing items (should only really be used for throw)
 /atom/movable/proc/throw_atom(atom/target, range, speed = 0, atom/thrower, spin, launch_type = NORMAL_LAUNCH, pass_flags = NO_FLAGS, list/end_throw_callbacks, list/collision_callbacks, tracking = FALSE, list/turf/route)
-	to_world("start throw_atom")
 	if(QDELETED(src))
 		return // Why throw something deleting?
 
@@ -169,7 +168,6 @@
 
 // Proc for throwing or propelling movable atoms towards a target
 /atom/movable/proc/launch_towards(datum/launch_metadata/LM, tracking = FALSE, list/turf/route)
-	to_world("start launch_towards")
 	if (!istype(LM))
 		CRASH("invalid launch_metadata passed to launch_towards")
 	if (!LM.target || !src)
@@ -216,8 +214,6 @@
 	var/early_exit = FALSE
 	LM.dist = 0
 	for (var/turf/T in path)
-		to_world("launching")
-		to_world(T)
 		if (!src || !throwing || loc != last_loc || !isturf(src.loc))
 			break
 		if (!LM || QDELETED(LM))

@@ -199,17 +199,20 @@
 				continue
 
 			targets += target
-	if(LAZYLEN(targets) == 1)
-		abduct_user.balloon_alert(abduct_user, "slowed one target", text_color = "#51a16c")
-	else if(LAZYLEN(targets) == 2)
-		abduct_user.balloon_alert(abduct_user, "rooted two targets", text_color = "#51a16c")
-	else if(LAZYLEN(targets) >= 3)
-		abduct_user.balloon_alert(abduct_user, "stunned [LAZYLEN(targets)] targets", text_color = "#51a16c")
+
+	var/num_of_targets = LAZYLEN(targets)
+	switch(num_of_targets)
+		if(0)
+		if(1)
+			abduct_user.balloon_alert(abduct_user, "slowed one target", text_color = "#51a16c")
+		if(2)
+			abduct_user.balloon_alert(abduct_user, "rooted two targets", text_color = "#51a16c")
+		else
+			abduct_user.balloon_alert(abduct_user, "stunned [LAZYLEN(targets)] targets", text_color = "#51a16c")
 
 	apply_cooldown()
 
 	var/turf/throw_target_turf = turflist[1]
-	var/num_of_targets = LAZYLEN(targets)
 	for(var/mob/living/carbon/target in targets)
 		abduct_user.visible_message(SPAN_XENODANGER("\The [abduct_user]'s hooked tail coils itself around [target]!"), SPAN_XENODANGER("Our hooked tail coils itself around [target]!"))
 
@@ -242,11 +245,9 @@
 		var/list/turf/target_route = list()
 
 		if(target_dist)
-			to_world("index")
-			target_route.Copy(1, target_dist+1)
+			target_route = turflist.Copy(1, target_dist+1)
 			target_route = reverselist(target_route)
-		for(var/turf/T in target_route)
-			to_world(T)
+
 		target.throw_atom(throw_target_turf, target_dist, SPEED_VERY_FAST, route = target_route)
 		qdel(tail_beam) // hook beam catches target, throws them back, is deleted (throw_atom has sleeps), then hook beam catches another target, repeat
 		addtimer(CALLBACK(src, /datum/action/xeno_action/activable/prae_abduct/proc/remove_tail_overlay, target, tail_image), 0.5 SECONDS) //needed so it can actually be seen as it gets deleted too quickly otherwise.

@@ -203,6 +203,7 @@
 	var/num_of_targets = LAZYLEN(targets)
 	switch(num_of_targets)
 		if(0)
+			continue
 		if(1)
 			abduct_user.balloon_alert(abduct_user, "slowed one target", text_color = "#51a16c")
 		if(2)

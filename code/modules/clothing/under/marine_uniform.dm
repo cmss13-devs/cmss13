@@ -1278,6 +1278,12 @@
 	icon_state = "upp_uniform_officer"
 	worn_state = "upp_uniform_officer"
 
+/obj/item/clothing/under/marine/veteran/UPP/officer/mss
+	name = "\improper UPP MSS officer service uniform"
+	desc = "A service uniform worn by officers of the Ministry of Space Security, the UPP's internal security and intelligence service. The MSS concerns itself with espionage, counterintelligence, political loyalty, and threats to the Union, both foreign and domestic."
+	icon_state = "upp_uniform_service"
+	worn_state = "upp_uniform_service"
+
 /obj/item/clothing/under/marine/veteran/UPP/civi1
 	name = "\improper UPP Civilian-style Orange overalls"
 	desc = "A set of Civilian-style Orange Overalls with a dark tan undershirt. The material is of a poor quality, however it's better than nothing. Clothing of this style is typically given out to those who work laborious jobs."

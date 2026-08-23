@@ -43,11 +43,6 @@
 	linked_dummy = null
 	. = ..()
 
-/obj/item/device/professor_dummy_tablet/proc/is_adjacent_to_dummy(mob/user)
-	if(get_dist(linked_dummy, user) <= 1)
-		return TRUE
-	to_chat(user, SPAN_WARNING("You are too far away from the dummy to use its tablet."))
-
 /obj/item/device/professor_dummy_tablet/proc/link_dummy(mob/living/carbon/human/dummy_to_link)
 	if(dummy_to_link)
 		linked_dummy = dummy_to_link
@@ -172,10 +167,12 @@
 /obj/item/device/professor_dummy_tablet/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
 
-	if(is_adjacent_to_dummy(user))
+	if(linked_dummy && get_dist(linked_dummy, user) <= 2)
 		return UI_INTERACTIVE
+	else
+		to_chat(user, SPAN_WARNING("You are too far away from the dummy to use its tablet."))
 
-	return UI_DISABLED
+	return UI_CLOSE
 
 /obj/item/device/professor_dummy_tablet/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_inventory_state

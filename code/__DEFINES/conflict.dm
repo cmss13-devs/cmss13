@@ -53,6 +53,11 @@
 /// Reflected projectiles
 #define PROJECTILE_REFLECTED (1<<2)
 
+///Bonus Projectile Check Defines
+#define PROJECTILE_LONE 0
+#define PROJECTILE_ORIGINAL 1
+#define PROJECTILE_BONUS 2
+
 //Gun defines for gun related thing. More in the projectile folder.
 
 #define GUN_CAN_POINTBLANK (1<<0)
@@ -78,6 +83,12 @@
 #define GUN_SUPPORT_PLATFORM (1<<16)
 /// No gun description, only base desc
 #define GUN_NO_DESCRIPTION (1<<17)
+/// If the gun can do battlefield executions
+#define GUN_BATTLEFIELD_EXECUTION (1<<18)
+/// If the gun can perform tricks
+#define GUN_TRICKSTER (1<<19)
+/// If the gun can perform a warning shot
+#define GUN_CAN_WARNING_SHOT (1<<20)
 // NOTE: Don't add flags past 1<<23, it'll break things due to BYOND limitations. You can usually use a Component instead.
 
 #define USES_STREAKS (1<<0)

@@ -163,6 +163,10 @@
 /datum/job/proc/can_play_role_in_scenario(client/client)
 	return TRUE
 
+/// Returns whether the new_player was able to be assigned a landmark
+/datum/job/proc/assign_landmark(mob/new_player)
+	return TRUE
+
 /datum/job/proc/get_role_requirements(client/C)
 	var/list/return_requirements = list()
 	for(var/prereq in minimum_playtimes)
@@ -203,6 +207,9 @@
 
 /datum/job/proc/set_spawn_positions(count)
 	return spawn_positions
+
+/datum/job/proc/create_landmark_lists()
+	return
 
 /datum/job/proc/spawn_and_equip(mob/new_player/player)
 	CRASH("A job without a set spawn_and_equip proc has handle_spawn_and_equip set to TRUE!")

@@ -63,7 +63,7 @@
 			if(CO_GUN_2006M)
 				sidearmpath = /obj/item/storage/belt/gun/mateba/mtr6m/full
 			if(CO_GUN_DEAGLE)
-				sidearmpath = /obj/item/storage/belt/gun/m4a3/heavy/co
+				sidearmpath = /obj/item/storage/belt/gun/m4a3/deagle/co
 			if(CO_GUN_M1911C)
 				sidearmpath = /obj/item/storage/belt/gun/m4a3/m1911/commander
 			//Council variants
@@ -80,7 +80,7 @@
 			if(CO_GUN_2006MS_COUNCIL)
 				sidearmpath = /obj/item/storage/belt/gun/mateba/council/mtr6m/full_silver
 			if(CO_GUN_DEAGLE_COUNCIL)
-				sidearmpath = /obj/item/storage/belt/gun/m4a3/heavy/co_golden
+				sidearmpath = /obj/item/storage/belt/gun/m4a3/deagle/co_golden
 	//back
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 	if(kit)
@@ -290,7 +290,7 @@
 	//limbs
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/black(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/spec_kit(new_human), WEAR_R_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/spec_kit(new_human), WEAR_L_HAND)
 	//pockets
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/wy/pmc_m39(new_human), WEAR_L_STORE)
@@ -381,7 +381,7 @@
 	idtype = /obj/item/card/id/silver
 
 	minimap_icon = "cargo"
-	minimap_background = "background_medical"
+	minimap_background = "background_officer"
 
 /datum/equipment_preset/wo/quartermaster/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = get_backpack_item(new_human, /obj/item/storage/backpack/marine/satchel/tech, /obj/item/storage/backpack/marine/tech)
@@ -444,8 +444,8 @@
 	skills = /datum/skills/CMO
 	idtype = /obj/item/card/id/silver
 
-	minimap_icon = "cmo_wo"
-	minimap_background = "background_medical_WO"
+	minimap_icon = "medic"
+	minimap_background = "background_command"
 
 /datum/equipment_preset/wo/head_surgeon/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = get_backpack_item(new_human, /obj/item/storage/backpack/marine/satchel/medic, /obj/item/storage/backpack/marine/medic)
@@ -565,7 +565,7 @@
 	idtype = /obj/item/card/id/silver
 
 	minimap_icon = "ce"
-	minimap_background = "background_medical"
+	minimap_background = "background_command"
 
 /datum/equipment_preset/wo/bcm/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = get_backpack_item(new_human, /obj/item/storage/backpack/marine/satchel/tech, /obj/item/storage/backpack/marine/tech)
@@ -733,7 +733,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/pistol(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/attachable/magnetic_harness(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/spec_kit, WEAR_R_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/spec_kit, WEAR_L_HAND)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/wy/pmc_m39(new_human), WEAR_L_STORE)
 

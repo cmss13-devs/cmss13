@@ -30,8 +30,8 @@
 	var/mouse_pointer = 'icons/effects/mouse_pointer/rifle_mouse.dmi'
 
 	var/accepted_ammo = list()
-	///Determines what kind of bullet is created when the gun is unloaded - used to match rounds to magazines. Set automatically when reloading.
-	var/caliber
+	///Determines what kind of bullet is created when the gun is unloaded - used to match rounds to magazines. Set automatically when reloading. Can be used in a list.
+	var/list/caliber
 	var/muzzle_flash = "muzzle_flash"
 	///muzzle flash brightness
 	var/muzzle_flash_lum = 3
@@ -46,9 +46,9 @@
 	var/fire_rattle = null
 	var/unload_sound = 'sound/weapons/flipblade.ogg'
 	var/empty_sound = 'sound/weapons/smg_empty_alarm.ogg'
-	//Sound for when you try to shoot but the gun is empty.
+	/// Sound for when you try to shoot but the gun is empty.
 	var/list/dry_fire_sound = list('sound/weapons/gun_empty.ogg')
-	//We don't want these for guns that don't have them.
+	/// We don't want these for guns that don't have them.
 	var/reload_sound = null
 	var/cocked_sound = null
 	///world.time value, to prevent COCK COCK COCK COCK
@@ -139,12 +139,7 @@
 	var/fa_scatter_peak = 4
 	///How bad does the scatter get on full auto?
 	var/fa_max_scatter = 6.5
-	///Click parameters to use when firing full-auto
-	var/fa_params = null
 
-	///Used to fire faster at more than one person.
-	var/tmp/mob/living/last_moved_mob
-	var/tmp/lock_time = -100
 	///Used to determine if you can target multiple people.
 	var/automatic = 0
 	///So that it doesn't spam them with the fact they cannot hit them.
@@ -298,9 +293,11 @@
 	GLOB.gun_list += src
 	if(auto_retrieval_slot)
 		AddElement(/datum/element/drop_retrieval/gun, auto_retrieval_slot)
+	if(flags_gun_features & GUN_CAN_WARNING_SHOT)
+		AddComponent(/datum/component/gun_hush)
 	update_icon() //for things like magazine overlays
 	gun_firemode = gun_firemode_list[1] || GUN_FIREMODE_SEMIAUTO
-	AddComponent(/datum/component/automatedfire/autofire, fire_delay, burst_delay, burst_amount, gun_firemode, autofire_slow_mult, CALLBACK(src, PROC_REF(set_bursting)), CALLBACK(src, PROC_REF(reset_fire)), CALLBACK(src, PROC_REF(fire_wrapper)), CALLBACK(src, PROC_REF(display_ammo)), CALLBACK(src, PROC_REF(set_auto_firing))) //This should go after handle_starting_attachment() and setup_firemodes() to get the proper values set.
+	AddComponent(/datum/component/automatedfire/autofire, fire_delay, burst_delay, burst_amount, gun_firemode, autofire_slow_mult, CALLBACK(src, PROC_REF(set_bursting)), CALLBACK(src, PROC_REF(reset_fire)), CALLBACK(src, PROC_REF(fire_wrapper)), CALLBACK(src, PROC_REF(set_auto_firing))) //This should go after handle_starting_attachment() and setup_firemodes() to get the proper values set.
 
 /obj/item/weapon/gun/proc/set_gun_attachment_offsets()
 	attachable_offset = null
@@ -310,7 +307,6 @@
 	ammo = null
 	QDEL_NULL(current_mag)
 	target = null
-	last_moved_mob = null
 	if(flags_gun_features & GUN_FLASHLIGHT_ON)//Handle flashlight.
 		flags_gun_features &= ~GUN_FLASHLIGHT_ON
 	attachments = null
@@ -550,7 +546,8 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left)
 
 	if(slot in list(WEAR_L_HAND, WEAR_R_HAND))
-		set_gun_user(user)
+		if(user.get_active_hand() == src)
+			set_gun_user(user)
 		if(HAS_TRAIT_FROM_ONLY(src, TRAIT_GUN_LIGHT_FORCE_DEACTIVATED, WEAKREF(user)))
 			force_light(on = TRUE)
 			REMOVE_TRAIT(src, TRAIT_GUN_LIGHT_FORCE_DEACTIVATED, WEAKREF(user))
@@ -603,39 +600,78 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	update_mag_overlay()
 	update_attachables()
 
+// procedure for fetching properly formatted gun examines, for the most part
+/obj/item/weapon/gun/proc/ammo_desc(mob/user)
+	var/dat = ""
+	var/adjacent = user && Adjacent(user)
+	if(flags_gun_features & GUN_INTERNAL_MAG)
+		if(!has_open_icon && current_mag)
+			if(flags_gun_features & GUN_AMMO_COUNTER)
+				if(adjacent)
+					dat += SPAN_NOTICE("Ammo counter shows [SPAN_BOLD(SPAN_ORANGE(current_mag.current_rounds))] round[current_mag.current_rounds == 1 ? "" : "s"] remaining with [in_chamber ? SPAN_HELPFUL("a [in_chamber.name]") : SPAN_RED("nothing")] chambered.<br>")
+				else
+					dat += SPAN_NOTICE("Ammo counter shows [SPAN_BOLD(SPAN_ORANGE(current_mag.current_rounds))] round[current_mag.current_rounds == 1 ? "" : "s"] remaining.<br>")
+			else
+				if(adjacent)
+					dat += SPAN_NOTICE((in_chamber ? "It has [SPAN_ORANGE("a [in_chamber.name]")] chambered." : "It's [SPAN_RED("empty")].") + "<br>") // kind of annoying but w/e, this entire codeblock has been pretty annoying
+	else
+		if(current_mag)
+			if(flags_gun_features & GUN_AMMO_COUNTER)
+				if(adjacent)
+					dat += SPAN_NOTICE("Ammo counter shows [SPAN_BOLD(SPAN_ORANGE(current_mag.current_rounds))] round[current_mag.current_rounds == 1 ? "" : "s"] remaining with [in_chamber ? SPAN_HELPFUL("a [in_chamber.name]") : SPAN_RED("nothing")] chambered.<br>")
+				else
+					dat += SPAN_NOTICE("Ammo counter shows [SPAN_BOLD(SPAN_ORANGE(current_mag.current_rounds))] round[current_mag.current_rounds == 1 ? "" : "s"] remaining.<br>")
+			else
+				if(adjacent)
+					if(current_mag.current_rounds > 0)
+						dat += SPAN_NOTICE("It's loaded[in_chamber ? " and has [SPAN_ORANGE("a [in_chamber.name]")] chambered" : ", but [SPAN_RED("nothing")] is chambered"].<br>")
+					else
+						dat += SPAN_NOTICE("It's [SPAN_RED("unloaded")][in_chamber ? " but has [SPAN_ORANGE("a [in_chamber.name]")] chambered" : ""].<br>")
+				else
+					dat += SPAN_NOTICE("It's loaded with a magazine.<br>")
+		else
+			if(adjacent)
+				dat += SPAN_NOTICE("It's [SPAN_RED("unloaded")][in_chamber ? " but has [SPAN_ORANGE("a [in_chamber.name]")] chambered" : ""].<br>")
+			else
+				dat += SPAN_NOTICE("It's [SPAN_RED("unloaded")].<br>")
+	return dat
+
 /obj/item/weapon/gun/get_examine_text(mob/user)
 	. = ..()
 	if(flags_gun_features & GUN_NO_DESCRIPTION)
 		return .
 	var/dat = ""
-	if(flags_gun_features & GUN_TRIGGER_SAFETY)
-		dat += "The safety's on!<br>"
-	else
-		dat += "The safety's off!<br>"
+
+	if(!(flags_gun_features & GUN_UNUSUAL_DESIGN))
+		dat += ammo_desc(user)
 
 	for(var/slot in attachments)
 		var/obj/item/attachable/attached_attachment = attachments[slot]
 		if(!attached_attachment)
 			continue
-		dat += attached_attachment.handle_attachment_description()
+		dat += attached_attachment.handle_attachment_description(user)
 
-	if(!(flags_gun_features & (GUN_INTERNAL_MAG|GUN_UNUSUAL_DESIGN))) //Internal mags and unusual guns have their own stuff set.
-		if(current_mag && current_mag.current_rounds > 0)
-			if(flags_gun_features & GUN_AMMO_COUNTER)
-				dat += "Ammo counter shows [current_mag.current_rounds] round\s remaining.<br>"
-			else
-				dat += "It's loaded[in_chamber?" and has a round chambered":""].<br>"
+	if(user && Adjacent(user))
+		if(flags_gun_features & GUN_TRIGGER_SAFETY)
+			dat += SPAN_HELPFUL("The safety's on!<br>")
 		else
-			dat += "It's unloaded[in_chamber?" but has a round chambered":""].<br>"
+			dat += SPAN_RED("The safety's off!<br>")
 
 	if(!unacidable && !explo_proof)
-		dat += "It looks like it [has_second_wind ? SPAN_GREEN("can") : SPAN_RED("can no longer")] survive a significant attack.<br>"
+		dat += SPAN_INFO("It looks like it [has_second_wind ? SPAN_GREEN("can") : SPAN_RED("can no longer")] survive a significant attack.<br>")
 
 	if(!(flags_gun_features & GUN_UNUSUAL_DESIGN))
 		dat += "<a href='byond://?src=\ref[src];list_stats=1'>\[See combat statistics]</a>"
 
 	if(dat)
 		. += dat
+
+	if(flags_gun_features & GUN_TRICKSTER)
+		. += SPAN_NOTICE("You feel like tricks with it can be done easily.")
+		. += SPAN_INFO ("To perform tricks, swap on <span class='corp_label_blue'>disarm</span> intent.")
+
+	if(flags_gun_features & GUN_CAN_WARNING_SHOT)
+		. += SPAN_INFO ("To perform a warning shot, swap on <span class='corp_label_yellow'>grab</span> intent.")
 
 /obj/item/weapon/gun/Topic(href, href_list)
 	. = ..()
@@ -645,6 +681,10 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		return
 
 	if(href_list["list_stats"]&& !(flags_gun_features & GUN_UNUSUAL_DESIGN))
+		var/obj/item/weapon/gun/revolver/current_revolver = src
+		if(istype(current_revolver) && current_revolver.russian_roulette)
+			to_chat(usr, SPAN_WARNING("You can't check the stats while playing Russian Roulette!"))
+			return
 		tgui_interact(usr)
 
 // TGUI GOES HERE \\
@@ -660,6 +700,10 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 /obj/item/weapon/gun/ui_data(mob/user)
 	var/list/data = list()
+
+	var/obj/item/weapon/gun/revolver/current_revolver = src
+	if(istype(current_revolver) && current_revolver.russian_roulette)
+		return data // essentially freezes the ui until russian roulette is over
 
 	var/ammo_name = "bullet"
 	var/damage = 0
@@ -698,11 +742,11 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 		damage = in_ammo.damage * damage_mult
 		bonus_projectile_amount = in_ammo.bonus_projectiles_amount
-		falloff = in_ammo.damage_falloff * damage_falloff_mult
+		falloff = max(0, in_ammo.damage_falloff * damage_falloff_mult)
 
 		penetration = in_ammo.penetration
 
-		accuracy = in_ammo.accurate_range
+		accuracy = in_ammo.accurate_range // not to be confused with the accuracy variable, as it contains the rest of the buffs that accurate_range does not calculate
 
 		min_accuracy = in_ammo.accurate_range_min
 
@@ -795,6 +839,15 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	if(loc != user)
 		return
 
+	if(user.get_active_hand() != src) // obviously this isnt the case, but this is required for toggle_wield_assist shenanigans
+		if(gun_timer_id)
+			deltimer(gun_timer_id)
+			gun_timer_id = null
+
+			to_chat(user, SPAN_WARNING("You stop trying to wield \the [src]."))
+
+		return
+
 	if(world.time < pull_time) //Need to wait until it's pulled out to aim
 		if(user.client?.prefs?.toggle_prefs & TOGGLE_WIELD_ASSIST)
 			if(gun_timer_id)
@@ -881,15 +934,15 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 /obj/item/weapon/gun/proc/replace_ammo(mob/user = null, obj/item/ammo_magazine/magazine)
 	if(!magazine.default_ammo)
 		to_chat(user, "Something went horribly wrong. Ahelp the following: ERROR CODE A1: null ammo while reloading.")
-		log_debug("ERROR CODE A1: null ammo while reloading. User: <b>[user]</b> Weapon: <b>[src]</b> Magazine: <b>[magazine]</b>")
+		log_debug("ERROR CODE A1: null ammo while reloading. User: [SPAN_BOLD(user)] Weapon: [SPAN_BOLD(src)] Magazine: [SPAN_BOLD(magazine)]")
 		ammo = GLOB.ammo_list[/datum/ammo/bullet] //Looks like we're defaulting it.
 	else
 		ammo = GLOB.ammo_list[magazine.default_ammo]
 	if(!magazine.caliber)
 		to_chat(user, "Something went horribly wrong. Ahelp the following: ERROR CODE A2: null calibre while reloading.")
-		log_debug("ERROR CODE A2: null calibre while reloading. User: <b>[user]</b> Weapon: <b>[src]</b> Magazine: <b>[magazine]</b>")
+		log_debug("ERROR CODE A2: null calibre while reloading. User: [SPAN_BOLD(user)] Weapon: [SPAN_BOLD(src)] Magazine: [SPAN_BOLD(magazine)]")
 		caliber = "bugged calibre"
-	else
+	else if(!islist(caliber)) // if a gun is already assigned as a list, then you dont really need to update it obviously
 		caliber = magazine.caliber
 
 //Hardcoded and horrible
@@ -956,12 +1009,20 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 /obj/item/weapon/gun/proc/insert_bullet(mob/user)
 	if(!current_mag && !in_chamber)
 		var/obj/item/ammo_magazine/handful/bullet = user.get_active_hand()
-		if(istype(bullet) && bullet.caliber == caliber)
+		var/match = FALSE
+		// evil and foreboding bullet matching code for list calibers
+		if(istype(bullet))
+			if(islist(bullet.caliber))
+				match = islist(caliber) ? length(bullet.caliber & caliber) : (caliber in bullet.caliber)
+			else
+				match = islist(caliber) ? (bullet.caliber in caliber) : (bullet.caliber == caliber)
+
+		if(match)
 			if(bullet.current_rounds > 0)
 				in_chamber = create_bullet(bullet.ammo_source, initial(name))
 				apply_traits(in_chamber)
 				user.visible_message(SPAN_NOTICE(("[user] loads a [bullet.singular_name] into [src]'s chamber!")),
-					SPAN_NOTICE(("You load a [bullet.singular_name] into [src]'s chamber.")))
+					SPAN_NOTICE(("You load a [SPAN_ORANGE(bullet.singular_name)] into [src]'s chamber.")))
 				bullet.current_rounds--
 				bullet.update_icon()
 				if(bullet.current_rounds <= 0)
@@ -1009,13 +1070,29 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 	update_icon()
 
 ///Unload a chambered round, if one exists, and empty the chamber.
-/obj/item/weapon/gun/proc/unload_chamber(mob/user)
+/obj/item/weapon/gun/proc/unload_chamber(mob/user, force_hand = FALSE)
 	if(!in_chamber)
 		return
 
 	var/ammo_type = get_ammo_type_chambered(user)
+	var/bullet_caliber = caliber
+	if(islist(bullet_caliber))
+		var/found_caliber = FALSE
+		if(current_mag && current_mag.default_ammo == ammo_type)
+			bullet_caliber = current_mag.caliber
+			found_caliber = TRUE
+		else
+			for(var/mag_type in accepted_ammo)
+				var/obj/item/ammo_magazine/mag = mag_type
+				if(mag.default_ammo == ammo_type)
+					bullet_caliber = mag.caliber
+					found_caliber = TRUE
+					break
+		if(!found_caliber && length(caliber))
+			bullet_caliber = caliber[1]
+
 	var/obj/item/ammo_magazine/handful/new_handful = new()
-	new_handful.generate_handful(ammo_type, caliber, 8, 1, type)
+	new_handful.generate_handful(ammo_type, bullet_caliber, 1, type)
 
 	for(var/obj/item/ammo_magazine/handful/hand in user.get_hands())
 		if(hand.default_ammo == new_handful.default_ammo && hand.current_rounds < hand.max_rounds) // fetching the caliber was somewhat redundant, and honestly seemed safer to just fetch default_ammo overall
@@ -1025,7 +1102,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 			break
 
 	if(new_handful)
-		if(user.client?.prefs?.toggle_prefs & TOGGLE_COCKING_TO_HAND)
+		if(force_hand || (user.client?.prefs?.toggle_prefs & TOGGLE_COCKING_TO_HAND))
 			user.put_in_hands(new_handful)
 		else
 			new_handful.forceMove(get_turf(src)) // just drop it
@@ -1147,7 +1224,7 @@ and you're good to go.
 /obj/item/weapon/gun/proc/create_bullet(datum/ammo/chambered, bullet_source)
 	if(!chambered)
 		to_chat(usr, "Something has gone horribly wrong. Ahelp the following: ERROR CODE I2: null ammo while create_bullet()")
-		log_debug("ERROR CODE I2: null ammo while create_bullet(). User: <b>[usr]</b> Weapon: <b>[src]</b> Magazine: <b>[current_mag]</b>")
+		log_debug("ERROR CODE I2: null ammo while create_bullet(). User: [SPAN_BOLD(usr)] Weapon: [SPAN_BOLD(src)] Magazine: [SPAN_BOLD(current_mag)]")
 		chambered = GLOB.ammo_list[/datum/ammo/bullet] //Slap on a default bullet if somehow ammo wasn't passed.
 
 	var/weapon_source_mob = null
@@ -1173,14 +1250,15 @@ and you're good to go.
 
 			// This is where the magazine is auto-ejected
 			if(current_mag.current_rounds <= 0 && flags_gun_features & GUN_AUTO_EJECTOR)
-				if (user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_OFF))
+				if((user.client?.prefs?.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_OFF))
 					update_icon()
-				else if (!(flags_gun_features & GUN_BURST_FIRING) || !in_chamber) // Magazine will only unload once burstfire is over
+				else
 					var/drop_to_ground = TRUE
-					if (user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND))
-						drop_to_ground = FALSE
-						unwield(user)
-						user.swap_hand()
+					if(user.client?.prefs?.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND)
+						if(!(flags_gun_features & GUN_BURST_FIRING) || ((flags_gun_features & GUN_BURST_FIRING) && burst_amount >= shots_fired)) //Don't mess with our hands if we're not done with the burst yet.
+							drop_to_ground = FALSE
+							unwield(user)
+							user.swap_hand()
 					unload(user, TRUE, drop_to_ground) // We want to quickly autoeject the magazine. This proc does the rest based on magazine type. User can be passed as null.
 					playsound(src, empty_sound, 25, 1)
 					SEND_SIGNAL(user, COMSIG_MOB_GUN_EMPTY, src)
@@ -1214,7 +1292,7 @@ and you're good to go.
 	set waitfor = FALSE
 
 	if(!gun_user)
-		gun_user = user
+		set_gun_user(user)
 
 	// Check if watching a ladder
 	if(user.interactee && istype(user.interactee, /obj/structure/ladder))
@@ -1223,7 +1301,7 @@ and you're good to go.
 			to_chat(user, SPAN_WARNING("You can't shoot while looking from the ladder!"))
 			return NONE
 
-	if(!able_to_fire(user) || !target || !get_turf(user) || !get_turf(target))
+	if(!able_to_fire(user) || !target || !get_turf(user) || !get_turf(target) || user.contains(target))
 		return NONE
 
 	/*
@@ -1241,8 +1319,8 @@ and you're good to go.
 				to_chat(user, SPAN_NOTICE("You disable [active_attachable]."))
 				active_attachable.activate_attachment(src, null, TRUE)
 			else
-				active_attachable.fire_attachment(target, src, user) //Fire it.
-				active_attachable.last_fired = world.time
+				if(active_attachable.fire_attachment(target, src, user)) //Fire it.
+					active_attachable.last_fired = world.time
 			return NONE
 			//If there's more to the attachment, it will be processed farther down, through in_chamber and regular bullet act.
 	/*
@@ -1266,6 +1344,9 @@ and you're good to go.
 			dual_wield = TRUE //increases recoil, increases scatter, and reduces accuracy.
 
 	var/fire_return = handle_fire(target, user, params, reflex, dual_wield, check_for_attachment_fire, akimbo, fired_by_akimbo)
+	if((gun_firemode == GUN_FIREMODE_AUTOMATIC && current_mag?.current_rounds % 8 == 0) || (gun_firemode == GUN_FIREMODE_BURSTFIRE && burst_amount <= shots_fired) || gun_firemode == GUN_FIREMODE_SEMIAUTO)
+		display_ammo(user)
+
 	if(!fire_return)
 		return fire_return
 
@@ -1332,7 +1413,7 @@ and you're good to go.
 	//Finally, make with the pew pew!
 	if(QDELETED(projectile_to_fire) || !isobj(projectile_to_fire))
 		to_chat(user, "ERROR CODE I1: Gun malfunctioned due to invalid chambered projectile, clearing it. AHELP if this persists.")
-		log_debug("ERROR CODE I1: projectile malfunctioned while firing. User: <b>[user]</b> Weapon: <b>[src]</b> Magazine: <b>[current_mag]</b>")
+		log_debug("ERROR CODE I1: projectile malfunctioned while firing. User: [SPAN_BOLD(user)] Weapon: [SPAN_BOLD(src)] Magazine: [SPAN_BOLD(current_mag)]")
 		flags_gun_features &= ~GUN_BURST_FIRING
 		in_chamber = null
 		click_empty(user)
@@ -1351,7 +1432,7 @@ and you're good to go.
 		if(before_fire_cancel & COMPONENT_HARD_CANCEL_GUN_BEFORE_FIRE)
 			return NONE
 
-	apply_bullet_effects(projectile_to_fire, user, reflex, dual_wield) //User can be passed as null.
+	apply_bullet_effects(projectile_to_fire, user, target, reflex, dual_wield) //User can be passed as null.
 	SEND_SIGNAL(projectile_to_fire, COMSIG_BULLET_USER_EFFECTS, user)
 
 	projectile_to_fire.firer = user
@@ -1399,7 +1480,7 @@ and you're good to go.
 		return TRUE //Nothing else to do here, time to cancel out.
 	return TRUE
 
-#define EXECUTION_CHECK (attacked_mob.stat == UNCONSCIOUS || attacked_mob.is_mob_restrained()) && ((user.a_intent == INTENT_GRAB)||(user.a_intent == INTENT_DISARM))
+#define EXECUTION_CHECK (attacked_mob.stat == UNCONSCIOUS || attacked_mob.is_mob_restrained()) && (user.zone_selected=="head") && ((user.a_intent == INTENT_DISARM) || (user.a_intent == INTENT_GRAB))
 
 /obj/item/weapon/gun/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	if(!proximity_flag)
@@ -1420,6 +1501,16 @@ and you're good to go.
 	if(!(flags_gun_features & GUN_CAN_POINTBLANK)) // If it can't point blank, you can't suicide and such.
 		return ..()
 
+	if(attacked_mob != user) // i found this out the hard way
+		var/can_battlefield_execute = (user.zone_selected in list("head", "eyes", "mouth")) // apparently i cant do this inline of the check itself so whatever
+		if((flags_gun_features & GUN_BATTLEFIELD_EXECUTION) && can_battlefield_execute && ishuman(user) && user.a_intent == INTENT_HARM) // skillcheck not included here, since start_fire already handles the initial checks, and the rest are just in case by this point
+			if(user.action_busy)
+				to_chat(user, SPAN_WARNING("You are a bit preoccupied to execute someone at the moment."))
+				return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
+
+			handle_battlefield_execution(user, attacked_mob)
+			return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
+
 	if(attacked_mob == user && user.zone_selected == "mouth" && ishuman(user))
 		if(user.action_busy)
 			to_chat(user, SPAN_WARNING("You are a bit preoccupied to commit suicide at the moment."))
@@ -1436,8 +1527,7 @@ and you're good to go.
 		user.visible_message(SPAN_DANGER("[user] puts [src] up to [attacked_mob], steadying their aim."), SPAN_WARNING("You put [src] up to [attacked_mob], steadying your aim."),null, null, CHAT_TYPE_COMBAT_ACTION)
 		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|INTERRUPT_DIFF_INTENT, BUSY_ICON_HOSTILE))
 			return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
-
-	else if(user.a_intent != INTENT_HARM) //Thwack them
+	else if(user.a_intent != INTENT_HARM && user.a_intent != INTENT_DISARM) //Thwack them
 		return ..()
 
 	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_attacking_corpses) && attacked_mob.stat == DEAD) // don't shoot dead people
@@ -1502,11 +1592,6 @@ and you're good to go.
 				if(before_fire_cancel & COMPONENT_HARD_CANCEL_GUN_BEFORE_FIRE)
 					return NONE
 
-		if(SEND_SIGNAL(projectile_to_fire.ammo, COMSIG_AMMO_POINT_BLANK, attacked_mob, projectile_to_fire, user, src) & COMPONENT_CANCEL_AMMO_POINT_BLANK)
-			flags_gun_features &= ~GUN_BURST_FIRING
-			return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
-
-
 		//We actually have a projectile, let's move on. We're going to simulate the fire cycle.
 		if(projectile_to_fire.ammo.on_pointblank(attacked_mob, projectile_to_fire, user, src))
 			flags_gun_features &= ~GUN_BURST_FIRING
@@ -1519,11 +1604,15 @@ and you're good to go.
 			damage_buff += BULLET_DAMAGE_MULT_TIER_4
 		projectile_to_fire.damage *= damage_buff //Multiply the damage for point blank.
 		if(bullets_fired == 1) //First shot gives the PB message.
-			user.visible_message(SPAN_DANGER("[user] fires [src] point blank at [attacked_mob]!"),
-				SPAN_WARNING("You fire [src] point blank at [attacked_mob]!"), null, null, CHAT_TYPE_WEAPON_USE)
+			if(user == attacked_mob)
+				user.visible_message(SPAN_DANGER("[user] fires [src] point blank at themselves!"),
+					SPAN_WARNING("You fire [src] point blank at yourself!"), null, null, CHAT_TYPE_WEAPON_USE)
+			else
+				user.visible_message(SPAN_DANGER("[user] fires [src] point blank at [attacked_mob]!"),
+					SPAN_WARNING("You fire [src] point blank at [attacked_mob]!"), null, null, CHAT_TYPE_WEAPON_USE)
 
 		user.track_shot(initial(name))
-		apply_bullet_effects(projectile_to_fire, user, bullets_fired, dual_wield) //We add any damage effects that we need.
+		apply_bullet_effects(projectile_to_fire, user, target, bullets_fired, dual_wield) //We add any damage effects that we need.
 
 		SEND_SIGNAL(projectile_to_fire, COMSIG_BULLET_USER_EFFECTS, user)
 		SEND_SIGNAL(user, COMSIG_BULLET_DIRECT_HIT, attacked_mob)
@@ -1544,8 +1633,8 @@ and you're good to go.
 				BP.accuracy = floor(BP.accuracy * projectile_to_fire.accuracy/initial(projectile_to_fire.accuracy)) //Modifies accuracy of pellets per fire_bonus_projectiles.
 				BP.damage *= damage_buff * damage_mult
 
-				BP.bonus_projectile_check = 2
-				projectile_to_fire.bonus_projectile_check = 1
+				BP.bonus_projectile_check = PROJECTILE_BONUS
+				projectile_to_fire.bonus_projectile_check = PROJECTILE_ORIGINAL
 
 				projectile_to_fire.give_bullet_traits(BP)
 				if(bullets_fired > 1)
@@ -1686,13 +1775,13 @@ and you're good to go.
 		var/time
 		var/datum/cause_data/cause_data
 		if(projectile_to_fire.ammo.damage <= 0)
-			time += "\[[time_stamp()]\] <b>[key_name(user)]</b> tried to commit suicide with a [name]"
+			time += "\[[time_stamp()]\] [SPAN_BOLD(key_name(user))] tried to commit suicide with a [name]"
 			cause_data = create_cause_data("failed suicide by [initial(name)]")
 			to_chat(user, SPAN_HIGHDANGER("Ow..."))
-			msg_admin_ff("[key_name(user)] tried to commit suicide with a [name] in [get_area(user)] [ffl]")
+			msg_admin_ff("[key_name(user)] tried to commit suicide with a [name] in [get_area(user)] [ffl]", TRUE, user.loc.z)
 			user.apply_damage(200, HALLOSS)
 		else
-			time += "\[[time_stamp()]\] <b>[key_name(user)]</b> committed suicide with <b>[src]</b>" //Log it.
+			time += "\[[time_stamp()]\] [SPAN_BOLD(key_name(user))] committed suicide with [SPAN_BOLD(src)]" //Log it.
 			cause_data = create_cause_data("suicide by [initial(name)]")
 			var/used_weapon_text = "Point blank shot in the mouth with \a [projectile_to_fire]"
 			var/admin_msg = "[key_name(user)] committed suicide with \a [name] in [get_area(user)] [ffl]"
@@ -1704,7 +1793,7 @@ and you're good to go.
 				admin_msg = "[key_name(user)] lost at Russian Roulette with \a [name] in [get_area(user)] [ffl]"
 
 			var/obj/limb/head = user.get_limb("head") // carnage
-			if(projectile_to_fire.ammo.bonus_projectiles_type || projectile_to_fire.ammo.flags_ammo_behavior == AMMO_EXPLOSIVE || projectile_to_fire.ammo.damage >= 80)
+			if(projectile_to_fire.ammo.bonus_projectiles_type || projectile_to_fire.ammo.flags_ammo_behavior == AMMO_EXPLOSIVE || (projectile_to_fire.ammo.damage * damage_mult) >= 80)
 				user.visible_message(SPAN_HIGHDANGER(uppertext("[user]'s head explodes into a cloud of blood and bone by their [name], oh God.")))
 				head.droplimb(FALSE, TRUE)
 				user.spawn_gibs()
@@ -1714,7 +1803,7 @@ and you're good to go.
 			user.apply_damage(projectile_to_fire.damage * 3, projectile_to_fire.ammo.damage_type, "head", used_weapon = used_weapon_text, no_limb_loss = TRUE, permanent_kill = TRUE)
 			user.apply_damage(200, OXY) //Fill out the rest of their healthbar.
 			user.death(cause_data) //Make sure they're dead. permanent_kill above will make them unrevivable.
-			msg_admin_ff(admin_msg)
+			msg_admin_ff(admin_msg, FALSE, user.loc.z)
 			to_chat(user, SPAN_HIGHDANGER("Your life flashes before you as your spirit is torn from your body!"))
 
 		user.last_damage_data = cause_data
@@ -1861,9 +1950,9 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	var/dry_fire_text
 	var/obj/item/weapon/gun/current_gun = src
 	if(istype(current_gun, /obj/item/weapon/gun/flamer))
-		dry_fire_text = "<b>*pshhhh*</b>"
+		dry_fire_text = SPAN_BOLD("*pshhhh*")
 	else
-		dry_fire_text = "<b>*click*</b>"
+		dry_fire_text = SPAN_BOLD("*click*")
 
 	if(user)
 		to_chat(user, SPAN_WARNING(dry_fire_text))
@@ -1877,18 +1966,21 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if(active_attachable)
 		return
 
-	if(!user)
-		user = gun_user
+	if(!current_mag)
+		return
 
-	if(flags_gun_features & GUN_AMMO_COUNTER && current_mag)
+	if(!user)
+		return
+
+	if(flags_gun_features & GUN_AMMO_COUNTER)
 		// toggleable spam control.
-		if(user.client.prefs.toggle_prefs & TOGGLE_AMMO_DISPLAY_TYPE && gun_firemode == GUN_FIREMODE_SEMIAUTO && current_mag.current_rounds % 5 != 0 && current_mag.current_rounds > 15)
+		if(user.client?.prefs?.toggle_prefs & TOGGLE_AMMO_DISPLAY_TYPE && gun_firemode == GUN_FIREMODE_SEMIAUTO && current_mag.current_rounds % 5 != 0 && current_mag.current_rounds > 15)
 			return
 		var/chambered = in_chamber ? TRUE : FALSE
-		to_chat(user, SPAN_DANGER("[current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] ROUNDS REMAINING."))
+		to_chat(user, SPAN_DANGER("[current_mag.current_rounds][chambered ? " + 1" : ""] / [current_mag.max_rounds] ROUNDS REMAINING."))
 
 //This proc applies some bonus effects to the shot/makes the message when a bullet is actually fired.
-/obj/item/weapon/gun/proc/apply_bullet_effects(obj/projectile/projectile_to_fire, mob/user, reflex = 0, dual_wield = 0)
+/obj/item/weapon/gun/proc/apply_bullet_effects(obj/projectile/projectile_to_fire, mob/user, atom/target, reflex = 0, dual_wield = 0)
 	if(wield_delay > 0 && (world.time < wield_time || world.time < pull_time))
 		var/old_time = max(wield_time, pull_time) - wield_delay
 		var/new_time = world.time
@@ -1903,7 +1995,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	projectile_to_fire.damage = round(projectile_to_fire.damage * damage_mult, 0.1) // Apply gun damage multiplier to projectile damage
 
 	// Apply effective range and falloffs/buildups
-	projectile_to_fire.damage_falloff = damage_falloff_mult * projectile_to_fire.ammo.damage_falloff
+	projectile_to_fire.damage_falloff = max(0, damage_falloff_mult * projectile_to_fire.ammo.damage_falloff)
 	projectile_to_fire.damage_buildup = damage_buildup_mult * projectile_to_fire.ammo.damage_buildup
 
 	projectile_to_fire.effective_range_min = effective_range_min + projectile_to_fire.ammo.effective_range_min //Add on ammo-level value, if specified.
@@ -2186,15 +2278,13 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 	if(gun_firemode == GUN_FIREMODE_AUTOMATIC)
 		reset_fire()
-		display_ammo()
+		display_ammo(gun_user)
+	else if(gun_firemode == GUN_FIREMODE_BURSTFIRE && (flags_gun_features & GUN_BURST_FIRING))
+		return
 	SEND_SIGNAL(src, COMSIG_GUN_STOP_FIRE)
 
 /obj/item/weapon/gun/proc/set_gun_user(mob/to_set)
 	if(to_set == gun_user)
-		if(!(comp_lookup[COMSIG_MOB_MOUSEDOWN]) && to_set)
-			RegisterSignal(gun_user, COMSIG_MOB_MOUSEDOWN, PROC_REF(start_fire))
-			RegisterSignal(gun_user, COMSIG_MOB_MOUSEDRAG, PROC_REF(change_target))
-			RegisterSignal(gun_user, COMSIG_MOB_MOUSEUP, PROC_REF(stop_fire))
 		return
 	if(gun_user)
 		UnregisterSignal(gun_user, list(COMSIG_MOB_MOUSEUP, COMSIG_MOB_MOUSEDOWN, COMSIG_MOB_MOUSEDRAG))
@@ -2219,32 +2309,54 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	gun_user?.face_atom(target)
 
 ///Check if the gun can fire and add it to bucket auto_fire system if needed, or just fire the gun if not
+/// SIGNAL_HANDLER for COMSIG_MOB_MOUSEDOWN
 /obj/item/weapon/gun/proc/start_fire(datum/source, atom/object, turf/location, control, params, bypass_checks = FALSE)
 	SIGNAL_HANDLER
 
+	if(!gun_user)
+		set_gun_user(source)
+
 	var/list/modifiers = params2list(params)
-	if(modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[RIGHT_CLICK] || modifiers[BUTTON4] || modifiers[BUTTON5])
-		return
+	if(modifiers[CTRL_CLICK] || modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[RIGHT_CLICK] || modifiers[BUTTON4] || modifiers[BUTTON5])
+		return FALSE
 
 	// Don't allow doing anything else if inside a container of some sort, like a locker.
 	if(!isturf(gun_user.loc))
-		return
+		return FALSE
 
 	if(istype(object, /atom/movable/screen))
-		return
+		return FALSE
 
 	if(!bypass_checks)
-		if(gun_user.hand && !isgun(gun_user.l_hand) || !gun_user.hand && !isgun(gun_user.r_hand)) // If the object in our active hand is not a gun, abort
-			return
+		if(gun_user.get_active_hand() != src) // If the object in our active hand is not this gun, abort, also shouldn't ever
+			return FALSE
 
 		if(gun_user.throw_mode)
-			return
+			return FALSE
 
-		if(gun_user.Adjacent(object)) //Dealt with by attack code
-			return
+		if(gun_user.Adjacent(object))
+			if((gun_user.a_intent != INTENT_HARM) || gun_user.loc == get_turf(object)) //Dealt with by click.adjacent/attack code
+				return FALSE
+
+			if(HAS_TRAIT(src, TRAIT_GUN_BAYONET))
+				if(isturf(object))
+					var/turf/turf_flag_check = object
+					if(turf_flag_check.turf_flags & TURF_ORGANIC)
+						return FALSE
+				if(isobj(object))
+					var/obj/object_flag_check = object
+					if(object_flag_check.flags_obj & OBJ_ORGANIC)
+						if(!(istypestrict(object, /obj/effect/alien/weeds)))
+							return FALSE
+
+			if(isliving(object))
+				if(flags_gun_features & GUN_BATTLEFIELD_EXECUTION)
+					var/can_battlefield_execute = (gun_user.zone_selected in list("head", "eyes", "mouth"))
+					if(can_battlefield_execute && ishuman(gun_user) && gun_user.a_intent == INTENT_HARM && skillcheck(gun_user, SKILL_EXECUTION, SKILL_EXECUTION_TRAINED))
+						return FALSE
 
 	if(QDELETED(object))
-		return
+		return FALSE
 
 	if(gun_user.client?.prefs?.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY && (gun_user.a_intent == INTENT_HELP))
 		if(world.time % 3) // Limits how often this message pops up, saw this somewhere else and thought it was clever
@@ -2255,11 +2367,13 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 	set_target(get_turf_on_clickcatcher(object, gun_user, params))
 	if((gun_firemode == GUN_FIREMODE_SEMIAUTO) || active_attachable)
-		Fire(object, gun_user, modifiers)
-		reset_fire()
-		display_ammo()
-		return
+		if(Fire(object, gun_user, modifiers))
+			reset_fire()
+		return COMSIG_MOB_CLICK_HANDLED
+	else if(gun_firemode == GUN_FIREMODE_BURSTFIRE && (flags_gun_features & GUN_BURST_FIRING))
+		return FALSE
 	SEND_SIGNAL(src, COMSIG_GUN_FIRE)
+	return COMSIG_MOB_CLICK_HANDLED
 
 /// Wrapper proc for the autofire subsystem to ensure the important args aren't null
 /obj/item/weapon/gun/proc/fire_wrapper(atom/target, mob/living/user, params, reflex = FALSE, dual_wield)
@@ -2280,78 +2394,6 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 /// Getter for gun_user
 /obj/item/weapon/gun/proc/get_gun_user()
 	return gun_user
-
-/obj/item/weapon/gun/proc/fire_into_air(mob/user)
-	if(!user || !isturf(user.loc))
-		return
-
-	var/turf/gun_turf = user.loc
-	var/area/gun_area = gun_turf.loc
-
-	if(user.a_intent < INTENT_GRAB)
-		return TRUE
-
-	if(!skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_MASTER)) // XO and CO
-		return TRUE
-
-	user.visible_message(SPAN_DANGER(uppertext("[user] AIMS THEIR [name] INTO THE AIR...")),
-	SPAN_DANGER(uppertext("YOU AIM YOUR [name] INTO THE AIR...")))
-
-	if(user.action_busy)
-		return
-
-	if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-		return
-
-	// this code block handles when the gun is actually 'fired'
-	if(flags_gun_features & GUN_TRIGGER_SAFETY) // i mean it HAS to be a deliberate action to be on safety like this right
-		user.visible_message(SPAN_HIGHDANGER(uppertext("...but [user] just leaves the [name] raised in the air...")),
-	SPAN_HIGHDANGER(uppertext("...but you leave the [name] raised in the air as a warning, not like you can fire it when it's on safety anyway...")))
-		return
-
-	if(flags_gun_features & GUN_INTERNAL_MAG)
-		if(!current_mag.chamber_closed)
-			user.visible_message(SPAN_HIGHDANGER(uppertext("...but the [name] refuses to fire due to the cylinder being open, embarassing...")),
-	SPAN_HIGHDANGER(uppertext("...but your [name] refuses to fire due to the cylinder being open, embarassing...")))
-			return
-
-		if(!current_mag || !current_mag.current_rounds || (current_mag.chamber_contents[current_mag.chamber_position] in list("empty", "blank"))) // pain in my ass
-			click_empty(user)
-			user.visible_message(SPAN_HIGHDANGER(uppertext("...but the [name] dry fires with a resolute click! Embarassing...")),
-	SPAN_HIGHDANGER(uppertext("...but your [name] dry fires with quite the authoratitively embarassing click...")))
-			balloon_alert_to_viewers("<b>*click*</b>")
-			var/obj/item/weapon/gun/revolver/revolver = src // snowflake check but whatever, revolvers are pretty snowflakey for most implementations anyway
-			if(revolver)
-				revolver.rotate_cylinder(user)
-			return
-
-		reload_into_chamber(user)
-	else
-		if(!has_ammunition())
-			click_empty(user)
-			user.visible_message(SPAN_HIGHDANGER(uppertext("...but the [name] dry fires with a resolute click! Embarassing...")),
-	SPAN_HIGHDANGER(uppertext("...but your [name] dry fires with quite the authoratitively embarassing click...")))
-			balloon_alert_to_viewers("<b>*click*</b>")
-			return
-
-		in_chamber = null
-		ready_in_chamber() // obviously want to load the next round if any
-
-	if(gun_area.ceiling <= CEILING_GLASS)
-		gun_turf.ceiling_debris()
-
-	user.visible_message(SPAN_HIGHDANGER(uppertext("[user] FIRES THEIR [name] INTO THE AIR!")),
-	SPAN_HIGHDANGER(uppertext("YOU FIRE YOUR [name] INTO THE AIR!")))
-
-	playsound(user, fire_sound, 120, FALSE)
-
-	FOR_DVIEW(var/mob/mob, world.view, user, HIDE_INVISIBLE_OBSERVER)
-		if(mob && mob.client)
-			if(ishuman(mob))
-				shake_camera(mob, 3, 4)
-	FOR_DVIEW_END
-
-	update_icon()
 
 /obj/item/weapon/gun/animation_spin(speed, loop_amount, clockwise, sections, angular_offset, pixel_fuzz)
 	if(!temp_icon)
@@ -2393,3 +2435,226 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 			if(!explo_proof) // heavy explosions don't care if the weapon has it's protection left; else you'd get weird situations where OBs/yautja SD/etc leave damaged but working guns everywhere.
 				visible_message(SPAN_DANGER(SPAN_UNDERLINE("[src] [msg]")))
 				deconstruct(FALSE)
+
+// CO GUN STUFF
+
+/obj/item/weapon/gun/proc/fire_into_air(mob/user)
+	if(!user || !isturf(user.loc))
+		return
+
+	var/turf/gun_turf = user.loc
+	var/area/gun_area = gun_turf.loc
+
+	if(user.a_intent != INTENT_GRAB)
+		return TRUE
+
+	if(!skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_MASTER)) // XO and CO
+		return TRUE
+
+	user.visible_message(SPAN_DANGER(uppertext("[user] AIMS THEIR [name] INTO THE AIR...")),
+	SPAN_DANGER(uppertext("YOU AIM YOUR [name] INTO THE AIR...")))
+
+	if(user.action_busy)
+		return
+
+	if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		return
+
+	// this code block handles when the gun is actually 'fired'
+	if(flags_gun_features & GUN_TRIGGER_SAFETY) // i mean it HAS to be a deliberate action to be on safety like this right
+		user.visible_message(SPAN_HIGHDANGER(uppertext("...but [user] just leaves the [name] raised in the air...")),
+	SPAN_HIGHDANGER(uppertext("...but you leave the [name] raised in the air as a warning, not like you can fire it when it's on safety anyway...")))
+		return
+
+	if(flags_gun_features & GUN_INTERNAL_MAG)
+		if(!current_mag.chamber_closed)
+			user.visible_message(SPAN_HIGHDANGER(uppertext("...but the [name] refuses to fire due to the cylinder being open, embarassing...")),
+	SPAN_HIGHDANGER(uppertext("...but your [name] refuses to fire due to the cylinder being open, embarassing...")))
+			return
+
+	var/obj/projectile/projectile_to_fire = load_into_chamber(user)
+	if(!projectile_to_fire)
+		click_empty(user)
+		user.visible_message(SPAN_HIGHDANGER(uppertext("...but the [name] dry fires with a resolute click! Embarassing...")),
+			SPAN_HIGHDANGER(uppertext("...but your [name] dry fires with quite the authoratitively embarassing click...")))
+		balloon_alert_to_viewers("<b>*click*</b>")
+		return
+
+	QDEL_NULL(projectile_to_fire)
+	reload_into_chamber(user)
+
+	if(gun_area.ceiling <= CEILING_GLASS)
+		gun_turf.ceiling_debris()
+
+	user.visible_message(SPAN_HIGHDANGER(uppertext("[user] FIRES THEIR [name] INTO THE AIR!")),
+	SPAN_HIGHDANGER(uppertext("YOU FIRE YOUR [name] INTO THE AIR!")))
+
+	playsound(user, fire_sound, 120, FALSE)
+
+	var/datum/component/gun_hush/hush_comp = GetComponent(/datum/component/gun_hush)
+	FOR_DVIEW(var/mob/mob, world.view, user, HIDE_INVISIBLE_OBSERVER)
+		if(hush_comp?.hush_enabled && isliving(mob))
+			var/mob/living/audience = mob
+			if(!HAS_TRAIT(audience, TRAIT_LEADERSHIP) && !skillcheck(audience, SKILL_LEADERSHIP, SKILL_LEAD_TRAINED))
+				if(user.faction == audience.faction && !(audience.mob_flags & MUTINY_MUTINEER))
+					audience.set_hushed(10 DECISECONDS)
+					to_chat(audience, SPAN_WARNING("You hush yourself as [user] fires their [name] authoritatively!"))
+				else
+					to_chat(audience, SPAN_WARNING("You hear [user] firing their [name] authoritatively... but you don't particularly care for it."))
+
+		if(mob.client && ishuman(mob))
+			shake_camera(mob, 3, 4)
+	FOR_DVIEW_END
+
+	last_fired = world.time
+	SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src)
+
+	update_icon()
+
+/obj/item/weapon/gun/proc/handle_battlefield_execution(mob/living/user, mob/living/hit_mob)
+
+	if(!skillcheck(user, SKILL_EXECUTION, SKILL_EXECUTION_TRAINED)) // just in case
+		to_chat(user, SPAN_DANGER("You don't know how to execute someone correctly."))
+		return
+
+	var/mob/living/carbon/human/execution_target = hit_mob
+
+	if(execution_target.status_flags & PERMANENTLY_DEAD)
+		to_chat(user, SPAN_DANGER("[execution_target] looks to be pretty dead."))
+		return
+
+	user.affected_message(execution_target,
+		SPAN_HIGHDANGER("You aim the [src] at [execution_target]'s head!"),
+		SPAN_HIGHDANGER("[user] aims the [src] directly at your head!"),
+		SPAN_DANGER("[user] aims the [src] at [execution_target]'s head!"))
+
+	if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !user.Adjacent(execution_target))
+		return
+
+	if(flags_gun_features & GUN_TRIGGER_SAFETY)
+		user.visible_message(SPAN_HIGHDANGER(uppertext("...but [user] just holds the [name] against [execution_target]'s head...")),
+			SPAN_HIGHDANGER(uppertext("...but you just hold the [name] against [execution_target]'s head, realizing the safety is on...")))
+		return
+
+	if((flags_gun_features & GUN_INTERNAL_MAG) && !current_mag.chamber_closed)
+		user.visible_message(SPAN_HIGHDANGER(uppertext("...but the [name] refuses to fire due to the cylinder being open, embarassing...")),
+			SPAN_HIGHDANGER(uppertext("...but your [name] refuses to fire due to the cylinder being open, embarassing...")))
+		return
+
+	var/obj/projectile/projectile_to_fire = load_into_chamber(user)
+	if(!projectile_to_fire)
+		click_empty(user)
+		user.visible_message(SPAN_HIGHDANGER(uppertext("...but the [name] dry fires with a resolute click! Embarassing...")),
+			SPAN_HIGHDANGER(uppertext("...but your [name] dry fires with quite the authoratitively embarassing click...")))
+		balloon_alert_to_viewers("<b>*click*</b>")
+		return
+
+	var/actual_sound
+	if(active_attachable && active_attachable.fire_sound)
+		actual_sound = active_attachable.fire_sound
+	else if(!isnull(fire_sound))
+		actual_sound = fire_sound
+	else
+		actual_sound = pick(fire_sounds)
+
+	var/sound_volume = (flags_gun_features & GUN_SILENCED && !active_attachable) ? 25 : 60
+	playsound(user, actual_sound, sound_volume, 1)
+
+	simulate_recoil(2, user)
+
+	var/obj/limb/head = execution_target.get_limb("head")
+	if(projectile_to_fire.ammo.bonus_projectiles_type || projectile_to_fire.ammo.flags_ammo_behavior & AMMO_EXPLOSIVE || (projectile_to_fire.ammo.damage * damage_mult) >= 80)
+		execution_target.visible_message(SPAN_HIGHDANGER(uppertext("[execution_target]'s head explodes into a cloud of blood and bone by [user]'s [name], oh God.")),
+			SPAN_HIGHDANGER("Your head explodes into a cloud of blood and bone, goddamn.")) // lol
+		head.droplimb(FALSE, TRUE)
+		execution_target.spawn_gibs()
+	else
+		execution_target.update_headshot_overlay(projectile_to_fire.ammo.headshot_state) //...and add a gory headshot overlay.
+		FOR_DVIEW(var/mob/mob, world.view, user, HIDE_INVISIBLE_OBSERVER)
+			if(mob && mob.client)
+				if(ishuman(mob))
+					shake_camera(mob, 3, 4)
+		FOR_DVIEW_END
+
+	playsound(user, 'sound/effects/crackandbleed.ogg', 50, 1)
+
+	var/used_weapon_text = "Battlefield execution with \a [projectile_to_fire]"
+	execution_target.apply_damage(projectile_to_fire.ammo.damage * 3, projectile_to_fire.ammo.damage_type, "head", used_weapon = used_weapon_text, no_limb_loss = TRUE, permanent_kill = TRUE) //Apply gobs of damage and make sure they can't be revived later...
+	execution_target.apply_damage(200, OXY) //...fill out the rest of their health bar with oxyloss...
+	execution_target.death(create_cause_data("battlefield execution", user)) //...make certain they're properly dead...
+
+	execution_target.visible_message(SPAN_HIGHDANGER(uppertext("[execution_target] WAS EXECUTED!")),
+		SPAN_HIGHDANGER("You WERE EXECUTED!"))
+
+	user.count_niche_stat(STATISTICS_NICHE_EXECUTION, 1, projectile_to_fire.weapon_cause_data?.cause_name)
+
+	var/area/execution_area = get_area(execution_target)
+	msg_admin_ff("[key_name(user)] [ADMIN_JMP_USER(user)] [ADMIN_PM(user)] has [SPAN_BOLD("battlefield executed")] [key_name(execution_target)] [ADMIN_JMP(execution_target)] [ADMIN_PM(execution_target)] at [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]) using [src].")
+	log_attack("[key_name(user)] battlefield executed [key_name(execution_target)] at [execution_area.name].")
+
+	last_fired = world.time
+	SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src)
+
+	// so we actually expend a bullet this time, whaaaat
+	projectile_to_fire.play_hit_effect(execution_target)
+	QDEL_NULL(projectile_to_fire)
+	if(!active_attachable)
+		in_chamber = null
+	reload_into_chamber(user)
+
+/datum/component/gun_hush // yes im lazy to make another file in the components folder
+	var/hush_enabled = TRUE
+
+/datum/component/gun_hush/Initialize()
+	. = ..()
+	hush_enabled = TRUE
+	var/datum/action/item_action/gun_hush/hush_action = new(parent)
+	hush_action.update_button_icon()
+
+/datum/component/gun_hush/proc/toggle_hush(mob/user)
+	if(!skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_TRAINED))
+		to_chat(user, SPAN_WARNING("You do not have the authority required to hush your peers."))
+		return
+
+	hush_enabled = !hush_enabled
+	to_chat(user, SPAN_NOTICE("You toggle the hush function [hush_enabled ? "on" : "off"]."))
+	playsound(parent, 'sound/weapons/handling/safety_toggle.ogg', 25, 1, 6)
+
+	var/datum/action/item_action/gun_hush/action = locate() in parent:actions
+	if(action)
+		action.update_button_icon()
+
+/datum/action/item_action/gun_hush
+	action_icon_state = "hush_on"
+
+/datum/action/item_action/gun_hush/New(Target, obj/item/holder)
+	..()
+	name = "Toggle Gun Hushing"
+	button.name = name
+
+/datum/action/item_action/gun_hush/action_activate()
+	. = ..()
+	var/obj/item/weapon/gun/authoritative_gun = holder_item
+	if(!istype(authoritative_gun))
+		return
+
+	var/datum/component/gun_hush/hush_comp = authoritative_gun.GetComponent(/datum/component/gun_hush)
+	if(hush_comp)
+		hush_comp.toggle_hush(owner)
+
+/datum/action/item_action/gun_hush/update_button_icon()
+	var/obj/item/weapon/gun/authoritative_gun = holder_item
+	var/datum/component/gun_hush/hush_comp = authoritative_gun.GetComponent(/datum/component/gun_hush)
+
+	if(hush_comp)
+		if(hush_comp?.hush_enabled)
+			action_icon_state = "hush_on"
+		else
+			action_icon_state = "hush_off"
+	else // component shenanigans
+		action_icon_state = "hush_on"
+
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
+// CO GUN STUFF END

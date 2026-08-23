@@ -565,6 +565,7 @@
 /obj/item/paper/almayer_storage
 	name = "Almayer Emergency Storage Note"
 	info = "<i>Hey Garry, I got the boys to move most of the emergency supplies down into the ASRS hold just like ya' asked. <BR>Next time you're around Chinook I'll buy you a beer ok?</i>"
+
 /obj/item/paper/Toxin
 	name = "Chemical Information"
 	info = "Known Onboard Toxins:<BR>\n\tGrade A Semi-Liquid Phoron:<BR>\n\t\tHighly poisonous. You cannot sustain concentrations above 15 units.<BR>\n\t\tA gas mask fails to filter phoron after 50 units.<BR>\n\t\tWill attempt to diffuse like a gas.<BR>\n\t\tFiltered by scrubbers.<BR>\n\t\tThere is a bottled version which is very different<BR>\n\t\t\tfrom the version found in canisters!<BR>\n<BR>\n\t\tWARNING: Highly Flammable. Keep away from heat sources<BR>\n\t\texcept in a enclosed fire area!<BR>\n\t\tWARNING: It is a crime to use this without authorization.<BR>\nKnown Onboard Anti-Toxin:<BR>\n\tAnti-Toxin Type 01P: Works against Grade A Phoron.<BR>\n\t\tBest if injected directly into bloodstream.<BR>\n\t\tA full injection is in every regular Med-Kit.<BR>\n\t\tSpecial toxin Kits hold around 7.<BR>\n<BR>\nKnown Onboard Chemicals (other):<BR>\n\tRejuvenation T#001:<BR>\n\t\tEven 1 unit injected directly into the bloodstream<BR>\n\t\t\twill cure paralysis and sleep phoron.<BR>\n\t\tIf administered to a dying patient it will prevent<BR>\n\t\t\tfurther damage for about units*3 seconds.<BR>\n\t\t\tit will not cure them or allow them to be cured.<BR>\n\t\tIt can be administered to a non-dying patient<BR>\n\t\t\tbut the chemicals disappear just as fast.<BR>\n\tSoporific T#054:<BR>\n\t\t5 units will induce precisely 1 minute of sleep.<BR>\n\t\t\tThe effect are cumulative.<BR>\n\t\tWARNING: It is a crime to use this without authorization!"
@@ -700,6 +701,10 @@
 /obj/item/paper/soro/clf
 	name = "TOP SECRET: FOR CELL LEAD ONLY"
 	info = "Your request for extraction has been received. We have no assets in the region available. Await further instruction."
+
+/obj/item/paper/hybrisa/firefighternote
+	name = "Fannin' Fuego: Choke Like A Pro!"
+	info = "<h2>Okay-</h2> Okay. I know I fucked up, Tova. I got the thing on sale- though! I swear! I fitted it with a case full of stabilized foam, the kind they use to plug atmospheric breaches- don't ask where I got it from- it's so much cheaper than water... We won't have to have that Company bastard help take our business apart! They <b>need</b> us in this city, you know? Another fucking fire we can't fix and it's wraps for this casino town. I swear to God I can hear Jones whining about the bullshit they get up to in the caves. Just a few more months, and we're out, okay? Out! \n\n I know I'm gone for the week, you guys can handle shop while I'm out. <h2>Instructions're easy.</h2>  You see a flame, in a window, room or whatever, you aim <i>far</i>, it'll seal the whole room in foam, hardens <b>real</b> fast. It'll choke any flame in any enclosed space near-instantly, and honestly? It keeps all the valuables safe, too. You remember how Maizer was heckling us about his dog? Guy was so damn angry about his oven shorting he forgot all about his mother's jewelry box, and shit- if I treated that fire with the regular stuff, and the 'water' they give us? We'd probably be homeless right now. \n\n I'm serious, girl. This shit works. You could seal a whale's asshole with this thing. \n Swear to god, that dumb fuck'll never find out. We'll be in Sol in no time. Just hang in there."
 
 /obj/item/paper/bigred/upp/Initialize(mapload, photo_list)
 	. = ..()

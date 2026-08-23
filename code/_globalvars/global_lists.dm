@@ -158,6 +158,9 @@ GLOBAL_LIST_INIT_TYPED(space_weapons_ammo, /datum/space_weapon_ammo, setup_ship_
 GLOBAL_LIST_INIT_TYPED(ammo_list, /datum/ammo, setup_ammo()) //List of all ammo types. Used by guns to tell the projectile how to act.
 GLOBAL_REFERENCE_LIST_INDEXED(joblist, /datum/job, title) //List of all jobstypes, minus borg and AI
 
+GLOBAL_LIST_INIT(body_type_spectrum, list(BODY_TYPE_NOMUSCLE, BODY_TYPE_LEAN, BODY_TYPE_RIPPED))
+GLOBAL_LIST_INIT(body_size_spectrum, list(BODY_SIZE_THIN, BODY_SIZE_AVERAGE, BODY_SIZE_LARGE))
+
 /*Surgical lists.
 surgery_invasiveness_levels lists possible incision depths.
 surgeries_list lists individual operations as initialised datums. These are used for reference when beginning surgeries.
@@ -188,8 +191,6 @@ GLOBAL_LIST_EMPTY(active_areas)
 GLOBAL_LIST_EMPTY(all_areas)
 
 GLOBAL_LIST_EMPTY(turfs)
-
-GLOBAL_LIST(objects_of_interest) // This is used to track the stealing objective for Agents.
 
 // Areas exempt from explosive antigrief (not Z-levels)
 GLOBAL_LIST_INIT(explosive_antigrief_exempt_areas, list(
@@ -674,3 +675,5 @@ GLOBAL_PROTECT(topic_tokens)
 
 GLOBAL_LIST_EMPTY(topic_commands)
 GLOBAL_PROTECT(topic_commands)
+
+GLOBAL_LIST_EMPTY(marine_medics)

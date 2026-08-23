@@ -1,4 +1,0 @@
-author: "cuberound"
-delete-after: True
-changes:
-  - rscadd: "Blood gibs and shards do not miss icon and use their set color in sdmm"

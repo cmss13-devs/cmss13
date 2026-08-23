@@ -127,6 +127,8 @@
 	minimap = new
 	minimap.give_to(src)
 
+	SSmapgrids.track_movable(src)
+
 	for(var/path in subtypesof(/datum/action/observer_action))
 		var/datum/action/observer_action/new_action = new path()
 		new_action.give_to(src)
@@ -328,7 +330,7 @@
 		toggle_predator_action()
 
 	if(client.check_whitelist_status(WHITELIST_SYNTHETIC) || client.check_whitelist_status(WHITELIST_JOE))
-		RegisterSignal(SSdcs, COMSIG_GLOB_COLONY_JOE_ROUND_TOGGLED, PROC_REF(toggle_predator_action))
+		RegisterSignal(SSdcs, COMSIG_GLOB_COLONY_JOE_ROUND_TOGGLED, PROC_REF(toggle_colony_joe_action))
 		toggle_colony_joe_action()
 
 	client.move_delay = MINIMAL_MOVEMENT_INTERVAL

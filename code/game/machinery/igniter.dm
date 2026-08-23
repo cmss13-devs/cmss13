@@ -24,13 +24,6 @@
 	src.icon_state = text("igniter[]", src.on)
 	return
 
-/obj/structure/machinery/igniter/process() //ugh why is this even in process()?
-// if (src.on && !(stat & NOPOWER) )
-// var/turf/location = src.loc
-// if (isturf(location))
-// location.hotspot_expose(1000,500,1)
-	return 1
-
 /obj/structure/machinery/igniter/Initialize(mapload, ...)
 	. = ..()
 	icon_state = "igniter[on]"
@@ -59,10 +52,8 @@
 	..()
 	if ( !(stat & NOPOWER) && disable == 0 )
 		icon_state = "[base_state]"
-// src.sd_set_light(2)
 	else
 		icon_state = "[base_state]-p"
-// src.sd_set_light(0)
 
 /obj/structure/machinery/sparker/attackby(obj/item/W as obj, mob/user as mob)
 	if (HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
@@ -98,9 +89,6 @@
 	s.start()
 	src.last_spark = world.time
 	use_power(1000)
-// var/turf/location = src.loc
-// if (isturf(location))
-// location.hotspot_expose(1000,500,1)
 	return 1
 
 /obj/structure/machinery/sparker/emp_act(severity)

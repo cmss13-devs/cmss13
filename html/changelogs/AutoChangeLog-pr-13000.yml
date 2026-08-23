@@ -1,0 +1,4 @@
+author: "MistChristmas"
+delete-after: True
+changes:
+  - bugfix: "Rav strains no longer claim you have giant oversized claws when you're not the ravager."

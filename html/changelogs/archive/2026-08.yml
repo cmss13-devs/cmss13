@@ -421,3 +421,23 @@
 2026-08-21:
   Unknownity:
   - bugfix: Fixes some area oversights in Whiskey Outpost.
+2026-08-22:
+  Bibby0110:
+  - bugfix: Ravagers failing to tackle no longer announces the personal message to
+      everyone surrounding you
+  Drathek:
+  - code_imp: Added more pass flag bitfields for VV and unified them with a couple
+      defines
+  - code_imp: Unified barricade pass flag initialization with a define
+  Nihisohel:
+  - bugfix: Base Ravager Empower now processes properly
+  Rad Chandelier:
+  - rscadd: Adds a check of MRE side dishes before allowing MRE folding into trash;
+      Changes MRE weight class to small
+  - code_imp: All changes ported directly from PvE code
+  - qol: Adds check of MRE food items to allow storage into MRE
+  SpypigDev:
+  - bugfix: Invasive surgery now slices through splints
+  Venuska1117:
+  - bugfix: Made player unable to transmute as bulwark when they have stances active
+      like encasing plates or reflective plates.

@@ -75,6 +75,7 @@ SUBSYSTEM_DEF(influxplayerstats)
 		if(MC_TICK_CHECK)
 			return
 
+	SSinfluxdriver.enqueue_stats("game_time", list(), list("roundtime" = ROUND_TIME))
 	for(var/datum/influx_player_stats/stat as anything in stat_types)
 		var/list/ship_level_data = recorded_stats[IPS_SHIP_LEVEL][stat.key]
 		var/list/ground_level_data = recorded_stats[IPS_GROUND_LEVEL][stat.key]

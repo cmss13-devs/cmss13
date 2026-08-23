@@ -4973,11 +4973,6 @@
 	},
 /turf/open/floor/strata,
 /area/atlan/station/double_dorms)
-"aoZ" = (
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/strata/floor2,
-/area/atlan/station/repairs_lift)
 "apa" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 10
@@ -117258,7 +117253,7 @@ pjT
 pjT
 aXA
 aYc
-aoZ
+ayb
 aYv
 aWW
 hJr

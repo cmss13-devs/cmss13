@@ -1,4 +1,0 @@
-author: "MistChristmas"
-delete-after: True
-changes:
-  - bugfix: "Message about not being able to perform surgery due to bad conditions... the turf your standing on. I.E Water/Coast/Dropship"

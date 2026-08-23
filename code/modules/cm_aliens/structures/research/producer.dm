@@ -12,7 +12,7 @@
 
 	// Production stats
 	/// Which chem does this produce?
-	var/producing_chems = list()
+	var/list/producing_chems = list()
 	/// How much is produced every XENO_BOTANY_RATE?
 	var/production_amt = 5
 

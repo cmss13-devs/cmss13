@@ -226,7 +226,9 @@
 
 	lunge_user.visible_message(SPAN_XENOWARNING("[lunge_user] lunges towards [carbon]!"), SPAN_XENOWARNING("We lunge at [carbon]!"))
 
+	ADD_TRAIT(lunge_user, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("lunge"))
 	lunge_user.throw_atom(get_step_towards(affected_atom, lunge_user), grab_range, SPEED_FAST, lunge_user, tracking=TRUE)
+	REMOVE_TRAIT(lunge_user, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("lunge"))
 
 	if(lunge_user.Adjacent(carbon))
 		lunge_user.start_pulling(carbon,1)

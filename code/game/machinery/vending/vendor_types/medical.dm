@@ -277,8 +277,8 @@
 		/obj/item/reagent_container/hypospray/autoinjector/standard/tramadol,
 		/obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine,
 
-		/obj/item/reagent_container/hypospray/autoinjector/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
+		/obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricordrazine,
+		/obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tramadol,
 
 		/obj/item/reagent_container/hypospray/autoinjector/ez/bicaridine,
 		/obj/item/reagent_container/hypospray/autoinjector/ez/antitoxin,
@@ -734,15 +734,15 @@
 	vendor_theme = VENDOR_THEME_USCM
 
 	chem_refill = list(
-		/obj/item/reagent_container/hypospray/autoinjector/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
+		/obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricordrazine,
+		/obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tramadol,
 	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/marinemed/populate_product_list(scale)
 	listed_products = list(
 		list("AUTOINJECTORS", -1, null, null),
-		list("First-Aid Autoinjector", floor(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/skillless, VENDOR_ITEM_REGULAR),
-		list("Pain-Stop Autoinjector", floor(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol, VENDOR_ITEM_REGULAR),
+		list("First-Aid Autoinjector", floor(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricordrazine, VENDOR_ITEM_REGULAR),
+		list("Pain-Stop Autoinjector", floor(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tramadol, VENDOR_ITEM_REGULAR),
 
 		list("DEVICES", -1, null, null),
 		list("Health Analyzer", floor(scale * 3), /obj/item/device/healthanalyzer, VENDOR_ITEM_REGULAR),
@@ -824,8 +824,8 @@
 
 	listed_products = list(
 		list("SUPPLIES", -1, null, null),
-		list("First-Aid Autoinjector", 2, /obj/item/reagent_container/hypospray/autoinjector/skillless, VENDOR_ITEM_REGULAR),
-		list("Pain-Stop Autoinjector", 2, /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol, VENDOR_ITEM_REGULAR),
+		list("First-Aid Autoinjector", 2, /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricordrazine, VENDOR_ITEM_REGULAR),
+		list("Pain-Stop Autoinjector", 2, /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tramadol, VENDOR_ITEM_REGULAR),
 		list("Roll Of Gauze", 4, /obj/item/stack/medical/bruise_pack, VENDOR_ITEM_REGULAR),
 		list("Ointment", 4, /obj/item/stack/medical/ointment, VENDOR_ITEM_REGULAR),
 		list("Medical Splints", 4, /obj/item/stack/medical/splint, VENDOR_ITEM_REGULAR),
@@ -837,8 +837,8 @@
 	chem_refill_volume = 250
 	chem_refill_volume_max = 250
 	chem_refill = list(
-		/obj/item/reagent_container/hypospray/autoinjector/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
+		/obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricordrazine,
+		/obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tramadol,
 		/obj/item/reagent_container/hypospray/autoinjector/ez/tricordrazine,
 		/obj/item/reagent_container/hypospray/autoinjector/ez/bicaridine,
 		/obj/item/reagent_container/hypospray/autoinjector/ez/antitoxin,
@@ -852,8 +852,8 @@
 	chem_refill_volume = 150
 	chem_refill_volume_max = 150
 	chem_refill = list(
-		/obj/item/reagent_container/hypospray/autoinjector/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
+		/obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricordrazine,
+		/obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tramadol,
 	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/lifeboat
@@ -868,8 +868,8 @@
 
 	listed_products = list(
 		list("AUTOINJECTORS", -1, null, null),
-		list("First-Aid Autoinjector", 8, /obj/item/reagent_container/hypospray/autoinjector/skillless, VENDOR_ITEM_REGULAR),
-		list("Pain-Stop Autoinjector", 8, /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol, VENDOR_ITEM_REGULAR),
+		list("First-Aid Autoinjector", 8, /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricordrazine, VENDOR_ITEM_REGULAR),
+		list("Pain-Stop Autoinjector", 8, /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tramadol, VENDOR_ITEM_REGULAR),
 
 		list("DEVICES", -1, null, null),
 		list("Health Analyzer", 8, /obj/item/device/healthanalyzer, VENDOR_ITEM_REGULAR),
@@ -896,8 +896,8 @@
 
 	listed_products = list(
 		list("FIRST AID SUPPLIES", -1, null, null),
-		list("First-Aid Autoinjector", 2, /obj/item/reagent_container/hypospray/autoinjector/skillless, VENDOR_ITEM_REGULAR),
-		list("Pain-Stop Autoinjector", 2, /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol, VENDOR_ITEM_REGULAR),
+		list("First-Aid Autoinjector", 2, /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricordrazine, VENDOR_ITEM_REGULAR),
+		list("Pain-Stop Autoinjector", 2, /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tramadol, VENDOR_ITEM_REGULAR),
 		list("Roll Of Gauze", 4, /obj/item/stack/medical/bruise_pack, VENDOR_ITEM_REGULAR),
 		list("Ointment", 4, /obj/item/stack/medical/ointment, VENDOR_ITEM_REGULAR),
 		list("Medical Splints", 4, /obj/item/stack/medical/splint, VENDOR_ITEM_REGULAR),

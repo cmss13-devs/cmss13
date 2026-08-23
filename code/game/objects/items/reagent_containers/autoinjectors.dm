@@ -595,46 +595,6 @@
 		overlays += filling
 		return
 
-/obj/item/reagent_container/hypospray/autoinjector/skillless
-	name = "first-aid autoinjector"
-	chemname = "tricordrazine"
-	desc = "An autoinjector loaded with a single dose of 15u of tricordrazine for marines to treat themselves with. You can refill it at Wey-Med vending machines."
-	icon_state = "tricord"
-	autoinjector_type = null
-	amount_per_transfer_from_this = 15
-	volume = 15
-	skilllock = SKILL_MEDICAL_DEFAULT
-	uses_left = 1
-	display_maptext = TRUE
-	maptext_label = "OuTc"
-
-/obj/item/reagent_container/hypospray/autoinjector/skillless/attack(mob/M as mob, mob/user as mob)
-	. = ..()
-	if(.)
-		if(!uses_left) //Prevents autoinjectors to be refilled.
-			icon_state += "0"
-			name += " expended"
-			flags_atom &= ~OPENCONTAINER
-
-/obj/item/reagent_container/hypospray/autoinjector/skillless/attackby()
-	return
-
-/obj/item/reagent_container/hypospray/autoinjector/skillless/get_examine_text(mob/user)
-	. = ..()
-	if(reagents && length(reagents.reagent_list))
-		. += SPAN_NOTICE("It is currently loaded.")
-	else if(!uses_left)
-		. += SPAN_NOTICE("It is spent.")
-	else
-		. += SPAN_NOTICE("It is empty.")
-
-/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol
-	name = "pain-stop autoinjector"
-	chemname = "tramadol"
-	icon_state = "tramadol"
-	desc = "An autoinjector loaded with a single 15u dose of tramadol for marines to self-administer. You can refill it at Wey-Med vending machines."
-	maptext_label = "OuPs"
-
 /obj/item/reagent_container/hypospray/autoinjector/research
 	name = "5u custom autoinjector"
 	desc = "A custom-made autoinjector, likely from research. You can refill it with a pressurized reagent canister pouch."

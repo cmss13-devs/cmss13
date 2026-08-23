@@ -171,8 +171,6 @@
 	abduct_user.visible_message(SPAN_XENODANGER("\The [abduct_user]'s segmented tail starts coiling..."), SPAN_XENODANGER("We begin coiling our tail, aiming towards \the [atom]..."))
 	abduct_user.emote("roar")
 
-	var/throw_target_turf = get_step(abduct_user, facing)
-
 	ADD_TRAIT(abduct_user, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
 	if(!do_after(abduct_user, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 1))
 		to_chat(abduct_user, SPAN_XENOWARNING("You relax your tail."))
@@ -210,27 +208,29 @@
 
 	apply_cooldown()
 
+	var/turf/throw_target_turf = turflist[1]
+	var/num_of_targets = LAZYLEN(targets)
 	for(var/mob/living/carbon/target in targets)
 		abduct_user.visible_message(SPAN_XENODANGER("\The [abduct_user]'s hooked tail coils itself around [target]!"), SPAN_XENODANGER("Our hooked tail coils itself around [target]!"))
 
 		target.apply_effect(0.2, WEAKEN)
 
-		if(LAZYLEN(targets) == 1)
-			new /datum/effects/xeno_slow(target, abduct_user, null, null, 2.5 SECONDS)
-			target.apply_effect(1, SLOW)
-		else if(LAZYLEN(targets) == 2)
-			ADD_TRAIT(target, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
-			if(ishuman(target))
-				var/mob/living/carbon/human/target_human = target
-				target_human.update_xeno_hostile_hud()
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(unroot_human), target, TRAIT_SOURCE_ABILITY("Abduct")), get_xeno_stun_duration(target, 2.5 SECONDS))
-			to_chat(target, SPAN_XENOHIGHDANGER("[abduct_user] has pinned you to the ground! You cannot move!"))
+		switch(num_of_targets)
+			if(1)
+				new /datum/effects/xeno_slow(target, abduct_user, null, null, 2.5 SECONDS)
+				target.apply_effect(1, SLOW)
+			if(2)
+				ADD_TRAIT(target, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
+				if(ishuman(target))
+					var/mob/living/carbon/human/target_human = target
+					target_human.update_xeno_hostile_hud()
+				addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(unroot_human), target, TRAIT_SOURCE_ABILITY("Abduct")), get_xeno_stun_duration(target, 2.5 SECONDS))
+				to_chat(target, SPAN_XENOHIGHDANGER("[abduct_user] has pinned you to the ground! You cannot move!"))
 
-			target.set_effect(2, DAZE)
-		else if(LAZYLEN(targets) >= 3)
-			target.apply_effect(get_xeno_stun_duration(target, 1.3), WEAKEN)
-			to_chat(target, SPAN_XENOHIGHDANGER("You are slammed into the other victims of [abduct_user]!"))
-
+				target.set_effect(2, DAZE)
+			else
+				target.apply_effect(get_xeno_stun_duration(target, 1.3), WEAKEN)
+				to_chat(target, SPAN_XENOHIGHDANGER("You are slammed into the other victims of [abduct_user]!"))
 
 		shake_camera(target, 10, 1)
 
@@ -238,8 +238,16 @@
 		var/image/tail_image = image('icons/effects/status_effects.dmi', "hooked")
 		target.overlays += tail_image
 
-		target.throw_atom(throw_target_turf, get_dist(throw_target_turf, target)-1, SPEED_VERY_FAST)
+		var/target_dist = turflist.Find(target.loc)
+		var/list/turf/target_route = list()
 
+		if(target_dist)
+			to_world("index")
+			target_route.Copy(1, target_dist+1)
+			target_route = reverselist(target_route)
+		for(var/turf/T in target_route)
+			to_world(T)
+		target.throw_atom(throw_target_turf, target_dist, SPEED_VERY_FAST, route = target_route)
 		qdel(tail_beam) // hook beam catches target, throws them back, is deleted (throw_atom has sleeps), then hook beam catches another target, repeat
 		addtimer(CALLBACK(src, /datum/action/xeno_action/activable/prae_abduct/proc/remove_tail_overlay, target, tail_image), 0.5 SECONDS) //needed so it can actually be seen as it gets deleted too quickly otherwise.
 

@@ -130,7 +130,8 @@
 	return TRUE
 
 // Proc for throwing items (should only really be used for throw)
-/atom/movable/proc/throw_atom(atom/target, range, speed = 0, atom/thrower, spin, launch_type = NORMAL_LAUNCH, pass_flags = NO_FLAGS, list/end_throw_callbacks, list/collision_callbacks, tracking = FALSE)
+/atom/movable/proc/throw_atom(atom/target, range, speed = 0, atom/thrower, spin, launch_type = NORMAL_LAUNCH, pass_flags = NO_FLAGS, list/end_throw_callbacks, list/collision_callbacks, tracking = FALSE, list/turf/route)
+	to_world("start throw_atom")
 	if(QDELETED(src))
 		return // Why throw something deleting?
 
@@ -158,7 +159,7 @@
 
 	flags_atom |= NO_ZFALL
 
-	launch_towards(LM, tracking)
+	launch_towards(LM, tracking, route)
 
 	flags_atom &= ~NO_ZFALL
 	var/turf/end_turf = get_turf(src)
@@ -167,7 +168,8 @@
 
 
 // Proc for throwing or propelling movable atoms towards a target
-/atom/movable/proc/launch_towards(datum/launch_metadata/LM, tracking = FALSE)
+/atom/movable/proc/launch_towards(datum/launch_metadata/LM, tracking = FALSE, list/turf/route)
+	to_world("start launch_towards")
 	if (!istype(LM))
 		CRASH("invalid launch_metadata passed to launch_towards")
 	if (!LM.target || !src)
@@ -181,6 +183,22 @@
 		qdel(launch_metadata)
 	launch_metadata = LM
 
+	var/turf/start_turf
+	var/turf/above = SSmapping.get_turf_above(loc)
+	var/datum/turf_reservation/reservation = SSmapping.used_turfs[loc]
+	if(reservation && (reservation.is_below(loc, get_turf(LM.target))) || (LM.target.z > z) && istype(above, /turf/open_space))
+		start_turf = above
+	else
+		start_turf = get_step_towards(src, LM.target)
+		if(reservation && reservation.is_below(get_turf(LM.target), loc))
+			start_turf = get_step_towards(src, SSmapping.get_turf_above(LM.target))
+
+	var/list/turf/path
+	if(!LAZYLEN(route))
+		path = get_line(start_turf, LM.target)
+	else
+		path = route
+
 	if (LM.spin)
 		animation_spin(5, 1 + min(1, LM.range/20))
 
@@ -192,21 +210,14 @@
 	throwing = TRUE
 
 	add_temp_pass_flags(pass_flags)
-	var/turf/start_turf
-	var/turf/above = SSmapping.get_turf_above(loc)
-	var/datum/turf_reservation/reservation = SSmapping.used_turfs[loc]
-	if(reservation && (reservation.is_below(loc, get_turf(LM.target))) || (LM.target.z > z) && istype(above, /turf/open_space))
-		start_turf = above
-	else
-		start_turf = get_step_towards(src, LM.target)
-		if(reservation && reservation.is_below(get_turf(LM.target), loc))
-			start_turf = get_step_towards(src, SSmapping.get_turf_above(LM.target))
-	var/list/turf/path = get_line(start_turf, LM.target)
+
 	var/last_loc = loc
 
 	var/early_exit = FALSE
 	LM.dist = 0
 	for (var/turf/T in path)
+		to_world("launching")
+		to_world(T)
 		if (!src || !throwing || loc != last_loc || !isturf(src.loc))
 			break
 		if (!LM || QDELETED(LM))

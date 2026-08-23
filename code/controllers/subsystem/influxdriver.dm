@@ -79,20 +79,18 @@ SUBSYSTEM_DEF(influxdriver)
 /datum/controller/subsystem/influxdriver/proc/enqueue_stats(measurement, list/tags, list/fields)
 	. = FALSE
 	var/valid = FALSE
-	var/serialized = "[measurement],round_id=[GLOB.round_id],round_time=[ROUND_TIME]"
+	var/serialized = "[measurement],round_id=[GLOB.round_id]"
 	if(tags)
 		for(var/tag in tags)
 			var/serialized_tag = serialize_field(tag, tags[tag])
 			if(serialized_tag)
 				serialized += ",[serialized_tag]"
-	serialized += " "
-	var/comma = ""
+	serialized += " roundtime=[floor(ROUND_TIME)]"
 	for(var/field in fields)
 		var/serialized_field = serialize_field(field, fields[field])
 		if(serialized_field)
 			valid = TRUE
-			serialized += "[comma][serialized_field]"
-			comma = ","
+			serialized += ",[serialized_field]"
 	if(!valid)
 		CRASH("Attempted to serialize to InfluxDB backend an invalid measurement (likely has no fields)")
 	if(timestamp_cache_worldtime != world.time)

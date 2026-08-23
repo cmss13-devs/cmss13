@@ -69,14 +69,12 @@
 /obj/item/reagent_container/hypospray/autoinjector/get_examine_text(mob/user, uses_left, volume, amount_per_transfer_from_this)
 	. = ..()
 
-	if(uses_left > 1)
-		. += SPAN_NOTICE("It is currently loaded with [uses_left] injections out of a maximum of [volume/amount_per_transfer_from_this] injections of [amount_per_transfer_from_this]u.")
+	if(uses_left > 0)
+		. += SPAN_NOTICE("It is currently loaded with [uses_left]/[volume/amount_per_transfer_from_this] injections of [amount_per_transfer_from_this]u.")
 	else if(uses_left == 1)
 		if((volume/amount_per_transfer_from_this) == 1)
-			. += SPAN_NOTICE("It is currently loaded with a single injection of [volume/amount_per_transfer_from_this]u.") //one-use autoinjectors
-		else
-			. += SPAN_NOTICE("It is currently loaded with a single injection out of a maximum of [volume/amount_per_transfer_from_this] injections of [amount_per_transfer_from_this]u.") //other autoinjectors that have one use left
-	else if (uses_left == 0)
+			. += SPAN_NOTICE("It is currently loaded with a single injection of [amount_per_transfer_from_this]u.") //one-use autoinjectors
+	else if (uses_left <= 0)
 		if(istype(src, /obj/item/reagent_container/hypospray/autoinjector/research))
 			. += SPAN_NOTICE("It is empty, but you can refill it with a filled pressurized reagent canister pouch.")
 		else if(istype(src, /obj/item/reagent_container/hypospray/autoinjector/no_refill))
@@ -84,7 +82,7 @@
 		else if(istype(src, /obj/item/reagent_container/hypospray/autoinjector/ez) || istype(src, /obj/item/reagent_container/hypospray/autoinjector/tutorial))
 			. += SPAN_NOTICE("It is empty, but you can refill it at any Wey-Med Plus Dispenser, any Wall-Med, or with an MS-11 Smart Refill Tank.")
 		else
-			. += SPAN_NOTICE("It is empty, but you can refill it at any Wey-Med Plus dispenser, Wey-Med resupply station, or with an MS-11 Smart Refill Tank. ")
+			. += SPAN_NOTICE("It is empty, but you can refill it at any Wey-Med Plus dispenser, Wey-Med resupply station, or with an MS-11 Smart Refill Tank.")
 
 
 /obj/item/reagent_container/hypospray/autoinjector/equipped()

@@ -21,20 +21,12 @@
 	var/x_s_offset // Horizontal sound offset
 
 /datum/sound_template/proc/get_hearers()
-	var/list/hearers_to_return = list()
-	var/datum/shape/rectangle/zone = SQUARE(x, y, range * 2)
-	hearers_to_return += SSquadtree.players_in_range(zone, z)
-
-	var/turf/above = SSmapping.get_turf_above(locate(x, y, z))
-	while(above)
-		hearers_to_return += SSquadtree.players_in_range(zone, above.z)
-		above = SSmapping.get_turf_above(above)
-
-	var/turf/below = SSmapping.get_turf_below(locate(x, y, z))
-	while(below)
-		hearers_to_return += SSquadtree.players_in_range(zone, below.z)
-		below = SSmapping.get_turf_below(below)
-	return hearers_to_return
+	RETURN_TYPE(/list/client)
+	. = list()
+	var/list/atom/movable/all_contents = SSmapgrids.get_movables_in_region(z, x - range, x + range, y - range, y + range)
+	for(var/mob/mob in all_contents)
+		if(mob.client)
+			. += mob.client
 
 /proc/get_free_channel()
 	var/static/cur_chan = 1
@@ -382,6 +374,8 @@
 				sound = pick('sound/voice/alien_drool1.ogg','sound/voice/alien_drool2.ogg')
 			if("alien_roar")
 				sound = pick('sound/voice/alien_roar1.ogg','sound/voice/alien_roar2.ogg','sound/voice/alien_roar3.ogg','sound/voice/alien_roar4.ogg','sound/voice/alien_roar5.ogg','sound/voice/alien_roar6.ogg')
+			if("alien_roarhiss")
+				sound = pick('sound/voice/alien_roarhiss1.ogg','sound/voice/alien_roarhiss2.ogg')
 			if("alien_roar_larva")
 				sound = pick('sound/voice/alien_roar_larva1.ogg','sound/voice/alien_roar_larva2.ogg')
 			if("queen")
@@ -430,6 +424,8 @@
 				sound = pick('sound/voice/joe/death_hj_normal.ogg', 'sound/voice/joe/death_hj_silence.ogg',10;'sound/voice/joe/death_hj_tomorrow.ogg')
 			if("upp_wj_death")
 				sound = pick('sound/voice/joe/upp_joe/smert1.ogg', 'sound/voice/joe/upp_joe/smert2.ogg', 'sound/voice/joe/upp_joe/smert3.ogg', 'sound/voice/joe/upp_joe/smert4.ogg', 'sound/voice/joe/upp_joe/smert5.ogg')
+			if("daniel_death")
+				sound = pick('sound/voice/joe/daniel/death1.ogg', 'sound/voice/joe/daniel/death2.ogg', 'sound/voice/joe/daniel/death3.ogg')
 			//misc mobs
 			if("cat_meow")
 				sound = pick('sound/voice/cat_meow_1.ogg','sound/voice/cat_meow_2.ogg','sound/voice/cat_meow_3.ogg','sound/voice/cat_meow_4.ogg','sound/voice/cat_meow_5.ogg','sound/voice/cat_meow_6.ogg','sound/voice/cat_meow_7.ogg')
@@ -453,6 +449,8 @@
 				sound = pick('sound/voice/wy_droid/wy_droid_death1.ogg', 'sound/voice/wy_droid/wy_droid_death2.ogg', 'sound/voice/wy_droid/wy_droid_death3.ogg', 'sound/voice/wy_droid/wy_droid_death4.ogg', 'sound/voice/wy_droid/wy_droid_death5.ogg', 'sound/voice/wy_droid/wy_droid_death6.ogg', 'sound/voice/wy_droid/wy_droid_death7.ogg')
 			if("wy_droid_cloaker_death")
 				sound = pick('sound/voice/wy_droid/wy_stealth_droid_death1.ogg', 'sound/voice/wy_droid/wy_stealth_droid_death2.ogg')
+			if("clown_footstep")
+				sound = pick('sound/effects/clownstep1.ogg', 'sound/effects/clownstep2.ogg')
 	return sound
 
 /client/proc/generate_sound_queues()

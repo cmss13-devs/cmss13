@@ -122,13 +122,6 @@
 	unacidable = TRUE
 	breakable = FALSE
 	explo_proof = TRUE
-	plane = TURF_PLANE
-
-/obj/structure/machinery/door/poddoor/yautja/emp_act(power, severity)
-	if(emp_proof)
-		return FALSE
-	..()
-	return TRUE
 
 /obj/structure/machinery/door/poddoor/yautja/hunting_grounds
 	name = "Preserve Shutter"
@@ -200,13 +193,8 @@
 	id = "bot_uniforms"
 	unacidable = TRUE
 	unslashable = TRUE
-
-/obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/ex_act(severity)
-	return
-
-/obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/emp_act(severity)
-	. = ..()
-	return
+	emp_proof = TRUE
+	explo_proof = TRUE
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/attackby(obj/item/attacking_item, mob/user)
 	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_CROWBAR) || attacking_item.pry_capable)

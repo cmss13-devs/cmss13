@@ -227,10 +227,10 @@
 		var/rankpath = get_rank_pins(current_rank)
 		if(rankpath)
 			var/obj/item/clothing/accessory/ranks/R = new rankpath()
-			if(new_human.wear_suit && new_human.wear_suit.can_attach_accessory(R))
-				new_human.wear_suit.attach_accessory(new_human, R, TRUE)
-			else if(new_human.w_uniform && new_human.w_uniform.can_attach_accessory(R))
+			if(new_human.w_uniform && new_human.w_uniform.can_attach_accessory(R))
 				new_human.w_uniform.attach_accessory(new_human, R, TRUE)
+			else if(new_human.wear_suit && new_human.wear_suit.can_attach_accessory(R))
+				new_human.wear_suit.attach_accessory(new_human, R, TRUE)
 			else
 				qdel(R)
 
@@ -570,7 +570,7 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 		return
 
 	var/list/merc_sidearms = list(
-		/obj/item/weapon/gun/pistol/heavy = /obj/item/ammo_magazine/pistol/heavy,
+		/obj/item/weapon/gun/pistol/deagle = /obj/item/ammo_magazine/pistol/deagle,
 		/obj/item/weapon/gun/pistol/m1911 = /obj/item/ammo_magazine/pistol/m1911,
 		/obj/item/weapon/gun/pistol/kt42 = /obj/item/ammo_magazine/pistol/kt42,
 		/obj/item/weapon/gun/pistol/holdout = /obj/item/ammo_magazine/pistol/holdout,
@@ -705,9 +705,9 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 	return
 
 /datum/equipment_preset/proc/add_common_wo_equipment(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/flare/full(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(new_human), WEAR_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/black(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/self_setting(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/attachments(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)

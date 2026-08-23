@@ -15893,13 +15893,6 @@
 /obj/structure/machinery/seed_extractor,
 /turf/open/floor/corsat/plate,
 /area/corsat/gamma/hydroponics)
-"bhC" = (
-/obj/structure/machinery/computer/shuttle_control/monorail{
-	dir = 8
-	},
-/obj/structure/surface/table/reinforced,
-/turf/open/floor/corsat/red/east,
-/area/corsat/gamma/hangar/monorail/control)
 "bhD" = (
 /obj/structure/sink{
 	dir = 8;
@@ -22704,9 +22697,6 @@
 /area/corsat/sigma/hangar/monorail/control)
 "bLn" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/shuttle_control/monorail{
-	dir = 4
-	},
 /turf/open/floor/corsat/red/west,
 /area/corsat/sigma/hangar/monorail/control)
 "bLq" = (
@@ -73398,7 +73388,7 @@ aad
 aad
 bks
 bmu
-bhC
+sPx
 bGs
 sPx
 adq

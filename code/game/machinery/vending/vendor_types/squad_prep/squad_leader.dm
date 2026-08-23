@@ -21,13 +21,15 @@ GLOBAL_LIST_INIT(cm_vending_gear_leader, list(
 		list("CLOTHING ITEMS", 0, null, null, null),
 		list("Machete Scabbard (Full)", 4, /obj/item/storage/large_holster/machete/full, null, VENDOR_ITEM_REGULAR),
 		list("Machete Pouch (Full)", 4, /obj/item/storage/pouch/machete/full, null, VENDOR_ITEM_REGULAR),
-		list("USCM Radio Telephone Pack", 5, /obj/item/storage/backpack/marine/satchel/rto, null, VENDOR_ITEM_REGULAR),
+		list("USCM Radio Telephone Pack", 15, /obj/item/storage/backpack/marine/satchel/rto, null, VENDOR_ITEM_REGULAR),
 		list("M276 Pattern Combat Toolbelt Rig", 15, /obj/item/storage/belt/gun/utility, null, VENDOR_ITEM_REGULAR),
 
 		list("UTILITIES", 0, null, null, null),
 		list("Fire Extinguisher (Portable)", 3, /obj/item/tool/extinguisher/mini, null, VENDOR_ITEM_REGULAR),
+		list("Megaphone", 5, /obj/item/device/megaphone, null, VENDOR_ITEM_REGULAR),
 		list("Motion Detector", 5, /obj/item/device/motiondetector, null, VENDOR_ITEM_REGULAR),
 		list("Fulton Device Stack", 5, /obj/item/stack/fulton, null, VENDOR_ITEM_REGULAR),
+		list("SensorMate Medical HUD", 4, /obj/item/clothing/glasses/hud/sensor, null, VENDOR_ITEM_REGULAR),
 
 		list("BINOCULARS", 0, null, null, null),
 		list("Range Finder", 3, /obj/item/device/binoculars/range, null, VENDOR_ITEM_REGULAR),
@@ -35,7 +37,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_leader, list(
 
 		list("HELMET OPTICS", 0, null, null, null),
 		list("Welding Visor", 5, /obj/item/device/helmet_visor/welding_visor, null, VENDOR_ITEM_REGULAR),
-		list("Medical Helmet Optic", 4, /obj/item/device/helmet_visor/medical, null, VENDOR_ITEM_RECOMMENDED),
+		list("SensorMate Medical Optic", 4, /obj/item/device/helmet_visor/medical, null, VENDOR_ITEM_RECOMMENDED),
 		list("Night Vision Optic", 25, /obj/item/device/helmet_visor/night_vision, null, VENDOR_ITEM_RECOMMENDED),
 
 		list("ENGINEERING SUPPLIES", 0, null, null, null),
@@ -57,8 +59,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_leader, list(
 		list("M40 HSDP Smoke Packet (x3 grenades)", 9, /obj/item/storage/box/packet/smoke, null, VENDOR_ITEM_REGULAR),
 		list("M74 AGM-Frag Airburst Packet (x3 airburst grenades)", 13, /obj/item/storage/box/packet/airburst_he, null, VENDOR_ITEM_REGULAR),
 		list("M74 AGM-Incendiary Airburst Packet (x3 airburst grenades)", 13, /obj/item/storage/box/packet/airburst_incen, null, VENDOR_ITEM_REGULAR),
-		list("M74 AGM-Smoke Airburst Packet (x3 airburst grenades)", 9, /obj/item/storage/box/packet/airburst_smoke, null, VENDOR_ITEM_REGULAR),
-		list("M74 AGM-Hornet Airburst Packet (x3 airburst grenades", 13, /obj/item/storage/box/packet/hornet, null, VENDOR_ITEM_REGULAR),
 		list("M20 Mine Box (x5 mines)", 20, /obj/item/storage/box/explosive_mines, null, VENDOR_ITEM_REGULAR),
 		list("M40 MFHS Metal Foam Grenade", 5, /obj/item/explosive/grenade/metal_foam, null, VENDOR_ITEM_REGULAR),
 		list("G2 Electroshock Grenade Packet (x3 grenades)",  16, /obj/item/storage/box/packet/sebb, null, VENDOR_ITEM_REGULAR),
@@ -139,6 +139,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_leader, list(
 
 		list("BACKPACK (CHOOSE 1)", 0, null, null, null),
 		list("Backpack", 0, /obj/item/storage/backpack/marine, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
+		list("USCM Radio Telephone Pack", 0, /obj/item/storage/backpack/marine/satchel/rto, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_RECOMMENDED),
 		list("Machete Scabbard (Full)", 0, /obj/item/storage/large_holster/machete/full, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
 		list("Satchel", 0, /obj/item/storage/backpack/marine/satchel, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_RECOMMENDED),
 
@@ -223,6 +224,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_leader, list(
 		/obj/item/device/binoculars/range/designator,
 		/obj/item/storage/box/m94/signal,
 		/obj/item/tool/extinguisher/mini,
-		/obj/item/storage/box/zipcuffs,
+		/obj/item/storage/box/zipcuffs/small,
 		/obj/item/clothing/accessory/device/whistle/trench,
 	)

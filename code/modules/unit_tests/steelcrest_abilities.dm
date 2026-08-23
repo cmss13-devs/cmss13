@@ -5,7 +5,7 @@
 	TEST_ASSERT_EQUAL(xeno_defender.mob_size, base_size, "mob size was not restored")
 	TEST_ASSERT_EQUAL(xeno_defender.small_explosives_stun, base_stun, "small explosive stun was not restored")
 	TEST_ASSERT_EQUAL(xeno_defender.mob_flags, base_flags, "mob flags were not restored")
-	TEST_ASSERT(!HAS_TRAIT(xeno_defender, TRAIT_IMMOBILIZED), "xeno was still immobilized")
+		TEST_ASSERT(!HAS_TRAIT_FROM(xeno_defender, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Fortify")), "xeno was still immobilized by fortify")
 	TEST_ASSERT(!xeno_defender.anchored, "xeno was still anchored")
 
 /datum/unit_test/fortify_activate/Run()

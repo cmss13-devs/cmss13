@@ -85,12 +85,14 @@ SUBSYSTEM_DEF(influxdriver)
 			var/serialized_tag = serialize_field(tag, tags[tag])
 			if(serialized_tag)
 				serialized += ",[serialized_tag]"
-	serialized += " roundtime=[floor(ROUND_TIME)]"
+	serialized += " "
+	var/comma = ""
 	for(var/field in fields)
 		var/serialized_field = serialize_field(field, fields[field])
 		if(serialized_field)
 			valid = TRUE
-			serialized += ",[serialized_field]"
+			serialized += "[comma][serialized_field]"
+			comma = ","
 	if(!valid)
 		CRASH("Attempted to serialize to InfluxDB backend an invalid measurement (likely has no fields)")
 	if(timestamp_cache_worldtime != world.time)

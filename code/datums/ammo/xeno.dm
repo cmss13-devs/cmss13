@@ -23,11 +23,13 @@
 
 /datum/ammo/xeno/toxin
 	name = "neurotoxic spit"
+	icon_state = "sentinel_neurotoxin"
 	damage_falloff = 0
-	flags_ammo_behavior = AMMO_XENO|AMMO_IGNORE_RESIST
+	flags_ammo_behavior = AMMO_XENO|AMMO_IGNORE_RESIST|AMMO_SKIPS_ALIENS
 	spit_cost = 25
 	var/effect_power = XENO_NEURO_TIER_4
 	var/drain_power = 2
+	var/increment_amount = 5
 	var/datum/callback/neuro_callback
 
 	shell_speed = AMMO_SPEED_TIER_3
@@ -51,8 +53,10 @@
 			H.visible_message(SPAN_DANGER("[target_mob] shrugs off the neurotoxin!"))
 			return //species like zombies or synths are immune to neurotoxin
 		if(drain_medchems)
-			for(var/datum/reagent/medical/med in H.reagents.reagent_list)
-				H.reagents.remove_reagent(med.id, drain, TRUE)
+			for(var/datum/reagent/medical/med in human.reagents.reagent_list)
+				human.reagents.remove_reagent(med.id, drain, TRUE)
+	if(!apply_effect)
+		return
 
 	if(!apply_effect)
 		return
@@ -101,6 +105,14 @@
 		if(H.status_flags & XENO_HOST)
 			neuro_callback.Invoke(H, effect_power, drain_power, TRUE, TRUE, TRUE)
 			return
+		var/datum/effects/sentinel_neuro_stacks/sns = null
+		for (var/datum/effects/sentinel_neuro_stacks/sentinel_neuro_stacks in human.effects_list)
+			sns = sentinel_neuro_stacks
+			break
+
+		if (!sns)
+			sns = new /datum/effects/sentinel_neuro_stacks(human)
+		sns.increment_stack_count(increment_amount)
 
 	neuro_callback.Invoke(target_mob, effect_power, drain_power, FALSE, TRUE, TRUE)
 
@@ -113,6 +125,7 @@
 
 /datum/ammo/xeno/toxin/queen
 	name = "neurotoxic spit"
+	icon_state = "neurotoxin"
 	spit_cost = 50
 	effect_power = 2
 	drain_power = 4

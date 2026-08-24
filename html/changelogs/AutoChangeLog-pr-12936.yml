@@ -1,0 +1,4 @@
+author: "Venuska1117"
+delete-after: True
+changes:
+  - bugfix: "Made player unable to transmute as bulwark when they have stances active like encasing plates or reflective plates."

@@ -149,6 +149,35 @@
 	else
 		to_chat(src, SPAN_NOTICE("Attacks will no longer use directional assist."))
 
+/mob/living/carbon/xenomorph/verb/defensive_threshold_toggle()
+	set name = "Change Defensive Grab Threshold"
+	set desc = "Changes the defensive grab threshold for damage redirection or disables it entirely per caste."
+	set category = "Alien.Preferences"
+
+	if(!client)
+		return
+	if(!client.prefs)
+		return
+	if(!caste_type)
+		to_chat(src, SPAN_RED("This setting is caste specific and you have no caste somehow!"))
+		return
+	if(caste_type == XENO_CASTE_LARVA || caste_type == XENO_CASTE_FACEHUGGER)
+		to_chat(src, SPAN_RED("A [caste_type] can't even grab someone!"))
+		return
+
+	var/current = client.prefs.xeno_defensive_grab_pref[caste_type] * 100
+	var/choice = tgui_input_number(src, "What percentage of health as a [caste_type] before damage stops redirecting? NOTE: A setting of 100 will disable defensive grab entirely for this caste.", "Defensive Grab Threshold", current, 100, 25)
+	if(!choice)
+		return
+	client.prefs.xeno_defensive_grab_pref[caste_type] = clamp(choice / 100, 0.25, 1)
+	client.prefs.save_preferences()
+
+	var/percent = client.prefs.xeno_defensive_grab_pref[caste_type] * 100
+	if(percent == 100)
+		to_chat(src, SPAN_NOTICE("You will no longer utilize a defensive grab as a [caste_type]."))
+	else
+		to_chat(src, SPAN_NOTICE("You will use a defensive grab and redirect damage while above [percent]% health as a [caste_type]."))
+
 /mob/living/carbon/xenomorph/cancel_camera()
 	. = ..()
 

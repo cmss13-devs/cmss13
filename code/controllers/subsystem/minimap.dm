@@ -524,11 +524,11 @@ SUBSYSTEM_DEF(minimaps)
  * * marker: image or mutable_appearance we want to be using on the map
  */
 /datum/controller/subsystem/minimaps/proc/add_marker(atom/target, hud_flags = NONE, image/blip, image_x, image_y, is_label=FALSE)
-	var/turf/target_turf = get_turf(target)
-	if(!hud_flags || !blip || !target_turf)
+	if(!hud_flags || !blip)
 		CRASH("Invalid marker added to subsystem")
 
 	// Legacy behavior: track mobs one level in
+	var/turf/target_turf = get_turf(target)
 	var/z = target.z
 	if(ismob(target) && !z && target.loc)
 		z = target.loc.z

@@ -705,7 +705,6 @@
 
 	apply_damage(burn_amount, BURN)
 	to_chat(src, SPAN_DANGER("Our flesh, it melts!"))
-	updatehealth()
 	return TRUE
 
 /mob/living/carbon/xenomorph/get_role_name()

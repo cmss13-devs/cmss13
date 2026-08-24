@@ -107,7 +107,7 @@
 			to_chat(xeno, SPAN_XENOHIGHDANGER("Couldn't find the fruit to place! Contact a coder!"))
 			return
 		xeno.adjustBruteLoss(health_cost)
-		xeno.updatehealth()
+		xeno.updatehealth() // This is needed only because of using adjustBruteLoss above rather than apply_damage, which is wrong
 		playsound(xeno.loc, "alien_resin_build", 25)
 		xeno.current_fruits.Add(fruit)
 		xeno.behavior_delegate?.on_update_icons()

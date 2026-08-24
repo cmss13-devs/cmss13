@@ -268,7 +268,6 @@
 		target.gain_health(abs(target.health)) //second, get them out of crit.
 
 	target.gain_health(xeno.health * transfer_mod)
-	target.updatehealth()
 
 	target.clear_debuffs() //third, remove debuffs so they can stand up.
 

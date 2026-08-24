@@ -224,6 +224,8 @@
 		var/datum/action/A = X
 		A.update_button_icon()
 
+	updatehealth()
+
 
 /mob/living/carbon/xenomorph/proc/gain_armor_percent(value)
 	armor_integrity = min(armor_integrity + value, 100)

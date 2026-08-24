@@ -441,3 +441,13 @@
   Venuska1117:
   - bugfix: Made player unable to transmute as bulwark when they have stances active
       like encasing plates or reflective plates.
+2026-08-24:
+  AnCopper:
+  - rscadd: Added a UPP Ministry of Space Security Officer CO survivor to the Trijent
+      Dam UPP insert.
+  MistChristmas:
+  - rscadd: Disclaimer regarding arrests to CMB Inspection ERTs
+  - bugfix: Transmute works again
+  - bugfix: Xeno surgery is possible again
+  - bugfix: Rav strains no longer claim you have giant oversized claws when you're
+      not the ravager.

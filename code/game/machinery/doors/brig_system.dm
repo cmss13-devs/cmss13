@@ -350,7 +350,7 @@
 	overlays += image('icons/obj/structures/machinery/status_display.dmi', icon_state=picture_state)
 
 /obj/structure/machinery/brig_cell/proc/update_display(line1, line2)
-	var/new_text = {"<div style="font-family:'Roboto'; font-weight:bold; color:#09f;text-align:center;" valign="top">[line1]<br>[line2]</div>"}
+	var/new_text = {"<div style="font-family:'Roboto', sans-serif; color:#09f;text-align:center;" valign="top">[line1]<br>[line2]</div>"}
 	if(maptext != new_text)
 		maptext = new_text
 

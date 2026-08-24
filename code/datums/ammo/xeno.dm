@@ -45,12 +45,12 @@
 		target_mob.visible_message(SPAN_DANGER("[target_mob] withstands the neurotoxin!"))
 		return //endurance 5 makes you immune to weak neurotoxin
 	if(ishuman(target_mob))
-		var/mob/living/carbon/human/H = target_mob
+		var/mob/living/carbon/human/human = target_mob
 		if(drain_stims)
-			for(var/datum/reagent/generated/stim in H.reagents.reagent_list)
-				H.reagents.remove_reagent(stim.id, drain, TRUE)
-		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || H.species.flags & NO_NEURO)
-			H.visible_message(SPAN_DANGER("[target_mob] shrugs off the neurotoxin!"))
+			for(var/datum/reagent/generated/stim in human.reagents.reagent_list)
+				human.reagents.remove_reagent(stim.id, drain, TRUE)
+		if(human.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || human.species.flags & NO_NEURO)
+			human.visible_message(SPAN_DANGER("[target_mob] shrugs off the neurotoxin!"))
 			return //species like zombies or synths are immune to neurotoxin
 		if(drain_medchems)
 			for(var/datum/reagent/medical/med in human.reagents.reagent_list)
@@ -75,8 +75,8 @@
 		var/no_clothes_neuro = FALSE
 
 		if(ishuman(target_mob))
-			var/mob/living/carbon/human/H = target_mob
-			if(!H.wear_suit || H.wear_suit.slowdown == 0)
+			var/mob/living/carbon/human/human = target_mob
+			if(!human.wear_suit || human.wear_suit.slowdown == 0)
 				no_clothes_neuro = TRUE
 
 		if(no_clothes_neuro)
@@ -87,12 +87,12 @@
 
 /proc/apply_scatter_neuro(mob/living/target_mob)
 	if(ishuman(target_mob))
-		var/mob/living/carbon/human/H = target_mob
+		var/mob/living/carbon/human/human = target_mob
 		if(skillcheck(target_mob, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX))
 			target_mob.visible_message(SPAN_DANGER("[target_mob] withstands the neurotoxin!"))
 			return //endurance 5 makes you immune to weak neuro
-		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || H.species.flags & NO_NEURO)
-			H.visible_message(SPAN_DANGER("[target_mob] shrugs off the neurotoxin!"))
+		if(human.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || human.species.flags & NO_NEURO)
+			human.visible_message(SPAN_DANGER("[target_mob] shrugs off the neurotoxin!"))
 			return
 
 		target_mob.KnockDown(0.7) // Completely arbitrary values from another time where stun timers incorrectly stacked. Kill as needed.
@@ -101,9 +101,9 @@
 
 /datum/ammo/xeno/toxin/on_hit_mob(mob/target_mob,obj/projectile/P)
 	if(ishuman(target_mob))
-		var/mob/living/carbon/human/H = target_mob
-		if(H.status_flags & XENO_HOST)
-			neuro_callback.Invoke(H, effect_power, drain_power, TRUE, TRUE, TRUE)
+		var/mob/living/carbon/human/human = target_mob
+		if(human.status_flags & XENO_HOST)
+			neuro_callback.Invoke(human, effect_power, drain_power, TRUE, TRUE, TRUE)
 			return
 		var/datum/effects/sentinel_neuro_stacks/sns = null
 		for (var/datum/effects/sentinel_neuro_stacks/sentinel_neuro_stacks in human.effects_list)

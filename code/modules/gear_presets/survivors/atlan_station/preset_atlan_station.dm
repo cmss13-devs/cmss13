@@ -7,7 +7,7 @@
 	job_title = JOB_CEC_DOCENT
 	paygrades = list(PAY_SHORT_CEC2 = JOB_PLAYTIME_TIER_0)
 	faction = list(FACTION_CEC, FACTION_UPP)
-	faction_group = list(FACTION_CEC, FACTION_LIST_SURVIVOR_UPP,)
+	faction_group = FACTION_LIST_SURVIVOR_CEC
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	origin_override = ORIGIN_UPP
 	skills = /datum/skills/civilian/survivor/scientist
@@ -107,7 +107,7 @@
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_ENGLISH, LANGUAGE_CHINESE)
 	paygrades = list(PAY_SHORT_CEC3 = JOB_PLAYTIME_TIER_0)
 	faction = list(FACTION_CEC, FACTION_UPP)
-	faction_group = list(FACTION_CEC, FACTION_LIST_SURVIVOR_UPP,)
+	faction_group = FACTION_LIST_SURVIVOR_CEC
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	origin_override = ORIGIN_UPP
 	idtype = /obj/item/card/id/cec

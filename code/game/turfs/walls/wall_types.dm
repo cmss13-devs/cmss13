@@ -1481,7 +1481,7 @@
 		return
 
 	//Ineffective if someone is sitting on the wall
-	if(locate(/mob) in contents)
+	if(locate(/mob/living/carbon) in contents)
 		return ..()
 
 	if(!prob(chance_to_reflect))

@@ -108,7 +108,9 @@
 	mugshot.pixel_y = image_to_play_offset_y - 1 //scale shittery meant this didn't line up exactly without the -1
 	mugshot.layer = layer+0.1
 	mugshot.plane = plane
-	mugshot.transform = matrix().Scale(3) //only need to scale once, although this can actually be after as well alpha filter stuff, makes no diff. we use a NEW matrix to also fix things like people lying down
+	var/matrix/matrix_copy = matrix()
+	matrix_copy.Scale(3)  //only need to scale once, although this can actually be after as well alpha filter stuff, makes no diff. we use a NEW matrix to also fix things like people lying down
+	apply_transform(matrix_copy)
 	mugshot.dir = SOUTH
 	var/mutable_appearance/alphafilter = mutable_appearance('icons/effects/alphacolors.dmi', "announcement")
 	alphafilter.appearance_flags = APPEARANCE_UI

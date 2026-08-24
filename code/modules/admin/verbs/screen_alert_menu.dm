@@ -32,7 +32,6 @@
 		"operator",
 		"vip",
 		"woman_fleet",
-		"pmc_bald",
 		)
 	var/portrait_color
 	var/name

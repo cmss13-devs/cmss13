@@ -158,17 +158,17 @@ GLOBAL_LIST_INIT(ROLES_GLOBAL_FACTION_MESSAGE_EXCEPTION, list(JOB_WO_CO, JOB_WO_
 				choice = tgui_input_list(human_owner, "Send a HUD message to a squad or globally to your faction?.", "Alert Type", squads_being_overwatched_by_me)
 			if(choice)
 				if(choice == human_owner.faction)
-					for(var/mob/living/carbon/human/alerted in GLOB.human_mob_list)
+					for(var/mob/living/carbon/human/alerted as anything in GLOB.human_mob_list)
 						if(alerted.faction == human_owner.faction)
 							alert_receivers += alerted
 				else
 					if(choice == "All Squads")
 						alert_receivers += human_owner
-						for(var/datum/squad/marine/alerted_squad in GLOB.RoleAuthority.squads)
+						for(var/datum/squad/marine/alerted_squad as anything in GLOB.RoleAuthority.squads)
 							if(alerted_squad.name in squads_being_overwatched_by_me)
 								alert_receivers += alerted_squad.marines_list
 								override_color = mix_color_from_overwatched_squads(human_owner)
-					for(var/datum/squad/marine/alerted_squad in GLOB.RoleAuthority.squads)
+					for(var/datum/squad/marine/alerted_squad as anything in GLOB.RoleAuthority.squads)
 						if(choice == alerted_squad.name)
 							alert_receivers += alerted_squad.marines_list
 							alert_receivers += human_owner
@@ -177,7 +177,7 @@ GLOBAL_LIST_INIT(ROLES_GLOBAL_FACTION_MESSAGE_EXCEPTION, list(JOB_WO_CO, JOB_WO_
 				return
 		sound_alert = 'sound/effects/sos-morse-code.ogg'
 		announcement_title = "[human_owner.job]'s Announcement"
-	var/text = tgui_input_text(human_owner, "Maximum message length [MAX_COMMAND_MESSAGE_LEN]", "Send message to [choice ? choice : squads_being_overwatched_by_me[0]]",  max_length = MAX_COMMAND_MESSAGE_LEN, multiline = TRUE)
+	var/text = tgui_input_text(human_owner, "HUD Message", "Send message to [choice ? choice : squads_being_overwatched_by_me[0]]",  max_length = MAX_COMMAND_MESSAGE_LEN, multiline = TRUE)
 	if(!text)
 		return
 	if(!can_use_action())
@@ -195,7 +195,7 @@ GLOBAL_LIST_INIT(ROLES_GLOBAL_FACTION_MESSAGE_EXCEPTION, list(JOB_WO_CO, JOB_WO_
 	enter_cooldown(COOLDOWN_HUD_LENGTH)
 	alert_receivers += GLOB.observer_list
 
-	for(var/mob/mob_receiver in alert_receivers)
+	for(var/mob/mob_receiver as anything in alert_receivers)
 		if((isobserver(mob_receiver) && mob_receiver.client?.prefs?.toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS) || isliving(mob_receiver))
 			playsound_client(mob_receiver.client, sound_alert, 35, channel = CHANNEL_ANNOUNCEMENTS)
 		if(!isobserver(mob_receiver))

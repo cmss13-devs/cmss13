@@ -444,7 +444,7 @@
 /obj/structure/shuttle/part/dropship_omaha/dummy_part
 	icon = 'icons/turf/floors/floors.dmi'
 	icon_state = "noop"
-	var/mode = "default"
+	var/mode = ""
 	opacity = FALSE
 	density = FALSE
 	invisibility = 101
@@ -453,17 +453,54 @@
 	flags_atom = NO_ZFALL
 	var/turf/open/stored_turf
 	var/stored_icon_state
-	var/obj/structure/stairs/multiz/up/linked_staircase
+	var/obj/structure/stairs/linked_staircase
 	var/obj/structure/shuttle/part/dropship_omaha/structure_ramp/linked_structure_ramp
 
 /obj/structure/shuttle/part/dropship_omaha/dummy_part/adjustable_first
-	mode = "adjustable_down"
+	mode = "first"
 
 /obj/structure/shuttle/part/dropship_omaha/dummy_part/adjustable_second
-	mode = "adjustable_up"
+	mode = "second"
 
 /obj/structure/shuttle/part/dropship_omaha/dummy_part/adjustable_third
-	mode = "adjustable_space"
+	mode = "third"
+
+/obj/structure/shuttle/part/dropship_omaha/dummy_part/adjustable_fourth
+	mode = "fourth"
+
+/obj/structure/shuttle/part/dropship_omaha/dummy_part/adjustable_fifth
+	mode = "fifth"
+
+/obj/structure/shuttle/part/dropship_omaha/dummy_wall
+	density = TRUE
+	opacity = TRUE
+
+/obj/structure/shuttle/part/dropship_omaha/ramp_button_deployer
+	icon = 'icons/obj/structures/machinery/mohawk/bits_bobs.dmi'
+	icon_state = "deployer"
+	density = FALSE
+	opacity = FALSE
+	invisibility = 101
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	var/obj/structure/machinery/door_control/dropship_ramp_dummy/linked_button
+
+/obj/structure/shuttle/part/dropship_omaha/ramp_button_deployer/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
+	. = ..()
+	if(is_reserved_level(z))
+		return
+//	if(linked_button.linked_dropship.is_hijacked)
+//		return
+	if(linked_button)
+		linked_button.loc = SSmapping.get_turf_below(src.loc)
+		linked_button.pixel_y = -16
+	else
+		for(var/obj/structure/machinery/door_control/omaha_ramp/original_button in range(8, src.loc))
+			linked_button = new /obj/structure/machinery/door_control/dropship_ramp_dummy(SSmapping.get_turf_below(src.loc))
+			linked_button.pixel_y = -16
+			linked_button.linked_dropship = original_button.linked_dropship
+			linked_button.linked_ramp_control = original_button
+			linked_button.linked_single_controller = original_button.linked_single_controller
+			break
 
 /obj/structure/shuttle/part/dropship_omaha/structure_ramp
 	name = "Ramp"

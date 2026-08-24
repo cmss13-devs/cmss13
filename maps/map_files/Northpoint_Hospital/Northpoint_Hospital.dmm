@@ -2406,9 +2406,10 @@
 /turf/open/floor/prison/bluecorner/north,
 /area/northpoint/indoors/main)
 "ahm" = (
-/obj/structure/bed/chair/vehicle{
+/obj/structure/bed/chair/dropship/passenger{
 	pixel_x = 8
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/northpoint/outdoors/urban_cave/south_east)
 "ahn" = (
@@ -5390,6 +5391,10 @@
 /obj/effect/decal/hybrisa/road/lines4,
 /turf/open/asphalt/brown,
 /area/northpoint/outdoors/urban_cave/lz1_south_west)
+"apy" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/area/northpoint/outdoors/urban_cave/south_east)
 "apz" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt_2,
@@ -7105,12 +7110,18 @@
 /turf/open/hybrisa/street/cement2,
 /area/northpoint/oob)
 "auw" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/shuttle/dropship/can_surgery/light_grey_bottom_left,
 /area/northpoint/outdoors/urban_cave/south_east)
 "aux" = (
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
 /area/northpoint/outdoors/urban_cave/south_east)
 "auy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_6"
+	},
 /turf/open/shuttle/dropship/can_surgery/light_grey_bottom_right,
 /area/northpoint/outdoors/urban_cave/south_east)
 "auz" = (
@@ -7199,9 +7210,11 @@
 /turf/open/floor/prison,
 /area/northpoint/landing_zone_2)
 "auO" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/shuttle/dropship/can_surgery/light_grey_top_left,
 /area/northpoint/outdoors/urban_cave/south_east)
 "auP" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/shuttle/dropship/can_surgery,
 /area/northpoint/outdoors/urban_cave/south_east)
 "auQ" = (
@@ -24353,6 +24366,593 @@
 "bwq" = (
 /turf/closed/wall/hybrisa/spaceport/unmeltable,
 /area/northpoint/landing_zone_1)
+"bwr" = (
+/obj/effect/decal/cleanable/dirt{
+	name = "impact";
+	icon_state = "thermite"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
+/area/northpoint/outdoors/urban_cave/south_east)
+"bws" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
+/area/northpoint/outdoors/urban_cave/south_east)
+"bwt" = (
+/obj/structure/bed/chair/dropship/passenger{
+	icon_state = "hotseat_destroyed";
+	dir = 2;
+	can_buckle = 0;
+	layer = 3.11;
+	pixel_y = 0;
+	pixel_x = -8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/area/northpoint/outdoors/urban_cave/south_east)
+"bwu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_5"
+	},
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/area/northpoint/outdoors/urban_cave/south_east)
+"bwv" = (
+/obj/effect/decal/cleanable/dirt{
+	name = "impact";
+	icon_state = "thermite"
+	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
+/area/northpoint/outdoors/urban_cave/south_east)
+"bww" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
+/area/northpoint/outdoors/urban_cave/south_east)
+"bwx" = (
+/obj/structure/prop/tyrargo/watchtower{
+	layer = 4;
+	pixel_x = -64;
+	pixel_y = 27;
+	density = 0;
+	explo_proof = 1
+	},
+/turf/open/hybrisa/street/sidewalk,
+/area/northpoint/outdoors/hospital_exterior/east)
+"bwy" = (
+/obj/structure/prop/tyrargo/boards/boards_2{
+	dir = 8;
+	pixel_x = -15;
+	pixel_y = -5
+	},
+/obj/structure/prop/tyrargo/boards/boards_2{
+	dir = 4;
+	pixel_x = 1;
+	pixel_y = 3
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0_mud,
+/area/northpoint/oob)
+"bwz" = (
+/obj/structure/prop/tyrargo/boards/boards_2{
+	layer = 2.1;
+	pixel_y = 9
+	},
+/obj/structure/prop/tyrargo/boards/boards_2{
+	dir = 4;
+	pixel_x = 1;
+	pixel_y = 3
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/northpoint/oob)
+"bwA" = (
+/obj/structure/prop/tyrargo/boards/boards_2{
+	layer = 2.1;
+	pixel_y = 9
+	},
+/obj/structure/prop/tyrargo/boards/boards_2{
+	dir = 4;
+	pixel_x = 1;
+	pixel_y = 3
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0_mud,
+/area/northpoint/oob)
+"bwB" = (
+/obj/structure/prop/tyrargo/large_tents/supply{
+	layer = 5.81
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0_mud,
+/area/northpoint/oob)
+"bwC" = (
+/obj/structure/prop/tyrargo/watchtower{
+	layer = 4;
+	pixel_x = -64;
+	pixel_y = 27;
+	density = 0;
+	explo_proof = 1
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/northpoint/outdoors/urban_cave/south_east)
+"bwD" = (
+/obj/structure/prop/tyrargo/illuminator,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/northpoint/oob)
+"bwE" = (
+/obj/structure/prop/tyrargo/boards/boards_2{
+	layer = 2.1;
+	pixel_y = 11;
+	dir = 4;
+	pixel_x = -8
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/northpoint/oob)
+"bwF" = (
+/obj/structure/prop/tyrargo/boards/boards_2{
+	layer = 2.1;
+	pixel_y = 11;
+	dir = 4;
+	pixel_x = -8
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/northpoint/oob)
+"bwG" = (
+/obj/structure/prop/tyrargo/large_tents/small_closed{
+	layer = 3.99
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/northpoint/oob)
+"bwH" = (
+/obj/structure/prop/tyrargo/boards/boards_1{
+	pixel_x = -12;
+	pixel_y = -3
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/northpoint/oob)
+"bwI" = (
+/obj/structure/prop/tyrargo/large_tents/small_closed,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/northpoint/oob)
+"bwJ" = (
+/obj/structure/prop/tyrargo/boards/boards_1{
+	pixel_x = -12;
+	pixel_y = -3
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/northpoint/oob)
+"bwK" = (
+/obj/structure/prop/tyrargo/large_tents/small_closed/back{
+	layer = 3.98
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/northpoint/oob)
+"bwL" = (
+/obj/structure/prop/tyrargo/boards/boards_2{
+	layer = 2.1;
+	pixel_y = 9
+	},
+/obj/structure/prop/tyrargo/boards/boards_2{
+	dir = 8;
+	pixel_x = -15;
+	pixel_y = -5
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/northpoint/oob)
+"bwM" = (
+/obj/structure/prop/tyrargo/boards/boards_2{
+	layer = 2.1;
+	pixel_y = 14;
+	dir = 1;
+	pixel_x = 10
+	},
+/obj/structure/prop/tyrargo/boards/boards_2{
+	layer = 2.1;
+	pixel_y = 11;
+	dir = 4;
+	pixel_x = -8
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/northpoint/oob)
+"bwN" = (
+/obj/structure/prop/tyrargo/boards/boards_2{
+	layer = 2.1;
+	pixel_y = 11;
+	dir = 4;
+	pixel_x = -8
+	},
+/obj/structure/prop/tyrargo/boards/boards_2{
+	layer = 2.1;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/northpoint/oob)
+"bwO" = (
+/obj/structure/prop/tyrargo/boards/boards_2{
+	dir = 8;
+	pixel_x = -15;
+	pixel_y = -5
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/northpoint/oob)
+"bwP" = (
+/obj/structure/prop/tyrargo/large_tents/small_closed,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/northpoint/oob)
+"bwQ" = (
+/obj/structure/prop/tyrargo/large_tents/small{
+	pixel_x = -9
+	},
+/obj/structure/largecrate/supply/weapons/flamers,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/northpoint/oob)
+"bwR" = (
+/obj/structure/largecrate/random/barrel/brown,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/northpoint/oob)
+"bwS" = (
+/obj/structure/prop/tyrargo/boards/boards_2{
+	layer = 2.1;
+	pixel_y = 11;
+	dir = 4;
+	pixel_x = -8
+	},
+/obj/structure/prop/tyrargo/boards/boards_2{
+	layer = 2.1;
+	pixel_y = 11;
+	dir = 4;
+	pixel_x = -8
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/northpoint/oob)
+"bwT" = (
+/obj/structure/prop/tyrargo/boards/boards_1{
+	pixel_y = -7;
+	pixel_x = -11;
+	dir = 1
+	},
+/obj/structure/prop/tyrargo/boards/boards_1{
+	pixel_x = -12;
+	pixel_y = -3
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/northpoint/oob)
+"bwU" = (
+/obj/structure/largecrate/supply/supplies/wy_emergency_food{
+	pixel_y = -4;
+	pixel_x = -2
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/northpoint/oob)
+"bwV" = (
+/obj/structure/prop/tyrargo/gen,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/northpoint/oob)
+"bwW" = (
+/obj/structure/prop/tyrargo/boards/boards_1{
+	dir = 4;
+	pixel_x = 4;
+	pixel_y = -20
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/northpoint/oob)
+"bwX" = (
+/obj/structure/prop/tyrargo/boards/boards_2{
+	dir = 8;
+	pixel_x = -15;
+	pixel_y = -5
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/northpoint/oob)
+"bwY" = (
+/obj/structure/prop/tyrargo/large_tents/small_closed/back{
+	layer = 5.99
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/northpoint/oob)
+"bwZ" = (
+/obj/structure/prop/tyrargo/boards/boards_2{
+	dir = 8;
+	pixel_x = -15;
+	pixel_y = -5
+	},
+/obj/structure/prop/tyrargo/boards/boards_1{
+	pixel_x = -12;
+	pixel_y = -3
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/northpoint/oob)
+"bxa" = (
+/obj/structure/prop/tyrargo/watchtower{
+	layer = 6.5;
+	pixel_x = 38;
+	pixel_y = -22;
+	density = 0;
+	explo_proof = 1
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/northpoint/outdoors/hospital_exterior/east)
+"bxb" = (
+/obj/structure/prop/tyrargo/boards/boards_2{
+	dir = 8;
+	pixel_x = -15;
+	pixel_y = -5
+	},
+/obj/structure/prop/tyrargo/boards/boards_1{
+	pixel_x = -12;
+	pixel_y = -3
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
+/area/northpoint/oob)
+"bxc" = (
+/obj/structure/prop/tyrargo/boards/boards_2{
+	dir = 8;
+	pixel_x = -15;
+	pixel_y = -5
+	},
+/obj/structure/prop/tyrargo/illuminator,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/northpoint/oob)
+"bxd" = (
+/obj/structure/prop/tyrargo/large_tents/supply,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/northpoint/oob)
+"bxe" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/obj/structure/prop/tyrargo/watchtower{
+	layer = 6.5;
+	pixel_x = -75;
+	pixel_y = -73;
+	density = 0;
+	explo_proof = 1
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/northpoint/outdoors/hospital_exterior/east)
+"bxf" = (
+/obj/effect/spawner/random/tool,
+/turf/open/floor/prison,
+/area/northpoint/indoors/comms/com_alpha_1)
+"bxg" = (
+/turf/closed/wall/strata_outpost/reinforced,
+/area/northpoint/indoors/comms/com_alpha_1)
+"bxh" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/prison/sterile_white,
+/area/northpoint/indoors/emer_dep)
+"bxi" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/medical,
+/turf/open/floor/corsat/officetiles,
+/area/northpoint/indoors/emer_dep)
+"bxj" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/bed/roller/hospital_empty/bigrollerempty{
+	dir = 8
+	},
+/turf/open/floor/prison/whitegreenfull,
+/area/northpoint/indoors/emer_dep)
+"bxk" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/whitegreen,
+/area/northpoint/indoors/emer_dep)
+"bxl" = (
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/prison/whitegreenfull,
+/area/northpoint/indoors/emer_dep)
+"bxm" = (
+/obj/structure/machinery/light,
+/turf/open/floor/prison/whitegreen,
+/area/northpoint/indoors/emer_dep)
+"bxn" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/nosmoking_1{
+	pixel_y = -32
+	},
+/turf/open/floor/prison/whitegreen,
+/area/northpoint/indoors/emer_dep)
+"bxo" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/whitegreen/west,
+/area/northpoint/indoors/emer_dep)
+"bxp" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/whitegreen/east,
+/area/northpoint/indoors/emer_dep)
+"bxq" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	dir = 8;
+	name = "\improper Emergency Dept Shutters"
+	},
+/turf/open/floor/corsat/officetiles,
+/area/northpoint/indoors/emer_dep)
+"bxr" = (
+/obj/structure/bed/chair/comfy/hybrisa/white{
+	dir = 2
+	},
+/turf/open/floor/prison/whitegreen/southeast,
+/area/northpoint/indoors/emer_dep)
+"bxs" = (
+/obj/structure/bed/chair/comfy/hybrisa/white{
+	dir = 2
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/whitegreen/southwest,
+/area/northpoint/indoors/emer_dep)
+"bxt" = (
+/obj/structure/barricade/handrail/medical,
+/turf/open/floor/prison/whitegreen/north,
+/area/northpoint/indoors/emer_dep)
+"bxu" = (
+/obj/structure/barricade/handrail/medical,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/whitegreen/north,
+/area/northpoint/indoors/emer_dep)
+"bxv" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/whitegreenfull,
+/area/northpoint/indoors/emer_dep)
+"bxw" = (
+/obj/structure/barricade/handrail/medical{
+	dir = 1
+	},
+/turf/open/floor/prison/whitegreen,
+/area/northpoint/indoors/emer_dep)
+"bxx" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/whitegreenfull,
+/area/northpoint/indoors/emer_dep)
+"bxy" = (
+/obj/structure/bed/chair/comfy/hybrisa/white{
+	dir = 1
+	},
+/turf/open/floor/prison/whitegreen/northeast,
+/area/northpoint/indoors/emer_dep)
+"bxz" = (
+/obj/structure/bed/chair/comfy/hybrisa/white{
+	dir = 1
+	},
+/turf/open/floor/prison/whitegreen/northwest,
+/area/northpoint/indoors/emer_dep)
+"bxA" = (
+/obj/structure/barricade/handrail/medical{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/whitegreenfull,
+/area/northpoint/indoors/emer_dep)
+"bxB" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/whitegreen/north,
+/area/northpoint/indoors/emer_dep)
+"bxC" = (
+/obj/structure/machinery/iv_drip{
+	pixel_y = 19
+	},
+/turf/open/floor/prison/whitegreenfull,
+/area/northpoint/indoors/emer_dep)
+"bxD" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	layer = 1.9
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_warning"
+	},
+/obj/structure/sign/poster/corporate{
+	layer = 2.9;
+	pixel_y = 32
+	},
+/turf/open/floor/prison/whitegreen/northwest,
+/area/northpoint/indoors/emer_dep)
+"bxE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/prison/whitegreen/north,
+/area/northpoint/indoors/emer_dep)
+"bxF" = (
+/obj/structure/sign/nosmoking_1{
+	pixel_y = 32
+	},
+/turf/open/floor/prison/whitegreen/north,
+/area/northpoint/indoors/emer_dep)
+"bxG" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/prison/whitegreen,
+/area/northpoint/indoors/emer_dep)
+"bxH" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/whitegreen,
+/area/northpoint/indoors/emer_dep)
+"bxI" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/prison/whitegreen,
+/area/northpoint/indoors/emer_dep)
+"bxJ" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/prison/whitegreen/southeast,
+/area/northpoint/indoors/emer_dep)
+"bxK" = (
+/obj/structure/bed/sofa/south/grey/left,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/sign/nosmoking_1{
+	pixel_y = 32;
+	layer = 2.8
+	},
+/turf/open/floor/prison/sterile_white,
+/area/northpoint/indoors/emer_dep)
+"bxL" = (
+/obj/structure/bed/sofa/south/grey,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/sign/poster/ad{
+	layer = 4;
+	pixel_x = 7;
+	pixel_y = 38
+	},
+/turf/open/floor/prison/sterile_white,
+/area/northpoint/indoors/emer_dep)
+"bxM" = (
+/obj/structure/bed/sofa/south/grey/right,
+/obj/structure/sign/poster/safety{
+	pixel_x = -4;
+	pixel_y = 34;
+	layer = 2.9
+	},
+/turf/open/floor/prison/sterile_white,
+/area/northpoint/indoors/emer_dep)
+"bxN" = (
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 32
+	},
+/turf/open/floor/prison/sterile_white,
+/area/northpoint/indoors/emer_dep)
+"bxO" = (
+/obj/structure/bed/sofa/south/grey/left,
+/obj/structure/sign/poster/nspa{
+	pixel_y = 34;
+	pixel_x = -7;
+	layer = 2.9
+	},
+/turf/open/floor/prison/sterile_white,
+/area/northpoint/indoors/emer_dep)
+"bxP" = (
+/obj/structure/bed/sofa/south/grey/right,
+/obj/structure/sign/poster/safety{
+	pixel_x = -4;
+	pixel_y = 34
+	},
+/turf/open/floor/prison/sterile_white,
+/area/northpoint/indoors/emer_dep)
+"bxQ" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_y = 31;
+	pixel_x = -10
+	},
+/turf/open/floor/prison/whitegreen/east,
+/area/northpoint/indoors/emer_dep)
 "bzB" = (
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/carpet9_4/west,
@@ -26228,10 +26828,6 @@
 /obj/effect/decal/hybrisa/road/lines3,
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
-"dSO" = (
-/obj/structure/machinery/door/airlock/hybrisa/medical,
-/turf/open/floor/corsat/officetiles,
-/area/northpoint/indoors/emer_dep)
 "dTl" = (
 /obj/structure/barricade/concrete{
 	dir = 1
@@ -26985,7 +27581,8 @@
 /obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
-	layer = 5.98
+	layer = 5.98;
+	pixel_y = -14
 	},
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
@@ -27483,7 +28080,8 @@
 /obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
-	layer = 5.97
+	layer = 5.97;
+	pixel_y = -14
 	},
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
@@ -30311,10 +30909,6 @@
 /area/northpoint/outdoors/urban_cave/east)
 "juD" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/sign/nosmoking_1{
-	pixel_y = 32;
-	pixel_x = 16
-	},
 /turf/open/floor/prison/whitegreen/north,
 /area/northpoint/indoors/emer_dep)
 "juI" = (
@@ -30662,6 +31256,9 @@
 /area/northpoint/outdoors/urban_cave/south_east)
 "jSu" = (
 /obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/recharger{
+	pixel_y = 4
+	},
 /turf/open/floor/prison/sterile_white,
 /area/northpoint/indoors/emer_dep)
 "jTy" = (
@@ -33168,6 +33765,9 @@
 	pixel_y = 10;
 	pixel_x = 9
 	},
+/obj/item/storage/firstaid/regular{
+	pixel_y = -4
+	},
 /turf/open/floor/prison/sterile_white,
 /area/northpoint/indoors/emer_dep)
 "nwu" = (
@@ -33586,7 +34186,7 @@
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
 	layer = 5.98;
-	pixel_y = -4
+	pixel_y = -14
 	},
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
@@ -34073,12 +34673,13 @@
 "oNU" = (
 /obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
-	dir = 8;
-	layer = 5.98
-	},
-/obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
+	pixel_y = -14
+	},
+/obj/structure/prop/northpoint/concrete_wall/wired{
+	dir = 8;
+	layer = 5.98;
 	pixel_y = -14
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
@@ -34764,8 +35365,12 @@
 /turf/open/floor/prison/ramptop/east,
 /area/northpoint/oob)
 "pPL" = (
-/obj/structure/bed/chair/vehicle{
-	dir = 1;
+/obj/structure/bed/chair/dropship/passenger{
+	icon_state = "hotseat_destroyed";
+	dir = 2;
+	can_buckle = 0;
+	layer = 3.11;
+	pixel_y = 0;
 	pixel_x = -8
 	},
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
@@ -35004,10 +35609,6 @@
 /obj/effect/decal/hybrisa/road/lines4,
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/outdoors/urban_cave/south_east)
-"qeQ" = (
-/obj/structure/bed/sofa/south/grey/left,
-/turf/open/floor/prison/blue_plate,
-/area/northpoint/indoors/emer_dep)
 "qeY" = (
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecalleft";
@@ -35035,6 +35636,7 @@
 /obj/effect/decal/large_stain{
 	pixel_y = -20
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/northpoint/outdoors/urban_cave/south_east)
 "qhv" = (
@@ -36588,10 +37190,6 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/northpoint/landing_zone_1)
-"slX" = (
-/obj/structure/bed/sofa/south/grey/right,
-/turf/open/floor/prison/blue_plate,
-/area/northpoint/indoors/emer_dep)
 "smc" = (
 /obj/structure/machinery/door/airlock/hybrisa/personal_solid/autoname{
 	dir = 1
@@ -36937,6 +37535,7 @@
 /area/northpoint/outdoors/hospital_exterior/central)
 "sNx" = (
 /obj/effect/decal/large_stain,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/northpoint/outdoors/urban_cave/south_east)
 "sNG" = (
@@ -38515,12 +39114,13 @@
 "uRt" = (
 /obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
-	dir = 8;
-	layer = 5.98
-	},
-/obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 1;
 	layer = 5.8;
+	pixel_y = -14
+	},
+/obj/structure/prop/northpoint/concrete_wall/wired{
+	dir = 8;
+	layer = 5.98;
 	pixel_y = -14
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -39733,10 +40333,6 @@
 /obj/structure/prop/northpoint/concrete_wall/wired,
 /turf/open/floor/plating,
 /area/northpoint/oob)
-"wQo" = (
-/obj/structure/bed/sofa/south/grey,
-/turf/open/floor/prison/blue_plate,
-/area/northpoint/indoors/emer_dep)
 "wQq" = (
 /obj/structure/prop/hybrisa/vehicles/Meridian/Turquoise/damage_1{
 	pixel_y = 8;
@@ -44106,9 +44702,9 @@ aGv
 bvt
 bvi
 sPf
-aYu
-aYu
-aYu
+bxg
+bxg
+bxg
 aYu
 aYu
 aYu
@@ -44261,9 +44857,9 @@ aGv
 bvu
 bvj
 buZ
-aYu
-aYu
-aYu
+bxg
+bxg
+bxg
 buJ
 buz
 bus
@@ -44417,8 +45013,8 @@ bvu
 bvk
 bva
 gOW
-aYu
-aYu
+bxg
+bxg
 aYu
 buA
 bus
@@ -45814,7 +46410,7 @@ bvf
 buX
 buS
 buN
-aYD
+bxf
 but
 buy
 bup
@@ -46077,7 +46673,7 @@ lZe
 (36,1,1) = {"
 lZe
 nmS
-bwq
+nmS
 kYD
 jbW
 xGQ
@@ -47007,7 +47603,7 @@ lZe
 (42,1,1) = {"
 lZe
 nmS
-dWb
+swa
 kYD
 jbW
 ddW
@@ -47627,7 +48223,7 @@ lZe
 (46,1,1) = {"
 lZe
 nmS
-bwq
+nmS
 kYD
 jbW
 xGQ
@@ -47689,8 +48285,8 @@ rwl
 rwl
 rwl
 rwl
-rwl
-rwl
+aXE
+aXE
 aSo
 aSj
 aSj
@@ -47844,8 +48440,8 @@ aDI
 aDE
 aDz
 aDu
-rwl
-rwl
+aXE
+aXE
 aSo
 aSo
 aSj
@@ -52152,8 +52748,8 @@ aJs
 bbN
 bbx
 rwl
-lTi
-aXq
+bxK
+bxG
 rwl
 aYr
 aZJ
@@ -52163,8 +52759,8 @@ aYU
 aYF
 aYr
 rwl
-aDt
-qeQ
+bxh
+lTi
 rwl
 aYU
 aYU
@@ -52307,8 +52903,8 @@ bbP
 afB
 afu
 rwl
-sTR
-aXq
+bxL
+bxk
 aXX
 aYr
 aZJ
@@ -52318,8 +52914,8 @@ aYL
 bac
 aYr
 aXX
-aDt
-wQo
+aYa
+sTR
 rwl
 aYU
 aYL
@@ -52462,8 +53058,8 @@ vtZ
 bbO
 nfJ
 rwl
-kfS
-aXq
+bxM
+bxH
 aXX
 aYr
 aYz
@@ -52473,8 +53069,8 @@ bak
 aYG
 aYr
 aXX
-aDt
-slX
+aYa
+kfS
 rwl
 aZl
 pYR
@@ -52617,19 +53213,19 @@ bcd
 bbP
 bby
 rwl
+bxN
+bxk
+rwl
+aYr
+aYr
+aYr
+aYr
+aYr
+aYr
+aYr
+rwl
 aYa
-aXq
-rwl
-aYr
-aYr
-aYr
-aYr
-aYr
-aYr
-aYr
-rwl
-aDt
-aDt
+aYa
 rwl
 rwl
 rwl
@@ -52772,16 +53368,16 @@ afF
 afC
 afv
 rwl
-lTi
+bxO
 aXq
 rwl
 aXX
-aXY
-aYb
+bxq
+bxq
+bxq
+bxq
 aXX
-aXY
-aYb
-aXX
+rwl
 rwl
 aXJ
 aXJ
@@ -52929,15 +53525,15 @@ bbz
 rwl
 sTR
 aXq
-aXj
+bxA
 aXM
 aXM
 aXj
 aXj
-aXM
-aXM
-aXj
-aXU
+bxo
+bxo
+bxj
+aXX
 aXF
 aDs
 aDs
@@ -53082,17 +53678,17 @@ een
 sVa
 afw
 rwl
-kfS
-aXq
-aXv
+bxP
+bxI
+bxB
 aXZ
+bxy
+bxw
+bxt
+bxr
 aXN
-aXq
-aXv
-aXZ
-aXN
-aXq
-aXk
+bxk
+bxi
 aXq
 aDs
 aDs
@@ -53237,17 +53833,17 @@ iOp
 sVa
 afu
 rwl
-aXs
-aXZ
+bxQ
+bxJ
 aXv
 aXF
+bxz
+bxw
+bxu
+bxs
 aYm
 aXq
-aXv
-aXF
-aYm
-aXq
-aXk
+aXY
 aXq
 aDs
 aDs
@@ -53394,15 +53990,15 @@ afx
 rwl
 rwl
 rwl
-aXj
+bxC
 aXs
-aXs
-aXj
-aXj
-aXs
-aXs
-aXj
-aXU
+bxp
+bxx
+bxv
+bxp
+bxp
+bxl
+aXX
 aXZ
 aDs
 aDs
@@ -53549,7 +54145,7 @@ afz
 bbk
 dlH
 rwl
-jMO
+bxD
 aMC
 jSu
 iJB
@@ -53704,17 +54300,17 @@ afA
 aft
 afs
 rwl
-juD
+bxE
 aXq
 wZw
 lyf
 sbi
 aXE
 juD
-aXq
+bxm
 rwl
-aDt
-aDt
+aYa
+aYa
 aea
 aDs
 aXz
@@ -53722,7 +54318,7 @@ aea
 aDs
 aDs
 aXz
-aDt
+aYa
 rwl
 gvE
 aRH
@@ -53859,17 +54455,17 @@ bby
 bbk
 imv
 rwl
-aXv
+bxF
 tVt
 aXE
 jLq
 nKc
 wZw
 aXv
-tVt
+bxn
 rwl
-aDt
-aDt
+aYa
+aYa
 aea
 aDs
 aXz
@@ -53877,7 +54473,7 @@ aea
 aDs
 aDs
 aXz
-aDt
+aYa
 rwl
 gvE
 aRH
@@ -54017,14 +54613,14 @@ rwl
 aXY
 aYb
 aXE
-dSO
+aXY
 aXE
 aXE
 aXY
 aYb
 rwl
-aDt
-aDt
+aYa
+aYa
 aea
 aDs
 aXz
@@ -54032,7 +54628,7 @@ aea
 aDs
 aDs
 aXz
-aDt
+aYa
 rwl
 gvE
 aRH
@@ -54332,8 +54928,8 @@ aXj
 aXZ
 aXN
 aXZ
-rwl
-rwl
+aXE
+aXE
 aXj
 aXq
 aXv
@@ -54342,8 +54938,8 @@ vfP
 aXq
 aXv
 aXj
-rwl
-rwl
+aXE
+aXE
 pQd
 sxG
 sxG
@@ -54487,8 +55083,8 @@ aXs
 aXs
 aXs
 aXZ
-rwl
-rwl
+aXE
+aXE
 rwl
 aXY
 aYb
@@ -54497,8 +55093,8 @@ aXX
 aXY
 aYb
 rwl
-rwl
-rwl
+aXE
+aXE
 rwl
 rwl
 rwl
@@ -54642,8 +55238,8 @@ aXj
 aXM
 aXM
 aXj
-rwl
-rwl
+aXE
+aXE
 aXj
 aXq
 aXv
@@ -54652,8 +55248,8 @@ dou
 aXq
 aXv
 aXj
-rwl
-rwl
+aXE
+aXE
 axy
 axr
 axh
@@ -55107,7 +55703,7 @@ aXj
 aXs
 aXs
 aXj
-aXE
+rwl
 aXv
 aXj
 aXM
@@ -55259,10 +55855,10 @@ aXY
 aXY
 aXY
 aXX
-aXE
-aXE
-aXE
-aXE
+rwl
+rwl
+rwl
+rwl
 aXv
 aXj
 aYh
@@ -55417,7 +56013,7 @@ aXj
 aXj
 aXM
 aXj
-aXE
+rwl
 aXv
 aXj
 aXq
@@ -55572,7 +56168,7 @@ aXj
 aXv
 aYa
 aXq
-aXE
+rwl
 aXv
 aXj
 aXq
@@ -55727,7 +56323,7 @@ aXj
 aXv
 aYa
 aXq
-aXE
+rwl
 aXv
 aXj
 aXq
@@ -55882,7 +56478,7 @@ aXj
 aXv
 aYa
 aXq
-aXE
+rwl
 aXv
 aXj
 aXq
@@ -55893,8 +56489,8 @@ aXE
 aXv
 aXj
 aXq
-rwl
-rwl
+aXE
+aXE
 aYi
 aYi
 aYi
@@ -56037,7 +56633,7 @@ aXj
 aXv
 aYa
 aXq
-aXE
+rwl
 aXv
 aXj
 aXq
@@ -56048,8 +56644,8 @@ aXE
 aXv
 aXj
 aXq
-rwl
-rwl
+aXE
+aXE
 axs
 dQo
 aXM
@@ -56192,7 +56788,7 @@ aXj
 aXv
 aYa
 aXq
-aXE
+rwl
 aXv
 aXj
 aXq
@@ -56203,8 +56799,8 @@ mku
 aXv
 aXj
 aXq
-rwl
-rwl
+aXE
+aXE
 axt
 aYa
 awF
@@ -56347,7 +56943,7 @@ aXj
 aXv
 aYa
 aXq
-aXE
+rwl
 aXv
 aXj
 aXq
@@ -56358,8 +56954,8 @@ mku
 aXv
 aXj
 aXq
-rwl
-rwl
+aXE
+aXE
 axu
 aYa
 aYa
@@ -56638,7 +57234,7 @@ bbS
 bbS
 bbS
 baG
-baG
+aXE
 aXE
 aXE
 aXE
@@ -57122,7 +57718,7 @@ aXj
 aXj
 aXj
 aXj
-aXE
+rwl
 aXv
 aXj
 aXq
@@ -57742,7 +58338,7 @@ aXj
 aXj
 aXj
 aXj
-aXE
+rwl
 aXv
 aXj
 aXq
@@ -57896,8 +58492,8 @@ aXs
 anj
 sCN
 sCN
-aXE
-aXE
+rwl
+rwl
 aXv
 aXj
 aXq
@@ -58048,12 +58644,12 @@ ack
 ack
 ack
 ack
-aXE
+rwl
 aXY
 pGm
-aXE
-aXE
-aXE
+rwl
+rwl
+rwl
 aXj
 aXr
 aXM
@@ -58208,7 +58804,7 @@ hOb
 rRD
 aZT
 aZK
-aXE
+rwl
 aXj
 aXs
 aXs
@@ -58363,7 +58959,7 @@ bBE
 uyM
 vDn
 aZL
-aXE
+rwl
 aXj
 aXF
 aYm
@@ -58518,8 +59114,8 @@ ant
 bad
 gBI
 aZL
-aXE
-aXE
+rwl
+rwl
 aXq
 aXv
 aXj
@@ -58674,7 +59270,7 @@ bae
 gBI
 aZL
 aZy
-aXE
+rwl
 ank
 aXv
 aXj
@@ -59139,7 +59735,7 @@ xco
 ant
 ant
 ant
-aXE
+rwl
 qqk
 aXv
 aXj
@@ -59201,7 +59797,7 @@ aSc
 kjU
 kjU
 aRH
-uRt
+bmh
 utR
 aNH
 czX
@@ -59293,8 +59889,8 @@ baf
 baf
 cEg
 kyJ
-aXE
-aXE
+rwl
+rwl
 aXq
 aXv
 aXj
@@ -59357,7 +59953,7 @@ kjU
 kjU
 oNU
 utR
-jmg
+bwy
 vvO
 aiz
 wPw
@@ -59447,8 +60043,8 @@ baf
 ugL
 baf
 kyJ
-aXE
-aXE
+rwl
+rwl
 mku
 aXq
 aXv
@@ -59511,8 +60107,8 @@ aSc
 fuS
 eZz
 eZT
-jmg
-utR
+bwB
+bwz
 lYu
 lQz
 snr
@@ -59601,8 +60197,8 @@ ack
 baf
 baf
 buu
-aXE
-aXE
+rwl
+rwl
 aXT
 mku
 aXq
@@ -59667,7 +60263,7 @@ tzS
 uUX
 vxN
 jmg
-jmg
+bwA
 toj
 dsb
 gyI
@@ -59753,10 +60349,10 @@ swa
 swa
 swa
 ack
-aXE
-aXE
-aXE
-aXE
+rwl
+rwl
+rwl
+rwl
 aXT
 aXT
 mku
@@ -59783,7 +60379,7 @@ aXF
 aXv
 aXq
 aXj
-rwl
+aXE
 aRH
 aRI
 aVK
@@ -59825,7 +60421,7 @@ wAk
 hay
 wAk
 tSo
-aRl
+bwx
 aPI
 aPN
 agw
@@ -59937,8 +60533,8 @@ aXu
 aXq
 aXv
 aXq
-rwl
-rwl
+aXE
+aXE
 aRI
 aRH
 aVG
@@ -60084,7 +60680,7 @@ aXq
 eEO
 rwl
 rwl
-rwl
+aXE
 cuh
 cuh
 vfP
@@ -60239,7 +60835,7 @@ aRs
 aYn
 aVN
 ajp
-rwl
+aXE
 aXT
 aXT
 mku
@@ -60394,7 +60990,7 @@ aRt
 aYn
 aVN
 aVN
-rwl
+aXE
 aXT
 aXT
 mku
@@ -60549,15 +61145,15 @@ aTs
 aSL
 aRR
 aSJ
-rwl
-rwl
-rwl
-rwl
-rwl
-rwl
-rwl
-rwl
-rwl
+aXE
+aXE
+aXE
+aXE
+aXE
+aXE
+aXE
+aXE
+aXE
 aSI
 aUp
 aTz
@@ -66160,7 +66756,7 @@ aRm
 qqz
 aTE
 aRC
-aRC
+bxa
 mys
 hLJ
 utR
@@ -66317,13 +66913,13 @@ aRB
 bmh
 hLJ
 utR
-utR
+bwV
 utR
 uzV
+bwK
 iYT
-iYT
-iYT
-iYT
+bwG
+bwD
 ahL
 kuZ
 bkI
@@ -66472,13 +67068,13 @@ hLJ
 uzV
 utR
 uzV
-utR
-utR
+bwO
+bwS
 uzV
 uzV
 utR
 utR
-utR
+bwE
 ahL
 aqQ
 fJw
@@ -66623,17 +67219,17 @@ aVk
 ack
 utR
 iYT
-iYT
+bxd
 uzV
 uzV
 uzV
-utR
-iYT
-utR
-utR
+bwW
+bwF
 utR
 utR
-iYT
+utR
+utR
+bwF
 ahL
 aqQ
 uqp
@@ -66779,15 +67375,15 @@ ack
 iYT
 iYT
 utR
-utR
-uzV
-iYT
-iYT
-iYT
-utR
-utR
-utR
-iYT
+bxc
+bxb
+bwZ
+bwX
+bwT
+bwO
+bwL
+bwJ
+bwH
 iYT
 ahL
 cAJ
@@ -66937,15 +67533,15 @@ utR
 utR
 utR
 utR
-iYT
+bwY
 utR
-utR
-utR
+bwP
+bwM
 iYT
-iYT
+bwI
 ars
 aqQ
-hzb
+bwC
 anN
 atT
 gQe
@@ -67095,7 +67691,7 @@ utR
 utR
 iYT
 iYT
-utR
+bwE
 utR
 uzV
 ars
@@ -67250,7 +67846,7 @@ utR
 iYT
 iYT
 iYT
-iYT
+bwN
 uzV
 uzV
 mDs
@@ -67397,15 +67993,15 @@ oJW
 aga
 oJW
 aUV
-aUK
+bxe
 aRC
 aRB
 pDE
 iYT
 iYT
 iYT
-iYT
-iYT
+bwQ
+bwN
 pKY
 pKY
 pKY
@@ -67558,9 +68154,9 @@ aTu
 aRB
 pDE
 iYT
-iYT
-iYT
-iYT
+bwU
+bwR
+bwF
 pKY
 blh
 blk
@@ -70839,12 +71435,12 @@ tOL
 aiz
 apG
 auO
-auB
+bws
 auB
 apA
 auB
 auw
-auq
+apy
 mET
 dfI
 kTV
@@ -70993,11 +71589,11 @@ ckc
 aBG
 pmd
 apF
-aux
-auq
-pPL
-auq
-auq
+bwv
+bwu
+bwt
+apy
+apy
 aux
 wMS
 azv
@@ -71303,12 +71899,12 @@ ajt
 fgt
 xqT
 apF
-aux
+bww
 ahm
-auq
+apy
 auq
 pPL
-aux
+bwr
 rxm
 vbK
 lSH
@@ -71460,11 +72056,11 @@ idK
 apG
 auQ
 sNx
-auB
-auB
+bws
+bws
 qfh
 auy
-auq
+apy
 kNR
 aWD
 rmn

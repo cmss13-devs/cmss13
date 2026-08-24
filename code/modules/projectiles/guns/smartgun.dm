@@ -94,6 +94,7 @@
 
 	var/lock_range = 2
 	var/aim_assist = FALSE
+	var/aim_assist_drain = 333
 	var/image/autoshot_image
 
 /obj/item/weapon/gun/smartgun/Initialize(mapload, ...)
@@ -450,7 +451,7 @@
 	if(!iff_enabled)
 		shot_drain -= 10
 	if(aim_assist)
-		shot_drain += get_aim_assist_drain()
+		shot_drain += aim_assist_drain
 	if(motion_detector)
 		shot_drain += 15
 	if(override_drain)
@@ -469,9 +470,6 @@
 		balloon_alert(usr, "low power")
 		return FALSE
 	return FALSE
-
-/obj/item/weapon/gun/smartgun/proc/get_aim_assist_drain()
-	return 333
 
 /obj/item/weapon/gun/smartgun/proc/toggle_aim_assist(mob/user, silent)
 	if(!silent)
@@ -701,6 +699,7 @@
 // Normal smartgun with aim assist enabled by default
 /obj/item/weapon/gun/smartgun/autoaim
 	desc = "The actual firearm in the 4-piece M56A2 Smartgun System. Essentially a heavy, mobile machinegun. This upgraded variant features new, updated tracking software."
+	aim_assist_drain = 50
 	actions_types = list(
 		/datum/action/item_action/smartgun/toggle_ammo_type,
 		/datum/action/item_action/smartgun/toggle_aim_assist,
@@ -712,9 +711,6 @@
 	. = ..()
 	toggle_aim_assist(null, TRUE)
 
-/obj/item/weapon/gun/smartgun/autoaim/get_aim_assist_drain()
-	return 50
-
 //TERMINATOR SMARTGUN
 /obj/item/weapon/gun/smartgun/terminator
 	name = "\improper M57R 'Terminator' smartgun"
@@ -724,6 +720,7 @@
 	can_change_ammo = FALSE //Only one ammo type, no toggling.
 	current_mag = /obj/item/ammo_magazine/smartgun/heap
 	ammo_primary_def = /datum/ammo/bullet/smartgun/heap
+	aim_assist_drain = 50
 	actions_types = list(
 		/datum/action/item_action/smartgun/toggle_frontline_mode,
 		/datum/action/item_action/smartgun/toggle_aim_assist,
@@ -734,9 +731,6 @@
 /obj/item/weapon/gun/smartgun/terminator/Initialize(mapload, ...)
 	. = ..()
 	toggle_aim_assist(null, TRUE)
-
-/obj/item/weapon/gun/smartgun/terminator/get_aim_assist_drain()
-	return 50
 
 /obj/item/weapon/gun/smartgun/terminator/low_threat
 	current_mag = /obj/item/ammo_magazine/smartgun
@@ -753,6 +747,7 @@
 	drum_cover_overlay = FALSE
 	gun_faction = FACTION_PMC
 	has_cover = FALSE
+	aim_assist_drain = 50
 	actions_types = list(
 		/datum/action/item_action/smartgun/toggle_ammo_type,
 		/datum/action/item_action/smartgun/toggle_aim_assist,
@@ -765,9 +760,6 @@
 	. = ..()
 	toggle_aim_assist(null, TRUE)
 	AddElement(/datum/element/corp_label/wy)
-
-/obj/item/weapon/gun/smartgun/l56a2/get_aim_assist_drain()
-	return 50
 
 /obj/item/weapon/gun/smartgun/l56a2/elite
 	name = "\improper L56A2D 'Dirty' smartgun"

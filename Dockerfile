@@ -4,7 +4,6 @@ ARG UTILITY_BASE_IMAGE=alpine:3
 ARG PROJECT_NAME=colonialmarines
 ARG BYOND_MAJOR=516
 ARG BYOND_MINOR=1687
-ARG NODE_VERSION=26-alpine
 ARG RUSTG_TARGET=7.0.0
 ARG BYOND_UID=1000
 
@@ -44,16 +43,16 @@ FROM byond AS cm-builder
 COPY tools/docker/nodesource.gpg /usr/share/keyrings/nodesource.gpg
 COPY tools/docker/nodesource.list /etc/apt/sources.list.d/
 COPY tools/docker/apt-node-prefs /etc/apt/preferences/
-RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y nodejs bun g++-multilib && apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y g++-multilib nodejs && apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN npm install -g bun
 
 # TGUI deps pre-caching, thin out files to serve as basis for layer caching
-FROM node:${NODE_VERSION}-buster AS tgui-thin
+FROM oven/bun:latest AS tgui-thin
 COPY tgui /tgui
 RUN rm -rf docs public
-RUN find packages \! -name "package.json" -mindepth 2 -maxdepth 2 -print | xargs rm -rf
 
 # TGUI deps cache layer, actually gets the deps
-FROM node:${NODE_VERSION}-buster AS tgui-deps
+FROM oven/bun:latest AS tgui-deps
 COPY --from=tgui-thin tgui /tgui
 WORKDIR /tgui
 RUN bun install --immutable
@@ -109,3 +108,4 @@ COPY --chown=${BYOND_UID}:${BYOND_UID} icons icons
 USER ${BYOND_UID}
 RUN chown ${BYOND_UID}:${BYOND_UID} /cm
 ENTRYPOINT [ "/entrypoint.sh" ]
+

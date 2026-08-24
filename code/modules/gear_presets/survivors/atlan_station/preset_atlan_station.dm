@@ -873,6 +873,7 @@
 	faction_group = list(FACTION_LIST_SURVIVOR_UPP, FACTION_CEC)
 	idtype = /obj/item/card/id/cec
 	survivor_variant = CORPORATE_SURVIVOR
+	origin_override = ORIGIN_UPP
 	minimap_icon = "upp_synth"
 	minimap_background = "background_upp_bravo"
 

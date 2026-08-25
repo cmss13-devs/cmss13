@@ -261,32 +261,32 @@
 	name = "Square"
 	id = FLAMESHAPE_SQUARE
 
-/datum/flameshape/square/handle_fire_spread(obj/flamer_fire/F, fire_spread_amount, burn_dam, fuel_pressure = 1)
-	var/turf/source_turf = get_turf(F.loc)
+/datum/flameshape/square/handle_fire_spread(obj/flamer_fire/fire, fire_spread_amount, burn_dam, fuel_pressure = 1)
+	var/turf/source_turf = get_turf(fire.loc)
 	var/radius = fire_spread_amount - 1
 
-	for(var/turf/T in orange(radius, source_turf))
-		if(istype(T, /turf/open/space))
+	for(var/turf/turf in orange(radius, source_turf))
+		if(istype(turf, /turf/open/space))
 			continue
 
-		var/obj/flamer_fire/foundflame = locate() in T
-		if(foundflame && foundflame.tied_reagent == F.tied_reagent)
+		var/obj/flamer_fire/foundflame = locate() in turf
+		if(foundflame && foundflame.tied_reagent == fire.tied_reagent)
 			continue
 
-		if(T.density)
-			T.flamer_fire_act(burn_dam, F.weapon_cause_data)
+		if(turf.density)
+			turf.flamer_fire_act(burn_dam, fire.weapon_cause_data)
 			continue
 
-		var/obj/flamer_fire/temp = new()
-		var/atom/affected_atom = LinkBlocked(temp, source_turf, T)
+		var/obj/flamer_fire/temp_fire = new()
+		var/atom/affected_atom = LinkBlocked(temp_fire, source_turf, turf)
 
 		if(affected_atom)
-			affected_atom.flamer_fire_act(burn_dam, F.weapon_cause_data)
+			affected_atom.flamer_fire_act(burn_dam, fire.weapon_cause_data)
 			if(affected_atom.flags_atom & ON_BORDER)
 				continue
 
-		var/ring = get_dist(source_turf, T)
-		addtimer(CALLBACK(src, PROC_REF(generate_fire), T, F, 0, FLAMESHAPE_SQUARE, null, FALSE, fuel_pressure), ring)
+		var/ring = get_dist(source_turf, turf)
+		addtimer(CALLBACK(src, PROC_REF(generate_fire), turf, fire, 0, FLAMESHAPE_SQUARE, null, FALSE, fuel_pressure), ring)
 
 GLOBAL_LIST_INIT(flameshapes, list(
 	FLAMESHAPE_DEFAULT = new /datum/flameshape/default(),

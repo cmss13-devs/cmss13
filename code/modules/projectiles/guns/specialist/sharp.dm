@@ -74,18 +74,17 @@
 		return
 
 	if(in_chamber)
-		var/in_chamber_ammo_type = get_ammo_type_chambered()
 		if(current_mag)
-			if(!istype(in_chamber_ammo_type, current_mag.default_ammo))
+			if(!istype(in_chamber.ammo, current_mag.default_ammo))
 				to_chat(user, SPAN_WARNING("Feeding \the [dart] would mix the ammo in \the [current_mag]!"))
 				return
 			else if (current_mag.current_rounds == current_mag.max_rounds)
-				to_chat(user, SPAN_WARNING("\The [dart] can't be pushed into the chamber as \the loaded [current_mag] is full!"))
+				to_chat(user, SPAN_WARNING("\The [dart] can't be pushed into the chamber as \the loaded magazine is full!"))
 				return
 			current_mag.current_rounds++
 		else
 			var/obj/item/ammo_magazine/handful/new_handful = new(get_turf(src))
-			new_handful.generate_handful(in_chamber_ammo_type, /obj/item/ammo_magazine/rifle/sharp::caliber, 1, /obj/item/weapon/gun/rifle/sharp::type)
+			new_handful.generate_handful(get_ammo_type_chambered(), /obj/item/ammo_magazine/rifle/sharp::caliber, 1, /obj/item/weapon/gun/rifle/sharp::type)
 			to_chat(user, SPAN_WARNING("An already chambered dart is pushed out \the [src]'s magazine port!"))
 	if(dart.current_rounds > 0)
 		in_chamber = create_bullet(dart.ammo_source, initial(name))

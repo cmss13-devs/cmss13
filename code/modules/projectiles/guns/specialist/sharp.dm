@@ -63,10 +63,15 @@
 /obj/item/weapon/gun/rifle/sharp/reload(mob/user, obj/item/ammo_magazine/magazine)
 	if(magazine.flags_magazine & AMMUNITION_HANDFUL)
 		insert_dart(user)
+		update_icon()
+		return
+	else if (istype(magazine, /obj/item/ammo_magazine/rifle/sharp))
+		insert_dart_magazine(user, magazine)
+		update_icon()
 		return
 	..()
 
-/obj/item/weapon/gun/proc/insert_dart(mob/user)
+/obj/item/weapon/gun/rifle/sharp/proc/insert_dart(mob/user)
 	var/obj/item/ammo_magazine/handful/dart = user.get_active_hand()
 
 	if(!istype(dart.ammo_source, /datum/ammo/rifle/sharp))
@@ -82,6 +87,7 @@
 				to_chat(user, SPAN_WARNING("\The [dart] can't be pushed into the chamber as the loaded magazine is full!"))
 				return
 			current_mag.current_rounds++
+			current_mag.update_icon(current_mag.max_rounds)
 		else
 			var/obj/item/ammo_magazine/handful/new_handful = new(get_turf(src))
 			new_handful.generate_handful(get_ammo_type_chambered(), /obj/item/ammo_magazine/rifle/sharp::caliber, 1, /obj/item/weapon/gun/rifle/sharp::type)
@@ -96,6 +102,18 @@
 		if(dart.current_rounds <= 0)
 			QDEL_NULL(dart)
 		playsound(src, 'sound/weapons/handling/gun_boltaction_close.ogg', 15)
+
+/obj/item/weapon/gun/rifle/sharp/proc/insert_dart_magazine(mob/user, obj/item/ammo_magazine/magazine)
+	if(current_mag)
+		to_chat(user, SPAN_WARNING("\The [src] has still got a magazine loaded."))
+		return
+	if(user)
+		replace_magazine(user, magazine)
+		SEND_SIGNAL(user, COMSIG_MOB_RELOADED_GUN, src)
+	else
+		current_mag = magazine
+		magazine.forceMove(src)
+		replace_ammo(,magazine)
 
 //code for changing mine modes
 

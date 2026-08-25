@@ -1,7 +1,7 @@
-//Northpoint Hospital Areas//
+//NorHos Areas//
 
 /area/northpoint
-//	name = "Northpoint Hospital"
+//	name = "NorHos"
 	icon_state = "tutorial"
 	can_build_special = TRUE
 	powernet_name = "ground"
@@ -10,13 +10,13 @@
 //parent types
 
 /area/northpoint/indoors
-	name = "Northpoint Hospital - Indoors"
+	name = "NorHos - Indoors"
 	icon_state = "unknown"
 	ceiling = CEILING_METAL
 	soundscape_playlist = SCAPE_PL_LV522_INDOORS
 
 /area/northpoint/outdoors
-	name = "Northpoint Hospital - Outdoors"
+	name = "NorHos - Outdoors"
 	icon_state = "unknown"
 	ceiling = CEILING_NONE
 	ceiling_muffle = FALSE
@@ -36,7 +36,7 @@
 //Landing Zone
 
 /area/northpoint/landing_zone_1
-	name = "Northpoint Hospital - Emergency Medical Landing Pad - NorthWest"
+	name = "NorHos - Emergency Medical Landing Pad - NorthWest"
 	icon_state = "shuttlered2"
 	is_landing_zone = TRUE
 	minimap_color = MINIMAP_AREA_LZ
@@ -46,7 +46,7 @@
 	ceiling = CEILING_METAL
 
 /area/northpoint/landing_zone_2
-	name = "Northpoint Hospital - Logistics Landing Pad - SouthWest"
+	name = "NorHos - Logistics Landing Pad - SouthWest"
 	icon_state = "shuttlered2"
 	is_landing_zone = TRUE
 	minimap_color = MINIMAP_AREA_LZ
@@ -63,18 +63,18 @@
 	minimap_color = MINIMAP_AREA_COMMS
 
 /area/northpoint/indoors/comms/com_alpha_1
-	name = "Northpoint Hospital - Colony Primary Communications Hub"
+	name = "NorHos - Colony Primary Communications Hub"
 
 /area/northpoint/indoors/comms/com_alpha_2
-	name = "Northpoint Hospital - Emergency Backup Communications"
+	name = "NorHos - Emergency Backup Communications"
 	ceiling = CEILING_NONE
 	soundscape_playlist = SCAPE_PL_LV522_OUTDOORS
 
 /area/northpoint/indoors/comms/com_bravo_1
-	name = "Northpoint Hospital - Internal Communications Array"
+	name = "NorHos - Internal Communications Array"
 
 /area/northpoint/indoors/comms/com_bravo_2
-	name = "Northpoint Hospital - Military Field Communications Network"
+	name = "NorHos - Military Field Communications Network"
 	ceiling = CEILING_NONE
 	soundscape_playlist = SCAPE_PL_LV522_OUTDOORS
 
@@ -83,42 +83,42 @@
 // --
 
 /area/northpoint/indoors/power
-	name = "Northpoint Hospital - Power Generator Substation"
+	name = "NorHos - Power Generator Substation"
 	icon_state = "engine"
 	minimap_color = MINIMAP_AREA_COLONY_ENGINEERING
 
 // --
 
 /area/northpoint/indoors/emer_dep
-	name = "Northpoint Hospital - Emergency Department"
+	name = "NorHos - Emergency Department"
 	icon_state = "medbay"
 	minimap_color = MINIMAP_AREA_MEDBAY
 
 // --
 
 /area/northpoint/indoors/main
-	name = "Northpoint Hospital - Main Hospital"
+	name = "NorHos - Main Hospital"
 	icon_state = "medbay2"
 	minimap_color = MINIMAP_AREA_COLONY_HOSPITAL
 
 // --
 
 /area/northpoint/indoors/res
-	name = "Northpoint Hospital - Medical Research Clinic"
+	name = "NorHos - Medical Research Clinic"
 	icon_state = "medbay3"
 	minimap_color = MINIMAP_AREA_COLONY_RESANDCOM
 
 // --
 
 /area/northpoint/indoors/off
-	name = "Northpoint Hospital - Office"
+	name = "NorHos - Office"
 	icon_state = "captain"
 	minimap_color = MINIMAP_AREA_COLONY_SPACE_PORT
 
 // --
 
 /area/northpoint/indoors/sec_prep
-	name = "Northpoint Hospital - Security & Catering"
+	name = "NorHos - Security & Catering"
 	icon_state = "security"
 	minimap_color = MINIMAP_AREA_COLONY_MARSHALLS
 
@@ -134,21 +134,21 @@
 	minimap_color = MINIMAP_AREA_CELL_VIP
 
 /area/northpoint/outdoors/streets/lz1
-	name = "Northpoint Hospital - LZ1 Streets"
+	name = "NorHos - LZ1 Streets"
 
 /area/northpoint/outdoors/streets/lzstreets
-	name = "Northpoint Hospital - LZ1 / LZ2 Connection Streets"
+	name = "NorHos - LZ1 / LZ2 Connection Streets"
 
 /area/northpoint/outdoors/streets/north_carpark
-	name = "Northpoint Hospital - North Carpark/Entrance"
+	name = "NorHos - North Carpark/Entrance"
 
 /area/northpoint/outdoors/streets/south_carpark
-	name = "Northpoint Hospital - South Carpark/Entrance"
+	name = "NorHos - South Carpark/Entrance"
 
 // --
 
 /area/northpoint/outdoors/park
-	name = "Northpoint Hospital - MacArthur Park"
+	name = "NorHos - MacArthur Park"
 	icon_state = "iso1"
 	minimap_color = MINIMAP_AREA_CELL_LOW
 
@@ -161,19 +161,19 @@
 	minimap_color = MINIMAP_AREA_COLONY_STREETS
 
 /area/northpoint/outdoors/hospital_exterior/west
-	name = "Northpoint Hospital - West Hospital Grounds"
+	name = "NorHos - West Hospital Grounds"
 
 /area/northpoint/outdoors/hospital_exterior/north
-	name = "Northpoint Hospital - North Hospital Grounds"
+	name = "NorHos - North Hospital Grounds"
 
 /area/northpoint/outdoors/hospital_exterior/south
-	name = "Northpoint Hospital - South Hospital Grounds"
+	name = "NorHos - South Hospital Grounds"
 
 /area/northpoint/outdoors/hospital_exterior/east
-	name = "Northpoint Hospital - East Hospital Grounds"
+	name = "NorHos - East Hospital Grounds"
 
 /area/northpoint/outdoors/hospital_exterior/central
-	name = "Northpoint Hospital - Central Hospital Grounds"
+	name = "NorHos - Central Hospital Grounds"
 
 // --
 
@@ -186,29 +186,29 @@
 	unoviable_timer = FALSE
 
 /area/northpoint/outdoors/urban_cave/south_east
-	name = "Northpoint Hospital - Exterior Streets - Southeast"
+	name = "NorHos - Exterior Streets - Southeast"
 
 /area/northpoint/outdoors/urban_cave/east
-	name = "Northpoint Hospital - Exterior Streets - East"
+	name = "NorHos - Exterior Streets - East"
 
 /area/northpoint/outdoors/urban_cave/north_east
-	name = "Northpoint Hospital - Exterior Streets - Northeast"
+	name = "NorHos - Exterior Streets - Northeast"
 
 /area/northpoint/outdoors/urban_cave/south
-	name = "Northpoint Hospital - Exterior Streets - South"
+	name = "NorHos - Exterior Streets - South"
 
 /area/northpoint/outdoors/urban_cave/lz2_south
-	name = "Northpoint Hospital - Logistics LZ - Exterior Streets - South"
+	name = "NorHos - Logistics LZ - Exterior Streets - South"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 
 /area/northpoint/outdoors/urban_cave/lz2_south/weedkiller
 	linked_lz = DROPSHIP_LZ2
 
 /area/northpoint/outdoors/urban_cave/lz2_west
-	name = "Northpoint Hospital - Logistics LZ - Exterior Streets - West"
+	name = "NorHos - Logistics LZ - Exterior Streets - West"
 
 /area/northpoint/outdoors/urban_cave/lz1_south_west
-	name = "Northpoint Hospital - Medical LZ - Exterior Streets - South-West"
+	name = "NorHos - Medical LZ - Exterior Streets - South-West"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 
 /area/northpoint/outdoors/urban_cave/lz1_south_west/weedkiller

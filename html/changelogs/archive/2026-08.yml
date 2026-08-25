@@ -308,3 +308,167 @@
   - code_imp: xeno handle_collision procs should now perform less redundant typechecks
   Venuska1117:
   - refactor: Changes Runner bone_spur code to use get_turf() instead of locate().
+2026-08-14:
+  Jone62:
+  - code_imp: Adds a preference to toggle the end round sound theme
+  MistChristmas:
+  - bugfix: Burn kits and ointment are usable again on areas like the dropship
+  Oceany:
+  - bugfix: Synth maintenance station in req, replaced with old sprite
+  Puckaboo2:
+  - rscadd: During certain surgery steps, the patient will receive an indication that
+      they 'feel better' after pain recalculation.
+  - rscadd: Surgery missteps or fails that cause significant harm to an awake patient,
+      such as initiating an amputation, internal bleeding, bone fractures, and organ
+      contamination, will now cause the patient to occasionally *pain regardless of
+      whether they have the appropriate painkillers or not.
+  - rscadd: An awake patient, regardless of whether oxycodone is in their system,
+      will scream (not burst scream) when the doctor tries to pull a larva out. Pain
+      relief does not relieve pressure, after all.
+  - rscadd: Surgery missteps or failures that cause harm to the person operating or
+      being operated on will occasionally make the victims cry out in pain.
+  - rscadd: Acid that gushes violently from surgery fails will get all over the place!
+  - rscadd: Bone chips will spawn under the doctor successfully completing the "Remove
+      Bone Chips" step on a patient.
+  - rscadd: Adds some flavor text if the small chance of a doctor breaking ribs or
+      skulls while opening them with a retractor that tells yourself and your patient
+      that sometimes this happens--it's nobody's fault.
+  - rscadd: Adds HIGHDANGER warnings to patients undergoing an amputation whilst awake
+      and encourages telling the doctor to stop if the step was a mistake.
+  - balance: Each organ repaired during organ repair surgery requires a surgical stack.
+  - balance: Healing a hematoma no longer cures disabilities; you must take out brain
+      chips to do so. Doing so gives you good boy points in flavor text form!
+  - balance: You will be punished for not being careful while cutting pseudoroots
+      and your patient will take organ damage from it. Shame on you for using bad
+      tools or rushing.
+  - code_imp: Adds more captivating and descriptive flavor text during certain surgeries,
+      especially if the patient is awake and not under that numb juice.
+  - code_imp: Changes some surgery step noises to make more sense.
+  - bugfix: Surgery missteps or failures that cause significant harm to a patient,
+      such as contamination, internal bleeding, or bone fractures, will now be evident
+      in the surgery step text. Not to mention, the patient will scream at you.
+  - bugfix: Patients must be anesthetized with oxycodone for them not to feel their
+      limb being chopped off for whatever reason.
+  - bugfix: Nonbinary pronouns can now appear in surgical steps instead of defaulting
+      to 'his'.
+  - bugfix: Brain surgery overlays are no longer misaligned from the skull.
+  - spellcheck: Fixed some spelling and grammar errors.
+  - imagetweak: Polished the closed chest sprite to add the sternum and clavicles;
+      polished the open chest sprite and added some wet organs in there.
+  - imagetweak: Adds the human spriting template to the damage overlay icon as a reference.
+  - imagetweak: Resprites and realigns brain surgery overlays.
+  - qol: Adds sounds to surgery procedures that did not have any.
+  - soundadd: Adds a hemostat 'snipping' sound for the hemostat initiation step, adds
+      surgical line sound effects for initiation and scissor snip for completing the
+      step, and adds 3 different types of circular saw fail noises depending on what
+      the circular saw hits.
+  - soundtweak: hemostat1.ogg swapped and renamed to hemostat2.ogg to make way for
+      the new hemostat1.ogg
+  - soundtweak: Some surgical steps had their sounds replaced.
+  - soundtweak: Surgical sounds now don't have any 'lag' before playing.
+  Red-byte3D:
+  - bugfix: Ghosts now properly get moved to new xenos as they evolve / devo
+  cuberound:
+  - rscadd: extra tacmap buttons, allows moving up and down z level and changing from
+      ship to map on hud button map
+  cuberound, datimesmog:
+  - imageadd: ' new HUD element to track Neurotoxin stacks'
+  - imageadd: new HUD element for medhud to track Neurotoxin
+  labeo0:
+  - bugfix: Guaranteed slot T2 xenos cannot transmute over the T2 slot capacity
+  - bugfix: Xenos don't lose transmute by selecting their current caste.
+2026-08-15:
+  Antlers:
+  - spellcheck: The SEA's drill hat now refers to them as drill instructors rather
+      than drill sergeants.
+  Venuska1117:
+  - balance: Praetorian acid grenade got increased throwing speed and launch_type
+      changed to "HIGH_LAUNCH", allowing it to throw over more obstacles such as railings
+      or closets, but in exchange "explosion" time is increased from 1s to 1.25s
+  - bugfix: Fixed cades that got unwired not getting back their pass_flags.
+  Zenith, Aleksh. dimdimich1996:
+  - rscadd: adds various new thrall gear & expands their options.
+  - rscadd: adds the missing snow loadout gear, boots, rain-cover, netting.
+  - imageadd: adds arc icon for tech-tree.
+  - imagetweak: palette correction for prey_items.dmi
+2026-08-16:
+  Red-byte3D:
+  - imageadd: New ghillie sprite
+2026-08-17:
+  AnCopper:
+  - bugfix: The New Varadero LACN Commander is once again a Commander instead of a
+      LtCol
+  Namen-n:
+  - mapadd: added vehicle restrictions for caves on the LV522 Chances Claim map.
+  Unknownity:
+  - balance: Reinforced Walls now take 8 plasteel sheets to construct instead of 5.
+  - rscadd: Added one marine tip about being able to reinforce reagent and fuel tanks
+      with plasteel.
+  - refactor: Nuked some single letter vars in the girders file.
+2026-08-18:
+  MistChristmas:
+  - bugfix: Custom Hotkeys saving + as Add, and ARROWUP not being saved as North etc
+      for the arrow keys.
+2026-08-19:
+  BOBAMA:
+  - bugfix: generic survivors should no longer spawn during survivor team inserts,  generic
+      survivors should also no longer spawn on top of each other sometimes, and CO
+      survivors should no longer be able to duplicate non-co archetypes.
+2026-08-20:
+  Ammoniacres:
+  - balance: made it so Ravagers have a 25% chance to accidentally slash instead of
+      tackle on disarm intent!
+2026-08-21:
+  Unknownity:
+  - bugfix: Fixes some area oversights in Whiskey Outpost.
+2026-08-22:
+  Bibby0110:
+  - bugfix: Ravagers failing to tackle no longer announces the personal message to
+      everyone surrounding you
+  Drathek:
+  - code_imp: Added more pass flag bitfields for VV and unified them with a couple
+      defines
+  - code_imp: Unified barricade pass flag initialization with a define
+  Nihisohel:
+  - bugfix: Base Ravager Empower now processes properly
+  Rad Chandelier:
+  - rscadd: Adds a check of MRE side dishes before allowing MRE folding into trash;
+      Changes MRE weight class to small
+  - code_imp: All changes ported directly from PvE code
+  - qol: Adds check of MRE food items to allow storage into MRE
+  SpypigDev:
+  - bugfix: Invasive surgery now slices through splints
+  Venuska1117:
+  - bugfix: Made player unable to transmute as bulwark when they have stances active
+      like encasing plates or reflective plates.
+2026-08-24:
+  AnCopper:
+  - rscadd: Added a UPP Ministry of Space Security Officer CO survivor to the Trijent
+      Dam UPP insert.
+  MistChristmas:
+  - rscadd: Disclaimer regarding arrests to CMB Inspection ERTs
+  - bugfix: Transmute works again
+  - bugfix: Xeno surgery is possible again
+  - bugfix: Rav strains no longer claim you have giant oversized claws when you're
+      not the ravager.
+2026-08-25:
+  Drathek:
+  - bugfix: Fixed an exploit where you could stack/unstack acided things on the ground
+  - code_imp: COMSIG_ITEM_PICKUP now fires properly on pickup and COMSIG_MOVABLE_PRE_PICKUP
+      is used to check if pickup/interaction is allowed
+  LC4492:
+  - code_imp: Instead of Vs the thermal tarps are now Ms, following tradition.
+  - imagetweak: Updates the sprites for body, cryo and tarp bags to show an 'empty'
+      version of the sprite when the bag is empty, so it is now visually clear when
+      the bag has someone inside it or not.
+  - imagetweak: Changed 'holocards' on the cryobags from the 2x2 square on top of
+      the bag to recolored versions of the bodybag label, so they are now much bigger,
+      which helps you to notice it better, and now appear similar to a real life triage
+      card attached to the bag.
+  - imagetweak: Change tarps to use their currently unused closed version, of which
+      I've hand-crafted to now have a very smooth 'invisibility' transition, there's
+      also some small details that will make the bag look more 'alive' aswell.
+  - soundtweak: Changed the sounds of when the tarp bags are closed or opened to the
+      same sounds of body and cryo bags, given it just makes more sense.
+  Watermelon914:
+  - bugfix: Fixed gamemode vote not auto-resolving if there's only one option.

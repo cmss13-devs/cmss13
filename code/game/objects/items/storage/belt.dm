@@ -2359,6 +2359,11 @@
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/t73_impact(src)
 
+/obj/item/storage/belt/gun/type47/t73/leader/standard/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/t73/leader/standard())
+	for(var/i = 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/pistol/t73(src)
+
 /obj/item/storage/belt/gun/type47/revolver/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/revolver/upp())
 	for(var/total_storage_slots in 1 to storage_slots - 1)

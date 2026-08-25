@@ -410,6 +410,17 @@
 	var/setup_timer // initialized in sharp.dm drop_dart
 	var/upgrade_timer // used here
 	var/disarm_timer // initialized in sharp.dm drop_dart
+	var/timer_id
+	/// What ammo should it create when converted back
+	var/datum/ammo/rifle/sharp/ammo_path = /datum/ammo/rifle/sharp/explosive
+
+/obj/item/explosive/mine/sharp/Initialize()
+	. = ..()
+	ASSERT(ispath(ammo_path, /datum/ammo/rifle/sharp))
+
+/obj/item/explosive/mine/sharp/Destroy()
+	deltimer(timer_id)
+	. = ..()
 
 /obj/item/explosive/mine/sharp/proc/upgrade_mine()
 	mine_level++
@@ -457,6 +468,23 @@
 			user.visible_message(SPAN_NOTICE("[user] finishes rearming [src]."), \
 			SPAN_NOTICE("You finish rearming [src]."))
 			rearm(user)
+	else if(HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
+		if(!active)
+			convert_into_ammo()
+			return
+		user.visible_message(SPAN_NOTICE("[user] starts disarming [src]."), \
+		SPAN_NOTICE("You start disarming [src]."))
+		if(!do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
+			user.visible_message(SPAN_WARNING("[user] stops disarming [src]."), \
+			SPAN_WARNING("You stop disarming [src]."))
+			return
+		if(!active)//someone beat us to it
+			return
+		user.visible_message(SPAN_NOTICE("[user] finishes disarming [src]."), \
+		SPAN_NOTICE("You finish disarming [src]."))
+		disarm()
+		convert_into_ammo()
+	return
 
 /obj/item/explosive/mine/sharp/set_tripwire()
 	if(!active && !tripwire)
@@ -475,7 +503,9 @@
 		cause_data = create_cause_data(initial(name), user, src)
 	else if(user)
 		cause_data.weak_mob = WEAKREF(user)
-
+	if(disarmed)
+		qdel(src)
+		return
 	if(mine_level == 1)
 		explosion_strength = 100
 	else if(mine_level == 2)
@@ -513,6 +543,13 @@
 	desc = "An experimental P9 SHARP proximity triggered explosive dart designed by Armat Systems for use by the United States Colonial Marines. This one has full 360 detection range."
 	deploy_mine(user)
 	disarm_timer = addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/item/explosive/mine/sharp, disarm)), 5 MINUTES, TIMER_DELETE_ME | TIMER_STOPPABLE)
+	deltimer(timer_id)
+
+/// Converts the mine back into usable ammo
+/obj/item/explosive/mine/sharp/proc/convert_into_ammo()
+	var/obj/item/ammo_magazine/handful/new_handful = new(get_turf(src))
+	new_handful.generate_handful(ammo_path, /obj/item/ammo_magazine/rifle/sharp::caliber, 1, /obj/item/weapon/gun/rifle/sharp::type)
+	qdel(src)
 
 /obj/item/explosive/mine/sharp/attack_self(mob/living/user)
 	if(disarmed)
@@ -580,6 +617,9 @@
 	var/incendiary_radius
 	var/is_smoke
 	var/datum/incendiary_reagent
+	desc = "An experimental P9 SHARP proximity triggered incendiary dart designed by Armat Systems for use by the United States Colonial Marines. This one has full 360 detection range."
+	icon_state = "sharp_incendiary_mine"
+	ammo_path = /datum/ammo/rifle/sharp/incendiary
 
 /obj/item/explosive/mine/sharp/incendiary/prime(mob/user)
 	set waitfor = FALSE
@@ -590,7 +630,9 @@
 		cause_data = create_cause_data(initial(name), user, src)
 	else if(user)
 		cause_data.weak_mob = WEAKREF(user)
-
+	if(disarmed)
+		qdel(src)
+		return
 	if(mine_level == 1)
 		incendiary_radius = 2
 		is_smoke = TRUE

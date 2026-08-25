@@ -70,7 +70,7 @@
 	var/obj/item/ammo_magazine/handful/dart = user.get_active_hand()
 
 	if(!istype(dart.ammo_source, /datum/ammo/rifle/sharp))
-		to_chat(user, SPAN_WARNING("\The [dart] doesn't match [src]'s caliber!"))
+		to_chat(user, SPAN_WARNING("\The [dart] doesn't match \the [src]'s caliber!"))
 		return
 
 	if(in_chamber)

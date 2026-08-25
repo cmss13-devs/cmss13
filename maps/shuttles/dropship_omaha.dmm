@@ -169,7 +169,7 @@
 /obj/structure/shuttle/part/dropship_omaha/deployer/generic{
 	map_offset_y = -1;
 	map_offset_x = -1;
-	pixel_offset_y = 1
+	offset_y = 1
 	},
 /turf/open/shuttle/dropship/omaha/basic,
 /area/shuttle/drop_omaha/omaha)
@@ -338,7 +338,7 @@
 /obj/structure/shuttle/part/dropship_omaha/deployer/generic{
 	map_offset_y = -1;
 	map_offset_x = 3;
-	pixel_offset_y = 2
+	offset_y = 2
 	},
 /turf/template_noop,
 /area/shuttle/drop_omaha/omaha)
@@ -356,7 +356,7 @@
 /obj/structure/shuttle/part/dropship_omaha/deployer/generic{
 	map_offset_y = -1;
 	map_offset_x = 1;
-	pixel_offset_y = 1
+	offset_y = 1
 	},
 /turf/open/shuttle/dropship/omaha/basic,
 /area/shuttle/drop_omaha/omaha)
@@ -910,7 +910,7 @@
 /obj/structure/shuttle/part/dropship_omaha/deployer/generic{
 	map_offset_y = -1;
 	map_offset_x = -1;
-	pixel_offset_y = 1
+	offset_y = 1
 	},
 /turf/open/shuttle/dropship/omaha/basic,
 /area/shuttle/drop_omaha/omaha)
@@ -990,7 +990,7 @@
 /obj/structure/shuttle/part/dropship_omaha/deployer/generic{
 	map_offset_y = -1;
 	map_offset_x = 1;
-	pixel_offset_y = 1
+	offset_y = 1
 	},
 /turf/open/shuttle/dropship/omaha/basic,
 /area/shuttle/drop_omaha/omaha)
@@ -1085,7 +1085,7 @@
 /obj/structure/shuttle/part/dropship_omaha/deployer/generic{
 	map_offset_y = -1;
 	map_offset_x = -3;
-	pixel_offset_y = 2
+	offset_y = 2
 	},
 /turf/template_noop,
 /area/shuttle/drop_omaha/omaha)

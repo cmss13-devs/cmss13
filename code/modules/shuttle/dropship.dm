@@ -639,8 +639,8 @@
 	var/obj/effect/attach_point_dummy/linked_bottom
 	var/map_offset_x
 	var/map_offset_y
-	var/pixel_offset_x
-	var/pixel_offset_y
+	var/offset_x
+	var/offset_y
 
 /obj/structure/shuttle/part/dropship_omaha/deployer/generic/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
 	. = ..()
@@ -660,8 +660,8 @@
 				linked_bottom.linked_attach_point = attachie
 				linked_bottom.name = linked_bottom.linked_attach_point.name
 				attachie.linked_bottom_point = linked_bottom
-				linked_bottom.pixel_x = pixel_offset_x
-				linked_bottom.pixel_y = pixel_offset_y
+				linked_bottom.pixel_x = offset_x
+				linked_bottom.pixel_y = offset_y
 				break
 
 // USCM Dropship Normandy

@@ -15,7 +15,7 @@
 		/datum/action/xeno_action/activable/xeno_spit/praetorian,
 	)
 	actions_to_add = list(
-		/datum/action/xeno_action/activable/tail_stab/tail_seize,
+		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/prae_abduct,
 		/datum/action/xeno_action/activable/oppressor_punch,
 		/datum/action/xeno_action/activable/send_back,

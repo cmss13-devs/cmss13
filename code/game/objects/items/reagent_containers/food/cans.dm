@@ -412,6 +412,7 @@
 /obj/item/reagent_container/food/drinks/cans/waterbottle/Initialize()
 	. = ..()
 	reagents.add_reagent("water", 30)
+	reagents.locked = TRUE
 	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/reagent_container/food/drinks/cans/waterbottle/upp

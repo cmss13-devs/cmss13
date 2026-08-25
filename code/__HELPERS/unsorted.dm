@@ -1339,9 +1339,9 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 
 	if(!reservation && z_level_transitions)
 		var/list/mutli_z_cross_points = list()
-		if(start_atom.z == end_atom.z)
+		if(start_turf.z == end_turf.z)
 			return line
-		if(!SSmapping.same_z_map(start_atom.z, end_atom.z))
+		if(!SSmapping.same_z_map(start_atom.z, end_turf.z))
 			line.Cut()
 			line = list(start_turf) //We're trying to throw things accross maps somehow. Let's not.
 			return line
@@ -1364,14 +1364,14 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 			mutli_z_cross_points += line[1]
 			mutli_z_cross_points[line[1]] = path_position
 
-		var/offset = SSmapping.level_trait(start_atom.z, ZTRAIT_UP)
+		var/offset = SSmapping.level_trait(start_turf.z, ZTRAIT_UP)
 		var/turf/first_cross_point = mutli_z_cross_points[1]
-		if(first_cross_point.z != start_atom.z + offset)
+		if(first_cross_point.z != start_turf.z + offset)
 			offset = 0 // We only need to offset if we're entering from a lower Z.
 
 		for(var/turf/crossing_point in mutli_z_cross_points)
 			var/switching_cross_point
-			switching_cross_point = locate(crossing_point.x, crossing_point.y, start_atom.z + offset)
+			switching_cross_point = locate(crossing_point.x, crossing_point.y, start_turf.z + offset)
 			line.Insert(mutli_z_cross_points[crossing_point], switching_cross_point)
 
 			if(!istype(switching_cross_point, /turf/open_space))

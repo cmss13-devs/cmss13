@@ -474,7 +474,7 @@
 	icon_state = "carbine_muzzle"
 	attach_icon = "carbine_muzzle"
 	slot = "special"
-	wield_delay_mod = WIELD_DELAY_NONE
+	wield_delay_mod = WEAPON_DELAY_NONE
 	flags_attach_features = NO_FLAGS
 	melee_mod = 0 //Integrated attachment for visuals, stats handled on main gun.
 	size_mod = 0

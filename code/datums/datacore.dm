@@ -211,7 +211,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		temp = new/icon("icon" = camera_subject.species.icobase, "icon_state" = "[camera_subject.species.tail]_s")
 		preview_icon.Blend(temp, ICON_OVERLAY)
 
-	var/icon/eyes_s = new/icon("icon" = H.species.eye_icon, "icon_state" = camera_subject.species ? camera_subject.species.eyes : "eyes_s")
+	var/icon/eyes_s = new/icon("icon" = camera_subject.species.eye_icon, "icon_state" = camera_subject.species ? camera_subject.species.eyes : "eyes_s")
 
 	eyes_s.Blend(rgb(camera_subject.r_eyes, camera_subject.g_eyes, camera_subject.b_eyes), ICON_ADD)
 

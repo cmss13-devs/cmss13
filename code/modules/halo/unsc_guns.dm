@@ -525,7 +525,7 @@
 	explo_proof = TRUE
 	current_mag = /obj/item/ammo_magazine/rifle/halo/sniper
 	force = 12
-	wield_delay = WIELD_DELAY_HORRIBLE
+	wield_delay = WEAPON_DELAY_HORRIBLE
 	flags_equip_slot = SLOT_BLOCK_SUIT_STORE|SLOT_BACK
 	zoomdevicename = "scope"
 	attachable_allowed = list(/obj/item/attachable/srs_assembly, /obj/item/attachable/scope/variable_zoom/oracle, /obj/item/attachable/srs_barrel, /obj/item/attachable/bipod/srs_bipod)

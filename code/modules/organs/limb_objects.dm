@@ -40,23 +40,23 @@
 	else
 		body_size_icon = set_body_size.icon_name
 
-	if(isspeciesyautja(H))
-		skin_color_icon = H.skin_color
-		body_type_icon = H.body_type
+	if(isspeciesyautja(limbus))
+		skin_color_icon = limbus.skin_color
+		body_type_icon = limbus.body_type
 
-	if(isspeciessangheili(H))
-		skin_color_icon = H.skin_color
-		body_type_icon = H.body_type
+	if(isspeciessangheili(limbus))
+		skin_color_icon = limbus.skin_color
+		body_type_icon = limbus.body_type
 
-	if(isspeciesunggoy(H))
-		skin_color_icon = H.skin_color
-		body_type_icon = H.body_type
+	if(isspeciesunggoy(limbus))
+		skin_color_icon = limbus.skin_color
+		body_type_icon = limbus.body_type
 
-	if(isspeciesspartan(H))
-		skin_color_icon = H.skin_color
-		body_type_icon = H.body_type
+	if(isspeciesspartan(limbus))
+		skin_color_icon = limbus.skin_color
+		body_type_icon = limbus.body_type
 
-	icon_state = "[get_limb_icon_name(H.species, body_size_icon, body_type_icon, H.gender, name, skin_color_icon, H.body_presentation)]"
+	icon_state = "[get_limb_icon_name(limbus.species, body_size_icon, body_type_icon, limbus.gender, name, skin_color_icon, limbus.body_presentation)]"
 	icon_state = "[get_limb_icon_name(limbus.species, body_size_icon, body_type_icon, limbus.gender, name, skin_color_icon, limbus.body_presentation)]"
 	setDir(SOUTH)
 	apply_transform(turn(transform, rand(70,130)))

@@ -971,6 +971,8 @@
 		return
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/covenant/unggoy(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/covenant(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate/cov(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern/yautja/cov/on(new_human), WEAR_R_STORE)
 
 /datum/equipment_preset/proc/add_grunt_minor(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/marine/unggoy/minor(new_human), WEAR_JACKET)
@@ -1242,12 +1244,16 @@
 			uniform.roll_suit_sleeves(new_human)
 	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/covenant(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate/cov(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern/yautja/cov/on(new_human), WEAR_R_STORE)
 
 /datum/equipment_preset/proc/add_elite_basics_fullbody(mob/living/carbon/human/new_human)
 	if(!istype(new_human))
 		return
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/covenant/sangheili/fullbody(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/covenant(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate/cov(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern/yautja/cov/on(new_human), WEAR_R_STORE)
 
 /datum/equipment_preset/proc/add_elite_minor(mob/living/carbon/human/new_human)
 	if(!istype(new_human))

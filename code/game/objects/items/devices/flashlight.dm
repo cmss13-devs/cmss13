@@ -605,6 +605,14 @@
 	desc = "A rugged alien lantern with a metallic frame, emitting a steady red glow. Its light has an unsettling, otherworldly aura."
 	on = TRUE
 
+/obj/item/device/flashlight/lantern/yautja/cov
+	desc = "A rugged alien lantern with a metallic frame, emitting a steady purple glow. Its light has an unsettling, otherworldly aura."
+	color = "#CC99FF"
+	light_color = "#CC99FF"
+
+/obj/item/device/flashlight/lantern/yautja/cov/on
+	on = TRUE
+
 //Signal Flare
 /obj/item/device/flashlight/flare/signal
 	name = "signal flare"

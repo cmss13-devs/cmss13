@@ -5,7 +5,7 @@
 	icon_state = "ma5c_muzzle"
 	attach_icon = "ma5c_muzzle"
 	slot = "special"
-	wield_delay_mod = WIELD_DELAY_NONE
+	wield_delay_mod = WEAPON_DELAY_NONE
 	flags_attach_features = NO_FLAGS
 	melee_mod = 0 //Integrated attachment for visuals, stats handled on main gun.
 	size_mod = 0
@@ -33,7 +33,7 @@
 	icon_state = "ma3a_shroud"
 	attach_icon = "ma3a_shroud"
 	slot = "special"
-	wield_delay_mod = WIELD_DELAY_NONE
+	wield_delay_mod = WEAPON_DELAY_NONE
 	flags_attach_features = NO_FLAGS
 	melee_mod = 0 //Integrated attachment for visuals, stats handled on main gun.
 	size_mod = 0
@@ -46,7 +46,7 @@
 	icon_state = "vk78_front"
 	attach_icon = "vk78_front"
 	slot = "special"
-	wield_delay_mod = WIELD_DELAY_NONE
+	wield_delay_mod = WEAPON_DELAY_NONE
 	flags_attach_features = NO_FLAGS
 	melee_mod = 0
 	size_mod = 0
@@ -63,7 +63,7 @@
 	icon_state = "ma5b_muzzle"
 	attach_icon = "ma5b_muzzle"
 	slot = "special"
-	wield_delay_mod = WIELD_DELAY_NONE
+	wield_delay_mod = WEAPON_DELAY_NONE
 	flags_attach_features = NO_FLAGS
 	melee_mod = 0 //Integrated attachment for visuals, stats handled on main gun.
 	size_mod = 0
@@ -76,7 +76,7 @@
 	icon_state = "br55_muzzle"
 	attach_icon = "br55_muzzle"
 	slot = "special"
-	wield_delay_mod = WIELD_DELAY_NONE
+	wield_delay_mod = WEAPON_DELAY_NONE
 	flags_attach_features = NO_FLAGS
 	melee_mod = 0 //Integrated attachment for visuals, stats handled on main gun.
 	size_mod = 0
@@ -89,7 +89,7 @@
 	icon_state = "m90_muzzle"
 	attach_icon = "m90_muzzle"
 	slot = "special"
-	wield_delay_mod = WIELD_DELAY_NONE
+	wield_delay_mod = WEAPON_DELAY_NONE
 	flags_attach_features = NO_FLAGS
 	melee_mod = 0 //Integrated attachment for visuals, stats handled on main gun.
 	size_mod = 0
@@ -102,7 +102,7 @@
 	icon_state = "dmr_front"
 	attach_icon = "dmr_front"
 	slot = "special"
-	wield_delay_mod = WIELD_DELAY_NONE
+	wield_delay_mod = WEAPON_DELAY_NONE
 	flags_attach_features = NO_FLAGS
 	melee_mod = 0
 	size_mod = 0
@@ -451,7 +451,7 @@
 		icon_state = "m7_stock-on"
 		attach_icon = "m7_stock-on"
 		size_mod = 2
-		wield_delay_mod = WIELD_DELAY_VERY_FAST
+		wield_delay_mod = WEAPON_DELAY_VERY_FAST
 
 	else
 		accuracy_mod = 0
@@ -463,7 +463,7 @@
 		icon_state = "m7_stock"
 		attach_icon = "m7_stock"
 		size_mod = 0
-		wield_delay_mod = WIELD_DELAY_NONE //stock is folded so no wield delay
+		wield_delay_mod = WEAPON_DELAY_NONE //stock is folded so no wield delay
 		recoil_unwielded_mod = 0
 
 	gun.recalculate_attachment_bonuses()
@@ -507,7 +507,7 @@
 		recoil_unwielded_mod = -RECOIL_AMOUNT_TIER_5
 		icon_state = "m7_grip"
 		attach_icon = "m7_grip"
-		wield_delay_mod = WIELD_DELAY_NONE
+		wield_delay_mod = WEAPON_DELAY_NONE
 		size_mod = 1
 
 	else
@@ -541,5 +541,5 @@
 	recoil_unwielded_mod = -RECOIL_AMOUNT_TIER_5
 	icon_state = "m7_grip"
 	attach_icon = "m7_grip"
-	wield_delay_mod = WIELD_DELAY_NONE
+	wield_delay_mod = WEAPON_DELAY_NONE
 	size_mod = 1

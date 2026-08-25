@@ -79,18 +79,18 @@
 				to_chat(user, SPAN_WARNING("Feeding \the [dart] would mix the ammo in \the [current_mag]!"))
 				return
 			else if (current_mag.current_rounds == current_mag.max_rounds)
-				to_chat(user, SPAN_WARNING("\The [dart] can't be pushed into the chamber as \the loaded magazine is full!"))
+				to_chat(user, SPAN_WARNING("\The [dart] can't be pushed into the chamber as the loaded magazine is full!"))
 				return
 			current_mag.current_rounds++
 		else
 			var/obj/item/ammo_magazine/handful/new_handful = new(get_turf(src))
 			new_handful.generate_handful(get_ammo_type_chambered(), /obj/item/ammo_magazine/rifle/sharp::caliber, 1, /obj/item/weapon/gun/rifle/sharp::type)
-			to_chat(user, SPAN_WARNING("An already chambered dart is pushed out \the [src]'s magazine port!"))
+			to_chat(user, SPAN_WARNING("An already chambered dart is pushed out of \the [src]'s magazine port!"))
 	if(dart.current_rounds > 0)
 		in_chamber = create_bullet(dart.ammo_source, initial(name))
 		apply_traits(in_chamber)
-		user.visible_message(SPAN_NOTICE(("[user] loads a [dart.singular_name] into [src]'s chamber!")),
-		SPAN_NOTICE(("You load a [SPAN_ORANGE(dart.singular_name)] into [src]'s chamber.")))
+		user.visible_message(SPAN_NOTICE(("[user] loads a [dart.singular_name] into \the [src]'s chamber!")),
+		SPAN_NOTICE(("You load a [SPAN_ORANGE(dart.singular_name)] into \the [src]'s chamber.")))
 		dart.current_rounds--
 		dart.update_icon()
 		if(dart.current_rounds <= 0)

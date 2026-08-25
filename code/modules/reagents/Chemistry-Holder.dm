@@ -9,7 +9,10 @@
 	var/endothermic_reaction_occurring = FALSE
 	var/datum/weakref/source_mob
 
+	/// Doesn't let you move water neither from or out of this container.
 	var/locked = FALSE
+	/// lets you dispense reagents from, but not in, this container.
+	var/unfillable = FALSE
 
 	var/max_ex_power = 175
 	var/base_ex_falloff = 75
@@ -128,7 +131,7 @@
 /// Transfers to the reagents datum of an object
 /datum/reagents/proc/trans_to(atom/target, amount=1, multiplier=1, preserve_data=1, reaction = TRUE)
 	var/datum/reagents/R = target?.reagents
-	if(R && !locked && !R.locked && total_volume > 0)
+	if(R && !locked && !R.locked && total_volume > 0 && !R.unfillable)
 		return trans_to_datum(R, amount, multiplier, preserve_data, reaction)
 
 /// Transfers to a reagent datum

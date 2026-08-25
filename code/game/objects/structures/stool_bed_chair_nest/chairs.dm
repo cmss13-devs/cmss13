@@ -7,12 +7,13 @@
 	desc = "A rectangular metallic frame sitting on four legs with a back panel. Designed to fit the sitting position, more or less comfortably."
 	icon_state = "chair"
 	buckle_lying = 0
+	foldabletype = /obj/item/weapon/twohanded/folded_metal_chair
 	var/north_layer = FLY_LAYER
 	var/non_north_layer = OBJ_LAYER
 	var/propelled = FALSE //Check for fire-extinguisher-driven chairs
 	var/can_rotate = TRUE
-	var/picked_up_item = /obj/item/weapon/twohanded/folded_metal_chair
 	var/stacked_size = 0
+	var/shimmy = TRUE
 
 /obj/structure/bed/chair/Initialize()
 	. = ..()
@@ -34,8 +35,7 @@
 		buckled_mob.setDir(dir)
 
 /obj/structure/bed/chair/MouseDrop(atom/over)
-	. = ..()
-	if(!picked_up_item)
+	if(!foldabletype)
 		return
 	var/mob/living/carbon/human/H = over
 	if(usr != H)
@@ -48,14 +48,12 @@
 	if(stacked_size)
 		to_chat(H, SPAN_NOTICE("You cannot fold a chair while its stacked!"))
 		return
-	var/obj/item/weapon/twohanded/folded_metal_chair/FMC = new picked_up_item(loc)
-	if(H.put_in_active_hand(FMC))
-		qdel(src)
-	else if(H.put_in_inactive_hand(FMC))
+	var/obj/item/weapon/twohanded/folded_metal_chair/folded_char = new foldabletype(loc)
+	if(H.put_in_hands(folded_char))
 		qdel(src)
 	else
 		to_chat(H, SPAN_NOTICE("You need a free hand to fold up the chair."))
-		qdel(FMC)
+		qdel(folded_char)
 
 /obj/structure/bed/chair/attack_hand(mob/user)
 	. = ..()
@@ -88,7 +86,7 @@
 	if(HAS_TRAIT(I, TRAIT_TOOL_WRENCH) && stacked_size)
 		to_chat(user, SPAN_NOTICE("You'll need to unstack the chairs before you can take one apart."))
 		return FALSE
-	if(istype(I, /obj/item/weapon/twohanded/folded_metal_chair) && picked_up_item)
+	if(istype(I, /obj/item/weapon/twohanded/folded_metal_chair) && foldabletype)
 		if(I.flags_item & WIELDED)
 			return ..()
 		if(locate(/mob/living) in loc)
@@ -165,7 +163,7 @@
 		falling_chair.pixel_x = rand(-8, 8)
 		falling_chair.pixel_y = rand(-8, 8)
 		falling_chair.throw_atom(target_turf, rand(2, 5), SPEED_FAST, null, TRUE)
-	var/obj/item/weapon/twohanded/folded_metal_chair/I = new picked_up_item(starting_turf)
+	var/obj/item/weapon/twohanded/folded_metal_chair/I = new foldabletype(starting_turf)
 	I.throw_atom(starting_turf, rand(2, 5), SPEED_FAST, null, TRUE)
 	qdel(src)
 
@@ -234,16 +232,38 @@
 	handle_rotation()
 	return
 
+/obj/structure/bed/chair/do_buckle(mob/living/target, mob/user)
+	. = ..()
+	if(!shimmy)
+		return
+	density = TRUE
+	if(target.density)
+		target.density = FALSE
+	var/approachness
+	switch(dir)
+		if(NORTH, SOUTH)
+			approachness = EAST | WEST
+		if(EAST, WEST)
+			approachness = NORTH | SOUTH
+	AddComponent(/datum/component/shimmy_around, north_offset = -14, south_offset = -14, east_offset = -14, west_offset = -14, extra_delay = 0.5 SECONDS, approach_dirs = approachness)
+
+/obj/structure/bed/chair/unbuckle()
+	. = ..()
+	density = FALSE
+	var/datum/component/shimmy_around/shimster = GetComponent(/datum/component/shimmy_around)
+	if(shimster)
+		qdel(shimster)
+
 //Chair types
 /obj/structure/bed/chair/bolted
 	desc = "A rectangular metallic frame sitting on four legs with a back panel. Designed to fit the sitting position, more or less comfortably. It appears to be bolted to the ground."
-	picked_up_item = null
+	foldabletype = null
 
 /obj/structure/bed/chair/wood
 	buildstacktype = /obj/item/stack/sheet/wood
 	debris = list(/obj/item/stack/sheet/wood)
 	hit_bed_sound = 'sound/effects/woodhit.ogg'
-	picked_up_item = null
+	foldabletype = null
 
 /obj/structure/bed/chair/wood/normal
 	icon_state = "wooden_chair"
@@ -262,7 +282,7 @@
 	color = rgb(255,255,255)
 	hit_bed_sound = 'sound/weapons/bladeslice.ogg'
 	debris = list()
-	picked_up_item = null
+	foldabletype = null
 
 /obj/structure/bed/chair/comfy/arc
 	non_north_layer = BELOW_OBJ_LAYER
@@ -319,7 +339,8 @@
 /obj/structure/bed/chair/office
 	anchored = FALSE
 	drag_delay = 1 //Pulling something on wheels is easy
-	picked_up_item = null
+	foldabletype = null
+	shimmy = FALSE
 
 /obj/structure/bed/chair/office/Initialize(mapload, ...)
 	. = ..()
@@ -369,7 +390,7 @@
 
 /obj/structure/bed/chair/dropship
 	can_rotate = FALSE
-	picked_up_item = null
+	foldabletype = null
 
 /obj/structure/bed/chair/dropship/pilot
 	icon_state = "pilot_chair"
@@ -551,7 +572,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	dir = WEST
-	picked_up_item = null
+	foldabletype = null
 
 /obj/structure/bed/chair/hunter
 	name = "hunter chair"
@@ -561,7 +582,7 @@
 	color = rgb(255,255,255)
 	hit_bed_sound = 'sound/weapons/bladeslice.ogg'
 	debris = list()
-	picked_up_item = null
+	foldabletype = null
 
 /obj/item/weapon/twohanded/folded_metal_chair //used for when someone picks up the chair
 	name = "metal folding chair"

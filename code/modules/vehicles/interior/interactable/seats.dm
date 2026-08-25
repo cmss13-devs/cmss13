@@ -318,8 +318,7 @@
 	var/broken = FALSE
 	buildstackamount = 0
 	can_rotate = FALSE
-	picked_up_item = null
-
+	foldabletype = null
 	unslashable = FALSE
 	unacidable = TRUE
 
@@ -343,6 +342,33 @@
 
 	init_pixel_y = pixel_y
 	init_pixel_x = pixel_x
+
+/obj/structure/bed/chair/vehicle/do_buckle(mob/living/target, mob/user)
+	. = ..()
+	if(!shimmy)
+		return
+	density = TRUE
+	if(target.density)
+		target.density = FALSE
+	var/approachness
+	switch(dir)
+		if(NORTH)
+			approachness = EAST|WEST|SOUTH
+		if(SOUTH)
+			approachness = EAST|WEST|NORTH
+		if(EAST)
+			approachness = WEST|NORTH|SOUTH
+		if(WEST)
+			approachness = EAST|NORTH|SOUTH
+	var/easterly_value = dir == EAST ? -14 : 14
+	var/northerly_value = dir == NORTH ? -14 : 14
+	var/list/offsets = list(						//what a headache, broken for E/W facing chairs.
+		pixel_x >= 0 ? -1*easterly_value : easterly_value,
+		pixel_x >= 0 ? -1*easterly_value : easterly_value,
+		pixel_y <= 14 ? -1*northerly_value : northerly_value,
+		pixel_y <= 14 ? -1*northerly_value : northerly_value,
+	)
+	AddComponent(/datum/component/shimmy_around, north_offset = offsets[1],	south_offset = offsets[2], east_offset = offsets[3], west_offset = offsets[4], extra_delay = 0.3 SECONDS, approach_dirs = approachness)
 
 
 /obj/structure/bed/chair/vehicle/proc/setup_buckle_offsets()

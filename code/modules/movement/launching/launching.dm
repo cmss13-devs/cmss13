@@ -165,6 +165,9 @@
 	if(end_turf)
 		end_turf.on_throw_end(src)
 
+#define LAUNCHED_SAME 0
+#define LAUNCHED_UP 1
+#define LAUNCHED_DOWN 2
 
 // Proc for throwing or propelling movable atoms towards a target
 /atom/movable/proc/launch_towards(datum/launch_metadata/LM, tracking = FALSE)
@@ -192,19 +195,51 @@
 	throwing = TRUE
 
 	add_temp_pass_flags(pass_flags)
-	var/turf/start_turf
+	var/turf/start_turf = get_step_towards(src, LM.target)
 	var/turf/above = SSmapping.get_turf_above(loc)
 	var/datum/turf_reservation/reservation = SSmapping.used_turfs[loc]
-	if(reservation && (reservation.is_below(loc, get_turf(LM.target))) || (LM.target.z > z) && istype(above, /turf/open_space))
-		start_turf = above
-	else
-		start_turf = get_step_towards(src, LM.target)
-		if(reservation && reservation.is_below(get_turf(LM.target), loc))
+	if(reservation)
+		if((reservation.is_below(loc, get_turf(LM.target))) || (LM.target.z > z) && istype(above, /turf/open_space))
+			start_turf = above
+		else if(reservation && reservation.is_below(get_turf(LM.target), loc))
 			start_turf = get_step_towards(src, SSmapping.get_turf_above(LM.target))
+
 	var/list/turf/path = get_line(start_turf, LM.target)
 	var/last_loc = loc
-
+	var/multi_z_launch
+	var/turf/mutli_z_cross_point
 	var/early_exit = FALSE
+
+	if(!reservation)
+		var/z_difference = LM.target.z - z
+		switch(z_difference)
+			if(1)
+				multi_z_launch = LAUNCHED_UP
+			if(0)
+				multi_z_launch = LAUNCHED_SAME
+			if(-1)
+				multi_z_launch = LAUNCHED_DOWN
+			else
+				early_exit = TRUE
+
+		if(multi_z_launch)
+			var/turf/comparing_turf = start_turf
+			var/path_position
+			for(var/turf/turf_cross_point in path)
+				path_position++
+				if(comparing_turf.z == turf_cross_point.z)
+					comparing_turf = turf_cross_point
+					continue
+				else
+					mutli_z_cross_point = turf_cross_point
+					break
+			var/end_cross_point
+			if(multi_z_launch == LAUNCHED_UP)
+				end_cross_point = locate(mutli_z_cross_point.x, mutli_z_cross_point.y, mutli_z_cross_point.z - 1)
+			else
+				end_cross_point = locate(mutli_z_cross_point.x, mutli_z_cross_point.y, mutli_z_cross_point.z + 1)
+			path.Insert(path_position, end_cross_point)
+
 	LM.dist = 0
 	for (var/turf/T in path)
 		if (!src || !throwing || loc != last_loc || !isturf(src.loc))

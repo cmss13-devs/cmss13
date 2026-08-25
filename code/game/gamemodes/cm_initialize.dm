@@ -47,6 +47,7 @@ Additional game mode variables.
 	var/datum/mind/hellhounds[] = list() //Hellhound spawning is not supported at round start.
 	var/list/dead_queens // A list of messages listing the dead queens
 	var/list/joes		= list()
+	var/list/colony_joes = list()
 	var/list/fax_responders = list()
 
 	var/xeno_required_num = 0 //We need at least one. You can turn this off in case we don't care if we spawn or don't spawn xenos.
@@ -87,6 +88,8 @@ Additional game mode variables.
 	var/gear_scale = 1
 	/// Multiplier to the amount of marine gear, maximum reached value for
 	var/gear_scale_max = 1
+	/// Multiplier to the amount of chemical dispenser energy, based on number of medics
+	var/energy_scale = 1
 
 	//Role Authority set up.
 	/// List of role titles to override to different roles when starting game
@@ -391,6 +394,105 @@ Additional game mode variables.
 	GLOB.RoleAuthority.equip_role(new_stranded, stranded_job, new_stranded.loc)
 
 	return new_stranded
+
+//===================================================\\
+
+			  //COLONY JOE INITIALIZE\\
+
+//===================================================\\
+
+/datum/game_mode/proc/initialize_colony_joe(mob/living/carbon/human/new_joe)
+	colony_joes[new_joe.persistent_username] = list("Name" = new_joe.real_name, "Status" = "Alive")
+
+/datum/game_mode/proc/attempt_to_join_as_colony_joe(mob/joe_candidate)
+	var/mob/living/carbon/human/new_joe = transform_colony_joe(joe_candidate) //Initialized and ready.
+	if(!new_joe)
+		return
+
+	msg_admin_niche("([new_joe.key]) joined as a Colony Working Joe, [new_joe.real_name].")
+
+	if(joe_candidate)
+		joe_candidate.moveToNullspace() //Nullspace it for garbage collection later.
+
+/datum/game_mode/proc/check_colony_joe_late_join(mob/joe_candidate, show_warning = TRUE)
+	if(!joe_candidate?.client)
+		return
+
+	var/datum/job/joe_job = GLOB.RoleAuthority.roles_by_name[JOB_COLONY_JOE]
+
+	if(!joe_job)
+		if(show_warning)
+			to_chat(joe_candidate, SPAN_WARNING("Something went wrong!"))
+		return FALSE
+
+	if(!joe_candidate.client.check_whitelist_status(WHITELIST_SYNTHETIC) && !joe_candidate.client.check_whitelist_status(WHITELIST_JOE))
+		if(show_warning)
+			to_chat(joe_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a synthetic."))
+		return FALSE
+
+	if(!(flags_round_type & MODE_COLONY_JOE))
+		if(show_warning)
+			to_chat(joe_candidate, SPAN_WARNING("There are no Colony Working Joes this round! Maybe the next one."))
+		return FALSE
+
+	if(joe_candidate.key in colony_joes)
+		if(show_warning)
+			to_chat(joe_candidate, SPAN_WARNING("You already were a Colony Working Joe! Give someone else a chance."))
+		return FALSE
+
+	if(show_warning && tgui_alert(joe_candidate, "Confirm joining as a Colony Working Joe.", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
+		return FALSE
+
+	if(joe_job.current_positions >= joe_job.total_positions)
+		if(show_warning)
+			to_chat(joe_candidate, SPAN_WARNING("Only [joe_job.total_positions] Colony Working Joes may spawn this round."))
+		return FALSE
+
+	return TRUE
+
+/datum/game_mode/proc/transform_colony_joe(mob/joe_candidate)
+	if(!joe_candidate.client) // Legacy - probably due to spawn code sync sleeps
+		log_debug("Null client attempted to transform_colony_joe")
+		return
+
+	var/turf/spawn_point = null
+	var/list/joe_types = SSmapping.configs[GROUND_MAP].colony_joe_types
+
+	if(length(joe_types) == 0)
+		to_chat(joe_candidate, SPAN_WARNING("This map does not have colony joe spawns, and a colony joe round should not have started!"))
+		return
+
+	var/datum/job/joe_job = pick(joe_types)
+	if(!ispath(joe_job))
+		joe_job = text2path(joe_job)
+
+	if(get_turf(pick(GLOB.latejoin_by_job[JOB_COLONY_JOE])))
+		spawn_point = get_turf(pick(GLOB.latejoin_by_job[JOB_COLONY_JOE]))
+	else
+		log_debug("No valid colony joe spawn points!")
+		return
+
+	var/mob/living/carbon/human/synthetic/new_joe = new(spawn_point)
+	joe_candidate.mind.transfer_to(new_joe, TRUE)
+
+	// text2path wont text to path so you get this
+	switch(joe_job)
+		if(/datum/job/civilian/working_joe/colony)
+			joe_job = GLOB.RoleAuthority.roles_by_name[JOB_COLONY_JOE]
+			joe_job.handle_job_options(new_joe.client.prefs.pref_special_job_options[JOB_WORKING_JOE])
+		if(/datum/job/civilian/working_joe/daniel)
+			joe_job = GLOB.RoleAuthority.roles_by_name[JOB_DANIEL]
+		if(/datum/job/antag/upp/dzho_automaton/colony)
+			joe_job = GLOB.RoleAuthority.roles_by_name[JOB_UPP_COLONY_JOE]
+
+	if(!joe_job)
+		qdel(new_joe)
+		return
+	// This is usually done in assign_role, a proc which is not executed in this case, since check_joe_late_join is running its own checks.
+	joe_job.current_positions++
+	GLOB.RoleAuthority.equip_role(new_joe, joe_job, new_joe.loc)
+	SSticker.minds += new_joe.mind
+	return new_joe
 
 //===================================================\\
 
@@ -1201,7 +1303,7 @@ Additional game mode variables.
 		var/obj/structure/machinery/chem_storage/chem_storage = GLOB.chemical_data.chemical_networks[chem_storage_network]
 		if(!chem_storage.dynamic_storage)
 			continue
-		chem_storage.calculate_dynamic_storage(gear_scale)
+		chem_storage.calculate_dynamic_storage(energy_scale, TRUE)
 
 	//Scale the amount of cargo points through a direct multiplier
 	GLOB.supply_controller.points += floor(GLOB.supply_controller.points_scale * gear_scale)
@@ -1232,12 +1334,15 @@ Additional game mode variables.
 		gear_scale_max = gear_scale
 		for(var/obj/structure/machinery/cm_vending/sorted/vendor as anything in GLOB.cm_vending_vendors)
 			vendor.update_dynamic_stock(gear_scale_max)
-		for(var/chem_storage_network in GLOB.chemical_data.chemical_networks)
-			var/obj/structure/machinery/chem_storage/chem_storage = GLOB.chemical_data.chemical_networks[chem_storage_network]
-			if(!chem_storage.dynamic_storage)
-				continue
-			chem_storage.calculate_dynamic_storage(gear_scale)
 		GLOB.supply_controller.points += floor(gear_delta * GLOB.supply_controller.points_scale)
+
+/datum/game_mode/proc/update_energy_scale()
+	energy_scale = length(GLOB.marine_medics)
+	for(var/chem_storage_network in GLOB.chemical_data.chemical_networks)
+		var/obj/structure/machinery/chem_storage/chem_storage = GLOB.chemical_data.chemical_networks[chem_storage_network]
+		if(!chem_storage.dynamic_storage)
+			continue
+		chem_storage.calculate_dynamic_storage(energy_scale)
 
 /// Updates [var/latejoin_tally] and [var/gear_scale] based on role weights of latejoiners/cryoers. Delta is the amount of role positions added/removed
 /datum/game_mode/proc/latejoin_update(role, delta = 1)
@@ -1284,7 +1389,7 @@ Additional game mode variables.
 			to_chat(joe_candidate, SPAN_WARNING("Something went wrong!"))
 		return
 
-	if(!joe_job.check_whitelist_status(joe_candidate))
+	if(!joe_job.check_whitelist_status(joe_candidate) && !MODE_HAS_MODIFIER(/datum/gamemode_modifier/ignore_wj_restrictions))
 		if(show_warning)
 			to_chat(joe_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a synth."))
 		return
@@ -1309,11 +1414,6 @@ Additional game mode variables.
 			if(show_warning)
 				to_chat(joe_candidate, SPAN_WARNING("Only [joe_max] Working Joes may spawn per round."))
 			return
-
-	if(!GLOB.enter_allowed && !MODE_HAS_MODIFIER(/datum/gamemode_modifier/ignore_wj_restrictions))
-		if(show_warning)
-			to_chat(joe_candidate, SPAN_WARNING("There is an administrative lock from entering the game."))
-		return
 
 	if(show_warning && tgui_alert(joe_candidate, "Confirm joining as a Working Joe.", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
 		return

@@ -25,7 +25,7 @@
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_WIELDED_FIRING_ONLY
 	gun_category = GUN_CATEGORY_RIFLE
 	aim_slowdown = SLOWDOWN_ADS_RIFLE
-	wield_delay = WIELD_DELAY_NORMAL
+	wield_delay = WEAPON_DELAY_NORMAL
 	current_mag = /obj/item/ammo_magazine/rifle/boltaction
 	attachable_allowed = list(
 		/obj/item/attachable/bayonet,
@@ -47,7 +47,7 @@
 	)
 	starting_attachment_types = list(/obj/item/attachable/scope/mini/hunting)
 	aim_slowdown = SLOWDOWN_ADS_RIFLE
-	wield_delay = WIELD_DELAY_NORMAL
+	wield_delay = WEAPON_DELAY_NORMAL
 	civilian_usable_override = TRUE
 	unacidable = TRUE // Like other 1-of-a-kind weapons, it can't be gotten rid of that fast
 	explo_proof = TRUE
@@ -128,6 +128,28 @@
 	in_chamber = null
 	return TRUE
 
+/obj/item/weapon/gun/boltaction/ready_in_chamber()
+	if(in_chamber)
+		return in_chamber
+	return ..()
+
+/obj/item/weapon/gun/boltaction/insert_bullet(mob/user)
+	if(bolted)
+		to_chat(user, SPAN_WARNING("You need to open the bolt first!"))
+		return
+	return ..()
+
+/obj/item/weapon/gun/boltaction/attack_hand(mob/user)
+	if(loc == user && !bolted && user.get_inactive_hand() == src)
+		if(in_chamber)
+			to_chat(user, SPAN_NOTICE("You remove the [SPAN_ORANGE(in_chamber.name)] from the [name]'s chamber."))
+			unload_chamber(user, TRUE)
+			return
+		if(!current_mag || current_mag.current_rounds <= 0)
+			to_chat(user, SPAN_WARNING("There is nothing loaded in the [name]'s chamber!"))
+			return
+	return ..()
+
 /obj/item/weapon/gun/boltaction/cock(mob/user)
 	return
 
@@ -166,7 +188,7 @@
 	flags_gun_features = NONE
 	gun_category = GUN_CATEGORY_HEAVY
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST // Consider SUPERWEAPON, but it's not like you can fire this without being bipodded
-	wield_delay = WIELD_DELAY_VERY_SLOW
+	wield_delay = WEAPON_DELAY_VERY_SLOW
 	map_specific_decoration = TRUE
 	current_mag = /obj/item/ammo_magazine/rifle/boltaction/vulture
 	attachable_allowed = list(

@@ -1,0 +1,5 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fixed an exploit where you could stack/unstack acided things on the ground"
+  - code_imp: "COMSIG_ITEM_PICKUP now fires properly on pickup and COMSIG_MOVABLE_PRE_PICKUP is used to check if pickup/interaction is allowed"

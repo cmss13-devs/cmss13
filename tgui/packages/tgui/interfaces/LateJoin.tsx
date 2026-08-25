@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
 import { classes } from 'common/react';
 import { storage } from 'common/storage';
+import { useEffect, useState } from 'react';
 import { type ComponentProps } from 'react';
 import { useBackend } from 'tgui/backend';
 import {
@@ -13,7 +13,6 @@ import {
   Stack,
 } from 'tgui/components';
 import { Window } from 'tgui/layouts';
-import { resolveAsset } from 'tgui/assets';
 
 type RoleInformation = {
   readonly Title: string;
@@ -67,16 +66,16 @@ export const LateJoin = (props, context) => {
               justify="space-around"
             >
               <Stack.Item>
-                <Icon name="warning" size={2}></Icon>
+                <Icon name="warning" size={2} />
               </Stack.Item>
               <Stack.Item>
                 <h1>HIJACK IN PROGRESS</h1>
               </Stack.Item>
               <Stack.Item>
-                <Icon name="warning" size={2}></Icon>
+                <Icon name="warning" size={2} />
               </Stack.Item>
             </Stack>
-            <Divider></Divider>
+            <Divider />
           </Box>
         ) : null}
         {CategoryOrder.map((category) => {
@@ -148,7 +147,7 @@ const RoleSlotInfo = (props: RoleSlotInfoProps) => {
             <Icon name="door-open" />
           </Flex.Item>
           <Flex.Item className="SlotInfoRow big-text">
-            {infSlots ? <Icon name="infinity"></Icon> : <Box>{roleSlots}</Box>}
+            {infSlots ? <Icon name="infinity" /> : <Box>{roleSlots}</Box>}
           </Flex.Item>
         </Flex>
       </Flex.Item>
@@ -193,7 +192,7 @@ const RoleCategory = (props: RoleCategoryProps) => {
                   <Flex.Item>
                     <Box className="medium-text">
                       Join
-                      <Icon name="caret-right"></Icon>
+                      <Icon name="caret-right" />
                     </Box>
                   </Flex.Item>
                 </Flex>

@@ -84,7 +84,7 @@
 		/obj/item/storage/belt/gun/xm51,
 	)
 
-	light_power = 3
+	light_power = 4
 	light_range = 4
 	light_color = LIGHT_COLOR_TUNGSTEN
 	light_system = MOVABLE_LIGHT
@@ -269,7 +269,7 @@
 		new_look = GLOB.armor_style_list[new_style]
 
 	// Replace the digits in the current icon state with `new_look`. (E.g. "L6" -> "L2")
-	icon_state = digits.Replace(icon_state, new_look)
+	icon_state = digits.Replace(icon_state, "[new_look]")
 
 /obj/item/clothing/suit/storage/marine/medium/rto
 	icon_state = "io"
@@ -280,7 +280,6 @@
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS
 	storage_slots = 4
-	light_range = 5 //slightly higher
 	specialty = "M4 pattern marine"
 
 /obj/item/clothing/suit/storage/marine/medium/rto/army
@@ -437,7 +436,7 @@
 // M3 pattern marine armor
 /obj/item/clothing/suit/storage/marine/medium
 	armor_variation = 6
-	light_power = 4
+	light_range = 5
 
 /obj/item/clothing/suit/storage/marine/medium/padded
 	name = "M3 pattern padded marine armor"
@@ -666,7 +665,6 @@
 	storage_slots = 2
 	slowdown = SLOWDOWN_ARMOR_LOWHEAVY
 	movement_compensation = SLOWDOWN_ARMOR_MEDIUM
-	light_power = 4
 	light_range = 5
 
 /obj/item/clothing/suit/storage/marine/heavy/padded

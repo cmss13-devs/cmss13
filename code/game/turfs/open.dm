@@ -165,12 +165,12 @@
 	icon_state = "grass1"
 	is_weedable = NOT_WEEDABLE
 
-/turf/open/slippery/Enter(atom/movable/mover, atom/forget)
+/turf/open/slippery/Enter(atom/movable/mover, atom/old_loc)
 	. = ..()
 	if(isliving(mover))
 		return FALSE
 
-/turf/open/slippery/Entered(atom/movable/crosser)
+/turf/open/slippery/Entered(atom/movable/crosser, atom/old_loc)
 	. = ..()
 	if(isobserver(crosser) || crosser.anchored)
 		return
@@ -209,6 +209,36 @@
 /turf/open/slippery/hull/dir/northwest
 	dir = NORTHWEST
 
+/turf/open/slippery/roof
+	icon = 'icons/turf/almayer.dmi'
+	icon_state = "outerhull"
+	name = "roof"
+	allow_construction = FALSE
+	is_weedable = NOT_WEEDABLE
+
+/turf/open/slippery/roof/dir
+	icon_state = "outerhull_dir"
+
+/turf/open/slippery/roof/dir/southwest
+	dir = SOUTHWEST
+
+/turf/open/slippery/roof/dir/north
+	dir = NORTH
+
+/turf/open/slippery/roof/dir/east
+	dir = EAST
+
+/turf/open/slippery/roof/dir/northeast
+	dir = NORTHEAST
+
+/turf/open/slippery/roof/dir/southeast
+	dir = SOUTHEAST
+
+/turf/open/slippery/roof/dir/west
+	dir = WEST
+
+/turf/open/slippery/roof/dir/northwest
+	dir = NORTHWEST
 
 // Prison grass
 /turf/open/organic/grass
@@ -823,30 +853,29 @@
 	default_name = "deep ocean"
 	allow_construction = FALSE
 
-/turf/open/gm/river/ocean/Entered(atom/movable/AM)
+/turf/open/gm/river/ocean/Entered(atom/movable/entered_movable, atom/old_loc)
 	. = ..()
-	if(prob(20)) // fuck you
-		if(!ismob(AM))
+	if(old_loc != src && prob(20)) // fuck you
+		if(!isliving(entered_movable))
 			return
-		var/mob/unlucky_mob = AM
-		var/turf/target_turf = get_random_turf_in_range(AM, 3, 0)
-		var/datum/launch_metadata/LM = new()
-		LM.target = target_turf
-		LM.range = get_dist(AM.loc, target_turf)
-		LM.speed = SPEED_FAST
-		LM.thrower = unlucky_mob
-		LM.spin = TRUE
-		LM.pass_flags = NO_FLAGS
+		var/mob/living/unlucky_mob = entered_movable
+		var/turf/target_turf = get_random_turf_in_range(entered_movable, 3, 0)
+		var/datum/launch_metadata/launch = new()
+		launch.target = target_turf
+		launch.range = get_dist(entered_movable.loc, target_turf)
+		launch.speed = SPEED_FAST
+		launch.thrower = unlucky_mob
+		launch.spin = TRUE
+		launch.pass_flags = NO_FLAGS
 		to_chat(unlucky_mob, SPAN_WARNING("The ocean currents sweep you off your feet and throw you away!"))
 		// Entered can occur during Initialize so we need to not sleep
-		INVOKE_ASYNC(unlucky_mob, TYPE_PROC_REF(/atom/movable, launch_towards), LM)
+		INVOKE_ASYNC(unlucky_mob, TYPE_PROC_REF(/atom/movable, launch_towards), launch)
 		return
 
-	if(world.time % 5)
-		if(ismob(AM))
-			var/mob/rivermob = AM
-			if(!HAS_TRAIT(rivermob, TRAIT_HAULED))
-				to_chat(rivermob, SPAN_WARNING("Moving through the incredibly deep ocean slows you down a lot!"))
+	if((world.time % 5) && isliving(entered_movable))
+		var/mob/living/rivermob = entered_movable
+		if(!HAS_TRAIT(rivermob, TRAIT_HAULED))
+			to_chat(rivermob, SPAN_WARNING("Moving through the incredibly deep ocean slows you down a lot!"))
 
 /turf/open/gm/coast
 	name = "coastline"
@@ -1015,6 +1044,49 @@
 
 /turf/open/asphalt/cement/cement9
 	icon_state = "cement9"
+
+/turf/open/asphalt/cementalt
+	name = "concrete"
+	icon_state = "cementalt5"
+
+/turf/open/asphalt/cementalt/cementalt1
+	icon_state = "cementalt1"
+
+/turf/open/asphalt/cementalt/cementalt1/north
+	dir = NORTH
+
+/turf/open/asphalt/cementalt/cementalt12
+	icon_state = "cementalt12"
+
+/turf/open/asphalt/cementalt/cementalt13
+	icon_state = "cementalt13"
+
+/turf/open/asphalt/cementalt/cementalt14
+	icon_state = "cementalt14"
+
+/turf/open/asphalt/cementalt/cementalt15
+	icon_state = "cementalt15"
+
+/turf/open/asphalt/cementalt/cementalt18
+	icon_state = "cementalt18"
+
+/turf/open/asphalt/cementalt/cementalt16
+	icon_state = "cementalt16"
+
+/turf/open/asphalt/cementalt/cementalt2
+	icon_state = "cementalt2"
+
+/turf/open/asphalt/cementalt/cementalt3
+	icon_state = "cementalt3"
+
+/turf/open/asphalt/cementalt/cementalt4
+	icon_state = "cementalt4"
+
+/turf/open/asphalt/cementalt/cementalt7
+	icon_state = "cementalt7"
+
+/turf/open/asphalt/cementalt/cementalt9
+	icon_state = "cementalt9"
 
 /turf/open/asphalt/cement_sunbleached
 	name = "concrete"
@@ -1279,6 +1351,7 @@
 /turf/open/shuttle/dropship
 	name = "floor"
 	icon_state = "rasputin1"
+	var/linked_door
 
 /turf/open/shuttle/dropship/light_grey_single_wide_left_to_right
 	icon_state = "floor8"

@@ -19,7 +19,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
 	gun_category = GUN_CATEGORY_SHOTGUN
 	aim_slowdown = SLOWDOWN_ADS_SHOTGUN
-	wield_delay = WIELD_DELAY_NORMAL //Shotguns are as hard to pull up as a rifle. They're quite bulky after all
+	wield_delay = WEAPON_DELAY_NORMAL //Shotguns are as hard to pull up as a rifle. They're quite bulky after all
 	has_empty_icon = FALSE
 	has_open_icon = FALSE
 	fire_delay_group = list(FIRE_DELAY_GROUP_SHOTGUN)
@@ -36,12 +36,6 @@ can cause issues with ammo types getting mixed up during the burst.
 	. = ..()
 	if(current_mag)
 		replace_tube(current_mag.current_rounds) //Populate the chamber.
-
-/obj/item/weapon/gun/shotgun/get_examine_text(mob/user)
-	. = ..()
-	if(flags_gun_features & GUN_AMMO_COUNTER && user)
-		var/chambered = in_chamber ? TRUE : FALSE
-		. += "It has [current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] rounds remaining."
 
 /obj/item/weapon/gun/shotgun/set_gun_config_values()
 	..()
@@ -139,9 +133,9 @@ can cause issues with ammo types getting mixed up during the burst.
 		//this is the most resource efficient way to do it.
 		// what the hell are you talking about cm dev
 /obj/item/weapon/gun/shotgun/proc/retrieve_shell(selection)
-	var/datum/ammo/A = GLOB.ammo_list[selection]
-	var/obj/item/ammo_magazine/handful/new_handful = new A.handful_type()
-	new_handful.generate_handful(selection, gauge, 5, 1, /obj/item/weapon/gun/shotgun)
+	var/datum/ammo/shell = GLOB.ammo_list[selection]
+	var/obj/item/ammo_magazine/handful/new_handful = new shell.handful_type()
+	new_handful.generate_handful(selection, gauge, 1, /obj/item/weapon/gun/shotgun)
 	return new_handful
 
 /obj/item/weapon/gun/shotgun/proc/check_chamber_position()
@@ -199,6 +193,37 @@ can cause issues with ammo types getting mixed up during the burst.
 
 	return 1
 
+/obj/item/weapon/gun/shotgun/start_fire(datum/source, atom/object, turf/location, control, params, bypass_checks = FALSE)
+	if(!gun_user.Adjacent(object))
+		return ..()
+
+	if(!isliving(object))
+		return ..()
+
+	var/list/modifiers = params2list(params)
+	if(modifiers[CTRL_CLICK] || modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[RIGHT_CLICK] || modifiers[BUTTON4] || modifiers[BUTTON5])
+		return FALSE
+
+	if(!gun_user)
+		set_gun_user(source)
+
+	if(gun_user.get_active_hand() != src)
+		return FALSE
+
+	if(gun_user.throw_mode)
+		return FALSE
+
+	if(gun_user.a_intent != INTENT_HARM)
+		return FALSE
+
+	if(gun_user == object) //Throw back to click logic here to handle self harm prefrence
+		return FALSE
+
+	if(QDELETED(object))
+		return FALSE
+
+	INVOKE_ASYNC(src, PROC_REF(attack), object, gun_user)
+	return COMSIG_MOB_CLICK_HANDLED
 
 //-------------------------------------------------------
 //GENERIC MERC SHOTGUN //Not really based on anything.
@@ -241,10 +266,6 @@ can cause issues with ammo types getting mixed up during the burst.
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
-
-/obj/item/weapon/gun/shotgun/merc/get_examine_text(mob/user)
-	. = ..()
-	if(in_chamber) . += "It has a chambered round."
 
 /obj/item/weapon/gun/shotgun/merc/damaged
 	name = "damaged custom built shotgun"
@@ -319,10 +340,6 @@ can cause issues with ammo types getting mixed up during the burst.
 	recoil = RECOIL_AMOUNT_TIER_5
 	recoil_unwielded = RECOIL_AMOUNT_TIER_3
 
-/obj/item/weapon/gun/shotgun/es7/get_examine_text(mob/user)
-	. = ..()
-	if(in_chamber) . += "It has a chambered round."
-
 /obj/item/weapon/gun/shotgun/es7/tactical
 	starting_attachment_types = list(/obj/item/attachable/magnetic_harness, /obj/item/attachable/verticalgrip)
 
@@ -396,9 +413,6 @@ can cause issues with ammo types getting mixed up during the burst.
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
 
-/obj/item/weapon/gun/shotgun/combat/get_examine_text(mob/user)
-	. = ..()
-	if(in_chamber) . += "It has a chambered round."
 
 
 /obj/item/weapon/gun/shotgun/combat/riot
@@ -664,15 +678,51 @@ can cause issues with ammo types getting mixed up during the burst.
 	recoil = RECOIL_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
-/obj/item/weapon/gun/shotgun/double/get_examine_text(mob/user)
-	. = ..()
-	if(!current_mag)
-		return
-	if(current_mag.chamber_closed) . += "It's closed."
-	else . += "It's open with [current_mag.current_rounds] shell\s loaded."
+/obj/item/weapon/gun/shotgun/double/ammo_desc(mob/user) // also, god forbid someone makes a shotgun with ten thousand chambers
+	var/dat = ""
+
+	if(current_mag.chamber_closed)
+		dat += SPAN_NOTICE("It's closed.<br>")
+		return dat
+
+	if(!user || !Adjacent(user))
+		dat += SPAN_NOTICE("It's open.<br>")
+		return dat
+
+	if(!current_mag.current_rounds)
+		dat += SPAN_NOTICE("It's open but [SPAN_DANGER("it's completely empty")].<br>")
+		return dat
+
+	// annoying
+	var/list/descriptions = list()
+	for(var/i in 1 to current_mag.max_rounds)
+		var/ammo_path = current_mag.chamber_contents[i]
+		var/shell_name
+		if(ammo_path && ammo_path != "empty")
+			var/datum/ammo/shell = GLOB.ammo_list[ammo_path]
+			if(shell) shell_name = shell.name
+
+		if(shell_name)
+			descriptions += "a [SPAN_ORANGE(shell_name)]"
+		else
+			descriptions += SPAN_DANGER("nothing")
+
+	var/len = length(descriptions)
+	var/description = "It's open with "
+	for(var/i in 1 to len)
+		description += descriptions[i]
+		if(i < len)
+			if(i == len - 1)
+				description += " and "
+			else
+				description += ", "
+	description += " loaded."
+
+	dat += SPAN_NOTICE(description + "<br>")
+	return dat
 
 /obj/item/weapon/gun/shotgun/double/unique_action(mob/user)
-	if(flags_item & WIELDED)
+	if((flags_item & WIELDED) && current_mag?.chamber_closed)
 		unwield(user)
 	open_chamber(user)
 
@@ -797,7 +847,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	damage_mult = BASE_BULLET_DAMAGE_MULT // Less barrel = less velocity
 	recoil = RECOIL_AMOUNT_TIER_1
 	recoil_unwielded = RECOIL_AMOUNT_TIER_1
-	wield_delay = WIELD_DELAY_FAST
+	wield_delay = WEAPON_DELAY_FAST
 
 // COULDN'T THINK OF ANOTHER WAY SORRY!!!! SOMEONE ADD A GUN COMPONENT!!
 
@@ -1316,7 +1366,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	if(world.time < (recent_pump + pump_delay) )
 		return //Don't spam it.
 	if(pumped)
-		to_chat(user, SPAN_WARNING("<i>[src] already has a shell in the chamber!<i>"))
+		to_chat(user, SPAN_WARNING(SPAN_ITALIC("[src] already has a shell in the chamber!")))
 		return
 	if(in_chamber) //eject the chambered round
 		in_chamber = null
@@ -1326,11 +1376,13 @@ can cause issues with ammo types getting mixed up during the burst.
 	ready_shotgun_tube()
 
 	playsound(user, pump_sound, 10, 1)
-	to_chat(user, SPAN_WARNING("<i>You pump [src], loading a shell into the chamber!<i>"))
-	recent_pump = world.time
-	if (in_chamber)
+	if(in_chamber)
+		to_chat(user, SPAN_WARNING(SPAN_ITALIC("You pump [src], loading a shell into the chamber!")))
 		pumped = TRUE
+	else
+		to_chat(user, SPAN_WARNING(SPAN_ITALIC("You pump [src].")))
 
+	recent_pump = world.time
 
 /obj/item/weapon/gun/shotgun/pump/reload_into_chamber(mob/user)
 	if(!current_mag)
@@ -1410,7 +1462,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	. = ..()
 	var/has_chamber_swap = locate(/datum/action/item_action/dual_tube/toggle_chamber_swap) in actions
 	if(has_chamber_swap)
-		. += SPAN_NOTICE("Use <b>toggle firemode</b> to toggle chamber-swapping.</b>")
+		. += SPAN_NOTICE("Use [SPAN_BOLD("toggle firemode")] to toggle chamber-swapping.")
 
 /obj/item/weapon/gun/shotgun/pump/dual_tube/do_toggle_firemode(datum/source, datum/keybinding, new_firemode)
 	var/datum/action/item_action/dual_tube/toggle_chamber_swap/chamber_swap_ability = locate() in actions
@@ -1461,7 +1513,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		if(in_chamber)
 			pumped = TRUE
 
-	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You switch \the [src]'s active magazine to the [(current_mag == primary_tube) ? "<b>first</b>" : "<b>second</b>"] magazine."))
+	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You switch \the [src]'s active magazine to the [(current_mag == primary_tube) ? SPAN_BOLD("first") : SPAN_BOLD("second")] magazine."))
 	playsound(src, 'sound/machines/switch.ogg', 15, TRUE)
 	return TRUE
 
@@ -1492,10 +1544,10 @@ can cause issues with ammo types getting mixed up during the burst.
 	playsound(owner, 'sound/weapons/handling/gun_burst_toggle.ogg', 15, 1)
 
 	if(holder_gun.chamber_swap)
-		to_chat(owner, SPAN_NOTICE("[icon2html(holder_gun, owner)] You will <b>start swapping</b> the chambered shell with the other tube. <b>Your current tube must be underloaded or it will forcefully eject the shell out of the chamber.</b>"))
+		to_chat(owner, SPAN_NOTICE("[icon2html(holder_gun, owner)] You will [SPAN_BOLD("start swapping")] the chambered shell with the other tube. [SPAN_BOLD("Your current tube must be underloaded or it will forcefully eject the shell out of the chamber.")]"))
 		action_icon_state = "chamber_swap_off"
 	else
-		to_chat(owner, SPAN_NOTICE("[icon2html(holder_gun, owner)] You will <b>stop swapping</b> the chambered shell with the other tube."))
+		to_chat(owner, SPAN_NOTICE("[icon2html(holder_gun, owner)] You will [SPAN_BOLD("stop swapping")] the chambered shell with the other tube."))
 		action_icon_state = "chamber_swap"
 
 	button.overlays.Cut()

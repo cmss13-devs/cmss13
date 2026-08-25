@@ -1233,7 +1233,6 @@
 	max_storage_space = 5
 	can_hold = list(
 		/obj/item/tool/kitchen/utensil/knife,
-		/obj/item/tool/kitchen/utensil/pknife,
 		/obj/item/tool/kitchen/knife,
 		/obj/item/attachable/bayonet,
 		/obj/item/weapon/throwing_knife,
@@ -1525,7 +1524,7 @@ Wrist Accessories
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
 	)
-	flags_obj = OBJ_IS_STYLISH
+	flags_obj = OBJ_IS_STYLISH|OBJ_IS_HELMET_GARB
 	worn_accessory_slot = ACCESSORY_SLOT_DECOR
 	worn_accessory_limit = 2
 	style_postfix = list("neck", "left_wrist", "right_wrist")
@@ -1572,6 +1571,10 @@ Wrist Accessories
 	name = "urban raincover"
 	icon_state = "raincover_urban"
 
+/obj/item/clothing/accessory/helmet/cover/raincover/snow
+	name = "snow raincover"
+	icon_state = "raincover_snow"
+
 /obj/item/clothing/accessory/helmet/cover/netting
 	name = "combat netting"
 	desc = "Probably combat netting for a helmet. Probably just an extra hairnet that got ordered for the phantom Almayer cooking staff. Probably useless."
@@ -1588,3 +1591,7 @@ Wrist Accessories
 /obj/item/clothing/accessory/helmet/cover/netting/urban
 	name = "urban combat netting"
 	icon_state = "netting_urban"
+
+/obj/item/clothing/accessory/helmet/cover/netting/snow
+	name = "snow combat netting"
+	icon_state = "netting_snow"

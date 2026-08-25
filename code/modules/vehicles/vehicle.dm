@@ -13,7 +13,6 @@
 		VEHICLE_DRIVER = null
 	)
 
-	var/attack_log = null
 	var/on = 0
 	health = 100
 	var/maxhealth = 100

@@ -1,4 +1,0 @@
-author: "ComboTombo"
-delete-after: True
-changes:
-  - bugfix: "Marine service jacket no longer overridden by MP service jacket in the synthetic loadouts customization page"

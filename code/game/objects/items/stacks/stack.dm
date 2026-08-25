@@ -416,11 +416,15 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 			return
 		if(amount <= 1)
 			return
+		if(check_pickup_blocked(user) & COMPONENT_PICKUP_CANCELED_ACID) //acided
+			to_chat(user, SPAN_WARNING("[src] is covered in acid!"))
+			balloon_alert(user, "its covered in acid!")
+			return TRUE
 		var/desired = tgui_input_number(user, "How much would you like to split off from this stack?", "How much?", 1, amount-1, 1)
 		if(!desired)
-			return
+			return TRUE
 		if(!use(desired))
-			return
+			return TRUE
 		var/obj/item/stack/newstack = new type(user, desired)
 		transfer_fingerprints_to(newstack)
 		user.put_in_hands(newstack)
@@ -485,11 +489,16 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 	if(!istype(used_stack) || used_stack.stack_id != stack_id) //not the same stack type :)
 		return ..()
 
+	if(check_pickup_blocked(user) & COMPONENT_PICKUP_CANCELED_ACID) //acided
+		to_chat(user, SPAN_WARNING("[src] is covered in acid!"))
+		balloon_alert(user, "its covered in acid!")
+		return TRUE
+
 	if(used_stack.amount >= max_amount)
 		to_chat(user, SPAN_WARNING("The [name] is full!"))
 		return TRUE
-	var/to_transfer = min(amount, used_stack.max_amount - used_stack.amount)
 
+	var/to_transfer = min(amount, used_stack.max_amount - used_stack.amount)
 	if(to_transfer <= 0)
 		return
 

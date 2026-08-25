@@ -989,6 +989,8 @@
 		if(evasion > 0)
 			. -= evasion
 
+		if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
+			return 0
 
 /obj/projectile/proc/play_hit_effect(mob/hit_mob)
 	if(ammo.sound_hit)
@@ -1476,3 +1478,4 @@
 #undef DEBUG_HIT_CHANCE
 #undef DEBUG_HUMAN_DEFENSE
 #undef DEBUG_XENO_DEFENSE
+

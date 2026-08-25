@@ -45,28 +45,6 @@
 	/// How much time is left on timer. (used for status)
 	var/time_left = null
 
-	/// Check for slashed target that had yellow tag
-	var/spread_slash_triggered = FALSE
-
-	/// How many targets got yellow tag.
-	var/spread_count = 0
-
-	/// How much damage Harpoon Tail on DISARM mode do. (pierces armor)
-	var/blunt_damage = 8
-	/// Harpoon Tail mode, used only to display in status.
-	var/tail_mode = null
-
-	/// Is Dodge ability active?
-	var/dodge_activated = FALSE
-	/// Used to countdown DANCER_DODGE_TIME.
-	var/dodge_start_time = -1
-	/// How much refund we want to get back? 1.0 is 1s used to 1s cooldown, 2.0 is 1s used 2s cooldown.
-	var/refund_multiplier = 2.0
-	/// Used in calculation, finalized number will be displayed as cooldown.
-	var/recharge_time = null
-	/// Cooldown after activation to prevent accidental double click.
-	var/safe_click_cooldown = 0
-
 	/// Timer to prevent dancer from spreading yellow tags.
 	var/last_dancer_spread_time = 0
 
@@ -74,23 +52,27 @@
 	. = list()
 	. += "Guaranteed Dodge every [bound_xeno.dodge_threshold] bullet\s."
 	. += "Yellow Tag Spread Delay: 5 seconds."
-	intent_detection()
-	. += "Tail Lance Intent: [tail_mode]"
-	if(tail_mode == "Blunt")
-		. += "Damage: [blunt_damage] AP"
+
+	var/datum/action/xeno_action/activable/tail_stab/harpoon_tail/harpoon_action = get_action(bound_xeno, /datum/action/xeno_action/activable/tail_stab/harpoon_tail)
+	harpoon_action.intent_detection()
+	. += "Tail Lance Intent: [harpoon_action.tail_mode]"
+	if(harpoon_action.tail_mode == "Blunt")
+		. += "Damage: [harpoon_action.blunt_damage] AP"
 		. += "Cooldown: 3 seconds."
-	if(dodge_start_time != -1)
-		time_left = (DANCER_DODGE_TIME - (world.time - dodge_start_time)) / 10
+
+	var/datum/action/xeno_action/onclick/prae_dodge/dodge_action = get_action(bound_xeno, /datum/action/xeno_action/onclick/prae_dodge)
+	if(dodge_action.dodge_start_time != -1)
+		time_left = (DANCER_DODGE_TIME - (world.time - dodge_action.dodge_start_time)) / 10
 		. += "Dodge Remaining: [time_left] second\s."
 		return
 
 /datum/behavior_delegate/praetorian_dancer/melee_attack_additional_effects_self()
 	..()
 
-	if(!spread_slash_triggered)
+	if(!HAS_TRAIT(bound_xeno, TRAIT_ABILITY_YELLOW_TAG))
 		return
 
-	spread_slash_triggered = FALSE
+	REMOVE_TRAIT(bound_xeno, TRAIT_ABILITY_YELLOW_TAG, TRAIT_SOURCE_ABILITY("yellow_tag"))
 
 	var/datum/action/xeno_action/activable/prae_impale/impale_action = get_action(bound_xeno, /datum/action/xeno_action/activable/prae_impale)
 	if(!impale_action.action_cooldown_check())
@@ -121,30 +103,30 @@
 		break
 
 	if(consumed_spread)
-		spread_slash_triggered = TRUE
+		ADD_TRAIT(bound_xeno, TRAIT_ABILITY_YELLOW_TAG, TRAIT_SOURCE_ABILITY("yellow_tag"))
 
 	if(target_carbon.health <= 0)
 		try_spread_tags_from(target_carbon)
 
-/datum/behavior_delegate/praetorian_dancer/proc/try_spread_tags_from(mob/living/carbon/human/source)
-	if(!ishuman(source))
+/datum/behavior_delegate/praetorian_dancer/proc/try_spread_tags_from(mob/living/carbon/human/target_human)
+	if(!ishuman(target_human))
 		return
 
-	var/turf/origin = get_turf(source)
+	var/turf/origin = get_turf(target_human)
 	if(!origin)
 		return
 
 	if(world.time < last_dancer_spread_time + DANCER_YELLOW_TAG_SPREAD_DURATION)
 		return
 
-	if(world.time < source.last_target_spread_time + DANCER_YELLOW_TAG_SPREAD_CD)
+	if(world.time < target_human.last_target_spread_time + DANCER_YELLOW_TAG_SPREAD_CD)
 		return
-	source.last_target_spread_time = world.time
+	target_human.last_target_spread_time = world.time
 
 	var/spread_count = 0
 
 	for(var/mob/living/carbon/human/human_target in view(DANCER_YELLOW_TAG_SPREAD_DIST))
-		if(human_target == source)
+		if(human_target == target_human)
 			continue
 		if(human_target.stat == DEAD || human_target.stat == UNCONSCIOUS)
 			continue
@@ -164,95 +146,92 @@
 	if(spread_count >= 0)
 		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("Fear spreads among the prey, their weakness fuels your instincts to strike them down!"))
 
-/datum/behavior_delegate/praetorian_dancer/proc/intent_detection()
-	if(bound_xeno && bound_xeno.a_intent == INTENT_DISARM)
+
+
+/datum/action/xeno_action/activable/tail_stab/harpoon_tail/ability_act(mob/living/carbon/xenomorph/xeno, mob/living/carbon/target_carbon, obj/limb/limb)
+	if(!istype(xeno) || !istype(target_carbon))
+		return
+
+	if(xeno.a_intent == INTENT_DISARM)
+		target_carbon.last_damage_data = create_cause_data(initial(xeno.caste_type), xeno)
+
+		xeno.visible_message(
+			SPAN_XENOWARNING("[xeno] smash [target_carbon] with flat side of its tail!"),
+			SPAN_XENOWARNING("We smash [target_carbon] with flat side of our tail!")
+		)
+		xeno.animation_attack_on(target_carbon)
+		xeno.flick_attack_overlay(target_carbon, "slam")
+
+		if(xeno.behavior_delegate)
+			xeno.behavior_delegate.melee_attack_additional_effects_target(target_carbon)
+
+		playsound(target_carbon, "punch", 25, TRUE)
+		target_carbon.apply_damage(blunt_damage, BRUTE, "chest")
+		apply_cooldown(cooldown_modifier = 0.3)
+		update_button_icon()
+		return target_carbon
+
+	return ..()
+
+/datum/action/xeno_action/activable/tail_stab/harpoon_tail/proc/intent_detection()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(xeno && xeno.a_intent == INTENT_DISARM)
 		tail_mode = "Blunt"
 	else
 		tail_mode = "Normal"
 
-/datum/action/xeno_action/activable/tail_stab/harpoon_tail/ability_act(mob/living/carbon/xenomorph/xeno, mob/living/carbon/target, obj/limb/limb)
-	if(!istype(xeno) || !istype(target))
-		return
 
-	var/datum/behavior_delegate/praetorian_dancer/behavior = xeno.behavior_delegate
-	if(!istype(behavior))
-		return
 
-	if(xeno.a_intent == INTENT_DISARM)
-		target.last_damage_data = create_cause_data(initial(xeno.caste_type), xeno)
-
-		xeno.visible_message(
-			SPAN_XENOWARNING("[xeno] smash [target] with flat side of its tail!"),
-			SPAN_XENOWARNING("We smash [target] with flat side of our tail!")
-		)
-		xeno.animation_attack_on(target)
-		xeno.flick_attack_overlay(target, "slam")
-
-		if(xeno.behavior_delegate)
-			xeno.behavior_delegate.melee_attack_additional_effects_target(target)
-
-		playsound(target, "punch", 25, TRUE)
-		target.apply_damage(behavior.blunt_damage, BRUTE, "chest")
-		apply_cooldown(cooldown_modifier = 0.3)
-		update_button_icon()
-		return target
-
-	return ..()
 
 /datum/action/xeno_action/activable/prae_impale/use_ability(atom/target_atom)
-	var/mob/living/carbon/xenomorph/dancer_user = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 
-	if(!action_cooldown_check())
-		return
-
-	if(!dancer_user.check_state())
-		return
+	XENO_ACTION_CHECK(xeno)
 
 	if(!ismob(target_atom))
 		apply_cooldown_override(impale_click_miss_cooldown)
 		update_button_icon()
 		return
 
-	if(!isxeno_human(target_atom) || dancer_user.can_not_harm(target_atom))
-		to_chat(dancer_user, SPAN_XENODANGER("We must target a hostile!"))
+	if(!isxeno_human(target_atom) || xeno.can_not_harm(target_atom))
+		to_chat(xeno, SPAN_XENODANGER("We must target a hostile!"))
 		return
 
 	var/mob/living/carbon/target_carbon = target_atom
 
 	if(target_carbon.stat == DEAD)
-		to_chat(dancer_user, SPAN_XENOWARNING("[target_atom] is dead, why would we want to attack it?"))
+		to_chat(xeno, SPAN_XENOWARNING("[target_atom] is dead, why would we want to attack it?"))
 		return
 
-	var/dist = get_dist(dancer_user, target_carbon)
+	var/dist = get_dist(xeno, target_carbon)
 
 	if(dist > range)
-		to_chat(dancer_user, SPAN_WARNING("[target_carbon] is too far away!"))
+		to_chat(xeno, SPAN_WARNING("[target_carbon] is too far away!"))
 		return
 
 	if(dist > 1)
-		var/turf/target_turf = get_step(dancer_user, get_dir(dancer_user, target_carbon))
+		var/turf/target_turf = get_step(xeno, get_dir(xeno, target_carbon))
 		if(target_turf.density)
-			to_chat(dancer_user, SPAN_WARNING("We can't attack through [target_turf]!"))
+			to_chat(xeno, SPAN_WARNING("We can't attack through [target_turf]!"))
 			return
 		else
 			for(var/atom/atom_in_turf in target_turf)
 				if(atom_in_turf.density && !atom_in_turf.throwpass && !istype(atom_in_turf, /obj/structure/barricade) && !istype(atom_in_turf, /mob/living))
-					to_chat(dancer_user, SPAN_WARNING("We can't attack through [atom_in_turf]!"))
+					to_chat(xeno, SPAN_WARNING("We can't attack through [atom_in_turf]!"))
 					return
 
-	if(!check_and_use_plasma_owner())
-		return
+	XENO_ACTION_CHECK_USE_PLASMA(xeno)
 
 	apply_cooldown()
-	var/buffed = FALSE
+	REMOVE_TRAIT(xeno, TRAIT_ABILITY_RED_TAG, TRAIT_SOURCE_ABILITY("red_tag"))
 	for(var/datum/effects/dancer_tag/spread/tag_spread in target_carbon.effects_list)
-		buffed = TRUE
+		ADD_TRAIT(xeno, TRAIT_ABILITY_RED_TAG, TRAIT_SOURCE_ABILITY("red_tag"))
 		qdel(tag_spread)
 		apply_cooldown_override()
 		break
 
 	for(var/datum/effects/dancer_tag/normal/dancer_tag_effect in target_carbon.effects_list)
-		buffed = TRUE
+		ADD_TRAIT(xeno, TRAIT_ABILITY_RED_TAG, TRAIT_SOURCE_ABILITY("red_tag"))
 		qdel(dancer_tag_effect)
 		break
 
@@ -260,72 +239,64 @@
 		var/mob/living/carbon/human/human_target = target_carbon
 		human_target.update_xeno_hostile_hud()
 
-	// Hmm today visible_message(SPAN_DANGER("\The [dancer_user] violently slices [target_atom] with its tail[buffed?" twice":""]!"),
-	dancer_user.face_atom(target_atom)
+	// Hmm today visible_message(SPAN_DANGER("\The [xeno] violently slices [target_atom] with its tail[buffed?" twice":""]!"),
+	xeno.face_atom(target_atom)
 
-	var/damage = get_xeno_damage_slash(target_carbon, rand(dancer_user.melee_damage_lower, dancer_user.melee_damage_upper))
-
-	dancer_user.visible_message(SPAN_DANGER("\The [dancer_user] violently slices [target_atom] with its tail[buffed?" twice":""]!"),
+	var/damage = get_xeno_damage_slash(target_carbon, rand(xeno.melee_damage_lower, xeno.melee_damage_upper))
+	var/buffed = HAS_TRAIT(xeno, TRAIT_ABILITY_RED_TAG)
+	xeno.visible_message(SPAN_DANGER("\The [xeno] violently slices [target_atom] with its tail[buffed?" twice":""]!"),
 					SPAN_DANGER("We slice [target_atom] with our tail[buffed?" twice":""]!"))
 
-	var/list/attack_data = list(
-			"attacker" = dancer_user,
-			"target" = target_carbon,
-			"damage" = damage
-		)
-	impale_strike(attack_data)
+	impale_strike(xeno, target_carbon, damage)
 
 	if(buffed)
-		dancer_user.emote("roar") // Feedback for the player that we got the magic double impale
-		addtimer(CALLBACK(src, PROC_REF(impale_strike), attack_data), 4 DECISECONDS)
+		xeno.emote("roar") // Feedback for the player that we got the magic double impale
+		addtimer(CALLBACK(src, PROC_REF(impale_strike), xeno, target_carbon, damage), 4 DECISECONDS)
 
 	return ..()
 
-/datum/action/xeno_action/activable/prae_impale/proc/impale_strike(list/attack_data)
-	var/mob/living/carbon/xenomorph/attacker = attack_data["attacker"]
-	var/mob/living/carbon/target = attack_data["target"]
-	var/damage = attack_data["damage"]
 
-	if(!attacker || !target || target.stat == DEAD || QDELETED(attacker) || QDELETED(target))
+
+/datum/action/xeno_action/activable/prae_impale/proc/impale_strike(mob/living/carbon/xenomorph/xeno, mob/living/carbon/target_carbon, damage)
+	if(!xeno || !target_carbon || target_carbon.stat == DEAD || QDELETED(xeno) || QDELETED(target_carbon))
 		return
 
-	attacker.animation_attack_on(target)
-	attacker.flick_attack_overlay(target, "tail")
+	xeno.animation_attack_on(target_carbon)
+	xeno.flick_attack_overlay(target_carbon, "tail")
 
-	target.last_damage_data = create_cause_data(initial(attacker.caste_type), attacker)
-	target.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "chest", 10)
-	playsound(target, 'sound/weapons/alien_tail_attack.ogg', 30, TRUE)
+	target_carbon.last_damage_data = create_cause_data(initial(xeno.caste_type), xeno)
+	target_carbon.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "chest", 10)
+	playsound(target_carbon, 'sound/weapons/alien_tail_attack.ogg', 30, TRUE)
 
-/datum/action/xeno_action/onclick/prae_dodge/use_ability(atom/target)
-	var/mob/living/carbon/xenomorph/dodge_user = owner
-	if(!istype(dodge_user) || !dodge_user.check_state())
+
+
+/datum/action/xeno_action/onclick/prae_dodge/use_ability(atom/target_atom)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!istype(xeno))
 		return
 
-	var/datum/behavior_delegate/praetorian_dancer/behavior = dodge_user.behavior_delegate
-	if(!istype(behavior))
-		return
-
-	if(behavior.dodge_activated)
+	if(HAS_TRAIT(xeno, TRAIT_ABILITY_DODGE))
 		remove_effects()
 		return
 
-	if(!action_cooldown_check())
-		return
+	XENO_ACTION_CHECK(xeno)
 
 	if(!check_and_use_plasma_owner(200))
 		return
 
-	behavior.dodge_activated = TRUE
-	behavior.dodge_start_time = world.time
-	behavior.safe_click_cooldown = world.time + 1 SECONDS
+	ADD_TRAIT(xeno, TRAIT_ABILITY_DODGE, TRAIT_SOURCE_ABILITY("dodge"))
+	dodge_start_time = world.time
+	safe_click_cooldown = world.time + 1 SECONDS
 	button.icon_state = "template_active"
-	dodge_user.speed_modifier -= speed_buff_amount
-	dodge_user.dodge_threshold -= 3
-	dodge_user.add_temp_pass_flags(PASS_MOB_THRU)
-	dodge_user.recalculate_speed()
-	dodge_user.balloon_alert(dodge_user, "we start our evasive stance!", text_color = "#7d32bb", delay = 1 SECONDS)
+	xeno.speed_modifier -= speed_buff_amount
+	xeno.dodge_threshold -= 3
+	xeno.add_temp_pass_flags(PASS_MOB_THRU)
+	xeno.recalculate_speed()
+	xeno.balloon_alert(xeno, "we start our evasive stance!", text_color = "#7d32bb", delay = 1 SECONDS)
 
-	INVOKE_ASYNC(src, PROC_REF(create_afterimage_sequence), dodge_user, duration)
+	start_duration_display(duration)
+
+	INVOKE_ASYNC(src, PROC_REF(create_afterimage_sequence), xeno, duration)
 
 	if(dodge_timer != TIMER_ID_NULL)
 		deltimer(dodge_timer)
@@ -335,51 +306,49 @@
 	return ..()
 
 /datum/action/xeno_action/onclick/prae_dodge/proc/remove_effects()
-	var/mob/living/carbon/xenomorph/dodge_remove = owner
-	if(!istype(dodge_remove))
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!istype(xeno))
 		return
 
-	var/datum/behavior_delegate/praetorian_dancer/behavior = dodge_remove.behavior_delegate
-	if(!istype(behavior))
+	if(!HAS_TRAIT(xeno, TRAIT_ABILITY_DODGE))
 		return
 
-	if(!behavior.dodge_activated)
+	if(world.time < safe_click_cooldown)
+		to_chat(xeno, SPAN_XENOWARNING("We need a moment before breaking our evasive stance!"))
 		return
 
-	if(world.time < behavior.safe_click_cooldown)
-		to_chat(dodge_remove, SPAN_XENOWARNING("We need a moment before breaking our evasive stance!"))
-		return
-
-	behavior.dodge_activated = FALSE
+	REMOVE_TRAIT(xeno, TRAIT_ABILITY_DODGE, TRAIT_SOURCE_ABILITY("dodge"))
 	button.icon_state = "template_xeno"
-	dodge_remove.speed_modifier += speed_buff_amount
-	dodge_remove.dodge_threshold += 3
-	dodge_remove.remove_temp_pass_flags(PASS_MOB_THRU)
-	dodge_remove.recalculate_speed()
-	dodge_remove.reset_position_to_initial()
-	dodge_remove.balloon_alert(dodge_remove, "our evasive stance fades", text_color = "#bb5d32", delay = 1 SECONDS)
+	xeno.speed_modifier += speed_buff_amount
+	xeno.dodge_threshold += 3
+	xeno.remove_temp_pass_flags(PASS_MOB_THRU)
+	xeno.recalculate_speed()
+	xeno.reset_position_to_initial()
+	xeno.balloon_alert(xeno, "our evasive stance fades", text_color = "#bb5d32", delay = 1 SECONDS)
+
+	end_duration_display()
 
 	if(dodge_timer != TIMER_ID_NULL)
 		deltimer(dodge_timer)
 		dodge_timer = TIMER_ID_NULL
 
-	if(behavior.dodge_start_time > 0)
-		var/used_ratio = round((world.time - behavior.dodge_start_time) / duration, 0.1)
-		behavior.recharge_time = max(DANCER_DODGE_TIME * used_ratio * behavior.refund_multiplier, 5 SECONDS)
+	if(dodge_start_time > 0)
+		var/used_ratio = round((world.time - dodge_start_time) / duration, 0.1)
+		recharge_time = max(DANCER_DODGE_TIME * used_ratio * refund_multiplier, 5 SECONDS)
 
-	behavior.dodge_start_time = -1
-	apply_cooldown_override(behavior.recharge_time)
+	dodge_start_time = -1
+	apply_cooldown_override(recharge_time)
 
-/datum/action/xeno_action/onclick/prae_dodge/proc/create_afterimage_sequence(mob/living/carbon/xenomorph/dodge_user, duration)
-	if(!dodge_user || !dodge_user.loc)
+/datum/action/xeno_action/onclick/prae_dodge/proc/create_afterimage_sequence(mob/living/carbon/xenomorph/xeno, duration)
+	if(!xeno || !xeno.loc)
 		return
 
 	var/afterimage_count = round(duration / afterimage_interval)
 
 	var/datum/afterimage_state/state = new
-	state.owner = dodge_user
+	state.owner = xeno
 	state.remaining = afterimage_count
-	state.last_turf = get_turf(dodge_user.loc)
+	state.last_turf = get_turf(xeno.loc)
 
 	addtimer(CALLBACK(src, PROC_REF(process_afterimage_tick), state), afterimage_interval)
 
@@ -387,20 +356,19 @@
 	if(!state || !state.owner || !state.owner.loc)
 		return
 
-	var/mob/living/carbon/xenomorph/dodge_user = state.owner
-	var/datum/behavior_delegate/praetorian_dancer/behavior = dodge_user.behavior_delegate
-	if(!istype(behavior) || !behavior.dodge_activated)
+	var/mob/living/carbon/xenomorph/xeno = state.owner
+	if(!HAS_TRAIT(xeno, TRAIT_ABILITY_DODGE))
 		return
-	var/turf/current_position = get_turf(dodge_user.loc)
+	var/turf/current_position = get_turf(xeno.loc)
 
 	if(current_position && current_position != state.last_turf)
 		var/random_offset_x = rand(-4, 4)
 		var/random_offset_y = rand(-4, 4)
 
-		dodge_user.reset_position_to_initial()
-		dodge_user.apply_offset(random_offset_x, random_offset_y)
+		xeno.reset_position_to_initial()
+		xeno.apply_offset(random_offset_x, random_offset_y)
 
-		create_afterimage(dodge_user, random_offset_x, random_offset_y)
+		create_afterimage(xeno, random_offset_x, random_offset_y)
 		state.last_turf = current_position
 
 	state.remaining--
@@ -408,20 +376,20 @@
 	if(state.remaining > 0)
 		addtimer(CALLBACK(src, PROC_REF(process_afterimage_tick), state), afterimage_interval)
 	else
-		addtimer(CALLBACK(dodge_user, TYPE_PROC_REF(/atom/movable, reset_position_to_initial)), 2 DECISECONDS)
+		addtimer(CALLBACK(xeno, TYPE_PROC_REF(/atom/movable, reset_position_to_initial)), 2 DECISECONDS)
 
-/datum/action/xeno_action/onclick/prae_dodge/proc/create_afterimage(mob/living/carbon/xenomorph/dodge_user, random_offset_x, random_offset_y)
-	if(!dodge_user || !dodge_user.loc)
+/datum/action/xeno_action/onclick/prae_dodge/proc/create_afterimage(mob/living/carbon/xenomorph/xeno, random_offset_x, random_offset_y)
+	if(!xeno || !xeno.loc)
 		return
 
-	var/turf/afterimage_location = get_turf(dodge_user.loc)
+	var/turf/afterimage_location = get_turf(xeno.loc)
 	if(!afterimage_location)
 		return
 
 	var/directional_offset_x = 0
 	var/directional_offset_y = 0
 
-	switch(dodge_user.dir)
+	switch(xeno.dir)
 		if(NORTH)
 			directional_offset_y = -16
 		if(SOUTH)
@@ -432,17 +400,19 @@
 			directional_offset_x = 16
 
 	var/obj/effect/overlay/afterimage = new /obj/effect/overlay/afterimage(afterimage_location)
-	afterimage.icon = dodge_user.icon
-	afterimage.icon_state = dodge_user.icon_state
-	afterimage.color = dodge_user.color
-	afterimage.layer = dodge_user.layer
-	afterimage.dir = dodge_user.dir
+	afterimage.icon = xeno.icon
+	afterimage.icon_state = xeno.icon_state
+	afterimage.color = xeno.color
+	afterimage.layer = xeno.layer
+	afterimage.dir = xeno.dir
 	afterimage.alpha = 200
 	afterimage.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	afterimage.pixel_x = dodge_user.pixel_x + directional_offset_x
-	afterimage.pixel_y = dodge_user.pixel_y + directional_offset_y
+	afterimage.pixel_x = xeno.pixel_x + directional_offset_x
+	afterimage.pixel_y = xeno.pixel_y + directional_offset_y
 
 	addtimer(CALLBACK(afterimage, TYPE_PROC_REF(/obj/effect/overlay/afterimage, fade_out_afterimage)))
+
+
 
 /obj/effect/overlay/afterimage/proc/fade_out_afterimage()
 	if(!src)
@@ -484,80 +454,79 @@
 	var/fade_max_steps = 3
 	var/fade_delay = 1 DECISECONDS
 
+
+
 /datum/action/xeno_action/activable/prae_tail_trip/use_ability(atom/target_atom)
-	var/mob/living/carbon/xenomorph/dancer_user = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 
-	if(!action_cooldown_check())
+	if(!istype(xeno))
 		return
 
-	if(!istype(dancer_user) || !dancer_user.check_state())
-		return
+	XENO_ACTION_CHECK(xeno)
 
 	if(!ismob(target_atom))
 		apply_cooldown_override(tail_click_miss_cooldown)
 		update_button_icon()
 		return
 
-	if(!isxeno_human(target_atom) || dancer_user.can_not_harm(target_atom))
-		to_chat(dancer_user, SPAN_XENODANGER("We must target a hostile!"))
+	if(!isxeno_human(target_atom) || xeno.can_not_harm(target_atom))
+		to_chat(xeno, SPAN_XENODANGER("We must target a hostile!"))
 		return
 
 	var/mob/living/carbon/target_carbon = target_atom
 
 	if(target_carbon.stat == DEAD)
-		to_chat(dancer_user, SPAN_XENOWARNING("[target_atom] is dead, why would we want to attack it?"))
+		to_chat(xeno, SPAN_XENOWARNING("[target_atom] is dead, why would we want to attack it?"))
 		return
 
-	if(!check_and_use_plasma_owner())
-		return
-
+	XENO_ACTION_CHECK_USE_PLASMA(xeno)
 
 	if(ishuman(target_carbon))
 		var/mob/living/carbon/human/target_human = target_carbon
 		target_human.update_xeno_hostile_hud()
 
-	var/dist = get_dist(dancer_user, target_carbon)
+	var/dist = get_dist(xeno, target_carbon)
 
 	if(dist > range)
-		to_chat(dancer_user, SPAN_WARNING("[target_carbon] is too far away!"))
+		to_chat(xeno, SPAN_WARNING("[target_carbon] is too far away!"))
 		return
 
 	if(dist > 1)
-		var/turf/target_turf = get_step(dancer_user, get_dir(dancer_user, target_carbon))
+		var/turf/target_turf = get_step(xeno, get_dir(xeno, target_carbon))
 		if(target_turf.density)
-			to_chat(dancer_user, SPAN_WARNING("We can't attack through [target_turf]!"))
+			to_chat(xeno, SPAN_WARNING("We can't attack through [target_turf]!"))
 			return
 		else
 			for(var/atom/atom_in_turf in target_turf)
 				if(atom_in_turf.density && !atom_in_turf.throwpass && !istype(atom_in_turf, /obj/structure/barricade) && !istype(atom_in_turf, /mob/living))
-					to_chat(dancer_user, SPAN_WARNING("We can't attack through [atom_in_turf]!"))
+					to_chat(xeno, SPAN_WARNING("We can't attack through [atom_in_turf]!"))
 					return
 
 	// Hmm today I will kill a marine while looking away from them
-	dancer_user.face_atom(target_carbon)
-	dancer_user.flick_attack_overlay(target_carbon, "disarm")
+	xeno.face_atom(target_carbon)
+	xeno.flick_attack_overlay(target_carbon, "disarm")
 
-	var/buffed = FALSE
+	REMOVE_TRAIT(xeno, TRAIT_ABILITY_RED_TAG, TRAIT_SOURCE_ABILITY("red_tag"))
 
 	var/datum/effects/dancer_tag/normal/dancer_tag_effect = locate() in target_carbon.effects_list
 	var/datum/effects/dancer_tag/spread/tag_spread = locate() in target_carbon.effects_list
 
 	if(tag_spread)
-		buffed = TRUE
+		ADD_TRAIT(xeno, TRAIT_ABILITY_RED_TAG, TRAIT_SOURCE_ABILITY("red_tag"))
 		qdel(tag_spread)
 		apply_cooldown_override()
 
 	if(dancer_tag_effect)
-		buffed = TRUE
+		ADD_TRAIT(xeno, TRAIT_ABILITY_RED_TAG, TRAIT_SOURCE_ABILITY("red_tag"))
 		qdel(dancer_tag_effect)
 
-	if(!buffed)
-		new /datum/effects/xeno_slow(target_carbon, dancer_user, null, null, get_xeno_stun_duration(target_carbon, slow_duration))
+	if(!HAS_TRAIT(xeno, TRAIT_ABILITY_RED_TAG))
+		new /datum/effects/xeno_slow(target_carbon, xeno, null, null, get_xeno_stun_duration(target_carbon, slow_duration))
 
 	var/stun_duration = stun_duration_default
 	var/daze_duration = 0
 
-	if(buffed)
+	if(HAS_TRAIT(xeno, TRAIT_ABILITY_RED_TAG))
 		stun_duration = stun_duration_buffed
 		daze_duration = daze_duration_buffed
 
@@ -568,20 +537,20 @@
 		if(Xeno.mob_size >= MOB_SIZE_BIG)
 			xeno_smashed = TRUE
 			shake_camera(Xeno, 10, 1)
-			dancer_user.visible_message(SPAN_XENODANGER("[dancer_user] smashes [Xeno] with it's tail!"), SPAN_XENODANGER("We smash [Xeno] with your tail!"))
-			to_chat(Xeno, SPAN_XENOHIGHDANGER("You feel dizzy as [dancer_user] smashes you with their tail!"))
-			dancer_user.animation_attack_on(Xeno)
+			xeno.visible_message(SPAN_XENODANGER("[xeno] smashes [Xeno] with it's tail!"), SPAN_XENODANGER("We smash [Xeno] with your tail!"))
+			to_chat(Xeno, SPAN_XENOHIGHDANGER("You feel dizzy as [xeno] smashes you with their tail!"))
+			xeno.animation_attack_on(Xeno)
 
 	if(!xeno_smashed)
-		if (stun_duration > 0)
+		if(stun_duration > 0)
 			target_carbon.apply_effect(stun_duration, WEAKEN)
-		dancer_user.visible_message(SPAN_XENODANGER("[dancer_user] trips [target_atom] with it's tail!"), SPAN_XENODANGER("We trip [target_atom] with our tail!"))
-		dancer_user.spin_circle()
-		dancer_user.emote("tail")
-		to_chat(target_carbon, SPAN_XENOHIGHDANGER("You are swept off your feet by [dancer_user]!"))
+		xeno.visible_message(SPAN_XENODANGER("[xeno] trips [target_atom] with it's tail!"), SPAN_XENODANGER("We trip [target_atom] with our tail!"))
+		xeno.spin_circle()
+		xeno.emote("tail")
+		to_chat(target_carbon, SPAN_XENOHIGHDANGER("You are swept off your feet by [xeno]!"))
 	if(daze_duration > 0)
 		target_carbon.apply_effect(daze_duration, DAZE)
-	playsound(dancer_user, 'sound/effects/hit_kick.ogg', 75, 1)
+	playsound(xeno, 'sound/effects/hit_kick.ogg', 75, 1)
 
 	apply_cooldown()
 	return ..()

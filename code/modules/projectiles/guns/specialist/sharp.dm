@@ -60,6 +60,44 @@
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
 			return FALSE
 
+/obj/item/weapon/gun/rifle/sharp/reload(mob/user, obj/item/ammo_magazine/magazine)
+	if(magazine.flags_magazine & AMMUNITION_HANDFUL)
+		insert_dart(user)
+		return
+	..()
+
+/obj/item/weapon/gun/proc/insert_dart(mob/user)
+	var/obj/item/ammo_magazine/handful/dart = user.get_active_hand()
+
+	if(!istype(dart.ammo_source, /datum/ammo/rifle/sharp))
+		to_chat(user, SPAN_WARNING("\The [dart] doesn't match [src]'s caliber!"))
+		return
+
+	if(in_chamber)
+		var/in_chamber_ammo_type = get_ammo_type_chambered()
+		if(current_mag)
+			if(!istype(in_chamber_ammo_type, current_mag.default_ammo))
+				to_chat(user, SPAN_WARNING("Feeding \the [dart] would mix the ammo in \the [current_mag]!"))
+				return
+			else if (current_mag.current_rounds == current_mag.max_rounds)
+				to_chat(user, SPAN_WARNING("\The [dart] can't be pushed into the chamber as \the loaded [current_mag] is full!"))
+				return
+			current_mag.current_rounds++
+		else
+			var/obj/item/ammo_magazine/handful/new_handful = new(get_turf(src))
+			new_handful.generate_handful(in_chamber_ammo_type, /obj/item/ammo_magazine/rifle/sharp::caliber, 1, /obj/item/weapon/gun/rifle/sharp::type)
+			to_chat(user, SPAN_WARNING("An already chambered dart is pushed out \the [src]'s magazine port!"))
+	if(dart.current_rounds > 0)
+		in_chamber = create_bullet(dart.ammo_source, initial(name))
+		apply_traits(in_chamber)
+		user.visible_message(SPAN_NOTICE(("[user] loads a [dart.singular_name] into [src]'s chamber!")),
+		SPAN_NOTICE(("You load a [SPAN_ORANGE(dart.singular_name)] into [src]'s chamber.")))
+		dart.current_rounds--
+		dart.update_icon()
+		if(dart.current_rounds <= 0)
+			QDEL_NULL(dart)
+		playsound(src, 'sound/weapons/handling/gun_boltaction_close.ogg', 15)
+
 //code for changing mine modes
 
 /datum/action/item_action/specialist/sharp_firemode_ability

@@ -434,6 +434,7 @@
 /obj/item/explosive/mine/sharp/attackby(obj/item/W, mob/user)
 	if(user.action_busy)
 		return
+
 	if(!disarmed)
 		if(HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
 			user.visible_message(SPAN_NOTICE("[user] starts disarming [src]."), \
@@ -447,44 +448,15 @@
 			user.visible_message(SPAN_NOTICE("[user] finishes disarming [src]."), \
 			SPAN_NOTICE("You finish disarming [src]."))
 			disarm()
-	else
+
+	if(!active)
 		if(HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
 			if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_GRENADIER)
-				to_chat(user, SPAN_WARNING("You don't seem to know how to rearm \the [src]..."))
 				return
-			var/turf = get_turf(src)
-			for(var/obj/item/explosive/mine/existing_mine in turf)
-				if(existing_mine != src)
-					to_chat(user, SPAN_WARNING("There is already a mine deployed here!"))
-					return
-			user.visible_message(SPAN_NOTICE("[user] starts rearming [src]."), \
-			SPAN_NOTICE("You start rearming [src]."))
-			if(!do_after(user, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
-				user.visible_message(SPAN_WARNING("[user] stops rearming [src]."), \
-				SPAN_WARNING("You stop rearming [src]."))
-				return
-			if(active)//someone beat us to it
-				return
-			user.visible_message(SPAN_NOTICE("[user] finishes rearming [src]."), \
-			SPAN_NOTICE("You finish rearming [src]."))
-			rearm(user)
-	else if(HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
-		if(!active)
+			user.visible_message(SPAN_NOTICE("[user] converts \the [src] back into usable ammmo."), \
+			SPAN_NOTICE("You convert \the [src] back into usable ammo."))
 			convert_into_ammo()
 			return
-		user.visible_message(SPAN_NOTICE("[user] starts disarming [src]."), \
-		SPAN_NOTICE("You start disarming [src]."))
-		if(!do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
-			user.visible_message(SPAN_WARNING("[user] stops disarming [src]."), \
-			SPAN_WARNING("You stop disarming [src]."))
-			return
-		if(!active)//someone beat us to it
-			return
-		user.visible_message(SPAN_NOTICE("[user] finishes disarming [src]."), \
-		SPAN_NOTICE("You finish disarming [src]."))
-		disarm()
-		convert_into_ammo()
-	return
 
 /obj/item/explosive/mine/sharp/set_tripwire()
 	if(!active && !tripwire)
@@ -536,14 +508,6 @@
 	deltimer(upgrade_timer)
 	deltimer(disarm_timer)
 	playsound(src, 'sound/weapons/smartgun_fail.ogg', src, 25)
-
-/obj/item/explosive/mine/sharp/proc/rearm(mob/user)
-	disarmed = FALSE
-	mine_level = 1
-	desc = "An experimental P9 SHARP proximity triggered explosive dart designed by Armat Systems for use by the United States Colonial Marines. This one has full 360 detection range."
-	deploy_mine(user)
-	disarm_timer = addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/item/explosive/mine/sharp, disarm)), 5 MINUTES, TIMER_DELETE_ME | TIMER_STOPPABLE)
-	deltimer(timer_id)
 
 /// Converts the mine back into usable ammo
 /obj/item/explosive/mine/sharp/proc/convert_into_ammo()

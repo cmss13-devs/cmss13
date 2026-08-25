@@ -23,7 +23,7 @@
         "/datum/equipment_preset/synth/survivor/atlan/corporate"
     ],
     "CO_survivor_types": [
-        "/datum/equipment_preset/survivor/atlan/co_survivor"
+        "/datum/equipment_preset/survivor/atlan/co_survivor_commandant"
     ],
     "colony_joe_types": [
         "/datum/job/antag/upp/dzho_automaton/colony"

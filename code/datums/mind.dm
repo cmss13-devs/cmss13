@@ -85,7 +85,7 @@
 	var/datum/highlight_keywords_payload/payload = new(new_character)
 	current.client.tgui_panel.window.send_message("settings/updateHighlightKeywords", payload.to_list())
 
-	new_character.refresh_huds(current) //inherit the HUDs from the old body
+	new_character.refresh_huds(old_current) //inherit the HUDs from the old body
 	new_character.aghosted = FALSE //reset aghost and away timer
 	new_character.away_timer = 0
 

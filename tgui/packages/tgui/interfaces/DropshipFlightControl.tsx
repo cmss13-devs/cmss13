@@ -124,70 +124,74 @@ const DropshipDoorControl = () => {
                       No response
                     </Button>
                   )}
-                  {x.is_ramp === "0" && x.value === DoorStatusEnum.SHUTTLE_DOOR_UNLOCKED && (
-                    <Button
-                      disabled={disable_door_controls}
-                      width="100%"
-                      textAlign="center"
-                      onClick={() =>
-                        act('door-control', {
-                          interaction: 'force-lock',
-                          location: x.id,
-                        })
-                      }
-                      icon="door-closed"
-                    >
-                      Lock {name}
-                    </Button>
-                  )}
-                  {x.is_ramp === "0" && x.value === DoorStatusEnum.SHUTTLE_DOOR_LOCKED && (
-                    <Button
-                      disabled={disable_door_controls}
-                      width="100%"
-                      textAlign="center"
-                      onClick={() =>
-                        act('door-control', {
-                          interaction: 'unlock',
-                          location: x.id,
-                        })
-                      }
-                      icon="door-open"
-                    >
-                      Unlock {name}
-                    </Button>
-                  )}
-                  {x.is_ramp === "1" && x.value === DoorStatusEnum.SHUTTLE_DOOR_UNLOCKED && (
-                    <Button
-                      disabled={disable_door_controls}
-                      width="100%"
-                      textAlign="center"
-                      onClick={() =>
-                        act('door-control', {
-                          interaction: 'force-lock',
-                          location: x.id,
-                        })
-                      }
-                      icon="door-closed"
-                    >
-                      Raise {name} Ramp
-                    </Button>
-                  )}
-                  {x.is_ramp === "1" && x.value === DoorStatusEnum.SHUTTLE_DOOR_LOCKED && (
-                    <Button
-                      disabled={disable_door_controls}
-                      width="100%"
-                      textAlign="center"
-                      onClick={() =>
-                        act('door-control', {
-                          interaction: 'unlock',
-                          location: x.id,
-                        })
-                      }
-                      icon="door-open"
-                    >
-                      Lower {name} Ramp
-                    </Button>
-                  )}
+                  {x.is_ramp === '0' &&
+                    x.value === DoorStatusEnum.SHUTTLE_DOOR_UNLOCKED && (
+                      <Button
+                        disabled={disable_door_controls}
+                        width="100%"
+                        textAlign="center"
+                        onClick={() =>
+                          act('door-control', {
+                            interaction: 'force-lock',
+                            location: x.id,
+                          })
+                        }
+                        icon="door-closed"
+                      >
+                        Lock {name}
+                      </Button>
+                    )}
+                  {x.is_ramp === '0' &&
+                    x.value === DoorStatusEnum.SHUTTLE_DOOR_LOCKED && (
+                      <Button
+                        disabled={disable_door_controls}
+                        width="100%"
+                        textAlign="center"
+                        onClick={() =>
+                          act('door-control', {
+                            interaction: 'unlock',
+                            location: x.id,
+                          })
+                        }
+                        icon="door-open"
+                      >
+                        Unlock {name}
+                      </Button>
+                    )}
+                  {x.is_ramp === '1' &&
+                    x.value === DoorStatusEnum.SHUTTLE_DOOR_UNLOCKED && (
+                      <Button
+                        disabled={disable_door_controls}
+                        width="100%"
+                        textAlign="center"
+                        onClick={() =>
+                          act('door-control', {
+                            interaction: 'force-lock',
+                            location: x.id,
+                          })
+                        }
+                        icon="door-closed"
+                      >
+                        Raise {name} Ramp
+                      </Button>
+                    )}
+                  {x.is_ramp === '1' &&
+                    x.value === DoorStatusEnum.SHUTTLE_DOOR_LOCKED && (
+                      <Button
+                        disabled={disable_door_controls}
+                        width="100%"
+                        textAlign="center"
+                        onClick={() =>
+                          act('door-control', {
+                            interaction: 'unlock',
+                            location: x.id,
+                          })
+                        }
+                        icon="door-open"
+                      >
+                        Lower {name} Ramp
+                      </Button>
+                    )}
                 </>
               </Stack.Item>
             );

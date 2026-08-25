@@ -510,9 +510,13 @@
 	chairbar.layer = ABOVE_MOB_LAYER
 
 	addtimer(CALLBACK(src, PROC_REF(setup_buckle_offsets)), 1 SECONDS)
-
 	handle_rotation()
 
 /obj/structure/bed/chair/vehicle/omaha_passenger/handle_rotation()
 	if(buckled_mob)
 		buckled_mob.setDir(dir)
+
+/obj/structure/bed/chair/vehicle/omaha_passenger/afterShuttleMove()
+	.=..()
+	pixel_y = init_pixel_y
+	handle_rotation()

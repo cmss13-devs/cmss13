@@ -426,6 +426,10 @@
 /obj/structure/ladder/multiz/dropship_omaha/update_icon()
 	return // FUCK OFF
 
+/obj/structure/ladder/multiz/dropship_omaha/attack_hand(mob/living/user)
+	if(deployed)
+		return ..()
+
 /obj/structure/ladder/multiz/dropship_omaha/proc/deploy()
 	if(currently_adjusting)
 		return
@@ -439,13 +443,12 @@
 	name = "ladder"
 	icon_state = "hatch-open"
 	currently_adjusting = FALSE
-	deployed = TRUE
 	var/turf/open/turf_below = SSmapping.get_turf_below(src.loc)
 	down.loc = turf_below
 	down.update_icon()
+	deployed = TRUE
 	playsound(loc, 'sound/machines/freesoundstock_step_ladder.ogg', 30, 0)
 	playsound(turf_below.loc, 'sound/machines/freesoundstock_step_ladder.ogg', 50, 0)
-
 
 /obj/structure/ladder/multiz/dropship_omaha/proc/undeploy(forced_adjusting = FALSE)
 	if(!forced_adjusting)

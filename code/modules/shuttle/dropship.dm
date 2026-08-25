@@ -475,16 +475,26 @@
 	density = TRUE
 	opacity = TRUE
 
-/obj/structure/shuttle/part/dropship_omaha/ramp_button_deployer
+/obj/structure/shuttle/part/dropship_omaha/transparent/weapon_hardpoint_left
+	icon = 'icons/obj/structures/machinery/mohawk/mohawk-windshield.dmi'
+	icon_state = "hardpoint-left"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/weapon_hardpoint_right
+	icon = 'icons/obj/structures/machinery/mohawk/mohawk-windshield.dmi'
+	icon_state = "hardpoint-right"
+
+/obj/structure/shuttle/part/dropship_omaha/deployer
 	icon = 'icons/obj/structures/machinery/mohawk/bits_bobs.dmi'
 	icon_state = "deployer"
 	density = FALSE
 	opacity = FALSE
 	invisibility = 101
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/obj/structure/shuttle/part/dropship_omaha/deployer/ramp_button
 	var/obj/structure/machinery/door_control/dropship_ramp_dummy/linked_button
 
-/obj/structure/shuttle/part/dropship_omaha/ramp_button_deployer/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
+/obj/structure/shuttle/part/dropship_omaha/deployer/ramp_button/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
 	. = ..()
 	if(is_reserved_level(z))
 		return
@@ -492,11 +502,13 @@
 //		return
 	if(linked_button)
 		linked_button.loc = SSmapping.get_turf_below(src.loc)
-		linked_button.pixel_y = -16
+		linked_button.pixel_y = 16
 	else
 		for(var/obj/structure/machinery/door_control/omaha_ramp/original_button in range(8, src.loc))
 			linked_button = new /obj/structure/machinery/door_control/dropship_ramp_dummy(SSmapping.get_turf_below(src.loc))
-			linked_button.pixel_y = -16
+			linked_button.pixel_y = 16
+			linked_button.layer = FLY_LAYER
+			linked_button.alpha = 215
 			linked_button.linked_dropship = original_button.linked_dropship
 			linked_button.linked_ramp_control = original_button
 			linked_button.linked_single_controller = original_button.linked_single_controller
@@ -523,6 +535,9 @@
 /obj/structure/shuttle/part/dropship_omaha/landing_gear/upper_half
 	icon_state = "landing_gear_top"
 
+/obj/structure/shuttle/part/dropship_omaha/deployer/belly
+	var/obj/structure/shuttle/part/dropship_omaha/fuel_lines/lines
+
 /obj/structure/shuttle/part/dropship_omaha/fuel_lines
 	icon = 'icons/turf/mohawk/mohawk_belly.dmi'
 	icon_state = "belly"
@@ -532,16 +547,7 @@
 	alpha = 150
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
-/obj/structure/shuttle/part/dropship_omaha/belly_deployer
-	icon = 'icons/obj/structures/machinery/mohawk/bits_bobs.dmi'
-	icon_state = "deployer"
-	density = FALSE
-	opacity = FALSE
-	invisibility = 101
-	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	var/obj/structure/shuttle/part/dropship_omaha/fuel_lines/lines
-
-/obj/structure/shuttle/part/dropship_omaha/belly_deployer/lateShuttleMove()
+/obj/structure/shuttle/part/dropship_omaha/deployer/belly/lateShuttleMove()
 	.=..()
 	if(is_reserved_level(src.z))
 		if(lines)
@@ -555,21 +561,30 @@
 		else
 			lines = new /obj/structure/shuttle/part/dropship_omaha/fuel_lines(final_turf)
 
-/obj/structure/shuttle/part/dropship_omaha/landing_gear_deployer
-	icon = 'icons/obj/structures/machinery/mohawk/bits_bobs.dmi'
-	icon_state = "deployer"
-	density = FALSE
-	opacity = FALSE
-	invisibility = 101
-	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	var/offset_x
-	var/offset_y
+/obj/structure/shuttle/part/dropship_omaha/deployer/landing_gear
+	var/offset_x = -16
+	var/offset_y = -19
 	var/map_offset_x
 	var/map_offset_y
 	var/obj/structure/shuttle/part/dropship_omaha/landing_gear_big/land_gear
 	var/obj/structure/shuttle/part/dropship_omaha/landing_hatch_big/hatch_big
 
-/obj/structure/shuttle/part/dropship_omaha/landing_gear_deployer/lateShuttleMove(turf/oldT, list/movement_force, move_dir)
+/obj/structure/shuttle/part/dropship_omaha/landing_gear_big
+	icon = 'icons/obj/structures/machinery/mohawk/mohawk_big.dmi'
+	icon_state = "landing_gear"
+	density = TRUE
+	opacity = FALSE
+	bound_width = 64
+	bound_height = 64
+
+/obj/structure/shuttle/part/dropship_omaha/landing_hatch_big
+	icon = 'icons/obj/structures/machinery/mohawk/mohawk_big.dmi'
+	icon_state = "gear_hatch"
+	density = FALSE
+	opacity = FALSE
+	alpha = 227
+
+/obj/structure/shuttle/part/dropship_omaha/deployer/landing_gear/lateShuttleMove(turf/oldT, list/movement_force, move_dir)
 	. = ..()
 	if(is_reserved_level(src.z))
 		if(land_gear)
@@ -593,64 +608,61 @@
 			hatch_big.pixel_x = offset_x
 			hatch_big.pixel_y = offset_y
 
-/obj/structure/shuttle/part/dropship_omaha/landing_gear_big
-	icon = 'icons/obj/structures/machinery/mohawk/mohawk_big.dmi'
-	icon_state = "landing_gear"
-	density = TRUE
-	opacity = FALSE
-	bound_width = 64
-	bound_height = 64
+/obj/structure/shuttle/part/dropship_omaha/deployer/fuel_attachment_point
+	var/obj/effect/attach_point/linked_point
+	var/offset_x
+	var/offset_y
 
-/obj/structure/shuttle/part/dropship_omaha/landing_hatch_big
-	icon = 'icons/obj/structures/machinery/mohawk/mohawk_big.dmi'
-	icon_state = "gear_hatch"
-	density = FALSE
-	opacity = FALSE
-	alpha = 227
+/obj/structure/shuttle/part/dropship_omaha/deployer/fuel_attachment_point/lateShuttleMove(turf/oldT, list/movement_force, move_dir)
+	. = ..()
+	if(is_reserved_level(src.z))
+		if(linked_point)
+			linked_point.moveToNullspace()
+		if(linked_point.installed_equipment)
+			linked_point.installed_equipment.moveToNullspace()
+		return
 
-/obj/structure/shuttle/part/dropship_omaha/landing_gear_hatch
-	icon = 'icons/obj/structures/machinery/mohawk/bits_bobs.dmi'
-	icon_state = "landing_gear_bottom"
-	layer = FLY_LAYER
-	density = FALSE
-	opacity = FALSE
-	alpha = 200
+	var/turf/open/t_below = SSmapping.get_turf_below(src.loc)
+	if(t_below)
+		if(linked_point)
+			linked_point.loc = t_below
+			if(linked_point.installed_equipment)
+				linked_point.installed_equipment.loc = t_below
+		else
+			linked_point = new /obj/effect/attach_point/fuel/dropship_omaha(t_below)
+			linked_point.layer = FLY_LAYER + 0.01
+			linked_point.alpha = 225
+			linked_point.pixel_x = offset_x
+			linked_point.pixel_y = offset_y
 
-/obj/structure/shuttle/part/dropship_omaha/landing_gear_hatch/piece_00
-	icon_state = "0,0"
+/obj/structure/shuttle/part/dropship_omaha/deployer/generic
+	var/obj/effect/attach_point_dummy/linked_bottom
+	var/map_offset_x
+	var/map_offset_y
+	var/pixel_offset_x
+	var/pixel_offset_y
 
-/obj/structure/shuttle/part/dropship_omaha/landing_gear_hatch/piece_01
-	icon_state = "0,1"
-
-/obj/structure/shuttle/part/dropship_omaha/landing_gear_hatch/piece_02
-	icon_state = "0,2"
-
-/obj/structure/shuttle/part/dropship_omaha/landing_gear_hatch/piece_03
-	icon_state = "0,3"
-
-/obj/structure/shuttle/part/dropship_omaha/landing_gear_hatch/piece_10
-	icon_state = "1,0"
-
-/obj/structure/shuttle/part/dropship_omaha/landing_gear_hatch/piece_11
-	icon_state = "1,1"
-
-/obj/structure/shuttle/part/dropship_omaha/landing_gear_hatch/piece_12
-	icon_state = "1,2"
-
-/obj/structure/shuttle/part/dropship_omaha/landing_gear_hatch/piece_13
-	icon_state = "1,3"
-
-/obj/structure/shuttle/part/dropship_omaha/landing_gear_hatch/piece_20
-	icon_state = "2,0"
-
-/obj/structure/shuttle/part/dropship_omaha/landing_gear_hatch/piece_21
-	icon_state = "2,1"
-
-/obj/structure/shuttle/part/dropship_omaha/landing_gear_hatch/piece_22
-	icon_state = "2,2"
-
-/obj/structure/shuttle/part/dropship_omaha/landing_gear_hatch/piece_23
-	icon_state = "2,3"
+/obj/structure/shuttle/part/dropship_omaha/deployer/generic/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
+	. = ..()
+	if(is_reserved_level(src.z))
+		if(linked_bottom)
+			linked_bottom.moveToNullspace()
+			return
+	var/turf/open/t_below =  SSmapping.get_turf_below(src.loc)
+	if(t_below)
+		var/turf/open/target_turf = locate(loc.x + map_offset_x, loc.y + map_offset_y, t_below.z)
+		if(linked_bottom)
+			linked_bottom.loc = target_turf
+		else
+			linked_bottom = new /obj/effect/attach_point_dummy(target_turf)
+			linked_bottom.layer = FLY_LAYER + 0.01
+			for(var/obj/effect/attach_point/attachie in src.loc.contents)
+				linked_bottom.linked_attach_point = attachie
+				linked_bottom.name = linked_bottom.linked_attach_point.name
+				attachie.linked_bottom_point = linked_bottom
+				linked_bottom.pixel_x = pixel_offset_x
+				linked_bottom.pixel_y = pixel_offset_y
+				break
 
 // USCM Dropship Normandy
 

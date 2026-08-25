@@ -237,12 +237,14 @@ GLOBAL_DATUM_INIT(above_blackness_backdrop, /atom/movable/above_blackness_backdr
 	direction = DOWN
 
 /obj/structure/stairs/multiz/up/dropship_ramp
+	icon = 'icons/turf/mohawk/mohawk-ramp.dmi'
 	icon_state = "ramp-1"
 	dir = NORTH
 	direction = UP
 	ramp = TRUE
 
 /obj/structure/stairs/multiz/down/dropship_ramp
+	icon = 'icons/turf/mohawk/mohawk-ramp.dmi'
 	icon_state = "ramp-11"
 	dir = NORTH
 	direction = DOWN

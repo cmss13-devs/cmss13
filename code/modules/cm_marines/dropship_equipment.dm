@@ -41,6 +41,8 @@
 	health = min(initial(health), health-damage)
 	if(health <= 0)
 		visible_message(SPAN_DANGER("[src] is destroyed!"))
+		if(ship_base.linked_bottom_point)
+			ship_base.linked_bottom_point.icon_state = "[initial(ship_base.linked_bottom_point.icon_state)]"
 		qdel(src)
 
 /obj/structure/dropship_equipment/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
@@ -177,6 +179,8 @@
 	powerloader_clamp.grab_object(user, src, "ds_gear", 'sound/machines/hydraulics_1.ogg')
 	if(ship_base)
 		ship_base.installed_equipment = null
+		if(ship_base.linked_bottom_point)
+			ship_base.linked_bottom_point.update_icon()
 		ship_base = null
 		if(linked_shuttle)
 			SEND_SIGNAL(linked_shuttle, COMSIG_DROPSHIP_REMOVE_EQUIPMENT, src)
@@ -559,7 +563,10 @@
 	if(ship_base)
 		pixel_x = ship_base.pixel_x
 		pixel_y = ship_base.pixel_y
-		icon_state = "[initial(icon_state)]_installed"
+		if(ship_base.round_slot)
+			icon_state = "[initial(icon_state)]_omaha"
+		else
+			icon_state = "[initial(icon_state)]_installed"
 	else
 		pixel_x = initial(pixel_x)
 		pixel_y = initial(pixel_y)

@@ -193,10 +193,18 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	if(istype(XJ))
 		XJ.set_spawn_positions(GLOB.players_preassigned)
 
-	// Limit the number of SQUAD MARINE roles players can roll initially
+	// Limit the number of SQUAD MARINE roles players can roll initially (somereason)
 	var/datum/job/SMJ = GET_MAPPED_ROLE(JOB_SQUAD_MARINE)
 	if(istype(SMJ))
 		SMJ.set_spawn_positions(GLOB.players_preassigned)
+
+	// Set initial squad caps
+	var/datum/job/engi_job = GET_MAPPED_ROLE(JOB_SQUAD_ENGI)
+	if(istype(engi_job))
+		engi_job.set_spawn_positions(GLOB.players_preassigned)
+	var/datum/job/medic_job = GET_MAPPED_ROLE(JOB_SQUAD_MEDIC)
+	if(istype(medic_job))
+		medic_job.set_spawn_positions(GLOB.players_preassigned)
 
 	// Set survivor starting amount based on marines assigned
 	var/datum/job/SJ = temp_roles_for_mode[JOB_SURVIVOR]

@@ -237,7 +237,7 @@
 	if (!isxeno_human(target))
 		return
 
-	new /datum/effects/xeno_slow(target, bound_xeno, ttl = 2 SECONDS)
+	new /datum/effects/xeno_slow(target, bound_xeno, ttl = 3.5 SECONDS)
 
 	var/damage = bound_xeno.melee_damage_upper * aoe_slash_damage_reduction
 

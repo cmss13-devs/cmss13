@@ -867,11 +867,11 @@
 /datum/equipment_preset/synth/survivor/atlan/corporate
 	name = "Survivor - Atlan Station - Synthetic - CEC Support Synthetic"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	faction = FACTION_CEC
 	job_title = JOB_CEC_SYNTH
 	assignment = JOB_CEC_SYNTH
 	role_comm_title = "CEC Syn"
-	faction_group = list(FACTION_LIST_SURVIVOR_UPP, FACTION_CEC)
+	faction = list(FACTION_CEC, FACTION_UPP)
+	faction_group = FACTION_LIST_SURVIVOR_CEC
 	idtype = /obj/item/card/id/cec
 	survivor_variant = CORPORATE_SURVIVOR
 	origin_override = ORIGIN_UPP
@@ -916,9 +916,9 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	job_title = JOB_CEC_SYNTH
 	assignment = JOB_CEC_SYNTH
-	faction = FACTION_CEC
 	role_comm_title = "CEC Syn"
-	faction_group = list(FACTION_LIST_SURVIVOR_UPP, FACTION_UPP)
+	faction = list(FACTION_CEC, FACTION_UPP)
+	faction_group = FACTION_LIST_SURVIVOR_CEC
 	origin_override = ORIGIN_UPP
 	minimap_icon = "upp_synth"
 	minimap_background = "background_upp_bravo"

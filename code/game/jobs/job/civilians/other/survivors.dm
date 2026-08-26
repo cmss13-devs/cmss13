@@ -41,8 +41,8 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 
 	// Count all current_positions
 	var/exisiting_positions = 0
-	for(var/other_surv_type in typesof(/datum/job/civilian/survivor))
-		var/datum/job/civilian/survivor/surv_job = GLOB.RoleAuthority.roles_by_path[other_surv_type]
+	for(var/surv_type in typesof(/datum/job/civilian/survivor))
+		var/datum/job/civilian/survivor/surv_job = GLOB.RoleAuthority.roles_by_path[surv_type]
 		if(surv_job)
 			exisiting_positions += surv_job.current_positions
 

@@ -50,6 +50,9 @@
 			var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/hatch = air
 			if(istype(hatch))
 				hatch.linked_dropship = src
+			var/obj/structure/machinery/door/airlock/hatch/side_hatch/side_door = air
+			if(istype(side_door))
+				hatch.linked_dropship = src
 
 	for(var/place in shuttle_areas)
 		for(var/obj/structure/machinery/door_control/omaha_ramp/ramp_button in place)
@@ -60,6 +63,10 @@
 	for(var/place in shuttle_areas)
 		for(var/obj/structure/machinery/door_control/side_hatch/hatch_button in place)
 			hatch_button.linked_dropship = src
+
+	for(var/place in shuttle_areas)
+		for(var/obj/deployer/shuttle/deployerino in place)
+			deployerino.linked_dropship = src
 
 	RegisterSignal(src, COMSIG_DROPSHIP_ADD_EQUIPMENT, PROC_REF(add_equipment))
 	RegisterSignal(src, COMSIG_DROPSHIP_REMOVE_EQUIPMENT, PROC_REF(remove_equipment))
@@ -439,6 +446,11 @@
 	. = ..()
 	if(istype(arriving_shuttle, /obj/docking_port/mobile/marine_dropship))
 		var/obj/docking_port/mobile/marine_dropship/ds = arriving_shuttle
+		to_chat(world, "assigning new height width")
+		dheight = ds.dheight
+		dwidth = ds.dwidth
+		height = ds.height
+		width = ds.width
 		ds.hijack.crash_landing()
 
 /obj/docking_port/stationary/marine_dropship/crash_site/on_arrival(obj/docking_port/mobile/arriving_shuttle)

@@ -120,9 +120,9 @@
 						status = SHUTTLE_DOOR_UNLOCKED
 				if("force-lock-launch")
 					if(asynchronous)
-						INVOKE_ASYNC(ramp_control, TYPE_PROC_REF(/obj/structure/machinery/door_control/omaha_ramp, raise))
+						INVOKE_ASYNC(ramp_control, TYPE_PROC_REF(/obj/structure/machinery/door_control/omaha_ramp, raise_forced))
 					else
-						INVOKE_ASYNC(ramp_control, TYPE_PROC_REF(/obj/structure/machinery/door_control/omaha_ramp, raise))
+						INVOKE_ASYNC(ramp_control, TYPE_PROC_REF(/obj/structure/machinery/door_control/omaha_ramp, raise_forced))
 					if (status != SHUTTLE_DOOR_BROKEN)
 						status = SHUTTLE_DOOR_LOCKED
 				if("force-unlock")

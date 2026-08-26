@@ -53,7 +53,7 @@
 	dir = 4;
 	pixel_x = -8
 	},
-/obj/structure/shuttle/part/dropship_omaha/deployer/landing_gear,
+/obj/deployer/shuttle/omaha/landing_gear,
 /turf/open/shuttle/dropship/omaha/grated,
 /area/shuttle/drop_omaha/omaha)
 "bX" = (
@@ -166,7 +166,7 @@
 /obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_01,
 /obj/structure/shuttle/part/dropship_omaha/transparent/weapon_hardpoint_right,
 /obj/effect/attach_point/weapon/dropship_omaha/right_fore,
-/obj/structure/shuttle/part/dropship_omaha/deployer/generic{
+/obj/deployer/shuttle/omaha/hardpoints{
 	map_offset_y = -1;
 	map_offset_x = -1;
 	offset_y = 1
@@ -284,7 +284,7 @@
 	dir = 8;
 	pixel_x = 8
 	},
-/obj/structure/shuttle/part/dropship_omaha/deployer/landing_gear{
+/obj/deployer/shuttle/omaha/landing_gear{
 	map_offset_x = -1
 	},
 /turf/open/shuttle/dropship/omaha/grated,
@@ -335,10 +335,10 @@
 	pixel_y = -16
 	},
 /obj/effect/attach_point/weapon/dropship1/left_wing,
-/obj/structure/shuttle/part/dropship_omaha/deployer/generic{
-	map_offset_y = -1;
+/obj/deployer/shuttle/omaha/hardpoints{
 	map_offset_x = 3;
-	offset_y = 2
+	offset_y = 2;
+	map_offset_y = -1
 	},
 /turf/template_noop,
 /area/shuttle/drop_omaha/omaha)
@@ -353,7 +353,7 @@
 /obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_04,
 /obj/structure/shuttle/part/dropship_omaha/transparent/weapon_hardpoint_left,
 /obj/effect/attach_point/weapon/dropship_omaha/left_fore,
-/obj/structure/shuttle/part/dropship_omaha/deployer/generic{
+/obj/deployer/shuttle/omaha/hardpoints{
 	map_offset_y = -1;
 	map_offset_x = 1;
 	offset_y = 1
@@ -382,9 +382,9 @@
 	pixel_x = 8;
 	layer = 3.7
 	},
-/obj/structure/shuttle/part/dropship_omaha/deployer/fuel_attachment_point{
-	offset_x = -16;
-	offset_y = 16
+/obj/deployer/shuttle/omaha/fuel_attachment_point{
+	offset_y = 16;
+	offset_x = -16
 	},
 /turf/open/shuttle/dropship/omaha/grated,
 /area/shuttle/drop_omaha/omaha)
@@ -399,7 +399,7 @@
 /area/shuttle/drop_omaha/omaha)
 "qb" = (
 /obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_00,
-/obj/structure/shuttle/part/dropship_omaha/deployer/belly,
+/obj/deployer/shuttle/omaha/belly,
 /turf/template_noop,
 /area/shuttle/drop_omaha/omaha)
 "qe" = (
@@ -526,9 +526,9 @@
 	pixel_x = -8;
 	layer = 3.7
 	},
-/obj/structure/shuttle/part/dropship_omaha/deployer/fuel_attachment_point{
-	offset_x = 16;
-	offset_y = 16
+/obj/deployer/shuttle/omaha/fuel_attachment_point{
+	offset_y = 16;
+	offset_x = 16
 	},
 /turf/open/shuttle/dropship/omaha/grated,
 /area/shuttle/drop_omaha/omaha)
@@ -884,7 +884,7 @@
 	},
 /area/shuttle/drop_omaha/omaha)
 "LH" = (
-/obj/structure/shuttle/part/dropship_omaha/deployer/ramp_button,
+/obj/deployer/shuttle/omaha/ramp_button,
 /turf/closed/shuttle/dropship_omaha{
 	icon_state = "7,9"
 	},
@@ -907,7 +907,7 @@
 /obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_11,
 /obj/structure/shuttle/part/dropship_omaha/transparent/weapon_hardpoint_right,
 /obj/effect/attach_point/electronics/dropship_omaha,
-/obj/structure/shuttle/part/dropship_omaha/deployer/generic{
+/obj/deployer/shuttle/omaha/hardpoints{
 	map_offset_y = -1;
 	map_offset_x = -1;
 	offset_y = 1
@@ -965,8 +965,7 @@
 /area/shuttle/drop_omaha/omaha)
 "Pc" = (
 /obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_13,
-/obj/structure/shuttle/part/dropship_omaha/deployer/landing_gear{
-	offset_y = -17;
+/obj/deployer/shuttle/omaha/landing_gear{
 	dir = 1
 	},
 /turf/open/shuttle/dropship/omaha/basic,
@@ -987,7 +986,7 @@
 /obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_14,
 /obj/effect/attach_point/electronics/dropship_omaha,
 /obj/structure/shuttle/part/dropship_omaha/transparent/weapon_hardpoint_left,
-/obj/structure/shuttle/part/dropship_omaha/deployer/generic{
+/obj/deployer/shuttle/omaha/hardpoints{
 	map_offset_y = -1;
 	map_offset_x = 1;
 	offset_y = 1
@@ -996,10 +995,9 @@
 /area/shuttle/drop_omaha/omaha)
 "Qi" = (
 /obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_11,
-/obj/structure/shuttle/part/dropship_omaha/deployer/landing_gear{
-	offset_y = -17;
-	map_offset_x = -1;
-	dir = 1
+/obj/deployer/shuttle/omaha/landing_gear{
+	dir = 1;
+	map_offset_x = -1
 	},
 /turf/open/shuttle/dropship/omaha/basic,
 /area/shuttle/drop_omaha/omaha)
@@ -1082,10 +1080,10 @@
 	pixel_y = -16
 	},
 /obj/effect/attach_point/weapon/dropship1/right_wing,
-/obj/structure/shuttle/part/dropship_omaha/deployer/generic{
-	map_offset_y = -1;
+/obj/deployer/shuttle/omaha/hardpoints{
+	offset_y = 2;
 	map_offset_x = -3;
-	offset_y = 2
+	map_offset_y = -1
 	},
 /turf/template_noop,
 /area/shuttle/drop_omaha/omaha)

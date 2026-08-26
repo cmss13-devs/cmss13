@@ -487,16 +487,16 @@
 			var/datum/door_controller/single/controller = linked_dropship.door_control.door_controllers[direction]
 			if(direction == src.direction)
 				linked_single_controller = controller
-
-/obj/structure/machinery/door_control/side_hatch/attack_hand(mob/living/user)
-	add_fingerprint(user)
-	if(istype(user,/mob/living/carbon/xenomorph))
-		return
 	if(!linked_hatch)
 		for(var/obj/structure/machinery/door/airlock/hatch/side_hatch/target_hatch in range(1, src.loc))
 			if(target_hatch.id == id)
 				linked_hatch = target_hatch
 				break
+
+/obj/structure/machinery/door_control/side_hatch/attack_hand(mob/living/user)
+	add_fingerprint(user)
+	if(istype(user,/mob/living/carbon/xenomorph))
+		return
 	if(is_reserved_level(z))
 		to_chat(user, SPAN_NOTICE("You almost press \the [name] button, but then reconsider killing yourself by venting atmo."))
 		return
@@ -505,11 +505,30 @@
 
 /obj/structure/machinery/door_control/side_hatch/handle_door()
 	if(linked_single_controller.status == SHUTTLE_DOOR_LOCKED)
-		linked_hatch.unlock()
-		linked_single_controller.status = SHUTTLE_DOOR_UNLOCKED
+		linked_single_controller.control_doors("unlock")
 	else
-		linked_hatch.lock()
-		linked_single_controller.status = SHUTTLE_DOOR_LOCKED
+		linked_single_controller.control_doors("lock")
+
+/obj/structure/machinery/door_control/side_hatch/attackby(obj/item/item, mob/user)
+	if(HAS_TRAIT(item, TRAIT_TOOL_MULTITOOL))
+		var/datum/door_controller/single/control = linked_single_controller
+		if (control.status != SHUTTLE_DOOR_BROKEN)
+			return ..()
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED) && !skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED))
+			to_chat(user, SPAN_WARNING("You don't seem to understand how to restore a remote connection to [src]."))
+			return
+		if(user.action_busy)
+			return
+
+		to_chat(user, SPAN_WARNING("You begin to restore the remote connection to [src]."))
+		if(!do_after(user, (skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED) ? 5 SECONDS : 8 SECONDS), INTERRUPT_ALL, BUSY_ICON_BUILD))
+			to_chat(user, SPAN_WARNING("You fail to restore a remote connection to [src]."))
+			return
+		control.status = SHUTTLE_DOOR_UNLOCKED
+		control.control_doors("lower")
+		to_chat(user, SPAN_WARNING("You successfully restored the remote connection to [src]."))
+		return
+	. = ..()
 
 /obj/structure/machinery/door_control/omaha_ramp
 	name = "Ramp Access"
@@ -538,15 +557,14 @@
 
 /obj/structure/machinery/door_control/omaha_ramp/handle_door()
 	if(is_reserved_level(src.z))
-		return
-	if(linked_single_controller.status == SHUTTLE_DOOR_BROKEN)
+		to_chat(world, "is a reserved level, abort")
 		return
 	if(linked_single_controller.status == SHUTTLE_DOOR_UNLOCKED)
-		raise()
+		linked_single_controller.control_doors("close")
 	else if(linked_single_controller.status == SHUTTLE_DOOR_LOCKED)
-		lower()
+		linked_single_controller.control_doors("open")
 
-/obj/structure/machinery/door_control/omaha_ramp/proc/raise()
+/obj/structure/machinery/door_control/omaha_ramp/proc/raise(forced = FALSE)
 	if(linked_single_controller.status == SHUTTLE_DOOR_LOCKED)
 		return
 	if(busy)
@@ -557,13 +575,17 @@
 	busy = TRUE
 
 	playsound(src.loc, 'sound/machines/omaha_ramp.ogg', 60, 0)
-	finish_raising() //addtimer(CALLBACK(src, PROC_REF(finish_raising)), 70,  TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+	finish_raising(forced) //addtimer(CALLBACK(src, PROC_REF(finish_raising)), 70,  TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+
+/obj/structure/machinery/door_control/omaha_ramp/proc/raise_forced()
+	raise(forced = TRUE)
 
 /obj/structure/machinery/door_control/omaha_ramp/proc/raise_mobs(list/raising_area)
 	for(rampazoid in raising_area)
 		var/turf/open/turf_below = SSmapping.get_turf_below(rampazoid.loc)
-		for(var/mob/living/carbon/morbius in turf_below.contents)
-			morbius.Move(rampazoid.loc)
+		if(turf_below)
+			for(var/mob/living/carbon/morbius in turf_below.contents)
+				morbius.Move(rampazoid.loc)
 
 /obj/structure/machinery/door_control/omaha_ramp/proc/finish_raising(forced = FALSE)
 	for(rampazoid in fifth_ramps)
@@ -582,7 +604,10 @@
 		our_turf.ScrapeAway()
 		our_turf.update_vis_contents()
 	raise_mobs(fourth_ramps)
-	addtimer(CALLBACK(src, PROC_REF(raise_third)), 25,  TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+	if(forced)
+		raise_third(forced)
+	else
+		addtimer(CALLBACK(src, PROC_REF(raise_third)), 25,  TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 
 /obj/structure/machinery/door_control/omaha_ramp/proc/raise_third(forced = FALSE)
 	for(rampazoid in third_ramps)
@@ -592,7 +617,10 @@
 			rampazoid.linked_structure_ramp.moveToNullspace()
 		our_turf.update_vis_contents()
 	raise_mobs(third_ramps)
-	addtimer(CALLBACK(src, PROC_REF(raise_fourth)), 25,  TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+	if(forced)
+		raise_fourth(forced)
+	else
+		addtimer(CALLBACK(src, PROC_REF(raise_fourth)), 25,  TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 
 /obj/structure/machinery/door_control/omaha_ramp/proc/raise_fourth(forced = FALSE)
 	for(rampazoid in second_ramps)
@@ -618,6 +646,8 @@
 	if(busy)
 		return
 	if(is_reserved_level(src.z))
+		return
+	if(linked_dropship.is_hijacked)
 		return
 	busy = TRUE
 
@@ -720,20 +750,26 @@
 			if(direction == src.direction)
 				linked_single_controller = controller
 
-/obj/structure/machinery/door_control/dropship_ramp_dummy
-	name = "Ramp Access"
-	icon = 'icons/obj/structures/machinery/mohawk/mohawk-interior-item.dmi'
-	icon_state = "ramp_control"
-	id = "aft_ramp"
-	normaldoorcontrol = CONTROL_NORMAL_DOORS
-	var/obj/docking_port/mobile/marine_dropship/linked_dropship
-	var/obj/structure/machinery/door_control/omaha_ramp/linked_ramp_control
-	var/datum/door_controller/single/linked_single_controller
-	var/direction = "aft"
-	var/broken = FALSE
+/obj/structure/machinery/door_control/omaha_ramp/attackby(obj/item/item, mob/user)
+	if(HAS_TRAIT(item, TRAIT_TOOL_MULTITOOL))
+		var/datum/door_controller/single/control = linked_single_controller
+		if (control.status != SHUTTLE_DOOR_BROKEN)
+			return ..()
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED) && !skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED))
+			to_chat(user, SPAN_WARNING("You don't seem to understand how to restore a remote connection to [src]."))
+			return
+		if(user.action_busy)
+			return
 
-/obj/structure/machinery/door_control/dropship_ramp_dummy/handle_door()
-	linked_ramp_control.handle_door()
+		to_chat(user, SPAN_WARNING("You begin to restore the remote connection to [src]."))
+		if(!do_after(user, (skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED) ? 5 SECONDS : 8 SECONDS), INTERRUPT_ALL, BUSY_ICON_BUILD))
+			to_chat(user, SPAN_WARNING("You fail to restore a remote connection to [src]."))
+			return
+		control.status = SHUTTLE_DOOR_UNLOCKED
+		control.control_doors("lower")
+		to_chat(user, SPAN_WARNING("You successfully restored the remote connection to [src]."))
+		return
+	. = ..()
 
 /obj/structure/machinery/door_control/omaha_ramp/attack_alien(mob/living/carbon/xenomorph/xeno)
 	. = ..()
@@ -761,6 +797,21 @@
 			broken = TRUE
 		lower()
 
+/obj/structure/machinery/door_control/dropship_ramp_dummy
+	name = "Ramp Access"
+	icon = 'icons/obj/structures/machinery/mohawk/mohawk-interior-item.dmi'
+	icon_state = "ramp_control"
+	id = "aft_ramp"
+	normaldoorcontrol = CONTROL_NORMAL_DOORS
+	var/obj/docking_port/mobile/marine_dropship/linked_dropship
+	var/obj/structure/machinery/door_control/omaha_ramp/linked_ramp_control
+	var/datum/door_controller/single/linked_single_controller
+	var/direction = "aft"
+	var/broken = FALSE
+
+/obj/structure/machinery/door_control/dropship_ramp_dummy/handle_door()
+	linked_ramp_control.handle_door()
+
 /obj/structure/machinery/door_control/dropship_ramp_dummy/attack_alien(mob/living/carbon/xenomorph/xeno)
 	. = ..()
 	if(xeno.hive_pos != XENO_QUEEN)
@@ -786,3 +837,24 @@
 			broken = TRUE
 			linked_ramp_control.broken = TRUE
 		linked_ramp_control.lower()
+
+/obj/structure/machinery/door_control/dropship_ramp_dummy/attackby(obj/item/item, mob/user)
+	if(HAS_TRAIT(item, TRAIT_TOOL_MULTITOOL))
+		var/datum/door_controller/single/control = linked_ramp_control.linked_single_controller
+		if (control.status != SHUTTLE_DOOR_BROKEN)
+			return ..()
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED) && !skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED))
+			to_chat(user, SPAN_WARNING("You don't seem to understand how to restore a remote connection to [src]."))
+			return
+		if(user.action_busy)
+			return
+
+		to_chat(user, SPAN_WARNING("You begin to restore the remote connection to [src]."))
+		if(!do_after(user, (skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED) ? 5 SECONDS : 8 SECONDS), INTERRUPT_ALL, BUSY_ICON_BUILD))
+			to_chat(user, SPAN_WARNING("You fail to restore a remote connection to [src]."))
+			return
+		control.status = SHUTTLE_DOOR_UNLOCKED
+		control.control_doors("lower")
+		to_chat(user, SPAN_WARNING("You successfully restored the remote connection to [src]."))
+		return
+	. = ..()

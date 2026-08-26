@@ -18307,7 +18307,9 @@
 /turf/open/asphalt/brown,
 /area/northpoint/outdoors/streets/lz1)
 "bdH" = (
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/almayer{
+	color = "#848484"
+	},
 /turf/open/floor/prison,
 /area/northpoint/indoors/emer_dep)
 "bdI" = (

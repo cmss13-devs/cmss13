@@ -1,5 +1,7 @@
 // Legacy proc spawning cellular automata explosions repurposed for our use. This should eventually go somewhere else and be cleaned up.
 /proc/cell_explosion(turf/epicenter, power, falloff, falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR, direction = NONE, datum/cause_data/explosion_cause_data, enviro=FALSE)
+	epicenter = get_turf(epicenter) // Just in case someone passes something else than the turf...
+
 	if(!istype(explosion_cause_data))
 		if(explosion_cause_data)
 			stack_trace("cell_explosion called with string cause ([explosion_cause_data]) instead of datum")

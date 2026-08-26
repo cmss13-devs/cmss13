@@ -321,7 +321,7 @@
 	if(dropship.is_hijacked)
 		return
 
-	// door controls being overridden // look here
+	// door controls being overridden
 	if(!dropship_control_lost && do_after(xeno, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		dropship.control_doors("unlock", "all", TRUE)
 		dropship_control_lost = TRUE
@@ -480,7 +480,6 @@
 	. = ..()
 	if(.)
 		return
-	to_chat(world, "UI act!!!")
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId, warn=!can_change_shuttle)
 	if(disabled || (shuttle && shuttle.is_hijacked))
 		switch(action)

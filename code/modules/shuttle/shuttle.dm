@@ -33,8 +33,6 @@
 	var/dwidth = 0
 	///position relative to covered area, parallel to dir
 	var/dheight = 0
-	//actual z-height of the shiipp
-	var/zheight = 1 // 0
 	var/area_type
 	///are we invisible to shuttle navigation computers?
 	var/hidden = FALSE
@@ -146,17 +144,16 @@
 			sin = -1
 
 	. = list()
-	var/adjusted_zheight = zheight - 1
-	for(var/dz in 0 to adjusted_zheight) // 0 to zheight
-		for(var/dx in 0 to width-1)
-			var/compX = dx-dwidth
-			for(var/dy in 0 to height-1)
-				var/compY = dy-dheight
-				// realX = _x + compX*cos - compY*sin
-				// realY = _y + compY*cos - compX*sin
-				// locate(realX, realY, _z)
-				var/turf/T = locate(_x + compX*cos - compY*sin, _y + compY*cos + compX*sin, _z + dz)
-				.[T] = NONE
+
+	for(var/dx in 0 to width-1)
+		var/compX = dx-dwidth
+		for(var/dy in 0 to height-1)
+			var/compY = dy-dheight
+			// realX = _x + compX*cos - compY*sin
+			// realY = _y + compY*cos - compX*sin
+			// locate(realX, realY, _z)
+			var/turf/T = locate(_x + compX*cos - compY*sin, _y + compY*cos + compX*sin, _z)
+			.[T] = NONE
 
 #ifdef DOCKING_PORT_HIGHLIGHT
 //Debug proc used to highlight bounding area
@@ -596,10 +593,12 @@
 
 	if(dwidth > S.dwidth)
 		to_chat(world, "dock 4")
+		to_chat(world, "dwidth is [dwidth] || s.dwidth is [S.dwidth]")
 		return SHUTTLE_DWIDTH_TOO_LARGE
 
 	if(width-dwidth > S.width-S.dwidth)
 		to_chat(world, "dock 5")
+		to_chat(world, "dwidth is [dwidth] || s.dwidth is [S.dwidth]")
 		return SHUTTLE_WIDTH_TOO_LARGE
 
 	if(dheight > S.dheight)
@@ -608,6 +607,7 @@
 
 	if(height-dheight > S.height-S.dheight)
 		to_chat(world, "dock 7")
+		to_chat(world, "yolo [height-dheight] >||> [S.height-S.dheight]")
 		return SHUTTLE_HEIGHT_TOO_LARGE
 
 	//check the dock isn't occupied
@@ -696,12 +696,7 @@
 		if(destination.landing_lights_on)
 			return //Return early if the lights are on, something went wrong and called twice.
 		destination.on_prearrival(src, landing_sound)
-	var/turf/center_turf = return_center_turf()
 	playsound(return_center_turf(), landing_sound, 60, 0)
-	if(zheight > 1)
-		var/adjusted_zheight = zheight - 1
-		var/center_turf_above = locate(center_turf.x, center_turf.y, center_turf.z + adjusted_zheight)
-		playsound(center_turf_above, landing_sound, 60, 0)
 	return
 
 /obj/docking_port/mobile/proc/on_prearrival()

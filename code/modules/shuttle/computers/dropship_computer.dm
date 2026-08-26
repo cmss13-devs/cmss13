@@ -422,8 +422,7 @@
 	dropship_control_lost = FALSE
 	update_icon()
 
-/obj/structure/machinery/computer/shuttle/dropship/flight/ui_data(mob/user) // what is this
-	to_chat(world, "called UI data!!")
+/obj/structure/machinery/computer/shuttle/dropship/flight/ui_data(mob/user)
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId, warn=!can_change_shuttle)
 	. = list()
 	.["shuttle_id"] = shuttle?.id
@@ -444,7 +443,7 @@
 	if(shuttle?.destination)
 		.["target_destination"] = shuttle?.in_flyby? "Flyby" : shuttle?.destination.name
 
-	.["door_status"] = is_remote ? list() : shuttle?.get_door_data() // get door data
+	.["door_status"] = is_remote ? list() : shuttle?.get_door_data()
 	.["has_flyby_skill"] = skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT)
 
 	// Launch Alarm Variables
@@ -529,7 +528,6 @@
 				return TRUE
 
 			update_equipment(is_optimised, FALSE)
-			to_chat(world, "ui_data first")
 			var/list/local_data = ui_data(user)
 			var/found = FALSE
 			playsound(loc, get_sfx("terminal_button"), 5, 1)
@@ -563,7 +561,6 @@
 			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
 			return FALSE
 		if("door-control")
-			to_chat(world, "calling door control")
 			if(!shuttle)
 				return FALSE
 			if(shuttle.mode == SHUTTLE_CALL || shuttle.mode == SHUTTLE_RECALL)

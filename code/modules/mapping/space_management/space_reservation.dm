@@ -124,7 +124,7 @@
 	//swap the area with the pre-cordoning area
 
 /// Internal proc which handles reserving the area for the reservation.
-/datum/turf_reservation/proc/_reserve_area(width, height, zlevel, zheight) // look here
+/datum/turf_reservation/proc/_reserve_area(width, height, zlevel)
 	src.width = width
 	src.height = height
 	if(width > world.maxx || height > world.maxy || width < 1 || height < 1)
@@ -141,12 +141,7 @@
 			continue
 		if(BL.x + width > world.maxx || BL.y + height > world.maxy)
 			continue
-		if(zheight > 1)
-			var/zheight_adj = zheight - 1
-			var/zheight_final = BL.z + zheight_adj
-			TR = locate(BL.x + width - 1, BL.y + height - 1, zheight_final)
-		else
-			TR = locate(BL.x + width - 1, BL.y + height - 1, BL.z)
+		TR = locate(BL.x + width - 1, BL.y + height - 1, BL.z)
 		if(!(TR.turf_flags & UNUSED_RESERVATION_TURF))
 			continue
 		final = block(BL, TR)
@@ -173,17 +168,16 @@
 		T.ChangeTurf(turf_type, turf_type)
 
 	bottom_left_turfs += BL
-	if(zheight > 1)
-		var/additional_BTLT = locate(BL.x, BL.y, TR.z)
-		bottom_left_turfs += additional_BTLT
 	top_right_turfs += TR
 	return TRUE
 
-/datum/turf_reservation/proc/reserve(width, height, z_size, z_reservation) // huh?
+/datum/turf_reservation/proc/reserve(width, height, z_size, z_reservation)
 	src.z_size = z_size
 	var/failed_reservation = FALSE
-	if(!_reserve_area(width, height, z_reservation, z_size))
-		failed_reservation = TRUE
+	for(var/_ in 1 to z_size)
+		if(!_reserve_area(width, height, z_reservation))
+			failed_reservation = TRUE
+			break
 
 	if(failed_reservation)
 		Release()

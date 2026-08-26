@@ -140,7 +140,6 @@
 	height = 24
 	dwidth = 8
 	dheight = 12
-	zheight = 2
 
 /obj/docking_port/mobile/marine_dropship/omaha/get_transit_path_type()
 	return /turf/open/space/transit/dropship/omaha
@@ -412,7 +411,6 @@
 	height = 24
 	dwidth = 8
 	dheight = 12
-	zheight = 2
 
 /obj/docking_port/stationary/marine_dropship/almayer_hangar_2
 	name = "Almayer Hangar bay 2"
@@ -446,7 +444,6 @@
 	. = ..()
 	if(istype(arriving_shuttle, /obj/docking_port/mobile/marine_dropship))
 		var/obj/docking_port/mobile/marine_dropship/ds = arriving_shuttle
-		to_chat(world, "assigning new height width")
 		dheight = ds.dheight
 		dwidth = ds.dwidth
 		height = ds.height

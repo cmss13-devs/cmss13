@@ -17,7 +17,6 @@
 	name = GAMEMODE_DISTRESS_SIGNAL
 	config_tag = GAMEMODE_DISTRESS_SIGNAL
 	required_players = 1 //Need at least one player, but really we need 2.
-	xeno_required_num = 1 //Need at least one xeno.
 	monkey_amount = 5
 	corpses_to_spawn = 0
 	flags_round_type = MODE_INFESTATION|MODE_FOG_ACTIVATED|MODE_NEW_SPAWN

@@ -5,6 +5,7 @@
 	selection_class = "job_xeno_queen"
 	total_positions = 1
 	spawn_positions = 1
+	scaled = FALSE
 
 /datum/job/antag/xenos/queen/set_spawn_positions(count)
 	return spawn_positions

@@ -7,10 +7,9 @@
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_CUSTOM_SPAWN
 	supervisors = "Queen"
 	selection_class = "job_xeno"
-	// Unlimited for the precount purposes, later set_spawn_positions gets called and sets
-	// a proper limit.
 	spawn_positions = -1
 	total_positions = -1
+	scaled = TRUE
 
 /datum/job/antag/xenos/proc/calculate_extra_spawn_positions(count)
 	return max((floor(count * XENO_TO_TOTAL_SPAWN_RATIO)), 0)

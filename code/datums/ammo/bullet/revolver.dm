@@ -7,8 +7,8 @@
 /datum/ammo/bullet/revolver
 	name = "revolver bullet"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
-	damage = 80
-	penetration = ARMOR_PENETRATION_TIER_3
+	damage = 85
+	penetration = ARMOR_PENETRATION_TIER_2
 	accuracy = HIT_ACCURACY_TIER_1
 	accurate_range = 7
 	handful_type = /obj/item/ammo_magazine/handful/revolver
@@ -19,22 +19,30 @@
 	shrapnel_chance = 0
 	damage_falloff = 0
 	accurate_range = 12
-	penetration = ARMOR_PENETRATION_TIER_7
+	penetration = ARMOR_PENETRATION_TIER_8
 
 /datum/ammo/bullet/revolver/heavy
 	name = "heavy revolver bullet"
-	damage = 50
+	damage = 65
 	penetration = ARMOR_PENETRATION_TIER_4
 	accuracy = HIT_ACCURACY_TIER_3
 	accurate_range = 7
-	var/add_thing = 1
 
-/datum/ammo/bullet/revolver/heavy/on_hit_mob(mob/living/M, obj/projectile/bullet)
-	. = ..()
-	if(!M || !isliving(M))
-		return
-	M.AddComponent(/datum/component/heavy_buildup, 1, 3)
+/datum/ammo/bullet/revolver/heavy/on_hit_mob(mob/living/living_mob, obj/projectile/fired_projectile)
+	knockback(living_mob, fired_projectile, 6)
 
+/datum/ammo/bullet/revolver/heavy/knockback_effects(mob/living/living_mob, obj/projectile/fired_projectile)
+	if(iscarbonsizexeno(living_mob))
+		var/mob/living/carbon/xenomorph/target = living_mob
+		to_chat(target, SPAN_XENODANGER("You are shaken and slowed by the sudden impact!"))
+		target.apply_effect(1, SUPERSLOW)
+		target.apply_effect(3, SLOW)
+	else
+		if(!isyautja(living_mob))
+			living_mob.apply_effect(1, SUPERSLOW)
+			living_mob.apply_effect(2, SLOW)
+			to_chat(living_mob, SPAN_HIGHDANGER("You are shaken and slowed by the sudden impact!"))
+		living_mob.apply_stamina_damage(fired_projectile.ammo.damage, fired_projectile.def_zone, ARMOR_BULLET)
 
 
 /datum/ammo/bullet/revolver/incendiary

@@ -500,7 +500,6 @@
 		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/alt_iff_scope,
 	)
-	var/folded = FALSE // Used for the stock attachment, to check if we can shoot or not
 
 /obj/item/weapon/gun/revolver/m44/Initialize()
 	. = ..()
@@ -517,13 +516,6 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_5
 	recoil_unwielded = RECOIL_AMOUNT_TIER_3
-
-/obj/item/weapon/gun/revolver/m44/able_to_fire(mob/user)
-	if (folded)
-		to_chat(user, SPAN_NOTICE("You need to unfold the stock to fire!"))//this is stupid
-		return 0
-	else
-		return ..()
 
 /obj/item/weapon/gun/revolver/m44/mp //No differences (yet) beside spawning with marksman ammo loaded
 	current_mag = /obj/item/ammo_magazine/internal/revolver/m44/marksman

@@ -64,6 +64,7 @@
 
 	.["tutorials_ready"] = SSticker?.current_state == GAME_STATE_PLAYING
 	.["round_start"] = !SSticker || !SSticker.mode || SSticker.current_state <= GAME_STATE_PREGAME
+	.["round_starting"] = SSticker && (SSticker.current_state == GAME_STATE_SETTING_UP || SSticker.current_state == GAME_STATE_PREGAME && SSticker.time_left <= 0)
 	.["readied"] = ready
 
 	.["confirmation_message"] = lobby_confirmation_message

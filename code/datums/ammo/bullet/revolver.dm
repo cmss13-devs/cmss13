@@ -29,20 +29,15 @@
 	accurate_range = 7
 
 /datum/ammo/bullet/revolver/heavy/on_hit_mob(mob/living/living_mob, obj/projectile/fired_projectile)
-	knockback(living_mob, fired_projectile, 6)
+	if(fired_projectile.distance_travelled > 5 || isyautja(living_mob) || (isxeno(living_mob) && living_mob.mob_size >= MOB_SIZE_BIG))
+		return
 
-/datum/ammo/bullet/revolver/heavy/knockback_effects(mob/living/living_mob, obj/projectile/fired_projectile)
-	if(iscarbonsizexeno(living_mob))
-		var/mob/living/carbon/xenomorph/target = living_mob
-		to_chat(target, SPAN_XENODANGER("You are shaken and slowed by the sudden impact!"))
-		target.apply_effect(1, SUPERSLOW)
-		target.apply_effect(3, SLOW)
+	if(isxeno(living_mob))
+		to_chat(living_mob, SPAN_XENODANGER("You are shaken and slowed by the sudden impact!"))
 	else
-		if(!isyautja(living_mob))
-			living_mob.apply_effect(1, SUPERSLOW)
-			living_mob.apply_effect(2, SLOW)
-			to_chat(living_mob, SPAN_HIGHDANGER("You are shaken and slowed by the sudden impact!"))
-		living_mob.apply_stamina_damage(fired_projectile.ammo.damage, fired_projectile.def_zone, ARMOR_BULLET)
+		to_chat(living_mob, SPAN_HIGHDANGER("You are shaken and slowed by the sudden impact!"))
+
+	living_mob.AddComponent(/datum/component/heavy_buildup)
 
 
 /datum/ammo/bullet/revolver/incendiary

@@ -119,8 +119,13 @@
 	TEST_ASSERT(!HIVE_ALLIED_TO_HIVE(XENO_HIVE_NORMAL, XENO_HIVE_ALPHA), "Hive alliance setup failed during test initialization")
 
 	pair_reception_test(
-		abstract_emitter = new /datum/abstract_xenomorph(),
-		abstract_receiver = new /datum/abstract_xenomorph(hive = XENO_HIVE_ALPHA),
+		abstract_emitter = new /datum/abstract_xenomorph(
+			caste = XENO_CASTE_QUEEN
+		),
+		abstract_receiver = new /datum/abstract_xenomorph(
+			hive = XENO_HIVE_ALPHA,
+			caste = XENO_CASTE_QUEEN
+		),
 		pheromone_type = pheromone_type,
 		test_callback = CALLBACK(src, PROC_REF(pheromone_validation), list())
 	)

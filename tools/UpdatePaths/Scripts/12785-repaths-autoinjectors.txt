@@ -12,7 +12,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/research/ez/@SUBTYPES{@OLD}
 /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tramadol@SUBTYPES{@OLD}
 /obj/item/reagent_container/hypospray/autoinjector/skillless/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/@SUBTYPES{@OLD}
-/obj/item/reagent_container/hypospray/autoinjector/chloralhydrate/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/no_refill/chloralhydrat/e@SUBTYPES{@OLD}
+/obj/item/reagent_container/hypospray/autoinjector/chloralhydrate/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/no_refill/chloralhydrate@SUBTYPES{@OLD}
 /obj/item/reagent_container/hypospray/autoinjector/emergency/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/no_refill/emergency/@SUBTYPES{@OLD}
 /obj/item/reagent_container/hypospray/autoinjector/black_goo_cure/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/no_refill/black_goo_cure/@SUBTYPES{@OLD}
 /obj/item/reagent_container/hypospray/autoinjector/ultrazine/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/no_refill/ultrazine/@SUBTYPES{@OLD}

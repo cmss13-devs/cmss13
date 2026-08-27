@@ -140,6 +140,7 @@
 	height = 24
 	dwidth = 8
 	dheight = 12
+	multiz_ship = TRUE
 
 /obj/docking_port/mobile/marine_dropship/omaha/get_transit_path_type()
 	return /turf/open/space/transit/dropship/omaha

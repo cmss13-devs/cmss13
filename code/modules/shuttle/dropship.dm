@@ -123,9 +123,9 @@
 /obj/structure/shuttle/part/dropship_omaha/transparent
 	opacity = FALSE
 
-/obj/structure/shuttle/part/dropship_omaha/transparent/lateShuttleMove()
+/obj/structure/shuttle/part/dropship_omaha/transparent/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
 	.=..()
-	for(var/turf/open_space/transparent_turf in locs)
+	for(var/turf/transparent_turf in locs)
 		transparent_turf.update_vis_contents()
 
 /obj/structure/shuttle/part/dropship_omaha/transparent/lower_left_wing

@@ -41,6 +41,8 @@
 	///are we registered in SSshuttles?
 	var/registered = FALSE
 
+	var/multiz_ship = FALSE
+
 ///register to SSshuttles
 /obj/docking_port/proc/register()
 	if(registered)
@@ -321,10 +323,11 @@
 
 	for(var/xscan = x0; xscan < x1; xscan++)
 		for(var/yscan = y0; yscan < y1; yscan++)
-			var/turf/searchspot = locate(xscan, yscan, src.z)
-			for(var/obj/structure/machinery/landinglight/light in searchspot)
-				landing_lights += light
-				light.linked_port = src
+			for(var/zscan in 0 to 1)
+				var/turf/searchspot = locate(xscan, yscan, src.z - zscan)
+				for(var/obj/structure/machinery/landinglight/light in searchspot)
+					landing_lights += light
+					light.linked_port = src
 
 /obj/docking_port/stationary/proc/turn_on_landing_lights()
 	for(var/obj/structure/machinery/landinglight/light in landing_lights)
@@ -798,6 +801,12 @@
 	var/list/turfs = ripple_area(S1)
 	for(var/t in turfs)
 		ripples += new /obj/effect/abstract/ripple/shadow(t, animate_time)
+		if(multiz_ship)
+			var/obj/docking_port/mobile/marine_dropship/our_ship = src
+			if(!our_ship.is_hijacked)
+				var/turf_below = SSmapping.get_turf_below(t)
+				if(turf_below)
+					ripples += new /obj/effect/abstract/ripple/shadow(turf_below, animate_time)
 	return TRUE
 
 /obj/docking_port/mobile/proc/remove_ripples()

@@ -46,12 +46,13 @@
 			lines.moveToNullspace()
 		return
 	var/turf/target_turf = locate(src.x-5, src.y, src.z)
-	var/turf/final_turf = SSmapping.get_turf_below(target_turf)
-	if(final_turf)
-		if(lines)
-			lines.Move(final_turf)
-		else
-			lines = new /obj/structure/shuttle/part/dropship_omaha/fuel_lines(final_turf)
+	if(target_turf)
+		var/turf/final_turf = SSmapping.get_turf_below(target_turf)
+		if(final_turf)
+			if(lines)
+				lines.loc = final_turf
+			else
+				lines = new /obj/structure/shuttle/part/dropship_omaha/fuel_lines(final_turf)
 
 /obj/deployer/shuttle/omaha/landing_gear
 	var/offset_x = -16
@@ -143,7 +144,7 @@
 
 /obj/deployer/shuttle/gibber
 
-/obj/deployer/shuttle/gibber/beforeShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)
+/obj/deployer/shuttle/gibber/afterShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)
 	. = ..()
 	var/turf/turf_below = SSmapping.get_turf_below(src.loc)
 	if(turf_below)

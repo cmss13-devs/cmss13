@@ -3,6 +3,7 @@
 	opacity = FALSE
 	invisibility = 101
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	flags_atom = NO_ZFALL
 
 /obj/deployer/shuttle
 	icon = 'icons/obj/structures/machinery/mohawk/bits_bobs.dmi'
@@ -139,3 +140,13 @@
 				linked_bottom.pixel_x = offset_x
 				linked_bottom.pixel_y = offset_y
 				break
+
+/obj/deployer/shuttle/gibber
+
+/obj/deployer/shuttle/gibber/beforeShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)
+	. = ..()
+	var/turf/turf_below = SSmapping.get_turf_below(src.loc)
+	if(turf_below)
+		for(var/i in turf_below.contents)
+			var/atom/movable/thing = i
+			turf_below.shuttleCrushThing(thing, moving_dock)

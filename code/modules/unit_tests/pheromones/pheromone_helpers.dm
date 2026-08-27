@@ -1,9 +1,3 @@
-/datum/abstract_xenomorph/New(hive = XENO_HIVE_NORMAL, caste = XENO_CASTE_DRONE, datum/callback/initialization_callback)
-	src.hive = hive
-	src.caste = caste
-
-	src.initialization_callback = initialization_callback
-
 /datum/unit_test/pheromones
 	/// Overrides the `wait` variable of the SSxeno subsystem with this value when certain test functions are called.
 	/// This is used to expedite tests so they don't have to wait the full 2 seconds per life loop.

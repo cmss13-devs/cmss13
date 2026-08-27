@@ -45,22 +45,22 @@
 ///////////////////SURGERY FLAGS///////////////////
 //Surgery defines strictly for overlay application.
 
-///An incision exists.
+///An incision has not yet been widened.
 #define INCISION_MADE (1<<0)
 
-///The closed or widened incision is bleeding.
+///The surgical site is bleeding.
 #define INCISION_BLEEDING (1<<1)
 
-///The closed or widened incision is not bleeding.
+///The surgical site is not bleeding.
 #define INCISION_CLAMPED (1<<2)
 
 ///The incision has been widened.
 #define INCISION_WIDENED (1<<3)
 
-///The widened incision's organs cannot be manipulated.
+///The widened incision's organs cannot be manipulated. Inverse for groin incisions.
 #define INCISION_BONE_CLOSED (1<<4)
 
-///The widened incision's organs can be manipulated.
+///The widened incision's organs can be manipulated. Inverse for groin incisions.
 #define INCISION_BONE_OPENED (1<<5)
 
 ///The widened incision is internally bleeding.
@@ -156,6 +156,8 @@
 #define UNDERWEAR_LAYER 42
 #define UNDERSHIRT_LAYER 41
 #define MUTANTRACE_LAYER 40
+
+//Surgery overlays
 #define SURGERY_LAYER 39
 
 /// For use by Hunter Flay

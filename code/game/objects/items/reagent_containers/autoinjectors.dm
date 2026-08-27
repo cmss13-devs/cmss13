@@ -575,7 +575,7 @@
 	chemname = "dathwei"
 	color = "#c46b41"
 
-/obj/item/reagent_container/hypospray/autoinjector/no_refill/yautja/attack(mob/M as mob, mob/user as mob)
+/obj/item/reagent_container/hypospray/autoinjector/no_refill/yautja/attack(mob/target_mob, mob/user)
 	if(HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		..()
 	else

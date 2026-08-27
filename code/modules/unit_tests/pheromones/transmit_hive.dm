@@ -116,7 +116,7 @@
 /// Expected behavior is that the alpha drone does not receive the prime hive's pheromones.
 /datum/unit_test/pheromones/transmit_hive__unallied/Run(pheromone_type = XENO_PHERO_RECOVERY)
 	GLOB.hive_datum[XENO_HIVE_NORMAL].change_stance(FACTION_XENOMORPH_ALPHA, FALSE)
-	TEST_ASSERT(!HIVE_ALLIED_TO_HIVE(XENO_HIVE_NORMAL, XENO_HIVE_ALPHA), "Hive alliance setup failed during test initialization")
+	TEST_ASSERT(!HIVE_ALLIED_TO_HIVE(XENO_HIVE_NORMAL, XENO_HIVE_ALPHA), "Hive alliance setup failed during test initialization; prime and alpha hives were not properly unallied")
 
 	pair_reception_test(
 		abstract_emitter = new /datum/abstract_xenomorph(

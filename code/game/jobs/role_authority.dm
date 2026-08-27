@@ -13,19 +13,9 @@ use roles_by_path as it is an accurate account of every specific role path (with
 */
 GLOBAL_DATUM(RoleAuthority, /datum/authority/branch/role)
 
-#define GET_RANDOM_JOB 0
-#define BE_MARINE 1
-#define RETURN_TO_LOBBY 2
-#define BE_XENOMORPH 3
-
-#define NEVER_PRIORITY 0
-#define HIGH_PRIORITY 1
-#define MED_PRIORITY 2
-#define LOW_PRIORITY 3
+GLOBAL_VAR_INIT(players_preassigned, 0)
 
 #define SHIPSIDE_ROLE_WEIGHT 0.25
-
-GLOBAL_VAR_INIT(players_preassigned, 0)
 
 /proc/guest_jobbans(job)
 	return (job in GLOB.ROLES_COMMAND)
@@ -736,12 +726,4 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			return TRUE
 	return FALSE
 
-#undef GET_RANDOM_JOB
-#undef BE_MARINE
-#undef RETURN_TO_LOBBY
-#undef BE_XENOMORPH
-#undef NEVER_PRIORITY
-#undef HIGH_PRIORITY
-#undef MED_PRIORITY
-#undef LOW_PRIORITY
 #undef SHIPSIDE_ROLE_WEIGHT

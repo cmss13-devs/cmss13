@@ -1228,8 +1228,8 @@
 	S_TIMER_COOLDOWN_START(src, YAUTJA_CREATE_CRYSTAL_COOLDOWN, 2 MINUTES)
 
 	to_chat(user, SPAN_NOTICE("You feel a faint hiss and a crystalline injector drops into your hand."))
-	var/obj/item/reagent_container/hypospray/autoinjector/no_refill/yautja/O = new(user)
-	user.put_in_active_hand(O)
+	var/obj/item/reagent_container/hypospray/autoinjector/no_refill/yautja/autoinjector = new(user)
+	user.put_in_active_hand(autoinjector)
 	playsound(src, 'sound/machines/click.ogg', 15, 1)
 	return TRUE
 

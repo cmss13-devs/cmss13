@@ -127,10 +127,26 @@
 		emitters += emitter
 	TEST_ASSERT_NOTNULL(receiver, "Initializtion of physical receiver xenomorph resulted in a null reference")
 
+	// Asserting that the total number of pheromone types matches what we expect to test for. (3)
+	// If you are adding a new pheromone type and reception_permutation_test is failing, please review this module and add/update the corresponding necessary unit tests.
+	var/total_pheromones = length(ALL_XENO_PHEROMONES)
+	var/const/expected_pheromones = 3
+	TEST_ASSERT_EQUAL(total_pheromones, expected_pheromones, "Test found [total_pheromones] pheromone types, but expected to see [expected_pheromones]. If you are adding a new pheromone type, please review the 'code/modules/unit_tests/pheromones/' testing suite and add/update unit tests accordingly.")
+
+	// Find the appropriate length of the bitmask used for permutation indexing.
+	// For our current array of recovery, frenzy, and warding, this should be two.
+	var/bitmask_length = 0
+	while ((total_pheromones + 1) >> bitmask_length != 0)
+		bitmask_length++
+	var/bitmask = (1 << bitmask_length) - 1 // Creating the actual bitmask
+
+	// Iterate through all possible permutations
+	var/hallucinated_loops = 0
 	for (var/permutation = 0, permutation < (1 << (length(abstract_emitters) * 2)), permutation++)
 		log_test("Starting pheromone permutation [num2hex(permutation, 2)]...")
 
 		// Setting up each emitter state
+		var/hallucinated = FALSE
 		for (var/emitter_index in 1 to length(emitters))
 			var/mob/living/carbon/xenomorph/emitter = emitters[emitter_index]
 			if (!emitter) // Robustifying the loop
@@ -141,27 +157,41 @@
 			if (!emitter.check_state(TRUE))
 				TEST_FAIL("Emitter [emitter] was incapacitated during testing")
 
-			// Use the two bit values of the permutation at this emitter's index to determine what it should be emitting
-			// NOTE: This kind of hardcoding pheromone types as bitvalues is kind of bad in case someone wants to add new pheromone types in the future
-			var/bitshift = (emitter_index - 1) * 2
-			var/should_emit = (permutation & (3 << bitshift)) >> bitshift
-			switch (should_emit)
-				// Don't emit pheromones at all
-				if (0)
-					if (emitter.current_aura != null)
-						emitter.emit_pheromones() // Emitting pheromones with no type specified cancels emission
-				if (1)
-					emitter.emit_pheromones(XENO_PHERO_RECOVERY)
-				if (2)
-					emitter.emit_pheromones(XENO_PHERO_FRENZY)
-				if (3)
-					emitter.emit_pheromones(XENO_PHERO_WARDING)
-				else
-					stack_trace("Received an out of bounds pheromone permutation")
+			/** === Bit math explanation ===
+			 * The current permutation index is used to encode what pheromone is being emitted by each xenomorph in the test
+			 * For instance, in a test with three xenomorphs, the permutation value would look something like this:
+			 * 0b 00 10 01
+			 * Breaking this down, this means that the first xenomorph is emitting pheromone type 0b01 (1-recovery),
+			 * the second xenomorph is emitting pheromone type 0b10 (2-frenzy), and that the third xenomorph is not emitting pheromones at all.
+			 *
+			 * Doing it this way means we have a canonical way of encoding emissions of every possible permutation between n group of xenomorphs.
+			 * The current gallery of no pheromones, recovery, warding, and frenzy allows the pheromone emission to be encoded in two bits.
+			 * Should more pheromone types be added in the future, these two-bit "windows" will be expanded to three bits by the test.
+			**/
+			var/bitshift = (emitter_index - 1) * bitmask_length // Calculating how much we need to move the bitmask window. With two bits per xenomorph, we only need to shift it by two for every xenomorph.
+			var/should_emit = (permutation & (bitmask << bitshift)) >> bitshift // Isolating the value using our bitmask of 0b11 (3).
+			if (should_emit == 0)
+				// A value of zero means that no pheromones should be emitted
+				if (emitter.current_aura != null)
+					emitter.emit_pheromones() // Emitting pheromones with no type specified cancels emission
+			else if (should_emit > total_pheromones)
+				// Because of the way permutations are being encoded into bits, it could be possible that the permutation loop iterates over a pheromone type that does not exist
+				// For instance, if there were to be a fourth pheromone and the bit mask was pushed up to three bits, the loop would still iterate over the possible 5th, 6th, and 7th pheromones
+				// Since we don't want to include these "hallucinated" pheromones in our testing callback, we should keep track of when we skipped over them
+				hallucinated = TRUE
+				break
+			else
+				// A non-zero value means that we use said value to index into the list of all pheromones
+				emitter.emit_pheromones(ALL_XENO_PHEROMONES[should_emit])
+
+		// Don't bother doing testing for hallucinated loops
+		if (hallucinated)
+			hallucinated_loops++
+			continue
 
 		wait_full_life_loops(1)
 
-		test_callback.Invoke(receiver, permutation + 1)
+		test_callback.Invoke(receiver, permutation - hallucinated_loops + 1)
 
 	if (original_wait)
 		SSxeno.wait = original_wait

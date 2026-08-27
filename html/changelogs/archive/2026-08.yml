@@ -489,3 +489,6 @@
   - balance: Disarming SHARP darts with multitool now converts them into usable ammo.
   - rscadd: Can now use multitool on inactive darts. That means, 5 minute lifespan
       auto-disarmed darts can now be reused as ammo with multitool.
+2026-08-27:
+  Puckaboo2:
+  - bugfix: Burn overlays now apply to mobs again.

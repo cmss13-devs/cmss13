@@ -1,13 +1,3 @@
-/// Helper datum used for unit testing that defines a xenomorph solely based on a few abstract qualities.
-/datum/abstract_xenomorph
-	var/hive //! The hive that this xeno will be a part of.
-	var/caste //! The caste that this xeno will be spawned as.
-
-	/// A callback that can be used for modifying the xenomorph after full instantiation. Takes one argument, which is the living/carbon/xenomorph that was instantiated.
-	///
-	/// Used for things like banishment, movement, setting health, et cetera.
-	var/datum/callback/initialization_callback
-
 /datum/abstract_xenomorph/New(hive = XENO_HIVE_NORMAL, caste = XENO_CASTE_DRONE, datum/callback/initialization_callback)
 	src.hive = hive
 	src.caste = caste
@@ -67,8 +57,8 @@
 		original_wait = SSxeno.wait
 		SSxeno.wait = ss_wait_override
 
-	var/mob/living/carbon/xenomorph/emitter = init_abstract_xeno(abstract_emitter)
-	var/mob/living/carbon/xenomorph/receiver = init_abstract_xeno(abstract_receiver)
+	var/mob/living/carbon/xenomorph/emitter = abstract_emitter.initialize(src)
+	var/mob/living/carbon/xenomorph/receiver = abstract_receiver.initialize(src)
 	TEST_ASSERT_NOTNULL(emitter, "Initialization of the physical emitter xenomorph resulted in a null reference")
 	TEST_ASSERT_NOTNULL(receiver, "Initialization of the physical receiver xenomorph resulted in a null reference")
 
@@ -98,7 +88,7 @@
 	abstract_receiver.hive = abstract_emitter.hive
 
 	var/list/mob/living/carbon/xenomorph/hivemates = list()
-	var/mob/living/carbon/xenomorph/emitter = init_abstract_xeno(abstract_emitter)
+	var/mob/living/carbon/xenomorph/emitter = abstract_emitter.initialize(src)
 	TEST_ASSERT_NOTNULL(emitter, "Initialization of the physical emitter xenomorph resulted in a null reference")
 
 	for (var/caste_type in ALL_XENO_CASTES)
@@ -106,7 +96,7 @@
 			continue
 
 		abstract_receiver.caste = caste_type
-		hivemates += init_abstract_xeno(abstract_receiver)
+		hivemates += abstract_receiver.initialize(src)
 
 	emitter.emit_pheromones(pheromone_type)
 
@@ -128,10 +118,10 @@
 		original_wait = SSxeno.wait
 		SSxeno.wait = ss_wait_override
 
-	var/mob/living/carbon/xenomorph/receiver = init_abstract_xeno(abstract_receiver)
+	var/mob/living/carbon/xenomorph/receiver = abstract_receiver.initialize(src)
 	var/list/mob/living/carbon/xenomorph/emitters = list()
 	for (var/datum/abstract_xenomorph/abstract_emitter as anything in abstract_emitters)
-		var/mob/living/carbon/xenomorph/emitter = init_abstract_xeno(abstract_emitter)
+		var/mob/living/carbon/xenomorph/emitter = abstract_emitter.initialize(src)
 		TEST_ASSERT_NOTNULL(emitter, "Initialization of the physical emitter xenomorph resulted in a null reference")
 
 		emitters += emitter
@@ -175,17 +165,6 @@
 
 	if (original_wait)
 		SSxeno.wait = original_wait
-
-/// Initializes an abstract xenomorph into a living, breathing mob. Spawns on the lower leftmost testing turf.
-/datum/unit_test/pheromones/proc/init_abstract_xeno(datum/abstract_xenomorph/abstract)
-	var/mob/living/carbon/xenomorph/xeno = allocate(GLOB.RoleAuthority.get_caste_by_text(abstract.caste))
-	xeno.loc = run_loc_floor_bottom_left
-	xeno.set_hive_and_update(abstract.hive)
-
-	if (abstract.initialization_callback)
-		abstract.initialization_callback.Invoke(xeno)
-
-	return xeno
 
 /**
  *  Validates that a given xenomorph is receiving the correct level of pheromones for every type.

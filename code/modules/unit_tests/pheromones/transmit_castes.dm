@@ -10,7 +10,7 @@
 
 		for(var/datum/xeno_strain/strain_type as anything in caste.available_strains)
 			var/datum/abstract_xenomorph/dummy_xeno_abstract = allocate(/datum/abstract_xenomorph/, caste_name)
-			var/mob/living/dummy_xeno = init_abstract_xeno(dummy_xeno_abstract)
+			var/mob/living/dummy_xeno = dummy_xeno_abstract.initialize(src)
 
 			var/datum/xeno_strain/strain_instance = new strain_type()
 			strain_instance._add_to_xeno(dummy_xeno)

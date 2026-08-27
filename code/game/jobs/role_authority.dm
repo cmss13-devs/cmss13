@@ -112,7 +112,6 @@ GLOBAL_VAR_INIT(players_preassigned, 0)
 		squads += S
 		squads_by_type[S.type] = S
 
-//#undef FACTION_TO_JOIN
 
 /*
 Consolidated into a better collection of procs. It was also calling too many loops, and I tried to fix that as well.
@@ -736,3 +735,13 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		if(new_squad.roles_in[transfer_marine.job] >= new_squad.roles_cap[transfer_marine.job])
 			return TRUE
 	return FALSE
+
+#undef GET_RANDOM_JOB
+#undef BE_MARINE
+#undef RETURN_TO_LOBBY
+#undef BE_XENOMORPH
+#undef NEVER_PRIORITY
+#undef HIGH_PRIORITY
+#undef MED_PRIORITY
+#undef LOW_PRIORITY
+#undef SHIPSIDE_ROLE_WEIGHT

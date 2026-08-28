@@ -29,5 +29,11 @@
 	stun_reduction = 2.5
 	acid_blood_dodge_chance = 100
 
+
 /datum/species/guardian/handle_post_spawn(mob/living/carbon/human/human)
 	new/obj/item/alien_embryo/dormant(human)
+	var/list/huds_to_add = list(STATUS_HUD_XENO_CULTIST)
+
+	for(var/hud_to_add in huds_to_add)
+		var/datum/mob_hud/hud = GLOB.huds[hud_to_add]
+		hud.add_hud_to(src, src)

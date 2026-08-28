@@ -32,8 +32,8 @@
 	 */
 	var/near_lz_protection_delay = 8 MINUTES
 
-	var/cultist_round = FALSE
-	var/cultist_round_chance = 30
+
+	var/cultist_round_chance = 100
 
 
 /* Pre-pre-startup */
@@ -223,11 +223,15 @@
 	if(!cultist_round)
 		return
 	var/list/survivors = GLOB.spawned_survivors
-	var/cultists_to_spawn = round(length(survivors) * 0.5)
-	for(var/i in cultists_to_spawn)
-		var/mob/living/carbon/human/human = pick(survivors)
-		survivors -= human
-		human.become_cultist
+	for(var/mob/living/carbon/human/human in survivors)
+		if(human.undefibbable)
+			survivors -= human
+	if(!length(survivors))
+		return
+
+	for(var/mob/living/carbon/human/human in survivors)
+		if(prob(30))
+			human.become_cultist
 
 
 

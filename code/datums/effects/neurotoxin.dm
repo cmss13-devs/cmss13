@@ -132,7 +132,14 @@
 
 
 /mob/living/carbon/human
+	var/cultist = FALSE
 	COOLDOWN_DECLARE(hallucination_cooldown)
+
+/mob/living/carbon/human/proc/become_cultist()
+	cultist = TRUE
+	to_chat(src, "Something snaps in you after seeing the xenomorphs in action, they are the gods, you need to spread them across the galaxy.")
+	to_chat(src, SPAN_ALERT("You are not allowed to be openly hostile to humans and you are not allied to xenomorphs either, your goal is to become infected and burst on the Almayer."))
+
 
 /mob/living/carbon/human/proc/process_hallucination()
 	if(!COOLDOWN_FINISHED(src, hallucination_cooldown))

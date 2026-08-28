@@ -14,7 +14,7 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/smartguns_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/smartguns_righthand.dmi'
 	)
-	mouse_pointer = 'icons/effects/mouse_pointer/smartgun_mouse.dmi'
+	mouse_pointer = 'icons/effects/mouse_pointer/smartgun_mouse/smartgun_base.dmi'
 
 	fire_sound = "gun_smartgun"
 	fire_rattle = "gun_smartgun_rattle"
@@ -454,6 +454,7 @@
 ///Having the SG check it's config after toggling frontline mode & IFF is essential, or it won't update properly.
 ///e.g. turning IFF off, firing once, turning IFF on will let the user fire frontline bullets over friendlies if the gun doesn't check.
 	set_gun_config_values()
+	set_mouse_pointer(user)
 
 /obj/item/weapon/gun/smartgun/able_to_fire(mob/living/user)
 	. = ..()
@@ -487,6 +488,7 @@
 	ammo = secondary_toggled ? ammo_secondary : ammo_primary
 	var/datum/action/item_action/smartgun/toggle_ammo_type/TAT = locate(/datum/action/item_action/smartgun/toggle_ammo_type) in actions
 	TAT.update_icon()
+	set_mouse_pointer(user)
 
 /obj/item/weapon/gun/smartgun/replace_ammo()
 	..()
@@ -513,6 +515,21 @@
 ///Having the SG check it's config after toggling frontline mode & IFF is essential, or it won't update properly.
 ///e.g. turning IFF off, firing once, turning IFF on will let the user fire frontline bullets over friendlies if the gun doesn't check.
 	set_gun_config_values()
+
+/obj/item/weapon/gun/smartgun/proc/set_mouse_pointer(mob/user)
+	if(!frontline_enabled && !secondary_toggled)
+		mouse_pointer = initial(mouse_pointer)
+	if(!frontline_enabled && secondary_toggled)
+		mouse_pointer = 'icons/effects/mouse_pointer/smartgun_mouse/smartgun_base_ap.dmi'
+	if(frontline_enabled && !secondary_toggled)
+		mouse_pointer = 'icons/effects/mouse_pointer/smartgun_mouse/smartgun_front.dmi'
+	if(frontline_enabled && secondary_toggled)
+		mouse_pointer = 'icons/effects/mouse_pointer/smartgun_mouse/smartgun_front_ap.dmi'
+
+	if(flags_item & WIELDED)
+		update_mouse_pointer(user, TRUE)
+	else
+		update_mouse_pointer(user, FALSE)
 
 /obj/item/weapon/gun/smartgun/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
 	if(aim_assist && !auto_fire)

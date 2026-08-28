@@ -1370,8 +1370,12 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 			offset = 0 // We only need to offset if we're entering from a lower Z.
 
 		for(var/turf/crossing_point in mutli_z_cross_points)
-			var/switching_cross_point
+			var/turf/switching_cross_point
 			switching_cross_point = locate(crossing_point.x, crossing_point.y, start_turf.z + offset)
+			if(offset > 0) //If we're ending up with multiple cross points, we're throwing across multiple Zs - This is probably only going to happen for throwing down, but just incase.
+				offset = offset + SSmapping.level_trait(switching_cross_point.z, ZTRAIT_UP)
+			else //So we need to adjust the offset for the next cross point.
+				offset = offset + SSmapping.level_trait(switching_cross_point.z, ZTRAIT_DOWN)
 			line.Insert(mutli_z_cross_points[crossing_point], switching_cross_point)
 
 			if(!istype(switching_cross_point, /turf/open_space))

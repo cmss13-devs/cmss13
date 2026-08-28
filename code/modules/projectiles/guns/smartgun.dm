@@ -519,7 +519,6 @@
 	set_gun_config_values()
 
 /obj/item/weapon/gun/smartgun/proc/set_mouse_pointer(mob/user)
-	to_chat(world, "called this")
 	if(user.client)
 		if(!frontline_enabled && !secondary_toggled)
 			mouse_pointer = initial(mouse_pointer)

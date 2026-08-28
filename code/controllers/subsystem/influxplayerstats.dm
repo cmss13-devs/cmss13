@@ -45,7 +45,7 @@ SUBSYSTEM_DEF(influxplayerstats)
 		var/mob/target = currentrun[length(currentrun)]
 		currentrun.len--
 
-		if(QDELETED(target))
+		if(QDELETED(target) || should_block_game_interaction(target, TRUE))
 			continue
 
 		var/turf/target_turf = get_turf(target)
@@ -55,7 +55,7 @@ SUBSYSTEM_DEF(influxplayerstats)
 		else if(is_ground_level(target_turf.z))
 			level_stats = recorded_stats[IPS_GROUND_LEVEL]
 		else
-			// Not interested in mobs in debug/admin only areas.
+			// Some unknown level, skip
 			continue
 
 		for(var/datum/influx_player_stats/stat as anything in src.stat_types)

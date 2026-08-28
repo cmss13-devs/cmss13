@@ -472,3 +472,23 @@
       same sounds of body and cryo bags, given it just makes more sense.
   Watermelon914:
   - bugfix: Fixed gamemode vote not auto-resolving if there's only one option.
+2026-08-26:
+  AnCopper:
+  - bugfix: the UPP MSS CO Survivor now speaks Russian by default
+  Antlers:
+  - balance: Un-nerfs the crusher's melee attack slow after its bugfix, returning
+      it to 3.5 seconds
+  Red-byte3D:
+  - code_imp: Adds stelcrest unit tests
+  larentoun:
+  - bugfix: Using any item should now not immediately disarm the dart - disarming
+      is intended to be done with multitool.
+  - bugfix: Disarmed (inactive) SHARP darts now are truly inactive and safe.
+  - spellcheck: Incendiary dart description now says that's it is incendiary, not
+      explosive.
+  - balance: Disarming SHARP darts with multitool now converts them into usable ammo.
+  - rscadd: Can now use multitool on inactive darts. That means, 5 minute lifespan
+      auto-disarmed darts can now be reused as ammo with multitool.
+2026-08-27:
+  Puckaboo2:
+  - bugfix: Burn overlays now apply to mobs again.

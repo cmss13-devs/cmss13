@@ -128,17 +128,7 @@
 
 
 /mob/living/carbon/human
-	var/cultist = FALSE
 	COOLDOWN_DECLARE(hallucination_cooldown)
-
-/mob/living/carbon/human/proc/become_cultist()
-	cultist = TRUE
-	to_chat(src, "Something snaps in you after seeing the xenomorphs in action, they are the gods, you need to spread them across the galaxy.")
-	to_chat(src, SPAN_ALERT("You are not allowed to be openly hostile to humans and you are not allied to xenomorphs either, your goal is to become infected and burst on the Almayer."))
-	var/list/huds_to_add = list(MOB_HUD_XENO_INFECTION, MOB_HUD_XENO_STATUS, STATUS_HUD_XENO_CULTIST)
-	for(var/hud_to_add in huds_to_add)
-		var/datum/mob_hud/hud = GLOB.huds[hud_to_add]
-		hud.add_hud_to(src, src)
 
 /mob/living/carbon/human/proc/process_hallucination()
 	if(!COOLDOWN_FINISHED(src, hallucination_cooldown))

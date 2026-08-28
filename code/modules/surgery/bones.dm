@@ -6,7 +6,7 @@
 
 /datum/surgery/bone_repair
 	name = "Bone Repair Surgery"
-	possible_locs = ALL_LIMBS
+	possible_locs = list("head","chest","l_leg","l_foot","r_leg","r_foot","l_arm","l_hand","r_arm","r_hand")
 	invasiveness = list(SURGERY_DEPTH_SHALLOW)
 	required_surgery_skill = SKILL_SURGERY_TRAINED
 	pain_reduction_required = PAIN_REDUCTION_HEAVY
@@ -17,6 +17,11 @@
 	)
 	var/affected_bone //Used for messaging.
 
+/datum/surgery/bone_repair/groin
+	name = "Bone Repair Surgery"
+	possible_locs = list("groin")
+	invasiveness = list(SURGERY_DEPTH_DEEP)
+
 /datum/surgery/bone_repair/New(surgery_target, surgery_location, surgery_limb)
 	..()
 	if(affected_limb)
@@ -25,8 +30,11 @@
 				affected_bone = "ribs"
 			if("head")
 				affected_bone = "skull"
-			if("groin")
-				affected_bone = "pelvis"
+
+/datum/surgery/bone_repair/groin/New(surgery_target, surgery_location, surgery_limb)
+	..()
+	if(affected_limb)
+		affected_bone = "pelvis"
 
 /datum/surgery/bone_repair/can_start(mob/user, mob/living/carbon/patient, obj/limb/patient_limb, obj/item/tool)
 	return patient_limb.status & LIMB_BROKEN

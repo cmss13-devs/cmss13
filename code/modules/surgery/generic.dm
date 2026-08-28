@@ -480,18 +480,6 @@
 
 //------------------------------------
 
-/datum/surgery/open_encased/groin
-	name = "Move Organs Away"
-	priority = SURGERY_PRIORITY_LOW
-	possible_locs = list("groin")
-	required_surgery_skill = SKILL_SURGERY_TRAINED
-	steps = list(
-		/datum/surgery_step/open_encased_step/groin,
-		/datum/surgery_step/clamp_bleeders_step,
-		/datum/surgery_step/mend_encased,
-	)
-	pain_reduction_required = PAIN_REDUCTION_HEAVY
-
 //------------------------------------
 
 /datum/surgery_step/saw_encased
@@ -646,8 +634,19 @@
 	log_interact(user, target, "[key_name(user)] failed to open [key_name(target)]'s [surgery.affected_limb.encased].")
 
 //------------------------------------
+/datum/surgery/open_encased/groin
+	name = "Move Organs Away"
+	priority = SURGERY_PRIORITY_LOW
+	possible_locs = list("groin")
+	required_surgery_skill = SKILL_SURGERY_TRAINED
+	steps = list(
+		/datum/surgery_step/open_encased_step/groin,
+		/datum/surgery_step/clamp_bleeders_step,
+	)
+	pain_reduction_required = PAIN_REDUCTION_HEAVY
 
-//Unique to pelvis bone repair surgery. Move organs out of the way to display the pelvis.
+//Unique to pelvis bone repair surgery. Move organs out of the way to display the pelvis. This step can be skipped, and ends the surgery when completed. Before pelvic repair surgery, it can be skipped to abort the operation if you don't want to repair the pelvis right this second.
+//It can also be skipped to finish laying the organs back on top of the pelvis, or completed to abort the operation.
 /datum/surgery_step/open_encased_step/groin
 	name = "Move Organs Away"
 	desc = "move organs away from the pelvis"
@@ -657,7 +656,10 @@
 	success_sound = 'sound/surgery/retractor2.ogg'
 	failure_sound = 'sound/surgery/organ1.ogg'
 
-/datum/surgery/open_encased_step/can_start(mob/user, mob/living/carbon/human/patient, obj/limb/patient_limb, obj/item/tool)
+/datum/surgery_step/open_encased_step/groin/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
+	return TRUE
+
+/datum/surgery/open_encased_step/groin/can_start(mob/user, mob/living/carbon/human/patient, obj/limb/patient_limb, obj/item/tool)
 	return (patient_limb.status & LIMB_BROKEN)
 
 /datum/surgery_step/open_encased_step/groin/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -668,24 +670,24 @@
 		internals_type = "internal organs"
 
 	user.affected_message(target,
-		SPAN_NOTICE("You begin to gently move [target]'s [internals_type] away from \his pelvic bones with [tool]."),
-		SPAN_NOTICE("[user] begins to gently move your [internals_type] away from your pelvic bones with [tool]."),
-		SPAN_NOTICE("[user] begins to gently move [target]'s [internals_type] away from \his pelvic bones open with [tool]."))
+		SPAN_NOTICE("You begin to gently move [target]'s [internals_type] away from \his [surgery.affected_limb.cavity] with [tool]."),
+		SPAN_NOTICE("[user] begins to gently move your [internals_type] away from your [surgery.affected_limb.cavity] with [tool]."),
+		SPAN_NOTICE("[user] begins to gently move [target]'s [internals_type] away from \his [surgery.affected_limb.cavity] open with [tool]."))
 
 	target.custom_pain("The pressure of your [internals_type] moving around in your lower abdomen is excruciating!", 1)
 	log_interact(user, target, "[key_name(user)] began moving organs in [key_name(target)]'s [surgery.affected_limb.cavity], possibly beginning [surgery].")
 
 /datum/surgery_step/open_encased_step/groin/success(mob/user, mob/living/carbon/target, internals_type, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_NOTICE("You hold [target]'s [internals_type] away from \his pelvic bones with [tool], exposing them."),
-		SPAN_NOTICE("[user] holds your [internals_type] away from pelvic bones with [tool], exposing them."),
-		SPAN_NOTICE("[user] holds [target]'s [internals_type] away from \his pelvic bones with [tool], exposing them."))
+		SPAN_NOTICE("You hold [target]'s [internals_type] away from \his [surgery.affected_limb.cavity] with [tool], exposing \his pelvic bones."),
+		SPAN_NOTICE("[user] holds your [internals_type] away from [surgery.affected_limb.cavity] with [tool], exposing your pelvic bones."),
+		SPAN_NOTICE("[user] holds [target]'s [internals_type] away from \his [surgery.affected_limb.cavity] with [tool], exposing \his pelvic bones."))
 
 	surgery.affected_limb.limb_surgery_status &= ~INCISION_BONE_CLOSED
 	surgery.affected_limb.limb_surgery_status |= INCISION_BONE_OPENED
 	target.incision_depths[target_zone] = SURGERY_DEPTH_DEEP
 	complete(target, surgery) //This finishes the surgery.
-	log_interact(user, target, "[key_name(user)] moved organs in [key_name(target)]'s lower abdomen, ending [surgery].")
+	log_interact(user, target, "[key_name(user)] moved organs away from [key_name(target)]'s [surgery.affected_limb.cavity], ending [surgery].")
 
 /datum/surgery_step/open_encased_step/groin/failure(mob/user, mob/living/carbon/target, internals_type, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
@@ -705,7 +707,7 @@
 		if(int_organ && int_organ.damage > 0)
 			int_organ.take_damage(dam_amt,0)
 
-	log_interact(user, target, "[key_name(user)] failed to move [target]'s [internals_type] away from \his [surgery.affected_limb.cavity].")
+	log_interact(user, target, "[key_name(user)] failed to move [key_name(target)]'s [internals_type] away from the [surgery.affected_limb.cavity].")
 
 //------------------------------------
 
@@ -720,21 +722,6 @@
 		/datum/surgery_step/open_encased_step,
 		/datum/surgery_step/clamp_bleeders_step, //oop i forgor, also cuz you can't clamp bleeders here, normally, for some reason
 		/datum/surgery_step/mend_encased,
-	)
-	pain_reduction_required = PAIN_REDUCTION_HEAVY
-
-
-/datum/surgery/close_encased/groin
-	name = "Move Organs Back"
-	priority = SURGERY_PRIORITY_MINIMUM
-	possible_locs = list("groin")
-	invasiveness = list(SURGERY_DEPTH_DEEP)
-	required_surgery_skill = SKILL_SURGERY_TRAINED
-	steps = list(
-		/datum/surgery_step/close_encased_step/groin,
-		/datum/surgery_step/open_encased_step/groin,
-		/datum/surgery_step/clamp_bleeders_step,
-		/datum/surgery_step/mend_bones,
 	)
 	pain_reduction_required = PAIN_REDUCTION_HEAVY
 
@@ -794,6 +781,19 @@
 	log_interact(user, target, "[key_name(user)] failed to close [key_name(target)]'s [surgery.affected_limb.encased], aborting [surgery].")
 
 //------------------------------------
+
+/datum/surgery/close_encased/groin
+	name = "Move Organs Back"
+	priority = SURGERY_PRIORITY_MINIMUM
+	possible_locs = list("groin")
+	invasiveness = list(SURGERY_DEPTH_DEEP)
+	required_surgery_skill = SKILL_SURGERY_TRAINED
+	steps = list(
+		/datum/surgery_step/close_encased_step/groin,
+		/datum/surgery_step/open_encased_step/groin,
+		/datum/surgery_step/clamp_bleeders_step,
+	)
+	pain_reduction_required = PAIN_REDUCTION_HEAVY
 
 //Gotta move dem organs back in place before closing the patient!
 /datum/surgery_step/close_encased_step/groin

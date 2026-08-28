@@ -63,7 +63,6 @@
 	var/image/surgery_flesh_overlay
 	var/image/surgery_bone_overlay
 	var/image/surgery_bleed_overlay
-	var/image/surgery_organ_overlay
 	var/image/current_organ_image
 
 	var/splint_icon_amount = 1
@@ -112,17 +111,6 @@
 		surgery_flesh_overlay = null
 		surgery_bone_overlay = null
 		surgery_bleed_overlay = null
-		surgery_organ_overlay = null
-	else
-		surgery_flesh_overlay = image('icons/mob/humans/dam_human.dmi', "surgery_flesh_0", -SURGERY_LAYER)
-		surgery_flesh_overlay.color = owner?.species.blood_color
-
-		surgery_bone_overlay = image('icons/mob/humans/dam_human.dmi', "surgery_bone_0", -SURGERY_LAYER)
-
-		surgery_bleed_overlay = image('icons/mob/humans/dam_human.dmi', "surgery_bleed_0", -SURGERY_LAYER)
-		surgery_bleed_overlay.color = owner?.species.blood_color
-		surgery_organ_overlay = image('icons/mob/humans/dam_human.dmi', "surgery_organ_0", -SURGERY_LAYER)
-
 
 	wound_overlay = image('icons/mob/humans/dam_human.dmi', "grayscale_0", -DAMAGE_LAYER)
 	wound_overlay.color = owner?.species.blood_color
@@ -1426,6 +1414,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 
 // SET UP OVERLAYS FOR INCISIONS
 	if(limb_surgery_status & INCISION_MADE) //sets up the initial incision sprite
+		surgery_flesh_overlay = image('icons/mob/humans/dam_human.dmi', "surgery_flesh_0", -SURGERY_LAYER)
 		surgery_flesh_overlay.icon_state = "incision_[name]"
 
 		if(limb_surgery_status & INCISION_BLEEDING)
@@ -1520,7 +1509,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	min_eschar_damage = 30
 	body_part = BODY_FLAG_GROIN
 	vital = 1
-	encased = "ribcage"
+	encased = "pelvis"
 	splint_icon_amount = 1
 	bandage_icon_amount = 2
 

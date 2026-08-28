@@ -195,17 +195,37 @@
 /obj/item/weapon/gun/smartgun/attackby(obj/item/attacking_object, mob/user)
 	if(istype(attacking_object, /obj/item/smartgun_battery))
 		var/obj/item/smartgun_battery/new_cell = attacking_object
-		visible_message(SPAN_NOTICE("[user] swaps out the power cell in [src]."),
-			SPAN_NOTICE("You swap out the power cell in [src] and drop the old one."))
+		if(battery)
+			visible_message(SPAN_NOTICE("[user] swaps out the power cell in [src]."),
+				SPAN_NOTICE("You swap out the power cell in [src] and drop the old one."))
+			battery.update_icon()
+			battery.forceMove(get_turf(user))
+		else
+			visible_message(SPAN_NOTICE("[user] installs a power cell in [src]."),
+				SPAN_NOTICE("You install a power cell in [src]."))
 		to_chat(user, SPAN_NOTICE("The new cell contains: [new_cell.power_cell.charge] power."))
-		battery.update_icon()
-		battery.forceMove(get_turf(user))
 		battery = new_cell
 		user.drop_inv_item_to_loc(new_cell, src)
 		playsound(src, 'sound/machines/click.ogg', 25, 1)
 		return
 
 	return ..()
+
+/obj/item/weapon/gun/smartgun/squad/attackby(obj/item/attacking_object, mob/user)
+	if(!HAS_TRAIT(attacking_object, TRAIT_TOOL_SCREWDRIVER))
+		return ..()
+	if(!battery)
+		balloon_alert(user, "no battery installed")
+		return
+
+	var/obj/item/smartgun_battery/removed_cell = battery
+	battery = null
+	removed_cell.update_icon()
+	removed_cell.forceMove(get_turf(user))
+	user.put_in_hands(removed_cell)
+	visible_message(SPAN_NOTICE("[user] unscrews and removes the power cell from [src]."),
+		SPAN_NOTICE("You unscrew and remove the power cell from [src]."))
+	playsound(src, 'sound/items/Screwdriver.ogg', 25, TRUE)
 
 /obj/item/weapon/gun/smartgun/replace_magazine(mob/user, obj/item/ammo_magazine/magazine)
 	if(!cover_open && has_cover)
@@ -445,6 +465,12 @@
 			return ..()
 		if(drain_battery())
 			return ..()
+
+/obj/item/weapon/gun/smartgun/squad/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
+	if(!battery)
+		balloon_alert(user, "battery required")
+		return
+	return ..()
 
 /obj/item/weapon/gun/smartgun/proc/drain_battery(override_drain)
 	var/shot_drain = 111

@@ -1,0 +1,4 @@
+author: "Armsdealer9876"
+delete-after: True
+changes:
+  - bugfix: "Poppy Pretzel recipe now uses poppies instead of seeds"

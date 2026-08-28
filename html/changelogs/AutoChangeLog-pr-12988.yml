@@ -1,0 +1,4 @@
+author: "zzzmike"
+delete-after: True
+changes:
+  - qol: "Makes Cryo-marine-not-taken notice clearer"

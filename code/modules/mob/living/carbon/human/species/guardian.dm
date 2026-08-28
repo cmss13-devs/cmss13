@@ -36,4 +36,4 @@
 
 	for(var/hud_to_add in huds_to_add)
 		var/datum/mob_hud/hud = GLOB.huds[hud_to_add]
-		hud.add_hud_to(src, src)
+		hud.add_hud_to(human, human)

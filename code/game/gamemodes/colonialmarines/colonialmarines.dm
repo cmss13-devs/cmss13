@@ -14,8 +14,8 @@
 #define GROUNDSIDE_XENO_MULTIPLIER 1.0
 
 /datum/game_mode/colonialmarines
-	name = "Distress Signal"
-	config_tag = "Distress Signal"
+	name = GAMEMODE_DISTRESS_SIGNAL
+	config_tag = GAMEMODE_DISTRESS_SIGNAL
 	required_players = 1 //Need at least one player, but really we need 2.
 	xeno_required_num = 1 //Need at least one xeno.
 	monkey_amount = 5
@@ -484,7 +484,7 @@
 		for(var/obj/structure/machinery/medical_pod/autodoc/target in GLOB.machines)
 			if(is_mainship_level(target.z))
 				target.skilllock = SKILL_SURGERY_DEFAULT // lowers skill-lock to 0
-		ai_silent_announcement("WARNING: Cryopod release cycle DELAYED for MEDICAL PERSONNEL. Releasing Emergency Override Disks for AUTODOC Systems.", ".G", TRUE)
+		ai_silent_announcement("WARNING: Cryopod release cycle DELAYED for MEDICAL PERSONNEL. Releasing Emergency Override Disks for AUTODOC Systems.", ".G")
 		return log_admin("No Shipside Doctor found = Autodoc Upgrade Supplies ordered and AutoDoc skill locks released.")
 
 /datum/game_mode/colonialmarines/proc/ares_conclude()
@@ -684,6 +684,10 @@
 	if(SShijack?.sd_detonated)
 		round_finished = MODE_INFESTATION_DRAW_DEATH // Self destruction.
 		return
+	if(SShijack?.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH && !MODE_HAS_MODIFIER(/datum/gamemode_modifier/continue_on_ground_crash))
+		if(SShijack.crashed)
+			round_finished = MODE_INFESTATION_X_MAJOR // Ship crashed into ground and modifier doesn't disable this
+		return
 
 	var/list/living_player_list = count_humans_and_xenos(get_affected_zlevels())
 	var/num_humans = living_player_list[1]
@@ -825,9 +829,7 @@
 		else
 			end_icon = "draw"
 			musical_track = 'sound/theme/neutral_hopeful2.ogg'
-	var/sound/theme = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
-	theme.status = SOUND_STREAM
-	sound_to(world, theme)
+	send_end_round_music(musical_track)
 	if(GLOB.round_statistics)
 		GLOB.round_statistics.game_mode = name
 		GLOB.round_statistics.round_length = world.time

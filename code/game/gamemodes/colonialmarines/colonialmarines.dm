@@ -231,7 +231,7 @@
 
 	for(var/mob/living/carbon/human/human in survivors)
 		if(prob(30))
-			human.become_cultist
+			human.become_cultist()
 
 
 

@@ -492,3 +492,21 @@
 2026-08-27:
   Puckaboo2:
   - bugfix: Burn overlays now apply to mobs again.
+2026-08-28:
+  Armsdealer9876:
+  - bugfix: Poppy Pretzel recipe now uses poppies instead of seeds
+  JHINgle4ce:
+  - bugfix: fixes valkyrae fake use of retrieve
+  MistChristmas:
+  - bugfix: Bullets affected by reflective walls keeping their boosted damage.
+  - bugfix: Limits the amount of mobs that can stop reflective walls reflecting to
+      mob/living/carbon derivatives
+  Orchidfox:
+  - balance: Sentinel max neuro oxyloss now scales with neuro stacks
+  - balance: Sentinel maximum oxyloss lowered to 40
+  aquariofury:
+  - code_imp: moved rolling pin and spoon out of the contraband list
+  oceany-a11y:
+  - qol: Adds marine snow boot to the synth loadouts.
+  zzzmike:
+  - qol: Makes Cryo-marine-not-taken notice clearer

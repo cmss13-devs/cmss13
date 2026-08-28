@@ -1,5 +1,0 @@
-author: "MistChristmas"
-delete-after: True
-changes:
-  - bugfix: "Bullets affected by reflective walls keeping their boosted damage."
-  - bugfix: "Limits the amount of mobs that can stop reflective walls reflecting to mob/living/carbon derivatives"

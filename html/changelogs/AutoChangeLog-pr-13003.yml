@@ -1,5 +1,0 @@
-author: "Orchidfox"
-delete-after: True
-changes:
-  - balance: "Sentinel max neuro oxyloss now scales with neuro stacks"
-  - balance: "Sentinel maximum oxyloss lowered to 40"

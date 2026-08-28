@@ -750,6 +750,9 @@
 /obj/item/storage/pill_bottle/attackby(obj/item/inhand, mob/user)
 	// If this is a sharp object, begin tearing the lid off
 	if(inhand.sharp == IS_SHARP_ITEM_ACCURATE)
+		if(src != user.r_hand && src != user.l_hand)
+			to_chat(user, SPAN_WARNING("[src] must be in your hand to do that."))
+
 		if(broken)
 			to_chat(user, SPAN_WARNING("[src] has already been broken open!"))
 			return

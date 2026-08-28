@@ -104,18 +104,18 @@
 	. = ..()
 	deactivate()
 
-/obj/item/storage/hugger_box/empty(mob/user, turf/T)
+/obj/item/storage/hugger_box/empty(mob/user, turf/turf)
 	return
 
 /obj/item/storage/hugger_box/open(mob/user)
 	. = ..()
 	leap(user)
 
-/obj/item/storage/hugger_box/Crossed(atom/A)
+/obj/item/storage/hugger_box/Crossed(atom/atom)
 	. = ..()
 	if(!active)
 		return
-	leap(A)
+	leap(atom)
 
 /obj/item/storage/hugger_box/update_icon()
 	. = ..()
@@ -126,13 +126,13 @@
 			overlays += image(icon, lid_icon_state)
 		return
 
-/obj/item/storage/hugger_box/proc/leap(atom/A)
-	if(!ishuman(A))
+/obj/item/storage/hugger_box/proc/leap(atom/atom)
+	if(!ishuman(atom))
 		return
 	for(var/obj/item/clothing/mask/facehugger/facehugger in contents)
 		if(!facehugger)
 			return
-		var/mob/living/carbon/human/human = A
+		var/mob/living/carbon/human/human = atom
 		if(facehugger.attach(human))
 			deactivate()
 			update_icon()

@@ -19,7 +19,7 @@
 		spawn_gibs()
 		return
 
-	undefibbable = TRUE
+	set_undefibbable()
 
 	..()
 

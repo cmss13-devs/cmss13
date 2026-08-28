@@ -401,9 +401,7 @@
 				O = victim_human.internal_organs_by_name[i]
 				victim_human.internal_organs_by_name -= i
 				victim_human.internal_organs -= O
-			if(!victim_human.undefibbable)
-				victim_human.undefibbable = TRUE
-				SEND_SIGNAL(victim_human, COMSIG_HUMAN_SET_UNDEFIBBABLE)
+			victim_human.set_undefibbable()
 		victim.chestburst = 2
 		victim.update_burst()
 		victim.death(cause) // Certain species were still surviving bursting (predators), DEFINITELY kill them this time.

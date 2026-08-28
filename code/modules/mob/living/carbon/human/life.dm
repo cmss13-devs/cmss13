@@ -65,8 +65,7 @@
 				handle_necro_chemicals_in_body(delta_time) //Specifically for chemicals that still work while dead.
 				var/hardcore = HAS_TRAIT(src, TRAIT_HARDCORE) || MODE_HAS_MODIFIER(/datum/gamemode_modifier/permadeath)
 				if(life_tick > 5 && timeofdeath && (timeofdeath < 5 || hardcore || world.time - timeofdeath > revive_grace_period) && !issynth(src)) //We are dead beyond revival, or we're junk mobs spawned like the clowns on the clown shuttle
-					undefibbable = TRUE
-					SEND_SIGNAL(src, COMSIG_HUMAN_SET_UNDEFIBBABLE)
+					set_undefibbable()
 					med_hud_set_status()
 
 	else if(stat != DEAD)

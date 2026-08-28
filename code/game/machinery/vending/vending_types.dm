@@ -607,13 +607,13 @@
 		/obj/item/reagent_container/food/condiment/peppermill = 4,
 		/obj/item/reagent_container/food/condiment/enzyme = 1,
 		/obj/item/reagent_container/food/condiment = 8,
-		)
-	contraband = list(
 		/obj/item/tool/kitchen/utensil/spoon = 2,
-		/obj/item/tool/kitchen/utensil/knife = 2,
 		/obj/item/tool/kitchen/rollingpin = 2,
+	)
+	contraband = list(
+		/obj/item/tool/kitchen/utensil/knife = 2,
 		/obj/item/tool/kitchen/knife/butcher = 2,
-		)
+	)
 
 /obj/structure/machinery/vending/dinnerware/prison
 	products = list(

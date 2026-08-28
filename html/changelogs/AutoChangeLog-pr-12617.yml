@@ -1,5 +1,0 @@
-author: "Venuska1117"
-delete-after: True
-changes:
-  - balance: "Praetorian acid grenade got increased throwing speed and launch_type changed to \"HIGH_LAUNCH\", allowing it to throw over more obstacles such as railings or closets, but in exchange \"explosion\" time is increased from 1s to 1.25s"
-  - bugfix: "Fixed cades that got unwired not getting back their pass_flags."

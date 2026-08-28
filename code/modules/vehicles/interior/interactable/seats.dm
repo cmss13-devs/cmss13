@@ -343,33 +343,45 @@
 	init_pixel_y = pixel_y
 	init_pixel_x = pixel_x
 
-/obj/structure/bed/chair/vehicle/do_buckle(mob/living/target, mob/user)
-	. = ..()
-	if(!shimmy)
-		return
-	density = TRUE
-	if(target.density)
-		target.density = FALSE
-	var/approachness
+/obj/structure/bed/chair/vehicle/update_shimmy_data(obj/structure/bed/chair/neighbor = null)
+	if(shimmy_data == null)
+		return	//this chair doesnt shimmy
+	var/approachness = NORTH|SOUTH|EAST|WEST
+	var/internalness = NORTH|SOUTH|EAST|WEST
+	var/offset = 14
+	if(neighbor && neighbor.buckled_mob)
+		internalness &= ~turn(dir, 180)	//cant walk into filled seats
+		approachness &= ~turn(dir, 180)
+	approachness &= ~dir
+	shimmy_data = list(-offset, -offset, -offset, -offset, approachness, internalness)
+
 	switch(dir)
 		if(NORTH)
-			approachness = EAST|WEST|SOUTH
-		if(SOUTH)
-			approachness = EAST|WEST|NORTH
+			shimmy_data[3] = offset
+			shimmy_data[4] = offset
 		if(EAST)
-			approachness = WEST|NORTH|SOUTH
+			shimmy_data[1] = offset
+			shimmy_data[2] = offset
+			shimmy_data[3] = offset
+			shimmy_data[4] = offset
 		if(WEST)
-			approachness = EAST|NORTH|SOUTH
-	var/easterly_value = dir == EAST ? -14 : 14
-	var/northerly_value = dir == NORTH ? -14 : 14
-	var/list/offsets = list(						//what a headache, broken for E/W facing chairs.
-		pixel_x >= 0 ? -1*easterly_value : easterly_value,
-		pixel_x >= 0 ? -1*easterly_value : easterly_value,
-		pixel_y <= 14 ? -1*northerly_value : northerly_value,
-		pixel_y <= 14 ? -1*northerly_value : northerly_value,
-	)
-	AddComponent(/datum/component/shimmy_around, north_offset = offsets[1],	south_offset = offsets[2], east_offset = offsets[3], west_offset = offsets[4], extra_delay = 0.3 SECONDS, approach_dirs = approachness)
+			shimmy_data[3] = offset
+			shimmy_data[4] = offset
 
+	if(dir == NORTH || dir == SOUTH)
+		if(pixel_x < 0)
+			shimmy_data[1] = offset
+			shimmy_data[2] = offset
+		else
+			shimmy_data[1] = -offset
+			shimmy_data[2] = -offset
+	else // EAST || WEST
+		if(pixel_y >= 16)
+			shimmy_data[3] = -offset
+			shimmy_data[4] = -offset
+		else
+			shimmy_data[3] = offset
+			shimmy_data[4] = offset
 
 /obj/structure/bed/chair/vehicle/proc/setup_buckle_offsets()
 	if(pixel_x != 0)
@@ -387,6 +399,7 @@
 			layer = BELOW_MOB_LAYER
 	if(buckled_mob)
 		buckled_mob.setDir(dir)
+	update_shimmy_data()
 
 //------BUCKLING AND UNBUCKLING
 //trying to buckle a mob
@@ -421,21 +434,6 @@
 		if(buckle_offset_y != 0)
 			M.pixel_y = mob_old_y
 			mob_old_y = 0
-
-	for(var/obj/structure/bed/chair/vehicle/VS in get_turf(src))
-		if(VS != src)
-			//if both seats on same tile have buckled mob, we become dense, otherwise, not dense.
-			if(buckled_mob)
-				if(VS.buckled_mob)
-					REMOVE_TRAIT(buckled_mob, TRAIT_UNDENSE, DOUBLE_SEATS_TRAIT)
-					REMOVE_TRAIT(VS.buckled_mob, TRAIT_UNDENSE, DOUBLE_SEATS_TRAIT)
-				else
-					ADD_TRAIT(buckled_mob, TRAIT_UNDENSE, DOUBLE_SEATS_TRAIT)
-			else
-				if(VS.buckled_mob)
-					ADD_TRAIT(VS.buckled_mob, TRAIT_UNDENSE, DOUBLE_SEATS_TRAIT)
-				REMOVE_TRAIT(M, TRAIT_UNDENSE, DOUBLE_SEATS_TRAIT)
-			break
 
 	handle_rotation()
 

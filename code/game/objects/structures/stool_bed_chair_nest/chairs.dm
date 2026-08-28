@@ -13,7 +13,7 @@
 	var/propelled = FALSE //Check for fire-extinguisher-driven chairs
 	var/can_rotate = TRUE
 	var/stacked_size = 0
-	var/shimmy = TRUE
+	var/list/shimmy_data = list()
 
 /obj/structure/bed/chair/Initialize()
 	. = ..()
@@ -33,6 +33,7 @@
 		layer = non_north_layer
 	if(buckled_mob)
 		buckled_mob.setDir(dir)
+	update_shimmy_data()
 
 /obj/structure/bed/chair/MouseDrop(atom/over)
 	if(!foldabletype)
@@ -212,7 +213,6 @@
 	set name = "Rotate Chair"
 	set category = "Object"
 	set src in oview(1)
-
 	if(CONFIG_GET(flag/ghost_interaction))
 		src.setDir(turn(src.dir, 90))
 		handle_rotation()
@@ -234,25 +234,86 @@
 
 /obj/structure/bed/chair/do_buckle(mob/living/target, mob/user)
 	. = ..()
-	if(!shimmy)
+	if(shimmy_data == null)
 		return
+	for(var/obj/found_obj in get_turf(src))
+		if(found_obj == src)
+			continue
+		if(found_obj.buckled_mob && ispath(found_obj.type, /obj/structure/bed/chair))
+			var/obj/structure/bed/chair/found_chair = found_obj
+			found_chair.update_shimmy_data(src)	//we need to update the shimmy handler chair to block walking into this buckled chair
+			found_chair.AddComponent(/datum/component/shimmy_around, approach_dirs = found_chair.shimmy_data[5], internal_dirs = found_chair.shimmy_data[6])
+			if(target.density)
+				target.density = FALSE
+			return	//shimmying is already handled, we dont want to offset shimmiers twice!
 	density = TRUE
 	if(target.density)
 		target.density = FALSE
+	AddComponent(/datum/component/shimmy_around, \
+		north_offset = shimmy_data[1], \
+		south_offset = shimmy_data[2], \
+		east_offset = shimmy_data[3], \
+		west_offset = shimmy_data[4],\
+		extra_delay = 0.5 SECONDS, \
+		approach_dirs = shimmy_data[5],\
+		internal_dirs = shimmy_data[6])
+
+/obj/structure/bed/chair/proc/update_shimmy_data(obj/structure/bed/chair/neighbor = null)
+	if(shimmy_data == null)
+		return	//this chair doesnt shimmy
 	var/approachness
 	switch(dir)
 		if(NORTH, SOUTH)
 			approachness = EAST | WEST
 		if(EAST, WEST)
 			approachness = NORTH | SOUTH
-	AddComponent(/datum/component/shimmy_around, north_offset = -14, south_offset = -14, east_offset = -14, west_offset = -14, extra_delay = 0.5 SECONDS, approach_dirs = approachness)
+	var/internalness = NORTH|SOUTH|EAST|WEST
+	if(neighbor && neighbor.buckled_mob)
+		internalness &= ~turn(dir, 180)	//cant walk into filled seats
+		approachness &= !turn(dir, 180)
+	var/offset = 14
+	shimmy_data = list(-offset, -offset, -offset, -offset, approachness, internalness)
+	switch(dir)
+		if(NORTH)
+			shimmy_data[3] = offset
+			shimmy_data[4] = offset
+		if(EAST)
+			shimmy_data[1] = offset
+			shimmy_data[2] = offset
+			shimmy_data[3] = offset
+			shimmy_data[4] = offset
+		if(WEST)
+			shimmy_data[3] = offset
+			shimmy_data[4] = offset
 
 /obj/structure/bed/chair/unbuckle()
+	if(buckled_mob)
+		buckled_mob.update_density()
 	. = ..()
 	density = FALSE
 	var/datum/component/shimmy_around/shimster = GetComponent(/datum/component/shimmy_around)
 	if(shimster)
 		qdel(shimster)
+	for(var/obj/found_obj in get_turf(src))
+		if(found_obj == src)
+			continue
+		if(found_obj.buckled_mob && ispath(found_obj.type, /obj/structure/bed/chair))
+			var/obj/structure/bed/chair/found_chair = found_obj
+			var/datum/component/shimmy_around/shimmier = found_chair.GetComponent(/datum/component/shimmy_around)
+			found_chair.update_shimmy_data(src)	//we need to update the shimmy handler chair to block walking into this buckled chair
+			if(shimmier)
+				found_chair.AddComponent(/datum/component/shimmy_around, approach_dirs = found_chair.shimmy_data[5], internal_dirs = found_chair.shimmy_data[6])
+			else
+				found_chair.density = TRUE
+				found_chair.AddComponent(/datum/component/shimmy_around, \
+					north_offset = found_chair.shimmy_data[1], \
+					south_offset = found_chair.shimmy_data[2], \
+					east_offset = found_chair.shimmy_data[3], \
+					west_offset = found_chair.shimmy_data[4],\
+					extra_delay = 0.5 SECONDS, \
+					approach_dirs = found_chair.shimmy_data[5],\
+					internal_dirs = found_chair.shimmy_data[6])
+
 
 //Chair types
 /obj/structure/bed/chair/bolted
@@ -340,7 +401,7 @@
 	anchored = FALSE
 	drag_delay = 1 //Pulling something on wheels is easy
 	foldabletype = null
-	shimmy = FALSE
+	shimmy_data = null
 
 /obj/structure/bed/chair/office/Initialize(mapload, ...)
 	. = ..()

@@ -6,12 +6,15 @@
  * NOTE: If any part of the Collided proc chain is overriden from obj/structure you must ensure the signal is sent
  */
 /datum/component/shimmy_around
+	dupe_mode = COMPONENT_DUPE_UNIQUE_PASSARGS
 	/// The structure that we are bound to
 	var/obj/structure/parent_structure
 	/// Approachable directions bitfield
 	var/approach_dirs = NORTH|SOUTH|EAST|WEST
 	/// Approach directions bitfield that override the mob's layer to be above our structure's
 	var/approach_dirs_layer_override = NORTH|SOUTH|EAST|WEST
+	/// internal movement allowed dirs bitfield
+	var/internal_dirs = NORTH|SOUTH|EAST|WEST
 	/// The pixel_x offset when approaching and facing NORTH
 	var/north_offset = 12
 	/// The pixel_x offset when approaching and facing SOUTH
@@ -28,6 +31,7 @@
 /datum/component/shimmy_around/Initialize(\
 	approach_dirs = NORTH|SOUTH|EAST|WEST,\
 	approach_dirs_layer_override = NORTH|SOUTH|EAST|WEST,\
+	internal_dirs =  NORTH|SOUTH|EAST|WEST,\
 	north_offset = 12,\
 	south_offset = -12,\
 	east_offset = -5,\
@@ -41,12 +45,36 @@
 
 	src.approach_dirs = approach_dirs
 	src.approach_dirs_layer_override = approach_dirs_layer_override
+	src.internal_dirs = internal_dirs
 	src.north_offset = north_offset
 	src.south_offset = south_offset
 	src.east_offset = east_offset
 	src.west_offset = west_offset
 	src.additional_offset = additional_offset
 	src.extra_delay = extra_delay
+
+/datum/component/shimmy_around/InheritComponent(datum/component/C, i_am_original,
+	approach_dirs, approach_dirs_layer_override, internal_dirs, north_offset,\
+	south_offset, east_offset, west_offset,	additional_offset, extra_delay)
+	. = ..()
+	if(approach_dirs && src.approach_dirs != approach_dirs)
+		src.approach_dirs =  approach_dirs
+	if(approach_dirs_layer_override && approach_dirs_layer_override != src.approach_dirs_layer_override)
+		src.approach_dirs_layer_override = approach_dirs_layer_override
+	if(internal_dirs && internal_dirs != src.internal_dirs)
+		src.internal_dirs = internal_dirs
+	if(north_offset && north_offset != src.north_offset)
+		src.north_offset = north_offset
+	if(south_offset && south_offset != src.south_offset)
+		src.south_offset = south_offset
+	if(east_offset && east_offset != src.east_offset)
+		src.east_offset = east_offset
+	if(west_offset &&  west_offset != src.west_offset)
+		src.west_offset = west_offset
+	if(additional_offset &&  additional_offset != src.additional_offset)
+		src.additional_offset = additional_offset
+	if(extra_delay && extra_delay != src.extra_delay)
+		src.extra_delay = extra_delay
 
 /datum/component/shimmy_around/Destroy(force, silent)
 	. = ..()
@@ -237,24 +265,28 @@
 	if(offset_x)
 		if(offset_x > 0)
 			if(new_direction & WEST)
-				var/extra_offset = additional_offset ? parent_structure.pixel_y : 0
-				animate(mob, time = animate_time, pixel_x = initial(mob.pixel_x), pixel_y = mob.pixel_y + west_offset + extra_offset)
+				if(internal_dirs & WEST)
+					var/extra_offset = additional_offset ? parent_structure.pixel_y : 0
+					animate(mob, time = animate_time, pixel_x = initial(mob.pixel_x), pixel_y = mob.pixel_y + west_offset + extra_offset)
 				. = COMPONENT_CANCEL_MOVE
 		else
 			if(new_direction & EAST)
-				var/extra_offset = additional_offset ? parent_structure.pixel_y : 0
-				animate(mob, time = animate_time, pixel_x = initial(mob.pixel_x), pixel_y = mob.pixel_y + east_offset + extra_offset)
+				if(internal_dirs & EAST)
+					var/extra_offset = additional_offset ? parent_structure.pixel_y : 0
+					animate(mob, time = animate_time, pixel_x = initial(mob.pixel_x), pixel_y = mob.pixel_y + east_offset + extra_offset)
 				. = COMPONENT_CANCEL_MOVE
 	else if(offset_y)
 		if(offset_y > 0)
 			if(new_direction & SOUTH)
-				var/extra_offset = additional_offset ? parent_structure.pixel_x : 0
-				animate(mob, time = animate_time, pixel_y = initial(mob.pixel_y), pixel_x = mob.pixel_x + south_offset + extra_offset)
+				if(internal_dirs & SOUTH)
+					var/extra_offset = additional_offset ? parent_structure.pixel_x : 0
+					animate(mob, time = animate_time, pixel_y = initial(mob.pixel_y), pixel_x = mob.pixel_x + south_offset + extra_offset)
 				. = COMPONENT_CANCEL_MOVE
 		else
 			if(new_direction & NORTH)
-				var/extra_offset = additional_offset ? parent_structure.pixel_x : 0
-				animate(mob, time = animate_time, pixel_y = initial(mob.pixel_y), pixel_x = mob.pixel_x + north_offset + extra_offset)
+				if(internal_dirs & NORTH)
+					var/extra_offset = additional_offset ? parent_structure.pixel_x : 0
+					animate(mob, time = animate_time, pixel_y = initial(mob.pixel_y), pixel_x = mob.pixel_x + north_offset + extra_offset)
 				. = COMPONENT_CANCEL_MOVE
 
 	// If we are swinging them around, so set dir, delay, and layer as needed

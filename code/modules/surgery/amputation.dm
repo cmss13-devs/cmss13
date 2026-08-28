@@ -134,8 +134,6 @@
 	if(target.stat == CONSCIOUS)
 		to_chat(target, SPAN_NOTICE("You can move your [surgery.affected_limb.display_name] again."))
 
-	target.remove_surgery_flags()
-	target.update_surgery_overlays()
 	complete(target, surgery)
 	log_interact(user, target, "[key_name(user)] successfully aborted an amputation on [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], ending [surgery].")
 
@@ -197,7 +195,7 @@
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SURFACE
 	log_interact(user, target, "[key_name(user)] successfully severed [key_name(target)]'s [surgery.affected_limb.display_name] with [tool].")
 
-/datum/surgery_step/saw_off_limb/failure(mob/living/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/saw_off_limb/failure(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 
 	if(tool_type in cannot_hack) //Some tools are not cool enough to instantly hack off a limb.
 		user.affected_message(target,
@@ -213,6 +211,7 @@
 				target.emote("scream")
 		surgery.affected_limb.fracture(100)
 
+		target.update_surgery_overlays()
 		target.apply_damage(20, BRUTE, surgery.affected_limb)
 		log_interact(user, target, "[key_name(user)] failed to cut [key_name(target)]'s [surgery.affected_limb.display_name] off with [tool].")
 		return FALSE
@@ -223,6 +222,8 @@
 			SPAN_WARNING("[user] hacks your [surgery.affected_limb.display_name] off!"),
 			SPAN_WARNING("[user] hacks [target]'s [surgery.affected_limb.display_name] off!"))
 
+		target.remove_surgery_flags()
+		target.update_surgery_overlays()
 		user.animation_attack_on(target)
 		user.count_niche_stat(STATISTICS_NICHE_SURGERY_AMPUTATE)
 		surgery.affected_limb.droplimb() //This will sever the limb messily and reset incision depth. The stump cleanup surgery will have to be done to properly amputate, but doing this saved two seconds. Worth it?

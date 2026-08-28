@@ -6,6 +6,7 @@
 #define BLOOD_ALL (BLOOD_BODY|BLOOD_HANDS|BLOOD_FEET)
 
 #define BLOOD_COLOR_HUMAN "#990000"
+#define BLOOD_COLOR_HUMAN_ARTERIAL "#CC0000" //unique define for surgery overlays
 #define BLOOD_COLOR_HUMAN_DRY "#500000"
 #define BLOOD_COLOR_SYNTHETIC "#EEEEEE"
 
@@ -18,7 +19,3 @@
 #define BLOOD_COLOR_YAUTJA_DARK "#67934a"
 
 #define BLOOD_COLOR_ZOMBIE "#210000"
-
-//flesh color for surgery overlays
-#define FLESH_COLOR_HUMAN "#CC5555"
-#define FLESH_COLOR_SYNTHETIC "#CCB399"

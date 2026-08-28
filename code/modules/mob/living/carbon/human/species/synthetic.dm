@@ -35,7 +35,6 @@
 	flags = IS_WHITELISTED|NO_BREATHE|NO_CLONE_LOSS|NO_BLOOD|NO_POISON|IS_SYNTHETIC|NO_CHEM_METABOLIZATION|NO_NEURO|HAS_UNDERWEAR|HAS_SKIN_COLOR
 
 	blood_color = BLOOD_COLOR_SYNTHETIC
-	flesh_color = FLESH_COLOR_SYNTHETIC
 
 	//Currently, this is only used for flavor in surgery messages.
 	flesh_type = "synthetic flesh"
@@ -106,4 +105,4 @@
 	bloodsplatter_type = /obj/effect/bloodsplatter/human
 
 	blood_color = BLOOD_COLOR_HUMAN
-	flesh_color = FLESH_COLOR_HUMAN
+	flesh_color = "#CCB399"

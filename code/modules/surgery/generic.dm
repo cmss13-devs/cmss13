@@ -93,9 +93,15 @@
 			surgery.status += 3 // synth skin doesn't cause bleeders
 		surgery.affected_limb.limb_surgery_status |= (INCISION_MADE | INCISION_CLAMPED)
 
-	var/datum/wound/internal_bleeding/int_bleeding
-	if(surgery.affected_limb.bleeding_effects_list & int_bleeding == TRUE)
-		surgery.affected_limb.limb_surgery_status |= INCISION_INT_BLEEDING
+	var/internal_bleeding_check = FALSE
+	for(var/datum/effects/bleeding/internal/ib in surgery.affected_limb.bleeding_effects_list)
+		ib = TRUE
+		internal_bleeding_check = TRUE
+		break
+
+		if(ib == TRUE && internal_bleeding_check == TRUE)
+			surgery.affected_limb.limb_surgery_status |= INCISION_INT_BLEEDING
+
 	target.update_surgery_overlays()
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SHALLOW //Descriptionwise this is done by the retractor, but putting it here means people can examine to see if an unfinished surgery has been done.
 	user.add_blood(target.get_blood_color(), BLOOD_HANDS)
@@ -220,9 +226,9 @@
 
 /datum/surgery_step/clamp_bleeders_step/failure(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_WARNING("Your hand slips and tears several blood vessels in [target]'s [surgery.affected_limb.display_name], causing internal bleeding! Blood gushes everywhere!"),
-		SPAN_WARNING("[user]'s hand slips and tears several blood vessels in your [surgery.affected_limb.display_name], causing internal bleeding! Blood gushes everywhere!"),
-		SPAN_WARNING("[user]'s hand slips and tears several blood vessels in [target]'s [surgery.affected_limb.display_name], causing internal bleeding! Blood gushes everywhere!"))
+		SPAN_WARNING("Your hand slips and tears several blood vessels in [target]'s [surgery.affected_limb.display_name], causing internal bleeding! Blood gushes all over and fills the surgical site!"),
+		SPAN_WARNING("[user]'s hand slips and tears several blood vessels in your [surgery.affected_limb.display_name], causing internal bleeding! Blood gushes all over and fills the surgical site!"),
+		SPAN_WARNING("[user]'s hand slips and tears several blood vessels in [target]'s [surgery.affected_limb.display_name], causing internal bleeding! Blood gushes all over and fills the surgical site!"))
 
 	target.custom_pain("You feel something rip in your [surgery.affected_limb.display_name]!", 1)
 	if(target.stat == CONSCIOUS)
@@ -292,33 +298,35 @@
 
 	switch(target_zone)
 		if("chest")
-			target.overlays += image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
 			user.affected_message(target,
 				SPAN_NOTICE("You hold the incision on [target]'s [surgery.affected_limb.display_name] open with [tool], exposing [h_his] ribs."),
 				SPAN_NOTICE("[user] holds the incision on your [surgery.affected_limb.display_name] open with [tool], exposing your ribs."),
 				SPAN_NOTICE("[user] holds the incision on [target]'s [surgery.affected_limb.display_name] open with [tool], exposing [h_his] ribs."))
+			surgery.affected_limb.limb_surgery_status |= INCISION_BONE_CLOSED
 		if("head")
 			user.affected_message(target,
 				SPAN_NOTICE("You hold the incision on [target]'s head open with [tool], exposing [h_his] skull."),
 				SPAN_NOTICE("[user] holds the incision on your head open with [tool], exposing your skull."),
 				SPAN_NOTICE("[user] holds the incision on [target]'s head open with [tool], exposing [h_his] skull."))
-			target.overlays += image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
+			surgery.affected_limb.limb_surgery_status |= INCISION_BONE_CLOSED
+
 		if("groin")
 			user.affected_message(target,
 				SPAN_NOTICE("You hold the incision on [target]'s lower abdomen open with [tool], exposing [h_his] viscera."),
 				SPAN_NOTICE("[user] holds the incision on your lower abdomen open with [tool], exposing your viscera."),
 				SPAN_NOTICE("[user] holds the incision on [target]'s lower abdomen open with [tool], exposing [h_his] viscera."))
+			surgery.affected_limb.limb_surgery_status |= INCISION_BONE_CLOSED
 		else
 			user.affected_message(target,
-				SPAN_NOTICE("You hold the incision on [target]'s [surgery.affected_limb.display_name] open with [tool]."),
-				SPAN_NOTICE("[user] holds the incision on your [surgery.affected_limb.display_name] open with [tool]."),
-				SPAN_NOTICE("[user] holds the incision on [target]'s [surgery.affected_limb.display_name] open with [tool]."))
+				SPAN_NOTICE("You hold the incision on [target]'s [surgery.affected_limb.display_name] open with [tool], exposing [h_his] bones and blood vessels."),
+				SPAN_NOTICE("[user] holds the incision on your [surgery.affected_limb.display_name] open with [tool], exposing your bones and blood vessels."),
+				SPAN_NOTICE("[user] holds the incision on [target]'s [surgery.affected_limb.display_name] open with [tool], exposing [h_his] bones and blood vessels."))
 
-	surgery.affected_limb.limb_surgery_status |= (INCISION_WIDENED | INCISION_BONE_CLOSED)
+	surgery.affected_limb.limb_surgery_status |= INCISION_WIDENED
 	surgery.affected_limb.limb_surgery_status &= ~INCISION_MADE
 	target.update_surgery_overlays()
-
 	log_interact(user, target, "[key_name(user)] retracted skin in [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")
+
 /datum/surgery_step/retract_skin/failure(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	var/h_his = "their" //[tool] doesn't have a gender.
 	switch(target.gender)
@@ -331,36 +339,36 @@
 
 	switch(target_zone)
 		if("head")
-			target.overlays += image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
 			user.affected_message(target,
 				SPAN_WARNING("You tear open the incision on [target]'s head with [tool], exposing [h_his] skull!"),
 				SPAN_WARNING("[user] holds the incision on your head open with [tool], exposing your skull!"),
 				SPAN_WARNING("[user] holds the incision on [target]'s head open with [tool], exposing [h_his] skull!"))
+			surgery.affected_limb.limb_surgery_status |= INCISION_BONE_CLOSED
 
 		if("groin")
 			user.affected_message(target,
 				SPAN_WARNING("You tear open the incision on [target]'s lower abdomen with [tool], exposing [h_his] viscera!"),
 				SPAN_WARNING("[user] tears the incision on your lower abdomen open with [tool], exposing your viscera!"),
 				SPAN_WARNING("[user] tears the incision on [target]'s lower abdomen open with [tool], exposing [h_his] viscera!"))
+			surgery.affected_limb.limb_surgery_status |= INCISION_BONE_CLOSED
 
 		if("chest")
-			target.overlays += image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
 			user.affected_message(target,
 				SPAN_WARNING("You tear open the incision on [target]'s [surgery.affected_limb.display_name] with [tool], exposing [h_his] ribs!"),
 				SPAN_WARNING("[user] tears the incision on your [surgery.affected_limb.display_name] open with [tool], exposing your ribs!"),
 				SPAN_WARNING("[user] tears the incision on [target]'s [surgery.affected_limb.display_name] open with [tool], exposing [h_his] ribs!"))
-
+			surgery.affected_limb.limb_surgery_status |= INCISION_BONE_CLOSED
 		else
 			user.affected_message(target,
-				SPAN_WARNING("You tear open the incision on [target]'s [surgery.affected_limb.display_name] with [tool], exposing bleeding blood vessels!"),
-				SPAN_WARNING("[user] tears the incision on your [surgery.affected_limb.display_name] open with [tool], exposing bleeding blood vessels!"),
-				SPAN_WARNING("[user] tears the incision on [target]'s [surgery.affected_limb.display_name] open with [tool], exposing bleeding blood vessels!"))
+				SPAN_WARNING("You tear open the incision on [target]'s [surgery.affected_limb.display_name] with [tool], exposing bones and bleeding blood vessels!"),
+				SPAN_WARNING("[user] tears the incision on your [surgery.affected_limb.display_name] open with [tool], exposing bones and bleeding blood vessels!"),
+				SPAN_WARNING("[user] tears the incision on [target]'s [surgery.affected_limb.display_name] open with [tool], exposing bones and bleeding blood vessels!"))
 
 	if(target.stat == CONSCIOUS)
 		if(target.pain.reduction_pain < surgery.pain_reduction_required) //if patient is not under the proper anesthesia
 			target.emote("pain")
 
-	surgery.affected_limb.limb_surgery_status |= (INCISION_WIDENED | INCISION_BONE_CLOSED)
+	surgery.affected_limb.limb_surgery_status |= INCISION_WIDENED
 	target.update_surgery_overlays()
 	target.apply_damage(15, BRUTE, target_zone)
 	log_interact(user, target, "[key_name(user)] violently retracted skin in [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")
@@ -413,13 +421,6 @@
 		SPAN_NOTICE("You cauterize the incision on [target]'s [surgery.affected_limb.display_name]."),
 		SPAN_NOTICE("[user] cauterizes the incision on your [surgery.affected_limb.display_name]."),
 		SPAN_NOTICE("[user] cauterizes the incision on [target]'s [surgery.affected_limb.display_name]."))
-	switch(target_zone)
-		if("head")
-			target.overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
-			target.overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_open")
-		if("chest")
-			target.overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
-			target.overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_open")
 
 	target.remove_surgery_flags()
 	target.update_surgery_overlays()
@@ -451,13 +452,6 @@
 		SPAN_NOTICE("You cauterize the incision on [target]'s [surgery.affected_limb.display_name]."),
 		SPAN_NOTICE("[user] cauterizes the incision on your [surgery.affected_limb.display_name]."),
 		SPAN_NOTICE("[user] cauterizes the incision on [target]'s [surgery.affected_limb.display_name]."))
-	switch(target_zone)
-		if("head")
-			target.overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
-			target.overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_open")
-		if("chest")
-			target.overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
-			target.overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_open")
 
 	target.remove_surgery_flags()
 	target.update_surgery_overlays()
@@ -479,6 +473,20 @@
 	steps = list(
 		/datum/surgery_step/saw_encased,
 		/datum/surgery_step/open_encased_step,
+		/datum/surgery_step/clamp_bleeders_step,
+		/datum/surgery_step/mend_encased,
+	)
+	pain_reduction_required = PAIN_REDUCTION_HEAVY
+
+//------------------------------------
+
+/datum/surgery/open_encased/groin
+	name = "Move Organs Away"
+	priority = SURGERY_PRIORITY_LOW
+	possible_locs = list("groin")
+	required_surgery_skill = SKILL_SURGERY_TRAINED
+	steps = list(
+		/datum/surgery_step/open_encased_step/groin,
 		/datum/surgery_step/clamp_bleeders_step,
 		/datum/surgery_step/mend_encased,
 	)
@@ -530,7 +538,7 @@
 
 	log_interact(user, target, "[key_name(user)] cut through [key_name(target)]'s [surgery.affected_limb.encased], beginning [surgery].")
 
-/datum/surgery_step/saw_encased/failure(mob/living/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/saw_encased/failure(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(surgery.affected_limb.status & LIMB_BROKEN) //Can't shatter what is already broken.
 		var/affected_bone = surgery.affected_limb.name == "chest" ? "ribs" : "skull"
 		user.affected_message(target,
@@ -556,6 +564,7 @@
 				target.emote("scream") //MY! ARRRRRRMMMM! - Scout from Team Fortress 2
 		surgery.affected_limb.fracture(100)
 
+	target.update_surgery_overlays()
 	user.animation_attack_on(target)
 	if(tool.hitsound)
 		playsound(target.loc, tool.hitsound, 25, TRUE)
@@ -588,7 +597,7 @@
 	target.custom_pain("It feels as if your [surgery.affected_limb.display_name] is being split in two!", 1)
 	log_interact(user, target, "[key_name(user)] began opening [key_name(target)]'s [surgery.affected_limb.encased], possibly beginning [surgery].")
 
-/datum/surgery_step/open_encased_step/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/open_encased_step/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	var/brain = surgery.affected_limb.body_part == BODY_FLAG_HEAD ? TRUE : FALSE
 	if(prob(10)) //RNG break chance.
 		user.affected_message(target,
@@ -605,19 +614,15 @@
 			SPAN_NOTICE("You use [tool] to hold [target]'s [surgery.affected_limb.encased] open, exposing \his [brain ? "brain" : "vital organs"]."),
 			SPAN_NOTICE("[user] uses [tool] to hold your [surgery.affected_limb.encased] open, exposing your [brain ? "brain" : "vital organs"]."),
 			SPAN_NOTICE("[user] uses [tool] to hold [target]'s [surgery.affected_limb.encased] open, exposing \his [brain ? "brain" : "vital organs"]."))
-	switch(target_zone)
-		if("head")
-			target.overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
-			target.overlays += image('icons/mob/humans/dam_human.dmi', "skull_surgery_open")
-		if("chest")
-			target.overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
-			target.overlays += image('icons/mob/humans/dam_human.dmi', "chest_surgery_open")
 
+	surgery.affected_limb.limb_surgery_status &= ~INCISION_BONE_CLOSED
+	surgery.affected_limb.limb_surgery_status |= INCISION_BONE_OPENED
+	target.update_surgery_overlays()
 	target.incision_depths[target_zone] = SURGERY_DEPTH_DEEP
 	complete(target, surgery) //This finishes the surgery.
 	log_interact(user, target, "[key_name(user)] opened [key_name(target)]'s [surgery.affected_limb.encased], ending [surgery].")
 
-/datum/surgery_step/open_encased_step/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/open_encased_step/failure(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(surgery.affected_limb.status & LIMB_BROKEN)
 		user.affected_message(target,
 			SPAN_WARNING("Your hand slips, damaging [target]'s [surgery.affected_limb.encased] even more!"),
@@ -636,8 +641,71 @@
 				target.emote("scream") //MAN WHAT THE HELL!?
 		surgery.affected_limb.fracture(100)
 
+	target.update_surgery_overlays()
 	target.apply_damage(15, BRUTE, target_zone)
 	log_interact(user, target, "[key_name(user)] failed to open [key_name(target)]'s [surgery.affected_limb.encased].")
+
+//------------------------------------
+
+//Unique to pelvis bone repair surgery. Move organs out of the way to display the pelvis.
+/datum/surgery_step/open_encased_step/groin
+	name = "Move Organs Away"
+	desc = "move organs away from the pelvis"
+	tools = SURGERY_TOOLS_PRY_ENCASED
+	time = 2 SECONDS
+	preop_sound = 'sound/surgery/retractor1.ogg'
+	success_sound = 'sound/surgery/retractor2.ogg'
+	failure_sound = 'sound/surgery/organ1.ogg'
+
+/datum/surgery/open_encased_step/can_start(mob/user, mob/living/carbon/human/patient, obj/limb/patient_limb, obj/item/tool)
+	return (patient_limb.status & LIMB_BROKEN)
+
+/datum/surgery_step/open_encased_step/groin/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	var/internals_type
+	if(issynth(target))
+		internals_type = "hydraulic systems"
+	else
+		internals_type = "internal organs"
+
+	user.affected_message(target,
+		SPAN_NOTICE("You begin to gently move [target]'s [internals_type] away from \his pelvic bones with [tool]."),
+		SPAN_NOTICE("[user] begins to gently move your [internals_type] away from your pelvic bones with [tool]."),
+		SPAN_NOTICE("[user] begins to gently move [target]'s [internals_type] away from \his pelvic bones open with [tool]."))
+
+	target.custom_pain("The pressure of your [internals_type] moving around in your lower abdomen is excruciating!", 1)
+	log_interact(user, target, "[key_name(user)] began moving organs in [key_name(target)]'s [surgery.affected_limb.cavity], possibly beginning [surgery].")
+
+/datum/surgery_step/open_encased_step/groin/success(mob/user, mob/living/carbon/target, internals_type, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	user.affected_message(target,
+		SPAN_NOTICE("You hold [target]'s [internals_type] away from \his pelvic bones with [tool], exposing them."),
+		SPAN_NOTICE("[user] holds your [internals_type] away from pelvic bones with [tool], exposing them."),
+		SPAN_NOTICE("[user] holds [target]'s [internals_type] away from \his pelvic bones with [tool], exposing them."))
+
+	surgery.affected_limb.limb_surgery_status &= ~INCISION_BONE_CLOSED
+	surgery.affected_limb.limb_surgery_status |= INCISION_BONE_OPENED
+	target.incision_depths[target_zone] = SURGERY_DEPTH_DEEP
+	complete(target, surgery) //This finishes the surgery.
+	log_interact(user, target, "[key_name(user)] moved organs in [key_name(target)]'s lower abdomen, ending [surgery].")
+
+/datum/surgery_step/open_encased_step/groin/failure(mob/user, mob/living/carbon/target, internals_type, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	user.affected_message(target,
+		SPAN_WARNING("Your hand slips, bruising [target]'s [internals_type] and contaminating \his lower abdomen!"),
+		SPAN_WARNING("[user]'s hand slips, bruising your [internals_type] and contaminating your lower abdomen!"),
+		SPAN_WARNING("[user]'s hand slips, bruising [target]'s [internals_type] and contaminating \his lower abdomen!"))
+
+	if(target.stat == CONSCIOUS)
+		if(target.pain.reduction_pain < surgery.pain_reduction_required)
+			target.emote("pain")
+
+	var/dam_amt = 3
+	target.apply_damage(10, TOX)
+	target.apply_damage(5, BRUTE, target_zone)
+
+	for(var/datum/internal_organ/int_organ as anything in surgery.affected_limb.internal_organs)
+		if(int_organ && int_organ.damage > 0)
+			int_organ.take_damage(dam_amt,0)
+
+	log_interact(user, target, "[key_name(user)] failed to move [target]'s [internals_type] away from \his [surgery.affected_limb.cavity].")
 
 //------------------------------------
 
@@ -652,6 +720,21 @@
 		/datum/surgery_step/open_encased_step,
 		/datum/surgery_step/clamp_bleeders_step, //oop i forgor, also cuz you can't clamp bleeders here, normally, for some reason
 		/datum/surgery_step/mend_encased,
+	)
+	pain_reduction_required = PAIN_REDUCTION_HEAVY
+
+
+/datum/surgery/close_encased/groin
+	name = "Move Organs Back"
+	priority = SURGERY_PRIORITY_MINIMUM
+	possible_locs = list("groin")
+	invasiveness = list(SURGERY_DEPTH_DEEP)
+	required_surgery_skill = SKILL_SURGERY_TRAINED
+	steps = list(
+		/datum/surgery_step/close_encased_step/groin,
+		/datum/surgery_step/open_encased_step/groin,
+		/datum/surgery_step/clamp_bleeders_step,
+		/datum/surgery_step/mend_bones,
 	)
 	pain_reduction_required = PAIN_REDUCTION_HEAVY
 
@@ -675,23 +758,19 @@
 	target.custom_pain("You feel a crushing pressure in your [surgery.affected_limb.display_name]!", 1)
 	log_interact(user, target, "[key_name(user)] began closing [key_name(target)]'s [surgery.affected_limb.encased], attempting to begin [surgery].")
 
-/datum/surgery_step/close_encased_step/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/close_encased_step/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_NOTICE("You close [target]'s [surgery.affected_limb.encased]."),
 		SPAN_NOTICE("[user] closes your [surgery.affected_limb.encased]."),
 		SPAN_NOTICE("[user] closes [target]'s [surgery.affected_limb.encased]."))
-	switch(target_zone)
-		if("head")
-			target.overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_open")
-			target.overlays += image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
-		if("chest")
-			target.overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_open")
-			target.overlays += image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
 
+	surgery.affected_limb.limb_surgery_status &= ~INCISION_BONE_OPENED
+	surgery.affected_limb.limb_surgery_status |= INCISION_BONE_CLOSED
+	target.update_surgery_overlays()
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SHALLOW
 	log_interact(user, target, "[key_name(user)] closed [key_name(target)]'s [surgery.affected_limb.encased], beginning [surgery].")
 
-/datum/surgery_step/close_encased_step/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/close_encased_step/failure(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(surgery.affected_limb.status & LIMB_BROKEN)
 		user.affected_message(target,
 			SPAN_WARNING("Your hand slips, damaging [target]'s [surgery.affected_limb.encased] even more!"),
@@ -710,10 +789,70 @@
 				target.emote("scream") //MAN WHAT THE HELL!?
 		surgery.affected_limb.fracture(100)
 
+	target.update_surgery_overlays()
 	target.apply_damage(15, BRUTE, target_zone)
 	log_interact(user, target, "[key_name(user)] failed to close [key_name(target)]'s [surgery.affected_limb.encased], aborting [surgery].")
 
 //------------------------------------
+
+//Gotta move dem organs back in place before closing the patient!
+/datum/surgery_step/close_encased_step/groin
+	name = "Close Bone"
+	desc = "move the abdominopelvic organs back in place"
+	tools = SURGERY_TOOLS_PRY_ENCASED
+	time = 2 SECONDS
+	preop_sound = 'sound/surgery/retractor1.ogg'
+	success_sound = 'sound/surgery/retractor2.ogg'
+	failure_sound = 'sound/surgery/organ1.ogg'
+
+/datum/surgery_step/close_encased_step/groin/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	var/internals_type
+	if(issynth(target))
+		internals_type = "hydraulic systems"
+	else
+		internals_type = "internal organs"
+
+	user.affected_message(target,
+		SPAN_NOTICE("You begin to gently move [target]'s [internals_type] in \his [surgery.affected_limb.cavity] back into place with [tool]."),
+		SPAN_NOTICE("[user] begins to gently move your [internals_type] in your [surgery.affected_limb.cavity] back into place with [tool]."),
+		SPAN_NOTICE("[user] begins to gently move [target]'s [internals_type] in \his [surgery.affected_limb.cavity] back into place with [tool]."))
+
+	target.custom_pain("You feel a crushing pressure in your [surgery.affected_limb.display_name]!", 1)
+	log_interact(user, target, "[key_name(user)] began moving [internals_type] back into place in [key_name(target)]'s [surgery.affected_limb.cavity], attempting to begin [surgery].")
+
+/datum/surgery_step/close_encased_step/groin/success(mob/user, mob/living/carbon/human/target, internals_type, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	user.affected_message(target,
+		SPAN_NOTICE("You move [target]'s [internals_type] in \his [surgery.affected_limb.encased] back into place.."),
+		SPAN_NOTICE("[user] moves your [internals_type] in your [surgery.affected_limb.cavity] back into place."),
+		SPAN_NOTICE("[user] moves [target]'s [internals_type] in \his [surgery.affected_limb.cavity] back into place."))
+
+	surgery.affected_limb.limb_surgery_status &= ~INCISION_BONE_OPENED
+	surgery.affected_limb.limb_surgery_status |= INCISION_BONE_CLOSED
+	target.update_surgery_overlays()
+	target.incision_depths[target_zone] = SURGERY_DEPTH_SHALLOW
+	log_interact(user, target, "[key_name(user)] moved [internals_type] back in place into [key_name(target)]'s [surgery.affected_limb.cavity], beginning [surgery].")
+
+/datum/surgery_step/close_encased_step/groin/failure(mob/user, mob/living/carbon/human/target, internals_type, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	user.affected_message(target,
+		SPAN_WARNING("Your hand slips, bruising [target]'s [internals_type] and contaminating \his [surgery.affected_limb.cavity]!"),
+		SPAN_WARNING("[user]'s hand slips, bruising your [internals_type] and contaminating your [surgery.affected_limb.cavity]!"),
+		SPAN_WARNING("[user]'s hand slips, bruising [target]'s [internals_type] and contaminating \his [surgery.affected_limb.cavity]!"))
+
+	if(target.stat == CONSCIOUS)
+		if(target.pain.reduction_pain < surgery.pain_reduction_required)
+			target.emote("pain")
+
+	var/dam_amt = 3
+	target.apply_damage(10, TOX)
+	target.apply_damage(5, BRUTE, target_zone)
+
+	for(var/datum/internal_organ/int_organ as anything in surgery.affected_limb.internal_organs)
+		if(int_organ && int_organ.damage > 0)
+			int_organ.take_damage(dam_amt,0)
+
+	target.update_surgery_overlays()
+	target.apply_damage(15, BRUTE, target_zone)
+	log_interact(user, target, "[key_name(user)] failed to move organs back in place into [key_name(target)]'s [surgery.affected_limb.cavity], aborting [surgery].")
 
 /datum/surgery_step/mend_encased
 	name = "Mend Bone"
@@ -742,7 +881,7 @@
 			to_chat(user, SPAN_BOLDWARNING("You need more metal rods to mend [target]'s [surgery.affected_limb.display_name] with [tool]."))
 			return FALSE
 
-/datum/surgery_step/mend_encased/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/mend_encased/preop(mob/user, mob/living/carbon/target, surgery_step, step, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(tool_type == /obj/item/tool/surgery/bonegel)
 		user.affected_message(target,
 			SPAN_NOTICE("You start applying [tool] to [target]'s [surgery.affected_limb.encased]."),
@@ -761,7 +900,7 @@
 
 	log_interact(user, target, "[key_name(user)] began mending [key_name(target)]'s [surgery.affected_limb.encased].")
 
-/datum/surgery_step/mend_encased/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/mend_encased/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(tool_type == /obj/item/tool/surgery/bonegel)
 		user.affected_message(target,
 			SPAN_NOTICE("You mend [target]'s [surgery.affected_limb.encased]."),
@@ -775,10 +914,10 @@
 			SPAN_NOTICE("[user] haphazardly repairs [target]'s [surgery.affected_limb.encased] like some kind of [improvised_desc]."))
 
 	if(surgery.affected_limb.status & LIMB_BROKEN)
-		to_chat(user, SPAN_NOTICE("You've repaired the damage done by prying it open, but it's still fractured."))
+		to_chat(user, SPAN_NOTICE("You've repaired the damage done from prying it open, but it's still fractured."))
 	log_interact(user, target, "[key_name(user)] mended [key_name(target)]'s [surgery.affected_limb.encased], ending [surgery].")
 
-/datum/surgery_step/mend_encased/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/mend_encased/failure(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(surgery.affected_limb.status & LIMB_BROKEN)
 		user.affected_message(target,
 			SPAN_WARNING("Your hand slips, damaging [target]'s [surgery.affected_limb.encased] even more!"),
@@ -796,7 +935,7 @@
 			else
 				target.emote("scream") //MAN WHAT THE HELL!?
 		surgery.affected_limb.fracture(100)
-
+	target.update_surgery_overlays()
 	target.apply_damage(10, BRUTE, target_zone)
 	log_interact(user, target, "[key_name(user)] failed to mend [key_name(target)]'s [surgery.affected_limb.encased].")
 

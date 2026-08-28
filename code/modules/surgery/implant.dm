@@ -129,12 +129,12 @@
 	target.custom_pain("The pain in your [surgery.affected_limb.cavity] is a living hell!", 1)
 	log_interact(user, target, "[key_name(user)] started to put [tool] inside [key_name(target)]'s [surgery.affected_limb.cavity].")
 
-/datum/surgery_step/place_item/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/place_item/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(tool.w_class >= SIZE_SMALL)
 		user.affected_message(target,
-			SPAN_NOTICE("You tear some blood vessels trying to fit such a bulky object in [target]'s [surgery.affected_limb.cavity], causing internal bleeding! Blood gushes everywhere!"),
-			SPAN_NOTICE("[user] tears some blood vessels trying to fit such a bulky object in your [surgery.affected_limb.cavity], causing internal bleeding! Blood gushes everywhere!"),
-			SPAN_NOTICE("[user] tears some blood vessels trying to fit such a bulky object in [target]'s [surgery.affected_limb.cavity], causing internal bleeding! Blood gushes everywhere!"))
+			SPAN_NOTICE("You tear some blood vessels trying to fit such a bulky object in [target]'s [surgery.affected_limb.cavity], causing internal bleeding! Blood gushes all over and fills the surgical site!"),
+			SPAN_NOTICE("[user] tears some blood vessels trying to fit such a bulky object in your [surgery.affected_limb.cavity], causing internal bleeding! Blood gushes all over and fills the surgical site!"),
+			SPAN_NOTICE("[user] tears some blood vessels trying to fit such a bulky object in [target]'s [surgery.affected_limb.cavity], causing internal bleeding! Blood gushes all over and fills the surgical site!"))
 
 		target.custom_pain("You feel something rip in your [surgery.affected_limb.cavity]!", 1)
 		if(target.stat == CONSCIOUS)

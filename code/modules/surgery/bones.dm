@@ -188,7 +188,7 @@
 	target.custom_pain("You feel your fractured bones shifting around in your [surgery.affected_limb.display_name]! It feels horrible!", 1)
 	log_interact(user, target, "[key_name(user)] attempted to begin setting bones in [key_name(target)]'s [surgery.affected_limb.display_name] with [tool].")
 
-/datum/surgery_step/set_bones/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/bone_repair/surgery)
+/datum/surgery_step/set_bones/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/bone_repair/surgery)
 	if(surgery.affected_bone)
 		user.affected_message(target,
 			SPAN_NOTICE("You set [target]'s [surgery.affected_bone]."),
@@ -206,6 +206,7 @@
 
 	surgery.affected_limb.status &= ~(LIMB_SPLINTED|LIMB_SPLINTED_INDESTRUCTIBLE|LIMB_BROKEN)
 	surgery.affected_limb.perma_injury = 0
+	target.update_surgery_overlays()
 	target.pain.recalculate_pain()
 	log_interact(user, target, "[key_name(user)] successfully set bones in [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], ending [surgery].")
 

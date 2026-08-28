@@ -64,6 +64,7 @@
 	var/image/surgery_bone_overlay
 	var/image/surgery_bleed_overlay
 	var/image/surgery_organ_overlay
+	var/image/current_organ_image
 
 	var/splint_icon_amount = 1
 	var/bandage_icon_amount = 1
@@ -1421,53 +1422,79 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 
 /obj/limb/proc/get_surgery_overlays()
 	. = list()
+///////////////////
 
+// SET UP OVERLAYS FOR INCISIONS
 	if(limb_surgery_status & INCISION_MADE) //sets up the initial incision sprite
-		if(limb_surgery_status & INCISION_BLEEDING)
-			surgery_flesh_overlay.icon_state = "incision_[name]"
-			surgery_flesh_overlay.color = owner?.species.blood_color
-			. += surgery_flesh_overlay
-		else
-			surgery_flesh_overlay.icon_state = "incision_[name]"
-			surgery_flesh_overlay.color = owner?.species.flesh_color
-			. += surgery_flesh_overlay
+		surgery_flesh_overlay.icon_state = "incision_[name]"
 
+		if(limb_surgery_status & INCISION_BLEEDING)
+			surgery_flesh_overlay.color = owner?.species.blood_color
+		else
+			surgery_flesh_overlay.color = owner?.species.flesh_color
+
+		. += surgery_flesh_overlay
+////////////////////
+
+// SET UP WIDENED INCISIONS
 	if(limb_surgery_status & INCISION_WIDENED) //adds the widened incision or body cavity if chest/pelvis/skull
+		if(issynth(owner))
+			if(name == "groin" || name == "chest") //synths have unique body cavities; they're filled with hydraulic tubes and other junk, not organs, except
+				surgery_flesh_overlay.icon_state = "incision_wide_[name]_Synthetic"
+		else
+			surgery_flesh_overlay.icon_state = "incision_wide_[name]"
+
 		if(limb_surgery_status & INCISION_BLEEDING)
-			surgery_flesh_overlay.icon_state = "incision_wide_[name]"
-			surgery_flesh_overlay.color = owner?.species.blood_color
-			. += surgery_flesh_overlay
+			if(issynth(owner))
+				surgery_flesh_overlay.color = owner?.species.blood_color
+			else
+				surgery_flesh_overlay.color = owner?.species.arterial_color
+
 		else if(limb_surgery_status & INCISION_CLAMPED)
-			surgery_flesh_overlay.icon_state = "incision_wide_[name]"
-			surgery_flesh_overlay.color = owner?.species.flesh_color
-			. += surgery_flesh_overlay
-		if(name == "chest" | "head" | "groin") //adds organs in body cavities
-			surgery_organ_overlay.icon_state = "organs_[name]_[owner?.species.name]"
-			. += surgery_organ_overlay
-		else
-			surgery_organ_overlay.icon_state = null
+			if(issynth(owner))
+				surgery_flesh_overlay.color = owner?.species.blood_color
+			else
+				surgery_flesh_overlay.color = owner?.species.arterial_color
 
-	if(limb_surgery_status & INCISION_BONE_CLOSED) //adds bones
-		if(name == "groin")
-			surgery_bone_overlay.icon_state = null //with pelvis, organs appear on top of the bone, not vice-versa like with chest/skull
+		. += surgery_flesh_overlay
+////////////////////
 
-		if(limb_surgery_status & LIMB_BROKEN)
-			surgery_bone_overlay.icon_state = "bone_[name]_broken"
-			. += surgery_bone_overlay
+//SET UP BONES
+		if(name == "head" || name == "chest" )
+			surgery_bone_overlay = image('icons/mob/humans/dam_human.dmi', icon_state = "surgery_bone_0", layer = SURGERY_LAYER +2) // incision, then organs, then bones
 		else
-			surgery_bone_overlay.icon_state = "bone_[name]"
-			. += surgery_bone_overlay
+			surgery_bone_overlay = image('icons/mob/humans/dam_human.dmi', icon_state = "surgery_bone_0", layer = SURGERY_LAYER +1) //incision, then bones on top
 
-	else if(limb_surgery_status & INCISION_BONE_OPENED)
-		if(limb_surgery_status & LIMB_BROKEN)
-			surgery_bone_overlay.icon_state = "bone_open_[name]_broken"
-			. += surgery_bone_overlay
+		if(status & LIMB_BROKEN)
+			if(limb_surgery_status & INCISION_BONE_OPENED)
+				surgery_bone_overlay.icon_state = "bone_open_[name]_broken"
+			else if(limb_surgery_status & INCISION_BONE_CLOSED)
+				surgery_bone_overlay.icon_state = "bone_[name]_broken"
 		else
-			surgery_bone_overlay.icon_state += "bone_open_[name]"
-			. += surgery_bone_overlay
-/*
-			LIMB TYPES
-*/
+			if(limb_surgery_status & INCISION_BONE_OPENED)
+				surgery_bone_overlay.icon_state = "bone_open_[name]"
+			else if(limb_surgery_status & INCISION_BONE_CLOSED)
+				surgery_bone_overlay.icon_state = "bone_[name]"
+
+		. += surgery_bone_overlay
+////////////////////
+
+///SET UP ORGANS
+
+		for(var/datum/internal_organ/organ as anything in internal_organs)
+			if(name == "head" || name == "chest" )
+				current_organ_image = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +1) // incision, then organs, then bones
+			else if(name == "groin")
+				if(limb_surgery_status & INCISION_BONE_CLOSED) //pelvis is hidden
+					current_organ_image = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +2) // incision, bone on top of incision, then organs
+				else if(limb_surgery_status & INCISION_BONE_OPENED) //organs were moved away
+					current_organ_image = null
+			current_organ_image.icon_state = "[organ.name]"
+			if(organ.robotic == ORGAN_ROBOT) //adds prosthetic organs, if any
+				current_organ_image.icon_state += "_r"
+
+			. += current_organ_image
+////////////////////
 
 /obj/limb/chest
 	name = "chest"
@@ -1487,12 +1514,13 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	name = "groin"
 	icon_name = "groin"
 	display_name = "groin"
-	cavity = "abdominal cavity"
+	cavity = "abdominopelvic cavity"
 	max_damage = 200
 	min_broken_damage = 30
 	min_eschar_damage = 30
 	body_part = BODY_FLAG_GROIN
 	vital = 1
+	encased = "ribcage"
 	splint_icon_amount = 1
 	bandage_icon_amount = 2
 

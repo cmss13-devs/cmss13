@@ -2,7 +2,7 @@
 	name = "Guardian"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id
-	languages = list(LANGUAGE_ENGLISH,LANGUAGE_XENOMORPH, LANGUAGE_HIVEMIND)
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_XENOMORPH, LANGUAGE_HIVEMIND)
 	job_title = "Guardian"
 	faction = FACTION_XENO_CULTIST
 	faction_group = FACTION_LIST_XENO_CULTIST
@@ -23,6 +23,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/guardian(new_human), WEAR_FACE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/guardian(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_if_possible(new /obj/item/storage/hugger_box/cultist, WEAR_L_HAND)
+	new_human.equip_to_slot_if_possible(new /obj/item/storage/hugger_box/cultist, WEAR_R_HAND)
 
 /datum/equipment_preset/guardian/load_status(mob/living/carbon/human/new_human, client/mob_client)
 	. = ..()
@@ -111,6 +112,7 @@
 	leap(user)
 
 /obj/item/storage/hugger_box/Crossed(atom/A)
+	. = ..()
 	if(!active)
 		return
 	leap(A)

@@ -33,9 +33,9 @@
 		return
 
 	if(isxeno(living_mob))
-		to_chat(living_mob, SPAN_XENODANGER("You are shaken and slowed by the sudden impact!"))
+		to_chat(living_mob, SPAN_XENODANGER("We are shaken by the sudden impact!"))
 	else
-		to_chat(living_mob, SPAN_HIGHDANGER("You are shaken and slowed by the sudden impact!"))
+		to_chat(living_mob, SPAN_HIGHDANGER("We are shaken by the sudden impact!"))
 
 	living_mob.AddComponent(/datum/component/heavy_buildup)
 

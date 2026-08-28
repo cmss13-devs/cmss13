@@ -16,14 +16,13 @@
 
 /datum/component/heavy_buildup/proc/apply_effects()
 	var/mob/living/target = parent
-	target.Slow(1.5 + heavy_shots * 0.5)
 
-	if(heavy_shots >= 2)
-		target.KnockDown((heavy_shots - 1) * 0.25)
-		target.Stun((heavy_shots - 1) * 0.25)
+	if(!(heavy_shots % 3))
+		target.KnockDown(0.5)
+		target.Stun(0.5)
 
-	if(heavy_shots >= 3)
-		target.Superslow((heavy_shots - 1) * 0.5)
+	if(heavy_shots > 3)
+		target.Slow(2)
 
 /datum/component/heavy_buildup/proc/expire()
 	qdel(src)

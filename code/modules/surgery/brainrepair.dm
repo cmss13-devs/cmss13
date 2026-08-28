@@ -111,7 +111,7 @@
 	user.add_blood(target.get_blood_color(), BLOOD_BODY) //splish splosh
 	var/datum/wound/internal_bleeding/int_bleeding = new (0)
 	surgery.affected_limb.add_bleeding(int_bleeding, TRUE)
-	surgery.affected_limb.limb_surgery_status |= INCISION_INT_BLEEDING
+	surgery.affected_limb.surgery_status |= INCISION_INT_BLEEDING
 	surgery.affected_limb.wounds += int_bleeding
 	target.apply_damage(5, BRUTE, target_zone)
 	surgery.affected_limb.add_bleeding(null, FALSE, 15)

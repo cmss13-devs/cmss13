@@ -61,6 +61,9 @@
 	target = null
 	. = ..()
 
+/datum/surgery/proc/remove_surgery_flags()
+	affected_limb.surgery_status = NO_FLAGS
+
 ///Catch-all proc for additional preconditions for starting the surgery. Return FALSE if the surgery can't be done.
 /datum/surgery/proc/can_start(mob/user, mob/living/carbon/patient, obj/limb/patient_limb, obj/item/tool)
 	return TRUE

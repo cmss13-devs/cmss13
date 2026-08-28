@@ -139,7 +139,6 @@
 	var/map_specific_decoration = FALSE
 	/// color of the blood on us if there's any.
 	var/blood_color = ""
-	var/flesh_color = ""
 	/// taken from blood.dm
 	appearance_flags = KEEP_TOGETHER
 

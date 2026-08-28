@@ -18,7 +18,6 @@
 	var/affected_bone //Used for messaging.
 
 /datum/surgery/bone_repair/groin
-	name = "Bone Repair Surgery"
 	possible_locs = list("groin")
 	invasiveness = list(SURGERY_DEPTH_DEEP)
 

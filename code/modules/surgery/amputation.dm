@@ -222,7 +222,7 @@
 			SPAN_WARNING("[user] hacks your [surgery.affected_limb.display_name] off!"),
 			SPAN_WARNING("[user] hacks [target]'s [surgery.affected_limb.display_name] off!"))
 
-		target.remove_surgery_flags()
+		surgery.affected_limb.remove_surgery_flags()
 		target.update_surgery_overlays()
 		user.animation_attack_on(target)
 		user.count_niche_stat(STATISTICS_NICHE_SURGERY_AMPUTATE)

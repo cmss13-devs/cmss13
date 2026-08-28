@@ -175,7 +175,6 @@ There are several things that need to be remembered:
 
 	apply_overlay(SURGERY_LAYER)
 
-
 /// If this human should have underwear, reapply the overlays
 /mob/living/carbon/human/proc/update_undergarments()
 	if(!(species.flags & HAS_UNDERWEAR))

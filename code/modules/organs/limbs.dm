@@ -76,7 +76,7 @@
 
 	var/destroyed = FALSE
 	var/status = LIMB_ORGANIC
-	var/limb_surgery_status = null
+	var/surgery_status = null
 	var/processing = FALSE
 
 	/// skin color of the owner, used for limb appearance, set in [/obj/limb/proc/update_limb()]
@@ -1413,11 +1413,11 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 ///////////////////
 
 // SET UP OVERLAYS FOR INCISIONS
-	if(limb_surgery_status & INCISION_MADE) //sets up the initial incision sprite
+	if(surgery_status & INCISION_MADE) //sets up the initial incision sprite
 		surgery_flesh_overlay = image('icons/mob/humans/dam_human.dmi', "surgery_flesh_0", -SURGERY_LAYER)
 		surgery_flesh_overlay.icon_state = "incision_[name]"
 
-		if(limb_surgery_status & INCISION_BLEEDING)
+		if(surgery_status & INCISION_BLEEDING)
 			surgery_flesh_overlay.color = owner?.species.blood_color
 		else
 			surgery_flesh_overlay.color = owner?.species.flesh_color
@@ -1426,20 +1426,20 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 ////////////////////
 
 // SET UP WIDENED INCISIONS
-	if(limb_surgery_status & INCISION_WIDENED) //adds the widened incision or body cavity if chest/pelvis/skull
+	if(surgery_status & INCISION_WIDENED) //adds the widened incision or body cavity if chest/pelvis/skull
 		if(issynth(owner))
 			if(name == "groin" || name == "chest") //synths have unique body cavities; they're filled with hydraulic tubes and other junk, not organs, except
 				surgery_flesh_overlay.icon_state = "incision_wide_[name]_Synthetic"
 		else
 			surgery_flesh_overlay.icon_state = "incision_wide_[name]"
 
-		if(limb_surgery_status & INCISION_BLEEDING)
+		if(surgery_status & INCISION_BLEEDING)
 			if(issynth(owner))
 				surgery_flesh_overlay.color = owner?.species.blood_color
 			else
 				surgery_flesh_overlay.color = owner?.species.arterial_color
 
-		else if(limb_surgery_status & INCISION_CLAMPED)
+		else if(surgery_status & INCISION_CLAMPED)
 			if(issynth(owner))
 				surgery_flesh_overlay.color = owner?.species.blood_color
 			else
@@ -1455,14 +1455,14 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 			surgery_bone_overlay = image('icons/mob/humans/dam_human.dmi', icon_state = "surgery_bone_0", layer = SURGERY_LAYER +1) //incision, then bones on top
 
 		if(status & LIMB_BROKEN)
-			if(limb_surgery_status & INCISION_BONE_OPENED)
+			if(surgery_status & INCISION_BONE_OPENED)
 				surgery_bone_overlay.icon_state = "bone_open_[name]_broken"
-			else if(limb_surgery_status & INCISION_BONE_CLOSED)
+			else if(surgery_status & INCISION_BONE_CLOSED)
 				surgery_bone_overlay.icon_state = "bone_[name]_broken"
 		else
-			if(limb_surgery_status & INCISION_BONE_OPENED)
+			if(surgery_status & INCISION_BONE_OPENED)
 				surgery_bone_overlay.icon_state = "bone_open_[name]"
-			else if(limb_surgery_status & INCISION_BONE_CLOSED)
+			else if(surgery_status & INCISION_BONE_CLOSED)
 				surgery_bone_overlay.icon_state = "bone_[name]"
 
 		. += surgery_bone_overlay
@@ -1474,9 +1474,9 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 			if(name == "head" || name == "chest" )
 				current_organ_image = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +1) // incision, then organs, then bones
 			else if(name == "groin")
-				if(limb_surgery_status & INCISION_BONE_CLOSED) //pelvis is hidden
+				if(surgery_status & INCISION_BONE_CLOSED) //pelvis is hidden
 					current_organ_image = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +2) // incision, bone on top of incision, then organs
-				else if(limb_surgery_status & INCISION_BONE_OPENED) //organs were moved away
+				else if(surgery_status & INCISION_BONE_OPENED) //organs were moved away
 					current_organ_image = null
 			current_organ_image.icon_state = "[organ.name]"
 			if(organ.robotic == ORGAN_ROBOT) //adds prosthetic organs, if any
@@ -1484,7 +1484,8 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 
 			. += current_organ_image
 ////////////////////
-
+/obj/limb/proc/remove_surgery_flags()
+	surgery_status = NO_FLAGS
 /obj/limb/chest
 	name = "chest"
 	icon_name = "torso"

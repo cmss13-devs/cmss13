@@ -58,7 +58,7 @@
 
 		log_interact(user, target, "[key_name(user)] finished suturing an incision in [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], ending [surgery].")
 
-	target.remove_surgery_flags()
+	surgery.affected_limb.remove_surgery_flags()
 	target.update_surgery_overlays()
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SURFACE
 
@@ -104,6 +104,6 @@
 
 		log_interact(user, target, "[key_name(user)] finished suturing an incision in [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], ending [surgery].")
 
-	target.remove_surgery_flags()
+	surgery.affected_limb.remove_surgery_flags()
 	target.update_surgery_overlays()
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SURFACE

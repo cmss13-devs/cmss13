@@ -1253,6 +1253,11 @@
 /turf/open/floor/prison/blue/east,
 /area/northpoint/indoors/main)
 "adJ" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_2";
+	pixel_y = 2;
+	pixel_x = -4
+	},
 /turf/open/floor/prison/greenfull,
 /area/northpoint/indoors/main)
 "adK" = (
@@ -14205,6 +14210,13 @@
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/hybrisa/street/sidewalkfull,
 /area/northpoint/outdoors/hospital_exterior/south)
+"aNH" = (
+/obj/effect/decal/hybrisa/colorable_line/line3{
+	color = "#3d3c3c"
+	},
+/obj/structure/bed/chair/wheelchair,
+/turf/open/floor/prison/green,
+/area/northpoint/indoors/main)
 "aNI" = (
 /obj/structure/prop/rock/black_ground{
 	icon_state = "black_ground_alt"
@@ -29894,6 +29906,11 @@
 /area/northpoint/indoors/main)
 "bKK" = (
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_2";
+	pixel_y = 2;
+	pixel_x = 3
+	},
 /turf/open/floor/prison/greenfull,
 /area/northpoint/indoors/main)
 "bKL" = (
@@ -32008,6 +32025,7 @@
 /obj/structure/machinery/light/spot{
 	pixel_x = 16
 	},
+/obj/structure/bed/chair/wheelchair,
 /turf/open/floor/prison/green,
 /area/northpoint/indoors/main)
 "bQm" = (
@@ -75620,7 +75638,7 @@ ack
 bQB
 adF
 bKi
-adu
+aNH
 bzI
 bzI
 bAV

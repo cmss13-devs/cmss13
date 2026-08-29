@@ -29,7 +29,7 @@
 		overlays += "welded"
 
 
-/obj/structure/closet/crate/secure/can_open()
+/obj/structure/closet/crate/secure/can_open(mob/user)
 	return !locked
 
 /obj/structure/closet/crate/secure/proc/togglelock(mob/user as mob)

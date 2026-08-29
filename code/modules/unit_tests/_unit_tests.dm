@@ -90,6 +90,7 @@
 #include "resist.dm"
 #include "spawn_humans.dm"
 #include "spritesheets.dm"
+#include "steelcrest_abilities.dm"
 #include "subsystem_init.dm"
 #include "tgui_create_message.dm"
 #include "timer_sanity.dm"

@@ -986,7 +986,7 @@
 /turf/open/floor/prison/cell_stripe/west,
 /area/fiorina/lz/near_lzII)
 "Wc" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	icon = 'icons/obj/structures/doors/2x1prepdoor.dmi'
 	},
 /turf/open/floor/plating/prison,

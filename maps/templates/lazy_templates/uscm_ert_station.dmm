@@ -420,7 +420,7 @@
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/uscm_station)
 "fc" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass{
 	dir = 2;
 	name = "\improper Medical Bay";
 	req_access = null;
@@ -916,7 +916,7 @@
 /turf/open/floor/almayer/test_floor5,
 /area/adminlevel/ert_station/uscm_station)
 "kL" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering{
 	explo_proof = 1;
 	locked = 1
 	},
@@ -1056,7 +1056,7 @@
 /turf/open/floor/almayer/uscm/directional/logo_c/west,
 /area/adminlevel/ert_station/uscm_station)
 "mp" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass{
 	name = "\improper Medical Bay";
 	req_one_access = null
 	},
@@ -1313,7 +1313,7 @@
 /turf/open/floor/carpet,
 /area/adminlevel/ert_station/uscm_station)
 "oU" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering{
 	req_one_access = null
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -1545,7 +1545,7 @@
 /turf/open/floor/redfull/northwest,
 /area/adminlevel/ert_station/uscm_station)
 "rW" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass{
 	dir = 2;
 	name = "\improper Medical Bay";
 	req_access = null;
@@ -3401,7 +3401,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/uscm_station)
 "Ow" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engineering{
 	dir = 2;
 	explo_proof = 1;
 	locked = 1

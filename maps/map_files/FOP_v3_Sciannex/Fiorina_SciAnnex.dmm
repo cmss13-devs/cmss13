@@ -471,7 +471,7 @@
 /turf/open/floor/prison/whitegreen/north,
 /area/fiorina/station/medbay)
 "abJ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	icon = 'icons/obj/structures/doors/2x1prepdoor.dmi'
 	},
 /turf/open/floor/plating/prison,
@@ -2052,7 +2052,7 @@
 /turf/open/floor/prison/whitegreen,
 /area/fiorina/tumor/ice_lab)
 "blG" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	icon = 'icons/obj/structures/doors/2x1prepdoor.dmi'
 	},
@@ -13525,7 +13525,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/security/wardens)
 "kmL" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass/autoname{
 	dir = 1;
 	icon = 'icons/obj/structures/doors/2x1prepdoor_charlie.dmi'
 	},
@@ -15702,7 +15702,7 @@
 /turf/open/floor/prison,
 /area/fiorina/tumor/aux_engi)
 "lSj" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass/autoname{
 	dir = 2;
 	icon = 'icons/obj/structures/doors/2x1prepdoor_charlie.dmi'
 	},
@@ -15847,7 +15847,7 @@
 /turf/open/floor/prison,
 /area/fiorina/tumor/servers)
 "lZA" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass/autoname{
 	icon = 'icons/obj/structures/doors/2x1prepdoor_charlie.dmi'
 	},
 /turf/open/floor/plating/prison,
@@ -20499,7 +20499,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/servers)
 "pDo" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass/autoname{
 	icon = 'icons/obj/structures/doors/2x1prepdoor_charlie.dmi'
 	},
 /turf/open/floor/prison/sterile_white/southwest,
@@ -22602,7 +22602,7 @@
 /turf/open/floor/prison/kitchen/southwest,
 /area/fiorina/tumor/civres)
 "rjD" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass/autoname{
 	icon = 'icons/obj/structures/doors/2x1prepdoor_charlie.dmi'
 	},
 /turf/open/floor/plating/prison,
@@ -26505,7 +26505,7 @@
 /turf/open/floor/prison/yellow/north,
 /area/fiorina/station/central_ring)
 "umu" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	icon = 'icons/obj/structures/doors/2x1prepdoor.dmi'
 	},
 /turf/open/floor/plating/prison,

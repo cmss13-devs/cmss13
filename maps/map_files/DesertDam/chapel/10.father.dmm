@@ -116,7 +116,7 @@
 /turf/open/floor/chapel/north,
 /area/desert_dam/building/church)
 "sr" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Chapel"
 	},

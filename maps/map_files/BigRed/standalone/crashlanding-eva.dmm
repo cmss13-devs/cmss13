@@ -519,7 +519,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "cA" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Dormitories Tool Storage";
 	welded = 1
 	},

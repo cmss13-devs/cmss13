@@ -1616,7 +1616,7 @@
 /turf/open/shuttle/dropship/can_surgery/light_grey_top_right,
 /area/desert_dam/building/bar/bar)
 "DD" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Bar"
 	},

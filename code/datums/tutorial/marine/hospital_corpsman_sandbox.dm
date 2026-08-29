@@ -169,7 +169,7 @@
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/end_supply_phase()
 
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor, prep_door)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass, prep_door)
 	var/turf/boundary = get_turf(loc_from_corner(4, 1))
 	if(tutorial_mob.x <= boundary.x)
 		message_to_player("Please exit the preparations room before progressing into the next round!")
@@ -183,7 +183,7 @@
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/begin_supply_phase()
 
 	restock_supply_room()
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor, prep_door)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass, prep_door)
 	prep_door.unlock(TRUE)
 	prep_door.open()
 	stage = TUTORIAL_HM_PHASE_MAIN // just in case it wasnt already
@@ -567,7 +567,7 @@
 
 	new /obj/structure/machinery/cm_vending/clothing/medic/tutorial(loc_from_corner(2, 0))
 	new /obj/structure/machinery/cm_vending/gear/medic/tutorial/(loc_from_corner(3, 0))
-	var/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/prep_door = locate(/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor) in get_turf(loc_from_corner(4, 1))
+	var/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/prep_door = locate(/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass) in get_turf(loc_from_corner(4, 1))
 	var/obj/structure/bed/medevac_stretcher/prop/medevac_bed = locate(/obj/structure/bed/medevac_stretcher/prop) in get_turf(loc_from_corner(7, 0))
 	var/obj/structure/machinery/smartfridge/smartfridge = locate(/obj/structure/machinery/smartfridge) in get_turf(loc_from_corner(0, 3))
 	supply_vendors |= locate(/obj/structure/machinery/cm_vending/sorted/medical/blood/bolted) in get_turf(loc_from_corner(0, 0))

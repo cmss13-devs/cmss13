@@ -292,7 +292,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/purification)
 "cz" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Decontamination"
 	},
@@ -411,7 +411,7 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/water_treatment_one/hallway)
 "kd" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -727,7 +727,7 @@
 /turf/open/floor/whiteyellow/southeast,
 /area/desert_dam/building/water_treatment_one/breakroom)
 "un" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Decontamination"
 	},
 /turf/open/floor/prison/bright_clean/southwest,
@@ -1102,7 +1102,7 @@
 /turf/open/floor/whiteyellow,
 /area/desert_dam/building/water_treatment_one/breakroom)
 "MD" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 2;
 	name = "\improper Treatment Controlroom"
 	},
@@ -1247,7 +1247,7 @@
 	},
 /area/desert_dam/building/water_treatment_one/garage)
 "RM" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Water Treatment Hallway"
 	},
 /obj/structure/disposalpipe/segment,
@@ -1362,7 +1362,7 @@
 /turf/open/floor/whiteyellow,
 /area/desert_dam/building/water_treatment_one/breakroom)
 "VR" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Water Treatment Foyer"
 	},
 /obj/structure/disposalpipe/segment,
@@ -1406,7 +1406,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_one/hallway)
 "Xe" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Treatment Breakroom"
 	},
 /obj/effect/decal/cleanable/dirt,

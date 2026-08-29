@@ -4504,7 +4504,7 @@
 /turf/open/hybrisa/dropship/dropship4,
 /area/lv759/indoors/spaceport/horizon_runner)
 "yG" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/reinforced{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/reinforced{
 	autoname = 1;
 	name = "\improper Reinforced Airlock"
 	},
@@ -6150,7 +6150,7 @@
 /area/lv759/indoors/spaceport/security)
 "HF" = (
 /obj/structure/platform_decoration/metal/strata/north,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced/autoname,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/security/glass/reinforced/autoname,
 /turf/open/floor/strata/red1,
 /area/lv759/indoors/spaceport/security)
 "HG" = (
@@ -7022,7 +7022,7 @@
 /turf/open/floor/almayer/cargo,
 /area/lv759/indoors/spaceport/baggagehandling)
 "MW" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/reinforced{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/reinforced{
 	autoname = 1;
 	name = "\improper Reinforced Airlock"
 	},
@@ -8862,7 +8862,7 @@
 /turf/open/floor/corsat,
 /area/lv759/indoors/spaceport/engineering)
 "Zp" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/reinforced{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/command/glass/reinforced{
 	autoname = 1;
 	name = "\improper Reinforced Airlock"
 	},

@@ -52,7 +52,7 @@
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 "aQ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Corporation Dome";
 	req_access_txt = "100"
 	},
@@ -332,7 +332,7 @@
 /turf/open/floor/dark,
 /area/lv624/lazarus/corporate_dome)
 "oj" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Corporation Office";
 	req_access_txt = "100"
@@ -723,7 +723,7 @@
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/corporate_dome)
 "Jq" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	locked = 1;
 	name = "\improper Corporation Dome";
 	req_access_txt = "100"

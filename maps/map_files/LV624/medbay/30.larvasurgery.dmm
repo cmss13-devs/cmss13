@@ -150,7 +150,7 @@
 /turf/open/floor/whiteblue/north,
 /area/lv624/lazarus/medbay)
 "bc" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony{
 	dir = 2;
 	name = "\improper Medical Bay"
 	},
@@ -404,7 +404,7 @@
 /turf/open/floor/whiteblue/west,
 /area/lv624/lazarus/medbay)
 "TK" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medical/glass/colony,
 /turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "Vq" = (

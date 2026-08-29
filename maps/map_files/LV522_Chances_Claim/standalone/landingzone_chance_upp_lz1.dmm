@@ -990,7 +990,7 @@
 /turf/closed/wall/shiva/prefabricated/reinforced/hull,
 /area/lv522/oob)
 "Fe" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper A-Block - Colony Operations Centre Airlock"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{

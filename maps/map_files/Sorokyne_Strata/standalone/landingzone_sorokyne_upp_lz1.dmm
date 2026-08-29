@@ -1735,7 +1735,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/research)
 "KH" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	dir = 1
 	},
 /turf/open/floor/strata/multi_tiles/west,

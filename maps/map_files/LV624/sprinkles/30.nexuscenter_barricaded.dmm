@@ -752,7 +752,7 @@
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "HH" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/glass{
 	name = "\improper Nexus Dome Chapel"
 	},
 /turf/open/floor/white,

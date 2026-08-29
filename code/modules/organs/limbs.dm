@@ -1418,9 +1418,10 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 		surgery_flesh_overlay.icon_state = "incision_[name]"
 
 		if(surgery_status & INCISION_BLEEDING)
-			surgery_flesh_overlay.color = owner?.species.blood_color
-		else
-			surgery_flesh_overlay.color = owner?.species.flesh_color
+			surgery_flesh_overlay.color = owner?.species.incision_color_fresh
+
+		else if(surgery_status & INCISION_CLAMPED)
+			surgery_flesh_overlay.color = owner?.species.incision_color_clamped
 
 		. += surgery_flesh_overlay
 ////////////////////
@@ -1434,16 +1435,10 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 			surgery_flesh_overlay.icon_state = "incision_wide_[name]"
 
 		if(surgery_status & INCISION_BLEEDING)
-			if(issynth(owner))
-				surgery_flesh_overlay.color = owner?.species.blood_color
-			else
-				surgery_flesh_overlay.color = owner?.species.arterial_color
+			surgery_flesh_overlay.color = owner?.species.incision_color_fresh
 
 		else if(surgery_status & INCISION_CLAMPED)
-			if(issynth(owner))
-				surgery_flesh_overlay.color = owner?.species.blood_color
-			else
-				surgery_flesh_overlay.color = owner?.species.arterial_color
+			surgery_flesh_overlay.color = owner?.species.incision_color_clamped
 
 		. += surgery_flesh_overlay
 ////////////////////

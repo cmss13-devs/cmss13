@@ -479,6 +479,7 @@
 							surgery_todo_list -= current_surgery
 							continue
 						open_incision(patient,current_surgery.limb_ref)
+						check_groin_depth(patient,current_surgery.limb_ref)
 						sleep(BONEGEL_REPAIR_MAX_DURATION*surgery_mod+20)
 						if(current_surgery.limb_ref.brute_dam > 20)
 							sleep(((current_surgery.limb_ref.brute_dam - 20)/2)*surgery_mod)
@@ -570,13 +571,6 @@
 							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b>croaks: Closing surgical incision.");
 						close_encased(patient,current_surgery.limb_ref)
 						close_incision(patient,current_surgery.limb_ref)
-						switch(current_surgery.limb_ref.name)
-							if("head")
-								patient.overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
-								patient.overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_open")
-							if("chest")
-								patient.overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
-								patient.overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_open")
 
 		if(prob(30))
 			visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Procedure complete.");
@@ -601,9 +595,11 @@
 		sleep(INCISION_MANAGER_MAX_DURATION*surgery_mod)
 		if(!surgery)
 			return
+		limb.surgery_status |= (INCISION_MADE | INCISION_BLEEDING)
 		limb.createwound(CUT, 1)
 		target.incision_depths[limb.name] = SURGERY_DEPTH_SHALLOW //Can immediately proceed to other surgery steps
 		target.updatehealth()
+		target.update_surgery_overlays()
 
 /obj/structure/machinery/medical_pod/autodoc/proc/close_incision(mob/living/carbon/human/target, obj/limb/limb)
 	if(target && limb && target.incision_depths[limb.name] == SURGERY_DEPTH_SHALLOW)
@@ -611,6 +607,8 @@
 		if(!surgery)
 			return
 		target.pain.recalculate_pain()
+		target.update_surgery_overlays()
+		limb.remove_surgery_flags()
 		limb.reset_limb_surgeries()
 		limb.remove_all_bleeding(TRUE)
 		target.updatehealth()
@@ -620,14 +618,25 @@
 		sleep((CIRCULAR_SAW_MAX_DURATION*surgery_mod) + (RETRACTOR_MAX_DURATION*surgery_mod))
 		if(!surgery)
 			return
+
+		limb.surgery_status |= (INCISION_WIDENED | INCISION_BONE_OPENED)
+		limb.surgery_status &= ~INCISION_MADE
 		target.incision_depths[limb.name] = SURGERY_DEPTH_DEEP
+		target.update_surgery_overlays()
 
 /obj/structure/machinery/medical_pod/autodoc/proc/close_encased(mob/living/carbon/human/target, obj/limb/limb)
 	if(target && limb && target.incision_depths[limb.name] == SURGERY_DEPTH_DEEP)
 		sleep((RETRACTOR_MAX_DURATION*surgery_mod) + (BONEGEL_REPAIR_MAX_DURATION*surgery_mod))
 		if(!surgery)
 			return
+		limb.surgery_status |= (INCISION_WIDENED | INCISION_BONE_CLOSED)
+		limb.surgery_status &= ~INCISION_BONE_OPENED
 		target.incision_depths[limb.name] = SURGERY_DEPTH_SHALLOW
+		target.update_surgery_overlays()
+
+/obj/structure/machinery/medical_pod/autodoc/proc/check_groin_depth(mob/living/carbon/human/target, obj/limb/limb)
+	if(target && limb && limb.name == "groin")
+		target.incision_depths[limb.name] = SURGERY_DEPTH_DEEP //an exception for broken pelvis
 
 #ifdef OBJECTS_PROXY_SPEECH
 // Transfers speech to occupant

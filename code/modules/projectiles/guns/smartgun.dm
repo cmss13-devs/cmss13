@@ -312,9 +312,9 @@
 		return
 	var/obj/item/weapon/gun/smartgun/smortgun = holder_item
 	if(smortgun.aim_assist)
-		action_icon_state = "aimassist"
-	else
 		action_icon_state = "aimassist_off"
+	else
+		action_icon_state = "aimassist"
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 

@@ -1,0 +1,5 @@
+author: "Ansekishoku"
+delete-after: True
+changes:
+  - rscadd: "A combat sidearm belt that is capable of holding a sidearm, 3 rifle mags and 2 pistol mags."
+  - imageadd: "New smartgunner sidearm belt sprites"

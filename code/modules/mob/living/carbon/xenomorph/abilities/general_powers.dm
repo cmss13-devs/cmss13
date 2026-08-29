@@ -128,14 +128,26 @@
 	if(turf.is_weedable < FULLY_WEEDABLE)
 		return
 
-	for(var/obj/effect/alien/weeds/node/preplanted_node in view(4, turf))
-		if(preplanted_node)
+	switch(our_sister.last_move_dir)
+		if(NORTH)
+			step_counter_y += 1
+		if(SOUTH)
+			step_counter_y -= 1
+		if(EAST)
+			step_counter_x += 1
+		if(WEST)
+			step_counter_x -= 1
+	if(step_counter_x >= 4 || step_counter_x <= -4 || step_counter_y >= 4 || step_counter_y <= -4)
+		step_counter_x = 0 // resetting them here (instead of on success) so that we don't check view constantly (as requested)
+		step_counter_y = 0
+		for(var/obj/effect/alien/weeds/node/preplanted_node in view(4, turf))
+			if(preplanted_node)
+				return
+		if(((our_sister.plasma_stored - linked_planting.plasma_cost) / our_sister.plasma_max * 100) < 20)
+			to_chat(our_sister, SPAN_XENONOTICE("Plasma is too low."))
+			src.use_ability()
 			return
-	if(((our_sister.plasma_stored - linked_planting.plasma_cost) / our_sister.plasma_max * 100) < 20)
-		to_chat(our_sister, SPAN_XENONOTICE("Plasma is too low."))
-		src.use_ability()
-		return
-	linked_planting.use_ability()
+		linked_planting.use_ability()
 
 /mob/living/carbon/xenomorph/lay_down()
 	if(!can_heal && !resting)

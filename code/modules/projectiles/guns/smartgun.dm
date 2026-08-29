@@ -583,59 +583,62 @@
 
 	var/mob/living/unconscious_target = null
 	var/mob/living/conscious_target = null
-	for(var/mob/living/targetted_mob in range(lock_range, target) & oview(user.get_maximum_view_range(), user))
-		if(targetted_mob.invisibility)
+
+	for(var/mob/living/targetted_mob in range(lock_range, target))
+		if(targetted_mob.stat == DEAD || targetted_mob.invisibility > user.see_invisible)
 			continue
-		if(HAS_TRAIT(targetted_mob, TRAIT_ABILITY_BURROWED))
+
+		if(HAS_TRAIT(targetted_mob, TRAIT_ABILITY_BURROWED) || targetted_mob.is_ventcrawling)
 			continue
-		if(targetted_mob.is_ventcrawling)
-			continue
-		if(targetted_mob.stat == DEAD)
-			continue // No dead or non living.
 
 		if(iff_enabled && targetted_mob.get_target_lock(user.faction_group))
 			continue
 
 		var/target_obscured = FALSE
-		for(var/turf/turf in get_line(user, targetted_mob))
-			if(turf.opacity)
+		var/list/turf/path = get_line(user, targetted_mob)
+
+		for(var/turf/current_turf as anything in path)
+			if(current_turf.opacity)
 				target_obscured = TRUE
 				break
-			for(var/obj/obstruction in turf)
-				if(!obstruction.opacity)
-					continue
-				target_obscured = TRUE
-				break
+
+			for(var/atom/movable/obstruction as anything in current_turf.contents)
+				if(obstruction.opacity)
+					target_obscured = TRUE
+					break
+				if(istype(obstruction, /obj/effect/particle_effect/smoke))
+					var/obj/effect/particle_effect/smoke/smoke = obstruction
+					if(smoke.obscuring)
+						target_obscured = TRUE
+						break
+
 			if(target_obscured)
 				break
-			for(var/obj/effect/particle_effect/smoke/smoke in turf)
-				if(!smoke.obscuring)
-					continue
-				target_obscured = TRUE
-				break
-			if(target_obscured)
-				break
+
 		if(target_obscured)
 			continue
 
-		var/dist = get_dist_sqrd(user, targetted_mob)
+		var/dist = get_dist_sqrd(target, targetted_mob)
 
-		if(targetted_mob.stat == UNCONSCIOUS && dist_unconscious > dist)
-			dist_unconscious = dist
-			unconscious_target = targetted_mob
-		else if(dist_conscious > dist)
+		if(targetted_mob.stat == UNCONSCIOUS)
+			if(dist < dist_unconscious)
+				dist_unconscious = dist
+				unconscious_target = targetted_mob
+		else if(dist < dist_conscious)
 			dist_conscious = dist
 			conscious_target = targetted_mob
 
 	if(conscious_target)
 		set_autoshot_image(conscious_target)
-		. = conscious_target
-	else if(unconscious_target)
+		return conscious_target
+
+	if(unconscious_target)
 		set_autoshot_image(unconscious_target)
-		. = unconscious_target
-	else
-		. = target
-		reset_autoshot_image()
+		return unconscious_target
+
+	reset_autoshot_image()
+
+	return target
 
 /obj/item/weapon/gun/smartgun/wield(mob/living/user)
 	. = ..()

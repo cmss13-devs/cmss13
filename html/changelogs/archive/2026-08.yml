@@ -510,3 +510,8 @@
   - qol: Adds marine snow boot to the synth loadouts.
   zzzmike:
   - qol: Makes Cryo-marine-not-taken notice clearer
+2026-08-29:
+  Ansekishoku:
+  - rscadd: A combat sidearm belt that is capable of holding a sidearm, 3 rifle mags
+      and 2 pistol mags.
+  - imageadd: New smartgunner sidearm belt sprites

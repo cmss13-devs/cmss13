@@ -113,6 +113,9 @@
 	auto_weeding = TRUE
 	button.icon_state = "template_active"
 	to_chat(owner, SPAN_XENONOTICE("We will now automatically plant weeds."))
+	step_counter_x = 0
+	step_counter_y = 0
+	linked_planting.use_ability()
 
 	return ..()
 
@@ -131,16 +134,26 @@
 	switch(our_sister.last_move_dir)
 		if(NORTH)
 			step_counter_y += 1
+			if(step_counter_y >= 5)
+				step_counter_y = 0
+				count_success = TRUE
 		if(SOUTH)
 			step_counter_y -= 1
+			if(step_counter_y <= -5)
+				step_counter_y = 0
+				count_success = TRUE
 		if(EAST)
 			step_counter_x += 1
+			if(step_counter_x >= 5)
+				step_counter_x = 0
+				count_success = TRUE
 		if(WEST)
 			step_counter_x -= 1
-
-	if(step_counter_x >= 5 || step_counter_x <= -5 || step_counter_y >= 5 || step_counter_y <= -5)
-		step_counter_x = 0 // resetting them here (instead of on success) so that we don't check view constantly (as requested)
-		step_counter_y = 0
+			if(step_counter_x <= -5)
+				step_counter_x = 0
+				count_success = TRUE
+	if(count_success)
+		count_success = FALSE
 		for(var/obj/effect/alien/weeds/node/preplanted_node in view(4, turf))
 			if(preplanted_node)
 				return

@@ -45,6 +45,7 @@
 	var/mob/living/carbon/xenomorph/our_sister
 	var/step_counter_x = 0
 	var/step_counter_y = 0
+	var/count_success = FALSE
 
 // Resting
 /datum/action/xeno_action/onclick/xeno_resting

@@ -8,7 +8,6 @@
 #define BLOOD_COLOR_HUMAN "#990000"
 #define BLOOD_COLOR_HUMAN_DRY "#500000"
 #define BLOOD_COLOR_SYNTHETIC "#EEEEEE"
-//unique define for surgery overlays
 
 #define BLOOD_COLOR_NEAERA "#1d2cbf"
 

@@ -107,4 +107,3 @@
 	bloodsplatter_type = /obj/effect/bloodsplatter/human
 
 	blood_color = BLOOD_COLOR_HUMAN
-	flesh_color = "#CCB399"

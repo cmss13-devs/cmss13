@@ -192,8 +192,6 @@ GLOBAL_LIST_EMPTY(all_areas)
 
 GLOBAL_LIST_EMPTY(turfs)
 
-GLOBAL_LIST(objects_of_interest) // This is used to track the stealing objective for Agents.
-
 // Areas exempt from explosive antigrief (not Z-levels)
 GLOBAL_LIST_INIT(explosive_antigrief_exempt_areas, list(
 	//non currently
@@ -351,6 +349,19 @@ GLOBAL_LIST_INIT(daniel_emotes, setup_daniel_emotes())
 GLOBAL_LIST_EMPTY(wy_droid_categories)
 /// dict ("category" : (emotes)) of every wy droid emote typepath
 GLOBAL_LIST_INIT(wy_droid_emotes, setup_wy_droid_emotes())
+
+// magazine lists for storage items that needs it (DO NOT DEFINE HANDFULS HERE)
+/// list for longarm ammunition
+GLOBAL_LIST_INIT(longarm_ammo, list(
+	/obj/item/ammo_magazine/rifle,
+	/obj/item/ammo_magazine/smg,
+	/obj/item/ammo_magazine/sniper,
+))
+/// list for sidearm ammunition
+GLOBAL_LIST_INIT(sidearm_ammo, list(
+	/obj/item/ammo_magazine/pistol,
+	/obj/item/ammo_magazine/revolver,
+))
 
 /proc/cached_params_decode(params_data, decode_proc)
 	. = GLOB.paramslist_cache[params_data]
@@ -677,3 +688,5 @@ GLOBAL_PROTECT(topic_tokens)
 
 GLOBAL_LIST_EMPTY(topic_commands)
 GLOBAL_PROTECT(topic_commands)
+
+GLOBAL_LIST_EMPTY(marine_medics)

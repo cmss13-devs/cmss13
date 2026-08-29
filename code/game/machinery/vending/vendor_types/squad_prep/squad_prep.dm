@@ -149,7 +149,6 @@
 		list("RESTRICTED BACKPACKS", -1, null, null),
 		list("USCM Technician Welderpack", 1.25, /obj/item/storage/backpack/marine/engineerpack, VENDOR_ITEM_REGULAR),
 		list("Technician Welder-Satchel", floor(scale * 2), /obj/item/storage/backpack/marine/engineerpack/satchel, VENDOR_ITEM_REGULAR),
-		list("Radio Telephone Backpack", 0.75, /obj/item/storage/backpack/marine/satchel/rto, VENDOR_ITEM_REGULAR),
 
 		list("BELTS", -1, null, null),
 		list("M276 Pattern Ammo Load Rig", floor(scale * 15), /obj/item/storage/belt/marine, VENDOR_ITEM_REGULAR),
@@ -192,6 +191,7 @@
 		list("MISCELLANEOUS", -1, null, null, null),
 		list("Ballistic goggles", floor(scale * 10), /obj/item/clothing/glasses/mgoggles, VENDOR_ITEM_REGULAR),
 		list("M1A1 Ballistic goggles", floor(scale * 10), /obj/item/clothing/glasses/mgoggles/v2, VENDOR_ITEM_REGULAR),
+		list("M1A1 Ballistic goggles - Blue", floor(scale * 10), /obj/item/clothing/glasses/mgoggles/v2/blue, VENDOR_ITEM_REGULAR),
 		list("Prescription ballistic goggles", floor(scale * 10), /obj/item/clothing/glasses/mgoggles/prescription, VENDOR_ITEM_REGULAR),
 		list("Marine RPG glasses", floor(scale * 10), /obj/item/clothing/glasses/regular, VENDOR_ITEM_REGULAR),
 		list("M5 Integrated Gas Mask", floor(scale * 10), /obj/item/prop/helmetgarb/helmet_gasmask, VENDOR_ITEM_REGULAR),
@@ -305,8 +305,8 @@
 		list("M56D Drum Magazine", floor(scale * 2), /obj/item/ammo_magazine/m56d, VENDOR_ITEM_REGULAR),
 		list("M2C Box Magazine", floor(scale * 2), /obj/item/ammo_magazine/m2c, VENDOR_ITEM_REGULAR),
 		list("HIRR Baton Slugs", floor(scale * 6), /obj/item/explosive/grenade/slug/baton, VENDOR_ITEM_REGULAR),
-		list("M74 AGM-S Star Shell", floor(scale * 4), /obj/item/explosive/grenade/high_explosive/airburst/starshell, VENDOR_ITEM_REGULAR),
-		list("M74 AGM-H Hornet Shell", floor(scale * 4), /obj/item/explosive/grenade/high_explosive/airburst/hornet_shell, VENDOR_ITEM_REGULAR),
+		list("M74 AGM-S Star Shell", floor(scale * 5), /obj/item/explosive/grenade/high_explosive/airburst/starshell, VENDOR_ITEM_REGULAR),
+		list("M74 AGM-H Hornet Shell", floor(scale * 5), /obj/item/explosive/grenade/high_explosive/airburst/hornet_shell, VENDOR_ITEM_REGULAR),
 		)
 
 //--------------SQUAD ARMAMENTS VENDOR--------------

@@ -391,8 +391,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_field_doctor, list(
 		/obj/item/storage/surgical_case/regular,
 		/obj/item/clothing/accessory/stethoscope,
 		/obj/item/device/flashlight/pen,
-		/obj/structure/bed/portable_surgery,
-		/obj/structure/bed/roller,
+		/obj/item/roller/surgical,
+		/obj/item/roller,
 	)
 
 /obj/effect/essentials_set/medical/doctor
@@ -406,8 +406,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_field_doctor, list(
 		/obj/item/clothing/accessory/stethoscope,
 		/obj/item/device/flashlight/pen,
 		/obj/item/storage/syringe_case,
-		/obj/structure/bed/portable_surgery,
-		/obj/structure/bed/roller,
+		/obj/item/roller/surgical,
+		/obj/item/roller,
 	)
 
 /obj/effect/essentials_set/medical/doctor/field
@@ -421,8 +421,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_field_doctor, list(
 		/obj/item/clothing/accessory/stethoscope,
 		/obj/item/device/flashlight/pen,
 		/obj/item/storage/syringe_case,
-		/obj/structure/bed/portable_surgery,
-		/obj/structure/bed/roller,
+		/obj/item/roller/surgical,
+		/obj/item/roller,
 		/obj/item/clothing/shoes/marine,
 		/obj/item/storage/box/mre,
 		/obj/item/device/radio/marine,

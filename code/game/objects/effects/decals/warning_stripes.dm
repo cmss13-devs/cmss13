@@ -5,6 +5,7 @@
 	layer = WEED_LAYER
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	anchored = TRUE
+	flags_atom = FPRINT|NO_ZFALL
 	var/initial_icon_state
 
 /obj/effect/decal/warning_stripes/Initialize(mapload, ...)

@@ -1027,7 +1027,7 @@ This function completely restores a damaged organ to perfect condition.
 			SPAN_WARNING("You hear a terrible sound of ripping tendons and flesh!"), 3)
 
 			// Checks if the mob can feel pain or if they have at least oxycodone level of painkiller
-			if(body_part != BODY_FLAG_HEAD && owner.pain.feels_pain && owner.pain.reduction_pain < PAIN_REDUCTION_HEAVY)
+			if(body_part != BODY_FLAG_HEAD && owner.pain.feels_pain && owner.pain.reduction_pain < PAIN_REDUCTION_FULL)
 				INVOKE_ASYNC(owner, TYPE_PROC_REF(/mob, emote), pick("pain", "scream"))
 
 			if(organ)
@@ -1395,7 +1395,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	var/burnstate = copytext(damage_state, 2)
 	if(burnstate != "0")
 		burn_overlay.icon_state = "burn_[icon_name]_[burnstate]"
-		. += wound_overlay
+		. += burn_overlay
 
 /*
 			LIMB TYPES

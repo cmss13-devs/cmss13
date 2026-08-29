@@ -11,6 +11,7 @@
 	potential_weather_events = list(
 		/datum/weather_event/hybrisa_light_rain,
 		/datum/weather_event/hybrisa_very_light_rain,
+		/datum/weather_event/acid_rain,
 	)
 
 /datum/weather_ss_map_holder/lv759_hybrisa_prospera/should_affect_area(area/A)

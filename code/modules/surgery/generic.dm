@@ -63,11 +63,6 @@
 
 		surgery.status += 6 //IMS completes all steps.
 		surgery.affected_limb.surgery_status |= (INCISION_WIDENED | INCISION_CLAMPED)
-		switch(target_zone) //forces application of overlays
-			if("chest")
-				target.overlays += image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
-			if("head")
-				target.overlays += image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
 
 	else if(tool_type == /obj/item/tool/surgery/scalpel/laser && prob(las_scalpel.bloodlessprob))
 		user.affected_message(target,

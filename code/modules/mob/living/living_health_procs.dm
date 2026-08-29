@@ -668,14 +668,6 @@
 		var/mob/living/carbon/human/H = src
 		H.update_body()
 
-/mob/living/proc/remove_surgery_overlays() // Mainly for ahealing
-	if(overlays)
-		overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
-		overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_open")
-		overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
-		overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_open")
-
-
 /mob/living/keybind_face_direction(direction)
 	if(!canface())
 		return

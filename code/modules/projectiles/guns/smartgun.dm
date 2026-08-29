@@ -522,17 +522,28 @@
 	if(user.client)
 		if(!frontline_enabled && !secondary_toggled)
 			mouse_pointer = initial(mouse_pointer)
+			if(flags_item & WIELDED)
+				return update_mouse_pointer(user, TRUE)
+			else
+				return update_mouse_pointer(user, FALSE)
 		if(!frontline_enabled && secondary_toggled)
 			mouse_pointer = 'icons/effects/mouse_pointer/smartgun_mouse/smartgun_base_ap.dmi'
+			if(flags_item & WIELDED)
+				return update_mouse_pointer(user, TRUE)
+			else
+				return update_mouse_pointer(user, FALSE)
 		if(frontline_enabled && !secondary_toggled)
 			mouse_pointer = 'icons/effects/mouse_pointer/smartgun_mouse/smartgun_front.dmi'
+			if(flags_item & WIELDED)
+				return update_mouse_pointer(user, TRUE)
+			else
+				return update_mouse_pointer(user, FALSE)
 		if(frontline_enabled && secondary_toggled)
 			mouse_pointer = 'icons/effects/mouse_pointer/smartgun_mouse/smartgun_front_ap.dmi'
-
-		if(flags_item & WIELDED)
-			update_mouse_pointer(user, TRUE)
-		else
-			update_mouse_pointer(user, FALSE)
+			if(flags_item & WIELDED)
+				return update_mouse_pointer(user, TRUE)
+			else
+				return update_mouse_pointer(user, FALSE)
 
 /obj/item/weapon/gun/smartgun/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
 	if(aim_assist && !auto_fire)

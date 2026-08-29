@@ -1288,7 +1288,7 @@ and you're good to go.
 		//    \\
 //----------------------------------------------------------
 
-/obj/item/weapon/gun/proc/Fire(atom/target, mob/living/user, params, reflex = FALSE, dual_wield)
+/obj/item/weapon/gun/proc/Fire(atom/target, mob/living/user, params, reflex = FALSE, dual_wield, shot_accuracy_mult = BASE_ACCURACY_MULT)
 	set waitfor = FALSE
 
 	if(!gun_user)
@@ -1343,7 +1343,7 @@ and you're good to go.
 		if(istype(akimbo) && akimbo.gun_category == gun_category && !(akimbo.flags_gun_features & GUN_WIELDED_FIRING_ONLY))
 			dual_wield = TRUE //increases recoil, increases scatter, and reduces accuracy.
 
-	var/fire_return = handle_fire(target, user, params, reflex, dual_wield, check_for_attachment_fire, akimbo, fired_by_akimbo)
+	var/fire_return = handle_fire(target, user, params, reflex, dual_wield, check_for_attachment_fire, akimbo, fired_by_akimbo, shot_accuracy_mult)
 	if((gun_firemode == GUN_FIREMODE_AUTOMATIC && current_mag?.current_rounds % 8 == 0) || (gun_firemode == GUN_FIREMODE_BURSTFIRE && burst_amount <= shots_fired) || gun_firemode == GUN_FIREMODE_SEMIAUTO)
 		display_ammo(user)
 
@@ -1353,7 +1353,7 @@ and you're good to go.
 	flags_gun_features &= ~GUN_BURST_FIRING // We always want to turn off bursting when we're done, mainly for when we break early mid-burstfire.
 	return AUTOFIRE_CONTINUE
 
-/obj/item/weapon/gun/proc/handle_fire(atom/target, mob/living/user, params, reflex = FALSE, dual_wield, check_for_attachment_fire, akimbo, fired_by_akimbo)
+/obj/item/weapon/gun/proc/handle_fire(atom/target, mob/living/user, params, reflex = FALSE, dual_wield, check_for_attachment_fire, akimbo, fired_by_akimbo, shot_accuracy_mult = BASE_ACCURACY_MULT)
 	var/turf/curloc = get_turf(user) //In case the target or we are expired.
 	var/turf/targloc = get_turf(target)
 
@@ -1372,6 +1372,7 @@ and you're good to go.
 	var/original_scatter = projectile_to_fire.scatter
 	var/original_accuracy = projectile_to_fire.accuracy
 	apply_bullet_scatter(projectile_to_fire, user, reflex, dual_wield) //User can be passed as null.
+	projectile_to_fire.accuracy = floor(projectile_to_fire.accuracy * shot_accuracy_mult)
 
 	curloc = get_turf(user)
 	if(QDELETED(original_target)) //If the target's destroyed, shoot at where it was last.

@@ -95,7 +95,14 @@
 	var/lock_range = 2
 	var/aim_assist = FALSE
 	var/aim_assist_drain = 333
+	/// Accuracy penalty applied to aim-assisted shots when you don't directly fire at the target
+	var/aim_assist_accuracy_penalty = HIT_ACCURACY_MULT_TIER_10
+	/// Whether going helmetless reduces the aim-assist accuracy penalty
+	var/helmetless_aim_assist_bonus = FALSE
 	var/image/autoshot_image
+
+/obj/item/weapon/gun/smartgun/squad
+	helmetless_aim_assist_bonus = TRUE
 
 /obj/item/weapon/gun/smartgun/Initialize(mapload, ...)
 	ammo_primary_def = GLOB.ammo_list[ammo_primary_def] //Gun initialize calls replace_ammo() so we need to set these first.
@@ -208,24 +215,22 @@
 		user.drop_inv_item_to_loc(new_cell, src)
 		playsound(src, 'sound/machines/click.ogg', 25, 1)
 		return
+	if(HAS_TRAIT(attacking_object, TRAIT_TOOL_SCREWDRIVER))
+		if(!battery)
+			balloon_alert(user, "no battery installed")
+			return
 
-	return ..()
-
-/obj/item/weapon/gun/smartgun/squad/attackby(obj/item/attacking_object, mob/user)
-	if(!HAS_TRAIT(attacking_object, TRAIT_TOOL_SCREWDRIVER))
-		return ..()
-	if(!battery)
-		balloon_alert(user, "no battery installed")
+		var/obj/item/smartgun_battery/removed_cell = battery
+		battery = null
+		removed_cell.update_icon()
+		removed_cell.forceMove(get_turf(user))
+		user.put_in_hands(removed_cell)
+		visible_message(SPAN_NOTICE("[user] unscrews and removes the power cell from [src]."),
+			SPAN_NOTICE("You unscrew and remove the power cell from [src]."))
+		playsound(src, 'sound/items/Screwdriver.ogg', 25, TRUE)
 		return
 
-	var/obj/item/smartgun_battery/removed_cell = battery
-	battery = null
-	removed_cell.update_icon()
-	removed_cell.forceMove(get_turf(user))
-	user.put_in_hands(removed_cell)
-	visible_message(SPAN_NOTICE("[user] unscrews and removes the power cell from [src]."),
-		SPAN_NOTICE("You unscrew and remove the power cell from [src]."))
-	playsound(src, 'sound/items/Screwdriver.ogg', 25, TRUE)
+	return ..()
 
 /obj/item/weapon/gun/smartgun/replace_magazine(mob/user, obj/item/ammo_magazine/magazine)
 	if(!cover_open && has_cover)
@@ -296,8 +301,6 @@
 
 	update_icon()
 	button.name = name
-	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
 /datum/action/item_action/smartgun/toggle_aim_assist/action_activate()
 	. = ..()
@@ -312,6 +315,8 @@
 		action_icon_state = "aimassist"
 	else
 		action_icon_state = "aimassist_off"
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
 /datum/action/item_action/smartgun/toggle_frontline_mode/New(Target, obj/item/holder)
 	. = ..()
@@ -454,17 +459,27 @@
 	set_gun_config_values()
 
 /obj/item/weapon/gun/smartgun/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
+	if(loc != user || ((flags_gun_features & GUN_WIELDED_FIRING_ONLY) && !(flags_item & WIELDED)))
+		return ..()
+
+	var/shot_accuracy_mult = BASE_ACCURACY_MULT
 	if(aim_assist)
+		var/atom/original_target = target
 		target = get_assist_target(user, target)
+		if(target != original_target)
+			var/accuracy_penalty = aim_assist_accuracy_penalty
+			if(helmetless_aim_assist_bonus && !helmet_blocks_sight(user))
+				accuracy_penalty -= HIT_ACCURACY_MULT_TIER_5
+			shot_accuracy_mult -= max(0, accuracy_penalty)
 
 	if(!requires_battery)
-		return ..()
+		return ..(target, user, params, reflex, dual_wield, shot_accuracy_mult)
 
 	if(battery)
 		if(!requires_power)
-			return ..()
+			return ..(target, user, params, reflex, dual_wield, shot_accuracy_mult)
 		if(drain_battery())
-			return ..()
+			return ..(target, user, params, reflex, dual_wield, shot_accuracy_mult)
 
 /obj/item/weapon/gun/smartgun/squad/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
 	if(!battery)
@@ -500,6 +515,8 @@
 /obj/item/weapon/gun/smartgun/proc/toggle_aim_assist(mob/user, silent)
 	if(!silent)
 		to_chat(user, "[icon2html(src, user)] You [aim_assist ? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s aim assist.")
+		if(!aim_assist && helmetless_aim_assist_bonus && helmet_blocks_sight(user))
+			to_chat(user, SPAN_WARNING("Your helmet interferes with the M56 head mounted sight's aim-assist system."))
 		balloon_alert(user, "aim assist [aim_assist? "disabled" : "enabled"]")
 		playsound(loc,'sound/machines/click.ogg', 25, 1)
 
@@ -509,6 +526,13 @@
 		enable_auto_aim(user)
 	else
 		disable_auto_aim(user)
+
+/obj/item/weapon/gun/smartgun/proc/helmet_blocks_sight(mob/user)
+	if(!ishuman(user))
+		return FALSE
+	var/mob/living/carbon/human/human = user
+	// the specialist head-rag for some reason counts as a helmet
+	return istype(human.head, /obj/item/clothing/head/helmet) && !istype(human.head, /obj/item/clothing/head/helmet/specrag)
 
 /obj/item/weapon/gun/smartgun/proc/enable_auto_aim(mob/user)
 	START_PROCESSING(SSobj, src)
@@ -550,13 +574,16 @@
 /obj/item/weapon/gun/smartgun/proc/get_assist_target(mob/living/user, target)
 	if(!aim_assist)
 		return target
+	if(is_blind(user) || user.blinded || (user.sdisabilities & DISABILITY_BLIND))
+		reset_autoshot_image()
+		return target
 
 	var/dist_unconscious = 9999
 	var/dist_conscious = 9999
 
 	var/mob/living/unconscious_target = null
 	var/mob/living/conscious_target = null
-	for(var/mob/living/targetted_mob in range(lock_range, target) & oviewers(user.get_maximum_view_range(), user))
+	for(var/mob/living/targetted_mob in range(lock_range, target) & oview(user.get_maximum_view_range(), user))
 		if(targetted_mob.invisibility)
 			continue
 		if(HAS_TRAIT(targetted_mob, TRAIT_ABILITY_BURROWED))
@@ -567,6 +594,28 @@
 			continue // No dead or non living.
 
 		if(iff_enabled && targetted_mob.get_target_lock(user.faction_group))
+			continue
+
+		var/target_obscured = FALSE
+		for(var/turf/turf in get_line(user, targetted_mob))
+			if(turf.opacity)
+				target_obscured = TRUE
+				break
+			for(var/obj/obstruction in turf)
+				if(!obstruction.opacity)
+					continue
+				target_obscured = TRUE
+				break
+			if(target_obscured)
+				break
+			for(var/obj/effect/particle_effect/smoke/smoke in turf)
+				if(!smoke.obscuring)
+					continue
+				target_obscured = TRUE
+				break
+			if(target_obscured)
+				break
+		if(target_obscured)
 			continue
 
 		var/dist = get_dist_sqrd(user, targetted_mob)
@@ -616,6 +665,7 @@
 	desc = "The actual firearm in the 4-piece M56A2C Smartgun system. Back order only. Besides a more robust weapons casing, an ID lock system and a fancy paintjob, the gun's performance is identical to the standard-issue M56A2.\nAlt-click it to open the feed cover and allow for reloading."
 	icon_state = "m56c"
 	item_state = "m56c"
+	helmetless_aim_assist_bonus = TRUE
 	random_cosmetic_chance = 10
 	random_spawn_cosmetic = list(
 		/obj/item/attachable/cosmetic/uscm_flag,
@@ -726,6 +776,7 @@
 /obj/item/weapon/gun/smartgun/autoaim
 	desc = "The actual firearm in the 4-piece M56A2 Smartgun System. Essentially a heavy, mobile machinegun. This upgraded variant features new, updated tracking software."
 	aim_assist_drain = 50
+	aim_assist_accuracy_penalty = 0
 	actions_types = list(
 		/datum/action/item_action/smartgun/toggle_ammo_type,
 		/datum/action/item_action/smartgun/toggle_aim_assist,
@@ -747,6 +798,7 @@
 	current_mag = /obj/item/ammo_magazine/smartgun/heap
 	ammo_primary_def = /datum/ammo/bullet/smartgun/heap
 	aim_assist_drain = 50
+	aim_assist_accuracy_penalty = 0
 	actions_types = list(
 		/datum/action/item_action/smartgun/toggle_frontline_mode,
 		/datum/action/item_action/smartgun/toggle_aim_assist,
@@ -774,6 +826,7 @@
 	gun_faction = FACTION_PMC
 	has_cover = FALSE
 	aim_assist_drain = 50
+	aim_assist_accuracy_penalty = 0
 	actions_types = list(
 		/datum/action/item_action/smartgun/toggle_ammo_type,
 		/datum/action/item_action/smartgun/toggle_aim_assist,

@@ -475,7 +475,8 @@
 /obj/item/weapon/gun/launcher/rocket/brute/skill_fail(mob/living/user)
 	return !skillcheck(user, SKILL_ENGINEER ,SKILL_ENGINEER_ENGI)
 
-/obj/item/weapon/gun/launcher/rocket/brute/handle_fire(atom/target, mob/living/user, params, reflex = FALSE, dual_wield, check_for_attachment_fire, akimbo, fired_by_akimbo)
+
+/obj/item/weapon/gun/launcher/rocket/brute/handle_fire(atom/target, mob/living/user, params, reflex = FALSE, dual_wield, check_for_attachment_fire, akimbo, fired_by_akimbo, shot_accuracy_mult = BASE_ACCURACY_MULT) // keeps the accuracy modifier when the shot reaches the parent proc
 	if(aiming)
 		return
 

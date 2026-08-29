@@ -85,11 +85,12 @@ GLOBAL_LIST_INIT(cm_vending_clothing_smartgun, list(
 		list("MRE", 0, /obj/item/storage/box/mre, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 		list("Map", 0, /obj/item/map/current_map, MARINE_CAN_BUY_MAP, VENDOR_ITEM_MANDATORY),
 
-		list("HEADWEAR (CHOOSE 1)", 0, null, null, null),
+		list("HELMETLESS HEADWEAR - REDUCED AIM-ASSIST PENALTY (CHOOSE 1)", 0, null, null, null),
 		list("Expedition Flap Cap", 0, /obj/item/clothing/head/cmcap/flap, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 		list("Patrol Cap", 0, /obj/item/clothing/head/cmcap, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
-		list("Beret", 0, /obj/item/clothing/head/beret/cm, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
+		list("Boonie Hat", 0, /obj/item/clothing/head/cmcap/boonie, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 		list("Headband", 0, /obj/item/clothing/head/headband, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
+		list("Weapons Specialist Head-Rag", 0, /obj/item/clothing/head/helmet/specrag, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 
 		list("BELT", 0, null, null, null),
 		list("M802 Smartgunner Sidearm Belt", 0, /obj/item/storage/belt/gun/smartgunner/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_MANDATORY),

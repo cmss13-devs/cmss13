@@ -157,21 +157,19 @@
 #define UNDERSHIRT_LAYER 41
 #define MUTANTRACE_LAYER 40
 
-//Surgery overlays
-#define SURGERY_LAYER 39
-
 /// For use by Hunter Flay
-#define FLAY_LAYER 38
-#define UNIFORM_LAYER 37
+#define FLAY_LAYER 39
+#define UNIFORM_LAYER 38
 
 /// bs12 specific. this hack is probably gonna come back to haunt me
-#define TAIL_LAYER 36
+#define TAIL_LAYER 37
 
-#define ID_LAYER 35
-#define SHOES_LAYER 34
-#define GLOVES_LAYER 33
+#define ID_LAYER 36
+#define SHOES_LAYER 35
+#define GLOVES_LAYER 34
 
 /// For splint and gauze overlays
+#define SURGERY_LAYER 33
 #define MEDICAL_LAYER 32
 
 #define SUIT_LAYER 31

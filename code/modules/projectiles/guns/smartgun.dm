@@ -44,10 +44,10 @@
 
 	ammo = /datum/ammo/bullet/smartgun
 	actions_types = list(
+		/datum/action/item_action/smartgun/toggle_lethal_mode,
 		/datum/action/item_action/smartgun/toggle_ammo_type,
 		/datum/action/item_action/smartgun/toggle_aim_assist,
 		/datum/action/item_action/smartgun/toggle_frontline_mode,
-		/datum/action/item_action/smartgun/toggle_lethal_mode,
 		/datum/action/item_action/smartgun/toggle_motion_detector,
 	)
 	attachable_allowed = list()
@@ -514,10 +514,10 @@
 
 /obj/item/weapon/gun/smartgun/proc/toggle_aim_assist(mob/user, silent)
 	if(!silent)
-		to_chat(user, "[icon2html(src, user)] You [aim_assist ? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s aim assist.")
+		to_chat(user, "[icon2html(src, user)] You [aim_assist ? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s aim assist.[aim_assist ? "" : " This substantially increases battery drain."]")
 		if(!aim_assist && helmetless_aim_assist_bonus && helmet_blocks_sight(user))
 			to_chat(user, SPAN_WARNING("Your helmet interferes with the M56 head mounted sight's aim-assist system."))
-		balloon_alert(user, "aim assist [aim_assist? "disabled" : "enabled"]")
+		balloon_alert(user, "aim assist [aim_assist ? "disabled" : "enabled ++BATTERY DRAIN"]")
 		playsound(loc,'sound/machines/click.ogg', 25, 1)
 
 	aim_assist = !aim_assist
@@ -781,10 +781,10 @@
 	aim_assist_drain = 50
 	aim_assist_accuracy_penalty = 0
 	actions_types = list(
+		/datum/action/item_action/smartgun/toggle_lethal_mode,
 		/datum/action/item_action/smartgun/toggle_ammo_type,
 		/datum/action/item_action/smartgun/toggle_aim_assist,
 		/datum/action/item_action/smartgun/toggle_frontline_mode,
-		/datum/action/item_action/smartgun/toggle_lethal_mode,
 		/datum/action/item_action/smartgun/toggle_motion_detector,
 	)
 /obj/item/weapon/gun/smartgun/autoaim/Initialize(mapload, ...)
@@ -803,9 +803,9 @@
 	aim_assist_drain = 50
 	aim_assist_accuracy_penalty = 0
 	actions_types = list(
+		/datum/action/item_action/smartgun/toggle_lethal_mode,
 		/datum/action/item_action/smartgun/toggle_frontline_mode,
 		/datum/action/item_action/smartgun/toggle_aim_assist,
-		/datum/action/item_action/smartgun/toggle_lethal_mode,
 		/datum/action/item_action/smartgun/toggle_motion_detector,
 	)
 
@@ -831,10 +831,10 @@
 	aim_assist_drain = 50
 	aim_assist_accuracy_penalty = 0
 	actions_types = list(
+		/datum/action/item_action/smartgun/toggle_lethal_mode,
 		/datum/action/item_action/smartgun/toggle_ammo_type,
 		/datum/action/item_action/smartgun/toggle_aim_assist,
 		/datum/action/item_action/smartgun/toggle_frontline_mode,
-		/datum/action/item_action/smartgun/toggle_lethal_mode,
 		/datum/action/item_action/smartgun/toggle_motion_detector,
 	)
 
@@ -1057,9 +1057,9 @@
 /obj/item/weapon/gun/smartgun/pve
 	desc = "The actual firearm in the 4-piece M56A2 Smartgun System. This is a variant used by the Solar Devils Batallion, utilizing a 'frontline only' IFF system that refuses to fire if a friendly would be hit."
 	actions_types = list(
+		/datum/action/item_action/smartgun/toggle_lethal_mode,
 		/datum/action/item_action/smartgun/toggle_ammo_type,
 		/datum/action/item_action/smartgun/toggle_aim_assist,
-		/datum/action/item_action/smartgun/toggle_lethal_mode,
 		/datum/action/item_action/smartgun/toggle_motion_detector,
 	)
 

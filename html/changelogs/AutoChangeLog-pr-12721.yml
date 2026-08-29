@@ -1,0 +1,4 @@
+author: "fira"
+delete-after: True
+changes:
+  - code_imp: "Some sounds will now be emitted from the emitting object rather than the ground position. This especially makes a difference for sounds originating from your character, which won't be shifted when you move due to delay."

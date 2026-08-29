@@ -1464,7 +1464,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 ////////////////////
 
 ///SET UP ORGANS
-
+		if(name == "head" || name = "chest" || name = "groin")
 		for(var/datum/internal_organ/organ as anything in internal_organs)
 			if(name == "head" || name == "chest" )
 				current_organ_image = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +1) // incision, then organs, then bones

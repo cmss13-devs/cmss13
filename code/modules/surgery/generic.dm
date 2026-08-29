@@ -152,7 +152,6 @@
 	for(var/datum/effects/bleeding/external/bleeding in patient_limb.bleeding_effects_list)
 		return TRUE
 	return FALSE
-
 //------------------------------------
 
 /datum/surgery_step/clamp_bleeders_step
@@ -639,7 +638,10 @@
 		/datum/surgery_step/open_encased_step/groin,
 		/datum/surgery_step/clamp_bleeders_step,
 	)
-
+/datum/surgery/open_encased/groin/can_start(mob/user, mob/living/carbon/human/patient, obj/limb/patient_limb, obj/item/tool)
+	if(patient_limb.status & LIMB_BROKEN)
+		return TRUE
+	return FALSE
 //Unique to pelvis bone repair surgery. Move organs out of the way to display the pelvis. This step can be skipped, and ends the surgery when completed. Before pelvic repair surgery, it can be skipped to abort the operation if you don't want to repair the pelvis right this second.
 //It can also be skipped to finish laying the organs back on top of the pelvis, or completed to abort the operation.
 /datum/surgery_step/open_encased_step/groin
@@ -647,16 +649,8 @@
 	desc = "move organs away from the pelvis"
 	failure_sound = 'sound/surgery/organ1.ogg'
 
-
-/datum/surgery/open_encased_step/groin/can_start(mob/user, mob/living/carbon/human/patient, obj/limb/patient_limb, obj/item/tool)
-	return (patient_limb.status & LIMB_BROKEN)
-
 /datum/surgery_step/open_encased_step/groin/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	var/internals_type
-	if(issynth(target))
-		internals_type = "hydraulic systems"
-	else
-		internals_type = "internal organs"
+	var/internals_type = issynth(target) ? "hydraulic systems" : "internal organs"
 
 	user.affected_message(target,
 		SPAN_NOTICE("You begin to gently move [target]'s [internals_type] away from \his [surgery.affected_limb.cavity] with [tool]."),
@@ -666,7 +660,8 @@
 	target.custom_pain("The pressure of your [internals_type] moving around in your lower abdomen is excruciating!", 1)
 	log_interact(user, target, "[key_name(user)] began moving organs in [key_name(target)]'s [surgery.affected_limb.cavity], possibly beginning [surgery].")
 
-/datum/surgery_step/open_encased_step/groin/success(mob/user, mob/living/carbon/target, internals_type, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/open_encased_step/groin/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	var/internals_type = issynth(target) ? "hydraulic systems" : "internal organs"
 	user.affected_message(target,
 		SPAN_NOTICE("You hold [target]'s [internals_type] away from \his [surgery.affected_limb.cavity] with [tool], exposing \his pelvic bones."),
 		SPAN_NOTICE("[user] holds your [internals_type] away from [surgery.affected_limb.cavity] with [tool], exposing your pelvic bones."),
@@ -675,10 +670,12 @@
 	surgery.affected_limb.surgery_status &= ~INCISION_BONE_CLOSED
 	surgery.affected_limb.surgery_status |= INCISION_BONE_OPENED
 	target.incision_depths[target_zone] = SURGERY_DEPTH_DEEP
+	target.update_surgery_overlays()
 	complete(target, surgery) //This finishes the surgery.
 	log_interact(user, target, "[key_name(user)] moved organs away from [key_name(target)]'s [surgery.affected_limb.cavity], ending [surgery].")
 
-/datum/surgery_step/open_encased_step/groin/failure(mob/user, mob/living/carbon/target, internals_type, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/open_encased_step/groin/failure(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	var/internals_type = issynth(target) ? "hydraulic systems" : "internal organs"
 	user.affected_message(target,
 		SPAN_WARNING("Your hand slips, bruising [target]'s [internals_type] and contaminating \his lower abdomen!"),
 		SPAN_WARNING("[user]'s hand slips, bruising your [internals_type] and contaminating your lower abdomen!"),
@@ -782,7 +779,7 @@
 
 //Gotta move dem organs back in place before closing the patient!
 /datum/surgery_step/close_encased_step/groin
-	name = "Close Bone"
+	name = "Move Organs Back"
 	desc = "move the abdominopelvic organs back in place"
 	failure_sound = 'sound/surgery/organ1.ogg'
 
@@ -813,7 +810,13 @@
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SHALLOW
 	log_interact(user, target, "[key_name(user)] moved [internals_type] back in place into [key_name(target)]'s [surgery.affected_limb.cavity], beginning [surgery].")
 
-/datum/surgery_step/close_encased_step/groin/failure(mob/user, mob/living/carbon/human/target, internals_type, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/close_encased_step/groin/failure(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	var/internals_type
+	if(issynth(target))
+		internals_type = "hydraulic systems"
+	else
+		internals_type = "internal organs"
+
 	user.affected_message(target,
 		SPAN_WARNING("Your hand slips, bruising [target]'s [internals_type] and contaminating \his [surgery.affected_limb.cavity]!"),
 		SPAN_WARNING("[user]'s hand slips, bruising your [internals_type] and contaminating your [surgery.affected_limb.cavity]!"),

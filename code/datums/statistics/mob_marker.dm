@@ -5,6 +5,9 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	stat = DEAD
 	mob_flags = MOB_ABSTRACT
+	density = FALSE
+	anchored = TRUE
+	flags_atom = NO_ZFALL
 
 /mob/dead/mob_marker/Initialize(mapload, mob/inheriting)
 	. = ..()

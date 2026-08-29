@@ -29,8 +29,8 @@ SUBSYSTEM_DEF(influxplayerstats)
 
 
 /datum/controller/subsystem/influxplayerstats/fire(resumed = FALSE)
-	if (!resumed)
-		src.currentrun = GLOB.human_mob_list + GLOB.xeno_mob_list + GLOB.marker_mob_list
+	if(!resumed)
+		currentrun = GLOB.human_mob_list + GLOB.xeno_mob_list + GLOB.marker_mob_list
 
 	for(var/datum/influx_player_stats/stat as anything in stat_types)
 		var/list/ground_level = recorded_stats[IPS_GROUND_LEVEL][stat.key]
@@ -41,7 +41,7 @@ SUBSYSTEM_DEF(influxplayerstats)
 			ship_level[entry] = 0
 
 
-	while(length(src.currentrun))
+	while(length(currentrun))
 		var/mob/target = currentrun[length(currentrun)]
 		currentrun.len--
 
@@ -58,7 +58,7 @@ SUBSYSTEM_DEF(influxplayerstats)
 			// Some unknown level, skip
 			continue
 
-		for(var/datum/influx_player_stats/stat as anything in src.stat_types)
+		for(var/datum/influx_player_stats/stat as anything in stat_types)
 			if(!stat.is_relevant(target))
 				continue
 			var/list/data = level_stats[stat.key]

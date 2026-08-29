@@ -10,7 +10,7 @@
 	. = ..()
 	// Don't even add to the marker mob list if we're not inheriting from a mob.
 	if(!inheriting)
-		return
+		return INITIALIZE_HINT_QDEL
 	name = inheriting.name
 	faction = inheriting.faction
 	GLOB.marker_mob_list += src

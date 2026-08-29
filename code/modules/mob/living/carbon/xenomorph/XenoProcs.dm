@@ -584,17 +584,28 @@
 
 
 // Handle queued actions.
-/mob/living/carbon/xenomorph/proc/handle_queued_action(atom/A)
+/mob/living/carbon/xenomorph/proc/handle_queued_action(atom/target)
+	. = FALSE
 	if(!queued_action || !istype(queued_action) || !(queued_action in actions))
+		clear_queued_action()
 		return
 
 	if(queued_action.can_use_action() && queued_action.action_cooldown_check())
-		queued_action.use_ability_wrapper(A)
+		queued_action.use_ability_wrapper(target)
+		. = TRUE
 
+	clear_queued_action()
+
+/// Clears any queued action
+/mob/living/carbon/xenomorph/proc/clear_queued_action()
 	queued_action = null
 
+	if(queued_action_timer != TIMER_ID_NULL)
+		deltimer(queued_action_timer)
+		queued_action_timer = TIMER_ID_NULL
+
 	if(client)
-		client.mouse_pointer_icon = initial(client.mouse_pointer_icon) // Reset our mouse pointer when we no longer have an action queued.
+		client.mouse_pointer_icon = initial(client.mouse_pointer_icon)
 
 /// Called when pulling something to either upgrade the grab or restrain the pulled mob
 /mob/living/carbon/xenomorph/proc/pull_power(obj/item/grab/grab_obj)

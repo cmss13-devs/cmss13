@@ -111,6 +111,7 @@
 		surgery_flesh_overlay = null
 		surgery_bone_overlay = null
 		surgery_ib_overlay = null
+		current_organ_image = null
 
 	wound_overlay = image('icons/mob/humans/dam_human.dmi', "grayscale_0", -DAMAGE_LAYER)
 	wound_overlay.color = owner?.species.blood_color
@@ -1428,6 +1429,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 
 // SET UP WIDENED INCISIONS
 	if(surgery_status & INCISION_WIDENED) //adds the widened incision or body cavity if chest/pelvis/skull
+		surgery_flesh_overlay = image('icons/mob/humans/dam_human.dmi', layer = -SURGERY_LAYER)
 		if(issynth(owner))
 			if(name == "groin" || name == "chest") //synths have unique body cavities; they're filled with hydraulic tubes and other junk, not organs, except
 				surgery_flesh_overlay.icon_state = "incision_wide_[name]_s"
@@ -1482,13 +1484,13 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 // SET UP INTERNALLY BLEEDING OVERLAYS
 		if(INCISION_INT_BLEEDING) //internally bleeding limbs can only be identified after widening the incision
 			surgery_ib_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +3)
+			surgery_ib_overlay.color = owner?.species.blood_color
+
 			if(issynth(owner))
 				if(name == "chest") //synths have unique body cavities; they're filled with hydraulic tubes and other junk.
 					surgery_ib_overlay.icon_state = "bleed_[name]_s"
 			else
 				surgery_ib_overlay.icon_state = "bleed_[name]"
-
-			surgery_ib_overlay.color = owner?.species.blood_color
 
 			. += surgery_ib_overlay
 ////////////////////

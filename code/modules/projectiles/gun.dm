@@ -297,7 +297,7 @@
 		AddComponent(/datum/component/gun_hush)
 	update_icon() //for things like magazine overlays
 	gun_firemode = gun_firemode_list[1] || GUN_FIREMODE_SEMIAUTO
-	AddComponent(/datum/component/automatedfire/autofire, fire_delay, burst_delay, burst_amount, gun_firemode, autofire_slow_mult, CALLBACK(src, PROC_REF(set_bursting)), CALLBACK(src, PROC_REF(reset_fire)), CALLBACK(src, PROC_REF(fire_wrapper)), CALLBACK(src, PROC_REF(display_ammo)), CALLBACK(src, PROC_REF(set_auto_firing))) //This should go after handle_starting_attachment() and setup_firemodes() to get the proper values set.
+	AddComponent(/datum/component/automatedfire/autofire, fire_delay, burst_delay, burst_amount, gun_firemode, autofire_slow_mult, CALLBACK(src, PROC_REF(set_bursting)), CALLBACK(src, PROC_REF(reset_fire)), CALLBACK(src, PROC_REF(fire_wrapper)), CALLBACK(src, PROC_REF(set_auto_firing))) //This should go after handle_starting_attachment() and setup_firemodes() to get the proper values set.
 
 /obj/item/weapon/gun/proc/set_gun_attachment_offsets()
 	attachable_offset = null
@@ -1250,14 +1250,15 @@ and you're good to go.
 
 			// This is where the magazine is auto-ejected
 			if(current_mag.current_rounds <= 0 && flags_gun_features & GUN_AUTO_EJECTOR)
-				if (user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_OFF))
+				if((user.client?.prefs?.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_OFF))
 					update_icon()
-				else if (!(flags_gun_features & GUN_BURST_FIRING) || !in_chamber) // Magazine will only unload once burstfire is over
+				else
 					var/drop_to_ground = TRUE
-					if (user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND))
-						drop_to_ground = FALSE
-						unwield(user)
-						user.swap_hand()
+					if(user.client?.prefs?.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND)
+						if(!(flags_gun_features & GUN_BURST_FIRING) || ((flags_gun_features & GUN_BURST_FIRING) && burst_amount >= shots_fired)) //Don't mess with our hands if we're not done with the burst yet.
+							drop_to_ground = FALSE
+							unwield(user)
+							user.swap_hand()
 					unload(user, TRUE, drop_to_ground) // We want to quickly autoeject the magazine. This proc does the rest based on magazine type. User can be passed as null.
 					playsound(src, empty_sound, 25, 1)
 					SEND_SIGNAL(user, COMSIG_MOB_GUN_EMPTY, src)
@@ -1335,7 +1336,6 @@ and you're good to go.
 	var/fired_by_akimbo = FALSE
 	if(dual_wield)
 		fired_by_akimbo = TRUE
-		gun_user = null
 
 	//Dual wielding. Do we have a gun in the other hand and is it the same category?
 	var/obj/item/weapon/gun/akimbo = user.get_inactive_hand()
@@ -1344,6 +1344,9 @@ and you're good to go.
 			dual_wield = TRUE //increases recoil, increases scatter, and reduces accuracy.
 
 	var/fire_return = handle_fire(target, user, params, reflex, dual_wield, check_for_attachment_fire, akimbo, fired_by_akimbo)
+	if((gun_firemode == GUN_FIREMODE_AUTOMATIC && current_mag?.current_rounds % 8 == 0) || (gun_firemode == GUN_FIREMODE_BURSTFIRE && burst_amount <= shots_fired) || gun_firemode == GUN_FIREMODE_SEMIAUTO)
+		display_ammo(user)
+
 	if(!fire_return)
 		return fire_return
 
@@ -2276,6 +2279,8 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if(gun_firemode == GUN_FIREMODE_AUTOMATIC)
 		reset_fire()
 		display_ammo(gun_user)
+	else if(gun_firemode == GUN_FIREMODE_BURSTFIRE && (flags_gun_features & GUN_BURST_FIRING))
+		return
 	SEND_SIGNAL(src, COMSIG_GUN_STOP_FIRE)
 
 /obj/item/weapon/gun/proc/set_gun_user(mob/to_set)
@@ -2363,9 +2368,10 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	set_target(get_turf_on_clickcatcher(object, gun_user, params))
 	if((gun_firemode == GUN_FIREMODE_SEMIAUTO) || active_attachable)
 		if(Fire(object, gun_user, modifiers))
-			display_ammo(gun_user)
 			reset_fire()
 		return COMSIG_MOB_CLICK_HANDLED
+	else if(gun_firemode == GUN_FIREMODE_BURSTFIRE && (flags_gun_features & GUN_BURST_FIRING))
+		return FALSE
 	SEND_SIGNAL(src, COMSIG_GUN_FIRE)
 	return COMSIG_MOB_CLICK_HANDLED
 

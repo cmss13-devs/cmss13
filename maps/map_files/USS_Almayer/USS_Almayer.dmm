@@ -692,15 +692,6 @@
 /obj/item/tank/phoron,
 /turf/open/floor/almayer/redfull,
 /area/almayer/engineering/upper_engineering)
-"abS" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/crew/alt{
-	dir = 1;
-	pixel_y = -3;
-	pixel_x = 5
-	},
-/turf/open/floor/almayer/emeraldfull,
-/area/almayer/command/cic)
 "abT" = (
 /turf/open/floor/almayer/flooredge/east,
 /area/almayer/squads/platoon1_shared)
@@ -862,18 +853,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cicconference)
-"ack" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/light,
-/obj/structure/transmitter/rotary/no_dnd{
-	name = "Delta Overwatch Telephone";
-	phone_category = "Command";
-	phone_id = "Delta Overwatch";
-	pixel_x = 22;
-	pixel_y = 1
-	},
-/turf/open/floor/almayer/blue/east,
-/area/almayer/command/cic)
 "acl" = (
 /obj/structure/machinery/cm_vending/sorted/medical/blood{
 	pixel_y = 1;
@@ -906,21 +885,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/chapel)
-"acp" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/overwatch/almayer{
-	dir = 8
-	},
-/obj/structure/machinery/computer/cameras/almayer/vehicle{
-	dir = 4;
-	pixel_y = -15;
-	layer = 3.0
-	},
-/obj/item/clothing/glasses/hud/health{
-	layer = 3.3
-	},
-/turf/open/floor/almayer/emeraldcorner,
-/area/almayer/command/cic)
 "acq" = (
 /turf/open/floor/almayer/blue/north,
 /area/almayer/living/offices/flight)
@@ -2827,18 +2791,6 @@
 	},
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/lower_medical_lobby)
-"agH" = (
-/obj/structure/bed/chair/office/dark{
-	dir = 1
-	},
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	name = "General Listening Channel";
-	pixel_y = -35;
-	pixel_x = -26
-	},
-/turf/open/floor/almayer/emerald,
-/area/almayer/command/cic)
 "agI" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/cell_charger{
@@ -3392,21 +3344,6 @@
 	},
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/medical/lower_medical_lobby)
-"ahL" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/overwatch/almayer{
-	dir = 8
-	},
-/obj/structure/machinery/computer/cameras/almayer/vehicle{
-	dir = 4;
-	pixel_y = -15;
-	layer = 3.0
-	},
-/obj/item/clothing/glasses/hud/health{
-	layer = 3.3
-	},
-/turf/open/floor/almayer/bluecorner,
-/area/almayer/command/cic)
 "ahM" = (
 /obj/structure/platform/metal/almayer/west,
 /obj/structure/stairs/multiz/up,
@@ -4493,13 +4430,6 @@
 	},
 /turf/open/floor/almayer/silver/north,
 /area/almayer/command/cichallway)
-"akM" = (
-/obj/structure/stairs{
-	dir = 1
-	},
-/obj/structure/platform/metal/almayer_smooth/west,
-/turf/open/floor/almayer/plating,
-/area/almayer/command/cic)
 "akN" = (
 /turf/open/floor/almayer/plating_striped/north,
 /area/almayer/hallways/lower/port_midship_hallway)
@@ -4965,6 +4895,17 @@
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/living/tankerbunks)
+"alZ" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/overwatch/almayer{
+	dir = 8;
+	layer = 3.2
+	},
+/obj/item/clothing/glasses/hud/health{
+	layer = 3.3
+	},
+/turf/open/floor/almayer/orangecorner/east,
+/area/almayer/command/cic)
 "ama" = (
 /obj/structure/stairs/perspective{
 	dir = 4
@@ -5137,9 +5078,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/lower/workshop)
-"amt" = (
-/turf/open/floor/almayer/silver/east,
-/area/almayer/command/cic)
 "amu" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
@@ -6141,24 +6079,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/pilotbunks)
-"ape" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/transmitter/rotary/no_dnd{
-	name = "Combat Information Center Telephone";
-	phone_category = "Command";
-	phone_id = "Combat Information Center";
-	pixel_x = -6;
-	pixel_y = 7
-	},
-/obj/item/device/binoculars{
-	pixel_x = 9;
-	pixel_y = 5
-	},
-/obj/item/clothing/accessory/device/whistle{
-	pixel_y = -6
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/command/cic)
 "apf" = (
 /obj/structure/coatrack,
 /obj/item/clothing/head/helmet/marine/pilot{
@@ -7744,6 +7664,20 @@
 /obj/effect/landmark/late_join/charlie,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/support)
+"asR" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
+	name = "Dropship Remote Control Console";
+	pixel_y = 0
+	},
+/obj/structure/machinery/computer/crew/alt{
+	pixel_x = -17
+	},
+/obj/structure/machinery/computer/cameras/almayer_network/vehicle{
+	pixel_x = -34
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/command/cic)
 "asS" = (
 /obj/structure/machinery/cryopod/right{
 	pixel_y = 6
@@ -7866,13 +7800,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/offices/cryo)
-"atj" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 4;
-	name = "ship-grade camera"
-	},
-/turf/open/floor/almayer/silver/east,
-/area/almayer/command/cic)
 "atk" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -7950,20 +7877,6 @@
 	},
 /turf/open/floor/almayer/green/north,
 /area/almayer/hallways/upper/fore_hallway)
-"atA" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
-	name = "Dropship Remote Control Console";
-	pixel_y = 0
-	},
-/obj/structure/machinery/computer/crew/alt{
-	pixel_x = -17
-	},
-/obj/structure/machinery/computer/cameras/almayer_network/vehicle{
-	pixel_x = -34
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/command/cic)
 "atB" = (
 /turf/open/floor/almayer/plating_striped/west,
 /area/almayer/hallways/lower/starboard_midship_hallway)
@@ -7973,17 +7886,6 @@
 "atD" = (
 /turf/open/floor/almayer/cargo_arrow/north,
 /area/almayer/hallways/lower/starboard_midship_hallway)
-"atE" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/overwatch/almayer{
-	dir = 8;
-	layer = 3.2
-	},
-/obj/item/clothing/glasses/hud/health{
-	layer = 3.3
-	},
-/turf/open/floor/almayer/redcorner/east,
-/area/almayer/command/cic)
 "atF" = (
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/hallways/lower/starboard_midship_hallway)
@@ -8030,6 +7932,9 @@
 	pixel_x = 8
 	},
 /turf/open/floor/almayer/blackfull,
+/area/almayer/command/cic)
+"atO" = (
+/turf/open/floor/almayer/silver/east,
 /area/almayer/command/cic)
 "atP" = (
 /obj/effect/decal/warning_stripes{
@@ -8641,18 +8546,6 @@
 /obj/item/tool/screwdriver,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sp)
-"avC" = (
-/obj/structure/bed/chair/office/dark{
-	layer = 3.25
-	},
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	name = "General Listening Channel";
-	pixel_y = 36;
-	pixel_x = -30
-	},
-/turf/open/floor/almayer/red/north,
-/area/almayer/command/cic)
 "avD" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/bridgebunks)
@@ -8740,6 +8633,18 @@
 	},
 /turf/open/floor/almayer/test_floor5,
 /area/almayer/command/telecomms)
+"avS" = (
+/obj/structure/bed/chair/office/dark{
+	layer = 3.25
+	},
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_y = 36;
+	pixel_x = -30
+	},
+/turf/open/floor/almayer/red/north,
+/area/almayer/command/cic)
 "avT" = (
 /obj/structure/machinery/vending/coffee{
 	pixel_x = -5
@@ -8881,17 +8786,6 @@
 "awp" = (
 /turf/open/floor/almayer/flooredge/northeast,
 /area/almayer/medical/morgue)
-"awq" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/overwatch/almayer{
-	dir = 8;
-	layer = 3.2
-	},
-/obj/item/clothing/glasses/hud/health{
-	layer = 3.3
-	},
-/turf/open/floor/almayer/orangecorner/east,
-/area/almayer/command/cic)
 "awr" = (
 /turf/open/floor/almayer/blue/northwest,
 /area/almayer/living/bridgebunks)
@@ -9283,6 +9177,21 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/telecomms)
+"axp" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/overwatch/almayer{
+	dir = 8
+	},
+/obj/structure/machinery/computer/cameras/almayer/vehicle{
+	dir = 4;
+	pixel_y = -15;
+	layer = 3.0
+	},
+/obj/item/clothing/glasses/hud/health{
+	layer = 3.3
+	},
+/turf/open/floor/almayer/bluecorner,
+/area/almayer/command/cic)
 "axq" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer/orange,
@@ -9492,11 +9401,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/pb)
-"axW" = (
-/obj/structure/stairs,
-/obj/structure/platform/metal/almayer_smooth/west,
-/turf/open/floor/almayer/plating,
-/area/almayer/command/cic)
 "axX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
@@ -12718,6 +12622,15 @@
 	},
 /turf/open/floor/almayer/emerald/east,
 /area/almayer/command/cic)
+"aGq" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/crew/alt{
+	dir = 1;
+	pixel_y = -3;
+	pixel_x = 5
+	},
+/turf/open/floor/almayer/emeraldfull,
+/area/almayer/command/cic)
 "aGr" = (
 /turf/open/floor/almayer,
 /area/almayer/living/bridgebunks)
@@ -13365,11 +13278,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/briefing)
-"aIq" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/crew/alt,
-/turf/open/floor/almayer/redfull,
-/area/almayer/command/cic)
 "aIr" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -13837,6 +13745,18 @@
 /obj/structure/platform_decoration/metal/almayer_smooth,
 /turf/open_space,
 /area/almayer/middeck/hanger)
+"aJG" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 1
+	},
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_y = -35;
+	pixel_x = -26
+	},
+/turf/open/floor/almayer/emerald,
+/area/almayer/command/cic)
 "aJH" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
 /obj/effect/decal/cleanable/dirt,
@@ -14569,23 +14489,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/lower_astronav)
-"aLJ" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/cameras/almayer/vehicle{
-	dir = 4;
-	pixel_y = -15
-	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/structure/transmitter/rotary/no_dnd{
-	name = "Bravo Overwatch Telephone";
-	phone_category = "Command";
-	phone_id = "Bravo Overwatch";
-	pixel_x = 16
-	},
-/turf/open/floor/almayer/orange/east,
-/area/almayer/command/cic)
 "aLK" = (
 /obj/structure/surface/table/almayer,
 /obj/item/stack/cable_coil{
@@ -14810,18 +14713,6 @@
 /obj/structure/platform/metal/almayer_smooth/west,
 /turf/open_space,
 /area/almayer/middeck/maintenance/bow)
-"aMt" = (
-/obj/structure/toilet{
-	dir = 8;
-	layer = 2.9;
-	pixel_y = 8
-	},
-/obj/structure/window{
-	layer = 2.95;
-	pixel_y = -2
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/commandbunks)
 "aMu" = (
 /obj/structure/barricade/handrail/no_vault{
 	dir = 1
@@ -15894,6 +15785,18 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/offices/cryo)
+"aPI" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/light,
+/obj/structure/transmitter/rotary/no_dnd{
+	name = "Delta Overwatch Telephone";
+	phone_category = "Command";
+	phone_id = "Delta Overwatch";
+	pixel_x = 22;
+	pixel_y = 1
+	},
+/turf/open/floor/almayer/blue/east,
+/area/almayer/command/cic)
 "aPJ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -19726,6 +19629,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/navigation)
+"aYH" = (
+/obj/structure/stairs,
+/obj/structure/platform/metal/almayer_smooth/west,
+/turf/open/floor/almayer/plating,
+/area/almayer/command/cic)
 "aYI" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -49906,6 +49814,13 @@
 /obj/structure/machinery/computer/tech_control,
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
+"crb" = (
+/obj/structure/stairs{
+	dir = 1
+	},
+/obj/structure/platform/metal/almayer_smooth/west,
+/turf/open/floor/almayer/plating,
+/area/almayer/command/cic)
 "crd" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -50069,6 +49984,11 @@
 	layer = 3.3
 	},
 /turf/open/floor/almayer/greencorner/east,
+/area/almayer/command/cic)
+"crw" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/crew/alt,
+/turf/open/floor/almayer/redfull,
 /area/almayer/command/cic)
 "crx" = (
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -58889,18 +58809,18 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/upper/u_a_s)
+"cMI" = (
+/turf/closed/wall/almayer/reinforced,
+/area/almayer/living/synthcloset)
+"cMJ" = (
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/living/synthcloset)
 "cMN" = (
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
 	},
 /turf/open/floor/almayer/orange/west,
 /area/almayer/engineering/upper_engineering/starboard)
-"cMO" = (
-/turf/closed/wall/almayer/reinforced,
-/area/almayer/living/synthcloset)
-"cMP" = (
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/synthcloset)
 "cMV" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 8;
@@ -77971,6 +77891,17 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/upper/u_f_p)
+"lVX" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/overwatch/almayer{
+	dir = 8;
+	layer = 3.2
+	},
+/obj/item/clothing/glasses/hud/health{
+	layer = 3.3
+	},
+/turf/open/floor/almayer/redcorner/east,
+/area/almayer/command/cic)
 "lWr" = (
 /obj/structure/largecrate/random/case,
 /turf/open/floor/almayer/red/northwest,
@@ -84355,6 +84286,23 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/briefing/support)
+"oPE" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/cameras/almayer/vehicle{
+	dir = 4;
+	pixel_y = -15
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/transmitter/rotary/no_dnd{
+	name = "Bravo Overwatch Telephone";
+	phone_category = "Command";
+	phone_id = "Bravo Overwatch";
+	pixel_x = 16
+	},
+/turf/open/floor/almayer/orange/east,
+/area/almayer/command/cic)
 "oPF" = (
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F";
@@ -84836,6 +84784,24 @@
 	dir = 8;
 	pixel_x = 2;
 	pixel_y = 2
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/command/cic)
+"pbV" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/transmitter/rotary/no_dnd{
+	name = "Combat Information Center Telephone";
+	phone_category = "Command";
+	phone_id = "Combat Information Center";
+	pixel_x = -6;
+	pixel_y = 7
+	},
+/obj/item/device/binoculars{
+	pixel_x = 9;
+	pixel_y = 5
+	},
+/obj/item/clothing/accessory/device/whistle{
+	pixel_y = -6
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
@@ -91661,6 +91627,21 @@
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/engineering/upper_engineering/port)
+"snI" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/overwatch/almayer{
+	dir = 8
+	},
+/obj/structure/machinery/computer/cameras/almayer/vehicle{
+	dir = 4;
+	pixel_y = -15;
+	layer = 3.0
+	},
+/obj/item/clothing/glasses/hud/health{
+	layer = 3.3
+	},
+/turf/open/floor/almayer/emeraldcorner,
+/area/almayer/command/cic)
 "snM" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -95268,6 +95249,13 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/lifeboat_pumps/south2)
+"ucz" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 4;
+	name = "ship-grade camera"
+	},
+/turf/open/floor/almayer/silver/east,
+/area/almayer/command/cic)
 "udf" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -95637,6 +95625,18 @@
 "uli" = (
 /turf/open/floor/grass,
 /area/almayer/living/starboard_garden)
+"ulo" = (
+/obj/structure/toilet{
+	dir = 8;
+	layer = 2.9;
+	pixel_y = 8
+	},
+/obj/structure/window{
+	layer = 2.95;
+	pixel_y = -2
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/living/commandbunks)
 "uly" = (
 /obj/structure/bed/stool,
 /turf/open/floor/almayer/plating_striped/east,
@@ -206344,13 +206344,13 @@ aag
 cZe
 cCL
 vDz
-cMO
-cMO
-cMO
-cMO
-cMO
-cMO
-cMO
+cMI
+cMI
+cMI
+cMI
+cMI
+cMI
+cMI
 kWq
 qnh
 aVG
@@ -206447,7 +206447,7 @@ cZe
 cZe
 iPq
 cmr
-cMO
+cMI
 aGL
 aGJ
 aGy
@@ -206550,7 +206550,7 @@ gSy
 ltw
 iPq
 cGA
-cMO
+cMI
 rlf
 soq
 eYQ
@@ -206653,11 +206653,11 @@ sit
 snx
 oVY
 cmr
-cMO
+cMI
 rBa
-cMP
+cMJ
 vEj
-cMP
+cMJ
 rJD
 hyQ
 fEk
@@ -206756,7 +206756,7 @@ nRE
 cmr
 cmr
 sWw
-cMO
+cMI
 rIW
 oGx
 wvU
@@ -206772,9 +206772,9 @@ crI
 cqO
 cqO
 swH
-atj
+ucz
 crm
-amt
+atO
 sEM
 cqO
 cqO
@@ -206873,13 +206873,13 @@ apo
 fHh
 cqO
 lZs
-atE
+lVX
 awk
 ayz
 eVj
 aQg
 asc
-acp
+snI
 aGp
 cqO
 aDv
@@ -206975,15 +206975,15 @@ wVW
 arF
 crK
 cqO
-aIq
-avC
+crw
+avS
 awk
-atA
+asR
 pbs
-ape
+pbV
 asc
-agH
-abS
+aJG
+aGq
 cqO
 aIf
 aEA
@@ -207078,15 +207078,15 @@ crZ
 arG
 crK
 cqO
-aLJ
-awq
+oPE
+alZ
 awk
 bZJ
 awD
 bZJ
 asc
-ahL
-ack
+axp
+aPI
 cqO
 aKq
 aKq
@@ -207479,7 +207479,7 @@ bVs
 xZG
 csH
 mXj
-aMt
+ulo
 kJW
 agj
 aic
@@ -208212,13 +208212,13 @@ crQ
 crQ
 hrm
 crF
-axW
+aYH
 awk
 crp
 aAB
 aBV
 asc
-akM
+crb
 cqW
 aqN
 avY

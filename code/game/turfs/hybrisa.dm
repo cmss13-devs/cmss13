@@ -60,17 +60,29 @@
 /turf/open/hybrisa/street/cement2
 	icon_state = "cement2"
 
+/turf/open/hybrisa/street/cement2/unweedable
+	allow_construction = FALSE
+	is_weedable = NOT_WEEDABLE
+
 /turf/open/hybrisa/street/cement3
 	icon_state = "cement3"
 
 /turf/open/hybrisa/street/asphalt
 	icon_state = "asphalt_old"
 
+/turf/open/hybrisa/street/asphalt/unweedable
+	allow_construction = FALSE
+	is_weedable = NOT_WEEDABLE
+
 // Side-walk
 
 
 /turf/open/hybrisa/street/sidewalkfull
 	icon_state = "sidewalkfull"
+
+/turf/open/hybrisa/street/sidewalkfull/unweedable
+	allow_construction = FALSE
+	is_weedable = NOT_WEEDABLE
 
 /turf/open/hybrisa/street/sidewalkcorner
 	icon_state = "sidewalkcorner"

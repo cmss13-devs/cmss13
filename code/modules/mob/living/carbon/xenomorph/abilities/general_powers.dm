@@ -137,7 +137,8 @@
 			step_counter_x += 1
 		if(WEST)
 			step_counter_x -= 1
-	if(step_counter_x >= 4 || step_counter_x <= -4 || step_counter_y >= 4 || step_counter_y <= -4)
+
+	if(step_counter_x >= 5 || step_counter_x <= -5 || step_counter_y >= 5 || step_counter_y <= -5)
 		step_counter_x = 0 // resetting them here (instead of on success) so that we don't check view constantly (as requested)
 		step_counter_y = 0
 		for(var/obj/effect/alien/weeds/node/preplanted_node in view(4, turf))

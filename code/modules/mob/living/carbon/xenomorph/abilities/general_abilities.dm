@@ -43,8 +43,8 @@
 	var/auto_weeding = FALSE
 	var/datum/action/xeno_action/onclick/plant_weeds/linked_planting
 	var/mob/living/carbon/xenomorph/our_sister
-	var/step_counter_x
-	var/step_counter_y
+	var/step_counter_x = 0
+	var/step_counter_y = 0
 
 // Resting
 /datum/action/xeno_action/onclick/xeno_resting

@@ -6,6 +6,6 @@
 	return FALSE
 
 /datum/influx_player_stats/proc/group_by(mob/target)
-	if(target.faction_group && (FACTION_SURVIVOR in target.faction_group))
+	if(FACTION_SURVIVOR in target.faction_group)
 		return FACTION_SURVIVOR
 	return target.faction

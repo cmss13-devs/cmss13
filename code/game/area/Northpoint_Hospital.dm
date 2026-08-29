@@ -141,9 +141,11 @@
 
 /area/northpoint/outdoors/streets/north_carpark
 	name = "NorHos - North Carpark/Entrance"
+	requires_power = FALSE
 
 /area/northpoint/outdoors/streets/south_carpark
 	name = "NorHos - South Carpark/Entrance"
+	requires_power = FALSE
 
 // --
 

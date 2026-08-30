@@ -850,17 +850,41 @@
 	FOR_DVIEW_END
 
 	var/list/mobs_in_view = list()
-	FOR_DOVIEW(var/mob/living/carbon/M, 7, xeno, HIDE_INVISIBLE_OBSERVER)
-		mobs_in_view += M
+	FOR_DOVIEW(var/mob/living/carbon/mob_in_view, 7, xeno, HIDE_INVISIBLE_OBSERVER)
+		mobs_in_view += mob_in_view
 	FOR_DOVIEW_END
-	for(var/mob/living/carbon/M in orange(10, xeno))
-		if(SEND_SIGNAL(M, COMSIG_MOB_SCREECH_ACT, xeno) & COMPONENT_SCREECH_ACT_CANCEL)
+	for(var/mob/living/carbon/mob_in_view in orange(10, xeno))
+		if(SEND_SIGNAL(mob_in_view, COMSIG_MOB_SCREECH_ACT, xeno) & COMPONENT_SCREECH_ACT_CANCEL)
 			continue
-		M.handle_queen_screech(xeno, mobs_in_view)
+		mob_in_view.handle_queen_screech(xeno, mobs_in_view)
 
 	apply_cooldown()
 
 	return ..()
+
+/datum/action/xeno_action/onclick/screech/give_to(mob/living/living)
+	. = ..()
+	RegisterSignal(living, COMSIG_MOVABLE_ENTERED_AREA, PROC_REF(update_button_icon), TRUE)
+
+/datum/action/xeno_action/onclick/screech/Destroy()
+	. = ..()
+	UnregisterSignal(owner, COMSIG_MOVABLE_ENTERED_AREA, PROC_REF(update_button_icon))
+
+/datum/action/xeno_action/onclick/screech/update_button_icon()
+	var/area/queen_area = get_area(owner)
+	if(queen_area)
+		var/queen_ceiling = queen_area.ceiling
+		action_icon_state = "screech"
+		to_chat(world, queen_ceiling)
+		switch(queen_ceiling)
+			if(CEILING_NO_PROTECTION to CEILING_PROTECTION_TIER_2)
+				action_icon_state = "screech_2"
+			if(CEILING_UNDERGROUND_ALLOW_CAS to CEILING_PROTECTION_TIER_3)
+				action_icon_state = "screech_1"
+		button.overlays.Cut()
+		button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_state)
+	. = ..()
+
 
 /datum/action/xeno_action/activable/gut/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/queen/xeno = owner

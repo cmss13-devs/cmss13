@@ -417,9 +417,16 @@
 		if(!OldLoc)
 			return
 		var/mob/mob_thing = thing
-		var/area/old_area = get_area(OldLoc)
-		if(old_area == src)
+		var/area/new_area = get_area(mob_thing)
+		var/area/old_area = null
+		if(!isarea(OldLoc))
+			old_area = get_area(OldLoc)
+		else
+			old_area = OldLoc
+
+		if(old_area == src || !old_area)
 			return
+		SEND_SIGNAL(mob_thing, COMSIG_MOVABLE_ENTERED_AREA, old_area, new_area)
 		mob_thing?.client?.soundOutput?.update_ambience(src, null, TRUE)
 	else if(istype(thing, /obj/structure/machinery))
 		add_machine(thing)

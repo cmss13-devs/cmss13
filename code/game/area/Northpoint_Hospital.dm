@@ -135,6 +135,7 @@
 
 /area/northpoint/outdoors/streets/lz1
 	name = "NorHos - LZ1 Streets"
+	linked_lz = DROPSHIP_LZ1
 
 /area/northpoint/outdoors/streets/lzstreets
 	name = "NorHos - LZ1 / LZ2 Connection Streets"

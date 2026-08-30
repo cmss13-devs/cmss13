@@ -27,15 +27,24 @@
 /mob/living/carbon/proc/handle_queen_screech(mob/living/carbon/xenomorph/queen/queen, list/mobs_in_view)
 	if(!(src in mobs_in_view))
 		return
+	var/area/queen_area = get_area(queen)
+	var/queen_ceiling = queen_area.ceiling
+	var/multiplier = 1 //if the roof is not thick the screech does not resonate as much
+	switch(queen_ceiling)
+		if(CEILING_NO_PROTECTION to CEILING_PROTECTION_TIER_2)
+			multiplier = 0.3
+		if(CEILING_UNDERGROUND_ALLOW_CAS to CEILING_PROTECTION_TIER_3)
+			multiplier = 0.5
+
 	var/dist = get_dist(queen, src)
 	if(dist <= 4)
 		to_chat(src, SPAN_DANGER("An ear-splitting guttural roar shakes the ground beneath your feet!"))
-		adjust_effect(4, STUN)
-		apply_effect(4, WEAKEN)
+		adjust_effect(4 * multiplier, STUN)
+		apply_effect(4 * multiplier, WEAKEN)
 		if(!ear_deaf || !HAS_TRAIT(src, TRAIT_EAR_PROTECTION))
 			AdjustEarDeafness(5) //Deafens them temporarily
 	else if(dist >= 5 && dist < 7)
-		adjust_effect(3, STUN)
+		adjust_effect(3 * multiplier, STUN)
 		if(!ear_deaf || !HAS_TRAIT(src, TRAIT_EAR_PROTECTION))
 			AdjustEarDeafness(2)
 		to_chat(src, SPAN_DANGER("The roar shakes your body to the core, freezing you in place!"))

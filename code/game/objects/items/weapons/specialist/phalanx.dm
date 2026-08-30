@@ -161,9 +161,9 @@
 	concussion_pulse_ability = new(src)
 	brace_for_impact_ability = new(src)
 
-	light_range = PHALANX_SHOCK_PULSE_RANGE
-	light_power = 1
-	light_color = PHALANX_SHOCK_PULSE_COLOR
+	set_light_range(PHALANX_SHOCK_PULSE_RANGE)
+	set_light_power(5)
+	set_light_color(PHALANX_SHOCK_PULSE_COLOR)
 
 	// We remove the actions again since we use different logic for when the buttons show up/disappear (on toggle instead pick-up).
 	LAZYREMOVE(actions, list(shock_pulse_ability, concussion_pulse_ability, brace_for_impact_ability))
@@ -218,8 +218,9 @@
 /// Called when the shield is to be no longer held in two hands. Ensures that Brace For Impact! is no longer active.
 /obj/item/weapon/shield/collapsible/phalanx/unwield(mob/user)
 	. = ..()
+	var/mob/living/carbon/human/shield_wielder = user
 	if(brace_for_impact_ability.ability_active)
-		brace_for_impact_ability.stop_bracing()
+		brace_for_impact_ability.stop_bracing(shield_wielder)
 
 /obj/item/weapon/shield/collapsible/phalanx/place_offhand(mob/user,item_name)
 	to_chat(user, SPAN_NOTICE("You grab the secondary handle on \the [item_name] with your other hand."))
@@ -353,11 +354,11 @@
 		return
 	brace_for_impact_ability.action_activate()
 
-/obj/item/weapon/shield/collapsible/phalanx/proc/deactivate_all_abilities()
+/obj/item/weapon/shield/collapsible/phalanx/proc/deactivate_all_abilities(mob/living/carbon/human/shield_wielder)
 	if(shock_pulse_ability.ability_active)
-		shock_pulse_ability.stop_shocking()
+		shock_pulse_ability.stop_shocking(shield_wielder)
 	if(brace_for_impact_ability.ability_active)
-		brace_for_impact_ability.stop_bracing()
+		brace_for_impact_ability.stop_bracing(shield_wielder)
 
 //-------------------------------------------------------
 // Phalanx Abilities
@@ -393,7 +394,6 @@
 /datum/action/item_action/specialist/phalanx/shock_pulse
 	ability_primacy = SPEC_PRIMARY_ACTION_1
 	var/ability_active = FALSE
-	var/ability_loop
 
 /datum/action/item_action/specialist/phalanx/shock_pulse/New(mob/living/user, obj/item/holder)
 	..()
@@ -420,17 +420,16 @@
 		return
 
 	if(shield.brace_for_impact_ability.ability_active)
-		shield.brace_for_impact_ability.stop_bracing()
+		shield.brace_for_impact_ability.stop_bracing(shield_wielder)
 
 	if(ability_active)
-		stop_shocking()
+		stop_shocking(shield_wielder)
 	else
-		start_shocking()
+		start_shocking(shield_wielder)
 
 	enter_cooldown(PHALANX_SHOCK_PULSE_COOLDOWN_TIME)
 
-/datum/action/item_action/specialist/phalanx/shock_pulse/proc/start_shocking()
-	var/mob/living/carbon/human/shield_wielder = owner
+/datum/action/item_action/specialist/phalanx/shock_pulse/proc/start_shocking(mob/living/carbon/human/shield_wielder)
 	var/obj/item/weapon/shield/collapsible/phalanx/shield = holder_item
 	shield_wielder.visible_message(SPAN_WARNING("[shield_wielder]'s [shield] starts emitting sparks!"), \
 			SPAN_WARNING("Your [shield] starts emitting sparks!"))
@@ -450,7 +449,7 @@
 	if(shield.shock_pulse_battery && shield.shock_pulse_battery.power_cell.charge % 50 == 0)
 		to_chat(shield_wielder, SPAN_CYAN("<b>SHOCK PULSE</b>: [shield.shock_pulse_battery.power_cell.charge] / [shield.shock_pulse_battery.power_cell.maxcharge] CHARGE REMAINING."))
 	if(shield.shock_pulse_battery.power_cell.charge == 0)
-		stop_shocking()
+		stop_shocking(shield_wielder)
 		return
 
 	for(var/turf/target_turf in range(PHALANX_SHOCK_PULSE_RANGE, shield_wielder))
@@ -514,8 +513,7 @@
 				if(iswydroid(affected_mob))
 					affected_mob.emote("pain")
 
-/datum/action/item_action/specialist/phalanx/shock_pulse/proc/stop_shocking()
-	var/mob/living/carbon/human/shield_wielder = owner
+/datum/action/item_action/specialist/phalanx/shock_pulse/proc/stop_shocking(mob/living/carbon/human/shield_wielder)
 	shield_wielder.visible_message(SPAN_WARNING("[shield_wielder]'s shield stops emitting sparks!"), \
 			SPAN_WARNING("Your shield stops emitting sparks!"))
 	var/obj/item/weapon/shield/collapsible/phalanx/shield = holder_item
@@ -558,7 +556,7 @@
 		return
 
 	if(shield.shock_pulse_ability.ability_active)
-		shield.shock_pulse_ability.stop_shocking()
+		shield.shock_pulse_ability.stop_shocking(shield_wielder)
 
 	playsound(shield_wielder.loc, 'sound/machines/chime.ogg', 20)
 	shield.concussion_pulse_battery.power_cell.charge -= PHALANX_CONCUSSION_PULSE_BATTERY_DRAIN
@@ -632,18 +630,18 @@
 	. = ..()
 	if(!ishuman(owner))
 		return
+	var/mob/living/carbon/human/shield_wielder
 	var/obj/item/weapon/shield/collapsible/phalanx/shield = holder_item
 
 	if(shield.shock_pulse_ability.ability_active)
-		shield.shock_pulse_ability.stop_shocking()
+		shield.shock_pulse_ability.stop_shocking(shield_wielder)
 
 	if(ability_active)
-		stop_bracing()
+		stop_bracing(shield_wielder)
 	else
-		start_bracing()
+		start_bracing(shield_wielder)
 
-/datum/action/item_action/specialist/phalanx/brace_for_impact/proc/start_bracing()
-	var/mob/living/carbon/human/shield_wielder = owner
+/datum/action/item_action/specialist/phalanx/brace_for_impact/proc/start_bracing(mob/living/carbon/human/shield_wielder)
 	var/obj/item/weapon/shield/collapsible/phalanx/shield = holder_item
 	if(!(shield.flags_item & WIELDED))
 		to_chat(shield_wielder, SPAN_WARNING("You can not begin maneuvering your shield into harm's way with just one hand. Use both hands!"))
@@ -667,8 +665,7 @@
 	ability_active = TRUE
 	enter_cooldown(PHALANX_BRACE_FOR_IMPACT_COOLDOWN_TIME)
 
-/datum/action/item_action/specialist/phalanx/brace_for_impact/proc/stop_bracing()
-	var/mob/living/carbon/human/shield_wielder = owner
+/datum/action/item_action/specialist/phalanx/brace_for_impact/proc/stop_bracing(mob/living/carbon/human/shield_wielder)
 	var/obj/item/weapon/shield/collapsible/phalanx/shield = holder_item
 	shield_wielder.status_flags |= (CANPUSH|CANSTUN)
 	shield.readied_block = PHALANX_SHIELD_CHANCE_EXTENDED

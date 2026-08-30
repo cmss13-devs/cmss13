@@ -163,7 +163,7 @@
 	damage_var_low = PROJECTILE_VARIANCE_TIER_10
 	damage_var_high = PROJECTILE_VARIANCE_TIER_1
 	penetration = ARMOR_PENETRATION_TIER_10
-	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_BALLISTIC
+	flags_ammo_behavior = AMMO_BALLISTIC
 
 /datum/ammo/bullet/revolver/mateba/highimpact/explosive/on_hit_mob(mob/M, obj/projectile/P)
 	..()

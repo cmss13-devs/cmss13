@@ -1,0 +1,4 @@
+author: "JackieEstegado"
+delete-after: True
+changes:
+  - bugfix: "Fixed some acid holes on maps having the wrong orientation."

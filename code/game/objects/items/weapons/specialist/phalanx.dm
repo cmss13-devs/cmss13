@@ -7,6 +7,7 @@
 #define PHALANX_SHIELD_CHANCE_COLLAPSED 25
 /// Regular block chance in percentage when the shield is extended (raised)
 #define PHALANX_SHIELD_CHANCE_EXTENDED 75
+// Brace For Impact shield chance is found in the ability section
 
 /// Multiplier on block chance for projectiles when the shield is collapsed (ie, multiplier * PHALANX_SHIELD_CHANCE_COLLAPSED)
 #define PHALANX_PROJECTILE_BLOCK_CHANCE_COLLAPSED 1
@@ -14,7 +15,8 @@
 #define PHALANX_PROJECTILE_BLOCK_CHANCE_EXTENDED 2
 
 /// Regular slowdown when the shield is extended (raised)
-#define PHALANX_SLOWDOWN_EXTENDED 0.55
+#define PHALANX_SLOWDOWN_EXTENDED 0.8
+// Brace For Impact slowdown is found in the ability section
 
 // Ability Defines
 //-------------------------------------------------------
@@ -82,13 +84,19 @@
 // Block Defines
 //-------------------------------------------------------
 
+/// How low the user's stamina drops before we start rolling the dice on dropping the shield
 #define PHALANX_STAMINA_DROP_CHECK_THRESHOLD 20
+/// The chance in percentage for the user to drop their shield with every block after PHALANX_STAMINA_DROP_CHECK_THRESHOLD is reached
 #define PHALANX_STAMINA_DROP_CHANCE 35
 
-#define PHALANX_STAMINA_DAMAGE_REGULAR 5
+/// Regular stamina damage the user takes from blocked attacks
+#define PHALANX_STAMINA_DAMAGE_REGULAR 10
+/// The lowest that stamina damage can reach from regular blocked attacks
 #define PHALANX_LOWEST_STAMINA_REGULAR 20
 
+/// Projectile stamina damage the user takes from blocked attacks
 #define PHALANX_STAMINA_DAMAGE_PROJECTILES 1
+/// The lowest that stamina damage can reach from blocked projectile attacks
 #define PHALANX_LOWEST_STAMINA_PROJECTILES 30
 
 /obj/item/weapon/shield/collapsible/phalanx

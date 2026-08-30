@@ -1153,6 +1153,7 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 					"[squad_name][JOB_SQUAD_SPECIALIST_GRENADIER]" = (squad_number + 2),
 					"[squad_name][JOB_SQUAD_SPECIALIST_SHARP]" = (squad_number + 2),
 					"[squad_name][JOB_SQUAD_SPECIALIST_PYRO]" = (squad_number + 2),
+					"[squad_name][JOB_SQUAD_SPECIALIST_PHALANX]" = (squad_number + 2),
 					"[squad_name][JOB_SQUAD_SPECIALIST_HEAVY]" = (squad_number + 2),
 					"[squad_name][JOB_SQUAD_SMARTGUN]" = (squad_number + 3),
 					"[squad_name][JOB_SQUAD_ENGI]" = (squad_number + 4),

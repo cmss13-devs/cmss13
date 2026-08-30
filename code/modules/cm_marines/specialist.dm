@@ -227,10 +227,11 @@
 	kit_typepath = /obj/item/storage/box/spec/pyro
 
 /datum/specialist_set/phalanx
-	name = "Phalanx Set"
+	name = "Phalanx Shield Set"
 	role_name = JOB_SQUAD_SPECIALIST_PHALANX
 	skill_to_give = SKILL_SPEC_PHALANX
-	rank_icon = "spec_sharp"
+	trait_to_give = "phalanx"
+	rank_icon = "spec_heavy"
 	kit_typepath = /obj/item/storage/box/spec/phalanx
 
 /datum/specialist_set/heavy

@@ -182,7 +182,7 @@
 
 /obj/item/weapon/shield/collapsible/phalanx/get_examine_text(mob/user)
 	. = ..()
-	. += SPAN_NOTICE("<br>This weapon has three special abilities.<br><b>Toggle Shock Pulse</b>: Damage and slow hostiles adjacent with a continuous field of electricity. <br><b>Activate Concussion Pulse</b>: Knockdown and slow nearby targets with a powerful discharge of energy.<br><b>Brace For Impact</b>: Increase block-chance and receive full immunity to displacement. Requires both hands.<br>")
+	. += SPAN_NOTICE("<br>This weapon has three special abilities.<br><b>Toggle Shock Pulse</b>: Damage and slow hostiles adjacent with a continuous field of electricity. <br><b>Activate Concussion Pulse</b>: Knockdown and slow nearby targets with a powerful discharge of energy.<br><b>Brace For Impact</b>: Increase block-chance and receive full immunity to being pushed or stunned. Requires both hands.<br>")
 	. += SPAN_CYAN(shock_pulse_battery != null ? "Shock Pulse Charge: [shock_pulse_battery.power_cell.charge] / [shock_pulse_battery.power_cell.maxcharge]" : "No shock pulse battery inserted.")
 	. += SPAN_CYAN(concussion_pulse_battery != null ? "Concussion Pulse Charge: [concussion_pulse_battery.power_cell.charge] / [concussion_pulse_battery.power_cell.maxcharge]" : "No concussion pulse battery inserted.")
 

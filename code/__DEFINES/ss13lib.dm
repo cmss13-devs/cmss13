@@ -66,7 +66,7 @@
 /// Optional field
 #define SS13LIB_SERVER_LINKS // list(list("type" = "web", "link" = "https://myserver.com"))
 
-/// If this server is whitelisted, provide a link (same format as SS13LIB_SERVER_LINKS) 
+/// If this server is whitelisted, provide a link (same format as SS13LIB_SERVER_LINKS)
 /// where players can apply. An optional description of up to 64 bytes can be provided.
 /// When set, the hub entry displays a "Whitelisted" badge and prompts players to confirm
 /// their whitelist status before joining.
@@ -218,8 +218,11 @@
 	var/username
 	/// Account creation timestamp (ISO 8601).
 	var/created_at
-	/// Anonymized hardware ID for this client, null if not provided.
+	/// Anonymized hardware ID for this client
 	var/hwid
+	/// Hardware uniqueness score (0.0-1.0). Lower values indicate shared
+	/// hardware with other accounts.
+	var/hwid_uniqueness
 	/// The user's Discord ID if they have a linked Discord account, null otherwise.
 	var/discord_id
 	/// The user's Steam ID if they have a linked Steam account, null otherwise.

@@ -109,6 +109,7 @@
 	auth.username = decoded["username"]
 	auth.created_at = decoded["created_at"]
 	auth.hwid = decoded["hwid"]
+	auth.hwid_uniqueness = decoded["hwid_uniqueness"]
 	auth.discord_id = decoded["discord_id"]
 	auth.steam_id = decoded["steam_id"]
 

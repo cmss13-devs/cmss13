@@ -89,6 +89,9 @@ GLOBAL_LIST_INIT(cm_vending_clothing_smartgun, list(
 		list("Expedition Flap Cap", 0, /obj/item/clothing/head/cmcap/flap, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 		list("Patrol Cap", 0, /obj/item/clothing/head/cmcap, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 		list("Boonie Hat", 0, /obj/item/clothing/head/cmcap/boonie, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
+		list("Mission-Specific Durag", 0, /obj/item/clothing/head/durag, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
+		list("USCM Bandana, Tan", 0, /obj/item/clothing/head/cmbandana/tan, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
+		list("USCM Beanie, Grey", 0, /obj/item/clothing/head/beanie/gray, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 		list("Headband", 0, /obj/item/clothing/head/headband/squad, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 		list("Weapons Specialist Head-Rag", 0, /obj/item/clothing/head/helmet/specrag, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 

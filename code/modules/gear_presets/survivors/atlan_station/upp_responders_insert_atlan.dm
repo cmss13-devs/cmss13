@@ -12,7 +12,7 @@
 	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
 	minimap_icon = "upp_pvt"
 	minimap_background = "background_upp"
-	role_comm_title = "107/RECON"
+	role_comm_title = "121/RECON"
 	idtype = /obj/item/card/id/dogtag/upp
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,

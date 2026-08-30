@@ -83,7 +83,7 @@
 			var/datum/effects/bleeding/external/incision_bleed = new(target, surgery.affected_limb, 10)
 			incision_bleed.duration = 10 MINUTES //A weak bleed, but it doesn't stop on its own.
 			surgery.affected_limb.bleeding_effects_list += incision_bleed
-			surgery.affected_limb.surgery_status |= (INCISION_MADE | INCISION_CLAMPED) //I want that beige color 
+			surgery.affected_limb.surgery_status |= (INCISION_MADE | INCISION_CLAMPED) //I want that beige color
 		else
 			surgery.status += 3 // synth skin doesn't cause bleeders
 		surgery.affected_limb.surgery_status |= (INCISION_MADE | INCISION_CLAMPED)
@@ -228,7 +228,7 @@
 	surgery.affected_limb.add_bleeding(int_bleeding, TRUE)
 	surgery.affected_limb.wounds += int_bleeding
 	target.apply_damage(4, BRUTE, target_zone)
-	surgery.affected_limb.surgery_status |= INCISION_INT_BLEEDING
+	surgery.affected_limb.incision_int_bleeding_flag_check()
 	target.update_surgery_overlays()
 	log_interact(user, target, "[key_name(user)] failed to clamp bleeders in [key_name(target)]'s [surgery.affected_limb.display_name], possibly ending [surgery].")
 	return FALSE

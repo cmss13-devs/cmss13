@@ -161,7 +161,7 @@
 	concussion_pulse_ability = new(src)
 	brace_for_impact_ability = new(src)
 
-	set_light_range(PHALANX_SHOCK_PULSE_RANGE)
+	set_light_range(PHALANX_SHOCK_PULSE_RANGE + 1)
 	set_light_power(5)
 	set_light_color(PHALANX_SHOCK_PULSE_COLOR)
 

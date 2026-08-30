@@ -171,6 +171,15 @@
 	AddElement(/datum/element/drop_retrieval/shield, drop_retrieval_slot)
 	AddElement(/datum/element/corp_label/armat)
 
+/obj/item/weapon/shield/collapsible/phalanx/Destroy()
+	QDEL_NULL(toggle_shield_ability)
+	QDEL_NULL(shock_pulse_battery)
+	QDEL_NULL(shock_pulse_ability)
+	QDEL_NULL(concussion_pulse_battery)
+	QDEL_NULL(concussion_pulse_ability)
+	QDEL_NULL(brace_for_impact_ability)
+	return ..()
+
 /obj/item/weapon/shield/collapsible/phalanx/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_NOTICE("<br>This weapon has three special abilities.<br><b>Toggle Shock Pulse</b>: Damage and slow hostiles adjacent with a continuous field of electricity. <br><b>Activate Concussion Pulse</b>: Knockdown and slow nearby targets with a powerful discharge of energy.<br><b>Brace For Impact</b>: Increase block-chance and receive full immunity to displacement. Requires both hands.<br>")

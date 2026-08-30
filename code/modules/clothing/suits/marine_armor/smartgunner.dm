@@ -62,6 +62,11 @@
 
 	UnregisterSignal(user, COMSIG_HUMAN_ATTEMPTING_EQUIP)
 
+/obj/item/clothing/suit/storage/marine/smartgunner/patched/post_vendor_spawn_hook(mob/living/carbon/human/user)
+	. = ..()
+	var/obj/item/clothing/accessory/patch/falcon/squad_main/squad_patch = new()
+	attach_accessory(user, squad_patch)
+
 /obj/item/clothing/suit/storage/marine/smartgunner/reinforced
 	name = "\improper M56 reinforced combat harness"
 	desc = "A heavy protective vest designed to be worn with the M56 Smartgun System, this one also has a bulky reinforced plate attached to it, hurting agility but providing more armor. \nIt has specially designed straps and reinforcement to carry the Smartgun and accessories."
@@ -78,3 +83,8 @@
 		name = "M56 reinforced snow combat harness"
 	else
 		name = "M56 reinforced combat harness"
+
+/obj/item/clothing/suit/storage/marine/smartgunner/reinforced/patched/post_vendor_spawn_hook(mob/living/carbon/human/user)
+	. = ..()
+	var/obj/item/clothing/accessory/patch/falcon/squad_main/squad_patch = new()
+	attach_accessory(user, squad_patch)

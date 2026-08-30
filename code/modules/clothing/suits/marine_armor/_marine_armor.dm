@@ -282,6 +282,11 @@
 	storage_slots = 4
 	specialty = "M4 pattern marine"
 
+/obj/item/clothing/suit/storage/marine/medium/rto/patched/post_vendor_spawn_hook(mob/living/carbon/human/user)
+	. = ..()
+	var/obj/item/clothing/accessory/patch/falcon/squad_main/squad_patch = new()
+	attach_accessory(user, squad_patch)
+
 /obj/item/clothing/suit/storage/marine/medium/rto/army
 	name = "\improper Personal Body Armor System"
 	desc = "The Personnel Body Armor System is the standard issue armor of the US Army, adopted over the M4 series pattern armor during field trials. Surprisingly uncomfortable, but offering far superior protection to the M3 or M4 series armor. At four times the price."
@@ -421,6 +426,11 @@
 	armor_energy = CLOTHING_ARMOR_MEDIUM
 	specialty = "B12 pattern marine"
 	light_range = 5
+
+/obj/item/clothing/suit/storage/marine/medium/leader/patched/post_vendor_spawn_hook(mob/living/carbon/human/user)
+	. = ..()
+	var/obj/item/clothing/accessory/patch/falcon/squad_main/squad_patch = new()
+	attach_accessory(user, squad_patch)
 
 /obj/item/clothing/suit/storage/marine/tanker
 	name = "\improper M3 pattern tanker armor"

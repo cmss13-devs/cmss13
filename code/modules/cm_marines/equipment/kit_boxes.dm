@@ -15,6 +15,14 @@
 	/// For statistics tracking. The kit's name
 	var/kit_name = ""
 
+/obj/item/storage/box/spec/Initialize()
+	. = ..()
+	var/obj/item/clothing/suit/storage/marine/specialist_armor = locate() in contents
+	if(!specialist_armor)
+		return
+	var/obj/item/clothing/accessory/patch/falcon/squad_main/squad_patch = new()
+	specialist_armor.attach_accessory(null, squad_patch)
+
 /obj/item/storage/box/spec/update_icon()
 	if(LAZYLEN(overlays))
 		overlays.Cut()

@@ -708,8 +708,21 @@
 	. = ..()
 	if(!.)
 		return
+	RegisterSignal(clothes, COMSIG_ITEM_EQUIPPED, PROC_REF(on_clothing_equipped))
 	if(ishuman(user) && recursive_holder_check(src) == user)
 		RegisterSignal(user, COMSIG_SET_SQUAD, PROC_REF(update_clothing_wrapper), TRUE)
+	adapt_to_squad()
+
+/obj/item/clothing/accessory/patch/falcon/squad_main/on_removed(mob/living/user, obj/item/clothing/clothes)
+	. = ..()
+	if(.)
+		UnregisterSignal(clothes, COMSIG_ITEM_EQUIPPED)
+
+/obj/item/clothing/accessory/patch/falcon/squad_main/proc/on_clothing_equipped(obj/item/clothing/clothes, mob/living/carbon/human/wearer, slot)
+	SIGNAL_HANDLER
+	if(!clothes.is_valid_slot(slot, TRUE))
+		return
+	RegisterSignal(wearer, COMSIG_SET_SQUAD, PROC_REF(update_clothing_wrapper), TRUE)
 	adapt_to_squad()
 
 /obj/item/clothing/accessory/patch/falcon/squad_main/proc/update_clothing_wrapper(mob/living/carbon/human/wearer)

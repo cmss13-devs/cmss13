@@ -764,7 +764,7 @@
 //Gotta move dem organs back in place before closing the patient!
 /datum/surgery_step/close_encased_step/groin
 	name = "Move Organs Back"
-	desc = "move the abdominopelvic organs back in place"
+	desc = "move the abdominopelvic organs back into place"
 	failure_sound = 'sound/surgery/organ1.ogg'
 
 /datum/surgery_step/close_encased_step/groin/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -790,7 +790,7 @@
 		internals_type = "internal organs"
 
 	user.affected_message(target,
-		SPAN_NOTICE("You move [target]'s [internals_type] in \his [surgery.affected_limb.encased] back into place.."),
+		SPAN_NOTICE("You move [target]'s [internals_type] in \his [surgery.affected_limb.encased] back into place."),
 		SPAN_NOTICE("[user] moves your [internals_type] in your [surgery.affected_limb.cavity] back into place."),
 		SPAN_NOTICE("[user] moves [target]'s [internals_type] in \his [surgery.affected_limb.cavity] back into place."))
 

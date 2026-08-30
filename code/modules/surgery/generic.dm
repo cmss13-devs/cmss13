@@ -301,7 +301,7 @@
 				SPAN_NOTICE("You hold the incision on [target]'s lower abdomen open with [tool], exposing [h_his] viscera."),
 				SPAN_NOTICE("[user] holds the incision on your lower abdomen open with [tool], exposing your viscera."),
 				SPAN_NOTICE("[user] holds the incision on [target]'s lower abdomen open with [tool], exposing [h_his] viscera."))
-			surgery.affected_limb.surgery_status |= INCISION_BONE_CLOSED
+			surgery.affected_limb.surgery_status |= INCISION_PELVIS_HIDDEN
 		else
 			user.affected_message(target,
 				SPAN_NOTICE("You hold the incision on [target]'s [surgery.affected_limb.display_name] open with [tool], exposing [h_his] bones and blood vessels."),
@@ -336,7 +336,7 @@
 				SPAN_WARNING("You tear open the incision on [target]'s lower abdomen with [tool], exposing [h_his] viscera!"),
 				SPAN_WARNING("[user] tears the incision on your lower abdomen open with [tool], exposing your viscera!"),
 				SPAN_WARNING("[user] tears the incision on [target]'s lower abdomen open with [tool], exposing [h_his] viscera!"))
-			surgery.affected_limb.surgery_status |= INCISION_BONE_CLOSED
+			surgery.affected_limb.surgery_status |= INCISION_PELVIS_HIDDEN
 
 		if("chest")
 			user.affected_message(target,
@@ -652,8 +652,8 @@
 		SPAN_NOTICE("[user] holds your [internals_type] away from [surgery.affected_limb.cavity] with [tool], exposing your pelvic bones."),
 		SPAN_NOTICE("[user] holds [target]'s [internals_type] away from \his [surgery.affected_limb.cavity] with [tool], exposing \his pelvic bones."))
 
-	surgery.affected_limb.surgery_status &= ~INCISION_BONE_CLOSED
-	surgery.affected_limb.surgery_status |= INCISION_BONE_OPENED
+	surgery.affected_limb.surgery_status &= ~INCISION_PELVIS_HIDDEN
+	surgery.affected_limb.surgery_status |= INCISION_PELVIS_EXPOSED
 	target.update_surgery_overlays()
 	target.incision_depths[target_zone] = SURGERY_DEPTH_DEEP
 	complete(target, surgery) //This finishes the surgery.
@@ -794,8 +794,8 @@
 		SPAN_NOTICE("[user] moves your [internals_type] in your [surgery.affected_limb.cavity] back into place."),
 		SPAN_NOTICE("[user] moves [target]'s [internals_type] in \his [surgery.affected_limb.cavity] back into place."))
 
-	surgery.affected_limb.surgery_status &= ~INCISION_BONE_OPENED
-	surgery.affected_limb.surgery_status |= INCISION_BONE_CLOSED
+	surgery.affected_limb.surgery_status &= ~INCISION_PELVIS_EXPOSED
+	surgery.affected_limb.surgery_status |= INCISION_PELVIS_HIDDEN
 	target.update_surgery_overlays()
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SHALLOW
 	complete(target, surgery) //This finishes the surgery.

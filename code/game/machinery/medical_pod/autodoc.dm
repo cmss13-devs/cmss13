@@ -607,7 +607,7 @@
 		sleep(CAUTERY_MAX_DURATION*surgery_mod)
 		if(!surgery)
 			return
-		target.incision_depths[limb.name] == SURGERY_DEPTH_SURFACE
+		target.incision_depths[limb.name] = SURGERY_DEPTH_SURFACE
 		target.pain.recalculate_pain()
 		limb.reset_limb_surgeries()
 		limb.remove_all_bleeding(TRUE, FALSE)

@@ -45,26 +45,33 @@
 ///////////////////SURGERY FLAGS///////////////////
 //Surgery defines strictly for overlay application.
 
-///An incision has not yet been widened.
-#define INCISION_MADE (1<<0)
 
 ///The surgical site is bleeding.
-#define INCISION_BLEEDING (1<<1)
+#define INCISION_BLEEDING (1<<0)
 
 ///The surgical site is not bleeding.
-#define INCISION_CLAMPED (1<<2)
+#define INCISION_CLAMPED (1<<1)
+
+///The incision has not yet been widened.
+#define INCISION_MADE (1<<2)
 
 ///The incision has been widened.
 #define INCISION_WIDENED (1<<3)
 
-///The widened incision's organs cannot be manipulated. Inverse for groin incisions.
+///The widened incision's skull or ribcage can be mended on this step.
 #define INCISION_BONE_CLOSED (1<<4)
 
-///The widened incision's organs can be manipulated. Inverse for groin incisions.
+///The widened incision's skull or ribcage cannot be mended on this step.
 #define INCISION_BONE_OPENED (1<<5)
 
-///The widened incision is internally bleeding.
-#define INCISION_INT_BLEEDING (1<<6)
+////The widened incision's pelvic bones cannot be mended on this step.
+#define INCISION_PELVIS_HIDDEN (1<<6)
+
+///The widened incision's pelvic bones can be mended on this step.
+#define INCISION_PELVIS_EXPOSED (1<<7)
+
+///The operation is on a limb that is internally bleeding. Can be any step until IB is fixed.
+#define INCISION_INT_BLEEDING (1<<8)
 
 
 ///////////////////WOUND DEFINES///////////////////

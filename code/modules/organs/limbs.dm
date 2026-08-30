@@ -1422,7 +1422,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 		if(surgery_status & INCISION_BLEEDING)
 			surgery_flesh_overlay.color = owner?.species.incision_color_fresh
 
-		else if(surgery_status & INCISION_CLAMPED)
+		if(surgery_status & INCISION_CLAMPED)
 			surgery_flesh_overlay.color = owner?.species.incision_color_clamped
 
 		. += surgery_flesh_overlay
@@ -1438,11 +1438,12 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 			surgery_flesh_overlay.icon_state = "incision_wide_[name]"
 
 		if(surgery_status & INCISION_BLEEDING)
-			surgery_flesh_overlay.color = owner?.species.incision_color_fresh
 			if(issynth(owner))
-				surgery_flesh_overlay.color = owner?.species.incision_color_clamped //Ash
+				surgery_flesh_overlay.color = owner?.species.incision_color_clamped
+			else
+				surgery_flesh_overlay.color = owner?.species.incision_color_fresh
 
-		else if(surgery_status & INCISION_CLAMPED)
+		if(surgery_status & INCISION_CLAMPED)
 			surgery_flesh_overlay.color = owner?.species.incision_color_clamped
 
 		. += surgery_flesh_overlay
@@ -1455,10 +1456,12 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 			surgery_bone_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +1) //incision, then bones on top
 
 		surgery_bone_overlay.icon_state = "bone_[name]"
+
 		if(surgery_status & INCISION_BONE_OPENED)
 			surgery_bone_overlay.icon_state = "bone_open_[name]"
-		else if(surgery_status & INCISION_BONE_CLOSED)
+		if(surgery_status & INCISION_BONE_CLOSED || surgery_status & INCISION_PELVIS_EXPOSED)
 			surgery_bone_overlay.icon_state = "bone_[name]"
+
 		if(status & LIMB_BROKEN)
 			surgery_bone_overlay.icon_state += "_broken"
 
@@ -1469,24 +1472,21 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 
 		//Add intestines overlay manually because they're not organs by default, yet
 		if(name == "groin" && !issynth(owner))
-			if(surgery_status & INCISION_BONE_CLOSED) //pelvis is hidden
+			if(surgery_status & INCISION_PELVIS_HIDDEN) //pelvis is hidden
 				innards_overlay = image('icons/mob/humans/dam_human.dmi', icon_state = "innards", layer = SURGERY_LAYER +1)
-			else if(surgery_status & INCISION_BONE_OPENED) //organs were moved away
+			else if(surgery_status & INCISION_PELVIS_EXPOSED) //organs were moved away
 				innards_overlay = null
 			. += innards_overlay
 
 		//Add the rest of the organs.
-		if(surgery_status & INCISION_BONE_CLOSED || surgery_status & INCISION_BONE_OPENED)
+		if(name == "head" || name == "chest" || name == "groin")
 			for(var/datum/internal_organ/organ as anything in internal_organs)
 				if(name == "head" || name == "chest" )
 					current_organ_image = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +1) // incision, then organs, then bones
-
 				else if(name == "groin")
-					if(surgery_status & INCISION_BONE_CLOSED) //pelvis is hidden
+					if(surgery_status & INCISION_PELVIS_HIDDEN)
 						current_organ_image = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +2)
-
-						// incision, bone on top of incision, then organs
-					else if(surgery_status & INCISION_BONE_OPENED) //organs were moved away
+					if(surgery_status & INCISION_PELVIS_EXPOSED) //organs were moved away
 						current_organ_image = null
 				else
 					current_organ_image = null

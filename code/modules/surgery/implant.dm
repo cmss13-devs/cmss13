@@ -231,7 +231,7 @@
 
 	target.custom_pain("You feel something rip in your [surgery.affected_limb.display_name]!", 1)
 	if(target.stat == CONSCIOUS)
-		to_chat(user, SPAN_WARNING("Blood is gushing out of your [surgery.affected_limb.cavity]]! It looks horrifying!"))
+		to_chat(user, SPAN_WARNING("Blood is gushing out of your [surgery.affected_limb.cavity]! It looks horrifying!"))
 		if(target.pain.reduction_pain < surgery.pain_reduction_required)//if patient is not under the proper anesthesia
 			target.emote("pain")
 
@@ -378,7 +378,7 @@
 
 	target.custom_pain("You feel something rip in your [surgery.affected_limb.display_name]!", 1)
 	if(target.stat == CONSCIOUS)
-		to_chat(user, SPAN_WARNING("Blood is gushing out of your [surgery.affected_limb.cavity]]! It looks horrifying!"))
+		to_chat(user, SPAN_WARNING("Blood is gushing out of your [surgery.affected_limb.cavity]! It looks horrifying!"))
 		if(target.pain.reduction_pain < surgery.pain_reduction_required)//if patient is not under the proper anesthesia
 			target.emote("pain")
 

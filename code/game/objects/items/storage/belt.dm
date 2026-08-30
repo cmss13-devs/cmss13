@@ -1869,7 +1869,9 @@
 	holster_slots = list(
 		"1" = list(
 			"icon_x" = 5,
-			"icon_y" = -2))
+			"icon_y" = -2,
+			),
+		)
 	can_hold = list(
 		//sidearms,
 		/obj/item/weapon/gun/flare,

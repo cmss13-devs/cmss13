@@ -281,6 +281,8 @@
 				splash_chance -= victim.species.acid_blood_dodge_chance
 
 			if(splash_chance > 0 && prob(splash_chance)) //Success!
+				if(victim.check_shields("the splashed acid", get_dir(victim, src), custom_response = TRUE)) //...unless they use a shield to block.
+					continue
 				var/dmg = list("damage" = acid_blood_damage)
 				if(SEND_SIGNAL(src, COMSIG_XENO_DEAL_ACID_DAMAGE, victim, dmg) & COMPONENT_BLOCK_DAMAGE)
 					continue

@@ -122,14 +122,15 @@
 				return
 
 		if(should_neckgrab && living_mob.mob_size < MOB_SIZE_BIG)
+			var/can_be_knocked_down = living_mob.status_flags & CANKNOCKDOWN
 			living_mob.drop_held_items()
 			var/duration = get_xeno_stun_duration(living_mob, 2)
 			living_mob.KnockDown(duration)
 			living_mob.Stun(duration)
 			if(living_mob.pulledby != src)
 				return // Grab was broken, probably as Stun side effect (eg. target getting knocked away from a manned M56D)
-			visible_message(SPAN_XENOWARNING("[src] grabs [living_mob] by the throat!"),
-			SPAN_XENOWARNING("We grab [living_mob] by the throat!"))
+			visible_message(SPAN_XENOWARNING("[src] grabs [living_mob] [can_be_knocked_down ? "by the throat" : ", but they manage stand their ground"]!"),
+			SPAN_XENOWARNING("We grab [living_mob] [can_be_knocked_down ? "by the throat" : ", but they manage stand their ground"]!"))
 			warrior_delegate.lunging = TRUE
 			addtimer(CALLBACK(src, PROC_REF(stop_lunging)), get_xeno_stun_duration(living_mob, 2) SECONDS + 1 SECONDS)
 
@@ -231,7 +232,7 @@
 	if(lunge_user.Adjacent(carbon))
 		lunge_user.start_pulling(carbon,1)
 		if(ishuman(carbon))
-			INVOKE_ASYNC(carbon, TYPE_PROC_REF(/mob, emote), "scream")
+			INVOKE_ASYNC(carbon, TYPE_PROC_REF(/mob, emote), carbon.status_flags & CANKNOCKDOWN ? "scream" : "warcry") //RAHHHHH
 	else
 		lunge_user.visible_message(SPAN_XENOWARNING("[lunge_user]'s claws twitch."), SPAN_XENOWARNING("Our claws twitch as we lunge but are unable to grab onto our target. Wait a moment to try again."))
 
@@ -262,11 +263,12 @@
 	if(carbon == fling_user.pulling)
 		fling_user.stop_pulling()
 
-	if(carbon.mob_size >= MOB_SIZE_BIG)
-		to_chat(fling_user, SPAN_XENOWARNING("[carbon] is too big for us to fling!"))
+	if(!check_and_use_plasma_owner())
 		return
 
-	if(!check_and_use_plasma_owner())
+	if(!(carbon.status_flags & CANPUSH))
+		fling_user.visible_message(SPAN_XENOWARNING("[fling_user] fails to muster the strength to fling [carbon]!"), SPAN_XENOWARNING("We fail to muster the strength to fling [carbon]!"))
+		apply_cooldown()
 		return
 
 	fling_user.visible_message(SPAN_XENOWARNING("[fling_user] effortlessly flings [carbon] to the side!"), SPAN_XENOWARNING("We effortlessly fling [carbon] to the side!"))

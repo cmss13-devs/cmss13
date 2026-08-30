@@ -73,6 +73,8 @@
 					left_hand_base_chance = (left_hand_base_chance / 3)
 			if(istype(left_hand_weapon, /obj/item/weapon/shield)) // Activable shields
 				left_hand_shield = left_hand_weapon
+				if(!left_hand_shield.shield_readied)
+					can_block_pounce = FALSE
 
 	if(!left_hand_shield) // Don't want to be sharing a dedicated shield and a weapon's block, else numbers could theoretically go over 100
 		if(r_hand && istype(r_hand, /obj/item/weapon))
@@ -91,6 +93,9 @@
 						right_hand_base_chance = (right_hand_base_chance / 3)
 				if(istype(right_hand_weapon, /obj/item/weapon/shield)) // Activable shields
 					right_hand_shield = right_hand_weapon
+					if(!right_hand_shield.shield_readied)
+						can_block_pounce = FALSE
+
 	if(right_hand_shield)
 		left_hand_weapon = null
 		left_hand_type = SHIELD_NONE
@@ -148,6 +153,7 @@
 		playsound(src, checking_weapon.shield_sound, 70, vary = TRUE)
 		if(!custom_response)
 			visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [checking_weapon.name]!</B>"), null, null, 5)
+		checking_weapon.on_block(src, attack_type)
 		return TRUE
 
 	return FALSE

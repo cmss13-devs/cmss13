@@ -21,7 +21,7 @@
 /obj/item/storage/box/m56a2_system/full/Initialize()
 	. = ..()
 	new /obj/item/clothing/suit/storage/marine/smartgunner(src)
-	new /obj/item/weapon/gun/smartgun/squad(src)
+	new /obj/item/weapon/gun/smartgun(src)
 	new /obj/item/clothing/glasses/night/m56_goggles(src)
 	new /obj/item/smartgun_battery(src)
 	for(var/i in 1 to 3)
@@ -30,7 +30,7 @@
 
 /obj/item/storage/box/m56a2_system/armorless/Initialize()
 	. = ..()
-	new /obj/item/weapon/gun/smartgun/squad(src)
+	new /obj/item/weapon/gun/smartgun(src)
 	new /obj/item/clothing/glasses/night/m56_goggles(src)
 	new /obj/item/smartgun_battery(src)
 	new /obj/item/tool/screwdriver(src)

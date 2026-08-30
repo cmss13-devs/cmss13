@@ -98,11 +98,10 @@
 	/// Accuracy penalty applied to aim-assisted shots when you don't directly fire at the target
 	var/aim_assist_accuracy_penalty = HIT_ACCURACY_MULT_TIER_10
 	/// Whether going helmetless reduces the aim-assist accuracy penalty
-	var/helmetless_aim_assist_bonus = FALSE
+	var/helmetless_aim_assist_bonus = TRUE
+	/// Whether aim assist redirected the current shot
+	var/aim_assist_retargeted = FALSE
 	var/image/autoshot_image
-
-/obj/item/weapon/gun/smartgun/squad
-	helmetless_aim_assist_bonus = TRUE
 
 /obj/item/weapon/gun/smartgun/Initialize(mapload, ...)
 	ammo_primary_def = GLOB.ammo_list[ammo_primary_def] //Gun initialize calls replace_ammo() so we need to set these first.
@@ -459,33 +458,37 @@
 	set_gun_config_values()
 
 /obj/item/weapon/gun/smartgun/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
+	aim_assist_retargeted = FALSE
 	if(loc != user || ((flags_gun_features & GUN_WIELDED_FIRING_ONLY) && !(flags_item & WIELDED)))
 		return ..()
 
-	var/shot_accuracy_mult = BASE_ACCURACY_MULT
 	if(aim_assist)
 		var/atom/original_target = target
 		target = get_assist_target(user, target)
-		if(target != original_target)
-			var/accuracy_penalty = aim_assist_accuracy_penalty
-			if(helmetless_aim_assist_bonus && !helmet_blocks_sight(user))
-				accuracy_penalty -= HIT_ACCURACY_MULT_TIER_5
-			shot_accuracy_mult -= max(0, accuracy_penalty)
+		aim_assist_retargeted = target != original_target
 
 	if(!requires_battery)
-		return ..(target, user, params, reflex, dual_wield, shot_accuracy_mult)
+		return ..(target, user, params, reflex, dual_wield)
 
-	if(battery)
-		if(!requires_power)
-			return ..(target, user, params, reflex, dual_wield, shot_accuracy_mult)
-		if(drain_battery())
-			return ..(target, user, params, reflex, dual_wield, shot_accuracy_mult)
-
-/obj/item/weapon/gun/smartgun/squad/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
 	if(!battery)
 		balloon_alert(user, "battery required")
 		return
-	return ..()
+
+	if(!requires_power)
+		return ..(target, user, params, reflex, dual_wield)
+	if(drain_battery())
+		return ..(target, user, params, reflex, dual_wield)
+
+/obj/item/weapon/gun/smartgun/apply_bullet_scatter(obj/projectile/projectile_to_fire, mob/user, reflex = 0, dual_wield = 0)
+	..()
+	if(!aim_assist_retargeted)
+		return
+	aim_assist_retargeted = FALSE
+
+	var/accuracy_penalty = aim_assist_accuracy_penalty
+	if(helmetless_aim_assist_bonus && aim_assist_accuracy_penalty > 0 && !helmet_blocks_sight(user))
+		accuracy_penalty -= HIT_ACCURACY_MULT_TIER_5
+	projectile_to_fire.accuracy = floor(projectile_to_fire.accuracy * (BASE_ACCURACY_MULT - max(0, accuracy_penalty)))
 
 /obj/item/weapon/gun/smartgun/proc/drain_battery(override_drain)
 	var/shot_drain = 111
@@ -515,8 +518,8 @@
 /obj/item/weapon/gun/smartgun/proc/toggle_aim_assist(mob/user, silent)
 	if(!silent)
 		to_chat(user, "[icon2html(src, user)] You [aim_assist ? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s aim assist.[aim_assist ? "" : " This substantially increases battery drain."]")
-		if(!aim_assist && helmetless_aim_assist_bonus && helmet_blocks_sight(user))
-			to_chat(user, SPAN_WARNING("Your helmet interferes with the M56 head mounted sight's aim-assist system."))
+		if(!aim_assist && helmetless_aim_assist_bonus && aim_assist_accuracy_penalty > 0 && helmet_blocks_sight(user))
+			to_chat(user, SPAN_WARNING("Your helmet interferes with \the [src]'s aim-assist system."))
 		balloon_alert(user, "aim assist [aim_assist ? "disabled" : "enabled ++BATTERY DRAIN"]")
 		playsound(loc,'sound/machines/click.ogg', 25, 1)
 
@@ -668,7 +671,6 @@
 	desc = "The actual firearm in the 4-piece M56A2C Smartgun system. Back order only. Besides a more robust weapons casing, an ID lock system and a fancy paintjob, the gun's performance is identical to the standard-issue M56A2.\nAlt-click it to open the feed cover and allow for reloading."
 	icon_state = "m56c"
 	item_state = "m56c"
-	helmetless_aim_assist_bonus = TRUE
 	random_cosmetic_chance = 10
 	random_spawn_cosmetic = list(
 		/obj/item/attachable/cosmetic/uscm_flag,
@@ -780,6 +782,7 @@
 	desc = "The actual firearm in the 4-piece M56A2 Smartgun System. Essentially a heavy, mobile machinegun. This upgraded variant features new, updated tracking software."
 	aim_assist_drain = 50
 	aim_assist_accuracy_penalty = 0
+	helmetless_aim_assist_bonus = FALSE
 	actions_types = list(
 		/datum/action/item_action/smartgun/toggle_lethal_mode,
 		/datum/action/item_action/smartgun/toggle_ammo_type,
@@ -802,6 +805,7 @@
 	ammo_primary_def = /datum/ammo/bullet/smartgun/heap
 	aim_assist_drain = 50
 	aim_assist_accuracy_penalty = 0
+	helmetless_aim_assist_bonus = FALSE
 	actions_types = list(
 		/datum/action/item_action/smartgun/toggle_lethal_mode,
 		/datum/action/item_action/smartgun/toggle_frontline_mode,
@@ -830,6 +834,7 @@
 	has_cover = FALSE
 	aim_assist_drain = 50
 	aim_assist_accuracy_penalty = 0
+	helmetless_aim_assist_bonus = FALSE
 	actions_types = list(
 		/datum/action/item_action/smartgun/toggle_lethal_mode,
 		/datum/action/item_action/smartgun/toggle_ammo_type,

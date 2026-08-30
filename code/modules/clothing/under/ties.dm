@@ -511,6 +511,14 @@
 		valid_icon_states = icon_states(icon)
 	adapt_to_squad()
 
+/obj/item/clothing/accessory/armband/squad/on_attached(obj/item/clothing/clothes, mob/living/user, silent)
+	. = ..()
+	if(!.)
+		return
+	if(ishuman(user) && recursive_holder_check(src) == user)
+		RegisterSignal(user, COMSIG_SET_SQUAD, PROC_REF(update_clothing_wrapper), TRUE)
+	adapt_to_squad()
+
 /obj/item/clothing/accessory/armband/squad/proc/update_clothing_wrapper(mob/living/carbon/human/wearer)
 	SIGNAL_HANDLER
 
@@ -694,6 +702,14 @@
 	. = ..()
 	if(!valid_icon_states)
 		valid_icon_states = icon_states(icon)
+	adapt_to_squad()
+
+/obj/item/clothing/accessory/patch/falcon/squad_main/on_attached(obj/item/clothing/clothes, mob/living/user, silent)
+	. = ..()
+	if(!.)
+		return
+	if(ishuman(user) && recursive_holder_check(src) == user)
+		RegisterSignal(user, COMSIG_SET_SQUAD, PROC_REF(update_clothing_wrapper), TRUE)
 	adapt_to_squad()
 
 /obj/item/clothing/accessory/patch/falcon/squad_main/proc/update_clothing_wrapper(mob/living/carbon/human/wearer)

@@ -866,9 +866,9 @@
 	. = ..()
 	RegisterSignal(living, COMSIG_MOVABLE_ENTERED_AREA, PROC_REF(update_button_icon), TRUE)
 
-/datum/action/xeno_action/onclick/screech/Destroy()
+/datum/action/xeno_action/onclick/screech/remove_from(mob/living)
 	. = ..()
-	UnregisterSignal(owner, COMSIG_MOVABLE_ENTERED_AREA, PROC_REF(update_button_icon))
+	UnregisterSignal(living, COMSIG_MOVABLE_ENTERED_AREA, PROC_REF(update_button_icon))
 
 /datum/action/xeno_action/onclick/screech/update_button_icon()
 	var/area/queen_area = get_area(owner)

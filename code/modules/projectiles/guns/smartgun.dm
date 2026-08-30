@@ -519,7 +519,7 @@
 	if(!silent)
 		to_chat(user, "[icon2html(src, user)] You [aim_assist ? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s aim assist.[aim_assist ? "" : " This substantially increases battery drain."]")
 		if(!aim_assist && helmetless_aim_assist_bonus && aim_assist_accuracy_penalty > 0 && helmet_blocks_sight(user))
-			to_chat(user, SPAN_WARNING("Your helmet interferes with \the [src]'s aim-assist system."))
+			to_chat(user, SPAN_WARNING("Your helmet interferes with the M56 Head Mounted Sight's aim-assist system."))
 		balloon_alert(user, "aim assist [aim_assist ? "disabled" : "enabled ++BATTERY DRAIN"]")
 		playsound(loc,'sound/machines/click.ogg', 25, 1)
 

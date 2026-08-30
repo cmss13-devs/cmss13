@@ -568,7 +568,7 @@
 
 					if("open")
 						if(prob(30))
-							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b>croaks: Closing surgical incision.");
+							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> croaks: Closing surgical incision.");
 						close_encased(patient,current_surgery.limb_ref)
 						close_incision(patient,current_surgery.limb_ref)
 
@@ -607,9 +607,10 @@
 		sleep(CAUTERY_MAX_DURATION*surgery_mod)
 		if(!surgery)
 			return
+		target.incision_depths[limb.name] == SURGERY_DEPTH_SURFACE
 		target.pain.recalculate_pain()
 		limb.reset_limb_surgeries()
-		limb.remove_all_bleeding(TRUE)
+		limb.remove_all_bleeding(TRUE, FALSE)
 		limb.remove_surgery_flags()
 		target.update_surgery_overlays()
 		target.updatehealth()

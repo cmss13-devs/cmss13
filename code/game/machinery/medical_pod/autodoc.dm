@@ -599,6 +599,7 @@
 		limb.createwound(CUT, 1)
 		target.incision_depths[limb.name] = SURGERY_DEPTH_SHALLOW //Can immediately proceed to other surgery steps
 		target.updatehealth()
+		limb.incision_int_bleeding_flag_check()
 		target.update_surgery_overlays()
 
 /obj/structure/machinery/medical_pod/autodoc/proc/close_incision(mob/living/carbon/human/target, obj/limb/limb)
@@ -607,10 +608,10 @@
 		if(!surgery)
 			return
 		target.pain.recalculate_pain()
-		target.update_surgery_overlays()
-		limb.remove_surgery_flags()
 		limb.reset_limb_surgeries()
 		limb.remove_all_bleeding(TRUE)
+		limb.remove_surgery_flags()
+		target.update_surgery_overlays()
 		target.updatehealth()
 
 /obj/structure/machinery/medical_pod/autodoc/proc/open_encased(mob/living/carbon/human/target, obj/limb/limb)

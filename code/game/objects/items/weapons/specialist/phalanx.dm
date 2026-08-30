@@ -54,7 +54,7 @@
 // Concussion Pulse
 
 /// Regular cooldown for toggling the Concussion Pulse ability
-#define PHALANX_CONCUSSION_PULSE_COOLDOWN_TIME 5 SECONDS
+#define PHALANX_CONCUSSION_PULSE_COOLDOWN_TIME 10 SECONDS
 /// Concussion Pulse battery drain value for every use
 #define PHALANX_CONCUSSION_PULSE_BATTERY_DRAIN 100
 /// Delay between using the Concussion Pulse ability and it actually firing off
@@ -106,7 +106,8 @@
 
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/shields_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/shields_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/shields_righthand.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/melee_weapons.dmi'
 	)
 	base_icon_state = "phalanx"
 	icon_state = "phalanx"
@@ -172,7 +173,7 @@
 
 /obj/item/weapon/shield/collapsible/phalanx/get_examine_text(mob/user)
 	. = ..()
-	. += SPAN_NOTICE("<br>This weapon has three special abilities.<br><b>Toggle Shock Pulse</b>: Damage and slow hostiles nearby with a continuous field of electricity. <br><b>Activate Concussion Pulse</b>: Damage and knockdown adjacent targets with a powerful discharge of energy.<br><b>Brace For Impact</b>: Increase block-chance and receive full immunity to displacement. Requires both hands.<br>")
+	. += SPAN_NOTICE("<br>This weapon has three special abilities.<br><b>Toggle Shock Pulse</b>: Damage and slow hostiles adjacent with a continuous field of electricity. <br><b>Activate Concussion Pulse</b>: Knockdown and slow nearby targets with a powerful discharge of energy.<br><b>Brace For Impact</b>: Increase block-chance and receive full immunity to displacement. Requires both hands.<br>")
 	. += SPAN_CYAN(shock_pulse_battery != null ? "Shock Pulse Charge: [shock_pulse_battery.power_cell.charge] / [shock_pulse_battery.power_cell.maxcharge]" : "No shock pulse battery inserted.")
 	. += SPAN_CYAN(concussion_pulse_battery != null ? "Concussion Pulse Charge: [concussion_pulse_battery.power_cell.charge] / [concussion_pulse_battery.power_cell.maxcharge]" : "No concussion pulse battery inserted.")
 
@@ -256,6 +257,8 @@
 
 /obj/item/weapon/shield/collapsible/phalanx/raise_shield(mob/user as mob)
 	. = ..()
+	if (!.)
+		return // interrupted!
 
 	if(shock_pulse_ability)
 		shock_pulse_ability.give_to(user)
@@ -591,7 +594,7 @@
 		if (affected_mob.mob_size >= MOB_SIZE_BIG)
 			affected_mob.Superslow(PHALANX_CONCUSSION_PULSE_SUPERSLOW)
 		else
-			affected_mob.Superslow(PHALANX_CONCUSSION_PULSE_KNOCKDOWN)
+			affected_mob.KnockDown(PHALANX_CONCUSSION_PULSE_KNOCKDOWN)
 	FOR_DOVIEW_END
 
 	FOR_DOVIEW(var/obj/structure/machinery/defenses/defense, PHALANX_CONCUSSION_PULSE_RANGE, shield_wielder.loc, HIDE_INVISIBLE_OBSERVER)
@@ -630,7 +633,7 @@
 	. = ..()
 	if(!ishuman(owner))
 		return
-	var/mob/living/carbon/human/shield_wielder
+	var/mob/living/carbon/human/shield_wielder = owner
 	var/obj/item/weapon/shield/collapsible/phalanx/shield = holder_item
 
 	if(shield.shock_pulse_ability.ability_active)

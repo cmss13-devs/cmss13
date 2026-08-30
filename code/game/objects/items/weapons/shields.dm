@@ -243,7 +243,7 @@
 		if(!do_after(user, raise_delay, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
 			user.visible_message(SPAN_WARNING("[user] stops extending \the [src]."), \
 			SPAN_WARNING("You stop extending \the [src]."))
-			return
+			return FALSE
 	else
 		user.visible_message(SPAN_NOTICE("[user] extends \the [src]."))
 	shield_readied = TRUE
@@ -262,6 +262,7 @@
 		shield_wielder.update_inv_l_hand()
 	else if(shield_wielder.r_hand == src)
 		shield_wielder.update_inv_r_hand()
+	return TRUE
 
 /obj/item/weapon/shield/collapsible/lower_shield(mob/user)
 	if(lower_delay > 0)
@@ -269,7 +270,7 @@
 		if(!do_after(user, lower_delay, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
 			user.visible_message(SPAN_WARNING("[user] stops retracting \the [src]."), \
 			SPAN_WARNING("You stop retracting \the [src]."))
-			return
+			return FALSE
 	else
 		user.visible_message(SPAN_NOTICE("[user] retracts \the [src]."))
 	shield_readied = FALSE
@@ -298,3 +299,4 @@
 		shield_wielder.update_inv_l_hand()
 	else if(shield_wielder.r_hand == src)
 		shield_wielder.update_inv_r_hand()
+	return TRUE

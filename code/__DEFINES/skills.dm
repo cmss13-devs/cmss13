@@ -53,7 +53,7 @@
 #define SKILL_SPEC_SNIPER 4
 /// Can use the rotary grenade launcher and heavy armor
 #define SKILL_SPEC_GRENADIER 5
-/// Can use heavy flamersdddd
+/// Can use heavy flamers
 #define SKILL_SPEC_PYRO 6
 /// Can use phalanx armor and shield
 #define SKILL_SPEC_PHALANX 7

@@ -29,6 +29,7 @@
 #define JOB_SQUAD_SPECIALIST_GRENADIER "Grenadier Specialist"
 #define JOB_SQUAD_SPECIALIST_SHARP "SHARP Specialist"
 #define JOB_SQUAD_SPECIALIST_PYRO "Pyro Specialist"
+#define JOB_SQUAD_SPECIALIST_PHALANX "Phalanx Specialist"
 #define JOB_SQUAD_SPECIALIST_HEAVY "Heavy Specialist"
 #define JOB_SQUAD_TEAM_LEADER "Fireteam Leader"
 #define JOB_SQUAD_SMARTGUN "Smartgunner"

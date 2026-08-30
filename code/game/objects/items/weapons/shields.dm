@@ -15,35 +15,46 @@
 	user.visible_message(SPAN_BLUE("\The [user] raises \the [src]."))
 	shield_readied = TRUE
 	icon_state = "[base_icon_state]_ready"
+	item_state = "[base_icon_state]_ready"
 
-	var/mob/living/carbon/human/H = user
-	var/current_shield_slowdown = H.shield_slowdown
-	H.shield_slowdown = max(readied_slowdown, H.shield_slowdown)
-	if(H.shield_slowdown != current_shield_slowdown)
-		H.recalculate_move_delay = TRUE
+	var/mob/living/carbon/human/shield_wielder = user
+	var/current_shield_slowdown = shield_wielder.shield_slowdown
+	shield_wielder.shield_slowdown = max(readied_slowdown, shield_wielder.shield_slowdown)
+	if(shield_wielder.shield_slowdown != current_shield_slowdown)
+		shield_wielder.recalculate_move_delay = TRUE
 	shield_chance = readied_block
-	shield_projectile_mult = readied_projectile_mult
+
+	if(shield_wielder.l_hand == src)
+		shield_wielder.update_inv_l_hand()
+	else if(shield_wielder.r_hand == src)
+		shield_wielder.update_inv_r_hand()
 
 /obj/item/weapon/shield/proc/lower_shield(mob/user as mob)
 	user.visible_message(SPAN_BLUE("\The [user] lowers \the [src]."))
 	shield_readied = FALSE
 	icon_state = base_icon_state
+	item_state = base_icon_state
 
-	var/mob/living/carbon/human/H = user
-	var/current_shield_slowdown = H.shield_slowdown
+	var/mob/living/carbon/human/shield_wielder = user
+	var/current_shield_slowdown = shield_wielder.shield_slowdown
 	var/set_shield_slowdown = 0
 	var/obj/item/weapon/shield/offhand_shield
-	if(H.l_hand == src && istype(H.r_hand, /obj/item/weapon/shield))
-		offhand_shield = H.r_hand
-	else if(H.r_hand == src && istype(H.l_hand, /obj/item/weapon/shield))
-		offhand_shield = H.l_hand
+	if(shield_wielder.l_hand == src && istype(shield_wielder.r_hand, /obj/item/weapon/shield))
+		offhand_shield = shield_wielder.r_hand
+	else if(shield_wielder.r_hand == src && istype(shield_wielder.l_hand, /obj/item/weapon/shield))
+		offhand_shield = shield_wielder.l_hand
 	if(offhand_shield?.shield_readied)
 		set_shield_slowdown = offhand_shield.readied_slowdown
-	H.shield_slowdown = set_shield_slowdown
-	if(H.shield_slowdown != current_shield_slowdown)
-		H.recalculate_move_delay = TRUE
+	shield_wielder.shield_slowdown = set_shield_slowdown
+	if(shield_wielder.shield_slowdown != current_shield_slowdown)
+		shield_wielder.recalculate_move_delay = TRUE
 	shield_chance = passive_block
 	shield_projectile_mult = passive_projectile_mult
+
+	if(shield_wielder.l_hand == src)
+		shield_wielder.update_inv_l_hand()
+	else if(shield_wielder.r_hand == src)
+		shield_wielder.update_inv_r_hand()
 
 /obj/item/weapon/shield/proc/toggle_shield(mob/user as mob)
 	if(shield_readied)
@@ -62,7 +73,38 @@
 		lower_shield(user)
 	..()
 
+/obj/item/weapon/shield/proc/handle_retrieval(mob/living/carbon/human/user, retrieval_slot)
+	if (!ishuman(user))
+		return FALSE
+	if (!retrieval_check(user, retrieval_slot))
+		return FALSE
+	addtimer(CALLBACK(src, PROC_REF(retrieve_to_slot), user, retrieval_slot), 0.3 SECONDS, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
+	return TRUE
 
+/obj/item/weapon/shield/proc/retrieval_check(mob/living/carbon/human/user, retrieval_slot)
+	if(retrieval_slot == WEAR_BACK)
+		var/obj/item/suit = user.wear_suit
+		if(!istype(suit, /obj/item/clothing/suit/storage/marine))
+			return FALSE
+	return TRUE
+
+/obj/item/weapon/shield/proc/retrieve_to_slot(mob/living/carbon/human/user, retrieval_slot, check_loc = TRUE, silent = FALSE)
+	if (!loc || !user)
+		return FALSE
+	if (!isturf(loc) && check_loc)
+		return FALSE
+	if(!retrieval_check(user, retrieval_slot))
+		return FALSE
+	if(!user.equip_to_slot_if_possible(src, retrieval_slot, disable_warning = TRUE))
+		return FALSE
+	if(silent)
+		return TRUE
+	var/message
+	switch(retrieval_slot)
+		if(WEAR_BACK)
+			message = "[src] snaps into place on your back."
+	to_chat(user, SPAN_NOTICE(message))
+	return TRUE
 
 /obj/item/weapon/shield/riot
 	name = "riot shield"
@@ -178,3 +220,81 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/shields_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/shields_righthand.dmi'
 	)
+
+// Collapsible Shields
+// Raised/lowered is considered extended/retracted for all intents and purposes
+//-------------------------------------------------------
+
+/obj/item/weapon/shield/collapsible
+	name = "collapsible shield"
+	w_class = SIZE_MEDIUM
+	/// Delay for raising (extending) the shield
+	var/raise_delay = 1 SECONDS
+	/// Delay for lowering (retracting) the shield
+	var/lower_delay = 0 SECONDS
+	/// Associated weight class when the shield is lowered (retracted)
+	var/w_class_lowered = SIZE_MEDIUM
+	/// Associated weight class when the shield is raised (extended)
+	var/w_class_raised = SIZE_HUGE
+
+/obj/item/weapon/shield/collapsible/raise_shield(mob/user)
+	if(raise_delay > 0)
+		user.visible_message(SPAN_NOTICE("[user] starts extending \the [src]."))
+		if(!do_after(user, raise_delay, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
+			user.visible_message(SPAN_WARNING("[user] stops extending \the [src]."), \
+			SPAN_WARNING("You stop extending \the [src]."))
+			return
+	else
+		user.visible_message(SPAN_NOTICE("[user] extends \the [src]."))
+	shield_readied = TRUE
+	w_class = w_class_raised
+	icon_state = "[base_icon_state]_extended"
+	item_state = "[base_icon_state]_extended"
+
+	var/mob/living/carbon/human/shield_wielder = user
+	var/current_shield_slowdown = shield_wielder.shield_slowdown
+	shield_wielder.shield_slowdown = max(readied_slowdown, shield_wielder.shield_slowdown)
+	if(shield_wielder.shield_slowdown != current_shield_slowdown)
+		shield_wielder.recalculate_move_delay = TRUE
+	shield_chance = readied_block
+
+	if(shield_wielder.l_hand == src)
+		shield_wielder.update_inv_l_hand()
+	else if(shield_wielder.r_hand == src)
+		shield_wielder.update_inv_r_hand()
+
+/obj/item/weapon/shield/collapsible/lower_shield(mob/user)
+	if(lower_delay > 0)
+		user.visible_message(SPAN_NOTICE("[user] starts retracting \the [src]."))
+		if(!do_after(user, lower_delay, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
+			user.visible_message(SPAN_WARNING("[user] stops retracting \the [src]."), \
+			SPAN_WARNING("You stop retracting \the [src]."))
+			return
+	else
+		user.visible_message(SPAN_NOTICE("[user] retracts \the [src]."))
+	shield_readied = FALSE
+	w_class = w_class_lowered
+	icon_state = base_icon_state
+	item_state = base_icon_state
+
+
+	var/mob/living/carbon/human/shield_wielder = user
+	var/current_shield_slowdown = shield_wielder.shield_slowdown
+	var/set_shield_slowdown = 0
+	var/obj/item/weapon/shield/offhand_shield
+	if(shield_wielder.l_hand == src && istype(shield_wielder.r_hand, /obj/item/weapon/shield))
+		offhand_shield = shield_wielder.r_hand
+	else if(shield_wielder.r_hand == src && istype(shield_wielder.l_hand, /obj/item/weapon/shield))
+		offhand_shield = shield_wielder.l_hand
+	if(offhand_shield?.shield_readied)
+		set_shield_slowdown = offhand_shield.readied_slowdown
+	shield_wielder.shield_slowdown = set_shield_slowdown
+	if(shield_wielder.shield_slowdown != current_shield_slowdown)
+		shield_wielder.recalculate_move_delay = TRUE
+	shield_chance = passive_block
+	shield_projectile_mult = passive_projectile_mult
+
+	if(shield_wielder.l_hand == src)
+		shield_wielder.update_inv_l_hand()
+	else if(shield_wielder.r_hand == src)
+		shield_wielder.update_inv_r_hand()

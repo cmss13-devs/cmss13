@@ -232,6 +232,8 @@
 		list("SHARP 9X-E Sticky Explosive Dart magazine (darts)", 0, /obj/item/ammo_magazine/rifle/sharp/explosive, VENDOR_ITEM_REGULAR),
 		list("SHARP 9X-T Sticky Incendiary Dart magazine (darts)", 0, /obj/item/ammo_magazine/rifle/sharp/incendiary, VENDOR_ITEM_REGULAR),
 		list("SHARP 9X-F Flechette Dart Magazine (darts)", 0, /obj/item/ammo_magazine/rifle/sharp/flechette, VENDOR_ITEM_REGULAR),
+		list("Phalanx Shock Pulse Battery", 120, /obj/item/phalanx/battery/shock_pulse_battery, null, VENDOR_ITEM_REGULAR),
+		list("Phalanx Concussion Pulse Battery", 120, /obj/item/phalanx/battery/concussion_pulse_battery, null, VENDOR_ITEM_REGULAR),
 		list("M42A Flak Magazine (10x28mm)", 0, /obj/item/ammo_magazine/sniper/flak, VENDOR_ITEM_REGULAR),
 		list("M42A Incendiary Magazine (10x28mm)", 0, /obj/item/ammo_magazine/sniper/incendiary, VENDOR_ITEM_REGULAR),
 		list("M42A Marksman Magazine (10x28mm Caseless)", 0, /obj/item/ammo_magazine/sniper, VENDOR_ITEM_REGULAR),

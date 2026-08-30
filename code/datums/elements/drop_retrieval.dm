@@ -76,3 +76,17 @@
 	WT.remove_noz()
 	to_chat(user, SPAN_WARNING("\The [I]'s magnetic harness snaps it back onto \the [WT]!"))
 	WT.update_icon()
+
+/datum/element/drop_retrieval/shield
+	compatible_types = list(/obj/item/weapon/shield)
+	var/retrieval_slot
+
+/datum/element/drop_retrieval/shield/Attach(datum/target, slot)
+	. = ..()
+	if (.)
+		return
+	retrieval_slot = slot
+
+
+/datum/element/drop_retrieval/shield/dropped(obj/item/weapon/shield/dropped_shield, mob/user)
+	dropped_shield.handle_retrieval(user, retrieval_slot)

@@ -632,6 +632,7 @@
 		"Anti-Material Sniper ammo",
 		"Pyrotechnician tanks",
 		"Scout ammo",
+		"Phalanx batteries",
 		"Smartgun ammo",
 	)
 
@@ -665,6 +666,9 @@
 		if("Scout ammo")
 			supply_drop = 8
 			to_chat(usr, SPAN_NOTICE("Scout ammo will now drop!"))
+		if("Phalanx batteries")
+			supply_drop = 9
+			to_chat(usr, SPAN_NOTICE("Phalanx batteries will now drop!"))
 		else
 			return
 
@@ -781,6 +785,9 @@
 							/obj/item/ammo_magazine/rifle/m4ra/custom,
 							/obj/item/ammo_magazine/rifle/m4ra/custom/incendiary,
 							/obj/item/ammo_magazine/rifle/m4ra/custom/impact)
+		if(9) // Phalanx
+			spawnitems = list(/obj/item/phalanx/battery/shock_pulse_battery,
+							/obj/item/phalanx/battery/concussion_pulse_battery)
 	crate.storage_capacity = 60
 	for(var/path in spawnitems)
 		new path(crate)

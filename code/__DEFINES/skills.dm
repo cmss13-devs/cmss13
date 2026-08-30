@@ -53,14 +53,16 @@
 #define SKILL_SPEC_SNIPER 4
 /// Can use the rotary grenade launcher and heavy armor
 #define SKILL_SPEC_GRENADIER 5
-/// Can use heavy flamers
+/// Can use heavy flamersdddd
 #define SKILL_SPEC_PYRO 6
+/// Can use phalanx armor and shield
+#define SKILL_SPEC_PHALANX 7
 /// Can use smartguns
-#define SKILL_SPEC_SMARTGUN 7
+#define SKILL_SPEC_SMARTGUN 8
 /// UPP special training
-#define SKILL_SPEC_UPP 8
+#define SKILL_SPEC_UPP 9
 /// Can use ALL specialist weapons
-#define SKILL_SPEC_ALL 9
+#define SKILL_SPEC_ALL 10
 
 //construction skill
 #define SKILL_CONSTRUCTION_DEFAULT 0

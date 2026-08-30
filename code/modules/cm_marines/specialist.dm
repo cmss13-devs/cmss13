@@ -226,6 +226,13 @@
 	rank_icon = "spec_pyro"
 	kit_typepath = /obj/item/storage/box/spec/pyro
 
+/datum/specialist_set/phalanx
+	name = "Phalanx Set"
+	role_name = JOB_SQUAD_SPECIALIST_PHALANX
+	skill_to_give = SKILL_SPEC_PHALANX
+	rank_icon = "spec_sharp"
+	kit_typepath = /obj/item/storage/box/spec/phalanx
+
 /datum/specialist_set/heavy
 	name = "Heavy Armor Set"
 	role_name = JOB_SQUAD_SPECIALIST_HEAVY

@@ -44,3 +44,7 @@
 			throw_text = SPAN_GREEN("an inhumanely strong")
 
 	. += SPAN_INFO("It would be [melee_text] melee weapon, and [throw_text] throwing weapon.")
+
+// Placeholder proc for on_block interactions (such as checking user stamina, counting blocks, etc.)
+/obj/item/weapon/proc/on_block(mob/user as mob, attack_type)
+	return

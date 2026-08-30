@@ -1424,6 +1424,7 @@
 #include "code\game\objects\items\weapons\twohanded.dm"
 #include "code\game\objects\items\weapons\weapon.dm"
 #include "code\game\objects\items\weapons\weaponry.dm"
+#include "code\game\objects\items\weapons\specialist\phalanx.dm"
 #include "code\game\objects\structures\airlock_assembly.dm"
 #include "code\game\objects\structures\ancient_brazier.dm"
 #include "code\game\objects\structures\barsign.dm"

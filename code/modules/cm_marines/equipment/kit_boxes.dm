@@ -226,6 +226,23 @@
 	new /obj/item/ammo_magazine/pistol/vp78(src)
 	new /obj/item/device/binoculars(src)
 
+/obj/item/storage/box/spec/phalanx
+	name = "\improper Phalanx equipment case"
+	desc = "A large case containing the Phalanx collapsible shield, B18 armor platform, and various pieces of additional equipment.\nDrag this sprite onto yourself to open it up!"
+	kit_overlay = "b18"
+	kit_name = "phalanx"
+
+/obj/item/storage/box/spec/phalanx/fill_preset_inventory()
+	new /obj/item/weapon/shield/collapsible/phalanx(src)
+	new /obj/item/phalanx/battery/shock_pulse_battery(src)
+	new /obj/item/phalanx/battery/concussion_pulse_battery(src)
+	new /obj/item/clothing/gloves/marine/specialist(src)
+	new /obj/item/clothing/head/helmet/marine/specialist(src)
+	new /obj/item/clothing/suit/storage/marine/specialist(src)
+	new /obj/item/weapon/gun/pistol/vp78(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/device/binoculars(src)
 
 //maybe put in req for later use?
 /obj/item/storage/box/spec/B18

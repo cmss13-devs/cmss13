@@ -11,6 +11,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_spec, list(
 		list("Scout Set", 0, /obj/item/storage/box/spec/scout, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_REGULAR),
 		list("Sniper Set", 0, /obj/item/storage/box/spec/sniper, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_RECOMMENDED),
 		list("Anti-Materiel Sniper Set", 0, /obj/item/storage/box/spec/sniper/anti_materiel, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_RECOMMENDED),
+		list("Phalanx Shield Set", 0, /obj/item/storage/box/spec/phalanx, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_RECOMMENDED),
 
 		list("EXTRA SCOUT AMMUNITION", 0, null, null, null),
 		list("A19 High Velocity Impact Magazine (10x24mm)", 40, /obj/item/ammo_magazine/rifle/m4ra/custom/impact, null, VENDOR_ITEM_REGULAR),
@@ -46,6 +47,10 @@ GLOBAL_LIST_INIT(cm_vending_gear_spec, list(
 		list("Large Incinerator Tank", 40, /obj/item/ammo_magazine/flamer_tank/large, null, VENDOR_ITEM_REGULAR),
 		list("Large Incinerator Tank (B) (Green Flame)", 40, /obj/item/ammo_magazine/flamer_tank/large/B, null, VENDOR_ITEM_REGULAR),
 		list("Large Incinerator Tank (X) (Blue Flame)", 40, /obj/item/ammo_magazine/flamer_tank/large/X, null, VENDOR_ITEM_REGULAR),
+
+		list("EXTRA PHALANX BATTERIES", 0, null, null, null),
+		list("Phalanx Shock Pulse Battery", 120, /obj/item/phalanx/battery/shock_pulse_battery, null, VENDOR_ITEM_REGULAR),
+		list("Phalanx Concussion Pulse Battery", 120, /obj/item/phalanx/battery/concussion_pulse_battery, null, VENDOR_ITEM_REGULAR)
 
 	))
 

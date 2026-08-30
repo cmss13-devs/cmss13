@@ -791,6 +791,12 @@
 "acd" = (
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/northpoint/indoors/main)
+"ace" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/interior/wood,
+/area/northpoint/outdoors/urban_cave/south_east)
 "acf" = (
 /obj/effect/decal/hybrisa/tiretrack{
 	dir = 10;
@@ -2411,7 +2417,6 @@
 /turf/open/floor/plating/warnplate/northeast,
 /area/northpoint/indoors/main)
 "ahg" = (
-/obj/structure/machinery/power/apc/power/north,
 /obj/structure/cargo_container/hybrisa/containersextended/medicalleft,
 /turf/open/floor/strata/orange_edge,
 /area/northpoint/indoors/main)
@@ -4552,6 +4557,11 @@
 /obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/northpoint/oob)
+"amN" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/cement3,
+/area/northpoint/landing_zone_1)
 "amO" = (
 /obj/structure/girder,
 /turf/open/floor/plating/platingdmg3,
@@ -6273,7 +6283,9 @@
 /obj/structure/barricade/concrete/wired{
 	dir = 4
 	},
-/obj/structure/machinery/power/apc/no_power/south,
+/obj/structure/machinery/power/apc/power/south{
+	start_charge = 20
+	},
 /turf/open/floor/hybrisa/metal/zbrownfloor1,
 /area/northpoint/outdoors/urban_cave/north_east)
 "arx" = (
@@ -11672,18 +11684,27 @@
 /turf/open/hybrisa/street/sidewalkfull/unweedable,
 /area/northpoint/oob)
 "aGy" = (
+/obj/structure/bed/chair/comfy/hybrisa/red{
+	dir = 4
+	},
 /turf/open/floor/prison/red/southwest,
 /area/northpoint/landing_zone_1/ceiling)
 "aGz" = (
 /turf/open/floor/prison/red,
 /area/northpoint/landing_zone_1/ceiling)
 "aGA" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_24";
+	pixel_x = 8;
+	pixel_y = 2
+	},
 /turf/open/floor/prison/red/southeast,
 /area/northpoint/landing_zone_1/ceiling)
 "aGB" = (
 /turf/open/floor/prison/red/west,
 /area/northpoint/landing_zone_1/ceiling)
 "aGC" = (
+/obj/structure/machinery/vending/coffee/simple,
 /turf/open/floor/prison/red/east,
 /area/northpoint/landing_zone_1/ceiling)
 "aGD" = (
@@ -11692,6 +11713,9 @@
 "aGE" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/light/double{
+	dir = 1
+	},
 /turf/open/floor/prison/red/north,
 /area/northpoint/landing_zone_1/ceiling)
 "aGF" = (
@@ -11761,8 +11785,16 @@
 /turf/open/floor/prison/darkred2/northeast,
 /area/northpoint/landing_zone_1/ceiling)
 "aGM" = (
-/obj/structure/machinery/power/apc/power/west,
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/filingcabinet{
+	pixel_x = -8
+	},
+/obj/effect/landmark/objective_landmark/close,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3";
+	pixel_y = -4;
+	pixel_x = 1
+	},
 /turf/open/floor/prison/red/west,
 /area/northpoint/landing_zone_1/ceiling)
 "aGN" = (
@@ -11771,6 +11803,9 @@
 "aGO" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/shuttle/dropship/flight/lz1,
+/obj/structure/prop/hybrisa/misc/machinery/screens/frame{
+	pixel_y = 32
+	},
 /turf/open/floor/prison/red/northeast,
 /area/northpoint/landing_zone_1/ceiling)
 "aGP" = (
@@ -21016,7 +21051,9 @@
 /turf/open/floor/prison,
 /area/northpoint/indoors/off)
 "blw" = (
-/obj/structure/machinery/power/apc/no_power/north,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 30
+	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/northpoint/indoors/off)
 "blx" = (
@@ -36109,10 +36146,116 @@
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/hybrisa/metal/bluemetal1/northwest,
 /area/northpoint/indoors/main)
+"caa" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/cement3,
+/area/northpoint/landing_zone_1)
+"cab" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/northpoint/landing_zone_1)
+"cac" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/bed/roller,
+/turf/open/hybrisa/street/cement3,
+/area/northpoint/landing_zone_1)
+"cad" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/largecrate/empty/secure,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/northpoint/landing_zone_1)
 "cae" = (
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/hybrisa/street/sidewalkcenter/north,
 /area/northpoint/landing_zone_1)
+"caf" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/largecrate/random/barrel/medical,
+/turf/open/hybrisa/street/cement3,
+/area/northpoint/landing_zone_1)
+"cag" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
+	layer = 4
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/northpoint/landing_zone_1)
+"cah" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
+	layer = 4
+	},
+/obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
+	dir = 4
+	},
+/turf/open/hybrisa/street/cement3,
+/area/northpoint/landing_zone_1)
+"cai" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/cement3,
+/area/northpoint/landing_zone_1)
+"caj" = (
+/obj/structure/bed/chair/comfy/hybrisa/red{
+	dir = 4
+	},
+/turf/open/floor/prison/red/west,
+/area/northpoint/landing_zone_1/ceiling)
+"cak" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/lz_sign/hybrisa_sign/medical{
+	light_color = "#FF0000";
+	light_on = 1;
+	light_power = 2;
+	light_range = 4;
+	name = "Northpoint Hospital - Emergency Medical Landing Zone one sign";
+	layer = 3.1
+	},
+/turf/open/hybrisa/street/sidewalkfull,
+/area/northpoint/landing_zone_1)
+"cal" = (
+/obj/structure/bed/chair/comfy/hybrisa/red{
+	dir = 4
+	},
+/obj/structure/sign/nosmoking_1{
+	pixel_y = 32
+	},
+/turf/open/floor/prison/red/northwest,
+/area/northpoint/landing_zone_1/ceiling)
+"cam" = (
+/obj/structure/surface/table/almayer,
+/obj/item/prop/magazine/boots/n07{
+	pixel_x = -3;
+	pixel_y = -2
+	},
+/obj/item/prop/magazine/book/borntokill{
+	pixel_x = 8;
+	pixel_y = 5
+	},
+/turf/open/floor/prison/red/northeast,
+/area/northpoint/landing_zone_1/ceiling)
+"can" = (
+/obj/structure/machinery/door/airlock/hybrisa/generic_solid{
+	dir = 2;
+	name = "Transfer Waiting Area"
+	},
+/turf/open/floor/corsat/officetiles,
+/area/northpoint/landing_zone_1/ceiling)
+"cao" = (
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 30
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/northpoint/indoors/main)
 "cap" = (
 /obj/effect/decal/hybrisa/deco_edging{
 	dir = 4;
@@ -36120,9 +36263,112 @@
 	},
 /turf/open/hybrisa/street/cement1,
 /area/northpoint/outdoors/hospital_exterior/east)
+"caq" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/prop/server_equipment/laptop/on,
+/turf/open/floor/prison/red/southwest,
+/area/northpoint/landing_zone_1/ceiling)
+"car" = (
+/obj/structure/bed/chair/office/light{
+	dir = 1;
+	pixel_y = 6;
+	buckling_y = 6
+	},
+/obj/structure/machinery/light/double,
+/turf/open/floor/prison/red,
+/area/northpoint/landing_zone_1/ceiling)
+"cas" = (
+/obj/structure/surface/table/almayer,
+/obj/item/device/radio{
+	pixel_x = -10;
+	pixel_y = 8
+	},
+/turf/open/floor/prison/red/southeast,
+/area/northpoint/landing_zone_1/ceiling)
+"cat" = (
+/obj/structure/surface/table/almayer,
+/obj/item/prop/almayer/handheld1{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/turf/open/floor/prison/red/west,
+/area/northpoint/landing_zone_1/ceiling)
+"cau" = (
+/obj/item/trash/cigbutt,
+/turf/open/floor/prison,
+/area/northpoint/landing_zone_1/ceiling)
 "cav" = (
 /turf/open/floor/prison/ramptop,
 /area/northpoint/landing_zone_2)
+"caw" = (
+/obj/structure/bed/chair/office/light,
+/obj/item/trash/cigbutt,
+/turf/open/floor/prison/red/east,
+/area/northpoint/landing_zone_1/ceiling)
+"cax" = (
+/obj/structure/filingcabinet{
+	pixel_x = -8
+	},
+/obj/effect/landmark/objective_landmark/close,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_2";
+	pixel_x = 7;
+	pixel_y = 6
+	},
+/turf/open/floor/prison/red/west,
+/area/northpoint/landing_zone_1/ceiling)
+"cay" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	layer = 4;
+	pixel_y = 16;
+	pixel_x = 7
+	},
+/turf/open/floor/prison/red/east,
+/area/northpoint/landing_zone_1/ceiling)
+"caz" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3";
+	pixel_y = -4;
+	pixel_x = -17
+	},
+/turf/open/floor/prison,
+/area/northpoint/landing_zone_1/ceiling)
+"caA" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/closet/hybrisa,
+/turf/open/floor/prison/red/west,
+/area/northpoint/landing_zone_1/ceiling)
+"caB" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/trash/cigbutt,
+/turf/open/floor/prison/red/east,
+/area/northpoint/landing_zone_1/ceiling)
+"caC" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/turf/open/floor/prison/red/east,
+/area/northpoint/landing_zone_1/ceiling)
+"caD" = (
+/obj/item/trash/cigbutt,
+/turf/open/floor/prison/red/west,
+/area/northpoint/landing_zone_1/ceiling)
+"caE" = (
+/obj/structure/machinery/power/apc/power/north,
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -16
+	},
+/turf/open/floor/prison/redfull,
+/area/northpoint/landing_zone_1/ceiling)
+"caF" = (
+/obj/structure/prop/hybrisa/misc/metergreen{
+	pixel_y = 32
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/northpoint/landing_zone_1/ceiling)
 "cbq" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_4";
@@ -37448,10 +37694,7 @@
 /area/northpoint/outdoors/urban_cave/lz2_west)
 "dwS" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/item/frame/table/almayer,
-/obj/item/reagent_container/food/snacks/meatsteak{
-	pixel_x = 3
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/floor/hybrisa/tile/supermartfloor1,
 /area/northpoint/outdoors/urban_cave/south_east)
 "dwY" = (
@@ -37532,11 +37775,6 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/outdoors/urban_cave/lz2_west)
-"dAG" = (
-/obj/structure/machinery/power/apc/power/east,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/floor/plating/platingdmg3,
-/area/northpoint/outdoors/urban_cave/south_east)
 "dAL" = (
 /turf/open/hybrisa/street/sidewalkcorner,
 /area/northpoint/oob)
@@ -41645,6 +41883,7 @@
 "ioS" = (
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/landing_zone_1)
 "ipY" = (
@@ -46324,10 +46563,10 @@
 /turf/open/hybrisa/street/sidewalk/northwest,
 /area/northpoint/outdoors/urban_cave/north_east)
 "nGT" = (
-/obj/structure/machinery/light{
-	dir = 1
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 30
 	},
-/obj/effect/landmark/xeno_spawn,
+/obj/item/frame/table/almayer,
 /turf/open/floor/plating/platingdmg3,
 /area/northpoint/outdoors/urban_cave/south_east)
 "nGW" = (
@@ -48344,6 +48583,9 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
+/obj/item/reagent_container/food/snacks/meatsteak{
+	pixel_x = 3
+	},
 /turf/open/floor/hybrisa/tile/supermartfloor1,
 /area/northpoint/outdoors/urban_cave/south_east)
 "qjz" = (
@@ -49057,11 +49299,6 @@
 /obj/structure/platform/metal/almayer/west,
 /obj/structure/platform_decoration/metal/almayer/northeast,
 /turf/open/hybrisa/street/cement2,
-/area/northpoint/landing_zone_1)
-"rdM" = (
-/obj/structure/platform/metal/almayer/north,
-/obj/structure/cargo_container/hybrisa/containersextended/medicalright,
-/turf/open/hybrisa/street/sidewalkfull,
 /area/northpoint/landing_zone_1)
 "rdN" = (
 /obj/effect/decal/hybrisa/doubleroad/lines2{
@@ -51388,6 +51625,9 @@
 "tWu" = (
 /obj/structure/platform/metal/almayer/north,
 /obj/structure/platform/metal/almayer/west,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/hybrisa/street/cement3,
 /area/northpoint/landing_zone_1)
 "tWF" = (
@@ -52013,6 +52253,7 @@
 /area/northpoint/oob)
 "uIo" = (
 /obj/structure/platform_decoration/metal/almayer/east,
+/obj/structure/cargo_container/hybrisa/containersextended/medicalright,
 /turf/open/hybrisa/street/sidewalk/east,
 /area/northpoint/landing_zone_1)
 "uIp" = (
@@ -52571,7 +52812,11 @@
 /turf/open/hybrisa/street/asphalt/unweedable,
 /area/northpoint/oob)
 "vsM" = (
-/obj/structure/machinery/power/apc/power/north,
+/obj/structure/machinery/big_computers/computerbrown/computer3,
+/obj/structure/prop/hybrisa/misc/machinery/screens/multimonitormedium_off{
+	pixel_x = 3;
+	pixel_y = 32
+	},
 /turf/open/floor/prison/red/north,
 /area/northpoint/landing_zone_1/ceiling)
 "vtG" = (
@@ -53528,6 +53773,14 @@
 /area/northpoint/oob)
 "wMx" = (
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/surface/table/almayer,
+/obj/item/prop/almayer/flight_recorder/colony{
+	pixel_x = -6;
+	pixel_y = 7
+	},
+/obj/structure/machinery/light/double{
+	dir = 4
+	},
 /turf/open/floor/prison/red/east,
 /area/northpoint/landing_zone_1/ceiling)
 "wMO" = (
@@ -58836,17 +59089,17 @@ lZe
 lZe
 cBR
 bBJ
-aGP
+caE
 aGP
 aGD
-aGB
+caD
 aGB
 vWA
-vWA
+caA
 aGM
-aGB
-aGB
-aGy
+cax
+cat
+caq
 bBJ
 cBR
 cBR
@@ -58862,8 +59115,8 @@ cBR
 cBR
 cBR
 bBJ
-aGD
-aGB
+cal
+caj
 aGy
 bia
 atA
@@ -58991,17 +59244,17 @@ lZe
 lZe
 cBR
 bBJ
-aGG
+caF
 aGG
 aGF
-aGC
+cay
 aGN
 vOO
 lqn
-lqn
+caz
 bRY
-vOO
-aGz
+cau
+car
 bBJ
 bwq
 bwq
@@ -59153,7 +59406,7 @@ dvi
 vsM
 vOO
 vOO
-vOO
+cau
 lqn
 vOO
 vOO
@@ -59171,7 +59424,7 @@ cTX
 nYv
 gxB
 dWb
-bBL
+can
 lqn
 lqn
 aGz
@@ -59306,12 +59559,12 @@ jbW
 xGQ
 dvi
 aGO
-aGC
+caC
+caB
 wMx
-wMx
-aGC
-aGC
-aGA
+cay
+caw
+cas
 dvi
 xGQ
 ffF
@@ -59327,13 +59580,13 @@ tLx
 dWb
 dWb
 ims
-aGF
+cam
 aGC
 aGA
 ims
-dWb
-jbW
-dWb
+cag
+cad
+cab
 mXi
 mXi
 bvM
@@ -59486,9 +59739,9 @@ bia
 bia
 bia
 bia
-fxK
-fxK
-fxK
+cah
+caf
+cac
 oPq
 mXi
 aYF
@@ -59639,12 +59892,12 @@ jbW
 jbW
 jbW
 fsF
-fxK
+cai
 vIq
 flU
 flU
 ioS
-fxK
+amN
 iho
 aYF
 aYk
@@ -59794,12 +60047,12 @@ ktt
 xGQ
 jbW
 tWu
-fxK
+cai
 eLV
 sFW
 lZT
 dJL
-fxK
+amN
 iho
 aYF
 aYk
@@ -59954,7 +60207,7 @@ eLV
 sFW
 lZT
 dJL
-fxK
+caa
 iho
 aYF
 aYk
@@ -60109,7 +60362,7 @@ eLV
 sFW
 lZT
 dJL
-fxK
+caa
 iho
 aYF
 aYk
@@ -61653,7 +61906,7 @@ aqB
 uMU
 ubP
 jbW
-ygP
+cak
 jeQ
 oGB
 wHK
@@ -61808,7 +62061,7 @@ tIq
 tIq
 pvD
 jbW
-rdM
+blX
 xBb
 oGB
 sFW
@@ -61963,7 +62216,7 @@ jbW
 jbW
 jbW
 jbW
-blX
+ygP
 esm
 oGB
 sFW
@@ -80093,7 +80346,7 @@ bMq
 bLX
 bLJ
 oJW
-aXe
+cao
 cpW
 ahh
 fZb
@@ -86548,7 +86801,7 @@ keM
 oNi
 sKO
 bhY
-dAG
+bhe
 rTB
 rbP
 azH
@@ -86704,7 +86957,7 @@ apC
 atY
 atZ
 atZ
-apK
+ace
 apA
 bhU
 urP

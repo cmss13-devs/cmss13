@@ -120,7 +120,7 @@
 	var/datum/reagent/regulating_chemical = GLOB.chemical_reagents_list[holder.id]
 	if(regulating_chemical)
 		regulating_chemical.overdose = max(level * 5,1)
-		regulating_chemical.overdose_critical = max((level * 5) + 5,2)
+		regulating_chemical.overdose_critical = max(level * 7.5,1.5)
 	. = ..()
 
 /datum/chem_property/special/ciphering

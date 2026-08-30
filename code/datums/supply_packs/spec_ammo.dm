@@ -282,3 +282,16 @@
 	containertype = /obj/structure/closet/crate/ammo/alt/flame
 	containername = "M240-T Type-X Fuel Tank Crate"
 	group = "Weapons Specialist Ammo"
+
+//Phalanx
+
+/datum/supply_packs/batteries_shield_phalanx
+	name = "Phalanx Operator Mixed Battery Crate (shock pulse x1, concussion pulse x1)"
+	contains = list(
+		/obj/item/phalanx/battery/shock_pulse_battery,
+		/obj/item/phalanx/battery/concussion_pulse_battery,
+	)
+	cost = 50
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "Phalanx Operator Mixed Battery Crate"
+	group = "Weapons Specialist Ammo"

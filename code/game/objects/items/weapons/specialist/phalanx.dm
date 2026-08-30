@@ -185,8 +185,8 @@
 		wield(user)
 
 /obj/item/weapon/shield/collapsible/phalanx/attackby(obj/item/attacking_object, mob/user)
-	if(shock_pulse_ability.ability_active)
-		to_chat(user, SPAN_WARNING("You can not swap batteries while the shield is activated!"))
+	if(shock_pulse_ability.ability_active || concussion_pulse_ability.ability_winding_up)
+		to_chat(user, SPAN_WARNING("You can not swap batteries while the shield is being activated!"))
 
 	if(istype(attacking_object, /obj/item/phalanx/battery))
 		var /obj/item/phalanx/battery/new_battery = attacking_object
@@ -360,6 +360,8 @@
 /obj/item/weapon/shield/collapsible/phalanx/proc/deactivate_all_abilities(mob/living/carbon/human/shield_wielder)
 	if(shock_pulse_ability.ability_active)
 		shock_pulse_ability.stop_shocking(shield_wielder)
+	if(concussion_pulse_ability.ability_winding_up)
+		concussion_pulse_ability.ability_winding_up = FALSE
 	if(brace_for_impact_ability.ability_active)
 		brace_for_impact_ability.stop_bracing(shield_wielder)
 
@@ -389,6 +391,11 @@
 	if(!skillcheck(shield_wielder, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && shield_wielder.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_PHALANX)
 		to_chat(shield_wielder, SPAN_WARNING("You don't seem to know how to use \the [shield]..."))
 		return
+
+	if(shield.concussion_pulse_ability.ability_winding_up)
+		to_chat(shield_wielder, SPAN_WARNING("You can not toggle \the [shield] while it is charging a concussive blast!"))
+		return
+
 	shield.toggle_shield(shield_wielder)
 
 // Shock Pulse
@@ -532,6 +539,7 @@
 
 /datum/action/item_action/specialist/phalanx/concussion_pulse
 	ability_primacy = SPEC_PRIMARY_ACTION_2
+	var/ability_winding_up = FALSE
 
 /datum/action/item_action/specialist/phalanx/concussion_pulse/New(mob/living/user, obj/item/holder)
 	..()
@@ -561,19 +569,23 @@
 	if(shield.shock_pulse_ability.ability_active)
 		shield.shock_pulse_ability.stop_shocking(shield_wielder)
 
+	to_chat(shield_wielder, SPAN_WARNING("<b>CONCUSSION PULSE</b>: [shield.concussion_pulse_battery.power_cell.charge] / [shield.concussion_pulse_battery.power_cell.maxcharge] CHARGE REMAINING."))
 	playsound(shield_wielder.loc, 'sound/machines/chime.ogg', 20)
 	shield.concussion_pulse_battery.power_cell.charge -= PHALANX_CONCUSSION_PULSE_BATTERY_DRAIN
-	shield_wielder.visible_message(SPAN_WARNING("[shield_wielder]'s [src] begins charging a devastating shock!"), \
-			SPAN_WARNING("Your [src] heats up as it charges a devastating shock!"))
+	shield_wielder.visible_message(SPAN_WARNING("[shield_wielder]'s [shield] begins charging a devastating shock!"), \
+			SPAN_WARNING("Your [shield] heats up as it charges a devastating shock!"))
 	shield_wielder.add_filter("concussion_pulse_outline", 1, outline_filter(1, PHALANX_CONCUSSION_PULSE_COLOR))
 	addtimer(CALLBACK(src, PROC_REF(release_concussion_pulse), shield_wielder), PHALANX_CONCUSSION_PULSE_DELAY)
+	ability_winding_up = TRUE
 
 	enter_cooldown(PHALANX_CONCUSSION_PULSE_COOLDOWN_TIME)
 
-/datum/action/item_action/specialist/phalanx/concussion_pulse/proc/release_concussion_pulse()
-	var/mob/living/carbon/human/shield_wielder = owner
+/datum/action/item_action/specialist/phalanx/concussion_pulse/proc/release_concussion_pulse(mob/living/carbon/human/shield_wielder)
 	var/obj/item/weapon/shield/collapsible/phalanx/shield = holder_item
 	shield_wielder.remove_filter("concussion_pulse_outline")
+
+	if(!ability_winding_up)
+		return
 
 	FOR_DOVIEW(var/mob/living/affected_mob, PHALANX_CONCUSSION_PULSE_RANGE, shield_wielder.loc, HIDE_INVISIBLE_OBSERVER)
 		if(affected_mob.stat == DEAD)
@@ -610,8 +622,9 @@
 	FOR_DOVIEW_END
 
 	if(shield.concussion_pulse_battery)
-		to_chat(shield_wielder, SPAN_WARNING("<b>CONCUSSION PULSE</b>: [shield.concussion_pulse_battery.power_cell.charge] / [shield.concussion_pulse_battery.power_cell.maxcharge] CHARGE REMAINING."))
+		to_chat(shield_wielder, SPAN_CYAN("<b>CONCUSSION PULSE</b>: [shield.concussion_pulse_battery.power_cell.charge] / [shield.concussion_pulse_battery.power_cell.maxcharge] CHARGE REMAINING."))
 
+	ability_winding_up = FALSE
 
 // Brace For Impact
 //-------------------------------------------------------

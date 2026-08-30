@@ -354,6 +354,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 	update_targeted()
 	update_med_icon()
 	UpdateDamageIcon()
+	update_surgery_overlays()
 
 
 

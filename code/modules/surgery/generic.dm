@@ -83,20 +83,12 @@
 			var/datum/effects/bleeding/external/incision_bleed = new(target, surgery.affected_limb, 10)
 			incision_bleed.duration = 10 MINUTES //A weak bleed, but it doesn't stop on its own.
 			surgery.affected_limb.bleeding_effects_list += incision_bleed
-			surgery.affected_limb.surgery_status |= (INCISION_MADE | INCISION_BLEEDING)
+			surgery.affected_limb.surgery_status |= (INCISION_MADE | INCISION_CLAMPED) //I want that beige color 
 		else
 			surgery.status += 3 // synth skin doesn't cause bleeders
 		surgery.affected_limb.surgery_status |= (INCISION_MADE | INCISION_CLAMPED)
 
-	var/internal_bleeding_check = FALSE
-	for(var/datum/effects/bleeding/internal/ib in surgery.affected_limb.bleeding_effects_list)
-		ib = TRUE
-		internal_bleeding_check = TRUE
-		break
-
-		if(ib == TRUE && internal_bleeding_check == TRUE)
-			surgery.affected_limb.surgery_status |= INCISION_INT_BLEEDING
-
+	surgery.affected_limb.incision_int_bleeding_flag_check()
 	target.update_surgery_overlays()
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SHALLOW //Descriptionwise this is done by the retractor, but putting it here means people can examine to see if an unfinished surgery has been done.
 	user.add_blood(target.get_blood_color(), BLOOD_HANDS)
@@ -363,6 +355,7 @@
 			target.emote("pain")
 
 	surgery.affected_limb.surgery_status |= INCISION_WIDENED
+	surgery.affected_limb.surgery_status &= ~INCISION_MADE
 	target.update_surgery_overlays()
 	target.apply_damage(15, BRUTE, target_zone)
 	log_interact(user, target, "[key_name(user)] violently retracted skin in [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")
@@ -634,11 +627,8 @@
 		/datum/surgery_step/clamp_bleeders_step,
 	)
 /datum/surgery/open_encased/groin/can_start(mob/user, mob/living/carbon/human/patient, obj/limb/patient_limb, obj/item/tool)
-	if(patient_limb.status & LIMB_BROKEN)
-		return TRUE
-	return FALSE
-//Unique to pelvis bone repair surgery. Move organs out of the way to display the pelvis. This step can be skipped, and ends the surgery when completed. Before pelvic repair surgery, it can be skipped to abort the operation if you don't want to repair the pelvis right this second.
-//It can also be skipped to finish laying the organs back on top of the pelvis, or completed to abort the operation.
+	return patient_limb.status & LIMB_BROKEN
+
 /datum/surgery_step/open_encased_step/groin
 	name = "Move Organs Away"
 	desc = "move organs away from the pelvis"
@@ -664,8 +654,8 @@
 
 	surgery.affected_limb.surgery_status &= ~INCISION_BONE_CLOSED
 	surgery.affected_limb.surgery_status |= INCISION_BONE_OPENED
-	target.incision_depths[target_zone] = SURGERY_DEPTH_DEEP
 	target.update_surgery_overlays()
+	target.incision_depths[target_zone] = SURGERY_DEPTH_DEEP
 	complete(target, surgery) //This finishes the surgery.
 	log_interact(user, target, "[key_name(user)] moved organs away from [key_name(target)]'s [surgery.affected_limb.cavity], ending [surgery].")
 
@@ -768,7 +758,6 @@
 	possible_locs = list("groin")
 	steps = list(
 		/datum/surgery_step/close_encased_step/groin,
-		/datum/surgery_step/open_encased_step/groin,
 		/datum/surgery_step/clamp_bleeders_step,
 	)
 
@@ -793,7 +782,13 @@
 	target.custom_pain("You feel a crushing pressure in your [surgery.affected_limb.display_name]!", 1)
 	log_interact(user, target, "[key_name(user)] began moving [internals_type] back into place in [key_name(target)]'s [surgery.affected_limb.cavity], attempting to begin [surgery].")
 
-/datum/surgery_step/close_encased_step/groin/success(mob/user, mob/living/carbon/human/target, internals_type, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/close_encased_step/groin/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	var/internals_type
+	if(issynth(target))
+		internals_type = "hydraulic systems"
+	else
+		internals_type = "internal organs"
+
 	user.affected_message(target,
 		SPAN_NOTICE("You move [target]'s [internals_type] in \his [surgery.affected_limb.encased] back into place.."),
 		SPAN_NOTICE("[user] moves your [internals_type] in your [surgery.affected_limb.cavity] back into place."),
@@ -803,6 +798,7 @@
 	surgery.affected_limb.surgery_status |= INCISION_BONE_CLOSED
 	target.update_surgery_overlays()
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SHALLOW
+	complete(target, surgery) //This finishes the surgery.
 	log_interact(user, target, "[key_name(user)] moved [internals_type] back in place into [key_name(target)]'s [surgery.affected_limb.cavity], beginning [surgery].")
 
 /datum/surgery_step/close_encased_step/groin/failure(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

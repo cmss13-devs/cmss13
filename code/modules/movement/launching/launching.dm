@@ -242,7 +242,7 @@
 		remove_temp_pass_flags(pass_flags)
 		LM.invoke_end_throw_callbacks(src)
 		if(isturf(loc))
-			var/turf/hit_turf = get_turf(src)
+			var/turf/hit_turf = loc
 			hit_turf.hitby(src)
 	QDEL_NULL(launch_metadata)
 

@@ -1771,8 +1771,7 @@
 		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"),
 			SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
 
-	var/obj/effect/blocker/water/water_blocker = locate(/obj/effect/blocker/water) in get_turf(src)
-	if(istype(get_turf(src), /turf/open/gm/river) || (water_blocker && water_blocker.dispersing) || istype(get_turf(src), /turf/open/beach/coastline) || istype(get_turf(src), /turf/open/gm/coast))
+	if(SSwater_overlays.is_water(get_turf(src)))
 		ExtinguishMob()
 
 	if(fire_stacks > 0)

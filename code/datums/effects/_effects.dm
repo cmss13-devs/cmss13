@@ -42,7 +42,7 @@
 	if(!validate_atom(thing) || QDELETED(thing))
 		qdel(src)
 		return
-	START_PROCESSING(SSeffects, src)
+	START_PROCESSING(SSoldeffects, src)
 
 	affected_atom = thing
 	LAZYADD(affected_atom.effects_list, src)

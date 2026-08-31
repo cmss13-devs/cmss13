@@ -171,7 +171,8 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 
 		var/not_dead_speaker = (stat != DEAD)
 		if(not_dead_speaker)
-			langchat_speech(message, listening, speaking, additional_styles = langchat_override ? list(langchat_override) : list("langchat"))
+			langchat_send_message(message, NO_FLAGS, listening, LANGCHAT_DEFAULT_POP, additional_styles = langchat_override ? list(langchat_override) : list("langchat"), language = speaking)
+
 		for(var/mob/possible_listening_mob as anything in listening)
 			possible_listening_mob.hear_say(message, verb, speaking, alt_name, italics, src, speech_sound, sound_vol, message_mode)
 

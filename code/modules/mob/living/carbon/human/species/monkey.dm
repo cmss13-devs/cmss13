@@ -89,7 +89,8 @@
 			if(prob(50))
 				var/list/heard = get_mobs_in_view(GLOB.world_view_size, container)
 				var/message = pick("rocks about.", "creaks.", "chimpers.")
-				container.langchat_speech(message, heard, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small", "emote"))
+				monkey.AddComponent(/datum/component/langchat_image)
+				monkey.langchat_send_message(message, LANGCHAT_IMAGE_IGNORE_LANG | LANGCHAT_IMAGE_IS_EMOTE, heard, LANGCHAT_FAST_POP, additional_styles = list("langchat_small"))
 				container.visible_message("<b>[container]</b> [message]")
 			else
 				container.attack_hand(monkey)

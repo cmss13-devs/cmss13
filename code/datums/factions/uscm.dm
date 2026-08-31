@@ -78,7 +78,7 @@
 				if("Team")
 					marine_rk = "soctl_a"
 
-		current_human.langchat_color = current_human.assigned_squad.chat_color
+		current_human.AddComponent(/datum/component/langchat_image, default_color = current_human.assigned_squad.chat_color)
 
 		var/icon/file_to_use = override_icon_file ? override_icon_file : base_icon_file
 		if(!marine_rk)

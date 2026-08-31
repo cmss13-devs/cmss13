@@ -1477,7 +1477,7 @@
 		message = replacetext(message, "l", "1")
 
 	if(is_local)
-		user.langchat_speech(message, heard, GLOB.all_languages, overhead_color, TRUE)
+		user.langchat_send_message(message, LANGCHAT_IMAGE_IGNORE_LANG, heard, LANGCHAT_DEFAULT_POP, override_color = overhead_color)
 
 	var/voice_name = "A strange voice"
 	if((user.name == user.real_name) && (user.alpha == initial(user.alpha)) && is_local)

@@ -52,7 +52,6 @@
 
 	speaking_key = "h"
 	speaking_noise = "hiss_talk"
-	langchat_color = "#9c7463"
 
 	slash_verb = "bite"
 	slashes_verb = "rips"

@@ -138,6 +138,8 @@
 	/// The number of bloody foot steps left to make
 	var/bloody_footsteps = 0
 
+	var/voice_level = 0
+
 	//taken from random files
 	var/last_chew = 0
 

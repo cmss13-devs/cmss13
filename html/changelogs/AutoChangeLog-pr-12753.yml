@@ -1,0 +1,4 @@
+author: "fira"
+delete-after: True
+changes:
+  - rscdel: "MULEbots cannot run people over anymore. They still can't really move either way."

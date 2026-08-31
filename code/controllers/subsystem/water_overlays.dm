@@ -92,6 +92,9 @@ SUBSYSTEM_DEF(water_overlays)
 		return return_list
 	return list(in_icon)
 
+/datum/controller/subsystem/water_overlays/proc/is_layer_underwater_turf(atom/to_check)
+	return to_check.layer == UNDER_WATER_TURF_LAYER
+
 /**
 *	water turfs are hardcoded to only have certain depths, but the shorelines take from their fulltile varients ---> turf/open var/water_type
 *	so for coasts we only generate a very shallow overlay of their fulltile varient, this greatly shrinks the amount we need to make

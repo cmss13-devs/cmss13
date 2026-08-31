@@ -21,11 +21,11 @@
 /obj/structure/catwalk/update_icon()
 	..()
 	var/turf/turf = get_turf(src)
-	if(turf.layer == UNDER_WATER_TURF_LAYER)
+	if(SSwater_overlays.is_layer_underwater_turf(turf))
 		var/turf/check_turf = get_step(src, NORTH)
 		var/obj/effect/blocker/water/water_blocker = locate(/obj/effect/blocker/water) in turf
 		var/layer_to_use = CATWALK_LAYER
-		if(layer == UNDER_WATER_TURF_LAYER)
+		if(SSwater_overlays.is_layer_underwater_turf(src))
 			if(SSwater_overlays.is_water(check_turf))
 				if(water_blocker && water_blocker.dispersing)
 					layer_to_use = UNDER_WATER_TURF_LAYER +0.01

@@ -95,7 +95,7 @@
 /area/lv624/lazarus/research)
 "ap" = (
 /obj/structure/surface/table,
-/obj/item/reagent_container/hypospray/autoinjector/no_refill/yautja,
+/obj/item/reagent_container/hypospray/autoinjector/yautja,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
@@ -369,8 +369,8 @@
 /area/lv624/lazarus/research)
 "bj" = (
 /obj/structure/surface/table,
-/obj/item/reagent_container/hypospray/autoinjector/no_refill/yautja,
-/obj/item/reagent_container/hypospray/autoinjector/no_refill/yautja,
+/obj/item/reagent_container/hypospray/autoinjector/yautja,
+/obj/item/reagent_container/hypospray/autoinjector/yautja,
 /turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "bk" = (

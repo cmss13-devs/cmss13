@@ -13,8 +13,3 @@
 /obj/item/reagent_container/hypospray/autoinjector/empty/medic/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/research/reagent_pouch/@SUBTYPES{@OLD}
 /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tramadol@SUBTYPES{@OLD}
 /obj/item/reagent_container/hypospray/autoinjector/skillless/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricordrazine@SUBTYPES{@OLD}
-/obj/item/reagent_container/hypospray/autoinjector/chloralhydrate/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/no_refill/chloralhydrate/@SUBTYPES{@OLD}
-/obj/item/reagent_container/hypospray/autoinjector/emergency/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/no_refill/emergency/@SUBTYPES{@OLD}
-/obj/item/reagent_container/hypospray/autoinjector/black_goo_cure/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/no_refill/black_goo_cure/@SUBTYPES{@OLD}
-/obj/item/reagent_container/hypospray/autoinjector/ultrazine/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/no_refill/ultrazine/@SUBTYPES{@OLD}
-/obj/item/reagent_container/hypospray/autoinjector/yautja/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/no_refill/yautja/@SUBTYPES{@OLD}

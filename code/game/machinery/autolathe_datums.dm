@@ -399,7 +399,7 @@
 
 /datum/autolathe/recipe/medilathe/autoinjector/s15x6
 	name = "Medic autoinjector (M-M) (15x6)"
-	path = /obj/item/reagent_container/hypospray/autoinjector/research/medic
+	path = /obj/item/reagent_container/hypospray/autoinjector/research/reagent_pouch
 
 /datum/autolathe/recipe/medilathe/autoinjector/s30x6
 	name = "Medic Autoinjector (M-L) (30x6)"

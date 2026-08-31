@@ -466,7 +466,7 @@
 	volume = (LOWH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 
 //MIXED/MISC CHEMS THAT CANNOT BE REFILLED
-/obj/item/reagent_container/hypospray/autoinjector/no_refill/chloralhydrate
+/obj/item/reagent_container/hypospray/autoinjector/chloralhydrate
 	name = "anesthetic autoinjector"
 	chemname = "anesthetic"
 	desc = "An autoinjector loaded with three 1u doses of Chloral Hydrate and three 9u doses of a sleep agent. Good to quickly pacify someone--for surgery, of course! What? Are you some sort of criminal?"
@@ -476,13 +476,13 @@
 	display_maptext = TRUE
 	maptext_label = "Zzz"
 
-/obj/item/reagent_container/hypospray/autoinjector/no_refill/chloralhydrate/Initialize()
+/obj/item/reagent_container/hypospray/autoinjector/chloralhydrate/Initialize()
 	. = ..()
 	reagents.add_reagent("chloralhydrate", 1*3)
 	reagents.add_reagent("stoxin", 9*3)
 	update_icon()
 
-/obj/item/reagent_container/hypospray/autoinjector/no_refill/emergency
+/obj/item/reagent_container/hypospray/autoinjector/emergency
 	name = "emergency autoinjector (CAUTION)"
 	desc = "An autoinjector loaded with a single dose of 77u of a special cocktail of chemicals, to be used in life-threatening situations. Doesn't require any training to use."
 	icon_state = "empty_emergency"
@@ -498,14 +498,14 @@
 	maptext_label = "!!"
 	skilllock = SKILL_MEDICAL_DEFAULT
 
-/obj/item/reagent_container/hypospray/autoinjector/no_refill/emergency/Initialize()
+/obj/item/reagent_container/hypospray/autoinjector/emergency/Initialize()
 	. = ..()
 	reagents.add_reagent("bicaridine", REAGENTS_OVERDOSE-1)
 	reagents.add_reagent("kelotane", REAGENTS_OVERDOSE-1)
 	reagents.add_reagent("oxycodone", MED_REAGENTS_OVERDOSE-1)
 	update_icon()
 
-/obj/item/reagent_container/hypospray/autoinjector/no_refill/black_goo_cure
+/obj/item/reagent_container/hypospray/autoinjector/black_goo_cure
 	name = "\"Pathogen\" cure autoinjector (SINGLE-USE)"
 	desc = "An autoinjector loaded with a single dose of a cure for Agent A0-3959X.91–15, also known as the 'black-goo'. Doesn't require any training to administrate."
 	icon_state = "empty_research_oneuse"
@@ -519,12 +519,12 @@
 	maptext_label = "!!!"
 	skilllock = SKILL_MEDICAL_DEFAULT
 
-/obj/item/reagent_container/hypospray/autoinjector/no_refill/black_goo_cure/Initialize()
+/obj/item/reagent_container/hypospray/autoinjector/black_goo_cure/Initialize()
 	. = ..()
 	reagents.add_reagent("antiZed", 5)
 	update_icon()
 
-/obj/item/reagent_container/hypospray/autoinjector/no_refill/ultrazine
+/obj/item/reagent_container/hypospray/autoinjector/ultrazine
 	name = "ultrazine stimpack"
 	chemname = "ultrazine"
 	desc = "A stimpack loaded with 5 doses of 5u of Ultrazine, a special and illegal muscle stimulant. Do not administer more than twice at a time. Highly addictive."
@@ -538,7 +538,7 @@
 	display_maptext = FALSE //corporate secret
 	maptext_label = "Uz"
 
-/obj/item/reagent_container/hypospray/autoinjector/no_refill/ultrazine/update_icon()
+/obj/item/reagent_container/hypospray/autoinjector/ultrazine/update_icon()
 	. = ..()
 	icon_state = uses_left ? "stimpack" : "stimpack0"
 	if((isstorage(loc) || ismob(loc)) && display_maptext)
@@ -546,17 +546,17 @@
 	else
 		maptext = ""
 
-/obj/item/reagent_container/hypospray/autoinjector/no_refill/ultrazine/empty
+/obj/item/reagent_container/hypospray/autoinjector/ultrazine/empty
 	name = "empty ultrazine stimpack"
 	volume = 0
 	uses_left = 0
 
-/obj/item/reagent_container/hypospray/autoinjector/no_refill/ultrazine/liaison
+/obj/item/reagent_container/hypospray/autoinjector/ultrazine/liaison
 	name = "white stimpack"
 	desc = "You know what they say, don't jab yourself with suspicious syringes."
 	maptext_label = "??"
 
-/obj/item/reagent_container/hypospray/autoinjector/no_refill/yautja
+/obj/item/reagent_container/hypospray/autoinjector/yautja
 	name = "unusual crystal"
 	chemname = "thwei"
 	desc = "A strange glowing crystal with a spike at one end."
@@ -570,12 +570,12 @@
 	uses_left = 1
 	black_market_value = 25
 
-/obj/item/reagent_container/hypospray/autoinjector/no_refill/yautja/thrall
+/obj/item/reagent_container/hypospray/autoinjector/yautja/thrall
 	name = "orange unusual crystal"
 	chemname = "dathwei"
 	color = "#c46b41"
 
-/obj/item/reagent_container/hypospray/autoinjector/no_refill/yautja/attack(mob/target_mob, mob/user)
+/obj/item/reagent_container/hypospray/autoinjector/yautja/attack(mob/target_mob, mob/user)
 	if(HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		..()
 	else
@@ -584,11 +584,11 @@
 	if(uses_left == 0)
 		addtimer(CALLBACK(src, PROC_REF(remove_crystal)), 120 SECONDS)
 
-/obj/item/reagent_container/hypospray/autoinjector/no_refill/yautja/proc/remove_crystal()
+/obj/item/reagent_container/hypospray/autoinjector/yautja/proc/remove_crystal()
 	visible_message(SPAN_DANGER("[src] collapses into nothing."))
 	qdel(src)
 
-/obj/item/reagent_container/hypospray/autoinjector/no_refill/yautja/update_icon()
+/obj/item/reagent_container/hypospray/autoinjector/yautja/update_icon()
 	overlays.Cut()
 	if(uses_left && autoinjector_type) //does not apply a colored fill overlay like the rest of the autoinjectors
 		var/image/filling = image('icons/obj/items/hunter/pred_gear.dmi', src, "[autoinjector_type]_[uses_left]")
@@ -664,7 +664,7 @@
 	volume = 60
 	amount_per_transfer_from_this = 60
 
-/obj/item/reagent_container/hypospray/autoinjector/research/medic
+/obj/item/reagent_container/hypospray/autoinjector/research/reagent_pouch
 	name = "15u Reagent Pouch Autoinjector"
 	desc = "An autoinjector specifically designed to fit inside and refill from Pressurized Reagent Canister Pouches. Has a similar lock to pill bottles, and fits up to 6 injections."
 	skilllock = SKILL_MEDICAL_MEDIC

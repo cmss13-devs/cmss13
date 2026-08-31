@@ -15612,8 +15612,8 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/reagent_container/hypospray/autoinjector/no_refill/yautja,
-/obj/item/reagent_container/hypospray/autoinjector/no_refill/yautja,
+/obj/item/reagent_container/hypospray/autoinjector/yautja,
+/obj/item/reagent_container/hypospray/autoinjector/yautja,
 /obj/item/weapon/yautja/knife,
 /obj/item/weapon/yautja/knife,
 /obj/item/weapon/yautja/knife,
@@ -15624,8 +15624,8 @@
 /obj/item/weapon/yautja/knife,
 /obj/item/weapon/yautja/knife,
 /obj/item/weapon/yautja/knife,
-/obj/item/reagent_container/hypospray/autoinjector/no_refill/yautja,
-/obj/item/reagent_container/hypospray/autoinjector/no_refill/yautja,
+/obj/item/reagent_container/hypospray/autoinjector/yautja,
+/obj/item/reagent_container/hypospray/autoinjector/yautja,
 /turf/open/predship/tile/red,
 /area/yautja_ship/middle_deck/corridors)
 "Iz" = (

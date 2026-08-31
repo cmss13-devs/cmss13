@@ -242,7 +242,7 @@
 	new /obj/item/reagent_container/hypospray/autoinjector/standard/bicaridine(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/standard/kelotane(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/standard/tramadol(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/no_refill/emergency(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
 
 /obj/item/storage/pouch/firstaid/full/black
 	icon_state = "wy_firstaid"
@@ -307,7 +307,7 @@
 	new /obj/item/reagent_container/hypospray/autoinjector/ez/bicaridine(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/ez/kelotane(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/ez/tramadol(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/no_refill/emergency(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
 	new /obj/item/stack/medical/bruise_pack(src)
 
 /obj/item/storage/pouch/firstaid/ert/wy
@@ -798,8 +798,8 @@
 	new /obj/item/reagent_container/hypospray/autoinjector/standard/bicaridine(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/standard/kelotane(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/no_refill/emergency(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/no_refill/emergency(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
 	new /obj/item/tool/extinguisher/mini(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/stimulant/brain_stimulant(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/stimulant/redemption_stimulant(src)
@@ -843,8 +843,8 @@
 	new /obj/item/reagent_container/hypospray/autoinjector/standard/bicaridine(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/standard/kelotane(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/no_refill/emergency(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/no_refill/emergency(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
 	new /obj/item/tool/extinguisher/mini(src)
 
 /obj/item/storage/pouch/medical/socmed/dutch
@@ -863,7 +863,7 @@
 	new /obj/item/storage/pill_bottle/kelotane(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/no_refill/emergency(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
 	new /obj/item/tool/extinguisher/mini(src)
 
 /obj/item/storage/pouch/medical/socmed/dutch/unmarked
@@ -942,7 +942,7 @@
 	new /obj/item/reagent_container/hypospray/autoinjector/standard/kelotane(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/standard/tramadol(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/standard/tramadol(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/no_refill/emergency(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
 
 /obj/item/storage/pouch/autoinjector/full/wy
 	icon_state = "wy_medicpack"
@@ -1130,7 +1130,7 @@
 	//Only add an autoinjector if the canister is empty
 	//Important for the snowflake /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone
 	if(length(contents) == 0)
-		new /obj/item/reagent_container/hypospray/autoinjector/research/medic(src)
+		new /obj/item/reagent_container/hypospray/autoinjector/research/reagent_pouch(src)
 	update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/proc/fill_with(ragent)

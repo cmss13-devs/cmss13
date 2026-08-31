@@ -77,7 +77,7 @@
 	else if (uses_left <= 0)
 		if(istype(src, /obj/item/reagent_container/hypospray/autoinjector/research))
 			. += SPAN_NOTICE("It is empty, but you can refill it with a filled pressurized reagent canister pouch.")
-		else if(istype(src, /obj/item/reagent_container/hypospray/autoinjector/no_refill))
+		else if(istype(src, /obj/item/reagent_container/hypospray/autoinjector))
 			. += SPAN_NOTICE("It is spent and it has no means of refilling. It must be disposed of.")
 		else if(istype(src, /obj/item/reagent_container/hypospray/autoinjector/ez) || istype(src, /obj/item/reagent_container/hypospray/autoinjector/tutorial))
 			. += SPAN_NOTICE("It is empty, but you can refill it at any Wey-Med Plus Dispenser, any Wall-Med, or with an MS-11 Smart Refill Tank.")
@@ -481,7 +481,7 @@
 
 
 //MIXED/MISC AUTOINJECTORS THAT CANNOT BE REFILLED
-/obj/item/reagent_container/hypospray/autoinjector/no_refill/chloralhydrate
+/obj/item/reagent_container/hypospray/autoinjector/chloralhydrate
 	name = "anesthetic autoinjector"
 	chemname = "anesthetic"
 	desc = "An autoinjector that injects a cocktail of anesthetics. Good to quickly pacify someone--for surgery, of course! What? Are you some sort of criminal?"
@@ -491,13 +491,13 @@
 	display_maptext = TRUE
 	maptext_label = "Zzz"
 
-/obj/item/reagent_container/hypospray/autoinjector/no_refill/chloralhydrate/Initialize()
+/obj/item/reagent_container/hypospray/autoinjector/chloralhydrate/Initialize()
 	. = ..()
 	reagents.add_reagent("chloralhydrate", 1*3)
 	reagents.add_reagent("stoxin", 9*3)
 	update_icon()
 
-/obj/item/reagent_container/hypospray/autoinjector/no_refill/emergency
+/obj/item/reagent_container/hypospray/autoinjector/emergency
 	name = "emergency EZ autoinjector (HIGH DOSE CAUTION)"
 	desc = "A massive ez autoinjector that injects a special cocktail of chemicals to be used in life-threatening situations. It doesn't require any training to administer. WARNING: DO NOT USE IF THE PATIENT HAS BICARIDINE, KELOTANE, OR OXYCODONE IN THEIR SYSTEM AS THE PATIENT *WILL* OVERDOSE!"
 	icon_state = "empty_emergency"
@@ -513,7 +513,7 @@
 	maptext_label = "!!"
 	skilllock = SKILL_MEDICAL_DEFAULT
 
-/obj/item/reagent_container/hypospray/autoinjector/no_refill/emergency/Initialize() //29u bicaridine, 29u kelotane, 19u oxycodone, 1u dexalin +.
+/obj/item/reagent_container/hypospray/autoinjector/emergency/Initialize() //29u bicaridine, 29u kelotane, 19u oxycodone, 1u dexalin +.
 	. = ..()
 	reagents.add_reagent("bicaridine", REAGENTS_OVERDOSE-1)
 	reagents.add_reagent("kelotane", REAGENTS_OVERDOSE-1)
@@ -521,7 +521,7 @@
 	reagents.add_reagent("dexalinp", 1) //I can breathe! Get me to surgery, please!
 	update_icon()
 
-/obj/item/reagent_container/hypospray/autoinjector/no_refill/black_goo_cure
+/obj/item/reagent_container/hypospray/autoinjector/black_goo_cure
 	name = "\"Pathogen\" cure EZ autoinjector (SINGLE-USE)"
 	desc = "An EZ autoinjectort that injects a cure for Agent A0-3959X.91–15, also known as the 'black goo.' It does not require any training to administer."
 	icon_state = "empty_research_single"
@@ -536,12 +536,12 @@
 	maptext_label = "!!!"
 	skilllock = SKILL_MEDICAL_DEFAULT
 
-/obj/item/reagent_container/hypospray/autoinjector/no_refill/black_goo_cure/Initialize()
+/obj/item/reagent_container/hypospray/autoinjector/black_goo_cure/Initialize()
 	. = ..()
 	reagents.add_reagent("antiZed", 5)
 	update_icon()
 
-/obj/item/reagent_container/hypospray/autoinjector/no_refill/ultrazine
+/obj/item/reagent_container/hypospray/autoinjector/ultrazine
 	name = "ultrazine stimpack"
 	chemname = "ultrazine"
 	desc = "An stimpack that injects ultrazine, a special and illegal muscle stimulant. It doesn't require any training to administer. Do not administer more than twice at a time. Highly addictive."
@@ -553,7 +553,7 @@
 	skilllock = SKILL_MEDICAL_DEFAULT
 	display_maptext = FALSE //corporate secret
 
-/obj/item/reagent_container/hypospray/autoinjector/no_refill/ultrazine/update_icon()
+/obj/item/reagent_container/hypospray/autoinjector/ultrazine/update_icon()
 	. = ..()
 	icon_state = uses_left ? "stimpack" : "stimpack0"
 	if((isstorage(loc) || ismob(loc)) && display_maptext)
@@ -561,17 +561,17 @@
 	else
 		maptext = ""
 
-/obj/item/reagent_container/hypospray/autoinjector/no_refill/ultrazine/empty
+/obj/item/reagent_container/hypospray/autoinjector/ultrazine/empty
 	name = "ultrazine stimpack"
 	volume = 0
 	uses_left = 0
 
-/obj/item/reagent_container/hypospray/autoinjector/no_refill/ultrazine/liaison
+/obj/item/reagent_container/hypospray/autoinjector/ultrazine/liaison
 	name = "strange stimpack"
 	desc = "You know what they say, don't jab yourself with suspicious syringes."
 	maptext_label = "???"
 
-/obj/item/reagent_container/hypospray/autoinjector/no_refill/yautja
+/obj/item/reagent_container/hypospray/autoinjector/yautja
 	name = "unusual crystal"
 	chemname = "thwei"
 	desc = "A strange glowing crystal with a spike at one end."
@@ -585,12 +585,12 @@
 	uses_left = 1
 	black_market_value = 25
 
-/obj/item/reagent_container/hypospray/autoinjector/no_refill/yautja/thrall
+/obj/item/reagent_container/hypospray/autoinjector/yautja/thrall
 	name = "orange unusual crystal"
 	chemname = "dathwei"
 	color = "#c46b41"
 
-/obj/item/reagent_container/hypospray/autoinjector/no_refill/yautja/attack(mob/M as mob, mob/user as mob)
+/obj/item/reagent_container/hypospray/autoinjector/yautja/attack(mob/M as mob, mob/user as mob)
 	if(HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		..()
 	else
@@ -599,11 +599,11 @@
 	if(uses_left == 0)
 		addtimer(CALLBACK(src, PROC_REF(remove_crystal)), 120 SECONDS)
 
-/obj/item/reagent_container/hypospray/autoinjector/no_refill/yautja/proc/remove_crystal()
+/obj/item/reagent_container/hypospray/autoinjector/yautja/proc/remove_crystal()
 	visible_message(SPAN_DANGER("[src] collapses into nothing."))
 	qdel(src)
 
-/obj/item/reagent_container/hypospray/autoinjector/no_refill/yautja/update_icon()
+/obj/item/reagent_container/hypospray/autoinjector/yautja/update_icon()
 	overlays.Cut()
 	if(uses_left && autoinjector_type) //does not apply a colored fill overlay like the rest of the autoinjectors
 		var/image/filling = image('icons/obj/items/hunter/pred_gear.dmi', src, "[autoinjector_type]_[uses_left]")

@@ -441,20 +441,20 @@
 
 /obj/item/storage/syringe_case/whiteout/fill_preset_inventory()
 	new /obj/item/reagent_container/hypospray/autoinjector/stimulant/redemption_stimulant( src )
-	new /obj/item/reagent_container/hypospray/autoinjector/no_refill/emergency( src )
+	new /obj/item/reagent_container/hypospray/autoinjector/emergency( src )
 	new /obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone( src )
 
 /obj/item/storage/syringe_case/commando
 
 /obj/item/storage/syringe_case/commando/fill_preset_inventory()
-	new /obj/item/reagent_container/hypospray/autoinjector/no_refill/emergency( src )
+	new /obj/item/reagent_container/hypospray/autoinjector/emergency( src )
 	new /obj/item/reagent_container/hypospray/autoinjector/standard/inaprovaline( src )
 	new /obj/item/reagent_container/hypospray/autoinjector/standard/adrenaline( src )
 
 /obj/item/storage/syringe_case/commando/looted //for surv insert
 
 /obj/item/storage/syringe_case/commando/looted/fill_preset_inventory()
-	new /obj/item/reagent_container/hypospray/autoinjector/no_refill/ultrazine/empty( src )
+	new /obj/item/reagent_container/hypospray/autoinjector/ultrazine/empty( src )
 	new /obj/item/reagent_container/hypospray/autoinjector/standard/inaprovaline( src )
 	new /obj/item/reagent_container/hypospray/autoinjector/standard/adrenaline( src )
 

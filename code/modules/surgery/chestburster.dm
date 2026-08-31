@@ -169,7 +169,7 @@
 			SPAN_NOTICE("[user], with \his [user.hand ? "left" : "right"] hand, tries to forcefully rip the writhing larva from [target]'s chest!"))
 
 	if(target.stat == CONSCIOUS)
-		to_chat(target, WARNING("The pressure caused by the larva writing in your chest is immense! You don't think you can take it!"))
+		to_chat(target, WARNING("The pressure caused by the larva flailing in your chest is immense! You don't think you can take it!"))
 		target.emote("scream")
 
 	log_interact(user, target, "[key_name(user)] started to remove an embryo from [key_name(target)]'s ribcage.")

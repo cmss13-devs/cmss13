@@ -92,7 +92,7 @@
 /obj/effect/attach_point_dummy
 	name = "equipment attach point"
 	desc = "A place where heavy equipment can be installed with a powerloader."
-	icon = 'icons/obj/structures/machinery/mohawk/mohawk-windshield.dmi'
+	icon = 'icons/obj/structures/machinery/omaha/misc.dmi'
 	icon_state = "hardpoint_empty"
 	unacidable = TRUE
 	anchored = TRUE

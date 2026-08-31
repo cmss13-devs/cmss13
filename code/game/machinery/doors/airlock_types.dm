@@ -941,14 +941,21 @@
 	not_weldable = TRUE
 
 /obj/structure/machinery/door/airlock/hatch/cockpit/omaha
-	icon = 'icons/obj/structures/machinery/mohawk/dropship_omaha_door.dmi'
+	icon = 'icons/obj/structures/machinery/omaha/dropship_door.dmi'
+	icon_state = "door_closed"
+	opacity = FALSE
+	glass = TRUE
+	openspeed = 5
+
+/obj/structure/machinery/door/airlock/hatch/cockpit/midway
+	icon = 'icons/obj/structures/machinery/midway/dropship_door.dmi'
 	icon_state = "door_closed"
 	opacity = FALSE
 	glass = TRUE
 	openspeed = 5
 
 /obj/structure/machinery/door/airlock/hatch/side_hatch
-	icon = 'icons/obj/structures/machinery/mohawk/dropship_omaha_door.dmi'
+	icon = 'icons/obj/structures/machinery/omaha/dropship_door.dmi'
 	icon_state = "door_closed"
 	unslashable = TRUE
 	unacidable = TRUE
@@ -959,6 +966,22 @@
 	glass = TRUE
 	openspeed = 5
 	var/obj/docking_port/mobile/marine_dropship/linked_dropship
+
+/obj/structure/machinery/door/airlock/hatch/side_hatch/omaha
+	icon = 'icons/obj/structures/machinery/omaha/dropship_door.dmi'
+	icon_state = "door_closed"
+	id = "change_this"
+	opacity = FALSE
+	glass = TRUE
+	openspeed = 5
+
+/obj/structure/machinery/door/airlock/hatch/side_hatch/midway
+	icon = 'icons/obj/structures/machinery/midway/dropship_door.dmi'
+	icon_state = "door_closed"
+	id = "change_this"
+	opacity = FALSE
+	glass = TRUE
+	openspeed = 5
 
 /obj/structure/machinery/door/airlock/hatch/side_hatch/attack_alien(mob/living/carbon/xenomorph/xeno)
 	if(xeno.hive_pos != XENO_QUEEN)

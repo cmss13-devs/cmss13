@@ -41,7 +41,11 @@
 	faction = FACTION_UPP
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/omaha
-	icon = 'icons/obj/structures/machinery/mohawk/mohawk-controls.dmi'
+	icon = 'icons/obj/structures/machinery/omaha/controls.dmi'
+	density = TRUE
+
+/obj/structure/machinery/computer/shuttle/dropship/flight/midway
+	icon = 'icons/obj/structures/machinery/midway/controls.dmi'
 	density = TRUE
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/Initialize(mapload, ...)

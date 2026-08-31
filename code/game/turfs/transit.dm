@@ -262,12 +262,16 @@
 	shuttle_tag = DROPSHIP_ALAMO
 	dir = SOUTH
 
-/turf/open/space/transit/dropship/omaha // problems may arise
+/turf/open/space/transit/dropship/omaha
 	shuttle_tag = DROPSHIP_OMAHA
 	dir = SOUTH
 
 /turf/open/space/transit/dropship/normandy
 	shuttle_tag = DROPSHIP_NORMANDY
+	dir = SOUTH
+
+/turf/open/space/transit/dropship/midway
+	shuttle_tag = DROPSHIP_MIDWAY
 	dir = SOUTH
 
 /turf/open/space/transit/dropship/saipan

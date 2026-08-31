@@ -1652,7 +1652,13 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 /obj/structure/machinery/computer/overwatch/almayer/omaha
 	name = "Overwatch console"
 	density = FALSE
-	icon = 'icons/obj/structures/machinery/mohawk/mohawk-modules.dmi'
+	icon = 'icons/obj/structures/machinery/omaha/modules.dmi'
+	icon_state = "overwatch_module"
+
+/obj/structure/machinery/computer/overwatch/almayer/midway
+	name = "Overwatch console"
+	density = FALSE
+	icon = 'icons/obj/structures/machinery/midway/modules.dmi'
 	icon_state = "overwatch_module"
 
 /obj/structure/machinery/computer/overwatch/clf

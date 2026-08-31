@@ -488,13 +488,13 @@
 	icon = 'icons/obj/vehicles/interiors/general_wy.dmi'
 
 /obj/structure/bed/chair/vehicle/omaha_pilot
-	icon = 'icons/obj/structures/machinery/mohawk/mohawk-seats.dmi'
+	icon = 'icons/obj/structures/machinery/omaha/seats.dmi'
 	icon_state = "passenger_chair"
 	name = "pilot's chair"
 	desc = "A specially designed chair for pilots to sit in."
 
 /obj/structure/bed/chair/vehicle/omaha_commander
-	icon = 'icons/obj/structures/machinery/mohawk/mohawk-seats.dmi'
+	icon = 'icons/obj/structures/machinery/omaha/seats.dmi'
 	icon_state = "command_chair"
 	name = "officer's chair"
 	desc = "A specially designed chair for officers to sit in."

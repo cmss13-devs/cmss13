@@ -55,7 +55,7 @@
 				hatch.linked_dropship = src
 
 	for(var/place in shuttle_areas)
-		for(var/obj/structure/machinery/door_control/omaha_ramp/ramp_button in place)
+		for(var/obj/structure/machinery/door_control/shuttle_ramp/ramp_button in place)
 			if(ramp_button.id == "aft_ramp")
 				ramp_button.linked_dropship = src
 				door_control.add_ramp(ramp_button, "aft")
@@ -65,7 +65,7 @@
 			hatch_button.linked_dropship = src
 
 	for(var/place in shuttle_areas)
-		for(var/obj/deployer/shuttle/deployerino in place)
+		for(var/obj/deployer/shuttle/dropship/deployerino in place)
 			deployerino.linked_dropship = src
 
 	RegisterSignal(src, COMSIG_DROPSHIP_ADD_EQUIPMENT, PROC_REF(add_equipment))
@@ -152,6 +152,20 @@
 
 /obj/docking_port/mobile/marine_dropship/normandy/get_transit_path_type()
 	return /turf/open/space/transit/dropship/normandy
+
+/obj/docking_port/mobile/marine_dropship/midway
+	name = "Midway"
+	id = DROPSHIP_MIDWAY
+	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
+
+	width = 17
+	height = 24
+	dwidth = 8
+	dheight = 12
+	multiz_ship = TRUE
+
+/obj/docking_port/mobile/marine_dropship/midway/get_transit_path_type()
+	return /turf/open/space/transit/dropship/midway
 
 /obj/docking_port/mobile/marine_dropship/saipan
 	name = "Saipan"

@@ -401,36 +401,50 @@
 	desc = "A sturdy metal ladder, made from an unknown metal, adorned with glowing runes."
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 
-/obj/structure/ladder/multiz/dropship_omaha
+/obj/structure/ladder/multiz/dropship
 	name = "ladder hatch"
-	icon = 'icons/obj/structures/machinery/mohawk/mohawk-interior-item.dmi'
+	icon = 'icons/obj/structures/machinery/omaha/interior_item.dmi'
 	icon_state = "ladder-hatch-closed"
 	var/deployed = FALSE
 	var/currently_adjusting = FALSE
 	var/deploy_speed = 18
+	id = "change_this"
+
+/obj/structure/ladder/multiz/dropship/omaha
+	icon = 'icons/obj/structures/machinery/omaha/interior_item.dmi'
+	icon_state = "ladder-hatch-closed"
 	id = "omaha_cockpit_ladder"
 
-/obj/structure/ladder/multiz/dropship_omaha_bottom
+/obj/structure/ladder/multiz/dropship/midway
+	icon = 'icons/obj/structures/machinery/midway/interior_item.dmi'
+	icon_state = "ladder-hatch-closed"
+	id = "midway_cockpit_ladder"
+
+/obj/structure/ladder/multiz/dropship_bottom
 	name = "ladder"
-	icon = 'icons/obj/structures/machinery/mohawk/mohawk-interior-item.dmi'
+	icon = 'icons/obj/structures/machinery/omaha/interior_item.dmi'
 	icon_state = "hatch_ladder_bottom"
 
-/obj/structure/ladder/multiz/dropship_omaha_bottom/update_icon()
+/obj/structure/ladder/multiz/dropship_bottom/omaha
+	icon = 'icons/obj/structures/machinery/omaha/interior_item.dmi'
+	icon_state = "hatch_ladder_bottom"
+
+/obj/structure/ladder/multiz/dropship_bottom/update_icon()
 	return // FUCK OFF
 
-/obj/structure/ladder/multiz/dropship_omaha/LateInitialize()
+/obj/structure/ladder/multiz/dropship/LateInitialize()
 	.=..()
-	down = new /obj/structure/ladder/multiz/dropship_omaha_bottom
+	down = new /obj/structure/ladder/multiz/dropship_bottom
 	down.up = src
 
-/obj/structure/ladder/multiz/dropship_omaha/update_icon()
+/obj/structure/ladder/multiz/dropship/update_icon()
 	return // FUCK OFF
 
-/obj/structure/ladder/multiz/dropship_omaha/attack_hand(mob/living/user)
+/obj/structure/ladder/multiz/dropship/attack_hand(mob/living/user)
 	if(deployed)
 		return ..()
 
-/obj/structure/ladder/multiz/dropship_omaha/proc/deploy()
+/obj/structure/ladder/multiz/dropship/proc/deploy()
 	if(currently_adjusting)
 		return
 	currently_adjusting = TRUE
@@ -439,7 +453,7 @@
 	playsound(loc, 'sound/machines/freesoundstock_step_ladder.ogg', 35, 0)
 	addtimer(CALLBACK(src, PROC_REF(finish_deploying)), deploy_speed,  TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT) //
 
-/obj/structure/ladder/multiz/dropship_omaha/proc/finish_deploying()
+/obj/structure/ladder/multiz/dropship/proc/finish_deploying()
 	name = "ladder"
 	icon_state = "hatch-open"
 	currently_adjusting = FALSE
@@ -450,7 +464,7 @@
 	playsound(loc, 'sound/machines/freesoundstock_step_ladder.ogg', 30, 0)
 	playsound(turf_below.loc, 'sound/machines/freesoundstock_step_ladder.ogg', 50, 0)
 
-/obj/structure/ladder/multiz/dropship_omaha/proc/undeploy(forced_adjusting = FALSE)
+/obj/structure/ladder/multiz/dropship/proc/undeploy(forced_adjusting = FALSE)
 	if(!forced_adjusting)
 		if(currently_adjusting)
 			return
@@ -462,7 +476,7 @@
 	else
 		finish_undeploying() // gotta move fast big dog...
 
-/obj/structure/ladder/multiz/dropship_omaha/proc/finish_undeploying()
+/obj/structure/ladder/multiz/dropship/proc/finish_undeploying()
 	name = "ladder hatch"
 	icon_state = "ladder-hatch-closed"
 	currently_adjusting = FALSE

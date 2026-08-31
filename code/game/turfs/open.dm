@@ -1431,47 +1431,27 @@
 /// UD-6 MOHAWK OMAHA ///
 
 /turf/open/shuttle/dropship/omaha
-	icon = 'icons/turf/mohawk/mohawk-floors.dmi'
-	icon_state = "mohawk_floor"
+	icon = 'icons/turf/omaha/floors.dmi'
+	icon_state = "basic"
+	dir = NORTH
 
 /turf/open/shuttle/dropship/omaha/basic
-	icon_state = "mohawk_floor"
+	icon_state = "basic"
 
 /turf/open/shuttle/dropship/omaha/grated
-	icon_state = "mohawk_floor_grated"
-
-/turf/open/shuttle/dropship/omaha/grated/east
-	dir = EAST
+	icon_state = "grated"
 
 /turf/open/shuttle/dropship/omaha/external
-	icon_state = "mohawk_external"
+	icon_state = "external"
 
-/turf/open/shuttle/dropship/omaha/cargo
-	icon_state = "mohawk_cargo"
-
-/turf/open/shuttle/dropship/omaha/half_girder
-	icon_state = "mohawk_half_girder"
-
-/turf/open/shuttle/dropship/omaha/half_girder/east
-	dir = EAST
-
-/turf/open/shuttle/dropship/omaha/half_girder/west
-	dir = WEST
-
-/turf/open/shuttle/dropship/omaha/full_girder1
-	icon_state = "mohawk_full_girder1"
-
-/turf/open/shuttle/dropship/omaha/full_girder2
-	icon_state = "mohawk_full_girder2"
-
-/turf/open/shuttle/dropship/omaha/full_girder2/north
-	dir = NORTH
+/turf/open/shuttle/dropship/omaha/marked
+	icon_state = "marked"
 
 /// RAMP ////
 
 /turf/open/shuttle/dropship/omaha/ramp
 	name = "Ramp"
-	icon = 'icons/turf/mohawk/mohawk-ramp.dmi'
+	icon = 'icons/turf/omaha/ramp.dmi'
 	icon_state = "ramp-10-low"
 
 /turf/open/shuttle/dropship/omaha/ramp/rampio_00
@@ -1510,53 +1490,69 @@
 /turf/open/shuttle/dropship/omaha/ramp/rampio_32
 	icon_state = "ramp-12"
 
-/turf/open/shuttle/dropship/omaha/platformed
-	icon_state = "basic_stripe_platform"
+//// MIDWAY ///
 
-/turf/open/shuttle/dropship/omaha/platformed/basic_stripe_platform
-	icon_state = "basic_stripe_platform"
-
-/turf/open/shuttle/dropship/omaha/platformed/basic_stripe_platform/east
-	dir = EAST
-
-/turf/open/shuttle/dropship/omaha/platformed/basic_stripe_platform/west
-	dir = WEST
-
-/turf/open/shuttle/dropship/omaha/platformed/basic_stairs
-	icon_state = "basic_stairs"
-
-/turf/open/shuttle/dropship/omaha/platformed/half_girder_striped_pl
-	icon_state = "half_girder_striped_pl"
-
-/turf/open/shuttle/dropship/omaha/platformed/half_girder_striped_pl/east
-	dir = EAST
-
-/turf/open/shuttle/dropship/omaha/platformed/half_girder_striped_pl/west
-	dir = WEST
-
-/turf/open/shuttle/dropship/omaha/platformed/basic_striped
-	icon_state = "basic_stripe"
-
-/turf/open/shuttle/dropship/omaha/platformed/basic_striped/north
+/turf/open/shuttle/dropship/midway
+	icon = 'icons/turf/midway/floors.dmi'
+	icon_state = "basic"
 	dir = NORTH
 
-/turf/open/shuttle/dropship/omaha/platformed/grated_striped
-	icon_state = "grated_stripe"
+/turf/open/shuttle/dropship/midway/basic
+	icon_state = "basic"
 
-/turf/open/shuttle/dropship/omaha/platformed/grated_striped/north
-	dir = NORTH
+/turf/open/shuttle/dropship/midway/grated
+	icon_state = "grated"
 
-/turf/open/shuttle/dropship/omaha/platformed/girder_inner_platformed
-	icon_state = "girder_inner_platform"
+/turf/open/shuttle/dropship/midway/external
+	icon_state = "external"
 
-/turf/open/shuttle/dropship/omaha/platformed/basic_platformed
-	icon_state = "basic_platform"
+/turf/open/shuttle/dropship/midway/marked
+	icon_state = "marked"
 
-/turf/open/shuttle/dropship/omaha/platformed/basic_stairs_platformed
-	icon_state = "basic_stairs_platform"
+/// MIDWAY RAMP ////
 
-/turf/open/shuttle/dropship/omaha/platformed/stairs_bot
-	icon_state = "stairs_bot"
+/turf/open/shuttle/dropship/midway/ramp
+	name = "Ramp"
+	icon = 'icons/turf/midway/ramp.dmi'
+	icon_state = "ramp-10-low"
+
+/turf/open/shuttle/dropship/midway/ramp/rampio_00
+	icon_state = "ramp-1"
+
+/turf/open/shuttle/dropship/midway/ramp/rampio_01
+	icon_state = "ramp-2"
+
+/turf/open/shuttle/dropship/midway/ramp/rampio_02
+	icon_state = "ramp-3"
+
+/turf/open/shuttle/dropship/midway/ramp/rampio_10
+	icon_state = "ramp-4"
+
+/turf/open/shuttle/dropship/midway/ramp/rampio_11
+	icon_state = "ramp-5"
+
+/turf/open/shuttle/dropship/midway/ramp/rampio_12
+	icon_state = "ramp-6"
+
+/turf/open/shuttle/dropship/midway/ramp/rampio_20
+	icon_state = "ramp-7"
+
+/turf/open/shuttle/dropship/midway/ramp/rampio_21
+	icon_state = "ramp-8"
+
+/turf/open/shuttle/dropship/midway/ramp/rampio_22
+	icon_state = "ramp-9"
+
+/turf/open/shuttle/dropship/midway/ramp/rampio_30
+	icon_state = "ramp-10"
+
+/turf/open/shuttle/dropship/midway/ramp/rampio_31
+	icon_state = "ramp-11"
+
+/turf/open/shuttle/dropship/midway/ramp/rampio_32
+	icon_state = "ramp-12"
+
+/// MIDWAY END ///
 
 /turf/open/shuttle/predship
 	name = "ship floor"

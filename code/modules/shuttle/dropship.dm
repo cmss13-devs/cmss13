@@ -6,6 +6,16 @@
 	breakable = FALSE
 	explo_proof = TRUE
 
+/obj/structure/shuttle/part/decal // used for stuff to place on top of turfs which ideally should be just diff icon_states
+	icon = 'icons/obj/structures/machinery/midway/misc.dmi'
+	icon_state = "hardpoint_empty"
+	opacity = FALSE
+	density = FALSE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	can_block_movement = FALSE
+	flags_atom = NO_ZFALL
+	layer = ABOVE_TURF_LAYER
+
 // USCM Dropship Alamo
 
 /obj/structure/shuttle/part/dropship1
@@ -114,8 +124,9 @@
 
 /obj/structure/shuttle/part/dropship_omaha
 	name = "\improper Omaha"
-	icon = 'icons/turf/mohawk/mohawk-facade.dmi'
+	icon = 'icons/turf/omaha/facade.dmi'
 	icon_state = "15,16"
+	dir = NORTH
 
 /obj/structure/shuttle/part/dropship_omaha/ex_act(severity, direction)
 	return FALSE
@@ -129,12 +140,44 @@
 		transparent_turf.update_vis_contents()
 
 /obj/structure/shuttle/part/dropship_omaha/transparent/lower_left_wing
-	icon = 'icons/obj/structures/machinery/mohawk/mohawk-windshield-64x64.dmi'
-	icon_state = "wingpoint-left"
+	icon = 'icons/obj/structures/machinery/omaha/misc_64x64.dmi'
+	icon_state = "wingpoint_left"
+	pixel_x = -32
+	pixel_y = -16
 
 /obj/structure/shuttle/part/dropship_omaha/transparent/lower_right_wing
-	icon = 'icons/obj/structures/machinery/mohawk/mohawk-windshield-64x64.dmi'
-	icon_state = "wingpoint-right"
+	icon = 'icons/obj/structures/machinery/omaha/misc_64x64.dmi'
+	icon_state = "wingpoint_right"
+	pixel_y = -16
+
+/// FLOOR DECALS ///
+/obj/structure/shuttle/part/decal/dropship_omaha
+	icon = 'icons/obj/structures/machinery/omaha/misc.dmi'
+	icon_state = "hardpoint_empty"
+
+/obj/structure/shuttle/part/decal/dropship_omaha/stairs_platform
+	icon_state = "stairs_platform"
+
+/obj/structure/shuttle/part/decal/dropship_omaha/platform
+	icon_state = "platform"
+
+/obj/structure/shuttle/part/decal/dropship_omaha/stairs_decal_top
+	icon_state = "stairs_decal_top"
+
+/obj/structure/shuttle/part/decal/dropship_omaha/stairs_decal_bot
+	icon_state = "stairs_decal_bot"
+
+/obj/structure/shuttle/part/decal/dropship_omaha/platform_decal
+	icon_state = "platform_decal"
+
+/obj/structure/shuttle/part/decal/dropship_omaha/panel_half
+	icon_state = "panel_half"
+
+/obj/structure/shuttle/part/decal/dropship_omaha/panel_full
+	icon_state = "panel_full"
+
+/obj/structure/shuttle/part/decal/dropship_omaha/decal
+	icon_state = "decal"
 
 //// BOTTOM STUFF////
 
@@ -363,7 +406,7 @@
 
 /// COCKPIT ////
 /obj/structure/shuttle/part/dropship_omaha/transparent/cockpit
-	icon = 'icons/turf/mohawk/mohawk-walls.dmi'
+	icon = 'icons/turf/omaha/walls.dmi'
 	icon_state = "2,19"
 
 /obj/structure/shuttle/part/dropship_omaha/transparent/cockpit/nose_00
@@ -399,7 +442,7 @@
 
 /obj/structure/shuttle/part/dropship_omaha/ramp_decals
 	name = "Platform"
-	icon = 'icons/turf/mohawk/mohawk-ramp.dmi'
+	icon = 'icons/turf/omaha/ramp.dmi'
 	icon_state = "0,0"
 	density = FALSE
 	opacity = FALSE
@@ -476,24 +519,24 @@
 	opacity = TRUE
 
 /obj/structure/shuttle/part/dropship_omaha/transparent/weapon_hardpoint_left
-	icon = 'icons/obj/structures/machinery/mohawk/mohawk-windshield.dmi'
-	icon_state = "hardpoint-left"
+	icon = 'icons/obj/structures/machinery/omaha/misc.dmi'
+	icon_state = "hardpoint_left"
 
 /obj/structure/shuttle/part/dropship_omaha/transparent/weapon_hardpoint_right
-	icon = 'icons/obj/structures/machinery/mohawk/mohawk-windshield.dmi'
-	icon_state = "hardpoint-right"
+	icon = 'icons/obj/structures/machinery/omaha/misc.dmi'
+	icon_state = "hardpoint_right"
 
 /// structure ramp to put on floor when its lowered ///
 
 /obj/structure/shuttle/part/dropship_omaha/structure_ramp
 	name = "Ramp"
-	icon = 'icons/turf/mohawk/mohawk-ramp.dmi'
+	icon = 'icons/turf/omaha/ramp.dmi'
 	icon_state = "ramp-10-low"
 	opacity = FALSE
 	density = FALSE
 
 /obj/structure/shuttle/part/dropship_omaha/fuel_lines
-	icon = 'icons/turf/mohawk/mohawk_belly.dmi'
+	icon = 'icons/turf/omaha/belly.dmi'
 	icon_state = "belly"
 	layer = FLY_LAYER
 	density = FALSE
@@ -504,7 +547,7 @@
 /// landing gears ///
 
 /obj/structure/shuttle/part/dropship_omaha/landing_gear_big
-	icon = 'icons/obj/structures/machinery/mohawk/mohawk_big.dmi'
+	icon = 'icons/obj/structures/machinery/omaha/misc_96x96.dmi'
 	icon_state = "landing_gear"
 	density = TRUE
 	opacity = FALSE
@@ -513,7 +556,7 @@
 	layer = 4
 
 /obj/structure/shuttle/part/dropship_omaha/landing_hatch_big
-	icon = 'icons/obj/structures/machinery/mohawk/mohawk_big.dmi'
+	icon = 'icons/obj/structures/machinery/omaha/misc_96x96.dmi'
 	icon_state = "gear_hatch"
 	density = FALSE
 	opacity = FALSE
@@ -626,6 +669,449 @@
 
 /obj/structure/shuttle/part/dropship2/transparent/right_outer_bottom_wing
 	icon_state = "6"
+
+// USCM Dropship Midway
+
+/obj/structure/shuttle/part/dropship_midway
+	name = "\improper Omaha"
+	icon = 'icons/turf/midway/facade.dmi'
+	icon_state = "15,16"
+	dir = NORTH
+
+/obj/structure/shuttle/part/dropship_midway/ex_act(severity, direction)
+	return FALSE
+
+/obj/structure/shuttle/part/dropship_midway/transparent
+	opacity = FALSE
+
+/obj/structure/shuttle/part/dropship_midway/transparent/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
+	.=..()
+	for(var/turf/transparent_turf in locs)
+		transparent_turf.update_vis_contents()
+
+/obj/structure/shuttle/part/dropship_midway/transparent/lower_left_wing
+	icon = 'icons/obj/structures/machinery/midway/misc_64x64.dmi'
+	icon_state = "wingpoint_left"
+	pixel_x = -32
+	pixel_y = -16
+
+/obj/structure/shuttle/part/dropship_midway/transparent/lower_right_wing
+	icon = 'icons/obj/structures/machinery/midway/misc_64x64.dmi'
+	icon_state = "wingpoint_right"
+	pixel_y = -16
+
+/obj/structure/shuttle/part/dropship_midway/transparent/weapon_hardpoint_left
+	icon = 'icons/obj/structures/machinery/midway/misc.dmi'
+	icon_state = "hardpoint_left"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/weapon_hardpoint_right
+	icon = 'icons/obj/structures/machinery/midway/misc.dmi'
+	icon_state = "hardpoint_right"
+
+/// FLOOR DECALS ///
+/obj/structure/shuttle/part/decal/dropship_midway
+	icon = 'icons/obj/structures/machinery/midway/misc.dmi'
+	icon_state = "hardpoint_empty"
+
+/obj/structure/shuttle/part/decal/dropship_midway/stairs_platform
+	icon_state = "stairs_platform"
+
+/obj/structure/shuttle/part/decal/dropship_midway/platform
+	icon_state = "platform"
+
+/obj/structure/shuttle/part/decal/dropship_midway/stairs_decal_top
+	icon_state = "stairs_decal_top"
+
+/obj/structure/shuttle/part/decal/dropship_midway/stairs_decal_bot
+	icon_state = "stairs_decal_bot"
+
+/obj/structure/shuttle/part/decal/dropship_midway/platform_decal
+	icon_state = "platform_decal"
+
+/obj/structure/shuttle/part/decal/dropship_midway/panel_half
+	icon_state = "panel_half"
+
+/obj/structure/shuttle/part/decal/dropship_midway/panel_full
+	icon_state = "panel_full"
+
+/obj/structure/shuttle/part/decal/dropship_midway/decal
+	icon_state = "decal"
+
+//// BOTTOM STUFF////
+
+/obj/structure/shuttle/part/dropship_midway/transparent/bottom/bottom_00
+	icon_state = "5,0"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/bottom/bottom_01
+	icon_state = "6,0"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/bottom/bottom_02
+	icon_state = "7,0"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/bottom/bottom_03
+	icon_state = "8,0"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/bottom/bottom_04
+	icon_state = "9,0"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/bottom/bottom_05
+	icon_state = "10,0"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/bottom/bottom_06
+	icon_state = "11,0"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/bottom/bottom_10
+	icon_state = "5,1"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/bottom/bottom_11
+	icon_state = "6,1"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/bottom/bottom_12
+	icon_state = "7,1"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/bottom/bottom_13
+	icon_state = "8,1"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/bottom/bottom_14
+	icon_state = "9,1"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/bottom/bottom_15
+	icon_state = "10,1"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/bottom/bottom_16
+	icon_state = "11,1"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/bottom/bottom_30
+	icon_state = "4,3"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/bottom/bottom_36
+	icon_state = "12,3"
+
+/// WINGS LEFT ////
+
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/left_00
+	icon_state = "2,14"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/left_01
+	icon_state = "3,14"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/left_03 // this goes over wall
+	icon_state = "4,14"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/left_10
+	icon_state = "0,15"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/left_11
+	icon_state = "1,15"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/left_12
+	icon_state = "2,15"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/left_13
+	icon_state = "3,15"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/left_14
+	icon_state = "4,15"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/left_20
+	icon_state = "0,16"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/left_21
+	icon_state = "1,16"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/left_22
+	icon_state = "2,16"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/left_23
+	icon_state = "3,16"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/left_30
+	icon_state = "0,17"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/left_31
+	icon_state = "1,17"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/left_32
+	icon_state = "2,17"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/left_33
+	icon_state = "3,17"
+
+/// WINGS RIGHT ///
+
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/right_00
+	icon_state = "12,14"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/right_01
+	icon_state = "13,14"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/right_02
+	icon_state = "14,14"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/right_10
+	icon_state = "12,15"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/right_11
+	icon_state = "13,15"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/right_12
+	icon_state = "14,15"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/right_13
+	icon_state = "15,15"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/right_14
+	icon_state = "16,15"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/right_20
+	icon_state = "13,16"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/right_21
+	icon_state = "14,16"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/right_22
+	icon_state = "15,16"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/right_23
+	icon_state = "16,16"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/right_30
+	icon_state = "13,17"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/right_31
+	icon_state = "14,17"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/right_32
+	icon_state = "15,17"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/right_33
+	icon_state = "16,17"
+
+/// NOSE LEFT ///
+/obj/structure/shuttle/part/dropship_midway/transparent/nose/left_01
+	icon_state = "1,18"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/nose/left_02
+	icon_state = "2,18"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/nose/left_03
+	icon_state = "3,18"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/nose/left_04
+	icon_state = "4,18"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/nose/left_11
+	icon_state = "2,19"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/nose/left_12
+	icon_state = "3,19"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/nose/left_13
+	icon_state = "4,19"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/nose/left_14
+	icon_state = "5,19"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/nose/left_21
+	icon_state = "2,20"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/nose/left_22
+	icon_state = "3,20"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/nose/left_23
+	icon_state = "4,20"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/nose/left_24
+	icon_state = "5,20"
+
+/// NOSE RIGHT ///
+
+/obj/structure/shuttle/part/dropship_midway/transparent/nose/right_01
+	icon_state = "12,18"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/nose/right_02
+	icon_state = "13,18"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/nose/right_03
+	icon_state = "14,18"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/nose/right_04
+	icon_state = "15,18"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/nose/right_11
+	icon_state = "11,19"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/nose/right_12
+	icon_state = "12,19"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/nose/right_13
+	icon_state = "13,19"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/nose/right_14
+	icon_state = "14,19"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/nose/right_21
+	icon_state = "11,20"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/nose/right_22
+	icon_state = "12,20"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/nose/right_23
+	icon_state = "13,20"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/nose/right_24
+	icon_state = "14,20"
+
+/// COCKPIT ////
+/obj/structure/shuttle/part/dropship_midway/transparent/cockpit
+	icon = 'icons/turf/midway/walls.dmi'
+	icon_state = "2,19"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/cockpit/nose_00
+	icon_state = "2,19"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/cockpit/nose_01
+	icon_state = "3,19"
+	density = FALSE
+	layer = OBJ_LAYER - 0.05
+
+/obj/structure/shuttle/part/dropship_midway/transparent/cockpit/nose_02
+	icon_state = "5,19"
+	density = FALSE
+	layer = OBJ_LAYER - 0.05
+
+/obj/structure/shuttle/part/dropship_midway/transparent/cockpit/nose_03
+	icon_state = "6,19"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/cockpit/nose_10
+	icon_state = "2,20"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/cockpit/nose_11
+	icon_state = "3,20"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/cockpit/nose_12
+	icon_state = "4,20"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/cockpit/nose_13
+	icon_state = "5,20"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/cockpit/nose_14
+	icon_state = "6,20"
+
+// platform pieces //
+
+/obj/structure/shuttle/part/decal/dropship_midway/ramp_decals
+	name = "Platform"
+	icon = 'icons/turf/midway/ramp.dmi'
+	icon_state = "0,0"
+
+/obj/structure/shuttle/part/decal/dropship_midway/ramp_decals/border_00
+	icon_state = "0,0"
+
+/obj/structure/shuttle/part/decal/dropship_midway/ramp_decals/border_01
+	icon_state = "1,0"
+
+/obj/structure/shuttle/part/decal/dropship_midway/ramp_decals/border_02
+	icon_state = "2,0"
+
+/obj/structure/shuttle/part/decal/dropship_midway/ramp_decals/border_10
+	icon_state = "0,1"
+
+/obj/structure/shuttle/part/decal/dropship_midway/ramp_decals/border_11
+	icon_state = "2,1"
+
+/obj/structure/shuttle/part/decal/dropship_midway/ramp_decals/border_20
+	icon_state = "0,2"
+
+/obj/structure/shuttle/part/decal/dropship_midway/ramp_decals/border_21
+	icon_state = "2,2"
+
+/obj/structure/shuttle/part/decal/dropship_midway/ramp_decals/border_30
+	icon_state = "0,3"
+
+/obj/structure/shuttle/part/decal/dropship_midway/ramp_decals/border_30
+	icon_state = "0,3"
+
+/obj/structure/shuttle/part/decal/dropship_midway/ramp_decals/border_31
+	icon_state = "1,3"
+
+/obj/structure/shuttle/part/decal/dropship_midway/ramp_decals/border_32
+	icon_state = "2,3"
+
+/// ramp ///
+/*
+/obj/structure/shuttle/part/dropship_omaha/dummy_part
+	icon = 'icons/turf/floors/floors.dmi'
+	icon_state = "noop"
+	var/mode = ""
+	opacity = FALSE
+	density = FALSE
+	invisibility = 101
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	can_block_movement = FALSE
+	flags_atom = NO_ZFALL
+	var/turf/open/stored_turf
+	var/stored_icon_state
+	var/obj/structure/stairs/linked_staircase
+	var/obj/structure/shuttle/part/dropship_omaha/structure_ramp/linked_structure_ramp
+
+/obj/structure/shuttle/part/dropship_omaha/dummy_part/adjustable_first
+	mode = "first"
+
+/obj/structure/shuttle/part/dropship_omaha/dummy_part/adjustable_second
+	mode = "second"
+
+/obj/structure/shuttle/part/dropship_omaha/dummy_part/adjustable_third
+	mode = "third"
+
+/obj/structure/shuttle/part/dropship_omaha/dummy_part/adjustable_fourth
+	mode = "fourth"
+
+/obj/structure/shuttle/part/dropship_omaha/dummy_part/adjustable_fifth
+	mode = "fifth"
+*/
+/obj/structure/shuttle/part/dropship_midway/dummy_wall
+	density = TRUE
+	opacity = TRUE
+
+/// structure ramp to put on floor when its lowered ///
+
+/obj/structure/shuttle/part/dropship_midway/structure_ramp
+	name = "Ramp"
+	icon = 'icons/turf/omaha/ramp.dmi'
+	icon_state = "ramp-10-low"
+	opacity = FALSE
+	density = FALSE
+
+/// fuel lines on the bottom of the ship ///
+
+/obj/structure/shuttle/part/dropship_midway/fuel_lines
+	icon = 'icons/turf/midway/belly.dmi'
+	icon_state = "belly"
+	layer = FLY_LAYER
+	density = FALSE
+	opacity = FALSE
+	alpha = 150
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/// landing gears ///
+
+/obj/structure/shuttle/part/dropship_midway/landing_gear_big
+	icon = 'icons/obj/structures/machinery/midway/misc_96x96.dmi'
+	icon_state = "landing_gear"
+	density = TRUE
+	opacity = FALSE
+	bound_width = 64
+	bound_height = 64
+	layer = 4
+
+/obj/structure/shuttle/part/dropship_midway/landing_hatch_big
+	icon = 'icons/obj/structures/machinery/midway/misc_96x96.dmi'
+	icon_state = "gear_hatch"
+	density = FALSE
+	opacity = FALSE
+	alpha = 227
+	layer = 4
 
 // USCM Dropship Saipan
 

@@ -84,6 +84,18 @@
 		return FALSE
 	return TRUE
 
+/area/shuttle/drop_midway/midway
+	name = "\improper Dropship Midway"
+	icon_state = "shuttlered"
+	base_muffle = MUFFLE_HIGH
+	base_lighting_alpha = 0 // 255
+	is_resin_allowed = FALSE
+
+/area/shuttle/drop_midway/Enter(atom/movable/O, atom/oldloc)
+	if(istype(O, /obj/structure/barricade))
+		return FALSE
+	return TRUE
+
 /area/shuttle/drop2/sulaco
 	name = "\improper Dropship Normandy"
 	icon_state = "shuttle"

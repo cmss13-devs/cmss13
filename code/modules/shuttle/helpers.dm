@@ -94,39 +94,39 @@
 
 /datum/door_controller/single/proc/control_doors(action, force = FALSE, asynchronous = TRUE)
 	if(is_ramp)
-		for(var/obj/structure/machinery/door_control/omaha_ramp/buttong in doors)
-			var/obj/structure/machinery/door_control/omaha_ramp/ramp_control = buttong
+		for(var/obj/structure/machinery/door_control/shuttle_ramp/buttong in doors)
+			var/obj/structure/machinery/door_control/shuttle_ramp/ramp_control = buttong
 			var/is_external = ramp_control.borders_space()
 			// do not allow the user to normally control external doors
 			if(!force && is_external)
 				continue
 			switch(action)
 				if("open")
-					INVOKE_ASYNC(ramp_control, TYPE_PROC_REF(/obj/structure/machinery/door_control/omaha_ramp, lower))
+					INVOKE_ASYNC(ramp_control, TYPE_PROC_REF(/obj/structure/machinery/door_control/shuttle_ramp, lower))
 				if("close")
-					INVOKE_ASYNC(ramp_control, TYPE_PROC_REF(/obj/structure/machinery/door_control/omaha_ramp, raise))
+					INVOKE_ASYNC(ramp_control, TYPE_PROC_REF(/obj/structure/machinery/door_control/shuttle_ramp, raise))
 				if("force-lock")
 					if (status == SHUTTLE_DOOR_BROKEN)
 						continue
-					INVOKE_ASYNC(ramp_control, TYPE_PROC_REF(/obj/structure/machinery/door_control/omaha_ramp, raise))
+					INVOKE_ASYNC(ramp_control, TYPE_PROC_REF(/obj/structure/machinery/door_control/shuttle_ramp, raise))
 					status = SHUTTLE_DOOR_LOCKED
 				if("lock")
-					INVOKE_ASYNC(ramp_control, TYPE_PROC_REF(/obj/structure/machinery/door_control/omaha_ramp, raise))
+					INVOKE_ASYNC(ramp_control, TYPE_PROC_REF(/obj/structure/machinery/door_control/shuttle_ramp, raise))
 					if (status != SHUTTLE_DOOR_BROKEN)
 						status = SHUTTLE_DOOR_LOCKED
 				if("unlock")
-					INVOKE_ASYNC(ramp_control, TYPE_PROC_REF(/obj/structure/machinery/door_control/omaha_ramp, lower))
+					INVOKE_ASYNC(ramp_control, TYPE_PROC_REF(/obj/structure/machinery/door_control/shuttle_ramp, lower))
 					if (status != SHUTTLE_DOOR_BROKEN)
 						status = SHUTTLE_DOOR_UNLOCKED
 				if("force-lock-launch")
 					if(asynchronous)
-						INVOKE_ASYNC(ramp_control, TYPE_PROC_REF(/obj/structure/machinery/door_control/omaha_ramp, raise_forced))
+						INVOKE_ASYNC(ramp_control, TYPE_PROC_REF(/obj/structure/machinery/door_control/shuttle_ramp, raise_forced))
 					else
-						INVOKE_ASYNC(ramp_control, TYPE_PROC_REF(/obj/structure/machinery/door_control/omaha_ramp, raise_forced))
+						INVOKE_ASYNC(ramp_control, TYPE_PROC_REF(/obj/structure/machinery/door_control/shuttle_ramp, raise_forced))
 					if (status != SHUTTLE_DOOR_BROKEN)
 						status = SHUTTLE_DOOR_LOCKED
 				if("force-unlock")
-					INVOKE_ASYNC(ramp_control, TYPE_PROC_REF(/obj/structure/machinery/door_control/omaha_ramp, lower))
+					INVOKE_ASYNC(ramp_control, TYPE_PROC_REF(/obj/structure/machinery/door_control/shuttle_ramp, lower))
 					if (status != SHUTTLE_DOOR_BROKEN)
 						status = SHUTTLE_DOOR_UNLOCKED
 				else

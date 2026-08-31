@@ -150,6 +150,7 @@ Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency
 #define DS2_FREQ 1489
 #define DS3_FREQ 1490
 #define DS4_FREQ 1497
+#define DS5_FREQ 1498
 
 //Marine Squad channels
 #define ALPHA_FREQ 1491
@@ -205,7 +206,8 @@ GLOBAL_LIST_INIT(radiochannels, list(
 	RADIO_CHANNEL_ALAMO = DS1_FREQ,
 	RADIO_CHANNEL_NORMANDY = DS2_FREQ,
 	RADIO_CHANNEL_SAIPAN = DS3_FREQ,
-	RADIO_CHANNEL_OMAHA = DS4_FREQ, // brah
+	RADIO_CHANNEL_OMAHA = DS4_FREQ,
+	RADIO_CHANNEL_OMAHA = DS5_FREQ,
 
 	RADIO_CHANNEL_COLONY = COLONY_FREQ,
 

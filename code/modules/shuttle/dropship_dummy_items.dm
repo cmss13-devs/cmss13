@@ -4,29 +4,36 @@
 	invisibility = 101
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	flags_atom = NO_ZFALL
+	unacidable = TRUE
+	explo_proof = TRUE
 
-/obj/deployer/shuttle
-	icon = 'icons/obj/structures/machinery/mohawk/bits_bobs.dmi'
+/obj/deployer/shuttle/dropship
+	icon = 'icons/obj/structures/machinery/omaha/misc.dmi'
 	icon_state = "deployer"
 	var/obj/docking_port/mobile/marine_dropship/linked_dropship
+	var/item_to_deploy
 
-/obj/deployer/shuttle/omaha/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
+/obj/deployer/shuttle/dropship/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
 	. = ..()
 	if(is_reserved_level(src.z))
 		return
 	if(linked_dropship.is_hijacked)
 		return
 
-/obj/deployer/shuttle/omaha/ramp_button
+/obj/deployer/shuttle/dropship/ramp_button
 	var/obj/structure/machinery/door_control/dropship_ramp_dummy/linked_button
 
-/obj/deployer/shuttle/omaha/ramp_button/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
+/obj/deployer/shuttle/dropship/ramp_button/omaha
+
+/obj/deployer/shuttle/dropship/ramp_button/midway
+
+/obj/deployer/shuttle/dropship/ramp_button/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
 	. = ..()
 	if(linked_button)
 		linked_button.loc = SSmapping.get_turf_below(src.loc)
 		linked_button.pixel_y = 16
 	else
-		for(var/obj/structure/machinery/door_control/omaha_ramp/original_button in range(8, src.loc))
+		for(var/obj/structure/machinery/door_control/shuttle_ramp/original_button in range(8, src.loc))
 			linked_button = new /obj/structure/machinery/door_control/dropship_ramp_dummy(SSmapping.get_turf_below(src.loc))
 			linked_button.pixel_y = 16
 			linked_button.layer = FLY_LAYER
@@ -36,10 +43,14 @@
 			linked_button.linked_single_controller = original_button.linked_single_controller //
 			break
 
-/obj/deployer/shuttle/omaha/belly
+/obj/deployer/shuttle/dropship/belly
 	var/obj/structure/shuttle/part/dropship_omaha/fuel_lines/lines
 
-/obj/deployer/shuttle/omaha/belly/lateShuttleMove()
+/obj/deployer/shuttle/dropship/belly/omaha
+
+/obj/deployer/shuttle/dropship/belly/midway
+
+/obj/deployer/shuttle/dropship/belly/lateShuttleMove()
 	.=..()
 	if(is_reserved_level(src.z))
 		if(lines)
@@ -54,7 +65,7 @@
 			else
 				lines = new /obj/structure/shuttle/part/dropship_omaha/fuel_lines(final_turf)
 
-/obj/deployer/shuttle/omaha/landing_gear
+/obj/deployer/shuttle/dropship/landing_gear
 	var/offset_x = -16
 	var/offset_y = -19
 	var/map_offset_x
@@ -62,7 +73,11 @@
 	var/obj/structure/shuttle/part/dropship_omaha/landing_gear_big/land_gear
 	var/obj/structure/shuttle/part/dropship_omaha/landing_hatch_big/hatch_big
 
-/obj/deployer/shuttle/omaha/landing_gear/lateShuttleMove(turf/oldT, list/movement_force, move_dir)
+/obj/deployer/shuttle/dropship/landing_gear/omaha
+
+/obj/deployer/shuttle/dropship/landing_gear/midway
+
+/obj/deployer/shuttle/dropship/landing_gear/lateShuttleMove(turf/oldT, list/movement_force, move_dir)
 	. = ..()
 	if(is_reserved_level(src.z))
 		if(land_gear)
@@ -86,12 +101,16 @@
 			hatch_big.pixel_x = offset_x
 			hatch_big.pixel_y = offset_y
 
-/obj/deployer/shuttle/omaha/fuel_attachment_point
+/obj/deployer/shuttle/dropship/fuel_attachment_point
 	var/obj/effect/attach_point/linked_point
 	var/offset_x
 	var/offset_y
 
-/obj/deployer/shuttle/omaha/fuel_attachment_point/lateShuttleMove(turf/oldT, list/movement_force, move_dir)
+/obj/deployer/shuttle/dropship/fuel_attachment_point/omaha
+
+/obj/deployer/shuttle/dropship/fuel_attachment_point/midway
+
+/obj/deployer/shuttle/dropship/fuel_attachment_point/lateShuttleMove(turf/oldT, list/movement_force, move_dir)
 	. = ..()
 	if(is_reserved_level(src.z))
 		if(linked_point)
@@ -113,14 +132,18 @@
 			linked_point.pixel_x = offset_x
 			linked_point.pixel_y = offset_y
 
-/obj/deployer/shuttle/omaha/hardpoints
+/obj/deployer/shuttle/dropship/hardpoints
 	var/obj/effect/attach_point_dummy/linked_bottom
 	var/map_offset_x
 	var/map_offset_y
 	var/offset_x
 	var/offset_y
 
-/obj/deployer/shuttle/omaha/hardpoints/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
+/obj/deployer/shuttle/dropship/hardpoints/omaha
+
+/obj/deployer/shuttle/dropship/hardpoints/midway
+
+/obj/deployer/shuttle/dropship/hardpoints/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
 	. = ..()
 	if(is_reserved_level(src.z))
 		if(linked_bottom)
@@ -142,9 +165,9 @@
 				linked_bottom.pixel_y = offset_y
 				break
 
-/obj/deployer/shuttle/gibber
+/obj/deployer/shuttle/dropship/gibber
 
-/obj/deployer/shuttle/gibber/afterShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)
+/obj/deployer/shuttle/dropship/gibber/afterShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)
 	. = ..()
 	var/turf/turf_below = SSmapping.get_turf_below(src.loc)
 	if(turf_below)

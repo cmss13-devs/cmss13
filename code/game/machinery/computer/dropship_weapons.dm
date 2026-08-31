@@ -922,7 +922,7 @@
 
 /obj/structure/machinery/computer/dropship_weapons/dropship_omaha
 	name = "\improper 'Omaha' weapons controls"
-	icon = 'icons/obj/structures/machinery/mohawk/mohawk-controls.dmi'
+	icon = 'icons/obj/structures/machinery/omaha/controls.dmi'
 	icon_state = "system_monitor"
 	density = FALSE
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_FLIGHT)
@@ -935,6 +935,16 @@
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_FLIGHT)
 	firemission_envelope = new /datum/cas_fire_envelope/uscm_dropship()
 	shuttle_tag = DROPSHIP_NORMANDY
+
+/obj/structure/machinery/computer/dropship_weapons/dropship_midway
+	name = "\improper 'Midway' weapons controls"
+	icon = 'icons/obj/structures/machinery/midway/controls.dmi'
+	icon_state = "system_monitor"
+	density = FALSE
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_FLIGHT)
+	firemission_envelope = new /datum/cas_fire_envelope/uscm_dropship()
+	shuttle_tag = DROPSHIP_MIDWAY
+	layer = OBJ_LAYER + 0.01
 
 /obj/structure/machinery/computer/dropship_weapons/dropship3
 	name = "\improper 'Saipan' weapons controls"

@@ -119,6 +119,7 @@
 #define DROPSHIP_ALAMO "dropship_alamo"
 #define DROPSHIP_OMAHA "dropship_omaha"
 #define DROPSHIP_NORMANDY "dropship_normandy"
+#define DROPSHIP_MIDWAY "dropship_midway"
 #define DROPSHIP_SAIPAN "dropship_saipan"
 #define DROPSHIP_MORANA "dropship_morana"
 #define DROPSHIP_DEVANA "dropship_devana"

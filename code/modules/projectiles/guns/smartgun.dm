@@ -94,7 +94,7 @@
 
 	var/lock_range = 2
 	var/aim_assist = FALSE
-	var/aim_assist_drain = 333
+	var/aim_assist_drain = 366
 	/// Accuracy penalty applied to aim-assisted shots when you don't directly fire at the target
 	var/aim_assist_accuracy_penalty = HIT_ACCURACY_MULT_TIER_10
 	/// Whether going helmetless reduces the aim-assist accuracy penalty
@@ -491,7 +491,7 @@
 	projectile_to_fire.accuracy = floor(projectile_to_fire.accuracy * (BASE_ACCURACY_MULT - max(0, accuracy_penalty)))
 
 /obj/item/weapon/gun/smartgun/proc/drain_battery(override_drain)
-	var/shot_drain = 111
+	var/shot_drain = 78
 	if(!iff_enabled)
 		shot_drain -= 10
 	if(aim_assist)
@@ -780,7 +780,7 @@
 // Normal smartgun with aim assist enabled by default
 /obj/item/weapon/gun/smartgun/autoaim
 	desc = "The actual firearm in the 4-piece M56A2 Smartgun System. Essentially a heavy, mobile machinegun. This upgraded variant features new, updated tracking software."
-	aim_assist_drain = 50
+	aim_assist_drain = 83
 	aim_assist_accuracy_penalty = 0
 	helmetless_aim_assist_bonus = FALSE
 	actions_types = list(
@@ -803,7 +803,7 @@
 	can_change_ammo = FALSE //Only one ammo type, no toggling.
 	current_mag = /obj/item/ammo_magazine/smartgun/heap
 	ammo_primary_def = /datum/ammo/bullet/smartgun/heap
-	aim_assist_drain = 50
+	aim_assist_drain = 83
 	aim_assist_accuracy_penalty = 0
 	helmetless_aim_assist_bonus = FALSE
 	actions_types = list(
@@ -832,7 +832,7 @@
 	drum_cover_overlay = FALSE
 	gun_faction = FACTION_PMC
 	has_cover = FALSE
-	aim_assist_drain = 50
+	aim_assist_drain = 83
 	aim_assist_accuracy_penalty = 0
 	helmetless_aim_assist_bonus = FALSE
 	actions_types = list(

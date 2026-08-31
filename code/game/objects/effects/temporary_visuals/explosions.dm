@@ -105,8 +105,8 @@
 	icon_state = "smoke"
 	width = 500
 	height = 500
-	count = 80
-	spawning = 3
+	count = 40
+	spawning = 2
 	lifespan = 10
 	fade = 10
 	fadein = 3
@@ -180,8 +180,8 @@
 	icon_state = "rock"
 	width = 750
 	height = 750
-	count = 75
-	spawning = 75
+	count = 40
+	spawning = 40
 	lifespan = 20
 	fade = 5
 	position = generator(GEN_SPHERE, 16, 16)
@@ -193,8 +193,8 @@
 	drift = generator(GEN_CIRCLE, 0, 1.5)
 
 /particles/falling_debris/small
-	count = 40
-	spawning = 40
+	count = 20
+	spawning = 20
 
 /particles/water_falling
 	icon = 'icons/effects/particles/generic_particles.dmi'
@@ -217,12 +217,12 @@
 	icon_state = "flare"
 	width = 750
 	height = 750
-	count = 80
-	spawning = 10
+	count = 40
+	spawning = 4
 	lifespan = 10
 	fade = 10
 	position = generator(GEN_SPHERE, 8, 8)
-	velocity = generator(GEN_CIRCLE, 120, 120)
+	velocity = generator(GEN_CIRCLE, 300, 300)
 	scale = 0.1
 	friction = 0.06
 

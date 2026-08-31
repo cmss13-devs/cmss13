@@ -106,7 +106,7 @@
 			var/reverse_face = GLOB.reverse_dir[facing]
 			var/turf/back_left = get_step(temp, turn(reverse_face, 45))
 			var/turf/back_right = get_step(temp, turn(reverse_face, -45))
-			if((!back_left ||  back_left.density) && (!back_right || back_right.density) || ((locate(/obj/structure/girder) in back_left) && (locate(/obj/structure/girder) in back_right)))
+			if((!back_left ||  back_left.density) && (!back_right || back_right.density) || (locate(/obj/structure/girder) in back_left) && (locate(/obj/structure/girder) in back_right))
 				break
 		if(!temp || temp.density || temp.opacity)
 			break

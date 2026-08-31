@@ -69,6 +69,8 @@
 	/// List of movables that already ate the blast wave, so they don't eat it again if they get pushed out of the way
 	/// Typically this will be a shared list between all 4 cardinal blast waves, so don't .Cut it
 	var/list/atom/movable/exploded
+	/// List of visual effect blastwaves we have instantiated and are expected to cleanup
+	var/list/obj/effect/explosion_blastwave/blastwaves
 
 /datum/explosion_wave/New(turf/epicenter, dir = NONE, power = 0, falloff = 0, falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR, datum/cause_data/cause_data, enviro, list/exploded_list, radial = FALSE)
 	. = ..()
@@ -118,7 +120,7 @@
 
 /// What happens before moving the explosion wave
 /datum/explosion_wave/proc/pre_travel_effects(delta_time)
-	remove_overlays()
+	QDEL_NULL_LIST(blastwaves)
 	tear_signals_down()
 
 /// Actually step forward and move the explosion wave
@@ -216,7 +218,7 @@
 	set_signals_up()
 	. = explode_turfs()
 	if(.)
-		apply_overlays()
+		spawn_blastwaves()
 
 /// Applies falloff to a set of turfs and explosion intensities, in-place
 /datum/explosion_wave/proc/apply_falloff()
@@ -301,25 +303,16 @@
 
 	return still_exploding
 
-/// Apply blast wave overlay to all the current turfs
+/// Create blast wave effects to all the current turfs
 /// Note that we do NOT store the overlays so nothing should change the intensities inbetween
 /// addition and removal otherwise we won't be able to remove them later!
-/datum/explosion_wave/proc/apply_overlays()
-	var/image/image = image('icons/effects/effects.dmi', "smoke", layer = FLY_LAYER)
+/datum/explosion_wave/proc/spawn_blastwaves()
+	blastwaves = list()
 	for(var/i in 1 to (order * 2 + 1))
 		var/turf/turf = wave_turfs[i]
 		var/intensity = intensities[i]
 		if(intensity > 0)
-			turf.overlays += image
-
-/// Remove blast wave overlay from all the current turfs
-/datum/explosion_wave/proc/remove_overlays()
-	var/image/image = image('icons/effects/effects.dmi', "smoke", layer = FLY_LAYER)
-	for(var/i in 1 to (order * 2 + 1))
-		var/turf/turf = wave_turfs[i]
-		var/intensity = intensities[i]
-		if(intensity > 0) // Yes, we need to check even while removing, so that a dead explosion doens't clip overlays from a living explosion
-			turf.overlays -= image
+			blastwaves += new /obj/effect/explosion_blastwave(turf, intensity)
 
 /// Set signals on all of our wave present turfs so we can explode things that come into them
 /datum/explosion_wave/proc/set_signals_up()

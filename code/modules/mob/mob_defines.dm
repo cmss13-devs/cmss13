@@ -125,8 +125,6 @@
 	var/old_x = 0
 	var/old_y = 0
 
-	var/charges = 0
-
 	var/a_intent = INTENT_HELP//Living
 	var/m_intent = MOVE_INTENT_RUN
 	var/lastKnownIP = null

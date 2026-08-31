@@ -112,6 +112,7 @@
 			hatch_big.pixel_y = offset_y
 
 /obj/deployer/shuttle/dropship/fuel_attachment_point
+	icon_state = "deployer_fuel"
 	var/obj/effect/attach_point/linked_point
 	var/offset_x
 	var/offset_y
@@ -145,6 +146,7 @@
 			linked_point.pixel_y = offset_y
 
 /obj/deployer/shuttle/dropship/hardpoints
+	icon_state = "deployer_gun"
 	var/obj/effect/attach_point_dummy/linked_bottom
 	var/map_offset_x
 	var/map_offset_y
@@ -180,6 +182,7 @@
 				break
 
 /obj/deployer/shuttle/dropship/gibber
+	icon_state = "deployer_gibber"
 
 /obj/deployer/shuttle/dropship/gibber/afterShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)
 	. = ..()
@@ -188,3 +191,78 @@
 		for(var/i in turf_below.contents)
 			var/atom/movable/thing = i
 			turf_below.shuttleCrushThing(thing, moving_dock)
+
+/obj/effect/drosphip_ramp_shadow
+	icon = 'icons/obj/structures/machinery/omaha/shadow.dmi'
+	icon_state = "shadowblast"
+	unacidable = TRUE
+	anchored = TRUE
+//	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	opacity = FALSE
+	density = FALSE
+	alpha = 0 // 101
+	flags_atom = NO_ZFALL
+
+/// ramp ///
+
+/obj/deployer/shuttle/dropship/dummy_part // used to manipulate turfs, since we can't move them
+	icon = 'icons/turf/floors/floors.dmi'
+	icon_state = "noop"
+	var/mode = ""
+	opacity = FALSE
+	density = FALSE
+	invisibility = 101
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	can_block_movement = FALSE
+	flags_atom = NO_ZFALL
+	var/turf/open/stored_turf
+	var/stored_icon_state
+	var/obj/structure/stairs/linked_staircase
+	var/obj/structure/shuttle/part/linked_structure_ramp
+	var/structure_deploy
+	var/stairs_deploy_up
+	var/stairs_deploy_down
+	var/shadowblaster
+	var/obj/effect/drosphip_ramp_shadow/shadowblast
+
+/obj/deployer/shuttle/dropship/dummy_part/omaha
+	item_to_deploy = /turf/closed/shuttle/dropship_omaha
+	structure_deploy = /obj/structure/shuttle/part/dropship_omaha/structure_ramp
+	stairs_deploy_up = /obj/structure/stairs/multiz/up/dropship_ramp/omaha
+	stairs_deploy_down = /obj/structure/stairs/multiz/down/dropship_ramp/omaha
+
+/obj/deployer/shuttle/dropship/dummy_part/omaha/adjustable_first
+	mode = "first"
+
+/obj/deployer/shuttle/dropship/dummy_part/omaha/adjustable_second
+	mode = "second"
+
+/obj/deployer/shuttle/dropship/dummy_part/omaha/adjustable_third
+	mode = "third"
+
+/obj/deployer/shuttle/dropship/dummy_part/omaha/adjustable_fourth
+	mode = "fourth"
+
+/obj/deployer/shuttle/dropship/dummy_part/omaha/adjustable_fifth
+	mode = "fifth"
+
+/obj/deployer/shuttle/dropship/dummy_part/midway
+	item_to_deploy = /turf/closed/shuttle/dropship_midway
+	structure_deploy = /obj/structure/shuttle/part/dropship_midway/structure_ramp
+	stairs_deploy_up = /obj/structure/stairs/multiz/up/dropship_ramp/midway
+	stairs_deploy_down = /obj/structure/stairs/multiz/down/dropship_ramp/midway
+
+/obj/deployer/shuttle/dropship/dummy_part/midway/adjustable_first
+	mode = "first"
+
+/obj/deployer/shuttle/dropship/dummy_part/midway/adjustable_second
+	mode = "second"
+
+/obj/deployer/shuttle/dropship/dummy_part/midway/adjustable_third
+	mode = "third"
+
+/obj/deployer/shuttle/dropship/dummy_part/midway/adjustable_fourth
+	mode = "fourth"
+
+/obj/deployer/shuttle/dropship/dummy_part/midway/adjustable_fifth
+	mode = "fifth"

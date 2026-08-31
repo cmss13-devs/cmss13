@@ -249,3 +249,15 @@ GLOBAL_DATUM_INIT(above_blackness_backdrop, /atom/movable/above_blackness_backdr
 	dir = NORTH
 	direction = DOWN
 	ramp = TRUE
+
+/obj/structure/stairs/multiz/up/dropship_ramp/omaha
+	icon = 'icons/turf/omaha/ramp.dmi'
+
+/obj/structure/stairs/multiz/down/dropship_ramp/omaha
+	icon = 'icons/turf/omaha/ramp.dmi'
+
+/obj/structure/stairs/multiz/up/dropship_ramp/midway
+	icon = 'icons/turf/midway/ramp.dmi'
+
+/obj/structure/stairs/multiz/down/dropship_ramp/midway
+	icon = 'icons/turf/midway/ramp.dmi'

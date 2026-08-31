@@ -15,6 +15,7 @@
 /area/shuttle/drop_midway/midway)
 "aX" = (
 /obj/structure/shuttle/part/decal/dropship_midway/ramp_decals/border_11,
+/obj/deployer/shuttle/dropship/dummy_part/midway/adjustable_second,
 /turf/open/shuttle/dropship/midway/ramp/rampio_12,
 /area/shuttle/drop_midway/midway)
 "bb" = (
@@ -47,6 +48,7 @@
 /area/shuttle/drop_midway/midway)
 "dJ" = (
 /obj/structure/shuttle/part/decal/dropship_midway/ramp_decals/border_32,
+/obj/deployer/shuttle/dropship/dummy_part/midway/adjustable_fourth,
 /turf/open/shuttle/dropship/midway/ramp/rampio_32,
 /area/shuttle/drop_midway/midway)
 "ea" = (
@@ -58,13 +60,20 @@
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "ew" = (
-/obj/deployer/shuttle/dropship/fuel_attachment_point/midway,
+/obj/deployer/shuttle/dropship/fuel_attachment_point/midway{
+	offset_x = 16;
+	offset_y = 16
+	},
 /turf/closed/shuttle/dropship_midway/wall_50,
 /area/shuttle/drop_midway/midway)
 "fw" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/wings/right_02,
 /obj/structure/shuttle/part/dropship_midway/transparent/lower_right_wing,
-/obj/deployer/shuttle/dropship/hardpoints/midway,
+/obj/deployer/shuttle/dropship/hardpoints/midway{
+	map_offset_x = -3;
+	map_offset_y = -1;
+	offset_y = 2
+	},
 /obj/effect/attach_point/weapon/dropship_midway/right_wing,
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
@@ -111,7 +120,11 @@
 "hK" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/nose/left_14,
 /obj/structure/shuttle/part/dropship_midway/transparent/weapon_hardpoint_left,
-/obj/deployer/shuttle/dropship/hardpoints/midway,
+/obj/deployer/shuttle/dropship/hardpoints/midway{
+	map_offset_x = 1;
+	map_offset_y = -1;
+	offset_y = 1
+	},
 /obj/effect/attach_point/electronics/dropship_midway,
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
@@ -172,6 +185,7 @@
 /area/shuttle/drop_midway/midway)
 "kS" = (
 /obj/structure/shuttle/part/decal/dropship_midway/ramp_decals/border_31,
+/obj/deployer/shuttle/dropship/dummy_part/midway/adjustable_fourth,
 /turf/open/shuttle/dropship/midway/ramp/rampio_31,
 /area/shuttle/drop_midway/midway)
 "kV" = (
@@ -183,7 +197,10 @@
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "lh" = (
-/obj/deployer/shuttle/dropship/fuel_attachment_point/midway,
+/obj/deployer/shuttle/dropship/fuel_attachment_point/midway{
+	offset_x = -16;
+	offset_y = 16
+	},
 /turf/closed/shuttle/dropship_midway/wall_51,
 /area/shuttle/drop_midway/midway)
 "lo" = (
@@ -269,10 +286,14 @@
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "qr" = (
+/obj/deployer/shuttle/dropship/dummy_part/midway/adjustable_third,
 /turf/open/shuttle/dropship/midway/ramp/rampio_21,
 /area/shuttle/drop_midway/midway)
 "qv" = (
 /obj/structure/shuttle/part/decal/dropship_midway/ramp_decals/border_00,
+/obj/deployer/shuttle/dropship/dummy_part/midway/adjustable_first{
+	shadowblaster = TRUE
+	},
 /turf/open/shuttle/dropship/midway/ramp/rampio_00,
 /area/shuttle/drop_midway/midway)
 "qw" = (
@@ -367,6 +388,7 @@
 /area/shuttle/drop_midway/midway)
 "wb" = (
 /obj/structure/shuttle/part/decal/dropship_midway/ramp_decals/border_30,
+/obj/deployer/shuttle/dropship/dummy_part/midway/adjustable_fourth,
 /turf/open/shuttle/dropship/midway/ramp/rampio_30,
 /area/shuttle/drop_midway/midway)
 "wm" = (
@@ -386,7 +408,11 @@
 "xb" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/wings/left_00,
 /obj/structure/shuttle/part/dropship_midway/transparent/lower_left_wing,
-/obj/deployer/shuttle/dropship/hardpoints/midway,
+/obj/deployer/shuttle/dropship/hardpoints/midway{
+	offset_y = 2;
+	map_offset_y = -1;
+	map_offset_x = 3
+	},
 /obj/effect/attach_point/weapon/dropship_midway/left_wing,
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
@@ -446,7 +472,11 @@
 "BU" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/nose/right_11,
 /obj/structure/shuttle/part/dropship_midway/transparent/weapon_hardpoint_right,
-/obj/deployer/shuttle/dropship/hardpoints/midway,
+/obj/deployer/shuttle/dropship/hardpoints/midway{
+	map_offset_x = -1;
+	map_offset_y = -1;
+	offset_y = 1
+	},
 /obj/effect/attach_point/electronics/dropship_midway,
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
@@ -479,7 +509,11 @@
 "Dl" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/nose/right_01,
 /obj/structure/shuttle/part/dropship_midway/transparent/weapon_hardpoint_right,
-/obj/deployer/shuttle/dropship/hardpoints/midway,
+/obj/deployer/shuttle/dropship/hardpoints/midway{
+	map_offset_x = -1;
+	map_offset_y = -1;
+	offset_y = 1
+	},
 /obj/effect/attach_point/weapon/dropship_midway/right_fore,
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
@@ -488,6 +522,7 @@
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "DA" = (
+/obj/deployer/shuttle/dropship/dummy_part/midway/adjustable_second,
 /turf/open/shuttle/dropship/midway/ramp/rampio_11,
 /area/shuttle/drop_midway/midway)
 "Ef" = (
@@ -567,6 +602,7 @@
 /area/shuttle/drop_midway/midway)
 "HO" = (
 /obj/structure/shuttle/part/decal/dropship_midway/ramp_decals/border_10,
+/obj/deployer/shuttle/dropship/dummy_part/midway/adjustable_second,
 /turf/open/shuttle/dropship/midway/ramp/rampio_10,
 /area/shuttle/drop_midway/midway)
 "Is" = (
@@ -591,6 +627,10 @@
 /obj/structure/shuttle/part/dropship_midway/transparent/wings/right_14,
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
+"Kn" = (
+/obj/deployer/shuttle/dropship/dummy_part/midway/adjustable_fifth,
+/turf/open/shuttle/dropship/midway/basic,
+/area/shuttle/drop_midway/midway)
 "Kz" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/wings/left_01,
 /turf/template_noop,
@@ -600,6 +640,7 @@
 /area/shuttle/drop_midway/midway)
 "Le" = (
 /obj/structure/shuttle/part/decal/dropship_midway/ramp_decals/border_01,
+/obj/deployer/shuttle/dropship/dummy_part/midway/adjustable_first,
 /turf/open/shuttle/dropship/midway/ramp/rampio_01,
 /area/shuttle/drop_midway/midway)
 "Lx" = (
@@ -621,7 +662,11 @@
 "Mx" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/nose/left_04,
 /obj/structure/shuttle/part/dropship_midway/transparent/weapon_hardpoint_left,
-/obj/deployer/shuttle/dropship/hardpoints/midway,
+/obj/deployer/shuttle/dropship/hardpoints/midway{
+	map_offset_x = 1;
+	map_offset_y = -1;
+	offset_y = 1
+	},
 /obj/effect/attach_point/weapon/dropship_midway/left_fore,
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
@@ -650,6 +695,7 @@
 /area/shuttle/drop_midway/midway)
 "OS" = (
 /obj/structure/shuttle/part/decal/dropship_midway/ramp_decals/border_21,
+/obj/deployer/shuttle/dropship/dummy_part/midway/adjustable_third,
 /turf/open/shuttle/dropship/midway/ramp/rampio_22,
 /area/shuttle/drop_midway/midway)
 "OW" = (
@@ -664,6 +710,7 @@
 /area/shuttle/drop_midway/midway)
 "Pe" = (
 /obj/structure/shuttle/part/decal/dropship_midway/ramp_decals/border_02,
+/obj/deployer/shuttle/dropship/dummy_part/midway/adjustable_first,
 /turf/open/shuttle/dropship/midway/ramp/rampio_02,
 /area/shuttle/drop_midway/midway)
 "Pk" = (
@@ -723,6 +770,10 @@
 /area/shuttle/drop_midway/midway)
 "Sw" = (
 /turf/closed/shuttle/dropship_midway/wall_01,
+/area/shuttle/drop_midway/midway)
+"Tf" = (
+/obj/deployer/shuttle/dropship/dummy_part/midway/adjustable_fifth,
+/turf/open/shuttle/dropship/midway/grated,
 /area/shuttle/drop_midway/midway)
 "To" = (
 /obj/structure/shuttle/part/decal/dropship_midway/panel_half{
@@ -798,6 +849,7 @@
 /area/shuttle/drop_midway/midway)
 "XT" = (
 /obj/structure/shuttle/part/decal/dropship_midway/ramp_decals/border_20,
+/obj/deployer/shuttle/dropship/dummy_part/midway/adjustable_third,
 /turf/open/shuttle/dropship/midway/ramp/rampio_20,
 /area/shuttle/drop_midway/midway)
 "XY" = (
@@ -1032,7 +1084,7 @@ hd
 Rx
 hd
 of
-LM
+Tf
 wb
 XT
 HO
@@ -1058,7 +1110,7 @@ hH
 YI
 xc
 of
-hd
+Kn
 kS
 qr
 DA
@@ -1084,7 +1136,7 @@ hd
 Rx
 hd
 of
-LM
+Tf
 dJ
 OS
 aX

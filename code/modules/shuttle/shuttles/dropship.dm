@@ -416,11 +416,11 @@
 	auto_open = TRUE
 	roundstart_template = /datum/map_template/shuttle/alamo
 
-/obj/docking_port/stationary/marine_dropship/almayer_hangar_omaha_1 //look
+/obj/docking_port/stationary/marine_dropship/almayer_hangar_omaha
 	name = "Almayer Hangar bay 1"
 	id = ALMAYER_DROPSHIP_LZ1
 	auto_open = TRUE
-	roundstart_template = /datum/map_template/shuttle/omaha // change this
+	roundstart_template = /datum/map_template/shuttle/omaha
 
 	width = 17
 	height = 24
@@ -432,6 +432,17 @@
 	id = ALMAYER_DROPSHIP_LZ2
 	auto_open = TRUE
 	roundstart_template = /datum/map_template/shuttle/normandy
+
+/obj/docking_port/stationary/marine_dropship/almayer_hangar_midway
+	name = "Almayer Hangar bay 2"
+	id = ALMAYER_DROPSHIP_LZ2
+	auto_open = TRUE
+	roundstart_template = /datum/map_template/shuttle/midway
+
+	width = 17
+	height = 24
+	dwidth = 8
+	dheight = 12
 
 /obj/docking_port/stationary/marine_dropship/upp/hangar_1
 	name = "Rostock Hangar bay 1"
@@ -499,6 +510,10 @@
 /datum/map_template/shuttle/normandy
 	name = "Normandy"
 	shuttle_id = DROPSHIP_NORMANDY
+
+/datum/map_template/shuttle/midway
+	name = "Midway"
+	shuttle_id = DROPSHIP_MIDWAY
 
 /datum/map_template/shuttle/saipan
 	name = "Saipan"

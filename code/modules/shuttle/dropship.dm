@@ -179,6 +179,46 @@
 /obj/structure/shuttle/part/decal/dropship_omaha/decal
 	icon_state = "decal"
 
+// platform pieces //
+
+/obj/structure/shuttle/part/decal/dropship_omaha/ramp_decals
+	name = "Platform"
+	icon = 'icons/turf/omaha/ramp.dmi'
+	icon_state = "0,0"
+
+/obj/structure/shuttle/part/decal/dropship_omaha/ramp_decals/border_00
+	icon_state = "0,0"
+
+/obj/structure/shuttle/part/decal/dropship_omaha/ramp_decals/border_01
+	icon_state = "1,0"
+
+/obj/structure/shuttle/part/decal/dropship_omaha/ramp_decals/border_02
+	icon_state = "2,0"
+
+/obj/structure/shuttle/part/decal/dropship_omaha/ramp_decals/border_10
+	icon_state = "0,1"
+
+/obj/structure/shuttle/part/decal/dropship_omaha/ramp_decals/border_11
+	icon_state = "2,1"
+
+/obj/structure/shuttle/part/decal/dropship_omaha/ramp_decals/border_20
+	icon_state = "0,2"
+
+/obj/structure/shuttle/part/decal/dropship_omaha/ramp_decals/border_21
+	icon_state = "2,2"
+
+/obj/structure/shuttle/part/decal/dropship_omaha/ramp_decals/border_30
+	icon_state = "0,3"
+
+/obj/structure/shuttle/part/decal/dropship_omaha/ramp_decals/border_30
+	icon_state = "0,3"
+
+/obj/structure/shuttle/part/decal/dropship_omaha/ramp_decals/border_31
+	icon_state = "1,3"
+
+/obj/structure/shuttle/part/decal/dropship_omaha/ramp_decals/border_32
+	icon_state = "2,3"
+
 //// BOTTOM STUFF////
 
 /obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_00
@@ -439,84 +479,6 @@
 
 /obj/structure/shuttle/part/dropship_omaha/transparent/cockpit/nose_14
 	icon_state = "6,20"
-
-/obj/structure/shuttle/part/dropship_omaha/ramp_decals
-	name = "Platform"
-	icon = 'icons/turf/omaha/ramp.dmi'
-	icon_state = "0,0"
-	density = FALSE
-	opacity = FALSE
-	flags_atom = NO_ZFALL
-	can_block_movement = FALSE
-
-/obj/structure/shuttle/part/dropship_omaha/ramp_decals/border_00
-	icon_state = "0,0"
-
-/obj/structure/shuttle/part/dropship_omaha/ramp_decals/border_01
-	icon_state = "1,0"
-
-/obj/structure/shuttle/part/dropship_omaha/ramp_decals/border_02
-	icon_state = "2,0"
-
-/obj/structure/shuttle/part/dropship_omaha/ramp_decals/border_10
-	icon_state = "0,1"
-
-/obj/structure/shuttle/part/dropship_omaha/ramp_decals/border_11
-	icon_state = "2,1"
-
-/obj/structure/shuttle/part/dropship_omaha/ramp_decals/border_20
-	icon_state = "0,2"
-
-/obj/structure/shuttle/part/dropship_omaha/ramp_decals/border_21
-	icon_state = "2,2"
-
-/obj/structure/shuttle/part/dropship_omaha/ramp_decals/border_30
-	icon_state = "0,3"
-
-/obj/structure/shuttle/part/dropship_omaha/ramp_decals/border_30
-	icon_state = "0,3"
-
-/obj/structure/shuttle/part/dropship_omaha/ramp_decals/border_31
-	icon_state = "1,3"
-
-/obj/structure/shuttle/part/dropship_omaha/ramp_decals/border_32
-	icon_state = "2,3"
-
-/// ramp ///
-
-/obj/structure/shuttle/part/dropship_omaha/dummy_part
-	icon = 'icons/turf/floors/floors.dmi'
-	icon_state = "noop"
-	var/mode = ""
-	opacity = FALSE
-	density = FALSE
-	invisibility = 101
-	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	can_block_movement = FALSE
-	flags_atom = NO_ZFALL
-	var/turf/open/stored_turf
-	var/stored_icon_state
-	var/obj/structure/stairs/linked_staircase
-	var/obj/structure/shuttle/part/dropship_omaha/structure_ramp/linked_structure_ramp
-
-/obj/structure/shuttle/part/dropship_omaha/dummy_part/adjustable_first
-	mode = "first"
-
-/obj/structure/shuttle/part/dropship_omaha/dummy_part/adjustable_second
-	mode = "second"
-
-/obj/structure/shuttle/part/dropship_omaha/dummy_part/adjustable_third
-	mode = "third"
-
-/obj/structure/shuttle/part/dropship_omaha/dummy_part/adjustable_fourth
-	mode = "fourth"
-
-/obj/structure/shuttle/part/dropship_omaha/dummy_part/adjustable_fifth
-	mode = "fifth"
-
-/obj/structure/shuttle/part/dropship_omaha/dummy_wall
-	density = TRUE
-	opacity = TRUE
 
 /obj/structure/shuttle/part/dropship_omaha/transparent/weapon_hardpoint_left
 	icon = 'icons/obj/structures/machinery/omaha/misc.dmi'
@@ -1057,42 +1019,6 @@
 
 /obj/structure/shuttle/part/decal/dropship_midway/ramp_decals/border_32
 	icon_state = "2,3"
-
-/// ramp ///
-/*
-/obj/structure/shuttle/part/dropship_omaha/dummy_part
-	icon = 'icons/turf/floors/floors.dmi'
-	icon_state = "noop"
-	var/mode = ""
-	opacity = FALSE
-	density = FALSE
-	invisibility = 101
-	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	can_block_movement = FALSE
-	flags_atom = NO_ZFALL
-	var/turf/open/stored_turf
-	var/stored_icon_state
-	var/obj/structure/stairs/linked_staircase
-	var/obj/structure/shuttle/part/dropship_omaha/structure_ramp/linked_structure_ramp
-
-/obj/structure/shuttle/part/dropship_omaha/dummy_part/adjustable_first
-	mode = "first"
-
-/obj/structure/shuttle/part/dropship_omaha/dummy_part/adjustable_second
-	mode = "second"
-
-/obj/structure/shuttle/part/dropship_omaha/dummy_part/adjustable_third
-	mode = "third"
-
-/obj/structure/shuttle/part/dropship_omaha/dummy_part/adjustable_fourth
-	mode = "fourth"
-
-/obj/structure/shuttle/part/dropship_omaha/dummy_part/adjustable_fifth
-	mode = "fifth"
-*/
-/obj/structure/shuttle/part/dropship_midway/dummy_wall
-	density = TRUE
-	opacity = TRUE
 
 /// structure ramp to put on floor when its lowered ///
 

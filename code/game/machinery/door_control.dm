@@ -563,13 +563,12 @@
 	var/list/third_ramps = list()
 	var/list/fourth_ramps = list()
 	var/list/fifth_ramps = list()
-	var/list/actual_ramp_area = list()
 	normaldoorcontrol = CONTROL_NORMAL_DOORS
 	var/datum/door_controller/single/linked_single_controller
 	var/direction = "aft"
 	var/busy = FALSE
 	var/broken = FALSE
-	var/obj/structure/shuttle/part/dropship_omaha/dummy_part/rampazoid
+	var/obj/deployer/shuttle/dropship/dummy_part/rampazoid
 
 /obj/structure/machinery/door_control/shuttle_ramp/omaha_aft
 	icon = 'icons/obj/structures/machinery/omaha/interior_item.dmi'
@@ -589,7 +588,6 @@
 
 /obj/structure/machinery/door_control/shuttle_ramp/handle_door()
 	if(is_reserved_level(src.z))
-		to_chat(world, "is a reserved level, abort")
 		return
 	if(linked_single_controller.status == SHUTTLE_DOOR_UNLOCKED)
 		linked_single_controller.control_doors("close")
@@ -626,6 +624,13 @@
 		var/turf/turf_beneath = SSmapping.get_turf_below(rampazoid.loc)
 		turf_beneath.ScrapeAway()
 		QDEL_NULL(rampazoid.linked_staircase)
+	for(rampazoid in first_ramps)
+		if(rampazoid.shadowblaster)
+			if(!rampazoid.shadowblast)
+				rampazoid.shadowblast = new /obj/effect/drosphip_ramp_shadow(rampazoid.loc)
+				animate(rampazoid.shadowblast, time = 50, loop = FALSE, alpha = 0)
+			else
+				animate(rampazoid.shadowblast, time = 50, loop = FALSE, alpha = 0)
 
 	for(rampazoid in fourth_ramps)
 		if(!rampazoid.linked_staircase)
@@ -699,19 +704,25 @@
 	crush_mobs(fifth_ramps)
 	for(rampazoid in fifth_ramps)
 		var/turf/turf_beneath = SSmapping.get_turf_below(rampazoid.loc)
-		turf_beneath.place_on_top(/turf/closed/shuttle/dropship_omaha)
+		turf_beneath.place_on_top(rampazoid.item_to_deploy)
 		turf_beneath.icon_state = "3,16"
 	crush_mobs(first_ramps)
 	for(rampazoid in first_ramps)
 		var/turf/open/our_turf = rampazoid.loc
 		our_turf.place_on_top(/turf/open_space)
 		our_turf.update_vis_contents()
+		if(rampazoid.shadowblaster)
+			if(!rampazoid.shadowblast)
+				rampazoid.shadowblast = new /obj/effect/drosphip_ramp_shadow(rampazoid.loc)
+				animate(rampazoid.shadowblast, time = 50, loop = FALSE, alpha = 255)
+			else
+				animate(rampazoid.shadowblast, time = 50, loop = FALSE, alpha = 255)
 	crush_mobs(second_ramps)
 	for(rampazoid in second_ramps)
 		var/turf/open/our_turf = rampazoid.loc
 		var/turf/turf_beneath = SSmapping.get_turf_below(our_turf)
 		if(!rampazoid.linked_structure_ramp)
-			rampazoid.linked_structure_ramp = new /obj/structure/shuttle/part/dropship_omaha/structure_ramp(turf_beneath)
+			rampazoid.linked_structure_ramp = new rampazoid.structure_deploy(turf_beneath)
 			rampazoid.linked_structure_ramp.icon_state = "[our_turf.icon_state]-low"
 		else
 			rampazoid.linked_structure_ramp.loc = turf_beneath
@@ -725,7 +736,7 @@
 		var/turf/open/our_turf = rampazoid.loc
 		var/turf/turf_beneath = SSmapping.get_turf_below(our_turf)
 		if(!rampazoid.linked_structure_ramp)
-			rampazoid.linked_structure_ramp = new /obj/structure/shuttle/part/dropship_omaha/structure_ramp(turf_beneath)
+			rampazoid.linked_structure_ramp = new rampazoid.structure_deploy(turf_beneath)
 			rampazoid.linked_structure_ramp.icon_state = "[our_turf.icon_state]-low"
 		else
 			rampazoid.linked_structure_ramp.loc = turf_beneath
@@ -738,7 +749,7 @@
 	for(rampazoid in fourth_ramps)
 		var/turf/open/our_turf = rampazoid.loc
 		var/turf/turf_beneath = SSmapping.get_turf_below(our_turf)
-		rampazoid.linked_staircase = new /obj/structure/stairs/multiz/up/dropship_ramp(turf_beneath)
+		rampazoid.linked_staircase = new rampazoid.stairs_deploy_up(turf_beneath)
 		rampazoid.linked_staircase.icon = our_turf.icon
 		rampazoid.linked_staircase.icon_state = "[our_turf.icon_state]-low"
 		our_turf.place_on_top(/turf/open_space)
@@ -746,7 +757,7 @@
 	for(rampazoid in fifth_ramps)
 		var/turf/open/our_turf = rampazoid.loc
 		if(!rampazoid.linked_staircase)
-			rampazoid.linked_staircase = new /obj/structure/stairs/multiz/down/dropship_ramp(our_turf)
+			rampazoid.linked_staircase = new rampazoid.stairs_deploy_down(our_turf)
 			rampazoid.linked_staircase.invisibility = 101
 	for(rampazoid in fifth_ramps)
 		for(var/mob/living/carbon/morbius in rampazoid.loc.contents)
@@ -761,7 +772,7 @@
 
 /obj/structure/machinery/door_control/shuttle_ramp/beforeShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
 	.=..()
-	if(!length(actual_ramp_area))
+	if(!length(first_ramps))
 		for(var/place in linked_dropship.shuttle_areas)
 			for(rampazoid in place) // switch to switch and "" vars
 				switch(rampazoid.mode)
@@ -775,7 +786,7 @@
 						fourth_ramps += rampazoid
 					if("fifth")
 						fifth_ramps += rampazoid
-				actual_ramp_area += rampazoid
+
 	if(!linked_single_controller)
 		for(var/direction in linked_dropship.door_control.door_controllers)
 			var/datum/door_controller/single/controller = linked_dropship.door_control.door_controllers[direction]

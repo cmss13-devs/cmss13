@@ -12,7 +12,6 @@
 	var/junctiontype
 	var/thermite = 0
 	var/melting = FALSE
-	var/claws_minimum = CLAW_TYPE_SHARP
 
 	tiles_with = list(
 		/turf/closed/wall,
@@ -219,8 +218,7 @@
 	if(acided_hole && user.mob_size >= MOB_SIZE_BIG)
 		acided_hole.expand_hole(user) //This proc applies the attack delay itself.
 		return XENO_NO_DELAY_ACTION
-
-	if(!(turf_flags & TURF_HULL) && user.claw_type >= claws_minimum && !acided_hole && user.a_intent == INTENT_HARM)
+	if(!(turf_flags & TURF_HULL) && (user.claw_type >= CLAW_TYPE_VERY_SHARP || damage_cap < HEALTH_WALL_REINFORCED) && !acided_hole && user.a_intent == INTENT_HARM)
 		user.animation_attack_on(src)
 		playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 		if(damage >= (damage_cap - (damage_cap / XENO_HITS_TO_DESTROY_WALL)))
@@ -436,11 +434,19 @@
 
 
 /turf/closed/wall/attackby(obj/item/attacking_item, mob/user)
+
 	if(isxeno(user) && istype(attacking_item, /obj/item/grab))
 		var/obj/item/grab/attacker_grab = attacking_item
 		var/mob/living/carbon/xenomorph/user_as_xenomorph = user
 		user_as_xenomorph.do_nesting_host(attacker_grab.grabbed_thing, src)
 		return
+
+	if(turf_flags & TURF_HULL)
+		return
+
+	//get the user's location
+	if( !istype(user.loc, /turf) )
+		return //can't do this stuff whilst inside objects and such
 
 	if(!ishuman(user))
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
@@ -475,7 +481,10 @@
 
 		to_chat(user, SPAN_NOTICE("You start taking down [src]."))
 		busy = TRUE
-		if(!do_after(user, 5 SECONDS, INTERRUPT_ALL_OUT_OF_RANGE, BUSY_ICON_BUILD))
+		var/timer = 5
+		if(damage_cap >= HEALTH_WALL_REINFORCED)
+			timer = 10
+		if(!do_after(user, timer SECONDS, INTERRUPT_ALL_OUT_OF_RANGE, BUSY_ICON_BUILD))
 			busy = FALSE
 			to_chat(user, SPAN_NOTICE("You stop taking down [src]."))
 			return
@@ -603,6 +612,19 @@
 				dismantle_wall()
 				return
 
+	//DRILLING
+	if(istype(attacking_item, /obj/item/tool/pickaxe/diamonddrill))
+		to_chat(user, SPAN_NOTICE("You begin to drill though the wall."))
+		busy = TRUE
+		if(do_after(user, 200 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			busy = FALSE
+			if(!istype(src, /turf/closed/wall)) //no idea why this check did exists so I am not removing it
+				return
+			to_chat(user, SPAN_NOTICE("Your drill tears though the last of the plating."))
+			dismantle_wall()
+		busy = FALSE
+		return
+
 	return attack_hand(user)
 
 /turf/closed/wall/proc/try_weldingtool_usage(obj/item/W, mob/user)
@@ -727,4 +749,8 @@
 	return TRUE
 
 /turf/closed/wall/can_be_dissolved()
-	return !(turf_flags & TURF_HULL)
+	if(turf_flags & TURF_HULL)
+		return 0
+	if(damage_cap >= HEALTH_WALL_REINFORCED)
+		return 2
+	return 1

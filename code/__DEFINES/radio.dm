@@ -21,6 +21,7 @@
 #define RADIO_CHANNEL_ALMAYER "Almayer"
 #define RADIO_CHANNEL_ALAMO "Alamo"
 #define RADIO_CHANNEL_OMAHA "Omaha"
+#define RADIO_CHANNEL_MIDWAY "Midway"
 #define RADIO_CHANNEL_COMMAND "Command"
 #define RADIO_CHANNEL_COLONY "Colony"
 #define RADIO_CHANNEL_DEPARTMENT "department"

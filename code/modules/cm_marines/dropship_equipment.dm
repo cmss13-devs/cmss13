@@ -366,6 +366,8 @@
 		deployed_turret.linked_cam.network = list(CAMERA_NET_ALAMO)
 	else if (linked_shuttle.id == DROPSHIP_OMAHA)
 		deployed_turret.linked_cam.network = list(CAMERA_NET_OMAHA)
+	else if (linked_shuttle.id == DROPSHIP_MIDWAY)
+		deployed_turret.linked_cam.network = list(CAMERA_NET_MIDWAY)
 	else if (linked_shuttle.id == DROPSHIP_NORMANDY)
 		deployed_turret.linked_cam.network = list(CAMERA_NET_NORMANDY)
 	else if (linked_shuttle.id == DROPSHIP_SAIPAN)

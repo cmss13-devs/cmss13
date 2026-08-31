@@ -310,6 +310,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/clothing/accessory/helmet/cover/netting/desert = NO_GARB_OVERRIDE,
 	/obj/item/clothing/accessory/helmet/cover/netting/jungle = NO_GARB_OVERRIDE,
 	/obj/item/clothing/accessory/helmet/cover/netting/urban = NO_GARB_OVERRIDE,
+	/obj/item/clothing/accessory/helmet/cover/netting/snow = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/spent_buckshot = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/spent_slug = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/spent_flech = NO_GARB_OVERRIDE,
@@ -319,6 +320,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/clothing/accessory/helmet/cover/raincover/jungle = NO_GARB_OVERRIDE,
 	/obj/item/clothing/accessory/helmet/cover/raincover/desert = NO_GARB_OVERRIDE,
 	/obj/item/clothing/accessory/helmet/cover/raincover/urban = NO_GARB_OVERRIDE,
+	/obj/item/clothing/accessory/helmet/cover/raincover/snow = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/rabbitsfoot = NO_GARB_OVERRIDE,
 	/obj/item/clothing/accessory/rosary = NO_GARB_OVERRIDE, // This one was already in the game for some reason, but never had an object
 	/obj/item/clothing/accessory/rosary/gold = NO_GARB_OVERRIDE,
@@ -650,6 +652,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	..()
 	return pockets.attackby(attacking_item, user)
 
+/obj/item/clothing/head/helmet/marine/proc/add_helmet_state_overlays()
+	return
+
 /obj/item/clothing/head/helmet/marine/on_pocket_insertion()
 	update_icon()
 
@@ -687,6 +692,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 	if(active_visor)
 		helmet_overlays += overlay_image(active_visor.helmet_overlay_icon, active_visor.helmet_overlay, color, RESET_COLOR)
+
+	add_helmet_state_overlays()
 
 	if(ismob(loc))
 		var/mob/moob = loc
@@ -1378,12 +1385,51 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_marine_helmet = HELMET_GARB_OVERLAY
 	flags_item = MOB_LOCK_ON_EQUIP
 	specialty = "M45 ghillie"
+	var/eye_glowing = FALSE
+	var/eye_glow_icon = 'icons/mob/humans/onmob/clothing/head/overlays.dmi'
+	var/eye_glow_state = "visor_glow"
+	// There's probably a better way to do this, but the repsrite only covers desert and jungle so it only needs to apply on those skin maps.
+	var/eye_glow_allowed = FALSE
+
+/obj/item/clothing/head/helmet/marine/ghillie/add_helmet_state_overlays()
+
+	if(!eye_glowing || !eye_glow_allowed)
+		return
+	var/image/glow = image(eye_glow_icon, icon_state = eye_glow_state)
+	glow.appearance_flags |= RESET_COLOR|RESET_ALPHA
+	helmet_overlays += glow
+	helmet_overlays += emissive_appearance(eye_glow_icon, eye_glow_state)
+
+/obj/item/clothing/head/helmet/marine/ghillie/proc/glowing_visor_activate(mob/user)
+	SIGNAL_HANDLER
+	eye_glowing = TRUE
+	update_icon()
+
+/obj/item/clothing/head/helmet/marine/ghillie/proc/glowing_visor_deactivate(mob/user)
+	SIGNAL_HANDLER
+	eye_glowing = FALSE
+	update_icon()
+
+/obj/item/clothing/head/helmet/marine/ghillie/equipped(mob/living/carbon/human/user, slot)
+	. = ..()
+	if(slot != WEAR_HEAD)
+		return
+	RegisterSignal(user, COMSIG_HUMAN_AIMED_SHOT_START, PROC_REF(glowing_visor_activate))
+	RegisterSignal(user, COMSIG_HUMAN_AIMED_SHOT_END, PROC_REF(glowing_visor_deactivate))
+
+/obj/item/clothing/head/helmet/marine/ghillie/unequipped(mob/living/carbon/human/user, slot)
+	. = ..()
+	UnregisterSignal(user, list(COMSIG_HUMAN_AIMED_SHOT_START, COMSIG_HUMAN_AIMED_SHOT_END))
+	eye_glowing = FALSE
 
 /obj/item/clothing/head/helmet/marine/ghillie/select_gamemode_skin()
 	. = ..()
 	if(SSmapping.configs[GROUND_MAP].camouflage_type == "urban"	|| "classic")
 		name = "\improper M10-LS pattern sniper helmet"
 		desc = "A lightweight version of M10 helmet with thermal signature dampering used by USCM snipers on urban recon missions."
+
+	if(SSmapping.configs[GROUND_MAP].camouflage_type == "jungle" || "desert")
+		eye_glow_allowed = TRUE
 
 /obj/item/clothing/head/helmet/marine/leader/CO
 	name = "\improper M11C pattern commanding officer helmet"
@@ -1758,6 +1804,11 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	name = "\improper UL3 UPP peaked cap"
 	desc = "UPP headgear issued to Kapitans and above. It is made of high-quality materials, and has the officers rank in gold placed upon the front of the cap."
 	icon_state = "upp_peaked"
+
+/obj/item/clothing/head/uppcap/peaked/mss
+	name = "\improper UPP MSS officer peaked cap"
+	desc = "A peaked cap bearing the insignia of the UPP's Ministry of Space Security. You can't shake the feeling that the person wearing it already knows everything about you."
+	icon_state = "upp_peaked_mss"
 
 /obj/item/clothing/head/uppcap/ushanka
 	name = "\improper UL8 UPP ushanka"

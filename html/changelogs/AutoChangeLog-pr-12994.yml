@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - code_imp: "Bumped rust_g from 6.0.1 to 7.0.0"

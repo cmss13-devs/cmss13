@@ -496,7 +496,6 @@ SUBSYSTEM_DEF(ticker)
 	 * SSsound: lowering SSsound freq probably won't help because it's just a worker for the sound queue, same amount of work gets queued anyway
 	 * SSmob/SShuman/SSxeno: you don't want to touch these, because several systems down the line rely on the timing (2 SECONDS) for gameplay logic
 	 * SSchat/SSinput: these are perf intensive but need to be SS_TICKER, changing wait would be troublesome and/or inconsequential for perf
-	 * SScellauto: can't touch this because it would directly affect explosion spread speed
 	 */
 
 	SSlighting?.wait    = 0.6 SECONDS // From 0.4, same but also heavily scales on player/scene density (higher = less frequent lighting updates which is very noticeable as you move)

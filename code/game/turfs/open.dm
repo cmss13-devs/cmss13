@@ -716,6 +716,7 @@
 	icon_state = "seashallow"
 	can_bloody = FALSE
 	fishing_allowed = TRUE
+	turf_flags = TURF_IS_WATER
 	var/icon_overlay = "riverwater"
 	var/covered = 0
 	var/covered_name = "grate"
@@ -932,6 +933,7 @@
 /turf/open/gm/riverdeep
 	name = "river"
 	icon_state = "seadeep"
+	turf_flags = TURF_IS_WATER
 	can_bloody = FALSE
 	baseturfs = /turf/open/gm/riverdeep
 	supports_surgery = FALSE

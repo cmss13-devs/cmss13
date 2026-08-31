@@ -11,6 +11,8 @@
 #define TURF_BURNT (1<<6)
 #define TURF_BREAKABLE (1<<7)
 #define TURF_BROKEN (1<<8)
+/// Turf is primarily comprised of water, such as a river or ocean turf
+#define TURF_IS_WATER (1<<9)
 
 //ChangeTurf options to change its behavior
 #define CHANGETURF_DEFER_CHANGE (1<<0)

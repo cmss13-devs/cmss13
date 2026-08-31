@@ -13,6 +13,7 @@
 #define TURF_BROKEN (1<<8)
 #define TURF_WATER (1<<9)
 #define TURF_WATERLIKE (1<<10)
+#define TURF_CATWALKED (1<<11)
 
 //ChangeTurf options to change its behavior
 #define CHANGETURF_DEFER_CHANGE (1<<0)

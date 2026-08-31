@@ -12,6 +12,11 @@
 /obj/structure/catwalk/Initialize()
 	. = ..()
 	update_icon()
+	var/turf/my_turf = get_turf(src)
+	my_turf.turf_flags |= TURF_CATWALKED
+	if(SSwater_overlays.is_water(my_turf))
+		var/turf/open/my_open_turf = my_turf
+		my_open_turf.stop_being_water()
 
 /obj/structure/catwalk/update_icon()
 	..()

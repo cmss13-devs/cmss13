@@ -187,7 +187,7 @@
 	if(!covered && depth < DEPTH_LAND)	//already water
 		return
 	depth = set_depth
-	turf_flags = TURF_WATERLIKE
+	turf_flags |= TURF_WATERLIKE
 	water_type = set_type
 	layer = UNDER_WATER_TURF_LAYER
 	for(var/obj/structure/catwalk/catwalk in contents)
@@ -202,7 +202,7 @@
 
 /turf/open/proc/stop_being_water()
 	depth = DEPTH_LAND
-	turf_flags &= ~	TURF_WATERLIKE
+	turf_flags &= ~TURF_WATERLIKE
 	water_type = null
 	layer = initial(layer)
 	for(var/obj/found_object in contents)

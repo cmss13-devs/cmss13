@@ -15,15 +15,16 @@
 	. = ..()
 	effect_turf = input_turf
 
-/datum/component/turf_effect/InheritComponent(datum/component/C, i_am_original, turf/input_turf, y_offset, will_update_override)
+/datum/component/turf_effect/InheritComponent(datum/component/C, i_am_original, turf/input_turf, y_offset, force_update)
 	. = ..()
-	if(will_update_override)
+	if(force_update)
 		update()
 	else if(effect_turf.type != input_turf.type)	//all turf_effects should update upon entering a new turf type, since these are turf effects
 		effect_turf = input_turf
 		update()
 
-// !!!! this proc should always be overrriden !!!! ---> default behaviour is to just delete itself
+/** !!!! this proc should always be overrriden !!!!
+*/
 /datum/component/turf_effect/proc/update()
 	if(!hidden)
 		Destroy()
@@ -35,33 +36,36 @@
 	var/obj/effect/water_splash/water_overlay_splash/the_splash
 	var/water_depth = 0
 
-/datum/component/turf_effect/water/Initialize(turf/input_turf, y_offset)
-	if((!iscarbon(parent) && !isobj(parent)) || !ispath(input_turf.type, /turf/open))
+/datum/component/turf_effect/water/Initialize(turf/input_turf, y_offset, tried_parent)
+	. = ..()
+	if((!ismob(parent) && !isobj(parent)) || !istype(input_turf, /turf/open))	//this should already be handled in the turfs creating this component, but a few backup checks cant hurt
 		return COMPONENT_INCOMPATIBLE
-	var/mob/living/carbon/input_carbon = parent
+
 	var/turf/open/input_open = input_turf
 	the_splash = new /obj/effect/water_splash/water_overlay_splash(null, input_open.depth <= DEPTH_SHALLOW && water_depth == DEPTH_LAND ? TRUE : FALSE)	//if the waters deep enough, and no depth b4 --> SPLASH SOUND! :DDDD
 	the_water = new /obj/effect/water_overlay_effect()
 	effect_turf = input_turf
 	water_depth = effect_turf.depth
-	if(isqueen(input_carbon) || isking(input_carbon))	//queen footsteps --- since this is a component we'll handle it along with the effect instead of just on water turfs
-		input_carbon.AddComponent(/datum/component/footstep, 2 , 35, 11, 4, footstep_sounds_="alien_footstep_large_water")
-	. = ..()
+	if(isqueen(parent) || isking(parent))	//queen footsteps --- since this is a component we'll handle it along with the effect instead of just on water turfs
+		parent.AddComponent(/datum/component/footstep, 2 , 35, 11, 4, footstep_sounds_="alien_footstep_large_water")
+	update_hidden()
+	update()
 
 /datum/component/turf_effect/water/Destroy()
+	var/atom/movable/movable_parent = parent
+	animate(parent, pixel_y = initial(movable_parent.pixel_y), 0.2 SECONDS)
+	movable_parent.plane = initial(movable_parent.plane)
+	if(ismob(parent))
+		var/mob/parent_mob = parent
+		if(!parent_mob.stat == DEAD)
+			parent_mob.layer = initial(parent_mob.layer)
+		else
+			parent_mob.layer = BELOW_MOB_LAYER
 	if(isqueen(parent) || isking(parent))
 		parent.AddComponent(/datum/component/footstep, 2 , 35, 11, 4, footstep_sounds_="alien_footstep_large")
-	if(iscarbon(parent))
-		var/mob/living/carbon/affected_carbon = parent
-		animate(affected_carbon, pixel_y = affected_carbon.base_pixel_y, 0.2 SECONDS)
-		affected_carbon.plane = initial(affected_carbon.plane)
-		if(!affected_carbon.stat == DEAD)
-			affected_carbon.layer = initial(affected_carbon.layer)
-		else
-			affected_carbon.layer = BELOW_MOB_LAYER
-		for(var/obj/found_obj in affected_carbon.vis_contents)
-			if(found_obj == the_water || found_obj == the_splash)
-				affected_carbon.vis_contents -= found_obj
+	for(var/obj/found_obj in movable_parent.vis_contents)
+		if(found_obj == the_water || found_obj == the_splash)
+			movable_parent.vis_contents -= found_obj
 	the_water.Destroy()
 	the_splash.Destroy()
 	. = ..() //we need to do this last
@@ -108,7 +112,7 @@
 		var/turf/open/open_laid_on_turf = laid_on_turf
 		water_depth = open_laid_on_turf.depth
 	effect_turf = laid_on_turf
-	update(laid_on_turf)
+	update()
 
 /datum/component/turf_effect/water/proc/handle_set_body_position()	//passthrough unless human, which actually use lying_angles
 	if(!ishuman(parent))
@@ -122,9 +126,9 @@
 		water_depth = open_buckled_turf.depth
 	effect_turf = unbuckled_turf
 	update_hidden()
-	update(unbuckled_turf)
+	update()
 
-/datum/component/turf_effect/water/proc/update_hidden(b)
+/datum/component/turf_effect/water/proc/update_hidden()
 	if(iscarbon(parent))
 		var/mob/living/carbon/input_carbon = parent
 		if(input_carbon.buckled || input_carbon.throwing || HAS_TRAIT(input_carbon, TRAIT_HAULED) || (input_carbon.pulledby && input_carbon.pulledby.grab_level >= GRAB_CARRY))
@@ -139,15 +143,12 @@
 
 /datum/component/turf_effect/water/update()
 	if(iscarbon(parent))		//should already be handled but futureproofing a bit here
-		if(hidden)
+		if(hidden)		//the mob is in flight during a throw, hauled, or buckled to something
 			return
 		var/mob/living/carbon/affected_carbon = parent
-		var/obj/structure/catwalk/catwalk = locate(/obj/structure/catwalk) in effect_turf.contents		//maybe I should just make this a turf variable or something
-		var/obj/effect/blocker/water/water_blocker = locate(/obj/effect/blocker/water/) in effect_turf.contents	// this too, searching turf contents every update seems expensive
-		var/blocker_dispersing = FALSE
-		if(water_blocker)
-			blocker_dispersing = water_blocker.dispersing
-		if(!water_depth || (effect_turf.covered && !blocker_dispersing) || (catwalk && !blocker_dispersing))
+		var/catwalk = effect_turf.turf_flags & TURF_CATWALKED
+		var/dispersed_waterblocker = effect_turf.turf_flags & TURF_WATERLIKE
+		if(!water_depth || (effect_turf.covered && !dispersed_waterblocker) || (catwalk && !dispersed_waterblocker))
 			Destroy()
 			return
 		animate(affected_carbon, pixel_y = water_depth, 0.2 SECONDS)	//if there is a meaningful difference in depth, change layerings and animate the mob "down" to where it should be
@@ -163,5 +164,4 @@
 		the_water.update_wateroverlay(effect_turf, parent, water_depth)	//now that we have all the layerings and splashe sorted, we add water to cover the parts of the body in that depth
 		affected_carbon.vis_contents |= the_water
 		affected_carbon.vis_contents |= the_splash
-	else	//its applied to an object --- FUUUUTUUUREEE
-		Destroy()
+

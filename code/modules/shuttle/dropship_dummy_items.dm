@@ -22,10 +22,12 @@
 
 /obj/deployer/shuttle/dropship/ramp_button
 	var/obj/structure/machinery/door_control/dropship_ramp_dummy/linked_button
+	item_to_deploy = /obj/structure/machinery/door_control/dropship_ramp_dummy
 
 /obj/deployer/shuttle/dropship/ramp_button/omaha
-
+	item_to_deploy = /obj/structure/machinery/door_control/dropship_ramp_dummy/omaha_aft
 /obj/deployer/shuttle/dropship/ramp_button/midway
+	item_to_deploy = /obj/structure/machinery/door_control/dropship_ramp_dummy/midway_aft
 
 /obj/deployer/shuttle/dropship/ramp_button/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
 	. = ..()
@@ -34,7 +36,7 @@
 		linked_button.pixel_y = 16
 	else
 		for(var/obj/structure/machinery/door_control/shuttle_ramp/original_button in range(8, src.loc))
-			linked_button = new /obj/structure/machinery/door_control/dropship_ramp_dummy(SSmapping.get_turf_below(src.loc))
+			linked_button = new item_to_deploy(SSmapping.get_turf_below(src.loc))
 			linked_button.pixel_y = 16
 			linked_button.layer = FLY_LAYER
 			linked_button.alpha = 215
@@ -44,11 +46,13 @@
 			break
 
 /obj/deployer/shuttle/dropship/belly
-	var/obj/structure/shuttle/part/dropship_omaha/fuel_lines/lines
+	var/obj/structure/shuttle/part/fuel_lines/lines
+	item_to_deploy = /obj/structure/shuttle/part/fuel_lines
 
 /obj/deployer/shuttle/dropship/belly/omaha
-
+	item_to_deploy = /obj/structure/shuttle/part/fuel_lines/omaha
 /obj/deployer/shuttle/dropship/belly/midway
+	item_to_deploy = /obj/structure/shuttle/part/fuel_lines/midway
 
 /obj/deployer/shuttle/dropship/belly/lateShuttleMove()
 	.=..()
@@ -63,7 +67,7 @@
 			if(lines)
 				lines.loc = final_turf
 			else
-				lines = new /obj/structure/shuttle/part/dropship_omaha/fuel_lines(final_turf)
+				lines = new item_to_deploy(final_turf)
 
 /obj/deployer/shuttle/dropship/landing_gear
 	var/offset_x = -16
@@ -72,10 +76,16 @@
 	var/map_offset_y
 	var/obj/structure/shuttle/part/dropship_omaha/landing_gear_big/land_gear
 	var/obj/structure/shuttle/part/dropship_omaha/landing_hatch_big/hatch_big
+	item_to_deploy = /obj/structure/shuttle/part/dropship_omaha/landing_gear_big
+	var/item_to_deploy2 = /obj/structure/shuttle/part/dropship_omaha/landing_hatch_big
 
 /obj/deployer/shuttle/dropship/landing_gear/omaha
+	item_to_deploy = /obj/structure/shuttle/part/dropship_omaha/landing_gear_big/omaha
+	item_to_deploy2 = /obj/structure/shuttle/part/dropship_omaha/landing_hatch_big/omaha
 
 /obj/deployer/shuttle/dropship/landing_gear/midway
+	item_to_deploy = /obj/structure/shuttle/part/dropship_omaha/landing_gear_big/midway
+	item_to_deploy2 = /obj/structure/shuttle/part/dropship_omaha/landing_hatch_big/midway
 
 /obj/deployer/shuttle/dropship/landing_gear/lateShuttleMove(turf/oldT, list/movement_force, move_dir)
 	. = ..()
@@ -91,12 +101,12 @@
 		if(land_gear)
 			land_gear.loc = final_turf
 		else
-			land_gear = new /obj/structure/shuttle/part/dropship_omaha/landing_gear_big(final_turf)
+			land_gear = new item_to_deploy(final_turf)
 			land_gear.dir = src.dir
 		if(hatch_big)
 			hatch_big.loc = final_turf
 		else
-			hatch_big = new /obj/structure/shuttle/part/dropship_omaha/landing_hatch_big(final_turf)
+			hatch_big = new item_to_deploy2(final_turf)
 			hatch_big.dir = src.dir
 			hatch_big.pixel_x = offset_x
 			hatch_big.pixel_y = offset_y
@@ -107,8 +117,10 @@
 	var/offset_y
 
 /obj/deployer/shuttle/dropship/fuel_attachment_point/omaha
+	item_to_deploy = /obj/effect/attach_point/fuel/dropship_omaha
 
 /obj/deployer/shuttle/dropship/fuel_attachment_point/midway
+	item_to_deploy = /obj/effect/attach_point/fuel/dropship_midway
 
 /obj/deployer/shuttle/dropship/fuel_attachment_point/lateShuttleMove(turf/oldT, list/movement_force, move_dir)
 	. = ..()
@@ -126,7 +138,7 @@
 			if(linked_point.installed_equipment)
 				linked_point.installed_equipment.loc = t_below
 		else
-			linked_point = new /obj/effect/attach_point/fuel/dropship_omaha(t_below)
+			linked_point = new item_to_deploy(t_below)
 			linked_point.layer = FLY_LAYER + 0.01
 			linked_point.alpha = 225
 			linked_point.pixel_x = offset_x
@@ -140,8 +152,10 @@
 	var/offset_y
 
 /obj/deployer/shuttle/dropship/hardpoints/omaha
+	item_to_deploy = /obj/effect/attach_point_dummy/omaha
 
 /obj/deployer/shuttle/dropship/hardpoints/midway
+	item_to_deploy = /obj/effect/attach_point_dummy/midway
 
 /obj/deployer/shuttle/dropship/hardpoints/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
 	. = ..()
@@ -155,7 +169,7 @@
 		if(linked_bottom)
 			linked_bottom.loc = target_turf
 		else
-			linked_bottom = new /obj/effect/attach_point_dummy(target_turf)
+			linked_bottom = new item_to_deploy(target_turf)
 			linked_bottom.layer = FLY_LAYER + 0.01
 			for(var/obj/effect/attach_point/attachie in src.loc.contents)
 				linked_bottom.linked_attach_point = attachie

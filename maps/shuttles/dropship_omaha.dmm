@@ -444,6 +444,7 @@
 	pixel_y = -16;
 	layer = 2
 	},
+/turf/open/shuttle/dropship/omaha/basic,
 /area/shuttle/drop_omaha/omaha)
 "sZ" = (
 /turf/closed/shuttle/dropship_omaha{

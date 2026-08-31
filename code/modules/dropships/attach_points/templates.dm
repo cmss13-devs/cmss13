@@ -370,7 +370,13 @@
 
 /obj/effect/attach_point/fuel/dropship_omaha
 	icon = 'icons/obj/structures/props/dropship/dropship_equipment.dmi'
-	icon_state = "fuel_base_omaha"
+	icon_state = "fuel_base_mohawk"
+	ship_tag = DROPSHIP_OMAHA
+	round_slot = TRUE
+
+/obj/effect/attach_point/fuel/dropship_midway
+	icon = 'icons/obj/structures/props/dropship/dropship_equipment.dmi'
+	icon_state = "fuel_base_mohawk"
 	ship_tag = DROPSHIP_OMAHA
 	round_slot = TRUE
 

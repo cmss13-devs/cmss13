@@ -100,6 +100,12 @@
 	plane = GAME_PLANE
 	var/obj/effect/attach_point/linked_attach_point
 
+/obj/effect/attach_point_dummy/omaha
+	icon = 'icons/obj/structures/machinery/omaha/misc.dmi'
+
+/obj/effect/attach_point_dummy/midway
+	icon = 'icons/obj/structures/machinery/midway/misc.dmi'
+
 /obj/effect/attach_point_dummy/Destroy()
 	QDEL_NULL(linked_attach_point)
 	return ..()

@@ -535,7 +535,9 @@
 	opacity = FALSE
 	density = FALSE
 
-/obj/structure/shuttle/part/dropship_omaha/fuel_lines
+/// fuel lines ///
+
+/obj/structure/shuttle/part/fuel_lines
 	icon = 'icons/turf/omaha/belly.dmi'
 	icon_state = "belly"
 	layer = FLY_LAYER
@@ -543,6 +545,12 @@
 	opacity = FALSE
 	alpha = 150
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/obj/structure/shuttle/part/fuel_lines/omaha
+	icon = 'icons/turf/omaha/belly.dmi'
+
+/obj/structure/shuttle/part/fuel_lines/midway
+	icon = 'icons/turf/midway/belly.dmi'
 
 /// landing gears ///
 
@@ -555,6 +563,12 @@
 	bound_height = 64
 	layer = 4
 
+/obj/structure/shuttle/part/dropship_omaha/landing_gear_big/omaha
+	icon = 'icons/obj/structures/machinery/omaha/misc_96x96.dmi'
+
+/obj/structure/shuttle/part/dropship_omaha/landing_gear_big/midway
+	icon = 'icons/obj/structures/machinery/midway/misc_96x96.dmi'
+
 /obj/structure/shuttle/part/dropship_omaha/landing_hatch_big
 	icon = 'icons/obj/structures/machinery/omaha/misc_96x96.dmi'
 	icon_state = "gear_hatch"
@@ -562,6 +576,12 @@
 	opacity = FALSE
 	alpha = 227
 	layer = 4
+
+/obj/structure/shuttle/part/dropship_omaha/landing_hatch_big/omaha
+	icon = 'icons/obj/structures/machinery/omaha/misc_96x96.dmi'
+
+/obj/structure/shuttle/part/dropship_omaha/landing_hatch_big/midway
+	icon = 'icons/obj/structures/machinery/midway/misc_96x96.dmi'
 
 // USCM Dropship Normandy
 

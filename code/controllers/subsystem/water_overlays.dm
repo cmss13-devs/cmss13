@@ -35,48 +35,51 @@ SUBSYSTEM_DEF(water_overlays)
 				if(found_turf && !is_water(found_turf))
 					turfs_to_process |= found_turf
 		for(var/obj/search_object in search_turf.contents)		//blocker/water objects can create water, we need to create overlays for those too
-			if(ispath(search_object.type, /obj/effect/blocker/water))
+			if(istype(search_object, /obj/effect/blocker/water))
 				var/obj/effect/blocker/water/found_blocker = search_object
 				var/turf/water_blocker_turf = found_blocker.water_type
 				found_waters["[found_blocker.water_type][found_blocker.water_type][water_blocker_turf.icon][water_blocker_turf.icon_state][found_blocker.created_depth]"] = list(water_blocker_turf.icon, water_blocker_turf.icon_state, found_blocker.created_depth, found_blocker.water_type)
 		CHECK_TICK
 	generate_water_display_icons()
 	found_waters = list()	//clear for nightmares to add their turfs, we'll generate some for those soon
-	RegisterSignal(SSnightmare, COMSIG_NIGHTMARES_STATUS_DONE, PROC_REF(after_nightmares_water))
+	RegisterSignal(SSnightmare, COMSIG_NIGHTMARES_PREPARE_GAME_COMPLETE, PROC_REF(update_turfs_layers_near_water))
 	return SS_INIT_SUCCESS
 
-/datum/controller/subsystem/water_overlays/proc/after_nightmares_water()
+/**	update_turfs_layers_near_water()
+*		this proc and those it call go through every turf in the game, and check if its near water
+*		we need to do this because we alter the layer of mob in water so they appear below turfs south of them
+*		but since we dont want this visual for when tall mobs stand on the northern shore of a body of water
+*		we have to change the layer of these turfs to below the mobs' in water
+*		this is fine since turfs are visually rendered below everything usually, changing their layer to further down..
+*		shouldnt affect anything other than making mobs in water not clip below them
+*/
+/datum/controller/subsystem/water_overlays/proc/update_turfs_layers_near_water()
+	SIGNAL_HANDLER
 	var/list/altered_turfs = list()
 	for(var/turf/current_turf in turfs_to_process)
 		if(current_turf in altered_turfs)
 			continue
-		altered_turfs |= current_turf.fix_water_clipping_layers(altered_turfs)
+		altered_turfs |= current_turf.near_water_layering_fix(altered_turfs)
 	for(var/turf/current_turf in altered_turfs)
-		current_turf.fix_water_clipping_layers_final()
-	generate_water_display_icons() //part 2 -- handle nightmare water turfs (usually redundant or tiny)
-	UnregisterSignal(SSnightmare, COMSIG_NIGHTMARES_STATUS_DONE)
+		current_turf.near_water_layering_cleanup()
+	generate_water_display_icons() //called again to handle nightmare water turfs (usually redundant or tiny)
+	UnregisterSignal(SSnightmare, COMSIG_NIGHTMARES_PREPARE_GAME_COMPLETE)
 
 /datum/controller/subsystem/water_overlays/proc/is_full_water(turf/potential_water)
-	if(!isturf(potential_water))
+	if(!istype(potential_water, /turf/open))
 		return FALSE
-	if(istype(potential_water, /turf/open))
-		var/turf/open/potential_open_water = potential_water
-		if(potential_open_water.covered || potential_open_water.depth >= DEPTH_LAND)
-			return FALSE
-		return (potential_water.turf_flags & (TURF_WATER | TURF_WATERLIKE) && potential_open_water.depth <= DEPTH_SHALLOW)
-	else
+	var/turf/open/potential_open_water = potential_water
+	if(potential_open_water.covered || potential_open_water.depth >= DEPTH_LAND)
 		return FALSE
+	return (potential_water.turf_flags & (TURF_WATER | TURF_WATERLIKE) && potential_open_water.depth <= DEPTH_SHALLOW)
 
 /datum/controller/subsystem/water_overlays/proc/is_coastline(turf/potential_coastline)
-	if(!isturf(potential_coastline))
+	if(!istype(potential_coastline, /turf/open))
 		return FALSE
-	if(istype(potential_coastline, /turf/open))
-		var/turf/open/potential_open_coastline = potential_coastline
-		if(potential_open_coastline.covered || potential_open_coastline.depth >= DEPTH_LAND)
-			return FALSE
-		return  ((potential_coastline.turf_flags & (TURF_WATER | TURF_WATERLIKE)) && potential_open_coastline.depth >= DEPTH_COAST_INTERMEDIATE)
-	else
+	var/turf/open/potential_open_coastline = potential_coastline
+	if(potential_open_coastline.covered || potential_open_coastline.depth >= DEPTH_LAND)
 		return FALSE
+	return  ((potential_coastline.turf_flags & (TURF_WATER | TURF_WATERLIKE)) && potential_open_coastline.depth >= DEPTH_COAST_INTERMEDIATE)
 
 /datum/controller/subsystem/water_overlays/proc/is_water(turf/potential_water)
 	return (is_full_water(potential_water) || is_coastline(potential_water))
@@ -89,14 +92,14 @@ SUBSYSTEM_DEF(water_overlays)
 		return return_list
 	return list(in_icon)
 
-/* //////////////////////////	GENERATING ICONS TO BE USED IN WATER OVERLAYS	/////////////////////////// generate_water_display_icons()
-water turfs are hardcoded to only have certain depths, but the shorelines take from their fulltile varients ---> turf/open var/water_type
-so for coasts we only generate a very shallow overlay of their fulltile varient, this greatly shrinks the amount we need to make
-for each of these we generate a water overlay for each size mobs' textures can have: 32, 48, 64, and 88 ---> texture_sizes
-in addition to those for extra deep water turfs we also generate an icon that will cover the mob completely
-some mobs look weird with just the default overlay, so for those we generate additional overlays using unique culling masks ---> water_overlay_special
-and lastly 2 more overlays for resting humans per waterturf. and there, all the overlays we'll every need all in one neat list :0) */
-
+/**
+*	water turfs are hardcoded to only have certain depths, but the shorelines take from their fulltile varients ---> turf/open var/water_type
+*	so for coasts we only generate a very shallow overlay of their fulltile varient, this greatly shrinks the amount we need to make
+*	for each of these we generate a water overlay for each size mobs' textures can have: 32, 48, 64, and 88 ---> texture_sizes
+*	in addition to those for extra deep water turfs we also generate an icon that will cover the mob completely
+*	some mobs look weird with just the default overlay, so for those we generate additional overlays using unique culling masks ---> water_overlay_special
+*	and lastly 2 more overlays for resting humans per waterturf. and there, all the overlays we'll every need all in one neat list :0)
+*/
 /datum/controller/subsystem/water_overlays/proc/generate_water_display_icons()
 	for(var/key in SSwater_overlays.found_waters)
 		var/list/water_data = SSwater_overlays.found_waters[key]
@@ -104,10 +107,10 @@ and lastly 2 more overlays for resting humans per waterturf. and there, all the 
 		var/found_icon_state = water_data[2]
 		var/found_depth = water_data[3]
 		var/found_type = water_data[4]
-		if(found_depth == DEPTH_LAND)
+		if(found_depth == DEPTH_LAND)	//somehow we got a non water turf in SSwater_overlays.found_waters, it shouldnt get an overlay for it
 			continue
-		var/toxic = 0
-		for(var/working_icon in handle_toxic_states(found_icon))	//if the water turf can be toxic, we need to run a loop for each possiblity
+		var/toxic = 0	//this works as a iterator... used exclusively for water turfs that use 'icons/turf/floors/desert_water.dmi' which have 2 addtional varients
+		for(var/working_icon in handle_toxic_states(found_icon))	//if the water turf can be toxic, we need to run a loop for each possiblity, handle_toxic_states returns a list[1] for waters that dont have that possibility or a list[3] for those that do
 			for(var/texture_size in SSwater_overlays.texture_sizes)
 				//	V V V V	construct water texture	V V V V
 				var/icon/sized_water_texture = icon(SSwater_overlays.water_overlay_icon_paths["[texture_size]"],"empty")		//this is what will eventually be our water texture
@@ -147,6 +150,4 @@ and lastly 2 more overlays for resting humans per waterturf. and there, all the 
 						var/icon/special_mask = icon(SSwater_overlays.water_overlay_icon_paths["[texture_size]"], special_mob_masks[mob_type])
 						special_icon.AddAlphaMask(special_mask)
 						SSwater_overlays.water_overlay_icons["[texture_size]_[found_type]_[toxic]_[found_depth]_[mob_type]"] = special_icon
-			toxic = toxic == 0 ? -1 : (toxic == -1 ? 1 : INFINITY)
-			CHECK_TICK
 

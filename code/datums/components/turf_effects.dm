@@ -14,22 +14,14 @@
 /datum/component/turf_effect/Initialize(turf/input_turf)
 	. = ..()
 	effect_turf = input_turf
-	update_hidden()
-	if(!hidden)
-		update()
-
-//pass your subtypes conditions for being hidden into the call of this proc if you want to not run update() for whatever reason
-/datum/component/turf_effect/proc/update_hidden(override = FALSE)
-	hidden = override
 
 /datum/component/turf_effect/InheritComponent(datum/component/C, i_am_original, turf/input_turf, y_offset, will_update_override)
 	. = ..()
 	if(will_update_override)
 		update()
-	else
-		if(effect_turf.type != input_turf.type)	//all turf_effects should update upon entering a new turf type, since these are turf effects
-			effect_turf = input_turf
-			update()
+	else if(effect_turf.type != input_turf.type)	//all turf_effects should update upon entering a new turf type, since these are turf effects
+		effect_turf = input_turf
+		update()
 
 // !!!! this proc should always be overrriden !!!! ---> default behaviour is to just delete itself
 /datum/component/turf_effect/proc/update()
@@ -101,7 +93,7 @@
 	SIGNAL_HANDLER	//simple checks if to remove, if it were a water turf then the comp already has inherited
 	var/turf/open/gm/moved_to_turf = get_turf(parent_source)
 	var/obj/effect/blocker/water/water_blocker = locate(/obj/effect/blocker/water/) in moved_to_turf.contents
-	if(moved_to_turf.depth >= DEPTH_LAND || (moved_to_turf.covered && !water_blocker.dispersing))
+	if(moved_to_turf.depth >= DEPTH_LAND || (moved_to_turf.covered && water_blocker == null) || (moved_to_turf.covered && water_blocker && !water_blocker.dispersing))
 		Destroy()
 		return
 
@@ -132,7 +124,7 @@
 	update_hidden()
 	update(unbuckled_turf)
 
-/datum/component/turf_effect/water/update_hidden(b)
+/datum/component/turf_effect/water/proc/update_hidden(b)
 	if(iscarbon(parent))
 		var/mob/living/carbon/input_carbon = parent
 		if(input_carbon.buckled || input_carbon.throwing || HAS_TRAIT(input_carbon, TRAIT_HAULED) || (input_carbon.pulledby && input_carbon.pulledby.grab_level >= GRAB_CARRY))
@@ -141,9 +133,9 @@
 				input_carbon.plane = initial(input_carbon.plane)
 				the_water.overlays.Cut()
 				the_splash.icon_state = null
-			.=..(TRUE)
+			hidden = TRUE
 			return
-		.=..(FALSE)
+		hidden = FALSE
 
 /datum/component/turf_effect/water/update()
 	if(iscarbon(parent))		//should already be handled but futureproofing a bit here

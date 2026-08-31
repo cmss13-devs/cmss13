@@ -127,7 +127,16 @@
 /turf/LateInitialize(mapload)
 	update_vis_contents()
 
-/turf/proc/fix_water_clipping_layers(list/altered_turfs)	//so big mobs dont clip into the ground when standing in water
+/**	near_water_layering_fix(list/already_altered)
+*		this is the first proc called in SSwater_overlays' update_turfs_layers_near_water()
+*
+*		update_turfs_layers_near_water() calls this proc on every turf near water.
+*		it checks which direction the water is, then if the water isnt NORTH sets itself and the two turfs to the right and left
+*		of that direction to UNDER_WATER_TURF_LAYER so that mobs in water dont have their sprite clip below these turfs
+*		visually. The list it recieves as an arg is used so as to not alter any turfs we already altered,
+*		and it returns any turfs we actually did alter during the course of this proc
+*/
+/turf/proc/near_water_layering_fix(list/already_altered)	//so big mobs dont clip into the ground when standing in water
 	var/list/return_list = list()							//and they can still look like they're below turfs south of them
 	if(SSwater_overlays.is_water(src) || layer == UNDER_WATER_TURF_LAYER)
 		return return_list
@@ -137,41 +146,53 @@
 		var/turf/neighbor = get_step(src, direction_check)
 		if(neighbor && SSwater_overlays.is_water(neighbor))
 			if(!(src in return_list))
-				visually_set_under_water_mobs(TRUE)
+				set_below_watermobs_visually(TRUE)
 			return_list |= src
 			var/turf/rightwards_turf = get_step(src, turn(direction_check, 90))
-			if(rightwards_turf && !SSwater_overlays.is_water(rightwards_turf) && !(rightwards_turf in return_list) && !(rightwards_turf in altered_turfs))
-				rightwards_turf.visually_set_under_water_mobs(TRUE)
+			if(rightwards_turf && !SSwater_overlays.is_water(rightwards_turf) && !(rightwards_turf in return_list) && !(rightwards_turf in already_altered))
+				rightwards_turf.set_below_watermobs_visually(TRUE)
 				return_list |= rightwards_turf
 			var/turf/leftwards_turf = get_step(src, turn(direction_check, -90))
-			if(leftwards_turf && !SSwater_overlays.is_water(leftwards_turf) && !(leftwards_turf in return_list) && !(leftwards_turf in altered_turfs))
-				leftwards_turf.visually_set_under_water_mobs(TRUE)
+			if(leftwards_turf && !SSwater_overlays.is_water(leftwards_turf) && !(leftwards_turf in return_list) && !(leftwards_turf in already_altered))
+				leftwards_turf.set_below_watermobs_visually(TRUE)
 				return_list |= leftwards_turf
 	return return_list
 
-/turf/proc/fix_water_clipping_layers_final() // if any of the turfs we changed above have water above them, we reset them
+/**	near_water_layering_cleanup()
+*	this proc is a final review of all the altered turfs created by near_water_layering_fix()
+*
+*	it is called for every altered turf by SSwater_overlays' update_turfs_layers_near_water(), checking to see if
+*	turfs with their layer set to UNDER_WATER_TURF_LAYER actually has water NORTH of it, and shouldnt
+* 	be visually below mobs in water and fixing it. As well as a second check to make sure turfs with water to their SOUTH
+*	have had their layer set to UNDER_WATER_TURF_LAYER.
+*/
+/turf/proc/near_water_layering_cleanup() // if any of the turfs we changed above have water above them, we reset them
 	var/list/return_list = list()
 	var/turf/checking_turf = get_step(src, SOUTH)	// this should be already handled, but was seeing some weird behaviour
 	if(checking_turf == null)
 		return
 	if(SSwater_overlays.is_full_water(checking_turf) && layer != UNDER_WATER_TURF_LAYER)
-		visually_set_under_water_mobs(TRUE)
+		set_below_watermobs_visually(TRUE)
 		return_list |= list(type, TRUE, x,y,z)
 
 	checking_turf = get_step(src, NORTH)
 	if(checking_turf == null)
 		return
 	if(SSwater_overlays.is_water(checking_turf) && layer != initial(layer))
-		visually_set_under_water_mobs(FALSE)
+		set_below_watermobs_visually(FALSE)
 		return_list |= list(type, FALSE, "[x],[y],[z]")
 
-	if(ispath(checking_turf.type, /turf/open/gm/river))
+	if(istype(src, /turf/open/gm/river))	//we could have updated the layer/plane of a covered river, update its overlays so the grill doesnt clip over mobs either
 		var/turf/open/gm/river/checking_river = checking_turf
-		if(checking_river.covered)
-			checking_river.update_overlays()
+		checking_river.update_overlays()
 	return return_list
 
-/turf/proc/visually_set_under_water_mobs(setting)
+/**	set_below_watermobs_visually()
+*	this is the bread and butter of how SSwater_overlays' update_turfs_layers_near_water() works
+*	in this proc we actually set the layer/plane to be UNDER_WATER_TURF_LAYER or back to their
+*	initial layer/plane if we dont want them to be
+*/
+/turf/proc/set_below_watermobs_visually(setting)
 	if(setting)
 		layer = UNDER_WATER_TURF_LAYER
 		plane = FLOOR_PLANE
@@ -186,7 +207,6 @@
 		for(var/obj/structure/structure in contents)
 			structure.layer = initial(layer)
 			structure.plane = initial(plane)
-
 
 /obj/vis_contents_holder
 	plane = OPEN_SPACE_PLANE_START

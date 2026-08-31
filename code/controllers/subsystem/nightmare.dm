@@ -70,7 +70,7 @@ SUBSYSTEM_DEF(nightmare)
 		if(ret != NIGHTMARE_TASK_OK)
 			log_debug("Nightmare: Failed tasks execution for [context_name]")
 	stat = NIGHTMARE_STATUS_DONE
-	SEND_SIGNAL(src, COMSIG_NIGHTMARES_STATUS_DONE)
+	SEND_SIGNAL(src, COMSIG_NIGHTMARES_PREPARE_GAME_COMPLETE)
 	return TRUE
 
 /// Load nightmare steps relevant to a map

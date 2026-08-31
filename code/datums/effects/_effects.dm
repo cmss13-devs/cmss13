@@ -25,7 +25,6 @@
 #define INF_DURATION 4 //An effect that lasts forever
 #define NO_PROCESS_ON_DEATH 8 //Don't process while the mob is dead
 #define DEL_ON_UNDEFIBBABLE 16 //Delete the effect when human mob is undefibbable
-#define EFFECT_NO_PROCESS 32  // Dont process at all
 
 /datum/effects
 	var/effect_name = "standard" //Name of the effect
@@ -43,8 +42,7 @@
 	if(!validate_atom(thing) || QDELETED(thing))
 		qdel(src)
 		return
-	if(!(flags & EFFECT_NO_PROCESS))
-		START_PROCESSING(SSeffects, src)
+	START_PROCESSING(SSeffects, src)
 
 	affected_atom = thing
 	LAZYADD(affected_atom.effects_list, src)

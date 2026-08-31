@@ -68,7 +68,7 @@
 	animate(src, alpha = initial(alpha), time = 6 SECONDS)
 	var/turf/location = get_turf(src)
 	location.is_weedable = initial(location.is_weedable)
-	if(ispath(location.type, /turf/open))
+	if(istype(location, /turf/open))
 		var/turf/open/open_location = location
 		open_location.stop_being_water()
 

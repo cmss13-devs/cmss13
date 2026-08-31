@@ -292,7 +292,7 @@
 "qv" = (
 /obj/structure/shuttle/part/decal/dropship_midway/ramp_decals/border_00,
 /obj/deployer/shuttle/dropship/dummy_part/midway/adjustable_first{
-	shadowblaster = TRUE
+	shadowblaster = 1
 	},
 /turf/open/shuttle/dropship/midway/ramp/rampio_00,
 /area/shuttle/drop_midway/midway)

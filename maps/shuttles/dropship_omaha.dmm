@@ -750,7 +750,7 @@
 /area/shuttle/drop_omaha/omaha)
 "Dp" = (
 /obj/deployer/shuttle/dropship/dummy_part/omaha/adjustable_first{
-	shadowblaster = TRUE
+	shadowblaster = 1
 	},
 /obj/structure/shuttle/part/decal/dropship_omaha/ramp_decals/border_00,
 /turf/open/shuttle/dropship/omaha/ramp/rampio_00,

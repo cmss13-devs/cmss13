@@ -10,7 +10,7 @@
 	addtimer(CALLBACK(src, PROC_REF(expire)), 2 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE)
 
 /datum/component/heavy_buildup/InheritComponent(datum/component/heavy_buildup/component_var, i_am_original)
-	heavy_shots = min(heavy_shots + 1, 7)
+	heavy_shots++
 	apply_effects()
 	addtimer(CALLBACK(src, PROC_REF(expire)), 2 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE)
 

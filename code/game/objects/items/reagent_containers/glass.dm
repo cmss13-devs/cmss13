@@ -355,7 +355,7 @@
 				if(istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/research)) //Autoinjector says, "Where's my pouch?"
 					to_chat(user, SPAN_WARNING("A small LED on [src] blinks red. Refill failed. [autoinjector] can only be refilled with a pressurized reagent canister pouch."))
 					return FALSE
-				if(istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector))
+				if(autoinjector.cannot_refill == TRUE)
 					to_chat(user, SPAN_WARNING("A small LED on [src] blinks red. Refill failed. [autoinjector] does not have a refill valve. It must be disposed of."))
 					return FALSE
 			else //Failsafe for the future where autoinjectors, somehow, may not hold medicine, for some reason.

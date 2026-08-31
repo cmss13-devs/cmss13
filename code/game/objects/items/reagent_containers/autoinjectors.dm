@@ -22,7 +22,7 @@
 	transparent = FALSE
 	var/uses_left = 3
 	var/mixed_chem = FALSE //mini tank will not accept mixed_chem autoinjector types
-	var/wall_vend_refill = FALSE
+	var/cannot_refill = FALSE
 	var/display_maptext = FALSE
 	var/maptext_label
 	maptext_height = 16
@@ -82,7 +82,7 @@
 		else if(istype(src, /obj/item/reagent_container/hypospray/autoinjector/ez) || istype(src, /obj/item/reagent_container/hypospray/autoinjector/tutorial))
 			. += SPAN_NOTICE("It is empty, but you can refill it at any Wey-Med Plus Dispenser, any Wall-Med, or with an MS-11 Smart Refill Tank.")
 		else
-			. += SPAN_NOTICE("It is empty, but you can refill it at any Wey-Med Plus dispenser, Wey-Med resupply station, or with an MS-11 Smart Refill Tank.")
+			. += SPAN_NOTICE("It is empty, but you can refill it at any Wey-Med Plus Dispenser, Wey-Med resupply station, or with an MS-11 Smart Refill Tank.")
 
 
 /obj/item/reagent_container/hypospray/autoinjector/equipped()
@@ -490,6 +490,7 @@
 	mixed_chem = TRUE
 	display_maptext = TRUE
 	maptext_label = "Zzz"
+	cannot_refill = TRUE
 
 /obj/item/reagent_container/hypospray/autoinjector/chloralhydrate/Initialize()
 	. = ..()
@@ -512,6 +513,7 @@
 	display_maptext = TRUE //see anaesthetic injector
 	maptext_label = "!!"
 	skilllock = SKILL_MEDICAL_DEFAULT
+	cannot_refill = TRUE
 
 /obj/item/reagent_container/hypospray/autoinjector/emergency/Initialize() //29u bicaridine, 29u kelotane, 19u oxycodone, 1u dexalin +.
 	. = ..()
@@ -535,6 +537,7 @@
 	display_maptext = TRUE
 	maptext_label = "!!!"
 	skilllock = SKILL_MEDICAL_DEFAULT
+	cannot_refill = TRUE
 
 /obj/item/reagent_container/hypospray/autoinjector/black_goo_cure/Initialize()
 	. = ..()
@@ -552,6 +555,7 @@
 	autoinjector_type = "+stimpack_custom"
 	skilllock = SKILL_MEDICAL_DEFAULT
 	display_maptext = FALSE //corporate secret
+	cannot_refill = TRUE
 
 /obj/item/reagent_container/hypospray/autoinjector/ultrazine/update_icon()
 	. = ..()
@@ -584,6 +588,7 @@
 	volume = REAGENTS_OVERDOSE
 	uses_left = 1
 	black_market_value = 25
+	cannot_refill = TRUE
 
 /obj/item/reagent_container/hypospray/autoinjector/yautja/thrall
 	name = "orange unusual crystal"

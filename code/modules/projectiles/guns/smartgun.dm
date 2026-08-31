@@ -1216,6 +1216,7 @@
 		/datum/action/item_action/smartgun/toggle_lethal_mode,
 		/datum/action/item_action/smartgun/toggle_motion_detector,
 		/datum/action/item_action/smartgun/toggle_recoil_compensation,
+
 	)
 
 /obj/item/weapon/gun/smartgun/pve/Initialize(mapload, ...)

@@ -108,7 +108,7 @@
 		if(carbon_parent.buckled)	//luckily this always get called after handle_buckle_change() :)
 			return
 	var/turf/laid_on_turf = get_turf(parent)
-	if(ispath(laid_on_turf.type, /turf/open))
+	if(istype(laid_on_turf, /turf/open))
 		var/turf/open/open_laid_on_turf = laid_on_turf
 		water_depth = open_laid_on_turf.depth
 	effect_turf = laid_on_turf
@@ -121,7 +121,7 @@
 /datum/component/turf_effect/water/proc/handle_buckle_change()
 	SIGNAL_HANDLER	//this is for in the case the affected mob buckles/gets-hauled/unhauled, update_hidden() and update()
 	var/turf/unbuckled_turf = get_turf(parent)
-	if(ispath(unbuckled_turf.type, /turf/open))
+	if(istype(unbuckled_turf, /turf/open))
 		var/turf/open/open_buckled_turf = unbuckled_turf
 		water_depth = open_buckled_turf.depth
 	effect_turf = unbuckled_turf

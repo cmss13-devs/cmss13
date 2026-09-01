@@ -22,7 +22,7 @@
 	var/found_angle = overlaid_mob.get_lying_angle()
 	var/mob_type = overlaid_mob.type	//variable since we need to set this if human
 	var/mob_texture_size = icon(overlaid_mob.icon, overlaid_mob.icon_state).Width()
-	if(ispath(water_turf.type, /turf/open/gm/river/desert) || ispath(water_turf.type, /turf/open/desert/desert_shore))
+	if(istype(water_turf, /turf/open/gm/river/desert) || istype(water_turf, /turf/open/desert/desert_shore))
 		var/turf/open/gm/river/desert/toxic_turf = water_turf
 		toxic_key = toxic_turf.toxic
 	if(ishuman(overlaid_mob))			//all human subtypes will just use the single human overlay

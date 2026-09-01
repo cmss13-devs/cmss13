@@ -97,6 +97,6 @@
 	update_icon()
 	var/turf/location = get_turf(src)
 	location.is_weedable = NOT_WEEDABLE
-	if(ispath(location.type, /turf/open))
+	if(istype(location, /turf/open))
 		var/turf/open/open_location = location
 		open_location.become_water(created_depth, water_type)

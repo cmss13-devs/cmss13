@@ -11,7 +11,7 @@
 
 // resistance_flags = RESIST_ALL
 	anchored = TRUE
-
+	flags_atom = NO_ZFALL
 	/**
 	  * The identifier of the port or ship.
 	  * This will be used in numerous other places like the console,

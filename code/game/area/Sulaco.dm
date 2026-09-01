@@ -63,7 +63,7 @@
 	name = "\improper Dropship Omaha"
 	icon_state = "shuttlered"
 	base_muffle = MUFFLE_HIGH
-	base_lighting_alpha = 255
+	base_lighting_alpha = 0
 	is_resin_allowed = FALSE
 
 /area/shuttle/drop_omaha/Enter(atom/movable/O, atom/oldloc)

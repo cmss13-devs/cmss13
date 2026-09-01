@@ -271,6 +271,13 @@
 
 /// body ///
 
+/obj/structure/shuttle/part/dropship_omaha/transparent/body
+	opacity = FALSE
+	density = FALSE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	can_block_movement = FALSE
+	flags_atom = NO_ZFALL
+
 /obj/structure/shuttle/part/dropship_omaha/transparent/body/body_00
 	icon_state = "3,8"
 
@@ -808,6 +815,13 @@
 	icon_state = "12,3"
 
 /// body ///
+
+/obj/structure/shuttle/part/dropship_midway/transparent/body
+	opacity = FALSE
+	density = FALSE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	can_block_movement = FALSE
+	flags_atom = NO_ZFALL
 
 /obj/structure/shuttle/part/dropship_midway/transparent/body/body_00
 	icon_state = "3,8"

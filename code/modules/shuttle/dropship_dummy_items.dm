@@ -197,11 +197,24 @@
 	icon_state = "shadowblast"
 	unacidable = TRUE
 	anchored = TRUE
-//	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	opacity = FALSE
 	density = FALSE
-	alpha = 0 // 101
 	flags_atom = NO_ZFALL
+
+/obj/effect/drosphip_ramp_shadow/proc/set_icon_state(raise = TRUE)
+	if(raise)
+		icon_state = "shadowblast_raise"
+		addtimer(CALLBACK(src, PROC_REF(finish_raising)), 30,  TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+	else
+		icon_state = "shadowblast_lower"
+		addtimer(CALLBACK(src, PROC_REF(finish_lowering)), 30,  TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+
+/obj/effect/drosphip_ramp_shadow/proc/finish_raising()
+	icon_state = "shadowblast_kill"
+
+/obj/effect/drosphip_ramp_shadow/proc/finish_lowering()
+	icon_state = "shadowblast"
 
 /// ramp ///
 

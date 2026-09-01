@@ -628,9 +628,9 @@
 		if(rampazoid.shadowblaster)
 			if(!rampazoid.shadowblast)
 				rampazoid.shadowblast = new /obj/effect/drosphip_ramp_shadow(rampazoid.loc)
-				animate(rampazoid.shadowblast, time = 50, loop = FALSE, alpha = 0)
+				rampazoid.shadowblast.set_icon_state(raise = TRUE)
 			else
-				animate(rampazoid.shadowblast, time = 50, loop = FALSE, alpha = 0)
+				rampazoid.shadowblast.set_icon_state(raise = TRUE)
 
 	for(rampazoid in fourth_ramps)
 		if(!rampazoid.linked_staircase)
@@ -714,9 +714,9 @@
 		if(rampazoid.shadowblaster)
 			if(!rampazoid.shadowblast)
 				rampazoid.shadowblast = new /obj/effect/drosphip_ramp_shadow(rampazoid.loc)
-				animate(rampazoid.shadowblast, time = 50, loop = FALSE, alpha = 255)
+				rampazoid.shadowblast.set_icon_state(raise = FALSE)
 			else
-				animate(rampazoid.shadowblast, time = 50, loop = FALSE, alpha = 255)
+				rampazoid.shadowblast.set_icon_state(raise = FALSE)
 	crush_mobs(second_ramps)
 	for(rampazoid in second_ramps)
 		var/turf/open/our_turf = rampazoid.loc

@@ -1,13 +1,13 @@
 {
-	"private": true,
-	"name": "tgfont",
-	"type": "module",
-	"version": "2.0.0",
-	"scripts": {
-		"tgfont:build": "svgo icons && bun svgtofont.ts"
-	},
-	"dependencies": {
-		"svgo": "^4.1.0",
-		"svgtofont": "^6.5.3"
-	}
+  "private": true,
+  "name": "tgfont",
+  "type": "module",
+  "version": "2.0.0",
+  "scripts": {
+    "tgfont:build": "svgo icons && bun svgtofont.ts"
+  },
+  "dependencies": {
+    "svgo": "^4.1.0",
+    "svgtofont": "^6.5.3"
+  }
 }

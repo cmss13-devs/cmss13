@@ -46,6 +46,10 @@
 /obj/structure/shuttle/part/dropship_midway/transparent/nose/right_13,
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
+"dI" = (
+/obj/structure/shuttle/part/dropship_midway/transparent/body/body_40,
+/turf/template_noop,
+/area/shuttle/drop_midway/midway)
 "dJ" = (
 /obj/structure/shuttle/part/decal/dropship_midway/ramp_decals/border_32,
 /obj/deployer/shuttle/dropship/dummy_part/midway/adjustable_fourth,
@@ -59,12 +63,26 @@
 /obj/deployer/shuttle/dropship/gibber,
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
+"ev" = (
+/obj/structure/shuttle/part/dropship_midway/transparent/body/body_50,
+/turf/template_noop,
+/area/shuttle/drop_midway/midway)
 "ew" = (
 /obj/deployer/shuttle/dropship/fuel_attachment_point/midway{
 	offset_x = 16;
 	offset_y = 16
 	},
 /turf/closed/shuttle/dropship_midway/wall_50,
+/area/shuttle/drop_midway/midway)
+"eP" = (
+/obj/structure/shuttle/part/dropship_midway/transparent/body/body_11,
+/turf/template_noop,
+/area/shuttle/drop_midway/midway)
+"fb" = (
+/obj/structure/machinery/light/blue{
+	dir = 8
+	},
+/turf/open/shuttle/dropship/midway/grated,
 /area/shuttle/drop_midway/midway)
 "fw" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/wings/right_02,
@@ -133,6 +151,7 @@
 	pixel_x = -16;
 	pixel_y = -16
 	},
+/obj/structure/machinery/light/blue,
 /turf/open/shuttle/dropship/midway/grated,
 /area/shuttle/drop_midway/midway)
 "hQ" = (
@@ -274,7 +293,12 @@
 /obj/structure/shuttle/part/dropship_midway/transparent/nose/left_21,
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
+"pc" = (
+/obj/structure/shuttle/part/dropship_midway/transparent/body/body_41,
+/turf/template_noop,
+/area/shuttle/drop_midway/midway)
 "pG" = (
+/obj/structure/machinery/light/blue,
 /turf/open/shuttle/dropship/midway/external,
 /area/shuttle/drop_midway/midway)
 "qa" = (
@@ -339,6 +363,10 @@
 "sA" = (
 /turf/closed/shuttle/dropship_midway/wall_mid_00,
 /area/shuttle/drop_midway/midway)
+"sE" = (
+/obj/structure/shuttle/part/dropship_midway/transparent/body/body_31,
+/turf/template_noop,
+/area/shuttle/drop_midway/midway)
 "sJ" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/wings/right_12,
 /turf/template_noop,
@@ -381,7 +409,8 @@
 "vS" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/wings/right_11,
 /obj/deployer/shuttle/dropship/landing_gear/midway{
-	map_offset_x = -1
+	map_offset_x = -1;
+	dir = 1
 	},
 /obj/deployer/shuttle/dropship/gibber,
 /turf/template_noop,
@@ -465,6 +494,10 @@
 	},
 /turf/open/shuttle/dropship/midway/grated,
 /area/shuttle/drop_midway/midway)
+"AP" = (
+/obj/structure/shuttle/part/dropship_midway/transparent/body/body_10,
+/turf/template_noop,
+/area/shuttle/drop_midway/midway)
 "AV" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/cockpit/nose_10,
 /turf/template_noop,
@@ -525,6 +558,10 @@
 /obj/deployer/shuttle/dropship/dummy_part/midway/adjustable_second,
 /turf/open/shuttle/dropship/midway/ramp/rampio_11,
 /area/shuttle/drop_midway/midway)
+"DT" = (
+/obj/structure/shuttle/part/dropship_midway/transparent/body/body_21,
+/turf/template_noop,
+/area/shuttle/drop_midway/midway)
 "Ef" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/bottom/bottom_15,
 /turf/template_noop,
@@ -544,12 +581,18 @@
 /area/shuttle/drop_midway/midway)
 "ED" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/wings/left_13,
-/obj/deployer/shuttle/dropship/landing_gear/midway,
+/obj/deployer/shuttle/dropship/landing_gear/midway{
+	dir = 1
+	},
 /obj/deployer/shuttle/dropship/gibber,
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "EG" = (
 /turf/closed/shuttle/dropship_midway/wall_04,
+/area/shuttle/drop_midway/midway)
+"ES" = (
+/obj/structure/shuttle/part/dropship_midway/transparent/body/body_01,
+/turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "EU" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/bottom/bottom_03,
@@ -564,6 +607,10 @@
 /area/shuttle/drop_midway/midway)
 "Gr" = (
 /turf/closed/shuttle/dropship_midway/wall_21,
+/area/shuttle/drop_midway/midway)
+"Gs" = (
+/obj/structure/shuttle/part/dropship_midway/transparent/body/body_51,
+/turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "Gt" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/nose/right_03,
@@ -619,6 +666,10 @@
 /obj/structure/shuttle/part/dropship_midway/transparent/wings/left_12,
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
+"IY" = (
+/obj/structure/shuttle/part/dropship_midway/transparent/body/body_00,
+/turf/template_noop,
+/area/shuttle/drop_midway/midway)
 "Jz" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/wings/right_13,
 /turf/template_noop,
@@ -630,6 +681,10 @@
 "Kn" = (
 /obj/deployer/shuttle/dropship/dummy_part/midway/adjustable_fifth,
 /turf/open/shuttle/dropship/midway/basic,
+/area/shuttle/drop_midway/midway)
+"Kx" = (
+/obj/structure/shuttle/part/dropship_midway/transparent/body/body_20,
+/turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "Kz" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/wings/left_01,
@@ -657,6 +712,7 @@
 	pixel_x = 16;
 	pixel_y = 5
 	},
+/obj/structure/machinery/light/blue,
 /turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "Mx" = (
@@ -723,6 +779,12 @@
 /area/shuttle/drop_midway/midway)
 "PC" = (
 /turf/closed/shuttle/dropship_midway/wall_93,
+/area/shuttle/drop_midway/midway)
+"PL" = (
+/obj/structure/machinery/light/blue{
+	dir = 4
+	},
+/turf/open/shuttle/dropship/midway/grated,
 /area/shuttle/drop_midway/midway)
 "Qm" = (
 /turf/closed/shuttle/dropship_midway/wall_mid_71,
@@ -837,6 +899,10 @@
 /area/shuttle/drop_midway/midway)
 "WP" = (
 /turf/closed/shuttle/dropship_midway/wall_mid_50,
+/area/shuttle/drop_midway/midway)
+"WQ" = (
+/obj/structure/shuttle/part/dropship_midway/transparent/body/body_30,
+/turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "XI" = (
 /turf/closed/shuttle/dropship_midway/wall_05,
@@ -977,12 +1043,12 @@ lt
 hB
 ED
 Kz
-ru
-ru
-ru
-ru
-ru
-ru
+ev
+dI
+WQ
+Kx
+AP
+IY
 ru
 ru
 ru
@@ -1034,7 +1100,7 @@ Au
 wm
 OW
 LM
-LM
+fb
 LM
 RG
 RG
@@ -1190,7 +1256,7 @@ aA
 bx
 LM
 LM
-LM
+PL
 LM
 RG
 RG
@@ -1237,12 +1303,12 @@ Nh
 ed
 vS
 QN
-ru
-ru
-ru
-ru
-ru
-ru
+Gs
+pc
+sE
+DT
+eP
+ES
 ru
 ru
 ru

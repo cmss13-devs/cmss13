@@ -269,6 +269,44 @@
 /obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_36
 	icon_state = "12,3"
 
+/// body ///
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/body/body_00
+	icon_state = "3,8"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/body/body_01
+	icon_state = "13,8"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/body/body_10
+	icon_state = "3,9"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/body/body_11
+	icon_state = "13,9"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/body/body_20
+	icon_state = "3,10"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/body/body_21
+	icon_state = "13,10"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/body/body_30
+	icon_state = "3,11"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/body/body_31
+	icon_state = "13,11"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/body/body_40
+	icon_state = "3,12"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/body/body_41
+	icon_state = "13,12"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/body/body_50
+	icon_state = "3,13"
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/body/body_51
+	icon_state = "13,13"
+
 /// WINGS LEFT ////
 
 /obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_00
@@ -769,6 +807,44 @@
 /obj/structure/shuttle/part/dropship_midway/transparent/bottom/bottom_36
 	icon_state = "12,3"
 
+/// body ///
+
+/obj/structure/shuttle/part/dropship_midway/transparent/body/body_00
+	icon_state = "3,8"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/body/body_01
+	icon_state = "13,8"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/body/body_10
+	icon_state = "3,9"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/body/body_11
+	icon_state = "13,9"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/body/body_20
+	icon_state = "3,10"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/body/body_21
+	icon_state = "13,10"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/body/body_30
+	icon_state = "3,11"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/body/body_31
+	icon_state = "13,11"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/body/body_40
+	icon_state = "3,12"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/body/body_41
+	icon_state = "13,12"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/body/body_50
+	icon_state = "3,13"
+
+/obj/structure/shuttle/part/dropship_midway/transparent/body/body_51
+	icon_state = "13,13"
+
 /// WINGS LEFT ////
 
 /obj/structure/shuttle/part/dropship_midway/transparent/wings/left_00
@@ -1024,7 +1100,7 @@
 
 /obj/structure/shuttle/part/dropship_midway/structure_ramp
 	name = "Ramp"
-	icon = 'icons/turf/omaha/ramp.dmi'
+	icon = 'icons/turf/midway/ramp.dmi'
 	icon_state = "ramp-10-low"
 	opacity = FALSE
 	density = FALSE

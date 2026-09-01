@@ -250,6 +250,7 @@
 	var/datum/behavior_delegate/behavior_delegate = null // Holds behavior delegate. Governs all 'unique' hooked behavior of the Xeno. Set by caste datums and strains.
 	var/datum/action/xeno_action/activable/selected_ability // Our currently selected ability
 	var/datum/action/xeno_action/activable/queued_action // Action to perform on the next click.
+	var/queued_action_timer = TIMER_ID_NULL
 	var/is_zoomed = FALSE
 	var/list/spit_types
 	/// Caste-based spit windup
@@ -774,7 +775,7 @@
 	l_store = null
 	ammo = null
 	selected_ability = null
-	queued_action = null
+	clear_queued_action()
 
 	QDEL_NULL(strain)
 	QDEL_NULL(behavior_delegate)

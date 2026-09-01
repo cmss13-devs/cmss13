@@ -92,8 +92,8 @@ GLOBAL_LIST_INIT(cm_vending_gear_leader, list(
 
 		list("SIDEARM AMMUNITION", 0, null, null, null),
 		list("M10 HV Extended Magazine (10x20mm-APC)", 6, /obj/item/ammo_magazine/pistol/m10/extended , null, VENDOR_ITEM_REGULAR),
-		list("M44 Heavy Speed Loader (.44)", 6, /obj/item/ammo_magazine/revolver/heavy, null, VENDOR_ITEM_REGULAR),
-		list("M44 Marksman Speed Loader (.44)", 6, /obj/item/ammo_magazine/revolver/marksman, null, VENDOR_ITEM_REGULAR),
+		list("M44 Heavy Speed Loader (.44)", 5, /obj/item/ammo_magazine/revolver/heavy, null, VENDOR_ITEM_REGULAR),
+		list("M44 Marksman Speed Loader (.44)", 5, /obj/item/ammo_magazine/revolver/marksman, null, VENDOR_ITEM_REGULAR),
 		list("M4A3 HP Magazine", 3, /obj/item/ammo_magazine/pistol/hp, null, VENDOR_ITEM_REGULAR),
 		list("M4A3 AP Magazine", 3, /obj/item/ammo_magazine/pistol/ap, null, VENDOR_ITEM_REGULAR),
 		list("VP78 Magazine", 3, /obj/item/ammo_magazine/pistol/vp78, null, VENDOR_ITEM_REGULAR),
@@ -146,6 +146,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_leader, list(
 		list("BELT (CHOOSE 1)", 0, null, null, null),
 		list("G8-A General Utility Pouch", 0, /obj/item/storage/backpack/general_belt, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
 		list("M276 Ammo Load Rig", 0, /obj/item/storage/belt/marine, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
+		list("M276 Combat Sidearm Rig", 0, /obj/item/storage/belt/gun/combat_rig, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 		list("M276 General Pistol Holster Rig", 0, /obj/item/storage/belt/gun/m4a3, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 		list("M276 Lifesaver Bag", 0, /obj/item/storage/belt/medical/lifesaver, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 		list("M276 Medical Storage Rig", 0, /obj/item/storage/belt/medical, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),

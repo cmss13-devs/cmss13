@@ -30,7 +30,6 @@
 	desc = "make an incision"
 	tools = SURGERY_TOOLS_INCISION
 	time = 2 SECONDS
-	preop_sound = 'sound/surgery/scalpel1.ogg'
 	success_sound = 'sound/surgery/scalpel2.ogg'
 	failure_sound = 'sound/surgery/organ2.ogg'
 
@@ -476,7 +475,6 @@
 		/obj/item/tool/kitchen/knife/butcher = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,
 	)
 	time = 4 SECONDS
-	preop_sound = 'sound/surgery/saw.ogg'
 	success_sound = 'sound/surgery/hemostat2.ogg'
 	failure_sound = 'sound/effects/circsawfail1.ogg'
 
@@ -696,7 +694,6 @@
 	desc = "repair the damaged bones"
 	tools = SURGERY_TOOLS_BONE_MEND
 	time = 3 SECONDS
-	preop_sound = 'sound/handling/clothingrustle1.ogg'
 	success_sound = 'sound/handling/bandage.ogg'
 	failure_sound = 'sound/surgery/organ2.ogg'
 

@@ -22,8 +22,9 @@
 	var/time = 10
 	///Whether this step continuously repeats as long as a criteria is met. If TRUE, consider setting skip_step_criteria() or using a failure() override to return TRUE to allow it to be canceled or skipped.
 	var/repeat_step = FALSE
-	///preop means "in Progress" sound
+	///preop means "in Progress" sound. Var is only used if all tools use the same sound. Otherwise, use custom_preop_sound
 	var/preop_sound
+	var/custom_preop_sound
 	///Sound of success
 	var/success_sound
 	///failure >:(
@@ -77,6 +78,52 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 ///does any extra checks that it is SUBTYPED to perform
 /datum/surgery_step/proc/extra_checks(mob/living/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, repeating, skipped)
 	return TRUE
+
+/datum/surgery_step/proc/use_custom_preop_sound(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgeryy) //this is for surgeries that have differing sounds for different tools in the same step. Hearing a saw buzz when you're using a hatchet was... a thing.
+	var/held_tool = tool.type
+	if(tool.type in SURGERY_TOOLS_INCISION)
+		if(held_tool == /obj/item/tool/surgery/scalpel/manager)
+			custom_preop_sound = 'sound/surgery/ims.ogg'
+		else if(held_tool == /obj/item/tool/surgery/scalpel/laser)
+			custom_preop_sound = 'sound/surgery/laserscalpel.ogg'
+		else
+			custom_preop_sound = 'sound/surgery/scalpel1.ogg'
+
+	else if(tool.type in SURGERY_TOOLS_SEVER_BONE)
+		if(held_tool == /obj/item/tool/surgery/circular_saw)
+			custom_preop_sound = 'sound/surgery/saw.ogg'
+		else
+			custom_preop_sound = 'sound/surgery/notsaw.ogg'
+
+	else if(tool.type in SURGERY_TOOLS_BONE_MEND)
+		if(held_tool == /obj/item/tool/screwdriver)
+			custom_preop_sound = 'sound/items/Screwdriver.ogg'
+		else
+			custom_preop_sound = 'sound/surgery/bonegel.ogg'
+
+	else if((name == "Apply a Graft") && (tool.type in tools))
+		if(held_tool == /obj/item/tool/surgery/synthgraft)
+			custom_preop_sound = 'sound/surgery/suture1.ogg'
+		else
+			custom_preop_sound = 'sound/handling/clothingrustle1.ogg'
+
+	else if(tool.type in SURGERY_TOOLS_MEDICOMP_STABILIZE_WOUND)
+		if(held_tool == /obj/item/stack/cable_coil)
+			custom_preop_sound = 'sound/surgery/suture1.ogg'
+		else
+			custom_preop_sound = 'sound/surgery/bonegel.ogg'
+
+	else
+		if((tool.type in SURGERY_TOOLS_CAUTERIZE) || (tool.type in SURGERY_TOOLS_MEDICOMP_CLAMP_WOUND))
+			if(held_tool == /obj/item/clothing/mask/cigarette || /obj/item/tool/lighter)
+				custom_preop_sound = 'sound/surgery/cigarettelighter.ogg'
+			else if (held_tool == /obj/item/tool/weldingtool)
+				custom_preop_sound = 'sound/surgery/weldingtool.ogg'
+			else
+				custom_preop_sound = 'sound/surgery/cautery1.ogg'
+
+	if(held_tool == tool.type)
+		playsound(get_turf(target), custom_preop_sound, vol = 40, sound_range = 1)
 
 ///The proc that actually performs the step.
 /datum/surgery_step/proc/attempt_step(mob/living/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, repeating, skipped)
@@ -263,9 +310,10 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 
 /// Plays Preop Sounds
 /datum/surgery_step/proc/play_preop_sound(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	if(!preop_sound)
-		return
-	playsound(get_turf(target), preop_sound, vol = 40, sound_range = 1)
+	if(preop_sound)
+		playsound(get_turf(target), preop_sound, vol = 40, sound_range = 1)
+	else
+		use_custom_preop_sound(user, target, target_zone, tool, surgery)
 
 ///This is used for end-step narration and relevant success changes - whatever the step is meant to do, if it isn't just flavour. tool_type may be a typepath or simply '1'.
 /datum/surgery_step/proc/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

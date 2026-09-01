@@ -130,13 +130,13 @@
 	// Find the appropriate length of the bitmask used for permutation indexing.
 	// For our current array of recovery, frenzy, and warding, this should be two.
 	var/bitmask_length = 0
-	while ((total_pheromones + 1) >> bitmask_length != 0)
+	while (total_pheromones >> bitmask_length != 0)
 		bitmask_length++
 	var/bitmask = (1 << bitmask_length) - 1 // Creating the actual bitmask
 
 	// Iterate through all possible permutations
 	var/hallucinated_loops = 0
-	for (var/permutation = 0, permutation < (1 << (length(abstract_emitters) * 2)), permutation++)
+	for (var/permutation = 0, permutation < (1 << (length(abstract_emitters) * bitmask_length)), permutation++)
 		log_test("Starting pheromone permutation [num2hex(permutation, 2)]...")
 
 		// Setting up each emitter state

@@ -96,9 +96,7 @@
 	var/aim_assist = FALSE
 	var/aim_assist_drain = 366
 	/// Accuracy penalty applied to aim-assisted shots when you don't directly fire at the target
-	var/aim_assist_accuracy_penalty = HIT_ACCURACY_MULT_TIER_10
-	/// Whether going helmetless reduces the aim-assist accuracy penalty
-	var/helmetless_aim_assist_bonus = TRUE
+	var/aim_assist_accuracy_penalty = HIT_ACCURACY_MULT_TIER_5
 	/// Whether aim assist redirected the current shot
 	var/aim_assist_retargeted = FALSE
 	var/image/autoshot_image
@@ -485,10 +483,7 @@
 		return
 	aim_assist_retargeted = FALSE
 
-	var/accuracy_penalty = aim_assist_accuracy_penalty
-	if(helmetless_aim_assist_bonus && aim_assist_accuracy_penalty > 0 && !helmet_blocks_sight(user))
-		accuracy_penalty -= HIT_ACCURACY_MULT_TIER_5
-	projectile_to_fire.accuracy = floor(projectile_to_fire.accuracy * (BASE_ACCURACY_MULT - max(0, accuracy_penalty)))
+	projectile_to_fire.accuracy = floor(projectile_to_fire.accuracy * (BASE_ACCURACY_MULT - aim_assist_accuracy_penalty))
 
 /obj/item/weapon/gun/smartgun/proc/drain_battery(override_drain)
 	var/shot_drain = 78
@@ -518,8 +513,6 @@
 /obj/item/weapon/gun/smartgun/proc/toggle_aim_assist(mob/user, silent)
 	if(!silent)
 		to_chat(user, "[icon2html(src, user)] You [aim_assist ? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s aim assist.[aim_assist ? "" : " This substantially increases battery drain."]")
-		if(!aim_assist && helmetless_aim_assist_bonus && aim_assist_accuracy_penalty > 0 && helmet_blocks_sight(user))
-			to_chat(user, SPAN_WARNING("Your helmet interferes with the M56 Head Mounted Sight's aim-assist system."))
 		balloon_alert(user, "aim assist [aim_assist ? "disabled" : "enabled ++BATTERY DRAIN"]")
 		playsound(loc,'sound/machines/click.ogg', 25, 1)
 
@@ -529,13 +522,6 @@
 		enable_auto_aim(user)
 	else
 		disable_auto_aim(user)
-
-/obj/item/weapon/gun/smartgun/proc/helmet_blocks_sight(mob/user)
-	if(!ishuman(user))
-		return FALSE
-	var/mob/living/carbon/human/human = user
-	// the specialist head-rag for some reason counts as a helmet
-	return istype(human.head, /obj/item/clothing/head/helmet) && !istype(human.head, /obj/item/clothing/head/helmet/specrag)
 
 /obj/item/weapon/gun/smartgun/proc/enable_auto_aim(mob/user)
 	START_PROCESSING(SSobj, src)
@@ -782,7 +768,6 @@
 	desc = "The actual firearm in the 4-piece M56A2 Smartgun System. Essentially a heavy, mobile machinegun. This upgraded variant features new, updated tracking software."
 	aim_assist_drain = 83
 	aim_assist_accuracy_penalty = 0
-	helmetless_aim_assist_bonus = FALSE
 	actions_types = list(
 		/datum/action/item_action/smartgun/toggle_lethal_mode,
 		/datum/action/item_action/smartgun/toggle_ammo_type,
@@ -805,7 +790,6 @@
 	ammo_primary_def = /datum/ammo/bullet/smartgun/heap
 	aim_assist_drain = 83
 	aim_assist_accuracy_penalty = 0
-	helmetless_aim_assist_bonus = FALSE
 	actions_types = list(
 		/datum/action/item_action/smartgun/toggle_lethal_mode,
 		/datum/action/item_action/smartgun/toggle_frontline_mode,
@@ -834,7 +818,6 @@
 	has_cover = FALSE
 	aim_assist_drain = 83
 	aim_assist_accuracy_penalty = 0
-	helmetless_aim_assist_bonus = FALSE
 	actions_types = list(
 		/datum/action/item_action/smartgun/toggle_lethal_mode,
 		/datum/action/item_action/smartgun/toggle_ammo_type,

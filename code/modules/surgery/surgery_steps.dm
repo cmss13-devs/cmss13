@@ -104,6 +104,8 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 	else if((name == "Apply a Graft") && (tool.type in tools))
 		if(held_tool == /obj/item/tool/surgery/synthgraft)
 			custom_preop_sound = 'sound/surgery/suture1.ogg'
+		else if(held_tool == /obj/item/stack/medical/ointment)
+			custom_preop_sound = 'sound/surgery/bonegel.ogg'
 		else
 			custom_preop_sound = 'sound/handling/clothingrustle1.ogg'
 

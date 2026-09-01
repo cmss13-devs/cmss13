@@ -37,6 +37,7 @@
 	tools = SURGERY_TOOLS_INCISION
 	time = 2 SECONDS
 
+	preop_sound = 'sound/surgery/scalpel1.ogg'
 	success_sound = 'sound/surgery/scalpel2.ogg'
 	failure_sound = 'sound/surgery/organ2.ogg'
 

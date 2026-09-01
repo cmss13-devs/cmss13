@@ -1,0 +1,11 @@
+author: "Mary-Marilyn"
+delete-after: True
+changes:
+  - balance: "Reduced the M44 revolver's wielded scatter from 3 to 1."
+  - balance: "Increased standard M44 ammunition damage from 72 to 85, armor penetration from 5 to 10 and accurate range from 6 to 7 tiles."
+  - balance: "Increased M44 marksman ammunition damage from 55 to 70 and armor penetration from 35 to 40."
+  - balance: "Increased M44 heavy ammunition damage from 35 to 65 and accurate range from 6 to 7 tiles."
+  - balance: "M44 heavy ammunition stuns for 0.5 seconds every third hit and slows for 2s for every hit after that"
+  - balance: "The M44 sharpshooter stock now folds in 0.5 seconds and no longer slows aiming"
+  - balance: "The M44 can now be fired with its sharpshooter stock folded."
+  - balance: "Reduced M44 heavy and marksman speedloader costs to 5 points across the board"

@@ -149,7 +149,7 @@
 			emitter.heal_all_damage()
 			emitter.gain_plasma(emitter.plasma_max)
 			if (!emitter.check_state(TRUE))
-				TEST_FAIL("Emitter [emitter] was incapacitated during testing")
+				TEST_FAIL("...emitter [emitter] was incapacitated during testing. FAIL")
 
 			/** === Bit math explanation ===
 			 * The current permutation index is used to encode what pheromone is being emitted by each xenomorph in the test
@@ -181,11 +181,13 @@
 		// Don't bother doing testing for hallucinated loops
 		if (hallucinated)
 			hallucinated_loops++
+			log_test("...DONE (HALLUCINATED)")
 			continue
 
 		wait_full_life_loops(1)
 
 		test_callback.Invoke(receiver, permutation - hallucinated_loops + 1)
+		log_test("...DONE")
 
 	if (original_wait)
 		SSxeno.wait = original_wait

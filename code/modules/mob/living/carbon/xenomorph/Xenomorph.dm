@@ -249,6 +249,7 @@
 	var/datum/behavior_delegate/behavior_delegate = null // Holds behavior delegate. Governs all 'unique' hooked behavior of the Xeno. Set by caste datums and strains.
 	var/datum/action/xeno_action/activable/selected_ability // Our currently selected ability
 	var/datum/action/xeno_action/activable/queued_action // Action to perform on the next click.
+	var/queued_action_timer = TIMER_ID_NULL
 	var/is_zoomed = FALSE
 	var/list/spit_types
 	/// Caste-based spit windup
@@ -773,7 +774,7 @@
 	l_store = null
 	ammo = null
 	selected_ability = null
-	queued_action = null
+	clear_queued_action()
 
 	QDEL_NULL(strain)
 	QDEL_NULL(behavior_delegate)
@@ -891,8 +892,12 @@
 
 // Transfer any observing players over to the xeno's new body (`target`) on evolve/de-evolve.
 /mob/living/carbon/xenomorph/transfer_observers_to(atom/target)
+	if(!istype(target) || target == src || !get_turf(target))
+		return
+
+	. = ..()
+
 	for(var/mob/dead/observer/observer as anything in observers)
-		observer.clean_observe_target()
 		observer.do_observe(target)
 
 /mob/living/carbon/xenomorph/check_improved_pointing()

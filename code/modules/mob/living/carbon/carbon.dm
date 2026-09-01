@@ -30,12 +30,6 @@
 	halbody = null
 
 
-/mob/living/carbon/Move(NewLoc, direct)
-	. = ..()
-	if(.)
-		if(nutrition && stat != DEAD)
-			nutrition -= HUNGER_FACTOR/5
-
 /mob/living/carbon/relaymove(mob/user, direction)
 	if(user.is_mob_incapacitated(TRUE))
 		return

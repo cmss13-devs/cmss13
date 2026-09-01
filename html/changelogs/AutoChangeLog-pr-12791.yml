@@ -1,5 +1,0 @@
-author: "labeo0"
-delete-after: True
-changes:
-  - bugfix: "Guaranteed slot T2 xenos cannot transmute over the T2 slot capacity"
-  - bugfix: "Xenos don't lose transmute by selecting their current caste."

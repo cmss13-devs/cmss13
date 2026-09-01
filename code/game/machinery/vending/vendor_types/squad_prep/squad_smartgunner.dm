@@ -85,7 +85,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_smartgun, list(
 		list("MRE", 0, /obj/item/storage/box/mre, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 		list("Map", 0, /obj/item/map/current_map, MARINE_CAN_BUY_MAP, VENDOR_ITEM_MANDATORY),
 
-		list("HELMETLESS HEADWEAR (CHOOSE 1)", 0, null, null, null),
+		list("HELMETLESS HEADWEAR - OPTIONAL (CHOOSE 1)", 0, null, null, null),
 		list("Expedition Flap Cap", 0, /obj/item/clothing/head/cmcap/flap, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 		list("Patrol Cap", 0, /obj/item/clothing/head/cmcap, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 		list("Boonie Hat", 0, /obj/item/clothing/head/cmcap/boonie, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),

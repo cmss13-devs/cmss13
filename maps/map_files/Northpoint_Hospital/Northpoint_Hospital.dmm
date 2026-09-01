@@ -47903,9 +47903,10 @@
 /turf/open/hybrisa/street/cement2,
 /area/northpoint/outdoors/hospital_exterior/west)
 "onq" = (
-/obj/structure/barricade/sandbags/weak_wired{
-	dir = 8;
-	icon_state = "sandbag_0"
+/obj/structure/barricade/sandbags/wired{
+	pixel_y = 0;
+	icon_state = "sandbag_0";
+	dir = 8
 	},
 /obj/structure/barricade/sandbags/wired{
 	pixel_y = -6;

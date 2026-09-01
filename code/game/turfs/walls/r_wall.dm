@@ -6,7 +6,8 @@
 	damage_cap = HEALTH_WALL_REINFORCED
 
 	walltype = WALL_REINFORCED
-
+	claws_minimum = CLAW_TYPE_VERY_SHARP
+	needs_strong_acid = TRUE
 
 //Just different looking wall
 /turf/closed/wall/r_wall/research

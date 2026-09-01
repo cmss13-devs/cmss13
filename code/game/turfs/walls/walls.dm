@@ -12,6 +12,7 @@
 	var/junctiontype
 	var/thermite = 0
 	var/melting = FALSE
+	var/claws_minimum = CLAW_TYPE_SHARP
 
 	tiles_with = list(
 		/turf/closed/wall,
@@ -55,6 +56,9 @@
 
 	///Whether this turf is currently being manipulated to prevent doubling up
 	var/busy = FALSE
+
+	///If the turf needs strong acid to be made hole into
+	var/needs_strong_acid = FALSE
 
 /turf/closed/wall/Initialize(mapload, ...)
 	. = ..()
@@ -218,7 +222,7 @@
 	if(acided_hole && user.mob_size >= MOB_SIZE_BIG)
 		acided_hole.expand_hole(user) //This proc applies the attack delay itself.
 		return XENO_NO_DELAY_ACTION
-	if(!(turf_flags & TURF_HULL) && (user.claw_type >= CLAW_TYPE_VERY_SHARP || damage_cap < HEALTH_WALL_REINFORCED) && !acided_hole && user.a_intent == INTENT_HARM)
+	if(!(turf_flags & TURF_HULL) &&  user.claw_type >= claws_minimum && !acided_hole && user.a_intent == INTENT_HARM)
 		user.animation_attack_on(src)
 		playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 		if(damage >= (damage_cap - (damage_cap / XENO_HITS_TO_DESTROY_WALL)))
@@ -751,6 +755,6 @@
 /turf/closed/wall/can_be_dissolved()
 	if(turf_flags & TURF_HULL)
 		return 0
-	if(damage_cap >= HEALTH_WALL_REINFORCED)
+	if(needs_strong_acid)
 		return 2
 	return 1

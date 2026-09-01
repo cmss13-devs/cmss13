@@ -420,7 +420,7 @@
 		visible_message(SPAN_XENOWARNING("Acid on \The [acid_t] subsides!"))
 		return NONE
 	var/obj/structure/barricade/cade = acid_t
-	cade.take_acid_damage(barricade_damage)
+	cade.corrosive_acid_act(barricade_damage)
 	return (5 SECONDS)
 
 /obj/effect/xenomorph/acid/proc/handle_flashlight()

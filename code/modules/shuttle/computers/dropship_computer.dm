@@ -290,8 +290,8 @@
 
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttleId)
 
-	// If the attacking xeno isn't the queen.
-	if(xeno.hive_pos != XENO_QUEEN)
+	// If the attacking xeno isn't the queen or predalien.
+	if(!IS_XENO_DROPSHIP_CAPABLE(xeno))
 		// If the 'about to launch' alarm is playing, a xeno can whack the computer to stop it.
 		if(dropship.playing_launch_announcement_alarm)
 			stop_playing_launch_announcement_alarm()

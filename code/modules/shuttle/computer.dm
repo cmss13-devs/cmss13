@@ -340,6 +340,19 @@
 		return TRUE
 	tgui_interact(user)
 
+/obj/structure/machinery/computer/shuttle/ert/attack_alien(mob/living/carbon/xenomorph/xeno)
+	// If the attacking xeno isn't the queen or predalien.
+	if(IS_XENO_DROPSHIP_CAPABLE(xeno))
+		xeno.animation_attack_on(src)
+		disabled = TRUE
+		to_chat(xeno, SPAN_XENONOTICE("We slash at [src], rendering it inoperable!"))
+		playsound(loc, 'sound/machines/terminal_shutdown.ogg', 20)
+	else
+		to_chat(xeno, SPAN_NOTICE("Lights flash from the terminal but we can't comprehend their meaning."))
+		playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, TRUE)
+	return XENO_NONCOMBAT_ACTION
+
+
 /obj/structure/machinery/computer/shuttle/ert/small
 	name = "transport shuttle"
 	desc = "A transport shuttle flight computer."

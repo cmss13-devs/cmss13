@@ -107,6 +107,9 @@
 
 #define XENO_STARTING_CRYSTAL 100 //How much building resource the queen gets to start with
 
+/// Whether the xeno in question is capable of unlocking dropships and starting hijack
+#define IS_XENO_DROPSHIP_CAPABLE(X) (X.hive_pos == XENO_QUEEN || X.caste_type == XENO_CASTE_PREDALIEN)
+
 // Queen permission toggles
 #define COOLDOWN_TOGGLE_SLASH "cooldown_toggle_slash"
 #define COOLDOWN_TOGGLE_CONSTRUCTION "cooldown_toggle_construction"

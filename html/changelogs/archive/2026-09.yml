@@ -4,3 +4,37 @@
   fira:
   - rscdel: MULEbots cannot run people over anymore. They still can't really move
       either way.
+2026-09-02:
+  Mary-Marilyn:
+  - balance: Reduced the M44 revolver's wielded scatter from 3 to 1.
+  - balance: Increased standard M44 ammunition damage from 72 to 85, armor penetration
+      from 5 to 10 and accurate range from 6 to 7 tiles.
+  - balance: Increased M44 marksman ammunition damage from 55 to 70 and armor penetration
+      from 35 to 40.
+  - balance: Increased M44 heavy ammunition damage from 35 to 65 and accurate range
+      from 6 to 7 tiles.
+  - balance: M44 heavy ammunition stuns for 0.5 seconds every third hit and slows
+      for 2s for every hit after that
+  - balance: The M44 sharpshooter stock now folds in 0.5 seconds and no longer slows
+      aiming
+  - balance: The M44 can now be fired with its sharpshooter stock folded.
+  - balance: Reduced M44 heavy and marksman speedloader costs to 5 points across the
+      board
+  - balance: Aim Assist is now available on the standard M56A2 Smartgun. It consumes
+      massive amounts of smartgun energy. The standard smartgun can only fire 750
+      rounds of aim assisted bullets with one DV9 battery.
+  - balance: Aim Assist has a -25% accuracy penalty when not directly clicking on
+      your target (meaning they may dodge the bullet)
+  - balance: Aim assist takes the current tile you're clicking on and automatically
+      snaps your bullet at the target.
+  - rscadd: Added numerous non-helmet options to the smartgun vendor
+  - balance: Removed widespread availability of DV9 batteries. Smartgunners now only
+      have the one that starts in their gun and the spare one from their kit. Recharge
+      them using defib rechargers. (Requistions can still order a DV9 crate)
+  - rscadd: Added functionality to remove the DV9 battery from your smartgun with
+      a screwdriver
+  - qol: Removed the Smartgun accuracy and recoil toggles and made their effects inherent
+      to the gun.
+  - rscdel: Removed the Smartgun autofire system.
+  Orchidfox:
+  - qol: RTO bag moved to SL mandatory gear

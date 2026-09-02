@@ -34,7 +34,7 @@
 	tacklestrength_min = 4
 	tacklestrength_max = 5
 
-	aura_strength = 2
+	aura_strength = XENO_PHERO_STRENGTH_NORMAL
 	hugger_throw_delay = 5 DECISECONDS
 	egg_cooldown = 25 SECONDS
 

@@ -43,7 +43,7 @@
 
 	claw_type = CLAW_TYPE_VERY_SHARP
 	age = -1
-	aura_strength = 6
+	aura_strength = XENO_PHERO_STRENGTH_OVERWHELMING
 	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE
 
 	base_actions = list(

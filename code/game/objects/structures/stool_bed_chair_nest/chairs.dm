@@ -33,7 +33,7 @@
 		layer = non_north_layer
 	if(buckled_mob)
 		buckled_mob.setDir(dir)
-		update_shimmy_data(force_update = TRUE)
+		update_shimmy_data(null, TRUE)
 	else
 		update_shimmy_data()
 

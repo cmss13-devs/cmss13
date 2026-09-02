@@ -38,6 +38,13 @@
 		return
 	total_loops_complete++
 
+/// Returns true if the target xenomorph has the emit_pheromones action in its action list
+/datum/unit_test/pheromones/proc/emits_pheromones(mob/living/carbon/xenomorph/target)
+	for (var/datum/action/xeno_action/action in target.actions)
+		if (istype(action, /datum/action/xeno_action/onclick/emit_pheromones))
+			return TRUE
+	return FALSE
+
 /**
  * Tests whether a pair of xenomorphs, one dedicated emitter and one dedicated receiver, transmit the expected level of pheromones.
  */

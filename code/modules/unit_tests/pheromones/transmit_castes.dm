@@ -5,21 +5,21 @@
 /datum/unit_test/pheromones/transmit_castes/coverage/Run()
 	// Put any new castes/strains that can emit pheromones in here after creating a transmit_castes test for said variation
 	var/list/emitting_castes = list(XENO_CASTE_DRONE, XENO_CASTE_LESSER_DRONE, XENO_CASTE_HIVELORD, XENO_CASTE_CARRIER, XENO_CASTE_QUEEN, XENO_CASTE_KING) // Only count castes that can emit with their base strain
-	var/list/emitting_strains = list(DRONE_HEALER, DRONE_GARDENER, CARRIER_EGGSAC, HIVELORD_DESIGNER, PRAETORIAN_VALKYRIE)
+	var/list/emitting_strains = list(DRONE_HEALER, DRONE_GARDENER, CARRIER_EGGSAC, HIVELORD_DESIGNER, HIVELORD_RESIN_WHISPERER, PRAETORIAN_VALKYRIE)
 
 	for (var/caste_name in ALL_XENO_CASTES)
 		var/datum/abstract_xenomorph/dummy_xeno_abstract = new (caste = caste_name)
 		var/mob/living/carbon/xenomorph/dummy_xeno = dummy_xeno_abstract.initialize(src)
 
 		var/datum/caste_datum/caste = dummy_xeno.caste
-		if (/datum/action/xeno_action/onclick/emit_pheromones in dummy_xeno.actions && !(caste_name in emitting_castes))
+		if (emits_pheromones(dummy_xeno) && !(caste_name in emitting_castes))
 			TEST_FAIL("Found a xenomorph caste [caste_name] define that can emit pheromones but does not have an associated /datum/unit_test/pheromones/transmit_castes subtype unit test. If you are adding a new xenomorph caste, set one up!")
 
 		for(var/datum/xeno_strain/strain_type as anything in caste.available_strains)
 			var/datum/xeno_strain/strain_instance = new strain_type()
 			strain_instance._add_to_xeno(dummy_xeno)
 
-			if (/datum/action/xeno_action/onclick/emit_pheromones in dummy_xeno.actions && !(strain_type.name in emitting_strains))
+			if (emits_pheromones(dummy_xeno) && !(strain_type.name in emitting_strains))
 				TEST_FAIL("Found a xenomorph strain [strain_type] of [caste_name] that can emit pheromones but does not have an associated /datum/unit_test/pheromones/transmit_castes subtype unit test. If you are adding a new xenomorph strain, set one up!")
 			dummy_xeno.reset_strain()
 

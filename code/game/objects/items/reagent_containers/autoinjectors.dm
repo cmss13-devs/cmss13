@@ -364,7 +364,7 @@
 	uses_left = 1
 	display_maptext = TRUE
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
-	volume = amount_per_transfer_from_this
+	volume = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 
 
 /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/inaprovaline
@@ -420,7 +420,7 @@
 	display_maptext = TRUE
 	skilllock = SKILL_MEDICAL_DEFAULT
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
-	volume = amount_per_transfer_from_this
+	volume = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	uses_left = 1
 	maptext_label = "OuTc"
 
@@ -462,6 +462,7 @@
 	desc = "An EZ one-use autoinjector that injects a medicine used to stabilize defibrillated patients. To use it, click the autoinjector while it is in your hand. You can also click any person one tile near you, or yourself, to inject its contents."
 	maptext_label = "OuEp"
 	amount_per_transfer_from_this = LOWM_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
+	volume = LOWM_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 
 /obj/item/reagent_container/hypospray/autoinjector/tutorial/inaprovaline //in case we ever want to treat critical patients during the the medical tutorial
 	name = "inaprovaline EZ autoinjector (FOR TRAINING USE ONLY)"
@@ -469,6 +470,7 @@
 	desc = "An EZ one-use autoinjector that injects an emergency medicine used to stabilize critical patients. To use it, click the autoinjector while it is in your hand. You can also click any person one tile near you, or yourself, to inject its contents."
 	maptext_label = "OuIn"
 	amount_per_transfer_from_this = HIGH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
+	volume = HIGH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 
 /obj/item/reagent_container/hypospray/autoinjector/tutorial/peridaxon //in case we ever want to simulate transporting somebody to surgery.
 	name = "peridaxon EZ autoinjector (FOR TRAINING USE ONLY)"
@@ -476,6 +478,7 @@
 	desc = "An EZ one-use autoinjector that injects an emergency medicine used to stabilize a patient's organs before surgery. To use it, click the autoinjector while it is in your hand. You can also click any person one tile near you, or yourself, to inject its contents."
 	maptext_label = "OuPr"
 	amount_per_transfer_from_this = LOWH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
+	volume = LOWH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 
 
 //MIXED/MISC AUTOINJECTORS THAT CANNOT BE REFILLED

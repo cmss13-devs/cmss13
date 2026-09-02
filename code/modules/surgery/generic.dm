@@ -144,11 +144,8 @@
 	name = "Clamp Bleeders"
 	desc = "clamp bleeders on the bleeding vessels"
 	//Tools used to clamp bleeders by either clamping them shut or tying them shut. Fixovein is a substitute but also a real surgery tool.
-	tools = list(
-		/obj/item/tool/surgery/hemostat = SURGERY_TOOL_MULT_IDEAL,
-		/obj/item/tool/wirecutters = SURGERY_TOOL_MULT_SUBSTITUTE,
-		/obj/item/stack/cable_coil = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,
-	)
+	tools = SURGERY_TOOLS_PINCH
+
 	///Tools used to stem bleeders by specifically tying them up. List used for specific messaging as there's two of these.
 	var/ligation_tools = list(/obj/item/stack/cable_coil)
 	time = 2 SECONDS
@@ -233,19 +230,7 @@
 	desc = "widen the incision"
 	time = 2 SECONDS
 	//Tools used to pry open specifically incisions. Contains INCISION tools at lengthy delays, mainly so surgeons can dramatically slash open incisions with them.
-	tools = list(\
-		/obj/item/tool/surgery/retractor = SURGERY_TOOL_MULT_IDEAL,
-		/obj/item/tool/surgery/hemostat = SURGERY_TOOL_MULT_SUBOPTIMAL,
-		/obj/item/tool/crowbar = SURGERY_TOOL_MULT_SUBSTITUTE,
-		/obj/item/tool/wirecutters = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,
-		/obj/item/maintenance_jack = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,
-		/obj/item/tool/kitchen/utensil/fork = SURGERY_TOOL_MULT_AWFUL,
-		/obj/item/attachable/bayonet = SURGERY_TOOL_MULT_AWFUL,
-		/obj/item/tool/surgery/scalpel = SURGERY_TOOL_MULT_AWFUL,
-		/obj/item/tool/kitchen/knife = SURGERY_TOOL_MULT_AWFUL,
-		/obj/item/weapon/throwing_knife = SURGERY_TOOL_MULT_AWFUL,
-		/obj/item/shard = SURGERY_TOOL_MULT_AWFUL
-		)
+	tools = SURGERY_TOOLS_PRY
 	preop_sound = 'sound/surgery/retractor1.ogg'
 	success_sound = 'sound/surgery/retractor2.ogg'
 	failure_sound = 'sound/surgery/organ1.ogg'

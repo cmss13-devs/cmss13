@@ -54,14 +54,8 @@
 /datum/surgery_step/graft_exposed_flesh
 	name = "Apply a Graft"
 	desc = "graft and seal the exposed flesh"
-	tools = list(
-		/obj/item/stack/medical/advanced/ointment = SURGERY_TOOL_MULT_IDEAL,
-		/obj/item/tool/surgery/synthgraft = SURGERY_TOOL_MULT_IDEAL,
-		/obj/item/stack/medical/advanced/ointment/predator = SURGERY_TOOL_MULT_SUBSTITUTE,
-		/obj/item/stack/medical/ointment = SURGERY_TOOL_MULT_AWFUL,
-	)
+	tools = SURGERY_TOOLS_APPLY_GRAFT
 	time = 3 SECONDS
-	preop_sound = 'sound/handling/clothingrustle1.ogg'
 	success_sound = 'sound/handling/bandage.ogg'
 	failure_sound = 'sound/surgery/organ2.ogg'
 	var/use_stack = 1 //uses one stack of burn heal stuff.

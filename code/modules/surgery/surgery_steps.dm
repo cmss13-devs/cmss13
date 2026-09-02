@@ -79,7 +79,8 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 /datum/surgery_step/proc/extra_checks(mob/living/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, repeating, skipped)
 	return TRUE
 
-/datum/surgery_step/proc/use_custom_preop_sound(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgeryy) //this is for surgeries that have differing sounds for different tools in the same step. Hearing a saw buzz when you're using a hatchet was... a thing.
+///This is for surgery steps that have different sounds for different tools after initiating a step because hearing a bone saw while you're using a fire-axe to chop away at a ribcage was a thing of the past.
+/datum/surgery_step/proc/use_custom_preop_sound(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	var/held_tool = tool.type
 	if(tool.type in SURGERY_TOOLS_INCISION)
 		if(held_tool == /obj/item/tool/surgery/scalpel/manager)
@@ -101,20 +102,27 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 		else
 			custom_preop_sound = 'sound/surgery/bonegel.ogg'
 
-	else if((name == "Apply a Graft") && (tool.type in tools))
+	else if(tool.type in SURGERY_TOOLS_APPLY_GRAFT)
 		if(held_tool == /obj/item/tool/surgery/synthgraft)
 			custom_preop_sound = 'sound/surgery/suture1.ogg'
 		else if(held_tool == /obj/item/stack/medical/ointment)
-			custom_preop_sound = 'sound/surgery/bonegel.ogg'
+			custom_preop_sound = 'sound/surgery/fixovein.ogg'
 		else
 			custom_preop_sound = 'sound/handling/clothingrustle1.ogg'
 
-	else if(tool.type in SURGERY_TOOLS_MEDICOMP_STABILIZE_WOUND)
-		if(held_tool == /obj/item/stack/cable_coil)
-			custom_preop_sound = 'sound/surgery/suture1.ogg'
+	else if((tool.type in SURGERY_TOOLS_SUTURE) || (tool.type in SURGERY_TOOLS_MEND_BLOODVESSEL))
+		if(held_tool == /obj/item/tool/surgery/FixOVein)
+			custom_preop_sound = 'sound/surgery/fixovein'
 		else
-			custom_preop_sound = 'sound/surgery/bonegel.ogg'
+			custom_preop_sound = 'sound/surgery/suture1.ogg'
 
+	else if(tool.type in SURGERY_TOOLS_MEDICOMP_STABILIZE_WOUND)
+		if(held_tool == /obj/item/tool/surgery/FixOVein)
+			custom_preop_sound = 'sound/surgery/fixovein.ogg'
+		else if(held_tool == /obj/item/tool/surgery/bonegel)
+			custom_preop_sound = 'sound/surgery/bonegel.ogg'
+		else
+			custom_preop_sound = 'sound/handling/suture1.ogg'
 	else
 		if((tool.type in SURGERY_TOOLS_CAUTERIZE) || (tool.type in SURGERY_TOOLS_MEDICOMP_CLAMP_WOUND))
 			if(held_tool == /obj/item/clothing/mask/cigarette || /obj/item/tool/lighter)

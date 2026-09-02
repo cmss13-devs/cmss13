@@ -33,7 +33,9 @@
 		layer = non_north_layer
 	if(buckled_mob)
 		buckled_mob.setDir(dir)
-	update_shimmy_data()
+		update_shimmy_data(force_update = TRUE)
+	else
+		update_shimmy_data()
 
 /obj/structure/bed/chair/MouseDrop(atom/over)
 	if(!foldabletype)
@@ -73,7 +75,7 @@
 			flags_can_pass_all_temp |= PASS_OVER
 			projectile_coverage = PROJECTILE_COVERAGE_MEDIUM
 
-/obj/structure/bed/chair/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/bed/chair/attack_alien(mob/living/carbon/xenomorph/found_living)
 	. = ..()
 	if(stacked_size)
 		stack_collapse()
@@ -135,11 +137,11 @@
 /obj/structure/bed/chair/hitby(atom/movable/AM)
 	. = ..()
 	if(istype(AM, /mob/living) && stacked_size)
-		var/mob/living/M = AM
+		var/mob/living/found_living = AM
 		stack_collapse()
-		if(ishumansynth_strict(M))
-			M.apply_effect(2, STUN)
-			M.apply_effect(2, WEAKEN)
+		if(ishumansynth_strict(found_living))
+			found_living.apply_effect(2, STUN)
+			found_living.apply_effect(2, WEAKEN)
 	else if(stacked_size > 8 && prob(50))
 		stack_collapse()
 
@@ -241,7 +243,7 @@
 			continue
 		if(found_obj.buckled_mob && ispath(found_obj.type, /obj/structure/bed/chair))
 			var/obj/structure/bed/chair/found_chair = found_obj
-			found_chair.update_shimmy_data(src)	//we need to update the shimmy handler chair to block walking into this buckled chair
+			found_chair.update_shimmy_data(src)	//we need to update the shimmy other_buckled_chair chair to block walking into this buckled chair
 			found_chair.AddComponent(/datum/component/shimmy_around, approach_dirs = found_chair.shimmy_data[5], internal_dirs = found_chair.shimmy_data[6])
 			if(target.density)
 				target.density = FALSE
@@ -258,7 +260,7 @@
 		approach_dirs = shimmy_data[5],\
 		internal_dirs = shimmy_data[6])
 
-/obj/structure/bed/chair/proc/update_shimmy_data(obj/structure/bed/chair/neighbor = null)
+/obj/structure/bed/chair/proc/update_shimmy_data(obj/structure/bed/chair/neighbor = null, force_update = FALSE)
 	if(shimmy_data == null)
 		return	//this chair doesnt shimmy
 	var/approachness
@@ -285,35 +287,83 @@
 		if(WEST)
 			shimmy_data[3] = offset
 			shimmy_data[4] = offset
+	if(force_update && buckled_mob)
+		buckled_mob.density = FALSE
+		density = TRUE
+		AddComponent(/datum/component/shimmy_around, \
+			north_offset = shimmy_data[1], \
+			south_offset = shimmy_data[2], \
+			east_offset  = shimmy_data[3], \
+			west_offset  = shimmy_data[4], \
+			extra_delay  = 0.5 SECONDS, \
+			approach_dirs = shimmy_data[5], \
+			internal_dirs = shimmy_data[6])
 
 /obj/structure/bed/chair/unbuckle()
 	if(buckled_mob)
 		buckled_mob.update_density()
 	. = ..()
 	density = FALSE
-	var/datum/component/shimmy_around/shimster = GetComponent(/datum/component/shimmy_around)
-	if(shimster)
-		qdel(shimster)
-	for(var/obj/found_obj in get_turf(src))
-		if(found_obj == src)
-			continue
-		if(found_obj.buckled_mob && ispath(found_obj.type, /obj/structure/bed/chair))
-			var/obj/structure/bed/chair/found_chair = found_obj
-			var/datum/component/shimmy_around/shimmier = found_chair.GetComponent(/datum/component/shimmy_around)
-			found_chair.update_shimmy_data(src)	//we need to update the shimmy handler chair to block walking into this buckled chair
-			if(shimmier)
-				found_chair.AddComponent(/datum/component/shimmy_around, approach_dirs = found_chair.shimmy_data[5], internal_dirs = found_chair.shimmy_data[6])
-			else
-				found_chair.density = TRUE
-				found_chair.AddComponent(/datum/component/shimmy_around, \
-					north_offset = found_chair.shimmy_data[1], \
-					south_offset = found_chair.shimmy_data[2], \
-					east_offset = found_chair.shimmy_data[3], \
-					west_offset = found_chair.shimmy_data[4],\
-					extra_delay = 0.5 SECONDS, \
-					approach_dirs = found_chair.shimmy_data[5],\
-					internal_dirs = found_chair.shimmy_data[6])
 
+	var/obj/structure/bed/chair/other_buckled_chair
+	var/list/mob/living/shimmied_mobs = list()
+	var/datum/component/shimmy_around/shimster = GetComponent(/datum/component/shimmy_around)
+	var/list/old_data
+	if(shimster)
+		old_data = list(
+			shimster.north_offset,
+			shimster.south_offset,
+			shimster.east_offset,
+			shimster.west_offset,
+			shimster.additional_offset)
+
+	for(var/obj/structure/bed/chair/found_chair in get_turf(src))
+		if(found_chair == src)
+			continue
+		if(found_chair.buckled_mob)
+			other_buckled_chair = found_chair
+			break
+
+	for(var/mob/living/found_living in get_turf(src))	//any living mobs currently shimmied ??? (have the pixel offsets)
+		if(!found_living.buckled && found_living.pixel_x != initial(found_living.pixel_x) || found_living.pixel_y != initial(found_living.pixel_y))
+			shimmied_mobs += found_living
+
+	if(!other_buckled_chair)	// No other chair is holding anyone → remove all the shimmy offsets from every shimmied mob
+		if(shimster)
+			qdel(shimster)
+		for(var/mob/living/shimmied_living in shimmied_mobs)
+			animate(shimmied_living, pixel_x = initial(shimmied_living.pixel_x), pixel_y = initial(shimmied_living.pixel_y), time = 0)
+			if(shimmied_living.layer != initial(shimmied_living.layer) && shimmied_living.layer != XENO_HIDING_LAYER)	//shimmy component also alters layering
+				shimmied_living.layer = initial(shimmied_living.layer)
+		return
+	else	// At least one other chair is still occupied – we need to either create one and then refresh mobs' offsets - OR just refresh mobs' offsets to whatd they'd be without another buckled chair
+		var/datum/component/shimmy_around/other_buckled_shimster = other_buckled_chair.GetComponent(/datum/component/shimmy_around)
+		if(!other_buckled_shimster)
+			other_buckled_chair.density = TRUE
+			other_buckled_chair.update_shimmy_data(src)
+			other_buckled_chair.AddComponent(/datum/component/shimmy_around, \
+				north_offset = other_buckled_chair.shimmy_data[1], \
+				south_offset = other_buckled_chair.shimmy_data[2], \
+				east_offset  = other_buckled_chair.shimmy_data[3], \
+				west_offset  = other_buckled_chair.shimmy_data[4], \
+				extra_delay  = 0.5 SECONDS, \
+				approach_dirs = other_buckled_chair.shimmy_data[5], \
+				internal_dirs = other_buckled_chair.shimmy_data[6])
+			other_buckled_shimster = other_buckled_chair.GetComponent(/datum/component/shimmy_around)
+		else	//it posses one, we just need to pass in the new approach and internal_dirs values
+			old_data = list(
+				other_buckled_shimster.north_offset,
+				other_buckled_shimster.south_offset,
+				other_buckled_shimster.east_offset,
+				other_buckled_shimster.west_offset,
+				other_buckled_shimster.additional_offset)
+			other_buckled_chair.update_shimmy_data(src)
+			other_buckled_chair.AddComponent(/datum/component/shimmy_around, \
+				approach_dirs = other_buckled_chair.shimmy_data[5], \
+				internal_dirs = other_buckled_chair.shimmy_data[6])
+
+		for(var/mob/living/found_living in shimmied_mobs)	// although we sent the new data, existing shimmied mobs still need to be updated
+			other_buckled_shimster.refresh_mob_offsets(found_living, old_data)
 
 //Chair types
 /obj/structure/bed/chair/bolted
@@ -432,7 +482,7 @@
 			victim.apply_damage(10, BRUTE, def_zone)
 		occupant.visible_message(SPAN_DANGER("[occupant] crashed into \the [A]!"))
 
-/// Signal handler for COMSIG_MOVABLE_PREBUCKLE to potentially block buckling.
+/// Signal other_buckled_chair for COMSIG_MOVABLE_PREBUCKLE to potentially block buckling.
 /obj/structure/bed/chair/office/proc/check_buckle(obj/bed, mob/buckle_target, mob/user)
 	SIGNAL_HANDLER
 
@@ -510,7 +560,7 @@
 		overlays -= chairbar
 
 
-/obj/structure/bed/chair/dropship/passenger/buckle_mob(mob/M, mob/user)
+/obj/structure/bed/chair/dropship/passenger/buckle_mob(mob/found_living, mob/user)
 	if(chair_state != DROPSHIP_CHAIR_UNFOLDED)
 		return
 	..()
@@ -547,7 +597,7 @@
 		chair_state = DROPSHIP_CHAIR_UNFOLDED
 		icon_state = "hotseat"
 
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair/buckle_mob(mob/living/M, mob/living/user)
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair/buckle_mob(mob/living/found_living, mob/living/user)
 	if(chair_state != DROPSHIP_CHAIR_UNFOLDED)
 		return
 	..()
@@ -665,12 +715,12 @@
 	flags_item = TWOHANDED
 	var/placed_object = /obj/structure/bed/chair
 
-/obj/item/weapon/twohanded/folded_metal_chair/attack(mob/living/M as mob, mob/living/user as mob)
+/obj/item/weapon/twohanded/folded_metal_chair/attack(mob/living/found_living as mob, mob/living/user as mob)
 	. = ..()
 	if(!.)
 		return
 	if(flags_item & WIELDED)
-		M.apply_stamina_damage(17, check_zone(user.zone_selected))
+		found_living.apply_stamina_damage(17, check_zone(user.zone_selected))
 	playsound(get_turf(user), 'sound/weapons/metal_chair_clang.ogg', 20, 1)
 	return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 

@@ -104,6 +104,45 @@
 		msg += "<EM>[rank_display] </EM>"
 	msg += "<EM>[src]</EM>!\n"
 
+	if(ishuman_strict(src))
+		var/age_description
+		switch(clamp(age, AGE_MIN, AGE_MAX))
+			if(AGE_MIN to 25)
+				age_description = "very young"
+			if(26 to 35)
+				age_description = "young"
+			if(36 to 55)
+				age_description = "middle-aged"
+			if(56 to 75)
+				age_description = "older"
+			if(76 to AGE_MAX)
+				age_description = "elderly"
+
+		var/body_size_description
+		switch(body_size)
+			if(BODY_SIZE_THIN)
+				body_size_description = "thin"
+			if(BODY_SIZE_AVERAGE)
+				body_size_description = "average-sized"
+			if(BODY_SIZE_LARGE)
+				body_size_description = "large"
+
+		var/body_type_description
+		switch(body_type)
+			if(BODY_TYPE_NOMUSCLE)
+				body_type_description = "unmuscular"
+			if(BODY_TYPE_LEAN)
+				body_type_description = "lean"
+			if(BODY_TYPE_RIPPED)
+				body_type_description = "muscular"
+
+		if(!skipface && !skipjumpsuit && body_size_description && body_type_description)
+			msg += "[t_He] [t_seem] [SPAN_BOLD(age_description)], with a build that appears [SPAN_BOLD(body_size_description)] and [SPAN_BOLD(body_type_description)].\n"
+		else if(!skipface)
+			msg += "[t_He] [t_seem] [SPAN_BOLD(age_description)].\n"
+		else if(!skipjumpsuit && body_size_description && body_type_description)
+			msg += "[capitalize(t_his)] build appears [SPAN_BOLD(body_size_description)] and [SPAN_BOLD(body_type_description)].\n"
+
 	//uniform
 	if(w_uniform && !skipjumpsuit)
 		msg += "[t_He] [t_is] [w_uniform.get_examine_location(src, user, WEAR_BODY, t_He, t_his, t_him, t_has, t_is)].\n"

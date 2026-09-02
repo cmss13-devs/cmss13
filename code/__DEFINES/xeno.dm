@@ -412,9 +412,6 @@
 // Carrier strain flags
 #define CARRIER_EGGSAC "Eggsac"
 
-// Boiler strain flags
-#define BOILER_TRAPPER "Trapper"
-
 // Runner strain flags
 #define RUNNER_ACIDER "Acider"
 
@@ -755,7 +752,6 @@
 #define FIRE_MULTIPLIER_DEADLY		3
 
 #define WHISPERER_VIEWRANGE 10
-#define TRAPPER_VIEWRANGE 13
 
 #define SECRETE_RESIN_INTERRUPT -1
 #define SECRETE_RESIN_FAIL 0

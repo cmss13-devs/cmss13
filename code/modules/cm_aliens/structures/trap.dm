@@ -168,7 +168,7 @@
 			set_state()
 			visible_message(SPAN_WARNING("[FH] gets out of [src]!"))
 			sleep(15)
-			if(FH.stat == CONSCIOUS && FH.loc) //Make sure we're conscious and not idle or dead.
+			if(FH.stat == CONSCIOUS && FH.loc) //Make sure we're conscious and not idle or dead
 				FH.leap_at_nearest_target()
 		if(RESIN_TRAP_GAS)
 			trap_type_name = "gas"

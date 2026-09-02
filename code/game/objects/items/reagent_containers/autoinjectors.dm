@@ -74,15 +74,16 @@
 	if(uses_left >= 0)
 		if(istype(src, /obj/item/reagent_container/hypospray/autoinjector/ultrazine/liaison))
 			. += SPAN_NOTICE("It is currently loaded with [reagents.total_volume / amount_per_transfer_from_this]/[volume / amount_per_transfer_from_this] injections of ... Something? You don't know what's in this.")
-		else
-			. += SPAN_NOTICE("It is currently loaded with [reagents.total_volume / amount_per_transfer_from_this]/[volume / amount_per_transfer_from_this] injections of [amount_per_transfer_from_this]u [capitalize(chemname)].")
-		if(volume == amount_per_transfer_from_this) //one-use autoinjectors
+		else if(volume == amount_per_transfer_from_this) //one-use autoinjectors
 			. += SPAN_NOTICE("It is currently loaded with a single injection of [amount_per_transfer_from_this]u [capitalize(chemname)].")
 			if(istype(src, /obj/item/reagent_container/hypospray/autoinjector/yautja)) //this is a yautja crystal
 				if(isyautja(user)) //is a yautja looking at it or not?
 					. += SPAN_NOTICE("It is currently loaded with a single injection of [amount_per_transfer_from_this]u [capitalize(chemname)].")
 				else
 					. += SPAN_NOTICE("You do not know how many injections this has or what is in it.")
+		else
+			. += SPAN_NOTICE("It is currently loaded with [reagents.total_volume / amount_per_transfer_from_this]/[volume / amount_per_transfer_from_this] injections of [amount_per_transfer_from_this]u [capitalize(chemname)].")
+
 
 	else if(uses_left <= 0)
 		if(cannot_refill == TRUE)

@@ -1,0 +1,11 @@
+author: "Mary-Marilyn"
+delete-after: True
+changes:
+  - balance: "Aim Assist is now available on the standard M56A2 Smartgun. It consumes massive amounts of smartgun energy. The standard smartgun can only fire 750 rounds of aim assisted bullets with one DV9 battery."
+  - balance: "Aim Assist has a -25% accuracy penalty when not directly clicking on your target (meaning they may dodge the bullet)"
+  - balance: "Aim assist takes the current tile you're clicking on and automatically snaps your bullet at the target."
+  - rscadd: "Added numerous non-helmet options to the smartgun vendor"
+  - balance: "Removed widespread availability of DV9 batteries. Smartgunners now only have the one that starts in their gun and the spare one from their kit. Recharge them using defib rechargers. (Requistions can still order a DV9 crate)"
+  - rscadd: "Added functionality to remove the DV9 battery from your smartgun with a screwdriver"
+  - qol: "Removed the Smartgun accuracy and recoil toggles and made their effects inherent to the gun."
+  - rscdel: "Removed the Smartgun autofire system."

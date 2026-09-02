@@ -242,6 +242,7 @@
 	xeno.add_xeno_shield(accumulative_health, XENO_SHIELD_SOURCE_RAVAGER)
 	xeno.overlay_shields()
 	if(empower_targets >= super_empower_threshold) //you go in deep you reap the rewards
+		ADD_TRAIT(xeno, TRAIT_ABILITY_FULL_EMPOWER, TRAIT_SOURCE_ABILITY("full_empower"))
 		super_empower(xeno, empower_targets)
 
 /datum/action/xeno_action/onclick/empower/proc/super_empower(mob/living/carbon/xenomorph/xeno)
@@ -269,6 +270,7 @@
 	empower_targets = 0
 
 	REMOVE_TRAIT(xeno, TRAIT_ABILITY_EMPOWER, TRAIT_SOURCE_ABILITY("empower"))
+	REMOVE_TRAIT(xeno, TRAIT_ABILITY_FULL_EMPOWER, TRAIT_SOURCE_ABILITY("full_empower"))
 	xeno.visible_message(SPAN_DANGER("[xeno]'s glow slowly dims."), SPAN_XENOHIGHDANGER("Our glow fades away, the power leaving our form!"))
 	xeno.remove_filter("empower_rage")
 
@@ -293,7 +295,7 @@
 	var/mob/living/carbon/human/human = living
 	var/mob/living/carbon/xenomorph/xeno = owner
 
-	if(!HAS_TRAIT(xeno, TRAIT_ABILITY_EMPOWER))
+	if(!HAS_TRAIT(xeno, TRAIT_ABILITY_FULL_EMPOWER))
 		return
 
 	ADD_TRAIT(xeno, TRAIT_ABILITY_POUNCE_CHARGE, TRAIT_SOURCE_ABILITY("pounce_charge"))
@@ -377,7 +379,7 @@
 			carbon_target.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE)
 			playsound(get_turf(carbon_target), "alien_claw_flesh", 30, TRUE)
 
-			if(HAS_TRAIT(ravager_user, TRAIT_ABILITY_EMPOWER))
+			if(HAS_TRAIT(ravager_user, TRAIT_ABILITY_FULL_EMPOWER))
 				new /datum/effects/xeno_slow/superslow(carbon_target, ravager_user, ttl = superslow_duration)
 
 	apply_cooldown()
